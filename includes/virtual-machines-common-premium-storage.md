@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: a05d0c623c1abdb5713c1d49b0b577298c1d6c7d
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 97e4e670d5db646cea28cb30e9ca95633cea2a8a
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49347025"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49437125"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Nagy teljesítményű Premium Storage és a felügyelt lemezek virtuális gépekhez
 
@@ -151,7 +151,11 @@ Ha a premium storage-fiókok nem felügyelt lemezeket használ, és az alkalmaz�
 ### <a name="premium-storage-disk-limits"></a>Prémium szintű Storage korlátok
 Egy prémium szintű tárolólemez üzembe helyezésekor, a lemez mérete határozza meg, a maximális IOPS és átviteli sebesség (sávszélesség). Prémium szintű tárolólemezek típusai nyolc általánosan elérhető az Azure kínál: P4 (Managed Disks csak) P6 (Managed Disks csak) P10, p15-ös (Managed Disks csak), P20, P30, P40 vagy P50. Valamint három lemezméretek előzetes: a P60 P70 és P80. Minden egyes prémium szintű tárolólemez-típusba IOPS és átviteli sebesség bizonyos korlátozások vonatkoznak. Az alábbi táblázat ismerteti a lemeztípusok korlátai:
 
-| Prémium szintű lemezek típus |} P4 |} P6 |} P10 |} P15 |} P20 |} P30 |} P40 |} P50 |} A P60 |} P70 |} P80 |} |}---|}---|}---|}---|}---|}---|}---|}---|}---|| -------|| -------|| -------| | Lemezméret |} 32 GIB-ra |} 64 giB |} 128 GIB-ra |} 256 giB |} 512 GIB-ra |} 1024 giB (1 TiB) |} 2048 giB (2 TiB) |} 4095 giB (4 TiB) |} 8192 giB (8 TiB) |} 16384 giB (16 TiB) |} 32 767 giB (32 TiB). Iops-érték lemezenként |} 120 |} 240 |} 500-as |} 1100-as |} 2300 |} 5000 |} 7500 |} 7500 |} 12 500 |} 15 000 |} 20 000 || Lemezenkénti átviteli sebesség |} 25 MB / s |} 50 MB / s |} 100 MB / s |} 125 MB / s |} 150 MB / s |} 200 MB / s |} 250 MB / s |} 250 MB / s |} 480 MB / s |} 750 MB / s |} 750 MB / s |}
+| Prémium szintű lemezek típusa  | P4    | P6    | P10    | P15    | P20    | P30              | P40             | P50             | P60             | P70                | P80                |
+|---------------------|-------|-------|--------|--------|--------|------------------|-----------------|-----------------|-----------------|--------------------|--------------------|
+| Lemezméret           | 32 GiB| 64 GiB| 128 GiB| 256 GiB| 512 GiB| 1024 GiB (1 TiB) | 2048 giB (2 Tib-ra)| 4095 GiB (4 TiB)| 8192 giB (8 TiB)| 16384 giB (16 TiB)| 32 767 giB (32 TiB)|
+| IOPS-érték lemezenként       | 120   | 240   | 500    | 1100   | 2300   | 5000             | 7500            | 7500            | 12 500          | 15 000             | 20,000             |
+| Adattovábbítás lemezenként | 25 MB / s | 50 MB / s | 100 MB / s | 125 MB / s | 150 MB / s | 200 MB / s | 250 MB / s | 250 MB / s | 480 MB / s | 750 MB / s | 750 MB / s |
 
 > [!NOTE]
 > Ellenőrizze, hogy elegendő sávszélesség érhető el a virtuális gép meghajtó lemez forgalomra, leírtak szerint [Premium Storage virtuális gépek](#premium-storage-supported-vms). Ellenkező esetben a lemez adatátviteli sebessége és IOPS je omezeno alacsonyabb értékeket. Maximális átviteli sebesség és iops-t a VM-korlátok, nem pedig az előző táblázatban ismertetett korlátok alapján.  

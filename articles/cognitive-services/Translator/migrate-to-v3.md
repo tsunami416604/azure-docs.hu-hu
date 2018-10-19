@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: eaf65bef28110d73378c213ae4781a409b86e1bd
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 74fcfa0e1474d7d2a25d0bf9d0476fb1bb870334
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128179"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429507"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 V3 áttelepítése
 
@@ -32,23 +32,23 @@ Ez a dokumentum végén, hogy további hasznos hivatkozásokat tartalmaz.
 * Átbetűzés - transliterate metódus az API-ra bővült. Ez a módszer átalakítja a szavak és a egy parancsfájl (pl. a mondatok Arab) egy másik parancsfájlba (például: Latin betűs).
 * Nyelvek – egy új "nyelv" módszer nyelvi információk ennek a JSON formátumban, a 'fordítása', "szótár" és a "átbetűzés" való használatra.
 * Új fordítás – az új képességekkel bővült a "fordítása" metódus támogatja, amelyek korábban a V2 API külön módszerként funkcióit. Ez például akkor TranslateArray.
-* Beszéljen metódus – szöveg-beszéd átalakítás funkció már nem támogatott a Microsoft Translator API-t. Szöveg-beszéd átalakítás is elérhető az Azure Cognitive services a Bing Speech API.
+* Beszéljen metódus – szöveg-beszéd átalakítás funkció már nem támogatott a Microsoft Translator API-t. Szöveg-beszéd átalakítás funkció érhető el a [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech).
 
 Az alábbi listában szereplő V2 és V3 módszerek a v3-as módszerek és API-kat biztosít a funkciót, melyet a V2 azonosítja.
 
 | V2 API-metódus   | V3 API-kompatibilitás |
 |:----------- |:-------------|
-| Fordítás     | Fordítás          |
-| TranslateArray      | Fordítás          |
-| GetLanguageNames      | Nyelvek          |
-| GetLanguagesForTranslate     | Nyelvek        |
-| GetLanguagesForSpeak      | A cognitive Services beszédfelismerő API         |
-| Beszéd     | A cognitive Services beszédfelismerő API          |
-| Észlelés     | Észlelés         |
-| DetectArray     | Észlelés         |
-| AddTranslation     | A Microsoft Translator HUB API         |
-| AddTranslationArray    | A Microsoft Translator HUB API          |
-| BreakSentences      | BreakSentence         |
+| Fordítás     | [Fordítása](reference/v3-0-translate.md)          |
+| TranslateArray      | [Fordítása](reference/v3-0-translate.md)        |
+| GetLanguageNames      | [Nyelvek](reference/v3-0-languages.md)         |
+| GetLanguagesForTranslate     | [Nyelvek](reference/v3-0-languages.md)       |
+| GetLanguagesForSpeak      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
+| Beszéd     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| Észlelés     | [Észlelése](reference/v3-0-detect.md)         |
+| DetectArray     | [Észlelése](reference/v3-0-detect.md)         |
+| AddTranslation     | [A Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
+| AddTranslationArray    | [A Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
+| BreakSentences      | [BreakSentence](reference/v3-0-break-sentence.md)       |
 | GetTranslations      | A szolgáltatás már nem támogatott.         |
 | GetTranslationsArray      | A szolgáltatás már nem támogatott.         |
 

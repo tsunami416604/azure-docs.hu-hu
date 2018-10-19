@@ -1,38 +1,38 @@
 ---
-title: Entitás keresési SDK csomópont gyors üzembe helyezés |} Microsoft Docs
-description: A telepítő entitás Search SDK konzolalkalmazást.
-titleSuffix: Azure cognitive services
+title: 'Rövid útmutató: Bing Entity Search SDK, csomópont'
+titleSuffix: Azure Cognitive Services
+description: Az Entity Search SDK konzolalkalmazás csomóponttal beállítása.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: 2904ecfed33334458f9b6a9ca2500cd0bfef13bc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.openlocfilehash: 1f2a5f6a1473cde40928ada6e30f6bd9b780543d
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349775"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814882"
 ---
-# <a name="entity-search-sdk-node-quickstart"></a>Entitás keresési SDK csomópont gyors üzembe helyezés
+# <a name="quickstart-bing-entity-search-sdk-with-node"></a>Rövid útmutató: Bing Entity Search SDK csomóponttal
 
-A Bing entitás keresési SDK tartalmazza a REST API entitás lekérdezések és elemzési eredmények funkcióit. 
+A Bing Entity Search SDK a REST API funkcióit biztosítja az entitáslekérdezésekhez és az eredmények elemzéséhez. 
 
-A [forráskód C# Bing entitás keresési SDK minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js) érhető el a Git központ.
+A [C# Bing Entity Search SDK-minták forráskódja](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js) elérhető a GitHubon.
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
 
-Egy konzolalkalmazást, a Bing entitás keresési SDK használatával beállításához futtassa `npm install azure-cognitiveservices-entitysearch` a fejlesztői környezetben.
+Ha a Bing Entity Search SDK-val szeretne beállítani egy konzolalkalmazást, futtassa a fejlesztési környezetben a következőt: `npm install azure-cognitiveservices-entitysearch`.
 
-## <a name="entity-search-client"></a>Entitás keresési ügyfél
-Első egy [kognitív szolgáltatások hozzáférési kulcs](https://azure.microsoft.com/try/cognitive-services/) alatt *keresési*. Hozzon létre egy példányát a `CognitiveServicesCredentials`:
+## <a name="entity-search-client"></a>Entity Search-ügyfél
+A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a *Keresés* területen kérheti le. Hozza létre a `CognitiveServicesCredentials` egy példányát:
 ```
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
 ```
-Ezt követően az ügyfél példányosítható, majd keresse meg eredmények:
+Ezután hozza létre az ügyfélpéldányt, és keresse meg az eredményeket:
 ```
 const EntitySearchAPIClient = require('azure-cognitiveservices-entitysearch');
 
@@ -47,9 +47,9 @@ entitySearchApiClient.entitiesOperations.search('seahawks').then((result) => {
 });
 
 ```
-A kód kinyomtatja `result.value` elemek elemzése szöveg nélkül a konzolon.  Az eredményeket, ha vannak ilyenek, kategóriánként tartalmazza:
-- í_rja be: "Is"
-- í_rja be: "ImageObject"
+A kód `result.value` elemeket ír ki a konzolra a szöveg elemzése nélkül.  Az eredmények, ha vannak, kategóriánként a következőket tartalmazzák:
+- _type: 'Thing'
+- _type: 'ImageObject'
 
 <!-- Removing until we can replace with a sanitized version.
 ![Entity results](media/entity-search-sdk-node-quickstart-results.png)
@@ -57,4 +57,4 @@ A kód kinyomtatja `result.value` elemek elemzése szöveg nélkül a konzolon. 
 
 ## <a name="next-steps"></a>További lépések
 
-[Kognitív szolgáltatások Node.js SDK-minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+[Cognitive Services Node.js SDK-minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)

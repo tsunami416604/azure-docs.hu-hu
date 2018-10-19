@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 7e4889148a752b552f8bd65702ea5dda450ded31
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 81eacf464c90d56c4ebeae1d1cefbd6f2f0fdab8
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044297"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408540"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Számítógépcsoportok a Log Analytics naplóbeli kereséseivel
 
@@ -62,7 +62,7 @@ Az alábbi eljárás segítségével számítógépcsoport létrehozása egy Nap
 
 
 ### <a name="active-directory"></a>Active Directory
-Log Analytics az Active Directory-csoporttagságok importálása konfigurálásakor elemzi az a csoport tagságát, és az OMS-ügynök minden olyan tartományhoz csatlakoztatott számítógépeket.  Számítógép csoport jön létre a Log Analytics minden egyes biztonsági csoport az Active Directoryban, és mindegyik számítógépet adnak a számítógépcsoportok, a biztonsági csoportok tagjai megfelelő.  A csoporttagság 4 óránként folyamatosan frissítjük.  
+Konfigurálja a Log Analyticsben, hogy az Active Directory-csoporttagságok importálása, elemzi a Log Analytics-ügynökkel rendelkező bármely tartományhoz csatlakoztatott számítógépek csoport tagsága.  Számítógép csoport jön létre a Log Analytics minden egyes biztonsági csoport az Active Directoryban, és mindegyik számítógépet adnak a számítógépcsoportok, a biztonsági csoportok tagjai megfelelő.  A csoporttagság 4 óránként folyamatosan frissítjük.  
 
 A Log Analytics az Active Directory biztonsági csoportok importálása a Log Analytics konfigurálása **speciális beállítások** az Azure Portalon.  Válassza ki **számítógépcsoportok**, **Active Directory**, majd **importálás az Active Directory-csoporttagságok számítógépekről**.  Nincs szükség további konfigurációra.
 
@@ -71,7 +71,7 @@ A Log Analytics az Active Directory biztonsági csoportok importálása a Log An
 Ha csoportok lettek importálva, a menü mutatja az a csoport tagjai észlelt számítógépek számát és a csoport importálva számát.  Kattintson a visszaadandó alábbi hivatkozások egyikét a **ComputerGroup** ezeket az adatokat rögzíti.
 
 ### <a name="windows-server-update-service"></a>Windows Server Update Service
-Log Analyticsben, hogy a WSUS-csoporttagságok importálása konfigurálásakor elemzi az OMS-ügynökkel rendelkező számítógépek célcsoport-kezelési csoport tagsága.  Ügyféloldali használatakor célozza, minden olyan számítógép, amely a Log Analyticshez csatlakoztatva van, és minden olyan WSUS része csoportokat célzó rendelkezik csoporttagságát. a Log Analytics szolgáltatásba importált. Kiszolgálóoldali használatakor céloz meg, az OMS ügynököt kell telepíteni ahhoz, hogy a csoporttagsági információkat lehet importálni a Log Analytics WSUS-kiszolgálón.  A csoporttagság 4 óránként folyamatosan frissítjük. 
+Konfigurálja a Log Analyticsben, hogy a WSUS-csoporttagságok importálása, megvizsgálja a célcsoport-kezelési csoport tagságát, minden olyan, Log Analytics-ügynökkel rendelkező számítógépek.  Ügyféloldali használatakor célozza, minden olyan számítógép, amely a Log Analyticshez csatlakoztatva van, és minden olyan WSUS része csoportokat célzó rendelkezik csoporttagságát. a Log Analytics szolgáltatásba importált. Kiszolgálóoldali használatakor céloz meg, a Log Analytics ügynököt kell telepíteni ahhoz, hogy a csoporttagsági információkat lehet importálni a Log Analytics WSUS-kiszolgálón.  A csoporttagság 4 óránként folyamatosan frissítjük. 
 
 Konfigurálja a WSUS-csoportok importálása a Log Analytics a Log Analytics **speciális beállítások** az Azure Portalon.  Válassza ki **számítógépcsoportok**, **WSUS**, majd **importálási WSUS-csoporttagságok**.  Nincs szükség további konfigurációra.
 

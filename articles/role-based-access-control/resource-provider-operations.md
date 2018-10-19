@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/27/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d9cf46a1fd28985d9ca98d173bbef17380b7de21
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: f3f5b656b4c90c3b39fc317160eea7ce8fea25ff
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354393"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409730"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Az Azure Resource Manager erőforrás-szolgáltatói műveletek
 
@@ -3938,16 +3938,16 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelettípus | Művelet | Leírás |
 > | --- | --- | --- |
-> | Műveletek | Microsoft.OperationsManagement/managementAssociations/delete | Meglévő felügyeleti társítás törlése |
-> | Műveletek | Microsoft.OperationsManagement/managementAssociations/read | Meglévő felügyeleti társítás beolvasása |
-> | Műveletek | Microsoft.OperationsManagement/managementAssociations/write | Új felügyeleti társítás létrehozása |
-> | Műveletek | Microsoft.OperationsManagement/managementConfigurations/delete | Meglévő felügyeleti konfiguráció törlése |
-> | Műveletek | Microsoft.OperationsManagement/managementConfigurations/read | Meglévő felügyeleti konfiguráció beolvasása |
-> | Műveletek | Microsoft.OperationsManagement/managementConfigurations/write | Hozzon létre egy új felügyeleti konfiguráció |
+> | Műveletek | Microsoft.OperationsManagement/managementAssociations/delete | Meglévő felügyeleti társítás törlése. |
+> | Műveletek | Microsoft.OperationsManagement/managementAssociations/read | Meglévő felügyeleti társítás beolvasása. |
+> | Műveletek | Microsoft.OperationsManagement/managementAssociations/write | Hozzon létre egy új felügyeleti társítás. |
+> | Műveletek | Microsoft.OperationsManagement/managementConfigurations/delete | Meglévő felügyeleti konfiguráció törlése. |
+> | Műveletek | Microsoft.OperationsManagement/managementConfigurations/read | Meglévő felügyeleti konfiguráció beolvasása. |
+> | Műveletek | Microsoft.OperationsManagement/managementConfigurations/write | Hozzon létre egy új felügyeleti konfiguráció. |
 > | Műveletek | Microsoft.OperationsManagement/register/action | Előfizetés regisztrálása az erőforrás-szolgáltató. |
-> | Műveletek | Microsoft.OperationsManagement/solutions/delete | Meglévő OMS-megoldás törlése |
-> | Műveletek | Microsoft.OperationsManagement/solutions/read | Meglévő OMS-megoldás beolvasása |
-> | Műveletek | Microsoft.OperationsManagement/solutions/write | Új OMS-megoldás létrehozása |
+> | Műveletek | Microsoft.OperationsManagement/solutions/delete | Törölje a meglévő figyelési megoldást. |
+> | Műveletek | Microsoft.OperationsManagement/solutions/read | Első figyelési megoldás kilép. |
+> | Műveletek | Microsoft.OperationsManagement/solutions/write | Hozzon létre új figyelési megoldást. |
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 

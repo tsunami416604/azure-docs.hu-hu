@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 09/27/2018
 ms.author: cephalin;msangapu
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 05dd53fdfda5446cf848a7b8503a09bc5e5c2d20
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 347fc291fc7357481bfdc88c9019c3d688925c2f
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433463"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067517"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Node.js-webalkalmazás létrehozása az Azure-ban
 
@@ -46,10 +46,15 @@ A gyorsútmutató elvégzéséhez:
 
 Töltse le a Node.js mintaprojektet a [https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip](https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip) címről, és bontsa ki a ZIP-archívumot.
 
-Egy terminálablakban keresse meg a minta Node.js-projekt gyökérkönyvtárát (ez tartalmazza az _index.js_ fájlt).
+Nyissa meg az _index.js_ fájlt, és keresse meg a következő sort:
 
-> [!NOTE]
-> Nem kötelező a mintaalkalmazásunkat használnia; igény szerint saját Node-kódot is használhat. Ne feledje azonban, hogy az alkalmazáshoz tartozó PORT beállítását az Azure futtatókörnyezete végzi el, és a következőként lesz elérhető: `process.env.PORT`. Ha az Express verziót használja, végezzen ellenőrzést (`app.listen`) itt: `process.env.PORT || 3000`. Ha ezt nem teszi meg, és a port nem felel meg az Azure futtatókörnyezetében beállított értékeknek, `Service Unavailable` üzenet jelenik meg. 
+```javascript
+var port = process.env.PORT || 1337;
+```
+
+Az App Service a process.env.PORT változót beilleszti az alkalmazásba, így a kód a változó segítségével tudni fogja, hogy melyik portot kell figyelni. 
+
+Egy terminálablakban keresse meg a minta Node.js-projekt gyökérkönyvtárát (ez tartalmazza az _index.js_ fájlt).
 
 ## <a name="run-the-app-locally"></a>Az alkalmazás futtatása helyben
 
@@ -68,7 +73,7 @@ Az oldalon látható mintaalkalmazáson ekkor a **Hello World** üzenetnek kell 
 A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a webkiszolgálóból történő kilépéshez.
 
 > [!NOTE]
-> Az Azure App Service-ben az alkalmazás IIS-ben, [iisnode](https://github.com/tjanczuk/iisnode) használatával fut. Az alkalmazás iisnode-dal való futtatásának engedélyezéséhez az alkalmazás gyökérmappája tartalmaz egy web.config fájlt. A fájl IIS-sel olvasható és az iisnode-hoz kapcsolódó beállítások [az iisnode GitHub-adattárban](https://github.com/tjanczuk/iisnode/blob/master/src/samples/configuration/web.config) vannak dokumentálva.
+> Az Azure App Service-ben az alkalmazás IIS-ben, [iisnode](https://github.com/Azure/iisnode) használatával fut. Az alkalmazás iisnode-dal való futtatásának engedélyezéséhez az alkalmazás gyökérmappája tartalmaz egy web.config fájlt. A fájl IIS-sel olvasható és az iisnode-hoz kapcsolódó beállítások [az iisnode GitHub-adattárban](https://github.com/Azure/iisnode/blob/master/src/samples/configuration/web.config) vannak dokumentálva.
 
 [!INCLUDE [Create ZIP file](../../includes/app-service-web-create-zip.md)]
 

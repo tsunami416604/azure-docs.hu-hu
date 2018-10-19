@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/19/2018
 ms.author: tamram
-ms.openlocfilehash: d599b54fe828b88edd3d04d6cd66a4baf36c2c1a
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 1962a3237fb54409d17fefa314605bafa91c3e9c
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831551"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427637"
 ---
 # <a name="overview-of-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Az Azure Files (előzetes verzió) SMB-n keresztül az Azure Active Directory-hitelesítés áttekintése
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -58,7 +58,7 @@ Amikor a rendszer identitást társít egy virtuális gépen futó alkalmazások
 ![Képernyőkép ábrázoló diagram SMB-n keresztül az Azure AD-hitelesítés](media/storage-files-active-directory-overview/azure-active-directory-over-smb-for-files-overview.png)
 
 ### <a name="enable-azure-ad-authentication-over-smb"></a>Az SMB-n keresztüli Azure AD-hitelesítés engedélyezése
-Az Azure AD-hitelesítés 2018. augusztus 29. után létrehozott új és meglévő tárfiókok az Azure Files SMB-n keresztül engedélyezhető. 
+Az Azure AD-hitelesítés 2018. szeptember 24. után létrehozott új és meglévő tárfiókok az Azure Files SMB-n keresztül engedélyezhető. 
 
 Az Azure AD-hitelesítés engedélyezése az SMB-n keresztül, előtt győződjön meg arról, hogy az Azure AD tartományi szolgáltatások az elsődleges lett-e telepítve. az Azure AD-bérlő, amelyhez társítva a tárfiók. Ha még nem állította be az Azure AD tartományi szolgáltatások, az útmutatót lépésről lépésre követve megadott [engedélyezése az Active Directory Domain Servicest az Azure portal használatával](../../active-directory-domain-services/active-directory-ds-getting-started.md).
 
@@ -92,4 +92,4 @@ További információ az Azure Files és az Azure AD hitelesítési SMB-n keresz
 
 - [Bevezetés az Azure Files használatába](storage-files-introduction.md)
 - [Az Azure Active Directory-hitelesítés engedélyezése az SMB-n keresztül az Azure Files (előzetes verzió)](storage-files-active-directory-enable.md)
-- [GYIK](storage-files-faq.md)
+- [Gyakori kérdések](storage-files-faq.md)

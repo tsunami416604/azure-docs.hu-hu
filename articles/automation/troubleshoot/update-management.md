@@ -4,20 +4,20 @@ description: Ismerje meg, az Update Management hibáinak elhárítása
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/08/2018
+ms.date: 10/17/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 2e47320d5ad88edfa8ea6122f3a0abd104230974
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 41883fd677d276f8f26721fdccc3ded020c3278b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42055099"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405227"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Az Update Management kapcsolatos hibák elhárítása
 
-Ez a cikk ismerteti a megoldások az Update Management használatakor esetleg előforduló problémák megoldásához.
+Ez a cikk ismerteti a megoldásokat, amelyek találkozhat az Update Management használatakor problémák megoldásához.
 
 ## <a name="general"></a>Általános kérdések
 
@@ -36,7 +36,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 Ez a hiba oka lehet a következő okok miatt:
 
 1. Térjen vissza az Automation-fiók kommunikációja blokkolva van folyamatban.
-2. A virtuális gép, folyamatban van előkészítve előfordulhat, hogy honnan származnak a klónozott gép, amely nem a Microsoft Monitoring Agent telepítése a Sysprep használatával létrehozott.
+2. A virtuális gép típusától függenek előfordulhat, hogy a klónozott gép, amelynek nem a Microsoft Monitoring Agent telepítése a Sysprep használatával előkészített kell származnia.
 
 #### <a name="resolution"></a>Megoldás:
 
@@ -87,7 +87,7 @@ The certificate presented by the service <wsid>.oms.opinsights.azure.com was not
 
 #### <a name="cause"></a>Ok
 
-A proxy, átjáró- vagy tűzfal blokkolja a hálózati kommunikációt lehet.
+Egy proxy, átjáró vagy egy tűzfal blokkolja a hálózati kommunikációt lehet.
 
 #### <a name="resolution"></a>Megoldás:
 
@@ -110,6 +110,28 @@ A hibrid Runbook-feldolgozó nem tudta önaláírt tanúsítvány létrehozása
 #### <a name="resolution"></a>Megoldás:
 
 Ellenőrizze a rendszer fiók olvasási hozzáféréssel rendelkezik mappába **C:\ProgramData\Microsoft\Crypto\RSA** , és próbálkozzon újra.
+
+### <a name="hresult"></a>Forgatókönyv: Gép nincs értékelve, és bemutatja a kivétel HResult mutatja
+
+#### <a name="issue"></a>Probléma
+
+Olyan gépeket azt mutatják be, mint **nincs értékelve** alatt **megfelelőségi**, és a egy alatta kivétel üzenet jelenik meg.
+
+#### <a name="cause"></a>Ok
+
+Windows update nincs megfelelően konfigurálva a gépen.
+
+#### <a name="resolution"></a>Megoldás:
+
+Kattintson duplán a kivételt a kivétel teljes üzenet jelenik meg a vörös színnel jelenik meg. Tekintse át a következő táblázat a lehetséges megoldások vagy műveleteket tartalmazza:
+
+|Kivétel  |Megoldás vagy művelet  |
+|---------|---------|
+|`Exception from HRESULT: 0x……C`     | Keresse meg a megfelelő hibakód [Windows update kód Hibalista](https://support.microsoft.com/help/938205/windows-update-error-code-list) megtalálja a további részleteket a kivétel okát.        |
+|`0x8024402C` vagy `0x8024401C`     | Ezek a hibák a hálózati problémák léptek fel. Győződjön meg arról, hogy a gépe képes-e a megfelelő hálózati kapcsolattal a frissítéskezelés. A szakaszban [hálózattervezés](../automation-update-management.md#ports) portokat és a szükséges címek listája.        |
+|`0x8024402C`     | Ha egy WSUS-kiszolgálót használ, ellenőrizze, hogy a beállításkulcs-értékeket `WUServer` és `WUStatusServer` a beállításkulcs alatt `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` megfelelő a WSUS-kiszolgálót.        |
+|`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Győződjön meg arról, hogy a Windows Update szolgáltatás (wuauserv) fut-e, és nincs letiltva.        |
+|Bármely egyéb általános kivétel     | Keresés a lehetséges megoldásokat az interneten működnek és a helyi IT-támogatással.         |
 
 ## <a name="linux"></a>Linux
 

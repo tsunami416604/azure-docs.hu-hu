@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: 689730edcc98a23c82373ae8d36c3b831b33c076
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: a9f5f22cbd6e7cb39e1abb2ef712ffcfc27f55a4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627440"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406143"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>A Cloud Foundry Azure-ral való integrálása
 
@@ -70,9 +70,9 @@ Az Azure service broker alkalmazás elérése az Azure-szolgáltatások egysége
 
 ## <a name="6-metrics-and-logging"></a>6. Metrikák és naplózás
 Az Azure Log Analytics Nozzle egy Cloud Foundry összetevő, amely továbbítja a metrikák a [Cloud Foundry loggregator "firehose"](https://docs.cloudfoundry.org/loggregator/architecture.html) való [Azure Log Analytics](https://azure.microsoft.com/services/log-analytics/). A Nozzle a collect, megtekintheti, és a CF-hez rendszer állapotának és teljesítményének metrikát elemezhet, több üzemelő alkalmazáspéldányok között.
-Kattintson a [Itt](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle) való üzembe helyezése az Azure Log Analytics Nozzle a nyílt forráskódú és a Pivotal Cloud Foundry-környezetben is, és majd elérni az adatokat az Azure Log Analytics OMS-konzolon. 
+Kattintson a [Itt](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle) való üzembe helyezése az Azure Log Analytics Nozzle a nyílt forráskódú és a Pivotal Cloud Foundry-környezetben is, és majd elérni az adatokat az Azure Log Analytics-konzolról. 
 > [!NOTE]
-> A PCF 2.0-s BOSH mérőszámok a virtuális gépek alapértelmezés szerint a Loggregator "firehose" továbbítja, és integrálva vannak az Azure Log Analytics OMS-konzolon.
+> A PCF 2.0-s BOSH mérőszámok a virtuális gépek alapértelmezés szerint a Loggregator "firehose" továbbítja, és integrálva vannak az Azure Log Analytics-konzolon.
 
 ## <a name="7-cost-saving"></a>7. Költségmegtakarítás
 ### <a name="cost-saving-for-devtest-environments"></a>Költségmegtakarítás a fejlesztési és tesztelési környezetek

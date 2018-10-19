@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jasonh
-ms.openlocfilehash: 9550468e8bc9b93216fd4c1ecf144415badfc7dc
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 18ee51e54c1e44ba3affd6ca49bed5360211fa9c
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43103657"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408172"
 ---
 # <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>A HDInsight-fürtök figyelése az Azure Log Analytics lekérdezési
 
@@ -32,7 +32,7 @@ Ismerje meg, néhány alapvető forgatókönyv az Azure HDInsight-fürtök figye
 
 Ismerje meg, hogyan keresse meg a HDInsight-fürthöz adott mérőszámok.
 
-1. Nyissa meg az OMS-munkaterületet, amely kapcsolódik a HDInsight-fürtön az Azure Portalról.
+1. Nyissa meg a Log Analytics-munkaterületet, amely kapcsolódik a HDInsight-fürtön az Azure Portalról.
 2. Válassza ki a **naplóbeli keresés** csempére.
 3. Írja be a következő lekérdezést a keresőmezőbe keresése az összes HDInsight-fürt úgy konfigurálva, hogy az Azure Log Analytics használatához, és válassza ki az összes rendelkezésre álló metrikák az összes metrikát **futtatása**.
 
@@ -65,7 +65,7 @@ Ismerje meg, hogyan keresse meg a HDInsight-fürthöz adott mérőszámok.
 
 Ismerje meg, hogyan keresse meg a hibaüzeneteket egy adott időszakban. A lépések Itt a csupán egy példa, hogyan lehet érkezik, a következő hibaüzenet jelenik meg az érdekelt is. Keresse meg a kívánt található hibák számára elérhető tulajdonságokat is használhatja.
 
-1. Nyissa meg az OMS-munkaterületet, amely kapcsolódik a HDInsight-fürtön az Azure Portalról.
+1. Nyissa meg a Log Analytics-munkaterületet, amely kapcsolódik a HDInsight-fürtön az Azure Portalról.
 2. Válassza ki a **naplóbeli keresés** csempére.
 3. Írja be a következő lekérdezés az összes HDInsight-fürt Azure Log Analytics használatára konfigurált összes hibaüzenetek kereséséhez, és válassza ki **futtatása**. 
 
@@ -117,7 +117,7 @@ Szerkesztéséhez, vagy egy meglévő riasztás törléséhez:
 3. Válassza ki a kívánt riasztásra, szerkesztéséhez vagy törléséhez.
 4. Az alábbi lehetőségek állnak rendelkezésére: **mentése**, **elveti**, **letiltása**, és **törlése**.
 
-    ![HDInsight Log Analytics OMS – törlés szerkesztése](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
+    ![HDInsight a Log Analytics – törlés szerkesztése](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 
 További információkért lásd: [használata a Log Analytics riasztási szabályai](../log-analytics/log-analytics-alerts-creating.md).
 

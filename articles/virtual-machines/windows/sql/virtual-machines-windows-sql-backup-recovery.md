@@ -15,16 +15,16 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: d46c55f809d24529ea5deeb4d84de44dae876a4b
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: e0a47da168ae9371979290b3febc9d767e8755d7
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968986"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428011"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Biztonsági mentés és visszaállítás Azure-beli SQL Server-alapú virtuális gépeken
 
-Ez a cikk útmutatást nyújt a biztonsági mentési és visszaállítási lehetőségekről az SQL Server a Windows Azure Virtual Machines szolgáltatásban futó. Az Azure tárolás három másolatot tart fenn minden Azure Virtuálisgép-lemez az adatvesztést vagy fizikai adatsérülés elleni védelmének biztosításához. Ebből kifolyólag ellentétben a helyszínen, nem kell összpontosíthat a hardveres hibák esetén. Azonban az SQL Server adatbázisok alkalmazás- vagy hibák, például az adatok véletlen beszúrások és a törlések ellen védelmet biztosító továbbra is biztonsági. Ebben az esetben fontos tudni adott időpontra való visszaállítása.
+Ez a cikk útmutatást nyújt a biztonsági mentési és visszaállítási lehetőségekről az SQL Server az Azure-beli Windows virtuális gépen futó. Az Azure tárolás három másolatot tart fenn minden Azure Virtuálisgép-lemez az adatvesztést vagy fizikai adatsérülés elleni védelmének biztosításához. Ebből kifolyólag ellentétben a helyszínen, nem kell összpontosíthat a hardveres hibák esetén. Azonban az SQL Server adatbázisok alkalmazás- vagy hibák, például az adatok véletlen beszúrások és a törlések ellen védelmet biztosító továbbra is biztonsági. Ebben az esetben fontos tudni adott időpontra való visszaállítása.
 
 Ez a cikk első részében a rendelkezésre álló biztonsági mentési és visszaállítási lehetőségek áttekintést nyújt. A szakaszok további információval szolgálnak az egyes stratégiák követ.
 
@@ -42,7 +42,7 @@ A következő szakaszok ismertetik az egyes lehetőségek részletesebben. Ez a 
 
 ## <a id="autoamted"></a> Automatikus biztonsági mentés
 
-Automatikus biztonsági mentés a Windows Azure virtuális Gépen futó SQL Server Standard és Enterprise kiadások egy automatikus biztonsági mentési szolgáltatást biztosít. Ez a szolgáltatás által biztosított a [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md), amely automatikusan települ az SQL Server Windows virtuálisgép-lemezképek az Azure Portalon.
+Automatikus biztonsági mentés egy Azure-beli Windows virtuális gépen futó SQL Server Standard és Enterprise kiadások automatikus biztonsági mentési szolgáltatást biztosít. Ez a szolgáltatás által biztosított a [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md), amely automatikusan települ az SQL Server Windows virtuálisgép-lemezképek az Azure Portalon.
 
 Minden adatbázis biztonsági mentése konfigurálása az Azure storage-fiókhoz. Biztonsági másolatok is titkosítva, és akár 30 napig őrizzük meg.
 
@@ -144,7 +144,7 @@ A következő táblázat összefoglalja a funkciókat az egyes biztonsági ment�
 | Csatlakoztatott lemezek a virtuális gépen történő biztonsági mentés |   |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | Központi testre szabható biztonsági másolati jelentések |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Konszolidált e-mailes riasztásokhoz hibák |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| Monitorozás az OMS alapján testreszabása |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| Monitorozás a Log Analyticsre épül testreszabása |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Az ssms-t vagy a Transact-SQL-parancsfájlok biztonsági mentési feladatok figyelése | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | Az ssms-t vagy a Transact-SQL szkriptek adatbázisok visszaállítása | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 

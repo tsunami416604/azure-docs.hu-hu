@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 4157b812fbb17b524a21814f41e0e4ec43e39e70
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 7c6d91da0634e7f847af01d1c057607ab095cdf6
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042087"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408208"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights-összekötő felügyeleti megoldás (előzetes verzió)
 
@@ -58,8 +58,8 @@ Ellentétben a legtöbb más Log Analytics-megoldások adatok nem lesznek gyűjt
 ## <a name="configuration"></a>Konfiguráció
 
 1. Engedélyezze az Azure Web Apps Analytics megoldás a a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview) vagy leírt folyamatot követve [adja hozzá a Log Analytics solutions kövesse a megoldástárban](log-analytics-add-solutions.md).
-2. Az OMS-portálon kattintson a **beállítások** &gt; **adatok** &gt; **Application Insights**.
-3. A **válasszon ki egy előfizetést**, válasszon ki egy előfizetést, amely rendelkezik az Application Insights-erőforrást, majd a **alkalmazásnév**, válassza ki egy vagy több alkalmazás.
+2. Keresse fel az [Azure Portalt](https://portal.azure.com). Válassza ki **minden szolgáltatás** Application Insights megnyitásához. Ezután keresse meg az Application Insights. 
+3. A **előfizetések**, válasszon ki egy előfizetést, amely rendelkezik az Application Insights-erőforrást, majd a **neve**, válassza ki egy vagy több alkalmazás.
 4. Kattintson a **Save** (Mentés) gombra.
 
 Körülbelül 30 percet, az adatok elérhetővé válnak, és az Application Insights csempe frissül, az adatok, például a következő képen:
@@ -133,7 +133,7 @@ Perspektíva összetevők frissülnek, attól függően, a keresési lekérdezé
 
 ### <a name="pivot-to-an-app-in-the-azure-portal"></a>Kimutatás az alkalmazás az Azure Portalon
 
-Application Insights-összekötő panelek úgy tervezték, hogy lehetővé teszi a kiválasztott Application Insights alkalmazáshoz forgáspont *használatakor az OMS-portálon*. A megoldás magas szintű felügyeleti platform, amely segít egy alkalmazás hibaelhárításával foglalkozó szakaszt is használhatja. Amikor megjelenik a csatlakoztatott alkalmazások valamelyikében egy potenciális problémát, vagy részletes elemzéseket készíthet, a Log Analytics-keresést is, vagy Ön is kimutatás, közvetlenül az Application Insights alkalmazást az.
+Application Insights-összekötő panelek úgy tervezték, hogy lehetővé teszi a kiválasztott Application Insights alkalmazáshoz forgáspont *használhatja az Azure Portalon*. A megoldás magas szintű felügyeleti platform, amely segít egy alkalmazás hibaelhárításával foglalkozó szakaszt is használhatja. Amikor megjelenik a csatlakoztatott alkalmazások valamelyikében egy potenciális problémát, vagy részletes elemzéseket készíthet, a Log Analytics-keresést is, vagy Ön is kimutatás, közvetlenül az Application Insights alkalmazást az.
 
 Forgáspont, kattintson a három pontra (**...** ), amely akkor jelenik meg az egyes sorok végén található, és válassza ki **nyissa meg az Application Insights**.
 

@@ -1,6 +1,6 @@
 ---
 title: Wire Data megoldás a Log Analyticsben | Microsoft Docs
-description: Az átviteli adatok összevont hálózati és teljesítményadatok olyan számítógépekről, amelyeken található valamilyen OMS-ügynök, például Operations Manager- vagy Windows-hoz csatlakoztatott ügynökök. A hálózati adatok és a naplóadatok összevonása segít az adatok összevetésében.
+description: Átviteli adatok az összevont hálózati és a teljesítmény adatok Log Analytics-ügynökök számítógépeken. A hálózati adatok és a naplóadatok összevonása segít az adatok összevetésében.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,20 +15,20 @@ ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 9ee388e8d33d293240e70ccf79ec8d3c445dffd1
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 61ceea60962acc2e1ec032df49683e8a28381dd7
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269157"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405361"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Wire Data 2.0 (előzetes verzió) megoldás a Log Analyticsben
 
 ![Wire Data-szimbólum](./media/log-analytics-wire-data/wire-data2-symbol.png)
 
-Az átviteli adatok összevont hálózati és teljesítményadatok, amelyeket az OMS-ügynök gyűjt össze a Windows-hoz és Linux-hoz csatlakoztatott számítógépekről, beleértve a környezetben az Operations Manager által monitorozott ügynököket. A hálózati adatok és az egyéb naplóadatok összevonása segít az adatok összevetésében.
+Átviteli adatok összevont hálózati és a teljesítmény származó adatokat a Log Analytics-ügynököket, beleértve a környezetében az Operations Manager által figyelt csatlakozó Windows és Linux rendszerű csatlakoztatott számítógépek. A hálózati adatok és az egyéb naplóadatok összevonása segít az adatok összevetésében.
 
-Az OMS-ügynök mellett a Wire Data megoldás Microsoft függőségi ügynököket is használ, amelyeket az informatikai infrastruktúra számítógépeire telepíthet. A függőségi ügynökök monitorozzák a számítógépek által fogadott és küldött adatokat az [OSI-modell](https://en.wikipedia.org/wiki/OSI_model) szerinti 2. és 3. szintű hálózatokon, beleértve a különböző alkalmazott protokollokat és portokat. Az adatok ezután ügynökök használatával lesznek továbbítva a Log Analyticsbe.  
+Mellett a Log Analytics-ügynököket a Wire Data megoldást használja a Microsoft függőségi ügynökök telepítése a számítógépeken az informatikai infrastruktúra. A függőségi ügynökök monitorozzák a számítógépek által fogadott és küldött adatokat az [OSI-modell](https://en.wikipedia.org/wiki/OSI_model) szerinti 2. és 3. szintű hálózatokon, beleértve a különböző alkalmazott protokollokat és portokat. Az adatok ezután ügynökök használatával lesznek továbbítva a Log Analyticsbe.  
 
 >[!NOTE]
 >Ha a Service Map már üzembe helyezte, vagy a Service Map használatát fontolgatja, vagy [-beli virtuális gépek az Azure Monitor](../monitoring/monitoring-vminsights-overview.md), van egy új kapcsolat metrikák adatkészlet összegyűjtése és a Log Analytics, amely hasonló információt szolgáltat az átviteli adatok tárolása.
@@ -65,20 +65,20 @@ A Wire Data a Microsoft függőségi ügynöktől kapja az adatokat. A függős�
 | System Center Operations Manage felügyeleti csoport | Igen | A Wire Data adatokat elemez és gyűjt az olyan Windows- és Linux-ügynököktől, amelyek egy csatlakoztatott [System Center Operations Manager felügyeleti csoporthoz](log-analytics-om-agents.md) tartoznak. <br><br> Ehhez közvetlen kapcsolat szükséges a System Center Operations Manager-ügynökszámítógép és a Log Analytics között. |
 | Azure Storage-fiók | Nem | A Wire Data ügynökszámítógépekről gyűjt adatokat, így az Azure Storage-ből nem tud adatokat gyűjteni. |
 
-Windows rendszeren a System Center Operations Manager és a Log Analytics egyaránt a Microsoft Monitoring Agent (MMA) segítségével gyűjti össze és továbbítja az adatokat. A környezettől függően az ügynököt a System Center Operations Manager ügynök, az OMS-ügynök, Log Analytics-ügynököket, az MMA vagy közvetlen ügynök nevezzük. A System Center Operations Manager és Log Analytics által biztosított MMA-verziók kis mértékben különböznek. Ezek a verziók jelenthetnek a Log Analyticsnek, a System Center Operations Managernek vagy mindkettőnek.
+Windows rendszeren a System Center Operations Manager és a Log Analytics egyaránt a Microsoft Monitoring Agent (MMA) segítségével gyűjti össze és továbbítja az adatokat. A környezettől függően az ügynököt a System Center Operations Manager ügynök, a Log Analytics-ügynököket, az MMA vagy a közvetlen ügynök nevezzük. A System Center Operations Manager és Log Analytics által biztosított MMA-verziók kis mértékben különböznek. Ezek a verziók jelenthetnek a Log Analyticsnek, a System Center Operations Managernek vagy mindkettőnek.
 
 A Linuxhoz készült Log Analytics-ügynök Linux rendszeren gyűjt, és adatokat küld a Log Analytics. Átviteli adatok közvetlenül csatlakozik a Log Analytics-ügynökökkel kiszolgálókon, vagy olyan kiszolgálókra, amelyek a System Center Operations Manager felügyeleti csoportok keresztül csatlakozik, a Log Analytics használható.
 
-Maga a függőségi ügynök nem közvetít adatokat, ezért nem igényli a tűzfalak vagy portok semmilyen módosítását. Az átviteli adatok mindig továbbított adatok által a Log Analytics-ügynököket a Log Analyticsbe, vagy közvetlenül az OMS Gatewayen keresztül.
+Maga a függőségi ügynök nem közvetít adatokat, ezért nem igényli a tűzfalak vagy portok semmilyen módosítását. Az átviteli adatok mindig továbbított adatok által a Log Analytics-ügynököket a Log Analyticsbe, vagy közvetlenül a Log Analytics-átjárón.
 
 ![ügynök diagram](./media/log-analytics-wire-data/agents.png)
 
 Ha a System Center Operations Managert használja és a felügyeleti csoportja csatlakoztatva van a Log Analyticshez:
 
 - Nincs szükség további konfigurációra, ha a System Center Operations Manager hozzáfér az internethez, hogy csatlakozni tudjon a Log Analyticshez.
-- Az OMS-átjárót akkor kell konfigurálni a System Center Operations Managerhez, ha a System Center Operations Manager-ügynökök az interneten keresztül nem érik el a Log Analyticset.
+- A Log Analytics-átjáró használata a System Center Operations Manager, ha a System Center Operations Manager-ügynökök az interneten keresztül nem tud hozzáférni a Log Analytics konfigurálása kell.
 
-Ha a Windows vagy Linux rendszerű számítógépek közvetlenül nem lehet csatlakozni a szolgáltatáshoz, a Log Analytics-ügynök csatlakoztatása a Log Analytics használatával az OMS-átjáró konfigurálása szeretné. Az OMS-átjárót letöltheti a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=52666).
+Ha a Windows vagy Linux rendszerű számítógépek közvetlenül nem tud csatlakozni a szolgáltatáshoz, konfigurálása a Log Analytics-ügynököket a Log Analytics használata a Log Analytics-átjáró csatlakozni szeretne. A Log Analytics átjáróhoz letöltheti a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -211,7 +211,7 @@ A függőségi ügynök a Windows rendszerű számítógépekre az InstallDepend
 
 A függőségi ügynököt az alábbi lépésekkel telepítheti minden Windows rendszerű számítógépre:
 
-1. Telepítse az OMS-ügynököt az [Adatok gyűjtése saját környezetben futtatott windowsos számítógépről](log-analytics-windows-agent.md) című részben ismertetett lépésekkel.
+1. A Log Analytics-ügynököket leírt lépések végrehajtásával telepítse [adatok gyűjtése saját környezetben futtatott Windows-számítógépekről](log-analytics-windows-agent.md).
 2. Töltse le a Windows függőségi ügynököt az előző szakaszban található hivatkozás használatával, majd futtassa a következő paranccsal: `InstallDependencyAgent-Windows.exe`
 3. Az ügynök telepítéséhez kövesse a varázslót.
 4. Ha a függőségi ügynök nem indul el, tekintse meg a naplókat a hibával kapcsolatos részletes információért. Windows-ügynökök esetén a naplózási könyvtár a következő: %Programfiles%\Microsoft Dependency Agent\logs.
@@ -237,7 +237,7 @@ A függőségi ügynök Linux rendszerű számítógépekre az InstallDependency
 
 A függőségi ügynököt az alábbi lépésekkel telepítheti minden Linux rendszerű számítógépre:
 
-1. Telepítse az OMS-ügynököt az [Adatok gyűjtése saját környezetben futtatott linuxos számítógépről](log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key) című részben ismertetett lépésekkel.
+1. A Log Analytics-ügynököket leírt lépések végrehajtásával telepítse [adatok gyűjtése saját környezetben futtatott Linuxos számítógépekről](log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key).
 2. Töltse le a Linux függőségi ügynököt az előző szakaszban található hivatkozás használatával, majd telepítse gyökérként a következő paranccsal: sh InstallDependencyAgent-Linux64.bin
 3. Ha a függőségi ügynök nem indul el, tekintse meg a naplókat a hibával kapcsolatos részletes információért. A Linux-ügynökökön a naplókönyvtár a következő: /var/opt/microsoft/dependency-agent/log.
 

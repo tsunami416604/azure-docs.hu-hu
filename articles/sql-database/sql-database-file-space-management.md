@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 803bab4f0b91e2612abceedfa09baedaaea2a55e
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: bbcd5de0d6c2b43b220d5010093eccc1c9a76269
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377939"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406294"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Lapozófájl-terület az Azure SQL Database kezelése
 Ez a cikk ismerteti a különböző típusú tárterület az Azure SQL Database és a lépések, amelyeket elvégezhet a fájlhely lefoglalt adatbázisok és rugalmas adatbáziskészletekhez explicit módon kell kezelnie.
@@ -216,7 +216,7 @@ Ezzel a paranccsal kapcsolatos további információkért lásd: [SHRINKDATABASE
 
 ### <a name="auto-shrink"></a>Automatikus – zsugorítás
 
-Azt is megteheti az Automatikus zsugorítás adatbázis esetén is engedélyezhető.  Automatikus zsugorítás csökkenti a felügyelet összetettségét fájlt, és kevesebb hatásos, az adatbázis teljesítményét, mint a SHRINKDATABASE vagy SHRINKFILE.  Automatikus zsugorítás a rugalmas készletek kezelése a számos adatbázis különösen hasznos lehet.  Azonban az Automatikus zsugorítás, kevésbé hatékonyak a címek újraigénylési funkcióját, mint a SHRINKDATABASE és SHRINKFILE területe.
+Azt is megteheti az Automatikus zsugorítás adatbázis esetén is engedélyezhető.  Automatikus zsugorítás csökkenti a felügyelet összetettségét fájlt, és kevesebb hatásos, az adatbázis teljesítményét, mint a SHRINKDATABASE vagy SHRINKFILE.  Automatikus zsugorítás a rugalmas készletek kezelése a számos adatbázis különösen hasznos lehet.  Automatikus zsugorítás azonban kevésbé hatékonyak a címek újraigénylési funkcióját, mint a SHRINKDATABASE és SHRINKFILE területe lehet.
 Automatikus zsugorítás engedélyezéséhez módosítsa az alábbi parancsban az adatbázis nevét.
 
 

@@ -1,5 +1,5 @@
 ---
-title: Az Azure Event Hubs IP-kapcsolat szűrők |} A Microsoft Docs
+title: Az Azure Event Hubs IP-szűrők |} A Microsoft Docs
 description: Használja az IP-szűrés blokk-kapcsolatokat, az adott IP-címek az Azure Event Hubsba.
 services: event-hubs
 documentationcenter: ''
@@ -10,20 +10,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: spelluru
-ms.openlocfilehash: c229a6f84096ecca892b74f7ce65cb831fa50be3
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: d0114821b5239146f64dde0b01652dc320994585
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886177"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408149"
 ---
 # <a name="use-ip-filters"></a>IP-szűrők használata
 
-Forgatókönyvek, amelyben az Azure Event Hubs csak érhető el az egyes jól ismert helyről a *IP-szűrő* funkciója lehetővé teszi visszautasítja, vagy a forgalom származik az adott IPv4-címeket fogad szabályok konfigurálása. Például ezek a címek lehet a vállalati hálózati Címfordítás az átjáró.
+Forgatókönyvek, amelyben az Azure Event Hubs elérhetőnek kell lenniük csak bizonyos ismert helyek a *IP-szűrő* funkciója lehetővé teszi visszautasítja, vagy a forgalom származik az adott IPv4-címeket fogad szabályok konfigurálása. Például ezek a címek lehet a vállalati hálózati Címfordítás az átjáró.
 
 ## <a name="when-to-use"></a>A következő esetekben használja
 
-Két fontos eseteinek is hasznos, ha szeretné az egyes IP-címek az alábbiak szerint az Event Hubs-végpontok letiltása:
+Két fontos eseteinek is hasznos, ha szeretné, hogy letiltja az Event Hubs, az egyes IP-címek az alábbiak szerint:
 
 - Az event hubs kell forgalom fogadására csak a megadott IP-címről, és elvetheti a minden mást. Az Event Hubs használata esetén például [Azure Express Route] [ express-route] a helyszíni infrastruktúra magánkapcsolatokat hozhat létre. 
 - Az Event Hubs-rendszergazda által azonosított gyanús, IP-címekről érkező forgalom elutasítása kell.
@@ -47,12 +47,12 @@ Például ha azt szeretné, a tartomány 70.37.104.0/24 címeit fogadja el, és 
 > [!NOTE]
 > IP-címek visszautasítja megakadályozhatja az egyéb Azure-szolgáltatások (például az Azure Stream Analytics, Azure Virtual Machines vagy a portálon a Device Explorer) az Event hubs szolgáltatással való interakcióhoz.
 
-### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Azure Resource Manager-sablonokkal a virtuális hálózati szabály létrehozása
+### <a name="creating-an-ip-filter-rule-with-azure-resource-manager-templates"></a>Az IP-szűrési szabály létrehozása az Azure Resource Manager-sablonok
 
 > [!IMPORTANT]
 > A virtuális hálózatok támogatottak **standard** és **dedikált** az Event hubs szinten. Az alapszintű díjcsomagban nem támogatott. 
 
-A következő Resource Manager-sablon lehetővé teszi, hogy egy virtuális hálózati szabályt ad hozzá egy meglévő Event Hubs-névtér.
+A következő Resource Manager-sablon lehetővé teszi, hogy egy IP-szűrési szabály hozzáadása egy meglévő Event Hubs-névtér.
 
 Sablon paraméterei:
 

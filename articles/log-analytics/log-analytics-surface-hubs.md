@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: b38ce59a80d3fa78449892c8a76ed70b4dc698d3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: f7fe7cee39468558ce503c050d5574e4be15ebf5
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041481"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407165"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>A Log Analyticsben, hogy azok állapotáról, a Surface hubok monitorozása
 
@@ -51,7 +51,7 @@ Intune-nal, a Microsoft-termék, amely lehetővé teszi, hogy központilag kezel
 1. Jelentkezzen be az Intune-hoz.
 2. Navigáljon a **beállítások** > **csatlakoztatott források**.
 3. Hozzon létre, vagy a szabályzatot a Surface Hub-sablon alapján.
-4. Keresse meg a szabályzat OMS (az Azure Operational Insights) szakaszát, és adja hozzá a Log Analytics *munkaterület-Azonosítót* és *Munkaterületkulcsot* a szabályzathoz.
+4. Keresse meg a szabályzat az Azure Operational Insights szakaszát, és adja hozzá a Log Analytics *munkaterület-Azonosítót* és *Munkaterületkulcsot* a szabályzathoz.
 5. A házirend mentéséhez.
 6. A házirendet társítani az eszközök a megfelelő csoporthoz.
 
@@ -66,9 +66,9 @@ Ha a környezet felügyeletéhez az Intune nem használja, manuálisan keresztü
 
 1. Nyissa meg a Surface Hub **beállítások**.
 2. Adja meg az eszköz rendszergazdai hitelesítő adatokat.
-3. Kattintson a **az eszköz**, és a alatt **figyelés**, kattintson a **OMS-beállítások konfigurálása**.
+3. Kattintson a **az eszköz**, és a alatt **figyelés**, kattintson a **Log Analytics beállításainak konfigurálása**.
 4. Válassza ki **engedélyezze a monitorozást**.
-5. Az OMS beállítások párbeszédpanelen pedig írja be a Log Analytics **munkaterület-Azonosítót** , és írja be a **Munkaterületkulcsot**.  
+5. A Log Analytics-beállítások párbeszédpanelen írja be a Log Analytics **munkaterület-Azonosítót** , és írja be a **Munkaterületkulcsot**.  
    ![Beállítások](./media/log-analytics-surface-hubs/settings.png)
 6. Kattintson a **OK** konfigurálásának befejezéséhez.
 

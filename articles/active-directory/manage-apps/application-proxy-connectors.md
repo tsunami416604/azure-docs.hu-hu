@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/28/2018
+ms.date: 10/17/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 23bf9d5fb26ee3a0f224f7a8acc2b0539a5c1607
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: c9c21b9beb891a685d7e264ec55817c0045455bc
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364610"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406277"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Az Azure AD-alkalmazásproxy-összekötők ismertetése
 
@@ -79,7 +79,7 @@ Bár összekötők lesz automatikusan terheléselosztása belül egy összeköt�
 |4|16|320|1150|
 |8|32|270|1190|
 |16|64|245|1200*|
-\* Ezen a számítógépen korábban 800-kapcsolathoz megadott korlátot. Összes gép használtuk az alapértelmezett 200 kapcsolathoz megadott korlátot.
+\* Ez a gép egy egyéni beállítás segítségével emelni néhányat az alapértelmezett kapcsolat korlátai túl az ajánlott beállítások .net. Azt javasoljuk, hogy az alapértelmezett beállításokkal tesztjének futtatása előtt vegye fel a kapcsolatot a bérlőhöz tartozó módosítani ezt a korlátot az ügyfélszolgálathoz.
  
 >[!NOTE]
 >Mekkora a legnagyobb TPS 4, 8 és 16 mag gépek közötti különbség nem szerepel. Azokat a fő különbség a várható késés van.  

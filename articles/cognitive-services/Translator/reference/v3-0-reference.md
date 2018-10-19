@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 9282d8af30cbfb3346394bcd71510faf8d8c8a21
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 243ee16f8de8add8283581c8c03a37594797864b
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129386"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430034"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API 3.0-s verzió
 
@@ -95,8 +95,48 @@ Ha például egy ingyenes próba-előfizetéssel rendelkező ügyfél lenne a k�
 ```
 {
   "error": {
-    "code":403000,
-    "message":"The subscription has exceeded its free quota."
+    "code":403001,
+    "message":"The operation is not allowed because the subscription has exceeded its free quota."
     }
 }
 ```
+A hibakód egy 6 jegyű számot csoportba foglalása 3 számjegyből HTTP-állapotkód további követ és 3-jegyű szám kategorizálása a hibát. Gyakori hibakódok a következők:
+
+| Kód | Leírás |
+|:----|:-----|
+| 400000| A kérelem bemenetek egyike érvénytelen.|
+| 400001| A "hatókör" paraméter érvénytelen.|
+| 400002| A "category" paraméter érvénytelen.|
+| 400003| A nyelvi típusmegadása hiányzik vagy érvénytelen.|
+| 400004| A célként megadott parancsfájl formátumú ("a parancsfájl") nem található vagy érvénytelen.|
+| 400005| Egy bemeneti szöveg nem található vagy érvénytelen.|
+| 400006| A nyelvi és parancsfájl kombinációja érvénytelen, nem.|
+| 400018| Egy adatforrás parancsfájl formátumú ("a parancsfájl") nem található vagy érvénytelen.|
+| 400019| Egyet a megadott nyelv nem támogatott.|
+| 400020| A bemeneti szöveg a tömbben található elemek egyike érvénytelen.|
+| 400021| Az API verzió paramétere hiányzik vagy érvénytelen.|
+| 400023| A megadott nyelvre a pár egyik není platná.|
+| 400035| A Forrásnyelv ("feladó" mező) nem érvényes.|
+| 400036| A célként megadott nyelv ("" mező) nem található vagy érvénytelen.|
+| 400042| A beállítások megadott ("Beállítások" mező) egyike nem érvényes.|
+| 400043| Az ügyfél-nyomkövetési Azonosítót (ClientTraceId mező vagy X-ClientTranceId fejléc) nem található vagy érvénytelen.|
+| 400050| A bemeneti szöveg neve túl hosszú.|
+| 400064| A "fordítási" paramétere hiányzik vagy érvénytelen.|
+| 400070| A célként megadott parancsprogramok (ToScript paraméter) száma nem egyezik meg a cél nyelvek (, paraméterben) száma.|
+| 400071| Az érték érvénytelen TextType.|
+| 400072| A bemeneti szöveg a tömb túl sok elemet tartalmaz.|
+| 400073| A parancsfájl paraméter nem érvényes.|
+| 400074| A kérelem törzse nem érvényes JSON.|
+| 400075| A nyelvi pár és kategória kombináció nem lesz érvényes.|
+| 400077| Kérelem maximális mérete túl lett lépve.|
+| 400079| Az egyéni rendszer közötti fordítás és nyelv közül a kért nem létezik.|
+| 401000| A kérelem nem engedélyezett, mert hitelesítő adatok hiányoznak vagy érvénytelen.|
+| 401015| "A megadott hitelesítő adatok vannak a beszédfelismerő API-hoz. A kérelem hitelesítő adatok szükségesek a szöveges API-hoz. Használja a Translator Text API-előfizetés."|
+| 403000| A művelet nem engedélyezett.|
+| 403001| A művelet nem engedélyezett, mert az előfizetés túllépte az ingyenes kvótát.|
+| 405000| Kérelmi metódus nem támogatott a kért erőforrás.|
+| 415000| A Content-Type fejléc nem található vagy érvénytelen.|
+| 429000, 429001, 429002| A kiszolgáló elutasította a kérelmet, mert az ügyfél túl sok kérelmet küld. Kérelmek szabályozása elkerülése érdekében gyakoriságának csökkentése.|
+| 500 000 összeget| Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse be a dátum/idő hiba, kérjen azonosító X-RequestId: válaszfejléc, és a kérelem fejlécében X-ClientTraceId ügyfél-azonosítója.|
+| 503000| Szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra. Ha a hiba továbbra is fennáll, jelentse be a dátum/idő hiba, kérjen azonosító X-RequestId: válaszfejléc, és a kérelem fejlécében X-ClientTraceId ügyfél-azonosítója.|
+

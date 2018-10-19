@@ -6,16 +6,16 @@ description: >
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 16424c44003be14e3ba04f6b5cce0ce518a0d7e8
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 9210aaf2ddfa917ff480f4126c02137f46788dc3
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063030"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884341"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Oktatóanyag: Szándék felismerése beszédből a C#-hez készült Speech SDK használatával
 
@@ -166,7 +166,7 @@ Az oktatóalkalmazás nem elemzi az eredményként kapott JSON-t, csak megjelen�
 
 ## <a name="specify-recognition-language"></a>Adja meg a felismerés nyelvét
 
-A LUIS alapértelmezés szerint amerikai angol (`en-us`) nyelven végzi a szándékfelismerést. A területibeállítás-kódnak a beszédkonfiguráció `SpeechRecognitionLanguage` tulajdonságához való hozzárendelésével más nyelveken is végezhet szándékfelismerést. Például német nyelven végezhet szándékfelismerést, ha a felismerő létrehozása előtt az oktatóalkalmazáshoz hozzáadja a `config.SpeechRecognitionLanguage = "de-de";` argumentumot. Lásd: [Támogatott nyelvek](supported-languages.md#speech-to-text).
+A LUIS alapértelmezés szerint amerikai angol (`en-us`) nyelven végzi a szándékfelismerést. A területibeállítás-kódnak a beszédkonfiguráció `SpeechRecognitionLanguage` tulajdonságához való hozzárendelésével más nyelveken is végezhet szándékfelismerést. Például német nyelven végezhet szándékfelismerést, ha a felismerő létrehozása előtt az oktatóalkalmazáshoz hozzáadja a `config.SpeechRecognitionLanguage = "de-de";` argumentumot. Lásd: [Támogatott nyelvek](language-support.md#speech-to-text).
 
 ## <a name="continuous-recognition-from-a-file"></a>Folyamatos felismerés fájlból
 

@@ -1,6 +1,6 @@
 ---
-title: Azure biztonsági és megfelelőségi tervezetének - webalkalmazás infrastruktúra a FedRAMP
-description: Azure biztonsági és megfelelőségi tervezetének - webalkalmazás infrastruktúra a FedRAMP
+title: Azure biztonsági és megfelelőségi terv – IaaS-webalkalmazás fedramp-hoz
+description: Azure biztonsági és megfelelőségi terv – IaaS-webalkalmazás fedramp-hoz
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,201 +14,201 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 6a2a72f46c4d5faacb7d5871f4c917a5cd578e96
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: f5ba6a001f8933283e0867367ef7bd8d3918c3fd
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809165"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405378"
 ---
-# <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Azure biztonsági és megfelelőségi tervezetének: IaaS-webalkalmazás FedRAMP
+# <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Azure biztonsági és megfelelőségi terv: IaaS-webalkalmazás fedramp-hoz
 
 ## <a name="overview"></a>Áttekintés
 
-A [Szövetségi kockázat és engedélyezési felügyeleti Program (FedRAMP)](https://www.fedramp.gov) egy Egyesült államokbeli kormányzati kiterjedő program, amely a biztonsági értékelést, engedélyezési és folyamatos figyelés szabványosított megközelítését ismerteti a felhő termékeket és szolgáltatások. Az Azure biztonsági és megfelelőségi tervezetének Automation útmutatással szolgál a központi telepítésben FedRAMP-kompatibilis infrastruktúra egy egy egyszerű Internet felé néző webes alkalmazáshoz megfelelő szolgáltató (IaaS) környezetben is. Ez a megoldás automatizálja az üzembe helyezési és konfigurálási egy közös referencia-architektúrában, amelyben ügyfelek megfelel konkrét biztonsági és megfelelőségi követelmények és szolgál az ügyfelek számára a build alapjaként módon, amely tartalmazza az Azure-erőforrások és a saját megoldások konfigurálása az Azure-on. A megoldás a FedRAMP nagy alaptervből, NIST SP 800-53 alapján szabályozza egy részhalmazát valósítja meg. FedRAMP követelmények és a megoldás kapcsolatos további információkért tekintse meg a [megfelelőségi dokumentáció](#compliance-documentation).
+A [Federal Risk and Authorization Management Program (FedRAMP)](https://www.fedramp.gov) van egy amerikai közigazgatásra kiterjedő program, amely a biztonság értékeléséhez, engedélyezési és folyamatos monitorozással szabványos módszert biztosít a felhőalapú termékek és szolgáltatások. Az Azure biztonsági és megfelelőségi tervezet Automation szolgáltatás (IaaS) környezetként, megfelelő az internetre irányuló egyszerű webalkalmazások FedRAMP-kompatibilis infrastruktúra központi telepítésére vonatkozó útmutatást. Ez a megoldás automatizálja a központi telepítése és konfigurálása Azure-erőforrások általános referenciaarchitektúra, bemutatásához, amelyben ügyfeleink megfelel bizonyos biztonsági és megfelelőségi követelmények és szolgál az ügyfelek alapjaként módon és saját megoldások konfigurálásához az Azure-ban. A megoldás szabályozza a magas szintű FedRAMP alaptervből, NIST SP 800-53 előírásain alapján egy részhalmazát valósítja meg. FedRAMP-követelmények és a megoldás kapcsolatos további információkért lásd: a [megfelelőségi dokumentáció](#compliance-documentation).
 > [!NOTE]
-> Ez a megoldás Azure Government telepíti.
+> Ez a megoldás üzembe helyezi az Azure Governmentre.
 
-Az Azure biztonsági és megfelelőségi tervezetének Automation automatikusan telepíti az infrastruktúra-szolgáltatási webes alkalmazás referencia-architektúrában előre beállított biztonsági vezérlőkkel ügyfelek FedRAMP követelményeknek való megfelelés eléréséhez. A megoldás Azure Resource Manager-sablonok és az erőforrás üzembe helyezési és konfigurációs útmutató PowerShell-parancsfájlok áll.
+Az Azure biztonsági és megfelelőségi tervezet Automation automatikusan üzembe helyez egy IaaS webes alkalmazás referenciaarchitektúrájához, ha az előre konfigurált biztonsági vezérlők segítségével az ügyfelek elérjék a FedRAMP-követelményeknek való megfelelés. A megoldás Azure Resource Manager-sablonok és erőforrások üzembe helyezésének és konfigurációs PowerShell-parancsfájlok áll.
 
-Ebbe az architektúrába célja, hogy az ügyfelek úgy, hogy az egyedi követelményeket alapjaként szolgálnak, és nem használható mint – egy termelési környezetben. Erre a környezetre módosítás nélkül az alkalmazások központi telepítése nincs teljesen teljesítik a FedRAMP nagy alapterv követelményeinek. Vegye figyelembe a következőket:
-- Ezen architektúra FedRAMP megfelelő módon használja a Azure ügyfelek alapterv.
-- Ügyfelek végző megfelelő biztonsági és megfelelőségi vizsgálata használatával készített ebbe az architektúrába követelmények változhatnak megoldások a részletekről az egyes ügyfelek általi alapján.
+Ez az architektúra célja, hogy az ügyfelek számára az adott követelményekhez beállítása alapjaként szolgálja ki, és nem használható-éles környezetben van. Ebben a környezetben, módosítás nélküli egy alkalmazás telepítése azonban nem teljesen felel meg a magas szintű FedRAMP-alapkonfiguráció követelményeinek. Vegye figyelembe a következőket:
+- Ez az architektúra egy alapkonfiguráció segítenek az ügyfeleknek az Azure FedRAMP-kompatibilis módon biztosít.
+- Ügyfelek végző megfelelő biztonsági és megfelelőségi vizsgálata a beépített Ez az architektúra használatával, ahogy követelményei eltérőek lehetnek megoldásoktól alapján minden ügyfél megvalósítása tulajdonságairól.
 
-Nézze meg ezt a gyors áttekintést a megoldás működéséről, [videó](https://aka.ms/fedrampblueprintvideo) foglalja össze, és a központi telepítés bemutatására.
+Röviden, ez a megoldás működéséről, tekintse meg ezt [videó](https://aka.ms/fedrampblueprintvideo) pedig elmagyarázza és annak üzembe helyezési bemutatására.
 
 Kattintson a [Itt](https://aka.ms/fedrampblueprintrepo) üzembe helyezési utasítások.
 
-## <a name="architecture-diagram-and-components"></a>Architektúrája és összetevői
-Ez a megoldás egy referencia-architektúrában, az infrastruktúra-szolgáltatási webalkalmazás egy SQL Server-háttérrendszerrel telepíti. Az architektúra tartalmazza egy webes réteg, adatrétegbeli, Active Directory infrastruktúra, Application Gateway és terheléselosztóhoz. A webes és adatok rétegek telepített virtuális gépek rendelkezésre állási csoport vannak konfigurálva, és az SQL Server-példányokat a magas rendelkezésre állású AlwaysOn rendelkezésre állási csoportban vannak konfigurálva. Virtuális gépek a tartományhoz, és az Active Directory-csoportházirendek segítségével az operációs rendszer szintjén és megfelelőségi beállítások kényszerítése. A megerősített állomás biztonságos kapcsolatot biztosít a rendszergazdák központilag telepített hozzáférését az erőforrásokhoz. **Azure azt javasolja, hogy a referencia architektúra alhálózati történő felügyelete és az adatok importálása a VPN- vagy Azure ExpressRoute-kapcsolat beállítása.**
+## <a name="architecture-diagram-and-components"></a>Architektúra és összetevők
+Ez a megoldás az SQL Server-háttérrendszerét az IaaS-webalkalmazás referenciaarchitektúra üzembe helyezi. Az architektúra egy webes réteg, adatrétegbeli, Active Directory infrastruktúrával, az Application Gateway és terheléselosztó tartalmaz. A webes és az adatrétegekhez az üzembe helyezett virtuális gépek rendelkezésre állási csoportba vannak konfigurálva, és az SQL Server példányai vannak konfigurálva a magas rendelkezésre állás érdekében egy AlwaysOn rendelkezésre állási csoportban. Virtuális gépek tartományhoz csatlakoztatva, és az Active Directory-csoportházirendek segítségével érvényesíti a biztonsági és megfelelőségi konfigurációk az operációs rendszer szintjén. Bástyagazdagép biztonságos kapcsolatot biztosít a rendszergazdák számára a hozzáférés üzembe helyezett erőforrásokat. **Azure azt javasolja, hogy a VPN- vagy Azure ExpressRoute kapcsolat a felügyeleti és az adatok importálása a referencia architektúra alhálózatban.**
 
-![FedRAMP referencia architektúra diagramja IaaS-webalkalmazás](images/fedramp-iaaswa-architecture.png?raw=true "IaaS-webalkalmazás FedRAMP referencia architektúra diagramja")
+![IaaS-webalkalmazás FedRAMP architekturális diagramja](images/fedramp-iaaswa-architecture.png?raw=true "IaaS-webalkalmazás FedRAMP architekturális diagramja")
 
-A megoldás az Azure-szolgáltatásokat. Az üzembe helyezési architektúrája részleteit találhatók a [üzembe helyezési architektúrája](#deployment-architecture) szakasz.
+Ez a megoldás a következő Azure-szolgáltatásokat használ. Az üzembe helyezési architektúra részletek találhatók a [üzembe helyezési architektúrája](#deployment-architecture) szakaszban.
 
 - Azure-alapú virtuális gépek
-    - (1) megerősített állomás (a Windows Server 2016 Datacenter)
+    - (1) bástyagazdagép (Windows Server 2016 Datacenter)
     - (2) az active Directory-tartományvezérlőhöz (Windows Server 2016 Datacenter)
-    - (2) az SQL Server-fürt csomópontjának (Windows Server 2016 SQL Server 2017)
-    - (2) webkiszolgáló/IIS (Windows Server 2016 Datacenter)
+    - (2) az SQL Server-fürt csomópontjának (Windows Server 2016-on futó SQL Server 2017)
+    - (2) webkiszolgáló és IIS (Windows Server 2016 Datacenter)
 - Rendelkezésre állási csoportok
     - (1) az active Directory-tartományvezérlők
-    - (1) az SQL-fürt csomópontjain
-    - (1) webkiszolgáló/IIS
+    - (1) az SQL-fürtcsomópont
+    - (1) webkiszolgáló és IIS
 - Azure Virtual Network
     - ((1) /16 virtuális hálózatok
     - (5) /24 alhálózatok
-    - DNS-beállítások mindkét tartományvezérlőn van beállítva
+    - DNS-beállítások mindkét tartományvezérlőn vannak beállítva
 - Azure Load Balancer
 - Azure Application Gateway
-    - (1) az Alkalmazásátjáró WAF engedélyezve
-        - tűzfal módban: megelőzése
-        - Szabálykészlet: OWASP 3.0
-        - figyelő: 443-as port
+    - (1) WAF Application Gateway engedélyezve
+        - Tűzfalmód: megelőzése
+        - Set-szabály: OWASP 3.0
+        - Figyelő: 443-as port
 - Azure Storage
     - (7) georedundáns storage-fiókok
-- Azure-felhőbe tanúsító
+- Az Azure Felhőbeli tanúsító
 - Recovery Services-tároló
 - Azure Key Vault
 - Azure Active Directory (Azure AD)
 - Azure Resource Manager
-- Az Operations Management Suite (OMS)
+- Log Analytics
 - Azure Monitor
 
 ## <a name="deployment-architecture"></a>Üzembe helyezési architektúrája
 
-Az alábbi szakasz részletesen fejlesztése és megvalósítása elemek.
+A következő szakasz az fejlesztése és megvalósítása elemek részletei.
 
-**Megerősített állomás**: A megerősített állomás a központi hely, amely biztonságos kapcsolatot biztosít a rendszergazdák központilag telepített hozzáférését az erőforrásokhoz. A megerősített állomás NSG kapcsolatait csak a 3389-es TCP-port RDP. Az ügyfelek tovább konfigurálhatják a megerősített gazdagép szervezet rendszer-megerősítési követelmények teljesítéséhez.
+**Bástyagazdagép**: A bástyagazdagép a központi hely, amely biztonságos kapcsolatot biztosít a rendszergazdák erőforrások eléréséhez telepítve. A megerősített gazdagép NSG lehetővé teszi a kapcsolatokat csak a 3389-es RDP-hez. Ügyfelek tovább konfigurálhatják a bástyagazdagép szervezet rendszer-megerősítési követelmények kielégítése érdekében.
 
 ### <a name="virtual-network"></a>Virtuális hálózat
-Az architektúra egy címterében 10.200.0.0/16 titkos virtuális hálózat határozza meg.
+Az architektúra egy 10.200.0.0/16 címtere a privát virtuális hálózat határozza meg.
 
-**Hálózati biztonsági csoportok**: Ez a megoldás telepíti egy külön webkiszolgáló alhálózati, adatbázis alhálózati, Active Directory-alhálózathoz és felügyeleti alhálózaton belül egy virtuális hálózati architektúrát erőforrásokat. Alhálózatok logikailag elválasztott hálózati biztonsági csoport szabályokat az egyes alhálózatok korlátozzák a forgalmat, amely csak szükséges rendszer- és felügyeleti funkciókat az alhálózatok között.
+**Hálózati biztonsági csoportok**: Ez a megoldás üzembe helyez egy másik alhálózatot, adatbázis-alhálózat, az Active Directory-alhálózathoz és felügyeleti alhálózaton egy virtuális gépen belüli – rendelkező erőforrásokat. Alhálózatok logikailag elválasztott korlátozhatja, hogy csak szükséges rendszer- és felügyeleti funkciók, az alhálózatok közötti adatforgalom az egyes alhálózatokra alkalmazott hálózati biztonsági csoport szabályait.
 
-Tekintse meg a konfigurációs [hálózati biztonsági csoportok](https://github.com/Azure/fedramp-iaas-webapp/blob/master/nestedtemplates/virtualNetworkNSG.json) Ez a megoldás üzembe helyezéséhez. Az ügyfelek a fent fájl szerkesztésével konfigurálhatja hálózati biztonsági csoportok [ebben a dokumentációban](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) útmutatóként.
+Tekintse át a konfigurációját a [hálózati biztonsági csoportok](https://github.com/Azure/fedramp-iaas-webapp/blob/master/nestedtemplates/virtualNetworkNSG.json) üzembe helyezett ezzel a megoldással. Ügyfelek konfigurálhatják a hálózati biztonsági csoportok használatával fent a fájl szerkesztésével [ebben a dokumentációban](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) alapján.
 
-Egyes alhálózatok rendelkezik egy dedikált hálózati biztonsági csoport (NSG):
-- Az Alkalmazásátjáró (LBNSG) 1 NSG
-- 1 NSG megerősített állomás (MGTNSG)
-- Az elsődleges és tartalék tartományvezérlő (ADNSG) 1 NSG
-- Az SQL-kiszolgálókra (SQLNSG) 1 NSG
-- 1 NSG a webes réteg (WEBNSG)
+Minden egyes alhálózatban a dedikált hálózati biztonsági csoport (NSG) rendelkezik:
+- Az Application Gateway (LBNSG) 1 NSG
+- 1 NSG bástyagazdagép (MGTNSG)
+- 1 NSG-t elsődleges és tartalék tartományvezérlők (ADNSG)
+- SQL-kiszolgálók (SQLNSG) 1 NSG
+- 1 NSG webes réteg (WEBNSG)
 
-**Alhálózatok**: az egyes alhálózatokon társítva a megfelelő NSG.
+**Alhálózatok**: minden egyes alhálózathoz társítva a megfelelő NSG-t.
 
 ### <a name="data-at-rest"></a>Inaktív adat
 
-Az architektúra inaktív adatok több titkosítási mértékek használatával védi.
+Az architektúra számos titkosítási mértékek használatával védi az inaktív adatok.
 
-**Az Azure Storage**: adatokat nyugalmi titkosítási követelmények teljesítéséhez az összes tárfiók használata [Storage szolgáltatás titkosítási](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
+**Az Azure Storage**: inaktív adatok titkosítása követelményeinek összes storage-fiók használata [a Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
 
-**SQL Server**: SQL-kiszolgáló használatára van konfigurálva [átlátszó Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption), amely végrehajtja a valós idejű titkosítási és visszafejtési adatainak és naplókönyvtárainak fájlok aktívan információk védelme érdekében. TDE biztosítja, hogy a tárolt adatok nem lett bárki hozzáférhet.
+**Az SQL Server**: SQL Server használatára van konfigurálva [transzparens adattitkosítási (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption), amely végrehajtja az adatok inaktív védelme adathoz és naplófájlhoz valós idejű titkosításához és visszafejtéséhez. TDE biztosítja, hogy a tárolt adatok nem lett bárki hozzáférhet.
 
-Az ügyfelek is beállíthatja a következő SQL Server biztonsági intézkedéseket:
--   [AD hitelesítési és engedélyezési](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) adatbázis-felhasználók és más Microsoft-szolgáltatásokban egyetlen központi helyen identitás kezelését teszi lehetővé.
--   [SQL-adatbázis naplózásának](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started) nyomon követi az adatbázisok események, mind az írás őket naplózási jelentkezzen be Azure storage-fiók.
--   [Tűzfal-szabályok](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) tagadni a hozzáférést minden adatbázis-kiszolgálók csak a megfelelő engedélyekkel. A tűzfal biztosítja az adatbázisokhoz való hozzáférést az egyes kérések kiindulási IP-címe alapján.
--   [A Fenyegetésészlelés SQL](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started) lehetővé teszi, hogy felderítésére és a lehetséges veszélyforrásokra választ, adja meg a biztonsági riasztások adatbázis gyanús tevékenységek, a potenciális biztonsági réseket, az SQL injektálási támadások és a rendellenes adatbázis-hozzáférési előforduló minták.
--   [Mindig titkosítja az oszlopok](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) győződjön meg arról, hogy bizalmas adatok soha nem jelenik meg az adatbázis rendszerében szövegként. Miután engedélyezte az adattitkosítást, csak az ügyfélalkalmazások vagy a kulcsoknak access app kiszolgálók hozzáférhet egyszerű szöveges adatokat.
--   [SQL-adatbázis dinamikus adatmaszkolási](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) teheti, miután telepíti a referencia-architektúrában. Állítsa be a dinamikus adatmaszkolási beállítások igazodnia kell az adatbázis-séma esetén szükséges.
+Ügyfelek is előfordulhat, hogy konfigurálja a következő SQL Server biztonsági intézkedéseket:
+-   [AD-hitelesítés és engedélyezés](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) lehetővé teszi az identitáskezelést adatbázis-felhasználók és más Microsoft-szolgáltatások egyetlen központi helyen.
+-   [Az SQL database naplózási szolgáltatásával](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started) nyomon követi az adatbázisok eseményeit és felvezeti ezeket egy naplófájlba, egy Azure storage-fiókban.
+-   [Tűzfalszabályok](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) megakadályozzák elérését, adatbázis-kiszolgálók, amíg a megfelelő engedélyekkel. A tűzfal biztosítja az adatbázisokhoz való hozzáférést az egyes kérések kiindulási IP-címe alapján.
+-   [Az SQL Fenyegetésészlelési](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started) lehetővé teszi, hogy az észlelés és válasz a lehetséges veszélyforrásokra, bekövetkezésük pillanatában észlelhessék a biztonsági riasztásokat a gyanús adatbázis-tevékenységekről, a lehetséges biztonsági résekről, az SQL-injektálási támadások és a rendellenes adatbázis-hozzáférés minták.
+-   [Always Encrypted az oszlopok](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) győződjön meg arról, hogy bizalmas adatok soha nem jelenik meg, mint belül az adatbázis-rendszer egyszerű szövegként. Adatok titkosításának engedélyezése után csak az ügyfélalkalmazások vagy alkalmazáskiszolgálók hozzáférést a kulcsokhoz hozzáférhet egyszerű szöveges adatokat.
+-   [Az SQL Database dinamikus adatmaszkolása](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) teheti, miután a referenciaarchitektúra üzembe helyezte. Ügyfelek módosítania kell a dinamikus adatmaszkolási beállítások be kell tartaniuk az adatbázissémát.
 
-**Az Azure Disk Encryption**: Azure Disk Encryption windowsos infrastruktúra-szolgáltatási virtuális gép lemezeinek titkosított szolgál. [Az Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) kihasználja a Windows operációs rendszer és az adatlemezek kötettitkosítást biztosít a BitLocker-szolgáltatás. A megoldás integrálva van az Azure Key Vault szabályozni, és a lemez-titkosítási kulcsok kezeléséhez.
+**Az Azure Disk Encryption**: az Azure Disk Encryption Windows IaaS virtuális gépek lemezeinek titkosított szolgál. [Az Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) az operációs rendszer és az adatlemezek kötettitkosítást biztosít a Windows BitLocker funkcióját használja. A megoldás integrálva van az Azure Key Vault segítségével szabályozhatja, és kezelhetik a lemeztitkosítási kulcsokat.
 
 ### <a name="identity-management"></a>Identitáskezelés
 
-Az alábbi technológiákat biztosítja az identitás Eszközkezelési funkciókat az Azure környezetben:
-- [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) a Microsoft több-bérlős felhőalapú címtár- és identitáskezelési szolgáltatás.
-- Egy ügyfél telepített webalkalmazás-hitelesítés használatával végezheti el az Azure AD. További információkért lásd: [alkalmazások integrálása az Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).  
-- [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) lehetővé teszi, hogy pontosan célzott hozzáférés-kezelés az Azure-bA. Előfizetés hozzáférés korlátozódik előfizetés-rendszergazdaként, és az erőforrásokhoz való hozzáférés korlátozható a felhasználói szerepkör alapján.
-- Egy telepített IaaS Active Directory példánnyal üzembe helyezett infrastruktúra-szolgáltatási virtuális gépeknél operációsrendszer-szintű identitás-felügyeletet biztosít.
+A következő technológiákat biztosítja identitás az eszközkezelési funkciókat az Azure-környezetben:
+- [Az Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) van a Microsoft több-bérlős felhőalapú címtár- és identitáskezelési szolgáltatás.
+- Az Azure AD-hitelesítést egy ügyfél által üzembe helyezett webalkalmazás hajtható végre. További információkért lásd: [alkalmazások integrálása az Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).  
+- [Az Azure szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) lehetővé teszi, hogy pontosan fókuszban lévő hozzáférés-kezelés az Azure-hoz. Előfizetéshez való hozzáférés korlátozva, az előfizetés rendszergazdája, és az erőforrásokhoz való hozzáférés is korlátozható a felhasználói szerepkör alapján.
+- Egy üzembe helyezett IaaS Active Directory-példány üzembe helyezett IaaS virtuális gépek operációsrendszer-szintű Identitáskezelés biztosít.
 
 ### <a name="security"></a>Biztonság
-**Titkos kulcsok kezelése**: A megoldás az [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) kulcsok és titkos kulcsok kezeléséhez. Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos kulcsok védelmében. Az Azure Key Vault segít a infrastruktúra-szolgáltatási virtuális gép lemez-titkosítási kulcsok és titkos kulcsokat a referenciaarchitektúra kezelésében.
+**Titkok kezelése**: A megoldás [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) kulcsok és titkos kulcsok felügyeletéhez. Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos kulcsok védelmében. Az Azure Key Vault segít az IaaS virtuális gépek lemeztitkosítási kulcsokat és titkos kódokat, a referenciaarchitektúra.
 
-**Felügyeleti javítás**: az Azure biztonsági és megfelelőségi tervezetének automatizálás által telepített Windows virtuális gépek automatikus frissítések kap a Windows Update szolgáltatás alapértelmezés szerint vannak konfigurálva. Ez a megoldás is telepíti az Azure Automation-megoldást, amelyen keresztül a központi telepítést is létrehozható kiszolgálókra történő központi telepítéséhez javítások Windows szükség esetén.
+**Javítások kezelése**: az Azure biztonsági és megfelelőségi tervezet Automation által üzembe helyezett Windows virtuális gépek automatikusan frissítéseket kapjanak a Windows Update szolgáltatás alapértelmezés szerint vannak konfigurálva. Ez a megoldás is telepíti az Azure Automation megoldás, amelyek Frissítéstelepítések üzembe helyezése javítások Windows kiszolgálókon szükség esetén hozható létre.
 
-**Kártevők elleni védekezés**: [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) virtuális gépek számára lehetővé teszi a valós idejű védelem segítségével azonosíthatja, és távolítsa el a vírusok, kémprogramok és más, kártevő szoftverek, konfigurálható a riasztások Ha ismert kártevő vagy nemkívánatos szoftverek próbálják telepíteni futtassa a védett virtuális gépet.
+**Kártevők elleni védekezés**: [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) virtuális gépek számára biztosítja a valós idejű védelem funkció, amely alapján azonosíthatja, és távolítsa el a vírusok, kémprogramok és más, kártevő szoftverek, konfigurálható riasztásokkal Ha az ismert kártevő vagy nemkívánatos szoftverek megpróbálják telepíteni vagy futtatni védett virtuális gépeken.
 
-**Alkalmazásátjáró**: architektúrájának csökkenti a biztonsági réseket Alkalmazásátjáró használata a webalkalmazási tűzfal (waf-ot), és a OWASP szabálykészletben engedélyezve van. További funkciók a következők:
+**Az Application Gateway**: az architektúra csökkenti a használatával az Application Gateway webalkalmazási tűzfal (WAF) a biztonsági réseket, és az OWASP szabálykészletben engedélyezve van. További képességek:
 
 - [End-to-End-SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
-- Engedélyezése [SSL kiürítése](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-portal)
-- Tiltsa le a [TLS 1.0 és 1.1 verzió](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
+- Engedélyezése [SSL-alapú Kiszervezéshez](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-portal)
+- Tiltsa le [a TLS 1.0 és 1.1 verzió](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
 - [Webalkalmazási tűzfal](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview) (WAF mód)
-- [Megelőző módja](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-portal) rendelkező OWASP 3.0 szabálykészletben
+- [Megelőzés üzemmód](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-portal) az OWASP 3.0 szabálykészletben
 
 ### <a name="business-continuity"></a>Az üzletmenet folytonossága
 
-**Magas rendelkezésre állású**: legalább egy virtuális gép érhető el egy tervezett vagy nem tervezett karbantartási események esetén a 99,95 % értekezlet Azure SLA-t. A megoldás összes webes réteg telepíti, és adatok rétegben lévő virtuális gépek egy [rendelkezésre állási csoport](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets). Rendelkezésre állási készletek győződjön meg arról, hogy a virtuális gépek rendelkezésre állásának javítása érdekében több elkülönített hardver fürt különböző pontjain. Továbbá a megoldás telepíti az SQL Server virtuális gépek rendelkezésre állási csoport, egy [AlwaysOn rendelkezésre állási csoport](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview). Az Always On rendelkezésre állási csoport funkciót a magas rendelkezésre állású és vész-helyreállítási lehetőségeket biztosít.
+**Magas rendelkezésre állású**: legalább egy virtuális gép érhető el egy tervezett vagy nem tervezett karbantartási események esetén teljesíti a 99,95 %-os Azure SLA-t. A megoldás üzembe helyezése az összes webes szint, és adatokat csomagban lévő virtuális gépek egy [rendelkezésre állási csoport](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets). Rendelkezésre állási csoportok biztosítják, hogy a virtuális gépek rendelkezésre állás javítása érdekében több elkülönített hardverfürt között legyenek elosztva. Ezenkívül ez a megoldás üzembe helyezi az SQL Server virtuális gépek rendelkezésre állási csoportba, egy [AlwaysOn rendelkezésre állási csoport](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview). Az Always On rendelkezésre állási csoport funkciót a magas rendelkezésre állású és vész-helyreállítási lehetőségeket biztosít.
 
-**Recovery Services-tároló**: A [Recovery Services-tároló](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) Kezelőkód biztonsági mentési adatokat, és az összes konfiguráció Azure virtuális gépek ebben az architektúrában védelmét. A Recovery Services-tároló, az ügyfelek is fájlok és mappák visszaállítása egy infrastruktúra-szolgáltatási virtuális gép helyreállítása a teljes virtuális gép, gyorsabb visszaállítás engedélyezése nélkül.
+**Recovery Services-tároló**: A [Recovery Services-tároló](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) Kezelőkód biztonsági mentési adatokat, és védelmet biztosít az összes konfiguráció az Azure Virtual Machines ebben az architektúrában. Recovery Services-tárolóval, ügyfelek is fájlok és mappák visszaállítása az IaaS virtuális gépről a teljes virtuális Gépet, így gyorsabb helyreállítást visszaállítása nélkül.
 
-**A felhő tanúsító**: [felhő tanúsító](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness) a feladatátvevő fürt kvórum tanúsítójának a Windows Server 2016-os, amely kihasználja az Azure-bA az egyeztetési pont típusa. A felhő tanúsító, mint bármely más kvórum tanúsító szavazás lekérdezi és részt vesznek a kvórumszámításokat, de a szabványos nyilvánosan elérhető Azure Blob Storage használ. Ez megszünteti az extra karbantartási növeli a nyilvános felhőben üzemeltetett virtuális gépeket.
+**Felhőbeli tanúsító**: [Felhőbeli tanúsító](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness) egy feladatátvevő fürt kvórum tanúsítójának a Windows Server 2016, amely Azure-t az egyeztetési pontként típusú. A Felhőbeli tanúsító – más kvórumtanúsítókhoz, például szavazattal rendelkezik, és részt vehet a kvórumszámításokban, de a standard szintű, nyilvánosan elérhető Azure Blob Storage használ. Ezzel elkerülhető a felesleges karbantartást a nyilvános felhőben üzemeltetett virtuális gépek.
 
-### <a name="logging-and-auditing"></a>Naplózás és naplózás
+### <a name="logging-and-auditing"></a>Naplózás és vizsgálat
 
-OMS rendszer és felhasználói tevékenységek, valamint a rendszerállapot kiterjedt naplózás biztosít. Az OMS [Naplóelemzési](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) megoldás gyűjti és elemzi az adatokat az Azure-erőforrások által létrehozott és a helyszíni környezetben.
+A log Analytics biztosít széles körű naplózását, a rendszer és a felhasználói tevékenységek, valamint a helyrendszer állapotát. A [Log Analytics](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) megoldás gyűjti és elemzi az adatokat az Azure-erőforrások által létrehozott és a helyszíni környezetekben.
 
-- **Tevékenységi naplóit:**[tevékenységi naplóit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) előfizetés erőforrásainak végrehajtott műveletek betekintést nyújtanak. Tevékenységi naplóit is meghatározásához, hogy egy művelet kezdeményező az előfordulási és állapot ideje.
-- **Diagnosztikai naplók:**[diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) minden erőforrás által kibocsátott összes naplófájlt. Ezek a naplók tartalmazzák a Windows rendszer-eseménynaplói, az Azure storage naplókat, Key Vault-naplók és Alkalmazásátjáró hozzáférés és a tűzfalon naplókat.
-- **Napló archiválás:** összes diagnosztikai naplók írni egy központosított és titkosított Azure storage-fiókjához archiválási. A megőrzési felhasználó által konfigurálható, mentése 730 nap szervezet-specifikus megőrzési követelményeinek megfelelően. Ezek a naplók feldolgozása, tárolására és irányítópult reporting Azure Naplóelemzés csatlakozni.
+- **A Tevékenységnaplók:**[tevékenységeket tartalmazó naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) adjon meg egy előfizetéshez tartozó erőforrásokon végrehajtott műveletekkel kapcsolatos információk.   A Tevékenységnaplók segítségével határozza meg a műveletet kezdeményező, az eseményt, és állapot ideje.
+- **Diagnosztikai naplók:**[diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) minden erőforrás által kibocsátott az összes napló is.   Ezek a naplók például a Windows rendszer-eseménynaplói, az Azure storage-naplók, a Key Vault-naplók és az Application Gateway hozzáférés és a tűzfal a naplókat.
+- **Napló archiválás:** összes diagnosztikai naplók írni egy központosított, titkosított csatornákon történik az Azure storage-fiókját archiválási. A megőrzési felhasználó által konfigurálható, mentése és 730 nap között, a megőrzési a szervezet konkrét követelményeinek. Ezek a naplók csatlakozhat Azure Log Analytics feldolgozási, tárolására és-irányítópult jelentéseit.
 
-Emellett a következő OMS-megoldások ebbe az architektúrába részeként telepített. Ne feledje, hogy az ügyfelek felelőssége, hogy ezek a megoldások való megfelelés érdekében FedRAMP biztonsági vezérlők konfigurálása:
--   [AD Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): az Active Directory állapotát ellenőrző megoldás a kockázat és környezetek állapotának értékelésére rendszeres időközönkénti, és a telepített kiszolgálói infrastruktúra vonatkozó javaslatok a rangsorolt listáját tartalmazza.
--   [Kártevőirtó Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware): A kártevőirtó megoldást jelent a kártevő szoftver, a fenyegetések és a védelmi állapot.
--   [Azure Automation szolgáltatásbeli](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): az Azure Automation-megoldás tárolja, fut, és kezeli a runbookok.
--   [Biztonság és a naplózási](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started): A biztonság és a naplózási irányítópult erőforrások biztonsági állapotát egy magas szintű betekintést biztosít a biztonsági tartományok, jelentős problémák, észlelések, fenyegetésfelderítési adataival és közös biztonsági lekérdezések metrikák megadásával.
--   [SQL Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): megoldás az SQL állapotának ellenőrzése a kockázat és környezetek állapotának értékelésére rendszeres időközönkénti és nyújt a felhasználók számára a telepített kiszolgálói infrastruktúra vonatkozó javaslatok a rangsorolt listáját.
--   [Frissítéskezelés](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management): A frissítés felügyeleti megoldás lehetővé teszi az operációs rendszer biztonsági frissítések, a rendelkezésre álló frissítések állapot és a kötelező frissítések telepítésének folyamatát, például felhasználói kezelését.
--   [Ügynök állapotfigyelő](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): az ügyfélállapot-megoldást jelent, hány ügynök van telepítve, és a földrajzi eloszlása, valamint hány ügynökök, amelyek nem válaszoló és ügynökök, amelyek a működési adatok elküldése.
--   [Az Azure tevékenységi naplóit](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): A tevékenység Naplóelemzési megoldás segítséget nyújt a elemzése az Azure tevékenységi naplóit az ügyfél az összes Azure-előfizetések között.
--   [A változáskövetés](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): A változáskövetési megoldás lehetővé teszi az ügyfelek azonosítását a változtatásokat a környezetben.
+Ezenkívül a következő figyelési megoldásokat, ez az architektúra részeként települnek. Ne feledje, hogy az ügyfél felelőssége, hogy ezek a megoldások, a FedRAMP biztonsági vezérlők igazítása konfigurálása:
+-   [Az AD Assessmenthez](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): az Active Directory állapot-ellenőrzés megoldás a kockázat és kiszolgálói környezetek állapotát értékeli a rendszeres időközönkénti, és a telepített kiszolgálói infrastruktúra vonatkozó javaslatok rangsorolt listáját tartalmazza.
+-   [Kártevőirtók felmérése](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware): A kártevőirtó megoldás kártevő szoftverek, a fenyegetések és a védelem állapota kapcsolatos jelentések.
+-   [Az Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): az Azure Automation megoldás tárolja, fut, és kezeli a runbookok.
+-   [Biztonság és auditálás](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started): A biztonsági és auditálási irányítópultja az erőforrások biztonsági állapotát egy magas szintű betekintést nyújt a metrikák azáltal, hogy a biztonsági tartományok, a jelentős problémák, a észlelések, a fenyegetésekkel kapcsolatos Tudásbázis és a gyakori biztonsági lekérdezések.
+-   [SQL-értékeléssel](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): az SQL Health Check megoldás a kockázat és kiszolgálói környezetek állapotát értékeli a rendszeres időközönkénti, és nyújt a felhasználók számára a telepített kiszolgálói infrastruktúra vonatkozó javaslatok rangsorolt listáját.
+-   [Frissítéskezelés](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management): az Update Management megoldás lehetővé teszi, hogy az ügyfél felügyeleti operációs rendszer biztonsági frissítéseket, beleértve egy elérhető frissítések állapotát és a szükséges frissítések telepítése.
+-   [Az ügynök állapota](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): az Agent Health megoldás hány ügynök van telepítve, és a földrajzi elosztás, valamint hány ügynök, amely nem válaszol és működési adatokat küld be, amely az ügynökök számát jelenti.
+-   [Azure Tevékenységnaplók](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): az ügyfél az összes Azure-előfizetések az Azure-Tevékenységnaplók elemzésének segíti az Activity Log Analytics megoldás.
+-   [A változáskövetés](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): A Change Tracking megoldás lehetővé teszi az ügyfelek számára, hogy könnyen azonosíthassa a változtatásokat a környezetben.
 
-**Az Azure figyelő**
-[Azure figyelő](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) segít a felhasználóknak a teljesítmény nyomon követése, biztonsági karbantartása és azonosíthatja a trendeket szervezetek naplózni, létre riasztásokat, és archiválja, beleértve a követési API-hívások engedélyezésével a felhasználók Azure-erőforrások.
+**Az Azure Monitor**
+[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) segít a felhasználóknak a teljesítmény, biztonság fenntartására és azonosíthatja a trendeket lehetővé teszi a cégeknek naplózása, riasztásokat hozhat létre, és archiválja az adatokat, beleértve az API-hívások nyomon követése az ügyfelek Azure-erőforrások.
 
 ## <a name="threat-model"></a>Fenyegetések modellezése
-Az adatfolyam-diagram a referenciaarchitektúra érhető el [letöltése](https://aka.ms/fedrampWAdfd) vagy alatt található. Ez a modell segít megérteni a pontokat a rendszer infrastruktúra kockázatokkal módosításakor az ügyfelek.
+A referenciaarchitektúra az adatfolyam-diagram érhető el az [letöltése](https://aka.ms/fedrampWAdfd) vagy alább találja. Ez a modell segítségével az ügyfelek megismerhetik a pontokat a rendszer infrastruktúra esetleges kockázat, ha a végzett módosítások.
 
-![FedRAMP fenyegetések modellezése IaaS-webalkalmazás](images/fedramp-iaaswa-threat-model.png?raw=true "IaaS webes Applicaiton FedRAMP fenyegetés modell")
+![IaaS-webalkalmazás FedRAMP fenyegetések modellezése](images/fedramp-iaaswa-threat-model.png?raw=true "IaaS webes Applicaiton a FedRAMP fenyegetések modellezése")
 
-## <a name="compliance-documentation"></a>Megfelelőségi dokumentáció
+## <a name="compliance-documentation"></a>Megfelelőségi dokumentációja
 
-A [Azure biztonsági és megfelelőségi tervezetének - FedRAMP magas ügyfél felelősségi mátrix](https://aka.ms/blueprinthighcrm) sorolja fel a FedRAMP nagy alapkonfiguráció által igényelt összes biztonsági vezérlő. A mátrix azt jelzi, hogy minden vezérlő végrehajtásának feladata a Microsoft, az ügyfél vagy a kettő között megosztott.
+A [Azure biztonsági és megfelelőségi terv - FedRAMP magas vevő felelőssége mátrix](https://aka.ms/blueprinthighcrm) sorolja fel a magas szintű FedRAMP-alapkonfiguráció által igényelt összes biztonsági vezérlő. A mátrix azt jelzi, hogy az egyes vezérlőelemek végrehajtása Microsoft, az ügyfél felelőssége, vagy a kettő között megosztott.
 
-A [Azure biztonsági és megfelelőségi tervezetének - FedRAMP IaaS webes alkalmazás magas vezérlés megvalósítása mátrix](https://aka.ms/blueprintwacim) sorolja fel a FedRAMP nagy alapkonfiguráció által igényelt összes biztonsági vezérlő. Amikor az infrastruktúra-szolgáltatási webes alkalmazás architektúra, például hogyan végrehajtása megfelel minden érintett vezérlő részletes leírást vezérlők tartoznak a mátrix információival.
+A [Azure biztonsági és -megfelelőségi terv - FedRAMP IaaS webes alkalmazás magas ellenőrzési megvalósítási mátrix](https://aka.ms/blueprintwacim) sorolja fel a magas szintű FedRAMP-alapkonfiguráció által igényelt összes biztonsági vezérlő. A mátrix, amelyen a vezérlők esnek az IaaS webalkalmazás-architektúra, beleértve a részletes leírását, hogyan végrehajtása megfelel egyes az érintett vezérlő információkat tartalmaz.
 
 ## <a name="deploy-the-solution"></a>A megoldás üzembe helyezése
 
-Az Azure biztonsági és megfelelőségi tervezetének Automation JSON-konfigurációs fájlok és az Azure erőforrások telepítése Azure Resource Manager API szolgáltatás által kezelt PowerShell-parancsfájlok áll. Részletes üzembe helyezési utasítások érhetők el [Itt](https://aka.ms/fedrampblueprintrepo).
+Az Azure biztonsági és megfelelőségi tervezet Automation JSON konfigurációs fájloknak és a PowerShell-szkriptek üzembe helyezéséhez az Azure-erőforrások Azure Resource Manager API szolgáltatás által kezelt áll. Részletes üzembe helyezési utasítások [Itt](https://aka.ms/fedrampblueprintrepo).
 > [!NOTE]
-> Ez a megoldás Azure Government telepíti.
+> Ez a megoldás üzembe helyezi az Azure Governmentre.
 
 #### <a name="quickstart"></a>Első lépések
-1. Klónozza vagy letöltése [ez](https://aka.ms/fedrampblueprintrepo) GitHub-tárházban történő helyi munkaállomáson.
+1. Klónozás vagy letöltés [ez](https://aka.ms/fedrampblueprintrepo) a helyi munkaállomáson GitHub-adattárban.
 
 2. A központi telepítés előtti PowerShell-parancsprogrammal: azure-blueprint/predeploy/Orchestration_InitialSetup.ps1.
 
-3. Az alábbi gombra kattintva, jelentkezzen be az Azure-portálra, adja meg a szükséges ARM-sablon paramétereket, és kattintson **beszerzési**.
+3. Az alábbi gombra kattintva jelentkezzen be az Azure Portalra, adja meg a szükséges ARM-sablon paramétereit, majd kattintson **beszerzési**.
 
     [![Üzembe helyezés az Azure-ban](http://azuredeploy.net/AzureGov.png)](https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Ffedramp-iaas-webapp%2Fmaster%2Fazuredeploy.json)
 
 ## <a name="guidance-and-recommendations"></a>Útmutatás és javaslatok
-### <a name="vpn-and-expressroute"></a>VPN- és ExpressRoute
-Biztonságos VPN-alagúton vagy [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) kell konfigurálni, hogy biztonságos kapcsolatot létrehozni a IaaS webes alkalmazás referencia-architektúrában részeként telepített erőforrások. Megfelelően állítja be a VPN- vagy ExpressRoute, az ügyfelek megteheti egy védelmi réteget biztosít adatokat az átvitel során.
+### <a name="vpn-and-expressroute"></a>VPN és ExpressRoute
+Biztonságos VPN-alagúton vagy [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) konfigurálni kell a biztonságos kapcsolatot az IaaS-webalkalmazás referenciaarchitektúra részeként üzembe helyezett erőforrásokat. Megfelelően állítja be a VPN-t vagy ExpressRoute, az ügyfelek hozzáadhatja egy védelmi réteget biztosít adatokat átvitel közben.
 
-Az Azure-ral biztonságos VPN-alagúton implementálásával egy a helyszíni hálózat és az Azure virtuális hálózat közötti virtuális magánhálózati kapcsolat hozhatók létre. Ezt a kapcsolatot az interneten keresztül történik, és lehetővé teszi az ügyfelek biztonságosan "tunnel" információkhoz belül az ügyfél hálózati és az Azure közötti egy titkosított kapcsolat. Telephelyek közötti VPN egy biztonságos, érett technológia, amely különböző méretű vállalatok által évtizedeken van telepítve. A [IPsec-bújtatásos mód](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) ezt a beállítást olyan titkosítási módszert használatban van.
+Az Azure-ral biztonságos VPN-alagút alkalmazásával egy helyszíni hálózat és a egy Azure virtuális hálózat közötti virtuális magánhálózati kapcsolat hozható létre. Ezt a kapcsolatot az interneten keresztül történik, és lehetővé teszi az ügyfelek számára, hogy egy titkosított kapcsolatot, az ügyfél hálózati és az Azure között lévő biztonságosan "csatorna" információkat. Site-to-Site VPN egy olyan biztonságos, érett technológia, évtizedes a vállalatok által központilag telepített. A [IPsec-alagút módú](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) ezt a beállítást, mint egy titkosítási mechanizmus használatban van.
 
-Forgalom a VPN-alagút belül haladnak át a telephelyek közötti VPN az internethez, mert a Microsoft egy másik, a megoldás még biztonságosabbá kapcsolat lehetőséget is kínál. Az Azure ExpressRoute egy dedikált WAN Azure és egy helyszíni helyre vagy az Exchange-szolgáltató közötti kapcsolat. ExpressRoute-kapcsolatok az interneten keresztül halad, mivel ezeket a kapcsolatokat további megbízhatóságát, gyorsabb sebességű, kisebb késések fordulnak elő, és kínálnak nagyobb biztonságot nyújtana tipikus kapcsolatok az interneten keresztül. Továbbá mivel ez a közvetlen kapcsolat az ügyfél telekommunikációs szolgáltató, az adatok nem használható az interneten keresztül tartalmaz, és ezért nem érhető el azt.
+Forgalom a VPN-alagút haladnak át a helyek közötti VPN-nel az interneten, mert a Microsoft kínál egy másik, még biztonságosabb kapcsolat lehetőséget. Az Azure ExpressRoute dedikált WAN Azure-ban és a egy helyszíni helyhez vagy egy Exchange-szolgáltató közötti kapcsolat. Az ExpressRoute-kapcsolatok az interneten keresztül halad, mivel a kapcsolatok az interneten keresztül ajánlja fel a további megbízhatóság megbízhatóbbak, gyorsabbak, kisebb a késésük, és biztonságosabbak a szokásos internetkapcsolatoknál. Továbbá mivel ez az ügyfél távközlési szolgáltató közvetlen kapcsolatot, az adatok nem az interneten keresztül továbbítani tartalmaz, és ezért nem érhető el.
 
-Ajánlott eljárások a biztonságos hibrid hálózat, amely egy helyi hálózati kibővíti az Azure-bA [elérhető](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid).
+Ajánlott eljárások végrehajtásához egy biztonságos hibrid hálózatot, amely kiterjeszti a helyszíni hálózatot az Azure-bA [elérhető](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid).
 
 ## <a name="disclaimer"></a>Jogi nyilatkozat
 
-- Ez a dokumentum csak tájékoztatási célokat szolgál. A MICROSOFT NEM VÁLLAL SEMMILYEN KIFEJEZETT, KIFEJEZETT, VÉLELMEZETT VAGY TÖRVÉNYES, HOGY A JELEN DOKUMENTUMBAN SZEREPLŐ INFORMÁCIÓK. Ez a dokumentum biztosított ",-van." Információk és nézetek ebben a dokumentumban, beleértve az URL-CÍMEK és más internetes webhelyet, értesítés nélkül változhatnak. Ez a dokumentum olvasásakor az ügyfelek az alkalmazást saját felelősségére használja.  
-- Ez a dokumentum nem biztosít semmilyen jogot semmilyen Microsoft-termék vagy a megoldások található szellemi tulajdonhoz rendelkező ügyfelek.  
-- Az ügyfelek azonban másolható és ez a dokumentum belső hivatkozási célokra használja.  
-- Bizonyos ajánlások a dokumentum azt eredményezheti, megnövekedett adat-, hálózati vagy számítási erőforrás-használat az Azure-ban, és megnövelheti az ügyfél Azure licencek vagy előfizetések költségeit.  
-- Ebbe az architektúrába célja, hogy az ügyfelek úgy, hogy az egyedi követelményeket alapjaként szolgálnak, és nem használható mint – egy termelési környezetben.
-- Ez a dokumentum hivatkozásként fejlesztése, és nem használható minden olyan eszközt, amely szerint az ügyfél megfelel adott megfelelőségi követelmények és szabályok meghatározásához. Az ügyfelek jóváhagyott ügyfél-hitelesítés megvalósításához a szervezetek jogi támogatnia kell kérnie.
+- Ez a dokumentum csak tájékoztatási célokat szolgál. A MICROSOFT NEM VÁLLAL SEMMILYEN KIFEJEZETT, KIFEJEZETT, VÉLELMEZETT VAGY KÖTELEZŐ GARANCIÁT A DOKUMENTUMBAN SZEREPLŐ INFORMÁCIÓRA VONATKOZÓAN. Ez a dokumentum biztosított "as-van." Információk és vélemények ebben a dokumentumban URL-CÍMEK és más internetes webhelyekre utaló hivatkozások értesítés nélkül változhatnak. Ez a dokumentum olvasásakor ügyfelek felelősségére használja.  
+- Ez a dokumentum nem biztosít semmilyen jogot semmilyen Microsoft-termék vagy a megoldások a szellemi tulajdonhoz ügyfelek.  
+- Ügyfelek másolhatja és használhatja ezt a dokumentumot belső, hivatkozási célokból.  
+- Bizonyos ajánlások a dokumentum eredményezhet megnövekedett adat-, hálózati vagy számítási erőforrás-használat az Azure-ban, és előfordulhat, hogy növelje az ügyfél Azure licencek vagy előfizetések költségeit.  
+- Ez az architektúra célja, hogy az ügyfelek számára az adott követelményekhez beállítása alapjaként szolgálja ki, és nem használható-éles környezetben van.
+- Ez a dokumentum referenciaként fejlesztik, és nem használható minden olyan eszközt, amely szerint egy ügyfél megfelel a megadott megfelelőségi követelmények és előírások meghatározásához. Ügyfelek jóváhagyott megvalósítás az ügyfeleknél a szervezet jogi támogatást kell kérnie.

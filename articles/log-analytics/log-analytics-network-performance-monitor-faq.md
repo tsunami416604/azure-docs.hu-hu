@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 008eac235cd6b75c4c1d95b64e91923dad5a5106
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 2821f3fa07d8d9ada02da212084639c93e469d0b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49355518"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408880"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
@@ -28,7 +28,7 @@ Ez a cikk rögzíti a gyakori kérdések (GYIK) kapcsolatos Network Performance 
 
 [Network Performance Monitor](/azure/networking/network-monitoring-overview) egy felhőalapú [hibrid hálózatfigyelés](log-analytics-network-performance-monitor-performance-monitor.md) megoldás, amely segítséget nyújt a hálózati infrastruktúrában különböző pont közötti hálózati teljesítmény figyelése. Emellett segítséget nyújt a hálózati kapcsolat figyeléséhez [szolgáltatások és alkalmazások végpontok](log-analytics-network-performance-monitor-service-endpoint.md) és [Azure ExpressRoute teljesítményének megfigyelése](log-analytics-network-performance-monitor-expressroute.md). 
 
-A Network Performance Monitor észleli a hálózati problémák, például az adatforgalom blackholing, útválasztási hibák és problémák, amelyek a hagyományos hálózati figyelési módszerek nem képes észlelni. A megoldás riasztásokat állít elő, és értesíti, amikor egy hálózati kapcsolat a tranzakciótól egy küszöbértéket. Biztosítja a hálózati teljesítménnyel kapcsolatos problémák időben történő észlelése és a egy adott hálózati szegmens vagy az eszköz a probléma okának localizes. 
+A Network Performance Monitor észleli a hálózati problémák, például az adatforgalom blackholing, útválasztási hibák és problémák, amelyek a hagyományos hálózati figyelési módszerek nem képes észlelni. A megoldás riasztásokat készít, és értesíti, amikor egy hálózati kapcsolat meghaladja a küszöbértéket. Emellett biztosítja a hálózat teljesítményével kapcsolatos problémák időbeni észlelését és leszűkíti a hiba forrásának helyszínét egy hálózati szegmensre vagy eszközre. 
 
 További információ a különböző funkciók által támogatott [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) online is elérhető.
 
@@ -61,7 +61,7 @@ További részleteket az egyes protokoll relatív előnyeit is megjeleníthet [I
 ### <a name="how-can-i-configure-a-node-to-support-monitoring-using-tcp-protocol"></a>Hogyan konfigurálhatok egy csomópont támogatja a figyelésre TCP protokoll használatával?
 A csomópont figyelésre TCP protokoll használatával támogatja: 
 * Győződjön meg arról, hogy a csomópont-platform a Windows Server (2008 SP1 vagy újabb).
-* Futtatás [EnableRules.ps1](https://aka.ms/npmpowershellscript) Powershell-parancsfájl a csomóponton. Lásd: [utasításokat](log-analytics-network-performance-monitor.md#configure-operations-management-suite-agents-for-monitoring) további részletekért.
+* Futtatás [EnableRules.ps1](https://aka.ms/npmpowershellscript) Powershell-parancsfájl a csomóponton. Lásd: [utasításokat](log-analytics-network-performance-monitor.md#configure-log-analytics-agents-for-monitoring) további részletekért.
 
 
 ### <a name="how-can-i-change-the-tcp-port-being-used-by-npm-for-monitoring"></a>Hogyan módosíthatom a figyeléshez az NPM által használt TCP-portot?

@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: wolfma
-ms.openlocfilehash: 3a9da3b0f2165dadd99691c6dc9e41cbf3d48620
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7f637014c5f3e246d67ae051f9304e2f2536d725
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340001"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427382"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -22,12 +22,12 @@ ms.locfileid: "49340001"
 
 Hibajavításokat tartalmaz, és megbízhatóság fejlesztései:
 
-* Hárítsa el a versenyhelyzet miatt lehetséges végzetes hiba történt a értékesítésére felismerő
-* Javítsa ki az adott Orientation tulajdonságok esetén lehetséges végzetes hiba történt.
-* További hiba és a paraméter ellenőrzése.
-* Objective-c javítsa ki a lehetséges végzetes hiba okozza a NSString felülbírálása nevét.
-* Objectice-C: látható-e API beállítása
-* JavaScript: javításokat kapcsolatos eseményeket és azok is észleltünk adattartalmakat.
+* Felismerő értékesítésére versenyhelyzet miatt rögzített lehetséges végzetes hiba
+* Rögzített lehetséges végzetes hiba esetén az adott Orientation tulajdonságait.
+* A hozzáadott további hiba és a paraméter ellenőrzése.
+* Objective-c rögzített lehetséges végzetes hiba okozza a NSString felülbírálása neve.
+* Objective-c igazítva látható-e API
+* JavaScript: Rögzített eseményeket és azok is észleltünk adattartalmakat.
 * Dokumentáció fejlesztései.
 
 Az a [mintaadattár](https://aka.ms/csspeech/samples), egy új mintát, JavaScript hozzá lett adva.

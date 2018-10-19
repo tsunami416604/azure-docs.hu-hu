@@ -1,6 +1,6 @@
 ---
-title: OMS Log Analytics használatával egyéni JSON-adatok gyűjtése |} A Microsoft Docs
-description: Egyéni JSON-adatforrások gyűjthetők be a Log Analytics használatával az OMS-ügynök Linux rendszeren.  Ezek az egyéni adatforrások JSON visszaadó curl vagy valamelyik, a FluentD mint 300 beépülő modulok például egyszerű parancsfájlokat is lehet. Ez a cikk ismerteti a adatgyűjteményben szükséges konfigurációnak.
+title: Egyéni JSON-adatokat a Log Analytics gyűjti |} A Microsoft Docs
+description: Egyéni JSON-adatforrások használata a Log Analytics-ügynök Linux Log analyticsbe lehessen gyűjteni.  Ezek az egyéni adatforrások JSON visszaadó curl vagy valamelyik, a FluentD mint 300 beépülő modulok például egyszerű parancsfájlokat is lehet. Ez a cikk ismerteti a adatgyűjteményben szükséges konfigurációnak.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,18 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9725a3df04ef28fc3a076c3c6ca6663e36b186a8
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 69338e438ced8871de1e994ee8b816f9dc40b13a
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48040268"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402352"
 ---
-# <a name="collecting-custom-json-data-sources-with-the-oms-agent-for-linux-in-log-analytics"></a>Egyéni OMS-ügynökkel rendelkező JSON-adatforrások gyűjtése a Log Analytics linuxhoz
-Egyéni JSON-adatforrások gyűjthetők be a Log Analytics használatával az OMS-ügynök Linux rendszeren.  Ezek az egyéni adatforrások lehet például visszaadó JSON egyszerű parancsfájlokat [curl](https://curl.haxx.se/) vagy az egyik [FluentD a mint 300 beépülő modulok](http://www.fluentd.org/plugins/all). Ez a cikk ismerteti a adatgyűjteményben szükséges konfigurációnak.
+# <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-log-analytics"></a>A Log Analytics Linuxhoz készült Log Analytics-ügynökkel rendelkező egyéni JSON adatforrások gyűjtése
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+Egyéni JSON-adatforrások Log analyticsbe Linuxhoz készült Log Analytics-ügynök használatával gyűjthetők össze.  Ezek az egyéni adatforrások lehet például visszaadó JSON egyszerű parancsfájlokat [curl](https://curl.haxx.se/) vagy az egyik [FluentD a mint 300 beépülő modulok](http://www.fluentd.org/plugins/all). Ez a cikk ismerteti a adatgyűjteményben szükséges konfigurációnak.
 
 > [!NOTE]
-> Linux v1.1.0 készült OMS-ügynök – 217 + kötelező megadni egyéni JSON-adatok
+> Log Analytics-ügynököket Linux v1.1.0-217 + kötelező megadni egyéni JSON-adatok
 
 ## <a name="configuration"></a>Konfiguráció
 
@@ -80,8 +81,8 @@ Adja hozzá a következő kimeneti beépülő modul konfiguráció a fő konfigu
 </match>
 ```
 
-### <a name="restart-oms-agent-for-linux"></a>Indítsa újra a Linuxhoz készült OMS-ügynök
-Indítsa újra az OMS-ügynök Linux-szolgáltatás a következő paranccsal.
+### <a name="restart-log-analytics-agent-for-linux"></a>Indítsa újra a Linuxhoz készült Log Analytics-ügynök
+Indítsa újra a Log Analytics-ügynök Linux-szolgáltatás a következő paranccsal.
 
     sudo /opt/microsoft/omsagent/bin/service_control restart 
 

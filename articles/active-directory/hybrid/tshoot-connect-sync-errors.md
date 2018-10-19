@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5180aa935ed5ab1a263c8dd002c2009ec89d5d86
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cb2b4bdee445587b32516c8db869170ab067b8d3
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311219"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406857"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Szinkronizálási hibák elhárítása
 Hibák fordulhatnak elő, amikor a azonosító adatok szinkronizálása a Windows Server Active Directory (AD DS) az Azure Active Directory (Azure AD). Ez a cikk szinkronizálási hibák, a lehetséges forgatókönyvek ezeket a hibákat és lehetséges módon javítsa a hibákat okozó némelyike különböző típusainak áttekintése. Ez a cikk a gyakori alkalmazáshiba-típusok tartalmazza, és a lehetséges hibák terjedhet ki.
@@ -178,7 +178,7 @@ b. A UserPrincipalName attribútum nem követi a kötelező.
 a. Győződjön meg arról, hogy a userPrincipalName attribútum támogatott karakterek és a szükséges formátumban tartalmaz-e.
 
 #### <a name="related-articles"></a>Kapcsolódó cikkek
-* [Felhasználók – Office 365-höz a címtár-szinkronizálás előkészítése](https://support.office.com/en-us/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
+* [Felhasználók – Office 365-höz a címtár-szinkronizálás előkészítése](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
 
 ### <a name="federateddomainchangeerror"></a>FederatedDomainChangeError
 #### <a name="description"></a>Leírás

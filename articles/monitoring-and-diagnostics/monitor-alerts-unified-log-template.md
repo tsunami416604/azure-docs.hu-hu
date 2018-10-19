@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 6096833381db7ef0d2f011d517aaad4ae63ce4d6
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 6ec07d02e61d50aa588d75ba7337eb9237e11207
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576867"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402897"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Naplóriasztás létrehozása Resource Manager-sablonnal
 Ez a cikk bemutatja, hogyan kezelheti [naplóriasztások](monitor-alerts-unified-log.md) programozott módon ipari méretekben, az Azure-ban [Azure Resource Manager-sablon](..//azure-resource-manager/resource-group-authoring-templates.md) keresztül [Azure PowerShell-lel](../azure-resource-manager/resource-group-template-deploy.md) és [Az azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md). Jelenleg az Azure-riasztások, támogatja a naplóriasztások a lekérdezések [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) és [Azure Application Insights](../application-insights/app-insights-analytics-tour.md).
 
 ## <a name="managing-log-alert-on-log-analytics"></a>A Log Analytics riasztás kezelése
-A riasztás [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) integrálva van a [új Azure-riasztások élmény](monitoring-overview-unified-alerts.md); közben továbbra is ki a Log Analytics API-k fut, és továbbra is a korábban kezeléséhezhasználtsémávalkompatibilitási[az OMS-portálon riasztásokat](..//log-analytics/log-analytics-alerts-creating.md).
+A riasztás [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) integrálva van a [új Azure-riasztások élmény](monitoring-overview-unified-alerts.md); közben továbbra is ki a Log Analytics API-k fut, és korábban használt sémával compatibile marad.
 
 > [!NOTE]
-> 2018. május 14., kezdve egy adott munkaterület minden riasztás automatikusan megkezdődik kiterjesztése az Azure-bA. A felhasználó is önkéntesen riasztások kiterjesztésének kezdeményezése az Azure-ra 2018. május 14. előtt. További információkért lásd: [riasztások kiterjesztése az OMS-ből Azure-ba való](monitoring-alerts-extend.md). 
+> 2018. május 14., kezdve egy adott munkaterület minden riasztás már automatikusan kiterjeszti az Azure-bA. További információkért lásd: [riasztások kiterjesztése az Azure-bA](monitoring-alerts-extend.md). 
 
 ### <a name="using-azure-resource-manager-template"></a>Az Azure Resource Manager-sablon használatával
 Riasztások a Log Analytics, amely a rendszeres időközönkénti mentett keresést futtat riasztási szabályok hozzák létre. Ha a lekérdezés egyeztetés eredményei adott feltételeknek, létrejön egy riasztásbejegyzés, és a egy vagy több műveletek futnak. 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 5f5b03090f374f936e03d487596ca0462feea348
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: b99c14e6022fa34d41caaa02bfc9feecb3c840ce
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042428"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407503"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Csatlakozás az Azure ITSM-eszközeit IT Service Management-összekötő használatával
 
@@ -63,9 +63,13 @@ Kapcsolat létrehozása előtt kell hozzáadni az ITSM-összekötő megoldással
     ![ITSMC megoldás hozzáadása](./media/log-analytics-itsmc/add-itsmc-solution.png)
 
 3.  Az a **OMS-munkaterület** területen válassza ki az Azure Log Analytics-munkaterületet, amelyre telepíteni a megoldás.
+   >[!NOTE]
+   >Az Azure Monitor folyamatos Váltás a Microsoft Operations Management Suite (OMS) részeként az OMS-munkaterületek most nevezzük Log Analytics-munkaterületek.
 4.  Az a **OMS-munkaterület beállításait** területen válassza ki az erőforráscsoport, ahol szeretné a megoldás-erőforrás létrehozásához.
 
     ![ITSMC munkaterület](./media/log-analytics-itsmc/itsmc-solution-workspace.png)
+    >[!NOTE]
+    >Az Azure Monitor folyamatos Váltás a Microsoft Operations Management Suite (OMS) részeként az OMS-munkaterületek most nevezzük Log Analytics-munkaterületek.
 
 5.  Kattintson a **Create** (Létrehozás) gombra.
 
@@ -250,7 +254,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Category_s | Kategória |
 | Title_s|  Rövid leírás |
 | Description_s|  Megjegyzések |
-| CreatedDate_t|  Megnyitva |
+| CreatedDate_t|  Megnyitott |
 | ClosedDate_t| Lezárt|
 | ResolvedDate_t|Feloldva|
 | Computer  | Konfigurációs elem |
@@ -290,7 +294,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
     - Győződjön meg arról, hogy a webalkalmazás sikeresen telepítve lesz, és a hibrid kapcsolat jön létre. A helyszíni Service Manager géppel sikeresen létrejött a kapcsolat ellenőrzéséhez keresse fel a webes alkalmazás URL-CÍMÉT, így a dokumentációban leírt módon a [hibrid kapcsolat](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).  
 
 2.  Ha ServiceNow adatait nem első szinkronizálva van a Log Analyticsbe, győződjön meg arról, hogy a ServiceNow-példány nem alszik. ServiceNow fejlesztési példányok néha lépjen alvó állapotba üresjáratban hosszabb ideig. Ellenkező esetben jelentse a problémát.
-3.  Ha az OMS-riasztás aktiválódik, de működik elemek nem jönnek létre az ITSM-termékben vagy konfigurációelemek nem létrehozott/kapcsolódó munkaelemek vagy egyéb általános információkat, tekintse meg a következő helyeken:
+3.  Ha a Log Analytics-riasztásokkal aktiválódik, de a munka elemek nem jönnek létre az ITSM-termékben vagy konfigurációelemek nem létrehozott/kapcsolódó munkaelemek vagy egyéb általános információkat, tekintse meg a következő helyeken:
  -  ITSMC: A megoldás munkahelyi kapcsolatok elemek/számítógépek stb összegzését jeleníti meg. Kattintson a csempére ábrázoló **összekötő állapota**, amely veszi, hogy **naplóbeli keresés** a megfelelő lekérdezéssel. Tekintse meg a rekordok naplózása LogType_S a hiba, további információt.
  - **Naplóbeli keresés** lap: közvetlenül a lekérdezéssel kapcsolatos hibák/információk megtekintéséhez `*`ServiceDeskLog_CL`*`.
 

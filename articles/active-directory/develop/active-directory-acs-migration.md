@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 3e4b4e904fd4615458e8d873baa1bf30588fe81d
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 4fd7617bf45608cdae15919a40920ea0d214acb8
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249434"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407471"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Útmutató: a hozzáférés-vezérlés az Azure-szolgáltatás áttelepítése
 
@@ -225,7 +225,7 @@ WS-Federation vagy WIF segítségével integrálhatja az Azure ad-vel, javasolju
 
 Egy másik módszert, hogy [Ez a kódminta](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation), WS-Federation beállításának némileg eltérő utasításait révén. Ez a kódminta nem használja a WIF, de ehelyett az ASP.NET 4.5-ös OWIN közbenső szoftvert. Azonban az utasításokat az alkalmazás regisztrációját a WIF használó alkalmazások esetében érvényesek, és nem egy prémium szintű Azure AD-licenc szükséges. 
 
-Ha ezt a módszert választja, tisztában kell [az Azure Active Directory aláírókulcs](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). Ez a megközelítés az Azure AD globális probléma jogkivonatok aláírókulcsot használja. Alapértelmezés szerint WIF nem frissül automatikusan aláírási kulcsokat. Az Azure AD globális aláíró kulcsai forog, amikor a WIF-implementációjának szüksége van, elő kell készíteni a módosítások elfogadásához. További információkért lásd: [fontos információ az Azure Active Directory aláírókulcs](https://msdn.microsoft.com/en-us/library/azure/dn641920.aspx).
+Ha ezt a módszert választja, tisztában kell [az Azure Active Directory aláírókulcs](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). Ez a megközelítés az Azure AD globális probléma jogkivonatok aláírókulcsot használja. Alapértelmezés szerint WIF nem frissül automatikusan aláírási kulcsokat. Az Azure AD globális aláíró kulcsai forog, amikor a WIF-implementációjának szüksége van, elő kell készíteni a módosítások elfogadásához. További információkért lásd: [fontos információ az Azure Active Directory aláírókulcs](https://msdn.microsoft.com/library/azure/dn641920.aspx).
 
 Ha integrálható az Azure AD-n keresztül az OpenID Connect vagy OAuth protokollt, javasoljuk, így. Széles körű dokumentációval és útmutatást az Azure AD integrálása a webes alkalmazások, elérhető a [az Azure AD fejlesztői útmutató](https://aka.ms/aaddev).
 

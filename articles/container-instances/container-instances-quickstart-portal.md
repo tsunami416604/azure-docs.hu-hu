@@ -1,26 +1,25 @@
 ---
-title: Rövid útmutató – Az első Azure Container Instances-tároló létrehozása az Azure Portal segítségével
-description: Ebben a rövid útmutatóban az Azure Portal használatával helyez üzembe egy tárolót az Azure Container Instances szolgáltatásban
+title: Rövid útmutató – alkalmazás futtatása az Azure Container Instances szolgáltatásban
+description: Ebben a rövid útmutatóban az Azure Portal használatával helyez üzembe egy Docker-tárolóban futó alkalmazást az Azure Container Instances szolgáltatáshoz
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 05/11/2018
-ms.author: marsma
+ms.date: 10/02/2018
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 6aa6fb27b2aa7c8b9614e5812fadc629b1e185f8
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 6ab7680559400c0a270142563ecf7e251c2cd1b8
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34076238"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857720"
 ---
-# <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>Rövid útmutató: Az első tároló létrehozása az Azure Container Instances szolgáltatásban
+# <a name="quickstart-run-an-application-in-azure-container-instances"></a>Rövid útmutató: alkalmazás futtatása az Azure Container Instances szolgáltatásban
 
-Az Azure Container Instances segítségével egyszerűen hozhat létre és felügyelhet Docker-tárolókat az Azure-ban anélkül, hogy virtuális gépeket kellene kiépítenie, vagy egy magasabb szolgáltatási szintre kellene váltania. Ebben a rövid útmutatóban az Azure Portal használatával létrehozhat tárolót az Azure-ban, és közzéteheti az interneten egy teljes tartománynévvel (FQDN-nel). Néhány beállítás konfigurálása után a következőt láthatja a böngészőben:
+Az Azure Container Instances használatával egyszerűen és gyorsan futtathat Docker-tárolókat az Azure-ban. Nincs szükség virtuális gépek üzembe helyezésére vagy teljes tárolóvezénylési platform, például a Kubernetes használatára. Ebben a rövid útmutatóban az Azure Portal használatával tárolót hozhat létre az Azure-ban, és az alkalmazását egy teljes tartománynévvel (FQDN-nel) elérhetővé teheti. Néhány beállítás konfigurálása és a tároló üzembe helyezése után tallózhat a futó alkalmazásban:
 
-![Az Azure Container Instances használatával üzembe helyezett alkalmazás képe a böngészőben][aci-portal-07]
+![Az Azure Container Instances szolgáltatáshoz üzembe helyezett alkalmazás képe a böngészőben][aci-portal-07]
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -38,7 +37,7 @@ Válassza az **Erőforrás létrehozása** > **Tárolók** > **Container Instanc
 
 * Tárolónév: `mycontainer`
 * Tárolórendszerkép: `microsoft/aci-helloworld`
-* Erőforráscsoport: `myResourceGroup`
+* Erőforráscsoport: **Új létrehozása** > `myResourceGroup`
 
 ![Új tárolópéldány alapbeállításainak konfigurálása az Azure Portalon][aci-portal-03]
 
@@ -54,11 +53,11 @@ Miután az érvényesítés befejeződött, egy összefoglalás jelenik meg a t�
 
 ![Új tárolópéldány beállításainak összefoglalása az Azure Portalon][aci-portal-05]
 
-Az üzembe helyezés kezdetekor az irányítópulton egy csempe jelenik meg, amely jelzi, hogy az üzembe helyezés folyamatban van. Az üzembe helyezés végeztével a csempe az új tárolópéldányt jeleníti meg.
+Az üzembe helyezés kezdetekor egy értesítés jelenik meg, amely jelzi, hogy az üzembe helyezés folyamatban van. Amikor a tárolócsoport üzembe helyezése megtörtént, egy újabb értesítés jelenik meg.
 
 ![Új tárolópéldány létrehozásának folyamata az Azure Portalon][aci-portal-08]
 
-Válassza ki a **mycontainer** tárolópéldányt a tárolópéldány tulajdonságainak megjelenítéséhez. Jegyezze fel a tárolópéldány teljes tartománynevét (**FQDN**) és **Állapotát**.
+Nyissa meg a tárolócsoport áttekintését az **Erőforráscsoportok** > **myResourceGroup** > **mycontainer** útvonalon. Jegyezze fel a tárolópéldány teljes tartománynevét (**FQDN**) és **Állapotát**.
 
 ![Tárolócsoport áttekintése az Azure Portalon][aci-portal-06]
 
@@ -72,7 +71,7 @@ Gratulálunk! Csupán néhány beállítás konfigurálásával üzembe helyezet
 
 A tárolópéldányok naplóinak megtekintése hasznos lehet a tárolóval vagy az azon futtatott alkalmazással kapcsolatos hibák elhárítása során.
 
-A tároló naplóinak megtekintéséhez válassza a **BEÁLLÍTÁSOK** területen a **Tárolók**, majd a **Naplók** lehetőséget. Látnia kell a HTTP GET kérést is, amely akkor jött létre, amikor megtekintette az alkalmazást a böngészőjében.
+A tároló naplóinak megtekintéséhez a **Beállítások** területen válassza a **Tárolók**, majd a **Naplók** lehetőséget. Látnia kell a HTTP GET kérést is, amely akkor jött létre, amikor megtekintette az alkalmazást a böngészőjében.
 
 ![Tárolónaplók az Azure Portalon][aci-portal-11]
 
@@ -88,7 +87,7 @@ Válassza az **Igen** lehetőséget, amikor a megerősítési párbeszédpanel m
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy tárolópéldányt egy a nyilvános Docker Hub beállításjegyzékben található rendszerképből. Ha saját maga szeretne létrehozni és üzembe helyezni egy tárolórendszerképet az Azure Container Instances szolgáltatásban egy privát Azure-tárolóregisztrációs adatbázisból, lépjen tovább az Azure Container Instances oktatóanyagára.
+Ebben a rövid útmutatóban létrehozott egy tárolópéldányt egy a nyilvános Docker Hub beállításjegyzékben található rendszerképből. Ha szeretne létrehozni és üzembe helyezni egy tárolórendszerképet egy privát Azure-tárolóregisztrációs adatbázisból, lépjen tovább az Azure Container Instances oktatóanyagára.
 
 > [!div class="nextstepaction"]
 > [Az Azure Container Instances oktatóanyaga](./container-instances-tutorial-prepare-app.md)

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 9b688ca6faaa7e0d84dff0ae28e2a9b8b8279490
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 33a9cc0a7b3d18004e19d73a0d9b91bf33cdb055
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856878"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408829"
 ---
 # <a name="azure-advanced-threat-detection"></a>Az Azure fejlett fenyegetésészlelés
 
-Azure-szolgáltatások, például az Azure Active Directory (Azure AD), az Azure Operations Management Suite (OMS) és az Azure Security Center észlelési funkciót a komplex veszélyforrások elleni beépített ajánlatok. Ez a témakörgyűjtemény biztonsági szolgáltatások és funkciók segítségével gyorsan és egyszerűen, mi történik, az Azure-környezetek belül.
+Azure-szolgáltatások, például az Azure Active Directory (Azure AD), Azure Log Analytics és az Azure Security Center észlelési funkciót a komplex veszélyforrások elleni beépített ajánlatok. Ez a témakörgyűjtemény biztonsági szolgáltatások és funkciók segítségével gyorsan és egyszerűen, mi történik, az Azure-környezetek belül.
 
 Az Azure konfigurálására és testreszabására az alkalmazások telepítésének követelményeinek megfelelő biztonsági lehetőségek széles tárházát biztosítja. Ez a cikk leírja, hogyan mindezen követelmények teljesítése érdekében.
 
@@ -75,21 +75,21 @@ A PIM segítségével:
 
 -   A kiemelt szerepkörű való hozzáféréssel kapcsolatos riasztásokat kaphat.
 
-## <a name="operations-management-suite"></a>Operations Management Suite
+## <a name="azure-log-analytics"></a>Azure Log Analytics
 
-[Az Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) van a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúrára. OMS felhőalapú szolgáltatásként van megvalósítva, mert rendelkezhet, és gyorsan és az infrastrukturális szolgáltatásokra fordítandó minimális kiadások mellett. Új biztonsági funkciók bevezetése automatikus, mentése folyamatban van a folyamatos karbantartás és frissítés költségei.
+[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) van a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúrára. Log Analytics felhőalapú szolgáltatás valósul meg, mert rendelkezhet, és gyorsan és az infrastrukturális szolgáltatásokra fordítandó minimális kiadások mellett. Új biztonsági funkciók bevezetése automatikus, mentése folyamatban van a folyamatos karbantartás és frissítés költségei.
 
-Amellett, hogy értékes szolgáltatásokat biztosít a saját, OMS integrálható a System Center-összetevőket, például [System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/), a meglévő biztonsági felügyeleti beruházások kiterjeszthetők a felhőbe kiterjeszteni. A System Center és az OMS együttműködve teljes hibrid felügyeleti megoldást képes biztosítani.
+Amellett, hogy értékes szolgáltatásokat biztosít a saját, a Log Analytics integrálható a System Center-összetevőket, például [System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/), a meglévő biztonsági felügyeleti beruházások kiterjeszthetők a felhőbe kiterjeszteni. A System Center és a Log Analytics is együttműködve teljes hibrid felügyeleti élményt nyújtanak.
 
 ### <a name="holistic-security-and-compliance-posture"></a>Átfogó biztonsági és megfelelőségi állapotáról
 
-A [az OMS biztonsági és auditálási irányítópultja](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) nyújt átfogó képet kaphat a szervezet informatikai biztonsági helyzetét, figyelmet igénylő jelentős problémákat beépített keresési lekérdezések révén. A biztonsági és auditálási irányítópultja az OMS-ben a biztonsággal kapcsolatos minden a kezdőképernyőn. Magas szintű betekintést tesz lehetővé a számítógépek biztonsági állapotába. Minden események az elmúlt 24 óra, 7 nap vagy bármely más egyéni időkeret is megtekintheti.
+A [Log Analytics biztonsági és auditálási irányítópultja](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) nyújt átfogó képet kaphat a szervezet informatikai biztonsági helyzetét, figyelmet igénylő jelentős problémákat beépített keresési lekérdezések révén. A biztonsági és auditálási irányítópultja a kezdőképernyőn a Log Analytics biztonsággal kapcsolatos minden. Magas szintű betekintést tesz lehetővé a számítógépek biztonsági állapotába. Minden események az elmúlt 24 óra, 7 nap vagy bármely más egyéni időkeret is megtekintheti.
 
-OMS-irányítópultok segítségével gyorsan és könnyen megérthetik, bármilyen környezet általános biztonsági állapotát, az összes informatikai műveleteket, beleértve a szoftverfrissítések kontextusában értékeléséhez, kártevőirtók felmérése és alapkonfigurációk frissítése. Biztonsági naplózási adatok érhető el azonnal a biztonsági és megfelelőségi ellenőrzési eljárások egyszerűsítésére.
+A log Analytics segítségével gyorsan és könnyen megérthetik, bármilyen környezet általános biztonsági állapotát, az összes informatikai műveleteket, beleértve a szoftverfrissítések kontextusában értékeléséhez, kártevőirtók felmérése és alapkonfigurációk frissítése. Biztonsági naplózási adatok érhető el azonnal a biztonsági és megfelelőségi ellenőrzési eljárások egyszerűsítésére.
 
-![Az OMS biztonsági és auditálási irányítópultja](./media/azure-threat-detection/azure-threat-detection-fig3.jpg)
+![A Log Analytics biztonsági és auditálási irányítópultja](./media/azure-threat-detection/azure-threat-detection-fig3.jpg)
 
-Az OMS biztonsági és auditálási irányítópultja négy fő kategóriába sorolhatók:
+A Log Analytics biztonsági és auditálási irányítópultja négy fő kategóriába sorolhatók:
 
 -   **Biztonsági tartományok**: lehetővé teszi, hogy további biztonsági rekordok időbeli; hozzáférési kártevő értékelések; a frissítési felmérések; nézet hálózati biztonság, identitás, ismerje meg és érheti el az adatokat; biztonsági események; rendelkező számítógépek megtekintése és gyorsan hozzáférhet az Azure Security Center irányítópultján.
 
@@ -102,25 +102,25 @@ Az OMS biztonsági és auditálási irányítópultja négy fő kategóriába so
 -   **Gyakori biztonsági lekérdezések**: felsorolja a leggyakoribb biztonsági lekérdezésekről, amelyek segítségével figyelni a környezetet. Minden lekérdezés kiválasztásakor a keresési ablak megnyílik, és ez a lekérdezés eredményeit jeleníti meg.
 
 ### <a name="insight-and-analytics"></a>Az Insight and analytics
-Középső [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) van az OMS-tárház, amely az Azure-ban.
+Középső [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) van a tárházhoz, amely az Azure-ban.
 
 ![Az Insight and analytics diagramja](./media/azure-threat-detection/azure-threat-detection-fig4.png)
 
 Ön forrásból gyűjthet adatokat a tárházba, csatlakoztatott adatforrások konfigurálása és megoldások hozzáadása az előfizetéséhez.
 
-![Az OMS-irányítópulton ](./media/azure-threat-detection/azure-threat-detection-fig5.png)
+![A Log Analytics-irányítópult ](./media/azure-threat-detection/azure-threat-detection-fig5.png)
 
 Adatforrások és megoldások minden egyes külön erőforrásrekord-típusok létrehozása a saját tulajdonságai készletét, de továbbra is elemezheti őket össze a tárházban lekérdezésekben. Együttműködést a különböző források által gyűjtött adatok különböző használhatja ugyanazokat az eszközöket és módszereket.
 
 
-A Log Analytics-szal a legtöbb van az OMS portálján, amely bármilyen böngészőben fut, és biztosít hozzáférést a konfigurációs beállításokhoz és több eszközhöz, elemezheti és kezelhetők az összegyűjtött adatokat. A portálról használhat:
+A legtöbb Log Analytics-szal, amely bármilyen böngészőben fut, és biztosít hozzáférést a konfigurációs beállításokhoz és több eszközhöz, elemezheti és kezelhetők az összegyűjtött adatokat az Azure Portalon keresztül történik. A portálról használhat:
 * [Naplókeresések](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches) ahol elemezheti az összegyűjtött adatokat lekérdezéseket hozhat létre.
 * [Az irányítópultok](https://docs.microsoft.com/azure/log-analytics/log-analytics-dashboards), amelyeket a legértékesebb kereséseinek grafikus nézeteivel testre is szabhatja.
 * [Megoldások](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions), további funkciókat és elemzőeszközöket biztosító.
 
 ![Elemzési eszközök](./media/azure-threat-detection/azure-threat-detection-fig6.png)
 
-A megoldások funkciókkal bővítik ki a Log Analytics szolgáltatást. Ezek elsősorban futtatása a felhőben, és az OMS-adattárban gyűjtött adatok elemzését végzik. Megoldások is meghatározhatnak új erőforrásrekord-típusok összegyűjtése, amelyek naplókeresésekkel, vagy egy további felhasználói felület, amely a megoldás az OMS-irányítópulton biztosít használatával elemezhetők.
+A megoldások funkciókkal bővítik ki a Log Analytics szolgáltatást. Elsősorban futtatása a felhőben és a Log Analytics-adattárban gyűjtött adatok elemzését végzik. Megoldások is meghatározhatnak új erőforrásrekord-típusok összegyűjtése, amelyek naplókeresésekkel, vagy egy további felhasználói felület, amely a megoldást biztosít a Log Analytics-Irányítópult segítségével elemezhetők.
 
 A biztonsági és auditálási irányítópultja, amelyek az ilyen típusú megoldások.
 
@@ -353,13 +353,13 @@ Az árnyékinformatika informatikai kockázatfelmérés, a szabályzatok kénysz
 
 A cloud App Security integrálja a láthatóságot a felhővel:
 
--   A Cloud Discoveryvel – leképezése és azonosítása a felhőalapú környezet és a felhőalapú alkalmazások a szervezet használja.
+-   a Cloud Discoveryvel – leképezése és azonosítása a felhőalapú környezet és a felhőalapú alkalmazások a szervezet használja.
 
 -   Alkalmazások engedélyezése és a nem a felhőben lévő alkalmazásokhoz.
 
--   Könnyen telepíthető alkalmazás-összekötők, amelyek kihasználják a szolgáltatói API-k, a láthatósága és irányítása érdekében alkalmazások használatával.
+-   könnyen telepíthető alkalmazás-összekötők, amelyek kihasználják a szolgáltatói API-k, a láthatósága és irányítása érdekében alkalmazások használatával.
 
--   Útmutatás nyújtása a folyamatos ellenőrzés a beállítást, és rendszeres finomhangolásával való elősegítésével, házirendek szerint.
+-   útmutatás nyújtása a folyamatos ellenőrzés a beállítást, és rendszeres finomhangolásával való elősegítésével, házirendek szerint.
 
 Ezekből a forrásokból származó adatok gyűjtése, a Cloud App Security kifinomult elemzést futtat rajta. Azonnal riasztást küld a rendellenes tevékenységeket, és a felhőkörnyezet mélyebb betekintést nyújt. A Cloud App Security szolgáltatásban konfigurálhat egy szabályzatot, és, amellyel megvédheti a felhőalapú környezetben.
 

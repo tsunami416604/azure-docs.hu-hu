@@ -15,12 +15,12 @@ ms.date: 09/12/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: e67428116c66c05d83efbb217d7ec81f75124051
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 06df705aabce06c37f04de3fb5046d822f9f981e
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45540842"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404953"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Meglévő helyszíni proxykiszolgálók használata
 
@@ -120,7 +120,7 @@ A kezdeti regisztráció a következő végpontok hozzáférés engedélyezése:
 Ha nem engedélyezi a csatlakozást a teljes tartománynév alapján, és meg kell adnia ehelyett az IP-címtartományok, használja az alábbi beállításokat:
 
 * Az összes destinations összekötő kimenő elérését teszi lehetővé.
-* Az összekötő kimenő hozzáférést minden olyan a [Azure adatközpont IP-címtartományait](https://www.microsoft.com/en-gb/download/details.aspx?id=41653). Az Azure-adatközpont IP-címtartományok lista segítségével a kihívás abban áll, hogy hetente kell frissíteni. Kell helyezni egy folyamatot annak érdekében, hogy az, hogy a hozzáférési szabályok ennek megfelelően frissülnek. Csak egy részét az IP-címek okozhat a konfigurációt, kezdetét.
+* Az összekötő kimenő hozzáférést minden olyan a [Azure adatközpont IP-címtartományait](https://www.microsoft.com//download/details.aspx?id=41653). Az Azure-adatközpont IP-címtartományok lista segítségével a kihívás abban áll, hogy hetente kell frissíteni. Kell helyezni egy folyamatot annak érdekében, hogy az, hogy a hozzáférési szabályok ennek megfelelően frissülnek. Csak egy részét az IP-címek okozhat a konfigurációt, kezdetét.
 
 #### <a name="proxy-authentication"></a>Proxy hitelesítése
 

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 33126c094a55bc57edd49a54fbc4f5acd7401998
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 1aeb1315cfafbcdf3507a6e49d71e1f1e69b537c
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079004"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430187"
 ---
 # <a name="configure-your-automated-machine-learning-experiment"></a>Az automatikus machine learning-kísérlet konfigurálása
 
@@ -147,7 +147,7 @@ Támogatott számítási lehetőségek közül választhat:
 2.  Egy távoli gépen a felhőben – [Azure adatelemzési virtuális gép](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/) Linux – operációs rendszert futtató rendelkezik egy nagy méretű adathalmazt, és a egy nagy méretű géphez, amely elérhető az Azure Cloud vertikálisan. 
 3.  Az Azure Batch AI-fürt – A felügyelt fürt, amely beállíthat horizontális felskálázása és gépi Tanulási automatikus ismétlések párhuzamosan is futtatni. 
 
-
+<a name='configure-experiment'/>
 ## <a name="configure-your-experiment-settings"></a>A kísérlet beállításainak konfigurálása
 
 Vannak, amelyek segítségével konfigurálhatja az automatikus gépi Tanulási kísérlet több belül. Ezeket a paramétereket állítja be hárítható el egy `AutoMLConfig` objektum.

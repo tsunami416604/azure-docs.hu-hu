@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 02/16/2017
+ms.date: 10/09/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 5ab5452aec5b0371caaf437b6e364ed7b922db3a
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 9efa6dc8427c58c82702fd5b3449fcd4805bf9e3
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162257"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902093"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>A Linuxon futó Azure App Service bemutatása
 
@@ -33,12 +33,12 @@ Az Linuxon futó App Service számos beépített rendszerképet támogat a fejle
 
 | Nyelv | Támogatott verziók |
 |---|---|
-| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 9.4 |
+| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 8.11, 9.4, 10.1 verzió |
 | Java* | 8.0 |
 | PHP | 5.6, 7.0, 7.2 |
+| Python (előzetes verzió) | 3.7 |
 | .NET Core | 1.0, 1.1, 2.0 |
 | Ruby | 2.3 |
-| Indítás | 1.0 |
 | Apache Tomcat | 8.5, 9.0 |
 
 További információt a [Java-webalkalmazás létrehozása a Linuxon futó App Service-ben](https://docs.microsoft.com/azure/app-service/containers/quickstart-java) című cikkben tekinthet meg.
@@ -91,15 +91,25 @@ Az SCM-webhelyet a **Fejlesztési eszközök** menüben található **Haladó es
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerkedjen meg a Linuxon futó App Service szolgáltatással az alábbi hivatkozásokat követve. Kérdéseit és észrevételeit megoszthatja [fórumunkon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview).
+A következő cikkek a Linuxon futó App Service különböző nyelveken írt webalkalmazásokkal való használatának első lépéseit tartalmazzák:
 
-* [Egyéni Docker-rendszerkép használata a Web App for Containers szolgáltatásban](quickstart-docker-go.md)
-* [A .NET Core használata a Linuxon futó Azure App Service-ben](quickstart-dotnetcore.md)
-* [A Ruby használata a Linuxon futó Azure App Service-ben](quickstart-ruby.md)
-* [Azure App Service Web App for Containers – gyakori kérdések](app-service-linux-faq.md)
-* [SSH-támogatás a Linuxon futó Azure App Service számára](app-service-linux-ssh-support.md)
-* [Átmeneti környezetek beállítása az Azure App Service-ben](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-* [Docker Hub folyamatos üzembe helyezése Web App for Containers használatával](./app-service-linux-ci-cd.md)
+* [.NET Core](quickstart-dotnetcore.md)
+* [PHP](quickstart-dotnetcore.md)
+* [Node.js](quickstart-nodejs.md)
+* [Java](quickstart-java.md)
+* [Python](quickstart-python.md)
+* [Ruby](quickstart-ruby.md)
+* [Go](quickstart-docker-go.md)
+* [Többtárolós alkalmazások](quickstart-multi-container.md)
+
+A Linuxon futó App Service további részleteihez lásd a következő cikkeket is:
+
+* [App Service Linuxhoz, GYIK](app-service-linux-faq.md)
+* [SSH-támogatás a Linuxon futó App Service számára](app-service-linux-ssh-support.md)
+* [Átmeneti környezetek beállítása az App Service-ben](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+* [Docker Hub – folyamatos üzembe helyezés](app-service-linux-ci-cd.md)
+
+Kérdéseit és észrevételeit megoszthatja [fórumunkon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview).
 
 <!--Image references-->
 [1]: ./media/app-service-linux-intro/kudu-docker-logs.png

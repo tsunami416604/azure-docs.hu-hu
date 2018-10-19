@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 6bd195b8be558cfcfda10a750fbfe91079c6b094
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 38537f3e2884160a99d333f1414d3f45755cd4f9
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043581"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404613"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>VMware Monitoring (előzetes verzió) megoldás a Log Analyticsben
 
@@ -31,7 +31,7 @@ ms.locfileid: "48043581"
 
 A VMware Monitoring megoldás a Log Analytics, amely segít a központi naplózást és figyelést nagy méretű VMware-naplók létrehozása megoldás is. Ez a cikk bemutatja, hogyan hibaelhárítása, rögzítése és az ESXi-gazdagépek, a megoldás segítségével egy helyen kezelheti. A megoldás révén láthatja a részletes adatok egy helyen az ESXi gazdagépek. Láthatja a legtöbbször előforduló események száma, állapotát és az ESXi-gazdagép naplóinak keresztül elérhető virtuális gép és az ESXi-gazdagépek trendeket. Elháríthatja, megtekintésével és központosított ESXi-gazdagép naplóinak keresése. És a naplóbeli keresési lekérdezések alapján riasztásokat is létrehozhat.
 
-A megoldás az adatok leküldése egy cél virtuális Gépen, amely rendelkezik az OMS-ügynök az ESXi-gazdagépről natív syslog funkcióit. Azonban a megoldás nem fájlok írása a cél virtuális Gépen belül syslog be. Az OMS-ügynök port 1514 megnyílik, és ez figyeli. Az adatok kap, ha az OMS-ügynök leküldéses az adatok Log analyticsbe.
+A megoldás az adatok leküldése egy cél virtuális Gépen, amely rendelkezik a Log Analytics-ügynököket az ESXi-gazdagépről natív syslog funkcióit. Azonban a megoldás nem fájlok írása a cél virtuális Gépen belül syslog be. A Log Analytics-ügynököket port 1514 megnyílik, és ez figyeli. Az adatok kap, miután a Log Analytics-ügynököket leküldi az adatok Log analyticsbe.
 
 ## <a name="install-and-configure-the-solution"></a>Telepítse és konfigurálja a megoldást
 A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat.
@@ -42,7 +42,9 @@ A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi i
 a vSphere ESXi-gazdagép egy 5.5-ös, 6.0-s és 6.5-ös
 
 #### <a name="prepare-a-linux-server"></a>Egy Linux-kiszolgáló előkészítése
-Hozzon létre egy Linux operációs rendszert a virtuális gép az összes syslog-adatokat fogad az ESXi-gazdagépek. A [OMS Linux-ügynök](log-analytics-linux-agents.md) minden ESXi-gazdagép rendszernaplóadatokat gyűjtemény pontja. Több ESXi-gazdagépek segítségével továbbítják a naplókat a egyetlen Linux rendszerű kiszolgálón, az alábbi példában látható módon.  
+Hozzon létre egy Linux operációs rendszert a virtuális gép az összes syslog-adatokat fogad az ESXi-gazdagépek. A [Log Analytics Linux-ügynök](log-analytics-linux-agents.md) minden ESXi-gazdagép rendszernaplóadatokat gyűjtemény pontja. Több ESXi-gazdagépek segítségével továbbítják a naplókat a egyetlen Linux rendszerű kiszolgálón, az alábbi példában látható módon.
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]  
 
    ![Syslog folyamat](./media/log-analytics-vmware/diagram.png)
 
@@ -56,14 +58,14 @@ Hozzon létre egy Linux operációs rendszert a virtuális gép az összes syslo
 
     ![vspherefwproperties](./media/log-analytics-vmware/vsphere3.png)  
 1. Ellenőrizze a vSphere-konzolt annak ellenőrzésére, hogy a syslog helyesen van beállítva. Erősítse meg az ESXI-gazdagépen erre a portra **1514** van konfigurálva.
-1. Töltse le és telepítse az OMS-ügynök Linux rendszeren a Linux-kiszolgálón. További információkért lásd: a [Linuxhoz készült OMS-ügynök dokumentációját](https://github.com/Microsoft/OMS-Agent-for-Linux).
-1. A Linuxhoz készült OMS-ügynök telepítése után nyissa meg a /etc/opt/microsoft/omsagent/sysconf/omsagent.d könyvtárat, és a tulajdonos/csoport és az engedélyek a /etc/opt/microsoft/omsagent/conf/omsagent.d címtár és a módosítás a vmware_esxi.conf fájl másolása a fájl. Példa:
+1. Töltse le és telepítse a Linuxhoz készült Log Analytics-ügynököt a Linux-kiszolgálón. További információkért lásd: a [Linux-ügynök a Log Analytics dokumentációja](https://github.com/Microsoft/OMS-Agent-for-Linux).
+1. A Log Analytics-ügynök Linux van telepítve, keresse fel a /etc/opt/microsoft/omsagent/sysconf/omsagent.d könyvtár és másolása után az vmware_esxi.conf fájlt a /etc/opt/microsoft/omsagent/conf/omsagent.d könyvtárat és a módosítás a tulajdonos csoport és a a fájlhoz tartozó engedélyeket. Példa:
 
     ```
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
-1. Indítsa újra az OMS-ügynök Linux futtatásával `sudo /opt/microsoft/omsagent/bin/service_control restart`.
+1. Indítsa újra a Linuxhoz készült Log Analytics-ügynök futtatásával `sudo /opt/microsoft/omsagent/bin/service_control restart`.
 1. A Linux-kiszolgálón és az ESXi-gazdagép közötti kapcsolat teszteléséhez használja a `nc` parancsot az ESXi-gazdagépen. Példa:
 
     ```
@@ -78,11 +80,11 @@ Hozzon létre egy Linux operációs rendszert a virtuális gép az összes syslo
     Ha a napló keresési eredmények megtekintése a fenti képen láthatóhoz hasonló, beállíthat már használja a VMware Monitoring megoldás irányítópultján.  
 
 ## <a name="vmware-data-collection-details"></a>VMware-adatok gyűjtemény részletei
-A VMware Monitoring megoldás különböző mérőszámokban és naplófájlokban teljesítményadatokat gyűjt az OMS-ügynökök használatával Linux rendszeren, hogy engedélyezte az ESXi-gazdagépek.
+A VMware Monitoring megoldás különböző mérőszámokban és naplófájlokban teljesítményadatokat gyűjt a Log Analytics-ügynökök használatával Linux rendszeren, hogy engedélyezte az ESXi-gazdagépek.
 
 Az alábbi táblázat adatgyűjtési módszerek és egyéb adatok gyűjtése hogyan részleteit.
 
-| Platform | A Linuxhoz készült OMS-ügynök | SCOM-ügynök | Azure Storage | Az SCOM szükséges? | Az SCOM agent adatküldés felügyeleticsoport-n keresztül | Gyűjtés gyakorisága |
+| Platform | A Linuxhoz készült log Analytics-ügynök | SCOM-ügynök | Azure Storage | Az SCOM szükséges? | Az SCOM agent adatküldés felügyeleticsoport-n keresztül | Gyűjtés gyakorisága |
 | --- | --- | --- | --- | --- | --- | --- |
 | Linux |&#8226; |  |  |  |  |át 3 percenként |
 
@@ -190,12 +192,12 @@ Több oka lehet:
 
       Ha ez nem jár sikerrel, a speciális konfigurációt a vSphere-beállítások valószínűleg helytelen. Lásd: [konfigurálása a rendszernaplók gyűjtése](#configure-syslog-collection) az ESXi-gazdagépen, a syslog-továbbítás beállításával kapcsolatos információkat.
   1. Ha syslog-port kapcsolat létrejött, de nem is jelennek meg adatok, majd töltse be újra az ESXi-gazdagépen a syslog szerint az ssh használata a következő paranccsal: ` esxcli system syslog reload`
-* A virtuális gép az OMS-ügynök nincs megfelelően beállítva. Ennek teszteléséhez hajtsa végre az alábbi lépéseket:
+* A virtuális Gépet a Log Analytics-ügynök nincs megfelelően beállítva. Ennek teszteléséhez hajtsa végre az alábbi lépéseket:
 
   1. A log Analytics figyeli a 1514 porthoz. Győződjön meg arról, hogy meg nyitva, futtassa a következő parancsot: `netstat -a | grep 1514`
   1. Megtekintheti az port `1514/tcp` megnyitásához. Ha nem, ellenőrizze, hogy a omsagent megfelelően van-e telepítve. Ha nem látja a portadatokat, majd a syslog-portjára, nem nyissa meg a virtuális gépen.
 
-    a. Ellenőrizze, hogy az OMS-ügynök fut-e a `ps -ef | grep oms`. Ha nem fut, a folyamat elindításához futtassa a parancsot ` sudo /opt/microsoft/omsagent/bin/service_control start`
+    a. Győződjön meg arról, hogy a Log Analytics-ügynök fut-e a `ps -ef | grep oms`. Ha nem fut, a folyamat elindításához futtassa a parancsot ` sudo /opt/microsoft/omsagent/bin/service_control start`
 
     b. Nyissa meg az `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` fájlt.
 

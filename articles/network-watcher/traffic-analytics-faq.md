@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: debefb329304235818b7b441122b90ae9a2834a9
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 69d2d80e40400cc7fa40aeb5a163dce5036905ab
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578310"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402760"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>A TRAFFIC analytics – gyakori kérdések
 
@@ -77,9 +77,9 @@ Igen.
 
 Igen. Ha kiválaszt egy meglévő munkaterületet, ügyeljen arra, hogy azt az új lekérdezési nyelvre migrálták. Ha nem szeretne frissítse a munkaterületet, létre kell hozzon létre egy újat. Az új lekérdezési nyelvre kapcsolatos további információkért lásd: [Azure Log Analytics új naplókeresésre frissítési](../log-analytics/log-analytics-log-search-upgrade.md).
 
-## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-operations-management-suite-workspace-be-in-a-different-subscription"></a>Azure Storage-fiókom lehet egy adott előfizetéshez, és egy másik előfizetésben kell az Operations Management Suite-munkaterület?
+## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>Az Azure Storage-fiókom lehet egy adott előfizetéshez, és a Log Analytics-munkaterületnek kell egy másik előfizetésben?
 
-Igen, az Azure Storage-fiók lehet egy adott előfizetéshez, és az Operations Management Suite-munkaterület lehet egy másik előfizetésben található.
+Igen, az Azure Storage-fiók lehet egy adott előfizetéshez, és a Log Analytics-munkaterület lehet egy másik előfizetésben található.
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>Tárolhatok nyers naplók egy másik előfizetéshez?
 
@@ -115,7 +115,7 @@ Ha a probléma továbbra is fennáll, a aggályokat vethet a [User voice fórum�
 
 Mivel előfordulhat, hogy megjelenik ez az üzenet:
 - A TRAFFIC analytics nemrég lett engedélyezve, és előfordulhat, hogy nem még rendelkezik összesítve elegendő adat ahhoz, hogy egy értelmes elemzéseket.
-- Az Operations Management Suite-munkaterület az ingyenes verzió használ, és túllépte a kvótát. Előfordulhat, hogy szeretné használni a munkaterület egy nagyobb kapacitással.
+- A Log Analytics-munkaterület az ingyenes verzió használ, és túllépte a kvótát. Előfordulhat, hogy szeretné használni a munkaterület egy nagyobb kapacitással.
     
 Ha a probléma továbbra is fennáll, a aggályokat vethet a [User voice fórumán](https://feedback.azure.com/forums/217313-networking?category_id=195844).
     

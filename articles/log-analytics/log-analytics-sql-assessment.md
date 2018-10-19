@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 43faf1b29f602d2930a2b5764dd83ea4ce1fc9ac
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 4f9882ce94827e490b676fdf421095eae40420d5
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043586"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407724"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optimalizálhatja a környezetet SQL az SQL Server állapotának ellenőrzése megoldás a Log Analyticsben
 
@@ -86,7 +86,7 @@ Az alábbi információk segítségével állítsa be az Operations Manager futt
 >
 
 1. Az Operations Manager rendszerben nyissa meg az operatív konzolt, és kattintson **felügyeleti**.
-2. A **futtató konfiguráció**, kattintson a **profilok**, és nyissa meg a **OMS SQL Assessment futtató profil**.
+2. A **futtató konfiguráció**, kattintson a **profilok**, és nyissa meg a **SQL Assessment futtató profil**.
 3. Az a **futtató fiókok** kattintson **Hozzáadás**.
 4. Válasszon ki egy Windows futtató fiókot, amely tartalmazza az SQL Serverhez szükséges hitelesítő adatokat, vagy kattintson **új** hozhat létre egyet.
 
@@ -123,7 +123,7 @@ Nyisson meg egy PowerShell-ablakot, és futtassa a következő szkriptet az info
     import-module OperationsManager
     New-SCOMManagementGroupConnection "<your management group name>"
 
-    $profile = Get-SCOMRunAsProfile -DisplayName "OMS SQL Assessment Run As Profile"
+    $profile = Get-SCOMRunAsProfile -DisplayName "SQL Assessment Run As Profile"
     $account = Get-SCOMrunAsAccount | Where-Object {$_.Name -eq "<your run as account name>"}
     Set-SCOMRunAsProfile -Action "Add" -Profile $Profile -Account $Account
 ```

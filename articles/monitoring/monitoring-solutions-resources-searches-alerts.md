@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f5dba7ba1c21e33f23cf8917c93e478eadf5f88
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 06c01a7c87c43931a27c03b2014995be6c2678eb
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269530"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409067"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics hozzáadása mentett keresések és a riasztások felügyeleti megoldásra (előzetes verzió)
 
@@ -54,7 +54,7 @@ Az alábbi táblázat az ebben a példában használt erőforrás API-verzió.
 
 
 ## <a name="saved-searches"></a>Mentett keresések
-Például [mentett keresések](../log-analytics/log-analytics-log-searches.md) a megoldás a felhasználók a megoldás által összegyűjtött adatokat lekérdezni.  Mentett keresések meg fog jelenni **Kedvencek** az OMS-portálon, és **mentett keresések** az Azure Portalon.  Mentett keresés is az egyes riasztások szükség.   
+Például [mentett keresések](../log-analytics/log-analytics-log-searches.md) a megoldás a felhasználók a megoldás által összegyűjtött adatokat lekérdezni.  Mentett keresések meg fog jelenni **mentett keresések** az Azure Portalon.  Mentett keresés is az egyes riasztások szükség.   
 
 [A log Analytics-beli mentett keresés](../log-analytics/log-analytics-log-searches.md) erőforrás rendelkezik egy típusú `Microsoft.OperationalInsights/workspaces/savedSearches` és az alábbi struktúrával rendelkeznek.  Ez magában foglalja közös változók és paraméterek, így másolhatja, és ez a kódrészlet illessze be a megoldásfájlt, és módosítsa a paraméterek nevei. 
 
@@ -90,7 +90,7 @@ Mentett keresés minden egyes tulajdonsága a következő táblázatban leírt.
 [Az Azure naplóriasztások](../monitoring-and-diagnostics/monitor-alerts-unified-log.md) megadott naplózási lekérdezések futtatása rendszeres időközönként Azure riasztási szabályok alapján jönnek létre.  Ha a lekérdezés eredményeit a megadott feltételeknek, létrejön egy riasztásbejegyzés, és egy vagy több művelet futtatása használatával [Műveletcsoportok](../monitoring-and-diagnostics/monitoring-action-groups.md).  
 
 > [!NOTE]
-> 2018. május 14., kezdve az összeset együtt a Log Analytics-munkaterületet az Azure nyilvános felhő példányát automatikusan megkezdődik kiterjesztése az Azure-bA. A felhasználó is önkéntesen riasztások kiterjesztésének kezdeményezése az Azure-ra 2018. május 14. előtt. További információkért lásd: [riasztások kiterjesztése az OMS-ből Azure-ba való](../monitoring-and-diagnostics/monitoring-alerts-extend.md). A felhasználók számára, hogy a riasztások kiterjesztése az Azure-bA műveletek most már az Azure action groups általi szabályozza. Egy munkaterületet, és a riasztások ki vannak bővítve az Azure-ba, amikor beolvasni, vagy a műveletek hozzáadása a [műveletcsoport – Azure Resource Manager-sablon](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+> Már 2018. május 14., kezdve a Log Analytics-munkaterületet az Azure nyilvános felhő példányát az összes riasztás kiterjesztése az Azure-bA. További információkért lásd: [riasztások kiterjesztése az Azure-bA](../monitoring-and-diagnostics/monitoring-alerts-extend.md). A felhasználók számára, hogy a riasztások kiterjesztése az Azure-bA műveletek most már az Azure action groups általi szabályozza. Egy munkaterületet, és a riasztások ki vannak bővítve az Azure-ba, amikor beolvasni, vagy a műveletek hozzáadása a [műveletcsoport – Azure Resource Manager-sablon](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
 A felügyeleti megoldás riasztási szabályai a következő három különböző erőforrások épülnek fel.
 
@@ -146,7 +146,7 @@ Egy több művelet is lehet. Művelet egy vagy több folyamat végrehajtásához
 Műveletek használatával [műveletcsoport] erőforrás vagy a művelet erőforrás lehet definiálni.
 
 > [!NOTE]
-> 2018. május 14., kezdve az összeset együtt a Log Analytics-munkaterületet az Azure nyilvános felhő példányát automatikusan megkezdődik kiterjesztése az Azure-bA. A felhasználó is önkéntesen riasztások kiterjesztésének kezdeményezése az Azure-ra 2018. május 14. előtt. További információkért lásd: [riasztások kiterjesztése az OMS-ből Azure-ba való](../monitoring-and-diagnostics/monitoring-alerts-extend.md). A felhasználók számára, hogy a riasztások kiterjesztése az Azure-bA műveletek most már az Azure action groups általi szabályozza. Egy munkaterületet, és a riasztások ki vannak bővítve az Azure-ba, amikor beolvasni, vagy a műveletek hozzáadása a [műveletcsoport – Azure Resource Manager-sablon](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+> 2018. május 14., kezdve a Log Analytics-munkaterületet az Azure nyilvános felhő példányát az összeset már automatikusan kiterjeszti az Azure-bA. További információkért lásd: [riasztások kiterjesztése az Azure-bA](../monitoring-and-diagnostics/monitoring-alerts-extend.md). A felhasználók számára, hogy a riasztások kiterjesztése az Azure-bA műveletek most már az Azure action groups általi szabályozza. Egy munkaterületet, és a riasztások ki vannak bővítve az Azure-ba, amikor beolvasni, vagy a műveletek hozzáadása a [műveletcsoport – Azure Resource Manager-sablon](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
 
 A művelet által megadott erőforrás két típusa van a **típus** tulajdonság.  Egy ütemezés csak egy **riasztás** művelet, amely meghatározza a részleteit, valamint a riasztási szabály milyen műveleteket hajtja végre, ha riasztás jön létre. A művelet erőforrás rendelkezik egy típusú `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`.  
@@ -242,7 +242,7 @@ A felhasználó számára ki van bővítve a riasztások az Azure-bA – ütemez
 Minden ütemezve van egy **riasztási** művelet.  Ez meghatározza, hogy a riasztást, és igény szerint értesítési és javítási műveletek részleteit.  Értesítés e-mailt küld egy vagy több címet.  A szervizelés runbook elindítja az Azure Automation és próbálja meg elhárítani a probléma.
 
 > [!NOTE]
-> 2018. május 14., kezdve az összeset együtt a Log Analytics-munkaterületet az Azure nyilvános felhő példányát automatikusan megkezdődik kiterjesztése az Azure-bA. A felhasználó is önkéntesen riasztások kiterjesztésének kezdeményezése az Azure-ra 2018. május 14. előtt. További információkért lásd: [riasztások kiterjesztése az OMS-ből Azure-ba való](../monitoring-and-diagnostics/monitoring-alerts-extend.md). A felhasználók számára, hogy a riasztások kiterjesztése az Azure-bA műveletek most már az Azure action groups általi szabályozza. Egy munkaterületet, és a riasztások ki vannak bővítve az Azure-ba, amikor beolvasni, vagy a műveletek hozzáadása a [műveletcsoport – Azure Resource Manager-sablon](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+> 2018. május 14., kezdve a Log Analytics-munkaterületet az Azure nyilvános felhő példányát az összeset már automatikusan kiterjeszti az Azure-bA. További információkért lásd: [riasztások kiterjesztése az Azure-bA](../monitoring-and-diagnostics/monitoring-alerts-extend.md). A felhasználók számára, hogy a riasztások kiterjesztése az Azure-bA műveletek most már az Azure action groups általi szabályozza. Egy munkaterületet, és a riasztások ki vannak bővítve az Azure-ba, amikor beolvasni, vagy a műveletek hozzáadása a [műveletcsoport – Azure Resource Manager-sablon](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
 ##### <a name="emailnotification"></a>EmailNotification
  Ez a szakasz nem kötelező adja meg, ha azt szeretné, hogy egy vagy több címzett e-mailt küldjön egy riasztást.

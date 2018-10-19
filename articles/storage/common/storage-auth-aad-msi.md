@@ -5,19 +5,19 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: c06dc83f8b460e6215448fbc9e4ac42c749b5922
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: d8382cac86abb112018195695340ed12663a2333
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354002"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427416"
 ---
 # <a name="authenticate-access-to-blobs-and-queues-with-managed-identities-for-azure-resources-preview"></a>Hitelesíti a blobok és üzenetsorok, a felügyelt identitásokból hozzáférést az Azure-erőforrások (előzetes verzió)
 
-Az Azure Blob- és Queue storage támogatja az Azure Active Directory (Azure AD-) hitelesítés a [felügyelt identitások az Azure-erőforrások](../../active-directory/managed-identities-azure-resources/overview.md). Az Azure-erőforrások felügyelt identitások használatával hitelesíti a hozzáférést az Azure-beli virtuális gépek (VM), a függvényalkalmazások, a virtual machine scale sets és mások futó alkalmazások a blobok és üzenetsorok. Felügyelt identitások használatával az Azure-erőforrások és alkalmazásaiban az Azure AD-hitelesítés, elkerülheti a hitelesítő adatokat az alkalmazásokkal, amelyek futtatását a felhőben tárolja.  
+Az Azure Blob- és Queue storage támogatja az Azure Active Directory (Azure AD-) hitelesítés a [felügyelt identitások az Azure-erőforrások](../../active-directory/managed-identities-azure-resources/overview.md). Felügyelt identitások, az Azure-erőforrások hitelesíteni tudja a hozzáférés a blobokhoz és -üzenetsorok az Azure-beli virtuális gépek (VM), a függvényalkalmazások, a virtual machine scale sets és mások futó alkalmazások az Azure AD hitelesítő adataival. Felügyelt identitások használatával az Azure-erőforrások és alkalmazásaiban az Azure AD-hitelesítés, elkerülheti a hitelesítő adatokat az alkalmazásokkal, amelyek futtatását a felhőben tárolja.  
 
 A szerepköralapú hozzáférés-vezérlés (RBAC) szerepkör hozzárendelése a felügyelt identitás, amely magában foglalja a megfelelő hatókörben adott erőforrásra vonatkozó engedélyeket egy felügyelt identitás egy blob-tároló vagy egy üzenetsor, engedélyt kell adnia. További információ a tárolási RBAC-szerepkörök: [kezelés hozzáférési jogosultsága ahhoz, hogy az RBAC (előzetes verzió) tárolási adatok](storage-auth-aad-rbac.md). 
 
@@ -34,6 +34,10 @@ Az Azure-erőforrások felügyelt identitások használatával hitelesíti a hoz
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Az Azure Resource Manager-sablon](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
 - [Azure SDK-k](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
+
+## <a name="assign-an-rbac-role-to-an-azure-ad-managed-identity"></a>Az RBAC szerepkör hozzárendelése az Azure ad-ben felügyelt identitás
+
+Az Azure Storage-alkalmazás egy felügyelt identitás hitelesítésére, először konfigurálnia szerepköralapú hozzáférés-vezérlés (RBAC) beállításai felügyelt identitás. Az Azure Storage határozza meg, amely magában foglalja a tárolók és a várólisták engedélyeit RBAC-szerepkörökhöz. Ha az RBAC szerepkör van rendelve egy felügyelt identitás, felügyelt identitás hozzáférést ennek az erőforrásnak. További információkért lásd: [kezelés hozzáférési jogosultságok RBAC (előzetes verzió) az adatok Azure Blob és üzenetsor](storage-auth-aad-rbac.md).
 
 ## <a name="get-a-managed-identity-access-token"></a>Egy felügyelt identitás-hozzáférési jogkivonat beszerzése
 

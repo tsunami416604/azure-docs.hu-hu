@@ -1,6 +1,6 @@
 ---
 title: Az Azure karbantartási ütemezések (előzetes verzió) |} A Microsoft Docs
-description: Karbantartási ütemezés lehetővé teszi a felhasználóknak szerte a szükséges ütemezett karbantartási események az Azure SQL Data warehouse szolgáltatást használja, vezethet be új funkciók, frissítések és javítások megtervezéséhez.
+description: Karbantartási ütemezés lehetővé teszi, hogy az ügyfelek számára a szükséges ütemezett karbantartási események az Azure SQL Data Warehouse szolgáltatás által használt vezethet be új funkciók, frissítések és javítások körül megtervezése.
 services: sql-data-warehouse
 author: antvgski
 manager: craigg
@@ -10,48 +10,50 @@ ms.component: design
 ms.date: 10/07/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: a6eedc0bac7aab69a9138f4f63d0d9d802e74dfc
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 428b9970471c9365812639e251810c571698a574
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47228378"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49425956"
 ---
 # <a name="change-a-maintenance-schedule"></a>Karbantartási ütemezés módosítása 
 
 ## <a name="portal"></a>Portál
-Karbantartási ütemezés frissíthetők vagy bármikor módosítható. Azonban ha a kiválasztott példány jelenleg alatti aktív karbantartási a beállítások lesz mentve és a következő azonosított karbantartási időszak során csak aktívvá válik. [További](https://docs.microsoft.com/azure/service-health/resource-health-overview) egy aktív karbantartási események során az adatraktár figyelésével kapcsolatos. 
+Karbantartási ütemezés frissíthetők vagy bármikor módosítható. Ha a kiválasztott példány egy aktív karbantartási folyamata alatt tartózkodnak, a rendszer menti a beállításokat. Akkor lesz aktívvá válik a következő azonosított karbantartási időszak során. [További](https://docs.microsoft.com/azure/service-health/resource-health-overview) egy aktív karbantartási események során az adatraktár figyelésével kapcsolatos. 
 
-Előzetes verzióban elérhető azt fogja kell rákérdez arra, hogy válassza ki a két karbantartási időszakok egy 7 napos időszakban. Az egyes karbantartási időszakok lehet 3. és 8 óra, 3 jelenleg folyamatban van a legrövidebb elérhető beállítást munkán. Karbantartási fordulhat elő, egy meghatározott karbantartási időszakon belül bármikor, azonban ezek külső azonosított idő a windows előzetes értesítés nem történik meg, a program élmény lehet a kapcsolat megszakadása rövid, mert a szolgáltatás telepíti az új kódot az adatok az adatraktár. 
+Az Azure karbantartási ütemezések előzetes verzióban érhető el, amelyek két karbantartási időszakok választja egy 7 napos időszakban. Az egyes karbantartási időszakok 3-8 óra is lehet. Karbantartási is egy karbantartási időszakban bármikor előfordulhatnak, de nem megy végbe, előzetes értesítés nélkül idő időszakon kívül. A kapcsolat rövid adatvesztést is, a szolgáltatás telepíti az új kódot az adattárház lesz tapasztalható. 
 
 ## <a name="identifying-the-primary-and-secondary-windows"></a>Az elsődleges és másodlagos windows azonosítása
 
-Az elsődleges és másodlagos windows kell azonosítania a napokat tartományba (vagyis elsődleges ablak (kedd – csütörtök), másodlagos ablak (szombat – vasárnap)
+Az elsődleges és másodlagos windows kell rendelkeznie időtartomány külön. Lehet például egy elsődleges ablak kedd – csütörtök, és a egy másodlagos ablak szombat – vasárnap.
 
-A következő lépéseket a portálon az adatraktárba telepített karbantartási ütemezés módosításához.
+A data warehouse-hoz a karbantartási ütemezés módosításához kövesse az alábbi lépéseket:
 1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2.  Válassza ki az adattárház, amely frissíteni szeretné. A lap ekkor megnyílik az áttekintési panelen. 
-3.  A karbantartási ütemezés beállításai lapon vagy a karbantartási ütemezés (előzetes verzió) összefoglaló hivatkozásra kattintva az áttekintési panelen vagy a karbantartási ütemezés lehetőséget a bal oldali erőforrás menüben keresztül elérhető lesz.  
+2.  Válassza ki a frissíteni kívánt adatraktár. Az oldal megnyílik az áttekintési panelen. 
+3.  Nyissa meg a karbantartási ütemezés beállításai oldal kiválasztásával a **karbantartási ütemezés (előzetes verzió) összegzés** hivatkozás az áttekintési panelen. Vagy válassza ki a **karbantartási ütemezés** lehetőséget a bal oldali erőforrás menüben.  
 
     ![Áttekintés panel beállításai](media/sql-data-warehouse-maintenance-scheduling/maintenance-change-option.png)
 
-4. Az elsődleges karbantartási időszak, az oldal tetején a választógombok segítségével azonosíthatja az előnyben részesített naptartomány. Ez a beállítás határozza meg, ha az elsődleges ablak történik, a hét napja vagy a hétvégén. A kijelölt ennek megfelelően frissíteni fogja az alábbi értékeket a legördülő listából. Előzetes verzió használata során egyes régiókban előfordulhat, hogy egyelőre nem támogatják a rendelkezésre álló nap kapcsolók teljes készletét. Ezeket az értékeket az elkövetkező hónapokban frissíteni fogja.
+4. Azonosítják az előnyben részesített naptartomány az elsődleges karbantartási időszak a beállításokat az oldal tetején. Ez a beállítás határozza meg, ha az elsődleges ablak történik, a hét napja vagy a hétvégén. A kijelölt frissíteni fogja a legördülő értékeket. Előzetes verzióban az egyes régiókban előfordulhat, hogy még nem támogatja az elérhető a teljes körű **nap** beállítások.
 
    ![Karbantartási beállítások panel](media/sql-data-warehouse-maintenance-scheduling/maintenance-settings-page.png)
 
-5. Válassza ki az előnyben részesített elsődleges és másodlagos karbantartási időszakok használata a nap kezdete és idő ablak legördülő menük az alábbi. A panel alján összefoglalás frissíteni fogja az ütemezés a legördülő listában kiválasztott értékek alapján.
+5. A legördülő lista használatával válassza ki a kívánt elsődleges és másodlagos karbantartási időszakok:
+   - **Nap**: előnyben részesített napi karbantartás végrehajtásához a kijelölt időszakban.
+   - **Kezdési idő**: a karbantartási időszak előnyben részesített kezdési idejét.
+   - **Időtartomány**: előnyben részesített az időtartomány időtartama.
 
-#### <a name="dropdown-options"></a>Legördülő lista beállításai
-- Nap: Előnyben részesített napi karbantartás végrehajtásához a kijelölt időszak alatt.
-- Kezdő időpont: előnyben részesített karbantartási ablak indítási időpontja.
-- Időtartomány: előnyben részesített az időtartomány időtartama.
+   A **ütemezés összegzése** területet a panel alján, frissül a kiválasztott értékek alapján. 
+  
+6. Kattintson a **Mentés** gombra. Megjelenik egy üzenet, igazolja, hogy az új ütemezés most már aktív. 
 
-  Miután kiválasztotta a kívánt karbantartási időszakokat, kattintson a Mentés gombra. Egy megerősítő üzenetet jelenik meg az új ütemezés nem aktív megerősítése. Egy ütemezést egy régióban, amely még nem támogatja a karbantartási ütemezés mentésekor, az alábbi üzenet fog megjelenni. A beállítások lesz mentve, és válik aktívvá, amikor a szolgáltatás elérhetővé válik a kiválasztott régióban.    
+   Ha egy ütemezést egy régióban, amely nem támogatja a karbantartási ütemezés menti, a következő üzenet jelenik meg. A beállítások mentett és aktív válnak, amikor a szolgáltatás elérhetővé válik a kiválasztott régióban.    
 
-    ![A régió bejelentési nem aktív](media/sql-data-warehouse-maintenance-scheduling/maintenance-notactive-toast.png)
+   ![Régiónkénti elérhetőség szóló üzenetet](media/sql-data-warehouse-maintenance-scheduling/maintenance-notactive-toast.png)
 
 ## <a name="next-steps"></a>További lépések
-- [További](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) kapcsolatos naplóriasztási szabály vonatkozó Webhook-műveletek.
-- [További](https://docs.microsoft.com/azure/service-health/service-health-overview) Azure Service Health szolgáltatással kapcsolatos
+- [További](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) kapcsolatos naplóriasztási szabály vonatkozó webhook-műveletek.
+- [További](https://docs.microsoft.com/azure/service-health/service-health-overview) Azure Service Health szolgáltatással kapcsolatos.
 
 

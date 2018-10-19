@@ -1,37 +1,37 @@
 ---
-title: Gyors üzembe helyezés, a Bing automatikus kiegészítési API-t Ruby |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan használatának megkezdésében a Bing automatikus kiegészítési API-t az Azure kognitív szolgáltatásokban.
+title: 'Rövid útmutató: Bing Autosuggest API, Ruby'
+titlesuffix: Azure Cognitive Services
+description: Információk és kódminták segítségével ismerkedhet meg a Bing Autosuggest API használatának első lépéseivel.
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 30bb2986b90bc20efa96dba6f490948dce3e4ade
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 643b9173b57b9f8e8596fe6a8b49358d34297b97
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349122"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831177"
 ---
-# <a name="quickstart-for-bing-autosuggest-api-with-ruby"></a>Gyors üzembe helyezés, a Bing automatikus kiegészítési API-t Ruby 
-<a name="HOLTop"></a>
+# <a name="quickstart-for-bing-autosuggest-api-with-ruby"></a>A Bing Autosuggest API Ruby-val rövid útmutatója 
 
-Ez a cikk bemutatja, hogyan használható a [Bing automatikus kiegészítési API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) Ruby együtt. A Bing automatikus kiegészítési API-t a keresési mezőbe, a felhasználó beírja a részleges karakterlánc alapján javasolt lekérdezések listáját adja vissza. Általában akkor ehhez hívja az API minden alkalommal, amikor a felhasználó beír egy új karakter a keresési mezőbe, és majd a javaslatok megjelennek a keresési mezőbe legördülő listából. Ez a cikk bemutatja, hogyan küldjön egy kérést a javasolt lekérdezési karakterláncokban használható visszaadó *hajóznak*.
+Ez a cikk bemutatja, hogyan használható a [Bing Autosuggest API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) a Ruby használatával. A Bing Autosuggest API visszaadja a javasolt lekérdezések egy listáját a felhasználó által a keresőmezőben megadott részleges lekérdezési sztring alapján. Általában ezt az API-t akkor kell hívni, amikor a felhasználó beír egy új karaktert a keresőmezőbe, és ezután a javaslatok megjelennek a keresőmező legördülő listájában. Ez a cikk bemutatja, hogyan kell elküldeni egy olyan kérelmet, amely a *sail* sztringre adja vissza a javasolt lekérdezési sztringeket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) vagy újabb rendszert futtassa a következő kódot.
+A kód futtatásához [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) vagy újabb verzió szükséges.
 
-Rendelkeznie kell egy [kognitív szolgáltatások API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rendelkező **Bing automatikus kiegészítési API v7**. A [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/#search) elegendő-e a gyors üzembe helyezés. Az elérési kulcsot, ha aktiválja az ingyenes próbaverzió, vagy egy fizetős kulcsot használhatja az Azure irányítópultról van szüksége.
+Egy **7-es verziójú Bing Autosuggest API-t** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/#search) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, vagy beszerezhet egy fizetős előfizetői azonosítót az Azure-irányítópultról.
 
-## <a name="get-autosuggest-results"></a>Automatikus javaslatokba eredményt ad
+## <a name="get-autosuggest-results"></a>Autosuggest eredményeinek beolvasása
 
-1. Új Ruby-projekt létrehozása a kedvenc ide.
+1. Hozzon létre egy új Ruby-projektet a kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `subscriptionKey` hívóbetű érvényes az előfizetéshez tartozó értéket.
+3. A `subscriptionKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
 ```ruby
@@ -67,7 +67,7 @@ puts JSON::pretty_generate (JSON (response.body))
 
 ### <a name="response"></a>Válasz
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon:
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
 
 ```json
 {
@@ -136,9 +136,9 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Bing automatikus kiegészítési oktatóanyag](../tutorials/autosuggest.md)
+> [Bing Autosuggest oktatóanyaga](../tutorials/autosuggest.md)
 
 ## <a name="see-also"></a>Lásd még
 
-- [Mi az a Bing automatikus kiegészítési?](../get-suggested-search-terms.md)
-- [Bing automatikus kiegészítési API-v7 referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)
+- [Mi az a Bing Autosuggest?](../get-suggested-search-terms.md)
+- [A 7-es verziójú Bing Autosuggest API útmutatója](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)

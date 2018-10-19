@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric Naplóelemzési a tárolók figyelése |} Microsoft Docs
-description: Log Analytics használata Azure Service Fabric-fürtök futó tárolók figyelése.
+title: A Log Analytics az Azure Service Fabric-tárolók monitorozása |} A Microsoft Docs
+description: Log Analytics használata az Azure Service Fabric-fürtben futó tárolók.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,44 +14,46 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/1/2017
 ms.author: dekapur
-ms.openlocfilehash: 79d30a47b017379107b63b0006a35534f68c43b9
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: aabdae370c28f8fa633372be4505c00c25254408
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210776"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403250"
 ---
-# <a name="monitor-containers-with-log-analytics"></a>A Naplóelemzési tárolók figyelése
+# <a name="monitor-containers-with-log-analytics"></a>Tárolók figyelése a Log Analytics használatával
  
-Ez a cikk tároló események megtekintése az OMS szolgáltatáshoz tárolófigyelő megoldás beállításához szükséges lépéseket ismerteti. A fürt beállítása a tároló eseményeket gyűjtő, megjelenik ez [részletes oktatóanyagainkat](service-fabric-tutorial-monitoring-wincontainers.md).
+Ez a cikk ismerteti a tároló-események megtekintése az Azure Log Analytics-tároló monitorozására szolgáló megoldás beállításához szükséges lépéseket. A fürt beállításához a tároló eseménygyűjtési, ez látható [részletes oktatóanyag](service-fabric-tutorial-monitoring-wincontainers.md). 
 
-## <a name="set-up-the-container-monitoring-solution"></a>A felügyeleti megoldás tároló beállítása
+[!INCLUDE [log-analytics-agent-note.md](../../includes/log-analytics-agent-note.md)]
+
+## <a name="set-up-the-container-monitoring-solution"></a>A tároló monitorozására szolgáló megoldás beállítása
 
 > [!NOTE]
-> A beállított Naplóelemzési a fürt számára, valamint rendelkezik a csomópontjára telepíti az OMS-ügynököt kell. Ha nem, kövesse a lépéseket [Naplóelemzési beállítása](service-fabric-diagnostics-oms-setup.md) és [adja hozzá az OMS-ügynököt a fürthöz](service-fabric-diagnostics-oms-agent.md) első.
+> Rendelkezik a Log Analytics a fürt számára, valamint a rendelkezik a Log Analytics-ügynököket a csomópontokon telepített kell. Ha nem, hajtsa végre a [Log Analytics beállítása](service-fabric-diagnostics-oms-setup.md) és [hozzáadása a Log Analytics-ügynököket a fürt](service-fabric-diagnostics-oms-agent.md) első.
 
-1. Ha a fürt készen áll a Naplóelemzési és az OMS-ügynököt, a tároló üzembe helyezése. Várjon, amíg a tárolók telepíthető, mielőtt továbblép a következő lépéssel.
+1. Ha a Log Analytics és a Log Analytics-ügynököket a fürt be van állítva, a tárolók üzembe helyezése. Várjon, amíg a tárolókat, mielőtt a következő lépésben telepíteni.
 
-2. A Azure piactérről, keresse meg a *tároló figyelésére szolgáló megoldás* , majd kattintson a a **tároló figyelésére szolgáló megoldás** erőforrás, a figyelés és felügyelet alatt megjelenő kategóriát.
+2. Az Azure Marketplace-en, keresse meg *Tárolómonitorozási megoldás* , majd kattintson a a **Tárolómonitorozási megoldás** erőforrás, amely a figyelés + felügyelet alatt jelenik meg kategória.
 
     ![Tárolómegoldások hozzáadása](./media/service-fabric-diagnostics-event-analysis-oms/containers-solution.png)
 
-3. A megoldás belül ugyanazon a munkaterületen a fürt már létrehozott létrehozása. Ezt a változtatást automatikusan elindítja az ügynököt, hogy a tároló docker adatgyűjtés indítása. Mintegy 15 percre leáll vagy tette meg kell jelennie a bejövő naplók és a statisztikák mentése könnyű megoldást. az alábbi ábrán látható.
+3. A megoldás, amely a fürt számára már létrehoztak ugyanazon a munkaterületen belül létrehozni. Ez a változás automatikusan elindítja az ügynököt, hogy a tárolók docker adatgyűjtés indítása. Körülbelül 15 perc és így megtekintheti a könnyű fel beérkező naplók és -statisztikák, a megoldás az alábbi képen látható módon.
 
-    ![Alapszintű OMS irányítópult](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
+    ![Alapszintű Log Analytics-irányítópult](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
 
-Az ügynök lehetővé teszi, hogy több OMS kérdezhetők le, vagy feladatkonfigurációkat teljesítménymutatók használt tároló-specifikus-naplók gyűjtésére. A napló típusok tartoznak a következők:
+Az ügynök lehetővé teszi, hogy a gyűjtemény több tároló-specifikus naplók kérdezhető le a Log Analyticsben, vagy teljesítménymutatók megjelenítéséhez használja. A gyűjtött log típusok a következők:
 
-* ContainerInventory: tároló helye, a nevét, és a képeket információkat jeleníti meg.
-* ContainerImageInventory: információ a központilag telepített lemezképek, többek között az azonosítók vagy mérete
-* ContainerLog: más bejegyzések, adott hibanaplókat és a docker-naplók (stdout, stb.)
+* ContainerInventory: a tároló helye, nevét és a képek vonatkozó információkat jeleníti meg.
+* ContainerImageInventory: információ a központilag telepített lemezképek, többek között az azonosítók vagy méretek
+* ContainerLog: adott hibanaplóit, docker-naplók (stdout, stb.) és egyéb-bejegyzések
 * ContainerServiceLog: docker démon parancsok futtatása
-* Teljesítmény: teljesítményszámlálókat, beleértve a tároló processzor, memória, a hálózati forgalom, a lemez i/o, és a gazdagép gépekről egyéni metrikák
+* Teljesítmény: teljesítményszámlálók, beleértve a tároló cpu, memória, a hálózati forgalmat, a lemez i/o és a gazdagép gépekről származó egyéni metrikák
 
 
 
 ## <a name="next-steps"></a>További lépések
-* További információ [OMS tartozó tárolók megoldás](../log-analytics/log-analytics-containers.md).
-* További információk a Service Fabric - tároló vezénylési [Service Fabric és a tárolók](service-fabric-containers-overview.md)
-* Az beszerzése familiarized a [naplófájl keresési és lekérdezése](../log-analytics/log-analytics-log-searches.md) szolgáltatásai által kínált Naplóelemzési
-* Log Analytics beállítása konfigurálása [riasztás automatikus](../log-analytics/log-analytics-alerts.md) szabályok észlelésére és diagnosztika
+* Tudjon meg többet [Log Analytics tárolómegoldások](../log-analytics/log-analytics-containers.md).
+* További információ a Service Fabric - tárolóvezénylés [Service Fabric és a tárolók](service-fabric-containers-overview.md)
+* Ismerkedjen meg a [naplókeresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkciók a Log Analytics részeként érhető el
+* Konfigurálja a Log Analytics beállítása [automatizált riasztások](../log-analytics/log-analytics-alerts.md) , ezzel elősegítve az észlelést és a diagnosztikát szabályok

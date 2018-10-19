@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 67a987d9b491ba6813e900c293529ed677c45757
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: c89d312f7a667a279ff2f17b38b612a90c7bcddb
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167681"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406058"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -212,7 +212,7 @@ Hozzon létre egy új frissítéstelepítést, jelölje be **frissítések közp
 | A csoportok frissítése (előzetes verzió)|Egy előfizetés, erőforráscsoport, helyek és címkék felvenni az üzembe helyezés az Azure-beli virtuális dinamikus csoportot hozhat létre kombinációja alapján lekérdezést határoz meg. További tudnivalókért lásd: [dinamikus csoportok](automation-update-management.md#using-dynamic-groups)|
 | Frissítendő gépek |Válassza ki, mentett keresést, importált csoporthoz, vagy a legördülő listából válassza ki a gépet, és válassza ki az egyes gépek. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> A számítógépcsoportok Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../log-analytics/log-analytics-computer-groups.md) ismertető részt |
 |Frissítési besorolások|Válassza ki az összes szükséges|
-|Frissítések belefoglalása vagy kizárása|Ekkor megnyílik a **beszámítása vagy kihagyása** lapot. A felügyelt vagy kizárt frissítések olyan külön lapon. A belefoglalási kezelésének további információkért lásd: [belefoglalási viselkedés](automation-update-management.md#inclusion-behavior) |
+|Frissítések belefoglalása vagy kizárása|Ekkor megnyílik a **beszámítása vagy kihagyása** lapot. A belefoglalandó vagy kizárandó frissítések külön lapokon jelennek meg. A belefoglalási kezelésének további információkért lásd: [belefoglalási viselkedés](automation-update-management.md#inclusion-behavior) |
 |Ütemezési beállítások|Válassza ki az időpontot, elindításához, és válassza ki bármelyik egyszer, vagy az ismétlődés ismétlődés|
 | Előkészítő parancsfájljainak + utáni szkriptek|Válassza ki a parancsfájlok futtatása előtt és után a központi telepítés|
 | Karbantartási időszak |Frissítések beállított percek száma. Az érték nem lehet kisebb, mint 30 perc és legfeljebb 6 óra |
@@ -264,7 +264,7 @@ sudo yum -q --security check-update
 
 Jelenleg nem támogatott metódus metódus natív osztályozás – adatok rendelkezésre állását, a CentOS engedélyezése. Jelenleg csak legjobb támogatás, akiknek előfordulhat, hogy engedélyezve van ez a saját áll rendelkezésre.
 
-## <a name="ports"></a>Portok
+##<a name="ports"></a>Hálózattervezés
 
 A következő címekre kifejezetten az Update Management szükségesek. Ezek a címek kommunikációt a 443-as porton keresztül történik.
 

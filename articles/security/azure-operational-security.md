@@ -1,6 +1,6 @@
 ---
 title: Az Azure Operational Security |} A Microsoft Docs
-description: Ismerje meg a Microsoft Operations Management Suite (OMS), a szolgáltatások és működését.
+description: Ismerje meg a Microsoft Azure Log Analytics, a szolgáltatások és működését.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 60260d7bcff07a9ce2d680c84119d11271579e7d
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 2ae2ea14bc712563867f32b83eddbd9d4129ac1d
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342269"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409492"
 ---
 # <a name="azure-operational-security"></a>Az Azure működési biztonság
 ## <a name="introduction"></a>Bevezetés
@@ -40,7 +40,7 @@ Az Azure infrastruktúráját úgy alakítottuk kiszolgáló alkalmazásokat üz
 Az Azure Operational Security hivatkozik a szolgáltatások, a vezérlők és a felhasználók számára elérhető szolgáltatások védelme érdekében az adatokat, alkalmazásokat és egyéb eszközök, Microsoft Azure-ban. Az Azure Operational Security olyan keretrendszer, amely magában foglalja a különböző képességeket, amelyek a egyedülálló rendszereiből, például a Microsoft biztonsági fejlesztési életciklus (SDL), a Microsoft Security Response Center program keresztül szerzett ismeretek épül és a kiberbiztonsági fenyegetések világának.
 
 Ez a tanulmány belül a Microsoft Azure felhőalapú platform a Microsoft Azure Operational Security megközelítését ismerteti, és a következő szolgáltatásokat tartalmazza:
-1.  [Az Azure Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)
+1.  [Azure Monitor](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)
 
 2.  [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
 
@@ -53,17 +53,17 @@ Ez a tanulmány belül a Microsoft Azure felhőalapú platform a Microsoft Azure
 6.  [Az Azure Active directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
 
 
-## <a name="microsoft-operations-management-suite"></a>Microsoft Operations Management Suite
+## <a name="microsoft-azure-log-analytics"></a>A Microsoft Azure Naplóelemzés
 
-A Microsoft Operations Management Suite (OMS) az IT-felügyeleti megoldást kínál a hibrid felhő áll. Önállóan használva vagy kiterjesztése a System Center-telepítéssel, OMS a lehető legnagyobb rugalmasságot és vezérlést biztosít az infrastruktúra felhőalapú kezelését.
+A Microsoft Azure Log Analytics az IT-felügyeleti megoldást kínál a hibrid felhő áll. Önállóan használva vagy kiterjesztése a System Center-telepítéssel, Log Analytics a legnagyobb rugalmasságot és vezérlést biztosít az infrastruktúra felhőalapú kezelését.
 
-![Microsoft Operations Management Suite](./media/azure-operational-security/azure-operational-security-fig1.png)
+![Log Analytics](./media/azure-operational-security/azure-operational-security-fig1.png)
 
-Az OMS-SZEL a felhőhöz, beleértve a helyszíni, Azure, az AWS, a Windows Server, Linux, VMware és OpenStack, mint az adatbázisszinten megoldások alacsonyabb költséggel lévő bármely példány segítségével kezelheti. A felhő-és felhőközpontú világ számára készült, OMS új megközelítést kínál az új üzleti kihívásokat, valamint új terheléseket, alkalmazások és a felhőalapú környezetek, amely a leggyorsabb és leginkább költséghatékony megoldást a vállalati kezelése.
+A Log Analytics-szel a felhőhöz, beleértve a helyszíni, Azure, az AWS, a Windows Server, Linux, VMware és OpenStack, mint az adatbázisszinten megoldások alacsonyabb költséggel lévő bármely példány segítségével kezelheti. A felhő-és felhőközpontú világ számára készült, a Log Analytics új megközelítést kínál az a vállalat, amely a leggyorsabb és leginkább költséghatékony megoldást új üzleti kihívásokat, valamint új terheléseket, alkalmazások és a felhőalapú környezetek kezeléséhez.
 
-### <a name="oms-services"></a>OMS-szolgáltatások
+### <a name="log-analytics-services"></a>Log Analytics-szolgáltatások
 
-Az OMS legfontosabb funkcióit az Azure-ban futó szolgáltatások biztosítják. Mindegyik szolgáltatás egy adott felügyeleti funkciót biztosít, és a szolgáltatások kombinálásával különféle felügyeleti forgatókönyvek valósíthatók meg.
+A Log Analytics központi funkcióit az Azure-ban futó szolgáltatások biztosítják. Mindegyik szolgáltatás egy adott felügyeleti funkciót biztosít, és a szolgáltatások kombinálásával különféle felügyeleti forgatókönyvek valósíthatók meg.
 
 | Szolgáltatás  | Leírás|
 | :------------- | :-------------|
@@ -74,7 +74,7 @@ Az OMS legfontosabb funkcióit az Azure-ban futó szolgáltatások biztosítják
 
 ### <a name="log-analytics"></a>Log Analytics
 
-A [Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) figyelési szolgáltatásokat biztosít az OMS számára a felügyelt erőforrások adatainak egy központi tárházba gyűjtésével. Ezek az adatok lehetnek események, teljesítményadatok vagy az API segítségével biztosított egyéni adatok. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz.
+[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) adatokat gyűjt a felügyelt erőforrások egy központi tárházba figyelési szolgáltatásokat biztosít. Ezek az adatok lehetnek események, teljesítményadatok vagy az API segítségével biztosított egyéni adatok. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz.
 
 
 Ezzel a módszerrel konszolidálhatja a különféle forrásokból származó adatokat, így kombinálhatja az Azure-szolgáltatásokat a meglévő adatokat a helyszíni környezetben. Továbbá egyértelműen elkülöníti az adatok gyűjtését az adatokon végzett műveletektől, így az összes művelet végrehajtható a különféle adatokon.
@@ -92,17 +92,17 @@ A Log Analytics szolgáltatás a felhőbeli adatok biztonságosan kezeli a köve
 
 ### <a name="azure-backup"></a>Azure Backup
 
-[Az Azure Backup](http://azure.microsoft.com/documentation/services/backup) biztosít az adatok biztonsági mentését és helyreállítását végző szolgáltatásokat és az OMS csomagot, a termékek és szolgáltatások része.
+[Az Azure Backup](http://azure.microsoft.com/documentation/services/backup) biztosít az adatok biztonsági mentését és helyreállítását végző szolgáltatásokat és a termékek és szolgáltatások a Log Analytics-csomag része.
 Védelmet biztosít az alkalmazásadatok számára, valamint évekig megőrzi őket minden tőkebefektetés nélkül és minimális működési költségek mellett. A fizikai és virtuális Windows kiszolgálókról, valamint az alkalmazások és szolgáltatások, például az SQL Server és SharePoint biztonsági mentés adatokat. Azt is használhatja [System Center Data Protection Manager (DPM)](https://en.wikipedia.org/wiki/System_Center_Data_Protection_Manager) védett adatok replikálása az Azure-bA a redundancia és a hosszú távú tároláshoz.
 
 
 Az Azure Backup védett adatainak tárolása egy meghatározott földrajzi régióban elhelyezkedő biztonságimásolat-tárolóban történik. Az adatok ugyanazon a régión belül replikálódnak, és a tároló típusától függően előfordulhat, hogy is lehet egy másik régióba replikálja további rugalmasságot.
 
 ### <a name="management-solutions"></a>Felügyeleti megoldások
-[A Microsoft Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) van a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúrára.
+[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) van a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúrára.
 
 
-[Felügyeleti megoldások](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions) vannak, amelyek egy vagy több OMS-szolgáltatások használatával adott felügyeleti forgatókönyvet valósítanak meg logics összeállított logikakészletek. A Microsoft és partnerei által kínált különböző megoldások egyszerűen hozzáadhatók az Azure-előfizetéshez, és így növelhető az OMS-sel kapcsolatos befektetéseinek értéke. Partnerként létrehozhat saját megoldásokat az alkalmazások és szolgáltatások támogatására, és adja meg azokat a felhasználók számára az Azure Marketplace piactéren vagy a gyors üzembe helyezési sablonokat.
+[Felügyeleti megoldások](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions) vannak, amelyek egy vagy több Log Analytics szolgáltatás használatával adott felügyeleti forgatókönyvet valósítanak meg logics összeállított logikakészletek. A Microsoft és partnerei, hogy könnyen adhat az Azure-előfizetés növelje befektetéseit a Log Analytics különböző megoldások érhetők el. Partnerként létrehozhat saját megoldásokat az alkalmazások és szolgáltatások támogatására, és adja meg azokat a felhasználók számára az Azure Marketplace piactéren vagy a gyors üzembe helyezési sablonokat.
 
 
 ![Felügyeleti megoldások](./media/azure-operational-security/azure-operational-security-fig4.png)
@@ -164,7 +164,7 @@ Az Azure Security Center ideiglenes másolatokat gyűjt az összeomlási memóri
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-A [az OMS biztonsági](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources) és naplózási megoldás révén az informatikai aktívan figyeljük az összes erőforrást, amely megkönnyíti a biztonsági incidens hatásának minimalizálása érdekében. Az OMS biztonsági és auditálási rendelkezik az erőforrások figyeléséhez használt biztonsági tartományok. A biztonsági tartományához beállítások gyors hozzáférést biztosít, a biztonság monitorozására vonatkozó további részleteket a következő tartományok ismertetnek:
+A [Log Analytics biztonsági](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources) és naplózási megoldás révén az informatikai aktívan figyeljük az összes erőforrást, amely megkönnyíti a biztonsági incidens hatásának minimalizálása érdekében. Log Analytics biztonsági és auditálási rendelkezik az erőforrások figyeléséhez használt biztonsági tartományok. A biztonsági tartományához beállítások gyors hozzáférést biztosít, a biztonság monitorozására vonatkozó további részleteket a következő tartományok ismertetnek:
 
 -   Kártevőfelmérés
 -   Frissítések felmérése
@@ -312,7 +312,7 @@ Ez a cikk összesítések, a személyes adatok védelme és biztonságossá tét
 
 Ez a cikk ismerteti
 
--   Adatok gyűjtése, feldolgozása, és az Operations Management Suite (OMS) védett.
+-   Adatok gyűjtése, feldolgozása, és a Log Analytics Suite részeként biztosított.
 
 -   Az események gyors elemzése akár több adatforrásban. A biztonsági incidensek okozta károk minimalizálása érdekében azonosítani kell a biztonsági kockázatokat és fel kell mérni a fenyegetések és támadások terjedelmét és hatásait.
 
@@ -335,7 +335,7 @@ Ez a cikk ismerteti
 
 A Microsoft a szolgáltatásokat és szoftvereket tervez a biztonságot szem érdekében győződjön meg arról, hogy a felhőalapú infrastruktúra rugalmas és támadások védeni.
 
-- [Az Operations Management Suite |} A biztonság és megfelelőség](https://www.microsoft.com/cloud-platform/security-and-compliance)
+- [Log Analytics |} A biztonság és megfelelőség](https://www.microsoft.com/cloud-platform/security-and-compliance)
 
 A Microsoft biztonsági adat- és elemzési Több intelligens és hatékony fenyegetések észlelése végrehajtásához használható.
 

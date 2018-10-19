@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: ae2fab560ca9579860aeba91f9322c6521a83de1
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 1465ba23f6fed85f0d4164f8e3fdc8c38be43ad3
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167967"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427731"
 ---
 # <a name="how-to-enable-password-reset-from-windows-7-8-and-81"></a>Útmutató: a Windows 7, 8 és 8.1 jelszóátállítás engedélyezése
 
@@ -76,6 +76,8 @@ HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Provide
 
 * Engedélyezi a részletes naplózást, hozzon létre egy REG_DWORD: "EnableLogging", és állítsa be az 1.
 * Letiltja a részletes naplózást, módosítsa a REG_DWORD "EnableLogging" 0-ra.
+
+Ha a Windows 7, 8 és 8.1-es gépek proxykiszolgálót vagy tűzfal mögé, HTTPS-forgalmat (443) passwordreset.microsoftonline.com engedélyezni kell.
 
 ## <a name="next-steps"></a>További lépések
 

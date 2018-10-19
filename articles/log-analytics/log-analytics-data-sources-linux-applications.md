@@ -1,6 +1,6 @@
 ---
-title: Linux-alkalmazások teljesítménye az OMS Log Analytics gyűjtése |} A Microsoft Docs
-description: Ez a cikk részletes adatokat biztosít a teljesítményszámlálók adatainak összegyűjtése, a MySQL és az Apache HTTP Server a Linuxhoz készült OMS-ügynök konfigurálása.
+title: Linux-alkalmazások teljesítménye, a Log Analytics gyűjtése |} A Microsoft Docs
+description: Ez a cikk részletes adatokat biztosít a teljesítményszámlálók adatainak összegyűjtése, a MySQL és az Apache HTTP Server Linuxhoz készült Log Analytics-ügynök konfigurálása.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,26 +15,27 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5120fa869d9c3fe28630b189b84b9c3e3f5577e2
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: df5e55c2c03fec13ada258be91f0d98b7ce70d94
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044569"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406160"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Linux-alkalmazások a Log Analytics teljesítményszámlálók gyűjtése 
-Ez a cikk részletesen konfigurálásához a [Linuxhoz készült OMS-ügynök](https://github.com/Microsoft/OMS-Agent-for-Linux) adott alkalmazások a teljesítményszámlálók adatainak összegyűjtése.  Az ebben a cikkben szereplő alkalmazások a következők:  
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+Ez a cikk részletesen konfigurálásához a [Linuxhoz készült Log Analytics-ügynök](https://github.com/Microsoft/OMS-Agent-for-Linux) adott alkalmazások a teljesítményszámlálók adatainak összegyűjtése.  Az ebben a cikkben szereplő alkalmazások a következők:  
 
 - [MySQL](#MySQL)
 - [Apache HTTP Server](#apache-http-server)
 
 ## <a name="mysql"></a>MySQL
-MySQL-kiszolgálóhoz vagy a MariaDB-kiszolgáló azt észlelte a számítógépen, amikor az OMS-ügynök telepítve van, ha egy Teljesítményfigyelő-szolgáltatója a MySQL-kiszolgáló automatikusan települ. Ez a szolgáltató teljesítménystatisztikáit elérhetővé a helyi MySQL/MariaDB-kiszolgáló csatlakozik. MySQL-felhasználó hitelesítő adatai kell konfigurálni, hogy a szolgáltató férhessenek hozzá a MySQL-kiszolgáló.
+A MySQL-kiszolgáló vagy a MariaDB-kiszolgáló azt észlelte a számítógépen, a Log Analytics-ügynök telepítésekor a rendszer, ha egy Teljesítményfigyelő-szolgáltatója a MySQL-kiszolgáló automatikusan települ. Ez a szolgáltató teljesítménystatisztikáit elérhetővé a helyi MySQL/MariaDB-kiszolgáló csatlakozik. MySQL-felhasználó hitelesítő adatai kell konfigurálni, hogy a szolgáltató férhessenek hozzá a MySQL-kiszolgáló.
 
 ### <a name="configure-mysql-credentials"></a>MySQL hitelesítő adatainak konfigurálása
 Az OMI a MySQL-szolgáltató egy előre konfigurált MySQL-felhasználó igényel, és telepítve van a MySQL-ügyfélkódtárak annak érdekében, hogy a teljesítmény és a MySQL-példányt az egészségügyi információk lekérdezése.  Ezeket a hitelesítő adatokat, hogy a Linux-ügynök hitelesítési fájlban tárolódnak.  A hitelesítési fájl milyen bind-címet és portot figyel a MySQL-példányt, és milyen metrikákat használandó hitelesítő adatokat adja meg.  
 
-A MySQL OMI linuxhoz az OMS-ügynök telepítése során szolgáltató vizsgálata MySQL my.cnf konfigurációs fájljait (alapértelmezett helyeket) bind-címét és portját, és részben állítsa be a MySQL OMI hitelesítési fájlt.
+A MySQL OMI Linuxhoz készült Log Analytics-ügynök telepítése során szolgáltató beolvasási MySQL my.cnf konfigurációs fájljait (alapértelmezett helyeket) bind-cím és port, és részben állítsa be a MySQL OMI hitelesítési fájlt.
 
 A MySQL-hitelesítési fájlt tárolja `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysql-auth`.
 
@@ -115,7 +116,7 @@ Ezeket a jogosultságokat a következő grant-parancsok futtatásával is megadh
 
 ### <a name="define-performance-counters"></a>Teljesítményszámlálók definiálása
 
-Miután konfigurálja az OMS-ügynök Linux rendszeren, a Log Analytics szolgáltatásnak, konfigurálnia kell a teljesítményszámlálók adatait szeretné gyűjteni.  Ismertetett eljárással [a Log Analytics Windows és Linux rendszerű teljesítmény adatforrások](log-analytics-data-sources-windows-events.md) az az alábbi táblázat a számlálókat.
+Miután konfigurálta a Log Analytics szolgáltatásnak a Linuxhoz készült Log Analytics-ügynököket, konfigurálnia kell a teljesítményszámlálók adatait szeretné gyűjteni.  Ismertetett eljárással [a Log Analytics Windows és Linux rendszerű teljesítmény adatforrások](log-analytics-data-sources-windows-events.md) az az alábbi táblázat a számlálókat.
 
 | Objektumnév | Számláló neve |
 |:--|:--|
@@ -151,7 +152,7 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 ### <a name="define-performance-counters"></a>Teljesítményszámlálók definiálása
 
-Miután konfigurálja az OMS-ügynök Linux rendszeren, a Log Analytics szolgáltatásnak, konfigurálnia kell a teljesítményszámlálók adatait szeretné gyűjteni.  Ismertetett eljárással [a Log Analytics Windows és Linux rendszerű teljesítmény adatforrások](log-analytics-data-sources-windows-events.md) az az alábbi táblázat a számlálókat.
+Miután konfigurálta a Log Analytics szolgáltatásnak a Linuxhoz készült Log Analytics-ügynököket, konfigurálnia kell a teljesítményszámlálók adatait szeretné gyűjteni.  Ismertetett eljárással [a Log Analytics Windows és Linux rendszerű teljesítmény adatforrások](log-analytics-data-sources-windows-events.md) az az alábbi táblázat a számlálókat.
 
 | Objektumnév | Számláló neve |
 |:--|:--|

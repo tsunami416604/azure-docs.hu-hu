@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 481fcb869004a6fca83fdf19c32c41010057de32
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: aa68bb0cb2e404072ef359591ce9309f8c27b631
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008195"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403985"
 ---
 # <a name="azure-operational-security-checklist"></a>Az Azure működési biztonsági ellenőrzőlista
 Az Azure-alkalmazás üzembe helyezése a gyors, egyszerű és költséghatékony. Felhőalapú alkalmazás hasznos lehet egy feladatlista éles környezetben való megfelelésre irányuló kiértékelése az alkalmazást egy lista működési biztonság alapvető és javasolt műveleteket érdemes üzembe helyezése előtt.
@@ -51,8 +51,7 @@ Ezzel az ellenőrzőlistával célja a vállalatok különböző működési biz
 Számos szervezet sikeresen telepített és üzemeltetett felhőalapú alkalmazásaikat az Azure-ban. A megadott ellenőrzőlisták jelöljön ki több feladatlistákra is, amelyek alapvető fontosságú, és segítenek a sikeres telepítések és a műveletek as gazdasági válság után ingyenes valószínűségének növelése. Erősen ajánlott ezek működési és stratégiai szempontok a meglévő és új alkalmazások központi telepítése az Azure-ban.
 
 ## <a name="next-steps"></a>További lépések
-E dokumentumban az OMS biztonsági és auditálási megoldást mutattuk be. Az OMS által nyújtott védelemmel kapcsolatos további információkat a következő cikkek tartalmaznak:
+Biztonsági kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Az Operations Management Suite (OMS) áttekintése](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview).
 - [Biztonságközpontú tervezés és üzemeltetés](https://www.microsoft.com/trustcenter/security/designopsecurity).
 - [Az Azure Security Center tervezéséhez és](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: dd9a2c6a5b2183d4909b6bcfd24dc1fae401c785
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: fa316ee47e6fdabacf22e1e419bfd501620dd83d
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414099"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429150"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Azure virtuális Géphez tartozó rendszer-újraindítás ismertetése
 
@@ -73,7 +73,7 @@ Egyéb forgatókönyvek, amelyek általában a virtuális gép újraindításáh
 ### <a name="azure-security-center-and-windows-update"></a>Az Azure Security Center és a Windows Update
 Az Azure Security Center figyeli a napi Windows és Linux rendszerű virtuális gépek operációsrendszer-frissítések hiányoznak. A Security Center lekéri az elérhető biztonsági és kritikus frissítések listáját a Windows Update webhelyről vagy a Windows Server Update Services (WSUS), attól függően, amelyek a szolgáltatás úgy van konfigurálva a Windows virtuális gép. A Security Center is ellenőrzi a Linux rendszerek legújabb frissítéseit. Ha a virtuális gép nincs telepítve a rendszer frissítés, a Security Center javasolja, hogy a rendszerfrissítések alkalmazása. Ezeket a rendszer frissítéseinek alkalmazása a Security Center az Azure Portalon keresztül vezérli. Egyes frissítések telepítését, miután a virtuális gépek újraindításának lehet szükség. További információkért lásd: [az Azure Security Center rendszer frissítéseinek alkalmazása](../../security-center/security-center-apply-system-updates.md).
 
-A helyszíni kiszolgálók, például az Azure nem küldi el a frissítések a Windows Update Windows Azure virtuális gépekre, mivel ezek a gépek célja, hogy a felhasználók által felügyelt lehet. Ön azonban javasolt, hogy hagyja meg a Windows Update automatikus beállítás engedélyezve van. A Windows Update frissítések automatikus telepítése a okozhat is előfordul, a frissítések alkalmazása utáni újraindítások. További információkért lásd: [Windows Update – GYIK](https://support.microsoft.com/help/12373/windows-update-faq).
+A helyszíni kiszolgálók, például Azure nem küldi el a frissítések a Windows Update Windows virtuális gépekhez, mivel ezek a gépek célja, hogy a felhasználók által felügyelt lehet. Ön azonban javasolt, hogy hagyja meg a Windows Update automatikus beállítás engedélyezve van. A Windows Update frissítések automatikus telepítése a okozhat is előfordul, a frissítések alkalmazása utáni újraindítások. További információkért lásd: [Windows Update – GYIK](https://support.microsoft.com/help/12373/windows-update-faq).
 
 ### <a name="other-situations-affecting-the-availability-of-your-vm"></a>Más helyzetekben a virtuális gépek rendelkezésre állásának
 Nincsenek más esetekben, amelyben Azure aktívan előfordulhat, hogy felfüggeszti a virtuális gépek használatát. E-mail-értesítések a műveletet, mielőtt, jelenik meg, így lesz arra, hogy az alapul szolgáló kapcsolatos hibák elhárítása. Virtuális gép rendelkezésre állást befolyásoló problémákat közé biztonsági problémákat és a fizetési módok lejárta.

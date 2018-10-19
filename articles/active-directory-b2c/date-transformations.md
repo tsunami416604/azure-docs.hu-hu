@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b287e7f3846de4391de02cce2cedd6a5df3cbc4a
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: ac7cc404998fed6897de1bed4b6bd31fca43e820
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167647"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405820"
 ---
 # <a name="date-claims-transformations"></a>Dátum jogcím-átalakítás
 
@@ -25,12 +25,12 @@ Ez a cikk példákat ad az identitás-kezelőfelületi keretrendszer séma Dátu
 
 ## <a name="assertdatetimeisgreaterthan"></a>AssertDateTimeIsGreaterThan 
 
-Ellenőrzi, hogy egy dátum és idő jogcím (karakterlánc) adattípusa nagyobb, mint a második dátum és idő jogcím (karakterlánc adattípusú), és kivételt jelez.
+Ellenőrzi, hogy egy dátum és idő jogcím (karakterlánc) adattípusa későbbi, mint a második dátum és idő jogcím (karakterlánc adattípusú), és kivételt jelez.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | leftOperand | sztring | Első jogcím típusa, amely a második jogcím nagyobbnak kell lennie. |
-| Bemeneti jogcím | rightOperand | sztring | Második jogcím típusa, ami lehet kisebb, mint az első jogcímet. |
+| Bemeneti jogcím | leftOperand | sztring | Első jogcím típusa, amely a második jogcím későbbinek kell lennie. |
+| Bemeneti jogcím | rightOperand | sztring | Második jogcím típusa, ami az első jogcím korábbinak kell lennie. |
 | InputParameter | AssertIfEqualTo | logikai | Itt adhatja meg, hogy ezt az előfeltételt kell átadnia, ha a bal oldali operandusához megegyezik a jobb oldali operandusnak. |
 | InputParameter | AssertIfRightOperandIsNotPresent | logikai | Itt adhatja meg, hogy ezt az előfeltételt kell átadnia, ha a jobb oldali operandusa nem található. |
 | InputParameter | TreatAsEqualIfWithinMillseconds | int | Itt adhatja meg, hogy a kettő között ezredmásodpercben kell figyelembe venni az időpontokat időpontok egyenlő (például fiók torzulása óráját). |
@@ -39,7 +39,7 @@ A **AssertDateTimeIsGreaterThan** jogcímek átalakítását a rendszer mindig f
 
 ![AssertStringClaimsAreEqual végrehajtása](./media/date-transformations/assert-execution.png)
 
-A következő példában a `currentDateTime` jogcím a `approvedDateTime` jogcím. Hiba lépett fel, ha `currentDateTime` nagyobb, mint `approvedDateTime`. Az átalakítás értékek, egyenlő, ha azok belül 5 perc (30000 ezredmásodperc) különbség kezeli.
+A következő példában a `currentDateTime` jogcím a `approvedDateTime` jogcím. Hiba lépett fel, ha `currentDateTime` későbbi, mint `approvedDateTime`. Az átalakítás értékek, egyenlő, ha azok belül 5 perc (30000 ezredmásodperc) különbség kezeli.
 
 ```XML
 <ClaimsTransformation Id="AssertApprovedDateTimeLaterThanCurrentDateTime" TransformationMethod="AssertDateTimeIsGreaterThan">
@@ -138,17 +138,17 @@ Az aktuális UTC-dátum és idő lekérése, és adja hozzá az érték egy taka
 
 ## <a name="datetimecomparison"></a>DateTimeComparison
 
-Határozza meg, hogy egy dátum és idő nagyobb, kisebb vagy egyenlő másik-e. Ez egy igaz vagy hamis értéket az új logikai takar logikai.
+Megállapításához, hogy egy dátum és idő később korábbi vagy azzal egyenlő egy másikba. Az eredmény egy új logikai takar logikai értékkel `true` vagy `false`.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| Bemeneti jogcím | firstDateTime | Dátum és idő | Az első dateTime összehasonlítására. NULL érték kivételt jelez. |
-| Bemeneti jogcím | secondDateTime | Dátum és idő | A második dátum és idő végrehajtásához. NULL érték aktuális datetTime kezeli. |
+| Bemeneti jogcím | firstDateTime | Dátum és idő | Első dátuma és időpontja korábbi vagy későbbi, mint a második dátum és idő akár összehasonlítására. NULL érték kivételt jelez. |
+| Bemeneti jogcím | secondDateTime | Dátum és idő | A második dátum és idő korábbi vagy későbbi, mint az első dateTime akár összehasonlítására. NULL érték az aktuális datetTime számít. |
 | InputParameter | Operátor | sztring | Következő értékek egyikét: ugyanazt, későbbi, mint vagy régebbi. |
 | InputParameter | timeSpanInSeconds | int | Adja hozzá a timespan első dátuma és időpontja. |
 | kimeneti jogcím | Eredmény | logikai | A takar, amelyek a ClaimsTransformation meghívása után jön létre. |
 
-Használja a jogcím-átalakítás annak meghatározásához, hogy két ClaimTypes, nagyobb, kisebb vagy egyenlő egymástól. Például előfordulhat, hogy az utolsó időpont, a felhasználó elfogadta a szolgáltatások (TOS) tárolja. 3 hónap letelte után kérje meg a felhasználó ismét hozzáférhet a távközlési.
+A jogcím-átalakítás annak meghatározásához, hogy két ClaimTypes egyenlő, később vagy korábbi, mint minden más is használja. Például előfordulhat, hogy az utolsó időpont, a felhasználó elfogadta a szolgáltatások (TOS) tárolja. 3 hónap letelte után kérje meg a felhasználó ismét hozzáférhet a távközlési.
 Futtassa a jogcím-átalakítást, szüksége lesz az aktuális dátum és idő lekérni, és is a legutóbbi alkalommal felhasználó fogadja el a távközlési.
 
 ```XML

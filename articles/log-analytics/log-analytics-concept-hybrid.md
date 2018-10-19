@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9decd861ff20a45939f700eef99245b6555829f8
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 03133c6d6518444f8e6fb15cfa425969dbafdedc
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319744"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406874"
 ---
 # <a name="collect-data-in-a-hybrid-environment-with-log-analytics-agent"></a>Adatgyűjtés a Log Analytics-ügynököket, a hibrid környezetben
 
@@ -38,7 +38,7 @@ Saját környezetben futtatott számítógépek kapcsolódhat közvetlenül egym
 
 Mielőtt elemzése, és az összegyűjtött adatokat működő, meg kell telepítése és csatlakozás ügynökök összes a számítógép, amelyet szeretne adatokat küldeni a Log Analytics szolgáltatásnak. Telepíthet ügynököket a helyszíni számítógépeken telepítővel, parancssor, vagy a Desired State Configuration (DSC) az Azure Automationben. 
 
-A Linux és Windows-ügynököt 443-as TCP-porton keresztül kommunikál a Log Analytics szolgáltatással kimenő, és ha a számítógép csatlakozik egy tűzfalon vagy proxykiszolgálón való kommunikációhoz az interneten keresztül, tekintse át a tudni, hogy a hálózati konfigurációt az alábbi követelményeknek szükséges.  Ha az informatikai biztonsági szabályzatok nem engedélyezik a számítógépek a hálózat csatlakozik az internethez, beállíthat egy [OMS-átjáró](log-analytics-oms-gateway.md) , majd konfigurálja az ügynök csatlakoztatása a Log Analytics-átjárón keresztül. Az ügynök ezután fogadni a konfigurációs adatokat, és attól függően, mely adatok gyűjtési szabályok és a megoldások engedélyezte az összegyűjtött adatok küldése. 
+A Linux és Windows-ügynököt 443-as TCP-porton keresztül kommunikál a Log Analytics szolgáltatással kimenő, és ha a számítógép csatlakozik egy tűzfalon vagy proxykiszolgálón való kommunikációhoz az interneten keresztül, tekintse át a tudni, hogy a hálózati konfigurációt az alábbi követelményeknek szükséges.  Ha az informatikai biztonsági szabályzatok nem engedélyezik a számítógépek a hálózat csatlakozik az internethez, beállíthat egy [Log Analytics-átjáró](log-analytics-oms-gateway.md) , majd konfigurálja az ügynök csatlakoztatása a Log Analytics-átjárón keresztül. Az ügynök ezután fogadni a konfigurációs adatokat, és attól függően, mely adatok gyűjtési szabályok és a megoldások engedélyezte az összegyűjtött adatok küldése. 
 
 Ha a számítógép és a System Center Operations Manager 2012 R2 vagy újabb, az adatok gyűjtéséhez és a szolgáltatás továbbítja, és továbbra is figyeli a Log Analytics szolgáltatással többhelyű lehet [az Operations Manager](log-analytics-om-agents.md). Az Operations Manager felügyeleti csoport integrálva van a Log Analytics által figyelt Linux rendszerű számítógépek konfigurációját az adatforrásokat és a továbbítás összegyűjtött adatokat a felügyeleti csoporton nem jelenik meg. A Windows-ügynök legfeljebb négy munkaterületeket, jelentheti a közben csak támogatja a Linux-ügynök, egy egyetlen-munkaterületre jelentő.  
 
@@ -92,7 +92,7 @@ Az alábbi listában a proxy- és tűzfalbeállítások szükséges konfiguráci
 
 Ha azt tervezi, használja az Azure Automation hibrid Runbook-feldolgozó kapcsolódni és regisztrálni az Automation szolgáltatással a runbookok használatához a környezetben, azt a portszámot és a leírt URL-címek hozzáféréssel kell rendelkeznie [a hálózat beállítása a Hibrid Runbook-feldolgozó](../automation/automation-hybrid-runbook-worker.md#network-planning). 
 
-A Windows és Linux-ügynök támogatja keresztül, ha a proxy- vagy OMS-átjárót a Log Analytics szolgáltatás a HTTPS protokoll használatával kommunikál.  Névtelen és alapszintű hitelesítés (felhasználónév és jelszó) támogatottak.  A Windows-ügynök közvetlenül csatlakozik a szolgáltatáshoz, a proxy konfigurációs van megadva a telepítés során vagy [üzembe helyezés után](log-analytics-agent-manage.md#update-proxy-settings) a Vezérlőpultot vagy a PowerShell használatával.  
+A Windows és Linux-ügynök támogatja a proxykiszolgáló vagy a Log Analytics-átjáró a Log Analytics szolgáltatás a HTTPS protokoll használatával keresztül kommunikál.  Névtelen és alapszintű hitelesítés (felhasználónév és jelszó) támogatottak.  A Windows-ügynök közvetlenül csatlakozik a szolgáltatáshoz, a proxy konfigurációs van megadva a telepítés során vagy [üzembe helyezés után](log-analytics-agent-manage.md#update-proxy-settings) a Vezérlőpultot vagy a PowerShell használatával.  
 
 A Linux-ügynök a proxykiszolgáló van megadva a telepítés során vagy [a telepítés után](log-analytics-agent-manage.md#update-proxy-settings) a proxy.conf konfigurációs fájljának módosításával.  A Linuxos ügynök proxykonfiguráció értékének szintaxisa a következő:
 
@@ -106,8 +106,8 @@ A Linux-ügynök a proxykiszolgáló van megadva a telepítés során vagy [a te
 |Protokoll | https |
 |Felhasználó | A proxy hitelesítése nem kötelező felhasználónév |
 |jelszó | Nem kötelező jelszót proxyhitelesítés |
-|proxyhost | Cím vagy teljes Tartománynevét a proxy server/OMS átjáró |
-|port | A proxy server/OMS átjáró opcionális port számát |
+|proxyhost | Cím vagy teljes Tartománynevét a proxy server/Log Analytics-átjáró |
+|port | A proxy server/Log Analytics-átjáró opcionális port száma |
 
 Például:`https://user01:password@proxy01.contoso.com:30443`
 
@@ -129,4 +129,4 @@ A helyszíni számítógépek csatlakoztatása közvetlenül a Log Analytics kö
 
 * Ismerje meg [naplókereséseket](log-analytics-log-searches.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 
 
-* Ismerje meg [megoldások](log-analytics-add-solutions.md) , amelyek további funkciókkal bővítik a Log Analytics és a is gyűjthet adatokat az OMS-tárházba.
+* Ismerje meg [megoldások](log-analytics-add-solutions.md) , amelyek további funkciókkal bővítik a Log Analytics és a is gyűjthet adatokat a Log Analytics-munkaterületre.

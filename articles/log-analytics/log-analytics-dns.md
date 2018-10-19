@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9bb7adaeec89979ff86920b4bfd74c6399bda298
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 9ac8d876e9c79e5aadfcf834e18e94f6ac8b3a30
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043623"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408472"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Gyűjtsön információt a DNS-infrastruktúra, a DNS Analytics előzetes verziójának megoldással kapcsolatos
 
@@ -46,7 +46,7 @@ A következő táblázat ismerteti a megoldás által támogatott csatlakoztatot
 | --- | --- | --- |
 | [Windows-ügynökök](log-analytics-windows-agent.md) | Igen | A megoldás a DNS-adatok Windows-ügynököktől gyűjti. |
 | [Linux-ügynökök](log-analytics-linux-agents.md) | Nem | A megoldás nem DNS-információkat gyűjtsön a közvetlen Linux-ügynökök. |
-| [System Center Operations Manager felügyeleti csoport](log-analytics-om-agents.md) | Igen | A megoldás a DNS-adatok egy csatlakoztatott az Operations Manager felügyeleti csoportban lévő ügynököktől gyűjti. Közvetlen kapcsolat legyen az Operations Manager-ügynököt az Operations Management Suite nem kötelező. Adatok a felügyeleti csoportból az Operations Management Suite-tárházba lesznek továbbítva. |
+| [System Center Operations Manager felügyeleti csoport](log-analytics-om-agents.md) | Igen | A megoldás a DNS-adatok egy csatlakoztatott az Operations Manager felügyeleti csoportban lévő ügynököktől gyűjti. Ehhez nem szükséges, hogy közvetlen kapcsolat legyen az Operations Manager-ügynök és a Log Analytics között. Adatok lesznek továbbítva a felügyeleti csoportból a Log Analytics-munkaterületet. |
 | [Azure Storage-fiók](log-analytics-azure-storage.md) | Nem | A megoldás az Azure storage nem használja. |
 
 ### <a name="data-collection-details"></a>Adatok gyűjtése részletei
@@ -58,7 +58,7 @@ A megoldás gyűjti DNS-leltár- és DNS-esemény kapcsolatos adatokat a DNS-kis
 A megoldás konfigurálásához kövesse az alábbi adatokat:
 
 - Rendelkeznie kell egy [Windows](log-analytics-windows-agent.md) vagy [az Operations Manager](log-analytics-om-agents.md) ügynököt mindegyik figyelni kívánt DNS-kiszolgálón.
-- Az Operations Management Suite-munkaterületet a DNS Analytics megoldás is hozzáadhat a [Azure Marketplace-en](https://aka.ms/dnsanalyticsazuremarketplace). Is használhatja a leírt folyamatot [adja hozzá a Log Analytics solutions kövesse a megoldástárban](log-analytics-add-solutions.md).
+- A DNS Analytics megoldás a Log Analytics-munkaterületet is hozzáadhat a [Azure Marketplace-en](https://aka.ms/dnsanalyticsazuremarketplace). Is használhatja a leírt folyamatot [adja hozzá a Log Analytics solutions kövesse a megoldástárban](log-analytics-add-solutions.md).
 
 A megoldás elindult, nincs szükség további konfigurációs adatok gyűjtése. A következő konfiguráció használatával azonban adatgyűjtés testreszabása.
 
@@ -76,11 +76,11 @@ A megoldás irányítópultján kattintson **konfigurációs** a DNS Analytics k
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
 
-Ha a Microsoft Monitoring Agentet az Operations Management Suite-munkaterülethez való kapcsolódáshoz használ, a következő felügyeleti csomag telepítve van:
+Ha a Microsoft Monitoring Agent a Log Analytics-munkaterülethez való kapcsolódáshoz használ, a következő felügyeleti csomag telepítve van:
 
 - Microsoft DNS Data Collector Intelligence Pack (Microsft.IntelligencePacks.Dns)
 
-Ha az Operations Manager felügyeleti csoportban a Operations Management Suite-munkaterülethez van csatlakoztatva, a következő felügyeleti csomagokat az Operations Manager települnek, ha ez a megoldás hozzáadásakor. Ne legyen kötelező konfigurációs vagy karbantartási a felügyeleti csomagok:
+Ha az Operations Manager felügyeleti csoportban a Log Analytics-munkaterülethez van csatlakoztatva, a következő felügyeleti csomagokat az Operations Manager települnek, ha ez a megoldás hozzáadásakor. Ne legyen kötelező konfigurációs vagy karbantartási a felügyeleti csomagok:
 
 - Microsoft DNS Data Collector Intelligence Pack (Microsft.IntelligencePacks.Dns)
 - Microsoft System Center Advisor DNS Analytics Configuration (Microsoft.IntelligencePack.Dns.Configuration)
@@ -91,7 +91,7 @@ A megoldási felügyeleti csomagok frissítéseivel kapcsolatban lásd: [Az Oper
 
 Ez a szakasz ismerteti az összes irányítópult funkciók és azok használatát.
 
-Miután a megoldást a munkaterülethez hozzáadott, a megoldás csempe az Operations Management Suite – Áttekintés oldalon a DNS-infrastruktúra gyors összegzését tartalmazza. DNS-kiszolgálók, ahol az adatokat gyűjtenek számát tartalmazza. Rosszindulatú tartományok feloldani az elmúlt 24 órában az ügyfelek által végrehajtott kérelmek száma is tartalmaz. Ha a csempére kattint, megnyílik a megoldás irányítópultján.
+Miután a megoldást a munkaterülethez hozzáadott, tartalmazza a Log Analytics – Áttekintés lap az Azure Portalon egy **megoldások megtekintése** rövid összefoglalás a DNS-infrastruktúra mutató hivatkozást. DNS-kiszolgálók, ahol az adatokat gyűjtenek számát tartalmazza. Rosszindulatú tartományok feloldani az elmúlt 24 órában az ügyfelek által végrehajtott kérelmek száma is tartalmaz. Ha a csempére kattint, megnyílik a megoldás irányítópultján.
 
 ![DNS Analytics tile](./media/log-analytics-dns/dns-tile.png)
 
@@ -185,7 +185,7 @@ A naplók keresése oldalát létrehozhat egy lekérdezést. A keresési eredmé
 
 Kétféleképpen visszajelzést is:
 
-- **UserVoice**. Közzététele a DNS-elemzési funkciók működését az ötleteit. Látogasson el a [Operations Management Suite UserVoice-lapunkon](https://aka.ms/dnsanalyticsuservoice).
+- **UserVoice**. Közzététele a DNS-elemzési funkciók működését az ötleteit. Látogasson el a [Log Analytics UserVoice-lapunkon](https://aka.ms/dnsanalyticsuservoice).
 - **Csatlakozzon a kohorsz**. Mindig érdekel rendelkező új ügyfeleket az új funkciók korai hozzáférést kaphat, és segítsen még jobbá tenni a DNS Analytics kohorszok csatlakozzon. Ha érdekli a kohorszok való csatlakozás, töltse ki [ez rövid felmérés](https://aka.ms/dnsanalyticssurvey).
 
 ## <a name="next-steps"></a>További lépések

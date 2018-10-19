@@ -5,21 +5,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/19/2018
+ms.date: 10/15/2018
 ms.author: tamram
-ms.openlocfilehash: 6ee80aa7b7a58e2f02ed36d3c0c4b1a0889a906f
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: ae6f7646192b7bee8cbd836f1eff3814c26a6b46
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831466"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427329"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Az Azure Active Directory-hitelesítés engedélyezése az SMB-n keresztül az Azure Files (előzetes verzió)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
 Az Azure Files SMB-n keresztül az Azure AD-hitelesítés áttekintését lásd: [áttekintése az Azure Active Directory hitelesítési SMB-n keresztül az Azure Files (előzetes verzió)](storage-files-active-directory-overview.md).
 
-## <a name="workflow-overview"></a>A munkafolyamat áttekintése
+## <a name="overview-of-the-workflow"></a>A munkafolyamat áttekintése
 Mielőtt az Azure Files SMB-n keresztül engedélyezi az Azure AD, ellenőrizze, hogy az Azure AD és az Azure Storage-környezetek megfelelően legyenek konfigurálva. Javasoljuk, hogy vezeti végig a [Előfeltételek](#prerequisites) , győződjön meg arról, hogy végzett el a szükséges lépéseket. 
 
 Ezután adja meg az Azure AD hitelesítő adatait az Azure Files-erőforrásokhoz való hozzáférés az alábbi lépéseket: 
@@ -34,6 +34,9 @@ Az alábbi ábra szemlélteti a végpontok közötti munkafolyamat az Azure AD-h
 ![Ábra az Azure AD SMB-n keresztül az Azure Files-munkafolyamat](media/storage-files-active-directory-enable/azure-active-directory-over-smb-workflow.png)
 
 ## <a name="prerequisites"></a>Előfeltételek 
+
+Mielőtt az Azure Files SMB-n keresztül engedélyezi az Azure AD, győződjön meg arról, befejeződött a következő előfeltételek vonatkoznak:
+
 1.  **Válassza ki, vagy hozzon létre egy Azure AD-bérlővel.**
 
     SMB-n keresztül használhatja egy új vagy meglévő bérlő az Azure AD-hitelesítés. A bérlői és az elérni kívánt fájlmegosztás ugyanahhoz az előfizetéshez társítva kell lennie.
@@ -57,7 +60,7 @@ Az alábbi ábra szemlélteti a végpontok közötti munkafolyamat az Azure AD-h
 
     Válassza ki egy új vagy meglévő fájlmegosztást, amely ugyanazt az előfizetést az Azure AD-bérlővel van társítva. Új fájlmegosztás létrehozásával kapcsolatban lásd: [fájlmegosztás létrehozása az Azure Files](storage-how-to-create-file-share.md). 
 
-    Az Azure AD-bérlővel kell telepíteni, SMB-n keresztül az Azure AD az előzetes verzióra támogatott. Az összes nyilvános régióban, az alábbiakat kivéve az előzetes verzió érhető el: USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, USA déli középső Régiója, USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA középső RÉGIÓJA, USA északi középső Régiója, Kelet-Ausztrália, Nyugat-Európa, Észak-Európa.
+    Az Azure AD-bérlővel kell telepíteni, SMB-n keresztül az Azure AD az előzetes verzióra támogatott. Az összes nyilvános régióban, az alábbiakat kivéve az előzetes verzió érhető el: USA nyugati RÉGIÓJA, 2. nyugati RÉGIÓJA, USA déli középső Régiója, USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA középső RÉGIÓJA, USA északi középső Régiója, Ausztrália keleti régiója, Nyugat-Európa, Észak-Európa.
 
     Az optimális teljesítmény érdekében a Microsoft azt javasolja, hogy a fájlmegosztás a virtuális gép, amelyről azt tervezi, hogy a megosztás elérése ugyanabban a régióban van.
 
@@ -65,20 +68,29 @@ Az alábbi ábra szemlélteti a végpontok közötti munkafolyamat az Azure AD-h
 
     Győződjön meg arról, hogy megfelelően vannak-e konfigurálva a virtuális gép és a fájlmegosztást, próbálja meg csatlakoztatja a fájlmegosztást a tárfiók kulcsára. További információkért lásd: [egy Azure-fájlmegosztás csatlakoztatása és a Windows a megosztás elérése](storage-how-to-use-files-windows.md).
 
-## <a name="enable-azure-ad-authentication"></a>Az Azure AD-hitelesítés engedélyezése
-Miután végrehajtotta a [Előfeltételek](#prerequisites), engedélyezheti az Azure AD-hitelesítés SMB-n keresztül.
+## <a name="enable-azure-ad-authentication-for-your-account"></a>A fiók az Azure AD-hitelesítés engedélyezése
 
-### <a name="step-1-enable-azure-ad-authentication-over-smb-for-your-storage-account"></a>1. lépés: A tárfiók engedélyezze az SMB-n keresztül az Azure AD-hitelesítés
-Az Azure AD-hitelesítés engedélyezéséhez SMB-n keresztül az Azure Files számára adhatók meg egy tulajdonságot 29, 2018 augusztus után létrehozott storage-fiókok az Azure Storage erőforrás-szolgáltató a PowerShell vagy az Azure CLI használatával. A következő tulajdonság beállítása az Azure Portal előzetes kiadásban nem támogatott. 
-
-Ez a tulajdonság beállítása a társított Azure AD tartományi szolgáltatások telepítési a storage-fiókban regisztrálja. SMB-n keresztül az Azure AD-hitelesítés majd engedélyezve van az összes meglévő és új fájlmegosztást a storage-fiókban. 
+Az Azure AD-hitelesítés engedélyezéséhez SMB-n keresztül az Azure Files számára beállíthat egy tulajdonságot a 2018. szeptember 24., után létrehozott storage-fiókok az Azure Portalon, az Azure PowerShell vagy az Azure CLI használatával. Ez a tulajdonság beállítása a társított Azure AD tartományi szolgáltatások telepítési a storage-fiókban regisztrálja. SMB-n keresztül az Azure AD-hitelesítés majd engedélyezve van az összes meglévő és új fájlmegosztást a storage-fiókban. 
 
 Ne feledje, hogy engedélyezheti az Azure AD-hitelesítés SMB-n keresztül csak, miután sikeresen telepítette az Azure AD tartományi szolgáltatásokat az Azure AD-bérlővel. További információkért tekintse meg a [Előfeltételek](#prerequisites).
 
-**PowerShell**  
-SMB-n keresztül az Azure AD-hitelesítés engedélyezéséhez telepítse a `AzureRM.Storage 6.0.0-preview` PowerShell-modult. PowerShell telepítésével kapcsolatos információkért lásd: [Azure PowerShell telepítése a Windows a Powershellgettel](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+### <a name="azure-portal"></a>Azure Portal
 
-Ezután hívja [Set-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/set-azurermstorageaccount) és állítsa be a **EnableAzureFilesAadIntegrationForSMB** paramétert **igaz**. Az alábbi példában a vágólapra a helyőrző értékeket cserélje le a saját értékeire.
+Az Azure AD-hitelesítés engedélyezéséhez az SMB használatához képest a [az Azure portal](https://portal.azure.com), kövesse az alábbi lépéseket:
+
+1. Az Azure Portalon keresse meg a meglévő tárfiókot, vagy [hozzon létre egy tárfiókot](../common/storage-quickstart-create-account.md).
+2. Az a **beállítások** szakaszban jelölje be **konfigurációs**.
+3. Engedélyezése **Azure Active Directory-hitelesítést az Azure Files (előzetes verzió)**.
+
+Az alábbi képen látható az Azure AD-hitelesítés engedélyezése az SMB-n keresztül a tárfiók számára.
+
+![Az Azure AD-hitelesítés engedélyezéséhez az SMB-n keresztül az Azure Portalon](media/storage-files-active-directory-enable/portal-enable-active-directory-over-smb.png)
+  
+### <a name="powershell"></a>PowerShell  
+
+Az Azure AD-hitelesítés engedélyezése az Azure PowerShell SMB-n keresztül, először telepítse a `AzureRM.Storage 6.0.0-preview` modul. PowerShell telepítésével kapcsolatos információkért lásd: [Azure PowerShell telepítése a Windows a Powershellgettel](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+
+Következő lépésként hozzon létre egy új tárfiókot fiókra, majd hívjon [Set-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/set-azurermstorageaccount) és állítsa be a **EnableAzureFilesAadIntegrationForSMB** paramétert **igaz**. Az alábbi példában a vágólapra a helyőrző értékeket cserélje le a saját értékeire.
 
 ```powershell
 # Create a new storage account
@@ -90,37 +102,40 @@ New-AzureRmStorageAccount -ResourceGroupName "<resource-group-name>" `
     -EnableAzureFilesAadIntegrationForSMB $true
 
 # Update an existing storage account
-# Supported for storage accounts created after August 29, 2018 only
+# Supported for storage accounts created after September 24, 2018 only
 Set-AzureRmStorageAccount -ResourceGroupName "<resource-group-name>" `
     -Name "<storage-account-name>" `
     -EnableAzureFilesAadIntegrationForSMB $true```
 ```
 
-**Parancssori felület**  
-Az Azure AD-hitelesítés engedélyezése az Azure CLI 2.0-s SMB-n keresztül, először telepítse a *storage – előzetes verzió* bővítményt:
+### <a name="azure-cli"></a>Azure CLI
 
-```azurecli-interactive
+Az Azure AD-hitelesítés engedélyezése az Azure CLI 2.0-s SMB-n keresztül, először telepítse a `storage-preview` bővítményt:
+
+```cli-interactive
 az extension add --name storage-preview
 ```
-
-Ezután hívja [storage-fiók frissítése az](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-update) és állítsa be a `--file-aad` tulajdonságot **igaz**. Az alábbi példában a vágólapra a helyőrző értékeket cserélje le a saját értékeire.
+  
+Következő lépésként hozzon létre egy új tárfiókot fiókra, majd hívjon [storage-fiók frissítése az](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-update) és állítsa be a `--file-aad` tulajdonságot **igaz**. Az alábbi példában a vágólapra a helyőrző értékeket cserélje le a saját értékeire.
 
 ```azurecli-interactive
 # Create a new storage account
 az storage account create -n <storage-account-name> -g <resource-group-name> --file-aad true
 
 # Update an existing storage account
-# Supported for storage accounts created after August 29, 2018 only
+# Supported for storage accounts created after September 24, 2018 only
 az storage account update -n <storage-account-name> -g <resource-group-name> --file-aad true
 ```
 
-### <a name="step-2-assign-access-permissions-to-an-identity"></a>2. lépés: A hozzáférési engedélyek hozzárendelése az identitás 
-Azure AD hitelesítő adatait az Azure Files-erőforrások eléréséhez az identitás (felhasználó, csoport vagy szolgáltatásnév) a megosztás szintjén kell rendelkeznie a szükséges engedélyekkel. A részletes útmutatója az alábbi bemutatja, hogyan rendelje hozzá az olvasási, írási, vagy egy fájlmegosztás-identitásra vonatkozó engedélyeinek törlése.
+## <a name="assign-access-permissions-to-an-identity"></a>Hozzáférési engedélyek hozzárendelése a identitás 
+
+Azure AD hitelesítő adatait az Azure Files-erőforrások eléréséhez az identitás (felhasználó, csoport vagy szolgáltatásnév) a megosztás szintjén kell rendelkeznie a szükséges engedélyekkel. Ebben a szakaszban található útmutatást bemutatja, hogyan rendelje hozzá az olvasási, írási, vagy egy fájlmegosztás-identitásra vonatkozó engedélyeinek törlése.
 
 > [!IMPORTANT]
 > Egy fájlmegosztást, beleértve a szerepkör hozzárendelése a identitást, teljes körű felügyeletet igényel, a tárfiók-kulcsot használ. Az Azure AD hitelesítő adatait a felügyeleti vezérlő nem támogatott. 
 
-#### <a name="step-21-define-a-custom-role"></a>2.1. lépés: Adja meg az egyéni szerepkör
+### <a name="define-a-custom-role"></a>Egyéni szerepkör definiálása
+
 Megosztási szintű engedélyeket, adja meg egy egyéni RBAC-szerepkört, és rendelje hozzá az identitás felmerülő, egy adott fájlmegosztáshoz. Ez a folyamat hasonlít a Windows megosztása engedélyek megadásával adhatja meg, amely egy adott felhasználó fájlmegosztás hozzáférési.  
 
 A sablonok a következő szakaszban látható adja meg a fájlmegosztás engedélyeinek olvasása vagy módosítása. Adja meg egy egyéni biztonsági szerepkört, hozzon létre egy JSON-fájlt, és másolja ki a megfelelő sablont, amely a fájl. További információ az egyéni RBAC-szerepkörök definiálása: [egyéni szerepkörök az Azure-ban](../../role-based-access-control/custom-roles.md).
@@ -172,19 +187,39 @@ A következő egyéni szerepkör-sablon megosztásszintű olvasási engedélyeke
 }
 ```
 
-#### <a name="step-22-create-the-custom-role-and-assign-it-to-the-target-identity"></a>2.2. lépés: Az egyéni szerepkör létrehozása, és rendelje hozzá a cél-identitás
-Ezután használhatja a szerepkör létrehozásához, és rendelje hozzá az Azure AD identity PowerShell vagy az Azure CLI használatával. 
+### <a name="create-the-custom-role"></a>Az egyéni szerepkör létrehozása
 
-**PowerShell**  
-SMB-n keresztül az Azure AD-hitelesítés engedélyezéséhez telepítse a `AzureRM.Storage 6.0.0-preview` PowerShell-modult. PowerShell telepítésével kapcsolatos információkért lásd: [Azure PowerShell telepítése a Windows a Powershellgettel](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+Az egyéni szerepkör létrehozásához használja a PowerShell vagy az Azure CLI használatával. 
 
-A következő PowerShell-parancs létrehoz egy egyéni biztonsági szerepkört, és a szerepkört rendel egy Azure AD-identitásnak, a bejelentkezési neve alapján. A PowerShell-lel RBAC-szerepkörök hozzárendelésével kapcsolatos további információkért lásd: [RBAC és az Azure PowerShell-hozzáférés kezelése](../../role-based-access-control/role-assignments-powershell.md).
+#### <a name="powershell"></a>PowerShell
 
-Az alábbi parancsprogram futtatásakor ne felejtse el lecserélni a helyőrző értékeket a saját értékeire.
+A következő PowerShell-parancs létrehoz egy egyéni biztonsági szerepkört a mintasablonokat egyike alapján.
 
 ```powershell
 #Create a custom role based on the sample template above
 New-AzureRmRoleDefinition -InputFile "<custom-role-def-json-path>"
+```
+
+#### <a name="cli"></a>parancssori felület 
+
+Az Azure CLI-parancsot egy egyéni biztonsági szerepkört a mintasablonokat egyike alapján hoz létre.
+
+```azurecli-interactive
+#Create a custom role based on the sample templates above
+az role definition create --role-definition "<Custom-role-def-JSON-path>"
+```
+
+### <a name="assign-the-custom-role-to-the-target-identity"></a>Az egyéni szerepkör hozzárendelése a cél-identitás
+
+Ezután használja az egyéni szerepkör hozzárendelése egy Azure AD identity PowerShell vagy az Azure CLI használatával. 
+
+#### <a name="powershell"></a>PowerShell
+
+A következő PowerShell-parancs bemutatja, hogyan egyéni szerepkörök listázása és a egy egyéni biztonsági szerepkört hozzárendelheti az Azure AD identitás, a bejelentkezési neve alapján. A PowerShell-lel RBAC-szerepkörök hozzárendelésével kapcsolatos további információkért lásd: [RBAC és az Azure PowerShell-hozzáférés kezelése](../../role-based-access-control/role-assignments-powershell.md).
+
+Az alábbi parancsprogram futtatásakor ne felejtse el lecserélni a helyőrző értékeket, beleértve a zárójeleket, a saját értékeire.
+
+```powershell
 #Get the name of the custom role
 $FileShareContributorRole = Get-AzureRmRoleDefinition "<role-name>"
 #Constrain the scope to the target file share
@@ -193,21 +228,20 @@ $scope = "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/provi
 New-AzureRmRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $FileShareContributorRole.Name -Scope $scope
 ```
 
-**Parancssori felület**  
-A következő CLI 2.0 parancs létrehoz egy egyéni biztonsági szerepkört, és a szerepkört rendel egy Azure AD-identitásnak, a bejelentkezési neve alapján. Az Azure CLI-vel RBAC-szerepkörök hozzárendelése kapcsolatos további információkért lásd: [RBAC és az Azure CLI-hozzáférés kezelése](../../role-based-access-control/role-assignments-cli.md). 
+#### <a name="cli"></a>parancssori felület
+  
+A következő CLI 2.0-parancs bemutatja, hogyan egyéni szerepkörök listázása és a egy egyéni biztonsági szerepkört hozzárendelheti az Azure AD identitás, a bejelentkezési neve alapján. Az Azure CLI-vel RBAC-szerepkörök hozzárendelése kapcsolatos további információkért lásd: [RBAC és az Azure CLI-hozzáférés kezelése](../../role-based-access-control/role-assignments-cli.md). 
 
-Az alábbi parancsprogram futtatásakor ne felejtse el lecserélni a helyőrző értékeket a saját értékeire.
+Az alábbi parancsprogram futtatásakor ne felejtse el lecserélni a helyőrző értékeket, beleértve a zárójeleket, a saját értékeire.
 
 ```azurecli-interactive
-#Create a custom role based on the sample templates above
-az role definition create --role-definition "<Custom-role-def-JSON-path>"
 #List the custom roles
 az role definition list --custom-role-only true --output json | jq '.[] | {"roleName":.roleName, "description":.description, "roleType":.roleType}'
 #Assign the custom role to the target identity
 az role assignment create --role "<custome-role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshare/<share-name>"
 ```
 
-### <a name="step-3-configure-ntfs-permissions-over-smb"></a>3. lépés: Az NTFS-engedélyek konfigurálása a SMB-n keresztül 
+## <a name="configure-ntfs-permissions-over-smb"></a>NTFS-engedélyek konfigurálása SMB-n keresztül 
 Az RBAC megosztási szintű engedélyek hozzárendelése után hozzá kell rendelnie a megfelelő NTFS-engedéllyel a legfelső szintű, könyvtárat vagy fájlt szintjén. Úgy gondolja, hogy a megosztás szintű engedélyekkel a, a magas szintű forgalomirányító, amely meghatározza, hogy e egy felhasználó hozzáférhessen a megosztást, amíg a felhasználó egy részletesebb szintet határozza meg, milyen műveleteket intézkedjen NTFS-engedélyek hajthat végre, a fájl vagy könyvtár szintjén. 
 
 Az Azure Files NTFS Alapszintű és speciális engedélyek teljes készletét támogatja. Megtekintheti és NTFS-engedélyek konfigurálása a könyvtárak és fájlok az Azure-fájlmegosztások a megosztás csatlakoztatásával, és futtassa a Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) vagy [Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl) parancsot. 
@@ -227,14 +261,15 @@ A következő eljárások egyikét az engedélyeket a fájlmegosztás gyökérk�
 - NT AUTHORITY\SYSTEM:(F)
 - LÉTREHOZÓ OWNER:(OI)(CI)(IO)(F)
 
-#### <a name="step-31-mount-an-azure-file-share-from-the-command-prompt"></a>3.1. lépés Azure-fájlmegosztás csatlakoztatása a parancssor használatával
+### <a name="mount-a-file-share-from-the-command-prompt"></a>A fájlmegosztás csatlakoztatása a parancssor használatával
+
 Használja a Windows **használata net** parancsot az Azure-fájlmegosztás csatlakoztatásához. Fontos, hogy a példában a helyőrző értékeket cserélje le a saját értékeire. Fájlmegosztások kapcsolatos további információkért lásd: [egy Azure-fájlmegosztás csatlakoztatása és a Windows a megosztás elérése](storage-how-to-use-files-windows.md).
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
 ```
 
-#### <a name="step-32-configure-ntfs-permissions-with-icacls"></a>3.2. lépés konfigurálása NTFS-engedéllyel rendelkező icacls
+### <a name="configure-ntfs-permissions-with-icacls"></a>Icacls NTFS-engedélyek konfigurálása
 A következő Windows-parancs segítségével minden könyvtárnak és fájlnak a fájlmegosztást, beleértve a legfelső szintű könyvtár alatt teljes körű engedélyeket. Fontos, hogy a példában a helyőrző értékeket cserélje le a saját értékeire.
 
 ```
@@ -243,7 +278,8 @@ icacls <mounted-drive-letter> /grant <user-email>:(f)
 
 További információ az NTFS-engedélyek beállítására és az engedélyek támogatott különböző típusú, lásd: icacls használatával [icacls parancssori referenciája](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls).
 
-### <a name="step-4-mount-an-azure-file-share-from-a-domain-joined-vm"></a>4. lépés: Azure-fájlmegosztás csatlakoztatása egy tartományhoz csatlakoztatott virtuális gépről 
+## <a name="mount-a-file-share-from-a-domain-joined-vm"></a>A fájlmegosztás csatlakoztatása egy tartományhoz csatlakoztatott virtuális gépről 
+
 Most már készen áll a győződjön meg arról, hogy végzett a fenti lépéseket sikeresen használatával egy tartományhoz csatlakoztatott virtuális gépről ossza meg az Azure AD hitelesítő adatait az Azure fájl eléréséhez. Első lépésként jelentkezzen be a virtuális gép az Azure AD-identitásnak, amelyhez kapott engedélyt, a következő képen látható módon.
 
 ![Képernyőkép bemutató az Azure AD bejelentkezési képernyőn a felhasználók hitelesítéséhez](media/storage-files-active-directory-enable/azure-active-directory-authentication-dialog.png)
@@ -257,8 +293,9 @@ net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<
 Most már sikeresen engedélyezve van az Azure AD-hitelesítés SMB-n keresztül, és egy egyéni szerepkört, amely egy Azure AD identity fájlmegosztás hozzáférést biztosít. A fájlmegosztás hozzáférést további felhasználók számára, kövesse az utasításokat, 2. és 3. lépésében megadott.
 
 ## <a name="next-steps"></a>További lépések
+
 Az Azure Files és az SMB-n keresztül az Azure AD-vel kapcsolatos további információkért tekintse meg ezeket az erőforrásokat:
 
 - [Bevezetés az Azure Files használatába](storage-files-introduction.md)
 - [Az Azure Files (előzetes verzió) SMB-n keresztül az Azure Active Directory-hitelesítés áttekintése](storage-files-active-directory-overview.md)
-- [GYIK](storage-files-faq.md)
+- [Gyakori kérdések](storage-files-faq.md)

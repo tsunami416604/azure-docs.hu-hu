@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 06/19/2018
-ms.openlocfilehash: 5bf5385824eb9b711a2fee547c29d24d7ef5a01d
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 666c998a781f13ea2a26ccfc0b94aeead0308f5b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125768"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405684"
 ---
 # <a name="track-b2b-communication-with-azure-log-analytics"></a>Nyomon követheti az Azure Log Analytics B2B-kommunikáció
 
@@ -40,9 +40,9 @@ Miután beállította a B2B-kommunikáció két közötti üzleti folyamatokkal 
 >  
 > Ha nem rendelkezik a Log Analytics-munkaterületet, további [Log Analytics-munkaterület létrehozása](../log-analytics/log-analytics-quick-create-workspace.md).
 
-## <a name="add-the-logic-apps-b2b-solution-to-log-analytics"></a>Adja hozzá a Logic Apps B2B-megoldás a Log Analyticsbe
+## <a name="add-the-logic-apps-b2b-solution-to-azure"></a>Adja hozzá a Logic Apps B2B-megoldás az Azure-bA
 
-Ahhoz, hogy a logikai alkalmazás B2B üzenetek nyomon követése a Log Analytics, hozzá kell adnia a **Logic Apps B2B** megoldás az OMS-portálra. Tudjon meg többet [megoldások hozzáadása a Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
+Ahhoz, hogy a logikai alkalmazás B2B üzenetek nyomon követése a Log Analytics, hozzá kell adnia a **Logic Apps B2B** megoldás a Log Analytics szolgáltatásba. Tudjon meg többet [megoldások hozzáadása a Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
 
 1. Az a [az Azure portal](https://portal.azure.com), válassza a **minden szolgáltatás**. Keresse meg a "log analytics", és válassza a **Log Analytics** itt látható módon:
 
@@ -52,7 +52,7 @@ Ahhoz, hogy a logikai alkalmazás B2B üzenetek nyomon követése a Log Analytic
 
    ![Válassza ki a Log Analytics-munkaterület](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
 
-3. A **felügyeleti**, válassza a **áttekintése**.
+3. A **felügyeleti**, válassza a **munkaterület összefoglalás**.
 
    ![Válassza ki a Log Analytics-portál](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
 

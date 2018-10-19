@@ -1,21 +1,21 @@
 ---
 title: Az Azure Active Directory hitelesítést blob és üzenetsor adatok elérését (előzetes verzió) az alkalmazásokból |} A Microsoft Docs
-description: Azure Active Directory használatával az alkalmazáson belül hitelesítéshez, és ezt engedélyezze az Azure Storage-erőforrások (előzetes verzió) kéréseket.
+description: Azure Active Directory használatával az alkalmazáson belül hitelesítéshez, és ezután a blobok és üzenetsorok (előzetes verzió) a kérelmek engedélyezését végzi.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/07/2018
+ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 6a0b7139fd8d216397090154a4324c8e4305a939
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: d249753dd954ba610a757a88060c6c0f7c58ad95
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816378"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427093"
 ---
-# <a name="authenticate-with-azure-active-directory-from-an-azure-storage-application-preview"></a>Hitelesítés Azure Active Directoryval az Azure Storage-alkalmazás (előzetes verzió)
+# <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues-preview"></a>Hozzáférés egy alkalmazás hitelesítése az Azure Active Directoryval, blobok és üzenetsorok (előzetes verzió)
 
 Azure Active Directory (Azure AD) használatával az Azure Storage egyik legfőbb előnye az, hogy a hitelesítő adatok már nem kell tárolni a kódban. Ehelyett az OAuth 2.0 hozzáférési jogkivonatot kérhet az Azure ad-ből. Az Azure AD kezeli a hitelesítést, a rendszerbiztonsági tag (felhasználó, csoport vagy szolgáltatásnév) az alkalmazás futtatása. Ha a hitelesítés sikeres, az Azure AD az alkalmazáshoz a hozzáférési jogkivonatot ad vissza, és az alkalmazás ezután használhatja a hozzáférési jogkivonatot az Azure Storage-kérelmek engedélyezését végzi.
 
@@ -26,6 +26,10 @@ Mielőtt egy rendszerbiztonsági tag hitelesítheti az Azure Storage-alkalmazás
 Az OAuth 2.0 kód engedélyezési folyamatával áttekintését lásd: [hozzáférés engedélyezése az Azure Active Directory webes alkalmazásokhoz az OAuth 2.0-kód használatával adja meg a folyamat](../../active-directory/develop/v1-protocols-oauth-code.md).
 
 [!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
+
+## <a name="assign-an-rbac-role-to-an-azure-ad-security-principal"></a>Az RBAC szerepkör hozzárendelése egy Azure AD rendszerbiztonsági tag
+
+Hitelesítést végezni az Azure Storage-alkalmazás a rendszerbiztonsági tag, először konfigurálnia kell a rendszerbiztonsági tag szerepköralapú hozzáférés-vezérlés (RBAC) beállításait. Az Azure Storage határozza meg, amely magában foglalja a tárolók és a várólisták engedélyeit RBAC-szerepkörökhöz. Az RBAC szerepkör van rendelve egy rendszerbiztonsági tag, amikor a rendszerbiztonsági tag hozzáférést ennek az erőforrásnak. További információkért lásd: [kezelés hozzáférési jogosultságok RBAC (előzetes verzió) az adatok Azure Blob és üzenetsor](storage-auth-aad-rbac.md).
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Regisztrálja az alkalmazást az Azure AD-bérlő
 

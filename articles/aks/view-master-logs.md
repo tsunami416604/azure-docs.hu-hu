@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 011654dcbad21c3e8cea51d6ab98eeca461e4685
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 7caa98b65b35d1eb1a000f1e9099fbf8eb3f8861
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068825"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406041"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Engedélyezze, és tekintse át a Kubernetes Azure Kubernetes Service (AKS) naplózza a fő csomópont
 
@@ -37,9 +37,12 @@ A log Analytics engedélyezve van, és kezeli az Azure Portalon. Ahhoz, hogy a K
 1. A naplók listájából válassza ki a naplók például engedélyezni kívánt *kube-apiserver*, *kube-tartományvezérlő-manager*, és *kube-ütemező*. Lépjen vissza, és az összegyűjtött naplók módosítani, ha a Log Analytics engedélyezve vannak.
 1. Ha elkészült, válassza ki a **mentése** a kiválasztott naplók gyűjtésének engedélyezéséhez.
 
-Az alábbi példában portál képernyőképe a *diagnosztikai beállítások* ablakban, majd az OMS-munkaterület létrehozása lehetőséget:
+Az alábbi példában portál képernyőképe a *diagnosztikai beállítások* ablakban, majd létrehozhat egy Log Analytics-munkaterület:
 
-![OMS-munkaterületet a Log Analytics az AKS-fürt engedélyezése](media/view-master-logs/enable-oms-log-analytics.png)
+![Log Analytics-munkaterületet a Log Analytics az AKS-fürt engedélyezése](media/view-master-logs/enable-oms-log-analytics.png)
+
+>[!NOTE]
+>OMS-munkaterülete mostantól Log Analytics-munkaterületek nevezik. 
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Az AKS-fürtöt teszt podján ütemezése
 
@@ -75,7 +78,7 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>Összegyűjtött naplók megtekintése
 
-Eltarthat néhány percig, a diagnosztikai naplók engedélyezni kell, és megjelennek az OMS-munkaterületet. Az Azure Portalon válassza ki az erőforráscsoportot, a Log Analytics-munkaterület, például *myResourceGroup*, majd válassza ki a Log Analytics-erőforrás, például *myAKSLogs*.
+Eltarthat néhány percig, engedélyezni kell, és a Log Analytics-munkaterületen jelennek meg a diagnosztikai naplókat. Az Azure Portalon válassza ki az erőforráscsoportot, a Log Analytics-munkaterület, például *myResourceGroup*, majd válassza ki a Log Analytics-erőforrás, például *myAKSLogs*.
 
 ![Válassza ki a Log Analytics-munkaterületet az AKS-fürt esetében](media/view-master-logs/select-log-analytics-workspace.png)
 

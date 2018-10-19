@@ -17,6 +17,8 @@ Egy erőforráscsoport törlése a csoportban található összes erőforrást t
 Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
+Megjegyzés: az erőforráscsoport elvetése eltarthat egy ideig. Várjon türelmesen, amíg a folyamat befejeződik
+
 Ha csak az adat-előállítót szeretné törölni, nem pedig a teljes erőforráscsoportot, futtassa az alábbi parancsot: 
 
 ```powershell

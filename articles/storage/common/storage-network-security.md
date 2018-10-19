@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: bcb772185f0a16183b8a6c9674419781ef41be3e
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 98972b0c52470e6a404090d993c21a47b11cd660
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068536"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427145"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 Az Azure Storage lehetővé teszi, hogy a tárfiókok meghatározott engedélyezett hálózatok biztonságos többrétegű biztonsági modellt biztosít.  Ha a hálózati szabályok vannak beállítva, csak az engedélyezett hálózatok alkalmazások férhetnek hozzá egy tárfiókot.  Egy engedélyezett hálózatról hívásakor az alkalmazások továbbra is megfelelő jogosultságokkal (egy érvényes hozzáférési kulcs vagy SAS-token) a tárfiók eléréséhez szükséges.
@@ -188,7 +188,9 @@ Megengedett címtartományok interneten adatokkal együtt adható meg [CIDR-jel�
 > Kis címtartományok használatával "/ 31" vagy "/ 32" előtag méretei nem támogatottak.  Ezek a tartományok egyedi IP-cím szabályok használatával kell konfigurálni.
 >
 
-Csak engedélyezett IP-hálózati szabályok **nyilvános interneten** IP-címeket.  Magánhálózatok számára fenntartott (RFC 1918-ban meghatározott) IP-címtartományok az IP-szabályok nem engedélyezettek.  Magánhálózatokat közé tartozik a címek kezdődő *10.\** , *172.16.\** , és *192.168.\** .
+Csak engedélyezett IP-hálózati szabályok **nyilvános interneten** IP-címeket.  IP-címtartományok, magánhálózatok számára fenntartott (ahogyan az az [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) IP-szabályok nem engedélyezettek.  Magánhálózatokat közé tartozik a címek kezdődő *10.\** , *172.16.\**   -  *172.31.\**, és *192.168.\** .
+
+Vegye figyelembe, hogy IP-hálózati szabályok nem lesz hatással az ugyanazon Azure-régióban a Storage-fiók érkező kérések a.  A virtuális hálózati szabályok használatával ugyanabban a régióban kérések engedélyezése.
 
 Jelenleg csak az IPV4-cím támogatott.
 

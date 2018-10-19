@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3cefecdf0f87483a1fb544d1eb4e3e514e388259
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 90b4bc17de60baa59d6c159105674468a63d10f9
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406921"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430170"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver az SQL Server Azure virtuális gépek DBMS üzembe helyezése
 
@@ -418,7 +418,7 @@ A második módszer van közelebb a cikkben ismertetett [URL-címét az SQL Serv
 
 
 ### <a name="automated-backup-for-sql-server"></a>Automatikus biztonsági mentés az SQL Serverhez
-Automatikus biztonsági mentés a Windows Azure virtuális Gépen futó SQL Server Standard és Enterprise kiadások egy automatikus biztonsági mentési szolgáltatást biztosít. Ez a szolgáltatás által biztosított a [SQL Server IaaS-ügynök bővítmény](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension), amely automatikusan települ az SQL Server Windows virtuálisgép-lemezképek az Azure Portalon. Ha a saját operációsrendszer-lemezképek telepít az SQL Server telepítve van, a Virtuálisgép-bővítmények külön-külön telepíteni szeretné. Ezen szükséges lépések szerepelnek [cikk](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
+Automatikus biztonsági mentés egy Azure-beli Windows virtuális gépen futó SQL Server Standard és Enterprise kiadások automatikus biztonsági mentési szolgáltatást biztosít. Ez a szolgáltatás által biztosított a [SQL Server IaaS-ügynök bővítmény](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension), amely automatikusan települ az SQL Server Windows virtuálisgép-lemezképek az Azure Portalon. Ha a saját operációsrendszer-lemezképek telepít az SQL Server telepítve van, a Virtuálisgép-bővítmények külön-külön telepíteni szeretné. Ezen szükséges lépések szerepelnek [cikk](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
 
 Ez a módszer képességeivel kapcsolatos további részletekért ezekben a cikkekben található:
 

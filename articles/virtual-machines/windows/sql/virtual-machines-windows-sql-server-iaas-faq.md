@@ -1,5 +1,5 @@
 ---
-title: SQL Server a Windows Azure-beli virtuális gépek – gyakori kérdések |} A Microsoft Docs
+title: Azure – gyakori kérdések a Windows virtuális gépeken futó SQL Server |} A Microsoft Docs
 description: Ez a cikk ismerteti az Azure virtuális gépeken futó SQL Server gyakran feltett kérdésekre adott válaszok.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,20 +15,20 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 48df858095cb867954460ec858567e41ed330063
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 906cec35c30c277ac1e8bc641d12fe37c29413dd
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009265"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427178"
 ---
-# <a name="frequently-asked-questions-for-sql-server-running-on-windows-azure-virtual-machines"></a>Windows Azure-beli virtuális gépeken futó SQL Server kapcsolatos gyakori kérdések
+# <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Gyakori kérdések az Azure-beli Windows virtuális gépeken futó SQL Serverhez
 
 > [!div class="op_single_selector"]
 > * [Windows](virtual-machines-windows-sql-server-iaas-faq.md)
 > * [Linux](../../linux/sql/sql-server-linux-faq.md)
 
-Ez a cikk ismerteti a futó kapcsolatos leggyakoribb kérdésekre adott válaszokat [Windows Azure virtuális gépeken futó SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/).
+Ez a cikk ismerteti a futó kapcsolatos leggyakoribb kérdésekre adott válaszokat [SQL Server a Windows virtuális gépek az Azure-ban](https://azure.microsoft.com/services/virtual-machines/sql-server/).
 
 > [!NOTE]
 > Ez a cikk a Windows virtuális gépeken futó SQL Serverre konkrét problémák összpontosít. Ha az SQL Server Linuxos virtuális gépeken futnak, tekintse meg a [Linux – gyakori kérdések](../../linux/sql/sql-server-linux-faq.md).
@@ -67,7 +67,7 @@ Ez a cikk ismerteti a futó kapcsolatos leggyakoribb kérdésekre adott válaszo
 
    Először hozzon létre egy Azure virtuális gép egy SQL Server-példányhoz. Majd telepítse át a helyszíni adatbázisok-példányhoz. Adatok migrálási stratégiák, lásd: [SQL Server-adatbázis áttelepítése az SQL Server Azure virtuális gép](virtual-machines-windows-migrate-sql.md).
 
-## <a name="licensing"></a>Licencelés
+## <a name="licensing"></a>Licencek
 
 1. **Hogyan telepíthetem saját licenccel rendelkező példány az SQL Server-beli virtuális gépen?**
 

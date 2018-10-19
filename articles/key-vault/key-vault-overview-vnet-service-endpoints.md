@@ -10,12 +10,12 @@ ms.date: 08/31/2018
 ms.service: key-vault
 ms.workload: identity
 ms.topic: conceptual
-ms.openlocfilehash: c2696d5eb22443b565c48ef4f96d6e4a25827606
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 9b0600a7afb07600116440461037c7abcb9236de
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295004"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404324"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuális hálózati Szolgáltatásvégpontok az Azure Key Vaultban
 
@@ -62,7 +62,7 @@ Ez egy lista a megbízható szolgáltatások, amelyek jogosultak egy kulcstartó
 |Az Azure Resource Manager sablontelepítési szolgáltatása|[Biztonságos értékek továbbítása üzembe helyezés során](../azure-resource-manager/resource-manager-keyvault-parameter.md)|
 |Az Azure Disk Encryption kötettitkosítási szolgáltatása|BitLocker-kulcs (VM-Windows) vagy a DM jelszót (a Linux rendszerű virtuális gép), a Kulcsalapú titkosítás kulcsa való hozzáférés engedélyezése a virtuális gép üzembe helyezésének engedélyezése során [az Azure Disk Encryption](../security/azure-security-disk-encryption.md)|
 |Azure Backup|Lehetővé teszi a biztonsági mentéséhez és visszaállításához kapcsolódó kulcsok és titkos kulcsok Azure VM backup esetében során használatával [Azure Backup](../backup/backup-introduction-to-azure-backup.md)|
-|Az Exchange Online és SharePoint Online|Ügyfélkulcs való hozzáférés engedélyezése a szolgáltatás titkosítási [Ügyfélkulcs](https://support.office.com/en-us/article/Controlling-your-data-in-Office-365-using-Customer-Key-f2cd475a-e592-46cf-80a3-1bfb0fa17697).|
+|Az Exchange Online és SharePoint Online|Ügyfélkulcs való hozzáférés engedélyezése a szolgáltatás titkosítási [Ügyfélkulcs](https://support.office.com/article/Controlling-your-data-in-Office-365-using-Customer-Key-f2cd475a-e592-46cf-80a3-1bfb0fa17697).|
 |Azure Information Protection|A bérlői kulcs való hozzáférés engedélyezése [Azure Information Protection.](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)|
 |App Services|[Key Vault segítségével az Azure webalkalmazás-tanúsítvány telepítése](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)|
 |Azure SQL|[Transzparens adattitkosítás Bring Your Own Key-támogatással az Azure SQL Database és a Data warehouse-bA](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)|

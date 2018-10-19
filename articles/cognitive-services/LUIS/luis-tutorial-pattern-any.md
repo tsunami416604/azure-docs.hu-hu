@@ -1,141 +1,141 @@
 ---
-title: '5. oktatóanyag: Pattern.any entitás szabad formátumú szöveg'
+title: '5. oktatóanyag: Pattern.any entitás szabad formátumú szöveghez'
 titleSuffix: Azure Cognitive Services
-description: Használja a pattern.any entitás adatok kinyerését utterances ahol megcímkézzen helyes formátumú, és ahol az adatok végéig lehet, hogy könnyen keverendő össze a az utterance (kifejezés), a fennmaradó szavakat.
+description: A pattern.any entitás használata az adatok kimondott szövegekből való kinyeréséhez olyankor, amikor a kimondott szövegek helyesen formázottak, és az adatok vége könnyen összekeverhető a kimondott szöveg fennmaradó szavaival.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: language-understanding
-ms.topic: article
+ms.component: language-understanding
+ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 4ff4a7085a8caeedebe2a734014afb1cb46d9fbf
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
-ms.translationtype: MT
+ms.openlocfilehash: 90dc7b8bc69c86128b65c16920886b7c4af5c5cf
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164395"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888305"
 ---
-# <a name="tutorial-5-extract-free-form-data"></a>5. oktatóanyag: Szabad formátumú adatokat nyerhet ki az
+# <a name="tutorial-5-extract-free-form-data"></a>5. oktatóanyag: Szabad formátumú adatok kinyerése
 
-Ebben az oktatóanyagban a pattern.any entitás használatával adatok kinyerése kimondott szöveg, amelyben megcímkézzen helyes formátumú, és ahol az adatok végéig lehet, hogy könnyen keverendő össze a az utterance (kifejezés), a fennmaradó szavakat. 
+Ebben az oktatóanyagban a pattern.any entitást használja az adatok kimondott szövegekből való kinyeréséhez olyankor, amikor a kimondott szövegek helyesen formázottak, és az adatok vége könnyen összekeverhető a kimondott szöveg fennmaradó szavaival. 
 
-A pattern.any entitás szabad formátumú adatok kereséséhez, ahol az entitás parancsmagtól, így nehéz határozza meg a végén a vállalat, a többi az utterance (kifejezés) teszi lehetővé. 
+A pattern.any entitás lehetővé teszi szabad formátumú adatok keresését olyankor, amikor az entitás szövegezése nehézzé teszi az entitás végének a kimondott szöveg fennmaradó részétől való elkülönítését. 
 
-Az emberi erőforrások alkalmazás segítségével az alkalmazottak céges képernyők. 
-
-|Kimondott szöveg|
-|--|
-|Hol van **HRF-123456**?|
-|Ki lett létrehozva **HRF-123234**?|
-|**HRF-456098** közzé van téve a francia?|
-
-Azonban minden egyes űrlap mindkét formátumú névvel rendelkezik, az előző táblázatban, valamint egy rövid nevet, például a használt `Request relocation from employee new to the company 2018 version 5`. 
-
-A rövid űrlapot nevű kimondott szöveg a következőhöz hasonló:
+Ez az Emberierőforrások-alkalmazás segítséget nyújt az alkalmazottaknak a vállalati űrlapok keresésében. 
 
 |Kimondott szöveg|
 |--|
-|Hol van **adatáthelyezési kérhet alkalmazott a vállalati 2018 5-ös verzió újdonságai**?|
-|Ki lett létrehozva **"Adatáthelyezési kérhet a 2018-as vállalati 5-ös verzió újdonságai alkalmazott"**?|
-|**Az adatáthelyezési kérhet alkalmazott a vállalati 2018 5-ös verzió újdonságai** közzé van téve a francia?|
+|Hol található a **HRF-123456**?|
+|Ki a szerzője ennek: **HRF-123234**?|
+|A **HRF-456098** űrlap francia nyelven lett közzétéve?|
 
-A változó hosszúságú magában foglalja a szavak, előfordulhat, hogy összekeveri a LUIS kapcsolatos, ahol az entitás véget ér. A mintában egy Pattern.any entitást használó lehetővé teszi, LUIS megfelelően kinyeri az űrlap neve elején és végén, a képernyő nevét adja meg.
+Ugyanakkor minden űrlapnak két neve van: egyrészt az előző táblázatban használt formázott neve, másrészt egy könnyebb elnevezése, mint például `Request relocation from employee new to the company 2018 version 5`. 
 
-|A példasablonban utterance (kifejezés)|
+A könnyebb űrlapnévvel rendelkező kimondott szöveg a következőképpen néz ki:
+
+|Kimondott szöveg|
 |--|
-|Ahol a {űrlapnév} [?]|
-|{Űrlapnév} [?] számára készített|
-|Francia [?] {űrlapnév} van közzétéve|
+|Hol található a **2018-ban a vállalathoz került alkalmazott áthelyezési kérelme, 5. verzió**?|
+|Ki a szerzője ennek: **2018-ban a vállalathoz került alkalmazott áthelyezési kérelme, 5. verzió**?|
+|A **2018-ban a vállalathoz került alkalmazott áthelyezési kérelme, 5. verzió** űrlap francia nyelven lett közzétéve?|
 
-**Ebből az oktatóanyagból megtudhatja, hogyan lehet:**
+A változó hosszúságú szöveg olyan szavakat tartalmaz, amelyek megnehezítik a LUIS szolgáltatás számára az entitás végének meghatározását. A Pattern.any entitás mintában való használata lehetővé teszi az űrlapnév elejének és végének megadását, így a LUIS helyesen nyeri ki az űrlapnevet.
+
+|Példa kimondott szöveg sablonja|
+|--|
+|Hol található a {FormName}[?]|
+|Ki a szerzője ennek: {FormName}[?]|
+|A {FormName} űrlap francia nyelven lett közzétéve[?]|
+
+**Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 > [!div class="checklist"]
-> * Használja meglévő oktatóanyag alkalmazása
-> * Példa beszédmódok hozzáadása létező entitásba
+> * Meglévő oktatóalkalmazás használata
+> * Példa kimondott szöveg hozzáadása meglévő entitáshoz
 > * Pattern.any entitás létrehozása
-> * A minta létrehozása
+> * Minta létrehozása
 > * Betanítás
-> * Új minta
+> * Új minta tesztelése
 
 [!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>Meglévő alkalmazás használata
-Folytassa az alkalmazás nevű az előző oktatóanyagban létrehozott **emberi**. 
+Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű alkalmazással. 
 
-Ha az előző oktatóanyagban az emberi alkalmazás nem rendelkezik, használja az alábbi lépéseket:
+Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforrások alkalmazással, kövesse a következő lépéseket:
 
-1.  Töltse le és mentse [alkalmazás JSON-fájlt](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-roles-HumanResources.json).
+1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-roles-HumanResources.json).
 
-2. A JSON importálja egy új alkalmazást.
+2. Importálja a JSON-t egy új alkalmazásba.
 
-3. Az a **kezelés** részben, a a **verziók** lapon klónozza a verziót, és adja neki `patt-any`. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. A verzió nevét az URL-útvonal részeként használja, mert a név nem tartalmazhat, amelyek nem érvényes URL-karaktereket.
+3. A **Manage** (Kezelés) szakasz **Versions** (Verziók) lapján klónozza a verziót, és adja neki a `patt-any` nevet. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. Mivel a verzió neve az URL-útvonal részét képezi, a név nem tartalmazhat olyan karaktert, amely URL-címben nem érvényes.
 
-## <a name="add-example-utterances"></a>Példa beszédmódok hozzáadása 
-Távolítsa el az előre összeállított keyPhrase entitás, nehezen létrehozható és címke az Űrlapnév entitás esetén. 
+## <a name="add-example-utterances"></a>Példa kimondott szövegek hozzáadása 
+Ha nehéz létrehozni és címkézni a FormName entitást, távolítsa el az előre összeállított keyPhrase entitást. 
 
-1. Válassza ki **összeállítása** a felső navigációs sávon, majd válassza ki **leképezések** bal oldali navigációs sávon.
+1. Válassza a **Build** (Összeállítás) lehetőséget a felső navigációs sávon, majd az **Intents** (Leképezések) elemet a bal oldali navigációs sávon.
 
-2. Válassza ki **FindForm** leképezések listájából.
+2. A leképezések listájáról válassza a **FindForm** (Űrlap keresése) lehetőséget.
 
-3. Néhány példa beszédmódok hozzáadása:
+3. Adjon hozzá néhány példa kimondott szöveget:
 
-    |Példa utterance (kifejezés)|
+    |Példa kimondott szöveg|
     |--|
-    |Hol található az űrlap **Mi a teendő, ha tűz-hívásokra osztja a laborban** és aláírja azt követően elolvasni kell?|
-    |Hol van **adatáthelyezési kérhet a cég az új alkalmazottak** a kiszolgálón?|
-    |Ki lett létrehozva "**egészséges életmód kérelmeket a fő campus**", és mi az a legújabb verziót?|
-    |Az általam keresett nevű űrlap "**Office áthelyezési kérelem, beleértve a fizikai eszközök**". |
+    |Hol található a **Mi a teendő, ha tűz keletkezik a laborban** űrlap, és kinek kell aláírnia, miután elolvastam?|
+    |Hol található a **2018-ban a vállalathoz került alkalmazott áthelyezési kérelme** űrlap a kiszolgálón?|
+    |Ki a szerzője ennek: "**Egészségügyi és wellnesskérelmek a fő campuson**", és melyik a jelenlegi verziója?|
+    |Az alábbi űrlapot keresem: "**Irodaáthelyezési kérelem, beleértve a fizikai eszközöket**". |
 
-    Egy Pattern.any entitás nélkül nehéz lenne a LUIS megértéséhez, ahol az űrlap címe véget ér, a számos változata létezik űrlap nevek miatt.
+    Mivel az űrlapnevek nagyon változatosak, a Pattern.any entitás hiánya megnehezíti a LUIS szolgáltatás számára az űrlapcím végének meghatározását.
 
 ## <a name="create-a-patternany-entity"></a>Pattern.any entitás létrehozása
-A Pattern.any entitás változó hosszúságú entitásokat ad eredményül. Csak működik a mintát, mert a minta elején és végén az entitás jelöli. Ha talál, amely a mintát, ha egy Pattern.any tartalmazza, nem megfelelően, használja-e kivonatokat entitások egy [explicit lista](luis-concept-patterns.md#explicit-lists) a probléma elhárításához. 
+A Pattern.any entitás változó hosszúságú entitások kinyerését végzi. Csak mintában működik, mivel a minta jelöli az entitás elejét és végét. Ha azt tapasztalja, hogy a Pattern.any entitást tartalmazó minta nem megfelelően vonja ki az entitásokat, egy [explicit lista](luis-concept-patterns.md#explicit-lists) megoldhatja a problémát. 
 
-1. Válassza ki **entitások** a bal oldali navigációs menüben.
+1. Válassza az **Entities** (Entitások) elemet a bal oldali navigációs sávon.
 
-2. Válassza ki **új entitás létrehozása**, adja meg a nevét `FormName`, és válassza ki **Pattern.any** típusaként. Válassza a **Done** (Kész) lehetőséget. 
+2. Válassza a **Create new entity** (Új entitás létrehozása) elemet, adja meg a `FormName` nevet, és típusként válassza ki a **Pattern.any** lehetőséget. Válassza a **Done** (Kész) lehetőséget. 
 
-    A leképezést az entitás nem címkét, mert egy Pattern.any csak akkor érvényes a mintát. 
+    A leképezésben nem tudja címkézni az entitást, mivel a Pattern.any csak mintában érvényes. 
 
-    Ha azt szeretné, hogy a kibontott adatok más entitások, például számot vagy datetimeV2 tartalmazza, hozzon létre egy összetett entitást, amely tartalmazza az Pattern.any, valamint száma és datetimeV2 szeretne.
+    Ha a kivont adatokat olyan más entitásokba szeretné belefoglalni, mint a szám vagy a datetimeV2, létre kell hoznia egy összetett entitást, amely a Pattern.any entitást, valamint a számot és a datetimeV2-t is tartalmazza.
 
-## <a name="add-a-pattern-that-uses-the-patternany"></a>Adja hozzá a Pattern.any használó minta
+## <a name="add-a-pattern-that-uses-the-patternany"></a>A Pattern.any entitást használó minta hozzáadása
 
-1. Válassza ki **minták** a bal oldali navigációs sávon.
+1. Válassza a **Patterns** (Minták) elemet a bal oldali navigációs sávban.
 
-2. Válassza ki a **FindForm** szándékot.
+2. Válassza ki a **FindForm** (Űrlap keresése) leképezést.
 
-3. Adja meg a következő sablon utterances, az új entitást használó:
+3. Adja meg a következő, az új entitást használó kimondottszöveg-sablont:
 
-    |Sablon kimondott szöveg|
+    |Kimondottszöveg-sablon|
     |--|
-    |Hol található az űrlap ["] {űrlapnév} ["], és ki kell bejelentkeznie, miután elolvasni [?]|
-    |Hol van ["] {űrlapnév} ["] a következő kiszolgálón: [?]|
-    |Akik készített ["] {űrlapnév} ["], és mi az a legfrissebb verziója [?]|
-    |Az általam keresett nevű űrlap ["] {űrlapnév} ["] [.]|
+    |Hol található a ["]{FormName}["] űrlap, és kinek kell aláírnia, miután elolvastam[?]|
+    |Hol található a ["]{FormName}["] űrlap a kiszolgálón[?]|
+    |Ki a szerzője ennek: ["]{FormName}["], és melyik a jelenlegi verziója[?]|
+    |Az alábbi űrlapot keresem: ["]{FormName}["][.]|
 
-    Ha azt szeretné, hogy figyelembe vegye az űrlap például helyett idézőjeleket szimpla idézőjelek között vagy a kérdőjel helyett időszak változata, hozzon létre egy új mintát, az egyes módosítások.
+    Ha azt szeretné, hogy a rendszer figyelembe vegye a különböző űrlapváltozatokat, például ha szimpla idézőjelet (aposztrófot) adnak meg a dupla idézőjel helyett, vagy pontot a kérdőjel helyett, hozzon létre új mintát minden egyes változathoz.
 
-4. Ha eltávolította a keyPhrase entitás, adja hozzá újból az alkalmazást. 
+4. Ha eltávolította a keyPhrase entitást, adja hozzá újból az alkalmazáshoz. 
 
 ## <a name="train-the-luis-app"></a>A LUIS-alkalmazás betanítása
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>A szabad formátumú adatok kinyerése az új mintára tesztelése
-1. Válassza ki **tesztelése** a felső sávon a teszt panel megnyitásához. 
+## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Tesztelje az új mintát a szabad formátumú adatok kinyerésére
+1. A tesztelési panel megnyitásához válassza a felső sávon a **Test** lehetőséget. 
 
-2. Adja meg a következő utterance (kifejezés): 
+2. Adja meg a következő kimondott szöveget: 
 
     `Where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`
 
-3. Válassza ki **vizsgálat** entitáshoz és leképezés a teszteredmények megtekintéséhez az eredmény alapján.
+3. Az entitáshoz és a leképezéshez tartozó teszteredmények megtekintéséhez válassza az eredmény alatti **Inspect** (Vizsgálat) lehetőséget.
 
-    Az entitás `FormName` először is megtalálható, akkor megtalálja a mintát, amely meghatározza, hogy a célt. Ha rendelkezik egy vizsgálati eredmény, ahol az entitások nem észlelt, és ezért nem található a minta, szüksége további példa beszédmódok hozzáadása a célt (nem a minta).
+    A leképezést az először megtalált `FormName` entitás, majd a megtalált minta határozza meg. Ha a tesztelés során a rendszer nem észlelte az entitásokat, és ezért nem találta a mintát, további példa kimondott szövegeket kell megadnia a leképezésben (nem a mintában).
 
-4. Zárja be a teszt panelen válassza a **tesztelése** a felső navigációs gombra.
+4. A felső navigációs sáv **Test** gombjával zárja be a tesztelési panelt.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -143,7 +143,7 @@ A Pattern.any entitás változó hosszúságú entitásokat ad eredményül. Csa
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban példa utterances hozzáadni egy meglévő szándékot, majd létrehozott egy új Pattern.any képernyő nevét. Az oktatóanyag majd mintaként a meglévő leképezést a létrehozott új példa utterances és entitás. Interaktív vizsgálati kimutatta, hogy a minta és annak szándékát voltak előre jelzett, mert az entitás található. 
+Ez az oktatóanyag egy meglévő leképezéshez adott hozzá példa kimondott szövegeket, majd létrehozott egy új Pattern.any entitást az űrlapnévhez. Az oktatóanyag ezután az új példa kimondott szövegekkel és entitással mintát hozott létre a meglévő leképezéshez. Az interaktív tesztelés megmutatta, hogy mivel az entitást a rendszer megtalálta, a minta és annak leképezései előrejelezhetők voltak. 
 
 > [!div class="nextstepaction"]
-> [Ismerje meg, hogyan használja a szerepkörök mintával](luis-tutorial-pattern-roles.md)
+> [Ismerje meg a szerepkörök mintával való használatát](luis-tutorial-pattern-roles.md)

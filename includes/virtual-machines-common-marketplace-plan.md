@@ -5,21 +5,21 @@ services: virtual-machines-windows, virtual-machines-linux
 author: dlepow
 ms.service: multiple
 ms.topic: include
-ms.date: 09/28/2018
+ms.date: 10/09/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: f9974aae1e5996ffeaa6cde690a5e10ccba4cc32
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 4d2235eaea457c89d01a632afa5dd5a862bec344
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48019012"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49437033"
 ---
 ## <a name="deploy-an-image-with-marketplace-terms"></a>Rendszerkép üzembe helyezése a Marketplace használati feltételei
 
 Egyes Virtuálisgép-rendszerképek az Azure Marketplace-en további licenccel rendelkezik, és beszerzési feltételeit, hogy el kell fogadnia programozott módon központi telepítésük előtt.  
 
-Virtuális gép üzembe helyezése egy rendszerképből, meg kell fogadniuk a feltételeket a lemezkép, és engedélyezze a programozott telepítés. Csak akkor kell elvégeznie ezt egyszer az előfizetésében. Ezután minden alkalommal, amikor telepít egy virtuális Gépet programozott módon a rendszerképről, meg is kell adnia *megvásárlása* paramétereket.
+Virtuális gép üzembe helyezése egy rendszerképből, kell fogadniuk a feltételeket a lemezkép és a programozott telepítés engedélyezése is. Csak egyszer előfizetésenként ehhez szüksége. Ezután minden alkalommal, amikor telepít egy virtuális Gépet is kell adnia a kép a programozott módon *megvásárlása* paramétereket.
 
 A következő szakaszok show hogyan:
 

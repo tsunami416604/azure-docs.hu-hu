@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: annaba
-ms.openlocfilehash: ea65dcca3e5de06d1bc966b3e7cb6b608260a053
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 27febb01b04bd8ac82b8cd428afce78dc57f8b8d
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803962"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403565"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Az Azure Active Directory Tanúsítványalapú hitelesítés első lépései
 
@@ -37,7 +37,7 @@ Tanúsítványalapú hitelesítés konfigurálásához a következő utasításo
 
 - Tanúsítványalapú hitelesítés (CBA) csak az összevont környezetekben böngészőalkalmazásokban vagy modern authentication (ADAL) használó natív ügyfelek esetében támogatott. Az egyetlen kivétel az Exchange Active Sync (EAS) az Exchange Online (EXO), amely összevont és felügyelt fiók használható a.
 - A legfelső szintű hitelesítésszolgáltatót és köztes hitelesítésszolgáltatót kell konfigurálni az Azure Active Directoryban.
-- Minden egyes hitelesítésszolgáltató visszavont tanúsítványok listájának (CRL), amely egy internetkapcsolattal rendelkező URL-cím használatával lehet hivatkozni kell rendelkeznie.
+- Minden egyes hitelesítésszolgáltató visszavont tanúsítványok listájának (CRL), amely egy internetkapcsolattal rendelkező URL-CÍMEN keresztül lehet rá hivatkozni kell rendelkeznie.
 - Az Azure Active Directoryban beállított legalább egy hitelesítésszolgáltatót kell rendelkeznie. A kapcsolódó lépései a [konfigurálása a hitelesítésszolgáltatók](#step-2-configure-the-certificate-authorities) szakaszban.
 - Exchange ActiveSync-ügyfelek az ügyféltanúsítvány rendelkeznie kell a felhasználó irányítható e-mail címét az Exchange online az egyszerű felhasználónév vagy a tulajdonos alternatív neve mezőben RFC822 nevének értékét. Az Azure Active Directory az RFC822 értéket képez le a Proxy cím attribútuma a címtárban.
 - Az ügyféleszköz legalább egy hitelesítésszolgáltató által kiállított ügyféltanúsítványok hozzáféréssel kell rendelkeznie.
@@ -60,7 +60,7 @@ A kapcsolódó információkat a következő eszközplatformokat létezik:
 A hitelesítésszolgáltatók konfigurálása az Azure Active Directoryban, minden egyes hitelesítésszolgáltató, töltse fel a következőket:
 
 * A tanúsítvány nyilvános részét, a *.cer* formátum
-* Az internetkapcsolattal rendelkező URL-címek, ahol megtalálhatók a visszavont tanúsítványok listájának (CRL)
+* Az internetre irányuló URL-címeket, hol találhatók a visszavont tanúsítványok listájának (CRL)
 
 A séma a hitelesítésszolgáltató a következőképpen néz ki:
 

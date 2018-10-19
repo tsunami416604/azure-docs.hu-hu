@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: f0737c6a6ff228b92a030242faf7f4d634bdd9f2
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: e9ac4b7f7a0900f8b49f95c0db9ba5e9c962fa0e
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733184"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404035"
 ---
 #  <a name="agent-health-solution-in-azure"></a>Ügynökállapot megoldás az Azure-ban
 Az Azure-ban az Agent Health megoldás segít átlátni, az összes jelentő ügynökök közül közvetlenül a Log Analytics-munkaterületet, vagy a System Center Operations Manager felügyeleti csoport csatlakoztatva a Log Analytics, amelyek nem válaszol, a üzemeltetési elküldése adatok.  Azt is nyomon követheti, hogy hány ügynök lett üzembe helyezve, és milyen a földrajzi eloszlásuk, illetve egyéb lekérdezéseket hajthat végre, amelyekkel megismerheti az Azure-ban, egyéb felhőkörnyezetekben, illetve helyszínen üzembe helyezett ügynökök eloszlását.    
@@ -65,7 +65,7 @@ Kattintson az **Ügynökállapot** csempére az **Ügynökállapot** irányító
 | Eloszlás ügynökkategória szerint | A szívverés eseményeket küldő különböző ügynökök kategóriáinak eloszlása: közvetlen ügynökök, OpsMgr-ügynökök és az OpsMgr felügyeleti kiszolgáló.|
 | Eloszlás felügyeleti csoport szerint | A környezetben található különböző SCOM-felügyeleticsoportok eloszlása.|
 | Az ügynökök földrajzi helye | A különböző országok eloszlása, ahol ügynökök találhatók, és az egyes országokban telepített ügynökök teljes mennyisége.|
-| Telepített átjárók száma | A Log Analytics-átjáró telepítve rendelkező kiszolgálók számát, és ezek a kiszolgálók listáját.|
+| Telepített átjárók száma | A Log Analytics-átjáró telepítésével rendelkező kiszolgálók számát, és ezek a kiszolgálók listáját.|
 
 ![Ügynökállapot megoldás irányítópultja – példa](./media/monitoring-solution-agenthealth/agenthealth-solution-dashboard.png)  
 

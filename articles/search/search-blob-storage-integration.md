@@ -1,55 +1,55 @@
 ---
-title: Az Azure Search ad hozzá a Blob Storage |} Microsoft Docs
+title: Az Azure Search hozzáadása a Blob Storage |} A Microsoft Docs
 description: Index létrehozása kódból az Azure Search HTTP REST API használatával.
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/04/2017
-author: chaosrealm
-manager: jlembicz
-ms.author: eugenesh
-ms.openlocfilehash: 71e43920f0e6a64beb7cdb28d0707dd30502bf05
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 10/17/2018
+author: mgottein
+manager: cgronlun
+ms.author: magottei
+ms.openlocfilehash: 4f8099bbd5af250e58441eb0e202d4674f0671fe
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31790780"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403225"
 ---
 # <a name="searching-blob-storage-with-azure-search"></a>Keresés a Blob Storage-tárolókban az Azure Search szolgáltatással
 
-A különböző Azure Blob storage-ban tárolt tartalomtípusok teljes megoldására nehéz problémát okozhat. Azonban index és a BLOB tartalmát keresni néhány kattintással Azure Search használatával. Egy Azure Search szolgáltatás kiépítését keres a Blob-tároló igényli. A különböző szolgáltatások korlátait és az Azure Search árképzési szinteket megtalálható a [árképzést ismertető oldalra](https://aka.ms/azspricing).
+Keresés az Azure Blob storage-ban tárolt tartalomtípusok számos különböző, lehet, hogy nehéz probléma megoldására. Azonban index, és a Blobok tartalmának keresés mindössze néhány kattintással az Azure Search használatával. A Blob storage között keres szükséges kiépítése az Azure Search szolgáltatást. A különböző szolgáltatási korlátai és az Azure Search tarifacsomagok találhatók a [díjszabását ismertető lapon](https://aka.ms/azspricing).
 
 ## <a name="what-is-azure-search"></a>Mi az az Azure Search?
-[Az Azure Search](https://aka.ms/whatisazsearch) keresés szolgáltatás, amely megkönnyíti, hogy a fejlesztők számára a hatékony teljes szöveges keresés észlel hozzáadása webes és mobilalkalmazásokhoz. Szolgáltatásként, Azure Search szükségtelenné ajánlat során bármilyen keresési infrastruktúra kezelése érdekében egy [99,9 %-os hasznos üzemidő SLA](https://aka.ms/azuresearchsla).
+[Az Azure Search](https://aka.ms/whatisazsearch) egy keresési szolgáltatás, amely megkönnyíti a fejlesztők számára a hatékony teljes szöveges keresési megoldásokat hozzáadása a webes és mobilalkalmazások számára. Szolgáltatásként az Azure Search köszönhetően nem kell közben ajánlat minden olyan keresési infrastruktúra felügyelete egy [99,9 %-os üzemidő SLA](https://aka.ms/azuresearchsla).
 
-## <a name="index-and-search-enterprise-document-formats"></a>Index és a keresési vállalati dokumentum formátuma
-Támogatja a [dokumentálja a kibontási](https://aka.ms/azsblobindexer) az Azure Blob storage indexelheti a következőket:
+## <a name="index-and-search-enterprise-document-formats"></a>Index és a keresési vállalati dokumentum formátumok
+Támogatja a [kinyerési dokumentum](https://aka.ms/azsblobindexer) az Azure Blob storage, indexelésére használhatja, az alábbi tartalommal:
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
-Az ilyen típusú szöveg és a metaadatok beolvasásával egy-egy lekérdezéshez több fájlformátumok végezhet keresést. 
+Oly módon, szöveg és a metaadatokat az ilyen típusú, az egyetlen lekérdezést több fájlformátumok is kereshet. 
 
-## <a name="search-through-your-blob-metadata"></a>A blob-metaadatok közötti keresésre
-Egy gyakori forgatókönyv, amely megkönnyíti a blobok bármely tartalomtípus rendszerezése egyéni metaadatok és a rendszer minden egyes blob tulajdonságainak indexelésre. Ezzel a módszerrel összes BLOB információi indexelt dokumentumtípus függetlenül. Majd lépne rendezési, szűrési és dimenzió összes Blob storage tartalma között.
+## <a name="search-through-your-blob-metadata"></a>A blob metaadatainak kereshet
+Egy gyakori forgatókönyv, amely megkönnyíti a tartalom típustól blobok végigvesszük az egyéni metaadatok és a rendszer minden egyes blob tulajdonságainak index. Ily módon az összes információt indexelt dokumentum típusától függetlenül. Ezután folytassa rendezés, szűrés és értékkorlátozás összes Blob storage-tartalmak között.
 
-[Ismerje meg, további információk az indexelő blob-metaadatok.](https://aka.ms/azsblobmetadataindexing)
+[Ismerje meg bővebben az indexelés a blobmetaadatokat.](https://aka.ms/azsblobmetadataindexing)
 
-## <a name="image-search"></a>Kép keresése
-Az Azure Search teljes szöveges keresés, jellemzőalapú navigáció és rendezési lehetőségeket is érvényesek a blobok tárolt képek metaadatait.
+## <a name="image-search"></a>Képkeresés
+Az Azure Search teljes szöveges keresés, a jellemzőalapú navigáció és rendezési lehetőségeket is érvényesek a metaadatokat a blobokban tárolt képek.
 
-Ha ezeket a lemezképeket előre feldolgozása használatával a [számítógép Látástechnológiai API](https://www.microsoft.com/cognitive-services/computer-vision-api) a Microsoft kognitív szolgáltatást, majd lehetőség a vizuális tartalom található egyes lemezképek és a kézírás-felismerési beleértve az index. Jelenleg is dolgozunk OCR hozzáadása és egyéb kép feldolgozási funkciói közvetlenül az Azure Search, ha ezek a képességek érdekli kérelmet küldeni a a [UserVoice](https://aka.ms/azsuv) vagy [nekünk e-mailben](mailto:azscustquestions@microsoft.com).
+Ha ezek a lemezképek előzetes feldolgozása használatával a [Computer Vision API](https://www.microsoft.com/cognitive-services/computer-vision-api) a Microsoft Cognitive Services, majd lehetőség a vizuális tartalmáról, az egyes rendszerképek, beleértve az optikai Karakterfelismerés és kézírás-felismerés index. Optikai Karakterfelismerés hozzáadása folyamatban van, és egyéb kép feldolgozási képességek közvetlenül az Azure Search, ha ezek a képességek érdekli kérelmet küldeni az a [UserVoice](https://aka.ms/azsuv) vagy [e-mail-címre](mailto:azscustquestions@microsoft.com).
 
-## <a name="index-and-search-through-json-blobs"></a>Index és a keresési JSON-blobok keresztül
-Az Azure Search beállítható úgy, hogy a kibontani strukturált blobok JSON tartalmazó található. Az Azure Search JSON-blobok olvashatja, és a strukturált tartalom elemzése az Azure Search dokumentum a megfelelő mezőkbe. Az Azure Search is számos blobot, amely tartalmazza JSON-objektumok tömbje és hozzárendelését az egyes elemei egy külön Azure Search-dokumentumot.
+## <a name="index-and-search-through-json-blobs"></a>Index és keresést végezhet a JSON-blobok
+Az Azure Search beállítható úgy, hogy a blobokat tartalmazó JSON-ban található strukturálatlan tartalom kinyeréséhez. Az Azure Search olvashatja a JSON-blobok és a strukturálatlan tartalom használatával elemzi az Azure Search-dokumentum, a megfelelő mezőkbe. Az Azure Search is igénybe vehet a blobokat, amelyekre a JSON-objektumok egy tömbjét tartalmazza, és egyes elemei leképezése egy külön Azure Search-dokumentumot is.
 
-JSON elemzése nincs jelenleg konfigurálható a portálon keresztül. [További tudnivalók az Azure Search elemzése JSON.](https://aka.ms/azsjsonblobindexing)
+JSON-elemzés nem jelenleg konfigurálható a portálon keresztül. [További információ a JSON-elemzés az Azure Search szolgáltatásban.](https://aka.ms/azsjsonblobindexing)
 
 ## <a name="quick-start"></a>Első lépések
-Az Azure Search közvetlenül a Blob storage portállapon a blobok is hozzáadhatók.
+Az Azure Search BLOB közvetlenül a Blob storage portáloldalán a lehet hozzáadni.
 
 ![](./media/search-blob-storage-integration/blob-blade.png)
 
-Kattintson a **hozzáadása Azure Search** ahol válasszon ki egy meglévő Azure Search szolgáltatást, vagy hozzon létre egy új szolgáltatást, a folyamat elindításához. Ha létrehoz egy új szolgáltatás, akkor kívül a tárfiók portál élmény léptetését. Lépjen vissza a tárolási portálon, és jelölje ki újból a **hozzáadása Azure Search** beállítás, ahol kiválaszthatja a meglévő szolgáltatást.
+Kattintson a **Azure Search hozzáadása** , válasszon ki egy meglévő Azure Search szolgáltatást, vagy hozzon létre egy új folyamat elindításához. Ha létrehoz egy új szolgáltatás, akkor ki a tárfiók portálja léptetését. Lépjen vissza a tároló portáloldalán, és jelölje ki újra a **Azure Search hozzáadása** lehetőség, ahol kiválaszthatja a meglévő szolgáltatás.
 
 ### <a name="next-steps"></a>További lépések
-További tudnivalók az Azure Search Blob indexelő a teljes [dokumentáció](https://aka.ms/azsblobindexer).
+További információ az Azure Search Blob Indexelőjével a teljes [dokumentáció](https://aka.ms/azsblobindexer).

@@ -8,12 +8,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: c08cc34631afdec4a4b08b4c599b79e1a161558c
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: b5d981f06219bd2b5d7325476725ff7a4eccf3b6
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364157"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430102"
 ---
 # <a name="support-and-help-options"></a>Támogatás és Súgó
 
@@ -74,8 +74,41 @@ Ha nem talál választ a problémára felvétellel, küldje el a Stack Overflow 
 
 A minták gyakran feladja a nyílt forráskódú. Kérdések és problémák, hozzon létre egy *probléma* a megfelelő GitHub-adattárában. A lekéréses kérelem túl is nyújt. Az alábbi lista tartalmazza a minta tárház mutató hivatkozásokat:
 
-* [Beszéd SDK](https://aka.ms/csspeech/samples)
-* [Eszköz SDK-t](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)
+* [Beszéd SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
+* [Eszköz SDK-t](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
+
+Hozzon létre egy hibajelentéseit funkcióra vonatkozó kérést, vagy kérje meg egy általános kérdés és megoszthatók az ajánlott eljárások. Hibajelentéseire kövesse a megadott sablon:
+
+**A hiba leírása**
+
+Világos és tömör leírása a bejelentett hiba van.
+
+**Reprodukálnia**
+
+Viselkedés a reprodukálás lépései:
+1. ...
+2. ...
+
+**Várt működése**
+
+Világos és tömör leírása várt fordulhat elő.
+
+**A Cognitive Services beszédfelismerő SDK verziója**
+
+Az SDK melyik verzióját használja.
+
+**Platform, operációs rendszer és programozási nyelv**
+
+ - Operációs rendszer: [példa: Windows, Linux, Android, iOS,...] – kérjük, az adott
+ - Hardver – x64, x86, ARM...
+ - Böngésző [példa: Chrome, a Safari] (ha alkalmazható) – kérjük, az adott
+
+**További környezet**
+
+ - Hibaüzenetek és naplóadatok híváslánc...
+ - Ha jelenti a egy adott szolgáltatás kapcsolati hiba, jelentse a munkamenet-azonosító és az időt (beleértve a időzóna), az incidensek. Összes hívás-készít biztonsági másolatot/eseményt kap a munkamenet-azonosító jelenti.
+ - További adatok
+
 
 ## <a name="uservoice-forum"></a>UserVoice fórumot
 

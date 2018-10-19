@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: 6834222ec2befa305b558abf0976a1c9899a7086
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: d0b804c48f3de4d4ba29ebe0785f6dd991329a53
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093026"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409254"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure diagnosztikai naplók
 
@@ -95,17 +95,23 @@ A naplók tárolására a Log Analytics használatához kövesse az alábbi lép
 
 2. Válassza ki **konfigurálása** Log Analytics naplózási. 
 
-   A **OMS-munkaterületek** lap jelenik meg.
+   A **Log Analytics-munkaterületek** lap jelenik meg.
+
+    >[!NOTE] 
+    >OMS-munkaterülete mostantól Log Analytics-munkaterületek nevezik.
 
     ![Portál – diagnosztikai naplók](./media/cdn-diagnostics-log/06_Choose-workspace.png)
 
 3. Válassza ki **új munkaterület létrehozása**.
 
-    A **OMS-munkaterület** lap jelenik meg.
+    A **Log Analytics-munkaterület** lap jelenik meg.
+
+    >[!NOTE] 
+    >OMS-munkaterülete mostantól Log Analytics-munkaterületek nevezik.
 
     ![Portál – diagnosztikai naplók](./media/cdn-diagnostics-log/07_Create-new.png)
 
-4. A **OMS-munkaterület**, adja meg az OMS-munkaterület nevét. Az OMS-munkaterület nevét kell egyedinek lennie, és csak betűket, számokat és kötőjeleket tartalmazhat; tartalmazhat szóközöket és aláhúzásjeleket tartalmazhat nem engedélyezettek. 
+4. A **Log Analytics-munkaterület**, a Log Analytics munkaterület nevét kötelező megadni. A Log Analytics-munkaterület neve kell egyedinek lennie, és csak betűket, számokat és kötőjeleket tartalmazhat; tartalmazhat szóközöket és aláhúzásjeleket tartalmazhat nem engedélyezettek. 
 
 5. A **előfizetés**, válasszon ki egy meglévő előfizetést a legördülő listából. 
 

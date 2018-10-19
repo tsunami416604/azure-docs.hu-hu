@@ -1,61 +1,61 @@
 ---
-title: Automatikus kiegészítési API gyors üzembe helyezés |} Microsoft Docs
-description: Első lépések a Bing automatikus kiegészítési API használatával jeleníti meg.
+title: 'Rövid útmutató: Bing Autosuggest API'
+titlesuffix: Azure Cognitive Services
+description: Bemutatja a Bing Autosuggest API használatának első lépéseit.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 1482E781-7352-4A3F-B1D5-B896381348C4
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: a7b54a1fb0b7c76eb72097357a6b51aa02e6e2fd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 446d271854a4e45bcea8c261a0dc078e549f8229
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349003"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830753"
 ---
-# <a name="making-your-first-autosuggest-query"></a>Az első automatikus javaslatokba lekérdezés végrehajtása
+# <a name="quickstart-making-your-first-autosuggest-query"></a>Rövid útmutató: Az első Autosuggest-lekérdezés elvégzése
 
-Mielőtt az első hívás, kell egy kognitív szolgáltatások előfizetés kulcs beszerzése. Ahhoz, hogy a kulcs, lásd: [kognitív szolgáltatások próbálja](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api).
+Ahhoz, hogy elvégezhesse az első hívást, be kell szereznie egy Cognitive Services-előfizetői azonosítót. Az előfizetői azonosító beszerzéséhez lásd [A Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api) témakört.
 
-Ahhoz, hogy a webes keresés eredményeit, elküldése egy GET kérelmet a következő végponthoz:
+A webes keresés eredményeinek lekéréséhez egy GET kérelmet kell küldeni a következő végpontra:
 
 ```http
 https://api.cognitive.microsoft.com/bing/v5.0/Suggestions
 ```
 
 > [!NOTE]
-> V7 előnézeti végpont:
+> 7-es előzetes verziójú végpont:
 >
 > ```http
 > https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
 > ```
 
-A kérelmet HTTPS protokollt kell használnia.
+A kérelemnek a HTTPS protokollt kell használnia.
 
-Azt javasoljuk, hogy az összes kérelem-kiszolgálótól származik. A kulcs terjesztése ügyfélalkalmazás részeként egy rosszindulatú külső elérésére több lehetőséget biztosít. Is, a kiszolgálótól érkező hívás egyetlen frissítési pontot biztosít az API-t a jövőbeli verzióiban.
+Javasoljuk, hogy minden kérelem egy kiszolgálóról induljon. Az azonosítónak egy ügyfélalkalmazás részeként való terjesztése több lehetőséget ad arra, hogy rosszindulatú külső felek hozzáférjenek az azonosítóhoz. Emellett a hívások kiszolgálóról való indítása egyetlen frissítési pontot teremt az API későbbi verziói számára.
 
-A kérelemnek meg kell adnia a [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query) lekérdezési paraméter, amely tartalmazza a felhasználó részleges keresési kifejezés. Bár nem kötelező, a kérelem is kell megadnia a [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#mkt) lekérdezési paraméter, amely azonosítja a piacon, ha azt szeretné, hogy az eredmények származnia. Nem kötelező lekérdezési paraméterek listáját lásd: [lekérdezésparamétereket](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query-parameters). Az összes lekérdezés paraméterértékek URL-kódolású kell lennie.
+A kérelemnek tartalmaznia kell a [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query) lekérdezési paramétert, amely a felhasználó részleges keresési kifejezését adja meg. Nem kötelező, de a kérelemnek érdemes tartalmaznia egy [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#mkt) lekérdezési paramétert is, amely azonosítja a piacot, ahonnan eredményeket szeretnénk kapni. Az opcionális lekérdezési paraméterek listáját lásd a [lekérdezési paramétereket](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#query-parameters) ismertető cikkben. Minden lekérdezési paraméter értékének URL-kódolásúnak kell lennie.
 
-A kérelemnek meg kell adnia a [Ocp-Apim-előfizetés-kulcs](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#subscriptionkey) fejléc. Bár nem kötelező, meg hosszúan is adja meg a következő fejléc:
+A kérelemnek tartalmaznia kell az [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#subscriptionkey) fejlécet. Nem kötelező, de javasolt a következő fejlécek megadása is:
 
-- [Felhasználói ügynök](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#useragent)
+- [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#useragent)
 - [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientid)
-- [X-keresési-Ügyfélip](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientip)
-- [X keresése](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#location)
+- [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#clientip)
+- [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#location)
 
-Az ügyfél IP-cím és a hely fejlécek fontosak hely kompatibilis tartalom visszaküldésével.
+Az ügyfél IP-címe és helye fontos a helyfüggő tartalmak visszaadása szempontjából.
 
-Az összes kérés- és válaszfejlécekről listájáért lásd: [fejlécek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#headers).
+Az összes kérelem- és válaszfejléc listáját lásd a [Fejlécek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference#headers) cikkben.
 
 ## <a name="the-request"></a>A kérelem
 
-A kérelem tartalmaznia kell a javasolt lekérdezés-paraméterek és a fejlécet. Ez az API meghívta minden alkalommal, amikor a felhasználó beír egy új karakter a keresési mezőbe. A lekérdezési karakterlánc hatások relevanciájának a javasolt lekérdezés feltételeket, amelyek az API-t teljességéről adja vissza. Minél több fejezze be a lekérdezési karakterláncot, a több megfelelő listáját, hogy a lekérdezés feltételeket javasolt. Például, ha a javaslatok, amelyek az API-t a térhetnek vissza *s* valószínűleg a kevésbé fontos, mint a adja vissza a lekérdezések *kihajózás dinghies*. 
+A kérelemnek tartalmaznia kell az összes javasolt lekérdezési paramétert és fejlécet. Ezt az API-t hívja meg minden alkalommal, amikor a felhasználó beír egy új karaktert a keresőmezőbe. A lekérdezési sztring teljessége hatással van az API által visszaadott javasolt lekérdezési kifejezések relevanciájára. Minél teljesebb a lekérdezési sztring, annál relevánsabb lesz a javasolt lekérdezési kifejezések listája. Az *s* sztringre például az API valószínűleg kevésbé releváns javaslatokat fog visszaadni, mint a *sailing dinghies* (vitorlás csónakok) sztringre. 
 
-A következő példa bemutatja a kérelmeket, amelyek adja vissza a javasolt lekérdezési karakterláncokban használható *hajóznak*.
+A következő példa egy olyan kérést mutat be, amely a *sail* sztringre adja vissza a javasolt lekérdezési sztringeket.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v5.0/suggestions?q=sail&mkt=en-us HTTP/1.1  
@@ -67,7 +67,7 @@ Host: api.cognitive.microsoft.com
 ```
 
 > [!NOTE]
-> V7 Preview kérelem:
+> 7-es előzetes verziójú kérelem:
 
 > ```http
 > GET https://api.cognitive.microsoft.com/bing/v7.0/suggestions?q=sail&mkt=en-us HTTP/1.1
@@ -78,13 +78,13 @@ Host: api.cognitive.microsoft.com
 > Host: api.cognitive.microsoft.com
 > ```
 
-Ha most először hívja a Bing API-k bármelyikét, az ügyfél-azonosító fejléc nem tartalmaz. Az ügyfél Tevékenységazonosító fejlécet csak tartalmazzák, ha korábban már hívott a Bing API és a Bing visszaadott egy ügyfél-Azonosítót, a felhasználó és eszköz kombinációja.
+Ha első alkalommal hívja meg bármelyik Bing API-t, ne használja az ügyfél-azonosító fejlécét. Csak akkor használja az ügyfél-azonosító fejlécét, ha korábban már meghívott egy Bing API-t, és visszakapott egy ügyfél-azonosítót a felhasználó és az eszköz kombinációjához.
 
-Az alábbiakban látható a fenti kérelemre adott válasz. A válasz keresési lekérdezés javaslatok listáját tartalmazó webes javaslat csoportot tartalmazza. Minden javaslat tartalmaz egy `displayText`, `query`, és `url` mező.
+Alább az előző kérelemre adott válasz látható. A válasz tartalmaz egy webes javaslatcsoportot a keresési lekérdezési javaslatok listájával. Minden javaslat tartalmaz egy `displayText`, `query` és `url` mezőt.
 
-A `displayText` mező tartalmazza a javasolt lekérdezés szeretné használni a keresőmezőbe legördülő lista feltöltéséhez. Meg kell jelenítenie minden javaslat, amely a válasz tartalmazza, és a megadott sorrendben.  
+A `displayText` mező tartalmazza a javasolt lekérdezést, amelyet a keresőmező legördülő listájának feltöltéséhez használ. A válaszban szereplő összes javaslatot meg kell jelenítenie az adott sorrendben.  
 
-Ha a felhasználó egy lekérdezést a legördülő listából gombra kattint, a lekérdezési karakterláncok használhatja a `query` mező hívni a [Bing keresési API](../bing-web-search/search-the-web.md) és megjeleníteni az eredményeket. Másik lehetőségként használhatja az URL-címet a `url` Ha szeretne küldeni a felhasználónak a Bing keresési eredmények.
+Ha a felhasználó kiválaszt egy lekérdezést a legördülő listából, Ön használhatja a lekérdezési sztringet a `query` mezőben a [Bing Search API](../bing-web-search/search-the-web.md) meghívásához és a találatok megjelenítéséhez. Használhatja az URL-címet is az `url` mezőben, ha a felhasználót a Bing keresési eredményeinek oldalára szeretné küldeni.
 
 ```  
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC
@@ -152,6 +152,6 @@ BingAPIs-Market: en-US
 
 ## <a name="next-steps"></a>További lépések
 
-Próbálja ki az API-t. Ugrás a [automatikus kiegészítési API-tesztelési konzol](https://dev.cognitive.microsoft.com/docs/services/56c7694ecf5ff801a090fbd1/operations/56c769a2cf5ff801a090fbd2).
+Próbálja ki az API-t. Lépjen az [Autosuggest API-tesztelési konzolra](https://dev.cognitive.microsoft.com/docs/services/56c7694ecf5ff801a090fbd1/operations/56c769a2cf5ff801a090fbd2).
 
-A válasz objektumok fel kapcsolatos részletekért lásd: [javasolt keresőkifejezéseket első](./get-suggested-search-terms.md).
+A válaszobjektumok feldolgozásával kapcsolatban lásd: [Javasolt keresés kifejezések lekérése](./get-suggested-search-terms.md).

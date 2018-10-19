@@ -5,20 +5,23 @@ services: service-fabric-mesh
 keywords: ''
 author: rwike77
 ms.author: ryanwi
-ms.date: 06/27/2018
+ms.date: 10/1/2018
 ms.topic: overview
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 65a9b1afcc0e1e6d4fcbb60a38ab0764e6fe2f18
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 361e742b3d9b7a5d2d12aafd15233077c967b825
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226444"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888196"
 ---
 # <a name="what-is-service-fabric-mesh"></a>Mi a Service Fabric Mesh?
 
-Az Azure Service Fabric Mesh egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a fejlesztők számára a mikroszolgáltatás-alkalmazások üzembe helyezését a virtuális gépek, a tárolók és a hálózat kezelése nélkül. A Service Fabric Mesh használatával üzembe helyezett alkalmazások futtatásakor és skálázásakor nem kell aggódnia a mögöttes infrastruktúra miatt.  A Service Fabric Mesh több ezer gép alkotta fürtökből áll.  A fürtök minden művelete rejtve van a fejlesztő elől. Egyszerűen töltse fel a kódot és határozza meg a szükséges erőforrásokat, a rendelkezésre állási követelményeket és az erőforrások korlátait.  A Service Fabric Mesh automatikusan lefoglalja az alkalmazástelepítés által igényelt infrastruktúrát, továbbá az infrastruktúrával kapcsolatos hibákat is kezeli, így biztosítva az alkalmazásai magas rendelkezésre állását. Csak az alkalmazás állapotával és válaszképességével kell törődnie, az infrastruktúrával nem.  
+Ez a videó rövid áttekintést nyújt a Service Fabric Mesh szolgáltatásról.
+> [!VIDEO https://www.youtube.com/embed/7qWeVGzAid0]
+
+Az Azure Service Fabric Mesh egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a fejlesztők számára a mikroszolgáltatás-alkalmazások üzembe helyezését a virtuális gépek, a tárolók és a hálózat kezelése nélkül. A Service Fabric Mesh használatával üzembe helyezett alkalmazások futtatásakor és skálázásakor nem kell aggódnia a mögöttes infrastruktúra miatt.  A Service Fabric Mesh több ezer gép alkotta fürtökből áll.  A fürtök minden művelete rejtve van a fejlesztő elől. Egyszerűen töltse fel a kódot és határozza meg a szükséges erőforrásokat, a rendelkezésre állási követelményeket és az erőforrások korlátait.  A Service Fabric Mesh automatikusan lefoglalja az infrastruktúrát, és kezeli az infrastruktúrával kapcsolatos hibákat is, így biztosítva az alkalmazásai magas rendelkezésre állását. Csak az alkalmazás állapotával és válaszképességével kell törődnie, az infrastruktúrával nem.  
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -30,7 +33,7 @@ A Service Fabric Mesh a tárolókon futtatható bármely programozási nyelvet v
 
 A Service Fabric Mesh használatával a következőket teheti:
 
-- Meglévő alkalmazások „átemelése” tárolókba, hogy modernizálhassa és nagy mennyiségben futtathassa az aktuális alkalmazásokat. 
+- Meglévő alkalmazások „átemelése” tárolókba, hogy modernizálhassa és nagy mennyiségben futtathassa az aktuális alkalmazásokat.
 - Új mikroszolgáltatás-alkalmazások létrehozása és üzembe helyezése nagy mennyiségben az Azure-ban.  Integráció más Azure-szolgáltatásokkal vagy tárolókban futó meglévő alkalmazásokkal. Minden mikroszolgáltatás egy biztonságos, a hálózaton elkülönített alkalmazás része, amelyben a processzormagokhoz, a memóriához, a lemezterülethez és egyebekhez kapcsolódó erőforrás-szabályozási szabályzatok vannak meghatározva.
 - Meglévő alkalmazásokkal való integráció és bővítés az alkalmazások módosítása nélkül. A meglévő alkalmazás új alkalmazáshoz való csatlakoztatása saját virtuális hálózat használatával.  
 - A meglévő Cloud Services-alkalmazások modernizálása a Service Fabric Mesh-be való áttelepítéssel.  
@@ -43,13 +46,10 @@ A Service Fabric Mesh használatával a következőket teheti:
 
 - Az alkalmazásokat az infrastruktúra explicit kiépítése és kezelése nélkül helyezheti üzembe és kezelheti.  A Service Fabric Mesh kiépíti, frissíti, javítja és fenntartja a mögöttes infrastruktúrát Ön helyett.
 - Folyamatos integrációt állíthat be az integrált eszközökkel az alkalmazások egyszerű csomagolása és üzembe helyezése érdekében.
-- Kihasználhatja az Azure Resource Manager-erőforrások összes funkciójának előnyeit (például a naplózást és a [szerepköralapú hozzáférés-vezérlést (RBAC)](/azure/role-based-access-control/overview)), mert az Azure-ban az SF Mesh-szolgáltatásban üzembe helyezett összes erőforrás (például az alkalmazások, a szolgáltatások, a titkos kulcsok stb.) Azure Resource Manager-erőforrás. 
+- Kihasználhatja az Azure Resource Manager-erőforrások összes funkciójának előnyeit (például a naplózást és a [szerepköralapú hozzáférés-vezérlést](/azure/role-based-access-control/overview)), mert az Azure-ban a Service Fabric Mesh-szolgáltatásban üzembe helyezett összes erőforrás, például az alkalmazások, a szolgáltatások, a titkos kulcsok stb., Azure Resource Manager-erőforrás.
 - Az [Azure Portal](https://portal.azure.com), Resource Manager-sablonok vagy Azure CLI-/PowerShell-kódtárak használatával helyezheti üzembe és kezelheti az erőforrásokat.
-- Működésfigyelést és riasztást állíthat be az [Application Insights](/azure/application-insights/) (vagy a kívánt eszköz) használatával a működési és diagnosztikai nyomkövetések rögzítéséhez a platformról. 
+- Működésfigyelést és riasztást állíthat be az [Application Insights](/azure/application-insights/) (vagy a kívánt eszköz) használatával a működési és diagnosztikai nyomkövetések rögzítéséhez a platformról.
 - Az alkalmazásmodellből küldött alkalmazásdiagnosztikai információkat érhet el az [Application Insights](/azure/application-insights/) vagy a kívánt eszköz használatával.
-- Az alkalmazásdefinícióban a szolgáltatások automatikus skálázási szabályainak meghatározásával optimalizálhatja az erőforrások használatát.  (hamarosan elérhető)
-- Hálózatelkülönítést és biztonsági határokat hozhat létre az alkalmazásokhoz, ami a Hyper-V-tárolókkal kombinálva egy igen hatékony funkciót eredményez. Elkülönítheti a szolgáltatásokra irányuló és az onnan érkező hálózati forgalmat szolgáltatásonként több IP-címmel és alkalmazásonként elkülönített virtuális hálózatokkal.  (hamarosan elérhető) 
-
 
 ## <a name="mission-critical-platform-capabilities"></a>Az üzletmenet szempontjából kritikus fontosságú platformképességek
 

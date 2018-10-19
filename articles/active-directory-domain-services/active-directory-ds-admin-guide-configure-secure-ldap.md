@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: maheshu
-ms.openlocfilehash: 22c97da35416ba1ff593dfa5e41f557ea2ab1cc0
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 42c27df658ae810ac31813ffb94f397a0070933f
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182246"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429133"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Biztonságos LDAP (LDAPS-t) az Azure AD Domain Services felügyelt tartomány konfigurálása
 Ez a cikk bemutatja, hogyan engedélyezheti a biztonságos Lightweight Directory Access Protocol (LDAPS) számára az Azure AD tartományi szolgáltatásokkal felügyelt tartományban. A Secure LDAP van más néven "Lightweight Directory Access Protocol (LDAP) Secure Sockets Layer (SSL) rétegen keresztül / Transport Layer Security (TLS)".
@@ -86,7 +86,7 @@ New-SelfSignedCertificate -Subject contoso100.com `
   -Type SSLServerAuthentication -DnsName *.contoso100.com
 ```
 
-Az előző példában cserélje le '*. contoso100.com "a felügyelt tartomány DNS-tartománynévvel. For example, ha létrehozott egy "contoso100.onmicrosoft.com" nevű felügyelt tartományt, cserélje le '*. contoso100.com "az előző szkriptben ' *. contoso100.onmicrosoft.com").
+Az előző példában cserélje le a felügyelt tartomány DNS-tartománynév "contoso100.com". Például, ha létrehozott egy "contoso100.onmicrosoft.com" nevű felügyelt tartományt, cserélje le a tulajdonos attribútum a "contoso100.com" "contoso100.onmicrosoft.com" és "*. contoso100.com"-DnsName attribútumban "*. contoso100.onmicrosoft.com ").
 
 ![Azure AD címtár kiválasztása](./media/active-directory-domain-services-admin-guide/secure-ldap-powershell-create-self-signed-cert.png)
 

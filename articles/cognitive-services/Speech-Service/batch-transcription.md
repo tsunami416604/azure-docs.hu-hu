@@ -8,20 +8,26 @@ ms.component: Speech
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: 8f9a033ebf9cdfdb96ae8511b14202e49ec0a85e
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: c6912b45bc62ce9492e8e33bd1ffd8e7147b9d17
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884459"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427787"
 ---
 # <a name="batch-transcription"></a>Kötegelt átírás
 
-Batch beszédátírási ideális, ha nagy mennyiségű hang rendelkezik. Hangfájlok URI mutasson, és aszinkron módú beszédátírás visszaszerzésében.
+Batch beszédátírási ideális, ha nagy mennyiségű hang storage-ban. A Rest API-val, SAS URI hangfájlok mutasson, és aszinkron módon fogadni az beszédátírás.
 
 ## <a name="batch-transcription-api"></a>A Batch beszédátírási API
 
-A Batch beszédátírási API aszinkron beszédfelismerés szöveg átírást, valamint olyan kiegészítő funkciókat kínál.
+A Batch beszédátírási API aszinkron beszédfelismerés szöveg átírást, valamint olyan kiegészítő funkciókat kínál. Fontos adatokhoz hozzáférést biztosító módszerek a REST API-val:
+
+1. Kötegelt feldolgozási kérelmek létrehozása
+
+2. Lekérdezés állapota 
+
+3. Trnascriptions letöltése
 
 > [!NOTE]
 > A Batch beszédátírási API telefonos ügyfélszolgálatok, amely általában a több ezer órás hanganyagra gyűlnek ideális. Az API-t, amely megkönnyíti a nagy mennyiségű hanganyag lefényképezze egy "indul el, és felejtse el" filozófia vezérli.
@@ -95,78 +101,77 @@ Testre szabhatja az alábbi mintakód egy előfizetési kulcsot és a egy API-ku
         }
 ```
 
-Miután beszerezte a jogkivonatot, meg kell adnia a SAS URI-t igénylő beszédátírási hangfájl mutat. A többi, a kód végighalad az állapotát, és eredményeit jeleníti meg.
+Miután beszerezte a jogkivonatot, meg kell adnia a SAS URI-t igénylő beszédátírási hangfájl mutat. A többi, a kód végighalad az állapotát, és eredményeit jeleníti meg. Először egy felállít a kulcsot, régió, modellek használata és a biztonsági Társítás. ahogy az alábbi kódrészletben látható. Ez az ügyfél és a POST-kérés példányának követ. 
 
 ```cs
-   static async Task TranscribeAsync()
-        { 
             private const string SubscriptionKey = "<your Speech subscription key>";
             private const string HostName = "westus.cris.ai";
             private const int Port = 443;
     
+            // SAS URI 
+            private const string RecordingsBlobUri = "some SAS URI";
+
+            // adapted model Ids
+            private static Guid AdaptedAcousticId = new Guid("some guid");
+            private static Guid AdaptedLanguageId = new Guid("some guid");
+
             // Creating a Batch transcription API Client
             var client = CrisClient.CreateApiV2Client(SubscriptionKey, HostName, Port);
             
-            var transcriptions = await client.GetTranscriptionAsync().ConfigureAwait(false);
-
             var transcriptionLocation = await client.PostTranscriptionAsync(Name, Description, Locale, new Uri(RecordingsBlobUri), new[] { AdaptedAcousticId, AdaptedLanguageId }).ConfigureAwait(false);
+```
 
-            // get the transcription Id from the location URI
-            var createdTranscriptions = new List<Guid>();
-            createdTranscriptions.Add(new Guid(transcriptionLocation.ToString().Split('/').LastOrDefault()))
+Most, hogy a kérés érkezett a felhasználó lekérdezheti és töltse le a beszédátírási eredmények, a kód kódrészlet azt mutatja be.
 
-            while (true)
+```cs
+  
+            // get all transcriptions for the user
+            transcriptions = await client.GetTranscriptionAsync().ConfigureAwait(false);
+
+            // for each transcription in the list we check the status
+            foreach (var transcription in transcriptions)
             {
-                // get all transcriptions for the user
-                transcriptions = await client.GetTranscriptionAsync().ConfigureAwait(false);
-                completed = 0; running = 0; notStarted = 0;
-
-                // for each transcription in the list we check the status
-                foreach (var transcription in transcriptions)
+                switch(transcription.Status)
                 {
-                    switch(transcription.Status)
-                    {
-                        case "Failed":
-                        case "Succeeded":
+                    case "Failed":
+                    case "Succeeded":
 
                             // we check to see if it was one of the transcriptions we created from this client.
-                            if (!createdTranscriptions.Contains(transcription.Id))
-                            {
-                                // not creted form here, continue
-                                continue;
-                            }
+                        if (!createdTranscriptions.Contains(transcription.Id))
+                        {
+                            // not creted form here, continue
+                            continue;
+                        }
                             
-                            completed++;
+                        completed++;
                             
-                            // if the transcription was successfull, check the results
-                            if (transcription.Status == "Succeeded")
-                            {
-                                var resultsUri = transcription.ResultsUrls["channel_0"];
-                                WebClient webClient = new WebClient();
-                                var filename = Path.GetTempFileName();
-                                webClient.DownloadFile(resultsUri, filename);
-                                var results = File.ReadAllText(filename);
-                                Console.WriteLine("Transcription succedded. Results: ");
-                                Console.WriteLine(results);
-                            }
-                            break;
-                        case "Running":
-                            running++;
-                            break;
-                        case "NotStarted":
-                            notStarted++;
-                            break;
+                        // if the transcription was successfull, check the results
+                        if (transcription.Status == "Succeeded")
+                        {
+                            var resultsUri = transcription.ResultsUrls["channel_0"];
+                            WebClient webClient = new WebClient();
+                            var filename = Path.GetTempFileName();
+                            webClient.DownloadFile(resultsUri, filename);
+                            var results = File.ReadAllText(filename);
+                            Console.WriteLine("Transcription succedded. Results: ");
+                            Console.WriteLine(results);
+                        }
+                    
+                    break;
+                    case "Running":
+                    running++;
+                     break;
+                    case "NotStarted":
+                    notStarted++;
+                    break;
+                    
                     }
                 }
-
-                Console.WriteLine(string.Format("Transcriptions status: {0} completed, {1} running, {2} not started yet", completed, running, notStarted));
-
-                await Task.Delay(TimeSpan.FromSeconds(5)).ConfigureAwait(false);
             }
-
-            Console.WriteLine("Press any key...");
         }
 ```
+
+A [Swagger-dokumentumok](https://westus.cris.ai/swagger/ui/index) teljes részletesen a fenti hívások. Az itt látható a teljes minta megtalálható [GitHub](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI).
 
 > [!NOTE]
 > A fenti kóddal, a az előfizetési kulcs van, a beszéd erőforrás, amely az Azure Portalon hoz létre. A Custom Speech Service erőforrás származó kulcsok nem működnek.

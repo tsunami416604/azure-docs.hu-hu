@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Machine Learning-munkaterület létrehozása – Azure'
-description: Az Azure Portalon létrehozhat egy Azure Machine Learning-munkaterületet. Az Azure Machine Learning szolgáltatás használata során ez a munkaterület szolgál a gépi tanulási modellekkel való kísérletezés, valamint a betanítás és üzembe helyezés alapjául a felhőben.
+title: 'Rövid útmutató: Gépi tanulási szolgáltatás létrehozása az Azure portálon – az Azure Machine Learning szolgáltatás'
+description: Az Azure Portalon létre fog hozni egy Azure Machine Learning szolgáltatási munkaterületet. Az Azure Machine Learning szolgáltatás használata során ez a munkaterület szolgál a gépi tanulási modellekkel való kísérletezés, valamint a betanítás és üzembe helyezés alapjául a felhőben.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,16 +9,16 @@ ms.reviewer: sgilley
 author: rastala
 ms.author: roastala
 ms.date: 09/24/2018
-ms.openlocfilehash: c1610291e06255e2c724268f63d740f7e4debea4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b6f0201a36a676e7647b9f5e60bc2df3415b9594
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959988"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831330"
 ---
-# <a name="quickstart-get-started-with-azure-machine-learning-service"></a>Rövid útmutató: Ismerkedés az Azure Machine Learning szolgáltatással
+# <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning-service"></a>Rövid útmutató: Ismerkedés az Azure Machine Learning szolgáltatással az Azure Portal használatával
 
-Ebben a rövid útmutatóban egy Azure Machine Learning-munkaterületet hoz létre az Azure Portalon. Az Azure Machine Learning szolgáltatás használata során ez a munkaterület szolgál a gépi tanulási modellekkel való kísérletezés, valamint a betanítás és üzembe helyezés alapjául a felhőben. 
+Ebben a rövid útmutatóban egy Azure Machine Learning szolgáltatási munkaterületet hoz létre az Azure Portalon. Az Azure Machine Learning szolgáltatás használata során ez a munkaterület szolgál a gépi tanulási modellekkel való kísérletezés, valamint a betanítás és üzembe helyezés alapjául a felhőben. 
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
@@ -28,7 +28,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 Az Ön kényelme érdekében a következő Azure-erőforrások automatikusan hozzá lesznek adva a munkaterülethez, ha elérhetők a régióban: [tárolóregisztrációs adatbázis](https://azure.microsoft.com/services/container-registry/), [tároló](https://azure.microsoft.com/services/storage/), [application insights](https://azure.microsoft.com/services/application-insights/) és [key vault](https://azure.microsoft.com/services/key-vault/).
 
-Az Ön által létrehozott erőforrások előfeltételként is használhatók más Azure Machine Learning-oktatóanyagokban vagy -útmutatókban. A többi Azure-szolgáltatáshoz hasonlóan bizonyos erőforrások (pl. A BatchAI fürtmérete), amelyek az Azure Machine Learning szolgáltatással vannak társítva, korlátozva vannak. Olvassa el [ezt](how-to-manage-quotas.md) a cikket az alapértelmezett korlátokról és a kvóta emelésének igényléséről.
+Az Ön által létrehozott erőforrások előfeltételként is használhatók más Azure Machine Learning szolgáltatási oktatóanyagokban vagy útmutatókban. A többi Azure-szolgáltatáshoz hasonlóan bizonyos erőforrások (pl. A BatchAI fürtmérete), amelyek az Azure Machine Learning szolgáltatással vannak társítva, korlátozva vannak. Olvassa el [ezt](how-to-manage-quotas.md) a cikket az alapértelmezett korlátokról és a kvóta emelésének igényléséről.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -37,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-A munkaterületen kattintson az `Explore your Azure Machine Learning Workspace` parancsra
+A munkaterületen kattintson az `Explore your Azure Machine Learning service workspace` parancsra
 
  ![a munkaterület vizsgálata](./media/quickstart-get-started/explore_aml.png)
 
@@ -69,9 +69,9 @@ Két notebook mellett egy `config.json` fájlt is látni fog.  Ez a konfiguráci
 
 Kattintson a `01.run-experiment.ipynb` fájlra a notebook megnyitásához.
 
-A cellákat egyenként is futtathatja a `Shift`+`Enter` billentyűkombinációval.  Vagy a `Cells` > `Run All` menüben futtathatja a teljes jegyzetfüzetet is.
+A cellákat egyenként is futtathatja a `Shift`+`Enter` billentyűkombinációval.  Vagy a `Cells` > `Run All` menüben futtathatja a teljes jegyzetfüzetet is.  Amikor egy cella mellett [*] látható, az fut.  Ha a cella kódja lefutott, egy szám jelenik meg.
 
-A rendszer arra kérheti, hogy jelentkezzen be.  Másolja az üzenetben lévő kódot, majd kattintson a hivatkozásra, és illessze a kódot az új ablakba.  Ügyeljen rá, hogy ne másolja a kód előtt vagy után lévő szóközt.
+Előfordulhat, hogy a rendszer arra kéri, hogy jelentkezzen be.  Másolja az üzenetben lévő kódot, majd kattintson a hivatkozásra, és illessze a kódot az új ablakba.  Ügyeljen rá, hogy ne másolja a kód előtt vagy után lévő szóközt.  Jelentkezzen be ugyanazzal a fiókkal, amelyet az Azure Portalon használt.
 
  ![bejelentkezés](./media/quickstart-get-started/login.png)
 

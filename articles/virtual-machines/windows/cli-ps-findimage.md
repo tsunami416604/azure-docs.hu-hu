@@ -1,6 +1,6 @@
 ---
 title: Válassza ki a Windows VM-rendszerképek az Azure-ban |} A Microsoft Docs
-description: Ismerje meg, hogyan határozza meg, a közzétevő, ajánlat, Termékváltozat és verzió Marketplace Virtuálisgép-rendszerképek Azure PowerShell használatával.
+description: Azure PowerShell használatával a közzétevő, ajánlat, Termékváltozat és verzió Marketplace Virtuálisgép-rendszerképek határozza meg.
 services: virtual-machines-windows
 documentationcenter: ''
 author: dlepow
@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 09/28/2018
+ms.date: 10/08/2018
 ms.author: danlep
-ms.openlocfilehash: 4fb718eb7247bddd8869b8973479377e3baebdda
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 5934e955d2a18d111c625670bced134df37ef045
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017178"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409594"
 ---
-# <a name="how-to-find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Az Azure Marketplace-en az Azure PowerShell használatával Windows Virtuálisgép-rendszerképek keresése
+# <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Az Azure Marketplace-en az Azure PowerShell használatával Windows Virtuálisgép-rendszerképek keresése
 
-Ez a cikk ismerteti az Azure piactéren Virtuálisgép-rendszerképek keresése az Azure PowerShell használatával. Ezen információk használatával adja meg a Piactéri lemezképet, ha programozott módon létrehozhat egy virtuális Gépet a PowerShell-lel, Resource Manager-sablonok vagy más eszközök.
+Ez a cikk ismerteti az Azure piactéren Virtuálisgép-rendszerképek keresése az Azure PowerShell használatával. Ezt követően megadhatja a Piactéri rendszerkép programozott módon létrehozott egy virtuális Gépet a PowerShell-lel, Resource Manager-sablonok vagy más eszközök.
 
-Elérhető rendszerképeket és a használatával ajánlatokkal keresse a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/) kirakat, a [az Azure portal](https://portal.azure.com), vagy a [Azure CLI-vel](../linux/cli-ps-findimage.md). 
+Elérhető lemezképek és ajánlatok használatával is megkeresheti a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/) kirakat, a [az Azure portal](https://portal.azure.com), vagy a [Azure CLI-vel](../linux/cli-ps-findimage.md). 
 
-Ellenőrizze, hogy telepítve van, és a legújabb konfigurált [Azure PowerShell-modul](/powershell/azure/install-azurerm-ps).
+Győződjön meg arról, hogy telepítve van, és a legújabb konfigurált [Azure PowerShell-modul](/powershell/azure/install-azurerm-ps).
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
@@ -48,7 +48,7 @@ Ellenőrizze, hogy telepítve van, és a legújabb konfigurált [Azure PowerShel
 
 ## <a name="navigate-the-images"></a>Keresse meg a képek
 
-Egy másik helyen megkeresni a rendszerképet módja futtatásához a [Get-AzureRMVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher), [Get-AzureRMVMImageOffer](/powershell/module/azurerm.compute/get-azurermvmimageoffer), és [Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) parancsmagok a feladatütemezés. A következő parancsokkal határozza meg ezeket az értékeket:
+Futtassa a kép egy helyen található egyik módja a [Get-AzureRMVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher), [Get-AzureRMVMImageOffer](/powershell/module/azurerm.compute/get-azurermvmimageoffer), és [Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) parancsmagok sorrendben:
 
 1. Listázza a rendszerkép-közzétevőket.
 2. Listázza egy adott közzétevő ajánlatait.
@@ -56,42 +56,41 @@ Egy másik helyen megkeresni a rendszerképet módja futtatásához a [Get-Azure
 
 Ezután a kiválasztott termékváltozat futtassa [Get-AzureRMVMImage](/powershell/module/azurerm.compute/get-azurermvmimage) üzembe helyezéséhez a verziók listázásához.
 
-Először listázza a közzétevőket a következő parancsokkal:
+1. A közzétevők listázása:
 
-```powershell
-$locName="<Azure location, such as West US>"
-Get-AzureRMVMImagePublisher -Location $locName | Select PublisherName
-```
+    ```powershell
+    $locName="<Azure location, such as West US>"
+    Get-AzureRMVMImagePublisher -Location $locName | Select PublisherName
+    ```
 
-Adja meg a kiválasztott közzétevő nevét, és futtassa a következő parancsokat:
+2. Adja meg a kiválasztott közzétevő nevét, és az ajánlatok listázása:
 
-```powershell
-$pubName="<publisher>"
-Get-AzureRMVMImageOffer -Location $locName -Publisher $pubName | Select Offer
-```
+    ```powershell
+    $pubName="<publisher>"
+    Get-AzureRMVMImageOffer -Location $locName -Publisher $pubName | Select Offer
+    ```
 
-Adja meg a kiválasztott ajánlat nevét, és futtassa a következő parancsokat:
+3. Adja meg a kiválasztott ajánlat nevét, és a termékváltozatok listázása:
 
-```powershell
-$offerName="<offer>"
-Get-AzureRMVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
-```
+    ```powershell
+    $offerName="<offer>"
+    Get-AzureRMVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
+    ```
+    
+4. Adja meg a kiválasztott Termékváltozat nevét, és a lemezkép-verzió beolvasása:
 
-Adja meg a kiválasztott Termékváltozat nevét, és futtassa a következő parancsokat:
-
-```powershell
-$skuName="<SKU>"
-Get-AzureRMVMImage -Location $locName -Publisher $pubName -Offer $offerName -Sku $skuName | Select Version
-```
-
+    ```powershell
+    $skuName="<SKU>"
+    Get-AzureRMVMImage -Location $locName -Publisher $pubName -Offer $offerName -Sku $skuName | Select Version
+    ```
+    
 Kimenetéből származó a `Get-AzureRMVMImage` parancsot, kiválaszthatja, hogy egy új virtuális gép üzembe helyezéséhez lemezképe.
 
-A következő parancsok bemutatják egy teljes példa:
+Az alábbi példa bemutatja a parancsok és a kibocsátásukra teljes folyamata:
 
 ```powershell
 $locName="West US"
 Get-AzureRMVMImagePublisher -Location $locName | Select PublisherName
-
 ```
 
 Részleges kimenet:
@@ -163,9 +162,9 @@ $skuName="2016-Datacenter"
 Get-AzureRMVMImage -Location $locName -Publisher $pubName -Offer $offerName -Sku $skuName | Select Version
 ```
 
-Most a kijelölt közzétevő, ajánlat, Termékváltozat és verzió URN kombinálható (a következővel határolt értékekkel:). Ezt az URN adja át a `--image` paraméterrel rendelkező virtuális gép létrehozásakor a [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) parancsmag. Ne feledje, hogy igény szerint lecserélheti a verziószámot a URN "legutóbbi". Ez a verzió, mindig a rendszerkép legújabb verzióját.
+Most a kijelölt közzétevő, ajánlat, Termékváltozat és verzió URN kombinálható (a következővel határolt értékekkel:). Ezt az URN adja át a `--image` paraméterrel rendelkező virtuális gép létrehozásakor a [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) parancsmag. Igény szerint lecserélheti a verziószámot a URN "legutóbbi" beolvasni a rendszerkép legújabb verzióját.
 
-Ha telepít egy virtuális Gépet a Resource Manager-sablonnal, egyenként a állítsa be a rendszerkép-paraméterek a `imageReference` tulajdonságait. Tekintse meg a [sablonreferenciája](/azure/templates/microsoft.compute/virtualmachines).
+Resource Manager-sablonnal rendelkező virtuális Gépet telepít, akkor a beállításokat a lemezkép paraméterek a külön-külön az `imageReference` tulajdonságait. Tekintse meg a [sablonreferenciája](/azure/templates/microsoft.compute/virtualmachines).
 
 [!INCLUDE [virtual-machines-common-marketplace-plan](../../../includes/virtual-machines-common-marketplace-plan.md)]
 
@@ -173,7 +172,7 @@ Ha telepít egy virtuális Gépet a Resource Manager-sablonnal, egyenként a ál
 
 Egy rendszerkép beszerzési terv adatainak megtekintéséhez futtassa a `Get-AzureRMVMImage` parancsmagot. Ha a `PurchasePlan` a kimenetben tulajdonság nem `null`, a rendszerképre feltételeket el kell fogadnia a programozott telepítés előtt.  
 
-Ha például a Windows Server 2016 Datacenter rendszerképet nem rendelkezik további feltételeket, mert a `PurchasePlan` információk `null`:
+Például a *Windows Server 2016 Datacenter* lemezkép nem rendelkezik további feltételeket, ezért a `PurchasePlan` információk `null`:
 
 ```powershell
 $version = "2016.127.20170406"
@@ -200,7 +199,7 @@ DataDiskImages   : []
 
 ```
 
-Egy hasonló parancs futtatása a az adatelemző virtuális gép – Windows 2016 kép mutatja be a következő `PurchasePlan` tulajdonságai: `name`, `product`, és `publisher`. (Egyes képeket is, hogy egy `promotion code` tulajdonság.) A lemezkép központi telepítése, lásd a következő szakaszok fogadja el a feltételeket, és engedélyezze a programozott telepítés.
+Az alábbi példában látható a hasonló parancsot a *adatelemző virtuális gép – Windows 2016* lemezképet, amely rendelkezik a következő `PurchasePlan` tulajdonságai: `name`, `product`, és `publisher`. Bizonyos képek is, hogy egy `promotion code` tulajdonság. A lemezkép központi telepítése, lásd a következő szakaszok fogadja el a feltételeket és a programozott telepítés engedélyezése.
 
 ```powershell
 Get-AzureRMVMImage -Location "westus" -Publisher "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "0.2.02"
@@ -232,7 +231,7 @@ DataDiskImages   : []
 
 ### <a name="accept-the-terms"></a>Feltételek elfogadása
 
-A licencszerződés megtekintéséhez használja a [Get-AzureRmMarketplaceterms](/powershell/module/azurerm.marketplaceordering/get-azurermmarketplaceterms) parancsmagot, és adja meg a vásárlás megtervezése paramétereket. A kimenet egy hivatkozást kínál a feltételeket, a Piactéri lemezképhez a, és bemutatja, hogy Ön korábban elfogadta a használati. Győződjön meg arról, csak kisbetűk használata a paraméterértékek megadásához. Példa:
+A licencszerződés megtekintéséhez használja a [Get-AzureRmMarketplaceterms](/powershell/module/azurerm.marketplaceordering/get-azurermmarketplaceterms) parancsmagot, és adja meg a vásárlás megtervezése paramétereket. A kimenet egy hivatkozást kínál a feltételeket, a Piactéri lemezképhez a, és bemutatja, hogy Ön korábban elfogadta a használati. Győződjön meg arról, csak kisbetűk használata a paraméterértékek megadásához.
 
 ```powershell
 Get-AzureRmMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
@@ -252,14 +251,12 @@ Accepted          : False
 Signdate          : 2/23/2018 7:43:00 PM
 ```
 
-Használja a [Set-AzureRmMarketplaceterms](/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) parancsmag elfogadja vagy elutasítja a feltételeket. Csak egyszer előfizetésenként elfogadására a lemezképhez kell. Győződjön meg arról, csak kisbetűk használata a paraméterértékek megadásához. Példa:
+Használja a [Set-AzureRmMarketplaceterms](/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms) parancsmag elfogadja vagy elutasítja a feltételeket. Csak egyszer előfizetésenként elfogadására a lemezképhez kell. Győződjön meg arról, csak kisbetűk használata a paraméterértékek megadásához. 
 
 ```powershell
-
 $agreementTerms=Get-AzureRmMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
 
 Set-AzureRmMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" -Terms $agreementTerms -Accept
-
 ```
 
 Kimenet:
@@ -278,7 +275,7 @@ Signdate          : 2/23/2018 7:49:31 PM
 
 ### <a name="deploy-using-purchase-plan-parameters"></a>Üzembe helyezés beszerzési terv paraméterei
 
-Miután elfogadja a feltételeket a lemezkép, az előfizetésben található virtuális gép is telepítheti. Ahogy az alábbi kódrészletben látható módon, a [Set-AzureRmVMPlan](/powershell/module/azurerm.compute/set-azurermvmplan) -parancsmaggal beállítható a Marketplace-en csomagadatokat a VM-objektumhoz. Teljes szkript létrehozása a virtuális gép hálózati beállításait, és a telepítés befejezéséhez, lásd: a [PowerShell-példaszkriptek](powershell-samples.md).
+Után elfogadja a feltételeket a lemezkép, telepíthet egy virtuális Gépet, az adott előfizetésben. Ahogy az alábbi kódrészletben látható módon, a [Set-AzureRmVMPlan](/powershell/module/azurerm.compute/set-azurermvmplan) -parancsmaggal beállítható a Marketplace-en csomagadatokat a VM-objektumhoz. Teljes szkript létrehozása a virtuális gép hálózati beállításait, és a telepítés befejezéséhez, lásd: a [PowerShell-példaszkriptek](powershell-samples.md).
 
 ```powershell
 ...
@@ -310,10 +307,10 @@ $version = "0.2.02"
 $vmConfig = Set-AzureRmVMSourceImage -VM $vmConfig -PublisherName $publisherName -Offer $offerName -Skus $skuName -Version $version
 ...
 ```
-Akkor továbbítja a Virtuálisgép-konfigurációt és hálózati konfigurációs objektumot a `New-AzureRmVM` parancsmagot.
+Majd fogja adja át a hálózati konfigurációs objektumot és a Virtuálisgép-konfigurációt a `New-AzureRmVM` parancsmagot.
 
 ## <a name="next-steps"></a>További lépések
-A virtuális gép gyors létrehozása `New-AzureRmVM` alapvető információk alapján tekintse meg a [Windows virtuális gép létrehozása a PowerShell-lel](quick-create-powershell.md).
+A virtuális gép gyors létrehozása a `New-AzureRmVM` futtatásával alapvető információkat, lásd: [Windows virtuális gép létrehozása a PowerShell-lel](quick-create-powershell.md).
 
 Tekintse meg a PowerShell-példaszkript [teljes konfigurációjú virtuális gép létrehozása](../scripts/virtual-machines-windows-powershell-sample-create-vm.md).
 

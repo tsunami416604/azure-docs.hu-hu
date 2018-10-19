@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.component: disks
-ms.openlocfilehash: 5d3c2f09a6e4c45aa477cd85911147eab6de7a2c
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 7378331e5f7540d807c76511226fcd2ed99883fa
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714706"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404137"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrálás prémium szintű tárolóba az Azure Site Recovery használatával
 
@@ -77,8 +77,10 @@ A Site Recovery segítségével Azure IaaS virtuális gépek migrálása,-régi�
 ### <a name="step-1-create-a-recovery-services-vault"></a>1. lépés: Hozzon létre egy Recovery Services-tároló
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
-2. Válassza ki **erőforrás létrehozása** > **felügyeleti** > **Backup és Site Recovery (OMS)**. Másik lehetőségként kiválaszthatja **Tallózás** > **Recovery Services-tároló** > **Hozzáadás**. 
-3. Adjon meg egy régióban, amely a virtuális gépeket replikálja. Áttelepítéshez ugyanabban a régióban válassza ki a régiót, ahol a forrás virtuális gépek és a forrás-tárfiókok vannak. 
+2. Válassza ki **erőforrás létrehozása** > **felügyeleti** > **Backup és Site Recovery (OMS)**. Másik lehetőségként kiválaszthatja **Tallózás** > **Recovery Services-tároló** > **Hozzáadás**.
+   >[!NOTE]
+   >Backup és Site Recovery lett korábban része a ![OMS csomagot](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand).
+1. Adjon meg egy régióban, amely a virtuális gépeket replikálja. Áttelepítéshez ugyanabban a régióban válassza ki a régiót, ahol a forrás virtuális gépek és a forrás-tárfiókok vannak. 
 
 ### <a name="step-2-choose-your-protection-goals"></a>2. lépés: A védelmi célok megválasztása 
 

@@ -1,36 +1,36 @@
 ---
-title: Az Azure Search-indexelőt, blob CSV blobok indexelő |} Microsoft Docs
-description: Megtudhatja, hogyan CSV BLOB az Azure Search index
-author: chaosrealm
-manager: jlembicz
+title: CSV-blobok indexelése az Azure Search blob indexelőjével |} A Microsoft Docs
+description: Ismerje meg, az Azure Search szolgáltatással a CSV-blobok indexelése
+ms.date: 10/17/2018
+author: mgottein
+manager: cgronlun
+ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 12/28/2017
-ms.author: eugenesh
-ms.openlocfilehash: bf65ab7858ba792418e325e7a025ee1bd88bbb27
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b1f97b5e9542e32096bb060bce40e7b9620d0f49
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363036"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406075"
 ---
-# <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Az Azure Search-indexelőt, blob CSV blobok indexelő
-Alapértelmezés szerint [blob Azure Search-indexelőt](search-howto-indexing-azure-blob-storage.md) elemez szöveg blobok szöveg egyetlen adattömb jelölik. Azonban a CSV-adatokat tartalmazó BLOB, gyakran szeretné kezelni a blob, különálló dokumentumként soronként. Például a következő tagolt szöveges megadott, érdemes elemzéséhez be két dokumentumot, minden egyes "id", "datePublished" és "címkék" mezőket tartalmazó: 
+# <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>CSV-blobok indexelése az Azure Search blob indexelőjével
+Alapértelmezés szerint [Azure Search blob indexelőjével](search-howto-indexing-azure-blob-storage.md) elemzi tagolt szöveges blobok, egy olyan adattömb szöveg. Azonban a blobok CSV-adatokat tartalmazó, gyakran szeretné kezelni az egyes sorok a blob, különálló dokumentumként. Például adja meg a következő tagolt szöveg, előfordulhat, hogy szeretné elemezni a két dokumentumot, az egyes tartalmazó, "id", "datePublished" és "címkék" mezőket: 
 
     id, datePublished, tags
     1, 2016-01-12, "azure-search,azure,cloud" 
     2, 2016-07-07, "cloud,mobile" 
 
-Ebből a cikkből megismerheti, hogyan elemzése az Azure Search blob indexelő CSV blobok lesz. 
+Ebből a cikkből megismerheti, hogyan elemezni a CSV-blobok, az az Azure Search blob indexelőjével lesz. 
 
 > [!IMPORTANT]
-> Ez a funkció jelenleg nyilvános előzetes verziójában, és nem használható üzemi környezetben. További információkért lásd: [REST api-version = 2017-11-11-Előnézet](search-api-2017-11-11-preview.md). 
+> Ez a funkció jelenleg nyilvános előzetes verzióban érhető el, és nem éles környezetekben használható. További információkért lásd: [REST api-version = 2017-11-11-Preview](search-api-2017-11-11-preview.md). 
 > 
 
 ## <a name="setting-up-csv-indexing"></a>Fürt megosztott kötetei szolgáltatás indexelő beállítása
-A CSV-blobok index, definíció létrehozása vagy módosítása egy indexelő rendelkező a `delimitedText` elemzése mód:  
+CSV-blobok indexelése, létrehozni vagy frissíteni az indexelő meghatározását, és a `delimitedText` elemzési mód:  
 
     {
       "name" : "my-csv-indexer",
@@ -38,10 +38,10 @@ A CSV-blobok index, definíció létrehozása vagy módosítása egy indexelő r
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "firstLineContainsHeaders" : true } }
     }
 
-Hozzon létre indexelő API további részletekért tekintse meg [létrehozása indexelő](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Az indexelő API létrehozása a további részletekért tekintse meg [indexelő létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
-`firstLineContainsHeaders` azt jelzi, hogy az első sort (kötelező) minden egyes blob tartalmaz-e a fejléceket.
-Blobok nem tartalmaznak egy kezdeti fejlécsort, ha a fejlécek az indexelő konfigurációban kell megadni: 
+`firstLineContainsHeaders` azt jelzi, hogy az első sort (nem üres) minden egyes blob fejléceket tartalmazza-e.
+Blobok nem tartalmaznak egy kezdeti fejlécsort, ha a fejlécek az indexelő konfigurációjának kell megadni: 
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } } 
 
@@ -50,15 +50,15 @@ Az elválasztó karakter használatával testre szabhatja a `delimitedTextDelimi
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }
 
 > [!NOTE]
-> Jelenleg csak az UTF-8 kódolást használata támogatott. Ha segítségre más kódolás, szavazhatnak az [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+> Jelenleg csak az UTF-8 kódolást használata támogatott. Ha támogatásra van szüksége más kódolás, szavazzon rá a [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 
 > [!IMPORTANT]
-> A tagolt szövegfájl elemzése mód használata esetén Azure Search azt feltételezi, hogy az adatforrás összes BLOB lesz-e a fürt megosztott kötetei szolgáltatás. Ha támogatja a megosztott Fürtkötet, valamint nem CSV-blobok vegyesen ugyanarra az adatforrásra van szüksége, adjon szavazhatnak az [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+> A tagolt szöveges elemzési mód használata esetén az Azure Search azt feltételezi, hogy az adatforrás összes BLOB lesz-e a fürt megosztott kötetei szolgáltatás. Ha ugyanazt az adatforrást a fürt megosztott kötetei szolgáltatás és a-CSV blobok kiszolgálnia van szüksége, kérjük szavazzon rá a [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 > 
 > 
 
 ## <a name="request-examples"></a>Példák
-Ez minden üzembe együtt, az alábbiakban a teljes adattartalmat példák. 
+Ez az összes üzembe együtt, az alábbiakban a teljes hasznos példákat. 
 
 Adatforrás: 
 
@@ -86,6 +86,6 @@ Az indexelő:
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } }
     }
 
-## <a name="help-us-make-azure-search-better"></a>Segítsen az Azure Search továbbfejlesztésében
-Ha a szolgáltatás-kérelmek vagy ötleteket javításai, információk megadása a [UserVoice](https://feedback.azure.com/forums/263029-azure-search/).
+## <a name="help-us-make-azure-search-better"></a>Segítsen jobbá Azure Search
+Ha funkcióra vonatkozó javaslata vagy ötlete van javításai, adja meg a bemenetet a [UserVoice](https://feedback.azure.com/forums/263029-azure-search/).
 

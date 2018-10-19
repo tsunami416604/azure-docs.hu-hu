@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e42bc63b0c2b6edf4dc0de204bbac5fe90071a67
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 7410dadabf9fda2eb36531991d1d7ff3c3747e2c
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480512"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406517"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Az Active Directory B2C-ben használható alkalmazások típusok
 
@@ -88,11 +88,6 @@ Accept: application/json
 
 Így a webes API a jogkivonat segítségével ellenőrizheti az API hívójának identitását, valamint a jogkivonatban kódolt jogcímek segítségével további információkhoz juthat a hívóról. Az [Azure AD B2C-jogkivonatok referenciájából](active-directory-b2c-reference-tokens.md) további információkat tudhat meg az alkalmazásban elérhető jogkivonatok és jogcímek különböző típusairól.
 
-> [!NOTE]
-> Az Azure AD B2C jelenleg csak azokat a webes API-kat támogatja, amelyekhez a saját, jól ismert ügyfeleikkel lehet hozzáférni. Az elkészült alkalmazás tartalmazhat például egy iOS-alkalmazás Android-alkalmazás és egy háttér-webes API-t. Ez az architektúra már most is teljes támogatást élvez. Egy partnerügyfél, ilyen lehet például egy másik iOS-alkalmazás, eléréséhez a azonos webes API jelenleg nem támogatott. Mind a teljes alkalmazás összetevőinek egyazon alkalmazásazonosítót kell megosztása
->
->
-
 Webes API-k számos különböző típusú, beleértve a webalkalmazásokat, asztali és mobil alkalmazások, egyoldalas alkalmazások, kiszolgálóoldali démonok és más webes API-kat a képes jogkivonatokat fogadni. Íme egy példa, amely meghívja a webes API-k webalkalmazás teljes folyamatára:
 
 1. A webes alkalmazás végrehajt egy szabályzatot, és a felhasználó elvégzi a felhasználói élményt.
@@ -114,11 +109,6 @@ Ha szeretné megtanulni, hogyan biztosíthat védelmet a webes API-k számára a
 Az eszközök, például az asztali és mobil alkalmazások, telepített alkalmazások gyakran igényelnek hozzáférést Háttérszolgáltatásokhoz vagy webes API-k felhasználók nevében. Egyedi identitáskezelési eszközöket adhat a natív alkalmazásokhoz, és biztonságosan meg háttér-szolgáltatásokat az Azure AD B2C-vel és a [OAuth 2.0 hitelesítési kódfolyamat](active-directory-b2c-reference-oauth-code.md).  
 
 Ezt a folyamatot, az alkalmazás végrehajt [házirendek](active-directory-b2c-reference-policies.md) és kap egy `authorization_code` után a felhasználó teljesítette a szabályzat az Azure AD-ből. A `authorization_code` jelöli a háttér-szolgáltatásokat az aktuálisan bejelentkezett felhasználó nevében az alkalmazás számára. Az alkalmazás ezután tudjon cserélni a `authorization_code` a háttérben egy `id_token` és a egy `refresh_token`.  Az alkalmazás használhatja a `id_token` egy háttér-webes API-nak a HTTP-kérések hitelesítéséhez. Az `refresh_token` alkalmas ezenfelül új `id_token` kérésére is, ha a régi lejárna.
-
-> [!NOTE]
-> Az Azure AD B2C jelenleg csak az alkalmazás saját háttér-webszolgáltatás eléréséhez használt jogkivonatokat támogatja. A teljes alkalmazás tartalmazhat például egy iOS-alkalmazás Android-alkalmazás és egy háttér-webes API-t. Ez az architektúra már most is teljes támogatást élvez. Lehetővé teszi az IOS-es alkalmazás hozzáférjen a partneri webes API-t OAuth 2.0 hozzáférési jogkivonatok használatával jelenleg nem támogatott. Mind a teljes alkalmazás összetevőinek egyazon alkalmazásazonosítót kell megosztása
->
->
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 

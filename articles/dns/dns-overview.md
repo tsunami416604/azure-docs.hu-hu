@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: e3e04bf7e35b22a56465810f476323ed217e047a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f68281f71ed525798410fb80b0d0175d38050c40
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967625"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829919"
 ---
 # <a name="what-is-azure-dns"></a>Mi az Azure DNS?
 
@@ -24,11 +24,11 @@ Az Azure DNS a következő funkciókat tartalmazza:
 
 ## <a name="reliability-and-performance"></a>Megbízhatóság és teljesítmény
 
-Az Azure DNS-beli DNS-tartományok az Azure globális DNS-névkiszolgálói hálózatán üzemelnek. Az Azure DNS anycast hálózatkezelést használ annak érdekében, hogy a DNS-lekérdezésekre a legközelebbi elérhető DNS-kiszolgáló válaszoljon. Ez kiváló teljesítményt és magas szintű rendelkezésre állást biztosít a tartomány számára.
+Az Azure DNS-beli DNS-tartományok az Azure globális DNS-névkiszolgálói hálózatán üzemelnek. Az Azure DNS csomópontválasztásos (anycast) hálózatot használ, hogy minden DNS-lekérdezést a legközelebbi elérhető DNS-kiszolgáló tudja megválaszolni, ami biztosítja a tartomány gyorsaságát és magas rendelkezésre állását.
 
 ## <a name="security"></a>Biztonság
 
-Az Azure DNS szolgáltatás az Azure Resource Managerre épül. Ennek köszönhetően többek között a következő Resource Manager-funkciókat veheti igénybe:
+Az Azure DNS szolgáltatás az Azure Resource Managerre épül, és többek között az alábbi funkciókat tartalmazza:
 
 * [szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control) – szabályozhatja, hogy ki rendelkezzen hozzáféréssel egy adott művelethez a vállalatban.
 
@@ -43,7 +43,7 @@ További információkat a [DNS-zónák és -rekordok védelmével](dns-protect-
 
 Az Azure DNS szolgáltatás képes kezelni az Azure-szolgáltatások DNS-rekordjait, és DNS-t biztosít a külső erőforrásoknak. Az Azure DNS integrálva van az Azure Portallal, és ugyanazokat a hitelesítő adatokat, számlázási információkat és támogatási szerződést használja, mint a többi Azure-szolgáltatás. 
 
-A DNS számlázása az Azure-ban üzemeltetett DNS-zónák és a DNS-lekérdezések száma alapján történik. A díjszabással kapcsolatos további információkért tekintse meg [az Azure DNS díjszabásával](https://azure.microsoft.com/pricing/details/dns/) kapcsolatos cikket.
+Az Azure DNS díjszabása az Azure-ban üzemeltetett DNS-zónák és a fogadott DNS-lekérdezések számán alapul. A díjszabással kapcsolatos további információkért tekintse meg [az Azure DNS díjszabásával](https://azure.microsoft.com/pricing/details/dns/) kapcsolatos cikket.
 
 A tartományok és a rekordok az Azure Portal, az Azure PowerShell-parancsmagok és a platformfüggetlen Azure CLI segítségével kezelhetőek. Az automatizált DNS-kezelést igénylő alkalmazások a REST API és SDK-k használatával integrálhatóak a szolgáltatással.
 

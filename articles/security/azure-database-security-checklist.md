@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 7682a733c5630c16d9684ec3cb9e7757b03a8b1b
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: f6e8ed1725b7ba2a0cba8523ae03c0306337aba0
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855935"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402507"
 ---
 # <a name="azure-database-security-checklist"></a>Azure database biztonsági ellenőrzőlista
 
@@ -46,7 +46,7 @@ Azt javasoljuk, hogy elolvasta a [Azure adatbázis ajánlott biztonsági eljár�
 |Ellenőrzőlista kategória| Leírás|
 | ------------ | -------- |
 |**Adatok védelme**||
-| <br> Mozgásérzékelő/átvitel titkosítása| <ul><li>[Transport Layer Security](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol), adat-hálózatokhoz való áthelyezésekor az adattitkosítás.</li><li>Adatbázis alapján ügyfelekről érkező biztonságos kommunikációt igényel a [(táblázatos adatok Stream) TDS](https://msdn.microsoft.com/en-in/library/dd357628.aspx) keresztüli TLS (Transport Layer Security) protokoll.</li></ul> |
+| <br> Mozgásérzékelő/átvitel titkosítása| <ul><li>[Transport Layer Security](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol), adat-hálózatokhoz való áthelyezésekor az adattitkosítás.</li><li>Adatbázis alapján ügyfelekről érkező biztonságos kommunikációt igényel a [(táblázatos adatok Stream) TDS](https://msdn.microsoft.com/library/dd357628.aspx) keresztüli TLS (Transport Layer Security) protokoll.</li></ul> |
 |<br>Titkosítás inaktív állapotban| <ul><li>[Transzparens adattitkosítás](http://go.microsoft.com/fwlink/?LinkId=526242), amikor az inaktív adatok bármely digitális formában fizikailag tárolja.</li></ul>|
 |**Hozzáférés vezérlése**||  
 |<br> Adatbázis-hozzáférés | <ul><li>[Hitelesítési](https://docs.microsoft.com/azure/sql-database/sql-database-control-access) (az Azure Active Directory-hitelesítés) AD-hitelesítés az Azure Active Directory által felügyelt identitásokat használ.</li><li>[Engedélyezési](https://docs.microsoft.com/azure/sql-database/sql-database-control-access) biztosítson a felhasználó számára a minimálisan szükséges.</li></ul> |

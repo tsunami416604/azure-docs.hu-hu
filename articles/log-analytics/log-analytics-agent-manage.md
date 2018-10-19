@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e00ccc4d55da805538801a0a8f3ee5502d871fab
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: eaf6aa538a4733528b52b1417c2d53318064e068
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042308"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405396"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Kezelésével és karbantartásával a Log Analytics-ügynököket Windows és Linux rendszerekhez
 
@@ -34,7 +34,7 @@ A Windows vagy Linux-ügynök a Log Analytics kezdeti telepítés után szüksé
 
 1. Jelentkezzen be a számítógépre egy olyan fiókkal, amely rendszergazdai jogosultságokkal rendelkezik.
 2. Nyissa meg **Vezérlőpultot**.
-3. Válassza ki **Microsoft Monitoring Agent** és kattintson a **Azure Log Analytics (OMS)** fülre.
+3. Válassza ki **Microsoft Monitoring Agent** és kattintson a **Azure Log Analytics** fülre.
 4. Ha eltávolítja egy munkaterületet, jelölje ki azt, és kattintson a **eltávolítása**. Ismételje meg ezt a lépést bármely más azt szeretné, hogy az ügynök a továbbiakban a jelentéskészítés munkaterületen.
 5. Ha ad hozzá egy munkaterületet, kattintson a **Hozzáadás** és az a **adja hozzá a Log Analytics-munkaterület** párbeszédpanelen illessze be a munkaterület Azonosítóját és a Munkaterületkulcsot (elsődleges kulcs). Ha az Azure Government-felhőbeli Log Analytics-munkaterületet a kell jelentenie, válassza ki Azure US Government az Azure Cloud legördülő listából. 
 6. Kattintson az **OK** gombra a módosítások mentéséhez.
@@ -101,7 +101,7 @@ A következő lépések bemutatják, hogyan konfigurálja újra a Linux-ügynök
 Az ügynök szolgáltatást nem kell ahhoz, hogy a módosítások érvénybe léptetéséhez újra kell indítani.
 
 ## <a name="update-proxy-settings"></a>Proxy-beállítások frissítése 
-A szolgáltatás egy proxykiszolgálón keresztül kommunikáljon az ügynök konfigurálásához vagy [OMS-átjáró](log-analytics-oms-gateway.md) az üzembe helyezést követően használja a feladat végrehajtásához a következő módszerek egyikét.
+A szolgáltatás egy proxykiszolgálón keresztül kommunikáljon az ügynök konfigurálásához vagy [Log Analytics-átjáró](log-analytics-oms-gateway.md) az üzembe helyezést követően használja a feladat végrehajtásához a következő módszerek egyikét.
 
 ### <a name="windows-agent"></a>Windows-ügynök
 
@@ -110,7 +110,7 @@ A szolgáltatás egy proxykiszolgálón keresztül kommunikáljon az ügynök ko
 1. Jelentkezzen be a számítógépre egy olyan fiókkal, amely rendszergazdai jogosultságokkal rendelkezik.
 2. Nyissa meg **Vezérlőpultot**.
 3. Válassza ki **Microsoft Monitoring Agent** és kattintson a **proxybeállítások** fülre.
-4. Kattintson a **proxykiszolgálóval** , és adja meg az URL-címét és portszámát a proxy-kiszolgáló vagy átjáró. Ha a proxy- vagy OMS-átjáró hitelesítést igényel, írja be a felhasználónevet és jelszót a hitelesítéshez, és kattintson a **OK**. 
+4. Kattintson a **proxykiszolgálóval** , és adja meg az URL-címét és portszámát a proxy-kiszolgáló vagy átjáró. Ha a proxykiszolgáló vagy a Log Analytics-átjáró hitelesítést igényel, írja be a felhasználónevet és jelszót a hitelesítéshez, és kattintson a **OK**. 
 
 #### <a name="update-settings-using-powershell"></a>PowerShell-lel beállításainak frissítése 
 
@@ -141,7 +141,7 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 ```  
 
 ### <a name="linux-agent"></a>Linux-ügynök
-Hajtsa végre az alábbi lépéseket, ha a Linux rendszerű számítógépek keresztül kell kommunikálniuk a proxy- vagy OMS Log Analytics-átjárót.  A proxykonfiguráció értékének szintaxisa a következő: `[protocol://][user:password@]proxyhost[:port]`.  A *proxyhost* tulajdonság a proxykiszolgáló teljes tartománynevét vagy IP-címét fogadja el.
+Ha Linux rendszerű számítógépek keresztül kell kommunikálniuk-proxykiszolgálót vagy a Log Analytics-átjáró, hajtsa végre az alábbi lépéseket.  A proxykonfiguráció értékének szintaxisa a következő: `[protocol://][user:password@]proxyhost[:port]`.  A *proxyhost* tulajdonság a proxykiszolgáló teljes tartománynevét vagy IP-címét fogadja el.
 
 1. Szerkessze az `/etc/opt/microsoft/omsagent/proxy.conf` fájlt a következő parancsok futtatásával, és módosítsa az értékeket a saját konkrét beállításaira.
 
@@ -185,7 +185,9 @@ Az ügynök eltávolításához futtassa az alábbi parancsot a Linux rendszerű
 ## <a name="configure-agent-to-report-to-an-operations-manager-management-group"></a>Az ügynök számára, hogy az Operations Manager felügyeleti csoport konfigurálása
 
 ### <a name="windows-agent"></a>Windows-ügynök
-A következő lépésekkel konfigurálhatja az OMS ügynök a Windows számára, hogy a System Center Operations Manager felügyeleti csoportban. 
+Hajtsa végre az alábbi lépéseket a Log Analytics-ügynököket a Windows számára, hogy a System Center Operations Manager felügyeleti csoport konfigurálása.
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
 
 1. Jelentkezzen be a számítógépre egy olyan fiókkal, amely rendszergazdai jogosultságokkal rendelkezik.
 2. Nyissa meg **Vezérlőpultot**. 
@@ -199,7 +201,9 @@ A következő lépésekkel konfigurálhatja az OMS ügynök a Windows számára,
 10. Kattintson a **OK** gombra kattintva zárja be a **adja hozzá a felügyeleti csoport** párbeszédpanelen, majd kattintson **OK** gombra kattintva zárja be a **Microsoft Monitoring Agent tulajdonságai** párbeszédpanel bezárásához.
 
 ### <a name="linux-agent"></a>Linux-ügynök
-A következő lépésekkel konfigurálhatja az OMS-ügynök Linux rendszeren való jelentés érdekében a System Center Operations Manager felügyeleti csoportban. 
+A következő lépésekkel konfigurálhatja, hogy a System Center Operations Manager felügyeleti csoport Linuxhoz készült Log Analytics-ügynököket. 
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
 
 1. A fájl szerkesztése `/etc/opt/omi/conf/omiserver.conf`
 2. Ellenőrizze, hogy a sor elején `httpsport=` az 1270-es portot határozza meg. Például: `httpsport=1270`

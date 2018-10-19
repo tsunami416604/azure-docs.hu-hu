@@ -14,18 +14,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: mahender,cephalin
-ms.openlocfilehash: 46f8602583329a0516edb9af59e53754ca349555
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 6aa7f8c3b9d21d9c55aee3ce49f2bc140769a855
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336804"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408064"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service-ben
 
 Az Azure App Service biztosít beépített hitelesítés és engedélyezés támogatja, így a felhasználók, és minimális írása vagy a web App alkalmazásban, az API és a mobil háttérrendszer kódot nem adatok eléréséhez, valamint [Azure Functions](../azure-functions/functions-overview.md). Ez a cikk bemutatja, hogyan App Service egyszerűbbé teszi a hitelesítés és engedélyezés az alkalmazáshoz. 
 
-Biztonságos hitelesítés és engedélyezés szükséges biztonságát, beleértve az összevonási, megértheti a titkosítás, [JSON web tokenek (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) felügyeleti, [engedélyezési típusok](https://oauth.net/2/grant-types/), és így tovább. App Service ezeket a segédprogramokat biztosít, így több időt és energiát Bajos dolgaival, hogy az ügyfelek üzleti értéket.
+Biztonságos hitelesítés és engedélyezés szükséges ismeri részletesen biztonságát, összevonást, beleértve a titkosítást, [JSON web tokenek (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) felügyeleti, [engedélyezési típusok](https://oauth.net/2/grant-types/), és így tovább. App Service ezeket a segédprogramokat biztosít, így több időt és energiát Bajos dolgaival, hogy az ügyfelek üzleti értéket.
 
 > [!NOTE]
 > Ön nem szükséges az App Service használata a hitelesítéshez és engedélyezéshez. Számos webes keretrendszer biztonsági funkciókkal vannak csoportosítva, és igény szerint használhatja őket. Ha nagyobb rugalmasságot, mint az App Service biztosítja, a saját segédprogramok is kiírhatja.  
@@ -63,9 +63,9 @@ Az App Service biztosítja egy beépített jogkivonat-tároló, amely a jogkivon
 - Közzététel a Facebook-idővonalon a hitelesített felhasználó
 - a felhasználó vállalati adatokat olvasni az Azure Active Directory Graph API vagy akár a Microsoft Graph
 
-Az azonosító-jogkivonatokat, hozzáférési jogkivonatok és frissítési biztonsági jogkivonat a gyorsítótárban a hitelesített munkamenet, és csak az a felhasználó által elérhető számukra.  
-
 Általában kell írnia a kódot gyűjtése, tárolása és frissítése az alkalmazásban ezek a jogkivonatok. A jogkivonat-tároló az imént [a jogkivonatok](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) amikor szüksége van rájuk, és [állapítható meg, hogy frissíteni őket az App Service](app-service-authentication-how-to.md#refresh-access-tokens) mikor válik érvénytelen. 
+
+Az azonosító-jogkivonatokat, hozzáférési jogkivonatok és frissítési biztonsági jogkivonat a gyorsítótárban a hitelesített munkamenet, és csak az a felhasználó által elérhető számukra.  
 
 Ha nem kell az alkalmazás a jogkivonatok használata, letilthatja a jogkivonat-tároló.
 
@@ -80,7 +80,7 @@ App Service-ben használt [összevont identitás](https://en.wikipedia.org/wiki/
 | Szolgáltató | Bejelentkezési végpont |
 | - | - |
 | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) | `/.auth/login/aad` |
-| [Microsoft-fiók](../active-directory/develop/active-directory-appmodel-v2-overview.md) | `/.auth/login/microsoftaccount` |
+| [Microsoft-fiók](../active-directory/develop/v2-overview.md) | `/.auth/login/microsoftaccount` |
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
 | [Google](https://developers.google.com/+/web/api/rest/oauth) | `/.auth/login/google` |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
@@ -89,7 +89,7 @@ Ha engedélyezi a hitelesítés és engedélyezés az egyik ilyen szolgáltatók
 
 ## <a name="authentication-flow"></a>A hitelesítési folyamatból
 
-A hitelesítési folyamat megegyezik az összes, de az eltér attól függően, hogy a szolgáltató SDK bejelentkezni:
+A hitelesítési folyamat megegyezik az összes, de az eltér attól függően, hogy a szolgáltató SDK felhasználóval való bejelentkezéshez:
 
 - Szolgáltatói SDK nélkül: az alkalmazás összevont bejelentkezés App Service-ben irányelvmodulnak delegálja. Ez általában a helyzet a böngészőben megjelenő alkalmazásokba, amelyhez a felhasználónak a szolgáltató bejelentkezési oldal is jelenthet. A kiszolgálói kód a bejelentkezési folyamat kezeli, ezért a más néven _kiszolgáló által vezérelt folyamat_ vagy _server flow_. Ebben az esetben a webes alkalmazásokra vonatkozik. Natív alkalmazások, a Mobile Apps ügyfél-SDK használatával, mert az SDK-t, amelyekben az App Service-hitelesítés bejelentkezhetnek a felhasználók a webes nézet nyílik meg a felhasználók bejelentkezhetnek is vonatkozik. 
 - SDK-szolgáltatóval: az alkalmazás felhasználói manuálisan jelentkezik be, és ezután elküldi a hitelesítési jogkivonat az App Service-ellenőrzés céljából. Ez általában a helyzet böngésző nélküli alkalmazásokkal, amelyek a szolgáltató bejelentkezési oldal nem jelenik meg a felhasználónak. Az alkalmazás kódjának a bejelentkezési folyamat kezeli, ezért a más néven _ügyfél által vezérelt folyamat_ vagy _client flow_. Ebben az esetben a REST API-k, érvényes [Azure Functions](../azure-functions/functions-overview.md), és a JavaScript webböngésző-ügyfelek számára, valamint a bejelentkezési folyamat nagyobb rugalmasságot igénylő webes alkalmazások. Natív mobilalkalmazásokban, a szolgáltató SDK-val a felhasználók bejelentkezhetnek is vonatkozik.
@@ -121,7 +121,7 @@ A következő fejléceket beállításokat ismertetik.
 
 ### <a name="allow-all-requests-default"></a>Lehetővé teszi az összes kérelem (alapértelmezett)
 
-Hitelesítés és engedélyezés nem kezeli az App Service (kikapcsolva). 
+Hitelesítés és engedélyezés (kikapcsolva) az App Service által nem kezelt. 
 
 Válassza ezt a lehetőséget, ha már nincs szüksége, hitelesítési és engedélyezési, vagy ha azt szeretné, a saját hitelesítési és engedélyezési kód írására.
 

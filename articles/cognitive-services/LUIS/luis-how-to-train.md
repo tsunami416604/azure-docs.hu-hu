@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 10/18/2018
 ms.author: diberry
-ms.openlocfilehash: f27716cc416b162a5b2df5542d709058f3b3e903
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 362c5e2e7216d584a9858ace5fb607dc0ee126d5
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182036"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426104"
 ---
 # <a name="train-your-luis-app-version"></a>A LUIS Alkalmazásverzió betanítása
 
@@ -26,8 +26,11 @@ When you train a LUIS app by example, LUIS generalizes from the examples you hav
 
 Képzés és [tesztelés](luis-concept-test.md) az alkalmazás az iteratív folyamat. Miután a LUIS-alkalmazás betanításához, tesztelje azt az annak ellenőrzéséhez, hogy a szándékok és entitások helyesen ismeri a minta kimondott szöveg. Ha nem, a LUIS-alkalmazásokon, tanítási és tesztelési ellenőrizze újra frissítéseket. 
 
-## <a name="how-to-train"></a>Hogyan betanítása
-A iteratív folyamat elindításához először a LUIS-alkalmazás során legalább egyszer betanításához. Ellenőrizze, hogy minden szándékot képzési előtt legalább egy utterance (kifejezés).
+Képzési alkalmazza a rendszer az aktív verzió a LUIS-portálon. 
+
+## <a name="how-to-train-interactively"></a>Hogyan interaktív módon betanítása
+
+A iteratív folyamat a [LUIS portál](https://www.luis.ai), először létre kell legalább egy alkalommal betanítása a LUIS-alkalmazás. Ellenőrizze, hogy minden szándékot képzési előtt legalább egy utterance (kifejezés).
 
 1. Az alkalmazás eléréséhez annak nevét választva a **saját alkalmazások** lapot. 
 
@@ -41,7 +44,18 @@ A iteratív folyamat elindításához először a LUIS-alkalmazás során legal�
 >Ha egy vagy több leképezések az alkalmazás, amely nem tartalmaz példa utterances, az alkalmazás nem betanításához. Az összes a leképezések beszédmódok hozzáadása. További információkért lásd: [példa beszédmódok hozzáadása](luis-how-to-add-example-utterances.md).
 
 ## <a name="train-with-all-data"></a>Az összes adat betanítása
-Képzési egy kis csoportja negatív mintavételt használ. Ha szeretné az összes adat használata helyett a kisméretű negatív mintavételt, használja a [verzió beállítások API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) az a `UseAllTrainingData` Ez a funkció kikapcsolásához igaz értékre állítva. 
+
+Képzési egy kis csoportja negatív mintavételt használ. Ha szeretné az összes adat használata helyett a kisméretű negatív mintavételt, használja a [verzió beállítások API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) az a `UseAllTrainingData` állítsa az IGAZ értéket kapcsolja ki ezt a szolgáltatást. 
+
+## <a name="unnecessary-training"></a>A szükségtelen képzés
+
+Nem kell minden egyetlen módosítás után betanításához. Képzési módosítások csoportja érvénybe lépnek a modellt, és szeretné a következő lépés az, hogy tesztelje, vagy közzéteheti után kell elvégezni. Ha nem szeretné tesztelni, vagy közzéteheti, a képzési nem szükséges. 
+
+## <a name="training-with-the-rest-apis"></a>A REST API-kkal képzés
+
+A LUIS portálon képzési nyomja le az egyetlen lépésből áll a **Train** gombra. A REST API-kkal képzési két lépésből áll. Az első [képzési kérelem](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) a HTTP POST. Majd kérik a [képzési állapot](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46) az HTTP Get. 
+
+Annak érdekében, hogy ismeri a betanítási befejezésekor, hogy lekérdezik az állapot addig, amíg sikeresen képzett összes modellt. 
 
 ## <a name="next-steps"></a>További lépések
 

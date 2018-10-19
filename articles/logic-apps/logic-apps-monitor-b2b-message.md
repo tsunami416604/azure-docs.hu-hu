@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 07/21/2017
-ms.openlocfilehash: fd48dfaf7b863ab026da1758751509d9911ae01e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 63aa455851633d1e49fd1b26861aaac8a670ef15
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948009"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404784"
 ---
 # <a name="monitor-b2b-messages-and-set-up-logging-for-integration-accounts-in-azure-logic-apps"></a>B2B üzenetek megfigyelése és integrációs fiókok az Azure Logic Apps-naplózás beállítása
 
@@ -58,7 +58,9 @@ Közvetlenül az integrációs fiókból vagy-naplózás bekapcsolása vagy [az 
 
    1. Válassza ki **Küldés a Log Analyticsnek**. 
    2. A **Log Analytics**, válassza a **konfigurálása**. 
-   3. A **OMS-munkaterületek**, válassza ki a naplózás használata a Log Analytics-munkaterületet.
+   3. A **OMS-munkaterületek**, válassza ki a naplózás használata a Log Analytics-munkaterületet. 
+   > [!NOTE]
+   > OMS-munkaterülete mostantól Log Analytics-munkaterületek nevezik. 
    4. A **Log**, jelölje be a **IntegrationAccountTrackingEvents** kategória.
    5. Válassza a **Mentés** elemet.
 
@@ -93,6 +95,8 @@ Közvetlenül az integrációs fiókból vagy-naplózás bekapcsolása vagy [az 
    1. Válassza ki **Küldés a Log Analyticsnek**. 
    2. A **Log Analytics**, válassza a **konfigurálása**. 
    3. A **OMS-munkaterületek**, válassza ki a naplózás használata a Log Analytics-munkaterületet.
+   > [!NOTE]
+   > OMS-munkaterülete mostantól Log Analytics-munkaterületek nevezik.
    4. A **Log**, jelölje be a **IntegrationAccountTrackingEvents** kategória.
    5. Ha elkészült, kattintson a **Mentés** gombra.
 
@@ -129,6 +133,6 @@ Az Azure támogatja ezeket a schematypes, amelyek kijavítása kivéve az egyén
 
 ## <a name="next-steps"></a>További lépések
 
-* [A Log Analytics B2B üzenetek nyomon követése](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "követése B2B-üzeneteken alapuló az OMS-ben")
+* [Az Azure Log Analyticsben B2B üzenetek nyomon követése](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "követése B2B-üzeneteken alapuló az Azure Log Analyticsben")
 * [További információ az Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "megismerheti a vállalati integrációs csomag")
 

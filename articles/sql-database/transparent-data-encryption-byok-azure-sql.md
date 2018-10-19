@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: aff1d59000a95f2b8f029b9db30ff1facb2f8ba6
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 32d1956741f739234a3fdea7034f2f1e33a4c082
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114668"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408225"
 ---
 # <a name="azure-sql-transparent-data-encryption-bring-your-own-key-support"></a>Az Azure SQL transzparens adattitkosítás: Bring Your Own Key-támogatás
 
@@ -67,8 +67,6 @@ TDE először a TDE-védőhöz, a Key Vault használatára van konfigurálva, am
   > Ha az Azure AD Identity **van véletlenül törölték, vagy visszavonja a kiszolgáló engedélyek** a kulcstartó hozzáférési szabályzatát használja, a kiszolgáló elveszítette a hozzáférését a key vaultban, és titkosított TDE adatbázisok eldobásakor 24 órán belül.
 
 - Az Azure Key Vault használata a tűzfalak és virtuális hálózatok, konfigurálnia kell a következőket: 
-  - A "Kijelölt hálózatok" hozzáférés engedélyezése 
-  - Adja hozzá a meglévő virtuális hálózatok, és válassza ki az SQL Database hálózathoz, ha van (Ez az egyedülálló adatbázisok esetén nem kötelező és a felügyelt példány esetén szükséges) 
   - A tűzfal megkerülését, megbízható Microsoft-szolgáltatások – a kiválasztott Igen 
          
     > [!NOTE] 

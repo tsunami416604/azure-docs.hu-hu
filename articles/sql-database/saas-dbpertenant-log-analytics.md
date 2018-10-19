@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 60139915e8d8dca382f4ef62b5129f1a84e7e80d
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: b207af3bed40f6287f60b25638f3091fa187aa6f
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056709"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405072"
 ---
 # <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>Állítsa be, és a Log Analytics használatához egy több-bérlős SQL Database SaaS-alkalmazással
 
@@ -42,7 +42,7 @@ Az Azure SQL-adatbázis monitorozási és riasztási érhető el adatbázisokhoz
 
 Nagy mennyiségű forgatókönyvek esetén használhatja a Log Analytics figyelés és riasztás céljából. A log Analytics egy külön Azure-szolgáltatás, amely lehetővé teszi elemzési diagnosztikai naplók és a egy adott munkaterület potenciálisan sok szolgáltatás összegyűjtött telemetriai keresztül. Log Analytics biztosít beépített lekérdezési nyelvet és adatvizualizációs eszközöket, amelyek lehetővé teszik a működési adatok elemzését. Az SQL Analytics megoldás számos előre definiált rugalmas készlet és -adatbázis figyelési és riasztási nézeteket és lekérdezéseket biztosít. A log Analytics egyéni Nézettervező is biztosít.
 
-Log Analytics munkahelyek és elemzési megoldások az Azure Portalon, és az Operations Management Suite megnyitásához. Az Azure portal az újabb hozzáférési pont, de érdemes lehet az Operations Management Suite portálján egyes területeken mögött.
+OMS-munkaterülete mostantól Log Analytics-munkaterületek nevezik. Az Azure Portalon nyissa meg a log Analytics munkahelyek és elemzési megoldások. Az Azure portal az újabb hozzáférési pont, de elképzelhető, hogy mi az egyes területeken az Operations Management Suite portál mögött.
 
 ### <a name="create-performance-diagnostic-data-by-simulating-a-workload-on-your-tenants"></a>A bérlők számára a számítási feladatok szimulálásával diagnosztikai teljesítményadatok létrehozása 
 
@@ -70,14 +70,14 @@ A log Analytics egy külön szolgáltatás, amelyet be kell állítani a. A log 
 1. A PowerShell ISE-ben nyissa meg a *... \\WingtipTicketsSaaS főkiszolgálóval MultiTenantDb\\tanulási modulok\\alkalmazásteljesítmény-figyelési és felügyeleti\\Log Analytics\\Demo-LogAnalytics.ps1*.
 1. A szkript futtatásához nyomja le az F5.
 
-Most megnyithatja a Log Analytics az Azure Portalon vagy az Operations Management Suite portálján. A Log Analytics-munkaterületet a telemetriai adatok gyűjtésére, és látható néhány percet vesz igénybe. A továbbiakban hagyja a rendszer gyűjtse az diagnosztikai adatokat, annál több érdekes, a felhasználói élményt. 
+Most megnyithatja a Log Analytics az Azure Portalon. A Log Analytics-munkaterületet a telemetriai adatok gyűjtésére, és látható néhány percet vesz igénybe. A továbbiakban hagyja a rendszer gyűjtse az diagnosztikai adatokat, annál több érdekes, a felhasználói élményt. 
 
 ## <a name="use-log-analytics-and-the-sql-analytics-solution-to-monitor-pools-and-databases"></a>Készletek és adatbázisok figyelése a Log Analytics és az SQL Analytics megoldással
 
 
-Ebben a gyakorlatban nyissa meg a Log Analytics és az Operations Management Suite portálján, az adatbázisokhoz és készletekhez gyűjtött telemetriai adatok.
+Ebben a gyakorlatban az Azure Portalon, és tekintse meg az adatbázisokhoz és készletekhez gyűjtött telemetriai adatokat a Log Analytics megnyitása.
 
-1. Keresse fel az [Azure Portalt](https://portal.azure.com). Válassza ki **minden szolgáltatás** Log Analytics megnyitásához. Keressen rá a Log Analytics.
+1. Keresse fel az [Azure Portalt](https://portal.azure.com). Válassza ki **minden szolgáltatás** Log Analytics megnyitásához. Ezután keresse meg a Log Analytics.
 
    ![Nyissa meg a Log Analytics](media/saas-dbpertenant-log-analytics/log-analytics-open.png)
 
@@ -127,9 +127,9 @@ Ebben a gyakorlatban nyissa meg a Log Analytics és az Operations Management Sui
 
 1. Vissza a Log Analytics-munkaterületen, válassza ki **OMS-portálon** , nyissa meg a munkaterület létezik.
 
-    ![Az Operations Management Suite portálján csempe](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
+    ![Azure-beli monitorozási munkaterület](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
 
-Az Operations Management Suite-portálon is az adatfeltárás napló- és metrikaadatokat további a munkaterületen. 
+A Log Analytics munkaterületen áttekintheti a napló- és metrikaadatokat adatok további. 
 
 Monitorozási és riasztási a Log Analytics alapulnak lekérdezések az adatok a munkaterületen, ellentétben a riasztási meghatározott egyes erőforrások az Azure Portalon keresztül. Riasztások alapozva lekérdezéseket, definiálhat egy riasztást, amely minden adatbázis ahelyett, hogy adatbázisonként meghatározó egy keresztül. Lekérdezések csak a munkaterületen elérhető adatok korlátozza.
 

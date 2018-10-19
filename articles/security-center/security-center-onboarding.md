@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: 50055befaa0a5f0bb03bda18e01edfb751e49369
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d5a4cfa3a91b82aa0f5b1725f86c732fecf632d4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379995"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405446"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Bevezetés az Azure Security Center Standard a fokozott biztonság
 Frissítse a Security Center Standard kihasználásához fokozott biztonsági felügyeletet és fenyegetésvédelmet a hibrid felhőalapú számítási feladatokhoz.  Standard 60 napig ingyenesen kipróbálhatja. Tekintse meg a Security Center [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/security-center/) további információt.
@@ -42,13 +42,13 @@ A Standard szintre, amely örökli az előfizetés összes erőforrásának, fri
 
 ## <a name="upgrade-an-azure-subscription-or-workspace"></a>Az Azure-előfizetés vagy a munkaterület frissítése
 Standard egy előfizetést, vagy a munkaterület frissítése:
-1. A Security Center főmenüjében válassza **bevezetés**.
+1. A Security Center főmenüjében válassza az **Első lépések** elemet.
   ![Bevezetés](./media/security-center-onboarding/get-started.png)
-2. A **frissítése**, a Security Center bevezetése jogosult előfizetéseket és munkaterületeket tartalmazza. 
-   - Kattintson a bővíthető a **a alkalmazni a próbaidőszak** összes előfizetés és próba megfelelőségi állapotuk munkaterületek listájának megtekintéséhez.
-   -    Frissíthető előfizetéseket és munkaterületeket, amelyek nem jogosult a próbaverzióra.
-   -    Kiválaszthatja, hogy jogosult munkaterületek és -előfizetések a próba megkezdését.
-3.  Kattintson a **próbaverzió indítása** való kipróbálása a kijelölt előfizetésekben.
+2. A **Frissítés** területen a Security Center felsorolja az előkészítésre jogosult előfizetéseket és munkaterületeket. 
+   - A **Próbaverzió alkalmazása** elemre kattintva megtekintheti előfizetéseinek és munkaterületeinek listáját, valamint a próbaidőszakkal kapcsolatos jogosultsági állapotukat.
+   -    Frissítheti azokat az előfizetéseket és munkaterületeket, amelyek nem jogosultak a próbaidőszakra.
+   -    A próbaidőszak elkezdéséhez válassza ki az erre jogosult munkaterületeket és előfizetéseket.
+3.  A **Próbaverzió indítása** gombbal elindítja a próbaidőszakot a kiválasztott előfizetéseken.
   ![Válasszon előfizetést](./media/security-center-onboarding/select-subscription.png)
 
 
@@ -63,11 +63,11 @@ A Security Center a nem Azure-számítógépek biztonsági állapotát is képes
 ### <a name="add-new-non-azure-computers-from-getting-started"></a>Az új nem Azure-beli számítógépek hozzáadása **első lépések**
 
 1. Lépjen vissza **bevezetés**.   
-2. Válassza ki a **Ismerkedés** fülre.
+2. Válassza a **Bevezetés** lapot.
 
   ![Nem Azure](./media/security-center-onboarding/non-azure.png)
 
-3. Kattintson a **konfigurálása** alatt **új nem Azure-beli számítógépek hozzáadása**. A Log Analytics-munkaterületek listája látható. Ha van ilyen, a lista tartalmazza azt az alapértelmezett munkaterületet is, amelyet a Security Center hozott létre, amikor az automatikus kiépítés engedélyezve volt. Válassza ki a munkaterületet, vagy egy másik használni kívánt munkaterületet.
+3. Kattintson az **Új nem Azure-beli számítógépek hozzáadása** pont alatt található **Konfigurálás** elemre. Megjelenik a Log Analytics-munkaterületek listája. Ha van ilyen, a lista tartalmazza azt az alapértelmezett munkaterületet is, amelyet a Security Center hozott létre, amikor az automatikus kiépítés engedélyezve volt. Válassza ki ezt a munkaterületet, vagy egy másik használni kívánt munkaterületet.
 
   ![Nem Azure-beli számítógép hozzáadása][7]
 
@@ -82,6 +82,8 @@ Ha rendelkezik meglévő munkaterületek, alatt vannak felsorolva **új nem Azur
    ![Adjon hozzá újat][4]
 
 2. A **biztonsági és auditálási**válassza **OMS-munkaterület** hozhat létre egy új munkaterületet.
+> [!NOTE]
+> OMS-munkaterülete mostantól Log Analytics-munkaterületek nevezik.
 3. A **OMS-munkaterület**, írja be a munkaterület adatait.
 4. A **OMS-munkaterület**válassza **OK**.  Után kattintson az OK gombra, kap egy Windows vagy Linux-ügynököt és a kulcsok letöltési hivatkozást tartalmaz az ügynök konfigurálásához használja a munkaterület-azonosító.
 5. A **biztonsági és auditálási**válassza **OK**.

@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/19/2018
-ms.openlocfilehash: 75094ad17474cd07039724fb0b5e5e377808b51f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9fbb2c8d8563e88f6241b6b7ab6b3ddf08111914
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956656"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409050"
 ---
 # <a name="monitor-and-get-insights-about-logic-app-runs-with-log-analytics"></a>Monitorozása és elemzése a Log Analytics logikaialkalmazás-futtatások kapcsolatos
 
@@ -62,9 +62,9 @@ Ha már van kapcsolva a Log Analytics, a logikai alkalmazás létrehozásakor, k
 
    ![Válassza ki a Log Analytics-munkaterület](media/logic-apps-monitor-your-logic-apps-oms/select-logic-app.png)
 
-3. A **felügyeleti**, válassza a **áttekintése**.
+3. A **felügyeleti**, válassza a **munkaterület összefoglalás**.
 
-   ![Válassza a "OMS-portál"](media/logic-apps-monitor-your-logic-apps-oms/ibiza-portal-page.png)
+   ![Válassza az "Áttekintés"](media/logic-apps-monitor-your-logic-apps-oms/ibiza-portal-page.png)
 
 4. Az Áttekintés oldalon válassza ki a **Hozzáadás** nyithatja meg a felügyeleti megoldások csempét. 
 

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a629c598c94e44713f8990871c46272dc48b1359
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6280544a42d0d5012b01446ec8c3bc386ef861dd
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296277"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428419"
 ---
 # <a name="authentication-and-user-permissions"></a>Hitelesítés és felhasználói engedélyek
 Az Azure Analysis Services az Azure Active Directory (Azure AD) identity management és a felhasználói hitelesítés. Bármely felhasználó létrehozása, kezelése vagy csatlakozhat egy Azure Analysis Services kiszolgálói rendelkeznie kell egy érvényes felhasználói identitás egy [Azure AD-bérlő](../active-directory/fundamentals/active-directory-administer.md) ugyanabban az előfizetésben.
@@ -27,7 +27,7 @@ Az összes ügyfél alkalmazások és eszközök használatához legalább egy, 
 
 Mindhárom ügyfélkódtárat mind az Azure AD interaktív flow és a nem interaktív hitelesítési módszereket támogatja. A két nem interaktív módok, az Active Directory-jelszó és a Active Directory integrált hitelesítési módszerek AMOMD és MSOLAP-alkalmazásokban használható. Két módszer közül a felugró párbeszédpanel soha nem eredményez.
 
-Ügyfélalkalmazások, például az Excel és a Power BI Desktopban, és eszközökkel, mint például az ssms-ben és az SSDT telepítése a kódtárakat, legfrissebb verzióját a frissített a legfrissebb verzióit. Havi Power BI Desktopban, az ssms-ben és az SSDT frissülnek. Excel [frissítése és az Office 365](https://support.office.com/en-us/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516). Office 365-frissítések kevésbé gyakori, és egyes szervezetek használja a késleltetett csatornáról, jelentése frissítések mentése a három hónappal a funkciófrissítéseket.
+Ügyfélalkalmazások, például az Excel és a Power BI Desktopban, és eszközökkel, mint például az ssms-ben és az SSDT telepítése a kódtárakat, legfrissebb verzióját a frissített a legfrissebb verzióit. Havi Power BI Desktopban, az ssms-ben és az SSDT frissülnek. Excel [frissítése és az Office 365](https://support.office.com/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516). Office 365-frissítések kevésbé gyakori, és egyes szervezetek használja a késleltetett csatornáról, jelentése frissítések mentése a három hónappal a funkciófrissítéseket.
 
 Attól függően, az ügyfélalkalmazás vagy az eszköz, amellyel hitelesítés és bejelentkezés módja típusa eltérő lehet. Mindegyik alkalmazáshoz különböző szolgáltatások támogatása előfordulhat, hogy csatlakozik a felhőszolgáltatásokhoz, mint például az Azure Analysis Services.
 

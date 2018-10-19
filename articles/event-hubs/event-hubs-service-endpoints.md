@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: ff0ebbb140627caaaa71c5d09d0a4078eca86055
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 29b5f877065029dc271e49c1afd6d547def58a6e
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888109"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408132"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Virtuális hálózati Szolgáltatásvégpontok használata az Azure Event hubs szolgáltatással
 
@@ -24,7 +24,7 @@ Az Event hubs-integráció [virtuális hálózat (VNet) Szolgáltatásvégpontok
 > [!IMPORTANT]
 > A virtuális hálózatok támogatottak **standard** és **dedikált** az Event hubs szinten. Az alapszintű díjcsomagban nem támogatott. 
 
-Legalább egy virtuális hálózati alhálózat szolgáltatásvégpont kell kötni konfigurálása után az adott Event Hubs-névtér már nem fogadja a forgalmat bárhonnan, de virtuális hálózat engedélyezett. A virtuális hálózati szempontból a kötés Event Hubs-névtér egy végpontot az üzenetküldő szolgáltatás a virtuális hálózati alhálózatról egy elkülönített hálózati alagút állítja be.
+Legalább egy virtuális hálózati alhálózat szolgáltatásvégpont kell kötni konfigurálása után az adott Event Hubs-névtér már nem fogadja a forgalmat bárhonnan, de engedélyezett a virtuális hálózatok alhálózatokat. A virtuális hálózati szempontból a kötés Event Hubs-névtér egy végpontot az üzenetküldő szolgáltatás a virtuális hálózati alhálózatról egy elkülönített hálózati alagút állítja be.
 
 Ez a privát és elkülönített kapcsolat, az az alhálózat és a megfelelő Event Hubs-névtér értéket a megfigyelhető hálózati cím az az üzenetkezelési szolgáltatás végpontja egy nyilvános IP-címtartomány kötött számítási feladatok között.
 
@@ -38,7 +38,7 @@ Azt jelenti, hogy a bizalmas felhőmegoldások csak nem férnek hozzá az Azure-
 
 ## <a name="bind-event-hubs-to-virtual-networks"></a>Az Event Hubs kötést létrehozni a virtuális hálózatokhoz
 
-*A virtuális hálózati szabályok* van a tűzfal biztonsági szolgáltatás, amely szabályozza, hogy az Azure Event Hubs-kiszolgáló egy adott virtuális hálózati alhálózat érkező kapcsolatokat fogad-e.
+*A virtuális hálózati szabályok* van a tűzfal biztonsági szolgáltatás, amely szabályozza, hogy az Azure Event Hubs-névtér egy adott virtuális hálózati alhálózat érkező kapcsolatokat fogad-e.
 
 Event Hubs-névtér kötése egy virtuális hálózatot két lépésből áll. Először hozzon létre egy **virtuális hálózati szolgáltatásvégpont** egy virtuális hálózat alhálózatán, és engedélyezze a Microsoft.eventhub"", azt mutatjuk be a [szolgáltatási végpont áttekintő] [ vnet-sep]. Miután hozzáadta a szolgáltatásvégpont, azt a kötést létrehozni az Event Hubs-névtér egy *virtuális hálózati szabályt*.
 

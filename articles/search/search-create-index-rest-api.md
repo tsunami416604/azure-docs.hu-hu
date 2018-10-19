@@ -1,21 +1,21 @@
 ---
 title: Index létrehozása (REST API – Azure Search) | Microsoft Docs
 description: Index létrehozása kódból az Azure Search HTTP REST API használatával.
-author: chaosrealm
-manager: jlembicz
-ms.author: eugenesh
+ms.date: 10/17/2018
+author: mgottein
+manager: cgronlun
+ms.author: magottei
 tags: azure-portal
 services: search
 ms.service: search
 ms.devlang: rest-api
-ms.topic: quickstart
-ms.date: 04/20/2018
-ms.openlocfilehash: 86260e1929e8bd5c31682ef7f59cacae19a66020
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.topic: conceptual
+ms.openlocfilehash: ff534bc287e3872ee87ed808be249a6e68c68ab3
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182031"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403543"
 ---
 # <a name="create-an-azure-search-index-using-the-rest-api"></a>Azure Search-index létrehozása REST API használatával
 > [!div class="op_single_selector"]
@@ -84,7 +84,7 @@ Vegye figyelembe, hogy az indexben csakis egy `Edm.String` típusú mező lehet 
 A fenti indexdefiníció egy nyelvi elemzőt használ a `description_fr` mező esetében, mivel annak francia nyelvű szöveget kell tartalmaznia. A nyelvi elemzőkkel kapcsolatos további információkért lásd a [Nyelvi támogatás című témakört](https://docs.microsoft.com/rest/api/searchservice/Language-support), valamint a vonatkozó [blogbejegyzést](https://azure.microsoft.com/blog/language-support-in-azure-search/).
 
 ## <a name="issue-the-http-request"></a>A HTTP-kérelem küldése
-1. Az indexdefiníció kérelemtörzsként való használatához küldjön egy HTTP POST-kérelmet az Azure Search szolgáltatásvégpontjának URL-címére. Ügyeljen arra, hogy az URL-címben a szolgáltatásnevet használja állomásnévként, és hogy a megfelelő `api-version` szerepeljen a lekérdezési karakterlánc paraméterként (a dokumentum közzétételének időpontjában az aktuális API-verzió a `2017-11-11`).
+1. Az indexdefiníció kérelemtörzsként való használatához küldjön egy HTTP POST-kérelmet az Azure Search szolgáltatásvégpontjának URL-címére. Ügyeljen arra, hogy az URL-címben a szolgáltatásnevet használja állomásnévként, és hogy a megfelelő `api-version` szerepeljen a lekérdezési sztring paraméterként (a dokumentum közzétételének időpontjában az aktuális API-verzió a `2017-11-11`).
 2. A kérelem fejlécében a `Content-Type` számára adja meg az `application/json` beállítást. Az `api-key` fejlécben is meg kell adni a szolgáltatás I. lépésben azonosított adminisztrációs kulcsát.
 
 Az alábbi kérelem küldéséhez meg kell adnia a saját szolgáltatásnevét és API-kulcsát:

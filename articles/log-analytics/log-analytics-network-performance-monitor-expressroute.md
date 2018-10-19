@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: f08b9e60a632428a120f9cfa50d29f1454e0b1d5
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 73978609d018eb43ab8031dc6e8261861e1ee3bf
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041164"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402538"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute-figyelő
 
@@ -36,7 +36,7 @@ Az Azure ExpressRoute-figyelő a funkcióval a [Network Performance Monitor](log
 Nyissa meg a Network Performance Monitor konfigurációját, nyissa meg a [Network Performance Monitor megoldás](log-analytics-network-performance-monitor.md) válassza **konfigurálása**.
 
 ### <a name="configure-network-security-group-rules"></a>Hálózatbiztonságicsoport-szabályok konfigurálása 
-Az Azure-ban használt kiszolgálók figyeléshez a Network Performance Monitor használatával konfigurálja a hálózati biztonsági csoport (NSG) szabályai a Network Performance Monitor használata szintetikus tranzakciókhoz használt porton a TCP-forgalom engedélyezéséhez. Az alapértelmezett port: 8084. Ez a konfiguráció lehetővé teszi, hogy az Operations Management Suite ügynök kommunikáljon a helyszíni Azure virtuális gépeken telepített ügynök figyelése. 
+Az Azure-ban használt kiszolgálók figyeléshez a Network Performance Monitor használatával konfigurálja a hálózati biztonsági csoport (NSG) szabályai a Network Performance Monitor használata szintetikus tranzakciókhoz használt porton a TCP-forgalom engedélyezéséhez. Az alapértelmezett port: 8084. Ez a konfiguráció lehetővé teszi, hogy a Log Analytics-ügynök kommunikáljon a helyszíni Azure virtuális gépeken telepített ügynök figyelése. 
 
 NSG-kkel kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](../virtual-network/manage-network-security-group.md). 
 

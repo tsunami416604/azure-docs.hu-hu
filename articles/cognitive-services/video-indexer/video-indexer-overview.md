@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: overview
-ms.date: 09/15/2018
+ms.date: 10/10/2018
 ms.author: nolachar
-ms.openlocfilehash: fd92e91989bd1a37626227b327d644c9d704ab6c
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: cf761342bb434100920c3888f2f441b9f8c8de08
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983014"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077917"
 ---
 # <a name="what-is-video-indexer"></a>Mi az a Video Indexer?
 
@@ -38,8 +38,8 @@ Az Azure Video Indexer egy felhőalapú alkalmazás, amelynek alapjait az Azure 
 - **Márkakinyerés**: Kinyeri a márkákat a beszédből és a vizuális szövegből.
 - **Arcfelismerés**: Felismeri és csoportosítja a videóban megjelenő arcokat.
 - **Miniatűrkinyerés az arcokhoz („legjobb arc”)**: Automatikusan meghatározza a legjobb rögzített arcot minden arccsoportban (minőség, méret és frontális helyzet alapján), és kinyeri őket képobjektumként.
-- **Hírességek azonosítása**: Felismeri a videóban megjelenő hírességeket egy egymillió hírességet tartalmazó adatbázis alapján. A forrást az IMDB, a Wikipédia és a legnépszerűbb Linkedin-véleményvezérek szolgáltatják.
-- **Egyéni arcazonosítás**: Felismeri a videóban megjelenő arcokat egy egyéni modell alapján, amelyet az adott fiókhoz tanítottak be.
+- **Hírességek azonosítása**: A Video Indexer automatikusan azonosít több mint 1 millió hírességet – például vezető politikusokat, színészeket és színésznőket, sportolókat, kutatókat, üzleti és technológiai vezetőket az egész világról. E hírességekkel kapcsolatban különböző ismert webhelyeken, például a IMDB-n és a Wikipédián is találhatók adatok.
+- **Fiókalapú arcfelismerés**: A Video Indexer betanít egy modellt a megadott fióknak. Ez aztán a kifejezetten az ebben a fiókban lévő videókhoz betanított modell alapján felismeri az arcokat a videókban.
 - **Szöveges tartalom moderálása**: Felismeri az explicit szövegeket a hanganyag alapján készült átiratban.
 - **Felvételészlelés**: Megállapítja, hogy mikor történik jelenetváltás a videóban.
 - **Fekete keret észlelése**: Azonosítja a videóban megjelenő fekete kereteket.

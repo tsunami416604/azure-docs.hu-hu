@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: f1cf38dd5687e14b0183de03b8eda41fe39808e3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: a715c300cc5490eef9dbe7971dabe1733fd47f49
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041374"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402217"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>A Log Analytics használatával az Azure Resource Manager-sablonok felügyelete
 Használhat [Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md) létrehozása és konfigurálása a Log Analytics-munkaterületeket. A feladatokat hajthat végre a sablonok közé:
@@ -178,7 +178,7 @@ Az alábbi sablont a példa bemutatja, hogyan lehet:
       "minValue": 7,
       "maxValue": 730,
       "metadata": {
-        "description": "Number of days of retention. Free plans can only have 7 days, Standalone and OMS plans include 30 days for free"
+        "description": "Number of days of retention. Free plans can only have 7 days, Standalone and Log Analytics plans include 30 days for free"
       }
     },
     "location": {
@@ -518,7 +518,7 @@ Azure rövid útmutató sablonkatalógusban Log Analytics, beleértve a több sa
 * [A Log Analytics Virtuálisgép-bővítmény a linuxos virtuális gép üzembe helyezése](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
 * [Egy meglévő Log Analytics-munkaterület használata az Azure Site Recovery monitorozása](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
 * [A figyelő az Azure Web Apps használata esetén egy meglévő Log Analytics-munkaterület](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
-* [Adjon hozzá egy meglévő tárfiókot az OMS-hez](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
+* [Adjon hozzá egy meglévő tárfiókot a Log Analyticsbe](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
 ## <a name="next-steps"></a>További lépések
 * [Windows-ügynök telepítése az Azure virtuális gépek a Resource Manager-sablon használatával](../virtual-machines/windows/extensions-oms.md).

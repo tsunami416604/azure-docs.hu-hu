@@ -15,12 +15,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 09/18/2018
 ms.author: anithaa
-ms.openlocfilehash: 8c750937cd45e104e754335f7da51d813b8dc7ba
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3c28181e1d1a4fd1cdac530ed8f393c7e0c7ea92
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999647"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426301"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Létrehozása, módosítása vagy törlése a szolgáltatásvégpont-szabályzat az Azure portal használatával
 
@@ -64,7 +64,7 @@ Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
    
    ![Szolgáltatásvégpont szabályzatdefiníciók létrehozása](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-policydefinitionspane.PNG)
    
-5. Nem kötelező: Adjon meg vagy válassza ki a következő adatokat a **lapok**
+5. Nem kötelező: Adjon meg vagy válassza ki a következő adatokat a **címkék**
    
    - Kulcs: Válassza ki a kulcsot a szabályzathoz. Például: osztály     
    - Érték: Adja meg a kulcs érték pár. Például: Pénzügy

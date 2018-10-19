@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: 68eb567235897641d5d4027160f62c5aa6e7e4f9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 26500f3e557a27046edc5c833b8c8d88ae266e68
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963389"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408999"
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Az Azure Cosmos DB diagnosztikai naplózás
 
@@ -356,11 +356,14 @@ Diagnosztikai naplók is elérhetők a fiók, amely az Azure Cosmos DB művelet 
 
 Ha bejelölte a **Küldés a Log Analyticsnek** van kapcsolva a diagnosztikai naplózás, diagnosztikai beállítást a tároló adatainak továbbíthatja a rendszer a Log Analytics két órán belül. Ha a Log Analytics naplózás bekapcsolása után azonnal, nem jelennek meg adatok. Mindössze két órás várakozási, és próbálkozzon újra. 
 
-A naplók megtekintéséhez előtt ellenőrizze, és tekintse meg, ha a Log Analytics-munkaterület frissítve lett a Log Analytics új lekérdezési nyelvének használatára. Ellenőrzéséhez nyissa meg a [az Azure portal](https://portal.azure.com)válassza **Log Analytics** a left, majd válassza ki a munkaterület neve a következő képen látható módon. A **OMS-munkaterület** lap jelenik meg:
+A naplók megtekintéséhez előtt ellenőrizze, és tekintse meg, ha a Log Analytics-munkaterület frissítve lett a Log Analytics új lekérdezési nyelvének használatára. Ellenőrzéséhez nyissa meg a [az Azure portal](https://portal.azure.com)válassza **Log Analytics** a left, majd válassza ki a munkaterület neve a következő képen látható módon. A **Log Analytics-munkaterület** lap jelenik meg:
 
 ![A log Analytics az Azure Portalon](./media/logging/azure-portal.png)
 
-Ha a következő üzenet jelenik meg a a **OMS-munkaterület** oldalon, a munkaterület rendszertábla az új nyelv használatára. Az új lekérdezési nyelvre való frissítése. További információkért lásd: [Azure Log Analytics-munkaterület frissítése új naplókeresésre](../log-analytics/log-analytics-log-search-upgrade.md). 
+>[!NOTE]
+>OMS-munkaterülete mostantól Log Analytics-munkaterületek nevezik.  
+
+Ha a következő üzenet jelenik meg a a **Log Analytics-munkaterület** oldalon, a munkaterület rendszertábla az új nyelv használatára. Az új lekérdezési nyelvre való frissítése. További információkért lásd: [Azure Log Analytics-munkaterület frissítése új naplókeresésre](../log-analytics/log-analytics-log-search-upgrade.md). 
 
 ![A log Analytics frissítési üzenet](./media/logging/upgrade-notification.png)
 

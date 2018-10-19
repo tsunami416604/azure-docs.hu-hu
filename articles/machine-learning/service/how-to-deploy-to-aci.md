@@ -9,12 +9,12 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: e796feaf8ef25eaa91b7db810a11a67da13e9df1
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 8a736516a598eee051b416834d2b737211e66b96
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237177"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429461"
 ---
 # <a name="deploy-web-services-to-azure-container-instances"></a>Webszolgáltatások üzembe helyezése az Azure Container Instances szolgáltatásban 
 
@@ -82,10 +82,10 @@ aciconfig = AciWebservice.deploy_configuration(cpu_cores = 1,
 
 > Hagyja ki ezt az előfeltételt, ha Ön [üzembe helyezése a egy modellfájl](#deploy-from-model-file) (`Webservice.deploy()`).
 
-Regisztrálja a modellt használandó [ `Webservice.deploy_from_model` ](#deploy-from-registered-model) vagy [ `Webservice.deploy_from_image` ](#deploy-from-image). Vagy ha már rendelkezik egy regisztrált modell lekérni most.
+Regisztrálja a modellt használandó [Webservice.deploy_from_model](#deploy-from-registered-model) vagy [Webservice.deploy_from_image](#deploy-from-image). Vagy ha már rendelkezik egy regisztrált modell lekérni most.
 
 ### <a name="retrieve-a-registered-model"></a>A regisztrált modell beolvasása
-Ha az Azure Machine Learning segítségével a modell betanítását, a modell előfordulhat, hogy már regisztrálva van a munkaterülethez.  Például az utolsó lépés a [betanítja a modellt](tutorial-train-models-with-aml.md) oktatóanyag] a modell regisztrálva.  Majd kérheti le a regisztrált modell üzembe helyezéséhez.
+Ha az Azure Machine Learning segítségével a modell betanítását, a modell előfordulhat, hogy már regisztrálva van a munkaterülethez.  Például az utolsó lépés a [modell létrehozása útmutató betanításához](tutorial-train-models-with-aml.md) regisztrálva a modell.  Majd kérheti le a regisztrált modell üzembe helyezéséhez.
 
 ```python
 from azureml.core.model import Model
@@ -109,7 +109,7 @@ model = Model.register(model_path = "sklearn_mnist_model.pkl",
                         workspace = ws)
 ```
 
-
+<a name='deploy-from-model-file'/>
 ## <a name="option-1-deploy-from-model-file"></a>1. lehetőség: A modellfájl üzembe helyezése
 
 Modell-fájlból telepíteni kódot ír, de is kínál a lehető legkevesebb összetevők elnevezési szabályozhatja a lehető legkevesebb szükséges. Ez a beállítás egy modellfájl kezdődik, és az Ön számára a munkaterületre regisztrálja azt.  Azonban nem a modell neve, és társítsa a címkék és a egy leírást.  
@@ -148,6 +148,7 @@ Ez a beállítás az SDK-metódussal, Webservice.deploy() használja.
 
 1. Mostantól [a webszolgáltatás teszteléséhez](#test-web-service).
 
+<a name='deploy-from-registered-model'/>
 ## <a name="option-2-deploy-from-registered-model"></a>2. lehetőség: A regisztrált modell üzembe helyezése
 
 Regisztrált modellfájl telepíteni néhány további sornyi kód szükséges, és lehetővé teszi bizonyos kimenetek elnevezésén felett. Ez a beállítás kényelmes módja a már regisztrált modellek üzembe helyezéséhez.  Azonban nem adjon nevet a Docker-rendszerképet.  
@@ -173,6 +174,7 @@ Ez a beállítás az SDK-metódussal, Webservice.deploy_from_model() használja.
 
 1. Mostantól [a webszolgáltatás teszteléséhez](#test-web-service).
 
+<a name='deploy-from-image'/>
 ## <a name="option-3-deploy-from-image"></a>3. lehetőség: Lemezkép alapján üzembe helyezése
 
 Modell üzembe helyezése regisztrált (`model`) használatával `Webservice.deploy_from_image()`. Ez a módszer lehetővé teszi a Docker-rendszerkép létrehozása külön-külön és üzembe helyezhesse a rendszerképből.
@@ -215,6 +217,7 @@ Ez a módszer létrehozásához és az összetevők a központi telepítésben l
 
 Most tesztelheti a webszolgáltatást.
 
+<a name='test-web-service'/>
 ## <a name="test-the-web-service"></a>A webszolgáltatás teszteléséhez
 
 A webes szolgáltatás nem ugyanaz, függetlenül attól, amely módszerrel történt.  Előrejelzés lekéréséhez használja a `run` metódus a szolgáltatás.  

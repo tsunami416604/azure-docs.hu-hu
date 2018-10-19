@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 10/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 20ee69654a6b19365c9b7c46e1fa11e102168365
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: f744e379521fe62f4b3fbbad0cc524ccb3e1b18d
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309354"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429388"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Hozzon létre egy eseményindítót, amely futtatja a folyamatot az adott esemény
 
@@ -71,23 +71,26 @@ Az alábbi táblázat áttekintést az eseményalapú eseményindítókat kapcso
 | **JSON-elem** | **Leírás** | **Típus** | **Megengedett értékek** | **Szükséges** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
 | **Hatókör** | Az Azure Resource Manager erőforrás-azonosító a Storage-fiók. | Sztring | Az Azure Resource Manager-Azonosítót | Igen |
-| **események** | Ez az eseményindító aktiválódik a kiváltó esemény típusa. | Tömb    | Microsoft.Storage.BlobCreated, Microsoft.Storage.BlobDeleted | Igen, bármilyen kombinációja. |
-| **blobPathBeginsWith** | A blob elérési útja a üzenetszám-trigger megadott mintának kell kezdődnie. Például "/ rekordok/blobok/december /" csak aktiválódnak az eseményindító a december mappában található a rekordokat tároló blobok számára. | Sztring   | | Ezek a tulajdonságok egyikét meg kell adni: blobPathBeginsWith, blobPathEndsWith. |
-| **blobPathEndsWith** | A blob elérési útja a üzenetszám-trigger megadott mintának kell végződnie. Például "december/boxes.csv" csak akkor aktiválódik a trigger blobok neve mezőbe egy december mappában. | Sztring   | | Ezek a tulajdonságok egyikét meg kell adni: blobPathBeginsWith, blobPathEndsWith. |
+| **események** | Ez az eseményindító aktiválódik a kiváltó esemény típusa. | Tömb    | Microsoft.Storage.BlobCreated, Microsoft.Storage.BlobDeleted | Igen, ezekre az értékekre tetszőleges kombinációját. |
+| **blobPathBeginsWith** | A blob elérési útja a üzenetszám-trigger megadott mintának kell kezdődnie. Például `/records/blobs/december/` csak akkor következik be, az eseményindító lévő blobok esetében a `december` mappát a `records` tároló. | Sztring   | | Meg kell adnia egy értéket legalább egy ezeket a tulajdonságokat: `blobPathBeginsWith` vagy `blobPathEndsWith`. |
+| **blobPathEndsWith** | A blob elérési útja a üzenetszám-trigger megadott mintának kell végződnie. Ha például `december/boxes.csv` csak blobok nevű triggert `boxes` a egy `december` mappát. | Sztring   | | Meg kell adnia egy értéket legalább egy ezeket a tulajdonságokat: `blobPathBeginsWith` vagy `blobPathEndsWith`. |
 
 ## <a name="examples-of-event-based-triggers"></a>Eseményalapú eseményindítókat példái
 
 Ez a szakasz példákat eseményalapú eseményindító-beállítások.
 
--   **BLOB elérési útja kezdődik**('/ Tárolónév /"–) fogadja az eseményeket a blobok a tárolóban.
--   **BLOB elérési útja kezdődik**('/ Tárolónév/blobok/Mappanév") – fogadja az eseményeket az azokat a blobokat a containername tároló és a foldername mappába. Is hivatkozhat egy almappájában; például "/ Tárolónév/blobok/mappanév/subfoldername /".
--   **BLOB elérési útja kezdődik**('/ containername/blobs/foldername/file.txt ") – fogadja az eseményeket egy BLOB, a foldername mappában található a containername tároló file.txt nevű.
--   **BLOB elérési útja végződik**("file.txt") – egy blobhoz Receives események nevű file.txt bármely elérési úton.
--   **BLOB elérési útja végződik**('/ containername/blobs/file.txt ") – fogadja az eseményeket egy BLOB tároló containername alatt file.txt nevű.
--   **BLOB elérési útja végződik**("foldername/file.txt") – egy blobhoz Receives események nevű file.txt foldername mappában található összes tárolót.
+> [!IMPORTANT]
+> Tartalmaznia kell a `/blobs/` szegmense, amely az elérési út, amikor Ön adja meg a tároló és a mappában, a tároló és a fájl, vagy a tárolót, mappát és fájlt a következő példákban látható módon.
 
-> [!NOTE]
-> Tartalmaznia kell a `/blobs/` szegmens az elérési út, amikor Ön adja meg a tároló és a mappában, a tároló és a fájl, vagy a tárolót, mappát és fájlt.
+| Tulajdonság | Példa | Leírás |
+|---|---|---|
+| **BLOB elérési útja kezdődik** | `/containername/` | Fogadja az eseményeket a blobok a tárolóban. |
+| **BLOB elérési útja kezdődik** | `/containername/blobs/foldername/` | Fogadja az eseményeket bármely lévő blobok esetében a `containername` tároló és `foldername` mappát. |
+| **BLOB elérési útja kezdődik** | `/containername/blobs/foldername/subfoldername/` | Egy almappát is hivatkozhat. |
+| **BLOB elérési útja kezdődik** | `/containername/blobs/foldername/file.txt` | Fogadja az eseményeket egy blobhoz nevű `file.txt` a a `foldername` mappát a `containername` tároló. |
+| **BLOB elérési útja végződik** | `file.txt` | Fogadja az eseményeket egy blobhoz nevű `file.txt` i bármilyen útvonalat. |
+| **BLOB elérési útja végződik** | `/containername/blobs/file.txt` | Fogadja az eseményeket egy blobhoz nevű `file.txt` tárolóban `containername`. |
+| **BLOB elérési útja végződik** | `foldername/file.txt` | Fogadja az eseményeket egy blobhoz nevű `file.txt` a `foldername` bármely tárolóban található mappa. |
 
 ## <a name="next-steps"></a>További lépések
 Részletes információkat lásd: [folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md#triggers).

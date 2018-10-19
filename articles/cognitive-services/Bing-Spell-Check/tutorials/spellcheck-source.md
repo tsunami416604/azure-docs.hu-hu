@@ -1,24 +1,25 @@
 ---
-title: Bing helyesírás ellenőrizze API-val (a Microsoft Azure kognitív szolgáltatások) helyesírás ellenőrizze eredmények első |} Microsoft Docs
-description: Az oktatóanyag bemutatja, hogyan használja a Bing helyesírás-ellenőrzése API egy egyoldalas webalkalmazást forráskódja.
+title: 'Oktatóanyag: Helyesírás-ellenőrzési eredmények a Bing Spell Check API használatával'
+titlesuffix: Azure Cognitive Services
+description: Forráskód a Bing Spell Check API egyoldalas webalkalmazásban való használatát bemutató oktatóanyaghoz.
 services: cognitive-services
 author: v-jaswel
-manager: kamrani
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-spell-check
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 1f2f75a51324bb05e1b95dc3a3c4e438f3aa593c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: baa618929b1f7b401c619681dce4e085b16543e7
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346867"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48800961"
 ---
-# <a name="tutorial-single-page-web-app"></a>Oktatóanyag: Egyoldalas webalkalmazást
+# <a name="tutorial-single-page-web-app"></a>Oktatóanyag: Egyoldalas webalkalmazás
 
-Ez az a teljes forráskód ismertet a [alkalmazás oktatóanyag](spellcheck.md) a Bing helyesírás ellenőrizze az API-hoz. Az alkalmazás futtatásához, másolja át a kódot egy szövegszerkesztőbe, és mentse a fájlt `spellcheck.html`. Majd a böngészőben nyissa meg a fájlra.
+Ez az [egyoldalas alkalmazást bemutató oktatóanyagban](spellcheck.md) ismertetett teljes forráskód a Bing Spell Check API-hoz. Az alkalmazás futtatásához másolja a forráskódot egy szövegszerkesztőbe, és mentse el a fájlt `spellcheck.html` néven. Ezután nyissa meg a mentett fájlt a böngészőjében.
 
 ```html
 <!DOCTYPE html>

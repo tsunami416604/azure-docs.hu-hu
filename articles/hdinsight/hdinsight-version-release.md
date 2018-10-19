@@ -6,13 +6,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: overview
-ms.date: 09/24/2018
-ms.openlocfilehash: 152a145601dcf4282ec0a3a3b6ebcf37bd11848b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 10/04/2018
+ms.openlocfilehash: ade162d0261b765336cbff9ea8a6429f9bd2d871
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992966"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801826"
 ---
 # <a name="hdinsight-40-overview-preview"></a>HDInsight 4.0 áttekintés (előzetes verzió)
 
@@ -93,6 +93,12 @@ Nincs támogatott frissítési útvonal a HDI korábbi verzióiról a HDI 4.0-ra
 * A HDI 4.0 nem támogatja a MapReduce-t. Használja inkább a Tezt. További tudnivalók az [Apache Tezről](https://tez.apache.org/).
 
 * A Hive View a HDI 4.0-ban a továbbiakban nem érhető el. 
+
+* Spark- és interaktív lekérdezési fürtökben az Apache Zeppelin nem támogatja a parancshéj-értelmezők használatát.
+
+* Az LLAP nem *tiltható le* a Spark-LLAP-fürtön. Csak az LLAP kikapcsolására van lehetősége.
+
+* Az Azure Data Lake Storage Gen2 nem tud Juypter jegyzetfüzeteket menteni Spark-fürtökbe.
 
 ## <a name="next-steps"></a>További lépések
 

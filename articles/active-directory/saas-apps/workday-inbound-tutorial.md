@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: 917baa4b0d983df858c64cd0fa5b697b0fbb316c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2ab2ac34132eff65e1d6c77794486bc8d9858b40
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298268"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408179"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>Oktatóanyag: Felhasználók automatikus kiépítési (előzetes verzió) a Workday konfigurálása
 
@@ -74,7 +74,7 @@ Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy Ön m�
 * Globális rendszergazdai hozzáféréssel rendelkező érvényes Azure AD Premium P1 szintű előfizetésre
 * A Workday megvalósítási bérlői tesztelése és integrációs célokra
 * Rendszergazdai engedélyekkel, hozzon létre egy rendszer-integrációs felhasználót, és módosítja a WORKDAY alkalmazotti adatokat tesztelési célú tesztelése
-* A felhasználó kiépítése az Active Directoryhoz, 2012 vagy újabb Windows-szolgáltatást futtató, tartományhoz csatlakoztatott kiszolgálóra szükség, gazdagépre a [a helyszíni szinkronizálási ügynök](https://go.microsoft.com/fwlink/?linkid=847801)
+* Felhasználókiépítés az Active Directory, a Windows Server 2012 vagy újabb rendszert futtató, tartományhoz csatlakoztatott kiszolgálóra szükség, gazdagépre a [a helyszíni szinkronizálási ügynök](https://go.microsoft.com/fwlink/?linkid=847801)
 * [Az Azure AD Connect](../hybrid/whatis-hybrid-identity.md) szinkronizálásához Active Directory és az Azure AD között
 
 ### <a name="solution-architecture"></a>Megoldás architektúrája

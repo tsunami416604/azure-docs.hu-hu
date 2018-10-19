@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: dab2dd2b1d020a7619b18f330640b7f555a1f8c1
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: dd404bf8766082148a2c5a1ae55189f5f82f9021
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044382"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404069"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Összegyűjtheti és elemezheti a Log Analytics az Azure-Tevékenységnaplók
 
@@ -75,8 +75,7 @@ A következő lépésekkel konfigurálja az Activity Log Analytics megoldást, a
     3. Az a *SubscriptionName* panelen kattintson a **Connect**.  
         ![Előfizetés csatlakoztatása](./media/log-analytics-activity/subscription-connect.png)
 
-Ha a megoldás az OMS-portálon, látni fogja a következő csempét. Az Azure Portalra való csatlakozáshoz jelentkezzen be egy Azure-előfizetést a munkaterületre.  
-![értékelés folyamatban](./media/log-analytics-activity/tile-performing-assessment.png)
+Az Azure Portalra való csatlakozáshoz jelentkezzen be egy Azure-előfizetést a munkaterületre.  
 
 ## <a name="using-the-solution"></a>A megoldás használata
 

@@ -1,6 +1,6 @@
 ---
-title: A beépített Python-rendszerkép konfigurálása az Azure App Service-ben
-description: Ez az oktatóanyag egy Python-alkalmazás beépített Python-rendszerképpel történő konfigurálási lehetőségeit és szerzői műveleteit ismerteti az Azure App Service-ben.
+title: Python-alkalmazások konfigurálása az Azure App Service szolgáltatáshoz Linux rendszeren
+description: Ez az oktatóanyag a Python-alkalmazások szerzői műveleteit és konfigurálási lehetőségeit ismerteti az Azure App Service-hez Linux rendszeren.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -12,70 +12,103 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/25/2018
-ms.author: astay;cephalin
+ms.date: 10/09/2018
+ms.author: astay;cephalin;kraigb
 ms.custom: mvc
-ms.openlocfilehash: 9316805993b81e4d2511e833e0cc8f240807a1f9
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 71cbf0bb31a72e3b257f25c159d9d9eea31dbfbb
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47228552"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901618"
 ---
-# <a name="configure-built-in-python-image-in-azure-app-service-preview"></a>A beépített Python-rendszerkép konfigurálása az Azure App Service-ben (előzetes verzió)
+# <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>Python-alkalmazás konfigurálása az Azure App Service szolgáltatáshoz Linux rendszeren
 
-Ez a cikk bemutatja, hogyan konfigurálhatja a beépített Python-rendszerképet az [Linuxon futó App Service-ben](app-service-linux-intro.md) a Python-alkalmazások futtatásához.
+Ez a cikk azt ismerteti, hogy a [Linuxon futó Azure App Service](app-service-linux-intro.md) hogyan futtat Python-alkalmazásokat, és szükség esetén hogyan szabhatja testre az App Service viselkedését.
 
-## <a name="python-version"></a>Python-verzió
+## <a name="container-characteristics"></a>A tároló jellemzői
 
-A Python-futtatókörnyezet a Linuxon futó App Service-ben a `python-3.7.0` verziót használja.
+Az App Service-hez Linux rendszerre telepített Python-alkalmazások Docker-tárolóban futnak, amely a GitHub-adattárban van definiálva: [Azure-App-Service/python tároló](https://github.com/Azure-App-Service/python/tree/master/3.7.0).
 
-## <a name="supported-frameworks"></a>Támogatott keretrendszerek
+Ez a tároló a következő jellemzőkkel rendelkezik:
 
-A `python-3.7` futtatókörnyezettel kompatibilis, Web Server Gateway Interface (WSGI) megfelelőséggel rendelkező webkeretrendszerek minden verziója támogatott.
+- A kiinduló tároló rendszerképe `python-3.7.0-slim-stretch`, ami azt jelenti, hogy az alkalmazások a Python 3.7 használatával futnak. Ha a Python egy másik verziójára van szüksége, ehelyett létre kell hoznia egy saját tárolórendszerképet, és azt kell telepítenie. További információk: [Egyéni Docker-rendszerkép használata a Web App for Containers szolgáltatásban](tutorial-custom-docker-image.md).
 
-## <a name="package-management"></a>Csomagkezelés
+- Az alkalmazások a [Gunicorn WSGI HTTP-kiszolgáló](http://gunicorn.org/) és további argumentumok használatával futnak`--bind=0.0.0.0 --timeout 600`.
 
-Git-közzététel során a Kudu motor keresi a [requirements.txt](https://pip.pypa.io/en/stable/user_guide/#requirements-files) fájlt keresi az adattár gyökérkönyvtárában, és automatikusan telepíti a csomagot az Azure-ban `pip` használatával.
+- Alapértelmezés szerint az alaprendszerkép magában foglalja a Flask webes keretrendszert, de a tároló a WSGI-vel és a Python 3.7-es verziójával kompatibilis keretrendszereket is támogat, így például a Djangót.
 
-Közzététel előtt a fájl létrehozásához keresse meg az adattár gyökérkönyvtárát, és futtassa a következő parancsot a Python-környezetben:
+- További csomagok, mint például a Django, telepítéséhez hozzon létre egy [*requirements.txt*](https://pip.pypa.io/en/stable/user_guide/#requirements-files) fájlt a projekt gyökérkönyvtárában a `pip freeze > requirements.txt` parancs használatával. Ezt követően a Git üzemelő példányával tegye közzé projektjét az App Service-be, amely az alkalmazásfüggőségek telepítéséhez automatikusan futtatja a tárolóban a `pip install -r requirements.txt` parancsot.
 
-```bash
-pip freeze > requirements.txt
-```
+## <a name="container-startup-process-and-customizations"></a>Tárolóindítási folyamat és testreszabások
 
-## <a name="configure-your-python-app"></a>A Python-alkalmazás konfigurálása
+Rendszerindítás során a Linux-tárolóban lévő App Service a következő lépéseket futtatja:
 
-Az App Service-ben a beépített Python-rendszerkép a [Gunicorn](http://gunicorn.org/) kiszolgálót használja a Python-alkalmazás futtatására. A Gunicorn egy Python WSGI HTTP-kiszolgáló UNIX rendszerhez. Az App Service automatikusan konfigurálja a Gunicorn kiszolgálót Django- és Flask-projektekhez.
+1. Keresse meg és alkalmazza a megfelelő indítási parancsot, ha az meg van adva.
+1. Ellenőrizze, hogy létezik-e a Django-alkalmazás *wsgi.py* fájlja, és ha igen, annak használatával indítsa el a Gunicornt.
+1. Keresse meg az *application.py* nevű fájlt, és ha megtalálta, indítsa el a Gunicornt a(z) `application:app` használatával, Flask-alkalmazást feltételezve.
+1. Ha más alkalmazás nem található, indítson el egy alapértelmezett alkalmazást, amely a tárolóba van beépítve.
+
+A következő szakaszok további információkkal szolgálnak az egyes beállításokról.
 
 ### <a name="django-app"></a>Django-alkalmazás
 
-Ha egy `wsgi.py` modult tartalmazó Django-projektet, az Azure automatikusan meghívja a Gunicorn kiszolgálót a következő paranccsal:
+Django-alkalmazások esetén az App Service a(z) `wsgi.py` nevű fájlt keresi az alkalmazáskódban, majd a Gunicorn futtatásához a következő parancsot használja:
 
 ```bash
-gunicorn <path_to_wsgi>
+# <module> is the path to the folder containing wsgi.py
+gunicorn --bind=0.0.0.0 --timeout 600 <module>.wsgi
 ```
+
+Ha az indítási parancsot szeretné jobban szabályozni, használjon egy [ egyéni indítási parancsot](#custom-startup-command), és cserélje le a(z) `<module>` modult annak a modulnak a nevével, amely tartalmazza a *wsgi.py* fájlt.
 
 ### <a name="flask-app"></a>Flask-alkalmazás
 
-Ha Flask-alkalmazást tesz közzé, és a belépési pont egy `application.py` vagy `app.py` modulban van, az Azure a következő parancsok egyikével automatikusan meghívja a Gunicorn kiszolgálót:
+A Flask esetében az App Service az *application.py* nevű fájlt keresi, és a Gunicornt a következőképpen indítja el:
 
 ```bash
-gunicorn application:app
+gunicorn --bind=0.0.0.0 --timeout 600 application:app
 ```
 
-Vagy 
+Ha a fő alkalmazásmodul egy másik fájlban található, használjon másik nevet az alkalmazás objektum számára, vagy ha további argumentumok szeretne megadni a Gunicornhoz, használjon egy [egyéni indítási parancsot](#custom-startup-command). Az említett szakasz példájában a Flask a *hello.py* fájlban található belépőkódot, valamint a(z) `myapp` nevű Flask-alkalmazásobjektumot használja.
+
+### <a name="custom-startup-command"></a>Egyéni indítási parancs
+
+A tároló indítási viselkedését egy egyéni Gunicorn indítási parancs megadásával szabályozhatja. Például, ha rendelkezik olyan Flask-alkalmazással, amelynek főmodulja *hello.py*, és a Flask-alkalmazásobjektum neve `myapp`, akkor a parancs a következő lesz:
 
 ```bash
-gunicorn app:app
+gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
 ```
 
-### <a name="customize-start-up"></a>Indítás testreszabása
+A Gunicorn számára további argumentumokat is adhat a parancshoz, például: `--workers=4`. További információkért lásd: [A Gunicorn futtatása](http://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
 
-Az alkalmazáshoz egyéni belépési pont meghatározásához először hozzon létre egy _.txt_ fájlt egyéni Gunicorn-paranccsal, és helyezze azt el a projekt gyökerében. Ha például a kiszolgálót a _helloworld.py_ modullal és az `app` változóval szeretné elindítani, hozzon létre egy _startup.txt_ fájlt a következő tartalommal:
+Egyéni parancs megadásához tegye a következőket:
 
-```bash
-gunicorn helloworld:app
-```
+1. Keresse meg a [Alkalmazásbeállítások](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) oldalt a Microsoft Azure Portal-on.
 
-Az [Alkalmazásbeállítások](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) lapon a **Futtatókörnyezeti verem** értékeként válassza a **Python | 3.7** lehetőséget, és adja meg az előző lépésben meghatározott **Indító fájl** nevét. Például: _startup.txt_.
+1. A **Futásidejű** beállításoknál a **Stack** beállításaként válassza a **Python 3.7** értéket, és adja meg a parancsot közvetlenül az **Indítási fájl** mezőben.
+
+    Azt is megteheti, a parancsot a projekt gyökérkönyvtárában lévő szövegfájlba menti, *startup.txt* (vagy bármilyen más) néven. Ezután ezt a fájlt telepítse az App Service-be, és a fájlnevet adja meg az **Indítási fájl** mezőben. Ez a beállítás lehetővé teszi, hogy a parancsot az Azure Portal helyett a forráskódraktárban kezelje.
+
+1. Kattintson a **Mentés** gombra. Az App Service automatikusan újraindul, és néhány másodperc múlva a rendszer alkalmazza az egyéni indítási parancsot.
+
+> [!Note]
+> Az App Service figyelmen kívül hagyja az egyéni parancsfájl feldolgozásakor előforduló hibákat, majd az indítási folyamat következő lépéseként megkeresi a Django- és a Flask-alkalmazásokat. Ha nem várt viselkedést tapasztal, ellenőrizze, hogy az indítási fájl telepítve lett-e az App Service-be, és hogy az nem tartalmaz-e hibákat.
+
+### <a name="default-behavior"></a>Alapértelmezett viselkedés
+
+Ha az App Service nem talál egyéni parancsot, vagy Django-, illetve Flask-alkalmazást, akkor egy alapértelmezett csak olvasható alkalmazást futtat, amely az _opt/defaultsite_ mappában található. Az alapértelmezett alkalmazás a következőképpen jelenik meg:
+
+![Alapértelmezett App Service a Linux webhelyen](media/how-to-configure-python/default-python-app.png)
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+- **Saját alkalmazáskódjának telepítése után megjelenik az alapértelmezett alkalmazás.**  Az alapértelmezett alkalmazás azért jelenik meg, mert ténylegesen nem telepítette az alkalmazáskódját az App Service-be, vagy az App Service nem találta meg az alkalmazáskódját, és helyette az alapértelmezett alkalmazást futtatta.
+  - Indítsa újra az App Service-t, várjon 15-20 másodpercet, és ellenőrizze újra az alkalmazást.
+  - SSH- vagy a Kudu konzol használatával közvetlenül csatlakozzon az App Service-hez, és győződjön meg arról, hogy a fájlok léteznek a *site/wwwroot* könyvtárban. Ha a fájlok nem léteznek, tekintse át a telepítési folyamatot, és telepítse újra az alkalmazást.
+  - Ha a fájlok léteznek, az App Service nem tudta azonosítani az adott indítási fájlt. Ellenőrizze, hogy az alkalmazás struktúrája megfelel-e annak, amit az App Service a [Django](#django-app) vagy a [Flask](#flask-app) számára elvár, vagy használjon [egyéni indítási parancsot](#custom-startup-command).
+
+- **A böngészőben megjelenik „A szolgáltatás nem érhető el” üzenet.** A böngésző az App Service válaszára vára túllépte az időkorlátot, ami azt jelzi, hogy az App Service elindította a Gunicorn-kiszolgálót, de az alkalmazás kódját meghatározó argumentumok helytelenek.
+  - Frissítse a böngészőt, különösen akkor, ha az App Service-csomag legalacsonyabb tarifacsomagját használja. Az alkalmazás ingyenes szolgáltatásszintjeink használatakor például indítása hosszabb időt vehet igénybe, de a böngésző frissítése után ismét reagálni fog.
+  - Ellenőrizze, hogy az alkalmazás struktúrája megfelel-e annak, amit az App Service a [Django](#django-app) vagy a [Flask](#flask-app) számára elvár, vagy használjon [egyéni indítási parancsot](#custom-startup-command).
+  - SSH- vagy Kudu-konzol használatával kapcsolódjon az App Service-hez, majd vizsgálja meg a *LogFiles* mappában tárolt diagnosztikai naplókat. A naplózással kapcsolatos további információkért lásd: [Webalkalmazások diagnosztikai naplózása az Azure App Service szolgáltatásban](../web-sites-enable-diagnostic-log.md).

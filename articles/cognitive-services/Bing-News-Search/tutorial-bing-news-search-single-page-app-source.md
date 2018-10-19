@@ -1,25 +1,26 @@
 ---
-title: Bing hírek keresési egyoldalas webalkalmazást (forráskód) |} Microsoft Docs
-description: Az oktatóanyag bemutatja, hogyan használja a Bing hírek keresési API-JÁNAK egy egyoldalas webalkalmazást forráskódja.
+title: 'Oktatóanyag: A Bing News Search egyoldalas webalkalmazás (forráskód)'
+titlesuffix: Azure Cognitive Services
+description: Oktatóanyag forráskódja, amely ismerteti a Bing News Search API egyoldalas webalkalmazásként való használatát.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: rosh
 ms.reviewer: v-gedod
-ms.openlocfilehash: c16c7b6018ad7ef3e2f7786e7ef9fa477c666914
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: b8c3e022c93acd0a6e5a6dc96cc0375114093b87
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347758"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804293"
 ---
-# <a name="tutorial-single-page-news-search-app"></a>Oktatóanyag: A keresés alkalmazás egyoldalas hírek
+# <a name="tutorial-single-page-news-search-app"></a>Oktatóanyag: Egyoldalas News Search-alkalmazás
 
-Ez az a teljes forráskód ismertet a [alkalmazás oktatóanyag](tutorial-bing-news-search-single-page-app.md) Bing hírek kereséshez. Az alkalmazás futtatásához, a forrás kódot bemásolhatja a Jegyzettömbben vagy más szövegszerkesztőben, és mentse a fájt `bing.html`. Ezután nyissa meg a mentett fájlt a Microsoft Edge vagy egy másik népszerű böngésző.
+Ez az [egyoldalas Bing News Search-alkalmazást bemutató oktatóanyagban](tutorial-bing-news-search-single-page-app.md) ismertetett teljes forráskód. Az alkalmazás futtatásához másolja a forráskódot a Jegyzettömbbe vagy más szövegszerkesztőbe, és mentse `bing.html` néven. Ezután nyissa meg a mentett fájlt a Microsoft Edge-ben vagy más népszerű böngészőben.
 
 ```html
 <!DOCTYPE html>

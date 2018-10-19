@@ -1,5 +1,5 @@
 ---
-title: Frissítések SCCM gyűjtemények használatával az Azure Automation - frissítéskezelés
+title: SCCM-gyűjtemények használatával az Azure Automation – Update Management frissítések
 description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja a System Center Configuration Managert ezzel a megoldással az SCCM által kezelt számítógépek frissítéseinek kezelésére.
 services: automation
 ms.service: automation
@@ -9,24 +9,24 @@ ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3ea95899d48b68c78af5fdc45167b08b5e0fc1ee
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: b42ce119db2c435f05424cceb5bb90627668bece
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195345"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407197"
 ---
-# <a name="integrate-system-center-configuration-manager-with-update-management"></a>Frissítéskezelés a System Center Configuration Manager integrálása
+# <a name="integrate-system-center-configuration-manager-with-update-management"></a>A System Center Configuration Manager integrálása az Update Management
 
 Azok a felhasználók, akik befektettek a System Center Configuration Managerbe a számítógépek, kiszolgálók és mobileszközök kezelése érdekében, a teljesítményét és fejlettségét a szoftverfrissítések kezelése során, a szoftverfrissítés-kezelési (SUM) ciklus részeként is kihasználják.
 
-Jelentést és felügyelt Windows Server update hoz létre, és előre átmeneti szoftverfrissítési központi telepítést a Configuration Manager, és részletes állapota a befejezett frissítés üzembe helyezése a [frissítése felügyeleti megoldás](automation-update-management.md). A frissítés megfelelőségi jelentéseket, de nem a Windows-kiszolgálók központi kezelésére szolgáló Configuration Manager használatakor, folytathatja a Configuration Manager jelentéskészítési, amíg a frissítés felügyeleti megoldással kezelt biztonsági frissítések.
+Jelentés és létrehozásával és előkészítésével szoftverfrissítés-telepítést a Configuration Manager által felügyelt Windows-kiszolgálók frissítése, és részletes állapotinformációkat kaphat a befejezett frissítések telepítéséről használatával a [frissítéskezelési megoldás](automation-update-management.md). Ha a frissítések megfelelőségének jelentésére, de nem a központi Windows-kiszolgálókkal való kezelése a Configuration Manager együttes használata, továbbra is jelenthet a Configuration Managernek, amíg a frissítéskezelési megoldással felügyelt biztonsági frissítések.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Rendelkeznie kell a [frissítés felügyeleti megoldás](automation-update-management.md) hozzáadni az Automation-fiók.
+* Rendelkeznie kell a [Update Management megoldás](automation-update-management.md) az Automation-fiókhoz hozzáadott.
 * A System Center Configuration Manager környezete által jelenleg kezelt Windows-kiszolgálóknak a Log Analytics-munkaterületnek kell jelenteniük, amelyhez szintén engedélyezve van a frissítéskezelési megoldás.
-* Ez a funkció engedélyezve van a System Center Configuration Manager aktuális ág verzió 1606 és magasabb. A Configuration Manager központi adminisztrációs helyének vagy egy különálló elsődleges hely Log Analyticsszel és importált gyűjteményekkel való integrálásához tekintse meg a [Configuration Manager a Log Analyticshez történő csatlakoztatását](../log-analytics/log-analytics-sccm.md) ismertető részt.  
+* Ez a funkció engedélyezve van a System Center Configuration Managerben aktuális ág 1606-os vagy újabb verziója. A Configuration Manager központi adminisztrációs helyének vagy egy különálló elsődleges hely Log Analyticsszel és importált gyűjteményekkel való integrálásához tekintse meg a [Configuration Manager a Log Analyticshez történő csatlakoztatását](../log-analytics/log-analytics-sccm.md) ismertető részt.  
 * A Windows rendszerű ügynökszámítógépeket vagy a Windows Server Update Services (WSUS) szolgáltatással való kommunikációhoz kell konfigurálni, vagy a Microsoft Update szolgáltatáshoz kell hozzáféréssel rendelkezniük, ha nem kapnak biztonsági frissítéseket a Configuration Managertől.   
 
 Az Azure IaaS-ben futtatott ügyfelek Configuration Manager-környezettel való kezelésének módja elsődlegesen az Azure-adatközpontok és az infrastruktúra közötti kapcsolattól függ. Ez a kapcsolat befolyásolja a kialakítás módosításait, amelyeket a Configuration Manager-infrastruktúrán kell elvégeznie, valamint az ezeket a szükséges módosításokat támogató járulékos költségeket. Annak megismeréséhez, hogy milyen tervezési szempontokat kell értékelnie a továbblépés előtt, tekintse meg az [Azure-beli Configuration Managerrel kapcsolatos gyakori kérdéseket](/sccm/core/understand/configuration-manager-on-azure#networking).
@@ -35,19 +35,19 @@ Az Azure IaaS-ben futtatott ügyfelek Configuration Manager-környezettel való 
 
 ### <a name="manage-software-updates-from-configuration-manager"></a>Szoftverfrissítések kezelése a Configuration Managerből 
 
-Hajtsa végre a következő lépéseket, ha a frissítéstelepítések kezelését továbbra is a Configuration Managerből szeretné elvégezni. Azure Automation szolgáltatásbeli csatlakozik a Configuration Manager frissítéseinek az a Naplóelemzési munkaterület csatlakozó ügyfélszámítógépek számára. A frissítés tartalma ugyanúgy elérhető az ügyfélszámítógép gyorsítótárából, mintha a telepítést a Configuration Manager kezelte volna.
+Hajtsa végre a következő lépéseket, ha a frissítéstelepítések kezelését továbbra is a Configuration Managerből szeretné elvégezni. Az Azure Automation csatlakozik a Configuration Manager frissítéseinek az a Log Analytics-munkaterülethez csatlakoztatott ügyfélszámítógépeken. A frissítés tartalma ugyanúgy elérhető az ügyfélszámítógép gyorsítótárából, mintha a telepítést a Configuration Manager kezelte volna.
 
-1. Hozzon létre egy szoftverfrissítés-telepítést a legfelső szintű helyről a Configuration Manager-hierarchiában a [szoftverfrissítési eljárás üzembe helyezését](/sccm/sum/deploy-use/deploy-software-updates) ismertető cikkben leírt folyamatot követve. Az egyetlen beállítás, amelyet egy standard telepítéstől eltérően kell konfigurálnia, a **Ne telepítse a szoftverfrissítéseket** kiválasztása, amely a telepítőcsomag letöltésének viselkedését vezérli. Ez a viselkedés frissítése MDM-megoldás által kezeli a következő lépésben egy ütemezett frissítés központi telepítés létrehozása.
+1. Hozzon létre egy szoftverfrissítés-telepítést a legfelső szintű helyről a Configuration Manager-hierarchiában a [szoftverfrissítési eljárás üzembe helyezését](/sccm/sum/deploy-use/deploy-software-updates) ismertető cikkben leírt folyamatot követve. Az egyetlen beállítás, amelyet egy standard telepítéstől eltérően kell konfigurálnia, a **Ne telepítse a szoftverfrissítéseket** kiválasztása, amely a telepítőcsomag letöltésének viselkedését vezérli. Ez a viselkedés a frissítéskezelési megoldás kezeli egy ütemezett frissítési telepítés létrehozásával a következő lépésben.
 
-1. Válassza ki az Azure Automationben **frissítéskezelés**. Hozzon létre egy új központi telepítést a következő helyen ismertetett lépések [egy központi telepítés létrehozása](automation-tutorial-update-management.md#schedule-an-update-deployment) válassza **csoportok importálása** a a **típus** válassza ki a megfelelő legördülő lista Configuration Manager-gyűjteményhez. Vegye figyelembe a következő fontos szempontokat: egy. Ha karbantartási időszak van definiálva a kijelölt Configuration Manager-eszközök gyűjteményére, a gyűjtemény tagjai tiszteletben ahelyett, hogy azt a **időtartam** az ütemezett telepítési mappájában megadott beállításokat.
-    b. A célgyűjtemény tagjainak csatlakozniuk kell az internethez (közvetlenül, proxykiszolgálón keresztül vagy az OMS Gatewayen keresztül).
+1. Válassza ki az Azure Automation szolgáltatás **az Update Management**. Hozzon létre egy új telepítést a következő témakörben ismertetett [frissítéstelepítés létrehozását](automation-tutorial-update-management.md#schedule-an-update-deployment) válassza **importált csoportok** a a **típus** , válassza ki a megfelelő legördülő Configuration Manager-gyűjteményt. Az alábbi fontos szempontokat tartsa szem előtt: egy. Ha karbantartási időszak van adva a kiválasztott Configuration Manager-eszközök gyűjteményére, a gyűjtemény tagjai tartsa tiszteletben, hanem a **időtartama** az ütemezett telepítési művelet a megadott beállításokat.
+    b. A célgyűjtemény tagjai az internethez (közvetlenül, proxykiszolgálón keresztül vagy a Log Analytics-átjárón) kapcsolattal kell rendelkeznie.
 
-Az Azure Automation keresztül központi telepítésének befejezése után a célszámítógépeken, amelyek tagjai a kiválasztott számítógép (csoport) telepíti a frissítéseket a megadott időpontban az ügyfél helyi gyorsítótárából. [A frissítéstelepítés állapotát bármikor megtekintheti](automation-tutorial-update-management.md#view-results-of-an-update-deployment) a telepítés eredményeinek monitorozásához.
+Miután befejezte az Azure Automation segítségével a frissítések telepítését, a célszámítógépek, amelyek a kiválasztott számítógépcsoport tagjai a helyi telepíti a frissítéseket az ütemezett időpontban. [A frissítéstelepítés állapotát bármikor megtekintheti](automation-tutorial-update-management.md#view-results-of-an-update-deployment) a telepítés eredményeinek monitorozásához.
 
-### <a name="manage-software-updates-from-azure-automation"></a>Azure Automation-szoftverfrissítések kezelése
+### <a name="manage-software-updates-from-azure-automation"></a>Szoftverfrissítések kezelése az Azure Automationben
 
 Azon Windows Server rendszerű virtuális gépek frissítéseinek kezeléséhez, amelyek egyben Configuration Manager-ügyfelek is, a megoldás által kezelt minden ügyfél esetében egy ügyfélszabályzatot kell beállítania a szoftverfrissítés-kezelési funkció letiltásához. Alapértelmezés szerint az ügyfélbeállítások minden eszközt megcéloznak a hierarchiában. A szabályzattal és annak beállításával kapcsolatos információkért lásd [az ügyfélbeállítások a System Center Configuration Managerben történő konfigurálását](/sccm/core/clients/deploy/configure-client-settings) ismertető részt.
 
-A konfigurációs módosítás elvégzése után egy új központi telepítés létrehozásához engedélyezi a következő témakörben ismertetett [egy központi telepítés létrehozása](automation-tutorial-update-management.md#schedule-an-update-deployment) válassza **csoportok importálása** a a **típusa** legördülő listán válassza ki a megfelelő Configuration Manager-gyűjteményhez.
+A konfigurációs módosítás elvégzése után létrehozhat egy új központi telepítést a következő témakörben ismertetett [frissítéstelepítés létrehozását](automation-tutorial-update-management.md#schedule-an-update-deployment) válassza **importált csoportok** a a **típusa** listából válassza ki a megfelelő Configuration Manager-gyűjteményt.
 
 ## <a name="next-steps"></a>További lépések

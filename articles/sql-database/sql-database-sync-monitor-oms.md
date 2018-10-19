@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: a5792998654ed1d334e514591da3bef9805a5e79
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 712c729a214cdab66961fb399c9d797a758fcf7b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163358"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409679"
 ---
 # <a name="monitor-sql-data-sync-with-log-analytics"></a>Az SQL Data Sync monitorozása a Log Analytics szolgáltatással 
 
@@ -97,7 +97,7 @@ Egy runbook létrehozásával kapcsolatos további információkért lásd: [az 
 
     2.  Szinkronizálási csoport adatokat.
 
-    3.  OMS-adatokat. Ezek az információk megtalálhatók a OMS-portálon |} Beállítások |} A csatlakoztatott források. A Log Analyticshez való adatküldés kapcsolatos további információk: [adatokat küldeni a HTTP-adatgyűjtő API (előzetes verzió) a Log Analytics](../log-analytics/log-analytics-data-collector-api.md).
+    3.  Log Analytics információkat. Az Azure portálon található – ezt az információt |} Beállítások |} A csatlakoztatott források. A Log Analyticshez való adatküldés kapcsolatos további információkért lásd: [adatokat küldeni a HTTP-adatgyűjtő API (előzetes verzió) a Log Analytics](../log-analytics/log-analytics-data-collector-api.md).
 
 11. A runbook futtatása a teszt panelt. Ellenőrizze, hogy sikeres volt.
 
@@ -117,7 +117,7 @@ A runbook ütemezése:
 
 4.  Válassza ki **új ütemezés létrehozása.**
 
-5.  Állítsa be **ismétlődési** ismétlődő és állítsa be az időközt szeretne. Intervallum itt használja, a parancsfájl, és az OMS-ben.
+5.  Állítsa be **ismétlődési** ismétlődő és állítsa be az időközt szeretne. Időköz itt használja, a parancsfájl, és a Log Analyticsben.
 
 6.  Kattintson a **Létrehozás** gombra.
 
@@ -129,7 +129,7 @@ Az automation alatt a vártnak megfelelően működik-e figyelése **áttekinté
 
 Riasztás létrehozása, amely használja a Log Analytics, tegye a következőket. Egy előfeltétel szüksége lesz a Log Analytics-munkaterület társított Log Analytics.
 
-1.  Az OMS-portálon válassza **naplóbeli keresés**.
+1.  Az Azure Portalon válassza ki a **naplóbeli keresés**.
 
 2.  Hozzon létre egy lekérdezést a kiválasztott időtartamon belül a hibák és figyelmeztetések által szinkronizálási csoport kiválasztásához. Példa:
 
@@ -147,9 +147,9 @@ Riasztás létrehozása, amely használja a Log Analytics, tegye a következőke
 
 6.  Kattintson a **Save** (Mentés) gombra. A megadott címzetteknek most email értesítéseket kapni, ha hibák fordulnak elő.
 
-## <a name="create-an-oms-view-for-monitoring"></a>Figyelés az OMS nézet létrehozása
+## <a name="create-a-log-analytics-view-for-monitoring"></a>Figyelés a Log Analytics-nézet létrehozása
 
-Ez a lépés létrehoz egy OMS nézet vizuálisan figyelése az összes megadott szinkronizálási csoportot. A nézet több összetevőket tartalmazza:
+Ez a lépés létrehoz egy Log Analytics-nézetet vizuális monitorozására az összes megadott szinkronizálási csoportot. A nézet több összetevőket tartalmazza:
 
 -   Az Áttekintés csempe, amely jeleníti meg, hány hibák, a sikeres és a figyelmeztetések összes szinkronizálási csoportot is.
 
@@ -157,9 +157,9 @@ Ez a lépés létrehoz egy OMS nézet vizuálisan figyelése az összes megadott
 
 -   Egy csempe az összes szinkronizálási csoportból, amely hibák, sikeresen lezajlott, és a figyelmeztetések és a legutóbbi hiba üzenetek számát jeleníti meg.
 
-Az OMS-nézet konfigurálásához tegye a következőket:
+A Log Analytics-nézetet konfigurálásához tegye a következőket:
 
-1.  Az OMS kezdőlapján válassza a plusz megnyitásához a bal oldali a **adatforrásnézet-tervezőből**.
+1.  A Log Analytics kezdőlapján válassza a plusz megnyitásához a bal oldali a **adatforrásnézet-tervezőből**.
 
 2.  Válassza ki **importálás** Az adatforrásnézet-tervezőből, a felső sávon található. Ezután válassza ki a "DataSyncLogOMSView"-mintafájlt.
 

@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: bd40faf8a77a8940dc78375ec516c39742540231
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: b18f7efa09b33def2851967b5fc78bb1ddbc61e6
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352837"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404919"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -79,7 +79,7 @@ Az alábbi szakasz ismerteti a konfigurációt, a naplózás az Azure portal has
 
     ![Navigációs ablaktábla][3]
 
-5. **Új** – most már több lehetőség áll rendelkezésére konfigurálásához ahol auditnaplók lesz írva. Naplók az Azure storage-fiókba, az OMS-munkaterületet a Log Analytics által felhasználásához vagy kínál az event hubs az eseményközpont írhat. Az alábbi lehetőségek közül bármelyiket is beállíthat, és minden egyes auditnaplók lesz írva.
+5. **Új** – most már több lehetőség áll rendelkezésére konfigurálásához ahol auditnaplók lesz írva. Naplók az Azure storage-fiók, egy Log Analytics-munkaterületet a Log Analytics által felhasználásához vagy kínál az event hubs az eseményközpont írhat. Az alábbi lehetőségek közül bármelyiket is beállíthat, és minden egyes auditnaplók lesz írva.
 
     ![tárolási lehetőségek](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 
@@ -87,9 +87,9 @@ Az alábbi szakasz ismerteti a konfigurációt, a naplózás az Azure portal has
 
     ![tárfiók](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
-7. Írási naplózás konfigurálása naplózza az OMS-munkaterületet, jelölje be **Log Analytics (előzetes verzió)** , és nyissa meg **Log Analytics részletes**. Válasszon vagy hozzon létre az OMS-munkaterületet, ahol a naplók lesz írva, és kattintson a **OK**.
+7. Írási naplózás konfigurálása bejelentkezik egy Log Analytics-munkaterületen válassza **Log Analytics (előzetes verzió)** , és nyissa meg **Log Analytics részletes**. Válasszon vagy hozzon létre a Log Analytics-munkaterületet, ahol a naplók lesz írva, és kattintson a **OK**.
 
-    ![OMS](./media/sql-database-auditing-get-started/auditing_select_oms.png)
+    ![Log Analytics](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
 8. Írási naplózás konfigurálása naplózza az eseményközpontok felé, jelölje be **Event Hub (előzetes verzió)** , és nyissa meg **Eseményközpont részleteinek**. Válassza ki az event hubs, ahol a naplók lesz írva, és kattintson a **OK**. Győződjön meg arról, hogy az event hubs és az adatbázis és a kiszolgáló ugyanabban a régióban van.
 
@@ -109,10 +109,10 @@ Ha úgy döntött, hogy auditnaplók írni a Log Analytics:
 
 - Kattintson a **nyissa meg az OMS-ben** felső részén a **naplórekordok** lap nyílik meg a naplók megtekintése a Log Analytics, ahol testreszabhatja az időtartományt, és a keresési lekérdezésben.
 
-    ![Nyissa meg az OMS-ben](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
+    ![Nyissa meg a Log Analyticsben](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
 
 - Azt is megteheti is elérheti a naplófájlok a Log Analytics panelen. Nyissa meg a Log Analytics-munkaterület és a **általános** területén kattintson **naplók**. Megkezdése egy egyszerű lekérdezéssel, például: *"SQLSecurityAuditEvents" Keresés* naplózza a naplózási megtekintéséhez.
-    Itt is használhatja [Operations Management Suite (OMS) Log Analytics](../log-analytics/log-analytics-log-search.md) futtatni speciális keresést a naplózási adatokat. A log Analytics azonnal elemezze a rekordok millióit, a számítási feladatok és kiszolgálók integrált keresést és egyéni irányítópultok segítségével valós idejű az operational insights biztosítja. OMS Log Analytics keresési nyelv és a parancsokkal kapcsolatos további hasznos információk: [Log Analytics keresési referenciáját bemutató](../log-analytics/log-analytics-log-search.md).
+    Itt is használhatja [Log Analytics](../log-analytics/log-analytics-log-search.md) futtatni speciális keresést a naplózási adatokat. A log Analytics azonnal elemezze a rekordok millióit, a számítási feladatok és kiszolgálók integrált keresést és egyéni irányítópultok segítségével valós idejű az operational insights biztosítja. További hasznos információkat a Log Analytics keresési nyelv és a parancsok, lásd: [Log Analytics keresési referenciáját bemutató](../log-analytics/log-analytics-log-search.md).
 
 Ha úgy döntött, hogy auditnaplók írni az Event Hubs:
 

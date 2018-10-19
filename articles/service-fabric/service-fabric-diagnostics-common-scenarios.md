@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric diagnosztizálása gyakori helyzetek |} Microsoft Docs
-description: Gyakori forgatókönyvek az Azure Service Fabric hibaelhárítása
+title: Az Azure Service Fabric diagnosztizálhatja a gyakori helyzetek |} A Microsoft Docs
+description: Ismerje meg az Azure Service Fabric gyakori alkalmazási helyzetek hibaelhárításához
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -14,134 +14,134 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/16/2018
 ms.author: srrengar
-ms.openlocfilehash: bd7a7e0288ced0219a0600034b273d1acba6b09b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 35d1fa5f8963d007b1d8b59ccf0f1dec7abafa09
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655241"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402234"
 ---
-# <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnosztizálja a Service Fabric gyakori helyzetek
+# <a name="diagnose-common-scenarios-with-service-fabric"></a>A Service Fabric gyakori helyzetek diagnosztizálása
 
-Ez a cikk felhasználók merült fel a figyelés és a Service Fabric diagnosztika terén gyakori forgatókönyvet mutat. A bemutatott esetekben fedik le a service fabric minden 3 rétegének: alkalmazás, a fürt és az infrastruktúra. Egyes megoldások használja az Application Insights és Naplóelemzési, Azure Hálózatfigyelő eszközök, minden egyes forgatókönyv végrehajtásához. A lépéseket az egyes megoldások nyújt a felhasználóknak bevezetést keretén belül a Service Fabric Application Insights és Naplóelemzési használatával.
+Ez a cikk azt mutatja be, monitorozása és diagnosztizálása a Service Fabric területén észlelt felhasználók gyakori forgatókönyveket. A bemutatott esetekben cover service fabric minden 3 réteg: alkalmazások, a fürt és az infrastruktúra. Egyes megoldások használja az Application Insights és a Log Analytics, az Azure figyelési eszközök, minden egyes forgatókönyv végrehajtásához. A lépéseket az egyes megoldások biztosít a felhasználóknak Bevezetés az Application Insights és a Log Analytics használata a Service Fabric kontextusában.
 
 ## <a name="prerequisites-and-recommendations"></a>Előfeltételek és javaslatok
 
-Ebben a cikkben szereplő megoldások a következő eszközöket fogja használni. Javasoljuk, hogy a ezen készletét, konfigurálni és naprakész:
+Ebben a cikkben szereplő megoldások fogja használni a következő eszközök. Javasoljuk, hogy ezek set felfelé és a beállított rendelkezik:
 
-* [A Service Fabric Application insights szolgáltatással](service-fabric-tutorial-monitoring-aspnet.md)
-* [A fürt Azure Diagnostics engedélyezése](service-fabric-diagnostics-event-aggregation-wad.md)
-* [Állítsa be az OMS Naplóelemzési munkaterület](service-fabric-diagnostics-oms-setup.md)
-* [OMS-ügynököt teljesítményszámlálók követéséről](service-fabric-diagnostics-oms-agent.md)
+* [A Service Fabric Application Insights](service-fabric-tutorial-monitoring-aspnet.md)
+* [Az Azure-diagnosztika engedélyezése a fürtön](service-fabric-diagnostics-event-aggregation-wad.md)
+* [Log Analytics-munkaterület beállítása](service-fabric-diagnostics-oms-setup.md)
+* [Log Analytics-ügynök nyomon követheti a teljesítményszámlálók](service-fabric-diagnostics-oms-agent.md)
 
-## <a name="how-can-i-see-unhandled-exceptions-in-my-application"></a>Honnan látom kezeletlen kivételek az alkalmazásban?
+## <a name="how-can-i-see-unhandled-exceptions-in-my-application"></a>Hogyan tekinthetem meg nem kezelt kivételeket az alkalmazásom?
 
-1. Nyissa meg az Application Insights-erőforrást, amely az alkalmazás van konfigurálva.
-2. Kattintson a *keresési* a bal felső sarokban. Kattintson a szűrő a következő panelen.
+1. Keresse meg az alkalmazás konfigurálva van az Application Insights-erőforrást.
+2. Kattintson a *keresési* bal felső sarokban található. Ezután kattintson a következő panelen a szűrőt.
 
-    ![AI áttekintése](media/service-fabric-diagnostics-common-scenarios/ai-search-filter.png)
+    ![Mesterséges Intelligencia – áttekintés](media/service-fabric-diagnostics-common-scenarios/ai-search-filter.png)
 
-3. Nagy mennyiségű típusú eseményeket (nyomkövetések, kérelmek, egyéni események) jelenik meg. Válassza ki a "Kivétel" szűrőként.
+3. Látni fogja a sok különböző típusú eseményeket (nyomkövetéseket, kérelmek, egyéni események). Válassza ki a "Kivétel" szűrőként.
 
-    ![AI szűrőlista](media/service-fabric-diagnostics-common-scenarios/ai-filter-list.png)
+    ![AI-szűrő lista](media/service-fabric-diagnostics-common-scenarios/ai-filter-list.png)
 
-    Kattintson egy kivételt a listában, vessen egy pillantást a Service Fabric Application Insights SDK használata, többek között a szolgáltatási környezet további részleteket.
+    A lista kivétel elemre kattintva megtekintheti további részletek, így a szolgáltatáskörnyezet, a Service Fabric Application Insights SDK használatakor.
 
-    ![AI kivétel](media/service-fabric-diagnostics-common-scenarios/ai-exception.png)
+    ![AI-kivétel](media/service-fabric-diagnostics-common-scenarios/ai-exception.png)
 
-## <a name="how-do-i-view-which-http-calls-are-used-in-my-services"></a>Hogyan tekinthetem meg HTTP-hívások szerepelnek a szolgáltatások?
+## <a name="how-do-i-view-which-http-calls-are-used-in-my-services"></a>Hogyan tekinthetem meg HTTP-hívások használatban vannak a szolgáltatások?
 
-1. Az azonos Application Insights-erőforrást, a kivételek helyett "kérelmek" szűrje és vonatkozó összes kérelmet megtekintése
-2. A Service Fabric Application Insights SDK használ, ha látható a szolgáltatások kapcsolódik egy másik vizuális ábrázolását, és a sikeres és sikertelen kérelmek száma. A bal oldalon kattintson az "Alkalmazás-hozzárendelés"
+1. Az azonos Application Insights-erőforrás a "kérések" kivételek helyett szűrheti és intézett összes kérelem megtekintése
+2. A Service Fabric Application Insights SDK használatakor az egymáshoz kapcsolódó szolgáltatások ábrázolása látható, és a sikeres és sikertelen kérések száma. A bal oldalon kattintson az "Alkalmazás-hozzárendelés"
 
-    ![AI App térkép panel](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![AI App térkép](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
+    ![AI Alkalmazástérkép panel](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![AI Alkalmazástérkép](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
 
-    Az alkalmazás-hozzárendelés további információkért látogasson el a [alkalmazás-hozzárendelés dokumentáció](../application-insights/app-insights-app-map.md)
+    Az alkalmazástérkép további információért látogasson el a [Alkalmazástérkép dokumentációja](../application-insights/app-insights-app-map.md)
 
-## <a name="how-do-i-create-an-alert-when-a-node-goes-down"></a>Hogyan hozható létre riasztást, ha egy csomópont leáll
+## <a name="how-do-i-create-an-alert-when-a-node-goes-down"></a>Hogyan hozhatok létre riasztást, amikor egy csomópont leáll
 
-1. A Service Fabric-fürt csomópont események követi. Keresse meg a Service Fabric Analytics nevű megoldás erőforrás **ServiceFabric(NameofResourceGroup)**
-2. Kattintson a "Összefoglaló" című témakört a panel alján a diagramra
+1. Csomópont-események nyomon követi a Service Fabric-fürt által. Keresse meg a Service Fabric-elemzés megoldás erőforrást nevű **ServiceFabric(NameofResourceGroup)**
+2. Kattintson a "Összegzés" című panel alján a diagramon
 
-    ![OMS-megoldás](media/service-fabric-diagnostics-common-scenarios/oms-solution-azure-portal.png)
+    ![Log Analytics megoldás](media/service-fabric-diagnostics-common-scenarios/oms-solution-azure-portal.png)
 
-3. Itt, hogy számos diagramokat és különböző metrikák megjelenítése mozaikok. Kattintson a diagramokon és időt vesz igénybe, a naplófájl-keresési. Itt lekérheti fürthöz kapcsolódó események és teljesítményszámlálók.
-4. Adja meg a következő lekérdezést. Ezek eseményazonosítók találhatók a [csomópont események referencia](service-fabric-diagnostics-event-generation-operational.md#application-events)
+3. Van itt számos diagramok és csempék megjelenítése a különböző mérőszámokat. Kattintson az egyik a diagramok és időt vesz igénybe, a naplóbeli keresés. Itt lekérdezheti, ha bármely fürthöz kapcsolódó események és teljesítményszámlálók.
+4. Adja meg a következő lekérdezést. Az alábbi eseményazonosítók találhatók a [csomópont események referencia](service-fabric-diagnostics-event-generation-operational.md#application-events)
 
     ```kusto
     ServiceFabricOperationalEvent
     | where EventId >= 25623 or EventId <= 25626
     ```
 
-5. A lap tetején kattintson az "Új riasztást szabály", és most bármikor esemény érkezik alapján a lekérdezés, kap egy riasztás a kiválasztott módszernek.
+5. Kattintson az "Új riasztási szabály" tetején, és mostantól bármikor esemény érkezik alapján ez a lekérdezés, kapni fog egy riasztást a választott kommunikációs metódus az.
 
-    ![Új OMS-riasztás](media/service-fabric-diagnostics-common-scenarios/oms-create-alert.png)
+    ![Log Analytics új riasztás](media/service-fabric-diagnostics-common-scenarios/oms-create-alert.png)
 
-## <a name="how-can-i-be-alerted-of-application-upgrade-rollbacks"></a>Hogyan tudom során a rendszer értesíti az alkalmazás frissítési visszagörgetése?
+## <a name="how-can-i-be-alerted-of-application-upgrade-rollbacks"></a>Hogyan lehet szeretnék kapni az alkalmazás frissítési visszagörgetése?
 
-1. Az azonos naplófájl-keresési ablak, előtt adja meg a következő lekérdezés frissítési visszagörgetése. Ezek eseményazonosítók alatt találhatók [alkalmazás események referencia](service-fabric-diagnostics-event-generation-operational.md#application-events)
+1. Az azonos Naplókeresés ablakot, mielőtt a adja meg a következő lekérdezés frissítési visszagörgetése. Alatt található alábbi eseményazonosítók [események alkalmazásreferencia](service-fabric-diagnostics-event-generation-operational.md#application-events)
 
     ```kusto
     ServiceFabricOperationalEvent
     | where EventId == 29623 or EventId == 29624
     ```
 
-2. A lap tetején kattintson az "Új riasztást szabály", és most bármikor esemény érkezik alapján a lekérdezés, kapni fog egy riasztást.
+2. Kattintson az "Új riasztási szabály" tetején, és mostantól bármikor esemény érkezik alapján ez a lekérdezés, kapni fog egy riasztást.
 
-## <a name="how-do-i-see-container-metrics"></a>Hogyan tekinthető meg a tároló metrikák?
+## <a name="how-do-i-see-container-metrics"></a>Hogyan ellenőrizhetem tárolómetrikák?
 
-A diagramokon az azonos nézetben jelenik meg a tároló teljesítményének egyes csempék. Az OMS-ügynököt kell és [tároló figyelésére szolgáló megoldás](service-fabric-diagnostics-oms-containers.md) ezeket a csempék adatokkal való feltöltéséhez.
+Ugyanabban a nézetben az összes gráf látni fogja a teljesítmény, a tárolók néhány csempét. A Log Analytics-ügynököket kell és [Tárolómonitorozási megoldás](service-fabric-diagnostics-oms-containers.md) esetében ezek a csempék adatokkal való feltöltéséhez.
 
-![OMS tároló metrikák](media/service-fabric-diagnostics-common-scenarios/containermetrics.png)
+![Log Analytics Tárolómetrikák](media/service-fabric-diagnostics-common-scenarios/containermetrics.png)
 
 >[!NOTE]
->Az eszközre vonatkozó telemetriai adatokat a **belül** a tárolóban kell hozzáadni a [tárolók az Application Insights nuget-csomagja](https://github.com/Microsoft/ApplicationInsights-servicefabric#microsoftapplicationinsightsservicefabric--for-service-fabric-lift-and-shift-scenarios).
+>Az eszköz telemetriai **belül** a tárolóban, hozzá kell adnia a [Application Insights nuget-csomag tárolók](https://github.com/Microsoft/ApplicationInsights-servicefabric#microsoftapplicationinsightsservicefabric--for-service-fabric-lift-and-shift-scenarios).
 
-## <a name="how-can-i-monitor-performance-counters"></a>Hogyan figyelhetők a teljesítményszámlálók?
+## <a name="how-can-i-monitor-performance-counters"></a>Teljesítményszámlálók figyelése?
 
-1. Miután hozzáadta az OMS-ügynököt a fürt hozzá kell adnia az egyes teljesítményszámlálókra szeretné nyomon követni. A portál – az OMS-munkaterület oldalra léphet a munkaterület lap jelenik meg a bal oldali menüben a megoldás oldalról.
+1. Miután hozzáadta a Log Analytics-ügynököket a fürt, hozzá kell nyomon követni kívánt teljesítményszámlálókat. Keresse meg a portal – a Log Analytics-munkaterület oldalán a munkaterület lap jelenik meg a bal oldali menüben a megoldás oldaláról.
 
-    ![OMS-munkaterület lap](media/service-fabric-diagnostics-common-scenarios/workspacetab.png)
+    ![Log Analytics munkaterület lap](media/service-fabric-diagnostics-common-scenarios/workspacetab.png)
 
-2. Ha a munkaterületet lapon tartózkodik, kattintson a "Speciális beállítások" az azonos bal oldali menüjében.
+2. Amint a munkaterület lap, kattintson a "Speciális beállítások" kifejezésre a azonos bal oldali menüben.
 
-    ![Speciális beállítások OMS](media/service-fabric-diagnostics-common-scenarios/advancedsettingsoms.png)
+    ![A log Analytics speciális beállításai](media/service-fabric-diagnostics-common-scenarios/advancedsettingsoms.png)
 
-3. Kattintson az adatok > Windows-teljesítményszámlálók (adatok > Linux teljesítményszámlálók a Linux-gépek) keresztül az OMS-ügynököt a csomópontok specifikus számlálókat begyűjtése elindításához. Példa a hozzáadni kívánt számlálók formátuma
+3. Kattintson az adatok > Windows-teljesítményszámlálók (Data > Linux rendszerű gépek Linux-teljesítményszámlálók) elindításához a Log Analytics-ügynökön keresztül a csomópontok specifikus számlálókat gyűjti össze. Példa a formátum számlálók hozzáadása
 
     * `.NET CLR Memory(<ProcessNameHere>)\\# Total committed Bytes`
     * `Processor(_Total)\\% Processor Time`
     * `Service Fabric Service(*)\\Average milliseconds per request`
 
-    A gyorsindító VotingData és VotingWeb is a folyamat nevét használja, így ezek a számlálók követési néz
+    A rövid útmutatóban VotingData és VotingWeb a folyamat nevét használja, így ezek a számlálók követési láthatóhoz hasonló
 
     * `.NET CLR Memory(VotingData)\\# Total committed Bytes`
     * `.NET CLR Memory(VotingWeb)\\# Total committed Bytes`
 
-    ![OMS teljesítményszámlálói](media/service-fabric-diagnostics-common-scenarios/omsperfcounters.png)
+    ![Log Analytics gyűjthető Teljesítményszámlálókra](media/service-fabric-diagnostics-common-scenarios/omsperfcounters.png)
 
-4. Ezzel engedélyezi, hogy tekintse meg az infrastruktúra hogyan kezeli a munkaterhelések, és erőforrás-használat alapján vonatkozó riasztások beállítását. Érdemes lehet például – riasztás beállításához, ha a teljes processzorhasználat hibernálva 90 % feletti vagy alatti 5 %. A számláló neve, ehhez használja az "kihasználtsága (%). Sikerült ezt úgy teheti meg a következő lekérdezés riasztási szabály létrehozása:
+4. Ezzel lehetővé teszi az infrastruktúra hogyan kezeli a számítási feladatokat, és erőforrás-használat alapján vonatkozó riasztásokat állíthat be. Például – érdemes riasztást állít be, ha a teljes processzorhasználat 5 % alatti vagy feletti 90 %-os megfelelően. Ehhez használja a számláló neve "%-ban a processzoron." Sikerült ezt úgy teheti meg az alábbi lekérdezés a riasztási szabály létrehozása:
 
     ```kusto
     Perf | where CounterName == "% Processor Time" and InstanceName == "_Total" | where CounterValue >= 90 or CounterValue <= 5.
     ```
 
-## <a name="how-do-i-track-performance-of-my-reliable-services-and-actors"></a>Hogyan nyomon követheti a Reliable Services és szereplője teljesítménye?
+## <a name="how-do-i-track-performance-of-my-reliable-services-and-actors"></a>Hogyan nyomon követheti a Reliable Services és az Actors teljesítményét?
 
-Az alkalmazások a Reliable Services vagy szereplője teljesítmény nyomon követése, adja hozzá, valamint a Service Fabric szereplő, a Aktormetódus, a szolgáltatás és a szolgáltatás metódus számlálókat. A fenti forgatókönyv szerint hasonló módon ezeket a számlálókat is hozzáadhat, példa a megbízható szolgáltatás és szereplő teljesítményszámlálók hozzáadása a OMS
+Az alkalmazások a Reliable Services vagy az Actors teljesítmény nyomon követése, hozzá kell adnia, valamint a Service Fabric-Aktor, Aktormetódus, szolgáltatás vagy szolgáltatás metódus számlálókat. A fenti forgatókönyv szerint hasonló módon ezek a számlálók is hozzáadhat, példa a megbízható szolgáltatás és az aktor teljesítményszámlálók hozzáadása a Log Analytics:
 
 * `Service Fabric Service(*)\\Average milliseconds per request`
 * `Service Fabric Service Method(*)\\Invocations/Sec`
 * `Service Fabric Actor(*)\\Average milliseconds per request`
 * `Service Fabric Actor Method(*)\\Invocations/Sec`
 
-Ellenőrizze a megbízható a teljesítményszámlálók teljes listáját az alábbi hivatkozások [szolgáltatások](service-fabric-reliable-serviceremoting-diagnostics.md) és [Actors](service-fabric-reliable-actors-diagnostics.md)
+Ellenőrizze a Reliable-teljesítményszámlálók teljes listáját az alábbi hivatkozásokra [szolgáltatások](service-fabric-reliable-serviceremoting-diagnostics.md) és [Actors](service-fabric-reliable-actors-diagnostics.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Állítson be riasztásokat a AI](../application-insights/app-insights-alerts.md) teljesítmény vagy a használati változásaira vonatkozó értesítést
-* [Az Application Insights az észlelést intelligens](../application-insights/app-insights-proactive-diagnostics.md) hajt végre egy proaktív figyelmezteti a felhasználót, mert ez teljesítményproblémákat okozhat AI küldött telemetriai adatok elemzése
-* További tudnivalók az OMS szolgáltatáshoz [riasztási](../log-analytics/log-analytics-alerts.md) észlelési és diagnosztika.
-* A helyi fürthöz OMS szeretnék adatokat küldeni a OMS használható átjáró (http-továbbítás Proxy) kínál. További tájékoztatást talál, amely a [internetkapcsolattal nem rendelkező számítógépek kapcsolódásához az OMS-be az OMS-átjáró](../log-analytics/log-analytics-oms-gateway.md)
-* Az beszerzése familiarized a [naplófájl keresési és lekérdezése](../log-analytics/log-analytics-log-searches.md) szolgáltatásai által kínált Naplóelemzési
-* A Naplóelemzési, és mi kínál részletesebb áttekintését, olvassa el [Naplóelemzési újdonságai?](../operations-management-suite/operations-management-suite-overview.md)
+* [A mesterséges Intelligencia riasztásokat állíthat be](../application-insights/app-insights-alerts.md) szeretne értesítést kapni a teljesítmény vagy a használati változásai
+* [Intelligens detektálás az Application Insights](../application-insights/app-insights-proactive-diagnostics.md) hajtja végre a proaktív elemzésre a telemetriát küld a mesterséges Intelligencia figyelmezteti a felhasználót, mert ez teljesítményproblémákat okozhat
+* További információ a Log Analytics [riasztási](../log-analytics/log-analytics-alerts.md) , ezzel elősegítve az észlelési és a diagnosztikát.
+* A helyszíni fürtök esetén a Log Analytics-átjárót nyújt (http-továbbítás Proxy), amelyek segítségével adatokat küldeni a Log Analytics. Tudjon meg többet arról, hogy a [internetelérés nélküli számítógépek csatlakoztatása a Log Analytics használata a Log Analytics-átjáró](../log-analytics/log-analytics-oms-gateway.md)
+* Ismerkedjen meg a [naplókeresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkciók a Log Analytics részeként érhető el
+* A Log Analytics és mit kínál részletes áttekintést, olvassa el [Mi az a Log Analytics?](../operations-management-suite/operations-management-suite-overview.md)

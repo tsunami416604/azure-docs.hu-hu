@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: c58c2b255d269aef7e8b3fea62d003ad0c16ef0a
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0039536caf917a051f0ddabd6be7cf2b1be90ba2
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971248"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404902"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Az Azure Log Analytics Nozzle üzembe helyezése a Cloud Foundry figyelése
 
@@ -56,14 +56,14 @@ Mielőtt beállítaná a UAA parancssori ügyfelét, győződjön meg arról, ho
 
 ### <a name="3-create-a-log-analytics-workspace-in-azure"></a>3. Az Azure Log Analytics-munkaterület létrehozása
 
-A Log Analytics-munkaterületet is létrehozhat, manuálisan vagy egy sablon használatával. A sablon üzembe helyezni egy telepítő, előre konfigurált OMS KPI nézeteket és riasztásokat az OMS-konzolon. 
+A Log Analytics-munkaterületet is létrehozhat, manuálisan vagy egy sablon használatával. A sablon üzembe helyezni egy előre konfigurált KPI-nézetek és riasztások a Log Analytics-konzol telepítése. 
 
 #### <a name="to-create-the-workspace-manually"></a>A munkaterület manuális létrehozásához:
 
 1. Az Azure Portalon a szolgáltatások listájában keresse az Azure piactéren, és válassza ki a Log Analytics.
 2. Válassza ki **létrehozás**, majd válassza ki az egyik lehetőséget a következő elemeknél:
 
-   * **OMS-munkaterület**: írja be a munkaterület nevét.
+   * **Log Analytics-munkaterület**: írja be a munkaterület nevét.
    * **Előfizetés**: Ha több előfizetéssel rendelkezik, kiválaszthatja a ugyanaz, mint a CF-telepítés.
    * **Erőforráscsoport**: hozzon létre egy új erőforráscsoportot, vagy használja ugyanazt a CF-hez üzemelő példány.
    * **Hely**: Adja meg a helyet.
@@ -71,19 +71,19 @@ A Log Analytics-munkaterületet is létrehozhat, manuálisan vagy egy sablon has
 
 További információkért lásd: [Ismerkedés a Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
 
-#### <a name="to-create-the-oms-workspace-through-the-oms-monitoring-template-from-azure-market-place"></a>Az OMS-figyelési sablon segítségével az OMS-munkaterület létrehozása az Azure Marketplace-beli:
+#### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>A figyelési sablon segítségével a Log Analytics-munkaterület létrehozása az Azure Marketplace-beli:
 
 1. Nyissa meg az Azure Portalon.
 2. Kattintson a "+" jelre, vagy az "Erőforrás létrehozása" a bal felső sarokban.
-3. Írja be a "Cloud Foundry" kifejezést a keresési ablakba, és válassza a "OMS Cloud Foundry figyelési megoldás".
-4. Az OMS a Cloud Foundry figyelési megoldást sablon első lapon be van töltve, a sablon panel elindításához a "Létrehozás" gombra.
+3. Írja be a "Cloud Foundry" kifejezést a keresési ablakba, és válassza a "Cloud Foundry figyelési megoldás".
+4. A Cloud Foundry figyelési megoldást sablon első lapon be van töltve, a sablon panel elindításához a "Létrehozás" gombra.
 5. Adja meg a szükséges paramétereket:
-    * **Előfizetés**: válassza ki az OMS-munkaterülethez, általában ugyanaz a Cloud Foundry üzembe helyezés az Azure-előfizetést.
-    * **Erőforráscsoport**: Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat az OMS-munkaterületet.
+    * **Előfizetés**: válassza ki a Log Analytics-munkaterületet, általában ugyanaz a Cloud Foundry üzembe helyezés az Azure-előfizetést.
+    * **Erőforráscsoport**: Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat a Log Analytics-munkaterületet.
     * **Erőforráscsoport helye**: válassza ki az erőforráscsoport helyét.
     * **OMS_Workspace_Name**: Adjon meg egy nevet, ha a munkaterület nem létezik, a sablon létrehoz egy új.
     * **OMS_Workspace_Region**: válassza ki a munkaterület helyét.
-    * **OMS_Workspace_Pricing_Tier**: válassza ki az OMS-munkaterület Termékváltozat. Tekintse meg a [díjszabási útmutatóját](https://azure.microsoft.com/pricing/details/log-analytics/) referenciaként.
+    * **OMS_Workspace_Pricing_Tier**: válassza ki a Log Analytics-munkaterület Termékváltozat. Tekintse meg a [díjszabási útmutatóját](https://azure.microsoft.com/pricing/details/log-analytics/) referenciaként.
     * **Jogi feltételek**: kattintson a jogi feltételeket, majd kattintson a "Létrehozás" fogadja el a jogi kifejezés.
 - Után minden paraméter meg van adva, kattintson a "Létrehozás" a sablon üzembe helyezéséhez. Az üzembe helyezés befejezése után az állapot jelennek meg az értesítési lapon.
 
@@ -137,8 +137,8 @@ cd oms-log-analytics-firehose-nozzle
 Most már beállíthatja a környezeti változók a manifest.yml fájl az aktuális könyvtárban található. Az alábbiakban látható a Nozzle manifest aplikace. Értékeket cserélje le a Log Analytics munkaterület információkat.
 
 ```
-OMS_WORKSPACE             : Log Analytics workspace ID: open OMS portal from your Log Analytics workspace, select Settings, and select connected sources.
-OMS_KEY                   : OMS key: open OMS portal from your Log Analytics workspace, select Settings, and select connected sources.
+OMS_WORKSPACE             : Log Analytics workspace ID: Open your Log Analytics workspace in the Azure portal, select **Advanced settings**, select **Connected Sources**, and select **Windows Servers**.
+OMS_KEY                   : OMS key: Open your Log Analytics workspace in the Azure portal, select **Advanced settings**, select **Connected Sources**, and select **Windows Servers**.
 OMS_POST_TIMEOUT          : HTTP post timeout for sending events to Log Analytics. The default is 10 seconds.
 OMS_BATCH_TIME            : Interval for posting a batch to Log Analytics. The default is 10 seconds.
 OMS_MAX_MSG_NUM_PER_BATCH : The maximum number of messages in a batch to Log Analytics. The default is 1000.
@@ -177,11 +177,11 @@ cf apps
 ```
 Győződjön meg arról, hogy az OMS Nozzle alkalmazás fut-e.
 
-## <a name="view-the-data-in-the-oms-portal"></a>Az adatok megtekintése az OMS-portálon
+## <a name="view-the-data-in-the-azure-portal"></a>Az adatok megtekintése az Azure Portalon
 
-Ha telepítette az OMS-megoldás segítségével figyelés a Marketplace-beli sablon Azure Portalon, és az OMS-megoldás található. A sablonban megadott erőforráscsoportban találja a megoldást. Kattintson a megoldást, keresse meg a "OMS konzolt", az előre konfigurált nézeteket szerepel a listában, felső Cloud Foundry rendszer KPI-k, az alkalmazásadatok, a riasztások és a virtuális gép mérőszámok. 
+Ha telepítette a figyelési megoldás a Marketplace-beli sablonon keresztül, az Azure portal megnyitása, és keresse meg a megoldás. A sablonban megadott erőforráscsoportban találja a megoldást. Kattintson a megoldást, keresse meg a "Log Analytics konzolt", az előre konfigurált nézeteket szerepel a listában, felső Cloud Foundry rendszer KPI-k, az alkalmazásadatok, a riasztások és a virtuális gép mérőszámok. 
 
-Ha manuálisan hozott létre az OMS-munkaterülethez, kövesse az alábbi lépéseket, a nézeteket és riasztásokat hozhat létre:
+Ha manuálisan hozott létre a Log Analytics-munkaterülethez, kövesse az alábbi lépéseket, a nézeteket és riasztásokat hozhat létre:
 
 ### <a name="1-import-the-oms-view"></a>1. Importálja az OMS-nézet
 
@@ -246,6 +246,6 @@ Az Azure Log Analytics Nozzle a nyílt forráskóddal. A kérdések és visszaje
 
 ## <a name="next-step"></a>Következő lépés
 
-PCF2.0, a virtuális gép teljesítmény-mérőszámok kerüljenek az Azure log analytics nozzle rendszer metrikák továbbítót, és integrálva az OMS-munkaterületet. Már nincs szüksége az OMS-ügynököt a virtuális gép teljesítmény-mérőszámon. Syslog-információk gyűjtésére azonban az OMS-ügynök továbbra is használhatja. Az OMS-ügynök telepítve van egy Bosh végpontállapot CF virtuális gépekhez. 
+PCF2.0, a virtuális gép teljesítmény-mérőszámok kerüljenek az Azure log analytics nozzle rendszer metrikák továbbítót, és a Log Analytics-munkaterület integrálva. Már nincs szüksége a Log Analytics-ügynököket a virtuális gép teljesítmény-mérőszámon. Syslog kapcsolatos információk összegyűjtéséhez azonban a Log Analytics-ügynökök továbbra is használhatja. A Log Analytics-ügynök telepítve van egy Bosh végpontállapot CF virtuális gépekhez. 
 
-További információkért lásd: [üzembe helyezése OMS-ügynök a Cloud Foundry telepítés](https://github.com/Azure/oms-agent-for-linux-boshrelease).
+További információkért lásd: [üzembe helyezése a Log Analytics-ügynök a Cloud Foundry telepítés](https://github.com/Azure/oms-agent-for-linux-boshrelease).

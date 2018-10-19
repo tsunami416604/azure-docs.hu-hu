@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f8fe86712b59a896d1f431ef677f592ced382db8
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e20ae31ae64483d4d11b793f1c8656107413c05d
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312073"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406194"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Identitásszinkronizálás és ismétlődő attribútumok rugalmassága
 Ismétlődő attribútumok rugalmassága lehetővé teszi az Azure Active Directoryban, amely kiküszöböli a fennakadások nélkül használható által okozott az **UserPrincipalName** és **ProxyAddress** ütközik a Microsoft egyik futtatásakor szinkronizálás eszközökkel.
@@ -122,7 +122,7 @@ Címtár-szinkronizálási hibák az Office 365 felügyeleti központban tekinth
 
 ![Aktív felhasználók](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "aktív felhasználók")
 
-Címtár-szinkronizálási hibák megtekintése az Office 365 felügyeleti központban, lásd: [azonosíthatja a címtár-szinkronizálási hibák az Office 365-ben](https://support.office.com/en-us/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
+Címtár-szinkronizálási hibák megtekintése az Office 365 felügyeleti központban, lásd: [azonosíthatja a címtár-szinkronizálási hibák az Office 365-ben](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
 
 ### <a name="identity-synchronization-error-report"></a>Szinkronizálási hibajelentés identitás
 Ha ütközés duplikált attribútummal rendelkező objektum történik az új viselkedéssel értesítést tartalmazza a standard szintű szinkronizálási hibajelentés identitás küldött e-mail sablonjaként szolgál műszaki értesítési forduljon a bérlő számára. Van azonban fontos változás az ezt a viselkedést. Múltbeli időpont ismétlődő attribútum ütközés információ lenne szerepelnek minden ezt követő hibajelentés az ütközést megszüntetéséig. Az új viselkedéssel egy adott ütközés hibaértesítésre csak jelennek meg egyszer – az ütköző attribútum karanténba időpontjában.
@@ -173,5 +173,5 @@ Kell mutatnia [ https://aka.ms/duplicateattributeresiliency ](https://aka.ms/dup
 ## <a name="see-also"></a>Lásd még
 * [Az Azure AD Connect szinkronizálása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)
-* [Azonosítsa a címtár-szinkronizálási hibák az Office 365-ben](https://support.office.com/en-us/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
+* [Azonosítsa a címtár-szinkronizálási hibák az Office 365-ben](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
 

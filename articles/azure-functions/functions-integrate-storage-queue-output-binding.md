@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 84783472adda9a4a74670f0579790aac69feb23d
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: e48eac4cdc1e98e21a122850b1dc7d3e8f4efe07
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094994"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854524"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Üzenetek hozzáadása az Azure Storage üzenetsorába a Functions szolgáltatás használatával
 
@@ -25,7 +25,7 @@ Az Azure Functions bemeneti és kimeneti kötései deklaratív módszert biztos�
 
 ![A Storage Explorerben megjelenő üzenetsori üzenet](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 
-## <a name="prerequisites"></a>Előfeltételek 
+## <a name="prerequisites"></a>Előfeltételek
 
 A gyorsútmutató elvégzéséhez:
 
@@ -39,15 +39,19 @@ Ebben a szakaszban a portál felhasználói felületén fogja hozzáadni egy üz
 
 1. Az Azure Portalon nyissa meg [Az első függvény létrehozása az Azure Portalon](functions-create-first-azure-function.md) útmutatóban létrehozott függvényalkalmazás oldalát. Ehhez válassza a **Minden szolgáltatás > Függvényalkalmazások** lehetőséget, majd válassza ki a függvényalkalmazást.
 
-2. Válassza ki a korábbi rövid útmutatóban létrehozott függvényt.
+1. Válassza ki a korábbi rövid útmutatóban létrehozott függvényt.
 
 1. Válassza az **Integrálás > Új kimenet > Azure Queue Storage** lehetőséget.
 
 1. Kattintson a **Kiválasztás** gombra.
-    
+
     ![Vegye fel egy üzenetsor-tároló kimeneti kötését egy függvénybe az Azure Portalon.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
-3. Az **Azure Queue Storage-kimenet** területen használja a következő képernyőkép alatti táblázatban megadott beállításokat: 
+1. Ha **Nincsenek telepített bővítmények** üzenetet kap, válassza a **Telepítés** lehetőséget a Storage-kötésbővítmény függvényalkalmazásban való telepítéséhez. Ez egy-két percet vesz igénybe.
+
+    ![A Storage-kötésbővítmény telepítése](./media/functions-integrate-storage-queue-output-binding/functions-integrate-install-binding-extension.png)
+
+1. Az **Azure Queue Storage-kimenet** területen használja a következő képernyőkép alatti táblázatban megadott beállításokat: 
 
     ![Vegye fel egy üzenetsor-tároló kimeneti kötését egy függvénybe az Azure Portalon.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
 
@@ -57,52 +61,58 @@ Ebben a szakaszban a portál felhasználói felületén fogja hozzáadni egy üz
     | **Tárfiók kapcsolata** | AzureWebJobsStorage | Választhatja a függvényalkalmazás által már használt tárfiókkapcsolatot, vagy létrehozhat egy újat.  |
     | **Üzenetsor neve**   | outqueue    | A tárfiókhoz csatlakoztatni kívánt üzenetsor neve. |
 
-4. Kattintson a **Mentés** gombra a kötés felvételéhez.
- 
+1. Kattintson a **Mentés** gombra a kötés felvételéhez.
+
 Miután meghatározta a kimeneti kötést, módosítania kell a kódot, hogy az a kötés használatával üzeneteket adjon hozzá az üzenetsorhoz.  
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Kimeneti kötést használó kód hozzáadása
 
 Ebben a szakaszban egy olyan kódot fog hozzáadni, amely a kimeneti üzenetsorba ír üzeneteket. Ez az üzenet tartalmazza az értéket, amelyet a HTTP-eseményindító a lekérdezési sztringben kap meg. Ha például a lekérdezési sztring a `name=Azure` értéket tartalmazza, az üzenetsorban található üzenet a következő lesz: *A függvénynek átadott név: Azure*.
 
-1. A függvényre kattintva jelenítse meg a szerkesztőben a függvénykódot. 
+1. A függvényre kattintva jelenítse meg a szerkesztőben a függvénykódot.
 
-2. C#-függvények esetében ennek használatához adjon hozzá egy metódus-paramétert a kötéshez, és írja meg a kódot:
+1. Frissítse a függvénykódot a függvény nyelvétől függően:
 
-   Adjon hozzá egy **outputQueueItem** paramétert a metódus aláírásához, ahogy az alábbi példában is látható. A paraméter neve ugyanaz lesz, mint amit a kötés létrehozásakor az **Üzenet-paraméter neve** mezőben megadott.
+    # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
-   ```cs   
-   public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, 
-       ICollector<string> outputQueueItem, TraceWriter log)
-   {
-       ...
-   }
-   ```
+    Adjon hozzá egy **outputQueueItem** paramétert a metódus aláírásához, ahogy az alábbi példában is látható.
 
-   A C#-függvény törzsében, a `return` utasítás előtt adja hozzá az üzenetsori üzenet létrehozására szolgáló paramétert használó kódot.
+    ```cs
+    public static async Task<IActionResult> Run(HttpRequest req,
+        ICollector<string> outputQueueItem, ILogger log)
+    {
+        ...
+    }
+    ```
 
-   ```cs
-   outputQueueItem.Add("Name passed to the function: " + name);     
-   ```
+    A függvény törzsében, a `return` utasítás előtt adja hozzá az üzenetsori üzenet létrehozására szolgáló paramétert használó kódot.
 
-3. JavaScript-függvények esetében olyan kódot adjon hozzá, amely a `context.bindings` objektumon alkalmazza a kimeneti kötést az üzenetsori üzenetek létrehozásához. Ezt a kódot a `context.done` utasítás elé írja be.
+    ```cs
+    outputQueueItem.Add("Name passed to the function: " + name);
+    ```
 
-   ```javascript
-   context.bindings.outputQueueItem = "Name passed to the function: " + 
-               (req.query.name || req.body.name);
-   ```
+    # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
-4. A módosítások mentéséhez kattintson a **Mentés** elemre.
- 
-## <a name="test-the-function"></a>A függvény tesztelése 
+    Olyan kódot adjon hozzá, amely a `context.bindings` objektumon alkalmazza a kimeneti kötést az üzenetsori üzenetek létrehozásához. Ezt a kódot a `context.done` utasítás elé írja be.
+
+    ```javascript
+    context.bindings.outputQueueItem = "Name passed to the function: " + 
+                (req.query.name || req.body.name);
+    ```
+
+    ---
+
+1. A módosítások mentéséhez kattintson a **Mentés** elemre.
+
+## <a name="test-the-function"></a>A függvény tesztelése
 
 1. A kód módosításainak mentése után kattintson a **Futtatás** elemre. 
 
     ![Vegye fel egy üzenetsor-tároló kimeneti kötését egy függvénybe az Azure Portalon.](./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png)
 
-   Figyelje meg, hogy a **Kérelem törzse** tartalmazza az *Azure* `name` értéket. Ez az érték jelenik meg a létrehozott üzenetsori üzenetben a függvény meghívásakor.
-
-   A **Futtatás** lehetőség kiválasztása helyett egy URL-cím böngészőbe történő beírásával is meghívhatja a függvényt, ahol a lekérdezési sztringben adhatja meg a `name` értékét. A böngésző használatával végrehajtott módszert az [előző rövid útmutatóban](functions-create-first-azure-function.md#test-the-function) ismertettük.
+    Figyelje meg, hogy a **Kérelem törzse** tartalmazza az *Azure* `name` értéket. Ez az érték jelenik meg a létrehozott üzenetsori üzenetben a függvény meghívásakor.
+    
+    A **Futtatás** lehetőség kiválasztása helyett egy URL-cím böngészőbe történő beírásával is meghívhatja a függvényt, ahol a lekérdezési sztringben adhatja meg a `name` értékét. A böngésző használatával végrehajtott módszert az [előző rövid útmutatóban](functions-create-first-azure-function.md#test-the-function) ismertettük.
 
 2. A naplók ellenőrzésével győződjön meg arról, hogy sikeres volt a függvény futtatása. 
 

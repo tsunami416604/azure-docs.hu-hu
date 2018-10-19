@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: e3770fe29d6f1073a0ca6507fdf57059cbd3727e
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: f5906a93e92691cb6046fb04a9fd83f3484e17b8
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067536"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427399"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -200,7 +200,7 @@ A feltétel-e egy **mező** megfelel bizonyos feltételeknek. A támogatott felt
 Használatakor a **például** és **notLike** feltételek, megadhat egy helyettesítő karaktert tartalmazó `*` értéke.
 Az érték nem tartalmazhat egynél több helyettesítő `*`.
 
-Használatakor a **megfelelő** és **notMatch** adja meg a feltételeket, `#` , amelyek egy számjegyet `?` betűvel, és minden más karaktert a tényleges karakter helyettesítéséhez. Példák: [lehetővé teszik több név minták](../samples/allow-multiple-name-patterns.md).
+Használatakor a **egyeznie** és **notMatch** adja meg a feltételeket, `#` képviselő számjegy, `?` egy levél `.` megfelelően az összes karaktert, és bármilyen más karakter a tényleges karakter helyettesítéséhez. Példák: [lehetővé teszik több név minták](../samples/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Mezők
 

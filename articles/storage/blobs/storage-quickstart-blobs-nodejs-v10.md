@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 09/19/2018
 ms.author: cshoe
-ms.openlocfilehash: a325029ded60a1cd8274743a88f7a4d410466dea
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6e23e888a1c90e1c6c7eecf25491f048e9077f11
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987577"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857890"
 ---
 # <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript-preview"></a>Rövid útmutató: Blobok feltöltése, letöltése, listázása és törlése a JavaScripthez készült Azure Storage SDK 10-es verziójának (előzetes verzió) használatával
 
@@ -128,7 +128,7 @@ A következő konstansok segítenek feltárni a fájlméretszámítás célját 
 const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
-Beállítható, hogy az API-kérelmek egy adott időtartam után időtúllépésbe kerüljenek. Az *Aborter* osztály feladata a kérelmek időtúllépésének kezelése, és a mintában az időtúllépések meghatározása a következő állandó alkalmazásával történik.
+Beállítható, hogy az API-kérelmek egy adott időtartam után időtúllépésbe kerüljenek. Az [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-preview) osztály feladata a kérelmek időtúllépésének kezelése, és a mintában az időtúllépések meghatározása a következő állandó alkalmazásával történik.
 ```javascript
 const ONE_MINUTE = 60 * 1000;
 ```
@@ -163,13 +163,13 @@ const serviceURL = new ServiceURL(`https://${STORAGE_ACCOUNT_NAME}.blob.core.win
 ```
 Ebben a kódblokkban a következő osztályokat használjuk:
 
-- A *SharedKeyCredential* osztály a tárfiókok hitelesítő adatainak beburkolását végzi a kérelemfolyamatoknak való átadás érdekében.
+- A [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-preview) osztály a tárfiókok hitelesítő adatainak beburkolását végzi a kérelemfolyamatoknak való átadás érdekében.
 
-- A *StorageURL* osztály az új folyamatok létrehozására szolgál.
+- A [StorageURL](/javascript/api/%40azure/storage-blob/storageurl?view=azure-node-preview) osztály az új folyamatok létrehozására szolgál.
 
-- A *ServiceURL* osztály egy, a REST API-ban használt URL modellezését végzi. Az osztály példányaival olyan műveletek hajthatók végre, mint például a tárolók listázása és a környezeti információk megadása a tárolók URL-címeinek létrehozásához.
+- A [ServiceURL](/javascript/api/%40azure/storage-blob/serviceurl?view=azure-node-preview) osztály egy, a REST API-ban használt URL modellezését végzi. Az osztály példányaival olyan műveletek hajthatók végre, mint például a tárolók listázása és a környezeti információk megadása a tárolók URL-címeinek létrehozásához.
 
-A *ServiceURL*-példányt a *ContainerURL*- és *BlockBlobURL*-példányokkal együtt használva kezelhetők a tárfiókban lévő tárolók és blobok.
+A *ServiceURL*-példányt a [ContainerURL](/javascript/api/%40azure/storage-blob/containerurl?view=azure-node-preview)- és [BlockBlobURL](/javascript/api/%40azure/storage-blob/blockbloburl?view=azure-node-preview)-példányokkal együtt használva kezelhetők a tárfiókban lévő tárolók és blobok.
 
 ```javascript
 const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
@@ -202,7 +202,7 @@ Az Aborterek (megszakítók) lehetővé teszik a kérelmek szabályzását, mive
 - kijelölhető egy adott kérelemköteg számára rendelkezésre álló idő,
 - kijelölhető, hogy egy adott egyéni kérelem milyen hosszan futhat a kötegben,
 - visszavonhatók a kérelmek,
-- az *Aborter.None* statikus tag használatával megakadályozható, hogy a kérelmek egyáltalán időtúllépésbe kerüljenek
+- az *Aborter.none* statikus tag használatával megakadályozható, hogy a kérelmek egyáltalán időtúllépésbe kerüljenek
 
 ### <a name="show-container-names"></a>Tárolónevek megjelenítése
 A fiókok rengeteg tárolót tartalmazhatnak. A következő kód bemutatja, hogyan lehet a tárolókat szegmentált módon listázni, aminek segítségével nagy számú tárolót tekinthet át. A *showContainerNames* függvénynek *ServiceURL*- és *Aborter*-példányokat adunk át.

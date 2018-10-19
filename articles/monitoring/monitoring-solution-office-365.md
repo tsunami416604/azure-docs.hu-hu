@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: e3620bbf92cab926d56c4de0817f833b61cf2b03
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d1fdec8e3a959aaeb68d4b63a1c71d6ef1ddd054
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125085"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406321"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Az Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -37,7 +37,7 @@ A következő kötelező végezniük a megoldás telepítve és konfigurálva.
 
 - Szervezeti Office 365-előfizetéssel.
 - Egy felhasználói fiókot, amely globális rendszergazda hitelesítő adatait.
-- Naplózási adatok fogadására, kell [naplózás konfigurálása](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin) az Office 365-előfizetéssel.  Vegye figyelembe, hogy [postaláda-naplózás](https://technet.microsoft.com/library/dn879651.aspx) külön van konfigurálva.  Továbbra is a megoldás telepítése és egyéb adatok gyűjtése, ha naplózás nincs konfigurálva.
+- Naplózási adatok fogadására, kell [naplózás konfigurálása](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin) az Office 365-előfizetéssel.  Vegye figyelembe, hogy [postaláda-naplózás](https://technet.microsoft.com/library/dn879651.aspx) külön van konfigurálva.  Továbbra is a megoldás telepítése és egyéb adatok gyűjtése, ha naplózás nincs konfigurálva.
  
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
@@ -477,7 +477,7 @@ Az Office 365 felügyeleti megoldás részben ismertetett eljárással eltávol�
 
 ## <a name="data-collection"></a>Adatgyűjtés
 ### <a name="supported-agents"></a>Támogatott ügynökök
-Az Office 365-megoldás nem adatlekéréshez bármelyikét a [OMS-ügynökök](../log-analytics/log-analytics-data-sources.md).  Lekéri az adatokat közvetlenül az Office 365-höz.
+Az Office 365-megoldás nem adatlekéréshez bármelyikét a [Log Analytics-ügynökök](../log-analytics/log-analytics-data-sources.md).  Lekéri az adatokat közvetlenül az Office 365-höz.
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
 Kezdetben gyűjtendő adatokat, több óráig is eltarthat. Miután gyűjtése kezdődik, az Office 365 küld egy [webhook értesítési](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) részletes adatokat a Log Analyticshez való minden alkalommal, amikor létrejön egy rekord. Ez a rekord fogadását követően néhány percen belül a Log Analytics érhető el.
@@ -518,7 +518,7 @@ A következő tulajdonságok megegyeznek az összes Office 365-rekord.
 | A szervezeti | A szervezet Office 365-bérlőhöz tartozó GUID azonosítója. Ez az érték mindig lesz azonos, a szervezete számára, függetlenül az Office 365 szolgáltatás, amelyben történik. |
 | RecordType | Végrehajtott művelet típusát. |
 | ResultStatus | Azt jelzi, hogy a (művelet tulajdonságban megadott) művelet sikeres volt-e vagy sem. Lehetséges értékek: Succeeded, PartiallySucceded vagy sikertelen. Az Exchange-rendszergazdai tevékenységhez, értéke pedig IGAZ vagy hamis. |
-| Felhasználói azonosító | A rekordnaplózást eredményező naplózott; műveletet végrehajtó felhasználó egyszerű Felhasználóneve (egyszerű felhasználónév) Ha például my_name@my_domain_name. Vegye figyelembe, hogy a Rendszerfiókok (például a SHAREPOINT\system vagy NTAUTHORITY\SYSTEM) által végrehajtott tevékenységek rekordjai is szerepelnek. | 
+| UserId | A rekordnaplózást eredményező naplózott; műveletet végrehajtó felhasználó egyszerű Felhasználóneve (egyszerű felhasználónév) Ha például my_name@my_domain_name. Vegye figyelembe, hogy a Rendszerfiókok (például a SHAREPOINT\system vagy NTAUTHORITY\SYSTEM) által végrehajtott tevékenységek rekordjai is szerepelnek. | 
 | UserKey | Egy alternatív Azonosítót a felhasználó a UserId tulajdonság azonosítja.  Például ez a tulajdonság megjelenik a passport egyedi azonosító (PUID), és az Exchange a SharePoint, a onedrive-on a felhasználók által végrehajtott eseményeket. Ez a tulajdonság is megadható ugyanazt az értéket a UserID tulajdonság számára a más szolgáltatások és a rendszer fiókok által végrehajtott eseményeket bekövetkező események|
 | UserType | A műveletet végrehajtó felhasználó típusa.<br><br>Adminisztratív körzet<br>Alkalmazás<br>DcAdmin<br>Rendszeres<br>Foglalt<br>ServicePrincipal<br>Rendszer |
 

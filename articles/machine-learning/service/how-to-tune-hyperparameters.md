@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 950d985ca87cce484edeb7930ca1bda34d812f33
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 13820dd511d31217b79385e893edbb55a3a57693
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344132"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430019"
 ---
 # <a name="tune-hyperparameters-for-your-model"></a>Hiperparaméterek a modell finomhangolása
 
@@ -141,8 +141,9 @@ param_sampling = BayesianParameterSampling( {
 ```
 
 > [!NOTE]
-> Bayes mintavételi nem támogatja a korai lemondási házirendek (lásd: [adjon meg egy korai lemondási szabályzatot](#specify-an-early-termination-policy)). Bayes paraméter-mintavétel használatakor beállítása `early_termination_policy = None`, vagy hagyja a `early_termination_policy` paraméter.
-`
+> Bayes mintavételi nem támogatja a korai lemondási házirendek (lásd: [adjon meg egy korai lemondási szabályzatot](#specify-early-termination-policy)). Bayes paraméter-mintavétel használatakor beállítása `early_termination_policy = None`, vagy hagyja a `early_termination_policy` paraméter.
+
+<a name='specify-primary-metric-to-optimize'/>
 
 ## <a name="specify-primary-metric"></a>Adja meg az elsődleges metrika
 
@@ -158,9 +159,11 @@ primary_metric_goal=PrimaryMetricGoal.MAXIMIZE
 
 Optimalizálhatja a futtatások "pontossága" maximalizálása érdekében.  Ellenőrizze, hogy ez az érték jelentkezzen be a tanítási szkriptet.
 
+<a name='log-metrics-for-hyperparameter-tuning'/>
+
 ### <a name="log-metrics-for-hyperparameter-tuning"></a>Napló metrikáinak hiperparaméter finomhangolása
 
-A modell a tanítási szkriptet kell jelentkeznie a releváns metrikákat modell betanítása közben. A hiperparaméter finomhangolása konfigurálásakor adja meg a elsődleges metrika futtatási teljesítmény kiértékelésekor használandó. (Lásd: [adjon meg egy elsődleges metrika optimalizálása](#specify-a-primary-metric-to-optimize).)  A tanítási szkriptet Ez a metrika kell jelentkeznie, így a hiperparaméter finomhangolása a folyamat a rendelkezésére áll.
+A modell a tanítási szkriptet kell jelentkeznie a releváns metrikákat modell betanítása közben. A hiperparaméter finomhangolása konfigurálásakor adja meg a elsődleges metrika futtatási teljesítmény kiértékelésekor használandó. (Lásd: [adjon meg egy elsődleges metrika optimalizálása](#specify-primary-metric-to-optimize).)  A tanítási szkriptet Ez a metrika kell jelentkeznie, így a hiperparaméter finomhangolása a folyamat a rendelkezésére áll.
 
 Ez a metrika jelentkezzen be az alábbi minta kódrészlettel a tanítási szkriptet:
 
@@ -171,6 +174,8 @@ run_logger.log("accuracy", float(val_accuracy))
 ```
 
 Kiszámítja a tanítási szkriptet a `val_accuracy` és naplózza, mint "pontossággal", mint az elsődleges metrika használt. A mérőszám a rendszer naplózza minden alkalommal, amikor megkapta a hiperparaméter finomhangolása a szolgáltatás. A modell fejlesztő határozza meg, hogy milyen gyakran kell jelentse, ez a metrika esetén.
+
+<a name='specify-early-termination-policy'/>
 
 ## <a name="specify-early-termination-policy"></a>Korai lemondási házirend megadása
 
@@ -297,7 +302,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hyperdrive_run_config)
 ```
 
-`experiment_name` a neve, hozzárendeli a hiperparaméter finomhangolása a kísérletet, és `workspace` a munkaterülete, amelyben meg szeretné a kísérlet létrehozása (kísérletek további információkért lásd: [Azure Machine Learning szolgáltatás működése?](/concept-azure-machine-learning-architecture.md))
+`experiment_name` a neve, hozzárendeli a hiperparaméter finomhangolása a kísérletet, és `workspace` a munkaterülete, amelyben meg szeretné a kísérlet létrehozása (kísérletek további információkért lásd: [Azure Machine Learning szolgáltatás működése?](concept-azure-machine-learning-architecture.md))
 
 ## <a name="visualize-experiment"></a>Kísérlet megjelenítése
 
@@ -320,7 +325,7 @@ Ezenkívül vizuálisan azonosíthatja a teljesítmény és az egyes hiperparam�
 
 ![a hiperparaméter finomhangolása párhuzamos koordináták](media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)
 
-Az összes a hiperparaméter finomhangolása fut, valamint az Azure webes portálján jelenítheti meg. A kísérlet megtekintése a webportálon további információkért lásd: [nyomon követését expirements](/how-to-track-experiments.md/#view-the-experiment-in-the-web-portal).
+Az összes a hiperparaméter finomhangolása fut, valamint az Azure webes portálján jelenítheti meg. A kísérlet megtekintése a webportálon további információkért lásd: [nyomon követését kísérletek](how-to-track-experiments.md#view-the-experiment-in-the-web-portal).
 
 ![hiperparaméter hangolási portál](media/how-to-tune-hyperparameters/HyperparameterTuningPortal.png)
 

@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 706e946e61f7d5f48ce5071e90d724af717449d9
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 724603fdb80e6fce7d5b8756655d23a6c32d5558
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575218"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405463"
 ---
 # <a name="azure-operational-security-overview"></a>Az Azure működési biztonság – áttekintés
 [Az Azure operational security](https://docs.microsoft.com/azure/security/azure-operational-security) hivatkozik a szolgáltatások, a vezérlők és a felhasználók számára elérhető szolgáltatások védelme érdekében az adatokat, alkalmazásokat és egyéb eszközök, Microsoft Azure-ban. Olyan keretrendszer, amely magában foglalja a különböző képességeket, amelyek a Microsoft egyedülálló szerzett ismeretek. Ezek közé tartozik a Microsoft biztonsági fejlesztési életciklus (SDL), a Microsoft Security Response Center programhoz és a kiberbiztonsági fenyegetések világának.
 
-## <a name="operations-management-suite"></a>Operations Management Suite
+##  <a name="azure-management-services"></a>Az Azure felügyeleti szolgáltatások
 Az informatikai üzemeltetési csapat felelős az Adatközpont-infrastruktúrába, alkalmazások és adatok, beleértve a stabilitás és ezek a rendszerek biztonságát kezelése. Biztonsági következtetéseket között összetett IT-környezetek gyakran növelése azonban szükség van a szervezetek számára, hogy cobble együtt több biztonsági és felügyeleti rendszerek adatait.
 
-[A Microsoft Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) egy felhőalapú, informatikai felügyeleti megoldás, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúrára. A következő szolgáltatásokat futtató Azure-ban a legfontosabb funkcióit biztosítja. Mindegyik szolgáltatás egy adott felügyeleti funkciót biztosít. Különféle felügyeleti forgatókönyvek valósíthatók szolgáltatások kombinálásával. 
+[A Microsoft Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) egy felhőalapú, informatikai felügyeleti megoldás, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúrára. A következő szolgáltatásokat futtató Azure-ban a legfontosabb funkcióit biztosítja. Az Azure több tartalmaz szolgáltatások, amelyek segítségével kezelése és védelme a helyszíni és felhőalapú infrastruktúrára. Mindegyik szolgáltatás egy adott felügyeleti funkciót biztosít. Különféle felügyeleti forgatókönyvek valósíthatók szolgáltatások kombinálásával. 
 
-### <a name="log-analytics"></a>Log Analytics
-[Az Azure Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) adatokat gyűjt a felügyelt erőforrások egy központi tárházba az Operations Management Suite figyelési szolgáltatásokat biztosít. Ezek az adatok lehetnek események, teljesítményadatok vagy az API segítségével biztosított egyéni adatok. Az adatok begyűjtését követően érhető el a riasztások, elemzéshez vagy exportáláshoz. 
+### <a name="azure-monitor"></a>Azure Monitor
+[Az Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/overview) felügyelt sourcesa központi adattárolókhoz való gyűjti az adatokat. Ezek az adatok lehetnek események, teljesítményadatok vagy az API segítségével biztosított egyéni adatok. Az adatok begyűjtését követően érhető el a riasztások, elemzéshez vagy exportáláshoz. 
 
 Különböző forrásokból származó adatok egyesítése, és az Azure-szolgáltatásokból származó adatokat kombinálva a meglévő helyszíni környezetben. A log Analytics, hogy az összes művelet is elérhető a különféle adatokon továbbá egyértelműen elkülöníti az adatok gyűjtését az adatok, végrehajtott műveletet.
 
@@ -85,7 +85,7 @@ A Security Center a biztonsági problémák és biztonsági rések azonosítás�
 >[!Note]
 >További információ a szerepkörökről, és láthatja a műveletek a Security Centerben engedélyezett [engedélyek az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-permissions).
 
-A Security Center a Microsoft Monitoring Agentet használja. Ez a ugyanaz az ügynök, amely az Operations Management Suite és a Log Analytics szolgáltatás használ. Ettől az ügynöktől gyűjtött adatok tárolva van egy meglévő Log Analytics [munkaterület](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access) társított Azure-előfizetését, vagy egy új munkaterületet, az a virtuális gép földrajzi helyének figyelembevételével.
+A Security Center a Microsoft Monitoring Agentet használja. Ez a ugyanaz az ügynök a Log Analytics szolgáltatás által használt. Ettől az ügynöktől gyűjtött adatok tárolva van egy meglévő Log Analytics [munkaterület](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access) társított Azure-előfizetését, vagy egy új munkaterületet, az a virtuális gép földrajzi helyének figyelembevételével.
 
 ## <a name="azure-monitor"></a>Azure Monitor
 A felhőalkalmazások teljesítményével kapcsolatos problémákat befolyásolhatja az üzleti. Több egymáshoz kapcsolódó összetevők és a gyakori kiadások romlását fordulhat elő, tetszőleges időpontban. És ha egy alkalmazást fejleszt, a felhasználók általában problémákat, amelyek nem találta meg a tesztelés. Ha tisztában van az ezekkel kapcsolatos azonnal, és rendelkeznie kell az eszközök felderítésére és a problémák elhárítására.
@@ -155,8 +155,8 @@ A Microsoft Azure felhőplatformon eltávolítva a hagyományos szűk keresztmet
 -   [Mikroszolgáltatások](https://www.visualstudio.com/learn/what-are-microservices/) architektúra segítségével elkülönítése üzleti alkalmazási esetek kis újrafelhasználható szolgáltatásba.  Ez az architektúra lehetővé teszi a méretezhetőségi és a hatékonyság.
 
 ## <a name="next-steps"></a>További lépések
-Az Operations Management Suite biztonsági és auditálási megoldás kapcsolatos további információkért tekintse meg a következő cikkeket:
+A biztonsági és auditálási megoldás kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Biztonság és megfelelőség](https://www.microsoft.com/cloud-platform/security-and-compliance)
-- [Figyelés és a válaszadás a biztonsági riasztásokat az Operations Management Suite biztonsági és auditálási megoldásban](https://docs.microsoft.com/azure/operations-management-suite/oms-security-responding-alerts)
-- [Az Operations Management Suite biztonsági és auditálási megoldásban az erőforrások figyelése](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources)
+- [Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/security-center-intro)
+- [Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/overview)

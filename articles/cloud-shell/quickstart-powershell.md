@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2018
+ms.date: 10/18/2018
 ms.author: damaerte
-ms.openlocfilehash: 83fb07d718681a9d14176868d11b45a199f60543
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 0bce9f50bdc3ac8fb4675a7ac2a3fb300036973f
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166201"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404359"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Rövid útmutató a Powershellhez az Azure Cloud Shellben
 
@@ -181,17 +181,17 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
  > [!WARNING]
  > Tekintse meg [hibáinak elhárítása Azure virtuális gépek távoli felügyeleti](troubleshooting.md#troubleshooting-remote-management-of-azure-vms).
 
-  Feltételezve, hogy egy virtuális Gépet, a MyVM1, használjuk `Invoke-AzureRmVMCommand` meghívásához PowerShell parancsprogram-blokkot a távoli számítógépen.
+  Feltételezve, hogy egy virtuális Gépet, a MyVM1, használjuk `Invoke-AzVMCommand` meghívásához PowerShell parancsprogram-blokkot a távoli számítógépen.
 
   ```azurepowershell-interactive
-  Invoke-AzureRmVMCommand -Name MyVM1 -ResourceGroupName MyResourceGroup -Scriptblock {Get-ComputerInfo} -EnableRemoting
+  Invoke-AzVMCommand -Name MyVM1 -ResourceGroupName MyResourceGroup -Scriptblock {Get-ComputerInfo} -EnableRemoting
   ```
 
-  Is keresse meg a virtuális gép könyvtárba, és futtassa `Invoke-AzureRmVMCommand` módon.
+  Is keresse meg a virtuális gép könyvtárba, és futtassa `Invoke-AzVMCommand` módon.
 
   ```azurepowershell-interactive
   PS Azure:\> cd MySubscriptionName\MyResourceGroup\Microsoft.Compute\virtualMachines
-  PS Azure:\MySubscriptionName\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Invoke-AzureRmVMCommand -Scriptblock {Get-ComputerInfo}
+  PS Azure:\MySubscriptionName\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Invoke-AzVMCommand -Scriptblock {Get-ComputerInfo}
 
   # You will see output similar to the following:
 
@@ -210,16 +210,16 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
 
 #### <a name="interactively-log-on-to-a-remote-vm"></a>Tartott erőforrásokra jelentkezhet be egy távoli virtuális Gépen
 
-Használhat `Enter-AzureRmVM` hozzá az Azure-ban futó virtuális gépre.
+Használhat `Enter-AzVM` hozzá az Azure-ban futó virtuális gépre.
 
   ```azurepowershell-interactive
-  PS Azure:\> Enter-AzureRmVM -Name MyVM1 -ResourceGroupName MyResourceGroup -EnableRemoting
+  PS Azure:\> Enter-AzVM -Name MyVM1 -ResourceGroupName MyResourceGroup -EnableRemoting
   ```
 
-Ön is elérheti a `VirtualMachines` directory első és a futtatási `Enter-AzureRmVM` módon
+Ön is elérheti a `VirtualMachines` directory első és a futtatási `Enter-AzVM` módon
 
   ```azurepowershell-interactive
- PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzureRmVM
+ PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzVM
  ```
 
 ### <a name="discover-webapps"></a>Fedezze fel a Web Apps

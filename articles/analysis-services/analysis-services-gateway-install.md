@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1ef5d51db34e0d0a947a4d6ba6c7e614b1ac3384
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: fa089db385995f6c44ea2238c91a3ac59946daae
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348888"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407656"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Telepítse és konfigurálja a helyszíni adatátjáró
 Akkor ugyanabban a régióban egy vagy több Azure Analysis Services-kiszolgálót a helyszíni adatforrásokhoz kapcsolódik, egy helyszíni adatátjáróra szükség. Az átjáró kapcsolatos további információkért lásd: [a helyszíni adatátjáró](analysis-services-gateway.md).
@@ -40,7 +40,7 @@ Akkor ugyanabban a régióban egy vagy több Azure Analysis Services-kiszolgál�
 * Az átjáró telepítésekor a számítógépre bejelentkezett felhasználói fiók kell rendelkeznie napló, szolgáltatás-jogosultságokkal. Ha a telepítés befejeződött, a helyszíni adatátjáró szolgáltatás szolgáltatásként jelentkezzen be az NT SERVICE\PBIEgwService fiókot használja. Telepítés befejezése után egy másik fiókot telepítés során vagy a szolgáltatások adható meg. Ellenőrizze, hogy a csoportházirend-beállítások lehetővé teszik, hogy a fiók be van jelentkezve a következővel, telepítésekor és a választott fiók is, hogy szolgáltatás jogosultságokat.
 * Jelentkezzen be Azure-fiókkal ugyanabban az Azure AD-ben [bérlői](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) az előfizetést, az átjáró regisztrálja. Az Azure B2B (vendég) fiókok nem támogatottak, telepítése és a egy átjáró regisztrálása során.
 * Ha az adatforrásokat egy Azure virtuális hálózaton (VNet), konfigurálnia kell a [AlwaysUseGateway](analysis-services-vnet-gateway.md) kiszolgáló tulajdonság.
-* Az itt ismertetett (egyesített) átjáró nem támogatott az Azure Government, Azure Germany és Azure China szuverén régiók. Használat **dedikált helyszíni átjáró az Azure Analysis Services**, a kiszolgáló telepített **gyors üzembe helyezés** a portálon. 
+* Az itt ismertetett (egyesített) átjáró nem támogatott az Azure Germany-régiókat. Ehelyett használjon **dedikált helyszíni átjáró az Azure Analysis Services**, a kiszolgáló telepített **gyors üzembe helyezés** a portálon. 
 
 
 ## <a name="download"></a>Töltse le

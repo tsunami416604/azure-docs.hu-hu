@@ -1,6 +1,6 @@
 ---
 title: Támogatott kapcsolatok az IT Service Management-összekötő az Azure Log Analyticsben |} A Microsoft Docs
-description: Ez a cikk ismerteti az ITSM-termékekkel/szolgáltatásokkal az az IT Service Management összekötő (ITSMC) az OMS Log Analytics központilag felügyelhető és kezelhető az ITSM-munkatétel csatlakozni.
+description: Ez a cikk ismerteti az ITSM-termékekkel/szolgáltatásokkal a az IT Service Management összekötő (ITSMC) az Azure monitorban való központilag felügyelhető és kezelhető az ITSM-munkatétel csatlakozni.
 documentationcenter: ''
 author: jyothirmaisuri
 manager: riyazp
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 50ab09d39fc0c224a97b6cf0c758c55026ac8ce7
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 190e173e035716431c92533e42ded97e147f21a7
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042844"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409203"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-termékekkel/szolgáltatásokkal csatlakozzon az IT Service Management-összekötő
 Ez a cikk ismerteti az ITSM-termék vagy szolgáltatás és az IT Service Management Connector (ITSMC) közötti kapcsolat konfigurálása a Log Analytics központilag kezelheti a munkaelemeket. ITSMC kapcsolatos további információkért lásd: [áttekintése](log-analytics-itsmc-overview.md).
@@ -76,7 +76,7 @@ A következő eljárással ITSMC csatlakozni a System Center Service Manager-pé
 | **Titkos Ügyfélkód**   | Írja be a titkos ügyfélkulcsot, jön létre a azonosítóval.   |
 | **Adatszinkronizálás hatóköre**   | Válassza ki a Service Manager munkaelemek keresztül ITSMC szinkronizálni kívánt.  Ezen elemek is importálja a Log Analytics munka. **Beállítások:** incidensek, Változáskérések.|
 | **Adatok szinkronizálása** | Írja be az adatokat a kívánt múltbeli napok száma. **Felső korlát**: 120 nap. |
-| **Új konfigurációs elem létrehozása az ITSM-megoldással** | Válassza ezt a lehetőséget, ha azt szeretné, a konfigurációelemek létrehozása az ITSM-termékben. Kiválasztásakor OMS hoz létre az érintett Konfigurációelemek (esetén a nem létező CIs) konfigurációelemként a támogatott ITSM-rendszerben. **Alapértelmezett**: le van tiltva. |
+| **Új konfigurációs elem létrehozása az ITSM-megoldással** | Válassza ezt a lehetőséget, ha azt szeretné, a konfigurációelemek létrehozása az ITSM-termékben. Kiválasztásakor a Log Analytics hoz létre az érintett Konfigurációelemek (esetén a nem létező CIs) konfigurációelemként a támogatott ITSM-rendszer. **Alapértelmezett**: le van tiltva. |
 
 ![Service manager-kapcsolat](./media/log-analytics-itsmc/service-manager-connection.png)
 
@@ -199,7 +199,7 @@ Ellenőrizze, hogy az alábbi előfeltételek teljesülését:
     - [OAuth-ot Geneva beállítása](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
 
 
-- Telepítse a Microsoft OMS-integráció (ServiceNow-alkalmazás) felhasználói alkalmazás. [További információk](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
+- Telepítse a Microsoft Log Analytics-integráció (ServiceNow-alkalmazás) felhasználói alkalmazás. [További információk](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
 - A felhasználó alkalmazás telepített integrációs felhasználói szerepkör létrehozása. Információ az integrációs felhasználói szerepkör létrehozása [Itt](#create-integration-user-role-in-servicenow-app).
 
 ### <a name="connection-procedure"></a>**Kapcsolat létesítése**
@@ -221,7 +221,7 @@ Az alábbi eljárással hozhat létre egy ServiceNow-csatlakoztatás:
 
 | **Mező** | **Leírás** |
 | --- | --- |
-| **Kapcsolat neve**   | Adja meg a servicenow összekapcsolása ITSMC kívánt nevét.  Ez a név később az OMS-ben használni, amikor az ITSM munkadarabok konfigurálása, / részletes a log analytics megtekintéséhez. |
+| **Kapcsolat neve**   | Adja meg a servicenow összekapcsolása ITSMC kívánt nevét.  Ez a név később a Log Analytics használni, amikor az ITSM munkadarabok konfigurálása, / részletes a log analytics megtekintéséhez. |
 | **Partner típusa**   | Válassza ki **ServiceNow**. |
 | **Felhasználónév**   | Írja be a integrációs felhasználónevet, a ServiceNow alkalmazás ITSMC kapcsolat támogatásához létrehozott. További információ: [létrehozása ServiceNow alkalmazás felhasználói szerepkör](#create-integration-user-role-in-servicenow-app).|
 | **Jelszó**   | Írja be a felhasználónévhez tartozó jelszót. **Megjegyzés:**: felhasználónév és jelszó csak a hitelesítési tokenek létrehozásához használhatók, és nem bárhol tárolja a ITSMC szolgáltatásban.  |
@@ -247,6 +247,9 @@ További információ: [az Azure-riasztások létrehozása ITSM-munkatétel](log
 A felhasználó az alábbi eljárást:
 
 1.  Látogasson el a [ServiceNow store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1) , és telepítse a **felhasználói alkalmazás a ServiceNow és a Microsoft OMS-integráció** be a ServiceNow-példányát.
+   
+   >[!NOTE]
+   >Az Azure Monitor folyamatos Váltás a Microsoft Operations Management Suite (OMS) részeként OMS most nevezzük a Log Analytics.     
 2.  A telepítés után látogasson el a ServiceNow-példány, keresési, és válassza ki a Microsoft OMS támaszkodva a bal oldali navigációs sávon.  
 3.  Kattintson a **telepítési ellenőrzőlista**.
 

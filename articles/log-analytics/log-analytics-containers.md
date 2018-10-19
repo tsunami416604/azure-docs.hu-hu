@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: f9876f3e21a7cfccae2fb7f70913269d4ca1fdf4
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: d8f2701ca62eee261beaa49fe2a0719be7423a5b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115369"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408489"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Figyelés a Log Analytics megoldásra
 
@@ -67,6 +67,7 @@ Az alábbi táblázat ismerteti a Docker vezénylési és az operációs rendsze
 
 ### <a name="x64-linux-distributions-supported-as-container-hosts"></a>x64 tároló gazdagépként támogatott Linux-disztribúciók
 
+
 - Ubuntu 14.04 LTS és 16.04 LTS
 - CoreOS(stable)
 - Amazon Linux 2016.09.0
@@ -78,8 +79,10 @@ Az alábbi táblázat ismerteti a Docker vezénylési és az operációs rendsze
 - Red Hat OpenShift Tárolóplatform (OCP) 3.4-es és a 3.5.
 - Az ACS Mesosphere DC/OS 1.7.3 való 1.8.8
 - Az ACS Kubernetes 1.4.5 az 1.6-os
-    - Kubernetes-események, a Kubernetes-készlet és a tároló folyamatok csak támogatott verzió 1.4.1-45 és újabb verzióiban az OMS-ügynök Linux rendszeren
+    - Kubernetes-események, a Kubernetes-készlet és a tároló folyamatok csak támogatottak, a verzió 1.4.1-45 és újabb verzióiban a Linuxhoz készült Log Analytics-ügynök
 - Az ACS a Docker Swarm
+
+[!INCLUDE [log-analytics-agent-note.md](../../includes/log-analytics-agent-note.md)] 
 
 ### <a name="supported-windows-operating-system"></a>Támogatott Windows operációs rendszer
 
@@ -96,25 +99,25 @@ A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi i
 
 1. A Tárolómonitorozási megoldás hozzáadása a Log Analytics-munkaterületet [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) vagy leírt folyamatot követve [adja hozzá a Log Analytics solutions kövesse a megoldástárban](log-analytics-add-solutions.md).
 
-2. Telepítse, és a Docker és a egy OMS-ügynök használata. Az operációs rendszer és a Docker orchestrator alapján, használhatja az alábbi módszerek konfigurálása az ügynök.
+2. Telepítse, és a Docker és a egy Log Analytics-ügynököket a használata. Az operációs rendszer és a Docker orchestrator alapján, használhatja az alábbi módszerek konfigurálása az ügynök.
   - Önálló gazdagépek:
-    - A támogatott Linux operációs rendszer telepítése és Docker futtatása és telepítse és konfigurálja a [Linuxhoz készült OMS-ügynök](log-analytics-agent-linux.md).  
-    - A CoreOS az OMS-ügynök Linux rendszeren nem futtatható. Ehelyett futtassa a egy tárolóalapú verzióját az OMS-ügynök Linux rendszeren. Felülvizsgálat [többek között a CoreOS Linux tárológazdagép](#for-all-linux-container-hosts-including-coreos) vagy [CoreOS többek között az Azure Government Linux tárológazdagép](#for-all-azure-government-linux-container-hosts-including-coreos) Ha tárolók az Azure Government felhőben dolgozik.
+    - A támogatott Linux operációs rendszer telepítése és Docker futtatása és telepítse és konfigurálja a [Linuxhoz készült Log Analytics-ügynök](log-analytics-agent-linux.md).  
+    - A CoreOS a Linuxhoz készült Log Analytics-ügynök nem futtatható. Ehelyett a Linuxhoz készült Log Analytics-ügynök tárolóalapú verzióját futtatja. Felülvizsgálat [többek között a CoreOS Linux tárológazdagép](#for-all-linux-container-hosts-including-coreos) vagy [CoreOS többek között az Azure Government Linux tárológazdagép](#for-all-azure-government-linux-container-hosts-including-coreos) Ha tárolók az Azure Government felhőben dolgozik.
     - A Windows Server 2016 és Windows 10-es a Docker-motor és az ügyfél telepítéséhez, majd kösse adatainak összegyűjtése, majd azokat elküldi a Log Analytics-ügynököt. Tekintse át [telepítése és konfigurálása a Windows tárológazdagép](#install-and-configure-windows-container-hosts) Ha egy Windows-környezettel rendelkezik.
   - A Docker-gazdagép több vezénylési:
-    - Ha egy Red Hat OpenShift környezettel rendelkezik, tekintse át [konfigurálja az OMS-ügynököt a Red Hat OpenShift](#configure-an-oms-agent-for-red-hat-openshift).
+    - Ha egy Red Hat OpenShift környezettel rendelkezik, tekintse át [konfigurálása a Log Analytics-ügynököket, a Red Hat OpenShift](#configure-an-oms-agent-for-red-hat-openshift).
     - Ha rendelkezik egy Kubernetes-fürtöt az Azure Container Service használatával:
-       - Felülvizsgálat [Kubernetes az OMS Linux-ügynökének konfigurálása](#configure-an-oms-linux-agent-for-kubernetes).
-       - Felülvizsgálat [konfigurálja az OMS Windows-ügynök a Kubernetes](#configure-an-oms-windows-agent-for-kubernetes).
-       - Felülvizsgálat [Helm használata a Linux Kubernetes az OMS-ügynök telepítése](#use-helm-to-deploy-oms-agent-on-linux-kubernetes).
-    - Ha rendelkezik egy Azure Container Service DC/OS-fürtön, további tudnivalókat talál [figyelése az Operations Management Suite egy Azure Container Service DC/OS fürt](../container-service/dcos-swarm/container-service-monitoring-oms.md).
-    - Ha egy Docker Swarm módú környezettel rendelkezik, további tudnivalókat talál [konfigurálja az OMS-ügynököt a Docker Swarmra](#configure-an-oms-agent-for-docker-swarm).
-    - Ha egy Service Fabric-fürtöt, további tudnivalókat talál [az OMS Log Analytics-tárolók monitorozása](../service-fabric/service-fabric-diagnostics-oms-containers.md).
+       - Felülvizsgálat [Kubernetes a Log Analytics Linux-ügynökének konfigurálása](#configure-an-oms-linux-agent-for-kubernetes).
+       - Felülvizsgálat [a Kubernetes-napló Analytis Windows-ügynök konfigurálása](#configure-an-oms-windows-agent-for-kubernetes).
+       - Felülvizsgálat [Helm használata a Linux Kubernetes a Log Analytics-ügynök telepítése](#use-helm-to-deploy-oms-agent-on-linux-kubernetes).
+    - Ha rendelkezik egy Azure Container Service DC/OS-fürtön, további tudnivalókat talál [egy Azure Container Service DC/OS fürt megfigyelése a Log Analytics](../container-service/dcos-swarm/container-service-monitoring-oms.md).
+    - Ha egy Docker Swarm módú környezettel rendelkezik, további tudnivalókat talál [konfigurálása egy Log Analytics-ügynököket a Docker Swarmra](#configure-an-oms-agent-for-docker-swarm).
+    - Ha egy Service Fabric-fürtöt, további tudnivalókat talál [a Log Analytics Log Analytics-tárolók monitorozása](../service-fabric/service-fabric-diagnostics-oms-containers.md).
 
 Tekintse át a [Windows Docker-motor](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon) ismertető cikkben talál további információt a telepítése és konfigurálása a Docker-motor a Windows rendszerű számítógépeken.
 
 > [!IMPORTANT]
-> Docker futnia kell **előtt** telepíti a [Linuxhoz készült OMS-ügynök](log-analytics-agent-linux.md) a tároló-gazdagépeken. Ha már telepítette az ügynököt a Docker telepítése előtt, telepítse újra az OMS-ügynök Linux rendszeren szeretné. Docker kapcsolatos további információkért lásd: a [Docker webhely](https://www.docker.com).
+> Docker futnia kell **előtt** telepíti a [Linuxhoz készült Log Analytics-ügynök](log-analytics-agent-linux.md) a tároló-gazdagépeken. Ha már telepítette az ügynököt a Docker telepítése előtt, telepítse újra a Linuxhoz készült Log Analytics-ügynököt szeretné. Docker kapcsolatos további információkért lásd: a [Docker webhely](https://www.docker.com).
 
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Telepítse és konfigurálja a Linux-tároló gazdagépek
@@ -123,7 +126,7 @@ Ha már telepítette a Docker, használja a következő beállításokat, a tár
 
 **Az összes Linux tárológazdagép CoreOS kivételével:**
 
-- További információt és útmutatást a Linuxhoz készült OMS-ügynök telepítése, lásd: [Linux rendszerű számítógépek csatlakoztatása a Log Analytics](log-analytics-concept-hybrid.md).
+- További információkért és a Linuxhoz készült Log Analytics-ügynök telepítéséhez szükséges lépéseket lásd: [Linux rendszerű számítógépek csatlakoztatása a Log Analytics](log-analytics-concept-hybrid.md).
 
 **Minden Linux tároló gazdagéphez CoreOS is beleértve:**
 
@@ -143,11 +146,11 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 **Váltás a Linux-tárolóban egy telepített ügynök használatával**
 
-Ha korábban a közvetlenül telepített ügynököt használja, és szeretné inkább használja a tárolóban futó ügynök, távolítsa el az OMS-ügynök Linux rendszeren. Lásd: [Linuxhoz készült OMS-ügynök eltávolítása](log-analytics-agent-linux.md) megtudhatja, hogyan sikerült az ügynök eltávolítása.  
+Ha korábban a közvetlenül telepített ügynököt használja, és szeretné inkább használja a tárolóban futó ügynök, először el kell távolítania a Linuxhoz készült Log Analytics-ügynököt. Lásd: [a Linuxhoz készült Log Analytics-ügynök eltávolítása](log-analytics-agent-linux.md) megtudhatja, hogyan sikerült az ügynök eltávolítása.  
 
-#### <a name="configure-an-oms-agent-for-docker-swarm"></a>Docker swarm egy OMS-ügynök konfigurálása
+#### <a name="configure-a-log-analytics-agent-for-docker-swarm"></a>A Log Analytics-ügynököket a Docker Swarmra konfigurálása
 
-Az OMS-ügynök a Docker Swarm globális szolgáltatásként is futtathatja. Az alábbi információk segítségével hozzon létre egy OMS-ügynök szolgáltatást. Meg kell adnia a Log Analytics-munkaterület Azonosítójára és az elsődleges kulcsot.
+A Log Analytics-ügynököket a Docker Swarm globális szolgáltatásként is futtathatja. Az alábbi információk segítségével hozzon létre a Log Analytics-ügynök szolgáltatást. Meg kell adnia a Log Analytics-munkaterület Azonosítójára és az elsődleges kulcsot.
 
 - Futtassa a következő a fő csomóponttal.
 
@@ -178,20 +181,20 @@ A Docker Swarm a titkos kulcsot, a munkaterület-Azonosítót és elsődleges ku
     l9rh3n987g9c45zffuxdxetd9   KEY                 38 minutes ago      38 minutes ago
     ```
 
-3. Futtassa a következő parancsot a titkos kulcsok a tárolóalapú OMS-ügynök csatlakoztatása.
+3. Futtassa a következő parancsot a titkos kulcsok a tárolóalapú Log Analytics-ügynök csatlakoztatása.
 
     ```
     sudo docker service create  --name omsagent --mode global  --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock --mount type=bind,source=/var/lib/docker/containers,destination=/var/lib/docker/containers --secret source=WSID,target=WSID --secret source=KEY,target=KEY  -p 25225:25225 -p 25224:25224/udp --restart-condition=on-failure microsoft/oms
     ```
 
-#### <a name="configure-an-oms-agent-for-red-hat-openshift"></a>A Red Hat OpenShift egy OMS-ügynök konfigurálása
-Az OMS-ügynök hozzáadása a Red Hat OpenShift elindításához a tároló monitorozási adatok gyűjtésére három módja van.
+#### <a name="configure-a-log-analytics-agent-for-red-hat-openshift"></a>A Log Analytics-ügynököket, a Red Hat OpenShift konfigurálása
+Red Hat OpenShift elindításához a tároló monitorozási adatok gyűjtése a Log Analytics-ügynököket hozzáadandó három módja van.
 
-* [Linuxhoz készült OMS-ügynök telepítése](log-analytics-agent-linux.md) közvetlenül a OpenShift csomópontokon  
+* [A Linuxhoz készült Log Analytics-ügynök telepítése](log-analytics-agent-linux.md) közvetlenül a OpenShift csomópontokon  
 * [Log Analytics Virtuálisgép-bővítmény engedélyezése](log-analytics-azure-vm-extension.md) minden OpenShift csomóponton levő az Azure-ban  
-* Az OMS-ügynök telepítése egy OpenShift démon-készletben  
+* A Log Analytics-ügynök telepítése egy OpenShift démon-készletben  
 
-Ez a szakasz ismerteti az OpenShift démon által beállított, az OMS-ügynök telepítéséhez szükséges lépéseket.  
+Ez a szakasz ismerteti a Log Analytics-ügynököket telepítse az OpenShift démon beállított szükséges lépéseket.  
 
 1. Jelentkezzen be az OpenShift fő csomóponttal, és másolja a yaml-fájlt [ocp-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-omsagent.yaml) a Githubról, a fő csomópontot és módosíthatja a Log Analytics-munkaterület Azonosítójára és az elsődleges kulcs értékét.
 2. Futtassa az alábbi parancsokat a Log Analytics hozzon létre egy projektet, és állítsa be a felhasználói fiókot.
@@ -230,7 +233,7 @@ Ez a szakasz ismerteti az OpenShift démon által beállított, az OMS-ügynök 
     No events.  
     ```
 
-Ha azt szeretné, titkos kulcsok használatával védeni kell a Log Analytics-munkaterület Azonosítójára és az elsődleges kulcsot, amikor az OMS-ügynök démon-set yaml-fájl használatával, hajtsa végre az alábbi lépéseket.
+Ha azt szeretné, titkos kulcsok használatával védeni kell a Log Analytics-munkaterület Azonosítójára és az elsődleges kulcsot, amikor a Log Analytics ügynök démon-set yaml-fájllal, hajtsa végre az alábbi lépéseket.
 
 1. Jelentkezzen be az OpenShift fő csomóponttal, és másolja a yaml-fájlt [ocp-ds-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) és titkos kulcs parancsfájljának [ocp-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) a Githubról.  Ez a szkript a titkos kulcsok yaml-fájlt a Log Analytics-munkaterület Azonosítójára és az elsődleges kulcs biztonságos hoz létre a secrete információkat.  
 2. Futtassa az alábbi parancsokat a Log Analytics hozzon létre egy projektet, és állítsa be a felhasználói fiókot. A Log Analytics-munkaterület Azonosítójára kéri a titkos kulcs parancsfájljának <WSID> és az elsődleges kulcs <KEY> és a befejezéskor az ocp-secret.yaml fájlt hoz létre.  
@@ -269,7 +272,7 @@ Ha azt szeretné, titkos kulcsok használatával védeni kell a Log Analytics-mu
     No events.  
     ```
 
-6. Az OMS-ügynök démon-set yaml-fájl telepítése a következő futtatásával:
+6. A Log Analytics ügynök démon-set yaml-fájl telepítése a következő futtatásával:
 
     `oc create -f ocp-ds-omsagent.yaml`  
 
@@ -294,18 +297,18 @@ Ha azt szeretné, titkos kulcsok használatával védeni kell a Log Analytics-mu
      WSID:   37 bytes  
     ```
 
-#### <a name="configure-an-oms-linux-agent-for-kubernetes"></a>A Kubernetes-OMS Linux-ügynök konfigurálása
+#### <a name="configure-a-log-analytics-linux-agent-for-kubernetes"></a>A Kubernetes a Log Analytics Linux-ügynök konfigurálása
 
-A Kubernetes esetében, egy szkript használatával hozza létre a titkos kulcsok yaml-fájlt a munkaterület-Azonosítót és elsődleges kulcs az OMS-ügynök telepítése Linux rendszeren. Jelenleg a [OMS Docker, Kubernetes GitHub](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes) lapon, a fájlokat, vagy a titkos információk nélkül használható.
+A Kubernetes esetében, a szkript használatával hozza létre a titkos kulcsok yaml-fájlt a munkaterület-Azonosítót és elsődleges kulcsot a Linuxhoz készült Log Analytics-ügynök telepítése. Jelenleg a [Log Analytics Docker Kubernetes GitHub](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes) lapon, a fájlokat, vagy a titkos információk nélkül használható.
 
-- Az alapértelmezett készült OMS-ügynök Linux DaemonSet nem rendelkezik titkos információk (omsagent.yaml)
-- Az OMS-ügynök Linux DaemonSet yaml-fájlt a titkos kód generálása parancsfájlok titkos információk (omsagent-ds-secrets.yaml) létrehozni a titkos kulcsokat (omsagentsecret.yaml) yaml-fájlt használ.
+- Az alapértelmezett a Log Analytics-ügynök Linux DaemonSet nem rendelkezik titkos információk (omsagent.yaml)
+- A Log Analytics-ügynök Linux DaemonSet yaml-fájl titkos információk (omsagent-ds-secrets.yaml) titkos kód generálása parancsfájlok létrehozni a titkos kulcsokat (omsagentsecret.yaml) yaml-fájlt használ.
 
 Ha szeretné, omsagent DaemonSets létrehozása vagy a titkos kódok nélkül.
 
 **Alapértelmezett OMSagent DaemonSet yaml-fájl titkos kódok nélkül**
 
-- Az alapértelmezett OMS-ügynök DaemonSet yaml-fájl esetében cserélje le a `<WSID>` és `<KEY>` a WSID és a kulcsot. Másolja a fájlt a fő csomópontot, és futtassa a következő parancsot:
+- Az alapértelmezett a Log Analytics ügynök DaemonSet yaml-fájl esetében cserélje le a `<WSID>` és `<KEY>` a WSID és a kulcsot. Másolja a fájlt a fő csomópontot, és futtassa a következő parancsot:
 
     ```
     sudo kubectl create -f omsagent.yaml
@@ -313,7 +316,7 @@ Ha szeretné, omsagent DaemonSets létrehozása vagy a titkos kódok nélkül.
 
 **Alapértelmezett OMSagent DaemonSet yaml-fájl titkos kulcsok**
 
-1. OMS-ügynök DaemonSet titkos információk használatához először hozzon létre a titkos kulcsok.
+1. Log Analytics használatához az ügynök DaemonSet titkos információk, először hozza létre a titkos kulcsok.
     1. Másolja a parancsfájlt és a titkos sablonfájl, és ellenőrizze, hogy ugyanabban a könyvtárban legyenek.
         - Titkos kulcs generálása szkriptet - titkos kód – gen.sh
         - titkos kód sablon - secret-template.yaml
@@ -364,7 +367,7 @@ Ha szeretné, omsagent DaemonSets létrehozása vagy a titkos kódok nélkül.
 
     5. A omsagent futtatásával démon-készlet létrehozása ``` sudo kubectl create -f omsagent-ds-secrets.yaml ```
 
-2. Győződjön meg arról, hogy az OMS-ügynök DaemonSet fut, a következőhöz hasonló:
+2. Győződjön meg arról, hogy a Log Analytics-ügynököket DaemonSet fut, a következőhöz hasonló:
 
     ```
     keiko@ubuntu16-13db:~# sudo kubectl get ds omsagent
@@ -376,7 +379,7 @@ Ha szeretné, omsagent DaemonSets létrehozása vagy a titkos kódok nélkül.
     ```
 
 
-A Kubernetes esetében a szkript használatával hozza létre a titkos kulcsok yaml fájlt a munkaterület-Azonosítót és elsődleges kulcsot az OMS-ügynök Linux rendszeren. Az alábbi példa információk a [omsagent yaml-fájl](https://github.com/Microsoft/OMS-docker/blob/master/Kubernetes/omsagent.yaml) a titkos adatok védelmére.
+A Kubernetes esetében a szkript használatával hozza létre a titkos kulcsok yaml fájlt a munkaterület-Azonosítót és elsődleges kulcsot a Linuxhoz készült Log Analytics-ügynök. Az alábbi példa információk a [omsagent yaml-fájl](https://github.com/Microsoft/OMS-docker/blob/master/Kubernetes/omsagent.yaml) a titkos adatok védelmére.
 
 ```
 keiko@ubuntu16-13db:~# sudo kubectl describe secrets omsagent-secret
@@ -393,15 +396,15 @@ WSID:   36 bytes
 KEY:    88 bytes
 ```
 
-#### <a name="configure-an-oms-windows-agent-for-kubernetes"></a>A Kubernetes-OMS Windows-ügynök konfigurálása
-A Windows Kubernetes esetében, parancsfájl segítségével hozza létre a titkos kulcsok yaml-fájlt a munkaterület-Azonosítót és elsődleges kulcsot az OMS-ügynök telepítése. Jelenleg a [OMS Docker, Kubernetes GitHub](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes/windows) lapon, a titkos információkkal használható fájlok vannak.  A fő- és ügynökcsomópontokat külön-külön az OMS-ügynököt telepíteni szeretné.  
+#### <a name="configure-a-log-analytics-windows-agent-for-kubernetes"></a>A Kubernetes a Log Analytics Windows-ügynök konfigurálása
+A Windows Kubernetes esetében, parancsfájl segítségével hozza létre a titkos kulcsok yaml-fájlt a munkaterület-Azonosítót és elsődleges kulcs a Log Analytics-ügynök telepítése. Jelenleg a [Log Analytics Docker Kubernetes GitHub](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes/windows) lapon, a titkos információkkal használható fájlok vannak.  A Log Analytics-ügynököket a fő- és ügynökcsomópontokat esetében külön-külön telepítenie kell.  
 
-1. Használni az OMS-ügynök DaemonSet titkos információk felhasználásával a fő csomópont, jelentkezzen be, és először hozza létre a titkos kulcsok.
+1. Log Analytics-ügynököket DaemonSet használandó titkos információk felhasználásával a fő csomópont, jelentkezzen be, és először hozza létre a titkos kulcsok.
     1. Másolja a parancsfájlt és a titkos sablonfájl, és ellenőrizze, hogy ugyanabban a könyvtárban legyenek.
         - Titkos kulcs generálása szkriptet - titkos kód – gen.sh
         - titkos kód sablon - secret-template.yaml
 
-    2. Futtassa a szkriptet az alábbi példához hasonlóan. A parancsprogram kéri a az OMS-munkaterület Azonosítójára és az elsődleges kulcsot, és ad meg őket, miután a parancsfájl létrehozza-e egy titkos yaml-fájlt, így is futtatható legyen.   
+    2. Futtassa a szkriptet az alábbi példához hasonlóan. A parancsprogram kéri a Log Analytics-munkaterület Azonosítójára és az elsődleges kulcsot, és ad meg őket, miután a parancsfájl létrehozza-e egy titkos yaml-fájlt, így is futtatható legyen.   
 
         ```
         #> sudo bash ./secret-gen.sh
@@ -435,7 +438,7 @@ A Windows Kubernetes esetében, parancsfájl segítségével hozza létre a titk
 
     5. A omsagent futtatásával démon-készlet létrehozása ```kubectl create -f ws-omsagent-de-secrets.yaml```
 
-2. Győződjön meg arról, hogy az OMS-ügynök DaemonSet fut, a következőhöz hasonló:
+2. Győződjön meg arról, hogy a Log Analytics-ügynököket DaemonSet fut, a következőhöz hasonló:
 
     ```
     root@ubuntu16-13db:~# kubectl get deployment omsagent
@@ -445,8 +448,8 @@ A Windows Kubernetes esetében, parancsfájl segítségével hozza létre a titk
 
 3. Telepítse az ügynököt a munkavégző csomópont Windows futnak, hajtsa végre a szakasz lépéseit [telepítése és konfigurálása a Windows tárológazdagép](#install-and-configure-windows-container-hosts).
 
-#### <a name="use-helm-to-deploy-oms-agent-on-linux-kubernetes"></a>OMS-ügynök Linux Kubernetes üzembe helyezése a Helm használatával
-OMS-ügynök telepítése az Linux Kubernetes-környezetet a helm használatához hajtsa végre az alábbi lépéseket.
+#### <a name="use-helm-to-deploy-log-analytics-agent-on-linux-kubernetes"></a>A Linux Kubernetes a Log Analytics-ügynök telepítése a Helm használatával
+A Linux Kubernetes-környezetet a Log Analytics-ügynök telepítése a helm használatával, hajtsa végre az alábbi lépéseket.
 
 1. A omsagent futtatásával démon-készlet létrehozása ```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms```
 2. Az eredmények a következőhöz hasonlóan néz ki:
@@ -530,7 +533,7 @@ Ellenőrizheti, hogy a a Tárolómonitorozási megoldás megfelelően van-e áll
 
 ## <a name="solution-components"></a>Megoldás-összetevők
 
-Az OMS-portálon keresse meg a *Megoldástárából* , és adja hozzá a **Tárolómonitorozási megoldás**. Ha Windows-ügynököt használ, akkor a következő felügyeleti csomag telepítve van az ügynök minden számítógépen ez a megoldás hozzáadásakor. Nincsenek konfigurációs vagy karbantartási feladatokat nem szükséges a felügyeleti csomag.
+Az Azure Portalról nyissa meg a *Megoldástárából* , és adja hozzá a **Tárolómonitorozási megoldás**. Ha Windows-ügynököt használ, akkor a következő felügyeleti csomag telepítve van az ügynök minden számítógépen ez a megoldás hozzáadásakor. Nincsenek konfigurációs vagy karbantartási feladatokat nem szükséges a felügyeleti csomag.
 
 - *ContainerManagement.xxx* telepítve a C:\Program Files\Microsoft Monitoring Agent\Agent\Health State\Management szervizcsomagok
 
@@ -539,7 +542,7 @@ A Tárolómonitorozási megoldás tároló-gazdagépek és -tárolók használat
 
 A következő ügynök típusú percen át 3 percenként adatokat gyűjti.
 
-- [A Linuxhoz készült OMS-ügynök](log-analytics-linux-agents.md)
+- [A Linuxhoz készült log Analytics-ügynök](log-analytics-linux-agents.md)
 - [Windows-ügynök](log-analytics-windows-agent.md)
 - [Log Analytics Virtuálisgép-bővítmény](log-analytics-azure-vm-extension.md)
 

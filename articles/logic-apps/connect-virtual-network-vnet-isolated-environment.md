@@ -1,6 +1,6 @@
 ---
-title: Az Azure Logic Apps az Azure virtuális hálózatokhoz való kapcsolódásának
-description: Az Azure virtuális hálózatok eléréséhez az Azure Logic Apps, hozhat létre privát, dedikált és elkülönített integrációs service-környezetek, amelyek fenntartják a logic apps és más erőforrások elkülönítése "globális" vagy a nyilvános Azure
+title: Azure virtuális hálózatok az Azure Logic Apps keresztül csatlakozhat egy integrációs service-környezet (ISE)
+description: Hozzon létre egy integrációs service-környezet (ISE) logic apps és az integrációs fiókok hozzáférhet az Azure virtuális hálózatok privát és nyilvános vagy "globális" Azure elkülönítve maradva háríthatják
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,23 +9,21 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/25/2018
-ms.openlocfilehash: 354c31014448b914b33d2bef5483efc78092f726
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: b4e4e801c3c54b635f2f13b319257018ea544c03
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391921"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404120"
 ---
-# <a name="create-isolated-environments-to-access-azure-virtual-networks-from-azure-logic-apps"></a>Az Azure virtuális hálózatok eléréséhez az Azure Logic Apps elkülönített környezet létrehozása
+# <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-through-an-integration-service-environment-ise"></a>Azure virtuális hálózatok az Azure Logic Apps keresztül csatlakozhat egy integrációs service-környezet (ISE)
 
 > [!NOTE]
 > Ez a funkció akkor a *privát előzetes verzió*. Hozzáférés igényléséhez [itt csatlakozni a kérelem létrehozása](https://aka.ms/iseprivatepreview).
 
-Az integrációs forgatókönyvek, ahol a logic apps és az integrációs fiókok kell a hozzáférést egy [az Azure virtual network](../virtual-network/virtual-networks-overview.md), hozhat létre egy [ *integrációs szolgáltatás környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) , amely összekapcsolja a virtuális hálózathoz, és üzembe helyezi a Logic Apps szolgáltatást a hálózat. Logic apps és az integrációs fiókok létrehozásakor válassza ki az ISE-ben, azok helyétől. A logic apps és az integrációs fiókok majd közvetlenül hozzáférhet erőforrások, például a virtuális gépek (VM), kiszolgálók, rendszerek és szolgáltatások, a virtuális hálózaton. 
+Az integrációs forgatókönyvek, ahol a logic apps és az integrációs fiókok kell a hozzáférést egy [az Azure virtual network](../virtual-network/virtual-networks-overview.md), hozzon létre egy [ *integrációs service-környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), amely egy dedikált tárolási használó magán- és elkülönített környezet és más erőforrások elkülönítve a nyilvános vagy *globális* Logic Apps szolgáltatást. Ez a fajta elkülönítés is csökkenti, amelyeket más Azure-bérlőt az alkalmazások teljesítményére hatással. Az ISE-ben az Azure, majd üzembe helyezi a Logic Apps szolgáltatás a virtuális hálózatban a virtuális hálózati kapcsolat. Amikor létrehoz egy logikai alkalmazásban vagy integrációs fiókot, válassza ki az ISE azok helyétől. A logikai alkalmazás vagy az integrációs fiók majd közvetlenül hozzáférhet a erőforrások, például a virtuális gépek (VM), kiszolgálók, rendszerek és szolgáltatások, a virtuális hálózaton. 
 
 ![Válassza ki az integrációs service-környezet](./media/connect-virtual-network-vnet-isolated-environment/select-logic-app-integration-service-environment.png)
-
-Az ISE-ben olyan dedikált tárolási és más erőforrások, amelyek nyilvános önállóan léteznek használó magán- és elkülönített környezet vagy *globális* Logic Apps szolgáltatást. Ez a fajta elkülönítés is csökkentheti a más Azure-bérlőt az alkalmazások teljesítményére lehet hatással. 
 
 Ez a cikk ezeket a műveleteket mutatja be:
 
@@ -150,7 +148,7 @@ Az eredmények listájában válassza ki a **integrációs Service-környezet (e
    | Tulajdonság | Szükséges | Érték | Leírás |
    |----------|----------|-------|-------------|
    | **Name (Név)** | Igen | <*környezet neve*> | A környezet nevét | 
-   | **Előfizetés** | Igen | <*Az Azure-előfizetés-neve*> | Az Azure-előfizetés a környezet használata | 
+   | **Előfizetés** | Igen | <*Azure-előfizetés-neve*> | Az Azure-előfizetés a környezet használata | 
    | **Erőforráscsoport** | Igen | <*Az Azure-erőforrás-csoport-neve*> | Az Azure erőforráscsoport, ahol szeretné létrehozni a környezetet |
    | **Hely** | Igen | <*Az Azure-adatközpont-régió*> | Az Azure-adatközpontrégiót használhatják a környezettel kapcsolatos információk tárolására. |
    | **A társ virtuális hálózat** | Nem | <*Az Azure-VNET-name*> | Az Azure virtuális hálózat társítása a környezetben, mint egy *társ* , a logic apps, a környezetben hozzáférhet a virtuális hálózat. Ez a kapcsolat létrehozása előtt győződjön meg arról, hogy már [beállítása szerepköralapú hozzáférés-vezérlés a virtuális hálózat az Azure Logic Apps](#vnet-access). <p>**Fontos**: Bár a virtuális hálózat nem szükséges, kiválaszthatja a virtuális hálózat *csak* a környezet létrehozásakor. | 

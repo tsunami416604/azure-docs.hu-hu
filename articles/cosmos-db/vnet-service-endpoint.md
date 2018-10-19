@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: 868f465cc651043d3ef4b1735b4b528252572dbb
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: cc64bc1af6eee505ccf3d38e214c49ffb7e3304c
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378085"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404460"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Biztonságos hozzáférés az Azure Cosmos DB-fiókot az Azure virtuális hálózati szolgáltatásvégpont
 
@@ -56,8 +56,8 @@ Az Azure Cosmos DB-fiókot most csak akkor engedélyezi a kiválasztott alháló
 
 1. A **összes erőforrás** panelen keresse meg az Azure Cosmos DB-fiók szeretné biztonságossá tételéhez.  
 
-> [!NOTE]
-> Ha rendelkezik egy meglévő IP-tűzfalon konfigurálva az Azure Cosmos DB-fiókot, vegye figyelembe a tűzfal-konfiguráció, távolítsa el az IP-tűzfalon, és engedélyeznie kell a szolgáltatásvégpontot. Ha a szolgáltatásvégpont disbling a tűzfal nem engedélyezi, adott ip-címtartomány továbbítani a forgalmat a virtuális IP-identitás elvész, és a egy IP-szűrő hibaüzenettel helyezés. Ez a hiba elkerülése érdekében minden esetben tiltsa le a tűzfalszabályokat, hogy másolja őket, az alhálózat és a végül ACL Cosmos DB-ből az alhálózat szolgáltatásvégpont engedélyezése. Adja hozzá az ACL és szolgáltatásvégpont beállítása után engedélyezheti újra az IP-tűzfal ismét szükség esetén.
+   > [!NOTE]
+   > Ha rendelkezik egy meglévő IP-tűzfalon konfigurálva az Azure Cosmos DB-fiókot, vegye figyelembe a tűzfal-konfiguráció, távolítsa el az IP-tűzfalon, és engedélyeznie kell a szolgáltatásvégpontot. Ha a szolgáltatásvégpont disbling a tűzfal nem engedélyezi, adott ip-címtartomány továbbítani a forgalmat a virtuális IP-identitás elvész, és a egy IP-szűrő hibaüzenettel helyezés. Ez a hiba elkerülése érdekében minden esetben tiltsa le a tűzfalszabályokat, hogy másolja őket, az alhálózat és a végül ACL Cosmos DB-ből az alhálózat szolgáltatásvégpont engedélyezése. Adja hozzá az ACL és szolgáltatásvégpont beállítása után engedélyezheti újra az IP-tűzfal ismét szükség esetén.
 
 2. Mielőtt engedélyezné a virtuális hálózati szolgáltatásvégpont, másolja a használatalapú Azure Cosmos DB-fiókjához társított IP-tűzfal információit. IP-tűzfalon szolgáltatásvégpont beállítása után újra engedélyezheti.  
 
@@ -97,9 +97,8 @@ A következő lépések segítségével-szolgáltatásvégpontot az Azure Cosmos
 
 1. Telepítse a legújabb [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) és [bejelentkezési](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  Győződjön meg arról, vegye figyelembe az IP-tűzfal beállításait, és az IP-tűzfalon teljesen törölni a fiók szolgáltatásvégpont engedélyezése előtt.
 
-
-> [!NOTE]
-> Ha rendelkezik egy meglévő IP-tűzfalon konfigurálva az Azure Cosmos DB-fiókot, vegye figyelembe a tűzfal-konfiguráció, távolítsa el az IP-tűzfalon, és engedélyeznie kell a szolgáltatásvégpontot. Ha a szolgáltatásvégpont disbling a tűzfal nem engedélyezi, adott ip-címtartomány továbbítani a forgalmat a virtuális IP-identitás elvész, és a egy IP-szűrő hibaüzenettel helyezés. Ez a hiba elkerülése érdekében minden esetben tiltsa le a tűzfalszabályokat, hogy másolja őket, az alhálózat és a végül ACL Cosmos DB-ből az alhálózat szolgáltatásvégpont engedélyezése. Adja hozzá az ACL és szolgáltatásvégpont beállítása után engedélyezheti újra az IP-tűzfal ismét szükség esetén.
+  > [!NOTE]
+  > Ha rendelkezik egy meglévő IP-tűzfalon konfigurálva az Azure Cosmos DB-fiókot, vegye figyelembe a tűzfal-konfiguráció, távolítsa el az IP-tűzfalon, és engedélyeznie kell a szolgáltatásvégpontot. Ha a szolgáltatásvégpont disbling a tűzfal nem engedélyezi, adott ip-címtartomány továbbítani a forgalmat a virtuális IP-identitás elvész, és a egy IP-szűrő hibaüzenettel helyezés. Ez a hiba elkerülése érdekében minden esetben tiltsa le a tűzfalszabályokat, hogy másolja őket, az alhálózat és a végül ACL Cosmos DB-ből az alhálózat szolgáltatásvégpont engedélyezése. Adja hozzá az ACL és szolgáltatásvégpont beállítása után engedélyezheti újra az IP-tűzfal ismét szükség esetén.
 
 2. Mielőtt engedélyezné a virtuális hálózati szolgáltatásvégpont, másolja a használatalapú Azure Cosmos DB-fiókjához társított IP-tűzfal információit. IP-tűzfal engedélyezze újra lesz szolgáltatásvégpont konfigurálása után.  
 
@@ -270,7 +269,7 @@ Ha virtuális hálózati Szolgáltatásvégpontok engedélyezve vannak, a forrá
 
 Azure Cosmos DB a több-bérlős szolgáltatás, amely egy nyilvános IP-címet. Korlátozza a hozzáférést az Azure-beli virtuális hálózat alhálózatához a service-végpont funkció használatával, amikor hozzáférési korlátozódik Azure Cosmos DB-fiókja az adott Azure Virtual Network és az alhálózatán.  Azure Cosmos DB-fiók nem található a kiválasztott Azure virtuális hálózatban. 
 
-### <a name="what-if-anything-will-be-logged-in-log-analyticsoms-if-it-is-enabled"></a>Mi történik, ha bármi lesz naplózva a Log Analytics/OMS Ha engedélyezve van?  
+### <a name="what-if-anything-will-be-logged-in-log-analytics-if-it-is-enabled"></a>Mi történik, ha bármi lesz naplózva a Log Analyticsben, ha engedélyezve van?  
 
 Az Azure Cosmos DB fogja leküldeni a naplók a 403-as állapot kérelem ACL által blokkolt IP-cím (nem az utolsó oktettet).  
 

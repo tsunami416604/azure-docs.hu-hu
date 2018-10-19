@@ -1,30 +1,30 @@
 ---
-title: Bing entitás keresési SDK Java gyors üzembe helyezés |} Microsoft Docs
-description: Állítsa be a Bing entitás keresési SDK konzolalkalmazást.
-titleSuffix: Azure Cognitive Services
+title: 'Rövid útmutató: Bing Entity Search SDK, Java'
+titlesuffix: Azure Cognitive Services
+description: A Bing Entity Search SDK konzolalkalmazás beállítása.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/19/2018
 ms.author: v-gedod
-ms.openlocfilehash: ebfabc00b5dc031ac4e5284450a9d639c383e78f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: eeb8e6e0ac132ef2d927aa2de03817389230191e
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349443"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814491"
 ---
-# <a name="bing-entity-search-sdk-java-quickstart"></a>Bing entitás keresési SDK Java gyors üzembe helyezés
+# <a name="quickstart-bing-entity-search-sdk-with-java"></a>Rövid útmutató: Bing Entity Search SDK Javával
 
-A Bing entitás keresési SDK entitás lekérdezések és elemzési eredmények REST API-t a funkcionalitást biztosítja. 
+A Bing Entity Search SDK a REST API funkciót biztosítja az entitáslekérdezésekhez és az eredmények elemzéséhez. 
 
-A [forráskód Java Bing entitás keresési SDK minták](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch) érhető el a Git központ. 
+A [Java Bing Entity Search SDK-minták forráskódja](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch) elérhető a GitHubon. 
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
-Első egy [kognitív szolgáltatások hozzáférési kulcs](https://azure.microsoft.com/try/cognitive-services/) alatt **keresési**. Telepítse a Bing entitás keresési SDK-függőség Maven, a gradle-lel vagy a másik függőségi felügyeleti rendszerbe. A Maven POM fájl szükséges a:
+A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a **Keresés** területen kérheti le. Telepítse a Bing Entity Search SDK függőségeit a Maven, a Gradle vagy más függőségkezelési rendszer segítségével. A Maven POM-fájlhoz a következő deklarációra van szükség:
 ```
   <dependencies>
     <dependency>
@@ -34,8 +34,8 @@ Első egy [kognitív szolgáltatások hozzáférési kulcs](https://azure.micros
     </dependency>
   </dependencies>
 ```
-## <a name="entity-search-client"></a>Entitás keresési ügyfél
-Adja hozzá a importálásokat osztály megvalósításához.
+## <a name="entity-search-client"></a>Entity Search ügyfél
+Vegyen fel importálásokat az osztályimplementációhoz.
 ```
 import com.microsoft.azure.cognitiveservices.entitysearch.*;
 import com.microsoft.azure.cognitiveservices.entitysearch.implementation.EntitySearchAPIImpl;
@@ -50,7 +50,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 ```
-Alkalmazzon a **EntitySearchAPIImpl** az ügyfelet egy példányát igényli a **ServiceClientCredentials** osztály.
+Implementálja az **EntitySearchAPIImpl** ügyfelet. Ehhez szükség van a **ServiceClientCredentials** osztály egy példányára.
 ```
 public static EntitySearchAPIImpl getClient(final String subscriptionKey) {
     return new EntitySearchAPIImpl("https://api.cognitive.microsoft.com/bing/v7.0/",
@@ -75,7 +75,7 @@ public static EntitySearchAPIImpl getClient(final String subscriptionKey) {
 }
 
 ```
-Keresse meg az egyetlen entitás "Satya Nadella", és nyomtassa ki a rövid leírása.
+Keresse meg a "Satya Nadella" önálló entitást, és nyomtassa ki a rövid leírását.
 ```
 public static void dominantEntityLookup(final String subscriptionKey)
 {
@@ -115,7 +115,7 @@ public static void dominantEntityLookup(final String subscriptionKey)
 }
 
 ```
-Keresse meg a nem egyértelmű lekérdezés "William kapuk" és a leíró Egyértelműsítő eredményeit.
+Keressen rá a "William Gates" kifejezésre, és kezelje a nem egyértelmű lekérdezés egyértelműsítési eredményeit.
 ```
 public static void handlingDisambiguation(String subscriptionKey)
 {
@@ -182,7 +182,7 @@ public static void handlingDisambiguation(String subscriptionKey)
 }
 
 ```
-Keresse meg a "Microsoft tárolására" lekérdezéssel egy adott tárolóban, és nyomtassa ki a telefonszámát az eredményt.
+A "Microsoft Store" lekérdezéssel keressen rá egy áruházra, és nyomtassa ki az eredményhez tartozó telefonszámot.
 ```
 public static void storeLookup(String subscriptionKey)
 {
@@ -220,7 +220,7 @@ public static void storeLookup(String subscriptionKey)
 }
 
 ```
-Keresse meg a lekérdezés "Seattle éttermekben." éttermekben listája A név- és az eredmények nyomtatása.
+Keressen étteremlistára a "Seattle éttermek" lekérdezéssel. Nyomtassa ki az eredményekhez tartozó neveket és telefonszámokat.
 ```
 public static void multipleRestaurantLookup(String subscriptionKey)
 {
@@ -276,7 +276,7 @@ public static void multipleRestaurantLookup(String subscriptionKey)
 }
 
 ```
-Adja hozzá a metódusokat, a cikkben egy fő függvénnyel a kódot hajthatók végre osztályra.
+Vegye fel a jelen cikkben ismertetett metódusokat egy olyan osztályba, amelyben a fő függvény a kód futtatására szolgál.
 ```
 package entitySDK;
 import com.microsoft.azure.cognitiveservices.entitysearch.*;
@@ -296,5 +296,5 @@ public class EntitySearchSDK {
 ```
 ## <a name="next-steps"></a>További lépések
 
-[Kognitív szolgáltatások Java SDK-minták](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+[Cognitive Services Java SDK-minták](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 

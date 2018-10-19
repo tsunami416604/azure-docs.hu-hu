@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: daseidma;bwren
-ms.openlocfilehash: a68c35ba2f740720e3d7940d6fafa2dcfe183589
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 70cf6fe1e2256ba2ed58d020111669e59d9db56b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064373"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405514"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurálja a Service Map az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Használhatja a kiszolgálók megtekintéséhez, ahogyan Ön gondol rájuk összekapcsolt rendszerekkel, amelyek kritikus fontosságú szolgáltatásokat. A Service Map megmutatja a kapcsolatokat kiszolgálók, folyamatok és portok között bármely TCP-kapcsolattal összekötött architektúrában semmilyen beállítást nem szükséges, eltérő ügynököt telepíteni.
@@ -138,22 +138,22 @@ A Service Map az adatok lekérése a Microsoft Dependency agent. A függőségi 
 | System Center Operations Manage felügyeleti csoport | Igen | A Service Map elemzi, és a egy csatlakoztatott a Windows és Linux-ügynökök gyűjti az adatokat [System Center Operations Manager felügyeleti csoport](../log-analytics/log-analytics-om-agents.md). <br><br>Ehhez közvetlen kapcsolat szükséges a System Center Operations Manager-ügynökszámítógép és a Log Analytics között. |
 | Azure Storage-fiók | Nem | A Service Map gyűjti az adatokat ügynökszámítógépen, így nem szerepel megjeleníthető adat gyűjtését az Azure Storage-ból származó. |
 
-A Windows, a Microsoft Monitoring Agent (MMA) segítségével a System Center Operations Manager és a Log Analytics összegyűjtése és küldése figyelési adatok. (Ez az ügynök nevezzük a System Center Operations Manager ügynök, az OMS-ügynök, a Log Analytics az ügynök, az MMA vagy közvetlen ügynök, a környezettől függően.) A System Center Operations Manager és a Log Analytics biztosít különböző ki a box verziói az MMA. Ezek a verziók jelenthetnek a Log Analyticsnek, a System Center Operations Managernek vagy mindkettőnek.  
+A Windows, a Microsoft Monitoring Agent (MMA) segítségével a System Center Operations Manager és a Log Analytics összegyűjtése és küldése figyelési adatok. (Ez az ügynök nevezzük a System Center Operations Manager-ügynök, a Log Analytics-ügynököket, az MMA vagy a közvetlen ügynök, a környezettől függően.) A System Center Operations Manager és a Log Analytics biztosít különböző ki a box verziói az MMA. Ezek a verziók jelenthetnek a Log Analyticsnek, a System Center Operations Managernek vagy mindkettőnek.  
 
 A Linux, a Linux-összegyűjti és figyelés a Log Analytics az adatokat küld a Log Analytics-ügynököket. A Log Analytics-ügynökök közvetlenül csatlakozik a szolgáltatáshoz a kiszolgálókon a Service Map is használhatja, vagy az Operations Manager felügyeleti csoport integrálva van a Log Analytics jelentenek, amelyek.  
 
 Ebben a cikkben azt fog hivatkozni, az ügynökök, hogy Linux vagy Windows csatlakozó System Center Operations Manager felügyeleti csoporthoz, vagy közvetlenül a Log Analyticsbe, mint a *Log Analytics-ügynököket*. 
 
-A Service Map-ügynök nem továbbít adatokat magát, és nem igényel tűzfalak és a portok módosítása. A Service Map az mindig továbbított adatok által a Log Analytics-ügynököket a Log Analytics szolgáltatásba, vagy közvetlenül az OMS Gatewayen keresztül.
+A Service Map-ügynök nem továbbít adatokat magát, és nem igényel tűzfalak és a portok módosítása. A Service Map az mindig továbbított adatok által a Log Analytics-ügynököket a Log Analytics szolgáltatásba, vagy közvetlenül a Log Analytics-átjárón.
 
 ![A Service Map ügynökök](media/monitoring-service-map/agents.png)
 
 Ha egy System Center Operations Manager-ügyfél a Log Analytics csatlakozik a felügyeleti csoport:
 
 - Ha a System Center Operations Manager-ügynökök el tudja érni az internetet a Log Analyticshez való csatlakozáshoz, további konfiguráció nélkül nem szükséges.  
-- Ha a System Center Operations Manager-ügynökök az interneten keresztül nem éri el a Log Analytics, a System Center Operations Manager működéséhez az OMS-átjáró konfigurálása szeretné.
+- Ha a System Center Operations Manager-ügynökök az interneten keresztül nem érhető el a Log Analytics, a Log Analytics-átjáró használata a System Center Operations Manager konfigurálása szüksége.
   
-Ha a Windows vagy Linux rendszerű számítógépek közvetlenül nem lehet csatlakozni a szolgáltatáshoz, a Log Analytics-ügynök csatlakoztatása a Log Analytics használatával az OMS-átjáró konfigurálása szeretné. Hogyan telepítheti és konfigurálhatja az OMS-átjáró további információkért lásd: [számítógépek csatlakoztatását az OMS-átjáró Internet-hozzáférés nélküli](../log-analytics/log-analytics-oms-gateway.md).  
+Ha a Windows vagy Linux rendszerű számítógépek közvetlenül nem tud csatlakozni a szolgáltatáshoz, konfigurálása a Log Analytics-ügynököket a Log Analytics-munkaterület használata az átjáró csatlakozni szeretne. Hogyan telepítheti és konfigurálhatja a Log Analytics-átjáró további információkért lásd: [számítógépek csatlakoztatása a Log Analytics-átjáró Internet-hozzáférés nélküli](../log-analytics/log-analytics-oms-gateway.md).  
 
 ### <a name="management-packs"></a>Felügyeleti csomagok
 A Service Map aktiválásakor a Log Analytics-munkaterületen, 300 KB-os felügyeleti csomag munkaterület Windows-kiszolgálók lesznek továbbítva. Ha a System Center Operations Manager ügynököt használ egy [csatlakoztatott felügyeleti csoport](../log-analytics/log-analytics-om-agents.md), a Service Map felügyeleti csomag telepítése a System Center Operations Managerből. 

@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 02ca9065107b999fa0182c89ae2b9d8ca0c8607a
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 581e9d052738b8e1976a766ea6e3525ecf76d741
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362874"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426430"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Önálló Azure Automation-fiók létrehozása
 
 Ez a cikk bemutatja, hogyan hozhat létre egy Azure Automation-fiókot az Azure Portalon. A portál Automation-fiók segítségével értékelje ki és más felügyeleti megoldásokat vagy integrációs használata az Azure Log Analytics nélkül Automation ismertetése. Ezen felügyeleti megoldások hozzáadása vagy a Log Analytics szolgáltatással integrált speciális monitorozás bármikor runbook-feladatok a jövőben is.
 
-Az Automation-fiók runbookok hitelesítheti, mivel kezeli az erőforrások Azure Resource Manager vagy a klasszikus üzemi modellben.
+Az Automation-fiók runbookok hitelesítheti, mivel kezeli az erőforrások Azure Resource Manager vagy a klasszikus üzemi modellben. Egy Automation-fiók erőforrások is kezelhetők a régiók és a egy adott bérlő esetében az előfizetések között.
 
 Ha egy Automation-fiókot hoz létre az Azure Portalon, ezek a fiókok automatikusan jönnek létre:
 

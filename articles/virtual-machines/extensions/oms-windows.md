@@ -15,16 +15,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: roiyz
-ms.openlocfilehash: 02fa19cad56f1a31ad60c597df1b004710cb5b50
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 12f7c52f916f385ddf95cf16aa89c4848ab7c118
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452088"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406602"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics virtuálisgép-bővítmény a Windows
 
-A log Analytics monitorozási képességeket biztosít a felhőben és helyszíni eszközökön. A Log Analytics-ügynököket a Windows virtuálisgép-bővítmény közzétett és a Microsoft támogatja. A bővítmény a Log Analytics-ügynököket telepíti az Azure-beli virtuális gépeken, és regisztrálja a virtuális gépek egy meglévő Log Analytics-munkaterületet. Ez a dokumentum részletesen, a támogatott platformok, konfigurációk és üzembe helyezési lehetőségeit a Log Analytics virtuálisgép-bővítmény Windows.
+A log Analytics monitorozási képességeket biztosít a felhőben és helyszíni eszközökön. A Log Analytics ügynök virtuálisgép-bővítmény a Windows közzétett és a Microsoft támogatja. A bővítmény a Log Analytics-ügynököket telepíti az Azure-beli virtuális gépeken, és regisztrálja a virtuális gépek egy meglévő Log Analytics-munkaterületet. Ez a dokumentum részletesen, a támogatott platformok, konfigurációk és üzembe helyezési lehetőségeit a Log Analytics virtuálisgép-bővítmény Windows.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,7 +37,7 @@ A Log Analytics-ügynök bővítmény esetében a Windows is futtatható a Windo
 Az Azure Security Center automatikusan építi ki a Log Analytics-ügynököket, és csatlakoztatja a az alapértelmezett log analytics-munkaterületet az Azure-előfizetés. Ha az Azure Security Center használ, ne futtassa a jelen dokumentumban leírt lépések segítségével. Ez felülírja a konfigurált munkaterületével és a szünet a kapcsolatot az Azure Security Centerrel.
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
-A Log Analytics-ügynököket kiterjesztésű Windows megköveteli, hogy a céloldali virtuális gép csatlakozik az internethez. 
+A Log Analytics Windows agent bővítmény szükséges, hogy a céloldali virtuális gép csatlakozik az internethez. 
 
 ## <a name="extension-schema"></a>Bővítményséma
 

@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 253ec8c0d1d6725e6ae5c47c79882284c633d6e9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 05f77665352ee306f5684d5c7a09b27d4fe17650
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984466"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426810"
 ---
-# <a name="load-balancing-with-azures-application-delivery-suite"></a>Terheléselosztás és az Azure application kézbesítés
+# <a name="load-balancing-with-azures-application-delivery-suite"></a>Terheléselosztás az Azure alkalmazáskézbesítési csomagjával
 
 ## <a name="introduction"></a>Bevezetés
 A Microsoft Azure több globális és regionális szolgáltatásokat kínál a kezelése, hogyan ossza a hálózati forgalmat és elosztott terhelésű: a Traffic Manager, bejárati ajtajának szolgáltatás, Application Gateway és a Load Balancer.  Együtt az Azure számos régióban és a zónaszintű architektúra, ezek a szolgáltatások együttes használata lehetővé teszi nagy teherbírású, méretezhető, nagy teljesítményű alkalmazásokat hozhat létre.
@@ -36,7 +36,7 @@ Az alkalmazás a globális és regionális szolgáltatások kombinálásával bi
 - Teljesítmény-útválasztási a kérelmező küldeni a legközelebbi háttérrendszer késés szempontjából.
 - Az Útválasztás a háttérrendszernek, más háttérrendszerek vissza, az összes forgalom irányítása be prioritás.
 - Súlyozott ciklikus időszeletelés útválasztás, amely elosztja a forgalmat, amely az egyes háttérrendszerek van rendelve a súlyozás alapján.
-- Győződjön meg arról, hogy meghatározott földrajzi régióban lévő kérelmezőket irányítja a háttérrendszerek ezekben a régiókban leképezve a földrajzi útválasztásának (például Spanyolország érkező kérelmek legyen átirányítva, az Egyesült Államok – kelet-Azure-régióban)
+- Győződjön meg arról, hogy meghatározott földrajzi régióban lévő kérelmezőket irányítja a háttérrendszerek ezekben a régiókban leképezve a földrajzi útválasztásának (például Spanyolország érkező kérelmek legyen átirányítva a franciaországi központi Azure-régió)
 - Alhálózat útválasztási, amely lehetővé teszi, hogy az IP-címet, hogy azok érkező kéréseket küld az adott háttérrendszer címtartományok háttérkomponenseinek (például a vállalati központ IP-címtartományból csatlakozás minden felhasználó kapja meg, mint az általános különböző webes tartalom felhasználó)
 
 Az ügyfél közvetlenül csatlakozik az adott háttérrendszer. Az Azure Traffic Manager észleli, ha egy háttérszolgáltatás nem kifogástalan, és majd átirányítja a megfelelő egy másik példánya az ügyfelek. Tekintse meg [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) dokumentációban talál további információt a szolgáltatás.
@@ -83,8 +83,8 @@ Az alábbi ábra az ebben a forgatókönyvben architektúráját mutatja be:
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [hozzon létre egy bejárati ajtajának](quickstart-create-front-door.md).
-- Ismerje meg, [bejárati ajtajának működése](front-door-routing-architecture.md).
+- [Frontdoor létrehozására](quickstart-create-front-door.md) vonatkozó információk.
+- A [Front Door működésének](front-door-routing-architecture.md) ismertetése.
 
 <!--Image references-->
 [1]: ./media/front-door-lb-with-azure-app-delivery-suite/application-delivery-figure1.png

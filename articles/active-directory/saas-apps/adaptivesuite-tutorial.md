@@ -1,277 +1,263 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory-integráció adaptív, amelyen |} Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Azure Active Directory és adaptív Insights között.
+title: 'Oktatóanyag: Azure Active Directory-integráció az adaptív Insights |} A Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és az adaptív Insights között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
+ms.reviewer: joflore
 ms.assetid: 13af9d00-116a-41b8-8ca0-4870b31e224c
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2018
+ms.date: 10/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 307c3cf258a74d1ddfb409f0d5b22d9e1fd6bf4b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 74f38ef3043cfa0e6df40c264b72cc5eae38544e
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213821"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430289"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adaptive-insights"></a>Oktatóanyag: Azure Active Directory-integráció adaptív, amelyen
+# <a name="tutorial-azure-active-directory-integration-with-adaptive-insights"></a>Oktatóanyag: Azure Active Directory-integráció az adaptív insights segítségével
 
-Ebben az oktatóanyagban elsajátíthatja adaptív Insights integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban elsajátíthatja, hogyan adaptív Insights integrálása az Azure Active Directory (Azure AD).
 
-Adaptív Insights integrálása az Azure AD lehetővé teszi a következő előnyöket biztosítja:
+Az adaptív Insights integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Megadhatja a adaptív kínáló rendelkező Azure AD-ben
-- Az Azure AD-fiókok a engedélyezheti a felhasználóknak, hogy automatikusan lekérni bejelentkezett adaptív insights (egyszeri bejelentkezés)
-- Kezelheti a fiókokat, egy központi helyen – az Azure-portálon
+- Szabályozhatja, ki férhet hozzá az adaptív Insights az Azure AD-ben.
+- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett adaptív insights (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni az Azure AD SaaS integrálásáról további adatait, tekintse meg [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Adaptív, amelyen az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Az Azure AD-integráció konfigurálása az adaptív Insights, a következőkre van szükség:
 
-- Az Azure AD szolgáltatásra
-- Egy adaptív Insights egyszeri bejelentkezés engedélyezve van az előfizetés
+- Azure AD-előfizetés
+- Az adaptív Insights egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
-> Ez az oktatóanyag lépéseit teszteléséhez nem ajánlott használata termelési környezetben.
+> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
 
 Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
 
-- Ne használja az éles környezetben, nem szükséges.
-- Ha még nem rendelkezik az Azure AD próbaverziójának környezetben, akkor [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+- Ne használja az éles környezetben, csak szükség esetén.
+- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelése az Azure AD egyszeri bejelentkezéshez egy tesztkörnyezetben. Ebben az oktatóanyagban leírt forgatókönyv két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Adaptív Insights hozzáadása a gyűjteményből
-2. És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
+1. Az adaptív Insights hozzáadása a katalógusból
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
-## <a name="adding-adaptive-insights-from-the-gallery"></a>Adaptív Insights hozzáadása a gyűjteményből
-Adaptív betekintést az Azure AD integrálása konfigurálásához szüksége adaptív Insights hozzáadása a kezelt SaaS-alkalmazások listáját a gyűjteményből.
+## <a name="adding-adaptive-insights-from-the-gallery"></a>Az adaptív Insights hozzáadása a katalógusból
+Az adaptív elemzéseket kaphat az Azure AD-integráció konfigurálása, meg kell adaptív Insights hozzáadása a felügyelt SaaS-alkalmazások listájában a katalógusból.
 
-**Adaptív Insights hozzáadása a gyűjteményből, hajtsa végre az alábbi lépéseket:**
+**Az adaptív Insights hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[Azure-portálon](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
-    ![Active Directory][1]
+    ![image](./media/adaptivesuite-tutorial/selectazuread.png)
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen **összes alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![Alkalmazások][2]
+    ![image](./media/adaptivesuite-tutorial/a_select_app.png)
+    
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** párbeszédpanel tetején gombra.
+    ![image](./media/adaptivesuite-tutorial/a_new_app.png)
 
-    ![Alkalmazások][3]
+4. A Keresés mezőbe írja be a **adaptív Insights**válassza **adaptív Insights** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-4. Írja be a keresőmezőbe, **adaptív Insights**, jelölje be **adaptív Insights** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+     ![image](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_addfromgallery.png)
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>És tesztelés az Azure AD konfigurálása egyszeri bejelentkezés
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezést az úgynevezett "Britta Simon." tesztfelhasználó alapján adaptív insights szolgáltatással
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az adaptív Insights "Britta Simon" nevű tesztfelhasználó alapján.
 
-Az egyszeri bejelentkezés működéséhez az Azure AD meg kell tudja, hogy mi a párjukhoz felhasználó adaptív insightsban a felhasználó Azure AD-ben. Ez azt jelenti az Azure AD-felhasználó és a kapcsolódó felhasználó adaptív insightsban közötti kapcsolat kapcsolatot kell létrehozni.
+Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, a partner felhasználó adaptív Insights mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó, az adaptív Insights hivatkozás kapcsolata kell létrehozni.
 
-Az Azure AD egyszeri bejelentkezést, amelyen adaptív tesztelése és konfigurálása, hogy végezze el a következő építőelemeket kell:
+Az Azure AD egyszeri bejelentkezés az adaptív Insights tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD az egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – lehetővé teszi a felhasználók a szolgáltatás használatához.
-2. **[Az Azure AD tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezést a Britta Simon teszteléséhez.
-3. **[Egy adaptív Insights tesztfelhasználó létrehozása](#creating-an-adaptive-insights-test-user)**  - való egy megfelelője a Britta Simon adaptív Insights, amely csatolva van a felhasználó az Azure AD-ábrázolását.
-4. **[Az Azure AD-teszt felhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  - Britta Simon használata az Azure AD az egyszeri bejelentkezés engedélyezése.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy adaptív Insights tesztfelhasználót](#create-an-adaptive-insights-test-user)**  – egy megfelelője a Britta Simon van adaptív Insights, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD az egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés engedélyezése az Azure portálon, és konfigurálása egyszeri bejelentkezéshez az adaptív Insights alkalmazásban.
+Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és az adaptív Insights alkalmazásban egyszeri bejelentkezés konfigurálása.
 
-**Adaptív, amelyen konfigurálhatja az Azure AD egyszeri bejelentkezést, hajtsa végre az alábbi lépéseket:**
+**Az Azure AD egyszeri bejelentkezés konfigurálása az adaptív Insights, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure portálon a a **adaptív Insights** alkalmazás integráció lapján, kattintson a **egyszeri bejelentkezés**.
+1. Az a [az Azure portal](https://portal.azure.com/), az a **adaptív Insights** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
 
-    ![Egyszeri bejelentkezés konfigurálása][4]
+    ![image](./media/adaptivesuite-tutorial/B1_B2_Select_SSO.png)
 
-2. Az a **egyszeri bejelentkezés** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML** módot az egyszeri bejelentkezés engedélyezése.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_samlbase.png)
+    ![image](./media/adaptivesuite-tutorial/b1_b2_saml_sso.png)
 
-3. Az a **adaptív Insights tartomány és az URL-címek** területen tegye a következőket:
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_url.png)
+    ![image](./media/adaptivesuite-tutorial/b1-domains_and_urlsedit.png)
 
-    a. Az a **azonosítója (entitás azonosítója)** szövegmező, adja meg a következő minta használatával URL-címe: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
+4. Az a **alapszintű SAML-konfigurációja** területén kövesse az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** intiated mód:
 
-    b. Az a **válasz URL-CÍMEN** szövegmező, adja meg a következő minta használatával URL-címe: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
+    ![image](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_url.png)
+
+    a. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-címe: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
+
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
     >[!NOTE]
-    > Azonosítója (entitás azonosítója) és a válasz URL-CÍMEN értékek lekérheti az adaptív Insights **SAML SSO beállítások** lap.
+    > Az adaptív Insights kaphat azonosító (entityid) és a válasz URL-cím értékek **SAML egyszeri bejelentkezési beállításainak** lapot.
+ 
+5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** , és mentse a számítógépre.
 
-4. A a **SAML-aláíró tanúsítványa** kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+    ![image](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_certficate.png) 
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_certificate.png)
+6. Az a **adaptív Insights beállítása** területén másolja a megfelelő URL-címet a követelmény alapján.
 
-5. Kattintson a **mentése** gombra.
+    Vegye figyelembe, hogy az URL-cím lehet, hogy tegyük fel, hogy a következő:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/adaptivesuite-tutorial/tutorial_general_400.png)
+    a. Bejelentkezési URL
 
-6. A a **adaptív Insights beállításait** kattintson **adaptív Insights konfigurálása** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML Entitásazonosító és SAML-alapú egyszeri bejelentkezési URL-címe** a a **rövid összefoglaló szakasz.**
+    b. Az Azure Ad-azonosító
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_configure.png) 
+    c. Kijelentkezési URL
 
-7. Egy másik webes böngészőablakban jelentkezzen be a adaptív Insights vállalati webhely rendszergazdaként.
+    ![image](./media/adaptivesuite-tutorial/d1_samlsonfigure.png) 
 
-8. Ugrás a **Admin**.
+7. Egy másik böngészőablakban jelentkezzen be az adaptív Insights vállalati hely rendszergazdaként.
 
-    ![Felügyeleti](./media/adaptivesuite-tutorial/IC805644.png "rendszergazda")
+8. Lépjen a **rendszergazdai**.
 
-9. Az a **felhasználók és szerepkörök** kattintson **SAML SSO beállítások kezelése**.
+    ![Rendszergazdai](./media/adaptivesuite-tutorial/IC805644.png "rendszergazda")
 
-    ![SAML SSO beállításainak kezelése](./media/adaptivesuite-tutorial/IC805645.png "SAML SSO beállításainak kezelése")
+9. Az a **felhasználók és szerepkörök** területén kattintson **SAML egyszeri bejelentkezési beállításainak kezelése**.
 
-10. Az a **SAML SSO beállítások** lapon, a következő lépésekkel:
+    ![SAML egyszeri bejelentkezési beállításainak kezelése](./media/adaptivesuite-tutorial/IC805645.png "SAML egyszeri bejelentkezési beállításainak kezelése")
 
-    ![SAML SSO beállítások](./media/adaptivesuite-tutorial/IC805646.png "SAML SSO-beállítások")
+10. Az a **SAML egyszeri bejelentkezési beállításainak** lapon, a következő lépésekkel:
 
-    a. Az a **identitás szolgáltatónevet** szövegmező, adja meg a konfiguráció nevét.
+    ![SAML egyszeri bejelentkezési beállításainak](./media/adaptivesuite-tutorial/IC805646.png "SAML SSO-beállítások")
 
-    b. Beillesztés a **SAML Entitásazonosító** az Azure portálon átmásolja értéket a **identitásszolgáltató Entitásazonosító** szövegmező.
+    a. Az a **identitásszolgáltató neve** szövegmezőbe írja be a konfiguráció nevét.
 
-    c. Beillesztés a **SAML-alapú egyszeri bejelentkezési URL-címe** az Azure portálon átmásolja értéket a **identitásszolgáltató egyszeri bejelentkezési URL-cím** szövegmező.
+    b. Illessze be a **Azure Ad-azonosító** az Azure Portalról másolt érték a **identitásszolgáltató Entitásazonosító** szövegmezőbe.
 
-    d. Beillesztés a **SAML-alapú egyszeri bejelentkezési URL-címe** az Azure portálon átmásolja értéket a **egyéni kijelentkezési URL-cím** szövegmező.
+    c. Illessze be a **bejelentkezési URL-cím** az Azure Portalról másolt érték a **identitásszolgáltató egyszeri bejelentkezési URL-cím** szövegmezőbe.
 
-    e. A letöltött tanúsítvány feltöltése, kattintson a **fájl kiválasztása**.
+    d. Illessze be a **kijelentkezési URL-címe** az Azure Portalról másolt érték a **egyéni kijelentkezési URL-címe** szövegmezőbe.
+
+    e. A letöltött tanúsítvány feltöltéséhez kattintson **fájl kiválasztása**.
 
     f. Válassza ki a következőket:
 
-    * **SAML-alapú felhasználói azonosító**, jelölje be **adaptív Insights felhasználónevét**.
+    * **SAML-felhasználói azonosító**válassza **felhasználó adaptív Insights nevét**.
 
-    * **SAML-alapú felhasználói azonosító hely**, jelölje be **felhasználóazonosító tárgyában csupa kisbetűvel NameID**.
+    * **SAML-felhasználói azonosító hely**válassza **NameID-tulajdonos felhasználói azonosító**.
 
-    * **SAML NameID formátum**, jelölje be **E-mail cím**.
+    * **Az SAML NameID formátum**válassza **E-mail-cím**.
 
-    * **SAML engedélyezése**, jelölje be **SAML SSO engedélyezése és a közvetlen adaptív Insights bejelentkezési**.
+    * **SAML engedélyezése**válassza **SAML SSO engedélyezése és a közvetlen adaptív Insights bejelentkezési**.
 
-    g. Másolás **adaptív Insights egyszeri bejelentkezési URL-cím** és illessze be a **azonosítója (entitás azonosítója)** és **válasz URL-CÍMEN** a szövegmezők a **adaptív Insights tartomány és az URL-címek** szakaszban az Azure portálon.
+    g. Másolás **adaptív Insights egyszeri bejelentkezési URL-címe** , és illessze be a **azonosító (entityid)** és **válasz URL-cím** az eszköztippek a **adaptív Insights tartomány és URL-címek** szakaszban az Azure Portalon.
 
     h. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure AD tesztfelhasználó létrehozása
-Ez a szakasz célja a tesztfelhasználó létrehozása az Azure portálon Britta Simon nevezik.
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-![Az Azure AD-felhasználó létrehozása][100]
+Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-1. Az a **Azure-portálon**, a bal oldali navigációs ablaktábláján kattintson **Azure Active Directory** ikonra.
+    ![image](./media/adaptivesuite-tutorial/d_users_and_groups.png)
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/adaptivesuite-tutorial/create_aaduser_01.png) 
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-2. Azon felhasználók listájának megtekintéséhez keresse fel **felhasználók és csoportok** kattintson **minden felhasználó**.
+    ![image](./media/adaptivesuite-tutorial/d_adduser.png)
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/adaptivesuite-tutorial/create_aaduser_02.png) 
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-3. Lehetőségre a **felhasználói** párbeszédpanel, kattintson a **Hozzáadás** párbeszédpanel tetején.
+    ![image](./media/adaptivesuite-tutorial/d_userproperties.png)
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/adaptivesuite-tutorial/create_aaduser_03.png) 
+    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+  
+    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    Például: BrittaSimon@contoso.com
 
-4. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
+    c. Válassza ki **tulajdonságok**, jelölje be a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
-    ![Az Azure AD tesztfelhasználó létrehozása](./media/adaptivesuite-tutorial/create_aaduser_04.png)
+    d. Kattintson a **Létrehozás** gombra.
+ 
+### <a name="create-an-adaptive-insights-test-user"></a>Az adaptív Insights tesztfelhasználó létrehozása
 
-    a. Az a **neve** szövegmezőhöz típus **BrittaSimon**.
+Ahhoz, hogy jelentkezzen be az adaptív Insights az Azure AD-felhasználók, akkor ki kell építeni az adaptív elemzésekké. Adaptív Insights esetén kiépítése a manuális feladat.
 
-    b. Az a **felhasználónév** szövegmezőhöz típusa a **e-mail cím** a BrittaSimon.
+**Felhasználók átadásának konfigurálása, hajtsa végre az alábbi lépéseket:** 
 
-    c. Válassza ki **megjelenítése jelszó** írja le a értékének a **jelszó**.
+1. Jelentkezzen be a **adaptív Insights** rendszergazdaként a vállalati webhely.
+2. Lépjen a **rendszergazdai**.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+   ![Rendszergazdai](./media/adaptivesuite-tutorial/IC805644.png "rendszergazda")
 
-### <a name="creating-an-adaptive-insights-test-user"></a>Egy adaptív Insights tesztfelhasználó létrehozása
-
-Ahhoz, hogy az Azure AD-felhasználók adaptív Insights bejelentkezni, akkor ki kell építenie az adaptív Insights. Adaptív Insights, ha egy kézi tevékenység.
-
-**Adja meg a felhasználók átadása, hajtsa végre az alábbi lépéseket:** 
-
-1. Jelentkezzen be a **adaptív Insights** vállalati hely rendszergazdaként.
-2. Ugrás a **Admin**.
-
-   ![Felügyeleti](./media/adaptivesuite-tutorial/IC805644.png "rendszergazda")
-3. Az a **felhasználók és szerepkörök** kattintson **felhasználó hozzáadása**.
+3. Az a **felhasználók és szerepkörök** területén kattintson **felhasználó hozzáadása**.
 
    ![Felhasználó hozzáadása](./media/adaptivesuite-tutorial/IC805648.png "felhasználó hozzáadása")
-4. Az a **új felhasználó** területen tegye a következőket:
+   
+4. Az a **új felhasználó** szakaszban, hajtsa végre az alábbi lépéseket:
 
-   ![Küldje el](./media/adaptivesuite-tutorial/IC805649.png "elküldése")
+   ![Küldje el](./media/adaptivesuite-tutorial/IC805649.png "beküldése")
 
-   a. Típus a **neve**, **bejelentkezési**, **E-mail**, **jelszó** egy érvényes Azure Active Directory-felhasználó szeretné azokat a kapcsolódó kiépítése szövegmezőből.
+   a. Írja be a **neve**, **bejelentkezési**, **E-mail**, **jelszó** egy érvényes Azure Active Directory-felhasználó létrehozásához a kapcsolódó kívánt a szöveges mezőkben.
 
    b. Válassza ki a **szerepkör**.
 
-   c. Kattintson a **nyújt**.
+   c. Kattintson a **elküldése**.
 
 >[!NOTE]
->Bármely más adaptív Insights felhasználói fiók létrehozása eszközök vagy rendelkezés AAD felhasználói fiókokhoz adaptív Insights által nyújtott API-k.
+>Bármely más adaptív Insights felhasználói fiók létrehozása eszközöket használhatja, vagy az aad-ben a felhasználói fiókok kiépítését adaptív Insights által biztosított API-k.
 >
 
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon Azure egyszeri bejelentkezés által biztosított hozzáférés adaptív Insights használatához.
+Ebben a szakaszban engedélyezze Britta Simon által biztosított adaptív Insights hozzáférés Azure egyszeri bejelentkezés használatára.
 
-![Felhasználó hozzárendelése][200]
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**válassza **minden alkalmazás**.
 
-**Adaptív Insights Britta Simon rendel, hajtsa végre az alábbi lépéseket:**
+    ![image](./media/adaptivesuite-tutorial/d_all_applications.png)
 
-1. Az Azure-portálon, nyissa meg az alkalmazások nézet, majd nyissa meg a könyvtár nézetet, és navigáljon **vállalati alkalmazások** kattintson **összes alkalmazás**.
+2. Az alkalmazások listájában jelölje ki a **adaptív Insights**.
 
-    ![Felhasználó hozzárendelése][201]
+    ![image](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_app.png)
 
-2. Az alkalmazások listában válassza ki a **adaptív Insights**.
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_app.png)
+    ![image](./media/adaptivesuite-tutorial/d_leftpaneusers.png)
 
-3. A bal oldali menüben kattintson a **felhasználók és csoportok**.
+4. Válassza ki a **Hozzáadás** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![Felhasználó hozzárendelése][202]
+    ![image](./media/adaptivesuite-tutorial/d_assign_user.png)
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzáadása hozzárendelés** párbeszédpanel.
+4. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-    ![Felhasználó hozzárendelése][203]
+5. Az a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelése** gombra.
+    
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-5. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-6. Kattintson a **válasszon** gombra **felhasználók és csoportok** párbeszédpanel.
-
-7. Kattintson a **hozzárendelése** gombra **hozzáadása hozzárendelés** párbeszédpanel.
-
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
-
-Ez a szakasz célja a Microsoft Azure AD az egyszeri bejelentkezés konfiguráció teszteléséhez a hozzáférési panelen.
-
-Ha a hozzáférési panelen adaptív Insights csempére kattint, akkor kell beolvasása automatikusan bejelentkezett az adaptív Insights alkalmazására.
+Ha a hozzáférési panelen a adaptív Insights csempére kattint, akkor kell lekérése automatikusan bejelentkezett az adaptív Insights alkalmazáshoz.
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
-* [Az Azure Active Directoryval SaaS-alkalmazások integrációjával kapcsolatos bemutatók felsorolása](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryban?](../manage-apps/what-is-single-sign-on.md)
-
-<!--Image references-->
-
-[1]: ./media/adaptivesuite-tutorial/tutorial_general_01.png
-[2]: ./media/adaptivesuite-tutorial/tutorial_general_02.png
-[3]: ./media/adaptivesuite-tutorial/tutorial_general_03.png
-[4]: ./media/adaptivesuite-tutorial/tutorial_general_04.png
-
-[100]: ./media/adaptivesuite-tutorial/tutorial_general_100.png
-
-[200]: ./media/adaptivesuite-tutorial/tutorial_general_200.png
-[201]: ./media/adaptivesuite-tutorial/tutorial_general_201.png
-[202]: ./media/adaptivesuite-tutorial/tutorial_general_202.png
-[203]: ./media/adaptivesuite-tutorial/tutorial_general_203.png
+* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
+* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

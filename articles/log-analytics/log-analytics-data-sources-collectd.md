@@ -1,5 +1,5 @@
 ---
-title: OMS Log Analytics az összegyűjtött adatokat gyűjteni |} A Microsoft Docs
+title: A Log Analytics összegyűjtött adatokat gyűjteni |} A Microsoft Docs
 description: Összegyűjtött egy nyílt forráskódú Linux-démon, amely rendszeres időközönként alkalmazások és a rendszer szintű adatait gyűjti az adatokat.  Ez a cikk információkat biztosít a Log Analytics összegyűjtött adatok gyűjtését.
 services: log-analytics
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: eb053ef8fc66ff9d71a9576b71eb4edfcd688638
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: a1f28103f8faabae166f09185db3f3e1fee7a5ab
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041290"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404596"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Összegyűjtött adatok gyűjtésére a Linux-ügynökök a Log Analyticsben
 [Összegyűjtött](https://collectd.org/) van egy nyílt forráskódú Linux-démon rendszeres időközönként által gyűjtött teljesítmény-mérőszámok az alkalmazások és a rendszer szintű adatait. Példa alkalmazások közé tartozik, a Java virtuális gép (JVM), a MySQL-kiszolgáló és az nginx-et. Ez a cikk teljesítményadatok gyűjtése a Log Analytics az összegyűjtött információkat biztosít.
@@ -29,7 +29,9 @@ Az elérhető beépülő modulok tartalmazó teljes listát található [beépü
 
 ![Összegyűjtött áttekintése](media/log-analytics-data-sources-collectd/overview.png)
 
-A következő összegyűjtött konfigurációs tartalmazza az OMS-ügynök Linux-útvonal összegyűjtött adatokat az OMS-ügynök Linux rendszeren.
+A Log Analytics Linuxhoz készült útvonal összegyűjtött adatokat a Log Analytics-ügynök Linux-ügynök a következő összegyűjtött konfigurációt tartalmazza.
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
 
     LoadPlugin write_http
 
@@ -52,12 +54,12 @@ Emellett ha egy összegyűjtött verzióját használja, mielőtt egy 5.5-ös he
        </URL>
     </Plugin>
 
-Az összegyűjtött konfigurációs használja az alapértelmezett`write_http` beépülő modul használatával teljesítmény metrikaadatok küldése 26000 porton keresztül az OMS-ügynök Linux rendszeren. 
+Az összegyűjtött konfigurációs használja az alapértelmezett`write_http` 26000 porton keresztül küldendő teljesítmény metrikaadatok Linuxhoz készült Log Analytics-ügynök beépülő modult. 
 
 > [!NOTE]
 > Ez a port beállítható úgy, hogy egy egyénileg meghatározott portot szükség esetén.
 
-A Linuxhoz készült OMS-ügynök is a összegyűjtött metrikák 26000 portot figyeli, és konvertálja azokat OMS séma metrikákat. Az alábbiakban található az OMS-ügynök Linux konfiguráció `collectd.conf`.
+A Linuxhoz készült Log Analytics-ügynököt is a összegyűjtött metrikák 26000 portot figyeli, és konvertálja azokat a Log Analytics-séma metrikák. Az alábbiakban található az a Log Analytics-ügynök Linux konfigurációs `collectd.conf`.
 
     <source>
       type http
@@ -72,19 +74,19 @@ A Linuxhoz készült OMS-ügynök is a összegyűjtött metrikák 26000 portot f
 
 ## <a name="versions-supported"></a>Támogatott verziók
 - A log Analytics jelenleg támogatja az összegyűjtött 4.8 verzió vagy újabb verzió.
-- Az OMS-ügynök Linux v1.1.0-217 vagy újabb összegyűjtött metrika gyűjtemény szükség.
+- Log Analytics-ügynök Linux v1.1.0-217 vagy újabb összegyűjtött metrika gyűjtemény szükség.
 
 
 ## <a name="configuration"></a>Konfiguráció
 Az alábbiakban az összegyűjtött adatok gyűjtésének konfigurálása a Log Analytics alapvető lépéseit.
 
-1. Állítsa be az összegyűjtött adatokat küldeni az OMS-ügynök a write_http beépülő moduljával Linux rendszeren.  
-2. Az összegyűjtött adatokat a megfelelő port figyelésére a Linuxhoz készült OMS-ügynök konfigurálása.
-3. Indítsa újra az összegyűjtött és a Linuxhoz készült OMS-ügynök.
+1. Állítsa be az összegyűjtött adatokat küldeni a Log Analytics-ügynököket a write_http beépülő moduljával Linux rendszeren.  
+2. Állítsa be az összegyűjtött adatokat a megfelelő port figyelésére a Linuxhoz készült Log Analytics-ügynököket.
+3. Indítsa újra a Linux összegyűjtött és a Log Analytics-ügynököt.
 
 ### <a name="configure-collectd-to-forward-data"></a>Összegyűjtött adatok továbbítására konfigurálása 
 
-1. Az útvonal összegyűjtött adatokat az OMS-ügynök Linux rendszeren `oms.conf` által összegyűjtött konfigurációs könyvtárba kell hozzáadni. Ez a fájl és a Linux-disztribúció, a gép függ.
+1. Útvonal összegyűjtött adatokat a Log Analytics-ügynök Linux rendszeren `oms.conf` által összegyűjtött konfigurációs könyvtárba kell hozzáadni. Ez a fájl és a Linux-disztribúció, a gép függ.
 
     Ha az összegyűjtött konfigurációs könyvtár /etc/collectd.d/ találhatók:
 
@@ -103,12 +105,12 @@ Az alábbiakban az összegyűjtött adatok gyűjtésének konfigurálása a Log 
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/collectd.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/
         sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/collectd.conf
 
-3. Indítsa újra összegyűjtött és az OMS-ügynök Linux rendszeren az alábbi parancsokkal.
+3. Indítsa újra a következő parancsokat a Linuxhoz készült összegyűjtött és a Log Analytics ügynök.
 
     sudo szolgáltatás összegyűjtött sudo /opt/microsoft/omsagent/bin/service_control újraindítás
 
 ## <a name="collectd-metrics-to-log-analytics-schema-conversion"></a>A Log Analytics-séma átalakítását összegyűjtött metrikák
-Összegyűjtött által gyűjtött egy jól ismert modell infrastruktúra metrikák Linuxhoz készült OMS-ügynök által már összegyűjtött és az új mérőszámok között a következő séma-hozzárendelés fenntartásához szolgál:
+Egy jól ismert modell között már a Linuxhoz készült Log Analytics-ügynök által gyűjtött infrastruktúra-mérőszámok és az új metrikák, használja a következő séma-hozzárendelés összegyűjtött által gyűjtött karbantartásához:
 
 | Összegyűjtött metrika mező | Log Analytics mező |
 |:--|:--|

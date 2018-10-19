@@ -9,12 +9,12 @@ ms.component: speech
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: erhopf
-ms.openlocfilehash: 300e2d593dfe00b2d7348c7eaf15b0f26ec7e0dd
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 0d788223ddc0f79199d19b700956fd87b46dd95b
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389887"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429082"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>A beszédfelismerés eszközök SDK használatának első lépései
 
@@ -144,11 +144,10 @@ A ROOBO tesztek futtatása, és az development kit konfigurációjának ellenőr
         exit
         ```
 
-    * Másolja a fájlokat kws.table, kws_g.fst, kws_k.fst és words_kw.txt az eszköz \data\keyword mappába. Egy parancssori ablakban futtassa a következő parancsokat. Ha létrehozott egy [egyéni ébresztési word](speech-devices-sdk-create-kws.md), webes generált kws.table fájl van a kws.table, kws_g.fst, kws_k.fst és words_kw.txt fájlok könyvtárába. Egy egyéni ébresztési szót, használja a `adb push C:\SDSDK\Android-Sample-Release\keyword\[wake_word_name]\kws.table /data/keyword` paranccsal küldje le a kws.table fájlt a fejlesztői csomaghoz:
+    * Másolja a fájlokat kws.table kws_k.fst és words_kw.txt az eszköz \data\keyword mappába. Egy parancssori ablakban futtassa a következő parancsokat. Ha létrehozott egy [egyéni ébresztési word](speech-devices-sdk-create-kws.md), webes generált kws.table fájl van a kws.table kws_k.fst és words_kw.txt fájlok könyvtárába. Egy egyéni ébresztési szót, használja a `adb push C:\SDSDK\Android-Sample-Release\keyword\[wake_word_name]\kws.table /data/keyword` paranccsal küldje le a kws.table fájlt a fejlesztői csomaghoz:
 
         ```
         adb push C:\SDSDK\Android-Sample-Release\keyword\kws.table /data/keyword
-        adb push C:\SDSDK\Android-Sample-Release\keyword\Computer\kws_g.fst /data/keyword
         adb push C:\SDSDK\Android-Sample-Release\keyword\Computer\kws_k.fst /data/keyword
         adb push C:\SDSDK\Android-Sample-Release\keyword\Computer\words_kw.txt /data/keyword
         ```

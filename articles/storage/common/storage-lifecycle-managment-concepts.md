@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
 ms.component: common
-ms.openlocfilehash: 25e6fba6ac8aa34c0c30fd61f5fe297b94720439
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 05e7a7e3c2824a9b47ff723e91103611871d7ed2
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983667"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429558"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Az Azure Blob Storage (előzetes verzió) életciklusának kezelése
 
@@ -37,7 +37,7 @@ Fontolja meg egy adatkészletet, amelyek gyakran életciklusának korai szakasz�
 Életciklus-kezelési funkció ingyenesen elérhető előzetes verzióban. A normál művelet költsége díjszabásának a [Blobok listázása](https://docs.microsoft.com/rest/api/storageservices/list-blobs) és [Blobszint beállítása](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API-hívások. Lásd: [Blokkbob-díjszabás](https://azure.microsoft.com/pricing/details/storage/blobs/) , a díjszabással kapcsolatos további tudnivalókért.
 
 ## <a name="register-for-preview"></a>Regisztráljon az előzetes verzió 
-Nyilvános előzetes verzióban érhető el a regisztrációhoz kell igényelnie a szolgáltatás az előfizetéshez regisztrálnia. A kérelem jóváhagyása (néhány napban), bármely meglévő és új GPv2- vagy Blob Storage-fiók a 2. nyugati RÉGIÓJA, USA Középnyugati Régiójában és Nyugat-Európa után a szolgáltatás engedélyezve van. Az előzetes verzióban csak a blokkblobok használata támogatott. Csakúgy, mint a legtöbb előzetes verziók, ez a funkció nem használható éles számítási feladatokra addig általánosan elérhető
+Nyilvános előzetes verzióban érhető el a regisztrációhoz kell igényelnie a szolgáltatás az előfizetéshez regisztrálnia. A kérelem jóváhagyása (néhány napban), bármely meglévő és új GPv2- vagy Blob Storage-fiók a 2. nyugati RÉGIÓJA, USA nyugati középső Régiója, USA keleti RÉGIÓJA 2, és Nyugat-Európa után a szolgáltatás engedélyezve van. Az előzetes verzióban csak a blokkblobok használata támogatott. Csakúgy, mint a legtöbb előzetes verziók, ez a funkció nem használható éles számítási feladatokra addig általánosan elérhető
 
 Kérést szeretne beküldeni, a következő parancsokat PowerShell vagy parancssori felület.
 
@@ -69,7 +69,7 @@ Ha a funkció engedélyezett, és megfelelően regisztrálva, meg kell kapnia a 
 
 ## <a name="add-or-remove-policies"></a>Szabályok hozzáadása vagy eltávolítása 
 
-Hozzáadása, szerkesztése vagy eltávolítani egy házirendet az Azure portal használatával [PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview), [REST API-k](https://docs.microsoft.com/rest/api/storagerp/storageaccounts/createorupdatemanagementpolicies), vagy az ügyféleszközök elől az alábbi nyelveken: [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0), [Ruby](   https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
+Hozzáadása, szerkesztése vagy eltávolítani egy házirendet az Azure portal használatával [PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview), [REST API-k](https://docs.microsoft.com/rest/api/storagerp/managementpolicies/managementpolicies_createorupdate), vagy az ügyféleszközök elől az alábbi nyelveken: [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0), [Ruby](   https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -119,7 +119,7 @@ A házirendben a két paraméter szükség:
 
 | Paraméter neve | Paraméter típusa | Megjegyzések |
 |----------------|----------------|-------|
-| verzió:        | Egy karakterlánc kifejezve `x.x` | Az előzetes verzió verziószáma 0,5 |
+| version        | Egy karakterlánc kifejezve `x.x` | Az előzetes verzió verziószáma 0,5 |
 | szabályok          | A szabály objektumokból álló tömb | Legalább egy szabályt az egyes szabályzatok szükséges. Az előzetes időszakban legfeljebb 4 szabályok szabályzatonként is megadhat. |
 
 A szabályok szükséges paraméterek a következők:
@@ -316,6 +316,10 @@ Módosítva, és rendszeresen élettartama során elért adatok esetén pillanat
   ]
 }
 ```
+## <a name="faq"></a>GYIK
+### <a name="i-created-a-new-policy-why-are-the-actions-specified-not-executed-immediately"></a>Létrehozott egy új házirendet, miért van a megadott műveletek végrehajtása nem azonnal? 
+
+Életciklus-szabályzat naponta egyszer, a platform által végrehajtott. Miután egy új szabályzat be van állítva, például rétegezést vagy törlés kezdeményezett és végrehajtott műveletek esetében akár 24 órát is igénybe vehet.  
 
 ## <a name="next-steps"></a>További lépések
 

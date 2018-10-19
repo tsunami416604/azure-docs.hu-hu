@@ -1,30 +1,30 @@
 ---
-title: Bing hírek keresési SDK Java gyors üzembe helyezés |} Microsoft Docs
-description: Ismerje meg, hogyan állíthat be a Bing hírek keresési SDK konzolalkalmazást.
+title: 'Rövid útmutató: Bing News Search SDK, Java'
 titleSuffix: Azure Cognitive Services
+description: Megtudhatja, hogyan helyezheti üzembe a Bing News SDK-konzolalkalmazást.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: a6d4baf307fa3edcc0886d32204f2872fe310ce2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 7919f13e8c5aaa592a416190d3cd11edbf31af2c
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349462"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802477"
 ---
-# <a name="bing-news-search-sdk-java-quickstart"></a>Bing hírek keresési SDK Java gyors üzembe helyezés
+# <a name="quickstart-bing-news-search-sdk-with-java"></a>Rövid útmutató: Bing News Search SDK Javával
 
-A Bing hírek keresési SDK hírek lekérdezések és elemzési eredmények REST API-t a funkcionalitást biztosítja. 
+A Bing News Search SDK a REST API funkciót biztosítja a hírek lekérdezéséhez és az eredmények elemzéséhez. 
 
-A [forráskód Java Bing hírek keresési SDK minták](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch) érhető el a Git központ.
+A [Java Bing News Search SDK-minták forráskódja](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch) elérhető a GitHubon.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
-Első egy [kognitív szolgáltatások hozzáférési kulcs](https://azure.microsoft.com/try/cognitive-services/) alatt **keresési**. Telepítse a Bing hírek keresési SDK-függőség Maven, a gradle-lel vagy a másik függőségi felügyeleti rendszerbe. A Maven POM fájl szükséges a:
+A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a **Keresés** területen kérheti le. Telepítse a Bing News Search SDK függőségeit a Maven, a Gradle vagy más függőségkezelési rendszer segítségével. A Maven POM-fájlhoz a következő deklarációra van szükség:
 ```
   <dependencies>
     <dependency>
@@ -34,8 +34,8 @@ Első egy [kognitív szolgáltatások hozzáférési kulcs](https://azure.micros
     </dependency>
   </dependencies>
 ```
-## <a name="news-search-client"></a>Hírek keresési ügyfél
-Adja hozzá a importálásokat osztály megvalósításához.
+## <a name="news-search-client"></a>News Search ügyfél
+Vegyen fel importálásokat az osztályimplementációhoz.
 ```
 import com.microsoft.azure.cognitiveservices.newssearch.*;
 import com.microsoft.azure.cognitiveservices.newssearch.implementation.NewsInner;
@@ -48,7 +48,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import java.io.IOException;
 ```
-Alkalmazzon a **NewsSearchAPIImpl** az ügyfelet egy példányát igényli a **ServiceClientCredentials** osztály.
+Implementálja a **NewsSearchAPIImpl** ügyfelet. Ehhez szükség van a **ServiceClientCredentials** osztály egy példányára.
 ```
 public static NewsSearchAPIImpl getClient(final String subscriptionKey) {
     return new NewsSearchAPIImpl("https://api.cognitive.microsoft.com/bing/v7.0/",
@@ -74,7 +74,7 @@ public static NewsSearchAPIImpl getClient(final String subscriptionKey) {
 
 
 ```
-Keresse meg a friss híreket az egyetlen lekérdezés "Quantum számítástechnikai." Szűrheti a keresést a *piaci* és *száma* paraméterek. Ellenőrizze a eredmények számát. Az első hírek eredmény kinyomtatásához: név, URL-cím, közzététel dátuma, leírás, szolgáltató neve és becsült egyezések teljes száma.
+Keressen híreket a "kvantum-számítástechnika" egyetlen lekérdezéssel. Szűrje a keresést a *piac* és a *darab* paraméterekkel. Ellenőrizze az eredmények számát. Nyomtassa ki az első híreredmények információit: név, URL-cím, közzététel dátuma, leírás, a szolgáltató neve és a becsült egyezések teljes száma.
 ```
 public static void newsSearch(String subscriptionKey)
 {
@@ -121,7 +121,7 @@ public static void newsSearch(String subscriptionKey)
 }
 
 ```
-Keresse meg a legfrissebb hírek "Mesterséges Intelligence." Szűrheti a keresést a *frissesség* és *sortBy* paraméterek. Ellenőrizze a eredmények számát. Az első hírek eredmény kinyomtatásához: név, URL-cím, közzététel dátuma, leírás, szolgáltató neve és becsült egyezések teljes száma.
+Keressen rá a "mesterséges intelligencia" terén közzétett legfrissebb hírekre. Szűrje a keresést a *freshness* (frissesség) és a *sortBy* paraméterrel. Ellenőrizze az eredmények számát. Nyomtassa ki az első híreredmények információit: név, URL-cím, közzététel dátuma, leírás, a szolgáltató neve és a becsült egyezések teljes száma.
 ```
 /**
  * Search recent news for (Artificial Intelligence) with the freshness and sortBy parameters.
@@ -172,7 +172,7 @@ public static void newsSearchWithFilters(String subscriptionKey)
 }
 
 ```
-Keresés a hírek **kategória** a *movie és TV Szórakozás* témakörök és -felhasználási a *biztonságos keresési* szolgáltatás. Ellenőrizze a eredmények számát. Nyomtassa ki a kategória, nevét, URL-CÍMÉT, leírását, közzététel dátuma és az első hírek eredmény szolgáltató nevét.
+Keressen rá a hírek kategóriájára (**category**) a *movie and TV entertainment* (filmek és tévés szórakozás) témakörökben, és használja a *safe search* (biztonságos keresés) funkciót. Ellenőrizze az eredmények számát. Nyomtassa ki az első híreredmények információit: kategória, név, URL-cím, leírás, közzététel dátuma és a szolgáltató neve.
 ```
 /**
  * Search the news category for (movie and TV entertainment) with safe search. Verify the number of results. 
@@ -223,7 +223,7 @@ public static void newsCategory(String subscriptionKey)
 }
 
 ```
-Keresse meg a trendek hírek témaköröket. Ellenőrizze a eredmények számát. Nyomtassa ki a nevét, a lekérdezésszöveg, a webes keresés URL-címe és a hírek keresési URL-címet az első hírek eredmény.
+Keressen népszerű hírtémaköröket. Ellenőrizze az eredmények számát. Nyomtassa ki az első híreredmények információit: név, a lekérdezés szövege, a webes keresés URL-címe és a hírkeresés URL-címe.
 ```
 public static void trendingTopics(String subscriptionKey)
 {
@@ -265,7 +265,7 @@ public static void trendingTopics(String subscriptionKey)
     }
 }
 ```
-Adja hozzá a metódusokat, a cikkben egy fő függvénnyel a kódot hajthatók végre osztályra.
+Vegye fel a jelen cikkben ismertetett metódusokat egy olyan osztályba, amelyben a fő függvény a kód futtatására szolgál.
 ```
 package javaNewsSDK;
 import com.microsoft.azure.cognitiveservices.newssearch.*;
@@ -286,6 +286,6 @@ public class NewsSearchSDK {
 ```
 ## <a name="next-steps"></a>További lépések
 
-[Kognitív szolgáltatások Java SDK-minták](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+[Cognitive Services Java SDK-minták](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 
 

@@ -1,20 +1,19 @@
 ---
-title: Rövid útmutató – Rövid útmutató az Azure Kubernetes fürtportáljához
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az AKS segítségével Kubernetes-fürtöt Linux-tárolók esetén az Azure Portallal.
+title: Rövid útmutató – Azure Kubernetes Service-fürt létrehozása a portálon
+description: Ismerje meg, hogyan használhatja a Microsoft Azure Portalt az Azure Kubernetes Service (AKS)-fürt gyors létrehozásához, majd egy alkalmazás telepítéséhez és monitorozásához.
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 07/27/2018
+ms.date: 09/24/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: aceddc2594065c9c36f8dbf63fce2ad03577a383
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5d70f00294b1f08d2cc4cede6575efd3149599dd
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443367"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067455"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Rövid útmutató: Azure Kubernetes Service- (AKS-) fürt üzembe helyezése
 
@@ -40,15 +39,13 @@ AKS-fürt létrehozásához hajtsa végre a következő lépéseket:
     - *MÉRET*: Válassza ki a virtuális gép méretét az AKS-csomópontok számára. A virtuálisgép-méret az AKS-fürt telepítését követően **nem** módosítható.
         - Adja meg a fürtre telepítendő csomópontok számát. Ehhez a rövid útmutatóhoz a **Csomópontok száma** beállítás értékeként adjon meg *1*-et. A csomópontok száma a fürt telepítése után is **módosítható**.
     
-    ![AKS-fürt létrehozása – alapvető adatok megadása](media/kubernetes-walkthrough-portal/create-cluster-1.png)
+    ![AKS-fürt létrehozása – alapvető adatok megadása](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
     Ha kész, válassza a **Következő: Hitelesítés** elemet.
 
 1. **Hitelesítés**: Konfigurálja a következő beállításokat:
     - Hozzon létre egy új szolgáltatásnevet, vagy *konfigurálja* a rendszert valamelyik meglévő használatára. Meglévő SPN használata esetén meg kell adnia az SPN ügyfélazonosítóját és kulcsát.
     - Engedélyezze a Kubernetes szerepköralapú hozzáférés-vezérlők (RBAC) használatát. Ezekkel a vezérlőkkel pontosabban szabályozhatja a hozzáférést az AKS-fürtben üzembe helyezett Kubernetes-erőforrásokhoz.
-
-    ![AKS-fürt létrehozása – hitelesítés konfigurálása](media/kubernetes-walkthrough-portal/create-cluster-2.png)
 
     Ha kész, válassza a **Következő: Hálózat** elemet.
 
@@ -59,7 +56,7 @@ AKS-fürt létrehozásához hajtsa végre a következő lépéseket:
     
     Ha kész, válassza a **Következő: monitorozás** elemet.
 
-1. AKS-fürt telepítésekor az Azure Container Insights beállítható úgy, hogy monitorozza az AKS-fürt és a fürtön futó podok állapotát. A tároló állapotának monitorozásával kapcsolatos további információ [az Azure Kubernetes Service állapotmonitorozásáról][aks-monitor] szóló témakörben érhető el.
+1. AKS-fürt telepítésekor az Azure Monitor for Containers beállítható úgy, hogy monitorozza az AKS-fürt és a fürtön futó podok állapotát. A tároló állapotának monitorozásával kapcsolatos további információ [az Azure Kubernetes Service állapotmonitorozásáról][aks-monitor] szóló témakörben érhető el.
 
     A tároló monitorozásának engedélyezéséhez válassza az **Igen** lehetőséget, majd válasszon ki egy meglévő Log Analytics-munkaterületet vagy hozzon létre egy újat.
     
@@ -93,7 +90,7 @@ A következő példakimenet az előző lépésekben létrehozott csomópontot mu
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION
-aks-agentpool-14693408-0   Ready     agent     10m       v1.10.5
+aks-agentpool-14693408-0   Ready     agent     10m       v1.11.2
 ```
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
@@ -117,6 +114,13 @@ spec:
       containers:
       - name: azure-vote-back
         image: redis
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
         ports:
         - containerPort: 6379
           name: redis
@@ -145,6 +149,13 @@ spec:
       containers:
       - name: azure-vote-front
         image: microsoft/azure-vote-front:v1
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
         ports:
         - containerPort: 80
         env:
@@ -209,13 +220,20 @@ Nyissa meg a webböngészőben a szolgáltatás külső IP-címét az Azure Vote
 
 Amikor létrehozta a fürtöt, engedélyezte a tárolóelemzés monitorozását. Ez a monitorozási funkció az AKS-fürt és a fürtön futó podok állapotával kapcsolatos mérőszámokat biztosít. A tároló állapotának monitorozásával kapcsolatos további információ [az Azure Kubernetes Service állapotmonitorozásáról][aks-monitor] szóló témakörben érhető el.
 
-Az adatok Azure Portalra történő feltöltése eltarthat néhány percig. Az Azure Vote-podok jelenlegi állapotának, üzemidejének és erőforrás-felhasználásának megjelenítéséhez lépjen vissza az AKS-erőforráshoz az Azure Portalon (például *myAKSCluster*). Válassza ki a **Tároló állapotának monitorozása** lehetőséget > válassza az **alapértelmezett** névteret, majd a **Tárolók** lehetőséget.  Megjelenik az *azure-vote-back* és az *azure-vote-front* tároló:
+Az adatok Azure Portalra történő feltöltése eltarthat néhány percig. Az Azure Vote-podok jelenlegi állapotának, üzemidejének és erőforrás-felhasználásának megjelenítéséhez lépjen vissza az AKS-erőforráshoz az Azure Portalon (például *myAKSCluster*). Az állapotot ezután a következő módon érheti el:
+
+1. A bal oldali **Monitorozás** részen válassza ki az **Insights (előzetes verzió)** elemet
+1. Felül válassza a **+ szűrő hozzáadása** lehetőséget
+1. Válassza ki *Névtér* értéket tulajdonságként, majd válassza ki a *\<Kube rendszer kivételével az összes\>* lehetőséget
+1. Válassza ki a **tárolók** megtekintéséhez.
+
+A *azure-vote-back* és *azure-vote-front* tárolók az alábbi példában látható módon jelennek meg:
 
 ![Futó tárolók állapotának megtekintése az AKS-ben](media/kubernetes-walkthrough-portal/monitor-containers.png)
 
-Az `azure-vote-front` pod naplóinak megtekintéséhez kattintson a **Naplók megtekintése** hivatkozásra a tárolók listájának jobb oldalán. Ezek a naplók tartalmazzák a tároló *stdout* és *stderr* streamjét is.
+Az `azure-vote-front` pod naplóinak megtekintéséhez kattintson a **Tárolónaplók megtekintése** hivatkozásra a tárolók listájának jobb oldalán. Ezek a naplók tartalmazzák a tároló *stdout* és *stderr* streamjét is.
 
-![Tárolók naplóinak megtekintése az AKS-ben](media/kubernetes-walkthrough-portal/monitor-containers-logs.png)
+![Tárolók naplóinak megtekintése az AKS-ben](media/kubernetes-walkthrough-portal/monitor-container-logs.png)
 
 ## <a name="delete-cluster"></a>A fürt törlése
 
@@ -224,6 +242,9 @@ Ha a fürtre már nincs szükség, törölje az erőforráscsoportot. Ezzel tör
 ```azurecli-interactive
 az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 ```
+
+> [!NOTE]
+> A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket.
 
 ## <a name="get-the-code"></a>A kód letöltése
 
@@ -258,3 +279,4 @@ Az AKS-sel kapcsolatos további információkért és a kódtól az üzembe hely
 [aks-network]: ./networking-overview.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [http-routing]: ./http-application-routing.md
+[sp-delete]: kubernetes-service-principal.md#additional-considerations

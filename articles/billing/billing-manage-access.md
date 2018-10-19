@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: cwatson
-ms.openlocfilehash: 623856f05eed44eca3752d56f047f9bb282bdc8e
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 38cfd354f11ef3d888ad70e71549868d398495f5
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392083"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429643"
 ---
 # <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>Számlázási adatokat az Azure szerepköralapú hozzáférés-vezérlés használatával való hozzáférés kezelése
 
@@ -67,7 +67,7 @@ A számlázási olvasó szerepkör rendelkezik a csak olvasási hozzáféréssel
     ![Képernyőkép a számlázási olvasó láthatja az Azure Portalon](./media/billing-manage-access/billing-reader-view.png)
 
 > [!NOTE]
-> A számlázási olvasó funkció előzetes verzióban érhető el, és még nem támogatja (EA) enterprise-előfizetések vagy a nem globális felhők.
+> A számlázási olvasó funkció előzetes verzióban érhető el, és nem globális felhőkben jelenleg nem támogatja. Vállalati előfizetések költségek megtekintheti, ha a vállalati rendszergazda engedélyezte a költségek megtekintése.
 
 ## <a name="adding-users-to-other-roles"></a>Felhasználók hozzáadása a többi szerepkörhöz
 

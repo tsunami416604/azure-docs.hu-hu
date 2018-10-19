@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 10/01/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 95dac6804f3226cac23bce95a1b09b2907d084b0
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: bc918d0ee3b3b435905546507287dc655f68e8c9
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395650"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429779"
 ---
 # <a name="integrate-azure-ad-logs-with-log-analytics-using-azure-monitor-preview"></a>Az Azure AD-naplók integrálása az Azure Monitor (előzetes verzió) használatával Log Analytics szolgáltatással
 
@@ -30,7 +30,11 @@ A log Analytics lehetővé teszi adott események megtalálásához, trendeket e
  * Az Azure AD bejelentkezési naplóit a biztonsági naplók az Azure Security Center által közzétett összehasonlítása
 
  * Hibaelhárítás az alkalmazás bejelentkezési lapján, a teljesítmény szűk alkalmazásteljesítmény-adatokat az Azure Application Insights használatával történik.  
- 
+
+Az Ignite-munkamenetből a következő videó bemutatja, az Azure AD-naplók gyakorlati felhasználói esetek Log Analytics használatával járó előnyöket.
+
+> [!VIDEO https://www.youtube.com/embed/MP5IaCTwkQg?start=1894]
+
 Ebben a cikkben megismerheti, hogyan integrálható az Azure Active Directory (Azure AD) naplókban a Log Analytics az Azure Monitor használatával.
 
 ## <a name="supported-reports"></a>Támogatott jelentések

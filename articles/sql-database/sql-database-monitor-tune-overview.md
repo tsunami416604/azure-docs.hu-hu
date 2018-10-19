@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/16/2018
-ms.openlocfilehash: 5ef15b7a757b87c14bf0bd764bdd6ca6e6da64e0
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: dc83dbcd9e4338476277f94fa6c84cad6b7e5066
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379046"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405055"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Figyelés és a teljesítmény hangolása
 
@@ -98,7 +98,7 @@ Az a [az Azure portal](https://portal.azure.com/), figyelheti egy önálló adat
 - Adat IO kihasználtsága (%)
 - Adatbázis méretének kihasználtsága
 
-Ve, ezek a metrikák hozzáadása után továbbra is megtekintheti őket a **figyelés** a további információkat tartalmazó diagram a **metrika** ablak. A négy metrika az átlagos kihasználtság százalékos arányát jeleníti meg az adatbázis **DTU-jához** viszonyítva. Tekintse meg a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) cikkekben további információt a szolgáltatási szintekről.  
+Ezek a metrikák hozzáadása után továbbra is megtekintheti őket a a **figyelés** további információt a diagramon az **metrika** ablak. A négy metrika az átlagos kihasználtság százalékos arányát jeleníti meg az adatbázis **DTU-jához** viszonyítva. Tekintse meg a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) cikkekben további információt a szolgáltatási szintekről.  
 
 ![Adatbázis-teljesítményének szolgáltatásszint-figyelése.](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
 

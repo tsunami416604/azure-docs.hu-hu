@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 433914bc4501b13ba65015d15b0c513a38bf1273
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 9a2193d78d564ad4a8c175a5116fa7dc9ebda256
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041662"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408744"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>A Configuration Manager csatlakoztatása a Log Analyticsbe
 A System Center Configuration Manager-környezet szinkronizálási eszköz gyűjtemény adatait az Azure Log Analyticshez csatlakozhat, és ezeket a gyűjteményeket, a Log Analytics és Azure Automation hivatkozhat.  
@@ -40,7 +40,7 @@ Az alábbi lépéseket a Configuration Manager-integráció konfigurálása a Lo
 6. A Log Analyticsben [gyűjteményeket importálhat a Configuration Manager](#import-collections) számítógép csoportokként.
 7. A Log Analyticsben, megtekintheti az adatokat a Configuration Manager alkalmazásból, [számítógépcsoportok](log-analytics-computer-groups.md).
 
-Tudjon meg többet az OMS-hez, a Configuration Manager összekapcsolásával kapcsolatos [szinkronizálja az adatokat a Configuration Manager a Microsoft Operations Management Suite](https://technet.microsoft.com/library/mt757374.aspx).
+További információ a Configuration Manager csatlakoztatása a Log Analytics [szinkronizálja a Microsoft Log Analytics adatokat a Configuration Manager](https://technet.microsoft.com/library/mt757374.aspx).
 
 ## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>Támogatás a Configuration Manager a Log Analyticshez való engedélyekkel
 A következő eljárásban biztosítson a *közreműködői* szerepkör a Log Analytics-munkaterület az AD-alkalmazás és egyszerű szolgáltatás korábban létrehozott a Configuration Manager.  Ha Ön még nem rendelkezik egy munkaterületet, [az Azure Log Analytics-munkaterület létrehozása](log-analytics-quick-create-workspace.md) a folytatás előtt.  Ez lehetővé teszi a Configuration Manager hitelesítéséhez és a Log Analytics-munkaterülethez csatlakozik.  
@@ -59,20 +59,24 @@ A következő eljárásban biztosítson a *közreműködői* szerepkör a Log An
 ## <a name="download-and-install-the-agent"></a>Az ügynök letöltése és telepítése
 Tekintse át a [a Log Analytics szolgáltatás az Azure-ban való csatlakozáshoz Windows számítógépek](log-analytics-agent-windows.md) tudni, hogy a következő módszerek a Configuration Manager szolgáltatást futtató számítógépen a Microsoft Monitoring Agent telepítése Szolgáltatáskapcsolódási pont helyrendszerszerepkört.  
 
-## <a name="add-an-oms-connection-to-configuration-manager"></a>Az OMS-kapcsolat hozzáadása a Configuration Managerhez
-Annak érdekében, hogy az OMS-kapcsolat hozzáadása, rendelkeznie kell a Configuration Manager-környezet egy [szolgáltatáskapcsolati pont](https://technet.microsoft.com/library/mt627781.aspx) online módra konfigurálni.
+## <a name="add-a-log-analytics-connection-to-configuration-manager"></a>A Log Analytics-kapcsolat hozzáadása a Configuration Managerhez
+Annak érdekében, hogy a Log Analytics-kapcsolat hozzáadása, rendelkeznie kell a Configuration Manager-környezet egy [szolgáltatáskapcsolati pont](https://technet.microsoft.com/library/mt627781.aspx) online módra konfigurálni.
 
-1. Az a **felügyeleti** munkaterület a Configuration Manager, válassza ki **OMS-összekötő**. Ekkor megnyílik a **OMS-kapcsolat varázsló hozzáadása**. Kattintson a **Tovább** gombra.
+1. Az a **felügyeleti** munkaterület a Configuration Manager, válassza ki **OMS-összekötő**. Ekkor megnyílik a **hozzáadása Log Analytics kapcsolat varázsló**. Kattintson a **Tovább** gombra.
+
+   >[!NOTE]
+   >OMS most már a Log Analytics nevezik.
+   
 2. Az a **általános** képernyőjén ellenőrizze, hogy elvégezte-e az alábbi műveleteket, és, hogy rendelkezik az egyes elemek részleteit, majd válassza ki, **tovább**.
 
    1. Az Azure Portalon regisztrálta a Configuration Manager, egy webalkalmazás és/vagy webes API-alkalmazást, és hogy rendelkezik a [ügyfél-azonosító, a regisztráció](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
    2. Az Azure Portalon létrehozott egy Azure Active Directoryban regisztrált alkalmazás titkos kulcsa.  
-   3. Az Azure Portalon a regisztrált webalkalmazás elküldtük a hozzáféréssel az OMS.  
-      ![Kapcsolat az OMS varázsló Általános lapja](./media/log-analytics-sccm/sccm-console-general01.png)
+   3. Az Azure Portalon a regisztrált webalkalmazás elküldtük a hozzáféréssel a Log Analytics.  
+      ![Kapcsolat a Log Analytics varázsló Általános lapja](./media/log-analytics-sccm/sccm-console-general01.png)
 3. Az a **Azure Active Directory** képernyőn, a kapcsolat konfigurálása a Log Analytics azáltal, hogy a **bérlői**, **ügyfél-azonosító**, és **ügyfél A titkos kulcs**, majd **tovább**.  
-   ![OMS varázsló az Azure Active Directory oldalon kapcsolat](./media/log-analytics-sccm/sccm-wizard-tenant-filled03.png)
+   ![Log Analytics varázsló az Azure Active Directory oldalon kapcsolat](./media/log-analytics-sccm/sccm-wizard-tenant-filled03.png)
 4. Ha meg valósítható meg a többi eljárások sikeresen, majd az adatokat a a **OMS-kapcsolat konfigurációs** képernyő automatikusan megjelenik ezen az oldalon. A kapcsolatbeállítások adatait meg kell jelennie a a **Azure-előfizetés**, **Azure-erőforráscsoport**, és **Operations Management Suite-munkaterület**.  
-   ![Kapcsolat az OMS varázsló OMS-kapcsolat lap](./media/log-analytics-sccm/sccm-wizard-configure04.png)
+   ![Kapcsolat a Log Analytics varázsló Log Analytics-kapcsolat lap](./media/log-analytics-sccm/sccm-wizard-configure04.png)
 5. A varázsló csatlakozik a Log Analytics szolgáltatás már bemeneti információk segítségével. Válassza ki a eszközgyűjtemények szinkronizálását a szolgáltatással, és kattintson a kívánt **Hozzáadás**.  
    ![Gyűjtemények kiválasztása](./media/log-analytics-sccm/sccm-wizard-add-collections05.png)
 6. Ellenőrizze a kapcsolati beállításokat a a **összefoglalás** képernyőt, majd válassza ki **tovább**. A **folyamatban** képernyő a kapcsolat állapotát jeleníti meg, akkor érdemes **Complete**.
@@ -91,7 +95,7 @@ Ha egy jelszót vagy az ügyfél titkos kulcsot minden eddiginél jár, vagy meg
 2. Ezen az oldalon kattintson a **Azure Active Directory** fülre kattintva megtekintheti a **bérlői**, **ügyfél-azonosító**, **ügyfél titkos kulcsának lejárati dátuma**. **Győződjön meg arról** a **titkos ügyfélkulcs** , ha már lejárt.
 
 ## <a name="import-collections"></a>Gyűjtemények importálása
-Miután hozzáadott egy OMS-kapcsolat a Configuration Manager és az ügynök telepítve azon a számítógépen, amelyen a Configuration Manager szolgáltatáskapcsolódási pont helyrendszerszerepkör, a következő lépés az, hogy a gyűjtemények importálása a Configuration Manager a Log Analytics is Számítógépcsoportok.
+Miután hozzáadta a Log Analytics-kapcsolat a Configuration Manager és az ügynök telepítve van azon a számítógépen, amelyen a Configuration Manager szolgáltatáskapcsolódási pont helyrendszerszerepkör, a következő lépés az, hogy a gyűjtemények importálása a Configuration Manager naplóban Számítógépcsoportok analyticsbe.
 
 Eszközgyűjtemények importálásához a hierarchia kezdeti konfigurálása után a gyűjtemény tagsági információk 3 óránként rendszer lekéri a tagság naprakészen tartása. Ha szeretné, ezt bármikor letiltható.
 
@@ -103,7 +107,7 @@ Eszközgyűjtemények importálásához a hierarchia kezdeti konfigurálása ut�
    ![Számítógépcsoportok – SCCM lap](./media/log-analytics-sccm/sccm-computer-groups01.png)
 
 ## <a name="view-data-from-configuration-manager"></a>A Configuration Manager alkalmazásból adatok megtekintése
-Miután hozzáadott egy OMS-kapcsolat a Configuration Manager és az ügynök telepítése a Configuration Manager szolgáltatási kapcsolódási pont helyrendszerszerepkört futtató számítógépen, az ügynök adatküldést a Log Analytics szolgáltatásba. A Log Analytics, a Configuration Manager-gyűjtemények jelennek meg [számítógépcsoportok](log-analytics-computer-groups.md). Megtekintheti a csoportok a **Configuration Manager** lap **Settings\Computer csoportok**.
+Miután hozzáadta a Log Analytics-kapcsolat a Configuration Manager és az ügynök telepítése a Configuration Manager szolgáltatási kapcsolódási pont helyrendszerszerepkört futtató számítógépen, az ügynök adatküldést a Log Analytics szolgáltatásba. A Log Analytics, a Configuration Manager-gyűjtemények jelennek meg [számítógépcsoportok](log-analytics-computer-groups.md). Megtekintheti a csoportok a **Configuration Manager** lap **Settings\Computer csoportok**.
 
 Miután a gyűjtemények importálása, láthatja, hány csoporttagsággal rendelkező számítógépet észlelt. Megtekintheti az importált gyűjtemények száma is.
 

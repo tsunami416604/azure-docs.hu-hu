@@ -1,6 +1,6 @@
 ---
 title: Az Azure Automation runbookok Log Analytics-adatok gyűjtése |} A Microsoft Docs
-description: Lépésenkénti útmutató, amely végigvezeti Önt egy runbook létrehozása az Azure Automation-adatok gyűjtésére elemzése az OMS-tárházba a Log Analytics által.
+description: Lépésenkénti útmutató, amely végigvezeti Önt egy runbook létrehozása az Azure Automation-adatok gyűjtésére a tárházba elemzése a Log Analytics által.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: d3e8e876a6c01123d65c1e8df13328bdd5fad71f
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: f1a106a4f99c09134b8784e98ca547db51ce0eae
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346984"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409509"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Adatgyűjtés, a Log Analytics az Azure Automation-runbook
 Számos különféle forrásból például gyűjthet adatokat a Log Analytics jelentős mennyiségű [adatforrások](../log-analytics/log-analytics-data-sources.md) ügynökökön és is [adatokat gyűjteni az Azure-ból](../log-analytics/log-analytics-azure-storage.md).  Vannak olyan forgatókönyvek ellenére, hogy hol kell gyűjtenie az adatokat, amely nem érhető el standard források segítségével.  Ezekben az esetekben használhatja a [HTTP-adatgyűjtő API](../log-analytics/log-analytics-data-collector-api.md) használatával írhat adatokat a Log Analyticsbe bármely REST API-ügyfélből.  Egy általános módszer az adatgyűjtést az Azure Automation runbook használ.   
@@ -56,7 +56,7 @@ A PowerShell-galériából, ha lehetővé teszi egy gyors lehetőség, amely kö
 
 
 ## <a name="2-create-automation-variables"></a>2. Automation-változók létrehozása
-[Automation-változók](..\automation\automation-variables.md) értékeket, amelyek segítségével az Automation-fiók az összes runbook tárolásához.  Vállalnak a runbookok rugalmasabb azáltal, hogy ezeket az értékeket módosítsa a tényleges runbook szerkesztése nélkül. A HTTP-adatgyűjtő API érkező minden kérés szükséges a Azonosítóját és kulcsát az OMS-munkaterület, és a változó adategységek ideálisak az adattárolásra.  
+[Automation-változók](..\automation\automation-variables.md) értékeket, amelyek segítségével az Automation-fiók az összes runbook tárolásához.  Vállalnak a runbookok rugalmasabb azáltal, hogy ezeket az értékeket módosítsa a tényleges runbook szerkesztése nélkül. A HTTP-adatgyűjtő API érkező minden kérés szükséges a Azonosítóját és kulcsát a Log Analytics-munkaterület, és a változó adategységek ideálisak az adattárolásra.  
 
 ![Változók](media/monitoring-runbook-datacollect/variables.png)
 

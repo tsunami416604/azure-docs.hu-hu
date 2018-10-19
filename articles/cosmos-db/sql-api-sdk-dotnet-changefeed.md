@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/21/2018
 ms.author: maquaran
-ms.openlocfilehash: 6c4dafa5b15548b3dbc02a9c093232197b3f1400
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 553917a29b3564fff71d6ab994ec199891cbaae7
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716553"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409101"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET módosítási hírcsatorna processzor SDK: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -42,6 +42,12 @@ ms.locfileid: "44716553"
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 ### <a name="v2-builds"></a>v2 buildek
+
+### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+* Támogatás hozzáadva a bérlet particionált gyűjteményeket. A partíciós kulcs/ID ként kell megadni.
+* Kisebb kompatibilitástörő változás: módosult a IChangeFeedDocumentClient felület és a ChangeFeedDocumentClient osztály metódusain RequestOptions és CancellationToken paramétereket tartalmazza. IChangeFeedDocumentClient egy speciális indításkiterjesztési pont, amely lehetővé teszi, hogy a dokumentum ügyfelével használata a Változáscsatorna feldolgozói, például megadhat DocumentClient és extra nyomon követését, ehhez hozzá minden hívásokat egyéni megvalósítását hibakezelés , stb. Ezzel a frissítéssel a IChangeFeedDocumentClient megvalósító kódot tartalmazza az új paramétereket végrehajtása módosítani kell.
+* Kisebb diagnosztika javítását.
+
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * Új API-t, a feladat hozzáadott&lt;IReadOnlyList&lt;RemainingPartitionWork&gt; &gt; IRemainingWorkEstimator.GetEstimatedRemainingWorkPerPartitionAsync(). Ez a becsült munka beolvasni minden partíció esetében használható.
