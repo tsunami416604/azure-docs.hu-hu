@@ -1,40 +1,41 @@
 ---
-title: C# gyors üzembe helyezés az Azure kognitív szolgáltatások, a Bing hírek keresési API |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan Ismerkedés a Bing hírek Search API használatával a Microsoft Azure kognitív Services.
+title: 'Rövid útmutató: Bing News Search API, C#'
+titlesuffix: Azure Cognitive Services
+description: Információk és kódminták segítségével ismerkedhet meg a Bing News Search API használatának első lépéseivel.
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 0364d5754539c0e83318d595fd00b3e7b7e79c08
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 48c6bf413ab2b5a45b5daa54ad31afe2c0fdf8f1
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349187"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804266"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-c"></a>A Bing hírek keresés a C# API gyors üzembe helyezés
+# <a name="quickstart-bing-news-search-api-with-c"></a>Rövid útmutató: A Bing News Search API a C# használatával
 
-Ez a cikk bemutatja, hogyan használhatja a Bing keresési API-JÁNAK, Microsoft Azure kognitív szolgáltatások részét. Amíg ez a cikk alkalmazta a C#, az API-t olyan kompatibilis bármely programozási nyelv, amely HTTP-kérelmeket, és elemezni a JSON a RESTful webes szolgáltatás. 
+Ez a cikk bemutatja, hogyan használható a Microsoft Cognitive Services részét képező Bing Search API az Azure-on. Bár ez a cikk C#-t használ, az API egy RESTful-webszolgáltatás, így kompatibilis minden olyan programozási nyelvvel, amely képes HTTP-kérések küldésére és JSON-elemzésre. 
 
-A példakódot készült C# nyelven íródtak a .NET Core alkalmazásként minimális külső függőségei, a Linux rendszeren is futtathatja, vagy a Mac OS X rendszer monó.
+Ez a példakód C# nyelven lett megírva egy .NET Core-alkalmazásként, és minimális külső függőségekkel rendelkezik, így a Mono használatával Linux vagy Mac OS X rendszeren is futtatható.
 
-Tekintse meg a [API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) az API-k technikai részleteiért.
+Az API-k technikai részleteit az [API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) című részben tekintheti meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Rendelkeznie kell egy [kognitív szolgáltatások API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rendelkező **Bing keresési API-k**. A [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő-e a gyors üzembe helyezés. Szüksége lesz az elérési kulcsot, ha aktiválja az ingyenes próbaverzió, vagy egy fizetős kulcsot az Azure irányítópultról használhat.
+Egy **Bing Search API-kat** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, de beszerezhet egy fizetős előfizetői azonosítót is az Azure-irányítópultról.
 
-## <a name="bing-news-search"></a>Bing hírek keresése
+## <a name="bing-news-search"></a>Bing News Search
 
-A [Bing hírek Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) hírek keresési eredményeket ad vissza a Bing keresőmotort.
+A [Bing News Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) a Bing keresőmotor hírtalálatait adja vissza.
 
-1. Új konzol megoldás létrehozása a Visual Studio (a Community Edition rendben).
-1. Cserélje le a program.cs fájlt az alábbi kódra.
-1. Cserélje le a `accessKey` hívóbetű érvényes az előfizetéshez tartozó értéket.
+1. Hozzon létre egy új konzolmegoldást a Visual Studióban (a Community Edition kiadás is használható).
+1. Cserélje le a Program.cs fájl tartalmát az alábbi kódra.
+1. A `accessKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 1. Futtassa a programot.
 
 ```csharp
@@ -190,7 +191,7 @@ namespace BingNewsSearchCSharpCore
 
 **Válasz**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon:
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
 
 ```json
 {
@@ -286,7 +287,7 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Lapozófájl hírek](paging-news.md)
-> [decoration jelölők használatával szöveg kiemeléséhez](hit-highlighting.md)
-> [keresése a weben hírek](search-the-web.md)  
-> [Próbálja ki](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)
+> [Hírek lapozása](paging-news.md)
+> [Díszítő megjelölések használata szövegkiemeléshez](hit-highlighting.md)
+> [Hírek keresése az interneten](search-the-web.md)  
+> [Kipróbálás](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)

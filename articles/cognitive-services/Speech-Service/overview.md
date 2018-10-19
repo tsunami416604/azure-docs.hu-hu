@@ -3,18 +3,18 @@ title: Mi az a beszédszolgáltatás?
 description: 'A Speech service a Microsoft Cognitive Services részét képezi, és több, korábban külön elérhető Azure-beszédszolgáltatást egyesít: a Bing Speech (beszédfelismerés és szövegfelolvasás), a Custom Speech és a beszédfordítási szolgáltatást.'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: overview
 ms.date: 09/24/2018
-ms.author: v-jerkin
-ms.openlocfilehash: b014144dd819aa354596175068bfb2c5905a4377
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.author: erhopf
+ms.openlocfilehash: 7a61d85d96b993d49a536c38c2907a3d6ef55e65
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857992"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365458"
 ---
 # <a name="what-is-the-speech-service"></a>Mi az a beszédszolgáltatás?
 
@@ -29,11 +29,10 @@ A Speech service elsődleges funkciói a diktálás (más néven beszédfelismer
 
 |Függvény|Szolgáltatások|
 |-|-|
-|[Diktálás](speech-to-text.md)| <ul><li>Folyamatos, valós idejű beszédet szöveggé alakít.<li>A hangfelvételekről képes egyszerre több beszédforrást is szöveggé alakítani. <li>Támogatja a köztes eredményeket, a beszéd végének észlelését, az automatikus szövegformázást és a profanitás kitakarását. <li>A [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) szolgáltatásra támaszkodva a szöveggé alakított beszédből képes kikövetkeztetni a felhasználói szándékot.\*|
-|[Szövegfelolvasás](text-to-speech.md)| <ul><li>Az írott szöveget természetesnek hangzó beszéddé alakítja. <li>Számos támogatott nyelvhez elérhető több különféle nem és/vagy nyelvjárás. <li>Támogatja az egyszerű szöveges bevitelt és az SSML-t (Speech Synthesis Markup Language). |
-|[Beszédfordítás](speech-translation.md)| <ul><li>Streamelt hangtartalmakat fordít közel valós időben.<li> Felvett beszédet is képes feldolgozni.<li>Az eredményeket szövegként vagy szintetizált beszédként biztosítja. |
+|[Diktálás](speech-to-text.md)| <li>Folyamatos, valós idejű beszédet szöveggé alakít.<li>A hangfelvételekről képes egyszerre több beszédforrást is szöveggé alakítani. <li>Támogatja a köztes eredményeket, a beszéd végének észlelését, az automatikus szövegformázást és a profanitás kitakarását. <li>A [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) szolgáltatásra támaszkodva a szöveggé alakított beszédből képes kikövetkeztetni a felhasználói szándékot.\*|
+|[Szövegfelolvasás](text-to-speech.md)| <li>Az írott szöveget természetesnek hangzó beszéddé alakítja. <li>Számos támogatott nyelvhez elérhető több különféle nem és/vagy nyelvjárás. <li>Támogatja az egyszerű szöveges bevitelt és az SSML-t (Speech Synthesis Markup Language). |
+|[Beszédfordítás](speech-translation.md)| <li>Streamelt hangtartalmakat fordít közel valós időben.<li> Felvett beszédet is képes feldolgozni.<li>Az eredményeket szövegként vagy szintetizált beszédként biztosítja. |
 
-\* *A szándékfelismeréshez LUIS-előfizetés szükséges.*
 
 ## <a name="customize-speech-features"></a>Beszédfunkciók testreszabása
 
@@ -69,41 +68,6 @@ Ha azonban rendelkezik olyan kóddal, amely WebSocketeken keresztül használja 
 
 A [Beszédeszközök SDK](speech-devices-sdk.md) egy integrált hardver- és szoftverplatform beszédalapú eszközök fejlesztői számára. Hardverpartnerünk referenciaterveket és fejlesztési egységeket biztosít. A Microsoft egy olyan eszközre optimalizált SDK-t nyújt, amely teljes körűen kihasználja a hardver képességeit.
 
-## <a name="why-move-to-the-speech-service"></a>Miért érdemes áttérni a beszédfelismerési szolgáltatásra?
-
-A beszédfelismerési szolgáltatás biztosítja a Bing Speech API és három további Azure beszédfelismerési szolgáltatás (Custom Speech, Custom Voice és Translator Speech) összes funkcióját és még sok más lehetőséget. E szolgáltatások használóinak javasoljuk a beszédfelismerési szolgáltatásra való áttérést.
-
-A beszédfelismerési szolgáltatás számos frissítést kínál ezekhez a szolgáltatásokhoz, többek között a következőket:
-
-* Pontosabb beszédfelismerés. A szolgáltatásban használt modelleket rendszeresen fejlesztjük.
-
-* Jobban skálázható. A szolgáltatás alkalmasabb több egyidejű kérés kezelésére, ami csökkenti a késéseket.
-
-* A beszédfelismerési szolgáltatás időalapú díjszabási modellt használ. Részletek: [A Speech Service díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
-
-* A beszédfelismerési szolgáltatás világszerte [több régióban](regions.md) is elérhető az ügyfelek igényeinek megfelelően. Az alkalmazása által használt minden régió esetében rendelkeznie kell [Azure-előfizetéssel](https://docs.microsoft.com/azure/cognitive-services/welcome).
-
-* Egyetlen beszédszolgáltatási előfizetési kulcs a következő funkciókhoz biztosít hozzáférést. Mindegyik funkció forgalmi díját külön állapítjuk meg, így csak a használt funkciókért kell fizetnie.
-
-    * [Beszédfelismerés](speech-to-text.md)
-    * [Egyéni beszédfelismerés](https://cris.ai/CustomSpeech)
-    * [Szövegfelolvasás](text-to-speech.md)
-    * [Egyéni szövegfelolvasási hangok](https://cris.ai/CustomVoice)
-    * [Tolmácsolás](speech-translation.md) (nem tartalmaz [szövegfordítást](https://docs.microsoft.com/azure/cognitive-services/translator/translator-info-overview))
-
-* A Speech Service beszédfelismerési funkció a beszélő szándékának felismeréséhez integrálható a [Language Understanding szolgáltatással](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS). A Speech szolgáltatással LUIS végponti kulcs is használható. Részleteket a [szándékfelismerési oktatóanyag](how-to-recognize-intents-from-speech-csharp.md) tartalmaz.
-
-* A beszédfelismerés használatához ezentúl nem kell megadnia a felismerési módot.
-
-* A beszédfelismerési szolgáltatás támogatja a 24 KHz-es beszédhangot a szöveg beszéddé alakításához, ami javítja a hangminőséget. A jelen dokumentum írásakor két ilyen beszédhang áll rendelkezésre (csak amerikai angol) : `Jessa24kRUS` és `Guy24kRUS`.
-
-* A beszédfelismerési szolgáltatás [kötegelt átírási](batch-transcription.md) funkciójával nagy mennyiségű felvett beszédet, például telefonos ügyfélszolgálati felvételeket, lehet hatékonyan szöveggé alakítani, azok könnyen elemezhetők és kereshetők.
-
-* A Beszéd SDK használatakor a hang szöveggé alakításának nincs streamelési időkorlátja.
-
-* A [Beszéd SDK](speech-sdk.md) a beszédfelismerési szolgáltatáshoz egységes API-t biztosít számos programozási nyelven és végrehajtási környezetben (többek között Windows 10, UWP és .NET Core), ami különösen több platform használatakor megkönnyíti a fejlesztést.
-
-* A beszédfelismerési szolgáltatás kompatibilis a más Azure beszédfelismerési szolgáltatások által használt REST API-kkal és WebSockets protokollokkal, ami megkönnyíti a meglévő ügyfélalkalmazások beszédfelismerési szolgáltatásba való migrálását.
 
 ## <a name="speech-scenarios"></a>Beszédforgatókönyvek
 
@@ -123,8 +87,6 @@ Ha alkalmazását a nyilvánosságnak szánja, használhatja az alapértelmezett
 Ha alkalmazását egy adott szakterületen kívánja használni (például orvostudományi vagy informatikai területen), létrehozhat egy [nyelvi modellt](how-to-customize-language-model.md). A modell használatával megtaníthatja a Speech Service-t az alkalmazás által használt speciális terminológiára.
 
 Ha alkalmazását zajos környezetben, például gyárban fogják használni, létrehozhat egy egyéni [akusztikai modellt](how-to-customize-acoustic-models.md). A modell segítségével a Speech Service könnyebben meg tudja különböztetni a beszédet a zajoktól.
-
-Egyszerűen használatba vehető. Csak töltse le a [Beszéd SDK-t](speech-sdk.md), és kövesse a hozzá tartozó [rövid útmutatót](quickstart-csharp-dotnet-windows.md).
 
 ### <a name="call-center-transcription"></a>Telefonos ügyfélszolgálati felvételek átírása
 

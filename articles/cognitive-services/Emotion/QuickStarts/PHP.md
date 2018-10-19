@@ -1,34 +1,36 @@
 ---
-title: Érzelemfelismerési API PHP – első lépések |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan használatának megkezdésében a Érzelemfelismerési API-t a PHP kognitív szolgáltatásban.
+title: 'Rövid útmutató: Érzelemfelismerés képeken szereplő arcokon – Emotion API, PHP'
+titlesuffix: Azure Cognitive Services
+description: Információk és kódminták segítségével ismerkedhet meg az Emotion API PHP-val való használatának első lépéseivel.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: 987d5a3eedaa17f1127be34e5f90ec2456fab99b
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: c3dffa3c42df4a30b634417b551dd0e8af04145b
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37019397"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239506"
 ---
-# <a name="emotion-api-php-quick-start"></a>Érzelemfelismerési API PHP – első lépések
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rövid útmutató: Alkalmazás létrehozása a képeken szereplő arcokon tükröződő érzelmek felismeréséhez.
 
 > [!IMPORTANT]
-> Villámnézet API a 2017. október 30 véget ér. Kipróbálhatja az új [videó indexelő API előnézete](https://azure.microsoft.com/services/cognitive-services/video-indexer/) insights könnyen kibontani videók, és tartalom felderítési lép, például a keresési eredmények, növelje a szóbeli szavakat, a lapok, a karakterek és a érzelmek észlelésével. [További információk](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
+> Az Emotion API 2019. február 15-ével elavulttá válik. Az érzelemfelismerési képesség mostantól általánosan elérhető a [Face API](https://docs.microsoft.com/azure/cognitive-services/face/) részeként. 
 
-Ez a cikk és a segítségével gyorsan mintakódok használatának megkezdésében a PHP és a [Érzelemfelismerési API-t ismeri fel a metódust](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) ismeri fel a kép egy vagy több személy által kifejezett érzelmek. 
+Ez a cikk információkkal és kódmintákkal szolgál, amelyeken keresztül gyorsan elsajátíthatja, hogyan ismerheti fel a képeken szereplő személy vagy személyek által kifejezett érzelmeket az [Emotion API Recognize metódusa](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) és a PHP használatával.
 
 ## <a name="prerequisite"></a>Előfeltétel
-* Az ingyenes előfizetés kulcs lekérése [Itt](https://azure.microsoft.com/try/cognitive-services/)
+* Szerezzen be egy ingyenes előfizetői azonosítót [itt](https://azure.microsoft.com/try/cognitive-services/)
 
-## <a name="recognize-emotions-php-example-request"></a>Ismeri fel a érzelmek PHP kérelem (példa)
+## <a name="recognize-emotions-php-example-request"></a>Érzelemfelismerési PHP-kérésminta
 
-Módosítsa a többi URL-címet a helyet, ahol szerezte be az előfizetés kulcsok, módosítsa a szervezet a vizsgálni kívánt kép URL-t és az "Ocp-Apim-előfizetés-kulcsot" érték lecserélése az érvényes előfizetés-kulcs.
+Módosítsa a REST URL-címét úgy, hogy azt a helyet használja, ahonnan az előfizetői azonosítóit beszerezte, módosítsa a törzset annak a képnek az URL-címére, amelyet tesztelni szeretne, és cserélje le az „Ocp-Apim-Subscription-Key” értéket érvényes előfizetői azonosítójára.
 
 ```php
 <?php
@@ -36,7 +38,7 @@ Módosítsa a többi URL-címet a helyet, ahol szerezte be az előfizetés kulcs
 require_once 'HTTP/Request2.php';
 
 // NOTE: You must use the same region in your REST call as you used to obtain your subscription keys.
-//   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the 
+//   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
 //   URL below with "westcentralus".
 $request = new Http_Request2('https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize');
 $url = $request->getUrl();
@@ -75,13 +77,13 @@ catch (HttpException $ex)
 ?>
 ```
 
-## <a name="recognize-emotions-sample-response"></a>Ismeri fel a érzelmek Mintaválasz
-Sikeres meghívását arcfelismerési bejegyzések tömbje és a kapcsolódó érzelemfelismerési eredményeiket, arc téglalap mérete csökkenő sorrendben szerinti sorrendben adja vissza. Üres választ, hogy nincs lapok észlelt. Érzelemfelismerési bejegyzés a következő mezőket tartalmazza:
-* faceRectangle - felületen a kép helyének.
-* pontszámok - Érzelemfelismerési pontszámok minden lap a lemezképben. 
+## <a name="recognize-emotions-sample-response"></a>Érzelemfelismerési válaszminta
+A sikeres hívás egy, az arcrekordokat és a hozzájuk tartozó érzelempontszámokat tartalmazó tömböt ad vissza, amely az adatokat az arcot jelölő téglalap mérete szerint csökkenő sorrendben listázza. Az üres válasz azt jelzi, hogy a rendszer nem észlelt arcot. Az érzelemrekord a következő mezőket foglalja magában:
+* faceRectangle – Az arcot jelölő téglalap helye a képen.
+* scores – A képen szereplő egyes arcokhoz tartozó érzelempontszámok.
 
 ```json
-application/json 
+application/json
 [
   {
     "faceRectangle": {
@@ -102,4 +104,3 @@ application/json
     }
   }
 ]
-

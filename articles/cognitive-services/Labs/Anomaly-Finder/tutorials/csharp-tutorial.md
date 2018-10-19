@@ -1,71 +1,72 @@
 ---
-title: Anomáliadetektálási észlelési C#-alkalmazás – a Microsoft Cognitive Services |} A Microsoft Docs
-description: A Microsoft Cognitive Services az Anomáliadetektáló API-t használó C# alkalmazás megismerése. Küldés eredeti adatpontok API-hoz és a várt érték és anomáliadetektálási pontokat.
+title: 'Oktatóanyag: Anomáliadetektálás a C# használatával'
+titlesuffix: Azure Cognitive Services
+description: Megismerkedhet egy C#-alkalmazással, amely az Anomaly Detection API-t használja. Ha az eredeti adatpontokat elküldi az API-nak, visszakapja a várt értéket és az attól eltérő pontokat.
 services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-detection
-ms.topic: article
+ms.component: anomaly-detection
+ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: fb434bd668b065fbdbaac39f2926676bcc90e794
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
-ms.translationtype: MT
+ms.openlocfilehash: f99ce765c1d9417fd5ca88b49214eca8a3b0bf49
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247824"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887649"
 ---
-# <a name="anomaly-detection-c-application"></a>Rendellenességek észlelése C#-alkalmazás
+# <a name="tutorial-anomaly-detection-with-c-application"></a>Oktatóanyag: Anomáliadetektálás C#-alkalmazásokkal
 
 [!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
-Fedezze fel egy egyszerű Windows-alkalmazás, amely a bemeneti rendellenességek észlelése Anomáliadetektáló API-t használja. A példa az idősoros adatainak az Anomáliadetektáló API-t, elküldi az előfizetési kulccsal végzett, majd az anomáliadetektálási pontok és a várt érték az egyes lekérdezi az API-ból.
+Megismerkedhet egy egyszerű Windows-alkalmazással, amely az Anomaly Detection API használatával észleli a bemenetben található rendellenességeket. A példa elküldi az idősoradatokat az Anomaly Detection API-nak az előfizetési kulccsal, és az API visszaküldi az összes rendellenes pontot és az elvárt értéket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-### <a name="platform-requirements"></a>Platform-követelmények
+### <a name="platform-requirements"></a>Platformkövetelmények
 
-A példában kidolgozott a .NET-keretrendszer használatával [Visual Studio 2017, a Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs). 
+A példa a [Visual Studio 2017 Community Editiont](https://www.visualstudio.com/products/visual-studio-community-vs) használó .NET keretrendszerhez lett kidolgozva. 
 
-### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Fizessen elő a rendellenességek észlelése és a egy előfizetési kulcs lekérése 
+### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Előfizetés az anomáliadetektálás használatára és előfizetői azonosító beszerzése 
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 
-## <a name="get-and-use-the-example"></a>És a példában a
+## <a name="get-and-use-the-example"></a>A példa letöltése és használata
 
-Az Anomáliadetektálás mintaalkalmazás számítógépre klónozhat [Github](https://github.com/MicrosoftAnomalyDetection/csharp-sample.git). 
+Az anomáliadetektálási példaalkalmazást klónozhatja a gépére a [GitHubról](https://github.com/MicrosoftAnomalyDetection/csharp-sample.git). 
 <a name="Step1"></a>
-### <a name="install-the-example"></a>A példában telepítése
+### <a name="install-the-example"></a>A példa telepítése
 
-Nyissa meg a GitHub Desktop Sample\AnomalyDetectionSample.sln.
+A GitHub Desktopon nyissa meg a Sample\AnomalyDetectionSample.sln fájlt.
 
 <a name="Step2"></a>
-### <a name="build-the-example"></a>A példában létrehozása
+### <a name="build-the-example"></a>A példa fordítása
 
-Nyomja le a Ctrl + Shift + B, vagy a menüszalag menü hozhat létre, majd válassza ki a megoldás fordítása.
+Nyomja le a Ctrl+Shift+B billentyűkombinációt, vagy kattintson a menüszalag Fordítás elemére, majd a Megoldás fordítása elemre.
 
 <a name="Step3"></a>
-### <a name="run-the-example"></a>A példa Futtatás
+### <a name="run-the-example"></a>A példa futtatása
 
-1. A létrehozás befejezése után nyomja le az ENTER **F5** , vagy kattintson **Start** a menüszalag menü a példa futtatásához.
-2. Keresse meg a rendellenességek észlelése felhasználói felület ablakot az a szöveges beviteli mezőbe olvasása "{your_subscription_key}".
-3. A request.json fájl, amely tartalmazza a mintaadatokat, cserélje le a saját adataival, majd kattintson a "Küldés" gombra. A Microsoft kap az adatok feltöltéséhez, és ezek segítségével bármely anomáliadetektálási pontok között, majd észleléséhez. Töltse be az adatokat nem maradnak meg a Microsoft server. Észleli a anomáliadetektálási pont újra, kell feltöltheti az adatokat még egyszer.
-4. Ha az adatok jó, az anomáliadetektálási az észlelés eredménye a "Response" mezőben található. Bármilyen hiba akkor fordul elő, ha a hiba adatait, valamint a válasz mező jelenik meg.
+1. A fordítást követően nyomja le az **F5** billentyűt, vagy kattintson a menüszalag **Start** elemére a példa futtatásához.
+2. Keresse meg a felhasználói felület anomáliadetektálási ablakát, amelynek a szöveges beviteli mezőjében a „{your_subscription_key}” (az ön előfizetési kulcsa) szöveg olvasható.
+3. Cserélje le mintaadatokat tartalmazó request.json fájlt a saját adataira, majd kattintson a „Send” (Küldés) gombra. A Microsoft megkapja a feltöltött adatokat és észleli a bennük található rendellenességi pontokat. A feltöltött adatok nem lesznek megőrizve a Microsoft kiszolgálóján. A rendellenességi pont újbóli észleléséhez újra fel kell tölteni az adatokat.
+4. Ha az adatok helyesek, a „Response” (Válasz) mezőben megjelenik az anomáliadetektálás eredménye. Ha valamilyen hiba történt, az azzal kapcsolatos információk szintén itt jelennek meg.
 
 <a name="Review"></a>
-### <a name="read-the-result"></a>Olvassa el az eredmény
+### <a name="read-the-result"></a>Az eredmények értelmezése
 
 [!INCLUDE [diagrams](../includes/diagrams.md)]
 
 <a name="Review"></a>
-### <a name="review-and-learn"></a>Tekintse át, és ismerje meg
+### <a name="review-and-learn"></a>Áttekintés és tanulás
 
-Most, hogy a futó alkalmazást, tekintse át a PéldaAlkalmazás együttműködéséről a Cognitive Services-technológiát. Ebben a lépésben könnyebben továbbra is használhatja ezt az alkalmazást az alakzatot vagy a saját Microsoft Anomáliadetektálás használatával alkalmazás fejlesztése.
+Most, hogy az alkalmazásunk fut, tekintsük át, hogyan integrálható a példaalkalmazás a Cognitive Services technológiával. Ez a lépés segítséget nyújt ezen alkalmazás továbbfejlesztéséhez, vagy saját alkalmazások összeállításához a Microsoft Anomaly Detection használatával.
 
-Ez a példa az alkalmazás lehetővé teszi, hogy használja az Anomáliadetektáló Restful API-végpont.
+A mintaalkalmazás az Anomaly Detection Restful API-végpontot használja.
 
-Tekintse át, hogyan lekérdezi a Restful API-t használja a mintaalkalmazás, nézzük meg a kódtöredék **AnomalyDetectionClient.cs**. A kód megjegyzéseket jelző "Kulcs minta kód ELINDÍTJA itt" és "Kulcs minta kódja ér VÉGET itt" hogy könnyebben megtalálja kódtöredékek az alábbiakban találja a kódot tartalmaz.
+A Restful API mintaalkalmazásban való használatának áttekintése érdekében nézzük meg közelebbről az **AnomalyDetectionClient.cs** egy kódrészletét. A fájlban a „KEY SAMPLE CODE STARTS HERE” (Itt kezdődik a kulcs mintakódja) és „KEY SAMPLE CODE ENDS HERE” (Itt végződik a kulcs mintakódja) megjegyzések jelzik az alábbiakban bemutatott kódrészletek helyét.
 
 ```csharp
             // ----------------------------------------------------------------------
@@ -80,7 +81,7 @@ Tekintse át, hogyan lekérdezi a Restful API-t használja a mintaalkalmazás, n
 
 ```
 ### <a name="request"></a>**Kérés**
-Az alábbi kódrészlet bemutatja, hogyan nyújt az előfizetési kulcs és az adatok pontok a végponthoz való az Anomáliadetektáló API-t, a HttpClient használatával.
+Az alábbi kódrészlet bemutatja, hogyan küldhető el a HttpClient segítségével az előfizetési kulcs és az adatpontok az Anomaly Detection API végpontjára.
 
 ```csharp
     public async Task<string> Request(string baseAddress, string endpoint, string subscriptionKey, string requestData)

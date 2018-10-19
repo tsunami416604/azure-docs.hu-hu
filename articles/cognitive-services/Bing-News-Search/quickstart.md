@@ -1,52 +1,52 @@
 ---
-title: News Search API – rövid útmutató |} A Microsoft Docs
-description: A Bing News Search API használatának első lépéseit mutatja.
+title: 'Rövid útmutató: Bing News Search API'
+titlesuffix: Azure Cognitive Services
+description: Bemutatja a Bing News Search API használatának első lépéseit.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 9CF6EAF3-42D8-4321-983C-4AC3896E8E03
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: b3f2b36034ab33b4f5eec2d138103c3e4d8e21f4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: MT
+ms.openlocfilehash: bc3d2e43983791cf8f666660675a7dd537f04d77
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034331"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802525"
 ---
-# <a name="your-first-news-search-query"></a>Az első hírek keresési lekérdezés
+# <a name="quickstart-your-first-news-search-query"></a>Rövid útmutató: Az első hírkeresési lekérdezés létrehozása
 
-Mielőtt az első hívás, Cognitive Services előfizetési kulcs lekérése szeretne. A kulcs lekéréséhez lásd: [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api).
+Ahhoz, hogy elvégezhesse az első hívást, be kell szereznie egy Cognitive Services-előfizetői azonosítót. Az előfizetői azonosító beszerzéséhez lásd [A Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api) témakört.
 
-Csak news search lekéréséhez, egy GET kéréssel szeretné küldeni a következő végpont:
+A csak híreket tartalmazó keresési eredmények lekéréséhez egy GET kérést kell küldenie a következő végpontra:
 
 ```http
 https://api.cognitive.microsoft.com/bing/v7.0/news/search
 ```
 
-A kérelem a HTTPS protokollt kell használnia.
+A kérelemnek a HTTPS protokollt kell használnia.
 
-Azt javasoljuk, hogy az összes kérelem-kiszolgálótól származik. A kulcs terjesztése egy ügyfélalkalmazás részeként biztosít a rosszindulatú külső az eléréséhez több lehetőség. Ezenkívül kiszolgálótól érkező hívások egyetlen frissítési pontot biztosít későbbi verzióiban az API-t.
+Javasoljuk, hogy minden kérelem egy kiszolgálóról induljon. Az azonosítónak egy ügyfélalkalmazás részeként való terjesztése több lehetőséget ad arra, hogy rosszindulatú külső felek hozzáférjenek az azonosítóhoz. Emellett a hívások kiszolgálóról való indítása egyetlen frissítési pontot teremt az API későbbi verziói számára.
 
-A kérelem kell adni a [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query) lekérdezési paraméter, amely tartalmazza a felhasználó keresési kifejezés. Bár nem kötelező, a kérelem is kell-e meg a [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#mkt) lekérdezési paraméter, amely azonosítja a piacon, ahol azt szeretné, hogy az eredményeket kell meghatároznia. Nem kötelező listáját lekérdezési paramétereket például `freshness` és `textDecorations`, lásd: [lekérdezési paraméterek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters). Az összes lekérdezés paraméterértékeinek URL-kódolású kell lennie.
+A kérelemnek tartalmaznia kell a [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query) lekérdezési paramétert, amely a felhasználó keresési kifejezését adja meg. Nem kötelező, de a kérelemnek érdemes tartalmaznia egy [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#mkt) lekérdezési paramétert is, amely azonosítja a piacot, ahonnan eredményeket szeretnénk kapni. Az opcionális lekérdezési paraméterek (például `freshness` és `textDecorations`) listáját lásd a [lekérdezési paramétereket](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters) ismertető cikkben. Minden lekérdezési paraméter értékének URL-kódolásúnak kell lennie.
 
-A kérelem kell adni a [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#subscriptionkey) fejléc. Bár nem kötelező, csak Ön javasoljuk, hogy a következő fejléceket is megadhatja:
+A kérelemnek tartalmaznia kell az [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#subscriptionkey) fejlécet. Nem kötelező, de javasolt a következő fejlécek megadása is:
 
-- [Felhasználói ügynök](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#useragent)
+- [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#useragent)
 - [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#clientid)
-- [X-Search-Ügyfélip](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#clientip)
-- [A hely keresése X](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#location)
+- [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#clientip)
+- [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#location)
 
-Az ügyfél IP-cím és a hely fejlécek fontosak visszaadó figyelembe tartalom helyét.
+Az ügyfél IP-címe és helye fontos a helyfüggő tartalmak visszaadása szempontjából.
 
-Az összes kérelmek és válaszfejlécek listáját lásd: [fejlécek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#headers).
+Az összes kérelem- és válaszfejléc listáját lásd a [Fejlécek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#headers) cikkben.
 
 ## <a name="the-request"></a>A kérelem
 
-Az alábbiakban látható egy news kérelmet, amely tartalmazza a javasolt lekérdezési paraméterek és fejlécet. Ha első alkalommal hívja meg bármelyik Bing API-t, ne használja az ügyfél-azonosító fejlécét. Csak akkor használja az ügyfél-azonosítót, ha korábban már meghívott egy Bing API-t, és visszakapott egy ügyfél-azonosítót a felhasználó és az eszköz kombinációjához.
+Az alábbiakban egy olyan hírkeresési kérés látható, amely az összes javasolt lekérdezési paramétert és fejlécet tartalmazza. Ha első alkalommal hívja meg bármelyik Bing API-t, ne használja az ügyfél-azonosító fejlécét. Csak akkor használja az ügyfél-azonosítót, ha korábban már meghívott egy Bing API-t, és visszakapott egy ügyfél-azonosítót a felhasználó és az eszköz kombinációjához.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies&mkt=en-us HTTP/1.1
@@ -60,7 +60,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="the-response"></a>A válasz
 
-Az alábbiakban az előző kérelemre adott válasz látható. A példában is látható a válaszfejlécek.
+Az alábbiakban az előző kérelemre adott válasz látható. A példában a válaszfejlécek is láthatók.
 
 ```
 BingAPIs-TraceId: 994974CC8D994C95A5C31387296A510A
@@ -282,10 +282,10 @@ X-MSEdge-Ref: Ref A: 994974CC8D994C95A5C31387296A510A Ref B: BY3EDGE0207 Ref C: 
 
 ## <a name="next-steps"></a>További lépések
 
-Próbálja ki az API-t. Lépjen a [News Search API-tesztelési konzol](https://dev.cognitive.microsoft.com/docs/services/56b43f72cf5ff8098cef380a/operations/56f02400dbe2d91900c68553).
+Próbálja ki az API-t. Lépjen a [News Search API-tesztkonzolhoz](https://dev.cognitive.microsoft.com/docs/services/56b43f72cf5ff8098cef380a/operations/56f02400dbe2d91900c68553).
 
-A válaszobjektumok felhasználása kapcsolatos részletekért lásd: [Bing News Search újdonságai?](./search-the-web.md). További információ a következő gyakori műveletei is találhat:
+A válaszobjektumok feldolgozásával kapcsolatos részletekért lásd: [Mi a Bing News Search?](./search-the-web.md). További információt találhat az alábbi gyakori műveletekről is:
 
-- [Bevezetés a mai híreket](./search-the-web.md#getting-todays-top-news)
-- [Beolvasása Hírek kategória szerint](./search-the-web.md#getting-news-by-category)
-- [Vezető hírek beolvasása](./search-the-web.md#getting-trending-news)
+- [A nap legfrissebb híreinek lekérése](./search-the-web.md#getting-todays-top-news)
+- [Hírek lekérése kategóriák szerint](./search-the-web.md#getting-news-by-category)
+- [Népszerű hírek lekérése](./search-the-web.md#getting-trending-news)

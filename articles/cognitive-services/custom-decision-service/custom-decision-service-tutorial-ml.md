@@ -1,132 +1,134 @@
 ---
-title: Gépi tanulás - Azure kognitív szolgáltatások |} Microsoft Docs
-description: Egy Azure egyéni döntési szolgáltatásban, a felhőalapú API környezetfüggő döntéshozatali machine Learning oktatóanyag.
+title: 'Oktatóanyag: Jellemzősítés és jellemzők specifikálása – Custom Decision Service'
+titlesuffix: Azure Cognitive Services
+description: Oktatóanyag a gépi tanulásban használt jellemzősítéshez és a jellemzők specifikálásához a Custom Decision Service-ben.
 services: cognitive-services
 author: slivkins
-manager: slivkins
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: tutorial
 ms.date: 05/08/2018
-ms.author: slivkins;marcozo;alekh
-ms.openlocfilehash: 50814d67ee39c6657954610358462d877843416e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: slivkins
+ms.openlocfilehash: 1e5d012706d1de5a201eecb8ad805b4d6faaf411
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349015"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869590"
 ---
-# <a name="machine-learning"></a>Gépi tanulás
+# <a name="tutorial-featurization-and-feature-specification"></a>Oktatóanyag: Jellemzősítés és jellemzők specifikálása
 
-Ez az oktatóanyag a fejlett gépi tanulási funkció egyéni döntési szolgáltatás kezeli. Az oktatóanyag két részből áll: [featurization](#featurization-concepts-and-implementation) és [specification funkció](#feature-specification-format-and-apis). Featurization hivatkozik az adatok, mint a "szolgáltatások" jelző a machine Learning szolgáltatáshoz. Szolgáltatás megadását a JSON formátum és a kiegészítő API-k meghatározásához funkciókat ismerteti.
+Ez az oktatóanyag a Custom Decision Service fejlett gépi tanulási funkcióival foglalkozik. Az oktatóanyag két részből áll: [a jellemzők megállapításából](#featurization-concepts-and-implementation) és [a jellemzők specifikálásából](#feature-specification-format-and-apis). A jellemzősítés azt jelenti, hogy az adatokat „jellemzőkként” kezeljük a gépi tanuláshoz. A jellemzők specifikálása a JSON-formátumot és a jellemzők meghatározására szolgáló kiegészítő API-kat takarja.
 
-Alapértelmezés szerint a gépi tanulási egyéni döntési szolgáltatásban az transzparens az ügyfélnek. Szolgáltatások automatikusan ki kell olvasni a tartalomról, és egy szabványos megerősítése tanulási algoritmust használnak. Szolgáltatás kivonása használja. Ez több más Azure kognitív szolgáltatások: [entitás Linking](../entitylinking/home.md), [Szövegelemzések](../text-analytics/overview.md), [Érzelemfelismerési](../emotion/home.md), és [számítógép stratégiai](../computer-vision/home.md). Ez az oktatóanyag is kimarad, ha csak az alapértelmezett funkció használható.
+A Custom Decision Service gépi tanulási folyamatait alapértelmezés szerint a felhasználók is átláthatják. A rendszer automatikusan kivonja a jellemzőket a tartalmakból, és egy standard megerősítő tanulási algoritmust alkalmaz. A jellemzők kivonása során a rendszer számos egyéb Azure Cognitive Services-szolgáltatás előnyeit is kihasználja. Ilyen az [Entity Linking](../entitylinking/home.md), a [Text Analytics](../text-analytics/overview.md), az [Emotion](../emotion/home.md) és a [Computer Vision](../computer-vision/home.md). Amennyiben csak az alapszintű funkciókat szeretné használni, ez az oktatóanyag kihagyható.
 
-## <a name="featurization-concepts-and-implementation"></a>Featurization: fogalmakat és megvalósítása
+## <a name="featurization-concepts-and-implementation"></a>Jellemzősítés: fogalmak és megvalósítás
 
-Egyéni döntési szolgáltatás döntéseket egyenként. Minden döntést foglal magában, több alternatívák, más néven, a műveletek között. Az alkalmazástól függően a döntést is dönthet, egyetlen művelettel, vagy a műveletek (rövid) rangsorolt listáját.
+A Custom Decision Service a döntéseket egyenként hozza meg. Minden egyes döntés során a rendszer több alternatíva, úgynevezett műveletek közül választ. Az alkalmazástól függően a döntés során egyetlen műveletet vagy műveletek (rövid) rangsorolt listája is kiválasztható.
 
-Például személyre szabása cikkek az első oldalon egy webhely kiválasztása. Itt cikkek felelnek meg, és minden döntés egy adott felhasználónak megjelenítendő mely cikkeket.
+Előfordulhat például, hogy azt szeretnénk személyre szabni, milyen cikkek jelenjenek meg egy webhely nyitóoldalán. A műveletek itt a cikkeknek felelnek meg, és a döntések arról szólnak, hogy mely cikkeket jelenítse meg a rendszer egy adott felhasználó számára.
 
-Minden egyes művelethez tulajdonságai, a továbbiakban vektor által képviselt *szolgáltatások*. Új funkciók mellett a kibontott automatikusan funkciókat is megadhat. Azt is beállíthatja, hogy egyéni döntési szolgáltatás jelentkezzen néhány funkció, de a gépi tanulás figyelmen kívül hagyja.
+Mindegyik műveletet egy tulajdonságok (a továbbiakban: *jellemzők*) által alkotott vektor képviseli. Az automatikusan kivont jellemzők mellett új jellemzők is megadhatók. A Custom Decision Service arra is utasítható, hogy jegyezzen fel egyes jellemzőket, de a gépi tanulás során hagyja őket figyelmen kívül.
 
-### <a name="native-vs-internal-features"></a>Natív és a belső funkciók
+### <a name="native-vs-internal-features"></a>Natív és belső jellemzők
 
-Adja meg a szolgáltatások legtöbb természetes formátumban az alkalmazáshoz, kell azt a számot, egy karakterlánc vagy tömb. Ezeket a szolgáltatásokat hívják ""natív szolgáltatások. Egyéni döntési szolgáltatás egyes natív szolgáltatások fordítja le egy vagy több numerikus funkciót, nevű ""belső szolgáltatások.
+A jellemzőket olyan formátumban érdemes megadni, amely az adott alkalmazásban a legkézenfekvőbb, legyen az szám, sztring vagy tömb. Ezeket a jellemzőket „natív jellemzőknek” nevezzük. A Custom Decision Service minden natív jellemzőt lefordít egy vagy több numerikus jellemzővé. Ezek az úgynevezett „belső jellemzők”.
 
-Belső funkciók fordítást a következőképpen történik:
+A belső jellemzővé történő fordítás során:
 
-- numerikus szolgáltatások ugyanaz maradjon.
-- az eszköz egy numerikus tömb több numerikus funkciót, egyet a tömb egyes elemei.
-- egy karakterlánc-értékű szolgáltatás `"Name":"Value"` alakítja nevű szolgáltatást alapértelmezés szerint ki van `"NameValue"` és 1 értéket.
-- Szükség esetén egy karakterlánc ábrázolhatók [tulajdonságcsomag-az-szavak](https://en.wikipedia.org/wiki/Bag-of-words_model). Egy belső szolgáltatás majd minden szó a karakterláncban, amelynek értéke a Word előfordulási jön létre.
-- Belső funkciók nulla értékű hiányoznak.
+- a numerikus jellemzők nem változnak.
+- a numerikus tömbök több numerikus jellemzőre fordulnak le. Annyi jellemző jön létre, ahány elem van a tömbben.
+- a `"Name":"Value"` (Név:Érték) formátumú, sztring értékű jellemző alapértelmezés szerint egy `"NameValue"` (NévÉrték) nevű jellemzővé fordul, amelynek az értéke 1.
+- Opcionálisan a sztringeket egy [bag-of-words](https://en.wikipedia.org/wiki/Bag-of-words_model) (szóhalmaz) modell is képviselheti. A rendszer ezután a sztringben lévő mindegyik szóhoz létrehoz egy belső jellemzőt, amelynek az értéke a szó előfordulásainak a száma lesz.
+- A nulla értékű belső jellemzőket a rendszer elhagyja.
 
-### <a name="shared-vs-action-dependent-features"></a>Megosztott és művelet függő szolgáltatások összehasonlítása
+### <a name="shared-vs-action-dependent-features"></a>Megosztott és műveletfüggő jellemzők
 
-Néhány funkció tekintse meg a teljes döntést, és az összes műveletet. Ezt nevezik *közös szolgáltatások*. Egy adott művelet néhány egyéb szolgáltatás vonatkoznak. Ezt nevezik *művelet függő szolgáltatások* (AD FS).
+Egyes jellemzők a teljes döntésre vonatkoznak, és minden műveletnél azonosak. Ezeket *megosztott jellemzőknek* nevezzük. Más jellemzők azonban csak egy adott műveletre vonatkoznak. Ezeket *műveletfüggő jellemzőknek* (action-dependent feature, ADF) nevezzük.
 
-A futó példában a megosztott szolgáltatások sikerült írják le, a felhasználót és/vagy a világ állapotát. Szolgáltatások, például földrajzi hely meghatározásának, kor, és nem a felhasználó, és jelentős események most hogy. Művelet függő szolgáltatások sikerült írják le egy adott cikk, például az ebben a cikkben említett témakörök tulajdonságait.
+Az általunk használt példában a megosztott jellemzők a felhasználót és/vagy a világ állapotát írhatják le. Olyan jellemzőkről van itt szó, mint a földrajzi hely, a felhasználó kora és neme, valamint a jelenleg zajló jelentősebb események. A műveletfüggő jellemzők megszabhatják egy adott cikk tulajdonságait, például azokat a témaköröket, amelyeket a cikk érint.
 
-### <a name="interacting-features"></a>Kölcsönösen egymásra ható szolgáltatások
+### <a name="interacting-features"></a>Egymásra ható jellemzők
 
-Gyakran "interaktív" funkció: a hatását, hogy egy mások függ. Például X jellemzője, hogy a felhasználó sport iránt érdeklődik. A funkció Y, hogy egy adott cikk arra készül, sport. Majd annak hatását, hogy a szolgáltatás Y szolgáltatás magas függ X.
+A jellemzők gyakran „hatnak egymásra”, azaz az egyes jellemzők hatása más jellemzőktől is függ. Az X jellemző például arra vonatkozik, hogy a felhasználót érdekli-e a sport, az Y jellemző pedig azt adja meg, hogy egy adott cikk valamilyen sporttal foglalkozik-e. Ilyenkor az Y jellemző hatása nagy mértékben függ az X jellemzőtől.
 
-X és Y szolgáltatások közötti interakció fiókot használja, hozzon létre egy *négyzetösszege* szolgáltatás, amelynek értéke X\*Y. (Azt is tegyük fel például, "közötti" X és Y.) Kiválaszthatja, hogy mely funkciók párok túllépése.
-
-> [!TIP]
-> A megosztott szolgáltatás lehet átlépni művelet függő szolgáltatásokkal ahhoz, hogy a dimenziószáma befolyásolják. Egy művelet függő szolgáltatás lehet átlépni a megosztott szolgáltatások személyre szabása érdekében.
-
-Ez azt jelenti egy megosztott szolgáltatás nem minden Active Directory összevonási szolgáltatásokkal átlépte ugyanúgy hogyan befolyásolja a műveletek. Nem minden megosztott szolgáltatás túllépte az ADF túl minden döntés befolyásolja. Az ilyen típusú szolgáltatások csökkentheti ellenszolgáltatás becslése varianciáját.
-
-### <a name="implementation-via-namespaces"></a>Névterek keresztül végrehajtása
-
-A portál a parancssorból"VW" keresztezett szolgáltatásokat (valamint más featurization fogalmak) megvalósítható. A szintaxis alapul a [Vowpal Wabbit](http://hunch.net/~vw/) parancssor.
-
-Központi végrehajtására van fogalma *névtér*: szolgáltatások elnevezett részhalmazát. Egyes szolgáltatások pontosan egy névtérhez tartozik. A névtér explicit módon adható meg, ha a szolgáltatás érték megadott egyéni döntési szolgáltatás. Tekintse meg a szolgáltatás a VW parancssorban az egyetlen lehetőség.
-
-Egy névtér, "megosztott" vagy "művelet függő": csak a megosztott szolgáltatások áll, vagy művelet függő szolgáltatásai ugyanaz a művelet csak áll.
+Az X és az Y jellemző kölcsönhatásának leképezésére létrehozhat egy *négyzetes* jellemzőt, amelynek az értéke X\*Y. (Úgy is mondjuk, hogy X „keresztezve” van Y-nal.) Megválaszthatja, hogy mely jellemzőpárok legyenek keresztezve.
 
 > [!TIP]
-> Tanácsos szolgáltatások burkolása explicit módon megadott névterekben. Kapcsolódó szolgáltatások ugyanazt a névteret a csoportban.
+> A megosztott jellemzőket a rangsoruk befolyásolása érdekében érdemes műveletfüggő jellemzőkkel keresztezni. A műveletfüggő jellemzőket a hatékonyabb személyre szabás érdekében általában megosztott jellemzőkkel keresztezzük.
 
-Ha a névtér nem áll rendelkezésre, a szolgáltatás automatikusan az alapértelmezett névtér.
+A műveletfüggő jellemzőkkel nem keresztezett megosztott jellemzők minden egyes műveletre ugyanúgy hatnak. A megosztott jellemzőkkel nem keresztezett műveletfüggő jellemző szintén hat mindegyik döntésre. Az ilyen típusú jellemzők csökkenthetik a jutalombecslések varianciáját.
+
+### <a name="implementation-via-namespaces"></a>Implementálás névtereken keresztül
+
+A keresztezett jellemzők (valamint az egyéb jellemzősítési fogalmak) a portál „VW parancssori” felületén implementálhatók. A szintaxis a [Vowpal Wabbit](http://hunch.net/~vw/) parancssori felületen alapul.
+
+Az implementálás központi eleme a *névtér*: ez a jellemzők egy nevesített halmaza. Mindegyik jellemző egyetlen névtérhez tartozik. A névtér explicit módon adható meg, amiikor a jellemző értékét megadja a Custom Decision Service-ben. A jellemzőkre kizárólag így lehet hivatkozni a VW parancssorban.
+
+Egy névtér „megosztott” vagy „műveletfüggő” lehet: vagy csak megosztott jellemzőket tartalmaz, vagy csak egyetlen művelet műveletfüggő jellemzőit.
+
+> [!TIP]
+> Ajánlott a jellemzőket explicit módon meghatározott névterekbe csomagolni. A kapcsolódó jellemzőket csoportosítsa egy névtérbe.
+
+Ha a névtér nincs megadva, a rendszer a jellemzőt automatikusan az alapértelmezett névtérhez rendeli.
 
 > [!IMPORTANT]
-> Szolgáltatások és névterek nem kell kell műveleteket. Különösen névtér lehet különböző műveletekhez különböző szolgáltatások. Ezen felül egy adott névtér meghatározása bizonyos műveleteket nem pedig más.
+> A jellemzőknek és a névtereknek nem kell konzisztensnek lenniük a különböző műveletek között. Ez azt jelenti, hogy egy névtér más-más műveletekhez más-más jellemzőket is tartalmazhat. Azt is megteheti, hogy egy névteret egyes műveletekhez megad, másokhoz pedig nem.
 
-Több belső funkció, amely innen származik: ugyanazon karakterláncos natív szolgáltatás ugyanazt a névteret vannak csoportosítva. Két natív összetevő, melyek különböző névterekben különálló, kezelik, akkor is, ha a szolgáltatás névvel rendelkeznek.
+Az ugyanabból a (sztring értékű) natív jellemzőből származó belső jellemzőket a rendszer ugyanabba a névtérbe csoportosítja. A különböző névterekben megtalálható natív jellemzőket a rendszer megkülönbözteti egymástól, még akkor is, ha ugyanaz a nevük.
 
 > [!IMPORTANT]
-> Míg hosszú, leíró névtér azonosítók közös, VW parancssori nincs megkülönböztetve névterek azonosító ugyanazzal a betűvel kezdődik. A következőkben, névtér azonosítók csak egyetlen betűk, például a `x` és `y`.
+> Bár szokás hosszú, leíró névtér-azonosítókat használni, a VW parancssor nem különbözteti meg azokat a névtereket, amelyeknek az azonosítója ugyanazzal a betűvel kezdődik. A továbbiakban egybetűs névtér-azonosítókat fogunk alkalmazni, például `x` vagy `y`.
 
-A megvalósítás részletei a következők:
+Az implementálás részletei:
 
-- A kereszt-névterek `x` és `y`, írható `-q xy` vagy `--quadratic xy`. Ezután az egyes szolgáltatások `x` áthaladnak a jellemzők `y`. Használjon `-q x:` a kereszt- `x` minden névterű és `-q ::` a kereszt-névterek összes pár.
+- Az `x` és az `y` névtér keresztezéséhez írja be a `-q xy` vagy a `--quadratic xy` kifejezést. Ekkor a rendszer az `x` minden egyes jellemzőjét keresztezi az `y` minden egyes jellemzőjével. A `-q x:` kifejezéssel az `x` az összes többi névtérrel, a `-q ::` kifejezéssel minden névtér az összes többivel keresztezhető.
 
-- Figyelmen kívül hagyása minden funkció névtérben `x`, írható `--ignore x`.
+- Az `x` névtérben lévő összes jellemző figyelmen kívül hagyásához használja az `--ignore x` kifejezést.
 
-Ezek a parancsok érvényesek minden egyes művelethez külön-külön, amikor meghatározott névterek.
+Ezeket a parancsokat a rendszer minden műveletre külön-külön alkalmazza, amikor definiál egy névteret.
 
-### <a name="estimated-average-as-a-feature"></a>Becsült átlagos szolgáltatásként
+### <a name="estimated-average-as-a-feature"></a>A becsült átlag, mint jellemző
 
-Egy gondolat kísérletet, mi lenne, az adott művelet átlagos ellenszolgáltatás Ha kapcsolatos összes döntést a választott azt? Ilyen átlagos ellenszolgáltatás intézkedésként minőségének"általános" művelet használható. Pontosan nem ismert, amikor más műveletek lettek kiválasztva inkább az egyes kapcsolatos döntések meghozásakor. Azonban becslése tanítás valósítható megerősítése keresztül. Ez a becslés minőségének általában javítja az adott idő alatt.
+Mi lenne például egy művelet átlagos jutalma, ha minden döntés során azt választanák ki? Egy ilyen átlagos jutalomérték használható a művelet „általános minőségének” mértékegységeként. Nem lehet pontosan megállapítani, hogy egyes döntések során hányszor került sor más műveletek kiválasztására. Megerősítő tanulási technikákkal azonban ez is megbecsülhető. A becslés pontossága idővel általában javul.
 
-Ha szeretné, a "becsült átlagos ellenszolgáltatás" tartalmazzák az adott művelet szolgáltatásként. Egyéni döntési szolgáltatás volna automatikusan frissíti Ez a becslés, új adat érkezik. A szolgáltatás neve a *marginális szolgáltatás* a művelet. Marginális szolgáltatásai használhatók a machine Learning szolgáltatáshoz, és a naplózás.
+Dönthet úgy, hogy ezt a „becsült átlagos jutalmat” is megadja jellemzőként egy adott művelethez. A Custom Decision Service automatikusan frissíti ezt a becsült értéket, amikor új adatok érkeznek be. Ez a jellemző a művelet úgynevezett *marginális jellemzője*. A marginális jellemzők gépi tanuláshoz és naplózási célokra használhatók.
 
-Marginális szolgáltatások hozzáadását, írható `--marginal <namespace>` a VW parancssorban. Adja meg `<namespace>` a JSON-ban, az alábbiak szerint:
+Marginális jellemzők hozzáadásához írja be a `--marginal <namespace>` kifejezést a VW parancssorba. Definiálja a `<namespace>` értékét a JSON-fájlban a következőképpen:
 
 ```json
 {<namespace>: {"mf_name":1 "action_id":1}
 ```
 
-Ehhez a névtérhez, valamint az olyan más függő művelet funkciókat egy adott művelet beszúrása. Adja meg minden döntést azonos a definíciója `mf_name` és `action_id` kapcsolatos összes döntést a.
+Illessze be ezt a névteret az adott művelet többi műveletfüggő jellemzőjével együtt. Adja meg ugyanezt a definíciót mindegyik döntéshez. Mindegyiknél ugyanazt az `mf_name` és `action_id` értéket használja.
 
-A marginális szolgáltatás minden műveletet. a rendszer hozzá `<namespace>`. A `action_id` bármilyen szolgáltatás nevet, amely egyedileg azonosítja a műveletet. A szolgáltatás neve legyen `mf_name`. Különösen marginal szolgáltatásokat másik `mf_name` különböző szolgáltatások tekintendők – egy másik súly van megtanulta, az egyes `mf_name`.
+A marginális jellemzőt a rendszer hozzáadja a `<namespace>` névtérhez tartozó mindegyik művelethez. Az `action_id` bármilyen jellemzőnév lehet, amely egyértelműen azonosítja a műveletet. A jellemző neve `mf_name` lesz. A rendszer a különböző `mf_name` névvel rendelkező marginális jellemzőket különböző jellemzőkként kezeli – mindegyik `mf_name` névhez más súlyt tanul meg.
 
-Az alapértelmezett használatát, hogy `mf_name` azonos minden műveletre. Ezután egy súly van megtanulta, az összes marginális szolgáltatás.
+Az alapértelmezett eljárás szerint az `mf_name` minden művelet esetében ugyanaz, így a rendszer mindegyik marginális jellemzőhöz ugyanazt a súlyt tanulja meg.
 
-Ugyanaz a művelet több marginális funkciói ugyanazokat az értékeket, de különböző neve is megadható.
+Több marginális jellemzőt is megadhat ugyanahhoz a művelethez, amelyeknek az értéke megegyezik, de a nevük eltér.
 
 ```json
 {<namespace>: {"mf_name1":1 "action_id":1 "mf_name2":1 "action_id":1}}
 ```
 
-### <a name="1-hot-encoding"></a>1-közbeni kódolás
+### <a name="1-hot-encoding"></a>„1-hot” (állapotonként egy) kódolás
 
-Dönthet úgy, hogy bizonyos funkciói bit veszélyének, amelyben mindegyik bit felel meg a lehetséges értékek tartományán. Ez a bit értéke 1 csak, ha a szolgáltatás ebbe a tartományba esik. Emiatt van egy "Forró" bit értéke 1, és a többi értéke 0. Ez a megjelenítési módja gyakran nevezik *1 közbeni kódolás*.
+Ha szeretné, egyes jellemzőket bitvektorokként is jelölhet, ahol minden egyes bit a lehetséges értékek egy tartományának felel meg. Az egyes bitek értéke csakis abban az esetben lesz 1, ha a jellemző ebbe a tartományba esik. Így egyetlen „hot” (kiugró) bit van, amelynek az értéke 1, míg a többié 0. Ezt a megoldást *„1hot” kódolásnak* szokták nevezni.
 
-Az 1-közbeni kódolás az általában kategorikus szolgáltatások például az "földrajzi régió" nem rendelkezik egy eredendően jelentéssel bíró interfésztípus numerikus megjelölése. Tanácsos numerikus szolgáltatások, amelyek hatással a ellenszolgáltatás várhatóan nem lineáris. Egy adott cikk lehet például egy adott kora csoportra vonatkozó, és nem számít, hogy bárki számára fiatalabb vagy régebbi.
+Az 1-hot kódolást általában kategorikus jellemzőkhöz alkalmazzák (például: „földrajzi régió”), amelyek nem rendelkeznek természetükből fakadó numerikus megfelelővel. Olyan numerikus jellemzőkhöz is tanácsos alkalmazni, amelyeknek a jutalomra gyakorolt hatása valószínűleg nem lineáris. Előfordulhat például, hogy egy adott cikk releváns egy adott korcsoport számára, az idősebbeknek vagy fiatalabbaknak azonban irreleváns.
 
-Bármilyen karakterlánc értékű szolgáltatás, 1-közbeni alapértelmezés szerint kódolású: egy különálló belső szolgáltatás hoznak létre minden lehetséges értéke. Automatikus 1 közbeni kódolás numerikus szolgáltatások és/vagy az egyéni tartományok jelenleg nincsenek megadva.
+A sztring értékű jellemzők alapértelmezés szerint 1-hot kódolásúak: a rendszer mindegyik lehetséges értékhez egy külön belső jellemzőt hoz létre. A numerikus jellemzőkre vonatkozó és/vagy az egyéni tartományokkal kiegészülő automatikus 1-hot kódolás jelenleg még nem érhető el.
 
 > [!TIP]
-> A gépi tanulási algoritmusok egységes módon kezelje a belső szolgáltatásaira minden lehetséges értékei: keresztül egy közös "weight". Az 1-közbeni kódolás lehetővé teszi, hogy egy külön "weight" a minden egyes értékek tartományán. Így kisebb tartományt vezet jobb megtérüléséhez után elég adat gyűjtött, de előfordulhat, hogy növelje a jobb megtérüléséhez szerveződik szükséges adatok mennyiségét.
+> A gépi tanulási algoritmusok egy adott belső jellemző összes lehetséges értékét egységes módon kezelik: egy közös „súlyon” keresztül. Az 1-hot kódolással külön „súly” adható minden értéktartománynak. Kisebb tartományok megadásával jobb jutalmak határozhatók meg, ha már elég adat gyűlt össze, de a jobb jutalmak felé közelítéshez is több adatra lehet szükség.
 
-## <a name="feature-specification-format-and-apis"></a>Szolgáltatás specifikációja: formátum és API-k
+## <a name="feature-specification-format-and-apis"></a>Jellemzők specifikálása: formátum és API-k
 
-Több kiegészítő API-k segítségével szolgáltatásokat adhat meg. Minden API-k egy közös JSON formátumot használja. Az alábbiakban az API-k és a fogalmi szinten formátumban. A meghatározás van kiegészíteni egy Swagger séma.
+A jellemzőket különböző kiegészítő API-kon keresztül lehet specifikálni. Mindegyik API általános JSON-formátumot használ. Az alábbiakban az API-k és a formátum elméleti áttekintése látható. A specifikációt egy Swagger-séma egészíti ki.
 
-Az egyszerű JSON sablon szolgáltatás megadását a következőképpen történik:
+A jellemzőspecifikáció alapvető JSON-formátuma a következőképpen néz ki:
 
 ```json
 {
@@ -137,14 +139,14 @@ Az egyszerű JSON sablon szolgáltatás megadását a következőképpen törté
 }
 ```
 
-Itt `<name>` és `<value>` szolgáltatás nevét és értékét. szolgáltatás, illetve állni. `<value>` egy karakterlánc, egész, lebegőpontos, olyan logikai érték vagy egy tömb lehet. A szolgáltatás nem törik névtérbe automatikusan az alapértelmezett névtérbe.
+Itt a `<name>` a jellemző nevét, a `<value>` pedig az értékét jelöli. A `<value>` lehet egy sztring, egy egész szám, egy lebegőpontos érték, egy logikai érték vagy egy tömb. A névtérbe nem csomagolt jellemzőket a rendszer automatikusan az alapértelmezett névtérhez rendeli.
 
-Egy tulajdonságcsomag-az-szavakat, szöveglánc szintaxissal egy különleges `"_text":"string"` helyett `"<name>":<value>`. Gyakorlatilag minden szó a karakterláncban egy külön belső szolgáltatás jön létre. A word előfordulásainak száma érvénytelen.
+Ha egy sztringet szóhalmazként (bag-of-words) szeretne kezelni, használja a speciális `"_text":"string"` szintaxist a `"<name>":<value>` helyett. A rendszer így a sztringben lévő mindegyik szóhoz létrehoz egy belső jellemzőt. A jellemző értéke a szó előfordulásainak száma.
 
-Ha `<name>` "_" kezdődik (és nem `"_text"`), akkor a szolgáltatás a rendszer figyelmen kívül hagyja.
+Ha a `<name>` az „_” karakterrel kezdődik (és nem `"_text"`), a rendszer figyelmen kívül hagyja a jellemzőt.
 
 > [!TIP]
-> Egyes esetekben több JSON forrásból származó szolgáltatásokat egyesít. Kényelmi célokat szolgál akkor is mutatják be azokat az alábbiak szerint:
+> Esetenként előfordul, hogy különböző JSON-forrásokból származó jellemzőket kell egyesíteni. Az egyszerűség kedvéért ezeket az alábbiak szerint jelölheti:
 >
 > ```json
 > {
@@ -154,22 +156,22 @@ Ha `<name>` "_" kezdődik (és nem `"_text"`), akkor a szolgáltatás a rendszer
 > }
 > ```
 
-Itt `<features>` a alapvető szolgáltatás megadását, korábban definiált hivatkozik. "Beágyazási" szintnél mélyebb engedélyezettek túl. Egyéni döntési szolgáltatás automatikusan megkeresi a "legmélyebb" JSON-objektumok, amelyek úgy `<features>`.
+Itt a `<features>` a korábban definiált alapvető jellemzőspecifikációra hivatkozik. Mélyebb szintű „beágyazás” is megengedett. A Custom Decision Service automatikusan megkeresi a jellemzőként (`<features>`) értelmezhető „legmélyebb” JSON-objektumokat.
 
-#### <a name="feature-set-api"></a>A szolgáltatás beállítása API
+#### <a name="feature-set-api"></a>Feature Set API
 
-A szolgáltatás beállítása API szolgáltatások listáját a korábban ismertetett JSON formátumban ad vissza. Néhány funkció beállítása API-végpontokon használható. Minden egyes végpont szolgáltatás azonosítója és egy URL-cím alapján azonosítja. A szolgáltatás közötti leképezést azonosítók állítsa be, és a portál URL-címek megadása.
+A Feature Set API a jellemzők egy listáját adja vissza a korábban ismertetett JSON-formátumban. Több Feature Set API-végpontot is használhat. Az egyes végpontok jellemzőkészlet-azonosító és URL-cím alapján azonosíthatók. A jellemzőkészlet-azonosítók és az URL-címek közötti leképezést a portálon lehet megadni.
 
-Szolgáltatás beállítása API hívása szúrja be a megfelelő funkció azonosítója a megfelelő helyen a JSON-ban. A hívás művelet függő szolgáltatások automatikusan paraméterezni a művelet azonosítója. Megadhat több szolgáltatás azonosítók beállítása ugyanaz a művelet.
+A Feature Set API meghívásához illessze be a kapcsolódó jellemzőkészlet-azonosítót a JSON megfelelő helyére. A műveletfüggő jellemzők esetében a műveletazonosító automatikusan paraméterezi a hívást. Ugyanahhoz a művelethez több jellemzőkészlet-azonosítót is megadhat.
 
-#### <a name="action-set-api-json-version"></a>A művelet be API (JSON-verzió)
+#### <a name="action-set-api-json-version"></a>Action Set API (JSON-verzió)
 
-A művelet be API, amelyben műveletek és a szolgáltatások megadott JSON verziószáma. Szolgáltatások adható meg explicit módon és/vagy a szolgáltatás beállítása API-k használatával. Megosztott szolgáltatások minden műveletre egyszer adható meg.
+Az Action Set API egyik verziójában a műveletek és jellemzők JSON-formátumban vannak meghatározva. A jellemzők megadhatók explicit módon és/vagy a Feature Set API-kon keresztül. A megosztott jellemzőket egyszerre lehet megadni az összes művelethez.
 
-#### <a name="ranking-api-http-post-call"></a>Prioritás API (HTTP POST híváson)
+#### <a name="ranking-api-http-post-call"></a>Ranking API (HTTP POST-hívás)
 
-Prioritás API verziószáma HTTP POST-hívást. A hívás törzsét műveletek és a szolgáltatások egy rugalmas JSON-szintaxis segítségével határozza meg.
+A Ranking API egyik verziója HTTP POST-hívásokat alkalmaz. A hívás törzse egy rugalmas JSON-szintaxissal határozza meg a műveleteket és a jellemzőket.
 
-Műveletek explicit módon megadott, illetve keresztül műveleti azonosítók beállítása. Amikor a rendszer észlelt egy művelet azonosítója, a megfelelő művelet beállítása API végpontra hívás végrehajtása.
+A műveletek megadhatók explicit módon és/vagy a műveletkészlet-azonosítókkal. Amikor a rendszer egy műveletkészlet-azonosítót talál, hívást intéz az annak megfelelő Action Set API-végpontra.
 
-Művelet beállítása API, mint a szolgáltatások adható meg explicit módon és/vagy a szolgáltatás beállítása API-k használatával. Megosztott szolgáltatások minden műveletre egyszer adható meg.
+Az Action Set API esetében a jellemzők megadhatók explicit módon és/vagy a Feature Set API-kon keresztül. A megosztott jellemzőket egyszerre lehet megadni az összes művelethez.

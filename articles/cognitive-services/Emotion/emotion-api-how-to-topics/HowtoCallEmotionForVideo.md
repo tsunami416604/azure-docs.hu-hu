@@ -1,55 +1,57 @@
 ---
-title: A Érzelemfelismerési API meghívása videó |} Microsoft Docs
-description: Útmutató a Érzelemfelismerési API meghívása videó kognitív szolgáltatásban.
+title: 'Példa: Az Emotion API for Video meghívása'
+titlesuffix: Azure Cognitive Services
+description: Ismerje meg, hogyan hívható meg az Emotion API for Video a Cognitive Servicesben.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: sample
 ms.date: 02/06/2017
 ms.author: anroth
-ms.openlocfilehash: 0875013b2061a84e3e23ae90c1106382672fdca6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2687145a89c11efb4a3bcb1494a39806e9aae551
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347582"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238607"
 ---
-# <a name="how-to-call-emotion-api-for-video"></a>Hogyan hívhatja meg Érzelemfelismerési API videó
+# <a name="example-call-emotion-api-for-video"></a>Példa: Az Emotion API for Video meghívása
 
 > [!IMPORTANT]
-> Villámnézet API a 2017. október 30 véget ér. Kipróbálhatja az új [videó indexelő API előnézete](https://azure.microsoft.com/services/cognitive-services/video-indexer/) insights könnyen kibontani videók, és tartalom felderítési lép, például a keresési eredmények, növelje a szóbeli szavakat, a lapok, a karakterek és a érzelmek észlelésével. [További információk](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
+> Az Emotion API 2019. február 15-ével elavulttá válik. Az érzelemfelismerési képesség mostantól általánosan elérhető a [Face API](https://docs.microsoft.com/azure/cognitive-services/face/) részeként. 
 
-Ez az útmutató bemutatja, hogyan videó Érzelemfelismerési API hívásához használandó. A minták Érzelemfelismerési API használatával videó ügyféloldali kódtára a C# nyelven íródtak.
+Ez az útmutató bemutatja, hogy hívható meg az Emotion API for Video. A minták C# nyelven lettek megírva az Emotion API for Video ügyfélkódtárának használatával.
 
-### <a name="Prep">Előkészítése</a> 
-Ahhoz, hogy a Érzelemfelismerési API videó, szüksége lesz egy videót, amely tartalmazza a személyek, lehetőleg videó ahol személyeket használata során szembesülnek a kamera.
+### <a name="Prep">Előkészítés</a>
+Az Emotion API for Video használatához szüksége lesz egy videóra, amelyen lehetőleg a kamera felé néző személyek szerepelnek.
 
-### <a name="Step1">1. lépés: Engedélyezze az API-hívás</a> 
-Videó az Érzelemfelismerési API-t minden hívásakor előfizetés kulcs szükséges. Ez a kulcs vagy a lekérdezési karakterlánc paraméterként keresztül vagy a kérelem fejlécében megadott kell. Az Előfizetés kulcs egy lekérdezési karakterlánc keresztül továbbítani, tekintse meg alatt a kérelem URL-CÍMÉT a Érzelemfelismerési API-videót például:
+### <a name="Step1">1. lépés: Az API-hívás engedélyezése</a>
+Az Emotion API for Video minden meghívásához szükség van egy előfizetői azonosító. Ezt a kulcsot egy lekérdezésisztring-paraméteren keresztül kell továbbítani, vagy a kérelemfejlécben kell megadni. Az előfizetői azonosító lekérdezési sztringen keresztül történő továbbításához tekintse meg az alábbi példát, amely egy kérés URL-címét tartalmazza az Emotion API for Videóhoz:
 
 ```
 https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognizeInVideo&subscription-key=<Your subscription key>
 ```
 
-Alternatív megoldásként az Előfizetés kulcs is megadható a kérelem HTTP-fejlécben:
+Másik lehetőségként az előfizetői azonosítót a HTTP-kérés fejlécében is megadhatja:
 
 ```
 ocp-apim-subscription-key: <Your subscription key>
 ```
 
-Egy ügyféloldali kódtár használata esetén az Előfizetés kulcs áthalad a VideoServiceClient osztály konstruktor. Példa:
+Ügyfélkódtár használatakor az előfizetői azonosító átadása a VideoServiceClient osztály konstruktorán keresztül történik. Például:
 
 ```
 var emotionServiceClient = new emotionServiceClient("Your subscription key");
 ```
-Egy előfizetés kulcs beszerzése, tekintse meg a [előfizetések] (https://azure.microsoft.com/try/cognitive-services/). 
+Előfizetői azonosító beszerzéséhez tekintse meg az [Előfizetések] (https://azure.microsoft.com/try/cognitive-services/)) oldalt.
 
-### <a name="Step2">2. lépés: A szolgáltatás videó feltöltése, és tekintse meg</a>
-A legalapvetőbb hajtsa végre a Érzelemfelismerési API videó hívások módja a videó közvetlenül feltöltésével. Ez történik, hogy az application/octet-stream tartalomtípus együtt a videofájl adatsorból beolvasott adatok "POST" kérelmet küld. A videó maximális mérete 100MB.
+### <a name="Step2">2. lépés: Videó feltöltése a szolgáltatásba és az állapotának ellenőrzése</a>
+Az Emotion API for Video meghívásának legalapvetőbb módja a videó közvetlen feltöltése. Ezt egy alkalmazás-/oktettstream tartalomtípusú „POST” kérés és a videofájlból beolvasott adatok együttes elküldésével teheti meg. A videó maximális mérete 100 MB lehet.
 
-Az ügyféloldali kódtár használatával, stabilizációs feltöltése segítségével végezhető el az adatfolyam-objektummá sikeres. Lásd az alábbi példát:
+Az ügyfélkódtár használata esetén a feltöltés általi stabilizáció egy streamobjektum átadásával történik. Lásd az alábbi példát:
 
 ```
 Operation videoOperation;
@@ -59,10 +61,10 @@ using (var fs = new FileStream(@"C:\Videos\Sample.mp4", FileMode.Open))
 }
 ```
 
-Vegye figyelembe, hogy a CreateOperationAsync VideoServiceClient módszer aszinkron. A hívó metódus állapotúként kell megjelölni aszinkron, valamint ahhoz, hogy a await záradékban.
-Ha a videó már a weben, és egy nyilvános URL-címe van, az URL-cím megadásával Érzelemfelismerési API-t a videó is elérhető. Ebben a példában a kérés törzsében lesz az URL-címet tartalmazó JSON-karakterlánc.
+Vegye figyelembe, hogy a VideoServiceClient CreateOperationAsync metódusa aszinkron. A várakozási záradék használatához a meghívási metódust is aszinkronként kell megjelölni.
+Ha a videó már elérhető a weben, és rendelkezik nyilvános URL-címmel, az Emotion API for Video az URL-cím megadásával is elérhető. Ebben a példában a kéréstörzs egy JSON-sztring lesz, amely tartalmazza az URL-címet.
 
-Az ügyféloldali kódtár használatával, stabilizációs egy URL-cím segítségével egyszerűen hajtható végre másik többszörös definíciót a CreateOperationAsync módszer használatával.
+Az ügyfélkódtár használata esetén az URL-cím általi stabilizáció könnyedén végrehajtható a CreateOperationAsync metódus egy másik túlterhelésével.
 
 
 ```
@@ -71,18 +73,18 @@ Operation videoOperation = await videoServiceClient.CreateOperationAsync(videoUr
 
 ```
 
-A fájlfeltöltési módszer videó hívások Érzelemfelismerési API ugyanaz lesz. 
+Ez a feltöltési metódus ugyanaz lesz az Emotion API for Video minden meghívásának esetében.
 
-A feltöltést videó követően-érdemes hajtsa végre a következő művelet hoz állapota. Mivel videofájlok általában nagyobb és több különböző, mint más fájlok, a felhasználók számíthat hosszú ebben a lépésben feldolgozási ideje. Idő függ a méretét és a fájl hosszát.
+A videó feltöltése után következő műveletként érdemes ellenőrizni a videó állapotát. Mivel a videofájlok általában nagyobbak és változatosabbak más fájloknál, ennél a lépésnél a felhasználók hosszú feldolgozási időre számíthatnak. Az idő a fájl méretétől és hosszúságától függ.
 
-Az ügyféloldali kódtár használatával, kérheti le a műveleti állapotának és az eredményt a GetOperationResultAsync metódussal.
+Az ügyfélkódtár használata esetén a művelet állapotát és eredményét a GetOperationResultAsync metódussal kérheti le.
 
 
 ```
 var operationResult = await videoServiceClient.GetOperationResultAsync(videoOperation);
 
 ```
-Általában ügyféloldali kell rendszeresen töltik le a műveletállapot állapota "Sikeres" vagy "Sikertelen" jelenik meg.
+Az ügyféloldal általában időről időre lekéri a művelet állapotát, amíg az „Succeeded” (Sikeres) vagy „Failed” (Sikertelen) értékű nem lesz.
 
 ```
 OperationResult operationResult;
@@ -99,48 +101,48 @@ while (true)
 
 ```
 
-Ha VideoOperationResult állapota megjelenik-e, a "Sikeres" az eredmény lekérhetők a egy VideoOperationInfoResult VideoOperationResult leadó<VideoAggregateRecognitionResult> és elérése a ProcessingResult mező.
+Amikor a VideoOperationResult állapota „Succeeded” (Sikeres) lesz, az eredményt le lehet kérni a VideoOperationResult metódus VideoOperationInfoResult<VideoAggregateRecognitionResult> metódussá történő konvertálásával és a ProcessingResult mező elérésével.
 
 ```
 var emotionRecognitionJsonString = ((VideoOperationInfoResult<VideoAggregateRecognitionResult>)operationResult).ProcessingResult;
 ```
 
-### <a name="Step3">3. lépés: Beolvasása és a érzelemfelismerési felismerés ismertetése és JSON-kimenetét nyomon követése</a>
+### <a name="Step3">3. lépés: Az érzelemfelismerési és -követési JSON-kimenet lekérése és értelmezése</a>
 
-A kimeneti eredmények tartalmazza a megadott fájl JSON formátumú lapjaira a metaadatok.
+A kimeneti eredmény az adott fájlban található arcok metaadatait tartalmazza JSON formátumban.
 
-2. lépésben leírtak JSON-kimenetét esetén érhető el az operationresult adatokat a, ProcessingResult mezőjében jelenik meg az állapota "Sikeres".
+Ahogy a 2. lépésben már említettük, a JSON-kimenet az OperationResult metódus ProcessingResult mezőjében érhető el, amikor az állapota „Succeeded” (Sikeres).
 
-A tapasztalt észlelési és nyomon követni a JSON tartalmazza a következő attribútumokat:
+Az arcfelismerési és -követési JSON a következő attribútumokat tartalmazza:
 
 Attribútum | Leírás
 -------------|-------------
-Verzió | Videó JSON hivatkozik a Érzelemfelismerési API verziója.
-Időskálára | A videó másodpercenként "ticks".
-Eltolás  |Eltolódás az időbélyegekhez. Érzelemfelismerési API-t a videók 1.0-s verziójában az mindig 0 lesz. A jövőbeli támogatott forgatókönyveket ezt az értéket módosíthatja.
-Képkockasebességhez | A videó képkockasebessége.
-Töredék   | A metaadatok töredék nevű másik kisebb darabokra darabolni be. Minden töredéke a start, a időtartama, a időszakának száma és a esemény (eke) tartalmaz.
-Indítás   | Az első esemény a ticks kezdési idejét.
-Időtartam |  A töredéke a ticks hosszát.
-Időköz |  A töredéke a ticks belül mindegyik esemény hosszát.
-Események  | Események tömbjét. A külső tömb egy időköz jelöli. A belső tömb 0 vagy több olyan eseményeket, amelyek ezen a ponton az időben történtek áll.
-windowFaceDistribution |    Szeretné, hogy az esemény során egy adott érzelemfelismerési százalékos lapokat.
-windowMeanScores |  Az egyes, a kép lapok érzelemfelismerési átlagos pontszámait.
+Verzió | Az Emotion API for Video JSON-verziójára hivatkozik.
+Időskála | Másodpercenkénti „órajel” a videóban.
+Eltolás  |Időeltolás az időbélyegek esetében. Az Emotion API for Video 1.0-s verziójában ennek az értéke mindig 0 lesz. Későbbi támogatott forgatókönyvekben ez az érték módosulhat.
+Képkockasebesség | Képkockák másodpercenkénti száma a videóban.
+Töredékek   | A metaadatok több kisebb részre, úgynevezett töredékre vannak feldarabolva. Minden töredék tartalmaz kezdési időpontot, időtartamot, intervallumszámot és esemény(eke)t.
+Indítás   | Az első esemény kezdési időpontja órajelekben.
+Időtartam |  A töredék hossza órajelekben.
+Intervallum |  A töredékben található egyes események hossza órajelekben.
+Események  | Események tömbje. A külső tömb egy időintervallumot jelöl. A belső tömb 0 vagy több eseményből áll, amelyek az adott időpontban történtek.
+windowFaceDistribution |    Az esemény során egy bizonyos érzelmet kifejező arcok százaléka.
+windowMeanScores |  A képen szereplő arcok egyes érzelmeinek átlagpontszáma.
 
-A formázás a JSON így oka beállítása jövőbeli forgatókönyvek esetén az API-k legyenek fontos, hogy a metaadatok lekérése gyorsan és az eredmények nagy adatfolyam kezeléséhez. A formázás mindkét technikát töredezettsége (így szakítsa meg a metaadatok időalapú részre, ahonnan letöltheti csak találja), és Szegmentálás (hogy lehetővé teszi a feloszthatja az eseményeket, ha túl nagy) használja. Néhány egyszerű számítások segítségével átalakíthatja az adatokat. Például, ha egy esemény használatába 6300 (ticks), egy időskálára 2997 (ticks/másodperc), és a 29,97 (keret/mp), majd egy képkockasebességhez:
+A JSON azért van így formázva, hogy az API-k be legyenek állítva az olyan későbbi forgatókönyvekhez, amelyekben fontos lesz a metaadatok gyors lekérése és a nagy méretű eredménystreamek kezelése. Ez a formázás feldarabolási (ez teszi lehetővé, hogy a metaadatokat időalapú részekre bontsa fel, ahol csak azt tölti le, amire szüksége van), illetve szegmentálási (ez teszi lehetővé, hogy az eseményeket felbontsa, ha azok túl nagy méretűvé válnak) technikákat is alkalmaz. Néhány egyszerű számítás segítségére lehet az adatok átalakításában. Ha például egy esemény kezdési időpontja 6300 (órajel), időskálája 2997 (órajel/másodperc) és képkockasebessége 29,97 (képkocka/másodperc), akkor:
 
-*   Start/időskálára = 2.1 másodperc
-*   Másodperc (képkockasebességhez/időskálára) x 63 keretek =
+*   kezdési időpont/időskála = 2,1 másodperc
+*   másodpercek x (képkockasebesség/időskála) = 63 képkocka
 
-Az alábbiakban az kibontása a JSON-kódot egy egyszerű példája egy keretformátum arcfelismerési észlelés és követési száma:
+Az alábbiakban a JSON képkockánkénti formátumú kinyerésének egyszerű példáját láthatja arcfelismerés és -követés esetén:
 
 ```
 var emotionRecognitionTrackingResultJsonString = operationResult.ProcessingResult;
 var emotionRecognitionTracking = JsonConvert.DeserializeObject<EmotionRecognitionResult>(emotionRecognitionTrackingResultJsonString, settings);
 ```
-Érzelmek Ha valaha is átfedő felül az eredeti videó az eredményeket a képi megjelenítés Görbített adott idő alatt, a rendszer, mert a kivonás a megadott időbélyeg helyi időre való 250 ezredmásodperc.
+Az érzelmek idővel kisimulnak, ezért ha egyszer létrehoz egy vizualizációt azzal a céllal, hogy eredményei átfedjék az eredeti videót, vonjon le 250 ezredmásodpercet a megadott időbélyegekből.
 
 ### <a name="Summary">Összefoglalás</a>
-A jelen útmutató megtanulta, a Érzelemfelismerési API funkciókkal kapcsolatos videót: hogyan feltöltheti a videót, ellenőrizze annak állapotát, érzelemfelismerési felismerés metaadatainak lekéréséhez.
+Ebben az útmutatóban megismerte az Emotion API for Video funkcióit: a videófeltöltést, a videó állapotának ellenőrzését és az érzelemfelismerési metaadatok lekérését.
 
-API részletek kapcsolatos további információkért lásd: az API a referencia-útmutató "[Érzelemfelismerési API-t a videó hivatkozás](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/56f8d40e1984551ec0a0984e)".
+Az API részleteivel kapcsolatos további információért tekintse meg az „[Emotion API for Video-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/56f8d40e1984551ec0a0984e)” című API referencia-útmutatót.

@@ -1,56 +1,56 @@
 ---
-title: Entitás keresési gyors üzembe helyezés API C# |} Microsoft Docs
-description: A telepítő entitás Search SDK konzolalkalmazást.
-titleSuffix: Azure cognitive services entity search API C# quickstart
+title: 'Rövid útmutató: Bing Entity Search SDK, C#'
+titleSuffix: Azure Cognitive Services
+description: Az Entity Search SDK konzolalkalmazás beállítása a C# használatával.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
-ms.openlocfilehash: 185e1b4fc1b7ef2aa5964e2e95314727f8e1b0a5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: abf7e4344bea88fd86b86135ffab30672d77922e
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349447"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814102"
 ---
-# <a name="entity-search-sdk-c-quickstart"></a>Entitás keresési SDK C# gyors üzembe helyezés
+# <a name="quickstart-bing-entity-search-sdk-with-c"></a>Rövid útmutató: A Bing Entity Search SDK a C# használatával
 
-Az entitás Bing keresési API a REST API-t a entitás keresési és az eredmények értelmezése funkcióit tartalmazza.
+A Bing Entity Search API a REST API funkcióit biztosítja az entitások kereséséhez és az eredmények elemzéséhez.
 
-A [forráskód C# Bing entitás keresési SDK minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingEntitySearch) érhető el a Git központ.
+A [C# Bing Entity Search SDK-minták forráskódja](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingEntitySearch) elérhető a GitHubon.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
 
-Állítsa be a Konzolalkalmazás, a Bing entitás keresési SDK használatával, keresse meg a `Manage NuGet Packages` lehetőséget a Visual Studio megoldáskezelőjében.  Adja hozzá a `Microsoft.Azure.CognitiveServices.Search.EntitySearch` csomag.
+Ha a Bing Entity Search SDK-val szeretne beállítani egy konzolalkalmazást, keresse meg a `Manage NuGet Packages` lehetőséget a Visual Studióban, a Megoldáskezelőben.  Vegye fel a `Microsoft.Azure.CognitiveServices.Search.EntitySearch` csomagot.
 
-Telepíti a [entitás keresési NuGet csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.EntitySearch/1.2.0) függőségek, beleértve a következő szerelvények telepíti:
+A [NuGet Entity Search csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.EntitySearch/1.2.0) telepítése a függőségeket is telepíti, például az alábbi szerelvényeket:
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
 * Newtonsoft.Json
 
-## <a name="entity-search-client"></a>Entitás keresési ügyfél
-Egy példányának létrehozása a `EntitySearchAPI` ügyfelet, adja hozzá az irányelvek segítségével:
+## <a name="entity-search-client"></a>Entity Search-ügyfél
+A `EntitySearchAPI` ügyfél egy példányának létrehozásához adja hozzá a using parancsokat:
 ```
 using Microsoft.Azure.CognitiveServices.Search.EntitySearch;
 using Microsoft.Azure.CognitiveServices.Search.EntitySearch.Models;
 
 ```
-Az ügyfél ezután példányosítható:
+Ezután példányosítsa az ügyfelet:
 ```
 var client = new EntitySearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 
 
 ```
-Az ügyfél segítségével keresést a lekérdezés szövegének:
+Az ügyfél használatával keressen videókat lekérdezési szöveg alapján:
 ```
 var entityData = client.Entities.Search(query: "Satya Nadella");
 
 ```
-Elemezni az előző lekérdezés eredményét:
+Elemezze az előző lekérdezés eredményeit:
 ```
 if (entityData?.Entities?.Value?.Count > 0)
 {
@@ -74,8 +74,8 @@ else
 
 ```
 
-## <a name="complete-console-application"></a>Teljes Konzolalkalmazás
-A következő Konzolalkalmazás keresi a "Satya Nadella" lekérdezés egyetlen entitás, és megjeleníti a rövid leírása.
+## <a name="complete-console-application"></a>A teljes konzolalkalmazás
+A következő konzolalkalmazás egyetlen entitást keres a „Satya Nadella” keresőkifejezésre, és megjelenít egy rövid leírást.
 ```
 using System;
 using System.Linq;
@@ -141,7 +141,7 @@ namespace EntitySrchSDK
 ```
 
 ## <a name="ambiguous-results"></a>Nem egyértelmű eredmények
-A következő kód egy nem egyértelmű "William kapuk" lekérdezés eredményeinek Egyértelműsítő kezeli.
+Az alábbi kód egy nem egyértelmű lekérdezés („William Gates”) találatait egyértelműsíti.
 ```
        public static void HandlingDisambiguation(EntitySearchAPI client)
         {
@@ -198,7 +198,7 @@ A következő kód egy nem egyértelmű "William kapuk" lekérdezés eredményei
 ```
 
 ## <a name="entitydata-places"></a>EntityData helyek
-Az alábbi kód egy adott tárolóban "Microsoft Store" keresése, és megjeleníti a telefonszámot.
+Az alábbi kód megkeres egy adott üzletet („Microsoft Store”), és megjeleníti a telefonszámát.
 ```
         public static void StoreLookup(EntitySearchAPI client)
         {
@@ -234,8 +234,8 @@ Az alábbi kód egy adott tárolóban "Microsoft Store" keresése, és megjelen�
         }
 
 ```
-## <a name="entityscenario-list"></a>EntityScenario listája
-A következő kódot keresi a "Seattle éttermekben" listáját, és kiírja a nevük és telefonszámokat.
+## <a name="entityscenario-list"></a>EntityScenario lista
+Az alábbi kód kikeresi a seattle-i éttermek („Seattle restaurants”) listáját, és megjeleníti a nevüket és telefonszámukat.
 ```
        public static void MultipleRestaurantLookup(EntitySearchAPI client)
         {
@@ -285,8 +285,8 @@ A következő kódot keresi a "Seattle éttermekben" listáját, és kiírja a n
         }
 
 ```
-## <a name="error-results"></a>Hiba eredménye
-A következő kódot váltja ki a hibás kérelmet, és bemutatja, hogyan olvassa el a hibaüzenetet.
+## <a name="error-results"></a>Hibaeredmények
+Az alábbi kód kivált egy hibás kérést, és bemutatja, hogyan lehet értelmezni a hibaválaszokat.
 ```
         public static void Error(EntitySearchAPI client)
         {
@@ -316,4 +316,4 @@ A következő kódot váltja ki a hibás kérelmet, és bemutatja, hogyan olvass
 ```
 ## <a name="next-steps"></a>További lépések
 
-[Kognitív services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+[Cognitive services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

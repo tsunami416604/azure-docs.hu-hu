@@ -11,19 +11,19 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 0638aaa9165bcf760dabca330f6ee396807e4597
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: fc4b1dce1b01d9294cf422c910f39d68cbd49c87
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43087954"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018247"
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Adat-előállító létrehozása az Azure Data Factory felhasználói felületén
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
 > * [1-es verzió](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuális verzió](quickstart-create-data-factory-portal.md)
 
-Ez a rövid útmutató ismerteti, hogyan használható az Azure Data Factory felhasználói felülete egy adat-előállító létrehozásához és monitorozásához. Az adat-előállítóban létrehozott folyamat adatokat *másol* az Azure-blobtároló egyik mappájából egy másikba. Az adatok Azure Data Factoryval történő *átalakításának* útmutatásáért olvassa el az [az adatok Spark segítségével történő átalakítását ismertető oktatóanyagot](tutorial-transform-data-spark-portal.md). 
+Ez a rövid útmutató ismerteti, hogyan használható az Azure Data Factory felhasználói felülete egy adat-előállító létrehozásához és monitorozásához. Az adat-előállítóban létrehozott folyamat adatokat *másol* az Azure-blobtároló egyik mappájából egy másikba. Az adatok Azure Data Factoryval történő *átalakításának* útmutatásáért olvassa el az [az adatok Spark segítségével történő átalakítását ismertető oktatóanyagot](tutorial-transform-data-spark-portal.md).
 
 > [!NOTE]
 > Ha még csak ismerkedik az Azure Data Factory szolgáltatással, a gyors útmutató elvégzése előtt tekintse meg a következő cikket: [Bevezetés az Azure Data Factory használatába](data-factory-introduction.md). 
@@ -38,7 +38,7 @@ A következő videó megtekintése segíthet az Azure Data Factory felhasználó
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 1. Nyissa meg az [Azure Portal](https://portal.azure.com). 
-1. Kattintson az **Új** elemre a bal oldali menüben, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
+1. Kattintson az **Erőforrás létrehozása** elemre a bal oldali menüben, majd az **Analitika**, végül a **Data Factory** elemre. 
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 1. Az **Új data factory** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket. 
@@ -58,12 +58,10 @@ A következő videó megtekintése segíthet az Azure Data Factory felhasználó
 1. A **Verzió** résznél válassza a **V2** értéket.
 1. **Hely:** válassza ki az adat-előállító helyét.
 
-   Csak a Data Factory által támogatott helyek jelennek meg a listában. A Data Factory által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (Azure HDInsight stb.) más helyeken is lehetnek.
-1. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-1. Kattintson a **Létrehozás** gombra.
-1. Az irányítópulton megjelenő csempén a **Adat-előállító üzembe helyezése** állapotleírás látható: 
+   Csak a Data Factory által támogatott helyek, valamint az Azure Data Factory-metaadatok tárolási helye jelennek meg a listában. Megjegyzendő, hogy a Data Factory által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (Azure HDInsight stb.) más régiókban is futhatnak.
 
-   ![„Adat-előállító üzembe helyezése” csempe](media//quickstart-create-data-factory-portal/deploying-data-factory.png)
+1. Kattintson a **Létrehozás** gombra.
+
 1. A létrehozás befejezése után megjelenik a **Data Factory** lap. Az Azure Data Factory felhasználói felületi (UI) alkalmazás külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére.
    
    ![Az adat-előállító kezdőlapja a „Létrehozás és monitorozás” csempével](./media/quickstart-create-data-factory-portal/data-factory-home-page.png)
@@ -88,7 +86,7 @@ A feladat részeként létrehoz egy társított szolgáltatást, hogy az adat-el
 
    c. Kattintson a **Kapcsolat tesztelése** elemre annak ellenőrzéséhez, hogy a Data Factory szolgáltatás kapcsolódik-e a tárfiókhoz. 
 
-   d. A társított szolgáltatás mentéséhez kattintson a **Mentés** gombra. 
+   d. A társított szolgáltatás mentéséhez kattintson a **Befejezés** gombra. 
 
    ![Az Azure Storage társított szolgáltatásának beállításai](./media/quickstart-create-data-factory-portal/azure-storage-linked-service.png) 
 
@@ -128,7 +126,7 @@ A társított szolgáltatás beállításainál megadta a forrásadatokat tartal
 
    c. Az **Általános** táblán adja meg az **OutputDataset** nevet.
 
-   d. A **Kapcsolat** lapon válassza az **AzureStorageLinkedService** társított szolgáltatást, és a mappához adja meg az **adftutorial/output** mappát. Ha a **kimeneti** mappa nem létezik, a másolási tevékenység létrehozza futásidőben.
+   d. A **Kapcsolat** lapon válassza az **AzureStorageLinkedService** társított szolgáltatást, és mappaként adja meg az **adftutorial/output** mappát a Könyvtár mezőben. Ha a **kimeneti** mappa nem létezik, a másolási tevékenység létrehozza futásidőben.
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása 
 A feladat részeként létrehozza és megerősíti azt a másolási tevékenységgel rendelkező folyamatot, amely a bemeneti és a kimeneti adatkészletet használja. A másolási tevékenység adatokat másol a bemeneti adatkészlet beállításaiban megadott fájlból a kimeneti adatkészlet beállításaiban megadott fájlba. Ha a bemeneti adatkészlet csak egy mappát ad meg (de fájlnevet nem), a másolási tevékenység a forrásmappában található összes fájlt átmásolja a célhelyre. 
@@ -138,7 +136,7 @@ A feladat részeként létrehozza és megerősíti azt a másolási tevékenysé
    ![Új folyamat létrehozására szolgáló menü](./media/quickstart-create-data-factory-portal/new-pipeline-menu.png)
 1. Az **Általános** lapon a **CopyPipeline** **Nevet** adja meg. 
 
-1. A **Tevékenységek** eszközkészletben bontsa ki az **Adatfolyam** elemet. Húzza a **Másolás** tevékenységet a **Tevékenységek** eszközkészletből a folyamat tervezőfelületére. A **Tevékenységek** eszközkészletben kereshet is az egyes tevékenységek között. Adja meg a **CopyFromBlobToBlob** értéket a **Név** mezőben.
+1. A **Tevékenységek** eszközkészletben bontsa ki az **Áthelyezés és átalakítás** elemet. Húzza a **Másolás** tevékenységet a **Tevékenységek** eszközkészletből a folyamat tervezőfelületére. A **Tevékenységek** eszközkészletben kereshet is az egyes tevékenységek között. Adja meg a **CopyFromBlobToBlob** értéket a **Név** mezőben.
 
    ![Másolási tevékenység általános beállításai](./media/quickstart-create-data-factory-portal/copy-activity-general-settings.png)
 1. Váltson a **Forrás** lapra a másolási tevékenység beállításainál, és válassza az **InputDataset** lehetőséget a **Forrásadatkészlet** mezőben.
@@ -205,7 +203,7 @@ Az oktatóanyagnak ez a feladata nem kötelező. A folyamat rendszeres időköz�
    Figyelje meg az **Aktiválva a következő alapján** oszlop értékeit. A manuális eseményindító-futtatás egy korábban elvégzett lépésből (**Aktiválás most**) származik. 
 
    ![Aktivált futtatások listája](./media/quickstart-create-data-factory-portal/monitor-triggered-runs.png)
-1. Kattintson a **Folyamatfuttatások** melletti lefelé mutató nyílra az **Eseményindító-futtatások** nézetre való átváltáshoz. 
+1. Váltson az **Eseményindító-futtatások** nézetre. 
 
    ![Átváltás „Eseményindító-futtatások” nézetre](./media/quickstart-create-data-factory-portal/monitor-trigger-runs.png)    
 1. Győződjön meg arról, hogy a megadott befejezési dátumig és időpontig futtatott minden folyamatfuttatáshoz létrejött egy kimeneti fájl az **output** mappában. 

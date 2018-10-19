@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 09/24/2018
-ms.openlocfilehash: 6e0294f99d1c2291e84bf2ac5d5b1f771222b551
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 660e5515b765e133d5bc9309be5439209b957353
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433412"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238513"
 ---
 # <a name="what-is-azure-machine-learning-service-preview"></a>Mi az Azure Machine Learning szolgáltatás (előzetes verzió)?
 
@@ -48,7 +48,7 @@ A már üzembe helyezett modelleket kezelheti és futásukat nyomon követheti, 
 Az Azure Machine Learning szolgáltatás képes automatikusan létrehozni és finomhangolni a modellt.
 Egy vonatkozó példáért lásd: [Oktatóanyag: Osztályozási modell automatikus betanítása az Azure Automated Machine Learning szolgáltatással](tutorial-auto-train-models.md).
 
-Ezen kívül a Pythonnal használható Azure Machine Learning <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> és a nyílt forráskódú Python-csomagok lehetővé teszik, hogy rendkívüli pontosságú gépi tanulási és mélytanulási modelleket hozzon létre saját Azure Machine Learning-munkaterületén.
+Emellett a Pythonhoz készült Azure Machine Learning <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> és nyílt forráskódú Python-csomagok használatával saját maga is létrehozhat és betaníthat rendkívül pontos gépi tanulási és mélytanulási modelleket az Azure Machine Learning szolgáltatás egy munkaterületén.
 Számos nyílt forráskódú Python-csomagban elérhető gépi tanulási-összetevő közül választhat, például:
 
 - <a href="http://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>
@@ -80,7 +80,7 @@ Ha nincs még előfizetése, [ingyen létrehozhat egy Azure-fiókot](https://azu
 
 ## <a name="next-steps"></a>További lépések
 
-- Hozzon létre egy gépi tanulási munkaterületet [Az első lépések – Portal](quickstart-get-started.md) című cikk útmutatásai alapján
+- Munkaterület létrehozása a Machine Learning szolgáltatásban az [Első lépések az Azure Portal használatával](quickstart-get-started.md) című cikk segítségével
  
 - A [Képosztályozó modell betanítása az Azure Machine Learning szolgáltatás használatával](tutorial-train-models-with-aml.md) című részletes oktatóanyagból megtudhatja, hogyan taníthatja be és helyezheti üzembe gépi tanulási modelljeit az Azure Machine Learning szolgáltatás segítségével
 

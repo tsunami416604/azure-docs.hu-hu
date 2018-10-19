@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/06/2018
+ms.date: 010/01/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: da9e1ce17e21f4d87286c0be5d425419f6ed0300
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 1af4cdb361c1db378991201fc42f17dcbf67fe67
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408510"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238765"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürt skálázása az Azure-ban
 
@@ -121,7 +121,7 @@ A leskálázás ugyanúgy működik, mint a felskálázás, azzal a különbség
 > [!NOTE]
 > Ez a rész kizárólag a *Bronz* tartóssági szintre vonatkozik. A tartóssággal kapcsolatos további információ: [Service Fabric-fürtök kapacitástervezése][durability].
 
-A virtuálisgép-méretezési csoportok horizontális leskálázásakor a méretezési csoport (a legtöbb esetben) a legutoljára létrehozott virtuálisgép-példányt távolítja el. Így tehát meg kell keresnie az utoljára létrehozott, egyező Service Fabric-csomópontot. Az utolsó csomópont azonosításához a legnagyobb értékű `NodeInstanceId` tulajdonságot kell keresnie egyes Service Fabric-csomópontokon. Az alábbi példakód ezen tulajdonság alapján rendezi a csomópontpéldányokat, és visszaadja a legnagyobb azonosítóértékkel rendelkező példány adatait.
+Annak érdekében, hogy a fürt csomópontjainak megoszlása egyenletes legyen a frissítési és tartalék tartományokban, illetve ezáltal egyenletesen legyen a kihasználtságuk, elsőként a legutóbb létrehozott csomópontot kell eltávolítani. Más szóval a csomópontokat létrehozásuk fordított sorrendjében kell eltávolítani. A legutóbb létrehozott csomópont rendelkezik a legnagyobb `virtual machine scale set InstanceId` tulajdonságértékkel. Az alábbi kódpéldák a legutóbb létrehozott csomópontot adják vissza.
 
 ```powershell
 Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1

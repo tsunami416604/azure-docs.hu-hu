@@ -9,18 +9,18 @@ author: nacharya1
 ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 1db13ee31ea826833d2b13f20b3b0a2be8ef4444
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: df1c19c0e16b9862b09dcc652ef2831e0c5bf3a5
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220868"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802355"
 ---
-# <a name="tutorial-train-a-classification-model-with-automated-machine-learning-in-azure-machine-learning"></a>Oktatóanyag: Besorolási modell betanítása automatizált gépi tanulással az Azure Machine Learning szolgáltatásban
+# <a name="tutorial-train-a-classification-model-with-automated-machine-learning-in-azure-machine-learning-service"></a>Oktatóanyag: Besorolási modell betanítása automatizált gépi tanulással az Azure Machine Learning szolgáltatásban
 
-Az oktatóanyag azt ismerteti, hogyan hozhat létre gépi tanulási modellt automatizált gépi tanulással.  Az Azure Machine Learning képes automatikusan elvégezni az adatokat feldolgozását, valamint az algoritmusok és hiperparaméterek kiválasztását. Ezt követően a kész modell a [modell üzembe helyezését bemutató](tutorial-deploy-models-with-aml.md) oktatóanyagban található munkafolyamat szerint helyezhető üzembe.
+Az oktatóanyag azt ismerteti, hogyan hozhat létre gépi tanulási modellt automatizált gépi tanulással.  Az Azure Machine Learning szolgáltatás képes automatikusan elvégezni az adatok feldolgozását, valamint az algoritmusok és hiperparaméterek kiválasztását. Ezt követően a kész modell a [modell üzembe helyezését bemutató](tutorial-deploy-models-with-aml.md) oktatóanyagban található munkafolyamat szerint helyezhető üzembe.
 
-[ ![folyamatábra](./media/tutorial-auto-train-models/flow2.png) ](./media/tutorial-auto-train-models/flow2.png#lightbox)
+![folyamatábra](./media/tutorial-auto-train-models/flow2.png)
 
 A [modellbetanítási oktatóanyaghoz](tutorial-train-models-with-aml.md) hasonlóan ez az oktatóanyag is a [MNIST](http://yann.lecun.com/exdb/mnist/)-adathalmaz kézírásos számjegyeket (0-9) tartalmazó képeit sorolja be. De ezúttal nem kell algoritmust megadnia vagy hiperparamétereket hangolnia. Az automatizált gépi tanulási módszer algoritmusok és hiperparaméterek számos kombinációját veszi számba, amíg meg nem találja az Ön feltételeinek legjobban megfelelő modellt.
 
@@ -38,7 +38,8 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="get-the-notebook"></a>A notebook beszerzése
 
-Az Ön kényelme érdekében ez az oktatóanyag Jupyter-notebookként is elérhető. Az alábbi módszerek bármelyikével futtathatja a `tutorials/03.auto-train-models.ipynb` notebookot:
+Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/03.auto-train-models.ipynb) is elérhető. Futtassa a `03.auto-train-models.ipynb` notebookot az Azure Notebooksban vagy a saját Jupyter-notebook-kiszolgálóján.
+
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -104,13 +105,9 @@ from sklearn import datasets
 
 digits = datasets.load_digits()
 
-# only take the first 100 rows if you want the training steps to run faster
-X_digits = digits.data[:100,:]
-y_digits = digits.target[:100]
-
-# use full dataset
-#X_digits = digits.data
-#y_digits = digits.target
+# Exclude the first 100 rows from training so that they can be used for test.
+X_train = digits.data[100:,:]
+y_train = digits.target[100:]
 ```
 
 ### <a name="display-some-sample-images"></a>Mintaképek megjelenítése
@@ -121,13 +118,13 @@ Töltse be az adatokat `numpy` tömbökbe. Ezután a `matplotlib` használatáva
 count = 0
 sample_size = 30
 plt.figure(figsize = (16, 6))
-for i in np.random.permutation(X_digits.shape[0])[:sample_size]:
+for i in np.random.permutation(X_train.shape[0])[:sample_size]:
     count = count + 1
     plt.subplot(1, sample_size, count)
     plt.axhline('')
     plt.axvline('')
-    plt.text(x = 2, y = -2, s = y_digits[i], fontsize = 18)
-    plt.imshow(X_digits[i].reshape(8, 8), cmap = plt.cm.Greys)
+    plt.text(x = 2, y = -2, s = y_train[i], fontsize = 18)
+    plt.imshow(X_train[i].reshape(8, 8), cmap = plt.cm.Greys)
 plt.show()
 ```
 A véletlenszerű képminta a következőket jeleníti meg:
@@ -153,7 +150,7 @@ Adja meg a kísérlet beállításait és a modell beállításait.
 |**iterations**|20|Iterációk száma. Az egyes iterációkban a modell az adott folyamatban található adatokkal végzi a betanítást|
 |**n_cross_validations**|3|A keresztellenőrzés felosztásainak száma|
 |**preprocess**|False (Hamis)| *True/False* (Igaz/hamis) Lehetővé teszi, hogy a kísérlet előfeldolgozást hajtson végre a bemeneten.  Az előfeldolgozás kezeli a *hiányzó adatokat*, és elvégzi néhány gyakori *tulajdonság kinyerését*.|
-|**exit_score**|0,995|A *double* érték jelzi a *primary_metric* célját. A cél túllépése után a futás leáll|
+|**exit_score**|0,9985|A *double* érték jelzi a *primary_metric* célját. A cél túllépése után a futás leáll|
 |**blacklist_algos**|[kNN, LinearSVM]|*Sztringek* *tömbje*, amely a mellőzendő algoritmusokat jelzi.
 |
 
@@ -167,10 +164,10 @@ Automl_config = AutoMLConfig(task = 'classification',
                              iterations = 20,
                              n_cross_validations = 3,
                              preprocess = False,
-                             exit_score = 0.995,
+                             exit_score = 0.9985,
                              blacklist_algos = ['kNN','LinearSVM'],
-                             X = X_digits,
-                             y = y_digits,
+                             X = X_train,
+                             y = y_train,
                              path=project_folder)
 ```
 
@@ -497,8 +494,10 @@ Mivel a modell pontossága magas, előfordulhat, hogy a tévesen besorolt minta 
 ```python
 # find 30 random samples from test set
 n = 30
-sample_indices = np.random.permutation(X_digits.shape[0])[0:n]
-test_samples = X_digits[sample_indices]
+X_test = digits.data[:100, :]
+y_test = digits.target[:100]
+sample_indices = np.random.permutation(X_test.shape[0])[0:n]
+test_samples = X_test[sample_indices]
 
 
 # predict using the  model
@@ -514,11 +513,11 @@ for s in sample_indices:
     plt.axvline('')
     
     # use different color for misclassified sample
-    font_color = 'red' if y_digits[s] != result[i] else 'black'
-    clr_map = plt.cm.gray if y_digits[s] != result[i] else plt.cm.Greys
+    font_color = 'red' if y_test[s] != result[i] else 'black'
+    clr_map = plt.cm.gray if y_test[s] != result[i] else plt.cm.Greys
     
     plt.text(x = 2, y = -2, s = result[i], fontsize = 18, color = font_color)
-    plt.imshow(X_digits[s].reshape(8, 8), cmap = clr_map)
+    plt.imshow(X_test[s].reshape(8, 8), cmap = clr_map)
     
     i = i + 1
 plt.show()
@@ -534,7 +533,7 @@ plt.show()
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az Azure Machine Learning-oktatóanyagban a következőkhöz használta a Pythont:
+Ebben az Azure Machine Learning szolgáltatáshoz kapcsolódó oktatóanyagban a következőkhöz használta a Pythont:
 
 > [!div class="checklist"]
 > * A fejlesztési környezet beállítása

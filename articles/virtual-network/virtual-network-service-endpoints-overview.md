@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: dcc0456637c17e779593b121025596149398afba
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 3bae20a7d6eea298dd09d24c0c5b53365784b3d0
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410221"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239183"
 ---
 # <a name="virtual-network-service-endpoints"></a>Virtuális hálózati szolgáltatásvégpontok
 
@@ -49,7 +49,7 @@ A legfrissebb értesítésekért tekintse meg az [Azure-beli virtuális hálóza
 
 A szolgáltatásvégpontok az alábbi előnyöket nyújtják:
 
-- **Nagyobb biztonság az Azure-szolgáltatások erőforrásai számára**: A szolgáltatásvégpontokkal az Azure-szolgáltatások erőforrásai leköthetőek a virtuális hálózathoz. A szolgáltatás-erőforrások virtuális hálózathoz való lekötése nagyobb biztonságot eredményez, mivel így az erőforrások egyáltalán nem lesznek elérhetők a nyilvános internetről, és csak a virtuális hálózatból érkező forgalom lesz engedélyezett.
+- **Nagyobb biztonság az Azure-szolgáltatások erőforrásai számára**: Virtuális hálózatának privát címterei átfedésben lehetnek, ezért nem használhatók a virtuális hálózatról érkező forgalom egyedi azonosítására. A szolgáltatásvégpontok lehetővé teszik, hogy az Azure-szolgáltatások erőforrásait a virtuális hálózathoz kösse a virtuális hálózat identitásának a szolgáltatásba történő kiterjesztésével. Ha a szolgáltatásvégpontok engedélyezve vannak a virtuális hálózaton, akkor Azure-szolgáltatásbeli erőforrásokat biztosíthat a virtuális hálózatnak úgy, hogy az erőforrásokhoz megad egy virtuális hálózati szabályt. Ez nagyobb biztonságot eredményez, mivel így az erőforrások egyáltalán nem lesznek elérhetők a nyilvános internetről, és csak a virtuális hálózatból érkező forgalom lesz engedélyezett.
 - **Optimális útválasztás az Azure-szolgáltatás forgalma számára a virtuális hálózatból**: Jelenleg a virtuális hálózat minden olyan útvonala, amely az internetforgalmat a helyszínen és/vagy virtuális készülékeken keresztüli áthaladásra kényszeríti, azaz kényszerített bújtatást végez, az Azure szolgáltatás forgalmát is ugyanazon az útvonalon kényszeríti át, mint az internetforgalmat. A szolgáltatásvégpontok optimális útválasztást biztosítanak az Azure-forgalom számára. 
 
   A végpontok a szolgáltatás forgalmát a virtuális hálózatról közvetlenül az Azure-szolgáltatásra vezetik a Microsoft Azure gerinchálózatán át. Ha az Azure gerinchálózatán tartja az adatforgalmat, továbbra is naplózhatja és monitorozhatja a virtuális hálózatok kimenő internetforgalmát a kényszerített bújtatáson keresztül anélkül, hogy ez kihatna a szolgáltatás forgalmára. További információk [a felhasználók által meghatározott útvonalakkal és a kényszerített bújtatással](virtual-networks-udr-overview.md) kapcsolatban.

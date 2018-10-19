@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 03/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 7fb94fa9a70faa238c54e7f5e7992ef8404d8de3
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 6b0a4b7a8b2a30b9572ecfc488e2af7554b46346
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43087547"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017738"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Databricks-jegyzetfüzet futtatása a Databricks-jegyzetfüzet tevékenységeivel az Azure Data Factoryban
 
@@ -48,15 +48,15 @@ Az alábbi videóban a funkció bemutatását és ismertetését tekintheti meg 
 
 1.  Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 
-1.  Kattintson az **Új** elemre a bal oldali menüben, majd az **Adatok + analitika**, végül a **Data Factory** elemre.
+1.  Kattintson az **Erőforrás létrehozása** elemre a bal oldali menüben, majd az **Analitika**, végül a **Data Factory** elemre.
 
-    ![Új adat-előállító létrehozása](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image1.png)
+    ![Új adat-előállító létrehozása](media/transform-data-using-databricks-notebook/new-azure-data-factory-menu.png)
 
 1.  Az **Új adat-előállító** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket.
 
     Az Azure data factory nevének *globálisan egyedinek* kell lennie. Ha a következő hibát látja, módosítsa az adat-előállító nevét. (Például: **\<sajátneve\>ADFTutorialDataFactory**). A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](https://docs.microsoft.com/azure/data-factory/naming-rules) ismertető cikkben találja.
 
-    ![Az új adat-előállító elnevezése](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image2.png)
+    ![Az új adat-előállító elnevezése](media/transform-data-using-databricks-notebook/new-azure-data-factory.png)
 
 1.  **Előfizetés:** válassza ki azt az Azure-előfizetést, amelyben az adat-előállítót létre szeretné hozni.
 
@@ -73,14 +73,8 @@ Az alábbi videóban a funkció bemutatását és ismertetését tekintheti meg 
 1.  **Hely:** válassza ki az adat-előállító helyét.
 
     Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. A Data Factory által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
-
-1.  Válassza a **Rögzítés az irányítópulton** lehetőséget.
-
 1.  Kattintson a **Létrehozás** gombra.
 
-1.  Az irányítópulton megjelenő csempén a **Adat-előállító üzembe helyezése** állapotleírás látható:
-
-    ![](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image3.png)
 
 1.  A létrehozás befejezése után megjelenik az **Adat-előállító** lap. A Data Factory felhasználói felületi (UI) alkalmazás külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére.
 
@@ -94,13 +88,13 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
 
 1.  Az **Első lépések** lapon váltson a **Szerkesztés** lapra a bal oldali ablaktáblán.
 
-    ![Az új társított szolgáltatás szerkesztése](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image5.png)
+    ![Az új társított szolgáltatás szerkesztése](media/transform-data-using-databricks-notebook/get-started-page.png)
 
 1.  Kattintson az ablak alján látható **Kapcsolatok**, majd az **+ Új** elemre.
     
     ![Új kapcsolat létrehozása](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image6.png)
 
-1.  Az **Új társított szolgáltatás** ablakban válassza az **Adattár** \> **Azure Databricks** lehetőséget, majd kattintson a **Folytatás** elemre.
+1.  Az **Új társított szolgáltatás** ablakban válassza a **Compute** \> **Azure Databricks** lehetőséget, majd kattintson a **Folytatás** elemre.
     
     ![Databricks társított szolgáltatás megadása](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image7.png)
 
@@ -108,21 +102,23 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
     
     1.  A **Név** mezőben adja meg a következőt: ***AzureDatabricks\_LinkedService***
     
-    1.  A **Fürt** mezőben válassza az **Új fürt** lehetőséget.
+    1.  Válassza ki a megfelelő **Databricks-munkaterületet**, amelyen a jegyzetfüzetet futtatni fogja
+
+    1.  A **Fürt kiválasztása** mezőben válassza az **Új feladatfürt** lehetőséget
     
-    1.  A **Tartomány/Régió** mezőben válassza ki azt a régiót, ahol az Azure Databricks-munkaterület található.
-    
-    1.  A **Fürtcsomópont típusa** mezőben válassza a **Standard\_D3\_v2** lehetőséget ehhez az oktatóanyaghoz.
-    
+    1.  A **Tartomány/régió** mezőben az adatoknak automatikusan ki kell töltődnie
+
     1.  A **Hozzáférési jogkivonatot** hozza létre az Azure Databricks-munkaterületről. A lépéseket [itt](https://docs.databricks.com/api/latest/authentication.html#generate-token) találhatja meg.
+
+    1.  A **Fürt verziója** mezőben válassza a **4.0** lehetőséget (az Apache Spark 2.3.0-val és a Scala 2.11-gyel)
+
+    1.  A **Fürtcsomópont típusa** mezőben válassza a **Standard\_D3\_v2** lehetőséget az **Általános célú (HDD)** területen ehhez az oktatóanyaghoz. 
     
-    1.  A **Fürt verziója** mezőben válassza a **4.0 Beta** (a legújabb verzió) lehetőséget.
-    
-    1.  A **Munkavégző csomópontok száma** mezőben adja meg a **2** értéket.
+    1.  A **Feldolgozók** mezőben adja meg a **2** mennyiséget.
     
     1.  Válassza a **Befejezés** lehetőséget.
 
-        ![A társított szolgáltatás létrehozásának befejezése](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image8.png)
+        ![A társított szolgáltatás létrehozásának befejezése](media/transform-data-using-databricks-notebook/new-databricks-linkedservice.png)
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
 
@@ -138,15 +134,17 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
 
 1.  A **Tevékenységek** eszközkészletben bontsa ki a **Databricks** elemet. Húzza a **Jegyzetfüzet** tevékenységet a **Tevékenységek** eszközkészletből a folyamat tervezőfelületére.
 
-    ![A jegyzetfüzet áthúzása a tervezőfelületre](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image12.png)
+    ![A jegyzetfüzet áthúzása a tervezőfelületre](media/transform-data-using-databricks-notebook/new-adf-pipeline.png)
 
 1.  A **Databricks**-**jegyzetfüzet** tevékenységeinek tulajdonságok ablakában végezze el az alábbi lépéseket:
 
-    a. Váltson a **Settings** (Beállítások) lapra.
+    a. Váltson az **Azure Databricks** lapra.
 
-    b. Válassza ki az előző lépésben létrehozott **myAzureDatabricks\_LinkedService** elemet.
+    b. Válassza ki az előző lépésben létrehozott **AzureDatabricks\_LinkedService** elemet.
 
-    c. Válasszon egy Databricks-**jegyzetfüzet útvonalat**. Hozzunk létre egy jegyzetfüzetet, és adjuk meg itt az útvonalat. A következő néhány lépést követve megkaphatja a jegyzetfüzet útvonalat.
+    c. Váltson a **Beállítások** lapra
+
+    c. Tallózással válasszon ki egy Databricks-**jegyzetfüzet útvonalat**. Hozzunk létre egy jegyzetfüzetet, és adjuk meg itt az útvonalat. A következő néhány lépést követve megkaphatja a jegyzetfüzet útvonalat.
 
        1. Az Azure Databricks-munkaterület indítása
 
@@ -180,7 +178,7 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
     
     a.  **Adjon paramétert** a jegyzetfüzet tevékenységeihez. Ugyanazt a paramétert használja, mint amit korábban hozzáadott a **folyamathoz**.
 
-       ![Paraméter hozzáadása](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image17.png)
+       ![Paraméter hozzáadása](media/transform-data-using-databricks-notebook/new-adf-parameters.png)
 
     b.  A paraméter neve legyen **input**, értékként pedig a **@pipeline().parameters.name** kifejezést adja meg.
 
@@ -224,7 +222,7 @@ Jelentkezzen be az **Azure Databricks-munkaterületre**, lépjen a **Fürtökhö
 
 A **Feladat nevére** kattintva megtekintheti a további részleteket. Ha a futás sikeres, érvényesítheti az átadott paramétereket és a Python-jegyzetfüzet kimenetét.
 
-![A futtatás részleteinek és kimenetének megtekintése](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image25.png)
+![A futtatás részleteinek és kimenetének megtekintése](media/transform-data-using-databricks-notebook/databricks-output.png)
 
 ## <a name="next-steps"></a>További lépések
 

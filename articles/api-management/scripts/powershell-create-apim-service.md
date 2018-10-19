@@ -13,12 +13,12 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 6e7e95d3b5f747e320e0fea0cea44194f9da1dd6
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5c22c3069740692ddf25bae7a3d65740cc81220d
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38473832"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267297"
 ---
 # <a name="create-an-api-management-service"></a>API Management szolgáltatás létrehozása
 
@@ -44,4 +44,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](https://docs.microsoft.com/powershell/azure/overview).
 
-Az Azure API Managementhez az [Azure PowerShell-minták](../powershell-samples.md) között találhat további Azure PowerShell-mintákat.
+Az Azure API Managementhez a [PowerShell-minták](../powershell-samples.md) között találhat további Azure PowerShell-mintákat.

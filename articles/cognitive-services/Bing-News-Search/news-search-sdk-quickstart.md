@@ -1,56 +1,56 @@
 ---
-title: Hírek keresési gyors üzembe helyezési SDK C# |} Microsoft Docs
-description: A telepítő hírek Search SDK konzolalkalmazást.
-titleSuffix: Azure cognitive services News search SDK C# quickstart
+title: 'Rövid útmutató: Bing News Search SDK, C#'
+titleSuffix: Azure Cognitive Services
+description: A Bing News Search SDK konzolalkalmazás beállítása.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
-ms.openlocfilehash: e803fd579c6b71b8b1754546446715795a12087a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 416557b11ebef953411fb6fabcddb72d08dcb5af
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349467"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802984"
 ---
-# <a name="news-search-sdk-c-quickstart"></a>Hírek keresési SDK C# gyors üzembe helyezés
+# <a name="quickstart-bing-news-search-sdk-with-c"></a>Rövid útmutató: A Bing News Search SDK a C# használatával
 
-A Bing hírek keresési SDK tartalmazza a REST API hírek lekérdezések és elemzési eredmények funkcióit. 
+A Bing News Search SDK a REST API funkcióit biztosítja a hírek lekérdezéséhez és az eredmények elemzéséhez. 
 
-A [forráskód C# Bing hírek keresési SDK minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingNewsSearch) érhető el a Git központ.
+A [C# Bing News Search SDK-minták forráskódja](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingNewsSearch) elérhető a GitHubon.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
 
-Állítsa be a Konzolalkalmazás, a Bing hírek keresési SDK használatával, keresse meg a `Manage NuGet Packages` lehetőséget a Visual Studio megoldáskezelőjében.  Adja hozzá a `Microsoft.Azure.CognitiveServices.Search.NewsSearch` csomag.
+Ha a Bing News Search SDK-val szeretne beállítani egy konzolalkalmazást, keresse meg a `Manage NuGet Packages` lehetőséget a Visual Studióban, a Megoldáskezelőben.  Vegye fel a `Microsoft.Azure.CognitiveServices.Search.NewsSearch` csomagot.
 
-Telepíti a [NuGet hírek keresési SDK csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.NewsSearch/1.2.0) is telepíti a függőségek, beleértve:
+A [NuGet News Search SDK-csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.NewsSearch/1.2.0) telepítésekor függőségeket is telepít, például:
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
 * Newtonsoft.Json
 
-## <a name="news-search-client"></a>Hírek keresési ügyfél
-Egy példányának létrehozása a `NewsSearchAPI` ügyfelet, adja hozzá a direktíva használatával:
+## <a name="news-search-client"></a>News Search-ügyfél
+A `NewsSearchAPI` ügyfél egy példányának létrehozásához adja hozzá a using parancsot:
 ```
 using Microsoft.Azure.CognitiveServices.Search.NewsSearch;
 
 ```
-Az ügyfél ezután példányosítható:
+Ezután példányosítsa az ügyfelet:
 ```
 var client = new NewsSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 
 
 ```
-Az ügyfél segítségével keresést a lekérdezés szövegének:
+Az ügyfél használatával keressen videókat lekérdezési szöveg alapján:
 ```
 var newsResults = client.News.SearchAsync(query: "Quantum  Computing", market: "en-us", count: 10).Result;
 Console.WriteLine("Search news for query \"Quantum  Computing\" with market and count");
 
 ```
-Az adott vissza az előző lekérdezés eredményében hírek elemezni:
+Elemezze az előző lekérdezés eredményeiben visszaadott híreket:
 ```
 if (newsResults.Value.Count > 0)
 {
@@ -71,9 +71,9 @@ else
 }
 
 ```
-## <a name="complete-console-application"></a>Teljes Konzolalkalmazás
+## <a name="complete-console-application"></a>A teljes konzolalkalmazás
 
-A következő Konzolalkalmazás végrehajtja a korábban meghatározott lekérdezést, és "Quantum számítástechnikai" hírek keresése. A kérelemben `market` és `count` paraméterek. A kód ellenőrizheti eredmények számát, majd kinyomtatja `totalEstimatedMatches`, `name`, `url`, `description`, `published time` és `name` a `provider` első hírek eredményhez.
+A következő konzolalkalmazás végrehajtja az előzőleg meghatározott lekérdezést, és híreket keres a „Quantum Computing” kifejezésre. A kérés a `market` és a `count` paramétert tartalmazza. A kód ellenőrzi a találatok számát, és megjeleníti az első hírtalálat következő értékeit: `totalEstimatedMatches`, `name`, `url`, `description`, `published time` és a `provider` `name` értéke.
 
 ```
 using System;
@@ -136,8 +136,8 @@ namespace NewsSrchSDK
 }
 
 ```
-## <a name="recent-news-freshness-and-sortby-parameters"></a>Legfrissebb híreket, a frissesség és a sortBy paraméterek
-Az alábbi kód "Mesterséges Eszközintelligencia" legfrissebb hírek megkeresi a `freshness` és `sortBy` paraméterek. Ellenőrzi a eredmények számát, és a kinyomtatja `totalEstimatedMatches`, `name`, `url`, `description`, `published time`, és `name` az első hírek eredmény-szolgáltató.
+## <a name="recent-news-freshness-and-sortby-parameters"></a>Friss hírek, freshness és sortBy paraméterek
+A következő kód megkeresi a legfrissebb híreket az „Artificial Intelligence” kifejezésre a `freshness` és a `sortBy` paraméterekkel. A kód ellenőrzi a találatok számát, és megjeleníti az első hírtalálat következő értékeit: `totalEstimatedMatches`, `name`, `url`, `description`, `published time` és a szolgáltató `name` értéke.
 ```
         public static void NewsSearchWithFilters(NewsSearchAPI client)
         {
@@ -179,8 +179,8 @@ Az alábbi kód "Mesterséges Eszközintelligencia" legfrissebb hírek megkeresi
 
 ```
 
-## <a name="category-news-safe-search"></a>Kategória híreket, biztonságos keresése
-A következő kódot az biztonságos search kategória hírek movie és TV Szórakozás keres.  Ellenőrzi a eredmények számát, és a kinyomtatja `category`, `name`, `url`, `description`, `published time`, és `name` az első hírek eredmény-szolgáltató.
+## <a name="category-news-safe-search"></a>Kategóriák szerinti hírek, biztonságos keresés
+A következő kód kategóriák szerint keres mozis vagy televíziós szórakozással kapcsolatos híreket biztonságos keresés használatával.  A kód ellenőrzi a találatok számát, és megjeleníti az első hírtalálat következő értékeit: `category`, `name`, `url`, `description`, `published time` és a szolgáltató `name` értéke.
 ```
         public static void NewsCategory(NewsSearchAPI client)
         {
@@ -221,8 +221,8 @@ A következő kódot az biztonságos search kategória hírek movie és TV Szór
         }
 
 ```
-## <a name="trending-topics"></a>Trendekkel kapcsolatos témakörök
-A következő kódot a Bing hírek trendekkel kapcsolatos témakörök keres. Ellenőrzi a eredmények számát, és a kinyomtatja `name`, `text of query`, `webSearchUrl`, `newsSearchUrl`, és `image.Url` az első hírek eredmény.
+## <a name="trending-topics"></a>Népszerű témakörök
+A következő kód népszerű témakörök szerint keres híreket a Bingen. A kód ellenőrzi a találatok számát, és megjeleníti az első hírtalálat `name`, `text of query`, `webSearchUrl`, `newsSearchUrl` és `image.Url` értékét.
 ```
         public static void TrendingTopics(NewsSearchAPI client)
         {
@@ -265,4 +265,4 @@ A következő kódot a Bing hírek trendekkel kapcsolatos témakörök keres. El
 
 ## <a name="next-steps"></a>További lépések
 
-[Kognitív services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+[Cognitive services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

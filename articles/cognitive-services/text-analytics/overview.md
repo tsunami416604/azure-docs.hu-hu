@@ -1,96 +1,93 @@
 ---
-title: Text Analytics áttekintése – Azure Cognitive Services |} A Microsoft Docs
-description: A vélemények elemzése, kulcsszókeresés, nyelvfelismerés és entitáskapcsolás az Azure Cognitive Services Text Analytics.
+title: Mi a Text Analytics?
+titleSuffix: Azure Cognitive Services
+description: Az Azure Cognitive Services-beli Text Analytics a szövegek hangulatelemzéséhez, a kulcskifejezések kinyeréséhez, nyelvfelismeréshez és entitások összekapcsolásához használható.
 services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: text-analytics
-ms.topic: article
-ms.date: 8/30/2018
+ms.component: text-analytics
+ms.topic: overview
+ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: 71af2bcbf58279681bbea66d4f76e951a2efce59
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
-ms.translationtype: MT
+ms.openlocfilehash: fcc10723b2fb750b099f99999de01ab699d5d5e8
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43341486"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887768"
 ---
-# <a name="what-is-text-analytics"></a>Mi az Text Analytics?
+# <a name="what-is-text-analytics"></a>Mi a Text Analytics?
 
-A Text Analytics szolgáltatást biztosít a fejlett természetes nyelvi feldolgozási nyers, strukturálatlan szöveghez. Négy fő funkciókat tartalmazza: vélemények elemzése, kulcsszókeresés, nyelvfelismerés és entitáskapcsolás.
+A Text Analytics API egy felhőalapú eszköz, amely nyers szövegek fejlett természetes nyelvfeldogozását biztosítja, és négy fő funkciója van: a hangulatelemzés, a kulcsszókeresés, a nyelvfelismerés és az entitáskapcsolás.
 
-## <a name="analyze-sentiment"></a>Vélemények elemzése
+Az API a [Microsoft Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/) erőforrásait használja, amely egy felhőalapú gépi tanulási és mesterséges intelligenciára épülő algoritmusokat biztosító, a fejlesztési projektekben szabadon használható gyűjtemény.
 
-[Ismerje meg,](how-tos/text-analytics-how-to-sentiment-analysis.md) alkotott ügyfélvéleményeket a márkájáról vagy a témakör a keresőmotorok pozitív vagy negatív véleményeket kapcsolatos nyers szöveg elemzésével. Az API-t adja vissza egy véleménypontszámot között 0 és 1, egyes dokumentumok, ahol 1 a legtöbb pozitív.<br />
-Az elemzési modellek is imagenet-szöveg és a természetes nyelvi technológiát a Microsoft széles körű törzse használatával. A [kiválasztott nyelvek](text-analytics-supported-languages.md), az API-t elemezheti és pontszámot rendelni az Ön által megadott nyers szöveg.
+## <a name="capabilities-in-text-analytics"></a>A Text Analytics funkciói
 
-## <a name="extract-key-phrases"></a>Kulcsszavak kinyerése
+A szövegelemzés különböző dolgokat jelenthet. A Cognitive Servicesben a Text Analytics API négy különböző típusú elemzést biztosít, amelyeket az alábbi táblázat ismertet.
 
-Automatikusan [kinyerheti a kulcskifejezéseket](how-tos/text-analytics-how-to-keyword-extraction.md) gyorsan azonosíthatja a fő pontokat. A bemeneti szöveg például megadott, "az élelmiszer delicious volt, és izgalommal személyzet volt", a Text Analytics szolgáltatást a fő beszédtémákat adja vissza: "food" és "izgalommal személyzetet".
-
-## <a name="detect-language"></a>Nyelv felismerése
-
-Legfeljebb 120 nyelvet [észlelése](how-tos/text-analytics-how-to-language-detection.md) mely nyelvi a bemeneti szöveg nyelven van megírva és a jelentés minden egyes dokumentum, a kérelem küldése egyetlen nyelvkód. A nyelvi kód párban áll a pontszám erőssége jelző pontszámot.
-
-## <a name="identify-linked-entities-preview"></a>Azonosítsa a kapcsolt entitások (előzetes verzió)
-
-[Azonosítsa](how-tos/text-analytics-how-to-entity-linking.md) jól ismert entitásokat a szöveg és a weben bővebb információira mutató hivatkozásokat. Entitáskapcsolás felismeri és disambiguates, amikor egy kifejezés egyik jelent, műveletek, és egyéb szó.
+| Műveletek| Leírás | API-k |
+|-----------|-------------|------|
+|[**Hangulatelemzés**](how-tos/text-analytics-how-to-sentiment-analysis.md) | Ismerje meg, mi az ügyfelek véleménye az Ön márkájáról vagy témaköréről, a nyers szövegek elemzésével pozitív vagy negatív véleményekre utaló jeleket keresve. Az API minden dokumentumhoz visszaad egy 0 és 1 közötti hangulati pontszámot, ahol az 1 a legpozitívabb pontszám.<br /> Az elemzési modellek előzetes betanítása a Microsoft széles körű szövegtörzs-technológiái és természetes nyelvi technológiái segítségével történik. [Bizonyos nyelvek](text-analytics-supported-languages.md) esetében az API képes a megadott szöveg elemzéséből kiszámított pontszámot közvetlenül visszaadni a hívó alkalmazásnak. | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) <br /> [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package)  |
+|[**Kulcskifejezések kinyerése**](how-tos/text-analytics-how-to-keyword-extraction.md) | Automatikusan kinyeri a kulcskifejezéseket, ezzel gyorsan azonosítva a szöveg mondanivalójának fő pontjait. Például „Az étel finom volt, és a személyzet kedves volt” bemeneti szövegből az API a következő fő pontokat adja vissza: „étel” és „személyzet kedves”.  | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) <br /> [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) |
+|[**Nyelvfelismerés**](how-tos/text-analytics-how-to-language-detection.md) | Akár 120 nyelven képes felismerni, hogy a bemeneti szöveg milyen nyelven íródott, és a kérésben szereplő minden dokumentumhoz visszaad egyetlen nyelvkódot. A nyelvkód egy pontszámmal párba állítva jelzi a pontszám erősségét. | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) <br />  [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) | 
+|[**Entitásfelismerés (előzetes verzió)**](how-tos/text-analytics-how-to-entity-linking.md) | A szövegben szereplő entitások azonosítsa és besorolása mint személyek, helyek, szervezetek, dátum és idő, mennyiségek, százalékos arányok, pénznemek és egyebek. A rendszer felismeri a közismert entitásokat, amelyeket összekapcsol az interneten található további információkkal. | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) | 
 
 ## <a name="typical-workflow"></a>Jellemző munkafolyamat
 
-A munkafolyamat egyszerű: az elemzés és leíró kimenetek adatokat küld a kódban. Elemző felhasznált-van, további konfigurációs vagy testreszabása nélkül.
+A munkafolyamat egyszerű: benyújtjuk az adatokat elemzésre és a kódban kezeljük a kimeneteket. Az elemzők használatra készek, esetükben nincs szükség további konfigurációs beállításokra vagy testreszabásra.
 
-1. [Regisztráció](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) számára egy [hívóbetű](how-tos/text-analytics-how-to-access-key.md). A kulcsot kéréseknek kell átadni.
+1. [Regisztráljon](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) egy [hozzáférési kulcs](how-tos/text-analytics-how-to-access-key.md) beszerzéséhez. A kulcsot minden egyes kérés alkalmával meg kell adni.
 
-2. [Hozzon létre egy kérést](how-tos/text-analytics-how-to-call-api.md#json-schema) a JSON-ban, amely a nyers, strukturálatlan szöveges adatokat tartalmaz.
+2. [Állítson össze egy kérést](how-tos/text-analytics-how-to-call-api.md#json-schema), amely az adatokat nyers, strukturálatlan szövegként tartalmazza, JSON formátumban.
 
-3. A regisztráció során létrehozott végpontra irányuló kérelem küldése, Hozzáfűzés, az API-t szeretné meghívni: vélemények elemzése, kulcsszókeresés, nyelvfelismerés vagy entitás azonosítója.
+3. Küldje el a kérést a feliratkozáskor megállapított végpontra, és jelölje meg a használni kívánt erőforrást: hangulatelemzés, kulcsszókinyerés, nyelvfelismerés vagy entitásazonosítás.
 
-4. Stream, vagy a válasz a helyben tárolja. Attól függően, a kérés eredménye egy véleménypontszámot, kinyert kulcskifejezésekből álló egy gyűjteményt, vagy egy nyelvi kódot.
+4. A válasz streamelhető vagy helyileg is tárolható. A kéréstől függően az eredmény lehet egy véleménypontszám, kinyert kulcskifejezések gyűjteménye vagy egy nyelvkód.
 
-Kimeneti adja vissza, egy JSON-dokumentumok, az egyes szöveges dokumentum tesznek közzé, hogy az eredmények alapján azonosítója. Majd elemzése, megjelenítése vagy döntéstámogató elemzésekké az eredményeket kategorizálását.
+A kimenetet a rendszer egyetlen JSON-dokumentumban adja vissza, amely tartalmazza az összes elküldött szöveges dokumentum eredményeit, azok azonosítói alapján. Az eredmények ezt követően elemezhetők, vizualizálhatók vagy kategorizálhatók a gyakorlatban használható megállapításokká.
 
-A Text Analytics szolgáltatás által végzett műveletekre állapot nélküli. A fiókban lévő adatok nem tárolja.
+Az adatok nem lesznek tárolva a fiókjában. A Text Analytics API által végrehajtott műveletek állapot nélküliek, ami azt jelenti, hogy a szöveg feldolgozása és az eredmények visszaadása azonnal megtörténik.
+
+<a name="supported-languages"></a>
+
+## <a name="supported-languages"></a>Támogatott nyelvek
+
+Ez a szakasz egy külön cikkbe lett áthelyezve a jobb átláthatóság érdekében. Lásd a [Text Analytics API-ban támogatott nyelveket ismertető](text-analytics-supported-languages.md) cikket.
 
 <a name="data-limits"></a>
 
-## <a name="specifications"></a>Specifikációk
+## <a name="data-limits"></a>Adatkorlátok
 
-### <a name="supported-languages"></a>Támogatott nyelvek
-
-Lásd: [támogatott nyelvek Szövegelemzés](text-analytics-supported-languages.md).
-
-### <a name="data-limits"></a>A Data korlátai
-
-A Text Analytics szolgáltatás végpontok fogadja el a nyers szöveg adatokat. A jelenlegi maximum az egyes dokumentumok; 5000 karakternél Ha nagyobb dokumentumok elemzése van szüksége, bonthatja őket szeletekre. Ha továbbra is szüksége van egy magasabb korlátot, [lépjen kapcsolatba velünk](https://azure.microsoft.com/overview/sales-number/) úgy, hogy a követelményeket is megbeszélhetünk.
+A Text Analytics API minden végpontja nyers szöveges adatokat fogad el. A jelenlegi korlát dokumentumonként 5000 karakter. Ha ennél hosszabb dokumentumok elemzésére van szüksége, felbonthatja őket kisebb darabokra. Ha mégis magasabb korlátra van szüksége, [lépjen velünk kapcsolatba](https://azure.microsoft.com/overview/sales-number/), hogy megbeszélhessük a követelményeit.
 
 | Korlát | Érték |
 |------------------------|---------------|
-| Egyetlen dokumentum maximális mérete | 5000 karakternél által mért `String.Length`. |
-| A kérelem teljes maximális mérete | 1 MB |
-| A kérelem dokumentumok maximális száma | 1000 dokumentum |
+| Az egyes dokumentumok maximális mérete | 5000 karakter, `String.Length` szerint számolva. |
+| Teljes kérés maximális mérete | 1 MB |
+| Egy kérésbe foglalt dokumentumok maximális száma | 1000 dokumentum |
 
-A sávszélesség-korlátjának 100 hívás percenként. Vegye figyelembe, elküldheti a nagy mennyiségű dokumentumok száma (legfeljebb 1000 dokumentumot).
+A hívások számának korlátja percenként 100 hívás. Vegye figyelembe, hogy egyetlen hívásba nagy mennyiségű (akár 1000) dokumentumot is belefoglalhat.
 
-### <a name="unicode-encoding"></a>Unicode kódolással
+## <a name="unicode-encoding"></a>Unicode-kódolás
 
-A Text Analytics szolgáltatás használ, szöveges és a karakterek száma számítások kódolását Unicode. UTF-8 vagy UTF-16, a karakterek száma nincs mérhető különbségek kéréseket küldhet. Ha `String.Length` beolvasni a karakterek számát, adatok méretének mérésére használatával ugyanezt a módszert használ.
+A Text Analytics API Unicode-kódolást használ a szövegek megjelenítéséhez és a karakterszámok számításához. A kérések elküldhetők UTF-8- és UTF-16-kódolással is, amelyek között nincs számottevő különbség a karakterek számában. A rendszer a Unicode-kódpontokat használja a karakterszám heurisztikus számításához. A két mennyiség a Text Analytics adatkorlátai szempontjából egyenértékű. Ha a `String.Length` használatával számítja a karakterszámot, akkor ugyanazt a módszert használja az adatok méréséhez, mint mi.
 
 ## <a name="next-steps"></a>További lépések
 
-Először próbálja meg a [interaktív bemutatót](https://azure.microsoft.com/services/cognitive-services/text-analytics/). Illessze be a szövegbevitelt (5000 karakter maximális) észlelje a nyelvet (legfeljebb 120), kiszámítása egy véleménypontszámot, kinyerheti a kulcsfontosságú kifejezéseket, vagy kapcsolt entitások azonosítása. Nincs előfizetés nem szükséges.
+Először próbálja ki az [interaktív bemutatót](https://azure.microsoft.com/services/cognitive-services/text-analytics/). Beilleszthet egy bemeneti szöveget (legfeljebb 5000 karakter hosszúságig), amelynek felismerheti a nyelvét (120 nyelv közül), kiszámíthatja a véleménypontszámát, vagy kinyerheti a kulcskifejezéseit. Ehhez nem szükséges feliratkozni.
 
-Amikor készen áll a Text Analytics szolgáltatás hívásához közvetlenül:
+Ha kész közvetlenül meghívni az API-t:
 
-+ [Regisztráció](how-tos/text-analytics-how-to-signup.md) egy hozzáférési kulcsra, és tekintse át a szükséges lépések [az API meghívása](how-tos/text-analytics-how-to-call-api.md).
++ [Regisztráljon](how-tos/text-analytics-how-to-signup.md) egy hozzáférési kulcs beszerzéséhez és tekintse át [az API meghívásának](how-tos/text-analytics-how-to-call-api.md) lépéseit.
 
-+ [A rövid útmutató](quickstarts/csharp.md) , a REST API-t bemutató meghívja a C# nyelven írt. Ismerje meg, hogyan küldje el a szöveget, válassza ki az elemzés, és csak minimális kódírásra eredmények megtekintése.
++ A [rövid útmutató](quickstarts/csharp.md) a C# nyelven írt REST API-hívásokat mutatja be részletesen. Ismerje meg, hogyan küldhet el egy szöveget, választhat ki egy elemzést és tekintheti meg az eredményeket minimális kódolással.
 
-+ [API-referenciadokumentáció](//go.microsoft.com/fwlink/?LinkID=759346) a műszaki dokumentáció a REST API-t biztosít. A dokumentáció támogatja a beágyazott hívások meg lehet hívni az API-t az egyes dokumentációs oldalon.
++ Az [API referenciadokumentációja](//go.microsoft.com/fwlink/?LinkID=759346) tartalmazza az API-k műszaki dokumentációját. A dokumentáció támogatja a beágyazott hívásokat, így bármely dokumentációs oldalról meghívhatja az API-t.
 
-+ [Külső & közösségi tartalom](text-analytics-resource-external-community.md) olvashat a blogbejegyzésekben és a Szövegelemzés használata más eszközöket és technológiákat bemutató videók listája.
++ A [Külső és közösségi tartalom](text-analytics-resource-external-community.md) oldalon találhat egy listát azokról a blogbejegyzésekről és videókról, amelyek bemutatják, hogyan használható a Text Analytics egyéb eszközökkel és technológiákkal.
 
 ## <a name="see-also"></a>Lásd még
 
- [Cognitive Services – dokumentáció lap](https://docs.microsoft.com/azure/cognitive-services/)
+ [A Cognitive Services dokumentációjának oldala](https://docs.microsoft.com/azure/cognitive-services/)

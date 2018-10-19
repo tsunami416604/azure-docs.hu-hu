@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 02/15/2018
+ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 2b6f46c10603e54f0f77a635b3233073aadac0cd
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 9e7e853ad7562bf5d449479ad730a5dabd6a97b8
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700123"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585424"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Az Azure Service Bus – Azure Event Grid integráció áttekintése
 
@@ -129,9 +129,9 @@ Három különböző módon hozhatók létre Event Grid-előfizetések a Service
 2. A bal oldali panelen válassza az **Event Grid** elemet. 
 3. Válassza az **Esemény-előfizetés** lehetőséget.  
 
-   Az alábbi képen egy olyan névtér látható, amely már rendelkezik néhány Event Grid-előfizetéssel.
+   Az alábbi képen egy olyan névtér látható, amely rendelkezik Event Grid-feliratkozással:
 
-   ![20][]
+   ![Event Grid-feliratkozások](./media/service-bus-to-event-grid-integration-concept/sbtoeventgridportal.png)
 
    Az alábbi kép azt mutatja, hogyan lehet előfizetni egy függvényre vagy webhookra szűrés nélkül.
 
@@ -176,7 +176,7 @@ Innen felfedezheti a többi beállítási lehetőséget, vagy [tesztelheti az es
 ## <a name="next-steps"></a>További lépések
 
 * Service Bus és Event Grid [példák](service-bus-to-event-grid-integration-example.md) megtekintése.
-* További tudnivalók az [Event Grid](https://docs.microsoft.com/azure/azure-functions/) szolgáltatásról.
+* További tudnivalók az [Event Grid](https://docs.microsoft.com/azure/event-grid/) szolgáltatásról.
 * További tudnivalók az [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) szolgáltatásról.
 * További tudnivalók a [Logic Apps](https://docs.microsoft.com/azure/logic-apps/) szolgáltatásról
 * További tudnivalók a [Service Bus](https://docs.microsoft.com/azure/azure-functions/) szolgáltatásról.

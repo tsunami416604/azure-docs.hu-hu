@@ -6,15 +6,15 @@ author: vhorne
 manager: jpconnock
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 10/5/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: ff8df51011ef664950ecfeb9eef0b201306c8ad5
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 8fb459d197c15cf7760a924c7161fed59cc1caac
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221651"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801879"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon
 
@@ -186,6 +186,10 @@ A **Workload-SN** alhálózatot konfigurálja úgy, hogy a kimenő alapértelmez
 10. Kattintson az **Alhálózatok**, majd a **Társítás** elemre.
 11. Kattintson a **Virtuális hálózat** elemre, majd válassza a **Test-FW-VN** elemet.
 12. Az **Alhálózat** mezőben válassza a **Workload-SN** elemet.
+
+    > [!IMPORTANT]
+    > Ügyeljen arra, hogy csak a **Workload-SN** alhálózatot válassza ki ehhez az útvonalhoz, máskülönben a tűzfal nem fog megfelelően működni.
+
 13. Kattintson az **OK** gombra.
 14. Kattintson az **Útvonalak**, majd a **Hozzáadás** elemre.
 15. Az **Útvonal neve** mezőbe írja be következőt: **FW-DG**.
@@ -193,8 +197,8 @@ A **Workload-SN** alhálózatot konfigurálja úgy, hogy a kimenő alapértelmez
 17. A **Következő ugrás típusa** beállításnál válassza a **Virtuális berendezés** lehetőséget.
 
     Az Azure Firewall valójában egy felügyelt szolgáltatás, de ebben a helyzetben a virtuális berendezés beállítás is használható.
-1. A **Következő ugrás címe** mezőbe írja be a tűzfal magánhálózati IP-címét, amelyet korábban feljegyzett.
-2. Kattintson az **OK** gombra.
+18. A **Következő ugrás címe** mezőbe írja be a tűzfal magánhálózati IP-címét, amelyet korábban feljegyzett.
+19. Kattintson az **OK** gombra.
 
 
 ## <a name="configure-application-rules"></a>Alkalmazásszabályok konfigurálása

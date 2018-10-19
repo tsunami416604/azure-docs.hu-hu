@@ -1,35 +1,37 @@
 ---
-title: Érzelemfelismerési API cURL – első lépések |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan Ismerkedés a Érzelemfelismerési API használata cURL kognitív szolgáltatásban.
+title: 'Rövid útmutató: Érzelemfelismerés képeken szereplő arcokon – Emotion API, cURL'
+titlesuffix: Azure Cognitive Services
+description: Információk és kódminták segítségével ismerkedhet meg az Emotion API cURL-lel való használatának első lépéseivel.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: a7ca2cac718797462bb4dc889b3f1361b252435e
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: dfdaa89c9d29e419539f385f601dc7f264bf838e
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021098"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237075"
 ---
-# <a name="emotion-api-curl-quick-start"></a>Gyors üzembe helyezés érzelemfelismerési API-cURL
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rövid útmutató: Alkalmazás létrehozása a képeken szereplő arcokon tükröződő érzelmek felismeréséhez.
 
 > [!IMPORTANT]
-> Villámnézet API a 2017. október 30 véget ér. Kipróbálhatja az új [videó indexelő API előnézete](https://azure.microsoft.com/services/cognitive-services/video-indexer/) insights könnyen kibontani videók, és tartalom felderítési lép, például a keresési eredmények, növelje a szóbeli szavakat, a lapok, a karakterek és a érzelmek észlelésével. [További információk](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
+> Az Emotion API 2019. február 15-ével elavulttá válik. Az érzelemfelismerési képesség mostantól általánosan elérhető a [Face API](https://docs.microsoft.com/azure/cognitive-services/face/) részeként.
 
-Ez a cikk és a segítségével gyorsan kódmintákat az első lépéseiben a [Érzelemfelismerési API-t ismeri fel a metódust](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) a cURL ismeri fel a kép egy vagy több személy által kifejezett érzelmek. 
+Ez a cikk információkkal és kódmintákkal szolgál, amelyeken keresztül gyorsan elsajátíthatja, hogyan ismerheti fel a képeken szereplő személy vagy személyek által kifejezett érzelmeket az [Emotion API Recognize metódusa](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) és a cURL használatával.
 
 ## <a name="prerequisite"></a>Előfeltétel
-* Az ingyenes előfizetés kulcs lekérése [Itt](https://azure.microsoft.com/try/cognitive-services/)
+* Szerezzen be egy ingyenes előfizetői azonosítót [itt](https://azure.microsoft.com/try/cognitive-services/)
 
-## <a name="recognize-emotions-curl-example-request"></a>Felismeri a érzelmek cURL példa kérése
+## <a name="recognize-emotions-curl-example-request"></a>Érzelemfelismerési cURL-kérésminta
 
 > [!NOTE]
-> Ugyanazon a helyen, ha Ön az előfizetés kulcsok beszerzéséhez használt a REST-hívást kell használnia. Például ha az előfizetés kulcsok nyert westcentralus, cserélje le "westus" az alábbi URL-cím "westcentralus".
+> A REST-hívásban ugyanazt a helyet kell használnia, ahonnan az előfizetési kulcsot beszerezte. Ha például a westcentralus régióból szerezte be az előfizetési kulcsot, cserélje le az alábbi URL-címben a „westus” elemet a „westcentralus” elemre.
 
 ```json
 @ECHO OFF
@@ -38,16 +40,16 @@ curl -v -X POST "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recogni
 -H "Content-Type: application/json"
 -H "Ocp-Apim-Subscription-Key: {subscription key}"
 
---data-ascii "{body}" 
+--data-ascii "{body}"
 ```
 
-## <a name="recognize-emotions-sample-response"></a>Ismeri fel a érzelmek Mintaválasz
-Sikeres meghívását arcfelismerési bejegyzések tömbje és a kapcsolódó érzelemfelismerési eredményeiket, arc téglalap mérete csökkenő sorrendben szerinti sorrendben adja vissza. Üres választ, hogy nincs lapok észlelt. Érzelemfelismerési bejegyzés a következő mezőket tartalmazza:
-* faceRectangle - felületen a kép helyének.
-* pontszámok - Érzelemfelismerési pontszámok minden lap a lemezképben. 
+## <a name="recognize-emotions-sample-response"></a>Érzelemfelismerési válaszminta
+A sikeres hívás egy, az arcrekordokat és a hozzájuk tartozó érzelempontszámokat tartalmazó tömböt ad vissza, amely az adatokat az arcot jelölő téglalap mérete szerint csökkenő sorrendben listázza. Az üres válasz azt jelzi, hogy a rendszer nem észlelt arcot. Az érzelemrekord a következő mezőket foglalja magában:
+* faceRectangle – Az arcot jelölő téglalap helye a képen.
+* scores – A képen szereplő egyes arcokhoz tartozó érzelempontszámok.
 
 ```json
-application/json 
+application/json
 [
   {
     "faceRectangle": {
@@ -68,4 +70,3 @@ application/json
     }
   }
 ]
-

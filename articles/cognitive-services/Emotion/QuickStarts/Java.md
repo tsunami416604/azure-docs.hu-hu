@@ -1,33 +1,34 @@
 ---
-title: Android – első lépések a érzelemfelismerési API Java |} Microsoft Docs
-description: Get információkat és a segítségével gyorsan példakód az első lépéseiben a Érzelemfelismerési API Java Android kognitív szolgáltatásban.
+title: 'Rövid útmutató: Érzelemfelismerés képeken szereplő arcokon – Emotion API, Java'
+description: Információk és egy kódminta segítségével ismerkedhet meg az Emotion API Androidhoz készült Javával való használatának első lépéseivel.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: 0e7d3991b195a83a8b87e306b3b34fbed2098581
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5c845c07eff2d4627dd756a49f4b3fee2fca6a7a
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018026"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237620"
 ---
-# <a name="emotion-api-java-for-android-quick-start"></a>Android – első lépések a érzelemfelismerési API Java
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rövid útmutató: Alkalmazás létrehozása a képeken szereplő arcokon tükröződő érzelmek felismeréséhez.
 
 > [!IMPORTANT]
-> Villámnézet API a 2017. október 30 véget ér. Kipróbálhatja az új [videó indexelő API előnézete](https://azure.microsoft.com/services/cognitive-services/video-indexer/) insights könnyen kibontani videók, és tartalom felderítési lép, például a keresési eredmények, növelje a szóbeli szavakat, a lapok, a karakterek és a érzelmek észlelésével. [További információk](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
+> Az Emotion API 2019. február 15-ével elavulttá válik. Az érzelemfelismerési képesség mostantól általánosan elérhető a [Face API](https://docs.microsoft.com/azure/cognitive-services/face/) részeként. 
 
-Ez a cikk tájékoztatást ad és a kód a minta segítségével gyorsan megismerkedhet a [Érzelemfelismerési ismeri fel metódus](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) a Érzelemfelismerési API Android ügyfél könyvtárban. A minta bemutatja, hogyan lehet Java ismeri fel a érzelmek személyek kifejezve. 
+Ez a cikk információkkal és egy kódmintával szolgál, amelyeken keresztül gyorsan megismerkedhet az Emotion API androidos ügyfélkódtárában található [Emotion Recognize metódus](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) használatának első lépéseivel. A minta bemutatja, hogyan használhatja a Javát személyek által kifejezett érzelmek felismerésére.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* A Érzelemfelismerési API Java lekérése Android SDK [Itt](https://github.com/Microsoft/Cognitive-emotion-android)
-* Az ingyenes előfizetés kulcs lekérése [Itt](https://azure.microsoft.com/try/cognitive-services/)
+* Az Emotion API az Androidhoz készült Java SDK-hoz [itt](https://github.com/Microsoft/Cognitive-emotion-android) szerezhető be
+* Szerezzen be egy ingyenes előfizetői azonosítót [itt](https://azure.microsoft.com/try/cognitive-services/)
 
-## <a name="recognize-emotions-java-for-android-example-request"></a>Android példa egy kérelem érzelmek Java felismerni
+## <a name="recognize-emotions-java-for-android-example-request"></a>Érzelemfelismerési kérésminta az Androidhoz készült Javához
 
 ```java
 // // This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)
@@ -50,7 +51,7 @@ public class Main
         try
         {
             // NOTE: You must use the same region in your REST call as you used to obtain your subscription keys.
-            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the 
+            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
             //   URL below with "westcentralus".
             URIBuilder uriBuilder = new URIBuilder("https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize");
 
@@ -81,13 +82,13 @@ public class Main
 }
 ```
 
-## <a name="recognize-emotions-sample-response"></a>Ismeri fel a érzelmek Mintaválasz
-Sikeres meghívását arcfelismerési bejegyzések tömbje és a kapcsolódó érzelemfelismerési eredményeiket, arc téglalap mérete csökkenő sorrendben szerinti sorrendben adja vissza. Üres választ, hogy nincs lapok észlelt. Érzelemfelismerési bejegyzés a következő mezőket tartalmazza:
-* faceRectangle - felületen a kép helyének.
-* pontszámok - Érzelemfelismerési pontszámok minden lap a lemezképben. 
+## <a name="recognize-emotions-sample-response"></a>Érzelemfelismerési válaszminta
+A sikeres hívás egy, az arcrekordokat és a hozzájuk tartozó érzelempontszámokat tartalmazó tömböt ad vissza, amely az adatokat az arcot jelölő téglalap mérete szerint csökkenő sorrendben listázza. Az üres válasz azt jelzi, hogy a rendszer nem észlelt arcot. Az érzelemrekord a következő mezőket foglalja magában:
+* faceRectangle – Az arcot jelölő téglalap helye a képen.
+* scores – A képen szereplő egyes arcokhoz tartozó érzelempontszámok.
 
 ```json
-application/json 
+application/json
 [
   {
     "faceRectangle": {

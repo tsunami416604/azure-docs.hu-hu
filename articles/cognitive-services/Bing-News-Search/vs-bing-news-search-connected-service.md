@@ -1,60 +1,60 @@
 ---
-title: A Bing News Search C# oktatóanyag |} A Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Cognitive Services Bing News Search csatlakozhat egy ASP.NET Core-webalkalmazás.
+title: 'Oktatóanyag: Bing News Search, C#'
+titleSuffix: Azure Cognitive Services
+description: Kapcsolódás a Bing News Searchhöz egy ASP.NET Core-webalkalmazással.
 services: cognitive-services
 author: ghogen
-manager: douge
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
-ms.openlocfilehash: 5cfa82067d28b05f32bd87e0e83d55a03da8d508
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
-ms.translationtype: MT
+ms.openlocfilehash: f1f5c590216975ce6b0813da6d9d98279d591454
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095429"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804344"
 ---
-# <a name="connect-to-bing-news-search-api-by-using-connected-services-in-visual-studio"></a>Csatlakozás a Visual Studio csatlakoztatott szolgáltatásai segítségével Bing News Search API
+# <a name="tutorial-connect-to-bing-news-search-api-by-using-connected-services-in-visual-studio"></a>Oktatóanyag: Kapcsolódás a Bing News Search API-hoz a Connected Services segítségével a Visual Studióban
 
-A Bing News Search használatával engedélyezheti, hogy alkalmazásai és szolgáltatásai egy reklámmentes keresőmotort hatóköre a webes hatékonyságát. Bing – Hírkeresés a Cognitive Services szolgáltatással elérhető keresési szolgáltatások egyike.
+A Bing News Search használatával lehetővé teheti, hogy alkalmazásai és szolgáltatásai egy reklámmentes keresőmotorral keressenek a weben. A Bing News Search a Cognitive Servicesben elérhető egyik keresési szolgáltatás.
 
-Ez a cikk részletes adatokat biztosít a Visual Studio csatlakoztatott szolgáltatása a Bing News Search szolgáltatással. A Visual Studio 2017 15.7 vagy újabb verziójú, a Cognitive Services-bővítmény telepítve van az a funkció érhető el.
+A cikk részletes információkat szolgáltat a Visual Studio Bing News Searchhöz elérhető Connected Services szolgáltatásának használatáról. Ez a funkció a Visual Studio 2017 szoftver 15.7-es vagy újabb verziójában érhető el, ha a Cognitive Services bővítmény telepítve van.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
-- A Visual Studio 2017 15.7, futtassa a következőt a webalkalmazás-fejlesztési számítási feladattal. [Töltse le most](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- A Visual Studio 2017 15.7-es verziója telepített webfejlesztési tevékenységprofillal. [Letöltés](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
-## <a name="add-support-to-your-project-for-bing-news-search-api"></a>Támogatás hozzáadása a projekthez a Bing News Search API
+## <a name="add-support-to-your-project-for-bing-news-search-api"></a>Projekt kiegészítése a Bing News Search API támogatásával
 
-1. Hozzon létre egy új ASP.NET Core web projektet MyWebApplication nevű. Használja a **webalkalmazás (Model-View-Controller)** webesprojekt-sablon, az alapértelmezett beállítások használatával. Fontos adja a projektnek MyWebApplication, így a névtér megegyezik, amikor a kód másolását a projektbe. 
+1. Hozzon létre egy új ASP.NET Core-webprojektet MyWebApplication néven. Használja a **Web Application (Model-View-Controller)** (Webalkalmazás) projektsablont az összes alapértelmezett beállítással. Fontos, hogy a projektnek a MyWebApplication nevet adja, hogy a névtér egyezzen, amikor kódot másol a projektbe. 
 
-1. A **Megoldáskezelőben**, válassza a **Hozzáadás** > **csatlakoztatott szolgáltatás**.
-   A csatlakoztatott szolgáltatás oldalon jelenik meg, a projekthez is hozzáadhat szolgáltatásokkal.
+1. A **Megoldáskezelőben** válassza az **Add** (Hozzáadás) > **Connected Service** (Csatlakoztatott szolgáltatás) lehetőséget.
+   Megjelenik a Connected Service (Csatlakoztatott szolgáltatás) lap a projekthez adható szolgáltatásokkal.
 
-   ![Képernyőkép a csatlakoztatott szolgáltatás hozzáadása menüpont](../media/vs-common/Connected-Service-Menu.PNG)
+   ![Az Add Connected Service (Csatlakoztatott szolgáltatás hozzáadása) menüelem képernyőképe](../media/vs-common/Connected-Service-Menu.PNG)
 
-1. Elérhető szolgáltatások menüjében válassza **használata intelligens keresés a saját alkalmazások**.
+1. Az elérhető szolgáltatásokat tartalmazó listában válassza a **Bring Intelligent Search To Your Apps** (Intelligens keresés megvalósítása az alkalmazásokban) lehetőséget.
 
-   ![Képernyőkép a csatlakoztatott szolgáltatások listája](./media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-0.PNG)
+   ![Csatlakoztatott szolgáltatások listájának képernyőképe](./media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-0.PNG)
 
-   Ha már bejelentkezett a Visual Studióban, és a fiókhoz társított Azure-előfizetéssel rendelkezik, megjelenik egy oldal, és a egy legördülő lista az összes előfizetés. Válassza ki a használni kívánt előfizetést, és válassza a Bing News Search API nevét. Azt is beállíthatja **szerkesztése** módosíthatja az automatikusan létrehozott nevet.
+   Ha bejelentkezett a Visual Studióba, és rendelkezik a fiókjához társított Azure-előfizetéssel, egy lap jelenik meg, amely az előfizetéseit tartalmazza egy legördülő listában. Válassza ki a használni kívánt előfizetést, majd válasszon egy nevet a Bing News Search API-nak. Az **Edit** (Szerkesztés) elem kiválasztásával módosíthatja az automatikusan létrehozott nevet.
 
-   ![Képernyőkép az előfizetés és a név mező](media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-1.PNG)
+   ![Az előfizetés és név mezők képernyőképe](media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-1.PNG)
 
-1. Válassza ki az erőforráscsoportot és a tarifacsomagot.
+1. Válassza ki az erőforráscsoportot, valamint a tarifacsomagot.
 
-   ![Képernyőkép az erőforráscsoportot és az árképzési szint mezők](media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-2.PNG)
+   ![Az erőforráscsoport és a tarifacsomag mezők képernyőképe](media/vs-bing-news-search-connected-service/Cog-Search-Connected-Service-2.PNG)
 
-   Ha a tarifacsomagok további részleteit, jelölje be **tekintse át a díjszabási**.
+   A tarifacsomagokkal kapcsolatos további információért válassza a **Review pricing** (Díjszabás áttekintése) lehetőséget.
 
-1. Válasszon **Hozzáadás** a csatlakoztatott szolgáltatás támogatása érdekében.
-   A Visual Studio módosítja a NuGet-csomagok, konfigurációs bejegyzéseket és egyéb módosításokat a Bing News Search API-kapcsolat hozzáadása a projekthez. A kimenet mutatja a naplót, hogy mi történik a projekthez. A következőhöz hasonló kell megjelennie:
+1. Az **Add** (Hozzáadás) lehetőség kiválasztásával adja hozzá a csatlakoztatott szolgáltatás támogatását.
+   A Visual Studio módosítja a projektet, és hozzáadja a NuGet-csomagokat, a konfigurációs fájlbejegyzéseket, és a Bing News Search API-kapcsolat támogatása érdekében végrehajtott egyéb módosításokat. A kimenet a projektben történt események naplóját mutatja. Az alábbihoz hasonló kimenet jelenik meg:
 
    ```output
    [5/4/2018 12:41:21.084 PM] Adding Intelligent Search to the project.
@@ -71,7 +71,7 @@ Ez a cikk részletes adatokat biztosít a Visual Studio csatlakoztatott szolgál
    [5/4/2018 12:42:10.217 PM] Successfully added Intelligent Search to the project.
    ```
 
-   Az appsettings.json fájl most már tartalmazza a következő új beállítások:
+   Az appsettings.json fájl most az alábbi új beállításokat tartalmazza:
 
    ```json
    "CognitiveServices": {
@@ -83,11 +83,11 @@ Ez a cikk részletes adatokat biztosít a Visual Studio csatlakoztatott szolgál
    }
    ```
  
-## <a name="use-the-bing-news-search-api-to-add-search-functionality-to-a-web-page"></a>A webes keresési funkciók adhatók hozzá a Bing News Search API használatával
+## <a name="use-the-bing-news-search-api-to-add-search-functionality-to-a-web-page"></a>Keresési funkciók hozzáadása weboldalakhoz a Bing News Search API használatával
 
-Most, hogy a hozzáadott a Bing News Search API támogatása a projekthez, Íme az API használatával intelligens keresési funkciókat adhat hozzá egy weblap.
+Most hogy hozzáadta a Bing News Search API támogatását a projekthez, az alábbiak szerint adhatja hozzá az intelligens keresést a weboldalaihoz az API használatával.
 
-1.  A *Startup.cs*, a a `ConfigureServices` metódus hívása hozzáadása `IServiceCollection.AddSingleton`. Ez lehetővé teszi a konfigurációs objektumot, amely elérhető a kódba a projekt fő beállításait tartalmazza.
+1.  A *Startup.cs* fájlban a `ConfigureServices` metódusban adja hozzá az `IServiceCollection.AddSingleton` meghívását. Ez elérhetővé teszi a kulcsbeállításokat tartalmazó konfigurációs objektumot a projektben a kód számára.
  
    ```csharp
         public void ConfigureServices(IServiceCollection services)
@@ -98,7 +98,7 @@ Most, hogy a hozzáadott a Bing News Search API támogatása a projekthez, Íme 
    ```
 
 
-1. Adjon hozzá egy új osztályfájlt alatt a **modellek** nevű mappát *BingNewsModel.cs*. Ha más néven a projekt, használja a saját project-névteret, MyWebApplication helyett. Cserélje ki annak tartalmát az alábbira:
+1. Adjon hozzá egy új osztályfájlt a **Models** mappában *BingNewsModel.cs* néven. Ha más nevet adott a projektnek, használja a saját projektje névterét a MyWebApplication helyett. Cserélje le a tartalmat a következő kódra:
  
     ```csharp
     using Microsoft.Azure.CognitiveServices.Search.NewsSearch.Models;
@@ -117,9 +117,9 @@ Most, hogy a hozzáadott a Bing News Search API támogatása a projekthez, Íme 
     }
     ```
 
-   Ez a modell a Bing News Search szolgáltatás hívása eredményeinek tárolására szolgál.
+   Ez a modell tárolja a Bing News Search-szolgáltatáshívások eredményeit.
  
-1. Az a **tartományvezérlők** mappában, adjon hozzá egy új osztályfájlt nevű *IntelligentSearchController.cs*. Cserélje ki annak tartalmát az alábbira:
+1. A **Controllers** mappában adjon hozzá egy új osztályfájlt *IntelligentSearchController.cs* néven. Cserélje le a tartalmat a következő kódra:
 
    ```csharp
     using System.Net.Http;
@@ -177,9 +177,9 @@ Most, hogy a hozzáadott a Bing News Search API támogatása a projekthez, Íme 
     }
    ```
 
-   Ebben a kódban a konstruktor beállítja a konfigurációs objektumot, amely tartalmazza a kulcsokat. A módszer a `Search` útvonal, átirányítás csak a `BingSearchResult` függvény. Meghívja a `GetNewsSearchClient` metódus lekéréséhez a `NewsSearchAPI` ügyfélobjektummal.  A `NewsSearchAPI` objektumot tartalmaz az `SearchAsync` metódussal, amely a tényleges meghívja a szolgáltatást, és visszaadja az eredményeket a `SearchResult` imént létrehozott modellt. 
+   Ebben a kódban a konstruktor állítja be a kulcsokat tartalmazó konfigurációs objektumot. A `Search` útvonal metódusa egy egyszerű átirányítás a `BingSearchResult` függvényre. Ez meghívja a `GetNewsSearchClient` metódust a `NewsSearchAPI` ügyfélobjektum lekérése érdekében.  A `NewsSearchAPI` ügyfélobjektum tartalmazza a `SearchAsync` metódust, amely ténylegesen meghívja a szolgáltatást, és visszaadja az eredményeket az imént létrehozott `SearchResult` modellben. 
 
-1. Adjon hozzá egy osztályt `MyHandler`, amely a fenti kód hivatkozik. Ez annak alaposztályát, a keresési szolgáltatás aszinkron hívás delegálja `DelegatingHandler`.
+1. Adja hozzá az `MyHandler` osztályt, amelyre az előző kód hivatkozott. Ez a keresési szolgáltatás felé indított hívásokat a szolgáltatás `DelegatingHandler` alaposztályára delegálja.
 
    ```csharp
     using System.Net.Http;
@@ -199,7 +199,7 @@ Most, hogy a hozzáadott a Bing News Search API támogatása a projekthez, Íme 
     }
    ```
 
-1. Keresések elküldése, és az eredmények megtekintéséről támogatásának hozzáadása a **nézetek** mappában hozzon létre egy új nevű mappát **IntelligentSearch**. Az új mappába, a nézet hozzáadása *BingSearchResult.cshtml*. Másolja az alábbi kódot:
+1. A keresések beküldésének és az eredmények megtekintésének kiszolgálására hozzon létre egy új mappát **IntelligentSearch** néven a **Views** mappában. Ebben a mappában adjon hozzá egy nézetet *BingSearchResult.cshtml* néven. Másolja be a következő kódot:
 
     ```cshtml
     @using System
@@ -254,18 +254,18 @@ Most, hogy a hozzáadott a Bing News Search API támogatása a projekthez, Íme 
     </div>
     ```
 
-1. A webalkalmazás helyi indítása, adja meg az URL-címet az oldal imént létrehozott (/ IntelligentSearch/BingSearchResult), és keresési kérelem küldése a Keresés gomb használatával.
+1. Indítsa el a webalkalmazást helyben, adja meg az imént létrehozott oldal URL-címét (/IntelligentSearch/BingSearchResult), és küldjön el egy keresési kérést a Search (Keresés) gomb használatával.
 
-   ![Képernyőkép a Bing News Search eredmények](media/vs-bing-news-search-connected-service/Cog-News-Search-Results.PNG)
+   ![A Bing News Search találatainak képernyőképe](media/vs-bing-news-search-connected-service/Cog-News-Search-Results.PNG)
            
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha az erőforráscsoport már nincs rá szükség, törölheti azt. Ezzel törli a cognitive Services-szolgáltatás és a kapcsolódó erőforrásokat. Az erőforráscsoport törlése a Portalon keresztül:
+Ha már nincs rá szükség, törölheti az erőforráscsoportot. Ezzel törli a Cognitive Services-szolgáltatást és a kapcsolódó erőforrásokat is. Az erőforráscsoport törlése a Portalon keresztül:
 
-1. Adja meg az erőforráscsoport nevét, a portál tetején található keresőmezőbe. Válassza ki a törölni kívánt erőforráscsoportot.
+1. Írja be az erőforráscsoport nevét a Portal tetején található keresőmezőbe. Válassza ki a törölni kívánt erőforráscsoportot.
 2. Válassza az **Erőforráscsoport törlése** elemet.
-3. Az a **írja be az erőforráscsoport nevének** mezőbe írja be az erőforráscsoport nevét, és válassza ki **törlése**.
+3. Az **Írja be az erőforráscsoport nevét** mezőbe írja be az erőforráscsoport nevét, és válassza a **Törlés** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
-A Bing News Search API kapcsolatos további információkért lásd: [Bing News Search újdonságai?](index.yml).
+További információ a Bing News Search API-ról: [Mi a Bing News Search?](index.yml).

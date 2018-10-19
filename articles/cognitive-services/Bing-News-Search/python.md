@@ -1,33 +1,35 @@
 ---
-title: Python gyors üzembe helyezés az Azure kognitív szolgáltatások, a Bing hírek keresési API |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan Ismerkedés a Bing hírek Search API használatával a Microsoft Azure kognitív Services.
+title: 'Rövid útmutató: Bing News Search API, Python'
+titlesuffix: Azure Cognitive Services
+description: Információk és kódminták segítségével ismerkedhet meg a Bing News Search API használatának első lépéseivel.
 services: cognitive-services
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 0fde478b650513aa1527c1d47f5b453ba094506c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 583b304a742d9abfd799442c9aa2999ad6783a34
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347519"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803545"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-python"></a>A Bing hírek keresési API-t Python gyors üzembe helyezés
-Ez a forgatókönyv leírja azokat a Bing hírek keresési API-JÁNAK hívása és utófeldolgozási az eredményül kapott JSON-objektum egy egyszerű példa. További információkért lásd: [Bing új keresés dokumentáció](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference).  
+# <a name="quickstart-for-bing-news-search-api-with-python"></a>Rövid útmutató a Bing News Search API és a Python használatához
+Ez az útmutató a Bing News Search API meghívásának és a kapott JSON-objektum utófeldolgozásnak egy egyszerű példáját mutatja be. További információ: [A Bing News Search dokumentációja](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference).  
 
-Futtathatja, ebben a példában Jupyter notebook [MyBinder](https://mybinder.org) az indítási kötő kattintva jelvények: 
+Ezt a példát futtathatja Jupyter-notebookként a [MyBinderen](https://mybinder.org), az indítás Binder-jelvényére kattintva. 
 
-[![Kötő](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingNewsSearchAPI.ipynb)
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingNewsSearchAPI.ipynb)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Rendelkeznie kell egy [kognitív szolgáltatások API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rendelkező **Bing keresési API-k**. A [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő-e a gyors üzembe helyezés. Az elérési kulcsot, ha aktiválja az ingyenes próbaverzió, vagy egy fizetős kulcsot használhatja az Azure irányítópultról van szüksége.
+Egy **Bing Search API-kat** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, vagy beszerezhet egy fizetős előfizetői azonosítót az Azure-irányítópultról.
 
-## <a name="running-the-walkthrough"></a>A forgatókönyv futtatása
-Első lépésként állítsa `subscription_key` az API-kulccsal, a Bing API-szolgáltatás.
+## <a name="running-the-walkthrough"></a>Az útmutató futtatása
+Először állítsa a `subscription_key` értékét a Bing API-szolgáltatáshoz kapott API-kulcsára.
 
 
 ```python
@@ -35,21 +37,21 @@ subscription_key = None
 assert subscription_key
 ```
 
-Ezt követően ellenőrizze, hogy a `search_url` végpont helyességéről. Csak egy végpont írásának, a Bing keresési API-k használható. Ha engedélyezési hibákat észlel, gondosan ellenőrizze ezt az értéket a Bing keresési végpont az Azure irányítópulton ellen.
+Ellenőrizze, hogy helyes-e a `search_url` végpont. A jelen dokumentum írásakor a rendszer csak egy végpontot használ a Bing keresési API-khoz. Ha hitelesítési hibákba ütközik, ellenőrizze újra ezt az értéket az Azure-irányítópulton lévő Bing-keresési végponttal összevetve.
 
 
 ```python
 search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
 ```
 
-Állítsa be `search_term` kapcsolatos Microsoft írt hírcikkeket keres.
+Állítsa be a `search_term` objektumot úgy, hogy a Microsoftról keressen híreket.
 
 
 ```python
 search_term = "Microsoft"
 ```
 
-A következő blokkolása használja a `requests` könyvtár hívásához a Bing keresési API-kat, és térjen vissza az eredményeket a JSON-objektumként a Python. Figyelje meg, hogy azt adjon át az API-kulcs használatával a `headers` könyvtár és a keresési kifejezést keresztül a `params` szótárban. A keresés találatainak szűréséhez használt beállítások teljes listájának megtekintéséhez tekintse meg a [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) dokumentációját.
+A következő blokk a Python `requests` kódtárát használja a Bing keresési API-k meghívásához, és JSON-objektumként adja vissza az eredményeket. Figyelje meg, hogy az API-kulcs átadása a `headers` szótárban történik, a keresési kifejezés pedig a `params` szótárban. A keresési eredmények szűrésénél alkalmazható összes lehetőség teljes listáját a [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) dokumentációjában találja.
 
 
 ```python
@@ -62,14 +64,14 @@ response.raise_for_status()
 search_results = response.json()
 ```
 
-A `search_results` objektum tartalmazza a megfelelő új cikkek gazdag metaadatok együtt. Például a következő kódsort kibontja a cikkek leírását.
+A `search_results` objektum tartalmazza a releváns híreket és részletes metaadatokat. Az alábbi kódsor például a cikkek leírásait nyeri ki.
 
 
 ```python
 descriptions = [article["description"] for article in search_results["value"]]
 ```
 
-A leírások majd megjeleníthetők táblázatként kiemelt keresési kulcsszóval **félkövér**.
+Ezek a leírások ezután táblaként jeleníthetők meg **félkövérrel** szedett keresési kulcsszóval.
 
 
 ```python
@@ -81,10 +83,10 @@ HTML("<table>"+rows+"</table>")
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Lapozófájl hírek](paging-news.md)
-> [szöveg kiemeléséhez decoration jelölők használatával](hit-highlighting.md)
+> [Hírek lapozása](paging-news.md)
+> [Díszítő megjelölések használata szövegkiemeléshez](hit-highlighting.md)
 
 ## <a name="see-also"></a>Lásd még 
 
- [A webes hírek a keresés](search-the-web.md)  
- [Próbálja ki](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)
+ [Hírek keresése az interneten](search-the-web.md)  
+ [Kipróbálás](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)

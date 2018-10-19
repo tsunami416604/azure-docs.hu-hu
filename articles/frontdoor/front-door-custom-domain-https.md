@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/20/2018
+ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 8e3bdd402cbd16469fb333cc470471629f85538c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3df96451838fe90b7d45d1aedd272fc10d798e57
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47045423"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883975"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása Front Door egyéni tartományon
 
@@ -45,15 +45,14 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Mielőtt elvégezhetné a jelen oktatóanyag lépéseit, először létre kell hoznia egy legalább egy egyéni tartománnyal regisztrált Front Doort. További információkért lásd: [Útmutató: Egyéni tartomány hozzáadása a Front Doorhoz](front-door-custom-domain.md)
 
----
-
 ## <a name="ssl-certificates"></a>SSL-tanúsítványok
+
 Ha HTTPS-protokollt szeretne engedélyezni egy egyéni Front Door-tartomány tartalmának biztonságos továbbításához, SSL-tanúsítványt kell használnia. Az Azure Front Door Service által kezelt vagy saját tanúsítványt használhat.
 
 
-# <a name="option-1-default-enable-https-with-an-afd-managed-certificatetaboption-1-default-enable-https-with-an-afd-managed-certificate"></a>[1. lehetőség (alapértelmezett): A HTTPS engedélyezése az AFD által kezelt tanúsítvánnyal](#tab/option-1-default-enable-https-with-an-afd-managed-certificate)
+### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>1. lehetőség (alapértelmezett): A Front Door által felügyelt tanúsítvány használata
 
-Ha az AFD által kezelt tanúsítványt használ, a HTTPS szolgáltatás mindössze néhány kattintással bekapcsolható. Az Azure Front Door Service elvégzi az összes tanúsítványkezelési feladatot, például a beszerzést és a megújítást. A szolgáltatás engedélyezése után a folyamat azonnal elindul. Ha az egyéni tartomány már hozzá van rendelve a Front Door alapértelmezett előtérbeli gazdagépéhez (`{hostname}.azurefd.net`), nincs további teendő. A Front Door automatikusan feldolgozza a lépéseket és végrehajtja a kérést. Ha azonban az egyéni tartomány más helyre van leképezve, meg kell erősítenie a tartomány tulajdonjogát e-mailben.
+Ha az Azure Front Door Service által kezelt tanúsítványt használ, a HTTPS szolgáltatás mindössze néhány kattintással bekapcsolható. Az Azure Front Door Service elvégzi az összes tanúsítványkezelési feladatot, például a beszerzést és a megújítást. A szolgáltatás engedélyezése után a folyamat azonnal elindul. Ha az egyéni tartomány már hozzá van rendelve a Front Door alapértelmezett előtérbeli gazdagépéhez (`{hostname}.azurefd.net`), nincs további teendő. A Front Door automatikusan feldolgozza a lépéseket és végrehajtja a kérést. Ha azonban az egyéni tartomány más helyre van leképezve, meg kell erősítenie a tartomány tulajdonjogát e-mailben.
 
 Kövesse az alábbi lépéseket a HTTPS engedélyezéséhez egy egyéni tartományon:
 
@@ -68,11 +67,11 @@ Kövesse az alábbi lépéseket a HTTPS engedélyezéséhez egy egyéni tartomá
 5. Folytassa [A tartomány érvényesítése](#validate-the-domain) című szakasszal.
 
 
-# <a name="option-2-enable-https-with-your-own-certificatetaboption-2-enable-https-with-your-own-certificate"></a>[2. lehetőség: A HTTPS engedélyezése saját tanúsítvánnyal](#tab/option-2-enable-https-with-your-own-certificate)
+### <a name="option-2-use-your-own-certificate"></a>2. lehetőség: Saját tanúsítvány használata
 
 A saját tanúsítványát is használhatja a HTTPS szolgáltatás engedélyezéséhez. Ez a folyamat Azure Key Vault-integrációval történik, amely lehetővé teszi a tanúsítványok biztonságos tárolását. Az Azure Front Door Service ezt a biztonságos mechanizmust használja a tanúsítvány beszerzéséhez, és néhány további lépést igényel. SSL-tanúsítványt egy engedélyezett hitelesítésszolgáltatóval (CA) kell létrehoznia. Másként, nem engedélyezett CA használata igénybe vétele esetén a kérelme vissza lesz utasítva. Az engedélyezett CA-k megtalálhatók az [egyéni HTTPS az Azure Front Door Service-ben való engedélyezéséhez jóváhagyott hitelesítésszolgáltatók listájában](front-door-troubleshoot-allowed-ca.md).
 
-### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Az Azure Key Vault-fiók és a tanúsítvány előkészítése
+#### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Az Azure Key Vault-fiók és a tanúsítvány előkészítése
  
 1. Azure Key Vault: Rendelkeznie kell egy futó Azure Key Vault-fiókkal abban az előfizetésben, amelyben az a Front Door található, amelyhez egyéni HTTPS-t szeretne engedélyezni. Ha még nem rendelkezik Azure Key Vault-fiókkal, hozzon létre egyet.
  
@@ -83,7 +82,7 @@ A saját tanúsítványát is használhatja a HTTPS szolgáltatás engedélyezé
 > </br> – Az Azure Front Door Service jelenleg csak a Titkos kódok szakaszban tárolt Key Vault-tanúsítványokat támogatja. A tanúsítványt nem fogja tudni importálni, ha a Titkos kódok helyett a Tanúsítványok szakaszban tárolja.
 > </br> – Az Azure Front Door Service jelenleg csak a jelszó **nélküli**, PFX-szel feltöltött tanúsítványokat támogatja.
 
-### <a name="register-azure-front-door-service"></a>Az Azure Front Door Service regisztrálása
+#### <a name="register-azure-front-door-service"></a>Az Azure Front Door Service regisztrálása
 
 Regisztrálja az Azure Front Door Service szolgáltatásnevét alkalmazásként az Azure Active Directoryban a PowerShell használatával.
 
@@ -93,7 +92,7 @@ Regisztrálja az Azure Front Door Service szolgáltatásnevét alkalmazásként 
 
      `New-AzureRmADServicePrincipal -ApplicationId "ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037"`              
 
-### <a name="grant-azure-front-door-service-access-to-your-key-vault"></a>Hozzáférés biztosítása az Azure Front Door Service számára a Key Vaulthoz
+#### <a name="grant-azure-front-door-service-access-to-your-key-vault"></a>Hozzáférés biztosítása az Azure Front Door Service számára a Key Vaulthoz
  
 Engedélyt kell adnia az Azure Front Door Service számára, hogy hozzáférhessen az Azure Key Vault-fiók Titkos kódok szakaszában tárolt tanúsítványokhoz.
 
@@ -108,7 +107,7 @@ Engedélyt kell adnia az Azure Front Door Service számára, hogy hozzáférhess
 
     Az Azure Front Door Service most már hozzáférhet a Key Vaulthoz és az abban tárolt tanúsítványokhoz (titkos kódokhoz).
  
-### <a name="select-the-certificate-for-azure-front-door-service-to-deploy"></a>Az Azure Front Door Service által üzembe helyezendő tanúsítvány kiválasztása
+#### <a name="select-the-certificate-for-azure-front-door-service-to-deploy"></a>Az Azure Front Door Service által üzembe helyezendő tanúsítvány kiválasztása
  
 1. Lépjen vissza a Front Doorhoz a portálon. 
 
@@ -126,8 +125,6 @@ Engedélyt kell adnia az Azure Front Door Service számára, hogy hozzáférhess
     - A tanúsítvány elérhető verziói. 
  
 5. Saját tanúsítvány használatakor nem szükséges tartományérvényesítés. Lépjen tovább a [Várakozás a propagálásra](#wait-for-propagation) részhez.
-
----
 
 ## <a name="validate-the-domain"></a>A tartomány érvényesítése
 
@@ -264,5 +261,5 @@ Az alábbi táblázat a műveleti folyamatot mutatja, amely a HTTPS letiltásako
 
 ## <a name="next-steps"></a>További lépések
 
-- A [Front Door létrehozására](quickstart-create-front-door.md) vonatkozó információk.
+- [Frontdoor létrehozására](quickstart-create-front-door.md) vonatkozó információk.
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

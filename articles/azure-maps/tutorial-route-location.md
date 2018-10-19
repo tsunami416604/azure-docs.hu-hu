@@ -3,18 +3,18 @@ title: Útvonalkeresés az Azure Mapsszel | Microsoft Docs
 description: Útvonal keresése egy hasznos helyhez az Azure Mapsszel
 author: dsk-2015
 ms.author: dkshir
-ms.date: 09/04/2018
+ms.date: 10/02/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 68d7df575e3d413780b8181c11dd59a22469708b
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 3bf1aa6d1b9bd65c28ef99ddbac71fb75daf99e7
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578937"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816718"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Útvonal keresése egy hasznos helyhez az Azure Mapsszel
 
@@ -126,14 +126,16 @@ A jelen oktatóanyag esetében a Microsoftot állítsa be kiindulási pontnak, c
         padding: 50
     });
 
-    // Add pins to the map for the start and end point of the route
-    map.addPins([startPin, destinationPin], {
-        name: "route-pins",
-        textFont: "SegoeUi-Regular",
-        textOffset: [0, -20]
+    map.addEventListener("load", function () { 
+        // Add pins to the map for the start and end point of the route
+        map.addPins([startPin, destinationPin], {
+            name: "route-pins",
+            textFont: "SegoeUi-Regular",
+            textOffset: [0, -20]
+        });
     });
     ```
-    A **map.setCameraBounds** a kiindulási és végpontok koordinátái alapján állítja be a térkép ablakát. A **map.addPins** API vizuális összetevőként adja hozzá a pontokat a Térkép vezérlőelemhez.
+    A **map.setCameraBounds** a kiindulási és végpontok koordinátái alapján állítja be a térkép ablakát. A **map.addEventListener** biztosítja, hogy a térképhez hozzáadott összes térképfunkció betöltődjön a térkép teljes betöltése után. Az eseményfigyelő **map.addPins** API-ja vizuális összetevőként adja hozzá a pontokat a térkép vezérlőelemhez.
 
 3. Mentse a **MapRoute.html** fájlt, és frissítse a böngészőt. Most Seattle látható a térkép középpontjában, a kezdőpontot a kerek kék gombostű jelzi, a végpontot pedig a kék gombostű.
 
@@ -143,7 +145,7 @@ A jelen oktatóanyag esetében a Microsoftot állítsa be kiindulási pontnak, c
 
 ## <a name="get-directions"></a>Útvonal keresése
 
-Ez a szakasz bemutatja, hogyan kereshet egy kiindulási és célpont között útvonalat a Maps útvonal-szolgáltatási API-jával. Az útvonal-szolgáltatás API-kat biztosít a két hely közötti *leggyorsabb*, *legrövidebb*, *leggazdaságosabb* vagy *leglátványosabb* útvonal megtervezéséhez. A felhasználók előre is megtervezhetik az útvonalakat az Azure széles körű forgalmi adatbázisával, amely előre jelzi az útvonalak menetidejét bármely napon és időpontban. További információ: [Útvonal keresése](https://docs.microsoft.com/rest/api/maps/route/getroutedirections).
+Ez a szakasz bemutatja, hogyan kereshet egy kiindulási és célpont között útvonalat a Maps útvonal-szolgáltatási API-jával. Az útvonal-szolgáltatás API-kat biztosít a két hely közötti *leggyorsabb*, *legrövidebb*, *leggazdaságosabb* vagy *leglátványosabb* útvonal megtervezéséhez. A felhasználók előre is megtervezhetik az útvonalakat az Azure széles körű forgalmi adatbázisával, amely előre jelzi az útvonalak menetidejét bármely napon és időpontban. További információ: [Útvonal keresése](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Az alábbi funkciók mindegyikét fel kell vennie **a térképbetöltés eventListener elemébe**, hogy a térkép teljes betöltése után betöltődjenek.
 
 1. Először adjon egy új réteget a térképhez az útvonal vagy *linestring* megjelenítéséhez. Adja hozzá a következő JavaScript-kódot a *szkript* blokkhoz.
 
@@ -204,6 +206,10 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Új weblap létrehozása a térképkezelési API használatával
 > * Címkoordináták beállítása
 > * Hasznos helyre vezető útvonal lekérdezése a Route Service-ből
+
+Az oktatóanyag mintakódját itt érheti el:
+
+> [Útvonalkeresés az Azure Maps használatával](https://github.com/Azure-Samples/azure-maps-samples/blob/master/src/route.html)
 
 A következő oktatóanyag bemutatja, hogyan hozhat létre egy útvonal-lekérdezést olyan korlátozásokkal, mint az utazás módja vagy a rakomány típusa, majd megjelenít több útvonalat ugyanazon a térképen.
 

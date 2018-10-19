@@ -1,47 +1,47 @@
 ---
-title: 'Gyors útmutató: Python a QnA Maker API (V4)'
+title: 'Rövid útmutató: Python a QnA Maker API (v4)-hez'
 titleSuffix: Azure Cognitive Services
-description: Get information és kód minták segítségével gyorsan használatának első lépései a Microsoft Translator Text API a Microsoft Cognitive Services, Azure-ban.
+description: Ezekkel a rövid útmutatókkal és kódmintákkal gyorsan kezdheti meg a Microsoft Translator Text API használatát a Microsoft Cognitive Servicesben az Azure-on.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: qna-maker
-ms.topic: article
+ms.component: qna-maker
+ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: 5e95bf768cc00935067edd3365cc3d101be6a00a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: MT
+ms.openlocfilehash: fe01e69b5ee730c4807e94e5f79dd11456d6aa1a
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034741"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886365"
 ---
-# <a name="quickstart-for-microsoft-qna-maker-api-with-python"></a>Gyors útmutató: a Microsoft a QnA Maker API a Pythonnal 
+# <a name="quickstart-for-microsoft-qna-maker-api-with-python"></a>Rövid útmutató a Microsoft QnA Maker API-hoz Python használatával 
 <a name="HOLTop"></a>
 
-Ez a cikk bemutatja, hogyan használható a [Microsoft QnA Maker API](../Overview/overview.md) tegye a következőket a Python használatával.
+Ez a cikk bemutatja, hogyan használhatja a [Microsoft QnA Maker API-t](../Overview/overview.md) Python segítségével az alábbi célokra.
 
-- [Hozzon létre egy új Tudásbázis.](#Create)
-- [Frissíti egy meglévő Tudásbázis.](#Update)
-- [Egy kérelem létrehozása vagy frissítése a Tudásbázis állapotának beolvasása.](#Status)
-- [Egy meglévő Tudásbázis közzététele.](#Publish)
-- [Cserélje le egy meglévő Tudásbázis tartalmát.](#Replace)
-- [Töltse le a Tudásbázis tartalmát.](#GetQnA)
-- [Válaszok a Tudásbázis használva tehet fel kérdéseket.](#GetAnswers)
-- [Tudásbázis adatainak beolvasása.](#GetKB)
-- [A megadott felhasználóhoz tartozó összes tudásbázisok adatainak beolvasása.](#GetKBsByUser)
-- [Törölje a Tudásbázis.](#Delete)
-- [Az aktuális végpont kulcsok beolvasása.](#GetKeys)
-- [Az aktuális végpont kulcsok újbóli létrehozásához.](#PutKeys)
-- [Első word változtatások az aktuális készletét.](#GetAlterations)
-- [Cserélje le a word változtatások az aktuális készletét.](#PutAlterations)
+- [Új tudásbázis létrehozása.](#Create)
+- [Meglévő tudásbázis frissítése.](#Update)
+- [Egy tudásbázist létrehozó vagy frissítő kérés állapotának lekérése.](#Status)
+- [Meglévő tudásbázis közzététele.](#Publish)
+- [Meglévő tudásbázis tartalmának cseréje.](#Replace)
+- [Tudásbázis tartalmának letöltése.](#GetQnA)
+- [Kérdés megválaszolása egy tudásbázis segítségével.](#GetAnswers)
+- [Információk lekérése egy tudásbázisból.](#GetKB)
+- [Információk lekérése a megadott felhasználóhoz tartozó összes tudásbázisról.](#GetKBsByUser)
+- [Tudásbázis törlése.](#Delete)
+- [A jelenlegi végponti kulcsok lekérése.](#GetKeys)
+- [A jelenlegi végponti kulcsok újbóli létrehozása.](#PutKeys)
+- [A jelenlegi szóváltozatok készletének lekérése.](#GetAlterations)
+- [A jelenlegi szóváltozatok készletének cseréje.](#PutAlterations)
 
 [!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz [Python 3.x](https://www.python.org/downloads/) Ez a kód futtatásához.
+A kód futtatásához [Python 3.x](https://www.python.org/downloads/) szükséges.
 
 Egy **Microsoft QnA Maker API-t** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Egy fizetős előfizetői kulcsra van szüksége az [Azure-irányítópultról](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
@@ -147,7 +147,7 @@ while False == done:
         done = True
 ```
 
-**Tudásbázis válasz létrehozása**
+**Tudásbázis létrehozása válasz**
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
@@ -287,7 +287,7 @@ while False == done:
         done = True
 ```
 
-**Tudásbázis válasz frissítése**
+**Tudásbázis frissítése válasz**
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
@@ -376,7 +376,7 @@ result = publish_kb (path, '')
 print (pretty_print(result))
 ```
 
-**Tudásbázis válasz közzététele**
+**Tudásbázis közzététele válasz**
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
@@ -390,9 +390,9 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 <a name="Replace"></a>
 
-## <a name="replace-knowledge-base"></a>Cserélje le a Tudásbázis
+## <a name="replace-knowledge-base"></a>Tudásbázis cseréje
 
-A következő kódot váltja fel a körét, használja a megadott Tudásbázis tartalmát a [cseréje](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) metódust.
+A következő kód cseréli a megadott tudásbázis tartalmát a [Csere](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) metódus használatával.
 
 1. Hozzon létre egy új Python-projektet kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
@@ -464,7 +464,7 @@ result = replace_kb (path, content)
 print (pretty_print(result))
 ```
 
-**Cserélje le a Tudásbázis-válasz**
+**Tudásbázis cseréje válasz**
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
@@ -478,9 +478,9 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 <a name="GetQnA"></a>
 
-## <a name="download-the-contents-of-a-knowledge-base"></a>Töltse le a Tudásbázis tartalmát
+## <a name="download-the-contents-of-a-knowledge-base"></a>Tudásbázis tartalmának letöltése
 
-Az alábbi kód letölti a körét, használja a megadott Tudásbázis tartalmát a [töltse le a Tudásbázis](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) metódust.
+A következő kód letölti a megadott tudásbázis tartalmát a [Tudásbázis letöltése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) metódus használatával.
 
 1. Hozzon létre egy új Python-projektet kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
@@ -528,7 +528,7 @@ result = get_qna (path)
 print (pretty_print(result))
 ```
 
-**Töltse le a Tudásbázis-válasz**
+**Tudásbázis letöltése válasz**
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
@@ -567,15 +567,15 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 <a name="GetAnswers"></a>
 
-## <a name="get-answers-to-a-question-using-a-knowledge-base"></a>Válaszok a Tudásbázis használva tehet fel kérdéseket
+## <a name="get-answers-to-a-question-using-a-knowledge-base"></a>Kérdés megválaszolása egy tudásbázis segítségével
 
-A következő kód lekéri egy kérdést a megadott Tudásbázis használatával, a segítségével választ a **készítése a válaszok** metódust.
+A következő kód választ kér egy kérdésre a megadott tudásbázisból a **Válaszok létrehozása** metódus használatával.
 
 1. Hozzon létre egy új Python-projektet kedvenc IDE-környezetében.
 1. Adja hozzá az alábbi kódot.
-1. Cserélje le a `host` a webhely nevét, a QnA Maker előfizetéshez tartozó értéket. További információ: [QnA Maker szolgáltatás létrehozása](../How-To/set-up-qnamaker-service-azure.md).
-1. Cserélje le a `endpoint_key` az előfizetéshez tartozó érvényes végponti kulcs-érték. Vegye figyelembe, hogy ez nem ugyanaz, mint az előfizetési kulcs. A végpont kulcsok használatával megtekintheti a [végpont kulcsok beolvasása](#GetKeys) metódus.
-1. Cserélje le a `kb` értéket választ szeretné lekérdezni a Tudásbázis Azonosítóját. Vegye figyelembe a Tudásbázis kell már közzétett használatával a [közzététel](#Publish) metódust.
+1. A `host` értéket cserélje le a QnA Maker-előfizetése webhelyének nevére. További információért lásd a [QnA Maker-szolgáltatás létrehozását](../How-To/set-up-qnamaker-service-azure.md) ismertető szakaszt.
+1. Az `endpoint_key` értéket cserélje le az előfizetéshez érvényes végponti kulcsra. Ez nem azonos az előfizetési kulcsával. A végponti kulcsait a [Végponti kulcsok lekérése](#GetKeys) metódus használatával kérheti le.
+1. A `kb` értéket cserélje le a válaszadáshoz lekérdezni kívánt tudásbázis azonosítójára. A tudásbázisnak már közzétettnek kell lennie a [Közzététel](#Publish) metódus használatával.
 1. Futtassa a programot.
 
 ```python
@@ -629,7 +629,7 @@ result = get_answers (method, content)
 print (pretty_print(result))
 ```
 
-**Válaszok válasz**
+**Válaszok kérése válasz**
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
@@ -655,9 +655,9 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 <a name="GetKB"></a>
 
-## <a name="get-information-about-a-knowledge-base"></a>Tudásbázis adatainak lekérése
+## <a name="get-information-about-a-knowledge-base"></a>Információk lekérése egy tudásbázisból
 
-Az alábbi kód adatainak beolvasása, a megadott Tudásbázis körét, használja a [részletek a Tudásbázis](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) metódust.
+A következő kód információkat kér le a megadott tudásbázissal kapcsolatban a [Tudásbázis részleteinek lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) metódus használatával.
 
 1. Hozzon létre egy új Python-projektet kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
@@ -702,7 +702,7 @@ result = get_kb (path)
 print (pretty_print(result))
 ```
 
-**Tudásbázis részletek válasz**
+**Tudásbázis részleteinek lekérése válasz**
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
@@ -728,9 +728,9 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 <a name="GetKBsByUser"></a>
 
-## <a name="get-all-knowledge-bases-for-a-user"></a>Felhasználó minden tudásbázisok lekérése
+## <a name="get-all-knowledge-bases-for-a-user"></a>Egy felhasználó összes tudásbázisának lekérése
 
-A következő kódot egy adott felhasználó összes tudásbázisok olyan adatainak beolvasása használatával a [első felhasználó tudásbázisok](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) metódust.
+A következő kód információkat kér le egy megadott felhasználó összes tudásbázisával kapcsolatban a [Felhasználó tudásbázisainak lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) metódus használatával.
 
 1. Hozzon létre egy új Python-projektet kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
@@ -772,7 +772,7 @@ result = get_kbs (path)
 print (pretty_print(result))
 ```
 
-**A felhasználói válaszra tudásbázisok beolvasása**
+**Felhasználó tudásbázisainak lekérése válasz**
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
@@ -816,7 +816,7 @@ Press any key to continue.
 
 ## <a name="delete-a-knowledge-base"></a>Tudásbázis törlése
 
-Az alábbi kód törli a megadott alap használatával ismereteket a [Tudásbázis törlése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) metódust.
+A következő kód törli a megadott tudásbázist a [Tudásbázis törlése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) metódus használatával.
 
 1. Hozzon létre egy új Python-projektet kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
@@ -867,7 +867,7 @@ result = delete_kb (path, '')
 print (pretty_print(result))
 ```
 
-**Tudásbázis válasz törlése**
+**Tudásbázis törlése válasz**
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
@@ -881,9 +881,9 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 <a name="GetKeys"></a>
 
-## <a name="get-endpoint-keys"></a>Végpont-kulcsok beolvasása
+## <a name="get-endpoint-keys"></a>Végponti kulcsok lekérése
 
-A következő kódot lekérdezi az aktuális végpont kulcsok használatával a [végpont kulcsok beolvasása](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys) metódust.
+A következő kód lekéri a jelenlegi végponti kulcsokat a [Végponti kulcsok lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys) metódus használatával.
 
 1. Hozzon létre egy új Python-projektet kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
@@ -925,7 +925,7 @@ result = get_keys (path)
 print (pretty_print(result))
 ```
 
-**Végpont kulcsok válasz**
+**Végponti kulcsok lekérése válasz**
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
@@ -940,9 +940,9 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 <a name="PutKeys"></a>
 
-## <a name="refresh-endpoint-keys"></a>Végpont kulcsok frissítése
+## <a name="refresh-endpoint-keys"></a>Végponti kulcsok frissítése
 
-Aktuális végpont kulcsainak, használatával újragenerálása a következő kódot a [végpont kulcsok frissítése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys) metódust.
+A következő kód újra létrehozza a jelenlegi végponti kulcsokat a [Végponti kulcsok frissítése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys) metódus használatával.
 
 1. Hozzon létre egy új Python-projektet kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
@@ -993,7 +993,7 @@ result = refresh_keys (path, '')
 print (pretty_print(result))
 ```
 
-**Kulcsok válasz végpont frissítése**
+**Végponti kulcsok frissítése válasz**
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
@@ -1008,9 +1008,9 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 <a name="GetAlterations"></a>
 
-## <a name="get-word-alterations"></a>A word változásokból beolvasása
+## <a name="get-word-alterations"></a>Szóváltozatok lekérése
 
-A következő kód lekéri a jelenlegi word változtatások, amely használatával a [töltse le a változtatások](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc) metódust.
+A következő kód lekéri a jelenlegi szóváltozatokat a [Változatok letöltése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc) metódus használatával.
 
 1. Hozzon létre egy új Python-projektet kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
@@ -1052,7 +1052,7 @@ result = get_alterations (path)
 print (pretty_print(result))
 ```
 
-**A word változásokból válasz**
+**Szóváltozatok lekérése válasz**
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
@@ -1073,9 +1073,9 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 <a name="PutAlterations"></a>
 
-## <a name="replace-word-alterations"></a>Cserélje le a word-átalakítások
+## <a name="replace-word-alterations"></a>Szóváltozatok cseréje
 
-A következő kódot váltja fel az aktuális word változtatások, amely használatával a [cserélje le a változtatások](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) metódust.
+A következő kód lecseréli a jelenlegi szóváltozatokat a [Változatok cseréje](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) metódus használatával.
 
 1. Hozzon létre egy új Python-projektet kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
@@ -1136,7 +1136,7 @@ result = put_alterations (path, content)
 print (pretty_print(result))
 ```
 
-**Cserélje le a word változásokból válasz**
+**Szóváltozatok cseréje válasz**
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 

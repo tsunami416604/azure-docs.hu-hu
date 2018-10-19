@@ -1,24 +1,25 @@
 ---
-title: Bing kép keresési egyoldalas webalkalmazást (forráskód) |} Microsoft Docs
-description: Az oktatóanyag bemutatja, hogyan használja a kép Bing keresési API egy egyoldalas webalkalmazást forráskódja.
+title: 'Oktatóanyag: Egyoldalas Bing Entity Search webalkalmazás (forráskód)'
+titlesuffix: Azure Cognitive Services
+description: Forráskód a Bing Entity Search API egyoldalas webalkalmazásban való használatát bemutató oktatóanyaghoz.
 services: cognitive-services
 author: v-jerkin
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 988d4c809fdfb528c9cef2b3cdbefa00c274d33e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 09cb10002be43d65ff10e3c238a880cf138aa064
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347018"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815052"
 ---
-# <a name="tutorial-single-page-web-app-source"></a>Oktatóanyag: Egyoldalas web app forrás
+# <a name="tutorial-single-page-web-app-source"></a>Oktatóanyag: Egyoldalas webalkalmazás forrása
 
-Ez az a teljes forráskód ismertet a [alkalmazás oktatóanyag](tutorial-bing-entities-search-single-page-app.md) Bing kép kereséshez. Az alkalmazás futtatásához, a forrás kódot bemásolhatja a Jegyzettömbben vagy más szövegszerkesztőben, és mentse a fájt `bing.html`. Ezután nyissa meg a mentett fájlt a Microsoft Edge vagy egy másik népszerű böngésző.
+Ez az [egyoldalas Bing Entity Search-alkalmazást bemutató oktatóanyagban](tutorial-bing-entities-search-single-page-app.md) ismertetett teljes forráskód. Az alkalmazás futtatásához másolja a forráskódot a Jegyzettömbbe vagy más szövegszerkesztőbe, és mentse `bing.html` néven. Ezután nyissa meg a mentett fájlt a Microsoft Edge-ben vagy más népszerű böngészőben.
 
 ```html
 <!DOCTYPE html>

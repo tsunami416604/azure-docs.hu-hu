@@ -9,15 +9,15 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 07/27/2018
-ms.openlocfilehash: dcd2854585e2c776f361aa4718af6b99d8cbb593
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fb874d06fbccc7e1db542a5d063b9b6acd35b83f
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47001999"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48240053"
 ---
 >[!IMPORTANT]
->A létrehozott erőforrások előfeltételként is használhatók más Azure Machine Learning-oktatóanyagokban vagy -útmutatókban. 
+>A létrehozott erőforrások előfeltételként is használhatók az Azure Machine Learning szolgáltatás más oktatóanyagaiban vagy útmutatóiban. 
 
 
 Ha már nem kívánja használni a jelen rövid útmutatóban létrehozott erőforrásokat, akkor törölje őket, nehogy többletköltségekkel kelljen számolnia.

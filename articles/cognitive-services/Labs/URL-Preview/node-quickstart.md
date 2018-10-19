@@ -1,39 +1,41 @@
 ---
-title: NODE.js gyors üzembe helyezési projekt URL-cím Preview - Microsoft kognitív szolgáltatások |} Microsoft Docs
-description: A Microsoft Azure kognitív Services az URL-cím előzetes az első lépéseiben.
+title: 'Rövid útmutató: Az URL-cím előnézete projekt, Node.js'
+titlesuffix: Azure Cognitive Services
+description: Az URL-előnézet használatának első lépései a Microsoft Cognitive Servicesben az Azure-ban.
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 03/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 195033d2740b11873baae095cec028dc8d19ce49
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: b8410127ed9a0444ab400eb3242868a85bd5b2c9
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348626"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883567"
 ---
-# <a name="url-preview-node-quickstart"></a>URL-cím Preview csomópont gyors üzembe helyezés
+# <a name="quickstart-url-preview-with-nodejs"></a>Rövid útmutató: Az URL-cím előnézete Node.js nyelven 
 
-A következő csomópont parancs létrehozza a SwiftKey webhely URL-cím előnézete: https://swiftkey.com/en.
+Az alábbi Node-példa létrehozza a SwiftKey webhely URL-előnézetét: https://swiftkey.com/en.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ingyenes próbaidőszakra hozzáférési kulcs beszerzése [kognitív szolgáltatások Labs](https://aka.ms/answersearchsubscription)
+Kérjen hozzáférési kulcsot a [Cognitive Services Labs](https://aka.ms/answersearchsubscription) ingyenes próbaverziójához
 
-## <a name="code-scenario"></a>Kód forgatókönyv 
+## <a name="code-scenario"></a>Kódforgatókönyv 
 
-A következő kód jogosultságot kap a URL-cím előnézeti adatokat.
-Az alábbi lépéseket a megvalósított:
-1. Deklarálja a változókat, adja meg a végpont által állomás és az elérési utat.
-2. Adja meg a lekérdezés URL-címe az előzetes, és adja hozzá a lekérdezési paramétert.  
-3. A válasz kezelő függvény létrehozása.
-4. Adja meg a keresési funkció, amely hozza létre a kérelmet, és hozzáadja a *Ocp-Apim-előfizetés-kulcs* fejléc.
-5. Futtassa a keresési funkciót. 
+Az alábbi kód egy URL-cím előnézeti adatait kéri le.
+Implementálására a következő lépésekben kerül sor:
+1. Deklarálni kell a változókat a végpont megadásához gazdagép és elérési út szerint.
+2. Meg kell adni az előnézetben megtekintendő lekérdezési URL-címet, és meg kell adni hozzá egy lekérdezési paramétert.  
+3. Létre kell hozni egy, a választ kezelő függvényt.
+4. Definiálni kell a kérést létrehozó és az *Ocp-Apim-Subscription-Key* fejlécet hozzáadó Search függvényt.
+5. Futtatni kell a Search függvényt. 
 
-A teljes kód látható ebben a bemutatóban a következőképpen:
+Az útmutatóban használt teljes kód a következő:
 
 ````
 'use strict';
@@ -84,7 +86,7 @@ Search();
 ````
 
 ## <a name="next-steps"></a>További lépések
-- [C#-példakód](csharp.md)
-- [Java gyors üzembe helyezés](java-quickstart.md)
-- [JavaScript gyors üzembe helyezés](javascript.md)
-- [Python gyors üzembe helyezés](python-quickstart.md)
+- [C#-mintakód](csharp.md)
+- [Java – rövid útmutató](java-quickstart.md)
+- [JavaScript – rövid útmutató](javascript.md)
+- [Python – rövid útmutató](python-quickstart.md)

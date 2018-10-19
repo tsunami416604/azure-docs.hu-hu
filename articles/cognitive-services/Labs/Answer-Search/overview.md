@@ -1,31 +1,31 @@
 ---
 title: Mi a Válaszkeresés projekt?
 titlesuffix: Azure Cognitive Services
-description: A projekt válaszkeresés bemutatása.
+description: A Válaszkeresés projekt bemutatása.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: project-answer-search
-ms.topic: article
+ms.topic: overview
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 87fe7b008e3e7c6cd8d1a9a870c0fb8ce2f6a7cd
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
-ms.translationtype: MT
+ms.openlocfilehash: 5658054b3cc77db20edd64f6c560ee5d4a58eb46
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868255"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883720"
 ---
 # <a name="what-is-project-answer-search"></a>Mi a Válaszkeresés projekt?
-Projekt válasz Search API a Bing v7-végpont használatával interrogative lekérdezésekre adott válaszok. A kérdés például a "Mi az a föld kerület?" adatok választ adja vissza.  Egy-egy személyt, hely vagy egy dolog lekérdezést a lekérdezés által azonosított entitás adatait adja vissza. Ezeket a forgatókönyveket akkor lehet hasznos az alkalmazások, például a természetes nyelvi robotokat üzenetküldő alkalmazások, az olvasók, stb.  
+A Project Answer Search API a Bing v7 végpontot használja a válaszokat váró lekérdezések megválaszolására. Például a „Mekkora a Föld kerülete?” kérdésre a rendszer tényekkel válaszol.  A személyekkel, helyekkel vagy dolgokkal kapcsolatos lekérdezések a lekérdezésben azonosított entitásokkal kapcsolatos információkat adnak vissza. Ezek a forgatókönyvek olyan alkalmazások esetén lehetnek hasznosnak, amilyenek a csevegőrobotok, az üzenőalkalmazások, az olvasók stb.  
 
-Lekérdezések vissza válaszok, amelyek lekérdezési forgatókönyvtől függ: hagyása minden esetben vannak ad vissza, miközben [tények](fact-queries.md) és/vagy [entitások](entity-queries.md) adott adja vissza.
+A lekérdezések a lekérdezési forgatókönyvtől függő válaszokat adnak vissza: webhelyeket mindig visszaadnak, [tényeket](fact-queries.md) és/vagy [entitásokat](entity-queries.md) pedig csak akkor, ha azok relevánsak.
 
 ## <a name="endpoint"></a>Végpont
-Válaszok a a kérdés vagy információ egy személy, hely vagy egy dolog, hogy a válasz keresési API-végpont egy kérés küldése. A fejlécek és URL-paraméterek használata a különböző előírásoknak.  Például *Ocp-Apim-Subscription-Key* érvényes token fejléc.  A piaci paraméter megadása kötelező. Csak `en-us` piaci jelenleg támogatott.
+A személyekkel, helyekkel vagy dolgokkal kapcsolatos információk lekéréséhez küldjön egy kérést az Answer Search API-végpontra. A különféle specifikációkat a fejlécekkel és az URL-paraméterekkel adhatja meg.  Szerepeltesse az *Ocp-Apim-Subscription-Key* fejlécet egy érvényes jogkivonattal.  A piac paraméter megadása kötelező. Jelenleg csak az `en-us` piac támogatott.
 
-Az alábbi lekérdezés lekérdezi a kérdésekre adott válaszok: "Mi az a föld kerület?"
+Az alábbi lekérdezés a „Mekkora a Föld kerülete?” kérdésre ad válaszokat.
 
 GET:
 ````
@@ -33,11 +33,11 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=what+is+circ
 
 ````
 
-Az URL-cím paraméter `q=` keresés Objekt megadása szükséges.
+A keresés tárgyának meghatározásához a `q=` URL-paramétert meg kell adni.
 
 ## <a name="response-object"></a>Válaszobjektum
 
-A válasz HTTP fejlécek, weblapjait, tényeket, illetve entitásokat tartalmazza.
+A válasz HTTP-fejléceket, weblapokat, illetve tényeket és/vagy entitásokat tartalmaz.
 
 ````
 BingAPIs-TraceId: AB2E75C998614ADB8EBF5110DF648298
@@ -239,22 +239,22 @@ JSON Response:
 ````
 
 ## <a name="terms-of-use"></a>Használati feltételek
-Válaszkeresés projekt és a projekt videó trendeket is szabályozza a [követelmények a Bing Search használata és megjelenítése](use-display-requirements.md).
+A Válaszkeresés és a Videótrendek projekt használatára [a Bing Search használati és megjelenítési követelményei vonatkoznak](use-display-requirements.md).
 
-Vagy egy harmadik féltől származó, az Ön nevében, előfordulhat, hogy nem használja, megőrzése, tárolásához, gyorsítótár, oszt meg, vagy a tesztelés, fejlesztés, képzés, terjesztése vagy minden nem Microsoft-szolgáltatás elérhetővé tétele céljából, az URL-cím előzetes API-ból adatokat terjeszteni vagy szolgáltatás. 
+Ön vagy az Ön nevében eljáró harmadik fél nem használhatja, őrizheti meg, tárolhatja, gyorsítótárazhatja, oszthatja meg vagy terjesztheti az URL Preview API-ról szerzett adatokat tesztelés, fejlesztés, képzés, terjesztés vagy bármely nem Microsoft szolgáltatás vagy funkció elérhetővé tétele céljából. 
 
 ## <a name="throttling-requests"></a>Kérelmek szabályozása
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
 
-## <a name="data-attribution"></a>Adatokat tesznek elérhetővé; ilyenek.  
+## <a name="data-attribution"></a>Adatok forrásmegjelölése  
 
-Projekt válaszkeresés válaszok harmadik fél által birtokolt információkat tartalmaznak. Ön felelőssége annak biztosítása érdekében, használatára megfelelő, például úgy, hogy megfelel a creative commons licencet a felhasználói élmény támaszkodhat.  
+A Válaszkeresés projekt által adott válaszok külső felek tulajdonában álló információkat tartalmaznak. Az Ön felelőssége az információk megfelelő használatának biztosítása, például azzal, hogy megfelel a felhasználói felületeihez és folyamataihoz igénybe vett Creative Commons-licencek feltételeinek.  
   
-Ha egy válasz vagy az eredmény tartalmazza a `contractualRules`, `attributions`, vagy `provider` mezők, meg kell attribútum az adatokat. Ha a válasz nem tartalmazza a mezőt, nem tesznek elérhetővé; ilyenek nem szükséges. Ha az eredmény tartalmazza a `contractualRules` mezőt és a `attributions` és/vagy `provider` mezőket, szerződéses szabályok segítségével attribútum az adatokat.  
+Ha valamely válasz vagy eredmény tartalmazza az `contractualRules`, `attributions` vagy `provider` mezőket, az adatok forrását meg kell jelölnie. Ha a válasz egyiket sem tartalmazza, nem kell megjelölni a forrást. Ha a válasz a `contractualRules` mezőt, valamint az `attributions` és/vagy a `provider` mezőt tartalmazza, az adatok forrásának megjelöléséhez a szerződéses szabályokat kell alkalmaznia.  
   
-Az alábbi példa bemutatja egy olyan entitás, amely tartalmaz egy MediaAttribution szerződéses szabály és a egy rendszerképet, amely tartalmazza a `provider` mező. A MediaAttribution szabály azonosítja a kép a szabály céljaként, így lenne, figyelmen kívül a lemezkép `provider` mező, ezért használja inkább a MediaAttribution szabály tesznek elérhetővé; ilyenek biztosít.  
+A következő példa bemutat egy entitást, amely tartalmazza a MediaAttribution (médiatartalmak forrásmegjelölésére vonatkozó) szerződéses szabályt, valamint egy képet, amely egy `provider` mezőt tartalmaz. A MediaAttribution szabály megállapítja, hogy a szabály a képre is vonatkozik, így a kép `provider` mezője figyelmen kívül hagyható, és helyette a MediaAttribution szabály alkalmazható a forrás megjelöléséhez.  
   
 ```  
         "value" : [{
@@ -283,10 +283,10 @@ Az alábbi példa bemutatja egy olyan entitás, amely tartalmaz egy MediaAttribu
         }]
 ```  
   
-Ha egy szerződéses szabályt tartalmaz a `targetPropertyName` mező, a szabály vonatkozik csak a célként megadott mezőben. Ellenkező esetben a szabály vonatkozik-e a szülői objektumot, amely tartalmazza a `contractualRules` mező.  
+Ha egy szerződéses szabály tartalmazza a `targetPropertyName` mezőt, a szabály csak az érintett mezőkre vonatkozik. Ha nem, akkor a szabály a `contractualRules` mezőt tartalmazó szülőobjektumra vonatkozik.  
   
   
-A következő példában a `LinkAttribution` szabály tartalmazza a `targetPropertyName` mező, ezért a szabály vonatkozik a `description` mező. Bizonyos mezők alkalmazó szabályok meg kell adnia egy követő a meghatározott adatok a szolgáltató webhelyéről mutató hivatkozást tartalmazó sor. Az attribútum a leírást, például egy vonal azonnal ebben az esetben a leíró szöveg, amely tartalmaz egy hivatkozást az adatok a szolgáltató webhelyéről, a következő létrehozása en.wikipedia.org mutató hivatkozást.  
+A következő példában a `LinkAttribution` szabály tartalmazza a `targetPropertyName` mezőt, így a szabály a `description` mezőre vonatkozik. Az egyes mezőkre vonatkozó szabályoknál be kell szúrnia egy sort közvetlenül a célzott adatok után, amely a szolgáltató webhelyére mutató hivatkozást tartalmaz. A leírás forrásának megjelöléséhez például szúrjon be egy sort közvetlenül a leírás szövege után a szolgáltató webhelyére mutató hivatkozással (esetünkben ez az en.wikipedia.org).  
   
 ```  
 "entities" : {  
@@ -305,36 +305,36 @@ A következő példában a `LinkAttribution` szabály tartalmazza a `targetPrope
   
 ```  
 
-### <a name="license-attribution"></a>Licenc megnevezése  
+### <a name="license-attribution"></a>Licencek forrásmegjelölése  
 
-Ha szerződéses szabályok listája tartalmaz egy [LicenseAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#licenseattribution) szabály, meg kell jelenítenie a hirdetmény a sor következett közvetlenül a tartalmat, amely a licenc vonatkozik. A `LicenseAttribution` szabályt használ a `targetPropertyName` mező segítségével azonosítja a tulajdonságot, amely a licenc vonatkozik.  
+Ha a szerződéses szabályok listája tartalmaz egy [LicenseAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#licenseattribution) szabályt, a licencre vonatkozó tájékoztatást közvetlenül azután a tartalom után kell megjeleníteni, amelyre a licenc vonatkozik. A `LicenseAttribution` szabály a `targetPropertyName` mező segítségével azonosítja a tulajdonságot, amelyre a licenc vonatkozik.  
   
-A következő látható egy példa, amely magában foglalja egy `LicenseAttribution` szabály.  
+Az alábbi példa tartalmaz egy `LicenseAttribution` szabályt.  
   
-![Licenc megnevezése](./media/licenseattribution.png)  
+![Licencek forrásmegjelölése](./media/licenseattribution.png)  
   
-A licenc figyelje meg, hogy jelenítjük meg azt a webhelyet, a licenc információkat tartalmaz egy hivatkozást kell tartalmaznia. Általában akkor győződjön meg arról, a licenc neve hivatkozás. Például, ha az értesítés **CC biztonsági Társítás licenc szöveg** és CC biztonsági Társítás a licenc neve, akkor biztosítja, CC biztonsági Társítás hivatkozás.  
+A megjelenített licencadatok között kell lennie egy hivatkozásnak, amely a licenc információit tartalmazó webhelyre mutat. Általában a licenc nevét szokás hivatkozásként szerepeltetni. Például ha a tájékoztatás így szól: **A szövegre a CC-BY-SA licenc vonatkozik**, és a CC-BY-SA a licenc neve, a CC-BY-SA nevet érdemes hivatkozássá tenni.  
   
-### <a name="link-and-text-attribution"></a>Hivatkozásra, és a szöveg megnevezése  
+### <a name="link-and-text-attribution"></a>Hivatkozások és szövegek forrásmegjelölése  
 
-A [LinkAttribution](reference.md#linkattribution) és [TextAttribution](reference.md#textattribution) szabályok általában az adatok a szolgáltató azonosítására szolgál. A `targetPropertyName` mező azonosítja a mezőt, amely a szabály vonatkozik.  
+A [LinkAttribution](reference.md#linkattribution) és [TextAttribution](reference.md#textattribution) szabályokat általában az adatszolgáltató azonosítására alkalmazzuk. A `targetPropertyName` mező azonosítja a mezőt, amelyre a szabály vonatkozik.  
   
-Az attribútum a szolgáltatók, vegyen fel egy közvetlenül követő tartalmat a alkalmazni az adatok (például a megcélzott mezőhöz). A sor egyértelműen feliratú jelzi, hogy a szolgáltatók a következők: az adatok forrását. Például "adatait: en.wikipedia.org". A `LinkAttribution` szabályok, létre kell hoznia egy hivatkozást a szolgáltató webhelyéről.  
+A szolgáltató megjelölése érdekében szúrjon be egy sort közvetlenül a tartalom után, amelyre a forrásmegjelölés vonatkozik (például a célmező után). A sorban egyértelműen jelezni kell, hogy a szolgáltató az adatok forrása. Egy erre alkalmas megfogalmazás például a következő: „Az adatok forrása: en.wikipedia.org”. A `LinkAttribution` szabályoknál létre kell hoznia egy hivatkozást, amely a szolgáltató webhelyére mutat.  
   
-Az alábbi példa, amely tartalmazza az `LinkAttribution` és `TextAttribution` szabályokat.  
+Az alábbi példa `LinkAttribution` és `TextAttribution` szabályokat is tartalmaz.  
   
-![Hivatkozás szövege megnevezése](./media/linktextattribution.png)  
+![Hivatkozások és szövegek forrásmegjelölése](./media/linktextattribution.png)  
 
-### <a name="media-attribution"></a>Media megnevezése  
+### <a name="media-attribution"></a>Médiatartalmak forrásmegjelölése  
 
-Ha az entitás tartalmaz egy képet, és megjeleníti azt, meg kell adnia a szolgáltató webhelyéről átkattintásos mutat. Ha az entitás tartalmaz egy [MediaAttribution](reference.md#mediaattribution) szabály, használja a szabály URL-címet az átkattintásos hivatkozást szeretne létrehozni. Ellenkező esetben használja az URL-címet, a lemezkép részeként történő `provider` mező az átkattintásos hivatkozást szeretne létrehozni.  
+Ha az entitás képet tartalmaz, amelyet megjelenít, egy, a szolgáltató webhelyére mutató átkattintásos hivatkozást kell beszúrnia. Ha az entitás tartalmaz egy [MediaAttribution](reference.md#mediaattribution) szabályt, a szabály URL-címe alapján kell létrehozni az átkattintásos hivatkozást. Ha nem tartalmaz, használja a kép `provider` mezőjében lévő URL-címet.  
   
-A következő látható egy példa, amely tartalmaz egy képet `provider` mező, és szerződéses szabályokat. Mivel a példa tartalmazza az általános szabály, akkor figyelmen kívül a lemezkép `provider` mezőben, majd a alkalmazni a `MediaAttribution` szabály.  
+Az alábbi példa egy kép `provider` mezőjét és szerződéses szabályait mutatja be. Mivel a példa tartalmazza a szerződéses szabályt, a kép `provider` mezőjét figyelmen kívül kell hagyni, és a `MediaAttribution` szabályt kell alkalmazni.  
   
-![Media megnevezése](./media/mediaattribution.png)  
+![Médiatartalmak forrásmegjelölése](./media/mediaattribution.png)  
 
 ## <a name="next-steps"></a>További lépések
-- [C# gyorsútmutató](c-sharp-quickstart.md)
-- [Java a rövid útmutató](java-quickstart.md)
-- [Csomópont a rövid útmutató](node-quickstart.md)
-- [Python a rövid útmutató](python-quickstart.md)
+- [C# – rövid útmutató](c-sharp-quickstart.md)
+- [Java – rövid útmutató](java-quickstart.md)
+- [Node – rövid útmutató](node-quickstart.md)
+- [Python – rövid útmutató](python-quickstart.md)
