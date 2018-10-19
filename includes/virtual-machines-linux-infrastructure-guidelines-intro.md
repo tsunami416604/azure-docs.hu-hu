@@ -1,2 +1,0 @@
-Ez a cikk biztosítani számukra kialakítási szempontokat és irányelveket, az alkalmazás-infrastruktúrák, az Azure-ban létrehozhat egy szélesebb körű sorozat részét képezi. Is [megtekintése a kiegészítő témakörök a sorozat](#next-steps). Gyorsan hozhat létre egy Azure-beli fejlesztési/tesztelési környezet ki, bár vannak további szempontok egy éles használatra kész, magas rendelkezésre állású és biztonságos környezetet végrehajtása során.
-
