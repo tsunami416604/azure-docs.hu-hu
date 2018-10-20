@@ -3,7 +3,7 @@ title: Oktatóanyag – a CI/CD-folyamat létrehozása az Azure-ban az Azure Dev
 description: Ebben az oktatóanyagban elsajátíthatja, hogyan lehet folyamatos integrációt és teljesítést, amely üzembe helyezi a webalkalmazás az IIS-hez az Azure-beli Windows virtuális gépen az Azure DevOps-szolgáltatásokkal folyamat létrehozása.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/12/2017
-ms.author: cynthn
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: d4edf0d22ce04eb2cb865d80c2b70f1bcc2169df
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4b4d514ec8bfd78b303a7f51c2a4072507da5be9
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301898"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471458"
 ---
 # <a name="tutorial-create-a-continuous-integration-pipeline-with-azure-devops-services-and-iis"></a>Oktatóanyag: Azure DevOps-szolgáltatásokkal és az IIS egy folyamatos integrációs folyamat létrehozása
 Automatizálja a buildelési, tesztelési és üzembe helyezési szakaszok az alkalmazásfejlesztés, használhatja a folyamatos integráció és készregyártás (CI/CD) folyamatot. Ebben az oktatóanyagban létrehozhat egy CI/CD-folyamat használata az Azure DevOps-szolgáltatásokkal és a egy Windows virtuális gép (VM) az IIS-t futtató Azure-ban. Az alábbiak végrehajtásának módját ismerheti meg:

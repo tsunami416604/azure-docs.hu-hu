@@ -3,7 +3,7 @@ title: Alkalmazás üzembe helyezése egy Azure-beli virtuálisgép-méretezési
 description: Ismerje meg, hogyan telepíthet alkalmazásokat a Linux és Windows méretezési csoportban lévő virtuálisgép-példányok
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: 86bb231a4eb9468ccc92c182b099714950b2a81c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: zarhoads
+ms.openlocfilehash: 22e035be27f16e7b73e545d75eb9cd108a919114
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979442"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471203"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>A virtual machine scale sets az alkalmazás üzembe helyezése
 Ha alkalmazásokat szeretne futtatni egy méretezési csoport virtuálisgép-példányán, először telepítenie kell az alkalmazás összetevőit és szükséges fájljait. Ez a cikk bemutatja a módon hozhat létre egyéni Virtuálisgép-rendszerképet a méretezési csoportban lévő példányok állítsa be, vagy már meglévő Virtuálisgép-példányok automatikus futtatásra telepítési szkriptek. Azt is megtudhatja, hogyan kezelhetők alkalmazás vagy az operációs rendszer frissítése egy méretezési csoportot.

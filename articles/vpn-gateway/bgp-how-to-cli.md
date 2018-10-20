@@ -3,24 +3,17 @@ title: 'Az Azure VPN gateway a BGP konfigurálása: Resource Manager és a paran
 description: Ez a cikk végigvezeti az Azure VPN gateway a BGP konfigurálása Azure Resource Manager és a CLI használatával.
 services: vpn-gateway
 documentationcenter: na
-author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: yushwang
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/25/2017
-ms.author: cherylmc
-ms.openlocfilehash: 657cad69fff66aaaeba9819569442981d229f644
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 09/25/2018
+ms.author: yushwang
+ms.openlocfilehash: f0367a360de97d3935c7fa8de9f3dafa6555811e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971127"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471356"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>BGP konfigurálása Azure VPN Gateway-átjárók a parancssori felület használatával
 
@@ -55,7 +48,7 @@ Ebben a szakaszban szükség, mielőtt hajt végre a lépéseket bármely más k
 
 ### <a name="before-you-begin"></a>Előkészületek
 
-Telepítse a CLI-parancsok (2.0-s vagy újabb) legújabb verzióját. A CLI-parancsok telepítéséről további információkért lásd: [az Azure CLI telepítése](/cli/azure/install-azure-cli) és [Azure CLI használatának első lépései](/cli/azure/get-started-with-azure-cli).
+Telepítse a CLI-parancsok (2.0-s vagy újabb) legújabb verzióját. Információk a CLI-parancsok telepítéséről: [Az Azure CLI telepítése](/cli/azure/install-azure-cli) és [Bevezetés az Azure CLI használatába](/cli/azure/get-started-with-azure-cli).
 
 ### <a name="step-1-create-and-configure-testvnet1"></a>1. lépés: TestVNet1 létrehozása és konfigurálása
 

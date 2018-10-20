@@ -1,24 +1,25 @@
 ---
-title: A cognitive Services beszédfelismerő SDK-dokumentáció |} A Microsoft Docs
+title: A Speech Service SDK dokumentációja
+titlesuffix: Azure Cognitive Services
 description: Kibocsátási megjegyzések – mi változott a legfrissebb verziókban
-titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: wolfma
-ms.openlocfilehash: 7f637014c5f3e246d67ae051f9304e2f2536d725
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: b5e4d239121b2449a45dfce826c99765f1c3f4be
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427382"
+ms.locfileid: "49471137"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
-## <a name="cognitive-services-speech-sdk-101"></a>Cognitive Services beszéd 1.0.1 SDK
+## <a name="speech-service-sdk-101"></a>Beszédszolgáltatás 1.0.1 SDK
 
 Hibajavításokat tartalmaz, és megbízhatóság fejlesztései:
 

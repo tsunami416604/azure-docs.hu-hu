@@ -1,34 +1,33 @@
 ---
 title: Az Azure SQL Database kapcsolati architektúra |} A Microsoft Docs
-description: Ez a dokumentum ismerteti az Azure-SQLDB kapcsolati architektúra az Azure-ban vagy az Azure-on kívül.
+description: Ez a dokumentum ismerteti az Azure SQL Database kapcsolati architektúra az Azure-ban vagy az Azure-on kívül.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: DhruvMsft
-ms.author: dhruv
+author: oslake
+ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/24/2018
-ms.openlocfilehash: 66f558db713ab951864fe694f27f2e60d52e875a
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 82bc76b47f8073e07163e7f827b900a59cf3ad7f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064142"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470575"
 ---
-# <a name="azure-sql-database-connectivity-architecture"></a>Az Azure SQL Database kapcsolati architektúra 
+# <a name="azure-sql-database-connectivity-architecture"></a>Az Azure SQL Database kapcsolati architektúra
 
-Ez a cikk ismerteti az Azure SQL Database kapcsolati architektúra, valamint azt ismerteti, hogyan a különböző összetevőket az Azure SQL Database-példány forgalmat működni. Ezek az Azure SQL Database kapcsolat összetevők függvény irányítani a hálózati forgalom az Azure-adatbázishoz csatlakozó ügyféltől Azure-ban és az Azure-on kívül csatlakozó ügyféltől. Ez a cikk a szkriptminták módosításához, hogyan történik a kapcsolat, és az alapértelmezett kapcsolat beállításainak módosításával kapcsolatos szempontokat is biztosít. 
+Ez a cikk ismerteti az Azure SQL Database kapcsolati architektúra, valamint azt ismerteti, hogyan a különböző összetevőket az Azure SQL Database-példány forgalmat működni. Ezek az Azure SQL Database kapcsolat összetevők függvény irányítani a hálózati forgalom az Azure-adatbázishoz csatlakozó ügyféltől Azure-ban és az Azure-on kívül csatlakozó ügyféltől. Ez a cikk a szkriptminták módosításához, hogyan történik a kapcsolat, és az alapértelmezett kapcsolat beállításainak módosításával kapcsolatos szempontokat is biztosít.
 
 ## <a name="connectivity-architecture"></a>Kapcsolati architektúra
 
 Az alábbi ábra az Azure SQL Database kapcsolati architektúra magas szintű áttekintést nyújt.
 
 ![az architektúra áttekintése](./media/sql-database-connectivity-architecture/architecture-overview.png)
-
 
 Az alábbi lépések bemutatják, hogyan létrejön a kapcsolat egy Azure SQL Database az Azure SQL Database software load balancer (SLB) és az Azure SQL Database-átjárón keresztül.
 
@@ -39,7 +38,6 @@ Az alábbi lépések bemutatják, hogyan létrejön a kapcsolat egy Azure SQL Da
 
 > [!IMPORTANT]
 > Ezek az összetevők mindegyike rendelkezik elosztott szolgáltatásmegtagadásos (DDoS-) szolgáltatás védelem beépített a hálózat és az app-réteget.
->
 
 ## <a name="connectivity-from-within-azure"></a>Csatlakozás Azure-ban
 
@@ -54,7 +52,9 @@ Ha Azure-on kívülről csatlakozik, a kapcsolatok rendelkezik-e a kapcsolódás
 ![az architektúra áttekintése](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
 > [!IMPORTANT]
-> A Szolgáltatásvégpontok az Azure SQL Database használatakor a szabályzat van **Proxy** alapértelmezés szerint. Ahhoz, hogy a kapcsolat a virtuális hálózaton belül, engedélyeznie kell az alábbi listán megadott Azure SQL Database átjáró IP-címeket a kimenő kapcsolatokat. A Szolgáltatásvégpontok használatakor erősen javasoljuk, hogy váltson a kapcsolódási szabályzat a **átirányítási** engedélyezéséhez a jobb teljesítmény érdekében. Ha módosítja a kapcsolódási szabályzat a **átirányítási** nem lesz elegendő ahhoz, hogy az NSG-t, az alább felsorolt IP-címek Azure SQLDB átjáró kimenő engedélyezése, engedélyeznie kell a kimenő célja: minden Azure SQLDB IP-címet. Ez az NSG-t (a hálózati biztonsági csoportok) Szolgáltatáscímkék segítségével valósítható meg. További információkért lásd: [Szolgáltatáscímkék](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
+> A Szolgáltatásvégpontok az Azure SQL Database használatakor a szabályzat van **Proxy** alapértelmezés szerint. Ahhoz, hogy a kapcsolat a virtuális hálózaton belül, engedélyeznie kell az alábbi listán megadott Azure SQL Database átjáró IP-címeket a kimenő kapcsolatokat.
+
+A Szolgáltatásvégpontok használatakor erősen javasoljuk, hogy váltson a kapcsolódási szabályzat a **átirányítási** engedélyezéséhez a jobb teljesítmény érdekében. Ha módosítja a kapcsolódási szabályzat a **átirányítási** nem lesz elegendő ahhoz, hogy engedélyezze a kimenő az alább felsorolt IP-címek az Azure SQL Database átjárója az NSG-t, engedélyeznie kell a kimenő célja: minden Azure SQL Database IP-címet. Ez az NSG-t (a hálózati biztonsági csoportok) Szolgáltatáscímkék segítségével valósítható meg. További információkért lásd: [Szolgáltatáscímkék](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Az Azure SQL Database átjárója IP-címek
 
@@ -76,8 +76,8 @@ Az alábbi táblázat az elsődleges és másodlagos IP-címek, adatok minden r�
 | Kelet-Ázsia | 191.234.2.139 | 52.175.33.150 |
 | 1 USA keleti régiója | 191.238.6.43 | 40.121.158.30 |
 | USA 2. keleti régiója | 191.239.224.107 | 40.79.84.180 * |
-| Közép-India | 104.211.96.159  | |
-| Dél-India | 104.211.224.146  | |
+| Közép-India | 104.211.96.159 | |
+| Dél-India | 104.211.224.146 | |
 | Nyugat-India | 104.211.160.80 | |
 | Kelet-Japán | 191.237.240.43 | 13.78.61.196 |
 | Nyugat-Japán | 191.238.68.11 | 104.214.148.156 |
@@ -90,11 +90,11 @@ Az alábbi táblázat az elsődleges és másodlagos IP-címek, adatok minden r�
 | Egyesült Királyság északi régiója | 13.87.97.210 | |
 | Egyesült Királyság déli régiója 1 | 51.140.184.11 | |
 | Egyesült Királyság 2. déli régiója | 13.87.34.7 | |
-| Az Egyesült Királyság nyugati régiója | 51.141.8.11  | |
+| Az Egyesült Királyság nyugati régiója | 51.141.8.11 | |
 | USA nyugati középső régiója | 13.78.145.25 | |
 | Nyugat-Európa | 191.237.232.75 | 40.68.37.158 |
 | USA nyugati RÉGIÓJA 1 | 23.99.34.75 | 104.42.238.205 |
-| USA nyugati régiója, 2. | 13.66.226.202  | |
+| USA nyugati régiója, 2. | 13.66.226.202 | |
 ||||
 
 \* **Megjegyzés:** *USA keleti RÉGIÓJA 2* is a harmadlagos IP-címmel rendelkezik `52.167.104.0`.
@@ -170,10 +170,10 @@ Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscription
 
 > [!IMPORTANT]
 > A szkriptnek szüksége van a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
->
 
 A következő CLI-példaszkript bemutatja, hogyan módosíthatja a kapcsolódási szabályzat.
 
+```azurecli-interactive
 <pre>
 # Get SQL Server ID
 sqlserverid=$(az sql server show -n <b>sql-server-name</b> -g <b>sql-server-group</b> --query 'id' -o tsv)
@@ -181,13 +181,14 @@ sqlserverid=$(az sql server show -n <b>sql-server-name</b> -g <b>sql-server-grou
 # Set URI
 id="$sqlserverid/connectionPolicies/Default"
 
-# Get current connection policy 
+# Get current connection policy
 az resource show --ids $id
 
-# Update connection policy 
+# Update connection policy
 az resource update --ids $id --set properties.connectionType=Proxy
 
 </pre>
+```
 
 ## <a name="next-steps"></a>További lépések
 

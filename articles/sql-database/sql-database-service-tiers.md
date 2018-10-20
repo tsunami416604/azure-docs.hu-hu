@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 3b2359564020eeeb209a7eb78d81782a675f125d
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.date: 10/19/2018
+ms.openlocfilehash: 9dc993b6ba9b90dfa61660df004ef7dae8b93fa7
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379287"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470954"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Az Azure SQL Database vásárlási modellek
 
@@ -33,21 +33,21 @@ Az alábbi táblázatos és hasonlítsa össze két vásárlási modell.
 
 |**Beszerzési modell**|**Leírás**|**A legjobb**|
 |---|---|---|
-|DTU-alapú modell|Ez a modell csomagolt méri, számítási, tárolási és i/o-erőforrások alapján. A számítási méret az önálló adatbázisok adatbázis-tranzakciós egységek (dtu-k) és a rugalmas Database Transaction Unitok (Edtu) rugalmas készletek vannak kifejezve. További információ a dtu-król és Edtu-: [Mik a dtu-król és edtu-k](sql-database-service-tiers.md#dtu-based-purchasing-model)?|A legjobb erőforrás egyszerű, előre konfigurált beállítások használni.| 
+|DTU-alapú modell|Ez a modell csomagolt méri, számítási, tárolási és i/o-erőforrások alapján. A számítási méret az önálló adatbázisok adatbázis-tranzakciós egységek (dtu-k) és a rugalmas Database Transaction Unitok (Edtu) rugalmas készletek vannak kifejezve. További információ a dtu-król és Edtu-: [Mik a dtu-król és edtu-k](sql-database-service-tiers.md#dtu-based-purchasing-model)?|A legjobb erőforrás egyszerű, előre konfigurált beállítások használni.|
 |vCore-alapú modell|Ez a modell lehetővé teszi a számítási és tárolási erőforrások egymástól függetlenül kiválasztását. Lehetővé teszi az SQL Server Azure Hybrid Benefit használatával költséget takaríthat meg.|Legjobb ügyfelek esetében, akik a rugalmasságot, a szabályozhatóság, és értékét.|
 ||||  
 
 ![díjszabási modell](./media/sql-database-service-tiers/pricing-model.png)
 
-## <a name="vcore-based-purchasing-model"></a>Virtuálismag-alapú vásárlási modell 
+## <a name="vcore-based-purchasing-model"></a>Virtuálismag-alapú vásárlási modell
 
 Egy virtuális magot és hardver generációja és fizikai jellemzők hardver (például a magok, memória, tároló mérete száma) közül választhat lehetőség elérhető logikai CPU jelöli. A Virtuálismag-alapú vásárlási modell biztosítja a rugalmasságot, a vezérlő, az egyéni erőforrás-használat átláthatósága és közvetlen módon lefordítani a helyszíni tevékenységprofil követelményeinek a felhőben. Ez a modell lehetővé teszi a számítási, memória és a tárolási számítási feladatok igényeik alapján kiválaszthatja. A Virtuálismag-alapú vásárlási modell, választhat [általános célú](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) és [üzletileg kritikus](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) szolgáltatásszintek egyaránt [önálló adatbázisok](sql-database-single-database-scale.md), [ felügyelt példányok](sql-database-managed-instance.md), és [rugalmas készletek](sql-database-elastic-pool.md). Az önálló adatbázisokhoz is választhat a [nagy kapacitású (előzetes verzió)](sql-database-service-tier-hyperscale.md) szolgáltatási szint.
 
 A Virtuálismag-alapú vásárlási modell lehetővé teszi, hogy egymástól függetlenül válassza ki a számítási és tárolási erőforrások, a helyszíni teljesítmény és optimalizálás ár. A Virtuálismag-alapú vásárlási modell, az ügyfeleknek kell fizetniük:
 
 - COMPUTE (szolgáltatási szint + virtuális magok száma és memória + hardvertől mennyisége)
-- Típus és az adat- és naplófájlok tárterület mérete 
-- Biztonsági mentési tárolás (RA-GRS) 
+- Típus és az adat- és naplófájlok tárterület mérete
+- Biztonsági mentési tárolás (RA-GRS)
 
 > [!IMPORTANT]
 > Számítási, IOs-, adat, és a naplók tárolásához díját adatbázis vagy a rugalmas készletet. Biztonsági másolatok tárolási számlázása az egyes adatbázisokhoz. További részleteket a felügyelt példány díjak, [Azure SQL Database felügyelt példányába](sql-database-managed-instance.md).
@@ -75,9 +75,7 @@ Mélyebb betekintést nyerhet a (DTU) erőforrás-használat, a számítási fel
 
 ### <a name="elastic-database-transaction-units-edtus"></a>Rugalmas Database Transaction Unitok (edtu-k)
 
-Helyett adja meg a dedikált erőforráskészletek (dtu-k), előfordulhat, hogy nem mindig lehet szükséges, amely mindig elérhető SQL-adatbázishoz, mint helyezheti őket egy [rugalmas készlet](sql-database-elastic-pool.md) egy SQL Database-kiszolgálón, amely erőforráskészletekbe szervezhető között megosztja Ezeket az adatbázisokat. A rugalmas készletek megosztott erőforrásainak rugalmas adatbázis-tranzakciós egységek vagy edtu-k vannak megadva. Rugalmas készletek több adatbázis, amelyek felhasználási módja nagy mértékben és kiszámíthatatlanul teljesítménybeli céljainak kezelésére egy egyszerű és költséghatékony megoldást kínálnak. Rugalmas készlet garantálja, hogy a készletben egy adatbázis nem felhasznált erőforrásokat, amíg a készletben lévő minden egyes adatbázis biztosítása minden esetben rendelkezik egy minimálisan szükséges erőforrások rendelkezésre. 
-
-![Bevezetés az SQL Database-be: eDTU-k rétegek és szintek szerint](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
+Helyett adja meg a dedikált erőforráskészletek (dtu-k), előfordulhat, hogy nem mindig lehet szükséges, amely mindig elérhető SQL-adatbázishoz, mint helyezheti őket egy [rugalmas készlet](sql-database-elastic-pool.md) egy SQL Database-kiszolgálón, amely erőforráskészletekbe szervezhető között megosztja Ezeket az adatbázisokat. A rugalmas készletek megosztott erőforrásainak rugalmas adatbázis-tranzakciós egységek vagy edtu-k vannak megadva. Rugalmas készletek több adatbázis, amelyek felhasználási módja nagy mértékben és kiszámíthatatlanul teljesítménybeli céljainak kezelésére egy egyszerű és költséghatékony megoldást kínálnak. Rugalmas készlet garantálja, hogy a készletben egy adatbázis nem felhasznált erőforrásokat, amíg a készletben lévő minden egyes adatbázis biztosítása minden esetben rendelkezik egy minimálisan szükséges erőforrások rendelkezésre.
 
 A készlethez adott számú edtu-k rögzített áron. A rugalmas készleten belül az önálló adatbázisok az automatikus méretezés rugalmasságával rendelkeznek a konfigurált határok között. Egy adatbázis nagyobb terhelés alatt további edtu-t, igény szerint fog felhasználni. Világosabb terhelések adatbázisoknak kevesebb edtu-k. Semmilyen terhelést az adatbázisok edtu-k nem használnak fel. Az erőforrásoknak a teljes készlet számára, helyett adatbázisonként, felügyeleti feladatok egyszerűsítettek, így kiszámítható költségekkel a készlet.
 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: project-url-preview
+ms.component: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: 3416fd9bc63c48e976d0b00f42ec9f8119a40eb8
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 2e4c5e6337c7fb222d18efada6ea9167e58aa024
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870808"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471407"
 ---
 # <a name="project-url-preview-v7-reference"></a>Projekt URL-cím előnézete v7-referencia
 
@@ -64,11 +64,11 @@ Az alábbiakban a fejlécek, köztük a kérést és választ.
   
 |Fejléc|Leírás|  
 |------------|-----------------|   
-|<a name="market" />BingAPIs piaci|Válaszfejléc.<br /><br /> A piac, a kérelem által használt. Az űrlap \<languageCode\>-\<countryCode\>. Például: hu-hu.|  
-|<a name="traceid" />BingAPIs-TraceId|Válaszfejléc.<br /><br /> A kérelem részleteit tartalmazó a naplóbejegyzés azonosítója. Ha hiba történik, rögzítése forrástároló. Ha nem határozza meg, és a probléma megoldásához, tartalmazzák ezt az Azonosítót és az egyéb adatokat, hogy a támogatási csoporthoz.|  
-|<a name="subscriptionkey" />OCP-Apim-Subscription-Key|Szükséges a kérelem fejlécében.<br /><br /> Az előfizetési kulcsot, ezt a szolgáltatást a regisztráció során kapott [Cognitive Services](https://www.microsoft.com/cognitive-services/).|  
-|<a name="clientid" />X-MSEdge-ClientID|Választható kérések és válaszok fejléc.<br /><br /> A Bing a fejléc használatával biztosítható a felhasználók konzisztens viselkedés között Bing API-hívások. Bing gyakran légi járművek új szolgáltatásait és fejlesztéseit, és hozzárendeléséhez a forgalmat a különböző repülőjáratok kulcsként használ az ügyfél-Azonosítót. Az azonos ügyfél-Azonosítót egy felhasználóhoz több kérés között nem használja, ha majd Bing lehet, hogy a felhasználó hozzárendelése több ütköző repülőjáratok. Több ütköző repülőjáratok folyamatban van rendelve egy konzisztens felhasználói élményt vezethet. Például ha a második kérés, mint az első különböző repülési hozzárendeléssel rendelkezik, a tapasztalatok lehet váratlan. A Bing segítségével is az ügyfél-azonosító webes találatokat, hogy az ügyfél a megfelelő kódolási sebesség kiválasztását azonosítóhoz tartozó keresési előzmények, a felhasználó egy gazdagabb élményt nyújtva.<br /><br /> A Bing is használja ezt a fejlécet a tevékenység egy ügyfél-azonosítót. által generált elemzésével eredmény módosítják a rangsort javítása érdekében A relevancia alapján végzett fejlesztések segítség az eredmények a Bing API-k és üzembe viszont lehetővé teszi, hogy nagyobb átkattintásos arányt API fogyasztók számára jobb minőségű.<br /><br />Az alábbiakban az alapszintű használati szabályok, amelyek a alkalmazni ezt a fejlécet.<br /><ul><li>Minden egyes felhasználó esetében használja az alkalmazást az eszközön rendelkeznie kell egy egyedi, a Bing létrehozott ügyfél-azonosítót.<br /><br/>Ha a kérés nem adja meg ezt a fejlécet, a Bing létrehoz egy Azonosítót, és visszaadja az X-MSEdge-ClientID fejlécet. Az egyetlen alkalom, hogy a kérelem kell tartalmazza ezt a fejlécet a felhasználó használja az alkalmazást az eszközön lévő első alkalommal.<br /><br/></li><li>Az ügyfél-azonosító használata minden egyes Bing API-kérelem, amely az alkalmazás lehetővé teszi a felhasználó az eszközön.<br /><br/></li><li>**Figyelem:** gondoskodnia kell arról, hogy az ügyfél-azonosító ne legyen összekapcsolhatónak, bármely forrásának hitelesíthetőnek felhasználóifiók-adatokat.</li><br/><li>Megőrzése az ügyfél-azonosítót. Egy böngészőalkalmazásban Azonosítóját megőrizni, használjon állandó HTTP cookie-k, használja az összes munkamenetek között. Ne használjon egy munkamenetcookie-t. Más alkalmazások, például a mobilalkalmazások esetében használja az eszköz tartós tároláshoz megőrizni az azonosítója.<br /><br/>A következő alkalommal, amikor a felhasználó használja az alkalmazást, hogy az eszközről, amely megőrizte ügyfél-azonosító beszerzése.</li></ul><br /> **Megjegyzés:** Bing-válaszok is, vagy nem feltétlenül tartalmazzák ezt a fejlécet. Ha a válasz tartalmazza ezt a fejlécet, rögzítheti az ügyfél-Azonosítót, és használhatja azt a felhasználót az eszközön lévő összes további Bing kérelmet.<br /><br /> **Megjegyzés:** Ha adja meg az X-MSEdge-ClientID, nem tartalmazhat-e be a cookie-kat a kérésben.|  
-|<a name="clientip" />X-MSEdge-Ügyfélip|Nem kötelező kérelem fejléce.<br /><br /> Az ügyféleszköz IPv4 vagy IPv6-cím. Az IP-cím a felhasználó földrajzi helye felderítésére szolgál. A Bing biztonságos keresési viselkedés meghatározására használja a helyre vonatkozó adatokat.<br /><br />  A cím nem rejtse fel (például úgy, hogy az utolsó oktettet módosítása 0). A cím eredmények a helyen nincs folyamatban bárhol az eszköz tényleges hely közelében obfuscating, emiatt a Bing szolgálja ki a hibás eredményeket.|  
+|<a name="market" />BingAPIs-Market|Válaszfejléc.<br /><br /> A kérelem által használt piac. A formátum a következő: \<languageCode\>-\<countryCode\>. Például: en-US.|  
+|<a name="traceid" />BingAPIs-TraceId|Válaszfejléc.<br /><br /> A kérelem részleteit tartalmazó naplóbejegyzés azonosítója. Ha hiba történik, rögzítse ezt az azonosítót. Ha nem tudja meghatározni és megoldani a problémát, foglalja bele a kérelembe ezt az azonosítót is a támogatási csoportnak megadott többi információval együtt.|  
+|<a name="subscriptionkey" />Ocp-Apim-Subscription-Key|Kötelező kérelemfejléc.<br /><br /> Az előfizetési kulcs, amelyet akkor kapott, amikor feliratkozott a szolgáltatásra a [Cognitive Servicesben](https://www.microsoft.com/cognitive-services/).|  
+|<a name="clientid" />X-MSEdge-ClientID|Választható kérelem- és válaszfejléc.<br /><br /> A Bing ezt a fejlécet használja ahhoz, hogy következetes viselkedést biztosítson a felhasználók számára a Bing API-hívásaiban. A Bing gyakran tesztel új funkciókat és fejlesztéseket, és az ügyfél-azonosítót használja kulcsként ahhoz, hogy a tesztcsomagokhoz rendelje a forgalmat. Ha a kérelmekben nem ugyanazt az ügyfél-azonosítót használja egy adott felhasználóhoz, előfordulhat, hogy a Bing több ütköző tesztcsomaghoz rendeli hozzá a felhasználót. Az ütköző tesztcsomagok hozzárendelése inkonzisztens felhasználói élményhez vezethet. Például ha a második kérelemhez más tesztcsomag van hozzárendelve, mint az elsőhöz, az váratlan működést eredményezhet. A Bing arra is felhasználhatja az ügyfél-azonosítót, hogy az ügyfél-azonosító keresési előzményeire szabja a webes találatokat, gazdagabb élményt nyújtva a felhasználónak.<br /><br /> A Bing továbbá az ügyfél-azonosító által létrehozott tevékenységek elemzésével az eredmények rangsorolásának javítására is használja a fejlécet. A relevancia javítása segít abban, hogy a Bing API-k jobb minőségű eredményeket biztosítsanak, ami pedig lehetővé teszi a magasabb átkattintási arányt az API fogyasztója számára.<br /><br />A fejlécre az alábbi alapvető használati szabályok vonatkoznak.<br /><ul><li>Minden felhasználónak, aki használja az eszközön lévő alkalmazást, rendelkeznie kell egy egyedi, Bing által létrehozott ügyfél-azonosítóval.<br /><br/>Ha nem foglalja bele ezt a fejlécet a kérelembe, a Bing létrehoz egy azonosítót, és visszaküldi azt az X-MSEdge-ClientID válaszfejlécben. Ezt a fejlécet csak akkor NEM szabad belefoglalni a kérelembe, amikor a felhasználó először használja az alkalmazást azon az eszközön.<br /><br/></li><li>Használja az ügyfél-azonosítót minden olyan Bing API-kéréshez, amelyet az alkalmazás intéz a felhasználó kapcsán az eszközön.<br /><br/></li><li>**Figyelem:** gondoskodnia kell arról, hogy az ügyfél-azonosító ne legyen összekapcsolhatónak, bármely forrásának hitelesíthetőnek felhasználóifiók-adatokat.</li><br/><li>Őrizze meg az ügyfél-azonosítót. Az azonosító böngészőalkalmazásban való megőrzéséhez használjon egy állandó HTTP-cookie-t, amely biztosítja, hogy minden munkamenetben ez az azonosító legyen használva. Ne használjon munkamenet-cookie-t. Más alkalmazások, például a mobilalkalmazások esetében az azonosító megőrzéséhez használja az eszköz állandó tárolóját.<br /><br/>Kérje le a megőrzött ügyfél-azonosítót, amikor a felhasználó ismét használja az alkalmazást az eszközön.</li></ul><br /> **MEGJEGYZÉS:** A Bing-válaszok nem mindig tartalmazzák ezt a fejlécet. Ha a válasz tartalmazza ezt a fejlécet, rögzítse az ügyfél-azonosítót, és használja azt a felhasználó összes további Bing-kérelméhez az adott eszközön.<br /><br /> **MEGJEGYZÉS:** Ha belefoglalja a kérelembe az X-MSEdge-ClientID fejlécet, akkor ne foglaljon bele cookie-kat.|  
+|<a name="clientip" />X-MSEdge-ClientIP|Választható kérelemfejléc.<br /><br /> Az ügyféleszköz IPv4- vagy IPv6-címe. Az IP-cím a felhasználó tartózkodási helyének felderítésére szolgál. A Bing arra használja a helyadatokat, hogy meghatározza a biztonságos keresés viselkedését.<br /><br />  Ne rejtse el a címet (például úgy, hogy 0-ra módosítja az utolsó oktettet). Ha elrejti a címet, a tartózkodási hely távol fog esni az eszköz tényleges helyétől, amely ahhoz vezethet, hogy a Bing téves eredményeket fog megadni.|  
 <br /><br /></li></ul>   
 
 ## <a name="query-parameters"></a>Lekérdezési paraméterek  
@@ -77,10 +77,10 @@ A kérelem lekérdezési paraméterek tartalmazhat. Tekintse meg a szükséges o
   
 |Name (Név)|Érték|Típus|Szükséges|  
 |----------|-----------|----------|--------------|  
-|<a name="mkt" />mkt|A piacon, honnan származnak az eredményeket. <br /><br />Piaci a lehetséges értékek listáját lásd: [piaci kódok](#market-codes).<br /><br /> **Megjegyzés:** az URL-cím előzetes API jelenleg csak támogatja a földrajzi RÉGIÓJA és az angol nyelvű.<br /><br />|Sztring|Igen|  
+|<a name="mkt" />mkt|A piac, ahonnan az eredmények származnak. <br /><br />Piaci a lehetséges értékek listáját lásd: [piaci kódok](#market-codes).<br /><br /> **Megjegyzés:** az URL-cím előzetes API jelenleg csak támogatja a földrajzi RÉGIÓJA és az angol nyelvű.<br /><br />|Sztring|Igen|  
 |<a name="query" />válaszok|Az előzetes verzióra az URL-cím|Sztring|Igen|  
 |<a name="responseformat" />responseFormat|Az adathordozó-típus használata a válaszhoz. A kis-és értékek a következők.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Az alapértelmezett érték a JSON. A JSON-fájllal kapcsolatos információk objektumok, hogy a válasz tartalmazza, lásd: [Válaszobjektumok](#response-objects).<br /><br />  Ha JsonLd adja meg, a válasz törzse tartalmazza a keresési eredményeket tartalmazó JSON-LD objektumok. A JSON-LD kapcsolatos információkért lásd: [JSON-LD](http://json-ld.org/).|Sztring|Nem|
-|<a name="safesearch"/>biztonságos keresés|Érvénytelen felnőtt tartalom, vagy a hamisított tartalom le van tiltva, hibakód: 400, és a *isFamilyFriendly* jelző nem ad vissza. <p>Jogi felnőtt tartalom, az alábbi történik. Állapotkód: 200, adja vissza, és a *isFamilyFriendly* jelző false értékre van állítva.<ul><li>biztonságos keresés = szigorú: cím, leírás, URL-cím és a lemezkép nem állítható vissza.</li><li>biztonságos keresés = közepes; Cím, URL-cím és leírás, de nem a leíró képet kaphat.</li><li>biztonságos keresés kikapcsolása:; = Minden válasz objektumok/elemet – title, URL-címet, leírást és képet kaphat.</li></ul> |Sztring|Nem kötelező. </br> Biztonságos keresés alapértelmezés szerint szigorú =.| 
+|<a name="safesearch"/>safeSearch|Érvénytelen felnőtt tartalom, vagy a hamisított tartalom le van tiltva, hibakód: 400, és a *isFamilyFriendly* jelző nem ad vissza. <p>Jogi felnőtt tartalom, az alábbi történik. Állapotkód: 200, adja vissza, és a *isFamilyFriendly* jelző false értékre van állítva.<ul><li>biztonságos keresés = szigorú: cím, leírás, URL-cím és a lemezkép nem állítható vissza.</li><li>biztonságos keresés = közepes; Cím, URL-cím és leírás, de nem a leíró képet kaphat.</li><li>biztonságos keresés kikapcsolása:; = Minden válasz objektumok/elemet – title, URL-címet, leírást és képet kaphat.</li></ul> |Sztring|Nem kötelező. </br> Biztonságos keresés alapértelmezés szerint szigorú =.| 
 
 ## <a name="response-objects"></a>Válasz objektumok  
 A válasz sémája vagy egy [weblap] vagy byl vrácen Prvek, ahogy a webes keresési API-t. Ha a kérelem meghiúsul, a legfelső szintű objektum a [byl vrácen Prvek](#errorresponse) objektum.
@@ -187,9 +187,9 @@ A következő értékeket a lehetséges hiba kód és a részleges hiba kódja.
 |InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|A Bing InsufficientAuthorization adja vissza, ha a hívó nem rendelkezik engedéllyel az erőforrás eléréséhez. Ez akkor fordulhat elő, ha az előfizetési kulcs le lett tiltva, vagy lejárt. <br/><br/>Ha a hiba InsufficientAuthorization, a HTTP-állapotkód: a 403-as.
 
 ## <a name="next-steps"></a>További lépések
-- [C# gyorsútmutató](csharp.md)
-- [Java a rövid útmutató](java-quickstart.md)
-- [JavaScript a rövid útmutató](javascript.md)
-- [Csomópont a rövid útmutató](node-quickstart.md)
-- [Python a rövid útmutató](python-quickstart.md)
+- [C# – rövid útmutató](csharp.md)
+- [Java – rövid útmutató](java-quickstart.md)
+- [JavaScript – rövid útmutató](javascript.md)
+- [Node – rövid útmutató](node-quickstart.md)
+- [Python – rövid útmutató](python-quickstart.md)
 

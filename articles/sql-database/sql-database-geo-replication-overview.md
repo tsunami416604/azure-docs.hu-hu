@@ -1,6 +1,6 @@
 ---
 title: Feladatátvételi csoportok és az aktív georeplikáció – Azure SQL Database |} A Microsoft Docs
-description: Aktív georeplikációs automatikus feladatátvételi csoportok használata, és engedélyezze a autoomatic feladatátvételi meghibásodás esetére.
+description: Aktív georeplikációs automatikus feladatátvételi csoportok használata, és engedélyezze az Automatikus feladatátvétel meghibásodás esetére.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 6e77d24c31401051d82501ca8064d02201bf218e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/19/2018
+ms.openlocfilehash: 9332bcb5849deacde13d67e4a18ea19af8af2977
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354274"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471475"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Áttekintés: Aktív georeplikációs és automatikus feladatátvételi csoportok
 
@@ -279,8 +279,8 @@ Ahogy korábban tárgyalt, automatikus feladatátvételi csoportok és az aktív
 
 | API | Leírás |
 | --- | --- |
-| [Hozzon létre vagy az adatbázis frissítése (createMode visszaállítási =)](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate) |Hoz létre, frissít, vagy visszaállítja az elsődleges vagy másodlagos adatbázis. |
-| [Get létrehozása, vagy az adatbázis állapotának frissítése](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate) |A létrehozási művelet során állapotának visszaadása. |
+| [Hozzon létre vagy az adatbázis frissítése (createMode visszaállítási =)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Hoz létre, frissít, vagy visszaállítja az elsődleges vagy másodlagos adatbázis. |
+| [Get létrehozása, vagy az adatbázis állapotának frissítése](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |A létrehozási művelet során állapotának visszaadása. |
 | [Másodlagos adatbázist beállítani az elsődleges (tervezett feladatátvétel)](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_failover) |Beállítja, mely az adatbázis-replikát elsődleges által az aktuális elsődleges replika adatbázis feladatátvételét. |
 | [Másodlagos adatbázist beállítani az elsődleges (nem tervezett feladatátvétel)](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_failoverallowdataloss) |Beállítja, mely az adatbázis-replikát elsődleges által az aktuális elsődleges replika adatbázis feladatátvételét. Ez a művelet adatvesztést okozhat. |
 | [Replikációs hivatkozás beszerzése](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_get) |Lekéri egy adott replikációs hivatkozás egy adott SQL-adatbázis georeplikációs partnerséget. Lekéri az adatokat a sys.geo_replication_links katalógusnézet látható. |

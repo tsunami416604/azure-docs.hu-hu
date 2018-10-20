@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: 98972b0c52470e6a404090d993c21a47b11cd660
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 7c01940c41067029bc3d47d19c2ded1d710cc2c6
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427145"
+ms.locfileid: "49470064"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 Az Azure Storage lehetővé teszi, hogy a tárfiókok meghatározott engedélyezett hálózatok biztonságos többrétegű biztonsági modellt biztosít.  Ha a hálózati szabályok vannak beállítva, csak az engedélyezett hálózatok alkalmazások férhetnek hozzá egy tárfiókot.  Egy engedélyezett hálózatról hívásakor az alkalmazások továbbra is megfelelő jogosultságokkal (egy érvényes hozzáférési kulcs vagy SAS-token) a tárfiók eléréséhez szükséges.
@@ -190,11 +190,13 @@ Megengedett címtartományok interneten adatokkal együtt adható meg [CIDR-jel�
 
 Csak engedélyezett IP-hálózati szabályok **nyilvános interneten** IP-címeket.  IP-címtartományok, magánhálózatok számára fenntartott (ahogyan az az [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)) IP-szabályok nem engedélyezettek.  Magánhálózatokat közé tartozik a címek kezdődő *10.\** , *172.16.\**   -  *172.31.\**, és *192.168.\** .
 
-Vegye figyelembe, hogy IP-hálózati szabályok nem lesz hatással az ugyanazon Azure-régióban a Storage-fiók érkező kérések a.  A virtuális hálózati szabályok használatával ugyanabban a régióban kérések engedélyezése.
+> [!NOTE]
+> IP-hálózati szabályok nem lesz hatása a az azonos Azure-régióban a Storage-fiók érkező kérelmek esetén.  Használat [virtuális hálózati szabályok](#grant-access-from-a-virtual-network) ugyanabban a régióban kérelem engedélyezéséhez.
+>
 
 Jelenleg csak az IPV4-cím támogatott.
 
-Minden tárfiók legfeljebb 100 kombinálható IP hálózati szabályokat támogathat [virtuális hálózati szabályok](#grant-access-from-a-virtual-network)
+Minden tárfiók legfeljebb 100 kombinálható IP hálózati szabályokat támogathat [virtuális hálózati szabályok](#grant-access-from-a-virtual-network).
 
 ### <a name="configuring-access-from-on-premises-networks"></a>Hozzáférés a helyszíni hálózatok konfigurálása
 Annak érdekében, hogy a hozzáférést a helyszíni hálózat egy IP-hálózati szabállyal a tárfiókhoz, meg kell adnia az internetkapcsolattal rendelkező, a hálózat által használt IP-címeket.  Segítségért forduljon a rendszergazdához.
