@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 86e2f328968cb5e45b9aec71aac8e8ac9e6d656b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 112940dbacf0bfdaff735eb0abd79e177cf5c9c5
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403900"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457013"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Az Azure Stack nyilvános kulcsokra épülő infrastruktúra tanúsítványkövetelmények
 
@@ -40,8 +40,9 @@ Az alábbi lista ismerteti a tanúsítványokra vonatkozó követelményeket, me
 - Amikor a tanúsítványok elforgatása, tanúsítványokat kell lennie, vagy ki az üzembe helyezés vagy bármely nyilvános hitelesítésszolgáltatótól a fent megadott tanúsítványok aláírásához használt azonos belső hitelesítésszolgáltatótól származó
 - Önaláírt tanúsítványok használata nem támogatottak.
 - A rendszerbe állítás és az elforgatás választhatja a tanúsítvány tulajdonos neve és a tulajdonos alternatív nevére (SAN) mezőben minden neve szóközt kiterjedő egyetlen tanúsítványt használjon, vagy használhat egyéni tanúsítványokat az egyes névterek alatt látható, az Azure Stack szükséges szolgáltatások szeretné használják. Mindkét módszerénél a helyettesítő karakterek használatával végpontok, ahol azok szükség, mint például szükséges **KeyVault** és **KeyVaultInternal**. 
-- A tanúsítvány-aláírási algoritmus a 3DES kell lennie. Az algoritmus nem lehet a SHA1-gyel, erősebb kell lenniük. 
+- Az aláírási algoritmus nem lehet a SHA1-gyel, erősebb kell lenniük. 
 - A tanúsítvány formátuma PFX, kell lennie, mint a nyilvános és titkos kulcsok szükségesek az Azure Stack telepítéséhez. 
+- A PFX-titkosítás 3DES (Ez az alapértelmezett Windows 10-es ügyfél vagy a Windows Server 2016 tanúsítványtároló exportálásakor) kell lennie.
 - A tanúsítvány pfx-fájlokat a "Kulcs használata" mező a rendelkeznie kell egy értéket "Digitális aláírás" és "KeyEncipherment".
 - A tanúsítvány pfx-fájlok a "Kibővített kulcshasználat" mezőben kell rendelkeznie az "Kiszolgálói hitelesítés (1.3.6.1.5.5.7.3.1)" és "Ügyfél-hitelesítés (1.3.6.1.5.5.7.3.2)" értéket.
 - A tanúsítvány "kiadott:" mező nem lehet ugyanaz, mint a "kiállító:" mező.
@@ -63,7 +64,7 @@ Az Azure Stack infrastruktúra nyilvános végpontot a megfelelő DNS-neveit tan
 Az üzembe helyezés a [régió] és [externalfqdn] értékeknek egyezniük kell a régiót és a külső tartománynév, az Azure Stack rendszerek számára is választott. Például, ha a régió neve *Redmond* és a külső tartományneve *contoso.com*, a DNS-nevek lenne a formátum *&lt;előtag >. redmond.contoso.com*. A  *&lt;előtag >* értékek vannak predesignated írja le a végpontot a tanúsítvány védi a Microsoft által. Emellett a  *&lt;előtag >* értékeket a külső infrastruktúra végpontok az Azure Stack szolgáltatás, amely az adott végponti függenek. 
 
 > [!note]  
-> A tárgy és a tulajdonos alternatív nevére (SAN) mezőket, átmásolja az összes könyvtár összes névtér kiterjedő egyetlen helyettesítő tanúsítványt, vagy minden egyes tanúsítványok végpont a megfelelő könyvtárba másolja a megadott megadott tanúsítványok is lehetnek. Ne feledje, hogy mindkét lehetőség használatát írják elő helyettesítő tanúsítványok végpontok például **acs** és a Key Vault, amennyiben azok szükségesek. 
+> Az éles környezetek esetében javasoljuk az egyes tanúsítványok jönnek létre, végpontok és a megfelelő könyvtárba másolja. Fejlesztési környezetek esetén tanúsítványokat is meg kell adni a tulajdonos és a tulajdonos alternatív nevére (SAN) mezőket, átmásolja az összes könyvtár összes névtér kiterjedő egyetlen helyettesítő tanúsítványt. Végpontok és a szolgáltatások egy tanúsítvány egy nem biztonságos helyzetét, ezért csak fejlesztési. Ne feledje, hogy mindkét lehetőség használatát írják elő helyettesítő tanúsítványok végpontok például **acs** és a Key Vault, amennyiben azok szükségesek. 
 
 | Telepítési mappa | Szükséges tanúsítvány tulajdonosára és alternatív tulajdonosneveket (SAN) | Hatókör (régiónként) | Altartomány névtér |
 |-------------------------------|------------------------------------------------------------------|----------------------------------|-----------------------------|

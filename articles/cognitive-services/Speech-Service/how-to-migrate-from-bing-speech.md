@@ -4,17 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Ismerje meg a fejlesztői szempontból Bing Speech és a Speech Service közötti különbségeket, és a Speech szolgáltatással az alkalmazás migrálása a.
 services: cognitive-services
 author: wsturman
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: Speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: gracez
-ms.openlocfilehash: e72cf547ac911b22a03cae6032351c8c0f22de8e
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: baf9b9cd9b3f57c1d708dd404d59c036df6c169f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884849"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466647"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Bing Speech áttelepít a beszédszolgáltatás
 
@@ -22,13 +23,13 @@ Ez a cikk segítségével az alkalmazások áttelepíthetők a Bing Speech API a
 
 Ez a cikk a Bing Speech API-k és a Speech Service közötti különbségeket ismerteti, és az alkalmazások áttelepítéséhez stratégiák javasol. A Bing Speech API-előfizetési kulcs nem fogadja el a Speech Service; egy új beszédszolgáltatás előfizetésre lesz szüksége.
 
-Beszédszolgáltatás egy előfizetési kulcs a következő funkciókhoz való hozzáférést. Minden egyes forgalmi díjas külön-külön, így csak használt díjkötelesek.
+Egyetlen beszédszolgáltatási előfizetési kulcs a következő funkciókhoz biztosít hozzáférést. Mindegyik funkció forgalmi díját külön állapítjuk meg, így csak a használt funkciókért kell fizetnie.
 
-* [Hang-szöveg](speech-to-text.md)
-* [Egyéni hang-szöveg](https://cris.ai)
-* [Szöveg-hang transzformációs](text-to-speech.md)
-* [Egyéni szövegfelolvasás hangok](how-to-customize-voice-font.md)
-* [Beszédalapú fordítási](speech-translation.md) (nem tartalmaz [szövegfordítás](../translator/translator-info-overview.md))
+* [Beszédfelismerés](speech-to-text.md)
+* [Egyéni beszédfelismerés](https://cris.ai)
+* [Szövegfelolvasás](text-to-speech.md)
+* [Egyéni szövegfelolvasási hangok](how-to-customize-voice-font.md)
+* [Tolmácsolás](speech-translation.md) (nem tartalmaz [szövegfordítást](../translator/translator-info-overview.md))
 
 A [beszéd SDK](speech-sdk.md) a Bing Speech-klienskódtárakkal működési helyettesíti, de egy másik API-t használja.
 
@@ -56,7 +57,7 @@ A websockets protokoll protokollok | : heavy_check_mark: | : heavy_check_mark: |
 Szolgáltatások közötti API-hívások | : heavy_check_mark: | : heavy_minus_sign: | A Bing Speech, a C#-szolgáltatási kódtára keresztül biztosított. 
 Nyílt forráskódú SDK-t | : heavy_check_mark: | : heavy_minus_sign: |
 
-A Speech Service díjszabási modellt időalapú (helyett egy tranzakció-alapú modell) használja. Lásd: [Speech Service díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) részleteiről.
+A Speech Service díjszabási modellt időalapú (helyett egy tranzakció-alapú modell) használja. Részletek: [A Speech Service díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 ## <a name="migration-strategies"></a>Migrálási stratégiák
 

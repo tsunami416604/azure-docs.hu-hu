@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: f74577a5f8042a7b373d1ff1944088036a0c94f5
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/19/2018
+ms.openlocfilehash: ac3ce8a417a63ce0a91339c38c2a5ae8b3013228
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354206"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466783"
 ---
 # <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Logikai kiszolgáló és az Azure SQL Database önálló adatbázisok létrehozása és kezelése
 
@@ -142,22 +142,22 @@ Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak, eze
 
 | Parancs | Leírás |
 | --- | --- |
-|[Kiszolgálók – létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/servers/servers_createorupdate/rest/api)|Létrehozza vagy frissíti az új kiszolgálóra.|
-|[Kiszolgálók – törlés](https://docs.microsoft.com/rest/api/sql/servers/servers_delete)|SQL-kiszolgáló törlése.|
-|[Kiszolgálók – Get](https://docs.microsoft.com/rest/api/sql/servers/servers_get)|Lekérdezi a kiszolgálót.|
-|[Kiszolgálók – lista](https://docs.microsoft.com/rest/api/sql/servers/servers_list)|A kiszolgálók listáját adja vissza.|
-|[Kiszolgálók – lista erőforráscsoport alapján](https://docs.microsoft.com/rest/api/sql/servers/servers_listbyresourcegroup)|A kiszolgálók listáját adja vissza egy erőforráscsoportban.|
-|[Kiszolgálók – frissítés](https://docs.microsoft.com/rest/api/sql/servers/servers_update)|Frissíti egy meglévő kiszolgálóra.|
-|[-Adatbázis létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)|Új adatbázis létrehozása vagy frissítése egy meglévő adatbázist.|
-|[Adatbázisok – törlés](https://docs.microsoft.com/rest/api/sql/databases/databases_delete)|Töröl egy adatbázist.|
-|[Adatbázisok – Get](https://docs.microsoft.com/rest/api/sql/databases/databases_get)|Egy adatbázis beolvasása.|
-|[Adatbázis - listát a rugalmas készlet](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyelasticpool)|Rugalmas készletben található adatbázisok listáját adja vissza.|
-|[Adatbázis - kiszolgáló által lista](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyserver)|A kiszolgálón az adatbázisok listáját adja vissza.|
-|[Adatbázis - frissítés](https://docs.microsoft.com/rest/api/sql/databases/databases_update)|Frissíti egy meglévő adatbázist.|
-|[A tűzfal - szabályok létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_createorupdate)|Létrehozza vagy frissíti egy tűzfalszabályt.|
-|[Tűzfalszabályok – törlés](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_delete)|Törli a tűzfalszabályt.|
-|[Tűzfalszabályok - Get](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_get)|Lekérdezi egy tűzfalszabályt.|
-|[Tűzfalszabályok - lista-kiszolgáló](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_listbyserver)|Tűzfalszabályok listáját adja vissza.|
+|[Kiszolgálók – létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Létrehozza vagy frissíti az új kiszolgálóra.|
+|[Kiszolgálók – törlés](https://docs.microsoft.com/rest/api/sql/servers/delete)|SQL-kiszolgáló törlése.|
+|[Kiszolgálók – Get](https://docs.microsoft.com/rest/api/sql/servers/get)|Lekérdezi a kiszolgálót.|
+|[Kiszolgálók – lista](https://docs.microsoft.com/rest/api/sql/servers/list)|A kiszolgálók listáját adja vissza.|
+|[Kiszolgálók – lista erőforráscsoport alapján](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|A kiszolgálók listáját adja vissza egy erőforráscsoportban.|
+|[Kiszolgálók – frissítés](https://docs.microsoft.com/rest/api/sql/servers/update)|Frissíti egy meglévő kiszolgálóra.|
+|[-Adatbázis létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Új adatbázis létrehozása vagy frissítése egy meglévő adatbázist.|
+|[Adatbázisok – törlés](https://docs.microsoft.com/rest/api/sql/databases/delete)|Töröl egy adatbázist.|
+|[Adatbázisok – Get](https://docs.microsoft.com/rest/api/sql/databases/get)|Egy adatbázis beolvasása.|
+|[Adatbázis - listát a rugalmas készlet](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|Rugalmas készletben található adatbázisok listáját adja vissza.|
+|[Adatbázis - kiszolgáló által lista](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|A kiszolgálón az adatbázisok listáját adja vissza.|
+|[Adatbázis - frissítés](https://docs.microsoft.com/rest/api/sql/databases/update)|Frissíti egy meglévő adatbázist.|
+|[A tűzfal - szabályok létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)|Létrehozza vagy frissíti egy tűzfalszabályt.|
+|[Tűzfalszabályok – törlés](https://docs.microsoft.com/rest/api/sql/firewallrules/delete)|Törli a tűzfalszabályt.|
+|[Tűzfalszabályok - Get](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|Lekérdezi egy tűzfalszabályt.|
+|[Tűzfalszabályok - lista-kiszolgáló](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|Tűzfalszabályok listáját adja vissza.|
 
 ## <a name="next-steps"></a>További lépések
 

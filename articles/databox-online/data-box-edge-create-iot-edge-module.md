@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: alkohli
-ms.openlocfilehash: caef76059219826da94d4cdafc98f1887ea5a185
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 8d4a99ab9d8107f1b3fbe70f59299f427bc88bd5
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/19/2018
-ms.locfileid: "49431156"
+ms.locfileid: "49465889"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge-preview"></a>A Data Box Edge (előzetes verzió) fájlok áthelyezése egy C# IoT Edge-modul fejlesztése
 
@@ -28,7 +28,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Hozzon létre egy IoT Edge-modul üzembe helyezése a Data Box Edge-eszközön.
 
 > [!IMPORTANT]
-> Data Box Edge egy előzetes verzióban érhető el. A megoldás megrendelése és üzembe helyezése előtt tekintse át az [Azure előzetes verziókra vonatkozó szolgáltatási feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> A Data Box Edge előzetes verzióban érhető el. A megoldás megrendelése és üzembe helyezése előtt tekintse át az [Azure előzetes verziókra vonatkozó szolgáltatási feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 ## <a name="about-the-iot-edge-module"></a>Tudnivalók az IoT Edge-modul
 
@@ -144,6 +144,9 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
             private const string InputFolderPath = "/home/LocalShare";
             private const string OutputFolderPath = "/home/CloudShare";
     ````
+
+    > [!IMPORTANT]
+    > Jegyezze fel a `InputFolderPath` és a `OutputFolderPath`. Adja meg az elérési utak, ez a modul telepítésekor kell.
 
 4. Adja hozzá a **MessageBody tulajdonság** osztály a Program osztályhoz. Ezek az osztályok határozzák meg a bejövő üzenetek törzsének várt sémáját.
 

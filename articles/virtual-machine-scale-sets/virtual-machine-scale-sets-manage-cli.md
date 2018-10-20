@@ -3,7 +3,7 @@ title: Kezelheti az Azure CLI-vel a Virtual Machine Scale Sets |} A Microsoft Do
 description: Gyakori Azure CLI-parancsok kezelése a Virtual Machine Scale Sets, például a következőkkel elindíthatja és leállíthatja a példány, vagy módosítsa a méretezési csoport kapacitásának beállítása.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: 014e6ff2bc769675e47743cfdd4fbf7fc6234974
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: zarhoads
+ms.openlocfilehash: bbed197eb78e34c6e53802dfcfdcc192f780df33
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999834"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465659"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Állítsa be az Azure CLI-vel egy virtuálisgép-méretezési csoport kezelése
 A virtuálisgép-méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Emellett előfordulhat, hogy különféle szkripteket is érdemes létrehozni az életciklus-feladatok automatizálására. Ez a cikk részletesen néhány gyakori Azure CLI-parancsok, amelyek lehetővé teszik, hogy ezeket a feladatokat.

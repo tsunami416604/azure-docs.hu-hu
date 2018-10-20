@@ -1,19 +1,21 @@
 ---
-title: Az Azure Cognitive Services beszédszolgáltatások írásmódja testreszabása
-description: Ismerje meg, hogyan szabhatja testre a az Azure Cognitive Services beszédszolgáltatások írásmódja.
+title: Testre szabhatja a Speech szolgáltatással kiejtése
+titlesuffix: Azure Cognitive Services
+description: Ismerje meg, hogyan szabhatja testre a Speech szolgáltatással írásmódja.
 services: cognitive-services
 author: PanosPeriorellis
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 07/02/2018
 ms.author: panosper
-ms.openlocfilehash: a608d1e48112fbb2adb56191eeb7f168de507e77
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 93c8d3302444c7d764849fe41d529bc06696243f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423204"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466171"
 ---
 # <a name="enable-custom-pronunciation"></a>Engedélyezze az egyéni kiejtése
 Egyéni írásmódja használatával meghatározhatja a fonetikus formában és megjelenített egy szó vagy kifejezés. Ez hasznos testre szabott feltételek, például termékneveket vagy betűszavakat kezelése. Szüksége egy írásmódja fájlt (egy egyszerű .txt fájlt).

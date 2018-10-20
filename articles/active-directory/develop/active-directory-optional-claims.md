@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/05/2018
 ms.author: celested
-ms.reviewer: hirsin
+ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c42e8978a94730669f3c3f879d1d26c4426bd9da
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 784213531c061912dded8e7776e79bea5adb217b
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079137"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466052"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Hogyan: Adja meg a választható jogcímeket, az Azure AD-alkalmazás (nyilvános előzetes verzió)
 
@@ -215,7 +215,7 @@ Több lehetőség van egy alkalmazás identitás konfiguráció engedélyezése 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A hitelesítése után után válassza ki azt az oldal jobb felső sarokban válassza ki az Azure AD-bérlő.
-1. Válassza ki **Azure AD-bővítményben** , a bal oldali navigációs panelen, majd kattintson a **Alkalmazásregisztrációk**.
+1. Válassza ki **Alkalmazásregisztrációk** bal alsó oldalán.
 1. Keresse meg az alkalmazás konfigurálása nem kötelező jogcímeket a listában, és kattintson rá.
 1. Kattintson az alkalmazás oldaláról **Manifest** , nyissa meg a beágyazott alkalmazásjegyzék-szerkesztőben. 
 1. Közvetlenül szerkesztheti a jegyzékfájlt a szerkesztő használatával. A jegyzékfájl követi a sémát a [alkalmazás entitás](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity), és formázza a jegyzékfájl egyszer mentve. Új elem megjelenik a `OptionalClaims` tulajdonság.

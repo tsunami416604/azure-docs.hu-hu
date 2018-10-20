@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/9/2018
-ms.openlocfilehash: 851fa7c6a970d725a52bc84d7d057472e09c3ee9
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: da64c626c121062960fa7724faaa64cdc620d64a
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388340"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466344"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>A HDInsight-fürt konfigurálása a vállalati biztonsági csomaggal az Azure Active Directory Domain Services használatával
 
@@ -35,16 +35,6 @@ Ha engedélyezve van az Azure AD-Tartományi, minden felhasználó és objektumo
 
 Ügyfelek kiválaszthatják a szinkronizálás csak a csoportokat, amelyek a HDInsight-fürtökbe való hozzáférésre van szükségük. Ez a beállítás csak bizonyos csoportokat a szinkronizálás nevezzük *szinkronizálás hatóköre*. Lásd: [konfigurálása hatókörrel rendelkező Azure AD-ből a felügyelt tartományhoz való szinkronizálás](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-scoped-synchronization) útmutatást.
 
-Miután engedélyezte az Azure AD-Tartományi, egy helyi tartomány neve szolgáltatás (DNS) kiszolgáló fut, az AD virtuális gépeken (VM). Az Azure AD-Tartományi Virtual Network (VNET) ezen egyéni DNS-kiszolgálók használatára konfigurálja. Keresse meg a megfelelő IP-címeket, válasszon **tulajdonságok** alatt a **kezelés** alatt felsorolt kategória és tekintse meg az IP-címek **IP-cím virtuális hálózaton**.
-
-![Keresse meg az IP-címek a helyi DNS-kiszolgálók](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns.png)
-
-Kiválasztásával ezeket egyéni IP-címek használata az Azure AD-Tartományi virtuális hálózat DNS-kiszolgálók konfigurációjának módosítása **DNS-kiszolgálók** alatt a **beállítások** kategória. Kattintson a Tovább gombra a választógomb **egyéni**, az alábbi mezőben adja meg az első IP-címet, és kattintson a **mentése**. Adjon hozzá további IP-címeket használja ugyanazokat a lépéseket.
-
-![A virtuális hálózat DNS-konfiguráció frissítése](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-vnet-configuration.png)
-
-
-
 Secure LDAP engedélyezése, ha a tanúsítvány helyezze el a tartománynév a tulajdonos neve vagy a tulajdonos alternatív neveként. Például, ha a tartománynév *contoso.com*, ellenőrizze, hogy pontos neve létezik-e a tanúsítvány tulajdonos neve vagy a tulajdonos alternatív neve. További információkért lásd: [a felügyelt tartomány secure LDAP konfigurálása az Azure AD-DS a](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md).
 
 
@@ -53,11 +43,7 @@ Megtekintheti az Azure Active Directory Domain Services állapotának **állapot
 
 ![Az Azure Active Directory Domain Services állapota](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-health.png)
 
-Meg kell győződnie arról, hogy minden a [szükséges portok](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) vannak a NSG-szabályok az AAD-DS-ben alhálózat szerepel az engedélyezési listán, ha a hálózati biztonsági csoport által védett AAD-DS-ben. 
-
 ## <a name="create-and-authorize-a-managed-identity"></a>Hozzon létre, és a egy felügyelt identitás engedélyezése
-> [!NOTE]
-> Csak az AAD-DS-rendszergazdák a jogosultság engedélyezéséhez a felügyelt identitást.
 
 A **felhasználó által hozzárendelt felügyelt identitás** megkönnyítik a tartományi szolgáltatások műveleteket szolgál. A HDInsight Domain Services közreműködői szerepkör hozzárendelése a felügyelt identitás, azt is olvassa el, létrehozása, módosítása és törlési műveletek a tartományi szolgáltatások. Bizonyos domain services-műveletek, például a szervezeti egységek létrehozása és a szolgáltatás alapelvek szükséges ahhoz, hogy a HDInsight vállalati biztonsági csomag. Felügyelt identitások bármely előfizetés hozható létre. További információkért lásd: [felügyelt identitások az Azure-erőforrások](../../active-directory/managed-identities-azure-resources/overview.md).
 
@@ -71,18 +57,26 @@ A felügyelt identitás létrehozása és a megfelelő szerepkört kap, után az
 
 ![HDInsight által felügyelt identitás operátor szerepkör-hozzárendelés](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-managed-identity-operator-role-assignment.png)
 
+## <a name="networking-considerations"></a>Hálózati megfontolások
+
+Miután engedélyezte az Azure AD-Tartományi, egy helyi tartomány neve szolgáltatás (DNS) kiszolgáló fut, az AD virtuális gépeken (VM). Az Azure AD-Tartományi Virtual Network (VNET) ezen egyéni DNS-kiszolgálók használatára konfigurálja. Keresse meg a megfelelő IP-címeket, válasszon **tulajdonságok** alatt a **kezelés** alatt felsorolt kategória és tekintse meg az IP-címek **IP-cím virtuális hálózaton**.
+
+![Keresse meg az IP-címek a helyi DNS-kiszolgálók](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns.png)
+
+Kiválasztásával ezeket egyéni IP-címek használata az Azure AD-Tartományi virtuális hálózat DNS-kiszolgálók konfigurációjának módosítása **DNS-kiszolgálók** alatt a **beállítások** kategória. Kattintson a Tovább gombra a választógomb **egyéni**, az alábbi mezőben adja meg az első IP-címet, és kattintson a **mentése**. Adjon hozzá további IP-címeket használja ugyanazokat a lépéseket.
+
+![A virtuális hálózat DNS-konfiguráció frissítése](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-vnet-configuration.png)
+
+Az Azure AD-DS-példánya és a HDInsight-fürt is helyezni, az azonos Azure virtuális hálózat könnyebbé válik. Eltérő virtuális hálózatokba használni szeretne, úgy, hogy a tartományvezérlő HDI virtuális gépek láthatók társviszonyba állítása kell ezekhez a virtuális hálózatokhoz. További információkért lásd: [virtuális hálózatok közötti társviszony](../../virtual-network/virtual-network-peering-overview.md). 
+
+Miután a virtuális hálózatok társviszonyban állnak, konfigurálása a HDInsight VNET az egyéni DNS-kiszolgálót használ, és adjon meg az Azure AD-Tartományi magánhálózati IP-címek, a DNS-kiszolgáló címei. Ha mindkét virtuális hálózaton az azonos DNS-kiszolgálók, az egyéni tartomány nevét feloldja a megfelelő IP-címhez, és HDInsight elérhető lesz. Például ha a tartomány nevét a "contoso.com" majd elvégezte a lépést, pingelése "contoso.com" Azure AD-Tartományi IP jobb kell feloldhatónak lennie. ED ![egyéni DNS-kiszolgálók konfigurálása a virtuális hálózatok közötti Társviszony](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
+
+**Teszteléséhez** a hálózatkezelés megfelelően van beállítva, ha egy windows rendszerű virtuális gép csatlakozzon a HDInsight virtuális hálózat/alhálózat, és pingelje a tartomány nevét (azt kell feloldhatónak lennie egy IP-cím), majd futtassa **ldp.exe** Azure Active Directory-tartományi szolgáltatások eléréséhez. Majd **a windows rendszerű virtuális gép csatlakoztatása a tartományhoz, győződjön meg arról, hogy** , amely az összes szükséges távoli eljáráshívások sikeres legyen, az ügyfél és kiszolgáló között. Is **nslookup** , erősítse meg a storage-fiók vagy bármilyen külső DB használható (például külső Hive-metaadattár vagy Ranger DB) hálózati hozzáférést.
+Meg kell győződnie arról, hogy minden a [szükséges portok](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) szerepel az engedélyezési listán az AAD-DS-ben alhálózat hálózati biztonsági csoport szabályok vonatkoznak, ha az AAD-DS védi egy NSG-t. 
 
 ## <a name="create-a-hdinsight-cluster-with-esp"></a>ESP-HDInsight-fürt létrehozása
 
-A következő lépés, hogy a HDInsight-fürt létrehozása a engedélyezve van, az Azure AD-DS-sel ESP.
-
-Az Azure AD-DS-példánya és a HDInsight-fürt is helyezni, az azonos Azure virtuális hálózat könnyebbé válik. Ha azok különböző virtuális hálózatokban lévő, virtuális hálózatok, hogy a HDInsight-beli virtuális gépek láthatók a tartományvezérlőre, és felveheti a tartományhoz kell társviszonyt. További információkért lásd: [virtuális hálózatok közötti társviszony](../../virtual-network/virtual-network-peering-overview.md). 
-
-Miután a virtuális hálózatok társviszonyban állnak, konfigurálása a HDInsight VNET az egyéni DNS-kiszolgálót használ, és adjon meg az Azure AD-Tartományi magánhálózati IP-címek, a DNS-kiszolgáló címei. Ha mindkét virtuális hálózaton az azonos DNS-kiszolgálók, az egyéni tartomány nevét feloldja a megfelelő IP-címhez, és HDInsight elérhető lesz. Például ha a tartomány nevét a "contoso.com" majd elvégezte a lépést, pingelése "contoso.com" Azure AD-Tartományi IP jobb kell feloldhatónak lennie. Annak tesztelése, ha a társviszony-létesítés helyesen végezték el, windows rendszerű virtuális gép csatlakozzon a HDInsight virtuális hálózat/alhálózat, és pingelni a tartománynév, vagy futtassa **ldp.exe** Azure Active Directory-tartományi szolgáltatások eléréséhez. Majd a windows rendszerű virtuális gép csatlakoztatása a tartományhoz, ellenőrizze, hogy az összes szükséges távoli eljáráshívások sikeres, az ügyfél és kiszolgáló közötti.
-
-![Egyéni DNS-kiszolgálók beállítása a társított virtuális hálózaton](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
-
-Amikor létrehoz egy HDInsight-fürtöt, vállalati biztonsági csomag egyéni lapján engedélyezheti.
+Az előző lépések megfelelően beállítása után a következő lépés az a HDInsight-fürt létrehozása a ESP engedélyezve van. Amikor létrehoz egy HDInsight-fürtöt, engedélyezheti a vállalati biztonsági csomag a **egyéni** fülre. Ha inkább egy Azure Resource Manager-sablon központi telepítéshez használni szeretne, egyszer használja a portál felülete, és töltse le az előre kitöltött sablon az utolsó "Összegzés" lapon későbbi felhasználásra.
 
 ![Az Azure HDInsight biztonsági és hálózatkezelési](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-security-networking.png)
 

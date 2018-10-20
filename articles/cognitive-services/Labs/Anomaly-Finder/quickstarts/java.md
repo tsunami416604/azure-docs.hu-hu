@@ -5,16 +5,16 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-detection
+ms.component: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: kefre
-ms.openlocfilehash: 84997b5d50f879fd4be286a3ca362e70f90c9202
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: ef876e19353e8765b679a9aae6282ce3ade600c2
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249185"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456541"
 ---
 # <a name="use-the-anomaly-finder-api-with-java"></a>A Anomáliaészlelő API használata Javával
 
@@ -43,7 +43,7 @@ A minta futtatásához hajtsa végre az alábbi lépéseket:
 2. Cserélje le a Main osztály tartalmát az alábbi kódra (a `package` utasításokat tartsa meg).
 3. Cserélje le a `[YOUR_SUBSCRIPTION_KEY]` értéket az érvényes előfizetői azonosítóra.
 4. Cserélje le a `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` a példa vagy a saját adatpont.
-5. Ezek a globális kódtárak letöltéséhez a Maven tárházból való a `lib` könyvtárat a projekthez:
+5. Töltse le az alábbi globális kódtárakat a Maven-adattárból a projektje `lib` könyvtárába:
    * `org.apache.httpcomponents:httpclient:4.5.2`
 6. Futtassa a „Main” parancsot.
 

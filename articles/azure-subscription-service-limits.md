@@ -8,14 +8,14 @@ tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 10/19/2018
 ms.author: byvinyal
-ms.openlocfilehash: 0b78c7c94f5dc6d7c427188ac4ffd807a06a867e
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: c22f3dbc06dd43a31bf43634437c7f377dac8813
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585492"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457306"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum felsorolja az egyes a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem vonatkozik Azure-szolgáltatásokhoz. Az idő múlásával a lista fog kibontható vagy frissítve, hogy biztosítsák a platform további.
@@ -80,7 +80,7 @@ Az alábbi korlátok egy új táblát bővült, hogy minden korlátokat különb
 * [Médiaszolgáltatások](#media-services-limits)
 * [Mobilmarketing](#mobile-engagement-limits)
 * [Mobile Services](#mobile-services-limits)
-* [Multi-Factor Authentication](#multi-factor-authentication)
+* [Többtényezős hitelesítés](#multi-factor-authentication)
 * [Hálózat](#networking-limits)
 * [A Network Watcher](#network-watcher-limits)
 * [Értesítési központ szolgáltatás](#notification-hub-service-limits)
@@ -88,12 +88,12 @@ Az alábbi korlátok egy új táblát bővült, hogy minden korlátokat különb
 * [Szerepköralapú hozzáférés-vezérlés](#role-based-access-control-limits)
 * [Scheduler](#scheduler-limits)
 * [Search](#search-limits)
-* [Service Bus](#service-bus-limits)
+* [Szolgáltatásbusz](#service-bus-limits)
 * [SignalR szolgáltatás](#signalr-service-limits)
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
-* [Storage](#storage-limits)
+* [Tárolás](#storage-limits)
 * [StorSimple rendszerbe](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
 * [Előfizetés](#subscription-limits)
@@ -108,7 +108,7 @@ Az alábbi korlátok egy új táblát bővült, hogy minden korlátokat különb
 #### <a name="subscription-limits---azure-resource-manager"></a>Előfizetési korlátok – Azure Resource Manager
 Az alábbi korlátok vonatkoznak az Azure Resource Manager és az Azure-erőforráscsoportok használata esetén. Korlátok, amelyek nem változtak az Azure Resource Manager alább nem láthatók. Tekintse meg az előző táblázatban a ezeket a korlátokat.
 
-További információ a korlátok a Resource Manager-kérelmek kezelésére: [szabályozás Resource Manager-kérelmek](resource-manager-request-limits.md).
+További információ a Resource Manager API olvasási és írási korlátok, lásd: [szabályozás Resource Manager-kérelmek](resource-manager-request-limits.md).
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../includes/azure-subscription-limits-azure-resource-manager.md)]
 

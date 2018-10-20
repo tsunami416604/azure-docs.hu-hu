@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: glenga
-ms.openlocfilehash: 66d04ca93a79f4d9cdd9f162c6cd3210ae35f4d2
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: e317a9c3cea800e05fbf3d2df73c124d2e7ffd23
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902705"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457663"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
@@ -211,6 +211,7 @@ Naplózási szintjének `None` ismertetése a következő szakaszban.
 
 A *host.json* fájl milyen mértékű naplózása egy függvényalkalmazást az Application Insights küld konfigurálja. Minden egyes kategóriánál adja meg a minimális naplózási szint küldése. Például:
 
+#### <a name="functions-version-1"></a>1-es verziójú funkciók 
 ```json
 {
   "logger": {
@@ -226,6 +227,22 @@ A *host.json* fájl milyen mértékű naplózása egy függvényalkalmazást az 
 }
 ```
 
+#### <a name="functions-version-2"></a>2. verziójú funkciók 
+Függvények a v2 jelenleg használja a [.NET Core naplózási szűrő hierarchia](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering). 
+```json
+{
+  "logging": {
+    "fileLoggingMode": "always",
+    "logLevel": {
+      "default": "Information",
+      "Host.Results": "Error",
+      "Function": "Error",
+      "Host.Aggregator": "Trace"
+    }
+  }
+}
+```
+
 Ebben a példában állítja be a következő szabályok:
 
 1. Kategória "Host.Results" vagy "Függvény" naplókat, a küldés csak `Error` szint és a fenti az Application Insightsba. A naplók `Warning` szintjét és az alábbiakban figyelmen kívül hagyja.
@@ -236,6 +253,7 @@ A kategória értéke *host.json* kezdődő ugyanazt az értéket az összes kat
 
 Ha *host.json* magában foglalja a több kategóriát, amely azonos karakterláncra indítása hosszabb azokat először definícióiból. Tegyük fel például, hogy azt szeretné, hogy a futtatókörnyezet "Host.Aggregator" bejelentkezni kivéve a `Error` szintjét, de azt szeretné "Host.Aggregator" jelentkezhet a `Information` szintje:
 
+#### <a name="functions-version-1"></a>1-es verziójú funkciók 
 ```json
 {
   "logger": {
@@ -246,6 +264,21 @@ Ha *host.json* magában foglalja a több kategóriát, amely azonos karakterlán
         "Function": "Error",
         "Host.Aggregator": "Information"
       }
+    }
+  }
+}
+```
+
+#### <a name="functions-version-2"></a>2. verziójú funkciók 
+```json
+{
+  "logging": {
+    "fileLoggingMode": "always",
+    "logLevel": {
+      "default": "Information",
+      "Host": "Error",
+      "Function": "Error",
+      "Host.Aggregator": "Information"
     }
   }
 }

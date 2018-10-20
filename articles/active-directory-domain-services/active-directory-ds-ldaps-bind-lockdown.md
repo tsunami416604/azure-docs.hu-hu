@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: maheshu
-ms.openlocfilehash: 9728d42710ce44226363ea4954d83fcc3efbfb75
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: d3fbefd002f0b2774578d24cf2e3145a21a5e1f3
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502952"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456405"
 ---
 # <a name="bind-to-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Kötést létrehozni biztonságos LDAP (LDAPS) használatával az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 
@@ -38,8 +38,8 @@ Ezután kötést létrehozni a felügyelt tartományhoz. Kattintson a **kapcsola
 Válassza ki **nézet**, majd válassza ki **fa** menüjében. Az Alap DN mezőt üresen hagyja, és kattintson az OK gombra. Keresse meg a tárolót, amelyet szeretne keresését, kattintson a jobb gombbal a tárolóra, és válassza ki a keresés.
 
 > [!TIP]
-> - Felhasználók és csoportok Azure AD-ből szinkronizált vannak tárolva a **AADDC felhasználók** tároló. A keresési útvonalat a tároló néz ```CN=AADDC\ Users,DC=CONTOSO100,DC=COM```.
-> - A felügyelt tartományhoz csatlakoztatott számítógépek esetében a számítógépfiókoknak vannak tárolva a **AADDC számítógépek** tároló. A keresési útvonalat a tároló néz ```CN=AADDC\ Computers,DC=CONTOSO100,DC=COM```.
+> - Felhasználók és csoportok Azure AD-ből szinkronizált vannak tárolva a **AADDC felhasználók** szervezeti egységet. A keresési útvonalat a szervezeti egység néz ```OU=AADDC Users,DC=CONTOSO100,DC=COM```.
+> - A felügyelt tartományhoz csatlakoztatott számítógépek esetében a számítógépfiókoknak vannak tárolva a **AADDC számítógépek** szervezeti egységet. A keresési útvonalat a szervezeti egység néz ```OU=AADDC Computers,DC=CONTOSO100,DC=COM```.
 >
 >
 

@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 10/20/2018
 ms.author: celested
-ms.reviewer: jeedes
+ms.reviewer: luleon, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5633dfbf59396e79226b196c2b699981409092ab
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 4e80f5cb85a53281da9ec50a02d089f46e97dfde
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902025"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466716"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: a vállalati alkalmazásokhoz SAML-jogkivonatban kiadott jogcímek testreszabása
 
@@ -49,21 +49,38 @@ Valamint eltávolíthatja a jogcímek (nem a NameIdentifier) használatával a h
 ![Felhasználói attribútum szerkesztése][3]
 
 ## <a name="editing-the-nameidentifier-claim"></a>A NameIdentifier jogcím szerkesztése
-Megoldani a problémát, ahol az alkalmazás lett üzembe helyezve, más felhasználónevet használ, kattintson a a **felhasználói azonosító** legördülő lista a **felhasználói attribútumok** szakaszban. Ez a művelet biztosítja egy párbeszédpanel, számos különböző beállításokkal:
+
+Megoldani a problémát, ahol az alkalmazás lett üzembe helyezve, más felhasználónevet használ, válassza ki a a **felhasználói azonosító** legördülő lista a **felhasználói attribútumok** szakaszban. Ez a művelet biztosítja egy párbeszédpanel, számos különböző beállításokkal:
 
 ![Felhasználói attribútum szerkesztése][4]
 
-Válassza ki a legördülő menüben **user.mail** a NameIdentifier jogcím a felhasználó e-mail címét a címtárban kell beállítani. Vagy válassza **user.onpremisessamaccountname** , ha szeretné a felhasználó a SAM-fiók neve, amely a helyszínről az Azure AD szinkronizálása megtörtént.
+### <a name="attributes"></a>Attribútumok
 
-Is használhatja a speciális **ExtractMailPrefix()** a tartományi utótag eltávolítja az e-mail-cím, SAM-fiók neve vagy a felhasználó egyszerű neve. Ez a felhasználónév átadott keresztül csak az első részt kinyeri (például "joe_smith" helyett joe_smith@contoso.com).
+Válassza ki a kívánt forrása a `NameIdentifier` (vagy NameID) jogcím. Az alábbi lehetőségek közül választhat.
 
-![Felhasználói attribútum szerkesztése][5]
+| Name (Név) | Leírás |
+|------|-------------|
+| E-mail | A felhasználó e-mail-címe |
+| userprincipalName | Az egyszerű felhasználónév (UPN) a felhasználó |
+| onpremisessamaccount | SAM-fiók neve, amely a helyszínről az Azure AD szinkronizálása megtörtént |
+| Objektumazonosító | Az ObjectId azonosítóját, a felhasználó Azure AD-ben |
+| EmployeeID | A felhasználó az EmployeeID |
+| Címtárbővítmények | Címtárbővítmények [az Azure AD Connect szinkronizálási szolgáltatás használata a helyszíni Active Directoryból szinkronizált](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
+| 1 – 15. Bővítményattribútumok | A helyszíni kiterjesztési attribútumot használja az Azure AD-séma kiterjesztése |
 
-Ezzel is hozzáadtuk a **join()** függvény a felhasználói azonosító értékét az ellenőrzött tartományhoz való csatlakozáshoz. Ha bejelöli a join() függvény a a **felhasználóazonosító** először válassza ki a felhasználói azonosító, például e-mail-cím vagy a felhasználó egyszerű neve és a második legördülő menüből válassza ki az ellenőrzött tartomány. Ha az e-mail-címet ellenőrzött tartományának, adja meg Azure ad-ben a felhasználónév kigyűjti az első érték joe_smith a joe_smith@contoso.com és fűz hozzá a contoso.onmicrosoft.com. Lásd a következő példát:
+### <a name="transformations"></a>Átalakítások
 
-![Felhasználói attribútum szerkesztése][6]
+A speciális jogcímek átalakítások funkciók is használható.
+
+| Függvény | Leírás |
+|----------|-------------|
+| **ExtractMailPrefix()** | A tartományi utótag eltávolítja az e-mail-cím, SAM-fiók neve vagy a felhasználó egyszerű neve. Ez a felhasználónév átadott keresztül csak az első részt kinyeri (például "joe_smith" helyett joe_smith@contoso.com). |
+| **JOIN()** | Az attribútum egy ellenőrzött tartomány csatlakozik. Ha a kiválasztott felhasználói azonosító értékét egy tartománnyal rendelkezik, azt fogja bontsa ki a hozzáfűzni a kiválasztott ellenőrzött tartomány felhasználónév. Ha például az e-mailt választja (joe_smith@contoso.com), a felhasználói azonosító értékét, és válassza contoso.onmicrosoft.com ellenőrzött tartományának részeként, emiatt joe_smith@contoso.onmicrosoft.com. |
+| **ToLower()** | Konvertálja a karaktereket a kijelölt attribútum kisbetűs karaktert. |
+| **ToUpper()** | Konvertálja a karaktereket a kijelölt attribútum nagybetűket. |
 
 ## <a name="adding-claims"></a>Jogcím hozzáadása
+
 Amikor egy jogcímet ad hozzá, megadhatja azon attribútum nevét (ami nem feltétlenül kell az SAML-specifikáció alapján URI mintát követi). Bármely felhasználói attribútumot a könyvtárban tárolt állítsa az értékét.
 
 ![Felhasználói attribútum hozzáadása][7]
@@ -132,7 +149,7 @@ Nincsenek SAML néhány korlátozott jogcímeket. Ha ezeket a jogcímeket, majd 
 ## <a name="next-steps"></a>További lépések
 
 * [Alkalmazások kezelése az Azure ad-ben](../manage-apps/what-is-application-management.md)
-* [Egyszeri bejelentkezés konfigurálása olyan alkalmazások, amelyek nem szerepelnek az Azure AD alkalmazáskatalógusában](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
+* [Az alkalmazásokat, amelyek nem szerepelnek az Azure AD alkalmazáskatalógusában egyszeri bejelentkezés konfigurálása](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [SAML-alapú egyszeri bejelentkezés hibaelhárítása](howto-v1-debug-saml-sso-issues.md)
 
 <!--Image references-->

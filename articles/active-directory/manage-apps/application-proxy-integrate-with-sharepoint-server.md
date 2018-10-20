@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/06/2017
+ms.date: 10/19/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: fcd02e264d5e85b1bef7e75d2a6375d6bf5e18c0
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: ad0ab8790c9d66dbba87d466e9661ef8cf33eef3
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363949"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456898"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Távoli hozzáférés a Sharepointhoz, az Azure AD-alkalmazásproxy engedélyezése
 
@@ -194,7 +194,7 @@ Az utolsó lépéseként győződjön meg arról, hogy a SharePoint találhatja 
 
 3. A legördülő lista melletti **másodlagos hozzáférési leképezési gyűjteményt**válassza **módosítása másik hozzáférési leképezési gyűjteményt**.
 4. Válassza ki a webhely – például **SharePoint – 80-as**.
-5. Ha szeretné, adja hozzá a közzétett URL-cím egy belső URL-cím vagy egy nyilvános URL-címet. Ebben a példában egy nyilvános URL-címet használ, az extranetről.
+5. Ha szeretné, adja hozzá a közzétett URL-cím egy belső URL-cím vagy egy nyilvános URL-címet. Ebben a példában egy nyilvános URL-címet használ, az extranetről. Ha egy egyéni portot ügyeljen arra, hogy tartalmazzák az egyéni portot az URL-cím használja.
 6. Kattintson a **szerkesztése nyilvános URL-címek** a a **Extranet** elérési utat, majd adja meg a külső URL-cím, az alkalmazás közzétételekor létrehozott. Adja meg például **https://sharepoint-iddemo.msappproxy.net**.
 
   ![Az elérési út megadása](./media/application-proxy-integrate-with-sharepoint-server/alternate-access3.png)

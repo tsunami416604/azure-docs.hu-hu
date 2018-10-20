@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 94a3a502d5756d57cfebdf6698a4435dc1e19948
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 0d5b7e484024294eb5c95b632dbef85c377b717e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353030"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469027"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transzparens adattitkosítás az SQL Database és a Data warehouse-bA
 
@@ -113,17 +113,17 @@ A REST API-n keresztül transzparens adattitkosításának konfigurálásához, 
 
 | Parancs | Leírás |
 | --- | --- |
-|[Hozzon létre vagy frissítési kiszolgáló](https://docs.microsoft.com/rest/api/sql/servers/servers_createorupdate)|Az Azure Active Directory-identitás hozzáadása egy SQL Server-példány (hozzáférés biztosítása a Key Vault használatos)|
-|[Hozzon létre vagy kiszolgálói kulcs frissítése](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_createorupdate)|A Key Vault-kulcs ad hozzá egy SQL Server-példány|
-|[Kiszolgálói kulcs törlése](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_delete)|A Key Vault-kulcs távolít el egy SQL Server-példány|
-|[Kiszolgáló-kulcsok beolvasása](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_get)|Egy adott Key Vault-kulcs olvas be egy SQL Server-példány|
-|[Kiszolgáló kiszolgálói kulcsok listázása](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_listbyserver)|Az SQL Server-példányt a Key Vault-kulcsok beolvasása |
-|[Létrehozás vagy frissítés titkosítási védelme](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/encryptionprotectors_createorupdate)|A transzparens titkosítási védelmet egy SQL Server-példány beállítása|
-|[Titkosítási beolvasása](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/encryptionprotectors_get)|A transzparens titkosítási védelme SQL Server-példány beolvasása|
-|[Lista titkosítási Protectors-kiszolgáló](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/encryptionprotectors_listbyserver)|A transzparens titkosítási kulcsvédők egy SQL Server-példány beolvasása |
-|[Hozzon létre vagy a transzparens titkosítási konfiguráció frissítése](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/transparentdataencryptions_createorupdate)|Engedélyezheti vagy letilthatja a-adatbázis transzparens adattitkosítás|
-|[Transzparens titkosítási konfiguráció beolvasása](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/transparentdataencryptions_get)|Az adatbázis transzparens titkosítási konfiguráció beolvasása|
-|[Lista transzparens titkosítási konfiguráció eredmények](https://docs.microsoft.com/rest/api/sql/transparentdataencryptionactivities/transparentdataencryptionactivities_listbyconfiguration)|Lekéri a titkosítási eredmény adatbázis|
+|[Hozzon létre vagy frissítési kiszolgáló](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Az Azure Active Directory-identitás hozzáadása egy SQL Server-példány (hozzáférés biztosítása a Key Vault használatos)|
+|[Hozzon létre vagy kiszolgálói kulcs frissítése](https://docs.microsoft.com/rest/api/sql/serverkeys/createorupdate)|A Key Vault-kulcs ad hozzá egy SQL Server-példány|
+|[Kiszolgálói kulcs törlése](https://docs.microsoft.com/rest/api/sql/serverkeys/delete)|A Key Vault-kulcs távolít el egy SQL Server-példány|
+|[Kiszolgáló-kulcsok beolvasása](https://docs.microsoft.com/rest/api/sql/serverkeys/get)|Egy adott Key Vault-kulcs olvas be egy SQL Server-példány|
+|[Kiszolgáló kiszolgálói kulcsok listázása](https://docs.microsoft.com/rest/api/sql/serverkeys/listbyserver)|Az SQL Server-példányt a Key Vault-kulcsok beolvasása |
+|[Létrehozás vagy frissítés titkosítási védelme](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/createorupdate)|A transzparens titkosítási védelmet egy SQL Server-példány beállítása|
+|[Titkosítási beolvasása](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/get)|A transzparens titkosítási védelme SQL Server-példány beolvasása|
+|[Lista titkosítási Protectors-kiszolgáló](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/listbyserver)|A transzparens titkosítási kulcsvédők egy SQL Server-példány beolvasása |
+|[Hozzon létre vagy a transzparens titkosítási konfiguráció frissítése](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/createorupdate)|Engedélyezheti vagy letilthatja a-adatbázis transzparens adattitkosítás|
+|[Transzparens titkosítási konfiguráció beolvasása](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/get)|Az adatbázis transzparens titkosítási konfiguráció beolvasása|
+|[Lista transzparens titkosítási konfiguráció eredmények](https://docs.microsoft.com/rest/api/sql/transparentdataencryptionactivities/listbyconfiguration)|Lekéri a titkosítási eredmény adatbázis|
 
 ## <a name="next-steps"></a>További lépések
 

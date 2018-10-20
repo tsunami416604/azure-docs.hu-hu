@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 10/15/2018
+ms.date: 10/20/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 1d52c9b3b9b91873bd6f34443f162c74d724a65c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: e4d698b8b9c3f9e304780ee49bd4243a76e69138
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49367046"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471530"
 ---
 ### <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -30,13 +30,6 @@ Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltat�
 * Bejövő DNAT-támogatás
 * Központilag létrehozása, érvényesítése, és jelentkezzen alkalmazás és a hálózati kapcsolat házirendek az Azure-előfizetések és a virtuális hálózatok között
 * Teljes integráció az Azure Monitorral a naplózáshoz és az elemzéshez
-
-### <a name="what-is-the-pricing-for-azure-firewall"></a>Mi az Azure-tűzfal a díjszabása?
-
-Azure tűzfal tartalmaz egy állandó költség + változó költség:
-
-* Rögzített díj: $1.25/firewall/hour
-* Változó díj: a tűzfal (bejövő vagy kimenő) által feldolgozott $ 0,03/GB
 
 ### <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Mi az az Azure tűzfal a tipikus telepítési modell?
 
@@ -78,6 +71,17 @@ Az Azure-tűzfal szolgáltatás egészíti ki a hálózati biztonsági csoport f
 ### <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Hogyan állíthatok be Azure-tűzfal saját szolgáltatásvégpontokkal?
 
 Biztonságos hozzáférés PaaS-szolgáltatások javasoljuk, hogy a Szolgáltatásvégpontok. Ha szeretné, engedélyezze a szolgáltatásvégpontokat az Azure-tűzfal alhálózat, és tiltsa le azokat a csatlakoztatott küllő virtuális hálózatokon. Ezzel a módszerrel, előnyös funkciók--service endpoint securityhez és a központi naplózás minden forgalom.
+
+### <a name="what-is-the-pricing-for-azure-firewall"></a>Mi az Azure-tűzfal a díjszabása?
+
+Azure tűzfal tartalmaz egy állandó költség + változó költség:
+
+* Rögzített díj: $1.25/firewall/hour
+* Változó díj: a tűzfal (bejövő vagy kimenő) által feldolgozott $ 0,03/GB
+
+Nincsenek felszabadítva tűzfalak költségek.
+
+További információkért lásd: [Azure tűzfal díjszabás](https://azure.microsoft.com/pricing/details/azure-firewall/).
 
 ### <a name="how-can-i-stop-and-start-azure-firewall"></a>Hogyan állítsa le és indítsa el az Azure-tűzfal?
 

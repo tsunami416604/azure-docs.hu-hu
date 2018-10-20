@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 10/19/2018
 ms.author: lizross
 ms.custom: it-pro
 ms.reviewer: krbain
-ms.openlocfilehash: c28fe5ef226fac993fde221b16bfa875ba4845ca
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 09e023d1d562ea53d9927adf609335beac38a2d7
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579768"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468030"
 ---
 # <a name="how-to-add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Hogyan: hozzáadása vagy egy másik csoportot az Azure Active Directory csoport eltávolítása
 Ez a cikk segít hozzáadhat és eltávolíthat egy csoportot az Azure Active Directory használatával egy másik csoportot.
@@ -25,12 +25,15 @@ Ez a cikk segít hozzáadhat és eltávolíthat egy csoportot az Azure Active Di
 >[!Note]
 >A szülőcsoport törölni próbál, ha [frissíteni vagy törölni a csoportot és annak tagjait](active-directory-groups-delete-group.md).
 
-## <a name="add-a-group-as-a-member-to-another-group"></a>Egy másik csoportot, amelynek csoport hozzáadása
-Hozzáadhat egy meglévő csoportot egy másik meglévő csoporthoz, tag létrehozása (alcsoport) csoport és a egy szülőcsoportot. A tagcsoportnak örökli az attribútumokat és a tulajdonságokat a szülőcsoporthoz, így konfigurációs időt takarít meg.
+## <a name="add-a-group-to-another-group"></a>Adjon hozzá egy másik csoportot
+Hozzáadhat egy meglévő biztonsági csoport egy másik meglévő biztonsági csoport (más néven beágyazott csoportok), a tag létrehozása (alcsoport) csoport és a egy szülőcsoportot. A tagcsoportnak örökli az attribútumokat és a tulajdonságokat a szülőcsoporthoz, így konfigurációs időt takarít meg.
 
-### <a name="to-add-a-group-as-a-member-to-another-group"></a>Egy csoport egy másik csoportot, amelynek hozzáadása
+>[!Important]
+>Jelenleg nem támogatottak:<ul><li>Biztonsági csoportok hozzáadása az Office 365-csoportok</li><li>Biztonsági csoportok vagy más Office 365-csoportokat az Office 365-csoportok hozzáadása</li><li>Alkalmazások hozzárendelése a beágyazott csoportok</li><li>Beágyazott csoportok licencek alkalmazása</li></ul>
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) a címtár egy globális rendszergazdai fiók használatával.
+### <a name="to-add-a-group-as-a-member-of-another-group"></a>Egy másik csoport tagjaként csoport hozzáadása
+
+1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 2. Válassza ki **Azure Active Directory**, majd válassza ki **csoportok**.
 
@@ -55,8 +58,8 @@ Hozzáadhat egy meglévő csoportot egy másik meglévő csoporthoz, tag létreh
 
     ![Csoport tagsági oldaláról is a tagja, és a csoport részletei](media/active-directory-groups-membership-azure-portal/group-membership-review.png)
 
-## <a name="remove-a-member-group-from-another-group"></a>Egy másik csoport tag csoport eltávolítása
-Egy meglévő tagcsoportnak távolíthat el egy másik csoportot. Azonban a tagságot is eltávolítása bármely örökölt attribútumok és a tulajdonságok a felhasználók számára.
+## <a name="remove-a-group-from-another-group"></a>Csoport eltávolítása csoportból
+Eltávolíthatja a meglévő biztonsági csoportot egy másik biztonsági csoportból. Azonban a csoport eltávolítása is eltávolítja a örökölt attribútumok és a tulajdonságok a tagjai.
 
 ### <a name="to-remove-a-member-group-from-another-group"></a>Egy tag csoport eltávolítása egy másik csoportot
 1. Az a **csoportok – összes csoport** lapon keresse meg és válassza ki azt a csoportot, amely tagja egy másik csoportra, el kell távolítani. Ebben a gyakorlatban újra használjuk a **mobileszköz-kezelési szabályzat – Nyugat-India** csoport.
@@ -73,7 +76,7 @@ Egy meglévő tagcsoportnak távolíthat el egy másik csoportot. Azonban a tags
 ## <a name="additional-information"></a>További információ
 E cikkekben további információk találhatók az Azure Active Directoryval kapcsolatban.
 
-- [A csoportok és tagok megtekintése](active-directory-groups-view-azure-portal.md)
+- [Csoportok és tagok megtekintése](active-directory-groups-view-azure-portal.md)
 
 - [Hozzon létre egy alapszintű csoportot, és tagokat vehet fel](active-directory-groups-create-azure-portal.md)
 
@@ -81,4 +84,6 @@ E cikkekben további információk találhatók az Azure Active Directoryval kap
 
 - [A csoport beállításainak szerkesztése](active-directory-groups-settings-azure-portal.md)
 
-- [Licencek hozzárendelése a felhasználókhoz, csoport szerint](../users-groups-roles/licensing-groups-assign.md)
+- [Csoport használata SaaS-alkalmazásokhoz való hozzáférés kezelésére](../users-groups-roles/groups-saasapps.md)
+
+- [Forgatókönyvek, korlátait és ismert problémák csoportok használata kezelheti az Azure Active Directory licencelése](../users-groups-roles/licensing-group-advanced.md#limitations-and-known-issues)

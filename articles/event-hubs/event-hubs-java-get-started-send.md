@@ -7,33 +7,34 @@ manager: timlt
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 08/27/2018
+ms.date: 10/18/2018
 ms.author: shvija
-ms.openlocfilehash: f67982eda60a8fdfdf0d50785827c513275fd202
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 87d3261d5d9604b004c949e384e9d48e957229d7
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124755"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49455725"
 ---
 # <a name="send-events-to-azure-event-hubs-using-java"></a>Események küldése az Azure Event Hubs Java használatával
 
-Event Hubs szolgáltatás egy kiválóan méretezhető fogadórendszer, amely képes másodpercenként több millió feldolgozására, ezáltal az alkalmazások feldolgozásához, és a csatlakoztatott eszközök és alkalmazások által létrehozott hatalmas adatmennyiségek elemzését. Miután az adatoknak egy eseményközpontba való összegyűjtését, átalakíthatja és adatok bármilyen valós idejű elemzési szolgáltató vagy tárolási fürt használatával tárolhatja.
+Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event hubs részletes ismertetőt talál [Event Hubs – áttekintés](event-hubs-about.md) és [Event Hubs-szolgáltatások](event-hubs-features.md).
 
-További információkért lásd: a [Event Hubs – áttekintés][Event Hubs overview].
+Ez az oktatóanyag bemutatja, hogyan küldhet eseményeket egy eseményközpontba egy Java nyelven írt konzolalkalmazással használatával. 
 
-Ez az oktatóanyag bemutatja, hogyan küldhet eseményeket egy eseményközpontba egy konzolalkalmazást, a Java használatával. A Java Event Processor Host tár használatával események fogadására, lásd: [Ez a cikk](event-hubs-java-get-started-receive-eph.md), vagy kattintson a megfelelő fogadónyelvre a bal oldali tartalomjegyzékben.
+> [!NOTE]
+> Ebben a rövid útmutatóban egy mintát, letöltheti a [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend), cserélje le `EventHubConnectionString` és `EventHubName` karakterláncot az eseményközpontja értékeire, és futtassa azt. A lépéseket követheti azt is megteheti, ebben az oktatóanyagban hozhat létre saját.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag elvégzéséhez szüksége van a következő előfeltételek vonatkoznak:
+Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
 
 * A Java fejlesztési környezet. Ebben az oktatóanyagban [Eclipse](https://www.eclipse.org/).
-* Aktív Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot][] a feladatok megkezdése előtt.
 
-A jelen oktatóanyagban szereplő kód alapján a [SimpleSend GitHub-minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend), amely a teljes megtekintéséhez tekintse meg működő alkalmazást.
+## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs-névtér és eseményközpont létrehozása
+Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és eseményközpont létrehozásához hajtsa végre az eljárást a [Ez a cikk](event-hubs-create.md), majd folytassa a következő lépéseket ebben az oktatóanyagban.
 
-## <a name="send-events-to-event-hubs"></a>Események küldése az Event Hubsba
+## <a name="add-reference-to-azure-event-hubs-library"></a>Az Azure Event Hubs-erőforrástárhoz hivatkozás hozzáadása
 
 A Java ügyféloldali kódtár, az Event Hubs szolgáltatás a Maven-projektekhez érhető el a [Maven központi tárházból](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22). Ebben a könyvtárban, a Maven-projektfájlból belül a következő függőségi nyilatkozat használatával hivatkozhat. A jelenlegi verzió: 1.0.2-es:    
 
@@ -49,7 +50,7 @@ A különböző típusú összeállítási környezetekhez explicit módon szere
 
 Egy egyszerű esemény-közzétevő importálja a *com.microsoft.azure.eventhubs* az Event Hubs ügyfélosztályok csomag és a *com.microsoft.azure.servicebus* például szolgáló segédeszközosztályok csomag gyakori kivételek, amelyek az Azure Service Bus üzenetkezelési ügyfél vannak megosztva. 
 
-### <a name="declare-the-send-class"></a>Deklarálja a küldési osztály
+## <a name="write-code-to-send-messages-to-the-event-hub"></a>Kód írása az üzenetek küldése az event hubs való
 
 A következő mintában először hozzon létre egy új Maven-projektet egy konzol/felületalkalmazáshoz a kedvenc Java-fejlesztőkörnyezetében. Az osztály neve `SimpleSend`:     
 
@@ -109,7 +110,11 @@ ehClient.closeSync();
 
 ``` 
 
-### <a name="how-messages-are-routed-to-eventhub-partitions"></a>Hogyan legyenek átirányítva az üzeneteket az EventHub-partíciók
+Hozhat létre és futtassa a programot, és győződjön meg arról, hogy nincsenek-e hibák.
+
+Gratulálunk! Üzeneteket küldött egy eseményközpontba.
+
+### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>A függelék: Hogyan üzenetek legyenek átirányítva az EventHub-partíciók
 
 Üzenetek fogyasztó megkaptuk, mielőtt közzétenni a partíciók először a kiadók által rendelkeznek. Üzeneteket az eseményközpontba szinkron módon történik a metódussal sendSync() a com.microsoft.azure.eventhubs.EventHubClient objektum közzétételét követően sikerült-e az összes rendelkezésre álló partíciókra Ciklikus időszeleteléses módon elosztott vagy egy adott partícióra küldött üzenet attól függően, hogy a partíciós kulcs van megadva, vagy nem.
 
@@ -138,14 +143,9 @@ eventHubClient.closeSync();
 
 ## <a name="next-steps"></a>További lépések
 
-Az alábbi webhelyeken további információt talál az Event Hubsról:
-
-* [Események fogadása az EventProcessorHost használatával](event-hubs-java-get-started-receive-eph.md)
-* [Event Hubs – áttekintés][Event Hubs overview]
-* [Eseményközpont létrehozása](event-hubs-create.md)
-* [Event Hubs – gyakori kérdések](event-hubs-faq.md)
+Ebben a rövid útmutatóban elküldött üzeneteket az eseményközpontba Java használatával. Események fogadása az event hubs .NET-keretrendszer használatával kapcsolatban lásd: [események fogadása az event hubs - Java](event-hubs-java-get-started-receive-eph.md).
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-overview.md
-[ingyenes fiókot]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[free account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 

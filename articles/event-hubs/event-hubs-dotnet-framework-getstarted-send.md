@@ -12,101 +12,98 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/03/2018
+ms.date: 10/18/2018
 ms.author: shvija
-ms.openlocfilehash: 7b5a4298ee4c67f0300bd4aabb7fc6373d8edba0
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: ae5d89aab4ce1bd599ed9a50dc46336f8a96a2f5
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005290"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456224"
 ---
 # <a name="send-events-to-azure-event-hubs-using-the-net-framework"></a>Események küldése az Azure Event Hubsba a .NET-keretrendszer használatával
+Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event hubs részletes ismertetőt talál [Event Hubs – áttekintés](event-hubs-about.md) és [Event Hubs-szolgáltatások](event-hubs-features.md).
 
-Az Event Hubs szolgáltatás a csatlakoztatott eszközökről és alkalmazásokból származó nagy mennyiségű eseményadatot dolgoz fel (telemetria). Miután összegyűjtötte az adatokat az Event Hubsban, az adatok egy tárolási fürt használatával tárolhatja, vagy átalakíthatja egy valós idejű elemzési szolgáltató segítségével. Ez az átfogó eseménygyűjtési és -feldolgozási képesség kulcsfontosságú alkotóeleme a modern alkalmazásarchitektúráknak, beleértve az eszközök internetes hálózatát (IoT).
+Ez az oktatóanyag bemutatja, hogyan küldhet eseményeket egy eseményközpontba egy C# nyelven írt konzolalkalmazással a .NET-keretrendszer használatával. 
 
-A jelen oktatóanyag bemutatja, hogyan használhatja az [Azure Portalt](https://portal.azure.com) egy eseményközpont létrehozásához. Azt is ismerteti, hogyan küldhet eseményeket egy eseményközpontba egy C# nyelven írt konzolalkalmazással a .NET-keretrendszer használatával. Az események a .NET-keretrendszerrel való fogadásáról lásd a [Események fogadása a .NET-keretrendszerrel](event-hubs-dotnet-framework-getstarted-receive-eph.md) című cikket, vagy kattintson a megfelelő fogadónyelvre a bal oldali tartalomjegyzékben.
-
+## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
 
 * [A Microsoft Visual Studio 2017-es vagy újabb](http://visualstudio.com).
-* Aktív Azure-fiók. Ha még nincs fiókja, néhány perc alatt létrehozhat egy ingyenes fiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/).
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs-névtér és eseményközpont létrehozása
+Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és eseményközpont létrehozásához hajtsa végre az eljárást a [Ez a cikk](event-hubs-create.md), majd folytassa a következő lépéseket ebben az oktatóanyagban.
 
-Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és az eseményközpont létrehozásához kövesse az [ebben a cikkben](event-hubs-create.md) olvasható eljárást, majd folytassa a jelen oktatóanyag további lépéseivel.
+## <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
 
-## <a name="create-a-sender-console-application"></a>Küldő konzolalkalmazás létrehozása
-
-Ebben a szakaszban egy Windows-konzolalkalmazást, amely elküldi az eseményeket az eseményközpontjába írhat.
-
-1. Hozzon létre egy új Visual C# asztalialkalmazás-projektet a **Console Application** (Konzolalkalmazás) projektsablonnal. Adja a projektnek a **Sender** (Küldő) nevet.
+Hozzon létre egy új Visual C# asztalialkalmazás-projektet a **Console Application** (Konzolalkalmazás) projektsablonnal. Adja a projektnek a **Sender** (Küldő) nevet.
    
-    ![](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp1.png)
-2. A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a **Sender** (Küldő) projektre, majd kattintson a **Manage NuGet Packages for Solution** (NuGet-csomagok kezelése megoldáshoz) parancsra. 
-3. Kattintson a **Browse** (Tallózás) lapra, és keressen a következőre: `WindowsAzure.ServiceBus`. Kattintson az **Install** (Telepítés) gombra, és fogadja el a használati feltételeket. 
+![](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp1.png)
+
+## <a name="add-the-event-hubs-nuget-package"></a>Az Event Hubs NuGet-csomag hozzáadása
+
+1. A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a **Sender** (Küldő) projektre, majd kattintson a **Manage NuGet Packages for Solution** (NuGet-csomagok kezelése megoldáshoz) parancsra. 
+2. Kattintson a **Browse** (Tallózás) lapra, és keressen a következőre: `WindowsAzure.ServiceBus`. Kattintson az **Install** (Telepítés) gombra, és fogadja el a használati feltételeket. 
    
     ![](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp2.png)
    
     A Visual Studio letölti és telepíti az [Azure Service Bus library NuGet package](https://www.nuget.org/packages/WindowsAzure.ServiceBus) (Azure szolgáltatásbusz-könyvtár NuGet-csomag) elemet, és hozzáad egy rá mutató hivatkozást is.
-4. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
+
+## <a name="write-code-to-send-messages-to-the-event-hub"></a>Kód írása az üzenetek küldése az event hubs való
+
+1. Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
    
-  ```csharp
-  using System.Threading;
-  using Microsoft.ServiceBus.Messaging;
-  ```
-5. Adja hozzá a következő mezőket a **Program** osztályhoz, lecserélve a helyőrző értékeket az előző szakaszban létrehozott eseményközpont nevével, valamint a korábban elmentett névtérszintű kapcsolati sztringgel.
+      ```csharp
+      using System.Threading;
+      using Microsoft.ServiceBus.Messaging;
+      ```
+2. Adja hozzá a következő mezőket a **Program** osztályhoz, lecserélve a helyőrző értékeket az előző szakaszban létrehozott eseményközpont nevével, valamint a korábban elmentett névtérszintű kapcsolati sztringgel.
    
-  ```csharp
-  static string eventHubName = "Your Event Hub name";
-  static string connectionString = "namespace connection string";
-  ```
-6. Adja hozzá a **Program** osztályhoz a következő módszert:
+        ```csharp
+        static string eventHubName = "Your Event Hub name";
+        static string connectionString = "namespace connection string";
+        ```
+3. Adja hozzá a **Program** osztályhoz a következő módszert:
    
-  ```csharp
-  static void SendingRandomMessages()
-  {
-      var eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, eventHubName);
-      while (true)
+      ```csharp
+      static void SendingRandomMessages()
       {
-          try
+          var eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, eventHubName);
+          while (true)
           {
-              var message = Guid.NewGuid().ToString();
-              Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, message);
-              eventHubClient.Send(new EventData(Encoding.UTF8.GetBytes(message)));
+              try
+              {
+                  var message = Guid.NewGuid().ToString();
+                  Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, message);
+                  eventHubClient.Send(new EventData(Encoding.UTF8.GetBytes(message)));
+              }
+              catch (Exception exception)
+              {
+                  Console.ForegroundColor = ConsoleColor.Red;
+                  Console.WriteLine("{0} > Exception: {1}", DateTime.Now, exception.Message);
+                  Console.ResetColor();
+              }
+       
+              Thread.Sleep(200);
           }
-          catch (Exception exception)
-          {
-              Console.ForegroundColor = ConsoleColor.Red;
-              Console.WriteLine("{0} > Exception: {1}", DateTime.Now, exception.Message);
-              Console.ResetColor();
-          }
-   
-          Thread.Sleep(200);
       }
-  }
-  ```
+      ```
    
-  Ez a metódus folyamatosan küldi az eseményeket az eseményközpontjának, 200 ezredmásodperces késleltetéssel.
-7. Végül adja a következő sorokat a **Main** metódushoz:
+      Ez a metódus folyamatosan küldi az eseményeket az eseményközpontjának, 200 ezredmásodperces késleltetéssel.
+4. Végül adja a következő sorokat a **Main** metódushoz:
    
-  ```csharp
-  Console.WriteLine("Press Ctrl-C to stop the sender process");
-  Console.WriteLine("Press Enter to start now");
-  Console.ReadLine();
-  SendingRandomMessages();
-  ```
-8. Futtassa a programot, és ellenőrizze, hogy nincsenek-e hibák.
+      ```csharp
+      Console.WriteLine("Press Ctrl-C to stop the sender process");
+      Console.WriteLine("Press Enter to start now");
+      Console.ReadLine();
+      SendingRandomMessages();
+      ```
+5. Futtassa a programot, és ellenőrizze, hogy nincsenek-e hibák.
   
 Gratulálunk! Üzeneteket küldött egy eseményközpontba.
 
 ## <a name="next-steps"></a>További lépések
-
-Most, hogy létrehozott egy működő alkalmazást, amely létrehoz egy eseményközpontot és adatokat is küld, továbbléphet a következő forgatókönyvekre:
-
-* [Események fogadása az Event Processor Host használatával](event-hubs-dotnet-framework-getstarted-receive-eph.md)
-* [Event Processor Host-referencia](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost)
-* [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md)
+Ez a rövid útmutatóban elküldött üzeneteket egy eseményközpontba, .NET-keretrendszer használatával. Események fogadása az event hubs .NET-keretrendszer használatával kapcsolatban lásd: [események fogadása az event hubs – .NET-keretrendszer](event-hubs-dotnet-framework-getstarted-receive-eph.md).
 
 <!-- Images. -->
 [19]: ./media/event-hubs-csharp-ephcs-getstarted/create-eh-proj1.png

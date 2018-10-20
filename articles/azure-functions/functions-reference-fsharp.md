@@ -1,6 +1,6 @@
 ---
 title: 'Az Azure Functions F # – fejlesztői referencia |} A Microsoft Docs'
-description: 'Megismerheti, hogyan hozhat létre az Azure Functions használatával F #.'
+description: 'Megismerheti, hogyan hozhat létre az Azure Functions használatával skriptu F #.'
 services: functions
 documentationcenter: fsharp
 author: sylvanc
@@ -10,18 +10,21 @@ ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.service: azure-functions
 ms.devlang: fsharp
 ms.topic: reference
-ms.date: 09/09/2016
+ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: 5593f76511f43106d6743a158b051e118ef2a4a6
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 772b2dae016e093f2c3833374378c0e884dbe835
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125255"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456949"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Az Azure Functions F # – fejlesztői referencia
 
-F # az Azure Functions egy megoldással egyszerűen futtathatók kisebb kódrészletek, más kód vagy a "függvények" a felhőben. Az F # függvény keresztül függvény argumentumának adatáramlás. Argument neve meg van határozva a `function.json`, és vannak az előre definiált nevek eléréséhez, többek között a függvény naplózó és a megszakítási tokeneket.
+F # az Azure Functions egy megoldással egyszerűen futtathatók kisebb kódrészletek, más kód vagy a "függvények" a felhőben. Az F # függvény keresztül függvény argumentumának adatáramlás. Argument neve meg van határozva a `function.json`, és vannak az előre definiált nevek eléréséhez, többek között a függvény naplózó és a megszakítási tokeneket. 
+
+>[!IMPORTANT]
+>F #-szkript (.fsx) csak a támogatja [verzió 1.x](functions-versions.md#creating-1x-apps) az Azure Functions Runtime. Ha azt szeretné, F # használata a verzió 2.x verziójú futtatókörnyezet, egy előre lefordított F # hordozhatóosztálytár-projektjének (.fs) kell használnia. Létrehozásához, kezeléséhez és közzétételéhez az F # hordozhatóosztálytár-projektjének Visual Studio használatával, mint egy [C# hordozhatóosztálytár-projektjének](functions-dotnet-class-library.md). Functions-verziókkal kapcsolatos további információkért lásd: [Azure Functions runtime verziók áttekintése](functions-versions.md).
 
 Ez a cikk feltételezi, hogy Ön már elolvasta a [Azure Functions fejlesztői segédanyagai](functions-reference.md).
 

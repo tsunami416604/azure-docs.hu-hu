@@ -1,22 +1,25 @@
 ---
-title: Mi az egyéni beszédfelismerési? – Az azure Cognitive Services
-description: Ez a cikk a Microsoft szöveg-beszéd átalakítás hangalapú testreszabásával, amely lehetővé teszi, hogy hozzon létre egy könnyen felismerhető névre, egy-az-maga nemében egyedülálló márka hangalapú áttekintése.
+title: Egyéni hangtípust létrehozása
+titlesuffix: Azure Cognitive Services
+description: Ez a cikk az szöveg-beszéd átalakítás hangalapú testreszabásával, amely lehetővé teszi, hogy hozzon létre egy könnyen felismerhető névre, egy-az-maga nemében egyedülálló márka hangalapú áttekintése.
 services: cognitive-services
-author: noellelacharite
+author: PanosPeriorellis
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 05/07/2018
-ms.author: nolach
-ms.openlocfilehash: 21b37d2b61af81e6481de4c5e7537a3382d895b6
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.author: panosper
+ms.openlocfilehash: bf06042d3b820e61d1f5b316a8b7b26d1a366388
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113920"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467718"
 ---
 # <a name="creating-custom-voice-fonts"></a>Egyéni hangtípust létrehozása
 
-Microsoft Szövegfelolvasás hangalapú testreszabási lehetővé teszi, hogy hozzon létre egy könnyen felismerhető névre, egy-az-maga nemében egyedülálló hang, a saját márkáját: egy *hangtípusú.* 
+Szövegfelolvasás hangalapú testreszabási lehetővé teszi, hogy hozzon létre egy könnyen felismerhető névre, egy-az-maga nemében egyedülálló hang, a saját márkáját: egy *hangtípusú.* 
 
 A hangtípusú létrehozásához, győződjön meg arról, a studio felvételt, és töltse fel a betanítási adatok, a kapcsolódó parancsprogramokat. A szolgáltatás ekkor létrehoz egy egyéni modell a rögzítése használatára vannak konfigurálva. E hangtípusú használatával beszédfelismerési szintetizálásához. 
 

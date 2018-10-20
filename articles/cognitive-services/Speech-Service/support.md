@@ -1,19 +1,21 @@
 ---
 title: Támogatás és Súgó
-description: Tudja, hogyan Súgó és támogatási kérdések és problémák, alkalmazásokat, amelyekbe beépül az Azure Cognitive Services beszéd létrehozásakor
+titlesuffix: Azure Cognitive Services
+description: Súgó és támogatja a kérdések és problémák, a Speech szolgáltatással együttműködő alkalmazásokat létrehozásakor
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: b5d981f06219bd2b5d7325476725ff7a4eccf3b6
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 58fb5d4be2137eed7d62e702f08bdd66c80be347
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430102"
+ms.locfileid: "49468058"
 ---
 # <a name="support-and-help-options"></a>Támogatás és Súgó
 
