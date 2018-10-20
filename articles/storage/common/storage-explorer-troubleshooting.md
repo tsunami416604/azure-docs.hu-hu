@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.component: common
-ms.openlocfilehash: eb72d92496addacd82e4d30df625b4f9c0c823e5
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: ffb355b4471bd8455f67e657d9557c3f372c3f4e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521030"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470320"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer – hibaelhárítási útmutató
 
@@ -74,7 +74,7 @@ A macOS kulcslánc néha kérheti le a Storage Explorer hitelesítési tár prob
 7. Próbáljon meg bejelentkezni.
 
 ### <a name="general-sign-in-troubleshooting-steps"></a>Általános bejelentkezési hibaelhárítási lépéseket
-* Ha MacOS-gépeken, és a bejelentkezési ablakban soha nem a "Hitelesítés... Várakozás" párbeszédpanelen keresztül jelenik meg, majd próbálja meg [ezeket a lépéseket](#Mac-Keychain-Errors)
+* Ha MacOS-gépeken, és a bejelentkezési ablakban soha nem a "Hitelesítés... Várakozás" párbeszédpanelen keresztül jelenik meg, majd próbálja meg [ezeket a lépéseket](#mac-keychain-errors)
 * Indítsa újra a Tártallózót
 * Ha a hitelesítési ablak üres, várjon legalább egy percet, mielőtt bezárná a hitelesítési párbeszédpanelt.
 * Győződjön meg arról, hogy a proxy- és a tanúsítvány beállításait konfigurálja megfelelően a gép és a Storage Explorer.

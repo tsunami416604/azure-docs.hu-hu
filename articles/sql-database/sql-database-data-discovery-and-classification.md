@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 36269392db785e7d2d203f032a84cccc8a6c62e0
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 32b60a53581a0f372a7d994cfa260ebd7bcb27b2
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352968"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467041"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Az Azure SQL-adatbázis adatainak felderítése és besorolása
 
@@ -140,10 +140,10 @@ T-SQL használatával oszloposztályozás hozzáadása/eltávolítása, valamint
 
 REST API-k használatával programozott módon kezelheti a besorolásokat. A közzétett REST API-k támogatják a következő műveleteket:
 
-- [Hozzon létre vagy frissítsen](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_createorupdate) – létrehozza vagy frissíti a érzékenységi címkét egy adott oszlop
-- [Törlés](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_delete) – a érzékenységi címkét egy adott oszlop törlése
-- [Első](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_get) – lekérdezi a érzékenységi címkét egy adott oszlop
-- [Lista által adatbázis](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_listbydatabase) – lekérdezi a megadott adatbázis érzékenységi címkék
+- [Hozzon létre vagy frissítsen](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) – létrehozza vagy frissíti a érzékenységi címkét egy adott oszlop
+- [Törlés](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) – a érzékenységi címkét egy adott oszlop törlése
+- [Első](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) – lekérdezi a érzékenységi címkét egy adott oszlop
+- [Lista által adatbázis](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listbydatabase) – lekérdezi a megadott adatbázis érzékenységi címkék
 
 ## <a id="subheading-5"></a>Következő lépések
 

@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/25/2018
+ms.date: 10/18/2018
 ms.author: srrengar
-ms.openlocfilehash: a607f560b5e74071f5ee15d03e615138f25a3aef
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 5fc2674a145be99fb8867c5cf1b1f65ba860db80
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406806"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457833"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorozás és diagnosztika az Azure Service Fabrichez
 
@@ -71,7 +71,7 @@ SFX legújabb rendszerállapot-jelentések lát, mellett az egyes jelentések is
 
 ## <a name="other-logging-solutions"></a>Naplózás megoldásait
 
-Bár a két megoldást javasoljuk, [Azure Log Analytics](service-fabric-diagnostics-event-analysis-oms.md) és [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) sok eseményt etw-szolgáltatókon keresztül írták meg, és a Service Fabric-integráció készült bővíthető más naplózási megoldásokkal. Emellett be kell keresnie a [Elastic Stack](https://www.elastic.co/products) (különösen akkor, ha tervezi, hogy a fürt futtatása kapcsolat nélküli környezetben), [Splunk](https://www.splunk.com/), [Dynatrace](https://www.dynatrace.com/), vagy bármely más a megadott platform. 
+Bár a két megoldást javasoljuk, [Azure Log Analytics](service-fabric-diagnostics-event-analysis-oms.md) és [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) sok eseményt ETW-szolgáltatókon keresztül írták meg, és a Service Fabric-integráció készült bővíthető más naplózási megoldásokkal. Is be kell keresnie a [Elastic Stack](https://www.elastic.co/products) (különösen akkor, ha tervezi, hogy a fürt futtatása kapcsolat nélküli környezetben), [Dynatrace](https://www.dynatrace.com/), vagy bármely más platformra a beállításokat. Integrált partnereink által kínált érhető el az alábbi listában [Itt](service-fabric-diagnostics-partners.md).
 
 A kulcsfontosságú pontokat bármely platformra választja tartalmaznia kell hogyan okoz gondot a van a felhasználói felület és lekérdezési lehetőségeket, lehetővé teszi az adatok megjelenítése és az irányítópultok könnyen olvasható, és azok javíthatják a figyelést, adja meg a további eszközök létrehozása például az automatikus riasztások.
 
@@ -80,5 +80,7 @@ A kulcsfontosságú pontokat bármely platformra választja tartalmaznia kell ho
 * Ismerkedés az alkalmazások szándékkal, lásd: [alkalmazás szintű esemény és a naplófájl létrehozásának](service-fabric-diagnostics-event-generation-app.md).
 * A platform és a Service Fabric biztosít Önnek, események monitorozásával kapcsolatos további információkért [Platform szintű esemény és a naplófájl létrehozásának](service-fabric-diagnostics-event-generation-infra.md).
 * Lépkedjen végig a lépéseket az alkalmazás a mesterséges Intelligencia beállításához [figyelése és diagnosztizálása a Service Fabric ASP.NET Core alkalmazás](service-fabric-tutorial-monitoring-aspnet.md).
-* Ismerje meg, hogyan állítható be az Azure Log Analytics tárolók- [Monitorozás és diagnosztika a Windows a tárolók az Azure Service Fabric](service-fabric-tutorial-monitoring-wincontainers.md).
+* Ismerje meg, hogyan tárolók OMS Log Analytics beállítása – [Monitorozás és diagnosztika a Windows a tárolók az Azure Service Fabric](service-fabric-tutorial-monitoring-wincontainers.md).
+* Lásd például diagnosztikai problémák és megoldások a Service fabrickel [gyakori helyzetek diagnosztizálása](service-fabric-diagnostics-common-scenarios.md)
+* Tekintse meg az egyéb diagnosztikai termékek, amelyek integrálhatók a Service Fabric [diagnosztikai Service Fabric-partnerek](service-fabric-diagnostics-partners.md)
 * További tudnivalók az Azure-erőforrásokhoz – általános figyelési javaslatok [ajánlott eljárások - figyelés és diagnosztika](https://docs.microsoft.com/azure/architecture/best-practices/monitoring). 

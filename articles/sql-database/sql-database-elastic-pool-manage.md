@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 6c43e5bf311d94ff2e5b5c31217c5071ea26746c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/19/2018
+ms.openlocfilehash: 0c939956a8f3336b5071748a8c2bdf8840b749ad
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351862"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466069"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Az Azure SQL Database rugalmas készletek létrehozása és kezelése
 
@@ -106,11 +106,11 @@ Hozhat létre és kezelheti az SQL Database rugalmas készletek és a készletez
 |[Rugalmas készletek – frissítés](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_listbyserver)|Frissíti egy meglévő rugalmas készlet.|
 |[Rugalmas készlet, tevékenységek](https://docs.microsoft.com/rest/api/sql/elasticpoolactivities)|Rugalmas készlet, tevékenységek adja vissza.|
 |[Rugalmas készlet adatbázis-tevékenységek](https://docs.microsoft.com/rest/api/sql/elasticpooldatabaseactivities)|Az adatbázisok rugalmas készlet belül adja vissza a tevékenység.|
-|[-Adatbázis létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)|Új adatbázis létrehozása vagy frissítése egy meglévő adatbázist.|
-|[Adatbázisok – Get](https://docs.microsoft.com/rest/api/sql/databases/databases_get)|Egy adatbázis beolvasása.|
-|[Adatbázis - listát a rugalmas készlet](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyelasticpool)|Rugalmas készletben található adatbázisok listáját adja vissza.|
-|[Adatbázis - kiszolgáló által lista](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyserver)|A kiszolgálón az adatbázisok listáját adja vissza.|
-|[Adatbázis - frissítés](https://docs.microsoft.com/rest/api/sql/databases/databases_update)|Frissíti egy meglévő adatbázist.|
+|[-Adatbázis létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Új adatbázis létrehozása vagy frissítése egy meglévő adatbázist.|
+|[Adatbázisok – Get](https://docs.microsoft.com/rest/api/sql/databases/get)|Egy adatbázis beolvasása.|
+|[Adatbázis - listát a rugalmas készlet](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|Rugalmas készletben található adatbázisok listáját adja vissza.|
+|[Adatbázis - kiszolgáló által lista](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|A kiszolgálón az adatbázisok listáját adja vissza.|
+|[Adatbázis - frissítés](https://docs.microsoft.com/rest/api/sql/databases/update)|Frissíti egy meglévő adatbázist.|
 
 ## <a name="next-steps"></a>További lépések
 

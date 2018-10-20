@@ -1,6 +1,6 @@
 ---
-title: A Cortana Intelligence versenyek – gyakori kérdések |} Microsoft Docs
-description: A Microsoft a Cortana Intelligence versenyek vonatkozó gyakran ismételt kérdések.
+title: Cortana Intelligence-versenyek – gyakori kérdések |} A Microsoft Docs
+description: Gyakori kérdések a Microsoft Cortana Intelligence-versenyek.
 services: machine-learning
 documentationcenter: ''
 author: hning86
@@ -15,104 +15,104 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 1db1b8ee7ba3611f8d1d69f711f1ec72308c7d06
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 15d46f16c78b8fa757d7810542b3d6bfa9a95f3c
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833328"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465627"
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence-versenyek – GYIK
-**Mi az a Cortana Intelligence versenyek?**
+**Mi a Cortana Intelligence-versenyek?**
 
-A Microsoft a Cortana Intelligence versenyek adatok hivalatos globális közössége által közösen néhány a világ legösszetettebb adatok tudományos problémák megoldása több egység. A Cortana Intelligence versenyek származó adatok hivalatos "versenyeznek", és magas pontos és intelligens adatmodelleket tudományos építhetnek világszerte engedélyezése. A szolgáltatott versenyek elérhetővé tett nyilvánosan először egyedi adatkészletek alapulnak. Résztvevők megtérüléséhez win, vagy a felső 10 nyilvános ranglista keresztül felismerés beolvasása. Elérheti a versenyek kezdőlap: [aka.ms/CIComp](http://aka.ms/CIComp).
+A Microsoft Cortana Intelligence-versenyek álló globális Közösséget adatokkal foglalkozó szakemberek által együttesen néhány, a világ legösszetettebb data science problémák megoldására több egység. Cortana Intelligence-versenyek adatokkal foglalkozó szakemberek a versenyben, és nagyon pontos és intelligens adatelemző modelleket hozhat létre a világ átvitelét teszi lehetővé. Ezek üzemeltetett versenyek egyedi adatkészleteihez tett érhető el nyilvánosan először alapulnak. Résztvevők jutalmakat win vagy felismerés keresztül a felső 10 nyilvános ranglista első is. Hozzáférhet a versenyek kezdőlapot [aka.ms/CIComp](http://aka.ms/CIComp).
 
-**Milyen gyakran kiadja a Microsoft új versenyek?**
+**Milyen gyakran közzéteszik a Microsoft új versenyek?**
 
-Azt fogja indítani rendszeresen, 1. féltől, a Microsoft által birtokolt versenyek körülbelül minden 8 – 12 hétre. 
+Mi lesz kell indítása rendszeres időközönként, 1. fél, a Microsoft saját versenyek körülbelül 8 – 12 hetente. 
 
-**Ha teheti fel adattudomány kapcsolatos általános kérdésekre?**
+**Hol tehetek fel általános kérdések adatelemzési kapcsolatban?**
 
-Általános kérdések, használhatja a [Microsoft Azure Machine Learning fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning).
+Az általános kérdése van, használhatja a [Microsoft Azure Machine Learning fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning).
 
-**Hogyan adjon meg egy verseny?**
+**Hogyan nevezhetek versenyt?**
 
-Hozzáférés a [versenyek](https://gallery.cortanaintelligence.com/competitions) kezdőlapja a [Azure Eszközintelligencia-katalógus](https://gallery.cortanaintelligence.com/), vagy keresse fel [ http://aka.ms/CIComp ](http://aka.ms/CIComp). A kezdőlapon éppen futó összes versenyek. Minden egyes verseny rendelkezik részletes utasításokat és részvételi szabályok díjak és a regisztrációs oldalon található időtartama.
+Hozzáférés a [versenyek](https://gallery.cortanaintelligence.com/competitions) kezdőlapja a [Azure AI-katalógusban](https://gallery.cortanaintelligence.com/), vagy az [ http://aka.ms/CIComp ](http://aka.ms/CIComp). A kezdőlapon jelenleg futó minden verseny. Minden verseny rendelkezik részletes utasításokat és részvételi szabályok, különböző díjakért és időtartama a regisztrációs oldalon található.
 
-1. Keresse meg a verseny szeretne részt vesznek, olvassa el az utasításokat, és tekintse meg az útmutató videót. Kattintson a **meg verseny** gombra, és a Starter kísérlet átmásolja a meglévő Azure Machine Learning munkaterülettel. Ha már nincs hozzáférése a munkaterületet, akkor létre kell hoznia egy előre. Alapszintű kísérlet futtatása, megfigyelheti, a teljesítmény metrika, majd a modell a teljesítmény javítása érdekében a kreativitást használja. A legtöbb, a idő ebben a lépésben töltött valószínűleg lesz.   
+1. Keresse meg a verseny, amelyet szeretne részt vesznek, olvassa el az utasításokat az összes, és tekintse meg a videót. Kattintson a **adja meg a verseny** gombra, és a Starter kísérlet másolja be a meglévő Azure Machine Learning-munkaterületet. Ha már nincs hozzáférése a munkaterületet, akkor hozzon létre egyet előre. Alapszintű lefuttathatja a, a teljesítmény-mérőszám figyelje meg, majd kreativitását használatával növelheti a modell teljesítményét. A legtöbb fel ebben a lépésben töltött valószínűleg lesz.   
 
-2. Hozzon létre egy prediktív Kísérletté a betanított modell alapszintű kísérletbe kívül. Majd gondosan módosítsa a bemeneti és kimeneti séma a webszolgáltatás annak érdekében, hogy azok megfelelnek a verseny dokumentációjának meghatározott követelményeknek. Az oktatóanyag dokumentum általában rendelkezik részletes utasításokat a. Az útmutató videót is megtekinthet, ha elérhető.   
+2. Hozzon létre egy prediktív kísérletet a betanított modell ki az alapszintű kísérlet. Majd körültekintően állítsa be a bemeneti és kimeneti séma a webszolgáltatás annak érdekében, hogy azok megfelelnek a verseny dokumentáció meghatározott követelmények. Az oktatóanyag dokumentum általában részletesen ez vonatkozó utasításokat. Megtekintheti a videót, is, ha elérhető.   
 
-3. A prediktív Kísérletté kívül egy webszolgáltatás-bővítmény telepítése. A webes szolgáltatás segítségével tesztelheti a **teszt** gombra való kattintást vagy az Excel-sablon, automatikusan létrejön, győződjön meg arról, hogy megfelelően működik-e.   
+3. A prediktív Kísérletté webszolgáltatás üzembe helyezése. Tesztelje a web service használatával a **teszt** gomb vagy az Excel-sablont, automatikusan létrejön, győződjön meg arról, hogy megfelelően működik.   
 
-4. A webszolgáltatás a verseny bejegyzésének nyújt, és tekintse meg a nyilvános pontszám az Azure Eszközintelligencia-katalógus verseny lapon. És ünnepi, ha a ranglista alakzatot teszik!  
+4. A webszolgáltatás a verseny bejegyzésként nyújt, és a nyilvános pontszám, az Azure AI-katalógusban verseny oldalon. És ha az alakzatot a ranglista megünneplése!  
 
-Miután sikeresen elküldött egy bejegyzést, később is visszatérhet a másolt alapszintű kísérletvászonra. Majd többször és frissítése a prediktív Kísérletté, frissítése a webszolgáltatás, és küldje el az új bejegyzést.   
+Miután sikeresen elküldött egy bejegyzést, léphet vissza a másolt alapszintű kísérlet során. Majd ismételt futtatásával frissítse a prediktív kísérletet, frissíteni a webszolgáltatást, és küldje el az új bejegyzést.   
 
-**Nyílt forrású eszközök használata a versenyek részt?**
+**Nyílt forráskódú eszközök használata vesz részt a verseny?**
 
-A verseny résztvevők Azure Machine Learning Studio, a felhő alapú szolgáltatás Cortana Intelligence Suite belül a tudományos modellekhez és küldésének verseny bejegyzéseket létrehozni a fejlesztési célra. A Machine Learning Studio nem csak egy grafikus felhasználói felületen gépi tanulási kísérletekhez megalkotásához, akkor is lehetővé teszi a saját R vagy Python parancsfájlok visszahelyező natív végrehajtásra. Az R és Python futtatókörnyezetek Studio kapható széles választéka nyílt forráskódú R vagy Python-csomagokat. A saját csomagokat, valamint a kísérlet részeként importálhatja. Studio is rendelkezik ahhoz, hogy szabad stílus adatfeltárás beépített Jupyter Notebook szolgáltatással. Természetesen mindig letöltheti a verseny szerepel az adatkészletek és felfedezheti a Machine Learning Studio kívül kedvenc eszközben. 
+A verseny résztvevők Azure Machine Learning Studióban, Cortana Inteligence Suite egy felhőalapú szolgáltatás használata az adatelemző modelleket és küldésének verseny bejegyzéseket hozhat létre. A Machine Learning Studio egy grafikus felhasználói felületen nem csupán biztosít a machine learning-kísérletek létrehozása, is lehetővé teszi, hogy a saját R-és/vagy Python-szkriptek használata a natív végrehajtásra. Az R és Python modulok a Studióban kapható számos nyílt forráskódú R/Python-csomagokat. Importálhatja a saját csomagokat, valamint a kísérlet részeként. Studio egy beépített Jupyter Notebook szolgáltatás, a szabad stílusú adatfeltárás is tartalmaz. Természetesen mindig letöltheti a verseny használt adatkészletekhez és Ismerkedés a Machine Learning Studio-en kívül a kedvenc eszközben. 
 
-**Kell megadnia egy adatok tudósok kell?**
+**Kell értenie az adatokhoz meg kell?**
 
-Nem. Valójában javasoljuk adatok hivalatos bárki adattudomány és egyéb aspiring adatszakértőkön át a adja meg a környezetével kapcsolatos fejezetét. A Microsoft támogató dokumentumok engedélyezése mindenki számára "versenyeznek" a létrehozott. A célközönség van:
+Nem. Sőt azt javasoljuk adatokkal foglalkozó szakemberek, bárki inspirációkkal adatelemzési és egyéb népszerűsítéséért az adatszakértők a versenyre való nevezéshez kapcsolatban. Alkalmazkodva alakítottuk ki, hogy mindenki jelenlegi versenyének támogató dokumentumok. A következő számára:
 
-* **Adatok fejlesztők**, **Adatszakértőkön**, **BI** és **Analytics szakemberek**: azok, akik az adatok és analitikák tartalom létrehozó mások felhasználásához
-* **Adatok megbízott**: azokat az adatokat, mit jelent, és hogyan azt rendelkezik való használatra készült, és milyen célra információ
-* **A diákok** & **kutatói:** rendelkező képzési és a kapcsolódó adatok ismeretek felsőoktatási vagy nagy nyitott Online tanfolyamokat (MOOCs) részt academic programok segítségével történő
+* **Adatok fejlesztők**, **Adatszakértők**, **BI** és **Analytics szakemberek**: azoknak, akik felelősek az adatok és analitika tartalmakat előállító mások felhasználhatják őket
+* **Adatok megbízott**: azok, akik a Tudásbázis az adatokat, azt jelenti, és hogyan, rendelkezik javasolt használni, és milyen célra
+* **Diákok** és **kutatói:** azoknak, akik képzési és eszközeikre adatokkal kapcsolatos ismereteit az egyetemek, vagy a résztvevőket a tömeges nyílt Online kurzusok (Mooc) oktatási programjaihoz keresztül
 
-**Írható be a munkatársaival csapatként?**
+**Nevezhetek saját munkatársaival csapatként?**
 
-A verseny platform jelenleg nem támogatja a csapat programban való részvétellel. Minden verseny bejegyzés van kötve egy felhasználói azonosítót. 
+A verseny platform jelenleg nem támogatja a csapat részvételét. Minden verseny bejegyzéshez vannak kötve, egyetlen felhasználói identitást. 
 
-**Egy verseny részt kell fizetnie kell?**
+**Van szükségem egy versenyben részvételre kell fizetnem?**
 
-Versenyek szabadon részt. Azonban szüksége, az Azure Machine Learning-munkaterület részt venni a hozzáférést. Egyszerűen csak egy érvényes Microsoft-fiókot, vagy az Office 365-fiókkal jelentkezett létrehozhatja egy szabad munkaterület bankkártya nélkül. Ha most már az Azure vagy a Cortana Intelligence Suite felhasználóinál, hozzon létre, és egy szabványos munkaterületén az azonos Azure-előfizetés használatára. Ha szeretné az Azure-előfizetés vásárlása, folytassa a [Azure-beli árakról](https://azure.microsoft.com/pricing) lap. Vegye figyelembe, hogy a normál díjszabás érvényes kísérletek összeállításához egy szabványos munkaterület használata esetén. További információkért lásd: [Azure Machine Learning árakról](https://azure.microsoft.com/pricing/details/machine-learning/). 
+Versenyek használata ingyenes, hogy részt vesz. , Azonban hozzáférésre van szüksége az Azure Machine Learning-munkaterület való részvételre. Létrehozhat egy ingyenes munkaterületet bankkártya nélkül-egyszerűen naplózás be egy érvényes Microsoft-fiókot, vagy az Office 365-fiókkal. Ha Ön már az Azure-ban vagy a Cortana Intelligence Suite ügyfele, hozzon létre, és a Standard munkaterületen alatt az Azure-előfizetéshez. Ha szeretné vásárolni az Azure-előfizetéssel, folytassa a [az Azure díjszabása](https://azure.microsoft.com/pricing) lapot. Vegye figyelembe, hogy a standard szintű árszabás érvényes lesz, amikor kísérletek létrehozására a Standard munkaterület használatával. További információkért lásd: [Azure Machine Learning díjszabási információinak](https://azure.microsoft.com/pricing/details/machine-learning/). 
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
-**Mik azok a nyilvános és titkos pontszámok?**
+**Mik azok a nyilvános és privát pontszámok?**
 
-A legtöbb versenyek láthatja, hogy minden küldésének végez, általában a 10-20 percen belül nyilvános pontszámot kap. De a verseny lejárta után utolsó rangsorolási használt titkos pontszámot kap. 
+A legtöbb versenyek láthatja, hogy minden egyes beküldött anyag, általában 10-20 percen belül nyilvános pontszámot kap. De a verseny befejezése után kapni fog a végleges rangsorolási használt privát pontszámot. 
 
 Ez történik:
 
-* A verseny használt a teljes adatkészlet véletlenszerűen felosztása tanítási és tesztelési (a fennmaradó) adatok rétegzési a. A véletlenszerű felosztás műanyaggal van rétegezett, ezzel biztosíthatja, hogy a címkék betanítása, mind az adatok tesztelés disztribúciók konzisztens.
-* A betanítási adatok feltöltése és a Starter kísérlet az adatok importálása modul konfiguráció részeként kapott.
-* A tesztelési adatok további felosztása nyilvános és privát tesztelési adatokat, ugyanazon a rétegzési használatával.
-* A nyilvános tesztelési adatokat a kezdeti ciklikus pontozás szolgál. Az eredmény a nyilvános pontszám nevezzük. Is láthatók a küldésének előzményeit a megadott adatot elküldésekor. A pontszám kiszámítása elküld minden bejegyzéshez. A nyilvános pontszám megvannak a nyilvános ranglista szolgál.
-* A privát tesztelési adatokat a verseny lejárta után a végső ciklikus pontozás szolgál. Ez személyes pontszám nevezzük. 
-* Minden egyes résztvevő a bejegyzést, amelyben a legnagyobb nyilvános pontszámok rögzített számú automatikusan kijelölt adja meg a személyes pontozási ciklikus (Ez a szám eltérhetnek attól függően, a verseny). A bejegyzés a legmagasabb titkos pontszám majd a végső rangsorolási, amely végső soron megadja, hogy a díj résztvevők be van jelölve.  
+* A verseny használt a teljes adatkészlet véletlenszerűen a tanítási és tesztelési (a fennmaradó) adatok rétegzési van felosztva. A véletlenszerű felosztás műanyaggal van rétegezett, győződjön meg arról, hogy összhangban-e a disztribúciók feliratainak a képzés és a tesztelés adatokat is.
+* A betanítási adatok feltöltése és az alapszintű kísérlet az adatok importálása modulkonfiguráció részeként kapott.
+* A tesztelési adatok további van felosztva, amelyek nyilvános és privát tesztelési adatok, az ugyanabban a csoportosítási használatával.
+* A nyilvános tesztelési adatokat a kezdeti ciklikus pontozás szolgál. Az eredmény a nyilvános pontszám nevezzük. Fontos, hogy megjelenik a beküldés előzményeket a bejegyzés elküldésekor. A pontszám kiszámítása minden bejegyzést küld el történik. A nyilvános pontszám megvannak a nyilvános ranglista a szolgál.
+* A privát tesztelési adatokat a verseny befejezése után a végső ciklikus pontozás szolgál. A privát pontszám nevezzük. 
+* Minden egyes résztvevő esetében a bejegyzéseket a legmagasabb nyilvános pontszámokat rögzített számú automatikusan kijelölt adja meg a privát pontozási ciklikus (a Ez a szám a verseny függően változhat). A bejegyzésben a legmagasabb privát pontszám, majd adja meg a végső rangsoroló, amely megadja, hogy a nyereményt győztesei végső soron az van kiválasztva.  
 
-**Ügyfelek, rendelkezhet egy verseny a platformot?**
+**Ügyfelek üzemeltethet platformunkon versenyt?**
 
-Üdvözöljük az 3. fél szervezetek partneri kapcsolatba velünk, és a platformot a nyilvános és titkos versenyek üzemeltetésére. Van egy verseny bevezetési csapat, aki örömmel segítünk a bevezetési folyamat ilyen versenyvizsgákhoz lesz.  Ellenőrizze, hogy engedélyezte nekünk az [ compsupport@microsoft.com ](mailto:compsupport@microsoft.com) további részleteket. 
+3. fél szervezetek számára, hogy legyen a partnerünk, és a nyilvános és privát versenyek platformunkon üzemeltethet szívesen. Összeállítottunk egy verseny bevezetési csapat, aki forduljon hozzánk, és megvitatni a bevezetési folyamatot, az ilyen versenyek lesz.  Dolgozzunk minket [ compsupport@microsoft.com ](mailto:compsupport@microsoft.com) további részletekért. 
 
-**Mik azok a jelentések korlátai?**
+**Mik azok a jelentkezés korlátai?**
 
-Egy tipikus verseny dönthetnek úgy, hogy korlátozza a belül 24 órás (UTC-ideje 00:00:00 – 23:59:59) elküldheti a bejegyzések száma, és elküldheti a verseny időtartama alatt bejegyzések száma. Megfelelő hibaüzenetet kap egy korlátozás túllépése. 
+Egy tipikus verseny dönthet nyújthatja be egy 24 órás időtartam (UTC idő 00:00:00 és 23:59:59) belül bejegyzések száma, és elküldheti a verseny időtartama alatt bejegyzések száma korlátozza. Megfelelő hibaüzeneteket kap egy korlátozás túllépése. 
 
-**Mi történik, ha szeretnék win egy verseny?**
+**Mi történik, ha szeretnék win versenyt?**
 
-A Microsoft ellenőrzi, hogy a titkos ranglista eredményeit, és ezután kapcsolatba lépünk Önnel. Győződjön meg arról, hogy az e-mail címét, a felhasználói profil naprakész.
+A Microsoft ellenőrzi, hogy a titkos ranglista eredményeit, és majd jelentkezünk. Győződjön meg arról, hogy naprakész állapotban-e az e-mail-címét a felhasználó profiljában.
 
-**Hogyan fogja elérni a díj pénz Ha I win egy verseny?**
+**Hogyan fogja elérni a nyereményt pénzt Ha szeretnék win versenyt?**
 
-Ha egy verseny győztes, szüksége lesz való jogosultságát, a licenc és helyről nyilatkozatot aláírásához. Ezt az űrlapot az ismételten kifejezi. Résztvevők Számunkra áfa űrlap kitöltése W-9, vagy egy űrlap W 8BEN, ha nincs USA adófizetők kell. Felvesszük Önnel a kapcsolatot az összes résztvevők a megtérüléséhez kifizetés folyamat részeként a regisztrációs e-maileket. Tekintse meg a [feltételek és kikötések](http://aka.ms/comptermsandconditions) további részleteket.
+Ha a verseny nyertes, szüksége lesz jogosult-e, a licenc és a kiadásra nyilatkozat aláírására. Az űrlap ismételten kifejezi, hogy a verseny szabályainak. Győztesei USA adó űrlap kitöltése W-9, illetve egy W-8BEN űrlap ha azok nem Egyesült Államokbeli adófizetők kell. Tájékoztatjuk összes győztesei a felhőtechnológia kifizetési folyamat részeként a regisztrációs e-mail használatával. Tekintse meg a [feltételek és kikötések](http://aka.ms/comptermsandconditions) további részleteket.
 
-**Mi történik, ha egynél több bejegyzés megkapja az azonos pontszám?**
+**Mi történik, ha egynél több bejegyzés kap az azonos pontszám?**
 
-A küldésének ideje a holtversenyben levő. A korábban küldött bejegyzés outranks benyújtott később a bejegyzést.
+A beküldés idő az az tie megszakító. A korábban elküldött bejegyzés outranks később elküldeni a bejegyzést.
 
-**Vehessen meg, hogy használó Vendég munkaterület?**
+**Vehessen meg, hogy használó Vendég munkaterületet?**
 
-Nem. Egy ingyenes vagy egy szabványos munkaterület részt kell használnia. A verseny alapszintű kísérlet megnyithatja a Vendég-munkaterületen, de nem képes lesz benyújtására érvényes bejegyzés létrehozása a munkaterületről. 
+Nem. Egy ingyenes vagy Standard munkaterületre való részvételre kell használnia. A verseny alapszintű kísérlet megnyithatja a Vendég-munkaterületen, de nem fogja tudni küldésének érvényes bejegyzés létrehozása a munkaterületről. 
 
-**Is szeretnék részt venni a munkaterület bármely Azure régióban használatával?**
+**Szeretnék részt vehessen a munkaterület használatával bármely Azure-régióban?**
 
-Jelenleg a verseny platform csak támogatja egy olyan munkaterületről, az elküldött bejegyzések a **déli középső Régiójában** Azure-régiót. Minden munkaterületek várakozó déli középső Régiójában, így elküldheti a bármely szabad munkaterületéről bejegyzése. Ha egy szabványos munkaterület használatát választja, csak győződjön meg arról, hogy a Dél központi Velünk Azure régióban található, ellenkező esetben nem sikerült a jelentkezést. 
+Jelenleg a verseny platform csak támogatja a munkaterületről küldött bejegyzéseket a **USA déli középső Régiójában** az Azure-régióban. Az összes ingyenes munkaterületek találhatók az USA déli középső Régiója, így elküldheti bármely ingyenes munkaterületet egy bejegyzést. Ha a Standard munkaterületet használja, csak győződjön meg arról, hogy az USA déli középső velünk a Kapcsolatot az Azure-régióban található, ellenkező esetben a beküldött elemet nem sikerült. 
 
-**Tegye azt a felhasználói versenyek megoldások és tarthatja bejegyzést?**
+**Tegye nálunk a felhasználók versenyek megoldások és -bejegyzések?**
 
-Felhasználó bejegyzés csak tesztelési célokra a nyerő megoldások azonosításához jelennek meg. Tekintse meg a [feltételek és kikötések](http://aka.ms/comptermsandconditions) a részletekért.
+Felhasználói bejegyzések csak tesztelési célra használja, a győztes megoldások azonosításához jelennek meg. Tekintse meg a [feltételek és kikötések](http://aka.ms/comptermsandconditions) bírálattal.
 

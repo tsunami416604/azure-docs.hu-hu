@@ -7,34 +7,33 @@ manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 10/18/2018
 ms.author: shvija
-ms.openlocfilehash: 40b3aa82c3e9e8ab9a30362c0a41998877655725
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: f5e30a103b09613caee8e9912a89a5bc2d390f65
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005597"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458088"
 ---
 # <a name="send-events-to-event-hubs-using-go"></a>Események küldése az Event Hubs Go használatával
 
-Az Azure Event Hubs szolgáltatás egy kiválóan méretezhető eseménykezelő rendszer, amely képes kezelni a több millió csatlakoztatott eszközök és más rendszerek által létrehozott hatalmas adatmennyiségek elemzését teszi az alkalmazások engedélyezése események száma másodpercenként. Adatoknak egy eseményközpontba való összegyűjtését, miután kap, és zpracovávat události használatával a folyamaton belüli kezelők vagy más elemzési rendszerek továbbítással.
+Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event hubs részletes ismertetőt talál [Event Hubs – áttekintés](event-hubs-about.md) és [Event Hubs-szolgáltatások](event-hubs-features.md).
 
-Az Event Hubs kapcsolatos további információkért tekintse meg a [Event Hubs – áttekintés][Event Hubs overview].
+Ez az oktatóanyag azt ismerteti, hogyan küldhet eseményeket egy eseményközpontba, a Go nyelven írt alkalmazások. 
 
-Ez az oktatóanyag azt ismerteti, hogyan küldhet eseményeket egy eseményközpontba, a Go nyelven írt alkalmazások. Események fogadása, használja a **eph lépjen** (Event Processor Host) csomag leírtak szerint [a megfelelő Receive cikk](event-hubs-go-get-started-receive-eph.md).
-
-Jelen oktatóanyagban szereplő kód nézetéből [ezeket a GitHub-minták](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/eventhubs), amely a teljes megtekintéséhez tekintse meg működő alkalmazást, beleértve az importálási utasításokat és változódeklarációkat.
-
-További példák állnak rendelkezésre [az Hubs csomag a tárház](https://github.com/Azure/azure-event-hubs-go/tree/master/_examples).
+> [!NOTE]
+> Ebben a rövid útmutatóban egy mintát, letöltheti a [GitHub](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/eventhubs), cserélje le `EventHubConnectionString` és `EventHubName` karakterláncot az eseményközpontja értékeire, és futtassa azt. A lépéseket követheti azt is megteheti, ebben az oktatóanyagban hozhat létre saját.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
 
 * Nyissa meg telepített helyileg. Hajtsa végre a [ezek az utasítások](https://golang.org/doc/install) szükség esetén.
-* Aktív Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot][] a virtuális gép létrehozásának megkezdése előtt.
 * Egy meglévő Event Hubs névtér és az eseményközpont. Ezek az entitások utasításait követve hozhat létre [Ez a cikk](event-hubs-create.md).
+
+## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs-névtér és eseményközpont létrehozása
+Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és eseményközpont létrehozásához hajtsa végre az eljárást a [Ez a cikk](event-hubs-create.md), majd folytassa a következő lépéseket ebben az oktatóanyagban.
 
 ## <a name="install-go-package"></a>Telepítse a Go-csomag
 
@@ -125,15 +124,13 @@ if err != nil {
 log.Printf("got partition IDs: %s\n, info.PartitionIDs)
 ```
 
+Események küldése az event hubs, az alkalmazás futtatásához. 
+
+Gratulálunk! Üzeneteket küldött egy eseményközpontba.
+
 ## <a name="next-steps"></a>További lépések
-
-Látogasson el a következő oldalakon további információt az Event Hubsról:
-
-* [Események fogadása EventProcessorHost használatával](event-hubs-go-get-started-receive-eph.md)
-* [Event Hubs – áttekintés][Event Hubs overview]
-* [Eseményközpont létrehozása](event-hubs-create.md)
-* [Event Hubs – gyakori kérdések](event-hubs-faq.md)
+Ez a rövid útmutatóban elküldött üzeneteket az eseményközpontba a Go használatával. Események fogadása az eseményközpontok a Go használatával kapcsolatban lásd: [események fogadása az event hubs - Go](event-hubs-go-get-started-receive-eph.md).
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-about.md
-[ingyenes fiókot]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[free account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

@@ -15,8 +15,9 @@
 | Kérelem maximális időtúllépése |24 óra | |
 | Helyek száma |20 |HTTP-figyelőnként 1 |
 | Figyelőnkénti URL-címleképezések száma |1 | |
+| WebSocket egyidejű kapcsolatok |5000| |
 |URL-cím maximális hossza|8000|
 | Maximális feltöltési méretének Standard |2 GB | |
-| Maximális feltöltési méretének WAF |100 MB| |
+| Maximális feltöltési méretének WAF |Közepes WAF átjárók – 100 MB-ra<br>Nagy WAF átjárók – 500 MB-tal| |
 |WAF méretének korlátja (fájlok) nélkül|128 KB|
 

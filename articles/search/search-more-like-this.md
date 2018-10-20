@@ -1,7 +1,7 @@
 ---
-title: az Azure Search (előzetes verzió) moreLikeThis |} Microsoft Docs
-description: A moreLikeThis (előzetes verzió) szolgáltatás, az Azure Search REST API felfedett előzetes dokumentációjában talál.
-authors: mhko
+title: az Azure Search (előzetes verzió) moreLikeThis |} A Microsoft Docs
+description: A moreLikeThis (előzetes verzió) szolgáltatáshoz, az Azure Search REST API-ban előzetes dokumentációjában talál.
+author: mhko
 manager: jlembicz
 services: search
 ms.service: search
@@ -9,20 +9,20 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 10/27/2016
 ms.author: nateko
-ms.openlocfilehash: 29d9a478ca2e91e658d7d0f52e7a193ba694bc16
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d8b7dd754700a5b8cc781a0b13bd1b3ffecb2806
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31790729"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468364"
 ---
-# <a name="morelikethis-in-azure-search-preview"></a>az Azure Search (előzetes verzió) moreLikeThis
+# <a name="morelikethis-in-azure-search-preview"></a>moreLikeThis az Azure Search (előzetes verzió)
 
-`moreLikeThis=[key]` a lekérdezési paraméter a [Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents). Megadja a `moreLikeThis` keresési lekérdezés paramétere, dokumentumok, a dokumentum kulcs által megadott dokumentum hasonló találja. Ha a keresési kérelem rendelkező `moreLikeThis`, lekérdezés jön létre a keresési feltételeket az adott dokumentum kinyert dokumentum legjobban leíró. A létrehozott lekérdezést ezután a keresési kérés segítségével történik. Alapértelmezés szerint az összes `searchable` mezők minősülnek, kivéve, ha a `searchFields` paraméter használatával korlátozhatja a mezőket. A `moreLikeThis` paraméter nem használható a keresési paraméterrel `search=[string]`.
+`moreLikeThis=[key]` a lekérdezési paraméter a [Search API](https://docs.microsoft.com/rest/api/searchservice/search-documents). Adja meg a `moreLikeThis` paramétert a keresési lekérdezésben, dokumentumok, a dokumentum a dokumentumkulcsot által megadott hasonló találja. Ha egy keresési kérelmet a `moreLikeThis`, egy lekérdezés jön létre keresési feltételeket az adott dokumentum kinyert legjobban leíró dokumentum. A létrehozott lekérdezést a keresés kérés majd szolgál. Alapértelmezésben az összes `searchable` mezők számítanak, kivéve, ha a `searchFields` paraméter használható mezők korlátozása. A `moreLikeThis` paraméter nem használható a keresési paraméterrel, `search=[string]`.
 
 ## <a name="examples"></a>Példák 
 
-Az alábbiakban van például egy moreLikeThis lekérdezés. A lekérdezés talál dokumentumok, amelynek leírása mezők hasonlóak leginkább a forrásdokumentum által megadott mező a `moreLikeThis` paraméter.
+Az alábbi, például egy moreLikeThis lekérdezés. A lekérdezés talál, amelynek leírás mezők leginkább hasonlítanak, a mező a forrás-dokumentum által megadott a dokumentumok a `moreLikeThis` paraméter.
 
 ```  
 Get /indexes/hotels/docs?moreLikeThis=1002&searchFields=description&api-version=2016-09-01-Preview
@@ -38,4 +38,4 @@ POST /indexes/hotels/docs/search?api-version=2016-09-01-Preview
 
 ## <a name="feature-availability"></a>Szolgáltatások rendelkezésre állása
 
-A moreLikeThis funkció jelenleg előzetes verzióban érhetők, és csak akkor támogatott a minta api-verzióit, a `2015-02-28-Preview` és `2016-09-01-Preview`. Az API-verzió van megadva a kérés, mert is lehet kombinálni általánosan elérhető (GA), és ugyanahhoz az alkalmazáshoz az API-k előzetes. Azonban előnézeti API-k nincsenek az SLA-t és a szolgáltatások módosíthatja, ezért nem javasoljuk azok az éles környezetben.
+A moreLikeThis funkció jelenleg előzetes verzióban és csak az előzetes api-verziók, a támogatott `2015-02-28-Preview` és `2016-09-01-Preview`. Mivel az API-verzió van megadva a kérelem, kombinálhatja általánosan elérhető (GA), és előzetes verziójú API-k ugyanabban az alkalmazásban lehetőség. Azonban API-k nem az SLA-t és a szolgáltatások előzetes változhatnak, ezért nem javasoljuk az éles alkalmazásokban használja őket.

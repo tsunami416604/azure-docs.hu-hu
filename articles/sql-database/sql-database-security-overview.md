@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, ronitr
 manager: craigg
 ms.date: 10/11/2018
-ms.openlocfilehash: b8bb9cbf53b297d8dca1ac67bae8765edcc2c9f4
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 7cabf1f0020e2f72dae138c7b7b79e69ce2fc677
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311201"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456983"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database biztonsági lehetőségeinek áttekintése
 
@@ -32,7 +32,11 @@ Az SQL minden fajtájában elérhető biztonsági funkciók teljes körű áttek
 Az SQL Database a mozgásban lévő adatokat a [Transport Layer Security](https://support.microsoft.com/kb/3135244) protokoll, az inaktív adatokat [transzparens adattitkosítás](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql), a használatban lévő adatokat pedig az [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) protokoll használatával titkosítja az adatok védelme érdekében.
 
 > [!IMPORTANT]
-> Az Azure SQL Database-hez való kapcsolódáshoz minden esetben titkosítás (SSL/TLS) szükséges, amikor az adatok átvitele folyamatban van az adatbázisból vagy az adatbázisba. Az alkalmazás kapcsolati karakterláncában megadott paraméterekkel, a kapcsolat titkosítását és *nem* a tanúsítvány (ez történik, ha másolja a kapcsolati karakterláncot az Azure Portalon), ellenkező esetben megbízzon a kapcsolat nem ellenőrzi a kiszolgáló identitását, és ki vannak téve "man-in-the-middle" támadások. Az ADO.NET-illesztő számára például a következők a kapcsolati sztring paraméterei: **Encrypt=True** és **TrustServerCertificate=False**. A TLS és a kapcsolat kapcsolatos információkért lásd: [TLS kapcsolatos szempontok](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)
+> Az Azure SQL Database biztonsága ne sérüljön titkosítás (SSL/TLS) minden esetben minden parancs, amely biztosítja, hogy az összes adat titkosítva van "átvitel" az adatbázis és az ügyfél között. Ez történik, függetlenül a beállítás a **titkosítása** vagy **TrustServerCertificate** a kapcsolati karakterláncban.
+>
+> Ha az alkalmazás kapcsolati karakterláncában mégis **nem** adja meg a titkosított kapcsolatot, és *nem* a kiszolgálótanúsítvány megbízhatósága (Ez az ADO.NET-illesztőprogram **Encrypt = True**és **TrustServerCertificate = False**), az alkalmazás lehet ki vannak téve a egy man a középső támadást, az alkalmazás nem ellenőrzés alatt áll. a kiszolgáló vagy a titkosítási kényszerítése miatt. Ha a kapcsolati karakterlánc lekérését az Azure Portalról fog rendelkezni a megfelelő beállítások
+>
+> A TLS és a kapcsolat kapcsolatos információkért lásd: [TLS kapcsolatos szempontok](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)
 
 Az adatok titkosításának egyéb módjaira vonatkozóan fontolja meg az alábbiakat:
 

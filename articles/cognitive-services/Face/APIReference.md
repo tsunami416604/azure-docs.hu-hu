@@ -1,5 +1,3 @@
-<!-- Linguist question: Please confirm that the following are API names and should be left as is: "Person Management, LargePersonGroup/PersonGroup Management, LargeFaceList/FaceList Management, and Face Algorithms" -->
----
 title: API-referencia – Face API titleSuffix: az Azure Cognitive Services leírása: API-referencia arról nyújt tájékoztatást, a személy felügyeleti, LargePersonGroup/is lehet PersonGroup felügyeleti, LargeFaceList vagy FaceList felügyeleti és Arcfelismerési algoritmusok API-k.
 szolgáltatásokhoz: cognitive services author: SteveMSFT manager: cgronlun
 
@@ -18,3 +16,5 @@ Face API-k terjed ki a következő kategóriákban:
 - [LargeFaceList felügyeleti API-k](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc): egy a LargeFaceList kezelésére szolgáló [hasonló](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
 - [Is lehet PersonGroup személy felügyeleti API-k](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c): az arcokat személy is lehet PersonGroup kezelésére szolgáló [azonosító](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
 - [Is lehet PersonGroup felügyeleti API-k](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244): is lehet PersonGroup adatkészlet kezelésére szolgáló [azonosító](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+
+<!-- Linguist question: Please confirm that the following are API names and should be left as is: "Person Management, LargePersonGroup/PersonGroup Management, LargeFaceList/FaceList Management, and Face Algorithms" -->

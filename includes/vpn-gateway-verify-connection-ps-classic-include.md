@@ -5,21 +5,21 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 10/17/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 591da67e6411d0e859076f0a3c3c38afc1ebe1f5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 03dc6d8bb95a952a77be31f79df36a2c1ddc8ffc
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38765926"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458639"
 ---
 Ellenőrizheti, hogy a kapcsolat sikeresen létrejött, a "Get-AzureVNetConnection" parancsmag használatával.
 
 1. A következő parancsmag-példával az értékeket a sajátjaival megegyezően konfigurálhatja. Szóközöket tartalmaz, a a virtuális hálózat nevét idézőjelek között kell lennie.
 
-  ```powershell
+  ```azurepowershell
   Get-AzureVNetConnection "Group ClassicRG ClassicVNet"
   ```
 2. A parancsmag futtatása után tekintse meg az értékeket. Az alábbi példában a kapcsolati állapot "Csatlakoztatva" jeleníti meg, és láthatja a bemenő és kimenő bájtokat.

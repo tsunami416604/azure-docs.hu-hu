@@ -1,6 +1,6 @@
 ---
-title: Az Azure Termékváltozat nem érhető el hibák |} Microsoft Docs
-description: Ismerteti a Termékváltozat nem érhető el hiba történt a telepítés során.
+title: Az Azure-Termékváltozat nem érhető el hibák |} A Microsoft Docs
+description: Ismerteti, hogyan háríthatók el a Termékváltozat nem érhető el hiba üzembe helyezés során.
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
@@ -11,22 +11,23 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 03/09/2018
+ms.date: 10/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 490c912a6abd6570c9bc74de8b86a516a8e6f807
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d1279b5319ddd52ff2f3f6b4e696b73e8fe67607
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358761"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468687"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Javítsa ki a hibákat a termékváltozat nem érhető el
 
-Ez a cikk ismerteti, hogyan lehet feloldani a **SkuNotAvailable** hiba.
+Ez a cikk bemutatja, hogyan oldja meg a **SkuNotAvailable** hiba. Ha Ön nem található megfelelő Termékváltozat az adott régióban, vagy egy másik régióba, amely megfelel az üzleti van szüksége, adjon be egy [Termékváltozat kérelem](https://aka.ms/skurestriction) Azure támogatási szolgálatának.
+
 
 ## <a name="symptom"></a>Jelenség
 
-Egy erőforrás (általában egy virtuális gép) telepítésekor jelenhet meg a következő hiba kód és a hibaüzenet:
+Egy erőforrás (általában egy virtuális gép) üzembe helyezése során a következő hibakóddal és a hibaüzenet:
 
 ```
 Code: SkuNotAvailable
@@ -36,62 +37,63 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 
 ## <a name="cause"></a>Ok
 
-Ha az erőforrás (például a Virtuálisgép-méretet) kiválasztott Termékváltozat nem érhető el a kiválasztott helyen a hibaüzenetet kap.
+Ezt a hibaüzenetet kapja, amikor az erőforrás (például a virtuális gép mérete) kiválasztott Termékváltozat nem érhető el a kiválasztott helyen.
 
-## <a name="solution-1---powershell"></a>1 - PowerShell megoldás
+## <a name="solution-1---powershell"></a>Megoldás 1 – PowerShell
 
-Meghatározza, melyik termékváltozatok érhetők el olyan régióhoz, használja a [Get-AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku) parancsot. Hely szerint eredmények szűrésére. A parancs PowerShell legújabb verzióját kell rendelkeznie.
+Meghatározza, melyik SKU-k egy régióban érhető el, használja a [Get-azurermcomputeresourcesku parancsmag](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku) parancsot. Hely szerint az eredmények szűréséhez. Ezzel a paranccsal a PowerShell legújabb verzióját kell rendelkeznie.
+
+```azurepowershell-interactive
+Get-AzureRmComputeResourceSku | where {$_.Locations -icontains "centralus"}
+```
+
+Az eredmények tartalmazzák a termékváltozatok listája a hely és a megadott korlátozások nélkül, az adott Termékváltozatot. Figyelje meg, hogy a Termékváltozat is szerepelhet, mint `NotAvailableForSubscription`.
 
 ```powershell
-Get-AzureRmComputeResourceSku | where {$_.Locations -icontains "southcentralus"}
+ResourceType          Name        Locations   Restriction                      Capability           Value
+------------          ----        ---------   -----------                      ----------           -----
+virtualMachines       Standard_A0 centralus   NotAvailableForSubscription      MaxResourceVolumeMB   20480
+virtualMachines       Standard_A1 centralus   NotAvailableForSubscription      MaxResourceVolumeMB   71680
+virtualMachines       Standard_A2 centralus   NotAvailableForSubscription      MaxResourceVolumeMB  138240
 ```
 
-Az eredmények tartalmazzák a hely és a termékváltozat korlátozások termékváltozatok listáját.
+## <a name="solution-2---azure-cli"></a>2 – Azure CLI megoldás
 
-```powershell
-ResourceType                Name      Locations Restriction                      Capability Value
-------------                ----      --------- -----------                      ---------- -----
-availabilitySets         Classic southcentralus             MaximumPlatformFaultDomainCount     3
-availabilitySets         Aligned southcentralus             MaximumPlatformFaultDomainCount     3
-virtualMachines      Standard_A0 southcentralus
-virtualMachines      Standard_A1 southcentralus
-virtualMachines      Standard_A2 southcentralus
+Meghatározza, melyik SKU-k egy régióban érhető el, használja a `az vm list-skus` parancsot. Használja a `--location` paraméter szűrése a kimeneti helyet használ. Használja a `--size` paraméter egy részleges mérete nevet a kereséshez.
+
+```azurecli-interactive
+az vm list-skus --location southcentralus --size Standard_F --output table
 ```
 
-## <a name="solution-2---azure-cli"></a>2 – az Azure CLI megoldás
+A parancs hasonló eredményeket ad vissza:
 
-Meghatározza, melyik termékváltozatok érhetők el olyan régióhoz, használja a `az vm list-skus` parancsot. Ezután `grep` vagy egy hasonló segédprogram kimenete szűréséhez.
-
-```bash
-$ az vm list-skus --output table
-ResourceType      Locations           Name                    Capabilities                       Tier      Size           Restrictions
-----------------  ------------------  ----------------------  ---------------------------------  --------  -------------  ---------------------------
-availabilitySets  eastus              Classic                 MaximumPlatformFaultDomainCount=3
-avilabilitySets   eastus              Aligned                 MaximumPlatformFaultDomainCount=3
-availabilitySets  eastus2             Classic                 MaximumPlatformFaultDomainCount=3
-availabilitySets  eastus2             Aligned                 MaximumPlatformFaultDomainCount=3
-availabilitySets  westus              Classic                 MaximumPlatformFaultDomainCount=3
-availabilitySets  westus              Aligned                 MaximumPlatformFaultDomainCount=3
-availabilitySets  centralus           Classic                 MaximumPlatformFaultDomainCount=3
-availabilitySets  centralus           Aligned                 MaximumPlatformFaultDomainCount=3
+```azurecli
+ResourceType     Locations       Name              Zones    Capabilities    Restrictions
+---------------  --------------  ----------------  -------  --------------  --------------
+virtualMachines  southcentralus  Standard_F1                ...             None
+virtualMachines  southcentralus  Standard_F2                ...             None
+virtualMachines  southcentralus  Standard_F4                ...             None
+...
 ```
 
-## <a name="solution-3---azure-portal"></a>Megoldás 3 - Azure-portálon
 
-Meghatározza, melyik termékváltozatok érhetők el olyan régióhoz, használja a [portal](https://portal.azure.com). Jelentkezzen be a portálra, és vegyen fel egy erőforrást a felületen. Az értékeket állíthat be, megjelenik az adott erőforrás elérhető termékváltozatok. Nem kell a központi telepítés befejezéséhez.
+## <a name="solution-3---azure-portal"></a>3 – Azure portal megoldás
 
-![elérhető termékváltozatok](./media/resource-manager-sku-not-available-errors/view-sku.png)
+Meghatározza, melyik SKU-k egy régióban érhető el, használja a [portál](https://portal.azure.com). Jelentkezzen be a portálra, és adjon hozzá egy erőforrást a felületen. Az értékeket állít be, mivel láthatja az adott erőforráshoz rendelkezésre álló termékváltozatok. Nem kell a telepítés befejezéséhez.
 
-## <a name="solution-4---rest"></a>4 - REST megoldás
+Például indítsa el a virtuális gép létrehozásának folyamatán. Egyéb elérhető méretének megtekintéséhez válasszon **méretének módosítása**.
 
-Meghatározza, melyik termékváltozatok érhetők el olyan régióhoz, használja a REST API-t a virtuális gépek. A következő kérelem küldése:
+![Virtuális gép létrehozása](./media/resource-manager-sku-not-available-errors/create-vm.png)
 
-```HTTP 
-GET
-https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/skus?api-version=2016-03-30
-```
+Szűrés, és görgessen az elérhető méretek keresztül.
 
-Elérhető termékváltozatok és régiók visszaküldi a következő formátumban:
+![A rendelkezésre álló termékváltozatok](./media/resource-manager-sku-not-available-errors/available-sizes.png)
+
+## <a name="solution-4---rest"></a>Megoldás 4 – REST
+
+Meghatározza, melyik SKU-k egy régióban érhető el, használja a [erőforrás SKU - lista](/rest/api/compute/resourceskus/list) műveletet.
+
+Rendelkezésre álló termékváltozatok és régiók, visszaadja a következő formátumban:
 
 ```json
 {
@@ -121,4 +123,3 @@ Elérhető termékváltozatok és régiók visszaküldi a következő formátumb
 }
 ```
 
-Ha nem a megfelelő SKU az adott régióban található, vagy egy másik régióban, amely megfelel az üzleti van szüksége, küldje el a [SKU kérelem](https://aka.ms/skurestriction) az Azure támogatási szolgálatához.

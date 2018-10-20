@@ -1,26 +1,18 @@
 ---
 title: 'Útvonalalapú VPN-átjáró létrehozása: az Azure portal |} A Microsoft Docs'
-description: Gyorsan létrehozhat egy útvonalalapú VPN-átjárót az Azure portal használatával
+description: Az Azure portal használatával útvonalalapú VPN-átjáró létrehozása
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/04/2018
+ms.date: 10/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: fe05ab36f971105cf72342b8df5e2a82de7fc2b8
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 7139b2de79b4e092ca761a4e51061c233e6031b5
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391793"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470302"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Az Azure portal használatával útvonalalapú VPN-átjáró létrehozása
 
@@ -74,33 +66,19 @@ Az átjáróalhálózat tartalmazza a fenntartott IP-címek, amelyek a virtuáli
   - **Termékváltozat**: VpnGw1
   - **Hely**: USA keleti RÉGIÓJA
   - **Virtuális hálózat**: kattintson a **virtuális hálózat/válasszon egy virtuális hálózatot** megnyitásához a **virtuális hálózat választása** lapot. Válassza ki **VNet1**.
+  - **Nyilvános IP-cím**: Ez a beállítás azt a nyilvános IP-cím-objektumot adja meg, amely hozzá lesz rendelve a VPN-átjáróhoz. A nyilvános IP-címet a rendszer dinamikusan rendeli hozzá ehhez az objektumhoz a VPN-átjáró létrehozásakor. A VPN Gateway jelenleg csak a *Dinamikus* nyilvános IP-cím lefoglalását támogatja. Ez azonban nem jelenti azt, hogy az IP-cím módosul a VPN Gateway-hez való hozzárendelése után. A nyilvános IP-cím kizárólag abban az esetben változik, ha az átjárót törli, majd újra létrehozza. Nem módosul átméretezés, alaphelyzetbe állítás, illetve a VPN Gateway belső karbantartása/frissítése során.
 
-  ![Átjáró beállításainak](./media/create-routebased-vpn-gateway-portal/configure-gateway.png "-átjáró beállításainak konfigurálása")
+    - Hagyja bejelölve az **Új létrehozása** lehetőséget.
+    - Adjon egy nevet a nyilvános IP-címnek a **szövegmezőben**. Ehhez a gyakorlathoz használja **VNet1GWIP**.<br>
 
-## <a name="pip"></a>Hozzon létre egy nyilvános IP-cím
-
-VPN-átjáró dinamikusan lefoglalt nyilvános IP-címmel kell rendelkeznie. VPN-átjáró kapcsolatot hoz létre, ha ez az az IP-címet, amely a helyszíni eszközhöz csatlakozik.
-
-1. Válassza ki **első IP-cím konfigurációs átjáró IP-konfigurációjának létrehozása** kérjen egy nyilvános IP-címet.
-
-  ![Első IP-konfiguráció](./media/create-routebased-vpn-gateway-portal/add-public-ip-address.png "első IP-konfiguráció")
-2. Az a **válasszon nyilvános IP-lapon**, kattintson a **+ új létrehozása** megnyitásához a **nyilvános IP-cím létrehozása** lapot.
-3. Adja meg a beállításokat a következő értékeket:
-
-  - **Név**: **VNet1GWIP**
-  - **Termékváltozat**: **alapszintű**
-
-  ![Nyilvános IP-cím létrehozása](./media/create-routebased-vpn-gateway-portal/public-ip-address-name.png "PIP létrehozása")
-4. Kattintson a **OK** alján, ezen a lapon a módosítások mentéséhez.
+    ![Átjáró beállításainak](./media/create-routebased-vpn-gateway-portal/gw.png "-átjáró beállításainak konfigurálása")
 
 ## <a name="creategw"></a>A VPN-átjáró létrehozása
 
 1. Ellenőrizze a beállításokat a **virtuális hálózati átjáró létrehozása** lapot. Szükség esetén módosítsa az értékeket.
-
-  ![VPN-átjáró létrehozása](./media/create-routebased-vpn-gateway-portal/create-vpn-gateway.png "hozzon létre VPN-átjáró")
 2. Kattintson a **létrehozás** az oldal alján.
 
-Miután rákattintott **létrehozás**, a rendszer érvényesíti a beállításokat és a **üzembe helyezése virtuális hálózati átjáró** csempe az irányítópulton. VPN-átjáró akár 45 percet is igénybe vehet. Előfordulhat, hogy a kész állapot megjelenítéséhez frissítenie kell a portáloldalt.
+  Miután rákattintott **létrehozás**, a rendszer érvényesíti a beállításokat és a **üzembe helyezése virtuális hálózati átjáró** csempe az irányítópulton. VPN-átjáró akár 45 percet is igénybe vehet. Előfordulhat, hogy a kész állapot megjelenítéséhez frissítenie kell a portáloldalt.
 
 ## <a name="viewgw"></a>A VPN-átjáró megtekintése
 

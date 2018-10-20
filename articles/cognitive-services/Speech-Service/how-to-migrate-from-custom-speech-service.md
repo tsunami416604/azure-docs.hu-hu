@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Ismerje meg a Custom Speech szolgáltatásból a Speech Service-be való migrálás hogyan.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: panosper
-ms.openlocfilehash: db09a85daff553dc911d039d37c826343e93d240
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 656a5df21d1f7dd2e7662dc3a0415581eae02b00
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338522"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471237"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>A Custom Speech service áttelepít a beszédszolgáltatás
 

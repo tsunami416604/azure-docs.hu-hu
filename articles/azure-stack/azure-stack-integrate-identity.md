@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/02/2018
+ms.date: 10/19/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 4ba890f4763fc77981917d9311cf2bf6c97ec80f
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 6548693b91283665704be8fc83a483a9d20dc41b
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902443"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470546"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Az Azure Stack adatközpont integrációja - identitás
 Az identitás-szolgáltatóktól, Azure Active Directory (Azure AD) vagy az Active Directory összevonási szolgáltatások (AD FS) használatával az Azure-verem üzembe helyezhető. Ellenőrizze a kiválasztott Azure Stack üzembe helyezése előtt. Az AD FS telepítési is nevezik üzembe helyezése az Azure Stack kapcsolat nélküli módban.
@@ -70,6 +70,17 @@ A következő információkat szükség, mint a bemenetek az automatizálás par
 |---------|---------|---------|
 |CustomADGlobalCatalog|A cél az Active Directory-erdő teljes Tartományneve<br>hogy szeretné-e integrálása|Contoso.com|
 |CustomADAdminCredentials|Egy LDAP-olvasási engedéllyel rendelkező felhasználó|YOURDOMAIN\graphservice|
+
+### <a name="configure-active-directory-sites"></a>Active Directory-helyek konfigurálása
+
+A több hellyel rendelkező Active Directory-környezetek konfigurálja a legközelebbi Active Directory-helyeket az Azure Stack üzemelő példány. A konfiguráció elkerülhető kellene az Azure Stack Graph szolgáltatás egy globális katalóguskiszolgáló használatával egy távoli helyről lekérdezéseket.
+
+Adja hozzá az Azure Stack [nyilvános VIP-hálózat](azure-stack-network.md#public-vip-network) az Azure Active Directory-hely legközelebbi Azure Stack-alhálózatot. Például ha az Active Directory két hely Budapest és az Azure Stack üzembe helyezve, a Seattle helyen Redmond, volna hozzá a az Azure Stack nyilvános VIP-hálózat alhálózatából az Azure Active Directory-hely Budapest számára.
+
+További információ az Active Directory-helyek: [helytopológia megtervezése](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology).
+
+> [!Note]  
+> Ha az Active Directory állhat egyetlen hely ezt a lépést kihagyhatja. Abban az esetben egy kevésbé alhálózat konfigurálva ellenőrizze, hogy az Azure Stack nyilvános virtuális IP-CÍMEK hálózati alhálózat nem része, azt.
 
 ### <a name="create-user-account-in-the-existing-active-directory-optional"></a>Felhasználói fiók létrehozása a meglévő Active Directoryban (nem kötelező)
 
@@ -283,7 +294,7 @@ Nincsenek számos forgatókönyv, amely egy egyszerű szolgáltatásnevét (SPN)
 - A System Center felügyeleti csomag az Azure Stackhez az AD FS telepítésekor
 - Erőforrás-szolgáltatók az Azure Stackben és az AD FS telepítésekor
 - Számos olyan alkalmazás
-- A nem interaktív bejelentkezést igényelnek
+- Szüksége van egy nem interaktív bejelentkezés
 
 > [!Important]  
 > Az AD FS csak az interaktív bejelentkezési munkamenetek támogatja. Ha egy nem interaktív bejelentkezést egy automatizált keresztül van szükség, egy egyszerű Szolgáltatásnevet kell használnia.

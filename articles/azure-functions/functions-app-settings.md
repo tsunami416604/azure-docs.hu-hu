@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: ec309bc5484c0ac96d1323c56670c147737e7c64
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 2eb736891b12c07441bc8828ca07dd0b9fa13d98
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377863"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458122"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Az Azure Functions – alkalmazásbeállítási referencia
 
@@ -82,11 +82,11 @@ A gyökérkönyvtár elérési útja, a *host.json* fájl- és függvény mappá
 
 ## <a name="azurewebjobssecretstoragetype"></a>AzureWebJobsSecretStorageType
 
-Megadja a tárházban vagy a szolgáltató kulcs tárolására. A támogatott adattárak jelenleg blob ("Blob") és a fájlrendszert ("tiltott"). Az alapértelmezett érték ("tiltott") fájlrendszer.
+Megadja a tárházban vagy a szolgáltató kulcs tárolására. A támogatott adattárak jelenleg a blob storage ("Blob") és a helyi fájlrendszer ("fájlok"). Az alapértelmezett érték 1-es verzió a blobok és a fájlrendszerhez a 2. verzióban. Vegye figyelembe, hogy verzióban 1 fájlrendszer csak működni fog az funkciók futó app service-csomagban.
 
 |Kulcs|Mintaérték|
 |---|------------|
-|AzureWebJobsSecretStorageType|letiltva|
+|AzureWebJobsSecretStorageType|Fájlok|
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 

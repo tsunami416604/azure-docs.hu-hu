@@ -1,22 +1,23 @@
 ---
-title: Szöveg-beszéd átalakítás használatával beszédszolgáltatások használata
+title: Szöveg-beszéd átalakítás használja a Speech Service-ben
+titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan használható a Speech service szöveg-beszéd átalakítás.
-titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: erhopf
-ms.openlocfilehash: 774425d19101e4d326f0d6435d56aff1b37a31f7
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 162b690d4b371cfe76738cd83ce484a3062d139f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165045"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469917"
 ---
-# <a name="use-text-to-speech-in-speech-service"></a>Használja a "Szöveg-beszéd átalakítás" Speech service-ben
+# <a name="use-text-to-speech-in-speech-service"></a>Használja a "Szöveg-beszéd átalakítás" Speech Service-ben
 
 A beszédfelismerési szolgáltatás szöveg-beszéd átalakítás funkciókat egy egyszerű HTTP-kérés biztosít. Ön `POST` a szöveget, a megfelelő végpontra és a szolgáltatás egy hangfájlt adja vissza (`.wav`) tartalmazó beszédszintetizátorral. Az alkalmazás használhatja ezt a hang, akkor kedveli.
 
@@ -97,5 +98,5 @@ A szöveg Speech REST API további információkért lásd: [REST API-k](rest-ap
 
 - [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
 - [A C++ beszédfelismerést](quickstart-cpp-windows.md)
-- [A beszédfelismerést a C#-ban](quickstart-csharp-dotnet-windows.md)
+- [Beszéd felismerése C# nyelven](quickstart-csharp-dotnet-windows.md)
 - [A beszédfelismerést Java nyelven](quickstart-java-android.md)

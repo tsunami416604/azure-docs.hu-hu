@@ -1,24 +1,25 @@
 ---
-title: A Cognitive Services beszédfelismerő SDK hibaelhárítása
-description: Végezzen hibaelhárítást a Cognitive Services beszédfelismerő SDK-t.
+title: A beszédfelismerési szolgáltatás SDK hibaelhárítása
 titleSuffix: Azure Cognitive Services
+description: Végezzen hibaelhárítást a Speech Service SDK-t.
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 02564021257c97f6c865fcbebf30c73babee859a
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 9f0cea263262d83d9a95012f6cd09fa9acdc0141
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816213"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49464571"
 ---
-# <a name="troubleshoot-the-speech-sdk"></a>Az SDK Speech elhárítása
+# <a name="troubleshoot-the-speech-service-sdk"></a>A beszédfelismerési szolgáltatás SDK hibaelhárítása
 
-Ez a cikk beszéd SDK használata során esetlegesen jelentkező problémák megoldásához információkat nyújt.
+Ez a cikk a Speech Service SDK használatakor esetleg felmerülő problémák megoldásához információkat nyújt.
 
 ## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Hiba: A WebSocket-frissítés (403) hitelesítési hiba miatt meghiúsult
 

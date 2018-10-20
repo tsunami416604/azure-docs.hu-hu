@@ -1,20 +1,21 @@
 ---
 title: A beszédfelismerést a REST API-val
+titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan használható a Speech to Text API a Cognitive Services beszéd szolgáltatásban.
-titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: erhopf
-ms.openlocfilehash: 4e87feae7e3321efe7adcdbf1302762f539f034d
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 1bcc290d987e8294f9a73cf8490f6cdd0251b440
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167273"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467276"
 ---
 # <a name="recognize-speech-by-using-the-rest-api"></a>A beszédfelismerést a REST API-val
 

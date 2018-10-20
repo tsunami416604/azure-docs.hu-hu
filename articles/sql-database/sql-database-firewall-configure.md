@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 4f6c98533a2ab1289ca5f1da25c44fe1a77a983c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/19/2018
+ms.openlocfilehash: 18cd0ea4b6804edc11fc4f57c4327ef9d9a6f51e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353665"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466733"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-firewall-rules"></a>Az Azure SQL Database és az SQL Data Warehouse tűzfalszabályok
 
@@ -80,7 +80,7 @@ Annak engedélyezéséhez, hogy az Azure-alkalmazások csatlakozhassanak az Azur
 
 ## <a name="creating-and-managing-firewall-rules"></a>Tűzfal-szabályok létrehozását és kezelését
 
-Az első kiszolgálószintű tűzfalbeállítás hozható létre a [az Azure portal](https://portal.azure.com/) vagy programozott módon [Azure PowerShell-lel](https://docs.microsoft.com/powershell/module/azurerm.sql), [Azure CLI-vel](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create), vagy a [ REST API-val](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_createorupdate). A további kiszolgálószintű tűzfalszabályok ugyanezekkel a módszerekkel, vagy a Transact-SQL-lel hozhatók létre és kezelhetők.
+Az első kiszolgálószintű tűzfalbeállítás hozható létre a [az Azure portal](https://portal.azure.com/) vagy programozott módon [Azure PowerShell-lel](https://docs.microsoft.com/powershell/module/azurerm.sql), [Azure CLI-vel](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create), vagy a [ REST API-val](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate). A további kiszolgálószintű tűzfalszabályok ugyanezekkel a módszerekkel, vagy a Transact-SQL-lel hozhatók létre és kezelhetők.
 
 > [!IMPORTANT]
 > Adatbázisszintű tűzfalszabályok csak hozhatók létre, és Transact-SQL használatával kezelhetők.
@@ -189,10 +189,10 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 | API | Szint | Leírás |
 | --- | --- | --- |
-| [List Firewall Rules](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_listbyserver) |Kiszolgáló |Az aktuális kiszolgálószintű tűzfalszabályok megjelenítése |
-| [Tűzfalszabály létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_createorupdate) |Kiszolgáló |Kiszolgálószintű tűzfalszabályok létrehozása vagy frissítése |
-| [Tűzfalszabály törlése](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_delete) |Kiszolgáló |Kiszolgálószintű tűzfalszabályok eltávolítása |
-| [Tűzfal-szabályok beolvasása](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_get) | Kiszolgáló | Kiszolgálószintű tűzfalszabályok beolvasása |
+| [List Firewall Rules](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |Kiszolgáló |Az aktuális kiszolgálószintű tűzfalszabályok megjelenítése |
+| [Tűzfalszabály létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |Kiszolgáló |Kiszolgálószintű tűzfalszabályok létrehozása vagy frissítése |
+| [Tűzfalszabály törlése](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) |Kiszolgáló |Kiszolgálószintű tűzfalszabályok eltávolítása |
+| [Tűzfal-szabályok beolvasása](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | Kiszolgáló | Kiszolgálószintű tűzfalszabályok beolvasása |
 
 ## <a name="server-level-firewall-rule-versus-a-database-level-firewall-rule"></a>Kiszolgálószintű tűzfalszabályt és egy adatbázisszintű tűzfalszabályt
 

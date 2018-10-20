@@ -1,6 +1,6 @@
 ---
-title: Több modellek létrehozása egy kísérlet |} Microsoft Docs
-description: PowerShell használatával létrehozni több gépi tanulási modellek és webes Szolgáltatásvégpontok ugyanazt az algoritmust, de különböző képzési adatkészletek.
+title: Több modell létrehozása egy kísérletből |} A Microsoft Docs
+description: A powershellel hozhat létre több Machine Learning-modellek és webszolgáltatás Szolgáltatásvégpontok ugyanazt az algoritmust, de a különböző képzési adathalmazok alapján.
 services: machine-learning
 documentationcenter: ''
 author: hning86
@@ -15,66 +15,66 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
-ms.openlocfilehash: 17354891b50138911f36314620f0c826db4b5dac
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: dcf4e9fa9435d8f20784b20f3873d408adb78c20
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833665"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469826"
 ---
 # <a name="create-many-machine-learning-models-and-web-service-endpoints-from-one-experiment-using-powershell"></a>Több Machine Learning-modellek és webszolgáltatás-végpont létrehozása egy kísérletből a PowerShell használatával
-Ez gyakori probléma machine learning: szeretne létrehozni, amelyek ugyanabban a munkafolyamatban képzési és azonos algoritmus sok modellek. De azt szeretné, hogy a különböző képzési adatkészletek bemeneti adatként. Ez a cikk bemutatja, hogyan ehhez az Azure Machine Learning Studióban léptékű csak egyetlen kísérlet használatával.
+Íme a machine learning gyakran okoz problémát: szeretne létrehozni, amelyek ugyanabban a munkafolyamatban képzés és az azonos algoritmust használja számos modellt. De azt szeretné, hogy különböző képzési adathalmazok alapján bemenetként. Ez a cikk bemutatja, hogyan ipari méretekben az Azure Machine Learning Studióban ehhez csupán egyetlen kísérletben használatával.
 
-Például tegyük fel, a globális kerékpárt bérleti franchise vállalat tulajdonosa. A bérleti igény szerint a régebbi adatok alapján becsülhető egy regressziós modell kívánja. A világ különböző 1000 bérleti helyek rendelkezik, és mindegyik helyen dataset korábban összegyűjtött. Például a dátum, idő, időjárási és forgalom fontos szolgáltatásokat, és az egyes helyekre vonatkozó tartalmaznak.
+Például tegyük fel, a saját egy globális uci kerékpárkölcsönzési névhasználati üzleti. Szeretné az előzményadatok alapján bérleti kereslet előrejelzésére regressziós modell létrehozása. 1000 bérleti helyek rendelkezik világszerte, és egy adatkészletet, mindegyik helyen már összegyűjtött. Fontos szolgáltatások például a dátum, idő, időjárás és a forgalom és az egyes helyekre vonatkozó tartalmazzák.
 
-Az adatkészletek egyesített verzióját egyszer használja az összes helyszínen modellje betanításához sikerült. De a helyek mindegyikén egy egyedi környezetben. Ezért jobb megközelítés lenne a külön-külön használatával mindegyik helyen a dataset regressziós modell betanításához. Így minden betanított modell sikerült figyelembe a különböző tárolási méretek, kötet, geográfiai, feltöltése, kerékpárt mobilbarát forgalom környezet, és több.
+A modell egyszer az összes adatkészlet egyesített verziót használ, az összes hely között lehetett betanításához. De a helyek mindegyike rendelkezik egy egyedi környezetben. Így jobb módszer lehet a külön-külön mindegyik helyen a az adatkészlet használatával regressziós modell betanításához. Ezzel a módszerrel minden betanított modell sikerült vegye figyelembe a különböző tároló méretek, kötet, földrajzi hely, population, kerékpár-barát forgalom környezet és egyéb.
 
-Amely lehet, hogy a legjobb módszer, de nem kívánja 1000 képzési kísérletek létrehozása az Azure Machine Learning minden egy egyedi helyet jelölő. Amellett, hogy egy túlságosan feladat, célszerű is tűnik nem elég hatékony, mivel minden egyes kísérlet ugyanazokat kivételével a képzés dataset összetevők kellene lennie.
+Amely lehet, hogy a legjobb módszer, de nem kívánja 1000 képzési kísérletek létrehozása az Azure Machine Learning mindegyike egy egyedi helyet jelölő. Amellett, hogy egy eleve bonyolult feladatnak, is úgy tűnik, nem hatékony, mivel minden kísérlet ugyanazokat a betanítási adatkészletet kivételével összetevők lenne.
 
-Szerencsére Ez elvégezhető használatával a [Azure Machine Learning átképezési API](retrain-models-programmatically.md) és a feladat automatizálását [Azure Machine Learning PowerShell](powershell-module.md).
-
-> [!NOTE]
-> Ahhoz, hogy a minta felgyorsulnak, a helyek való 1000 10 kevesebb. De azonos alapelvek és eljárások 1000 helyekre érvényesek. Azonban ha szeretné, hogy az 1000 adatkészletek képzése érdekében érdemes a következő PowerShell-parancsfájlok párhuzamos futtatásához. Módjáról a cikk túlmutat, de található példák PowerShell többszálas az interneten.  
-> 
-> 
-
-## <a name="set-up-the-training-experiment"></a>A tanítási kísérletet beállítása
-A példa [tanítási kísérletet](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Training-Experiment-1) , hogy a [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com). Nyissa meg az ehhez a kísérlethez a [Azure Machine Learning Studio](https://studio.azureml.net) munkaterületen.
+Szerencsére a azt ennek segítségével végezheti a [Azure Machine Learning átképezési API](retrain-models-programmatically.md) és automatizálja a feladat [Azure Machine Learning PowerShell](powershell-module.md).
 
 > [!NOTE]
-> Ahhoz, hogy kövesse az ebben a példában együtt, érdemes lehet egy szabad munkaterület helyett egy szabványos munkaterület használja. Minden ügyfél - 10-végpontok – összesen hozzon létre egy végpontot, és, amelyhez egy szabványos munkaterület, mivel egy szabad munkaterület korlátozódik 3 végpontok. Ha csak egy ingyenes munkaterület, csak módosítása csak th helyek esetében engedélyezi a parancsfájlok.
+> Ahhoz, hogy a minta gyorsabban futnak, a helyek való 1000 10 számának csökkentése. Azonban ugyanazon alapelveket és eljárásokat a alkalmazni 1000 helyekre. Azonban ha szeretné, hogy 1000 adatkészletekből származó betanításához célszerű párhuzamos az alábbi PowerShell-parancsfájlok futtatásához. Hogyan valósítható meg ez a cikk nem foglalkozik, de annak PowerShell példái többszálas az interneten.  
 > 
 > 
 
-A kísérlet használ egy **adatok importálása** modul importálása a képzés dataset *customer001.csv* az Azure storage-fiók. Tegyük fel a tanítási adathalmazt gyűjtött összes kerékpárt bérleti helyét, és közötti fájlnévvel blob storage ugyanazon a helyen tárolja őket *rentalloc001.csv* való *rentalloc10.csv*.
+## <a name="set-up-the-training-experiment"></a>Állítsa be a tanítási kísérlet
+A példát követve [betanítási kísérlet](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Training-Experiment-1) , amely szerepel a [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com). Ez a kísérlet megnyitásához a [Azure Machine Learning Studio](https://studio.azureml.net) munkaterületen.
 
-![Kép](./media/create-models-and-endpoints-with-powershell/reader-module.png)
+> [!NOTE]
+> Annak érdekében, hogy kövesse az ebben a példában együtt, érdemes inkább a standard munkaterületet, mint egy ingyenes munkaterületet. Egy végpontot hoz létre minden egyes ügyfél - összesen 10 végpont - és a standard munkaterületre igénylő, mivel az ingyenes munkaterületre legfeljebb 3 végpontok. Ha csak egy ingyenes munkaterületet, egyszerűen csak megváltoztatja a parancsfájlok csak th helyeket engedélyezéséhez.
+> 
+> 
 
-Vegye figyelembe, hogy egy **webes szolgáltatás kimeneti** modul hozzá lett adva a **tanítási modell** modul.
-Ha ehhez a kísérlethez webszolgáltatásként lett telepítve, a végpont társított kimeneti egy .ilearner fájl formátumát a betanított modell adja vissza.
+A kísérlet használ egy **adatok importálása** modul importálása a betanítási adatkészletet *customer001.csv* egy Azure storage-fiókból. Tegyük fel, képzési adathalmazok gyűjtött összes uci kerékpárkölcsönzési helyekről, és a fájl nevéből és a ugyanazon a helyen a blob storage tárolja őket *rentalloc001.csv* való *rentalloc10.csv*.
 
-Vegye figyelembe azt is, hogy egy webes szolgáltatás paraméter, amely meghatározza a URL-cím beállítása, amely a **és adatokat importálhat** modul használja. Ez lehetővé teszi, hogy a paraméter segítségével adjon meg egyedi képzési adatkészletek mindegyik helyen a modell betanításához.
-Más módon sikerült ezt. A webes szolgáltatás paraméterrel egy SQL-lekérdezés segítségével adatokat lekérni az SQL Azure-adatbázis. Vagy használhat egy **webszolgáltatás bemenetét** DataSet adatkészletben átadása a webszolgáltatás modul.
+![image](./media/create-models-and-endpoints-with-powershell/reader-module.png)
 
-![Kép](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
+Vegye figyelembe, hogy egy **webes szolgáltatás kimeneti** modul bővült a **tanítási modell** modul.
+Amikor ez a kísérlet üzembe webszolgáltatásként, a végponthoz társított kimeneti egy .ilearner fájl formátumát a betanított modell adja vissza.
 
-Most most futtatni a tanítási kísérletet az alapértelmezett érték használatával *rental001.csv* , a képzési adatkészlet. Ha megtekinti a kimenetét a **Evaluate** modul (kattintson a kimeneti, jelölje be **Visualize**), láthatja, beállíthatja a decent teljesítményének *AUC* = 0.91. Ekkor készen áll a tanítási kísérletet kívül webes szolgáltatás telepítése.
+Vegye figyelembe, hogy egy webes szolgáltatás paraméter, amely meghatározza a URL-cím beállítása, amely a **adatok importálása** modul használja. Ez lehetővé teszi, hogy a paraméter adja meg az egyes képzési adathalmazok alapján minden helyen a modell betanításához.
+Sikerült ezt egyéb módon is. SQL-lekérdezés egy webes szolgáltatás paraméterrel segítségével adatokat kérhet le egy SQL Azure adatbázis. Vagy használhat egy **webes bemenet** átadása egy adatkészlet a webszolgáltatás modul.
 
-## <a name="deploy-the-training-and-scoring-web-services"></a>A képzés és webszolgáltatások pontozási központi telepítése
-A képzési webszolgáltatás üzembe helyezése, kattintson a **webes szolgáltatások beállítása** a kísérletvászon alatt gombra, majd az **webes szolgáltatás telepítése**. Hívja meg a webszolgáltatás "" kerékpárt bérleti képzési".
+![image](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 
-Most kell telepítenie a pontozási webszolgáltatáshoz.
-Ehhez kattintson **webes szolgáltatások beállítása** a vászonra, és válasszon alább **prediktív webszolgáltatás**. Ezzel létrehoz egy pontozási kísérletet.
-Kell néhány kisebb mértékben webszolgáltatásként használható legyen. Távolítsa el a címke "számláló" oszlop a bemeneti adatok, és az eredmény csak a azonosítója és a megfelelő előre jelzett értéknek a(z) korlátozza.
+Most futtassa a betanítási kísérlet az alapértelmezett érték használatával *rental001.csv* képzési adatkészletként. Ha megtekinti a kimenetét a **Evaluate** modul (kattintson a kimeneti, és válassza ki **Visualize**), megjelenik egy finomat teljesítményét felveheti *AUC* = 0.91. Ezen a ponton készen áll a betanítási kísérlet webszolgáltatás üzembe helyezéséhez.
 
-Takarítson meg a munka, nyissa meg a [prediktív kísérletté](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Predicative-Experiment-1) a gyűjteményben, amely már elő van készítve.
+## <a name="deploy-the-training-and-scoring-web-services"></a>A tanítási és pontozási webszolgáltatások üzembe helyezése
+A képzési webszolgáltatás üzembe helyezéséhez kattintson a **webszolgáltatás beállítása** gombot a kísérletvászon alatt **webszolgáltatás üzembe helyezése**. Hívja meg a webszolgáltatás "Uci Kerékpárkölcsönzési képzési".
 
-A webszolgáltatás üzembe helyezése, futtassa a prediktív kísérletté, majd kattintson a **webes szolgáltatás telepítése** a vászon alatti gombra. A pontozási webszolgáltatás "Kerékpárt bérleti pontozási" name ".
+Most meg kell a pontozási webszolgáltatás üzembe helyezéséhez.
+Ehhez kattintson **webszolgáltatás beállítása** a vásznon, majd válassza alább **prediktív webszolgáltatás**. Ez létrehoz egy pontozó kísérletet.
+Együttműködésre webszolgáltatásként néhány kisebb módosításokat kell. A címke oszlop "cnt" eltávolítása a bemeneti adatokat, és korlátozhatja a kimenet csak a-példány azonosítóját és a megfelelő előre jelzett érték.
+
+A munka mentéséhez saját magának, megnyithatja a [prediktív kísérletté](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Predicative-Experiment-1) , amely már elő lett készítve a katalógusban.
+
+A webszolgáltatás üzembe helyezéséhez futtassa a prediktív kísérletet, majd kattintson a **webszolgáltatás üzembe helyezése** gombot a vászon alatti. A pontozási webszolgáltatás "Uci Kerékpárkölcsönzési pontozási" nevet.
 
 ## <a name="create-10-identical-web-service-endpoints-with-powershell"></a>10 azonos webszolgáltatás-végpontok létrehozása a PowerShell használatával
-Ez a webszolgáltatás tartalmaz egy alapértelmezett végpont. De érdekli nem, az alapértelmezett végpont óta nem lehet frissíteni. Mit kell tennie, ha a 10 további végpontokat, mindegyik helyen egy. Ehhez a PowerShell használatával.
+A webszolgáltatás tartalmaz egy alapértelmezett végpont. De nem az alapértelmezett végpont az iránt, ezért nem frissíthető óta. Mit kell tennie, hogy 10 további végpontokat, egy az egyes helyeken. Ez a PowerShell segítségével teheti meg.
 
-Először állítsa be a PowerShell környezetet:
+Először a PowerShell-környezet beállítása:
 
     Import-Module .\AzureMLPS.dll
     # Assume the default configuration file exists and is properly set to point to the valid Workspace.
@@ -91,14 +91,14 @@ Ezután futtassa a következő PowerShell-parancsot:
         Add-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -Description $endpointName     
     }
 
-Most létrehozott 10 végpontok és az összes tartalmazzák azonos betanítása modell betanítása a *customer001.csv*. Azokat az Azure-portálon tekintheti meg.
+Most hozott létre 10 végpont és az összes bennük ugyanaz a betanított modell tanított *customer001.csv*. Az Azure Portalon megtekintheti őket.
 
-![Kép](./media/create-models-and-endpoints-with-powershell/created-endpoints.png)
+![image](./media/create-models-and-endpoints-with-powershell/created-endpoints.png)
 
-## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>A PowerShell használatával külön tanítási adathalmazt használandó végpontok frissítése
-A következő lépéssel frissítése érdekében szükség a végpontok minden ügyfélnél egyedi adatokat a egyedileg betanítása modellekkel. Ehhez azonban először kell ezek a modellek létrehozásához a **kerékpárt bérleti képzési** webes szolgáltatás. Lépjen vissza a **kerékpárt bérleti képzési** webes szolgáltatás. meg kell hívnia a BES végpont 10-szer adatkészletekkel 10 különböző képzési 10 különböző modell előállításához. Használja a **InovkeAmlWebServiceBESEndpoint** ehhez PowerShell-parancsmagot.
+## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>A végpontok használata PowerShell-lel tanítási adatkészletek frissítése
+A következő lépés, hogy frissítse a végpontok egyedileg minden ügyfél egyedi adatokat tanított modelleket. De ezek a modellek létrehozásához először a **uci Kerékpárkölcsönzési képzési** webes szolgáltatás. Lépjen vissza a **uci Kerékpárkölcsönzési képzési** webes szolgáltatás. Meg kell hívnia a BES végpont 10 alkalommal 10 különböző képzési adathalmazok annak érdekében, hogy 10 különböző modell létrehozásához. Használja a **InovkeAmlWebServiceBESEndpoint** ehhez a PowerShell-parancsmagot.
 
-Adja meg azokat a blob storage-fiók hitelesítő adatait is kell `$configContent`. A mezőket, nevezetesen `AccountName`, `AccountKey`, és `RelativeLocation`. A `AccountName` egyike lehet a fióknevek látható módon a **Azure-portálon** (*tárolási* lap). A tárfiók kattintva a `AccountKey` billentyűkombináció lenyomásával is található a **elérési kulcsok kezelése** alsó gombra, és másolja a *elsődleges elérési kulcsot*. A `RelativeLocation` van az elérési út viszonyítva tárhelyét új modell tárolásához. Például az elérési út `hai/retrain/bike_rental/` nevű tárolót a következő parancsfájl pontok `hai`, és `/retrain/bike_rental/` találhatók. Jelenleg nem hozható létre almappákat a felhasználói felület portálon keresztül, de nincsenek [több Azure Tártallózók](../../storage/common/storage-explorers.md) , amely lehetővé teszi. Javasoljuk, hogy hozzon létre egy új tároló az alábbiak szerint tárolja az új betanított modellek (.iLearner fájlok) a tárolóban: a tároló lapon kattintson a **Hozzáadás** alsó gombra, és adjon neki nevet `retrain`. Összefoglalva, az alábbi parancsfájlt a szükséges változtatásokat vonatkoznak `AccountName`, `AccountKey`, és `RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`).
+Adja meg azokat a blob storage-fiók hitelesítő adatait is kell `$configContent`. A mezőket, nevezetesen, `AccountName`, `AccountKey`, és `RelativeLocation`. A `AccountName` egyike lehet a fiók nevét, ahogyan az a **az Azure portal** (*tárolási* lap). Ha kattint, a storage-fiók, a `AccountKey` lenyomásával található a **hozzáférési kulcsok kezelése** gombra a lap alján, és másolja a *elsődleges elérési kulcs*. A `RelativeLocation` van viszonyított, a storage új modellt a rendszer hol tárolja. Például az elérési út `hai/retrain/bike_rental/` nevű tárolóba a következő parancsfájl pontok `hai`, és `/retrain/bike_rental/` almappák vannak. Jelenleg nem hozható létre almappákat a portál felhasználói felületén keresztül, de nincsenek [számos Azure Storage-tallózók](../../storage/common/storage-explorers.md) , amely lehetővé teszi, hogy ehhez. Javasoljuk, hogy az új betanított modellek (.iLearner fájlok) módon tárolja a storage-ban hozzon létre egy új tárolót: a tárolási oldalon kattintson a **Hozzáadás** gombra a lap alján, és adja neki a `retrain`. Összefoglalva, az alábbi parancsfájlt a szükséges változtatásokat említett `AccountName`, `AccountKey`, és `RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`).
 
     # Invoke the retraining API 10 times
     # This is the default (and the only) endpoint on the training web service
@@ -114,13 +114,13 @@ Adja meg azokat a blob storage-fiók hitelesítő adatait is kell `$configConten
     }
 
 > [!NOTE]
-> A BES-végpont esetében az egyetlen támogatott mód ehhez a művelethez. Betanított modellek előállító RR-EKET nem használható.
+> A BES-végpont nem az egyetlen támogatott mód ehhez a művelethez. RRS szórakoztatóiparban betanított modellek nem használható.
 > 
 > 
 
-10 különböző BES feladat konfigurációs json-fájlokat, létrehozása helyett a fent látható, dinamikusan inkább hozzon létre a konfigurációs karakterlánc. Majd hírcsatorna úgy, hogy a *jobConfigString* paramétere a **InvokeAmlWebServceBESEndpoint** parancsmag. Valójában nem szükséges, hogy megőrzi a lemezen.
+Amint helyett hozhat létre, amely 10 különböző BES feladat konfigurációs json-fájlokat, a fent látható, dinamikusan ehelyett hozza létre a konfigurációs karakterlánc. Hírcsatorna majd, hogy a *jobConfigString* paraméterében a **InvokeAmlWebServceBESEndpoint** parancsmagot. Nagyon, nem szükséges, hogy megőrzi a lemezen.
 
-Ha minden megfelelően működik, egy kis idő után kell megjelennie 10 .iLearner fájlok, a *model001.ilearner* való *model010.ilearner*, az Azure-tárfiókot. Most már készen áll a webszolgáltatás végpontjainak pontozási ezek a modellek használata a 10 frissíteni a **javítás-AmlWebServiceEndpoint** PowerShell-parancsmagot. Ne felejtse el újra, hogy a nem alapértelmezett végpontok programozott módon a korábban létrehozott csak javítás is.
+Ha minden megfelelően működik, ha egy ideig megtekintheti az 10 .iLearner fájlok, a *model001.ilearner* való *model010.ilearner*, az Azure storage-fiókban. Most már készen áll a webszolgáltatás-végpontok kiértékelés ezek a modellek használatával a 10-es frissítés a **Patch-AmlWebServiceEndpoint** PowerShell-parancsmagot. Ne felejtse el megismételni, hogy a nem alapértelmezett végpont programozott módon a korábban létrehozott csak javítására is.
 
     # Patch the 10 endpoints with respective .ilearner models
     $baseLoc = 'http://bostonmtc.blob.core.windows.net/'
@@ -133,10 +133,10 @@ Ha minden megfelelően működik, egy kis idő után kell megjelennie 10 .iLearn
         Patch-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -ResourceName 'Bike Rental [trained model]' -BaseLocation $baseLoc -RelativeLocation $relativeLoc -SasBlobToken $sasToken
     }
 
-Ez meglehetősen gyorsan fusson. A végrehajtás befejezése után fog sikeresen létrehozott 10 prediktív webszolgáltatás-végpontok. Minden egyes egyedileg az adott adatkészlettel betanítása bérleti helyre, mindezt egy egyetlen tanítási kísérletet a modell betanítását fogja tartalmazni. Ezt ellenőrizheti, hogy próbálja meg ezeket a végpontokat használatával hívja a **InvokeAmlWebServiceRRSEndpoint** parancsmagot, hogy biztosít számukra az ugyanazon bemeneti adatokkal. Tekintse meg a különböző előrejelzés eredményeket, mivel a modellek képzett különböző képzési készletekkel kell látnia.
+Ez viszonylag gyorsan fusson. Ha a végrehajtás befejezését követően lesz sikeresen létrehozott 10 prediktív webszolgáltatás-végpontok. Minden egyedi tanított az adott adatkészlet bérleti helyre, mindezt egyetlen betanítási kísérlet a betanított modell tartalmazni fogja. Ennek az ellenőrzéséhez próbálja meg ezeket a végpontokat használatával a **InvokeAmlWebServiceRRSEndpoint** parancsmagot, így azokat az ugyanazon bemeneti adatokkal. Tekintse meg a különböző előrejelzési eredményeket, mivel a modellek különböző képzési csoportok képzett kell látnia.
 
-## <a name="full-powershell-script"></a>Teljes PowerShell-parancsfájl
-A teljes forráskód listája itt található:
+## <a name="full-powershell-script"></a>Teljes PowerShell-szkript
+Itt látható a teljes forráskódot tartalmazó listát:
 
     Import-Module .\AzureMLPS.dll
     # Assume the default configuration file exists and properly set to point to the valid workspace.

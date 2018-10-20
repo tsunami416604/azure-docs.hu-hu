@@ -1,26 +1,27 @@
 ---
 title: Beszédalapú fordítási kapcsolatban
+titlesuffix: Azure Cognitive Services
 description: Beszédalapú fordítási lehetőségeinek áttekintése
-titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/28/2018
 ms.author: erhopf
-ms.openlocfilehash: f3c22589270ccee2c60ca5ea5b15047d9c81fabe
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: af363a45ab113d89c7aad7a38c6e10d335bc6035
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165437"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469143"
 ---
 # <a name="about-the-speech-translation-api"></a>Tudnivalók a beszédalapú fordítási API
 
-A Microsoft Speech API lehetővé teszi az alkalmazások, eszközök és eszközök teljes körű, valós idejű, többnyelvű fordítás beszéd hozzáadását. Az azonos API-t a speech beszéd és a hang-szöveg transzformációs fordítás használható.
+A Speech Service API lehetővé teszi az alkalmazások, eszközök és eszközök teljes körű, valós idejű, többnyelvű fordítás beszéd hozzáadását. Az azonos API-t a speech beszéd és a hang-szöveg transzformációs fordítás használható.
 
-A Microsoft Translator Speech API ügyfélalkalmazások adatfolyam speech hangot a szolgáltatáshoz, és vissza adatfolyamban kaphatja kézhez az eredményeket. Ezeket az eredményeket a felismert szöveget tartalmazó az forrás és cél nyelven a fordítás. Ideiglenes fordítások használható befejezéséig az utterance (kifejezés), hogy mely végső fordítás biztosítja.
+A Translator Speech API-val ügyfélalkalmazások adatfolyam speech hangot a szolgáltatáshoz, és vissza adatfolyamban kaphatja kézhez az eredményeket. Ezeket az eredményeket a felismert szöveget tartalmazó az forrás és cél nyelven a fordítás. Ideiglenes fordítások használható befejezéséig az utterance (kifejezés), hogy mely végső fordítás biztosítja.
 
 Szükség esetén a végső fordítás szintetizált hang verzióját is kell készíteni, igaz speech-az-beszédalapú fordítási engedélyezése.
 

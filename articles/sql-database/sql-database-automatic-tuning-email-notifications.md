@@ -12,18 +12,18 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 1177703dc67e81e537d7682dcf9bbeb475748315
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: eaeb0d7f77b6d8ab6a3e12febba33c995a10ec3f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353934"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466551"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>Az automatikus hangolási e-mail-értesítések
 
 SQL-adatbázis hangolási ajánlásokat az Azure SQL Database által generált [az automatikus hangolás](sql-database-automatic-tuning.md). Ez a megoldás folyamatosan figyeli és elemzi a számítási feladatok SQL-adatbázisok biztosító testre szabott finomhangolási javaslatai az indexlétrehozást, index törlésre és lekérdezések végrehajtási tervét optimalizálása kapcsolatos minden egyes adatbázis.
 
-Az SQL Database automatikus finomhangolási javaslatai lehet megtekinteni a [az Azure portal](sql-database-advisor-portal.md), a beolvasott [REST API-val](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/databaserecommendedactions_listbydatabaseadvisor) meghívja, vagy a [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) és [ PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction) parancsokat. Ez a cikk alapján automatikus hangolási ajánlásokat lekérni egy PowerShell-parancsfájl használatával.
+Az SQL Database automatikus finomhangolási javaslatai lehet megtekinteni a [az Azure portal](sql-database-advisor-portal.md), a beolvasott [REST API-val](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) meghívja, vagy a [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) és [ PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction) parancsokat. Ez a cikk alapján automatikus hangolási ajánlásokat lekérni egy PowerShell-parancsfájl használatával.
 
 ## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>E-mail értesítések automatikus finomhangolási ajánlásait automatizálása
 

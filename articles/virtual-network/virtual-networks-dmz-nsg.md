@@ -1,6 +1,6 @@
 ---
-title: Az Azure DMZ példa – Build az NSG-ket egy egyszerű DMZ |} Microsoft Docs
-description: A hálózati biztonsági csoportokkal (NSG) DMZ összeállítása
+title: Azure DMZ-példa – hozhat létre egy egyszerű Szegélyhálózat NSG-k |} A Microsoft Docs
+description: Semleges zóna kialakítása hálózati biztonsági csoportokkal (NSG)
 services: virtual-network
 documentationcenter: na
 author: tracsman
@@ -14,77 +14,77 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: ec29e6b250f927a3a4a94ffdf83d6c7c0e325722
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2f399b5084ab65736adfebb5cf0a77ccfbc972e8
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23928985"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457289"
 ---
-# <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>1 – például egy egyszerű DMZ NSG-k használata az Azure Resource Manager-sablon létrehozása
-[A biztonsági határ bevált gyakorlatok laphoz való visszatéréshez][HOME]
+# <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>1 – példa egy egyszerű Szegélyhálózat NSG-k használata az Azure Resource Manager-sablon létrehozása
+[Térjen vissza a biztonsági határ ajánlott eljárások lap][HOME]
 
 > [!div class="op_single_selector"]
 > * [Resource Manager-sablon](virtual-networks-dmz-nsg.md)
-> * [Klasszikus - PowerShell](virtual-networks-dmz-nsg-asm.md)
+> * [Klasszikus – PowerShell](virtual-networks-dmz-nsg-asm.md)
 > 
 >
 
-Ebben a példában egy egyszerű DMZ négy Windows-kiszolgálók és hálózati biztonsági csoportokat hoz létre. Ez a példa bemutatja az egyes bemutatják az egyes lépések, így a megfelelő template szakaszokban. Adjon meg egy hogyan forgalom halad keresztül a Szegélyhálózaton lévő védelmi réteget részletesebb lépésenkénti tekintse meg a forgalom forgatókönyv szakasz is van. Végezetül az hivatkozások szakaszban a teljes sablon kódot és az ebben a környezetben, teszteléséhez, és a különböző forgatókönyvekben kísérletezhet összeállítására vonatkozó útmutatást. 
+Ebben a példában egy egyszerű szegélyhálózat (DMZ) hoz létre négy Windows-kiszolgálók és hálózati biztonsági csoportok. Ebben a példában adja meg az egyes lépések jobban megértheti a megfelelő sablont szakaszokat ismerteti. Emellett van egy forgalom forgatókönyv szakaszban adja meg a részletes szűrőtípusok hogyan halad a forgalom a rétege a DMZ-n keresztül. Végül az hivatkozások szakaszban a teljes sablont kód és a vonatkozó útmutatást, ebben a környezetben tesztelheti, és kísérletezzen a különböző forgatókönyvekben. 
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] 
 
-![Az NSG bejövő DMZ][1]
+![NSG bejövő Szegélyhálózat][1]
 
 ## <a name="environment-description"></a>Környezet leírása
-Ebben a példában az előfizetés a következőket tartalmazza:
+Ebben a példában egy előfizetés a következőket tartalmazza:
 
-* Egyetlen erőforráscsoportként működnek
-* Egy virtuális hálózatot, két alhálózattal; "Előtér" és "Háttér"
+* Egyetlen erőforráscsoportra
+* Egy virtuális hálózatot két alhálózattal "Előtér" és "Háttér"
 * Mindkét alhálózat alkalmazott hálózati biztonsági csoport
-* A Windows Server egy webalkalmazás-kiszolgáló ("IIS01") jelölő
-* Két windows Server kiszolgálókon, amelyek megfelelnek az alkalmazás háttérkiszolgálók ("AppVM01", "AppVM02")
+* A Windows Server, amely egy webalkalmazás-kiszolgáló ("IIS01") jelöli.
+* Két windows-kiszolgálók, amelyek az alkalmazás háttér-kiszolgálók ("AppVM01", "AppVM02")
 * A Windows server DNS-kiszolgáló ("DNS01") jelölő
-* A webalkalmazás-kiszolgáló egy nyilvános IP-cím
+* Az alkalmazás webes kiszolgálóhoz társított nyilvános IP-cím
 
-A references szakaszában a környezet ebben a példában leírt épülő Azure Resource Manager sablont kapcsolat van. A virtuális gépek és virtuális hálózatok, bár végezhető el a példa sablon dokumentum nem ismerteti a jelen dokumentum részletesen. 
+A hivatkozások szakaszban az Azure Resource Manager-sablon, amely összeállítja a környezetben, az ebben a példában leírt kapcsolat van. A virtuális gépek és virtuális hálózatok, bár a példa sablon által végzett nem ismerteti a jelen dokumentum részletesen. 
 
-**Ebben a környezetben összeállításához** (részletes utasításokra van szüksége van a references szakaszában, a jelen dokumentum);
+**Ebben a környezetben hozhat létre** (részletes utasításokat is ez a dokumentum a hivatkozások szakaszban);
 
-1. Az Azure Resource Manager sablon telepítése: [Azure gyors üzembe helyezés sablonok][Template]
-2. A következő mintaalkalmazás telepítése: [minta alkalmazás-parancsfájl][SampleApp]
+1. Az Azure Resource Manager-sablon, üzembe helyezése: [Azure gyorsindítási sablonok][Template]
+2. A mintaalkalmazás telepítése: [minta alkalmazás-parancsfájl][SampleApp]
 
 >[!NOTE]
->Távoli asztali ezt a példányt a háttér-kiszolgálók az IIS-kiszolgálón használt egy "ugrást mező." Az IIS-kiszolgálót, majd az IIS kiszolgáló RDP a háttér-kiszolgálóhoz az első RDP. Másik lehetőség egy nyilvános IP-cím társítható minden kiszolgáló egyszerűbb az RDP a hálózati Adapternek.
+>Ebben a példányban háttér-kiszolgálók távoli asztali eléréséhez az IIS-kiszolgálón szolgál egy "jump boxon." Az IIS-kiszolgálón, majd az IIS kiszolgáló RDP-vel a háttér-kiszolgáló az első RDP. Alternatív megoldásként egy nyilvános IP-címet minden egyes kiszolgáló egyszerűbb RDP hálózati Adapteréhez társítva lehet.
 > 
 >
 
-A következő szakaszokban a hálózati biztonsági csoport, és hogyan működik az ebben a példában az Azure Resource Manager sablon sorok keresztül érdekében részletes leírását.
+A következő szakaszok a hálózati biztonsági csoportot, és hogyan működik-e ehhez a példához az Azure Resource Manager-sablon a kulcsfontosságú sorokat, ajánljuk figyelmébe a részletes leírását.
 
 ## <a name="network-security-groups-nsg"></a>Hálózati biztonsági csoportok (NSG)
-Az ebben a példában egy NSG-csoport összeállítása és hat szabályokkal majd betölteni. 
+Ebben a példában egy NSG-csoport beépített, és aztán betölti a hat szabályokkal. 
 
 >[!TIP]
->Általánosságban véve az "Engedélyezés" speciális szabályok először hozzon létre, és majd a általánosabbá "Deny" szabályok utolsó. A prioritási megkövetel amelyek szabályokat első értékeli ki. Forgalom kiderül, hogy egy adott szabály vonatkozik, ha nincsenek további szabályok kiértékelése. NSG-szabályok egyaránt (az alhálózati szempontjából) a bejövő vagy kimenő irányban is alkalmazhat.
+>Általánosan fogalmazva az "Engedélyezés" szabályainak először hozzon létre, és ezután az "Elutasítás" általánosabb érvényűvé szabályok utolsó. A hozzárendelt prioritásokkal azt határozza meg szabályokat, amelyek az első értékeli ki. Forgalom kiderül, hogy egy adott szabály vonatkozik, ha nincsenek további szabályok értékeli ki. Az NSG-szabályok vagy (az alhálózat szempontjából) a bejövő vagy kimenő irányban is érvényesek.
 >
 >
 
-Deklaratív módon a bejövő forgalom beépített folyamatban a következő szabályokat:
+Deklaratív a következő szabályok beépített folyamatban van a bejövő forgalmat:
 
-1. Belső DNS-forgalom (53-as port) engedélyezve van
-2. RDP-forgalmát (3389-es port) az internetről bármely virtuális géphez engedélyezett
-3. HTTP-forgalom (80-as port) az internetről (IIS01) webkiszolgálón engedélyezett
-4. Minden forgalmat (minden porthoz) IIS01 AppVM1 engedélyezett
-5. Az összes bejövő forgalom (minden porthoz) az internetről a teljes virtuális hálózatot (alhálózatok mindkét) megtagadva
-6. Az összes bejövő forgalom (minden porthoz) a Frontend alhálózatból a Backend alhálózathoz megtagadva
+1. Belső DNS-forgalmat (53-as port)
+2. RDP-forgalmat (3389-es port) az internetről bármely virtuális géphez
+3. HTTP-forgalmat (80-as port) az internetről web Server (IIS01)
+4. Minden újabb forgalmát (minden porthoz) IIS01 AppVM1 engedélyezett
+5. Virtuális hálózat (mindkét alhálózat) bármely (minden porthoz) az internetről forgalmat a teljes megtagadva
+6. Az összes bejövő forgalom (minden porthoz) a felhasználói réteg alhálózatáról a háttérrendszer alhálózatának megtagadva
 
-A következő szabályok kötve alhálózatok, ha a webkiszolgálónak, a szabályokat is 3 az internetről bejövő HTTP-kérelem (engedélyezése) és 5 (megtagadni) szeretné alkalmazni, de mivel a szabály 3 egy magasabb prioritással bír, csak azt csak akkor vonatkozik, és 5 szabály nem lesz play kerülhet. Így a HTTP-kérelem szeretné engedélyezni kell a webkiszolgálón. Ha ugyanaz a forgalom próbál elérni az DNS01 kiszolgálót, szabály 5 (Megtagadás) lenne az első alkalmazni, és szeretné, hogy a kiszolgáló nem engedélyezett a forgalmat. 6 (Megtagadás) szabály blokkolja a Frontend alhálózathoz van szó, a Backend alhálózathoz (kivéve a engedélyezett forgalom szabályokban 1 és 4) a, a szabálykészlet abban az esetben, ha egy támadó biztonság sérüléseinek előtér, a támadó a webalkalmazás volna korlátozott védelmet nyújt a háttér hálózathoz a háttérrendszer elérésére "védett" hálózaton (csak a AppVM01 kiszolgálón kitett erőforrások).
+A következő szabályok kötött mindegyik olyan alhálózatban, ha HTTP-kérést a webkiszolgáló, 3 szabályokat is az internetről bejövő (engedélyezése) és 5 (nem engedélyezi a) a alkalmazni szeretne, de mivel a szabály 3 egy magasabb prioritással bír, csak a alkalmazni, és szabály 5 lenne nem jut. Így a HTTP-kérelem szeretné engedélyezni a webkiszolgáló. Ha ugyanaz a forgalom próbál elérni az DNS01 kiszolgálót, 5 (Megtagadás) szabály lenne a alkalmazni az első, és szeretne átadni a kiszolgálónak nem engedélyezi a forgalmat. 6 (Megtagadás) szabály blokkolja az előtér-alhálózatot a beszélni a Backend alhálózathoz (kivéve az 1. és 4 szabályok engedélyezett forgalom), a szabálykészlet abban az esetben, ha egy támadó feltörések előtér, a támadó a webalkalmazás lenne korlátozott védelmet biztosít a háttérrendszer-hálózat a Háttérrendszeri hozzáférést "védett" hálózati (csak az erőforrások elérhetővé tett a AppVM01 kiszolgálón).
 
-Nincs olyan alapértelmezett kimenő szabály, amely lehetővé teszi, hogy a kimenő forgalom az internethez. Ebben a példában a Microsoft most átengedi a kimenő forgalmat, és nem módosítja az egyetlen kimenő szabályok. Szeretné alkalmazni a forgalom mindkét irányban biztonsági szabályzatot, felhasználói definiált útválasztási szükséges, és a"3" a felfedezte van a [biztonsági határ bevált gyakorlatok lap][HOME].
+Nincs olyan alapértelmezett kimenő szabály, amely lehetővé teszi, hogy az internetre irányuló forgalom. Ebben a példában folyamatban van lehetővé teszi a kimenő forgalom és nem módosítja a kimenő szabályok. A alkalmazni a biztonsági szabályzatot forgalom mindkét irányba, felhasználói meghatározott Útválasztás megadása kötelező, és a"3" van megvizsgálta a a [biztonsági határ ajánlott eljárásokat tartalmazó lapon][HOME].
 
-Minden egyes szabály az alábbiak szerint tárgyalja részletesen:
+Minden egyes szabály a következő tárgyalja részletesen:
 
-1. A hálózati biztonsági csoport erőforrás kell példányosítani ahhoz, hogy a szabályok:
+1. Egy hálózati biztonsági csoport erőforrást kell példányosítani, amely tárolja a szabályokat:
 
     ```JSON
     "resources": [
@@ -98,11 +98,11 @@ Minden egyes szabály az alábbiak szerint tárgyalja részletesen:
     ]
     ``` 
 
-2. Ebben a példában az első szabály lehetővé teszi, hogy a DNS-forgalom a DNS-kiszolgálót a backend alhálózathoz az összes belső hálózatok között. A szabály néhány fontos paraméterekkel rendelkezik:
-  * "destinationAddressPrefix" - szabályok használhatja az "alapértelmezett címke" nevű címelőtag különleges típusú, és ezekkel a címkékkel rendszer által biztosított azonosítók, amelyek lehetővé teszik a címelőtag egy nagyobb kategóriáját egyszerűen. Ez a szabály az alapértelmezett címke "Internet" használja a virtuális hálózaton kívül bármely cím jelölésére. Más előtag feliratai VirtualNetwork és AzureLoadBalancer.
-  * "Irány" azt jelzi, hogy a forgalom iránya a szabály lép érvénybe. Irányát (attól függően, ahol az NSG kötött) az alhálózatra vagy a virtuális gép szempontjából van. Így ha irány "Bejövő" és a forgalom írja be az alhálózat, a szabályt alkalmazni és az alhálózatot elhagyó forgalomra ne befolyásolja az e szabály által.
-  * "Prioritás" állítja be, amelyben a forgalom áramlását kiértékelésének. Minél kisebb számot annál magasabb a prioritás. A szabály vonatkozik egy adott adatforgalmat, ha nincsenek további szabályok feldolgozása. Így ha 1 prioritású szabály lehetővé teszi, hogy a forgalmat, és 2 prioritású szabály megtagadja a forgalmat, és szabályokat is vonatkoznak majd a forgalmat szeretné engedélyezni szeretné a flow (mivel szabály 1 kellett magasabb prioritású hatás tartott, és nincsenek további szabályok alkalmazása megtörtént).
-  * "Access" jelzi, hogy a szabály által érintett forgalom-e letiltott ("Deny") vagy engedélyezett ("Engedélyezés").
+2. Ebben a példában az első szabály lehetővé teszi, hogy a DNS-forgalmat a háttérbeli alhálózat DNS-kiszolgálóra az összes belső hálózatok között. A szabály néhány fontos paraméterekkel rendelkezik:
+  * "destinationAddressPrefix" - célcím-előtagjában értéke "10.0.2.4 cím", hogy a DNS-forgalom engedélyezett, a DNS-kiszolgáló eléréséhez.
+  * "Iránya" azt jelzi, hogy a forgalom iránya a szabály lép érvénybe. Irányát az alhálózatot, vagy a virtuális gép szempontjából (attól függően, ahol ez az NSG van kötve) van. Így ha iránya "Inbound" és a forgalom lépjen be az alhálózat, a szabály csak akkor vonatkozik és az alhálózatot elhagyó forgalomra nem érinti ez a szabály.
+  * "Prioritás" állítja be, hogy a sorrendet, amelyben az adott ki lesz értékelve. Minél kisebb számra annál magasabb a prioritás. A szabály vonatkozik egy adott adatforgalmat, ha nincsenek további szabályok feldolgozása. Így ha egy 1-es prioritású szabály engedélyezi a forgalmat, és 2-es prioritású szabály megtagadja a forgalmat, és a forgalmi szabályokat is vonatkoznak majd melyeken engedélyezett a forgalom áramlását (mivel az 1. számú szabály kellett egy magasabb prioritású ideig tartott-e érvénybe, és nincsenek további szabályok alkalmazott).
+  * "Hozzáférés" jelzi, ha ez a szabály által érintett forgalom lesz-e a letiltott ("Elutasítás") vagy az engedélyezett ("Engedélyezés").
 
     ```JSON
     "properties": {
@@ -123,7 +123,7 @@ Minden egyes szabály az alábbiak szerint tárgyalja részletesen:
       },
     ```
 
-3. Ez a szabály lehetővé teszi, hogy az internetről érkező RDP-portjára kötött alhálózaton egyetlen kiszolgálón történő flow RDP-forgalmát. 
+3. Ez a szabály lehetővé teszi, hogy az RDP-forgalom áramlását az internetről érkező RDP-portjára kötött az alhálózaton bármelyik kiszolgálón. 
 
     ```JSON
     {
@@ -142,7 +142,7 @@ Minden egyes szabály az alábbiak szerint tárgyalja részletesen:
     },
     ```
 
-4. Ez a szabály lehetővé teszi, hogy a webalkalmazás-kiszolgáló elérte a bejövő forgalmat. Ez a szabály nem változtatja meg az útválasztási viselkedés. A szabály csak lehetővé teszi, hogy a IIS01 továbbítani adatforgalmat. Így ha az internetről érkező forgalom volt-e a célként, ez a szabály akkor engedélyezi-e, és további szabályok feldolgozásának leállítása a webkiszolgálón. (A szabályban prioritással 140 összes egyéb bejövő forgalmat le van tiltva). Ha csak a HTTP-forgalom éppen feldolgozás, ez a szabály sikertelen további korlátozva csak engedélyezi a 80-as Port cél.
+4. Ez a szabály lehetővé teszi, hogy a bejövő internetes forgalom eléri a webalkalmazás-kiszolgáló. Ez a szabály az útválasztási viselkedés nem változik. A szabály csak IIS01 át tartó forgalmat engedélyezi. Így ha az internetről forgalmat volt-e a célként, ez a szabály engedélyezi-e és további szabályok feldolgozásának leállítása a webkiszolgálón. (A szabályban prioritással 140 összes egyéb bejövő internetes forgalom blokkolva van). Ha Ön már csak dolgoz fel HTTP-forgalom, ez a szabály sikerült további korlátozva a kizárólag a 80-as Port cél.
 
     ```JSON
     {
@@ -161,7 +161,7 @@ Minden egyes szabály az alábbiak szerint tárgyalja részletesen:
       },
     ```
 
-5. Ez a szabály lehetővé teszi, hogy a forgalom a IIS01 kiszolgáló számára a AppVM01 kiszolgáló egy újabb szabály blokkolja a háttér-forgalom minden más előtér. Ez a szabály akkor javíthatja, ha a port ismert, hogy hozzá kell adni. Például, ha az IIS-kiszolgálón van elérte-e a AppVM01 csak SQL Server, a Célporttartomány módosítani kell a "*" (minden) 1433 (az SQL-port), így a kisebb bejövő támadási felületét AppVM01 kell a webalkalmazás legalább egyszer utaló jeleket.
+5. Ez a szabály lehetővé teszi, hogy a forgalom áthaladását a IIS01 kiszolgálóról a AppVM01 kiszolgálóra, egy újabb szabály blokkolja a háttérrendszer forgalom minden más előtér. Ez a szabály javításához, ha a port ismert, hogy hozzá kell adni. Például ha az IIS-kiszolgálón futó AppVM01 csak SQL Server eléri, Célport-tartományt kell módosítani a "*" (tetszőleges), ezzel lehetővé téve a kisebb méretű bejövő támadási felületét AppVM01 kell a webalkalmazás minden eddiginél sérülhet 1433 (az SQL-port).
 
     ```JSON
     {
@@ -180,7 +180,7 @@ Minden egyes szabály az alábbiak szerint tárgyalja részletesen:
     },
      ```
 
-6. Ez a szabály az internetről érkező forgalom megtagadja a hálózaton lévő kiszolgálók számára. A 110-es és 120 prioritással szabályokat a hatás hoz csak a bejövő internet-kezelési forgalom engedélyezése a tűzfal és a kiszolgálókon és blokkok RDP-portok minden más. Ez a szabály szerepel egy "hibamentes" szabályt, amely minden váratlan forgalom blokkolása.
+6. Szabályok segítségével egy speciális típusa az "alapértelmezett címke" nevű cím előtagja, ezek a címkék olyan rendszer által biztosított azonosítók, amelyek lehetővé teszik egy egyszerű módja annak címelőtag egy nagyobb kategóriáját. Ez a szabály az alapértelmezett címke "VirtualNetwork" célcím-előtag használ a virtuális hálózaton belül bármilyen cím jelölésére. Más előtag feliratai internetes és az AzureLoadBalancer. Ez a szabály az internetről érkező forgalom megtagadásához kiszolgálók a hálózaton. A 110-es és 120 prioritással a szabályokat milyen hatása, hogy csak a bejövő internetes forgalmat a tűzfal és a kiszolgálókon és blokkok RDP-portok minden mást. Ez a szabály minden nem várt folyamatok blokkolása "hibamentes" szabály.
 
     ```JSON
     {
@@ -199,7 +199,7 @@ Minden egyes szabály az alábbiak szerint tárgyalja részletesen:
     },
      ```
 
-7. A végső szabály pedig megtagadja forgalom a Frontend alhálózatból való a Backend alhálózathoz. Mivel ez a szabály egy bejövő forgalomra vonatkozó csak szabály, akkor (érkező a Háttéralkalmazását az az előtérbeli) egy fordított forgalom nem engedélyezett.
+7. A végső szabályát a felhasználói réteg alhálózatáról forgalmat a háttérbeli alhálózathoz megtagadja. Mivel ez a szabály egy bejövő egyetlen szabályt, fordított irányú forgalom van engedélyezve (az előtér-háttérrendszerrel).
 
     ```JSON
     {
@@ -219,147 +219,147 @@ Minden egyes szabály az alábbiak szerint tárgyalja részletesen:
     ```
 
 ## <a name="traffic-scenarios"></a>Forgalom forgatókönyvek
-#### <a name="allowed-internet-to-web-server"></a>(*Engedélyezett*) webkiszolgálón Internet
-1. Az internetes felhasználó egy HTTP-lap kér a nyilvános IP-címet a hálózati adapter IIS01 társított hálózati adapter
-2. A nyilvános IP-cím forgalmat továbbítja a VNet IIS01 felé (webkiszolgáló)
-3. Frontend alhálózathoz bejövő szabály feldolgozása kezdődik:
-  1. NSG szabály 1 (DNS) nem teljesül, a következő szabály áthelyezése
-  2. NSG szabály 2 (RDP) nem teljesül, a következő szabály áthelyezése
-  3. NSG 3. szabály (IIS01 interneten) alkalmazza, akkor engedélyezett, befejezése szabály feldolgozása
-4. Forgalom találatok száma a belső kiszolgáló IP-címét a webes IIS01 (10.0.1.5)
-5. IIS01 figyeli a webes forgalom, ezt a kérelmet kap, és elindítja a kérés feldolgozása
-6. IIS01 az SQL Server a AppVM01 adatokat kéri
-7. Nincs kimenő szabályok Frontend alhálózaton, forgalom engedélyezve van
-8. A Backend alhálózathoz bejövő szabály feldolgozása kezdődik:
-  1. NSG szabály 1 (DNS) nem teljesül, a következő szabály áthelyezése
-  2. NSG szabály 2 (RDP) nem teljesül, a következő szabály áthelyezése
-  3. NSG 3. szabály (Internet tűzfalhoz) nem teljesül, a közvetkező szabályának áthelyezése
-  4. NSG 4. szabály (a AppVM01 IIS01) teljesül, a forgalom engedélyezve van, akkor állítsa le a szabály feldolgozása
-9. AppVM01 dokumentálásáért és az SQL-lekérdezést kap
-10. Mivel a Backend alhálózathoz nem kimenő szabályok, engedélyezett-e a válasz
-11. Frontend alhálózathoz bejövő szabály feldolgozása kezdődik:
-  1. Nincs érvényes bejövő szabály NSG a Frontend alhálózathoz, így nincs az NSG-szabályok vonatkoznak a Backend alhálózathoz-forgalom
-  2. A alapértelmezett rendszerszintű szabály, amely lehetővé teszi az alhálózatok közötti forgalmat lehetővé tenné a forgalmat, a forgalom engedélyezve van.
-12. Az IIS-kiszolgálót az SQL-válasz fogadása és a HTTP-válasz befejezése és a kérelmező küld
-13. Nincsenek kimenő szabályok Frontend alhálózaton található, mert a választ kap, és az internetes felhasználói kap, a kért weblap.
+#### <a name="allowed-internet-to-web-server"></a>(*Engedélyezett*) internetes webkiszolgálóra
+1. Az internetes felhasználó egy HTTP-lap kér a hálózati Adaptert a IIS01 hálózati Adapterhez társított nyilvános IP-címe
+2. A nyilvános IP-cím forgalmat továbbítja a VNet felé IIS01 (webkiszolgáló)
+3. Előtérbeli alhálózat bejövő szabály feldolgozása kezdődik:
+  1. NSG-szabály 1 (DNS) nem vonatkoznak, helyezze át a következő szabály
+  2. NSG-szabály 2 (RDP) nem vonatkoznak, helyezze át a következő szabály
+  3. NSG 3. szabály (IIS01 interneten) a alkalmazni, a forgalom engedélyezett, állítsa le a szabály feldolgozása
+4. Forgalom eléri a belső IP-címét a webkiszolgáló IIS01 (10.0.1.5)
+5. IIS01 figyeli a webes forgalmat, ezt a kérelmet kap, és elindítja a kérés feldolgozása
+6. IIS01 kéri az SQL Server a AppVM01 információk
+7. Nincs kimenő szabályok előtérbeli alhálózatán, forgalom engedélyezve van
+8. A háttérrendszer alhálózatának bejövő szabály feldolgozása kezdődik:
+  1. NSG-szabály 1 (DNS) nem vonatkoznak, helyezze át a következő szabály
+  2. NSG-szabály 2 (RDP) nem vonatkoznak, helyezze át a következő szabály
+  3. NSG 3. szabály (Internet tűzfalhoz) nem vonatkoznak, helyezze át a következő szabály
+  4. NSG-szabály 4 (a AppVM01 IIS01) vonatkozik, a forgalom engedélyezve van, állítsa le a szabály feldolgozása
+9. AppVM01 az SQL-lekérdezést kap, és válaszol
+10. Nincsenek kimenő szabályok a háttérbeli alhálózat, mivel engedélyezve van-e a válasz
+11. Előtérbeli alhálózat bejövő szabály feldolgozása kezdődik:
+  1. Nincs NSG szabály, amelyre vonatkozik a bejövő forgalmat a háttérbeli alhálózat felől az előtérben levő alhálózathoz, így egyike sem az NSG-szabályok alkalmazása
+  2. A alapértelmezett rendszerszabály, amely lehetővé teszi az alhálózatok közötti adatforgalom lehetővé tenné a forgalmat, így a forgalom engedélyezve van.
+12. Az IIS-kiszolgálón az SQL-válasz fogadása és befejezése a HTTP-válasz és küld a kérelmező
+13. Mivel nincsenek kimenő szabályok az előtérbeli alhálózat, a válasz engedélyezve van, és az internetes felhasználó kapja meg a kért weblap.
 
-#### <a name="allowed-rdp-to-iis-server"></a>(*Engedélyezett*) RDP IIS-kiszolgálóra
-1. Egy kiszolgálói rendszergazda interneten igényel a nyilvános IP-címhez a IIS01 hálózati adapter (a nyilvános IP-cím található a portál vagy a PowerShell használatával) társított hálózati adapter IIS01 az RDP-munkamenetet
-2. A nyilvános IP-cím forgalmat továbbítja a VNet IIS01 felé (webkiszolgáló)
-3. Frontend alhálózathoz bejövő szabály feldolgozása kezdődik:
-  1. NSG szabály 1 (DNS) nem teljesül, a következő szabály áthelyezése
-  2. NSG szabály 2 (RDP) alkalmazza, akkor engedélyezett, befejezése szabály feldolgozása
-4. A nem kimenő szabályokat alapértelmezett szabályokat alkalmazni, és a forgalom engedélyezve van
-5. RDP-munkamenetbe engedélyezve van
-6. A felhasználónevet és jelszót kér IIS01
+#### <a name="allowed-rdp-to-iis-server"></a>(*Engedélyezett*) az IIS-kiszolgálón RDP-vel
+1. Egy kiszolgáló-rendszergazdai interneten kér egy RDP-munkamenetet a IIS01 a nyilvános IP-címét a hálózati Adapterhez megadott IIS01 hálózati adapter (a nyilvános IP-cím található a portál vagy a PowerShell használatával)
+2. A nyilvános IP-cím forgalmat továbbítja a VNet felé IIS01 (webkiszolgáló)
+3. Előtérbeli alhálózat bejövő szabály feldolgozása kezdődik:
+  1. NSG-szabály 1 (DNS) nem vonatkoznak, helyezze át a következő szabály
+  2. NSG-szabály 2 (RDP) a alkalmazni, a forgalom engedélyezett, állítsa le a szabály feldolgozása
+4. Kimenő szabályok, az alapértelmezett szabályok a alkalmazni, és a visszatérő forgalom engedélyezve van
+5. RDP-munkamenet engedélyezve van
+6. IIS01 kérni fogja a felhasználónevet és jelszót
 
 >[!NOTE]
->Távoli asztali ezt a példányt a háttér-kiszolgálók az IIS-kiszolgálón használt egy "ugrást mező." Az IIS-kiszolgálót, majd az IIS kiszolgáló RDP a háttér-kiszolgálóhoz az első RDP.
+>Ebben a példányban háttér-kiszolgálók távoli asztali eléréséhez az IIS-kiszolgálón szolgál egy "jump boxon." Az IIS-kiszolgálón, majd az IIS kiszolgáló RDP-vel a háttér-kiszolgáló az első RDP.
 >
 >
 
 #### <a name="allowed-web-server-dns-look-up-on-dns-server"></a>(*Engedélyezett*) a DNS-kiszolgáló Web server a DNS szolgáltatásban
-1. Webalkalmazás-kiszolgálón, IIS01, egy adatcsatorna www.data.gov: igényeinek, de a címek feloldására igényeinek.
-2. A hálózati konfigurációt a VNet listák DNS01 (a háttér alhálózaton 10.0.2.4) elsődleges DNS-kiszolgálóként, IIS01 küld a DNS-kérelem DNS01
-3. Nincs kimenő szabályok Frontend alhálózaton, forgalom engedélyezve van
-4. Backend alhálózathoz bejövő szabály feldolgozása kezdődik:
-  * NSG szabály 1 (DNS) alkalmazza, akkor engedélyezett, befejezése szabály feldolgozása
-5. DNS-kiszolgáló a kérelmet kap.
-6. DNS-kiszolgáló nem rendelkezik a gyorsítótárazott címmel és egy legfelső szintű DNS-kiszolgáló kéri az interneten
-7. Nincs kimenő szabályok a Backend alhálózathoz forgalom engedélyezve van
-8. Internetes DNS-kiszolgáló válaszol, mivel ehhez a munkamenethez belső kezdeményezett, a válasz engedélyezett
-9. DNS-kiszolgáló gyorsítótárazza a választ, és a kezdeti kérés vissza IIS01 válaszol
-10. Nincs kimenő szabályok a Backend alhálózathoz forgalom engedélyezve van
-11. Frontend alhálózathoz bejövő szabály feldolgozása kezdődik:
-  1. Nincs érvényes bejövő szabály NSG a Frontend alhálózathoz, így nincs az NSG-szabályok vonatkoznak a Backend alhálózathoz-forgalom
-  2. A alapértelmezett rendszerszintű szabály, amely lehetővé teszi az alhálózatok közötti forgalmat lehetővé tenné a forgalmat, így a forgalom engedélyezve van
-12. IIS01 megkapja válaszát DNS01
+1. A Web Server, IIS01, egy adatcsatorna www.data.gov, igényeinek megfelelően, de igények címének feloldására.
+2. A hálózati konfigurációt a virtuális hálózatok közötti listák DNS01 (a háttérbeli alhálózat 10.0.2.4 cím), az elsődleges DNS-kiszolgáló, IIS01 küld a DNS-kérelem DNS01
+3. Nincs kimenő szabályok előtérbeli alhálózatán, forgalom engedélyezve van
+4. Háttérbeli alhálózatot bejövő szabály feldolgozása kezdődik:
+  * NSG-szabály 1 (DNS) a alkalmazni, a forgalom engedélyezett, állítsa le a szabály feldolgozása
+5. DNS-kiszolgáló a kérést kap
+6. DNS-kiszolgáló nem rendelkezik a címmel a gyorsítótárba, és az interneten egy DNS-gyökérkiszolgáló kéri
+7. Nincs kimenő szabályok a háttérbeli alhálózat forgalom engedélyezve van
+8. Internetes DNS-kiszolgáló válaszol, mivel ez a munkamenet indított belső, a válasz engedélyezett
+9. DNS-kiszolgáló gyorsítótárazza a választ, és reagáljon a biztonsági IIS01 irányuló első kérelem
+10. Nincs kimenő szabályok a háttérbeli alhálózat forgalom engedélyezve van
+11. Előtérbeli alhálózat bejövő szabály feldolgozása kezdődik:
+  1. Nincs NSG szabály, amelyre vonatkozik a bejövő forgalmat a háttérbeli alhálózat felől az előtérben levő alhálózathoz, így egyike sem az NSG-szabályok alkalmazása
+  2. A alapértelmezett rendszerszabály, amely lehetővé teszi az alhálózatok közötti adatforgalom lehetővé tenné a forgalmat, így a forgalom engedélyezve van
+12. IIS01 DNS01 kap a válasz
 
-#### <a name="allowed-web-server-access-file-on-appvm01"></a>(*Engedélyezett*) server-hozzáférés fájl AppVM01
-1. IIS01 kér AppVM01 fájlba
-2. Nincs kimenő szabályok Frontend alhálózaton, forgalom engedélyezve van
-3. A Backend alhálózathoz bejövő szabály feldolgozása kezdődik:
-  1. NSG szabály 1 (DNS) nem teljesül, a következő szabály áthelyezése
-  2. NSG szabály 2 (RDP) nem teljesül, a következő szabály áthelyezése
-  3. NSG 3. szabály (IIS01 interneten) nem teljesül, a következő szabály áthelyezése
-  4. NSG 4. szabály (a AppVM01 IIS01) teljesül, a forgalom engedélyezve van, akkor állítsa le a szabály feldolgozása
-4. AppVM01 a kérelmet kap, és válaszol, a fájl (feltéve, hogy van engedélyezve)
-5. Mivel a Backend alhálózathoz nem kimenő szabályok, engedélyezett-e a válasz
-6. Frontend alhálózathoz bejövő szabály feldolgozása kezdődik:
-  1. Nincs érvényes bejövő szabály NSG a Frontend alhálózathoz, így nincs az NSG-szabályok vonatkoznak a Backend alhálózathoz-forgalom
-  2. A alapértelmezett rendszerszintű szabály, amely lehetővé teszi az alhálózatok közötti forgalmat lehetővé tenné a forgalmat, a forgalom engedélyezve van.
-7. Az IIS-kiszolgálót kap a fájl
+#### <a name="allowed-web-server-access-file-on-appvm01"></a>(*Engedélyezett*) kiszolgáló-hozzáférés fájlt AppVM01
+1. IIS01 AppVM01 fájlt kéri
+2. Nincs kimenő szabályok előtérbeli alhálózatán, forgalom engedélyezve van
+3. A háttérrendszer alhálózatának bejövő szabály feldolgozása kezdődik:
+  1. NSG-szabály 1 (DNS) nem vonatkoznak, helyezze át a következő szabály
+  2. NSG-szabály 2 (RDP) nem vonatkoznak, helyezze át a következő szabály
+  3. NSG 3. szabály (az internethez való IIS01) nem vonatkoznak, helyezze át a következő szabály
+  4. NSG-szabály 4 (a AppVM01 IIS01) vonatkozik, a forgalom engedélyezve van, állítsa le a szabály feldolgozása
+4. AppVM01 dokumentálásáért fájllal (feltéve, hogy a hozzáférés engedélyezett), és a kérést kap
+5. Nincsenek kimenő szabályok a háttérbeli alhálózat, mivel engedélyezve van-e a válasz
+6. Előtérbeli alhálózat bejövő szabály feldolgozása kezdődik:
+  1. Nincs NSG szabály, amelyre vonatkozik a bejövő forgalmat a háttérbeli alhálózat felől az előtérben levő alhálózathoz, így egyike sem az NSG-szabályok alkalmazása
+  2. A alapértelmezett rendszerszabály, amely lehetővé teszi az alhálózatok közötti adatforgalom lehetővé tenné a forgalmat, így a forgalom engedélyezve van.
+7. Az IIS-kiszolgáló fogadja a fájl
 
-#### <a name="denied-rdp-to-backend"></a>(*Megtagadva*) RDP háttérrendszeréhez
-1. Az internetes felhasználó megpróbálja távoli asztali kiszolgáló AppVM01
-2. Mivel nincs a kiszolgálók hálózati társított nyilvános IP-címek, ez az adatforgalom soha ne adjon meg a virtuális hálózat, és így elérni a kiszolgáló
-3. Azonban valamilyen okból engedélyezve volt a nyilvános IP-címnek, 2 (RDP) NSG-szabály lehetővé teszi az ilyen típusú adatforgalom
+#### <a name="denied-rdp-to-backend"></a>(*Megtagadva*) háttérrendszer RDP-vel
+1. Az internetes felhasználó RDP próbál AppVM01 kiszolgáló
+2. Mivel ebben az esetben nem a hálózati adapter kiszolgálókhoz társított nyilvános IP-címek, a forgalmat soha ne adjon meg a virtuális hálózathoz, és a kiszolgáló nem érhető el.
+3. Azonban ha valamilyen okból engedélyezve lett a nyilvános IP-cím, NSG-szabály (RDP) 2 lehetővé tenné, hogy ez a forgalom
 
 >[!NOTE]
->Távoli asztali ezt a példányt a háttér-kiszolgálók az IIS-kiszolgálón használt egy "ugrást mező." Az IIS-kiszolgálót, majd az IIS kiszolgáló RDP a háttér-kiszolgálóhoz az első RDP.
+>Ebben a példányban háttér-kiszolgálók távoli asztali eléréséhez az IIS-kiszolgálón szolgál egy "jump boxon." Az IIS-kiszolgálón, majd az IIS kiszolgáló RDP-vel a háttér-kiszolgáló az első RDP.
 >
 >
 
-#### <a name="denied-web-to-backend-server"></a>(*Megtagadva*) háttérkiszolgálóra webes
-1. Az internetes felhasználó megpróbál hozzáférni az AppVM01 fájlba
-2. Mivel nincs a kiszolgálók hálózati társított nyilvános IP-címek, ez az adatforgalom soha ne adjon meg a virtuális hálózat, és így elérni a kiszolgáló
-3. Valamilyen okból engedélyezve volt a nyilvános IP-címnek, NSG szabály 5 (Internet virtuális hálózatba) blokkolná-e a forgalom
+#### <a name="denied-web-to-backend-server"></a>(*Megtagadva*) a háttérkiszolgáló webes
+1. Az internetes felhasználó próbál meg hozzáférni egy fájlt a AppVM01
+2. Mivel ebben az esetben nem a hálózati adapter kiszolgálókhoz társított nyilvános IP-címek, a forgalmat soha ne adjon meg a virtuális hálózathoz, és a kiszolgáló nem érhető el.
+3. Ha valamilyen okból engedélyezve lett a nyilvános IP-cím, 5 (Internet, virtuális hálózatok közötti) NSG-szabályt le fog állni a forgalmat
 
-#### <a name="denied-web-dns-look-up-on-dns-server"></a>(*Megtagadva*) DNS-kiszolgálón a webes DNS szolgáltatásban
-1. Az internetes felhasználó megpróbálja kereshet meg egy belső DNS-rekordot a DNS01
-2. Mivel nincs a kiszolgálók hálózati társított nyilvános IP-címek, ez az adatforgalom soha ne adjon meg a virtuális hálózat, és így elérni a kiszolgáló
-3. Valamilyen okból engedélyezve volt a nyilvános IP-címnek, NSG szabály 5 (Internet virtuális hálózatba) blokkolná-e a forgalom (Megjegyzés:, hogy szabály 1 (DNS) szeretné alkalmazni, mert a kérelem forráscím az internethez, és 1. szabály csak a helyi virtuális hálózat, mint a forrás vonatkozik)
+#### <a name="denied-web-dns-look-up-on-dns-server"></a>(*Megtagadva*) a DNS-kiszolgáló a webhely DNS szolgáltatásban
+1. Az internetes felhasználó próbál egy belső DNS-rekord DNS01 keresése
+2. Mivel ebben az esetben nem a hálózati adapter kiszolgálókhoz társított nyilvános IP-címek, a forgalmat soha ne adjon meg a virtuális hálózathoz, és a kiszolgáló nem érhető el.
+3. Ha valamilyen okból engedélyezve lett a nyilvános IP-cím, 5 (Internet, virtuális hálózatok közötti) NSG-szabályt le fog állni a forgalmat (Megjegyzés: az internethez, hogy a szabály 1 (DNS) nem alkalmazhatók, mert a kérelmek forrás címe nem és az 1. szabály csak a helyi virtuális hálózat, mint a forrás vonatkozik)
 
-#### <a name="denied-sql-access-on-the-web-server"></a>(*Megtagadva*) SQL-hozzáférés a webkiszolgálón
+#### <a name="denied-sql-access-on-the-web-server"></a>(*Megtagadva*) SQL-hozzáférését a webkiszolgálón
 1. Az internetes felhasználó SQL adatokat kér IIS01
-2. Mivel nincs a kiszolgálók hálózati társított nyilvános IP-címek, ez az adatforgalom soha ne adjon meg a virtuális hálózat, és így elérni a kiszolgáló
-3. Ha egy nyilvános IP-cím valamilyen okból engedélyezve lett, a Frontend alhálózathoz kezdődik bejövő szabály feldolgozása:
-  1. NSG szabály 1 (DNS) nem teljesül, a következő szabály áthelyezése
-  2. NSG szabály 2 (RDP) nem teljesül, a következő szabály áthelyezése
-  3. NSG 3. szabály (IIS01 interneten) alkalmazza, akkor engedélyezett, befejezése szabály feldolgozása
-4. Forgalom találatok a IIS01 belső IP-címét (10.0.1.5)
-5. IIS01 1433-as portot, ezért nem kérelemre adott válasz nem figyel.
+2. Mivel ebben az esetben nem a hálózati adapter kiszolgálókhoz társított nyilvános IP-címek, a forgalmat soha ne adjon meg a virtuális hálózathoz, és a kiszolgáló nem érhető el.
+3. Ha valamilyen okból engedélyezve lett a nyilvános IP-cím, az előtér-alhálózatot a bejövő szabály feldolgozása kezdődik:
+  1. NSG-szabály 1 (DNS) nem vonatkoznak, helyezze át a következő szabály
+  2. NSG-szabály 2 (RDP) nem vonatkoznak, helyezze át a következő szabály
+  3. NSG 3. szabály (IIS01 interneten) a alkalmazni, a forgalom engedélyezett, állítsa le a szabály feldolgozása
+4. Forgalom eléri a IIS01 belső IP-címét (10.0.1.5)
+5. IIS01 1433-as porton, így nincs válasz a kérésre nem figyel.
 
 ## <a name="conclusion"></a>Összegzés
-Ez a példa egy viszonylag egyszerű és egyszerű mód a a háttér-alhálózathoz, a bejövő forgalom elkülönítésére.
+Ebben a példában egy viszonylag egyszerű, és nagyon egyszerű mód a bejövő forgalmat a háttérbeli alhálózat elkülönítése.
 
-További példákat és a hálózati biztonsági határokat egy áttekintést talál [Itt][HOME].
+További példákat és a hálózati biztonsági határok áttekintését találja [Itt][HOME].
 
 ## <a name="references"></a>Referencia
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
-Ez a példa egy előre meghatározott Azure Resource Manager-sablon használja a Microsoft által kezelt GitHub-tárházban, és a Közösség. Ez a sablon telepített rögtön kívül a github webhelyen, vagy letölthető, és szükség szerint módosítva. 
+Ebben a példában egy előre meghatározott Azure Resource Manager-sablont használ egy GitHub-tárházat, a Microsoft által karbantartott és a Közösség számára. Ez a sablon telepíthető közvetlenül a githubból, vagy letöltött és módosított saját igényei szerint. 
 
-A fő sablon megtalálható-e az "azuredeploy.json." nevű fájlt. Ez a sablon küldheti el PowerShell vagy a parancssori felületen keresztül (fájllal a társított "azuredeploy.parameters.json") a sablon telepítéséhez. A legegyszerűbb módja a használja a "Központi telepítése az Azure-bA" gombot a README.md lap a github webhelyen található.
+A fő sablon szerepel a "azuredeploy.json." nevű fájl Ez a sablon beküldhető PowerShell vagy parancssori felület (a társított "azuredeploy.parameters.json"-fájl) Ez a sablon üzembe helyezéséhez. A legegyszerűbben a "Üzembe helyezése az Azure-bA" gomb használatához a github webhelyen a README.md oldalon található.
 
-A sablon épülő ebben a példában a Githubról, majd az Azure-portálon történő üzembe helyezéséhez kövesse az alábbi lépéseket:
+A sablon olyan ebben a példában a Githubról, majd az Azure Portalon üzembe helyezéséhez kövesse az alábbi lépéseket:
 
-1. Egy böngészőből keresse meg a [sablon][Template]
-2. Kattintson a "Központi telepítése az Azure-bA" (vagy a "Megjelenítés" gombra a sablon grafikus ábrázolása)
-3. A Storage-fiók, felhasználónév és jelszó a (paraméterek) panelen adja meg, majd kattintson a **OK**
-5. Hozzon létre egy erőforráscsoportot a központi telepítés (egy meglévőt is használhat, de egy újat a legjobb eredmények elérése érdekében javasolt)
-6. Szükség esetén a virtuális hálózat az egyes előfizetésekhez és helyekhez beállításainak módosítása.
-7. Kattintson a **tekintse át a jogi feltételeket**, olvassa el a feltételeket, és kattintson a **beszerzési** gombra kattintva elfogadja.
-8. Kattintson a **létrehozása** a sablon telepítésének megkezdéséhez.
-9. Miután a telepítés sikeresen befejeződött, nyissa meg az erőforráscsoport létrehozásánál ehhez a központi telepítéshez a konfigurált belüli erőforrások megjelenítéséhez.
+1. Egy böngészőből keresse fel a [sablon][Template]
+2. Kattintson a "Üzembe helyezése az Azure-bA" gomb (vagy a "Visualize" gombra a sablon grafikus megjelenítése)
+3. Adja meg a Storage-fiók, felhasználónév és jelszó a (paraméterek) panelen, majd kattintson a **OK**
+5. Hozzon létre egy erőforráscsoportot az üzembe helyezés (egy már meglévőt is használhatja, de egy új a legjobb eredmények elérése érdekében javasolt)
+6. Szükség esetén módosítsa a virtuális hálózat az előfizetésben és helyen beállításait.
+7. Kattintson a **jogi feltételek áttekintése**, olvassa el a feltételeket, majd kattintson **beszerzési** fogadjon el.
+8. Kattintson a **létrehozás** , ez a sablon üzembe helyezésének megkezdése.
+9. A telepítés sikeres befejeződése után keresse meg az erőforráscsoport létrehozásánál a központi telepítés belül konfigurált erőforrások megtekintéséhez.
 
 >[!NOTE]
->Ez a sablon lehetővé teszi, hogy csak a IIS01 kiszolgálóra RDP (Keresés a nyilvános IP-cím a IIS01 a portálon). Távoli asztali ezt a példányt a háttér-kiszolgálók az IIS-kiszolgálón használt egy "ugrást mező." Az IIS-kiszolgálót, majd az IIS kiszolgáló RDP a háttér-kiszolgálóhoz az első RDP.
+>Ez a sablon lehetővé teszi, hogy az RDP-vel a IIS01-kiszolgáló (Keresés a nyilvános IP-cím IIS01 a portál esetében). Ebben a példányban háttér-kiszolgálók távoli asztali eléréséhez az IIS-kiszolgálón szolgál egy "jump boxon." Az IIS-kiszolgálón, majd az IIS kiszolgáló RDP-vel a háttér-kiszolgáló az első RDP.
 >
 >
 
-Távolítsa el a telepítést, törölje a csoportot, és minden gyermek-erőforrás is törlődik.
+A központi telepítés eltávolításához törölje az erőforráscsoportot, és minden gyermek-erőforrás is törlődik.
 
-#### <a name="sample-application-scripts"></a>Alkalmazás mintaparancsfájlok
-A sablon sikeres futtatása után állíthat be a webkiszolgáló és egy egyszerű webes alkalmazás tesztelése a DMZ-konfiguráció engedélyezése az alkalmazások kiszolgálói. Ez, és más DMZ példák mintaalkalmazás telepítéséhez egy adtak meg, az alábbi hivatkozásra: [minta alkalmazás-parancsfájl][SampleApp]
+#### <a name="sample-application-scripts"></a>Mintaszkriptek alkalmazás
+A sablon sikeres futtatása után beállíthatja a webkiszolgáló és a egy egyszerű webalkalmazást, hogy a tesztelés a DMZ-konfigurációval rendelkező alkalmazások kiszolgálói. Egy mintaalkalmazás telepítése ezzel és más DMZ példák, egy lett megadva, a következő hivatkozásra: [minta alkalmazás-parancsfájl][SampleApp]
 
 ## <a name="next-steps"></a>További lépések
 
-* Ez a példa központi telepítése
-* A minta-alkalmazás létrehozása
-* A DMZ keresztül különböző forgalom tesztelése
+* Ebben a példában üzembe helyezése
+* A mintaalkalmazás létrehozása
+* A szegélyhálózat (DMZ) keresztül forgalmakat folyamatok tesztelése
 
 <!--Image References-->
-[1]: ./media/virtual-networks-dmz-nsg-arm/example1design.png "Az NSG bejövő DMZ"
+[1]: ./media/virtual-networks-dmz-nsg-arm/example1design.png "NSG bejövő Szegélyhálózat"
 
 <!--Link References-->
 [HOME]: ../best-practices-network-security.md

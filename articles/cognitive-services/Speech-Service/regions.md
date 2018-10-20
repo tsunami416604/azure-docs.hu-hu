@@ -1,19 +1,21 @@
 ---
 title: Beszéd szolgáltatási régiók
+titlesuffix: Azure Cognitive Services
 description: A beszédfelismerési szolgáltatás régiók referenciája.
 services: cognitive-services
 author: mahilleb-msft
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: mahilleb
-ms.openlocfilehash: 01c76d80d6b2fd64165b126df01c391d7e18292f
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: a5fce6f9547a96da3ce482ce388e5ba2093f2af4
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887547"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468126"
 ---
 # <a name="regions-of-the-speech-service"></a>A beszédfelismerési szolgáltatás régiók
 
@@ -29,7 +31,7 @@ Lásd: [REST API-k](rest-apis.md) részleteiről.
 
 ## <a name="speech-sdk"></a>Beszéd SDK
 
-Az a [beszéd SDK](speech-sdk.md), régiók karakterláncként vannak megadva (például, hogy paraméterként `SpeechConfig.FromSubscription` beszéd használata a C# SDK-ban).
+Az a [Speech Service SDK](speech-sdk.md), régiók karakterláncként vannak megadva (például, hogy paraméterként `SpeechConfig.FromSubscription` beszéd használata a C# SDK-ban).
 
 ### <a name="regions-for-speech-recognition-and-translation"></a>A beszédfelismerés és -fordítási régiók
 

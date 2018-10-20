@@ -2,25 +2,17 @@
 title: 'Klasszikus virtuális hálózatok összekapcsolása az Azure Resource Manager-alapú virtuális hálózatokhoz: PowerShell |} A Microsoft Docs'
 description: Erőforrás-kezelői virtuális hálózatok VPN Gateway és a PowerShell használatával és a klasszikus virtuális hálózatok közötti VPN-kapcsolat létrehozása.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-service-management,azure-resource-manager
-ms.assetid: f17c3bf0-5cc9-4629-9928-1b72d0c9340b
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/13/2018
+ms.topic: conceptual
+ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 65faf1a4f78244d9fdd03b6415bf2cadac923504
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 588692ad4c7c95a06d33b67b76bb8feff6b4ed53
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38706016"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457170"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Különböző üzemi modellekből származó virtuális hálózatok összekapcsolása a PowerShell-lel
 
@@ -42,7 +34,7 @@ A következő lépések végigvezetik a dinamikus vagy útvonalalapú átjárót
 
 ### <a name="pre"></a>Előfeltételek
 
-* Mindkét virtuális hálózaton van már létre van hozva.
+* Mindkét virtuális hálózaton van már létre van hozva. Ha a resource manager virtuális hálózat létrehozása van szüksége, tekintse meg [hozzon létre egy virtuális hálózatot](../virtual-network/quick-create-powershell.md#create-a-virtual-network). Egy klasszikus virtuális hálózat létrehozása: [klasszikus virtuális hálózat létrehozása](https://docs.microsoft.com/en-us/azure/virtual-network/create-virtual-network-classic).
 * A virtuális hálózat címtartományát nem egymással átfedésben vannak, vagy más kapcsolatokat, az átjárók csatlakoznak előfordulhat, hogy azokat a tartományokat átfedésben.
 * Telepítette a legújabb PowerShell-parancsmagokat. Lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview) további információt. Ellenőrizze, hogy a Service Management (SM) és az erőforrás-kezelő (RM) parancsmagok is telepíti. 
 
@@ -77,24 +69,24 @@ Virtuális hálózati átjáró neve = RMGateway <br>
 ### <a name="1-download-your-network-configuration-file"></a>1. Töltse le a hálózati konfigurációs fájlt
 1. Jelentkezzen be a PowerShell-konzol emelt szintű jogosultságokkal rendelkeznek az Azure-fiókjával. A következő parancsmagot a bejelentkezési hitelesítő adatokat kér az Azure-fiók. A bejelentkezés után letölti a fiók beállításait, hogy elérhetők legyenek az Azure PowerShell számára. A klasszikus Azure PowerShell Service Management (SM) parancsmagok ebben a szakaszban szolgálnak.
 
-  ```powershell
+  ```azurepowershell
   Add-AzureAccount
   ```
 
   Az Azure-előfizetés beszerzése.
 
-  ```powershell
+  ```azurepowershell
   Get-AzureSubscription
   ```
 
   Ha egynél több előfizetéssel rendelkezik, akkor válassza ki azt, amelyiket használni szeretné.
 
-  ```powershell
+  ```azurepowershell
   Select-AzureSubscription -SubscriptionName "Name of subscription"
   ```
 2. Exportálhatja az Azure hálózati konfigurációs fájlt a következő parancs futtatásával. Módosíthatja egy másik helyre, szükség esetén exportálhatja a fájl helyét.
 
-  ```powershell
+  ```azurepowershell
   Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
   ```
 3. Nyissa meg a letöltött szerkeszteni, .xml fájlt. A hálózati konfigurációs fájlt egy példa: a [Network konfigurációs séma](https://msdn.microsoft.com/library/jj157100.aspx).
@@ -148,7 +140,7 @@ Ebben a szakaszban adjuk meg a helyi hálózati telephely, amely szeretné csatl
 ### <a name="5-save-the-file-and-upload"></a>5. Mentse a fájlt, és töltse fel
 Mentse a fájlt, majd azok importálása az Azure a következő parancs futtatásával. Ellenőrizze, hogy a fájl elérési útját a környezetben szükség szerint módosíthatja.
 
-```powershell
+```azurepowershell
 Set-AzureVNetConfig -ConfigurationPath C:\AzureNet\NetworkConfig.xml
 ```
 
@@ -165,39 +157,41 @@ Mielőtt futtatná az ebben a példában, tekintse meg a hálózati konfiguráci
 
 Használja az alábbi példa egy dinamikus útválasztású átjáró létrehozása:
 
-```powershell
+```azurepowershell
 New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
 ```
 
 Az átjáró állapotának ellenőrzéséhez használja a **Get-AzureVNetGateway** parancsmagot.
 
 ## <a name="creatermgw"></a>2. szakasz – az erőforrás-kezelő virtuális hálózati átjáró konfigurálása
-VPN-átjáró létrehozása az erőforrás-kezelő virtuális hálózaton, kövesse az alábbi utasításokat. Ne indítsa el a lépéseket, amíg a klasszikus virtuális hálózati átjáró nyilvános IP-címét a lekérdezés után. 
 
-1. Jelentkezzen be az Azure-fiókjába a PowerShell-konzolon. A következő parancsmagot a bejelentkezési hitelesítő adatokat kér az Azure-fiók. A bejelentkezés után, hogy elérhetők legyenek az Azure PowerShell-lel a rendszer letölti a fiók beállításait.
+Az Előfeltételek azt feltételezik, hogy már létrehozott egy erőforrás-kezelő virtuális hálózatot. Ebben a lépésben a VPN-átjáró az erőforrás-kezelő virtuális hálózat létrehozása. Ne indítsa el ezeket a lépéseket, amíg a klasszikus virtuális hálózati átjáró nyilvános IP-címét a lekérdezés után. 
 
-  ```powershell
+1. Jelentkezzen be az Azure-fiókjába a PowerShell-konzolon. A következő parancsmagot a bejelentkezési hitelesítő adatokat kér az Azure-fiók. Miután bejelentkezett, a fiók beállításait, hogy elérhetők legyenek az Azure PowerShell-lel letöltődnek. A "Kipróbálom" funkció segítségével igény szerint indítsa el az Azure Cloud Shellt a böngészőben.
+
+  Ha az Azure Cloud Shellt használja, hagyja ki a következő parancsmagot:
+
+  ```azurepowershell
   Connect-AzureRmAccount
   ``` 
-   
-  Olvassa be az Azure-előfizetések listáját.
+  Győződjön meg arról, hogy a megfelelő előfizetést használ, futtassa a következő parancsmagot:  
 
-  ```powershell
+  ```azurepowershell-interactive
   Get-AzureRmSubscription
   ```
    
   Ha több előfizetéssel rendelkezik, válassza ki a használni kívánt előfizetést.
 
-  ```powershell
+  ```azurepowershell-interactive
   Select-AzureRmSubscription -SubscriptionName "Name of subscription"
   ```
 2. Hozzon létre egy helyi hálózati átjárót. Virtuális hálózatokban a helyi hálózati átjáró általában a helyszínt jelenti. A helyi hálózati átjáró ebben az esetben a klasszikus virtuális hálózat hivatkozik. Neki egy nevet, amellyel Azure hivatkozhat rá, és is megadhatja a címtér-előtagját. Az Azure a megadott IP-címelőtagot a helyszíni helyre küldendő adatforgalom azonosítására használja. Ha szeretné az adatokat ide később módosíthatja az átjáró létrehozása előtt módosítsa az értékeket, és futtassa újra a mintakódot.
    
    **-Név** , tekintse meg a helyi hálózati átjáróhoz hozzárendelendő neve.<br>
    **-AddressPrefix** a klasszikus virtuális hálózat a címtér van.<br>
-   **-GatewayIpAddress** a klasszikus virtuális hálózati átjáró nyilvános IP-címe. Győződjön meg arról, az alábbi minta, hogy a megfelelő IP-cím módosításához.<br>
+   **-GatewayIpAddress** a klasszikus virtuális hálózati átjáró nyilvános IP-címe. Győződjön meg arról, a következő minta szöveg "n.n.n.n", hogy a megfelelő IP-cím módosításához.<br>
 
-  ```powershell
+  ```azurepowershell-interactive
   New-AzureRmLocalNetworkGateway -Name ClassicVNetLocal `
   -Location "West US" -AddressPrefix "10.0.0.0/24" `
   -GatewayIpAddress "n.n.n.n" -ResourceGroupName RG1
@@ -206,7 +200,7 @@ VPN-átjáró létrehozása az erőforrás-kezelő virtuális hálózaton, köve
 
   Ebben a lépésben azt is beállíthatja egy későbbi lépésben használt.
 
-  ```powershell
+  ```azurepowershell-interactive
   $ipaddress = New-AzureRmPublicIpAddress -Name gwpip `
   -ResourceGroupName RG1 -Location 'EastUS' `
   -AllocationMethod Dynamic
@@ -218,7 +212,7 @@ VPN-átjáró létrehozása az erőforrás-kezelő virtuális hálózaton, köve
    **-Név** a Resource Manager virtuális hálózat neve.<br>
    **-ResourceGroupName** van az erőforráscsoportot, amelyhez a virtuális hálózathoz társítva van. Az átjáró-alhálózat már léteznie kell a virtuális hálózathoz, és névvel kell rendelkeznie *GatewaySubnet* megfelelően működjön.<br>
 
-  ```powershell
+  ```azurepowershell-interactive
   $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name GatewaySubnet `
   -VirtualNetwork (Get-AzureRmVirtualNetwork -Name RMVNet -ResourceGroupName RG1)
   ``` 
@@ -227,14 +221,14 @@ VPN-átjáró létrehozása az erőforrás-kezelő virtuális hálózaton, köve
 
   Ebben a lépésben a **- SubnetId** és **- PublicIpAddressId** kell átadni az id tulajdonság az alhálózatot és IP-cím objektumok, illetve. Egyszerű karakterláncnak nem használható. Ezek a változók vannak állítva a lépésben egy nyilvános IP-címet és a lépés beolvasni az alhálózat.
 
-  ```powershell
+  ```azurepowershell-interactive
   $gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig `
   -Name gwipconfig -SubnetId $subnet.id `
   -PublicIpAddressId $ipaddress.id
   ```
 7. A Resource Manager virtuális hálózati átjáró létrehozása a következő parancs futtatásával. A `-VpnType` kell *RouteBased*. További, az átjáró létrehozása akár 45 percet is igénybe vehet.
 
-  ```powershell
+  ```azurepowershell-interactive
   New-AzureRmVirtualNetworkGateway -Name RMGateway -ResourceGroupName RG1 `
   -Location "EastUS" -GatewaySKU Standard -GatewayType Vpn `
   -IpConfigurations $gwipconfig `
@@ -242,17 +236,17 @@ VPN-átjáró létrehozása az erőforrás-kezelő virtuális hálózaton, köve
   ```
 8. A VPN-átjáró létrehozása után másolja a nyilvános IP-cím. Akkor használja a klasszikus virtuális hálózat számára a helyi hálózati beállítások konfigurálásakor. A következő parancsmag használatával a nyilvános IP-cím lekéréséhez. A nyilvános IP-cím szerepel, a visszatérési *IP-cím*.
 
-  ```powershell
+  ```azurepowershell-interactive
   Get-AzureRmPublicIpAddress -Name gwpip -ResourceGroupName RG1
   ```
 
 ## <a name="localsite"></a>3. szakasz – a klasszikus virtuális hálózatok helyi hely beállításainak módosítása
 
-Ebben a szakaszban dolgozik a klasszikus virtuális hálózatot. Lecseréli a helyőrző IP-címet, amelyet a helyi webhely beállításait, a Resource Manager VNet-átjáró való kapcsolódáshoz használandó megadásakor használt. 
+Ebben a szakaszban dolgozik a klasszikus virtuális hálózatot. Lecseréli a helyőrző IP-címet, amelyet a helyi webhely beállításait, a Resource Manager VNet-átjáró való kapcsolódáshoz használandó megadásakor használt. A klasszikus virtuális hálózattal dolgozik, mert helyben telepítve a számítógépre, nem az Azure Cloud Shell TryIt PowerShell-lel.
 
 1. Exportálhatja a hálózati konfigurációs fájlt.
 
-  ```powershell
+  ```azurepowershell
   Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
   ```
 2. Egy szövegszerkesztővel, módosítsa a értéket a VPNGatewayAddress. Cserélje le a helyőrző IP-címet a Resource Manager-átjáró nyilvános IP-címét, és mentse a módosításokat.
@@ -262,7 +256,7 @@ Ebben a szakaszban dolgozik a klasszikus virtuális hálózatot. Lecseréli a he
   ```
 3. Importálja a módosított hálózati konfigurációs fájlt az Azure-bA.
 
-  ```powershell
+  ```azurepowershell
   Set-AzureVNetConfig -ConfigurationPath C:\AzureNet\NetworkConfig.xml
   ```
 
@@ -271,7 +265,7 @@ Az átjárók közötti kapcsolat létrehozása a PowerShell szükséges. Szüks
 
 1. A PowerShell-konzolon állítsa be a megosztott kulcsot. A-parancsmagok futtatása előtt tekintse meg a hálózati konfigurációs fájlt, ahonnan letöltötte a pontos nevek, amely az Azure tervei szerint megtekintéséhez. Adjon meg, amely tartalmazza a tárolóhelyek virtuális hálózat nevét, ha egyetlen idézőjelek közé az értéket használja.<br><br>A következő példában **- VNetName** neve a klasszikus virtuális hálózatot, és **- LocalNetworkSiteName** a helyi hálózati telephelyhez megadott neve. A **- SharedKey** érték, amely az Ön hozza létre, és adja meg. A példában az "abc123" használtuk, de Ön hozza létre, és összetettebb használja. A lényeg az, hogy az itt megadott értéknek kell lennie a következő lépés a kapcsolat létrehozásakor megadott ugyanazt az értéket. Meg kell jelennie a visszatérési **állapota: sikeres**.
 
-  ```powershell
+  ```azurepowershell
   Set-AzureVNetGatewayKey -VNetName ClassicVNet `
   -LocalNetworkSiteName RMVNetLocal -SharedKey abc123
   ```
@@ -279,14 +273,14 @@ Az átjárók közötti kapcsolat létrehozása a PowerShell szükséges. Szüks
    
   Állítsa be a változókat.
 
-  ```powershell
-  $vnet01gateway = Get-AzureRMLocalNetworkGateway -Name ClassicVNetLocal -ResourceGroupName RG1
+  ```azurepowershell-interactive
+  $vnet01gateway = Get-AzureRmLocalNetworkGateway -Name ClassicVNetLocal -ResourceGroupName RG1
   $vnet02gateway = Get-AzureRmVirtualNetworkGateway -Name RMGateway -ResourceGroupName RG1
   ```
    
   Hozza létre a kapcsolatot. Figyelje meg, hogy a **- ConnectionType** IPsec, nem Vnet2Vnet van.
 
-  ```powershell
+  ```azurepowershell-interactive
   New-AzureRmVirtualNetworkGatewayConnection -Name RM-Classic -ResourceGroupName RG1 `
   -Location "East US" -VirtualNetworkGateway1 `
   $vnet02gateway -LocalNetworkGateway2 `

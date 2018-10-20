@@ -14,167 +14,147 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: 15c2ec0aa8b795a826eae29026b7039491dbb64f
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 9e94357216690438446a738400c979d12f387df6
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056890"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471084"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-the-net-framework"></a>Események fogadása az Azure Event Hubsból a .NET-keretrendszer használatával
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
-Az Azure Event Hubs olyan eseményadatok (telemetria) csatlakoztatott eszközökről és alkalmazásokból érkező nagy mennyiségű feldolgozó szolgáltatás. Miután összegyűjtötte az adatokat az Event Hubsban, az adatok egy tárolási fürt használatával tárolhatja, vagy átalakíthatja egy valós idejű elemzési szolgáltató segítségével. Ez az átfogó eseménygyűjtési és -feldolgozási képesség kulcsfontosságú alkotóeleme a modern alkalmazásarchitektúráknak, beleértve az eszközök internetes hálózatát (IoT).
+Az Event Hubs szolgáltatás a csatlakoztatott eszközökről és alkalmazásokból származó nagy mennyiségű eseményadatot dolgoz fel (telemetria). Miután összegyűjtötte az adatokat az Event Hubsban, az adatok egy tárolási fürt használatával tárolhatja, vagy átalakíthatja egy valós idejű elemzési szolgáltató segítségével. Ez az átfogó eseménygyűjtési és -feldolgozási képesség kulcsfontosságú alkotóeleme a modern alkalmazásarchitektúráknak, beleértve az eszközök internetes hálózatát (IoT). Az Event hubs részletes ismertetőt talál [Event Hubs – áttekintés](event-hubs-about.md) és [Event Hubs-szolgáltatások](event-hubs-features.md).
 
-Ez az oktatóanyag ismerteti, hogyan írható olyan .NET-keretrendszerbeli konzolalkalmazás, amely egy eseményközpontból fogad üzeneteket az **[Event Processor Host][Event Processor Host]** használatával. Az események a .NET-keretrendszerrel való küldéséről lásd a [Események küldése az Azure Event Hubsba a .NET-keretrendszer használatával](event-hubs-dotnet-framework-getstarted-send.md) című cikket, vagy kattintson a megfelelő küldőnyelvre a bal oldalon található tartalomjegyzékben.
-
-Az [Event Processor Host][EventProcessorHost] egy .NET-osztály, amely leegyszerűsíti az események fogadását az Event Hubsból, mivel kezeli az állandó ellenőrzőpontokat és a párhuzamos fogadásokat az adott Event Hubs -eseményközpontokból. Az Event Processor Host használatával, akkor is feloszthatja az eseményeket több fogadóra, még akkor is, ha ezek különböző csomópontokon üzemelnek. Ez a példa bemutatja, hogyan használható az Event Processor Host egyetlen fogadóhoz. A [horizontálisan felskálázott Eseményfeldolgozási] [ Scale out Event Processing with Event Hubs] minta bemutatja, hogyan használhatja az Event Processor Host több fogadóval.
+Ez az oktatóanyag bemutatja, hogyan Konzolalkalmazás létrehozása .NET-keretrendszer, amely egy event hub használatával üzeneteket fogad a [Event Processor Host](event-hubs-event-processor-host.md). A [Event Processor Host](event-hubs-event-processor-host.md) egy .NET-osztály, amely leegyszerűsíti az események fogadását az event hubsból, mivel kezeli az állandó ellenőrzőpontokat és a párhuzamos fogadásokat az adott event hubs eseményközpontokból. Az Event Processor Host használatával, akkor is feloszthatja az eseményeket több fogadóra, még akkor is, ha ezek különböző csomópontokon üzemelnek. Ez a példa bemutatja, hogyan használható az Event Processor Host egyetlen fogadóhoz. A [horizontálisan felskálázott Eseményfeldolgozási] [ Scale out Event Processing with Event Hubs] minta bemutatja, hogyan használhatja az Event Processor Host több fogadóval.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
 
 * [A Microsoft Visual Studio 2017-es vagy újabb](http://visualstudio.com).
-* Aktív Azure-fiók. Ha még nincs fiókja, néhány perc alatt létrehozhat egy ingyenes fiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/).
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs-névtér és eseményközpont létrehozása
+Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és eseményközpont létrehozásához hajtsa végre az eljárást a [Ez a cikk](event-hubs-create.md), majd folytassa a következő lépéseket ebben az oktatóanyagban.
 
-Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és az eseményközpont létrehozásához kövesse az [ebben a cikkben](event-hubs-create.md) olvasható eljárást, majd folytassa a jelen oktatóanyag alábbi lépéseivel.
+[!INCLUDE [event-hubs-create-storage](../../includes/event-hubs-create-storage.md)]
 
-## <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
+## <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
 
-Az [Event Processor Host][EventProcessorHost] használatához egy [Azure Storage-fiók][Azure Storage account] szükséges:
-
-1. Jelentkezzen be a [az Azure portal][Azure portal], és kattintson a **erőforrás létrehozása** , a képernyő bal felső.
-
-2. Kattintson a **Tárolás**, majd a **Tárfiók** elemre.
+Hozzon létre egy új Visual C# asztalialkalmazás-projektet a **Console Application** (Konzolalkalmazás) projektsablonnal. Adja a projektnek a **Receiver** (Fogadó) nevet.
    
-    ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage1.png)
+![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp1.png)
 
-3. Az a **storage-fiók létrehozása** panelen írja be a tárfiók nevét. Válassza ki azt az Azure-előfizetést, erőforráscsoportot és helyet, amellyel az erőforrást létre kívánja hozni. Ezt követően kattintson a **Create** (Létrehozás) gombra.
-   
-    ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
+## <a name="add-the-event-hubs-nuget-package"></a>Az Event Hubs NuGet-csomag hozzáadása
 
-4. A tárfiókok listáján kattintson az újonnan létrehozott tárfiókra.
-
-5. Storage-fiók panelen kattintson **hozzáférési kulcsok**. Másolja ki a **key1** értékét – erre később lesz szükség az oktatóprogramban.
-   
-    ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
-
-## <a name="create-a-receiver-console-application"></a>Fogadó konzolalkalmazás létrehozása
-
-1. Hozzon létre egy új Visual C# asztalialkalmazás-projektet a **Console Application** (Konzolalkalmazás) projektsablonnal. Adja a projektnek a **Receiver** (Fogadó) nevet.
-   
-    ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp1.png)
-2. A Megoldáskezelőben kattintson a jobb gombbal a **Receiver** (Fogadó) projektre, majd kattintson a **Manage NuGet Packages for Solution** (Megoldás NuGet-csomagjainak kezelése) parancsra.
-3. Kattintson a **Browse** (Tallózás) lapra, és keressen a következőre: `Microsoft Azure Service Bus Event Hub - EventProcessorHost`. Kattintson az **Install** (Telepítés) gombra, és fogadja el a használati feltételeket.
+1. A Megoldáskezelőben kattintson a jobb gombbal a **Receiver** (Fogadó) projektre, majd kattintson a **Manage NuGet Packages for Solution** (Megoldás NuGet-csomagjainak kezelése) parancsra.
+2. Kattintson a **Browse** (Tallózás) lapra, és keressen a következőre: `Microsoft Azure Service Bus Event Hub - EventProcessorHost`. Kattintson az **Install** (Telepítés) gombra, és fogadja el a használati feltételeket.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-eph-csharp1.png)
    
     A Visual Studio letölti és telepíti az [Azure Service Bus Event Hub - EventProcessorHost NuGet csomagot](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost) minden függőségével együtt, és hozzáad egy rá mutató hivatkozást is.
-4. Kattintson a jobb gombbal a **Receiver** (Fogadó) projektre, kattintson az **Add** (Hozzáadás) lehetőségre, majd a **Class** (Osztály) elemre. Nevezze el az új osztályt **SimpleEventProcessor** névre, és kattintson az **Add** (Hozzáadás) gombra az osztály létrehozásához.
+
+## <a name="implement-the-ieventprocessor-interface"></a>Az IEvent Processor felület implementálása
+
+1. Kattintson a jobb gombbal a **Receiver** (Fogadó) projektre, kattintson az **Add** (Hozzáadás) lehetőségre, majd a **Class** (Osztály) elemre. Nevezze el az új osztályt **SimpleEventProcessor** névre, és kattintson az **Add** (Hozzáadás) gombra az osztály létrehozásához.
    
     ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp2.png)
-5. Adja hozzá a következő utasításokat a SimpleEventProcessor.cs fájl elejéhez:
+2. Adja hozzá a következő utasításokat a SimpleEventProcessor.cs fájl elejéhez:
     
-  ```csharp
-  using Microsoft.ServiceBus.Messaging;
-  using System.Diagnostics;
-  ```
+      ```csharp
+      using Microsoft.ServiceBus.Messaging;
+      using System.Diagnostics;
+      ```
     
-  Ezután helyettesítse be a következő kódot az osztály törzseként:
+3. Helyettesítse be a szervezet az osztály alábbi kódjában:
     
-  ```csharp
-  class SimpleEventProcessor : IEventProcessor
-  {
-    Stopwatch checkpointStopWatch;
-    
-    async Task IEventProcessor.CloseAsync(PartitionContext context, CloseReason reason)
-    {
-        Console.WriteLine("Processor Shutting Down. Partition '{0}', Reason: '{1}'.", context.Lease.PartitionId, reason);
-        if (reason == CloseReason.Shutdown)
+      ```csharp
+      class SimpleEventProcessor : IEventProcessor
+      {
+        Stopwatch checkpointStopWatch;
+        
+        async Task IEventProcessor.CloseAsync(PartitionContext context, CloseReason reason)
         {
-            await context.CheckpointAsync();
+            Console.WriteLine("Processor Shutting Down. Partition '{0}', Reason: '{1}'.", context.Lease.PartitionId, reason);
+            if (reason == CloseReason.Shutdown)
+            {
+                await context.CheckpointAsync();
+            }
         }
-    }
-    
-    Task IEventProcessor.OpenAsync(PartitionContext context)
-    {
-        Console.WriteLine("SimpleEventProcessor initialized.  Partition: '{0}', Offset: '{1}'", context.Lease.PartitionId, context.Lease.Offset);
-        this.checkpointStopWatch = new Stopwatch();
-        this.checkpointStopWatch.Start();
-        return Task.FromResult<object>(null);
-    }
-    
-    async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
-    {
-        foreach (EventData eventData in messages)
+        
+        Task IEventProcessor.OpenAsync(PartitionContext context)
         {
-            string data = Encoding.UTF8.GetString(eventData.GetBytes());
-    
-            Console.WriteLine(string.Format("Message received.  Partition: '{0}', Data: '{1}'",
-                context.Lease.PartitionId, data));
+            Console.WriteLine("SimpleEventProcessor initialized.  Partition: '{0}', Offset: '{1}'", context.Lease.PartitionId, context.Lease.Offset);
+            this.checkpointStopWatch = new Stopwatch();
+            this.checkpointStopWatch.Start();
+            return Task.FromResult<object>(null);
         }
-    
-        //Call checkpoint every 5 minutes, so that worker can resume processing from 5 minutes back if it restarts.
-        if (this.checkpointStopWatch.Elapsed > TimeSpan.FromMinutes(5))
+        
+        async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
         {
-            await context.CheckpointAsync();
-            this.checkpointStopWatch.Restart();
+            foreach (EventData eventData in messages)
+            {
+                string data = Encoding.UTF8.GetString(eventData.GetBytes());
+        
+                Console.WriteLine(string.Format("Message received.  Partition: '{0}', Data: '{1}'",
+                    context.Lease.PartitionId, data));
+            }
+        
+            //Call checkpoint every 5 minutes, so that worker can resume processing from 5 minutes back if it restarts.
+            if (this.checkpointStopWatch.Elapsed > TimeSpan.FromMinutes(5))
+            {
+                await context.CheckpointAsync();
+                this.checkpointStopWatch.Restart();
+            }
         }
-    }
-  }
-  ```
+      }
+      ```
     
-  Az **EventProcessorHost** ezt az osztályt hívja meg az eseményközpontból fogadott események feldolgozásához. A `SimpleEventProcessor` osztály stoppert használ az ellenőrzőpont-metódus **EventProcessorHost** környezetben való rendszeres időközönkénti hívásához. Ez az eljárás biztosítja, hogy ha a fogadó újraindul, ne vesszen el öt percnél több feldolgozási munka.
-6. A **Program** osztályban adja hozzá a következő `using` utasítást a fájl elejéhez:
-    
-  ```csharp
-  using Microsoft.ServiceBus.Messaging;
-  ```
-    
-  Ezután cserélje le a `Main` metódust a `Program` osztályban a következő kódra, behelyettesítve az eseményközpont nevét, a korábban mentett névtérszintű kapcsolati sztringet, valamint a tárfiókot és a kulcsot, amelyeket a korábbi szakaszokban lemásolt. 
-    
-  ```csharp
-  static void Main(string[] args)
-  {
-    string eventHubConnectionString = "{Event Hubs namespace connection string}";
-    string eventHubName = "{Event Hub name}";
-    string storageAccountName = "{storage account name}";
-    string storageAccountKey = "{storage account key}";
-    string storageConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}", storageAccountName, storageAccountKey);
-    
-    string eventProcessorHostName = Guid.NewGuid().ToString();
-    EventProcessorHost eventProcessorHost = new EventProcessorHost(eventProcessorHostName, eventHubName, EventHubConsumerGroup.DefaultGroupName, eventHubConnectionString, storageConnectionString);
-    Console.WriteLine("Registering EventProcessor...");
-    var options = new EventProcessorOptions();
-    options.ExceptionReceived += (sender, e) => { Console.WriteLine(e.Exception); };
-    eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>(options).Wait();
-    
-    Console.WriteLine("Receiving. Press enter key to stop worker.");
-    Console.ReadLine();
-    eventProcessorHost.UnregisterEventProcessorAsync().Wait();
-  }
-  ```
+      Az **EventProcessorHost** ezt az osztályt hívja meg az eseményközpontból fogadott események feldolgozásához. A `SimpleEventProcessor` osztály stoppert használ az ellenőrzőpont-metódus **EventProcessorHost** környezetben való rendszeres időközönkénti hívásához. Ez az eljárás biztosítja, hogy ha a fogadó újraindul, ne vesszen el öt percnél több feldolgozási munka.
 
-7. Futtassa a programot, és ellenőrizze, hogy nincsenek-e hibák.
+## <a name="update-the-main-method-to-use-simpleeventprocessor"></a>Frissítés a Main metódushoz SimpleEventProcessor használata
+
+1. A **Program** osztályban adja hozzá a következő `using` utasítást a fájl elejéhez:
+    
+      ```csharp
+      using Microsoft.ServiceBus.Messaging;
+      ```
+    
+2. Cserélje le a `Main` metódus az a `Program` osztályt a következő kódra, és cserélje le az eseményközpont neve és a korábban mentett névtérszintű kapcsolati karakterlánccal és a storage-fiók és a korábbi szakaszokban ismertetett másolt kulcsot. 
+    
+      ```csharp
+      static void Main(string[] args)
+      {
+        string eventHubConnectionString = "{Event Hubs namespace connection string}";
+        string eventHubName = "{Event Hub name}";
+        string storageAccountName = "{storage account name}";
+        string storageAccountKey = "{storage account key}";
+        string storageConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}", storageAccountName, storageAccountKey);
+        
+        string eventProcessorHostName = Guid.NewGuid().ToString();
+        EventProcessorHost eventProcessorHost = new EventProcessorHost(eventProcessorHostName, eventHubName, EventHubConsumerGroup.DefaultGroupName, eventHubConnectionString, storageConnectionString);
+        Console.WriteLine("Registering EventProcessor...");
+        var options = new EventProcessorOptions();
+        options.ExceptionReceived += (sender, e) => { Console.WriteLine(e.Exception); };
+        eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>(options).Wait();
+        
+        Console.WriteLine("Receiving. Press enter key to stop worker.");
+        Console.ReadLine();
+        eventProcessorHost.UnregisterEventProcessorAsync().Wait();
+      }
+      ```
+    
+3. Futtassa a programot, és ellenőrizze, hogy nincsenek-e hibák.
   
 Gratulálunk! Sikeresen fogadott üzeneteket egy eseményközpontból az Event Processor Host használatával.
 
 
 > [!NOTE]
-> Ez az oktatóprogram az [EventProcessorHost][EventProcessorHost] egyetlen példányát használja. Átviteli sebesség növelése érdekében javasoljuk, hogy több példányának futtatása [EventProcessorHost][EventProcessorHost], ahogyan az a [horizontálisan felskálázott Eseményfeldolgozási](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3) minta. Ilyen esetekben a különböző példányok automatikusan koordinálnak egymással a fogadott események terhelésének kiegyenlítéséhez. Ha több fogadóval szeretné feldolgoztatni az *összes* eseményt, a **ConsumerGroup** szolgáltatást kell használnia. Ha több gépről fogad eseményeket, célszerű lehet az azokat futtató gépeken (vagy szerepkörökön) alapuló nevet adni az [EventProcessorHost][EventProcessorHost]-példányoknak. További tudnivalók ezekről a témákról az [Event Hubs – áttekintés][Event Hubs overview] és az [Event Hubs programozási útmutatója][Event Hubs Programming Guide] témakörben olvashatók.
-> 
-> 
+> Ez az oktatóprogram az [EventProcessorHost](event-hubs-event-processor-host.md) egyetlen példányát használja. Átviteli sebesség növelése érdekében azt javasoljuk, hogy több példányának futtatása [EventProcessorHost](event-hubs-event-processor-host.md), ahogyan az a [horizontálisan felskálázott Eseményfeldolgozási](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3) minta. Ezekben az esetekben a több példányok automatikusan koordinálnak egymással terheléselosztás a fogadott események. 
 
 ## <a name="next-steps"></a>További lépések
-
-Létrehozott egy működő alkalmazást, amely létrehoz egy Event Hubot, valamint adatokat fogad és küld. További információkért kövesse az alábbi hivatkozásokat:
-
-* [Event Processor Host – áttekintés][Event Processor Host]
-* [Event Hubs – áttekintés][Event Hubs overview]
-* [Event Hubs – gyakori kérdések](event-hubs-faq.md)
+Ebben a rövid útmutatóban létrehozott .NET-keretrendszer alkalmazás, amely a fogadott üzeneteket egy eseményközpontból. Ismerje meg, hogyan küldhet eseményeket egy eseményközpontba, .NET-keretrendszer használatával, lásd: [események küldése az event hubs – .NET-keretrendszer](event-hubs-dotnet-framework-getstarted-send.md).
 
 <!-- Images. -->
 [19]: ./media/event-hubs-csharp-ephcs-getstarted/create-eh-proj1.png

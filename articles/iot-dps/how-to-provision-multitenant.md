@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 54804867cfaf38965b3dbf5ceb51e08a731d4dd8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 73ff58148ac68b7aeb782b77385f9f971e02edb5
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966545"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457391"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Hogyan helyezhet üzembe több-bérlős módhoz 
 
@@ -220,7 +220,7 @@ Ebben a szakaszban az egyes virtuális Gépeken az Azure IoT C SDK fogja klónoz
 1. Mindkét virtuális gép futtassa az alábbi parancsot, amely létrehozza egy adott a fejlesztési fejlesztésiügyfél-platformhoz SDK verziója. 
 
     ```bash
-    cmake -Duse_prov_client:BOOL=ON ..
+    cmake -Dhsm_type_symm_key:BOOL=ON ..
     ```
 
     A sikeres létrehozást követően a kimenet utolsó sorai a következőhöz hasonlóan néznek majd ki:
@@ -334,7 +334,7 @@ A mintakód a kiépítési kérést küld a Device Provisioning Service-példán
      vi ~/azure-iot-sdk-c/provisioning_client/adapters/hsm_client_key.c
     ```
 
-1. Keresse meg a nyilatkozat az `REGISTRATION_NAME` és `SYMMETRIC_KEY_VALUE` konstansok. A következő módosításokat a fájlok mindkét regionális virtuális gépeken, és mentse a fájlokat.
+1. Keresse meg a `REGISTRATION_NAME` és a `SYMMETRIC_KEY_VALUE` konstansok deklarációját. A következő módosításokat a fájlok mindkét regionális virtuális gépeken, és mentse a fájlokat.
 
     Frissítse az értéket, a `REGISTRATION_NAME` az állandó a **egyedi regisztrációs Azonosítót az eszköz**.
     

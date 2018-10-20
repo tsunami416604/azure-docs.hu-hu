@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/26/2018
+ms.date: 10/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 82a48c902b72b5aca546c45032a13e831533f9ee
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: b6386f4a23a0ca6d0134f8c4e298a3f7100cc1d6
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393468"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466953"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Azure-erőforrások rendszerezése címkékkel
 
@@ -266,11 +266,9 @@ Az Azure portal és a PowerShell is használja a [Resource Manager REST API](htt
 
 Címkék használatával az elszámolási adatok. Például ha különböző szervezetek több virtuális gépet futtat, használja a címkék használata a költséghely szerint. Címkék használatával költségek kategorizálása futtatókörnyezet, például a számlázási használata az éles környezetben futó virtuális gépek szerint.
 
-Információ a címkék használatával lekérheti a [Azure erőforrás-használat és RateCard API-k](../billing/billing-usage-rate-card-overview.md) vagy a használati vesszővel elválasztott értékeket (CSV) fájl. A használati fájl letöltése a [Azure fiókportálon](https://account.windowsazure.com/) vagy [a nagyvállalati szerződések portáljának](https://ea.azure.com). Számlázási adatok való programozott hozzáféréssel kapcsolatos további információkért lásd: [betekintést nyerhet a Microsoft Azure erőforrás-használat](../billing/billing-usage-rate-card-overview.md). REST API-műveleteket, lásd: [Azure Billing – REST API-referencia](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c).
+Információ a címkék használatával lekérheti a [Azure erőforrás-használat és RateCard API-k](../billing/billing-usage-rate-card-overview.md) vagy a használati vesszővel elválasztott értékeket (CSV) fájl. A használati fájl letöltése a [Azure Account Center](https://account.azure.com/Subscriptions) vagy az Azure Portalon. További információkért lásd: [letöltéséhez vagy az Azure számlázási és napi használati adatok megtekintéséhez](../billing/billing-download-azure-invoice-daily-usage-date.md). Válassza a használatot részletező fájl az Azure Account Center letöltésekor **2-es verzió**. A címkék a számlázási támogató szolgáltatások, a címkék jelennek meg a **címkék** oszlop.
 
-Ha Ön a használati adatok letöltése CSV-szolgáltatásokhoz, amelyek támogatják a címkék a számlázási, a címkék megjelennek a **címkék** oszlop. További információkért lásd: [Microsoft Azure-hoz kapcsolódó számlák magyarázata](../billing/billing-understand-your-bill.md).
-
-![Tekintse meg a számlázási címkék](./media/resource-group-using-tags/billing_csv.png)
+REST API-műveleteket, lásd: [Azure Billing – REST API-referencia](/rest/api/billing/).
 
 ## <a name="next-steps"></a>További lépések
 

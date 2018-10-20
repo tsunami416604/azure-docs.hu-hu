@@ -1,21 +1,22 @@
 ---
-title: Beszédszolgáltatás REST API-k
-description: A beszédfelismerési szolgáltatás REST API-hivatkozás.
+title: Beszédfelismerési szolgáltatás REST API-k
+description: A beszédfelismerési szolgáltatás REST API-k referenciája.
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: erhopf
-ms.openlocfilehash: f8b27277cbf3ea6d53a8f02e550beae67fc50741
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 0cc278cdb59bfbb53578eae0f51c9b54204d7d12
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167629"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466273"
 ---
-# <a name="speech-service-rest-apis"></a>Beszédszolgáltatás REST API-k
+# <a name="speech-service-rest-apis"></a>Beszédfelismerési szolgáltatás REST API-k
 
 A REST API-k az Azure Cognitive Services beszéd szolgáltatás hasonlóak az API-k által biztosított a [Bing Speech API](https://docs.microsoft.com/azure/cognitive-services/Speech). A végpontok a végpontokat, a Bing Speech-szolgáltatás által használt eltérnek. Regionális végpontok érhetők el, és a egy előfizetési kulcsot, amely megfelel a végpontot használja kell használnia.
 
