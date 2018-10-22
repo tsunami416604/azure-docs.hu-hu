@@ -11,6 +11,21 @@ items:
     href: kubernetes-walkthrough.md
   - name: AKS-fürt létrehozása – portál
     href: kubernetes-walkthrough-portal.md
+  - name: Alkalmazások fejlesztése
+    items:
+    - name: A Java használata (VS Code és CLI)
+      href: ../dev-spaces/quickstart-java.md
+      maintainContext: true
+    - name: A .NET Core használata (VS Code és CLI)
+      href: ../dev-spaces/quickstart-netcore.md
+      maintainContext: true
+    - name: A .NET Core használata (Visual Studio 2017)
+      href: ../dev-spaces/quickstart-netcore-visualstudio.md
+      maintainContext: true
+    - name: A Node.js használata (VS Code és CLI)
+      href: ../dev-spaces/quickstart-nodejs.md
+      maintainContext: true
+    expanded: true
   expanded: true
 - name: Oktatóanyagok
   items:
@@ -121,20 +136,53 @@ items:
       href: kubelet-logs.md
   - name: Alkalmazások fejlesztése és futtatása
     items:
-    - name: Alkalmazások futtatása a Helm használatával
-      href: kubernetes-helm.md
     - name: Fejlesztés a Dev Spaces használatával
       href: ../dev-spaces/azure-dev-spaces.md
+      items:
+      - name: Java (VS Code és CLI)
+        items:
+        - name: 1 – Első lépések
+          href: ../dev-spaces/get-started-java.md
+          maintainContext: true
+        - name: 2 – Csoportos fejlesztés
+          href: ../dev-spaces/team-development-java.md
+          maintainContext: true
+      - name: .NET Core (VS Code és parancssori felület)
+        items:
+        - name: 1 – Első lépések
+          href: ../dev-spaces/get-started-netcore.md
+          maintainContext: true
+        - name: 2 – Csoportos fejlesztés
+          href: ../dev-spaces/team-development-netcore.md
+          maintainContext: true
+      - name: .NET Core (Visual Studio 2017)
+        items:
+        - name: 1 – Első lépések
+          href: ../dev-spaces/get-started-netcore-visualstudio.md
+          maintainContext: true
+        - name: 2 – Csoportos fejlesztés
+          href: ../dev-spaces/team-development-netcore-visualstudio.md
+          maintainContext: true
+      - name: Node.js (VS Code és parancssori felület)
+        items:
+        - name: 1 – Első lépések
+          href: ../dev-spaces/get-started-nodejs.md
+          maintainContext: true
+        - name: 2 – Csoportos fejlesztés
+          href: ../dev-spaces/team-development-nodejs.md
+          maintainContext: true
       maintainContext: true
+    - name: Alkalmazások futtatása a Helm használatával
+      href: kubernetes-helm.md
     - name: Alkalmazások fejlesztése a Draft használatával
       href: kubernetes-draft.md
-    - name: Open Service Broker for Azure
+    - name: Az Open Service Broker for Azure használata
       href: integrate-azure.md
     - name: Az OpenFaaS használata
       href: openfaas.md
     - name: Spark-feladatok futtatása
       href: spark-job.md
-    - name: GPU-k használata
+    - name: A GPU-k használata
       href: gpu-cluster.md
   - name: DevOps
     items:
@@ -194,9 +242,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: GYIK
     href: faq.md
-ms.openlocfilehash: 5bce64990b8fbf9ad6bd5af01631544189f35a93
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: e2535df133722082f609b2229820fce673bddecc
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376294"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457019"
