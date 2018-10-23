@@ -4,23 +4,21 @@ description: Azure Resource Manager-sablonminták az App Service Web Apps szolg�
 services: app-service
 documentationcenter: app-service
 author: tfitzmac
-manager: timlt
-editor: ggailey777
 tags: azure-service-management
 ms.service: app-service
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: app-service
-ms.date: 02/26/2018
+ms.date: 10/15/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 155b47fc4c664701ec0f21bdc5ae34f3d7f666ff
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 627480fab7a28794a215642fda8e57280f19f19b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29933068"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345067"
 ---
 # <a name="azure-resource-manager-templates-for-web-apps"></a>Azure Resource Manager-sablonok a Web Appshez
 
@@ -29,22 +27,24 @@ A következő táblázat az Azure App Service Web Apps szolgáltatásának Azure
 | | |
 |-|-|
 |**Webalkalmazás üzembe helyezése**||
+| [App Service-csomag és alapszintű Linux-webalkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-basic-linux) | Egy Linuxhoz konfigurált Azure-webalkalmazást helyez üzembe. |
+| [App Service-csomag és alapszintű Windows-webalkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-basic-windows) | Egy Windowshoz konfigurált Azure-webalkalmazást helyez üzembe. |
 | [Egy GitHub-adattárhoz kapcsolódó webalkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-github-deploy)| Üzembe helyez egy az Azure-webalkalmazást, amely a GitHubról kér le kódokat. |
 | [Egyéni üzembehelyezési pontokat használó webalkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-custom-deployment-slots)| Üzembe helyez egy Azure-webalkalmazást egyéni üzembehelyezési pontok/környezetek használatával. |
 |**Webalkalmazás konfigurálása**||
 | [Webalkalmazás-tanúsítvány a Key Vaultból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)| Üzembe helyez egy Azure-webalkalmazáshoz tartozó tanúsítványt az Azure Key Vault titkos kulcsából, és felhasználja egy SSL-kötés létrehozásához. |
 | [Egyéni tartományt használó webalkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain)| Üzembe helyez egy Azure-webalkalmazást, amely egyéni gazdagépnévvel rendelkezik. |
 | [Egyéni tartományt és SSL-t használó webalkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl)| Üzembe helyez egy Azure-webalkalmazást, amely egyéni gazdagépnévvel rendelkezik, és lekér egy webalkalmazás-tanúsítványt a Key Vaultból egy SSL-kötés létrehozásához. |
-| [Webalkalmazás GoLang bővítménnyel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-with-golang)| Üzembe helyez egy Azure-webalkalmazást a GoLang webhelybővítménnyel. Ezután futtathatja a GoLangben fejlesztett webalkalmazásokat az Azure-ban. |
+| [Webalkalmazás GoLang bővítménnyel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-with-golang)| Üzembe helyez egy Azure-webalkalmazást a Golang webhelybővítménnyel. Ezután futtathatja a Golangben fejlesztett webalkalmazásokat az Azure-ban. |
 | [Webalkalmazás Java 8- és Tomcat 8-támogatással](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-java-tomcat)| Java 8- és Tomcat 8-támogatással rendelkező Azure webalkalmazást helyez üzembe. Ezután Java-alkalmazásokat futtathat az Azure-ban. |
-|**Linux-webalkalmazás**||
+|**Linux-webalkalmazás csatlakoztatott erőforrásokkal**||
 | [Webalkalmazás Linux rendszeren és MySQL](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-linux-managed-mysql) | Üzembe helyez egy Azure-webalkalmazást Linux rendszeren az Azure Database for MySQL-lel. |
 | [Webalkalmazás Linux rendszeren és PostgreSQL](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-linux-managed-postgresql) | Üzembe helyez egy Azure-webalkalmazást Linux rendszeren az Azure Database for PostgreSQL-lel. |
 |**Webalkalmazás csatlakoztatott erőforrásokkal**||
 | [Webalkalmazás és MySQL](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-managed-mysql)| Üzembe helyez egy Azure-webalkalmazást Windows rendszeren az Azure Database for MySQL-lel. |
 | [Webalkalmazás és PostgreSQL](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-managed-postgresql)| Üzembe helyez egy Azure-webalkalmazást Windows rendszeren az Azure Database for PostgreSQL-lel. |
 | [Webalkalmazás SQL Database-adatbázissal](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database)| Üzembe helyez egy Azure-webalkalmazást és egy alapszintű szolgáltatási szintű SQL Database-adatbázist. |
-| [Webalkalmazás Blob Storage-kapcsolattal](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-blob-connection)| Üzembe helyez egy Azure-webalkalmazást egy Blob Storage-kapcsolati karakterlánccal. Ezután használhatja a Blob-tárolót a webalkalmazásból. |
+| [Webalkalmazás Blob Storage-kapcsolattal](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-blob-connection)| Üzembe helyez egy Azure-webalkalmazást egy Blob Storage-kapcsolati sztringgel. Ezután használhatja a Blob-tárolót a webalkalmazásból. |
 | [Webalkalmazás Redis Cache-gyorsítótárral](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-redis-cache)| Üzembe helyez egy Azure-webalkalmazást, amely rendelkezik egy Redis Cache-gyorsítótárral. |
 |**App Service-környezet a PowerApps alkalmazáshoz**||
 | [App Service Environment v2-környezet létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-create) | Létrehoz egy App Service Environment v2-környezetet a virtuális hálózaton. |

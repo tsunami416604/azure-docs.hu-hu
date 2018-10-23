@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: d99b76faf618439e51735d5f1096fd4f1cfd2364
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 9b8293196114f55f633e67cf19cd0c9e60f6398e
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038289"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309460"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Oktatóanyag: Az Azure IoT Central operátori nézeteinek testreszabása
 
@@ -56,7 +56,7 @@ Szerkesztőként meghatározhatja, milyen információk jelenjenek meg egy eszk�
 
     ![Eszközsablon irányítópultja oldal](media/tutorial-customize-operator/dashboard.png)
 
-4. KPI-csempe irányítópulthoz adásához válassza a **KPI** lehetőséget:
+4. Ha egy fő teljesítménymutatói (KPI-) csempét hozzá szeretne adni az irányítópulthoz, válassza a **KPI** lehetőséget:
 
     ![KPI hozzáadása](media/tutorial-customize-operator/addkpi.png)
 
@@ -81,7 +81,7 @@ Szerkesztőként meghatározhatja, milyen információk jelenjenek meg egy eszk�
 
 ## <a name="configure-your-settings-layout"></a>A beállítások elrendezésének konfigurálása
 
-Szerkesztőként az eszközbeállítások operátori nézetét is konfigurálhatja. Az operátorok az eszközbeállítások oldalán konfigurálják az eszközöket. Egy operátor például a beállítások oldalán állítja be a hűtőszekrény célhőmérsékletét.
+Szerkesztőként az eszközbeállítások operátori nézetét is konfigurálhatja. Az operátorok az eszközbeállítások oldalán konfigurálják az eszközöket. Egy operátor például a beállítások oldalán állítja be a csatlakoztatott légkondíció számára a célhőmérsékletet.
 
 1. A csatlakoztatott légkondicionáló-beállítások elrendezésének szerkesztéséhez válassza a **Beállítások**, majd a **Sablon szerkesztése** lehetőséget:
 
@@ -117,7 +117,7 @@ Az irányítópult és a beállítások mellett az eszköztulajdonságok operát
 
 **Sablonszerkesztési** módban testreszabhatja az operátor irányítópult, a beállítások és a tulajdonságok oldalát. Ha nem **Sablonszerkesztési** módban van, operátorként tekintheti meg az alkalmazást.
 
-1. Ha operátorként szeretné megtekinteni a csatlakoztatott légkondicionáló eszközt, a **Kész** lehetőségre kattintva meg kell szakítania a sablon szerkesztését. Ezzel visszatér az eszköz operátori nézetére.
+1. Ha operátorként szeretné megtekinteni a csatlakoztatott légkondicionáló eszközt, kattintson a **Kész** gombra a sablon szerkesztésének leállításához, és térjen vissza az eszköz operátori nézetéhez.
 
 2. Az eszköz helyének frissítéséhez szerkessze a helycsempén lévő értéket, és válassza a **Mentés** lehetőséget:
 

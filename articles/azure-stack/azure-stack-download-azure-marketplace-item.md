@@ -12,21 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/09/2018
+ms.date: 10/19/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: cf6bc980f6fd821056a987d0c830863bd15ba779
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: b5c2c51429e37eea2473ae5966b1f41295875cb6
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902008"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638171"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Az Azure marketplace-elemek letöltése az Azure Stackhez
 
 *A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-A felhő üzemeltetője elemek letöltése az Azure Marketplace-ről, és elérhetővé teheti őket az Azure Stackben. Az elemek is vannak az Azure Marketplace-elemek, amelyek előzetesen teszteltük, és támogatja az Azure Stack használatának rendszerezett listáját. További elemek gyakran kerülnek a listán, tehát továbbra is látogasson vissza új tartalmat. 
+Felhő-felelősként elemek letöltése az Azure Marketplace-ről, és elérhetővé teheti őket az Azure Stackben. Az elemek is vannak az Azure Marketplace-elemek, amelyek előzetesen teszteltük, és támogatja az Azure Stack használatának rendszerezett listáját. További elemek gyakran kerülnek a listán, tehát továbbra is látogasson vissza új tartalmat. 
 
 Az Azure piactéren való kapcsolódáshoz két forgatókönyv közül választhat: 
 
@@ -49,20 +49,20 @@ Az Azure Stack üzemelő példányához kell internetkapcsolattal rendelkezik, �
 
     Rendelkezésre álló területet, áttekintheti a **régiók kezelése** válassza ki a régiót, ismerje meg, és folytassa a kívánt **erőforrás-szolgáltatók** > **tárolási**.
 
-    ![Tekintse át a tárolóhely](media/azure-stack-download-azure-marketplace-item/storage.png)  
+    [ ![Tekintse át a tárolóhely](media/azure-stack-download-azure-marketplace-item/storagesm.png "tekintse át a tárolóhely") ](media/azure-stack-download-azure-marketplace-item/storage.png#lightbox)
 
     
 3. Nyissa meg az Azure Stack piactéren, és csatlakozzon az Azure-bA. Ehhez válassza ki a **Marketplace felügyeleti**, majd válassza ki **hozzáadása az Azure-ból**.
 
-    ![Adja hozzá az Azure-ból](media/azure-stack-download-azure-marketplace-item/marketplace.png)
+    [ ![Adja hozzá az Azure-ból](media/azure-stack-download-azure-marketplace-item/marketplacesm.png "hozzáadása az Azure-ból") ](media/azure-stack-download-azure-marketplace-item/marketplace.png#lightbox)
 
     A portálon az Azure Marketplace-ről letölthető elemek listáját jeleníti meg. Megtekintheti azok leírását és a további információt, többek között a letöltési mérete az egyes elemre kattinthat. 
 
-    ![Marketplace-en listája](media/azure-stack-download-azure-marketplace-item/image03.png)
+    [ ![Marketplace-en lista](media/azure-stack-download-azure-marketplace-item/image03sm.png "Marketplace listája") ](media/azure-stack-download-azure-marketplace-item/image03.png#lightbox)
 
 4. Válassza ki az elemet, és válassza **letöltése**. Letöltési ideje eltérőek lehetnek.
 
-    ![Töltse le az üzenet](media/azure-stack-download-azure-marketplace-item/image04.png)
+    [ ![Töltse le az üzenet](media/azure-stack-download-azure-marketplace-item/image04.png "letöltési üzenet") ](media/azure-stack-download-azure-marketplace-item/image04.png#lightbox)
 
     A letöltés befejezése után telepítheti az új Piactéri elem az Azure Stack-operátorokról vagy a felhasználó.
 
@@ -128,24 +128,24 @@ Ebben a forgatókönyvben két részből áll:
 
    Sync-AzSOfflineMarketplaceItem 
       -Destination "Destination folder path in quotes" `
-      -AzureTenantID $AzureContext.Tenant.TenantId `
+      -AzureTenantID $AzureContext.Tenant.TenantId ` 
       -AzureSubscriptionId $AzureContext.Subscription.Id 
    ```
 
-6. Amikor az eszköz fut, az Azure-fiók hitelesítő adatainak megadását kéri. Jelentkezzen be az Azure-fiók, amely regisztrálja az Azure Stack segítségével. Miután a bejelentkezés sikeres volt, megtekintheti az elérhető marketplace-elemek listáját az alábbi képen egy képernyő.  
+6. Amikor az eszköz fut, a rendelkezésre álló marketplace-elemek listáját a következő képen hasonló képernyő kell megjelennie:
 
-   ![Az Azure Marketplace-elemek előugró ablak](media/azure-stack-download-azure-marketplace-item/image05.png)
+   [ ![Az Azure Marketplace-elemek előugró](media/azure-stack-download-azure-marketplace-item/image05.png "Azure Marketplace-elemek") ](media/azure-stack-download-azure-marketplace-item/image05.png#lightbox)
 
-7. Válassza ki, hogy töltse le, és jegyezze fel a kívánt elemet a *verzió*. (Tartsa a *Ctrl* billentyűvel pedig kijelölheti több lemezképet.) Fog tudni hivatkozni az *verzió* a következő eljárással elem importálásakor. 
+7. Válassza ki, hogy töltse le, és jegyezze fel a kívánt elemet a *verzió*. Tartsa a *Ctrl* billentyűvel pedig kijelölheti több lemezképet. Hivatkozik az *verzió* a következő eljárással elem importálásakor. 
    
    Rendszerképek listájának használatával emellett szűrheti a **adja meg a feltételeket** lehetőséget.
 
 8. Válassza ki **OK**, és tekintse át és fogadja el a jogi feltételeket. 
 
-9. Az, hogy a letöltési idő attól függ, hogy az elem méretét. A letöltés befejezése után a cikk érhető el, hogy a parancsfájl megadott mappában. A letöltés tartalmaz egy VHD-fájl (virtuális gépek esetén) vagy egy. ZIP-fájlt (a virtuális gépi bővítmények). Az egy gyűjteménycsomag is tartalmaz a *.azpkg* formátumban. (A *.azpkg* a csomag egy *.zip* fájl.)
- 
+9. Az, hogy a letöltési idő attól függ, hogy az elem méretét. A letöltés befejezése után a cikk érhető el, hogy a parancsfájl megadott mappában. A letöltés tartalmaz egy VHD-fájl (virtuális gépek esetén) vagy egy .zip-fájlt (a virtuális gépi bővítmények). Emellett tartalmazhat egy gyűjteménycsomag, az a *.azpkg* formátum, amely egyszerűen egy .zip fájl.
 
 ### <a name="import-the-download-and-publish-to-azure-stack-marketplace"></a>A letöltés importálása és közzététele az Azure Stack piactéren
+
 1. A virtuálisgép-lemezképek vagy megoldássablonokkal, amely rendelkezik a fájlok [korábban letöltött](#use-the-marketplace-syndication-tool-to-download-marketplace-items) az Azure Stack környezettel való helyben elérhetővé kell tenni.  
 
 2. A felügyeleti portál használatával a Piactéri elem csomag (.azpkg fájlt) és a virtuális merevlemez (.vhd fájl) Rendszerkép feltöltése az Azure Stack Blob storage. A csomag feltöltése és tartalmazó fájlokat elérhetővé válnak az Azure Stackhez az elem később az Azure Stack piactéren való közzétételéhez.
@@ -154,16 +154,15 @@ Ebben a forgatókönyvben két részből áll:
    1. Az Azure Stack felügyeleti portálon, lépjen a **minden szolgáltatás** , majd a a **adatok + tárolás** kategória, jelölje be **tárfiókok**.  
    
    2. Válassza ki a tárfiókot az előfizetéséből, majd a **BLOB SERVICE**válassza **tárolók**.  
-      ![BLOB szolgáltatás](media/azure-stack-download-azure-marketplace-item/blob-service.png)  
+      [ ![BLOB szolgáltatás](media/azure-stack-download-azure-marketplace-item/blob-service.png "Blob szolgáltatás") ](media/azure-stack-download-azure-marketplace-item/blob-service.png#lightbox)  
    
    3. Válassza ki a tárolót használja, és válassza ki a kívánt **feltöltése** megnyitásához a **blob feltöltése** ablaktáblán.  
-      ![Tároló](media/azure-stack-download-azure-marketplace-item/container.png)  
+      [ ![Tároló](media/azure-stack-download-azure-marketplace-item/container.png "tároló") ](media/azure-stack-download-azure-marketplace-item/container.png#lightbox)  
    
-   4. A blob feltöltése panelen keresse meg a csomag és a lemez fájlokat betölteni a storage-ba, és jelölje ki **feltöltése**.  
-      ![upload](media/azure-stack-download-azure-marketplace-item/upload.png)  
+   4. A blob feltöltése panelen keresse meg a csomag és a lemez fájlokat betölteni a storage-ba, és jelölje ki **feltöltése**: [ ![feltöltése](media/azure-stack-download-azure-marketplace-item/uploadsm.png "feltöltése") ](media/azure-stack-download-azure-marketplace-item/upload.png#lightbox)  
 
    5. Feltöltött fájlok a tároló panelen jelennek meg. Válasszon ki egy fájlt, és másolja az URL-címet a **Blob tulajdonságai** ablaktáblán. Amikor importálja a Piactéri elem az Azure Stack a következő lépésben fogja használni az URL-címet.  Az alábbi ábrán a tároló-e *test-blobtároló* , és a fájl *Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg*.  A fájl URL-cím *https://testblobstorage1.blob.local.azurestack.external/blob-test-storage/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg*.  
-      ![BLOB tulajdonságai](media/azure-stack-download-azure-marketplace-item/blob-storage.png)  
+      [ ![BLOB tulajdonságai](media/azure-stack-download-azure-marketplace-item/blob-storagesm.png "Blob tulajdonságai") ](media/azure-stack-download-azure-marketplace-item/blob-storage.png#lightbox)  
 
 3. Importálja a VHD-lemezképet az Azure Stack használatával a **Add-AzsPlatformimage** parancsmagot. Ha ezt a parancsmagot használja, cserélje le a *közzétevő*, *ajánlat*, és más paraméterértékek importált kép értékekkel. 
 
@@ -199,16 +198,14 @@ Ebben a forgatókönyvben két részből áll:
      –Verbose
     ```
 5. A katalógus egy elemét a közzététel után már használhatja. Ellenőrizze, hogy a gyűjteményelem közzé van téve, lépjen a **minden szolgáltatás**, majd a a **általános** kategória, jelölje be **Marketplace**.  Ha a letöltés megoldássablon, mindenképpen adja hozzá bármelyik függő VHD-lemezképet a megoldássablon.  
-  ![Nézet Marketplace-en](media/azure-stack-download-azure-marketplace-item/view-marketplace.png)  
+  [ ![Nézet marketplace](media/azure-stack-download-azure-marketplace-item/view-marketplacesm.png "nézet Marketplace-en") ](media/azure-stack-download-azure-marketplace-item/view-marketplace.png#lightbox)  
 
-> [!NOTE]
-> Az Azure Stack PowerShell 1.3.0 kiadása most már hozzáadhat virtuális gépi bővítmények.
-
-Példa:
+Az Azure Stack PowerShell 1.3.0 kiadása most már hozzáadhat virtuális gépi bővítmények. Példa:
 
 ````PowerShell
 Add-AzsVMExtension -Publisher "Microsoft" -Type "MicroExtension" -Version "0.1.0" -ComputeRole "IaaS" -SourceBlob "https://github.com/Microsoft/PowerShell-DSC-for-Linux/archive/v1.1.1-294.zip" -SupportMultipleExtensions -VmOsType "Linux"
 ````
 
 ## <a name="next-steps"></a>További lépések
+
 [Hozzon létre, és a Piactéri elem közzététele](azure-stack-create-and-publish-marketplace-item.md)

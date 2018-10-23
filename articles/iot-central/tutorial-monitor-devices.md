@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 9a3b7383651d679b079818fb32bd8f98160d0a4c
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 91a4fceaf5a3e573964919d365a67519b26278ca
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235481"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310624"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Oktatóanyag: Az eszközök monitorozása az Azure IoT Central használatával
 
@@ -61,7 +61,7 @@ Az irányítópulton lévő diagram az eszköz hőmérsékletét ábrázolja. A 
 
 Az eszköz célhőmérsékletének módosításához használja a **Beállítások** lapot:
 
-1. Válassza a **Beállítások** lehetőséget. Változtassa a **Megadott hőmérsékletet** 100 értékre. Válassza a **Frissítés** lehetőséget, hogy az új célhőmérsékletet az eszközre küldje. Amikor az eszköz elfogadja a beállítások módosítását, a beállítás értéke **szinkronizálva** állapotra változik:
+1. Válassza a **Beállítások** lehetőséget. Változtassa a **Megadott hőmérsékletet** 75-ös értékre. Válassza a **Frissítés** lehetőséget, hogy az új célhőmérsékletet az eszközre küldje. Amikor az eszköz elfogadja a beállítások módosítását, a beállítás értéke **szinkronizálva** állapotra változik:
 
     ![Beállítások frissítése](media/tutorial-monitor-devices/change_settings.png)
 

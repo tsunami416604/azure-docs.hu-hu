@@ -11,15 +11,15 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/20/2018
+ms.date: 10/12/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: a785a18ac4aec3006397b6d681c476f8acf982a7
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 6377a54cc862bb5f62726c3ce91a41cc6eb0763d
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205673"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311388"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-governance-with-azure-powershell"></a>Oktatóanyag: Windowsos virtuális gépek vezérlése az Azure PowerShell-lel
 
@@ -27,7 +27,7 @@ ms.locfileid: "39205673"
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-A cikkben szereplő példák használatához az Azure PowerShell 6.0-s vagy újabb verziója szükséges. Ha helyileg futtatja a PowerShellt és 6.0-snál régebbi verzióval rendelkezik, [frissítsen egy újabb verzióra](/powershell/azure/install-azurerm-ps). Emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral. A helyi telepítések estén [az Azure AD PowerShell-modult is le kell töltenie](https://www.powershellgallery.com/packages/AzureAD/), hogy létrehozhasson egy új Azure Active Directory-csoportot.
+A cikkben szereplő példák használatához az Azure PowerShell 6.0-s vagy újabb verziója szükséges. Ha helyileg futtatja a PowerShellt, és 6.0-snál régebbi verzióval rendelkezik, [frissítsen egy újabb verzióra](/powershell/azure/install-azurerm-ps). Emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral. A helyi telepítések estén [az Azure AD PowerShell-modult is le kell töltenie](https://www.powershellgallery.com/packages/AzureAD/), hogy létrehozhasson egy új Azure Active Directory-csoportot.
 
 ## <a name="understand-scope"></a>A hatókör megismerése
 
@@ -55,24 +55,19 @@ A virtuálisgép-megoldások kezeléséhez három erőforrás-specifikus szerepk
 * [Hálózati közreműködő](../../role-based-access-control/built-in-roles.md#network-contributor)
 * [Tárfiók-közreműködő](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Ahelyett, hogy szerepköröket rendelne az egyéni felhasználókhoz, gyakran célszerűbb [létrehozni egy Azure Active Directory-csoportot](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) azoknak a felhasználóknak, akiknek hasonló műveleteket kell elvégezniük. Ezután rendelje hozzá a csoportot a megfelelő szerepkörhöz. Ebben a cikkben az egyszerűség kedvéért egy tagok nélküli Azure Active Directory-csoportot fog létrehozni. A csoportot így is hozzárendelheti egy szerepkörhöz, hogy legyen hatóköre. 
+Ahelyett, hogy szerepköröket rendelne az egyéni felhasználókhoz, gyakran célszerűbb egy azokat a felhasználókat tartalmazó Azure Active Directory-csoportot használni, akiknek hasonló műveleteket kell elvégezniük. Ezután rendelje hozzá a csoportot a megfelelő szerepkörhöz. Ehhez a cikkhez használhat egy meglévő csoportot a virtuális gép kezeléséhez, vagy a portálon [létrehozhat egy Azure Active Directory-csoportot](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-Az alábbi példa egy olyan Azure Active Directory-csoportot hoz létre, amelynek a neve *VMDemoContributors*, a levelezési beceneve pedig *vmDemoGroup*. A levelezési becenév a csoport aliasaként szolgál.
-
-```azurepowershell-interactive
-$adgroup = New-AzureADGroup -DisplayName VMDemoContributors `
-  -MailNickName vmDemoGroup `
-  -MailEnabled $false `
-  -SecurityEnabled $true
-```
-
-Eltart néhány pillanatig, amíg a parancssor visszatér a csoporthoz, miután propagálja a módosításokat az Azure Active Directoryban. 20-30 másodpercnyi várakozás után a [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) paranccsal rendelje hozzá az új Azure Active Directory-csoportot az erőforráscsoport Virtuális gépek közreműködője szerepköréhez.  Ha a propagálás előtt futtatja a következő parancsot, a következő hibaüzenetet kapja: **A <guid> rendszerbiztonsági tag nem található a címtárban**. Próbálja meg ismét futtatni a parancsot.
+Egy új csoport létrehozása vagy egy meglévő csoport megkeresése után a [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) paranccsal rendelje hozzá az Azure Active Directory-csoportot az erőforráscsoport Virtuális gépek közreműködője szerepköréhez.  
 
 ```azurepowershell-interactive
-New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
+$adgroup = Get-AzureRmADGroup -DisplayName <your-group-name>
+
+New-AzureRmRoleAssignment -ObjectId $adgroup.id `
   -ResourceGroupName myResourceGroup `
   -RoleDefinitionName "Virtual Machine Contributor"
 ```
+
+Ha egy hibaüzenetet kap, amely szerint **A <guid> rendszerbiztonsági tag nem található a címtárban**, az új csoport nem lett az Azure Active Directoryba propagálva. Próbálja meg ismét futtatni a parancsot.
 
 A folyamatot általában a *Hálózati közreműködő* és a *Tárfiók-közreműködő* szerepkörön is végre kell hajtani, hogy a felhasználók megkapják az üzembe helyezett erőforrások kezeléséhez szükséges jogosultságokat. Ebben a cikkben kihagyhatja ezeket a lépéseket.
 

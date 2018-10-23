@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 06/12/2018
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: 6e3571fb54f12ef3bb5519f572b8af5bf9247e7d
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 107852bd2c4ec0b932008b498dde4ea77f8071a3
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37032922"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116336"
 ---
 # <a name="what-is-azure-iot-edge"></a>Az Azure IoT Edge bemutatása
 
@@ -55,7 +55,7 @@ Az Azure IoT Edge-futtatókörnyezet egyéni és felhőbeli logikák is használ
 * Kommunikációt létesít a modulok és az IoT Edge-eszköz között.
 * Kommunikációt létesít az IoT Edge-eszközök és a felhő között.
 
-![Az IoT Edge-futtatókörnyezet elemzéseket és jelentéseket küld az IoT Hub felé][1]
+![Az IoT Edge-futtatókörnyezet elemzéseket és jelentéseket küld az IoT Hub felé](./media/about-iot-edge/runtime.png)
 
 Teljes mértékben saját belátása szerint használhatja az Azure IoT Edge-eszközöket. A futtatókörnyezetet gyakran használják átjárókon olyan mesterséges intelligenciák üzembe helyezésére, amelyek több helyszíni eszköz adatait összegzik és dolgozzák fel, de ez csak egy felhasználási lehetőség. A levéleszközök is lehetnek Azure IoT Edge-eszközök, függetlenül attól, hogy egy átjáróhoz vagy közvetlenül a felhőhöz csatlakoznak.
 
@@ -71,15 +71,10 @@ Az Azure IoT Edge zökkenőmentesen integrálható az Azure IoT-megoldásgyorsí
 * Számítási feladatok küldése több eszközre.
 * A használatban lévő eszközökön futó számítási feladatok monitorozása.
 
-![A telemetriák, az elemzések és az eszközök műveletei koordinálva vannak a felhővel][2]
+![A telemetriák, az elemzések és az eszközök műveletei koordinálva vannak a felhővel](./media/about-iot-edge/cloud-interface.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ezen fogalmak gyakorlati alkalmazását is kipróbálhatja, ha [üzembe helyezi az IoT Edge szolgáltatást egy szimulált eszközön][lnk-quickstart].
+A fogalmak gyakorlati alkalmazását is kipróbálhatja, ha [üzembe helyezi az IoT Edge szolgáltatást egy szimulált eszközön](quickstart.md).
 
-<!-- Images -->
-[1]: ./media/about-iot-edge/runtime.png
-[2]: ./media/about-iot-edge/cloud-interface.png
-
-<!-- Links -->
-[lnk-quickstart]: quickstart.md
+ 

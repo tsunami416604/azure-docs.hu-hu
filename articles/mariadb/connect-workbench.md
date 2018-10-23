@@ -9,69 +9,77 @@ ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: b3a4d00381361b5299e86b959d9775318ae81e88
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 45c1207ab6ab2a7a649efcd355bcab06ea79e149
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998238"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49317602"
 ---
 # <a name="azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MariaDB: Csatlakozás és adatlekérdezés a MySQL Workbench használatával
-Ez a rövid útmutató azt szemlélteti, hogyan lehet a MySQL Workbench alkalmazással csatlakozni egy Azure Database for MariaDB-kiszolgálóhoz. 
+
+Ez a rövid útmutató azt szemlélteti, hogyan lehet a MySQL Workbench használatával csatlakozni egy Azure Database for MariaDB-példányhoz. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-A rövid útmutató az alábbi útmutatók valamelyikében létrehozott erőforrásokat használja kiindulópontként:
+
+Ez a rövid útmutató az alábbi útmutatók valamelyikében létrehozott erőforrásokat használja kiindulópontként:
+
 - [Azure Database for MariaDB-kiszolgáló létrehozása az Azure Portal használatával](./quickstart-create-mariadb-server-database-using-azure-portal.md)
 - [Azure Database for MariaDB-kiszolgáló létrehozása az Azure CLI használatával](./quickstart-create-mariadb-server-database-using-azure-cli.md)
 
 ## <a name="install-mysql-workbench"></a>A MySQL Workbench telepítése
-Töltse le és telepítse a MySQL Workbench alkalmazást a számítógépére [a MySQL webhelyről](https://dev.mysql.com/downloads/workbench/).
+
+[Töltse le a MySQL Workbenchet](https://dev.mysql.com/downloads/workbench/), és telepítse a számítógépén.
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
+
 Kérje le az Azure Database for MariaDB-hez való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
+2. Az Azure Portal bal oldali menüjében válassza a **Minden erőforrás** elemet. Keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
 
-3. Kattintson a kiszolgálónévre.
+3. Válassza ki a kiszolgálónevet.
 
-4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
- ![Az Azure Database for MariaDB-kiszolgáló neve](./media/connect-workbench/1_server-overview-name-login.png)
+4. A kiszolgáló **Áttekintés** lapján jegyezze fel a **kiszolgálónevet** és a **kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejtette a jelszavát, ezen az oldalon új jelszót is kérhet.
 
-## <a name="connect-to-server-using-mysql-workbench"></a>Csatlakozás a kiszolgálóhoz a MySQL Workbench használatával 
-A következő lépések végrehajtásával csatlakozhat egy Azure Database for MariaDB-kiszolgálóhoz a MySQL Workbench használatával:
+ ![Az Azure Database for MariaDB-kiszolgáló neve és kiszolgáló-rendszergazdai bejelentkezési neve](./media/connect-workbench/1_server-overview-name-login.png)
 
-1.  Indítsa el a MySQL Workbench alkalmazást a számítógépen. 
+## <a name="connect-to-the-server-by-using-mysql-workbench"></a>Csatlakozás a kiszolgálóhoz a MySQL Workbench használatával
 
-2.  A **Setup New Connection** (Új kapcsolat beállítása) párbeszédpanelen adja meg a következő információkat a **Parameters** (Paraméterek) lapon:
+Csatlakozás az Azure Database for MariaDB-kiszolgálóhoz a MySQL Workbench használatával:
 
-    ![új kapcsolat beállítása](./media/connect-workbench/2-setup-new-connection.png)
+1.  Nyissa meg a MySQL Workbenchet a számítógépen. 
 
-    | **Beállítás** | **Ajánlott érték** | **Mező leírása** |
+2.  Az **új kapcsolat létrehozására szolgáló** párbeszédpanelen adja meg a következő információkat a **Parameters** (Paraméterek) lapon:
+
+    | Beállítás | Ajánlott érték | Mező leírása |
     |---|---|---|
-    |   Kapcsolat neve | Bemutató kapcsolat | Adjon meg egy címkét a kapcsolathoz. |
-    | Kapcsolati módszer | Standard (TCP/IP) | A Standard (TCP/IP) elégséges. |
-    | Gazdanév | *kiszolgáló neve* | Adja meg azt a kiszolgálónevet, amelyet korábban az Azure Database for MariaDB létrehozásakor használt. Az itt látható példakiszolgáló a mydemoserver.mariadb.database.azure.com. Használja a teljes tartománynevet (\*.mariadb.database.azure.com), ahogyan az a példában látható. Ha nem emlékszik a kiszolgáló nevére, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit.  |
-    | Port | 3306 | Az Azure Database for MariaDB-hez való csatlakozáskor mindig a 3306-os portot használja. |
-    | Felhasználónév |  *kiszolgáló-rendszergazdai bejelentkezési név* | Írja be a kiszolgáló-rendszergazdai bejelentkezési felhasználónevet, amelyet korábban az Azure Database for MariaDB létrehozásakor adott meg. A példában szereplő felhasználónév a következő: myadmin@mydemoserver. Ha nem emlékszik a felhasználónévre, a kapcsolati adatok lekéréséhez kövesse az előző szakasz lépéseit. A formátum *username@servername*.
-    | Jelszó | az ön jelszava | A jelszó mentéséhez kattintson a **Store in Vault...** (Tárolás a tárolóban...) gombra. |
+    |   Kapcsolat neve | **Bemutató kapcsolat** | Adjon meg egy címkét a kapcsolathoz. |
+    | Kapcsolati módszer | **Standard (TCP/IP)** | A Standard (TCP/IP) elégséges. |
+    | Gazdanév | *kiszolgáló neve* | Adja meg az Azure Database for MariaDB-példány létrehozásakor használt kiszolgálónév értékét. A példakiszolgáló a **mydemoserver.mariadb.database.azure.com**. Használja a teljes tartománynevet (\*.mariadb.database.azure.com), ahogyan az a példában látható. Ha nem emlékszik a kiszolgáló nevére, az előző szakasz lépéseit követve lekérheti a kapcsolati adatokat.  |
+    | Port | **3306** | Az Azure Database for MariaDB-hez való csatlakozáskor mindig a 3306-os portot használja. |
+    | Felhasználónév |  *kiszolgáló-rendszergazdai bejelentkezési név* | Adja meg az Azure Database for MariaDB-példány létrehozásakor használt kiszolgáló-rendszergazdai bejelentkezési felhasználónevet. A példában szereplő felhasználónév a következő: **myadmin@mydemoserver**. Ha nem emlékszik a kiszolgáló-rendszergazdai bejelentkezési névre, az előző szakasz lépéseit követve lekérheti a kapcsolati adatokat. A formátum *username@servername*.
+    | Jelszó | *az Ön jelszava* | A jelszó mentéséhez kattintson a **Store in Vault** (Tárolás a tárolóban) gombra. |
 
-3.   Kattintson a **Kapcsolat tesztelése** lehetőségre, hogy tesztelje, minden paraméter helyesen lett-e konfigurálva. 
+    ![Új kapcsolat beállítása](./media/connect-workbench/2-setup-new-connection.png)
+
+3.   Válassza a **Test Connection** (Kapcsolat tesztelése) lehetőséget annak teszteléséhez, hogy minden paraméter helyesen lett-e konfigurálva. 
 
 4.   A kapcsolat mentéséhez kattintson az **OK** gombra. 
 
-5.   A **MySQL Connections** (MySQL kapcsolatok) listában kattintson a kiszolgáló csempéjére, majd várja meg a kapcsolat létrejöttét.
+5.   A **MySQL Connections** (MySQL-kapcsolatok) alatt kattintson a kiszolgáló csempéjére. Várjon, amíg a kapcsolat létrejön.
 
-        Megnyílik egy új SQL lap egy üres szerkesztővel, ahol beírhatja a lekérdezéseket.
+    Megnyílik egy új SQL lap egy üres szerkesztővel, ahol beírhatja a lekérdezéseket.
     
-        > [!NOTE]
-        > Az Azure Database for MariaDB-kiszolgálón alapértelmezés szerint kötelezően SSL-kapcsolatbiztonságra van szükség. Bár általában nincs szükség az SSL-tanúsítványok további konfigurációjára ahhoz, hogy a MySQL Workbench csatlakozzon a kiszolgálóhoz, ajánlott az SSL-hitelesítésszolgáltatói tanúsítványt a MySQL Workbenchhez kötni. Ha le kell tiltania az SSL-t, látogasson el az Azure Portalra, és a Kapcsolatbiztonság lapon használja az SSL-kapcsolat kikényszerítése kapcsológombot a letiltásához.
+    > [!NOTE]
+    > Az Azure Database for MariaDB-kiszolgálón alapértelmezés szerint kötelezően SSL-kapcsolatbiztonságra van szükség. Bár általában nincs szükség az SSL-tanúsítványok további konfigurációjára ahhoz, hogy a MySQL Workbench csatlakozzon a kiszolgálóhoz, ajánlott az SSL-hitelesítésszolgáltatói tanúsítványt a MySQL Workbenchhez kötni. Az SSL letiltásához válassza a **Kapcsolatbiztonság** lehetőséget a kiszolgáló áttekintési oldalán lévő menüből az Azure Portalon. Az **SSL-kapcsolat kikényszerítésénél** válassza a **Letiltva** lehetőséget.
 
-## <a name="create-table-insert-read-update-and-delete-data"></a>Táblázat létrehozása, adatok beszúrása, olvasása, frissítése és törlése
-1. Másolja és illessze be az SQL-mintakódot egy üres SQL-lapra néhány mintaadat bemutatása érdekében.
+## <a name="create-table-and-insert-read-update-and-delete-data"></a>Táblázat létrehozása, adatok beszúrása, olvasása, frissítése és törlése
 
-    Ez a kód a quickstartdb nevű üres adatbázist hozza létre, majd létrehoz egy inventory nevű mintatáblát. Beilleszt néhány sort, majd beolvassa a sorokat. Egy update utasítással módosítja az adatokat, és ismét beolvassa a sorokat. Végül töröl egy sort, majd ismét beolvassa a sorokat.
+1. Másolja és illessze be a következő SQL-mintakódot egy üres SQL-lapra néhány mintaadat bemutatása érdekében.
+
+    Ez a kód létrehoz egy **quickstartdb** nevű üres adatbázist. Ezután létrehoz egy **inventory** nevű mintatáblázatot. A kód beszúr néhány sort, majd beolvassa a sorokat. Egy update utasítással módosítja az adatokat, és ismét beolvassa a sorokat. Végül a kód töröl egy sort, majd ismét beolvassa a sorokat.
     
     ```sql
     -- Create a database
@@ -98,15 +106,15 @@ A következő lépések végrehajtásával csatlakozhat egy Azure Database for M
     SELECT * FROM inventory;
     ```
 
-    A képernyőkép az SQL-példakódot és a futtatás utáni kimenetet mutatja az SQL Workbench-ben.
+    A képernyőkép az SQL-példakódot és a futtatás utáni kimenetet mutatja a MySQL Workbenchben:
     
-    ![MySQL Workbench SQL lap SQL-mintakód futtatásához](media/connect-workbench/3-workbench-sql-tab.png)
+    ![A MySQL Workbench SQL lap kiválasztása az SQL-mintakód futtatásához](media/connect-workbench/3-workbench-sql-tab.png)
 
-2. A SQL-mintakód futtatásához kattintson az **SQL File** (SQL-fájl) lévő eszköztár villám ikonjára.
-3. Figyelje meg az oldal közepén, a **Result Grid** (Eredménytáblázat) szakaszban lévő többlapos eredményeket. 
+2. Az SQL-mintakód futtatásához kattintson az **SQL-fájl** lapon lévő eszköztár villám ikonjára.
+3. Figyelje meg az oldal közepén, a **Result Grid** (Eredménytáblázat) szakaszban lévő három többlapos eredményt. 
 4. Figyelje meg az oldal alján lévő **Output** (Kimenet) listát. Láthatja az egyes parancsok állapotát. 
 
-A MySQL Workbench használatával csatlakozott az Azure Database for MariaDB-kiszolgálóhoz, és SQL nyelven lekérdezte az adatokat.
+Ebben a rövid útmutatóban a MySQL Workbench használatával csatlakozott az Azure Database for MariaDB-kiszolgálóhoz, és SQL nyelven lekérdezte az adatokat.
 
 <!--
 ## Next steps

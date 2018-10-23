@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 2976a136bd04ac531bc54a0e9a6bed93d40fe06f
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 21e392332414d11c279969ed83eb2bdc1ade8eeb
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063948"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362925"
 ---
 # <a name="azure-sql-database-use-visual-studio-code-to-connect-and-query-data"></a>Azure SQL Database: Csatlakozás, majd adatok lekérdezése a Visual Studio Code használatával
 
@@ -37,7 +37,7 @@ A kezdés előtt győződjön meg arról, hogy a [Visual Studio Code](https://co
 ## <a name="configure-vs-code"></a>A VS Code konfigurálása 
 
 ### <a name="mac-os"></a>**Mac OS**
-Mac OS esetén telepíteni kell az OpenSSL-t, amely az mssql bővítmény által használt .Net Core előfeltétele. Nyissa meg a terminált, és adja meg az alábbi parancsokat a **brew** és az **OpenSSL** telepítéséhez. 
+macOS esetén telepíteni kell az OpenSSL-t, amely az mssql bővítmény által használt .Net Core előfeltétele. Nyissa meg a terminált, és adja meg az alábbi parancsokat a **brew** és az **OpenSSL** telepítéséhez. 
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"

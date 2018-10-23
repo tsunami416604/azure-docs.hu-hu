@@ -10,18 +10,16 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: e60b2a9ea7c56352a1b4dfb65537ba6dc57fcb68
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 2b524591f3af32e566b0ca364626daf7aaf4ace2
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365961"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318452"
 ---
 # <a name="quickstart-translate-text-with-c35"></a>Rövid útmutató: Szöveg lefordítása a C&#35; használatával
 
 Ebben a rövid útmutatóban szöveget fordít le egy nyelvről egy másikra a Translator Text API segítségével.
-
-A minta forráskódja a [GitHubon](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,6 +28,9 @@ A kód Windows rendszeren történő futtatásához [Visual Studio 2017](https:/
 A Translator Text API használatához szüksége van egy előfizetési kulcsra is. Lásd [a Translator Text API regisztrációját](translator-text-how-to-signup.md).
 
 ## <a name="translate-request"></a>Translate kérés
+
+> [!TIP]
+> Szerezze be a legújabb kódot a [Githubról](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp).
 
 A következő kód egy forrásszöveget fordít le egy nyelvről egy másikra a [Translate](./reference/v3-0-translate.md) metódussal.
 

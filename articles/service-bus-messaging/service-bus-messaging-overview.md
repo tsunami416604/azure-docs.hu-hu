@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: spelluru
-ms.openlocfilehash: 08295ceeb2ebe94a96eaade0a6443f0f59212d60
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 870cfcf8712cc5bee2674b82d5292e4241433386
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394029"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342207"
 ---
 # <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
 
@@ -95,9 +95,9 @@ Az [Automatikus törlés tétlenség esetén](/dotnet/api/microsoft.servicebus.m
 
 Ha olyan hiba lép fel, amely következtében az ügyfélnek kétségei támadnak egy küldési művelet eredményéről, a [duplikálásészlelés](duplicate-detection.md) eloszlatja ezen kétségeket azáltal, hogy a feladó újra elküldheti ugyanazt az üzenetet, az üzenetsor vagy a témakör pedig törli az arról készített másolatokat.
 
-### <a name="sas-rbac-and-msi"></a>SAS, RBAC és MSI
+### <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>SAS, RBAC és az Azure-erőforrások felügyelt identitásai
 
-A Service Bus támogatja az olyan biztonsági protokollokat, mint a [közös hozzáférésű jogosultságkód](service-bus-sas.md) (SAS), a [szerepköralapú hozzáférés-vezérlés](service-bus-role-based-access-control.md) (RBAC) és a [felügyelt szolgáltatásidentitás](service-bus-managed-service-identity.md) (MSI).
+A Service Bus támogatja az olyan biztonsági protokollokat, mint a [közös hozzáférésű jogosultságkód](service-bus-sas.md) (SAS), a [szerepköralapú hozzáférés-vezérlés](service-bus-role-based-access-control.md) (RBAC) és az [Azure-erőforrások felügyelt identitásai](service-bus-managed-service-identity.md).
 
 ### <a name="geo-disaster-recovery"></a>Geo-vészhelyreállítás
 

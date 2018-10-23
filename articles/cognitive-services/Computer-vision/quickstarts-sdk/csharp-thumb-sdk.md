@@ -3,25 +3,23 @@ title: 'Rövid útmutató: Miniatűr létrehozása – SDK, C# – Computer Visi
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban miniatűrt fog létrehozni egy képből a Computer Vision Windows C#-ügyfélkódtárával.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/14/2018
-ms.author: nolachar
-ms.openlocfilehash: 8fdbcf5bfe4d4fe60a2858b34b38c01d66e75d99
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.author: pafarley
+ms.openlocfilehash: 758021a9428672789923d1774f51fd319fe9885f
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054812"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343112"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>Rövid útmutató: Miniatűr létrehozása a Computer Vision SDK és a C# használatával
 
 Ebben a rövid útmutatóban miniatűrt fog létrehozni egy képből a Computer Vision Windows-ügyfélkódtárával.
-
-A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,6 +28,9 @@ A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-se
 * A [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision) ügyfélkódtár NuGet-csomagja. A csomag letöltése nem szükséges. A telepítési utasításokat az alábbiakban találja.
 
 ## <a name="generatethumbnailasync-method"></a>A GenerateThumbnailAsync metódus
+
+> [!TIP]
+> Szerezze be a legújabb kódot Visual Studio-megoldásként a [GitHubról](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision).
 
 A `GenerateThumbnailAsync` és a `GenerateThumbnailInStreamAsync` metódus a [miniatűr-létrehozó API-t](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) burkolja távoli, illetve helyi képekhez.  A metódusokkal létrehozhatja egy kép miniatűrjét. Megadhatja a magasságát és a szélességét, amely eltérhet a bemeneti kép oldalarányától. A Computer Vision intelligens körbevágással azonosítja a releváns régiót, amely alapján létrehozza a vágási koordinátákat.
 

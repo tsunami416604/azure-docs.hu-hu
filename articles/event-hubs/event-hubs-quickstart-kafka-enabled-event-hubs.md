@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2018
 ms.author: bahariri
-ms.openlocfilehash: 2fbca7179d8bc64a92f79f6eaced8d4f1666c530
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4b78cef29c64c5c4c522ad5c751c10bbf6a7057c
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069216"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363418"
 ---
 # <a name="stream-into-event-hubs-for-the-apache-kafka"></a>Streamelés az Apache Kafkához készült Event Hubsba
 Ez a rövid útmutató bemutatja, hogyan streamelhet a Kafka-kompatibilis Event Hubsba anélkül, hogy módosítaná a protokollügyfeleket vagy saját fürtöket futtatna. Megtudhatja, hogyan érheti el egy egyszerű konfigurációmódosítással az alkalmazásokban, hogy az előállítók és a fogyasztók kommunikáljanak a Kafka-kompatibilis Event Hubsszal. Az Azure Event Hubs az [Apache Kafka 1.0-s verzióját](https://kafka.apache.org/10/documentation.html) támogatja.
 
 > [!NOTE]
-> Ez a minta elérhető a [GitHubon](https://github.com/Azure/azure-event-hubs).
+> Ez a minta elérhető a [GitHubon](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -63,9 +63,9 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek a
 
 ## <a name="send-and-receive-messages-with-kafka-in-event-hubs"></a>Üzenetek küldése és fogadása a Kafkával az Event Hubsban
 
-1. Klónozza az [Azure Event Hubs-adattárat](https://github.com/Azure/azure-event-hubs).
+1. Klónozza a [Kafkához készült Event Hubs-adattárat](https://github.com/Azure/azure-event-hubs-for-kafka).
 
-2. Nyissa meg a `azure-event-hubs/samples/kafka/quickstart/producer` címet.
+2. Nyissa meg a `azure-event-hubs-for-kafka/quickstart/java/producer` címet.
 
 3. Az alábbiakban látható módon módosítsa az előállító konfigurációs adatait az `src/main/resources/producer.config` fájlban:
 
@@ -83,7 +83,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek a
     mvn exec:java -Dexec.mainClass="TestProducer"                                    
     ```
     
-5. Nyissa meg a `azure-event-hubs/samples/kafka/quickstart/consumer` címet.
+5. Nyissa meg a `azure-event-hubs-for-kafka/quickstart/java/consumer` címet.
 
 6. Az alábbiakban látható módon módosítsa a fogyasztó konfigurációs adatait az `src/main/resources/consumer.config` fájlban:
    
@@ -106,5 +106,8 @@ Ha az Event Hubs Kafka-fürtön vannak események, most el kell kezdeniük érke
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben bemutattuk, hogyan streamelhet Kafka-kompatibilis Event Hubsba anélkül, hogy módosítaná a protokollügyfeleket vagy saját fürtöket futtatna. További információért folytassa az alábbi oktatóanyaggal:
 
-> [!div class="nextstepaction"]
-> [Kafka MirrorMaker használata az Event Hubsszal](event-hubs-kafka-mirror-maker-tutorial.md)
+* [Ismerkedés az Event Hubs szolgáltatással](event-hubs-what-is-event-hubs.md)
+* [Ismerkedés a Kafkához készült Event Hubs szolgáltatással](event-hubs-for-kafka-ecosystem-overview.md)
+* [További minták megismerése a Kafkához készült Event Hubs GitHub-oldalán](https://github.com/Azure/azure-event-hubs-for-kafka)
+* A [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) használatával [eseményeket streamelhet a helyszíni Kafkából a felhőben található Kafka-kompatibilis Event Hubsba.](event-hubs-kafka-mirror-maker-tutorial.md)
+* Ismerje meg, hogyan streamelhet a Kafka-kompatibilis Event Hubsba az [Apache Flink](event-hubs-kafka-flink-tutorial.md) vagy az [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) használatával

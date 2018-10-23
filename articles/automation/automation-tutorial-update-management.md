@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 4d504e0488d35c5c606468faa35bece1318503b4
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: bc1b52b97897cb1c635fb16e6ef9692de1ca8a44
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498521"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167256"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Windows-frissítések kezelése az Azure Automationnel
 
@@ -116,7 +116,8 @@ A **Riasztási logika** területen a **Küszöbérték** legyen **1**. Ha elkés
 
 #### <a name="runbook-alert"></a>Runbook-riasztás
 
-A sikertelen telepítésekkor értesülnie kell a mesterpéldány futtatási hibájáról. Az Azure Portalon lépjen a **Figyelés** felületre, és válassza a **Riasztás létrehozása** lehetőséget.
+A sikertelen üzembe helyezések esetén értesülnie kell a mesterpéldány futtatási hibájáról.
+Az Azure Portalon lépjen a **Figyelés** felületre, és válassza a **Riasztás létrehozása** lehetőséget.
 
 Az **1. Riasztási feltétel megadása** szakaszban kattintson a **Cél kiválasztása** gombra. A **Szűrés erőforrástípus alapján** mezőben válassza az **Automation-fiókok** elemet. Válassza ki az Automation-fiókját, majd kattintson a **Kész** gombra.
 

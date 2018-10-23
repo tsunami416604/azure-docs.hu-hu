@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: af291782585cf0211cf8beac54adc36fd9fe0d34
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 9683a33efba427e83b2ff27ec57d2d437c61d5ce
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42022615"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166276"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Rövid útmutató: Az első IoT Edge-modul üzembe helyezése x64-es Linux-eszközön
 
@@ -117,7 +117,7 @@ Hajtsa végre a következő lépéseket az IoT Edge-eszközként előkészített
 
 Az IoT Edge-futtatókörnyezet futtatásához szükséges csomagok kezelése egy szoftveradattárban történik. Az IoT Edge-eszközt az adattárhoz való hozzáférésre konfigurálhatja. 
 
-A jelen szakasz lépései az **Ubuntu 16.04** rendszerű eszközökre vonatkoznak. Ha másik Linux-verzióról szeretné elérni a szoftveradattárat, tekintse meg az [Azure IoT Edge-futtatókörnyezet telepítése Linuxon (x64)](how-to-install-iot-edge-linux.md) vagy az [Azure IoT Edge-futtatókörnyezet telepítése Linuxon (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md) című részt.
+A jelen szakasz lépései az **Ubuntu 16.04** rendszerű x64-eszközökre vonatkoznak. Ha másik Linux-verzióról vagy eszközarchitektúrákról szeretné elérni a szoftveradattárat, tekintse meg az [Azure IoT Edge-futtatókörnyezet Linuxon (x64) történő telepítését](how-to-install-iot-edge-linux.md) vagy az [Azure IoT Edge-futtatókörnyezet Linuxon (ARM32v7/armhf) történő telepítését](how-to-install-iot-edge-linux-arm.md) ismertető cikket.
 
 1. Telepítse az adattár konfigurációját az IoT Edge-eszközként használt számítógépen.
 

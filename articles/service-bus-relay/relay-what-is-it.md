@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 10/08/2018
 ms.author: spelluru
-ms.openlocfilehash: 46a9045cdf422ed4f14e5588b3342e8bfde2e4c8
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 3cc87c0acbed317cccaccec687f27c23a1d32cf0
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888106"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319336"
 ---
 # <a name="what-is-azure-relay"></a>Mi az az Azure Relay?
 Az Azure Relay szolgáltatás biztonságosan lehetővé teszi a vállalati hálózaton futó szolgáltatások közzétételét a nyilvános felhőben. Ehhez nincs szükség tűzfalkapcsolat megnyitására, illetve zavaró módosításokra a hálózati infrastruktúrán. 
@@ -58,7 +58,7 @@ A Hibrid kapcsolatok protokolljáról részletes információkat a [hibrid kapcs
 ## <a name="wcf-relay"></a>WCF-továbbító
 A WCF Relay szolgáltatás a teljes .NET-keretrendszerrel és WCF-fel is használható. A helyszíni és a továbbítási szolgáltatás közötti kapcsolatot egy WCF továbbító kötéskészlet használatával hozhatja létre. A színfalak mögött a továbbítási kötéseket a rendszer a Service Busszal a felhőben integrálódó WCF-csatornaösszetevők létrehozására tervezett új átviteli kötőelemekké képezi le. További információ: [Ismerkedés a WCF-továbbító szolgáltatással](relay-wcf-dotnet-get-started.md).
 
-## <a name="hybrid-connections-vs-wcf-relay"></a>A Hibrid kapcsolatok és a WCF Relay szolgáltatás összehasonlítása
+## <a name="hybrid-connections-vs-wcf-relay"></a>A Hibrid kapcsolatok és a WCF-továbbító
 A Hibrid kapcsolatok és a WCF Relay szolgáltatás egyaránt lehetővé teszi a vállalati hálózaton belüli eszközökhöz való biztonságos csatlakozást. Az Ön igényein múlik, hogy melyik lehetőséget választja, ahogy az az alábbi táblázatban látható:
 
 |  | WCF-továbbító | Hibrid kapcsolatok |
@@ -81,10 +81,9 @@ Az alábbi ábra azt mutatja be, hogyan kezeli az Azure Relay szolgáltatás a b
 4. A kérelmet fogadó átjáró megkeresi a továbbítót az átjárótárolóban. 
 5. Az átjáró továbbítja a kapcsolódási kérelmet az átjárótárolóban található, megfelelő átjárónak. 
 6. Az átjáró kérelmet küld a figyelő ügyfélnek, hogy hozzon létre egy ideiglenes csatornát a küldő ügyfélhez legközelebbi átjárócsomóponthoz. 
-7. Ezt követően a figyelő ügyfél létrehozza az ideiglenes csatornát, és válaszüzenetet küld a küldő ügyfélhez legközelebbi átjárónak.
-8. Az átjáró továbbítja a válaszüzenetet a küldő ügyfélnek. 
-
-Ha a továbbítási kapcsolat létrejött, az ügyfelek üzeneteket válthatnak a szinkronizálásra használt átjárócsomóponton keresztül.
+7. A figyelő ügyfél létrehozza az ideiglenes csatornát a küldő ügyfélhez legközelebbi átjáróhoz. Most, hogy az ügyfelek között létrejött egy átjárókapcsolat, üzeneteket válthatnak egymással. 
+8. Az átjáró továbbítja az üzeneteket a figyelő ügyféltől a küldő ügyfél felé. 
+9. Az átjáró továbbítja az üzeneteket a küldő ügyféltől a figyelő ügyfél felé.  
 
 ## <a name="next-steps"></a>További lépések
 * [Ismerkedés a .NET-websocketekkel](relay-hybrid-connections-dotnet-get-started.md)

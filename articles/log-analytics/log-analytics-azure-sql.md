@@ -15,18 +15,18 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: ''
-ms.openlocfilehash: d16f9add2cd31eb5a8db650798c241c3dcf2610f
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: ea289abff7a40b0528f4cb88402594879ba6c437
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379304"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649652"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Az Azure SQL Database megfigyelése az Azure SQL Analytics (előzetes verzió)
 
 ![Az Azure SQL Analytics szimbólum](./media/log-analytics-azure-sql/azure-sql-symbol.png)
 
-Az Azure SQL Analytics egy felhőalapú megoldást kínál a teljesítmény figyelése Azure SQL Database-adatbázisok, rugalmas készletek és a felügyelt példányok ipari méretekben, és több előfizetésre kiterjedő figyelési. Azt gyűjti elérhetővé, és fontos Azure SQL Database teljesítmény-mérőszámok – teljesítménnyel kapcsolatos hibaelhárítás a beépített intelligenciával.
+Az Azure SQL Analytics egy felhőalapú megoldást kínál a teljesítmény figyelése Azure SQL adatbázisok, rugalmas készletek és a felügyelt példányok ipari méretekben és tekinthesse át egyetlen több előfizetésre kiterjedő figyelési. Azt gyűjti elérhetővé, és fontos Azure SQL Database teljesítmény-mérőszámok – teljesítménnyel kapcsolatos hibaelhárítás a beépített intelligenciával.
 
 A megoldással gyűjtött metrikák használatával létrehozhat egyéni figyelési szabályokkal és riasztásokkal. A megoldás segítségével azonosíthatja a problémákat az alkalmazáscsoportokat az egyes rétegben. Adatokat az összes az Azure SQL adatbázisok, rugalmas készletek és adatbázisok szerepelnek a felügyelt példányok egyetlen Log Analytics-munkaterületet a Log Analytics nézeteivel együtt az Azure diagnosztikai metrikák használ. A log Analytics segítségével összegyűjtését, összekapcsolását és megjelenítését a strukturált és strukturálatlan adatok.
 
@@ -66,23 +66,11 @@ Hajtsa végre az alábbi lépéseket az Azure SQL Analytics megoldás hozzáadá
 
 ### <a name="configure-azure-sql-databases-elastic-pools-and-managed-instances-to-stream-diagnostics-telemetry"></a>Az Azure SQL Database, a rugalmas készletek és a felügyelt példányok stream diagnostics telemetriai adatainak konfigurálása
 
-Miután létrehozta az Azure SQL Analytics megoldás a munkaterületen, annak érdekében, hogy az Azure SQL Database-adatbázisok, a felügyelt példányok adatbázisai és a rugalmas készletek teljesítményének figyelése kell **konfigurálja** szeretné ezen erőforrások közül Ez a figyelő a diagnostics telemetriai adatainak a megoldáshoz továbbításához.
+Miután létrehozta az Azure SQL Analytics megoldás a munkaterületen, annak érdekében, hogy az Azure SQL Database, a felügyelt példányok adatbázisai és a rugalmas készletek, adatbázisok teljesítményének figyelése kell **konfigurálja** ezek közül figyelő az adatfolyam a diagnostics telemetriai adatainak a megoldáshoz történő kívánt erőforrásokat. Ezen az oldalon hajtsa végre a részletes útmutatást:
 
 - Az Azure-diagnosztika engedélyezése az Azure SQL Database, a felügyelt példányok adatbázisai és a rugalmas készletek az [diagnostics telemetriai adatainak az Azure SQL Analytics adatfolyam](../sql-database/sql-database-metrics-diag-logging.md).
 
-### <a name="to-configure-multiple-azure-subscriptions"></a>Több Azure-előfizetés konfigurálása
- 
-Több előfizetés is támogatja, használja a PowerShell-szkript [engedélyezése az Azure resource metrikák naplózás PowerShell-lel](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell/). Adja meg a munkaterület erőforrás-azonosító paramétert egy Azure-előfizetéshez tartozó erőforrások diagnosztikai adatokat küldeni egy munkaterületet egy másik Azure-előfizetésben a parancsfájl végrehajtása közben.
-
-**Példa**
-
-```
-PS C:\> $WSID = "/subscriptions/<subID>/resourcegroups/oms/providers/microsoft.operationalinsights/workspaces/omsws"
-```
-
-```
-PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
-```
+A fenti lapot is útmutatás több Azure-előfizetéssel egyetlen Azure SQL Analytics-munkaterületről monitorozásra tekinthesse egyetlen ablaktábla támogatásának engedélyezése.
 
 ## <a name="using-the-solution"></a>A megoldás használata
 

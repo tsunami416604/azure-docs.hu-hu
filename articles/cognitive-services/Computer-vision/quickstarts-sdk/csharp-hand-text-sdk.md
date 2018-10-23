@@ -3,25 +3,23 @@ title: 'Rövid útmutató: Szöveg kinyerése - SDK, C# - Computer Vision'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban szöveget fog kinyerni egy képből a Computer Vision Windows C#-ügyfélkódtárával.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/27/2018
-ms.author: nolachar
-ms.openlocfilehash: 86808756721b2dc983df6eaf8a9e643a12d73969
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.author: pafarley
+ms.openlocfilehash: d819aee7c42759e2427e27e0f640d79536069ccb
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409016"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343605"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-sdk-and-c"></a>Rövid útmutató: Szöveg kinyerése a Computer Vision SDK és a C# használatával
 
 Ebben a rövid útmutatóban kézzel írt vagy nyomtatott szöveget fog kinyerni egy képből a Computer Vision Windows-ügyfélkódtárával.
-
-A minta forráskódja elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,6 +28,9 @@ A minta forráskódja elérhető a [GitHubon](https://github.com/Azure-Samples/c
 * A [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision) ügyfélkódtár NuGet-csomagja. A csomag letöltése nem szükséges. A telepítési utasításokat az alábbiakban találja.
 
 ## <a name="recognizetextasync-method"></a>RecognizeTextAsync metódus
+
+> [!TIP]
+> Szerezze be a legújabb kódot Visual Studio-megoldásként a [GitHubról](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision).
 
 A `RecognizeTextAsync` és `RecognizeTextInStreamAsync` metódus a [szövegfelismerő API-t](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) burkolja a távoli, illetve helyi képekhez. A `GetTextOperationResultAsync` metódus a [szövegfelismerési művelet eredményének beszerzése API-t](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) burkolja.  Ezekkel a metódusokkal szöveget ismerhet fel egy képben, és géppel olvasható karakterfolyamba nyerheti ki a felismert karaktereket.
 
@@ -42,7 +43,7 @@ A minta futtatásához az alábbi lépéseket kell végrehajtania:
     1. Válassza a megjelenő **Microsoft.Azure.CognitiveServices.Vision.ComputerVision** lehetőséget, majd jelölje be a projektnév melletti jelölőnégyzetet, és kattintson az **Install** (Telepítés) gombra.
 1. Írja felül a `Program.cs` értékét az alábbi kóddal.
 1. A `<Subscription Key>` helyére írja be az érvényes előfizetési kulcsot.
-1. Szükség esetén váltsa a `computerVision.Endpoint` beállítást az előfizetési kulcsaihoz társított Azure-régióra.
+1. Ha szükséges, módosítsa a `computerVision.Endpoint` elem értékét arra az Azure-régióra, amelyhez az előfizetési kulcsai társítva vannak.
 1. Igény szerint beállíthatja a `textRecognitionMode` beállítást a `TextRecognitionMode.Printed` értékre.
 1. A `<LocalImage>` helyére írja be a helyi kép elérési útját és fájlnevét.
 1. A `remoteImageUrl` értékét beállíthatja egy másik képre.

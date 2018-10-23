@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e68050e4902183b899bf3fee31bef088b1a0faf2
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 4db494de87993a6434eaf5dbf441094578d72ea4
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576068"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165964"
 ---
 # <a name="what-is-azure-maps"></a>Mi az Azure Maps?
 
@@ -23,6 +23,14 @@ Az Azure Maps a webes és mobilalkalmazások földrajzi kontextusának biztosít
 A következő videó részletesen bemutatja az Azure Mapset:
 
 <iframe src="https://channel9.msdn.com/Shows/Azure-Friday/Azure-Location-Based-Services/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+
+## <a name="map-controls"></a>Térképvezérlők
+
+### <a name="web-control"></a>Webes vezérlő
+
+Az Azure Maps webes vezérlővel az interaktív térképek testreszabhatók saját tartalmak és képek hozzáadásával, amelyek megjelennek a webes vagy mobilalkalmazásaiban. Ez a vezérlő a WebGL-t használja, amely lehetővé teszi nagy adatkészletek nagy teljesítményű renderelését. A vezérlővel végzett fejlesztés JavaScript vagy TypeScript használatával történik.
+
+![Az Azure Maps webes vezérlője](media/about-azure-maps/Introduction_WebMapControl.png)
 
 ## <a name="services-in-azure-maps"></a>Az Azure Maps szolgáltatásai
 

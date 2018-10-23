@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 06/13/2018
+ms.date: 10/11/2018
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: db8aa2d1bb5d79b5d2c9b04789b4ac18fbec5897
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 3163632f57c5dbb3d3c822b7123a75d10b15ad54
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43664590"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166202"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Az ASP.NET-alkalmazás monitorozásának indítása
 
@@ -36,10 +36,10 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 ## <a name="enable-application-insights"></a>Az Application Insights engedélyezése
 
 1. Nyissa meg a projektjét a Visual Studio 2017-ben.
-2. Válassza a **Configure Application Insights** (Az Application Insights konfigurálása) elemet a Project (Projekt) menüben. A Visual Studio hozzáadja az Application Insights SDK-t az alkalmazásához.
+2. Válassza **Az Application Insights konfigurálása** elemet a Projekt menüben. A Visual Studio hozzáadja az Application Insights SDK-t az alkalmazásához.
 
     > [!IMPORTANT]
-    > Az Application Insights hozzáadásának folyamata ASP.NET-sablontípusonként változik. Az **üres** vagy az **Azure Mobile App** sablon használata esetén válassza a **Project (Projekt)** > **Add Application Insights Telemetry (Application Insights Telemetria hozzáadása)** lehetőséget. Minden más ASP.NET-sablonnal kapcsolatban tekintse át a fenti lépésben található utasításokat. 
+    > Az Application Insights hozzáadásának folyamata ASP.NET-sablontípusonként változik. Az **üres** vagy az **Azure Mobile App** sablon használata esetén válassza a **Projekt** > **Application Insights Telemetria hozzáadása** lehetőséget. Minden más ASP.NET-sablonnal kapcsolatban tekintse át a fenti lépésben található utasításokat. 
 
 3. Válassza a **Get Started** (Első lépések) lehetőséget (a Visual Studio korábbi verzióiban ehelyett a **Start Free** (Kezdje meg ingyen) gomb található).
 
@@ -47,7 +47,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 4. Válassza ki előfizetését, és kattintson a **Register** (Regisztráció) gombra.
 
-5. Futtassa az alkalmazást a **Debug (Hibakeresés)** menü **Start Debugging (Hibakeresés indítása)** elemének kiválasztásával vagy az F5 billentyű lenyomásával.
+5. Futtassa az alkalmazást a **Hibakeresés** menü **Hibakeresés indítása** elemének kiválasztásával vagy az F5 billentyű lenyomásával.
 
 ## <a name="confirm-app-configuration"></a>Alkalmazáskonfiguráció jóváhagyása
 
@@ -61,7 +61,7 @@ Az Application Insights a futtatás helyétől függetlenül telemetriai adatoka
 
 Most megnyithatja az Application Insightst az Azure Portalon a futó alkalmazás különböző részleteinek megtekintéséhez.
 
-1. A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a **Connected Services Application Insights** (Az Application Insights kapcsolódó szolgáltatásai) mappára, majd kattintson az **Open Application Insights Portal** (Application Insights portál megnyitása) parancsra.  Megjelenik számos lehetőség és néhány információ az alkalmazásról.
+1. A Megoldáskezelőben kattintson a jobb gombbal **Az Application Insights kapcsolódó szolgáltatásai** mappára, majd kattintson az **Application Insights portál megnyitása** parancsra.  Megjelenik számos lehetőség és néhány információ az alkalmazásról.
 
     ![Alkalmazástérkép](media/quick-monitor-portal/overview-001.png)
 
@@ -77,7 +77,30 @@ Most megnyithatja az Application Insightst az Azure Portalon a futó alkalmazás
 
     ![Élő stream](media/quick-monitor-portal/live-stream.png)
 
-Ha készen áll az alkalmazás Azure-on történő üzemeltetésére, most már közzéteheti. Kövesse az [ASP.NET-webalkalmazás létrehozását ismertető rövid útmutató](../app-service/app-service-web-get-started-dotnet.md#update-the-app-and-redeploy) lépéseit.
+    Ha készen áll az alkalmazás Azure-on történő üzemeltetésére, most már közzéteheti. Kövesse az [ASP.NET-webalkalmazás létrehozását ismertető rövid útmutató](../app-service/app-service-web-get-started-dotnet.md#update-the-app-and-redeploy) lépéseit.
+
+5. Ha a Visual Studiót használja az Application Insights-monitorozáshoz, automatikusan hozzáadhatja az ügyféloldali monitorozást. Ha egy alkalmazáshoz manuálisan szeretné hozzáadni az ügyféloldali monitorozást, adja hozzá a következő JavaScript-kódrészletet:
+
+```html
+<!-- 
+To collect user behavior analytics about your application, 
+insert the following script into each page you want to track.
+Place this code immediately before the closing </head> tag,
+and before any other scripts. Your first data will appear 
+automatically in just a few seconds.
+-->
+<script type="text/javascript">
+var appInsights=window.appInsights||function(a){
+  function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
+  }({
+      instrumentationKey:"<your instrumentation key>"
+  });
+
+window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+</script>
+```
+
+További információt a [nyílt forráskódú JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)-ra vonatkozó GitHub-adattárban talál.
 
 ## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban engedélyezte, hogy az Azure Application Insights monitorozza az alkalmazását.  Folytassa a további oktatóanyagokkal, amelyekből megtudhatja, hogyan használhatja a statisztika monitorozására és az alkalmazáshibák észlelésére is.

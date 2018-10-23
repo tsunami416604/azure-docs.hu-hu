@@ -10,18 +10,16 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 328f5996a9b830ea6c2ff4b4a535d5311f39e08e
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 35903b0da707e5167781c3a7595c3be938a4fc07
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365256"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321347"
 ---
 # <a name="quickstart-find-alternate-translations-and-usage-with-c35"></a>Rövid útmutató: Alternatív fordítások és használat lekérése a C&#35; használatával
 
 Ebben a rövid útmutatóban a kifejezések lehetséges alternatív fordításaival kapcsolatos részleteket, valamint az alternatív fordítások használatának példáit keresi meg a Translator Text API segítségével.
-
-A minta forráskódja a [GitHubon](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,6 +28,9 @@ A kód Windows rendszeren történő futtatásához [Visual Studio 2017](https:/
 A Translator Text API használatához szüksége van egy előfizetési kulcsra is. Lásd [a Translator Text API regisztrációját](translator-text-how-to-signup.md).
 
 ## <a name="dictionary-lookup-request"></a>Dictionary Lookup kérés
+
+> [!TIP]
+> Szerezze be a legújabb kódot a [Githubról](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp).
 
 A következő egy szó alternatív fordításait kéri le a [Dictionary Lookup](./reference/v3-0-dictionary-lookup.md) metódussal.
 

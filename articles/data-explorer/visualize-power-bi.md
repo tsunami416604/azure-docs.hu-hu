@@ -2,18 +2,18 @@
 title: Az Azure Data Explorerből származó adatok megjelenítése a Power BI használatával
 description: Ebben az oktatóanyagban megtanulhatja, hogyan csatlakoztathatja az Azure Data Explorert a Power BI-hoz, és hogyan jelenítheti meg az adatait.
 services: data-explorer
-author: mgblythe
-ms.author: mblythe
+author: orspod
+ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 938d8d6e291ca432ef3f642a0aaec74d5dcf5bf5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fc2d96c4dc8184ba26001fd77732ce7c45253d5a
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977145"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393712"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>Az Azure Data Explorerből származó adatok megjelenítése a Power BI használatával
 
@@ -108,7 +108,7 @@ Most, hogy csatlakozott az Azure Data Explorerhez, szerkesztheti az adatokat a P
 
     ![Oszlop szűrése](media/visualize-power-bi/filter-column.png)
 
-1. Kattintson a **BeginLat** oszlop melletti nyílra, törölje a **null** jelölőnégyzetet, majd válassza az **OK** lehetőséget.
+1. Kattintson a jobb gombbal a **StormSummary** oszlop fejlécére, majd válassza az **Eltávolítás** lehetőséget.
 
     ![Oszlop eltávolítása](media/visualize-power-bi/remove-column.png)
 

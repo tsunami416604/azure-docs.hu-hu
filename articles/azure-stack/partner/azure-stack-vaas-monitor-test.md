@@ -1,6 +1,6 @@
 ---
-title: Egy teszt, az Azure Stack érvényesítési szolgáltatás figyelése |} A Microsoft Docs
-description: Egy teszt, az Azure Stack érvényesítési szolgáltatás figyelésére.
+title: Figyelése és felügyelete az Azure Stack VaaS Portalon tesztek |} A Microsoft Docs
+description: Figyelheti és kezelheti az Azure Stack VaaS Portalon teszteket.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,124 +10,140 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/24/2018
+ms.date: 10/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 2dc4d3f2855864ff80648b5b9635ff28c0dacbb7
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: b9500176cd3779c46886e6ed8bc8c989bea20a8c
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163329"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647511"
 ---
-# <a name="monitor-a-test-with-azure-stack-validation-as-a-service"></a>A figyelő egy test-szolgáltatásként az Azure Stack-érvényesítéssel
+# <a name="monitor-and-manage-tests-in-the-vaas-portal"></a>Figyelheti és kezelheti a VaaS portálon tesztek
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Egy teszt végrehajtása megtekintésével figyelhető a **műveletek** teszt csomagokat tartalmaz, amelyek folyamatban vannak, vagy completed lapját. Ezen az oldalon részletesen a teszt- és a műveletek állapotát.
+Feladatütemezést, a tesztek alapján az Azure Stack megoldás után az érvényesítési (VaaS) szolgáltatás elkezdi teszt végrehajtási állapotát. Ezek az információk a műveleteket, például a tesztek visszavonása és állapotfrissítésére együtt VaaS portálon érhető el.
 
-## <a name="monitor-a-test"></a>A figyelő egy tesztet
+## <a name="navigate-to-the-workflow-tests-summary-page"></a>Keresse meg a munkafolyamat-teszt összefoglaló lap
 
-1. Válasszon ki egy megoldást.
+1. A megoldás irányítópultján válassza ki egy meglévő megoldás, amely legalább egy munkafolyamat rendelkezik.
 
-2. Válassza ki **kezelés** a munkafolyamat csempékre.
+    ![A munkafolyamat-csempék](media/tile_all-workflows.png)
 
-3. Kattintson egy munkafolyamatot a teszt összefoglaló lapjának megnyitásához.
+1. Válassza ki **kezelés** a munkafolyamat csempére. A következő oldalon a munkafolyamatok létrehozása a kiválasztott megoldáshoz tartozó sorolja fel.
 
-4. Bontsa ki a helyi menü **[...]**  bármely suite példány teszteléséhez.
+1. Válassza ki a munkafolyamat nevének, nyissa meg a teszt összegzése.
 
-5. Válassza ki **műveletek megtekintése**
+## <a name="change-workflow-parameters"></a>Munkafolyamat-paraméterek módosítása
 
-![Helyettesítő szöveg](media\image4.png)
+Minden egyes munkafolyamat típusa lehetővé teszi, hogy szerkesztheti a [teszt paramétereiben](azure-stack-vaas-parameters.md#test-parameters) munkafolyamat létrehozása során megadott.
 
-Tartalmazó befejezte a futó tesztek, naplók letölthető a teszt összefoglalás lapon kattintson a **naplók letöltéséhez** egy teszt helyi menüben **[...]** . Az Azure Stack-partnerek ezek a naplók segítségével a sikertelen tesztek kapcsolatos problémák megoldásában.
+1. A tesztek összesítő lapon válassza ki a **szerkesztése** gombra.
 
-## <a name="open-the-test-pass-summary"></a>Nyissa meg a tesztelési fázisban összegzése
+1. Adja meg új értékeket [munkafolyamat általános paramétereit az Azure Stack érvényesítési szolgáltatásként](azure-stack-vaas-parameters.md).
 
-1. Nyissa meg a portálon. 
-2. Válassza ki egy meglévő megoldás, amely tartalmazza a korábban futtatási és ütemezett vizsgálatok nevét.
+1. Válassza ki **küldés** , mentse az értékeket.
 
-    ![Teszt pass kezelése](media/managetestpasses.png)
+> [!NOTE]
+> Az a **Tesztmenetek** munkafolyamat, szüksége lesz a teszt kijelölés befejeződését, és lépjen az Áttekintés lap az új paraméterértékeket mentése előtt.
 
-3. Válassza ki **kezelés** a a **teszt pass** panel.
-4. Válassza ki a tesztelési fázisban, nyissa meg a teszt összegzése adja át. Áttekintheti a tesztnév, létrehozás dátuma, futtassa, hogy mennyi ideig tartott a teszt, és az eredmény (sikeres vagy sikertelen).
-5. Válassza ki [ **...  .** ].
+### <a name="add-tests-test-pass-only"></a>Adja hozzá a tesztek (csak tesztelési fázis)
 
-### <a name="test-pass-summary"></a>Teszt pass összegzése
+A **Tesztmenetek** munkafolyamatokat, mind a **tesztek hozzáadása** és **szerkesztése** gombok lehetővé teszik, hogy a munkafolyamat új vizsgálat ütemezése.
+
+> [!TIP]
+> Válassza ki **tesztek hozzáadása** Ha csak új tesztek ütemezése és paramétereinek szerkesztése nem kell egy **Tesztmenetek** munkafolyamat.
+
+## <a name="managing-test-instances"></a>Test-példányok felügyeletére
+
+Munkaköröket külsős informatikusok futtatások (azaz a **Tesztmenetek** munkafolyamat), a tesztek összegző lap felsorolja az Azure Stack megoldás ütemezett vizsgálatok.
+
+Hivatalos futtatások (azaz a **érvényesítési** munkafolyamatok), a tesztek összegző lap felsorolja a tesztek elvégzése az Azure Stack megoldás érvényesítés szükséges. Ellenőrzések naponkénti gyakoriságra vannak ezen a lapon.
+
+Minden egyes ütemezett vizsgálat példány a következő információkat jelenít meg:
 
 | Oszlop | Leírás |
 | --- | --- |
-| Teszt neve | A teszt neve. Az érvényesítés szám hivatkozik. |
-| Létrehozva | A tesztelési fázisban létrehozásának ideje. |
-| Elindítva | Futott az elmúlt teszt ideje. |
-| Időtartam | Eltelt idő, hogy mennyi időbe telt a tesztelési fázisban futtatásához. |
-| status | Az eredmény (sikeres vagy sikertelen) a rest-fázisához. |
-| Ügynök neve | Az ügynököt teljesen minősített tartománynevét. |
-| Összes művelet | Kísérlet történt a tesztelési fázisban műveletek teljes száma. |
-| Sikeres műveletek | A tesztelési fázis sikeres műveletek száma. |
-|  Sikertelen műveletek | A sikertelen műveletek száma. |
+| Teszt neve | A név és a teszt verziója. |
+| Kategória | A teszt célját. |
+| Létrehozva | A vizsgálat ütemezett időpontja. |
+| Elindítva | Az idő, amikor a teszt végrehajtása elindult. |
+| Időtartam | Mennyi ideig futott a vizsgálatot. |
+| status | Az állapot vagy a teszt eredménye. Végrehajtás előtti vagy a folyamatban lévő állapotok a: `Pending`, `Running`. A Terminálszolgáltatások állapotok a: `Cancelled`, `Failed`, `Aborted`, `Succeeded`. |
+| Ügynök neve | Az ügynök, amely futtatta a teszt neve. |
+| Összes művelet | A kísérlet történt a teszt során műveletek teljes száma. |
+| Sikeres műveletek | A teszt során sikeresen végrehajtott műveletek száma. |
+|  Sikertelen műveletek | A vizsgálat során a sikertelen műveletek száma. |
 
-### <a name="group-columns-in-the-test-pass-summary"></a>Csoport oszlopok a teszt összegzése adja át
+### <a name="actions"></a>Műveletek
 
-Válassza ki, és a egy olyan oszlop húzza át a csoport létrehozása az oszlop értékét a fejléc.
+Minden teszt példány felsorolja az elérhető művelet elvégezhető a helyi menü kattintva **[...]**  a teszt példányok táblában.
 
-## <a name="reschedule-a-test"></a>Ütemezze újra a teszt
+#### <a name="view-information-about-the-test-definition"></a>A test-definíció adatainak megtekintése
 
-1. [Nyissa meg a tesztelési fázisban összegzés](#open-the-test-pass-summary).
-2. Válassza ki **átütemezése** ütemezni a tesztelési fázisban.
-3. Adja meg az Azure Stack-példány a felhőalapú rendszergazdai jelszót.
-4. Adja meg a fiók beállításakor megadott diagnosztikai Storage kapcsolati karakterláncát.
-5. A teszt le.
+Válassza ki **információk megtekintéséhez** a helyi menüből a test-definíció kapcsolatos általános információk megtekintéséhez. Ez ugyanaz a neve és verziója minden teszt példány osztozik.
 
-## <a name="cancel-a-test"></a>Egy teszt megszakítása
-
-1. [Nyissa meg a tesztelési fázisban összegzés](#open-the-test-pass-summary).
-2. Válassza ki **Mégse**.
-
-## <a name="get-test-information"></a>Teszt információk lekérése
-
-1. [Nyissa meg a tesztelési fázisban összegzés](#open-the-test-pass-summary).
-2. Válassza ki **információk megtekintéséhez** ütemezni a tesztelési fázisban.
-
-**Információ tesztelése**
-
-| Name (Név) | Leírás |
+| Teszt tulajdonság | Leírás |
 | -- | -- |
-| Teszt neve | A teszt, például az OEM frissítése az Azure Stack 1806 RC neve. |
-| Teszt verzió | A teszt, például 5.1.4.0 verziója. |
-| Közzétevő | Például a Microsoft a teszt közzétevő. |
-| Kategória | A kategória teszt, mint például **funkcionális** vagy **megbízhatóság**. |
-| Cél-szolgáltatások | A szolgáltatások tesztelt, például a virtuális gép |
+| Teszt neve | A teszt neve. |
+| Teszt verzió | A teszt verziója. |
+| Közzétevő | A közzétevő a teszt. |
+| Kategória |  A teszt célját. |
+| Cél-szolgáltatások | Az Azure Stack-tesztelt szolgáltatások. |
 | Leírás | A teszt leírása. |
-| Becsült időtartam (perc) | Mennyi ideig a teszt telt percek alatt. |
-| Hivatkozások | GitHub-probléma Tracker mutató hivatkozást. |
+| Becsült időtartam (perc) | A teszt a várt futásidőt. |
+| Hivatkozások | A tesztelési vagy kapcsolódási pontokat kapcsolatos információkat. |
 
-## <a name="get-test-parameters"></a>Teszt paraméterek lekérése
+#### <a name="view-test-instance-parameters"></a>Példány tesztparaméterekre nézet
 
-1. [Nyissa meg a tesztelési fázisban összegzés](#open-the-test-pass-summary).
-2. Válassza ki **paraméterek megtekintése** ütemezni a tesztelési fázisban.
+Válassza ki **paraméterek megtekintése** ütemezés időpontjában a teszt példányhoz megadott paraméterek megtekintése a helyi menüből. Bizalmas karakterláncok, jelszavak nem jelennek meg. Ez a művelet csak az ütemezett vizsgálatok esetén érhető el.
 
-**Paraméterek**
+Ezt az ablakot az összes teszt példány a következő metaadatokat tartalmazza:
 
-| Name (Név) | Leírás |
+| Vlastnost instance tesztelése | Leírás |
 | -- | -- |
-| Teszt neve | A teszt, például oemupdate1806test neve. |
-| Teszt verzió | A többi, például 5.1.4.0 verziója. |
-| Teszt Példányazonosító | GUID azonosítója, például a teszt meghatározott példányának 20b20645-b400-4f0d-bf6f-1264d866ada9. |
-| cloudAdminUser | A felhő rendszergazdája használhat, például a fiók nevére **cloudadmin**. |
-| DiagnosticsContainerName | A diagnosztikai tárolót, például azonosítója 04dd3815-5f35-4158-92ea-698027693080. |
+| Teszt neve | A teszt neve. |
+| Teszt verzió | A teszt verziója. |
+| Teszt Példányazonosító | GUID, a teszt meghatározott példányának azonosítója. |
 
-## <a name="get-test-operations"></a>Vizsgálati műveletek beolvasása
+#### <a name="view-test-instance-operations"></a>Teszt példány műveletek megtekintése
 
-1. [Nyissa meg a tesztelési fázisban összegzés](#open-the-test-pass-summary).
-2. Válassza ki **műveleteinek megtekintéséhez** ütemezni a tesztelési fázisban. A műveletek összefoglalás panel nyílik meg.
+Válassza ki **műveleteinek megtekintéséhez** a környezetből menü műveletek állapotának részletes leírását megtekintheti a teszt során végrehajtott. Ez a művelet csak az ütemezett vizsgálatok esetén érhető el.
 
-## <a name="get-test-logs"></a>Vizsgálati naplók lekérése
+![műveletek megtekintése](media/manage-test_context-menu-operations.png)
 
-1. [Nyissa meg a tesztelési fázisban összegzés](#open-the-test-pass-summary).
-2. Válassza ki **naplók letöltéséhez** ütemezni a tesztelési fázisban.  
-    A zip-fájlt a naplók letöltéseket tartalmazó ReleaseYYYY-MM-DD.zip nevű.
+#### <a name="download-logs-for-a-completed-test-instance"></a>Befejezett teszt példány naplók letöltése
+
+Válassza ki **naplók letöltéséhez** letöltése a helyi menüből a `.zip` teszt végrehajtása során a naplók kimeneti fájlt. Ez a művelet akkor csak tesztek számára elérhető, amely befejeződött, azaz egy tesztet vagy állapottal `Cancelled`, `Failed`, `Aborted`, vagy `Succeeded`.
+
+#### <a name="reschedule-a-test-instance-or-schedule-a-test"></a>Egy teszt példány le, vagy egy vizsgálat ütemezése
+
+A kezelés lapon tesztek ütemezése attól függ, hogy a vizsgálat fut, a munkafolyamat típusát.
+
+##### <a name="test-pass-workflow"></a>Tesztmenetek munkafolyamat
+
+A tesztelési fázisban munkafolyamat **újraütemezése** egy teszt példány újrahasználja ugyanazokat a paramétereket az eredeti teszt példánynévvel és *váltja fel* az eredeti eredmény, beleértve a naplókat. Adja meg az például jelszavakat bizalmas karakterláncok újból meg kell.
+
+1. Válassza ki **átütemezése** , nyisson meg egy parancssort a újraütemezése a test-példány a helyi menüből.
+
+1. Adja meg a megfelelő paramétereket.
+
+1. Válassza ki **küldés** ütemezze újra a teszt-példány, és cserélje le a meglévő példány.
+
+##### <a name="validation-workflows"></a>Érvényesítési munkafolyamatok
+
+[!INCLUDE [azure-stack-vaas-workflow-validation-section_schedule](includes/azure-stack-vaas-workflow-validation-section_schedule.md)]
+
+#### <a name="cancel-a-test-instance"></a>Egy teszt példány megszakítása
+
+Ütemezett vizsgálat törlődhet, ha az állapot `Pending` vagy `Running`.  
+
+1. Válassza ki **Mégse** nyisson meg egy parancssort a test-példány a törlés, a helyi menüből.
+
+1. Válassza ki **küldés** megszakítja a test-példány.
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudjon meg többet a [szolgáltatásként az Azure Stack érvényesítési](https://docs.microsoft.com/azure/azure-stack/partner).
+- [Érvényesítési szolgáltatás hibaelhárítása](azure-stack-vaas-troubleshoot.md)

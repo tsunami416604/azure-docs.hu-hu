@@ -13,41 +13,51 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/14/2018
+ms.date: 10/12/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: fcc9f338ad69322091199ce9d5d2d1d6f9f2165e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 78b20b977685989c10ba61a48afee7808c46f227
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227282"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320628"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Rövid útmutató: Linux rendszerű virtuális gép létrehozása az Azure Portalon
 
-Az Azure-beli virtuális gépek (VM-ek) létrehozhatók az Azure Portal segítségével. Ez a módszer egy böngészőalapú felhasználói felületet biztosít a virtuális gépek és a társított erőforrások létrehozásához. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe az Azure Portal segítségével Ubuntu Linux rendszerű virtuális gépeket (VM-eket) az Azure-ban. A virtuális gép működésének ellenőrzéséhez ezután SSH-kapcsolaton keresztül csatlakozzon a géphez, és telepítse az NGINX-webkiszolgálót.
+Az Azure-beli virtuális gépek (VM-ek) létrehozhatók az Azure Portal segítségével. Az Azure Portal egy böngészőalapú felhasználói felület a virtuális gépek és a társított erőforrások létrehozására. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe az Azure Portal segítségével Ubuntu 16.04 LTS-en futó Linux rendszerű virtuális gépeket (VM-eket). A virtuális gép működésének megtekintéséhez hozzon létre SSH-kapcsolatot a virtuális géppel, és telepítse az NGINX-webkiszolgálót.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="create-ssh-key-pair"></a>SSH-kulcspár létrehozása
 
-A rövid útmutató elvégzéséhez egy SSH-kulcspárra lesz szüksége. Ha már rendelkezik SSH-kulcspárral, kihagyhatja ezt a lépést.
+A rövid útmutató elvégzéséhez egy SSH-kulcspárra lesz szüksége. Ha már rendelkezésére áll egy SSH-kulcspár, kihagyhatja ezt a lépést.
 
-A Linux rendszerű virtuális gépekre történő bejelentkezéshez szükséges SSH-kulcspárt az alábbi, a Bash rendszerhéjból futtatható paranccsal hozhatja létre. A futtatást követően kövesse a képernyőn megjelenő utasításokat. Például használhatja az [Azure Cloud Shellt](../../cloud-shell/overview.md) vagy a [Windows linuxos alrendszerét](/windows/wsl/install-win10). A parancs kimenete tartalmazza a nyilvános kulcsfájl fájlnevét. Másolja a nyilvános kulcsfájl (`cat ~/.ssh/id_rsa.pub`) tartalmát a vágólapra:
+SSH-kulcspár létrehozásához nyissa meg a Bash-felületet, és használja az [ssh-keygen](https://www.ssh.com/ssh/keygen/) eszközt. Ha nincs Bash-felület a helyi számítógépén, használhatja az [Azure Cloud Shellt](https://shell.azure.com/bash) is.  
 
 ```bash
 ssh-keygen -t rsa -b 2048
 ```
 
+A fenti parancs nyilvános és titkos kulcsokat hoz létre `id_rsa` alapértelmezett névvel a `~/.ssh directory` helyen. A parancs visszaadja a nyilvános kulcs teljes útvonalát. A nyilvános kulcs útvonalának használatával megjelenítheti annak tartalmát a következővel: `cat`.
+
+```bash 
+cat ~/.ssh/id_rsa.pub
+```
+
+Mentse a parancs kimenetét. Szüksége lesz rá, amikor konfigurálja a rendszergazdai fiókot a virtuális gépbe történő bejelentkezéshez.
+
 Az SSH-kulcspárok létrehozásáról, többek között a PuTTy használatáról az [SSH-kulcsok Windowsban való használatát](ssh-from-windows.md) ismertető cikkben talál részletesebb információt.
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+Ha a Cloud Shell használatával hozza létre az SSH-kulcspárt, az Azure File Share, amely [automatikusan csatlakozik a Cloud Shellhez](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage), eltárolja azt. Ne törölje ezt a fájlmegosztást vagy tárfiókot, amíg le nem kérte a kulcsokat, ellenkező esetben elveszíti a hozzáférést a virtuális géphez. 
 
-Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-1. Válassza az Azure Portal bal felső sarkában az **Erőforrás létrehozása** lehetőséget.
+1. Kattintson az Azure Portal bal felső sarkában az **Erőforrás létrehozása** gombra.
 
 1. Az Azure Marketplace-erőforrások fölött lévő keresőmezőben keressen az **Ubuntu Server 16.04 LTS** (Canonical) elemre, és válassza ki, majd válassza a **Létrehozás** lehetőséget.
 
@@ -67,7 +77,11 @@ Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
 
     ![Az RDP- és a HTTP-portok megnyitása](./media/quick-create-portal/inbound-port-rules.png)
 
-1. Hagyja meg a többi alapértelmezett beállítást, és kattintson a **Felülvizsgálat + létrehozás** gombra a lap alján.
+1. Hagyja változatlanul a többi alapértelmezett beállítást, és kattintson a **Áttekintés + létrehozás** gombra a lap alján.
+
+1. A **Virtuális gép létrehozása** lapon láthatja a létrehozandó virtuális gép részleteit. Ha készen áll, kattintson a **Létrehozás** gombra.
+
+A virtuális gép üzembe helyezése eltarthat néhány percig. Az üzembe helyezés végeztével lépjen tovább a következő szakaszra.
 
     
 ## <a name="connect-to-virtual-machine"></a>Csatlakozás virtuális géphez
@@ -78,32 +92,29 @@ Hozzon léte egy SSH-kapcsolatot a virtuális géppel.
 
     ![Portál – 9](./media/quick-create-portal/portal-quick-start-9.png)
 
-2. A **Csatlakozás virtuális géphez** oldalon tartsa meg az alapértelmezett beállításokat a DNS-név alapján a 22-es porton keresztül való csatlakozáshoz. A **Bejelentkezés a virtuális gép helyi fiókjával** területen egy csatlakozási parancs jelenik meg. Kattintson a gombra a parancs kimásolásához. Az SSH-kapcsolat parancsa az alábbi példához hasonlóan néz ki:
+2. A **Csatlakozás a virtuális géphez** oldalon tartsa meg az alapértelmezett beállításokat az IP-címmel való csatlakozáshoz a 22-es porton keresztül. A **Bejelentkezés a virtuális gép helyi fiókjával** területen egy csatlakozási parancs jelenik meg. Kattintson a gombra a parancs kimásolásához. Az SSH-kapcsolat parancsa az alábbi példához hasonlóan néz ki:
 
     ```bash
-    ssh azureuser@myvm-123abc.eastus.cloudapp.azure.com
+    ssh azureuser@10.111.12.123
     ```
 
-3. Illessze be az SSH-kapcsolat parancsát a rendszerhéjba, például az Azure Cloud Shell vagy a Bash rendszerhéjba a Windows alatt futó Ubuntu rendszeren a kapcsolat létrehozásához. 
+3. SSH-munkamenet létrehozásához az SSH-kulcspár létrehozásakor használt Bash-felület (például [Azure Cloud Shell](https://shell.azure.com/bash) vagy helyi Bash-felület) használatával illessze be az SSH-kapcsolat parancsát a felületre. 
 
 ## <a name="install-web-server"></a>Webkiszolgáló telepítése
 
-A virtuális gép működésének ellenőrzéséhez telepítse az NGINX-webkiszolgálót. A csomagforrások frissítéséhez és a legújabb NGINX-csomag telepítéséhez futtassa a következő parancsokat az SSH-munkamenetből:
+A virtuális gép működésének ellenőrzéséhez telepítse az NGINX-webkiszolgálót. Frissítse a csomag forrásait, majd telepítse a legújabb NGINX-csomagot az SSH-munkamenetből.
 
 ```bash
-# update packages
 sudo apt-get -y update
-
-# install NGINX
 sudo apt-get -y install nginx
 ```
 
-Ha ezzel elkészült, az `exit` paranccsal lépjen ki az SSH-munkamenetből, és térjen vissza a virtuális gép tulajdonságaihoz az Azure Portalon.
+Ha elkészült, az SSH-munkamenetből való kilépéshez írja be a következőt: `exit`.
 
 
 ## <a name="view-the-web-server-in-action"></a>A webkiszolgáló működésének ellenőrzése
 
-Most, hogy az NGINX telepítve van, és a 80-as port meg van nyitva a virtuális gép felé, a webkiszolgáló elérhető az internetről. Nyisson meg egy webböngészőt, és adja meg a virtuális gép nyilvános IP-címét. A nyilvános IP-cím a virtuális gép áttekintő oldalán található, vagy a *Hálózat* oldal tetején, ahol a bejövő portszabályt felveszi.
+Egy tetszőleges böngésző használatával megtekintheti az alapértelmezett NGINX-kezdőlapot. Webcímként adja meg a virtuális gép nyilvános IP-címét. A nyilvános IP-cím a virtuális gép áttekintő oldalán található, vagy a korábban használt SSH-kapcsolati sztring részeként.
 
 ![Alapértelmezett NGINX-webhely](./media/quick-create-cli/nginx.png)
 

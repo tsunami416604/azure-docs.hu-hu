@@ -5,28 +5,26 @@ services: azure-stack
 documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: ''
-ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/12/2018
+ms.date: 10/22/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: c30e70802d125744432f428f903f6ac6789f631e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: e9365008c47c2aac71d3983a16db37b0c5ea62ea
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389225"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648105"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Csatlakozás Azure Stack az Azure ExpressRoute használatával
 
 *A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Ez a cikk bemutatja, hogyan lehet egy Azure Stack virtuális hálózat csatlakoztatása egy Azure virtual network használatával a Microsoft Azure ExpressRoute közvetlen kapcsolatot.
+Ez a cikk bemutatja, hogyan csatlakozhat az Azure Stack virtuális hálózat Azure-beli virtuális hálózathoz egy [a Microsoft Azure ExpressRoute](/azure/expressroute/) közvetlen kapcsolat.
 
 Ez a cikk egy oktatóanyag használja, és a példák segítségével ugyanazt a tesztkörnyezet beállításához. Vagy, a cikk egy útmutató, amely végigvezeti a saját ExpressRoute-környezet beállítására is használhatja.
 
@@ -59,25 +57,25 @@ Az Azure Stacket és az Azure ExpressRoute-tal tudjon csatlakozni a következő 
 
 ### <a name="expressroute-network-architecture"></a>Az ExpressRoute hálózati architektúra
 
-A következő ábrán az Azure Stack és az Azure-környezetek ExpressRoute beállításának befejezése után a példák használata ebben a cikkben.
+Az alábbi ábrán látható az Azure Stack és az Azure-környezetek ExpressRoute beállításának befejezése után ebben a cikkben a példák segítségével:
 
 *1. ábra Az ExpressRoute hálózati*
 
 ![Az ExpressRoute hálózati](media/azure-stack-connect-expressroute/Conceptual.png)
 
-A következő Architektúradiagram bemutatja, hogyan több bérlő elérését az Azure Stack-infrastruktúra az ExpressRoute-útválasztón keresztül az Azure-ba, a Microsoft Edge-ben.
+Az alábbi ábrán látható, hogyan több bérlő elérését az Azure Stack-infrastruktúra az ExpressRoute-útválasztón keresztül az Azure-ba, a Microsoft Edge-ben:
 
 *2. ábra Több-bérlős kapcsolatok*
 
 ![Az expressroute-tal több-bérlős kapcsolatok](media/azure-stack-connect-expressroute/Architecture.png)
 
-Ez a cikk a példában az ugyanazon több-bérlős architektúra látható *2. ábra* való csatlakozáshoz az Azure Stack az Azure-ban, ExpressRoute privát társviszony-létesítés. Ez megtörtént, az Azure Stack használatával a Site-to-Site VPN-kapcsolatot a virtuális hálózati átjáró egy ExpressRoute-útválasztó.
+Ebben a cikkben a példában a 2. ábrán látható ugyanazon több-bérlős architektúra használatával csatlakozzon az Azure Stack az Azure-ban, ExpressRoute privát társviszony-létesítés. A kapcsolat történik az Azure Stack használatával a site-to-site VPN-kapcsolatot a virtuális hálózati átjáró egy ExpressRoute-útválasztó.
 
-A jelen cikkben ismertetett lépések bemutatják, hogyan hozzon létre megfelelő virtuális hálózatokhoz az Azure-ban két különböző bérlőn, az Azure Stack két virtuális hálózat között teljes körű kapcsolatot. Két bérlőjéhez beállítása nem kötelező, egy adott bérlő is használhatja ezeket a lépéseket.
+A jelen cikkben ismertetett lépések bemutatják, hogyan hozzon létre megfelelő virtuális hálózatokhoz az Azure-ban két különböző bérlőn, az Azure Stack két virtuális hálózat között teljes körű kapcsolatot. Két bérlőjéhez beállítása nem kötelező megadni. egyetlen bérlő számára is használhatja ezeket a lépéseket.
 
 ## <a name="configure-azure-stack"></a>Az Azure Stack konfigurálása
 
-Az Azure Stack-környezet az első bérlő számára, használja a lépéseket az alábbi ábrán alapján. Ha egynél több bérlőhöz beállítása, ismételje meg ezeket a lépéseket.
+Az Azure Stack-környezet az első bérlő számára, használja a lépéseket az alábbi ábrán alapján. Ha egynél több bérlőhöz beállítása, ismételje meg ezeket a lépéseket:
 
 >[!NOTE]
 >Ezek a lépések bemutatják, hogyan hozhat létre erőforrásokat az Azure Stack portálon használja, de a PowerShell is használható.
@@ -98,13 +96,14 @@ Az alábbi eljárásokkal a szükséges hálózati erőforrások létrehozása a
 #### <a name="create-the-virtual-network-and-vm-subnet"></a>A virtuális hálózat és a virtuálisgép-alhálózat létrehozása
 
 1. Jelentkezzen be a felhasználói portál (bérlő) felhasználói fiókkal.
-1. Válassza a portál **+ erőforrás létrehozása**.
 
-1. A **Azure Marketplace-en**válassza **hálózatkezelés**.
+2. Válassza a portál **+ erőforrás létrehozása**.
 
-1. A **kiemelt**válassza **virtuális hálózati**.
+3. A **Azure Marketplace-en**válassza **hálózatkezelés**.
 
-1. A **virtuális hálózat létrehozása**, adja meg a megfelelő mezőket az alábbi táblázatban látható értékeket.
+4. A **kiemelt**válassza **virtuális hálózati**.
+
+5. A **virtuális hálózat létrehozása**, adja meg a megfelelő mezőket az alábbi táblázatban látható értékeket:
 
    |Mező  |Érték  |
    |---------|---------|
@@ -113,53 +112,53 @@ Az alábbi eljárásokkal a szükséges hálózati erőforrások létrehozása a
    |Alhálózat neve     |Tenant1-Sub1|
    |Alhálózati címtartomány     |10.1.1.0/24|
 
-1. Most a korábban létrehozott Előfizetést kell látnia az **Előfizetés** mezőben. A többi mezőhöz:
+6. A korábban létrehozott előfizetést kell megjelennie a **előfizetés** mező. A többi mezőhöz:
 
-    * Alatt **erőforráscsoport**, jelölje be **új létrehozása** erőforrást egy újonnan létrehozott csoportot, vagy ha már rendelkezik ilyennel, válassza ki a **meglévő**.
+    * Alatt **erőforráscsoport**, jelölje be **új létrehozása** hozzon létre egy új erőforráscsoportot, vagy ha már rendelkezik ilyennel, válassza ki a **meglévő**.
     * Az alapértelmezett ellenőrzése **hely**.
-    * Kattintson a **Létrehozás** gombra.
-    * (Nem kötelező) Válassza ki **rögzítés az irányítópulton**.
+    * Kattintson a **Create** (Létrehozás) gombra.
+    * (Nem kötelező) Kattintson a **rögzítés az irányítópulton**.
 
 #### <a name="create-the-gateway-subnet"></a>Az átjáróalhálózat létrehozása
 
-1. A **virtuális hálózati**, válassza ki a Tenant1VNet1.
+1. A **virtuális hálózati**válassza **Tenant1VNet1**.
 1. A **BEÁLLÍTÁSOK** területen válassza az **Alhálózatok** elemet.
 1. Válassza ki **+ átjáró-alhálózat** , adjon hozzá egy átjáró-alhálózatot a virtuális hálózathoz.
 1. Az alhálózat neve alapértelmezés szerint **GatewaySubnet**. Átjáró-alhálózatokkal különleges esetet, és ezt a nevet kell használnia a megfelelő működéséhez.
 1. Ellenőrizze, hogy a **címtartomány** van **10.1.0.0/24**.
-1. Válassza ki **OK** az átjáró-alhálózat létrehozásához.
+1. Kattintson a **OK** az átjáró-alhálózat létrehozásához.
 
 #### <a name="create-the-virtual-network-gateway"></a>Virtuális hálózati átjáró létrehozása
 
-1. Az Azure Stack felhasználói portálon, válassza ki a **+ erőforrás létrehozása**.
+1. Az Azure Stack felhasználói portálon kattintson a **+ erőforrás létrehozása**.
 1. A **Azure Marketplace-en**válassza **hálózatkezelés**.
 1. A hálózati erőforrások listájában válassza a **Virtuális hálózati átjáró** elemet.
 1. Az a **neve** írja be a következőt **GW1**.
 1. Válassza ki **virtuális hálózati**.
 1. Válassza ki **Tenant1VNet1** a legördülő listából.
-1. Válassza ki **nyilvános IP-cím**>**nyilvános IP-cím választása**, majd válassza ki **új létrehozása**.
-1. Az a **neve** írja be a következőt **GW1-PiP** válassza **OK**.
+1. Válassza ki **nyilvános IP-cím**, majd **nyilvános IP-cím választása**, és kattintson a **új létrehozása**.
+1. Az a **neve** mezőbe írja be a **GW1-PiP**, és kattintson a **OK**.
 1. Az **VPN típusa** mezőben alapértelmezés szerint a **Útvonalalapú** lehetőség van kiválasztva. Ne módosítsa ezt a beállítást.
-1. Ellenőrizze, hogy az **Előfizetés** és a **Hely** mező értéke helyes-e. Kattintson a **Létrehozás** gombra.
+1. Ellenőrizze, hogy az **Előfizetés** és a **Hely** mező értéke helyes-e. Kattintson a **Create** (Létrehozás) gombra.
 
 #### <a name="create-the-local-network-gateway"></a>A helyi hálózati átjáró létrehozása
 
-A helyi hálózati átjáró erőforrás azonosítja a VPN-kapcsolat másik végén lévő távoli átjárót. Ebben a példában a kapcsolat a távoli vég a hálózati Ébresztés alkapcsolat az ExpressRoute-útválasztó. 1. bérlői, ahogyan *2. ábra*, távoli cím 10.60.3.255.
+A helyi hálózati átjáró erőforrás azonosítja a VPN-kapcsolat másik végén lévő távoli átjárót. Ebben a példában a kapcsolat a távoli vég a hálózati Ébresztés alkapcsolat az ExpressRoute-útválasztó. A távoli cím 10.60.3.255 bérlői 1, 2. ábrán látható.
 
 1. Jelentkezzen be az Azure Stack felhasználói portálon, a felhasználói fiókjával, és válassza ki **+ erőforrás létrehozása**.
 1. A **Azure Marketplace-en**válassza **hálózatkezelés**.
 1. Az erőforrások listájában válassza a **Helyi hálózati átjáró** elemet.
-1. Az a **neve** írja be a következőt **ER-útválasztó-GW**.
-1. Az a **IP-cím** mező, tekintse meg *2. ábra*. Az ExpressRoute útválasztójának LAN subinterface bérlői 1 IP-cím 10.60.3.255 áll. Adja meg a megfelelő az útválasztó-illesztő IP-címét a saját környezetben.
-1. Az a **címtér** mezőben adja meg a virtuális hálózatokkal, amelyhez csatlakozni kíván az Azure-ban, a címtér. A bérlő az 1 alhálózatok *2. ábra* vannak:
+1. Az a **neve** mezőbe írja be a **ER-útválasztó-GW**.
+1. Az a **IP-cím** mezőben lásd a 2. ábra. Az ExpressRoute útválasztó helyi hálózati subinterface bérlői 1 IP-cím 10.60.3.255 áll. Adja meg a megfelelő az útválasztó-illesztő IP-címét a saját környezetben.
+1. Az a **címtér** mezőben adja meg a virtuális hálózatokkal, amelyhez csatlakozni kíván az Azure-ban, a címtér. A bérlő az 1 alhálózatok *2. ábra* az alábbiak szerint:
 
    * 192.168.2.0/24 az agyi virtuális hálózat az Azure-ban.
    * 10.100.0.0/16 a küllő virtuális hálózat az Azure-ban.
 
    > [!IMPORTANT]
-   > Ez a példa feltételezi, hogy a statikus útvonalak használja a Site-to-Site VPN-kapcsolatot az Azure Stack-átjáró és az ExpressRoute-útválasztó között.
+   > Ez a példa feltételezi, hogy statikus útvonalakat használ a Site-to-Site VPN-kapcsolat az Azure Stack-átjáró és az ExpressRoute-útválasztó között.
 
-1. Ellenőrizze, hogy a **előfizetés**, **erőforráscsoport**, és **hely** helyes-e. Kattintson a **Létrehozás** gombra.
+1. Ellenőrizze, hogy a **előfizetés**, **erőforráscsoport**, és **hely** helyes-e. Ezt követően kattintson a **Create** (Létrehozás) gombra.
 
 #### <a name="create-the-connection"></a>A kapcsolat létrehozása
 
@@ -174,9 +173,9 @@ A helyi hálózati átjáró erőforrás azonosítja a VPN-kapcsolat másik vég
 1. Az a **megosztott kulcs (PSK)** írja be a következőt **abc123** majd **OK**.
 1. A **összefoglalás**válassza **OK**.
 
-**A virtuális hálózati átjáró nyilvános IP-címének lekérése**
+#### <a name="get-the-virtual-network-gateway-public-ip-address"></a>A virtuális hálózati átjáró nyilvános IP-címének lekérése
 
-A virtuális hálózati átjáró létrehozása után megtekintheti az átjáró nyilvános IP-címet. Jegyezze meg ezt a címet arra az esetre, szükség esetén később az üzembe helyezéshez. A telepítéstől függően ez lesz a ***belső IP-cím***.
+A virtuális hálózati átjáró létrehozása után megtekintheti az átjáró nyilvános IP-címet. Jegyezze meg ezt a címet arra az esetre, szükség esetén később az üzembe helyezéshez. A telepítéstől függően ez lesz a **belső IP-cím**.
 
 1. Az Azure Stack felhasználói portálon, válassza ki a **összes erőforrás**.
 1. A **összes erőforrás**, válassza ki a virtuális hálózati átjáró, amely **GW1** példában.
@@ -192,10 +191,10 @@ A VPN-kapcsolaton keresztüli adatforgalom teszteléséhez küldhet és fogadhat
 1. A virtuálisgép-rendszerképek listájában válassza ki a **Windows Server 2016 Datacenter próbaverzió** kép.
 
    >[!NOTE]
-   >Ha ebben a cikkben használt kép nem érhető el, kérje meg, adjon meg egy másik Windows Server-lemezképet az Azure Stack-operátorokról.
+   >Ha nem érhető el az ebben a cikkben használt lemezképet, kérje meg, adjon meg egy másik Windows Server-lemezképet az Azure Stack-operátorokról.
 
-1. A **hozzon létre virtuális gépet**>**alapjai**, adja meg **VM01** , a **neve**.
-1. Adjon meg egy érvényes felhasználónevet és jelszót. Miután létrejött a virtuális géphez bejelentkezni ezt a fiókot fogja használni.
+1. A **hozzon létre virtuális gépet**, jelölje be **alapjai**, majd írja be a **VM01** , a **neve**.
+1. Adjon meg egy érvényes felhasználónevet és jelszót. Ezt a fiókot fogja használni a létrehozásuk után a virtuális gépre bejelentkezni.
 1. Adjon meg egy **előfizetés**, **erőforráscsoport**, és a egy **hely**. Kattintson az **OK** gombra.
 1. A **méret kiválasztása**, a példány virtuálisgép-méretet, majd válassza ki és **kiválasztása**.
 1. A **beállítások**, ellenőrizze, hogy:
@@ -203,27 +202,25 @@ A VPN-kapcsolaton keresztüli adatforgalom teszteléséhez küldhet és fogadhat
    * A virtuális hálózat **Tenant1VNet1**.
    * Az alhálózat beállítása pedig **10.1.1.0/24**.
 
-   Az alapértelmezett beállításokat használja, és válassza ki **OK**.
+   Az alapértelmezett beállításokat használja, és kattintson a **OK**.
 
-1. A **összefoglalás**, tekintse át a virtuális gép konfigurációját, és válassza ki **OK**.
+1. A **összefoglalás**, tekintse át a virtuális gép konfigurációjához, majd kattintson **OK**.
 
->[!NOTE]
->
->További bérlők hozzáadásához ismételje meg az ezekben a szakaszokban követte a lépéseket:
->
->* A virtuális hálózat és a virtuálisgép-alhálózat létrehozása
->* Az átjáróalhálózat létrehozása
->* Virtuális hálózati átjáró létrehozása
->* A helyi hálózati átjáró létrehozása
->* A kapcsolat létrehozása
->* Virtuális gép létrehozása
->
->Ha a bérlő 2 használja példaként, ne felejtse el módosítani az átfedés elkerülése érdekében az IP-címek.
+További bérlők hozzáadásához ismételje meg az ezekben a szakaszokban követte a lépéseket:
+
+* [A virtuális hálózat és a Virtuálisgép-alhálózat létrehozása](#create-the-virtual-network-and-vm-subnet)
+* [Az átjáró-alhálózat létrehozása](#create-the-gateway-subnet)
+* [A virtuális hálózati átjáró létrehozása](#create-the-virtual-network-gateway)
+* [A helyi hálózati átjáró létrehozása](#create-the-local-network-gateway)
+* [A kapcsolat létrehozása](#create-the-connection)
+* [Virtuális gép létrehozása](#create-a-virtual-machine)
+
+Ha például a bérlő 2 használ, ne felejtse el módosítani az IP-címek átfedés elkerülése érdekében.
 
 ### <a name="configure-the-nat-virtual-machine-for-gateway-traversal"></a>Konfigurálja a NAT virtuális gépet átjáróátjáráshoz
 
 > [!IMPORTANT]
-> Ez a szakasz csak az Azure Stack Development Kit központi telepítésekhez van. A NAT több csomópontos rendszerekhez nem szükséges.
+> Ez a szakasz csak az Azure Stack Development Kit (ASDK) üzembe helyezések szól. A NAT több csomópontos rendszerekhez nem szükséges.
 
 Az Azure Stack Development Kit az önálló és elkülönül a hálózaton, ahol a fizikai gazdagépen üzemel. A VIP-hálózat, amely az átjárók csatlakoznak, nem külső, azt a hálózati címfordítás (NAT) használatával egy útválasztó mögé van elrejtve.
 
@@ -232,21 +229,20 @@ Az útválasztó az Útválasztás és távelérés szolgáltatást (RRAS) szere
 #### <a name="configure-the-nat"></a>A NAT konfigurálása
 
 1. Jelentkezzen be rendszergazdai fiókjával az Azure Stack gazdagépen.
-1. Másolja, és szerkessze a következő PowerShell-parancsfájlt.  Cserélje le `"<your administrator password>"` az a rendszergazdai jelszót, és futtassa a parancsfájlt egy rendszergazda jogú PowerShell ISE-ben. Ez a szkript adja vissza a *külső BGPNAT cím*.
+1. Másolja, és szerkessze a következő PowerShell-parancsfájlt. Cserélje le `"your administrator password"` az a rendszergazdai jelszót, és futtassa a parancsfájlt egy rendszergazda jogú PowerShell ISE-ben. Ez a szkript adja vissza a **külső BGPNAT cím**.
 
    ```PowerShell
    cd \AzureStack-Tools-master\connect
    Import-Module .\AzureStack.Connect.psm1
-   $Password = ConvertTo-SecureString "<your administrator password>" `
+   $Password = ConvertTo-SecureString "your administrator password" `
     -AsPlainText `
     -Force
    Get-AzureStackNatServerAddress `
     -HostComputer "azs-bgpnat01" `
     -Password $Password
-
    ```
 
-1. Adja meg a NAT, másolja, és szerkessze a következő PowerShell-parancsfájlt. Szerkessze a szkriptet, cserélje le a `'<External BGPNAT address>'` és `'<Internal IP address>'` az alábbi példa értékekkel:
+1. Adja meg a NAT, másolja, és szerkessze a következő PowerShell-parancsfájlt. Szerkessze a szkriptet, cserélje le a `'External BGPNAT address'` és `'Internal IP address'` az alábbi példa értékekkel:
 
    * A *külső BGPNAT cím* 10.10.0.62 használata
    * A *belső IP-cím* 192.168.102.1 használata
@@ -254,8 +250,8 @@ Az útválasztó az Útválasztás és távelérés szolgáltatást (RRAS) szere
    Futtassa a következő parancsfájl egy rendszergazda jogú PowerShell ISE-ben:
 
    ```PowerShell
-   $ExtBgpNat = '<External BGPNAT address>'
-   $IntBgpNat = '<Internal IP address>'
+   $ExtBgpNat = 'External BGPNAT address'
+   $IntBgpNat = 'Internal IP address'
 
    # Designate the external NAT address for the ports that use the IKE authentication.
    Invoke-Command `
@@ -297,7 +293,7 @@ Az útválasztó az Útválasztás és távelérés szolgáltatást (RRAS) szere
 
 ## <a name="configure-azure"></a>Az Azure konfigurálása
 
-Azure Stack konfigurálása után telepítheti az Azure-erőforrások. Az alábbi ábrán látható egy példa egy bérlői virtuális hálózathoz az Azure-ban. Bármilyen nevet és a címzési séma használhatja a virtuális hálózat az Azure-ban. Azonban az Azure és az Azure Stack a virtuális hálózat címtartománya kell egyedinek lennie, és nem lehetnek átfedésben.
+Azure Stack konfigurálása után telepítheti az Azure-erőforrások. Az alábbi ábrán egy példa egy bérlői virtuális hálózathoz az Azure-ban. Bármilyen nevet és a címzési séma használhatja a virtuális hálózat az Azure-ban. Az Azure és az Azure Stack a virtuális hálózat címtartománya azonban egyedinek kell lennie, és nem lehetnek egymással átfedésben.
 
 *3. ábra Azure virtuális hálózatok*
 
@@ -313,7 +309,7 @@ Az erőforrások központi telepítése az Azure-ban hasonlóak az Azure Stackbe
 
 A példában az Azure hálózati infrastruktúra konfigurációja a következő:
 
-* Standard szintű központ (192.168.2.0/24) és (10.100.0.0./16) küllő virtuális hálózatok közötti modell. Egy küllős hálózati topológia kapcsolatos további információkért lásd: [küllős hálózati topológia implementálása az Azure-ban](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke).
+* Standard szintű központ (192.168.2.0/24) és (10.100.0.0./16) küllő virtuális hálózatok közötti modell. Egy küllős hálózati topológia kapcsolatos további információkért lásd: [küllős hálózati topológia implementálása az Azure-ban](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke).
 * A munkaterhelések vannak üzembe helyezve a küllő virtuális hálózat és az agyi virtuális hálózat az ExpressRoute-kapcsolatcsoporthoz csatlakozik.
 * A két virtuális hálózat virtuális hálózatok közötti társviszony-nel csatlakoztatott.
 
@@ -333,7 +329,7 @@ Az Azure-beli virtuális hálózatok létrehozásával kapcsolatos további info
 1. Kövesse a [létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) egy ExpressRoute-kapcsolatcsoporttal az Azure-előfizetés létrehozásához.
 
    >[!NOTE]
-   >Adjon a kulcs a kapcsolatcsoport a szolgáltatáshoz, hogy beállításával biztosíthatja az ExpressRoute-kapcsolatcsoport a végén.
+   >Adjon a kulcs a kapcsolatcsoport a szolgáltatáshoz, hogy azok állíthat be az ExpressRoute-kapcsolatcsoport a végén.
 
 1. Kövesse a [létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport társviszony-létesítést](../expressroute/expressroute-howto-routing-portal-resource-manager.md) konfigurálása a privát társviszony-létesítést az ExpressRoute-kapcsolatcsoportot.
 
@@ -360,17 +356,15 @@ Ismételje meg ezeket a lépéseket minden olyan további bérlői virtuális h�
 
 ## <a name="configure-the-router"></a>Az útválasztó konfigurálása
 
-A következő használható *útválasztó konfigurálása ExpressRoute* diagram konfigurálása az ExpressRoute-útválasztó segítségképp. Az ábrán két bérlő (1 bérlői és bérlői 2) a megfelelő ExpressRoute-Kapcsolatcsoportok az. Mindegyik bérlő saját VRF (virtuális útválasztást és a továbbítás) az ExpressRoute-útválasztó LAN és WAN oldalán van csatolva. Ez a konfiguráció biztosítja, hogy a két bérlőjéhez végpontok közötti elkülönítését. Jegyezze fel a példakonfigurációt végrehajtásával lehetősége van az útválasztó felületei használt IP-címeket.
+A következő ExpressRoute-útválasztó konfigurációs diagram segítségképp használható az ExpressRoute-útválasztó konfigurálása. Az ábrán két bérlő (1 bérlői és bérlői 2) a megfelelő ExpressRoute-Kapcsolatcsoportok az. Mindegyik bérlő saját VRF (virtuális útválasztást és a továbbítás) az ExpressRoute-útválasztó LAN és WAN oldalán van csatolva. Ez a konfiguráció biztosítja, hogy a két bérlőjéhez végpontok közötti elkülönítését. Jegyezze fel a példakonfigurációt végrehajtásával lehetősége van az útválasztó felületei használt IP-címeket.
 
 *4. ábra Az ExpressRoute-útválasztó konfigurációját*
 
 ![Az ExpressRoute-útválasztó konfigurációját](media/azure-stack-connect-expressroute/EndToEnd.png)
 
-Használhat bármilyen útválasztó, amely támogatja az IKEv2 VPN és BGP leállítja az Azure Stack Site-to-Site VPN-kapcsolatot. Az azonos útválasztó csatlakoztatása az Azure ExpressRoute-kapcsolatcsoporttal történő szolgál.
+Használhat bármilyen útválasztó, amely támogatja az IKEv2 VPN és BGP leállítja az Azure Stack site-to-site VPN-kapcsolatot. Az azonos útválasztó csatlakoztatása az Azure ExpressRoute-kapcsolatcsoporttal történő szolgál.
 
 Az alábbi példa a Cisco ASR 1000 sorozatú összesítési szolgáltatás útválasztó konfiguráció támogatja a hálózati infrastruktúra, ahogyan a *ExpressRoute útválasztó-konfigurálási* diagramja.
-
-**Cisco ASR 1000 példakonfigurációt**
 
 ```
 ip vrf Tenant 1
@@ -603,14 +597,13 @@ Hajtsa végre a következő ping-vizsgálatok:
 
 ### <a name="allow-icmp-in-through-the-firewall"></a>Az ICMP engedélyezése a tűzfalon keresztül
 
-Alapértelmezés szerint a Windows Server 2016 nem engedélyezi a bejövő ICMP-csomagokat a tűzfalon keresztül. Minden virtuális gép, amelyen a ping teszteknél, engedélyeznie kell a bejövő ICMP-csomagokat. Hozzon létre egy tűzfalszabályt az ICMP, futtassa a következő parancsmagot egy emelt szintű PowerShell-ablakban:
+Alapértelmezés szerint a Windows Server 2016 nem engedélyezi a bejövő ICMP-csomagokat a tűzfalon keresztül. Minden virtuális gép használhat olyan ping teszteknél engedélyeznie kell a bejövő ICMP-csomagokat. Hozzon létre egy tűzfalszabályt az ICMP, futtassa a következő parancsmagot egy emelt szintű PowerShell-ablakban:
 
 ```PowerShell
 # Create ICMP firewall rule.
 New-NetFirewallRule `
   –DisplayName “Allow ICMPv4-In” `
   –Protocol ICMPv4
-
 ```
 
 ### <a name="ping-the-azure-stack-virtual-machine"></a>Az Azure Stack-virtuális gép pingelése
@@ -625,11 +618,11 @@ New-NetFirewallRule `
 
 1. Pingelje az IPv4-címet a virtuális gépről az Azure virtuális hálózat.
 
-   A példában a környezetben az IPv4-cím van 10.1.1.x/24 az alhálózatról. A környezetben a cím eltérhet. De a bérlői virtuális hálózat alhálózatához létrehozta az alhálózaton kell lennie.
+   A példában a környezetben az IPv4-cím van 10.1.1.x/24 az alhálózatról. A környezetben előfordulhat, hogy a címe különböző, de a bérlői virtuális hálózat alhálózatához létrehozta az alhálózaton kell lennie.
 
 ### <a name="view-data-transfer-statistics"></a>Adatok adatátviteli statisztika megtekintése
 
-Ha szeretné tudni, hogy mekkora forgalom, ha a kapcsolaton keresztül továbbítja, megtalálhatja ezeket az adatokat az Azure Stack felhasználói portálon. Ez egyben talál-e a ping teszt adatai végighaladt-e a VPN és ExpressRoute-kapcsolatok segítségével.
+Ha szeretné tudni, hogy mekkora forgalom, ha a kapcsolaton keresztül továbbítja, megtalálhatja ezeket az adatokat az Azure Stack felhasználói portálon. Ez az is jó módszer talál-e a ping teszt adatai végighaladt-e a VPN és ExpressRoute-kapcsolatok:
 
 1. Jelentkezzen be az Azure Stack felhasználói portálon, a bérlő fiókjával, és válassza ki **összes erőforrás**.
 1. A VPN-átjáró esetében keresse meg az erőforráscsoportot, és válassza ki a **kapcsolat** objektumtípus.

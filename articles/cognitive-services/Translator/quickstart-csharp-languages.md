@@ -10,18 +10,16 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 967e978518debb5aef071807b1482d6f225c062f
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 82e051895bd5ba8542fa32aa147b050a25c43c84
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367712"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318398"
 ---
 # <a name="quickstart-get-supported-languages-with-c35"></a>Rövid útmutató: Támogatott nyelvek lekérése a C&#35; használatával
 
 Ebben a rövid útmutatóban lekéri a fordításhoz, átíráshoz és szótárban való kereséshez támogatott nyelvek, valamint példák listáját a Translator Text API segítségével.
-
-A minta forráskódja a [GitHubon](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,6 +28,9 @@ A kód Windows rendszeren történő futtatásához [Visual Studio 2017](https:/
 A Translator Text API használatához szüksége van egy előfizetési kulcsra is. Lásd [a Translator Text API regisztrációját](translator-text-how-to-signup.md).
 
 ## <a name="languages-request"></a>Languages kérés
+
+> [!TIP]
+> Szerezze be a legújabb kódot a [Githubról](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp).
 
 A következő kód lekéri a fordításhoz, átíráshoz és szótárban való kereséshez támogatott nyelveket és példákat a [Languages](./reference/v3-0-languages.md) metódussal.
 

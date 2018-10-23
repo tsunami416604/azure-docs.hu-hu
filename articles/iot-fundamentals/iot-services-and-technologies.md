@@ -7,18 +7,20 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: 6a44c36b5dd87c28db3de34a6858e29fb5730117
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 6834ad6c6915ceb3306284ea738d76027e2c9479
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067334"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365356"
 ---
 # <a name="azure-iot-technologies-and-solutions-paas-and-saas"></a>Azure IoT-technológiák és -megoldások: PaaS és SaaS
 
 Microsoft valamennyi ügyfél igényeit támogató portfóliót épített fel, lehetővé téve mindenki számára a digitális átalakulás előnyeinek kihasználását. Az Azure IoT-termékportfólió a rendelkezésre álló PaaS/SaaS-technológiák és -megoldások áttekintése. Bemutatja a saját megoldásának létrehozásához rendelkezésre álló két lehetőséget:
 
-- Platformszolgáltatás (PaaS): létrehozhatja saját alkalmazását az [Azure IoT-megoldásgyorsítókkal](https://www.azureiotsolutions.com/), vagyis előre konfigurált, vállalati szintű megoldások gyűjteményének használatával, amelyek lehetővé teszik az egyéni IoT-megoldások fejlesztésének felgyorsítását.
+- Szolgáltatásként nyújtott platform (PaaS): használja az alábbi szolgáltatásokat az alkalmazás létrehozásához.
+    - Az [Azure IoT-megoldásgyorsítók](https://www.azureiotsolutions.com/), amelyek előre konfigurált, vállalati szintű megoldások gyűjteményét jelentik, és lehetővé teszik az egyéni IoT-megoldások fejlesztésének felgyorsítását, vagy 
+    - [az Azure Digital Twins](https://azure.microsoft.com/services/digital-twins/) szolgáltatás, amely lehetővé teszi a fizikai környezet modellezését környezetfüggő IoT-megoldások létrehozásához, térbeliintelligencia-diagram és tartományspecifikus objektummodellek használatával.
 
 - Szolgáltatott szoftver (SaaS): gyorsan lendületbe jöhet az [Azure IoT Central](https://azure.microsoft.com/services/iot-central/) az új SaaS-megoldás használatával, amellyel az IoT-megoldás bonyolultságának való kitettség nélkül fejleszthet IoT-alkalmazásokat. Arra az esetre, ha a szervezet nem rendelkezik saját IoT-megoldás felépítéséhez szükséges erőforrásokkal, az Azure IoT Central egy kód nélküli IoT-megoldás, amelyekkel percek alatt létrehozhat eszközmodelleket, irányítópultokat és szabályokat.
 
@@ -96,6 +98,9 @@ Az [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) egy teljesen f
 
 ### <a name="edge"></a>Edge
 Az [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) egy eszközök internetes hálózata (IoT) típusú szolgáltatás. Ez a szolgáltatás olyan ügyfelek számára ideális, akik eszközökön szeretnék elemezni az adatokat, vagyis a hálózat élén „edge”. Ha a számítási feladat egyes részeinek élre helyezésével csökkentett késést érhet el, és lehetősége nyílik offline fogatókönyvek megvalósítására.
+
+### <a name="spatial-intelligence"></a>Térbeli intelligencia
+[Az Azure Digital Twins](https://azure.microsoft.com/services/digital-twins/) egy IoT-szolgáltatás, amely lehetővé teszi egy fizikai környezet modelljének létrehozását. Egy térbeliintelligencia-diagramot biztosít, amellyel a személyek, terek és eszközök közötti kapcsolatok és interakciók modellezhetők. A digitális és a fizikai világ adatainak összevetésével környezetfüggő megoldásokat hozhat létre.  
 
 ### <a name="data-and-analytics"></a>Adatok és analitika
 Kihasználhatja az Azure-adattömbök és az elemzési PaaS-ajánlatok előnyeit IoT-megoldásában a felhőalapú intelligencia élben történő megvalósításától az Azure Machine Learninggel, az IoT-adatok Azure Data Lake szolgáltatásban való költséghatékony tárolásán át, az IoT-eszközökről származó nagy mennyiségű adat [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/) szolgáltatásban való vizualizációjáig.

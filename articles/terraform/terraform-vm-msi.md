@@ -1,6 +1,6 @@
 ---
-title: Egy Azure Marketplace-rendszerképpel egy Terraformot használó linuxos virtuális gépet hozhat létre a Managed Service Identity használatával
-description: Egy Marketplace-rendszerképpel egy Terraformot használó linuxos virtuális gépet hozhat létre a Managed Service Identity és a Remote State Management használatával az erőforrások Azure-ban történő egyszerű üzembe helyezéséhez.
+title: Egy Azure Marketplace-rendszerképpel egy Terraformot használó linuxos virtuális gépet hozhat létre egy felügyelt identitás használatával
+description: Egy Marketplace-rendszerképpel egy Terraformot használó linuxos virtuális gépet hozhat létre egy felügyelt identitás és a Remote State Management használatával az erőforrások Azure-ban történő egyszerű üzembe helyezéséhez.
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, MSI, virtuális gép, távoli állapot, azure
@@ -9,16 +9,16 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: 0136966576e3fbb22855d74cc1866e48b4ac24c9
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 1ec6228993c516ce2974c64bfa5b6dcdf63e7f91
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669387"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343826"
 ---
-# <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-service-identity"></a>Egy Azure Marketplace-rendszerképpel egy Terraformot használó linuxos virtuális gépet hozhat létre a Managed Service Identity használatával
+# <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Egy Azure Marketplace-rendszerképpel egy Terraformot használó linuxos virtuális gépet hozhat létre az Azure-erőforrások felügyelt identitásaival
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre Ubuntu Linux rendszerű virtuális gépet (16.04 LTS) egy [Terraform Marketplace-rendszerkép](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.terraform?tab=Overview) használatával, a legújabb [Terraform](https://www.terraform.io/intro/index.html)-verzió telepítése és a [Managed Service Identity (MSI)](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) konfigurálása mellett. Ez a rendszerkép távoli hátteret konfigurál a [távoli állapot](https://www.terraform.io/docs/state/remote.html) a Terraform használatával történő felügyeletének lehetővé tételéhez. 
+Ebből a cikkből megtudhatja, hogyan hozhat létre Ubuntu Linux rendszerű virtuális gépet (16.04 LTS) egy [Terraform Marketplace-rendszerkép](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.terraform?tab=Overview) használatával, a legújabb [Terraform](https://www.terraform.io/intro/index.html)-verzió az [Azure-erőforrások felügyelt identitásaival](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) való telepítése és konfigurálása mellett. Ez a rendszerkép távoli hátteret konfigurál a [távoli állapot](https://www.terraform.io/docs/state/remote.html) a Terraform használatával történő felügyeletének lehetővé tételéhez. 
 
 A Terraform Marketplace-rendszerkép megkönnyíti a Terraform a Terraform manuális telepítése és konfigurálása nélküli használatának megkezdését az Azure-ban. 
 
@@ -79,13 +79,13 @@ A Terraformot használó virtuálisgép-rendszerkép a következő lépéseket v
 
 A virtuális gép létrehozása után SSH-val bejelentkezhet rá. A 3. lépés „Alapvető beállítások” szakaszában létrehozott fiókhitelesítő adatokat használja a szöveges parancssorhoz. Windows rendszeren letölthet egy SSH-ügyféleszközt (például a [Puttyt](http://www.putty.org/)).
 
-Miután SSH-val csatlakozott a virtuális géphez, közreműködői engedélyeket kell adnia a Managed Service Identity számára a teljes előfizetéshez a virtuális gépen. 
+Miután SSH-val csatlakozott a virtuális géphez, közreműködői engedélyeket kell adnia az Azure-erőforrások felügyelt identitásai számára a teljes előfizetéshez a virtuális gépen. 
 
 A virtuális gépen a közreműködői engedély segít az MSI-nek, hogy a Terraform használatával erőforrásokat hozzon létre a virtuális gép erőforráscsoportján kívül. Egy szkript egyszeri futtatásával ezt a műveletet könnyedén elvégezheti. Használja az alábbi parancsot:
 
 `. ~/tfEnv.sh`
 
-Az előző szkript az [AZ CLI 2.0 interaktív bejelentkezési](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in) mechanizmust használja az Azure-ral való hitelesítéshez, és a virtuális gép Managed Service Identity-közreműködői engedélyének a teljes előfizetésben történő hozzárendeléséhez. 
+Az előző szkript az [AZ CLI 2.0 interaktív bejelentkezési](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in) mechanizmust használja az Azure-ral való hitelesítéshez, és a virtuális gép felügyelt identitása közreműködői engedélyének a teljes előfizetésben történő hozzárendeléséhez. 
 
  A virtuális gép távoli Terraform-állapotú háttérrel rendelkezik. Ha engedélyezni szeretné a Terraform-környezeten, másolja a remoteState.tf fájlt a tfTemplate könyvtárból a Terraform-szkriptek gyökérkönyvtárába.  
 

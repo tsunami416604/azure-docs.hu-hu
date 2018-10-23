@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 09/13/2018
 ms.custom: it-pro
-ms.openlocfilehash: 755c301651e7c49faa8b05b2b443c5cce1a03c90
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 08d32a99e2f1a77bcc7a5900b47e6771c33ec356
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364053"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393321"
 ---
 # <a name="what-is-azure-active-directory"></a>Mi az az Azure Active Directory?
 Az Azure Active Directory (Azure AD) a Microsoft több-bérlős, felhőalapú címtár és identitáskezelési szolgáltatása. Az Azure AD egyetlen megoldásban egyesíti az alapvető címtárszolgáltatásokat, az alkalmazáshozzáférés-felügyeletet és az identitás védelmet, egy szabványalapú platform, amely segít a fejlesztőknek, hogy központi szabályzatokon és szabályokon alapuló hozzáférés-vezérléssel bővíthessék alkalmazásaikat.
@@ -56,7 +56,7 @@ A szolgáltatói szerződésekről a [szolgáltatói szerződések](https://azur
 ## <a name="choose-an-edition"></a>Kiadás kiválasztása
 Az összes üzleti Microsoft Online-szolgáltatás az Azure AD-t alkalmazza a bejelentkezési és egyéb identitásokkal kapcsolatos igényekhez. Bármely üzleti Microsoft Online-szolgáltatás (például az Office 365 vagy a Microsoft Azure) előfizetőjeként az Azure AD összes ingyenes szolgáltatásához automatikusan hozzáférést kap. Az Azure Active Directory ingyenes kiadása lehetővé teszi a felhasználók és csoportok kezelését, a helyi címtárakkal való szinkronizálást, valamint az egyszeri bejelentkezés használatát az Azure-ban, az Office 365-ben és olyan népszerű SaaS-alkalmazások ezreiben, mint a Salesforce, a Workday, a Concur, a DocuSign, a Google Apps, a Box, a ServiceNow és a Dropbox. 
 
-Az Azure AD kiegészíthető fizetős funkciókkal is, ha frissít az alapszintű Azure Active Directory, a P1 prémium és P2 prémium kiadásokra. Az Azure AD fizetős kiadásai a meglévő ingyenes címtárra épülnek, és különféle nagyvállalati képességeket biztosítanak az önkiszolgáló ügyintézéstől, a fejlett monitorozáson, a biztonsági jelentéseken és a Multi-Factor Authentication (MFA) hitelesítésen át a mobil munkaerő számára a biztonságos hozzáférés biztosításáig.
+Az Azure AD-implementációt fizetős képességekkel is kibővítheti, ha az Azure Active Directory Alapszintű, Prémium P1 és Prémium P2 kiadására frissít. Az Azure AD fizetős kiadásai a meglévő ingyenes címtárra épülnek, és különféle nagyvállalati képességeket biztosítanak az önkiszolgáló ügyintézéstől, a fejlett monitorozáson, a biztonsági jelentéseken és a Multi-Factor Authentication (MFA) hitelesítésen át a mobil munkaerő számára a biztonságos hozzáférés biztosításáig.
 
 > [!NOTE]
 > Ezeknek a kiadásoknak az árképzésével kapcsolatban lásd az [Azure Active Directory díjszabását](https://azure.microsoft.com/pricing/details/active-directory/). Az Azure Active Directory Prémium P1 és Prémium P2, valamint az Azure Active Directory Alapszintű kiadás használata Kínában jelenleg nem támogatott. Az Azure Active Directory díjszabásával kapcsolatos további információért tekintse meg az Azure Active Directoryval foglalkozó fórumot.

@@ -10,18 +10,16 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 4569a580dfdad3a71201e607ae5b7895d0d01099
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 699c4b775f2c5745a5b52593d44a0af408c5e73a
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364346"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319606"
 ---
 # <a name="quickstart-get-sentence-lengths-with-c35"></a>Rövid útmutató: Mondathosszok lekérése a C&#35; használatával
 
 Ebben a rövid útmutatóban kideríti egy szövegben a mondatok hosszát a Translator Text API segítségével.
-
-A minta forráskódja a [GitHubon](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,6 +28,9 @@ A kód Windows rendszeren történő futtatásához [Visual Studio 2017](https:/
 A Translator Text API használatához szüksége van egy előfizetési kulcsra is. Lásd [a Translator Text API regisztrációját](translator-text-how-to-signup.md).
 
 ## <a name="breaksentence-request"></a>BreakSentence kérés
+
+> [!TIP]
+> Szerezze be a legújabb kódot a [Githubról](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp).
 
 A következő kód mondatokra tagolja a forrásszöveget a [BreakSentence](./reference/v3-0-break-sentence.md) metódussal.
 

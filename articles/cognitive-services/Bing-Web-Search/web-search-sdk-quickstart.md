@@ -10,18 +10,16 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/16/2018
 ms.author: erhopf
-ms.openlocfilehash: cebeab562a54ec68b69eb6422685cc4b596ac223
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 04a70c2afbd499d3965e23487cd49540b38e08af
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127884"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318656"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Rövid útmutató: A C#-hez készült Bing Web Search SDK használata
 
 A Bing Web Search SDK megkönnyíti a Bing Web Search integrálását a C#-alkalmazásába. Ebben a rövid útmutatóban elsajátíthatja az ügyfél-példányosítás, a kérésküldés és a válaszmegjelenítés módját.
-
-Szeretné most rögtön megtekinteni a kódot? A [C#-hez készült Bing Web Search SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/) megtekinthetők a GitHubon.
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
@@ -36,6 +34,9 @@ Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 * [.NET Core SDK](https://www.microsoft.com/net/download)
 
 ## <a name="create-a-project-and-install-dependencies"></a>Projekt létrehozása és a függőségek telepítése
+
+> [!TIP]
+> Szerezze be a legújabb kódot Visual Studio-megoldásként a [GitHubról](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/).
 
 Az első lépés egy új konzolprojekt létrehozása. Ha segítségre van szüksége a konzolprojekt létrehozásához, tekintse meg a [Hello World – Az első saját programom](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program) C#-programozási útmutatót. Ha a Bing Web Search SDK-t használná az alkalmazásában, a NuGet-csomagkezelővel telepítse a következőt: `Microsoft.Azure.CognitiveServices.Search.WebSearch`.
 

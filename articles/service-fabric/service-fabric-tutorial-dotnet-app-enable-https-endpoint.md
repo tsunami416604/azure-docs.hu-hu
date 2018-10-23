@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/12/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 27167b011e23befda5d0c3703adeafc1581f4b98
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 4333a234efe96f32541254819c9c5f21bb031757
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268935"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115076"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Oktatóanyag: HTTPS-végpont hozzáadása ASP.NET Core Web API előtér-szolgáltatáshoz a Kestrel használatával
 
@@ -118,7 +118,7 @@ using Microsoft.Extensions.Configuration;
 using System.Security.Cryptography.X509Certificates;
 ```
 
-Frissítse a `ServiceInstanceListener` elemet úgy, hogy az új *VégpontHttps* végpontot használja, és a 443-as porton figyeljen.
+Frissítse a `ServiceInstanceListener` elemet úgy, hogy az új *VégpontHttps* végpontot használja, és a 443-as porton figyeljen. Ha Kestrel-kiszolgáló használatára konfigurálja a webgazdát, a Kestrelt minden hálózati adapteren az IPv6-címek figyelésére kell konfigurálni: `opt.Listen(IPAddress.IPv6Any, port, listenOptions => {...}`.
 
 ```csharp
 new ServiceInstanceListener(

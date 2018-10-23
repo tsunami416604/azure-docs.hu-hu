@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 2f020bdf79811c959e07d753231fc133fe597861
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c7396d7322958442fab51417eb350f26f7ada78e
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855178"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352660"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>A hibrid Azure Active Directory-csatlakozás konfigurálása összevont tartományokhoz
 
@@ -124,7 +124,7 @@ A hibrid Azure AD-csatlakozások Azure AD Connecttel való konfigurálásához a
 
     a. Válassza ki az erdőt.
 
-    b. Válassza ki a hitelesítési szolgáltatást. Válassza az AD FS-kiszolgálót, kivéve, ha vállalata kizárólag Windows 10 rendszerű ügyfelekkel rendelkezik.
+    b. Válassza ki a hitelesítési szolgáltatást. Válassza az AD FS-kiszolgálót, kivéve, ha vállalata kizárólag Windows 10 rendszerű ügyfelekkel rendelkezik, illetve konfigurált számítógéppel/eszközszinkronizációval rendelkezik, vagy a vállalat közvetlen egyszeri bejelentkezést használ.
 
     c. Kattintson a **Hozzáadás** gombra a vállalati rendszergazdai hitelesítő adatok megadásához.
 
@@ -194,7 +194,7 @@ A **Get-MSolDevice** parancsmag használatához a következők szükségesek:
 
 - Léteznie kell egy objektumnak, amelynek az **eszközazonosítója** megegyezik a Windows-ügyfél azonosítójával.
 - A **DeviceTrustType** beállítás értékének **tartományhoz csatlakoztatottnak** kell lennie. Ez egyenértékű az Azure AD-portál Eszközök oldalán található **Hibrid Azure AD-hez csatlakoztatott** értékkel.
-- A feltételes hozzáférésű eszközöknél az **Engedélyezve** beállításhoz az **Igaz** értéket kell megadni. 
+- A feltételes hozzáférésű eszközöknél az **Engedélyezve** beállításhoz az **Igaz** értéket kell megadni, a **DeviceTrustLevel** beállításhoz pedig a **Felügyelt** értéket. 
 
 
 **A szolgáltatás részleteinek ellenőrzése:**

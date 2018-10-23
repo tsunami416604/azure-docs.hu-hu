@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 749dc6c2d329ae7055ee0a6adc429c378de51871
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 26c0353bddb9455b1bda8961f3c05e0f6c7cc176
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40235358"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647714"
 documentType: LandingData
 title: Azure Stack-partner – dokumentáció
 metadata:
@@ -22,19 +22,19 @@ metadata:
   ms.author: mabrigg
   ms.reviewer: John.Haskin
 abstract:
-  description: Az érvényesítés szolgáltatás segítségével ellenőrizze a hardver, az Azure Stackkel való használathoz. A szolgáltatás egy vannak közös mérnöki a Microsoft Azure Stack-ajánlatok megoldáspartnerek számára készült, natív Azure-szolgáltatás áll.
+  description: Érvényesítési szolgáltatás segítségével ellenőrizze a hardver, az Azure Stackkel való használathoz. A szolgáltatás egy vannak közös mérnöki a Microsoft Azure Stack-ajánlatok megoldáspartnerek számára készült, natív Azure-szolgáltatás áll.
 sections:
-- title: 5 perces gyors útmutatót
+- title: 5 perces rövid útmutatók
   items:
   - type: paragraph
-    text: Megtudhatja, hogyan veheti fel virtuális gépeit és számítógépeit a Security Centerbe, és hogyan csatlakoztathatja biztonsági megoldásokat.
+    text: Ismerje meg, az érvényesítési tesztek alapján a hardver ütemezése egy portált használata.
   - type: list
     style: icon48
     items:
     - image:
         src: media/i_account-management.svg
       text: Az érvényesítés használja egy portált, az első vizsgálat ütemezése
-      href: /azure/azure-stack/partner/azure-stack-vaas-schedule-your-first-test
+      href: /azure/azure-stack/partner/azure-stack-vaas-schedule-test-pass
 - title: Részletes útmutatók
   items:
   - type: paragraph
@@ -42,16 +42,6 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/azure-stack/partner/azure-stack-vaas-test-vm">A helyi ügynök és a teszt virtuális gépek üzembe helyezése</a>
-    - html: <a href="/azure/azure-stack/partner/azure-stack-vaas-automate-with-powershell">A PowerShell-lel az Azure Stack kódérvényesítés automatizálása</a>
     - html: <a href="/azure/azure-stack/partner/azure-stack-vaas-validate-solution-new">Egy új Azure Stack megoldás ellenőrzése</a>
     - html: <a href="/azure/azure-stack/partner/azure-stack-vaas-validate-oem-package">OEM-csomagok érvényesítése</a>
     - html: <a href="/azure/azure-stack/partner/azure-stack-vaas-validate-microsoft-updates">A Microsoft szoftverfrissítések ellenőrzése</a>
-- title: Leírások
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: Szolgáltatás érvényesítése
-      html: <a href="/azure/azure-stack/partner/azure-stack-vaas-parameters">Érvényesítési konfigurációs fájl</a>

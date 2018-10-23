@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 03acd63ff00f0a3017297d1998289c8e68f0f290
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 5abb2447fa90ea5900afb86746cc17eff62c2d2e
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41920113"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166284"
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>Üzenetek fogadása az Event Processor Hosttal .NET Standardban – első lépések
 
@@ -43,13 +43,18 @@ Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre e
 ## <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása  
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).  
-2. A portál bal oldali navigációs ablaktábláján kattintson az **Erőforrás létrehozása**, a **Tároló**, végül a **Tárfiók** elemre.  
-3. Töltse ki a mezőket a tárfiók ablakában, majd kattintson a **Létrehozás** lehetőségre.
+2. A Portal bal oldali navigációs paneljén válassza az **Erőforrás létrehozása** elemet, majd a **Storage** kategóriát, végül a **Tárfiók – blob, fájl, tábla, üzenetsor** lehetőséget.  
+3. Töltse ki a mezőket a **Tárfiók létrehozása** ablakban, majd kattintson a **Felülvizsgálat + létrehozás** lehetőségre. 
 
     ![Storage-fiók létrehozása][1]
 
-4. Miután megjelenik az **Az üzembe helyezések sikerültek** üzenet, kattintson az új tárfiók nevére. Az **Alapvető erőforrások** ablakban kattintson a **Blobok** elemre. Ha megnyílik a **Blob szolgáltatás** párbeszédpanel, kattintson a **+ Tároló** lehetőségre a tetején. Nevezze el a tárolót, majd zárja be a **Blob szolgáltatás** párbeszédpanelt.  
-5. Kattintson a bal oldali ablakban található **Hozzáférési kulcsok** elemre, és másolja a tároló és a tárfiók nevét, valamint a **key1** értékét. Mentse ezeket az értékeket a Jegyzettömbbe vagy egy másik ideiglenes helyre.  
+4. A **Felülvizsgálat + létrehozás** lapon tekintse át a mezők értékeit, majd kattintson a **Létrehozás** lehetőségre. 
+5. Miután megjelenik **Az üzembe helyezések sikerültek** üzenet, kattintson az új tárfiók nevére. 
+6. Az **Alapvető erőforrások** ablakban kattintson a **Blobok** elemre. 
+7. A lap tetején kattintson a **+ Tároló** elemre. Nevezze el a tárolót.  
+8. Kattintson a bal oldali ablakban található **Hozzáférési kulcsok** elemre, és másolja ki a tároló és a tárfiók nevét, valamint a **key1** értékét. 
+
+    Mentse ezeket az értékeket a Jegyzettömbbe vagy egy másik ideiglenes helyre.
 
 ## <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
 

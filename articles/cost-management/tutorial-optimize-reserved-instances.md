@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 10/17/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: c50259f0df955c3a22edc979dfebc8bfb2059e16
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e705a0f57b598eb60932ca1056131cedc1416ffc
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987766"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394456"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
@@ -125,7 +125,7 @@ Egy foglalás megvásárlása egyszeri fizetéssel jár. A fizetés a Cloudyn sz
 
 A tényleges költségek elemzése és az elemzés egy adott időszakban jelentések a foglalásért fizetett teljes összeget mutatják a vásárlás hónapjától kezdve. Ezáltal segítenek nyomon követni a tényleges kiadásokat egy adott időszakban.
 
-A Cloudyn portálon lépjen a **Cost** > **Cost Analysis** (Költségek > Költségek elemzése) részre, majd válassza az **Actual Cost Analysis** (Tényleges költségek elemzése) vagy az **Actual Cost Over Time** (Tényleges költségek időbeli alakulása) lehetőséget. Állítsa be a szűrőket. Például szűrhet az Azure/VM szolgáltatásra, és csoportosíthatja az eredményeket erőforrástípus és díjszabási modell szerint. Lásd a következő képet:
+A Cloudyn portálon lépjen a **Costs** > **Cost Analysis** (Költségek > Költségek elemzése) részre, majd válassza az **Actual Cost Analysis** (Tényleges költségek elemzése) vagy az **Actual Cost Over Time** (Tényleges költségek időbeli alakulása) lehetőséget. Állítsa be a szűrőket. Például szűrhet az Azure/VM szolgáltatásra, és csoportosíthatja az eredményeket erőforrástípus és díjszabási modell szerint. Lásd a következő képet:
 
 ![Fenntartott példányok tényleges költségei](./media/tutorial-optimize-reserved-instances/azure05.png)
 
@@ -143,7 +143,7 @@ A fenntartott példányok amortizált költségének kiszámításához a rendsz
 
 A tényleges költségek jelentésében egy 747 dollár értékű kiugrás látható november 16-hoz tartozóan egy fenntartott példány megvásárlása miatt. Az amortizált költségek jelentésében (lásd az alábbi képen) november 16-hoz egy részleges napi díj szerepel. November 17-től kezdve a fenntartott példány amortizált költsége látható, ami 747 dollár/365 = 2,05 dollár. Emellett az is látható, hogy a megvásárolt foglalás nincs használva, így az optimalizálásához érdemes lehet átváltani egy másik virtuálisgép-méretre.
 
-A megtekintéshez lépjen a **Cost** > **Cost Analysis** (Költségek > Költségek elemzése) részre, majd válassza ki az **Amortized Cost Analysis** (Amortizált költségek elemzése) vagy az **Amortized Cost Over Time** (Amortizált költségek időbeli alakulása) lehetőséget.
+A megtekintéshez lépjen a **Costs** > **Cost Analysis** (Költségek > Költségek elemzése) részre, majd válassza ki az **Amortized Cost Analysis** (Amortizált költségek elemzése) vagy az **Amortized Cost Over Time** (Amortizált költségek időbeli alakulása) lehetőséget.
 
 ![Fenntartott példányok amortizált költségei](./media/tutorial-optimize-reserved-instances/azure07.png)
 

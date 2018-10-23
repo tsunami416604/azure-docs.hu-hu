@@ -3,25 +3,23 @@ title: 'Rövid útmutató: Arcfelismerés képen – SDK, C#'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban arcokat fog felismerni egy képen a Face Windows C# ügyfélkódtár használatával a Cognitive Servicesben.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 09/14/2018
-ms.author: nolachar
-ms.openlocfilehash: a9a7efd89f8e7462812064615d07acf12acbc3a3
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.author: pafarley
+ms.openlocfilehash: b5fd10aaab28303079d3eef9c4c5c25207bb672e
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364112"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344982"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-c35---face"></a>Rövid útmutató: Arcok felismerése képen C&#35 használatával – Face
 
 Ebben a rövid útmutatóban emberi arcokat fog felismerni egy képen a Face Windows ügyfélkódtár segítségével.
-
-A minta forráskódja elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/Face).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,6 +28,9 @@ A minta forráskódja elérhető a [GitHubon](https://github.com/Azure-Samples/c
 * A [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview) ügyfélkódtár NuGet-csomagja. A csomag letöltése nem szükséges. A telepítési utasításokat az alábbiakban találja.
 
 ## <a name="detectwithurlasync-method"></a>DetectWithUrlAsync metódus
+
+> [!TIP]
+> Szerezze be a legújabb kódot Visual Studio-megoldásként a [GitHubról](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/Face).
 
 Az `DetectWithUrlAsync` és `DetectWithStreamAsync` metódus rendre az [Arcfelismerő API-t](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) csomagolja be távoli, illetve helyi képekhez. A metódusok képeken arcok felismerésére használhatók, a visszakapott arc attribútumok a következők lehetnek:
 

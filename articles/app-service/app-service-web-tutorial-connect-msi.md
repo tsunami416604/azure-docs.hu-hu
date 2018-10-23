@@ -11,19 +11,23 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/17/2018
+ms.date: 10/24/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 3125db03dc13f70524fd094736f50b563ef712a4
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 6a3bb5511828d9f8ea7168ffa4748b141484299f
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379927"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376430"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Oktatóanyag: Az SQL Database-kapcsolat biztonságossá tétele az App Service-ből felügyelt identitás segítségével
 
 Az [App Service](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás az Azure-ban. [Felügyelt identitást](app-service-managed-service-identity.md) biztosít az alkalmazásához, vagyis egy kulcsrakész megoldást, amely biztosítja az [Azure SQL Database-hez](/azure/sql-database/) és egyéb Azure-szolgáltatásokhoz való hozzáférés védelmét. Az App Service-ben található felügyelt identitások biztonságosabbá teszik alkalmazását a titkos kódok, pl. a kapcsolati sztringekben lévő hitelesítő adatok szükségességének megszüntetésével. Ebben az oktatóanyagban hozzáadja a felügyelt identitást ahhoz a minta ASP.NET-webalkalmazáshoz, amelyet az [Oktatóanyag: ASP.NET-alkalmazás létrehozása az Azure-ban SQL Database használatával](app-service-web-tutorial-dotnet-sqldatabase.md) című szakaszban hozott létre. Ha ezzel végzett, a mintaalkalmazása biztonságosan csatlakozhat az SQL Database-hez, felhasználónév és jelszó használata nélkül.
+
+> [!NOTE]
+> Ezt a forgatókönyvet jelenleg csak a .NET-keretrendszer 4.6-os vagy újabb verziója támogatja, a [.NET Core 2.1-es verziója](https://www.microsoft.com/net/learn/get-started/windows) azonban nem. A [.NET Core 2.2](https://www.microsoft.com/net/download/dotnet-core/2.2) nem támogatja ezt a forgatókönyvet, de ez még nem szerepel az App Service alapértelmezett rendszerképeiben. 
+>
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -95,6 +99,7 @@ A Visual Studióban, a **DotNetAppSqlDb** projektjében nyissa meg a _packages.c
 
 ```xml
 <package id="Microsoft.Azure.Services.AppAuthentication" version="1.1.0-preview" targetFramework="net461" />
+<package id="Microsoft.IdentityModel.Clients.ActiveDirectory" version="3.14.2" targetFramework="net461" />
 ```
 
 Nyissa meg a _Models\MyDatabaseContext.cs_ elemet, és adja hozzá a következő `using` utasításokat a fájl elejéhez:
@@ -122,7 +127,7 @@ public MyDatabaseContext(SqlConnection conn) : base(conn, true)
 Ez a konstruktor konfigurál egy egyéni SqlConnection objektumot annak érdekében, hogy az App Service-ből használhassa a hozzáférési jogkivonatot az Azure SQL Database-ben. A hozzáférési jogkivonattal az App Service-alkalmazása hitelesíti az Azure SQL Database-t a felügyelt identitás segítségével. További információt a [jogkivonatok Azure-erőforrásokhoz való beszerzéséről](app-service-managed-service-identity.md#obtaining-tokens-for-azure-resources) szóló témakörben talál. Az `if` utasítás lehetővé teszi, hogy a LocalDB segítségével továbbra is tesztelje alkalmazását helyileg.
 
 > [!NOTE]
-> Az `SqlConnection.AccessToken` jelenleg csak a .NET-keretrendszerben (4.6-os vagy újabb verzió) támogatott, a [.NET Core-ban](https://www.microsoft.com/net/learn/get-started/windows) nem.
+> Az `SqlConnection.AccessToken` jelenleg csak a .NET-keretrendszer 4.6-os vagy újabb verziójában és a [.NET Core 2.2-es verziójában](https://www.microsoft.com/net/download/dotnet-core/2.2) támogatott, a [.NET Core 2.1-ben](https://www.microsoft.com/net/learn/get-started/windows) nem.
 >
 
 Ha használni szeretné ezt az új konstruktort, nyissa meg a `Controllers\TodosController.cs` fájlt, és keresse meg a `private MyDatabaseContext db = new MyDatabaseContext();` sort. A meglévő kód az alapértelmezett `MyDatabaseContext` vezérlőt használja, hogy a standard kapcsolati sztringgel adatbázist hozzon létre, amely [a módosítás előtt](#modify-connection-string) tiszta szöveges felhasználónévvel és jelszóval rendelkezett.
@@ -130,7 +135,7 @@ Ha használni szeretné ezt az új konstruktort, nyissa meg a `Controllers\Todos
 Cserélje le a teljes sort az alábbi kódra:
 
 ```csharp
-private MyDatabaseContext db = new MyDatabaseContext(new SqlConnection());
+private MyDatabaseContext db = new MyDatabaseContext(new System.Data.SqlClient.SqlConnection());
 ```
 
 ### <a name="publish-your-changes"></a>A módosítások közzététele
@@ -172,32 +177,23 @@ Előzőleg Azure AD-rendszergazdaként rendelte hozzá a felügyelt identitást 
 
 ### <a name="grant-permissions-to-azure-active-directory-group"></a>Engedélyek kiosztása az Azure Active Directory-csoportnak
 
-A Cloud Shellben az SQLCMD parancsot használva jelentkezzen be az SQL Database-be. Cserélje le a _\<kiszolgálónevet>_ az SQL Database kiszolgálónevére, és cserélje le az _\<AADfelhasználónév>_, valamint az _\<AADjelszó>_ elemeket az Azure AD-felhasználójának hitelesítő adataira.
-
-```azurecli-interactive
-sqlcmd -S <server_name>.database.windows.net -U <AADuser_name> -P "<AADpassword>" -G -l 30
-```
-
-A SQL-parancssorban futtassa az alábbi parancsokat, amelyek hozzáadják az Ön által korábban felhasználóként létrehozott Azure Active Directory-csoportot.
-
-```sql
-CREATE USER [myAzureSQLDBAccessGroup] FROM EXTERNAL PROVIDER;
-GO
-```
-
-Az `EXIT` parancs begépelésével térjen vissza a Cloud Shell-parancssorba. Ezután ismét futtassa az SQLCMD parancsot, de pontosítsa az adatbázis nevét az _\<adatbázisnév>_ elem helyén.
+A Cloud Shellben az SQLCMD parancsot használva jelentkezzen be az SQL Database-be. Cserélje le a _\<server\_name>_ helyőrzőt az SQL Database kiszolgálónevére, a _\<db\_name>_ helyőrzőt az alkalmazás által használt adatbázisnévre, és az _\<AADuser\_name>_ és az _\<AADpassword>_ helyőrzőket az Azure AD-felhasználójának hitelesítő adataira.
 
 ```azurecli-interactive
 sqlcmd -S <server_name>.database.windows.net -d <db_name> -U <AADuser_name> -P "<AADpassword>" -G -l 30
 ```
 
-Az SQL-parancssorban az Ön által választott adatbázishoz futtassa az alábbi parancsokat olvasási és írási engedélyek az Azure Active Directory-csoporthoz való hozzárendeléséhez.
+Az SQL-parancssorban az Ön által választott adatbázishoz futtassa az alábbi parancsokat a korábban létrehozott Azure Active Directory-csoport hozzáadásához, és adja meg az alkalmazás által igényelt engedélyeket. Például: 
 
 ```sql
+CREATE USER [myAzureSQLDBAccessGroup] FROM EXTERNAL PROVIDER;
 ALTER ROLE db_datareader ADD MEMBER [myAzureSQLDBAccessGroup];
 ALTER ROLE db_datawriter ADD MEMBER [myAzureSQLDBAccessGroup];
+ALTER ROLE db_ddladmin ADD MEMBER [myAzureSQLDBAccessGroup];
 GO
 ```
+
+Az `EXIT` parancs begépelésével térjen vissza a Cloud Shell-parancssorba. 
 
 ## <a name="next-steps"></a>További lépések
 

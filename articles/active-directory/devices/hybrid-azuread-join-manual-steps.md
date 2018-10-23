@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 4155ea7c24746f9d3381f2d1e4a1e08a7a56206a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 4e3b7aff97cbcebe34e6af4755900e8888c5e57d
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049937"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352799"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Oktatóanyag: Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök manuális konfigurálása 
 
@@ -92,6 +92,8 @@ Ha a vállalata közvetlen egyszeri bejelentkezés használatát tervezi, a köv
 Ha a vállalata felügyelt (nem összevont) beállításokat használ a helyi AD-hez, és nem használja az ADFS-t az Azure AD-val való összevonáshoz, akkor a hibrid Azure AD-csatlakozás a Windows 10 rendszeren az AD-ban lévő számítógép-objektumok Azure AD-val való szinkronizálására támaszkodik. Győződjön meg arról, hogy minden olyan Szervezeti egység (OU) számára engedélyezve legyen a szinkronizáció az Azure AD Connect szinkronizálási konfigurációban, amely az Azure AD-hez hibrid módon csatlakoztatni kívánt számítógép-objektumot tartalmaz.
 
 Ha a vállalatának az internethez való hozzáféréshez kimenő proxyra van szüksége, az olyan eszközök esetében, amelyeken a Windows 10 1703-as vagy annál régebbi verziója fut, implementálni kell az Automatikus webproxykeresőt (WPAD), hogy a Windows 10 rendszerű számítógépek regisztrálhassanak az Azure AD-be. 
+
+A Windows 10 1803-as verziójától kezdve, ha egy AD FS-t használó összevont tartományban egy eszköz hibrid Azure AD-csatlakozásra tett kísérlete meghiúsul, és az Azure AD Connect úgy van konfigurálva, hogy a számítógépet/eszközobjektumokat szinkronizálja az Azure AD-vel, akkor az eszköz a szinkronizált számítógéppel/eszközzel próbálja majd befejezni a hibrid Azure AD-csatlakozást.
 
 ## <a name="configuration-steps"></a>Konfigurációs lépések
 

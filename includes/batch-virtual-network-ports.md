@@ -1,28 +1,109 @@
-- A virtuális hálózatnak a Batch-fiókkal megegyező Azure **-régióban** és **-előfizetésben** kell lennie.
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: batch
+documentationcenter: ''
+author: dlepow
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
+ms.service: batch
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: ''
+ms.date: 10/05/2018
+ms.author: danlep
+ms.custom: include file
+ms.openlocfilehash: 9246dea7fa12e5ac9378203e96352e917679525b
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49312494"
+---
+### <a name="general-requirements"></a>Általános követelmények
 
-- A virtuális hálózati konfigurációval létrehozott készletek esetében csak az Azure Resource Manager-alapú virtuális hálózatok támogatottak. A felhőszolgáltatás-konfigurációval létrehozott készletek esetében csak a klasszikus virtuális hálózatok támogatottak.
-  
-- Egy klasszikus virtuális hálózat használatához a `MicrosoftAzureBatch` szolgáltatásnévnek rendelkeznie kell a `Classic Virtual Machine Contributor` szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörrel az adott virtuális hálózaton. Egy Azure Resource Manager-alapú VNet használatához engedélyekre van szüksége a VNethez való hozzáféréshez és a virtuális gépek az alhálózatban való üzembe helyezéséhez.
+* A virtuális hálózatnak a Batch-fiókkal megegyező előfizetésben és régióban kell lennie.
 
-- A készlethez meghatározott alhálózatnak elegendő hozzá nem rendelt IP-címmel kell rendelkeznie ahhoz, hogy helyet tudjon adni a készlethez kijelölt számú virtuális gépnek. Ez a szám a készlet `targetDedicatedNodes` és `targetLowPriorityNodes` tulajdonságának összege. Ha az alhálózaton nincs elegendő hozzá nem rendelt IP-cím, akkor a készlet részlegesen lefoglalja a számítási csomópontokat, és átméretezési hiba következik be. 
+* A virtuális hálózatot használó készletnek legfeljebb 4096 csomópontja lehet.
 
-- Az Azure-beli virtuális hálózatban üzembe helyezett virtuálisgép-konfigurációban lévő készletek automatikusan lefoglalnak további Azure hálózati erőforrásokat. A következő erőforrások szükségesek a virtuális hálózatokban üzembe helyezett 50 készletes csomópontokhoz: 1 hálózati biztonsági csoport, 1 nyilvános IP-cím és 1 terheléselosztó. Ezekre az erőforrásokra az azon előfizetésben meghatározott [kvóták](../articles/batch/batch-quota-limit.md) vonatkoznak, amely a Batch-készlet létrehozásakor biztosított virtuális hálózatot tartalmazza.
+* A készlethez meghatározott alhálózatnak elegendő hozzá nem rendelt IP-címmel kell rendelkeznie ahhoz, hogy helyet tudjon adni a készlethez kijelölt számú virtuális gépnek. Ez a szám a készlet `targetDedicatedNodes` és `targetLowPriorityNodes` tulajdonságának összege. Ha az alhálózaton nincs elegendő hozzá nem rendelt IP-cím, akkor a készlet részlegesen lefoglalja a számítási csomópontokat, és átméretezési hiba következik be. 
 
-- A virtuális hálózatnak engedélyeznie kell a Batch szolgáltatástól kiinduló kommunikációt, hogy képes legyen feladatok ütemezésére a számítási csomópontokon. Ehhez ellenőrizheti, hogy a virtuális hálózattal vannak-e társítva hálózati biztonsági csoportok (NSG-k). Ha a megadott alhálózaton a számítási csomópontok felé irányuló kommunikációt egy NSG letiltja, akkor a Batch szolgáltatás **nem használhatóra** állítja a számítási csomópontok állapotát. 
+* Az Azure Storage-végpontot bármely, a virtuális hálózatot kiszolgáló egyéni DNS-kiszolgálónak kell feloldania. Az `<account>.table.core.windows.net`, `<account>.queue.core.windows.net` és `<account>.blob.core.windows.net` űrlap URL-címeinek feloldhatónak kell lenniük. 
 
-- Ha a megadott virtuális hálózathoz hálózati biztonsági csoportok (NSG-k) és/vagy tűzfal van társítva, a következő táblázatokban látható módon konfigurálja a bejövő és kimenő portokat:
+A virtuális hálózat további követelményei eltérhetnek attól függően, hogy a Batch-készlet a virtuálisgép- vagy a Cloud Services-konfigurációban van-e. Új készlet virtuális hálózatba történő üzembe helyezéséhez a virtuálisgép-konfiguráció javasolt.
 
+### <a name="pools-in-the-virtual-machine-configuration"></a>A virtuálisgép-konfigurációban lévő készletek
 
-  |    Célport(ok)    |    Forrás IP-címe      |   Forrásport    |    Hozzáad a Batch NSG-ket?    |    Szükséges a virtuális gép használatához?    |    Felhasználói művelet   |
-  |---------------------------|---------------------------|----------------------------|----------------------------|-------------------------------------|-----------------------|
-  |   <ul><li>Virtuálisgép-konfigurációval létrehozott készletek esetén: 29876, 29877</li><li>Felhőszolgáltatás-konfigurációval létrehozott készletek esetén: 10100, 20100, 30100</li></ul>        |    * <br /><br />Bár ehhez tulajdonképpen „az összes engedélyezése” engedély szükséges, a Batch szolgáltatás a virtuálisgép-konfiguráció alatt létrehozott összes virtuális gépre alkalmaz egy hálózati biztonsági csoportot (NSG-t) a hálózati adapter szintjén, amely kiszűri az összes olyan IP-címet, amely nem a Batch szolgáltatáshoz tartozik. | * vagy 443 |    Igen. A Batch az NSG-ket a virtuális gépekhez kapcsolt hálózati adapterek (NIC) szintjén adja hozzá. Ezek az NSG-k csak a Batch szolgáltatási szerepkör IP-címeiről érkező forgalmat engedélyezik. Még ha meg is nyitja ezeket a portokat az internet felé, a forgalom blokkolva lesz a hálózati adapteren. |    Igen  |  Nem kell megadnia NSG-t, mert a Batch szolgáltatás csak a Batch IP-címeit engedélyezi. <br /><br /> Ha azonban NSG-t ad meg, győződjön meg arról, hogy ezek a portok nyitva vannak a bejövő forgalom számára.|
-  |    3389 (Windows), 22 (Linux)               |    Felhasználói, hibakeresési célra használt gépek a virtuális gép távolról való eléréséhez.    |   *  | Nem                                    |    Nem                    |    Adjon hozzá NSG-ket, ha engedélyezni szeretné a távoli elérést (RDP vagy SSH) a virtuális géphez.   |                                
+**Támogatott virtuális hálózatok** – Csak az Azure Resource Manager-alapú virtuális hálózatok
 
+**Alhálózati azonosító** – Az alhálózat Batch API-kkal történő megadásakor használja az alhálózat *erőforrás-azonosítóját*. Az alhálózat azonosítója a következő formátumot követi:
 
-  |    Kimenő port(ok)    |    Cél    |    Hozzáad a Batch NSG-ket?    |    Szükséges a virtuális gép használatához?    |    Felhasználói művelet    |
-  |------------------------|-------------------|----------------------------|-------------------------------------|------------------------|
-  |    443    |    Azure Storage    |    Nem    |    Igen    |    Ha hozzáadott NSG-t, győződjön meg arról, hogy nyitva van a port a kimenő forgalom számára.    |
+  ```
+  /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/virtualNetworks/{network}/subnets/{subnet}
+  ```
 
-   Arról is győződjön meg, hogy az Azure Storage-végpont feloldható bármely, a VNetet kiszolgáló egyéni DNS-kiszolgáló által. Az `<account>.table.core.windows.net`, `<account>.queue.core.windows.net` és `<account>.blob.core.windows.net` űrlap URL-címeinek feloldhatónak kell lenniük. 
+**Engedélyek** – Ellenőrizze, hogy a virtuális hálózat előfizetésén vagy erőforráscsoportján lévő biztonsági szabályzatok vagy zárolások korlátozzák-e egy felhasználó virtuális hálózat kezelésére vonatkozó engedélyét.
 
-   Ha hozzáad egy Resource Manager-alapú NSG-t, használhat [szolgáltatáscímkéket](../articles/virtual-network/security-overview.md#service-tags) az adott régió kimenő kapcsolataihoz tartozó Storage IP-címek kiválasztására. Tartsa észben, hogy a Storage IP-címeknek a Batch-fiókkal és a VNettel megegyező régióban kell lenniük. A szolgáltatáscímkék bizonyos Azure-régiókban jelenleg előzetes verzióban érhetők el.
+**További hálózati erőforrások** – A Batch automatikusan további hálózati erőforrásokat foglal le a virtuális hálózatot tartalmazó erőforráscsoportban. Minden 50 dedikált csomóponthoz (vagy minden 20 alacsony prioritású csomóponthoz) a Batch lefoglal 1 hálózati biztonsági csoportot (NSG-t), 1 nyilvános IP-címet és 1 terheléselosztót. Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../articles/azure-subscription-service-limits.md) vonatkoznak. Nagy készletekhez szükség lehet a kvóta egy vagy több erőforrásra való megemelésének igénylésére.
+
+#### <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
+
+Az alhálózatnak engedélyeznie kell a Batch szolgáltatástól kiinduló bejövő kommunikációt, hogy képes legyen feladatok ütemezésére a számítási csomópontokon, illetve a kimenő kommunikációt, hogy kommunikálhasson az Azure Storage szolgáltatással vagy más erőforrásokkal. A virtuálisgép-konfigurációban lévő készletekhez a Batch az NSG-ket a virtuális gépekhez kapcsolt hálózati adapterek (NIC-k) szintjén adja hozzá. Ezek az NSG-k automatikusan konfigurálnak bejövő és kimenő szabályokat a következő forgalom engedélyezéséhez:
+
+* A Batch szolgáltatási szerepkör IP-címeiről érkező bejövő TCP-forgalom a 29876-os és a 29877-es portokon keresztül. 
+* A bejövő TCP-forgalom a 22-es porton (Linux-csomópontok) vagy a 3389-es porton (Windows-csomópontok) keresztül a távoli hozzáférés engedélyezéséhez.
+* Kimenő forgalom bármilyen porton keresztül a virtuális hálózathoz.
+* Kimenő forgalom bármilyen porton keresztül az internetre.
+
+> [!IMPORTANT]
+> Körültekintően járjon el a bejövő vagy kimenő szabályok módosításakor és hozzáadásakor a Batch által konfigurált NSG-kben. Ha a megadott alhálózaton a számítási csomópontok felé irányuló kommunikációt egy NSG letiltja, akkor a Batch szolgáltatás **nem használhatóra** állítja a számítási csomópontok állapotát.
+
+Nem kell megadnia NSG-t az alhálózat szintjén, mert a Batch konfigurálja a saját NSG-it. Ugyanakkor ha a megadott alhálózathoz hálózati biztonsági csoportok (NSG-k) és/vagy egy tűzfal van társítva, a következő táblázatokban látható módon konfigurálja a bejövő és kimenő biztonsági szabályokat. Csak akkor konfigurálja a bejövő forgalmat a 3389-es porton (Windows) vagy a 22-es porton (Linux) keresztül, ha engedélyeznie kell a távoli hozzáférést a készletezett virtuális gépekhez. Ez nem szükséges a készletezett virtuális gépek használhatóságához.
+
+**Bejövő biztonsági szabályok**
+
+| Forrás IP-címek | Forrásportok | Cél | Célportok | Protokoll | Műveletek |
+| --- | --- | --- | --- | --- | --- |
+Bármelyik <br /><br />Bár ehhez tulajdonképpen „az összes engedélyezése” engedély szükséges, a Batch szolgáltatás a virtuálisgép-konfiguráció alatt létrehozott összes virtuális gépre alkalmaz egy hálózati biztonsági csoportot (NSG-t) a hálózati adapter szintjén, amely kiszűri az összes olyan IP-címet, amely nem a Batch szolgáltatáshoz tartozik. | * | Bármelyik | 29876-29877 | TCP | Engedélyezés |
+| Felhasználói, hibakeresési célra használt gépek a készletezett virtuális gépek távolról való eléréséhez. | * | Bármelyik |  3389 (Windows), 22 (Linux) | TCP | Engedélyezés |
+
+**Kimenő biztonsági szabályok**
+
+| Forrás | Forrásportok | Cél | Cél szolgáltatáscímkéje | Protokoll | Műveletek |
+| --- | --- | --- | --- | --- | --- |
+| Bármelyik | 443 | [Szolgáltatáscímke](../articles/virtual-network/security-overview.md#service-tags) | Tárterület (a Batch-fiókkal és a virtuális hálózattal megegyező régióban)  | Bármelyik | Engedélyezés |
+
+### <a name="pools-in-the-cloud-services-configuration"></a>Készletek a Cloud Services konfigurációjában
+
+**Támogatott virtuális hálózatok** – Csak a klasszikus virtuális hálózatok
+
+**Alhálózati azonosító** – Az alhálózat Batch API-kkal történő megadásakor használja az alhálózat *erőforrás-azonosítóját*. Az alhálózat azonosítója a következő formátumot követi:
+
+  ```
+  /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicVirtualNetwork /virtualNetworks/{network}/subnets/{subnet}
+  ```
+
+**Engedélyek** – A `MicrosoftAzureBatch` szolgáltatásnévnek rendelkeznie kell a `Classic Virtual Machine Contributor` szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörrel az adott virtuális hálózaton.
+
+#### <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
+
+Az alhálózatnak engedélyeznie kell a Batch szolgáltatástól kiinduló bejövő kommunikációt, hogy képes legyen feladatok ütemezésére a számítási csomópontokon, illetve a kimenő kommunikációt, hogy kommunikálhasson az Azure Storage szolgáltatással vagy más erőforrásokkal.
+
+Nem kell megadnia NSG-t, mert a Batch szolgáltatás csak a Batch IP-címeiről a készletezett csomópontokra érkező bejövő kommunikációt konfigurálja. Ugyanakkor ha a megadott alhálózathoz hálózati biztonsági csoportok (NSG-k) és/vagy egy tűzfal van társítva, a következő táblázatokban látható módon konfigurálja a bejövő és kimenő biztonsági szabályokat. Ha a megadott alhálózaton a számítási csomópontok felé irányuló kommunikációt egy NSG letiltja, akkor a Batch szolgáltatás **nem használhatóra** állítja a számítási csomópontok állapotát.
+
+ Csak akkor konfigurálja a bejövő forgalmat a 3389-es porton (Windows) vagy a 22-es porton (Linux) keresztül, ha engedélyeznie kell a távoli hozzáférést a készletezett csomópontokhoz. Ez nem szükséges a készletezett csomópontok használhatóságához.
+
+**Bejövő biztonsági szabályok**
+
+| Forrás IP-címek | Forrásportok | Cél | Célportok | Protokoll | Műveletek |
+| --- | --- | --- | --- | --- | --- |
+Bármelyik <br /><br />Bár ehhez tulajdonképpen „az összes engedélyezése” engedély szükséges, a Batch szolgáltatás minden egyes csomópont szintjén alkalmaz egy ACL-szabályt, amely kiszűri az összes olyan IP-címet, amely nem a Batch szolgáltatáshoz tartozik. | * | Bármelyik | 10100, 20100, 30100 | TCP | Engedélyezés |
+| Felhasználói, hibakeresési célra használt gépek a készletezett virtuális gépek távolról való eléréséhez. | * | Bármelyik |  3389 (Windows), 22 (Linux) | TCP | Engedélyezés |
+
+**Kimenő biztonsági szabályok**
+
+| Forrás | Forrásportok | Cél | Célportok | Protokoll | Műveletek |
+| --- | --- | --- | --- | --- | --- |
+| Bármelyik | * | Bármelyik | 443  | Bármelyik | Engedélyezés |

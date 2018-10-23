@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET
 ms.workload: tbd
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 93c1198ecfba6db809228ed6dcd99c705f53926c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 40d5a02f83188330facc82701abdfb950585781c
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972759"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310389"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Rövid útmutató: Valós idejű üzenetek szétküldése konzolalkalmazásból
 
@@ -120,5 +120,51 @@ broadcast
 
 Több ügyfelet is indíthat különböző ügyfélnevekkel.
 
+## <a name="usage"> </a> Integráció külső szolgáltatásokkal
+Az Azure SignalR szolgáltatás lehetővé teszi, hogy külső szolgáltatásokat lehessen a rendszerbe integrálni.
+### <a name="usage"> </a> A műszaki specifikációk meghatározása
+Az alábbi táblázat ismerteti a jelenleg támogatott REST API-k összes verzióját. Az egyes verziók definíciófájlját is megtalálja
+Verzió | API-állapot | Ajtó | Specifikusság
+--- | --- | --- | ---
+`1.0-preview` | Elérhető | 5002 | [Swagger] (https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1-preview.json)
+`1.0` | Elérhető | Standard | [Swagger] (https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1.json)
+Az egyes verziókhoz elérhető API-k listáját az alábbi lista tartalmazza.
+API | `1.0-preview` | `1.0`
+--- | --- | ---
+[Szétküldés mindenkinek] (# broadcast) | : heavy_check_mark: | : Heavy_check_mark:
+[Szétküldés egy csoportnak] (# broadcast-group) | : heavy_check_mark: | : Heavy_check_mark:
+Szétküldés néhány csoportnak | : heavy_check_mark: (elavult) | `N / A`
+[Küldés adott felhasználóknak] (# send-user) | : heavy_check_mark: | : Heavy_check_mark:
+Küldés néhány felhasználónak | : heavy_check_mark: (elavult) | `N / A`
+[Felhasználó hozzáadása egy csoporthoz] (# add-user-to-group) | `N / A` | : Heavy_check_mark:
+[Felhasználó eltávolítása egy csoportból] (# remove-user-from-group) | `N / A` | : Heavy_check_mark:
+<a name="broadcast"> </a>
+### <a name="broadcast-to-everyone"></a>Szétküldés mindenkinek
+Verzió | API HTTP-metódus | Kérés URL-címe | A kérés törzse
+--- | --- | --- | ---
+`1.0-preview` | `POST` | `https: // <instance-name> .service.signalr.net: 5002 / api / v1-preview / hub / <hub-name>` | `{" target ":" <method-name> "," arguments ": [...]}`
+`1.0` | `POST` | `https: // <instance-name> .service.signalr.net / api / v1 / hubs / <hub-name>` | Lásd fent
+<a name="broadcast-group"> </a>
+### <a name="broadcast-to-a-group"></a>Szétküldés egy csoportnak
+Verzió | API HTTP-metódus | Kérés URL-címe | A kérés törzse
+--- | --- | --- | ---
+`1.0-preview` | `POST` | `https: // <instance-name> .service.signalr.net: 5002 / api / v1-preview / hub / <hub-name> / group / <group-name>` | `{" target ":" <method-name> "," arguments ": [...]}`
+`1.0` | `POST` | `https: // <instance-name> .service.signalr.net / api / v1 / hubs / <hub-name> / groups / <group-name>` | Lásd fent
+<a name="send-user"> </a>
+### <a name="sending-to-specific-users"></a>Küldés adott felhasználóknak
+Verzió | API HTTP-metódus | Kérés URL-címe | A kérés törzse
+--- | --- | --- | ---
+`1.0-preview` | `POST` | `https: // <instance-name> .service.signalr.net: 5002 / api / v1-preview / hub / <hub-name> / user / <user-id>` | `{" target ":" <method-name> "," arguments ": [...]}`
+`1.0` | `POST` | `https: // <instance-name> .service.signalr.net / api / v1 / hubs / <hub-name> / users / <user-id>` | Lásd fent
+<a name="add-user-to-group"> </a>
+### <a name="adding-a-user-to-a-group"></a>Felhasználó hozzáadása egy csoporthoz
+Verzió | API HTTP-metódus | Kérés URL-címe
+--- | --- | ---
+`1.0` | `PUT` | `Https: // <instance-name> .service.signalr.net / api / v1 / hubs / <hub-name> / groups / <group-name> / users / <userid>`
+<a name="remove-user-from-group"> </a>
+### <a name="removing-a-user-from-a-group"></a>Felhasználó eltávolítása egy csoportból
+Verzió | API HTTP-metódus | Kérés URL-címe
+--- | --- | ---
+`1.0` | `DELETE` | `Https: // <instance-name> .service.signalr.net / api / v1 / hubs / <hub-name> / groups / <group-name> / users / <userid>`
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]

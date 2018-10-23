@@ -12,12 +12,12 @@ ms.date: 09/07/2017
 ms.author: lizross
 ms.reviewer: piotrci
 ms.custom: it-pro
-ms.openlocfilehash: bce7a060908e8043390fdce729161cad48a644be
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a0a992e62e7b1e375ff2591aa82bdc7733e9d26f
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731070"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394697"
 ---
 # <a name="how-to-sign-up-for-azure-active-directory-premium"></a>Útmutató: Prémium szintű Azure Active Directory regisztráció
 Vásárolhat Active Directory (Azure AD) Prémium szintű előfizetést és hozzárendelheti az Azure-előfizetéséhez. Ha új Azure-előfizetés létrehozására van szüksége, aktiválnia kell a licenccsomagját és az Azure AD-szolgáltatás hozzáférését is.
@@ -27,11 +27,11 @@ Vásárolhat Active Directory (Azure AD) Prémium szintű előfizetést és hozz
 
 Az Active Directory Premium 1 vagy Premium 2-re történő regisztráció előtt először határozza meg, melyik előfizetést vagy csomagot kívánja használni a létezők közül:
 
-    - Meglévő Azure vagy Office 365-előfizetéssel
+- Meglévő Azure vagy Office 365-előfizetéssel
 
-    - Enterprise Mobility + Security licenccsomaggal
+- Enterprise Mobility + Security licenccsomaggal
 
-    - Microsoft mennyiségi licenccsomaggal
+- Microsoft mennyiségi licenccsomaggal
 
 Amikor az Azure-előfizetését korábban megvásárolt és aktivált Azure AD-licencekkel használja a regisztrációhoz, akkor az ugyanabban a könyvtárban levő licencek automatikusan aktiválódnak. Ha nem ez a helyzet, akkor még aktiválnia kell a licenccsomagot és az Azure AD-hozzáférését. A licenccsomag aktiválással kapcsolatos további információkért lásd: [Új licenccsomag aktiválása](#activate-your-new-license-plan). Az Azure AD-hozzáférés aktiválásával kapcsolatos további információkért lásd: [Azure AD-hozzáférés aktiválása](#activate-your-azure-ad-access). 
 
@@ -43,20 +43,20 @@ Az Enterprise Mobility + Security programcsomag része az Azure AD Premium, Azur
 
 További információkat az EMS-ről a [Nagyvállalati mobilitás és biztonság webhelyén](https://www.microsoft.com/cloud-platform/enterprise-mobility-security).
 
-    - Próbálja ki az EMS-t az [Enterprise Mobility + Security E5 ingyenes próba-előfizetésével](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1).
+- Próbálja ki az EMS-t az [Enterprise Mobility + Security E5 ingyenes próba-előfizetésével](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1).
 
-    - Vásároljon [Enterprise Mobility + Security E5 licenceket](https://signup.microsoft.com/Signup?OfferId=e6de2192-536a-4dc3-afdc-9e2602b6c790&ali=1)
+- Vásároljon [Enterprise Mobility + Security E5 licenceket](https://signup.microsoft.com/Signup?OfferId=e6de2192-536a-4dc3-afdc-9e2602b6c790&ali=1)
 
-    - Vásároljon [Enterprise Mobility + Security E3 licenceket](https://signup.microsoft.com/Signup?OfferId=4BBA281F-95E8-4136-8B0F-037D6062F54C&ali=1)
+- Vásároljon [Enterprise Mobility + Security E3 licenceket](https://signup.microsoft.com/Signup?OfferId=4BBA281F-95E8-4136-8B0F-037D6062F54C&ali=1)
 
 ## <a name="sign-up-using-your-microsoft-volume-licensing-plan"></a>Regisztráció Microsoft mennyiségi licenccsomag használatával
 A Microsoft mennyiségi licenccsomagon keresztül a kívánt licencszámtól függően az alábbi két programmal regisztrálhat a prémium szintű Azure AD használatára:
 
-    - **250 és több licenc.** [Microsoft nagyvállalati szerződés](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx)
+- **250 és több licenc.** [Microsoft nagyvállalati szerződés](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx)
 
-    - **5–250 licencre.** [A mennyiségi licences nyílt **](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)
+- **5–250 licencre.** [Mennyiségi licenc megnyitása](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)
 
-    A nagybani licencbeadási vásárlási lehetőségekről bővebb információ a [nagybani licencbeadáson keresztüli vásárlást](https://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx) ismertető oldalon található.
+A nagybani licencbeadási vásárlási lehetőségekről bővebb információ a [nagybani licencbeadáson keresztüli vásárlást](https://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx) ismertető oldalon található.
 
 ## <a name="activate-your-new-license-plan"></a>Az új licenccsomag aktiválása
 Ha új Azure AD licenccsomaggal regisztrált, akkor a vásárlás után kapott visszaigazoló e-mail használatával aktiválnia kell a szervezete számára.

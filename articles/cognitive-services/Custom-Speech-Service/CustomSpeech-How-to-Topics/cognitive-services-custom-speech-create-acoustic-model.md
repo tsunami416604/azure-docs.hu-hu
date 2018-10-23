@@ -1,24 +1,24 @@
 ---
-title: 'Oktatóanyag: Akusztikai modell létrehozása – Custom Speech Service'
-titlesuffix: Azure Cognitive Services
-description: Ez az oktatóanyag bemutatja, hogyan hozhat létre akusztikai modellt a Custom Speech Service-szel.
+title: 'Oktatóanyag: Akusztikai modell létrehozása a Custom Speech Service segítségével – Microsoft Cognitive Services | Microsoft Docs'
+description: Ez az oktatóanyag bemutatja, hogyan hozhat létre akusztikai modellt a Microsoft Cognitive Services Custom Speech Service szolgáltatásával.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
 ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: 72c5a0dfb8f33f273ba850378c1fefeef82b4d7a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 53e93a08782ba66e69b903c32c4c3c7417e5a801
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220230"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344574"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>Oktatóanyag: Egyéni akusztikai modell létrehozása
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
 
 Ebben az oktatóanyagban létrehoz egy egyéni akusztikai modellt, amellyel az alkalmazása képes felismerni a várt beszédadatokat. Egy egyéni akusztikai modell létrehozása akkor hasznos, ha az alkalmazása egy adott környezetben (például zajos gyárban) vagy adott felhasználói körben történő használatra készült.
 
@@ -140,4 +140,4 @@ Az akusztikai modellek táblázatában az új modellhez tartozó bejegyzés jele
 Ebben az oktatóanyagban egy hangfájlokhoz és átirataikhoz használható egyéni akusztikai modellt hoztunk létre. Szövegfájlokkal használható egyéni nyelvi modell létrehozásához lépjen tovább az egyéni nyelvi modellek létrehozásával foglalkozó oktatóanyagra.
 
 > [!div class="nextstepaction"]
-> [Egyéni akusztikai modell létrehozása](cognitive-services-custom-speech-create-language-model.md)
+> [Egyéni nyelvi modell létrehozása](cognitive-services-custom-speech-create-language-model.md)

@@ -2,24 +2,18 @@
 title: Az Azure Data Box beállítása | Microsoft Docs
 description: Bemutatja az Azure Data Box bekábelezését és csatlakoztatását
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 10/03/2018
+ms.date: 10/17/2018
 ms.author: alkohli
-ms.openlocfilehash: f9671e3acdb71affe2187258582254561785780e
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: c3766713c87dd721f7e4c9a90624192cdb402be9
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785636"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393830"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Oktatóanyag: Az Azure Data Box bekábelezése és csatlakoztatása
 
@@ -91,6 +85,8 @@ Az eszköz beállításához kövesse az alábbi lépéseket a helyi webes felha
     - Ha a DHCP nincs engedélyezve, lépjen a **Hálózati adapterek beállítása** lapra, és szükség esetén rendeljen hozzájuk statikus IP-címeket.
 
     ![Az eszköz irányítópultja](media/data-box-deploy-set-up/data-box-dashboard-1.png)
+
+Az adathálózati adapterek konfigurálása konfigurálását követően a DATA 1–DATA 3 adapterek bármelyikének IP-címét használhatja a helyi webes felhasználói felülethez való hozzáféréshez a következő címen: `https://<IP address of a data network interface>`. 
 
 Ha az eszköz beállításával elkészült, csatlakozhat az eszközmegosztásokhoz, és a számítógépről az eszközre másolhatja az adatokat. 
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: f2f2208f325728275706eeed9ff16e8afc3b11cf
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: fc4b2f153c89d4253bc3fdd9c5a49973baa38752
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166877"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310215"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Oktatóanyag: Új Azure AD-jelszó kérése a bejelentkezési képernyőről
 
@@ -111,7 +111,9 @@ A funkció a Távoli asztal használatával történő tesztelésekor a „Jelsz
 
 * A Távoli asztalokról jelenleg nem támogatott a jelszó-visszaállítás.
 
-Ha a Windows zárolási képernyő egy beállításkulcs vagy csoportszabályzat használatával le lett tiltva, a **Jelszó visszaállítása** hivatkozás nem elérhető.
+Ha a Windows zárolási képernyője egy beállításkulcs vagy csoportszabályzat használatával le lett tiltva, a **Jelszó visszaállítása** hivatkozás nem lesz elérhető.
+
+Ha a szabályzat a Ctrl+Alt+Del billentyűparancs használatát követeli meg, vagy a zárolási képernyő értesítései ki vannak kapcsolva, a **Jelszó visszaállítása** nem fog működni. A Windows 10 19H1 megoldja ezt a követelményt.
 
 Az Azure AD auditnaplója információkat tartalmaz az IP-címről és az ügyféltípusról, ahol az új jelszó kérése megtörtént.
 

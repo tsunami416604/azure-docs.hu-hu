@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: d1776fc2347eb1a1f03a834b6a5f847ef5c551e4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 521b6423550bf3e2d0bc90212b7e3fe0cbeddfc4
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948883"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167070"
 ---
 # <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>Oktatóanyag: Azure-webalkalmazások konfigurálása a Key Vault titkos kulcsainak olvasásához
 
@@ -126,10 +126,11 @@ A webalkalmazásnak két NuGet-csomagot kell telepítenie. A telepítésükhöz 
 1. A Solution Explorer (Megoldáskezelő) felületén kattintson a jobb gombbal a webhely nevére.
 2. Válassza a **Manage NuGet packages for solution...** (Megoldás NuGet-csomagjainak kezelése…) elemet.
 3. Jelölje be a keresőmező melletti következő jelölőnégyzetet: **Include prerelease** (Előzetes verzió is).
-4. Keresse meg az alábbi két NuGet-csomagot, és fogadja el a megoldáshoz való hozzáadásukat:
+4. Keresse meg az alábbi három NuGet-csomagot, és fogadja el a megoldáshoz való hozzáadásukat:
 
     * [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) – a segítségével egyszerűen lekérheti a hozzáférési jogkivonatokat a szolgáltatás és Azure-szolgáltatás közötti hitelesítési forgatókönyvekhez. 
     * [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) – metódusokat tartalmaz a Key Vaulttal való kommunikációhoz.
+    * [Microsoft.Extensions.Configuration.AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/) – `IConfiguration`-bővítményeket tartalmaz az Azure Key Vaulthoz.
 
 5. Nyissa meg a `Program.cs` fájlt a Solution Explorer (Megoldáskezelő) használatával, és cserélje le a Program.cs fájl tartalmát az alábbi kódra. A ```<YourKeyVaultName>``` értéket cserélje le a Key Vault nevére:
 
