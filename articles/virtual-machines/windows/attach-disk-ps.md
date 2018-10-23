@@ -1,6 +1,6 @@
 ---
-title: Adatlemez csatolása egy Windows virtuális géphez az Azure PowerShell-lel |} A Microsoft Docs
-description: Új vagy meglévő adatlemez csatolása egy Windows virtuális géphez PowerShell használatával a Resource Manager üzemi modellel hogyan.
+title: Adatlemez csatolása az Azure-beli Windows virtuális gépekhez a PowerShell-lel |} A Microsoft Docs
+description: Új vagy meglévő lemez csatolása Windows virtuális gép PowerShell használatával a Resource Manager üzemi modellel hogyan.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -13,26 +13,26 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 10/16/2018
 ms.author: cynthn
-ms.openlocfilehash: 384203134d1588053f91b66d32e9b0bf1ec69306
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: cd11bb8ae8f22705feb7eebeafde385fcf11fdcd
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38680915"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637085"
 ---
-# <a name="attach-a-data-disk-to-a-windows-vm-using-powershell"></a>Adatlemez csatolása a Windows virtuális gép a PowerShell használatával
+# <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>Adatlemez csatolása egy Windows virtuális géphez a PowerShell-lel
 
-Ez a cikk bemutatja, hogyan új és meglévő lemez csatlakoztatása a virtuális gépek Windows PowerShell segítségével. 
+Ez a cikk bemutatja, hogyan új és meglévő lemez csatolása Windows virtuális gép PowerShell-lel. 
 
-Ennek végrehajtása előtt tekintse át a következő tippeket:
+Először tekintse át a következő tippeket:
 * A virtuális gép méretét szabályozza, hány adatlemez csatolható. További információkért lásd: [virtuális gépek méretei](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Premium storage szolgáltatást használja kell egy prémium szintű Storage engedélyezve van a virtuális gép méretét, például a DS vagy GS sorozatú virtuális gépet. További információkért lásd: [Premium Storage: nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Premium storage szolgáltatást használja a DS vagy GS sorozatú virtuális gépek például egy Premium Storage-kompatibilis virtuális gép típusa lesz szüksége. További információkért lásd: [Premium Storage: nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 6.0.0-s vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+A helyi telepítése és használata a PowerShell, az oktatóanyaghoz az Azure PowerShell-modul verzióját 6.0.0 vagy újabb. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha Ön helyileg futtatja a Powershellt, is kell futtatni `Connect-AzureRmAccount` kapcsolat létrehozása az Azure-ral.
 
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>Üres adatlemez hozzáadása egy virtuális géphez
@@ -80,7 +80,7 @@ Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
 
 ### <a name="initialize-the-disk"></a>Inicializálja a lemezt
 
-Miután hozzáadott egy üres lemez, inicializálnia kell. A lemez inicializálása, jelentkezzen be egy virtuális Gépre, és a Lemezkezelés eszközzel. Ha engedélyezte a Rendszerfelügyeleti webszolgáltatások és a egy tanúsítványt a virtuális gép létrehozásakor adott meg, a távoli PowerShell használatával inicializálja a lemezt. Egy egyéni szkriptbővítmény is használhatja: 
+Miután hozzáadott egy üres lemez, kell inicializálnia. A lemez inicializálása, jelentkezzen be a virtuális gép, és a Lemezkezelés eszközzel. Ha engedélyezte a [WinRM](https://docs.microsoft.com/windows/desktop/WinRM/portal) és a egy tanúsítványt a virtuális gép létrehozásakor adott meg, távoli PowerShell használatával inicializálja a lemezt. Egy egyéni szkriptbővítmény is használhatja: 
 
 ```azurepowershell-interactive
     $location = "location-name"
@@ -89,7 +89,7 @@ Miután hozzáadott egy üres lemez, inicializálnia kell. A lemez inicializál�
     Set-AzureRmVMCustomScriptExtension -ResourceGroupName $rgName -Location $locName -VMName $vmName -Name $scriptName -TypeHandlerVersion "1.4" -StorageAccountName "mystore1" -StorageAccountKey "primary-key" -FileName $fileName -ContainerName "scripts"
 ```
         
-A parancsfájl tartalmazza ezt a kódot, a lemezek inicializálása hasonló:
+A parancsfájl például inicializálja a lemezeket kódot tartalmazza:
 
 ```azurepowershell-interactive
     $disks = Get-Disk | Where partitionstyle -eq 'raw' | sort number
