@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 10/21/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4ae84ff481b25f1e91a29c067dea74ba25f924aa
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 899aeeb994ca5c9bf30dfca876dff61c1ccf3ea7
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320322"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637579"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Felhasználó jelentkezzen be az Azure Active Directory átmenő hitelesítése
 
@@ -48,8 +48,9 @@ Az átmenő hitelesítés kombinálhatja a [zökkenőmentes egyszeri bejelentkez
   - Nincs munkaterhelést. Az ügynök automatikusan kap fejlesztéseket és hibajavítások.
 - *Biztonságos*
   - A helyszíni jelszavak soha nem a felhőben, bármilyen formában vannak tárolva.
-  - Az ügynök csak lehetővé teszi a kimenő kapcsolatokat a hálózaton belül. Ezért esetében nem követelmény az ügynök telepítéséhez a szegélyhálózaton, más néven DMZ-t.
   - A felhasználói fiókokhoz védi zökkenőmentesen dolgozik [Azure AD feltételes hozzáférési szabályzatok](../active-directory-conditional-access-azure-portal.md), többek között a multi-factor Authentication (MFA), [örökölt hitelesítés](../conditional-access/conditions.md) , illetve [ kiszűri a találgatásos jelszó támadások](../authentication/howto-password-smart-lockout.md).
+  - Az ügynök csak lehetővé teszi a kimenő kapcsolatokat a hálózaton belül. Ezért esetében nem követelmény az ügynök telepítéséhez a szegélyhálózaton, más néven DMZ-t.
+  - Egy ügynök és az Azure AD közötti kommunikáció Tanúsítványalapú hitelesítés használatával lett biztonságossá téve. Ezek a tanúsítványok automatikusan történik meg az Azure AD néhány havonta.
 - *Magas rendelkezésre állású*
   - További ügynökök bejelentkezési kérelmek magas rendelkezésre állást biztosít több helyszíni kiszolgálókon telepíthető.
 

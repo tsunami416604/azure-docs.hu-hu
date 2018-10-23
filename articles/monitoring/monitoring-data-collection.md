@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: 19a611ca88310f06503bea2b8606699fe3e1c709
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 8d3e0874637bc3f13905c6038349b34c18b5fe56
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406040"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637797"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Az Azure Monitor által gyűjtött adatok figyelése
 [Az Azure Monitor](../azure-monitor/overview.md) egy szolgáltatás, amellyel figyelheti az alkalmazások és az erőforrások támaszkodnak. Figyelt erőforrások központi az alábbi függvényre van telemetriai és egyéb adatok tárolására. A cikk ismerteti, hogyan az adatok tárolásának és az Azure Monitor által használt teljes leírását.
@@ -108,7 +108,7 @@ Metrikákkal elvégezhető feladatok a következők:
 
 
 ### <a name="viewing-metrics"></a>Metrikák megtekintése
-Az Azure-ban metrikákat gyűjt a Azure Monitor-metrikák tárolójában. Ez az idősor lépésközi 93 napig gyors lekérési és a tárolók metrikaértékek optimalizált adatbázis. Másolja a Log Analytics metrikák hosszú távú elemzésekhez és népszerű.
+Az Azure-ban metrikákat gyűjt az Azure Monitor-metrikák adatbázisban. Ez az idősor lépésközi 93 napig gyors lekérési és a tárolók metrikaértékek optimalizált adatbázis. Másolja a Log Analytics metrikák hosszú távú elemzésekhez és népszerű.
 
 Metrikaadatok többféle módon szerepel, a fent leírt módon. Használat [metrikaböngésző](../monitoring-and-diagnostics/monitoring-metric-charts.md) közvetlenül elemezheti az adatokat a metrika-tárolót, és több mérőszámok értékeit diagram idővel. A diagramok megjelenítése interaktív módon, vagy egy irányítópultot, megtekintheti őket más vizualizációkat rögzítheti őket. Metrikák használatával is lekérhet a [Azure REST API-val figyelési](../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
 
@@ -173,7 +173,7 @@ Metrikák másolhatja a Log Analyticsben, hogy más típusú adatokat tartalmaz�
 Útmutató: Azure-erőforrások metrikáinak begyűjtését kap [gyűjtése az Azure naplói és a Log Analytics használati metrikái](../log-analytics/log-analytics-azure-storage.md). Útmutató az erőforrások metrikáinak begyűjtését Azure PaaS erőforrására [konfigurálhatja az Azure PaaS-erőforrás-mérőszámok gyűjtését a Log Analytics](../log-analytics/log-analytics-collect-azurepass-posh.md).
 
 ### <a name="logs-to-metrics"></a>Naplók, metrikák
-A fentiekben ismertetettek szerint metrikák, gyorsabb, mint a naplókat, így kisebb késéssel és a egy alacsonyabb költségek létrehozhat riasztásokat. A log Analytics jelentős mennyiségű, metrikák alkalmas lenne, de nem az Azure-metrikagyűjtéshez tárolójában tárolt numerikus adatokat gyűjt.  Ilyenek például az ügynökök és felügyeleti megoldásokat összegyűjtött teljesítményadatok. Ezek az értékek némelyike átmásolható a metrikák tárolóba, ahol elérhetők a riasztás és a metrikaböngésző elemzéshez.
+A fentiekben ismertetettek szerint metrikák, gyorsabb, mint a naplókat, így kisebb késéssel és a egy alacsonyabb költségek létrehozhat riasztásokat. A log Analytics jelentős mennyiségű, metrikák alkalmas lenne, de nem az Azure-metrikagyűjtéshez adatbázisban tárolt numerikus adatokat gyűjt.  Ilyenek például az ügynökök és felügyeleti megoldásokat összegyűjtött teljesítményadatok. Ezek az értékek némelyike átmásolható a metrikák adatbázisba, ahol elérhetők a riasztás és a metrikaböngésző elemzéshez.
 
 A magyarázat, ez a funkció elérhető legyen [metrika riasztások létrehozása az Azure Monitor-naplók](../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md). Az értékek támogatási listája érhető el: [az Azure monitorban támogatott mérőszámok](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces).
 

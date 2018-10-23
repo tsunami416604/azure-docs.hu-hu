@@ -7,15 +7,15 @@ author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: article
-ms.date: 09/10/2018
+ms.topic: conceptual
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: e6bb0735de94d0baaac3a8504ec1811cfbfff27f
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 92b4864f8991380740e6edb498328ce2eea98250
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353917"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650111"
 ---
 # <a name="entities-in-luis"></a>A LUIS entitások
 
@@ -60,6 +60,10 @@ Az utterance (kifejezés) a "Book me egy jegyet Párizs", "Párizs" a hely típu
 
 ## <a name="assign-entities-in-none-intent"></a>Nincs leképezés entitások hozzárendelése
 Minden szándék fog vonatkozni, beleértve a **nincs** szándékkal, rendelkeznie kell címkével entitásokat. Ez segít a LUIS-további információ az entitások amelyeknél megcímkézzen és szavakat Mik az entitások körül. 
+
+## <a name="entity-status-for-predictions"></a>Entitás állapota ismeretekkel
+
+Lásd: [entitás állapota előrejelzéseket](luis-how-to-add-example-utterances.md#entity-status-predictions) további információt. 
 
 ## <a name="types-of-entities"></a>Entitástípus
 A LUIS kínál számos különböző típusú entitások; előre összeállított entitások lista alanyokra és egyedi gépi megtanult.

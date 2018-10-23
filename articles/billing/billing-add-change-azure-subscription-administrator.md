@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 10/19/2018
 ms.author: cwatson
-ms.openlocfilehash: 821d263856f21897915ba7954487b4d029cc4ed0
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: d6e99c2d57baa5fc62f3894abc9d04635f81f5aa
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395245"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638052"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Adja hozzá, vagy az Azure-előfizetések rendszergazdáinak módosításáról
 
@@ -41,9 +41,9 @@ Ha valakit egy Azure-előfizetés rendszergazdájaként szeretne hozzáadni, ren
 
 1. Látogasson el [ **előfizetések** az Azure Portalon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 2. Válassza ki azt az előfizetést, amelynek hozzáférést szeretne adni.
-3. Válassza a **Hozzáadás** lehetőséget.
+3. Válassza a listában a **Hozzáférés-vezérlés (IAM)** elemet.
+4. Válassza a **Hozzáadás** lehetőséget.
    (Ha hiányzik a Hozzáadás gomb, nincs engedélye engedélyek hozzáadására.)
-4. Válassza a listában a **Hozzáférés-vezérlés (IAM)** elemet.
 5. A **Szerepkör** mezőben válassza a **Tulajdonos** elemet. 
 6. A **Hozzáférés hozzárendelése** mezőben válassza az **Azure AD, felhasználó, csoport vagy alkalmazás** elemet. 
 7. A **Kiválasztás** mezőbe írja be annak a felhasználónak az e-mail-címét, amelyet tulajdonosként szeretne hozzáadni. Válassza ki a felhasználót, majd válassza a **Mentés** lehetőséget.
@@ -67,6 +67,19 @@ Csak [Tulajdonos](../role-based-access-control/built-in-roles.md#owner) adható 
     A társ-rendszergazdaként engedély eltávolítása **kattintson a jobb gombbal** a társ-rendszergazda felhasználót, majd **társadminisztrátor eltávolítása**.
 
     ![Képernyőkép, amely eltávolítja a társ-rendszergazdaként](./media/billing-add-change-azure-subscription-administrator/remove-coadmin.png)
+
+### <a name="adding-a-guest-user-as-a-co-administrator"></a>Vendégfelhasználó hozzáadása társadminisztrátorként
+
+Néhány eltérés, mint a korábban megszokott tagfelhasználó a társ-rendszergazda szerepkörrel vendégfelhasználók a társadminisztrátori szerepkörhöz rendelt jelenhet meg. Vegye figyelembe az alábbi forgatókönyvet:
+
+- Az Azure AD munkahelyi vagy iskolai fiókkal rendelkező felhasználó az Azure-előfizetés szolgáltatás-rendszergazdát.
+- "B" felhasználó Microsoft-fiókkal rendelkezik.
+- A felhasználó a társadminisztrátori szerepkörhöz rendel a "b" felhasználónak
+- "B" felhasználó szinte minden funkciója, de nem tudja keresése az Azure AD-címtárban található felhasználók vagy alkalmazások regisztrálását.
+
+A "B" felhasználó sikerült mindent felügyelhetnek alakul. Ez a különbség oka, hogy a Microsoft-fiók hozzáadódik az előfizetés meg vendégként a tag felhasználó helyett. Vendégfelhasználók más alapértelmezett engedélyek rendelkezik, mint a korábban megszokott tagfelhasználó Azure AD-ben. Például tagfelhasználó más felhasználók olvashatja az Azure AD-ben, és a vendég felhasználók nem. Tag felhasználók regisztrálhatnak új szolgáltatásnevek Azure AD-ben, és a vendég felhasználók nem. Vendégfelhasználó képesnek kell lennie a következő feladatok végrehajtására, egy lehetséges megoldás-e az adott hozzárendelése az Azure AD-rendszergazdai szerepköröket a meghívott felhasználónak szüksége van. Például az előző forgatókönyvben, hozzárendelheti a [Címtárolvasók](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) szerepkör más felhasználók olvasása és hozzárendelése a [alkalmazásfejlesztő](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) hozhat létre egyszerű szolgáltatások szerepkört. Tagok és vendégfelhasználók és engedélyeiket kapcsolatos további információkért lásd: [Mik azok az alapértelmezett felhasználói engedélyek az Azure Active Directoryban?](../active-directory/fundamentals/users-default-permissions.md).
+
+Vegye figyelembe, hogy a [beépített szerepkörök az Azure-erőforrások](../role-based-access-control/built-in-roles.md) eltérnek a [az Azure AD-rendszergazdai szerepköröket](../active-directory/users-groups-roles/directory-assign-admin-roles.md). A beépített szerepkörök nem hozzáférést minden olyan Azure ad-hez. További információkért lásd: [megérteni a különféle szerepkörök](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
 <a name="change-service-administrator-for-a-subscription"></a>
 

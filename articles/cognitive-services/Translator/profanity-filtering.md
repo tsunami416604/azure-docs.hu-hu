@@ -10,20 +10,20 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 87814571e6f1c20b219020651eb798fa49a28deb
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 4154950cf8d8b6ec2e47a9f8100cb7983ac127bf
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127933"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648037"
 ---
 # <a name="add-profanity-filtering-with-the-translator-text-api"></a>Adja hozzá a Translator Text API szűrés cenzúrázása
 
 A Translator szolgáltatás általában megtalálható a forrás a fordítás cenzúrázása őrzi meg. A fokú cenzúrázása és a környezet, amellyel szavakat profán kulturális környezetek eltérő. Ennek eredményeképpen a párhuzamossági cenzúrázása a célként megadott nyelven kiegészíthetők előfordulhat, hogy, illetve csökkenteni.
 
-Ha azt szeretné, a fordítás cenzúrázása (akkor is, ha cenzúrázása a forrás-szövegben található) megjelenésének elkerüléséhez, használja a vulgáris szűrés lehetőséget a Translate() metódusban. Ez a beállítás lehetővé teszi, hogy adja meg, hogy meg szeretné tekinteni a vulgáris törölték, vagy a megfelelő címkék megjelölve vagy hajt végre semmilyen műveletet.
+A fordítás cenzúrázása megjelenésének elkerüléséhez akkor is, ha cenzúrázása a forrás-szövegben található, használja a vulgáris szűrési lehetőségek érhetők el a Translate() metódusban. Ez a beállítás lehetővé teszi, hogy válassza ki, hogy cenzúrázása törölni, hogy a megfelelő címkék megjelölve, vagy nem tett semmit.
 
-A Translate() metódushoz egy "beállítások" paramétert, amely az új "ProfanityAction" elemet tartalmaz. ProfanityAction elfogadott értékek "NoAction," "Megjelölt" és "Törölt".
+A Translate() metódushoz a "beállítások" paramétert, amely az új "ProfanityAction" elemet tartalmaz. A ProfanityAction az elfogadott értékek a következők "NoAction", "Marked" és "Törölt".
 
 ## <a name="accepted-values-of-profanityaction-and-examples"></a>Elfogadott értékek ProfanityAction és példák
 |ProfanityAction érték | Műveletek | Például: Forrás - japán | Például: Cél - angol nyelven|
@@ -35,4 +35,3 @@ A Translate() metódushoz egy "beállítások" paramétert, amely az új "Profan
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [A alkalmazni a Translator API-hívással szűrés cenzúrázása](reference/v3-0-translate.md)
-

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 0b2bf8cdb1af85e5ddbd3b18dd6dfa47bcb835b4
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: d7dbb808205c78b53277c6d916f5166a41c7e93d
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432885"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638426"
 ---
 # <a name="azure-storage-account-overview"></a>Az Azure storage-fiókok áttekintése
 
@@ -25,9 +25,9 @@ Ismerje meg, hogyan hozhat létre egy Azure storage-fiókot, lásd: [hozzon lét
 
 Az Azure Storage három típusú tárfiókok biztosít. Egyes támogatja a különböző funkciókat, és rendelkezik a saját díjszabási modell. Milyen típusú fiókot, amely a legjobb alkalmazásait a tárfiók létrehozása előtt, fontolja meg a különbségeket. A tárfiókok típusai a következők:
 
-* **Általános célú v2** fiókok (a legtöbb forgatókönyvek esetén ajánlott)
-* **Általános célú v1** fiókok
-* **Blob Storage**-fiók
+* **[Általános célú v2 fiókok](#general-purpose-v2-accounts)**  (a legtöbb forgatókönyvek esetén ajánlott)
+* **[Általános célú v1-fiókok](#general-purpose-v1-accounts)**
+* **[BLOB storage-fiókok](#blob-storage-accounts)** 
 
 A következő táblázat a tárfiókok típusait és azok képességeinek:
 
@@ -41,7 +41,7 @@ A következő táblázat a tárfiókok típusait és azok képességeinek:
 
 <sup>2</sup>összes storage-fiók használatával történő Storage Service Encryption (SSE) inaktív adatok titkosítását. További információkért lásd: [Azure Storage Service Encryption az inaktív adatok](storage-service-encryption.md).
 
-<sup>3</sup>az archív szinten érhető el, csak egy egyedi BLOB szintjén nem a storage-fiók szintjén. Csak blokkblobok és hozzáfűző blobok archiválhatók. További információkért lásd: [Azure Blob storage: gyakori, ritka és archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
+<sup>3</sup>az archív szinten érhető el, csak egy egyedi BLOB szintjén nem a storage-fiók szintjén. Csak blokkblobok és hozzáfűző blobok archiválhatók. További információkért lásd: [Azure Blob storage: gyakran és ritkán használt adatok, és az archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
 
 <sup>4</sup>zónaredundáns tárolás (ZRS) csak a standard szintű, általános célú v2-tárfiókok esetén érhető el. A ZRS kapcsolatos további információkért lásd: [zónaredundáns tárolás (ZRS): az Azure Storage magas rendelkezésre állású alkalmazások](storage-redundancy-zrs.md). Más replikációs beállításokkal kapcsolatos további információkért lásd: [Azure Storage replikáció](storage-redundancy.md).
 
@@ -49,13 +49,16 @@ A következő táblázat a tárfiókok típusait és azok képességeinek:
 
 Általános célú v2-tárfiókok a legújabb Azure Storage-szolgáltatások támogatásához, és építse be az összes funkcióját, általános célú v1 és Blob storage-fiókok. Általános célú v2 fiókok kapacitás árak nyújthat a legalacsonyabb gigabájtonkénti az Azure Storage, valamint iparági versenyképes tranzakciós. Általános célú v2-tárfiókok ezeket az Azure tárolási szolgáltatások támogatják:
 
-- Blobok (minden esetében)
+- Blobok (összes típusa: blokkolás, Hozzáfűzés, oldal)
 - Fájlok
 - Lemezek
 - Üzenetsorok
 - Táblák
 
-A Microsoft azt javasolja, általános célú v2-tárfiókok használata a legtöbb forgatókönyvhöz. Könnyedén frissíthet egy általános célú v1- vagy Blob storage-fiók egy általános célú v2 fiók nincs állásidő és alkalmazás újraírások, és nincs szükség az adatok másolásához. Általános célú v2 fiókra frissítésével kapcsolatos további információkért lásd: [frissítsen egy általános célú v2-tárfiók](storage-account-upgrade.md). 
+> [!NOTE]
+> A Microsoft azt javasolja, általános célú v2-tárfiókok használata a legtöbb forgatókönyvhöz. Könnyedén frissíthet egy általános célú v1- vagy Blob storage-fiók egy általános célú v2 fiók üzemkimaradás nélkül, valamint az adatok másolása nélkül.
+>
+> Általános célú v2 fiókra frissítésével kapcsolatos további információkért lásd: [frissítsen egy általános célú v2-tárfiók](storage-account-upgrade.md). 
 
 Általános célú v2-tárfiókok ajánlat több elérési szint a használati minták alapján adatainak tárolásához. További információkért lásd: [elérési szint a block blob adatok](#access-tiers-for-block-blob-data).
 
@@ -103,19 +106,20 @@ Az Azure Storage eléréséhez a blokkblobok adataival használati mintái alapj
 
 A rendelkezésre álló hozzáférési szintek a következők:
 
-* A **gyakori elérésű** hozzáférési szint, amely a gyakori hozzáférés a tárfiókban tárolt objektumok számára van optimalizálva. A gyakori elérésű szint adatok elérése a leginkább költséghatékony, amíg némileg magasabb tárolási költségek. Új tárfiókok alapértelmezés szerint a gyakori elérésű szint jönnek létre.
-* A **ritkán használt adatok** hozzáférési szint, amely nagy mennyiségű, ritkán elért és legalább 30 nappal a tárolt adatok tárolására van optimalizálva. Adatok tárolása a lassú elérési szint költséghatékonyabban, de valamelyest drágábbak, mint a gyakori elérésű szint adatok elérése, hogy az adatok elérése lehet.
-* A **archív** szint, amely csak egyedi blokkblobokhoz érhető el. Az archív szinten az adatokat, amelyeket lekérés több órás késése legalább 180 napig maradnak az archív szinten van optimalizálva. Az archív szinten adatok tárolására szolgáló a leginkább költséghatékony lehetőséget, de az adatok elérése drágább, mint a gyors vagy lassú elérésű szinteken adatok elérése. 
-
 > [!NOTE]
 > A [prémium szintű hozzáférési szint](../blobs/storage-blob-storage-tiers.md#premium-access-tier) egy helyileg redundáns tárolás (LRS) fiókot az Észak-Európa, USA 2. keleti régiója, USA középső régiója és USA nyugati régiójában régiókban korlátozott előzetes verzióban érhető el. Ismerje meg, hogyan kell regisztrálni az előzetes verzióra, lásd: [Azure prémium szintű Blob Storage bemutatása](http://aka.ms/premiumblob).
 
-Ha változik az adatok használati módja, bármikor hozzáférési szintek között válthat. 
+* A **interaktív** hozzáférési szint, amely a gyakori hozzáférés a tárfiókban tárolt objektumok számára van optimalizálva. A gyakori elérésű szint adatok elérése a leginkább költséghatékony, amíg némileg magasabb tárolási költségek. Új storage-fiókok jönnek létre a gyakran használt adatok alapértelmezés szerint szint.
+* A **ritkán használt adatok** hozzáférési szint, amely nagy mennyiségű, ritkán elért és legalább 30 nappal a tárolt adatok tárolására van optimalizálva. Adatok tárolása a lassú elérési szint költséghatékonyabban, de valamelyest drágábbak, mint a gyakori elérésű szint adatok elérése, hogy az adatok elérése lehet.
+* A **archív** szint, amely csak egyedi blokkblobokhoz érhető el. Az archív szinten az adatokat, amelyeket lekérés több órás késése legalább 180 napig maradnak az archív szinten van optimalizálva. Az archív szinten adatok tárolására szolgáló a leginkább költséghatékony lehetőséget, de az adatok elérése drágább, mint a gyors vagy lassú elérésű szint adatainak elérése. 
+
+
+Ha változik az adatok használati módja, bármikor hozzáférési szintek között válthat. A hozzáférési rétegek kapcsolatos további információkért lásd: [Azure Blob storage: prémium szintű (előzetes verzió), gyakori, ritka és archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
 
 > [!IMPORTANT]
-> Egy meglévő tárfiókot vagy blob esetében a hozzáférési szint módosítása további díjakat vonhat.
+> Egy meglévő tárfiókot vagy blob esetében a hozzáférési szint módosítása további díjakat vonhat. További információkért lásd: a [szakasz számlázási tárfiók](#storage-account-billing).
 
-A hozzáférési rétegek kapcsolatos további információkért lásd: [Azure Blob storage: prémium szintű (előzetes verzió), gyakori, ritka és archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
+
 
 ## <a name="replication"></a>Replikáció
 

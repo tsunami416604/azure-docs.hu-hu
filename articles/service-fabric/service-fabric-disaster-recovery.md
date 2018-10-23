@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 4b13d2d277721d37a6b96f6640377c875f0b5c0f
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: b22d18408d040d564d6220e74e8b8a893fe41ae9
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161578"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646245"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Vészhelyreállítás az Azure Service Fabricben
 Magas rendelkezésre állás biztosítása kritikus része annak ellenőrzése, hogy szolgáltatásokat az összes különböző típusú hibák hibatűrését. Ez különösen fontos a nem tervezett hibák és a hatáskörén kívül esik. Ez a cikk ismerteti az egyes közös hibaállapotra katasztrófák lehet, ha nem modellezése, és megfelelően felügyelt. Megoldások és a teendő, ha vészhelyzet történt ennek ellenére is ismertetjük. A célja, hogy korlátozni vagy kiküszöbölése az állásidőt és az adatvesztés kockázatát, hibák, tervezett felmerülő, vagy ellenkező esetben fordulhat elő.
@@ -133,7 +133,7 @@ Két különböző stratégiák újraindulnak a még működő a állandó és t
 ### <a name="random-failures-leading-to-cluster-failures"></a>Véletlenszerűen hibák fürtön hibákhoz vezet.
 A Service Fabric Magcsomópontok fogalma rendelkezik. Ezek a csomópontok, melyek fenntartják a mögöttes fürt rendelkezésre állását. Ezek a csomópontok biztosítania kell további csomópontokkal bérleteket létrehozó és bizonyos típusú hálózati hibák során tiebreakers szolgáló mentése marad a fürt segítségével. Véletlenszerűen hibák eltávolítása a magcsomópontok többsége a fürtben, és azok nem kerülnek vissza, ha a fürt automatikusan leáll. Az Azure-ban, Magcsomópontok automatikusan kezeli: keresztül a rendelkezésre álló tartalék és frissítési tartományokba, vannak terjesztett, és ha eltávolít egy egyetlen kezdőérték csomópontot a fürtről egy másik hoz létre a helyére. 
 
-Önálló Service Fabric-fürtök és az Azure az "elsődleges csomópont" típus azt, amelyik futtatja a magok. Egy elsődleges csomóponttípus meghatározásakor a Service Fabric lesz automatikusan előnyeit legfeljebb 9 magcsomópontok és az egyes rendszerszolgáltatások 9 replikák létrehozásával megadott csomópontok számát. Ha egy véletlenszerűen hibák készletét egyidejűleg ezen szolgáltatás rendszerreplikák többsége ki tart, a helyrendszeri szolgáltatások lép kvórum elvesztése, azt a fent leírtak szerint. A magcsomópontok többsége elvesznek, ha a fürt le fog állni után minél hamarabb.
+Önálló Service Fabric-fürtök és az Azure az "elsődleges csomópont" típus azt, amelyik futtatja a magok. Egy elsődleges csomóponttípus meghatározásakor a Service Fabric lesz automatikusan előnyeit legfeljebb 9 magcsomópontok és az egyes rendszerszolgáltatások 7 replikák létrehozásával megadott csomópontok számát. Ha egy véletlenszerűen hibák készletét egyidejűleg ezen szolgáltatás rendszerreplikák többsége ki tart, a helyrendszeri szolgáltatások lép kvórum elvesztése, azt a fent leírtak szerint. A magcsomópontok többsége elvesznek, ha a fürt le fog állni után minél hamarabb.
 
 ## <a name="next-steps"></a>További lépések
 - Ismerje meg, hogyan különféle hibák szimulálása a [testability keretrendszer](service-fabric-testability-overview.md)

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 09/22/2018
 ms.topic: article
-ms.openlocfilehash: f574203f31a21f945115296693f04cff649614c6
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: a71f28413028efe3547df7c464ec852fe2161f63
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165636"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649941"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Az Ansible modul és verzió mátrix
 
@@ -62,7 +62,7 @@ Ez a cikk az Azure-ban, amely építhető ki az Azure felhőbeli erőforrások, 
 | azure_rm_route                              | -            | -                           | -            | Igen          | Igen                                 | 
 | azure_rm_routetable                         | -            | -                           | -            | Igen          | Igen                                 | 
 | azure_rm_routetable_facts                   | -            | -                           | -            | Igen          | Igen                                 | 
-| **Storage**                    |           |                          |                          |                             |                               | 
+| **Tárolás**                    |           |                          |                          |                             |                               | 
 | azure_rm_storageaccount                     | Igen          | Igen                         | Igen          | Igen          | Igen                                 | 
 | azure_rm_storageaccount_facts               | Igen          | Igen                         | Igen          | Igen          | Igen                                 | 
 | azure_rm_storageblob                        | Igen          | Igen                         | Igen          | Igen          | Igen                                 | 
@@ -128,7 +128,7 @@ Ez a cikk az Azure-ban, amely építhető ki az Azure felhőbeli erőforrások, 
 | azure_rm_autoscale_facts            | -            | -                         | -          | Igen          | Igen                                 | 
 
 ## <a name="introduction-to-playbook-role-for-azure"></a>Forgatókönyv szerepkör bemutatása az Azure-hoz
-A [azure_preview_module forgatókönyv szerepkör](https://galaxy.ansible.com/Azure/azure_preview_modules/) a legteljesebb körű szerepkört, és minden a legújabb Azure-modulokat tartalmaz. A frissítések és hibajavításokat tartalmaz, mint a hivatalos Ansible-kiadás további időben kell elvégezni. Ansible az Azure erőforrás-kiépítés célra használja, ha Ön javasoljuk, hogy a azure_preview_module szerepkör telepítése.
+A [azure_preview_module forgatókönyv szerepkör](https://galaxy.ansible.com/Azure/azure_preview_modules/) a legteljesebb körű szerepkört, és minden a legújabb Azure-modulokat tartalmaz. A frissítések és hibajavításokat tartalmaz, mint a hivatalos Ansible-kiadás további időben kell elvégezni. Ansible az Azure erőforrás-kiépítés célra használja, ha Ön javasoljuk, hogy a azure_preview_module forgatókönyv szerepkör telepítése.
 
 A forgatókönyv azure_preview_module szerepkör három hetente akkor szabadul fel.
 

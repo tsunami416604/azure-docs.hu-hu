@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
-ms.reviewer: vanto, carlrab, ronitr
+ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
-ms.date: 10/11/2018
-ms.openlocfilehash: 7cabf1f0020e2f72dae138c7b7b79e69ce2fc677
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.date: 10/22/2018
+ms.openlocfilehash: 9978497f8bd3ebb11247f3bffe319866128e9f1d
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456983"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646507"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database biztonsági lehetőségeinek áttekintése
 
@@ -34,7 +34,7 @@ Az SQL Database a mozgásban lévő adatokat a [Transport Layer Security](https:
 > [!IMPORTANT]
 > Az Azure SQL Database biztonsága ne sérüljön titkosítás (SSL/TLS) minden esetben minden parancs, amely biztosítja, hogy az összes adat titkosítva van "átvitel" az adatbázis és az ügyfél között. Ez történik, függetlenül a beállítás a **titkosítása** vagy **TrustServerCertificate** a kapcsolati karakterláncban.
 >
-> Ha az alkalmazás kapcsolati karakterláncában mégis **nem** adja meg a titkosított kapcsolatot, és *nem* a kiszolgálótanúsítvány megbízhatósága (Ez az ADO.NET-illesztőprogram **Encrypt = True**és **TrustServerCertificate = False**), az alkalmazás lehet ki vannak téve a egy man a középső támadást, az alkalmazás nem ellenőrzés alatt áll. a kiszolgáló vagy a titkosítási kényszerítése miatt. Ha a kapcsolati karakterlánc lekérését az Azure Portalról fog rendelkezni a megfelelő beállítások
+> Az alkalmazás kapcsolati karakterláncában, győződjön meg arról, hogy a megadott titkosított kapcsolatot és *nem* megbízható a tanúsítvány (Ez az ADO.NET-illesztőprogram **Encrypt = True** és  **TrustServerCertificate = False**). Ez segít meggátolni egy férfiról, aki a középső támadás esetén az alkalmazás által az alkalmazás ellenőrizze a kiszolgáló és a végrehajtó titkosítás. A kapcsolati karakterlánc lekérését az Azure Portalról, ha a helyes beállításokat fog rendelkezni.
 >
 > A TLS és a kapcsolat kapcsolatos információkért lásd: [TLS kapcsolatos szempontok](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)
 
@@ -48,7 +48,7 @@ Az adatok titkosításának egyéb módjaira vonatkozóan fontolja meg az alább
 Adatfelderítés és besorolás (jelenleg előzetes verzióban érhető el) biztosít a felderítése, besorolása, címkézése és védelme a az adatbázisokban a bizalmas adatokat az Azure SQL Database-be épített fejlettebb képességek. Felderítése és besorolása a lehető legnagyobb mértékben bizalmas adatok (üzleti/pénzügyi, egészségügyi, személyazonosításra alkalmas adatok, stb.) is kulcsfontosságú szerepet játszanak az Information protection szervezeti helyzetében. Az infrastruktúra szolgálhasson:
 
 - Különféle biztonsági forgatókönyvek, például a (naplózás) figyelési és riasztási a bizalmas adatokhoz való rendellenes hozzáférést.
-- Való hozzáférés szabályozásának és korlátozására, biztonságát a rendkívül bizalmas adatokat tartalmazó adatbázisok.
+- Való hozzáférés szabályozásának és korlátozására, biztonságát a szigorúan bizalmas adatokat tartalmazó adatbázisok.
 - Lehetővé teszi, hogy megfeleljen az adatok adatvédelmi szabványok és az előírt megfelelőségi követelmények teljesítését.
 
 További információkért lásd: [Ismerkedés az SQL DB Adatfelderítés és besorolás](sql-database-data-discovery-and-classification.md).
@@ -82,7 +82,7 @@ Az engedélyezés az Azure SQL Database-adatbázisokban a felhasználók által 
 
 ### <a name="row-level-security"></a>Sorszintű biztonság
 
-A sorszintű biztonság lehetővé teszi az ügyfelek számára, hogy szabályozzák egy adatbázistábla soraihoz való hozzáférést a lekérdezést végrehajtó felhasználó jellemzői alapján (például csoporttagság vagy végrehajtási környezet). További információkat a [sorszintű biztonsággal kapcsolatos](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) részben találhat.
+Sorszintű biztonság lehetővé teszi, hogy az ügyfelek számára, hogy szabályozzák egy adatbázistábla soraihoz (például csoporttagság vagy végrehajtási környezet) lekérdezést végrehajtó felhasználó jellemzői alapján való hozzáférést. További információkat a [sorszintű biztonsággal kapcsolatos](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) részben találhat.
 
 ### <a name="dynamic-data-masking"></a>Dinamikus adatmaszkolás
 
@@ -98,7 +98,7 @@ Az SQL Database naplózási szolgáltatása nyomon követi az adatbázisok esem�
 
 ### <a name="threat-detection"></a>Fenyegetések észlelése
 
-A Fenyegetésészlelés egészíti ki a naplózást egy további, amely észleli az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket az Azure SQL Database szolgáltatásba épített biztonsági információs réteget biztosít. Figyelmeztetést gyanús tevékenységek, a potenciális biztonsági réseket és a SQL-injektálásos támadásokról, valamint rendellenes adatbázis-hozzáférési mintákról. Fenyegetésészlelési riasztások tekinthetők [az Azure Security Center](https://azure.microsoft.com/services/security-center/) , és adja meg a gyanús tevékenység részleteit, és tegyen javaslatot a műveletre vizsgálata, valamint a fenyegetés. A fenyegetésészlelés $15/kiszolgálói/hó. Fontos ingyenes az első 60 nap. További információk: [Ismerkedés az SQL Database fenyegetések észlelése szolgáltatásával](sql-database-threat-detection.md).
+A Fenyegetésészlelés egészíti ki a naplózást egy további, amely észleli az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket az Azure SQL Database szolgáltatásba épített biztonsági információs réteget biztosít. Gyanús tevékenységek, a lehetséges biztonsági résekről, figyelmeztetést, és az SQL-injektálási támadások, valamint a rendellenes adatbázis-hozzáférési mintákról. Fenyegetésészlelési riasztások tekinthetők [az Azure Security Center](https://azure.microsoft.com/services/security-center/) , és adja meg a gyanús tevékenység részleteit, és tegyen javaslatot a műveletre vizsgálata, valamint a fenyegetés. A fenyegetésészlelés $15/kiszolgálói/hó. Fontos ingyenes az első 60 nap. További információk: [Ismerkedés az SQL Database fenyegetések észlelése szolgáltatásával](sql-database-threat-detection.md).
 
 ## <a name="compliance"></a>Megfelelőség
 
@@ -108,7 +108,7 @@ Mellett a fent említett szolgáltatások és funkciók, amelyek segíthetnek az
 
 SQL Database segít az adatok biztonságának kezelése azáltal, hogy adatbázis a vizsgálatokból és a egy központi irányítópulton a [SQL-sebezhetőségi felmérés](sql-vulnerability-assessment.md).
 
-**A biztonságirés-értékelési**: [SQL-sebezhetőségi felmérés](sql-vulnerability-assessment.md) (jelenleg előzetes verzió) egy könnyen konfigurálható, amelyek segítségével megkereshetők, nyomon követheti és javíthatja az esetleges adatbázis az Azure SQL Database-be épített eszköz. biztonsági rések. Az értékelés hajt végre egy biztonsági rések keresése az adatbázisban, és létrehoz egy jelentést, amely a biztonsági állapot, beleértve a gyakorlatban is használható, a biztonsági problémák megoldása és az adatbázis-biztonság betekintést nyújt. Az értékelési jelentés egy elfogadható referenciakonfigurációjához tartozó engedély konfigurációk, a konfigurációk és az adatbázis-beállítások megadásával testre szabható a környezet. Ez segíthet, hogy:
+**[SQL-sebezhetőségi felmérés](sql-vulnerability-assessment.md)**  egy egyszerű, amelyek segítségével felderítése, nyomon követheti és szervizelheti az adatbázis biztonsági réseinek Azure SQL Database-be épített eszköz konfigurálása. Az értékelés hajt végre egy biztonsági rések keresése az adatbázisban, és létrehoz egy jelentést, amely a biztonsági állapot, beleértve a gyakorlatban is használható, a biztonsági problémák megoldása és az adatbázis-biztonság betekintést nyújt. Az értékelési jelentés egy elfogadható referenciakonfigurációjához tartozó engedély konfigurációk, a konfigurációk és az adatbázis-beállítások megadásával testre szabható a környezet. Ez segíthet, hogy:
 
 - Adatbázis a vizsgálati jelentések igénylő megfelelőségi követelmények teljesítése érdekében.
 - Adatok adatvédelmi követelményeknek.

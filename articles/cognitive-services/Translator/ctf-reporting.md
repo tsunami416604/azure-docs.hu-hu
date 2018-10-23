@@ -1,5 +1,5 @@
 ---
-title: Együttműködésen alapuló fordítás Framework (CTF) Reporting - fordítói szöveg
+title: Együttműködésen alapuló fordítás Framework (CTF) jelentéskészítés – Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Hogyan használható a reporting által biztosított együttműködési környezettel Translation Framework (CTF).
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 9b3ac6e6d10fb0e70549cadfd7bf65220deb8f33
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: aa59ce89bf8c2c4b31d85c572dcdfb3645f06884
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126921"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646009"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>A Collaborative Translation Framework (CTF) jelentéskészítés használata
 
 > [!NOTE]
 > Tato metoda se zamítá. Nem érhető a 3.0-s verzió, a Translator Text API.
 
-> Az együttműködésen alapuló fordítások Framework (CTF), 2.0-s verziójú, a Translator Text API, a korábban elérhető volt elavult 2018. február 1. A AddTranslation és AddTranslationArray funkciók lehetővé teszik a felhasználók engedélyezhetik a javításokat az együttműködésen alapuló fordítás keretrendszeren keresztül. 2018. január 31. után két függvényekhez nem fogadta el új mondat jelentkezés, és a felhasználók hibaüzenetet kapnak. Ezek a függvények is kivezetjük, és nem pótolhatók. 
+> Az együttműködésen alapuló fordítások Framework (CTF), 2.0-s verziójú, a Translator Text API, a korábban elérhető volt elavult 2018. február 1. A AddTranslation és AddTranslationArray funkciók lehetővé teszik a felhasználók engedélyezhetik a javításokat az együttműködésen alapuló fordítás keretrendszeren keresztül. 2018. január 31. után két függvényekhez nem fogadta el új mondat jelentkezés, és a felhasználók hibaüzenetet kapnak. Ezek a függvények is kivezetjük, és nem pótolhatók.
 
 >Elérhető a Translator Hub API, lehetővé téve a terminológia és stílus, egyéni fordítási rendszer hasonló funkciókat és hívhatja meg a kategória-azonosítója használatával a Translator Text API. Translator Hub: [ https://hub.microsofttranslator.com ](https://hub.microsofttranslator.com). Translator Hub API: [ https://hub.microsofttranslator.com/swagger ](https://hub.microsofttranslator.com/swagger).
 
@@ -33,7 +33,7 @@ Az együttműködési Translation Framework (CTF) Reporting API CTF áruházbeli
 
 ## <a name="endpoint"></a>Végpont
 A CTF Reporting API-végpont http://api.microsofttranslator.com/v2/beta/ctfreporting.svc
-                        
+
 
 ## <a name="methods"></a>Metódusok
 | Name (Név) |    Leírás|
@@ -64,7 +64,7 @@ UserTranslationCount[]GetUserTranslationCounts(
            string to,
            int? minRating,
            int? maxRating,
-           string user, 
+           string user,
            string category
            DateTime? minDateUtc,
            DateTime? maxDateUtc,
@@ -135,12 +135,12 @@ UserTranslation[] GetUserTranslations (
             string to,
             int? minRating,
             int? maxRating,
-            string user, 
+            string user,
             string category
             DateTime? minDateUtc,
             DateTime? maxDateUtc,
             int? skip,
-            int? take); 
+            int? take);
 ```
 
 **Paraméterek**
@@ -154,8 +154,8 @@ UserTranslation[] GetUserTranslations (
 | minRating| **Nem kötelező** a minőségi besorolása a lefordított szöveg jelölő egész szám. Az érvényes érték -10- és 10 között. Az alapértelmezett érték az 1.|
 | maxRating| **Nem kötelező** a legmagasabb minőségű besorolása a lefordított szöveg jelölő egész szám. Az érvényes érték -10- és 10 között. Az alapértelmezett érték az 1.|
 | Felhasználó| **Nem kötelező. Egy karakterlánc, amellyel szűrheti az eredményeket a Küldés létrehozója alapján**|
-| category| **Nem kötelező** a kategóriát vagy a tartomány a fordítás tartalmazó karakterlánc. Ez a paraméter csak az alapértelmezett beállítás általános támogatja.| 
-| minDateUtc| **Nem kötelező** a dátum, amikor szeretné beolvasni a fordításokat. A dátum az UTC formátumban kell lennie.| 
+| category| **Nem kötelező** a kategóriát vagy a tartomány a fordítás tartalmazó karakterlánc. Ez a paraméter csak az alapértelmezett beállítás általános támogatja.|
+| minDateUtc| **Nem kötelező** a dátum, amikor szeretné beolvasni a fordításokat. A dátum az UTC formátumban kell lennie.|
 | maxDateUtc| **Nem kötelező** : Ha szeretné a fordítások beolvasni a dátumot. A dátum az UTC formátumban kell lennie.|
 | kihagyás| **Nem kötelező** oldalon hagyja ki a kívánt eredmények száma. Például ha azt szeretné, a kihagyása a első 20 sort az eredmények és a 21-én eredményrekord nézetet, adja meg az ehhez a paraméterhez 20. Ez a paraméter alapértelmezett értéke 0.|
 | hajtsa végre a megfelelő| **Nem kötelező** a lekérni kívánt eredmények számát. Az egyes kérelmek maximális száma pedig a 100. Az alapértelmezett érték 50.|
@@ -192,21 +192,3 @@ Az eredményhalmaz tömbjét tartalmazza a **UserTranslation**. Minden egyes Use
 **A GitHib hitelesítésikód-Példák megtekintése**
 * [C#](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-csharp.md)
 * [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-php.md)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

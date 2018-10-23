@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: bf10226b1d3b2153e0e17d4126c35402d096a857
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: fc5ab802b39597d72f01f756c9bdb16597862e3c
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409237"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638202"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
@@ -144,7 +144,7 @@ Legalább egy telepített ügynökkel rendelkező összes alhálózat szerepel a
 
 A monitorozásának engedélyezése vagy letiltása az adott alhálózatok:
 
-1. Válassza ki, vagy a jelet a jelölőnégyzetből a **alhálózat-azonosító**. Ezután győződjön meg arról, hogy **figyelés használatát** beállítás vagy törölt, szükség szerint. Válassza ki, vagy törölje a több alhálózattal. Ha le van tiltva, alhálózatok nem figyeli, és az ügynökök frissítve lett, hogy állítsa le a pingelés más ügynökök. 
+1. Válassza ki, vagy a jelet a jelölőnégyzetből a **alhálózat-azonosító**. Ezután győződjön meg arról, hogy **figyelés használatát** beállítás vagy törölt, szükség szerint. Válassza ki, vagy törölje a több alhálózattal. Ha le van tiltva, alhálózatok nem figyeli, és az ügynökök frissítve lett, hogy állítsa le a pingelés más ügynökök. 
 2. Válassza ki a csomópontokat, hogy egy adott alhálózati a figyelni kívánt. Az alhálózat kiválasztása a listából, és helyezze át a szükséges csomópontokkal a nem monitorozott és felügyelt csomópontokat tartalmazó listák között. Az alhálózat egy egyéni leírást adhat hozzá.
 3. Válassza ki **mentése** a konfiguráció mentéséhez. 
 

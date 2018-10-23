@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: b936b42671c15a77a901f321ed3c51f1ba3639cd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 57742d72c8be0dcd999bc8b73f6d598263429c12
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036592"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646575"
 ---
 # <a name="api-v2-migration-guide"></a>API v2-Migrálási útmutató
 Az 1. verziójának [végpont](https://aka.ms/v1-endpoint-api-docs) és [szerzői](https://aka.ms/v1-authoring-api-docs) API-k elavulttá válik. Ez az útmutató segítségével megtudhatja, hogyan 2. verzióban át [végpont](https://aka.ms/luis-endpoint-apis) és [szerzői](https://aka.ms/luis-authoring-apis) API-k. 
@@ -27,7 +27,7 @@ A LUIS rendelkezik új [régiók](https://aka.ms/LUIS-regions) biztosított az i
 Az Authoring Tool API útvonal változása: használja a **programazonosítója** útvonal használatával az **api** útvonalat.
 
 
-| verzió: | útvonal |
+| version | útvonal |
 |--|--|
 |1|/Luis/V1.0/**programazonosítója**/apps|
 |2|/Luis/**api**/v2.0/apps|
@@ -36,7 +36,7 @@ Az Authoring Tool API útvonal változása: használja a **programazonosítója*
 ## <a name="endpoint-route-changes"></a>Végpont útvonal módosítások
 A végpont API új lekérdezési karakterlánc paraméterei, valamint a különböző választ tartalmaz. A részletes jelző értéke igaz, ha minden leképezések, függetlenül a pontszám, feltételobjektumot leképezések mellett a topScoringIntent nevű tömbben.
 
-| verzió: | Útvonal LEKÉRÉSE |
+| version | Útvonal LEKÉRÉSE |
 |--|--|
 |1|/Luis/V1/Application? azonosítója = {appId} & q = {q}|
 |2|/ luis/v2.0/apps/{appId}?q={q} [& timezoneOffset] [& részletes] [& helyesírás-ellenőrzés] [& átmeneti] [& bing – helyesírás-ellenőrzés-subscription-key] [& log]|
@@ -106,7 +106,7 @@ v2 végpont sikeres válasz:
 ## <a name="key-management-no-longer-in-api"></a>API-ban már nem kulcskezelés
 Az előfizetési végpont kulcs API-k elavultak, 410-es GONE visszaadása.
 
-| verzió: | útvonal |
+| version | útvonal |
 |--|--|
 |1|/Luis/V1.0/prog/Subscriptions|
 |1|/ luis/v1.0/prog/subscriptions/{subscriptionKey}|
@@ -116,7 +116,7 @@ Azure [végpont kulcsok](luis-how-to-azure-subscription.md) jönnek létre az Az
 ## <a name="new-versioning-route"></a>Új versioning útvonal
 A v2-modell most már szerepel egy [verzió](luis-how-to-manage-versions.md). A verziónév érték 10 karakter hosszúságú, az útvonal. Az alapértelmezett verziószáma "0.1".
 
-| verzió: | útvonal |
+| version | útvonal |
 |--|--|
 |1|/Luis/V1.0/**programazonosítója**/apps/ {appId} / entitás|
 |2|/Luis/**api**/v2.0/apps/{appId}/**verziók**/ {versionId} / entitás|
@@ -135,7 +135,7 @@ A LUIS metaadatokat visszaadni több API-k új névvel rendelkeznek.
 ## <a name="sample-renamed-to-suggest"></a>"Sample", "javaslat" nevet kapott:
 A LUIS javasol utterances meglévő [végpont utterances](luis-how-to-review-endoint-utt.md) , előfordulhat, hogy növelje a modell. A korábbi verzióban ez nevű **minta**. Az új verzióban neve megváltozik a mintából **javaslat**. Ezt nevezzük **[tekintse át a végpont utterances](luis-how-to-review-endoint-utt.md)** a LUIS-webhelyen.
 
-| verzió: | útvonal |
+| version | útvonal |
 |--|--|
 |1|/Luis/V1.0/**programazonosítója**/apps/ {appId} /entities/ {entityId} /**minta**|
 |1|/Luis/V1.0/**programazonosítója**/apps/ {appId} /intents/ {intentId} /**minta**|
@@ -155,7 +155,7 @@ A LUIS javasol utterances meglévő [végpont utterances](luis-how-to-review-end
 Az exportált 1.x alkalmazás JSON-FÁJLBAN szerepel, amely importálása előtt módosítani kell néhány területe [LUIS] [ LUIS] 2.0. 
 
 ### <a name="prebuilt-entities"></a>Előre összeállított entitások 
-A [előre összeállított entitások](luis-prebuilt-entities.md) megváltoztak. Ellenőrizze, hogy a V2 használata előre összeállított entitások. Ez magában foglalja a használatával [datetimeV2](luis-prebuilt-entities.md#use-a-prebuilt-datetimev2-entity), dátum és idő helyett. 
+A [előre összeállított entitások](luis-prebuilt-entities.md) megváltoztak. Ellenőrizze, hogy a V2 használata előre összeállított entitások. Ez magában foglalja a használatával [datetimeV2](luis-reference-prebuilt-datetimev2.md), dátum és idő helyett. 
 
 ### <a name="actions"></a>Műveletek
 A műveleti tulajdonság már nem érvényes. Akkor érdemes lehet üres. 

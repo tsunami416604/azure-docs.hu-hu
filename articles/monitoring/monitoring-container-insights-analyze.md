@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2018
+ms.date: 10/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 6df7d42bc291713a815cac9f719f53136ed35b19
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 430145119721ac947162d3b661377290a0ae2c11
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956672"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637998"
 ---
-## <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Az AKS fürtteljesítmény és az Azure Monitor-tárolókhoz ismertetése
+# <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Az AKS fürtteljesítmény és az Azure Monitor-tárolókhoz ismertetése
 Megtekintés a teljesítmény az Azure Kubernetes Service (AKS) fürtök figyelhető meg két perspektíva adatai és az Azure Monitor-tárolókhoz, közvetlenül a egy AKS-fürt vagy egy előfizetést az Azure Monitor összes AKS-fürt megtekintése. 
 
 Ez a cikk segít megérteni a felhasználói élményt a két perspektíva adatai, és hogyan gyorsan felmérheti, kivizsgálásán és elhárításán észlelt problémák között.
@@ -109,6 +109,10 @@ Váltson a **csomópontok** lapra, és a sor hierarchia követi a Kubernetes há
 
 ![Kubernetes-csomópontot példahierarchia a teljesítmény nézet](./media/monitoring-container-insights-analyze/containers-nodes-view.png)
 
+Egy kibontott csomópontból, is részletezése a pod vagy teljesítményadatok szűrve, hogy a tartományvezérlő a tartományvezérlőre, amely a csomóponton futó tárolót. Kattintson az érték a a **vezérlő** oszlopban az adott csomópont számára.   
+
+![Példa Lehatolás csomópontból a teljesítmény nézet-vezérlő](./media/monitoring-container-insights-analyze/drill-down-node-controller.png)
+
 Válassza ki a tartományvezérlők vagy a lap tetején lévő tárolókat, és tekintse át az állapot- és erőforrás-felhasználást azokat az objektumokat.  Ha ehelyett meg szeretné tekinteni a memóriahasználat, az a **metrika** legördülő listában válassza **memória RSS** vagy **memória-munkakészlet**. **Memória RSS** csak Kubernetes 1.8-as és újabb verziók esetében támogatott. Ellenkező esetben, tekintse meg az értékeket **Min&nbsp; %**  , *NaN&nbsp;%*, azaz egy nem definiált képviselő numerikus típus értéke vagy ábrázolható érték. 
 
 ![Tároló csomópontok teljesítmény nézet](./media/monitoring-container-insights-analyze/containers-node-metric-dropdown.png)
@@ -144,7 +148,9 @@ Itt megtekintheti a vezérlő teljesítménybeli állapotát.
 
 ![< név > tartományvezérlők teljesítmény nézet](./media/monitoring-container-insights-analyze/containers-controllers-view.png)
 
-A sor hierarchia vezérlő kezdődik, és a vezérlő bővül. Megtekintheti az egy vagy több tárolóban. Bontsa ki a pod, és az utolsó sort jeleníti meg a tároló a pod szerint vannak csoportosítva.  
+A sor hierarchia vezérlő kezdődik, és amikor kibővít egy tartományvezérlő, megtekintheti az egy vagy több podok.  Bontsa ki a pod, és az utolsó sort jeleníti meg a tároló a pod szerint vannak csoportosítva. Egy kibontott vezérlőről akkor is részletes elemzést a csomópontot, szűri az adott csomópont teljesítményadatok futtató. Kattintson az érték a a **csomópont** oszlopban az adott vezérlő.   
+
+![Példa Lehatolás csomópontból a teljesítmény nézet-vezérlő](./media/monitoring-container-insights-analyze/drill-down-controller-node.png)
 
 A tartományvezérlők megtekintésekor megjelenő információkat az alábbi táblázatban olvasható:
 
@@ -178,6 +184,10 @@ Válassza ki a választó **tárolók**.
 Itt megtekintheti az Azure-beli Kubernetes-tárolók teljesítménybeli állapotát.  
 
 ![< név > tartományvezérlők teljesítmény nézet](./media/monitoring-container-insights-analyze/containers-containers-view.png)
+
+Tárolóból akkor is részletes elemzést egy pod vagy egy csomópontot, szűri az adott objektum teljesítményadatainak megjelenítéséhez. Kattintson az érték a a **Pod** vagy **csomópont** oszlopban az adott tároló.   
+
+![Példa Lehatolás csomópontból a teljesítmény nézet-vezérlő](./media/monitoring-container-insights-analyze/drill-down-controller-node.png)
 
 A tárolók megtekintésekor megjelenő információkat az alábbi táblázatban olvasható:
 
@@ -231,7 +241,7 @@ A log Analytics segítségével keresése trendek, diagnosztizálhatja a szűk k
 
 Kiválasztásával a munkaterület az adatok interaktív elemzés céljából is végezhet a **nézet Kubernetes eseménynaplók** vagy **tárolónaplók megtekintése** lehetőség az előnézeti ablaktáblában láthatja. A **naplóbeli keresés** ablak jobb oldalán, az Azure portal oldalán, amelyen korábban volt.
 
-![Adatok elemzése a Log Analytics az](./media/monitoring-container-insights-analyze/container-health-log-search-example.png)   
+![Adatok elemzése a Log Analyticsben](./media/monitoring-container-insights-analyze/container-health-log-search-example.png)   
 
 A tároló naplók kimenete, a Log Analytics továbbíthatja a rendszer az STDOUT és STDERR. Azure figyelő által figyelt Azure által felügyelt Kubernetes-(AKS), mert Kube rendszer nem gyűjti jelenleg generált adatok nagy mennyisége miatt. 
 

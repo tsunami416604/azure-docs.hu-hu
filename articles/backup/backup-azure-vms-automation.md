@@ -6,15 +6,15 @@ author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 9/10/2018
+ms.date: 10/20/2018
 ms.author: markgal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19dd385effbdea0d9cd4209ec79f7582c0943e0c
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: c29a91a40df34ecd9270d5805209d361cf990754
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720038"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638035"
 ---
 # <a name="use-powershell-to-back-up-and-restore-virtual-machines"></a>Készítsen biztonsági másolatot, és virtuális gépek visszaállítása a PowerShell használatával
 
@@ -350,8 +350,24 @@ A lemezek és a konfigurációs adatok visszaállításához:
 $restorejob = Restore-AzureRmRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG"
 $restorejob
 ```
-A kimenet a következő példához hasonló:
+#### <a name="restore-managed-disks"></a>Felügyelt lemezek visszaállítását
 
+> [!NOTE]
+> Ha a mentett virtuális gép felügyelt lemezek vannak, és visszaállítja őket felügyelt lemezként, bevezettük a funkció az Azure PowerShell-lel v 6.7.0. és újabb verziók
+>
+>
+
+Adjon meg egy további paraméter **TargetResourceGroupName** a felügyelt lemezek visszaállítja RG megadásához.
+
+
+```powershell
+$restorejob = Restore-AzureRmRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks"
+```
+
+A **VMConfig.JSON** storage-fiókhoz lesz visszaállítva, és a felügyelt lemezek cél RG lesz visszaállítva.
+
+
+A kimenet a következő példához hasonló:
 ```
 WorkloadName     Operation          Status               StartTime                 EndTime            JobID
 ------------     ---------          ------               ---------                 -------          ----------
@@ -457,73 +473,17 @@ Miután visszaállította a lemezeket, a következő eljárással hozhat létre 
       Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $dekUrl -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -VolumeType Data
       ```
 
-   * **Felügyelt és nem titkosított virtuális gépek** – felügyelt lemez gyors létrehozásához a blob storage-ból, és ezután csatlakoztassa a lemezeket kell felügyelt nem titkosított virtuális gépek esetén. Részletes információkért lásd: a cikk [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md). Az alábbi mintakód bemutatja, hogyan az adatlemezek felügyelt nem titkosított virtuális gépek számára.
+   * **Felügyelt és nem titkosított virtuális gépek** – felügyelt nem titkosított virtuális gépek esetén a visszaállított felügyelt lemezt. Részletes információkért lásd: a cikk [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md).
 
-      ```powershell
-      $storageType = "StandardLRS"
-      $osDiskName = $vm.Name + "_osdisk"
-      $osVhdUri = $obj.'properties.storageProfile'.osDisk.vhd.uri
-      $diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location "West US" -CreateOption Import -SourceUri $osVhdUri
-      $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk $diskConfig -ResourceGroupName "test"
-      Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -CreateOption "Attach" -Windows
-      foreach($dd in $obj.'properties.storageProfile'.dataDisks)
-       {
-       $dataDiskName = $vm.Name + $dd.name ;
-       $dataVhdUri = $dd.vhd.uri ;
-       $dataDiskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location "West US" -CreateOption Import -SourceUri $dataVhdUri ;
-       $dataDisk2 = New-AzureRmDisk -DiskName $dataDiskName -Disk $dataDiskConfig -ResourceGroupName "test" ;
-       Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -ManagedDiskId $dataDisk2.Id -Lun $dd.Lun -CreateOption "Attach"
-       }
-      ```
-
-   * **Felügyelt és a titkosított virtuális gépek (csak a blokktitkosítási kulcsot)** – felügyelt lemez gyors létrehozásához a blob storage-ból, és ezután csatlakoztassa a lemezeket kell felügyelt titkosított virtuális gépek (rendelkeznek BEk-KEL csak használatával titkosított) esetén. Részletes információkért lásd: a cikk [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md). Az alábbi mintakód bemutatja, hogyan az adatlemezek felügyelt, titkosított virtuális gépek számára.
-
-      ```powershell
-      $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-      $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-      $storageType = "StandardLRS"
-      $osDiskName = $vm.Name + "_osdisk"
-      $osVhdUri = $obj.'properties.storageProfile'.osDisk.vhd.uri
-      $diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location "West US" -CreateOption Import -SourceUri $osVhdUri
-      $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk $diskConfig -ResourceGroupName "test"
-      Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows
-      foreach($dd in $obj.'properties.storageProfile'.dataDisks)
-       {
-       $dataDiskName = $vm.Name + $dd.name ;
-       $dataVhdUri = $dd.vhd.uri ;
-       $dataDiskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location "West US" -CreateOption Import -SourceUri $dataVhdUri ;
-       $dataDisk2 = New-AzureRmDisk -DiskName $dataDiskName -Disk $dataDiskConfig -ResourceGroupName "test" ;
-       Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -ManagedDiskId $dataDisk2.Id -Lun $dd.Lun -CreateOption "Attach"
-       }
-      ```
-
-       A következő parancs használatával manuálisan engedélyezze a titkosítást az adatlemezek.
+   * **Felügyelt és a titkosított virtuális gépek (csak a blokktitkosítási kulcsot)** – felügyelt titkosított virtuális gépek (titkosítva rendelkeznek BEk-KEL csak), csatlakoztassa a visszaállított felügyelt lemezeket. Részletes információkért lásd: a cikk [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md).
+   
+      A következő parancs használatával manuálisan engedélyezze a titkosítást az adatlemezek.
 
        ```powershell
        Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -VolumeType Data
        ```
 
-   * **Felügyelt és a titkosított virtuális gépek (rendelkeznek BEk-KEL és KEK)** – felügyelt titkosított (használatával titkosított virtuális gépeket rendelkeznek BEk-KEL és kek-KEL), a következőket kell tennie felügyelt lemez gyors létrehozásához a blob storage-ból, majd csatlakoztassa a lemezeket. Részletes információkért lásd: a cikk [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md). Az alábbi mintakód bemutatja, hogyan az adatlemezek felügyelt, titkosított virtuális gépek számára.
-
-      ```powershell
-      $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-      $kekUrl = "https://ContosoKeyVault.vault.azure.net:443/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
-      $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-      $storageType = "StandardLRS"
-      $osDiskName = $vm.Name + "_osdisk"
-      $osVhdUri = $obj.'properties.storageProfile'.osDisk.vhd.uri
-      $diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location "West US" -CreateOption Import -SourceUri $osVhdUri
-      $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk $diskConfig -ResourceGroupName "test"
-      Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows
-      foreach($dd in $obj.'properties.storageProfile'.dataDisks)
-       {
-       $dataDiskName = $vm.Name + $dd.name ;
-       $dataVhdUri = $dd.vhd.uri ;
-       $dataDiskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location "West US" -CreateOption Import -SourceUri $dataVhdUri ;
-       $dataDisk2 = New-AzureRmDisk -DiskName $dataDiskName -Disk $dataDiskConfig -ResourceGroupName "test" ;
-       Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -ManagedDiskId $dataDisk2.Id -Lun $dd.Lun -CreateOption "Attach"
-       }
-      ```
+   * **Felügyelt és a titkosított virtuális gépek (rendelkeznek BEk-KEL és KEK)** – felügyelt titkosított virtuális gépek (titkosítva rendelkeznek BEk-KEL és kek-KEL), csatlakoztassa a visszaállított felügyelt lemezeket. Részletes információkért lásd: a cikk [adatlemez csatolása a PowerShell használatával Windows virtuális gép](../virtual-machines/windows/attach-disk-ps.md). 
 
       A következő parancs használatával manuálisan engedélyezze a titkosítást az adatlemezek.
 

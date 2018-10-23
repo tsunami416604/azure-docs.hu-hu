@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: iainfou
-ms.openlocfilehash: f04b4015e201d272fa624b1de265792564ac14cd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 140d663524696f19844fea8906b181f468b7d157
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047678"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647006"
 ---
 # <a name="use-azure-container-registry-as-a-helm-repository-for-your-application-charts"></a>Azure Container Registry vagy a Helm használata az alkalmazás diagramok
 
@@ -30,7 +30,7 @@ Ez a cikk bemutatja, hogyan használható egy Helm-diagram az Azure Container Re
 A jelen cikkben ismertetett lépések végrehajtásához a következő előfeltételeknek kell teljesülniük:
 
 - **Az Azure Container Registry** -tároló-beállításjegyzék létrehozása az Azure-előfizetésében. Például a [az Azure portal](container-registry-get-started-portal.md) vagy a [Azure CLI-vel](container-registry-get-started-azure-cli.md).
-- **Helm-ügyfél** keresheti ki és telepítse a diagramokat. Emellett egy Helm-kiszolgáló (a tiller valóban) inicializálása egy Kubernetes-fürtön belül. Ha szükséges, [Azure Kubernetes Service-fürt létrehozása][aks-quickstart]. Hogyan telepítheti és használhatja a Helm további információkért lásd: [telepítése Helm][helm-install].
+- **Helm-ügyfélverzió 2.11.0 (nem az RC verzióra) vagy újabb** – futtatási `helm version` aktuális verziójának megkereséséhez. Emellett egy Helm-kiszolgáló (a tiller valóban) inicializálása egy Kubernetes-fürtön belül. Ha szükséges, [Azure Kubernetes Service-fürt létrehozása][aks-quickstart]. Hogyan kell telepíteni, és frissítse a Helm további információkért lásd: [telepítése Helm][helm-install].
 - **Az Azure CLI 2.0.46 verzió vagy újabb** – futtatási `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
 ## <a name="add-a-repository-to-helm-client"></a>A Helm-ügyfél-adattár hozzáadása

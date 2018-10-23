@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 10/10/2018
 ms.author: diberry
-ms.openlocfilehash: adb44dcc8c41b1a7846ff346d141dc0c4b028e96
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 6a3edfd426fcdce83bd60332ba2b1ff6224dae1a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888288"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645559"
 ---
 # <a name="add-example-utterances-and-label-with-entities"></a>Példa kimondott szöveg és az entitások címke hozzáadása
 
@@ -159,6 +159,36 @@ Az utterance (kifejezés) a `Book 2 tickets from Seattle to Cairo`, Seattle a fe
     >Gyermek entitásnévnek egyedinek kell lennie minden entitás egyetlen alkalmazásban. Két különböző hierarchikus entitások nem tartalmazhat gyermekentitások ugyanazzal a névvel. 
 
     Lásd: [Adatkinyerés](luis-concept-data-extraction.md#hierarchical-entity-data) tudhat meg többet a végpont JSON lekérdezési válasz a hierarchikus entitás kinyerését. Próbálja ki a hierarchikus entitás [rövid](luis-quickstart-intent-and-hier-entity.md) hierarchikus entitás használatával kapcsolatos további.
+
+## <a name="entity-status-predictions"></a>Entitás állapota előrejelzések
+
+Amikor egy új utterance (kifejezés) a LUIS-portálon, az utterance (kifejezés) lehetséges, hogy entitás előrejelzési hibák léptek fel. Az előrejelzési hiba képest hogyan előre jelzett LUIS rendelkezik az entitás egy entitás feliratú hogyan eltérően működik. 
+
+Ez a különbség egy piros vonallal az utterance (kifejezés) a vizuálisan jelölt a LUIS-portálon. A piros aláhúzás entitás zárójelek között, vagy kívül zárójelek jelenhet meg. 
+
+![Képernyőkép az entitás állapota előrejelzés eltérés](./media/luis-how-to-add-example-utterances/entity-prediction-error.png)
+
+Válassza ki az aláhúzott szavakra vörös színnel az utterance (kifejezés). 
+
+Az entitás mezőben jelenik meg a **entitás állapota** egy piros felkiáltójel, ha az előrejelzés eltérés van az. Az entitás állapot címkézett és előrejelzett entitások közötti különbségekkel kapcsolatos információk megtekintéséhez válasszon **entitás állapota** válassza ki az elemet a jobb oldalon.
+
+![Képernyőkép az entitás állapota előrejelzés eltérés](./media/luis-how-to-add-example-utterances/entity-status.png)
+
+A piros vonal bármelyik a következő alkalommal jelenhetnek meg:
+
+    * Ha az utterance (kifejezés) is meg kell adni, még mielőtt az entitás címkéje
+    * Ha az entitás alkalmazott
+    * Ha az entitás címke eltávolítása
+    * Ha egynél több entitás címke a szöveg előre jelzett 
+
+A következő megoldásokkal oldhatja meg az entitás előrejelzés eltérés:
+
+|Entitás|Láthatja|Előrejelzés|Megoldás|
+|--|--|--|--|
+|A megadott utterance, entitás nem címkézett még.|piros aláhúzás|Előrejelzési helyességéről.|Az előre jelzett érték rendelkező entitás címkét.|
+|Címke nélküli szöveg|piros aláhúzás|Helytelen előrejelzése|Az helytelen entitást használó aktuális megcímkézzen kell vizsgálni a összes leképezések között. Az aktuális utterances mistaught rendelkezik LUIS, hogy ez a szöveg-e az előre jelzett entitás.
+|Megfelelően címkével ellátott szöveg|kék entitás kiemelése, piros aláhúzás|Helytelen előrejelzése|Adja meg a különböző helyeken a tanúsítványalgoritmusok és használatuk megfelelően címkézett entitással további kimondott szöveg. Az aktuális kimondott szöveg, hogy ez a LUIS, akik nem elegendő az entitás vagy hasonló entitások jelennek meg, ugyanabban a környezetben. Hasonló entitás kell kombinálni egyetlen entitást, LUIS nem összetéveszteni őket. Egy másik megoldás, hogy a szavakat vételének növelése érdekében kifejezés lista hozzáadása. |
+|Helytelenül címkével ellátott szöveg|kék entitás kiemelése, piros aláhúzás|Megfelelő előrejelzése| Adja meg a különböző helyeken a tanúsítványalgoritmusok és használatuk megfelelően címkézett entitással további kimondott szöveg. 
 
 
 ## <a name="remove-entity-labels-from-utterances"></a>Beszédmódok entitás címkék eltávolítása

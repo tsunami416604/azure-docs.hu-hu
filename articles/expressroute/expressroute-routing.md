@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: ganesr
-ms.openlocfilehash: 525d75264ecb54d42d920cacb0712397f4d8c3a8
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 35644912da2b75009ba2b16f4a188011ba1f813e
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43304357"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650128"
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -211,7 +211,11 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 | SharePoint Online | 12076:5020 |
 | Skype Vállalati online verzió | 12076:5030 |
 | Dynamics 365 | 12076:5040 |
+| Az Azure globális szolgáltatások * | 12076:5050 |
 | Egyéb Office 365-szolgáltatások | 12076:5100 |
+
+***Az Azure globális szolgáltatások részét képező Azure DevOps**
+
 
 > [!NOTE]
 > A Microsoft nem fogadja el a Microsoft számára meghirdetett útvonalakon beállított BGP-közösségértékeket.

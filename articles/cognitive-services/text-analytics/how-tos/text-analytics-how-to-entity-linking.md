@@ -10,12 +10,12 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: b2916e5c414562c55c35c9c5e7ab378963e004be
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 42e1704df315c754b2b506a0470d128b7666c280
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248071"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645797"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Megnevezett entitások felismerése használata a Text Analytics (előzetes verzió)
 
@@ -26,14 +26,14 @@ A [entitás Recognition API](https://westus.dev.cognitive.microsoft.com/docs/ser
 A Text Analytics `entities` mindkét végpont supprts nevű (NER) entitásfelismeréssel és -entitáskapcsolás.
 
 ### <a name="entity-linking"></a>Entitáskapcsolás
-Entitáskapcsolás rendszer azon képessége, azonosíthatja és a egy entitás (pl. meghatározása-e a "Mars" globális vagy a latin god háború használja) szöveg található az identitás megkülönböztetéséhez. Ez a folyamat, amely felismeri a kapcsolódó entitások – Wikipedia szolgál a Tudásbázisban alapszintű ismerete szükséges a `entities` végpontot Text Analytics.
+Entitáskapcsolás rendszer azon képessége, azonosíthatja és a egy entitás (például meghatározása-e a "Mars" globális vagy a latin god háború használja) szöveg található az identitás megkülönböztetéséhez. Ez a folyamat, amely felismeri a kapcsolódó entitások – Wikipedia szolgál a Tudásbázisban alapszintű ismerete szükséges a `entities` végpontot Text Analytics.
 
-A Text Analytics [2.1. dátumú előzetes Sémaverzióra](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634), csak entitáskapcsolás érhető el.
+A Text Analytics [2.0-s verziójú](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634), csak entitáskapcsolás érhető el.
 
 ### <a name="named-entity-recognition-ner"></a>Nevesített entitások felismerése (NER)
 Megnevezett entitások felismerése (NER) rendszer azon képessége, azonosíthatja a szöveg különböző entitásokat, és előre meghatározott osztályokba kategorizálja őket. Az entitások támogatott osztályokat alább láthatók.
 
-Text Analytics 2.1-es verziója előzetes verzióban érhető el (`https://[region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`), entitáskapcsolás és nevesített entitások felismerése (NER) érhető el.
+A Text Analytics [2.1. dátumú előzetes Sémaverzióra](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634), entitáskapcsolás és nevesített entitások felismerése (NER) érhető el.
 
 ### <a name="language-support"></a>Nyelvi támogatás
 
@@ -70,11 +70,11 @@ Entitáskapcsolás különféle nyelveken használatához az egyes nyelvekhez ta
 
 ## <a name="preparation"></a>Előkészítés
 
-JSON-dokumentumok rendelkeznie kell a következő formátumban: azonosító, a szöveg, a nyelv
+A JSON-dokumentumnak ilyen formátumban kell lennie: azonosító, szöveg, nyelv
 
-Jelenleg támogatott nyelveket, tekintse meg [ebben a listában](../text-analytics-supported-languages.md).
+Lásd: által jelenleg támogatott nyelvek [ebben a listában](../text-analytics-supported-languages.md).
 
-Dokumentum mérete kell lennie a 5000 karakter / dokumentum, és legfeljebb 1000 rendelkezhet gyűjteményenként (azonosítók) elemet. A gyűjtemény elküldésekor a kérelem törzsében. A következő példa olyan bemutatásáért, előfordulhat, hogy küldje el az entitás hivatkozási célból tartalom.
+A dokumentum méretének 5000 karakter alatt kell maradnia, és legfeljebb 1000 elem (azonosító) lehet egy kollekcióban. A kollekció elküldése a kérelem törzsében történik. A következő példa olyan bemutatásáért, előfordulhat, hogy küldje el az entitás hivatkozási célból tartalom.
 
 ```
 {"documents": [{"id": "1",
@@ -89,32 +89,32 @@ Dokumentum mérete kell lennie a 5000 karakter / dokumentum, és legfeljebb 1000
 }
 ```    
     
-## <a name="step-1-structure-the-request"></a>1. lépés: A kérés struktúra
+## <a name="step-1-structure-the-request"></a>1. lépés: A kérés felépítése
 
-Kérelem definíciója a részletek megtalálhatók a [a szövegelemzési API hívása](text-analytics-how-to-call-api.md). Kényelmi vannak megfelelően a következő szempontokat:
+A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytics API hívásának módja](text-analytics-how-to-call-api.md) részben. A következő pontokat a kényelem kedvéért itt megismételjük:
 
-+ Hozzon létre egy **POST** kérelmet. A kérelem API-dokumentációban: [Entitáskapcsolási API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
++ Hozzon létre egy **POST** kérést. A kérelem API-dokumentációban: [Entitáskapcsolási API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
 
-+ Állítsa a kulcskifejezések kinyerése a HTTP-végpontot. Tartalmaznia kell a `/entities` erőforrás: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
++ Állítsa be a kulcsszókereséshez a HTTP-végpontot. Tartalmaznia kell a `/entities` erőforrást: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
 
-+ Állítsa be a hívóbetűt a Text Analytics műveletek közé tartozik a fejléc. További információkért lásd: [végpontok keresése és hozzáférési kulcsokkal](text-analytics-how-to-access-key.md).
++ A kérés fejlécet állítsa be úgy, hogy tartalmazza a Text Analytics műveletekhez a hozzáférési kulcsot. További információkért lásd: [Végpontok és hozzáférési kulcsok megkeresése](text-analytics-how-to-access-key.md).
 
-+ A kérelem törzsében szereplő adja meg a JSON-dokumentumok ehhez az elemzéshez előkészített gyűjtemény
++ A kérelem törzsében adja meg az elemzéshez előkészített JSON-dokumentum kollekciót
 
 > [!Tip]
-> Használata [Postman](text-analytics-how-to-call-api.md) , vagy nyissa meg a **API tesztelési konzollal** a a [dokumentáció](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) struktúra egy kérelmet, és KÖZZÉTESZI azokat a szolgáltatást.
+> Használható a [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg az **API teszt konzolt** a [dokumentációban](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) a kérés felépítéséhez és a szolgáltatásnak történő POST elküldéséhez.
 
-## <a name="step-2-post-the-request"></a>2. lépés: A kérés küldése
+## <a name="step-2-post-the-request"></a>2. lépés: A kérés elküldése
 
-Elemzés a kérelem történik. A szolgáltatás percenként legfeljebb 100 kéréseket fogad. Minden egyes kérés legfeljebb 1 MB lehet.
+Az elemzés a kérelem megkapásakor történik meg. A szolgáltatás percenként legfeljebb 100 kérést fogad. Mindegyik kérés legfeljebb 1 MB lehet.
 
-Ne felejtse el, hogy az állapot nélküli-e a szolgáltatás. A fiókban tárolt adatok nem. Eredmény akkor azonnal a válaszban.
+Ne felejtse, hogy a szolgáltatás állapot nélküli. A fiókban nem tárol semmilyen adatot. Az eredményeket azonnal visszaadja a válaszban.
 
-## <a name="step-3-view-results"></a>3. lépés: Az eredmények megtekintése
+## <a name="step-3-view-results"></a>3. lépés: Eredmények megtekintése
 
-Minden POST kérelemhez egy JSON formátumú válasz azonosítókkal és észlelt tulajdonságokat adja vissza.
+Minden POST kérés egy JSON formátumú választ ad vissza az azonosítókkal és az észlelt tulajdonságokkal.
 
-Kimeneti azonnal adja vissza. Az eredményeket JSON elfogadó alkalmazás adatfolyam vagy kimenetét mentse el egy fájlt a helyi rendszer, és importálja azt egy alkalmazás, amely lehetővé teszi, hogy rendezni, keresése és az adatok kezelésére.
+A kimenetet visszaadása azonnali. Az eredmények adatfolyamát JSON elfogadó alkalmazáshoz küldheti vagy a kimenetet elmentheti fájlba a helyi rendszeren, majd importálható az adatokat rendezni, keresni és kezelni képes alkalmazásba.
 
 Egy példa a kimenetre entitáskapcsolás a következő látható:
 
@@ -277,11 +277,11 @@ Egy példa a kimenetre entitáskapcsolás a következő látható:
 
 ## <a name="summary"></a>Összegzés
 
-Ebben a cikkben megtanulta, fogalmak és a Cognitive Services Text Analytics használatával entitáskapcsolás munkafolyamatokat. Az Összegzés:
+Ebben a cikkben megtanulta, fogalmak és a Cognitive Services Text Analytics használatával entitáskapcsolás munkafolyamatokat. Összegezve:
 
 + [Entitások API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) érhető el a kiválasztott nyelveken.
-+ A kérelem törzsében szereplő JSON-dokumentumok közé tartozik egy azonosító, a szöveg és a nyelvi kódot.
-+ POST-kérelmet, hogy egy `/entities` végpontra, a személyre szabott [kulcs és a egy végpont elérésére](text-analytics-how-to-access-key.md) Ez érvényes az előfizetéshez.
++ A kérés törzsében szereplő JSON-dokumentumok azonosítót, szöveget és nyelvkódot tartalmaznak.
++ POST-kérés a `/entities` végpontra, az előfizetésre érvényes személyre szabott [hozzáférési kulcs és végpont](text-analytics-how-to-access-key.md) használatával.
 + Válasz kimenete, amely entitáskészlet (beleértve a megbízhatósági pontszámok eltolások és webes hivatkozások, minden egyes dokumentum-azonosító) áll használható bármely alkalmazásban
 
 ## <a name="see-also"></a>Lásd még 
@@ -293,4 +293,4 @@ Ebben a cikkben megtanulta, fogalmak és a Cognitive Services Text Analytics has
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Szövegelemzési API-val](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)
+> [Text Analytics API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)

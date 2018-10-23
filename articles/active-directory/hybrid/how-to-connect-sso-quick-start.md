@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 10/21/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d7906323da8e9ee1571efe908084ae1433884e61
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 8cfe8c309c11eb24bc6e7af9fc3ba3eef0422c35
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405988"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638216"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyors üzembe helyezési
 
@@ -57,6 +57,9 @@ Győződjön meg arról, hogy a következő előfeltételeket:
 ## <a name="step-2-enable-the-feature"></a>2. lépés: A funkció engedélyezése
 
 Engedélyezze a közvetlen egyszeri bejelentkezés révén [az Azure AD Connect](whatis-hybrid-identity.md).
+
+>[!NOTE]
+> Emellett [PowerShell-lel közvetlen egyszeri bejelentkezés engedélyezése](tshoot-connect-sso.md#manual-reset-of-the-feature) , ha az Azure AD Connect nem felel meg a követelményeknek. Használja ezt a beállítást, ha az Active Directory-erdőnként egynél több tartományban van, és szeretné engedélyezni a közvetlen egyszeri bejelentkezés, a tartománnyal kapcsolatban további megcélozni kívánt.
 
 Ha az Azure AD Connect új példánya, válassza ki a [egyéni telepítési útvonal](how-to-connect-install-custom.md). Jelenleg a **felhasználói bejelentkezés** lapon válassza ki a **egyszeri bejelentkezés engedélyezése** lehetőséget.
 

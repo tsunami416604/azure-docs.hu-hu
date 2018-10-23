@@ -1,6 +1,6 @@
 ---
-title: Az Azure Stack érvényesítési, egy szolgáltatás kibocsátási megjegyzései |} A Microsoft Docs
-description: Az Azure Stack érvényesítési szolgáltatás ismert problémái.
+title: Az Azure Stack érvényesítési szolgáltatásként kibocsátási megjegyzések |} A Microsoft Docs
+description: Az Azure Stack érvényesítési szolgáltatásként kibocsátási megjegyzéseket.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,22 +10,82 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 10/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 05e5fe447ed393bccd44515c4e2da7dd23465ee6
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 8b0c7bf97592309d68313ef7cc2a919f7aa1c324
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162597"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49644964"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>Kibocsátási megjegyzések a szolgáltatás érvényesítése
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Ez a cikk a kiadási megjegyzések az Azure Stack érvényesítési szolgáltatásként tartalmazza.
+Ez a cikk a kibocsátási megjegyzéseket tartalmaz az Azure Stack érvényesítési szolgáltatásként.
+
+## <a name="version-401"></a>Verzió 4.0.1
+
+2018. október 8.
+
+- VaaS előfeltételei
+
+    `Install-VaaSPrerequisites` többé nem kell felhőalapú rendszergazdai hitelesítő adataival. Ha ez a parancsmag legújabb verzióját futtatja, lásd: [töltse le és telepítse az ügynököt](azure-stack-vaas-local-agent.md#download-and-install-the-agent) a módosított parancsok előfeltételek telepítése. Íme a parancsok:
+
+    ```PowerShell
+    $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
+    Import-Module .\VaaSPreReqs.psm1 -Force
+    Install-VaaSPrerequisites -AadTenantId $AadTenantId `
+                              -ServiceAdminCreds $ServiceAdminCreds `
+                              -ArmEndpoint https://adminmanagement.$ExternalFqdn `
+                              -Region $Region
+    ```
+
+## <a name="version-400"></a>4.0.0-s verzió
+
+2018. augusztus 29.
+
+- VaaS Előfeltételek és a VHD-frissítések
+
+    `Install-VaaSPrerequisites` Mostantól csak felhőalapú rendszergazdai hitelesítő adatok a probléma megoldására csomag érvényesítése során. A dokumentációban a [töltse le és telepítse az ügynököt](azure-stack-vaas-local-agent.md#download-and-install-the-agent) a következőre frissült:
+
+    ```PowerShell
+    $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
+    $CloudAdminCreds = New-Object System.Management.Automation.PSCredential "<cloudAdminDomain\username>", (ConvertTo-SecureString "<cloudAdminPassword>" -AsPlainText -Force)
+    Import-Module .\VaaSPreReqs.psm1 -Force
+    Install-VaaSPrerequisites -AadTenantId $AadTenantId `
+                              -ServiceAdminCreds $ServiceAdminCreds `
+                              -ArmEndpoint https://adminmanagement.$ExternalFqdn `
+                              -Region $Region `
+                              -CloudAdminCredentials $CloudAdminCreds
+    ```
+    > [!NOTE]
+    > A `$CloudAdminCreds` szükséges, a parancsfájl által vannak az Azure stack-példányt kell kiértékelni. Azok nem a VaaS bérlő által használt Azure Active Directory hitelesítő adatokat.
+
+- Helyi ügynök frissítése
+
+    Az előző a helyi ügynök verziója nem kompatibilis a jelenlegi 4.0.0 verzióra a szolgáltatás kiadása. Minden felhasználó frissítenie kell a helyi ügynökök. Lásd: [töltse le és telepítse az ügynököt](azure-stack-vaas-local-agent.md#download-and-install-the-agent) a legújabb ügynök telepítésével kapcsolatos utasításokat.
+
+- PowerShell automation update
+
+    Módosítások történtek `LaunchVaaSTests` PowerShell-parancsfájlok, amelyek a parancsfájl-kezelési csomagok legújabb verziója szükséges. Lásd: [indítsa el a Tesztmenetek munkafolyamat](azure-stack-vaas-automate-with-powershell.md#launch-the-test-pass-workflow) a legújabb verzióra a parancsfájl-kezelési csomag telepítésével kapcsolatos utasításokat.
+
+- Ellenőrzés, a portálon
+
+  - Csomagaláíró értesítések
+
+    A csomag érvényesítése munkafolyamat részeként egy számítógép-Gyártói testreszabási csomag elküldésekor a csomag formátuma érvényesíti annak érdekében, hogy követi-e a közzétett specifikációnak. Ha a csomag nem felel meg, a futtatás sikertelen lesz. A bérlő regisztrált az Azure Active Directory kapcsolattartó e-mail-címre a e-mail értesítéseket küldeni szeretné.
+
+  - Interaktív vizsgálati kategória
+
+    A **interaktív** vizsgált kategória hozzá lett adva. Ezek a tesztek lehetővé teszik a partnerek, amelyeket szeretne interaktív, az nem automatikus az Azure Stack-forgatókönyvekhez.
+
+  - Interaktív funkció ellenőrzése
+
+    Az egyes szolgáltatások célzott visszajelzés biztosítani már elérhető a Tesztmenetek munkafolyamatban. A `OEM Update on Azure Stack 1806 RC Validation 5.1.4.0` teszt ellenőrzi, hogy ha adott frissítések alkalmazása megfelelő volt, és ezután gyűjti a visszajelzéseket.
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudjon meg többet a [szolgáltatásként az Azure Stack érvényesítési](https://docs.microsoft.com/azure/azure-stack/partner).
+- [Érvényesítési szolgáltatás hibaelhárítása](azure-stack-vaas-troubleshoot.md)

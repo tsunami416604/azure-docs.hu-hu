@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/22/2018
 ms.author: pullabhk
-ms.openlocfilehash: 1f3b81c31dc566e5e3011167eee00145f6791cb1
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: d38da87bae07dadb10894593dd41ded22f5f162d
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616909"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638307"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása Azure virtuális gépek biztonsági mentése
 
@@ -45,7 +45,7 @@ A fájlok és mappák visszaállítása a helyreállítási pontot, nyissa meg a
 
 4. Az a **válassza ki a helyreállítási pont** legördülő menüben válassza ki a kívánt fájlokat tárolja a helyreállítási pont. Alapértelmezés szerint már be van jelölve a legutóbbi helyreállítási pontot.
 
-5. Töltse le a szoftverfrissítési fájlokat másolhat a helyreállítási pontot, kattintson a **végrehajtható fájl letöltése** (a Windows Azure virtuális Gépen), vagy **szkript letöltése** (a Linux Azure VM).
+5. Töltse le a szoftverfrissítési fájlokat másolhat a helyreállítási pontot, kattintson a **végrehajtható fájl letöltése** (a Windows Azure virtuális Gépen), vagy **szkript letöltése** (Linux rendszerű Azure virtuális gép, egy python-szkriptet jön létre).
 
     ![Generált jelszó](./media/backup-azure-restore-files-from-vm/download-executable.png)
 

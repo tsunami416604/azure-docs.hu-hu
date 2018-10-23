@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/25/2018
-ms.openlocfilehash: 4a84e8f7460d3a339be783be6a12353770ced1b8
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 219fe9e8f91f9b02e64b3b44ab4301f77820561f
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665823"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648955"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Az Azure Stream Analytics bemenetek ismertetése
 
@@ -38,7 +38,7 @@ Egy adatfolyama korlátlan streameken működő eseménysorozatát idővel. Stre
 Streamadat típusú bemenetek kapcsolatos további információkért lásd: [data Stream bemeneti Stream analyticsbe](stream-analytics-define-inputs.md)
 
 ### <a name="reference-data-input"></a>Referenciaadat-bemenetek
-Stream Analytics is támogatja a bemeneti néven *referenciaadatok*. Referenciaadatok, vagy teljesen statikus vagy lassan módosításokat. Általában összefüggések keresésére és keresések végrehajtására szolgál. Például előfordulhat, hogy csatlakozik a szolgáltatáshoz data az adatok a referenciaadatok az adatfolyam-bemenetre akár egy SQL összekapcsolás statikus értékek keresse ki kell elvégeznie. Az Azure Blob storage szolgáltatás jelenleg az egyetlen támogatott bemeneti forrás a referenciaadatoknál. A referenciaadat blobok forrás korlátozódnak 100 MB méretű.
+Stream Analytics is támogatja a bemeneti néven *referenciaadatok*. Referenciaadatok, vagy teljesen statikus vagy lassan módosításokat. Általában összefüggések keresésére és keresések végrehajtására szolgál. Például előfordulhat, hogy csatlakozik a szolgáltatáshoz data az adatok a referenciaadatok az adatfolyam-bemenetre akár egy SQL összekapcsolás statikus értékek keresse ki kell elvégeznie. Az Azure Blob storage szolgáltatás jelenleg az egyetlen támogatott bemeneti forrás a referenciaadatoknál. A referenciaadat blobok forrás mérete, a lekérdezés összetettségétől függően akár 300 MB legfeljebb és a folyamatos átviteli egységek.
 
 Referenciaadat típusú bemenetek kapcsolatos további információkért lásd: [a referenciaadatok a Stream Analytics keresések](stream-analytics-use-reference-data.md)
 

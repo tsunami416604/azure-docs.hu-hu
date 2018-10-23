@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: b5433ea0a92635b5bf9c2a4887451f1e64ec62e6
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: db8fc0b6926930521f11285dc56c886c10c42fc2
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067766"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649312"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding – gyakori kérdések
 
@@ -157,11 +157,9 @@ Ha a napló előrejelzési elemzésre használ, ne rögzítsen rajta teszt utter
 * Beszédmódok törölheti, hogy a LUIS javasol a felhasználó megcímkézzen listájából a **tekintse át a végpont utterances** lapot. Beszédmódok törlése a listáról a továbbiakban nem javasolt, de nem törli azokat a naplókat.
 * Ha töröl egy fiókot, az összes alkalmazás törlődnek, azokhoz példa kimondott szöveg és a naplókat. Az adatok végleges törlés előtt 60 napig őrződnek a kiszolgálókon.
 
-### <a name="does-microsoft-access-my-luis-app-data-for-its-own-purposes-for-example-to-enhance-luis-or-microsoft-in-general"></a>Nem a Microsoft hozzáférést a LUIS alkalmazás adatainak a saját célra, például általában javíthatja a LUIS vagy a Microsoft?
+### <a name="how-does-microsoft-manage-data-i-send-to-luis"></a>Hogyan kezeli a Microsoft LUIS küldött adatokat?
 
-Nem. A LUIS-alkalmazásokon adatmodell nem javíthatja a LUIS-platformként a LUIS segítségével vagy a Microsoft semmilyen módon használja. Minden alkalmazás adatait külön, és csak a felhasználó és a közreműködők által saját tulajdonú.
-
-Tudjon meg többet [felhasználói adatvédelem](luis-user-privacy.md), [további biztonsági megfelelőségi](luis-concept-security.md#security-compliance), és [adattárolás](luis-concept-data-storage.md).
+A [biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter) ismerteti a Microsoft és az adatok kezelése és a hozzáférés az Azure-szolgáltatások beállításait.
 
 ## <a name="language-and-translation-support"></a>Nyelvi és fordítási támogatás
 

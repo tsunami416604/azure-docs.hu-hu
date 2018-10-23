@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 10/22/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8e06cf1a443d4fd158e29ef4b53206a83800dfe9
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 36025bf8460d690aab3b3617ad3341dfe7005e9e
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803052"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649275"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Set átirányítási URL-címek a b2clogin.com-on Azure Active Directory B2C-vel
 
@@ -26,7 +26,12 @@ A b2clogin.com használata lehetővé teszi további előnyökkel, például:
 - A cookie-k már nem a más Microsoft-szolgáltatásokba vannak megosztva.
 - Az URL-címek már nem a Microsoft hivatkozást tartalmaz. Például: `https://your-tenant-name.b2clogin.com/tfp/your-tenant-ID/policyname/v2.0/.well-known/openid-configuration`.
 
-A b2clogin.com használata esetén állítsa be az átirányítási URL-címek az identity provider alkalmazásokban a b2clogin.com használata. Is meg az Azure AD B2C alkalmazás a b2clogin.com használata a házirend-referenciák és jogkivonat-végpont. Az MSAL használatakor be kell a **ValidateAuthority** tulajdonságot `false`.
+Vegye figyelembe ezeket a beállításokat, előfordulhat, hogy módosítania kell a b2clogin.com használata esetén:
+
+- Állítsa be az átirányítási URL-címek az identity provider alkalmazásokban a b2clogin.com használata. 
+- A házirend-referenciák és jogkivonat-végpont a b2clogin.com használata az Azure AD B2C-alkalmazás beállítása. 
+- Az MSAL használatakor be kell a **ValidateAuthority** tulajdonságot `false`.
+- Győződjön meg arról, hogy módosítja, **engedélyezett eredetek** CORS beállításaiban megadott [felhasználói felület testreszabása](active-directory-b2c-ui-customization-custom-dynamic.md).  
 
 ## <a name="change-redirect-urls"></a>Változás átirányítási URL-címek
 

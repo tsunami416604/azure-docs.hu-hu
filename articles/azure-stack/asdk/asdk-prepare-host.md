@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 10/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: fc9681ee286c30825ac908f9f97ae092808c783a
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: dd02dfe37a1566a3121b3571f72d964621330cd0
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802137"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647306"
 ---
 # <a name="prepare-the-asdk-host-computer"></a>A ASDK számítógép előkészítése
 Mielőtt telepítené a ASDK a gazdagépen, a ASDK környezet telepítésének kell készíteni. A fejlesztői csomag gazdaszámítógép elő van készítve, amikor az merevlemez-meghajtóról a CloudBuilder.vhdx virtuális gép ASDK üzembe helyezés megkezdéséhez fog elindulni.

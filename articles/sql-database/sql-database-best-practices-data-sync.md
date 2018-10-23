@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: ''
 manager: craigg
-ms.date: 08/20/2018
-ms.openlocfilehash: 1d292007b06e12b6be28e053bc6def3b12c7befe
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 10/22/2018
+ms.openlocfilehash: 4bc655f1e9da00a42c60e1ab763c5503b393d4a1
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063651"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646302"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Az SQL Data Synchez ajánlott eljárások 
 
@@ -70,6 +70,10 @@ Nem kell egy adatbázisban az egy szinkronizálási csoportban lévő összes t�
 Az egy szinkronizálási csoportban minden tábla elsődleges kulccsal kell rendelkeznie. Az SQL Data Sync szolgáltatás nem tudják szinkronizálni egy táblát, amely nem rendelkezik elsődleges kulccsal.
 
 Mielőtt éles környezetben használja az SQL Data Sync, tesztelje a kezdeti és folyamatos szinkronizálás teljesítménye.
+
+#### <a name="empty-tables-provide-the-best-performance"></a>Üres táblák a legjobb teljesítményt biztosítja.
+
+Üres táblák inicializálási időpontban a legjobb teljesítményt biztosítja. Ha a céloldali tábla üres, a Data Sync tömeges beszúrás használ az adatok betöltéséhez. Ellenkező esetben a Data Sync nem egy sor soronként összehasonlítása és a beszúrási ütközések ellenőrzéséhez. Ha a teljesítmény nem szempont, azonban állíthat be adatokat tartalmazó táblák közötti szinkronizálás.
 
 ### <a name="provisioning-destination-databases"></a> Cél adatbázisok kiépítése
 

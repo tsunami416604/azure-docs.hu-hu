@@ -244,7 +244,6 @@
 
 #### Feltételes hozzáférés
 ##### [Az ügyfél nem felelt meg az eszközregisztrációs előfeltételeknek](active-directory-conditional-access.md)
-##### [A bérlőt letiltja a rendszer, mert a feltételes hozzáférés szabályzatát nem megfelelően állították be](active-directory-conditional-access-device-remediation.md)
 ##### [Hogyan és mikor lépnek életbe a vállalati hálózaton kívüli szabályok?](https://aka.ms/calocation)
 ##### [Hogyan lehet növelni azon eszközök számát, amelyeket a felhasználó az Azure AD-ben regisztrálhat?](active-directory-azureadjoin-setup.md)
 ##### [Hogyan kell beállítani a feltételes hozzáférést az Exchange Online-ban?](https://aka.ms/csforexchange)

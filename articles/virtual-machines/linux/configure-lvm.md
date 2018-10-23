@@ -1,6 +1,6 @@
 ---
-title: LVM konfigurálása a Linux rendszerű virtuális gép |} Microsoft Docs
-description: Megtudhatja, hogyan LVM konfigurálása Linux az Azure-ban.
+title: LVM konfigurálása Linux rendszerű virtuális gépen |} A Microsoft Docs
+description: Ismerje meg, hogyan LVM konfigurálása az Azure-beli Linux rendszeren.
 services: virtual-machines-linux
 documentationcenter: na
 author: szarkos
@@ -13,27 +13,27 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2017
+ms.date: 09/27/2018
 ms.author: szark
-ms.openlocfilehash: 9a22426d0422585714cb78d541a84d55d2fce6e0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 81ee7957c0b26440c064b7f39bc4cfb32b2abd15
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30912229"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648335"
 ---
-# <a name="configure-lvm-on-a-linux-vm-in-azure"></a>A Linux virtuális gép az Azure-ban LVM konfigurálása
-Ez a dokumentum bemutatja az logikai kötet Manager (LVM) konfigurálása az Azure virtuális gépen. Is megvalósítható LVM konfigurálása a virtuális géphez csatolt lemezen, alapértelmezés szerint a legtöbb felhő lemezképek nem lesz konfigurálva az operációsrendszer-lemezképet a LVM. Ez a duplikált kötet csoportok problémák elkerülése érdekében, ha az operációs rendszer lemezének valaha is egy másik virtuális Géphez van csatolva az azonos terjesztési és típusa, azaz a helyreállítás során. Ezért ajánlott, csak az adatlemezek LVM használandó.
+# <a name="configure-lvm-on-a-linux-vm-in-azure"></a>LVM konfigurálása az Azure-beli Linuxos virtuális gépre
+Ez a dokumentum bemutatja, hogyan lehet logikai kötet-kezelő (LVM) konfigurálása az Azure-beli virtuális gépen. LVM az operációsrendszer-lemez vagy az adatlemezeket az Azure-beli virtuális gépeken is használható, azonban alapértelmezés szerint a legtöbb felhő-rendszerképek nem fog LVM az operációsrendszer-lemez konfigurálva. Az alábbi lépéseket az LVM konfigurálása az adatlemezek összpontosít.
 
 ## <a name="linear-vs-striped-logical-volumes"></a>Csíkozott köteteken tárolni logikai és lineáris
-A fizikai lemezek számát egyesítése egyetlen tárolóköteten LVM használható. Alapértelmezés szerint LVM általában létrehoz lineáris logikai kötetek, ami azt jelenti, hogy a fizikai tároló együtt összefűzendő-e. Ebben az esetben olvasási/írási műveletek általában csak kapnak egyetlen lemezre. Ezzel szemben azt is létrehozhat ahol olvasási és írási elosztott több olyan lemezt, a kötet (azaz a RAID0 hasonlóan) csoportban lévő logikai csíkozott. A teljesítményre vonatkozó megfontolásból valószínűleg érdemes a logikai kötetek paritásos, hogy az olvasások és írások használják a mellékelt adatok lemezek.
+LVM használható fizikai lemezek számos egyesítendő egyetlen tárolóköteten. Alapértelmezés szerint LVM általában létrehoz lineáris logikai kötetek, ami azt jelenti, hogy a fizikai tároló együtt összefűzött-e. Ebben az esetben olvasási és írási műveletek általában csak küld egyetlen. Ezzel szemben azt is létrehozhat olvasási és írási terjesztési helyének több lemezhez (RAID0 hasonlóan) a kötet csoportban lévő logikai csíkozott. Teljesítménybeli megfontolások miatt az valószínű, célszerű a logikai kötetek stripe-úgy, hogy olvasási és írási kihasználhassák az összes csatlakoztatott lemez.
 
-Ez a dokumentum azt ismerteti, hogyan több adatlemezek egyesítése egyetlen köteten csoport, majd hozza létre a logikai csíkozott kötetek. Az alábbi lépéseket történő együttműködésre a legtöbb terjesztéseket némileg általánosítva vannak. A legtöbb esetben a segédprogramok és munkafolyamatok kezelése az Azure-on LVM nincsenek alapvetően más, mint más környezetekben. Szokásos módon is tekintse át a Linux forgalmazójával dokumentációk és ajánlott eljárások az adott terjesztési LVM használatával.
+Ez a dokumentum azt ismerteti, hogyan, több adatlemezek egyesítése egy kötetet csoportot, és hozzon létre logikai csíkozott kötetek. Az alábbi lépéseket a legtöbb disztribúciók dolgozhat általánosítva vannak. A legtöbb esetben a segédprogramok és munkafolyamatainak kezelése az Azure-ban LVM nem állnak alapvetően más, mint a más környezetben. Szokásos módon is tekintse át a Linux-gyártó dokumentációja és bevált gyakorlatok az LVM használata az adott terjesztési.
 
-## <a name="attaching-data-disks"></a>Adatlemez csatlakoztatása
-Egy általában érdemes legalább két üres adatlemezekkel rendelkező start LVM használatakor. IO igényei szerint, ha szeretné, csatlakoztassa a szabványos tároló, a legfeljebb 500 IO/ps / lemez vagy a prémium szintű storage, legfeljebb 5000 IO/ps lemezenként tárolt lemezeket. Ez a cikk nem kerül részletes kiépíteni, és a Linux virtuális gép adatlemezt csatolni. A Microsoft Azure cikke [lemezt csatlakoztatni](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) egy üres adatlemezt csatolni egy Linux virtuális gépet az Azure részletes útmutatást.
+## <a name="attaching-data-disks"></a>Adatlemezek csatolására
+Az egyik általában érdemes indítsa el a két vagy több üres adatlemezt LVM használatakor. I/o-igényei alapján, ha szeretné, a standard szintű tárhelyre, legfeljebb 500 i/o/ps lemez vagy a prémium szintű storage lemezenkénti legfeljebb 5000 i/o/ps-tárolt lemezt. Ez a cikk nem lépnek részletes történő kiépítéséhez és adatlemezeket csatlakoztathat egy Linux rendszerű virtuális gépet. A Microsoft Azure cikke [lemez csatolása](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) üres adatlemez csatolása az Azure-ban Linux rendszerű virtuális gép részletes útmutatást.
 
-## <a name="install-the-lvm-utilities"></a>Telepítse a LVM segédeszközöket
+## <a name="install-the-lvm-utilities"></a>Az LVM segédprogramok telepítése
 * **Ubuntu**
 
     ```bash  
@@ -41,7 +41,7 @@ Egy általában érdemes legalább két üres adatlemezekkel rendelkező start L
     sudo apt-get install lvm2
     ```
 
-* **RHEL, CentOS & Oracle Linux**
+* **& Oracle Linux RHEL, CentOS**
 
     ```bash   
     sudo yum install lvm2
@@ -59,14 +59,14 @@ Egy általában érdemes legalább két üres adatlemezekkel rendelkező start L
     sudo zypper install lvm2
     ```
 
-    A SLES11 is szerkeszteni kell `/etc/sysconfig/lvm` és `LVM_ACTIVATED_ON_DISCOVERED` az "Engedélyezés":
+    A SLES11, is szerkeszteni kell `/etc/sysconfig/lvm` és `LVM_ACTIVATED_ON_DISCOVERED` "engedélyezése":
 
     ```sh   
     LVM_ACTIVATED_ON_DISCOVERED="enable" 
     ```
 
 ## <a name="configure-lvm"></a>LVM konfigurálása
-A jelen útmutató indulunk ki csatolt adatok három lemezt, amely lesz lesz az `/dev/sdc`, `/dev/sdd` és `/dev/sde`. Előfordulhat, hogy ezek nem mindig a azonos útvonalneveket a virtuális gépen. Futtathatja a(z)`sudo fdisk -l`"vagy hasonló paranccsal listát készíthet a rendelkezésre álló lemezek.
+Ebben az útmutatóban indulunk ki fogja nevezzük, amely három adatlemezek csatolását `/dev/sdc`, `/dev/sdd` és `/dev/sde`. Az elérési utak előfordulhat, hogy nem egyezik a virtuális lemez elérési útja nevekkel. Futtathatja a(z)`sudo fdisk -l`"vagy hasonló paranccsal listát készíthet a rendelkezésre álló lemezek.
 
 1. Készítse elő a fizikai kötetekre:
 
@@ -77,14 +77,14 @@ A jelen útmutató indulunk ki csatolt adatok három lemezt, amely lesz lesz az 
     Physical volume "/dev/sde" successfully created
     ```
 
-2. Hozzon létre egy kötet csoportot. Ebben a példában a kötet csoport hívjuk `data-vg01`:
+2. Hozzon létre egy kötetet. Ebben a példában a kötet csoportnak hívjuk `data-vg01`:
 
     ```bash    
     sudo vgcreate data-vg01 /dev/sd[cde]
     Volume group "data-vg01" successfully created
     ```
 
-3. A logikai kötetek létrehozása. A parancs azt alább hoz létre a következő nevű egyetlen logikai kötet `data-lv01` span a teljes kötet csoport, de vegye figyelembe, hogy azt is megvalósítható a több logikai köteteket a kötet csoport létrehozásához.
+3. Hozza létre a logikai (ek). Alább, hogy a parancs létrehoz egy logikai kötetet nevű `data-lv01` span a teljes kötet csoport, de ne feledje, hogy is megvalósítható a kötet csoportban több logikai kötetek létrehozására.
 
     ```bash   
     sudo lvcreate --extents 100%FREE --stripes 3 --name data-lv01 data-vg01
@@ -98,19 +98,19 @@ A jelen útmutató indulunk ki csatolt adatok három lemezt, amely lesz lesz az 
     ```
    
    > [!NOTE]
-   > SLES11 használatával `-t ext3` ext4 helyett. SLES11 csak olvasási hozzáférést ext4 fájlrendszerek támogatja.
+   > SLES11 használnak `-t ext3` ext4 helyett. SLES11 csak a csak olvasható hozzáférést ext4 fájlrendszereit támogatja.
 
 ## <a name="add-the-new-file-system-to-etcfstab"></a>Az új fájlrendszer /etc/fstab hozzáadása
 > [!IMPORTANT]
-> Nem megfelelő módosítása a `/etc/fstab` fájl meghiúsulását eredményezheti. Ha nem ismeri, olvassa el a telepítési dokumentációban talál információkat arról a fájl megfelelően szerkesztése. Is javasolt biztonsági másolatot a `/etc/fstab` fájl szerkesztése előtt jön létre.
+> Nem megfelelően szerkesztése a `/etc/fstab` fájl meghiúsulását eredményezheti. Ha nem tudja biztosan, tekintse meg a telepítési dokumentációban talál információkat megfelelően szerkesztése ezt a fájlt. Is javasoljuk, hogy biztonsági másolatot a `/etc/fstab` fájl jön létre szerkesztése előtt.
 
-1. Létrehozhat például az új fájlrendszer, a megfelelő csatlakozási pont:
+1. Például hozza létre az új fájlrendszer, a kívánt csatlakoztatási pontja:
 
     ```bash  
     sudo mkdir /data
     ```
 
-2. Keresse meg a logikai elérési útjával
+2. Keresse meg a logikai tárkötet elérési útján
 
     ```bash    
     lvdisplay
@@ -119,22 +119,22 @@ A jelen útmutató indulunk ki csatolt adatok három lemezt, amely lesz lesz az 
     ....
     ```
 
-3. Nyissa meg `/etc/fstab` egy szövegszerkesztőben, és adja hozzá a bejegyzést az új fájlrendszer, például:
+3. Nyissa meg `/etc/fstab` egy szövegszerkesztőben, és adja hozzá egy bejegyzés az új fájlrendszer, például:
 
     ```bash    
     /dev/data-vg01/data-lv01  /data  ext4  defaults  0  2
     ```   
     Ezt követően mentse és zárja be `/etc/fstab`.
 
-4. Tesztelhető, hogy a `/etc/fstab` bejegyzés helyességét:
+4. Ellenőrizze, hogy a `/etc/fstab` bejegyzés értéke helyes:
 
     ```bash    
     sudo mount -a
     ```
 
-    Ha ezt a parancsot egy hibaüzenet ellenőrizze a szintaxist a `/etc/fstab` fájlt.
+    Ha ez a parancs egy hibaüzenetet eredményez ellenőrizze a szintaxist a `/etc/fstab` fájlt.
    
-    Ezután futtassa a `mount` parancsot annak biztosítására, hogy a fájlrendszer van csatlakoztatva:
+    Ezután futtassa a `mount` parancsot annak biztosítása érdekében a fájlrendszer csatlakoztatása:
 
     ```bash    
     mount
@@ -142,20 +142,20 @@ A jelen útmutató indulunk ki csatolt adatok három lemezt, amely lesz lesz az 
     /dev/mapper/data--vg01-data--lv01 on /data type ext4 (rw)
     ```
 
-5. (Választható) A FailSafe rendszerindító paraméterek `/etc/fstab`
+5. (Nem kötelező) FailSafe rendszerindító paraméterek `/etc/fstab`
    
-    Terjesztések valamelyikét tartalmazza a `nobootwait` vagy `nofail` csatlakoztatási fel paraméterek a `/etc/fstab` fájlt. Ezek a paraméterek hibák engedélyezése, ha egy adott fájlrendszer csatlakoztatása és a Linux rendszer akkor is, ha az nem csatolható fel a RAID fájlrendszer megfelelően elindulni. További információt ezekről a paraméterekről a terjesztési dokumentációjában tájékozódhat.
+    Terjesztések közé tartozik, vagy a `nobootwait` vagy `nofail` csatlakoztatási paraméterek, amelyeket fel a `/etc/fstab` fájlt. Ezek a paraméterek lehetővé teszi a hibák, amikor az adott operációs rendszer, és lehetővé teszi a Linux rendszer folytatja a rendszerindítást, még akkor is, ha nem tudja megfelelően csatlakoztathatja a RAID fájlrendszert. Tekintse meg a disztribúció dokumentációjában talál további információt ezekről a paraméterekről.
    
-    (Ubuntu). példa:
+    (Ubuntu). például:
 
     ```bash 
     /dev/data-vg01/data-lv01  /data  ext4  defaults,nobootwait  0  2
     ```
 
 ## <a name="trimunmap-support"></a>TRIM/UNMAP támogatása
-Egyes Linux kernelek támogatja a vágás/UNMAP műveleteket elveti a nem használt blokkok a lemezen. Ezek a műveletek elsősorban hasznosak standard tárolási tájékoztatja Azure törölt lapok már nem érvényesek, és is elvesznek. Lapok elvetése költség mentheti, ha nagy fájlok létrehozása, majd törli őket.
+Egyes Linux-kernelek vannak a elveti a nem használt blokkolja a lemez TRIM/UNMAP műveletek támogatásához. Ezek a műveletek elsősorban hasznosak tájékoztatja, hogy az oldalak törlése az Azure már nem érvényesek, és lehet elvetni a standard szintű tárolóban. Oldalak elvetése mentheti a költség, ha nagy méretű fájlokat hoz létre, és törölje őket.
 
-Két módon vágást engedélyezése támogatja a Linux virtuális gép van. A szokásos módon olvassa el a terjesztési az ajánlott módszer:
+Nincsenek a TRIM engedélyezéséhez kétféleképpen támogatja a Linux rendszerű virtuális gépen. A szokásos módon tekintse meg a terjesztési az ajánlott módszer:
 
 - Használja a `discard` lehetőség a csatlakoztatási `/etc/fstab`, például:
 
@@ -163,7 +163,7 @@ Két módon vágást engedélyezése támogatja a Linux virtuális gép van. A s
     /dev/data-vg01/data-lv01  /data  ext4  defaults,discard  0  2
     ```
 
-- Bizonyos esetekben a `discard` lehetőség is van a teljesítményre. Alternatív megoldásként futtathatja a `fstrim` manuálisan parancsot a parancssorból, vagy adja hozzá a crontab rendszeresen futtatásához:
+- Bizonyos esetekben a `discard` lehetőség is van a teljesítményre. Másik megoldásként futtathatja a `fstrim` manuálisan parancsot a parancssorból, vagy adja hozzá a crontab rendszeresen futtatásához:
 
     **Ubuntu**
 

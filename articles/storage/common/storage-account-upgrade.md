@@ -5,20 +5,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 10/18/2018
 ms.author: tamram
-ms.openlocfilehash: 6e77c4836531a7efd0b52b9a411ac40ff6a613fa
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 10dc25740eca43c7cbd39b8ec783084e048d2af2
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224494"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637601"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Egy általános célú v2-tárfiók frissítése
 
 Általános célú v2-tárfiókok a legújabb Azure Storage-szolgáltatások támogatásához, és építse be az összes funkcióját, általános célú v1 és Blob storage-fiókok. Általános célú v2 fiókok használata akkor javasolt, a storage legtöbb forgatókönyvhöz. Általános célú v2 fiókok kapacitás árak nyújthat a legalacsonyabb gigabájtonkénti az Azure Storage, valamint iparági versenyképes tranzakciós.
 
-Frissítés az általános célú v1, általános célú v2 tárfiók vagy a Blob storage-fiókok használata egyszerű. Az Azure portal, PowerShell vagy az Azure CLI használatával is frissítheti. Fiók frissítése nem vonható vissza, és a számlázási költségeket vonhat.
+Frissítés az általános célú v1, általános célú v2 tárfiók vagy a Blob storage-fiókok használata egyszerű. Az Azure portal, PowerShell vagy az Azure CLI használatával is frissítheti. 
+
+> [!NOTE]
+> A tárolási szintek módosítása további díjakat vonhat maga után. További részleteket az [árakat és számlázást](#pricing-and-billing) ismertető szakaszban olvashat.
 
 ## <a name="upgrade-using-the-azure-portal"></a>Frissítse az Azure portal használatával
 
@@ -53,14 +56,33 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 Általános célú v2 támogatja az összes Azure storage-szolgáltatások és adatok objektum, de az elérési szint csak a Blob storage-ban a blokkblobokhoz érhető el. Amikor frissít egy általános célú v2-tárfiók, megadhatja a hozzáférési szint a blob adatait. 
 
-Hozzáférés csomagjai lehetővé teszik, hogy válassza ki a leginkább költséghatékony tárolási megoldás a várható használati mintái alapján. A blokkblobok tárolhatók a gyakori és ritka elérésű vagy archív szint. A hozzáférési rétegek további információkért lásd: [Azure Blob storage: gyakori, ritka és archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
+Hozzáférés csomagjai lehetővé teszik, hogy válassza ki a leginkább költséghatékony tárolási megoldás a várható használati mintái alapján. A blokkblobok használatát támogatják a gyors Elérésűre, ritka elérésű vagy archív szinten tárolhatók. A hozzáférési rétegek további információkért lásd: [Azure Blob storage: gyakran és ritkán használt adatok, és az archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
 
 Alapértelmezés szerint egy új storage-fiók jön létre a gyakran használt adatok tároláselérési rétegében és a egy általános célú v1 storage-fiók frissítése a gyakori elérésű hozzáférési szintre. Ha, a vizsgált milyen hozzáférési szint használata az adatok frissítése, fontolja meg a forgatókönyvnek. Egy általános célú v2 fiók való áttelepítés során két jellemző felhasználói forgatókönyv közül választhat:
 
 * Rendelkezik egy meglévő általános célú v1-tárfiókot, és szeretné kiértékelni egy általános célú v2 tárfiók blobadatokat a megfelelő tárolási szintjére való áttérést.
-* Úgy döntött, használjon egy általános célú v2-tárfiók vagy már rendelkezik ilyennel, és szeretné meghatározni, hogy blobadatokat kell használni a gyors vagy lassú elérésű tárolási szinten.
+* Egy általános célú v2-tárfiók használata vagy már rendelkezik ilyennel, és szeretné meghatározni, hogy blobadatokat kell használnia a gyakori vagy ritka elérésű tárolási szinten választotta.
 
 Mindkét esetben az első érték tárolása, elérése és a egy általános célú v2-tárfiók-ban tárolt adatokkal kapcsolatos működtetése költségének és összehasonlítása az aktuális költségekkel.
+
+
+## <a name="pricing-and-billing"></a>Árak és számlázás
+Az összes tárfiók az egyes blobok szintjén alapuló árképzési modellt alkalmaz a blobtároláshoz. Tárfiókok használatakor az alábbi számlázási szempontok érvényesülnek:
+
+* **Tárolási költségek**: Az adattárolás díja a tárolt adatok mennyisége mellett a tárolási szinttől függ. A gigabájtonkénti költség csökken, ha a szint ritkábban használt adatokat tárol.
+
+* **Adathozzáférési költségek**: az adathozzáférési költségek emelkednek, ha a szint ritkábban használt adatokat tárol. A ritka elérésű és az archív tárolási szint esetében gigabájtonkénti adathozzáférési díjat kell fizetni az adatolvasásokért.
+
+* **Tranzakciós költségek**: Minden szint esetében tranzakciónkénti díjat kell fizetni, ez emelkedik, ha a szint ritkábban használt adatokat tárol.
+
+* **Georeplikációs adatátviteli költségek**: Ez csak a georeplikációval konfigurált fiókok esetében érvényes, beleértve a GRS-t és az RA-GRS-t. A georeplikációs adatátvitel gigabájtonkénti díj ellenében érhető el.
+
+* **Kimenő adatátviteli költségek**: A kimenő adatátvitel (azaz az adott Azure-régióból kivitt adatok) esetében gigabájtalapú sávszélesség-használati díjak lépnek fel, csakúgy, mint az általános célú tárfiókok esetében.
+
+* **A tárolási szint módosítása**: a fiók tárolási szintjének a ritka elérésű szintről gyakori elérésűre váltása esetében felmerülő díj megegyezik a tárfiókban lévő összes adat beolvasásának költségével. A fiók tárolási szintjének gyakori elérésűről ritka elérésűre való váltása esetében felmerülő díj viszont az összes adat ritka elérésű szintre írásának költségével egyezik meg (csak a GPv2-fiókok esetében).
+
+> [!NOTE]
+> A tárfiókok árképzési modelljével kapcsolatos további információért lásd [az Azure Storage díjszabását](https://azure.microsoft.com/pricing/details/storage/) ismertető lapot. A kimenő adatátviteli díjakkal kapcsolatos további információért lásd az [adatátviteli díjszabást](https://azure.microsoft.com/pricing/details/data-transfers/) ismertető lapot.
 
 ### <a name="estimate-costs-for-your-current-usage-patterns"></a>Az aktuális felhasználási mintáin költségeinek
 
@@ -73,15 +95,66 @@ Tárolási költségek becsléséhez és a egy általános célú v2-tárfiók a
     - Folyamatban van, hogy mennyi adatot olvas és ír a storage-fiókhoz? 
     - Hány olvasási műveletek és írási műveleteket a rendszer az adatok a storage-fiókban?
 
-Az igényeinek megfelelően a legjobb hozzáférési szint használata mellett dönt, hogy hasznos lehet meghatározni, mekkora kapacitást a Blobadatok jelenleg használ, és hogyan adatokat használják. 
+Az igényeinek megfelelően a legjobb hozzáférési szint használata mellett dönt, hogy hasznos lehet meghatározni az blob kapacitás, és hogyan adatokat használják. Ezt leginkább teheti megnézzük a figyelési metrikákat a fiókjához.
 
-A tárfiók a migrálás előtt a használati adatok gyűjtéséhez, nyomon követheti a tárfiók tárfiókkulcsait [Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md). Az Azure Monitor naplózhatja és mérőszámadatokat biztosít az Azure-szolgáltatásokhoz, mint az Azure Storage. 
+### <a name="monitoring-existing-storage-accounts"></a>A meglévő tárfiókok figyelése
 
-A tárfiókban található blobok felhasználási adatok monitorozásához engedélyezése az Azure monitorban a kapacitási mérőszámot. A kapacitás metrikák a fiókjában található blobokat használ, naponta mennyi tárhelyre vonatkozó adatokat rögzíti. Kapacitás mérőszámok segítségével megbecsülheti költségeit az adatok tárolása a storage-fiók. Hogyan Blob storage kapacitási díjszabása az egyes fiókkal kapcsolatban lásd: [Block blob díjszabás](https://azure.microsoft.com/pricing/details/storage/blobs/).
+A meglévő tárfiókok monitorozásához és az ezzel kapcsolatos adatgyűjtéshez nyújt segítséget az Azure Storage Analytics, amellyel naplózhatja a tárfiókokat, és megnézheti a fiókokra vonatkozó mérőszámokat. A Storage Analytics olyan mérőszámokat tárol, amelyek a tárolási szolgáltatáshoz érkező kérések összesített tranzakcióstatisztikáját és kapacitási adatait tartalmazzák mind a GPv1 és a GPv2, mind a Blob Storage fióktípus esetében. Ezeket az adatokat a jól ismert táblák tárolják az adott tárfiókban.
 
-A Blob Storage adathozzáférési mintáinak figyeléséhez, engedélyezze az Azure monitorban tranzakció-mérőszámot. A megbecsülni, hogy milyen gyakran nevezik minden más Azure Storage műveleteket végezhet. Megtudhatja, hogyan különböző típusú tranzakciók díjszabása vonatkozóan, és a hozzáfűző blobok minden fióktípushoz tartozó, lásd: [Block blob díjszabás](https://azure.microsoft.com/pricing/details/storage/blobs/).  
+További információért lásd [a Storage Analytics mérőszámainak áttekintését](https://msdn.microsoft.com/library/azure/hh343258.aspx) és [a Storage Analytics mérőszámainak táblasémáját](https://msdn.microsoft.com/library/azure/hh343264.aspx).
 
-Az Azure Monitor metrikákat gyűjt kapcsolatos további információkért lásd: [Azure Storage-mérőszámok az Azure Monitor](storage-metrics-in-azure-monitor.md).
+> [!NOTE]
+> A Blob Storage-tárfiókok a tábla szolgáltatásvégpontját csak az adott fiók mérőszámadatainak tárolásához és eléréséhez jelenítik meg. 
+
+A Blob Storage tárolófelhasználásának figyeléséhez engedélyeznie kell a kapacitási mérőszámot.
+Ha ez a mérőszám engedélyezve van, a rendszer naponta rögzíti a tárfiók blobszolgáltatásának kapacitásadatait, és létrehoz egy táblabejegyzést az adott tárfiók *$MetricsCapacityBlob* táblájában.
+
+A Blob Storage adathozzáférési mintáinak figyeléséhez engedélyeznie kell az óránkénti tranzakciók mérőszámát az API szintjén. Ha az óránkénti tranzakciók mérőszáma engedélyezve van, a rendszer óránként összesíti az API-tranzakciókat, és táblabejegyzést hoz létre az adott tárfiók *$MetricsHourPrimaryTransactionsBlob* táblájában. A *$MetricsHourSecondaryTransactionsBlob* tábla a másodlagos végpontra rögzíti a tranzakciókat RA-GRS-tárfiókok használata esetében.
+
+> [!NOTE]
+> Ha rendelkezik egy általános célú tárfiókkal, amelyben lapblobokat és virtuálisgép-lemezeket, illetve üzenetsorokat, fájlokat vagy táblákat tárol a blokkblobok és a hozzáfűző blobok adatai mellett, akkor ez a becslési folyamat nem alkalmazható. A kapacitási adatok nem tesznek különbséget a blokkblobok és más adattípusok között, és nem adnak meg kapacitási adatokat ez utóbbiakhoz. Ilyen adattípusok használatakor a legutóbb számlázott mennyiségi tételek feltárásához alternatív módszert kell alkalmazni.
+
+Azt javasoljuk, hogy az adatfelhasználás és -hozzáférés megfelelő mintájának előállításához olyan megőrzési időszakot válasszon a mérőszámhoz, amely megfelel az Ön használati szokásainak, és extrapolálja az adatokat. Az egyik lehetőség az, hogy hét napig őrzi meg a mérőszámadatokat, és minden héten összegyűjti az adatokat a hónap végén elvégzendő elemzéshez. A másik lehetőség az, hogy az utolsó 30 nap mérőszámadatait őrzi meg, és a 30 napos időszak végén hajtja végre az adatok összegyűjtését és elemzését.
+
+További tudnivalók a mérőszámadatok engedélyezésével, gyűjtésével és megtekintésével kapcsolatban: [Az Azure Storage mérőszámainak engedélyezése és a mérőszámadatok megtekintése](../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+
+> [!NOTE]
+> Az elemzési adatok tárolása, elérése és letöltése ugyanúgy díjhoz kötött, mint a normál felhasználói adatok használata.
+
+### <a name="utilizing-usage-metrics-to-estimate-costs"></a>Költségbecslés a használati mérőszámok alapján
+
+#### <a name="capacity-costs"></a>A kapacitás költségek
+
+A kapacitási mérőszám *$MetricsCapacityBlob* táblájának *„data”* sorkulcsú utolsó bejegyzése mutatja a felhasználói adatok által igénybe vett tárolókapacitást. A kapacitási mérőszám *$MetricsCapacityBlob* táblájának *„analytics”* sorkulcsú utolsó bejegyzése mutatja az elemzési naplók által igénybe vett tárolókapacitást.
+
+A felhasználói adatok és az elemzési naplók (ha engedélyezve vannak) által igénybe vett teljes kapacitás alapján lehet megbecsülni a tárfiókban lévő adatok tárolási költségét. Ugyanezzel a módszerrel becsülhetők meg a tárolási költségek a GPv1-tárfiókokban.
+
+#### <a name="transaction-costs"></a>Tranzakciós költségek
+
+A tranzakciók mérőszámának táblájában az adott API-hoz tartozó bejegyzések *„TotalBillableRequests”* összege mutatja az adott API tranzakcióinak teljes számát. *Például* az adott időszakba eső *„GetBlob”* tranzakciók száma a *„user;GetBlob”* sorkulcsú bejegyzések összes számlázható kérelmének összege alapján számítható ki.
+
+A Blob Storage-tárfiókok tranzakciós költségeinek kiszámításához a tranzakciókat három csoportra kell felosztania, mivel ezekhez különböző árak tartoznak.
+
+* Írási tranzakciók, például *„PutBlob”*, *„PutBlock”*, *„PutBlockList”*, *„AppendBlock”*, *„ListBlobs”*, *„ListContainers”*, *„CreateContainer”*, *„SnapshotBlob”* és *„CopyBlob”*.
+* Törlési tranzakciók, például *„DeleteBlob”* és *„DeleteContainer”*.
+* Minden egyéb tranzakció.
+
+A GPv1-tárfiókok tranzakciós költségeinek becsléséhez összesítenie kell az összes tranzakciót, függetlenül a művelettől és az API-tól.
+
+#### <a name="data-access-and-geo-replication-data-transfer-costs"></a>Az adatok hozzáférésének és a georeplikációs adatok átvitelének költségei
+
+Bár a tároló elemzése nem jelzi a tárfiókból olvasott és a tárfiókba írt adatok mennyiségét, a tranzakciók mérőszámának táblája alapján lehetőség van megközelítőleges becslésre. A tranzakciók mérőszámának táblájában az adott API-hoz tartozó bejegyzések *„TotalIngress”* összege mutatja az adott API bejövő adatainak teljes mennyiségét bájtban. Hasonlóképpen a *„TotalEgress”* összege a kimenő adatok teljes mennyiségét mutatja bájtban.
+
+A Blob Storage-tárfiókok adathozzáférési költségeinek kiszámításához a tranzakciókat két csoportra kell felosztania.
+
+* A tárfiókból lekért adatok mennyisége a *„TotalEgress”* összegéből becsülhető meg, elsődlegesen a *„GetBlob”* és a *„CopyBlob”* művelet alapján.
+
+* A tárfiókba írt lekért adatok mennyisége a *„TotalIngress”* összegéből becsülhető meg, elsődlegesen a *„PutBlob”*, a *„PutBlock”*, a *„CopyBlob”* és az *„AppendBlock”* művelet alapján.
+
+A Blob Storage-tárfiókok georeplikációs adatátviteli költségei szintén az írt adatok mennyiségének becslése alapján számítható ki GRS- vagy RA-GRS-tárfiókok használata esetében.
+
+> [!NOTE]
+> Ha részletesebb példát szeretne látni a gyakori és ritka elérésű tárolási szint használatához kapcsolódó költségek kiszámítására, tekintse át a *„What are Hot and Cool access tiers and how should I determine which one to use?”* (Mi a gyakori és a ritka elérésű tárolási szint, és hogyan határozhatom meg, hogy melyiket kell használnom?) című gyakori kérdéseket. az [Azure Storage díjszabását tartalmazó oldalon](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="next-steps"></a>További lépések
 

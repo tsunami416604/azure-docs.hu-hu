@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2018
+ms.date: 09/27/2018
 ms.author: szark
-ms.openlocfilehash: f5bce08bfc61d5b9b17e9500c002c3b870384c7b
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 43253423e3a27a61000c3f93868dd8b42809b7ae
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618658"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650162"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Red Hat-alapú virtuális gép előkészítése Azure-beli használatra
 Ebből a cikkből megtudhatja, Red Hat Enterprise Linux (RHEL) virtuális gép előkészítése Azure-beli használatra. Ebben a cikkben ismertetett RHEL-verziók a következők: 6.7 + és 7.1 +. Előkészítésekor a hipervizorok, amelyekre ez a cikk a Hyper-V, a kernel-alapú virtuális gép (KVM), és a VMware rendszer. Red Hat Cloud Access programban való részvételre vonatkozó jogosultság követelményeivel kapcsolatos további információkért lásd: [Red Hat Cloud Access webhely](http://www.redhat.com/en/technologies/cloud-computing/cloud-access) és [az Azure-ban futó RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure).
@@ -35,7 +35,7 @@ Ez a szakasz azt feltételezi, hogy már egy ISO-fájlt kapott a Red Hat-webhely
 * Az Azure nem támogatja a VHDX formátumot. Az Azure támogatja a csak rögzített VHD. Hyper-V kezelője segítségével a lemez VHD formátumra történő konvertálása, vagy használja a convert-vhd-parancsmagot. Ha VirtualBox használ, válassza ki a **rögzített méretű** figyelésekor az alapértelmezett beállítás dinamikusan kiosztott, a lemez létrehozásakor.
 * Az Azure csak az 1. generációs virtuális gépeket támogatja. 1. generációs virtuális gép és a rögzített méretű lemez dinamikusan növekvő VHDX-re a VHD-fájl formátumát származó alakíthatók. Egy virtuálisgép-generáció nem módosítható. További információkért lásd: [kell hozhatok létre 1 vagy 2. generációs virtuális gépek a Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 * A maximális engedélyezett a virtuális merevlemez mérete 1,023 GB.
-* Amikor Linux operációs rendszert telepít, azt javasoljuk, hogy, standard partíciók helyett használjon logikai kötet-kezelő (LVM), amelyek gyakran sok telepítés az alapértelmezett érték. Ez az eljárás a rendszer működésében LVM neve nem felel meg a klónozott virtuális gépeket, különösen akkor, ha a átállítására lenne szükség hibaelhárítási egy másik virtuális gép operációsrendszer-lemez csatolása. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) használnak, az adatlemezeket.
+* Logikai kötet-kezelő (LVM) támogatott, és az operációsrendszer-lemez vagy az adatlemezeket az Azure-beli virtuális gépeken is használható. Azonban az általános ajánlott standard partíciók LVM helyett az operációsrendszer-lemez használatára. Ez az eljárás a rendszer működésében LVM neve nem felel meg a klónozott virtuális gépeket, különösen akkor, ha a átállítására lenne szükség hibaelhárítási egy másik virtuális gép operációsrendszer-lemez csatolása. Lásd még: [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) és [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) dokumentációját.
 * Univerzális lemez formátum (UDF) fájlrendszer csatlakoztatási kernel támogatására szükség. Az Azure-ban első rendszerindításkor az UDF-formátumú adathordozót, amely csatolva van a Vendég továbbítja az üzembe helyezési konfiguráció a Linux rendszerű virtuális gépet. Az Azure Linux-ügynök csatlakoztatása az UDF-fájlrendszer, olvassa el a konfigurációját, és a virtuális gép üzembe helyezése képesnek kell lennie.
 * Az operációsrendszer-lemez nem konfigurál egy lapozó partíciót. A Linux-ügynök beállítható úgy, hogy hozzon létre egy ideiglenes erőforrás lemezen a lapozófájl.  További információ található a következő lépéseket.
 * Az Azure-ban minden virtuális merevlemezek rendelkeznie kell egy virtuális méret 1 MB igazítva. A virtuális merevlemez nyers lemezről történő konvertálása során biztosítania kell, hogy a nyers lemez mérete nagyobb-e az átalakítás előtt 1MB többszöröse. További részleteket az alábbi lépéseket is található. Lásd még: [Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes) további információt.

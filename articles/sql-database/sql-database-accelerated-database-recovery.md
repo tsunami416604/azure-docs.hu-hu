@@ -11,12 +11,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/11/2018
-ms.openlocfilehash: ad9ef7aa56cde9dd2ae644b97570b3bcfb727516
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 49ef31996cb9c55ed244202a85e123faf52fbd2a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49355506"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649778"
 ---
 # <a name="accelerated-database-recovery-preview"></a>Gyorsított adatbázis-helyreállítás (előzetes verzió)
 
@@ -108,7 +108,7 @@ Automatikus központi telepítési szabály négy fő összetevői a következő
   sLog egy másodlagos memórián belüli naplóstreamet, hogy a tárolók fájlkivonatát műveletekhez (például a metaadat-gyorsítótárának érvénytelenítésére, a zárolás beszerzések, és így tovább) rekordok naplózására. A sLog van:
 
   - Kevés, és a memóriában
-  - Megőrzi a lemezen által lett szerializálni az ellenőrzőpont-folyamat során
+  - Megőrzi a lemezen által éppen szerializált során az ellenőrzőpont-folyamat
   - Rendszeres időközönként csonkolva, a tranzakció véglegesítése
   - Gyorsítja visszaállítása, és csak a rendszerverzióval ellátott műveleteket feldolgozásával visszavonása  
   - Lehetővé teszi, hogy agresszív tranzakció rendszernapló csonkolása által csak a szükséges naplórekordok megőrzése
@@ -127,4 +127,4 @@ A következő típusú ügyfelek fontolja meg automatikus központi telepítési
 
 ## <a name="to-enable-adr-during-this-preview-period"></a>Automatikus központi telepítési szabály engedélyezése az előzetes verzió időszaka során
 
-E-mail küldése a szolgáltatás az előzetes verzió ideje alatt [ mailto:adr@microsoft.com ](mailto:adr@microsoft.com) további, és próbálja ki a gyorsított adatbázis helyreállítási (automatikus központi telepítési szabály). Az e-mailben a logikai kiszolgáló neve (az önálló adatbázisok, rugalmas készletek és az Azure Data Warehouse) is. Mivel ez egy előzetes verziójú funkció, a tesztelési kiszolgáló lehet egy nem éles üzemi kiszolgáló.
+E-mail küldése a szolgáltatás az előzetes verzió ideje alatt [ adr@microsoft.com ](mailto:adr@microsoft.com) további, és próbálja ki a gyorsított adatbázis helyreállítási (automatikus központi telepítési szabály). Az e-mailben a logikai kiszolgáló neve (az önálló adatbázisok, rugalmas készletek és az Azure Data Warehouse) is. Mivel ez egy előzetes verziójú funkció, a tesztelési kiszolgáló lehet egy nem éles üzemi kiszolgáló.

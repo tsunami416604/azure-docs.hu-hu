@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d39cfddc42ea0e03f6b0f6c8d1c0160839742518
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 98edf224ebbd15f6acafdfeb28769eecb4edff40
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393910"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638119"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Újdonságok az Azure Active Directoryban?
 
@@ -50,7 +50,7 @@ A szerepkörök a következők:
 
 - Globális rendszergazda vagy a vállalati író
 
-- Intune-szolgáltatásadminisztrátor
+- Intune szolgáltatás rendszergazdája
 
 - Felhasználóifiók-adminisztrátor
 
@@ -131,7 +131,7 @@ A dinamikus tagsági szabályok egyéni bővítménytulajdonságok használatáv
 **Szolgáltatási kategóriához:** feltételes hozzáférés  
 **A termék funkció:** identitás biztonsága és védelme
 
-A következő alkalmazások olyan listájában [jóváhagyott ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference.md#approved-client-app-requirement):
+A következő alkalmazások olyan listájában [jóváhagyott ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference#approved-client-app-requirement):
 
 - Microsoft To-Do
 
@@ -351,7 +351,7 @@ Egy választható nyilvános előzetes kiadásról. Google összevonási kapcsol
 
 ## <a name="july-2018"></a>2018. július
 
-### <a name="improvements-to-azure-active-directory-email-notifications"></a>Az Azure Active Directory értesítő e-mailjeinek fejlesztései
+### <a name="improvements-to-azure-active-directory-email-notifications"></a>Fejlesztések az Azure Active Directoryhoz e-mail-értesítések
 
 **Típus:** megváltozott funkció  
 **Szolgáltatási kategóriához:** más  
@@ -375,7 +375,7 @@ Egy vonatkozó példáért egyes új e-mail mintákra és további információk
 
 ---
 
-### <a name="azure-ad-activity-logs-are-now-available-through-azure-monitor"></a>Az Azure AD tevékenységnaplói most már elérhetők az Azure Monitorban
+### <a name="azure-ad-activity-logs-are-now-available-through-azure-monitor"></a>Az Azure AD-Tevékenységnaplók mostantól elérhetők az Azure Monitor használatával
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** jelentéskészítés  
@@ -393,7 +393,7 @@ Ezekkel az új képességekkel kapcsolatos további információkért lásd: blo
 
 ---
 
-### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Az Azure AD bejelentkezési jelentése feltételes hozzáférési adatokkal bővült
+### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Az Azure AD bejelentkezési jelentések hozzáadott feltételes hozzáférési adatok
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** jelentéskészítés  
@@ -413,7 +413,7 @@ Bevezetésével a **ügyfélalkalmazás** -naplókat a bejelentkezési tevékeny
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---july-2018"></a>2018 júliusától új összevont alkalmazások érhetők el az Azure AD alkalmazáskatalógusában
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---july-2018"></a>Új összevont alkalmazások érhetők el az Azure AD-alkalmazásgyűjtemény – 2018. július
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** vállalati alkalmazások  
@@ -427,7 +427,7 @@ Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrá
 
 ---
  
-### <a name="new-user-provisioning-saas-app-integrations---july-2018"></a>2018. július – új felhasználókiépítési funkció az SaaS-alkalmazás-integrációkban
+### <a name="new-user-provisioning-saas-app-integrations---july-2018"></a>Új felhasználók SaaS-alkalmazás Integrációk – 2018. július
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** Alkalmazáskiosztási  
@@ -445,7 +445,7 @@ Minden alkalmazás, amely támogatja a felhasználók átadásának az Azure AD 
 
 ---
 
-### <a name="connect-health-for-sync---an-easier-way-to-fix-orphaned-and-duplicate-attribute-sync-errors"></a>Connect Health for Sync – Az árván maradt és ismétlődő attribútumok szinkronizálásából fakadó hibák javításának egyszerűbb módja
+### <a name="connect-health-for-sync---an-easier-way-to-fix-orphaned-and-duplicate-attribute-sync-errors"></a>Connect Health for Sync - megkönnyítő árva és ismétlődő attribútum szinkronizálási hibák javítása
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** AD Connect  
@@ -463,7 +463,7 @@ További információkért lásd: [diagnosztizálása és a duplikált attribút
 
 ---
 
-### <a name="visual-updates-to-the-azure-ad-and-msa-sign-in-experiences"></a>Az Azure AD és az MSA bejelentkezési felületének vizuális frissítései
+### <a name="visual-updates-to-the-azure-ad-and-msa-sign-in-experiences"></a>Vizualizáció frissítése az Azure ad és az MSA bejelentkezési élmény
 
 **Típus:** megváltozott funkció  
 **Szolgáltatási kategóriához:** Azure ad-ben  
@@ -473,7 +473,7 @@ Frissítettük a felhasználói felületen, a Microsoft online services bejelent
 
 ---
 
-### <a name="new-release-of-azure-ad-connect---july-2018"></a>Az Azure AD Connect új kiadása – 2018. július
+### <a name="new-release-of-azure-ad-connect---july-2018"></a>Új kiadás az Azure AD Connect – 2018. július
 
 **Típus:** megváltozott funkció  
 **Szolgáltatási kategóriához:** Alkalmazáskiosztási  
@@ -491,7 +491,7 @@ A frissítéssel kapcsolatos további információkért lásd: [az Azure AD Conn
 
 ---
 
-### <a name="updates-to-the-terms-of-use-tou-end-user-ui"></a>A használati feltételek (TOU) végfelhasználói felületének frissítései
+### <a name="updates-to-the-terms-of-use-tou-end-user-ui"></a>A végfelhasználói használati feltételek (feltételek) felhasználói felület frissítéseit
 
 **Típus:** megváltozott funkció  
 **Szolgáltatási kategóriához:** használati feltételek  
@@ -505,7 +505,7 @@ Frissítjük a jelen használati feltételek végfelhasználó felhasználói fe
 
 ---
  
-### <a name="pass-through-authentication-supports-legacy-protocols-and-applications"></a>Az átmenő hitelesítés támogatja az örökölt protokollok és alkalmazások használatát
+### <a name="pass-through-authentication-supports-legacy-protocols-and-applications"></a>Az átmenő hitelesítés támogatja az örökölt protokollok és alkalmazások
 
 **Típus:** megváltozott funkció  
 **Szolgáltatási kategóriához:** hitelesítések (Bejelentkezések)  
@@ -525,7 +525,7 @@ Az átmenő hitelesítés most már támogatja az örökölt protokollok és alk
 
 ---
  
-### <a name="converged-security-info-management-for-self-service-password-reset-and-multi-factor-authentication"></a>Az önkiszolgáló jelszóátállításhoz és a többtényezős hitelesítéshez használt biztonsági adatok kezelésének összevonása
+### <a name="converged-security-info-management-for-self-service-password-reset-and-multi-factor-authentication"></a>Új jelszó önkiszolgáló kérése és a multi-factor Authentication konvergens biztonsági adatok kezelése
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** SSPR  
@@ -539,7 +539,7 @@ Egy választható nyilvános előzetes kiadásról. A rendszergazdák bekapcsolh
 
 ---
  
-### <a name="use-the-microsoft-authenticator-app-to-verify-your-identity-when-you-reset-your-password"></a>A Microsoft Authenticator alkalmazással igazolhatja személyazonosságát a jelszava átállításakor
+### <a name="use-the-microsoft-authenticator-app-to-verify-your-identity-when-you-reset-your-password"></a>A Microsoft Authenticator alkalmazás használatával igazolhatja a személyazonosságát, ha a jelszó alaphelyzetbe állításakor
 
 **Típus:** megváltozott funkció  
 **Szolgáltatási kategóriához:** SSPR  
@@ -731,7 +731,7 @@ Ha folytatja, dedikált Kapcsolatcsoportok használni kell, kommunikáljon a Mic
  
 ---
 
-### <a name="microsoft-graph-apis-for-administrative-scenarios-for-tou"></a>Microsoft Graph API-k a használati feltételekkel kapcsolatos felügyeleti műveletek végrehajtásához
+### <a name="microsoft-graph-apis-for-administrative-scenarios-for-tou"></a>Felügyeleti forgatókönyvek a használati feltételek a Microsoft Graph API-k
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** használati feltételek  
@@ -823,7 +823,7 @@ Az Azure AD tevékenységeket tartalmazó naplók, amely tartalmazza a bejelentk
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---may-2018"></a>2018 májusától új összevont alkalmazások érhetők el az Azure AD alkalmazáskatalógusában
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---may-2018"></a>Új összevont alkalmazások érhetők el az Azure AD-alkalmazásgyűjtemény – 2018. május
 
 **Típus:** új szolgáltatás  
 **Szolgáltatási kategóriához:** vállalati alkalmazások  
@@ -861,13 +861,13 @@ Ha nem találja az alkalmazás / egyszerű szolgáltatások? Hozzáadtunk továb
 
 ---
  
-### <a name="the-may-release-of-aadconnect-contains-a-public-preview-of-the-integration-with-pingfederate-important-security-updates-many-bug-fixes-and-new-great-new-troubleshooting-tools"></a>Az AAD Connect májusi kiadásának újdonságai a következők: a PingFederate-integráció nyilvános előzetes verziója, fontos biztonsági frissítések, számos hibajavítás és nagyszerű új hibaelhárítási eszközök. 
+### <a name="the-may-release-of-aadconnect-contains-a-public-preview-of-the-integration-with-pingfederate-important-security-updates-many-bug-fixes-and-new-great-new-troubleshooting-tools"></a>Az aad Connect kiadása tartalmaz egy nyilvános előzetes verziója a pingfederate-tel, az integráció május fontos biztonsági frissítések, számos hibajavítást és új nagyszerű új hibaelhárítási eszközei. 
 
 **Típus:** megváltozott funkció  
 **Szolgáltatási kategóriához:** AD Connect  
 **A termék funkció:** identitás-életciklus-felügyelet
  
-Az AAD Connect májusi kiadásának újdonságai a következők: a PingFederate-integráció nyilvános előzetes verziója, fontos biztonsági frissítések, számos hibajavítás és nagyszerű új hibaelhárítási eszközök. A kibocsátási megjegyzésekben talál [Itt](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#118190).
+Az aad Connect kiadása tartalmaz egy nyilvános előzetes verziója a pingfederate-tel, az integráció május fontos biztonsági frissítések, számos hibajavítást és új nagyszerű új hibaelhárítási eszközei. A kibocsátási megjegyzésekben talál [Itt](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#118190).
 
 ---
 

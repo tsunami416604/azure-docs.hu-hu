@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 10/21/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4f2ceae349c921ce0d83fb7401e3b18404722763
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 025202d25d3057f3db7d015faba349a1fe642d4c
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362908"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637865"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Az Azure Active Directory átmenő hitelesítés: Gyakori kérdések
 
@@ -83,6 +83,10 @@ Igen. Ha Proxy automatikus felderítési WPAD (Web) engedélyezve van a helyszí
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>Két vagy több átmenő hitelesítési ügynökök telepíthető ugyanarra a kiszolgálóra?
 
 Egyetlen kiszolgáló nem, egy átmenő hitelesítési ügynök csak telepítheti. Ha az átmenő hitelesítés konfigurálása a magas rendelkezésre álláshoz szeretné [kövesse az itt](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability).
+
+## <a name="do-i-have-to-manually-renew-certificates-used-by-pass-through-authentication-agents"></a>Manuálisan megújítani a tanúsítványokat az átmenő hitelesítés ügynökök általi használatra kell?
+
+Minden egyes átmenő hitelesítési ügynök és az Azure AD közötti kommunikáció Tanúsítványalapú hitelesítés használatával lett biztonságossá téve. Ezek [tanúsítványainak automatikus megújításakor minden néhány hónap során az Azure AD által](how-to-connect-pta-security-deep-dive.md#operational-security-of -the-authentication-agents). Hiba esetén nem kell manuálisan megújítani a tanúsítványokat. Távolíthatja el a régebbi lejárt tanúsítványokat.
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>Hogyan távolíthatom el egy átmenő hitelesítési ügynök?
 

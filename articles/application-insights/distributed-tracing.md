@@ -10,12 +10,12 @@ ms.date: 09/17/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 47ea4fadba50fdbbd6d83531bd4eb40fc581d2ad
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9594ccd0449cf68a63c770cfdee03f255aa2beae
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950199"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638375"
 ---
 # <a name="what-is-distributed-tracing"></a>Mi az az elosztott nyomkövetési?
 
@@ -45,7 +45,7 @@ Az Application Insights SDK-k a .NET, .NET Core, Java, Node.js és JavaScript ö
 
 A megfelelő Application Insights SDK telepítése és konfigurálása, a nyomkövetés automatikusan gyűjt adatokat a népszerű keretrendszereket, könyvtárak és technológiák SDK függőségi auto-gyűjtők által. A támogatott technológiák teljes listája megtalálható [a függőségi az automatikus gyűjtés dokumentáció](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies).
 
- Emellett minden olyan technológia nyomon követhetők manuálisan hívásával [TrackDependency](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) a a [TeleletryClient](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics).
+ Emellett minden olyan technológia nyomon követhetők manuálisan hívásával [TrackDependency](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) a a [TelemetryClient](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics).
 
 ## <a name="enable-via-opencensus"></a>Keresztül OpenCensus engedélyezése
 

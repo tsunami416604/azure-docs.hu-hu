@@ -2,25 +2,17 @@
 title: Azure-kapcsolatok létesítmények közötti VPN-átjáró beállításai |} A Microsoft Docs
 description: Ismerje meg a VPN Gateway beállításairól az Azure virtuális hálózati átjárókhoz.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ae665bc5-0089-45d0-a0d5-bc0ab4e79899
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/20/2018
+ms.topic: conceptual
+ms.date: 10/22/2018
 ms.author: cherylmc
-ms.openlocfilehash: 60cdc7bbe08df7816560e9720f96edc51769c342
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 30edc7308ad2d01d5245f8cd1073a7def674b74d
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38618221"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649839"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Tudnivalók a VPN Gateway konfigurációs beállításairól
 
@@ -29,10 +21,11 @@ VPN-átjáró olyan virtuális hálózati átjáró, amely a virtuális hálóza
 VPN gateway-kapcsolat támaszkodik a konfiguráció több erőforrást, amelyek mindegyike tartalmazza a konfigurálható beállítások. Ez a cikk a szakaszok tárgyalják az erőforrások és a Resource Manager-alapú üzemi modellben létrehozott virtuális hálózat VPN-átjáró szoftverközponthoz kapcsolódó beállításokat. Leírások és topológia-diagramok megtalálhatja az összes kapcsolat-megoldás a [információk a VPN Gateway](vpn-gateway-about-vpngateways.md) cikk.
 
 >[!NOTE]
-> Ebben a cikkben szereplő értékeket használja a - GatewayType "Vpn" virtuális hálózati átjárók vonatkoznak. Éppen ezért az adott virtuális hálózati átjáró VPN-átjárók neve. ExpressRoute-átjáró az értékei nem használhat olyan VPN-átjárók ugyanazokat az értékeket.
+> Ebben a cikkben szereplő értékek érvényesek (a a - gatewaytype Vpn típust használó virtuális hálózati átjárók) VPN-átjárókkal. Ez a cikk nem fedi le átjárótípusok vagy a átjárók zónaredundáns.
 >
->A - GatewayType "ExpressRoute" vonatkozó értékek, tekintse meg a [az ExpressRoute virtuális hálózati átjárók](../expressroute/expressroute-about-virtual-network-gateways.md).
->
+>* A - GatewayType "ExpressRoute" vonatkozó értékek, tekintse meg a [az ExpressRoute virtuális hálózati átjárók](../expressroute/expressroute-about-virtual-network-gateways.md).
+>* Átjárók zónaredundáns lásd [kapcsolatos átjárók zónaredundáns](about-zone-redundant-vnet-gateways.md).
+>* Virtuális WAN lásd [kapcsolatos virtuális WAN](../virtual-wan/virtual-wan-about.md). 
 >
 
 ## <a name="gwtype"></a>Átjárótípusok

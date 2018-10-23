@@ -1,51 +1,77 @@
 ---
-title: Statikus webhely üzemeltetése az Azure Storage (előzetes verzió) |} A Microsoft Docs
-description: Az Azure Storage most a statikus webhely üzemeltetése (előzetes verzió), a modern webalkalmazásokat szeretne üzemeltetni egy költséghatékony, méretezhető megoldást kínál.
+title: Statikus webhely üzemeltetése az Azure Storage-ban
+description: Az Azure Storage statikus webhely üzemeltetése, a modern webalkalmazásokat szeretne üzemeltetni egy költséghatékony, méretezhető megoldás.
 services: storage
-author: MichaelHauss
+author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 08/17/18
-ms.author: mihauss
+ms.date: 10/19/18
+ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 65a1cd85baf18ac1f0d193e7e6d6c3139919fb59
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 7dff6f7438c3bb9fc09803bbaa58895f89f88d71
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617397"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649822"
 ---
-# <a name="static-website-hosting-in-azure-storage-preview"></a>Statikus webhely üzemeltetése az Azure Storage (előzetes verzió)
-Az Azure Storage most kínál a statikus webhely üzemeltetése (előzetes verzió), lehetővé téve az Azure-ban költséghatékony és méretezhető modern webes alkalmazások üzembe helyezése. A statikus webhely a weblapok statikus tartalmat és a JavaScript- vagy egyéb ügyféloldali kódot tartalmazzák. Ezzel szemben az dinamikus webhelyeket szerveroldali kódot, és függ használatával lehet üzemeltetni [Azure Web Apps](/azure/app-service/app-service-web-overview).
+# <a name="static-website-hosting-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
+Az Azure Storage-fiókok lehetővé teszik a statikustartalom (HTML, CSS, JavaScript és képfájlok) nevű tárolót közvetlenül a *$web*. Kihasználhatja a üzemeltetése az Azure Storage lehetővé teszi, hogy például kiszolgáló nélküli architektúrák [Azure Functions](/azure/azure-functions/functions-overview) és egyéb PaaS-szolgáltatások.
 
-Központi telepítések shift rugalmas, költséghatékony modellek felé, mert arra, hogy webes tartalmak felügyelet nélkül. Statikus webhely üzemeltetése az Azure Storage bevezetésével Ez lehetővé teszi, a kiszolgáló nélküli architektúrák kihasználva gazdag háttérfunkcióinak engedélyezése [Azure Functions](/azure/azure-functions/functions-overview) és egyéb PaaS-szolgáltatások.
+Statikus webhelyüzemeltetésre szakembereket szerveroldali kódot támaszkodó dinamikus webhelyek legjobb üzemeltetik [Azure Web Apps](/azure/app-service/app-service-web-overview).
 
 ## <a name="how-does-it-work"></a>Hogyan működik?
-Ha statikus webhelyek kiszolgálására engedélyezi a storage-fiókjában, egy új webszolgáltatási végpontot jön létre az űrlap `<account-name>.<zone-name>.web.core.windows.net`.
+Statikus webhely engedélyezésekor a tárfiókot, a üzemeltetési, válassza ki az alapértelmezett fájl nevét, és megadhat egy egyéni 404-es oldal elérési útját. A szolgáltatás engedélyezve van, mert egy tároló nevű *$web* jön létre, ha még nem létezik. 
 
-A webszolgáltatási végpontot mindig lehetővé teszi a névtelen olvasási hozzáférés, formázott HTML-lapok szolgáltatás hibáinak választ adja vissza, és lehetővé teszi, hogy a csak olvasási műveletek objektumot. A web service-végpont az index a dokumentum a legfelső szintű és az összes alkönyvtár kért könyvtárában adja vissza. A storage szolgáltatás 404-es hibát ad vissza, ha a webes végpont a ha konfigurált ilyet egy egyéni hiba dokumentumot ad vissza.
+A fájlok a *$web* tárolóban vannak:
 
-A statikus webhely tartalmának "$web" nevű speciális tárolóban üzemel. Az engedélyezés folyamat részeként "$web" jön létre, ha azt nem létezik. A webes végpont használatával fiók gyökerénél "$web" tartalom elérhető lesz. Például `https://contoso.z4.web.core.windows.net/` a webhely konfigurált index dokumentumot ad vissza, ha már létezik ilyen nevű dokumentum $web gyökérkönyvtárában.
+- Névtelen hozzáférés kérelmeket szolgált
+- csak olvasási műveletek objektumon keresztül érhető el
+- kis-és nagybetűket
+- az ezt a mintát a következő nyilvános interneten érhető el: 
+    - `https://<ACCOUNT_NAME>.<ZONE_NAME>.web.core.windows.net/<FILE_NAME>`
+- Ezt a mintát a következő Blob storage-végponton keresztül érhető el: 
+    - `https://<ACCOUNT_NAME>.blob.core.windows.net/$web/<FILE_NAME>`
 
-Amikor tartalmat töltenek fel a webhelyet, használja a blob storage-végponthoz. Nevű blobba feltölteni "image.jpg", amely a fiók gyökérkönyvtárában érhető el a következő URL-cím használata `https://contoso.blob.core.windows.net/$web/image.jpg`. A feltöltött kép tekinthet meg a megfelelő végponton webes böngészőben `https://contoso.z4.web.core.windows.net/image.jpg`.
+Fájlok feltöltése a Blob storage-végpont használatával történik. Ha például ezen a helyen feltölteni a fájlt:
+
+```bash
+https://contoso.blob.core.windows.net/$web/image.png
+```
+
+a böngészőben, ez például egy helyen érhető el:
+
+```bash
+https://contoso.z4.web.core.windows.net/image.png
+```
+
+A kijelölt alapértelmezett név szolgál a legfelső szintű és alkönyvtárakat, amikor egy fájl neve nincs megadva. Ha a kiszolgáló a 404-es adja vissza, és nem ad meg egy hibadokumentum elérési útja, majd egy alapértelmezett 404-es oldal küld vissza a felhasználó.
+
+## <a name="cdn-and-ssl-support"></a>CDN-t és az SSL-támogatás
+
+Hogy a statikus webhely fájlok elérhető HTTPS-kapcsolaton keresztül, lásd: [az Azure CDN használatával HTTPS-kapcsolaton keresztül egyéni tartománnyal rendelkező blobok elérése](storage-https-custom-domain-cdn.md). Ez a folyamat részeként kell *mutasson a CDN a webes végpontra* ellentétben a blob végpontja. Szükség lehet néhány percet, mielőtt a tartalmak jelenik meg a CDN-konfiguráció végrehajtása nem azonnal, várjon.
 
 
 ## <a name="custom-domain-names"></a>Egyéni tartománynevek
-Egyéni tartomány használatával a webes tartalom üzemeltetéséhez. Ehhez kövesse az útmutató [az Azure Storage-fiókhoz tartozó egyéni tartománynév beállítása](storage-custom-domain-name.md). Tekintse meg a HTTPS-kapcsolaton keresztül, egy egyéni tartománynevet üzemeltetett webhely eléréséhez [az Azure CDN használatával HTTPS-kapcsolaton keresztül egyéni tartománnyal rendelkező blobok elérése](storage-https-custom-domain-cdn.md). A CDN a webes végpontra ellentétben a blob végpontja és a korábbi, hogy a CDN-konfiguráció nem fordulhat elő, azonnal, várjon néhány percet, mielőtt a tartalmak látható-e szükség lehet.
 
-## <a name="pricing-and-billing"></a>Árak és számlázás
+Is [az Azure Storage-fiókhoz tartozó egyéni tartománynév beállítása](storage-custom-domain-name.md) a statikus webhelye egy egyéni tartományt keresztül elérhetővé. A tartomány üzemeltetésének a szűrőtípusok a [Azure, lásd: üzemeltessen saját tartományt az Azure DNS](../../dns/dns-delegate-domain-azure-dns.md).
+
+## <a name="pricing"></a>Díjszabás
 Statikus webhely üzemeltetése további költségek nélkül biztosított. Az Azure Blob Storage-díjak a további részletekért tekintse meg a [Azure Blob Storage díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="quickstart"></a>Első lépések
+
 ### <a name="azure-portal"></a>Azure Portal
-Ha még nem tette, [GPv2-tárfiók létrehozása](../common/storage-quickstart-create-account.md) indítása a webalkalmazás üzemeltetéséhez, konfigurálhatja a funkció az Azure Portal használatával, és a "Beállítások" a bal oldali navigációs sávon kattintson a "Statikus webhely (előzetes verzió)". Kattintson az "Engedélyezve", és adja meg az index dokumentum, és (opcionálisan) az egyéni hibadokumentum elérési útjának neve.
+Első lépésként nyissa meg az Azure Portalra a https://portal.azure.com , és futtassa az alábbi lépéseket:
+
+1. Kattintson a **beállításai**
+2. Kattintson a **statikus webhely**
+3. Adjon meg egy *indexdokumentum nevének*. (A gyakori értéke *index.html)*
+4. Igény szerint adjon meg egy *hibadokumentum elérési útjának* egy egyéni 404-es oldalra. (A gyakori értéke *404.html)*
 
 ![](media/storage-blob-static-website/storage-blob-static-website-portal-config.PNG)
 
-A webes adategységek feltöltése "$web" tároló, amely a statikus webhely lehetővé tétele részeként jött létre. Ezt megteheti közvetlenül az Azure Portalon is, és igénybe veheti a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) teljes könyvtárstruktúrák feltölteni. Ellenőrizze, hogy egy konfigurált nevű index dokumentum tartalmazza. Ebben a példában a dokumentum neve az "index.html".
-
-> [!NOTE]
-> A dokumentum neve megkülönbözteti a kis-és nagybetűket, és ezért a fájlt a tároló neve pontosan egyeznie kell.
+Ezután töltse fel az eszközök a *$web* az Azure Portalon vagy a tároló a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) teljes könyvtárak feltölteni. Ügyeljen arra, hogy egy fájlt, amely megfelel a *indexdokumentum nevének* választotta, amikor a funkció engedélyezése.
 
 Végül nyissa meg a webes végpontra teszteli a webhelyét.
 
@@ -55,25 +81,69 @@ A storage előzetes bővítmény telepítéséhez:
 ```azurecli-interactive
 az extension add --name storage-preview
 ```
-A funkció engedélyezéséhez:
+A funkció engedélyezéséhez. Ügyeljen arra, hogy cserélje le az összes helyőrző értékeket, beleértve a zárójeleket, a saját értékeire:
 
 ```azurecli-interactive
-az storage blob service-properties update --account-name <account-name> --static-website --404-document <error-doc-name> --index-document <index-doc-name>
+az storage blob service-properties update --account-name <ACCOUNT_NAME> --static-website --404-document <ERROR_DOCUMENT_NAME> --index-document <INDEX_DOCUMENT_NAME>
 ```
 A webes végpont URL-lekérdezés:
 
 ```azurecli-interactive
-az storage account show -n <account-name> -g <resource-group> --query "primaryEndpoints.web" --output tsv
+az storage account show -n <ACCOUNT_NAME> -g <RESOURCE_GROUP> --query "primaryEndpoints.web" --output tsv
 ```
 
-Feltöltés a $web tároló objektumok:
+Töltse fel az objektumok a *$web* tároló:
 
 ```azurecli-interactive
-az storage blob upload-batch -s deploy -d $web --account-name <account-name>
+az storage blob upload-batch -s <SOURCE> -d $web --account-name <ACCOUNT_NAME>
 ```
 
+## <a name="deployment"></a>Környezet
+
+Tartalom központi telepítése egy storage-tárolóba elérhető módszerek a következők:
+
+- [AzCopy](../common/storage-use-azcopy.md)
+- [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
+- [A Visual Studio Team System](https://code.visualstudio.com/tutorials/static-website/deploy-VSTS)
+- [A Visual Studio Code-bővítménnyel](https://code.visualstudio.com/tutorials/static-website/getting-started)
+
+Minden esetben ellenőrizze, hogy a fájlok másolása a *$web* tároló.
+
+## <a name="metrics"></a>Mérőszámok
+
+Ahhoz, hogy a statikus webhely lapjain a metrikák, kattintson a **beállítások** > **figyelés** > **metrikák**.
+
+Metrikai adatok történetének más érdekes mérőszám API-k alapján jönnek létre. A portál csak annak érdekében, hogy csak összpontosíthat tagokat, amelyeket vissza adatokat egy adott időszakon belül használt API-t a tagok jeleníti meg. Annak érdekében, hogy ellenőrizze, hogy tud a válassza a szükséges API-t, az első lépéseként időkeretet kibontásához.
+
+Kattintson az időkeret gombra, és válassza ki **az elmúlt 24 órából** majd **alkalmaz** érdekében győződjön meg arról, hogy a felhasználói felületen elérheti a kívánt API-t a.
+
+![Az Azure Storage-statikus webhelyek kiszolgálására metrikák időtartomány](./media/storage-blob-static-website/storage-blob-static-website-metrics-time-range.png)
+
+Majd **Blob** származó a *Namespace* legördülő menü.
+
+![Az Azure Storage statikus webhelyek kiszolgálására metrikák névtér](./media/storage-blob-static-website/storage-blob-static-website-metrics-namespace.png)
+
+Válassza ki a **kimenő** metrikát.
+
+![Az Azure Storage statikus webhelyek kiszolgálására metrikák metrika](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
+
+Válassza ki **Sum** származó a *összesítési* választó.
+
+![Az Azure Storage statikus webhelyek kiszolgálására metrikák összesítése](./media/storage-blob-static-website/storage-blob-static-website-metrics-aggregation.png)
+
+Ezután kattintson a **szűrő hozzáadása** gombra, és válasszon **API neve** származó a *tulajdonság* választó.
+
+![Az Azure Storage statikus webhelyek kiszolgálására metrikák API neve](./media/storage-blob-static-website/storage-blob-static-website-metrics-api-name.png)
+
+Végül a jelölőnégyzetet a **GetWebContent** a a *értékek* választó feltölti a metrikai jelentést.
+
+![Az Azure Storage statikus webhelyek kiszolgálására metrikák GetWebContent](./media/storage-blob-static-website/storage-blob-static-website-metrics-getwebcontent.png)
+
+Egy engedélyezett, a forgalom statisztika lévő fájlokat a *$web* tároló által jelentett a metrikai irányítópultot.
+
 ## <a name="faq"></a>GYIK
-**Statikus webhelyek kiszolgálására érhető el minden storage fióktípus esetében?**  
+
+**A statikus webhelyek kiszolgálására funkció érhető el minden storage fióktípus esetében?**  
 Nem, statikus webhelyüzemeltetésre érhető el csak a GPv2-tárfiókok standard.
 
 **Tároló virtuális hálózat és az új webes végpont támogatott tűzfalszabályok vannak?**  
@@ -87,4 +157,5 @@ Igen, a webes végpont kis-és nagybetűket csakúgy, mint a blob végpontja.
 * [A blob vagy a webszolgáltatás-végpont egyéni tartománynév konfigurálása](storage-custom-domain-name.md)
 * [Azure Functions](/azure/azure-functions/functions-overview)
 * [Azure Web Apps](/azure/app-service/app-service-web-overview)
-* [Az első kiszolgáló nélküli webalkalmazás létrehozása](https://aka.ms/static-serverless-webapp)
+* [Az első kiszolgáló nélküli webalkalmazás létrehozása](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
+* [Oktatóanyag: Üzemeltessen saját tartományt az Azure DNS-ben](../../dns/dns-delegate-domain-azure-dns.md)

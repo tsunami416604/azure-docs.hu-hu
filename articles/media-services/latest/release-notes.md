@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 4001d0e21e7a0c8977d785463fb54aa4de45786c
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 10bd2101839e1b6d1dbdc1e53c31693ab0be98fd
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378737"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647765"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Az Azure Media Services v3 kibocsátási megjegyzései 
 
@@ -38,7 +38,7 @@ A [REST v3 GA kiadás](https://github.com/Azure/azure-rest-api-specs/tree/master
 
 #### <a name="azure-cli-20"></a>Azure CLI 2.0
  
-Az Azure CLI 2.0 modul többek között élő, Tartalomszabályzat kulcs, fiók vagy eszköz szűrők, szabályzatokat. adatfolyam minden funkció esetén.
+Az Azure CLI 2.0 modul jelenleg tartalmaz Tartalomszabályzat kulcs, a Live Streaming szabályzatokra irányuló műveletek. További információkért lásd: [módosításokat tervez](#plans-for-changes).
 
 #### <a name="azure-resource-management"></a>Azure-erőforrások kezelése 
 
@@ -95,7 +95,7 @@ Video Indexer GA kiadás augusztusban mutattuk be. Új jelenleg támogatott funk
 
 ### <a name="plans-for-changes"></a>Módosítások tervek
 
-Az Azure CLI-vel kiadásban 10/23/2018 hamarosan elérhető.
+Az Azure CLI-vel kiadási 11/06/2018 hamarosan elérhető.
 
 ### <a name="known-issues"></a>Ismert problémák
 
@@ -118,7 +118,7 @@ A .net SDK-t a következő funkciók találhatók:
 
 ### <a name="known-issues"></a>Ismert problémák
 
-* Küldjön el egy feladatot, megadhatja, hogy a forrásvideókat, HTTPS URL-címek, SAS URL-címek vagy elérési utak használata az Azure Blob storage-ban található fájlokat. Az AMS v3 jelenleg nem támogatja a darabolásos átvitel kódolási HTTPS URL-címek keresztül.
+* Küldjön el egy feladatot, megadhatja, hogy a forrásvideókat, HTTPS URL-címek, SAS URL-címek vagy elérési utak használata az Azure Blob storage-ban található fájlokat. Az AMS v3 jelenleg nem támogatja a HTTPS URL-címekkel történő darabolásos átviteli kódolást.
 
 ## <a name="next-steps"></a>További lépések
 

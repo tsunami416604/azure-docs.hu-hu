@@ -10,19 +10,19 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: e5061e322b4f0edb416f321cefef73776b9165ff
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: ccef55d56286cde47d23dbf2703c15fcf375e266
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123946"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646949"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>A TransformText módszer használata
 
 > [!NOTE]
 > Tato metoda se zamítá. Nem érhető a 3.0-s verzió, a Translator Text API.
 
-Közösségi média-, amely a bemeneti normalizált űrlap adja vissza egy szöveges normalizálási függvény a TransformText metódus. A módszer is használható a gépi fordítás vagy más alkalmazásokat, amelyek várhatóan tiszta bemeneti szöveg, amely általában nem található a közösségi médiában vagy felhasználó által létrehozott tartalom előfeldolgozási lépésben. A funkció jelenleg csak angol nyelvű bemeneti működik. 
+Közösségi média-, amely a bemeneti normalizált űrlap adja vissza egy szöveges normalizálási függvény a TransformText metódus. A módszer is használható a gépi fordítás vagy más alkalmazásokat, amelyek várhatóan tiszta bemeneti szöveg, amely általában nem található a közösségi médiában vagy felhasználó által létrehozott tartalom előfeldolgozási lépésben. A funkció jelenleg csak angol nyelvű bemeneti működik.
 
 A metódus RESTful szolgáltatásként GET használatával HTTP protokollon keresztül. Egyszerű XML és JSON-szerializálás támogatja.
 
@@ -31,7 +31,7 @@ A metódus RESTful szolgáltatásként GET használatával HTTP protokollon kere
 | Paraméter | Leírás |
 |:---|:---|
 | Engedélyeztetési fejléc | **Szükséges** az alkalmazás azonosításához használt HTTP-fejléc. Kulcs használata: "Engedélyezés" és az érték: "Tulajdonos" + "" + a hozzáférési jogkivonatot. További információkért lépjen ide.|
-| Nyelv | **Szükséges** egy karakterlánc, amely a nyelvi kódot. Ez a paraméter támogatja a csak az angol nyelvű **en** , a nyelv neve.|
+| language | **Szükséges** egy karakterlánc, amely a nyelvi kódot. Ez a paraméter támogatja a csak az angol nyelvű **en** , a nyelv neve.|
 | category | **Nem kötelező** a kategóriát vagy a tartomány a fordítás tartalmazó karakterlánc. Ez a paraméter támogatja a csak az alapértelmezett beállítás **általános**.|
 | mondat | **Szükséges** A mondatot, és kijavítja. |
 
@@ -44,12 +44,12 @@ A visszaadott érték az átalakított mondat biztosít.
 GetTranslationsResponse Microsoft.Translator.GetTranslations(appId, text, from, to, maxTranslations, options); TransformTextResponse
 {
 int ec;            // A positive number representing an error condition
-string em;         // A descriptive error message 
+string em;         // A descriptive error message
 string sentence;   // transformed text
 }
 ```
 
-## <a name="example"></a>Példa 
+## <a name="example"></a>Példa
 
 ```csharp
 using System;
@@ -72,9 +72,9 @@ namespace MicrosoftTranslatorSdk.HttpSamples
             AdmAccessToken admToken;
             string headerValue;
             //Get Client Id and Client Secret from https://datamarket.azure.com/developer/applications/
-            //Refer obtaining AccessToken (http://msdn.microsoft.com/library/hh454950.aspx) 
+            //Refer obtaining AccessToken (http://msdn.microsoft.com/library/hh454950.aspx)
             AdmAuthentication admAuth = new AdmAuthentication("clientID", "client secret");
-            
+
             try
             {
                 admToken = admAuth.GetAccessToken();
@@ -216,7 +216,7 @@ namespace MicrosoftTranslatorSdk.HttpSamples
         }
         private AdmAccessToken HttpPost(string DatamarketAccessUri, string requestDetails)
         {
-            //Prepare OAuth request 
+            //Prepare OAuth request
             WebRequest webRequest = WebRequest.Create(DatamarketAccessUri);
             webRequest.ContentType = "application/x-www-form-urlencoded";
             webRequest.Method = "POST";
@@ -235,6 +235,6 @@ namespace MicrosoftTranslatorSdk.HttpSamples
             }
         }
     }
-} 
+}
 
 ```

@@ -5,20 +5,20 @@ services: application-gateway
 author: amsriva
 ms.service: application-gateway
 ms.topic: article
-ms.date: 8/6/2018
+ms.date: 10/23/2018
 ms.author: amsriva
-ms.openlocfilehash: 4575bed18697a5661d58dc350c24a9497f7c46ff
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 626db07a81c6482a689329b8cddc9f40b464bb7e
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578813"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649074"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Az Application Gatewayen engedélyezett teljes körű SSL áttekintése
 
 Az Application Gateway támogatja az SSL-lezárást az átjárónál, mely a forgalom rendszerint titkosítatlanul áramlik a háttérkiszolgálókhoz után. Ez a funkció lehetővé teszi, hogy a webkiszolgálók megszabaduljanak a magas titkosítási és visszafejtési üzemeltetési költségektől. Akadnak azonban ügyfelek, akiknek a háttérkiszolgálók felé irányuló titkosítatlan kommunikáció nem elfogadható megoldás. A titkosítatlan kommunikáció okai lehetnek biztonsági követelmények, megfelelőségi előírások, vagy az, hogy az alkalmazás csak biztonságos kapcsolatot fogad el. Az ilyen alkalmazásokhoz az Application Gateway támogatja a teljes körű SSL-titkosítást.
 
-A teljes körű, végponttól végpontig érvényes SSL-kapcsolat segítségével titkosítva küldheti a bizalmas adatokat a háttérkiszolgálók felé, miközben kiaknázhatja az Application Gateway által biztosított 7. rétegbeli terheléselosztási funkciókat. Ilyen például a cookie-alapú munkamenet-affinitás, az URL-cím-alapú útválasztás, a helyalapú útválasztás támogatása vagy az XForwarded-* fejlécek beszúrása.
+Teljes körű SSL lehetővé teszi, hogy küldheti a bizalmas adatokat a háttérkiszolgálók felé, titkosított, miközben továbbra is kihasználhatja a 7. rétegbeli terheléselosztási funkciókat előnyeit kiaknázhatja az Alkalmazásátjáró biztosít. Ilyen például a cookie-alapú munkamenet-affinitás, az URL-cím-alapú útválasztás, a helyalapú útválasztás támogatása vagy az XForwarded-* fejlécek beszúrása.
 
 Ha teljes körű SSL-kommunikációs üzemmóddal van konfigurálva, az Application Gateway leállítja az SSL-munkamenetet az átjárónál, és visszafejti a felhasználói forgalmat. Ezután alkalmazza a konfigurált szabályokat, hogy kiválassza a megfelelő háttérkészletpéldányt, ahová irányítható a forgalom. Az Application Gateway ekkor új SSL-kapcsolatot kezdeményez a háttérkiszolgálóval, és mielőtt a kérést továbbítaná, a háttérkiszolgáló nyilvánoskulcs-tanúsítványával újratitkosítja az adatokat. Teljes körű SSL akkor engedélyezett, protokoll beállítása **BackendHTTPSetting** , HTTPS, amely majd érvényben van a háttérkészlethez. A biztonságos kommunikációhoz tanúsítványt kell konfigurálni a teljes körű SSL-lel engedélyezett háttérkészlet minden egyes háttérkiszolgálójához.
 
@@ -32,6 +32,18 @@ Az alkalmazásátjáró csak ismert háttérpéldányokkal kommunikál, amelyek 
 
 > [!NOTE]
 > Hitelesítési tanúsítvány beállítása, nem szükséges, például az Azure Web Apps megbízható Azure-szolgáltatásokhoz.
+
+## <a name="end-to-end-ssl-with-the-v2-sku"></a>Teljes körű SSL a v2 termékváltozatú
+
+A hitelesítési tanúsítványokat elavult, és az Application Gateway v2 szintű Termékváltozatot a megbízható legfelső szintű tanúsítványok cserélve. Azok hasonlóan működnek a hitelesítési tanúsítványokat néhány kulcsfontosságú eltéréssel:
+
+- Jól ismert, amelynek CN megfelel a HTTP-háttérbeállítások található gazdanevet hitelesítésszolgáltató hatóságok által aláírt tanúsítványokat nem igényel teljes körű SSL működéséhez minden további lépést. 
+
+   Például, ha a háttérrendszer tanúsítványokat a jól ismert hitelesítésszolgáltató által kiállított, és van egy contoso.com CN, és a háttérbeli http-beállítás a gazdagép mező értéke is a contoso.com, majd nincsenek további lépésekre szükség. A háttérbeli http protokoll beállítása HTTPS-re állíthatja, és az egészségügyi mintavétel és adatok elérési útvonalat SSL engedélyezve lenne. Ha háttérrendszerrel használ az Azure Web Apps vagy a többi Azure webes szolgáltatásaival, majd ezek implicit módon megbízható, valamint és nincs további lépések szükségesek, teljes körű SSL-hez.
+- Ha a tanúsítvány önaláírt, vagy ismeretlen közvetítők írja alá, majd a megbízható főtanúsítvány v2 szintű Termékváltozatot teljes körű SSL engedélyezése definiálni kell. Az Application Gateway csak háttérrendszerek, amelynek kiszolgálói tanúsítvány legfelső szintű tanúsítvány megfelel a háttérbeli http-beállítás a készlethez társított megbízható legfelső szintű tanúsítványok listáját egyikének kommunikál.
+- Mellett a legfelső szintű tanúsítvány egyezik az Application Gateway azt is ellenőrzi, ha a gazdagép-beállítást megadott a háttérbeli http-beállítás megegyezik a háttérkiszolgáló SSL-tanúsítvány által bemutatott köznapi név (CN). Próbálja a háttérrendszer SSL-kapcsolatot létesíteni, amikor az Application Gateway a kiszolgálónév jelzése (SNI) bővítmény a gazdagép, a háttérbeli http-beállításban megadott állítja be.
+- Ha **válasszon címet gazdanévre** helyett a gazdagép mezőt a háttérbeli http-beállítás van kiválasztva, majd az SNI-fejléc értéke mindig a háttérkészlethez teljes tartománynév és a CN a háttérkiszolgálón SSL tanúsítványt meg kell egyeznie a teljes Tartományneve. Háttérkészlet-tagokra az IP-címek nem támogatottak ebben a forgatókönyvben.
+- A legfelső szintű tanúsítvány base64 kódolású származó főtanúsítványt a háttérkiszolgáló-tanúsítvány.
 
 ## <a name="next-steps"></a>További lépések
 

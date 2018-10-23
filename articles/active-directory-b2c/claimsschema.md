@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6c41890922e2235190d8844a573522846b42c779
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 92328ffd8b6dbbb2be82bc70352e19f3097eb2a7
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434500"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637731"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -50,7 +50,7 @@ A **takar** elem a következő elemeket tartalmazza:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| Megjelenítendő név | 0:1 | Különböző képernyőkön felhasználók számára megjelenő cím. Az érték lehet [honosított](localization.md). |
+| displayName | 0:1 | Különböző képernyőkön felhasználók számára megjelenő cím. Az érték lehet [honosított](localization.md). |
 | Adattípus | 0:1 | A jogcím típusa. A logikai érték, date, dateTime, int, hosszú adattípusok, string, Publishedresources, alternativeSecurityIdCollection is használható. |
 | DefaultPartnerClaimTypes | 0:1 | A partner alapértelmezett jogcímtípusok megadott protokoll használatára. Az érték felülírható legyen a a **PartnerClaimType** megadott a **bemeneti jogcím** vagy **kimeneti jogcím** elemeket. Ez az elem használatával adja meg egy protokoll alapértelmezett nevét.  |
 | Maszk | 0:1 | Egy nem kötelező karakterlánc maszkolás karaktereket is alkalmazható a jogcím megjelenítésekor. Ha például a telefon száma 324-232-4343 is maszkolva XXX-XXX-4343. |
@@ -88,7 +88,7 @@ A következő példában az identitás-kezelőfelületi keretrendszer együttmű
 </ClaimType>
 ```
 
-Ennek eredményeképpen az Azure AD B2C által kiállított JWT jogkivonat kihagyja a `family_name` takar neve helyett **Vezetéknév**.
+Ennek eredményeképpen az Azure AD B2C által kiállított JWT jogkivonat bocsát ki a `family_name` takar neve helyett **Vezetéknév**.
  
 ```JSON
 {

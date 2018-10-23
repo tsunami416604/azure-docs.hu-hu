@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: 74fcfa0e1474d7d2a25d0bf9d0476fb1bb870334
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: e0654d6a4696e6f02939cad51a715412fdcfb61a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429507"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645234"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 V3 áttelepítése
 
@@ -54,7 +54,7 @@ Az alábbi listában szereplő V2 és V3 módszerek a v3-as módszerek és API-k
 
 ## <a name="move-to-json-format"></a>Helyezze át, JSON-formátumban
 
-A Microsoft Translator Text fordítási V2 az elfogadott és XML-formátumú adatokat adott vissza. V3 API használatával küldött és fogadott összes adatot JSON formátumban vannak. XML már elfogad vagy V3 adja vissza. 
+A Microsoft Translator Text fordítási V2 az elfogadott és XML-formátumú adatokat adott vissza. V3 API használatával küldött és fogadott összes adatot JSON formátumban vannak. XML már elfogad vagy V3 adja vissza.
 
 Ez a módosítás érinti a V2 szöveg fordítási API-hoz írt alkalmazások számos aspektusát. Példa: A nyelvek API szövegfordítás, átbetűzésű és a két szótár módszerek nyelvi adatait adja vissza. Az összes módszer egyetlen hívásával kapcsolatos összes nyelv kérheti, vagy külön-külön tanúsítványkérelmeket.
 

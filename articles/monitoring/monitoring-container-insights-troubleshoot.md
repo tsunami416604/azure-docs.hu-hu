@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2018
+ms.date: 10/19/2018
 ms.author: magoedte
-ms.openlocfilehash: de7ae5788224b83105e4dc9a24aea35c8b841c88
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 19d015947e5d2331c50cd64956e8a7650f96616d
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986727"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638324"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>Hibaelhárítás az Azure Monitor for containers szolgáltatásban
 
@@ -91,6 +91,18 @@ Ha-tárolókhoz az Azure Monitor sikeresen engedélyezve és konfigurálva, azon
     omsagent 1.6.0.23
     docker-cimprov 1.0.0.31
     ```
+
+## <a name="error-messages"></a>Hibaüzenetek
+
+Az alábbi táblázat összefoglalja az ismert hibák-tárolókhoz az Azure Monitor használata során találkozhat.
+
+| Hibaüzenetek  | Műveletek |  
+| ---- | --- |  
+| Hibaüzenet `No data for selected filters`  | Ez eltarthat egy ideig, újonnan létrehozott fürtök esetében a figyelési adatok folyamat létrehozásához. Kérjük, várjon legalább 10-15 percet adatok jelenjenek meg a fürt számára. |   
+| Hibaüzenet `Error retrieving data` | Azure Kubenetes Service-fürt beállítását állapotának és teljesítményének figyeléséhez, amíg a kapcsolat jön létre a fürt és az Azure Log Analytics-munkaterület között. Log Analytics-munkaterületet a fürt számára az összes monitorozási adat tárolására szolgál. Ez a hiba akkor fordulhat elő, ha a Log Analytics-munkaterületet törölték, vagy megszakadt. Ellenőrizze, hogy a munkaterület elérhető áttekintésével [hozzáférés kezelése](../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json#workspace-information). Ha a munkaterület nem található, szüksége lesz ismételt üzembe helyezni a fürt és az Azure Monitor tárolók. Re-üzembe helyezni, kell [letiltása](/monitoring-container-insights-optout.md?toc=%2fazure%2fmonitoring%2ftoc.json) a fürt megfigyelési és [engedélyezése](monitoring-container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json#enable-monitoring-for-a-new-cluster) újra az Azure Monitor for containers szolgáltatásban. |  
+| `Error retrieving data` az aks parancssori felületén keresztül-tárolókhoz az Azure Monitor hozzáadása után | Ha a bevezetési használatával `az aks cli`, nagyon ritkán, az Azure Monitor for containers szolgáltatásban nem lehet megfelelően előkészítve. Ellenőrizze, hogy a megoldás előkészítve. Ehhez nyissa meg a Log Analytics-munkaterületet, és a megoldás-e elérhető kiválasztásával **megoldások** a a bal oldali panelen. A probléma megoldásához, szüksége lesz a megoldás újbóli üzembe helyezéséhez utasításokat követve [üzembe helyezése az Azure Monitor for containers szolgáltatásban](monitoring-container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json) |  
+
+A probléma diagnosztizálása érdekében adtunk meg a rendelkezésre álló hibaelhárítási parancsfájl [Itt](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script).  
 
 ## <a name="next-steps"></a>További lépések
 A figyelés engedélyezve van az AKS-fürt csomópontok és a podok mérőszámok rögzítéséhez, ezek mérőszámok az Azure Portalon érhető el. Tárolók az Azure Monitor használatával kapcsolatban lásd: [megtekintése az Azure Kubernetes Service health](monitoring-container-insights-analyze.md).

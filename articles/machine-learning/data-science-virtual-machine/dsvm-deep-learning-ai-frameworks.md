@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 891059a440189112c834f3402725781a6b4a3960
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 234e9233e69877c9afe79a5a053a4310d013a9ab
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952824"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646110"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Mély tanulás és mesterségesintelligencia-keretrendszerek
 A [adatelemző virtuális gép](http://aka.ms/dsvm) (DSVM) és a [Deep Learning virtuális gép](http://aka.ms/dsvm/deeplearning) segítségével prediktív elemzéssel mesterséges intelligencia (AI) alkalmazásokat hozhat létre deep learning-keretrendszerek számos támogat, és kognitív képességeket, például kép és a language understanding. 
@@ -174,7 +174,7 @@ Jelentkezzen be a virtuális Gépet a X2Go. A terminálon a szolgáltatás elind
 
     sudo systemctl start digits
 
-A szolgáltatás indítása körülbelül egy percig tart. Indítson el egy webböngészőt, és keresse meg a `http://localhost:5000`.
+A szolgáltatás indítása körülbelül egy percig tart. Indítson el egy webböngészőt, és keresse meg a `http://localhost:5000`. Vegye figyelembe, hogy számjegyek nem biztosít egy biztonságos bejelentkezés előtt nem szerencsés felfedni a virtuális gép kívül.
 
 
 

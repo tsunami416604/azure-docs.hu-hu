@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2018
 ms.author: lyrana
-ms.openlocfilehash: ef7838c41bb479da273123c2eb3def8e12802390
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: dc5570b188bfdc0e1be78aa2bd5c5d92e884f377
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351302"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638018"
 ---
 # <a name="connect-and-authenticate-to-apis"></a>Csatlakozás és hitelesítés API-k
 
@@ -46,6 +46,7 @@ Annak érdekében, hogy az első lépésekhez a digitális Twins API-kkal olyan 
 1. Navigáljon a https://www.getpostman.com/ letölteni az alkalmazást
 1. Kövesse a lépéseket [Itt](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) Azure Active Directory-alkalmazás létrehozása (vagy ha szeretné újra felhasználhatja az egy létező regisztráció). 
 1. A szükséges engedélyek hozzáadása a "Az Azure digitális Twins", és válassza ki a delegált engedélyek. Ne felejtse el véglegesítéséhez engedélyek megadása gombra.
+1. Nyissa meg az alkalmazás jegyzékfájlja és oauth2AllowImplicitFlow igaz értékre van állítva
 1. A válasz URL-cím konfigurálása [ https://www.getpostman.com/oauth2/callback ](https://www.getpostman.com/oauth2/callback).
 1. Válassza ki a **engedélyezési lapon**, kattintson a **OAuth 2.0**, és válassza ki **új hozzáférési Token letöltése**.
 

@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: C# a QnA Maker API (v4)-hez'
+title: REST API-t (V4) – C# – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Ezekkel a rövid útmutatókkal és kódmintákkal gyorsan megkezdheti a Microsoft Translator Text API használatát a Microsoft Cognitive Servicesben az Azure-on.
+description: REST-alapú információk lekérése, és kódminták segítségével gyorsan használatának első lépései a Microsoft Translator Text API a Microsoft Cognitive Services, Azure-ban.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
-ms.topic: quickstart
-ms.date: 09/12/2018
+ms.topic: article
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 8c030971a2725612a836ef86806e39efafea65f7
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.openlocfilehash: 0b468556892bf85dac1fbdd09e7299a793e1e700
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387600"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646349"
 ---
-# <a name="quickstart-for-microsoft-qna-maker-api-with-c"></a>Rövid útmutató a Microsoft QnA Maker API-hoz a C# használatával 
+# <a name="qna-maker-rest-api-with-c"></a>A QnA Maker REST API-t a C# használatával 
 <a name="HOLTop"></a>
 
 Ez a cikk bemutatja, hogyan használhatja a [Microsoft QnA Maker API-t](../Overview/overview.md) C# segítségével az alábbi célokra.

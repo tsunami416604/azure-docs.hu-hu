@@ -1,6 +1,6 @@
 ---
 title: Az Azure SQL-adatbázis teljesítmény-finomhangolási útmutató |} A Microsoft Docs
-description: Ismerje meg a javaslatok használatával Azure SQL Database lekérdezési teljesítmény javításához.
+description: Ismerje meg manuálisan a az Azure SQL Database lekérdezési teljesítmény hangolásához ajánlásokat használva.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -11,46 +11,26 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 9af699dca5aab26f0bf24b4609bef14558236523
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 10/22/2018
+ms.openlocfilehash: 95e09532616b4aff05dad7440dcda6872fd27484
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854813"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645524"
 ---
-# <a name="tuning-performance-in-azure-sql-database"></a>Az Azure SQL Database teljesítményének hangolása
+# <a name="manual-tune-query-performance-in-azure-sql-database"></a>Manuális hangolás az Azure SQL Database lekérdezési teljesítmény
 
-Az Azure SQL Database által biztosított [javaslatok](sql-database-advisor.md) , hogy segítségével javíthatja az adatbázis teljesítményét, vagy hagyhatja, hogy az Azure SQL Database [automatikusan alkalmazkodik az alkalmazás](sql-database-automatic-tuning.md) és a módosítások alkalmazásához, javítja a számítási feladatok teljesítményére.
+Miután azonosította, hogy az SQL Database szolgáltatással fennálló egy teljesítményprobléma, ez a cikk célja segítséget:
 
-Az Ön nincs vonatkozó javaslatok, és továbbra is problémákba ütközik a teljesítmény, a teljesítmény növeléséhez, előfordulhat, hogy használja az alábbi módszerek:
-
-- Növelése a szolgáltatási szinten a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) vagy a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) további erőforrások az adatbázishoz.
 - Hallgassa meg az alkalmazást, és a alkalmazni néhány ajánlott eljárást, amely növelheti a teljesítményt.
 - Az adatbázis hangolása indexek és lekérdezések hatékonyabban dolgozhat az adatokkal való módosításával.
 
-Ezek a kézi módszert, mert az erőforrások megfelelnek a mennyisége, hogy az igényeinek. Ellenkező esetben kell írja újra az alkalmazást vagy az adatbázis-kódot, és üzembe helyezése a módosításokat.
-
-## <a name="increasing-service-tier-of-your-database"></a>Az adatbázis szolgáltatási szintjének növelése
-
-Az Azure SQL Database által nyújtott [két beszerzési modell](sql-database-service-tiers.md), amely egy [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és a egy [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) , amelyek közül választhat. Minden szolgáltatási szint szigorúan közt megadott kezdőkönyvtárra korlátozása, hogy az SQL-adatbázis használhatja, és kiszámítható teljesítményt biztosítanak a szolgáltatási szinthez garantálja az erőforrásokat. Ez a cikk útmutatást, amely segítségével kiválaszthatja az alkalmazás a szolgáltatási rétegben biztosítunk. Is tárgyaljuk, hogy a legtöbbet az Azure SQL Database-ből az alkalmazás hangolhassa módon. Minden szolgáltatási szint tartalmaz a saját [erőforráskorlátok](sql-database-resource-limits.md). További információkért lásd: [Virtuálismag-alapú erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md) és [DTU-alapú erőforráskorlátok](sql-database-dtu-resource-limits-single-databases.md).
-
-> [!NOTE]
-> Ez a cikk az Azure SQL Database önálló adatbázisok teljesítményének útmutatást összpontosít. Rugalmas készletek kapcsolatos teljesítmény útmutatóért lásd: [rugalmas készletek ára és teljesítménye szempontjai](sql-database-elastic-pool-guidance.md). Vegye figyelembe, ugyanakkor, hogy is a rugalmas készletben található adatbázisok ebben a cikkben a hangolási javaslatokat alkalmazhatja, és hasonló teljesítmény előnyök.
-
-A szolgáltatási rétegben, amely szükséges az SQL database minden egyes erőforrás dimenzió csúcs terhelés követelményeitől függ. Egyes alkalmazások egyetlen erőforrás triviális mennyisége használható, de más erőforrások jelentős követelményekkel rendelkeznek.
-
-### <a name="service-tier-capabilities-and-limits"></a>Szolgáltatás szolgáltatásszintek lehetőségei és korlátai
-
-Minden szolgáltatásszinten beállíthatja a számítási méret, így csak azért kell fizetnie a kapacitás szükséges rugalmasságot. Is [a kapacitás](sql-database-single-database-scale.md), vagy leskálázásakor, mint a számítási feladat változását követő. Például ha a biztonsági school vásárlási időszak alatt az adatbázis-munkaterhelés nagy, növelheti a számítási méret az adatbázis beállított ideje, július szeptember keresztül. Amikor befejeződik a csúcsidőszak évszak csökkentheti. Minimalizálhatja az üzleti, a szezonalitás a felhőalapú környezet optimalizálásával fizet. Ez a modell is jól szoftver termék kiadási ciklusokhoz használható. Egy teszt csapat előfordulhat, hogy kapacitás foglalása, amíg azt futtatások tesztelése, és engedje, hogy a kapacitás vizsgálat befejezésekor. A kapacitás a kérelem modellben kell fizetnie kapacitás szükséges, és elkerülheti, előfordulhat, hogy a ritkán használt, dedikált erőforrások költségeit.
-
-### <a name="the-purpose-of-service-tiers"></a>Célja a következő szolgáltatási szintek
-
-Bár minden egyes adatbázis-munkaterhelés eltérőek lehetnek, a szolgáltatási célja, hogy adja meg a különböző számítási méretű teljesítmény kiszámíthatóságot. Nagyméretű adatbázis erőforrás-követelményekkel rendelkező ügyfelek több dedikált számítási környezetben dolgozhat.
+Ez a cikk feltételezi, hogy Ön már már használta az Azure SQL Database révén [advisor-javaslatok adatbázis](sql-database-advisor.md) és az Azure SQL Database [automatikus finomhangolási ajánlásait](sql-database-automatic-tuning.md). Azt is feltételezi, hogy áttekintette [megfigyelés és finomhangolás áttekintést](sql-database-monitor-tune-overview.md) és a kapcsolódó cikkekben kapcsolatos teljesítménnyel kapcsolatos problémák elhárítása. Emellett a jelen cikk feltételezi, hogy nem kell a Processzor-erőforrások, futó kapcsolatos teljesítménnyel kapcsolatos problémák, megoldhatók a számítási méret növelése, vagy az adatbázis további erőforrásokat a szolgáltatásszintet.
 
 ## <a name="tune-your-application"></a>Az alkalmazás hangolása
 
-A hagyományos helyszíni SQL Server a folyamat a kezdeti a kapacitástervezés során gyakran elkülönül egy alkalmazást az éles üzemben futó folyamat. Hardver- és licenceket vásárolt először, és ezt követően teljesítményhangolás történik. Azure SQL Database használata esetén célszerű interweave alkalmazások futtatásához és a finomhangolás azt a folyamatot. Az igény szerinti kapacitás és a modell hangolhassa az alkalmazás helyett a későbbi növekedési tervek egy alkalmazáshoz, amely gyakran helytelenek Találgatások alapján hardveren túlzott kiosztása most szükséges minimális erőforrásokat használhatja. Egyes ügyfelek előfordulhat, hogy nem szeretné egy alkalmazás hangolása, és inkább be hardver több erőforrást. Ez a megközelítés lehet célszerű, ha nem szeretné módosítani egy fő alkalmazást egy foglalt időszakban. De, egy alkalmazás hangolása minimalizálhatja több erőforrást és alacsonyabb havi számlák a szolgáltatási szintek az Azure SQL Database használatakor.
+A hagyományos helyszíni SQL Server a folyamat a kezdeti a kapacitástervezés során gyakran elkülönül egy alkalmazást az éles üzemben futó folyamat. Hardver- és licenceket vásárolt először, és ezt követően teljesítményhangolás történik. Azure SQL Database használata esetén célszerű interweave alkalmazások futtatásához és a finomhangolás azt a folyamatot. Az igény szerinti kapacitás és a modell hangolhassa az alkalmazás helyett a későbbi növekedési tervek egy alkalmazáshoz, amely gyakran helytelenek Találgatások alapján hardveren túlzott kiosztása most szükséges minimális erőforrásokat használhatja. Egyes ügyfeleink előfordulhat, hogy dönt, hogy nem egy alkalmazás hangolása, és inkább be túltervezés hardver-erőforrások. Ez a megközelítés lehet célszerű, ha nem szeretné módosítani egy fő alkalmazást egy foglalt időszakban. De, egy alkalmazás hangolása minimalizálhatja több erőforrást és alacsonyabb havi számlák a szolgáltatási szintek az Azure SQL Database használatakor.
 
 ### <a name="application-characteristics"></a>Alkalmazástulajdonságok
 
@@ -75,17 +55,6 @@ Bár az Azure SQL Database szolgáltatási szinteken javíthatja a teljesítmén
 ## <a name="tune-your-database"></a>Az adatbázis hangolása
 
 Ebben a szakaszban áttekintjük egyes módszereket, amelyek segítségével az Azure SQL Database kapjanak az alkalmazáshoz a lehető legjobb teljesítményt, és futtassa azt a legkisebb lehetséges számítási méret hangolása. Néhány, az alábbi eljárások egyezik, hagyományos SQL Server ajánlott hangolási, de mások csak az adott Azure SQL Database. Néhány esetben vizsgálja meg a felhasznált erőforrások területek további finomhangolása és kiterjesztése a hagyományos SQL Server technikákkal működjön az Azure SQL Database-ben található adatbázishoz.
-
-### <a name="identify-performance-issues-using-azure-portal"></a>Az Azure portal használatával, a teljesítménybeli problémák azonosítása
-
-Az Azure Portalon a következő eszközök segíthetnek elemzése és az az SQL database teljesítménnyel kapcsolatos problémák megoldásához:
-
-- [Lekérdezési terheléselemző](sql-database-query-performance.md)
-- [SQL Database Advisor](sql-database-advisor.md)
-
-Az Azure Portalon rendelkezik mindkét ezeket az eszközöket és azok használatáról további információt. Hatékony diagnosztizálása, és kijavíthatja a problémák, azt javasoljuk, hogy először próbálja meg az eszközök az Azure Portalon. Azt javasoljuk, hogy használja-e a manuális hangolás megközelítéseket, bemutatjuk a következő, a hiányzó indexek és lekérdezések hangolása, bizonyos esetekben.
-
-További információ az Azure SQL Database problémák azonosításában a [alkalmazásteljesítmény-figyelés az Azure Portalon](sql-database-monitor-tune-overview.md) és [figyelése DMV-adatbázisok](sql-database-monitoring-with-dmvs.md) cikkeket.
 
 ### <a name="identifying-and-adding-missing-indexes"></a>Azonosító és a hiányzó indexek hozzáadása
 
