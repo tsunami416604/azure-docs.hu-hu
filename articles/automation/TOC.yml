@@ -26,7 +26,7 @@ items:
     href: automation-tutorial-installed-software.md
   - name: Virtuális gép módosításainak hibaelhárítása
     href: automation-tutorial-troubleshoot-changes.md
-- name: Útmutató
+- name: Útmutatók
   items:
   - name: Előkészítés
     items:
@@ -192,18 +192,20 @@ items:
     items:
     - name: Migrálás az Orchestratorból
       href: automation-orchestrator-migration.md
-  - name: Hibaelhárítás
-    items:
-    - name: Előkészítés
-      href: troubleshoot/onboarding.md
-    - name: Runbookok
-      href: troubleshoot/runbooks.md
-    - name: Célállapot-konfiguráló (DSC)
-      href: troubleshoot/desired-state-configuration.md
-    - name: hibrid runbook-feldolgozó
-      href: troubleshoot/hybrid-runbook-worker.md
-    - name: Frissítéskezelés
-      href: troubleshoot/update-management.md
+- name: Hibaelhárítás
+  items:
+  - name: Előkészítés
+    href: troubleshoot/onboarding.md
+  - name: Runbookok
+    href: troubleshoot/runbooks.md
+  - name: Állapotkonfiguráció (DSC)
+    href: troubleshoot/desired-state-configuration.md
+  - name: hibrid runbook-feldolgozó
+    href: troubleshoot/hybrid-runbook-worker.md
+  - name: Frissítéskezelés
+    href: troubleshoot/update-management.md
+  - name: A frissítési ügynökkel kapcsolatos hibák elhárítása
+    href: troubleshoot/update-agent-issues.md
 - name: Referencia
   items:
   - name: Azure PowerShell
@@ -236,9 +238,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-automation
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: 102f70d3c0ea4c87b47e2a0967da967b7eef73f6
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 37f9efb0c82a9ccefab1b492d45b9060a1a9312e
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040312"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645422"
