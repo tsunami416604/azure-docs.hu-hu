@@ -35,7 +35,7 @@ Helyi továbbító egy olyan ügynök, amely gyűjti az Application Insights vag
 Helyi továbbító Windows alatt fut, a legegyszerűbb módja van: telepítse a Windows szolgáltatásként. A kiadás egy Windows-szolgáltatás futtatható fájlja tartalmaz (*WindowsServiceHost/Microsoft.LocalForwarder.WindowsServiceHost.exe*) amely egyszerűen regisztrálni lehet az operációs rendszerrel.
 
 > [!NOTE]
-> A helyi továbbító szolgáltatás a .NET-keretrendszer 4.7 legalább igényel. Ha nem rendelkezik .NET-keretrendszer 4.7 a szolgáltatás fogja telepítése, de nem indul el. A .NET-keretrendszer legújabb verzióját eléréséhez ** [a .NET-keretrendszer letöltési oldalán](
+> A helyi továbbító szolgáltatás a .NET-keretrendszer 4.7 legalább igényel. Ha nem rendelkezik .NET-keretrendszer 4.7 a szolgáltatás fogja telepítése, de nem indul el. A .NET-keretrendszer legújabb verzióját eléréséhez **[a .NET-keretrendszer letöltési oldalán](
 https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)**.
 
 1. Töltse le a LF Karakterrel. WindowsServiceHost.zip fájlt a [helyi továbbító kiadás oldalon](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) a Githubon.

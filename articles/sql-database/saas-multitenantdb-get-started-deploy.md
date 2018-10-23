@@ -58,7 +58,7 @@ Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételekne
 ### <a name="plan-the-names"></a>A nevek megtervezése
 
 Ez a szakasz a lépések adjon meg egy *felhasználói* érték, amely annak biztosítása érdekében, erőforrásnevek globálisan egyedi, és a egy nevet a *erőforráscsoport* központi telepítés által létrehozott összes erőforrást tartalmazó az alkalmazás. Nevű személy *Reino Finley*, javasoljuk, hogy:
-- *Felhasználó:* **af1***(saját monogramját és egy számjegy. Használjon egy másik értéket (pl. af2) másodszor az alkalmazás telepítésekor.)*
+- *Felhasználó:* **af1**  *(saját monogramját és egy számjegy. Használjon egy másik értéket (pl. af2) másodszor az alkalmazás telepítésekor.)*
 - *Erőforráscsoport:* **wingtip-mt-af1** *(wingtip-mt azt jelzi, hogy ez az a horizontálisan skálázott több-bérlős alkalmazást. A felhasználó neve af1 hozzáfűzése utal. az erőforráscsoport nevét a benne található erőforrást neveinek.)*
 
 Most válassza ki a nevét, és írja le. 

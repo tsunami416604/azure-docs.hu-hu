@@ -92,8 +92,8 @@ Később egy különálló hazatelepítési lépésben átadja a feladatokat az 
 A helyreállítási folyamat megkezdése előtt tekintse át az alkalmazás normál kifogástalan állapotát.
 1. A böngészőben nyissa meg a Wingtip Tickets Eseményközpontot (http://events.wingtip-dpt.&lt; felhasználó&gt;. trafficmanager.net - cserélje le &lt;felhasználói&gt; az üzemelő példány felhasználói értékkel).
     * Görgessen a lap aljára, és figyelje meg, hogy a katalógus-kiszolgáló nevét és helyét a láblécben. A hely az a régió, amelyben az alkalmazás üzembe helyezésekor.
-    *Tipp: Vigye az egérmutatót megjelenítéséhez nagyítsa fel a helyet. * 
-     ![Események központ megfelelő állapotba eredeti régióban](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
+    *Tipp: Vigye az egérmutatót megjelenítéséhez nagyítsa fel a helyet.*
+    ![Események központ megfelelő állapotba eredeti régióban](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
 
 2. Kattintson a Contoso Concert Hall a bérlőhöz, és nyissa meg az események lapján.
     * A láblécben figyelje meg a bérlő kiszolgáló nevét. A hely ugyanaz, mint a katalóguskiszolgálón helye lesz.

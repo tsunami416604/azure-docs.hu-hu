@@ -1269,7 +1269,7 @@ A mintavételi port hozzáadása:
   }
   ```
 
-  Miután tenné a **SAP <*SID* >**  a fürt hálózatra, ellenőrizze, hogy **ProbePort** az új értékre van állítva.
+  Miután tenné a **SAP <*SID*>** a fürt hálózatra, ellenőrizze, hogy **ProbePort** az új értékre van állítva.
 
   ```PowerShell
   $SAPSID = "PR1"     # SAP <SID>
