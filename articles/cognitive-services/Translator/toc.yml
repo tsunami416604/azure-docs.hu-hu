@@ -7,103 +7,101 @@ items:
     href: translator-info-overview.md
 - name: Gyors útmutatók
   items:
-  - name: C#
+  - name: Szöveg lefordítása
     items:
-    - name: Szöveg lefordítása
+    - name: C#, REST
       href: quickstart-csharp-translate.md
-    - name: Szövegátalakítási szkript
-      href: quickstart-csharp-transliterate.md
-    - name: Szöveg nyelvének azonosítása
-      href: quickstart-csharp-detect.md
-    - name: Alternatív fordítások lekérése
-      href: quickstart-csharp-dictionary.md
-    - name: Támogatott nyelvek lekérése
-      href: quickstart-csharp-languages.md
-    - name: Mondathosszok lekérése a szövegből
-      href: quickstart-csharp-sentences.md
-  - name: Indítás
-    items:
-    - name: Szöveg lefordítása
+    - name: Go, REST
       href: quickstart-go-translate.md
-    - name: Szövegátalakítási szkript
-      href: quickstart-go-transliterate.md
-    - name: Szöveg nyelvének azonosítása
-      href: quickstart-go-detect.md
-    - name: Alternatív fordítások lekérése
-      href: quickstart-go-dictionary.md
-    - name: Támogatott nyelvek lekérése
-      href: quickstart-go-languages.md
-    - name: Mondathosszok lekérése a szövegből
-      href: quickstart-go-sentences.md
-  - name: Java
-    items:
-    - name: Szöveg lefordítása
+    - name: Java, REST
       href: quickstart-java-translate.md
-    - name: Szövegátalakítási szkript
-      href: quickstart-java-transliterate.md
-    - name: Szöveg nyelvének azonosítása
-      href: quickstart-java-detect.md
-    - name: Alternatív fordítások lekérése
-      href: quickstart-java-dictionary.md
-    - name: Támogatott nyelvek lekérése
-      href: quickstart-java-languages.md
-    - name: Mondathosszok lekérése a szövegből
-      href: quickstart-java-sentences.md
-  - name: Node.js
-    items:
-    - name: Szöveg lefordítása
+    - name: Node.js, REST
       href: quickstart-nodejs-translate.md
-    - name: Szövegátalakítási szkript
-      href: quickstart-nodejs-transliterate.md
-    - name: Szöveg nyelvének azonosítása
-      href: quickstart-nodejs-detect.md
-    - name: Alternatív fordítások lekérése
-      href: quickstart-nodejs-dictionary.md
-    - name: Támogatott nyelvek lekérése
-      href: quickstart-nodejs-languages.md
-    - name: Mondathosszok lekérése a szövegből
-      href: quickstart-nodejs-sentences.md
-  - name: PHP
-    items:
-    - name: Szöveg lefordítása
+    - name: PHP, REST
       href: quickstart-php-translate.md
-    - name: Szövegátalakítási szkript
-      href: quickstart-php-transliterate.md
-    - name: Szöveg nyelvének azonosítása
-      href: quickstart-php-detect.md
-    - name: Alternatív fordítások lekérése
-      href: quickstart-php-dictionary.md
-    - name: Támogatott nyelvek lekérése
-      href: quickstart-php-languages.md
-    - name: Mondathosszok lekérése a szövegből
-      href: quickstart-php-sentences.md
-  - name: Python
-    items:
-    - name: Szöveg lefordítása
+    - name: Python, REST
       href: quickstart-python-translate.md
-    - name: Szövegátalakítási szkript
-      href: quickstart-python-transliterate.md
-    - name: Szöveg nyelvének azonosítása
-      href: quickstart-python-detect.md
-    - name: Alternatív fordítások lekérése
-      href: quickstart-python-dictionary.md
-    - name: Támogatott nyelvek lekérése
-      href: quickstart-python-languages.md
-    - name: Mondathosszok lekérése a szövegből
-      href: quickstart-python-sentences.md
-  - name: Ruby
-    items:
-    - name: Szöveg lefordítása
+    - name: Ruby, REST
       href: quickstart-ruby-translate.md
-    - name: Szövegátalakítási szkript
+  - name: Szöveg átírása
+    items:
+    - name: C#, REST
+      href: quickstart-csharp-transliterate.md
+    - name: Go, REST
+      href: quickstart-go-transliterate.md
+    - name: Java, REST
+      href: quickstart-java-transliterate.md
+    - name: Node.js, REST
+      href: quickstart-nodejs-transliterate.md
+    - name: PHP, REST
+      href: quickstart-php-transliterate.md
+    - name: Python, REST
+      href: quickstart-python-transliterate.md
+    - name: Ruby, REST
       href: quickstart-ruby-transliterate.md
-    - name: Szöveg nyelvének azonosítása
+  - name: Szöveg nyelvének azonosítása
+    items:
+    - name: C#, REST
+      href: quickstart-csharp-detect.md
+    - name: Go, REST
+      href: quickstart-go-detect.md
+    - name: Java, REST
+      href: quickstart-java-detect.md
+    - name: Node.js, REST
+      href: quickstart-nodejs-detect.md
+    - name: PHP, REST
+      href: quickstart-php-detect.md
+    - name: Python, REST
+      href: quickstart-python-detect.md
+    - name: Ruby, REST
       href: quickstart-ruby-detect.md
-    - name: Alternatív fordítások lekérése
+  - name: Alternatív fordítások lekérése
+    items:
+    - name: C#, REST
+      href: quickstart-csharp-dictionary.md
+    - name: Go, REST
+      href: quickstart-go-dictionary.md
+    - name: Java, REST
+      href: quickstart-java-dictionary.md
+    - name: Node.js, REST
+      href: quickstart-nodejs-dictionary.md
+    - name: PHP, REST
+      href: quickstart-php-dictionary.md
+    - name: Python, REST
+      href: quickstart-python-dictionary.md
+    - name: Ruby, REST
       href: quickstart-ruby-dictionary.md
-    - name: Támogatott nyelvek lekérése
+  - name: Támogatott nyelvek lekérése
+    items:
+    - name: C#, REST
+      href: quickstart-csharp-languages.md
+    - name: Go, REST
+      href: quickstart-go-languages.md
+    - name: Java, REST
+      href: quickstart-java-languages.md
+    - name: Node.js, REST
+      href: quickstart-nodejs-languages.md
+    - name: PHP, REST
+      href: quickstart-php-languages.md
+    - name: Python, REST
+      href: quickstart-python-languages.md
+    - name: Ruby, REST
       href: quickstart-ruby-languages.md
-    - name: Mondathosszok lekérése a szövegből
+  - name: Mondat hosszának meghatározása
+    items:
+    - name: C#, REST
+      href: quickstart-csharp-sentences.md
+    - name: Go, REST
+      href: quickstart-go-sentences.md
+    - name: Java, REST
+      href: quickstart-java-sentences.md
+    - name: Node.js, REST
+      href: quickstart-nodejs-sentences.md
+    - name: PHP, REST
+      href: quickstart-php-sentences.md
+    - name: Python, REST
+      href: quickstart-python-sentences.md
+    - name: Ruby, REST
       href: quickstart-ruby-sentences.md
   expanded: true
 - name: Oktatóanyagok
@@ -174,9 +172,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/microsoft-translator
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/558796-translator
-ms.openlocfilehash: cd559b41832e83b4251531bc6af6a7fe4f7d80ea
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: acc5019177bf75a0bb34eb739cc8e2400552832e
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406483"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945263"

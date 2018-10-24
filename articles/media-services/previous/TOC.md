@@ -9,12 +9,12 @@
 ## [A fejlesztési környezet beállítása](media-services-set-up-computer.md)
 ### [.NET](media-services-dotnet-how-to-use.md)
 ### [REST](media-services-rest-how-to-use.md)  
-## [API-hozzáférés AAD-hitelesítés használatával](media-services-use-aad-auth-to-access-ams-api.md)
-### [AAD-hitelesítés kezelése a portál használatával](media-services-portal-get-started-with-aad.md)
+## [API-k elérése Azure AD-hitelesítés használatával](media-services-use-aad-auth-to-access-ams-api.md)
+### [Azure AD-hitelesítés kezelése a portálon](media-services-portal-get-started-with-aad.md)
 ### [API-hozzáférés .NET-tel](media-services-dotnet-get-started-with-aad.md)
 ### [API-hozzáférés REST-tel](media-services-rest-connect-with-aad.md)
-### [AAD-alkalmazás létrehozása és konfigurálása az Azure CLI használatával](media-services-cli-create-and-configure-aad-app.md)
-### [AAD-alkalmazás létrehozása és konfigurálása a Azure PowerShell-lel](media-services-powershell-create-and-configure-aad-app.md)
+### [Azure AD-alkalmazás létrehozása és konfigurálása az Azure CLI használatával](media-services-cli-create-and-configure-aad-app.md)
+### [Azure AD-alkalmazás létrehozása és konfigurálása az Azure PowerShell-lel](media-services-powershell-create-and-configure-aad-app.md)
 
 ## Igény szerinti videó továbbítása
 ### [Azure Portal](media-services-portal-vod-get-started.md)
