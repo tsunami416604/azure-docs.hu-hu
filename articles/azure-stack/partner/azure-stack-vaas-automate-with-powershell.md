@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 10/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 82a1d86f31bfb49ff97ec9928dd7ee946144a359
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: aa33db56910871891003866ef62431cfd7095d2a
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650043"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954126"
 ---
 # <a name="automate-azure-stack-validation-with-powershell"></a>A PowerShell-lel az Azure Stack Kódérvényesítés automatizálása
 
@@ -28,9 +28,7 @@ PowerShell a következő munkafolyamatot használhatja:
 
 - Tesztelési fázis
 
-Ebben az oktatóanyagban megismerheti, hogyan hozhatók létre olyan parancsfájlt, amely:
-
-Ez a szkript a következő műveleteket hajtja végre:
+Ebben az oktatóanyagban megismerheti, hogyan hozhat létre olyan parancsfájlt, amely:
 
 > [!div class="checklist"]
 > * Előfeltételek telepítése

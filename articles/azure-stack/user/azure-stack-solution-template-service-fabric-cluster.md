@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/12/2018
-ms.author: mattbriggs
+ms.date: 10/22/2018
+ms.author: mabrigg
 ms.reviewer: shnatara
-ms.openlocfilehash: d402b2bcd5187cbb6ece78d7e981068c279c1f75
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 0b5f7442604dd31f730b0105d19231407e2b6f1a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804429"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49946113"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Az Azure Stack a Service Fabric-fürt üzembe helyezése
 
@@ -48,7 +48,7 @@ A következők szükségesek a Service Fabric-fürt üzembe helyezéséhez:
 
 
 ## <a name="add-a-secret-to-key-vault"></a>Titkos kulcs hozzáadása a Key Vaulthoz
-Service Fabric-fürt üzembe helyezéséhez meg kell adnia a megfelelő KeyVault *titkos azonosító* vagy a Service Fabric-fürt URL-CÍMÉT. Az Azure Resource Manager-sablon vesz igénybe egy KeyVault bemenetként, és ezután lekéri a fürt tanúsítványt a Service Fabric-fürt telepítése során. 
+Service Fabric-fürt üzembe helyezéséhez meg kell adnia a megfelelő KeyVault *titkos azonosító* vagy a Service Fabric-fürt URL-CÍMÉT. Az Azure Resource Manager-sablon egy KeyVault fogadja bemeneti adatként. A sablon majd lekéri a fürt tanúsítványt, a Service Fabric-fürt telepítése során.
 
 > [!IMPORTANT]  
 > A KeyVault titkos kód hozzáadása a Service Fabric segítségével a PowerShell használatával kell. Ne használja a portálon.  
@@ -184,7 +184,7 @@ Elérheti a Service Fabric-fürthöz a Service Fabric Explorerben vagy a Service
 1. A böngészőben nyissa meg a https://*FQDN*: 19080-as. Cserélje le *FQDN* a 2. lépés a Service Fabric-fürt teljes Tartománynevét.   
    Ha korábban már használta egy önaláírt tanúsítványt, kap egy figyelmeztetés, hogy a kapcsolat nem biztonságos. Lépjen a webhely, válassza ki a **több információt**, majd **folytassa a képernyőn látható weblapon**. 
 
-1. A webhely hitelesítéséhez jelöljön ki egy használni kívánt tanúsítványt. Válassza ki **további lehetőségek**, válassza ki a megfelelő tanúsítvány, és kattintson **OK** szeretne csatlakozni a Service Fabric Explorert. 
+1. Hitelesítéséhez a helyhez, jelöljön ki egy használni kívánt tanúsítványt. Válassza ki **további lehetőségek**, válassza ki a megfelelő tanúsítvány, és kattintson **OK** szeretne csatlakozni a Service Fabric Explorert. 
 
    ![Hitelesítés](media/azure-stack-solution-template-service-fabric-cluster/image14.png)
 

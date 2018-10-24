@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 05/08/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 156b84e4941363716721b5cee6c19333ffe7594c
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: a3285c5f6f2d50d3188f8e103c68ae702e8804e7
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079446"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953002"
 ---
 # <a name="azure-stack-validation-report"></a>Az Azure Stack érvényesítési jelentés
 Az Azure Stack készültségi ellenőrző eszközt használja, amelyek támogatják az üzembe helyezés és a egy Azure Stack-környezet karbantartás ellenőrzések futtatásához. Az eszköz eredmények jelentés .JSON kiterjesztésű fájlba írja. A jelentés üzembe helyezhető Azure Stacket előfeltételei állapotával kapcsolatos részletes és összesített adatokat jeleníti meg. A jelentés is a meglévő Azure Stack üzembe helyezéséhez titkos kódok rotációja kapcsolatos információkat jeleníti meg.  
@@ -40,19 +40,81 @@ Alapértelmezés szerint mindkét fájlt írt *C:\Users\<username > \AppData\Loc
 A jelentés megtekintése a PowerShellben, adja meg a jelentés elérési útja értéket **- ReportPath**. Ez a parancs megjeleníti a jelentés tartalmát, és azonosítja az ellenőrzés eredménye még nem rendelkező.
 
 Például a jelentés egy PowerShell-parancssort, amely meg van nyitva a helyet, ahol a jelentés megtalálható a megtekintéséhez futtassa: 
-   > `Start-AzsReadinessChecker -ReportPath .\AzsReadinessReport.json` 
+   > `Read-AzsReadinessReport -ReportPath .\AzsReadinessReport.json` 
 
-A kimenet a következő képhez hasonlít:
+A kimenet az alábbihoz hasonló:
 
-![jelentés megtekintése](./media/azure-stack-validation-report/view-report.png)
+````PowerShell
+Reading All Validation(s) from Report C:\Contoso-AzsReadinessCheckerReport.json
+
+############### Certificate Validation Summary ###############
+
+Certificate Validation results not available.
+
+############### Registration Validation Summary ###############
+
+Azure Registration Validation results not available.
+
+############### Azure Identity Results ###############
+
+Test                          : ServiceAdministrator
+Result                        : OK
+AAD Service Admin             : admin@contoso.onmicrosoft.com
+Azure Environment             : AzureCloud
+Azure Active Directory Tenant : contoso.onmicrosoft.com
+Error Details                 : 
+
+############### Azure Identity Validation Summary ###############
+
+    Azure Identity Validation found no errors or warnings.
+
+############### Azure Stack Graph Validation Summary ###############
+
+Azure Stack Graph Validation results not available.
+
+############### Azure Stack ADFS Validation Summary ###############
+
+Azure Stack ADFS Validation results not available.
+
+############### AzsReadiness Job Summary ###############
+
+Index             : 0
+Operations        : 
+StartTime         : 2018/10/22 14:24:16
+EndTime           : 2018/10/22 14:24:19
+Duration          : 3
+PSBoundParameters : 
+````
 
 ## <a name="view-the-report-summary"></a>Összesítő jelentés megtekintése
 A jelentés megtekintésére, hozzáadhatja a **-összefoglaló** váltson át PowerShell-parancssorból végén. Példa: 
- > `Start-AzsReadinessChecker -ReportPath .\AzsReadinessReport.json -summary`  
+ > `Read-AzsReadinessReport -ReportPath .\Contoso-AzsReadinessReport.json -summary`  
 
-Az összefoglalás ellenőrzések, amelyek nem rendelkeznek a következő eredményeket jeleníti meg, és azt jelzi, hogy továbbítja vagy, amelyek a teljes ellenőrzések sikertelenek. A kimenet a következő képhez hasonlít:
+Az összefoglalás ellenőrzések, amelyek nem rendelkeznek a következő eredményeket jeleníti meg, és azt jelzi, hogy továbbítja vagy, amelyek a teljes ellenőrzések sikertelenek. A kimenet az alábbihoz hasonló:
 
-![a jelentés-összegzés](./media/azure-stack-validation-report/report-summary.png)
+````PowerShell
+Reading All Validation(s) from Report C:\Contoso-AzsReadinessCheckerReport.json
+
+############### Certificate Validation Summary ###############
+
+    Certificate Validation found no errors or warnings.
+    
+############### Registration Validation Summary ###############
+
+    Registration Validation found no errors or warnings.
+
+############### Azure Identity Validation Summary ###############
+
+    Azure Identity Validation found no errors or warnings.
+
+############### Azure Stack Graph Validation Summary ###############
+
+Azure Stack Graph Validation results not available.
+
+############### Azure Stack ADFS Validation Summary ###############
+
+Azure Stack ADFS Validation results not available.
+````
 
 
 ## <a name="view-a-filtered-report"></a>Szűrt jelentés megtekintése
@@ -60,12 +122,13 @@ Szűrt jelentés egy adott típusú érvényesítési megtekintéséhez használ
 - Tanúsítvány
 - AzureRegistration
 - AzureIdentity
+- Graph
+- ADFS
 - Feladatok   
 - Összes  
 
 Például a jelentés megtekintéséhez a tanúsítványok összegzése csak, használja a következő PowerShell-parancssorból: 
- > `Start-AzsReadinessChecker -ReportPath .\AzsReadinessReport.json -ReportSections Certificate – Summary`
+ > `Read-AzsReadinessReport -ReportPath .\Contoso-AzsReadinessReport.json -ReportSections Certificate – Summary`
 
 
 ## <a name="see-also"></a>Lásd még
-[Start-AzsReadinessChecker parancsmag-referencia](azure-stack-azsreadiness-cmdlet.md)

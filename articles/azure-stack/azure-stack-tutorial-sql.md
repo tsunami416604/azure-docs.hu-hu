@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/16/2018
+ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 17f06a08388720c4483ef1c187edf20ec8359121
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 50f5662fa574b512ab607e17dbdfcf1861e2f5c6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386383"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954911"
 ---
 # <a name="tutorial-offer-highly-available-sql-databases"></a>Oktatóanyag: Magas rendelkezésre állású SQL-adatbázisok biztosítása
 
@@ -63,30 +63,28 @@ Ez a szakasz a lépéseket követve üzembe helyezése az SQL Server AlwaysOn re
 - Egy virtuális gép (Windows Server 2016) konfigurálva, a fürt tanúsító fájlmegosztás
 - Rendelkezésre állási csoporthoz, amely tartalmazza az SQL és a fájl tanúsító fájlmegosztás virtuális gépek  
 
-1. Jelentkezzen be a felügyeleti portálon:
-    - Az egy integrált rendszerek központi telepítéséhez a portál cím függ a megoldás régió és külső tartomány neve. Az formátumban lesz https://adminportal.&lt; *régió*&gt;.&lt; *FQDN*&gt;.
-    - Az Azure Stack Development Kit (ASDK) használja, ha a felhasználói portál címe [ https://adminportal.local.azurestack.external ](https://portal.local.azurestack.external).
+1. 
+[!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. Válassza ki **\+** **erőforrás létrehozása** > **egyéni**, majd **sablonalapú telepítés**.
 
-   ![Egyéni sablon telepítése](media/azure-stack-tutorial-sqlrp/custom-deployment.png)
+   ![Egyéni sablon telepítése](media/azure-stack-tutorial-sqlrp/1.png)
 
 
 3. Az a **egyéni üzembe helyezés** panelen válassza ki **szerkesztési sablon** > **gyorsindítási sablon** , majd a legördülő listából válassza ki a rendelkezésre álló egyéni sablonok, Válassza ki a **sql-2016-alwayson** sablont, kattintson a **OK**, majd **mentése**.
 
-   ![Válassza ki a gyorsindítási sablon](./media/azure-stack-tutorial-sqlrp/quickstart-template.png)
-
+   [![](media/azure-stack-tutorial-sqlrp/2-sm.PNG "Válassza ki a gyorsindítási sablon")](media/azure-stack-tutorial-sqlrp/2-lg.PNG#lightbox)
 
 4. Az a **egyéni üzembe helyezés** panelen válassza ki **paraméterek szerkesztése** , és tekintse át az alapértelmezett értékeket. Szükség esetén adja meg az összes kötelező paraméter információkat, majd kattintson az értékek módosítása **OK**.<br><br> Minimum:
 
     - Adja meg túl összetett a ADMINPASSWORD SQLSERVERSERVICEACCOUNTPASSWORD és SQLAUTHPASSWORD paraméterek.
     - Adja meg a DNS-utótag névkeresési csupa kisbetűvel, a DNS-UTÓTAGJA paraméter (**azurestack.external** ASDK telepítések).
     
-    ![Egyéni üzembehelyezési paramétereket](./media/azure-stack-tutorial-sqlrp/edit-parameters.png)
+   [![](media/azure-stack-tutorial-sqlrp/3-sm.PNG "Egyéni telepítési paraméterek szerkesztése")](media/azure-stack-tutorial-sqlrp/3-lg.PNG#lightbox)
 
 5. Az a **egyéni üzembe helyezés** panelen válassza ki az előfizetést használhatja, és hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévő erőforráscsoportot, a egyéni központi telepítés.<br><br> Ezután válassza ki az erőforráscsoport helye (**helyi** ASDK telepítések) majd **létrehozás**. Az egyéni üzembehelyezési beállítások lesznek érvényesítve, és a központi telepítés elindítása.
 
-    ![Egyéni üzembehelyezési paramétereket](./media/azure-stack-tutorial-sqlrp/create-deployment.png)
+    [![](media/azure-stack-tutorial-sqlrp/4-sm.PNG "Egyéni központi telepítés létrehozása")](media/azure-stack-tutorial-sqlrp/4-lg.PNG#lightbox)
 
 
 6. A felügyeleti portálon, válassza ki a **erőforráscsoportok** pedig az erőforráscsoport nevét, az egyéni üzembe helyezés (**erőforráscsoport** ebben a példában). Győződjön meg arról, központi telepítések sikeresen befejeződött az üzembe helyezés állapotának megtekintéséhez.<br><br>Ezután tekintse át az erőforrás-csoport elemeket, és válassza ki a **SQLPIPsql\<erőforráscsoport-név\>**  nyilvános IP-cím elemet. Jegyezze fel a nyilvános IP-cím és a load balancer nyilvános IP-cím teljes Tartománynevét. Szüksége lesz a rendszergazdájuknak ezt az Azure Stack-operátorokról, kihasználva az SQL AlwaysOn rendelkezésre állási csoport SQL Állomáskiszolgálót is létrehozhatnak.
@@ -94,16 +92,16 @@ Ez a szakasz a lépéseket követve üzembe helyezése az SQL Server AlwaysOn re
    > [!NOTE]
    > A sablon üzembe helyezéséhez több óráig tart.
 
-   ![Egyéni üzembehelyezési paramétereket](./media/azure-stack-tutorial-sqlrp/deployment-complete.png)
+   ![Egyéni üzembe helyezés kész](./media/azure-stack-tutorial-sqlrp/5.png)
 
 ### <a name="enable-automatic-seeding"></a>Automatikus összehangolása engedélyezése
 Miután sikeresen üzembe helyezve és konfigurálva az SQL AlwaysON rendelkezésre állási csoport a sablont, engedélyeznie kell a [automatikus összehangolása](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) a rendelkezésre állási csoportot az SQL Server mindegyik példányán. 
 
 Rendelkezésre állási csoport automatikus összehangolása hoz létre, amikor az SQL Server hozza létre automatikusan a másodlagos replikák minden adatbázis a csoport más manuális beavatkozás nélkül az AlwaysOn adatbázisok magas rendelkezésre állás biztosításához szükséges.
 
-A SQL-parancsok használatához konfigurálása az AlwaysOn rendelkezésre állási csoport automatikus összehangolása.
+A SQL-parancsok használatához konfigurálása az AlwaysOn rendelkezésre állási csoport automatikus összehangolása. Cserélje le \<InstanceName\> az elsődleges példány SQL Server nevét és a < availability_group_name > szükség szerint az AlwaysOn rendelkezésre állási csoport nevét. 
 
-Az elsődleges SQL-példányon (cserélje le <InstanceName> az elsődleges példány SQL Server-név):
+Az elsődleges SQL-példányon:
 
   ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>]
@@ -114,7 +112,7 @@ Az elsődleges SQL-példányon (cserélje le <InstanceName> az elsődleges péld
 
 >  ![Elsődleges SQL-példány parancsfájl](./media/azure-stack-tutorial-sqlrp/sql1.png)
 
-A másodlagos SQL-példányok (az AlwaysOn rendelkezésre állási csoport nevének < availability_group_name > cserélje le):
+A másodlagos SQL-példányok:
 
   ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
@@ -156,9 +154,8 @@ Után az SQL AlwaysOn rendelkezésre állási csoport létrehozása, konfigurál
 > [!NOTE]
 > Futtassa ezeket a lépéseket az Azure Stack felhasználói portálról bérlői felhasználói biztosít az SQL Server képességet (Microsoft.SQLAdapter szolgáltatás) előfizetéssel.
 
-1. Jelentkezzen be a felhasználói portál:
-    - Az egy integrált rendszerek központi telepítéséhez a portál cím függ a megoldás régió és külső tartomány neve. Az formátumban lesz https://portal.&lt; *régió*&gt;.&lt; *FQDN*&gt;.
-    - Az Azure Stack Development Kit (ASDK) használja, ha a felhasználói portál címe [ https://portal.local.azurestack.external ](https://portal.local.azurestack.external).
+1. 
+[!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
 
 2. Válassza ki **\+** **erőforrás létrehozása** > **adatok \+ tárolási**, majd **SQL Database**.<br><br>Adja meg a szükséges adatbázis-tulajdonság információkat, beleértve a neve, rendezés, maximális méretét, és az előfizetés, erőforráscsoport és hely, a központi telepítéshez használni. 
 
