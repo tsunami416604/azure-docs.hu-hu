@@ -58,7 +58,7 @@ A Media Services kulcskézbesítési oldalon be kell állítani a az alábbiakat
 
        Egy kulcs objektumtovábbítási szabályzat konfigurálásakor meg kell adnia, hogy a jelszó és a .pfx-fájlt Base64 formátumban.
 
-      Az alábbi lépések bemutatják, hogyan hozhat létre egy *.pfx formátumú tanúsítványfájlt a fairplay rendszerhez:
+      Az alábbi lépések bemutatják, hogyan hozhat létre egy .pfx formátumú tanúsítványfájlt a fairplay rendszerhez:
 
     1. Telepítse az OpenSSL https://slproweb.com/products/Win32OpenSSL.html.
 
