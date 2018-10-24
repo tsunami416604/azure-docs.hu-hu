@@ -336,7 +336,7 @@ Szüksége lesz a felderített virtuális gépek védelme érdekében a követke
 
 * Replikálandó védhető.
 * A tárfiók a virtuális gép replikálása. Ezenkívül a naplók tárolásához szükséges virtuális gépek premium storage-fiók védelme.
-* A Folyamatkiszolgáló replikációs használatra. A folyamat rendelkezésre álló kiszolgálók listáját olvassa és menti a ***$ProcessServers [0]****(horizontális Felskálázás-ProcessServer)* és ***$ProcessServers [1]*** *(ConfigurationServer)* változókat.  
+* A Folyamatkiszolgáló replikációs használatra. A folyamat rendelkezésre álló kiszolgálók listáját olvassa és menti a ***$ProcessServers [0]***  *(horizontális Felskálázás-ProcessServer)* és ***$ProcessServers [1]*** *(ConfigurationServer)* változókat.
 * A fiókot, amellyel a leküldéses telepítés a mobilitási szolgáltatás a gépek szoftvereket. A rendelkezésre álló fiókok listájának lekérése és tárolja a ***$AccountHandles*** változó.
 * A védelmitároló-leképezés használatos replikációt a replikációs házirend.
 * Az erőforráscsoport, amelyben a virtuális gépek feladatátvételi kell létrehozni.

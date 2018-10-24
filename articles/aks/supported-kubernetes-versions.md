@@ -27,7 +27,7 @@ Az AKS Kubernetes négy kisebb verzióit támogatja:
 - Az aktuális alverzió, amely nyilvánosan felsőbb rétegbeli (n)
 - Három előző alverziót. Minden egyes támogatott alverzió két stabil javítások is támogatja.
 
-Például, ha az AKS vezet be *1.11.x* még ma, támogatást is biztosítunk *1.10.a* + *1.10.b*, *1.9.c*  +  *1.9d*, *1.8.e* + *1.8F* (ahol a betűkkel javítás kiadások olyan két legújabb stabil buildek).
+Például, ha az AKS vezet be *1.11.x* még ma, támogatást is biztosítunk *1.10.a* + *1.10.b*, *1.9.c* + *1.9d*, *1.8.e* + *1.8F* (ahol a betűkkel javítás kiadások olyan két legújabb stabil buildek).
 
 Amikor egy új alverzió bemutatott, a legrégebbi kisebb verziója és a javítás kiadások támogatott kivezettük. az új alverzió és a következő használatból való kivonást egyaránt kiadása előtt 15 napon keresztül bejelentés az Azure frissítési csatornákon keresztül történik. Ha a fenti példában *1.11.x* van nyilvánosan, a kivont verziók a következők *1.7.g* + *1.7.h*.
 
