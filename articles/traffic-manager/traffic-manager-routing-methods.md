@@ -4,7 +4,6 @@ description: Ez segít megérteni a különböző forgalom-útválasztási móds
 services: traffic-manager
 documentationcenter: ''
 author: KumudD
-manager: jpconnock
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kumud
-ms.openlocfilehash: be429e7d3ae847eec6dc4fd5ad6b9c3e5d76d5b5
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: eb43b59a26bc9c1b514921a7b6dfa4b920a8fe5f
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785409"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955218"
 ---
 # <a name="traffic-manager-routing-methods"></a>Traffic Manager útválasztási módszerek
 
@@ -129,8 +128,11 @@ A [Traffic Manager működése](traffic-manager-how-it-works.md), a Traffic Mana
 A **típushoz** forgalom-útválasztási módszer lehetővé teszi, hogy több kifogástalan állapotú végpontok kérjen a DNS-lekérdezés egyetlen válasz. Ez lehetővé teszi a hívónak ehhez ügyféloldali újrapróbálkozások más végpontokkal rendelkező esetén a visszaadott végpont éppen nem válaszol. Ez a minta egy szolgáltatás rendelkezésre állásának növelése és a társított egy megfelelően működő végpont beszerzése egy új DNS-lekérdezést a késés csökkentése érdekében. Többértékű esetén használt útválasztási módszer csak akkor, ha a "Külső" típusú végpontok és a rendszer által megadott IPv4 vagy IPv6-címek működik. Ehhez a profilhoz fogadásakor egy lekérdezést, kifogástalan állapotú végpontok összes adja vissza, és vonatkoznak konfigurálható visszatérési maximális számát.
 
 ## <a name = "subnet"></a>Alhálózat forgalom-útválasztási módszer
-A **alhálózati** forgalom-útválasztási módszer lehetővé teszi a felhasználói IP-címtartományok készletét leképezheti-profilban meghatározott végpontokhoz. Ezt követően a Traffic Manager kap egy DNS-lekérdezést a profilhoz, ha azt vizsgálata a forrás (a legtöbb esetben ez lesz a DNS-feloldási a hívó által használt kimenő IP-címe) a kérés IP-címét határozza meg, melyik végponthoz van leképezve, és a t adja vissza hat végpont a lekérdezésekre adott válaszok. Az IP-cím rendelhető hozzá egy végpontot a CIDR-tartományt (például 1.2.3.0/24) vagy egy címtartományt (pl. 1.2.3.4-5.6.7.8) formájában adható meg. Végponthoz társított IP-címtartományokkal kell, hogy a profilon belül egyedinek kell lennie, és a egy átfedésben van egy másik végpont IP-címkészlet nem rendelkezhet ugyanazzal a profillal.
-Ha vannak olyan végpontok, amelyhez az IP-cím is le lehet képezni, a Traffic Manager NODATA választ küld. Ezért erősen ajánlott minden lehetséges IP-címtartományok vannak megadva, a végpontok közötti biztosítása.
+A **alhálózati** forgalom-útválasztási módszer lehetővé teszi a felhasználói IP-címtartományok készletét leképezheti-profilban meghatározott végpontokhoz. Ezt követően a Traffic Manager kap egy DNS-lekérdezést a profilhoz, ha azt vizsgálata a forrás (a legtöbb esetben ez lesz a DNS-feloldási a hívó által használt kimenő IP-címe) a kérés IP-címét határozza meg, melyik végponthoz van leképezve, és a t adja vissza hat végpont a lekérdezésekre adott válaszok. 
+
+Az IP-cím rendelhető hozzá egy végpontot a CIDR-tartományt (például 1.2.3.0/24) vagy egy címtartományt (pl. 1.2.3.4-5.6.7.8) formájában adható meg. Végponthoz társított IP-címtartományokkal kell, hogy a profilon belül egyedinek kell lennie, és a egy átfedésben van egy másik végpont IP-címkészlet nem rendelkezhet ugyanazzal a profillal.
+A címtartomány nem a végpont megadása esetén, amely egy tartalék és végezze el a forgalmat a fennmaradó alhálózatokkal működik. Nincs tartalék végpont nem része, ha a Traffic Manager a nem definiált tartományokat NODATA választ küld. Ezért javasoljuk, hogy Ön vagy egy tartalék végpont meghatározása, vagy pedig győződjön meg arról, hogy az összes lehetséges IP-címtartományok a végpontok közötti vannak megadva.
+
 Útválasztási alhálózat segítségével a felhasználók számára egy adott IP-címtér csatlakozik egy másik felhasználói élményt nyújthat. Például alhálózat útválasztási révén ügyfél teheti átirányíthatók egy másik végpontot a vállalati office érkező kérelmek ahol, előfordulhat, hogy tesztelni egy alkalmazás csak belső verzióját. Egy másik helyzet lehet, hogy szeretné-e egy másik felhasználói élményt nyújtson az adott szolgáltatótól (például felhasználók általi letiltása adott Internetszolgáltató) csatlakozó felhasználók.
 
 ## <a name="next-steps"></a>További lépések

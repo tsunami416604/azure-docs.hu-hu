@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 2f0638b2449bfd582cb68e26d2043b7bc85342b6
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 6f7b812f32eda0c671b1ad1101b13a1290df0482
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125952"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954782"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Végfelhasználói hitelesítés az Azure Data Lake Storage Gen1 Azure Active Directory használatával
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ Ez a cikk ismerteti hogyan hozhat létre egy **végfelhasználói hitelesítés 
   
     ![Első AAD-tartomány](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
-* Az Azure-bérlő azonosítóját. A Bérlőazonosító lekéréséhez kapcsolatos utasításokért lásd: [a Bérlőazonosító beszerzése](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
+* Az Azure-bérlő azonosítóját. A Bérlőazonosító lekéréséhez kapcsolatos utasításokért lásd: [a Bérlőazonosító beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
 
 ## <a name="end-user-authentication"></a>Végfelhasználói hitelesítés
 Ez a hitelesítési mechanizmus használata az ajánlott módszer, ha azt szeretné, hogy a végfelhasználó jelentkezzen be az alkalmazás Azure AD-n keresztül. Az alkalmazás ezután is képes az ugyanazt a hozzáférési szintet, a felhasználó bejelentkezett az Azure-erőforrások eléréséhez. A végfelhasználó adja meg a hitelesítő adatokat rendszeres időközönként, hogy az alkalmazás megtartásához sorrendben kell.
@@ -74,7 +74,7 @@ Az alkalmazás az Azure AD közvetlenül biztosíthat felhasználói hitelesít�
 
 ## <a name="step-1-create-an-active-directory-native-application"></a>1. lépés: Az Active Directory natív alkalmazás létrehozása
 
-Létrehozhat és konfigurálhat egy natív Azure AD-alkalmazást, a végfelhasználói hitelesítés a Data Lake Storage Gen1 Azure Active Directory használatával. Útmutatásért lásd: [hozzon létre egy Azure AD-alkalmazást](../azure-resource-manager/resource-group-create-service-principal-portal.md).
+Létrehozhat és konfigurálhat egy natív Azure AD-alkalmazást, a végfelhasználói hitelesítés a Data Lake Storage Gen1 Azure Active Directory használatával. Útmutatásért lásd: [hozzon létre egy Azure AD-alkalmazást](../active-directory/develop/howto-create-service-principal-portal.md).
 
 A hivatkozás utasításait, miközben mindenképpen jelölje ki **natív** alkalmazás típusához, az alábbi képernyőképen látható módon:
 
@@ -82,7 +82,7 @@ A hivatkozás utasításait, miközben mindenképpen jelölje ki **natív** alka
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>2. lépés: Alkalmazás Azonosítójának lekéréséhez és átirányítási URI
 
-Lásd: [alkalmazás Azonosítójának lekéréséhez](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key) lekérni az alkalmazás azonosítója.
+Lásd: [alkalmazás Azonosítójának lekéréséhez](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key) lekérni az alkalmazás azonosítója.
 
 Az átirányítási URI azonosító lekéréséhez kövesse az alábbi lépéseket.
 

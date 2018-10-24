@@ -4,12 +4,12 @@ ms.author: yashar
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 09-05-2018
-ms.openlocfilehash: 065ac0855fc47b23b434287f9f4406bd641f01ae
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 4b51631e8b7d3f53edd1afdba76de3031b112254
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47454552"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49805020"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Fizessen elő az Azure fenntartott VM-példányok a virtuális gépekkel
 
@@ -35,7 +35,7 @@ Fenntartott VM-példányok néhány kivétellel a legtöbb Virtuálisgép-méret
   - Korlátozott vCPU-méretek
   - Virtuálisgép-sorozat: Az a sorozat, az Av2 sorozatú vagy G-sorozat
   - Virtuális gépek előzetes verzióban érhető el: bármely Virtuálisgép-sorozat vagy -méretet, előzetes verzióként érhető el
-- Felhők: Foglalások nem érhetők el az Azure US Government, Germany és China régióban vásárolható.
+- Felhők: Foglalások nem érhetők el, német és kínai régiókban vásárolható.
 - A kvóta nem elegendő: egy foglalást, ami egy előfizetéshez rendelkeznie kell az új fenntartott példány esetében az előfizetés vCPU-kvóta. Például ha a célként megadott előfizetés kvótája 10 vcpu-k számára a D-sorozat, majd, nem vásárolhat egy foglalást, 11 Standard_D1-példányok. A kvóta ellenőrzése lefoglalási a már üzembe helyezte az előfizetésben található virtuális gépeket tartalmaz. Például ha az előfizetés 10 vcpu-k kvótával rendelkezik a D-sorozat esetében, és üzembe helyezett két standard_D1 példánnyal rendelkezik, majd vásárolhat egy foglalást, ebben az előfizetésben 10 standard_D1-példányokhoz. 
 - Kapacitás korlátozások: ritka esetekben az Azure Virtuálisgép-méretek, egy régióban alacsony kapacitás miatt részhalmazát új lefoglalását, a vásárlás korlátozza.
 
@@ -67,9 +67,9 @@ Fenntartott VM-példányok néhány kivétellel a legtöbb Virtuálisgép-méret
 
 ## <a name="cancellations-and-exchanges"></a>Lemondás és cseréje
 
-Ha megszakítja a foglalás van szüksége, előfordulhat, hogy a 12 %-os korai lemondási díj levonása után lehet. A befizetett a legalacsonyabb ár a vételár vagy a jelenlegi árát a Foglalás alapulnak. A befizetett $ 50 000 / év korlátozódnak. A visszatérítés kap a fennmaradó időarányos egyenleget a 12 %-os korai lemondási díj. Visszavonást, nyissa meg az Azure Portalon, és válassza a Foglalás **visszatérítés** támogatási kérelmet szeretne létrehozni.
+A foglalás lemondásáért 12%-os korai felmondási díj számítható fel. A visszatérítést a rendszer a vételár vagy a foglalás jelenlegi ára közül az alacsonyabb összeg alapján számolja. A visszatérítések felső korlátja évi 50 000 dollár. A kapott visszatérítés tehát a fennmaradó, arányosított egyenleg és a 12%-os korai felmondási díj különbsége lesz. Visszavonást, nyissa meg az Azure Portalon, és válassza a Foglalás **visszatérítés** támogatási kérelmet szeretne létrehozni.
 
-A Reserved VM Instances foglalás váltson egy másik régióba, virtuális gép mérete csoport vagy kifejezés kell, ha egy másik, amely egyenlő vagy nagyobb értékű foglalás tudjon cserélni. Az új foglalás az időszak kezdő dátum nem jelenik meg a kicserélt foglalási. Az 1 vagy 3 éves távon elindítja az új Foglalás létrehozásakor. Egy exchange kérést, nyissa meg a foglalást az Azure Portalon, és válassza **Exchange** támogatási kérelmet szeretne létrehozni.
+Ha a fenntartott virtuálisgép-példányok foglalása kapcsán módosítania kell a régiót, a virtuális gép méretcsoportját vagy az időszakot, akkor kicserélheti a foglalást egy azonos vagy magasabb értékűre. Az új foglalási időszak kezdő dátuma nem kerül át a lecserélt foglalásból. Az 1 vagy 3 éves időszak az új foglalás létrehozásakor indul. Egy exchange kérést, nyissa meg a foglalást az Azure Portalon, és válassza **Exchange** támogatási kérelmet szeretne létrehozni.
 
 ## <a name="next-steps"></a>További lépések
 

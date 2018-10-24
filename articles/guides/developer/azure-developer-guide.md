@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: d298cfe22328db68cfbb6b4c7fc82b2de0c186b1
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 4c56a1164a589af5d325d1378f331a7d0ee138b7
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423595"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956442"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Első lépésekhez készült útmutató Azure-fejlesztőknek
 
@@ -162,7 +162,7 @@ Nagyon fontos tudni, hogy nem csak az alkalmazásokat használó, hanem az erőf
 
     >**Mikor érdemes használni**: szeretne biztosítani egy egyszeri Bejelentkezéses felhasználói élmény, Graph-alapú adatok, vagy tartományi felhasználók hitelesítésére.
 
-    >**Első lépések**: további információkért tekintse meg a [Azure Active Directory fejlesztői útmutatója](../../active-directory/develop/azure-ad-developers-guide.md).
+    >**Első lépések**: további információkért tekintse meg a [Azure Active Directory fejlesztői útmutatója](../../active-directory/develop/v1-overview.md).
 
 -   **App Service-hitelesítés**: App Service-ben az alkalmazás futtatására választásakor érhet el az Azure AD, valamint a közösségi identitásszolgáltatókat beépített hitelesítés támogatása – beleértve a Facebook, Google, Microsoft vagy Twitter.
 
@@ -289,7 +289,7 @@ Ha engedélyezi a hozzáférést az Azure-erőforrásokkal, mindig ajánlott az 
 
 -   **Szolgáltatás egyszerű objektumok**: hozzáférés biztosítása mellett az egyszerű felhasználói névnek és a csoportok, is hozzáférést biztosít az ugyanazon a szolgáltatásnév.
 
-    > **Mikor érdemes használni**: Ha programozott módon az Azure-erőforrások kezelése, vagy alkalmazásokhoz hozzáférést biztosít. További információkért lásd: [hozzon létre egy Active Directory-alkalmazás és egyszerű szolgáltatás](../../resource-group-create-service-principal-portal.md).
+    > **Mikor érdemes használni**: Ha programozott módon az Azure-erőforrások kezelése, vagy alkalmazásokhoz hozzáférést biztosít. További információkért lásd: [hozzon létre egy Active Directory-alkalmazás és egyszerű szolgáltatás](../../active-directory/develop/howto-create-service-principal-portal.md).
 
 #### <a name="tags"></a>Címkék
 

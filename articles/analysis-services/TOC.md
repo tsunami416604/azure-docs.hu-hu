@@ -38,8 +38,8 @@
 ### [Kiszolgáló kezelése](analysis-services-manage.md)
 ### [A kiszolgáló metrikáinak monitorozása](analysis-services-monitor.md)
 ### [Diagnosztikai naplózás beállítása](analysis-services-logging.md)
-### [Szolgáltatásnév létrehozása – Azure Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)
-### [Szolgáltatásnév létrehozása – PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+### [Szolgáltatásnév létrehozása – Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)
+### [Szolgáltatásnév létrehozása – PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 ### [Szolgáltatásnév hozzáadása a kiszolgálói rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md)
 
 ## Modell
@@ -86,7 +86,7 @@
 
 # További források
 
-## [Minták](analysis-services-samples.md)
+## [Példák](analysis-services-samples.md)
 ## [Analysis Services csapatblog](https://blogs.msdn.microsoft.com/analysisservices/)
 ## [Azure Analysis Services fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)

@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2018
+ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 1f59f2ce6e3bf8d34ce225aa93da76ad523775e0
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: f299cca57e3eaddd2a9d4868f3bae822392e45a0
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42058103"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944936"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Skálázási egység csomópont műveletek az Azure Stackben
 
@@ -31,7 +31,7 @@ Ez a cikk ismerteti a méretezési egység és a kapcsolódó csomópontokat ál
 > Az összes csomópont műveletek ebben a cikkben leírt egyszerre csak egy célcsomóponttal kell.
 
 
-## <a name="view-the-status-of-a-scale-unit-and-its-nodes"></a>A skálázási egység és a csomópontok állapotának megtekintése
+## <a name="view-the-node-status"></a>A csomópont állapotának megtekintése
 
 A felügyeleti portálon egyszerűen megtekintheti a skálázási egység és a kapcsolódó csomópontjainak állapotát.
 
@@ -47,15 +47,15 @@ Itt tekintheti meg a következő információkat:
 - rendszer típusa
 - logikai magok száma összesen
 - memória összesen
-- az egyes csomópontok és azok állapotát; listája mindkét **futó** vagy **leállt**.
+- Az egyes csomópontok és azok állapotát; listája mindkét **futó** vagy **leállt**
 
 ![Az egyes csomópontokon futó állapotát megjelenítő skálázási egység csempe](media/azure-stack-node-actions/ScaleUnitStatus.PNG)
 
-## <a name="view-information-about-a-scale-unit-node"></a>A skálázási egység csomópont adatainak megtekintése
+## <a name="view-node-information"></a>Csomópont-információk megtekintése
 
 Ha az egyes csomópontok, a következő információkat tekintheti meg:
 
-- régió neve
+- Régió neve
 - kiszolgáló-modell
 - Az alaplapi felügyeleti vezérlőnek (BMC) IP-címe
 - működési állapot

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: b329fb1416d28b0732e7b9ea4612f5bac8580b3a
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 62f71f29f813cd30c7d8e3c7f37f41677cf07364
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43132845"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956374"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Az Azure Logic Apps egyéni API-k biztonságos hívások
 
@@ -104,7 +104,7 @@ Ez a feladat Azure Resource Managerben a PowerShell használatával is elvégezh
 
 4. Feltétlenül másolja az **Bérlőazonosító** (az Azure AD-bérlőhöz tartozó GUID), a **Alkalmazásazonosító**, és a használt jelszót.
 
-További információ megtudhatja, hogyan [egyszerű szolgáltatás létrehozása erőforrások eléréséhez a PowerShell használatával](../azure-resource-manager/resource-group-authenticate-service-principal.md).
+További információ megtudhatja, hogyan [egyszerű szolgáltatás létrehozása erőforrások eléréséhez a PowerShell használatával](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
 #### <a name="part-2-create-an-azure-ad-application-identity-for-your-web-app-or-api-app"></a>2. lépés: Hozzon létre egy Azure AD alkalmazás-azonosítót a webalkalmazás vagy API-alkalmazás
 

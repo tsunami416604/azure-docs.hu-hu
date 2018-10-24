@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c23646bca6109d27e57b2f928363e65c83c634eb
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 7985c8e9e26126040d842ded998a953281daa2ae
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031152"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953552"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Oktatóanyag: Ismerje meg, a Visual Studio használatával a Service Fabric-alkalmazás frissítése
 
@@ -32,11 +32,11 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
-> * [Hozzon létre egy Service Fabric-háló alkalmazáshoz a Visual Studióban](service-fabric-mesh-tutorial-create-dotnetcore.md)
-> * [A helyi fejlesztési fürtön futó Service Fabric-háló alkalmazás hibakeresése](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
-> * [A Service Fabric-háló üzembe helyezése alkalmazás](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * [Service Fabric Mesh-alkalmazás létrehozása a Visual Studióban](service-fabric-mesh-tutorial-create-dotnetcore.md)
+> * [Egy, a helyi fejlesztési fürtön futó Service Fabric Mesh-alkalmazás hibakeresése](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * [Service Fabric Mesh-alkalmazás üzembe helyezése](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
 > * Frissítés a Service Fabric-háló alkalmazás
-> * [Service Fabric-háló az erőforrások törlése](service-fabric-mesh-tutorial-cleanup-resources.md)
+> * [A Service Fabric Mesh erőforrásainak eltávolítása](service-fabric-mesh-tutorial-cleanup-resources.md)
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -44,7 +44,7 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 
 Az oktatóanyag elkezdése előtt:
 
-* Ha a teendőkezelő alkalmazás még nem telepítette, kövesse a [Service Fabric-háló webalkalmazás közzététele](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md).
+* Ha nem helyezte üzembe a teendőkezelő alkalmazást, kövesse a [Service Fabric Mesh-webalkalmazás közzétételét](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md) ismertető cikk utasításait.
 
 ## <a name="upgrade-a-service-fabric-mesh-service-by-using-visual-studio"></a>A Service Fabric-háló szolgáltatás frissítése a Visual Studio használatával
 
@@ -156,8 +156,8 @@ Nyisson meg egy webböngészőt, és a megadott URL-címen tekintse meg az Azure
 
 Az oktatóanyag jelen része az alábbiakat ismertette:
 > [!div class="checklist"]
-> * A Visual Studio használatával a Service Fabric MES alkalmazás frissítése
+> * A Visual Studio használatával a Service Fabric-háló alkalmazás frissítése
 
 Folytassa a következő oktatóanyaggal:
 > [!div class="nextstepaction"]
-> [Service Fabric-háló az erőforrások törlése](service-fabric-mesh-tutorial-cleanup-resources.md)
+> [A Service Fabric Mesh erőforrásainak eltávolítása](service-fabric-mesh-tutorial-cleanup-resources.md)

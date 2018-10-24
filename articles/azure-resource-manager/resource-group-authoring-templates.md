@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/30/2018
+ms.date: 10/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1b982bddc951e710ba3bfa5fe8621d6595b95a52
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 28ef94113c76cd70e12a9682e1c523afc3f0a233
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405344"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945875"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Megismerheti a szerkezetének és szintaxisának az Azure Resource Manager-sablonok
 Ez a cikk ismerteti az Azure Resource Manager-sablonok szerkezetének. Egy sablon és az elérhető tulajdonságok köre szakaszt az eltérő szakaszok tükrözze. A sablon JSON-t és kifejezések, amelyek segítségével kialakíthatja az üzemelő példány értékeit áll. Sablonok létrehozásának részletes útmutató: [az első Azure Resource Manager-sablon létrehozása](resource-manager-create-first-template.md).
 
 ## <a name="quickstarts-and-tutorials"></a>Rövid útmutatóink és oktatóanyagaink
 
-A következő rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan fejleszthet resource manager-sablonok:
+A következő rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan fejleszthet Resource Manager-sablonokat:
 
 - Gyors útmutatók
 
@@ -43,9 +43,9 @@ A következő rövid útmutatóink és oktatóanyagaink segítségével megtudha
   	|[Használja a sablon leírása](./resource-manager-tutorial-create-encrypted-storage-accounts.md)|A sablon referenciadokumentációjából sablonok fejlesztéséhez használ. Az oktatóanyag a storage-fiók sémájának található, és az információk használatával hozzon létre egy titkosított tárfiókban.|
   	|[Több példány létrehozása](./resource-manager-tutorial-create-multiple-instances.md)|Azure-erőforrásokat több példányának létrehozása. Az oktatóanyagban hoz létre a storage-fiók több példányát.|
   	|[Erőforrás telepítési sorrendet](./resource-manager-tutorial-create-templates-with-dependent-resources.md)|Erőforrás-függőségek meghatározása. Az oktatóanyagban létrehozhat egy virtuális hálózatot, virtuális gépek és a függő Azure-erőforrások. Megtudhatja, hogyan vannak definiálva a függőségeket.|
-  	|[Használati feltételek](./resource-manager-tutorial-use-conditions.md)|Néhány paraméter értékei alapján erőforrások üzembe helyezése. Az oktatóanyagban egy sablont hozzon létre egy új tárfiókot, vagy használjon egy meglévő tárfiókot egy paraméter értéke alapján határozza meg.|
+  	|[Feltételek használata](./resource-manager-tutorial-use-conditions.md)|Néhány paraméter értékei alapján erőforrások üzembe helyezése. Az oktatóanyagban egy sablont hozzon létre egy új tárfiókot, vagy használjon egy meglévő tárfiókot egy paraméter értéke alapján határozza meg.|
   	|[A key vault integrálása](./resource-manager-tutorial-use-key-vault.md)|Az Azure Key Vault titkos kódok és jelszavak lekérését. Az oktatóanyagban egy virtuális gépet hoz létre.  A virtuális gép rendszergazdai jelszó veszi át egy Key Vaultot.|
-  	|[A csatolt sablonok létrehozása](./resource-manager-tutorial-create-linked-templates.md)|Sablonok modularize, és egy sablon alapján más-sablonok meghívására. Az oktatóanyagban létrehozhat egy virtuális hálózatot, virtuális gépek és a tőle függő erőforrások.  A függő tárfiók van meghatározva egy hivatkozott sablonnak. |
+  	|[Csatolt sablonok létrehozása](./resource-manager-tutorial-create-linked-templates.md)|Sablonok modularize, és egy sablon alapján más-sablonok meghívására. Az oktatóanyagban létrehozhat egy virtuális hálózatot, virtuális gépek és a tőle függő erőforrások.  A függő tárfiók van meghatározva egy hivatkozott sablonnak. |
   	|[Használata biztonságos üzembe helyezési eljárások](./deployment-manager-tutorial.md)|Az Azure Deployment manager használja. |
 
 ## <a name="template-format"></a>Sablon formátuma
@@ -304,7 +304,7 @@ Az erőforrások szakaszban meghatározhatja az erőforrásokat, amelyek telepí
 ],
 ```
 
-További információkért lásd: [források szakaszában az Azure Resource Manager-sablonok](resource-manager-templates-resources.md).
+Feltételesen belefoglalása vagy kizárása erőforrás üzembe helyezés során használja a [feltétel elem](resource-manager-templates-resources.md#condition). Az erőforrás szakasz tartalmával kapcsolatos további információkért lásd: [források szakaszában az Azure Resource Manager-sablonok](resource-manager-templates-resources.md).
 
 ## <a name="outputs"></a>Kimenetek
 A kimeneti szakaszban adjon meg értékeket, amelyek a központi telepítés rendszer adja vissza. Visszaadhatja például az URI-t üzembe helyezett erőforrások eléréséhez.

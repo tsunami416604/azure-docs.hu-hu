@@ -17,14 +17,14 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: b9ae7cf9d6fd383c7cdfa3957b5d9b94c7207d50
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 5c560218bebd5399c85b9cebe11c7342e8d15a59
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900655"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945688"
 ---
-# <a name="how-azure-ad-uses-the-saml-protocol"></a>Hogyan Azure ad-ben az SAML protokollt használja.
+# <a name="how-azure-ad-uses-the-saml-protocol"></a>Hogyan használja az Azure AD a SAML-protokollt
 
 Az Azure Active Directory (Azure AD) használja a SAML 2.0 protokoll lehetővé teszik az alkalmazások egyszeri bejelentkezési felhasználói élményt nyújtson lehetőséget a felhasználók számára. A [egyszeri bejelentkezés](single-sign-on-saml-protocol.md) és [egyszeri kijelentkezéshez](single-sign-out-saml-protocol.md) az Azure AD SAML-profilok ismertetik a SAML helyességi feltételek, a protokollok és kötések használata az identity provider szolgáltatásban.
 
@@ -32,7 +32,7 @@ SAML-protokoll szükséges az identitásszolgáltató (az Azure AD) és a szolg�
 
 Amikor egy alkalmazás regisztrálása az Azure AD a alkalmazásfejlesztő összevonási szolgáltatással kapcsolatos információkat az Azure ad-ben regisztrálja. Ezen információk közé tartozik a **átirányítási URI-t** és **metaadatok URI** az alkalmazás.
 
-Az Azure AD a felhőalapú szolgáltatást használ **metaadatok URI** lekérni az aláíró kulcs és a kijelentkezési URI-t. Ha az alkalmazás nem támogatja a metaadatok URI-t, a fejlesztőnek kapcsolatba kell lépnie a Microsoft támogatást biztosít a kijelentkezési URI és aláírási kulcs.
+Az Azure AD a felhőalapú szolgáltatást használ **metaadatok URI** lekérni az aláíró kulcs és a kijelentkezési URI-t. Ügyfél tudja megnyitni az alkalmazást a **az Azure AD -> Alkalmazásregisztráció** majd **beállítások -> Tulajdonságok**, akkor frissítheti a kijelentkezési URL-címe. Ezzel a módszerrel az Azure AD a választ a helyes URL-címre küldhet. 
 
 Az Azure Active Directory bérlőspecifikus és közös (bérlő független) egyetlen bejelentkezéshez és az egyszeri kijelentkezési végpont tesz elérhetővé. URL-címmel rendelkező helyek képviselő – azok nem csupán azonosítók--, nyissa meg a végpont metaadatainak olvasásához.
 

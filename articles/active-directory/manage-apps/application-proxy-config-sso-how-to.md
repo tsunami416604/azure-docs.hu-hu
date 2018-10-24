@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/21/2018
+ms.date: 10/22/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 9c353c9b34c3d4a2b21093cc0ae82e638f5ddd01
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 91bbbf6cced8dc3ade4906961d68a99f810d9fd9
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356626"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956986"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Egyszeri bejelentkezés egy alkalmazásproxy-alkalmazás konfigurálása
 
@@ -36,7 +36,7 @@ Egyszeri bejelentkezés konfigurálásához először győződjön meg arról, h
 ## <a name="configuring-single-sign-on-modes-for-application-proxy-applications"></a>Egyszeri bejelentkezési módok konfigurálása az Application Proxy alkalmazásai
 Az adott típusú egyszeri bejelentkezés konfigurálása. A bejelentkezési módszerek besorolt alapján a hitelesítés típusát a háttéralkalmazás használja. Alkalmazásproxy-alkalmazások bejelentkezési három típusát támogatja:
 
--   **Jelszóalapú bejelentkezés**: jelszóalapú bejelentkezés használható felhasználónév és jelszó mezők bejelentkezhet a minden alkalmazás esetén. Az szükséges konfigurációs lépéseket a [jelszó-SSO konfigurációs dokumentációt](../active-directory-enterprise-apps-whats-new-azure-portal.md#bring-your-own-password-sso-applications).
+-   **Jelszóalapú bejelentkezés**: jelszóalapú bejelentkezés használható felhasználónév és jelszó mezők bejelentkezhet a minden alkalmazás esetén. Az szükséges konfigurációs lépéseket [jelszó egyszeri bejelentkezés az Azure AD katalógusából származó alkalmazásba konfigurálása](configure-password-single-sign-on-gallery-applications.md).
 
 -   **Integrált Windows-hitelesítés**: integrált Windows-hitelesítés (IWA) használó alkalmazásokhoz, az egyszeri bejelentkezés engedélyezve van – a Kerberos által korlátozott delegálás (KCD). Ez a módszer alkalmazásproxy-összekötők engedélyt ad az Active Directory megszemélyesíthet felhasználókat, és a küldési és fogadási jogkivonatokat a felhasználók nevében. KCD konfigurálása a részletek megtalálhatók a [egyszeri bejelentkezés KCD dokumentációban](application-proxy-configure-single-sign-on-with-kcd.md).
 

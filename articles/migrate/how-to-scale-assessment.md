@@ -4,14 +4,14 @@ description: Ismerteti, hogyan értékelheti a helyszíni gépek nagy számú az
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 5f02393e6c8d5e094443e418b3fe7439d73ff837
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: 6809c0e56fe55c7962ae273db0b5ac4335089df1
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44325022"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945858"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Nagy méretű VMware-környezet felderítése és értékelése
 
@@ -31,7 +31,7 @@ Az Azure Migrate hozzá kell férnie a VMware-kiszolgálókhoz a virtuális gép
 - Felhasználó típusa: Legalább egy, csak olvasási jogosultsággal rendelkező felhasználó.
 - Engedélyek: Adatközpont-objektum –> Gyermekobjektumba propagálás, szerepkör = csak olvasható.
 - Részletek: A felhasználó az adatközpontszinten hozzárendelve, és hozzáféréssel rendelkezik az adatközpontban lévő összes objektumhoz.
-- Hozzáférés korlátozásához rendelje a rendelkező nincs hozzáférés szerepkört az gyermekobjektum a gyermekobjektumokhoz (vSphere-gazdagépek, adattárolók, virtuális gépek és hálózatok).
+- A hozzáférés korlátozásához rendelje a Gyermekobjektumba propagálás objektummal rendelkező Nincs hozzáférés szerepkört a gyermekobjektumokhoz (vSphere-gazdagépek, adattárolók, virtuális gépek és hálózatok).
 
 Ha a bérlő környezetben telepíti, a következő beállítására egyik módja:
 
@@ -120,14 +120,14 @@ Az Azure Migrate létrehoz egy gyűjtőberendezésnek nevezett helyszíni virtu�
 Ha több projektet, a vCenter Serverhez csak egyszer a gyűjtőberendezés letöltése szeretne. Után töltse le és állítsa be a készülék, az egyes projektek futtatásához, és azt adja meg a projekt egyedi Azonosítóját és kulcsát.
 
 1. Az Azure Migrate projektben kattintson a **Bevezetés** > **Felderítés és értékelés** > **Gépek felderítése** elemre.
-2. A **gépek felderítése**, két lehetőség van a berendezés érhető el, kattintson a **letöltése** a beállítások alapján a megfelelő berendezés letöltése.
+2. A **Gépek felderítése** területen kétféle berendezés közül választhat. Kattintson a **Letöltés** gombra az igényeinek megfelelő berendezés letöltéséhez.
 
-    a. **Felderítés egyszeri felderítés:** ehhez a modellhez, a készülék kommunikál a vCenter-kiszolgáló kérdezze le a virtuális gépek metaadatait. Teljesítményadatok gyűjtése a virtuális gépek, a vCenter-kiszolgáló tárolja a korábbi teljesítményadatok alapul, és gyűjti az utolsó egy hónap teljesítményelőzményeinek. Ebben a modellben az Azure Migrate gyűjti átlagos számláló (vagy maximális számláló) minden egyes metrika, [További információ] (https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected). Mivel a felderítés egyszeri felderítés, a helyszíni környezet változásai nem jelennek meg, a felderítés befejeződése után. Ha azt szeretné, hogy a módosításokat, akkor hajtsa végre az ugyanazon a projekten azonos környezetben az újbóli felderítést.
+    a. **Egyszeri felderítés:** Az ilyen modellű berendezés a vCenter Serverrel kommunikálva gyűjt metaadatokat a virtuális gépekről. A virtuális gépek teljesítményadatainak gyűjtése esetén a teljesítményadatoknak a vCenter Serveren tárolt előzményeit veszi figyelembe, és az előző hónap teljesítményelőzményeit gyűjti össze. Ebben a modellben az Azure Migrate a metrikák átlagszámlálóit (nem pedig a maximumszámlálóit) gyűjti össze. [További információ] (https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected). Mivel a felderítés egyszeri felderítés, a helyszíni környezet változásai nem jelennek meg, a felderítés befejeződése után. Ha szeretné, hogy megjelenjenek ezek a változások, végre kell hajtania egy ismételt felderítést ugyanennek a projektnek ugyanezen környezetén.
 
-    b. **Folyamatos felderítési:** ehhez a modellhez, a készülék folyamatosan profilt készít a valós idejű használati adatok gyűjtéséhez az egyes virtuális Gépekhez a helyszíni környezetben. Ebben a modellben összegyűjtött csúcs számlálók mindegyik metrikát (CPU-használat, memóriahasználat stb.). Ez a modell nem függ a vCenter Server a teljesítményadat-gyűjtés statisztikai beállításait. A készülék a a folyamatos profilkészítés bármikor leállíthatja.
+    b. **Folyamatos felderítés:** Az ilyen modellű berendezés folyamatosan profilkészítést végez a helyszíni környezeten, így valós idejű használati adatokat gyűjt az egyes virtuális gépekről. Ez a modell a metrikák (processzorhasználat, memóriahasználat stb.) maximumszámlálóit gyűjti össze. Ez a modell a teljesítményadatok gyűjtése során nem függ a vCenter Server statisztikai beállításaitól. A berendezésben bármikor leállítható a folyamatos profilkészítés.
 
     > [!NOTE]
-    > A folyamatos felderítési funkciója előzetes verzióban érhető el.
+    > A folyamatos felderítés funkciója jelenleg előzetes verzióban érhető el.
 
 3. A **projekt hitelesítő adatainak másolása**, másolja az Azonosítót, és a projekt kulcsát. Ezekre a gyűjtő konfigurálásához lesz szüksége.
 
@@ -146,9 +146,19 @@ Ellenőrizze, hogy az OVA-fájl biztonságos-e az üzembe helyezés előtt:
 
 3. Győződjön meg arról, hogy a létrehozott kivonatnak megegyezik-e a következő beállításokat.
 
-#### <a name="one-time-discovery"></a>Felderítés egyszeri felderítés
+#### <a name="one-time-discovery"></a>Egyszeri felderítés
 
-Az OVA verziója 1.0.9.14
+<<<<<<< Fő az OVA verzió 1.0.9.15 (10/23/2018 engedélyezett)
+
+ <a name="algorithm--hash-value"></a>**Algoritmus** | **kivonat értéke**
+=======
+Az OVA verziója 1.0.9.15
+
+**Algoritmus** | **kivonat értéke**
+>>>>>>> 20dc93529e7c0a4d17f2f4524752b5e2bead4e37---|} ---MD5-TEL |} e9ef16b0c837638c506b5fc0ef75ebfa SHA1 |} 37b4b1e92b3c6ac2782ff5258450df6686c89864 SHA256 |} 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
+
+<<<<<<< Fő az OVA 1.0.9.14 (8/24/2018 felszabadított) verzió === az OVA 1.0.9.14 verzió
+>>>>>>> 20dc93529e7c0a4d17f2f4524752b5e2bead4e37
 
 **Algoritmus** | **Kivonat értéke**
 --- | ---
@@ -180,9 +190,9 @@ MD5 | d5b6a03701203ff556fa78694d6d7c35
 SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
 SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
 
-#### <a name="continuous-discovery"></a>Folyamatos felderítése
+#### <a name="continuous-discovery"></a>Folyamatos felderítés
 
-Az OVA verziója 1.0.10.4
+Az OVA 1.0.10.4-es verziója esetén
 
 **Algoritmus** | **Kivonat értéke**
 --- | ---
@@ -275,11 +285,11 @@ Kell végrehajtania minden felderítéshez, futtassa a gyűjtő a szükséges ha
 
 #### <a name="verify-vms-in-the-portal"></a>Virtuális gépek ellenőrzése a portálon
 
-A felderítés egyszeri felderítés, a felderítési idő attól függ, hány virtuális gépet keres. Általában a 100 virtuális gép lefutása a gyűjtő futtatását, miután egy órát vesz igénybe az adatgyűjtés és végrehajtásához. Létrehozhat értékeléseket (teljesítmény-alapú és a helyszíni értékelések,) közvetlenül a felderítés befejezését követően.
+Egyszeri felderítés esetén a felderítés ideje a felderíteni kívánt virtuális gépek számától függ. Általában a 100 virtuális gép lefutása a gyűjtő futtatását, miután egy órát vesz igénybe az adatgyűjtés és végrehajtásához. Az felderítés végeztével azonnal létrehozhat értékeléseket (teljesítményalapú és helyszíni értékeléseket egyaránt).
 
-Folyamatos felderítése (előzetes verzió) a gyűjtő folyamatosan fog profil a helyszíni környezet és fog tartani az adatküldés teljesítmény órás időközzel. Egy órával a felderítés megkezdése után a gépek a portálon tekintheti meg. Erősen ajánlott minden teljesítményalapú értékelések a virtuális gépek létrehozása előtt legalább egy napot várnia.
+Folyamatos felderítés (előzetes verzió) esetén a gyűjtő folyamatos profilkészítést fog végezni a helyszíni környezeten, és a teljesítményadatokat folyamatosan, egyórás időközönként fogja küldeni. Egy órával a felderítés indítását követően tekintheti át a gépeket a portálon. Javasoljuk, hogy várjon legalább egy napot, és csak utána hozza létre a virtuális gépek teljesítményalapú értékeléseit.
 
-1. A migrálási projektben kattintson **kezelés** > **gépek**.
+1. A migrálási projektben kattintson a **Kezelés** > **Gépek** elemre.
 2. Ellenőrizze, hogy a felderíteni kívánt virtuális gépek megjelennek-e a portálon.
 
 

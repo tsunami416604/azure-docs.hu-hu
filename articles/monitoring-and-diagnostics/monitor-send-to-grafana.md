@@ -1,6 +1,6 @@
 ---
 title: Azure-szolgáltatások és alkalmazások monitorozása a Grafanával
-description: Útvonal Azure figyelése és az Application Insights-adatok így meg lehet tekinteni őket Grafana.
+description: Útvonal az Azure Monitor és az Application Insights-adatok így meg tudja őket tekinteni a Grafana.
 services: azure-monitor
 keywords: ''
 author: rboucher
@@ -9,123 +9,123 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: ''
-ms.openlocfilehash: de2c57949cb2087e41b79a225963225d340f12af
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: b4fbd1248f91e0766cca66d1c51033a8b338c324
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263082"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957377"
 ---
-# <a name="monitor-your-azure-services-in-grafana"></a>Grafana az Azure-szolgáltatások figyelése
-Most is figyelheti az Azure-szolgáltatások és alkalmazások [Grafana](https://grafana.com/) használatával a [Azure figyelő az adatforrás-beépülő modul](https://grafana.com/plugins/grafana-azure-monitor-datasource). A beépülő modul az Application Insights SDK által gyűjtött teljesítmény alkalmazásadatok, valamint az Azure-figyelő által szolgáltatott infrastruktúra adatokat gyűjt. Ezután az Grafana irányítópulton jeleníti meg ezeket az adatokat.
+# <a name="monitor-your-azure-services-in-grafana"></a>A Grafana az Azure-szolgáltatások figyelése
+Most is figyelemmel kísérheti az Azure szolgáltatásainak és alkalmazásainak [Grafana](https://grafana.com/) használatával a [Azure Monitor adatforrás-beépülő modul](https://grafana.com/plugins/grafana-azure-monitor-datasource). A beépülő modul az Application Insights SDK által gyűjtött alkalmazásteljesítmény-adatokat, valamint az Azure Monitor által szolgáltatott infrastruktúra adatokat gyűjt. Ezután a Grafana irányítópulton jeleníti meg ezeket az adatokat.
 
-A beépülő modul jelenleg előzetes verzió.
+A beépülő modul jelenleg előzetes verzióban érhető el.
 
-Az alábbi lépések segítségével állítson be az Azure piactérről Grafana kiszolgálót és irányítópultok metrikáihoz Azure figyelése és az Application Insights felépíteni.
+A következő lépések segítségével állítja be a Grafana kiszolgálót az Azure Marketplace-ről és a metrikák irányítópultok létrehozása az Azure Monitor és az Application Insights.
 
-## <a name="set-up-a-grafana-instance"></a>Állítsa be a Grafana példánya
-1. Nyissa meg az Azure piactéren, és válassza ki a Grafana Grafana Labs által.
+## <a name="set-up-a-grafana-instance"></a>A Grafana példány beállítása
+1. Ugrás az Azure Marketplace-en, és válassza ki a Grafana Grafana Labs által.
 
-2. Adja meg a nevét és részleteit. Hozzon létre egy új erőforráscsoportot. Nyomon követjük, hogy az értékek úgy dönt, hogy a virtuális gép felhasználónév, a virtuális gép jelszót és a Grafana kiszolgáló rendszergazdai jelszavát.  
+2. Adja meg a neveket és a részleteket. Hozzon létre egy új erőforráscsoportot. Nyomon követheti, az értékek úgy dönt, hogy a virtuális gép felhasználónevét, a virtuális gép jelszava és a Grafana kiszolgáló-rendszergazdai jelszót.  
 
-3. Válassza ki a Virtuálisgép-méretet és a storage-fiók.
+3. Válassza ki a virtuális gép mérete és a egy storage-fiókot.
 
-4. Konfigurálja a hálózati konfigurációs beállításait.
+4. Adja meg a hálózati konfigurációs beállításokat.
 
-5. Az összegzés megtekintéséhez és kijelöléséhez **létrehozása** a használati feltételek elfogadása után.
+5. Az összegzés megtekintéséhez és kijelöléséhez **létrehozás** után elfogadja a használati feltételeket.
 
-## <a name="log-in-to-grafana"></a>Jelentkezzen be Grafana
-1. A telepítés befejezése után válassza ki a **erőforráscsoport Ugrás**. Az újonnan létrehozott erőforrások listáját láthatja.
+## <a name="log-in-to-grafana"></a>Jelentkezzen be a Grafana számára
+1. Az üzembe helyezés befejezése után jelölje be az **erőforráscsoport megnyitása**. Az újonnan létrehozott erőforrások listáját láthatja.
 
     ![Grafana erőforrás csoportobjektumokhoz](.\media\monitor-how-to-grafana\grafana1.png)
 
-    Ha a hálózati biztonsági csoport (*grafana-nsg* ebben az esetben), láthatja, hogy port 3000 Grafana server eléréséhez használt.
+    Ha a hálózati biztonsági csoport (*grafana-nsg* ebben az esetben), láthatja, hogy port 3000 szolgál a Grafana kiszolgálóhoz való hozzáféréshez.
 
-2. Lépjen vissza az erőforrások listáján válassza ki a **nyilvános IP-cím**. Ezen a képernyőn található értékekre segítségével írja be *http://<IP address>: 3000* vagy a  *<DNSName>: 3000* a böngészőben. A bejelentkezési oldal az imént létrehozott Grafana kiszolgáló kell megjelennie.
+2. Lépjen vissza az erőforrásokat, és válassza ki a lista **nyilvános IP-cím**. Írja be az ezen a képernyőn található értékeket használja, *http://<IP address>: 3000* vagy a  *<DNSName>: 3000* a böngészőben. A bejelentkezési lapot a Grafana kiszolgáló csak beépített kell megjelennie.
 
     ![Grafana bejelentkezési képernyő](.\media\monitor-how-to-grafana\grafana2.png)
 
-3. Jelentkezzen be a felhasználó felhasználóneve megegyezik *admin* és a korábban létrehozott Grafana kiszolgáló rendszergazdai jelszavát.
+3. Jelentkezzen be a felhasználói nevet a következőként *rendszergazdai* és a korábban létrehozott Grafana kiszolgáló-rendszergazdai jelszót.
 
 ## <a name="configure-data-source-plugin"></a>Adatforrás beépülő modul konfigurálása
 
-Miután sikeresen bejelentkezett, megtekintheti, hogy az Azure-figyelő adatforrás beépülő modul is meg van adva.
+Miután sikeresen bejelentkezett, láthatja, hogy az Azure Monitor adatforrás beépülő modul már megtalálható.
 
-![Grafana látható Azure figyelője beépülő modul](.\media\monitor-how-to-grafana\grafana3.png)
+![Grafana jeleníti meg az Azure Monitor beépülő modul](.\media\monitor-how-to-grafana\grafana3.png)
 
-1. Válassza ki **adatforrás hozzáadása** Azure figyelése és az Application Insights beállítása.
+1. Válassza ki **adatforrás hozzáadása** konfigurálása az Azure Monitor és az Application Insights.
 
-2. Adjon meg egy nevet az adatforrás, és válassza ki **Azure figyelő** az adatforrással, a legördülő listából.
+2. Adjon meg egy nevet az adatforráshoz, és válassza ki **Azure Monitor** az adatforrással, a legördülő listából.
 
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-Grafana használja az Azure Active Directory szolgáltatás egyszerű Azure figyelő API-k és metrikákat adatainak gyűjtéséről. Létre kell hoznia egy szolgáltatás egyszerű való hozzáférés az Azure-erőforrások kezelése.
+Grafana egy Azure Active Directory-szolgáltatásnevet használatával csatlakozhat az Azure Monitor API-k és metrikák adatokat gyűjteni. Meg kell egy egyszerű szolgáltatás létrehozása az Azure-erőforrásokhoz való hozzáférés kezelése.
 
-1. Lásd: [ezeket az utasításokat](../azure-resource-manager/resource-group-create-service-principal-portal.md) egy egyszerű szolgáltatásnév létrehozásához. Másolja ki és mentse a bérlő azonosítója, ügyfél-azonosító és a titkos ügyfélkulcsot.
+1. Lásd: [ezek az utasítások](../active-directory/develop/howto-create-service-principal-portal.md) egy szolgáltatásnév létrehozásához. Másolja és mentse a bérlő azonosítója, az ügyfél-Azonosítót és a egy ügyfélkulcsot.
 
-2. Lásd: [szerepkör alkalmazást](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role) az olvasó szerepkört rendelni az Azure Active Directory-alkalmazást.     
+2. Lásd: [alkalmazás hozzárendelése szerepkörhöz](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role) az Olvasó szerepkör hozzárendelése az Azure Active Directory-alkalmazás.     
 
-3. Az Application Insights használatakor is használható az Application Insights API és Alkalmazásazonosító Application Insights-alapú gyűjtéséhez. További információkért lásd: [az API-kulcs és az Alkalmazásazonosító](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
+3. Ha használja az Application Insights, az Application Insights API és az Alkalmazásazonosítót kíván gyűjteni az Application Insights-alapú is megadhatja. További információkért lásd: [az API-kulcs és az Alkalmazásazonosító beolvasása](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 
-4. Miután megadta az összes ezeket az adatokat, válassza ki **mentése** és Grafana ellenőrzi az API-t. Megtekintheti az alábbihoz hasonló üzenet.  
+4. Miután megadta az összes ezeket az adatokat, válassza ki a **mentése** és a Grafana teszteli, az API-t. Egy a következőhöz hasonló üzenetnek kell megjelennie.  
 
-    ![Grafana látható Azure figyelője beépülő modul](.\media\monitor-how-to-grafana\grafana4-1.png)
+    ![Grafana jeleníti meg az Azure Monitor beépülő modul](.\media\monitor-how-to-grafana\grafana4-1.png)
 
 > [!NOTE]
-> A beépülő modul adhatja meg, mely Azure-felhőbe (nyilvános, Azure Amerikai Egyesült államokbeli kormányzati, Németországi Azure vagy Azure Kína) azt szeretné, hogy a beépülő modul elleni kell konfigurálni.
+> A beépülő modul adhatja meg, melyik Azure-felhő (nyilvános, az Azure US Government, Azure Germany vagy Azure China) szeretné, hogy a beépülő modul ellen kell konfigurálni.
 >
 >
 
-## <a name="build-a-grafana-dashboard"></a>Grafana Irányítópult összeállítása
+## <a name="build-a-grafana-dashboard"></a>A Grafana irányítópult létrehozása
 
-1. Ugrás a kezdőlapra, és válassza ki **új irányítópult**.
+1. Lépjen a kezdőlapra, és válassza **új irányítópult**.
 
-2. Az új irányítópult, válassza ki a **Graph**. Próbálja meg más diagramkészítési beállításokat, de ebben a cikkben az *Graph* példaként.
+2. Az új irányítópultot, válassza ki a **Graph**. Próbálja meg más diagramkészítési lehetőségek, de ez a cikk *Graph* példaként.
 
-    ![Új irányítópult Grafana](.\media\monitor-how-to-grafana\grafana5.png)
+    ![Új lesz a Grafana irányítópultja](.\media\monitor-how-to-grafana\grafana5.png)
 
-3. Az irányítópulton megjelenik egy üres diagramon.
+3. Az irányítópulton megjelenik egy üres diagram.
 
-4. Kattintson a panel címe, és válassza ki **szerkesztése** számára adja meg a graph-diagram megrajzolásához kívánt adatokat adatait.
+4. Kattintson a panel címe, és válassza ki **szerkesztése** , adja meg, hogy az adatok a graph-diagram a megjeleníteni kívánt.
 
-5. Miután kiválasztotta a megfelelő virtuális gépeket, megkezdheti a metrikákat jeleníti meg az irányítópulton.
+5. Miután kiválasztotta a megfelelő virtuális gépek, elkezdheti a metrikák megtekintése az irányítópulton.
 
-Az alábbiakban látható egy egyszerű irányítópultot, amelynek két diagramot. A bal oldali ezen két virtuális gépek Processzor arányát tartalmazza. A diagram jobb tranzakciói jelennek meg az Azure Storage-fiók a tranzakció API típus szerinti bontásban.
+Következő egy könnyen áttekinthető irányítópult használatával két diagram. A bal oldali mutatja, a két virtuális gépet a Processzorhasználat (%). A diagram a jobb oldalon a tranzakciók az Azure Storage-fiókot, a tranzakciós API-típus szerinti bontásban jeleníti meg.
 
-![A két Grafana diagramok – példa](.\media\monitor-how-to-grafana\grafana6.png)
-
-
-## <a name="optional-create-dashboard-playlists"></a>Választható lehetőség: Hozzon létre irányítópult-listák
-
-A számos hasznos funkciónak Grafana az egyik az irányítópult lista. Több irányítópultot létrehozni, és adja hozzá a lista minden irányítópult megjelenítéséhez időköze konfigurálása. Válassza ki **lejátszása** Váltás az irányítópultok megjelenítéséhez. Érdemes lehet egy nagy fali megjelenő "állapot board" adja meg a csoport megjelenítéséhez.
-
-![Grafana lista – példa](.\media\monitor-how-to-grafana\grafana7.png)
+![Grafana két diagramok példa](.\media\monitor-how-to-grafana\grafana6.png)
 
 
-## <a name="optional-monitor-your-custom-metrics-in-the-same-grafana-server"></a>Választható lehetőség: Nyomon követheti a egyéni metrikákat Grafana kiszolgálón
+## <a name="optional-create-dashboard-playlists"></a>Választható lehetőség: Irányítópult listák létrehozása
 
-Az adatgyűjtésre és egyéni mind ügynök-alapú metrikák Grafana ugyanezen példányában megrajzolásához Telegraf és InfluxDB is telepíthet. Nincsenek sok adatok forrás beépülő modulok, amelyek segítségével a metrikák egyesítik az irányítópulton.
+A Grafana számos hasznos funkcióját egyik, az irányítópult-lista. Több irányítópultokat hozhat létre, és hozzáadhatja őket a lista konfigurálása mindegyik irányítópult megjelenítéséhez időköze. Válassza ki **lejátszása** megtekintéséhez az irányítópultok közötti váltáshoz. Előfordulhat, hogy szeretné, adja meg a csoport egy "állapot"tábla nagy üzenőfal figyelő megjeleníti azokat.
 
-Ez a Prometheus kiszolgálóról metrikákkal beállítása is felhasználhatja. A Prometheus adatforrás beépülő modul használata Grafana a beépülő modul gyűjteménye.
+![Példa a Grafana lejátszási lista](.\media\monitor-how-to-grafana\grafana7.png)
 
-Az alábbiakban a helyes hivatkozás cikkek Telegraf, InfluxDB, Prometheus és Docker használatával
- - [Az OSZTÁSJELEK verem Ubuntu 16.04 a rendszer metrikák figyelése](https://www.digitalocean.com/community/tutorials/how-to-monitor-system-metrics-with-the-tick-stack-on-ubuntu-16-04)
 
- - [Docker erőforrás metrikát Grafana, InfluxDB és Telegraf](https://blog.vpetkov.net/2016/08/04/monitor-docker-resource-metrics-with-grafana-influxdb-and-telegraf/)
+## <a name="optional-monitor-your-custom-metrics-in-the-same-grafana-server"></a>Választható lehetőség: Nyomon követheti a egyéni metrikákat Grafana ugyanazon a kiszolgálón
 
- - [A Docker gazdagépek, a tárolók és a tárolóalapú szolgáltatások figyelési megoldás](https://stefanprodan.com/2016/a-monitoring-solution-for-docker-hosts-containers-and-containerized-services/)
+Telegraf és InfluxDB összegyűjtésére és jeleníti meg a Grafana példányt is egyéni és az ügynök-alapú mérőszámok is telepítheti. Nincsenek sok adat forrása beépülő modulok, amelyekkel használhatja ezeket a metrikákat egy irányítópulton egyesítheti.
 
-Ez egy teljes Grafana irányítópult, amelyen a metrikák Azure figyelése és az Application Insights képe.
-![Grafana példa metrikák](.\media\monitor-how-to-grafana\grafana8.png)
+Ez a Prometheus kiszolgálóról metrikákkal egészítheti ki beállítása is felhasználhatja. Használja a Prometheus adatforrás beépülő modul a Grafana a beépülő modul gyűjteménye.
+
+Az alábbiakban útmutatással cikkek Telegraf, InfluxDB, Prometheus és a Docker használatával
+ - [Az OSZTÁSJELEK Stack ubuntu 16.04 rendszer metrikák figyelése](https://www.digitalocean.com/community/tutorials/how-to-monitor-system-metrics-with-the-tick-stack-on-ubuntu-16-04)
+
+ - [A Grafana, InfluxDB és Telegraf Docker erőforrás-metrikák figyelése](https://blog.vpetkov.net/2016/08/04/monitor-docker-resource-metrics-with-grafana-influxdb-and-telegraf/)
+
+ - [Docker-gazdagépek, a tárolók és a tárolóalapú szolgáltatásokat figyelési megoldást](https://stefanprodan.com/2016/a-monitoring-solution-for-docker-hosts-containers-and-containerized-services/)
+
+Íme egy teljes lesz a Grafana irányítópultja, amely rendelkezik az Azure Monitor és az Application Insights metrikáit képe.
+![Grafana például metrikák](.\media\monitor-how-to-grafana\grafana8.png)
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha a virtuális gépek futnak, függetlenül attól, hogy azokat, vagy nem van szó. További díjakat megcélzásával elkerülheti, törölje az erőforráscsoport létrehozásánál ebben a cikkben.
+Amikor a virtuális gépek futnak, akár használja őket, vagy nem számítunk fel. Felmerülő további költségek elkerülése érdekében, hogy törölni ebben a cikkben létrehozott erőforráscsoportot.
 
-1. Az Azure-portálon a bal oldali menüben kattintson a **erőforráscsoportok** majd **Grafana**.
-2. Az erőforrás csoport lapján kattintson a **törlése**, típus **Grafana** a szövegmezőbe, majd **törlése**.
+1. Az Azure Portal baloldali menüjében kattintson **erőforráscsoportok** majd **Grafana**.
+2. Az erőforráscsoport oldalán kattintson **törlése**, típus **Grafana** a szövegmezőbe, és kattintson a **törlése**.
 
 ## <a name="next-steps"></a>További lépések
-* [Az Azure figyelő metrikák áttekintése](monitoring-overview-metrics.md)
+* [Az Azure Monitor-metrikák áttekintése](monitoring-overview-metrics.md)

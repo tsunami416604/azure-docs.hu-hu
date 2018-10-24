@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 10/23/2018
 ms.author: dstefan
-ms.openlocfilehash: c8517114f51b5aed8f8e31a19b672721b109775e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: db6778bdea2e3e133535bf28b3c2297cdb65599d
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298302"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958907"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Az Azure Active Directory megvalósíthatósági fogalom forgatókönyv: építőelemek
 
@@ -150,7 +150,7 @@ Hozzávetőleges időt Complete: 60 perc
 | Az oktatóanyag összes szereplő Microsoft Documentation megosztása  | [Oktatóanyag: Azure Active Directory-integráció a servicenow segítségével](saas-apps/servicenow-tutorial.md) |
 | Egy működő értekezlet beállítása, és kövesse az oktatóanyag lépéseit az egyes színész. | [Oktatóanyag: Azure Active Directory-integráció a servicenow segítségével](saas-apps/servicenow-tutorial.md) |
 | Az előfeltételeket a csoporttal rendelni az alkalmazást. A POC feltételes hozzáféréssel rendelkezik a hatókörben, ha újra állítani, hogy később, és adja hozzá a többtényezős hitelesítés, és a hasonló. <br/>Vegye figyelembe, ez lesz pillanattal a kiépítési folyamat (Ha be van állítva) |  [Egy felhasználó vagy csoport hozzárendelése az Azure Active Directory vállalati alkalmazás](manage-apps/assign-user-or-group-access-portal.md) <br/>[Hozzon létre egy csoportot, és tagokat vehet fel a az Azure Active Directoryban](fundamentals/active-directory-groups-create-azure-portal.md) |
-| ServiceNow-alkalmazás hozzáadása a katalógusból az Azure AD felügyeleti portál használatával| [Az Azure AD felügyeleti portálra: vállalati alkalmazások](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/Overview) <br/>[Vállalati alkalmazások kezelése az Azure Active Directory újdonságai](active-directory-enterprise-apps-whats-new-azure-portal.md) |
+| ServiceNow-alkalmazás hozzáadása a katalógusból az Azure AD felügyeleti portál használatával| [Az Azure AD felügyeleti portálra: vállalati alkalmazások](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/Overview) <br/>[Oktatóanyag: Azure Active Directory-integráció a servicenow segítségével](saas-apps/servicenow-tutorial.md) |
 | "ServiceNow-alkalmazás"Egyszeri bejelentkezés"panel SAML-alapú bejelentkezés engedélyezése" |  |
 | Töltse ki a "Bejelentkezési URL-cím" és "Azonosító" mezőket a ServiceNow URL-címmel<br/>Az "Új tanúsítvány aktívvá tétele" jelölőnégyzetet<br/>és a beállítások mentése |  |
 | Nyissa meg a ServiceNow konfigurálását egyénileg kialakított utasításokat megtekintéséhez a panel alján lévő "Konfigurálás a ServiceNow" panel |  |
@@ -163,8 +163,7 @@ Hozzávetőleges időt Complete: 60 perc
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
-1. Fent [oktatóanyag](saas-apps/servicenow-tutorial.md) hivatkozik a régi Azure AD-kezelést. A PoC alapul, de [rövid](active-directory-enterprise-apps-whats-new-azure-portal.md#quickstart-get-going-with-your-new-application-right-away) tapasztalható.
-2. Ha a célként megadott alkalmazás nem szerepel a katalógusban, majd használhatja "Használata a saját alkalmazás". További információ: [vállalati alkalmazások kezelése az Azure Active Directory újdonságai: Adja hozzá az egyéni alkalmazások egy helyen](active-directory-enterprise-apps-whats-new-azure-portal.md#add-custom-applications-from-one-place)
+1. Ha a célként megadott alkalmazás nem szerepel a katalógusban, majd használhatja "Használata a saját alkalmazás". További információ: [konfigurálhatja az alkalmazásokat, amelyek nem szerepelnek az Azure AD alkalmazáskatalógusában](manage-apps/configure-single-sign-on-non-gallery-applications.md).
 
 ## <a name="saas-password-sso-configuration"></a>SaaS-jelszó egyszeri bejelentkezés konfigurálása
 
@@ -184,7 +183,7 @@ Hozzávetőleges teljes ideje: 15 perc
 | Lépés | További források |
 | --- | --- |
 | A webböngésző-bővítmény telepítése | [Hozzáférési Panel az Internet Explorer – bővítmény](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Hozzáférési Panel kiterjesztése a Chrome-ban](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Hozzáférési Panel kiterjesztése a Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
-| Alkalmazás-galériából konfigurálása | [Újdonságok a vállalati alkalmazások kezelése az Azure Active Directory: az új és továbbfejlesztett alkalmazáskatalógusában](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
+| Alkalmazás-galériából konfigurálása | [Oktatóanyag: Az SAML-alapú egyszeri bejelentkezés konfigurálása](manage-apps/configure-single-sign-on-portal.md) |
 | Jelszavas egyszeri Bejelentkezést konfigurálása | [Egyszeri bejelentkezés a vállalati alkalmazásokat az új Azure Portalon kezelése: jelszóalapú bejelentkezés](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).|
 | Az alkalmazás hozzárendelése az előfeltételeket a csoporttal | [Egy felhasználó vagy csoport hozzárendelése az Azure Active Directory vállalati alkalmazás](manage-apps/assign-user-or-group-access-portal.md) |
 | Jelentkezzen be https://myapps.microsoft.com/ teszt felhasználóként, amely hozzáféréssel rendelkezik |  |
@@ -195,10 +194,10 @@ Hozzávetőleges teljes ideje: 15 perc
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
-Ha a célként megadott alkalmazás nem szerepel a katalógusban, majd használhatja "Használata a saját alkalmazás". További információ: [vállalati alkalmazások kezelése az Azure Active Directory újdonságai: Adja hozzá az egyéni alkalmazások egy helyen](active-directory-enterprise-apps-whats-new-azure-portal.md#add-custom-applications-from-one-place)
+Ha a célként megadott alkalmazás nem szerepel a katalógusban, majd használhatja "Használata a saját alkalmazás". További információ: [konfigurálhatja az alkalmazásokat, amelyek nem szerepelnek az Azure AD alkalmazáskatalógusában](manage-apps/configure-single-sign-on-non-gallery-applications.md)
 
  Tartsa szem előtt az alábbi követelményeknek:
-   * Alkalmazásoknak rendelkezniük kell egy ismert bejelentkezési URL-címe
+   * Alkalmazásnak tartalmaznia kell egy ismert bejelentkezési URL-címe.
    * A bejelentkezési lap HTML-űrlapból az egy vagy több szöveges mező, amely a böngészőbővítmények auto-töltheti fel kell tartalmaznia. Mindenképpen felhasználónevet és jelszót kell tartalmaznia.
 
 ## <a name="saas-shared-accounts-configuration"></a>SaaS a megosztott fiókok konfigurációja
@@ -219,7 +218,7 @@ Hozzávetőleges teljes ideje: 30 perc
 | Lépés | További források |
 | --- | --- |
 | A webböngésző-bővítmény telepítése | [Hozzáférési Panel az Internet Explorer – bővítmény](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Hozzáférési Panel kiterjesztése a Chrome-ban](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Hozzáférési Panel kiterjesztése a Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
-| Alkalmazás-galériából konfigurálása | [Újdonságok a vállalati alkalmazások kezelése az Azure Active Directory: az új és továbbfejlesztett alkalmazáskatalógusában](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
+| Alkalmazás-galériából konfigurálása | [Oktatóanyag: Az SAML-alapú egyszeri bejelentkezés az alkalmazás konfigurálása](manage-apps/configure-single-sign-on-portal.md) |
 | Jelszavas egyszeri Bejelentkezést konfigurálása | [Egyszeri bejelentkezés a vállalati alkalmazásokat az új Azure Portalon kezelése: jelszóalapú bejelentkezés](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).|
 | Rendelje hozzá az alkalmazás a hitelesítő adatokkal való hozzárendelése közben az előfeltételeket csoporttal | [Egy felhasználó vagy csoport hozzárendelése az Azure Active Directory vállalati alkalmazás](manage-apps/assign-user-or-group-access-portal.md) |
 | Jelentkezzen be másik felhasználóként, hogy hozzáférési alkalmazást a **ugyanazt a közös fiókot.**  |  |
@@ -228,7 +227,7 @@ Hozzávetőleges teljes ideje: 30 perc
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
-Ha a célként megadott alkalmazás nem szerepel a katalógusban, majd használhatja "Használata a saját alkalmazás". További információ: [vállalati alkalmazások kezelése az Azure Active Directory újdonságai: Adja hozzá az egyéni alkalmazások egy helyen](active-directory-enterprise-apps-whats-new-azure-portal.md#add-custom-applications-from-one-place)
+Ha a célként megadott alkalmazás nem szerepel a katalógusban, majd használhatja "Használata a saját alkalmazás". További információ: [konfigurálása egyszeri bejelentkezéshez, az alkalmazásokat, amelyek nem szerepelnek az Azure AD alkalmazáskatalógusában](manage-apps/configure-single-sign-on-non-gallery-applications.md)
 
  Tartsa szem előtt az alábbi követelményeknek:
    * Alkalmazásoknak rendelkezniük kell egy ismert bejelentkezési URL-címe
@@ -364,7 +363,7 @@ Hozzávetőleges teljes ideje: 10 perc
 | Lépés | További források |
 | --- | --- |
 | Ugrás a vállalati alkalmazások panelen az Azure AD felügyeleti portálon | [Az Azure AD felügyeleti portálra: Vállalati alkalmazások](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) |
-| Az önkiszolgáló alkalmazás Előfeltételek konfigurálása | [Újdonságok a vállalati alkalmazások kezelése az Azure Active Directory: az önkiszolgáló alkalmazás-hozzáférés konfigurálása](active-directory-enterprise-apps-whats-new-azure-portal.md#configure-self-service-application-access) |
+| Az önkiszolgáló alkalmazás Előfeltételek konfigurálása | [Önkiszolgáló alkalmazás-hozzáférés konfigurálása](manage-apps/manage-self-service-access.md) |
 | Jelentkezzen be az információkkal dolgozó szakemberek saját alkalmazások portál számára | http://myapps.microsoft.com |
 | Figyelje meg, hogy a "+ Hozzáadás alkalmazás" gombra a lap op. Annak segítségével kérje le a hozzáférést az alkalmazáshoz |  |
 
@@ -480,7 +479,7 @@ Hozzávetőleges teljes ideje: 15 perc
 | Jelentkezzen be https://portal.azure.com egy globális rendszergazdai (elérhetővé tétel GA) és a rendszerindítási a PIM panel. A globális rendszergazda, amely végrehajtja ezt a lépést a biztonsági rendszergazda van áttöltésekor.  Adjuk a színész GA1 | [Az Azure AD Privileged Identity Management biztonsági varázslója használatával](privileged-identity-management/pim-security-wizard.md) |
 | Azonosítsa a globális rendszergazda, és át azokat állandó jogosulttá. Ez lehet egy külön rendszergazdai ajánlattartalomnak az 1. lépésben használt. Adjuk a színész GA2 | [Az Azure AD Privileged Identity Management: Hogyan lehet egy felhasználói szerepkör hozzáadása vagy eltávolítása](privileged-identity-management/pim-how-to-add-role-to-user.md)<br/>[Mi az Azure AD Privileged Identity Management?: a szerepkör-aktiválási beállítások konfigurálása](privileged-identity-management/pim-configure.md#configure-the-role-activation-settings)  |
 | Most jelentkezzen be a GA2 https://portal.azure.com , és próbálja meg módosítani a "Felhasználói beállítások". Figyelje meg, hogy néhány lehetőség szürkén jelennek meg. | |
-| Egy új lapon, és ugyanabban a munkamenetben, mint 3. lépés, nyissa meg most https://portal.azure.com és a PIM panel hozzáadása az irányítópulthoz. | [A PIM használatának megkezdése](privileged-identity-management/pim-getting-started.md) |
+| Egy új lapon, és ugyanabban a munkamenetben, mint 3. lépés, nyissa meg most https://portal.azure.com és a PIM panel hozzáadása az irányítópulthoz. | [Ismerkedés a PIM-mel](privileged-identity-management/pim-getting-started.md) |
 | A globális rendszergazdai szerepkörrel aktiválási kérelmeinek megadása | [Aktiválása vagy inaktiválása szerepkörök az Azure AD Privileged Identity Management: a szerepkör aktiválása](privileged-identity-management/pim-how-to-activate-role.md#activate-a-role) |
 | Vegye figyelembe, hogy ha GA2 soha nem jelentkezett az MFA-hoz, az Azure MFA regisztrációs szükség lesz |  |
 | Lépjen vissza a 3. lépésben az eredeti fülre, és a böngésző Frissítés gombjára. Vegye figyelembe, hogy mostantól hozzáférhet a "Felhasználói beállítások" módosítása | |

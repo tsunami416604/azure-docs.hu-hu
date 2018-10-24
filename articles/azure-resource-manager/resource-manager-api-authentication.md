@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: b841a1104a0cc1e74d9ab1f16ef39d3892ba7d55
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 69127702a7d8e7027e78a8e04a4e8e1bc3e36b65
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996689"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956340"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Erőforrás-kezelő használata hitelesítési API az előfizetések hozzáféréséhez
 ## <a name="introduction"></a>Bevezetés
@@ -94,7 +94,7 @@ Az eredmények tartalmazzák a AppId, amelyre akkor van szükség, ahol az alkal
 ### <a name="optional-configuration---certificate-credential"></a>Választható konfiguráció – tanúsítványalapú hitelesítő adatot
 Azure ad-ben is támogatja a tanúsítványalapú alkalmazásokhoz: hozzon létre egy önaláírt tanúsítvány, a titkos kulcs tároljuk, és a nyilvános kulcs hozzáadása az Azure AD-alkalmazás regisztrációja. A hitelesítéshez az alkalmazás Azure ad-hez, a titkos kulcs használatával aláírt küld el egy kis terhelés, és az Azure AD ellenőrzi az aláírást a nyilvános kulccsal, hogy regisztrált.
 
-Egy tanúsítványt az AD-alkalmazás létrehozásával kapcsolatos információkért lásd: [erőforrások eléréséhez az egyszerű szolgáltatás létrehozása az Azure PowerShell használatával](resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority) vagy [erőforrások eléréséhez egy szolgáltatásnév létrehozásához használható Azure CLI](resource-group-authenticate-service-principal-cli.md) .
+Egy tanúsítványt az AD-alkalmazás létrehozásával kapcsolatos információkért lásd: [erőforrások eléréséhez az egyszerű szolgáltatás létrehozása az Azure PowerShell használatával](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority) vagy [erőforrások eléréséhez egy szolgáltatásnév létrehozásához használható Azure CLI](resource-group-authenticate-service-principal-cli.md) .
 
 ## <a name="get-tenant-id-from-subscription-id"></a>Az előfizetés-azonosító Bérlőazonosító beszerzése
 A kérelem egy jogkivonatot, amely a Resource Manager hívja használhatók, az alkalmazás tudnia kell, a bérlő Azonosítóját az Azure AD-bérlő, amelyen az Azure-előfizetés. Nagy valószínűséggel a felhasználók tudják, hogy az előfizetés azonosítókat, de előfordulhat, hogy nem ismerik a bérlő azonosítók az Azure Active Directory. A felhasználó-Bérlőazonosító beszerzése, kérje meg a felhasználó számára az előfizetés azonosítóját. Adja meg az előfizetés AZONOSÍTÓJÁT az előfizetéssel kapcsolatos kérés küldésekor:
@@ -106,7 +106,7 @@ A kérelem meghiúsul, mert a felhasználó nem jelentkezett még, de a válasz 
 ## <a name="get-user--app-access-token"></a>Felhasználó + alkalmazás-hozzáférési jogkivonat beszerzése
 Az alkalmazás átirányítja a felhasználót az OAuth 2.0 engedélyezése kérelem - hitelesítéshez a felhasználó hitelesítő adatait, majd az engedélyezési kódot az Azure ad-hez. Az alkalmazás az engedélyezési kód használatával hozzáférési token lekérése a Resource Managerhez. A [ConnectSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/Controllers/HomeController.cs#L42) metódus az engedélyezési kérést hoz létre.
 
-Ez a cikk bemutatja a REST API-kérelem a felhasználó hitelesítéséhez. Segítő kódtárak használatával hitelesítést végezni a kódban. Ezek a kódtárak kapcsolatos további információkért lásd: [Azure Active Directory Authentication Libraries](../active-directory/active-directory-authentication-libraries.md). Identitáskezelés az alkalmazások integrálásával kapcsolatos útmutatásért lásd: [Azure Active Directory fejlesztői útmutatója](../active-directory/develop/azure-ad-developers-guide.md).
+Ez a cikk bemutatja a REST API-kérelem a felhasználó hitelesítéséhez. Segítő kódtárak használatával hitelesítést végezni a kódban. Ezek a kódtárak kapcsolatos további információkért lásd: [Azure Active Directory Authentication Libraries](../active-directory/active-directory-authentication-libraries.md). Identitáskezelés az alkalmazások integrálásával kapcsolatos útmutatásért lásd: [Azure Active Directory fejlesztői útmutatója](../active-directory/develop/v1-overview.md).
 
 ### <a name="auth-request-oauth-20"></a>Hitelesítési kérelem (OAuth 2.0)
 Egy nyílt ID Connect/OAuth2.0 engedélyezése kérelem kiadása az Azure AD-hitelesítési végpontra:

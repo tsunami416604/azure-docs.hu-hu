@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: ffd8a82fb03c23a661223e16e75d2964249d2b96
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 69802c6c4246b91f62a0e49ec0c34bdd3a1bec8b
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965823"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958420"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>A hozzáférés-vezérlés az Azure Media Services content protection rendszer tervezése
 
@@ -200,7 +200,7 @@ Végrehajtása a következő lépésekből áll:
 
 6. Hozzon létre néhány felhasználói fiókokat és csoportokat az Azure AD-bérlőben. Hozzon létre legalább egy "Jogosult felhasználó" csoportot, és a felhasználót a csoporthoz. Ez a csoport felhasználóinak a jogosultság-ellenőrzést licenc beszerzése adja át. Nem ebben a csoportban lévő felhasználók átadására a hitelesítés ellenőrzése sikertelen, és nem tudta beolvasni a licencet. A "Jogosult felhasználó" csoporttagság szükséges csoportok jogcím a kiállított Azure AD által a JWT. Ez a jogcím-követelmény az multi-DRM-licenctovábbítási szolgáltatások konfigurálásakor megadhatja a lépést.
 
-7. Hozzon létre egy ASP.NET MVC alkalmazás a videolejátszó üzemeltetéséhez. Az ASP.NET-alkalmazás az Azure AD-bérlő felhasználóhitelesítés védi. Megfelelő jogcím szerepel a felhasználói hitelesítés után kapott hozzáférési jogkivonatok. Javasoljuk, hogy OpenID Connect API-t ehhez a lépéshez. A következő NuGet-csomagok telepítéséhez:
+7. Hozzon létre egy ASP.NET MVC alkalmazás a videolejátszó üzemeltetéséhez. Az ASP.NET-alkalmazás az Azure AD-bérlő felhasználóhitelesítés védi. Megfelelő jogcím szerepel a felhasználói hitelesítés után kapott hozzáférési jogkivonatok. Javasoljuk, hogy OpenID Connect API-t ehhez a lépéshez. Telepítse az alábbi NuGet-csomagokat:
 
    * Install-Package Microsoft.Azure.ActiveDirectory.GraphClient
    * Install-Package Microsoft.Owin.Security.OpenIdConnect
@@ -225,7 +225,7 @@ További információkért lásd: [JWT jogkivonat-hitelesítés az Azure Media S
 
 Az Azure AD tájékoztatást:
 
-* A fejlesztői információkat a [Azure Active Directory fejlesztői útmutatója](../../active-directory/develop/azure-ad-developers-guide.md).
+* A fejlesztői információkat a [Azure Active Directory fejlesztői útmutatója](../../active-directory/develop/v1-overview.md).
 * A rendszergazdai információkért [felügyelheti az Azure AD-bérlő címtárát](../../active-directory/fundamentals/active-directory-administer.md).
 
 ### <a name="some-issues-in-implementation"></a>Bizonyos problémák végrehajtása

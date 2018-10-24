@@ -4,15 +4,15 @@ description: A gyűjtőberendezés az Azure Migrate ismerteti.
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/28/2018
+ms.date: 10/23/2018
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: b79045e54b9c2ee4846f2216704a419e0ff85501
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 3c40fd97540d8529c95c7d18d2c3155dd37717e9
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434432"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945416"
 ---
 # <a name="about-the-collector-appliance"></a>A gyűjtőberendezés kapcsolatban
 
@@ -170,7 +170,7 @@ Az OVA újra letöltése nélkül frissítheti a gyűjtő a legújabb verzióra.
 Két módszerrel, a gyűjtőberendezés felderítése, a felderítés egyszeri felderítés vagy a folyamatos felderítési használhat.
 
 
-### <a name="one-time-discovery"></a>Felderítés egyszeri felderítés
+### <a name="one-time-discovery"></a>Egyszeri felderítés
 
 A gyűjtő a vCenter Server kérdezze le a virtuális gépek metaadatait egyszeri kommunikál. Ezzel a módszerrel:
 
@@ -179,17 +179,23 @@ A gyűjtő a vCenter Server kérdezze le a virtuális gépek metaadatait egyszer
 - Ez a felderítési módszer esetében a statisztikai beállítások megadása a vCenter-kiszolgáló három szintre kell.
 - Biztonsági szint három, miután vesz igénybe naponta létrehozni a teljesítményszámlálók. Ezért javasoljuk, hogy a felderítés futtatásakor egy nap.
 - Teljesítményadatok összegyűjtése egy virtuális géphez, a berendezést a vCenter Serverben tárolt korábbi teljesítményadatok támaszkodik. Teljesítményelőzmények összegyűjti az elmúlt hónapban.
-- Az Azure Migrate minden metrika az átlagos számláló (helyett csúcs számláló) gyűjti.
+- Az Azure Migrate minden metrika, ami korrigáljuk méretezési átlagos számlálók (helyett csúcs számláló) gyűjti.
 
-### <a name="continuous-discovery"></a>Folyamatos felderítése
+### <a name="continuous-discovery"></a>Folyamatos felderítés
 
-A gyűjtőberendezés folyamatosan csatlakozik az Azure Migrate-projekt.
+A gyűjtőberendezés folyamatosan csatlakozik az Azure Migrate-projektben, és folyamatosan gyűjti a teljesítményadatokat a virtuális gépek.
 
 - A gyűjtő folyamatosan profilokat a helyszíni környezetben, valós idejű használati adatok gyűjtéséhez 20 másodpercenként.
 - Ez a modell nem függ a vCenter Server statisztikai beállításait teljesítményadatok gyűjtéséhez.
 - A berendezés összesíti a 20 másodperces mintákat, és létrehoz egy adatpont 15 percenként.
 - Az adatok létrehozásához a készülék pont csúcsértéke kiválasztja a 20 másodperces mintákat, és elküldi azt az Azure-bA.
 - Folyamatos profilkészítés címen bármikor a gyűjtő is leállíthatja.
+
+Vegye figyelembe, hogy a berendezés csak az folyamatosan teljesítményadatokat gyűjt, semmilyen konfigurálási változást nem észleli a helyszíni környezetben (pl. virtuális gép hozzáadása, törlése, lemez hozzáadása stb.). Ha egy konfigurációmódosítás a helyszíni környezetben, hogy tükrözzék a változásokat a portál a következőket teheti:
+
+1. További elemek (virtuális gépek, lemezek, magok stb.): A változásoknak az Azure Portalon, a felderítés a készülék leállítása és elindítása azt újra. Ez biztosítja, hogy a változtatások az Azure Migrate-projektben.
+
+2. Virtuális gépek törlése: lehet a célja, a készülék, virtuális gépek törlése nem jelenik meg akkor is, ha leállítja és elindítja a felderítést. Ennek az oka, hogy az ezt követő felderítések adatokat hozzáfűzi korábbi felderítések, és nem bírálja felül. Ebben az esetben egyszerűen figyelmen kívül hagyhatja a portálon, a virtuális gép eltávolítása a csoportból, és az értékelés újraszámításakor.
 
 > [!NOTE]
 > Folyamatos felderítési funkciója előzetes verzióban érhető el. Ha a vCenter Server statisztikai beállításait a 3. szintre nem, azt javasoljuk, hogy ezt a módszert használja.
@@ -241,8 +247,8 @@ virtualDisk.read.average | 2 | 2 | Kiszámítja a lemez mérete, a tárolási k�
 virtualDisk.write.average | 2 | 2  | Kiszámítja a lemez mérete, a tárolási költségeket, a virtuális gép mérete
 virtualDisk.numberReadAveraged.average | 1 | 3 |  Kiszámítja a lemez mérete, a tárolási költségeket, a virtuális gép mérete
 virtualDisk.numberWriteAveraged.average | 1 | 3 |   Kiszámítja a lemez mérete, a tárolási költségeket, a virtuális gép mérete
-NET.Received.average | 2 | 3 |  Kiszámítja a virtuális gép mérete és a hálózati költség                        |
-NET.transmitted.average | 2 | 3 | Kiszámítja a virtuális gép mérete és a hálózati költség    
+NET.Received.average | 2 | 3 |  Kiszámítja a virtuális gép mérete                          |
+NET.transmitted.average | 2 | 3 | Kiszámítja a virtuális gép mérete     
 
 ## <a name="next-steps"></a>További lépések
 

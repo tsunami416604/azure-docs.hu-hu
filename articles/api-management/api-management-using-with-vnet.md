@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: c94d4d4beea22e68a581cd208a25f915e4217614
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 843b03ce33d1897e2e985ac832f883e1fae12960
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870876"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49959043"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>A virtuális hálózatok az Azure API Management használata
 Az Azure virtuális hálózatok (Vnetek) helyezni, az Azure-erőforrások bármelyikét elérését Ön szabályozza a nem internet routeable hálózat teszi lehetővé. Ezek a hálózatok csatlakozhat a helyszíni hálózatokhoz való kapcsolódásának VPN különböző technológiákat. További információ az Azure-beli virtuális hálózatok Kezdje itt az adatokat további: [Azure Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md).
@@ -106,16 +106,17 @@ Az alábbiakban olyan gyakori, egy virtuális hálózatban az API Management szo
 
 Az API Management-szolgáltatáspéldány egy virtuális hálózaton jöhet szóba, ha a rendszer az alábbi táblázatban a portokat használja.
 
-| Forrás / cél port(ok) | Irány          | Átviteli protokoll | Forrás és cél                  | Cél (*)                                                 | Virtuális hálózat típusa |
+| Forrás / cél port(ok) | Irány          | Átviteli protokoll |   [Szolgáltatáscímkék](../virtual-network/security-overview.md#service-tags) <br> Forrás és cél   | Cél (*)                                                 | Virtuális hálózat típusa |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | * / 80, 443                  | Bejövő            | TCP                | AZ INTERNET / VIRTUAL_NETWORK            | Ügyfél-kommunikációt és az API Management                      | Külső             |
-| * / 3443                     | Bejövő            | TCP                | AZ APIMANAGEMENT / VIRTUAL_NETWORK       | Az Azure portal, Powershell felügyeleti végponthoz         | Külső és belső  |
+| * / 3443                     | Bejövő            | TCP                | Az ApiManagement / VIRTUAL_NETWORK       | Az Azure portal, Powershell felügyeleti végponthoz         | Külső és belső  |
 | * / 80, 443                  | Kimenő           | TCP                | VIRTUAL_NETWORK / Storage             | **Az Azure Storage függőség**                             | Külső és belső  |
-| * / 80, 443                  | Kimenő           | TCP                | VIRTUAL_NETWORK / INTERNET            | Az Azure Active Directory (ha vannak ilyenek)                   | Külső és belső  |
+| * / 80, 443                  | Kimenő           | TCP                | VIRTUAL_NETWORK / AzureActiveDirectory | Az Azure Active Directory (ha vannak ilyenek)                   | Külső és belső  |
 | * / 1433                     | Kimenő           | TCP                | VIRTUAL_NETWORK / SQL                 | **Hozzáférés az Azure SQL-végpontokra**                           | Külső és belső  |
 | * / 5672                     | Kimenő           | TCP                | VIRTUAL_NETWORK / EventHub            | Eseményközpont-szabályzat és a monitorozási ügynök a napló függőséget | Külső és belső  |
 | * / 445                      | Kimenő           | TCP                | VIRTUAL_NETWORK / Storage             | A git Azure-fájlmegosztás függőség                      | Külső és belső  |
 | * / 1886                     | Kimenő           | TCP                | VIRTUAL_NETWORK / INTERNET            | A Resource Health állapot közzététele szükséges          | Külső és belső  |
+| * / 443-as                     | Kimenő           | TCP                | VIRTUAL_NETWORK / AzureMonitor         | Közzététele a diagnosztikai naplók és mérőszámok                        | Külső és belső  |
 | * / 25                       | Kimenő           | TCP                | VIRTUAL_NETWORK / INTERNET            | Az e-mailek küldéséhez SMTP-továbbítás használata csatlakozáshoz                    | Külső és belső  |
 | * / 587                      | Kimenő           | TCP                | VIRTUAL_NETWORK / INTERNET            | Az e-mailek küldéséhez SMTP-továbbítás használata csatlakozáshoz                    | Külső és belső  |
 | * / 25028                    | Kimenő           | TCP                | VIRTUAL_NETWORK / INTERNET            | Az e-mailek küldéséhez SMTP-továbbítás használata csatlakozáshoz                    | Külső és belső  |

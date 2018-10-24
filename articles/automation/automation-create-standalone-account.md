@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 581e9d052738b8e1976a766ea6e3525ecf76d741
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: dc369f5bc3d80a476e45d46cfe25541216484b1c
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426430"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958805"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Önálló Azure Automation-fiók létrehozása
 
@@ -37,7 +37,7 @@ Ezek az Ön számára létrehozott fiókokhoz gyorsan megkezdheti létrehozásá
 Létrehozni vagy frissíteni egy Automation-fiókot, és ebben a cikkben ismertetett feladatok végrehajtásához, a következő jogosultságokkal és engedélyekkel kell rendelkeznie:
 
 * Az Automation-fiók létrehozása az Azure AD-felhasználói fiókot hozzá kell adni egy szerepkörhöz a tulajdonosi szerepkörével egyenértékű engedélyekkel **Microsoft. Automation** erőforrásokat. További információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure Automationben](automation-role-based-access-control.md).
-* Az Azure Portalon alatt **Azure Active Directory** > **kezelés** > **alkalmazásregisztrációk**, ha **alkalmazásregisztrációk**  értékre van állítva **Igen**, az Azure AD-bérlő nem rendszergazda jogosultságú felhasználói is [Active Directory-alkalmazások regisztrálását](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions). Ha **alkalmazásregisztrációk** értékre van állítva **nem**, ezt a műveletet végző felhasználót az Azure AD globális rendszergazdának kell lennie.
+* Az Azure Portalon alatt **Azure Active Directory** > **kezelés** > **alkalmazásregisztrációk**, ha **alkalmazásregisztrációk**  értékre van állítva **Igen**, az Azure AD-bérlő nem rendszergazda jogosultságú felhasználói is [Active Directory-alkalmazások regisztrálását](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). Ha **alkalmazásregisztrációk** értékre van állítva **nem**, ezt a műveletet végző felhasználót az Azure AD globális rendszergazdának kell lennie.
 
 Ha nem tagja az előfizetéshez tartozó Active Directory-példánynak, mielőtt hozzáadják az előfizetés globális rendszergazdai vagy coadministrator szerepkörhöz, akkor lesz hozzáadva az Active Directory vendégként. Ebben a forgatókönyvben a következő üzenet jelenik meg a **Automation-fiók hozzáadása** lap: "Nincs engedélye létrehozni."
 

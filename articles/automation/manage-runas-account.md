@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d2023d30cdb86a218d27024c8ccf0f397a7a5d09
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 569efa7fbbd111937f00ba3b1e28219c163e2221
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816609"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958159"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation futtató fiókok kezelése
 
@@ -50,7 +50,7 @@ Hozzon létre, vagy frissíteni egy futtató fiókot, jogosultságokkal és enge
 |Hozzon létre vagy egy Automation-kapcsolat eltávolítása|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|Az erőforráscsoporthoz közreműködő |
 
 * Című cikkben ismertetett módon Microsoft.Automation-erőforrások közreműködői szerepkörével egyenértékű engedélyekkel rendelkezik az AD-felhasználói fiókot [szerepköralapú hozzáférés-vezérlés az Azure Automationben](automation-role-based-access-control.md#contributor).  
-* Az Azure AD-bérlő nem rendszergazda jogosultságú felhasználói abban az esetben végezhetik el az [AD-alkalmazások regisztrálását](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions), ha az Azure AD-bérlő **Felhasználói beállítások** oldalán található **A felhasználók regisztrálhatnak alkalmazásokat** beállítás **Igen** értékre van állítva. Ha az Alkalmazásregisztrációk beállítás értéke **Nem**, ezt a műveletet csak az Azure AD globális rendszergazdái hajthatják végre.
+* Az Azure AD-bérlő nem rendszergazda jogosultságú felhasználói abban az esetben végezhetik el az [AD-alkalmazások regisztrálását](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions), ha az Azure AD-bérlő **Felhasználói beállítások** oldalán található **A felhasználók regisztrálhatnak alkalmazásokat** beállítás **Igen** értékre van állítva. Ha az Alkalmazásregisztrációk beállítás értéke **Nem**, ezt a műveletet csak az Azure AD globális rendszergazdái hajthatják végre.
 
 Ha nem tagja az előfizetéshez tartozó Active Directory-példánynak, mielőtt hozzáadják a globális rendszergazdai vagy társadminisztrátori szerepkörhöz az előfizetés, vendégként van hozzáadva. Ebben a helyzetben kap egy `You do not have permissions to create…` szóló figyelmeztetés a **Automation-fiók hozzáadása** lap. A globális rendszergazdai vagy társadminisztrátori szerepkörhöz hozzáadott felhasználók először eltávolíthatók az előfizetéshez tartozó Active Directory-példányból, majd újra hozzáadhatók, így teljes jogú felhasználók lehetnek az Active Directoryban. Ez a helyzet úgy ellenőrizhető, ha az Azure Portal **Azure Active Directory** panelén a **Felhasználók és csoportok** és a **Minden felhasználó** elemre kattint, majd a konkrét felhasználó kiválasztása után a **Profil** elemet választja. A felhasználók profilja alatti **Felhasználó típusa** attribútum értéke ne legyen **Guest** (vendég).
 

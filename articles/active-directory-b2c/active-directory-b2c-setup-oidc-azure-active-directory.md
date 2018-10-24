@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 10/22/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5f51fbff11412324ad167d49202f7215cefb5ac2
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: beb2d618d93f4c599f946194bd483326471065f4
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49076918"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944803"
 ---
 # <a name="set-up-sign-in-azure-active-directory-accounts-a-built-in-policy-in-azure-active-directory-b2c"></a>Állítsa be az Azure Active Directory-fiókok bejelentkezési beépített szabályzatot az Azure Active Directory B2C-vel
 
@@ -26,21 +26,18 @@ Ez a cikk bemutatja, hogyan való bejelentkezés engedélyezése a felhasználó
 
 ## <a name="create-an-azure-ad-app"></a>Az Azure AD-alkalmazás létrehozása
 
-Ahhoz, hogy jelentkezzen be egy meghatározott felhasználók számára az Azure AD a szervezeten belül, kell regisztrálni egy alkalmazást a szervezeti Azure AD-bérlővel.
-
->[!NOTE]
->`Contoso.com` a szervezeti használt Azure AD-bérlő és `fabrikamb2c.onmicrosoft.com` használja a következő utasítások az Azure AD B2C-bérlő.
+Ahhoz, hogy jelentkezzen be egy meghatározott felhasználók számára az Azure AD a szervezeten belül, kell regisztrálni egy alkalmazást a szervezeti Azure AD-bérlővel, amely nem ugyanaz, mint az Ön Azure AD B2C-bérlő.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Ellenőrizze, hogy a könyvtár, amely tartalmazza az Azure AD-bérlő (contoso.com) kattintson a címtár és előfizetés szűrőt a felső menüben majd a könyvtárat, amely tartalmazza az Azure AD-bérlő használata esetén.
+2. Ellenőrizze, hogy a könyvtár, amely tartalmazza az Azure AD-bérlő kattintson a címtár és előfizetés szűrőt a felső menüben majd a könyvtárat, amely tartalmazza az Azure AD-bérlő használata esetén.
 3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **alkalmazásregisztrációk**.
 4. Válassza az **Új alkalmazás regisztrálása** elemet.
 5. Adja meg az alkalmazás nevét. Például: `Azure AD B2C App`.
 6. Az a **alkalmazástípus**válassza `Web app / API`.
-7. A a **bejelentkezési URL-**, adja meg a következő URL-cím csupa kisbetűvel, ahol `your-tenant` váltja fel az Azure AD B2C-bérlő (fabrikamb2c.onmicrosoft.com) nevére:
+7. Az a **bejelentkezési URL-**, adja meg a következő URL-cím csupa kisbetűvel, ahol `your-B2C-tenant-name` váltja fel az Azure AD B2C-bérlő nevével. Ha például `https://fabrikam.b2clogin.com/fabrikam.b2clogin.com/oauth2/authresp`:
 
     ```
-    https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp
+    https://your-tenant-name.b2clogin.com/your-B2C-tenant-name.b2clogin.com/oauth2/authresp
     ```
 
     Most kell használnia az összes URL-címek [b2clogin.com](b2clogin.md).
@@ -49,21 +46,22 @@ Ahhoz, hogy jelentkezzen be egy meghatározott felhasználók számára az Azure
 9. Válassza ki az alkalmazást, és válassza **beállítások**.
 10. Válassza ki **kulcsok**, adja meg a kulcs leírása, és válassza ki az időtartamot, majd kattintson a **mentése**. Másolja későbbi felhasználás jelenik meg a kulcs értékét.
 
-## <a name="configure-azure-ad-as-an-identity-provider-in-your-tenant"></a>Konfigurálja az Azure AD Identitásszolgáltatóként a bérlőben
+## <a name="configure-azure-ad-as-an-identity-provider"></a>Konfigurálja az Azure AD identitás-szolgáltatóként
 
-1. Ellenőrizze, hogy a könyvtár, amely tartalmazza az Azure AD B2C-bérlő (fabrikamb2c.onmicrosoft.com) kattintva használ a **címtár és előfizetés-szűrő** a felső menüben, és az Azure AD B2C-t tartalmazó könyvtárra kiválasztása bérlő.
+1. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtár a **címtár és előfizetés-szűrő** a felső menüben, és kiválasztása az Azure AD B2C-bérlő tartalmazó könyvtárra.
 2. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
 3. Válassza ki **Identitásszolgáltatók**, majd válassza ki **Hozzáadás**.
 4. Adjon meg egy **neve**. Adja meg például a "Contoso Azure AD".
 5. Válassza ki **identitásszolgáltató típusa**válassza **Open ID Connect (előzetes verzió)**, és kattintson a **OK**.
 6. Kattintson a **az identitásszolgáltató beállítása**
-7. A **metaadatok URL-címe**, adja meg a következő URL-címet lecseréli `your-tenant` az Azure AD-bérlő nevét:
+7. A **metaadatok URL-címe**, adja meg a következő URL-címet lecseréli `your-AD-tenant-domain` a tartomány nevét az Azure AD-bérlő. Például `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`:
 
     ```
-    https://login.microsoftonline.com/your-tenant/.well-known/openid-configuration
+    https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
     ```
+
 8. A **ügyfél-azonosító**, adja meg a korábban feljegyzett Alkalmazásazonosító és a **titkos Ügyfélkód**, adja meg a korábban feljegyzett kulcs értékét.
-9. Szükség esetén adjon meg egy értéket **Domain_hint** (pl. `ContosoAD`). Ez az érték az identitásszolgáltató használatával való megnevezésekor használandó *domain_hint* a kérésben. 
+9. Szükség esetén adjon meg egy értéket **Domain_hint**. Például: `ContosoAD`. Ez az érték az identitásszolgáltató használatával való megnevezésekor használandó *domain_hint* a kérésben. 
 10. Kattintson az **OK** gombra.
 11. Válassza ki **ezen identitásszolgáltató jogcímeinek hozzárendelése** és állítsa be a következő jogcímek:
     

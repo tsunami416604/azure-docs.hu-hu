@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: danlep
-ms.openlocfilehash: 1347d3aac01c62040c164eee22c7a905b07e8236
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 67f8b49cd2205403dec8843beebb92c9f41f6e37
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816963"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955796"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>A Batch szolgáltatási megoldások és az Active Directory hitelesítést
 
@@ -374,7 +374,7 @@ Egyszerű szolgáltatás hitelesítő adatai segítségével nyissa meg a **Batc
 
 * Az Azure AD kapcsolatos további információkért tekintse meg a [Azure Active Directory dokumentációs](https://docs.microsoft.com/azure/active-directory/). Részletes példákat adal-t használó érhetők el a [Azure-Kódminták](https://azure.microsoft.com/resources/samples/?service=active-directory) könyvtár.
 
-* Szolgáltatásnevekkel kapcsolatos további tudnivalókért lásd: [alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md). Hozzon létre egy egyszerű szolgáltatást az Azure portal használatával, lásd: [Active Directory-alkalmazás és -erőforrások eléréséhez szolgáltatásnév létrehozása a portálon](../resource-group-create-service-principal-portal.md). PowerShell-lel vagy Azure CLI-vel is létrehozhat egy egyszerű szolgáltatást.
+* Szolgáltatásnevekkel kapcsolatos további tudnivalókért lásd: [alkalmazás és egyszerű szolgáltatási objektumok Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md). Hozzon létre egy egyszerű szolgáltatást az Azure portal használatával, lásd: [Active Directory-alkalmazás és -erőforrások eléréséhez szolgáltatásnév létrehozása a portálon](../active-directory/develop/howto-create-service-principal-portal.md). PowerShell-lel vagy Azure CLI-vel is létrehozhat egy egyszerű szolgáltatást.
 
 * Az Azure AD-vel Batch Management alkalmazások hitelesítéséhez, lásd: [az Active Directory hitelesítést Batch Management solutions](batch-aad-auth-management.md).
 

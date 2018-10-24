@@ -12,19 +12,19 @@ ms.author: moslake
 ms.reviewer: genemi, vanto
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 4540e5a0381bfbae65e4679878ec549f3169caf5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: b841f985c758cb1e354d3c3537c532a253e81d92
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467242"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945926"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: Hozzon létre egy virtuális szolgáltatás végpontját és a VNet szabály SQL
 
 Mindkét Azure [SQL Database](sql-database-technical-overview.md) és [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) virtuális Szolgáltatásvégpontok támogatja.
 
 > [!NOTE]
-> Ez a témakör az Azure SQL Server-kiszolgálókra, valamint az Azure SQL Serveren létrehozott SQL Database- és SQL Data Warehouse-adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database.
+> Ez a cikk az Azure SQL-kiszolgálóhoz, és az SQL Database és az SQL Data Warehouse-adatbázisok az Azure SQL-kiszolgálón létrehozott vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database. Ebben a cikkben leírtak *nem* a alkalmazni **Azure SQL Database felügyelt példányába** nincs egy felügyelt példány az alhálózatokhoz társított végpontot.
 
 Ez a cikk biztosít, és elmagyarázza, egy PowerShell-parancsprogram, amely a következő műveleteket hajtja végre:
 

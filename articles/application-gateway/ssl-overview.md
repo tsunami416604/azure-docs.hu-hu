@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/23/2018
 ms.author: amsriva
-ms.openlocfilehash: 626db07a81c6482a689329b8cddc9f40b464bb7e
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: e7020ef5c1f7411c7226e7a2db489112ee6bf0a4
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649074"
+ms.locfileid: "49945501"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Az Application Gatewayen engedélyezett teljes körű SSL áttekintése
 
@@ -47,7 +47,7 @@ A hitelesítési tanúsítványokat elavult, és az Application Gateway v2 szint
 
 ## <a name="next-steps"></a>További lépések
 
-Miután megismerkedett a teljes körű SSL-lel, tekintse át az [Alkalmazásátjáró konfigurálása az SSL leállításával az Azure Portalon](create-ssl-portal.md) témakört, amelyből megtudhatja, hogyan hozhat létre átjáróalkalmazást teljes körű SSL segítségével.
+Miután megismerkedett a teljes körű SSL, látogasson el [végpontok közötti SSL konfigurálása az Application Gateway a PowerShell használatával](application-gateway-end-to-end-ssl-powershell.md) hozhat létre átjáróalkalmazást teljes körű SSL segítségével.
 
 <!--Image references-->
 

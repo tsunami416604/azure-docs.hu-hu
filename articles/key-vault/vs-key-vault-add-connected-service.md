@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: 9cf49ae97da3bf67300bdc222c86bb712aeaed37
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: c90ef26c0170db67b1d422701b6969ca3f9c9e38
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465792"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958516"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault hozzáadása a webalkalmazás a Visual Studio csatlakoztatott szolgáltatásai segítségével
 
@@ -27,19 +27,19 @@ A módosításokat, hogy csatlakoztatott szolgáltatásai lehetővé teszi a pro
 ## <a name="prerequisites"></a>Előfeltételek
 
 - **Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
-- **A Visual Studio 2017 verzió 15.7** együtt a **webfejlesztés** számítási feladattal. [Töltse le most](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- A **Visual Studio 2017 15.7-es verziója**, telepített **webfejlesztési** számítási feladattal. [Ezt innen töltheti le](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 - ASP.NET (és nem alapvető) szüksége lesz a .NET-keretrendszer 4.7.1 fejlesztői eszközök, amelyek alapértelmezés szerint nincs telepítve. A telepítéshez indítsa el a Visual Studio telepítőjét, válassza a **módosítás**, és válassza a **az egyes összetevők**, majd a jobb oldalon bontsa ki a **ASP.NET és webfejlesztési**, és válassza a **4.7.1 .NET-keretrendszer fejlesztői eszközök**.
 - Egy ASP.NET 4.7.1 vagy ASP.NET Core 2.0-s webes projekt megnyitása.
 
 ## <a name="add-key-vault-support-to-your-project"></a>Key Vault támogatásának hozzáadása a projekthez
 
-1. A **Megoldáskezelőben**, válassza a **Hozzáadás** > **csatlakoztatott szolgáltatás**.
-   A projekthez is hozzáadhat szolgáltatásokat a csatlakoztatott szolgáltatás oldalon jelenik meg.
+1. A **Megoldáskezelőben** válassza az **Add** > **Connected Service** (Hozzáadás, Csatlakoztatott szolgáltatás) lehetőséget.
+   Megjelenik a Connected Service (Csatlakoztatott szolgáltatás) lap a projekthez adható szolgáltatásokkal.
 1. Elérhető szolgáltatások menüjében válassza **biztonságos titkos kulcsok az Azure Key Vault**.
 
    !["Az Azure Key Vault biztonságos titkoskulcs" kiválasztása](media/vs-key-vault-add-connected-service/KeyVaultConnectedService1.PNG)
 
-   Ha már bejelentkezett a Visual Studióban, és a fiókhoz társított Azure-előfizetéssel rendelkezik, megjelenik egy oldal, és a egy legördülő lista az összes előfizetés. Győződjön meg arról, hogy be van jelentkezve a Visual studióba, és ugyanazt a fiókot használja az Azure-előfizetését, hogy a fiók be van jelentkezve a következővel.
+   Ha bejelentkezett a Visual Studióba, és rendelkezik a fiókjához társított Azure-előfizetéssel, egy lap jelenik meg, amely az előfizetéseit tartalmazza egy legördülő listában. Győződjön meg arról, hogy be van jelentkezve a Visual studióba, és ugyanazt a fiókot használja az Azure-előfizetését, hogy a fiók be van jelentkezve a következővel.
 
 1. Válassza ki az előfizetést szeretné használni, és kattintson az új vagy meglévő kulcstároló, vagy válassza a Szerkesztés hivatkozásra módosíthatja az automatikusan létrehozott nevet.
 
@@ -138,7 +138,29 @@ A titkos kulcsok elérése:
       <h3>@ViewBag.Secret2</h3>
    ```
 
-Gratulálunk, mostantól meggyőződött róla, hogy a webalkalmazás használhat a Key Vault eléréséhez biztonságosan tárolt titkos kulcsok.
+1. Futtassa az alkalmazást helyileg, győződjön meg arról, hogy az Azure Portalon, a konfigurációs fájl nem a helyőrző értéket a megadott titkos érték olvashat.
+
+Ezután közzéteheti alkalmazását az Azure-bA.
+
+## <a name="publish-to-azure-app-service"></a>Közzététel az Azure App Service-ben
+
+1. Kattintson a jobb gombbal a projektcsomópontra, majd válassza **közzététel**. Megjelenik egy képernyő, amely szerint **válasszon egy közzétételi cél**. A bal oldalon válassza ki a **App Service-ben**, majd **hozzon létre új**.
+
+   ![Közzététel az App Service-ben](media/vs-key-vault-add-connected-service/AppServicePublish1.PNG)
+
+1. Az a **létrehozása App Service** képernyőn, győződjön meg arról, hogy az előfizetésben és erőforráscsoportban ugyanazt a Key Vault a létrehozott, és válassza ki, **létrehozás**.
+
+   ![App Service létrehozása](media/vs-key-vault-add-connected-service/AppServicePublish2.PNG)
+
+1. A webes alkalmazás létrehozása után a **közzététel** képernyő jelenik meg. Vegye figyelembe a közzétett webes alkalmazásba, az Azure-ban üzemeltetett URL-CÍMÉT. Ha látja **nincs** melletti **Key Vault**, továbbra is fennáll, ossza meg az App Service-ben való csatlakozáshoz milyen Key Vault. Válassza ki a **hozzáadása a Key Vault** hivatkozásra, és válassza ki a létrehozott Key Vault.
+
+   ![Adja hozzá a Key Vaulttal](media/vs-key-vault-add-connected-service/AppServicePublish3.PNG)
+
+   Ha látja **kezelése a Key Vault**, kattinthat, hogy az aktuális beállítások, szerkesztési engedéllyel megtekintése vagy módosítása a titkos kulcsok az Azure Portalon.
+
+1. Ezután válassza a webhely URL-címe hivatkozásra a webalkalmazás a böngészőben. Győződjön meg arról, hogy megjelenik-e a megfelelő értéket a Key vaultból.
+
+Gratulálunk, meggyőződött róla, hogy a webalkalmazás eléréséhez az Azure-ban biztonságosan tárolt titkos kulcsok a Key Vault használhatja.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

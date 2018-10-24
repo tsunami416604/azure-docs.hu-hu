@@ -16,14 +16,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: 9208f2cb207daff2b122550fede48a8dda11d1db
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 8a552356163e9c585ce9fea18e8cd5208c26a8be
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407926"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956357"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Az SAP NetWeaver számára az Azure virtuális gépek üzembe helyezése
+
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
 [826037]:https://launchpad.support.sap.com/#/notes/826037
@@ -317,18 +318,23 @@ Azure-beli virtuális gépek a megoldás olyan szervezeteknek, amelyek a szüks�
 Ez a cikk a virtuális gépek (VM) az Azure-ban, például az alternatív üzembe helyezési lehetőségeit, és hibaelhárítási SAP-alkalmazások telepítésének lépéseit ismerteti. Ebben a cikkben található információk épül [Azure Virtual Machines tervezési és megvalósítási az SAP NetWeaver számára][planning-guide]. Azt is egészíti ki a dokumentáció SAP és SAP-megjegyzések, amelyek az elsődleges erőforrások telepítéséhez és az SAP-szoftverek üzembe helyezésére.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Az SAP szoftver központi telepítése Azure virtuális gép beállítása magában foglalja a több lépéseket és erőforrások. Mielőtt elkezdené, győződjön meg róla, hogy megfelelnek-e az Azure-beli virtuális gépeken SAP-szoftverek telepítéséhez szükséges előfeltételeket.
 
 ### <a name="local-computer"></a>Helyi számítógép
+
 Windows vagy Linux rendszerű virtuális gépek kezelésére, használhatja a PowerShell-szkriptet, és az Azure Portalon. Mindkét eszközök Windows 7 vagy újabb verziója Windows rendszert futtató számítógépről kell. Ha csak a Linux rendszerű virtuális gépek kezeléséhez, és ebben a feladatban egy Linux rendszerű számítógép használni kívánt, Azure CLI-vel is használhatja.
 
 ### <a name="internet-connection"></a>Internetkapcsolat
+
 Töltse le és futtassa az eszközök és az SAP-szoftverek központi telepítéséhez szükséges parancsprogramok, akkor kapcsolódnia kell az internethez. Az Azure virtuális Gépen, amelyen fut az Azure Enhanced Monitoring bővítményt az SAP is el kell érnie az interneten. Ha az Azure virtuális Gépen egy Azure virtuális hálózat vagy a helyszíni tartomány része, ellenőrizze, hogy, hogy a megfelelő proxybeállítások, leírtak szerint [konfigurálni a proxyt][deployment-guide-configure-proxy].
 
 ### <a name="microsoft-azure-subscription"></a>Microsoft Azure-előfizetés
+
 Egy aktív Azure-fiókra van szüksége.
 
 ### <a name="topology-and-networking"></a>Topológia és a hálózatkezelés
+
 Meg kell határoznia a topológia és az SAP üzemelő példány architektúra az Azure-ban:
 
 * Azure storage-fiókot kell használni.
@@ -342,6 +348,7 @@ Meg kell határoznia a topológia és az SAP üzemelő példány architektúra a
 Létrehozása és konfigurálása az Azure storage-fiókok (ha szükséges) vagy Azure virtuális hálózatok, az SAP szoftvertelepítési folyamat megkezdése előtt. Hozzon létre, és ezeket az erőforrásokat konfigurálása kapcsolatos információkért lásd: [Azure Virtual Machines tervezési és megvalósítási az SAP NetWeaver számára][planning-guide].
 
 ### <a name="sap-sizing"></a>SAP méretezése
+
 A következő adatokat, az SAP méretezéshez tudnia:
 
 * Tervezett SAP számítási feladatok, például az SAP gyors Szimbólumméretező eszközt, és a SAP alkalmazás teljesítményének Standard (SAP) száma
@@ -351,11 +358,13 @@ A következő adatokat, az SAP méretezéshez tudnia:
 * Szükséges hálózati sávszélesség között a helyszíni eszközök és az Azure által üzembe helyezett SAP-rendszerhez
 
 ### <a name="resource-groups"></a>Erőforráscsoportok
+
 Az Azure Resource Manager erőforráscsoportokat használhatja az alkalmazás-erőforrások kezelése az Azure-előfizetésében. További információkért lásd: [Azure Resource Manager áttekintése][resource-group-overview].
 
 ## <a name="resources"></a>További források
 
 ### <a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>Az SAP-erőforrások
+
 Amikor állítja be az SAP szoftver központi telepítése, az alábbi SAP-erőforrások szüksége:
 
 * SAP-Jegyzetnek [1928533], amely rendelkezik:
@@ -380,6 +389,7 @@ Amikor állítja be az SAP szoftver központi telepítése, az alábbi SAP-erőf
 * Az SAP-specifikus Azure CLI-parancsokat, amelyek részei [Azure CLI-vel][azure-cli].
 
 ### <a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>Windows-erőforrások
+
 Ezek a cikkek a Microsoft Azure-beli SAP-környezetekhez terjed ki:
 
 * [Az Azure virtuális gépek tervezése és megvalósítása SAP NetWeaver][planning-guide]
@@ -387,9 +397,11 @@ Ezek a cikkek a Microsoft Azure-beli SAP-környezetekhez terjed ki:
 * [Az SAP NetWeaver számára az Azure Virtual Machines DBMS üzembe helyezése][dbms-guide]
 
 ## <a name="b3253ee3-d63b-4d74-a49b-185e76c4088e"></a>Azure virtuális gépeken SAP-szoftverek központi telepítési forgatókönyvei
+
 Több lehetőség áll rendelkezésére az Azure-ban társított lemezek és virtuális gépek üzembe helyezéséhez. Fontos központi telepítési lehetőségek közötti különbségek megértéséhez, mert előfordulhat, hogy a virtuális gépek előkészítése a választott központi telepítési típus alapján különböző lépések végrehajtása.
 
 ### <a name="db477013-9060-4602-9ad4-b0316f8bb281"></a>1. forgatókönyv: Az SAP üzembe helyezése egy virtuális Gépet az Azure Marketplace-ről
+
 A virtuális gép üzembe helyezéséhez használhatja a Microsoft vagy az Azure piactér a harmadik fél által biztosított rendszerképet. A piactér egyes szabványos operációsrendszer-lemezképek a Windows Server és a különböző Linux-disztribúciót kínál. Is telepítheti egy lemezképet, amely tartalmazza az adatbázis-kezelő rendszer (DBMS) SKU-k, például a Microsoft SQL Server. Képek DBMS termékváltozatok való használatával kapcsolatos további információkért lásd: [SAP NetWeaver az Azure Virtual Machines DBMS üzembe][dbms-guide].
 
 Az alábbi folyamatábra bemutatja egy virtuális Gépet az Azure Marketplace-ről telepítésének lépéseit a SAP-specifikus folyamata:
@@ -397,6 +409,7 @@ Az alábbi folyamatábra bemutatja egy virtuális Gépet az Azure Marketplace-r�
 ![Az SAP-rendszereit az Azure Marketplace-ről egy Virtuálisgép-lemezkép használatával a virtuális gép üzembe helyezésének folyamatábrája][deployment-guide-figure-100]
 
 #### <a name="create-a-virtual-machine-by-using-the-azure-portal"></a>Virtuális gép létrehozása az Azure portal használatával
+
 Az új virtuális gép létrehozása az Azure Piactérről származó lemezkép legegyszerűbben az Azure portal használatával.
 
 1.  Nyissa meg a következőt: <https://portal.azure.com/#create/hub>.  Vagy az Azure portál menüjében válassza **+ új**.
@@ -419,7 +432,7 @@ A varázsló végigvezeti Önt az összes szükséges erőforrást, például a 
      Támogatott Virtuálisgép-típusok listáját, tekintse meg az SAP-Jegyzetnek [1928533]. Győződjön meg arról, hogy a helyes VM-típust választja, ha azt szeretné használni az Azure Premium Storage. Nem minden Virtuálisgép-típusokat támogatja a Premium Storage. További információkért lásd: [Storage: a Microsoft Azure Storage és az adatlemezek] [ planning-guide-storage-microsoft-azure-storage-and-data-disks] és [Azure Premium Storage] [ planning-guide-azure-premium-storage] a [ Az Azure virtuális gépek tervezése és megvalósítása SAP NetWeaver][planning-guide].
 
 1. **Beállítások**:
-  * **Storage**
+  * **Tárolás**
     * **Lemez típusa**: válassza ki az operációsrendszer-lemez a lemez típusát. Ha azt szeretné, prémium szintű Storage használata az adatlemezek, prémium szintű Storage, valamint az operációsrendszer-lemez használatát javasoljuk.
     * **Felügyelt lemezek használata**: Ha azt szeretné, felügyelt lemezeket használni, válassza az Igen lehetőséget. Felügyelt lemezekkel kapcsolatos további információkért lásd: fejezet [Managed Disks] [ planning-guide-managed-disks] a tervezési útmutatóban.
     * **Storage-fiók**: Válasszon ki egy meglévő tárfiókot vagy hozzon létre egy újat. Nem minden tárolási típusok futó SAP-alkalmazások esetében működik. További információ a tárolási típusok: [a Microsoft Azure Storage] [ dbms-guide-2.3] a [SAP NetWeaver az Azure Virtual Machines DBMS üzembe] [ dbms-guide].
@@ -440,6 +453,7 @@ A varázsló végigvezeti Önt az összes szükséges erőforrást, például a 
 A virtuális gép telepítve van a kiválasztott erőforráscsoportban.
 
 #### <a name="create-a-virtual-machine-by-using-a-template"></a>Virtuális gép létrehozása sablon használatával
+
 Létrehozhat egy virtuális gépet a közzétett SAP-sablonok használatával a [azure-gyorssablonok GitHub-adattár][azure-quickstart-templates-github]. Emellett manuálisan létrehozhat egy virtuális gép használatával a [az Azure portal][virtual-machines-windows-tutorial], [PowerShell][virtual-machines-ps-create-preconfigure-windows-resource-manager-vms], vagy [Azure CLI] [virtual-machines-linux-tutorial].
 
 * [**Kétrétegű konfigurációja (csak egy virtuális gép) sablon** (sap-2-szint-marketplace-lemezkép)][sap-templates-2-tier-marketplace-image]
@@ -493,23 +507,29 @@ Az Azure Portalon adja meg a sablon a következő paraméterekkel:
 Az Azure Virtuálisgép-ügynök alapértelmezés szerint telepítve van, az Azure Piactérről származó lemezkép használatakor.
 
 #### <a name="configure-proxy-settings"></a>Proxybeállítások konfigurálása
+
 A helyszíni hálózat konfigurációjától függően szükség lehet a virtuális Gépen a proxy beállítása. Ha a virtuális gép csatlakoztatva van a helyszíni hálózat, a virtuális gép VPN vagy ExpressRoute-n keresztül nem lehet csatlakozni az internethez, és nem tudják letölteni a szükséges bővítmények vagy figyelési adatokat gyűjteni. További információkért lásd: [konfigurálni a proxyt][deployment-guide-configure-proxy].
 
 #### <a name="join-a-domain-windows-only"></a>Csatlakozás tartományhoz (csak Windows)
+
 Ha egy helyszíni Active Directory vagy a DNS-példányt az Azure site-to-site VPN-kapcsolat vagy ExpressRoute-n keresztül csatlakozik az Azure-alapú (ezt nevezik *létesítmények közötti* a [Azure virtuális gépek tervezése és az SAP NetWeaver megvalósítása][planning-guide]), valószínű, hogy a virtuális gép csatlakozik egy helyszíni tartományban. Ez a feladat szempontjai kapcsolatos további információkért lásd: [csatlakoztatni egy virtuális Gépet egy helyszíni tartományban (csak Windows)][deployment-guide-4.3].
 
 #### <a name="ec323ac3-1de9-4c3a-b770-4ff701def65b"></a>Figyelés konfigurálása
+
 SAP, hogy támogatja-e a környezet beállítása az SAP az Azure Monitoring bővítmény leírtak szerint [konfigurálása az Azure Enhanced Monitoring bővítményt az SAP][deployment-guide-4.5]. SAP-figyelés az Előfeltételek ellenőrzése és a szükséges minimális verziója a SAP Kernel és SAP gazdagép-ügynök, az erőforrások szereplő [SAP erőforrások][deployment-guide-2.2].
 
 #### <a name="monitoring-check"></a>Figyelésének ellenőrzése
+
 Ellenőrizze, hogy figyelési működik, leírtak szerint [ellenőrzési és hibaelhárítási lehetőségek teljes körű figyelési beállításának][deployment-guide-troubleshooting-chapter].
 
 #### <a name="post-deployment-steps"></a>Üzembe helyezés utáni lépések
+
 Miután létrehozta a virtuális gép és a virtuális gép üzemel, a szükséges összetevők telepítését a virtuális gépen kell. Az ilyen típusú virtuális gépek üzembe helyezése az üzembe helyezés/szoftverfrissítési telepítés feladatütemezési miatt a szoftver telepítése már elérhetőnek kell lennie, vagy az Azure-ban, egy másik virtuális Géphez, vagy csatolt lemez. Másik lehetőségként fontolja meg egy létesítmények közötti forgatókönyv, mely a helyszíni kapcsolat az eszközök (telepítési megosztások) van megadva.
 
 Miután telepítette a virtuális gép az Azure-ban, hajtsa végre az irányelvek és az eszközöket, az SAP-szoftverek telepítése a virtuális Gépen, mint a helyszíni környezetben. SAP-szoftverek telepítése egy Azure-beli virtuális gépen, SAP és a Microsoft javasolja, hogy töltse fel, és az Azure virtuális merevlemezek vagy a Managed Disks tárolnia az SAP telepítési adathordozóján, vagy létrehozhat egy Azure virtuális Gépen, amely működik, mint egy fájlkiszolgálóval, amely rendelkezik az összes szükséges SAP telepítési adathordozót.
 
 ### <a name="54a1fc6d-24fd-4feb-9c57-ac588a55dff2"></a>2. forgatókönyv: Az SAP üzembe helyezése egy virtuális gép egyéni rendszerképpel
+
 Mert az operációs rendszer vagy az adatbázis-kezelő különböző verziói különböző patch-követelményekkel rendelkeznek, a képek, az Azure Marketplace-en található előfordulhat, hogy nem az igényeinek. Ehelyett érdemes a saját operációs rendszer/adatbázis-kezelő Virtuálisgép-rendszerképet, amelyeket később újra üzembe a virtuális gép létrehozásához.
 Különböző lépések segítségével hozzon létre egy a Windows mint Linux-privát rendszerkép létrehozása.
 
@@ -532,6 +552,7 @@ Az alábbi folyamatábra bemutatja a SAP-specifikus lépéssorozattal egyéni re
 ![Az SAP-rendszereinket privát piactéren Virtuálisgép-rendszerkép használatával a virtuális gép üzembe helyezésének folyamatábrája][deployment-guide-figure-300]
 
 #### <a name="create-a-virtual-machine-by-using-the-azure-portal"></a>Virtuális gép létrehozása az Azure portal használatával
+
 Az új virtuális gép létrehozása felügyelt lemez rendszerképének a legegyszerűbben az Azure portal használatával. Kezelése lemezképét létrehozásával kapcsolatos további információkért olvassa el [az Azure-beli általánosított virtuális gép felügyelt rendszerképének rögzítése](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)
 
 1.  Nyissa meg a következőt: <https://ms.portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Compute%2Fimages>. Vagy az Azure portál menüjében válassza **lemezképek**.
@@ -551,7 +572,7 @@ A varázsló végigvezeti Önt az összes szükséges erőforrást, például a 
      Támogatott Virtuálisgép-típusok listáját, tekintse meg az SAP-Jegyzetnek [1928533]. Győződjön meg arról, hogy a helyes VM-típust választja, ha azt szeretné használni az Azure Premium Storage. Nem minden Virtuálisgép-típusokat támogatja a Premium Storage. További információkért lásd: [Storage: a Microsoft Azure Storage és az adatlemezek] [ planning-guide-storage-microsoft-azure-storage-and-data-disks] és [Azure Premium Storage] [ planning-guide-azure-premium-storage] a [ Az Azure virtuális gépek tervezése és megvalósítása SAP NetWeaver][planning-guide].
 
 1. **Beállítások**:
-  * **Storage**
+  * **Tárolás**
     * **Lemez típusa**: válassza ki az operációsrendszer-lemez a lemez típusát. Ha azt szeretné, prémium szintű Storage használata az adatlemezek, prémium szintű Storage, valamint az operációsrendszer-lemez használatát javasoljuk.
     * **Felügyelt lemezek használata**: Ha azt szeretné, felügyelt lemezeket használni, válassza az Igen lehetőséget. Felügyelt lemezekkel kapcsolatos további információkért lásd: fejezet [Managed Disks] [ planning-guide-managed-disks] a tervezési útmutatóban.
   * **Hálózat**
@@ -569,7 +590,9 @@ A varázsló végigvezeti Önt az összes szükséges erőforrást, például a 
   Tekintse át a beállításokat, és válassza ki **OK**.
 
 A virtuális gép telepítve van a kiválasztott erőforráscsoportban.
+
 #### <a name="create-a-virtual-machine-by-using-a-template"></a>Virtuális gép létrehozása sablon használatával
+
 Üzembe helyezés létrehozása egy privát operációsrendszer-lemezkép az Azure Portal használatával, használja az alábbi SAP-sablonok egyikét. Ezek a sablonok teszik közzé a [azure-gyorssablonok GitHub-adattár][azure-quickstart-templates-github]. Emellett manuálisan létrehozhat egy virtuális gép használatával [PowerShell][virtual-machines-upload-image-windows-resource-manager].
 
 * [**Kétrétegű konfigurációja (csak egy virtuális gép) sablon** (sap-2-szint – felhasználói-lemezkép)][sap-templates-2-tier-user-image]
@@ -622,22 +645,28 @@ Az Azure Portalon adja meg a sablon a következő paraméterekkel:
 1.  Válassza a **Beszerzés** lehetőséget.
 
 #### <a name="install-the-vm-agent-linux-only"></a>Telepítse a Virtuálisgép-ügynök (csak Linux)
+
 Az előző szakaszban leírt a sablonok használatához a Linux-ügynök már telepítve kell lennie a felhasználói lemezkép, vagy a telepítés meghiúsul. Töltse le és telepítse a Virtuálisgép-ügynök a felhasználói lemezkép leírtak szerint [letöltése, telepítése és engedélyezése az Azure Virtuálisgép-ügynök][deployment-guide-4.4]. Ha nem használja a sablonokat, is telepítheti a Virtuálisgép-ügynök később.
 
 #### <a name="join-a-domain-windows-only"></a>Csatlakozás tartományhoz (csak Windows)
+
 Ha egy helyszíni Active Directory vagy a DNS-példányt az Azure site-to-site VPN-kapcsolat vagy Azure ExpressRoute használatával csatlakozik az Azure-alapú (ezt nevezik *létesítmények közötti* a [Azure Virtual machines szolgáltatásban tervezés és megvalósítás az SAP NetWeaver számára][planning-guide]), valószínű, hogy a virtuális gép csatlakozik egy helyszíni tartományban. Ebben a lépésben szempontjai kapcsolatos további információkért lásd: [csatlakoztatni egy virtuális Gépet egy helyszíni tartományban (csak Windows)][deployment-guide-4.3].
 
 #### <a name="configure-proxy-settings"></a>Proxybeállítások konfigurálása
+
 A helyszíni hálózat konfigurációjától függően szükség lehet a virtuális Gépen a proxy beállítása. Ha a virtuális gép csatlakoztatva van a helyszíni hálózat, a virtuális gép VPN vagy ExpressRoute-n keresztül nem lehet csatlakozni az internethez, és nem tudják letölteni a szükséges bővítmények vagy figyelési adatokat gyűjteni. További információkért lásd: [konfigurálni a proxyt][deployment-guide-configure-proxy].
 
 #### <a name="configure-monitoring"></a>Figyelés konfigurálása
+
 SAP, hogy támogatja-e a környezet beállítása az SAP az Azure Monitoring bővítmény leírtak szerint [konfigurálása az Azure Enhanced Monitoring bővítményt az SAP][deployment-guide-4.5]. SAP-figyelés az Előfeltételek ellenőrzése és a szükséges minimális verziója a SAP Kernel és SAP gazdagép-ügynök, az erőforrások szereplő [SAP erőforrások][deployment-guide-2.2].
 
 #### <a name="monitoring-check"></a>Figyelésének ellenőrzése
+
 Ellenőrizze, hogy figyelési működik, leírtak szerint [ellenőrzési és hibaelhárítási lehetőségek teljes körű figyelési beállításának][deployment-guide-troubleshooting-chapter].
 
 
 ### <a name="a9a60133-a763-4de8-8986-ac0fa33aa8c1"></a>3. forgatókönyv: Egy a helyszíni virtuális gép áthelyezése az SAP az Azure nem általánosított virtuális merevlemez használatával
+
 Ebben a forgatókönyvben áthelyezését tervezi egy megadott SAP-rendszer egy a helyszíni környezetből az Azure-bA. Ehhez a virtuális Merevlemezt, amely rendelkezik az operációs rendszer, az SAP bináris fájljait és végül az adatbázis-kezelő bináris fájljainak, valamint a virtuális merevlemezek feltöltését a adathoz és naplófájlhoz az adatbázis-kezelő, az Azure-ba, a. Ismertetett forgatókönyv eltérően [2. forgatókönyv: egyéni rendszerkép rendelkező virtuális gép telepítése az SAP][deployment-guide-3.3], ebben az esetben az állomásnevet, SAP SID, maradjon, és SAP-felhasználói fiókok az Azure-beli virtuális gépen, mert a megadott konfiguráció a helyszíni környezetben. Nem kell az operációs rendszert általánosítani. Ebben a forgatókönyvben általában létesítmények közötti forgatókönyvek, ahol részei az SAP-rendszeren fut, a helyszíni és a egy része futtatható Azure-on vonatkozik.
 
 Ebben a forgatókönyvben a Virtuálisgép-ügynök nem **nem** automatikusan telepített üzembe helyezés során. Mivel a Virtuálisgép-ügynök és az Azure Enhanced Monitoring bővítményt az SAP az SAP NetWeaver futtatása az Azure-ban van szükség, akkor kell letöltése, telepítése és a virtuális gép létrehozása után manuálisan engedélyezze a mindkét összetevő.
@@ -664,6 +693,7 @@ Az alábbi folyamatábra bemutatja a feladatütemezési lépéseket egy helyszí
 Ha a lemez már feltöltött és az Azure-ban definiált (lásd: [Azure Virtual Machines tervezési és megvalósítási az SAP NetWeaver számára][planning-guide]), hajtsa végre a tevékenységek leírása a következő néhány szakaszban.
 
 #### <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
+
 Üzembe helyezés létrehozása az Azure Portalon keresztül egy privát operációsrendszer-lemez használatával, a SAP-sablont, a közzétett használja a [azure-gyorssablonok GitHub-adattár][azure-quickstart-templates-github]. Emellett manuálisan létrehozhat egy virtuális gépet PowerShell-lel.
 
 * [**Kétrétegű konfigurációja (csak egy virtuális gép) sablon** (sap-2-szint – felhasználó-lemez)][sap-templates-2-tier-os-disk]
@@ -703,23 +733,29 @@ Az Azure Portalon adja meg a sablon a következő paraméterekkel:
 1.  Válassza a **Beszerzés** lehetőséget.
 
 #### <a name="install-the-vm-agent"></a>Virtuálisgép-ügynök telepítése
+
 Az előző szakaszban leírt a sablonok használatához a virtuális gép ügynököt telepíteni kell az operációsrendszer-lemez a, vagy a telepítés meghiúsul. Töltse le és telepítse a Virtuálisgép-ügynököt a virtuális gép leírtak szerint [letöltése, telepítése és engedélyezése az Azure Virtuálisgép-ügynök][deployment-guide-4.4].
 
 Ha nem használja a sablonokat az előző szakaszban leírt, később is telepítheti a Virtuálisgép-ügynök.
 
 #### <a name="join-a-domain-windows-only"></a>Csatlakozás tartományhoz (csak Windows)
+
 Ha egy helyszíni Active Directory vagy a DNS-példányt az Azure site-to-site VPN-kapcsolat vagy ExpressRoute-n keresztül csatlakozik az Azure-alapú (ezt nevezik *létesítmények közötti* a [Azure virtuális gépek tervezése és az SAP NetWeaver megvalósítása][planning-guide]), valószínű, hogy a virtuális gép csatlakozik egy helyszíni tartományban. Ez a feladat szempontjai kapcsolatos további információkért lásd: [csatlakoztatni egy virtuális Gépet egy helyszíni tartományban (csak Windows)][deployment-guide-4.3].
 
 #### <a name="configure-proxy-settings"></a>Proxybeállítások konfigurálása
+
 A helyszíni hálózat konfigurációjától függően szükség lehet a virtuális Gépen a proxy beállítása. Ha a virtuális gép csatlakoztatva van a helyszíni hálózat, a virtuális gép VPN vagy ExpressRoute-n keresztül nem lehet csatlakozni az internethez, és nem tudják letölteni a szükséges bővítmények vagy figyelési adatokat gyűjteni. További információkért lásd: [konfigurálni a proxyt][deployment-guide-configure-proxy].
 
 #### <a name="configure-monitoring"></a>Figyelés konfigurálása
+
 SAP, hogy támogatja-e a környezet beállítása az SAP az Azure Monitoring bővítmény leírtak szerint [konfigurálása az Azure Enhanced Monitoring bővítményt az SAP][deployment-guide-4.5]. SAP-figyelés az Előfeltételek ellenőrzése és a szükséges minimális verziója a SAP Kernel és SAP gazdagép-ügynök, az erőforrások szereplő [SAP erőforrások][deployment-guide-2.2].
 
 #### <a name="monitoring-check"></a>Figyelésének ellenőrzése
+
 Ellenőrizze, hogy figyelési működik, leírtak szerint [ellenőrzési és hibaelhárítási lehetőségek teljes körű figyelési beállításának][deployment-guide-troubleshooting-chapter].
 
 ## <a name="update-the-monitoring-configuration-for-sap"></a>Az SAP-figyelési konfigurációjának frissítése
+
 Az alábbi esetek bármelyikében SAP figyelési konfigurációjának frissítése:
 * A közös Microsoft/SAP csapata figyelési bővíti ki, és több vagy kevesebb számlálók kér.
 * A Microsoft elérhetővé tette az alapul szolgáló Azure-infrastruktúra, amely a monitorozási adatokat biztosít egy új verziója, és az Azure Enhanced Monitoring bővítményt az SAP kell ezeket a módosításokat kell igazítani.
@@ -730,9 +766,11 @@ Az alábbi esetek bármelyikében SAP figyelési konfigurációjának frissíté
 Monitoringbeállítások frissítése, frissítse a figyelési infrastruktúra a lépéseket követve [konfigurálása az Azure Enhanced Monitoring bővítményt az SAP][deployment-guide-4.5].
 
 ## <a name="detailed-tasks-for-sap-software-deployment"></a>SAP szoftver központi telepítése tartozó feladatok részletesen
+
 Ez a szakasz részletesen a konfigurációs és központi telepítési folyamata konkrét feladatok végrehajtására vonatkozó lépések.
 
 ### <a name="604bcec2-8b6e-48d2-a944-61b0f5dee2f7"></a>Azure PowerShell-parancsmagok telepítése
+
 1.  Lépjen a [letölti a Microsoft Azure](https://azure.microsoft.com/downloads/).
 1.  Alatt **parancssori eszközök**alatt **PowerShell**válassza **Windows telepítése**.
 1.  A letöltött fájl (például WindowsAzurePowershellGet.3f.3f.3fnew.exe), a Microsoft letöltési Manager párbeszédpanelen jelölje ki **futtatása**.
@@ -761,6 +799,7 @@ Ha a számítógépen telepített Azure parancsmag verzió aktuális verzióját
 <a name="figure-7"></a>
 
 ### <a name="1ded9453-1330-442a-86ea-e0fd8ae8cab3"></a>Az Azure CLI telepítése
+
 1.  Lépjen a [letölti a Microsoft Azure](https://azure.microsoft.com/downloads/).
 1.  A **parancssori eszközök**alatt **Azure parancssori felület**, jelölje be a **telepítése** hivatkozást az operációs rendszer.
 1.  A letöltött fájl (például WindowsAzureXPlatCLI.3f.3f.3fnew.exe), a Microsoft letöltési Manager párbeszédpanelen jelölje ki **futtatása**.
@@ -785,16 +824,19 @@ Az eredmény a következőhöz hasonló:
 <a name="0ad010e6-f9b5-4c21-9c09-bb2e5efb3fda"></a>
 
 ### <a name="31d9ecd6-b136-4c73-b61e-da4a29bbc9cc"></a>Virtuális gépek csatlakoztatása egy helyszíni tartományban (csak Windows)
+
 Ha Ön egy létesítmények közötti forgatókönyv, ahol a helyszíni Active Directory és DNS az Azure-ban vannak bővítve, SAP virtuális gépek üzembe helyezése várható, hogy a virtuális gépek csatlakozik egy helyszíni tartományban. A részletes lépéseket, virtuális gépek csatlakoztatása egy helyszíni tartományban, és a egy a helyszíni tartomány tagja lehet szükséges további szoftvereket ügyfél változik. Általában egy virtuális gép csatlakoztatása egy helyszíni tartományban, szeretne további szoftverek, például a kártevőirtó szoftver, és a biztonsági mentési vagy figyelési szoftver telepítése.
 
 Ebben a forgatókönyvben, emellett győződjön meg arról, hogy ha az internetes proxybeállítások kényszerített vannak, amikor egy virtuális gép csatlakozik egy tartományhoz, a környezetében, a Windows helyi rendszerfiók (S-1-5 – 18) a Vendég virtuális gépen a proxybeállításokat. A legegyszerűbb lehetőség, hogy a proxy kényszerítheti a tartomány csoportházirend, amely a tartomány rendszerekre vonatkozik.
 
 ### <a name="c7cbb0dc-52a4-49db-8e03-83e7edc2927d"></a>Letöltése, telepítése és az Azure Virtuálisgép-ügynök engedélyezése
+
 Nincs általánosítva (például képet, amely nem származnak, a Windows rendszer-előkészítés, vagy a sysprep eszközzel) operációs rendszer lemezképből üzembe helyezett virtuális gépek esetén kell manuálisan letöltése, telepítése és az Azure Virtuálisgép-ügynök engedélyezése.
 
 Ha egy virtuális Gépet az Azure Marketplace-ről telepíti, ezt a lépést, nem szükséges. Az Azure Piactérről származó rendszerképek az Azure Virtuálisgép-ügynök már rendelkezik.
 
 #### <a name="b2db5c9a-a076-42c6-9835-16945868e866"></a>Windows
+
 1.  Az Azure Virtuálisgép-ügynök letöltése:
   1.  Töltse le a [Azure Virtuálisgép-ügynököt a telepítőcsomag](https://go.microsoft.com/fwlink/?LinkId=394789).
   1.  A Virtuálisgép-ügynök MSI-csomag Store helyileg egy személyi számítógép vagy a kiszolgálón.
@@ -808,6 +850,7 @@ Ha egy virtuális Gépet az Azure Marketplace-ről telepíti, ezt a lépést, ne
 Az Azure Virtuálisgép-ügynök frissítéséhez szükséges nincs szükség felhasználói beavatkozásra. A Virtuálisgép-ügynök automatikusan frissül, és nem igényel a virtuális gép újraindítása.
 
 #### <a name="6889ff12-eaaf-4f3c-97e1-7c9edc7f7542"></a>Linux
+
 A következő parancsokat használja a Virtuálisgép-ügynök telepítése Linux rendszeren:
 
 * **SUSE Linux Enterprise Server (SLES)**
@@ -825,9 +868,11 @@ A következő parancsokat használja a Virtuálisgép-ügynök telepítése Linu
 Ha az ügynök már telepítve van, az Azure Linux-ügynök frissítéséhez tegye leírt lépéseket követve [egy virtuális gépen az Azure Linux-ügynök frissítése a legújabb verzióra a Githubról][virtual-machines-linux-update-agent].
 
 ### <a name="baccae00-6f79-4307-ade4-40292ce4e02d"></a>A proxy konfigurálása
+
 A lépéseket, a proxy konfigurálása a Windows nem azonosak a úgy kell konfigurálni a proxyt a Linux.
 
 #### <a name="windows"></a>Windows
+
 Proxybeállítások megfelelően a helyi rendszerfiók interneteléréssel kell állítani. Ha a proxybeállításokat nem a csoportházirend-beállításokat, konfigurálhatja a helyi rendszer fiók beállításait.
 
 1. Lépjen a **Start**, adja meg **gpedit.msc**, majd válassza ki **Enter**.
@@ -840,6 +885,7 @@ Proxybeállítások megfelelően a helyi rendszerfiók interneteléréssel kell 
 1. Az a **kivételek** adja meg az IP-cím **168.63.129.16**. Kattintson az **OK** gombra.
 
 #### <a name="linux"></a>Linux
+
 Konfigurálja a megfelelő proxyt a konfigurációs fájlban, a Microsoft Azure-Vendégügynök, amely a következő helyen található \\stb\\waagent.conf.
 
 Állítsa be a következő paraméterekkel:
@@ -880,11 +926,13 @@ A proxybeállítások \\stb\\waagent.conf is alkalmazni kell a szükséges Virtu
 Felhasználó által megadott útvonalakkal kapcsolatos további információkért lásd: [felhasználó által megadott útvonalak és IP-továbbítás][virtual-networks-udr-overview].
 
 ### <a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>Az SAP az Azure fejlett figyelési bővítmény konfigurálása
+
 Amikor előkészítése után a virtuális gép leírtak szerint [virtuális gépek az Azure-beli SAP telepítési forgatókönyvek][deployment-guide-3], az Azure Virtuálisgép-ügynök telepítve van a virtuális gépen. A következő lépés, hogy üzembe helyezése az Azure Enhanced Monitoring bővítményt az SAP, amely a globális Azure-adatközpontok Azure-bővítmény tárházban érhető el. További információkért lásd: [Azure Virtual Machines tervezési és megvalósítási az SAP NetWeaver számára][planning-guide-9.1].
 
 PowerShell vagy az Azure CLI segítségével telepítheti és konfigurálhatja az Azure Enhanced Monitoring bővítményt az SAP. A bővítmény telepítése a Windows vagy Linux rendszerű virtuális gépek által egy Windows-gépen: [Azure PowerShell-lel][deployment-guide-4.5.1]. A bővítmény telepítése egy Linux rendszerű virtuális gépen a Linux rendszerű asztali: [Azure CLI-vel][deployment-guide-4.5.2].
 
 #### <a name="987cf279-d713-4b4c-8143-6b11589bb9d4"></a>A Linux és Windows virtuális gépek Azure PowerShell-lel
+
 Az Azure Enhanced Monitoring bővítményt az SAP telepítése a PowerShell használatával:
 
 1. Győződjön meg arról, hogy telepítette-e a legújabb Azure PowerShell-parancsmag. További információkért lásd: [üzembe helyezése az Azure PowerShell-parancsmagok][deployment-guide-4.1].  
@@ -917,6 +965,7 @@ A parancsfájl kimenete a következő információkat tartalmazza:
 * Várjon 15 – 30 percet, a vonatkozó adatok összegyűjtése az Azure diagnosztikai.
 
 #### <a name="408f3779-f422-4413-82f8-c57a23b4fc2f"></a>Linux rendszerű virtuális gépekhez az Azure CLI
+
 Az Azure Enhanced Monitoring bővítményt az SAP telepítése az Azure CLI-vel:
 
    1. Az Azure klasszikus parancssori felület telepítése leírtak szerint [a klasszikus Azure CLI telepítése][azure-cli].
@@ -974,11 +1023,13 @@ Az Azure Enhanced Monitoring bővítményt az SAP telepítése az Azure CLI-vel:
    ```
 
 ## <a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>Ellenőrzési és hibaelhárítási lehetőségek teljes körű figyelés
+
 Után üzembe helyezve az Azure virtuális gép, és állítsa be a megfelelő Azure figyelési infrastruktúra, ellenőrizze, hogy az Azure Enhanced Monitoring bővítményt minden összetevőjének várt módon működnek-e.
 
 A készültség-ellenőrzés futtatása a az Azure Enhanced Monitoring bővítményt az SAP leírtak szerint [készültség-ellenőrzés a az Azure Enhanced Monitoring bővítményt az SAP][deployment-guide-5.1]. Ha az összes készenléti ellenőrzésének az eredménye pozitív, és minden kapcsolódó teljesítményszámlálókat OK jelennek meg, az Azure monitoring be lett állítva sikeresen. Folytathatja az SAP-gazdagép-ügynök telepítése a SAP-megjegyzések leírtak szerint [SAP erőforrások][deployment-guide-2.2]. Ha a készültség-ellenőrzés azt jelzi, hogy a számlálók hiányoznak, futtassa az állapot-ellenőrzés az Azure figyelési infrastruktúra leírtak szerint [Azure figyelési infrastruktúra konfigurálása-állapotellenőrzés] [ deployment-guide-5.2]. A további hibaelhárítási lehetőségekről [hibaelhárítása Azure monitoring for SAP][deployment-guide-5.3].
 
 ### <a name="bb61ce92-8c5c-461f-8c53-39f5e5ed91f2"></a>Az Azure Enhanced Monitoring bővítményt az SAP készültség ellenőrzése
+
 Ez az ellenőrzés gondoskodik arról, hogy a metrikák jelennek meg az SAP alkalmazáson belül, az alapul szolgáló Azure figyelési infrastruktúra által biztosított.
 
 #### <a name="run-the-readiness-check-on-a-windows-vm"></a>A Windows virtuális gép készültség-ellenőrzés futtatása
@@ -1005,6 +1056,7 @@ Ha nincs telepítve az Azure Enhanced Monitoring bővítményt, vagy a AzureEnha
 > 
 
 ##### <a name="check-the-output-of-azperflibexe"></a>Ellenőrizze a azperflib.exe kimenete
+
 Azperflib.exe megjelenítheti az összes Azure teljesítményszámlálók feltöltve az SAP. Gyűjtött teljesítményszámlálók listája alján összegzéseket és az egészségügyi mutató megjelenítése az Azure figyelési állapotát.
 
 ![Állapot-ellenőrzés végrehajtásával azperflib.exe, ami azt jelzi, hogy nincsenek-e problémák létezik kimenete][deployment-guide-figure-1100]
@@ -1076,6 +1128,7 @@ Ha már van telepítve az SAP NetWeaver ABAP-alkalmazáskiszolgáló, nyissa meg
 Ha minden ellenőrzés nem sikerül, és ismételt üzembe helyezése a bővítmény kapcsolatos részletes információkért lásd: [az SAP az Azure figyelési infrastruktúra hibaelhárítási][deployment-guide-5.3].
 
 ### <a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Az Azure figyelési infrastruktúra konfigurálásának állapotának ellenőrzése
+
 Ha egyes figyelési adatokat nem kézbesíti a rendszer a teszt leírt aszinkronitást megfelelően [készültség-ellenőrzés az Azure SAP Enhanced Monitoring][deployment-guide-5.1]futtassa a `Test-AzureRmVMAEMExtension` parancsmaggal ellenőrizheti-e a Az Azure SAP-infrastruktúra és a figyelés típusú kiterjesztés figyelése megfelelően vannak konfigurálva.
 
 1.  Győződjön meg arról, hogy telepítette-e a legújabb Azure PowerShell-parancsmag leírtak szerint [üzembe helyezése az Azure PowerShell-parancsmagok][deployment-guide-4.1].
@@ -1104,19 +1157,23 @@ Győződjön meg arról, hogy minden állapot-ellenőrzés eredménye **OK**. Ha
 ### <a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>Az SAP az Azure figyelési infrastruktúra hibaelhárítása
 
 #### <a name="windowslogowindows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Az Azure teljesítményszámlálók nem minden jelennek meg
+
 A AzureEnhancedMonitoring Windows szolgáltatás adatokat gyűjt a teljesítmény-mérőszámok az Azure-ban. Ha a szolgáltatás nem lett megfelelően telepítve, vagy ha a virtuális gép nem fut, nincs teljesítmény-mérőszámok lehessen gyűjteni.
 
 ##### <a name="the-installation-directory-of-the-azure-enhanced-monitoring-extension-is-empty"></a>A telepítési könyvtár, az Azure Enhanced Monitoring bővítményt nem üres
 
 ###### <a name="issue"></a>Probléma
+
 A telepítési könyvtár: C:\\csomagok\\beépülő modulok\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;verzió >\\dobja el az üres.
 
 ###### <a name="solution"></a>Megoldás
+
 A bővítmény nincs telepítve. Határozza meg, hogy ez-e a proxyval kapcsolatos probléma (a korábban ismertetett). Indítsa újra a gépet, vagy futtassa újra a szüksége lehet a `Set-AzureRmVMAEMExtension` konfigurációs parancsfájlt.
 
 ##### <a name="service-for-azure-enhanced-monitoring-does-not-exist"></a>Az Azure Enhanced Monitoring szolgáltatás nem létezik.
 
 ###### <a name="issue"></a>Probléma
+
 A AzureEnhancedMonitoring Windows szolgáltatás nem létezik.
 
 Azperflib.exe kimenet hibát jelez:
@@ -1125,6 +1182,7 @@ Azperflib.exe kimenet hibát jelez:
 <a name="figure-14"></a>
 
 ###### <a name="solution"></a>Megoldás
+
 Ha a szolgáltatás nem létezik, az Azure Enhanced Monitoring bővítményt az SAP nem lett megfelelően telepítve. Telepítse újra a bővítmény az üzembe helyezési forgatókönyvnek leírt lépéseket követve [központi telepítési forgatókönyvei az SAP az Azure-beli virtuális gépek][deployment-guide-3].
 
 A bővítmény telepítése egy óra múlva, után ellenőrizze újra-e az Azure teljesítményszámlálók találhatók-e az Azure-beli virtuális gépen.
@@ -1132,30 +1190,37 @@ A bővítmény telepítése egy óra múlva, után ellenőrizze újra-e az Azure
 ##### <a name="service-for-azure-enhanced-monitoring-exists-but-fails-to-start"></a>Az Azure Enhanced Monitoring szolgáltatás létezik, de nem indul el
 
 ###### <a name="issue"></a>Probléma
+
 A AzureEnhancedMonitoring Windows szolgáltatás létezik, és engedélyezve van, de nem indul el. További információkért tekintse meg az alkalmazások eseménynaplójában.
 
 ###### <a name="solution"></a>Megoldás
+
 A konfiguráció helytelen. Indítsa újra a monitorozási bővítményt a virtuális gép leírtak szerint [konfigurálása az Azure Enhanced Monitoring bővítményt az SAP][deployment-guide-4.5].
 
 #### <a name="windowslogowindows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] Hiányoznak egyes Azure-teljesítményszámlálók
+
 A AzureEnhancedMonitoring Windows szolgáltatás adatokat gyűjt a teljesítmény-mérőszámok az Azure-ban. A szolgáltatás több forrásból származó adatok beolvasása. Helyileg összegyűjtött konfigurációs adatokat, és néhány teljesítmény-mérőszámok az Azure Diagnostics olvasható. A tároló előfizetési szinten a naplózási tároló számlálói használtak.
 
 Ha az SAP-Jegyzetnek hibaelhárítási [1999351] nem oldja meg a problémát, futtassa újra a `Set-AzureRmVMAEMExtension` konfigurációs parancsfájl. Várjon egy órát, mert storage analytics vagy a diagnosztika számlálók előfordulhat, hogy nem hozható létre, után azonnal engedélyezve vannak, előfordulhat, hogy rendelkezik. Ha a probléma tartósan fennáll, az összetevő BC-OP-NT-AZR Windows vagy BC-OP-LNX-AZR Linuxos virtuális gépek SAP customer támogatási üzenet megnyitása.
 
 #### <a name="linuxlogolinux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Az Azure teljesítményszámlálók nem minden jelennek meg
+
 A démon által gyűjtött teljesítmény-mérőszámok az Azure-ban. Ha a démon nem fut, nincs teljesítmény-mérőszámok lehessen gyűjteni.
 
 ##### <a name="the-installation-directory-of-the-azure-enhanced-monitoring-extension-is-empty"></a>A telepítési könyvtár, az Azure Enhanced Monitoring bővítményt nem üres
 
 ###### <a name="issue"></a>Probléma
+
 A könyvtár \\var\\lib\\waagent\\ nem rendelkezik az Azure Enhanced Monitoring bővítményt alkönyvtárat.
 
 ###### <a name="solution"></a>Megoldás
+
 A bővítmény nincs telepítve. Határozza meg, hogy ez-e a proxyval kapcsolatos probléma (a korábban ismertetett). Indítsa újra a gépet, és futtassa újra a szüksége lehet a `Set-AzureRmVMAEMExtension` konfigurációs parancsfájlt.
 
 ##### <a name="the-execution-of-set-azurermvmaemextension-and-test-azurermvmaemextension-show-warning-messages-stating-that-standard-managed-disks-are-not-supported"></a>A Set-AzureRmVMAEMExtension és Test-AzureRmVMAEMExtension végrehajtásának arról, hogy az standard szintű felügyelt lemezek használata nem támogatott figyelmeztető üzenetek megjelenítése
 
 ###### <a name="issue"></a>Probléma
+
 Ha az alábbiakhoz hasonló végrehajtó Set-AzureRmVMAEMExtension és Test-AzureRmVMAEMExtension üzenetek jelennek meg:
 
 <pre><code>
@@ -1167,10 +1232,12 @@ WARNING: [WARN] Standard Managed Disks are not supported. Extension will be inst
 Azperfli.exe végrehajtása a fentebb leírt módon kérheti le, amely jelzi a nem kifogástalan állapot eredményt. 
 
 ###### <a name="solution"></a>Megoldás
+
 Az üzenetek a tény, hogy standard szintű Managed Disks nem kézbesítéséhez a monitorozási bővítményt használják, a standard szintű Azure-Tárfiókok statistics ellenőrizheti az API-k által okozott. Ez a nem aggodalmat. Bemutatkozik a Standard Disk Storage-fiókok figyelési okát gyakran előforduló i/o volt szabályozás. A felügyelt lemezek ilyen szabályozás korlátozza a tárfiókban lévő lemezek számát a rendszer működésében. Nem rendelkezik az adott típusú figyelési adatok ezért nem kritikus fontosságú.
 
 
 #### <a name="linuxlogolinux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Hiányoznak egyes Azure-teljesítményszámlálók
+
 Adatok beolvasása számos forrásból származó démon által gyűjtött teljesítmény-mérőszámok az Azure-ban. Helyileg összegyűjtött konfigurációs adatokat, és néhány teljesítmény-mérőszámok az Azure Diagnostics olvasható. Storage-számlálók a naplókat tároló előfizetését származnak.
 
 Ismert problémák teljes és naprakész listája, tekintse meg az SAP-Jegyzetnek [1999351], amely további információkat talál a továbbfejlesztett Azure Monitoring for SAP rendelkezik.

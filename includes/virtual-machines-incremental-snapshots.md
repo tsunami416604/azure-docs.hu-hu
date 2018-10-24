@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 88a9348ea7d6282b7410d5a323fd482dc82416c6
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 06e6e491fa1e9a047527efb78149855b125771ef
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45979578"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49960214"
 ---
 # <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>Készítsen biztonsági másolatot az Azure nem felügyelt Virtuálisgép-lemezek növekményes pillanatképekkel
 ## <a name="overview"></a>Áttekintés
@@ -66,7 +66,7 @@ Ha egy egyéni biztonsági mentési stratégia pillanatképekkel rendelkezik, m�
 Növekményes pillanatkép-másolás valósítható meg az alábbiak szerint
 
 * Pillanatkép készítése a kiinduló blob használatával [Blob pillanatkép](https://docs.microsoft.com/rest/api/storageservices/Snapshot-Blob).
-* A pillanatkép másolása a célként megadott biztonsági mentési tárfiók tárfiókkulcsait [a Blob másolásához](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob). Ez az a biztonsági mentési lapblob. Pillanatkép készítése a biztonsági mentési lapblob, és tárolja a biztonsági mentési fiók.
+* A pillanatkép másolása a célként megadott biztonsági mentési tárfiók azonos, vagy bármely más Azure-régió használatával [a Blob másolásához](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob). Ez az a biztonsági mentési lapblob. Pillanatkép készítése a biztonsági mentési lapblob, és tárolja a biztonsági mentési fiók.
 * Készítsen másik pillanatképet, az alap blob pillanatkép Blob használatával.
 * A különbség az alapszintű blob használatával az első és második pillanatképek beolvasása [GetPageRanges](https://docs.microsoft.com/rest/api/storageservices/Get-Page-Ranges). Az új paraméterrel **prevsnapshot**, a pillanatkép szeretne kapni a különbség az a dátum/idő értéket adjon meg. Ha a paraméter meg lett adva, a REST-válasz csak a cél pillanatkép és az előző pillanatképet, beleértve az oldalak törlése közötti módosított lapok magában foglalja.
 * Használat [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) a alkalmazni ezeket a módosításokat a biztonsági mentési lapblob.

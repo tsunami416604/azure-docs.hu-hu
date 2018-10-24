@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/11/2018
+ms.date: 10/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6723cf8cc18637c157b295361425357e1c47ec2e
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: eea12a0a31d11065ebdc2cbef556b84df1ace750
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007161"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945195"
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Erőforrások szakaszában található Azure Resource Manager-sablonok
 
@@ -83,13 +83,13 @@ Az alábbi struktúra használatával erőforrásokat határoz meg:
 
 | Elem neve | Szükséges | Leírás |
 |:--- |:--- |:--- |
-| feltétel | Nem | Logikai érték, amely azt jelzi, hogy az erőforrás jön létre a központi telepítés során. Amikor `true`, az erőforrás létrehozása az üzembe helyezés során. Amikor `false`, az erőforrást a rendszer kihagyta a központi telepítéshez. |
+| feltétel | Nem | Logikai érték, amely azt jelzi, hogy az erőforrás jön létre a központi telepítés során. Amikor `true`, üzembe helyezés során az erőforrás létrehozása. Amikor `false`, az erőforrást a rendszer kihagyta a központi telepítéshez. |
 | apiVersion |Igen |Az erőforrás létrehozásához használt REST API-verzió. |
 | type |Igen |Az erőforrás típusát. Ezt az értéket a névteret, az erőforrás-szolgáltató és az erőforrástípus kombinációja (például **Microsoft.Storage/storageAccounts**). |
 | név |Igen |Az erőforrás neve. A név RFC3986 meghatározott URI-összetevőt korlátozásokat kell követnie. Emellett az Azure-szolgáltatások elérhetővé az erőforrás neve kívüli felek ellenőrzése, hogy a név nem egy másik identitását meghamisítását tett kísérlet. |
 | location |Változó |Támogatott a megadott erőforráscsoport földrajzi helyét. Az elérhető helyek közül választhat, de általában logikus válasszon egyet a felhasználók közelében van. Általában is logikus helyezni erőforrásokat, amelyek ugyanabban a régióban léphetnek kapcsolatba egymással. A legtöbb erőforrástípusok szüksége egy olyan helyre, de bizonyos típusú (például a szerepkör-hozzárendelés) egy olyan helyre nem igényelnek. |
 | tags |Nem |Az erőforráshoz tartozó címkék. Hogy logikusan rendszerezhesse az erőforrások az előfizetésen címkékkel. |
-| Megjegyzések |Nem |Dokumentálja a sablonban az erőforrásokat a megjegyzések |
+| hozzászólások |Nem |Dokumentálja a sablonban az erőforrásokat a megjegyzések |
 | másolás |Nem |Ha több példány van szükség, az erőforrások létrehozásához számát. Az alapértelmezett mód párhuzamos. Adja meg a soros módra, amikor nem szeretné, hogy az összes vagy egy időben üzembe helyezendő erőforrásokat. További információkért lásd: [több erőforráspéldány létrehozása az Azure Resource Manager](resource-group-create-multiple.md). |
 | dependsOn |Nem |Az erőforrások telepíteni kell az erőforrás üzembe van helyezve. Resource Manager kiértékeli az erőforrások közti függőségeket, és a megfelelő sorrendben telepíti azokat. Ha az erőforrások nem függ egymástól, hogy helyezésük párhuzamosan. Az érték lehet egy erőforrás vesszővel elválasztott listáját nevét vagy az erőforrás egyedi azonosítók. Ez a sablon üzembe helyezett erőforrások csak listája. A sablonban nem meghatározott erőforrások már léteznie kell. Kerülje a szükségtelen függőségek hozzáadása a telepítéshez lelassíthatja, és hozzon létre körkörös függőségi. Beállítás függőségekkel kapcsolatos útmutatásért lásd: [függőségek meghatározása az Azure Resource Manager-sablonok](resource-group-define-dependencies.md). |
 | properties |Nem |Erőforrás-specifikus konfigurációs beállításokat. A tulajdonságok értékei ugyanazok, mint a REST API-művelet (PUT metódust) az erőforrás létrehozásához nyújt a kérelem törzsében szereplő értékek. Megadhat egy másolási tömböt egy tulajdonságot több példányát is. |
@@ -100,7 +100,9 @@ Az alábbi struktúra használatával erőforrásokat határoz meg:
 
 ## <a name="condition"></a>Állapot
 
-Ha el kell döntenie, üzembe helyezés során e hozzon létre egy erőforrást, használja a `condition` elemet. Ez az elem értéke IGAZ vagy hamis értéket mutat. Ha az értéke true, az erőforrás jön létre. Ha a beállítás értéke FALSE (hamis), az erőforrás nem lesz létrehozva. Általában ezt az értéket használja, ha azt szeretné, hozzon létre egy új erőforrást, vagy használjon egy meglévőt. Például adja meg, hogy van-e telepítve egy új tárfiókot, vagy egy meglévő tárfiókot használja, használja:
+Ha el kell döntenie, üzembe helyezés során e hozzon létre egy erőforrást, használja a `condition` elemet. Ez az elem értéke IGAZ vagy hamis értéket mutat. Ha az értéke true, az erőforrás létrehozása. FALSE (hamis) érték esetén a nem az erőforrás jön létre. Az érték csak akkor alkalmazható, az egész erőforráshoz.
+
+Általában ezt az értéket használja, ha azt szeretné, hozzon létre egy új erőforrást, vagy használjon egy meglévőt. Például adja meg, hogy van-e telepítve egy új tárfiókot, vagy egy meglévő tárfiókot használja, használja:
 
 ```json
 {
@@ -156,7 +158,7 @@ A név megadásakor, manuálisan hozzon létre egy egyedi nevet, vagy használja
 ```
 
 ### <a name="resource-names-for-identification"></a>Az azonosításhoz erőforrásnevek
-Bizonyos erőforrástípusok, neve, de a nevük érdemes nem rendelkezik egyedinek kell lennie. Ezek erőforrástípusok megadhat egy nevet, amely azonosítja az erőforrás-környezet és az erőforrás típusát egyaránt.
+Bizonyos erőforrástípusok, neve, de a nevük érdemes nem kell egyedinek kell lennie. Ezek erőforrástípusok megadhat egy nevet, amely azonosítja az erőforrás-környezet és az erőforrás típusát egyaránt.
 
 ```json
 "parameters": {

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: cherylmc
 Customer intent: As a Virtual WAN software-defined connectivity provider, I want to set up a provisioning environment.
-ms.openlocfilehash: 0ea1b69b788255b1d8d24e17fcc1409d35a4fd36
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: a4664e628af5824b7b197cbdb5c5af602a3a4476
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814321"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958686"
 ---
 # <a name="virtual-wan-partners"></a>Virtuális WAN-partnerek
 
@@ -46,7 +46,7 @@ Egy fiókiroda eszközt (ügyfél helyi VPN-eszköz vagy SDWAN CPE) általában 
 
 ###  <a name="access"></a>Hozzáférés-vezérlés
 
-Ügyfelek való megfelelő hozzáférés-vezérlés virtuális WAN az eszköz felhasználói Felületéhez a képesnek kell lennie. Ez egy egyszerű Azure-szolgáltatás használata javasolt. Szolgáltatás egyszerű-alapú hozzáférés biztosít a tartományvezérlő megfelelő eszközhitelesítés ág adatok feltöltéséhez. További információkért lásd: [egyszerű szolgáltatás létrehozása](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application). Bár ez a funkció az Azure virtuális WAN ajánlat kívül, azt alább a jellemzően előforduló lépéseket tett az Azure-ban utána a releváns adatokat képkockák az eszköz felügyeleti irányítópulton való hozzáférés beállítása listázása
+Ügyfelek való megfelelő hozzáférés-vezérlés virtuális WAN az eszköz felhasználói Felületéhez a képesnek kell lennie. Ez egy egyszerű Azure-szolgáltatás használata javasolt. Szolgáltatás egyszerű-alapú hozzáférés biztosít a tartományvezérlő megfelelő eszközhitelesítés ág adatok feltöltéséhez. További információkért lásd: [egyszerű szolgáltatás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Bár ez a funkció az Azure virtuális WAN ajánlat kívül, azt alább a jellemzően előforduló lépéseket tett az Azure-ban utána a releváns adatokat képkockák az eszköz felügyeleti irányítópulton való hozzáférés beállítása listázása
 
 * Hozzon létre egy Azure Active Directory-alkalmazás a helyi eszközön vezérlő.
 * Alkalmazásazonosító és hitelesítési kulcs beszerzése

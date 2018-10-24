@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: f44bb7bd95ef405c65bb259a6d104475c2e283bd
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: a3dfca48b52af39e7a536b3012a3f4cdac4e9a94
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297842"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955167"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Az Azure DevOps szolgáltatás használatával Azure erőforráscsoport-telepítési projektek folyamatos integráció
 Azure-sablon üzembe helyezéséhez, feladatok különböző lépésben hajtaná végre: az Azure-bA Buildelési, tesztelési, másolási (más néven "Átmeneti"), és a sablon üzembe helyezése. Sablonok üzembe helyezése az Azure DevOps-szolgáltatásokkal való két különböző módja van. Mindkét módszer ugyanazt az eredményt adja meg, tehát azt, amelyik leginkább megfelel a munkafolyamatot.
@@ -92,7 +92,7 @@ Az alábbi eljárások végigvezetik a folyamatos üzembe helyezés konfigurál�
       Azure CLI esetén használja az alábbi parancsot:
       
       `azure account show`
-   8. Úgy szerezheti be egy egyszerű szolgáltatás azonosítója, szolgáltatásnév kulcsa és bérlő azonosítója, kövesse az eljárást a [hozzon létre egy Active Directory-alkalmazás és -portál használatával szolgáltatásnév](resource-group-create-service-principal-portal.md) vagy [hitelesítése egy egyszerű szolgáltatást az Azure-ral Erőforrás-kezelő](resource-group-authenticate-service-principal.md).
+   8. Úgy szerezheti be egy egyszerű szolgáltatás azonosítója, szolgáltatásnév kulcsa és bérlő azonosítója, kövesse az eljárást a [hozzon létre egy Active Directory-alkalmazás és -portál használatával szolgáltatásnév](active-directory/develop/howto-create-service-principal-portal.md) vagy [hitelesítése egy egyszerű szolgáltatást az Azure-ral Erőforrás-kezelő](active-directory/develop/howto-authenticate-service-principal-powershell.md).
    9. Adja meg a szolgáltatásnév Azonosítóját, szolgáltatásnév kulcsa és bérlői azonosító értéket, a **Azure-előfizetés hozzáadása** párbeszédpanel mezőbe, és válassza ki a **OK** gombra.
       
       Most már rendelkezik egy érvényes szolgáltatásnevet, az Azure PowerShell-szkript futtatásához.

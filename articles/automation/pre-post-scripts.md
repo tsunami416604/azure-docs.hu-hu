@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1c5bcca2571ffee9e1c20f0b7d2608b62c962177
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 245cbd86ae43560e4e41f4b97350f9a5857e1b25
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815341"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956622"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Kezelése előtti és utáni parancsfájlokat (előzetes verzió)
 
-Előtti és utáni szkriptek lehetővé teszik a PowerShell-forgatókönyvek az Automation-fiókban (előtti feladat) előtt és után (utáni) frissítés központi telepítés. Előtti és utáni parancsfájlokat futtatni, az Azure környezetben, és nem helyileg. A frissítéstelepítés a beginnin előtti parancsfájlok futtatni. Parancsfájlok a bejegyzés végén az üzemelő példány, és minden konfigurált újraindítása után futtassa.
+Előtti és utáni szkriptek lehetővé teszik a PowerShell-forgatókönyvek az Automation-fiókban (előtti feladat) előtt és után (utáni) frissítés központi telepítés. Előtti és utáni parancsfájlokat futtatni, az Azure környezetben, és nem helyileg. Előtti parancsfájlok futtatása a központi telepítési elején. Parancsfájlok a bejegyzés végén az üzemelő példány, és minden konfigurált újraindítása után futtassa.
 
 ## <a name="runbook-requirements"></a>Forgatókönyv követelményei
 

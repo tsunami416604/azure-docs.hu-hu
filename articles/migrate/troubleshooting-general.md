@@ -4,14 +4,14 @@ description: Ismert problémák az Azure Migrate szolgáltatás és a hibaelhár
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/28/2018
+ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 906c6e56b670dfc26b5905a453fd43a3c72086c3
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a41a27f2a87a67ea51bcbe110ac77f7908c44e7a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433497"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945518"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -40,6 +40,14 @@ Ahhoz, hogy a lemez- és teljesítményadatok gyűjtése, módosítsa a statiszt
 Megnyithatja a **Essentials** című rész a **áttekintése** a projekt a pontos helyét a metaadatokat tároló azonosításához. A hely egyben véletlenszerűen földrajzi helyen belül az Azure Migrate, és nem módosítható. Ha csak egy adott régióban hozzon létre egy projektet, a migrálási projekt létrehozása a REST API-k segítségével, adja át a kívánt régiót.
 
    ![Projekt helye](./media/troubleshooting-general/geography-location.png)
+
+### <a name="i-am-using-the-continuous-discovery-ova-but-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>Az OVA, de a saját helyszíni környezetben törölt virtuális gépek továbbra is alatt jelennek meg a portál folyamatos felderítési használok.
+
+A folyamatos felderítési Appliance berendezés csak az folyamatosan teljesítményadatokat gyűjt, semmilyen konfigurálási változást nem észleli a helyszíni környezetben (pl. virtuális gép hozzáadása, törlése, lemez hozzáadása stb.). Ha egy konfigurációmódosítás a helyszíni környezetben, hogy tükrözzék a változásokat a portál a következőket teheti:
+
+1. További elemek (virtuális gépek, lemezek, magok stb.): A változásoknak az Azure Portalon, a felderítés a készülék leállítása és elindítása azt újra. Ez biztosítja, hogy a változtatások az Azure Migrate-projektben.
+
+2. Virtuális gépek törlése: lehet a célja, a készülék, virtuális gépek törlése nem jelenik meg akkor is, ha leállítja és elindítja a felderítést. Ennek az oka, hogy az ezt követő felderítések adatokat hozzáfűzi korábbi felderítések, és nem bírálja felül. Ebben az esetben egyszerűen figyelmen kívül hagyhatja a portálon, a virtuális gép eltávolítása a csoportból, és az értékelés újraszámításakor.
 
 ## <a name="collector-errors"></a>Naplógyűjtők hibái
 
@@ -100,7 +108,7 @@ A probléma akkor fordulhat elő a VMware PowerCLI telepítése való probléma 
 
 ### <a name="error-unabletoconnecttoserver"></a>UnableToConnectToServer hiba
 
-Nem lehet csatlakozni a vCenter-kiszolgáló "Servername.com:9443" hiba miatt: nincsenek végpont a következő volt https://Servername.com:9443/sdk , amely fogadni tudta az üzenetet.
+A következő hiba miatt nem lehet csatlakozni a „Servername.com:9443” vCenter-kiszolgálóhoz: nem figyelt olyan végpont a https://Servername.com:9443/sdk címen, amely fogadni tudta volna az üzenetet.
 
 Ha Ön a gyűjtőberendezés legújabb verzióját futtatja, ha nem, frissítse a berendezés ellenőrizze a [legújabb verzió](https://docs.microsoft.com/azure/migrate/concepts-collector#how-to-upgrade-collector).
 
@@ -214,8 +222,8 @@ Esemény nyomkövetése for Windows gyűjteni, tegye a következőket:
 | 754       | NoPerfDataAvaialable           | Nem érhetők el a teljesítményadatok.                                               | A vCenter Server statisztikájának szintjét ellenőrzése Teljesítményadatok érhető el a 3-ra kell állítani. | Módosítsa a statisztika szintjét 3-asra (5 perces, 30 perces és 2 órás időtartamhoz), és próbálkozzon legalább egy napos várakozás után.                   |
 | 756       | NullInstanceUUID               | A rendszer olyan gépet észlelt, mely példányának UUID azonosítója null értékű                                  | Lehetséges, hogy a vCenter Server-kiszolgáló nem megfelelő objektummal rendelkezik.                                                      | Hárítsa el a problémát, és próbálkozzon újra.                                                                                                           |
 | 757       | VMNotFound                     | A virtuális gép nem található                                                  | Lehetséges, hogy a virtuális gépet törölték: %VMID;                                                                | Győződjön meg arról, hogy a vCenter-készlet hatókörének beállításakor kiválasztott virtuális gépek léteznek az észleléskor                                      |
-| 758       | GetPerfDataTimeout             | A VCenter-kérés túllépte az időkorlátot. Üzenet: % Message;                                  | A vCenter Server-kiszolgáló hitelesítő adatai helytelenek                                                              | Ellenőrizze a vCenter Server hitelesítő adatait, és győződjön meg arról, hogy a vCenter Server elérhető. Próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, forduljon az ügyfélszolgálathoz. |
-| 759       | VmwareDllNotFound              | A VMWare.Vim DLL-fájlja nem található.                                                     | A PowerCLI nincs megfelelően telepítve.                                                                   | Ellenőrizze, ha a PowerCLI megfelelően van-e telepítve. Próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, forduljon az ügyfélszolgálathoz.                               |
+| 758       | GetPerfDataTimeout             | A VCenter-kérés túllépte az időkorlátot. Üzenet: % Message;                                  | A vCenter Server-kiszolgáló hitelesítő adatai helytelenek                                                              | Ellenőrizze a vCenter Server hitelesítő adatait, és győződjön meg arról, hogy a vCenter Server elérhető. Próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, forduljon a támogatási szolgálathoz. |
+| 759       | VmwareDllNotFound              | A VMWare.Vim DLL-fájlja nem található.                                                     | A PowerCLI nincs megfelelően telepítve.                                                                   | Ellenőrizze, ha a PowerCLI megfelelően van-e telepítve. Próbálja megismételni a műveletet. Ha a probléma továbbra is fennáll, forduljon a támogatási szolgálathoz.                               |
 | 800       | ServiceError                   | Az Azure Migrate Collector szolgáltatás nem fut.                               | Az Azure Migrate Collector szolgáltatás nem fut.                                                       | A Services.msc használatával indítsa el a szolgáltatást, majd próbálja megismételni a műveletet.                                                                             |
 | 801       | PowerCLIError                  | A VMware PowerCLI telepítése nem sikerült.                                          | A VMware PowerCLI telepítése nem sikerült.                                                                  | Próbálja megismételni a műveletet. Ha a probléma tartósan fennáll, telepítse manuálisan, és próbálja megismételni a műveletet.                                                   |
 | 802       | TimeSyncError                  | Az idő nincs internetes időkiszolgálóval szinkronizálva.                            | Az idő nincs internetes időkiszolgálóval szinkronizálva.                                                    | Győződjön meg arról, hogy a számítógépen az időzónájának megfelelően van beállítva az idő, majd próbálja megismételni a műveletet.                                 |

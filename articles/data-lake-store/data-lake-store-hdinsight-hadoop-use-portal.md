@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 28bed3578c653c8081868b3d950ab6332879784a
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: b81916de0940aa56eda97df94527fa6adc208285
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124325"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955830"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Az Azure Data Lake Storage Gen1 HDInsight-fürtök létrehozása az Azure portal használatával
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Ez az oktatóanyag elkezdéséhez győződjön meg arról, hogy teljesítette az
 * **Egy Azure Active Directory-szolgáltatásnevet**. Ebben az oktatóanyagban útmutatás egy szolgáltatásnév létrehozásához az Azure Active Directoryban (Azure AD). Azonban egy szolgáltatásnév létrehozásához, hogy Azure AD-rendszergazda kell lennie. Ha Ön rendszergazda, kihagyhatja ezt az előfeltételt, és folytassa az oktatóanyagot.
 
     >[!NOTE]
-    >Létrehozhat egy szolgáltatás egyszerű csak akkor, ha az Azure AD-rendszergazdaként. Az Azure AD-rendszergazda kell egy egyszerű szolgáltatás létrehozása a Data Lake Storage Gen1 egy HDInsight-fürt létrehozása előtt. Emellett az egyszerű szolgáltatás léteznie kell egy tanúsítványt, az ismertetett módon [egyszerű szolgáltatás létrehozása tanúsítvánnyal](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate).
+    >Létrehozhat egy szolgáltatás egyszerű csak akkor, ha az Azure AD-rendszergazdaként. Az Azure AD-rendszergazda kell egy egyszerű szolgáltatás létrehozása a Data Lake Storage Gen1 egy HDInsight-fürt létrehozása előtt. Emellett az egyszerű szolgáltatás léteznie kell egy tanúsítványt, az ismertetett módon [egyszerű szolgáltatás létrehozása tanúsítvánnyal](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate).
     >
 
 ## <a name="create-an-hdinsight-cluster"></a>HDInsight-fürt létrehozása

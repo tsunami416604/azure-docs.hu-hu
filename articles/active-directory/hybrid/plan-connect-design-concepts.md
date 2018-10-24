@@ -16,12 +16,12 @@ ms.workload: Identity
 ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f85726f7058c783b6e369126532e40ceecc3c846
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: bf5384333504df023e98650934c77192f23f9f71
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313557"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945994"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Az Azure AD Connect: Tervezési alapelvei
 A jelen dokumentum célja, hogy írja le, amely az Azure AD Connect megvalósítási tervezése során kell gondoltam területeket. Ez a dokumentum az egyes területeken egy részletes bemutatása, és ezek a fogalmak rövid leírását, valamint az egyéb dokumentumokat.
@@ -91,7 +91,7 @@ Ez a funkció működéséhez az AD DS-fiókot a helyszíni Active Directoryval 
 ConsistencyGuid használata sourceanchorként új telepítése során engedélyezheti. Ez a szakasz ismertet Express és az egyéni telepítés részletei között.
 
   >[!NOTE]
-  > Csak az Azure AD Connect újabb verzióit (1.1.524.0, és utána) ConsistencyGuid használata sourceanchorként támogatja az új telepítés során.
+  > Csak az Azure AD Connect újabb verzióit (1.1.524.0, és utána) ConsistencyGuid használata sourceanchorként támogatásához új telepítése során.
 
 ### <a name="how-to-enable-the-consistencyguid-feature"></a>A ConsistencyGuid funkció engedélyezése
 Jelenleg a funkció engedélyezése csak új Azure AD Connect telepítése során.
@@ -102,7 +102,7 @@ Az Azure AD Connect telepítése az Expressz mód esetén az Azure AD Connect va
 * Először az Azure AD Connect varázsló lekérdezi az Azure AD-bérlő lekéréséhez az AD attribútumot használja Forráshorgony-attribútumként az előző az Azure AD Connect telepítése (ha van). Ha ez az információ érhető el, az Azure AD Connect használja az azonos AD-attribútum.
 
   >[!NOTE]
-  > Csak az Azure AD Connect újabb verzióit (1.1.524.0 és után) a telepítés során használt tárolók információ az Azure AD-bérlőben a sourceAnchor attribútum. Az Azure AD Connect régebbi verzióit viszont nem.
+  > Csak az Azure AD Connect újabb verzióit (1.1.524.0, és utána) kapcsolatos információk tárolása az Azure AD-bérlőben a sourceAnchor attribútum a telepítés során használt. Az Azure AD Connect régebbi verzióit viszont nem.
 
 * Ha a használt sourceAnchor attribútum információ nem érhető el, a varázsló az ms-DS-ConsistencyGuid attribútum a helyszíni Active Directory állapotát ellenőrzi. Ha az attribútum a címtárban lévő összes objektum nincs konfigurálva, a varázsló használja az ms-DS-ConsistencyGuid Forráshorgony-attribútumként. Az attribútum konfigurálva van egy vagy több objektumot a címtárban, ha a varázsló azt állapítja meg az attribútum más alkalmazások által használt, és nem felel meg a sourceAnchor attribútum...
 

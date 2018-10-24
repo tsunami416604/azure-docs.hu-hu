@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: barbkess
-ms.openlocfilehash: f24be44b00f9c4e789e8d4797f6a0516dcfe940f
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: f9cd761080bc5098d0500841e7327ac8ce9f9a2d
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494057"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957937"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Azure Active Directory-bejelentkezés konfigurálása az alkalmazás viselkedésében egy Kezdőtartomány-felderítés házirend segítségével
 
 A következő dokumentum bevezetést nyújt az Azure Active Directory hitelesítési viselkedést az összevont felhasználók konfigurálását.   Ez fedezi a konfiguráció automatikus és a hitelesítési korlátozások az összevont tartományokban lévő felhasználók számára.
 
-## <a name="home-realm-discovery"></a>Hitelesítőtartomány
+## <a name="home-realm-discovery"></a>Kezdőtartomány felderítése
 Otthoni Kezdőtartomány felderítése (HRD) a rendszer, amely lehetővé teszi, hogy az Azure Active Directory (Azure AD) határozza meg, ahol a felhasználó hitelesítenie kell a bejelentkezési időpontban.  Amikor egy felhasználó bejelentkezik az Azure AD-bérlő erőforrások eléréséhez, vagy az Azure AD közös bejelentkezési oldalát, akkor írja be a felhasználónevet (UPN). Az Azure AD használatával, amely Fedezze fel, ahol a felhasználónak kell bejelentkezni. 
 
 A felhasználó hitelesítését az alábbi helyek egyikét kell venni lehet szükség:
@@ -263,4 +263,4 @@ Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
 ## <a name="next-steps"></a>További lépések
 - Az Azure AD hitelesítési működésével kapcsolatos további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-ben](../develop/authentication-scenarios.md).
 - Felhasználói egyszeri bejelentkezéssel kapcsolatos további információkért lásd: [alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](configure-single-sign-on-portal.md).
-- Látogasson el a [Active Directory fejlesztői útmutatója](../develop/azure-ad-developers-guide.md) áttekintheti az összes fejlesztői kapcsolódó tartalmat.
+- Látogasson el a [Active Directory fejlesztői útmutatója](../develop/v1-overview.md) áttekintheti az összes fejlesztői kapcsolódó tartalmat.

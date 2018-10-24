@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bryanla
-ms.openlocfilehash: 1d6f84612dd2bac34c238ad7eaf323dc7fa00ba3
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: d93ad4185be3d4875c5747fd10359baab69af95d
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311354"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958652"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Tudnivalók a kulcsok, titkos kódok és tanúsítványok
 
@@ -101,7 +101,7 @@ A Key Vault támogatja az RSA és az elliptikus görbe alapú kulcsok csak.
 -   **RSA**: "Soft" RSA-kulcsot.
 -   **Az RSA-HSM**: "Rögzített" RSA-kulcsot.
 
-A Key Vault támogatja a 2048, 3072 és 4096-méretek RSA-kulcsok. A Key Vault támogatja az elliptikus görbe alapú kulcs-típusok P-256, p-384, p-521 és P - 256 K.
+A Key Vault támogatja a 2048, 3072 és 4096-méretek RSA-kulcsok. A Key Vault támogatja az elliptikus görbe alapú kulcs-típusok P-256, p-384, p-521 és P-256_K (SECP256K1).
 
 ### <a name="cryptographic-protection"></a>Titkosítási védelme
 
@@ -110,12 +110,19 @@ A Key Vault használó titkosítási moduljait HSM, illetve szoftver –, hogy-e
 ###  <a name="ec-algorithms"></a>EK algoritmusok
  A Key Vault HSM-EK és a kulcsokat a következő algoritmus azonosítók használata támogatott. 
 
+#### <a name="curve-types"></a>Görbe típusok
+
+-   **P-256** -p-256, meg van határozva a NIST-görbét [DSS FIPS PUB 186 – 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
+-   **P-256_K** -SECP256K1, meg van határozva az mp-görbe [mp 2: ajánlott elliptikus görbe Domain paramétereket](http://www.secg.org/sec2-v2.pdf).
+-   **P-384** -p-384, meg van határozva a NIST-görbét [DSS FIPS PUB 186 – 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
+-   **P-521** -p-521, meg van határozva a NIST-görbét [DSS FIPS PUB 186 – 4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
+
 #### <a name="signverify"></a>BEJELENTKEZÉSI/ELLENŐRZÉSE
 
--   **ES256** – digests ECDSA az SHA-256 algoritmust és görbe p-256 használatával létrehozott kulcsokat. Ez az algoritmus leírása: [RFC7518].
+-   **ES256** – digests ECDSA az SHA-256 algoritmust és görbe p-256 használatával létrehozott kulcsokat. Ez az algoritmus címen leírt [RFC7518](https://tools.ietf.org/html/rfc7518).
 -   **ES256K** – digests ECDSA az SHA-256 algoritmust és a görbe P-256_K létre kulcsokat. Ez az algoritmus szabványügyi szervezet függőben van.
--   **ES384** – az SHA-384 ECDSA digests, és a görbe p-384 létre kulcsokat. Ez az algoritmus leírása: [RFC7518].
--   **ES512** – az SHA-512 ECDSA digests, és a görbe p-521 létre kulcsokat. Ez az algoritmus leírása: [RFC7518].
+-   **ES384** – az SHA-384 ECDSA digests, és a görbe p-384 létre kulcsokat. Ez az algoritmus címen leírt [RFC7518](https://tools.ietf.org/html/rfc7518).
+-   **ES512** – az SHA-512 ECDSA digests, és a görbe p-521 létre kulcsokat. Ez az algoritmus címen leírt [RFC7518](https://tools.ietf.org/html/rfc7518).
 
 ###  <a name="rsa-algorithms"></a>Az RSA algoritmus  
  A következő algoritmus azonosítók RSA és az RSA-HSM kulcsok a Key Vault használata támogatott.  

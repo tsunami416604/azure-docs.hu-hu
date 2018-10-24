@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2018
 ms.author: sethm
-ms.openlocfilehash: 65fa9593b35af45ee9b8568bac5e4886909314e1
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 96137b95f46f24bca6a4ee6a39d93a490a03c431
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092543"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958448"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Hozzáférést biztosít az alkalmazásoknak az Azure Stackhez
 
@@ -40,7 +40,7 @@ Attól függően, hogyan telepített Azure Stack első lépésként létrehozni 
 
 ## <a name="create-service-principal-for-azure-ad"></a>Az Azure ad egyszerű szolgáltatás létrehozása
 
-Ha már telepítette az Azure AD az ügyfélidentitás-tárolóval, mint az Azure Stack, létrehozhat egyszerű szolgáltatásokat, mint az Azure-ban végezhet el. Ez a szakasz bemutatja, hogyan végezheti el a lépéseket a portálon keresztül. Ellenőrizze, hogy rendelkezik a [szükséges Azure AD-engedélyekről](../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions) megkezdése előtt.
+Ha már telepítette az Azure AD az ügyfélidentitás-tárolóval, mint az Azure Stack, létrehozhat egyszerű szolgáltatásokat, mint az Azure-ban végezhet el. Ez a szakasz bemutatja, hogyan végezheti el a lépéseket a portálon keresztül. Ellenőrizze, hogy rendelkezik a [szükséges Azure AD-engedélyekről](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) megkezdése előtt.
 
 ### <a name="create-service-principal"></a>Egyszerű szolgáltatás létrehozása
 Ebben a szakaszban az alkalmazást képviselő Azure AD-alkalmazásokhoz (egyszerű szolgáltatásnevének) létrehozása.

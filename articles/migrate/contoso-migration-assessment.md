@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: b9ef650b772a160f7ddf8932f646f8081cb9e551
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: a0aa63291a7fb3f069663d40687f81c3a3265712
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407129"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945943"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso áttelepítése: a helyszíni számítási feladatok Azure-bA migrálásának értékelése
 
@@ -232,7 +232,7 @@ A Contoso értékelés függőségi leképezés használ. Függőségi leképez�
 
 ### <a name="set-statistics-settings"></a>Statisztikai beállítások megadása
 
-Contoso az üzembe helyezés megkezdése előtt, a vCenter Server statisztikai beállításait a 3. szintre kell beállítania. 
+Contoso az üzembe helyezés megkezdése előtt, a vCenter Server statisztikai beállításait a 3. szintre kell beállítania.
 
 > [!NOTE]
 > - A szint beállítása után Contoso kell legalább egy napot vár az értékelés futtatása előtt. Ellenkező esetben az értékelés esetleg nem működnek megfelelően.
@@ -258,7 +258,7 @@ Virtuális gépek felderítéséhez, a Contoso Azure Migrate-projektet hoz létr
 ### <a name="create-a-project"></a>Projekt létrehozása
 
 1. Az a [az Azure portal](https://portal.azure.com), Contoso keres **Azure Migrate**. Ezt követően a Contoso egy projektet hoz létre.
-2. Contoso adja meg a projekt nevét (**ContosoMigration**) és az Azure-előfizetést. Létrehoz egy új Azure-erőforráscsoportot (**ContosoFailoverRG**). 
+2. Contoso adja meg a projekt nevét (**ContosoMigration**) és az Azure-előfizetést. Létrehoz egy új Azure-erőforráscsoportot (**ContosoFailoverRG**).
     > [!NOTE]
     > - Azure Migrate-projektet csak az az USA nyugati középső Régiója és USA keleti régiójában hozhat létre.
     > - Bármilyen célhelyre tervezhet migrálást.
@@ -283,17 +283,25 @@ A virtuális gép üzembe helyezése előtt Contoso ellenőrzi, hogy az OVA-fáj
 2. Contoso futtatja a következő parancsot az OVA-fájl kivonatának:
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    
-    **Példa** 
-    
-    ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. A létrehozott kivonatnak egyeznie kell az ezeket a beállításokat (1.0.9.14 verzió):
 
+    **Példa**
+
+    ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+3. A létrehozott kivonatnak egyeznie kell az ezeket a beállításokat (1.0.9.15 verzió):
+
+<<<<<<< HEAD
     **Algoritmus** | **Kivonat értéke**
     --- | ---
-    MD5 | 6d8446c0eeba3de3ecc9bc3713f9c8bd
-    SHA1 | e9f5bdfdd1a746c11910ed917511b5d91b9f939f
-    SHA256 | 7f7636d0959379502dfbda19b8e3f47f3a4744ee9453fc9ce548e6682a66f13c
+    MD5 | e9ef16b0c837638c506b5fc0ef75ebfa
+    SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864
+    SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
+=======
+**Algoritmus** | **Kivonat értéke**
+--- | ---
+MD5 | e9ef16b0c837638c506b5fc0ef75ebfa
+SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864
+SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
+>>>>>>> 20dc93529e7c0a4d17f2f4524752b5e2bead4e37
 
 ### <a name="create-the-collector-appliance"></a>A gyűjtőberendezés létrehozása
 

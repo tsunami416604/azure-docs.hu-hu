@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/11/2017
+ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: cd7a6c43cb791ed607a763f10e781794ef513500
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7ffe51077c7152c52b9becd2318fa33eea055c20
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950403"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956865"
 ---
 # <a name="create-and-modify-routing-for-an-expressroute-circuit-using-cli"></a>ExpressRoute-kapcsolatcsoport CLI-vel útválasztás létrehozása vagy módosítása
 
@@ -38,7 +38,7 @@ Ez a cikk segítséget nyújt a létrehozása és kezelése a parancssori felül
 
 ## <a name="configuration-prerequisites"></a>Konfigurációs előfeltételek
 
-* A folyamat elkezdése előtt telepítse a CLI-parancsok legújabb verzióit (2.0-s vagy újabb). A CLI-parancsok telepítéséről további információkért lásd: [az Azure CLI telepítése](/cli/azure/install-azure-cli).
+* A folyamat elkezdése előtt telepítse a CLI-parancsok legújabb verzióit (2.0-s vagy újabb). Információk a CLI-parancsok telepítéséről: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 * Győződjön meg arról, hogy áttekintette a [Előfeltételek](expressroute-prerequisites.md), [útválasztási követelmények](expressroute-routing.md), és [munkafolyamat](expressroute-workflows.md) lapok a konfigurálás megkezdése előtt.
 * Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége. Kövesse az [ExpressRoute-kapcsolatcsoport létrehozása](howto-circuit-cli.md) részben foglalt lépéseket, és engedélyeztesse a kapcsolatcsoportot kapcsolatszolgáltatójával, mielőtt továbblépne. Az ExpressRoute-kapcsolatcsoport számára, hogy ebben a cikkben a parancsokat futtathatnak kiosztott és engedélyezett állapotban kell lennie.
 
@@ -318,7 +318,7 @@ az network express-route peering update --vlan-id 500 -g ExpressRouteResourceGro
 A társviszony-létesítés konfigurációját a következő példa futtatásával távolíthatja el:
 
 > [!WARNING]
-> Bizonyosodjon meg, hogy minden virtuális hálózat az ExpressRoute-kapcsolatcsoport leválasztása a példa futtatása előtt. 
+> Biztosítania kell, hogy a virtuális hálózatok és a globális elérhetőségű ExpressRoute-kapcsolatok eltávolítása a példa futtatása előtt. 
 > 
 > 
 

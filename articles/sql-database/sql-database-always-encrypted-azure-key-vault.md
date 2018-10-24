@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 44fc04d4788c4381a4922f1335c393e03045900e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: e0971b6b9b8460447d383d238843d4bdddc912f7
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352393"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958976"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Bizalmas adatok védelme és tárolni a titkosítási kulcsokat az Azure Key Vaultban
 
@@ -48,7 +48,7 @@ A jelen oktatóanyag esetében lesz szüksége:
 ## <a name="enable-your-client-application-to-access-the-sql-database-service"></a>Az SQL Database szolgáltatáshoz való hozzáféréshez, az ügyfélalkalmazás engedélyezése
 Az ügyfélalkalmazás egy Azure Active Directory (AAD) alkalmazás beállításával, és másolja az SQL Database szolgáltatás eléréséhez engedélyeznie kell a *Alkalmazásazonosító* és *kulcs* , amelyeket meg kell az alkalmazás hitelesítéséhez.
 
-Az első a *Alkalmazásazonosító* és *kulcs*, kövesse a [hozzon létre egy Azure Active Directory alkalmazás és -szolgáltatásnév erőforrások eléréséhez](../azure-resource-manager/resource-group-create-service-principal-portal.md).
+Az első a *Alkalmazásazonosító* és *kulcs*, kövesse a [hozzon létre egy Azure Active Directory alkalmazás és -szolgáltatásnév erőforrások eléréséhez](../active-directory/develop/howto-create-service-principal-portal.md).
 
 ## <a name="create-a-key-vault-to-store-your-keys"></a>Hozzon létre egy kulcstartót, hogy a kulcsokat
 Most, hogy az ügyfélalkalmazás van konfigurálva, és rendelkezik az alkalmazás azonosítója, hozzon létre egy kulcstartót, és a hozzáférési szabályzat konfigurálása, hogy Ön és az alkalmazás hozzáférhessen a tárolóhoz, titkos kódok (az Always Encrypted kulcsok). A *létrehozása*, *első*, *lista*, *bejelentkezési*, *ellenőrzése*, *wrapKey*, és *unwrapKey* engedélyekre szükség, egy új oszlopfőkulcs létrehozásához és a titkosítás beállítása az SQL Server Management Studio.

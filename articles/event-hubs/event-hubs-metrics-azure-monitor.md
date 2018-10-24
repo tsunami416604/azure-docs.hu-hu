@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: a2b6fbae4a7b49c5596d5f2a6f9305181a0717d3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 02336d9f4d041d4c8d5ba973cf8802692ddad914
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979964"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49946011"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Az Azure Event Hubs-metrikák az Azure Monitor (előzetes verzió)
 
@@ -66,7 +66,6 @@ Számít az adatok és a felügyeleti műveletek kérések száma.
 | Sikeres kérések (előnézet)   | Az Azure Event Hubs szolgáltatás egy megadott időszakban végrehajtott sikeres kérelmek száma. <br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName |
 | Kiszolgálóhibák (előzetes verzió) | Az Azure Event Hubs szolgáltatás hibája miatt a meghatározott időtartamon belül nem feldolgozott kérelmek száma. <br/><br/>Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName |
 |Felhasználói hibák (előzetes verzió)|Egy meghatározott időtartamon belül a felhasználói hibák miatt nem feldolgozott kérelmek száma.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
-|Szabályozott kérelmeinek száma (előzetes verzió)|Voltak szabályozva, mert túllépte az átviteli egységek használati kérelmek száma.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
 |Kvóta túllépve hibák (előzetes verzió)|A kérelmek száma túllépte a rendelkezésre álló kvótát. Lásd: [Ez a cikk](event-hubs-quotas.md) Event Hubs-kvótákról további információt.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
 
 ## <a name="throughput-metrics"></a>Átviteli sebességre vonatkozó mérőszámok

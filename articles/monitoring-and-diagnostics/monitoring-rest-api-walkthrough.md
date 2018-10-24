@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: mcollier
 ms.component: ''
-ms.openlocfilehash: 9524d471388e69166191b6197fb295532b068092
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 59e7ac5e2da733724c047f6842561ce87fb495bb
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390554"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955304"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Az Azure Monitoring REST API-forgatókönyv
 Ez a cikk bemutatja, hogyan végezhet hitelesítést, így a kód használatával is a [a Microsoft Azure Monitor REST API-referencia](https://msdn.microsoft.com/library/azure/dn931943.aspx).         
@@ -25,7 +25,7 @@ Mellett számos metrika adatpontok dolgozik, a API is lehetővé teszi a listáb
 ## <a name="authenticating-azure-monitor-requests"></a>Hitelesítő Azure Monitor-kérelmek
 Az első lépéseként fel kell hitelesíteni a kérelmet.
 
-Az Azure Monitor API ellen végrehajtott összes feladatot használja az Azure Resource Manager-hitelesítési modellre. Ezért minden kérelmet hitelesíteni kell az Azure Active Directoryval (Azure AD). Az ügyfélalkalmazás hitelesítés egyik módja, hogy az Azure AD egyszerű szolgáltatás létrehozása és a hitelesítéshez (JWT-) token lekérése. Az alábbi parancsprogram azt ismerteti, hogy az Azure AD PowerShell-lel egyszerű szolgáltatásnév létrehozása. A részletes lépésenkénti útmutatóért tekintse meg a dokumentációt a [erőforrások eléréséhez az egyszerű szolgáltatás létrehozása az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps). Emellett lehetőség [hozzon létre egy egyszerű szolgáltatást az Azure Portalon keresztül](../azure-resource-manager/resource-group-create-service-principal-portal.md).
+Az Azure Monitor API ellen végrehajtott összes feladatot használja az Azure Resource Manager-hitelesítési modellre. Ezért minden kérelmet hitelesíteni kell az Azure Active Directoryval (Azure AD). Az ügyfélalkalmazás hitelesítés egyik módja, hogy az Azure AD egyszerű szolgáltatás létrehozása és a hitelesítéshez (JWT-) token lekérése. Az alábbi parancsprogram azt ismerteti, hogy az Azure AD PowerShell-lel egyszerű szolgáltatásnév létrehozása. A részletes lépésenkénti útmutatóért tekintse meg a dokumentációt a [erőforrások eléréséhez az egyszerű szolgáltatás létrehozása az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps). Emellett lehetőség [hozzon létre egy egyszerű szolgáltatást az Azure Portalon keresztül](../active-directory/develop/howto-create-service-principal-portal.md).
 
 ```PowerShell
 $subscriptionId = "{azure-subscription-id}"

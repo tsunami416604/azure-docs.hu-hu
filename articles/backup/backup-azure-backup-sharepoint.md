@@ -6,14 +6,14 @@ author: adigan
 manager: Nkolli1
 ms.service: backup
 ms.topic: conceptual
-ms.date: 09/29/2016
+ms.date: 10/18/2018
 ms.author: adigan
-ms.openlocfilehash: 7331b1c99425500b58d186cedab1e83dd20e3684
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: b3b4d42d9a48d02639019f815cbf4fca15060771
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389819"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49946045"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>SharePoint-farm biztonsági mentése az Azure-ba
 Készítsen biztonsági másolatot egy SharePoint-farm a Microsoft Azure-ba, hogy készítsen biztonsági mentést más adatforrásokhoz ugyanolyan módon a System Center Data Protection Manager (DPM) használatával. Az Azure Backup rugalmasan hozhat létre naponta a biztonsági mentési ütemezés, heti, havi vagy éves biztonsági mentési mutat, és különböző biztonsági mentési pontok megőrzése házirend lehetőséget kínál fel. A DPM lehetővé teszi a helyi lemez másolatot pedig gyors helyreállítási idő célkitűzései (RTO) tárolására, és tárolja a másolatokat az Azure-bA gazdaságos, hosszú távú megőrzésének.
@@ -29,7 +29,7 @@ Az Azure Backup a DPM a következő eseteket támogatja:
 Néhány dolgot meg kell erősítenie előtt készítsen biztonsági másolatot a SharePoint-farmok Azure-bA.
 
 ### <a name="prerequisites"></a>Előfeltételek
-Mielőtt folytatná, győződjön meg arról, hogy teljesül-e az összes a [a Microsoft Azure Backup előfeltételei](backup-azure-dpm-introduction.md#prerequisites) munkaterhelések védelme érdekében. Egyes feladatok vonatkozó Előfeltételek a következők: backup-tároló létrehozása, a tároló hitelesítő adatainak letöltése, Azure Backup szolgáltatás ügynökének telepítése és a DPM vagy az Azure Backup Server regisztrálja a tárolóban.
+Mielőtt folytatná, győződjön meg arról, hogy teljesül-e az összes a [a Microsoft Azure Backup előfeltételei](backup-azure-dpm-introduction.md#prerequisites-and-limitations) munkaterhelések védelme érdekében. Egyes feladatok vonatkozó Előfeltételek a következők: backup-tároló létrehozása, a tároló hitelesítő adatainak letöltése, Azure Backup szolgáltatás ügynökének telepítése és a DPM vagy az Azure Backup Server regisztrálja a tárolóban.
 
 ### <a name="dpm-agent"></a>DPM-ügynök
 A DPM-ügynök telepítve kell lennie a kiszolgálón, amelyen fut a SharePoint, SQL Server szolgáltatást futtató kiszolgálók és egyéb a SharePoint-farm részét képező kiszolgálók. A védelmi ügynök beállítása kapcsolatos további információkért lásd: [telepítő védelmi ügynök](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx).  Az egyetlen kivétel, hogy telepítenie kell az ügynök csak egy egyetlen webes kezelőfelület (WFE) kiszolgálón. DPM-nek a védelem belépési pontként kiszolgálása érdekében csak egy WFE-kiszolgálón az ügynök.

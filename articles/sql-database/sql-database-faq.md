@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 61950a1afda1fefdfab95f6d63420387dc2e2ac7
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.date: 10/22/2018
+ms.openlocfilehash: 88bea87c752563e1c19332121eb568b0bd329d03
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378635"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954143"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>Az SQL Database – gyakori kérdések (GYIK)
 
@@ -35,7 +35,7 @@ Nem. A javítás hatását az általában nem noticable Ha Ön [újrapróbálkoz
 
 ## <a name="what-is-the-new-vcore-based-purchasing-model-for-azure-sql-database"></a>Mi az az új vCore-alapú vásárlási modell az Azure SQL Database
 
-Az új vásárlási modell mellett továbbra is használható a már meglévő DTU-alapú modell. A Virtuálismag-alapú modell úgy tervezték, hogy ügyfelei rugalmasan, átláthatóság, vezérlőelem, és a közvetlen módon lefordítani a helyszíni tevékenységprofil követelményeinek a felhőben. Azt is lehetővé teszi, hogy ügyfelek számára, hogy azok számítási és tárolási erőforrást, a munkaterhelés igényei alapján. Önálló adatbázis és rugalmas készlet beállításai a Virtuálismag-modell használatával jogosultak is fel, a 30 %-os megtakarítást a [SQL Serverhez készült Azure Hybrid Benefit](../virtual-machines/windows/hybrid-use-benefit-licensing.md). Lásd: [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) további információt.
+Az új vásárlási modell mellett továbbra is használható a már meglévő DTU-alapú modell. A Virtuálismag-alapú modell úgy tervezték, hogy ügyfelei rugalmasan, átláthatóság, vezérlőelem, és a közvetlen módon lefordítani a helyszíni tevékenységprofil követelményeinek a felhőben. Azt is lehetővé teszi, hogy ügyfelek számára, hogy azok számítási és tárolási erőforrást, a munkaterhelés igényei alapján. Önálló adatbázis és rugalmas készlet beállításai a Virtuálismag-modell használatával jogosultak is fel, a 30 %-os megtakarítást a [SQL Serverhez készült Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/#services). Lásd: [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) további információt.
 
 ## <a name="what-is-a-vcore"></a>Mi az a virtuális mag
 

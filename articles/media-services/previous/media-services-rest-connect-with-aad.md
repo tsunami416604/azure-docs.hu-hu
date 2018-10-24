@@ -3,22 +3,22 @@ title: Az Azure AD hitelesítési el az Azure Media Services API REST-tel |} A M
 description: Ismerje meg az Azure Media Services API elérése az Azure Active Directory-hitelesítést a REST használatával.
 services: media-services
 documentationcenter: ''
-author: willzhan
-manager: cfowler
+author: juliako
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/26/2017
+ms.date: 10/22/2018
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: b44c5b29f41f08ac5c1d5e6aa3c37f8c15ae7c54
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: d9d1fa7d8cf25057339e560c371deb939997b578
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984657"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945077"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>Az Azure AD-hitelesítés használata az Azure Media Services API REST-tel eléréséhez
 
@@ -47,7 +47,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 - Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.
 - [Hozzon létre egy Azure Media Services-fiók az Azure portal használatával](media-services-portal-create-account.md).
-- Tekintse át a [elérése az Azure Media Services API AAD-hitelesítés – áttekintés](media-services-use-aad-auth-to-access-ams-api.md) cikk.
+- Tekintse át a [elérése az Azure Media Services API Azure AD-hitelesítés – áttekintés](media-services-use-aad-auth-to-access-ams-api.md) cikk.
 - Telepítse a [Postman](https://www.getpostman.com/) hajtsa végre a jelen cikkben ismertetett REST API-k REST-ügyfél. 
 
     Ebben az oktatóanyagban uring tudjuk **Postman** , de bármilyen REST eszköz alkalmas lenne. Egyéb alternatívák: **Visual Studio Code** REST beépülő modullal vagy **Telerik Fiddler**. 
@@ -60,7 +60,7 @@ Media Services API eléréséhez kell gyűjtenie a következő adatpontokhoz.
 
 |Beállítás|Példa|Leírás|
 |---|-------|-----|
-|Azure Active Directory-bérlői tartomány|microsoft.onmicrosoft.com|Az Azure AD-végpontként Secure Token Service (STS) jön létre a következő formátumban: https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token. Az Azure AD kibocsát egy JWT (hozzáférési jogkivonat) erőforrások eléréséhez.|
+|Azure Active Directory-bérlői tartomány|microsoft.onmicrosoft.com|Az Azure AD-végpontként Secure Token Service (STS) jön létre a következő formátumban: https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token. Az Azure AD kibocsát egy JWT (hozzáférési jogkivonat) erőforrások eléréséhez.|
 |REST API-végpont|https://amshelloworld.restv2.westus.media.azure.net/api/|Ez az a végpont elleni melyik összes Media Services REST API hívások az alkalmazásban végrehajtott.|
 |Ügyfél-azonosító (Alkalmazásazonosító)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Az Azure AD-alkalmazás (ügyfél) azonosítója. A hozzáférési jogkivonat beszerzése az ügyfél-azonosító szükséges. |
 |Titkos ügyfélkulcs|+mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq+Dbim0=|Az Azure AD alkalmazás kulcsainak (ügyfél titkos kódot). A hozzáférési jogkivonat lekérése szükséges az ügyfél titkos kulcsát.|
@@ -144,8 +144,8 @@ Ez a szakasz bemutatja, hogyan **Postman** egy REST API-t, amely visszaadja a JW
     Másik lehetőségként kattintson **tömeges szerkesztése** jobb oldalán a Postman-ablakot, és illessze be a következő törzsében (cserélje le az ügyfél-azonosító és titkos értékkel):
 
         grant_type:client_credentials
-        client_id:{Your Client ID that you got from your AAD Application}
-        client_secret:{Your client secret that you got from your AAD Application's Keys}
+        client_id:{Your Client ID that you got from your Azure AD Application}
+        client_secret:{Your client secret that you got from your Azure AD Application's Keys}
         resource:https://rest.media.azure.net
 
 8. Kattintson a **Küldés** gombra.

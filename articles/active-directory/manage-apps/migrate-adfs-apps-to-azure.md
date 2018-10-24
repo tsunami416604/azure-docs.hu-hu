@@ -1,6 +1,6 @@
 ---
-title: AD FS helyszíni alkalmazások migrálása az Azure-ba | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogy a vállalatoknak hogyan érdemes az Azure AD-be migrálniuk a helyszíni alkalmazásaikat, és kifejezetten az összevont SaaS-alkalmazásaikat.
+title: Az AD FS az Azure AD-alkalmazások áthelyezése. | Microsoft Docs
+description: Ebből a cikkből megkönnyíti a szervezetek számára, kifejezetten az összevont SaaS-alkalmazásokhoz az Azure AD-alkalmazások áthelyezése.
 services: active-directory
 author: barbkess
 manager: mtillman
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: fa19c932a18102107068303e1474abd992df3161
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: b799a3947770b44752b599dbb2c47cbf1cfbcda2
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48903028"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49959060"
 ---
-# <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>AD FS helyszíni alkalmazások migrálása az Azure-ba 
+# <a name="move-applications-from-ad-fs-to-azure-ad"></a>Az AD FS az Azure AD-alkalmazások áthelyezése 
 
-Ez a cikk leírja, hogyan lehet a helyszíni alkalmazásokat az Azure Active Directory-ba (Azure AD) migrálni. A dokumentum az összevont SaaS-alkalmazásokra helyezi a hangsúlyt. 
+Ez a cikk segít megérteni az alkalmazások áthelyezése az AD FS az Azure Active Directory (Azure AD). A dokumentum az összevont SaaS-alkalmazásokra helyezi a hangsúlyt. 
 
 A dokumentum nem tartalmaz részletes útmutatást. Elméleti támogatást nyújt a sikeres migráláshoz, mivel segít megérteni, hogy a helyszíni konfigurációk hogyan alakulnak át az Azure AD-ben. Emellett ismerteti a gyakori forgatókönyveket is.
 
@@ -31,7 +31,7 @@ Ha van felhasználói fiókokat tartalmazó helyszíni címtára, valószínűle
 
 Ha vállalata a legtöbb vállalathoz hasonló, akkor valószínűleg már elkezdte a felhőalapú alkalmazások és identitások bevezetését. Lehet, hogy már használják is az Office 365-öt és az Azure AD Connectet. Lehet, hogy egyes fontosabb számítási feladatokhoz már alakítottak ki felhőalapú SaaS-alkalmazásokat, azonban még nem mindegyikhez.  
 
-Az Office 365- és az Azure AD-alapú alkalmazások mellett számos vállalat rendelkezik olyan SaaS vagy egyéni üzletági (LoB) alkalmazásokkal, amelyek közvetlenül össze vannak vonva valamilyen helyszíni bejelentkezési szolgáltatással, például az Active Directory összevonási szolgáltatással (AD FS). Ez a migrációs útmutató leírja, hogy miért és hogyan érdemes a helyszíni alkalmazásokat az Azure AD-be migrálni.
+Az Office 365- és az Azure AD-alapú alkalmazások mellett számos vállalat rendelkezik olyan SaaS vagy egyéni üzletági (LoB) alkalmazásokkal, amelyek közvetlenül össze vannak vonva valamilyen helyszíni bejelentkezési szolgáltatással, például az Active Directory összevonási szolgáltatással (AD FS). Ez az útmutató azt ismerteti, miért és hogyan helyezheti át az alkalmazások az Azure ad-hez.
 
 >[!NOTE]
 >Az útmutató részletes információkat tartalmaz a SaaS-alkalmazások konfigurálásáról és migrálásáról, valamint áttekintést nyújt az egyéni üzletági alkalmazásokról. A jövőben tervezünk részletesebb útmutatót is kiadni az egyéni üzletági alkalmazásokról.
@@ -40,9 +40,9 @@ Az Office 365- és az Azure AD-alapú alkalmazások mellett számos vállalat re
 
 ![Az Azure AD-n keresztül összevont alkalmazások](media/migrate-adfs-apps-to-azure/migrate2.png)
 
-## <a name="reasons-for-migrating-apps-to-azure-ad"></a>Amiért érdemes az Azure AD-be migrálni az alkalmazásokat
+## <a name="reasons-for-moving-apps-to-azure-ad"></a>Alkalmazások áthelyezése az Azure AD okai
 
-Az olyan vállalatok számára, amelyek az AD FS-t, a Pinget vagy valamely más helyszíni hitelesítési szolgáltatót használnak, az alkalmazások Azure AD-be való migrálása a következő előnyöket biztosítja:
+Olyan szervezet már használja az AD FS, a Pinget vagy más helyszíni hitelesítési szolgáltatót alkalmazások áthelyezése az Azure AD lehetővé teszi, hogy a következő előnyökkel jár:
 
 **Biztonságosabb hozzáférés**
 - Részletesebb alkalmazásonkénti hozzáférés-vezérlés konfigurálása, beleértve az Azure Multi-Factor Authenticationt az [Azure AD feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md) használatával. A szabályzatok ugyanúgy alkalmazhatók az SaaS- és az egyéni alkalmazásokra, ahogy jelenleg az Office 365-alkalmazásokra.
@@ -61,7 +61,7 @@ Az olyan vállalatok számára, amelyek az AD FS-t, a Pinget vagy valamely más 
 - Az Azure AD előnyei mellett továbbra is használhatja a helyszíni hitelesítési megoldását. Így például a helyszíni többtényezős hitelesítési megoldások, a naplózás, a felülvizsgálat és az egyéb előnyök nem vesznek el. 
 
 **Segítség a helyszíni identitásszolgáltató kivezetésében**
-- Az olyan vállalatok számára, amelyek meg kívánják szüntetni a helyszíni hitelesítési megoldásaikat, az alkalmazások Azure AD-be való migrálása megkönnyíti a váltást, mivel a munka egy részét leveszi a vállukról. 
+- A szervezet számára, hogy meg szeretné szüntetni a helyszíni hitelesítési termék alkalmazások áthelyezése az Azure AD egy egyszerűbb, vállukról néhány, így a munka. 
 
 ## <a name="mapping-types-of-apps-on-premises-to-types-of-apps-in-azure-ad"></a>A helyszíni alkalmazástípusok megfeleltetése az Azure AD-alkalmazástípusoknak
 A legtöbb alkalmazás a bejelentkezés típusa alapján néhány kategóriába sorolható. Ezek a kategóriák határozzák meg, hogy az alkalmazás hogyan jelenik meg az Azure AD-ben.
@@ -126,8 +126,8 @@ A következő táblázat ismerteti az identitásszolgáltató konfigurációs f�
 |Azonosító/</br>„kiállító”|Az identitásszolgáltató az alkalmazás által használt azonosítója (más néven „Kiállítóazonosító”).</br></br>Az SAML-jogkivonatban ez az érték a **Kiállító** elemként található meg.|Az AD FS esetében az azonosító általában az összevonási szolgáltatás azonosítója az AD FS-kezelőben, amely a **Szolgáltatás** > **Összevonási szolgáltatás tulajdonságainak szerkesztése** területen található. Például: http&#58;//fs.contoso.com/adfs/services/trust.|Az Azure AD megfelelő értéke azt a mintát követi, ahol a {bérlőazonosító} helyére a bérlő azonosítóját kell írni. Az Azure Portalon az **Azure Active Directory** > **Tulajdonságok** területen **Címtár-azonosító**néven található: https&#58;//sts.windows.net/{bérlőazonosító}/|
 |IdP </br>összevonás </br>metaadatok|Az identitásszolgáltató nyilvánosan elérhető összevonási metaadatainak helye. (Az összevonási metaadatokat egyes alkalmazások alternatív megoldásként használják, hogy a rendszergazdának ne kelljen egyenként konfigurálnia az URL-címeket, azonosítókat és jogkivonat-aláíró tanúsítványokat.)|Az AD FS összevonási metaadatainak URL-címe az AD FS-kezelőben a **Szolgáltatás** > **Végpontok** > **Metaadatok** > **Típus: összevonási metaadatok** területen található. Például: https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Az Azure AD megfelelő értéke a https&#58;//login.microsoftonline.com/{BérlőTartományNeve}/FederationMetadata/2007-06/FederationMetadata.xml. mintát követi. Ahol a {BérlőTartományNeve} helyére a bérlő nevét kell írni „contoso.onmicrosoft.com” formátumban. </br></br>További információkat itt talál: [Összevonási metaadatok](../develop/azure-ad-federation-metadata.md).
 
-## <a name="migrating-saas-apps"></a>SaaS-alkalmazások migrálása
-Az SaaS-alkalmazások az AD FS-ből vagy más identitásszolgáltatóról az Azure AD-be való migrálása jelenleg manuálisan hajtható végre. Alkalmazásspecifikus útmutatásért lásd a [Marketplace-en található SaaS-alkalmazások integrálását ismertető oktatóanyagok listáját](../saas-apps/tutorial-list.md).
+## <a name="moving-saas-apps"></a>SaaS-alkalmazások áthelyezése
+Áthelyezés SaaS-alkalmazásokhoz az AD FS vagy más identitásszolgáltatóról az Azure AD a mai nap manuális folyamat. Alkalmazásspecifikus útmutatásért lásd a [Marketplace-en található SaaS-alkalmazások integrálását ismertető oktatóanyagok listáját](../saas-apps/tutorial-list.md).
 
 Az integrációs oktatóanyagok feltételezik, hogy zöldmezős integrációt hajt végre. Néhány, a migrálásra vonatkozó fontos alapelvet érdemes figyelembe vennie az alkalmazások tervezése, felmérése, konfigurálása és átállítása során:  
 - Egyes alkalmazások migrálása egyszerű. Az összetettebb követelményekkel rendelkező, például egyedi jogcímeket igénylő alkalmazások esetében azonban további konfigurálásra lehet szükség az Azure AD-ben és/vagy az Azure AD Connectben.
@@ -135,7 +135,7 @@ Az integrációs oktatóanyagok feltételezik, hogy zöldmezős integrációt ha
 - Miután megállapította, hogy további jogcímek szükségesek, meg kell győződnie róla, hogy az Azure AD-ben elérhetők. Ellenőrizze az Azure AD Connect szinkronizálási konfigurációjában, hogy a szükséges attribútumok, például a **samAccountName** attribútum szinkronizálódik-e az Azure AD-be.
 - Amint az attribútumok elérhetők az Azure AD-ben, adjon hozzá jogcímkiállítási szabályokat az Azure AD-ben, hogy ezek az attribútumok jogcímként szerepeljenek a kiállított jogkivonatokban. Az alkalmazás **egyszeri bejelentkezési** tulajdonságain belül adhatja hozzá ezeket az Azure AD-ben.
 
-### <a name="assess-what-can-be-migrated"></a>A migrálható tartalmak felmérése
+### <a name="assess-what-can-be-moved"></a>Felmérheti, hogy mi migrálható
 Az SAML 2.0-alkalmazások a Marketplace-en Azure AD alkalmazáskatalógusán keresztül vagy nem Marketplace-alkalmazásként integrálhatók az Azure AD-be.  
 
 Bizonyos konfigurációk Azure AD-beli beállításához további lépések szükségesek, más konfigurációk pedig jelenleg nem támogatottak. Annak megállapításához, hogy mi migrálható, tekintse át az egyes alkalmazások aktuális konfigurációját. Különös tekintettel a következőkre:
@@ -144,8 +144,8 @@ Bizonyos konfigurációk Azure AD-beli beállításához további lépések szü
 - A kiállított SAML-jogkivonatverziók.
 - Egyéb konfigurációk, például kiállításengedélyezési szabályok vagy hozzáférés-vezérlési szabályzatok és többtényezős hitelesítési (további hitelesítési) szabályok.
 
-#### <a name="what-can-be-migrated-today"></a>A jelenleg migrálható alkalmazások
-A jelenleg könnyen migrálható alkalmazások közé a konfigurációs elemek és jogcímek szabványos készletét használó SAML 2.0-alkalmazások tartoznak. Ezek az alkalmazások a következőket tartalmazhatják:
+#### <a name="what-can-be-moved-today"></a>Mi jelenleg migrálható
+A jelenleg könnyen áthelyezhető-alkalmazások konfigurációs elemek és jogcímek szabványos készletét használó SAML 2.0-alkalmazások tartalmaznak. Ezek az alkalmazások a következőket tartalmazhatják:
 - Egyszerű felhasználónév.
 - E-mail-cím.
 - Utónév.

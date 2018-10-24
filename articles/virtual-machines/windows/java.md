@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: zarhoads
-ms.openlocfilehash: 4495b6813a3936967ceb81beb216850538b04af5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 00c242ae75e8a581e2b403bac8e75f6b0bb421ad
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465593"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955513"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Létrehozása és kezelése Windows virtuális gépek az Azure-ban a Java használatával
 
@@ -117,7 +117,7 @@ Körülbelül 20 perc alatt elvégezheti ezeket a lépéseket vesz igénybe.
 
 ## <a name="create-credentials"></a>Hitelesítő adatok létrehozása
 
-Ebben a lépésben a Kezdés előtt győződjön meg arról, hogy rendelkezik-e a hozzáférést egy [Active Directory egyszerű szolgáltatás](../../azure-resource-manager/resource-group-create-service-principal-portal.md). Egy későbbi lépésben is az Alkalmazásazonosítót, a hitelesítési kulcsot és a bérlő Azonosítóját kell kell rögzíteni.
+Ebben a lépésben a Kezdés előtt győződjön meg arról, hogy rendelkezik-e a hozzáférést egy [Active Directory egyszerű szolgáltatás](../../active-directory/develop/howto-create-service-principal-portal.md). Egy későbbi lépésben is az Alkalmazásazonosítót, a hitelesítési kulcsot és a bérlő Azonosítóját kell kell rögzíteni.
 
 ### <a name="create-the-authorization-file"></a>Az engedélyezési-fájl létrehozása
 

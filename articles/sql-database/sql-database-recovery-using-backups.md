@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/08/2018
-ms.openlocfilehash: ad82ae6158bbf343dd84be125a8839e992ad3634
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.date: 10/22/2018
+ms.openlocfilehash: 6a75bc2c6e4a624f3b5ee5fc546c9bd4346b4730
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868156"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958584"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Automatikus biztonsági adatbázismentés használatával Azure SQL-adatbázis helyreállítása
 
@@ -70,12 +70,7 @@ Tömeges visszaállítás beépített funkció sem van. A [Azure SQL Database: a
 
 ## <a name="point-in-time-restore"></a>Adott időpontnak megfelelő helyreállítás
 
-Visszaállíthatja egy meglévő adatbázist egy korábbi időpontra az Azure Portalon, az egyazon logikai kiszolgálón található új adatbázisként időben [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase), vagy a [REST API-val](https://msdn.microsoft.com/library/azure/mt163685.aspx).
-
-> [!TIP]
-> Egy PowerShell-példaszkript egy adatbázis-időponthoz visszaállításhoz bemutató, lásd: [PowerShell-lel SQL-adatbázis visszaállítása](scripts/sql-database-restore-database-powershell.md).
-
-Az adatbázis minden szolgáltatási szint vagy a számítási méret, és önálló adatbázisként vagy rugalmas készletbe állíthatók vissza. Győződjön meg arról, hogy a szükséges erőforrások ténylegesen az a logikai kiszolgálón vagy a rugalmas készlet, amely az adatbázis visszaállítást végzi. Ha elkészült, a visszaállított adatbázis egy normál, teljes mértékben elérhető, online adatbázis. A visszaállított adatbázis díját a normál díját a szolgáltatási szint és a számítási méret alapján számoljuk el. Nem terheli az adatbázis-visszaállítás befejezéséig.
+Visszaállíthatja egy önálló, készletezett vagy a felügyelt példány adatbázisa egy korábbi időpontra az időben, mint egy új adatbázist ugyanazon a kiszolgálón az Azure portal használatával [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase), vagy a [REST API-val](https://docs.microsoft.com/rest/api/sql/databases). Egy adatbázis bármely szolgáltatásszinthez vissza tudja állítani, vagy a számítási méret. Győződjön meg arról, hogy a szükséges erőforrásokat a kiszolgálón, amelyhez állítja vissza az adatbázist. Ha elkészült, a visszaállított adatbázis egy normál, teljes mértékben elérhető, online adatbázis. A visszaállított adatbázis díját a normál díját a szolgáltatási szint és a számítási méret alapján számoljuk el. Nem terheli az adatbázis-visszaállítás befejezéséig.
 
 Általában állítsa vissza egy adatbázis egy korábbi időpontra, helyreállítási célból. Ebben, való kezelése a visszaállított adatbázis az eredeti adatbázis helyett, vagy adatokat beolvasni, és frissítse az eredeti adatbázist.
 
@@ -87,15 +82,16 @@ Az adatbázis minden szolgáltatási szint vagy a számítási méret, és öná
 
    Ha azt tervezi, adatokat lekérni a visszaállított adatbázis helyreállítása egy felhasználónak vagy alkalmazásnak hiba, meg kell írási és végrehajtási adatok kinyeréséhez a visszaállított adatbázisból az eredeti adatbázist a szükséges adatok helyreállítási szkripteket. Bár a visszaállítási művelet elvégzéséhez hosszú időt is igénybe vehet, az adatbázis visszaállítása közben a visszaállítási folyamat során az adatbázisok listája látható. Ha törli az adatbázist a visszaállítás során, a visszaállítási művelet meg lett szakítva, és nem terheli az adatbázis, amely a visszaállítás nem fejeződött be.
 
-### <a name="recover-to-a-point-in-time-using-azure-portal"></a>Helyreállítás egy időben az Azure portal használatával
-
-Helyreállítani egy időben az Azure portal használatával, nyissa meg az adatbázishoz tartozó lap, és kattintson a **visszaállítása** az eszköztáron.
+Egy önálló, készletezett vagy felügyelt példány adatbázis helyreállítása az Azure portal használatával, nyissa meg az adatbázishoz tartozó lap, és kattintson a **visszaállítása** az eszköztáron.
 
 ![point-in-time-restore](./media/sql-database-recovery-using-backups/point-in-time-recovery.png)
 
+> [!IMPORTANT]
+> Programozott módon egy adatbázis visszaállítása biztonsági másolatból, lásd: [programozott módon teljesítő recovery segítségével automatizált biztonsági mentések](sql-database-recovery-using-backups.md#programmatically-performing-recovery-using-automated-backups)
+
 ## <a name="deleted-database-restore"></a>Törölt adatbázis visszaállítása
 
-Egy törölt adatbázist visszaállíthatja az egyazon logikai kiszolgálón, az Azure Portalon, a törölt adatbázisok törlésének időpontja [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase), vagy a [REST (createMode visszaállítási =)](https://msdn.microsoft.com/library/azure/mt163685.aspx). Akkor is törölt adatbázis visszaállítása egy korábbi időpontra a során a megőrzési használatával [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase).
+Egy törölt adatbázist visszaállíthatja az egyazon logikai kiszolgálón, az Azure Portalon, a törölt adatbázisok törlésének időpontja [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase), vagy a [REST (createMode visszaállítási =)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate). Akkor is törölt adatbázis visszaállítása egy korábbi időpontra a során a megőrzési használatával [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase).
 
 > [!Note]
 > Törölt adatbázis visszaállítása a felügyelt példány nem érhető el.
@@ -104,13 +100,14 @@ Egy törölt adatbázist visszaállíthatja az egyazon logikai kiszolgálón, az
 > [!IMPORTANT]
 > Ha törli egy Azure SQL Database server-példány, az összes adatbázis is törlődik, és nem állítható helyre. Jelenleg nem törölt kiszolgáló visszaállítása nem támogatott.
 
-### <a name="recover-a-deleted-database-using-the-azure-portal"></a>Az Azure portal használatával törölt adatbázis helyreállítása
-
-Során törölt adatbázis helyreállítása a [DTU-alapú modell megőrzési időszak](sql-database-service-tiers-dtu.md) vagy [Virtuálismag-alapú modell megőrzési időszak](sql-database-service-tiers-vcore.md) az Azure portal használatával, nyissa meg az oldalt, a kiszolgáló és a műveletek területen, kattintson a **Törölt adatbázisok**.
+Az Azure Portalon során törölt adatbázis helyreállítása a [DTU-alapú modell megőrzési időszak](sql-database-service-tiers-dtu.md) vagy [Virtuálismag-alapú modell megőrzési időszak](sql-database-service-tiers-vcore.md) az Azure Portalon nyissa meg az oldalt, a kiszolgáló és a a Műveletek területen, kattintson a **törölt adatbázisok**.
 
 ![deleted-database-restore-1](./media/sql-database-recovery-using-backups/deleted-database-restore-1.png)
 
 ![deleted-database-restore-2](./media/sql-database-recovery-using-backups/deleted-database-restore-2.png)
+
+> [!IMPORTANT]
+> Programozott módon a törölt adatbázis visszaállítása, lásd: [programozott módon teljesítő recovery segítségével automatizált biztonsági mentések](sql-database-recovery-using-backups.md#programmatically-performing-recovery-using-automated-backups)
 
 ## <a name="geo-restore"></a>Georedundáns helyreállítás
 
@@ -141,21 +138,34 @@ Korábban már említettük, az Azure Portalon kívül, mint az adatbázis helyr
 
 ### <a name="powershell"></a>PowerShell
 
-| Parancsmag | Leírás |
-| --- | --- |
-| [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) |Egy vagy több adatbázist kér le. |
-| [Get-AzureRMSqlDeletedDatabaseBackup](/powershell/module/azurerm.sql/get-azurermsqldeleteddatabasebackup) | Lekér egy törölt adatbázist, amelyet visszaállíthat. |
-| [Get-AzureRmSqlDatabaseGeoBackup](/powershell/module/azurerm.sql/get-azurermsqldatabasegeobackup) |Lekéri egy adatbázis georedundáns biztonsági másolatát. |
-| [Restore-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase) |Visszaállít egy SQL-adatbázist. |
-|  | |
+- Egyetlen vagy készletezett adatbázisok visszaállítását, lásd: [Restore-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase)
+
+   | Parancsmag | Leírás |
+   | --- | --- |
+   | [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) |Egy vagy több adatbázist kér le. |
+   | [Get-AzureRMSqlDeletedDatabaseBackup](/powershell/module/azurerm.sql/get-azurermsqldeleteddatabasebackup) | Lekér egy törölt adatbázist, amelyet visszaállíthat. |
+   | [Get-AzureRmSqlDatabaseGeoBackup](/powershell/module/azurerm.sql/get-azurermsqldatabasegeobackup) |Lekéri egy adatbázis georedundáns biztonsági másolatát. |
+   | [Restore-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase) |Visszaállít egy SQL-adatbázist. |
+   |  | |
+
+   > [!TIP]
+   > Egy PowerShell-példaszkript egy adatbázis-időponthoz visszaállításhoz bemutató, lásd: [PowerShell-lel SQL-adatbázis visszaállítása](scripts/sql-database-restore-database-powershell.md).
+
+- Felügyelt példány adatbázisok visszaállítását, lásd: [-időponthoz visszaállítását egy adatbázist az Azure SQL felügyelt példányhoz az azurerm.SQL-hez a PowerShell-könyvtár](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/28/point-in-time-restore-of-a-database-on-azure-sql-managed-instance-using-azurerm-sql-powershell-library/)
 
 ### <a name="rest-api"></a>REST API
 
+A REST API használatával egyetlen vagy készletezett adatbázisok visszaállítását:
+
 | API | Leírás |
 | --- | --- |
-| [REST (createMode = Recovery)](https://msdn.microsoft.com/library/azure/mt163685.aspx) |Visszaállít egy adatbázist |
-| [Get létrehozása, vagy az adatbázis állapotának frissítése](https://msdn.microsoft.com/library/azure/mt643934.aspx) |A visszaállítási művelet során állapotának visszaadása |
+| [REST (createMode = Recovery)](https://docs.microsoft.com/rest/api/sql/databases) |Visszaállít egy adatbázist |
+| [Get létrehozása, vagy az adatbázis állapotának frissítése](https://docs.microsoft.com/rest/api/sql/operations) |A visszaállítási művelet során állapotának visszaadása |
 |  | |
+
+### <a name="azure-cli"></a>Azure CLI
+
+Azure CLI-vel önálló vagy készletezett adatbázisok visszaállítását, lásd: [az sql db restore](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-restore).
 
 ## <a name="summary"></a>Összegzés
 

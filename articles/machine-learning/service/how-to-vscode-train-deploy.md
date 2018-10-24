@@ -9,12 +9,12 @@ ms.author: jmartens
 author: j-martens
 ms.reviewer: jmartens
 ms.date: 10/1/2018
-ms.openlocfilehash: 3a5ee8795dabcbf9e35e16a8ba0f9c0eb5490ead
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 6372aada8c3d380f8d3cefb0479e45bbd7c63898
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242976"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945246"
 ---
 # <a name="vs-code-tools-for-ai-train-and-deploy-ml-models-from-vs-code"></a>A VS Code Tools for AI: Train és gépi Tanulási modellek a VS Code telepítése
 Ebben a cikkben, megtudhatja, hogyan használható a **VS Code Tools for AI** betanítása és üzembe helyezése a gépi tanulási és deep learning-modellek Azure Machine Learning szolgáltatás a VS Code-bővítmény.
@@ -196,4 +196,4 @@ A web service most már telepítve van.
 
 A VS Code-en kívül a Machine Learning betanítási útmutatót szeretne, olvassa el a [oktatóanyag: az Azure Machine Learning-modellek betanításához](tutorial-train-models-with-aml.md).
 
-A szerkesztési lépésenkénti útmutatóért fut, és helyileg, a kód hibakeresése lásd: a [Python Hello World oktatóanyag](https://code.visualstudio.com/docs/languages/python/docs/python/python-tutorial)
+A szerkesztési lépésenkénti útmutatóért fut, és helyileg, a kód hibakeresése lásd: a [Python Hello World oktatóanyag](https://code.visualstudio.com/docs/python/python-tutorial)

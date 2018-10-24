@@ -10,18 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: dfd66c1ac2e627b72d24a520fc37c6ebfb361556
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 90f5caa13bf95fb5298a06bda5a03e9bc17bcb1a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869998"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945178"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Azure Cosmos DB-adatok megjelenítése Power BI-összekötő használatával
 
-[A Power bi](https://powerbi.microsoft.com/) egy online szolgáltatás, amelyben hozhat létre, és az irányítópultok és jelentések megosztása. A Power BI Desktop egy eszköz, amely lehetővé teszi a különféle adatforrásokból származó adatok beolvasása a Jelentésszerkesztő. Az Azure Cosmos DB az egyik az adatforrás, amely a Power BI Desktopban is használhatja. Power BI Desktopban csatlakozhat az Azure Cosmos DB-fiókot az Azure Cosmos DB-összekötő a Power bi-hoz.  Azure Cosmos DB-adatok importálása a Power bi-ba, után átalakítja a, jelentéseket hozhat létre, és a jelentések közzététele a Power bi-bA.   
+[Power bi-ban](https://powerbi.microsoft.com/) egy online szolgáltatás, amelyben hozhat létre, és az irányítópultok és jelentések megosztása. A Power BI Desktop egy eszköz, amely lehetővé teszi a különféle adatforrásokból származó adatok beolvasása a Jelentésszerkesztő. Az Azure Cosmos DB az egyik az adatforrás, amely a Power BI Desktopban is használhatja. Power BI Desktopban csatlakozhat az Azure Cosmos DB-fiókot az Azure Cosmos DB-összekötő a Power bi-hoz.  Azure Cosmos DB-adatok importálása a Power bi-ba, után átalakítja a, jelentéseket hozhat létre, és a jelentések közzététele a Power bi-bA.   
 
-Ez a cikk az Azure Cosmos DB-fiókot a Power BI Desktop a csatlakozáshoz szükséges lépéseket ismerteti. A csatlakozás után, lépjen egy gyűjteményhez, az adatok kinyerése, átalakítása JSON-adatokat a táblázatos formátumra és egy jelentés közzététele a Power bi.
+Ez a cikk az Azure Cosmos DB-fiókot a Power BI Desktop a csatlakozáshoz szükséges lépéseket ismerteti. A csatlakozás után, nyissa meg a gyűjtemény, bontsa ki az adatokat, alakítsa át a JSON-adatok táblázatos formátumban és közzé egy jelentést a Power bi-ban.
 
 > [!NOTE]
 > Az Azure Cosmos DB-hez készült Power BI-összekötő a Power BI Desktop csatlakozik. A Power BI Desktopban létrehozott jelentések közzétehetők a powerbi.com webhelyre. Az Azure Cosmos DB-adatok közvetlen kinyerése nem hajtható végre, a powerbi.com helyről. 

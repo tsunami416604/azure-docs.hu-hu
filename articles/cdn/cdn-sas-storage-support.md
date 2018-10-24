@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
-ms.openlocfilehash: 7180e51a6ac1392e4a3f072097b1aeef3648c605
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 57891bcce289c30d7dce1cd00c301064aa9b97cc
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093289"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955235"
 ---
 # <a name="using-azure-cdn-with-sas"></a>SAS használatával Azure CDN szolgáltatás használata
 
@@ -71,28 +71,28 @@ Ez a beállítás a legegyszerűbben, és a egy SAS-jogkivonatát, amelyet az Az
  
 Ez a beállítás csak érhető el **verizon Azure CDN Premium** profilok. Ezzel a beállítással gondoskodhat a blob-tárolóból az eredeti kiszolgálóra. Előfordulhat, hogy szeretné használja ezt a beállítást, ha nem szükséges különleges hozzáférési korlátozásokat a fájlt, de szeretné akadályozni, hogy a felhasználók közvetlenül az Azure CDN kiszervezési idők javítása érdekében a tároló forrás eléréséhez. A SAS-jogkivonat, amely a felhasználó ismeretlen, bárki fájlokat az eredeti kiszolgálóra a blobtároló eléréséhez szükség. Azonban az URL-Újraírási szabályt, mert a SAS-jogkivonat nem szükséges a CDN-végponton.
  
-1. Használja a [szabálymotorral](cdn-rules-engine.md) URL-újraíró szabály létrehozásához. Új szabályok a propagálása körülbelül 10 percet igénybe vehet.
+1. Használja a [szabálymotorral](cdn-rules-engine.md) URL-újraíró szabály létrehozásához. Új szabályok propagálása akár 4 óra múlva.
 
    ![CDN kezelése gomb](./media/cdn-sas-storage-support/cdn-manage-btn.png)
 
    ![CDN szabálymotor gomb](./media/cdn-sas-storage-support/cdn-rules-engine-btn.png)
 
-   Az alábbi minta URL-újraíró szabály egy reguláris kifejezési mintája rögzítését csoport és a egy nevű végpontot használ *storagedemo*:
+   Az alábbi minta URL-újraíró szabály egy reguláris kifejezési mintája rögzítését csoport és a egy nevű végpontot használ *sasstoragedemo*:
    
    Forrás:   
-   `(\/container1\/.*)`
+   `(container1\/.*)`
    
    Cél:   
    ```
    $1?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
    ![A CDN URL-újraíró szabály – bal](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
-   ![CDN URL-újraíró szabály – jobbra](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-2.png)
+   ![CDN URL-újraíró szabály – jobbra](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
 2. Miután az új szabály aktiválódásakor, bárki hozzáférhet a CDN-végpont, függetlenül attól, hogy használatát egy SAS-token az URL-címben lévő fájlok a megadott tároló. A következő formátumban: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
    Példa:   
-   `https://demoendpoint.azureedge.net/container1/demo.jpg`
+   `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
        
 
 3. A gyorsítótárazás időtartama finomhangolása gyorsítótárazási szabályok segítségével, vagy a hozzáadásával `Cache-Control` fejlécek a forrás-kiszolgálón. Mivel az Azure CDN a SAS-jogkivonat kezeli az egyszerű lekérdezési karakterláncként, ajánlott eljárásként érdemes beállítania a gyorsítótárazás időtartamát, vagy az előtt a SAS-lejárati idő lejár. Ellenkező esetben, ha egy fájlt a rendszer több, mint a biztonsági Társítások aktív hosszabb időre gyorsítótárazza, a fájl valószínűleg elérhető az Azure CDN origin kiszolgálóról a SAS-lejárati idő eltelte után. Ha ez a helyzet akkor fordul elő, és azt szeretné, hogy a gyorsítótárazott fájl nem érhető el, törölje a jelölést a gyorsítótárból a fájl egy kiürítési műveletet kell végrehajtania. Az Azure CDN a gyorsítótárazás idejének beállításával kapcsolatos további információkért lásd: [vezérlő Azure CDN gyorsítótárazási viselkedésének gyorsítótár-szabályokkal](cdn-caching-rules.md).
@@ -108,24 +108,24 @@ Az Azure CDN biztonsági jogkivonat-hitelesítés használatához rendelkeznie k
  
    Példa:   
    ```
-   https://demoendpoint.azureedge.net/container1/demo.jpg?a4fbc3710fd3449a7c99986bkquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
+   https://sasstoragedemo.azureedge.net/container1/demo.jpg?a4fbc3710fd3449a7c99986bkquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
        
    A paraméterbeállításokkal a biztonsági jogkivonat-hitelesítésre eltérnek a paraméterbeállításokkal egy SAS-token. Amikor létrehoz egy biztonsági jogkivonat lejárati idő használatát választja, ha az értéke megegyezik a SAS-jogkivonat lejárati idejének kell beállítania. Így biztosítható, hogy kiszámítható legyen-e a lejárati időt. 
  
-2. Használja a [szabálymotorral](cdn-rules-engine.md) SAS-token hozzáférést a tárolóban lévő összes BLOB URL-újraíró szabály létrehozásához. Új szabályok a propagálása körülbelül 10 percet igénybe vehet.
+2. Használja a [szabálymotorral](cdn-rules-engine.md) SAS-token hozzáférést a tárolóban lévő összes BLOB URL-újraíró szabály létrehozásához. Új szabályok propagálása akár 4 óra múlva.
 
-   Az alábbi minta URL-újraíró szabály egy reguláris kifejezési mintája rögzítését csoport és a egy nevű végpontot használ *storagedemo*:
+   Az alábbi minta URL-újraíró szabály egy reguláris kifejezési mintája rögzítését csoport és a egy nevű végpontot használ *sasstoragedemo*:
    
    Forrás:   
-   `(\/container1\/.*)`
+   `(container1\/.*)`
    
    Cél:   
    ```
    $1&sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
    ![A CDN URL-újraíró szabály – bal](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
-   ![CDN URL-újraíró szabály – jobbra](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-3.png)
+   ![CDN URL-újraíró szabály – jobbra](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
 3. Ha megújítja az SAS, győződjön meg arról, hogy az új SAS-jogkivonat használatával frissítse az Url-Újraírási szabályt. 
 

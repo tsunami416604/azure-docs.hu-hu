@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 724603fdb80e6fce7d5b8756655d23a6c32d5558
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 4305afff1e35e9e05f1b2314f8fb9d5a96383e9f
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405463"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955643"
 ---
 # <a name="azure-operational-security-overview"></a>Az Azure működési biztonság – áttekintés
 [Az Azure operational security](https://docs.microsoft.com/azure/security/azure-operational-security) hivatkozik a szolgáltatások, a vezérlők és a felhasználók számára elérhető szolgáltatások védelme érdekében az adatokat, alkalmazásokat és egyéb eszközök, Microsoft Azure-ban. Olyan keretrendszer, amely magában foglalja a különböző képességeket, amelyek a Microsoft egyedülálló szerzett ismeretek. Ezek közé tartozik a Microsoft biztonsági fejlesztési életciklus (SDL), a Microsoft Security Response Center programhoz és a kiberbiztonsági fenyegetések világának.
@@ -30,7 +30,7 @@ Az informatikai üzemeltetési csapat felelős az Adatközpont-infrastruktúráb
 [A Microsoft Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) egy felhőalapú, informatikai felügyeleti megoldás, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúrára. A következő szolgáltatásokat futtató Azure-ban a legfontosabb funkcióit biztosítja. Az Azure több tartalmaz szolgáltatások, amelyek segítségével kezelése és védelme a helyszíni és felhőalapú infrastruktúrára. Mindegyik szolgáltatás egy adott felügyeleti funkciót biztosít. Különféle felügyeleti forgatókönyvek valósíthatók szolgáltatások kombinálásával. 
 
 ### <a name="azure-monitor"></a>Azure Monitor
-[Az Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/overview) felügyelt sourcesa központi adattárolókhoz való gyűjti az adatokat. Ezek az adatok lehetnek események, teljesítményadatok vagy az API segítségével biztosított egyéni adatok. Az adatok begyűjtését követően érhető el a riasztások, elemzéshez vagy exportáláshoz. 
+[Az Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) felügyelt sourcesa központi adattárolókhoz való gyűjti az adatokat. Ezek az adatok lehetnek események, teljesítményadatok vagy az API segítségével biztosított egyéni adatok. Az adatok begyűjtését követően érhető el a riasztások, elemzéshez vagy exportáláshoz. 
 
 Különböző forrásokból származó adatok egyesítése, és az Azure-szolgáltatásokból származó adatokat kombinálva a meglévő helyszíni környezetben. A log Analytics, hogy az összes művelet is elérhető a különféle adatokon továbbá egyértelműen elkülöníti az adatok gyűjtését az adatok, végrehajtott műveletet.
 
@@ -158,5 +158,5 @@ A Microsoft Azure felhőplatformon eltávolítva a hagyományos szűk keresztmet
 A biztonsági és auditálási megoldás kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Biztonság és megfelelőség](https://www.microsoft.com/cloud-platform/security-and-compliance)
-- [Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/security-center-intro)
-- [Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/overview)
+- [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: 4eed11b312bce27dc0cd98daa3e2599a28fcabbd
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: aed816dadcced36946d6e173ca259a6c0f373727
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524430"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957463"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Az Azure Machine Learning-modellek frissítése az Update-erőforrástevékenység
 Ez a cikk egészíti ki a fő Azure Data Factory - integráció a cikk az Azure Machine Learning: [hozhatók létre prediktív adatcsatornák Azure Machine Learning és az Azure Data Factory](transform-data-using-machine-learning.md). Ha ezt még nem tette meg, ez a cikk elolvasása előtt tekintse át a fő cikket. 
@@ -98,7 +98,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 
 Kérheti értékek helyen jogosultak az URL-cím számára a webszolgáltatás a lekérdezésekor a [Azure Machine Learning Web Services portálon](https://services.azureml.net/). 
 
-Az új típusú frissítési erőforrás végpontjának szolgáltatás egyszerű hitelesítés szükséges. Használja az egyszerű szolgáltatásnév hitelesítése, egy alkalmazás entitás regisztrálása az Azure Active Directory (Azure AD), és adja meg azt a **közreműködői** vagy **tulajdonosa** szerepkört az előfizetés vagy az erőforrás-csoport helyét a web service tartozik. A részletek [egyszerű szolgáltatás létrehozása és kezelése az Azure-erőforrás engedélyek hozzárendelése](../azure-resource-manager/resource-group-create-service-principal-portal.md). Jegyezze fel a következő értékeket, mert a társított szolgáltatás definiálásához használja:
+Az új típusú frissítési erőforrás végpontjának szolgáltatás egyszerű hitelesítés szükséges. Használja az egyszerű szolgáltatásnév hitelesítése, egy alkalmazás entitás regisztrálása az Azure Active Directory (Azure AD), és adja meg azt a **közreműködői** vagy **tulajdonosa** szerepkört az előfizetés vagy az erőforrás-csoport helyét a web service tartozik. A részletek [egyszerű szolgáltatás létrehozása és kezelése az Azure-erőforrás engedélyek hozzárendelése](../active-directory/develop/howto-create-service-principal-portal.md). Jegyezze fel a következő értékeket, mert a társított szolgáltatás definiálásához használja:
 
 - Alkalmazásazonosító
 - Alkalmazáskulcs 

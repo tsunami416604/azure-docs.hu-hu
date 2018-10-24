@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 2a70893c3e879b2cecb4d39d538b0df44b1ced15
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 1b258d115e7d9962ecab4b93dbcd98d13f5977c7
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651459"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956680"
 ---
 # <a name="understand-the-agent-check-results-in-update-management"></a>Az ügynök ellenőrzésének az eredménye az Update Management ismertetése
 
@@ -70,7 +70,7 @@ Ez az ellenőrzés határozza meg, ha a TLS 1.2-t használ a kommunikáció titk
 
 Ez az ellenőrzés határozza meg, ha az ügynök megfelelően kommunikálhat az ügynök szolgáltatással.
 
-Proxy- és tűzfalbeállítások konfigurációk engedélyeznie kell a hibrid Runbook-feldolgozó ügynök kommunikáljon a a regisztrációs végpont. Címek és portok megnyitásához listáját lásd: [hálózati hibrid feldolgozók tervezése](../automation-hybrid-runbook-worker.md#network-planning)
+Proxy és tűzfal-konfiguráció lehetővé teszi a hibrid Runbook-feldolgozó ügynök a regisztrációs végponttal való kommunikációhoz. Címek és portok megnyitásához listáját lásd: [hálózati hibrid feldolgozók tervezése](../automation-hybrid-runbook-worker.md#network-planning)
 
 ### <a name="operations-endpoint"></a>Műveletek végpont
 

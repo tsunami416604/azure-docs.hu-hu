@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 65672d5dc42ae1e584a36bcc72c16911f6c1f6e2
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 206dddd70ae9063782b7dc8dfaf1214f53d5fac8
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122825"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955706"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Végfelhasználói hitelesítés az Azure Data Lake Storage Gen1 a .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -82,7 +82,7 @@ Ebben a cikkben megismerkedhet a .NET SDK használata ehhez a végfelhasználói
 ## <a name="end-user-authentication"></a>Végfelhasználói hitelesítés
 Ez a kódrészlet adja hozzá a .NET-ügyfélalkalmazás. A helyőrző értékeket cserélje le az értékeket beolvasni az Azure AD natív alkalmazással (előfeltétel szerepel). Ez a kódrészlet lehetővé teszi az alkalmazás hitelesítéséhez **interaktív módon** a Data Lake Storage Gen1, ami azt jelenti, hogy adja meg Azure hitelesítő adatait kéri.
 
-Egyszerűen használható az alábbi kódrészletben alapértelmezett értékeket használja az ügyfél-Azonosítóját és átirányítási URI-t, amely bármely Azure-előfizetés esetén érvényes. Az alábbi kódrészletben meg kell adnia az értéket a bérlő azonosítóját. A bérlő Azonosítóját adja meg az utasításokat követve kérheti [a Bérlőazonosító beszerzése](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
+Egyszerűen használható az alábbi kódrészletben alapértelmezett értékeket használja az ügyfél-Azonosítóját és átirányítási URI-t, amely bármely Azure-előfizetés esetén érvényes. Az alábbi kódrészletben meg kell adnia az értéket a bérlő azonosítóját. A bérlő Azonosítóját adja meg az utasításokat követve kérheti [a Bérlőazonosító beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
     
 - Cserélje le a Main() függvény a következő kódot:
 

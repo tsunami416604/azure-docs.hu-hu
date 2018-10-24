@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 65b02ddc8fbd27d5081400032222a904b27e1a25
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 0f6f485bb251bfae942c258b9be879c0aff5f5b9
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126139"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955684"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Hozzon létre egy HDInsight-fürtöt az Azure Data Lake Storage Gen1 Azure Resource Manager-sablon használatával
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 * Az **Azure PowerShell 1.0-s vagy újabb verziója**. Lásd: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
 * **Az Azure Active Directory egyszerű szolgáltatás**. Ebben az oktatóanyagban lépések nyújtanak segítséget az egyszerű szolgáltatás létrehozása az Azure ad-ben. Azonban az Azure AD-rendszergazda létrehozhat egy egyszerű szolgáltatást kell lennie. Ha egy Azure AD-rendszergazdát, kihagyhatja ezt az előfeltételt, és folytassa az oktatóanyagot.
 
-    **Ha nem Azure AD-rendszergazda**, nem fogjuk tudni elvégezni az egyszerű szolgáltatás létrehozásához szükséges lépéseket. Ebben az esetben az Azure AD-rendszergazda először létre kell hoznia egy egyszerű szolgáltatást a Data Lake Storage Gen1 egy HDInsight-fürt létrehozása előtt. Emellett az egyszerű szolgáltatás segítségével kell létrehozni egy tanúsítványt, ismertetett módon [egyszerű szolgáltatás létrehozása tanúsítvánnyal](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority).
+    **Ha nem Azure AD-rendszergazda**, nem fogjuk tudni elvégezni az egyszerű szolgáltatás létrehozásához szükséges lépéseket. Ebben az esetben az Azure AD-rendszergazda először létre kell hoznia egy egyszerű szolgáltatást a Data Lake Storage Gen1 egy HDInsight-fürt létrehozása előtt. Emellett az egyszerű szolgáltatás segítségével kell létrehozni egy tanúsítványt, ismertetett módon [egyszerű szolgáltatás létrehozása tanúsítvánnyal](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority).
 
 ## <a name="create-an-hdinsight-cluster-with-data-lake-storage-gen1"></a>Egy HDInsight-fürt létrehozása a Data Lake Storage Gen1
 A Resource Manager-sablont, és a sablonok használatára vonatkozó Előfeltételek a githubon érhető el [az új Data Lake Storage Gen1 HDInsight Linux-fürt üzembe helyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-hdinsight-datalake-store-azure-storage). Kövesse az utasításokat, adja meg ezt a hivatkozást egy HDInsight-fürt létrehozása a Data Lake Storage Gen1 további tárolóként.

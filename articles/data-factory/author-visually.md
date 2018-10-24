@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 10/23/2018
 ms.author: shlo
-ms.openlocfilehash: 71ed5988b4a529d38a47f6cf04afcaa937121135
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 3db32dfe2d7b65535f7d30f76241b33ecca96c15
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645990"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957955"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Az Azure Data Factoryban vizuális szerzői
 Az Azure Data Factory felhasználói felületen felület (UX) lehetővé teszi, hogy vizuálisan hozhat létre és helyezheti üzembe az erőforrásokat a data Factory kód írása nélkül. Húzza a tevékenységeket a folyamatvásznon, végre, iteratív hibakeresést és üzembe helyezése és a folyamat futásának monitorozása. Kétféleképpen felhasználói a vizuális szerzői műveletek végrehajtásához:
@@ -85,17 +85,15 @@ Létrehozhat egy Azure-Adattárakkal Git-tárház egy másik Azure Active Direct
 
 Személyes Microsoft-fiókkal használandó Git-integrációval, kapcsolat a személyes Azure tárházban a szervezet Active Directory.
 
-1. A személyes Microsoft-fiók hozzáadása a szervezet Active Directory vendégként. További információkért tekintse meg a következő cikkeket:
-
-    - [Csatlakozás az Azure DevOps-szervezet Azure Active Directory](/azure/devops/organizations/accounts/connect-organization-to-azure-ad)
-
-    - [Azure Active Directory B2B együttműködés felhasználók hozzáadása az Azure Portalon](../active-directory/b2b/add-users-administrator.md)
+1. A személyes Microsoft-fiók hozzáadása a szervezet Active Directory vendégként. További információ: [hozzáadása az Azure Active Directory B2B együttműködési felhasználókat az Azure Portalon](../active-directory/b2b/add-users-administrator.md).
 
 2. Jelentkezzen be az Azure Portalra, a személyes Microsoft-fiókjával. Ezután váltson a szervezet Active Directory.
 
 3. Nyissa meg az Azure DevOps szakaszhoz, ahol most már láthatók a személyes tárházban. Válassza ki a tárházat, és az Active Directory connect.
 
 Ezeket a konfigurációs lépéseket a személyes tárházban érhető el a Data Factory felhasználói felületén Git-integráció beállítása során.
+
+További információ a szervezet Active Directory Azure-Adattárakkal való csatlakozással kapcsolatban lásd: [Azure DevOps-szervezet csatlakozhat az Azure Active Directory](/azure/devops/organizations/accounts/connect-organization-to-azure-ad).
 
 ## <a name="switch-to-a-different-git-repo"></a>Váltson egy másik Git-adattár
 

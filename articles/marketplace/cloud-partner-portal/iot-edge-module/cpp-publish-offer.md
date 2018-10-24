@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 670a2ce205ba5e64418eccc41add36cbecc28212
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: dfa512a26334567301812ecefd8c5673b0ea4094
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430988"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955900"
 ---
 # <a name="publish-iot-edge-module-offer"></a>IoT Edge-modul ajánlat közzététele
 
@@ -38,7 +38,7 @@ A következő táblázat ismerteti az egyes közzétételi lépésre, az egy bec
 |  **Közzétételi lépés**           | **idő**    | **Leírás**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
 | Előfeltételek ellenőrzése         | 15 perc   | Információt kínálnak, és kínálnak a rendszer érvényesíti a beállításokat.                        |
-| Tanúsítvány                  | 1 hét | Az ajánlat az Azure hitelesítő csapata által elemzett. Ebben a lépésben elvégzi a vizsgálat a vírusok, kártevő szoftverek, biztonsági, megfelelőségi és biztonsági problémákat. Azt is ellenőrzi, hogy az IoT Edge-modul ajánlat megfelel-e az összes megfelelőségi feltételeket (lásd: [Előfeltételek](./cpp-prerequisites.md) és [a technikai eszközök előkészítése](./cpp-create-technical-assets.md)). Ha problémát talál, visszajelzés érkezett. |
+| Tanúsítvány                  | 2 hét | Az ajánlat az Azure hitelesítő csapata által elemzett. Ebben a lépésben elvégzi a vizsgálat a vírusok, kártevő szoftverek, biztonsági, megfelelőségi és biztonsági problémákat. Azt is ellenőrzi, hogy az IoT Edge-modul ajánlat megfelel-e az összes megfelelőségi feltételeket (lásd: [Előfeltételek](./cpp-prerequisites.md) és [a technikai eszközök előkészítése](./cpp-create-technical-assets.md)). Ha problémát talál, visszajelzés érkezett. |
 | Csomagolás | 1 óra  | Ajánlat technikai eszközök ügyfél használatra vannak csomagolva, és az érdeklődő rendszerek vannak konfigurálva, és beállítása. |
 |  Közzétevő jelentkezzen ki             |  -        | Végső közzétevő áttekintése és az ajánlat élesíti előtt megerősítést. Az ajánlat (az ajánlat információk lépések) a kijelölt előfizetésekben telepíthet, hogy megfelelnek-e a szükséges összes követelmény.  Válassza ki **élő** , az ajánlat helyezheti át a következő lépéssel. |
 | Csomagolás                 | 1 óra | Az ajánlat véglegesített marketplace éles rendszerekre és régióban replikálja a rendszer. | 

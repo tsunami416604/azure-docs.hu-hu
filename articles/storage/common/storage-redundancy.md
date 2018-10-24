@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: c5cbeed7f689a7ae159d753963c35281b051f632
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 618e1f5249f2e05c26e91231b4283d82546a880b
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114192"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954487"
 ---
 # <a name="azure-storage-replication"></a>Azure Storage replication (Azure Storage replikáció)
 
@@ -38,7 +38,7 @@ Az alábbi táblázat a tartóssággal és rendelkezésre állással, amely mind
 | (A zónaszintű vagy nem zónaszintű) teljes adatközpont elérhetetlenné válik.                                           | Nem                              | Igen                              | Igen                                  | Igen                                  |
 | Egy régióra kiterjedő szolgáltatáskimaradás                                                                                     | Nem                              | Nem                               | Igen                                  | Igen                                  |
 | Olvasási hozzáférés az adatokhoz (a távoli, a georeplikált régiónként) régióra kiterjedő elérhetetlensége esetén | Nem                              | Nem                               | Nem                                   | Igen                                  |
-| Az objektumok ___ tartósságot biztosít egy adott évben                                          | legalább 99,999999999 %-os (11 9-es) | legalább 99,9999999999 %-os (12 9-es) | 99,99999999999999 %-ában (16 9-es) | 99,99999999999999 %-ában (16 9-es) |
+| Nyújtson \_ \_ tárolt objektumok számára egy adott évben                                          | legalább 99,999999999 %-os (11 9-es) | legalább 99,9999999999 %-os (12 9-es) | 99,99999999999999 %-ában (16 9-es) | 99,99999999999999 %-ában (16 9-es) |
 | Támogatott tárfióktípusok                                                                   | A GPv2, GPv1-, Blob                | A GPv2, GPv1 (a PowerShell, az Azure CLI-vel vagy az erőforrás-szolgáltató API) keresztül                             | A GPv2, GPv1-, Blob                     | A GPv2, GPv1-, Blob                     |
 | Rendelkezésre állási SLA olvasási kérelmek esetén | Legalább 99,9 %-os (a ritka elérésű hozzáférési szint esetében 99 %-os) | Legalább 99,9 %-os (a ritka elérésű hozzáférési szint esetében 99 %-os) | Legalább 99,9 %-os (a ritka elérésű hozzáférési szint esetében 99 %-os) | Legalább 99,99 %-át (a lassú elérési szint esetében 99,9 %) |
 | Rendelkezésre állási SLA-kérésekre vonatkozó | Legalább 99,9 %-os (a ritka elérésű hozzáférési szint esetében 99 %-os) | Legalább 99,9 %-os (a ritka elérésű hozzáférési szint esetében 99 %-os) | Legalább 99,9 %-os (a ritka elérésű hozzáférési szint esetében 99 %-os) | Legalább 99,9 %-os (a ritka elérésű hozzáférési szint esetében 99 %-os) |

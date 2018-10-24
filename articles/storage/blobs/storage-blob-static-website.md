@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 7dff6f7438c3bb9fc09803bbaa58895f89f88d71
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: ddc85cb7c9bd4488295b22e687d199a73d23922c
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649822"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955626"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
-Az Azure Storage-fiókok lehetővé teszik a statikustartalom (HTML, CSS, JavaScript és képfájlok) nevű tárolót közvetlenül a *$web*. Kihasználhatja a üzemeltetése az Azure Storage lehetővé teszi, hogy például kiszolgáló nélküli architektúrák [Azure Functions](/azure/azure-functions/functions-overview) és egyéb PaaS-szolgáltatások.
+Az Azure Storage GPv2-fiókok lehetővé teszik statikus tartalom (HTML, CSS, JavaScript és képfájlok) nevű tárolót történő közvetlen *$web*. Kihasználhatja a üzemeltetése az Azure Storage lehetővé teszi, hogy például kiszolgáló nélküli architektúrák [Azure Functions](/azure/azure-functions/functions-overview) és egyéb PaaS-szolgáltatások.
 
 Statikus webhelyüzemeltetésre szakembereket szerveroldali kódot támaszkodó dinamikus webhelyek legjobb üzemeltetik [Azure Web Apps](/azure/app-service/app-service-web-overview).
 
@@ -62,7 +62,7 @@ Statikus webhely üzemeltetése további költségek nélkül biztosított. Az A
 ## <a name="quickstart"></a>Első lépések
 
 ### <a name="azure-portal"></a>Azure Portal
-Első lépésként nyissa meg az Azure Portalra a https://portal.azure.com , és futtassa az alábbi lépéseket:
+Első lépésként nyissa meg az Azure Portalra a https://portal.azure.com , és futtassa az alábbi lépéseket a GPv2-tárfiókban:
 
 1. Kattintson a **beállításai**
 2. Kattintson a **statikus webhely**
@@ -81,6 +81,11 @@ A storage előzetes bővítmény telepítéséhez:
 ```azurecli-interactive
 az extension add --name storage-preview
 ```
+Több előfizetés esetén állítsa be az engedélyezni kívánt GPv2-tárfiók előfizetésében a parancssori felület:
+
+```azurecli-interactive
+az account set --subscription <SUBSCRIPTION_ID>
+```
 A funkció engedélyezéséhez. Ügyeljen arra, hogy cserélje le az összes helyőrző értékeket, beleértve a zárójeleket, a saját értékeire:
 
 ```azurecli-interactive
@@ -92,10 +97,10 @@ A webes végpont URL-lekérdezés:
 az storage account show -n <ACCOUNT_NAME> -g <RESOURCE_GROUP> --query "primaryEndpoints.web" --output tsv
 ```
 
-Töltse fel az objektumok a *$web* tároló:
+Töltse fel az objektumok a *$web* forráskönyvtárból tároló:
 
 ```azurecli-interactive
-az storage blob upload-batch -s <SOURCE> -d $web --account-name <ACCOUNT_NAME>
+az storage blob upload-batch -s <SOURCE_PATH> -d $web --account-name <ACCOUNT_NAME>
 ```
 
 ## <a name="deployment"></a>Környezet
@@ -115,7 +120,7 @@ Ahhoz, hogy a statikus webhely lapjain a metrikák, kattintson a **beállításo
 
 Metrikai adatok történetének más érdekes mérőszám API-k alapján jönnek létre. A portál csak annak érdekében, hogy csak összpontosíthat tagokat, amelyeket vissza adatokat egy adott időszakon belül használt API-t a tagok jeleníti meg. Annak érdekében, hogy ellenőrizze, hogy tud a válassza a szükséges API-t, az első lépéseként időkeretet kibontásához.
 
-Kattintson az időkeret gombra, és válassza ki **az elmúlt 24 órából** majd **alkalmaz** érdekében győződjön meg arról, hogy a felhasználói felületen elérheti a kívánt API-t a.
+Kattintson az időkeret gombra, és válassza ki **az elmúlt 24 órából** majd **alkalmaz** 
 
 ![Az Azure Storage-statikus webhelyek kiszolgálására metrikák időtartomány](./media/storage-blob-static-website/storage-blob-static-website-metrics-time-range.png)
 

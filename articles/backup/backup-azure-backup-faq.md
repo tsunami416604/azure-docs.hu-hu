@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/2/2018
 ms.author: markgal
-ms.openlocfilehash: 2151733a5d91fb17c69fa1f4f6aac64a70928824
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: dd0059f8d4714603568577d0a3c977ce7b27d44c
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364302"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945841"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Kérdések az Azure Backup szolgáltatással kapcsolatban
 Ez a cikk az Azure Backup-összetevővel kapcsolatos gyakori kérdésekre ad választ. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Ha kérdést szeretne feltenni az Azure Backup szolgáltatással kapcsolatban, kattintson a jobb oldalon található **Megjegyzések** gombra. A megjegyzések a cikk alján jelennek meg. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -82,6 +82,9 @@ Igen. Az Azure Backup használatához a System Center Data Protection Manager (D
 
 ### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>A DPM használatával biztonsági másolatot készíteni az alkalmazásokat az Azure Stack?
 Nem. Bár az Azure Backup segítségével megvédheti az Azure Stack, az Azure Backup jelenleg nem támogatja a DPM biztonsági mentése alkalmazások az Azure Stack használatával.
+
+### <a name="can-i-do-an-ilr-item-level-restore-for-vms-backed-up-to-the-online-vault-azure"></a>Használhatom-e egy ILR (elem szintű visszaállítása) a virtuális gépek biztonsági mentése Online tárolóba (Azure)?
+Elem szintű visszaállítása (ILR) nem, a virtuális gépek biztonsági mentése a Site Recovery Services-tároló nem érhető el.
 
 ## <a name="how-azure-backup-works"></a>Az Azure Backup működése
 ### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted-br"></a>Ha megszakítok egy már elindult biztonsági mentési feladatot, az átküldött adatok biztonsági másolata törlődik? <br/>

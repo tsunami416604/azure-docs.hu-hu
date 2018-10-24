@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 10/18/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: e9d9f5b053537b3d6881763bcb39d7894ba78869
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 79b8cfa061bafb43cbcf2ec8a43638fd14c2fcd0
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969504"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954037"
 ---
 # <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-cdn"></a>Hitelesítésszolgáltatók engedélyezett az Azure CDN egyéni HTTPS engedélyezése
 
@@ -70,27 +70,6 @@ A következő CAs engedélyezettek a saját tanúsítvány létrehozásakor:
 - GlobalSign legfelső szintű hitelesítésszolgáltató
 - Go Daddy legfelső szintű hitelesítésszolgáltató - G2 csomag
 - Go Daddy biztonságos hitelesítésszolgáltató - G2 csomag
-- A Microsoft Authenticode(tm) főtanúsítvány tanúsítványláncát.
-- A Microsoft Exchange-szolgáltatások hitelesítésszolgáltató 2015.
-- A Microsoft belső, vállalati legfelső szintű
-- A Microsoft IT ITO SSL CA 1
-- A Microsoft IT SSL SHA1
-- A Microsoft IT SSL SHA2
-- A Microsoft IT TLS hitelesítésszolgáltató 1
-- A Microsoft IT TLS hitelesítésszolgáltató 2
-- A Microsoft IT TLS hitelesítésszolgáltató 4
-- A Microsoft IT TLS hitelesítésszolgáltató 5
-- A Microsoft főtanúsítvány tanúsítványláncát.
-- A Microsoft legfelső szintű hitelesítésszolgáltató
-- A Microsoft legfelső szintű hitelesítésszolgáltató 2010
-- A Microsoft legfelső szintű hitelesítésszolgáltató 2011
-- A Microsoft biztonságos kiszolgáló hitelesítésszolgáltató 2011
-- Microsoft-szolgáltatások Partner legfelső szintű
-- A Microsoft idő időbélyegzési fájlszolgáltatási gyökerén
-- A Microsoft Windows hardverkompatibilitás
-- MSIT HITELESÍTÉSSZOLGÁLTATÓ Z2
-- MSIT vállalati hitelesítésszolgáltató 1
-- MSIT vállalati hitelesítésszolgáltató 3
 - RapidSSL RSA CA-2018.
 - Legfelső szintű Hivatal
 - A Symantec osztály 3 Bővített SSL CA - G3 csomag
@@ -102,12 +81,11 @@ A következő CAs engedélyezettek a saját tanúsítvány létrehozásakor:
 - Thawte RSA CA-2018.
 - Hitelesítésszolgáltató Thawte időbélyegző
 - TrustAsia TLS RSA hitelesítésszolgáltató
-- UTN-USERFirst-Object
 - SSL-Hitelesítésszolgáltatói VeriSign osztály 3 bővített ellenőrzés
 - A VeriSign osztály 3 bővített ellenőrzés SSL kiszolgáló által Kezdeményezett hitelesítésszolgáltató
 - 3. a VeriSign osztály nyilvános elsődleges hitelesítésszolgáltató - G5
 - A VeriSign nemzetközi kiszolgáló CA - 3 osztályban
 - Időbélyegzési fájlszolgáltatási gyökerén VeriSign idő
 - A VeriSign univerzális legfelső szintű hitelesítésszolgáltató
-- WMSvc-SHA2-DALEDGE1008
+
 

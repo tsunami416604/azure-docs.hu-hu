@@ -8,17 +8,18 @@ ms.topic: include
 ms.date: 02/26/2018
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: ab4c5b98ed9f6fcc8c271797db2d81dcc7ec4449
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a49ce4e997a21e0db707c851f5ea46817bcb642e
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38755814"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49960303"
 ---
 A következő táblázat felsorolja a kvóták, és korlátozza az adott [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). További információ az Event Hubs-díjszabás: [Event Hubs-díjszabás](https://azure.microsoft.com/pricing/details/event-hubs/).
 
 | Korlát | Hatókör | Megjegyzések | Érték |
 | --- | --- | --- | --- | --- |
+| Előfizetésenként az Event Hubs-névterek száma |Előfizetés |- |1000 |
 | Az event hubs-névterenként száma |Névtér |Egy új eseményközpont létrehozása a későbbi kérelmeket a rendszer elutasítja. |10 |
 | A partíciók száma az eseményközpont száma |Entitás |- |32 |
 | Egy eseményközpont fogyasztói csoportok száma |Entitás |- |20 |

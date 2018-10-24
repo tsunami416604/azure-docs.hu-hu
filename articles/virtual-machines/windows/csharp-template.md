@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: zarhoads
-ms.openlocfilehash: a91d8452d7b85d3e7ff21dc523429be42d34336b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: f3d83fa8ba5a78c7aacc7014e9ec50fb447bb1c6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468891"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953688"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>C# és a egy Resource Manager-sablon használatával, egy Azure virtuális gép üzembe helyezése
 Ez a cikk bemutatja, hogyan helyezhet üzembe Azure Resource Manager-sablon, C# használatával. A sablon által létrehozott telepít egy új virtuális hálózatot egyetlen alhálózattal rendelkező Windows Server rendszerű egyetlen virtuális gépet.
@@ -185,7 +185,7 @@ Adja meg a sablonban definiált erőforrás-paraméterek értékeit, hozzon lét
 
 ### <a name="create-the-authorization-file"></a>Az engedélyezési-fájl létrehozása
 
-Sablon központi telepítése, győződjön meg arról, hogy hozzáféréssel rendelkezik-e egy [Active Directory egyszerű szolgáltatás](../../resource-group-authenticate-service-principal.md). A szolgáltatásnévből szerez be a jogkivonatot az Azure Resource Manager-kérelmek hitelesítéséhez. Az Alkalmazásazonosítót, a hitelesítési kulcsot és a bérlő Azonosítóját, a hitelesítési fájlhoz szükséges is kell rögzíteni.
+Sablon központi telepítése, győződjön meg arról, hogy hozzáféréssel rendelkezik-e egy [Active Directory egyszerű szolgáltatás](../../active-directory/develop/howto-authenticate-service-principal-powershell.md). A szolgáltatásnévből szerez be a jogkivonatot az Azure Resource Manager-kérelmek hitelesítéséhez. Az Alkalmazásazonosítót, a hitelesítési kulcsot és a bérlő Azonosítóját, a hitelesítési fájlhoz szükséges is kell rögzíteni.
 
 1. A Megoldáskezelőben kattintson a jobb gombbal *myDotnetProject* > **Hozzáadás** > **új elem**, majd válassza ki **szövegfájl** a *Visual C#-elemek*. A fájl neve *azureauth.properties*, és kattintson a **Hozzáadás**.
 2. Adja hozzá ezeket a hitelesítési tulajdonságokat:

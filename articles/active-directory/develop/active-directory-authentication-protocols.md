@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 04cdba261d67e20762fd4bb4835568f763124fef
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 312b1f7accee47c07c5fb0507061253fda5044f6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578473"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958040"
 ---
 # <a name="azure-active-directory-authentication-protocols"></a>Az Azure Active Directory hitelesítési protokolljai
 Az Azure Active Directory (Azure AD) közül a legszélesebb körben használt hitelesítési és engedélyezési protokollokat támogatja. Ez a szakasz témakörei ismertetik a támogatott protokollok és a végrehajtásuk az Azure ad-ben. A témakörök támogatott jogcímtípusok, az összevonási metaadatok használatát bemutató áttekintését tartalmazza, az OAuth 2.0 részletes. SAML 2.0 protokoll dokumentációja és a egy hibaelhárítási szakaszt.
@@ -38,6 +38,6 @@ Az Azure Active Directory (Azure AD) közül a legszélesebb körben használt h
 * [SAML-protokoll referenciája](active-directory-saml-protocol-reference.md) – ismerje meg az Azure AD egyszeri bejelentkezés és egyszeri kijelentkezéses SAML profilok.
 
 ## <a name="see-also"></a>Lásd még:
-[Az Azure Active Directory fejlesztői útmutatója](azure-ad-developers-guide.md)
+[Az Azure Active Directory fejlesztői útmutatója](v1-overview.md)
 
 [Az Active Directory-Kódminták](sample-v1-code.md)

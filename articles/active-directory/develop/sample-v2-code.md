@@ -17,12 +17,12 @@ ms.date: 10/17/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 73edb518a7e0c89b3ef510c6e528b6fa76f8dca5
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 7323f532787fa767d875e13262cce9f1ceaa79d8
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393421"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955521"
 ---
 # <a name="azure-active-directory-code-samples-v2-endpoint"></a>Az Azure Active Directory-Kódminták (V2 végpont)
 
@@ -108,7 +108,7 @@ További információ [minták](https://github.com/microsoftgraph/msgraph-commun
 
 ## <a name="see-also"></a>Lásd még
 
-[Az Azure Active Directory fejlesztői útmutatója](azure-ad-developers-guide.md)
+[Az Azure Active Directory fejlesztői útmutatója](v1-overview.md)
 
 [Az Azure AD Graph API elméleti és -referencia](https://msdn.microsoft.com/library/azure/hh974476.aspx)
 

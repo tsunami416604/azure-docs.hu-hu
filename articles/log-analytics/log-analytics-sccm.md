@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9a2193d78d564ad4a8c175a5116fa7dc9ebda256
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 28ddfea0f4127f402b82388a10ee150b30a65736
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408744"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954232"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>A Configuration Manager csatlakoztatása a Log Analyticsbe
 A System Center Configuration Manager-környezet szinkronizálási eszköz gyűjtemény adatait az Azure Log Analyticshez csatlakozhat, és ezeket a gyűjteményeket, a Log Analytics és Azure Automation hivatkozhat.  
@@ -32,7 +32,7 @@ A log Analytics támogatja a System Center Configuration Manager aktuális fejle
 ## <a name="configuration-overview"></a>Konfiguráció áttekintése
 Az alábbi lépéseket a Configuration Manager-integráció konfigurálása a Log Analytics lépéseket foglalja össze.  
 
-1. Az Azure Portalon regisztrálja a Configuration Manager egy webalkalmazás és/vagy webes API-alkalmazást, és gondoskodjon arról, hogy az ügyfél-azonosító és a regisztráció az Azure Active Directoryból az ügyfél titkos kulcsa. Lásd: [Active Directory-alkalmazás és -erőforrások eléréséhez szolgáltatásnév létrehozása a portálon](../azure-resource-manager/resource-group-create-service-principal-portal.md) ehhez a lépéshez részletes tájékoztatást.
+1. Az Azure Portalon regisztrálja a Configuration Manager egy webalkalmazás és/vagy webes API-alkalmazást, és gondoskodjon arról, hogy az ügyfél-azonosító és a regisztráció az Azure Active Directoryból az ügyfél titkos kulcsa. Lásd: [Active Directory-alkalmazás és -erőforrások eléréséhez szolgáltatásnév létrehozása a portálon](../active-directory/develop/howto-create-service-principal-portal.md) ehhez a lépéshez részletes tájékoztatást.
 2. Az Azure Portalon [adja meg a Configuration Manager (a regisztrált webalkalmazás) hozzáféréssel a Log Analytics-](#grant-configuration-manager-with-permissions-to-log-analytics).
 3. A Configuration Managerben [vegyen fel egy kapcsolatot az OMS-kapcsolat hozzáadása varázsló használatával](#add-an-oms-connection-to-configuration-manager).
 4. A Configuration Managerben [a kapcsolat tulajdonságainak frissítéséhez](#update-oms-connection-properties) , ha a jelszó vagy az ügyfél titkos kulcsot minden eddiginél jár, vagy megszakad.

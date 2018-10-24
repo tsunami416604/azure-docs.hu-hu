@@ -5,27 +5,26 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
-ms.assetid: 449ae53e-b951-401a-b2c9-17fee2f491f1
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2018
+ms.date: 10/22/2019
 ms.author: mabrigg
-ms.openlocfilehash: 8f384a79811c9a9b104acb98c8f6b6e162946ab8
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.reviewer: fiseraci
+ms.openlocfilehash: 76f3db3631e1d66413bdce8d3f2379c2735a2eaf
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42059612"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945603"
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>Frissítések az Azure Stack használatával a privilegizált végpont monitorozása
 
 *A következőkre vonatkozik: Azure Stackkel integrált rendszerek*
 
-A kiemelt végponthoz segítségével nyomon követheti az Azure Stack frissítést futtató, és az utolsó sikeres lépésből futtassa sikertelen frissítés folytatásához kell az Azure Stack portálon már nem érhető el.  Az Azure Stack portal használata az ajánlott módszer az Azure Stack frissítéseinek kezelésére.
+Használhatja a [kiemelt végponthoz](azure-stack-privileged-endpoint.md) előrehaladtát, az Azure Stackkel való frissítés futtassa, és az utolsó sikeres lépésből futtassa sikertelen frissítés folytatásához kell az Azure Stack portálon elérhetetlenné válik.  Az Azure Stack portal használata az ajánlott módszer az Azure Stack frissítéseinek kezelésére.
 
 A következő új PowerShell-parancsmagok az update management megtalálhatók az Azure Stack integrált rendszerek 1710-es frissítés.
 
@@ -168,7 +167,7 @@ Invoke-Command -Session $pepSession -ScriptBlock { Resume-AzureStackUpdate }
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-A kiemelt végponthoz ERCS virtuális gépekre az Azure Stack környezetben érhető el. Mivel a kapcsolat nem jön létre egy magas rendelkezésre állású végpontra, alkalmi megszakítások, figyelmeztető vagy hibaüzeneteket tapasztalhat. Ezek az üzenetek azt jelezheti, hogy a munkamenet meg lett szakítva, illetve, hogy hiba történt a Dokumentumokat szolgáltatással való kommunikáció. Ez a viselkedés várható. Próbálja megismételni a műveletet néhány perc múlva, vagy a kiemelt végponthoz új munkamenetet létrehozni egy másik ERCS virtuális gépet. 
+A kiemelt végponthoz ERCS virtuális gépekre az Azure Stack környezetben érhető el. Mivel a kapcsolat nem jön létre egy magas rendelkezésre állású végpontra, alkalmi megszakítások, figyelmeztető vagy hibaüzeneteket tapasztalhat. Ezek az üzenetek azt jelezheti, hogy a munkamenet meg lett szakítva, illetve, hogy hiba történt a Dokumentumokat szolgáltatással való kommunikáció. Ez várt működés. Próbálja megismételni a műveletet néhány perc múlva, vagy a kiemelt végponthoz új munkamenetet létrehozni egy másik ERCS virtuális gépet. 
 
 ## <a name="next-steps"></a>További lépések
 

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: ddb9e36775a815c07d40cecd61360c3e5b9c2611
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.date: 10/22/2018
+ms.openlocfilehash: c74d71f0ca8faec587cb36a789ed0328f9b24711
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378771"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954697"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>virtuális mag szolgáltatásszintek, Azure Hybrid Benefit és migrálása
 
@@ -48,6 +48,9 @@ Az alábbi táblázat segít a két szintek közötti különbségeket:
 |Biztonsági másolatok|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 nap (alapértelmezés szerint 7 nap)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 nap (alapértelmezés szerint 7 nap)|pillanatkép-alapú biztonsági mentés az Azure távoli tároló és a helyreállításokat ezeket a pillanatképeket használni a gyors helyreállítás. A biztonsági mentéseket azonnali, és nincs hatással a számítási i/o-teljesítményét. Visszaállítás nagyon gyors és nem egy adatművelet (véve a perc helyett órák vagy napok) méretét.|
 |A memóriában|Nem támogatott|Támogatott|Nem támogatott|
 |||
+
+> [!NOTE]
+> Egy ingyenes Azure SQL database az alapszintű szolgáltatásszinten, és a egy ingyenes Azure-fiókkal, Fedezze fel az Azure együttes kérheti le. További információ: [felügyelt felhőbeli adatbázis létrehozása az ingyenes Azure-fiók](https://azure.microsoft.com/free/services/sql-database/).
 
 - További információkért lásd: [virtuális mag erőforráskorlátok egyetlen adatbázis](sql-database-vcore-resource-limits-single-databases.md) és [virtuális mag erőforráskorlátok a felügyelt példány](sql-database-managed-instance.md#vcore-based-purchasing-model).
 - További információ az általános célú és a kritikus fontosságú üzleti szolgáltatási szintekről: [általános célú és a kritikus fontosságú üzleti szolgáltatási szintekről](sql-database-service-tiers-general-purpose-business-critical.md).

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: ''
-ms.openlocfilehash: cb803450f7765ae62292ff3afb7f32209b437f78
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 235eda231dfb0f936bf55c7c8d93a8f709fdf9bc
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978927"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954849"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Vendég operációs rendszer mérőszámok küldése az Azure Monitor-adattárat a Windows virtuális gép (klasszikus)
 
@@ -41,7 +41,7 @@ Ebben a cikkben leírtak szerint csak a klasszikus virtuális gépeket a Windows
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-Egy egyszerű szolgáltatásnév létrehozása az Azure Active Directory-bérlőben címen található utasításokat követve [egyszerű szolgáltatás létrehozása](../azure-resource-manager/resource-group-create-service-principal-portal.md). Megjegyzés: a folyamat során a következő: 
+Egy egyszerű szolgáltatásnév létrehozása az Azure Active Directory-bérlőben címen található utasításokat követve [egyszerű szolgáltatás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md). Megjegyzés: a folyamat során a következő: 
 - Új titkos ügyfélkulcsot az alkalmazás létrehozása  
 - Mentse a kulcsot, és használja az ügyfél-azonosítóját a későbbi lépésekben.
 

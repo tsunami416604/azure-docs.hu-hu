@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: sujayt
-ms.openlocfilehash: 86d6c77dab817cf755c34bdd699ee1158e852f37
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 040ace1eab4062c011ed82a59e7f5bfb789c256b
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42060597"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945739"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure – Azure virtuális gép replikálási problémák elhárítása
 
@@ -158,8 +158,8 @@ A Site Recovery replikációja, a kimenő kapcsolat az adott URL-címek vagy IP-
 
 - **Felbontás**
    - Ha használ tűzfalproxyt szabályozhatja a kimenő hálózati kapcsolatokra a virtuális Gépen, győződjön meg arról, hogy a szükséges URL-címek vagy adatközponti IP-címtartományok szerepel az engedélyezési listán. További információ: [tűzfal-proxy útmutatást](https://aka.ms/a2a-firewall-proxy-guidance).
-   - Ha az NSG-szabályok segítségével szabályozza a kimenő hálózati kapcsolatokra a virtuális Gépen, győződjön meg arról, hogy a szükséges adatközponti IP-címtartományok szerepel az engedélyezési listán. További információ: [hálózati biztonsági csoport útmutató](https://aka.ms/a2a-nsg-guidance).
-   - Az engedélyezési listára [a szükséges URL-címek](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) vagy a [szükséges IP-címtartományok](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), kövesse a [hálózati dokumentum](site-recovery-azure-to-azure-networking-guidance.md).
+   - Ha az NSG-szabályok segítségével szabályozza a kimenő hálózati kapcsolatokra a virtuális Gépen, győződjön meg arról, hogy a szükséges adatközponti IP-címtartományok szerepel az engedélyezési listán. További információ: [hálózati biztonsági csoport útmutató](azure-to-azure-about-networking.md).
+   - Az engedélyezési listára [a szükséges URL-címek](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) vagy a [szükséges IP-címtartományok](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), kövesse a [hálózati dokumentum](azure-to-azure-about-networking.md).
 
 ### <a name="issue-2-site-recovery-configuration-failed-151072"></a>2 probléma: A Site Recovery konfigurálása nem sikerült (151072)
 - **Lehetséges ok** </br>

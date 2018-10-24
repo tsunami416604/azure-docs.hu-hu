@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/02/2018
+ms.date: 10/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f184c18e97144f7efb30d61ebd024344510f3f5c
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 3a3768e796284895b25eb62d00a58b20ca811540
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078766"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958941"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Az Azure Active Directory hozzáférési jogkivonatok
 
@@ -136,7 +136,7 @@ A Microsoft identitások hitelesíthetők többféle módon, ami fontos lehet az
 | Érték | Leírás |
 |-----|-------------|
 | `pwd` | Jelszavas hitelesítést, vagy a felhasználó Microsoft-jelszavát, vagy egy alkalmazás titkos. |
-| `rsa` | Hitelesítés alapján történt a koncepció igazolása RSA-kulcs, például az a [Microsoft Authenticator pp](https://aka.ms/AA2kvvu). Ez magában foglalja, ha a hitelesítést egy birtokolt X509 szolgáltatást egy önaláírt JWT hajtotta végre tanúsítványt. |
+| `rsa` | Hitelesítés alapján történt a koncepció igazolása RSA-kulcs, például az a [Microsoft Authenticator alkalmazás](https://aka.ms/AA2kvvu). Ez magában foglalja, ha a hitelesítést egy birtokolt X509 szolgáltatást egy önaláírt JWT hajtotta végre tanúsítványt. |
 | `otp` | Használatával az e-mailben vagy szöveges üzenetben egyszer használatos jelszót. |
 | `fed` | Egy összevont hitelesítés helyességi feltétel (például a jwt-t vagy SAML) lett megadva. |
 | `wia` | Integrált Windows-hitelesítés |
@@ -179,7 +179,7 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 ```
 
 > [!TIP]
-> Próbálja ki az URL-címet egy böngészőben!
+> Próbálja ki a [URL-cím](https://login.microsoftonline.com/common/.well-known/openid-configuration) böngészőben!
 
 A metaadat-dokumentum:
 
@@ -187,7 +187,7 @@ A metaadat-dokumentum:
 * Tartalmaz egy `jwks_uri`, helyét, a jogkivonatok aláírásához használt nyilvános kulcsok készlete révén. A JSON-dokumentum helyén található a `jwks_uri` tartalmazza az összes nyilvános kulcsadatokat idő adott pillanatban használja. Az alkalmazás használhatja a `kid` jogcím a JWT fejlécben, válassza ki, melyik nyilvános kulcs ebben a dokumentumban használt egy adott jogkivonat aláírása. Majd műveleteket hajthat végre a megfelelő nyilvános kulcsot és a jelzett algoritmus használatával aláírás-ellenőrzése.
 
 > [!NOTE]
-> Az 1.0-s verziójú végpont adja vissza, mind a `x5t` és `kid` jogcímeket. A `x5t` jogcím hiányzik a v2.0-jogkivonatokat. A v2.0-végpont fűzi hozzá a `kid` jogcím. Továbbítja, javasoljuk, hogy használja a `kid` jogcím a jogkivonat érvényesítéséhez.
+> Az 1.0-s verziójú végpont adja vissza, mind a `x5t` és `kid` állítja, miközben a v2.0-végpont csak válaszol az a `kid` jogcím. Továbbítja, javasoljuk, hogy használja a `kid` jogcím a jogkivonat érvényesítéséhez.
 
 Aláírás-ellenőrzés végrehajtása terjed ki a dokumentum - érhetők el számos nyílt forráskódú kódtár segít, ha szükséges.
 
@@ -202,7 +202,7 @@ Az alkalmazás üzleti logikája szabja meg ezt a lépést, néhány gyakori hit
 * Ellenőrizze, hogy a `tid` megegyezik a bérlő egy van engedélyezve, az API meghívásához.
 * Használja a `acr` ellenőrizze, hogy a felhasználó végrehajtotta az MFA jogcímet. Vegye figyelembe, hogy ez kell kikényszeríteni használatával [feltételes hozzáférési](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).
 * Ha a kért a `roles` vagy `groups` a hozzáférési jogkivonat jogcímeiben győződjön meg arról, hogy a felhasználó szerepel-e a csoport hajthatja végre ezt a műveletet.
-  * A jogkivonatokat az implicit folyamatot használja, valószínűleg kell lekérdezni a [Graph](https://developer.microsoft.com/graph/) ezen adatok esetében, mert gyakran túl nagy ahhoz, hogy illeszkedjen a jogkivonatban. 
+  * A jogkivonatokat az implicit folyamatot használja, valószínűleg kell lekérdezni a [Microsoft Graph](https://developer.microsoft.com/graph/) ezen adatok esetében, mert gyakran túl nagy ahhoz, hogy illeszkedjen a jogkivonatban. 
 
 ## <a name="user-and-application-tokens"></a>Felhasználói és tokenek
 

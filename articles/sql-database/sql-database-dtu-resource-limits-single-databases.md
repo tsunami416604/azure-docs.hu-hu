@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: d3de6afff1c417b28be04ef8b04024756c378e20
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 10/22/2018
+ms.openlocfilehash: 8c5274db69831aaaeaaed2b81627bbb4aeb8cd75
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465763"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954936"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>A DTU-alapú vásárlási modell segítségével az önálló adatbázisok számára erőforráskorlátok
 
@@ -80,8 +80,8 @@ Az önálló adatbázisok számára az alábbi táblázatok egy önálló adatb�
 | Egyidejű munkamenetek maximális száma | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||
 
-> [!IMPORTANT]
-> A következő kivételével minden régióban több mint 1 TB prémium szintű storage jelenleg érhető el: USA nyugati középső Régiója, kelet-Kína, közép-USDoDCentral, Németország, USDoDEast, USA-beli államigazgatás – délnyugati, Északkelet-Németország, USGovIowa, Kínát. Más régiókban a Prémium szinthez tartozó tárterület maximuma 1 TB. Lásd: [P11–P15 – Aktuális korlátozások](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> [!IMPORTANT] 
+> Több mint 1 TB prémium szintű storage jelenleg érhető el a következő régiót kivéve a következő kelet-Kína, Észak-Kína, közép-Németország, Északkelet-Németország, Egyesült Királyság északi régiója, Egyesült Királyság déli régiója, USA védelmi Minisztériuma – középső régiója, USA védelmi Minisztériuma – keleti régiója, USA kormányzati központi és USA nyugati középső Régiója: A Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB-os korlátozva. Lásd: [P11–P15 – Aktuális korlátozások](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 ## <a name="single-database-change-storage-size"></a>Önálló adatbázis: tároló méretének módosítása
 
@@ -116,7 +116,7 @@ A teljes felskálázási folyamat időtartama az adatbázis a módosítás előt
 
 ## <a name="single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb"></a>Önálló adatbázis: P11 és p15-ös, amikor a maximális méret 1 TB-nál nagyobb korlátozásai
 
-A P11 és P15-adatbázis a következő régiókban támogatott 1 TB-nál nagyobb a maximális méretet: Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, közép-Kanada, kelet-Kanada, USA középső RÉGIÓJA, közép-Franciaország, közép-Németország, kelet-japán, Nyugat-japán, Korea középső régiója USA északi középső RÉGIÓJA, Észak-Európa, USA déli középső RÉGIÓJA, Délkelet-Ázsia, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, USA East2, USA nyugati RÉGIÓJA, USA-beli államigazgatás – Virginia és Nyugat-Európa. Nagyobb, mint 1 TB-os maximális mérettel P11 és P15 adatbázisokat az alábbi szempontok és korlátozások vonatkoznak:
+Nagyobb, mint 1 TB-os maximális mérettel P11 és P15 adatbázisokat az alábbi szempontok és korlátozások vonatkoznak:
 
 - Ha 1 TB-nál nagyobb a maximális méretet (4 TB-os vagy 4096 GB-os érték használata) adatbázis létrehozásakor, a create parancs egy hibaüzenettel meghiúsul, ha az adatbázis egy nem támogatott régióban van kiépítve.
 - A már létező P11 és P15 adatbázisok a támogatott régiók egyikében található, a maximális tárhelyet 1 TB, 256 GB-os léptékben növelhető akár 4 TB-ig. Ha egy nagyobb méretű támogatott-e az Ön régiójában megtekintéséhez használja a [DATABASEPROPERTYEX](/sql/t-sql/functions/databasepropertyex-transact-sql) működik, vagy vizsgálja meg az adatbázis méretét az Azure Portalon. Frissíti egy meglévő P11 és p15-ös adatbázis csak hajtható végre egy kiszolgálószintű fő bejelentkező vagy a dbmanager adatbázis-szerepkör tagjai által.

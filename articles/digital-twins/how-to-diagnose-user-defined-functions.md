@@ -6,14 +6,14 @@ manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/15/2018
+ms.date: 10/22/2018
 ms.author: stefanmsft
-ms.openlocfilehash: faf4df8085c4a4f014caf1c6e276800dcf480ebf
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 852b2d35ae605f5529d162d52655fd258ca07c5a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651426"
+ms.locfileid: "49946096"
 ---
 # <a name="how-to-debug-issues-with-user-defined-functions-in-azure-digital-twins"></a>Felhasználó által definiált függvények használata az Azure digitális Twins problémák hibakeresése
 
@@ -198,3 +198,7 @@ Diagnosztikai beállítások engedélyezése, ha ezek a gyakori kivételek merü
 1. **Nem találhatók adatok**: Ha a felhasználó által definiált függvény megpróbál hozzáférni a metaadatokat, amelyek nem létezik, a művelet sikertelen lesz.
 
 1. **Nem jogosult**: Ha a felhasználó által definiált függvény nem rendelkezik a szerepkör-hozzárendelés beállítása, vagy nem rendelkezik megfelelő engedéllyel az egyes metaadatok elérését a topológia, a művelet sikertelen lesz.
+
+## <a name="next-steps"></a>További lépések
+
+Ismerje meg, hogyan engedélyezheti [figyelés és a naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) az Azure digitális Twins.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: ce4ff33a8af9cf864ad4902599a0ab18b2b27182
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: d359ad0e619e4d7784d763e70599ce784aa852cd
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387225"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945813"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Mentse, és a Git használatával az API Management-szolgáltatás konfigurációjának beállítása
 
@@ -84,7 +84,7 @@ A következő példákban a Git Bash eszközt [Git for Windows](http://www.git-s
 Nyissa meg a Git-eszközt a kívánt mappába, és futtassa a következő parancsot a helyi gépre, az Azure portal által biztosított a paranccsal a git-tárház klónozásához.
 
 ```
-git clone https://bugbashdev4.scm.azure-api.net/
+git clone https://{name}.scm.azure-api.net/
 ```
 
 Adja meg a felhasználónevet és jelszót, amikor a rendszer kéri.
@@ -92,7 +92,7 @@ Adja meg a felhasználónevet és jelszót, amikor a rendszer kéri.
 Ha hibákat kap, próbálja meg módosítani a `git clone` parancs tartalmazza a felhasználónevet és jelszót, az alábbi példában látható módon.
 
 ```
-git clone https://username:password@bugbashdev4.scm.azure-api.net/
+git clone https://username:password@{name}.scm.azure-api.net/
 ```
 
 Ha ez biztosítja, hogy a hiba, próbálja meg a parancs jelszóval része kódolás URL-címe. Ennek egyik gyors módja az, hogy nyissa meg a Visual Studiót, és az alábbi parancsot a a **azonnali ablak**. Megnyitásához a **azonnali ablak**, nyissa meg a megoldás vagy a projekt a Visual Studio (vagy hozzon létre egy új üres konzolalkalmazást), és válassza a **Windows**, **Immediate** a a **Debug** menü.
@@ -104,7 +104,7 @@ Ha ez biztosítja, hogy a hiba, próbálja meg a parancs jelszóval része kódo
 A felhasználó nevét és az adattár helye együtt a kódolt jelszó használatával a git-paranccsal hozhat létre.
 
 ```
-git clone https://username:url encoded password@bugbashdev4.scm.azure-api.net/
+git clone https://username:url encoded password@{name}.scm.azure-api.net/
 ```
 
 Ha a tárház klónozták, megtekintheti és a helyi fájl rendszerben dolgozni. További információkért lásd: [fájlok és mappák szerkezetének hivatkozást a helyi Git-tárház](#file-and-folder-structure-reference-of-local-git-repository).
@@ -120,7 +120,7 @@ git pull
 Futtatása előtt `git pull` ellenőrizze, hogy a mappa a helyi tárházhoz. Ha befejezte a `git clone` parancsot, akkor módosítania kell a címtár az adattárhoz az alábbihoz hasonló parancs futtatásával.
 
 ```
-cd bugbashdev4.scm.azure-api.net/
+cd {name}.scm.azure-api.net/
 ```
 
 ## <a name="to-push-changes-from-your-local-repo-to-the-server-repo"></a>A helyi tárház változásainak leküldése a kiszolgáló-adattárat a
@@ -161,7 +161,7 @@ Minden mappa tartalmazhat egy vagy több fájlt, és olykor egy vagy több mapp�
 
 | Fájltípus | Cél |
 | --- | --- |
-| JSON |Konfigurációs információkat az adott entitás |
+| JSON-ban |Konfigurációs információkat az adott entitás |
 | HTML |Entitás, a fejlesztői portál gyakran megjelenik leírásai |
 | xml |Házirend-utasítások |
 | CSS |A fejlesztői portál testreszabása stíluslapok |

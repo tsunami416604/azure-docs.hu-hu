@@ -17,12 +17,12 @@ ms.date: 09/27/2018
 ms.author: andret
 ms.reviewer: hirsin, andret
 ms.custom: aaddev
-ms.openlocfilehash: b75b31ddfc77be5ed651e7b8484e41a4ae73d8d8
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: e393851535c36eb604d57cc4d7c7561a3ebb201b
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406532"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955439"
 ---
 # <a name="comparing-the-azure-ad-v20-endpoint-with-the-v10-endpoint"></a>Az Azure AD v2.0-végpont az 1.0-s verziójú végponttal összehasonlítása
 
@@ -133,7 +133,7 @@ Alkalmazások, amelyek integrálhatók a Microsoft identity platform buildelése
 
 * Ha az alkalmazás támogatnia kell a személyes Microsoft-fiókok, használja a 2.0-s verzió. De előtt, fontos tisztában legyen azzal, hogy az ebben a cikkben tárgyalt korlátozások.
 
-* Ha az alkalmazás csak a Microsoft munkahelyi és iskolai fiókok van szüksége, ne használja a 2.0-s verzió. Helyette tekintse meg a [1.0-s verziójú útmutató](azure-ad-developers-guide.md).
+* Ha az alkalmazás csak a Microsoft munkahelyi és iskolai fiókok van szüksége, ne használja a 2.0-s verzió. Helyette tekintse meg a [1.0-s verziójú útmutató](v1-overview.md).
 
 A v2.0-végpont az itt felsorolt korlátozásokkal kiküszöböléséhez, így minden eddiginél csak kell használni a v2.0-végpont fejlődik. Addig is ez a cikk segítségével ellenőrizze, hogy a v2.0-végpont az Ön számára megfelelő. Ez a cikk a v2.0-végpont aktuális állapotát tükröző update továbbra is. Ellenőrizze, hogy vissza kiértékeli a v2.0-képességek követelményei.
 

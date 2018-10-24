@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 10bd2101839e1b6d1dbdc1e53c31693ab0be98fd
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: db68f979239a5783338d99360209ae231a75c936
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647765"
+ms.locfileid: "49945035"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Az Azure Media Services v3 kibocsátási megjegyzései 
 
@@ -35,10 +35,6 @@ Ez a szakasz ismerteti az Azure Media Services (AMS). októberi frissítések.
 ### <a name="rest-v3-ga-release"></a>REST v3 GA kiadás
 
 A [REST v3 GA kiadás](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01) további API-kat tartalmaz Live, a fiók vagy eszköz szintű dinamikusjegyzék-szűrők és a digitális Jogkezelés támogatása.
-
-#### <a name="azure-cli-20"></a>Azure CLI 2.0
- 
-Az Azure CLI 2.0 modul jelenleg tartalmaz Tartalomszabályzat kulcs, a Live Streaming szabályzatokra irányuló műveletek. További információkért lásd: [módosításokat tervez](#plans-for-changes).
 
 #### <a name="azure-resource-management"></a>Azure-erőforrások kezelése 
 
@@ -95,7 +91,9 @@ Video Indexer GA kiadás augusztusban mutattuk be. Új jelenleg támogatott funk
 
 ### <a name="plans-for-changes"></a>Módosítások tervek
 
-Az Azure CLI-vel kiadási 11/06/2018 hamarosan elérhető.
+#### <a name="azure-cli-20"></a>Azure CLI 2.0
+ 
+Az Azure CLI 2.0 modul, amely tartalmazza az összes funkciót (beleértve az élő, Tartalomszabályzat kulcs, fiók vagy eszköz szűrők, szabályzatokat. adatfolyam-) műveleteket hamarosan elérhető lesz. 
 
 ### <a name="known-issues"></a>Ismert problémák
 

@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 1b96cb0531778b03ddf6adf15988755359e19562
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: c19e5dbcba334a100198708237cc814258a20053
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649770"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957694"
 ---
 # <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>Az Azure SQL Database felügyelete dinamikus felügyeleti nézetek használatával
 
@@ -50,7 +50,7 @@ Ha a CPU-használat 80 % felett van, a hosszabb ideig, vegye figyelembe az aláb
 
 Ha a probléma most jelentkezik, két forgatókönyv közül választhat lehetséges:
 
-#### <a name="there-are-many-queries-that-individually-run-quickly-but-cumulatively-consume-high-cpu"></a>Több lekérdezés, amely külön-külön gyorsan futhassanak, de használja a magas CPU-összesítve
+#### <a name="many-individual-queries-that-cumulatively-consume-high-cpu"></a>Használja a magas CPU-összesítve számos egyéni lekérdezések
 
 Felső lekérdezés kivonatok azonosításához használja a következő lekérdezést:
 
@@ -65,7 +65,7 @@ FROM(SELECT query_stats.query_hash, SUM(query_stats.cpu_time) 'Total_Request_Cpu
 ORDER BY Total_Request_Cpu_Time_Ms DESC;
 ```
 
-#### <a name="some-long-running-queries-that-consume-cpu-are-still-running"></a>Használja a CPU-néhány hosszan futó lekérdezések továbbra is futnak.
+#### <a name="long-running-queries-that-consume-cpu-are-still-running"></a>Használja a CPU-hosszú ideig futó lekérdezések továbbra is futnak.
 
 A következő lekérdezés használatával azonosíthatja ezeket a lekérdezéseket:
 
@@ -117,7 +117,9 @@ I/o-teljesítmény problémák azonosításában, ha a felső várakozási társ
 
 ### <a name="if-the-io-issue-is-occurring-right-now"></a>Ha az i/o-probléma most
 
-Használja a [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) vagy [sys.dm_os_waiting_tasks](https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) megtekintéséhez a `wait_type` és `wait_time`.
+Használja a [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) vagy [sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) megtekintéséhez a `wait_type` és `wait_time`.
+
+#### <a name="identify-data-and-log-io-usage"></a>Azonosíthatja az adatokat, és jelentkezzen az i/o-kihasználtsága
 
 A következő lekérdezés használatával azonosíthatja az adatokat, és naplózhatják i/o-használatát. Ha az adat- vagy naplófájl IO meghaladja a 80 %-os, az azt jelenti, használó felhasználók a rendelkezésre álló i/o az SQL DB szolgáltatási szinten.
 
@@ -132,9 +134,11 @@ Ha a rendszer elérte az i/o-korlát, két lehetősége van:
 - 1. lehetőség: A számítási méret frissítése vagy a szolgáltatásszintet
 - 2. lehetőség: Azonosítsa, és a legtöbb i/o felhasználása a Lekérdezések finomhangolása.
 
-2. lehetőség használhatja a következő lekérdezés Query Store ellen a puffer kapcsolatos IO (úgy tűnik, az elmúlt két órában nyomon követett tevékenység):
+#### <a name="view-buffer-related-io-using-the-query-store"></a>A Query Store segítségével nézet puffer kapcsolatos IO
 
-```SQL
+2. lehetőség használhatja a következő lekérdezés elleni puffer kapcsolatos IO a Query Store az elmúlt két órában nyomon követett tevékenység megtekintése:
+
+```sql
 -- top queries that waited on buffer
 -- note these are finished queries
 WITH Aggregated AS (SELECT q.query_hash, SUM(total_query_wait_time_ms) total_wait_time_ms, SUM(total_query_wait_time_ms / avg_query_wait_time_ms) AS total_executions, MIN(qt.query_sql_text) AS sampled_query_text, MIN(wait_category_desc) AS wait_category_desc
@@ -153,6 +157,85 @@ ORDER BY total_wait_time_ms DESC;
 GO
 ```
 
+#### <a name="view-total-log-io-for-writelog-waits"></a>Teljes napló megtekintése IO: WRITELOG vár
+
+Ha a várakozási `WRITELOG`, használja a következő lekérdezést megtekintése teljes naplózási IO-utasítás által:
+
+```sql
+-- Top transaction log consumers
+-- Adjust the time window by changing
+-- rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
+WITH AggregatedLogUsed
+AS (SELECT q.query_hash,
+           SUM(count_executions * avg_cpu_time / 1000.0) AS total_cpu_millisec,
+           SUM(count_executions * avg_cpu_time / 1000.0) / SUM(count_executions) AS avg_cpu_millisec,
+           SUM(count_executions * avg_log_bytes_used) AS total_log_bytes_used,
+           MAX(rs.max_cpu_time / 1000.00) AS max_cpu_millisec,
+           MAX(max_logical_io_reads) max_logical_reads,
+           COUNT(DISTINCT p.plan_id) AS number_of_distinct_plans,
+           COUNT(DISTINCT p.query_id) AS number_of_distinct_query_ids,
+           SUM(   CASE
+                      WHEN rs.execution_type_desc = 'Aborted' THEN
+                          count_executions
+                      ELSE
+                          0
+                  END
+              ) AS Aborted_Execution_Count,
+           SUM(   CASE
+                      WHEN rs.execution_type_desc = 'Regular' THEN
+                          count_executions
+                      ELSE
+                          0
+                  END
+              ) AS Regular_Execution_Count,
+           SUM(   CASE
+                      WHEN rs.execution_type_desc = 'Exception' THEN
+                          count_executions
+                      ELSE
+                          0
+                  END
+              ) AS Exception_Execution_Count,
+           SUM(count_executions) AS total_executions,
+           MIN(qt.query_sql_text) AS sampled_query_text
+    FROM sys.query_store_query_text AS qt
+        JOIN sys.query_store_query AS q
+            ON qt.query_text_id = q.query_text_id
+        JOIN sys.query_store_plan AS p
+            ON q.query_id = p.query_id
+        JOIN sys.query_store_runtime_stats AS rs
+            ON rs.plan_id = p.plan_id
+        JOIN sys.query_store_runtime_stats_interval AS rsi
+            ON rsi.runtime_stats_interval_id = rs.runtime_stats_interval_id
+    WHERE rs.execution_type_desc IN ( 'Regular', 'Aborted', 'Exception' )
+          AND rsi.start_time >= DATEADD(HOUR, -2, GETUTCDATE())
+    GROUP BY q.query_hash),
+     OrderedLogUsed
+AS (SELECT query_hash,
+           total_log_bytes_used,
+           number_of_distinct_plans,
+           number_of_distinct_query_ids,
+           total_executions,
+           Aborted_Execution_Count,
+           Regular_Execution_Count,
+           Exception_Execution_Count,
+           sampled_query_text,
+           ROW_NUMBER() OVER (ORDER BY total_log_bytes_used DESC, query_hash ASC) AS RN
+    FROM AggregatedLogUsed)
+SELECT OD.total_log_bytes_used,
+       OD.number_of_distinct_plans,
+       OD.number_of_distinct_query_ids,
+       OD.total_executions,
+       OD.Aborted_Execution_Count,
+       OD.Regular_Execution_Count,
+       OD.Exception_Execution_Count,
+       OD.sampled_query_text,
+       OD.RN
+FROM OrderedLogUsed AS OD
+WHERE OD.RN <= 15
+ORDER BY total_log_bytes_used DESC;
+GO
+```
+
 ## <a name="identify-tempdb-performance-issues"></a>Azonosítsa `tempdb` teljesítménnyel kapcsolatos problémák
 
 I/o-teljesítmény problémák azonosításában, ha a felső várjon társított típusok `tempdb` problémákhoz `PAGELATCH_*` (nem `PAGEIOLATCH_*`). Azonban `PAGELATCH_*` vár nem mindig jelenti azt, hogy `tempdb` versengés.  A Várakozás is jelentheti, hogy a felhasználó-objektum adatok lap versengés az azonos lap célzó egyidejű kérelmek miatt. További megerősítésére `tempdb` versengés, használja [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) annak ellenőrzéséhez, hogy a wait_resource érték kezdődik `2:x:y` ahol 2 az `tempdb` az adatbázis-azonosító `x` a fájl azonosítója és `y` oldal azonosítója.  
@@ -164,6 +247,8 @@ A tempdb versengés, gyakori módszer, hogy csökkentse vagy írja át a létreh
 - Táblázat értékű paramétereket
 - Verziók tároló használata (kifejezetten társított hosszú ideig futó tranzakció)
 - Számos, a kivonatoló illesztések és cséve használó terveket tartalmazó lekérdezések
+
+### <a name="top-queries-that-use-table-variables-and-temporary-tables"></a>Leggyakoribb lekérdezések, amelyek a Táblaváltozók és ideiglenes táblák
 
 A következő lekérdezés segítségével azonosíthatja a leggyakoribb lekérdezések, amelyek a Táblaváltozók és ideiglenes táblák:
 
@@ -187,6 +272,8 @@ FROM(SELECT DISTINCT plan_handle, [Database], [Schema], [table]
      WHERE [table] LIKE '%@%' OR [table] LIKE '%#%') AS t
     JOIN #tmpPlan AS t2 ON t.plan_handle=t2.plan_handle;
 ```
+
+### <a name="identify-long-running-transactions"></a>A hosszabb ideig futó tranzakció azonosítása
 
 Használja a következő lekérdezést, azonosíthatja a hosszú tranzakció fut. Megakadályozza, hogy hosszú ideig futó tranzakció verzió tároló karbantartása.
 
@@ -454,7 +541,7 @@ FROM sys.dm_exec_requests AS r
 ORDER BY mg.granted_memory_kb DESC;
 ```
 
-## <a name="calculating-database-size"></a>Adatbázis méretének kiszámítása
+## <a name="calculating-database-and-objects-sizes"></a>Adatbázis és objektumok méretek kiszámítása
 
 A következő lekérdezés (megabájtban) az adatbázis méretét adja vissza:
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: ''
-ms.openlocfilehash: 16c908dabd313cd9d64ce5be9b7d0299423a7675
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 38120b2be2ab7789946a4ad2fe688954e6212189
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344685"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49959026"
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Főbb funkcióiról és koncepciójáról az Azure Stackben
 Ha most ismerkedik a Microsoft Azure Stack, ezeket a feltételeket és a szolgáltatások leírása akkor lehet hasznos.
@@ -154,14 +154,6 @@ Az Azure RBAC rendelkezik három alapvető szerepkörök, amelyek érvényesek a
 
 ## <a name="usage-data"></a>Használati adatok
 A Microsoft Azure Stack gyűjti és összesíti az összes erőforrás-szolgáltató különböző használati adatait, és továbbítja azt az Azure-bA a feldolgozáshoz az Azure kereskedelmi. Az Azure Stacken az összegyűjtött használati adatok a REST API-n keresztül is megtekinthetők. Van egy egységes Azure-bérlői API-t, valamint a szolgáltató és delegált szolgáltató API-k az összes bérlő előfizetés használati adatainak beolvasásához. Ezeket az adatokat egy külső eszközzel vagy a szolgáltatás számlázási vagy költséghelyi elszámolás integrálásához használható. Használat az Azure kereskedelmi által feldolgozott, amint azt az Azure számlázási portálján lehet megtekinteni.
-
-## <a name="in-development-build-of-azure-stack-development-kit"></a>A fejlesztési hozhat létre az Azure Stack fejlesztői készlete
-A fejlesztési környezetek lehetővé teszik a korai támogatók kiértékelése az Azure Stack Development Kit legújabb verzióját. A legutóbbi jelentős kiadása alapján növekményes buildek zajlik. Főbb verziók továbbra is feloldják néhány havonta, míg a fejlesztés a buildek közzéteszik időnként a kiadások között.
-
-A fejlesztési környezetek lesz a következő előnyöket nyújtják:
-- Hibajavítások
-- Új funkciók
-- Egyéb fejlesztések
 
 ## <a name="next-steps"></a>További lépések
 [Az Adminisztráció alapjai](azure-stack-manage-basics.md)

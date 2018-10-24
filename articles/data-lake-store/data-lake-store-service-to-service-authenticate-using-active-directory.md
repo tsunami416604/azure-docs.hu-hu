@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: ae1fdb6239b7d04dc366d023a26d1307cbae68f3
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 2ec5d469ba0708288881be3d905b492aa8aa4da6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123725"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956614"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Szolgáltatások közötti hitelesítés az Azure Data Lake Storage Gen1 Azure Active Directory használatával
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Ez a cikk ismerteti hogyan hozhat létre egy **szolgáltatások közötti hitele
 
 ## <a name="step-1-create-an-active-directory-web-application"></a>1. lépés: Hozzon létre egy Active Directory-webalkalmazás
 
-Létrehozhat és konfigurálhat egy Azure AD webes alkalmazás szolgáltatások közötti hitelesítés az Azure Data Lake Storage Gen1 Azure Active Directory használatával. Útmutatásért lásd: [hozzon létre egy Azure AD-alkalmazást](../azure-resource-manager/resource-group-create-service-principal-portal.md).
+Létrehozhat és konfigurálhat egy Azure AD webes alkalmazás szolgáltatások közötti hitelesítés az Azure Data Lake Storage Gen1 Azure Active Directory használatával. Útmutatásért lásd: [hozzon létre egy Azure AD-alkalmazást](../active-directory/develop/howto-create-service-principal-portal.md).
 
 Során megadott utasítások a fenti hivatkozással, győződjön meg arról, hogy ki **webalkalmazás / API** alkalmazás típusához, az alábbi képernyőképen látható módon:
 
@@ -48,9 +48,9 @@ Során megadott utasítások a fenti hivatkozással, győződjön meg arról, ho
 ## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>2. lépés: Alkalmazásazonosítót, a hitelesítési kulcsot és a bérlői azonosító beszerzése
 Ha programozott módon jelentkezik be, az alkalmazás szükség van az azonosító. Ha az alkalmazás fut, a saját hitelesítő adatait, hitelesítési kulcs is szükséges.
 
-* Az alkalmazás az Alkalmazásazonosító és hitelesítési kulcs (más néven az ügyfél titkos kulcsát) lekérésével útmutatásért lásd: [Get Alkalmazásazonosító és hitelesítési kulcs](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key).
+* Az alkalmazás az Alkalmazásazonosító és hitelesítési kulcs (más néven az ügyfél titkos kulcsát) lekérésével útmutatásért lásd: [Get Alkalmazásazonosító és hitelesítési kulcs](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key).
 
-* A Bérlőazonosító lekéréséhez kapcsolatos utasításokért lásd: [Bérlőazonosító beszerzése](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
+* A Bérlőazonosító lekéréséhez kapcsolatos utasításokért lásd: [Bérlőazonosító beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
 
 ## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder"></a>3. lépés: Az Azure AD-alkalmazást az Azure Data Lake Storage Gen1 fiók fájl vagy mappa hozzárendelése
 

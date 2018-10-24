@@ -12,19 +12,29 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 09/04/2018
+ms.date: 10/19/2018
 ms.author: rolyon
-ms.openlocfilehash: b6cc81a49875739a61aa397a65eb70c6b4f082ef
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: be00f6fb41572c0a9599f7005f2cdd1d6587f15a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393983"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944143"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory – Használati feltételek funkció
-Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal. Ez a bemutató gondoskodik arról, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat. Ez a cikk az Azure AD Használati feltételek funkcióval kapcsolatos kezdeti lépéseket ismerteti.
+Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal. Ez a bemutató gondoskodik arról, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat. Ez a cikk azt ismerteti, hogyan kezdheti el a használati feltételeket tartalmazó fájl.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
+
+## <a name="overview-videos"></a>Áttekintő videók
+
+Az alábbi videó a használati feltételeket tartalmazó fájl gyors áttekintést nyújt.
+
+>[!VIDEO https://www.youtube.com/embed/tj-LK0abNao]
+
+További videók lásd:
+- [Az Azure Active Directoryban használati feltételek központi telepítése](https://www.youtube.com/embed/N4vgqHO2tgY)
+- [Hogyan vezethet be használati feltételeket az Azure Active Directoryban](https://www.youtube.com/embed/t_hA4y9luCY)
 
 ## <a name="what-can-i-do-with-terms-of-use"></a>Mire használhatom a Használati feltételek funkciót?
 Az Azure AD Használati feltételek funkció a következőket teszi lehetővé:
@@ -33,8 +43,9 @@ Az Azure AD Használati feltételek funkció a következőket teszi lehetővé:
 - Specifikus használati feltételek biztosít a felhasználó jellemzői alapján (például orvosok kontra nővérek, belföldi kontra nemzetközi alkalmazottak [dinamikus csoportjai](../users-groups-roles/groups-dynamic-membership.md)).
 - Specifikus használati feltételeket biztosít a kulcsfontosságú üzleti alkalmazások (például Salesforce) elérése esetén.
 - Megjeleníti a használati feltételeket különböző nyelveken.
+- Segít az adatvédelmi előírások teljesítése.
 - Felsorolja, hogy ki fogadta el a használati feltételeket, és ki nem.
-- Auditnaplót készít a használati feltételekkel kapcsolatos tevékenységekről.
+- Feltételek használata tevékenység megfelelőségi és naplózási naplóját jeleníti meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az Azure AD Használati feltételek funkció konfigurálásához a következők szükségesek:

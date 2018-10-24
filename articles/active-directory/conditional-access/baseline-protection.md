@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 6ee89aa901c9553d22470a0481909e9cd62d60cf
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: e7e92c2f3564591133816baaaf758d72b083330b
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345130"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958550"
 ---
 # <a name="what-is-baseline-protection-preview"></a>Mi az alapvető védelmet (előzetes verzió)?  
 
@@ -86,7 +86,7 @@ Egyéni feltételes hozzáférési szabályzatok kezelése egy prémium szintű 
 
 A referenciakonfiguráció-házirendben telepítésben a címtárbeli szerepkörök a jogosultsági Azure AD-szerepkörök. 
 
-Ha a parancsfájlok privilegizált használt fiókok, kell cserélni, azokat a [felügyelt identitások az Azure-erőforrások](../managed-identities-azure-resources/overview.md) vagy [tanúsítványokkal rendelkező egyszerű szolgáltatás](../../azure-resource-manager/resource-group-authenticate-service-principal.md). Ideiglenes Áthidaló megoldásként a referenciakonfiguráció házirendből zárhat ki egyedi felhasználói fiókokhoz. 
+Ha a parancsfájlok privilegizált használt fiókok, kell cserélni, azokat a [felügyelt identitások az Azure-erőforrások](../managed-identities-azure-resources/overview.md) vagy [tanúsítványokkal rendelkező egyszerű szolgáltatás](../develop/howto-authenticate-service-principal-powershell.md). Ideiglenes Áthidaló megoldásként a referenciakonfiguráció házirendből zárhat ki egyedi felhasználói fiókokhoz. 
 
 Alapkonfiguráció házirendek vonatkoznak az örökölt hitelesítési folyamatok például a POP, IMAP, régebbi Office asztali ügyfelet. 
 

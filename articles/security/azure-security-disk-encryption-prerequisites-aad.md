@@ -7,12 +7,12 @@ ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 10/12/2018
-ms.openlocfilehash: 8b0f682e481ef73019d3371af2b84f6270e021ee
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 54aef992e95454387ee2fda1d1b34d6dcae3e21e
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341888"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49959111"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Az Azure Disk Encryption előfeltétel (előző kiadás)
 
@@ -242,12 +242,12 @@ A szolgáltatásnevek Azure CLI használatával kezelheti a [az ad sp](/cli/azur
 3.  Az appId, az adott vissza az Azure AD ClientID használatban van más parancsok. Emellett akkor is az egyszerű Szolgáltatásnevet fogja használni az keyvault set-házirendet. A jelszó, a titkos ügyfélkulcsot, amely az Azure Disk Encryption engedélyezése később használjon. Megfelelő védelme érdekében az Azure AD ügyfél titkos kulcsát.
  
 ### <a name="bkmk_ADappRM"></a> Állítsa be az Azure AD-alkalmazás és szolgáltatás egyszerű, ha az Azure Portalon
-Lépéssorral a [egy Azure Active Directory-alkalmazás és -erőforrások eléréséhez szolgáltatásnév létrehozása a portálon](../azure-resource-manager/resource-group-create-service-principal-portal.md) hozhat létre az Azure AD-alkalmazást. Az alábbiakban az egyes lépések léphet közvetlenül a következő cikkszakaszt befejezéséhez. 
+Lépéssorral a [egy Azure Active Directory-alkalmazás és -erőforrások eléréséhez szolgáltatásnév létrehozása a portálon](../active-directory/develop/howto-create-service-principal-portal.md) hozhat létre az Azure AD-alkalmazást. Az alábbiakban az egyes lépések léphet közvetlenül a következő cikkszakaszt befejezéséhez. 
 
-1. [Szükséges engedélyek ellenőrzése](../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions)
-2. [Az Azure Active Directory-alkalmazás létrehozása](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) 
+1. [Szükséges engedélyek ellenőrzése](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)
+2. [Az Azure Active Directory-alkalmazás létrehozása](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) 
      - Használhat bármilyen nevet és bejelentkezés URL-CÍMÉT szeretné az alkalmazás létrehozásakor.
-3. [Az Alkalmazásazonosító és hitelesítési kulcs](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key). 
+3. [Az Alkalmazásazonosító és hitelesítési kulcs](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key). 
      - A hitelesítési kulcs a titkos ügyfélkulcsot és Set-azurermvmdiskencryptionextension parancs a AadClientSecret szolgál. 
         - A hitelesítési kulcs szolgál hitelesítő adatokat, az alkalmazás által jelentkezzen be Azure ad-ben. Az Azure Portalon a titkos kulcsok nevezzük, de nem rendelkezik kapcsolattal a kulcstartókhoz. A titkos kód megfelelően biztonságos. 
      - Az Alkalmazásazonosítót később fogja használni a Set-azurermvmdiskencryptionextension parancs AadClientId és a Set-azurermkeyvaultaccesspolicy ServicePrincipalName. 

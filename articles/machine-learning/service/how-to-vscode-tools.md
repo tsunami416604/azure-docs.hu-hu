@@ -9,12 +9,12 @@ ms.author: jmartens
 author: j-martens
 ms.reviewer: jmartens
 ms.date: 10/1/2018
-ms.openlocfilehash: f573dba2e7580d58c295d204fc75e2403c0d033c
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: a2f37cffb37ce7008c3e372763784240e0d4250b
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242994"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945552"
 ---
 # <a name="vs-code-tools-for-ai-get-started-with-azure-machine-learning-from-visual-studio-code"></a>A VS Code Tools for AI: Ismerkedés az Azure Machine Learning Visual Studio Code-ból
 
@@ -34,7 +34,7 @@ Használja a Tools for AI-bővítmény a Visual Studio code-ban az Azure Machine
 
 Amikor telepíti a **Tools for AI** bővítményt, két további bővítmények automatikusan telepítve (ha az internet-hozzáféréssel rendelkezik). Azok a [Azure-fiók](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) bővítmény és a [Microsoft Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) bővítmény
 
-Dolgozunk az Azure Machine Learning, a VS Code alakítsa át a Python ide-vel kell. Használata [Python, a Visual Studio Code](https://code.visualstudio.com/docs/languages/python), a Microsoft Python bővítményét, lekérdezi az telepített Tools for AI automatikusan igényel. A bővítmény lehetővé teszi a VS Code kiváló IDE, és a Python interprety különböző bármely operációs rendszeren működik. A modul összes VS Code teljesítményt biztosít az automatikus kiegészítés és az IntelliSense, linting, hibakeresést és egységtesztelés együtt könnyedén váltani a Python-környezetek, például a virtuális és a conda-környezetek között. Tekintse meg a szerkesztési, ebben az útmutatóban fut, és hibakeresés Python-kód, tekintse meg a [Python Hello World oktatóanyag](https://code.visualstudio.com/docs/languages/python/docs/python/python-tutorial)
+Dolgozunk az Azure Machine Learning, a VS Code alakítsa át a Python ide-vel kell. Használata [Python, a Visual Studio Code](https://code.visualstudio.com/docs/languages/python), a Microsoft Python bővítményét, lekérdezi az telepített Tools for AI automatikusan igényel. A bővítmény lehetővé teszi a VS Code kiváló IDE, és a Python interprety különböző bármely operációs rendszeren működik. A modul összes VS Code teljesítményt biztosít az automatikus kiegészítés és az IntelliSense, linting, hibakeresést és egységtesztelés együtt könnyedén váltani a Python-környezetek, például a virtuális és a conda-környezetek között. Tekintse meg a szerkesztési, ebben az útmutatóban fut, és hibakeresés Python-kód, tekintse meg a [Python Hello World oktatóanyag](https://code.visualstudio.com/docs/python/python-tutorial)
 
 **A Tools for AI-bővítmény telepítése:**
 

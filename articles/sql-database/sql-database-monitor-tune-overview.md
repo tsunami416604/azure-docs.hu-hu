@@ -11,15 +11,15 @@ author: danimir
 ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: 60f60b9ef055ea38a2036c4f9c5b6aa2c1f6526d
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.date: 10/23/2018
+ms.openlocfilehash: 0d728d81a29c5520938c8553c026727c0f94cc43
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648054"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957003"
 ---
-# <a name="monitoring-and-performance-tuning"></a>Figyelés és a teljesítmény hangolása
+# <a name="monitoring-and-performance-tuning"></a>Monitorozás és teljesítmény-finomhangolás
 
 Az Azure SQL Database automatikusan kezeli, és a szolgáltatás rugalmas, ahol egyszerűen figyelheti, hozzáadhat vagy erőforrásból (CPU, memória, i/o), keresse meg a javaslatok, amelyek javítani az adatbázis teljesítményét, vagy lehetővé teszik az adatbázis alkalmazkodik számítási feladatához és automatikusan optimalizálhatja a teljesítményt.
 
@@ -34,7 +34,7 @@ A megfigyelés és hibaelhárítás az adatbázis teljesítményét a következ�
 - Használat [az SQL Database Advisor](sql-database-advisor-portal.md) létrehozása és az indexek elvetését, a lekérdezések paraméterezése és a séma problémáinak javítása javaslatok megtekintése.
 - Használat [Azure SQL-Intelligent Insights](sql-database-intelligent-insights.md) automatikus ellenőrzésére, az adatbázis teljesítményét. Ha a teljesítménybeli problémát észlel, a részletek és a legfelső szintű okok elemzése (RCA) a probléma diagnosztikai napló jön létre. Ha lehetséges teljesítményének fokozása javaslat biztosítunk.
 - [Automatikus hangolás engedélyezése](sql-database-automatic-tuning-enable.md) , és lehetővé teszik az Azure SQL database automatikusan javítja az azonosított teljesítménybeli problémák.
-- Használat [dinamikus felügyeleti nézetekkel (DMV-kkel)](sql-database-monitoring-with-dmvs.md), [bővített események](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-xevent-db-diff-from-svr), és a [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) részletesebb teljesítmény kapcsolatos hibák elhárítása.
+- Használat [dinamikus felügyeleti nézetekkel (DMV-kkel)](sql-database-monitoring-with-dmvs.md), [bővített események](https://docs.microsoft.com/azure/sql-database/sql-database-xevent-db-diff-from-svr), és a [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) részletesebb teljesítmény kapcsolatos hibák elhárítása.
 
 > [!TIP]
 > Lásd: [teljesítmény-útmutató](sql-database-performance-guidance.md) található módszereket, amelyek segítségével egy vagy több, a fenti módszerek, a teljesítménnyel kapcsolatos problémák azonosítása után az Azure SQL Database teljesítményének javítása.

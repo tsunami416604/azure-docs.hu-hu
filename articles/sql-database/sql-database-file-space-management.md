@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: bbcd5de0d6c2b43b220d5010093eccc1c9a76269
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 306e541ad67d6b44d2d3cc4cd2f73aa09d629d0c
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406294"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954755"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Lapozófájl-terület az Azure SQL Database kezelése
 Ez a cikk ismerteti a különböző típusú tárterület az Azure SQL Database és a lépések, amelyeket elvégezhet a fájlhely lefoglalt adatbázisok és rugalmas adatbáziskészletekhez explicit módon kell kezelnie.
@@ -225,7 +225,7 @@ Automatikus zsugorítás engedélyezéséhez módosítsa az alábbi parancsban a
 ALTER DATABASE [db1] SET AUTO_SHRINK ON
 ```
 
-Ezzel a paranccsal kapcsolatos további információkért lásd: [adatbázis beállítása](https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-set-options?view=sql-server-2017) beállítások. 
+Ezzel a paranccsal kapcsolatos további információkért lásd: [adatbázis beállítása](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=sql-server-2017) beállítások. 
 
 ### <a name="rebuild-indexes"></a>Indexek újraépítése
 

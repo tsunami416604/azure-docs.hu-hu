@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 345741a027317ed0ec347bc15334daeb11a9828c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 6100a77d3c0bd1ac5e012651f1e7d359c4c67443
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123980"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954453"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>HDInsight fürtök létrehozása az Azure Data Lake Storage Gen1 alapértelmezett tárolóként PowerShell-lel
 
@@ -47,7 +47,7 @@ Ez az oktatóanyag elkezdéséhez győződjön meg arról, hogy megfelel-e az al
 * **Az Azure Active Directory egyszerű szolgáltatás**: Ez az oktatóanyag leírja, hogyan hozhat létre egy egyszerű szolgáltatást az Azure Active Directoryban (Azure AD). Azonban egy szolgáltatásnév létrehozásához, hogy Azure AD-rendszergazda kell lennie. Ha Ön rendszergazda, kihagyhatja ezt az előfeltételt, és folytassa az oktatóanyagot.
 
     >[!NOTE]
-    >Létrehozhat egy szolgáltatás egyszerű csak akkor, ha az Azure AD-rendszergazdaként. Az Azure AD-rendszergazda kell egy egyszerű szolgáltatás létrehozása a Data Lake Storage Gen1 egy HDInsight-fürt létrehozása előtt. Az egyszerű szolgáltatás léteznie kell egy tanúsítványt, az ismertetett módon [egyszerű szolgáltatás létrehozása tanúsítvánnyal](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority).
+    >Létrehozhat egy szolgáltatás egyszerű csak akkor, ha az Azure AD-rendszergazdaként. Az Azure AD-rendszergazda kell egy egyszerű szolgáltatás létrehozása a Data Lake Storage Gen1 egy HDInsight-fürt létrehozása előtt. Az egyszerű szolgáltatás léteznie kell egy tanúsítványt, az ismertetett módon [egyszerű szolgáltatás létrehozása tanúsítvánnyal](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority).
     >
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Hozzon létre egy Data Lake Storage Gen1 fiókot

@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/04/2018
+ms.date: 10/22/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: ec687580eb86db9df77a657dedc4feec1dbb2b2f
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: b7682b83ca415ebff2be1c9dbb5581e8da1bb7fb
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430396"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49805068"
 ---
 [Az Azure Files](../articles/storage/files/storage-files-introduction.md) azonosító-alapú hitelesítést támogatja SMB (Server Message Block) (előzetes verzió) révén [Azure Active Directory (Azure AD) Domain Services](../articles/active-directory-domain-services/active-directory-ds-overview.md). A tartományhoz csatlakoztatott Windows virtuális gépek (VM) hozzáférhet az Azure-fájlmegosztások [Azure ad-ben](../articles/active-directory/fundamentals/active-directory-whatis.md) hitelesítő adatokat. 
 
@@ -23,5 +23,5 @@ Az előzetes verziójának részeként az Azure Files is támogatja a megőrzi, 
 
 > [!NOTE]
 > - SMB-n keresztül az Azure AD-hitelesítés nem támogatott Linux rendszerű virtuális gépek előzetes kiadásban. Csak a Windows Server virtuális gépek támogatottak.
-> - SMB-n keresztül az Azure AD-hitelesítés nem támogatott vagy AD-vel az Azure-fájlokhoz fér hozzá a helyszíni gépek vagy az AAD-hitelesítő adatokat.
+> - SMB-n keresztül az Azure AD-hitelesítés nem támogatott a helyszíni gépek Azure-fájlokhoz fér hozzá.
 > - Az Azure AD-hitelesítés csak 2018. szeptember 24. után létrehozott storage-fiókok esetében érhető el.

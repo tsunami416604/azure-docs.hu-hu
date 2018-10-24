@@ -11,24 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/15/2018
+ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: c9252380581e77049e9464316ca77cc135f784b6
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 82fb2241b5988bae9587807c03e7bec50e7c1677
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377599"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955378"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Adatok másolása az Office 365-ből az Azure-bA az Azure Data Factory (előzetes verzió) használatával 
 
 Az Azure Data Factory lehetővé teszi a szervezeti adatokat az Office 365 bérlői az Azure-ba, skálázható módon, és analytics alkalmazásokat hozhat létre, és az elemzések alapján értékes adategységekhez gazdag használata. Integráció a Privileged Access Management az értékes összeválogatott adatokat, az Office 365-ben a biztonságos hozzáférés-vezérlést biztosít.  További információ a Microsoft Graph adatváltozásainak csatlakozni, tekintse meg [ezt a hivatkozást](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki).
 
 Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data Factoryban az adatok másolása az Office 365-höz. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
-
-A 9 perces bevezető és demonstrációs kapcsolatos adat-előállító Office 365-adatokhoz való csatlakozásról tekintse meg a következő videót:
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-cloud-scale-analytics-of-Office-365-data-with-Azure-Data-Factory/player]
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
@@ -45,10 +41,10 @@ Most egy másolási tevékenységgel belül is csak **adatok másolása az Offic
 Adatok másolása az Office 365-ből az Azure-ba, a következő előfeltételként szükséges lépéseket kell:
 
 - Az Office 365-bérlői rendszergazdai leírtak szerint kell végeznie az előkészítési művelet [Itt](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/On-boarding).
-- Hozzon létre, és a egy Azure AD-webalkalmazás konfigurálása az Azure Active Directoryban.  Útmutatásért lásd: [hozzon létre egy Azure AD-alkalmazást](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application).
+- Hozzon létre, és a egy Azure AD-webalkalmazás konfigurálása az Azure Active Directoryban.  Útmutatásért lásd: [hozzon létre egy Azure AD-alkalmazást](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application).
 - Jegyezze fel a következő értékeket, és az Office 365-höz, a társított szolgáltatás definiálásához használhat:
-    - Bérlő azonosítója.  Útmutatásért lásd: [Bérlőazonosító beszerzése](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
-    - Alkalmazás azonosítója és az alkalmazás kulcsa.  Útmutatásért lásd: [Get Alkalmazásazonosító és hitelesítési kulcs](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key).
+    - Bérlő azonosítója.  Útmutatásért lásd: [Bérlőazonosító beszerzése](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
+    - Alkalmazás azonosítója és az alkalmazás kulcsa.  Útmutatásért lásd: [Get Alkalmazásazonosító és hitelesítési kulcs](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key).
 - Adja hozzá a felhasználó identitását, aki a hozzáférési kérelem végez a tulajdonosa, az Azure AD-webalkalmazás (az Azure AD-ből a webes alkalmazás > Beállítások > tulajdonosok > Hozzáadás tulajdonosa).
 
 ## <a name="approving-new-data-access-requests"></a>Hozzáférési kérelmek jóváhagyásáról az új adatok

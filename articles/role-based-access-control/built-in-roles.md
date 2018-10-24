@@ -15,12 +15,12 @@ ms.date: 10/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: b0dc41959902bda4e61e8ce6a25f94163a562b12
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 72a8a09d04dc009598dafc35b65304662b7b8915
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466852"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955915"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Az Azure-erőforrások beépített szerepkörök
 [Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) rendelkezik, amelyeket hozzárendelhet a felhasználók, csoportok és az egyszerű szolgáltatások számos beépített szerepkör-definíciók. Szerepkör-hozzárendelések módon az Azure-erőforrások elérését Ön szabályozza. Ha a beépített szerepkörök nem felelnek meg a cég vagy intézmény igényeinek, saját [egyéni szerepköröket](custom-roles.md) is létrehozhat.
@@ -95,7 +95,6 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 | [Olvasó figyelése](#monitoring-reader) | Olvashatja az összes figyelési adatot (metrikákat, naplókat, stb.). Lásd még: [szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles). |
 | [Hálózati közreműködő](#network-contributor) | Lehetővé teszi a hálózatok kezelését, az azokhoz való hozzáférés nélkül. |
 | [Új Relic APM-Fiókközreműködő](#new-relic-apm-account-contributor) | Lehetővé teszi a New Relic Application Performance Management-fiókok és -alkalmazások kezelését, az azokhoz való hozzáférés nélkül. |
-| [PowerApps-rendszergazdája teszt](#powerapps-administrator-test) | Lehetővé teszi az Azure DNS-beli DNS-zónák és rekordkészletek kezelését, de nem teszi lehetővé az azokhoz hozzáférő felhasználók felügyeletét. |
 | [Olvasó és adatelérés](#reader-and-data-access) | Lehetővé teszi minden megtekintését, de nem teszi lehetővé, törölheti, vagy hozzon létre egy storage-fiók vagy az abban található erőforrást. Olvasási/írási hozzáférést a tárfiókok kulcsainak elérésével storage-fiókban tárolt adatokat is engedélyezi. |
 | [Redis gyorsítótárak Közreműködője](#redis-cache-contributor) | Lehetővé teszi a Redis-gyorsítótárak kezelését, az azokhoz való hozzáférés nélkül. |
 | [Erőforrás-szabályzati közreműködő (előzetes verzió)](#resource-policy-contributor-preview) | (Előnézet) Erőforrás-szabályzat létrehozására/módosítására, támogatási jegy létrehozására, valamint erőforrások/hierarchia beolvasására jogosultsággal rendelkező, EA-beli visszatöltött felhasználók. |
@@ -1241,21 +1240,6 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 > | NewRelic.APM/accounts/* |  |
-
-## <a name="powerapps-administrator-test"></a>PowerApps-rendszergazdája teszt
-> [!div class="mx-tableFixed"]
-> | | |
-> | --- | --- |
-> | **Leírás** | Lehetővé teszi az Azure DNS-beli DNS-zónák és rekordkészletek kezelését, de nem teszi lehetővé az azokhoz hozzáférő felhasználók felügyeletét. |
-> | **Azonosító** | befefa01-2a29-4897-83a8-272ff33ce314 |
-> | **Műveletek** |  |
-> | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
-> | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
-> | Microsoft.Network/dnsZones/* |  |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
-> | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
-> | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
-> | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 
 ## <a name="reader-and-data-access"></a>Olvasó és adatelérés
 > [!div class="mx-tableFixed"]

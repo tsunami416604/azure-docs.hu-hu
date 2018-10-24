@@ -12,19 +12,22 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/19/2018
-ms.openlocfilehash: 18cd0ea4b6804edc11fc4f57c4327ef9d9a6f51e
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 6de91e28ebced1d41e128cec1180839e4b353020
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466733"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945467"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-firewall-rules"></a>Az Azure SQL Database és az SQL Data Warehouse tűzfalszabályok
 
 A Microsoft Azure [SQL Database](sql-database-technical-overview.md) és [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) adja meg az Azure és egyéb internetalapú alkalmazások relációsadatbázis-szolgáltatás. Az adatok védelme érdekében a tűzfalak mindaddig megakadályozzák az adatbázis-kiszolgáló elérését, amíg meg nem adja, hogy mely számítógépek rendelkeznek ehhez engedéllyel. A tűzfal biztosítja az adatbázisokhoz való hozzáférést az egyes kérések kiindulási IP-címe alapján.
 
 > [!NOTE]
-> Ez a témakör az Azure SQL Server-kiszolgálókra, valamint az Azure SQL Serveren létrehozott SQL Database- és SQL Data Warehouse-adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database.
+> Ez a cikk az Azure SQL-kiszolgálóhoz, és az SQL Database és az SQL Data Warehouse-adatbázisok az Azure SQL-kiszolgálón létrehozott vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database. 
+
+> [!IMPORTANT]
+> Ebben a cikkben leírtak *nem* a alkalmazni **Azure SQL Database felügyelt példányába**. További információt a következő [, a felügyelt példányhoz kapcsolódva](sql-database-managed-instance-connect-app.md) bővebben a hálózati konfiguráció szükséges.
 
 ## <a name="virtual-network-rules-as-alternatives-to-ip-rules"></a>A virtuális hálózati szabályok alternatív IP-szabályok
 

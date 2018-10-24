@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: 101dec93713983e5f2082a59103288fcda346740
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: 6b4cce641556a290111db530c0089e4da0a351c8
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419304"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958427"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -246,7 +246,7 @@ A REST API vagy a PowerShell-parancsmag használatával az ExpressRoute-kapcsola
 Az ExpressRoute prémium szintű gyűjteménye, a következő funkciókat:
 
 * Nagyobb 10 000 útvonalak privát társviszony-létesítéshez a 4000 útvonalakat útválasztási táblázat korlátozva.
-* Az ExpressRoute-kapcsolatcsoport lehet csatlakoztatni virtuális hálózatok számának növelése (az alapértelmezett érték 10-es). További információkért lásd: a [ExpressRoute korlátok](#limits) tábla.
+* Virtuális hálózatok és az ExpressRoute globális elérhetőségű is engedélyezhetők az ExpressRoute-Kapcsolatcsoportok kapcsolatok számának növelése (az alapértelmezett érték 10-es). További információkért lásd: a [ExpressRoute korlátok](#limits) tábla.
 * Kapcsolódás az Office 365 és Dynamics 365.
 * Globális kapcsolódás a Microsoft core hálózaton keresztül. Most már kapcsolat egy geopolitikai régióban található virtuális hálózat az ExpressRoute-kapcsolatcsoport egy másik régióban.<br>
     **Példák:**
@@ -255,9 +255,9 @@ Az ExpressRoute prémium szintű gyűjteménye, a következő funkciókat:
     *  A Microsoft társviszony-létesítés más geopolitikai régiók előtagokat hirdet meg, hogy a kapcsolatcsoport a szilícium-völgy, például SQL Azure-Európa Nyugat-India csatlakozhat.
 
 
-### <a name="limits"></a>Hány virtuális hálózatok is lehet hivatkozni az ExpressRoute-kapcsolatcsoport tudok ExpressRoute premium engedélyezésével?
+### <a name="limits"></a>Hány virtuális hálózatok és a globális elérhetőségű ExpressRoute-kapcsolatok lehet engedélyezni az ExpressRoute-kapcsolatcsoport tudok ExpressRoute premium engedélyezésével?
 
-Az alábbi táblázatokban az ExpressRoute-korlátok és ExpressRoute-kapcsolatcsoportonként virtuális hálózatok száma:
+Az alábbi táblázatokban az ExpressRoute-korlátok, és az ExpressRoute-kapcsolatcsoportonként virtuális hálózatok és az ExpressRoute globális elérhetőségű kapcsolatok száma:
 
 [!INCLUDE [ExpressRoute limits](../../includes/expressroute-limits.md)]
 

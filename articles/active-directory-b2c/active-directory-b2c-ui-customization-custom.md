@@ -1,23 +1,23 @@
 ---
-title: A felhasználói felület testreszabása az Azure Active Directory B2C-vel egyéni szabályzatok használatával |} A Microsoft Docs
-description: Ismerje meg a felhasználói felület (UI) testreszabása az Azure AD B2C-vel egyéni szabályzatok használata közben.
+title: Az alkalmazás egyéni szabályzat használata az Azure Active Directory B2C a felhasználói felület testreszabása |} A Microsoft Docs
+description: Ismerje meg az egyéni szabályzat használata az Azure Active Directory B2C felhasználói felület testreszabása.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/04/2017
+ms.date: 10/23/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9908a7cf96c56e414e0a8d7faea0352b60214ea4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f36d08a397836f17ec25a61e77cb1db5ce10b9d4
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446163"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945060"
 ---
-# <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Az Azure Active Directory B2C: Egyéni szabályzat felhasználói felületének testreszabását konfigurálása
+# <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Az alkalmazás egyéni szabályzat használata az Azure Active Directory B2C a felhasználói felület testreszabása
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -25,13 +25,13 @@ Miután elvégezte a cikkben, kell egy regisztrációs és bejelentkezési tarta
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, végezze el a [Ismerkedés az egyéni szabályzatok](active-directory-b2c-get-started-custom.md). -Előfizetés, és jelentkezzen be helyi fiókot működő egyéni házirendet kell rendelkeznie.
+Hajtsa végre a [egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md). -Előfizetés, és jelentkezzen be helyi fiókot működő egyéni házirendet kell rendelkeznie.
 
 ## <a name="page-ui-customization"></a>Oldal-UI testreszabása
 
-A lap felhasználói felületének testreszabása szolgáltatással, testre szabhatja a megjelenését és működését minden olyan egyéni szabályzatot. Márka és vizuális konzisztensek az alkalmazás és az Azure AD B2C-vel is fenntarthat.
+A lap felhasználói felületének testreszabása szolgáltatással, testre szabhatja a megjelenését és működését minden olyan egyéni szabályzatot. Lehetősége van fenntartani az alkalmazása és az Azure AD B2C közötti márkabeli és vizuális egységességet is.
 
-Íme a működési elv: Azure AD B2C az ügyfél böngészőjében kódja fut, és egy modern néven ismert megközelítés [eltérő eredetű erőforrások megosztása (CORS)](http://www.w3.org/TR/cors/). Először is a testre szabott HTML-tartalmat tartalmazó egyéni házirendekben a megadhatja egy URL-címet. Az Azure AD B2C felhasználói felületi elemeket, hogy be töltve az URL-címről, és ezután megjeleníti az ügyfélnek az oldal HTML-tartalmakat a egyesíti.
+Íme a működési elv: Azure AD B2C az ügyfél böngészőjében kódja fut, és egy modern néven ismert megközelítés [eltérő eredetű erőforrások megosztása (CORS)](http://www.w3.org/TR/cors/). Először is a testre szabott HTML-tartalmat tartalmazó egyéni házirendekben a megadhatja egy URL-címet. Az Azure AD B2C egyesíti a felhasználói felület elemeit az URL-ről betöltött HTML-tartalommal, majd megjeleníti az oldalt az ügyfélnek.
 
 ## <a name="create-your-html5-content"></a>A HTML5-alapú tartalom létrehozása
 
@@ -119,27 +119,44 @@ Ellenőrizze, hogy készen áll az alábbiak szerint:
 2. Kattintson a **kérés küldése a**.  
     Ha hibaüzenetet kap, ellenőrizze, hogy a [CORS-beállítások](#configure-cors) helyes-e. Szüntesse meg a böngésző gyorsítótárát, vagy nyisson meg egy InPrivate-böngészési munkamenetet Ctrl + Shift + P billentyűkombináció lenyomásával is igényelhet.
 
-## <a name="modify-your-sign-up-or-sign-in-custom-policy"></a>A regisztrálási vagy bejelentkezési egyéni házirend módosítása
+## <a name="modify-the-extensions-file"></a>A bővítmények fájl módosítása
 
-A legfelső szintű alatt *\<TrustFrameworkPolicy\>* címke, keresse meg *\<BuildingBlocks\>* címke. Belül a *\<BuildingBlocks\>* címkék, adjon hozzá egy *\<ContentDefinitions\>* másolja az alábbi példa a címke. Cserélje le *your_storage_account* a tárfiók nevére.
+Konfigurálhatja a felhasználói felületének testreszabását, másolja a **ContentDefinition** és annak alárendelt elemei a bővítmények fájl az alap-fájlból.
 
-  ```xml
-  <BuildingBlocks>
-    <ContentDefinitions>
-      <ContentDefinition Id="api.idpselections">
-        <LoadUri>https://{your_storage_account}.blob.core.windows.net/customize-ui.html</LoadUri>
-        <DataUri>urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0</DataUri>
-      </ContentDefinition>
-    </ContentDefinitions>
-  </BuildingBlocks>
-  ```
+1. Nyissa meg a szabályzat alapszintű fájlt. Ha például *TrustFrameworkBase.xml*.
+2. Keresse meg és másolja ki a teljes tartalmát a **ContentDefinitions** elemet.
+3. Nyissa meg a kiterjesztésű fájlt. Ha például *TrustFrameworkExtensions.xml*. Keresse meg a **BuildingBlocks** elemet. Ha az elem nem létezik, adja hozzá.
+4. Illessze be a teljes tartalmát a **ContentDefinitions** gyermekeként kimásolt elem a **BuildingBlocks** elemet. 
+5. Keresse meg a **ContentDefinition** tartalmazó `Id="api.signuporsignin"` XML-másolta.
+6. Módosítsa az értéket a **LoadUri** URL-címét a tárolóba feltöltött HTML-fájl. Például "https://mystore1.azurewebsites.net/b2c/customize-ui.html.
+    
+    Az egyéni házirendet a következőhöz hasonlóan kell kinéznie:
+
+    ```xml
+    <BuildingBlocks>
+      <ContentDefinitions>
+        <ContentDefinition Id="api.signuporsignin">
+          <LoadUri>https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html</LoadUri>
+          <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+          <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0</DataUri>
+          <Metadata>
+            <Item Key="DisplayName">Signin and Signup</Item>
+          </Metadata>
+        </ContentDefinition>
+      </ContentDefinitions>
+    </BuildingBlocks>
+    ```
+
+7. Mentse a bővítmények fájlt.
 
 ## <a name="upload-your-updated-custom-policy"></a>A frissített egyéni szabályzat feltöltése
 
-1. Az a [az Azure portal](https://portal.azure.com), [váltson át az Azure AD B2C-bérlője kontextusában](active-directory-b2c-navigate-to-b2c-context.md), majd nyissa meg a **Azure AD B2C-vel** panelen.
+1. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
+3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
+4. Válassza ki **identitás-kezelőfelületi keretrendszer**.
 2. Kattintson a **összes szabályzat**.
 3. Kattintson a **szabályzat feltöltése**.
-4. Töltse fel `SignUpOrSignin.xml` együtt a *\<ContentDefinitions\>* címkék, melyek korábban hozzáadott.
+4. Töltse fel a korábban módosított bővítmények fájlt.
 
 ## <a name="test-the-custom-policy-by-using-run-now"></a>Az egyéni házirend tesztelése használatával **Futtatás most**
 

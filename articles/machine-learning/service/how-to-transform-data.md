@@ -10,24 +10,25 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 388957fc5dac5cdab5bee34a4431eaa524e76a48
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 06e7d227511a9b651a905df3172f59a191acce01
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999902"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945671"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Adatok átalakítása a az Azure Machine Learning Data Prep SDK segítségével
 
 A [az Azure Machine Learning Data Prep SDK](https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py) megtisztíthatja az adatait különböző átalakítás módszert kínál. Ezek a metódusok révén egyszerűen oszlopok hozzáadása, szűrje ki a nem kívánt sorokra vagy oszlopokra és imputálására a hiányzó értékeket.
 
 Jelenleg nincsenek módszer a következő feladatokhoz:
-- [Az autorefresh tulajdonság oszlop hozzáadása](#add-column-using-expression)
+- [Az autorefresh tulajdonság oszlop hozzáadása](#column)
 - [Hiányzó imputálására](#impute-missing-values)
 - [Oszlopok származtatása példa](#derive-column-by-example)
 - [Szűrés](#filtering)
 - [Egyéni Python-átalakítások](#custom-python-transforms)
 
+<a name=column>
 ## <a name="add-column-using-an-expression"></a>Az autorefresh tulajdonság oszlop hozzáadása
 
 Az Azure Machine Learning Data Prep SDK tartalmaz `substring` kifejezések alapján számítja ki egy létező oszlopok közötti értéket, és ezután helyezze ezt az értéket egy olyan új oszlop. Ebben a példában azt fogja betölteni az adatokat, majd próbálja meg oszlopok hozzáadása a bemeneti adatokat.

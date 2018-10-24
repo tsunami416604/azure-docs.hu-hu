@@ -4,23 +4,23 @@ description: Ez a témakör bemutatja, hogyan használható az Azure CLI az Azur
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/17/2017
+ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: fcd0ea10bd39f9e7252e114e8d6401a4fe0ecadb
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 33d3454e50cb6eeb0e48b52f01923c8a344620eb
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096548"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944124"
 ---
-# <a name="use-azure-cli-to-create-an-aad-app-and-configure-it-to-access-azure-media-services-api"></a>Azure CLI használatával az AAD-alkalmazás létrehozása és konfigurálása, hogy az Azure Media Services API eléréséhez
+# <a name="use-azure-cli-to-create-an-azure-ad-app-and-configure-it-to-access-azure-media-services-api"></a>Azure CLI használatával az Azure AD-alkalmazás létrehozása és konfigurálása, hogy az Azure Media Services API eléréséhez
 
 Ez a témakör bemutatja, hogyan hozzon létre egy Azure Active Directory (Azure AD-) alkalmazás és egyszerű szolgáltatás Azure Media Services-erőforrások eléréséhez az Azure CLI használatával. 
 

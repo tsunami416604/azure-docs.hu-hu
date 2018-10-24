@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: 938b3776f320b7556394fff9aa070eee0c44ee88
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6a5d01ed1b3d60ce138fe5c4c5a60812961d9dfd
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047086"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953729"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Azure Data Lake Analytics segítségével egy Java-alkalmazás kezelése
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -24,7 +24,7 @@ Ez a cikk ismerteti, hogyan kezelheti az Azure Data Lake Analytics fiókok, adat
 ## <a name="prerequisites"></a>Előfeltételek
 * **Java fejlesztői készlet (JDK) 8** (Java 1.8-as verzió használatával).
 * **Intellij-vel** vagy egy másik megfelelő Java fejlesztőkörnyezet. Ez a dokumentum utasításait az intellij-t használják.
-* Hozzon létre egy Azure Active Directory- (AAD-) alkalmazást, és kérje le az **ügyfél-azonosítóját**, a **bérlőazonosítóját** és a **kulcsát**. További információ az AAD-alkalmazásokról és útmutató az ügyfél-azonosító lekéréséhez: [Create Active Directory application and service principal using portal](../azure-resource-manager/resource-group-create-service-principal-portal.md) (Active Directory-alkalmazás és egyszerű szolgáltatás létrehozása a portál használatával). A válasz URI és kulcs érhető el a portálról az alkalmazás és a létrehozott kulcs után.
+* Hozzon létre egy Azure Active Directory- (AAD-) alkalmazást, és kérje le az **ügyfél-azonosítóját**, a **bérlőazonosítóját** és a **kulcsát**. További információ az AAD-alkalmazásokról és útmutató az ügyfél-azonosító lekéréséhez: [Create Active Directory application and service principal using portal](../active-directory/develop/howto-create-service-principal-portal.md) (Active Directory-alkalmazás és egyszerű szolgáltatás létrehozása a portál használatával). A válasz URI és kulcs érhető el a portálról az alkalmazás és a létrehozott kulcs után.
 
 ## <a name="authenticating-using-azure-active-directory"></a>Hitelesítés az Azure Active Directory használatával
 
@@ -210,7 +210,7 @@ A helyőrzőket cserélje le:
 * `TENANT-ID`
 * `SUBSCRIPTION-ID`
 
-## <a name="helper-functions"></a>Segédfüggvények
+## <a name="helper-functions"></a>Segítő függvények
 
 ### <a name="setup-clients"></a>A telepítő ügyfelek
 
