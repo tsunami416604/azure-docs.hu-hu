@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 97e032af71947340c7e3b0af3b9d0701c972144e
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: d8d7d5649ca1dc215f85f928d111ff1367c60bb5
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843397"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988272"
 ---
 ## <a name="test-querying-the-microsoft-graph-api-from-your-ios-application"></a>Tesztelje az iOS-alkalmazásból, a Microsoft Graph API lekérdezése
 
@@ -30,6 +30,7 @@ A kód-szimulátorban történő futtatásához nyomja le a **parancs** + **R**.
 Amikor elkészült, teszteléséhez, válassza ki a **Microsoft Graph API meghívása**. Amikor a rendszer kéri, adja meg a felhasználónevét és jelszavát.
 
 ### <a name="provide-consent-for-application-access"></a>Alkalmazás-hozzáférési hozzájárulás megadása
+
 Első alkalommal jelentkezik be az alkalmazás kéri, hogy Ön hozzájárul ahhoz, hogy az alkalmazás eléréséhez a profil és a bejelentkezéshez adja meg:
 
 ![Adja meg az Ön hozzájárul az alkalmazás-hozzáférés](media/active-directory-develop-guidedsetup-ios-test/iosconsentscreen.png)
@@ -42,7 +43,7 @@ Miután bejelentkezett, megjelenik a profilok adatainak a a Microsoft Graph API-
 
 A Microsoft Graph API megköveteli a **user.read** hatókörrel, hogy a felhasználói profil olvasása. Minden alkalmazás, amely regisztrálva van az alkalmazásregisztrációs portálon alapértelmezés szerint automatikusan megjelenik az ebben a hatókörben. Egyéb Microsoft Graph API-k, valamint a egyéni API-k, a háttér-kiszolgáló további hatókörökkel lehet szükség. A Microsoft Graph API megköveteli a **Calendars.Read** hatókörrel, hogy a felhasználók naptáraiban listázása.
 
-A felhasználók naptáraiban keretén belül egy alkalmazás eléréséhez, adja hozzá a **Calendars.Read** delegált engedéllyel az alkalmazás regisztrációs adatok. Adja hozzá a **Calendars.Read** a hatókört a **acquireTokenSilent** hívja. 
+A felhasználók naptáraiban keretén belül egy alkalmazás eléréséhez, adja hozzá a **Calendars.Read** delegált engedéllyel az alkalmazás regisztrációs adatok. Adja hozzá a **Calendars.Read** a hatókört a **acquireTokenSilent** hívja.
 
 >[!NOTE]
 >A felhasználó további címtárbérlőhöz hatókörök számának növelésével kérheti.
