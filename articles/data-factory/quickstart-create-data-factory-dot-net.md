@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: a7916a434552cbcb999f1e69c7a5bc2419f517fb
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a4f9e1111516d439f018e965883eb8268c83289c
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094342"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954790"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>Adat-előállító és folyamat létrehozása a .NET SDK használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -41,7 +41,7 @@ A jelen cikkben található útmutató a Visual Studio 2017-et használja. A Vis
 Töltse le és telepítse az [Azure .NET SDK](http://azure.microsoft.com/downloads/)-t a gépen.
 
 ## <a name="create-an-application-in-azure-active-directory"></a>Alkalmazás létrehozása az Azure Active Directoryban
-[A cikk](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) szakaszainak utasításaival a következő feladatokat végezheti el: 
+[A cikk](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) szakaszainak utasításaival a következő feladatokat végezheti el: 
 
 1. **Egy Azure Active Directory-alkalmazás létrehozása**. Olyan alkalmazást hozhat létre az Azure Active Directoryban, amely az oktatóanyagban létrehozott .NET-alkalmazást képviseli. A bejelentkezési URL-hez megadhat egy hamis URL-t, a cikkben láthatóak szerint (`https://contoso.org/exampleapp`).
 2. Lekérheti az **alkalmazás azonosítóját** és a **hitelesítési kulcsot**. Jegyezze fel ezeket az értékeket, mert később használni fogja őket az oktatóanyagban. 

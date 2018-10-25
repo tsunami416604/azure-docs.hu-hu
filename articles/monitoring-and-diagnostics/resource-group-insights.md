@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 7e0a68efc93d0f907edfb38dbc548ac95a35b3e1
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 4b24ab406cc9cdbc3ce03ee203ec034843d5630a
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465809"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986423"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>A figyelő erőforráscsoportok és az Azure Monitor (előzetes verzió)
 
@@ -113,7 +113,12 @@ Ebben az esetben ha szerkesztési látni fogja, hogy az Azure Monitor-metrikák 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 ### <a name="enabling-access-to-alerts"></a>Riasztások való hozzáférés engedélyezése
-Az erőforráscsoportok az Azure Monitor kell bizonyos engedélyeket az eléréséhez a riasztás állapotát az erőforráscsoportban lévő erőforrásokat. Riasztások betöltése során hibaüzenetet látja, ha nincs megfelelő engedélye. Kérje meg a rendszergazdát, hogy a **tulajdonosa** vagy **közreműködői** szerepkört az előfizetés, amely tartalmazza az erőforráscsoport.
+
+Az erőforráscsoportok az Azure Monitor riasztások megtekintéséhez ennél az előfizetésnél tulajdonos vagy közreműködő szerepkörrel rendelkező személy meg kell nyitnia a Azure Monitor erőforráscsoportok bármely erőforráscsoport az előfizetésben. Ez lehetővé teszi bárki, olvasási hozzáférés tekintse meg az Azure monitorban riasztásokat az erőforráscsoport az előfizetésben található összes erőforrás-csoportokhoz. Ha rendelkezik olyan tulajdonosi vagy közreműködői szerepkörhöz, frissítse a lapot néhány perc múlva.
+
+Az Azure Monitor erőforrás-csoportok az Azure Monitor riasztások felügyeleti rendszer riasztás állapotának lekéréséhez támaszkodik. Alapértelmezés szerint minden erőforráscsoport és az előfizetés nincs konfigurálva a riasztások kezelése, és azt csak egy tulajdonos vagy közreműködő szerepkörrel rendelkező bármely személy engedélyezhető. Ezek lehetnek engedélyezett vagy:
+* Nyissa meg az Azure Monitor erőforráscsoportok bármely erőforráscsoport az előfizetésben.
+* Vagy az előfizetést, kattintással lépjen **erőforrás-szolgáltatók**, majd kattintson a **Alerts.Management regisztráljon**.
 
 ## <a name="next-steps"></a>További lépések
 

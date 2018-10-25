@@ -1,6 +1,6 @@
 ---
-title: SSL-kapcsolatot PostgreSQL Azure-adatbázis konfigurálása
-description: Utasításokat és az információkat PostgreSQL és a társított alkalmazások megfelelően az SSL-kapcsolat használata Azure-adatbázis konfigurálása.
+title: SSL-összekapcsolhatóság konfigurálása az Azure Database for postgresql-hez
+description: Útmutató és információ, Azure Database for PostgreSQL és a kapcsolódó alkalmazások megfelelően használni az SSL-kapcsolatok konfigurálása.
 services: postgresql
 author: JasonMAnderson
 ms.author: janders
@@ -10,70 +10,70 @@ ms.service: postgresql
 ms.custom: ''
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: f3efb99ddb47f167a0d9cbef064890e817a18841
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: cc8bd25b58cf898169a4d84154f7f3f81966bb92
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32186817"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985794"
 ---
-# <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>SSL-kapcsolatot PostgreSQL Azure-adatbázis konfigurálása
-Azure-adatbázis PostgreSQL inkább csatlakozás az ügyfél alkalmazásait, és a Secure Sockets Layer (SSL) használatával PostgreSQL-szolgáltatás. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket.
+# <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>SSL-összekapcsolhatóság konfigurálása az Azure Database for postgresql-hez
+Azure Database for PostgreSQL részesíti előnyben, csatlakozás a PostgreSQL szolgáltatás Secure Sockets Layer (SSL) használatával az ügyfélalkalmazások számára. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket.
 
-Alapértelmezés szerint a PostgreSQL-adatbázis szolgáltatás SSL-kapcsolat megkövetelése van konfigurálva. Másik lehetőségként letilthatja kapcsolódni az adatbázis-szolgáltatás, ha az ügyfélalkalmazást nem támogatja az SSL-kapcsolatot az SSL megkövetelése. 
+Alapértelmezés szerint a PostgreSQL-adatbázisszolgáltatás van konfigurálva az SSL-csatlakozást igényeljen. Igény szerint, az SSL megkövetelésének letiltását az adatbázis-szolgáltatása kapcsolódni, ha az ügyfélalkalmazás nem támogatja az SSL-kapcsolatok. 
 
-## <a name="enforcing-ssl-connections"></a>SSL-kapcsolatok kényszerítése
-Az összes Azure Database az Azure portál és a parancssori felületen keresztül szerezhetők PostgreSQL-kiszolgálók esetén az SSL-kapcsolatok kényszerítési alapértelmezés szerint engedélyezve van. 
+## <a name="enforcing-ssl-connections"></a>SSL-kapcsolatok kikényszerítése
+Az összes, Azure Database for PostgreSQL-kiszolgálót az Azure portal és CLI használatával hozhatók létre az SSL-kapcsolatok kényszerítése alapértelmezés szerint engedélyezve van. 
 
-Hasonlóképpen a "Kapcsolati karakterláncok" beállításokat a kiszolgálón az Azure-portálon előre definiált kapcsolati karakterláncok közös nyelvek SSL használatával az adatbázis-kiszolgálóhoz való csatlakozáshoz szükséges paraméterek közé tartoznak. Az SSL-paraméter attól függően változik, az összekötő, például "ssl = true" vagy "sslmode = szükséges" vagy "sslmode = szükséges" és egyéb változatok.
+Hasonlóképpen a kapcsolati karakterláncokat, a "Kapcsolati karakterláncok" beállításokat a kiszolgálón, az Azure Portalon előre meghatározott közös nyelvek SSL-lel az adatbázis-kiszolgálóhoz való csatlakozáshoz szükséges paraméterek közé tartozik. Az SSL paraméter attól függően változik, az összekötőt, például "ssl = true" vagy "sslmode = szükséges" vagy "sslmode = szükséges" és egyéb változatok.
 
-## <a name="configure-enforcement-of-ssl"></a>Az SSL kényszerítésének
-Igény szerint letilthatja végrehajtó SSL-kapcsolatot. A Microsoft Azure azt javasolja, hogy mindig engedélyezése **kényszerítése SSL-kapcsolat** vonatkozó fokozott biztonsági beállításait.
+## <a name="configure-enforcement-of-ssl"></a>Az SSL kényszerítését konfigurálása
+Igény szerint letilthatja a korlátozást előírni az SSL-kapcsolatot. A Microsoft Azure mindig engedélyezéséhez javasolja **kényszerítése SSL-kapcsolat** a biztonság beállítása.
 
 ### <a name="using-the-azure-portal"></a>Az Azure Portal használata
-Keresse fel az Azure-adatbázis PostgreSQL-kiszolgáló, és kattintson a **kapcsolatbiztonsági**. A váltógomb segítségével engedélyezheti vagy tilthatja le a **kényszerítése SSL-kapcsolat** beállítást. Kattintson a **mentése**. 
+Látogasson el az Azure Database for PostgreSQL-kiszolgálóhoz, és **kapcsolatbiztonság**. A váltógomb segítségével engedélyezheti vagy tilthatja le a **kényszerítése SSL-kapcsolat** beállítás. Kattintson a **mentése**. 
 
-![Kapcsolat biztonsági - Disable SSL kényszerítése](./media/concepts-ssl-connection-security/1-disable-ssl.png)
+![Kapcsolatbiztonság – tiltsa le az SSL kényszerítése](./media/concepts-ssl-connection-security/1-disable-ssl.png)
 
-Megtekintésével ellenőrizheti a beállítás a **áttekintése** lapot, melyen megtekintheti a **SSL kényszerítése állapot** mutató.
+A beállítás megtekintésével ellenőrizheti a **áttekintése** oldalt, hogy a **SSL-kényszerítés állapota** kijelző.
 
 ### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
-Engedélyezheti vagy letilthatja a **ssl-kényszerítési** paraméter használatával `Enabled` vagy `Disabled` értékeket az Azure parancssori felület.
+Engedélyezheti vagy letilthatja a **ssl-kényszerítés** paraméter használatával `Enabled` vagy `Disabled` értékeket jelölik az Azure CLI-ben.
 
 ```azurecli
 az postgres server update --resource-group myresourcegroup --name mydemoserver --ssl-enforcement Enabled
 ```
 
-## <a name="ensure-your-application-or-framework-supports-ssl-connections"></a>Ellenőrizze az alkalmazás vagy a keretrendszer támogatja SSL-kapcsolatok
-Sok általános alkalmazás-keretrendszert, PostgreSQL használ az adatbázis-szolgáltatásokat, például Drupal és a Django, ne engedélyezze az SSL alapértelmezés szerint telepítése során. Engedélyezi az SSL-kapcsolatot kell elvégezni, a telepítés után, vagy a parancssori felület parancsait az alkalmazáshoz. Ha a PostgreSQL-kiszolgáló SSL-kapcsolatok kényszerít, és az ahhoz kapcsolódó alkalmazás nincs megfelelően konfigurálva, az alkalmazás sikertelen lehet az adatbázis-kiszolgálóhoz való csatlakozáshoz. Az alkalmazás dokumentációból megtudhatja, hogyan SSL-kapcsolatok engedélyezéséhez.
+## <a name="ensure-your-application-or-framework-supports-ssl-connections"></a>Ellenőrizze az alkalmazás- vagy keretrendszer által támogatott SSL-kapcsolatok
+Számos gyakori alkalmazási keretrendszerek, PostgreSQL használ az adatbázis-szolgáltatások, például a Drupal, Django, és ne engedélyezze az SSL alapértelmezés szerint a telepítés során. SSL-kapcsolatok engedélyezése kell elvégezni a telepítést követően vagy CLI-parancsok az alkalmazáshoz. Ha a PostgreSQL-kiszolgáló az SSL-kapcsolatok kikényszerítése, és az ahhoz kapcsolódó alkalmazás nem megfelelően van konfigurálva, az alkalmazás az adatbázis-kiszolgálóhoz való csatlakozás sikertelen lehet. Tekintse meg az alkalmazás dokumentációjából megtudhatja, hogyan lehet engedélyezni az SSL-kapcsolatot.
 
 
-## <a name="applications-that-require-certificate-verification-for-ssl-connectivity"></a>A tanúsítványellenőrzés az SSL-kapcsolatot igénylő alkalmazások
-Bizonyos esetekben az alkalmazásoknak a megbízható tanúsítvány hitelesítésszolgáltatói (CA) tanúsítvány (.cer) kapcsolódó fájl biztonságosan által létrehozott helyi tanúsítványfájlt. A következő lépések szerezze be a .cer fájlt, a tanúsítvány dekódolása, és kösse az alkalmazást.
+## <a name="applications-that-require-certificate-verification-for-ssl-connectivity"></a>Tanúsítvány-ellenőrzés a SSL-kapcsolatot igénylő alkalmazások
+Bizonyos esetekben az alkalmazásoknak egy helyi tanúsítványfájlt, létrehozott egy megbízható hitelesítésszolgáltató (CA) tanúsítványfájlt (.cer) való biztonságos csatlakozáshoz. Lásd a következő lépéseket a .cer fájl beszerzése, a tanúsítvány dekódolása, és kösse az alkalmazást.
 
-### <a name="download-the-certificate-file-from-the-certificate-authority-ca"></a>Töltse le a tanúsítványt a tanúsítvány hitelesítésszolgáltatói (CA) 
-Az Azure-adatbázissal SSL protokollt használó kommunikációra a PostgreSQL-kiszolgáló szükség a tanúsítvány [Itt](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt). Töltse le a fájlt helyileg.
+### <a name="download-the-certificate-file-from-the-certificate-authority-ca"></a>Töltse le a tanúsítványfájlt, a hitelesítésszolgáltató (CA) 
+A tanúsítvány kommunikációra SSL-Titkosítást az az Azure Database for PostgreSQL-kiszolgálót nem találnak szükséges [Itt](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt). Töltse le helyben a tanúsítványfájlt.
 
-### <a name="download-and-install-openssl-on-your-machine"></a>Töltse le és telepítse a OpenSSL a számítógépen 
-A tanúsítványfájl való biztonságos kapcsolódás az adatbázis-kiszolgáló az alkalmazáshoz szükséges dekódolni, telepítendő OpenSSL a helyi számítógépen.
+### <a name="download-and-install-openssl-on-your-machine"></a>Töltse le és telepítse az OpenSSL a gépen 
+A tanúsítványfájl szükséges az alkalmazásához, biztonságosan csatlakozhat az adatbázis-kiszolgálóhoz való dekódolandó, a helyi számítógépen OpenSSL telepítenie kell.
 
 #### <a name="for-linux-os-x-or-unix"></a>A Linux, OS X or Unix
-Az OpenSSL könyvtárakat közvetlenül a forráskód szerepelnek a [OpenSSL szoftver Foundation](http://www.openssl.org). Az alábbi utasítások alapján végigvezetik a Linux rendszerű számítógépen lévő OpenSSL telepítéséhez szükséges lépéseket. Ebben a cikkben az ismert működését az Ubuntu 12.04 és magasabb parancsok.
+A közvetlenül a forráskódban biztosított az OpenSSL könyvtárakat a [OpenSSL Software Foundation](https://www.openssl.org). Az alábbi utasításokat követve végigvezeti a Linux rendszerű számítógép OpenSSL telepítéséhez szükséges lépéseket. Ez a cikk ismert működését az Ubuntu 12.04-es és újabb parancsokat használja.
 
-Nyisson meg egy terminál-munkamenetet, és töltse le a OpenSSL.
+Nyisson meg egy terminál-munkamenetet, és töltse le az OpenSSL.
 ```bash
 wget http://www.openssl.org/source/openssl-1.1.0e.tar.gz
 ``` 
-Bontsa ki a fájlokat a letöltött csomagban található.
+Csomagolja ki a fájlokat a letöltött csomag.
 ```bash
 tar -xvzf openssl-1.1.0e.tar.gz
 ```
-Adja meg a könyvtárat, ha a fájlok könyvtárban találhatók. Alapértelmezés szerint az alábbinak kell lennie.
+Adja meg a könyvtárat, ahol a fájlokat könyvtárban találhatók. Alapértelmezés szerint azt alábbinak kell lennie.
 
 ```bash
 cd openssl-1.1.0e
 ```
-OpenSSL konfigurálásához futtassa a következő parancsot. Ha szeretne egy mappában lévő fájlok /usr/local/openssl eltér, győződjön meg arról, módosíthatja a megfelelő műveletet.
+OpenSSL konfigurálásához futtassa az alábbi parancsot. Ha egy mappában található fájlokat /usr/local/openssl eltér, ügyeljen arra, hogy módosítsa a megfelelő műveletet.
 
 ```bash
 ./config --prefix=/usr/local/openssl --openssldir=/usr/local/openssl
@@ -83,43 +83,43 @@ Most, hogy OpenSSL megfelelően van konfigurálva, kell, hogy a tanúsítvány k
 ```bash
 make
 ```
-Fordítási végrehajtása után készen áll a telepítendő OpenSSL végrehajtható fájlként, a következő parancs futtatásával:
+Fordítás befejeződése után készen áll a telepítendő OpenSSL végrehajtható fájlként a következő parancs futtatásával:
 ```bash
 make install
 ```
-Győződjön meg arról, hogy sikeresen telepítette OpenSSL a rendszeren, futtassa a következő parancs és a jelölőnégyzet győződjön meg arról, hogy az azonos kimenethez kap.
+Győződjön meg arról, hogy sikeresen telepítette OpenSSL a rendszeren, futtassa a következő parancsot és ellenőrizze, hogy ugyanazzal a hibaüzenettel kap.
 
 ```bash
 /usr/local/openssl/bin/openssl version
 ```
-Ha sikeres a következő üzenetet kell megjelennie.
+Ha sikeres a következő üzenetnek kell megjelennie.
 ```bash
 OpenSSL 1.1.0e 7 Apr 2014
 ```
 
-#### <a name="for-windows"></a>Windows rendszerhez
-OpenSSL telepítése Windows rendszerű megteheti a következőképpen:
-1. **(Ajánlott)**  Funkcióval a beépített Bash a Windows a Windows 10-es és újabb verziók, OpenSSL alapértelmezés szerint telepítve van-e. Windows 10 Bash a Windows-funkció engedélyezésével kapcsolatos útmutatást itt talál [Itt](https://msdn.microsoft.com/commandline/wsl/install_guide).
-2. A letöltés a Win32/64 alkalmazás a Közösség által meghatározott. Során a OpenSSL szoftver Foundation nem adja meg, vagy hagyja jóvá a megadott Windows Installer telepítők elérhető telepítők listáját tartalmazzák [Itt](https://wiki.openssl.org/index.php/Binaries).
+#### <a name="for-windows"></a>Windows esetén
+OpenSSL telepítése Windows rendszerű számítógépek teheti meg az alábbi módokon:
+1. **(Ajánlott)**  a beépített Bash-a Windows-szolgáltatással a Windows 10 és újabb, OpenSSL alapértelmezés szerint telepítve van-e. Útmutatást nyújt a Windows 10 Bash-a Windows-funkciók engedélyezéséhez található [Itt](https://msdn.microsoft.com/commandline/wsl/install_guide).
+2. A Win32/64-alkalmazások a Közösség által biztosított letöltése keresztül Bár az OpenSSL Software Foundation nem biztosít vagy bármely adott Windows-telepítők ajánlásával, elérhető telepítők listájának megadása [Itt](https://wiki.openssl.org/index.php/Binaries).
 
-### <a name="decode-your-certificate-file"></a>A tanúsítványfájl dekódolása
-A legfelső szintű hitelesítésszolgáltató letöltött fájl titkosított formátumban van. A tanúsítványfájl dekódolás OpenSSL használja. Ehhez a OpenSSL parancsot:
+### <a name="decode-your-certificate-file"></a>A tanúsítványfájl-dekódolást.
+A legfelső szintű hitelesítésszolgáltató letöltött fájl titkosított formátumban van. A tanúsítványfájl dekódolandó az openssl kódtárat használják. Ehhez a következő OpenSSL-parancs futtatásával:
 
 ```dos
 openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
 ```
 
-### <a name="connecting-to-azure-database-for-postgresql-with-ssl-certificate-authentication"></a>Azure-adatbázishoz szeretne csatlakozni a PostgreSQL SSL tanúsítványalapú hitelesítéssel ellátott
-Most, hogy sikeres rendelkeznek dekódolni, a tanúsítványt, akkor is csatlakozhat az adatbázis-kiszolgáló biztonságos SSL-en keresztül. Ahhoz, hogy a kiszolgáló tanúsítványellenőrzést, a tanúsítványt kell helyezni a fájlt ~/.postgresql/root.crt az a felhasználó saját könyvtárához. (A Microsoft Windows a fájl neve % APPDATA%\postgresql\root.crt.). A következő útmutatás PostgreSQL az Azure-adatbázishoz szeretne csatlakozni.
+### <a name="connecting-to-azure-database-for-postgresql-with-ssl-certificate-authentication"></a>Csatlakozik Azure Database for postgresql-hez SSL tanúsítványalapú hitelesítéssel ellátott
+Most, hogy sikeresen dekódovat a tanúsítvány, mostantól csatlakozhat az adatbázis-kiszolgáló biztonságos SSL-en keresztül. Ahhoz, hogy a kiszolgálói tanúsítvány-ellenőrzés, a tanúsítvány található a fájl ~/.postgresql/root.crt az a felhasználó kezdőkönyvtárába kell elhelyezni. (A Microsoft Windows a fájl neve % APPDATA%\postgresql\root.crt.). A következő, Azure Database for postgresql-hez történő összekapcsolására vonatkozó utasításokat tartalmazza.
 
-#### <a name="using-psql-command-line-utility"></a>Psql parancssori segédprogrammal
-A következő példa bemutatja, hogyan tud sikeresen csatlakozni a psql parancssori segédprogram használatával PostgreSQL-kiszolgálóhoz. Használja a `root.crt` fájl létrehozása és a `sslmode=verify-ca` vagy `sslmode=verify-full` lehetőséget.
+#### <a name="using-psql-command-line-utility"></a>Psql parancssori segédprogram használatával
+Az alábbi példa bemutatja, hogyan sikerült csatlakozni a PostgreSQL-kiszolgálóhoz a psql parancssori segédprogram használatával. Használja a `root.crt` létrehozott fájlt, és a `sslmode=verify-ca` vagy `sslmode=verify-full` lehetőséget.
 
 A PostgreSQL parancssori felületén, hajtsa végre a következő parancsot:
 ```bash
 psql "sslmode=verify-ca sslrootcert=root.crt host=mydemoserver.postgres.database.azure.com dbname=postgres user=mylogin@mydemoserver"
 ```
-Ha sikeres, a következő eredmény jelenik meg:
+Ha ez sikeres, a következő kimenetet kapja:
 ```bash
 Password for user mylogin@mydemoserver:
 psql (9.6.2)
@@ -132,10 +132,10 @@ Type "help" for help.
 postgres=>
 ```
 
-#### <a name="using-pgadmin-gui-tool"></a>Grafikus felhasználói Felülettel pgAdmin eszközzel
-Meg kell adnia pgAdmin biztonságos SSL Csatornán keresztül csatlakozni 4 konfigurálása számára a `SSL mode = Verify-CA` vagy `SSL mode = Verify-Full` az alábbiak szerint:
+#### <a name="using-pgadmin-gui-tool"></a>A pgAdmin GUI eszköz használatával
+Konfigurálás a pgAdmin SSL-en keresztül biztonságos kapcsolatot 4 megköveteli, hogy Ön a `SSL mode = Verify-CA` vagy `SSL mode = Verify-Full` módon:
 
 ![Képernyőkép a pgAdmin - kapcsolat – SSL-mód megkövetelése](./media/concepts-ssl-connection-security/2-pgadmin-ssl.png)
 
 ## <a name="next-steps"></a>További lépések
-Tekintse át a következő különböző alkalmazás kapcsolati lehetőségek [PostgreSQL az Azure-adatbázis adatkapcsolattárak](concepts-connection-libraries.md).
+Tekintse át a különböző alkalmazás kapcsolódási lehetőségekről a következő [adatkapcsolattárak az Azure Database for PostgreSQL](concepts-connection-libraries.md).

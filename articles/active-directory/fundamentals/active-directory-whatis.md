@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 09/13/2018
 ms.custom: it-pro
-ms.openlocfilehash: 08d32a99e2f1a77bcc7a5900b47e6771c33ec356
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 406baeac60c7c0cdf5f74876e5fc29ea23d3d6f6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393321"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957547"
 ---
 # <a name="what-is-azure-active-directory"></a>Mi az az Azure Active Directory?
 Az Azure Active Directory (Azure AD) a Microsoft több-bérlős, felhőalapú címtár és identitáskezelési szolgáltatása. Az Azure AD egyetlen megoldásban egyesíti az alapvető címtárszolgáltatásokat, az alkalmazáshozzáférés-felügyeletet és az identitás védelmet, egy szabványalapú platform, amely segít a fejlesztőknek, hogy központi szabályzatokon és szabályokon alapuló hozzáférés-vezérléssel bővíthessék alkalmazásaikat.
@@ -74,7 +74,7 @@ Az Azure AD-implementációt fizetős képességekkel is kibővítheti, ha az Az
 Regisztráljon az ingyenes 30 napos próbaverzióra és máris üzembe helyezheti első felhőalapú megoldását, lásd: [Prémium szintű Azure Active Directory próbaverzió](https://azure.microsoft.com/trial/get-started-active-directory/).
 
 ## <a name="as-a-developer-how-do-i-get-started"></a>Fejlesztőként hogyan kezdhetek hozzá?
-Regisztráljon az ingyenes 30 napos próbaverzióra, és kezdje el alkalmazásait integrálni az Azure AD-be, lásd: [Prémium szintű Azure Active Directory próbaverzió](https://azure.microsoft.com/trial/get-started-active-directory/). További információ található még az Azure Active Directory [Fejlesztői útmutatójában](../develop/azure-ad-developers-guide.md) is.
+Regisztráljon az ingyenes 30 napos próbaverzióra, és kezdje el alkalmazásait integrálni az Azure AD-be, lásd: [Prémium szintű Azure Active Directory próbaverzió](https://azure.microsoft.com/trial/get-started-active-directory/). További információ található még az Azure Active Directory [Fejlesztői útmutatójában](../develop/v1-overview.md) is.
 
 ## <a name="next-steps"></a>További lépések
 - [További információk az Azure-identitáskezelés és -hozzáféréskezelés alapjairól](identity-fundamentals.md).

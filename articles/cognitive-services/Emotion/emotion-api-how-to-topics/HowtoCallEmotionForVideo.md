@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 02/06/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2687145a89c11efb4a3bcb1494a39806e9aae551
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 6c96ab18161230ffabd0703bdb6d0230bdc8d3ba
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238607"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026262"
 ---
 # <a name="example-call-emotion-api-for-video"></a>Példa: Az Emotion API for Video meghívása
 
@@ -46,7 +46,7 @@ ocp-apim-subscription-key: <Your subscription key>
 ```
 var emotionServiceClient = new emotionServiceClient("Your subscription key");
 ```
-Előfizetői azonosító beszerzéséhez tekintse meg az [Előfizetések] (https://azure.microsoft.com/try/cognitive-services/)) oldalt.
+Előfizetési kulcs beszerzéséhez tekintse meg az [Előfizetések](https://azure.microsoft.com/try/cognitive-services/) című témakört.
 
 ### <a name="Step2">2. lépés: Videó feltöltése a szolgáltatásba és az állapotának ellenőrzése</a>
 Az Emotion API for Video meghívásának legalapvetőbb módja a videó közvetlen feltöltése. Ezt egy alkalmazás-/oktettstream tartalomtípusú „POST” kérés és a videofájlból beolvasott adatok együttes elküldésével teheti meg. A videó maximális mérete 100 MB lehet.

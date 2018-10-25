@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/13/2018
 ms.author: akjosh; cynthn
 ms.custom: ''
-ms.openlocfilehash: 76e1c4aec6804013a5958c8651c24eed61440c84
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 79f6a15bd4b56d9d7ee8b7ee741c0a4460231dfe
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047557"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023168"
 ---
 # <a name="shared-image-galleries-overview"></a>Megosztott kép katalógusok áttekintése
 
@@ -31,4 +31,4 @@ ms.locfileid: "47047557"
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan helyezhet üzembe az [Azure CLI használatával] (megosztott, képek, cli.md) megosztott lemezképeket
+Ismerje meg, hogyan megosztott rendszerképek használatával helyezhet üzembe a [Azure CLI-vel](shared-images-cli.md)

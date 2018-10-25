@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: e0d430ced1dbddbfca79806591c83c33e732eefd
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 43202e88482933aed7952f6cc97dcaf1e0dcb5e7
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901714"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986032"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Ismerkedés az Azure Stream Analytics: valós idejű csalásészlelés
 
@@ -39,7 +39,7 @@ Ebben az oktatóanyagban egy ügyfélalkalmazás által létrehozott minta telef
 Mielőtt hozzálátna, győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
 * Egy Azure-fiók.
-* A hívás-alkalmazást, [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip), amely letölthető a Microsoft Download Center. Csomagolja ki ezt a csomagot egy mappába a számítógépen. Ha meg szeretné tekinteni a kódot, és futtassa az alkalmazást a hibakeresőt a forrás, beszerezheti az alkalmazás forráskódjának [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator). 
+* A hívás-alkalmazást, [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip), amely letölthető a Microsoft Download Center. Csomagolja ki ezt a csomagot egy mappába a számítógépen. Ha meg szeretné tekinteni a kódot, és futtassa az alkalmazást a hibakeresőt a forrás, beszerezheti az alkalmazás forráskódjának [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator). 
 
     >[!NOTE]
     >Windows blokkolhatják a letöltött zip-fájlt. Ha nem tömörítse ki, kattintson jobb gombbal a fájlra, majd válassza ki **tulajdonságok**. Ha az "Ez a fájl egy másik számítógépről érkezett és a számítógép védelme érdekében érdemes lehet blokkolni" üzenetet látja, válassza ki a **feloldása** lehetőséget, majd kattintson **alkalmaz**.
@@ -138,7 +138,7 @@ A TelcoGenerator alkalmazást a Kezdés előtt konfigurálnia kell azt, hogy a h
     A paraméterek a következők: 
 
     * EK száma / óra. 
-    * SIM-kártya csalás valószínűség: Milyen gyakran minden hívás, hogy az alkalmazás szimuláljon csaló hívásokat százalékában. 0.2-es érték azt jelenti, hogy körülbelül 20 %-a hívásrekordokat a fog csalónak tűnni.
+    * SIM-kártya csalás valószínűség: Milyen gyakran minden hívás, hogy az alkalmazás szimuláljon csaló hívásokat százalékában. A 0,2-es érték azt jelenti, hogy nagyjából a hívások 20%-a fog csalónak tűnni.
     * Időtartam (óra). Fusson az alkalmazás órák száma. Is leállíthatja az alkalmazás bármikor a Ctrl + C billentyűkombinációt a parancssorból.
 
     Néhány másodperc elteltével az alkalmazás elkezdi kijelezni a hívásrekordokat a képernyőn, miközben az eseményközpontba küldi őket.
@@ -186,7 +186,7 @@ Most, hogy a hívási események streamjével, állíthat egy Stream Analytics-f
    |---------|---------|---------|
    |Bemeneti alias  |  CallStream   |  Adja meg a feladat bemenetének azonosító nevét.   |
    |Előfizetés   |  \<Az Ön előfizetése\> |  Válassza ki az Azure-előfizetést, amely rendelkezik az Event Hubs hozott létre.   |
-   |Eseményközpont-névtér  |  ASA-eh-ns-bemutató |  Adja meg az Eseményközpont névterének nevét.   |
+   |Event Hubs-névtér  |  ASA-eh-ns-bemutató |  Adja meg az Eseményközpont névterének nevét.   |
    |Eseményközpont neve  | ASA-eh-frauddetection – bemutató | Válassza ki az Event Hub nevét.   |
    |Eseményközpont szabályzatának neve  | ASA-Csoportházirend-kezelése – bemutató | Válassza ki a korábban létrehozott hozzáférési szabályzat.   |
     </br>

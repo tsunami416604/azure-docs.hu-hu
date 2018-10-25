@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2018
 ms.author: dstefan
-ms.openlocfilehash: db6778bdea2e3e133535bf28b3c2297cdb65599d
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7aa0f80b8a0b53d4c53cf633938765e820c641cf
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958907"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025336"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Az Azure Active Directory megvalósíthatósági fogalom forgatókönyv: építőelemek
 
@@ -209,7 +209,7 @@ Hozzávetőleges teljes ideje: 30 perc
 | Előfeltétel | További források |
 | --- | --- |
 | A lista célalkalmazások és a pontos bejelentkezési URL-CÍMEK előre. Tegyük fel a Twitter is használhatja. | [Twitter-a Microsoft Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[Feliratkozás a Twitteren](https://twitter.com/signup?lang=en) |
-| Az SaaS-alkalmazáshoz tartozó hitelesítő adatok megosztott. | [Az Azure AD-vel fiókok megosztása](active-directory-sharing-accounts.md)<br/>[Az azure AD automatikus jelszó vihetők át a Facebook, a Twitter és a LinkedIn jelenleg előzetes verzióban elérhető! – Enterprise Mobility and Security blogon] (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/ ) |
+| Az SaaS-alkalmazáshoz tartozó hitelesítő adatok megosztott. | [Az Azure AD-vel fiókok megosztása](active-directory-sharing-accounts.md)<br/>[Az Azure AD automatikus jelszó vihetők át a Facebook, a Twitter és a LinkedIn jelenleg előzetes verzióban elérhető! – Enterprise Mobility + Security Blog](https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/ ) |
 | Hitelesítő adatok legalább két, ugyanazzal a fiókkal hozzáférő csapattagok számára. Biztonsági csoport részét kell lenniük. | [Egy felhasználó vagy csoport hozzárendelése az Azure Active Directory vállalati alkalmazás](manage-apps/assign-user-or-group-access-portal.md) |
 | A hozzáférési Panel bővítmény telepítését az Internet Explorer, a Chrome és a Firefox egy számítógép helyi rendszergazdai hozzáféréssel | [Hozzáférési Panel az Internet Explorer – bővítmény](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Hozzáférési Panel kiterjesztése a Chrome-ban](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Hozzáférési Panel kiterjesztése a Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 

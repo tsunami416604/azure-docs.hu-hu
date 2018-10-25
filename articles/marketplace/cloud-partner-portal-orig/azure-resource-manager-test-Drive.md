@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 19e3141bf7d28c7f781be21aedf14222e35bfd6c
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 90c434a37d3209e0c11a04425c337ec6930cfd00
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810629"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025259"
 ---
 <a name="azure-resource-manager-test-drive"></a>Az Azure Resource Manager kipróbálása
 =================================
@@ -190,7 +190,7 @@ Győződjön meg arról, hogy a paraméter vagy változó karakterlánc összef�
 
 Például a legtöbb erőforrás neve nem kezdődhet számjeggyel, de egyedi karakterlánc függvény visszaadhat egy karakterláncot, amely egy számjegyet kezdődik. Tehát ha nyers egyedi karakterlánc kimeneti használja, az üzembe helyezések meghiúsulnak. 
 
-További információ az erőforrás elnevezési szabályokat és korlátozásokat található [Ez a cikk] (https://docs.microsoft.com/azure/guidance/guidance-naming-conventions).
+Erőforrás elnevezési szabályokat és korlátozásokat a további információt talál [Ez a cikk](https://docs.microsoft.com/azure/guidance/guidance-naming-conventions).
 
 ### <a name="deployment-location"></a>Üzembe helyezés helye
 
@@ -306,7 +306,7 @@ Töltse ki a következő szakaszban a Test Drive részleteit kínálnak.
 
 ![Test Drive részletes információk](./media/azure-resource-manager-test-drive/howtopub2.png)
 
-**Leírás –** *szükséges* Ez az, ahol ír a fő leírást arról, mi van a Test Drive. Az ügyfél milyen helyzetekben a Test Drive fog lefedő, a termékkel kapcsolatos elolvasható itt fognak érkezni. 
+**Leírás –** *szükséges* Ez az, ahol ír a fő leírást arról, mi van a Test Drive. Az ügyfél milyen helyzetekben a Test Drive fog lefedő, a termékkel kapcsolatos elolvasható itt fognak érkezni. 
 
 **Felhasználó manuális –** *szükséges* Ez az a Test Drive felhasználói élmény részletes leírását. Az ügyfél megnyílik ez, és pontosan mit azt szeretné, hajtsa végre a Test Drive alatt is végig. Fontos, hogy ez a tartalom így könnyen megismerhető és hajtsa végre a! (.Pdf fájlnak kell lennie)
 

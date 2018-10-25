@@ -7,19 +7,19 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 9f082c5f198ebd7123058bd250d3fef55494d553
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 1fd8f7c8499b7f9223939b8d426f274e79fd190e
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287539"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025344"
 ---
 # <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
 Amikor hoz létre, vagy a kezelő az AKS-fürtök, előfordulhat, hogy időnként problémák merülnek fel. Ez a cikk részletesen néhány gyakori hibák és hibaelhárítási lépéseket.
 
 ### <a name="in-general-where-do-i-find-information-about-debugging-kubernetes-issues"></a>Általánosságban elmondható, hol található információ a Kubernetes hibáinak?
 
-[Itt] (https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/) a kubernetes-fürtök hibaelhárítási hivatalos hivatkozás.
+[Itt](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/) a kubernetes-fürtök hibaelhárítási hivatalos hivatkozás.
 [Itt](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md) egy hibaelhárítási útmutató egy körül hibaelhárítási podok, csomópontok, fürtök és egyéb Microsoft-mérnök által közzétett mutató hivatkozás.
 
 ### <a name="i-am-getting-a-quota-exceeded-error-during-create-or-upgrade-what-should-i-do"></a>A kvótatúllépési hiba kapok létrehozása vagy frissítése során. Mit tegyek? 
@@ -59,7 +59,7 @@ Ha nem látja a kubernetes-irányítópultot, majd ellenőrizze a kube-proxy pod
 
 Győződjön meg róla, hogy az alapértelmezett NSG-t nem áll módosítás és a 22-es port nyitva, az API-kiszolgálóhoz való csatlakozáshoz. Ellenőrizze, hogy a tunnelfront pod fut-e a kube rendszer névtérben. Nem érhető el, ha kényszerített törlése, és újra fog.
 
-### <a name="i-am-trying-to-upgrade-or-scale-and-am-getting-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-issue"></a>I frissítésével, vagy méretezheti a tapasztalataimat és érkeznek meg hozzám a "message": "" imageReference"tulajdonság módosítása nem engedélyezett." Hiba.  Hogyan lehet kijavítani a hibát a probléma?
+### <a name="i-am-trying-to-upgrade-or-scale-and-am-getting-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-issue"></a>I frissítésével, vagy méretezheti a tapasztalataimat és érkeznek meg hozzám a "message": "" imageReference"tulajdonság módosítása nem engedélyezett." Hiba történt.  Hogyan lehet kijavítani a hibát a probléma?
 
 Ez a hiba a bevezetés, mert az ügynökcsomópontok az AKS-fürtben lévő címkéket módosította lehetőség. Módosítása és törlése a címkék és egyéb tulajdonságait a MC_ * erőforráscsoportban lévő erőforrásokat váratlan eredményekhez vezethet. A szolgáltatási szint Célkitűzésének az erőforrások mellett az MC_ * az AKS-fürtöt a módosítása működésképtelenné válik.
 

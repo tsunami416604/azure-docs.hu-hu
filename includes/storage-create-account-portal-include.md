@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: d59cb64e1499f703bf6913ab422d0f979caca324
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f21710354572c9b54dbf0e08d02809bb68a8e120
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47008732"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49805052"
 ---
 Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozásához az Azure Portalon:
 
@@ -33,5 +33,6 @@ Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozás
     - A **Hozzáférési szint** alapértelmezett beállítása **Gyakori elérésű**.
 
 1. A tárfiók beállításainak áttekintéséhez és a fiók létrehozásához kattintson az **Áttekintés + létrehozás** elemre.
+1. Kattintson a **Create** (Létrehozás) gombra.
 
 További információ a tárfiókok típusairól és a tárfiókok egyéb beállításairól: [Az Azure Storage-fiókok áttekintése](https://docs.microsoft.com/azure/storage/common/storage-account-overview). További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). 

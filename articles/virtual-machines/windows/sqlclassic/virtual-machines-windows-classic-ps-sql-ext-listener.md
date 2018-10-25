@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 58ec400faee04f8624822bbcb5325fca7006c578
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 10b4fec92752e44048454e8b63e90fd9b7fecba0
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38698634"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023185"
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Always On rendelkezésre állási csoportok külső figyelő konfigurálása az Azure-ban
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Ez a témakör bemutatja, hogyan konfigurálhatja egy figyelőt egy Always On re
 A rendelkezésre állási csoport tartalmazhat replikákat, csak, helyszíni Azure csak, vagy részben a helyszínen és az Azure hibrid konfigurációk esetében. Azure replikák ugyanabban a régióban vagy több virtuális hálózatok (Vnetek) használatával több régióban is lehetnek. Az alábbi lépések azt feltételezik, hogy már [konfigurálva a rendelkezésre állási csoport](../classic/portal-sql-alwayson-availability-groups.md) , de egy figyelő nincs konfigurálva.
 
 ## <a name="guidelines-and-limitations-for-external-listeners"></a>Irányelvek és korlátozások külső figyelők esetében
-Vegye figyelembe az alábbi irányelvek Azure rendelkezésre állási csoport figyelőjével kapcsolatos, telepítésekor felhőalapú szolgáltatás összeköttetés virtuális IP-cím használatával:
+Vegye figyelembe az alábbi irányelvek Azure rendelkezésre állási csoport figyelőjével kapcsolatos, való telepítéséhez használja a cloud service nyilvános VIP-címet:
 
 * A rendelkezésre állási csoport figyelőjének támogatott Windows Server 2008 R2, Windows Server 2012 és Windows Server 2012 R2.
 * Az ügyfélalkalmazás egy másik felhőalapú szolgáltatás, amely nem tartalmazza a rendelkezésre állási csoport virtuális gépeket kell lennie. Az Azure nem támogatja az ügyfél és a kiszolgáló közvetlen kiszolgálói válasz az ugyanazon felhőszolgáltatásban.

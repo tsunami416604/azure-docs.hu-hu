@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 5931958d17ea119e58c066a78a44169be2b9f451
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 7d7de02c96b9a17144b446b9ed86ebcbacd51162
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627525"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025005"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Jelentéskészítési lehetőségek az Azure AD-jelszókezelés
 
@@ -23,7 +23,7 @@ Az üzembe helyezést követően számos szervezet szeretné tudni, hogy hogyan 
 
 ![Jelentéskészítés][Reporting]
 
-Az alábbi kérdésekre választ, amely az [Azure Portalt] szerepel a jelentések szerint (https://portal.azure.com/):
+Az alábbi kérdésekre választ, amelyek szerepelnek a jelentésekben a [az Azure portal](https://portal.azure.com/):
 
 > [!NOTE]
 > Kell [globális rendszergazda](../users-groups-roles/directory-assign-admin-roles.md), és akkor jóvá kell hagyatnia a adatok gyűjthetők a szervezet nevében. Elvégezni a beléptetést, lépjen a **jelentéskészítési** tab vagy az ellenőrzés során legalább egyszer naplózza. Addig nem adatgyűjtés a szervezet számára.
@@ -46,7 +46,7 @@ Ha Ön a Power BI-felhasználó, van egy tartalomcsomagot, amely tartalmazza a k
 
 Az Azure portal felületének a továbbfejlesztettük, hogy megtekintheti a jelszó-visszaállítás, és a jelszó-visszaállítási regisztrációs tevékenység módját. Használja a következő, a lépéseket kell megkeresnie a jelszót alaphelyzetbe, és a jelszó-visszaállítási regisztrációs események:
 
-1. Keresse meg a [az Azure portal](https://portal.azure.com).
+1. Keresse fel az [Azure Portalt](https://portal.azure.com).
 2. Válassza ki **minden szolgáltatás** a bal oldali panelen.
 3. Keresse meg **Azure Active Directory** a szolgáltatások listájában, és jelölje ki.
 4. Válassza a **Felhasználók és csoportok** elemet.

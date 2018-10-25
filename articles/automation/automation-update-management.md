@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2bd1d52db88ca280b811898c173f66b2deee1649
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 6d2076a91bc7e7c0e2ca9d2fe6899cddec2f8d0b
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638148"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024494"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -56,7 +56,7 @@ Az ütemezett telepítés határozza meg, mely célszámítógépek kapni az alk
 
 A telepítést az Azure Automation runbookjai végzik. A runbookok nem tekinthetők, és a runbookok nem igényelnek semmilyen konfigurálást. Frissítéstelepítés létrehozásakor a központi telepítési ütemezés, amely a megadott időben az érintett számítógépekre irányuló frissítési mester runbookot elindítja hoz létre. A mester runbook egy gyermek runbookot indít az egyes ügynököket, a szükséges frissítések telepítéséhez.
 
-A dátum és a frissítés központi telepítésben megadott időpontban a célszámítógépek a központi telepítést végre párhuzamosan. A telepítés előtt a vizsgálat futtatta, hogy a frissítések továbbra is szükséges. A WSUS-ügyfélszámítógépek Ha a frissítések WSUS, a nem jóváhagyott a frissítés telepítése sikertelen lesz.
+A dátum és a frissítés központi telepítésben megadott időpontban a célszámítógépek a központi telepítést végre párhuzamosan. A telepítés előtt vizsgálatot futtat, hogy a frissítések továbbra is szükséges. A WSUS-ügyfélszámítógépek Ha a frissítések WSUS, a nem jóváhagyott a frissítés telepítése sikertelen lesz.
 
 Kellene egy számítógép egynél több Log Analytics-munkaterületek (többkiszolgálós)-ben regisztrált nem támogatott.
 
@@ -264,7 +264,34 @@ sudo yum -q --security check-update
 
 Jelenleg nem támogatott metódus metódus natív osztályozás – adatok rendelkezésre állását, a CentOS engedélyezése. Jelenleg csak legjobb támogatás, akiknek előfordulhat, hogy engedélyezve van ez a saját áll rendelkezésre.
 
-##<a name="ports"></a>Hálózattervezés
+## <a name="firstparty-predownload"></a>Belső a javításokat és előzetes letöltése
+
+Az Update Management a Windows-frissítések letöltése és telepítése a Windows Update támaszkodik. Ennek eredményeképpen a Microsoft tiszteletben a használják a Windows Update beállításainak jelentős része. Ha nem Windows-frissítések engedélyezéséhez a beállításokat használja, az Update Management kezelik majd ezeket a frissítéseket. Szeretné engedélyezni, frissítés letöltése előtt frissítéstelepítés akkor fordul elő, ha a központi telepítések gyorsabban, és kevésbé valószínű haladhatja meg a karbantartási időszak.
+
+### <a name="pre-download-updates"></a>Előre frissítések letöltése
+
+Frissítések automatikus letöltése a csoportházirend konfigurálásához beállíthatja a [automatikus frissítések konfigurálása beállítás](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#BKMK_comp5) való **3**. Ez letölti a frissítéseket, a háttérben szükséges, de nem telepíti azokat. Ez az Update Management megőrizheti feletti ellenőrzési képességét ütemezéseket, de lehetővé teszik a frissítések letöltése az Update Management karbantartási időszakon kívül. Ez megakadályozhatja az **karbantartási időszak túllépve** az Update Management hibákat.
+
+Akkor is állíthatja ezt a PowerShell-lel, futtassa a következő PowerShell-automatikus letöltés frissítések kívánt rendszeren.
+
+```powershell
+$WUSettings = (New-Object -com "Microsoft.Update.AutoUpdate").Settings
+$WUSettings.NotificationLevel = 3
+$WUSettings.Save()
+```
+
+### <a name="enable-updates-for-other-microsoft-products"></a>Engedélyezi a frissítéseket, más Microsoft-termékek
+
+Alapértelmezés szerint Windows Update csak frissítéseket kínál a Windows. Ha engedélyezi a **frissítéseinek fogadása más Microsoft-termékek Windows frissítésekor**, más termékek esetében rendelkezésre álló frissítések ilyen dolgot biztonsági javítások többek között az SQL Server- vagy egyéb első helyezését. Ezt a beállítást a csoportházirend által nem konfigurálható. Futtassa az alábbi PowerShell-lel a rendszereken, engedélyezze a más gyártótól származó első javítást a kívánt, és az Update Management betartja ezt a beállítást.
+
+```powershell
+$ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")
+$ServiceManager.Services
+$ServiceID = "7971f918-a847-4430-9279-4a52d1efe18d"
+$ServiceManager.AddService2($ServiceId,7,"")
+```
+
+## <a name="ports"></a>Hálózattervezés
 
 A következő címekre kifejezetten az Update Management szükségesek. Ezek a címek kommunikációt a 443-as porton keresztül történik.
 
@@ -502,7 +529,7 @@ Az Update Management lehetővé teszi egy Azure virtuális gépek dinamikus eszk
 * Helyek
 * Címkék
 
-![Csoportok kiválasztása](./media/automation-update-management/select-groups.png)
+![Válassza ki a csoportokat](./media/automation-update-management/select-groups.png)
 
 Egy dinamikus csoport az eredmények előnézetének megtekintéséhez kattintson a **előzetes** gombra. Ebben az előzetes verzióban jeleníti meg a csoport tagságát ekkor az ebben a példában a címkével ellátott gépek keresésével **szerepkör** egyenlő **BackendServer**. Ha több gépet hozzáadja ezt a címkét, azok hozzáadódik a jövőbeli telepítések a csoporton.
 

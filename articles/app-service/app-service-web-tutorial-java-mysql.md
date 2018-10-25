@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 0baab86c0cb76bfeecb30cdb62c968a476e402b9
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: db1005bbce25b0fa3fec76e6f9428a4cdd6fa4aa
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296771"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024375"
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>Oktatóanyag: Java- és MySQL-webalkalmazás létrehozása az Azure-ban
 
@@ -28,7 +28,7 @@ ms.locfileid: "44296771"
 > Ebben a cikkben egy alkalmazást helyezünk üzembe a Windowson futó App Service-ben. Az App Service _Linuxon_ való üzembe helyezésével kapcsolatban lásd a [tárolóalapú Spring Boot-alkalmazás az Azure-ban történő üzembe helyezését](/java/azure/spring-framework/deploy-containerized-spring-boot-java-app-with-maven-plugin) ismertető szakaszt.
 >
 
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy Java-webalkalmazást az Azure-ban, és hogyan csatlakoztathatja azt egy MySQL-adatbázishoz. Az oktatóanyag végére egy, az [Azure App Service Web Appsben](app-service-web-overview.md) futó, az adatokat az [Azure Database for MySQL-ben](https://docs.microsoft.com/azure/mysql/overview) tároló [Spring Boot](https://projects.spring.io/spring-boot/)-alkalmazással fog rendelkezni.
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy Java-webalkalmazást az Azure-ban, és hogyan csatlakoztathatja azt egy MySQL-adatbázishoz. Az oktatóanyag végére egy, az [Azure App Service Web Appsben](app-service-web-overview.md) futó, az adatokat az [Azure Database for MySQL-ben](../mysql/overview.md) tároló [Spring Boot](https://projects.spring.io/spring-boot/)-alkalmazással fog rendelkezni.
 
 ![Az Azure App Service-ben futó Java-alkalmazás](./media/app-service-web-tutorial-java-mysql/appservice-web-app.png)
 
@@ -122,7 +122,7 @@ select * from todo_item;
 
 ## <a name="create-an-azure-mysql-database"></a>Azure MySQL-adatbázis létrehozása
 
-Ebben a lépésben egy [Azure Database for MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md)-példányt hozunk létre az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) használatával. Később az oktatóanyag során konfigurálni fogjuk a mintaalkalmazást ennek az adatbázisnak a használatára.
+Ebben a lépésben egy [Azure Database for MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md)-példányt hozunk létre az [Azure CLI](/cli/azure/install-azure-cli) használatával. Később az oktatóanyag során konfigurálni fogjuk a mintaalkalmazást ennek az adatbázisnak a használatára.
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -282,7 +282,7 @@ az webapp config set --name <app_name> --resource-group myResourceGroup --java-v
 
 A mintaalkalmazás futtatása előtt állítsa be a webalkalmazás alkalmazásbeállításait, hogy az az Azure-ban létrehozott Azure MySQL-adatbázist használja. Ezek a tulajdonságok környezeti változóként érhetők el a webalkalmazás által, és felülbírálják a csomagolt webalkalmazás application.properties tulajdonságaiban megadott értékeket. 
 
-A Cloud Shellben állítsa be az alkalmazásbeállításokat az [`az webapp config appsettings`](https://docs.microsoft.com/cli/azure/webapp/config/appsettings) parancssori parancs kiadásával:
+A Cloud Shellben állítsa be az alkalmazásbeállításokat az [`az webapp config appsettings`](/cli/azure/webapp/config/appsettings) parancssori parancs kiadásával:
 
 ```azurecli-interactive
 az webapp config appsettings set --settings SPRING_DATASOURCE_URL="jdbc:mysql://<mysql_server_name>.mysql.database.azure.com:3306/tododb?verifyServerCertificate=true&useSSL=true&requireSSL=false" --resource-group myResourceGroup --name <app_name>
@@ -299,7 +299,7 @@ az webapp config appsettings set --settings SPRING_DATASOURCE_PASSWORD=Javaapp_p
 ### <a name="get-ftp-deployment-credentials"></a>FTP-s üzembe helyezés hitelesítő adatainak lekérése 
 Az alkalmazás Azure App Service-ben való üzembe helyezésének számos módja létezik, így például az FTP, a helyi Git, a GitHub, az Azure DevOps és a BitBucket. Példánkban FTP-n keresztül helyezzük üzembe a korábban a helyi gépen létrehozott .WAR-fájlt az Azure App Service-ben.
 
-Ha szeretné kideríteni, hogy milyen hitelesítő adatokat kell megadni az FTP-parancsban a webalkalmazásnak, használja a Cloud Shellben az [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/webapp/deployment#az-appservice-web-deployment-list-publishing-profiles) parancsot: 
+Ha szeretné kideríteni, hogy milyen hitelesítő adatokat kell megadni az FTP-parancsban a webalkalmazásnak, használja a Cloud Shellben az [`az webapp deployment list-publishing-profiles`](/cli/azure/webapp/deployment#az-webapp-deployment-list-publishing-profiles) parancsot: 
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles --name <app_name> --resource-group myResourceGroup --query "[?publishMethod=='FTP'].{URL:publishUrl, Username:userName,Password:userPWD}" --output json
@@ -440,25 +440,25 @@ Az oldal ezen lapjai a webalkalmazáshoz hozzáadható nagyszerű funkciókat je
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha ezekre az erőforrásokra már nincs szüksége más oktatóanyagokhoz (lásd a [következő lépéseket](#next)), az alábbi parancs a Cloud Shellben való futtatásával törölheti azokat: 
-  
+Ha ezekre az erőforrásokra már nincs szüksége más oktatóanyagokhoz (lásd a [következő lépéseket](#next)), az alábbi parancs a Cloud Shellben való futtatásával törölheti azokat: 
+  
 ```azurecli-interactive
-az group delete --name myResourceGroup 
-``` 
+az group delete --name myResourceGroup 
+``` 
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>További lépések
+## Next steps
 
 > [!div class="checklist"]
-> * MySQL-adatbázis létrehozása az Azure-ban
-> * Java-mintaalkalmazás csatlakoztatása a MySQL-hez
-> * Az alkalmazás üzembe helyezése az Azure-ban
-> * Az alkalmazás frissítése és ismételt üzembe helyezése
-> * Diagnosztikai naplók streamelése az Azure-ból
-> * Az alkalmazás kezelése az Azure Portalon
+> * Create a MySQL database in Azure
+> * Connect a sample Java app to the MySQL
+> * Deploy the app to Azure
+> * Update and redeploy the app
+> * Stream diagnostic logs from Azure
+> * Manage the app in the Azure portal
 
-Lépjen a következő oktatóanyaghoz, amelyből megtudhatja, hogyan képezhet le egyedi DNS-nevet az alkalmazásokhoz.
+Advance to the next tutorial to learn how to map a custom DNS name to the app.
 
 > [!div class="nextstepaction"] 
-> [Meglévő egyéni DNS-név hozzákapcsolása az Azure-webalkalmazásokhoz](app-service-web-tutorial-custom-domain.md)
+> [Map an existing custom DNS name to Azure Web Apps](app-service-web-tutorial-custom-domain.md)

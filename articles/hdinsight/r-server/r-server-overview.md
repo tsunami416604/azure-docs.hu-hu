@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: ca596b2d33a6248dac94ddd7eef9a9c44daac3c8
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: af7a0d01fcf9df42da79a6529c8d4b0e31d73aa1
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343741"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985488"
 ---
 # <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>Machine Learning-szolgáltatások és a nyílt forráskódú R funkciókat biztosít a HDInsight bemutatása
 
@@ -102,7 +102,7 @@ Ha ezt a lehetőséget választja, minden ScaleR adatmodell-objektumokat kell ko
 
 ### <a name="score-on-premises"></a>Helyszíni pontszám
 
-A modell létrehozása után helyszíni pontozásához, szerializálni a modell az R, töltse le, deszerializálható, és majd használni az új adatok pontozásához. Ön is a korábban ismertetett megközelítés az új adatok pontozása [HDInsight pontozási](#scoring-in-hdinsight) vagy [webszolgáltatások](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services).
+A modell létrehozása után helyszíni pontozásához, szerializálni a modell az R, töltse le, deszerializálható, és majd használni az új adatok pontozásához. Ön is a korábban ismertetett megközelítés az új adatok pontozása [HDInsight pontszámot](#score-in-hdinsight) vagy [webszolgáltatások](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services).
 
 ## <a name="maintain-the-cluster"></a>A fürt kezelése
 

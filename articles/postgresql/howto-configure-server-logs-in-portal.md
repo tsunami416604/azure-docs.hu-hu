@@ -1,6 +1,6 @@
 ---
-title: Konfigurálja, és hozzáférést kiszolgálónaplókban PostgreSQL Azure-portálon
-description: A cikkből megtudhatja, hogyan lehet konfigurálni és a kiszolgálói naplók az Azure-adatbázis hozzáférését az Azure portálról PostgreSQL.
+title: Konfigurálja és kiszolgálói naplók elérése az Azure Portalon a PostgreSQL-hez
+description: Ez a cikk ismerteti, hogyan konfigurálhat és elérése a kiszolgálónaplók, Azure database for postgresql-hez az Azure Portalról.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -9,66 +9,66 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: aa9823c65b342f922ca78a51ecd3055dfac62869
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: be889d7b0bf6060b3b93244da6746fa6f13024da
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29692164"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985505"
 ---
-# <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurálja, és hozzáférést kiszolgálónaplókban olvashatók az Azure-portálon
+# <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurálja és hozzáférés-kiszolgáló naplóit az Azure Portalon
 
-Konfigurálja, listában, és töltse le a [Azure adatbázis PostgreSQL server naplók](concepts-server-logs.md) Azure-portálról.
+Konfigurálhatja, listázása, és töltse le a [, Azure Database for PostgreSQL-kiszolgáló naplói](concepts-server-logs.md) az Azure Portalról.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az útmutató Útmutató lépéseit, az alábbiak szükségesek:
-- [Azure-adatbázis PostgreSQL-kiszolgáló](quickstart-create-server-database-portal.md)
+Ez az útmutató lépéseinek, az alábbiak szükségesek:
+- [Azure Database for PostgreSQL-kiszolgáló](quickstart-create-server-database-portal.md)
 
 ## <a name="configure-logging"></a>Naplózás konfigurálása
-A lekérdezés naplók és a hibanaplókat való hozzáférés konfigurálása. 
+A lekérdezések naplói és a hibanaplók történő hozzáférés konfigurálásához. 
 
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Válassza ki az Azure-adatbázis PostgreSQL-kiszolgáló.
+2. Válassza ki az Azure Database for PostgreSQL kiszolgálóját.
 
-3. Az a **figyelés** az oldalsávon, jelölje be a szakasz **kiszolgáló naplóiban**. 
+3. Alatt a **figyelés** szakasz az oldalsávon válassza **kiszolgálónaplók**. 
 
-   ![Válassza ki a kiszolgáló naplóiban, és válassza a "Kattintson ide a engedélyezése..."](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
+   ![Válassza ki a webkiszolgáló-naplókkal, és válassza a "Ide kattintva engedélyezheti..."](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
 
-4. Válassza ki a címsor **kattintson ide a naplók engedélyezése és konfigurálása a napló paraméterek** server paraméterek megtekintéséhez.
+4. Válassza ki a fejléc **naplóinak engedélyezése és a naplózási paraméterek konfigurálásához kattintson ide** a kiszolgáló paramétereinek megtekintéséhez.
 
-5. Módosítsa a paramétereket, akkor módosítania kell. Ebben a munkamenetben összes módosítások vannak kiemelve lila szín jelöli.
+5. Módosítsa a paramétereket, hogy módosítani kell. Ebben a munkamenetben összes módosítás lila szín jelöli ki vannak emelve.
 
-   Ha módosította a paramétereket, akkor kattinthat **mentése**. Illetve **elvetése** a módosításokat. 
+   Miután módosította a paramétereket, kattinthat **mentése**. Vagy beállíthatja a **elveti** a módosításokat. 
 
-   ![Paraméterek módosításainak mentése vagy elvetése listája túl hosszú](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
+   ![A módosítások mentésére vagy elvetésére szolgáló paraméterek hosszú listája](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
 
-6. A naplók listája gombra kattintva térjen vissza a **Bezárás gomb** (X ikonra) a a **Server paraméterek** lap.
+6. Kattintva térjen vissza a naplók listáját a **Bezárás gomb** (X ikon) a a **Kiszolgálóparaméterekkel** lapot.
 
-## <a name="view-list-and-download-logs"></a>Lista megtekintése és a naplók letöltése
-Naplózás megkezdése után megtekintheti a naplók listáját, és töltse le a kiszolgáló naplóiban panelen külön naplófájlba. 
+## <a name="view-list-and-download-logs"></a>Lista megtekintése és a naplók letöltéséhez
+Naplózás megkezdése után a naplók megtekintéséhez, és töltse le a webkiszolgáló-naplókkal panelen az egyes naplófájlok. 
 
 1. Nyissa meg az Azure Portalt.
 
-2. Válassza ki az Azure-adatbázis PostgreSQL-kiszolgáló.
+2. Válassza ki az Azure Database for PostgreSQL kiszolgálóját.
 
-3. Az a **figyelés** az oldalsávon, jelölje be a szakasz **kiszolgáló naplóiban**. A lap a naplófájlok listáját láthatja, látható módon:
+3. Alatt a **figyelés** szakasz az oldalsávon válassza **kiszolgálónaplók**. Az oldal mutatja a naplófájlok listáját, látható módon:
 
-   ![Naplók kiszolgálólista](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
+   ![Kiszolgálói naplók listája](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
 
    > [!TIP]
-   > A napló elnevezési konvenció: **postgresql-éééé-hh-dd_hh0000.log**. A dátum és idő, a fájl nevében használt a, amikor a napló lett kiállítva. A naplófájlok elforgatása minden egy óra vagy 100 MB-os méret, amelyik előbb következik be.
+   > A napló elnevezési konvenció **postgresql-éééé-hh-dd_hh0000.log**. A dátum és idő, a fájl neve a használt az, amikor a napló lett kiállítva. A naplófájlok elforgatása minden egy óra vagy 100 MB-os mérete, amelyiket hamarabb.
 
-4. Szükség esetén használja a **keresőmezőbe** gyorsan szűkítéséhez adott naplóba – dátum és idő alapján. A keresés be van kapcsolva a napló nevét.
+4. Ha szükséges, használja a **keresőmezőbe** gyorsan szűkítéséhez egy konkrét naplófájlokból, dátum és idő alapján. A keresés el, a napló nevét.
 
-   ![Példa keresés a napló neve](./media/howto-configure-server-logs-in-portal/5-search.png)
+   ![Példa keresési napló nevek alapján](./media/howto-configure-server-logs-in-portal/5-search.png)
 
-5. Töltse le az egyes naplófájlokat a **letöltése** látható mellett minden naplófájl a tábla sorban (lefelé mutató nyíl ikonnal) gombra:
+5. Az egyes naplófájlok használatával töltse le a **letöltése** látható módon mellett a táblázat található minden egyes naplófájl (lefelé mutató nyíl ikonnal) gombra:
 
-   ![Kattintson a Letöltés ikon](./media/howto-configure-server-logs-in-portal/6-download.png)
+   ![Kattintson a letöltési ikon](./media/howto-configure-server-logs-in-portal/6-download.png)
 
 ## <a name="next-steps"></a>További lépések
-- Lásd: [hozzáférést kiszolgálónaplókban olvashatók a CLI](howto-configure-server-logs-using-cli.md) megtudhatja, hogyan programozott módon a naplók letöltéséhez.
-- További információ [kiszolgálónaplókban](concepts-server-logs.md) az PostgreSQL az Azure-Adatbázisba. 
-- A paraméterdefiníciókra és PostgreSQL naplózási kapcsolatos további információkért tekintse meg a PostgreSQL-dokumentáció [hibajelentés és a naplózás](https://www.postgresql.org/docs/current/static/runtime-config-logging.html).
+- Lásd: [hozzáférés a kiszolgálói naplókhoz a CLI](howto-configure-server-logs-using-cli.md) megtudhatja, hogyan programozott módon a naplók letöltéséhez.
+- Tudjon meg többet [kiszolgálónaplók](concepts-server-logs.md) PostgreSQL-hez készült Azure DB-ben. 
+- A paraméterdefiníciókra és a PostgreSQL-naplózás kapcsolatos további információkért tekintse meg a PostgreSQL-dokumentáció [hibajelentés és a naplózás](https://www.postgresql.org/docs/current/static/runtime-config-logging.html).
 
