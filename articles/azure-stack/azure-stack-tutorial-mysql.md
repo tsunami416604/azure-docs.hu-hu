@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/16/2018
+ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: ea3e6c2e616f2618200c1e3904786abd72bbd75d
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 84aaa5534c629554074544b4bb56ae8da8825397
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376805"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986452"
 ---
 # <a name="tutorial-offer-highly-available-mysql-databases"></a>Oktatóanyag: Nyújtanak a magas rendelkezésre állású MySQL-adatbázisok
 
@@ -65,16 +65,15 @@ Ebben a szakaszban a MySQL-kiszolgáló telepítése a lépéseket a fürt haszn
 - Egy nyilvános IP-cím (az elsődleges MySQL-fürt virtuális gép)
 - Három Linux rendszerű virtuális gépek, a MySQL-fürt üzemeltetéséhez
 
-1. Jelentkezzen be a felügyeleti portálon:
-    - Az egy integrált rendszerek központi telepítéséhez a portál cím függ a megoldás régió és külső tartomány neve. Az formátumban lesz https://adminportal.&lt; *régió*&gt;.&lt; *FQDN*&gt;.
-    - Ha az Azure Stack Development Kit (ASDK) használ, a portál címe [ https://adminportal.local.azurestack.external ](https://adminportal.local.azurestack.external).
+1. 
+[!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. Válassza ki **\+** **erőforrás létrehozása** > **számítási**, majd **MySQL-replikáció**.
 
-   ![Egyéni sablon telepítése](media/azure-stack-tutorial-mysqlrp/createcluster1.png)
+   ![Egyéni sablon telepítése](media/azure-stack-tutorial-mysqlrp/1.png)
 
 3. Alapszintű központi telepítést információt biztosítsanak a **alapjai** lapot. Tekintse át az alapértelmezett értékeket, és szükség szerint változtassa meg, és kattintson a **OK**.<br><br>Legalább a következőket biztosítják:
-   - Központi telepítés nevét (alapértelmezés szerint a mysql)
+   - Központi telepítés nevét (alapértelmezés szerint a mymysql)
    - Alkalmazás gyökér szintű jelszó. Adjon meg egy 12 karakteres alfanumerikus jelszó **semmilyen különleges karakterek**
    - Alkalmazás-adatbázis neve (alapértelmezés szerint a bitnami)
    - MySQL-adatbázis-replikát hozhat létre virtuális gépek száma (az alapértelmezett érték 2)
@@ -82,22 +81,22 @@ Ebben a szakaszban a MySQL-kiszolgáló telepítése a lépéseket a fürt haszn
    - Válassza ki az erőforráscsoportot, vagy hozzon létre egy újat
    - Válassza ki azt a helyet (alapértelmezés szerint a helyi a ASDK)
 
-   ![Telepítési alapelvei](media/azure-stack-tutorial-mysqlrp/createcluster2.png)
+   [![](media/azure-stack-tutorial-mysqlrp/2-sm.PNG "Telepítési alapelvei")](media/azure-stack-tutorial-mysqlrp/2-lg.PNG#lightbox)
 
 4. Az a **környezet konfigurációjának** lapon adja meg a következő információkat, majd kattintson **OK**: 
    - Jelszó vagy SSH nyilvános kulcs a secure shell-(SSH) hitelesítéshez használandó. Ha jelszót használ, akkor tartalmaznia kell betűket, számokat és **is** tartalmazhat speciális karaktereket
    - Virtuálisgép-méret (alapértelmezés szerint a Standard D1 v2 virtuális gép)
    - Adatlemez méretét GB-os kattintson **OK**
 
-   ![Környezet konfigurálása](media/azure-stack-tutorial-mysqlrp/createcluster3.png)
+   [![](media/azure-stack-tutorial-mysqlrp/3-sm.PNG "Környezet konfigurálása")](media/azure-stack-tutorial-mysqlrp/3-lg.PNG#lightbox)
 
 5. Tekintse át a központi telepítés **összefoglalás**. Ha szeretné, a testreszabott sablon és paraméterek letöltése, és kattintson **OK**.
 
-   ![Összegzés](media/azure-stack-tutorial-mysqlrp/createcluster4.png)
+   [![](media/azure-stack-tutorial-mysqlrp/4-sm.PNG "Összefoglalás")](media/azure-stack-tutorial-mysqlrp/4-lg.PNG#lightbox)
 
 6. Kattintson a **létrehozás** a a **vásárlása** lapon a telepítés elindításához.
 
-   ![Vásárlás](media/azure-stack-tutorial-mysqlrp/createcluster4.png)
+   ![Vásárlás](media/azure-stack-tutorial-mysqlrp/5.png)
 
     > [!NOTE]
     > A telepítés körülbelül egy óra alatt vesz igénybe. Győződjön meg arról, hogy a telepítés véget ért, és a MySQL-fürt teljesen konfigurálva a folytatás előtt. 
@@ -110,11 +109,11 @@ Alapértelmezés szerint nincs nyilvános hozzáférés van konfigurálva MySQL-
 
 1. A felügyeleti portálon keresse meg a MySQL-fürt üzembe helyezésekor létrehozott erőforráscsoportot, és válassza ki a hálózati biztonsági csoport (**alapértelmezett-alhálózat-sg**):
 
-   ![nyitás](media/azure-stack-tutorial-mysqlrp/nsg1.png)
+   ![nyitás](media/azure-stack-tutorial-mysqlrp/6.png)
 
 2. Válassza ki **bejövő biztonsági szabályok** majd **Hozzáadás**.<br><br>Adja meg **3306-os** a a **Célporttartomány** , és megadhat egy leírást a a **neve** és **leírás** mezőket. Kattintson a Hozzáadás gombra kattintva zárja be a bejövő biztonsági szabály párbeszédpanel.
 
-   ![nyitás](media/azure-stack-tutorial-mysqlrp/nsg2.png)
+   ![nyitás](media/azure-stack-tutorial-mysqlrp/7.png)
 
 ### <a name="configure-external-access-to-the-mysql-cluster"></a>A MySQL-fürt külső hozzáférés konfigurálása
 A MySQL-fürt hozzáadása az Azure Stack MySQL-kiszolgáló gazdagépként, előtt külső hozzáférés engedélyezve kell lennie.
@@ -167,9 +166,8 @@ A MySQL-fürt létrehozása, konfigurálása és Azure Stack MySQL üzemeltető 
 > [!NOTE]
 > Futtassa ezeket a lépéseket az Azure Stack felhasználói portálról bérlői felhasználói biztosít a MySQL-kiszolgáló képességet (Microsoft.MySQLAdapter szolgáltatás) előfizetéssel.
 
-1. Jelentkezzen be a felhasználói portál:
-    - Az egy integrált rendszerek központi telepítéséhez a portál cím függ a megoldás régió és külső tartomány neve. Az formátumban lesz https://portal.&lt; *régió*&gt;.&lt; *FQDN*&gt;.
-    - Az Azure Stack Development Kit (ASDK) használja, ha a felhasználói portál címe [ https://portal.local.azurestack.external ](https://portal.local.azurestack.external).
+1. 
+[!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
 
 2. Válassza ki **\+** **erőforrás létrehozása** > **adatok \+ tárolási**, majd **MySQL-adatbázis** .<br><br>Adja meg a szükséges adatbázis-tulajdonság információkat, beleértve a neve, rendezés, a használni kívánt előfizetést és helyet a központi telepítéshez használni. 
 
