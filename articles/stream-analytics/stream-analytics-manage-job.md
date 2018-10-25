@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/04/2018
-ms.openlocfilehash: 1955fc033e0351be9da89bbee11dc41d6281a63a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: c29131720de8d6016d134fe7c0118fc3db9e22be
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433990"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985641"
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>Stream Analytics-feladat létrehozása telefonhívás-adatok elemzésére és az eredmények Power BI-irányítópulton való vizualizációjára
  
@@ -37,7 +37,7 @@ Mielőtt hozzálátna, győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).  
 * Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).  
-* Töltse le a [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) telefonhívás-eseménykészítő alkalmazást a Microsoft letöltőközpontjából, vagy szerezze be a forráskódot a [GitHubról](https://aka.ms/azure-stream-analytics-telcogenerator).  
+* Töltse le a [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) telefonhívás-eseménykészítő alkalmazást a Microsoft letöltőközpontjából, vagy szerezze be a forráskódot a [GitHubról](https://aka.ms/azure-stream-analytics-telcogenerator).  
 
 ## <a name="create-an-azure-event-hub"></a>Azure Event Hub létrehozása 
 
@@ -89,7 +89,7 @@ Mielőtt egy alkalmazás adatokat küldhet az Azure Event Hubsnak, az eseményk�
 
 A TelcoGenerator alkalmazást úgy kell beállítania az indítása előtt, hogy a korábban beállított Azure Event Hubs-eseményközpontnak küldjön adatokat.
 
-1. Bontsa ki a [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) fájl tartalmát.  
+1. Bontsa ki a [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) fájl tartalmát.  
 2. Nyissa meg a `TelcoGenerator\TelcoGenerator\telcodatagen.exe.config` fájlt egy tetszőleges szövegszerkesztőben (Több .config fájl található, ezért győződjön meg róla, hogy a megfelelőt nyitja meg.)  
 
 3. Frissítse a konfigurációs fájl <appSettings> elemét az alábbi részletekkel:
@@ -260,7 +260,7 @@ A lekérdezésszerkesztőben létrehozott lekérdezéseket tesztelheti, amihez m
 
 ## <a name="embedding-your-powerbi-dashboard-in-a-web-application"></a>A Power BI-irányítópult beágyazása egy webalkalmazásba
 
-Az oktatóanyag ezen részében egy [ASP.NET](http://asp.net/) minta-webalkalmazást fog használni, amelyet a Power BI csapata készített az irányítópultja beágyazásához. További információ az irányítópult beágyazásáról: [Beágyazás a Power BI-ba](https://docs.microsoft.com/power-bi/developer/embedding).
+Az oktatóanyag ezen részében egy [ASP.NET](https://asp.net/) minta-webalkalmazást fog használni, amelyet a Power BI csapata készített az irányítópultja beágyazásához. További információ az irányítópult beágyazásáról: [Beágyazás a Power BI-ba](https://docs.microsoft.com/power-bi/developer/embedding).
 
 Ebben az oktatóanyagban „a felhasználó az adatok tulajdonosa” alkalmazás lépéseit követjük. Az alkalmazás beállításához keresse fel a [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) Github-adattárat, és kövesse a **Felhasználó az adatok tulajdonosa** szakaszt (használja az **integrate-dashboard-web-app** alszakaszban található átirányítási és a kezdőlap URL-t). Mivel az irányítópult-alapú példát alkalmazzuk, használja a [GitHub-adattárban](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User%20Owns%20Data/integrate-dashboard-web-app) található integrate-dashboard-web-app mintakódot.
 Miután az alkalmazás fut a böngészőjében, az alábbi lépések végrehajtásával ágyazza be a weblapra a korábban létrehozott irányítópultot:

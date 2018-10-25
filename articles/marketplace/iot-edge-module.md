@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: qianw211
-ms.openlocfilehash: ecc892a38d5e86a089085cd67a78ce7d00c86fd8
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 46740e925a5d4e94c314105aba4920caf01532e7
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181116"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985608"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-modulok
 
@@ -84,7 +84,7 @@ Az IoT Edge-modul, ahhoz, hogy hitelesített, és az Azure Marketplace-en közz�
 
 Ha bejelentkezett érhetők el az alábbi cikkeket a [felhő közzétételi portál](https://cloudpartner.azure.com/):
 
-- [Hozzon létre egy IoT Edge-modul ajánlatot](https://cloudpartner.azure.com/#documentation/create-iot-edge-module-offer) – – a felhő közzétételi portál kínálnak a lépéseket egy új IoT Edge-modul közzétételéhez.
+- [Hozzon létre egy IoT Edge-modul ajánlatot](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer) – – a felhő közzétételi portál kínálnak a lépéseket egy új IoT Edge-modul közzétételéhez.
 - [IoT Edge-modul minősítési folyamat](https://cloudpartner.azure.com/#documentation/iot-edge-module-certification-process) – a lépéseket és a egy IoT Edge-modul tanúsítása összegzését.
 - [IoT Edge-modul – gyakori kérdések](https://cloudpartner.azure.com/#documentation/iot-edge-module-faq) – – IoT Edge-modulok kapcsolatos gyakori kérdések listáját.
 

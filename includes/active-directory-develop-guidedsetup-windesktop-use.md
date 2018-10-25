@@ -14,18 +14,18 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 538b0c969d8c039079c09232e06f55e24aabf393
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 87ac7364a2c409af410fcb5cd09aed4377b28d8e
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843286"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988183"
 ---
 ## <a name="use-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Használható az MSAL egy token beszerzése a Microsoft Graph API-hoz
 
 Ebben a szakaszban Ön használható az MSAL egy token beszerzése a Microsoft Graph API-hoz.
 
-1.  Az a *MainWindow.xaml.cs* fájlt, adja hozzá a hivatkozást az MSAL az osztályhoz:
+1. Az a *MainWindow.xaml.cs* fájlt, adja hozzá a hivatkozást az MSAL az osztályhoz:
 
     ```csharp
     using Microsoft.Identity.Client;
@@ -215,4 +215,3 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 
 A hozzáférési jogkivonatot, amellyel a Microsoft Graph API meghívása után a felhasználó bejelentkezik, mellett MSAL is egy azonosító jogkivonat kéri le. Ez a token részhalmazát, amely a felhasználók számára a profiljával kapcsolatos információkat tartalmaz. A `DisplayBasicTokenInfo` metódus az alapvető információkat jeleníti meg a jogkivonatot. Ha például jeleníti meg a felhasználó megjelenített neve és azonosítója, valamint a jogkivonat lejárati dátuma és a karakterlánc, amely a hozzáférési jogkivonat magát. Kiválaszthatja a *Microsoft Graph API meghívása* többször gombra, és tekintse meg, hogy további kérésekhez fel lett-e újra ugyanezt a tokent. Megtekintheti a lejárati dátum kiterjesztendő, amikor az MSAL úgy dönt, hogy az idő, a-token megújításához is.
 <!--end-collapse-->
-

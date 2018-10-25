@@ -10,15 +10,15 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 1e919ddb063bcd96b0c6766a28762d1b474cb8a1
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 7fa9272a8609d933a3f12abb0f33e78c4bdc1b12
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42024071"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984808"
 ---
 # <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>A MySQL-hez készült Azure Database: Csatlakozás és adatlekérdezés a PHP használatával
-Ebben a gyors útmutatóban azt szemléltetjük, hogy miként lehet [PHP](http://php.net/manual/intro-whatis.php)-alkalmazás használatával csatlakozni a MySQL-hez készült Azure Database-hez. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. Ez a témakör azt feltételezi, hogy Ön a PHP használata terén rendelkezik fejlesztési tapasztalatokkal, de a MySQL-hez készült Azure Database használatában még járatlan.
+Ebben a gyors útmutatóban azt szemléltetjük, hogy miként lehet [PHP](https://secure.php.net/manual/intro-whatis.php)-alkalmazás használatával csatlakozni a MySQL-hez készült Azure Database-hez. Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. Ez a témakör azt feltételezi, hogy Ön a PHP használata terén rendelkezik fejlesztési tapasztalatokkal, de a MySQL-hez készült Azure Database használatában még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ebben a rövid útmutatóban a következő útmutatók valamelyikében létrehozott erőforrásokat használunk kiindulási pontként:
@@ -29,16 +29,16 @@ Ebben a rövid útmutatóban a következő útmutatók valamelyikében létrehoz
 Telepítse a PHP-t saját kiszolgálón, vagy hozzon létre egy, a PHP-t tartalmazó Azure-[webalkalmazást](../app-service/app-service-web-overview.md).
 
 ### <a name="macos"></a>MacOS
-- Töltse le a [PHP 7.1.4-es verzióját](http://php.net/downloads.php).
-- Telepítse a PHP-t, majd a további konfigurációs lehetőségekért tekintse meg a [PHP kézikönyvét](http://php.net/manual/install.macosx.php).
+- Töltse le a [PHP 7.1.4-es verzióját](https://secure.php.net/downloads.php).
+- Telepítse a PHP-t, majd a további konfigurációs lehetőségekért tekintse meg a [PHP kézikönyvét](https://secure.php.net/manual/install.macosx.php).
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-- Töltse le a [PHP 7.1.4 non-thread safe (NTS) x64-es verzióját](http://php.net/downloads.php).
-- Telepítse a PHP-t, majd a további konfigurációs lehetőségekért tekintse meg a [PHP kézikönyvét](http://php.net/manual/install.unix.php).
+- Töltse le a [PHP 7.1.4 non-thread safe (NTS) x64-es verzióját](https://secure.php.net/downloads.php).
+- Telepítse a PHP-t, majd a további konfigurációs lehetőségekért tekintse meg a [PHP kézikönyvét](https://secure.php.net/manual/install.unix.php).
 
 ### <a name="windows"></a>Windows
-- Töltse le a [PHP 7.1.4 non-thread safe (NTS) x64-es verzióját](http://windows.php.net/download#php-7.1).
-- Telepítse a PHP-t, majd a további konfigurációs lehetőségekért tekintse meg a [PHP kézikönyvét](http://php.net/manual/install.windows.php).
+- Töltse le a [PHP 7.1.4 non-thread safe (NTS) x64-es verzióját](https://windows.php.net/download#php-7.1).
+- Telepítse a PHP-t, majd a további konfigurációs lehetőségekért tekintse meg a [PHP kézikönyvét](https://secure.php.net/manual/install.windows.php).
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szükséges kapcsolatadatokat. Ehhez szükség lesz a teljes kiszolgálónévre és bejelentkezési hitelesítő adatokra.
@@ -52,7 +52,7 @@ Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szüks�
 ## <a name="connect-and-create-a-table"></a>Csatlakozás és tábla létrehozása
 A következő kód segítségével csatlakozzon, és hozzon létre egy táblát a **CREATE TABLE** SQL-utasítás használatával. 
 
-A kód a PHP beépített **MySQL Improved extension** (mysqli) osztályát használja. A kód meghívja a [mysqli_init](http://php.net/manual/mysqli.init.php) és [mysqli_real_connect](http://php.net/manual/mysqli.real-connect.php) metódust a MySQL-hez történő csatlakozáshoz. Ezután a kód meghívja [mysqli_query](http://php.net/manual/mysqli.query.php) metódust a lekérdezés futtatásához. Végül pedig a [mysqli_close](http://php.net/manual/mysqli.close.php) meghívásával bontja a kapcsolatot.
+A kód a PHP beépített **MySQL Improved extension** (mysqli) osztályát használja. A kód meghívja a [mysqli_init](https://secure.php.net/manual/mysqli.init.php) és [mysqli_real_connect](https://secure.php.net/manual/mysqli.real-connect.php) metódust a MySQL-hez történő csatlakozáshoz. Ezután a kód meghívja [mysqli_query](https://secure.php.net/manual/mysqli.query.php) metódust a lekérdezés futtatásához. Végül pedig a [mysqli_close](https://secure.php.net/manual/mysqli.close.php) meghívásával bontja a kapcsolatot.
 
 A host (gazdagép), a username (felhasználónév), a password (jelszó) és a db_name (adatbázisnév) paramétereket cserélje le a saját értékeire. 
 
@@ -91,7 +91,7 @@ mysqli_close($conn);
 ## <a name="insert-data"></a>Adat beszúrása
 Az alábbi kód használatával csatlakozhat, és adatokat szúrhat be egy **INSERT** SQL-utasítás segítségével.
 
-A kód a PHP beépített **MySQL Improved extension** (mysqli) osztályát használja. A kód a [mysqli_prepare](http://php.net/manual/mysqli.prepare.php) metódus használatával létrehoz egy előkészített beillesztési parancsot, majd a [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php) metódus használatával hozzáköti az egyes beillesztett oszlopokhoz a paramétereket. A kód a [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) metódus használatával futtatja az utasítást, majd a [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php) metódussal lezárja azt.
+A kód a PHP beépített **MySQL Improved extension** (mysqli) osztályát használja. A kód a [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) metódus használatával létrehoz egy előkészített beillesztési parancsot, majd a [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php) metódus használatával hozzáköti az egyes beillesztett oszlopokhoz a paramétereket. A kód a [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) metódus használatával futtatja az utasítást, majd a [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php) metódussal lezárja azt.
 
 A host (gazdagép), a username (felhasználónév), a password (jelszó) és a db_name (adatbázisnév) paramétereket cserélje le a saját értékeire. 
 
@@ -126,7 +126,7 @@ mysqli_close($conn);
 ```
 
 ## <a name="read-data"></a>Adatok olvasása
-A következő kóddal csatlakozhat, és beolvashatja az adatokat a **SELECT** SQL-utasítással.  A kód a PHP beépített **MySQL Improved extension** (mysqli) osztályát használja. A kód a [mysqli_query](http://php.net/manual/mysqli.query.php) metódus használatával végrehajtja az SQL-lekérdezést, és a [mysqli_fetch_assoc](http://php.net/manual/mysqli-result.fetch-assoc.php) metódussal beolvassa az eredményül kapott sorokat.
+A következő kóddal csatlakozhat, és beolvashatja az adatokat a **SELECT** SQL-utasítással.  A kód a PHP beépített **MySQL Improved extension** (mysqli) osztályát használja. A kód a [mysqli_query](https://secure.php.net/manual/mysqli.query.php) metódus használatával végrehajtja az SQL-lekérdezést, és a [mysqli_fetch_assoc](https://secure.php.net/manual/mysqli-result.fetch-assoc.php) metódussal beolvassa az eredményül kapott sorokat.
 
 A host (gazdagép), a username (felhasználónév), a password (jelszó) és a db_name (adatbázisnév) paramétereket cserélje le a saját értékeire. 
 
@@ -159,7 +159,7 @@ mysqli_close($conn);
 ## <a name="update-data"></a>Adatok frissítése
 Az alábbi kód használatával csatlakozhat és végezheti el az adatok módosítását egy **UPDATE** SQL-utasítás segítségével.
 
-A kód a PHP beépített **MySQL Improved extension** (mysqli) osztályát használja. A kód a [mysqli_prepare](http://php.net/manual/mysqli.prepare.php) metódus használatával létrehoz egy előkészített módosítási parancsot, majd a [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php) metódus használatával hozzáköti az egyes módosított oszlopokhoz a paramétereket. A kód a [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) metódus használatával futtatja az utasítást, majd a [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php) metódussal lezárja azt.
+A kód a PHP beépített **MySQL Improved extension** (mysqli) osztályát használja. A kód a [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) metódus használatával létrehoz egy előkészített módosítási parancsot, majd a [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php) metódus használatával hozzáköti az egyes módosított oszlopokhoz a paramétereket. A kód a [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) metódus használatával futtatja az utasítást, majd a [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php) metódussal lezárja azt.
 
 A host (gazdagép), a username (felhasználónév), a password (jelszó) és a db_name (adatbázisnév) paramétereket cserélje le a saját értékeire. 
 
@@ -197,7 +197,7 @@ mysqli_close($conn);
 ## <a name="delete-data"></a>Adat törlése
 A következő kóddal csatlakozhat, és beolvashatja az adatokat a **DELETE** SQL-utasítással. 
 
-A kód a PHP beépített **MySQL Improved extension** (mysqli) osztályát használja. A kód a [mysqli_prepare](http://php.net/manual/mysqli.prepare.php) metódus használatával létrehoz egy előkészített törlési parancsot, majd hozzáköti a paramétereket a parancs where záradékához a [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php) metódus használatával. A kód a [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) metódus használatával futtatja az utasítást, majd a [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php) metódussal lezárja azt.
+A kód a PHP beépített **MySQL Improved extension** (mysqli) osztályát használja. A kód a [mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) metódus használatával létrehoz egy előkészített törlési parancsot, majd hozzáköti a paramétereket a parancs where záradékához a [mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php) metódus használatával. A kód a [mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) metódus használatával futtatja az utasítást, majd a [mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php) metódussal lezárja azt.
 
 A host (gazdagép), a username (felhasználónév), a password (jelszó) és a db_name (adatbázisnév) paramétereket cserélje le a saját értékeire. 
 

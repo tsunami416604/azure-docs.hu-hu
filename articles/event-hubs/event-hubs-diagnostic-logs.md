@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: d4ed53cf1f0d21e488631434b60309602169b59a
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: bee6219bca21c3bc2bf4f97aa061fce0b30d55ff
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004650"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985166"
 ---
-# <a name="event-hubs-diagnostic-logs"></a>Event Hubs – diagnosztikai naplók
+# <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Állítsa be az Azure event hub diagnosztikai naplók
 
 Az Azure Event hubs két típusú naplók tekintheti meg:
 
@@ -80,7 +80,7 @@ eventHub | Eseményközpont teljes neve (tartalmazza a névtér neve).
 partitionId | Event Hub-partícióról ír.
 archiveStep | ArchiveFlushWriter
 startTime | Hiba a kezdési idő.
-hiba | Hiba történt a hányszor.
+hibák | Hiba történt a hányszor.
 durationInSeconds | Hiba időtartama.
 message | Hibaüzenet jelenik meg.
 category | ArchiveLogs

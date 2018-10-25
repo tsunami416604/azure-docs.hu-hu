@@ -1,6 +1,6 @@
 ---
 title: MySQL-illesztőprogramok és a felügyeleti eszközök kompatibilitása
-description: Ez a cikk ismerteti a MySQL-illesztőprogramok és MySQL az Azure-adatbázis kompatibilis eszközök.
+description: Ez a cikk ismerteti a MySQL-illesztőprogramok és a felügyeleti eszközöket, amelyek kompatibilisek az Azure Database for MySQL-hez.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -9,38 +9,38 @@ manager: kfile
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: a133ccdd0b40f9a878ba627e6c093787316aea35
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 9e56c2bd65f8a9a517a7cdebe02a1d051c689df6
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264119"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985888"
 ---
-# <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>MySQL-illesztőprogramok és MySQL az Azure-adatbázis kompatibilis eszközök
-Ez a cikk ismerteti az illesztőprogramok és MySQL az Azure-adatbázis kompatibilis eszközök.
+# <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>MySQL-illesztőprogramok és a felügyeleti eszközök, Azure Database for MySQL-kompatibilis
+Ez a cikk ismerteti az illesztőprogramok és a felügyeleti eszközöket, amelyek kompatibilisek az Azure Database for MySQL-hez.
 
-## <a name="mysql-drivers"></a>MySQL-illesztőprogram
-Azure MySQL-adatbázis használja a világ legnépszerűbb community edition MySQL-adatbázis. Ezért összeegyeztethető számos programozási nyelveket és illesztőprogramokat. A cél három legújabb verzióját a MySQL-illesztőprogramok támogatása, és folytatni a szerzők nyílt forráskódú közösségi azon törekvéseit, hogy folyamatosan a a funkciókat és a MySQL-illesztőprogramok használhatóságuk javításában. A tesztelni és való kompatibilitás érdekében a MySQL 5.6 és 5.7 Azure-adatbázis található illesztőprogramok listája a következő táblázatban:
+## <a name="mysql-drivers"></a>MySQL-illesztőprogramok
+Azure Database for MySQL a világ legnépszerűbb közösségi kiadásának MySQL-adatbázist használja. Ezért így kompatibilis lesz számos különböző programozási nyelveket és illesztőprogramok. A célja, hogy a legújabb verziójú három MySQL illesztőprogramokat támogatja, és folytatja a szerzők a nyílt forráskód Közösségtől származó erőfeszítéseket folyamatosan javíthatja az a funkciók és a MySQL-illesztőprogramok használhatóságát. Az alábbi táblázatban biztosított teszteltük, és nem kompatibilis az Azure Database for MySQL 5.6-os és 5.7-es illesztőprogramok listáját:
 
-| **Illesztőprogram** | **Hivatkozások** | **Kompatibilis verziója** | **Kompatibilis a következő verziók** | **Megjegyzések** |
+| **Illesztőprogram** | **Hivatkozások** | **Kompatibilis verziója** | **Uncompatible verziók** | **Megjegyzések** |
 | :-------- | :------------------------ | :----------- | :---------------------- | :--------------------------------------- |
-| PHP | http://php.net/downloads.php | 5.5 5.6 7.x | 5.3 | Adja hozzá MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT SSL MySQLi PHP 7.0 kapcsolatot, a kapcsolati karakterláncban. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> OEM set: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` beállítást false értékre.|
-| .Net | [A Githubon MySqlConnector](https://github.com/mysql-net/MySqlConnector) <br> [A Nugetből telepítési csomag](https://www.nuget.org/packages/MySqlConnector/) | 0.27 és után | 0.26.5 és előtt | |
-| Nodejs |  [A Githubon MySQLjs](https://github.com/mysqljs/mysql/releases) <br> Az NPM telepítőcsomag:<br> Futtatás `npm install mysql` az NPM | 2.15 | 2.14.1 és előtt | |
-| NYISSA MEG | https://github.com/go-sql-driver/mysql/releases | 1.3 | 1.2-es és előtt | Használja a allowNativePasswords = true, a kapcsolat-karakterláncban |
+| PHP | https://secure.php.net/downloads.php | 5.5-ös 5.6-os 7.x | 5.3 | Adjon hozzá MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT SSL MySQLi PHP 7.0 kapcsolatot, a kapcsolati karakterláncban. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> OEM-készlet: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` beállítást hamis értékre.|
+| .Net | [A Githubon MySqlConnector](https://github.com/mysql-net/MySqlConnector) <br> [Nuget csomag telepítését](https://www.nuget.org/packages/MySqlConnector/) | 0.27 és után | 0.26.5 és előtt | |
+| Nodejs |  [A Githubon MySQLjs](https://github.com/mysqljs/mysql/releases) <br> Az npm-ből telepítőcsomagot:<br> Futtatás `npm install mysql` az npm-ből | 2.15 | 2.14.1 és előtt | |
+| UGRÁS | https://github.com/go-sql-driver/mysql/releases | 1.3 | 1.2-es és előtt | Használja a allowNativePasswords = true, a kapcsolati karakterlánc |
 | Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3, 2.0, 2.1, 2.2 | 1.2.2 és előtt | |
 | Java | https://downloads.mariadb.org/connector-java/ | 2.1 2.0 1.6 | 1.5.5 és előtt | |
 
 ## <a name="management-tools"></a>Kezelőeszközök
-A kompatibilitási ki adatbázis-felügyeleti eszközt is kiterjed. A már létező eszközök továbbra is használható az Azure-adatbázis a MySQL, mindaddig, amíg az adatbázis módosítását működik, a felhasználói engedélyek határain belül. Három közös adatbázis-felügyeleti eszközt, tesztelése és való kompatibilitás érdekében a MySQL 5.6 és 5.7 Azure-adatbázis található a következő táblázatban láthatók:
+Kompatibilitási előnye az adatbázis-kezelő eszközét is kiterjeszti. A meglévő eszközökkel továbbra is működnek az Azure Database for MySQL, mindaddig, amíg az adatbázis kezelésének felhasználói engedélyek határain belül működik. Három gyakori adatbázis-kezelő eszközét, amelyek tesztelése, és nem kompatibilis az Azure Database for MySQL 5.6-os és 5.7 az alábbi táblázatban láthatók:
 
-|                                     | **MySQL-munkaterület 6.x vagy afölötti** | **Navicat 12** | **PHPMyAdmin 4.x vagy afölötti** |
+|                                     | **A MySQL Workbench 6.x, és akár** | **Navicat 12** | **PHPMyAdmin 4.x-es és újabb** |
 | :---------------------------------- | :----------------------------- | :------------- | :-------------------------|
-| Létrehozása, frissítése, Olvasás, írás, törlés | X | X | X |
+| Létrehozás, frissítés, Olvasás, írás, törlés | X | X | X |
 | SSL-kapcsolat | X | X | X |
-| SQL-lekérdezés automatikus kiegészítéshez | X | X |  |
+| SQL-lekérdezés automatikus befejezése | X | X |  |
 | Adatok importálása és exportálása | X | X | X |
-| Több exportálása | X | X | X |
+| Többféle formátumba exportálás | X | X | X |
 | Biztonsági mentés és visszaállítás |  | X |  |
-| Kiszolgáló paraméterek megjelenítése | X | X | X |
-| Ügyfélkapcsolatok megjelenítése | X | X | X |
+| Kiszolgáló paramétereinek megjelenítéséhez | X | X | X |
+| Kapcsolatok megjelenítése | X | X | X |

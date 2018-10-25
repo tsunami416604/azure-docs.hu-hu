@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 99eabd8f9c9b3ab86c348350e8924cea0eb668ba
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: ac8e678d8ca006fc5b0ab52f007590ac4e334bf7
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843575"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988543"
 ---
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
-Ez a szakasz bemutatja a lépéseket, telepítése és konfigurálása a hitelesítési folyamat keresztül OWIN közbenső szoftvert az OpenID Connect hitelesítést használó ASP.NET-projekt. 
+Ez a szakasz bemutatja a lépéseket, telepítése és konfigurálása a hitelesítési folyamat keresztül OWIN közbenső szoftvert az OpenID Connect hitelesítést használó ASP.NET-projekt.
 
 > Töltse le ezt a mintát a Visual Studio-projekt ehelyett inkább? [Töltse le a projekt](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip) , és ugorjon a [konfigurációs lépés](#register-your-application) konfigurálása a kódminta végrehajtása előtt.
 
@@ -47,7 +47,7 @@ Ez a szakasz bemutatja a lépéseket, telepítése és konfigurálása a hiteles
 
 <!--start-collapse-->
 > ### <a name="about-these-libraries"></a>Ezeket a kódtárakat
->A fenti kódtárak engedélyezik az egyszeri bejelentkezést (SSO) az OpenID Connecttel, cookie-alapú hitelesítés használatával. Ha befejeződött a hitelesítés, és a rendszer elküldte a felhasználóhoz tartozó jogkivonatot az alkalmazásnak, az OWIN közbenső szoftver létrehoz egy munkameneti cookie-t. A böngésző majd használja a cookie-k további kérések így a felhasználóknak nem kell újra a jelszót, és nincs további ellenőrzés van szükség.
+> A fenti kódtárak engedélyezik az egyszeri bejelentkezést (SSO) az OpenID Connecttel, cookie-alapú hitelesítés használatával. Ha befejeződött a hitelesítés, és a rendszer elküldte a felhasználóhoz tartozó jogkivonatot az alkalmazásnak, az OWIN közbenső szoftver létrehoz egy munkameneti cookie-t. A böngésző majd használja a cookie-k további kérések így a felhasználóknak nem kell újra a jelszót, és nincs további ellenőrzés van szükség.
 <!--end-collapse-->
 
 ## <a name="configure-the-authentication-pipeline"></a>A hitelesítési folyamat konfigurálásához
@@ -87,7 +87,7 @@ Az alábbi lépések segítségével hozzon létre egy OWIN indítási osztályt
         // Tenant is the tenant ID (e.g. contoso.onmicrosoft.com, or 'common' for multi-tenant)
         static string tenant = System.Configuration.ConfigurationManager.AppSettings["Tenant"];
 
-        // Authority is the URL for authority, composed by Azure Active Directory v2 endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
+        // Authority is the URL for authority, composed by Azure Active Directory v2.0 endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
@@ -145,4 +145,3 @@ Az alábbi lépések segítségével hozzon létre egy OWIN indítási osztályt
 > ### <a name="more-information"></a>További információ
 > Az *OpenIDConnectAuthenticationOptions* alatt megadott paraméterek koordinátaként szolgálnak az alkalmazás számára az Azure AD-vel való kommunikációhoz. Az OpenID Connect közbenső szoftvert használ cookie-kat a háttérben, mert azt is be kell állítania hitelesítési cookie-k a fent látható kóddal. A *ValidateIssuer* értéke arra utasítja az OpenIdConnectet, hogy ne korlátozza a hozzáférést egy adott szervezetre.
 <!--end-collapse-->
-

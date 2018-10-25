@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2018
 ms.author: sharadag
-ms.openlocfilehash: de709133099674a0aa0386113b6459f8bc05e378
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 5cf94079dcd68887d9725ffbe9124f9b6c897dd0
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047527"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984766"
 ---
 # <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-front-door-service"></a>Hitelesítésszolgáltatók engedélyezett az Azure bejárati ajtajának Service egyéni HTTPS engedélyezése
 
@@ -26,6 +26,10 @@ Azure bejárati ajtajának Service egyéni tartomány amikor Ön [HTTPS szolgál
 A következő CAs engedélyezettek a saját tanúsítvány létrehozásakor:
 
 - AddTrust külső hitelesítésszolgáltató legfelső szintű
+- AlphaSSL legfelső szintű hitelesítésszolgáltató
+- Infrastruktúra AME hitelesítésszolgáltató 01
+- Infrastruktúra AME hitelesítésszolgáltató 02
+- Ameroot
 - Hozzáférési pont legfelső szintű hitelesítésszolgáltató
 - Hozzáférési pont legfelső szintű hitelesítésszolgáltató 2013-hoz
 - Hozzáférési pont legfelső szintű hitelesítésszolgáltató 2014
@@ -40,37 +44,26 @@ A következő CAs engedélyezettek a saját tanúsítvány létrehozásakor:
 - A DigiCert globális legfelső szintű hitelesítésszolgáltató
 - A DigiCert nagy frissítési garanciát biztosító hitelesítésszolgáltató – 3
 - A DigiCert nagy garancia, Bővített legfelső szintű hitelesítésszolgáltató
+- A DigiCert SHA2 bővített ellenőrzés kiszolgáló hitelesítésszolgáltató
 - A DigiCert SHA2 magas szintű megbízhatóság kiszolgáló hitelesítésszolgáltató
 - A DigiCert SHA2 biztonságos kiszolgáló hitelesítésszolgáltató
+- Nyári Időszámítás legfelső szintű hitelesítésszolgáltató X3
+- D – megbízható legfelső szintű osztály 3 hitelesítésszolgáltató 2 2009
+- Sokfelé kell tárolnia a titkosítási DV TLS hitelesítésszolgáltató
+- Entrust-legfelső szintű hitelesítésszolgáltató
+- Entrust-legfelső szintű hitelesítésszolgáltató - G2 csomag
+- Hitelesítésszolgáltató Entrust.NET (2048)
 - GeoTrust globális hitelesítésszolgáltató
 - GeoTrust elsődleges hitelesítésszolgáltató
 - GeoTrust elsődleges hitelesítésszolgáltató - G2 csomag
+- Geotrust RSA CA-2018.
 - GlobalSign
 - Bővített ellenőrzés CA - SHA256 - G2 GlobalSign
 - GlobalSign szervezet érvényesítési CA - G2 csomag
 - GlobalSign legfelső szintű hitelesítésszolgáltató
 - Go Daddy legfelső szintű hitelesítésszolgáltató - G2 csomag
-- A Microsoft Authenticode(tm) főtanúsítvány tanúsítványláncát.
-- A Microsoft Exchange-szolgáltatások hitelesítésszolgáltató 2015.
-- A Microsoft belső, vállalati legfelső szintű
-- A Microsoft IT ITO SSL CA 1
-- A Microsoft IT SSL SHA1
-- A Microsoft IT SSL SHA2
-- A Microsoft IT TLS hitelesítésszolgáltató 1
-- A Microsoft IT TLS hitelesítésszolgáltató 2
-- A Microsoft IT TLS hitelesítésszolgáltató 4
-- A Microsoft IT TLS hitelesítésszolgáltató 5
-- A Microsoft főtanúsítvány tanúsítványláncát.
-- A Microsoft legfelső szintű hitelesítésszolgáltató
-- A Microsoft legfelső szintű hitelesítésszolgáltató 2010
-- A Microsoft legfelső szintű hitelesítésszolgáltató 2011
-- A Microsoft biztonságos kiszolgáló hitelesítésszolgáltató 2011
-- Microsoft-szolgáltatások Partner legfelső szintű
-- A Microsoft idő időbélyegzési fájlszolgáltatási gyökerén
-- A Microsoft Windows hardverkompatibilitás
-- MSIT HITELESÍTÉSSZOLGÁLTATÓ Z2
-- MSIT vállalati hitelesítésszolgáltató 1
-- MSIT vállalati hitelesítésszolgáltató 3
+- Go Daddy biztonságos hitelesítésszolgáltató - G2 csomag
+- RapidSSL RSA CA-2018.
 - Legfelső szintű Hivatal
 - A Symantec osztály 3 Bővített SSL CA - G3 csomag
 - A Symantec osztály 3 biztonságos kiszolgáló CA - G4
@@ -78,12 +71,12 @@ A következő CAs engedélyezettek a saját tanúsítvány létrehozásakor:
 - Thawte elsődleges legfelső szintű hitelesítésszolgáltató
 - Thawte elsődleges legfelső szintű hitelesítésszolgáltató - G2 csomag
 - Thawte elsődleges legfelső szintű hitelesítésszolgáltató - G3 csomag
+- Thawte RSA CA-2018.
 - Hitelesítésszolgáltató Thawte időbélyegző
-- UTN-USERFirst-Object
+- TrustAsia TLS RSA hitelesítésszolgáltató
 - SSL-Hitelesítésszolgáltatói VeriSign osztály 3 bővített ellenőrzés
 - A VeriSign osztály 3 bővített ellenőrzés SSL kiszolgáló által Kezdeményezett hitelesítésszolgáltató
 - 3. a VeriSign osztály nyilvános elsődleges hitelesítésszolgáltató - G5
 - A VeriSign nemzetközi kiszolgáló CA - 3 osztályban
 - Időbélyegzési fájlszolgáltatási gyökerén VeriSign idő
 - A VeriSign univerzális legfelső szintű hitelesítésszolgáltató
-- WMSvc-SHA2-DALEDGE1008

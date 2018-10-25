@@ -14,59 +14,66 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 038ea48bedeb31416627f99b38ebb083846747e4
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: b3d46e10facdef26b36c910a5c23b40a415a2894
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843448"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988406"
 ---
 ## <a name="register-your-application"></a>Alkalmazás regisztrálása
 
-Hozzon létre egy alkalmazást, válassza ki az egyiket több módja is van:
+Többféle módon kell regisztrálni egy alkalmazást. Válassza ki a lehetőséget, amely leginkább megfelel az igényeinek:
+* [Expressz mód – az SPA-ALKALMAZÁSOKBA a rövid útmutató segítségével az alkalmazás konfigurálása](#option-1-register-your-application-express-mode)
+* [Az alkalmazás-beállítások manuális konfigurálásával mód – speciális](#option-2-register-your-application-advanced-mode)
 
 ### <a name="option-1-register-your-application-express-mode"></a>1. lehetőség: Regisztrálja az alkalmazást (Expressz mód)
-Most kell regisztrálnia az alkalmazást a *Microsoft alkalmazásregisztrációs portálon*:
 
-1.  Az alkalmazás regisztrálása a [Microsoft alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/portal/register-app?appType=singlePageApp&appTech=javascriptSpa&step=configure).
-2.  Adjon meg egy nevet az alkalmazás és az e-maileket.
-3.  Ellenőrizze, hogy a beállítás **interaktív telepítés** be van jelölve.
-4.  Kövesse az utasításokat beszerzéséhez, és illessze be a kódot.
+1. Jelentkezzen be a [az Azure portal alkalmazásregisztráció (előzetes verzió)](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) kell regisztrálni egy alkalmazást.
+1. Az a **alkalmazás regisztrálása** lap, adja meg az alkalmazás nevét.
+1. A **támogatott fióktípusok**válassza **fiókok minden olyan szervezeti directory és személyes Microsoft-fiókok**.
+1. Amikor végzett, válassza ki a **regisztrálása**.
+1. Az utasítások a rövid útmutató letöltéséhez, és automatikusan konfigurálja az új alkalmazást, egyetlen kattintással.
 
 ### <a name="option-2-register-your-application-advanced-mode"></a>2. lehetőség: Regisztrálja az alkalmazást (Speciális mód)
 
-1. Az alkalmazás regisztrálásához lépjen a [Microsoft alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/portal/register-app).
-2. Adjon meg egy nevet az alkalmazás és az e-maileket.
-3. Ellenőrizze, hogy a beállítás **interaktív telepítés** nincs bejelölve.
-4.  Kattintson a **hozzáadása Platform**, majd **webes**.
-5. Adja hozzá a **átirányítási URL-cím** , amely megfelel az alkalmazás URL-címet, a webkiszolgáló alapján. Tekintse át az utasításokat az alábbi szakaszokban és az átirányítási URL-cím a Visual Studio és a csomópont.
-6. Kattintson a **Mentés** gombra.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) kell regisztrálni egy alkalmazást.
+1. Ha a fiókja egynél több bérlőhöz hozzáférést biztosít, válassza ki a fiók jobb felső sarokban, majd állítsa be a portál munkamenet a kívánt Azure AD bérlői.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatásra, és válassza ki **alkalmazásregisztrációk (előzetes verzió) > Új regisztrációs**.
+1. Ha a **alkalmazás regisztrálása** lap, adja meg az alkalmazás nevét.
+1. A **támogatott fióktípusok**válassza **fiókok minden olyan szervezeti directory és személyes Microsoft-fiókok**.
+1. Alatt a **átirányítási URI-t** szakaszban jelölje be a **webes** platform és az alkalmazás URL-CÍMÉT az értéket a webkiszolgáló alapján állítja be. Tekintse át az utasításokat az alábbi szakaszokban és az átirányítási URL-cím a Visual Studio és a csomópont.
+1. Amikor végzett, válassza ki a **regisztrálása**.
+1. Az alkalmazás **áttekintése** lapon, jegyezze fel a **Alkalmazásazonosítót (ügyfél)** értéket.
+1. Ez a rövid útmutatóhoz a [Implicit folyamat megadása](../articles/active-directory/develop/v2-oauth2-implicit-grant-flow.md) engedélyezni kell. A regisztrált alkalmazás bal oldali navigációs panelén válassza **hitelesítési**.
+1. A **speciális beállítások**alatt **típusú Implicit engedélyezés**, mindkettő engedélyezéséhez **azonosító-jogkivonatokat** és **hozzáférési jogkivonatokat** jelölőnégyzeteket. Azonosító-jogkivonatokat és hozzáférési tokenek szükség, mivel ez az alkalmazás a felhasználók és a egy API-t kell.
+1. Kattintson a **Mentés** gombra.
 
-> #### <a name="setting-redirect-url-for-node"></a>A Node beállítás átirányítási URL-cím
-> A node.js-ben, beállíthatja a webes kiszolgálóport a *server.js* fájlt. Ebben az oktatóanyagban referencia azonban nyugodtan elérhető más port használata 30662 portot használja. Minden esetben kövesse az alábbi utasításokat egy átirányítási URL-címet az alkalmazás regisztrációs adatainak beállításához:<br/>
-> - Váltson vissza a *alkalmazásregisztrációs portálon* és `http://localhost:30662/` , egy `Redirect URL`, vagy használjon `http://localhost:[port]/` Ha egy egyéni TCP-portot használja (ahol *[port]* egyéni TCP-portja szám), és kattintson a "Mentés gombra"
+> #### <a name="setting-the-redirect-url-for-node"></a>Csomópont átirányítási URL-Címének beállítása
+> A node.js-ben, beállíthatja a webes kiszolgálóport a *server.js* fájlt. Ebben az oktatóanyagban a port 30662 referenciaként, de bármilyen más szabad portot is használhat. Kövesse az alábbi utasításokat egy átirányítási URL-címet az alkalmazás regisztrációs adatainak beállításához:<br/>
+> - Váltson vissza a *Alkalmazásregisztráció* és állítsa be `http://localhost:30662/` , egy `Redirect URL`, vagy használjon `http://localhost:[port]/` Ha egy egyéni TCP-portot használja (ahol *[port]* a egyéni TCP-port száma).
 
 <p/>
 
 > #### <a name="visual-studio-instructions-for-obtaining-the-redirect-url"></a>A Visual Studio utasításokat az átirányítási URL-cím beszerzése
 > Kövesse az alábbi lépéseket az átirányítási URL-cím:
-> 1.    A **Megoldáskezelőben**, válassza ki a projektet, és tekintse meg a **tulajdonságok** ablak. Ha nem látja a **tulajdonságok** ablakban, majd nyomja le a **F4**.
-> 2.    Másolja az értéket a **URL-cím** a vágólapra:<br/> ![Projekt tulajdonságai](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)<br />
-> 3.    Váltson vissza a *alkalmazásregisztrációs portálon* illessze be az értéket, és egy **átirányítási URL-cím** válassza **mentése**
-
+> 1. A **Megoldáskezelőben**, válassza ki a projektet, és tekintse meg a **tulajdonságok** ablak. Ha nem látja a **tulajdonságok** ablakban, majd nyomja le a **F4**.
+> 2. Másolja az értéket a **URL-cím** a vágólapra:<br/> ![Projekt tulajdonságai](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)<br />
+> 3. Váltson vissza a *Alkalmazásregisztráció* és állítsa az értékét, mint egy **átirányítási URL-cím**.
 
 #### <a name="configure-your-javascript-spa"></a>A JavaScript SPA konfigurálása
 
-1.  Az a `index.html` projekt beállítása során létrehozott fájlt, adja hozzá az alkalmazás regisztrációs adatok. Adja meg a következő kódot a felül található a `<script></script>` címkék törzsében a `index.html` fájlt:
+1. Az a `index.html` projekt beállítása során létrehozott fájlt, adja hozzá az alkalmazás regisztrációs adatok. Adja meg a következő kódot a felül található a `<script></script>` címkék törzsében a `index.html` fájlt:
 
-```javascript
-var applicationConfig = {
-    clientID: "[Enter the application Id here]",
-    graphScopes: ["user.read"],
-    graphEndpoint: "https://graph.microsoft.com/v1.0/me"
-};
-```
-<ol start="3">
+    ```javascript
+    var applicationConfig = {
+        clientID: "[Enter the application Id here]",
+        graphScopes: ["user.read"],
+        graphEndpoint: "https://graph.microsoft.com/v1.0/me"
+    };
+    ```
+
+<ol start="2">
 <li>
 Cserélje le <code>Enter the application Id here</code> az imént regisztrált alkalmazás azonosítójával.
 </li>

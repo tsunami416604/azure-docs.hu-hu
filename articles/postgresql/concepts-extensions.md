@@ -9,18 +9,18 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 05/30/2018
-ms.openlocfilehash: f9216800f0e91d71f1da3f2bac16ecfcbf8b4850
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 67f5e6d4674f876b2cfd4d879ab40c5a5b12c0cc
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376550"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985046"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql"></a>PostgreSQL-bővítmények az Azure Database for postgresql-hez
-PostgreSQL lehetővé teszi az adatbázis-bővítményekkel funkcióinak bővítése érdekében. Bővítmények lehetővé teszik több kapcsolódó SQL objektumok együtt kötegelést betöltve, vagy eltávolítja az adatbázisból, egyetlen paranccsal egyetlen csomagban. Után az adatbázis betöltése, bővítmények működhet, mint a beépített funkciók. A PostgreSQL-bővítmények további információkért lásd: [csomagolási kapcsolódó objektumot egy bővítmény](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
+PostgreSQL lehetővé teszi az adatbázis-bővítményekkel funkcióinak bővítése érdekében. Bővítmények lehetővé teszik több kapcsolódó SQL objektumok együtt kötegelést betöltve, vagy eltávolítja az adatbázisból, egyetlen paranccsal egyetlen csomagban. Után az adatbázis betöltése, bővítmények működhet, mint a beépített funkciók. A PostgreSQL-bővítmények további információkért lásd: [csomagolási kapcsolódó objektumot egy bővítmény](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
 
 ## <a name="how-to-use-postgresql-extensions"></a>PostgreSQL-bővítmények használata
-Az adatbázis PostgreSQL-bővítmények kell telepíteni, mielőtt használhatná őket. Egy adott bővítmény telepítéséhez futtassa a [kiterjesztés létrehozása](https://www.postgresql.org/docs/9.6/static/sql-createextension.html) parancsot a psql-jének eszköz a csomagolt objektumok betöltése az adatbázisba.
+Az adatbázis PostgreSQL-bővítmények kell telepíteni, mielőtt használhatná őket. Egy adott bővítmény telepítéséhez futtassa a [kiterjesztés létrehozása](https://www.postgresql.org/docs/9.6/static/sql-createextension.html) parancsot a psql-jének eszköz a csomagolt objektumok betöltése az adatbázisba.
 
 Azure Database for postgresql-hez jelenleg kulcs bővítmények egy részét támogatja, az alább felsorolt. Felsorolt túlmutató bővítményeket nem támogatott; Azure Database for PostgreSQL szolgáltatás nem hozható létre a saját bővítmény.
 
@@ -97,7 +97,7 @@ Az alábbi táblázatok sorolják fel a standard szintű PostgreSQL-bővítmény
 |---|---|
 | [PostGIS](http://www.postgis.net/), postgis\_topológia, postgis\_tiger\_geocoder, postgis\_sfcgal | Térbeli és földrajzi objektum a PostgreSQL-hez. |
 | cím\_standardizer, cím\_standardizer\_adatok\_velünk a kapcsolatot | Használja az alkotóelemeket be egy címet elemezni. Támogatja a geokódolás cím normalizálási lépés segítségével. |
-| [pgrouting](http://pgrouting.org/) | Kiterjeszti a PostGIS / PostgreSQL térinformatikai adatbázis adataival kínálnak térinformatikai funkcióit útválasztási. |
+| [pgrouting](https://pgrouting.org/) | Kiterjeszti a PostGIS / PostgreSQL térinformatikai adatbázis adataival kínálnak térinformatikai funkcióit útválasztási. |
 
 
 ### <a name="using-pgstatstatements"></a>Pg_stat_statements használatával

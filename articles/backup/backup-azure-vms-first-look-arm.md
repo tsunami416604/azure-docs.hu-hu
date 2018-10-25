@@ -11,12 +11,12 @@ ms.date: 08/01/2018
 ms.author: markgal
 ms.custom: H1Hack27Feb2017
 keywords: biztonsági másolatok virtuális gép biztonsági mentése
-ms.openlocfilehash: fee0e20e232621764ba10d714b7ddfe9c759dafc
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: a30b4081bf01a76c6d89e7557fbb1b40baa86fbc
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717913"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985885"
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>Az Azure virtuális gépek biztonsági mentése Recovery Services-tárolóba
 
@@ -96,11 +96,11 @@ A következő lépések segítségével konfigurálhatja a biztonsági mentési 
 
   A kezdeti biztonsági mentés befejezéséig az **Utolsó biztonsági mentés állapota** **Figyelmeztetés (kezdeti biztonsági mentés folyamatban)** állapotú. Megtekintheti, ha a következő ütemezett biztonsági mentési feladat történik, a **összefoglalás** kattintson a házirend nevét. A biztonsági mentési szabályzat menüje megnyílik, és megjeleníti a ütemezett biztonsági mentés időpontját.
 
-10. A virtuális gép védelmét, kattintson a **biztonsági mentés**. 
+10. A virtuális gép védelmét, kattintson a **biztonsági mentés**.
 
   ![a kezdeti biztonsági mentés futtatásához kattintson a Biztonsági mentés elemre](./media/backup-azure-vms-first-look-arm/backup-now-update.png)
 
-  Megnyílik a Biztonsági mentés menü. 
+  Megnyílik a Biztonsági mentés menü.
 
   ![a Biztonsági mentés panel képe](./media/backup-azure-vms-first-look-arm/backup-now-blade-short.png)
 
@@ -185,7 +185,7 @@ A tárreplikációs beállítás szerkesztése:
   ![Az új tároló tárolási konfigurációjának beállítása](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-update.png)
 
 2. Az új tároló kezelés menü, használja a függőleges csúszkát görgessen le a kezelés szakaszhoz, és kattintson a **biztonsági mentési infrastruktúra** a biztonsági mentési infrastruktúra menü megnyitásához.
- 
+
    ![Az új tároló tárolási konfigurációjának beállítása](./media/backup-try-azure-backup-in-10-mins/set-storage-config-bkup-infra.png)
 
 3. A biztonsági mentési infrastruktúra menüben kattintson a **biztonsági mentés konfigurációja** megnyitásához a **biztonsági mentés konfigurációja** menü.
@@ -291,6 +291,11 @@ A kezdeti biztonsági mentési feladat futtatása:
   ![adja meg az utolsó napot, ameddig Biztonsági mentés helyreállítási pontját meg kívánja őrizni](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
 
   Az üzembehelyezési értesítések értesítik, hogy a biztonsági mentési feladat elindult, és hogy a feladat állapotát a Biztonsági mentési feladatok oldalon figyelheti. A virtuális gép méretétől függően a kezdeti biztonsági mentés létrehozása hosszabb időt vehet igénybe.
+
+  > [!NOTE]
+  > Az Azure backuppal biztonsági mentés alatt álló adatok titkosítása keresztül az összes [Storage Service Encryption (SSE)](../storage/common/storage-service-encryption.md).
+  >
+  >
 
 6. A kezdeti biztonsági mentés állapotának megtekintéséhez vagy nyomon követéséhez a tároló irányítópultjának **Biztonsági mentési feladatok** csempéjén kattintson a **Folyamatban** elemre.
 

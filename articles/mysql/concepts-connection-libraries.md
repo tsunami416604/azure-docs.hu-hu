@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 3f49065d4f66f55ed728626764d9cac2aa5c3c69
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 14515aefe9635160cf99a630b0742d23352532cf
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42055499"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985964"
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Az Azure Database for MySQL csatlakozási kódtárak
 Ez a cikk felsorolja az egyes könyvtár vagy illesztőprogram, ügyfélprogramok használhat a MySQL-hez készült Azure-adatbázishoz való csatlakozáskor.
@@ -24,7 +24,7 @@ MySQL kínál a szabványos adatbázis illesztőprogram-kapcsolat a MySQL haszn�
 
 | **Nyelv** | **Platform** | **További erőforrások** | **Letöltés** |
 | :----------- | :------------| :-----------------------| :------------|
-| PHP | Windows, Linux | [A PHP - mysqlnd natív MySQL-illesztőprogram](https://dev.mysql.com/downloads/connector/php-mysqlnd/) | [Letöltés](http://php.net/downloads.php) |
+| PHP | Windows, Linux | [A PHP - mysqlnd natív MySQL-illesztőprogram](https://dev.mysql.com/downloads/connector/php-mysqlnd/) | [Letöltés](https://secure.php.net/downloads.php) |
 | ODBC | Windows, Linux, Mac OS X és Unix rendszerek | [MySQL Connector/ODBC fejlesztői útmutató](https://dev.mysql.com/doc/connector-odbc/en/) | [Letöltés](https://dev.mysql.com/downloads/connector/odbc/) |
 | ADO.NET | Windows | [MySQL Connector/Net fejlesztői útmutató](https://dev.mysql.com/doc/connector-net/en/) | [Letöltés](https://dev.mysql.com/downloads/connector/net/) |
 | JDBC | Független platform | [MySQL Connector/J 5.1 fejlesztői útmutató](https://dev.mysql.com/doc/connector-j/5.1/en/) | [Letöltés](https://dev.mysql.com/downloads/connector/j/) |

@@ -14,38 +14,38 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: cf064be5f723651d571b2db619782f50225e5ade
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 4f820a95759d16a9b6ac1eb1e442ae0bc8d681a3
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843150"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988249"
 ---
 ## <a name="setting-up-your-ios-application"></a>Az iOS-alkalmazás beállítása
 
-Ez a szakasz részletesen bemutatja, hogy hogyan hozzon létre egy új projektet bemutatják, hogyan integrálható az iOS-alkalmazásokba (Swift) rendelkező *Bejelentkezés Microsoft-* , akkor kérdezheti le jogkivonatot igénylő webes API-k.
+Ez a szakasz részletesen bemutatja egy új projekt létrehozásához bemutatják, hogyan integrálható az iOS-alkalmazásokba (Swift) rendelkező *Bejelentkezés Microsoft-* , akkor kérdezheti le jogkivonatot igénylő webes API-k.
 
 > Töltse le ezt a mintát XCode-projektben ehelyett inkább? [Töltse le a projekt](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip) , és ugorjon a [konfigurációs lépés](#register-your-application) konfigurálása a kódminta végrehajtása előtt.
 
-
 ## <a name="install-carthage-to-download-and-build-msal"></a>Töltse le és hozhat létre az MSAL Carthage telepítése
+
 A Csomagkezelő Carthage használható az MSAL előzetes verzió ideje alatt – arra, hogy a könyvtár módosításához a Microsoft az fenntartásához integrálható az xcode-ban.
 
-- Töltse le és telepítse a legújabb kiadását Carthage [Itt](https://github.com/Carthage/Carthage/releases "Carthage letöltési URL-címe")
+- Töltse le és telepítse a legújabb kiadását Carthage [Itt](https://github.com/Carthage/Carthage/releases "Carthage letöltési URL-cím").
 
 ## <a name="creating-your-application"></a>Az alkalmazás létrehozása
 
-1.  Nyissa meg az xcode-ban, és válassza ki `Create a new Xcode project`
-2.  Válassza ki `iOS`  >  `Single view Application` kattintson *tovább*
-3.  Adja meg a termék nevét, és kattintson a *tovább*
-4.  Adja meg az alkalmazás létrehozása, és kattintson a *létrehozása*
+1. Nyissa meg az xcode-ban, és válassza ki **hozzon létre egy új Xcode-projektben**.
+2. Válassza ki **iOS > egynézetes alkalmazás** válassza **tovább**.
+3. Adja meg a termék nevét, és válassza ki **tovább**.
+4. Adja meg az alkalmazás létrehozása, és kattintson a *létrehozása*
 
 ## <a name="build-the-msal-framework"></a>A MSAL keretrendszer összeállítása
 
 Kövesse az alábbi lekéréséhez, és ezután hozhat létre az MSAL könyvtárakban Carthage legújabb verziójának utasításokat:
 
-1.  Nyissa meg a bash terminált, és nyissa meg az alkalmazás legfelső szintű mappát
-2.  Másolás a alatt, és illessze be a bash terminálon "Cartfile" fájl létrehozásához:
+1. Nyissa meg a bash terminált, és nyissa meg az alkalmazás gyökérmappájában.
+2. Másolás a alatt, és illessze be a bash terminálon "Cartfile" fájl létrehozásához:
 
 ```bash
 echo "github \"AzureAD/microsoft-authentication-library-for-objc\" \"master\"" > Cartfile
@@ -61,15 +61,16 @@ Másolja és illessze be az alábbi. Ez a parancs lekéri a függőségek egy Ca
 carthage update
 ```
 
-> A fenti folyamat segítségével töltse le és a Microsoft-hitelesítési tár (MSAL) hozhat létre. Az MSAL beszerzéséhez, gyorsítótárazási és védi az Azure Active Directory v2 API-k elérésére használt felhasználói jogkivonatok frissítése kezeli.
+> A fenti folyamat segítségével töltse le és a Microsoft-hitelesítési tár (MSAL) hozhat létre. Az MSAL beszerzéséhez, gyorsítótárazási és védi az Azure Active Directory 2.0-s verziójú API-k elérésére használt felhasználói jogkivonatok frissítése kezeli.
 
 ## <a name="add-the-msal-framework-to-your-application"></a>A MSAL keretrendszer hozzáadása az alkalmazáshoz
-1.  Az xcode-ban nyissa meg a `General` lap
-2.  Nyissa meg a `Linked Frameworks and Libraries` szakaszt, és kattintson `+`
-3.  A következők szerint válasszon: `Add other…`
-4.  Válassza a következőt: `Carthage`  >  `Build`  >  `iOS`  >  `MSAL.framework` kattintson *nyílt*. Megtekintheti az `MSAL.framework` hozzáadja a listához.
-5.  Lépjen a `Build Phases` fülre, majd `+` ikonra, válassza a `New Run Script Phase`
-6.  Adja hozzá a következő tartalmát a *terület parancsfájl*:
+
+1. Az xcode-ban nyissa meg a **általános** fülre.
+2. Nyissa meg a **csatolt keretrendszerek és könyvtárak** szakaszt, és válassza **+**.
+3. Válassza ki **más hozzáadása...** .
+4. Válassza ki **Carthage > hozhat létre > iOS > MSAL.framework** majd **nyílt**. Megtekintheti az `MSAL.framework` hozzáadja a listához.
+5. Nyissa meg a **hozhat létre fázisok** lapon jelölje be a **+** ikonra, és válassza ki **új futtatása parancsfájl fázis**.
+6. Adja hozzá a következő tartalmát a *terület parancsfájl*:
 
 ```text
 /usr/local/bin/carthage copy-frameworks
@@ -87,6 +88,7 @@ $(SRCROOT)/Carthage/Build/iOS/MSAL.framework
 ```
 
 ## <a name="creating-your-applications-ui"></a>Az alkalmazás felhasználói felület létrehozása
+
 A projektsablon részeként Main.storyboard fájl automatikusan kell létrehozni. Kövesse az alábbi utasításokat az alkalmazás felhasználói felületének létrehozásához:
 
 1.  CTRL + kattintson `Main.storyboard` a helyi menü megjelenítéséhez, majd: `Open As` > `Source Code`

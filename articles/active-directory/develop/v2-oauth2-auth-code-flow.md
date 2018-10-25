@@ -17,14 +17,16 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 1b9f1f1ff5e0a2a178b5a0b2a09f5513bf508b3f
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: b5f36bcce77ad0dac3a6e2e9da39493be6751539
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079174"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985845"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>2.0-s protokollok – az OAuth 2.0 hitelesítési kódfolyamat
+
+[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 Az OAuth 2.0 hitelesítési kódmegadás alkalmazást, amely egy eszközön a védett erőforrások, például a webes API-k eléréséhez használható. Az app model v2.0 megvalósítását az OAuth 2.0 használatával, hozzáadhat jelentkezzen be, és az API eléréséhez a mobil- és asztali alkalmazásokhoz. Ez az Útmutató nyelvtől független, és ismerteti, hogyan küldhetők és fogadhatók HTTP-üzenetek bármelyikének használata nélkül a [Azure nyílt forráskódú hitelesítési tárak](active-directory-authentication-libraries.md).
 
