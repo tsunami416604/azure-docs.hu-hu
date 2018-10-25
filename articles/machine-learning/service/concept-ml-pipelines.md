@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
 ms.date: 09/24/2018
-ms.openlocfilehash: b450d2ca2af0c0f7598d74e2f07c0acc81b811f3
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 45aa954d2f85267b2c7c9aa2a7ba04e436765433
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116453"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023926"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>Folyamatok és az Azure Machine Learning
 
@@ -63,7 +63,7 @@ Deklaratív adatok-függőségek használatával, optimalizálhatja a feladatoka
 
 Folyamatok menthető, sablonok, és a egy REST-végponthoz is telepíthető, így a kötegelt pontozás vagy megőrzési feladatokat ütemezhet.
 
-Tekintse meg a [folyamatok Python SDK referenciadokumentumai](http://aka.ms/aml-sdk) és a következő szakaszban megtudhatja, hogyan hozhat létre saját a notebookot.
+Tekintse meg a [folyamatok Python SDK referenciadokumentumai](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) és a következő szakaszban megtudhatja, hogyan hozhat létre saját a notebookot.
 
 ## <a name="example-notebooks"></a>Példa notebookok
  

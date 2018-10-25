@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/25/2018
 ms.reviewer: daviste
 ms.author: mbullwin
-ms.openlocfilehash: 9188776fdd213f01523069b08bd898f48bee57a4
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 85547bd8528c4d5d4a627750bb5334f05ed231b1
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091481"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024310"
 ---
 # <a name="impact-analysis-with-application-insights"></a>A hatáselemzés az Application insights segítségével
 
@@ -68,7 +68,7 @@ Ebben az esetben az eredmények már nem fér folyamatos x tengellyel modellbe, 
 
 ## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>Hogyan nem a hatás eszköz számítja ki az átalakítás díjszabása?
 
-Technikai részletek, a hatás eszköz támaszkodik a [Pearson korrelációs együttható] (https://en.wikipedia.org/wiki/Pearson_correlation_coefficient). Eredmények 1 és jelölő nulla összefüggések keresésére és a egy pozitív korrelációs jelölő 1 -1 és 1 közötti számítja ki.
+Technikai részletek, a hatás eszköz támaszkodik a [Pearson-korrelációs együttható](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient). Eredmények 1 és jelölő nulla összefüggések keresésére és a egy pozitív korrelációs jelölő 1 -1 és 1 közötti számítja ki.
 
 A hatáselemzés működésének alapszintű áttekintését a következőképpen történik:
 

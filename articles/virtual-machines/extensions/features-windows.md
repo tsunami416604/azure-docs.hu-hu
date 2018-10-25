@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d7b183a5b87d5777609deac02e4424d9451e9643
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: e3b9de282b95b27a04ac6d182b1045e18e65c5f6
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452496"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025905"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Virtuálisgép-bővítmények és szolgáltatások Windows
 
@@ -57,7 +57,8 @@ Annak érdekében, hogy a lehető legjobb élményt, vannak az ügynök minimál
 
 #### <a name="supported-oses"></a>Beállított támogatott operációs rendszerek
 
-A Windows vendégügynöke futtat több OSE-kre, azonban a bővítmények keretrendszer van korlátozva a OSE-kre vonatkozó adott bővítmények. További információkért lásd: [Ez a cikk] (https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems ).
+A Windows vendégügynöke futtat több OSE-kre, azonban a bővítmények keretrendszer van korlátozva a OSE-kre vonatkozó adott bővítmények. További információkért tekintse meg [ezt a cikket](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
+).
 
 Néhány bővítmény nem támogatja az összes OSE-kre között, és bocsáthat *hiba kódja 51, a "Nem támogatott operációs rendszer"*. Támogatási lehetőségek az egyes bővítmény dokumentációjában.
 

@@ -12,12 +12,12 @@ ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 30b4a038c2ad9bd86f2ba78d52ed3754acec07f0
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 59743df45cf2c7810404d9e6c636790c2855cf74
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785257"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023117"
 ---
 # <a name="how-to-add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Útmutató: az Azure Active Directory portál használatával egyéni tartománynév hozzáadása
 Minden új Azure AD-bérlőt egy kezdeti tartománynevet tartalmaz *domainname*. onmicrosoft.com. Nem módosítható, és a kezdeti tartománynév törlése, de a szervezet neveket adhat hozzá a listában. Egyéni tartománynevek hozzáadása segítségével hozhat létre, amely számára is felismerhetők a felhasználók számára, például felhasználóneveket *alain@contoso.com*.
@@ -28,9 +28,9 @@ Egyéni tartománynév hozzáadása előtt létre kell hoznia a tartománynév a
 ## <a name="create-your-directory-in-azure-ad"></a>A címtár létrehozása az Azure ad-ben
 A tartománynév kap, miután az első Azure AD-címtár is létrehozhat.
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) előfizetés tulajdonosaként fiókja a könyvtárhoz, majd válassza ki **Azure Active Directory**.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) a címtárhoz, egy olyan fiókkal rendelkező a **tulajdonosa** az előfizetést, és válassza ki a szerepkör **Azure Active Directory**. Előfizetési szerepkörökhöz kapcsolatos további információkért lásd: [klasszikus előfizetés rendszergazdai szerepköröket, az Azure RBAC-szerepkörök és az Azure AD-rendszergazdai szerepköröket](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles).
 
-    ![Az Azure portal képernyő](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+    ![Azure portál képernyő](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
 
     >[!TIP]
     > Ha helyszíni Windows Server AD-jét szeretné összevonni az Azure AD-vel, az Azure AD Connect eszköz futtatásakor jelölje be a **Szeretném konfigurálni ezt a tartományt egyszeri bejelentkezéshez a helyi Active Directoryhoz** jelölőnégyzetet a címtárak szinkronizálásához. Emellett a helyszíni címtárral való összevonáshoz kiválasztott tartománynevet is regisztrálnia kell az **Azure AD-tartomány** lépésnél a varázslóban. Megtekintheti, hogyan néz ki ez a lépés a varázslóban [ezekben az útmutatásokban](../hybrid/how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation). Ha még nem rendelkezik Azure AD Connect eszközzel, [innen letöltheti](http://go.microsoft.com/fwlink/?LinkId=615771).
@@ -72,7 +72,7 @@ Az egyéni tartománynév hozzáadása az Azure ad-hez, után térjen vissza a t
 Miután regisztrálta az egyéni tartománynevet, meg kell róla, hogy érvényes Azure AD-ben. Az Azure ad-hez a tartományregisztrálónál propagálása azonnali vagy is igénybe vehet néhány napra, attól függően, a tartományregisztrálónál.
 
 ### <a name="to-verify-your-custom-domain-name"></a>Az egyéni tartománynév ellenőrzése
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) a címtár egy globális rendszergazdai fiók használatával.
+1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 2. Válassza ki **Azure Active Directory**, majd válassza ki **egyéni tartománynevek**.
 

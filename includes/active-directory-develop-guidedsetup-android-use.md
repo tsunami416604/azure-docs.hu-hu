@@ -14,17 +14,17 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 9d512af7fdd68ec3356b427429144ec9195fd95b
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: cf536879393622744da0a6dd5b4e38c8c52de39b
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843084"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988357"
 ---
-## <a name="use-msal-to-get-a-token"></a>Egy token beszerzéséhez az MSAL használatával 
+## <a name="use-msal-to-get-a-token"></a>Egy token beszerzéséhez az MSAL használatával
 
-1.  A **alkalmazás** > **java** > **{domain}. { AppName}**, nyissa meg `MainActivity`. 
-2.  Adja hozzá az alábbi importálásokat:
+1. A **alkalmazás** > **java** > **{domain}. { AppName}**, nyissa meg `MainActivity`. 
+2. Adja hozzá az alábbi importálásokat:
 
     ```java
     import android.app.Activity;
@@ -241,10 +241,13 @@ ms.locfileid: "48843084"
 
 <!--start-collapse-->
 ### <a name="more-information"></a>További információ
+
 #### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
+
 Hívása a `AcquireTokenAsync` metódus elindít egy ablak, amely felkéri a felhasználót a bejelentkezéshez, vagy válassza ki azt a fiókot. Alkalmazások általában kell kérnie a felhasználót a kezdeti interakciónak, de működhet csendesen ettől a. 
 
 #### <a name="get-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
+
 A `AcquireTokenSilentAsync` metódus, kér le egy tokent, felhasználói beavatkozás nélkül.  `AcquireTokenSilentAsync` a legjobb kéréseket, és a egy tartalék is kell kezelni `AcquireTokenAsync` amikor a felhasználónak van szüksége, jelentkezzen be újra, vagy néhány további engedélyt, például a többtényezős hitelesítési lehetőségek 
 
 Amikor `AcquireTokenSilentAsync` sikertelen, hozza létre a `MsalUiRequiredException`. Az alkalmazás ehhez a kivételhez, két módon tudják kezelni:
@@ -254,7 +257,8 @@ Amikor `AcquireTokenSilentAsync` sikertelen, hozza létre a `MsalUiRequiredExcep
 * Ismételje meg `AcquireTokenSilentAsync` később. Ezt a mintát gyakran használják, amikor a felhasználók használhatják más színvonalának – az alkalmazás funkciói például, ha offline tartalom érhető el az alkalmazást. Az alkalmazás dönt, hogy újra `AcquireTokenSilentAsync` Ha visszaállítja a hálózat elvégzése után átmenetileg nem érhető el. 
 <!--end-collapse-->
 
-## <a name="call-the-microsoft-graph-api"></a>A Microsoft Graph API meghívása 
+## <a name="call-the-microsoft-graph-api"></a>A Microsoft Graph API meghívása
+
 Adja hozzá a következő metódusokat be a `MainActivity` osztály:
 
 ```java
@@ -311,6 +315,7 @@ private void updateGraphUI(JSONObject graphResponse) {
     graphText.setText(graphResponse.toString());
 }
 ```
+
 <!--start-collapse-->
 ### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>A védett API REST-hívást végrehajtásával kapcsolatos további információkat
 
@@ -376,5 +381,6 @@ private void updateSignedOutUI() {
 A `onSignOutClicked()` módszer eltávolítja a felhasználók a MSAL gyorsítótárból. Az MSAL már nem kell minden olyan állapotban, a bejelentkezett felhasználó, és azokat a rendszer az alkalmazás ki. 
 
 ### <a name="more-information-on-multi-account-scenarios"></a>További információ a több fiók forgatókönyvek
+
 Az MSAL támogatja forgatókönyvek is, ha egyszerre több fiókkal jelentkezett be. Például sok e-mail alkalmazások lehetővé teszik aláírt egyszerre több fiókot. 
 <!--end-collapse-->

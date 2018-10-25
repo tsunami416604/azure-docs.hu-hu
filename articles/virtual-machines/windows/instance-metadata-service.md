@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 0ea9fbf8042c4d6ab3f9462c77ec5cf5106d1021
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 331ec4bd7e91e8283f6a44b0fd440a9d73e28710
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389544"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024171"
 ---
 # <a name="azure-instance-metadata-service"></a>Az Azure Instance Metadata szolgáltatás
 
@@ -76,8 +76,8 @@ Az alábbi táblázat a más API-kkal támogathatják adatformátumok a célnyel
 
 API | Alapértelmezett adatformátum | További formátumok
 --------|---------------------|--------------
-/instance | JSON | szöveg
-/scheduledevents | JSON | nincs
+/instance | JSON-ban | szöveg
+/scheduledevents | JSON-ban | nincs
 
 Egy nem alapértelmezett válaszformátum eléréséhez, a kérelem lekérdezési karakterlánc paraméterként adja meg a kért formátumát. Példa:
 
@@ -299,7 +299,7 @@ subscriptionId | A virtuális gép Azure-előfizetés | 2017-08-01
 tags | [A címkék](../../azure-resource-manager/resource-group-using-tags.md) a virtuális gép  | 2017-08-01
 resourceGroupName | [Erőforráscsoport](../../azure-resource-manager/resource-group-overview.md) a virtuális gép | 2017-08-01
 placementGroupId | [Elhelyezési csoport](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) a virtuálisgép-méretezési csoport beállítása | 2017-08-01
-csomag | [Program] (https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) azt a virtuális gép van egy Azure Marketplace-beli rendszerképét, tartalmazza a neve, a termékek és a közzétevő | 2017-04-02
+csomag | [Csomag](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) azt a virtuális gép van egy Azure Marketplace-beli rendszerképét, tartalmazza a neve, a termékek és a közzétevő | 2017-04-02
 publicKeys | Nyilvános kulcsok gyűjteményét [https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey] rendelve a virtuális gép és az elérési út | 2017-04-02
 vmScaleSetName | [Virtuálisgép-méretezési csoport neve](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) a virtuálisgép-méretezési csoport beállítása | 2017-12-01
 zóna | [Rendelkezésre állási zónában](../../availability-zones/az-overview.md) a virtuális gép | 2017-12-01 

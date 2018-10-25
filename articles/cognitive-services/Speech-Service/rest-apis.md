@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: erhopf
-ms.openlocfilehash: 0cc278cdb59bfbb53578eae0f51c9b54204d7d12
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 7f3daf71f4d94371af5f7d98c4e03761d7217a2a
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466273"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025837"
 ---
 # <a name="speech-service-rest-apis"></a>Beszédfelismerési szolgáltatás REST API-k
 
@@ -22,7 +22,7 @@ A REST API-k az Azure Cognitive Services beszéd szolgáltatás hasonlóak az AP
 
 ## <a name="speech-to-text"></a>Diktálás
 
-A végpontok a Speech to Text REST API az alábbi táblázatban láthatók. Használja az egyik, amely megfelel az előfizetés régiót. 
+A végpontok a Speech to Text REST API az alábbi táblázatban láthatók. Használja az egyik, amely megfelel az előfizetés régiót.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
@@ -57,13 +57,13 @@ A következő mezőket a HTTP-kérés fejlécében érkeznek.
 
 ### <a name="audio-format"></a>Formát zvuku
 
-A törzs a HTTP küldése a hanganyag `PUT` kérelmet. Azt a 16 bites WAV PCM egyetlen csatornát (mono) a következő formátumok/kódování 16 KHz formátumban kell lennie.
+A törzs a HTTP küldése a hanganyag `POST` kérelmet. Azt a 16 bites WAV PCM egyetlen csatornát (mono) a következő formátumok/kódování 16 KHz formátumban kell lennie.
 
 * WAV PCM kodek formátumban
 * OPUS kodekkel OGG formátum
 
 >[!NOTE]
->A fenti formátumok REST API-t és a WebSocket a Speech Service-ben támogatottak. A [beszéd SDK](/index.yml) jelenleg csak támogatja a WAV PCM kodekkel formázása. 
+>A fenti formátumok REST API-t és a WebSocket a Speech Service-ben támogatottak. A [beszéd SDK](/index.yml) jelenleg csak támogatja a WAV PCM kodekkel formázása.
 
 ### <a name="chunked-transfer"></a>Darabolásos átvitel
 
@@ -145,7 +145,7 @@ A `RecognitionStatus` mező a következő értékeket tartalmazhat.
 | `Error` | A beszédfelismerést szolgáltatás belső hibába ütközött, és nem lehetett folytatni. Próbálja meg újra, ha lehetséges. |
 
 > [!NOTE]
-> Ha a hanganyag csak káromkodás tartalmaz, és a `profanity` lekérdezési paraméter értéke `remove`, a szolgáltatás nem ad vissza egy beszéd eredményt. 
+> Ha a hanganyag csak káromkodás tartalmaz, és a `profanity` lekérdezési paraméter értéke `remove`, a szolgáltatás nem ad vissza egy beszéd eredményt.
 
 
 A `detailed` formátum tartalmazza, ugyanazokat a mezőket a `simple` formájában, valamint az egy `NBest` mező. A `NBest` mező az alternatív értelmezéseket a azonos beszéd, ahol az a legvalószínűbb valószínűleg legalább listája. Az első bejegyzés ugyanaz, mint a fő felismerés eredményét. Mindegyik bejegyzés a következő mezőket tartalmazzák:
@@ -207,7 +207,7 @@ A beszédfelismerési szolgáltatás mellett a Bing Speech által támogatott 16
 
 Területi beállítás | Nyelv   | Nem | A felhasználónév-leképezés
 -------|------------|--------|------------
-hu-HU  | Amerikai angol | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Jessa24kRUS)" 
+hu-HU  | Amerikai angol | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Jessa24kRUS)"
 hu-HU  | Amerikai angol | Férfi   | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Guy24kRUS)"
 
 Rendelkezésre álló beszédhangot teljes listája megtalálható [támogatott nyelvek](language-support.md#text-to-speech).
@@ -235,9 +235,9 @@ A rendelkezésre álló hangkimeneti formátumok (`X-Microsoft-OutputFormat`) eg
 `audio-24khz-96kbitrate-mono-mp3`  | `audio-24khz-48kbitrate-mono-mp3`
 
 > [!NOTE]
-> Ha a kiválasztott hang- és kimeneti formátum különböző átviteli sebességet, a hanganyag szükség szerint módosítva a felbontása. Azonban nem támogatja a 24khz beszédhangot `audio-16khz-16kbps-mono-siren` és `riff-16khz-16kbps-mono-siren` kimeneti formátumot. 
+> Ha a kiválasztott hang- és kimeneti formátum különböző átviteli sebességet, a hanganyag szükség szerint módosítva a felbontása. Azonban nem támogatja a 24khz beszédhangot `audio-16khz-16kbps-mono-siren` és `riff-16khz-16kbps-mono-siren` kimeneti formátumot.
 
-### <a name="request-body"></a>Kérelem törzse
+### <a name="request-body"></a>A kérés törzse
 
 A szöveg beszéddé alakítandó legyen elküldve, a szervezet egy HTTP `POST` kérheti a vagy egyszerű szöveg (ASCII vagy UTF-8) vagy [Speech összefoglaló Markup Language](speech-synthesis-markup.md) (SSML) formátum (UTF-8). Egyszerű szöveges kérelmeket a szolgáltatás alapértelmezett beszédfelismerési és nyelvi használja. SSML, használjon egy másik küldése.
 
@@ -254,7 +254,7 @@ Host: westus.tts.speech.microsoft.com
 Content-Length: 225
 Authorization: Bearer [Base64 access_token]
 
-<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female' 
+<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
     name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>
         Microsoft Speech Service Text-to-Speech API
 </voice></speak>
@@ -328,10 +328,10 @@ a cURL egy Linux (és a Linux Windows alrendszere) elérhető parancssori eszkö
 > A parancs az olvashatóság érdekében több sorban jelenik meg, de egy sorba egy shell-parancssorba írja be.
 
 ```
-curl -v -X POST 
- "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken" 
- -H "Content-type: application/x-www-form-urlencoded" 
- -H "Content-Length: 0" 
+curl -v -X POST
+ "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken"
+ -H "Content-type: application/x-www-form-urlencoded"
+ -H "Content-Length: 0"
  -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
 
@@ -411,7 +411,7 @@ Ahogy korábban is, győződjön meg arról, hogy a `FetchTokenUri` értéke meg
     */
 public class Authentication
 {
-    public static readonly string FetchTokenUri = 
+    public static readonly string FetchTokenUri =
         "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
     private string subscriptionKey;
     private string token;
@@ -486,4 +486,3 @@ public class Authentication
 - [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
 - [Akusztikai modellek testreszabása](how-to-customize-acoustic-models.md)
 - [Nyelvi modellek testreszabása](how-to-customize-language-model.md)
-

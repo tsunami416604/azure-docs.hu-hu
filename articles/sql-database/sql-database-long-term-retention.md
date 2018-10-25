@@ -11,25 +11,26 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 07/16/2018
-ms.openlocfilehash: 6110773ecaba0ad333e4cfc9f9cc6014bd29a7a6
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.date: 10/24/2018
+ms.openlocfilehash: 7fe34423e706054daf84eaa8baf45fe201a661c9
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249519"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026177"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Az Azure SQL Database biztonsági mentéseinek Store akár 10 évig
 
 Számos alkalmazás rendelkezik szabályozási, megfelelőségi vagy egyéb üzleti célra használja, amely esetében megtarthatja az adatbázisok biztonsági mentése az Azure SQL Database által biztosított 7 – 35 napon túl [automatikus biztonsági mentések](sql-database-automated-backups.md). A hosszú távú megőrzés (LTR) szolgáltatással tárolhatja a megadott SQL adatbázis teljes biztonsági mentés a [RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) a blob storage akár 10 évig. Biztonsági másolat új adatbázisként visszaállíthatja.
 
 > [!NOTE]
-> Az Azure SQL Database logikai kiszolgálók üzemeltetett adatbázisok LTR is engedélyezhetők. Ez nem érhető el továbbra is a felügyelt példány
+> Az Azure SQL Database logikai kiszolgálók üzemeltetett adatbázisok LTR is engedélyezhetők. Ez még nem felügyelt példányok lévő üzemeltetett adatbázisokhoz.
 > 
 
 ## <a name="how-sql-database-long-term-retention-works"></a>SQL-adatbázis hosszú távú megőrzés működése
 
-Hosszú távú adatmegőrzés kihasználja a [az automatikus SQL Database biztonsági mentéseinek](sql-database-automated-backups.md) létrehozott időpontban visszaállításhoz (PITR) vesz igénybe. Minden egyes SQL-adatbázis hosszú távú adatmegőrzési konfigurálhatja, és adja meg, hogy milyen gyakran kell másolnia a biztonsági másolatok a hosszú távú tárolásra. A rugalmasság a szabályzat négy paraméter együttes használatával adhatja meg: heti biztonsági másolatok megőrzése (W), havi biztonsági másolatok megőrzése (M), éves biztonsági másolatok megőrzése (Y), és hét év (WeekOfYear). Ha megad egy biztonsági mentés hetente W lesznek másolva a hosszú távú tároláshoz. M ad meg, ha egy biztonsági mentés során minden hónap első hetében másolandó a hosszú távú tároláshoz. Y ad meg, ha egy biztonsági mentés WeekOfYear által megadott hétre esik-e a hosszú távú tárolásra másolhatók. Minden egyes biztonsági másolat ezeket a paramétereket által megadott időszakban marad a hosszú távú tárolására. 
+Hosszú távú megőrzésének (LTR) használja az adatbázis teljes biztonsági mentéseket, amelyek [automatikusan létrehozott](sql-database-automated-backups.md) időpontban visszaállításának (PITR) engedélyezéséhez. Ezeket a biztonsági másolatokat kerülnek át különböző storage-blobokat, ha LTR-szabályzat van konfigurálva.
+Minden egyes SQL Database LTR szabályzat konfigurálása, és adja meg, milyen gyakran át kell másolnia a biztonsági másolatok hosszú távú tárolás blobokhoz. A rugalmasság a szabályzat négy paraméter együttes használatával adhatja meg: heti biztonsági másolatok megőrzése (W), havi biztonsági másolatok megőrzése (M), éves biztonsági másolatok megőrzése (Y), és hét év (WeekOfYear). Ha megad egy biztonsági mentés hetente W lesznek másolva a hosszú távú tároláshoz. M ad meg, ha egy biztonsági mentés során minden hónap első hetében másolandó a hosszú távú tároláshoz. Y ad meg, ha egy biztonsági mentés WeekOfYear által megadott hétre esik-e a hosszú távú tárolásra másolhatók. Minden egyes biztonsági másolat ezeket a paramétereket által megadott időszakban marad a hosszú távú tárolására. 
 
 Példák:
 

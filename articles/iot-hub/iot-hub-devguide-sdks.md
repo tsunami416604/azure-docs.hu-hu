@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: dobett
-ms.openlocfilehash: 1eeb0afdd5ffcbe00357914d6a98c8d0b3d452ec
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: d58c86c17cdab360f37a09b28bdf705cb781a620
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017959"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023824"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Elsajátítása és használata az Azure IoT Hub SDK-k
 
@@ -44,7 +44,7 @@ A C, a hordozhatóság és a széles körű platform kompatibilitását (C99) AN
 
 * Telepítse a [apt-get paranccsal végzi, az MBED, az Arduino IDE vagy a Nuget](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md)
 * [Forráskód](https://github.com/Azure/azure-iot-sdk-c)
-* [API-leírások](https://azure.github.io/azure-iot-sdk-c/index.html)
+* [API-leírások](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 * [Modul-hivatkozás](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_module_client.h)
 
 A Javához készült Azure IoT Hub eszközoldali SDK: 
@@ -65,13 +65,13 @@ Pythonhoz készült Azure IoT Hub eszközoldali SDK:
 
 * Telepítse a [pip](https://pypi.python.org/pypi/azure-iothub-device-client/)
 * [Forráskód](https://github.com/Azure/azure-iot-sdk-python)
-* API-referencia: lásd: [C API-referencia](https://azure.github.io/azure-iot-sdk-c/index.html)
+* API-referencia: lásd: [C API-referencia](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 
 IOS-hez készült Azure IoT Hub eszközoldali SDK: 
 
 * Telepítse a [CocoaPod](https://cocoapods.org/pods/AzureIoTHubClient)
-* [Minták](https://github.com/Azure-Samples/azure-iot-samples-ios)
-* API-referencia: lásd: [C API-referencia](https://azure.github.io/azure-iot-sdk-c/index.html)
+* [Példák](https://github.com/Azure-Samples/azure-iot-samples-ios)
+* API-referencia: lásd: [C API-referencia](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 
 > [!NOTE]
 > Tekintse meg a GitHub-adattárában információk nyelv és platform-specifikus csomagkezelők bináris fájljait és függőségeinek telepítéséhez a fejlesztői gépen információs fájljaiban.
@@ -120,7 +120,7 @@ Az Azure IoT Hub szolgáltatási SDK-val a C:
 IOS-hez készült Azure IoT Hub Szolgáltatásoldali SDK-val: 
 
 * Telepítse a [CocoaPod](https://cocoapods.org/pods/AzureIoTHubServiceClient)
-* [Minták](https://github.com/Azure-Samples/azure-iot-samples-ios)
+* [Példák](https://github.com/Azure-Samples/azure-iot-samples-ios)
 
 > [!NOTE]
 > Tekintse meg a GitHub-adattárában információk nyelv és platform-specifikus csomagkezelők bináris fájljait és függőségeinek telepítéséhez a fejlesztői gépen információs fájljaiban.

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 9ea4028a49211e52ab9ba305df86b88e1437bdfc
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 92fcf1138a5a7d364c884128d3fc82559ffb15aa
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648122"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987885"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 Ez a cikk bemutatja a kimenetek elérhető az Azure Stream Analytics-feladat különböző típusú. Kimenetek segítségével tárolhatja, és a Stream Analytics-feladat eredményének mentése. A kimeneti adatokat használja, végezhet további üzleti elemzés és az adattárház az adatokat. 
@@ -116,7 +116,7 @@ Van néhány olyan paraméterek, melyek szükségesek ahhoz, hogy konfigurálta 
 | Tulajdonság neve | Leírás |
 | --- | --- |
 | Kimeneti alias | A lekérdezés kimenete az Eseményközpont lekérdezésekben használt rövid név. |
-| Eseményközpont-névtér |Az Event Hub-névtér az üzenetküldési entitások készletének tárolója. Egy új Eseményközpont létrehozásakor egy Eseményközpont-névtér is létrejött. |
+| Event Hubs-névtér |Az Event Hub-névtér az üzenetküldési entitások készletének tárolója. Egy új Eseményközpont létrehozásakor egy Eseményközpont-névtér is létrejött. |
 | Eseményközpont neve | Az Eseményközpont kimenete neve. |
 | Eseményközpont szabályzatának neve | A megosztott elérési házirendet, amely az Event Hub konfigurálása lapon hozható létre. Minden megosztott elérési házirend neve, hogy Ön meghatározott engedélyekkel és hozzáférési kulcsok van. |
 | Eseményközpont házirendjének kulcsa | A közös hozzáférési kulcs segítségével hitelesíti a hozzáférést az Event Hubs-névtér. |
@@ -299,7 +299,7 @@ A következő táblázat összefoglalja a partíció-támogatás és a kimeneti 
 | Azure Data Lake Store | Igen | Használja {a date} és {time} az elérési út előtagmintája tokeneket. Válassza ki a dátum formátuma éééé/hh/nn például, nn/hh/éééé-hh-nn-éééé. Az időformátum ÓÓ használható. | A bemeneti particionálási követi [teljes párhuzamosítható lekérdezések](stream-analytics-scale-jobs.md). | 
 | Azure SQL Database | Igen | A PARTITION BY záradék a lekérdezés alapján | A bemeneti particionálási követi [teljes párhuzamosítható lekérdezések](stream-analytics-scale-jobs.md). | 
 | Azure Blob Storage | Igen | Használja {a date} és {time} token az esemény mezőiből az elérésiút-minta. Válassza ki a dátum formátuma éééé/hh/nn például, nn/hh/éééé-hh-nn-éééé. Az időformátum ÓÓ használható. Részeként a [előzetes](https://aka.ms/ASApreview1), blob kimeneti lehet particionálni egy egyéni esemény egyetlen attribútum {fieldname} vagy {dátum és idő:\<specifikátor >}. | A bemeneti particionálási követi [teljes párhuzamosítható lekérdezések](stream-analytics-scale-jobs.md). | 
-| Azure-eseményközpont | Igen | Igen | Partíció igazítás függően változik.</br> Ha a kimeneti partíciós kulccsal egyaránt igazodik a felsőbb rétegbeli (korábbi) lekérdezési lépésre, írók száma az Eseményközpont megegyezik a számát kimeneti Event Hubs-partíciók. Minden egyes író használja az EventHub [EventHubSender osztály](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) eseményeket küldhet az adott partíció. </br> Ha a partíciókulcs felsőbb rétegbeli (korábbi) lekérdezési lépésre, írók száma nem igazodik az Eseményközpont kimenete ugyanaz, mint a korábbi lépésben partíciók száma. Minden egyes író használ EventHubClient [SendBatchAsync osztály](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) az események küldése az összes kimeneti partíciót. |
+| Azure Event Hub | Igen | Igen | Partíció igazítás függően változik.</br> Ha a kimeneti partíciós kulccsal egyaránt igazodik a felsőbb rétegbeli (korábbi) lekérdezési lépésre, írók száma az Eseményközpont megegyezik a számát kimeneti Event Hubs-partíciók. Minden egyes író használja az EventHub [EventHubSender osztály](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) eseményeket küldhet az adott partíció. </br> Ha a partíciókulcs felsőbb rétegbeli (korábbi) lekérdezési lépésre, írók száma nem igazodik az Eseményközpont kimenete ugyanaz, mint a korábbi lépésben partíciók száma. Minden egyes író használ EventHubClient [SendBatchAsync osztály](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) az események küldése az összes kimeneti partíciót. |
 | Power BI | Nem | None | Nem alkalmazható. | 
 | Azure Table Storage | Igen | Minden olyan kimeneti oszlop.  | A bemeneti particionálási követi [teljes mértékben a lekérdezések párhuzamosíthatók](stream-analytics-scale-jobs.md). | 
 | Az Azure Service Bus-témakörbe | Igen | Automatikusan kiválasztja. A partíciók száma alapján a [Service Bus-Termékváltozat és a méret](../service-bus-messaging/service-bus-partitioning.md). Partíciókulcs egyedi egész szám érték minden egyes partícióhoz.| Ugyanaz, mint a kimenet a témakör a partíciók száma.  |
@@ -317,7 +317,7 @@ Az alábbi táblázat ismerteti azokat a kötegelés kimeneti szempontok:
 | Azure Data Lake Store | Lásd: [korlátozza a Data Lake Storage](../azure-subscription-service-limits.md#data-lake-store-limits) | Legfeljebb 4 MB / írási művelet |
 | Azure SQL Database | Max. 10 000 sorosak egyetlen tömeges beszúrás</br>Egyetlen tömeges beszúrás sorosak 100 perc </br>Lásd még: [Azure SQL-korlátozások](../sql-database/sql-database-resource-limits.md) |  Minden batch először tömeges maximális kötegméret együtt, és előfordulhat, hogy ossza fel a batch felét (csak minimális köteg mérete) – Újrapróbálkozást lehetővé tevő hiba esetén az SQL-alapú. |
 | Azure Blob Storage | Lásd: [korlátozza az Azure Storage](../azure-subscription-service-limits.md#storage-limits) | Maximális Blob blokkblob mérete 4 MB</br>Blobok bock maximális száma 50000 |
-| Azure-eseményközpont   | Egy üzenet 256 KB </br>Lásd még: [korlátozza az Event Hubs](../event-hubs/event-hubs-quotas.md) |    Bemeneti kimeneti particionálás nem igazodnak, ha minden egyes esemény egy EventData külön-külön csomagolni és kötegelt akár a maximális üzenetméret (prémium szintű termékváltozat 1 MB) küldi el. </br></br>  Bemeneti-kimeneti particionálás van igazítva, ha több esemény maximális mérete legfeljebb egy egyetlen EventData elhelyezve, és küldött.    |
+| Azure Event Hub   | Egy üzenet 256 KB </br>Lásd még: [korlátozza az Event Hubs](../event-hubs/event-hubs-quotas.md) |    Bemeneti kimeneti particionálás nem igazodnak, ha minden egyes esemény egy EventData külön-külön csomagolni és kötegelt akár a maximális üzenetméret (prémium szintű termékváltozat 1 MB) küldi el. </br></br>  Bemeneti-kimeneti particionálás van igazítva, ha több esemény maximális mérete legfeljebb egy egyetlen EventData elhelyezve, és küldött.    |
 | Power BI | Lásd: [Power BI Rest API-korlátok](https://msdn.microsoft.com/library/dn950053.aspx) |
 | Azure Table Storage | Lásd: [korlátozza az Azure Storage](../azure-subscription-service-limits.md#storage-limits) | Alapértelmezett egyszeri tranzakciónként 100 entitást, és egy kisebb értékre, igény szerint konfigurálható. |
 | Az Azure Service Bus-üzenetsorba   | Egy üzenet 256 KB</br> Lásd még: [korlátozza a Service Bus](../service-bus-messaging/service-bus-quotas.md) | Egy üzenet egyszeri esemény |
@@ -334,5 +334,5 @@ Az alábbi táblázat ismerteti azokat a kötegelés kimeneti szempontok:
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
+[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301

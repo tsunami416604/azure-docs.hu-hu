@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 31d7f0fd70edf7bbf05a3a180baa6cc078e02ba1
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: bc505aa9dc2258a8752d1986489957c401e4e4c4
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585475"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023506"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application insights telemetria exportálása
 Szeretné megtartani a telemetriát azokhoz szabványos megőrzési idejénél hosszabb? Vagy specializált módon dolgozza fel? A folyamatos exportálás ideális ehhez. Az eseményeket az Application Insights portálon látható a JSON-formátumban a Microsoft Azure storage exportálhatók. Innen letöltheti az adatokat és bármilyen kódot írni kell őket feldolgoznia.  
@@ -39,7 +39,7 @@ Miután az adatok folyamatos exportálása másolja át a Storage (amennyiben az
 
 2. Válassza ki az exportálni kívánt adattípusok a telemetriát.
 
-3. Hozzon létre vagy válasszon egy [az Azure storage-fiók] (.. / storage/common/storage-introduction.md), az adatokat tárolni szeretné. További információk a storage díjszabása a [díjszabását ismertető lapon hivatalos](https://azure.microsoft.com/pricing/details/storage/).
+3. Hozzon létre vagy válasszon egy [Azure storage-fiók](../storage/common/storage-introduction.md) hol szeretné tárolni az adatokat. További információk a storage díjszabása a [díjszabását ismertető lapon hivatalos](https://azure.microsoft.com/pricing/details/storage/).
 
     > [!Warning]
     > Alapértelmezés szerint a tárolási hely állítja be az Application Insights-erőforrás és ugyanabban a földrajzi régióban. Ha egy másik régióban tárolja, adatforgalmi díjat számítanak fel.

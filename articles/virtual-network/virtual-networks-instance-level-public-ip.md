@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: genli
-ms.openlocfilehash: 7d8325ce04a9fa7853fb622062022a6938375f96
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 2f6db23e02c836dea6d640757d12275b654ad468
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47430981"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024627"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Példány szintű nyilvános IP-Címek (klasszikus) áttekintése
 Egy példány szintű nyilvános IP (ILPIP) egy nyilvános IP-cím, amelyeket hozzárendelhet, közvetlenül a virtuális gépek vagy Cloud Services szerepkör-példány helyett a felhőszolgáltatáshoz, amely a virtuális gép vagy szerepkörpéldány példány található. Egy ILPIP nem kerül a sor, a virtuális IP-(VIP), amely a felhőszolgáltatás van rendelve. Inkább egy további IP-címet, amellyel közvetlenül csatlakozhat a virtuális gép vagy szerepkörpéldány példány.
@@ -47,7 +47,7 @@ Egy felhőalapú szolgáltatás az Azure-ban való létrehozásakor megfelelő D
 ## <a name="why-would-i-request-an-ilpip"></a>Miért érdemes lenne kérése egy ILPIP?
 Ha meg szeretné tudni csatlakozni a virtuális gép vagy szerepkörpéldány példány közvetlenül hozzárendelt IP-címet, a felhő használata helyett szolgáltatás virtuális IP-cím:&lt;portszám&gt;, a virtuális gép vagy a szerepkörpéldány-ILPIP kérhetnek.
 
-* **Aktív FTP** – egy ILPIP rendel egy virtuális Gépet, hogy adatforgalom az összes porton kapja. Végpontok nem szükségesek a virtuális gép forgalom fogadására.  Lásd: [az FTP protokoll áttekintése] (https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview) az FTP protokoll részleteiért.
+* **Aktív FTP** – egy ILPIP rendel egy virtuális Gépet, hogy adatforgalom az összes porton kapja. Végpontok nem szükségesek a virtuális gép forgalom fogadására.  Lásd: [az FTP protokoll – áttekintés](https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview) az FTP protokoll részleteiért.
 * **Kimenő IP** – a virtuális gépről származó kimenő forgalom le van képezve a ILPIP, mint a forrás- és a ILPIP egyedileg azonosítja a virtuális Gépet a külső entitások.
 
 > [!NOTE]

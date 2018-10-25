@@ -14,17 +14,19 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 3cbcae9c02abaf11ded31304f97abdd74f905c6e
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 0c4908315bd7c0e4d83c7aba735cc4d102216a28
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843252"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988441"
 ---
 ## <a name="test-your-code"></a>Tesztelheti a kódját
 
 ### <a name="test-with-node"></a>A csomópont tesztelése
+
 Ha nem használ a Visual Studióban, győződjön meg arról, a webalkalmazás-kiszolgáló elindult.
+
 1. Konfigurálja a kiszolgálót helye alapján TCP-portra figyeljen a **index.html** fájlt. A Node indítsa el a webkiszolgáló figyelésére, a port a következő parancsok futtatásával egy parancssort az alkalmazás mappájában:
 
     ```bash
@@ -36,15 +38,14 @@ Ha nem használ a Visual Studióban, győződjön meg arról, a webalkalmazás-k
 <p/><!-- -->
 
 ### <a name="test-with-visual-studio"></a>A Visual Studióval tesztelése
-Ha a Visual Studio használata esetén ügyeljen arra, hogy válassza ki a projekt megoldás, és nyomja meg **F5** , futtassa a projektet. A böngésző megnyitja a http://<span></span>localhost: {port} helyen, és tekintse meg a **bejelentkezés** gombra.
 
+Ha a Visual Studio használata esetén ügyeljen arra, hogy válassza ki a projekt megoldás, és nyomja meg **F5** , futtassa a projektet. A böngésző megnyitja a http://<span></span>localhost: {port} helyen, és tekintse meg a **bejelentkezés** gombra.
 
 ## <a name="test-your-application"></a>Az alkalmazás tesztelése
 
 Kattintson a böngésző az index.html fájlt betölt, miután **bejelentkezés**. A rendszer felkéri jelentkezzen be a Microsoft Azure Active Directory (Azure AD) v2.0-végpont:
 
 ![Jelentkezzen be a JavaScript SPA-fiók](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
-
 
 ### <a name="provide-consent-for-application-access"></a>Alkalmazás-hozzáférési hozzájárulás megadása
 
@@ -53,6 +54,7 @@ Első alkalommal jelentkezik be az alkalmazás kéri, hogy Ön hozzájárul ahho
 ![Adja meg az Ön hozzájárul az alkalmazás-hozzáférés](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspaconsent.png)
 
 ### <a name="view-application-results"></a>Kérelem eredményének megtekintése
+
 Ha a bejelentkezéshez, akkor jelenik meg a felhasználói profil adatait a Microsoft Graph API-válasz megjelenik az oldalon.
 
 ![A Microsoft Graph API-hívás a várt eredmények](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)

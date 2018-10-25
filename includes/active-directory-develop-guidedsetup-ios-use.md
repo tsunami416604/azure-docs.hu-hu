@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 248f2575e284ae456578b071013e1a5501329116
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 06da33b91ef9846204b33ba2cb3dea40c75d425d
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843354"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988275"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>A Microsoft-hitelesítési tár (MSAL) használatával egy token beszerzése a Microsoft Graph API-hoz
 
@@ -29,17 +29,17 @@ Nyissa meg `ViewController.swift` , és cserélje le a kódot:
 import UIKit
 import MSAL
 
-/// 😃 A View Controller that will respond to the events of the Storyboard.
+// A View Controller that will respond to the events of the Storyboard.
 class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate {
-    
-    // Update the below to your client ID you received in the portal. The below is for running the demo only
+
+    // Replace Your_Application_Id_Here with the client ID you received in the portal. The below is for running the demo only.
     let kClientID = "Your_Application_Id_Here"
-    
+
     // These settings you don't need to edit unless you wish to attempt deeper scenarios with the app.
     let kGraphURI = "https://graph.microsoft.com/v1.0/me/"
     let kScopes: [String] = ["https://graph.microsoft.com/user.read"]
     let kAuthority = "https://login.microsoftonline.com/common"
-    
+
     var accessToken = String()
     var applicationContext : MSALPublicClientApplication?
 
@@ -87,7 +87,7 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
         super.viewWillAppear(animated)
         signoutButton.isEnabled = !self.accessToken.isEmpty
     }
-    
+
     /**
      This button will invoke the authorization flow.
     */
@@ -204,17 +204,20 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
 
 <!--start-collapse-->
 ### <a name="more-information"></a>További információ
+
 #### <a name="getting-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
+
 Hívása a `acquireToken` módszer eredményezi egy kéri a felhasználót, hogy jelentkezzen be a böngészőablakot. Az alkalmazásoknak általában egy felhasználó először egy védett erőforrás eléréséhez szükséges interaktív bejelentkezéshez, vagy ha egy figyelő művelet beszerezni egy token sikertelen (például a felhasználó jelszava lejárt).
 
 #### <a name="getting-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
+
 A `acquireTokenSilent` metódus kezeli a token beszerzését és -megújítás, felhasználói beavatkozás nélkül. Miután `acquireToken` hajtja végre az első alkalommal `acquireTokenSilent` hívások kérelem vagy token megújítása csendes módban végzett hívások – a védett erőforrások eléréséhez használt tokenek beszerzése érdekében a gyakran használt módszer.
 
 Végül `acquireTokenSilent` sikertelen lesz, – például a felhasználó kijelentkeztetése rendelkezik, vagy megváltoztatta a jelszavát egy másik eszközön. Ha az MSAL észleli, hogy a probléma megoldhatók egy interaktív intézkedést kér, akkor aktiválódik egy `MSALErrorCode.interactionRequired` kivétel. Az alkalmazás ehhez a kivételhez, két módon tudják kezelni:
 
-1.  Győződjön meg arról, egy hívást kell végrehajtanunk `acquireToken` azonnal, aminek eredményeképpen kéri a felhasználót, hogy jelentkezzen be. Az online alkalmazások általában használják ezt a mintát, ha ott nem nem offline tartalma az alkalmazásban a felhasználó számára elérhető. Az interaktív telepítés által létrehozott mintaalkalmazás használja ezt a mintát: láthatja az alkalmazás végrehajtása az első művelet időben. Nincs felhasználó bármikor használták az alkalmazást, mert `applicationContext.allAccounts().first` fogja tartalmazni a null értéket, és a egy ` MSALErrorCode.interactionRequired ` , a rendszer hibajelzést. A kód a minta ezután kezeli a kivételt meghívásával `acquireToken` eredményez, amely felszólítja a felhasználót a bejelentkezéshez.
+1. Győződjön meg arról, egy hívást kell végrehajtanunk `acquireToken` azonnal, aminek eredményeképpen kéri a felhasználót, hogy jelentkezzen be. Az online alkalmazások általában használják ezt a mintát, ha ott nem nem offline tartalma az alkalmazásban a felhasználó számára elérhető. Az interaktív telepítés által létrehozott mintaalkalmazás használja ezt a mintát: láthatja az alkalmazás végrehajtása az első művelet időben. Nincs felhasználó bármikor használták az alkalmazást, mert `applicationContext.allAccounts().first` fogja tartalmazni a null értéket, és a egy ` MSALErrorCode.interactionRequired ` , a rendszer hibajelzést. A kód a minta ezután kezeli a kivételt meghívásával `acquireToken` eredményez, amely felszólítja a felhasználót a bejelentkezéshez.
 
-2.  Alkalmazások tudja végrehajtani a vizuális jelzés a felhasználót, hogy egy interaktív bejelentkezési szükség, hogy a felhasználó kiválaszthatja a megfelelő időben való bejelentkezéshez, vagy az alkalmazás megpróbálhatja `acquireTokenSilent` egy későbbi időpontban. Ez általában akkor használatos, amikor a felhasználó használhatja az alkalmazás egyéb funkciók anélkül, hogy szakadhat meg – például nincs az offline tartalma elérhető az alkalmazásban. Ebben az esetben a felhasználó dönthet arról, ha szeretnének bejelentkezni a védett erőforrás elérésére, vagy a frissítés az elavult adatokat, vagy az alkalmazás dönt, hogy újra `acquireTokenSilent` amikor hálózati visszaállítása után folyamatban átmenetileg nem érhető el.
+2. Alkalmazások tudja végrehajtani a vizuális jelzés a felhasználót, hogy egy interaktív bejelentkezési szükség, hogy a felhasználó kiválaszthatja a megfelelő időben való bejelentkezéshez, vagy az alkalmazás megpróbálhatja `acquireTokenSilent` egy későbbi időpontban. Ez általában akkor használatos, amikor a felhasználó használhatja az alkalmazás egyéb funkciók anélkül, hogy szakadhat meg – például nincs az offline tartalma elérhető az alkalmazásban. Ebben az esetben a felhasználó dönthet arról, ha szeretnének bejelentkezni a védett erőforrás elérésére, vagy a frissítés az elavult adatokat, vagy az alkalmazás dönt, hogy újra `acquireTokenSilent` amikor hálózati visszaállítása után folyamatban átmenetileg nem érhető el.
 
 <!--end-collapse-->
 
@@ -287,6 +290,7 @@ Adja hozzá a következő metódust `ViewController.swift` Kijelentkezés a felh
 
 }
 ```
+
 <!--start-collapse-->
 ### <a name="more-info-on-sign-out"></a>További információ a Kijelentkezés
 
@@ -299,11 +303,12 @@ Bár ebben a példában az alkalmazás támogatja az egy-egy felhasználóhoz, a
 
 Miután a felhasználó hitelesíti magát, a böngésző átirányítja a felhasználót az alkalmazásnak. Regisztráljon a visszahívás az alábbi lépésekkel:
 
-1.  Nyissa meg `AppDelegate.swift` és MSAL importálása:
+1. Nyissa meg `AppDelegate.swift` és MSAL importálása:
 
 ```swift
 import MSAL
 ```
+
 <!-- Workaround for Docs conversion bug -->
 <ol start="2">
 <li>

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: cwatson
-ms.openlocfilehash: 460cd3a5b05680563661e2f6519eaa3506eee03b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: e43188459bf495748a054b0f24936c9141bd218c
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392081"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025711"
 ---
 # <a name="understand-how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Megismerheti, hogyan kell alkalmazni az Azure a foglalási kedvezményt a virtuális gépek
 
@@ -51,15 +51,15 @@ Ismertetése és használati jelentések számlázási megtekintheti az alkalmaz
 
 ## <a name="application-of-reservation-discount-to-windows-vms"></a>Windows virtuális gépek foglalási kedvezményt alkalmazását
 
-Ha Windows Virtuálisgép-példányokat futtatja, a Foglalás alkalmazva az infrastrukturális költségek. Az alkalmazás a Windows-beli virtuális gépek a virtuális gép infrastrukturális költségek foglalási ugyanaz, mint a nem - Windows rendszerű virtuális gépek. Díjkötelesek külön vCPU / alapon Windows szoftverek. Lásd: [Windows szoftverek díjait a foglalások](https://go.microsoft.com/fwlink/?linkid=862756). A Windows licencelési költségeit az [Azure Hybrid Benefit a Windows Server] lefedheti (https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing).
+Ha Windows Virtuálisgép-példányokat futtatja, a Foglalás alkalmazva az infrastrukturális költségek. Az alkalmazás a Windows-beli virtuális gépek a virtuális gép infrastrukturális költségek foglalási ugyanaz, mint a nem - Windows rendszerű virtuális gépek. Díjkötelesek külön vCPU / alapon Windows szoftverek. Lásd: [Windows szoftverek díjait a foglalások](https://go.microsoft.com/fwlink/?linkid=862756). A Windows licencelési költségek lefedheti [Azure Hybrid Benefit a Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing).
 
 ## <a name="next-steps"></a>További lépések
 
 Azure-foglalások kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Mik az Azure-foglalásokat?](billing-save-compute-costs-reservations.md)
-- [Fizessen elő az Azure fenntartott VM-példányok a virtuális gépekkel](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Fizessen elő az SQL-adatbázis számítási erőforrásokat, hogy az Azure SQL Database szolgáltatás számára fenntartott kapacitás](../sql-database/sql-database-reserved-capacity.md)
+- [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Előre fizetés fenntartott Azure SQL Database-kapacitással rendelkező SQL Database számítási erőforrásokért](../sql-database/sql-database-reserved-capacity.md)
 - [Az Azure Reservations kezelése](billing-manage-reserved-vm-instance.md)
 - [A használatalapú fizetéses előfizetést foglalás használati adatai](billing-understand-reserved-instance-usage.md)
 - [A nagyvállalati beléptetés foglalás használati adatai](billing-understand-reserved-instance-usage-ea.md)

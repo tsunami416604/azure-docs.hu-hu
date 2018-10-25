@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3429917fcee520ae932253f1fdfead4ffb6535e6
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: cf6e2fa296d3d9f152edf22685b930586b4de524
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809694"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024812"
 ---
 <a name="retrieve-offers"></a>Ajánlatok lekérése
 ===============
@@ -80,7 +80,7 @@ A közzétevő névtérben ajánlatok összesített listájának beolvasása.
 |  status         | Az ajánlat állapotát. A lehetséges értékek listáját lásd: [stav Nabídky](#offer-status) alatt.                         |
 |  id             | GUID azonosítója, amely egyedileg azonosítja az ajánlatot a kiadó névtérben.                                                    |
 |  version        | Az ajánlat jelenlegi verziójával. A verzió tulajdonság nem lehet módosítani az ügyfél által. Azt minden egyes közzététel után. |
-|  definíció     | A számítási feladatok tényleges definíciója összefoglaló nézetét tartalmazza. Részletes definíció lekéréséhez használja a [lekérése adott ajánlat] (. / cloud-partner-portal-api-retrieve-specific-offer.md) API-t. |
+|  definíció     | A számítási feladatok tényleges definíciója összefoglaló nézetét tartalmazza. A részletes definíció lekéréséhez használja a [olvashatók be az adott ajánlat](./cloud-partner-portal-api-retrieve-specific-offer.md) API-t. |
 |  changedTime    | Az ajánlat utolsó módosításának időpontja (UTC)                                                                              |
 |  |  |
 

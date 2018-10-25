@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: 9e07cddb9d446ea24143d3a6dec5e310d3ed6f1c
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 423661b8a459abf0b3028da92d6fd3ec885bb2c9
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802117"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025022"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Az Azure Functions Java fejlesztői útmutatója
 
@@ -52,7 +52,7 @@ FunctionsProject
  | - pom.xml
 ```
 
-Van egy megosztott [host.json] (functions-gazdagép-json.md) fájl, amely a függvényalkalmazás konfigurálása használható. Minden függvény saját kódfájl (.java) és a kötési konfigurációs fájl (function.json) rendelkezik.
+Van egy megosztott [host.json](functions-host-json.md) fájlt, amely a függvényalkalmazás konfigurálása használható. Minden függvény saját kódfájl (.java) és a kötési konfigurációs fájl (function.json) rendelkezik.
 
 Egynél több függvényt helyezheti a projektben. Kerülje a functions üzembe a különálló JAR-fájlok kivételével. A FunctionApp a célként megadott könyvtárban, mire megtörténik a függvényalkalmazáshoz az Azure-ban.
 

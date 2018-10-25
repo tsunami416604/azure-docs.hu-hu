@@ -4,15 +4,15 @@ description: A gyűjtőberendezés az Azure Migrate ismerteti.
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 10/24/2018
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 3c40fd97540d8529c95c7d18d2c3155dd37717e9
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 006a246323e9f82ea9c9a6a2940ed624d7e44e13
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945416"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986780"
 ---
 # <a name="about-the-collector-appliance"></a>A gyűjtőberendezés kapcsolatban
 
@@ -198,7 +198,7 @@ Vegye figyelembe, hogy a berendezés csak az folyamatosan teljesítményadatokat
 2. Virtuális gépek törlése: lehet a célja, a készülék, virtuális gépek törlése nem jelenik meg akkor is, ha leállítja és elindítja a felderítést. Ennek az oka, hogy az ezt követő felderítések adatokat hozzáfűzi korábbi felderítések, és nem bírálja felül. Ebben az esetben egyszerűen figyelmen kívül hagyhatja a portálon, a virtuális gép eltávolítása a csoportból, és az értékelés újraszámításakor.
 
 > [!NOTE]
-> Folyamatos felderítési funkciója előzetes verzióban érhető el. Ha a vCenter Server statisztikai beállításait a 3. szintre nem, azt javasoljuk, hogy ezt a módszert használja.
+> Folyamatos felderítési funkciója előzetes verzióban érhető el. Azt javasoljuk, hogy ezt a módszert használja, ez a módszer részletes teljesítményadatait gyűjti, és pontos megfelelő méretezéséhez eredményez.
 
 
 ## <a name="discovery-process"></a>Felderítési folyamat

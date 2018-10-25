@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: abc32b726eea55f08a052f29a12f1eb237d4f5d6
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 8424fa721d87467de70b4365578d196b3145b4b0
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311320"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024273"
 ---
 # <a name="use-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Üzenet-útválasztása használatával eszköz – felhő üzeneteket küldhet a különböző végpontok
 
@@ -27,7 +27,7 @@ ms.locfileid: "49311320"
 
 Az IoT Hub szolgáltatás a végpontokkal való írási hozzáférés van szüksége üzenet-útválasztása működjön. Ha a konfigurálja a végpontokat az Azure Portalon keresztül, a szükséges engedélyekkel meg lesz hozzáadva. Ellenőrizze, hogy konfigurálja a szolgáltatások, a várt teljesítményről támogatásához. Amikor először konfigurálja az IoT-megoldás, szükség lehet a további végpontok monitorozása és a tényleges betöltést a szükséges módosításokat.
 
-Az IoT Hub meghatározása egy [gyakran alkalmazott formátum](iot-hub-devguide-messages-construct.md) protokollok között interoperatbility az üzenetkezelés összes eszköz-felhő. Ha egy üzenet, amelyek egyazon végpont több útvonal megfelel, az IoT Hub továbbítja az üzenet, hogy a végpont csak egyszer. Ezért nem szükséges konfigurálni a deduplikáció a Service Bus-üzenetsor vagy témakör. A particionált üzenetsorok a partíció affinitás üzenetrendezés garantálja. Ez az oktatóanyag segítségével megtudhatja, hogyan [üzenet-útválasztása konfigurálása] (az oktatóanyag-routing.md).
+Az IoT Hub meghatározása egy [gyakran alkalmazott formátum](iot-hub-devguide-messages-construct.md) protokollok között interoperatbility az üzenetkezelés összes eszköz-felhő. Ha egy üzenet, amelyek egyazon végpont több útvonal megfelel, az IoT Hub továbbítja az üzenet, hogy a végpont csak egyszer. Ezért nem szükséges konfigurálni a deduplikáció a Service Bus-üzenetsor vagy témakör. A particionált üzenetsorok a partíció affinitás üzenetrendezés garantálja. Ez az oktatóanyag segítségével megtudhatja, hogyan [üzenet útválasztás konfigurálása](tutorial-routing.md).
 
 ## <a name="routing-endpoints"></a>Útválasztási végpontok
 

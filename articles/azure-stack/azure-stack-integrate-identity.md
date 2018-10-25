@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 10/22/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 6548693b91283665704be8fc83a483a9d20dc41b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 8a33d4edb4107b936c36a744bb082c02b7830868
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470546"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024443"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Az Azure Stack adatközpont integrációja - identitás
 Az identitás-szolgáltatóktól, Azure Active Directory (Azure AD) vagy az Active Directory összevonási szolgáltatások (AD FS) használatával az Azure-verem üzembe helyezhető. Ellenőrizze a kiválasztott Azure Stack üzembe helyezése előtt. Az AD FS telepítési is nevezik üzembe helyezése az Azure Stack kapcsolat nélküli módban.
@@ -53,7 +53,6 @@ Az alapértelmezett szolgáltatója előfizetést az utolsó lépés egy új tul
 
 Követelmények:
 
-
 |Összetevő|Követelmény|
 |---------|---------|
 |Graph|A Microsoft Active Directory 2012/2012 R2/2016|
@@ -64,7 +63,6 @@ Követelmények:
 Gráf csak egyetlen Active Directory-erdővel rendelkező integrációs támogatja. Ha több erdő, csak a konfigurációban megadott erdő használandó felhasználók és csoportok beolvasása.
 
 A következő információkat szükség, mint a bemenetek az automatizálás paraméterek:
-
 
 |Paraméter|Leírás|Példa|
 |---------|---------|---------|
@@ -96,14 +94,14 @@ Igény szerint hozhat létre egy fiókot a Graph szolgáltatás a meglévő Acti
 
 Ebben az eljárásban az Adatközpont-hálózatát, amely képes kommunikálni az Azure Stack a rendszerjogosultságú végpont számítógépet használni.
 
-2. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet (Futtatás rendszergazdaként), és csatlakozzon a rendszerjogosultságú végpont IP-címét. A hitelesítő adatok használata **CloudAdmin** hitelesítéséhez.
+1. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet (Futtatás rendszergazdaként), és csatlakozzon a rendszerjogosultságú végpont IP-címét. A hitelesítő adatok használata **CloudAdmin** hitelesítéséhez.
 
    ```PowerShell  
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
-3. Most, hogy a kiemelt végponthoz csatlakozik, futtassa a következő parancsot: 
+2. Most, hogy a kiemelt végponthoz csatlakozik, futtassa a következő parancsot: 
 
    ```PowerShell  
    Register-DirectoryService -CustomADGlobalCatalog contoso.com
@@ -210,6 +208,9 @@ Ez az eljárás, amely képes kommunikálni az Azure Stack a rendszerjogosultsá
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
    ```
 
+   > [!Note]  
+   > Ha a meglévő Active Directory összevonási szolgáltatások (STS-fiók) lévő tanúsítvány forgassa be kell állítania az AD FS-integráció újbóli. Akkor is, ha a metaadatok végpontján érhető el vagy konfigurálva volt a metaadatfájl azáltal, hogy be kell állítania az integrációt.
+
 ## <a name="configure-relying-party-on-existing-ad-fs-deployment-account-sts"></a>Függő entitás konfigurálása a meglévő AD FS üzembe helyezése (STS-fiók)
 
 A Microsoft biztosít egy parancsfájlt, amely a függőentitás-megbízhatóságot, többek között a jogcím-átalakítási szabályok konfigurálása. A parancsfájlt nem kötelező használni, mivel a parancsok manuálisan is futtatható.
@@ -274,7 +275,7 @@ Ha úgy dönt, hogy manuálisan futtassa a parancsokat, kövesse az alábbi lép
    Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -TokenLifeTime 1440
    ```
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > Kell használnia az AD FS beépülő MMC-modulban a Kiállításengedélyezési szabályok konfigurálása a Windows Server 2012 vagy 2012 R2 AD FS használata esetén.
 
 4. Azure Stack eléréséhez használt Internet Explorer vagy a Microsoft Edge böngészőt, amikor token kötések, kell figyelmen kívül. Ellenkező esetben a bejelentkezési kísérlet sikertelen. Az AD FS-példány vagy farm tagja futtassa a következő parancsot:

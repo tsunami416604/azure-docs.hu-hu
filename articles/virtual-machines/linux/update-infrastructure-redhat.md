@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: borisb
-ms.openlocfilehash: 4a8bc45b253def1130e5a02dfcd6d359f0e74506
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: ad28e30f7f31ec61332faac3ab3ee3c3e2fd67ca
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42060986"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024154"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Az igény szerinti Red Hat Enterprise Linux virtuális gépek az Azure-beli Red Hat frissítési infrastruktúrája
  [Red Hat frissítési infrastruktúrához](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) lehetővé teszi a felhőszolgáltatók, például az Azure Red Hat-ban üzemeltetett tárház tartalmának tükrözik, az Azure-ra vonatkozó egyéni adattárak tartalom létrehozása és végfelhasználói virtuális gépek számára elérhető legyen.
@@ -76,7 +76,7 @@ Ha Azure RHUI csatlakozik az Azure RHEL Használatalapú virtuális gépből pro
 
     b. A következő mintával rendelkező helyre mutat `mirrorlist.*cds[1-4].cloudapp.net`, a konfiguráció frissítése megadása kötelező. A régi virtuális gép pillanatképét használ, és frissítenie kell, hogy az új Azure RHUI mutasson.
 
-1. Az Azure-ban üzemeltetett RHUI, korlátozott virtuális gépeken belül az [Azure-adatközpont IP-címtartományok] (https://www.microsoft.com/download/details.aspx?id=41653).
+1. Az Azure-ban üzemeltetett RHUI, korlátozott belüli virtuális gépek a [Azure adatközpont IP-címtartományait](https://www.microsoft.com/download/details.aspx?id=41653).
  
 1. Az új konfigurációt használja, ha ellenőrizte, hogy a virtuális gép csatlakozik az Azure IP-címtartományból, és továbbra sem tud kapcsolódni az Azure RHUI, egy támogatási esetet, amelyben a Microsoft vagy a Red Hat fájl.
 

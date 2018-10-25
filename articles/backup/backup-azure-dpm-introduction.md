@@ -1,5 +1,5 @@
 ---
-title: A DPM-kiszolgáló számítási feladatainak biztonsági mentéséhez az Azure-bA Prepeare
+title: A DPM-kiszolgáló számítási feladatainak biztonsági mentéséhez az Azure előkészítése
 description: Bevezetés az adatok biztonsági mentése a DPM az Azure Recovery Services-tárolóba.
 services: backup
 author: adigan
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: adigan
-ms.openlocfilehash: 3efe2f02666c69ff648eaab39fbc1dfe9dc5e3e7
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: ac89f0f2e2f86fa34fc754ee23e9b67329560fa4
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945433"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024477"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Az Azure-ba, a System Center DPM-mel biztonsági másolatot előkészítése
 
@@ -39,7 +39,7 @@ A cikk tartalmazza:
 A DPM-kiszolgálók biztonsági másolatának az Azure-bA üzleti előnyei a következők:
 
 * A helyszíni dpm az Azure Backup biztosít a szalagos hosszú távú központi telepítés helyett.
-* A dpm-beli virtuális gépen fut az Azure Backup lehetővé teszi az Azure lemezről tárolást. Backup-tároló tároló régebbi adatok tárolása lehetővé teszi azáltal, hogy az üzleti lemezre új adatok tárolására.
+* A dpm-beli virtuális gépen fut az Azure Backup lehetővé teszi az Azure lemezről tárolást. Backup-tároló régebbi adatok tárolása lehetővé teszi azáltal, hogy az üzleti lemezre új adatok tárolására.
 
 ## <a name="prerequisites-and-limitations"></a>Előfeltételek és korlátozások
 
@@ -54,7 +54,7 @@ Támogatott alkalmazások | [Ismerje meg,](https://docs.microsoft.com/system-cen
 Támogatott fájltípusok | Az ilyen biztonsági másolat készíthető a Azure Backup szolgáltatással: titkosítása (csak teljes biztonsági mentések); Tömörített (növekményes biztonsági mentések támogatva); Ritka (növekményes biztonsági mentések támogatva); Tömörített és ritka (kezelt, ritka).
 Nem támogatott fájltípusok | A kis-és nagybetűket fájlrendszerek; kiszolgálók a rögzített hivatkozások (kimaradnak); újraelemzési pontok (kimaradnak); titkosított és tömörített (kimaradnak); titkosított és ritka (kimaradnak); Tömörített stream; elemezni az adatfolyamot.
 Helyi tároló | Egyes gépek biztonsági helyi szabad tárhely, amely az adatokat, amelyek készül biztonsági másolat méretének legalább 5 %-át kell rendelkeznie.  Például 100 GB adat biztonsági mentésével legalább 5 GB szabad hely az ideiglenes hely szükséges.
-Tároló tárolási | Nem, akkor képes biztonsági mentést az Azure Backup-tároló adatok mennyisége korlátozott, de egy adatforráshoz (például egy virtuális gép vagy adatbázis) mérete nem haladhatja meg a 54400 GB.
+Tároló tárolási | Nem a biztonsági másolatot készíthet az Azure Backup-tároló adatok mennyisége korlátozott, de egy adatforráshoz (például egy virtuális gép vagy adatbázis) mérete nem haladhatja meg a 54400 GB.
 Az Azure Backup ügynöke | Ha a DPM a System Center 2012 SP1 rendszeren fut, telepítse a 2-es vagy újabb kumulatív DPM SP1. Ez az ügynök telepítéséhez szükséges.<br/><br/> Ez a cikk ismerteti, hogyan helyezhet üzembe az Azure Backup ügynököt, más néven a Microsoft Azure Recovery Service-(MARS-) ügynök legújabb verzióját. Ha egy korábbi verziója telepítve van, győződjön meg arról, hogy a biztonsági mentés a várt módon működik a legújabb verzióra frissíteni. 
 
 
@@ -160,7 +160,7 @@ Minden biztonsági másolatot készít az Azure Backup gépek telepítve van a b
 
     - Az Azure Backup ideiglenes elképzelheti, ezt a helyet használja a helyreállított adatokkal.
     - Adat-helyreállítás befejezése után az Azure Backup fogja törölni az adatokat, ezen a területen.
-    - A hely elegendő területtel rendelkezik, amely a paralle helyreállítása várhatóan elemeket kell rendelkeznie.
+    - A hely elegendő területtel rendelkezik, helyreállítása várhatóan párhuzamosan elemeket kell rendelkeznie.
 
     ![Helyreállítási mappa beállítás](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_RecoveryFolder.png)
 

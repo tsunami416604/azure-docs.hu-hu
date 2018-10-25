@@ -2,20 +2,20 @@
 title: Telepítse a Durable Functions bővítmény és -minták – Azure
 description: Ismerje meg, hogyan telepítheti a Durable Functions bővítmény az Azure Functions szolgáltatáshoz, a fejlesztői portál vagy a Visual Studio fejlesztői.
 services: functions
-author: cgillum
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 2eb838bcb9d3f64d0bbf4657c516adb50d103223
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 6bbf232fc17b9acfd4e8cd84a0cb1346ab8ea9b5
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585305"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986817"
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Telepítse a Durable Functions bővítmény és a minták (az Azure Functions)
 
@@ -45,7 +45,7 @@ A Visual Studio jelenleg biztosítja a legoptimálisabb Durable Functions haszn�
 Kezdve a minta meghajtóbetűjeleket azonos utasításait, de tegye a következőket, hanem a *.zip* fájlt:
 
 1. Függvényalkalmazás-projekt létrehozása.
-2. Keresse meg a következő NuGet csomag hivatkozás használatával *NuGet-csomagok kezelése* , és adja hozzá a projekthez: Microsoft.Azure.WebJobs.Extensions.DurableTask v1.6.0
+2. Keresse meg a következő NuGet csomag hivatkozás használatával *NuGet-csomagok kezelése* , és adja hozzá a projekthez: Microsoft.Azure.WebJobs.Extensions.DurableTask v1.6.2
    
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
@@ -75,12 +75,12 @@ A Visual Studio Code kiterjedő minden főbb platformhoz – a Windows, macOS é
 3. Azure Functions Durable-Extension telepítéséhez futtassa a következő parancsot parancssorba / terminál ablakában:
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.6.0
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.6.2
     ```
 4. Azure Functions Twilio-bővítmény telepítéséhez a következő parancs futtatásával kérdés / terminál ablakában:
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.Twilio -v 3.0.0-beta8
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.Twilio -v 3.0.0
     ```
 5. Azure Storage Emulator vagy a frissítés futtatása a *local.settings.json* fájl valós Azure Storage kapcsolati karakterlánccal.
 6. Nyissa meg a projektet a Visual Studio Code-ban. 
@@ -96,14 +96,14 @@ A Visual Studio Code kiterjedő minden főbb platformhoz – a Windows, macOS é
 2. A gépén, nyissa meg a [JavaScript mintákat tartalmazó mappára](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/javascript). 
 3. Azure Functions Durable-Extension telepítéséhez futtassa a következő parancsot parancssorba / terminál ablakában
 
-    ```
+    ```bash
     func extensions install
     ```
     > [!NOTE] 
     > Ehhez a [.NET Core SDK](https://www.microsoft.com/net/download) a gépre kell telepíteni
 4. A következő parancs futtatásával az npm-csomagok visszaállítására kérdés / terminál ablakában:
     
-    ```
+    ```bash
     npm install
     ``` 
 5. Frissítés a *local.settings.json* fájlt egy olyan kapcsolati karakterlánccal, egy Azure storage-fiókját a `AzureWebJobsStorage`.  Ez a tárfiók a tartós függvény állapota lesz használható.
@@ -119,13 +119,13 @@ A Visual Studio Code kiterjedő minden főbb platformhoz – a Windows, macOS é
 1. A parancs parancssorba / terminál keresse meg a mappát, amely a függvényalkalmazás fogja futtatni.
 3. Hozzon létre egy Függvényalkalmazást projektet a következő parancs futtatásával:
 
-    ```
+    ```bash
     func init
     ``` 
 4. Futtassa az Azure Storage Emulator (csak Windows), vagy frissítse a *local.settings.json* valós Azure Storage kapcsolati karakterláncát tartalmazó fájl `AzureWebJobsStorage`.
 5. Ezután hozzon létre egy új függvényt a következő parancs futtatásával, és kövesse a varázsló lépéseit:
 
-    ```
+    ```bash
     func new
     ```
     >[!IMPORTANT]

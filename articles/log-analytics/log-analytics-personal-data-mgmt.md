@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 1b9d8d252055bb1368b7024ca9b0acf6c21ba7b3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 932dcf485f6fe1a365f3bc0910c2223a118e9add
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041611"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024527"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Útmutató a Log Analytics és az Application Insights tárolt személyes adatok
 
@@ -102,7 +102,7 @@ Miután az Azure Resource Manager-szerepkör van rendelve, két új API-útvonal
 
 #### <a name="log-data"></a>Naplóadatok
 
-* [Közzététel kiürítése] (https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge) - objektumhoz, az adatok törlése paramétereinek megadása szükséges, és adja vissza a hivatkozás GUID azonosítója 
+* [POST kiürítése](https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge) - objektumhoz, az adatok törlése paramétereinek megadása szükséges, és adja vissza a hivatkozás GUID azonosítója 
 * GET kiürítése állapota - a POST kiürítés hívásához egy "x-ms-állapot – location" fejléc tartalmazza egy URL-címet, amely segítségével meghívhatja a végleges törlés API állapotának meghatározásához adja vissza. Példa:
 
     ```

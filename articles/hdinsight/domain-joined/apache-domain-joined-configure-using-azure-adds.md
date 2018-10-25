@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/9/2018
-ms.openlocfilehash: da64c626c121062960fa7724faaa64cdc620d64a
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 6218a96b3939b2a07832dd3d6d19327cfb039b68
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466344"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986933"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>A HDInsight-fürt konfigurálása a vállalati biztonsági csomaggal az Azure Active Directory Domain Services használatával
 
@@ -69,7 +69,9 @@ Kiválasztásával ezeket egyéni IP-címek használata az Azure AD-Tartományi 
 
 Az Azure AD-DS-példánya és a HDInsight-fürt is helyezni, az azonos Azure virtuális hálózat könnyebbé válik. Eltérő virtuális hálózatokba használni szeretne, úgy, hogy a tartományvezérlő HDI virtuális gépek láthatók társviszonyba állítása kell ezekhez a virtuális hálózatokhoz. További információkért lásd: [virtuális hálózatok közötti társviszony](../../virtual-network/virtual-network-peering-overview.md). 
 
-Miután a virtuális hálózatok társviszonyban állnak, konfigurálása a HDInsight VNET az egyéni DNS-kiszolgálót használ, és adjon meg az Azure AD-Tartományi magánhálózati IP-címek, a DNS-kiszolgáló címei. Ha mindkét virtuális hálózaton az azonos DNS-kiszolgálók, az egyéni tartomány nevét feloldja a megfelelő IP-címhez, és HDInsight elérhető lesz. Például ha a tartomány nevét a "contoso.com" majd elvégezte a lépést, pingelése "contoso.com" Azure AD-Tartományi IP jobb kell feloldhatónak lennie. ED ![egyéni DNS-kiszolgálók konfigurálása a virtuális hálózatok közötti Társviszony](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
+Miután a virtuális hálózatok társviszonyban állnak, konfigurálása a HDInsight VNET az egyéni DNS-kiszolgálót használ, és adjon meg az Azure AD-Tartományi magánhálózati IP-címek, a DNS-kiszolgáló címei. Ha mindkét virtuális hálózaton az azonos DNS-kiszolgálók, az egyéni tartomány nevét feloldja a megfelelő IP-címhez, és HDInsight elérhető lesz. Például ha a tartomány nevét a "contoso.com" majd elvégezte a lépést, pingelése "contoso.com" Azure AD-Tartományi IP jobb kell feloldhatónak lennie. 
+
+![Egyéni DNS-kiszolgálók beállítása a társított virtuális hálózaton](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 
 **Teszteléséhez** a hálózatkezelés megfelelően van beállítva, ha egy windows rendszerű virtuális gép csatlakozzon a HDInsight virtuális hálózat/alhálózat, és pingelje a tartomány nevét (azt kell feloldhatónak lennie egy IP-cím), majd futtassa **ldp.exe** Azure Active Directory-tartományi szolgáltatások eléréséhez. Majd **a windows rendszerű virtuális gép csatlakoztatása a tartományhoz, győződjön meg arról, hogy** , amely az összes szükséges távoli eljáráshívások sikeres legyen, az ügyfél és kiszolgáló között. Is **nslookup** , erősítse meg a storage-fiók vagy bármilyen külső DB használható (például külső Hive-metaadattár vagy Ranger DB) hálózati hozzáférést.
 Meg kell győződnie arról, hogy minden a [szükséges portok](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) szerepel az engedélyezési listán az AAD-DS-ben alhálózat hálózati biztonsági csoport szabályok vonatkoznak, ha az AAD-DS védi egy NSG-t. 

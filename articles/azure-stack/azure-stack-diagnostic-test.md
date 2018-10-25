@@ -2,7 +2,7 @@
 title: Teszt futtatása az Azure Stackben |} A Microsoft Docs
 description: Tudnivalók az Azure Stackben diagnosztikai naplófájlok összegyűjtése.
 services: azure-stack
-author: mattbriggs
+author: jeffgilb
 manager: femila
 cloud: azure-stack
 ms.service: azure-stack
@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 10/15/2018
-ms.author: mabrigg
-ms.reviewer: hectorl
-ms.openlocfilehash: 3f4dc6e4136d8d2e3eb1ca5e822306aae2217e3b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 10/24/2018
+ms.author: jeffgilb
+ms.reviewer: adshar
+ms.openlocfilehash: 4f95fb5f2199e8c276b78a83391f3814303a9470
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340851"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024619"
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>Teszt futtatása az Azure Stackhez
 
@@ -39,7 +39,7 @@ Ha a probléma, forduljon a Microsoft ügyfél-támogatási szolgáltatások, ma
     3. Nyissa meg a PowerShellt rendszergazdaként.
     4. Futtassa: `Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint`
     5. Futtassa: `Test-AzureStack`
-4. Ha bármely tesztje sikertelen, Futtatás: `Get-AzureStackLog -FilterByRole SeedRing -OutputPath <Log output path>` a parancsmag a naplókat gyűjt a Test-AzureStack. Diagnosztikai naplók kapcsolatos további információkért lásd: [Azure Stack-diagnosztikai eszközök](azure-stack-diagnostics.md).
+4. Ha bármely tesztje sikertelen, Futtatás: `Get-AzureStackLog -FilterByRole SeedRing -OutputPath <Log output path>` a parancsmag a naplókat gyűjt a Test-AzureStack. Diagnosztikai naplók kapcsolatos további információkért lásd: [Azure Stack-diagnosztikai eszközök](azure-stack-diagnostics.md). Ne naplók gyűjtése és forduljon a Microsoft Services támogatási (CSS), ha a tesztek figyelmeztetés a jelentés.
 5. Küldés a **SeedRing** Microsoft ügyfél-támogatási naplók. A Microsoft ügyfélszolgálata szolgáltatások működik együtt, hogy a probléma megoldásához.
 
 ## <a name="reference-for-test-azurestack"></a>Test-AzureStack referenciája

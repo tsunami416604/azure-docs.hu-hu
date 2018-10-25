@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 255fe84f0d155902b2a3ac477a1e677efef42bb4
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 720b8584c201826e55099ad31667478b6aa57b27
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386656"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024515"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Virtuális gépi bővítmények és szolgáltatások linuxhoz
 
@@ -54,7 +54,8 @@ Annak érdekében, hogy a lehető legjobb élményt, vannak az ügynök minimál
 
 #### <a name="supported-oses"></a>Beállított támogatott operációs rendszerek
 
-A Linux-ügynök fut több OSE-kre, azonban a bővítmények keretrendszer van korlátozva a OSE-kre vonatkozó adott bővítmények. További információkért lásd: [Ez a cikk] (https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems ).
+A Linux-ügynök fut több OSE-kre, azonban a bővítmények keretrendszer van korlátozva a OSE-kre vonatkozó adott bővítmények. További információkért tekintse meg [ezt a cikket](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
+).
 
 Néhány bővítmény nem támogatja az összes OSE-kre között, és bocsáthat *hiba kódja 51, a "Nem támogatott operációs rendszer"*. Támogatási lehetőségek az egyes bővítmény dokumentációjában.
 

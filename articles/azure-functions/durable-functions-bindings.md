@@ -2,20 +2,20 @@
 title: Durable Functions – Azure kötései
 description: Hogyan eseményindítók és kötések a tartós Functons bővítmény használata az Azure Functions szolgáltatáshoz.
 services: functions
-author: cgillum
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/29/2017
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 29cc7982dbe9991e6b0e3363cd636ac88881fc7b
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: f9bf42e5e20a7d9e861d0c3354040e981bf3ef21
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237281"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987749"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) kötései
 
@@ -112,7 +112,7 @@ const df = require("durable-functions");
 
 module.exports = df.orchestrator(function*(context) {
     const name = context.df.getInput();
-    const result = yield context.df.callActivityAsync("SayHello", name);
+    const result = yield context.df.callActivity("SayHello", name);
     return result;
 });
 ```
@@ -123,7 +123,7 @@ A tevékenység eseményindító lehetővé teszi az orchestrator-funkciók ált
 
 Visual Studio használata, ha a tevékenység trigger van konfigurálva, használja a [ActivityTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.ActivityTriggerAttribute.html) .NET attribútum. 
 
-Fejlesztési használata az Azure Portalon, a tevékenység eseményindító határozza meg a következő JSON-objektum a `bindings` tömbje *function.json*:
+Fejlesztéséhez használ a VS Code vagy az Azure Portalon, ha a tevékenység eseményindító határozza meg a következő JSON-objektum a `bindings` tömbje *function.json*:
 
 ```json
 {
@@ -249,7 +249,7 @@ A vezénylési ügyfél kötés lehetővé teszi az orchestrator-függvényekkel
 
 Ha a Visual Studio használata esetén kell kötni a vezénylési ügyfél használatával a [OrchestrationClientAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) .NET attribútum.
 
-Programozási nyelvek használata (pl. *.csx* fájlok) fejlesztéshez, az orchestration eseményindító meghatározása szerint a következő JSON-objektum a `bindings` tömbje *function.json*:
+Programozási nyelvek használata (pl. *.csx* vagy *.js* fájlok) fejlesztéshez, az orchestration eseményindító meghatározása szerint a következő JSON-objektum a `bindings` tömbje  *Function.JSON*:
 
 ```json
 {

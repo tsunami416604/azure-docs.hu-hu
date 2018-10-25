@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 10/04/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 718f351ad4ce325f3585ebcbe7adfc4b5905e734
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9688b9ba305a2eb59b80b02c0b41a7f4855dd051
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998610"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024562"
 ---
 # <a name="scaling-the-cluster-to-manage-web-service-throughput"></a>A web service átviteli sebesség kezelésére fürt méretezése
 
@@ -65,7 +65,7 @@ Ez eltarthat pár percig. A fürtben található csomópontok számának mérete
 
 ### <a name="scaling-the-number-of-kubernetes-pod-replicas-in-a-cluster"></a>A Kubernetes podreplikák száma méretezése a fürtben
  
-Méretezhető, a fürt az Azure Machine Learning parancssori felület vagy az [a Kubernetes-irányítópult] podreplikák száma (https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/).
+Méretezhető, a fürt az Azure Machine Learning parancssori felület használatával podreplikák száma vagy a [Kubernetes-irányítópult](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/).
 
 A Kubernetes-podok replika további információkért lásd: a [Kubernetes-Podok](https://kubernetes.io/docs/concepts/workloads/pods/pod/) dokumentációját.
 

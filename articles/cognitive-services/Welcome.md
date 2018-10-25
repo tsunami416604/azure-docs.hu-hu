@@ -9,12 +9,12 @@ ms.component: ''
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: nitinme
-ms.openlocfilehash: 5fcd625edf913e6629bfedb7ce7a6b5fe204af28
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: f7a68aab4959c3793c7688504d73d2b539a26f83
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901431"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025395"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Mik az Azure Cognitive Services?
 
@@ -74,11 +74,11 @@ Az Azure Cognitive Services olyan API-k, SDK-k és szolgáltatások segítségé
 
 ## <a name="use-free-trials"></a>Használhatja az ingyenes próbaverzió
 
-[Történő regisztráció az ingyenes próbaverziókat is] (https://azure.microsoft.com/try/cognitive-services/ "Előfizetési súgó") mindössze egy e-mailt, és néhány egyszerű lépésben. Ha még nem rendelkezik egy Microsoft-Account kell. Minden API-hoz a kért kap egy egyedi kulcspárra. A másikat pedig a csak egy tartalék. A titkos kulcsok nem ossza meg senkivel. Kísérletek rendelkezik egy korlátozni, tranzakció / másodperc vagy perc, és a egy havi használati korlátot. Egy tranzakció egyszerűen csak egy API-hívás. A korlátozások feloldásához a fizetős szintek válthat.
+[Történő regisztráció az ingyenes próbaverziókat is](https://azure.microsoft.com/try/cognitive-services/ "Sign-up súgó") mindössze egy e-mailt, és néhány egyszerű lépésben. Ha még nem rendelkezik egy Microsoft-Account kell. Minden API-hoz a kért kap egy egyedi kulcspárra. A másikat pedig a csak egy tartalék. A titkos kulcsok nem ossza meg senkivel. Kísérletek rendelkezik egy korlátozni, tranzakció / másodperc vagy perc, és a egy havi használati korlátot. Egy tranzakció egyszerűen csak egy API-hívás. A korlátozások feloldásához a fizetős szintek válthat.
 
 ## <a name="subscription-management"></a>Előfizetés-kezelés
 
-Miután bejelentkezett a Microsoft Account, elérheti [saját előfizetések] (https://www.microsoft.com/cognitive-services/en-us/subscriptions "Saját előfizetések") használ a termékeket, a kvóta fennmaradó és lehetővé teszi, hogy további termékeket az előfizetéshez.
+Miután jelentkezett be Microsoft-Account, elérheti [saját előfizetések](https://www.microsoft.com/cognitive-services/en-us/subscriptions "saját előfizetések") megjelenítéséhez használja a termékeket, a kvóta fennmaradó és lehetővé teszi, hogy további termékek az előfizetéshez.
 
 ## <a name="upgrade-to-unlock-limits"></a>Frissítés korlátok zárolásának feloldása
 

@@ -1,6 +1,6 @@
 ---
-title: Az a StorSimple 8000 series konfigurációjának módosítása |} Microsoft Docs
-description: Ismerteti a StorSimple Device Manager szolgáltatás segítségével konfigurálja újra a StorSimple eszköz, amely már telepítve van.
+title: A StorSimple 8000 sorozatú eszköz konfigurációjának módosítása |} A Microsoft Docs
+description: Ismerteti a StorSimple-Eszközkezelő szolgáltatás segítségével konfigurálja újra a StorSimple-eszköz, amely már telepítve lett.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,159 +14,159 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 13ff24c24a881297775fa5f65821e53ceb83c351
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 727cf523f2a505729377f36738657fc5489134a7
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875157"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025990"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>A StorSimple Device Manager szolgáltatással a StorSimple eszköz konfigurációjának módosítása
+# <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>A StorSimple-Eszközkezelő szolgáltatás segítségével a StorSimple-eszköz konfigurációjának módosítása
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure-portálon **eszközbeállítások** szakasz a **beállítások** panel tartalmaz minden olyan módon konfigurálhatja újra a StorSimple eszközön a StorSimple eszköz Manager szolgáltatás által kezelt eszköz paraméterek . Ez az oktatóanyag azt ismerteti, hogyan használhatja a **beállítások** panelen a következő eszközszintű feladatok végezhetők el:
+Az Azure Portalon **eszközbeállítások** című rész a **beállítások** panel, amely a StorSimple eszközön, amely a StorSimple-Eszközkezelő szolgáltatás által kezelt újrakonfigurálhatja az összes eszköz paramétert tartalmaz . Ez az oktatóanyag azt ismerteti, hogyan használhatja a **beállítások** paneljein végezze el a következő eszközszintű feladatokat:
 
 * Módosítsa az eszköz rövid neve
-* Eszköz idő beállításainak módosítása
-* A másodlagos DNS hozzárendelése
-* Hálózati illesztők módosítása
-* A felcserélendő vagy IP-cím ismételt hozzárendelése
+* Eszközbeállítások idő módosítása
+* Másodlagos DNS hozzárendelése
+* Hálózati adapter módosítása
+* Felcserélés vagy IP-cím ismételt hozzárendelése
 
 ## <a name="modify-device-friendly-name"></a>Módosítsa az eszköz rövid neve
 
-Az Azure portál segítségével módosíthatja az eszköz nevét, és rendelje hozzá egy egyedi nevet az Ön által választott. Használja a **általános beállítások** panel az eszköz rövid neve módosítása az eszközön. A rövid név bármilyen karaktert tartalmazhat, és legfeljebb 64 karakter hosszú lehet.
+Az Azure portal használatával módosíthatja az eszköz nevét, és rendelje hozzá egy egyedi rövid nevet a választott. Használja a **általános beállítások** panel az eszközön, az eszköz rövid nevének módosításához. A rövid név bármilyen karaktert tartalmazhat, és a egy legfeljebb 64 karakter hosszú lehet.
 
 > [!NOTE] 
-> Csak akkor módosíthatja az eszköz neve, az Azure portálon, az eszköz beállításának befejezése előtt. A minimális eszközbeállítások végrehajtása után az eszköz nevét nem módosíthatja.
+> Csak akkor módosíthatja az eszköz nevét, az Azure Portalon, az eszköz beállításának befejezése előtt. A minimális Eszközbeállítás végrehajtása után az eszköz neve nem módosítható.
 
-![Eszköz neve általános beállításai](./media/storsimple-8000-modify-device-config/modify-general-settings3.png)
+![Eszköz neve az általános beállítások](./media/storsimple-8000-modify-device-config/modify-general-settings3.png)
 
-A StorSimple eszköz, amely a StorSimple Device Manager szolgáltatás csatlakozik hozzá van rendelve egy alapértelmezett nevet. Az alapértelmezett név általában tükrözi az eszköz sorozatszámát. Például egy alapértelmezett eszköz neve 15 karakternél hosszabb, mint 8600-SHX0991003G44HT, például azt jelzi, a következő:
+A StorSimple-eszköz, amely a StorSimple-Eszközkezelő szolgáltatás csatlakozik hozzá van rendelve egy alapértelmezett nevet. Az alapértelmezett név általában tükrözi az eszköz sorozatszámát. Ha például egy alapértelmezett eszköz neve 15 karakternél hosszabb, 8600-SHX0991003G44HT, például azt jelzi, hogy a következő:
 
-* **8600** – azt jelzi, az eszköz típusa.
-* **SHX** – azt jelzi, a gyártási helyet.
-* **0991003** -azt jelzi, a termék.
-* **G44HT**– az utolsó 5 számjegy eggyel növekszik, egyedi sorozatszámokat létrehozásához. Az egymást követő beállítása nem lehet.
+* **8600-as** – azt jelzi, hogy az eszköz típusa.
+* **SHX** – azt jelzi, hogy a gyártási hely.
+* **0991003** -azt jelzi, hogy egy bizonyos termékben.
+* **G44HT**-hozhat létre egyedi sorozatszáma eggyel növeli az utolsó 5 számjegy. Ez egy szekvenciális beállítása nem lehet.
 
-## <a name="modify-device-description"></a>Eszköz leírása módosítása
+## <a name="modify-device-description"></a>Eszköz leírásának módosítása
 
-Használja a **általános beállítások** panel az eszköz leírása módosítása az eszközön.
+Használja a **általános beállítások** panel az eszköz leírásának módosítása az eszközön.
 
 ![Az általános beállítások eszköz leírása](./media/storsimple-8000-modify-device-config/modify-general-settings4.png)
 
-Egy eszköz leírása általában segít azonosítani a tulajdonos és az eszköz a fizikai helye. A Leírás mezőben 256-nál kevesebb karaktert tartalmazhat.
+Egy eszköz leírása általában segít azonosítani a tulajdonos és az eszközök fizikai helyét. A Leírás mezőben a 256-nál kevesebb karaktert tartalmazhat.
 
 ## <a name="modify-time-settings"></a>Idő beállításainak módosítása
 
-Az eszköz hitelesítéséhez, a felhő tárolási szolgáltató kell szinkronizálja az időt. Használja a **általános beállítások** panel módosítása az eszközön beállításokat az eszközön.
+Az eszköz szinkronizálnia kell az időt ahhoz, hogy a tárolási szolgáltató a hitelesítéshez. Használja a **általános beállítások** panelen módosíthatja az eszköz beállításokat az eszközön.
 
 ![Az általános beállítások eszköz leírása](./media/storsimple-8000-modify-device-config/modify-general-settings2.png)
 
- A legördülő listából válassza ki az időzónát. Legfeljebb két Network Time Protocol (NTP) kiszolgálók adhatók meg:
+ A legördülő listából válassza ki az időzónát. Legfeljebb két Network Time Protocol (NTP) kiszolgálók is megadhatja:
 
- - **Elsődleges NTP-kiszolgáló** -a konfiguráció szükséges, és van megadva, ha használatával a Windows PowerShell-lel konfigurálja az eszközt. Megadhatja, hogy a Windows Server alapértelmezett **time.windows.com** az NTP-kiszolgálóként. Megtekintheti az elsődleges NTP-kiszolgálókonfiguráció az Azure portálon keresztül, de a Windows PowerShell-felületet segítségével módosíthatja. Használja a `Set-HcsNTPClientServerAddress` parancsmagot az elsődleges NTP-kiszolgáló, az eszköz módosításához. További információkért látogasson el synxtax [Set-HcsNTPClientServerAddress] (https://technet.microsoft.com/library/dn688138.aspx) parancsmag.
+ - **Elsődleges NTP-kiszolgáló** – a konfigurációs szükség, és van megadva a Windows PowerShell storsimple-höz készült használhatja az eszköz konfigurálása. Megadhatja, hogy a Windows Server alapértelmezett **time.windows.com** az NTP-kiszolgálóval. Az elsődleges NTP-kiszolgálókonfiguráció az Azure Portalon is megtekintheti, de a Windows PowerShell felületét a módosításhoz kell használnia. Használja a `Set-HcsNTPClientServerAddress` parancsmag használatával módosíthatja az eszköz elsődleges NTP-kiszolgálót. További információkért nyissa meg a synxtax [Set-HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) parancsmagot.
 
-- **Másodlagos NTP-kiszolgáló** -a konfigurálása nem kötelező. A portál segítségével másodlagos NTP-kiszolgáló konfigurálása.
+- **Másodlagos NTP-kiszolgáló** – a konfigurálása nem kötelező. A portál használatával egy másodlagos NTP-kiszolgálót konfigurálja.
 
-Az NTP-kiszolgáló beállításakor győződjön meg arról, hogy a hálózat engedélyezi-e a NTP-adatforgalmat az adatközpontban a az internethez. Egy nyilvános NTP-kiszolgáló megadása esetén győződjön meg arról, hogy a hálózati tűzfalak és egyéb biztonsági eszközök legyenek konfigurálva ahhoz felé és felől a külső hálózati utazik NTP-adatforgalmat. Ha nem engedélyezett a kétirányú NTP-adatforgalmat, egy belső NTP-kiszolgáló (egy Windows rendszerbeli tartományvezérlőnek biztosítja ezt a funkciót) kell használnia. Ha az eszköz nem próbálta szinkronizálni az időt, akkor nem lehet képes kommunikálni a felhő tárolási szolgáltatót.
+Az NTP-kiszolgáló konfigurálásakor győződjön meg arról, hogy a hálózat lehetővé teszi, hogy az NTP-adatforgalmat az Adatközpont az internethez. Nyilvános NTP-kiszolgáló megadásakor győződjön meg arról, hogy a hálózati tűzfal és egyéb biztonsági eszközök engedélyezésére vannak konfigurálva NTP forgalom áramlását felé és felől a külső hálózattal. Kétirányú NTP forgalom pedig nem engedélyezett, ha egy belső NTP-kiszolgáló (Windows tartományvezérlő biztosítja ezt a funkciót) kell használnia. Ha az eszköz ideje nem lehet szinkronizálni, azt nem lehet képes kommunikálni a felhős társzolgáltatóhoz.
 
-Nyilvános NTP-kiszolgálók listájának megtekintéséhez keresse fel a [NTP-kiszolgáló Web](http://support.ntp.org/bin/view/Servers/WebHome).
+Nyilvános NTP-kiszolgálók listájának megtekintéséhez nyissa meg a [NTP-kiszolgálók webes](http://support.ntp.org/bin/view/Servers/WebHome).
 
-### <a name="what-happens-if-the-device-is-deployed-in-a-different-time-zone"></a>Mi történik, ha az eszköz telepítve van egy másik időzónába?
+### <a name="what-happens-if-the-device-is-deployed-in-a-different-time-zone"></a>Mi történik, ha az eszköz egy másik időzónában van üzembe helyezve?
 
-Ha az eszközt másik időzónában van telepítve, az eszköz időzóna módosíthatja. Fényében, hogy a biztonsági mentési házirendek az eszköz időzónát használja, a biztonsági mentési házirendek automatikusan új időzónájának megfelelően módosítsa. Meg kell adni a felhasználói beavatkozás nélkül.
+Ha az eszköz egy másik időzónában van telepítve, az eszköz időzónáját módosítja. Tekintettel arra, hogy a biztonsági mentési szabályzatok használata az eszköz időzónáját, a biztonsági mentési szabályzatok automatikusan módosítsa az új időzónának megfelelően. Nincs szükség felhasználói beavatkozásra.
 
 ## <a name="modify-dns-settings"></a>DNS-beállításainak módosítása
 
-DNS-kiszolgáló használatos, amikor az eszköz kísérel meg kommunikálni a tárolási felhőszolgáltatást. Használja a **hálózati beállításai** panelen megtekintheti és módosíthatja a konfigurált DNS-beállítások az eszközön. 
+Az eszköz próbál meg kommunikálni a tárolási szolgáltató használt DNS-kiszolgáló. Használja a **hálózati beállítások** panel és a konfigurált DNS-beállítások módosítását az eszközön. 
 
-![DNS-beállításokat a hálózati beállítások](./media/storsimple-8000-modify-device-config/modify-network-settings1.png)
+![A hálózati beállításokat a DNS-beállítások](./media/storsimple-8000-modify-device-config/modify-network-settings1.png)
 
-A magas rendelkezésre állás érdekében meg kell az elsődleges, mind a másodlagos DNS-kiszolgálók konfigurálása az eszközök kezdeti telepítése során.
+A magas rendelkezésre állás érdekében szükségesek az elsődleges, mind a másodlagos DNS-kiszolgálók konfigurálása a kezdeti üzembe helyezése során.
 
-**Elsődleges DNS-kiszolgáló** -először adja meg az elsődleges DNS-kiszolgáló első telepítése során a Windows PowerShell-lel használhatja. Az elsődleges DNS-kiszolgáló csak a Windows PowerShell felületén keresztül olyan módon konfigurálhatja újra. Használja a `Set-HcsDNSClientServerAddress` parancsmagot az elsődleges DNS-kiszolgáló: az eszköz módosításához. További információkért látogasson el a synxtax [Set-HcsDNSClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) parancsmag.
+**Elsődleges DNS-kiszolgáló** – a storsimple-höz készült Windows PowerShell segítségével először adja meg a elsődleges DNS-kiszolgáló a kezdeti beállítás során. Az elsődleges DNS-kiszolgáló csak a Windows PowerShell felületéről újra létrehozhatja. Használja a `Set-HcsDNSClientServerAddress` parancsmag használatával módosíthatja az eszköz elsődleges DNS-kiszolgálót. További információkért nyissa meg a synxtax [Set-HcsDNSClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) parancsmagot.
 
-**Másodlagos DNS-kiszolgáló** – való a másodlagos DNS-kiszolgáló módosításához használja a `Set-HcsDNSClientServerAddress` parancsmag a Windows PowerShell felületen, az eszköz vagy **hálózati beállításai** panelen a StorSimple eszközt az Azure portálon található.
+**Másodlagos DNS-kiszolgáló** – az a másodlagos DNS-kiszolgáló módosítani, használja a `Set-HcsDNSClientServerAddress` parancsmagot az eszköz a Windows PowerShell felületén, vagy **hálózati beállítások** panel az Azure Portalon a StorSimple-eszköz.
 
-A másodlagos DNS-kiszolgáló Azure-portálon módosítja, hajtsa végre az alábbi lépéseket.
+A másodlagos DNS-kiszolgáló Azure Portalon módosíthatja, hajtsa végre az alábbi lépéseket.
 
-1. Nyissa meg a StorSimple-eszközkezelő szolgáltatást. Az eszközök listájában válassza ki, majd kattintson az eszköz.
+1. Nyissa meg a StorSimple-eszközkezelő szolgáltatást. Eszközök listájából válassza ki, és kattintson az eszköz.
 
-2. Az a **beállítások** paneljén lépjen **eszközbeállítások > hálózati**. Ezzel megnyílik a **hálózati beállításai** panelen. Kattintson a **DNS-beállítások** csempére. A másodlagos DNS-kiszolgáló IP-cím módosításához.
+2. Az a **beállítások** panelen lépjen a **eszközbeállítások > hálózati**. Megnyílik a **hálózati beállítások** panelen. Kattintson a **DNS-beállítások** csempére. Módosítsa a másodlagos DNS IP-címét.
 
     ![Másodlagos DNS-kiszolgáló IP adderss módosítása](./media/storsimple-8000-modify-device-config/modify-secondary-dns1.png)
 
-4. A parancssávon kattintson **mentése** és megerősítést kér, amikor kattintson **OK**.
+4. A parancssávon kattintson **mentése** és amikor a rendszer megerősítést kér, kattintson a **OK**.
 
-    ![Mentse és módosításának megerősítése](./media/storsimple-8000-modify-device-config/modify-secondary-dns-2.png)
+    ![Mentés és a módosítások megerősítése](./media/storsimple-8000-modify-device-config/modify-secondary-dns-2.png)
 
 
 
-## <a name="modify-network-interfaces"></a>Hálózati illesztők módosítása
+## <a name="modify-network-interfaces"></a>Hálózati adapter módosítása
 
-Az eszköz hat eszköz hálózati adapterrel rendelkezik, négyet 1 gbe-s, illetve amelyek két 10 GbE. Ezek a kapcsolatok Data 0 – 5 adatok tartalma. 0, az 1, adatok 4 és adatok 5 esetén 1 gbe-s, mivel a DATA 2 és a DATA 3 10 GbE hálózati adapterrel.
+Az eszköz hat eszköz hálózati adapterrel rendelkezik, négy, amelyek 1 GbE, és amelyek közül kettő 10 GbE. Ezeket az adaptereket, az adatok 0 – 5 adatok vannak ellátva. DATA 0, 1 adatok, adatok 4 és DATA 5 rendszer 1 GbE, mivel a DATA 2 és DATA 3 10 GbE hálózati adapterek.
 
-Használja a **hálózati beállításai** panel minden használandó felületek be.
+Használja a **hálózati beállítások** paneljén konfigurálhatja az egyes használt csatolók közül.
 
-![Hálózati illesztők keresztül hálózati beállítások konfigurálása](./media/storsimple-8000-modify-device-config/modify-network-settings3.png)
+![Hálózati adapterek keresztül a hálózati beállítások konfigurálása](./media/storsimple-8000-modify-device-config/modify-network-settings3.png)
 
-Magas rendelkezésre állás biztosítása érdekében javasoljuk, hogy legalább két iSCSI és a felhőalapú kapcsolatain két az eszközön. Azt javasoljuk, de nem szükséges, hogy a nem használt csatolók le kell tiltani.
+Magas rendelkezésre állás biztosítása érdekében azt javasoljuk, hogy legalább két iSCSI és a két felhőalapú kapcsolatain az eszközön. Javasolt, de nem szükséges, hogy a használaton kívüli adaptereket kell-e letiltva.
 
 Mindegyik hálózati interfész jelennek meg a következő paraméterekkel:
 
-* **Sebesség** – nem a felhasználó által konfigurálható paraméter. 0, az 1, adatok 4 és adatok 5 esetén mindig 1 gbe-s, mivel a DATA 2 és a DATA 3 10 GbE felületek.
+* **Sebesség** – nem felhasználó által konfigurálható paramétert. DATA 0, 1 adatok, adatok 4 és DATA 5 mindig 1 GbE, mivel a DATA 2 és DATA 3 10 GbE-adapterek.
   
   > [!NOTE]
-  > Sebesség és a kétirányú mindig automatikus-egyeztetését. Jumbo-keretek támogatása nem támogatottak.
+  > Sebesség és a kétirányú mindig automatikusan-egyeztetését. Nem támogatja a Jumbo-keretek támogatása.
   
-* **Csatoló állapota** – illesztőfelület engedélyezhetők és letilthatók. Ha engedélyezve van, az eszköz megkísérli a felületen. Azt javasoljuk, hogy csak a csatlakozik a hálózathoz és használt csatolók engedélyezve legyen. Minden nem használt csatolók letiltása.
-* **Illesztőfelület-típuson** – Ez a paraméter lehetővé teszi az iSCSI forgalom és a felhő tárolási forgalom elkülönítésére. Ez a paraméter a következők egyike lehet:
+* **Csatoló állapota** – felületet is engedélyezhető vagy letiltható. Ha engedélyezve van, az eszköz meg fogja próbálni a felületén. Azt javasoljuk, hogy csak azok az interfészek csatlakozik a hálózathoz és használt engedélyezhető. Tiltsa le minden olyan felületek, amelyek nem használnak.
+* **Typ rozhraní** – Ez a paraméter lehetővé teszi, hogy elkülönítse a felhőalapú tárolási forgalom iSCSI forgalmát. Ezt a paramétert a következők egyike lehet:
   
-  * **Engedélyezett felhő** – Ha engedélyezve van, az eszköz kommunikáljon a felhő Ez az interfész fogja használni.
-  * **az iSCSI engedélyezve** – Ha engedélyezve van, az eszköz Ez az interfész használja az iSCSI-gazdagép kommunikálni.
+  * **Felhőbarát** – Ha engedélyezve van, az eszköz kommunikáljon a felhő Ez az interfész fogja használni.
+  * **az iSCSI-kompatibilis** – Ha engedélyezve van, az eszköz ezen a kapcsolaton fogja használni az iSCSI-gazdagép kommunikálni.
     
-    Azt javasoljuk, hogy az iSCSI forgalom és a felhő tárolási forgalom elkülönítésére. Ne feledje, ha a gazdagép az eszköz azonos alhálózaton belül, nem kell rendelni egy átjáró; azonban ha a gazdagép egy másik alhálózat, mint az eszköz, szüksége lesz egy átjáró hozzárendelni.
-* **IP-cím** – a hálózati adapterek konfigurálásakor konfigurálnia kell egy virtuális IP-cím (VIP). Ez lehet IPv4 vagy IPv6-alapú vagy mindkettőt. Az IPv4 és IPv6 címcsaládra eszköz hálózati csatolók esetében támogatottak. IPv4-alapú használata esetén adja meg egy 32-bit-es IP-cím (*xxx.xxx.xxx.xxx*) pont decimális jelöléssel. IPv6 használatakor egyszerűen adjon meg egy 4 számjegyből álló előtagot, és a 128 bites cím jön létre automatikusan az eszköz hálózati illesztőt ezt az előtagot.
-* **Alhálózati** – Ez az alhálózati maszk hivatkozik, és be van állítva, a Windows PowerShell felületén keresztül.
-* **Átjáró** – Ez a csomópontot, amely nem azonos IP-címterület (alhálózat) belül kommunikálni kísérletek során ez a felület használandó alapértelmezett átjáróként. Az alapértelmezett átjáró kell ugyanazt a címtartományt (alhálózat) az interfésszel IP-cím, alhálózati maszk alapján.
-* **Statikus IP-cím** – Ez a mező akkor válik elérhetővé, csak, amíg a DATA 0 konfigurálnia felületet. A műveletek, például a frissítések vagy az eszköz hibaelhárítása szükség lehet az eszköz vezérlő történő közvetlen csatlakoztatásának. A rögzített IP-címet az aktív és az eszközön a passzív vezérlő eléréséhez használható.
+    Azt javasoljuk, hogy a felhőalapú tárolási forgalom adatforgalma iSCSI elkülönítése. Azt is vegye figyelembe, ha a gazdagép-eszközként ugyanabban az alhálózatban, nem kell rendelni egy átjáró; azonban ha a gazdagép egy másik alhálózatban, mint az eszköz, meg kell rendelnie egy átjárót.
+* **IP-cím** – a hálózati adapterek konfigurálásakor konfigurálnia kell egy virtuális IP-cím (VIP). Ez lehet IPv4 vagy IPv6-alapú vagy mindkettőt. Az IPv4- és IPv6-alapú címcsaládra eszköz hálózati adapterek használata támogatott. Az IPv4 használata esetén adja meg egy 32-bit-es IP-cím (*xxx.xxx.xxx.xxx*) pont-decimális jelöléssel. IPv6 használatakor a egyszerűen adjon meg egy 4 számjegyű előtagot, és a egy 128 bites címet automatikusan az eszköz hálózati adapter adott előtag alapján létrejön.
+* **Alhálózat** – Ez az alhálózati maszk hivatkozik, és a Windows PowerShell-felületen keresztül történik.
+* **Átjáró** – Ez az az alapértelmezett átjáró, amikor az megpróbál kommunikálni a csomópontok, amelyet nem az azonos IP-címtér (alhálózat) Ez az interfész által használandó. Az alapértelmezett átjáró kell lennie az azonos címtérben (alhálózat) az interfésszel IP-cím, az alhálózati maszk határoz meg.
+* **Rögzített IP-cím** – Ez a mező akkor válik elérhetővé, csak a DATA 0 konfigurálása közben felületet. A műveletek, például frissítések vagy az eszköz hibaelhárítása szükség lehet az eszközvezérlő való közvetlen csatlakozáshoz. Mind az aktív és az eszközön a passzív vezérlő rögzített IP-cím használható.
 
 > [!NOTE]
-> * Ahhoz, hogy a megfelelő műveletet, ellenőrizze a illesztőjének sebessége és a kétirányú eszköz csatolóhoz csatlakoztatott kapcsolón. Kapcsoló felületek vagy egyeztetni kell, vagy Gigabit Ethernet konfigurálni (1000 MB/s) és a kétirányú lehet. Alacsony sebességen vagy fél duplex működő felületek teljesítményproblémák eredményez.
-> * Megszakításait és az állásidő minimalizálása érdekében azt javasoljuk, hogy engedélyezi-e portfast egyes kapcsoló portot, amelyet az eszköz iSCSI hálózati illesztő csatlakozik. Ezzel biztosíthatja, hogy hálózati kapcsolat létesíthető gyorsan feladatátvétel esetén.
+> * Ahhoz, hogy a megfelelő műveletet, ellenőrizze a illesztőjének sebessége és a kapcsolóhoz csatlakozó egyes eszköz felületén a kétirányú. Kapcsoló illesztőkre vagy egyeztetni kell, vagy Gigabit Ethernet konfigurálni (1000 MB/s), és teljes. Sebességű vagy fél duplex módban működő adapterek teljesítményproblémák eredményez.
+> * Megszakításait és az állásidő minimalizálása érdekében azt javasoljuk, hogy engedélyezze a portfast az egyes kapcsoló portot, amelyet az eszköz iSCSI hálózati adapter csatlakozik. Ez biztosítja, hogy hálózati is lehet kapcsolódni a gyors feladatátvétel esetén.
 
-### <a name="configure-data-0"></a>DATA 0 konfigurálása
+### <a name="configure-data-0"></a>Az adatok 0 konfigurálása
 
-DATA 0 alapértelmezés szerint felhő engedélyezve. DATA 0 konfigurálásakor is szükségesek két fix IP-címek, egyet a tartományvezérlők konfigurálása. A fix IP-címek közvetlenül a eszközvezérlők eléréséhez használható, és hasznos az eszközön, szemétgyűjtés megfelelően működjön a frissítések telepítésekor, vagy amikor hozzáfér a tartományvezérlők hibaelhárítás céljából.
+DATA 0, felhőszolgáltatásokat használó alapértelmezés szerint. DATA 0 konfigurálásakor is szükségesek két fix IP-címét, egy az egyes tartományvezérlők konfigurálása. A fix IP-címek is használhatók a eszközvezérlők a közvetlen elérés érdekében, és hasznosak lehetnek az eszközön, a szemétgyűjtés megfelelő működéséhez frissítések telepítésekor, vagy amikor hozzáfér a tartományvezérlők problémájának hibaelhárítására használjuk.
 
-A rögzített IP-vezérlők használatával a DATA 0 beállítások panel olyan módon konfigurálhatja újra.
+A rögzített IP-vezérlők használatával a DATA 0 beállításai panel újra létrehozhatja.
 
-![Hálózati adapter - DATA 0 konfigurálása](./media/storsimple-8000-modify-device-config/modify-network-settings2.png)
+![Hálózati adapter – adat 0 konfigurálása](./media/storsimple-8000-modify-device-config/modify-network-settings2.png)
 
 > [!NOTE]
-> A vezérlő rögzített IP-címek szolgálnak az eszköz frissítéseinek karbantartásához és a terület-visszanyerést algoritmusok (szemétgyűjtés) megfelelően működjön. Ezért a fix IP-knek irányíthatóknak kell lenniük, és csatlakoztatva kell lenniük az internethez.
+> A vezérlőhöz tartozó fix IP-címek szolgálnak az eszköz frissítéseinek karbantartásához és a terület-visszaigénylést algoritmusok (szemétgyűjtés) megfelelően működjön. Ezért a fix IP-knek irányíthatóknak kell lenniük, és csatlakoztatva kell lenniük az internethez.
 
-### <a name="configure-data-1---data-5"></a>1 - 5 adatok adatok konfigurálása
+### <a name="configure-data-1---data-5"></a>1 – 5 adatok adatok konfigurálása
 
-Az adatok 1 - adatok 5 hálózati felületek, konfigurálhatja a hálózati beállításokat az alábbi képernyőfelvételen látható módon:
+Az adatok, 1 – adatok 5 hálózati adaptereket, konfigurálhatja a hálózati beállításokat az alábbi képernyőképen látható módon:
 
-![Hálózati illesztők DATA 1 - 5 adatok konfigurálása](./media/storsimple-8000-modify-device-config/modify-network-settings4.png)
+![Hálózati adapterek adatok 1 – 5 adatok konfigurálása](./media/storsimple-8000-modify-device-config/modify-network-settings4.png)
 
 
-## <a name="swap-or-reassign-ips"></a>A felcserélendő vagy IP-cím ismételt hozzárendelése
+## <a name="swap-or-reassign-ips"></a>Felcserélés vagy IP-cím ismételt hozzárendelése
 
-Jelenleg Ha a tartományvezérlő hálózati csatolóhoz (ugyanarra az eszközre vagy egy másik eszköz a hálózat) által hozzárendelt virtuális IP-címhez, amely használatban van, majd a tartományvezérlő hajt végre feladatátvételt. Ha felcserélése vagy ismételt hozzárendelése a virtuális IP-címek egy adott eszköz hálózati csatoló, eljárást kell követni, egy megfelelő, létrehozhat egy ismétlődő IP-helyzetben.
+Jelenleg Ha bármely hálózati adaptert a tartományvezérlő (által ugyanazon az eszközön vagy egy másik eszköz a hálózatban) hozzárendelt virtuális IP-címhez, amely használatban van, majd a vezérlő feladatátvételt hajt végre. Ha cserélhetők fel, vagy egy eszköz hálózati adapter virtuális IP-cím ismételt hozzárendelése, akkor létrehozhat egy duplikált IP helyzet egy megfelelő eljárást kell követnie.
 
-A következő lépésekkel vagy ismételt hozzárendelése a virtuális IP-címek a hálózati adapterek bármelyikéhez:
+A következő lépésekkel cseréje vagy újbóli hozzárendelése a virtuális IP-cím a hálózati adapterek valamelyikét:
 
-#### <a name="to-reassign-ips"></a>IP-címek hozzárendelésének
+#### <a name="to-reassign-ips"></a>IP-cím ismételt hozzárendelése
 
-1. Kapcsolja ki a két felülethez IP-címet.
-2. Az IP-címek törlődik, miután az új IP-címek kiosztása a megfelelő felületek.
+1. Törölje mindkét felületek IP-címét.
+2. Az IP-címek törlődik, miután az új IP-címek hozzárendelése a megfelelő adaptereket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Megtudhatja, hogyan [az MPIO konfigurálása a StorSimple eszköz](storsimple-8000-configure-mpio-windows-server.md).
-* Megtudhatja, hogyan [felügyelete a StorSimple eszközt a StorSimple Device Manager szolgáltatással](storsimple-8000-manager-service-administration.md).
+* Ismerje meg, hogyan [az MPIO konfigurálása a StorSimple eszköz](storsimple-8000-configure-mpio-windows-server.md).
+* Ismerje meg, hogyan [a StorSimple-eszköz felügyelete a StorSimple-Eszközkezelő szolgáltatás segítségével](storsimple-8000-manager-service-administration.md).
 

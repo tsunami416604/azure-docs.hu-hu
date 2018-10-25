@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: yizhon
-ms.openlocfilehash: 410ef936da7cf464dbef1698cf7019643cc1fb42
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 0a7e30be374ae5095e206ce0e519e51bb58f1f00
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249315"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024864"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Azure IoT eszközoldali SDK-t a C – további információ a szerializálóról
 
@@ -27,7 +27,7 @@ Végül a cikk revisits előző cikkeket, például az üzenet és kezelési tul
 
 Minden ebben a cikkben leírtak alapján a **szerializáló** SDK minták. Ha azt szeretné, hogy követni tudja, tekintse meg a **simplesample\_amqp** és **simplesample\_http** alkalmazások for c Azure IoT eszközoldali SDK-t tartalmaz
 
-Annak a [ **a c nyelvhez készült Azure IoT eszközoldali SDK** ](https://github.com/Azure/azure-iot-sdk-c) GitHub-tárházat és a nézet részletei az API-t a [C API-referencia](https://azure.github.io/azure-iot-sdk-c/index.html).
+Annak a [ **a c nyelvhez készült Azure IoT eszközoldali SDK** ](https://github.com/Azure/azure-iot-sdk-c) GitHub-tárházat és a nézet részletei az API-t a [C API-referencia](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/).
 
 ## <a name="the-modeling-language"></a>A modellezés nyelv
 

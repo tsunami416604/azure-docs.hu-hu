@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: ''
-ms.openlocfilehash: ea289abff7a40b0528f4cb88402594879ba6c437
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 3c80007a8188fb239a13aaa0ccc9ef2237a2d8d1
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649652"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025668"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Az Azure SQL Database megfigyelése az Azure SQL Analytics (előzetes verzió)
 
@@ -122,9 +122,9 @@ Az alábbi táblázat ismerteti a perspektívák az irányítópulton, így az A
 | Insights | Hierarchikus Lehatolás biztosít intelligens elemzésekké teljesítményéről. | Igen | Igen |
 | Hibák | Hierarchikus Lehatolás biztosít, és ismételje meg az adatbázisok SQL hibákká. | Igen | Igen |
 | Időtúllépések | Hierarchikus Lehatolás biztosít az SQL-időtúllépések, az adatbázisok történt. | Igen | Nem |
-| Letiltások | Hierarchikus Lehatolás biztosít, és ismételje meg az adatbázisok SQL blockings be. | Igen | Nem |
+| Blockings | Hierarchikus Lehatolás biztosít, és ismételje meg az adatbázisok SQL blockings be. | Igen | Nem |
 | Adatbázis-várakozások | SQL várakozási statisztikák adatbázisszintű hierarchikus Lehatolás szolgál kapcsolatban. Teljes várakozási idő és a várakozási idő várakozási típusonként összegzéseket tartalmaz. |Igen | Igen |
-| Lekérdezés időtartama | Hierarchikus Lehatolás biztosít, például a lekérdezések időtartama, CPU-használat, adat IO kihasználtsága, naplózási IO kihasználtsága lekérdezés végrehajtási statisztikák. | Igen | Igen |
+| Lekérdezések időtartama | Hierarchikus Lehatolás biztosít, például a lekérdezések időtartama, CPU-használat, adat IO kihasználtsága, naplózási IO kihasználtsága lekérdezés végrehajtási statisztikák. | Igen | Igen |
 | Lekérdezési várakozások | Hierarchikus Lehatolás biztosít, a lekérdezés várakozási statisztikák várakozási kategória szerint. | Igen | Igen |
 
 ### <a name="intelligent-insights-report"></a>Intelligent Insights jelentés
@@ -147,11 +147,48 @@ A lekérdezés időtartama és a lekérdezés vár perspektívák összehasonlí
 
 ![Az Azure SQL Analytics-lekérdezések](./media/log-analytics-azure-sql/azure-sql-sol-queries.png)
 
-### <a name="pricing"></a>Díjszabás
+## <a name="permissions"></a>Engedélyek
 
-Bár a megoldás használata ingyenes, vonatkozik-e az diagnostics telemetriai adatainak fent az adatbetöltés lefoglalva minden hónapban ingyenes egységek felhasználását, lásd: [Log Analytics díjszabása](https://azure.microsoft.com/en-us/pricing/details/monitor). Az adatbetöltés foglalt ingyenes egységek ingyenes figyelés engedélyezése több adatbázis minden hónapban. Vegye figyelembe, hogy a nagyobb számítási feladatok több aktív adatbázisok inaktív adatbázisokat és több adatot képes feldolgozni. Az adathasználat Adatbetöltési a megoldás az OMS-munkaterület kiválasztásával az Azure SQL Analytics, a navigációs menü, és kiválasztja a használat és becsült költségek egyszerűen figyelheti.
+Az Azure SQL Analytics használatához felhasználók minimális kell biztosítani az Azure-ban az Olvasó szerepkörhöz, lesz. Ez a szerepkör azonban nem engedélyezése a felhasználóknak a lekérdezés szövegének megtekintéséhez, vagy bármilyen automatikus hangolási műveletek végrehajtása. Az Azure-ban, amely lehetővé teszi a megoldás segítségével a lehető legnagyobb mértékben több szabad szerepköröket használják, tulajdonos, közreműködő, SQL-Adatbázisok Közreműködője vagy SQL Server Közreműködője. Érdemes azt is érdemes figyelembe venni, egyéni szerepkörök létrehozása a portálon csak az Azure SQL Analytics használatához szükséges konkrét engedélyeket, és nincs hozzáférése az egyéb erőforrások kezelése.
 
-### <a name="analyze-data-and-create-alerts"></a>Adatok elemzése és riasztások létrehozása
+### <a name="creating-a-custom-role-in-portal"></a>Egyéni szerepkörök létrehozása a portálon
+
+FELISMERVE, hogy az egyes szervezetek kényszerítése szigorú engedély szabályozza az Azure-ban, megtalálja a következő PowerShell-parancsfájl engedélyezése "Az SQL Analytics Alkalmazásfigyelési operátor" az Azure Portalon a minimális olvasási és írási engedélyekkel egyéni szerepkör létrehozása a lehető legnagyobb mértékben az Azure SQL Analytics használatához szükséges.
+
+Cserélje le a "{SubscriptionId}" az az alábbi szkriptet az Azure-előfizetése Azonosítóját, és hajtsa végre a parancsfájl van bejelentkezve: egy tulajdonosi vagy közreműködői szerepkörhöz az Azure-ban.
+
+   ```powershell
+    Connect-AzureRmAccount
+    Select-AzureRmSubscription {SubscriptionId}
+    $role = Get-AzureRmRoleDefinition -Name Reader
+    $role.Name = "SQL Analytics Monitoring Operator"
+    $role.Description = "Lets you monitor database performance with Azure SQL Analytics as a reader. Does not allow change of resources."
+    $role.IsCustom = $true
+    $role.Actions.Add("Microsoft.SQL/servers/databases/read");
+    $role.Actions.Add("Microsoft.SQL/servers/databases/topQueries/queryText/*");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/advisors/read");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/advisors/write");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/advisors/recommendedActions/read");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/advisors/recommendedActions/write");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/automaticTuning/read");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/automaticTuning/write");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/*");
+    $role.Actions.Add("Microsoft.Sql/servers/advisors/read");
+    $role.Actions.Add("Microsoft.Sql/servers/advisors/write");
+    $role.Actions.Add("Microsoft.Sql/servers/advisors/recommendedActions/read");
+    $role.Actions.Add("Microsoft.Sql/servers/advisors/recommendedActions/write");
+    $role.Actions.Add("Microsoft.Resources/deployments/write");
+    $role.AssignableScopes = "/subscriptions/{SubscriptionId}"
+    New-AzureRmRoleDefinition $role
+   ```
+
+Az új szerepkör létrehozása után ez a szerepkör hozzárendelése minden felhasználóhoz, az Azure SQL Analytics használandó egyéni engedélyek megadása szükséges.
+
+## <a name="analyze-data-and-create-alerts"></a>Adatok elemzése és riasztások létrehozása
+
+Adatok elemzése az Azure SQL Analytics alapján [Log Analytics nyelvi](./query-language/get-started-queries.md) az egyéni lekérdezése és jelentéskészítés. Az elérhető adatokat gyűjtött egyéni lekérdezéséhez az adatbázis-erőforrás leírását megtalálja [metrikák és naplók elérhető](../sql-database/sql-database-metrics-diag-logging.md#metrics-and-logs-available).
+
+A megoldás automatikus riasztások teljesül egy feltétel alapján riasztást Log Analytics-lekérdezés írása alapul. Alább néhány példa a Log Analytics-lekérdezések melyik riasztás esetén lehet a telepítő a megoldásban található.
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>Riasztások létrehozása az Azure SQL Database
 
@@ -245,6 +282,10 @@ AzureDiagnostics
 > [!NOTE]
 > - Üzem előtti beállítása után ez a riasztás azért, hogy a figyelt felügyelt példány rendelkezik a streamelési ResourceUsageStats napló engedélyezve van a megoldáshoz.
 > - Ezt a lekérdezést úgy, hogy a rendszer értesíti ki riasztást, ha léteznek eredmények (> 0 eredmény) a lekérdezésből, így jelölve az, hogy létezik-e a feltétel a felügyelt példányon a riasztási szabály szükséges. A kimenet a tárhelyhasználat százalékos aránya a felügyelt példányon.
+
+### <a name="pricing"></a>Díjszabás
+
+Bár a megoldás használata ingyenes, vonatkozik-e az diagnostics telemetriai adatainak fent az adatbetöltés lefoglalva minden hónapban ingyenes egységek felhasználását, lásd: [Log Analytics díjszabása](https://azure.microsoft.com/en-us/pricing/details/monitor). Az adatbetöltés foglalt ingyenes egységek ingyenes figyelés engedélyezése több adatbázis minden hónapban. Vegye figyelembe, hogy a nagyobb számítási feladatok több aktív adatbázisok inaktív adatbázisokat és több adatot képes feldolgozni. Az adathasználat Adatbetöltési a megoldás az OMS-munkaterület kiválasztásával az Azure SQL Analytics, a navigációs menü, és kiválasztja a használat és becsült költségek egyszerűen figyelheti.
 
 ## <a name="next-steps"></a>További lépések
 

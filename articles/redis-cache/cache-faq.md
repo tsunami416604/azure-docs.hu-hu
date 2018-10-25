@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: c0d88f0eaacaadbb508519f2e6804b9b311408c2
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: c5a18a2e8d58553e49797da418f76fc3f251e003
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259330"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026041"
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis Cache – Gyakori kérdések
 Ismerje meg a válaszok a gyakori kérdésekre, minták és ajánlott eljárások az Azure Redis Cache-gyorsítótárhoz.
@@ -133,13 +133,13 @@ Ebből a táblázatból a következő következtetéseket is azt:
 * A Redis-fürtözés átviteli sebesség növeli a költségráfordításokkal egyenes arányban a fürtben (csomópontok) szegmensei számának növelésével. Például, ha 10 szegmens-P4 szintű fürtöt hoz létre, majd az elérhető átviteli sebesség 400000 * 10 = 4 millió RPS.
 * Nagyobb méretű kulcs méretek átviteli sebesség nagyobb a prémium szintű, mint a Standard szint a korábban megszokott.
 
-| Díjcsomag | Méret | Processzormagok | Rendelkezésre álló sávszélesség | 1 KB-os méret | 1 KB-os méret |
+| Tarifacsomag | Méret | Processzormagok | Rendelkezésre álló sávszélesség | 1 KB-os méret | 1 KB-os méret |
 | --- | --- | --- | --- | --- | --- |
 | **Standard szintű gyorsítótár mérete** | | |**Megabit / mp (Mb/s) vagy megabájt / másodperc (MB/s)** |**Második (RPS) a nem SSL-kérelemből** |**A kérelmek száma a második (RPS) SSL** |
-| C0 |250 MB |Közös |100 / 12.5 |15,000 |7,500 |
-| C1 |1 GB |1 |500 / 62.5 |38,000 |20,720 |
+| C0 |250 MB |Közös |100 / 12.5 |15 000 |7500 |
+| C1 |1 GB |1 |500 / 62.5 |38,000 |20,720 |
 | C2 |2,5 GB |2 |500 / 62.5 |41,000 |37,000 |
-| C3 |6 GB |4 |1000 / 125 |100 000 |90,000 |
+| C3 |6 GB |4 |1000 / 125 |100 000 |90,000 |
 | C4 |13 GB |2 |500 / 62.5 |60,000 |55,000 |
 | C5 |26 GB |4 |1,000 / 125 |102,000 |93,000 |
 | C6 |53 GB |8 |2,000 / 250 |126,000 |120,000 |
@@ -164,7 +164,7 @@ Azure Redis Cache díjszabása [Itt](https://azure.microsoft.com/pricing/details
 ### <a name="can-i-use-azure-redis-cache-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany"></a>Használható az Azure Government Cloud, Azure China Cloud vagy a Microsoft Azure Germany Azure Redis Cache?
 Igen, az Azure Redis Cache érhető el az Azure Government Cloud, Azure China Cloud és a Microsoft Azure Germany. Ezek a felhők összehasonlítása az Azure nyilvános felhő a elérése és kezelése az Azure Redis Cache URL-eltérőek. 
 
-| Felhőbeli   | A Redis DNS-utótag            |
+| Felhő   | A Redis DNS-utótag            |
 |---------|---------------------------------|
 | Nyilvános  | *.redis.cache.windows.net       |
 | USA-beli államigazgatás  | *.redis.cache.usgovcloudapi.net |
@@ -392,7 +392,7 @@ Hogyan konfigurálja ezt a beállítást:
   > Ez a konfigurációs elemben megadott érték egy *magonként* beállítás. Ha például egy 4 processzormagos számítógép, és szeretné a minIOThreads beállítása futási időben 200 kell, ha használja `<processModel minIoThreads="50"/>`.
   >
 
-* Kívül, az ASP.NET és az Azure-webhelyek global.asax, használja a [ThreadPool.SetMinThreads (...)] (https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) API-t.
+* Kívül, az ASP.NET és az Azure-webhelyek global.asax, használja a [ThreadPool.SetMinThreads (...)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) API-T.
 
   > [!NOTE]
   > Az API által megadott érték egy globális beállítás, az egész AppDomain érintő. Ha rendelkezik egy 4 processzormagos számítógép, és szeretné beállítani minWorkerThreads és minIOThreads 50 CPU futási időben, akkor ThreadPool.SetMinThreads (200-as, 200-as) kell használnia.
@@ -455,7 +455,7 @@ Az alábbiakban néhány gyakori oka egy gyorsítótár kapcsolatbontás.
 >
 >
 
-### <a name="azure-redis-cache"></a>Azure Redis gyorsítótár
+### <a name="azure-redis-cache"></a>Azure Redis Cache
 Azure Redis Cache használata általánosan elérhető a mérete akár 53 GB és a egy rendelkezésre állási 99,9 %-os szolgáltatásiszint-szerződés tartozik. Az új [prémium szintű](cache-premium-tier-intro.md) méretek akár kínál 530 GB-os és a fürtszolgáltatás, a virtuális hálózat és az adatmegőrzés, 99,9 %-os SLA.
 
 Az Azure Redis Cache egy biztonságos, dedikált Redis cache használata, a Microsoft által felügyelt lehetővé teszi az ügyfeleknek. Ajánlatunk révén kihasználhatja a gazdag funkciókat és környezetet a Redis és megbízható üzemeltetési és figyelése a Microsoft által biztosított beolvasása.

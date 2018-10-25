@@ -6,14 +6,14 @@ author: cherylmc
 tags: azure-resource-manager
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 10/24/2018
 ms.author: cherylmc
-ms.openlocfilehash: d524555330653a90f52505c22f50f4d677ab6632
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 3254f0c26e21bc7ba71fc23362f263cb126ea3b0
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387259"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026364"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Pont–hely kapcsolat konfigurálása virtuális hálózathoz az Azure natív tanúsítványalapú hitelesítésének használatával: Azure Portal
 
@@ -73,7 +73,7 @@ Miután létrehozta a virtuális hálózatot, hozzáadhatja a DNS-kiszolgáló I
 [!INCLUDE [create-gateway](../../includes/vpn-gateway-add-gw-p2s-rm-portal-include.md)]
 
 >[!NOTE]
->Az alapszintű termékváltozat nem támogatja az IKEv2- vagy RADIUS-hitelesítést.
+>Az alapszintű termékváltozat nem támogatja az IKEv2- vagy RADIUS-hitelesítést. Ha azt tervezi, hogy a Mac ügyfelek csatlakoznak a virtuális hálózat, ne használja az alapszintű Termékváltozat.
 >
 
 ## <a name="generatecert"></a>5. Tanúsítványok előállítása
@@ -172,7 +172,7 @@ A VPN-ügyfél konfigurációs fájljai tartalmazzák az eszközök azon beáll�
 
 A Hálózat párbeszédpanelen keresse meg a használni kívánt ügyfél profilját, adja meg a beállításokat a [VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac) fájlból, majd kattintson a **Csatlakozás** gombra.
 
-Részletes útmutatásért tekintse meg a [Telepítés – Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac) című részt.
+Ellenőrizze [telepítő - (OS X) Mac](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac) részletes útmutatást. Ha problémába ütközik a csatlakozás, ellenőrizze, hogy a virtuális hálózati átjáró nem használ egy alapszintű Termékváltozat. Alapszintű Termékváltozat nem támogatott Mac számítógépekhez.
 
   ![Mac-kapcsolat](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 

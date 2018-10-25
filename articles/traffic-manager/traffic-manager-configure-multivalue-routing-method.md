@@ -3,8 +3,7 @@ title: Többértékű forgalom-útválasztási módszer konfigurálása az Azure
 description: Ez a cikk azt ismerteti, hogy A/AAAA-végpontokra irányuló forgalom irányítása a Traffic Manager konfigurálása.
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
-manager: jeconnoc
+author: KumudD
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: kumud
-ms.openlocfilehash: 1fae1147c941ed28d23a478a0e809b2dffba7a35
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d9a0342332c2483b859e916b50fd05c9cb1e3395
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46131363"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986764"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>A Traffic Manager többértékű útválasztási mód konfigurálása
 
@@ -42,7 +41,7 @@ Hozzon létre egy Traffic Manager-profilt, amely irányítja a felhasználói ad
 2. A **Traffic Manager-profil létrehozása**, adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, és válassza **létrehozás**:
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Name (Név)                   | Ez a név egyedinek kell lennie a trafficmanager.net zónában és a Traffic Manager-profil eléréséhez használt trafficmanager.net DNS-nevet eredményezi.                                   |
+    | Name (Név)                   | Ennek a névnek egyedinek kell lennie a trafficmanager.net zónában, és a trafficmanager.net DNS-nevet eredményezi, amellyel elérhető a Traffic Manager-profil.                                   |
     | Útválasztási metódus          | Válassza ki a **típushoz** esetén használt útválasztási módszer.                                       |
     | Előfizetés            | Válassza ki előfizetését.                          |
     | Erőforráscsoport          | Válassza ki *myResourceGroupTM1*. |
@@ -73,9 +72,9 @@ Két IP-címet, külső végpontok hozzáadása típushoz Traffic Manager-profil
  
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg [forgalom-útválasztási módszer súlyozott](traffic-manager-configure-weighted-routing-method.md).
-- Ismerje meg [prioritásos útválasztási mód](traffic-manager-configure-priority-routing-method.md).
+- További információ a [súlyozott forgalom útválasztási metódusról](traffic-manager-configure-weighted-routing-method.md).
+- További információ az [elsődleges útválasztási metódusról](traffic-manager-configure-priority-routing-method.md).
 - Tudjon meg többet [Teljesítménycentrikus útválasztási mód](traffic-manager-configure-performance-routing-method.md)
-- Ismerje meg [földrajzi útválasztási mód](traffic-manager-configure-geographic-routing-method.md).
+- További információ a [földrajzi útválasztási metódusról](traffic-manager-configure-geographic-routing-method.md).
 
 

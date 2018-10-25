@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: shvija
-ms.openlocfilehash: bc4116bdb251ef6f3228b7394e5c8e0cdff67447
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 19525086b1bd41afcc730fb3860d7a01875e4832
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470166"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987001"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatikus vertikális felskálázás az Azure Event Hubs átviteli egységek
 
@@ -59,7 +59,7 @@ Az automatikus feltöltési használatával is engedélyezheti a **méretezési*
 
 
 > [!NOTE]
-> Ha Ön a alkalmazni az automatikus feltöltésről konfigurációját, és növelni az átviteli egységek, az Event Hubs szolgáltatás bocsát ki, miért és mikor az átviteli sebesség nagyobb információkkal szolgálnak a diagnosztikai naplók. Diagnosztikai naplózás az eseményközpontba engedélyezéséhez jelölje be **diagnosztikai beállítások** a bal oldali menüben az Event Hub oldalon az Azure Portalon. 
+> Ha Ön a alkalmazni az automatikus feltöltésről konfigurációját, és növelni az átviteli egységek, az Event Hubs szolgáltatás bocsát ki, miért és mikor az átviteli sebesség nagyobb információkkal szolgálnak a diagnosztikai naplók. Diagnosztikai naplózás az eseményközpontba engedélyezéséhez jelölje be **diagnosztikai beállítások** a bal oldali menüben az Event Hub oldalon az Azure Portalon. További információkért lásd: [állítsa be a diagnosztikai naplók az Azure event hub](event-hubs-diagnostic-logs.md). 
 
 ### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>Engedélyezze az automatikus feltöltésről egy Azure Resource Manager-sablon használatával
 

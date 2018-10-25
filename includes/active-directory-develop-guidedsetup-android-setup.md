@@ -14,27 +14,28 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 5518036d34a493558458673202e52e4559e49573
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 3b1f705b14bdae43fb079f2039ca8c288dd6609e
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48842938"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988360"
 ---
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
 Biztosan ehelyett töltse le ezt a mintát Android Studio project? [Töltse le a projekt](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip), és ugorjon a [konfigurációs lépés](#register-your-application) konfigurálása a kódminta azt végrehajtása előtt.
 
-### <a name="create-a-new-project"></a>Új projekt létrehozása 
-1.  Nyissa meg az Android Studiót, és válassza ki **fájl** > **új** > **új projekt**.
-2.  Adjon nevet az alkalmazásnak, és válassza ki **tovább**.
-3.  Válassza ki **API 21 vagy újabb (Android 5.0-s)**, majd válassza ki **tovább**.
-4.  Hagyja **üres tevékenység** , válassza ki a **tovább**, majd válassza ki **Befejezés**.
+### <a name="create-a-new-project"></a>Új projekt létrehozása
 
+1. Nyissa meg az Android Studiót, és válassza ki **fájl** > **új** > **új projekt**.
+2. Adjon nevet az alkalmazásnak, és válassza ki **tovább**.
+3. Válassza ki **API 21 vagy újabb (Android 5.0-s)**, majd válassza ki **tovább**.
+4. Hagyja **üres tevékenység** , válassza ki a **tovább**, majd válassza ki **Befejezés**.
 
 ### <a name="add-msal-to-your-project"></a>Az MSAL hozzáadása a projekthez
-1.  Az Android Studióban válassza a **Gradle-szkriptek** > **build.gradle (modul: alkalmazás)**.
-2.  A **függőségek**, illessze be a következő kódot:
+
+1. Az Android Studióban válassza a **Gradle-szkriptek** > **build.gradle (modul: alkalmazás)**.
+2. A **függőségek**, illessze be a következő kódot:
 
     ```gradle  
     compile ('com.microsoft.identity.client:msal:0.1.+') {
@@ -46,12 +47,12 @@ Biztosan ehelyett töltse le ezt a mintát Android Studio project? [Töltse le a
 <!--start-collapse-->
 ### <a name="about-this-package"></a>A csomaggal kapcsolatos
 
-A fenti kód a csomag telepíti a Microsoft-hitelesítési tár. Az MSAL kezeli az összes jogkivonat műveleteket, köztük a beszerzéséhez, gyorsítótárazás, frissítése és törlése.  A Microsoft identity platform által védett API-k elérésére a jogkivonatok van szükség.
+A fenti kód a csomag telepíti a Microsoft hitelesítési tár (MSAL), amely kezeli az összes jogkivonat műveleteket, köztük a beszerzéséhez, gyorsítótárazás, frissítése és törlése. A jogkivonatok az API-k a Microsoft identity platform által védett eléréséhez szükséges.
 <!--end-collapse-->
 
 ## <a name="create-the-apps-ui"></a>Az alkalmazás felhasználói felület létrehozása
 
-1. Lépjen a **res** > **elrendezés**, majd nyissa meg **activity_main.xml**. 
+1. Lépjen a **res** > **elrendezés**, majd nyissa meg **activity_main.xml**.
 2. A tevékenység elrendezésének módosítása `android.support.constraint.ConstraintLayout` vagy az egyéb `LinearLayout`.
 3. Adja hozzá a `android:orientation="vertical"` tulajdonságot a `LinearLayout` csomópont.
 4. Illessze be az alábbi kódot a `LinearLayout` csomópontot, és cserélje le a jelenlegi tartalomról:

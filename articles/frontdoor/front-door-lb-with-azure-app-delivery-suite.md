@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 05f77665352ee306f5684d5c7a09b27d4fe17650
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 4c9f92481af1e69a111869cb6fc1305923bb0484
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426810"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026007"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Terheléselosztás az Azure alkalmazáskézbesítési csomagjával
 
@@ -60,7 +60,7 @@ A Traffic Manager és az Azure bejárati ajtajának között globális terhelés
 | --------------- | ------------------------ |
 |**Bármely protokoll:** mert Traffic Manager a DNS-rétegben működik, irányíthatja bármilyen típusú hálózati forgalmat; HTTP, a TCP, UDP, stb. | **HTTP-gyorsítás:** bejárati ajtajának forgalom küldése a proxyn keresztül, a Microsoft Edge-hálózat.  Emiatt a HTTP (S)-kérelmek tekintse meg a teljesítmény és a késés fejlesztései csökkenti a késéseket az SSL-egyeztetési és a gyakori elérésű AFD kapcsolatot az alkalmazás használatával.|
 |**A helyszíni útválasztási:** útválasztási egy DNS-rétegben, a forgalom mindig irányul pont-pont.  Útválasztás a fiókirodában, a helyszíni adatközponthoz is igénybe vehet egy közvetlen elérési útja; a saját hálózaton is a Traffic Managerrel. | **Független méretezhetősége:** mert bejárati ajtajának működik együtt a HTTP-kérelem, kéréseket a különböző URL-cím elérési átirányíthatók a másik háttér / regionális szolgáltatási készletek (mikroszolgáltatás-alapú) alapuló szabályokat és az egyes alkalmazás mikroszolgáltatások állapotát.|
-|**A számlázás formátum:** DNS-alapú számlázás méretezi a felhasználóival és a szolgáltatások több felhasználóval rendelkező, magasabb szintű használati költségek csökkentése érdekében trületek. |**A beágyazott biztonsági:** bejárati ajtajának lehetővé teszi, hogy a szabályokat, például a sebességkorlátozás és IP-ACL-ing a háttérrendszerekre védelmére, mielőtt a forgalom eléri az alkalmazást. 
+|**A számlázás formátum:** DNS-alapú számlázás méretezi a felhasználóival és a szolgáltatások több felhasználóval rendelkező, trületek magasabb használat, a költségek csökkentése érdekében. |**A beágyazott biztonsági:** bejárati ajtajának lehetővé teszi, hogy a szabályokat, például a sebességkorlátozás és IP-ACL-ing a háttérrendszerekre védelmére, mielőtt a forgalom eléri az alkalmazást. 
 
 </br>A teljesítménnyel, a működési követelmények és a bejárati ajtó a HTTP-munkaterhelések biztonsági funkcióit javasoljuk, ügyfelek bejárati ajtajának használja a HTTP számítási feladatai.    A TRAFFIC Manager és a bejárati ajtajának segítségével párhuzamosan minden forgalmat az alkalmazásához. 
 

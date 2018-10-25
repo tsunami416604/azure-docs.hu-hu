@@ -2,26 +2,25 @@
 title: 'Az Azure Backup: Virtuális gépek biztonsági mentésének előkészítése'
 description: Győződjön meg arról, hogy a környezet elő kell készíteni az Azure-beli virtuális gépek biztonsági mentését.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keywords: biztonsági másolatok biztonsági mentése;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 9/10/2018
-ms.author: markgal
-ms.openlocfilehash: 7ab88ce3565ccf79f20847a3a5e744c495d5fcb1
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.date: 10/23/2018
+ms.author: raynew
+ms.openlocfilehash: 30b35d38c30d3ee9410a85824c53001ca95cf30b
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884933"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025939"
 ---
-# <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>A környezet előkészítése a Resource Managerrel üzembe helyezett virtuális gépek biztonsági mentéséhez
+# <a name="prepare-to-back-up-azure-vms"></a>Felkészülés az Azure virtuális gépek biztonsági mentése
 
-Ez a cikk lépéseit a biztonsági mentése az Azure Resource Manager által telepített virtuális gép (VM) a környezet előkészítése. A lépéseket, látható az eljárásokat használhatja az Azure Portalt. A virtuális gépek biztonsági mentésekor, a biztonsági mentési adatokat vagy a helyreállítási pontok vannak tárolva egy Recovery Services-tárolót. Recovery Services-tárolók a klasszikus és Resource Manager által telepített virtuális gépek biztonsági mentési adatok tárolására.
+Ez a cikk lépéseit a biztonsági mentése az Azure Resource Manager által telepített virtuális gép (VM) a környezet előkészítése. A lépéseket, látható az eljárásokat használhatja az Azure Portalt. A virtuális gépek biztonsági mentésekor, a biztonsági mentési adatokat vagy a helyreállítási pontok vannak tárolva egy Recovery Services biztonsági mentési tárolót. 
 
-> [!NOTE]
-> Az Azure az erőforrások létrehozásához és használatához két üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md).
+
 
 Mielőtt védelme (vagy felhatolásra) a Resource Manager által telepített virtuális gép ellenőrizze, hogy az Előfeltételek létezik:
 
@@ -47,7 +46,6 @@ Ha ezek a feltételek a környezetében már létezik, ugorjon a [a virtuális g
 Mielőtt a környezet előkészítése, ügyeljen arra, hogy ezek a korlátozások ismertetése:
 
 * Több mint 32 adatlemezekkel rendelkező virtuális gépek biztonsági mentése nem támogatott.
-* A fenntartott IP-cím és a nem meghatározott végpontot a virtuális gépek biztonsági mentése nem támogatott.
 * Linux egyesített kulcs beállítása (LUKS) titkosítással titkosított Linux rendszerű virtuális gépek biztonsági mentésének nem támogatott.
 * Nem ajánlott a fürt megosztott kötetei (CSV) vagy a Scale-Out File Server tartalmazó virtuális gépek biztonsági mentésének. Ha elkészült, a fürt megosztott kötetei szolgáltatás írók hiba várható. A fürt konfigurációját, a pillanatkép-feladat során szereplő összes virtuális gépet is érintő igényelnek. Az Azure Backup nem támogatja a több virtuális gépre kiterjedő konzisztencia.
 * Biztonsági mentési adatokat egy virtuális géphez csatlakoztatott hálózati meghajtók nem tartalmazza.

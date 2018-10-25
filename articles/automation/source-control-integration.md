@@ -9,26 +9,26 @@ ms.author: gwallace
 ms.date: 09/26/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9bbf3582da2664b6e6429677d47aad4d69a7c1bb
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 5778c38d5a0c44e42b83fd139078be1f0bb45f7f
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785324"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023747"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Verziókövetés integrálása az Azure Automation szolgáltatásban
 
-Verziókövetés lehetővé teszi, hogy a forgatókönyvek az Automation fiókhoz a parancsfájlok a GitHub vagy az Azure-fejlesztéshez verziókövetési tárházat a naprakészek legyenek. Verziókövetés együttműködhet a csapatával, követi a változásokat, és állítsa vissza a runbookok korábbi verzióira teszi lehetővé. Például verziókövetés lehetővé teszi, hogy a fejlesztési, tesztelési vagy éles környezetben az Automation-fiókok a verziókövetési rendszerben különböző ágak szinkronizálása. Ez megkönnyíti az előléptetni a kódot, amely a fejlesztési környezetben, az Automation-fiók éles üzemben futó tesztelve lett.
+Verziókövetés lehetővé teszi, hogy a forgatókönyvek az Automation fiókhoz a parancsfájlok a GitHub vagy az Azure DevOps verziókövetési tárházat a naprakészek legyenek. Verziókövetés együttműködhet a csapatával, követi a változásokat, és állítsa vissza a runbookok korábbi verzióira teszi lehetővé. Például verziókövetés lehetővé teszi, hogy a fejlesztési, tesztelési vagy éles környezetben az Automation-fiókok a verziókövetési rendszerben különböző ágak szinkronizálása. Ez megkönnyíti az előléptetni a kódot, amely a fejlesztési környezetben, az Automation-fiók éles üzemben futó tesztelve lett.
 
 Az Azure Automation verziókövetés 3 típust támogat:
 
 * GitHub
-* A Visual Studio Team Services (Git)
-* A Visual Studio Team Services (TFVC)
+* Az Azure DevOps (Git)
+* Az Azure DevOps (TFVC)
 
 ## <a name="pre-requisites"></a>Előfeltételek
 
-* Verziókövetési adattár (a GitHub vagy a Visual Studio Team Services)
+* Verziókövetési adattár (a GitHub vagy az Azure DevOps)
 * A megfelelő [engedélyek](#personal-access-token-permissions) a verziókövetési tárházzal,
 * A [Run-As fiók és -kapcsolat](manage-runas-account.md)
 
@@ -50,7 +50,7 @@ Az a **forrás vezérlő összefoglalás** lapon adja meg az adatokat, és katti
 |Tulajdonság  |Leírás  |
 |---------|---------|
 |Forrás vezérlő neve     | Egy rövid nevet a verziókövetés        |
-|Verziókövetési típusa     | A forrás-vezérlő típusa. Az elérhető lehetőségek:</br> GitHub</br>A Visual Studio Team Services (Git)</br> A Visual Studio Team Services (TFVC)        |
+|Verziókövetési típusa     | A forrás-vezérlő típusa. Az elérhető lehetőségek:</br> GitHub</br>Az Azure DevOps (Git)</br> Az Azure DevOps (TFVC)        |
 |Tárház     | A tárház vagy projekt nevét. Ezt az értéket a vezérlő adattárból kéri le. Például: $/ ContosoFinanceTFVCExample         |
 |Ág     | Az ág forrásfájlok lekérni. Ág célzó nem áll rendelkezésre a TFVC verziókövetési típusa számára.          |
 |Mappa elérési útja     | A runbookok szinkronizálása tartalmazó mappát. Példa: /Runbooks         |

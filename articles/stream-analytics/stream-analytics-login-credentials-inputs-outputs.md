@@ -1,6 +1,6 @@
 ---
-title: Forgassa el az Azure Stream Analytics-feladatok bejelentkezési hitelesítő adatok
-description: Ez a cikk ismerteti, hogyan frissítenie kell a hitelesítő adatokat a bemeneti adatok, és kimeneti Azure Stream Analytics a fogadók esetében feladatok.
+title: Az Azure Stream Analytics-feladatok bejelentkezési hitelesítő adatok forgatása
+description: Ez a cikk bemutatja, hogyan frissítse a hitelesítő adatokat a bemeneti és kimeneti fogadók az Azure Stream Analyticsben feladatok.
 services: stream-analytics
 author: jasonwhowell
 ms.author: jasonh
@@ -9,54 +9,54 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: b49b4fecb6be70987e7e6736d78f224c03f719bf
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2dd5721ad0f45080a73172e150891cfb5f48d329
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "30907279"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025769"
 ---
-# <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Bejelentkezési hitelesítő adatait a be- és a Stream Analytics-feladat kimenetének elforgatása
+# <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>A bemenetek és kimenetek egy Stream Analytics-feladat a bejelentkezési hitelesítő adatok forgatása
 
-Amikor újragenerálja egy bemeneti vagy a Stream Analytics-feladat eredményének hitelesítő adataival, frissítenie kell a feladat új hitelesítő adatokkal. A hitelesítő adatok frissítése előtt le kell állítania a feladatot, a feladat futása közben a hitelesítő adatok nem cserélhető le. Leállítása és újraindítása a feladat közötti időeltérés csökkentése érdekében a Stream Analytics támogatja az utolsó kimenetből egy feladat folytatása. Ez a témakör ismerteti a folyamat végrehajtásával rotálhatóak a bejelentkezési hitelesítő adatokat, és új hitelesítő adatokkal a feladat újraindítása.
+Minden alkalommal, amikor Ön hozza létre újra a hitelesítő adatokat egy bemeneti vagy a Stream Analytics-feladat kimenetét, frissítenie kell a feladat új hitelesítő adatokkal. A hitelesítő adatok frissítése előtt le kell állítani a feladat, a feladat futása közben nem lehet kicserélni a hitelesítő adatokat. Közötti leállítása és újraindítása a feladat a késés csökkentése érdekében a Stream Analytics az utolsó kimenetét egy feladat folytatása támogatja. Ez a témakör ismerteti a folyamatot a bejelentkezési hitelesítő adatok forgatása és új hitelesítő adatokkal a feladat újraindítása.
 
-## <a name="regenerate-new-credentials-and-update-your-job-with-the-new-credentials"></a>Generálja újra az új hitelesítő adatokat, és frissítse a feladat az új hitelesítő adatok 
+## <a name="regenerate-new-credentials-and-update-your-job-with-the-new-credentials"></a>Hozza létre újra az új hitelesítő adatokat, és frissítheti a feladatokat az új hitelesítő adatokkal 
 
-Ez a szakasz azt haladhat végig újragenerálása hitelesítő adatokat a Blob Storage tárolóban, az Event Hubs, SQL-adatbázis és a Table Storage. 
+Ebben a szakaszban a Microsoft végigvezeti újragenerálása hitelesítő adatokat a Blob Storage, az Event Hubs, az SQL Database és a Table Storage. 
 
-### <a name="blob-storagetable-storage"></a>A BLOB storage-tároló vagy tábla
-1. Jelentkezzen be az Azure portál > keresse meg a tárfiók-adatforrásnevet bemeneti/kimeneti a Stream Analytics-feladathoz.    
-2. Nyissa meg a beállítások szakaszban **hívóbetűk**. A két alapértelmezett kulcsok (key1, key2) között válassza ki azt, amelyik nem használják a feladatot, majd ismét:  
-   ![A tárfiók kulcsainak újragenerálása](media/stream-analytics-login-credentials-inputs-outputs/image1.png)
+### <a name="blob-storagetable-storage"></a>A BLOB storage és Table storage
+1. Jelentkezzen be az Azure Portalon > Tallózás a storage-fiók, amely a Stream Analytics-feladat részeként bemeneti/kimeneti használja.    
+2. A beállítások területen nyissa meg a **hozzáférési kulcsok**. A két alapértelmezett kulcsok (1. kulcs, 2. kulcs) között válassza ki azt, amelyik nem használja a feladat, majd ismét:  
+   ![Storage-fiók kulcsainak újragenerálása](media/stream-analytics-login-credentials-inputs-outputs/image1.png)
 3. Másolja ki az újonnan létrehozott kulcsot.    
-4. Azure-portálról, keresse meg a Stream Analytics-feladat > Válasszon **leállítása** és várja meg a feladat leállítása.    
-5. Keresse meg a Blob vagy tábla tárolási bemeneti/kimeneti legyen hitelesítő adatainak frissítése.    
-6. Keresés a **Tárfiók kulcsa** mezőben, majd illessze be az újonnan létrehozott kulcs > kattintson **mentése**.    
-7. A kapcsolat tesztelése automatikusan elindul, amikor a módosítások mentése, megtekintheti az értesítések lapon. Két értesítések egy az egyhez megfelel-e a frissítés mentése és egyéb megfelel-e a kapcsolat tesztelése:  
+4. Az Azure Portalon keresse meg a Stream Analytics-feladat > Válasszon **leállítása** , és várjon, amíg a feladat leállítása.    
+5. Keresse meg a Blob/Table storage bemeneti/kimeneti legyen hitelesítő adatainak frissítése.    
+6. Keresse meg a **Tárfiókkulcs** mezőbe, majd illessze be az újonnan létrehozott kulcs > kattintson **mentése**.    
+7. A kapcsolat tesztelése automatikusan elindul, amikor a módosítások mentése, az értesítések lapon megtekintheti. Nincsenek a két értesítések egy az egyhez felel meg a frissítés mentése, és más felel meg a kapcsolat tesztelése:  
    ![A kulcs módosítása után értesítések](media/stream-analytics-login-credentials-inputs-outputs/image4.png)
-8. [A feladat indítása leállított utoljára] folytassa (#start-your-job-from-the-last-stopped-time) szakaszban.
+8. Lépjen tovább a [indítsa el a feladatot az utolsó leállított időpont](#start-your-job-from-the-last-stopped-time) szakaszban.
 
 ### <a name="event-hubs"></a>Event Hubs
 
-1. Jelentkezzen be az Azure portál > keresse meg az Event Hubs-adatforrásnevet bemeneti/kimeneti a Stream Analytics-feladathoz.    
-2. Nyissa meg a beállítások szakaszban **megosztott elérési házirendek** és válassza ki a hozzáférési házirendet. Között a **elsődleges kulcs** és **másodlagos kulcs**, válassza ki azt, amelyik nem használják a feladatot, majd ismét:  
-   ![Az Event Hubs kulcsok újragenerálása](media/stream-analytics-login-credentials-inputs-outputs/image2.png)
+1. Jelentkezzen be az Azure Portalon > Tallózás az Eseményközpontba, amely a Stream Analytics-feladat részeként bemeneti/kimeneti használja.    
+2. A beállítások területen nyissa meg a **megosztott elérési házirendek** , és válassza ki a hozzáférési házirendet. Között a **elsődleges kulcs** és **másodlagos kulcs**, válassza ki azt, amelyik nem használja a feladatot, majd ismét:  
+   ![Eseményközpont kulcsainak újragenerálása](media/stream-analytics-login-credentials-inputs-outputs/image2.png)
 3. Másolja ki az újonnan létrehozott kulcsot.    
-4. Azure-portálról, keresse meg a Stream Analytics-feladat > Válasszon **leállítása** és várja meg a feladat leállítása.    
-5. Keresse meg a Event hubs bemeneti/kimeneti legyen hitelesítő adatainak frissítése.    
-6. Keresés a **Event Hub házirend kulcs** mezőben, majd illessze be az újonnan létrehozott kulcs > kattintson **mentése**.    
+4. Az Azure Portalon keresse meg a Stream Analytics-feladat > Válasszon **leállítása** , és várjon, amíg a feladat leállítása.    
+5. Keresse meg az Event hubs bemeneti/kimeneti legyen hitelesítő adatainak frissítése.    
+6. Keresse meg a **Eseményközpont házirendjének kulcsa** mezőbe, majd illessze be az újonnan létrehozott kulcs > kattintson **mentése**.    
 7. A kapcsolat tesztelése automatikusan elindul, amikor menti a módosításokat, győződjön meg arról, hogy azt sikeresen megfelelt.    
-8. Folytassa a [indítsa el a feladat leállt utoljára](#start-your-job-from-the-last-stopped-time) szakasz.
+8. Lépjen tovább a [indítsa el a feladatot az utolsó leállított időpont](#start-your-job-from-the-last-stopped-time) szakaszban.
 
 ### <a name="sql-database"></a>SQL Database
 
-Egy meglévő felhasználó bejelentkezési hitelesítő adatok frissítése az SQL-adatbázishoz való kapcsolódáshoz szükséges. Hitelesítő adatok Azure-portálon vagy a megfelelő ügyféloldali eszköz, például az SQL Server Management Studio használatával frissítheti. Ez a szakasz azt mutatja be hitelesítő adatok frissítését az Azure portál használatával.
+Szeretne csatlakozni az SQL database egy meglévő felhasználó bejelentkezési hitelesítő adatainak frissítéséhez. Hitelesítő adatok az Azure portal vagy egy ügyféloldali eszköz, például az SQL Server Management Studio segítségével frissítheti. Ez a szakasz azt mutatja be a hitelesítő adatok frissítését az Azure portal használatával.
 
-1. Jelentkezzen be az Azure portál > keresse meg az SQL-adatbázis, amelyet a Stream Analytics-feladat kimeneti használni.    
-2. A **adatkezelő**, bejelentkezés/kapcsolódás saját adatbázishoz > hitelesítési típus kiválasztása **SQL server-hitelesítés** > írja be a **bejelentkezési** és  **Jelszó** Részletek > Válasszon **Ok**.  
-   ![SQL-adatbázis hitelesítő adatok újbóli létrehozása](media/stream-analytics-login-credentials-inputs-outputs/image3.png)
+1. Jelentkezzen be az Azure portal > keresse meg az SQL-adatbázis, amely a Stream Analytics-feladat kimeneti részeként használja.    
+2. A **adatkezelő**, bejelentkezési és csatlakozás az adatbázishoz > hitelesítési típusként válassza **SQL server-hitelesítés** > írja be a **bejelentkezési** és  **Jelszó** Részletek > Válasszon **Ok**.  
+   ![Hozza létre újra az SQL-adatbázishoz tartozó hitelesítő adatokat](media/stream-analytics-login-credentials-inputs-outputs/image3.png)
 
-3. A lekérdezés lap alter egyet a felhasználó jelszavát a következő lekérdezés futtatásával (Győződjön meg arról, hogy `<user_name>` ezzel a felhasználónévvel és `<new_password>` az új jelszóval):  
+3. A lekérdezés lapon módosítható egy, a felhasználó jelszava a következő lekérdezés futtatásával (cserélje le `<user_name>` ezzel a felhasználónévvel és `<new_password>` az új jelszót):  
 
    ```SQL
    Alter user `<user_name>` WITH PASSWORD = '<new_password>'
@@ -64,22 +64,22 @@ Egy meglévő felhasználó bejelentkezési hitelesítő adatok frissítése az 
    ```
 
 4. Jegyezze fel az új jelszót.    
-5. Azure-portálról, keresse meg a Stream Analytics-feladat > Válasszon **leállítása** és várja meg a feladat leállítása.    
-6. Keresse meg az SQL adatbázis kimeneti legyen elforgatása hitelesítő adatokat. Frissítse a jelszavát, és a módosítások mentéséhez.    
+5. Az Azure Portalon keresse meg a Stream Analytics-feladat > Válasszon **leállítása** , és várjon, amíg a feladat leállítása.    
+6. Keresse meg az SQL database kimeneti, amely a hitelesítő adatok forgatása szeretné. Frissítse a jelszót, és mentse a módosításokat.    
 7. A kapcsolat tesztelése automatikusan elindul, amikor menti a módosításokat, győződjön meg arról, hogy azt sikeresen megfelelt.    
-8. Folytassa a [indítsa el a feladat leállt utoljára](#start-your-job-from-the-last-stopped-time) szakasz.
+8. Lépjen tovább a [indítsa el a feladatot az utolsó leállított időpont](#start-your-job-from-the-last-stopped-time) szakaszban.
 
 ### <a name="power-bi"></a>Power BI
-1. Jelentkezzen be az Azure portál > keresse meg a Stream Analytics-feladat > Válasszon **leállítása** és várja meg a feladat leállítása.    
-2. Keresse meg a legyen megújítani hitelesítő adatait a Power BI kimeneti > kattintson a **újra a portálon** (megjelenik a sikerről szóló üzenetet) > **mentése** a módosításokat.    
+1. Jelentkezzen be az Azure portal > keresse meg a Stream Analytics-feladat > Válasszon **leállítása** , és várjon, amíg a feladat leállítása.    
+2. Keresse meg a Power BI-kimenet, amelyekhez hitelesítő adatokkal megújításához > kattintson a **engedély megújítása** (megjelenik a sikert jelző üzenet) > **mentése** a módosításokat.    
 3. A kapcsolat tesztelése automatikusan elindul, amikor a módosítások mentése, győződjön meg arról, hogy sikeresen megfelelt.    
-4. Folytassa a [indítsa el a feladat leállt utoljára](#start-your-job-from-the-last-stopped-time) szakasz.
+4. Lépjen tovább a [indítsa el a feladatot az utolsó leállított időpont](#start-your-job-from-the-last-stopped-time) szakaszban.
 
-## <a name="start-your-job-from-the-last-stopped-time"></a>Indítsa el a feladat leállt utoljára
+## <a name="start-your-job-from-the-last-stopped-time"></a>Indítsa el a feladatot az utolsó leállított időpont
 
-1. Keresse meg a feladat **áttekintése** ablaktábla > Válasszon **Start** elindítja a feladatot.    
-2. Válassza ki **utolsó leállításakor** > kattintson **Start**. Vegye figyelembe, hogy a "Ha az utolsó Leállítás" lehetőség csak akkor jelenik meg, ha korábban a feladat lefutott, és néhány kimeneti volna létre. A feladat a legutóbbi kimeneti érték idő alapján újraindult.
-   ![Indítsa el a feladatot](media/stream-analytics-login-credentials-inputs-outputs/image5.png)
+1. Keresse meg a feladatot **áttekintése** panelen > Válasszon **Start** elindítani a feladatot.    
+2. Válassza ki **utolsó leállítás időpontjában** > kattintson **Start**. Vegye figyelembe, hogy a "Ha az utolsó Leállítás" beállítás csak akkor jelenik meg, ha korábban már futtatta a feladatot, és néhány kimenetet kellett jönnek létre. A feladat az utolsó kimeneti értéket időben újraindításakor alapján.
+   ![A feladat indítása](media/stream-analytics-login-credentials-inputs-outputs/image5.png)
 
 ## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)

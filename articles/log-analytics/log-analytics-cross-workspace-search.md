@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: d3fb6557571042be7db1380010738bacd72e50f5
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: cc7bcefe43eed524f50fcad09d7fb31a80d22b83
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869500"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025803"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Hajtsa végre az erőforrások közötti naplókeresések a Log Analyticsben  
 
@@ -29,7 +29,7 @@ Korábban az Azure Log Analytics, akkor csak elemezheti az aktuális munkaterül
 Most már lekérdezheti a nemcsak a több Log Analytics-munkaterületek, de is ugyanazt az erőforráscsoportot, egy másik erőforráscsoportot, vagy egy másik előfizetést az adott Application Insights alkalmazásból származó adatok között. Ez biztosít a rendszerre kiterjedően megtekintheti az adatokat.  Ezek a lekérdezéstípusok a főadatbázisról csak [Log Analytics](log-analytics-log-search-portals.md#log-analytics-page). Az erőforrások (Log Analytics-munkaterületek és Application Insights-alkalmazás), amelyeket megadhat egyetlen lekérdezést számát 100-ra korlátozódik. 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>A Log Analytics-munkaterületek között és az Application Insightsból
-Hivatkozhat egy másik munkaterületet, a lekérdezés, használja a [ *munkaterület* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/workspace()) azonosítóját, és a egy alkalmazást az Application Insightsból, használja a [ *alkalmazás* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/app())azonosítója.  
+Hivatkozhat egy másik munkaterületet, a lekérdezés, használja a [ *munkaterület* ](https://docs.microsoft.com/azure/log-analytics/query-language/workspace-expression) azonosítóját, és a egy alkalmazást az Application Insightsból, használja a [ *alkalmazás* ](https://docs.microsoft.com/azure/log-analytics/query-language/app-expression)azonosítója.  
 
 ### <a name="identifying-workspace-resources"></a>A munkaterület erőforrásai azonosítása
 Az alábbi példák bemutatják a lekérdezések összesített száma a naplók a frissítési tábla visszaadása nevű munkaterület a Log Analytics-munkaterületek között *contosoretail-it*. 
@@ -104,4 +104,4 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse át a [Log Analytics naplóbeli keresési referencia](https://docs.loganalytics.io/docs/Language-Reference) összes elérhető a Log Analytics lekérdezési szintaxis beállítások megtekintéséhez.    
+Tekintse át a [Log Analytics naplóbeli keresési referencia](https://docs.microsoft.com/azure/log-analytics/query-language/kusto) összes elérhető a Log Analytics lekérdezési szintaxis beállítások megtekintéséhez.    

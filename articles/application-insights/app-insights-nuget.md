@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 96c9628807d2aae257e27432ea8d27a7d9325de0
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: b6188bbf89d9aee842d7f8e232a820b59c4d9e31
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49381010"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023253"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights NuGet-csomagok
 
@@ -30,7 +30,7 @@ Alább látható stabil kiadási NuGet-csomagok az Application Insights jelenleg
 |Microsoft.ApplicationInsights.Agent.Intercept | 2.4.0 | Lehetővé teszi a metódushívásokat megszerzésének | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent.Intercept/) |
 | Microsoft.ApplicationInsights.DependencyCollector | 2.8.0 | Application Insights függőségi gyűjtő a .NET-alkalmazásokban. A és a függő csomag egy Application Insights platformspecifikus csomagok automatikus gyűjtését, a függőségek telemetriáját. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) |
 | Microsoft.ApplicationInsights.PerfCounterCollector | 2.8.0 | Application Insights teljesítmény számlálók gyűjtő lehetővé teszi, hogy küldjön az Application Insightsba teljesítményszámlálói által gyűjtött adatokat. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) |
-| Microsoft.ApplicationInsights.Web | 2.8.0 | .NET-hez készült Application Insights webes alkalmazások | [Letöltési csomag] (https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) |
+| Microsoft.ApplicationInsights.Web | 2.8.0 | .NET-hez készült Application Insights webes alkalmazások | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) |
 | Microsoft.ApplicationInsights.WindowsServer | 2.8.0 | Application Insights Windows Server NuGet-csomag automatikus gyűjtését az application insights telemetria a .NET-alkalmazásokban biztosít. Ez a csomag használható az Application Insights platformspecifikus csomagokat egy függő csomagot vagy a .NET-alkalmazásokban, amelyek nem tartoznak platformspecifikus csomagokat (például a .NET-feldolgozói szerepkörök) egy különálló csomagként. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)  
 | Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel | 2.8.0 | Révén a telemetria az Application Insights Windows Server SDK, amely megőrzi az telemetriát, offline forgatókönyvekben. | [Csomag letöltése](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 03f096bf160c44f7a35f54a73cff6ea701b87d22
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 66585c495dfb46e51120ae3eef2685d634fd9606
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352919"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024970"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Az Azure AD Connect: Fiókok és engedélyek
 
@@ -82,11 +82,11 @@ A [AD DS-összekötő fiók](#active-directory-account) jön létre olvasását 
 
 ![Az Expressz telepítés](./media/reference-connect-accounts-permissions/express.png)
 
-A következő található egy összefoglaló az expressz installlation varázsló lapjain, a hitelesítő adatokat gyűjteni, és hogy mire szolgálnak a.
+A következő található egy összefoglaló az expressz telepítési varázsló lapjain, a hitelesítő adatokat gyűjteni, és hogy mire szolgálnak a.
 
 | Varázsló lapja | Hitelesítő adatok gyűjtése | Szükséges engedélyek | Használt |
 | --- | --- | --- | --- |
-| – |A felhasználó a telepítési varázsló futtatása |A helyi kiszolgáló rendszergazdája |<li>Hozza létre a [ADSync felhőszolgáltatáshoz fiók](#azure-ad-connect-sync-service-account) feltárhatja, hogy a szinkronizálási szolgáltatás futtatásához használt fiók. |
+| – |A felhasználó a telepítési varázsló futtatása |A helyi kiszolgáló rendszergazdája |<li>Hozza létre a [ADSync szolgáltatás fiókja](#azure-ad-connect-sync-service-account) feltárhatja, hogy a szinkronizálási szolgáltatás futtatásához használt fiók. |
 | Csatlakozás az Azure AD szolgáltatáshoz |Az Azure Active directory hitelesítő adatok |A globális rendszergazdai szerepkörű Azure AD-ben |<li>Az Azure AD-címtárban a szinkronizálás engedélyezése.</li>  <li>Létrehozását a [Azure AD-összekötő fiók](#azure-ad-service-account) használt a folyamatban lévő szinkronizálási műveletek az Azure AD-ben.</li> |
 | Csatlakozás az AD DS szolgáltatáshoz |A helyszíni Active Directory hitelesítő adatok |A vállalati rendszergazdák (EA) csoport az Active Directoryban |<li>Hozza létre a [AD DS-összekötő fiók](#active-directory-account) az Active Directoryban és a rá vonatkozó engedélyeket ad. Ezt a fiókot hozta létre az olvasási és írási címtár szinkronizálása során használatos.</li> |
 
@@ -97,7 +97,7 @@ Az az egyéni beállítások telepítése a varázsló kínálja, több választ
 
 ### <a name="custom-installation-wizard-summary"></a>Egyéni telepítési varázsló – Összegzés
 
-A következő található egy összefoglaló az egyéni installlation varázsló lapjain, a hitelesítő adatokat gyűjteni, és hogy mire szolgálnak a.
+A következő található egy összefoglaló az egyéni telepítési varázsló lapjain, a hitelesítő adatokat gyűjteni, és hogy mire szolgálnak a.
 
 ![Az Expressz telepítés](./media/reference-connect-accounts-permissions/customize.png)
 

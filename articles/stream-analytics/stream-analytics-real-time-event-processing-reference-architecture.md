@@ -1,6 +1,6 @@
 ---
-title: Azure Stream Analytics esemény feldolgozása használatával valós idejű esemény feldolgozása
-description: Ez a cikk ismerteti a referencia-architektúrában, valós idejű esemény feldolgozása és elemzés használata az Azure Stream Analytics eléréséhez.
+title: Az Azure Stream Analytics Eseményfeldolgozási használatával valós idejű eseményfeldolgozás
+description: Ez a cikk ismerteti a referencia-architektúra, valós idejű eseményfeldolgozás és elemzési Azure Stream Analytics használatával érhető el.
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
@@ -9,44 +9,44 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/24/2017
-ms.openlocfilehash: 8a5d426d67916e010c7fff048eebdc77b93c5c38
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 08ad2d853ab909ea859ffd1230dd651aa6661500
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30902582"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987630"
 ---
-# <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>Architektúra hivatkozni: a Microsoft Azure Stream Analytics valós idejű Eseményfeldolgozási
-A referencia-architektúrában, valós idejű esemény feldolgozása az Azure Stream Analytics célja adjon meg egy általános tervezetének üzembe helyezéséhez egy valós idejű platform (PaaS) szolgáltatás adatfolyam-feldolgozási megoldásként a Microsoft Azure-ban.
+# <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>Referenciaarchitektúra: valós idejű eseményfeldolgozás a Microsoft Azure Stream Analytics
+A referenciaarchitektúra az Azure Stream Analytics valós idejű eseményfeldolgozás a funkcionalitást biztosít egy általános tervezet üzembe helyezéséhez egy valós idejű platformjával a Microsoft Azure platformszolgáltatás (PaaS) streamfeldolgozó megoldás.
 
 ## <a name="summary"></a>Összegzés
-Hagyományosan elemzési megoldásokat képességeit ETL (kinyerés, átalakítás, betöltés) és az adatraktározás terén, például előtt elemzési adatokat tároló volna alapozni. Változó követelményeknek megfelelően további gyorsan érkező adatokat, beleértve a létező modell leküldendő a határértéket. Adatok áthelyezése előtt tárolási adatfolyamok elemzését teszi egyetlen megoldás, és bár ez nem egy új funkció, a módszer nem széles körben elfogadott közötti összes iparági referenciaegyenesen. 
+Hagyományosan elemzési megoldásokat rendelkezik alapul szolgáló képességeket beépítettük, és az adattárházak, ETL (extract, transform, load) adatok tárolására elemzés előtt. Követelményeknek megfelelően, több gyorsan beérkező adatot, beleértve a már meglévő modell küld a korlátot. Adatok áthelyezése a storage előtt Streamek elemzése lehetővé teszi egy megoldást, és nem érhető el egy olyan új képesség, míg a módszer nem széles körben fogadott összes iparági referenciaegyenesen között. 
 
-Microsoft Azure biztosít egy kiterjedt katalógust, amely támogathatja a másik megoldás forgatókönyvek és követelmények tömbje analytics technológiák. Mely Azure-szolgáltatások telepítése végpont megoldás kiválasztása a hardverekről ajánlatok adott feladat lehet. A dokumentum célja, hogy szolgáltatásait és való együttműködés a különböző Azure-szolgáltatáshoz, amely egy esemény-adatfolyam-megoldás támogatja. Ismerteti azokat a forgatókönyveket, amelyben az ügyfelek is kihasználhatja az ilyen típusú megközelítés le.
+A Microsoft Azure biztosít egy kiterjedt katalógus, amely támogathatja a másik megoldás-forgatókönyveket és a követelmények tömbjét elemzési technológiák. Melyik Azure-szolgáltatások üzembe helyezése egy teljes körű megoldás kiválasztása az ajánlatok bővítheti a megadott kihívást jelenthet. Ez a tanulmány szolgáltatásait és üzemeltetést, a különböző Azure-szolgáltatások, amelyek támogatják az esemény-adatfolyam-megoldás célja. Ismerteti azokat a forgatókönyveket, amelyben ügyfeleink az ilyen megközelítés is kihasználhatják a.
 
 ## <a name="contents"></a>Tartalom
-* Vezetői összefoglaló
-* Valós idejű elemzés bemutatása
-* A valós idejű adatok Azure-ban Értékajánlatához
-* Valós idejű elemzések gyakori helyzetek
-* Architektúrája és összetevői
+* Végrehajtási összefoglaló
+* Bevezetés a valós idejű elemzés
+* Az Azure-ban a valós idejű adatok Értékajánlat
+* Valós idejű elemzések gyakori forgatókönyvei
+* Architektúra és összetevők
   * Adatforrások
-  * Adatintegráció réteg
+  * Adatintegrációs réteg
   * Valós idejű elemzési réteg
-  * Adatok tárolási rétegből
-  * Bemutató / fogyasztás réteg
+  * Adatok tárolási réteg
+  * Bemutató / fogyasztás. réteg
 * Összegzés
 
-**Szerző:** Insights adatközpont Charles Feddersen, megoldásokért felelős mérnök kiváló, Microsoft Corporation
+**Szerző:** Insights adatközpont Charles Feddersen, Felhőmegoldás-fejlesztő mérnök, a minőség, a Microsoft Corporation
 
-**Közzétett:** 2015. januári
+**Közzététel:** 2015. január
 
 **Változat:** 1.0
 
-**Letöltés:** [valós idejű, a Microsoft Azure Stream Analytics Eseményfeldolgozási](http://download.microsoft.com/download/6/2/3/623924DE-B083-4561-9624-C1AB62B5F82B/real-time-event-processing-with-microsoft-azure-stream-analytics.pdf)
+**Letöltés:** [valós idejű Eseményfeldolgozás a Microsoft Azure Stream Analytics](https://download.microsoft.com/download/6/2/3/623924DE-B083-4561-9624-C1AB62B5F82B/real-time-event-processing-with-microsoft-azure-stream-analytics.pdf)
 
 ## <a name="get-help"></a>Segítségkérés
-Ha további segítségre van szüksége, próbálkozzon a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
+További segítségre van szüksége, próbálja meg a [Azure Stream Analytics-fórumot](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>További lépések
 * [Az Azure Stream Analytics bemutatása](stream-analytics-introduction.md)

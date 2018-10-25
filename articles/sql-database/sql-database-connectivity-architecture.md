@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/24/2018
-ms.openlocfilehash: 82bc76b47f8073e07163e7f827b900a59cf3ad7f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: ca1ef9c402b370a8d1228e13d7fe3e13fd225f79
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470575"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986321"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Az Azure SQL Database kapcsolati architektúra
 
@@ -73,9 +73,16 @@ Az alábbi táblázat az elsődleges és másodlagos IP-címek, adatok minden r�
 | Közép-Kanada | 40.85.224.249 | |
 | Kelet-Kanada | 40.86.226.166 | |
 | USA középső régiója | 23.99.160.139 | 13.67.215.62 |
+| Kelet-Kína 1 | 139.219.130.35 | |
+| Kelet-Kína 2 | 40.73.82.1 | |
+| Észak-Kína 1 | 139.219.15.17 | |
+| Észak-Kína 2 | 40.73.50.0 | |
 | Kelet-Ázsia | 191.234.2.139 | 52.175.33.150 |
 | 1 USA keleti régiója | 191.238.6.43 | 40.121.158.30 |
 | USA 2. keleti régiója | 191.239.224.107 | 40.79.84.180 * |
+| Közép-Franciaország | 40.79.137.0 | 40.79.129.1 |
+| Közép-Németország | 51.4.144.100 | |
+| Németország, Északkelet | 51.5.144.179 | |
 | Közép-India | 104.211.96.159 | |
 | Dél-India | 104.211.224.146 | |
 | Nyugat-India | 104.211.160.80 | |

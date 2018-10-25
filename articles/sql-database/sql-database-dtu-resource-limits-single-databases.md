@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: 8c5274db69831aaaeaaed2b81627bbb4aeb8cd75
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.date: 10/23/2018
+ms.openlocfilehash: 0a514cced50a2a05008c03dfb438cceefb332d17
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954936"
+ms.locfileid: "49987324"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>A DTU-alapú vásárlási modell segítségével az önálló adatbázisok számára erőforráskorlátok
 
@@ -80,8 +80,8 @@ Az önálló adatbázisok számára az alábbi táblázatok egy önálló adatb�
 | Egyidejű munkamenetek maximális száma | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||
 
-> [!IMPORTANT] 
-> Több mint 1 TB prémium szintű storage jelenleg érhető el a következő régiót kivéve a következő kelet-Kína, Észak-Kína, közép-Németország, Északkelet-Németország, Egyesült Királyság északi régiója, Egyesült Királyság déli régiója, USA védelmi Minisztériuma – középső régiója, USA védelmi Minisztériuma – keleti régiója, USA kormányzati központi és USA nyugati középső Régiója: A Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB-os korlátozva. Lásd: [P11–P15 – Aktuális korlátozások](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> [!IMPORTANT]
+> A következő kivételével minden régióban több mint 1 TB prémium szintű storage jelenleg érhető el: Kelet-Kína, Észak-Kína, közép-Németország, Északkelet-Németország, Egyesült Királyság északi régiója, Egyesült Királyság déli régiója, USA védelmi Minisztériuma – középső régiója, USA védelmi Minisztériuma – keleti régiója, USA kormányzati középső régiója és USA nyugati középső Régiója.  Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB. Lásd: [P11–P15 – Aktuális korlátozások](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 ## <a name="single-database-change-storage-size"></a>Önálló adatbázis: tároló méretének módosítása
 

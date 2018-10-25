@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 05/24/2018
 ms.author: cwatson
-ms.openlocfilehash: e06ee851209d48185b3b20cd6f1169af81b58013
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1e44f79fea337a79f3c30f60db7eb9a55182db6c
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034824"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986576"
 ---
 # <a name="azure-billing-and-cost-management-documentation"></a>Az Azure-számlázás és -költségkezelés dokumentációja
 
@@ -171,7 +171,6 @@ Ismerje meg az Azure számlázását, a használat és költségek monitorozás�
                 <div class="card">
                     <div class="cardText">
                         <h3>Nagyvállalati előfizetés: Hozzáférésre van szükség az EA Portalhoz</h3>
-                        <style>.p-test:after { font-family: docons; content: "\E9D0";}</style>
                         <p>
                         <a class="p-test" href="https://ea.azure.com/helpdocs/createADepartment" data-linktype="external">Részlegek kezelése<span class="docon docon-navigate-external"></span></a>
                         <br>

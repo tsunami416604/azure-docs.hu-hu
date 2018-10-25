@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 7fc3e68e9d714ca95a28a28b470b1e1fdbff2c47
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 0be0d6c9613b4160a6c4c5cc3b63336fcf67d5c2
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870893"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025624"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Merevlemezek előkészítése importálási feladatokhoz
 
@@ -309,7 +309,7 @@ Az adatok mérete a lemez mérete nagyobb, ha a WAImportExport eszközt elosztja
 
 #### <a name="where-can-i-find-previous-version-of-waimportexport-tool"></a>Hol találhatok WAImportExport tool korábbi verziójával?
 
-WAImportExport az eszköz összes elavuló WAImportExport V1 eszközzel kellett rendelkezik. WAImportExport eszköz lehetővé teszi a felhasználók számára adja meg a több forrásból, és több meghajtó írni. Ezenkívül egy könnyedén felügyelheti a több forráshelyet, amelyről az adatokat egy CSV-fájl másolni kell. Azonban az esetben meg kell szeretne egyetlen forrás átmásolása [töltheti WAImportExport V1 eszköz], egyetlen lemez vagy SAS támogatási (http://go.microsoft.com/fwlink/?LinkID=301900&amp; clcid = 0x409), majd tekintse át [WAImportExport V1 referencia](storage-import-export-tool-how-to-v1.md) WAImportExport V1 segítség használat.
+WAImportExport az eszköz összes elavuló WAImportExport V1 eszközzel kellett rendelkezik. WAImportExport eszköz lehetővé teszi a felhasználók számára adja meg a több forrásból, és több meghajtó írni. Ezenkívül egy könnyedén felügyelheti a több forráshelyet, amelyről az adatokat egy CSV-fájl másolni kell. Azonban abban az esetben, ha SAS-támogatása vagy szeretne egyetlen forrás másolása egyetlen lemezre van szüksége, akkor is [WAImportExport V1 eszköz letöltése](http://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409) , és hivatkozzon [WAImportExport V1 referencia](storage-import-export-tool-how-to-v1.md) WAImportExport V1 használati segítség .
 
 #### <a name="what-is-a-session-id"></a>Mi az a munkamenet-azonosító?
 
@@ -407,7 +407,7 @@ WAImportExport eszköz olvassa be, és írja a batch által kötegelt fájlokat 
 * [Az Azure Import/Export eszköz telepítése](storage-import-export-tool-setup.md)
 * [Tulajdonságok és metaadatok beállítása az importálási folyamat során](storage-import-export-tool-setting-properties-metadata-import.md)
 * [Munkafolyamat-minta a merevlemezek importálási feladatokhoz való előkészítésére](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md)
-* [Használt gyakori parancsok gyors áttekintése](storage-import-export-tool-quick-reference.md) 
+* [Használt gyakori parancsok gyors áttekintése](storage-import-export-tool-quick-reference.md) 
 * [Feladatok állapotának áttekintése a másolási naplófájlok segítségével](storage-import-export-tool-reviewing-job-status-v1.md)
 * [Importálási feladat javítása](storage-import-export-tool-repairing-an-import-job-v1.md)
 * [Exportálási feladat javítása](storage-import-export-tool-repairing-an-export-job-v1.md)
