@@ -364,7 +364,7 @@ Ebben a szakaszban konfigurálhatja felhasználói adatfolyamok Workday-ből az 
 | **WorkerID**  |  EmployeeID | **Igen** | Írt csak létrehozáskor |
 | **Felhasználói azonosító**    |  CN    |   |   Írt csak létrehozáskor |
 | **Csatlakozás ("@", [felhasználónév], "contoso.com")**   | userPrincipalName     |     | Írt csak létrehozáskor 
-| **Cserélje le (Mid (cserélje le (\[UserID\],, "(\[ \\ \\ / \\ \\ \\ \\ \\ \\ \[ \\\\\]\\\\:\\\\;\\ \\|\\\\=\\\\,\\\\+\\\\\*\\ \\? \\ \\ &lt; \\ \\ &gt; \]) "," ",), 1, 20)," ([\\\\.) \* \$] (file:///\\.) *$)", , "", , )**      |    sAMAccountName            |     |         Írt csak létrehozáskor |
+| **Cserélje le(Mid(cseréljele(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\ \\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Írt csak létrehozáskor |
 | **Switch (\[aktív\], "0", "True", "1")** |  accountDisabled      |     | Létrehozás + frissítése |
 | **Keresztnév**   | givenName       |     |    Létrehozás + frissítése |
 | **Vezetéknév**   |   sorozatszám   |     |  Létrehozás + frissítése |
