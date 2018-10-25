@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: project-answer-search
+ms.component: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 1e10ecf685aaf5b60b94a5e9e0d8e118f45e5168
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 66d5488fa0e8f542327b4150d50e4351af6ade55
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867034"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469095"
 ---
 # <a name="quickstart-project-answer-search-query-in-java"></a>Rövid útmutató: Válaszkeresés projekt lekérdezése a Javában
 Ez a cikk Javát használ annak bemutatására, hogyan használható a Microsoft Cognitive Services részét képező Bing Answer Search API az Azure-on. Az API egy REST-webszolgáltatás, így kompatibilis minden olyan programozási nyelvvel, amely képes HTTP-kérések küldésére és JSON-elemzésre.
@@ -24,11 +24,11 @@ A példakód olyan Javát használ, amely csak minimális mértékű külső fü
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy hozzáférési kulcs a [Cognitive Services Labs](https://aka.ms/answersearchsubscription) ingyenes próbaverziójához.
+Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://aka.ms/answersearchsubscription) ingyenes próbaverziójához
 
 ## <a name="request"></a>Kérés 
 
-A következő kód például létrehoz egy `WebRequest` kérést, beállítja a hozzáférési kulcs fejlécét, és hozzáad egy lekérdezési sztringet a „Gibraltár” szóhoz.  Ezután elküldi a kérelmet, és hozzárendeli a választ egy sztringhez, hogy az tartalmazza a JSON-szöveget.
+A következő kód például létrehoz egy `WebRequest` kérést, beállítja a hozzáférési kulcs fejlécét, és hozzáad egy lekérdezési sztringet a „Gibraltár” szóhoz.  Ezután elküldi a kérést, és hozzárendeli a választ egy sztringhez, hogy az tartalmazza a JSON-szöveget.
 
 ````
     static String host = "https://api.labs.cognitive.microsoft.com";

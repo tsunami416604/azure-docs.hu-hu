@@ -9,12 +9,12 @@ author: nacharya1
 ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: df1c19c0e16b9862b09dcc652ef2831e0c5bf3a5
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 29d673f48671ec917e45b7ff76feeebf0b868c4b
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802355"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426889"
 ---
 # <a name="tutorial-train-a-classification-model-with-automated-machine-learning-in-azure-machine-learning-service"></a>Oktatóanyag: Besorolási modell betanítása automatizált gépi tanulással az Azure Machine Learning szolgáltatásban
 
@@ -38,7 +38,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="get-the-notebook"></a>A notebook beszerzése
 
-Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/03.auto-train-models.ipynb) is elérhető. Futtassa a `03.auto-train-models.ipynb` notebookot az Azure Notebooksban vagy a saját Jupyter-notebook-kiszolgálóján.
+Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/03.auto-train-models.ipynb) is elérhető. A `03.auto-train-models.ipynb` notebook az Azure Notebooks szolgáltatásban vagy a saját Jupyter-notebookkiszolgálóján futtatható.
 
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
@@ -543,5 +543,5 @@ Ebben az Azure Machine Learning szolgáltatáshoz kapcsolódó oktatóanyagban a
 > * A betanítás eredményeinek áttekintése
 > * A legjobb modell regisztrálása
 
-Tudjon meg többet a [beállítások az automatikus betanításhoz való konfigurálásáról]() vagy az [automatikus betanítás egy távoli erőforráson való használatáról](how-to-auto-train-remote.md).  
+Tudjon meg többet a [beállítások az automatikus betanításhoz való konfigurálásáról](how-to-configure-auto-train.md) vagy az [automatikus betanítás egy távoli erőforráson való használatáról](how-to-auto-train-remote.md).  
 

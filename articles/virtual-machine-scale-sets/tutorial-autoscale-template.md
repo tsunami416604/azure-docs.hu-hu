@@ -3,7 +3,7 @@ title: Oktatóanyag – Egy méretezési csoport automatikus méretezése Azure-
 description: Ismerje meg, hogyan méretezhet automatikusan egy virtuálisgép-méretezési csoportot az Azure Resource Manager-sablonok segítségével a processzorterhelés növekedésének vagy csökkenésének megfelelően
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 4532355130fff987e25c5c804630fb6bdd7699df
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e1257cbe14d8d0fe9dc6d9b0f2a48dbb8b3cc6e4
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959835"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466557"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Oktatóanyag: Virtuálisgép-méretezési csoport automatikus méretezése Azure-sablonnal
 Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuálisgép-példányok számát. Az alkalmazás igényeihez igazodva automatikusan növelheti vagy csökkentheti a virtuálisgép-példányok számát. Az automatikus méretezésnek köszönhetően lépést tarthat az ügyfeleik igényeivel és az alkalmazás teljes élettartama alatt reagálhat az alkalmazás teljesítményében bekövetkezett változásokra. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -283,4 +283,4 @@ Ez az oktatóanyag bemutatta, hogyan lehet automatikusan horizontálisan le- ill
 A virtuálisgép-méretezési csoportok működésével kapcsolatos további példákért tekintse meg az alábbi Azure CLI-mintaszkripteket:
 
 > [!div class="nextstepaction"]
-> [Méretezési csoportokhoz tartozó szkriptminták az Azure CLI-hoz](cli-samples.md)
+> [Méretezési csoportokhoz tartozó szkriptminták az Azure CLI-hez](cli-samples.md)

@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: project-url-preview
+ms.component: url-preview
 ms.topic: overview
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 5d0b8260bf1c58af915c1be18c32cec678f4f09c
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: e3791c897722c9bbf50f58c126d7e4e573b2096f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869433"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465814"
 ---
 # <a name="what-is-project-url-preview"></a>Mi az URL-cím előnézete projekt?
 Az URL-cím előnézete végpont egy URL-címlekérdezési paramétert fogad, és egy JSON-választ ad vissza, amely tartalmazza a célerőforrás nevét, egy rövid leírást és egy, az előnézetben megjeleníteni kívánt képre mutató hivatkozást. A válasz tartalmazza az [isFamilyFriendly](url-preview-reference.md#query-parameters) jelzőt is, amely azt jelzi, hogy az URL-cím tartalmaz-e felnőtt-, hamisított vagy más illegális tartalmat. 

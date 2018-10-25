@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: project-answer-search
+ms.component: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: c33a88b65dcdf5ddddff9f5109afbe0cca7247c4
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.author: rosh
+ms.openlocfilehash: 69c5edfef65af2ed1b27f9a512ad13c21468df7a
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869828"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465508"
 ---
 # <a name="quickstart-project-answer-search-with-python"></a>Rövid útmutató a Válaszkereséses projekt a Pythonnal való használatához
 
@@ -23,21 +23,21 @@ Ez a Python-alapú példa egy, a „Gibraltár-sziklával” kapcsolatos inform�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Egy hozzáférési kulcs a [Cognitive Services Labs](https://aka.ms/answersearchsubscription) ingyenes próbaverziójához.
+Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://aka.ms/answersearchsubscription) ingyenes próbaverziójához
 
 Ez a példa a Python 3.6.4-et használja.
 
 ## <a name="code-scenario"></a>Kódforgatókönyv 
 
 A következő kód egy URL-előnézetet hoz létre.
-Implementálása a következő lépésekben történik:
-1. A változók deklarálása a végpont megadásához gazdagép és elérési út szerint.
-2. Az előnézetben megtekintendő lekérdezési URL megadása és egy lekérdezési paraméter hozzáadása.  
-3. A lekérdezési paraméter megadása.
-4. A kérést létrehozó és az *Ocp-Apim-Subscription-Key* fejlécet felvevő Search-függvény definiálása.
-5. Az *Ocp-Apim-Subscription-Key* fejléc megadása. 
-6. A kapcsolat létrehozása és a kérés elküldése.
-7. A JSON-eredmények kinyomtatása.
+Implementálására a következő lépésekben kerül sor:
+1. Deklarálja a változókat a végpont gazdagép és útvonal szerinti megadásához.
+2. Megadja a lekérdezési URL-címet az előnézethez, és hozzáad egy lekérdezési paramétert.  
+3. Megadja a lekérdezési paramétert.
+4. Definiálja a kérést létrehozó és az *Ocp-Apim-Subscription-Key* fejlécet hozzáadó Search függvényt.
+5. Megadja az *Ocp-Apim-Subscription-Key* fejlécet. 
+6. Létrehozza a kapcsolatot, és elküldi a kérést.
+7. Megjeleníti a JSON-eredményeket.
 
 Az útmutatóban használt teljes kód a következő:
 

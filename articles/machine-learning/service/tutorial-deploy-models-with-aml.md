@@ -9,12 +9,12 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: b1ae3fb5de3e28f44ef39731f49a33e2086255a1
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: ad6b296543cffedb215c87b1fc893a22b29a3052
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785341"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427348"
 ---
 # <a name="tutorial-2--deploy-an-image-classification-model-in-azure-container-instance-aci"></a>2. oktatóanyag: Képbesorolási modell üzembe helyezése az Azure Container Instances (ACI) szolgáltatásban
 
@@ -35,7 +35,7 @@ Az ACI termelési környezetekhez nem ideális, teszteléshez és a munkafolyama
 
 ## <a name="get-the-notebook"></a>A notebook beszerzése
 
-Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/02.deploy-models.ipynb) is elérhető. Futtassa a `02.deploy-models.ipynb` notebookot az Azure Notebooksban vagy a saját Jupyter-notebook-kiszolgálóján.
+Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/02.deploy-models.ipynb) is elérhető. A `02.deploy-models.ipynb` notebook az Azure Notebooks szolgáltatásban vagy a saját Jupyter-notebookkiszolgálóján futtatható.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -383,4 +383,4 @@ Ebben az Azure Machine Learning szolgáltatáshoz kapcsolódó oktatóanyagban a
 > * A modell üzembe helyezése az ACI-ban
 > * Az üzembe helyezett modell tesztelése
  
-Az [automatikus algoritmuskiválasztásról]() szóló oktatóanyagot is kipróbálhatja, ha kíváncsi, hogyan képes az Azure Machine Learning szolgáltatás a modell számára legmegfelelőbb algoritmus automatikus kiválasztására és hangolására, valamint a modell létrehozására.
+Az [automatikus algoritmuskiválasztásról](tutorial-auto-train-models.md) szóló oktatóanyagot is kipróbálhatja, ha kíváncsi, hogyan képes az Azure Machine Learning szolgáltatás a modell számára legmegfelelőbb algoritmus automatikus kiválasztására és hangolására, valamint a modell létrehozására.

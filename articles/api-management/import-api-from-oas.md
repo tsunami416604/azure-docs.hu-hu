@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: f5132215b1fda93c62c1fbea46c3266fcc44ec46
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: edef88694cc335a63ce279e96a204ed4b8fe7376
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307279"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469503"
 ---
 # <a name="import-an-openapi-specification"></a>OpenAPI-specifikáció importálása
 
@@ -65,11 +65,11 @@ Végezze el a következő rövid útmutatót: [Azure API Management-példány l�
 
 A műveleteket meg lehet hívni közvetlenül az Azure Portalról, ami kényelmes módot biztosít az API műveleteinek megtekintésére és tesztelésére.
 
+![API tesztelése](./media/api-management-get-started/01-import-first-api-01.png)
+
 1. Válassza ki az előző lépésben létrehozott API-t.
 2. Kattintson a **Teszt** fülre.
-
-    ![API tesztelése](./media/api-management-get-started/test-api.png)
-1. Kattintson a **GetSpeakers** elemre.
+3. Kattintson a **GetSpeakers** elemre.
 
     A lapon megjelennek a lekérdezési paraméterek mezői, de ebben az esetben nincs ilyen. A lapon a fejlécek mezői is megjelennek. Az ehhez az API-hoz társított termék előfizetői azonosítójának egyik fejléce „Ocp-Apim-Subscription-Key” értékű. Ha Ön hozta létre az APIM-példányt, akkor már eleve rendszergazdának számít, így a kulcsot automatikusan kitölti a rendszer.
 4. Kattintson a **Küldés** gombra.
