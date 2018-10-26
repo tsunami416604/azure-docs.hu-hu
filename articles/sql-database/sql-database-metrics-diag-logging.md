@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 775883d575a87758f563bd8dae8e5a726cd8ed36
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 8f66c95202e0ccdef86f9630f7a98c20023a8955
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49959077"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087746"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database-metrikák és diagnosztikai naplózás 
 
@@ -29,12 +29,20 @@ Az Azure SQL Database, a rugalmas készletek, a felügyelt példány és a adatb
 
     ![Architektúra](./media/sql-database-metrics-diag-logging/architecture.png)
 
-A metrikák és a különböző Azure-szolgáltatások által támogatott kategóriába jelentkezzen, fontolja meg a olvasása:
+A metrikák és a különböző Azure-szolgáltatások által támogatott kategóriába jelentkezzen, érdemes figyelembe venni az olvasási:
 
 * [A Microsoft Azure-ban mérőszámok áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
 * [Azure-beli diagnosztikai naplók áttekintése](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) 
 
- Engedélyezheti és, adatbázis-naplózás az alábbi módszerek egyikének használatával mérőszámai és diagnosztikái telemetriájának kezelése:
+## <a name="enable-logging-of-diagnostics-telemetry"></a>A telemetria diagnosztikai naplózás engedélyezése
+
+Ez a dokumentum az első szakaszban használatával engedélyezhető a diagnostics telemetriai adatainak az adatbázisok és rugalmas készletek és a felügyelt példányok diagnosztikai telemetria engedélyezése a dokumentum második része. Ez a dokumentum későbbi szakaszokban használatával konfigurálása az Azure SQL Analytics az adatfolyamként továbbított adatbázis diagnostics telemetriai adatainak megtekintésére szolgáló felügyeleti eszközként.
+
+> [!NOTE]
+> Abban az esetben, ha amellett, hogy engedélyezi a diagnostics telemetriai adatainak az adatbázisok rugalmas készletek és a felügyelt példányok használ, azt is javasolja, hogy engedélyezze a diagnostics telemetriai adatainak, valamint az ezekhez az erőforrásokhoz. Ennek oka, hogy a rugalmas készletek és a felügyelt példányok adatbázis a tárolók a szerepkör rendelkezik a saját diagnostics telemetriai adatainak egy önálló adatbázis diagnostics telemetriai adatainak elkülönülő. 
+>
+
+Engedélyezheti és kezelheti a metrikák és diagnosztikai telemetriai naplók az alábbi módszerek egyikének használatával:
 
 - Azure Portal
 - PowerShell
@@ -44,59 +52,13 @@ A metrikák és a különböző Azure-szolgáltatások által támogatott kateg�
 
 Ha engedélyezi a metrikák és diagnosztikai naplózás, kell adja meg a Azure-erőforrás célként kijelölt adatok hova legyenek összegyűjtve. Elérhető lehetőségek a következők:
 
-- Az SQL Analytics
-- Event Hubs
-- Storage 
+- Azure SQL Analytics
+- Azure Event Hubs
+- Azure Storage
 
-Új Azure-erőforrás kiépítéséhez, vagy egy meglévő erőforrás kiválasztása. Egy erőforrás diagnosztikai beállításainak lehetőséggel kiválasztása után adja meg, mely adatokat gyűjthet kell. 
+Új Azure-erőforrás kiépítéséhez, vagy egy meglévő erőforrás kiválasztása. Egy erőforrás diagnosztikai beállításainak lehetőséggel kiválasztása után adja meg, mely adatokat gyűjthet kell.
 
-## <a name="enable-logging-for-elastic-pools-or-managed-instance"></a>Rugalmas készletek, vagy a felügyelt példány naplózásának engedélyezése
-
-Rugalmas készletek és a felügyelt példányok adatbázis tárolókként rendelkezik a saját diagnostics telemetriai adatainak, amely alapértelmezés szerint nincs engedélyezve. Vegye figyelembe ezt a telemetriát elkülönül az adatbázis diagnostics telemetriai adatainak. Ezért a diagnostics telemetriai adatainak a rugalmas készletekhez adatfolyamként, és a felügyelt példány konfigurálása adatbázis diagnostics telemetriai adatainak, mint az alábbi további magyarázat emellett konfigurálni kell. 
-
-### <a name="configure-streaming-of-diagnostics-telemetry-for-elastic-pools"></a>Konfigurálja a diagnostics telemetriai adatainak a rugalmas készletekhez adatfolyamként
-
-A következő diagnostics telemetriai adatainak érhető el a gyűjteményt a rugalmas készletek, erőforrás:
-
-| Erőforrás | Telemetriai adatok figyelése |
-| :------------------- | ------------------- |
-| **Rugalmas készlet** | [Minden metrika](sql-database-metrics-diag-logging.md#all-metrics) eDTU/Processzorhasználat (%), eDTU/CPU-korlát, fizikai tartalmazza az beolvasott adatok százalékos aránya, napló írási százalékos, munkamenetek százaléka, feldolgozók százalékos, storage, tárolási százalékos, tárolási kapacitása és XTP tárolási százalékos aránya. |
-
-A diagnostics telemetriai adatainak streamelésének engedélyezéséhez **rugalmas készlet egyenlő erőforrás**, kövesse az alábbi lépéseket:
-
-- Az Azure Portalon a rugalmas készlet erőforrás megnyitása
-- Válassza ki **diagnosztikai beállítások**
-- Válassza ki **diagnosztika bekapcsolása** Ha nincsenek korábbi beállítások létezik, vagy válasszon **beállítás szerkesztése** előző beállításainak módosítása
-- Írja be a nevét, a beállítás – saját használatra
-- Válassza ki, melyik erőforrást kell diagnosztikai adatok streamelése a rugalmas készletből: **archiválás tárfiókba**, **egy eseményközpontba Stream**, vagy **Küldés a Log Analyticsnek**
-- Abban az esetben, ha a Log Analytics van kiválasztva, válassza ki a **konfigurálása** , és hozzon létre egy új munkaterületet kiválasztásával **+ létrehozás új munkaterület**, vagy válasszon ki egy meglévő munkaterületet
-- Jelölje be a rugalmas készlet diagnostics telemetriai adatainak **AllMetrics**
-- Kattintson a **Mentés** gombra.
-
-Ismételje meg a fenti lépéseket minden egyes figyelni szeretné a rugalmas készlet.
-
-### <a name="configure-streaming-of-diagnostics-telemetry-for-managed-instance"></a>Konfigurálja a streamelést a diagnostics telemetriai adatainak a felügyelt példány
-
-A következő diagnostics telemetriai adatainak a felügyelt példány erőforrás-gyűjtemény érhető el:
-
-| Erőforrás | Telemetriai adatok figyelése |
-| :------------------- | ------------------- |
-| **Felügyelt példány** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#resource-usage-stats) tartalmazza a virtuális magok száma, átlagos Processzorhasználat (%), i/o-kérelmek, írt vagy olvasott bájtok, a foglalt tárhely, a használt tárterület. |
-
-A diagnostics telemetriai adatainak streamelésének engedélyezéséhez **felügyelt példány erőforrás**, kövesse az alábbi lépéseket:
-
-- Az Azure Portalon a felügyelt példány erőforrás megnyitása
-- Válassza ki **diagnosztikai beállítások**
-- Válassza ki **diagnosztika bekapcsolása** Ha nincsenek korábbi beállítások létezik, vagy válasszon **beállítás szerkesztése** előző beállításainak módosítása
-- Írja be a nevét, a beállítás – saját használatra
-- Válassza ki, melyik erőforrást kell diagnosztikai adatok streamelése a rugalmas készletből: **archiválás tárfiókba**, **egy eseményközpontba Stream**, vagy **Küldés a Log Analyticsnek**
-- Abban az esetben, ha a Log Analytics van kijelölve, hozzon létre, vagy használjon egy meglévő munkaterületet
-- Jelölje be például a diagnostics telemetriai adatainak a **ResourceUsageStats**
-- Kattintson a **Mentés** gombra.
-
-Ismételje meg a fenti lépéseket minden egyes figyelni kívánt felügyelt példány esetében.
-
-## <a name="enable-logging-for-azure-sql-database-or-databases-in-managed-instance"></a>Azure SQL Database, vagy a felügyelt példány adatbázisok naplózásának engedélyezése
+## <a name="enable-logging-for-azure-sql-database-or-databases-in-managed-instance"></a>Azure SQL Database vagy a felügyelt példány adatbázisok naplózásának engedélyezése
 
 Metrikák és diagnosztikai naplózás az SQL Database és az adatbázisok a felügyelt példány alapértelmezés szerint nincs engedélyezve.
 
@@ -119,43 +81,120 @@ Streamelési diagnostics telemetriai adatainak az Azure SQL Database és az adat
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-azure-sql-database"></a>A diagnostics telemetriai adatainak az Azure SQL Database-streamelés konfigurálása
 
+   ![Az SQL Database ikonja](./media/sql-database-metrics-diag-logging/icon-sql-database-text.png)
+
 A diagnostics telemetriai adatainak streamelésének engedélyezéséhez **Azure SQL Database**, kövesse az alábbi lépéseket:
 
-- Az Azure SQL Database erőforrás megnyitása
-- Válassza ki **diagnosztikai beállítások**
-- Válassza ki **diagnosztika bekapcsolása** Ha nincsenek korábbi beállítások létezik, vagy válasszon **beállítás szerkesztése** előző beállításainak módosítása
+1. Az Azure SQL Database erőforrás megnyitása
+2. Válassza ki **diagnosztikai beállítások**
+3. Válassza ki **diagnosztika bekapcsolása** Ha nincsenek korábbi beállítások létezik, vagy válasszon **beállítás szerkesztése** előző beállításainak módosítása
 - Legfeljebb három (3) a stream diagnostics telemetriai adatainak párhuzamos kapcsolatok hozhatók létre. Több párhuzamos streamelési több erőforrás diagnosztikai adatok konfigurálásához válassza **+ diagnosztikai beállítás hozzáadása** egy további beállítás létrehozásához.
 
-   ![Engedélyezze az Azure Portalon](./media/sql-database-metrics-diag-logging/enable-portal.png)
+   ![Az SQL Database-diagnosztika engedélyezése](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-enable.png)
 
-- Írja be a nevét, a beállítás – saját használatra
-- Válassza ki, hogy melyik erőforrást kell diagnosztikai adatokat az adatbázisból: **archiválás tárfiókba**, **egy eseményközpontba Stream**, vagy **Küldés a Log Analyticsnek**
-- A szokásos figyelési környezetet, jelölje be az adatbázis-diagnosztikai napló telemetriai jelölőnégyzeteket: **SQLInsights**, **AutomaticTuning**, **QueryStoreRuntimeStatistics** , **QueryStoreWaitStatistics**, **hibák**, **DatabaseWaitStatistics**, **időtúllépések**, **blokkok** , **Holtpontok**. Ezt a telemetriát az esemény alapján, és figyelési lehetőség, a standard biztosít.
-- A speciális figyelési környezetet, jelölje be **AllMetrics**. Ez az egy 1 perces alapján telemetriát az adatbázis diagnostics telemetriai adatainak a fent leírtak szerint. 
+4. Írja be a nevét, a beállítás – saját használatra
+5. Válassza ki, hogy melyik erőforrást kell diagnosztikai adatokat az adatbázisból: **archiválás tárfiókba**, **egy eseményközpontba Stream**, vagy **Küldés a Log Analyticsnek**
+6. A szokásos figyelési környezetet, jelölje be az adatbázis-diagnosztikai napló telemetriai jelölőnégyzeteket: **SQLInsights**, **AutomaticTuning**, **QueryStoreRuntimeStatistics** , **QueryStoreWaitStatistics**, **hibák**, **DatabaseWaitStatistics**, **időtúllépések**, **blokkok** , **Holtpontok**. Ezt a telemetriát az esemény alapján, és figyelési lehetőség, a standard biztosít.
+7. A speciális figyelési környezetet, jelölje be **AllMetrics**. Ez az egy 1 perces alapján telemetriát az adatbázis diagnostics telemetriai adatainak a fent leírtak szerint. 
+8. Kattintson a **Mentés** gombra.
 
-   ![Diagnosztikai beállítások](./media/sql-database-metrics-diag-logging/diagnostics-portal.png)
-
-Ismételje meg a fenti lépéseket minden egyes Azure SQL Database figyelni szeretné.
+   ![Az SQL Database-diagnosztika konfigurálása](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
 
 > [!NOTE]
-> Napló nem lehet engedélyezni az adatbázis-diagnosztika beállításait, annak ellenére, hogy a beállítás jelenik meg. Engedélyezheti a naplózási naplóstreamelés [az adatbázis naplózás beállítása](sql-database-auditing.md#subheading-2)
+> Napló nem lehet engedélyezni az adatbázis diagnosztikai beállítások. Engedélyezheti a naplózási naplóstreamelés [beállítása az adatbázis naplózási](sql-database-auditing.md#subheading-2), is megtekintheti és [SQL Audit naplók az Azure Log Analytics és az Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
+>
+
+> [!TIP]
+> Ismételje meg a fenti lépéseket minden egyes Azure SQL Database figyelni szeretné. 
 >
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-databases-in-managed-instance"></a>Konfigurálja a felügyelt példány található adatbázisok a diagnostics telemetriai adatainak adatfolyamként
 
+   ![A felügyelt példány ikon adatbázis](./media/sql-database-metrics-diag-logging/icon-mi-database-text.png)
+
 A diagnostics telemetriai adatainak streamelésének engedélyezéséhez **felügyelt példányok adatbázisai**, kövesse az alábbi lépéseket:
 
-- Nyissa meg az adatbázishoz a felügyelt példány
-- Válassza ki **diagnosztikai beállítások**
-- Válassza ki **diagnosztika bekapcsolása** Ha nincsenek korábbi beállítások létezik, vagy válasszon **beállítás szerkesztése** előző beállításainak módosítása
+1. Nyissa meg az adatbázishoz a felügyelt példány
+2. Válassza ki **diagnosztikai beállítások**
+3. Válassza ki **diagnosztika bekapcsolása** Ha nincsenek korábbi beállítások létezik, vagy válasszon **beállítás szerkesztése** előző beállításainak módosítása
 - Legfeljebb három (3) a stream diagnostics telemetriai adatainak párhuzamos kapcsolatok hozhatók létre. Több párhuzamos streamelési több erőforrás diagnosztikai adatok konfigurálásához válassza **+ diagnosztikai beállítás hozzáadása** egy további beállítás létrehozásához.
-- Írja be a nevét, a beállítás – saját használatra
-- Válassza ki, hogy melyik erőforrást kell diagnosztikai adatokat az adatbázisból: **archiválás tárfiókba**, **egy eseményközpontba Stream**, vagy **Küldés a Log Analyticsnek**
-- Jelölje be az adatbázis diagnostics telemetriai adatainak jelölőnégyzeteket: **SQLInsights**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** és **hibák**
 
-   ![Diagnosztikai beállítások](./media/sql-database-metrics-diag-logging/diagnostics-portal-mi.png)
+   ![Felügyelt példány adatbázis-diagnosztika engedélyezése](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
 
-Ismételje meg a fenti lépéseket a figyelni kívánt felügyelt példányon lévő minden egyes adatbázishoz.
+4. Írja be a nevét, a beállítás – saját használatra
+5. Válassza ki, hogy melyik erőforrást kell diagnosztikai adatokat az adatbázisból: **archiválás tárfiókba**, **egy eseményközpontba Stream**, vagy **Küldés a Log Analyticsnek**
+6. Jelölje be az adatbázis diagnostics telemetriai adatainak jelölőnégyzeteket: **SQLInsights**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** és **hibák**
+7. Kattintson a **Mentés** gombra.
+
+   ![Felügyelt példány adatbázisa diagnosztika konfigurálása](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
+
+> [!TIP]
+> Ismételje meg a fenti lépéseket a figyelni kívánt felügyelt példányon lévő minden egyes adatbázishoz.
+>
+
+## <a name="enable-logging-for-elastic-pools-or-managed-instance"></a>Rugalmas készletek és a felügyelt példány naplózásának engedélyezése
+
+Rugalmas készletek és a felügyelt példányok adatbázis tárolókként rendelkezik a saját diagnostics telemetriai adatainak különálló adatbázisok. A diagnostics telemetriai adatainak alapértelmezés szerint nincs engedélyezve. 
+
+### <a name="configure-streaming-of-diagnostics-telemetry-for-elastic-pools"></a>Konfigurálja a diagnostics telemetriai adatainak a rugalmas készletekhez adatfolyamként
+
+   ![Rugalmas készlet ikon](./media/sql-database-metrics-diag-logging/icon-elastic-pool-text.png)
+
+A következő diagnostics telemetriai adatainak érhető el a gyűjteményt a rugalmas készletek, erőforrás:
+
+| Erőforrás | Telemetriai adatok figyelése |
+| :------------------- | ------------------- |
+| **Rugalmas készlet** | [Minden metrika](sql-database-metrics-diag-logging.md#all-metrics) eDTU/Processzorhasználat (%), eDTU/CPU-korlát, fizikai tartalmazza az beolvasott adatok százalékos aránya, napló írási százalékos, munkamenetek százaléka, feldolgozók százalékos, storage, tárolási százalékos, tárolási kapacitása és XTP tárolási százalékos aránya. |
+
+A diagnostics telemetriai adatainak streamelésének engedélyezéséhez **rugalmas készlet egyenlő erőforrás**, kövesse az alábbi lépéseket:
+
+1. Az Azure Portalon a rugalmas készlet erőforrás megnyitása
+2. Válassza ki **diagnosztikai beállítások**
+3. Válassza ki **diagnosztika bekapcsolása** Ha nincsenek korábbi beállítások létezik, vagy válasszon **beállítás szerkesztése** előző beállításainak módosítása
+
+   ![Engedélyezze a diagnosztikát a rugalmas készletekhez](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-enable.png)
+
+4. Írja be a nevét, a beállítás – saját használatra
+5. Válassza ki, melyik erőforrást kell diagnosztikai adatok streamelése a rugalmas készletből: **archiválás tárfiókba**, **egy eseményközpontba Stream**, vagy **Küldés a Log Analyticsnek**
+6. Abban az esetben, ha a Log Analytics van kiválasztva, válassza ki a **konfigurálása** , és hozzon létre egy új munkaterületet kiválasztásával **+ létrehozás új munkaterület**, vagy válasszon ki egy meglévő munkaterületet
+7. Jelölje be a rugalmas készlet diagnostics telemetriai adatainak **AllMetrics**
+8. Kattintson a **Mentés** gombra.
+
+   ![Rugalmas készletek diagnosztika konfigurálása](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
+
+> [!TIP]
+> Ismételje meg a fenti lépéseket minden egyes figyelni szeretné a rugalmas készlet.
+>
+
+### <a name="configure-streaming-of-diagnostics-telemetry-for-managed-instance"></a>Konfigurálja a streamelést a diagnostics telemetriai adatainak a felügyelt példány
+
+   ![Felügyelt példány ikon](./media/sql-database-metrics-diag-logging/icon-managed-instance-text.png)
+
+A következő diagnostics telemetriai adatainak a felügyelt példány erőforrás-gyűjtemény érhető el:
+
+| Erőforrás | Telemetriai adatok figyelése |
+| :------------------- | ------------------- |
+| **Felügyelt példány** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#resource-usage-stats) tartalmazza a virtuális magok száma, átlagos Processzorhasználat (%), i/o-kérelmek, írt vagy olvasott bájtok, a foglalt tárhely, a használt tárterület. |
+
+A diagnostics telemetriai adatainak streamelésének engedélyezéséhez **felügyelt példány erőforrás**, kövesse az alábbi lépéseket:
+
+1. Az Azure Portalon a felügyelt példány erőforrás megnyitása
+2. Válassza ki **diagnosztikai beállítások**
+3. Válassza ki **diagnosztika bekapcsolása** Ha nincsenek korábbi beállítások létezik, vagy válasszon **beállítás szerkesztése** előző beállításainak módosítása
+
+   ![Diagnosztika engedélyezése a felügyelt példány](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
+
+4. Írja be a nevét, a beállítás – saját használatra
+5. Válassza ki, melyik erőforrást kell diagnosztikai adatok streamelése a rugalmas készletből: **archiválás tárfiókba**, **egy eseményközpontba Stream**, vagy **Küldés a Log Analyticsnek**
+6. Abban az esetben, ha a Log Analytics van kijelölve, hozzon létre, vagy használjon egy meglévő munkaterületet
+7. Jelölje be például a diagnostics telemetriai adatainak a **ResourceUsageStats**
+8. Kattintson a **Mentés** gombra.
+
+   ![Diagnosztika konfigurálása a felügyelt példány](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
+
+> [!TIP]
+> Ismételje meg a fenti lépéseket minden egyes figyelni kívánt felügyelt példány esetében.
+>
 
 ### <a name="powershell"></a>PowerShell
 
@@ -195,7 +234,7 @@ Metrikák és naplózás PowerShell-lel diagnosztika engedélyezéséhez haszná
 
 Kombinálhatja ezeket a paramétereket, több kimeneti beállítások engedélyezéséhez.
 
-### <a name="to-configure-multiple-azure-subscriptions"></a>Több Azure-előfizetés konfigurálása
+### <a name="to-configure-multiple-azure-resources"></a>Több Azure-erőforrások konfigurálása
 
 Több előfizetés is támogatja, használja a PowerShell-szkript [engedélyezése az Azure resource metrikák naplózás PowerShell-lel](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell/).
 
@@ -248,43 +287,43 @@ Megtudhatja, hogyan lehet a [diagnosztikai beállítások módosítása az Azure
 
 Megtudhatja, hogyan lehet a [erőforrás létrehozásakor a diagnosztikai beállítások engedélyezése Resource Manager-sablon használatával](../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md). 
 
-## <a name="stream-into-log-analytics"></a>Stream Log analyticsbe 
+## <a name="stream-into-azure-sql-analytics"></a>Az Azure SQL Analytics Stream 
 
-SQL Database-metrikák és diagnosztikai naplókat is lehet streameli a Log Analytics használatával a beépített **Küldés a Log Analyticsnek** lehetőséget a portálon. A Log Analytics egy diagnosztikai beállítás PowerShell parancsmagok, az Azure CLI vagy az Azure Monitor REST API használatával is engedélyezi.
+Az Azure SQL Analytics egy felhőalapú megoldást kínál a teljesítmény figyelése Azure SQL adatbázisok, rugalmas készletek és a felügyelt példányok ipari méretekben és tekinthesse át egyetlen több előfizetésre kiterjedő figyelési. Azt gyűjti elérhetővé, és fontos Azure SQL Database teljesítmény-mérőszámok – teljesítménnyel kapcsolatos hibaelhárítás a beépített intelligenciával.
+
+![Az Azure SQL Analytics áttekintése](../log-analytics/media/log-analytics-azure-sql/azure-sql-sol-overview.png)
+
+SQL Database-metrikák és diagnosztikai naplókat is lehet streameli az Azure SQL Analytics használatával a beépített **Küldés a Log Analyticsnek** lehetőség a diagnosztikai beállítások panelen a portálon. A Log Analytics egy diagnosztikai beállítás PowerShell parancsmagok, az Azure CLI vagy az Azure Monitor REST API használatával is engedélyezi.
 
 ### <a name="installation-overview"></a>Telepítés – áttekintés
 
-Egy SQL Database fleet figyelési használata a Log Analytics egyszerű. Három lépések szükségesek:
+Egy SQL Database fleet figyelési használata az Azure SQL Analytics egyszerű. Három lépések szükségesek:
 
-1. Hozzon létre egy Log Analytics-erőforrás.
+1. Az Azure Marketplace-ről az Azure SQL Analytics megoldás létrehozása
+2. A megoldás a figyelési munkaterület létrehozása
+3. A stream diagnostics telemetriai adatainak-adatbázisok konfigurálása a munkaterületre, hogy létrehozta.
 
-2. Rekord metrikák és diagnosztikai naplókat-adatbázisok konfigurálása a létrehozott Log Analytics-erőforrás.
+Abban az esetben a rugalmas készletek vagy a felügyelt példányok adatbázis diagnostics telemetriai adatainak konfigurálása mellett használ, konfigurálja a diagnostics telemetriai adatainak az ezeket az erőforrásokat is adatfolyamként.
 
-3. Telepítse a **Azure SQL Analytics** megoldás az Azure Marketplace-ről.
+### <a name="create-azure-sql-analytics-resource"></a>Az Azure SQL Analytics-erőforrás létrehozása
 
-### <a name="create-a-log-analytics-resource"></a>Hozzon létre egy Log Analytics-erőforrás
+1. Keresse meg az Azure SQL Analytics az Azure Marketplace-en, és jelölje ki
 
-1. Válassza ki **erőforrás létrehozása** a bal oldali menüben.
+   ![Keresse meg az Azure SQL Analytics portálon](./media/sql-database-metrics-diag-logging/sql-analytics-in-marketplace.png)
+   
+2. Válassza ki **létrehozás** képernyőn a megoldás áttekintése
 
-2. Válassza ki **figyelés + felügyelet**.
+3. Töltse ki az Azure SQL Analytics az űrlapot a szükséges további információkat tartalmazó: munkaterület neve, előfizetés, erőforráscsoport, helye és tarifacsomag.
+ 
+   ![Az Azure SQL Analytics konfigurálása a portálon](./media/sql-database-metrics-diag-logging/sql-analytics-configuration-blade.png)
 
-3. Válassza a **Log Analytics** elemet.
-
-4. Töltse ki a Log Analytics-űrlapot a szükséges további információkat tartalmazó: munkaterület neve, előfizetés, erőforráscsoport, helye és tarifacsomag.
-
-   ![Log Analytics](./media/sql-database-metrics-diag-logging/log-analytics.png)
+4. Győződjön meg arról, kiválasztásával **OK**, és kiválasztásával véglegesítése **létrehozása**
 
 ### <a name="configure-databases-to-record-metrics-and-diagnostics-logs"></a>Rekord metrikák és diagnosztikai naplókat,-adatbázisok konfigurálása
 
-A legegyszerűbben úgy konfigurálja, ahol adatbázisokat jegyezze fel a metrikák az Azure Portalon keresztül történik. A portálon nyissa meg az SQL-adatbázis-erőforrás, és válassza **diagnosztikai beállítások**. 
+A legegyszerűbben úgy konfigurálja, ahol adatbázisokat jegyezze fel a metrikák van az Azure Portalon – fent leírtak szerint. A portálon nyissa meg az SQL-adatbázis-erőforrás, és válassza **diagnosztikai beállítások**.
 
-### <a name="install-the-sql-analytics-solution-from-the-gallery"></a>Az SQL Analytics megoldás telepítése a katalógusból
-
-1. Miután hoz létre a Log Analytics-erőforrás, és az adatok, beérkeznek, telepítse az SQL Analytics megoldás. A kezdőlapon, az oldalsó menüben válassza ki a **Megoldástárából**. A galériában jelölje ki a **Azure SQL Analytics** megoldást, és válassza ki **Hozzáadás**.
-
-   ![Figyelési megoldás](./media/sql-database-metrics-diag-logging/monitoring-solution.png)
-
-2. A kezdőlapon a **Azure SQL Analytics** csempe jelenik meg. Válassza ki ezt a csempét az SQL Analytics irányítópult megnyitásához.
+Abban az esetben az a rugalmas készletek vagy felügyelt példányok, ezeket az erőforrásokat is, hogy a munkaterületre, hogy létrehozta a saját diagnostics telemetriai adatainak adatfolyam a diagnosztikai beállítások konfigurálása is kell.
 
 ### <a name="use-the-sql-analytics-solution"></a>Az SQL Analytics megoldás használata
 
@@ -350,7 +389,7 @@ Azure SQL Analytics használja, ha egyszerűen figyelheti az adathasználat Adat
 
 ## <a name="metrics-and-logs-available"></a>Metrikák és naplók érhető el
 
-Megtalálja részletes figyelési telemetriai tartalma elérhető naplók és mérőszámok az Azure SQL Database, a rugalmas készletek, a felügyelt példány és az adatbázisok a felügyelt példány számára a **egyéni elemző** és **alkalmazás fejlesztési** használatával [SQL Analytics nyelvi](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries).
+Figyelési gyűjtött telemetria használhatja a saját **egyéni elemző** és **alkalmazásfejlesztés** használatával [SQL Analytics nyelvi](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries). Az összegyűjtött adatok és metrikák és naplók, szerkezete alább.
 
 ## <a name="all-metrics"></a>Az összes metrikák
 

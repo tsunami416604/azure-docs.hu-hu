@@ -1,7 +1,20 @@
-1. Jelentkezzen be a [Azure Portal].
+---
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 08/23/2018
+ms.author: crdun
+ms.openlocfilehash: 30b5ae499d29b8b78b5852074362841ac1ceb49f
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50134178"
+---
+1. Jelentkezzen be az [Azure Portal].
 2. Válassza ki **+ új** > **Web + mobil** > **mobilalkalmazás**, majd adja meg egy nevet a Mobile Apps-háttéralkalmazás számára.
 3. A **erőforráscsoport**, válasszon ki egy meglévő erőforráscsoportot vagy hozzon létre egy újat (az alkalmazás nevének használatával). 
-4. A **App Service-csomag**, az alapértelmezett csomag (az a [Standard szintű](https://azure.microsoft.com/pricing/details/app-service/)) van kiválasztva. Kiválaszthat egy másik csomagot is, vagy [hozzon létre egy új](../articles/app-service/app-service-plan-manage.md#create-an-app-service-plan). 
+4. A **App Service-csomag**, az alapértelmezett csomag (az a [Standard szintű](https://azure.microsoft.com/pricing/details/app-service/)) van kiválasztva. Kiválaszthat egy másik App Service-csomagot is, vagy [létrehozhat egy újat](../articles/app-service/app-service-plan-manage.md#create-an-app-service-plan). 
 
    Az App Service-csomag beállításai határozzák meg a [helyét, a szolgáltatások, a költségek és a számítási erőforrások](https://azure.microsoft.com/pricing/details/app-service/) az alkalmazáshoz társított. További információt az App Service-ben csomagok és a egy új csomag létrehozása egy másik tarifacsomagban réteg és a kívánt helyen, lásd: [Azure App Service díjcsomagjainak részletes áttekintése](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
    
