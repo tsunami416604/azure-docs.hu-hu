@@ -3,8 +3,8 @@ title: OpenShift az Azure-előfeltételeknek |} A Microsoft Docs
 description: Előfeltétel telepíthető az OpenShift az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: haroldw
-manager: najoshi
+author: haroldwongms
+manager: joraio
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,32 +15,32 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 36271116d697e5ee6c6ed08d5fdc6063a511e820
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fd20fe880ae77992e5eadb5f2b581d3f5b53f86e
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984336"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085875"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>OpenShift az Azure-beli üzembe helyezésének általános Előfeltételek
 
-Ez a cikk az OpenShift Origin vagy az Azure-ban az OpenShift Tárolóplatform telepítésének általános előfeltételeit ismerteti.
+Ez a cikk ismerteti az OpenShift Tárolóplatform, vagy az Azure-ban OKD telepítésének általános előfeltételeit.
 
 OpenShift telepítésének Ansible-forgatókönyvek használ. Az Ansible használja a Secure Shell (SSH) való csatlakozáshoz a telepítési lépések végrehajtásához a fürt összes gazdagépére.
 
-A távoli gazdagépekhez az SSH-kapcsolat kezdeményezésekor nem adhat meg egy jelszót. Ebből kifolyólag a titkos kulcs nem rendelkezik társított jelszóval vagy a központi telepítés sikertelen lesz.
+Amikor ansible a távoli állomások az SSH-kapcsolatot kezdeményez, nem adhat meg egy jelszót. Ebből kifolyólag a titkos kulcs nem rendelkezik társított jelszóval (jelszó) vagy a központi telepítés sikertelen lesz.
 
 A virtuális gépek (VM) üzembe helyezés Azure Resource Manager-sablonok, mert ugyanazzal a kulccsal szolgál az összes virtuális gép eléréséhez. A virtuális gép, amely végrehajtja az összes forgatókönyvek, valamint a megfelelő titkos kulcs behelyezése kell. Biztonságosan ehhez használatával egy Azure key vault adja át a titkos kulcs a virtuális géppel.
 
-Ha hosszú távú adattárolásra tárolók szükség van, állandó kötetek szükség. OpenShift az Azure virtuális merevlemezeket (VHD) támogatja ezt a funkciót, de az Azure először konfigurálni kell a felhőszolgáltatóként. 
+Ha hosszú távú adattárolásra tárolók szükség van, állandó kötetek szükség. OpenShift az Azure virtuális merevlemezeket (VHD) támogatja ezt a funkciót, de az Azure először konfigurálni kell a felhőszolgáltatóként.
 
 Ebben a modellben az OpenShift:
 
-- Az Azure Storage-fiók egy VHD-objektumot hoz létre.
-- Egy virtuális gép és a formátum a kötetet a virtuális Merevlemezt csatlakoztathatnak.
+- Az Azure Storage-fiókot vagy egy felügyelt lemezt egy VHD-objektumot hoz létre.
+- Csatlakoztatja a virtuális merevlemez virtuális géphez, és formázza a kötetet.
 - Csatlakoztatja a kötetet a pod.
 
-A konfiguráció működéséhez, az OpenShift engedélyre van szüksége az Azure-ban a korábbi műveletek végrehajtásához. Ennek elérése egy egyszerű szolgáltatást. Az egyszerű szolgáltatás nem a biztonsági fiók, az Azure Active Directoryban, amely engedéllyel rendelkezik az erőforrásokhoz.
+A konfiguráció működéséhez, az OpenShift engedélyre ezeket a feladatokat az Azure-ban. Ennek elérése egy egyszerű szolgáltatást. Az egyszerű szolgáltatás nem a biztonsági fiók, az Azure Active Directoryban, amely engedéllyel rendelkezik az erőforrásokhoz.
 
 Egyszerű szolgáltatás hozzáféréssel kell rendelkeznie a storage-fiókok és a fürtöt alkotó virtuális gépekhez. OpenShift-fürt összes erőforrás egyetlen telepíteni, ha az egyszerű szolgáltatás engedélyeket kaphatnak az adott erőforráscsoporton.
 
@@ -48,7 +48,7 @@ Ez az útmutató ismerteti a társított az Előfeltételek összetevőket hozha
 
 > [!div class="checklist"]
 > * Hozzon létre egy kulcstartót az OpenShift-fürthöz az SSH-kulcsok kezeléséhez.
-> * Hozzon létre egy egyszerű szolgáltatást az Azure Cloud Solution Provider általi használatra.
+> * Hozzon létre egy egyszerű szolgáltatást az Azure Felhőszolgáltatók általi használatra.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -60,7 +60,7 @@ az login
 ```
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Dedikált erőforráscsoport a key vault futtatására használhatja. Ez a csoport elkülönül az erőforráscsoportot, amelybe az OpenShift fürt erőforrások üzembe helyezése. 
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Javasoljuk, hogy egy dedikált erőforráscsoport használata a key vault üzemeltetéséhez. Ez a csoport elkülönül az erőforráscsoportot, amelybe az OpenShift fürt erőforrások üzembe helyezése.
 
 A következő példában létrehozunk egy erőforráscsoportot, nevű *keyvaultrg* a a *eastus* helye:
 
@@ -80,16 +80,16 @@ az keyvault create --resource-group keyvaultrg --name keyvault \
 ```
 
 ## <a name="create-an-ssh-key"></a>SSH-kulcs létrehozása 
-Biztonságos hozzáférés az OpenShift Origin fürthöz SSH-kulcs szükséges. Hozzon létre ssh-kulcs használatával a `ssh-keygen` (a Linux vagy MacOS rendszeren) parancsot:
+Biztonságos hozzáférés az OpenShift fürthöz SSH-kulcs szükséges. Hozzon létre ssh-kulcs használatával a `ssh-keygen` (a Linux vagy MacOS rendszeren) parancsot:
  
  ```bash
 ssh-keygen -f ~/.ssh/openshift_rsa -t rsa -N ''
 ```
 
 > [!NOTE]
-> Az SSH-kulcspár nem tartozik jelszó.
+> Az SSH-kulcspár nem lehet jelszót vagy hozzáférési kódot.
 
-Az SSH-kulcsokat, a Windows további információkért lásd: [hogyan hozhat létre SSH-kulcsok a Windows](/azure/virtual-machines/linux/ssh-from-windows).
+Az SSH-kulcsokat, a Windows további információkért lásd: [hogyan hozhat létre SSH-kulcsok a Windows](/azure/virtual-machines/linux/ssh-from-windows). Ügyeljen arra, hogy a titkos kulcs exportálását OpenSSH formátumban.
 
 ## <a name="store-the-ssh-private-key-in-azure-key-vault"></a>A titkos SSH-kulcs Store az Azure Key Vaultban
 Az OpenShift üzemelő példány biztonságos hozzáférés az OpenShift fő létrehozott SSH-kulcsot használ. Ahhoz, hogy az SSH-kulcsot biztonságosan lekérhessék a központi telepítés, tárolja a kulcsot a Key Vault használatával a következő parancsot:
@@ -103,18 +103,29 @@ OpenShift egy felhasználónév és jelszó vagy egy egyszerű szolgáltatás ha
 
 Az egyszerű szolgáltatás létrehozása [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) és kimeneti az OpenShift szükséges hitelesítő adatokat.
 
-Az alábbi példa létrehoz egy egyszerű szolgáltatást, és hozzárendeli azt a közreműködői engedélyekkel egy myResourceGroup nevű erőforráscsoportot. Ha Windows használja, hajtsa végre ```az group show --name myResourceGroup --query id``` külön-külön és a kimenet segítségével hírcsatorna az--hatókörök beállítást.
+Az alábbi példa létrehoz egy egyszerű szolgáltatást, és hozzárendeli azt a közreműködői engedélyekkel openshiftrg nevű erőforráscsoport.
+külön-külön és a kimenet segítségével hírcsatorna az--hatókörök beállítást.
+
+Először hozza létre a openshiftrg nevű erőforráscsoportot:
 
 ```azurecli
-az ad sp create-for-rbac --name openshiftsp \
-          --role Contributor --password {Strong Password} \
-          --scopes $(az group show --name myResourceGroup --query id)
+az group create -l eastus -n openshiftrg
 ```
+
+Egyszerű szolgáltatás létrehozása:
+
+```azurecli
+scope=`az group show --name openshiftrg --query id`
+az ad sp create-for-rbac --name openshiftsp \
+      --role Contributor --password {Strong Password} \
+      --scopes $scope
+```
+Ha Windows használja, hajtsa végre ```az group show --name openshiftrg --query id``` , és a kimeneti $scope helyett.
 
 Jegyezze fel a parancs által visszaadott az appId-tulajdonság:
 ```json
 {
-  "appId": "11111111-abcd-1234-efgh-111111111111",            
+  "appId": "11111111-abcd-1234-efgh-111111111111",
   "displayName": "openshiftsp",
   "name": "http://openshiftsp",
   "password": {Strong Password},
@@ -135,6 +146,5 @@ Ez a cikk a következő témaköröket tartalmazza:
 
 Ezután telepítse az OpenShift fürt:
 
-- [Az OpenShift Origin telepítése](./openshift-origin.md)
 - [Az OpenShift Container Platform üzembe helyezése](./openshift-container-platform.md)
-
+- [OKD üzembe helyezése](./openshift-okd.md)

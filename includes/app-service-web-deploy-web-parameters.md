@@ -1,12 +1,25 @@
-Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablon nevű paraméterek szakaszban, amely tartalmazza az összes paraméter értékét tartalmazza.
-Meg kell határozni egy paramétert ezeket az értékeket, amelyek a projekt telepít vagy telepít, hogy a környezet alapján változhatnak. Az értékeket, amelyeket a rendszer mindig ugyanaz maradjon paraméterek nem határoznak meg. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva. 
+---
+author: cephalin
+ms.service: app-service-web
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: cephalin
+ms.openlocfilehash: 5bde217601d27129e044b64d90184727ea717950
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133276"
+---
+Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablon tartalmaz, amely tartalmazza az összes paraméter értékét nevű paraméterek szakaszban.
+Meg kell határozni egy paramétere ezeket az értékeket, amelyek alapján a projekt telepítésekor, vagy telepíti, akkor a környezet alapján változhatnak. Nem határoznak meg paramétereket olyan értékhez, amely mindig érintetlen marad. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva. 
 
-Ha paraméterek megadása a **Storageaccount_accounttype** mezőben adja meg, mely felhasználó értékekkel biztosíthat a telepítés során. Használja a **defaultValue** mezőben rendelhet értéket a paraméternek, ha nincs érték megadva üzembe helyezése során.
+Paramétereket meghatározásakor használhatja a **allowedValues** mezőben adja meg, mely a felhasználó értékeket biztosíthat az üzembe helyezés során. Használja a **defaultValue** mezőt értéket rendel a paramétert, ha a nem érték van megadva üzembe helyezés során.
 
-Azt ismerteti, egyes paramétereket a sablonban.
+Azt ismerteti, hogy egyes paramétereket a sablonban.
 
-### <a name="sitename"></a>SiteName
-A létrehozni kívánt webes alkalmazás neve.
+### <a name="sitename"></a>Webhely neve:
+A létrehozni kívánt webalkalmazás nevére.
 
     "siteName":{
       "type":"string"
@@ -19,8 +32,8 @@ A webalkalmazás üzemeltetéséhez használt App Service-csomag neve.
       "type":"string"
     }
 
-### <a name="sku"></a>Termékváltozat
-Ez a tarifacsomag a üzemeltetési terv.
+### <a name="sku"></a>sku
+Tarifacsomag kiválasztása a szolgáltatási csomag számára.
 
     "sku": {
       "type": "string",
@@ -44,10 +57,10 @@ Ez a tarifacsomag a üzemeltetési terv.
       }
     }
 
-A sablon határozza meg az értékeket, amelyeket ez a paraméter engedélyezett, és hozzárendeli az alapértelmezett értéket (S1), ha nincs érték megadva.
+A sablon az értékeket, amelyeknél engedélyezve van ez a paraméter határozza meg, és hozzárendeli egy alapértelmezett értéket (S1 esetén), ha nem ad meg értéket.
 
 ### <a name="workersize"></a>workerSize
-A példány mérete a üzemeltetési terv (kis, közepes vagy nagy).
+A példány mérete a szolgáltatási csomag (kicsi, közepes vagy nagy).
 
     "workerSize":{
       "type":"string",
@@ -59,5 +72,5 @@ A példány mérete a üzemeltetési terv (kis, közepes vagy nagy).
       "defaultValue":"0"
     }
 
-A sablon határozza meg az értékeket, amelyeknél engedélyezve van ez a paraméter (0, 1 vagy 2), és hozzárendeli az alapértelmezett értéket (0), ha nincs érték megadva. Az értékek megegyeznek kis, közepes és nagy méretű.
+A sablon meghatározza az értékeket, amelyeknél engedélyezve van ez a paraméter (0, 1 vagy 2) a, és hozzárendeli az alapértelmezett érték (0), ha nem ad meg értéket. Az értékek milyen összefüggésben vannak kicsi, közepes és nagy méretű.
 

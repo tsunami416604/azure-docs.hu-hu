@@ -10,12 +10,12 @@ ms.devlang: spark-scala
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ankhanol
-ms.openlocfilehash: 38a972d39b845dca39bcc4dcf921c603301af582
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 165919fa3d456786e926f754dba378be38c12588
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869652"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094244"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Csatlakozás a Spark az Azure Cosmos DB Cassandra API-hoz
 
@@ -29,7 +29,7 @@ Ez a cikk az egyik, többek között Spark az Azure Cosmos DB Cassandra API-inte
 ## <a name="dependencies-for-connectivity"></a>A hálózati kapcsolatot függőségek
 * **Spark-összekötő a Cassandra:** Spark-összekötő segítségével Azure Cosmos DB Cassandra API-hoz csatlakozhat.  Azonosítsa és verzióját használja, az összekötő található [Maven központi]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) Ez az a Spark környezet és a Scala Spark verzióival kompatibilis.
 
-* **Az Azure Cosmos DB Cassandra API segédkódtárba helyezni:** a Spark-összekötő mellett egy másik szalagtárhoz nevű kell [azure-cosmos-cassandra-spark-segítő]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) Azure Cosmos DB-ből. Ebben a könyvtárban egy kapcsolat factory és a egy egyéni újrapróbálkozási szabályzat osztályokat tartalmazza.
+* **Az Azure Cosmos DB Cassandra API segédkódtárba helyezni:** a Spark-összekötő mellett egy másik szalagtárhoz nevű kell [azure-cosmos-cassandra-spark-segítő]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) Azure Cosmos DB-ből. Ez a kódtár egyéni kapcsolat gyári, és ismételje meg a házirend osztályokat tartalmazza.
 
   Az Azure Cosmos DB újrapróbálkozási szabályzat HTTP állapot kód 429 ("kérés sebessége nagy") kivételek van konfigurálva. Az Azure Cosmos DB Cassandra API a rendszer lefordítja a Cassandra natív protokoll túlterhelt hibákká ezeket a kivételeket, és újra a biztonsági kompromisszumot. Mivel az Azure Cosmos DB a kiosztott átviteli sebesség modellt használ, kérelem korlátozó kivételeket fordulhat elő, ha a bejövő/kimenő forgalom sebesség növekedését. Az újrapróbálkozási szabályzat védelmet biztosít a spark-feladatok ellen, amelyek rövid ideig túllépik a gyűjteményhez kiosztott átviteli adatok adatforgalmi csúcsokhoz.
 

@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 10/23/2018
 ms.author: mabrigg
 ms.reviewer: efemmano
-ms.openlocfilehash: 7ccf746cfd9645b63c2810bff83cfb0c4fa55d65
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4ec9affa78d1f244208a24bcf8a6603e867d4c08
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713738"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086505"
 ---
 # <a name="use-the-azure-stack-portal"></a>Az Azure Stack-portál használata
 
@@ -32,12 +32,13 @@ Az Azure Stack-operátorokról (a szolgáltató vagy a rendszergazda a szervezet
 
 - Egy integrált rendszer, az URL-címet az operátor régió és külső tartománynév függően változik, és a következő formátumban lesz https://portal.&lt; *régió*&gt;.&lt; *FQDN*&gt;.
 - Ha az Azure Stack fejlesztői készletet használ, a portál címe https://portal.local.azurestack.external.
-
-![Képernyőfelvétel az Azure Stack felhasználói portál](media/azure-stack-use-portal/UserPortal.png)
+- Az alapértelmezett időzóna az összes Azure Stack üzemelő példányhoz van beállítva az egyezményes világidő (UTC). Választhat egy időzóna telepítésekor az Azure Stack, azonban automatikusan visszaáll az UTC Időzóna alapértelmezés szerint a telepítés során.
 
 ## <a name="customize-the-dashboard"></a>Az irányítópult testreszabásával
 
 Az irányítópult csempéi alapértelmezett készletét tartalmazza. Választhat **irányítópult szerkesztése** módosítsa az alapértelmezett irányítópult, vagy válasszon **új irányítópult** egyéni irányítópult létrehozása. Könnyen testre szabhat egy irányítópultot hozzáadásával vagy eltávolításával a csempéket. Jelölje be például a számítási csempe hozzáadása **+ erőforrás létrehozása**. Kattintson a jobb gombbal **számítási**, majd válassza ki **rögzítés az irányítópulton**.
+
+![Képernyőfelvétel az Azure Stack felhasználói portál](media/azure-stack-use-portal/userportal.png)
 
 ## <a name="create-subscription-and-browse-available-resources"></a>Előfizetés létrehozása, és keresse meg a rendelkezésre álló erőforrások
 

@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: b2e0b65f210774f760ce2d0898c601115ab3a94d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cda439973c584a57cadc30de7fb931732682de00
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960158"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092457"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>A végrehajtás SSIS csomag tevékenységgel rendelkező Azure Data Factory SSIS-csomag futtatása
 Ez a cikk ismerteti az Azure Data Factory-folyamatot egy SSIS-csomag futtatása SSIS-csomag végrehajtása tevékenységek segítségével. 
@@ -91,9 +91,11 @@ Ebben a lépésben a Data Factory felhasználói felülete létrehoz egy folyama
 
 ### <a name="optionally-parameterize-the-activity"></a>Másik lehetőségként paraméterezni a tevékenység
 
-Szükség esetén értékek, kifejezések és függvények, amelyek a Data Factory rendszerváltozók hivatkozhatnak, hozzárendelése a projekthez, vagy a csomag paraméterek használatával JSON formátumban a **nézet forráskód** a végrehajtás SSIS alján gomb Csomag tevékenység mezőben vagy a **kód** gombra a folyamat terület jobb felső sarokban. Hozzárendelhet például az SSIS-projektjéhez Data Factory-folyamat paramétereihez vagy a csomag paraméterek, ahogyan az alábbi képernyőfelvételnek megfelelően:
+Szükség esetén értékek, kifejezések és függvények, amelyek a Data Factory rendszerváltozók hivatkozhatnak, hozzárendelése a projekthez, vagy a csomag paramétereket JSON formátumban, az SSIS-csomag végrehajtása tevékenység be- vagy a "Code" alján lévő "Nézet forráskód" gomb segítségével a folyamat terület jobb felső sarkában található gomb. Hozzárendelhet például az SSIS-projektjéhez Data Factory-folyamat paramétereihez vagy a csomag paraméterek, ahogyan az alábbi képernyőfelvételnek megfelelően:
 
 ![SSIS-csomag végrehajtása tevékenység JSON-parancsfájl szerkesztése](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters.png)
+
+![Paraméterek hozzáadása az SSIS-csomag végrehajtása tevékenység](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters2.png)
 
 ![Paraméterek hozzáadása az SSIS-csomag végrehajtása tevékenység](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters2.png)
 
@@ -204,9 +206,9 @@ Ebben a lépésben létrehoz egy folyamatot egy SSIS-csomag végrehajtása tevé
                     "runtime": "x64",
                     "loggingLevel": "Basic",
                     "packageLocation": {
-                        "packagePath": "FolderName/ProjectName/PackageName.dtsx"            
+                        "packagePath": "FolderName/ProjectName/PackageName.dtsx"            
                     },
-                    "environmentPath":   "FolderName/EnvironmentName",
+                    "environmentPath":   "FolderName/EnvironmentName",
                     "projectParameters": {
                         "project_param_1": {
                             "value": "123"
@@ -244,7 +246,7 @@ Ebben a lépésben létrehoz egy folyamatot egy SSIS-csomag végrehajtása tevé
                         }
                     },
                     "propertyOverrides": {
-                        "\\PackageName.dtsx\\MaxConcurrentExecutables ": {
+                        "\\PackageName.dtsx\\MaxConcurrentExecutables ": {
                             "value": 8,
                             "isSensitive": false
                         }

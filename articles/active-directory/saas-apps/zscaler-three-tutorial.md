@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2018
+ms.date: 10/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 0ef8fc2ea8b006d49dd54d638183a58bf78a5797
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: b148967af0882993d8ab113bdf0fd3ad3835296f
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49312813"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092610"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-three"></a>Oktatóanyag: Azure Active Directory-integráció az Zscaler három
 
@@ -119,10 +119,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](./media/zscaler-three-tutorial/tutorial_zscalerthree_url.png)
 
-    A válasz URL-címe szövegmezőbe írja be az URL-cím: `https://login.zscalerthree.net/sfc_sso`
-
-    > [!NOTE]
-    > Frissíteni ezt az értéket a tényleges bejelentkezési URL-címmel rendelkezik. Kapcsolattartó [Zscaler három ügyfél-támogatási csapatának](https://www.zscaler.com/company/contact) beolvasni ezeket az értékeket.
+    A bejelentkezési URL-címe szövegmezőbe adja meg az URL-cím: `https://login.zscalerthree.net/sfc_sso`
 
 6. Az a **SAML-aláíró tanúsítvány** szakaszt, kattintson a **letöltése** letöltéséhez **Certificate(Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
 

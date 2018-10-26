@@ -1,144 +1,128 @@
 ---
-title: Gpu-k az Azure Kubernetes Service (AKS)
-description: A GPU-k használata az Azure Kubernetes Service (AKS)
+title: A GPU-k használata az Azure Kubernetes Service (AKS)
+description: A GPU-k használata a nagy teljesítményű számítási és a magas grafikai igényű számítási feladatok Azure Kubernetes Service (AKS)
 services: container-service
 author: lachie83
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 10/25/2018
 ms.author: laevenso
-ms.custom: mvc
-ms.openlocfilehash: 231d7b875a7163aaa532be4a6477ca4e2eb67286
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 69c682fc51f826a7e7ffd0eb8bcb1a7921aa9d13
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043605"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50095388"
 ---
-# <a name="using-gpus-on-aks"></a>GPU-k használata az AKS-en
+# <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>A GPU-k használata a nagy számítási igényű számítási feladatokhoz az Azure Kubernetes Service (AKS)
 
-Az AKS támogatja a GPU-kompatibilis csomópontkészletek létrehozását. Az Azure jelenlegi kínálatában egy vagy több GPU-val kompatibilis virtuális gépek érhetők el. A GPU-kompatibilis virtuális gépeket a nagy számítási és grafikai igényű, valamint vizualizációs számítási feladatok elvégzésére tervezték. GPU listáját engedélyezve van a virtuális gépek találhatók [Itt](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu).
+Compute-igényes számítási feladatokhoz, például a grafikus és megjelenítési számítási feladatok gyakran használják a grafikus feldolgozóegység (GPU). Az AKS GPU-kompatibilis csomópontkészleteit a nagy számítási igényű számítási feladatok futtatása a Kubernetesben való létrehozását támogatja. Az elérhető GPU-kompatibilis virtuális gépek további információkért lásd: [GPU-optimalizált Azure-beli Virtuálisgép-méretek][gpu-skus]. Az AKS-csomópontok, javasoljuk, hogy a minimális méret *Standard_NC6*.
+
+> [!NOTE]
+> GPU-kompatibilis virtuális gépek speciális hardvereket, amely a készlet erejéig magasabb díjszabással és a régiót tartalmazhat. További információkért lásd: a [díjszabás] [ azure-pricing] eszköz és [régiók rendelkezésre állása][azure-availability].
+
+## <a name="before-you-begin"></a>Előkészületek
+
+Ez a cikk feltételezi, hogy gpu-kat támogató csomópontok egy meglévő AKS-fürtöt. 1.10 vagy újabb, az AKS-fürt Kubernetes rendszernek kell futnia. Ha egy AKS-fürtöt, amely megfelel ezeknek a követelményeknek, tekintse meg a jelen cikk első szakaszában [AKS-fürt létrehozása](#create-an-aks-cluster).
+
+Emellett az Azure CLI 2.0.49 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
-A GPU-k általában nagy számítási igényű számítási feladatok, például a magas grafikai igényű, és a vizualizációs feladatokhoz van szükség. Tekintse meg a következő [dokumentum](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu) meghatározni a megfelelő Virtuálisgép-méretet a számítási feladatok számára.
-Azt javasoljuk, hogy a minimális méret `Standard_NC6` az Azure Kubernetes Service (AKS) csomópontokhoz.
+Ha egy AKS-fürtre van szüksége, amely megfelel a minimális követelményeknek (GPU-kompatibilis csomópont és a Kubernetes 1.10 vagy újabb verzió), kövesse az alábbi lépéseket. Ha már rendelkezik egy AKS-fürtöt, amely megfelel ezeknek a követelményeknek, ugorjon a következő szakaszban.
 
-> [!NOTE]
-> GPU-t tartalmazó virtuális gépek speciális hardvereket, amely a készlet erejéig magasabb díjszabással és a régiót tartalmazhat. További információkért lásd: a [díjszabás](https://azure.microsoft.com/pricing/) eszköz és [régiók rendelkezésre állása](https://azure.microsoft.com/global-infrastructure/services/) hely további információt.
-
-
-Ha egy AKS-fürtöt, amely megfelel a minimális javaslat, futtassa a következő parancsokat.
-
-Hozzon létre egy erőforráscsoportot, a fürt számára.
+Először hozzon létre egy erőforráscsoportot a fürt használata a [az csoport létrehozása] [ az-group-create] parancsot. Az alábbi példa létrehoz egy erőforráscsoport-nevet *myResourceGroup* a a *eastus* régió:
 
 ```azurecli
-az group create --name myGPUCluster --location eastus
+az group create --name myResourceGroup --location eastus
 ```
 
-Az AKS-fürt létrehozása, amelyek méretű csomópont `Standard_NC6`.
+Most hozzon létre egy AKS fürt a [az aks létrehozása] [ az-aks-create] parancsot. Az alábbi példa egy fürtöt hoz létre egy egycsomópontos méretű `Standard_NC6`, és a Kubernetes 1.10.8 verziója fut:
 
 ```azurecli
-az aks create --resource-group myGPUCluster --name myGPUCluster --node-vm-size Standard_NC6
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --node-vm-size Standard_NC6 \
+    --node-count 1 \
+    --kubernetes-version 1.10.8
 ```
 
-Csatlakozás az AKS-fürtöt.
+Az AKS fürt használatára vonatkozó hitelesítő adatainak lekérése a [az aks get-credentials] [ az-aks-get-credentials] parancsot:
 
 ```azurecli
-az aks get-credentials --resource-group myGPUCluster --name myGPUCluster
+az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="confirm-gpus-are-schedulable"></a>A GPU-k program ütemezhető megerősítése
+## <a name="confirm-that-gpus-are-schedulable"></a>Győződjön meg róla, hogy a GPU-k ütemezhető
 
-Futtassa a következő parancsok futtatásával győződjön meg róla a GPU-kon keresztül Kubernetes ütemezhető.
-
-Csomópontok aktuális listájának beolvasása.
+Az AKS-fürt létrehozása, és ellenőrizze, hogy a GPU-k ütemezhető a Kubernetesben. Először listázza a csomópontok a fürtben, a [kubectl get nodes] [kubectl get] paranccsal:
 
 ```
 $ kubectl get nodes
-NAME                       STATUS    ROLES     AGE       VERSION
-aks-nodepool1-22139053-0   Ready     agent     10h       v1.9.6
-aks-nodepool1-22139053-1   Ready     agent     10h       v1.9.6
-aks-nodepool1-22139053-2   Ready     agent     10h       v1.9.6
+
+NAME                       STATUS   ROLES   AGE   VERSION
+aks-nodepool1-18821093-0   Ready    agent   6m    v1.10.8
 ```
 
-Írja le a csomópontokat a GPU program ütemezhető egyikét. Ez alatt találhatók a `Capacity` szakaszban. Például: `nvidia.com/gpu:  1`. Ha nem látja a GPU-k, tekintse meg a **hibaelhárítás** szakaszt.
+Mostantól használhatja a [kubectl ismertetik csomópont] [ kubectl-describe] parancs használatával győződjön meg róla, hogy a GPU-k ütemezhető. Alatt a *kapacitás* szakaszban, a grafikus Processzor szerepelnie kell `nvidia.com/gpu:  1`. Ha nem látja a GPU-k, tekintse meg a [hibaelhárítása GPU rendelkezésre állási](#troubleshoot-gpu-availability) szakaszban.
+
+A következő sűrített példához jeleníti meg, hogy egy GPU érhető el a csomóponton nevű *aks-nodepool1-18821093-0*:
 
 ```
-$ kubectl describe node aks-nodepool1-22139053-0
-Name:               aks-nodepool1-22139053-0
+$ kubectl describe node aks-nodepool1-18821093-0
+
+Name:               aks-nodepool1-18821093-0
 Roles:              agent
-Labels:             agentpool=nodepool1
-                    beta.kubernetes.io/arch=amd64
-                    beta.kubernetes.io/instance-type=Standard_NC6
-                    beta.kubernetes.io/os=linux
-                    failure-domain.beta.kubernetes.io/region=eastus
-                    failure-domain.beta.kubernetes.io/zone=1
-                    kubernetes.azure.com/cluster=MC_myGPUCluster_myGPUCluster
-                    kubernetes.io/hostname=aks-nodepool1-22139053-0
-                    kubernetes.io/role=agent
-                    storageprofile=managed
-                    storagetier=Standard_LRS
-Annotations:        node.alpha.kubernetes.io/ttl=0
-                    volumes.kubernetes.io/controller-managed-attach-detach=true
-Taints:             <none>
-CreationTimestamp:  Thu, 05 Apr 2018 12:13:20 -0700
-Conditions:
-  Type                 Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
-  ----                 ------  -----------------                 ------------------                ------                       -------
-  NetworkUnavailable   False   Thu, 05 Apr 2018 12:15:07 -0700   Thu, 05 Apr 2018 12:15:07 -0700   RouteCreated                 RouteController created a route
-  OutOfDisk            False   Thu, 05 Apr 2018 22:14:33 -0700   Thu, 05 Apr 2018 12:13:20 -0700   KubeletHasSufficientDisk     kubelet has sufficient disk space available
-  MemoryPressure       False   Thu, 05 Apr 2018 22:14:33 -0700   Thu, 05 Apr 2018 12:13:20 -0700   KubeletHasSufficientMemory   kubelet has sufficient memory available
-  DiskPressure         False   Thu, 05 Apr 2018 22:14:33 -0700   Thu, 05 Apr 2018 12:13:20 -0700   KubeletHasNoDiskPressure     kubelet has no disk pressure
-  Ready                True    Thu, 05 Apr 2018 22:14:33 -0700   Thu, 05 Apr 2018 12:15:10 -0700   KubeletReady                 kubelet is posting ready status. AppArmor enabled
-Addresses:
-  InternalIP:  10.240.0.4
-  Hostname:    aks-nodepool1-22139053-0
+Labels:             accelerator=nvidia
+
+[...]
+
 Capacity:
- nvidia.com/gpu:                  1
- cpu:                             6
- memory:                          57691688Ki
- pods:                            110
+ cpu:                6
+ ephemeral-storage:  30428648Ki
+ hugepages-1Gi:      0
+ hugepages-2Mi:      0
+ memory:             57713824Ki
+ nvidia.com/gpu:     1
+ pods:               110
 Allocatable:
- nvidia.com/gpu:                  1
- cpu:                             6
- memory:                          57589288Ki
- pods:                            110
+ cpu:                5940m
+ ephemeral-storage:  28043041951
+ hugepages-1Gi:      0
+ hugepages-2Mi:      0
+ memory:             53417120Ki
+ nvidia.com/gpu:     1
+ pods:               110
 System Info:
- Machine ID:                 2eb0e90bd1fe450ba3cf83479443a511
- System UUID:                CFB485B6-CB49-A545-A2C9-8E4C592C3273
- Boot ID:                    fea24544-596d-4246-b8c3-610fc7ac7280
- Kernel Version:             4.13.0-1011-azure
- OS Image:                   Debian GNU/Linux 9 (stretch)
+ Machine ID:                 688e083d19554d4a9563bd138f4ca98b
+ System UUID:                08162568-B987-A84D-8865-98D6EFC64B32
+ Boot ID:                    7b440249-8a96-42eb-950f-08c9a3c530b7
+ Kernel Version:             4.15.0-1023-azure
+ OS Image:                   Ubuntu 16.04.5 LTS
  Operating System:           linux
  Architecture:               amd64
  Container Runtime Version:  docker://1.13.1
- Kubelet Version:            v1.9.6
- Kube-Proxy Version:         v1.9.6
-PodCIDR:                     10.244.1.0/24
-ExternalID:                  /subscriptions/8ecadfc9-d1a3-4ea4-b844-0d9f87e4d7c8/resourceGroups/MC_myGPUCluster_myGPUCluster/providers/Microsoft.Compute/virtualMachines/aks-nodepool1-22139053-0
-Non-terminated Pods:         (2 in total)
-  Namespace                  Name                       CPU Requests  CPU Limits  Memory Requests  Memory Limits
-  ---------                  ----                       ------------  ----------  ---------------  -------------
-  kube-system                kube-proxy-pwffr           100m (1%)     0 (0%)      0 (0%)           0 (0%)
-  kube-system                kube-svc-redirect-mkpf4    0 (0%)        0 (0%)      0 (0%)           0 (0%)
-Allocated resources:
-  (Total limits may be over 100 percent, i.e., overcommitted.)
-  CPU Requests  CPU Limits  Memory Requests  Memory Limits
-  ------------  ----------  ---------------  -------------
-  100m (1%)     0 (0%)      0 (0%)           0 (0%)
-Events:         <none>
+ Kubelet Version:            v1.10.8
+ Kube-Proxy Version:         v1.10.8
+PodCIDR:                     10.244.0.0/24
+ProviderID:                  azure:///subscriptions/19da35d3-9a1a-4f3b-9b9c-3c56ef409565/resourceGroups/MC_myGPUCluster_myGPUCluster_eastus/providers/Microsoft.Compute/virtualMachines/aks-nodepool1-18821093-0
+Non-terminated Pods:         (9 in total)
+  Namespace                  Name                                    CPU Requests  CPU Limits  Memory Requests  Memory Limits
+  ---------                  ----                                    ------------  ----------  ---------------  -------------
+  gpu-resources              nvidia-device-plugin-9cfcf              0 (0%)        0 (0%)      0 (0%)           0 (0%)
+
+[...]
 ```
 
-## <a name="run-a-gpu-enabled-workload"></a>A GPU-t tartalmazó számítási feladatok futtatásához
+## <a name="run-a-gpu-enabled-workload"></a>GPU-kompatibilis munkaterhelések futtatása
 
-Annak érdekében, hogy bemutatja a GPU-k valóban működik, az ütemezés egy GPU számítási feladat a megfelelő erőforrás-kérelemmel engedélyezve van. Ebben a példában fog futni egy [Tensorflow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) feladat ellen a [MNIST adatkészlet](http://yann.lecun.com/exdb/mnist/).
+A grafikus Processzor működés közben látni, hogy a megfelelő erőforrás-kérelemmel GPU-kompatibilis munkaterhelések ütemezése. Ebben a példában futtassunk egy [Tensorflow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) feladat ellen a [MNIST adatkészlet](http://yann.lecun.com/exdb/mnist/).
 
-A következő feladat jegyzékfájlt tartalmaz erőforrás legfeljebb `nvidia.com/gpu: 1`. 
+Hozzon létre egy fájlt *minták – tf-mnist-demo.yaml* , és illessze be a következő YAML-jegyzékfájlt. A következő feladat jegyzékfájlt tartalmaz erőforrás legfeljebb `nvidia.com/gpu: 1`:
 
-Másolja a jegyzékfájlban és a Mentés másként **minták – tf-mnist-demo.yaml**.
-```
+```yaml
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -162,37 +146,46 @@ spec:
       restartPolicy: OnFailure
 ```
 
-Használja a [a kubectl a alkalmazni] [ kubectl-apply] parancsot futtatja a feladatot. A parancs elemzi jegyzékfájlt, és létrehozza a meghatározott Kubernetes-objektumokat.
-```
-$ kubectl apply -f samples-tf-mnist-demo.yaml
-job "samples-tf-mnist-demo" created
+Használja a [a kubectl a alkalmazni] [ kubectl-apply] parancsot futtatja a feladatot. Ez a parancs elemzi jegyzékfájlt, és a meghatározott Kubernetes-objektumokat hoz létre:
+
+```console
+kubectl apply -f samples-tf-mnist-demo.yaml
 ```
 
-Sikeres telepítést használ, amíg a feladat előrehaladásának figyeléséhez a [kubectl get feladatok] [ kubectl-get] parancsot a `--watch` argumentum.
+## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>Állapot és a GPU-kompatibilis számítási feladat kimenetének megtekintése
+
+A feladat előrehaladásának figyeléséhez a [kubectl get feladatok] [ kubectl-get] parancsot a `--watch` argumentum. Előfordulhat, hogy néhány percet vesz igénybe első lekéréses a lemezkép és az adatkészlet feldolgozása. Ha a *BEFEJEZÉSEK* oszlopban látható *1/1*, a feladat sikeresen befejeződött:
+
 ```
 $ kubectl get jobs samples-tf-mnist-demo --watch
-NAME                    DESIRED   SUCCESSFUL   AGE
-samples-tf-mnist-demo   1         0            8s
-samples-tf-mnist-demo   1         1            35s
+
+NAME                    COMPLETIONS   DURATION   AGE
+
+samples-tf-mnist-demo   0/1           3m29s      3m29s
+samples-tf-mnist-demo   1/1   3m10s   3m36s
 ```
 
-Határozza meg, hogy a podnév megjelenítése befejeződött podok szerint a naplók megtekintéséhez.
+Tekintse meg a GPU-kompatibilis számítási feladat kimenetét, először kérje le a podok a nevét a [kubectl get pods] [ kubectl-get] parancsot:
+
 ```
-$ kubectl get pods --selector app=samples-tf-mnist-demo --show-all
-NAME                          READY     STATUS      RESTARTS   AGE
-samples-tf-mnist-demo-smnr6   0/1       Completed   0          4m
+$ kubectl get pods --selector app=samples-tf-mnist-demo
+
+NAME                          READY   STATUS      RESTARTS   AGE
+samples-tf-mnist-demo-smnr6   0/1     Completed   0          3m
 ```
 
-Győződjön meg arról, hogy a megfelelő GPU a felderítésük ebben az esetben a pod-naplókat tekintse meg a fenti parancs kimenetéből származó a podnév használatával `Tesla K80`.
+Mostantól használhatja a [kubectl naplók] [ kubectl-logs] parancsot a pod-naplók megtekintéséhez. A következő példa pod naplók győződjön meg arról, hogy a megfelelő GPU a felderítésük, `Tesla K80`. A saját pod-nevet kell adnia:
+
 ```
 $ kubectl logs samples-tf-mnist-demo-smnr6
-2018-04-13 04:11:08.710863: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
-2018-04-13 04:11:15.824349: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties:
+
+2018-10-25 18:31:10.155010: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-10-25 18:31:10.305937: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties:
 name: Tesla K80 major: 3 minor: 7 memoryClockRate(GHz): 0.8235
-pciBusID: 04e1:00:00.0
-totalMemory: 11.17GiB freeMemory: 11.10GiB
-2018-04-13 04:11:15.824394: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla K80, pci bus id: 04e1:00:00.0, compute capability: 3.7)
-2018-04-13 04:11:20.891910: I tensorflow/stream_executor/dso_loader.cc:139] successfully opened CUDA library libcupti.so.8.0 locally
+pciBusID: ccb6:00:00.0
+totalMemory: 11.92GiB freeMemory: 11.85GiB
+2018-10-25 18:31:10.305981: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla K80, pci bus id: ccb6:00:00.0, compute capability: 3.7)
+2018-10-25 18:31:14.941723: I tensorflow/stream_executor/dso_loader.cc:139] successfully opened CUDA library libcupti.so.8.0 locally
 Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.
 Extracting /tmp/tensorflow/input_data/train-images-idx3-ubyte.gz
 Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.
@@ -201,77 +194,82 @@ Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.
 Extracting /tmp/tensorflow/input_data/t10k-images-idx3-ubyte.gz
 Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.
 Extracting /tmp/tensorflow/input_data/t10k-labels-idx1-ubyte.gz
-Accuracy at step 0: 0.0487
-Accuracy at step 10: 0.6571
-Accuracy at step 20: 0.8111
-Accuracy at step 30: 0.8562
-Accuracy at step 40: 0.8786
-Accuracy at step 50: 0.8911
-Accuracy at step 60: 0.8986
-Accuracy at step 70: 0.9017
-Accuracy at step 80: 0.9049
-Accuracy at step 90: 0.9114
+Accuracy at step 0: 0.097
+Accuracy at step 10: 0.6993
+Accuracy at step 20: 0.8208
+Accuracy at step 30: 0.8594
+Accuracy at step 40: 0.8685
+Accuracy at step 50: 0.8864
+Accuracy at step 60: 0.901
+Accuracy at step 70: 0.905
+Accuracy at step 80: 0.9103
+Accuracy at step 90: 0.9126
 Adding run metadata for 99
-Accuracy at step 100: 0.9109
-Accuracy at step 110: 0.9143
-Accuracy at step 120: 0.9188
-Accuracy at step 130: 0.9194
-Accuracy at step 140: 0.9237
-Accuracy at step 150: 0.9231
-Accuracy at step 160: 0.9158
-Accuracy at step 170: 0.9259
-Accuracy at step 180: 0.9303
-Accuracy at step 190: 0.9315
+Accuracy at step 100: 0.9176
+Accuracy at step 110: 0.9149
+Accuracy at step 120: 0.9187
+Accuracy at step 130: 0.9253
+Accuracy at step 140: 0.9252
+Accuracy at step 150: 0.9266
+Accuracy at step 160: 0.9255
+Accuracy at step 170: 0.9267
+Accuracy at step 180: 0.9257
+Accuracy at step 190: 0.9309
 Adding run metadata for 199
-Accuracy at step 200: 0.9334
-Accuracy at step 210: 0.9342
-Accuracy at step 220: 0.9359
-Accuracy at step 230: 0.9353
-Accuracy at step 240: 0.933
-Accuracy at step 250: 0.9353
-Accuracy at step 260: 0.9408
-Accuracy at step 270: 0.9396
-Accuracy at step 280: 0.9406
-Accuracy at step 290: 0.9444
+Accuracy at step 200: 0.9272
+Accuracy at step 210: 0.9321
+Accuracy at step 220: 0.9343
+Accuracy at step 230: 0.9388
+Accuracy at step 240: 0.9408
+Accuracy at step 250: 0.9394
+Accuracy at step 260: 0.9412
+Accuracy at step 270: 0.9422
+Accuracy at step 280: 0.9436
+Accuracy at step 290: 0.9411
 Adding run metadata for 299
-Accuracy at step 300: 0.9453
-Accuracy at step 310: 0.946
-Accuracy at step 320: 0.9464
-Accuracy at step 330: 0.9472
-Accuracy at step 340: 0.9516
-Accuracy at step 350: 0.9473
-Accuracy at step 360: 0.9502
-Accuracy at step 370: 0.9483
-Accuracy at step 380: 0.9481
-Accuracy at step 390: 0.9467
+Accuracy at step 300: 0.9426
+Accuracy at step 310: 0.9466
+Accuracy at step 320: 0.9458
+Accuracy at step 330: 0.9407
+Accuracy at step 340: 0.9445
+Accuracy at step 350: 0.9486
+Accuracy at step 360: 0.9475
+Accuracy at step 370: 0.948
+Accuracy at step 380: 0.9516
+Accuracy at step 390: 0.9534
 Adding run metadata for 399
-Accuracy at step 400: 0.9477
-Accuracy at step 410: 0.948
-Accuracy at step 420: 0.9496
-Accuracy at step 430: 0.9501
-Accuracy at step 440: 0.9534
-Accuracy at step 450: 0.9551
-Accuracy at step 460: 0.9518
-Accuracy at step 470: 0.9562
-Accuracy at step 480: 0.9583
-Accuracy at step 490: 0.9575
+Accuracy at step 400: 0.9501
+Accuracy at step 410: 0.9552
+Accuracy at step 420: 0.9535
+Accuracy at step 430: 0.9545
+Accuracy at step 440: 0.9533
+Accuracy at step 450: 0.9526
+Accuracy at step 460: 0.9566
+Accuracy at step 470: 0.9547
+Accuracy at step 480: 0.9548
+Accuracy at step 490: 0.9545
 Adding run metadata for 499
 ```
 
-## <a name="cleanup"></a>Felesleges tartalmak törlése
-Távolítsa el a társított ebben a lépésben létrehozott Kubernetes-objektumokat.
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+A kapcsolódó Kubernetes-objektumokat a jelen cikkben létrehozott eltávolításához használja a [kubectl törlési feladat] [ kubectl delete] paranccsal a következőképpen:
+
+```console
+kubectl delete jobs samples-tf-mnist-demo
 ```
-$ kubectl delete jobs samples-tf-mnist-demo
-job "samples-tf-mnist-demo" deleted
+
+## <a name="troubleshoot-gpu-availability"></a>GPU-rendelkezésre állási hibáinak elhárítása
+
+Ha nem látja a GPU-k, hogy a csomópontokon elérhető, szükség lehet egy DaemonSet nVidia eszköz beépülő modul telepítése. A DaemonSet podot futtat minden csomóponthoz adja meg a szükséges illesztőprogramok a GPU-kkal.
+
+Először is hozzon létre egy névteret a [kubectl névtér létrehozása] [ kubectl-create] parancsot, mint például *gpu-erőforrások*:
+
+```console
+kubectl create namespace gpu-resources
 ```
 
-## <a name="troubleshoot"></a>Hibaelhárítás
-
-Bizonyos esetekben Ön nem láthatja GPU erőforrásokat a kapacitást. Például: utáni verzió 1.10 kubernetes fürt frissítése vagy fürtöt hoz létre egy új Kubernetes 1.10 verziója, a várt `nvidia.com/gpu` erőforrás hiányzik a `Capacity` futtatásakor `kubectl describe node <node-name>`. 
-
-A megoldás a alkalmazni a következő daemonset post kiépítése vagy a frissítést, fog megjelenni `nvidia.com/gpu` ütemezhető erőforrásként. 
-
-Másolja a jegyzékfájlban és a Mentés másként **nvidia-device-beépülő modul – ds.yaml**. A kép címke `image: nvidia/k8s-device-plugin:1.10` lent, frissíteni a címkét a Kubernetes-verziót. Például használja a címke `1.11` a Kubernetes 1.11-es verzió esetében.
+Hozzon létre egy fájlt *nvidia-device-beépülő modul – ds.yaml* , és illessze be a következő YAML-jegyzékfájlt. Frissítés a `image: nvidia/k8s-device-plugin:1.10` félúton le a jegyzékfájl megfelelően a Kubernetes-verziót. Például, ha az AKS-fürt Kubernetes 1.11-es verzió fut, frissítse a címke `image: nvidia/k8s-device-plugin:1.11`.
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -280,7 +278,7 @@ metadata:
   labels:
     kubernetes.io/cluster-service: "true"
   name: nvidia-device-plugin
-  namespace: kube-system
+  namespace: gpu-resources
 spec:
   template:
     metadata:
@@ -316,21 +314,37 @@ spec:
         accelerator: nvidia
 ```
 
-Használja a [a kubectl a alkalmazni] [ kubectl-apply] parancsot a daemonset létrehozásához.
+Mostantól használhatja a [a kubectl a alkalmazni] [ kubectl-apply] parancsot a DaemonSet létrehozásához:
 
 ```
 $ kubectl apply -f nvidia-device-plugin-ds.yaml
+
 daemonset "nvidia-device-plugin" created
 ```
 
+Futtassa a [kubectl ismertetik csomópont] [ kubectl-describe] parancsot ismét ellenőrizze, hogy a GPU most már elérhető a csomóponton.
+
 ## <a name="next-steps"></a>További lépések
 
-Machine Learning számítási feladatok futtatása a kubernetes használatával szeretne? Tekintse meg a Kubeflow labs további részleteket talál.
+Az Apache Spark-feladatok futtatásához lásd: [futtassa az Apache Spark-feladatok az aks-en][aks-spark].
 
-> [!div class="nextstepaction"]
-> [Kubeflow Labs][kubeflow-labs]
+Machine learning (gépi tanulás) számítási feladatok futtatása a kubernetes használatával kapcsolatos további információkért lásd: [Kubeflow Labs][kubeflow-labs].
 
 <!-- LINKS - external -->
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubeflow-labs]: https://github.com/Azure/kubeflow-labs
+[kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+[kubectl-logs]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
+[kubectl delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
+[kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
+[azure-pricing]: https://azure.microsoft.com/pricing/
+[azure-availability]: https://azure.microsoft.com/global-infrastructure/services/
+
+<!-- LINKS - internal -->
+[az-group-create]: /cli/azure/group#az-group-create
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[aks-spark]: spark-job.md
+[gpu-skus]: ../virtual-machines/linux/sizes-gpu.md
+[install-azure-cli]: /cli/azure/install-azure-cli

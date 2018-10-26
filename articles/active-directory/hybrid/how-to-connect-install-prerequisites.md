@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f0791173450d5db3b33762ec9d5ed5c1adf96788
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 4dd3253b1d7ee159914f2d1fd6a8644bbc69c1f0
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321631"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092791"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a témakör ismerteti az előfeltételeket és az Azure AD Connect hardverkövetelményeit.
@@ -63,7 +63,7 @@ Előtt az Azure AD Connectet telepíti, akkor kell néhány dolgot.
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Az Azure AD Connect által használt SQL Server
 * Az identitásadatok tárolásához az Azure AD Connectnek szüksége van egy SQL Server-adatbázisra. Alapértelmezés szerint telepítve van egy SQL Server 2012 Express LocalDB (egy világos verziója az SQL Server Express). Az SQL Server Express rendelkezik, amelyek segítségével kezelheti a körülbelül 100 000 objektumra 10 GB-os méretkorlátot. Ha szeretne egy nagyobb adatmennyiségek directory-objektumok kezelése, át kell irányítania a telepítési varázsló egy másik telepített SQL Server.
 * Ha egy külön SQL Server használja, majd ezek a követelmények vonatkoznak:
-  * Az Azure AD Connect a Microsoft SQL Server az SQL Server 2008 (az legújabb szervizcsomaggal) az SQL Server 2016 SP1 összes verzióit támogatja. A Microsoft Azure SQL Database **nem támogatott** adatbázisként.
+  * Az Azure AD Connect a Microsoft SQL Server az SQL Server 2008 (az legújabb szervizcsomaggal) az SQL Server 2017 összes verzióit támogatja. A Microsoft Azure SQL Database **nem támogatott** adatbázisként.
   * A kis-és SQL-rendezést kell használnia. Ezek rendezések utak azonosítják a \_CI_ a neve. Ez **nem támogatott** egy kis-és nagybetűket, által azonosított rendezés használatára \_CS_ a neve.
   * Legfeljebb egy SQL-példány egy szinkronizálási motor. Ez **nem támogatott** FIM vagy MIM Sync, a DirSync vagy Azure AD-Szinkronizáló egy SQL-példány megosztása.
 

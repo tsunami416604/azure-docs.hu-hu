@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 10/24/2018
 ms.author: juliako
-ms.openlocfilehash: 62cc4634a0f76b0562d5b3c1355a7442fc5cf989
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: e7abdb568b11870fb467ee6d3759881ca337d3cc
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985233"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085807"
 ---
 # <a name="assets"></a>Objektumok
 
@@ -34,19 +34,19 @@ Emellett olvassa [storage-fiókok a Media Services](storage-account-concept.md) 
 
 Az alábbi táblázat az objektum tulajdonságait jeleníti meg, és lehetővé teszi a definíciójukat.
 
-|Name (Név)|Típus|Leírás|
-|---|---|---|
-|id|sztring|Az erőforrás teljes erőforrás-azonosítója.|
-|név|sztring|Az erőforrás neve.|
-|properties.alternateId |sztring|Az eszköz a másik azonosító.|
-|properties.assetId |sztring|Az eszköz azonosítója.|
-|Properties.Container |sztring|Az eszközintelligencia blobtároló neve.|
-|Properties.created |sztring|A létrehozást, az eszköz.|
-|properties.description |sztring|Az eszköz leírása.|
-|properties.lastModified |sztring|Az utolsó módosítás dátuma az eszköz.|
-|properties.storageAccountName |sztring|A tárfiók neve.|
-|properties.storageEncryptionFormat |AssetStorageEncryptionFormat |Az eszköz titkosításának formátuma. Egyik sem, vagy MediaStorageEncryption.|
-|type|sztring|Az erőforrás típusát.|
+|Name (Név)|Leírás|
+|---|---|
+|id|Az erőforrás teljes erőforrás-azonosítója.|
+|név|Az erőforrás neve.|
+|properties.alternateId |Az eszköz a másik azonosító.|
+|properties.assetId |Az eszköz azonosítója.|
+|Properties.Container |Az eszközintelligencia blobtároló neve.|
+|Properties.created |A létrehozást, az eszköz.|
+|properties.description|Az eszköz leírása.|
+|properties.lastModified |Az utolsó módosítás dátuma az eszköz.|
+|properties.storageAccountName |A tárfiók neve.|
+|properties.storageEncryptionFormat |Az eszköz titkosításának formátuma. Egyik sem, vagy MediaStorageEncryption.|
+|type|Az erőforrás típusát.|
 
 A teljes meghatározása: [eszközök](https://docs.microsoft.com/rest/api/media/assets).
 

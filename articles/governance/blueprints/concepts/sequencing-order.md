@@ -4,24 +4,28 @@ description: Ismerje meg az életciklus-tervrajz halad át, és minden egyes sza
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: c09fb26d8375e08281241aaed3f6f6e30acc755b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4adf427727e7244bbde64a673e7353c1f8270c8a
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955452"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094578"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Az Azure-tervek telepítési sorrendjét ismertetése
 
-Azure tervek az egy **alkalmazás-előkészítés rendelés** erőforrás-létrehozás sorrendjének meghatározásához tervrajz hozzárendelésének feldolgozása során. Ez a cikk ismerteti az alapértelmezett műveleti sorrend sorrend használt, a rendelés testreszabása és a testreszabott rendelés feldolgozásának módja.
+Azure tervek az egy **alkalmazás-előkészítés rendelés** erőforrás-létrehozás sorrendjének meghatározásához tervrajz hozzárendelésének feldolgozása során. Ez a cikk a következő fogalmakat ismerteti:
+
+- Az alapértelmezett műveleti sorrend sorrend használt
+- A rendelés testreszabása
+- A testre szabott rendelés feldolgozásának módja
 
 A JSON-példák, amelyek a saját értékeire cserélni kell változók vannak:
 
-- `{YourMG}` – Cserélje le a felügyeleti csoport neve
+- `{YourMG}` – Cserélje le a felügyeleti csoport nevére
 
 ## <a name="default-sequencing-order"></a>Alapértelmezett alkalmazás-előkészítés sorrend
 
@@ -32,7 +36,7 @@ Ha a tervezet nem ahhoz, hogy az összetevők üzembe helyezése a direktíváka
 - Előfizetési szinten **Azure Resource Manager-sablon** összetevők szerelvényösszetevő-név szerint rendezve
 - **Erőforráscsoport** összetevőket (beleértve az alárendelt összetevők) helyőrző név szerint rendezve
 
-Belül **erőforráscsoport** összetevő feldolgozott, a következő feladatütemezési sorrendben szolgál az összetevők adott erőforráscsoporton belül kell létrehozni:
+Belül **erőforráscsoport** összetevő, a következő feladatütemezési sorrendben szolgál az összetevők adott erőforráscsoporton belül kell létrehozni:
 
 - Erőforrás-csoport gyermek **szerepkör-hozzárendelés** összetevők szerelvényösszetevő-név szerint rendezve
 - Erőforrás-csoport gyermek **szabályzat-hozzárendelés** összetevők szerelvényösszetevő-név szerint rendezve
@@ -40,14 +44,13 @@ Belül **erőforráscsoport** összetevő feldolgozott, a következő feladatüt
 
 ## <a name="customizing-the-sequencing-order"></a>Az alkalmazás-előkészítés sorrendjének testreszabása
 
-Nagy tervezetek létrehozása, ha egy másik erőforráshoz való kapcsolat a meghatározott sorrendben létrehozandó erőforrás szükség lehet. Ez leggyakrabban használt használata minta akkor, ha a tervrajz magában foglalja a több Azure Resource Manager-sablonok. Tervezetek kezeli ezt azáltal, hogy az alkalmazás-előkészítés sorrendben kell definiálni.
+Nagy tervezetek létrehozása, amikor a meghatározott sorrendben létrehozandó erőforrás szükség lehet. Ebben a forgatókönyvben a leggyakoribb használati mintáját akkor, ha a tervrajz több Azure Resource Manager-sablont is tartalmaz. Tervezetek kezeli ezt a mintát azáltal, hogy az alkalmazás-előkészítés sorrendben kell definiálni.
 
-Mindez definiálásával egy `dependsOn` a JSON-tulajdonságot. Csak a tervezet (az erőforráscsoportok) és az összetevő objektumok támogatja ezt a tulajdonságot. `dependsOn` az összetevő neve, amely az adott összetevő kell létrehozni, mielőtt a létrehozás egy karakterlánc-tömbben.
+Az eredménykészlet definiálásával történik egy `dependsOn` a JSON-tulajdonságot. Csak a tervezet (az erőforráscsoportok) és az összetevő objektumok támogatja ezt a tulajdonságot. `dependsOn` az összetevő neve, amely az adott összetevő kell létrehozni, mielőtt a létrehozás egy karakterlánc-tömbben.
 
 ### <a name="example---blueprint-with-ordered-resource-group"></a>Példa – tervezet rendezett erőforráscsoport
 
-Ez az egy erőforráscsoport, amely egy egyéni alkalmazás-előkészítés sorrendben definiált értéket deklarálásával egy példa tervezet `dependsOn`, és a egy standard erőforráscsoportot. Ebben az esetben a lehívandó összetevő nevű **assignPolicyTags** előtt a program feldolgozza a **rendezett-rg** erőforráscsoportot.
-**Standard-rg** az alapértelmezett műveleti sorrend sorrend szerint lesz feldolgozva.
+Ebben a példában tervezet egy erőforráscsoportot, amely egy egyéni alkalmazás-előkészítés sorrendben definiált értéket deklarálásával `dependsOn`, és a egy standard erőforráscsoportot. Ebben az esetben a lehívandó összetevő nevű **assignPolicyTags** előtt a program feldolgozza a **rendezett-rg** erőforráscsoportot. **Standard-rg** az alapértelmezett műveleti sorrend sorrend szerint lesz feldolgozva.
 
 ```json
 {
@@ -78,7 +81,7 @@ Ez az egy erőforráscsoport, amely egy egyéni alkalmazás-előkészítés sorr
 
 ### <a name="example---artifact-with-custom-order"></a>Példa – egyéni sorrendjében összetevő
 
-Ez a példa házirend összetevőt, amely egy Azure Resource Manager-sablon függ. Alapértelmezett rendezése, amelyet egy házirend összetevő létrehozott előtt az Azure Resource Manager-sablon. Ez lehetővé teszi, hogy a szabályzat lehívandó összetevő várja meg, az Azure Resource Manager-sablonok létrehozását.
+Ebben a példában egy szabályzat-összetevő, amely egy Azure Resource Manager-sablon függ. Alapértelmezett rendezése, amelyet egy házirend összetevő létrehozott előtt az Azure Resource Manager-sablon. A rendezés lehetővé teszi, hogy a szabályzat lehívandó összetevő várja meg, az Azure Resource Manager-sablonok létrehozását.
 
 ```json
 {
@@ -99,14 +102,14 @@ Ez a példa házirend összetevőt, amely egy Azure Resource Manager-sablon füg
 
 ## <a name="processing-the-customized-sequence"></a>A testre szabott feladatütemezési feldolgozása
 
-A létrehozási folyamat során a topológiai rendezést a függőségi grafikon a tervezet és az összetevői létrehozására szolgál. Ez biztosítja, hogy erőforráscsoportok és összetevők közötti függőség több szintjét támogatja.
+A létrehozási folyamat során a topológiai rendezést a függőségi grafikon a tervek összetevők létrehozására szolgál. Az ellenőrzés biztosítja, hogy az egyes fenyegetési erőforráscsoportok és összetevők közötti függőség támogatott.
 
-Függőség van deklarálva a tervezet vagy egy összetevő, amely az alapértelmezett sorrend nem módosítható, ha semmilyen változás nem az alkalmazás-előkészítés rendelés van végrehajtva. A példák egy erőforráscsoportot, amely előfizetési szintű házirend vagy az erőforrás csoport "standard-rg" gyermek szabályzat-hozzárendelés, amely a "standard-rg erőforráscsoportban" gyermek szerepkör-hozzárendelés függ attól függ. Mindkét esetben a `dependsOn` nem módosította az alapértelmezett műveleti sorrend sorrendjét és a módosítások nem kerül sor.
+Ha az összetevő függ, amely nem módosítható az alapértelmezett sorrend deklarálva van, majd nem történik változás. Ilyen például, egy erőforráscsoportot, amely egy előfizetés-szintű szabályzat függ. Egy másik példa, erőforrás csoport "standard-rg" gyermek szabályzat-hozzárendelés, amely a "standard-rg erőforráscsoportban" gyermek szerepkör-hozzárendelés függ. Mindkét esetben a `dependsOn` nem módosította az alapértelmezett műveleti sorrend sorrendjét és a módosítások nem kerül sor.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [tervezetet életciklus](lifecycle.md)
-- Megtudhatja, hogyan használja [statikus és dinamikus paraméterek](parameters.md)
-- Ismerje meg, győződjön meg arról, hogyan használhatja az [tervezetet erőforrás zárolása](resource-locking.md)
-- Ismerje meg, hogyan [meglévő hozzárendelések frissítése](../how-to/update-existing-assignments.md)
-- A tervrajz hozzárendelésének során felmerülő problémák megoldása [általános hibaelhárítási](../troubleshoot/general.md)
+- Tudnivalók a [tervek életciklusáról](lifecycle.md)
+- A [statikus és dinamikus paraméterek](parameters.md) használatának elsajátítása
+- A [tervek erőforrás-zárolásának](resource-locking.md) alkalmazásával kapcsolatos részletek
+- A [meglévő hozzárendelések frissítésének](../how-to/update-existing-assignments.md) elsajátítása
+- A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md)

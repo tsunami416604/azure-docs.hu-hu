@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 4f95fb5f2199e8c276b78a83391f3814303a9470
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 671818ca8f8fa07b506252d5d4d0c7a768577b19
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024619"
+ms.locfileid: "50087474"
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>Teszt futtatása az Azure Stackhez
 
@@ -39,7 +39,7 @@ Ha a probléma, forduljon a Microsoft ügyfél-támogatási szolgáltatások, ma
     3. Nyissa meg a PowerShellt rendszergazdaként.
     4. Futtassa: `Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint`
     5. Futtassa: `Test-AzureStack`
-4. Ha bármely tesztje sikertelen, Futtatás: `Get-AzureStackLog -FilterByRole SeedRing -OutputPath <Log output path>` a parancsmag a naplókat gyűjt a Test-AzureStack. Diagnosztikai naplók kapcsolatos további információkért lásd: [Azure Stack-diagnosztikai eszközök](azure-stack-diagnostics.md). Ne naplók gyűjtése és forduljon a Microsoft Services támogatási (CSS), ha a tesztek figyelmeztetés a jelentés.
+4. Ha bármelyik teszteli, hogy a jelentés **sikertelen**futtassa: `Get-AzureStackLog -FilterByRole SeedRing -OutputPath <Log output path>` a parancsmag a naplókat gyűjt a Test-AzureStack. Diagnosztikai naplók kapcsolatos további információkért lásd: [Azure Stack-diagnosztikai eszközök](azure-stack-diagnostics.md). Nem kell gyűjtését, vagy forduljon a Microsoft támogatási (CSS) Ha a jelentés tesztek **WARN**.
 5. Küldés a **SeedRing** Microsoft ügyfél-támogatási naplók. A Microsoft ügyfélszolgálata szolgáltatások működik együtt, hogy a probléma megoldásához.
 
 ## <a name="reference-for-test-azurestack"></a>Test-AzureStack referenciája

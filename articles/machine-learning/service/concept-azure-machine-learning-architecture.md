@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.author: haining
 author: hning86
 ms.reviewer: larryfr
-ms.date: 09/24/2018
-ms.openlocfilehash: 64104fc70c7be1589c9332905f243a2e1e692eee
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.date: 10/24/2018
+ms.openlocfilehash: b00f72c987b6ce8c44796bd036af670ec39fa7a6
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237976"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093632"
 ---
-# <a name="architecture-and-concepts-how-does-azure-machine-learning-service-work"></a>Architektúra és a fogalmakkal: az Azure Machine Learning szolgáltatás működése? 
+# <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Az Azure Machine Learning szolgáltatás működése: architektúra és fogalmak
 
 Ez a dokumentum architektúra és az Azure Machine Learning szolgáltatás fogalmakat ismerteti. Az alábbi ábrán látható a szolgáltatás fő összetevőit, és általános folyamatát mutatja be, a szolgáltatás használata esetén: 
 
@@ -156,6 +156,13 @@ Kísérlet egy adott parancsfájlból származó számos futtatások csoportja. 
 
 Egy kísérlet használatának példájáért lásd a [a rövid útmutató: Ismerkedés az Azure Machine Learning szolgáltatás](quickstart-get-started.md) dokumentum.
 
+
+## <a name="pipelines"></a>Folyamatok
+
+A folyamatok létrehozásához és kezeléséhez a munkafolyamatok, például az adat-előkészítés, modell betanítása, modell-üzembehelyezés és következtetési varrva együtt machine learning (gépi tanulás) fázisok szolgálnak. Az egyes fázisok is magában foglalja a több lépésből, amelyek mindegyike a különböző számítási célnak beavatkozás nélkül futtatható.
+
+Machine learning-folyamatokat ezzel a szolgáltatással kapcsolatban tekintse meg a cikket [folyamatok és az Azure Machine Learning](concept-ml-pipelines.md).
+
 ## <a name="compute-target"></a>Számítási célt
 
 Egy számítási célnak a tanítási szkriptet futtatni, vagy üzemeltetése a webszolgáltatás üzembe számítási erőforrásokat. A támogatott számítási célnak a következők: 
@@ -210,6 +217,6 @@ Tevékenységek is biztosítanak értesítéseket az SDK-t vagy a webes felhaszn
 
 Az alábbi hivatkozások segítségével az Azure Machine Learning használatának első lépései:
 
-* [Mi az Azure Machine Learning szolgáltatás](overview-what-is-azure-ml.md)
-* [Gyors útmutató: Munkaterület létrehozása a Python használatával](quickstart-get-started.md)
-* [Oktatóanyag: A modell betanításához.](tutorial-train-models-with-aml.md)
+* [Az Azure Machine Learning szolgáltatás ismertetése](overview-what-is-azure-ml.md)
+* [Rövid útmutató: Munkaterület létrehozása Python használatával](quickstart-get-started.md)
+* [Oktatóanyag: Modell betanítása](tutorial-train-models-with-aml.md)

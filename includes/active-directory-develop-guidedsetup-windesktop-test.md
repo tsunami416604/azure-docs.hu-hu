@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: d333f8ecd7e1044575f570d893227f9dcb394974
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: ac4f826ed1d27ee39d8e35605a3baa7f94b33e64
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843341"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "50035321"
 ---
 ## <a name="test-your-code"></a>Tesztelheti a kódját
 
@@ -29,14 +29,16 @@ Futtassa a projektet a Visual Studióban, válassza a **F5**. Az alkalmazás **M
 
 Az első alkalommal futtatja az alkalmazást, és válassza ki a **Microsoft Graph API meghívása** gomb a kéri, jelentkezzen be. Használja az Azure Active Directory-fiókkal (munkahelyi vagy iskolai fiók) vagy Microsoft-fiókkal (live.com, Outlook.com-os) teszteléséhez.
 
-![Jelentkezzen be az alkalmazás](./media/active-directory-develop-guidedsetup-windesktop-test/signinscreenshot.png)
+![Bejelentkezés az alkalmazásba](./media/active-directory-develop-guidedsetup-windesktop-test/signinscreenshot.png)
 
 ### <a name="provide-consent-for-application-access"></a>Alkalmazás-hozzáférési hozzájárulás megadása
-Először jelentkezik be az alkalmazás is kéri, adja meg, beleegyezik, hogy az alkalmazás érhető el a profil, és itt látható módon a szolgáltatásba: 
+
+Először jelentkezik be az alkalmazás is kéri, adja meg, beleegyezik, hogy az alkalmazás érhető el a profil, és itt látható módon a szolgáltatásba:
 
 ![Adja meg az Ön hozzájárul az alkalmazás-hozzáférés](./media/active-directory-develop-guidedsetup-windesktop-test/consentscreen.png)
 
 ### <a name="view-application-results"></a>Kérelem eredményének megtekintése
+
 Miután bejelentkezett, megjelenik a profilok adatainak a Microsoft Graph API-hívás által visszaadott. Az eredmények megjelennek a **API-hívási eredmények** mezőbe. Alapvető információkat szeretne a jogkivonatot, amely a hívást keresztül szerezték be `AcquireTokenAsync` vagy `AcquireTokenSilentAsync` meg fognak jelenni a **Tártoken adatainak** mezőbe. Az eredmények az alábbi tulajdonságokat tartalmazzák:
 
 |Tulajdonság  |Formátum  |Leírás |
@@ -51,7 +53,7 @@ Miután bejelentkezett, megjelenik a profilok adatainak a Microsoft Graph API-h�
 
 A Microsoft Graph API megköveteli a *user.read* hatókörrel, hogy a felhasználói profil olvasása. Minden alkalmazás, amely regisztrálva van az alkalmazásregisztrációs portálon alapértelmezés szerint automatikusan megjelenik az ebben a hatókörben. Egyéb Microsoft Graph API-k, valamint a egyéni API-k, a háttér-kiszolgáló további hatókörökkel lehet szükség. A Microsoft Graph API megköveteli a *Calendars.Read* hatókörrel, hogy a felhasználók naptáraiban listázása.
 
-A felhasználók naptáraiban keretén belül egy alkalmazás eléréséhez, adja hozzá a *Calendars.Read* delegált engedéllyel az alkalmazás regisztrációs adatok. Adja hozzá a *Calendars.Read* a hatókört a `acquireTokenSilent` hívja. 
+A felhasználók naptáraiban keretén belül egy alkalmazás eléréséhez, adja hozzá a *Calendars.Read* delegált engedéllyel az alkalmazás regisztrációs adatok. Adja hozzá a *Calendars.Read* a hatókört a `acquireTokenSilent` hívja.
 
 >[!NOTE]
 >A felhasználó további címtárbérlőhöz hatókörök számának növelésével kérheti.

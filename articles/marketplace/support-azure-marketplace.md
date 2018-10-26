@@ -14,15 +14,17 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 884432d5604868ad2307a7d7ababa3e5a004a982
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 9af0a8cc8e1e0cd57aa3baf79bbe5a552aa2ef12
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854065"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087590"
 ---
 # <a name="support-for-the-marketplace"></a>A Marketplace-en támogatása  
-A támogatási lehetőségeket a Marketplace-en.  
+Íme a Marketplace-en támogatási lehetőségek listája.  
+
+Ezenkívül kaphat kérdéseire számos a [C + AI közösségi fórum a Marketplace-en csatorna](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222).  
 
 ## <a name="onboarding"></a>Előkészítés
 

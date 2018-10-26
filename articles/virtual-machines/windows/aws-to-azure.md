@@ -1,6 +1,6 @@
 ---
-title: A Windows AWS virtuális gépek áthelyezése az Azure-bA |} Microsoft Docs
-description: Az Amazon Web Services (AWS) EC2 Windows példány az Azure virtuális gépek Azure PowerShell használatával.
+title: A Windows az AWS-beli virtuális gépek áthelyezése az Azure-bA |} A Microsoft Docs
+description: Az Amazon Web Services (AWS) EC2 Windows-példány áthelyezése az Azure virtuális gépként.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,57 +15,57 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: cb5b68e7bd0a1b247327e7147fe38eae19395f50
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3fa890b02c791f26f3f25bf2418b105d1116ca75
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726533"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094426"
 ---
-# <a name="move-a-windows-vm-from-amazon-web-services-aws-to-azure-using-powershell"></a>Az Amazon Web Services (AWS) a Windows virtuális gépek áthelyezése az Azure PowerShell használatával
+# <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Windows virtuális gép az Amazon Web Services (AWS) Azure virtuális gép áthelyezése
 
-Ha éppen kipróbálja az Azure virtuális gépek a munkaterhelések, meglévő Amazon Web Services (AWS) EC2 Windows Virtuálisgép-példány exportálása, majd a virtuális merevlemez (VHD) feltöltése az Azure-bA. A VHD-t a feltöltést követően létrehozhat egy új virtuális gép az Azure virtuális merevlemezről. 
+Ha éppen kipróbálja az Azure virtual machines, a számítási feladatok futtatásához, meglévő Amazon Web Services (AWS) EC2 Windows VM-példány exportálása, majd töltse fel a virtuális merevlemez (VHD) az Azure-bA. Miután feltöltötte a VHD-t, létrehozhat egy új virtuális Gépet az Azure-ban a VHD-ből. 
 
-Ez a cikk ismerteti, egyetlen virtuális gép áthelyezése AWS az Azure-bA. Ha az áthelyezni kívánt virtuális gépeket az AWS Azure léptékű, lásd: [Amazon Web Services (AWS) virtuális gépek áttelepítése az Azure-bA az Azure Site Recovery](../../site-recovery/site-recovery-migrate-aws-to-azure.md).
+Ez a cikk ismerteti, hogy egyetlen virtuális gép áthelyezése az AWS-től az Azure-bA. Ha az áthelyezni kívánt virtuális gépeket az AWS-től az Azure-bA ipari méretekben, [az Amazon Web Services (AWS) virtuális gépek áttelepítése az Azure-bA az Azure Site Recovery](../../site-recovery/site-recovery-migrate-aws-to-azure.md).
 
 ## <a name="prepare-the-vm"></a>A virtuális gép előkészítése 
  
-Általános és a speciális virtuális merevlemezek feltöltheti az Azure-bA. Egyes elő kell készíteni a virtuális gép AWS exportálása előtt. 
+Általános és a specializált virtuális merevlemezek tölthet fel az Azure-bA. Minden egyes szükséges, hogy az AWS-től exportálása előtt készítse elő a virtuális gép. 
 
-- **Virtuális merevlemez általánosítva** -általánosított virtuális Merevlemezt volt-e az összes személyes fiókadatait a Sysprep segítségével távolítja el. Ha azt tervezi, a virtuális merevlemez használata képként az új virtuális gépek létrehozásához, a következőket: 
+- **Általános virtuális Merevlemezből** -általánosított virtuális merevlemez esetében minden személyes fiókadatot a Sysprep segítségével távolítja el. Ha szeretne használni a virtuális merevlemez képként hozhat létre az új virtuális gépeket, a következőket kell elvégeznie: 
  
-    * [A Windows virtuális gép előkészítése](prepare-for-upload-vhd-image.md).  
-    * A virtuális gépet a Sysprep használatával generalize.  
+    * [Egy Windows virtuális gép előkészítése](prepare-for-upload-vhd-image.md).  
+    * A Sysprep használata virtuális gép általánosítása.  
 
  
-- **Virtuális merevlemez kifejezetten** -speciális virtuális merevlemez kezeli a felhasználói fiókok, alkalmazások és az eredeti virtuális gép más állapotba adatait. Ha szeretne használni, mint a VHD-t hozzon létre egy új virtuális Gépet, győződjön meg arról, a következő lépéseket.  
-    * [Az Azure-bA feltölteni egy Windows virtuális merevlemez előkészítése](prepare-for-upload-vhd-image.md). **Ne** generalize a virtuális Gépet a Sysprep használata. 
-    * Távolítsa el a Vendég virtualizációs eszközök és a virtuális Gépre (azaz a VMware-eszközök) telepített ügynökök. 
-    * Győződjön meg arról, a virtuális Géphez való lekérésére, az IP-cím és DNS-beállítások DHCP van konfigurálva. Ez biztosítja, hogy a kiszolgáló a Vneten belül egy IP-címet kap, indításkor.  
+- **Specializált virtuális merevlemez** – egyéni VHD kezeli a felhasználói fiókok, alkalmazások és más állapot adatait az eredeti virtuális gépről. Ha szeretne használni, mint a VHD-t hozzon létre egy új virtuális Gépet, győződjön meg arról, a következő lépéseket.  
+    * [Töltse fel az Azure Windows virtuális merevlemez előkészítése](prepare-for-upload-vhd-image.md). **Ne** a Sysprep használata virtuális gép általánosítása. 
+    * A Vendég virtualizációs eszközök és a virtuális gépen (azaz a VMware-eszközök) telepített ügynökök eltávolítása. 
+    * Győződjön meg arról, kérje le az IP-cím és DNS-beállítások a DHCP-n keresztül a virtuális gép van konfigurálva. Ez biztosítja, hogy a kiszolgáló a virtuális hálózaton belül egy IP-címet kap, indításkor.  
 
 
-## <a name="export-and-download-the-vhd"></a>Exportálni, és töltse le a virtuális merevlemez 
+## <a name="export-and-download-the-vhd"></a>Exportálás, és töltse le a VHD-t 
 
-Exportálja a EC2 példány az Amazon S3 gyűjtő a virtuális merevlemez. Kövesse az Amazon dokumentációcikkhez [exportálása egy példányát, a virtuális gép használatával virtuális gép importálási/exportálási](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) , és futtassa a [-példány-export-feladat létrehozása](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) parancs a EC2 példány exportálni egy VHD-fájlt. 
+Exportálja az EC2-példánynak az Amazon S3 gyűjtőt a virtuális merevlemez. Az Amazon dokumentációs cikk lépéseit követve [exportálása egy példányt, mint egy virtuális gép használata virtuális gép importálási/exportálási](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) , és futtassa a [-példány-export-feladat létrehozása](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) EC2-példány egy VHD-fájl exportálása parancsot. 
 
-Az Amazon S3 gyűjtő megadja az exportált VHD-fájl kerül. Alapvető szintaxisa a VHD exportálása nem éri el, az imént cserélje le a helyőrző szöveget <brackets> a adatokkal.
+A megadott Amazon S3 gyűjtő rendszer menti az exportált VHD-fájl. Az alapszintű szintaxistól exportálása a VHD-t az alábbi érték csak cserélje le a helyőrző szöveget <brackets> adataival.
 
 ```
 aws ec2 create-instance-export-task --instance-id <instanceID> --target-environment Microsoft \
   --export-to-s3-task DiskImageFormat=VHD,ContainerFormat=ova,S3Bucket=<bucket>,S3Prefix=<prefix>
 ```
 
-A VHD exportálása után kövesse az utasításokat [hogyan tegye le az objektum az az S3 gyűjtő?](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html) töltheti le a VHD-fájlt a S3 gyűjtő. 
+Miután exportálta a VHD-t, kövesse a [Hogyan tölthetem le egy objektumot, egy S3 gyűjtőt?](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html) töltheti le a VHD-fájlt az S3 gyűjtőt. 
 
 > [!IMPORTANT]
-> AWS díjak adatátvitel díjak letöltéséhez a VHD-t. Lásd: [Amazon S3 árképzési](https://aws.amazon.com/s3/pricing/) további információt.
+> Az AWS díjak adatátviteli díjak letöltéséhez a VHD-t. Lásd: [Amazon S3 díjszabás](https://aws.amazon.com/s3/pricing/) további információt.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Most a virtuális merevlemez feltöltése az Azure-ba, és hozzon létre egy új virtuális Gépet. 
+Most töltse fel a VHD-t az Azure-ba, és hozzon létre egy új virtuális Gépet. 
 
-- Ha a forrást a Sysprep futtatása **generalize** azt az exportálás előtt tekintse meg [egy általánosított virtuális merevlemez feltöltéséhez, és annak segítségével hozzon létre egy új virtuális gépek Azure-ban](upload-generalized-managed.md)
-- A Sysprep futtatása exportálása előtt, ha a virtuális merevlemez tekinthető **speciális**, lásd: [speciális virtuális merevlemez feltöltése az Azure-ba, és hozzon létre egy új virtuális Gépet](create-vm-specialized.md)
+- Ha a forrás a Sysprep **generalize** azt exportálásakor, lásd: [általános VHD feltöltése és ezzel hozzon létre egy új virtuális gépeket az Azure-ban](upload-generalized-managed.md)
+- Ha nem futtatta a Sysprep exportálása előtt, a VHD-t számít **speciális**, lásd: [egyéni VHD feltöltése az Azure-ba, és a egy új virtuális gép létrehozása](create-vm-specialized.md)
 
  

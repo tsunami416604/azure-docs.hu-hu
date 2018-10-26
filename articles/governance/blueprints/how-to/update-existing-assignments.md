@@ -4,16 +4,16 @@ description: További információ az Azure-tervek a meglévő hozzárendelések
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: ecac0fb21a6691874d5e8db49eadd7114d41845f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2c9f660e54da50e32ce1d0dc43b0efeacd643c57
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956200"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093785"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Egy meglévő tervezet-hozzárendelés frissítése
 
@@ -25,11 +25,11 @@ A tervezet hozzárendelésekor a hozzárendelés lehet frissíteni. A meglévő 
 
 ## <a name="updating-assignments"></a>Hozzárendelések frissítése
 
-1. Indítsa el az Azure-tervek szolgáltatás az Azure Portalon kattintson a **minden szolgáltatás** keresése és kiválasztása **házirend** a bal oldali panelen. Az a **házirend** lapon **tervezetek**.
+1. Kattintson a **minden szolgáltatás** keresése és kiválasztása **házirend** a bal oldali panelen. Kattintson a **Szabályzat** oldal **Tervek** elemére.
 
-1. Válassza ki **hozzárendelt tervezetek** a lap bal oldalán.
+1. Válassza a **Hozzárendelt tervek** lehetőséget a lap bal oldalán.
 
-1. Tervezetek listájában kattintson a bal gombbal a tervezet-hozzárendelést, és kattintson a **frissítési hozzárendelés** gombra, vagy kattintson a jobb gombbal a tervezet-hozzárendelést, és válassza ki **frissítési hozzárendelés**.
+1. Tervezetek listájában bal kattintással a tervezet-hozzárendelést. Kattintson a **frissítési hozzárendelés** gombra, vagy kattintson a jobb gombbal a tervezet-hozzárendelést, és válassza ki **frissítési hozzárendelés**.
 
    ![Frissítési hozzárendelés](../media/update-existing-assignments/update-assignment.png)
 
@@ -45,27 +45,31 @@ A tervezet hozzárendelésekor a hozzárendelés lehet frissíteni. A meglévő 
 
 ## <a name="rules-for-updating-assignments"></a>Szabályok hozzárendeléseinek frissítése folyamatban van
 
-A központi telepítés a frissített hozzárendelések néhány fontos szabályokat követi. Ezek a szabályok határozzák meg, mi történik, a kért változtatás és összetevő erőforrás folyamatban típusától függően egy meglévő erőforrásnak telepíteni vagy frissíteni.
+A központi telepítés a frissített hozzárendelések néhány fontos szabályokat követi. Ezek a szabályok határozzák meg, mi történik, a már telepített erőforrásokhoz. A kért változtatás és a telepített vagy a frissített összetevő erőforrás típusa, határozza meg, hogy mely műveleteket hajtja végre.
 
 - Szerepkör-hozzárendelések
-  - Ha a szerepkör vagy a szerepkör assignee (felhasználó, csoport vagy alkalmazás) megváltozik, akkor egy új szerepkör-hozzárendelés jön létre. A korábban telepített szerepkör-hozzárendelést a helyén marad.
+  - Ha a szerepkör vagy a szerepkör assignee (felhasználó, csoport vagy alkalmazás) megváltozik, akkor egy új szerepkör-hozzárendelés jön létre. Szerepkör-hozzárendelések korábban már telepítette a helyükön maradnak.
 - Szabályzat-hozzárendelések
   - Ha módosítják a szabályzat-hozzárendelés paramétereit, a meglévő hozzárendelést frissül.
-  - Ha módosítják a szabályzat-hozzárendelés definíciója, létrejön egy új szabályzat-hozzárendelést. A korábban telepített szabályzat-hozzárendelés a helyén marad.
-  - Ha a házirend-hozzárendelési összetevője a tervezet eltávolítják, a korábban telepített szabályzat-hozzárendelés a helyén marad.
+  - Ha a szabályzat-hozzárendelés definíciója megváltozott, létrejön egy új szabályzat-hozzárendelés. Szabályzat-hozzárendelések korábban már telepítette a helyükön maradnak.
+  - Ha a házirend-hozzárendelési összetevője a tervezet eltávolítják, telepített szabályzat-hozzárendelések a helyükön maradnak.
 - Azure Resource Manager-sablonok
-  - A sablon Resource Managerrel, dolgoz fel egy **PUT**. Szerint egyes erőforrástípusok ez másképp kezeli, tekintse át az egyes belefoglalt erőforrást annak megállapításához, mikor fusson a tervek szerint ez a művelet hatása a dokumentációban.
+  - A sablon Resource Managerrel, dolgoz fel egy **PUT**. Egyes erőforrástípusok másképp kezeli ezt a műveletet, mert tekintse át az egyes belefoglalt erőforrást annak megállapításához, mikor fusson a tervek szerint ez a művelet hatása a dokumentációban.
 
 ## <a name="possible-errors-on-updating-assignments"></a>Hozzárendeléseinek frissítése folyamatban van a lehetséges hibák
 
-Hozzárendelések frissítése esetén lehetséges szünet, ha a végrehajtott módosításokat. Ilyen például a már telepítése után megváltoztatja az erőforráscsoport helyét. Minden olyan változás által támogatott [Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md) arról is, de bármelyik módosíthatja, hogy lenne az Azure Resource Manager hibát eredményez is eredményez a hozzárendelés sikertelen.
+Hozzárendelések frissítése esetén lehetséges szünet, ha a végrehajtott módosításokat. Példa már telepítése után megváltoztatja az erőforráscsoport helyét. Minden olyan változás által támogatott [Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md) arról is, de bármelyik módosíthatja, hogy lenne az Azure Resource Manager hibát eredményez is eredményez a hozzárendelés sikertelen.
 
-Nincs korlátozva a hozzárendelés egy hány alkalommal frissíthetők. Így ha hiba lép fel, vagy egy hibás paramétert, már meglévő objektum vagy egy módosítása nem engedélyezett az Azure Resource Manager miatt határozza meg a hiba, és győződjön meg arról, egy másik frissítés, a hozzárendeléshez.
+Nincs korlátozva a hozzárendelés egy hány alkalommal frissíthetők. Hiba esetén határozza meg a hiba, és győződjön meg arról, egy másik frissítés, a hozzárendeléshez.  Példaforgatókönyvek hiba:
+
+- Hibás paraméter
+- Egy már meglévő objektum
+- Nem támogatott az Azure Resource Manager által módosítása
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [tervezetet életciklus](../concepts/lifecycle.md)
-- Megtudhatja, hogyan használja [statikus és dinamikus paraméterek](../concepts/parameters.md)
-- Ismerje meg, szabhatja testre a [tervezetet alkalmazás-előkészítés sorrend](../concepts/sequencing-order.md)
-- Ismerje meg, győződjön meg arról, hogyan használhatja az [tervezetet erőforrás zárolása](../concepts/resource-locking.md)
-- A tervrajz hozzárendelésének során felmerülő problémák megoldása [általános hibaelhárítási](../troubleshoot/general.md)
+- Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md)
+- A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása
+- A [tervekkel kapcsolatos műveleti sorrend](../concepts/sequencing-order.md) testreszabásának elsajátítása
+- A [tervek erőforrás-zárolásának](../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek
+- A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md)

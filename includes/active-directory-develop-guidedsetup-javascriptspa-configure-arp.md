@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: c2b86e79f0364ee84e01fee5e9837db5a6b618a2
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 66021fa8140da2faae4ecab07c98b0df4ea5297a
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843395"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50098004"
 ---
 ## <a name="add-the-applications-registration-information-to-your-app"></a>Az alkalmazás regisztrációs adatok hozzáadása az alkalmazáshoz
 
@@ -29,12 +29,11 @@ Ebben a lépésben azt kell átirányítási URL-címe az alkalmazás regisztrá
 
 Konfigurálja a `Redirect URL` az index.html oldalon, a webkiszolgáló-alapú URL-mezőt, majd kattintson a *frissítés*.
 
-
 > #### <a name="visual-studio-instructions-for-obtaining-the-redirect-url"></a>A Visual Studio utasításokat az átirányítási URL-cím beszerzése
 > Kövesse az alábbi lépéseket az átirányítási URL-cím:
-> 1.    A **Megoldáskezelőben**, válassza ki a projektet, és tekintse meg a **tulajdonságok** ablak. Ha nem látja a **tulajdonságok** ablakban, majd nyomja le a **F4**.
-> 2.    Másolja az értéket a **URL-cím** a vágólapra:<br/> ![Projekt tulajdonságai](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)<br />
-> 3.    Illessze be az értéket, egy **átirányítási URL-cím** ezt oldal felső részén kattintson a **Update**
+> 1. A **Megoldáskezelőben**, válassza ki a projektet, és tekintse meg a **tulajdonságok** ablak. Ha nem látja a **tulajdonságok** ablakban, majd nyomja le a **F4**.
+> 2. Másolja az értéket a **URL-cím** a vágólapra:<br/> ![Projekt tulajdonságai](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)<br />
+> 3. Illessze be az értéket, egy **átirányítási URL-cím** tetején ezt oldal, és válassza **frissítés**.
 
 <p/>
 
@@ -44,7 +43,7 @@ Konfigurálja a `Redirect URL` az index.html oldalon, a webkiszolgáló-alapú U
 
 ### <a name="configure-your-javascript-spa-application"></a>A JavaScript SPA-alkalmazás konfigurálása
 
-1.  Az a `index.html` projekt beállítása során létrehozott fájlt, adja hozzá az alkalmazás regisztrációs adatok. Adja meg a következő kódot a felül található a `<script></script>` címkék törzsében a `index.html` fájlt:
+1. Az a `index.html` projekt beállítása során létrehozott fájlt, adja hozzá az alkalmazás regisztrációs adatok. Adja meg a következő kódot a felül található a `<script></script>` címkék törzsében a `index.html` fájlt:
 
 ```javascript
 var applicationConfig = {

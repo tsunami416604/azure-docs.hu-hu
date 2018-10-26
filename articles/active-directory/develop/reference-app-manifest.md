@@ -13,20 +13,34 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 10/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: bc7999d56da8398b4f54b0144a595ee7c2e2ea35
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 372bff911c0925e05297872da66279e727149010
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115110"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086777"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Az Azure Active Directory-manifest aplikace
 
-Alkalmazások integrálása az Azure Active Directory (Azure AD) az Azure AD-bérlő regisztrálva kell lennie. Beállíthatja, hogy az alkalmazás a [az Azure portal](https://portal.azure.com) kiválasztásával **alkalmazásregisztrációk** alatt **Azure Active Directory**, szeretne konfigurálni, az alkalmazás kiválasztása, majd kiválasztásával **Manifest**.
+Az application manifest tartalmaz egy alkalmazás objektum a Microsoft identity platform összes attribútum definíciója. Azt is az alkalmazásobjektum frissítési mechanizmusként szolgál. Az Application entitással és annak sémájával kapcsolatos további információkat [a Graph API alkalmazás entitásdokumentációjában](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity) találja.
+
+Az alkalmazás attribútumok az Azure Portalon vagy programozott módon, a Microsoft Graph segítségével konfigurálhatja. Vannak azonban bizonyos forgatókönyvek, ahol kell az alkalmazásjegyzék konfigurálása az alkalmazás-attribútum szerkesztése. Ezek a forgatókönyvek a következőket biztosítják:
+
+* Ha regisztrálta az alkalmazást, az Azure AD több-bérlős és a személyes Microsoft-fiókok, a támogatott Microsoft-fiókok a felhasználói felületen nem módosítható. Ehelyett az alkalmazásjegyzék-szerkesztőben kell használnia a támogatott fiók típusának módosítását.
+* Engedélyek és szerepkörök, amelyek az alkalmazás támogatja-e meghatározására van szüksége, ha módosítania kell az alkalmazásjegyzékben.
+
+## <a name="configure-the-app-manifest"></a>Az alkalmazásjegyzék konfigurálása
+
+Az alkalmazásjegyzék konfigurálása:
+
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com).
+1. Válassza ki a **Azure Active Directory** szolgáltatásra, és válassza ki **alkalmazásregisztrációk** vagy **alkalmazásregisztrációk (előzetes verzió)**.
+1. Válassza ki a konfigurálni kívánt alkalmazást.
+1. Az alkalmazás **áttekintése** lapon válassza ki a **Manifest** szakaszban. Megnyílik egy webalapú alkalmazásjegyzék-szerkesztőben, lehetővé téve, hogy a portálon a jegyzékfájl szerkesztése. Igény szerint kiválaszthatja **letöltése** helyileg a jegyzékfájl szerkesztése, és ezután **feltöltése** szeretne újból alkalmazni, az alkalmazásnak.
 
 ## <a name="manifest-reference"></a>Jegyzékfájl referencia
 
@@ -63,7 +77,7 @@ Alkalmazások integrálása az Azure Active Directory (Azure AD) az Azure AD-bé
 | `requiredResourceAccess` | A tömb típusa | A dinamikus hozzájárulásával `requiredResourceAccess` meghajtók, a rendszergazdai jóváhagyási felületen és a felhasználói jóváhagyási felületen statikus hozzájárulási használó felhasználók számára. Azonban ez nem a meghajtó a felhasználói jóváhagyási felületen az Általános eset.<br>`resourceAppId` az egyedi azonosítója az erőforrást, az alkalmazás hozzáférésre van szüksége van. Ezt az értéket megadva a cél erőforrás-alkalmazás alkalmazásazonosítója egyenlőnek kell lennie.<br>`resourceAccess` van egy tömb, amely felsorolja a OAuth2.0-engedélyhatókörök, és az alkalmazás a megadott erőforrás igénylő alkalmazás-szerepkörök. Tartalmazza a `id` és `type` értékeket a megadott erőforrások. | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"resourceAppId":"00000002-0000-0000-c000-000000000000",<br>&nbsp;&nbsp;&nbsp;&nbsp;"resourceAccess":[<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id":"311a71cc-e848-46a1-bdf8-97ff7156d8e6",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type":"Scope"<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;]<br>&nbsp;&nbsp;}<br>] </code> |
 | `samlMetadataUrl` | sztring | Az alkalmazás SAML-metaadataira mutató URL-címe. | `https://MyRegisteredAppSAMLMetadata` |
 | `signInUrl` | sztring | Adja meg az URL-cím, az alkalmazás kezdőlapjára. | `https://MyRegisteredApp` |
-| `signInAudience` | sztring | Itt adhatja meg, milyen microsoft-fiókok az aktuális alkalmazás használata támogatott. Támogatott értékei a következők:<ul><li>**AzureADMyOrg** – a Microsoft a felhasználók munkahelyi vagy iskolai fiók a szervezet Azure AD-bérlőben (azaz egybérlős)</li><li>**AzureADMultipleOrgs** – a Microsoft a felhasználók munkahelyi vagy iskolai fiók bármely szervezet az Azure AD-bérlőben (azaz több bérlős)</li> <li>**AzureADandPersonalMicrosoftAccount** -felhasználók személyes Microsoft-fiókkal vagy egy munkahelyi vagy iskolai fiókot bármely szervezet az Azure AD-bérlőben</li></ul> | `AzureADandPersonalMicrosoftAccount` |
+| `signInAudience` | sztring | Itt adhatja meg, milyen Microsoft-fiókok az aktuális alkalmazás használata támogatott. Támogatott értékei a következők:<ul><li>**AzureADMyOrg** – a Microsoft a felhasználók munkahelyi vagy iskolai fiók a szervezet Azure AD-bérlőben (azaz egybérlős)</li><li>**AzureADMultipleOrgs** – a Microsoft a felhasználók munkahelyi vagy iskolai fiók bármely szervezet az Azure AD-bérlőben (azaz több bérlős)</li> <li>**AzureADandPersonalMicrosoftAccount** -felhasználók személyes Microsoft-fiókkal vagy egy munkahelyi vagy iskolai fiókot bármely szervezet az Azure AD-bérlőben</li></ul> | `AzureADandPersonalMicrosoftAccount` |
 | `tags` | Karakterlánc-tömbben | Egyéni karakterláncok kategorizálásához és az alkalmazás azonosításához használható. | <code>[<br>&nbsp;&nbsp;"ProductionApp"<br>]</code> |
 
 ## <a name="next-steps"></a>További lépések

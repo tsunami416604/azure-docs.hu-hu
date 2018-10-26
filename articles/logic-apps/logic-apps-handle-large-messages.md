@@ -14,18 +14,18 @@ ms.tgt_pltfrm: ''
 ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
-ms.openlocfilehash: e6ac6a4aa46feb768df437ff9d5969b2b41092c3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 5aa5ea2a39a0fb9f969e965fed14063522197cda
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041645"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085798"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Az Azure Logic Apps darabolás nagyméretű üzenetek kezelése
 
 Üzenetek kezelése, korlátozza a Logic Apps és az üzenet tartalma a maximális méretet. Ez a korlátozás segít a terhelés csökkentése érdekében tárolására és feldolgozására a nagy méretű üzenetek által létrehozott. Ennél nagyobb üzenetek kezeléséhez, a Logic Apps is *adattömbök* egy nagy méretű üzenetek kisebb üzenetbe. Ily módon továbbra is átadhatja a Logic Apps használatával meghatározott feltételek mellett nagy méretű fájlok. Ha más szolgáltatások összekötők vagy HTTP használatával kommunikál, a Logic Apps felhasználhatja a nagy méretű üzenetek, de *csak* az adattömböket. Ez az állapot azt jelenti, hogy a összekötők is támogatnia kell a darabolás, vagy az alapul szolgáló Logic Apps és a szolgáltatások közötti HTTP üzenet exchange darabolás kell használnia.
 
-Ez a cikk bemutatja, hogyan állíthatja darabolás üzeneteket, amelyek nagyobbak, mint a korlát támogatása.
+Ez a cikk bemutatja, hogyan állíthatja darabolás üzeneteket, amelyek nagyobbak, mint a korlát kezelési műveletek esetében. Logikaialkalmazás-triggerek nem támogatják a darabolás miatt a nagyobb, több üzenetváltásokban a terhelése. 
 
 ## <a name="what-makes-messages-large"></a>"Nagy" teszi üzenetek?
 

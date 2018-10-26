@@ -14,17 +14,18 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: e7b97d0d4489544275436b8048ca033480d53c59
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: dd74736734caddfcfb32a74a073e649c144abeb3
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48842870"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50097956"
 ---
 ## <a name="add-the-applications-registration-information-to-your-app"></a>Az alkalmazás regisztrációs adatok hozzáadása az alkalmazáshoz
+
 Ebben a lépésben kell hozzáadnia az alkalmazásazonosítót a projekthez.
 
-1.  Nyissa meg `App.xaml.cs` , és cserélje le a sort tartalmazó a `ClientId` együtt:
+1. Nyissa meg `App.xaml.cs` , és cserélje le a sort tartalmazó a `ClientId` együtt:
 
 ```csharp
 private static string ClientId = "[Enter the application Id here]";

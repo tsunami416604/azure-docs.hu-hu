@@ -1,6 +1,6 @@
 ---
-title: SQL-adatbázisok használata Azure veremben |} Microsoft Docs
-description: Ismerje meg, hogyan telepítheti az SQL-adatbázisok Azure verem és a Gyorsműveletek központi telepítése az SQL Server erőforrás-szolgáltató adapter szolgáltatásként.
+title: SQL-adatbázisok használata az Azure Stackben |} A Microsoft Docs
+description: Ismerje meg, hogyan telepítheti az SQL-adatbázisok szolgáltatásként az Azure Stack és az első lépéseket az SQL Server erőforrás-szolgáltató adapter üzembe helyezéséhez.
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,42 +11,39 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/21/2018
+ms.date: 10/25/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: 55d0e51606e8768a01c0b5a7766dbafe24d97a0d
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.reviewer: quying
+ms.openlocfilehash: 3d608843ef31a1ed665fcb1fd90b822f34f77fdd
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36307825"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086352"
 ---
-# <a name="use-sql-databases-on-microsoft-azure-stack"></a>SQL-adatbázis használata a Microsoft Azure veremben
+# <a name="use-sql-databases-on-microsoft-azure-stack"></a>Az SQL Database használata a Microsoft Azure Stackhez
 
-A használatára az SQL Server erőforrás szolgáltató API teszi közzé az SQL-adatbázisok a szolgáltatásként [Azure verem](azure-stack-poc.md). Az erőforrás-szolgáltató telepítése, és csatlakoztassa egy vagy több SQL Server-példányokat, után és a felhasználók hozhat létre:
+Az SQL Server erőforrás-szolgáltató adapter használatával, szolgáltatásként nyújtott SQL Database-adatbázisok [Azure Stack](azure-stack-poc.md). Miután telepítette az erőforrás-szolgáltató, és csatlakoztathatja azt egy vagy több SQL Server-példányt, és a felhasználók hozhat létre:
 
-- Adatbázisok natív felhőalapú alkalmazásokhoz.
+- A natív felhőalkalmazások adatbázisok.
 - SQL használó webhelyekhez.
 - SQL használó munkaterhelések.
 
-Az erőforrás-szolgáltató nem adja meg az adatbázis felügyeleti képességek a [Azure SQL Database](https://azure.microsoft.com/services/sql-database/). Például, hogy automatikusan erőforrásokat rugalmas készletek nem támogatottak. Azonban hasonló erőforrás-szolgáltató támogatja létrehozása, olvasása, frissítése és Törlés (CRUD) típusú műveletek az SQL Server-adatbázis. Az erőforrás-szolgáltató API kapcsolatos további információkért lásd: [Windows Azure Pack SQL Server erőforrás szolgáltató REST API-referencia](https://msdn.microsoft.com/library/dn528529.aspx).
-
->[!NOTE]
-Az SQL Server erőforrás-szolgáltató API nem kompatibilis az Azure SQL Database.
+Az erőforrás-szolgáltató nem biztosít a összes adatbázis-kezelési képességek [Azure SQL Database](https://azure.microsoft.com/services/sql-database/). Ha például automatikusan lefoglalni az erőforrásokat, rugalmas készletek nem támogatottak. Azonban hasonló erőforrás-szolgáltató támogatja létrehozása, olvasása, frissítése és törlése az SQL Server-adatbázis (CRUD) műveleteket. 
 
 ## <a name="sql-resource-provider-adapter-architecture"></a>SQL erőforrás-szolgáltató adapter architektúrája
 
 Az erőforrás-szolgáltató a következő összetevőkből áll:
 
-- **Az SQL erőforrás szolgáltató adapter virtuális gép (VM)**, vagyis a szolgáltató-szolgáltatásokat futtató Windows Server virtuális gép.
-- **Az erőforrás-szolgáltató**, amely feldolgozza a kérelmeket, és hozzáférések adatbázis-erőforrásokat.
-- **SQL Server kiszolgálók**, adatbázisok kapacitást nyújt üzemeltetési kiszolgáló neve.
+- **Az SQL resource provider adapter virtuális gép (VM)**, azaz a szolgáltató-szolgáltatásokat futtató Windows Server virtuális gép.
+- **Az erőforrás-szolgáltató**, amely feldolgozza a kérelmeket, és azt adatbázis-erőforrás.
+- **SQL Servert futtató kiszolgálók**, üzemeltetési kiszolgáló adatbázis-kapacitást biztosítanak, amelyek neve.
 
-Létre kell hoznia legalább egy példányát az SQL Server vagy külső SQL Server-példányokat hozzáférést biztosítanak.
+Létre kell hoznia legalább egy SQL Server példányát, vagy külső SQL Server-példányok eléréséhez.
 
 > [!NOTE]
-> Üzemeltető kiszolgálók Azure verem telepített integrált rendszerek bérlői előfizetéssel kell létrehozni. Az alapértelmezett szolgáltató előfizetésből nem hozhatók létre. A bérlői portálon vagy a PowerShell használatával a megfelelő bejelentkezés objektumokat létre kell hozni. Minden üzemeltetési kiszolgáló számlázható virtuális gépeket, és rendelkeznie kell licencekkel. A szolgáltatás-rendszergazdát a bérlő előfizetés tulajdonosának lehet.
+> Üzemeltető kiszolgálók telepített Azure Stack integrált rendszerek kell létrehozni egy bérlő előfizetésből. Az alapértelmezett szolgáltatója előfizetésből nem hozhatók létre. Ezek a bérlői portálon vagy a megfelelő bejelentkezési a PowerShell használatával kell létrehozni. Minden üzemeltetési kiszolgáló számlázható virtuális gépeket, és rendelkeznie kell licencekkel. A szolgáltatás-rendszergazda lehet a bérlő előfizetés tulajdonosa.
 
 ## <a name="next-steps"></a>További lépések
 
-[Az erőforrás-szolgáltató SQL Server telepítése](azure-stack-sql-resource-provider-deploy.md)
+[Az SQL Server erőforrás-szolgáltató üzembe helyezése](azure-stack-sql-resource-provider-deploy.md)

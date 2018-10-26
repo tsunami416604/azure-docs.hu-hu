@@ -1,5 +1,5 @@
 ---
-title: A virtuális gépek ismert problémák az Azure Monitor |} A Microsoft Docs
+title: Az Azure Monitor a virtuális gépek (előzetes verzió) szolgáltatás ismert problémái |} A Microsoft Docs
 description: A virtuális gépek az Azure Monitor egy olyan megoldás, az Azure-ban, amely egyesíti az állapotának és teljesítményének figyelése az Azure virtuális gép operációs rendszerének, valamint alkalmazás-összetevők és az egyéb erőforrások függőségeinek automatikus felderítése, és feltérképezi a közötti kommunikációt őket. Ez a cikk ismerteti az ismert problémákat.
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 6d1f1d1ae07ec32262f655fd6ed7205a70e252f4
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: eba9e26f12fd9e1862727adec4f8c8f594e8f659
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385091"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091674"
 ---
-# <a name="known-issues-with-azure-monitor-for-vms"></a>A virtuális gépek az Azure Monitor szolgáltatással kapcsolatos ismert problémák
+# <a name="known-issues-with-azure-monitor-for-vms-preview"></a>A virtuális gépek (előzetes verzió) az Azure Monitor szolgáltatással kapcsolatos ismert problémák
 
 Az alábbi ismert problémák az Azure monitor az állapotfigyelő szolgáltatás a virtuális gépek:
 

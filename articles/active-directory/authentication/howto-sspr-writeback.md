@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 57446f068945d74351a77f21e16874d9e24ddcab
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: e8a09a9fc87bff692b5d5b4c54f87839f2591b63
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801930"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086947"
 ---
 # <a name="how-to-configure-password-writeback"></a>Útmutató: A jelszóvisszaírás konfigurálása
 
@@ -72,13 +72,14 @@ Ha ezeket az engedélyeket, az egyes erdők MA-szolgáltatásfiókja kezelheti j
 3. A bal oldali panelen kattintson a jobb gombbal a tartomány, és válassza ki a legfelső szintű képviselő objektumot **tulajdonságok** > **biztonsági** > **speciális**.
 4. Az a **engedélyek** lapon jelölje be **Hozzáadás**.
 5. Válassza ki a fiókot, amelyet engedélyek vannak alkalmazva (az az Azure AD Connect beállítása).
-6. Az a **vonatkozik** legördülő listában válassza **leszármazott felhasználó** objektumokat.
+6. Az a **vonatkozik** legördülő listában válassza **leszármazott felhasználó objektumai**.
 7. A **engedélyek**, jelölje be a következő beállításokat:
-    * **Új jelszó létrehozása**
     * **Jelszó módosítása**
+    * **Új jelszó létrehozása**
+8. A **tulajdonságok**, jelölje be a következő beállításokat:
     * **LockoutTime írása**
     * **PwdLastSet írása**
-8. Válassza ki **alkalmaz/OK** alkalmazza a módosításokat, és lépjen ki az összes megnyitott párbeszédpanelen.
+9. Válassza ki **alkalmaz/OK** alkalmazza a módosításokat, és lépjen ki az összes megnyitott párbeszédpanelen.
 
 ## <a name="next-steps"></a>További lépések
 

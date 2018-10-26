@@ -4,28 +4,28 @@ description: A lekérdezési nyelv, az Azure-erőforrás Graph működését ism
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 6fcf3087feb7f208ea46d0e08824e965160a61d4
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 09bcedc5250755f06ba23b84a0ae90b4d43a23db
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48236450"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086165"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Az Azure-erőforrás Graph lekérdezési nyelv ismertetése
 
 A lekérdezési nyelv, az Azure Erőforrás-grafikon a kezelők és a funkciók számos támogatja. Minden működik, és üzemeltethet alapján [Azure adatkezelő](../../../data-explorer/data-explorer-overview.md).
 
-Erőforrás-grafikon által használt lekérdezési nyelvvel kapcsolatos legjobb módja az, hogy kezdje a dokumentáció az Azure Data Explorer [lekérdezési nyelv](/azure/kusto/query/index). Ez biztosítja, hogy hogyan épül fel a nyelvet, és hogyan a különböző támogatott operátorok megértéséhez, és a functions működnek együtt.
+Erőforrás-grafikon által használt lekérdezési nyelvvel kapcsolatos legjobb módja az, hogy kezdje a dokumentáció az Azure Data Explorer [lekérdezési nyelv](/azure/kusto/query/index). Egy ismertetése, hogyan épül fel a nyelvet, és hogyan a különböző támogatott operátorok biztosít, és functions működnek együtt.
 
 ## <a name="supported-tabular-operators"></a>Támogatja a táblázatos operátorok
 
 A következő erőforrás Graph támogatott táblázatos szereplők listáját:
 
-- [Száma](/azure/kusto/query/countoperator)
+- [count](/azure/kusto/query/countoperator)
 - [Különböző](/azure/kusto/query/distinctoperator)
 - [Kiterjesztése](/azure/kusto/query/extendoperator)
 - [Korlát](/azure/kusto/query/limitoperator)
@@ -56,4 +56,4 @@ A következő erőforrás Graph támogatott funkciók listáját:
 
 - Tekintse meg a használt nyelv [alapszintű lekérdezések](../samples/starter.md)
 - Tekintse meg a speciális használ [összetettebb lekérdezésekhez](../samples/advanced.md)
-- Ismerje meg, hogyan [erőforrások vizsgálata](explore-resources.md)
+- Információ az [erőforrások felfedezéséről](explore-resources.md)

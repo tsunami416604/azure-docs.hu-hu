@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 71dee9f36a3e8e11cc23f966c9157f6409a3b5e0
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 32ad02583f84a84c494dc8300834cd9ff2f0d771
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405733"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094973"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Létrehozása, módosítása vagy törlése egy nyilvános IP-cím előtagja
 
@@ -62,8 +62,8 @@ Nyilvános IP-címelőtagokat díj rendelkezik. További információkért lásd
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network public-IP-előtag létrehozása](/cli/azure/network/public-ip/prefix/az-network-public-ip-prefix-create)|
-|PowerShell|[Új AzureRmPublicIpAddressPrefix](/powershell/module/azurerm.network/new-azurermpublicipaddressprefix)|
+|parancssori felület|[az network public-IP-előtag létrehozása](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
+|PowerShell|[Új AzureRmPublicIpPrefix](/powershell/module/azurerm.network/new-azurermpublicipprefix)|
 
 ## <a name="create-a-static-public-ip-address-from-a-prefix"></a>Hozzon létre egy statikus nyilvános IP-címet az előtag
 Miután létrehozta az előtag, az előtag a statikus IP-címeket kell létrehoznia. Ehhez kövesse az alábbi lépéseket.
@@ -71,7 +71,7 @@ Miután létrehozta az előtag, az előtag a statikus IP-címeket kell létrehoz
 1. A szöveget tartalmazó mezőbe *erőforrások keresése* írja be az Azure portal tetején *nyilvános ip-címelőtag*. Amikor **nyilvános IP-címelőtagokat** jelennek meg a keresési eredmények közül válassza ki azt.
 2. Válassza ki a nyilvános IP-címek a létrehozni kívánt prefx.
 3. Amikor megjelenik a keresési eredmények között, válassza ki, és kattintson a **+ IP-cím hozzáadása** az Áttekintés szakaszban. Abban az esetben ez nem látható, ellenőrizze, hogy előzetes használja a megfelelő hivatkozásra: https://aka.ms/publicipprefixportal
-4. Adja meg vagy válassza ki a következő beállítások alatt értékeket **nyilvános IP-cím létrehozása**. Mivel egy előtagot a Standard Termékváltozat, IPv4, és a statikus, csak adja meg a következő nevezéktan kell:
+4. Adja meg vagy válassza ki a következő beállítások alatt értékeket **nyilvános IP-cím létrehozása**. Mivel egy előtagot a Standard Termékváltozat, IPv4, és a statikus, csak adja meg a következő információkat kell:
 
    |Beállítás|Kötelező?|Részletek|
     |---|---|---|
@@ -91,8 +91,8 @@ Miután létrehozta az előtag, az előtag a statikus IP-címeket kell létrehoz
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network public-IP-előtag lista](/cli/azure/network/public-ip/prefix/az-network-public-ip-prefix-list) nyilvános IP-címeinek listáját, hogy [az network public-IP-előtag show](/cli/azure/network/public-ip/prefix/az-network-public-ip-prefix-show) ; beállítások megjelenítése [az network public-IP-előtag frissítés](/cli/azure/network/public-ip-prefix#az-network-public-ip-prefix-update) frissítése; [az network public-IP-előtag delete](/cli/azure/network/public-ip/prefix/az-network-public-ip-prefix-delete) törlése|
-|PowerShell|[Get-AzureRmPublicIpAddressPrefix](/powershell/module/azurerm.network/get-azurermpublicipaddressprefix) és egy nyilvános IP-címobjektumot, beállítások megtekintéséhez [Set-AzureRmPublicIpAddressPrefix](/powershell/module/azurerm.network/set-azurermpublicipaddressprefix) ;-beállítások frissítése [Remove-AzureRmPublicIpAddressPrefix](/powershell/module/azurerm.network/remove-azurermpublicipaddressprefix) törlése|
+|parancssori felület|[az network public-IP-előtag lista](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) nyilvános IP-címeinek listáját, hogy [az network public-IP-előtag show](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) ; beállítások megjelenítése [az network public-IP-előtag frissítés](/cli/azure/network/public-ip-prefix#az-network-public-ip-prefix-update) frissítése; [az network public-IP-előtag delete](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) törlése|
+|PowerShell|[Get-AzureRmPublicIpPrefix](/powershell/module/azurerm.network/get-azurermpublicipprefix) és egy nyilvános IP-címobjektumot, beállítások megtekintéséhez [Set-AzureRmPublicIpPrefix](/powershell/module/azurerm.network/set-azurermpublicipprefix) ;-beállítások frissítése [Remove-AzureRmPublicIpPrefix](/powershell/module/azurerm.network/remove-azurermpublicipprefix) törlése|
 
 ## <a name="permissions"></a>Engedélyek
 

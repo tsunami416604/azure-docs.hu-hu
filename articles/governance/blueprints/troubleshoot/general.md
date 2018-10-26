@@ -4,34 +4,34 @@ description: Ismerje meg, hogyan hoz létre, és tervek hibáinak elhárítása
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: dd1163ece225c2e9a9b082f5e8364f34b06a10ae
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b910f90e70af4ce6d4243c06bfe5bd03d25d74d6
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982290"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092934"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure-tervek használatával kapcsolatos hibák elhárítása
 
-Hibák létrehozása vagy hozzárendelése tervezetek során merülhetnek fel. Ez a cikk különféle előforduló hibákat és azok megoldását ismerteti.
+Előfordulhat, hogy hibákba ütközik létrehozásakor vagy tervezetek hozzárendelése. Ez a cikk különféle előforduló hibákat és azok megoldását ismerteti.
 
 ## <a name="finding-error-details"></a>Keresés, a hiba részletei
 
-Sok hiba lesz a tervezet hozzárendelése egy hatókör eredményét. Hozzárendelés sikertelen lesz, amikor a tervezet a sikertelen üzembe helyezés részletesen ismerteti. Ez az információ a probléma jelzi, hogy lehet meghatározni, és a későbbi központi telepítés sikeres lesz.
+Sok hiba lesz a tervezet hozzárendelése egy hatókör eredményét. A helyhozzárendelés meghiúsul, ha a megoldás lehetővé teszi az a sikertelen üzembe helyezés részleteit. Ez az információ azt jelzi, hogy a probléma, hogy lehet meghatározni, és a következő üzembe helyezését.
 
-1. Indítsa el az Azure-tervek szolgáltatás az Azure Portalon kattintson a **minden szolgáltatás** keresése és kiválasztása **házirend** a bal oldali panelen. Az a **házirend** lapon **tervezetek**.
+1. Kattintson a **minden szolgáltatás** keresése és kiválasztása **házirend** a bal oldali panelen. Kattintson a **Szabályzat** oldal **Tervek** elemére.
 
 1. Válassza ki **hozzárendelt tervezetek** a lap bal oldalon, a Keresés mezőbe a tervezet-hozzárendelések keresése a sikertelen hozzárendelés szűréséhez használja. A tábla-hozzárendelések alapján is rendezheti a **kiépítési állapot** oszlopban tekintheti meg az összes sikertelen hozzárendelések csoportosítva.
 
 1. Kattintson a tervezet-a a _sikertelen_ állapotát, vagy kattintson a jobb gombbal, és válassza **hozzárendelés részleteinek megtekintése**.
 
-1. Felső részén a tervezet hozzárendelése oldal egy piros sávban, figyelmeztetés, hogy a hozzárendelés sikertelen volt. Kattintson bárhová a szalagcímre kattintva további részleteket jeleníthet meg.
+1. Egy figyelmeztetés, hogy a hozzárendelés sikertelen, piros sávban van a tervezet-hozzárendelés lap tetején. Kattintson bárhová a szalagcímre kattintva további részleteket jeleníthet meg.
 
-A hiba oka lehet egy összetevő szerepelni fog a tervezet és nem a teljes tervezet szokás. Például ha a tervezet tartalmaz egy összetevő hozhat létre egy Key Vaultot, de a Key Vault létrehozási miatt nem lehetséges az Azure Policy, a teljes hozzárendelés sikertelen lesz.
+A hiba oka lehet egy összetevő, és nem a teljes tervezet szokás. Ha egy összetevő egy Key Vaultot hoz létre, és az Azure Policy megakadályozza, hogy a Key Vault létrehozási, a teljes hozzárendelés sikertelen lesz.
 
 ## <a name="general-errors"></a>Általános hiba
 
@@ -50,7 +50,7 @@ Egy házirend ütközést idézhet elő a központi telepítés a számos oka:
 
 #### <a name="resolution"></a>Megoldás:
 
-A tervezet ütközik a hiba adatait a felsorolt házirendek nem kell módosítani. Ha ez nem lehetséges, az egy másik lehetőség, hogy a szabályzat-hozzárendelés megváltozott, így a tervezet már nem ütközik a szabályzat hatóköre.
+Módosítsa a tervezet, így nem ütközik az a hiba részleteit a szabályzatokat. Ha ez a módosítás nem lehetséges, a másik lehetséges, hogy a szabályzat-hozzárendelés megváltozott, így a tervezet már nem ütközik a szabályzat hatóköre.
 
 ## <a name="next-steps"></a>További lépések
 

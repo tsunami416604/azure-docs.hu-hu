@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/11/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d2076a91bc7e7c0e2ca9d2fe6899cddec2f8d0b
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 90a5be07b6939df1850bb1574c71254bb896f004
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024494"
+ms.locfileid: "50093828"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -73,7 +73,7 @@ Az alábbi táblázat bemutatja a támogatott operációs rendszerek listáját:
 |CentOS 6 (x86/x64) és 7 (x64)      | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz. "Yum" besorolásalapú javítás szükséges, amely CentOS nem rendelkezik beépített biztonsági adatokat adja vissza.         |
 |Red Hat Enterprise 6 (x86/x64) és 7 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) és 12 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
-|Ubuntu 14.04 LTS, 16.04 LTS (x86/x64) és      |A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.         |
+|Ubuntu 14.04 LTS, 16.04 LTS és 18.04 (x86/x64)      |A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.         |
 
 ### <a name="unsupported-client-types"></a>Nem támogatott ügyfélalkalmazás típusa
 
@@ -174,7 +174,7 @@ A következő táblázat ismerteti a megoldás által támogatott csatlakoztatot
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
 
-Felügyelt Windows-számítógépek esetében naponta kétszer történik vizsgálat. 15 percenként, a Windows API hívása az utolsó frissítésének időpontját, hogy módosultak-e az állapot meghatározására a lekérdezéshez. Ha a állapota megváltozott, a megfelelőségi vizsgálatot kezdeményez. 
+Felügyelt Windows-számítógépek esetében naponta kétszer történik vizsgálat. 15 percenként, a Windows API hívása az utolsó frissítésének időpontját, hogy módosultak-e az állapot meghatározására a lekérdezéshez. Ha a állapota megváltozott, a megfelelőségi vizsgálatot kezdeményez.
 
 Vizsgálat három óránként történik, az egyes által felügyelt Linux-számítógép.
 
@@ -529,7 +529,7 @@ Az Update Management lehetővé teszi egy Azure virtuális gépek dinamikus eszk
 * Helyek
 * Címkék
 
-![Válassza ki a csoportokat](./media/automation-update-management/select-groups.png)
+![Csoportok kiválasztása](./media/automation-update-management/select-groups.png)
 
 Egy dinamikus csoport az eredmények előnézetének megtekintéséhez kattintson a **előzetes** gombra. Ebben az előzetes verzióban jeleníti meg a csoport tagságát ekkor az ebben a példában a címkével ellátott gépek keresésével **szerepkör** egyenlő **BackendServer**. Ha több gépet hozzáadja ezt a címkét, azok hozzáadódik a jövőbeli telepítések a csoporton.
 

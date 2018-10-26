@@ -4,20 +4,22 @@ description: Ismerje meg, az Update Management hibáinak elhárítása
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/17/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 41883fd677d276f8f26721fdccc3ded020c3278b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f52767058ef69d29465f1274109b6d3ffe58296c
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405227"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092627"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Az Update Management kapcsolatos hibák elhárítása
 
 Ez a cikk ismerteti a megoldásokat, amelyek találkozhat az Update Management használatakor problémák megoldásához.
+
+Van egy ügynök hibaelhárító hibrid feldolgozó ügynök határozza meg a hibát kiváltó problémát. A hibaelhárító kapcsolatos további információkért lásd: [hibaelhárítás frissítési ügynök problémák](update-agent-issues.md). A többi probléma, a részletes információinak megtekintéséhez alábbi lehetséges okokat.
 
 ## <a name="general"></a>Általános kérdések
 
@@ -110,6 +112,20 @@ A hibrid Runbook-feldolgozó nem tudta önaláírt tanúsítvány létrehozása
 #### <a name="resolution"></a>Megoldás:
 
 Ellenőrizze a rendszer fiók olvasási hozzáféréssel rendelkezik mappába **C:\ProgramData\Microsoft\Crypto\RSA** , és próbálkozzon újra.
+
+### <a name="nologs"></a>Forgatókönyv: Az Update Management adatokat a Log Analytics a gép nem látható
+
+#### <a name="issue"></a>Probléma
+
+Olyan gépeket azt mutatják be, mint **nincs értékelve** alatt **megfelelőségi**, de a Log Analytics a szívverési adatok jelennek meg a hibrid Runbook-feldolgozó, de nem az Update Management.
+
+#### <a name="cause"></a>Ok
+
+A hibrid Runbook-feldolgozó újra regisztrálni és telepíteni kell.
+
+#### <a name="resolution"></a>Megoldás:
+
+Kövesse a lépéseket [Windows hibrid Runbook-feldolgozó üzembe helyezése](../automation-windows-hrw-install.md) újra kell telepítenie a hibrid feldolgozó.
 
 ### <a name="hresult"></a>Forgatókönyv: Gép nincs értékelve, és bemutatja a kivétel HResult mutatja
 

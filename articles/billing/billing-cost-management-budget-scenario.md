@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 7/25/2018
 ms.author: erikre
-ms.openlocfilehash: 19d8fbf82410136fd6a50a2088dd9b774dd6cb27
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 08cdce23fe298bdac932d1ca8abb8166f4d7bbbd
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259211"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094813"
 ---
-# <a name="manage-costs-with-azure-budgets"></a>Azure költségvetése költségek kezelése
+# <a name="manage-costs-with-azure-budgets"></a>Költségek kezelése az Azure Budgetsszel
 
 Költségkontroll egy kritikus összetevő, hogy a felhőben a befektetésének értékét. Költség látható-e, jelentéseket és vezénylési költségalapú amelyeknél kritikus fontosságú üzleti folyamatos műveleteivel számos forgatókönyv közül választhat. [Az Azure Cost Management API-k](https://docs.microsoft.com/rest/api/consumption/) API-kat támogatja az egyes forgatókönyvek esetében is biztosítanak. Az API-k meg a használati adatokat, így megtekintheti a részletes példány költségeket.
 
@@ -125,7 +125,7 @@ Az alábbi lépéseket, amelyek végrehajtják a fenti lépéseket a logikai alk
 
 Miután az Azure üzembe helyezte a logikai alkalmazást, a **Logic Apps Designerben** megnyílik, és megjeleníti a panel bemutató video- és a gyakran használt eseményindítókat. 
 
-### <a name="add-a-trigger"></a>Adjon hozzá egy triggert
+### <a name="add-a-trigger"></a>Eseményindító hozzáadása
 
 Mindegyik logikai alkalmazásnak egy eseményindítóval kell indulnia, amelyet egy adott esemény vagy adott feltételek teljesülése aktivál. A Logic Apps-motor az eseményindító minden elindulásakor létrehoz egy logikaialkalmazás-példányt, amely elindítja és futtatja a munkafolyamatot. A műveletek olyan fordulhat elő, az eseményindító aktiválása után minden lépést. 
 
@@ -139,7 +139,7 @@ Mindegyik logikai alkalmazásnak egy eseményindítóval kell indulnia, amelyet 
 4.  Keressen rá a "JSON elemzése" kifejezésre a **Logic Apps Designerben** keresőmezőbe keresése és kiválasztása az **Adatműveletek – JSON elemzése** [művelet](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts). 
     
     ![Az Azure - Logic app - hozzáadása művelet JSON elemzése](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png) 
-5.  Adja meg a "Tartalom" a **tartalom** név JSON elemzése adattartalomhoz.
+5.  Adja meg a "Tartalom" a **tartalom** hasznos JSON elemzése nevet, vagy használja a "Törzs" címke, a dinamikus tartalmat.
 6.  Válassza ki a **Mintaadat használata séma létrehozásához** beállítást a **JSON elemzése** mezőbe.
     
     ![Az Azure - logikaialkalmazás - használat JSON-mintafájl adatairól séma generálásához](./media/billing-cost-management-budget-scenario/billing-cost-management-budget-scenario-07.png) 
@@ -374,7 +374,7 @@ Most már minden a helyére, meg kell hívnia a [API környezetet](https://docs.
     - **szűrők** -szűrők lehetővé teszik a kijelölt hatókörön belüli erőforrások egy meghatározott készletének a költségvetés szűkítheti. Például egy szűrő lehet egy előfizetési szintű költségvetés-erőforráscsoportok gyűjteménye.
     - **értesítések** – azt határozza meg az értesítés részletei és küszöbértékeit. Több küszöbértékek beállítása, és adjon meg egy e-mail-cím vagy a műveletcsoport is megkapja az értesítéseket.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Az oktatóanyag utasításait követve, a segítségével megtanulta:
 - Hogyan lehet leállítani a virtuális gépek egy Azure Automation-Runbook létrehozása.

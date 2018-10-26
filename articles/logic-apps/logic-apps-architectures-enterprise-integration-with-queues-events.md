@@ -9,12 +9,12 @@ ms.author: mattfarm
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 8fbc84b4016659b6d0d6ce9ec47c05a0b241c3d9
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 5b58f4b71d8d9f3ca91d8cefc6215073fd836765
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855374"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093666"
 ---
 # <a name="enterprise-integration-architecture-with-queues-and-events"></a>Vállalati integrációs architektúra az üzenetsorok és események
 
@@ -26,7 +26,7 @@ Ez a sorozat azt írja le, az újrafelhasználható összetevőit, előfordulhat
 
 ## <a name="architecture-components"></a>Architektúra-összetevők
 
-Ez az architektúra számos tekintetben az a cikkben leírt architektúra [architektúra-Útmutató: egyszerű vállalati integráció](../logic-apps/logic-apps-architectures-simple-enterprise-integration.md). Az architektúra [javaslatok](../logic-apps/logic-apps-architectures-simple-enterprise-integration.md#recommendations) itt is érvényesek, de kihagytuk, ez a cikk az áttekinthetőség kedvéért kihagyja a javasolt lépéseket a [javaslatok](#recommendations) szakaszban. A vállalati integrációs architektúra az alábbi összetevőket tartalmazza:
+Ez az architektúra számos tekintetben az a cikkben leírt architektúra [architektúra-Útmutató: egyszerű vállalati integráció](/azure/architecture/reference-architectures/enterprise-integration/simple-enterprise-integration). Az architektúra [javaslatok](/azure/architecture/reference-architectures/enterprise-integration/simple-enterprise-integration#recommendations) itt is érvényesek, de kihagytuk, ez a cikk az áttekinthetőség kedvéért kihagyja a javasolt lépéseket a [javaslatok](#recommendations) szakaszban. A vállalati integrációs architektúra az alábbi összetevőket tartalmazza:
 
 - **Erőforráscsoport**: A [erőforráscsoport](../azure-resource-manager/resource-group-overview.md) Azure-erőforrások logikai tárolója.
 
@@ -143,4 +143,4 @@ Az Event Grid szolgáltatás egy érvényesítési kód eseménykézbesítés v�
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg [egyszerű vállalati integráció](logic-apps-architectures-simple-enterprise-integration.md)
+* Ismerje meg [egyszerű vállalati integráció](/azure/architecture/reference-architectures/enterprise-integration/simple-enterprise-integration)

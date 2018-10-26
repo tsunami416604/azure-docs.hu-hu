@@ -1,5 +1,5 @@
 ---
-title: Virtuális gép állapotának figyelése és az Azure Monitor-beli virtuális gépek |} A Microsoft Docs
+title: Virtuális gép állapotának figyelése és az Azure Monitor-beli virtuális gépek (előzetes verzió) |} A Microsoft Docs
 description: Ez a cikk bemutatja, hogyan megismeri az állapotát a virtuális gép és az alapjául szolgáló operációs rendszer és az Azure Monitor-beli virtuális gépek.
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 84314f64d8a96e65f63cb5c6051f7f5e902cd682
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 059667787c905f47f6629afdb249a2273ceed585
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387821"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094227"
 ---
-# <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms"></a>A virtuális gépek az Azure Monitor szolgáltatással az Azure virtuális gépek állapotának ismertetése
+# <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>A virtuális gépek (előzetes verzió) és az Azure Monitor az Azure virtuális gépek állapotának ismertetése
 Az Azure több szolgáltatást tartalmaz, amelyek külön-külön végrehajtani egy adott szerepkör vagy a feladatot a figyelés területen, de biztosít az Azure-beli virtuális gépeken futó operációs rendszer egy részletes állapota szempontjából nem volt elérhető.  A Log Analytics vagy az Azure Monitor használatával különböző feltételek esetén felügyelheti, amíg nem tervezték őket modellezheti, és az alapvető összetevők állapotát vagy a virtuális gép általános állapotát.  Az Azure virtuális gépek Állapotfigyelő szolgáltatás figyelője proaktív módon figyeli a rendelkezésre állás és a Windows vagy Linux-alapú vendég operációs rendszer, amelyek a legfontosabb összetevők és a kapcsolatok, feltételek, amely meghatározza, hogy miként állapotát, a modell teljesítményét összetevők, és riasztást küld, ha a nem kifogástalan állapot észlelésekor.  
 
 Megtekintése az Azure virtuális gép összesített állapotát és operációs rendszer alapjául szolgáló virtuális gépek Health, közvetlenül a virtuális gépről vagy az Azure Monitor egy erőforráscsoportba tartozó minden virtuális gépen az Azure Monitor szolgáltatással két perspektíva adatai figyelhető meg.
@@ -35,7 +35,7 @@ Ez a rész bemutatja az Azure Windows és Linux rendszerű virtuális gépek fig
 
 ### <a name="windows-vms"></a>Windows rendszerű virtuális gépek
 
-- A memória érhető el (MB) 
+- A memória érhető el (MB) 
 - (A logikai lemez) Írásonkénti átlagos másodperc
 - (A lemez) Írásonkénti átlagos másodperc
 - Olvasásonkénti átlagos logikai lemez másodperc

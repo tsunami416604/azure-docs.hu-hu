@@ -1,6 +1,6 @@
 ---
-title: A virtuális gépek az Azure Monitor – gyakori kérdések |} A Microsoft Docs
-description: A virtuális gépek az Azure Monitor egy olyan megoldás, az Azure-ban, amely egyesíti az állapotának és teljesítményének figyelése az Azure virtuális gép operációs rendszerének, valamint alkalmazás-összetevők és az egyéb erőforrások függőségeinek automatikus felderítése, és feltérképezi a közötti kommunikációt őket. Ez a cikk gyakori kérdésekre ad választ.
+title: Az Azure Monitor-beli virtuális gépek (előzetes verzió) – gyakori kérdések |} A Microsoft Docs
+description: Az Azure Monitor-beli virtuális gépek (előzetes verzió) egy olyan megoldás, az Azure-ban, amely egyesíti az állapotának és teljesítményének figyelése az Azure virtuális gép operációs rendszerének, valamint alkalmazás-összetevők és az egyéb erőforrások függőségeinek automatikus felderítése, és feltérképezi a kommunikációt közöttük. Ez a cikk gyakori kérdésekre ad választ.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/19/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 282620342d2348868ceab5257de7415a9cb2147c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: ff870f948acaae14ba772e14d48b27683f0bf07e
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388359"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091691"
 ---
-# <a name="azure-monitor-for-vms-frequently-asked-questions"></a>A virtuális gépek az Azure Monitor – gyakori kérdések
-A Microsoft FAQ az összetevővel kapcsolatos gyakori kérdésekre az Azure Monitor a Microsoft Azure-beli virtuális gépek listája. Ha a megoldásról a további kérdése van, lépjen a [fórum](https://feedback.azure.com/forums/34192--general-feedback) és felteheti kérdéseit. Egy kérdést gyakran ismételt, amikor hozzáadjuk ehhez a cikkhez, hogy gyorsan és könnyen megtalálhatók.
+# <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Gyakori kérdések az Azure Monitor-beli virtuális gépek (előzetes verzió)
+A Microsoft FAQ az összetevővel kapcsolatos gyakori kérdésekre az Azure Monitor-beli virtuális gépek listája. Ha a megoldásról a további kérdése van, lépjen a [fórum](https://feedback.azure.com/forums/34192--general-feedback) és felteheti kérdéseit. Egy kérdést gyakran ismételt, amikor hozzáadjuk ehhez a cikkhez, hogy gyorsan és könnyen megtalálhatók.
 
 ## <a name="can-i-onboard-to-an-existing-workspace"></a>Lehetőségeket felvétele egy meglévő munkaterületet?
 Ha a virtuális gépek már kapcsolódik egy Log Analytics-munkaterületet, továbbra is munkaterületet használja, ha bevezetése az Azure monitornak a virtuális gépek esetében megadtuk a felsorolt támogatott régiók egyikében [Itt](monitoring-vminsights-onboard.md#prerequisites).

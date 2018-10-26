@@ -11,21 +11,26 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 2a0bacaf0405a5223afedcd3897e2a1514f7128b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 10/25/2018
+ms.openlocfilehash: fc82fa592a513d735d4adc602bedaf8e492af13b
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466681"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092951"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
-Az Azure SQL database naplózási nyomon követi az adatbázisok eseményeit és felvezeti ezeket egy naplófájlba, az Azure storage-fiókban. A naplózás is:
+Az Azure naplózási [SQL Database](sql-database-technical-overview.md) és [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) nyomon követi az adatbázisok eseményeit és felvezeti ezeket egy naplófájlba, az Azure storage-fiókot, OMS-munkaterület vagy az Event Hubs. A naplózás is:
 
 - Segít a jogszabályoknak való megfelelőség, adatbázis-tevékenység megértésében, valamint betekintést nyerhet az eltéréseket és rendellenességeket, amelyek üzleti aggályokra vagy biztonsági problémákat.
 
 - Lehetővé teszi, hogy, és megkönnyíti a megfelelőségi szabványok betartásának, bár ez nem garantálja a megfelelőség. Az Azure-ral kapcsolatos további információkat a támogatási szabványoknak való megfelelés programokat, tekintse meg a [Azure adatvédelmi központ](https://azure.microsoft.com/support/trust-center/compliance/).
+
+
+> [!NOTE] 
+> Ez a témakör az Azure SQL Server-kiszolgálókra, valamint az Azure SQL Serveren létrehozott SQL Database- és SQL Data Warehouse-adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database.
+
 
 ## <a id="subheading-1"></a>Az Azure SQL database naplózás – áttekintés
 
@@ -51,7 +56,7 @@ A naplózási házirend egy adott adatbázis vagy a kiszolgáló alapértelmezet
 
 - Ha *kiszolgálószintű blobnaplózás engedélyezve van*, azt *mindig vonatkozik, az adatbázis*. Az adatbázis naplózva lesz, függetlenül az adatbázis naplózási beállításait.
 
-- Engedélyezi a blobnaplózás az adatbázison, a kiszolgálón, egyrészt does *nem* bírálja felül, vagy módosíthatja a kiszolgálószintű blobnaplózás beállításait. Mindkét naplózások egymás mellett fog létezik. Más szóval az adatbázis kétszer párhuzamosan; rögzítése egyszer, a kiszolgáló házirend és egyszer az adatbázis-házirendet.
+- Engedélyezi a blobnaplózás az adatbázist, sem az adattárházra vonatkozó, a kiszolgálón, egyrészt does *nem* bírálja felül, vagy módosíthatja a kiszolgálószintű blobnaplózás beállításait. Mindkét naplózások egymás mellett fog létezik. Más szóval az adatbázis kétszer párhuzamosan; rögzítése egyszer, a kiszolgáló házirend és egyszer az adatbázis-házirendet.
 
    > [!NOTE]
    > Kerülendő, kivéve, ha engedélyezi a kiszolgálószintű blobnaplózás és adatbázis blobnaplózás együtt:
@@ -87,7 +92,7 @@ Az alábbi szakasz ismerteti a konfigurációt, a naplózás az Azure portal has
 
     ![tárfiók](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
-7. Írási naplózás konfigurálása bejelentkezik egy Log Analytics-munkaterületen válassza **Log Analytics (előzetes verzió)** , és nyissa meg **Log Analytics részletes**. Válasszon vagy hozzon létre a Log Analytics-munkaterületet, ahol a naplók lesz írva, és kattintson a **OK**.
+7. Írási naplózás konfigurálása naplózza a Log Analytics-munkaterülettel, válassza ki **Log Analytics (előzetes verzió)** , és nyissa meg **Log Analytics részletes**. Válasszon vagy hozzon létre a Log Analytics-munkaterületet, ahol a naplók lesz írva, és kattintson a **OK**.
 
     ![Log Analytics](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
@@ -98,6 +103,11 @@ Az alábbi szakasz ismerteti a konfigurációt, a naplózás az Azure portal has
 9. Kattintson a **Save** (Mentés) gombra.
 10. Ha szeretné a naplózott események testreszabásához, ehhez keresztül [PowerShell-parancsmagok](#subheading-7) vagy a [REST API-val](#subheading-9).
 11. A naplózási beállítások konfigurálása után kapcsolja be az új fenyegetés-észlelési szolgáltatást, és konfigurálja a biztonsági riasztást küld e-maileket. A fenyegetésészlelés használata esetén jelezheti a potenciális biztonsági fenyegetések rendellenes adatbázis-tevékenységek a proaktív értesítéseket kap. További információkért lásd: [fenyegetések észlelése – első lépések](sql-database-threat-detection-get-started.md).
+
+
+> [!IMPORTANT]
+>Az Azure SQL Data Warehouse, vagy egy kiszolgálóra, amelyen az Azure SQL Data Warehouse, a naplózás engedélyezése **eredményez az adattárház folytatása folyamatban**, még akkor is, abban az esetben, ha korábban már szünetel. **Ellenőrizze, hogy az adattárház felfüggesztése újra, miután engedélyezte a naplózási**. "
+
 
 ## <a id="subheading-3"></a>Elemezheti a vizsgálati naplók és jelentések
 
@@ -206,6 +216,9 @@ Georeplikált adatbázisokhoz amikor engedélyezi a naplózást az elsődleges a
     FAILED_DATABASE_AUTHENTICATION_GROUP
 
     A különféle műveletek és a PowerShell-lel, műveleti csoportokra naplózás leírtak szerint konfigurálhatja a [felügyelete az SQL database naplózási Azure PowerShell-lel](#subheading-7) szakaszban.
+
+- AAD-hitelesítés használatakor a sikertelen bejelentkezések rekordok lesz *nem* jelennek meg az SQL-napló. A sikertelen bejelentkezési naplózási rekordok megtekintéséhez keresse fel kell a [Azure Active Directory portálon]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), amely ezek az események adatait naplózza.
+
 
 ## <a id="subheading-7"></a>Az SQL database naplózási Azure PowerShell-lel kezelése
 

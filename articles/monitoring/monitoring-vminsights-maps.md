@@ -1,5 +1,5 @@
 ---
-title: A virtuális gépek és az Azure Monitor alkalmazásfüggőségek megtekintése |} A Microsoft Docs
+title: A virtuális gépek (előzetes verzió) és az Azure Monitor alkalmazásfüggőségek megtekintése |} A Microsoft Docs
 description: Térkép funkciója az Azure monitor-beli virtuális gépek, amelyek automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Ez a cikk részletesen hogyan használható a különböző forgatókönyveket.
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 8641b6cfb14bceb248cc587095a9d3469ce2c9e0
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: af3d2b997a4d58f2d32705c55151c4cf13bdcc7c
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402149"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50095478"
 ---
-# <a name="using-azure-monitor-for-vms-map-to-understand-application-components"></a>Alkalmazás-összetevők ismertetése a virtuális gépeket a térképen a Azure Monitor használatával
+# <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Térkép (előzetes verzió) virtuális gépek az Azure Monitor használatával történő alkalmazás-összetevők ismertetése
 Megtekintés a detektált alkalmazás-összetevők a környezet figyelhető meg az Azure Monitor szolgáltatással kétféleképpen virtuális gépek esetén közvetlenül a virtuális gépről vagy virtuális gépek az Azure Monitor csoportokhoz Azure-ban futó Windows és Linux rendszerű virtuális gépeken. 
 
 Ez a cikk segít megérteni a felhasználói élményt a két perspektíva adatai és a térkép funkció használata között. A virtuális gépek az Azure Monitor konfigurálásával kapcsolatos további információkért lásd: [engedélyezése az Azure Monitor-beli virtuális gépek](monitoring-vminsights-onboard.md).

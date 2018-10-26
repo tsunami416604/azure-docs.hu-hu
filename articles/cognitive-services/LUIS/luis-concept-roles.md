@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 9bbbb797cd7e7d1cea52f1d5b1b491998b595db7
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 94a02a06335b35a36c35d4b69776b1eb630b402d
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638083"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086024"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>A minták entitás szerepkör a környezeti altípus
 Ezek az entitások csak a felhasznált nevesített, környezetfüggő altípusainak [minták](luis-concept-patterns.md).
@@ -42,13 +42,8 @@ A minta sablon utterance (kifejezés), a szerepkörök az utterance (kifejezés)
 ## <a name="role-syntax-in-patterns"></a>Szerepkör-szintaxis a minták
 Az entitás- és szerepkör csúcsos zárójelek között, között `{}`. Az entitás- és a szerepkör egymástól kettősponttal elválasztva. 
 
-## <a name="roles-versus-hierarchical-entities"></a>Szerepkörök és a hierarchikus entitások
-Hierarchikus entitások, adja meg az azonos környezetfüggő adatokat szerepkörökként, hanem csak a kimondott szöveg **leképezések**. Hasonlóképpen adja meg a szerepkörök hierarchikus entitásokként, de csak az azonos környezeti információkat **minták**.
 
-|Környezetfüggő tanulás|Használatban|
-|--|--|
-|hierarchikus entitások|Leképezések|
-|roles|Minták|
+[!include[H2 Roles versus hierarchical entities](../../../includes/cognitive-services-luis-hier-roles.md)] 
 
 ## <a name="roles-with-prebuilt-entities"></a>Szerepkörök az előre összeállított entitások
 

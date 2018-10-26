@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 2a5d8540dba491dec8b2da227b0e84c10ff09c77
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 8f42ee996dae476de3744239d4cc5f053722d52b
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395000"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093211"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>A prediktív karbantartási megoldásokat az Azure AI útmutatója
 
@@ -414,7 +414,6 @@ Ez az útmutató az utolsó szakaszában PdM megoldássablonokkal, oktatóanyago
 
 | # | Beosztás | Leírás |
 |--:|:------|-------------|
-| 1 | [Prediktív karbantartás az Azure Machine Learning minta](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance) |Előrejelzési hiba a következő N mértékegységét keresztül PdM-minta. Ez a példa egy Azure Machine Learning Workbench-projekt kiírt, és ideális megoldást biztosít a PdM kezdők számára. [További dokumentáció](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-predictive-maintenance) kapcsolatos ezt a mintát.|
 | 2 | [Az Azure prediktív karbantartási megoldás – sablon](https://github.com/Azure/AI-PredictiveMaintenance) | Egy nyílt forráskódú megoldás sablon, amely bemutatja a gépi tanulás modellezési és a egy teljes Azure-infrastruktúra képes a prediktív karbantartási forgatókönyveket IoT távoli figyelési környezetében. |
 | 3 | [Mélytanulás a prediktív karbantartás](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Egy bemutató megoldással LSTM (hosszú rövid távú memória) hálózatok (ismétlődő Neurális hálózatokat egy osztály) használatával prediktív karbantartás, az Azure Notebooks- [blogbejegyzés erre a példára](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
 | 4 | [Prediktív karbantartás Fenyegetésmodellezési útmutatója az R](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | Az r-parancsfájlokkal PdM fenyegetésmodellezési útmutatója|

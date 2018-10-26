@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/18/2018
+ms.date: 10/25/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 065eee57b78ea10d5e8079de3a938dc00dd60ee2
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: a40774faadc4393a1ebbb6e26673ba7dff22560c
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406772"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092304"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Mik a hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés? 
 
@@ -166,8 +166,14 @@ A munkamenet-vezérlők a funkciók korlátozását teszik lehetővé a felhőal
 
 ### <a name="use-app-enforced-restrictions"></a>Alkalmazás által kényszerített korlátozások használata
 
-Ez a vezérlő segítségével megkövetelése az eszköz adatait átadása a felhőalkalmazás az Azure AD. Ez segít a felhőalapú alkalmazás, ha a felhasználó a megfelelő eszköz vagy tartományhoz csatlakoztatott eszköz származik. Ez a vezérlő jelenleg csak akkor támogatott, mint a felhőalapú alkalmazások SharePoint. SharePoint az eszköz adatait használja, hogy a felhasználók egy korlátozott vagy a teljes eszköz állapotától függően.
-A SharePoint korlátozott hozzáférést igényelnek a kapcsolatos további tudnivalókért lásd: [nem felügyelt eszközökről való hozzáférés szabályozása](https://aka.ms/spolimitedaccessdocs).
+Ez a vezérlő segítségével az eszköz információkat adnak át a kiválasztott felhőalapú alkalmazások Azure AD szükséges. Az eszköz adatait lehetővé teszi, hogy a felhőalapú alkalmazások tudni, hogy a kompatibilis vagy tartományhoz csatlakoztatott eszköz kezdeményezni a kapcsolatot. Ez a vezérlő támogatja a SharePoint Online és Exchange online-hoz csak kijelölt felhőalapú alkalmazásokat. Kiválasztásakor a cloud app függően az eszköz állapotát, korlátozott vagy teljes felhasználói élmény a felhasználók számára az eszköz adatait használja.
+
+További tudnivalókért lásd:
+
+- [Korlátozott hozzáférés a SharePoint online-nal engedélyezése](https://aka.ms/spolimitedaccessdocs) 
+
+- [Az Exchange Online korlátozott hozzáférés engedélyezése](https://aka.ms/owalimitedaccess)
+
 
 
 

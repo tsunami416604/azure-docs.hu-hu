@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/25/2018
 ms.author: adgera
-ms.openlocfilehash: 28eb8b5dc0f75b5e031070803d35c8a1ceb1f000
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: a17fe8ed47384ed248b339643be11269b8b9cdc0
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364342"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092185"
 ---
 # <a name="security-best-practices"></a>Ajánlott biztonsági eljárások
 
@@ -26,15 +26,16 @@ Ez a cikk a főbb vonatkozó ajánlott eljárásokat foglalja össze.
 > [!IMPORTANT]
 > Tekintse át a további biztonsági erőforrások (beleértve az eszközforgalmazók) maximális biztonsági IoT-tárhely biztosításához.
 
-## <a name="iot-security-best-practices"></a>IoT-biztonság ajánlott eljárások
+## <a name="iot-security-best-practices"></a>Ajánlott biztonsági eljárások az IoT-hez
 
 Néhány kulcsfontosságú eljárásokat, és biztonságosan biztonságos az IoT-eszközökről a következők:
 
 > [!div class="checklist"]
 > * Minden eszköz, amely csatlakozik az IoT-terület hamisíthatatlan módon biztonságossá tételéhez.
 > * A szerepkör az egyes eszközök, érzékelők és az IoT-címtéren belüli személy korlátozza. Ha megsérül, a hatás minimálisra csökken.
-> * Eszköz IP-címszűrő lehetséges használatát.
+> * Lehetséges használata az eszköz IP címe szűrési és portszáma korlátozás.
 > * A teljesítmény javítása i/o- és eszköz sávszélesség korlátozása. A sebességhatárolt javíthatja a biztonsági-szolgáltatásmegtagadási támadások megelőzésével.
+> * Eszköz belső vezérlőprogramjának frissítéséhez.
 
 Néhány kulcsfontosságú eljárásokat, és biztonságosan biztonságos az IoT-terület a következők:
 
@@ -55,7 +56,7 @@ Az Azure digitális Twins az Azure Active Directory felhasználók hitelesítés
 
 > [!div class="checklist"]
 > * Azure Active Directory-alkalmazás titkos kódok és kulcsok biztonságos helyen Store például [Key Vault](https://azure.microsoft.com/services/key-vault/).
-> * Egy megbízható által kibocsátott tanúsítványt használja [hitelesítésszolgáltatók](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-certificate-based-authentication-get-started) helyett Alkalmazáskulcs hitelesítéséhez.
+> * Egy megbízható által kibocsátott tanúsítványt használja [hitelesítésszolgáltató](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-certificate-based-authentication-get-started) helyett Alkalmazáskulcs hitelesítéséhez.
 > * OAuth 2.0 hozzáférési jogkivonat hatóköre korlátozza.
 > * Mennyi ideig jogkivonat érvényességét. Ellenőrizze, és hogy-e a jogkivonat érvényes marad.
 > * Állítsa be a megfelelő hosszúságú, ameddig a jogkivonatok érvényesek.

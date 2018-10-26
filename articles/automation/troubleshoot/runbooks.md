@@ -8,12 +8,12 @@ ms.date: 10/17/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 33c2bd48084c3d0e73fe2f4a1ce922e7a66b944f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 532d3d73c939a44678091734f2bbff22267ab6b7
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955427"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094864"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbookokkal kapcsolatos hibák elhárítása
 
@@ -93,8 +93,9 @@ Ez a hiba akkor fordul elő, ha az előfizetés neve nem érvényes, vagy ha az 
 
 Ha már megfelelő hitelesítés az Azure-ba, és rendelkezik hozzáféréssel az előfizetéshez, válassza ki szeretne meghatározni, tegye a következőket:  
 
-1. Győződjön meg arról, hogy futtassa a **Add-AzureAccount** parancsmag futtatása előtt a **Select-AzureSubscription** parancsmagot.  
-2. Ha továbbra is látja ezt a hibaüzenetet, módosítsa a kódot adja hozzá a **- AzureRmContext** paraméter következő a **Add-AzureAccount** parancsmag majd futtassa a kódot.
+1. Tesztelje a parancsfájlt, hogy működik-e önálló Azure Automation-en kívül.
+2. Győződjön meg arról, hogy futtassa a **Add-AzureAccount** parancsmag futtatása előtt a **Select-AzureSubscription** parancsmagot.  
+3. Ha továbbra is látja ezt a hibaüzenetet, módosítsa a kódot adja hozzá a **- AzureRmContext** paraméter következő a **Add-AzureAccount** parancsmag majd futtassa a kódot.
 
    ```powershell
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
@@ -104,7 +105,7 @@ Ha már megfelelő hitelesítés az Azure-ba, és rendelkezik hozzáféréssel a
    $context = Get-AzureRmContext
 
    Get-AzureRmVM -ResourceGroupName myResourceGroup -AzureRmContext $context
-   ```
+    ```
 
 ### <a name="auth-failed-mfa"></a>Forgatókönyv: Hitelesítés nem sikerült, mert engedélyezve van a multi-factor authentication szolgáltatás Azure-bA
 

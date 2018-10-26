@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a12549a52171afc1c95588f9a2b259829e170fcc
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: b6fef23b3624703305a13b205b588c83dd135764
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389955"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094738"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Az Azure AD Connect: Az AD DS-összekötő fiók engedélyeinek konfigurálása 
 
@@ -269,10 +269,10 @@ A PowerShell-szkript fog elősegíti a megerősítését a paraméterként AD-ö
 - A megadott objektum öröklődés letiltása 
 - Távolítsa el az adott objektumra, kivéve az adott ÖNKISZOLGÁLÓ hozzáférés-vezérlési bejegyzés vonatkozó összes ACE, szeretnénk az alapértelmezett engedélyek ép esetén, a saját MAGA. 
  
- A paraméter - Objektum_megkülönböztető_neve az AD-fiókot, amelynek engedélyeket kell megfeszíteni kell. Ez általában az a MSOL_nnnnnnnnnnnn tartományi fiók, amely az AD DS-összekötő konfigurálva van (lásd a állapítsa meg az AD DS-összekötő fiókot). A - Credential paraméter adja meg a rendszergazdai fiók, amely rendelkezik a szükséges jogosultságokkal a célobjektum AD az Active Directory-engedélyek korlátozása szükség. Ez általában az a vállalati vagy a tartományi rendszergazda.  
+ A paraméter - ADConnectorAccountDN az AD-fiókot, amelynek engedélyeket kell megfeszíteni kell. Ez általában az a MSOL_nnnnnnnnnnnn tartományi fiók, amely az AD DS-összekötő konfigurálva van (lásd a állapítsa meg az AD DS-összekötő fiókot). A - Credential paraméter adja meg a rendszergazdai fiók, amely rendelkezik a szükséges jogosultságokkal a célobjektum AD az Active Directory-engedélyek korlátozása szükség. Ez általában az a vállalati vagy a tartományi rendszergazda.  
 
 ``` powershell
-Set-ADSyncRestrictedPermissions [-ObjectDN] <String> [-Credential] <PSCredential> [-DisableCredentialValidation] [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <PSCredential> [-DisableCredentialValidation] [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```
  
 Példa: 

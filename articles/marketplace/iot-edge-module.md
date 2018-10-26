@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: qianw211
-ms.openlocfilehash: 46740e925a5d4e94c314105aba4920caf01532e7
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 0468c41f0813277b6ba6d3be8ad89c3178dd1420
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985608"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094674"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-modulok
 
@@ -78,15 +78,11 @@ Egy IoT Edge-modul az Azure piactéren való közzétételéhez szeretne megfele
 
 **Technikai követelmények**
 
-Az IoT Edge-modul, ahhoz, hogy hitelesített, és az Azure Marketplace-en közzétett, az elsődleges műszaki követelményeknek a részletes leírást talál a [IoT Edge-modul minősítési folyamat](https://cloudpartner.azure.com/#documentation/iot-edge-module-certification-process) a a [felhő közzétételi Portál](https://cloudpartner.azure.com/).  
+Az IoT Edge-modul, ahhoz, hogy hitelesített, és az Azure Marketplace-en közzétett, az elsődleges műszaki követelményeknek a részletes leírást talál a [előkészítése az IoT Edge-modul technikai eszközök](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets).  
 
 ## <a name="documentation-and-resources"></a>Dokumentáció és források
 
-Ha bejelentkezett érhetők el az alábbi cikkeket a [felhő közzétételi portál](https://cloudpartner.azure.com/):
-
-- [Hozzon létre egy IoT Edge-modul ajánlatot](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer) – – a felhő közzétételi portál kínálnak a lépéseket egy új IoT Edge-modul közzétételéhez.
-- [IoT Edge-modul minősítési folyamat](https://cloudpartner.azure.com/#documentation/iot-edge-module-certification-process) – a lépéseket és a egy IoT Edge-modul tanúsítása összegzését.
-- [IoT Edge-modul – gyakori kérdések](https://cloudpartner.azure.com/#documentation/iot-edge-module-faq) – – IoT Edge-modulok kapcsolatos gyakori kérdések listáját.
+[Hozzon létre egy IoT Edge-modul ajánlatot](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer) – – a felhő közzétételi portál kínálnak a lépéseket egy új IoT Edge-modul közzétételéhez.
 
 ## <a name="next-steps"></a>További lépések
 

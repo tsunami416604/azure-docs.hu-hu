@@ -10,12 +10,12 @@ ms.author: netahw
 author: nhaiby
 ms.date: 05/20/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 371903e1ee080d2b98fd46ac4d6d9838416e1335
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b1b4e3e19adb38a69e16aaa98300972df3bb71a8
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973422"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093649"
 ---
 # <a name="build-and-deploy-image-similarity-models-with-azure-machine-learning"></a>Létrehozása és üzembe helyezése a rendszerkép hasonlóság modellek Azure Machine Learning segítségével
 
@@ -38,7 +38,7 @@ A számítógép vision tartomány problémák nagy számú kép hasonlóság se
 7. Webszolgáltatás üzembe
 8. Webes szolgáltatás terheléses tesztelés
 
-[CNTK](https://www.microsoft.com/cognitive-toolkit/) használja, a deep learning-keretrendszerek képzési helyileg kell elvégezni a GPU-alapú gépek például a ([Deep learning-adatelemzési virtuális gép](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)), és üzembe helyezés az Azure Machine Learning Operacionalizálás CLI használja.
+[CNTK](https://www.microsoft.com/en-us/cognitive-toolkit/) használja, a deep learning-keretrendszerek képzési helyileg kell elvégezni a GPU-alapú gépek például a ([Deep learning-adatelemzési virtuális gép](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)), és üzembe helyezés az Azure Machine Learning Operacionalizálás CLI használja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

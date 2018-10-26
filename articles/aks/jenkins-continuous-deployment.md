@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: iainfou
-ms.openlocfilehash: cdf8c64f20e15074a1f055d2ab7abf4304d62505
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 5417e59f15ffcf48cc2af27044355d2bb5c9edaf
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017907"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087695"
 ---
 # <a name="create-a-continuous-deployment-pipeline-with-jenkins-and-azure-kubernetes-service-aks"></a>Folyamatos üzembe helyezési folyamat létrehozása a Jenkins és az Azure Kubernetes Service (AKS)
 
@@ -34,9 +34,11 @@ Ebben a cikkben szereplő lépések végrehajtásához a következő elemeket ke
 - Egy [AKS-fürt] [ aks-quickstart] és `kubectl` konfigurálva a [AKS-fürt hitelesítő adatait][aks-credentials].
 - Egy [Azure Container Registry (ACR) beállításjegyzék][acr-quickstart], az ACR bejelentkezési kiszolgáló nevét, és az AKS-fürtöt úgy [hitelesítés az ACR-beállításjegyzékbe a] [ acr-authentication].
 
-- Az Azure CLI 2.0.46 verzió vagy újabb telepítése és konfigurálása. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
+- Az Azure CLI 2.0.46 verzió vagy újabb telepítése és konfigurálása. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
 - [A docker telepítve] [ docker-install] a fejlesztői rendszeren.
 - Egy GitHub-fiók [Githubhoz használt személyes hozzáférési tokent][git-access-token], és a Git-ügyfél telepítve van a fejlesztői rendszeren.
+
+- A saját Jenkins-példány helyett ezt a mintát a Jenkins üzembe helyezésére parancsfájlalapú ad meg, ha a Jenkins-példány igények [Docker telepített és konfigurált] [ docker-install] és [kubectl][kubectl-install].
 
 ## <a name="prepare-the-application"></a>Az alkalmazás előkészítése
 
@@ -317,6 +319,7 @@ Ebben a cikkben megtanulta, hogyan használható a Jenkins CI/CD megoldás rész
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [docker-install]: https://docs.docker.com/install/
+[kubectl-install]: https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
 <!-- LINKS - internal -->
 [az-acr-list]: /cli/azure/acr#az-acr-list

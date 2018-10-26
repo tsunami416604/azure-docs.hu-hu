@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 5ddf510d50f38ed9aaf742bd06c330e53ffe1391
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6f007ca3aacb338c14bf481ee58407596c8290ad
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992796"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091623"
 ---
 # <a name="alerts-on-activity-log"></a>Riasztások a tevékenységnaplóban 
 
@@ -50,7 +50,7 @@ A tevékenységnapló-riasztások néhány gyakori közül választhat:
 - **Esemény kezdeményezője**: más néven a "hívó." Az e-mail címet vagy az Azure Active Directory a műveletet végrehajtó felhasználó azonosítója.
 
 > [!NOTE]
-> Az előfizetéshez legfeljebb 100 riasztási szabályok tevékenység bármelyik hatókör: egy erőforrást, minden erőforrás erőforrás csoport (vagy) teljes előfizetési szinten.
+> Az előfizetéshez legfeljebb 100 riasztási szabályok hozható létre bármelyik hatókör tevékenység: egy erőforrást, minden erőforrás erőforrás csoport (vagy) teljes előfizetési szinten.
 
 Tevékenységnapló-riasztás aktiválódik, ha a műveletek vagy értesítések műveletcsoportot használ. Műveletcsoport egy újrafelhasználható értesítési címzett e-mail-címeket, például a webhook URL-címek vagy SMS ügyfélszolgálatának telefonszámai. A fogadók központosítása és az értesítési csatornák csoportban több riasztásokból lehet hivatkozni. A tevékenységnapló-riasztás határozza meg, amikor két lehetősége van. A következőket teheti:
 

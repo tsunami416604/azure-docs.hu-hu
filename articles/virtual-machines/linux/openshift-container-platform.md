@@ -3,8 +3,8 @@ title: Az OpenShift Container Platform az Azure-beli üzembe helyezése |} A Mic
 description: Telepítse az OpenShift Container Platform az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: haroldw
-manager: najoshi
+author: haroldwongms
+manager: joraio
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,40 +15,41 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 48b6287fef673c5f335531b6f230993969fc9e1c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 21eebb6c27a83b939f321d38026da7d4c39b7071
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996332"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085886"
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>Az OpenShift Container Platform az Azure-beli üzembe helyezése
 
 Többféle módszer egyikét használhatja az OpenShift Container Platform az Azure-beli üzembe helyezéséhez:
 
-- Manuálisan telepítheti a szükséges Azure-infrastruktúra-összetevőket, és hajtsa végre az OpenShift Tárolóplatform [dokumentáció](https://docs.openshift.com/container-platform/3.10/welcome/index.html).
+- Manuálisan telepítheti a szükséges Azure-infrastruktúra-összetevőket, és kövesse a [OpenShift Tárolóplatform dokumentáció](https://docs.openshift.com/container-platform).
 - Használhatja egy meglévő [Resource Manager-sablon](https://github.com/Microsoft/openshift-container-platform/) , amely leegyszerűsíti az OpenShift Tárolóplatform fürt központi telepítése.
 - Egy másik lehetőség a [Azure Marketplace-ajánlat](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview).
 
 Minden beállítás a Red Hat-előfizetésüket szükség. Az üzembe helyezés során a Red Hat Enterprise Linux-példány van regisztrálva a Red Hat-előfizetésüket, a készlet azonosítója, amely tartalmazza a jogosultságokat az OpenShift Tárolóplatform kapcsolódik.
-Gondoskodjon arról, hogy egy Red Hat előfizetés Manager (RHSM) érvényes felhasználónév, jelszó és a készlet azonosítóját. Bejelentkezés a ellenőrizheti ezt az információt https://access.redhat.com.
+Ellenőrizze, hogy egy érvényes Red Hat előfizetés Manager (RHSM) felhasználónév, jelszó és készlet azonosítója. Használhat egy aktiválási kulcsot, a szervezeti azonosító és a készlet azonosítója. Bejelentkezés a ellenőrizheti ezt az információt https://access.redhat.com.
 
-## <a name="deploy-by-using-the-openshift-container-platform-resource-manager-template"></a>Az OpenShift Container Platform Resource Manager-sablon segítségével üzembe helyezése
+## <a name="deploy-using-the-openshift-container-platform-resource-manager-template"></a>Üzembe helyezés az OpenShift Container Platform Resource Manager-sablon használatával
 
-Használatával a Resource Manager-sablon üzembe helyezéséhez használhatja egy paraméterfájl adja meg a bemeneti paraméterek. Testre szabhatja az üzembe helyezés elemek, amelyek nem tartoznak a bemeneti paraméterek, a GitHub-tárház elágaztatását, és módosítsa a megfelelő elemeket.
+Használatával a Resource Manager-sablon üzembe helyezéséhez használhatja egy paraméterfájl adja meg a bemeneti paraméterek. További testreszabását az üzembe helyezés, a GitHub-tárház elágaztatását, és módosítsa a megfelelő elemeket.
 
 Néhány gyakori testreszabási lehetőségek közé tartozik, de nem korlátozódik:
 
-- Virtuális hálózat CIDR (az azuredeploy.json változó)
 - Megerősített Virtuálisgép-méret (az azuredeploy.json változó)
 - Elnevezési konvenciók (az azuredeploy.json változók)
 - OpenShift fürt tulajdonságairól, módosítani állomásleíró fájlhoz (deployOpenShift.sh)
 
 ### <a name="configure-the-parameters-file"></a>A paraméterfájl konfigurálása
 
-Használja a `appId` értékét a korábban létrehozott egyszerű szolgáltatás a `aadClientId` paraméter. 
+A [OpenShift Tárolóplatform sablon](https://github.com/Microsoft/openshift-container-platform) az OpenShift Tárolóplatform különböző verzióihoz elérhető ágak rendelkezik.  Igényei alapján telepítheti közvetlenül a tárházból vagy elágaztassa a példatárt és módosításokat egyéni parancsfájlok vagy sablonok üzembe helyezése előtt.
 
-A következő példában létrehozunk egy nevű azuredeploy.parameters.json az összes szükséges bemeneti paramétereket tartalmazó fájlt.
+Használja a `appId` értékét a korábban létrehozott egyszerű szolgáltatás a `aadClientId` paraméter.
+
+Az alábbi példa bemutatja egy nevű azuredeploy.parameters.json az összes szükséges bemeneti paramétereket tartalmazó fájlt.
 
 ```json
 {
@@ -59,10 +60,27 @@ A következő példában létrehozunk egy nevű azuredeploy.parameters.json az �
             "value": "Standard_E2s_v3"
         },
         "infraVmSize": {
-            "value": "Standard_E2s_v3"
+            "value": "Standard_D4s_v3"
         },
         "nodeVmSize": {
-            "value": "Standard_E2s_v3"
+            "value": "Standard_D4s_v3"
+        },
+        "cnsVmSize": {
+            "value": "Standard_E4s_v3"
+        },
+        "osImageType": {
+            "value": "defaultgallery"
+        },
+        "marketplaceOsImage": {
+            "value": {
+                "publisher": "RedHat",
+                "offer": "RHEL",
+                "sku": "7-RAW",
+                "version": "latest"
+            }
+        },
+        "storageKind": {
+            "value": "managed"
         },
         "openshiftClusterPrefix": {
             "value": "mycluster"
@@ -89,13 +107,10 @@ A következő példában létrehozunk egy nevű azuredeploy.parameters.json az �
             "value": "true"
         },
         "enableLogging": {
-            "value": "true"
-        },
-        "enableCockpit": {
             "value": "false"
         },
-        "rhsmUsernamePasswordOrActivationKey": {
-            "value": "usernamepassword"
+        "enableCNS": {
+            "value": "false"
         },
         "rhsmUsernameOrOrgId": {
             "value": "{RHSM Username}"
@@ -104,6 +119,9 @@ A következő példában létrehozunk egy nevű azuredeploy.parameters.json az �
             "value": "{RHSM Password}"
         },
         "rhsmPoolId": {
+            "value": "{Pool ID}"
+        },
+        "rhsmBrokerPoolId": {
             "value": "{Pool ID}"
         },
         "sshPublicKey": {
@@ -127,55 +145,141 @@ A következő példában létrehozunk egy nevű azuredeploy.parameters.json az �
         "aadClientSecret": {
             "value": "{Strong Password}"
         },
-        "defaultSubDomainType": {
+        "masterClusterDnsType": {
+            "value": "default"
+        },
+        "masterClusterDns": {
+            "value": "console.contoso.com"
+        },
+        "routingSubDomainType": {
             "value": "nipio"
+        },
+        "routingSubDomain": {
+            "value": "routing.contoso.com"
+        },
+        "virtualNetworkNewOrExisting": {
+            "value": "new"
+        },
+        "virtualNetworkName": {
+            "value": "openshiftvnet"
+        },
+        "addressPrefixes": {
+            "value": "10.0.0.0/14"
+        },
+        "masterSubnetName": {
+            "value": "mastersubnet"
+        },
+        "masterSubnetPrefix": {
+            "value": "10.1.0.0/16"
+        },
+        "infraSubnetName": {
+            "value": "infrasubnet"
+        },
+        "infraSubnetPrefix": {
+            "value": "10.2.0.0/16"
+        },
+        "nodeSubnetName": {
+            "value": "nodesubnet"
+        },
+        "nodeSubnetPrefix": {
+            "value": "10.3.0.0/16"
+        },
+        "existingMasterSubnetReference": {
+            "value": "/subscriptions/abc686f6-963b-4e64-bff4-99dc369ab1cd/resourceGroups/vnetresourcegroup/providers/Microsoft.Network/virtualNetworks/openshiftvnet/subnets/mastersubnet"
+        },
+        "existingInfraSubnetReference": {
+            "value": "/subscriptions/abc686f6-963b-4e64-bff4-99dc369ab1cd/resourceGroups/vnetresourcegroup/providers/Microsoft.Network/virtualNetworks/openshiftvnet/subnets/masterinfrasubnet"
+        },
+        "existingCnsSubnetReference": {
+            "value": "/subscriptions/abc686f6-963b-4e64-bff4-99dc369ab1cd/resourceGroups/vnetresourcegroup/providers/Microsoft.Network/virtualNetworks/openshiftvnet/subnets/cnssubnet"
+        },
+        "existingNodeSubnetReference": {
+            "value": "/subscriptions/abc686f6-963b-4e64-bff4-99dc369ab1cd/resourceGroups/vnetresourcegroup/providers/Microsoft.Network/virtualNetworks/openshiftvnet/subnets/nodesubnet"
+        },
+        "masterClusterType": {
+            "value": "public"
+        },
+        "masterPrivateClusterIp": {
+            "value": "10.1.0.200"
+        },
+        "routerClusterType": {
+            "value": "public"
+        },
+        "routerPrivateClusterIp": {
+            "value": "10.2.0.201"
+        },
+        "routingCertType": {
+            "value": "selfsigned"
+        },
+        "masterCertType": {
+            "value": "selfsigned"
+        },
+        "proxySettings": {
+            "value": "none"
+        },
+        "httpProxyEntry": {
+            "value": "none"
+        },
+        "httpsProxyEntry": {
+            "value": "none"
+        },
+        "noProxyEntry": {
+            "value": "none"
         }
     }
 }
 ```
 
-Cserélje le a szögletes zárójelben információkat az elemeket.
+Cserélje le a paramétereket a jellemző információk.
 
-### <a name="deploy-by-using-azure-cli"></a>Azure CLI-vel üzembe helyezése
+Előfordulhat, hogy a különböző kiadások eltérő paraméterekkel, ezért ellenőrizze a szükséges paramétereket az ágat használja.
+
+### <a name="deploy-using-azure-cli"></a>Üzembe helyezés az Azure CLI használatával
 
 > [!NOTE] 
-> A következő parancs használatához Azure CLI.8 vagy újabb. Az a parancssori felület verziójának ellenőrzéséhez az `az --version` parancsot. A parancssori felület verziójának frissítéséhez lásd [Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latesti).
+> A következő parancs használatához az Azure CLI-vel 2.0.8 vagy újabb. Az a parancssori felület verziójának ellenőrzéséhez az `az --version` parancsot. A parancssori felület verziójának frissítéséhez lásd [Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latesti).
 
-Az alábbi példa egy myResourceGroup nevű myOpenShiftCluster telepítési nevű erőforrás-csoportba helyez üzembe az OpenShift fürt és minden kapcsolódó erőforrás. A sablon közvetlenül a GitHub-adattárat, és a egy helyi paraméterek azuredeploy.parameters.json fájlhoz nevű fájllal a hivatkozik.
+Az alábbi példa az OpenShift fürt és minden kapcsolódó erőforrás helyez üzembe helyezzen egy erőforráscsoportban openshiftrg, nevű myOpenShiftCluster központi telepítés nevét. A sablon közvetlenül a GitHub-adattárat, és a egy helyi paraméterek azuredeploy.parameters.json fájlhoz nevű fájllal a hivatkozik.
 
 ```azurecli 
-az group deployment create -g myResourceGroup --name myOpenShiftCluster \
+az group deployment create -g openshiftrg --name myOpenShiftCluster \
       --template-uri https://raw.githubusercontent.com/Microsoft/openshift-container-platform/master/azuredeploy.json \
       --parameters @./azuredeploy.parameters.json
 ```
 
-Az üzembe helyezés befejeződik az üzembe helyezett csomópontok száma legalább 30 percet vesz igénybe. Az OpenShift fő megrendelése a terminálon az üzembe helyezést, a DNS-nevét és a OpenShift-konzol URL-címe.
+Az üzembe helyezés legalább 30 percig tart, üzembe helyezett csomópontok és a konfigurált beállítások teljes száma alapján. A megerősített DNS teljes tartománynév és az OpenShift-konzol URL-cím nyomtat a terminálon az üzembe helyezést.
 
 ```json
 {
-  "OpenShift Console Uri": "http://openshiftlb.cloudapp.azure.com:8443/console",
-  "OpenShift Master SSH": "ssh clusteradmin@myopenshiftmaster.cloudapp.azure.com -p 2200"
+  "Bastion DNS FQDN": "bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com",
+  "OpenShift Console URL": "http://openshiftlb.eastus.cloudapp.azure.com/console"
 }
 ```
 
-## <a name="deploy-by-using-the-openshift-container-platform-azure-marketplace-offer"></a>Az OpenShift Container Platform Azure Marketplace-ajánlat használatával üzembe helyezése
+Ha nem szeretné a parancssorból, Várakozás a telepítés befejeződik, adja hozzá a lefoglalhatnak `--no-wait` , a csoport központi telepítésének a lehetőségek közül. Az üzembe helyezés kimenete az erőforráscsoport az üzembe helyezés szakaszban az Azure Portalról kérhető.
+ 
+## <a name="deploy-using-the-openshift-container-platform-azure-marketplace-offer"></a>Üzembe helyezés az OpenShift Container Platform Azure Marketplace-ajánlat
 
 Üzembe helyezésének OpenShift Container Platform az Azure-bA a legegyszerűbb módja az, hogy használja a [Azure Marketplace-ajánlat](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview).
 
-Ez a legegyszerűbb lehetőség, de azt is korlátozott testreszabási lehetőségeket. Az ajánlat három konfigurációs beállításokat tartalmazza:
+Ez a legegyszerűbb lehetőség, de azt is korlátozott testreszabási lehetőségeket. A Piactéri ajánlat az alábbi konfigurációs lehetőségeket tartalmazza:
 
-- **Kis**: egy nem magas rendelkezésre ÁLLÁS fürtöt egy fő csomóponttal, egyetlen infrastruktúra csomópont, két alkalmazás csomópont és a egy megerősített csomópont helyez üzembe. Minden csomópont olyan szabványos DS2v2 Virtuálisgép-méretek. Ez a fürt 10 összes mag szükséges, és ideális megoldás kis-teszteléséhez.
-- **Közepes**: három fő csomóponttal, a két infrastruktúra csomópont, a alkalmazás négy csomópont és a egy megerősített csomópont egy magas rendelkezésre ÁLLÁSÚ fürtöt helyez üzembe. A megerősített csomópont kívül minden csomópont olyan szabványos DS3v2 Virtuálisgép-méretek. A megerősített csomópontnak számít egy standard DS2v2. Ez a fürt 38 magra van szükség.
-- **Nagy**: egy három fő csomóponttal, a két infrastruktúra csomópont, a hat alkalmazás csomópontok és a egy megerősített csomópont a magas rendelkezésre ÁLLÁSÚ fürtöt helyez üzembe. A fő- és infrastruktúra-csomópontok használata standard DS3v2 Virtuálisgép-méretek. Az alkalmazás csomópontok standard DS4v2 Virtuálisgép-méretek, és a megerősített csomópont egy standard DS2v2. Ez a fürt 70 mag szükséges.
-
-Az Azure Cloud Solution Provider konfigurálása nem kötelező, a közepes és nagy méretű fürt méretét. A kis méretű fürt mérete nem biztosít az Azure Cloud Solution Provider konfigurálásához.
+- **Fő csomópontok**: három (3) fő csomópontok konfigurálható a példány típusa.
+- **Infra csomópontok**: három (3) infrastruktúra-csomópont konfigurálható példánytípust.
+- **Csomópontok**: csomópontok száma nem konfigurálható (között a 2. és 9) és a példánytípust.
+- **Lemez típusa**: felügyelt lemezeket használ.
+- **Hálózatkezelés**: új vagy meglévő hálózati, valamint az egyéni CIDR-tartomány támogatása.
+- **CNS**: CNS engedélyezhető.
+- **Metrikák**: metrikákat is engedélyezhető.
+- **Naplózás**: naplózás is engedélyezhető.
+- **Az Azure Felhőszolgáltató**: engedélyezhető.
 
 ## <a name="connect-to-the-openshift-cluster"></a>Csatlakozzon az OpenShift-fürthöz
 
-Az üzembe helyezést követően az OpenShift konzolhoz csatlakozik a böngésző használatával a `OpenShift Console Uri`. Azt is megteheti csatlakoztathatja az OpenShift fő a következő paranccsal:
+Az üzembe helyezést követően a kimeneti szakaszban az üzemelő példány lekérdezni a kapcsolatot. Csatlakozás a böngészőjében az OpenShift konzol használatával a `OpenShift Console URL`. Azt is megteheti akkor az SSH, a bástyagazdagép. Következő egy példa, ahol a rendszergazda felhasználóneve clusteradmin, a megerősített nyilvános IP-cím DNS teljes Tartományneve pedig bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
 
 ```bash
-$ ssh clusteradmin@myopenshiftmaster.cloudapp.azure.com -p 2200
+$ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -183,11 +287,15 @@ $ ssh clusteradmin@myopenshiftmaster.cloudapp.azure.com -p 2200
 Használja a [az csoport törlése](/cli/azure/group#az_group_delete) paranccsal eltávolítható az erőforráscsoport, az OpenShift fürt, és az összes kapcsolódó erőforrást, amikor azok már nincs szükség van.
 
 ```azurecli 
-az group delete --name myResourceGroup
+az group delete --name openshiftrg
 ```
 
 ## <a name="next-steps"></a>További lépések
 
 - [Üzembe helyezés utáni feladatok](./openshift-post-deployment.md)
 - [Az Azure-ban az OpenShift telepítés hibaelhárítása](./openshift-troubleshooting.md)
-- [Ismerkedés az OpenShift Tárolóplatform](https://docs.openshift.com/container-platform/3.6/getting_started/index.html)
+- [Ismerkedés az OpenShift Tárolóplatform](https://docs.openshift.com/container-platform)
+
+### <a name="documentation-contributors"></a>Dokumentáció a közreműködők
+
+Köszönjük, hogy Vincent Power (vincepower) és Alfred Sin (asinn826) gondoskodik a naprakész ebben a dokumentációban való hozzájárulásaikat!

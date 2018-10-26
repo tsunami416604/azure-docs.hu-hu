@@ -4,16 +4,16 @@ description: Ismerje meg az Erőforrás-grafikon lekérdezési nyelv segítség�
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: f488dfad8a38bbfab3b5b74e5b504463af09c089
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: bcd25b95d1369ef98662384945123126ebbbd70f
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645932"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086896"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Az Azure-erőforrások felfedezése a Resource Graph használatával
 
@@ -21,7 +21,7 @@ Az Azure Erőforrás-grafikon lehetővé teszi a vizsgálata, és Fedezze fel az
 
 ## <a name="explore-virtual-machines"></a>A virtual machines felfedezése
 
-Az Azure-ban egy közös erőforráshoz egy virtuális gépet. Egy erőforrás típusa, mint a virtuális gépek rendelkeznek számos olyan tulajdonságokat, hogy lekérdezhetők legyenek. Minden egyes tulajdonság a szűrés vagy pontosan a keresett erőforrás keresése lehetőséget biztosít.
+Az Azure-ban egy közös erőforráshoz egy virtuális gépet. Virtuális gépek egy erőforrás típusa van, hogy lekérdezhetők legyenek sok tulajdonságot. Minden egyes tulajdonság a szűrés vagy pontosan a keresett erőforrás keresése lehetőséget biztosít.
 
 ### <a name="virtual-machine-discovery"></a>Virtuális gép felderítése
 
@@ -214,7 +214,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' and propert
 Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | project name, resourceGroup"
 ```
 
-### <a name="virtual-machines-connected-to-premium-managed-disks"></a>Virtuális gépek csatlakozni a prémium szintű felügyelt lemezekre
+### <a name="virtual-machines-connected-to-premium-managed-disks"></a>Virtuális gépek csatlakozni a prémium szintű managed Disks szolgáltatásba
 
 Ha szerettünk volna a részletek a prémium szintű felügyelt lemezek ezek csatolt **Standard_B2s** virtuális gépeket, hogy kibontásával, a lekérdezést, hogy ossza meg velünk a felügyelt lemez az erőforrás-azonosítója.
 
@@ -236,11 +236,11 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualmachines' and propert
 Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
 ```
 
-Az eredmény az lemez listája-azonosítók
+Ez a lemez azonosítók listáját.
 
 ### <a name="managed-disk-discovery"></a>Felügyelt lemez felderítése
 
-Az előző lekérdezés első rekordja tart, azt vizsgáljuk meg a Tulajdonságok léteznek, a felügyelt lemez, amely az első virtuális gépen lett csatolva. A frissített lekérdezés lemezazonosító és módosítsa a típust használja.
+Az első rekordja az előző lekérdezést azt vizsgáljuk meg a Tulajdonságok léteznek, a felügyelt lemez, amely az első virtuális gépen lett csatolva. A frissített lekérdezés a lemez Azonosítóját használja, és módosítja a típusát.
 
 Például, például az előző lekérdezés kimenete:
 
@@ -314,7 +314,7 @@ A JSON-eredményeket struktúrája a következő példához hasonló:
 
 ## <a name="explore-virtual-machines-to-find-public-ip-addresses"></a>Ismerje meg a virtuális gépek nyilvános IP-címek keresése
 
-Az Azure CLI több lépésből álló lekérdezések először megkeresi és tárolja a hálózati adapterek (NIC) erőforrások virtuális gépekhez csatlakoztatott, használja a hálózati adapter minden IP-cím erőforrás, amely a nyilvános IP-címek keresése, és tárolja ezeket az értékeket, és végül biztosít az összes olyan a tényleges nyilvános IP-címek listáját.
+Az Azure CLI-vel lekérdezések először megkeresi és tárolja a hálózati adapterek (NIC) erőforrások virtuális gépekhez csatlakoztatott összes. Ezután minden IP-cím erőforrás, amely egy nyilvános IP-cím megállapításához használja a hálózati adapterek listáját, és tárolja ezeket az értékeket. Végül biztosít a nyilvános IP-címek listáját.
 
 ```azurecli-interactive
 # Use Resource Graph to get all NICs and store in the 'nic' variable
@@ -324,7 +324,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | project n
 cat nics.txt
 ```
 
-Ha már rendelkezünk a `nics.txt` fájlt használjuk, a következő lekérdezésben beolvasni a kapcsolódó hálózati adapter erőforrások adatait, ha egy nyilvános IP-cím csatolt hálózati adaptereken.
+Használja a `nics.txt` fájlt a következő lekérdezésben kérheti le a kapcsolódó hálózati adapter erőforrások adatait, ha egy nyilvános IP-cím csatolt hálózati adaptereken.
 
 ```azurecli-interactive
 # Use Resource Graph with the 'nics.txt' file to get all related public IP addresses and store in 'publicIp.txt' file

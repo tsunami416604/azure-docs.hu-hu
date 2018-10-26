@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/17/2018
+ms.date: 10/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: c32c4f97a963485e87e36afc44e9cea2ebcebd90
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: e99d5d36fa46e9972e706d580e4dfb1d5f9e8bbc
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394410"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093825"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -28,8 +28,10 @@ Erőforrások áthelyezésekor mind a forrás és a cél csoport zárolva vannak
 Az erőforrás helye nem módosítható. Erőforrások áthelyezése csak áthelyezi egy új erőforráscsoportot. Az új erőforráscsoportot egy másik helyre azonban lehet, hogy az erőforrás helye nem változik.
 
 > [!NOTE]
-> Ez a cikk ismerteti, hogyan helyezheti át egy meglévő Azure-erőforrások fiók ajánlatát. Ha valójában módosítani szeretné az Azure-fiókkal (például frissítése használatalapú fizetésre, és Előre fizetés) ajánlat miközben továbbra is a meglévő erőforrásokkal, lásd: [Váltás másik ajánlatra az Azure-előfizetés](../billing/billing-how-to-switch-azure-offer.md).
->
+> Ez a cikk ismerteti, hogyan helyezheti át egy meglévő Azure-erőforrások fiók ajánlatát. Ha valójában módosítani szeretné az Azure-fiókkal (például az ingyenes frissítése használatalapú fizetéses előfizetésre) kínál az előfizetés konvertálnia kell. 
+> * Ingyenes próbaverzió frissítése, lásd: [az ingyenes próba- vagy a Microsoft Imagine Azure-előfizetés frissítése használatalapú fizetésre](..//billing/billing-upgrade-azure-subscription.md).
+> * Ha módosítani szeretné egy használatalapú fizetéses fiókra, lásd: [az Azure használatalapú fizetéses előfizetésre váltani egy másik ajánlatra](../billing/billing-how-to-switch-azure-offer.md).
+> * Ha az előfizetést, nem konvertálhatóak [hozzon létre egy Azure-támogatáskérést](../azure-supportability/how-to-create-azure-support-request.md). Válassza ki **előfizetés-kezelési** issue type számára.
 >
 
 ## <a name="checklist-before-moving-resources"></a>Erőforrások áthelyezése előtti ellenőrzőlistát
@@ -269,7 +271,7 @@ Az alábbi lista nem lehet áthelyezni egy új erőforráscsoportot és egy elő
 
 2018. szeptember 24 áthelyezése a felügyelt lemezek támogatottak. 
 
-1. Ez a funkció engedélyezéséhez regisztrálni kell.
+1. A forrás-előfizetés Ez a funkció regisztrálása.
 
   ```azurepowershell-interactive
   Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute

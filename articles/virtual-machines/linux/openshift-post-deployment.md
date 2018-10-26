@@ -4,7 +4,7 @@ description: Az OpenShift fürt után további feladatai lett telepítve.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
-manager: najoshi
+manager: joraio
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,22 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/09/2018
+ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 39febceff58127fb9777ace6e3063fbe41605b79
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 7b129eea513b7856ca99b02842b3b9c33c6ec19b
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426447"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50084985"
 ---
 # <a name="post-deployment-tasks"></a>Üzembe helyezés utáni feladatok
 
-Miután az OpenShift fürtöt telepít, konfigurálhatja úgy a további elemek. Ez a cikk a következőket tartalmazza:
+Miután az OpenShift fürtöt telepít, konfigurálhatja úgy a további elemek. Ez a cikk ismerteti:
 
 - Az Azure Active Directory (Azure AD) használatával az egyszeri bejelentkezés konfigurálása
 - OpenShift figyelése a Log Analytics konfigurálása
 - Metrikák és naplózás konfigurálása
+- Open Service Broker for Azure (OSBA) telepítése
 
 ## <a name="configure-single-sign-on-by-using-azure-active-directory"></a>Az Azure Active Directoryval egyszeri bejelentkezés konfigurálása
 
@@ -39,15 +40,15 @@ Azure Active Directory-hitelesítéshez használandó, először hozzon létre e
 Ezeket a lépéseket az Azure CLI használatával hozzon létre az alkalmazás regisztrációját, és a grafikus felhasználói Felülettel (portál) állítsa be az engedélyeket. Szeretne létrehozni az alkalmazás regisztrációját, az alábbi öt adatokra van szükség:
 
 - Megjelenített név: alkalmazás regisztrációja nevét (például OCPAzureAD)
-- Kezdőlap: OpenShift-konzol URL-címe (például https://masterdns343khhde.westus.cloudapp.azure.com:8443/console)
-- URI-azonosító: OpenShift konzol URL-címe (például https://masterdns343khhde.westus.cloudapp.azure.com:8443/console)
+- Kezdőlap: OpenShift-konzol URL-címe (például https://masterdns343khhde.westus.cloudapp.azure.com/console)
+- URI-azonosító: OpenShift konzol URL-címe (például https://masterdns343khhde.westus.cloudapp.azure.com/console)
 - Válasz URL-cím: Fő nyilvános URL-CÍMÉT és az alkalmazás regisztrációs nevét (például https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
 - Jelszó: Biztonságos jelszó (erős jelszó használata)
 
 A következő példában létrehozunk egy alkalmazásregisztráció az előző információk alapján:
 
 ```azurecli
-az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.westus.cloudapp.azure.com:8443/console --reply-urls https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD --identifier-uris https://masterdns343khhde.westus.cloudapp.azure.com:8443/console --password {Strong Password}
+az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.westus.cloudapp.azure.com/console --reply-urls https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/hwocpadint --identifier-uris https://masterdns343khhde.westus.cloudapp.azure.com/console --password {Strong Password}
 ```
 
 Ha a parancs végrehajtása sikeres, megjelenik egy JSON-kimenetet hasonló:
@@ -58,9 +59,9 @@ Ha a parancs végrehajtása sikeres, megjelenik egy JSON-kimenetet hasonló:
   "appPermissions": null,
   "availableToOtherTenants": false,
   "displayName": "OCPAzureAD",
-  "homepage": "https://masterdns343khhde.westus.cloudapp.azure.com:8443/console",
+  "homepage": "https://masterdns343khhde.westus.cloudapp.azure.com/console",
   "identifierUris": [
-    "https://masterdns343khhde.westus.cloudapp.azure.com:8443/console"
+    "https://masterdns343khhde.westus.cloudapp.azure.com/console"
   ],
   "objectId": "62cd74c9-42bb-4b9f-b2b5-b6ee88991c80",
   "objectType": "Application",
@@ -82,7 +83,7 @@ Az Azure Portalon:
 
   ![Alkalmazásregisztráció](media/openshift-post-deployment/app-registration.png)
 
-6.  Kattintson az 1. lépés: Válassza ki az API-t, és kattintson a **Azure Active Directory (Microsoft.Azure.ActiveDirectory)**. Kattintson a **kiválasztása** alján.
+6.  Kattintson az 1. lépés: Válassza ki az API-t, és kattintson a **Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)**. Kattintson a **kiválasztása** alján.
 
   ![Alkalmazásregisztráció kijelölt API](media/openshift-post-deployment/app-registration-select-api.png)
 
@@ -106,7 +107,7 @@ A yaml-fájlt keresse meg a következő sorokat:
 
 ```yaml
 oauthConfig:
-  assetPublicURL: https://masterdns343khhde.westus.cloudapp.azure.com:8443/console/
+  assetPublicURL: https://masterdns343khhde.westus.cloudapp.azure.com/console/
   grantConfig:
     method: auto
   identityProviders:
@@ -146,16 +147,9 @@ Illessze be a következő sorokat a megelőző sorok után azonnal:
         token: https://login.microsoftonline.com/<tenant Id>/oauth2/token
 ```
 
-Keresse meg a bérlő Azonosítóját a következő CLI-parancs használatával: ```az account show```
+Ellenőrizze, hogy a szöveg igazítja megfelelően identityProviders alatt. Keresse meg a bérlő Azonosítóját a következő CLI-parancs használatával: ```az account show```
 
 Indítsa újra az összes fő csomóponton az OpenShift fő szolgáltatások:
-
-**OpenShift Origin**
-
-```bash
-sudo systemctl restart origin-master-api
-sudo systemctl restart origin-master-controllers
-```
 
 **Az OpenShift Container Platform (OCP) minták**
 
@@ -170,135 +164,47 @@ sudo systemctl restart atomic-openshift-master-controllers
 sudo systemctl restart atomic-openshift-master
 ```
 
+**A több főkiszolgálót OKD**
+
+```bash
+sudo systemctl restart origin-master-api
+sudo systemctl restart origin-master-controllers
+```
+
+**A fő egyetlen OKD**
+
+```bash
+sudo systemctl restart origin-master
+```
+
 Az OpenShift-konzolon, most már két lehetőség jelenik meg a hitelesítéshez: htpasswd_auth és [Alkalmazásregisztráció].
 
 ## <a name="monitor-openshift-with-log-analytics"></a>A figyelő az OpenShift a Log Analytics használatával
 
-OpenShift Log Analytics szolgáltatással figyelheti, két lehetőség egyikét használhatja: Virtuálisgép-gazda, vagy a Log Analytics-tárolót a Log Analytics-ügynök telepítése. Ez a cikk ismerteti a Log Analytics-tároló üzembe helyezése.
+A Log Analytics-ügynök hozzáadása az OpenShift három módja van.
+- A Linuxhoz készült Log Analytics-ügynök telepítése minden egyes OpenShift csomóponton közvetlenül
+- Minden egyes OpenShift csomóponton Log Analytics Virtuálisgép-bővítmény engedélyezése
+- A Log Analytics-ügynök telepítése egy OpenShift démon-készletben
 
-## <a name="create-an-openshift-project-for-log-analytics-and-set-user-access"></a>OpenShift projekt létrehozása a Log Analytics és a felhasználói hozzáférés beállítása
-
-```bash
-oadm new-project omslogging --node-selector='zone=default'
-oc project omslogging
-oc create serviceaccount omsagent
-oadm policy add-cluster-role-to-user cluster-reader system:serviceaccount:omslogging:omsagent
-oadm policy add-scc-to-user privileged system:serviceaccount:omslogging:omsagent
-```
-
-## <a name="create-a-daemon-set-yaml-file"></a>Hozzon létre egy démon set yaml-fájlt
-
-Hozzon létre egy fájlt ocp-omsagent.yml:
-
-```yaml
-apiVersion: extensions/v1beta1
-kind: DaemonSet
-metadata:
-  name: oms
-spec:
-  selector:
-    matchLabels:
-      name: omsagent
-  template:
-    metadata:
-      labels:
-        name: omsagent
-        agentVersion: 1.4.0-45
-        dockerProviderVersion: 10.0.0-25
-    spec:
-      nodeSelector:
-        zone: default
-      serviceAccount: omsagent
-      containers:
-      - image: "microsoft/oms"
-        imagePullPolicy: Always
-        name: omsagent
-        securityContext:
-          privileged: true
-        ports:
-        - containerPort: 25225
-          protocol: TCP
-        - containerPort: 25224
-          protocol: UDP
-        volumeMounts:
-        - mountPath: /var/run/docker.sock
-          name: docker-sock
-        - mountPath: /etc/omsagent-secret
-          name: omsagent-secret
-          readOnly: true
-        livenessProbe:
-          exec:
-            command:
-              - /bin/bash
-              - -c
-              - ps -ef | grep omsagent | grep -v "grep"
-          initialDelaySeconds: 60
-          periodSeconds: 60
-      volumes:
-      - name: docker-sock
-        hostPath:
-          path: /var/run/docker.sock
-      - name: omsagent-secret
-        secret:
-         secretName: omsagent-secret
-````
-
-## <a name="create-a-secret-yaml-file"></a>Titkos kód yaml-fájl létrehozása
-
-A titkos yaml-fájl létrehozásához szükséges kétféle információra: Log Analytics-munkaterület Azonosítójára és a Log Analytics munkaterület megosztott kulcsot. 
-
-A következő egy minta ocp-secret.yml fájlt: 
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: omsagent-secret
-data:
-  WSID: wsid_data
-  KEY: key_data
-```
-
-Cserélje le wsid_data a Base64-kódolású Log Analytics-munkaterület-azonosítót. Ezután cserélje le key_data a Base64-kódolású Log Analytics munkaterület megosztott kulcsot.
-
-```bash
-wsid_data='11111111-abcd-1111-abcd-111111111111'
-key_data='My Strong Password'
-echo $wsid_data | base64 | tr -d '\n'
-echo $key_data | base64 | tr -d '\n'
-```
-
-## <a name="create-the-secret-and-daemon-set"></a>A titkos kulcs és a démont készlet létrehozása
-
-A titkos kód fájlját üzembe:
-
-```bash
-oc create -f ocp-secret.yml
-```
-
-Helyezze üzembe a Log Analytics-ügynököket démon beállítása:
-
-```bash
-oc create -f ocp-omsagent.yml
-```
+Részletes útmutatást itt találhatók: https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift.
 
 ## <a name="configure-metrics-and-logging"></a>Metrikák és naplózás konfigurálása
 
-Az Azure Resource Manager-sablon az OpenShift Tárolóplatform mérőszámainak engedélyezése és a naplózás a bemeneti paramétereket biztosít. Az OpenShift Container Platform Piactéri ajánlat és az OpenShift Origin Resource Manager-sablon viszont nem.
+Az ág alapján, az Azure Resource Manager-sablonok az OpenShift Tárolóplatform és OKD rendelkezhetnek mérőszámainak engedélyezése és a telepítés részeként naplózási bemeneti paramétereit.
 
-Ha követte az OCP Resource Manager-sablon és a metrikák és naplózás a telepítés nem engedélyezett, vagy az OCP Piactéri ajánlat használata esetén biztos lehet egyszerűen engedélyezése ezek után az a tény. Az OpenShift Origin Resource Manager-sablon használata, néhány előtti munkahelyi szükség.
+Az OpenShift Container Platform Marketplace-ajánlat is lehetőséget biztosít, hogy engedélyezze a metrikák és naplózás fürt telepítése során.
 
-### <a name="openshift-origin-template-pre-work"></a>Az OpenShift Origin sablon előtti munka
+Ha a metrikák / naplózás nincs engedélyezve a fürt telepítésekor, azok egyszerűen engedélyezhető bekövetkeztek.
 
-1. Az SSH-port 2200 használatával az első fő csomópontot.
+### <a name="ansible-inventory-pre-work"></a>Az Ansible készlet előtti munka
 
-   Példa:
+Ellenőrizze az ansible leltárfájl (/ etc/ansible /-gazdagépekre) rendelkezik a megfelelő változók metrikákhoz / naplózása. A leltárfájl használt sablon alapján különböző gazdagépeken található.
 
-   ```bash
-   ssh -p 2200 clusteradmin@masterdnsixpdkehd3h.eastus.cloudapp.azure.com 
-   ```
+Az OpenShift-tárolósablon és a Piactéri ajánlat a készlet fájl található bástyagazdagép. A OKD sablon a készlet fájl a fő-0 gazdagépen található, vagy a bástyagazdagép alapján az ágat használja.
 
-2. Szerkessze a /etc/ansible/hosts fájlt, és adja hozzá a következő sorokat a Identity Provider (# HTPasswdPasswordIdentityProvider engedélyezése) szakasz után:
+1. Szerkessze a /etc/ansible/hosts fájlt, és adja hozzá a következő sorokat a Identity Provider (# HTPasswdPasswordIdentityProvider engedélyezése) szakasz után. Ha ezek a sorok már jelen, nem kell hozzáadnia őket újra.
+
+   OpenShift / 3.9 és korábbi OKD verziói
 
    ```yaml
    # Setup metrics
@@ -320,35 +226,130 @@ Ha követte az OCP Resource Manager-sablon és a metrikák és naplózás a tele
    openshift_master_logging_public_url=https://kibana.$ROUTING
    ```
 
+   OpenShift / OKD verziók 3.10 és újabb verziók
+
+   ```yaml
+   # Setup metrics
+   openshift_metrics_install_metrics=false
+   openshift_metrics_start_cluster=true
+   openshift_metrics_hawkular_nodeselector={"node-role.kubernetes.io/infra":"true"}
+   openshift_metrics_cassandra_nodeselector={"node-role.kubernetes.io/infra":"true"}
+   openshift_metrics_heapster_nodeselector={"node-role.kubernetes.io/infra":"true"}
+
+   # Setup logging
+   openshift_logging_install_logging=false
+   openshift_logging_fluentd_nodeselector={"logging":"true"}
+   openshift_logging_es_nodeselector={"node-role.kubernetes.io/infra":"true"}
+   openshift_logging_kibana_nodeselector={"node-role.kubernetes.io/infra":"true"}
+   openshift_logging_curator_nodeselector={"node-role.kubernetes.io/infra":"true"}
+   openshift_logging_master_public_url=https://kibana.$ROUTING
+   ```
+
 3. A karakterlánc, amellyel a openshift_master_default_subdomain beállítás /etc/ansible/hosts ugyanebben a fájlban cserélje le a $ROUTING.
 
 ### <a name="azure-cloud-provider-in-use"></a>Használja az Azure Felhőszolgáltató
 
-Az első fő csomópont (forrás) vagy a megerősített csomópont (OCP), az SSH a telepítés során megadott hitelesítő adatok használatával. A következő parancs kiadásával:
+Ssh-KAPCSOLATOT a megerősített vagy első fő csomópontot (a sablon és a használatban lévő ág alapján) a telepítés során megadott hitelesítő adatok használatával. A következő parancs kiadásával:
+
+**OpenShift Tárolóplatform 3,7 és korábbi verziók**
 
 ```bash
-ansible-playbook $HOME/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
+ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
 -e openshift_metrics_install_metrics=True \
 -e openshift_metrics_cassandra_storage_type=dynamic
 
-ansible-playbook $HOME/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml \
+ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml \
 -e openshift_logging_install_logging=True \
 -e openshift_hosted_logging_storage_kind=dynamic
 ```
 
-### <a name="azure-cloud-provider-not-in-use"></a>Az Azure Cloud-szolgáltató nincs használatban
-
-Az első fő csomópont (forrás) vagy a megerősített csomópont (OCP), az SSH a telepítés során megadott hitelesítő adatok használatával. A következő parancs kiadásával:
+**OpenShift Tárolóplatform 3.9 és újabb verziók**
 
 ```bash
-ansible-playbook $HOME/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
--e openshift_metrics_install_metrics=True 
+ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml \
+-e openshift_metrics_install_metrics=True \
+-e openshift_metrics_cassandra_storage_type=dynamic
 
-ansible-playbook $HOME/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml \
--e openshift_logging_install_logging=True 
+ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-logging/config.yml \
+-e openshift_logging_install_logging=True \
+-e openshift_logging_es_pvc_dynamic=true
 ```
+
+**OKD 3,7 és korábbi verziók**
+
+```bash
+ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
+-e openshift_metrics_install_metrics=True \
+-e openshift_metrics_cassandra_storage_type=dynamic
+
+ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml \
+-e openshift_logging_install_logging=True \
+-e openshift_hosted_logging_storage_kind=dynamic
+```
+
+**OKD 3.9 és újabb verziók**
+
+```bash
+ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
+-e openshift_metrics_install_metrics=True \
+-e openshift_metrics_cassandra_storage_type=dynamic
+
+ansible-playbook ~/openshift-ansible/playbooks/openshift-logging/config.yml \
+-e openshift_logging_install_logging=True \
+-e openshift_logging_es_pvc_dynamic=true
+```
+
+### <a name="azure-cloud-provider-not-in-use"></a>Az Azure Cloud-szolgáltató nincs használatban
+
+Ssh-KAPCSOLATOT a megerősített vagy első fő csomópontot (a sablon és a használatban lévő ág alapján) a telepítés során megadott hitelesítő adatok használatával. A következő parancs kiadásával:
+
+
+**OpenShift Tárolóplatform 3,7 és korábbi verziók**
+
+```bash
+ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
+-e openshift_metrics_install_metrics=True
+
+ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml \
+-e openshift_logging_install_logging=True
+```
+
+**OpenShift Tárolóplatform 3.9 és újabb verziók**
+
+```bash
+ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml \
+-e openshift_metrics_install_metrics=True
+
+ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-logging/config.yml \
+-e openshift_logging_install_logging=True
+```
+
+**OKD 3,7 és korábbi verziók**
+
+```bash
+ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
+-e openshift_metrics_install_metrics=True
+
+ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml \
+-e openshift_logging_install_logging=True
+```
+
+**OKD 3.9 és újabb verziók**
+
+```bash
+ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
+-e openshift_metrics_install_metrics=True
+ansible-playbook ~/openshift-ansible/playbooks/openshift-logging/config.yml \
+-e openshift_logging_install_logging=True
+```
+
+## <a name="install-open-service-broker-for-azure-osba"></a>Az Open Service Broker for Azure (OSBA) telepítése
+
+Nyissa meg a Service Broker for Azure-ban vagy az OSBA, lehetővé teszi, hogy közvetlenül az OpenShift az Azure Cloud Services üzembe helyezi. Az Azure Open Service Broker API megvalósítása az OSBA. Az Open Service Broker API egy specifikációja, amelyek egy közös nyelvvel felhő szolgáltatókat, felhőbeli natív alkalmazásokat nélkül zár a felhőszolgáltatások kezelésére használható.
+
+Az OpenShift OSBA telepítéséhez kövesse az itt található utasításokat: https://github.com/Azure/open-service-broker-azure#openshift-project-template. 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Ismerkedés az OpenShift Tárolóplatform](https://docs.openshift.com/container-platform/3.6/getting_started/index.html)
-- [Bevezetés az OpenShift Origin használatába](https://docs.openshift.org/latest/getting_started/index.html)
+- [Ismerkedés az OpenShift Tárolóplatform](https://docs.openshift.com/container-platform)
+- [OKD – első lépések](https://docs.okd.io/latest)

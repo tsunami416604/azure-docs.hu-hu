@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 118660e8947663328554ac0116b5519267197336
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: c5f441fef95989e5c82586d96fc6c10e00a9627c
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984298"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085495"
 ---
 # <a name="streaming-policies"></a>Streamelési szabályok
 
@@ -29,17 +29,17 @@ Az Azure Media Services v3, adatfolyam-szabályzatok lehetővé teszik adatfolya
 
 Az alábbi táblázat a StreamingPolicy tulajdonságait jeleníti meg, és lehetővé teszi a definíciójukat.
 
-|Name (Név)|Típus|Leírás|
-|---|---|---|
-|id|sztring|Az erőforrás teljes erőforrás-azonosítója.|
-|név|sztring|Az erőforrás neve.|
-|properties.commonEncryptionCbcs|CommonEncryptionCbcs|CommonEncryptionCbcs konfigurációja|
-|properties.commonEncryptionCenc|CommonEncryptionCenc|CommonEncryptionCenc konfigurációja|
-|Properties.created |sztring|Adatfolyam-házirend létrehozásának idejét|
-|properties.defaultContentKeyPolicyName |sztring|Aktuális Streamelési házirend által használt alapértelmezett ContentKey|
-|properties.envelopeEncryption  |EnvelopeEncryption|EnvelopeEncryption konfigurációja|
-|properties.noEncryption|NoEncryption|NoEncryption konfigurációi|
-|type|sztring|Az erőforrás típusát.|
+|Name (Név)|Leírás|
+|---|---|
+|id|Az erőforrás teljes erőforrás-azonosítója.|
+|név|Az erőforrás neve.|
+|properties.commonEncryptionCbcs|CommonEncryptionCbcs konfigurációja|
+|properties.commonEncryptionCenc|CommonEncryptionCenc konfigurációja|
+|Properties.created |Adatfolyam-házirend létrehozásának idejét|
+|properties.defaultContentKeyPolicyName |Aktuális Streamelési házirend által használt alapértelmezett ContentKey|
+|properties.envelopeEncryption  |EnvelopeEncryption konfigurációja|
+|properties.noEncryption|NoEncryption konfigurációi|
+|type|Az erőforrás típusát.|
 
 A teljes meghatározása: [szabályzatokat. adatfolyam](https://docs.microsoft.com/rest/api/media/streamingpolicies).
 

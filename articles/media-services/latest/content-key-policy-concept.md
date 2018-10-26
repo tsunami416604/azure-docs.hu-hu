@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 9a5ef8df9b1ca87430fb5e8d1da94f1899c4a856
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 24597c36ab6569abb53c7be331631556e2abfe66
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985862"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085957"
 ---
 # <a name="content-key-policies"></a>Tartalomkulcsszabályok
 
@@ -28,16 +28,16 @@ Az Azure Media Services v3 tartalom kulcs házirendjei lehetővé teszik annak m
 
 Az alábbi táblázat a ContentKeyPolicy tulajdonságait jeleníti meg, és lehetővé teszi a definíciójukat.
 
-|Name (Név)|Típus|Leírás|
-|---|---|---|
-|id|sztring|Az erőforrás teljes erőforrás-azonosítója.|
-|név|sztring|Az erőforrás neve.|
-|Properties.created |sztring|A szabályzat létrehozásának dátuma|
-|properties.description |sztring|A házirend leírását.|
-|properties.lastModified    |sztring|A házirend utolsó módosítás dátuma|
-|Properties.Options |ContentKeyPolicyOption]|A kulcs házirend-beállításokban.|
-|properties.policyId    |sztring|Az örökölt szabályzat azonosítója.|
-|type   |sztring|Az erőforrás típusát.|
+|Name (Név)|Leírás|
+|---|---|
+|id|Az erőforrás teljes erőforrás-azonosítója.|
+|név|Az erőforrás neve.|
+|Properties.created |A szabályzat létrehozásának dátuma|
+|properties.description |A házirend leírását.|
+|properties.lastModified|A házirend utolsó módosítás dátuma|
+|Properties.Options |A kulcs házirend-beállításokban.|
+|properties.policyId    |Az örökölt szabályzat azonosítója.|
+|type   |Az erőforrás típusát.|
 
 A teljes meghatározása: [Tartalomszabályzat kulcs](https://docs.microsoft.com/rest/api/media/contentkeypolicies).
 

@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 633717a9f5f74648f7418970dd8047079efe18b9
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 38839379f584b40cdbefad3e4cbb3bc47881c9a7
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649091"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094595"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Egy Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz
 Csatlakozás az Azure-SSIS integrációs modulját (IR) az Azure virtual Networkhöz a következő esetekben: 
@@ -28,6 +28,9 @@ Csatlakozás az Azure-SSIS integrációs modulját (IR) az Azure virtual Network
 - Az SQL Server Integration Services (SSIS) katalógust adatbázis az Azure SQL Database virtuális hálózati szolgáltatás végpontok/Managed Instance üzemeltet. 
 
  Az Azure Data Factory használatával csatlakoztathatja az Azure-SSIS integrációs modult a klasszikus üzemi modellel vagy az Azure Resource Manager üzemi modell használatával létrehozott virtuális hálózatban. 
+
+> [!IMPORTANT]
+> A klasszikus virtuális hálózat jelenleg elavult, ezért az Azure Resource Manager-virtuális hálózathoz helyette.  Ha a klasszikus virtuális hálózat már használ, váltson minél hamarabb használja az Azure Resource Manager virtuális hálózatot.
 
 ## <a name="access-to-on-premises-data-stores"></a>A hozzáférést a helyszíni adattárak
 Ha az SSIS-csomagok eléréséhez csak nyilvános felhőalapú adattárolók, nem kell az Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz. SSIS-csomagok helyszíni adattárak eléréséhez, ha az Azure-SSIS integrációs modul a helyszíni hálózathoz csatlakoztatott virtuális hálózathoz kell csatlakoztatni. 
@@ -46,11 +49,13 @@ Az alábbiakban néhány fontos tudnivalók:
 Az SSIS katalógus Azure SQL Database-ben üzemeltetett esetén a virtuális hálózati Szolgáltatásvégpontok vagy a felügyelt példány, az Azure-SSIS integrációs modul csatlakozhat: 
 
 - Az azonos virtuális hálózatban 
-- Egy másik virtuális hálózatot, amely rendelkezik egy Azure SQL Database virtuális hálózati szolgáltatás végpontok/Managed Instance használt hálózatok közötti kapcsolatot 
+- Egy másik virtuális hálózatot, amely rendelkezik, amely a felügyelt példány szolgál az hálózatok közötti kapcsolat 
+
+Ha az SSIS katalógus Azure SQL Database-ben a virtuális hálózati Szolgáltatásvégpontok üzemeltet, ügyeljen arra, hogy az azonos virtuális hálózatot és alhálózatot, csatlakozzon az Azure-SSIS integrációs modul.
 
 Ha az Azure-SSIS integrációs modul csatlakoztatása a felügyelt példány ugyanazon a virtuális hálózaton, győződjön meg róla, hogy az Azure-SSIS integrációs modul egy másik alhálózatot, mint a felügyelt példány. Ha az Azure-SSIS integrációs modul csatlakoztatása a felügyelt példány, mint egy másik virtuális hálózatot, javasoljuk, virtuális hálózatok közötti társviszony (amely ugyanabban a régióban legfeljebb) vagy a virtuális hálózat virtuális hálózati kapcsolat. Lásd: [alkalmazását az Azure SQL Database felügyelt példányába való csatlakozás](../sql-database/sql-database-managed-instance-connect-app.md).
 
-A virtuális hálózathoz a klasszikus üzemi modellel vagy az Azure Resource Manager üzemi modell használatával is telepíthető.
+Minden esetben a virtuális hálózat kizárólag telepíthető az Azure Resource Manager-alapú üzemi modellel.
 
 A következő szakaszok további részleteket. 
 
@@ -73,13 +78,13 @@ A következő szakaszok további részleteket.
 
 Az Azure-SSIS integrációs modul létrehozó felhasználó a következő engedélyekkel kell rendelkeznie:
 
-- Ha az SSIS integrációs modul az Azure virtual Networkhöz a jelenlegi verzió tartományhoz csatlakoztatja, két lehetősége van:
+- Ha az SSIS integrációs modul egy Azure Resource Manager virtuális hálózathoz csatlakozik, két lehetősége van:
 
-  - A beépített szerepkör használja *hálózati közreműködő*. Ez a szerepkör megköveteli a *Microsoft.Network/\**  engedéllyel, azonban, amely sokkal nagyobb hatóköre.
+  - A beépített *hálózati közreműködő* szerepkör. Ez a szerepkör együttműködik a *Microsoft.Network/\**  engedéllyel, amely a szükségesnél sokkal nagyobb hatóköre.
 
-  - Hozzon létre egy egyéni szerepkört, amely tartalmazza az engedély *Microsoft.Network/virtualNetworks/\*/join/művelet*. 
+  - Hozzon létre egy egyéni szerepkört, amely tartalmazza az csak a szükséges *Microsoft.Network/virtualNetworks/\*/join/művelet* engedéllyel. 
 
-- Ha az SSIS integrációs modul az Azure klasszikus virtuális hálózathoz csatlakozik, azt javasoljuk, hogy a beépített szerepkör használja *virtuális gépek hagyományos Közreműködője*. Ellenkező esetben meg kell adnia egy egyéni biztonsági szerepkört, amely tartalmazza az csatlakozzon a virtuális hálózat számára.
+- Ha az SSIS integrációs Modult egy klasszikus virtuális hálózathoz csatlakozik, azt javasoljuk, hogy használja-e a beépített *virtuális gépek hagyományos Közreműködője* szerepkör. Ellenkező esetben meg kell adnia egy egyéni biztonsági szerepkört, amely tartalmazza a csatlakozzon a virtuális hálózat számára.
 
 ### <a name="subnet"></a> Válassza ki az alhálózatot
 -   Ne válassza az átjáró-alhálózat egy Azure-SSIS integrációs modul üzembe helyezéséhez, mert dedikált virtuális hálózati átjárókhoz. 

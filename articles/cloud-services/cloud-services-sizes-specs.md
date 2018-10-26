@@ -4,7 +4,7 @@ description: Az Azure cloud service webes és feldolgozói szerepkörök eltér�
 services: cloud-services
 documentationcenter: ''
 author: jpconnock
-manager: timlt
+manager: jpconnock
 editor: ''
 ms.assetid: 1127c23e-106a-47c1-a2e9-40e6dda640f6
 ms.service: cloud-services
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 60ee7c2be29791db91db78472cc002e15390d36b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 78a073ec7ee8432ba7804daef150afcbbca23ef6
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004788"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50095569"
 ---
 # <a name="sizes-for-cloud-services"></a>A Cloud Services méretei
 Ez a témakör ismerteti az elérhető méretek és a Cloud Service-szerepkörpéldányok (webes és feldolgozói szerepkörök) beállításokat. Telepítési szempontok figyelembe ezeket az erőforrásokat használatának tervezésekor is tartalmazza. Minden méretét rendelkezik egy Azonosítót, amely helyezi a [szolgáltatásdefiníciós fájl](cloud-services-model-and-package.md#csdef). Árak méreteire vonatkoztatva érhetők az [Cloud Services díjszabása](https://azure.microsoft.com/pricing/details/cloud-services/) lapot.
@@ -213,7 +213,7 @@ A számítási feladat változását követő vagy az új Virtuálisgép-mérete
 >
 
 ## <a name="get-a-list-of-sizes"></a>A méretek listáját
-PowerShell vagy a REST API segítségével méretek listáját. A REST API-szerződését [Itt](https://msdn.microsoft.com/library/azure/dn469422.aspx). A következő kódot egy PowerShell-parancsot, amely felsorolja a méretek áll rendelkezésre a Cloud Services. 
+PowerShell vagy a REST API segítségével méretek listáját. A REST API-szerződését [Itt](https://msdn.microsoft.com/library/azure/dn469422.aspx). A következő kódot egy PowerShell-parancsot, amely felsorolja az összes elérhető méretek a Cloud Services. 
 
 ```powershell
 Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceSize, RoleSizeLabel

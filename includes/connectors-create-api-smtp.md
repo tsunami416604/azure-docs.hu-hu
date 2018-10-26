@@ -1,3 +1,16 @@
+---
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: estfan
+ms.openlocfilehash: d90ef1737f0107e5e323c1e90e3f9021efd4e4f7
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093107"
+---
 ### <a name="prerequisites"></a>Előfeltételek
 * A [SMTP](https://wikipedia.org/wiki/Simple_Mail_Transfer_Protocol) fiók  
 

@@ -4,14 +4,14 @@ description: Ismert problémák az Azure Migrate szolgáltatás és a hibaelhár
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 10/24/2018
 ms.author: raynew
-ms.openlocfilehash: a41a27f2a87a67ea51bcbe110ac77f7908c44e7a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: a32b1b73a12242a6c6b1c29fbf116aff73515b46
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945518"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086743"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -51,9 +51,16 @@ A folyamatos felderítési Appliance berendezés csak az folyamatosan teljesítm
 
 ## <a name="collector-errors"></a>Naplógyűjtők hibái
 
-### <a name="deployment-of-collector-ova-failed"></a>Központi telepítését gyűjtőt OVA nem sikerült
+### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Az Azure Migrate Collector telepítésének nem sikerült a hiba: Érvénytelen a megadott jegyzékfájl: Érvénytelen OVF-jegyzékfájl bejegyzés.
 
-Ha az OVA részlegesen töltődik le, vagy a böngésző miatt ez fordulhat elő a vSphere webes ügyfél telepítése az OVA használatakor. Győződjön meg arról, hogy a letöltés befejeződött, és próbáljon üzembe helyezni egy másik böngésző az OVA.
+1. Győződjön meg arról, ha az Azure Migrate Collector OVA-fájl a kivonatolt érték ellenőrzésével megfelelően letölti. Tekintse meg a [cikk](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance) a kivonat értékével ellenőrizheti. Ha a kivonat értéke nem egyezik, töltse le újból az OVA-fájl, és próbálkozzon újra a telepítéssel.
+2. Ha továbbra is sikertelen, és a VMware vSphere Client használatával az OVF telepítése, próbálja ki az üzembe helyezést, vSphere webes ügyfélben. Ha továbbra is sikertelen, próbálkozzon a különböző webböngésző használatával.
+3. Ha szeretne üzembe helyezni a vcenter Server 6.5-ös és a vSphere webes ügyféllel, próbálja meg az OVA közvetlenül az ESXi-gazdagép telepítése a következő az alábbi lépéseket:
+  - Közvetlenül (vCenter-kiszolgáló) helyett az ESXi-gazdagép csatlakozik a webes ügyfél használata (https:// <*gazdagép IP-cím*> /ui)
+  - Lépjen a kezdőlapra > leltár
+  - Kattintson a fájl > telepítése OVF-sablon > keresse meg az OVA és a telepítés befejezéséhez
+4. Ha az üzembe helyezés továbbra is sikertelen, forduljon az ügyfélszolgálathoz az Azure Migrate.
+
 
 ### <a name="collector-is-not-able-to-connect-to-the-internet"></a>Gyűjtő nem sikerül csatlakozni az internethez
 
