@@ -88,12 +88,15 @@ items:
     href: /python/api/overview/azure/key-vault?view=azure-python
   - name: REST
     href: /rest/api/keyvault
+    items:
+    - name: Hitelesítés, kérelmek és válaszok
+      href: authentication-requests-and-responses.md
+    - name: Gyakori paraméterek és fejlécek
+      href: common-parameters-and-headers.md
   - name: Fejlesztés
     items:
-    - name: Key Vault – fejlesztői útmutató
+    - name: Fejlesztői útmutató
       href: key-vault-developers-guide.md
-    - name: A szolgáltatásra vonatkozó korlátozások
-      href: key-vault-service-limits.md
     - name: HSM-védett kulcsok
       href: key-vault-hsm-protected-keys.md
     - name: Áttelepítés az .NET 2.0-ba
@@ -118,25 +121,31 @@ items:
   items:
   - name: Fejlessze a készségeit a Microsoft Learnnel
     href: /learn/browse/?products=azure-key-vault
-  - name: Szolgáltatás áttekintése
-    href: https://azure.microsoft.com/services/key-vault/
-  - name: Hitelesítés, kérelmek és válaszok
-    href: authentication-requests-and-responses.md
-  - name: Gyakori paraméterek és fejlécek
-    href: common-parameters-and-headers.md
   - name: Ügyféladatok
     href: key-vault-customer-data.md
-  - name: Blog
+  - name: Szolgáltatás
+    items:
+    - name: Díjszabás
+      href: https://azure.microsoft.com/pricing/details/key-vault/
+    - name: Régiónkénti elérhetőség
+      href: https://azure.microsoft.com/global-infrastructure/services/?products=key-vault
+    - name: Kibocsátási megjegyzések
+      href: key-vault-versions.md
+    - name: Szolgáltatói szerződés (SLA)
+      href: https://azure.microsoft.com/support/legal/sla/key-vault/
+    - name: Szolgáltatási korlátozások
+      href: key-vault-service-limits.md
+    - name: Szolgáltatásállapot
+      href: https://azure.microsoft.com/status/
+    - name: Szolgáltatási hírek
+      href: https://azure.microsoft.com/updates/?product=key-vault
+  - name: Csoportblog
     href: http://blogs.technet.com/b/kv/
-  - name: Díjszabás
-    href: https://azure.microsoft.com/pricing/details/key-vault/
-- name: Kibocsátási megjegyzések
-  href: key-vault-versions.md
 - name: Termékkel kapcsolatos visszajelzés
   href: https://feedback.azure.com/forums/906355-azure-key-vault
-ms.openlocfilehash: 542c3ce29d4d663e4569829e4f551ab6f751db3b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 727a44d903d481974a95635f092468754085db1b
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953191"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50084968"

@@ -191,7 +191,7 @@
 
 #### [Felhasználói fiók üzembe helyezésének kezelése](manage-apps/configure-automatic-user-provisioning-portal.md)
 
-#### [Speciális tanúsítvány-aláírás a SAML-alkalmazások számára](manage-apps/certificate-signing-options.md)
+#### [Speciális tanúsítvány-aláírás SAML-alkalmazásokhoz](manage-apps/certificate-signing-options.md)
 #### [Alkalmazás elrejtése a felhasználói felületen](manage-apps/hide-application-from-user-portal.md)
 ### [Bejelentkezés automatikus gyorsításának konfigurálása HRD-szabályzattal](manage-apps/configure-authentication-for-federated-users-portal.md)
 ### [AD FS-alkalmazások migrálása az Azure AD-be](manage-apps/migrate-adfs-apps-to-azure.md) 
@@ -266,7 +266,6 @@
 
 #### Engedélyek
 ##### [API engedélyeinek kiválasztása](develop/perms-for-given-api.md)
-##### [Engedélyek megadása az alkalmazásnak](develop/registration-config-grant-permissions-how-to.md)
 ##### [Delegált és alkalmazásengedélyek](develop/delegated-and-app-perms.md)
 ##### [Alkalmazás jóváhagyása](develop/consent-framework.md)
 
@@ -313,14 +312,6 @@
 ### Egyéni tartománynevek
 #### [Gyors útmutató](fundamentals/add-custom-domain.md)
 ### [A címtár felügyelete](fundamentals/active-directory-administer.md)
-### [Vállalati állapothordozás](active-directory-windows-enterprise-state-roaming-overview.md)
-#### [Bekapcsolás](active-directory-windows-enterprise-state-roaming-enable.md)
-#### [Csoportházirend-beállítások](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
-#### [Windows 10-beállítások](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
-#### [Gyakori kérdések](active-directory-windows-enterprise-state-roaming-faqs.md)
-#### [Hibaelhárítás](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
-
-
 ### [Helyszíni identitások integrálása az Azure AD Connecttel](hybrid/whatis-hybrid-identity.md)
 
 ### [A jogkivonatok élettartamának beállítása](develop/active-directory-configurable-token-lifetimes.md)
