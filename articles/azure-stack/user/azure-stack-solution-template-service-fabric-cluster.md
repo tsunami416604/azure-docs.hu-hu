@@ -14,18 +14,20 @@ ms.topic: tutorial
 ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: shnatara
-ms.openlocfilehash: 0b5f7442604dd31f730b0105d19231407e2b6f1a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: abb77f59e49a98c1195dcd2e7b622b2b8e3fd7b8
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946113"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087282"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Az Azure Stack a Service Fabric-fürt üzembe helyezése
 
 Használja a **Service Fabric-fürt** elem a biztonságos Service Fabric-fürtön az Azure Stack üzembe helyezése az Azure piactérről. 
 
 A Service Fabric használatával kapcsolatos további információkért lásd: [áttekintése az Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) és [Service Fabric-fürtök biztonsági forgatókönyveit](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security), az Azure dokumentációjában olvashatók.
+
+A Service Fabric-fürtön az Azure Stackben Microsoft.ServiceFabric erőforrás-szolgáltató nem használja. Az Azure Stackben, a Service Fabric-fürt egy virtuális gép méretezési Desired State Configuration (DSC) használatával előre telepített szoftvereket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

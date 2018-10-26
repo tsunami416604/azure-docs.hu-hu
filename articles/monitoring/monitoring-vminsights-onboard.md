@@ -1,5 +1,5 @@
 ---
-title: A virtuális gépek előkészítése az Azure Monitor |} A Microsoft Docs
+title: A virtuális gépek (előzetes verzió) előkészítése az Azure Monitor |} A Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan fogunk előkészíteni és az Azure Monitor konfigurálása a virtuális gépek, így az elosztott alkalmazás hogyan működik, és milyen állapotbeli problémák azonosított ismertetése.
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/16/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 33d16e211667edc6c082ab8c101e69ee5875efb8
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: f55f81d1e28a7626dfe00f6bea349bf74e3a1d24
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390244"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092774"
 ---
-# <a name="how-to-onboard-the-azure-monitor-for-vms"></a>Hogyan üzembe helyezni az Azure figyelheti a virtuális gépek 
+# <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Hogyan üzembe helyezni az Azure figyeli, hogy virtuális gépeket (előzetes verzió)
 Ez a cikk ismerteti, hogyan állítható be az Azure Monitor az Azure-beli virtuális gépek operációs rendszer állapotának figyelésére és felderítése és képezze le az alkalmazás függőségeit, amelyek rajtuk üzemeltethető virtuális gépek számára.  
 
 Az Azure Monitor engedélyezése a virtuális gépek az alábbi módszerek egyikének használatával történik, és az egyes módszerek használatával részletei is szerepelnek a cikk későbbi részében.  
@@ -31,7 +31,7 @@ Az Azure Monitor engedélyezése a virtuális gépek az alábbi módszerek egyik
 * Több Azure virtuális gépek vagy a virtuális gép méretezési csoportok között egy adott előfizetésen vagy erőforráscsoport PowerShell használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A Kezdés előtt győződjön meg arról, hogy rendelkezik-e a következő, az alábbi alszakaszok leírtak szerint.
+A Kezdés előtt ellenőrizze, hogy megértette a következő, az alábbi alszakaszok leírtak szerint.
 
 ### <a name="log-analytics"></a>Log Analytics 
 

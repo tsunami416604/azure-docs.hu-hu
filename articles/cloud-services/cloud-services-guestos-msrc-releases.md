@@ -11,17 +11,59 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/16/2018
+ms.date: 10/24/2018
 ms.author: raiye
-ms.openlocfilehash: 7540f12f888108ed7091cece575b6d25131ef47b
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 989627388e9ad1c99daa31bd9c8af884ab16b421
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377514"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087780"
 ---
 # <a name="azure-guest-os"></a>Azure Guest OS
 Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure vendég operációs rendszerre alkalmazott frissítések. Ez a cikk meghatározni, ha az adott frissítés alkalmazza a vendég operációs rendszer keresése. Frissítések mindig átviszi az adott [termékcsalád] [ family-explain] azokat a jelentek meg.
+
+## <a name="october-2018-guest-os"></a>2018. október vendég operációs rendszer
+>[!NOTE]
+>Az október vendég operációs rendszerre van jelenleg tesszük elérhetővé a Cloud Service virtuális gépeken, az automatikus frissítések vannak beállítva. A bevezetés befejezésekor ebben a verzióban lesz elérhető a manuális frissítést keresztül az Azure portal és a konfigurációs fájlok. A következő javításokat tartalmazza az október vendég operációs rendszer. Ez a lista a változhat.
+
+| Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
+| --- | --- | --- | --- | --- |
+| 18-10 rel | [4462917] | A Windows 10 biztonsági | 5,24 | 2018. október 9. |
+| 18-10 rel | [4464330] | A Windows 10 biztonsági | 6.01-es | 2018. október 9. |
+| 18-10 rel | [4462915] | Windows biztonsági | 2.79 | 2018. október 9. |
+| 18-10 rel | [4462931] | Windows biztonsági | 3.66 | 2018. október 9. |
+| 18-10 rel | [4462941] | Windows biztonsági | 4.59 | 2018. október 9. |
+| 18-10 rel | [4462930] | Flash | 3.66, 4.59, 5,24, 6.01-es | 2018. október 9. |
+| 18-10 rel | [4462949] | Internet Explorer | 2.79, 3.66, 4.59 | 2018. október 9. |
+| – | [4339284] | Időzóna-frissítés | 2.79, 3.66, 4.59 | 2018. július 24. |
+| – | [4457144] | Szeptember nem – a biztonság összegzése | 2.79 | 2018. szeptember 11. |
+| – | [4457044] | Szeptember nem biztonsági .NET 3.5-ös összegzése | 2.79 | 2018. szeptember 11. |
+| – | [4457038] | Szeptember nem biztonsági .NET 4.5.2-es összegzése | 2.79 | 2018. szeptember 11. |
+| – | [4457135] | Szeptember nem – a biztonság összegzése | 3.66 | 2018. szeptember 11. |
+| – | [4457042] | Szeptember nem biztonsági .NET 3.5-ös összegzése | 3.66 | 2018. szeptember 11. |
+| – | [4457037] | Szeptember nem biztonsági .NET 4.5.2-es összegzése | 3.66 | 2018. szeptember 11. |
+| – | [4457129] | Szeptember nem – a biztonság összegzése | 4.59 | 2018. szeptember 11. |
+| – | [4457045] | Szeptember nem biztonsági .NET 3.5-ös összegzése | 4.59 | 2018. szeptember 11. |
+| – | [4457036] | Szeptember nem biztonsági .NET 4.5.2-es összegzése | 4.59 | 2018. szeptember 11. |
+
+[4462917]: http://support.microsoft.com/kb/4462917
+[4464330]: http://support.microsoft.com/kb/4464330
+[4462915]: http://support.microsoft.com/kb/4462915
+[4462931]: http://support.microsoft.com/kb/4462931
+[4462941]: http://support.microsoft.com/kb/4462941
+[4462930]: http://support.microsoft.com/kb/4462930
+[4462949]: http://support.microsoft.com/kb/4462949
+[4339284]: http://support.microsoft.com/kb/4339284
+[4457144]: http://support.microsoft.com/kb/4457144
+[4457044]: http://support.microsoft.com/kb/4457044
+[4457038]: http://support.microsoft.com/kb/4457038
+[4457135]: http://support.microsoft.com/kb/4457135
+[4457042]: http://support.microsoft.com/kb/4457042
+[4457037]: http://support.microsoft.com/kb/4457037
+[4457129]: http://support.microsoft.com/kb/4457129
+[4457045]: http://support.microsoft.com/kb/4457045
+[4457036]: http://support.microsoft.com/kb/4457036
 
 ## <a name="september-2018-guest-os"></a>2018 szeptember vendég operációs rendszer
 | Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |

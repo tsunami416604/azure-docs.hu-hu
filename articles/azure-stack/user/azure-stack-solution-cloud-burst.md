@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 1f3dcc7da3e91d3805cae805422778978d0187c5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 68021d25e3deab1c6551d29b0febd9f07e144b57
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971331"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50095338"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>Oktatóanyag: Több felhőre kiterjedő méretezési megoldások létrehozása az Azure-ral
 
@@ -101,7 +101,7 @@ Webes alkalmazás üzembe helyezése az Azure és az Azure Stack, hibrid folyama
 
 ### <a name="add-code-to-visual-studio-team-services-project"></a>Adja hozzá a kódot, a Visual Studio Team Services, Project
 
-1. Jelentkezzen be a Visual Studio Team Services (VSTS) egy olyan fiókkal, amely a projekt létrehozásának jogosultságokkal rendelkezik a vsts-en~~.~~
+1. Jelentkezzen be a Visual Studio Team Services (VSTS) egy olyan fiókkal, amely a projekt létrehozásának jogosultságokkal rendelkezik a vsts-en.
 
     CI/CD hibrid alkalmazás kódja és az infrastruktúra kódjának alkalmazhatja. Használat [Azure Resource Manager-sablonok](https://azure.microsoft.com/resources/templates/) mindkét magán- és üzemeltetett felhőalapú fejlesztéshez.
 
