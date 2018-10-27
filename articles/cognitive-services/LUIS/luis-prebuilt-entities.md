@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: diberry
-ms.openlocfilehash: 2f7c724b14efd569a5993f9a9319c9004874bc43
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 0fe9dbed302fd2d61305167a3bda25b1b403b761
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647595"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139974"
 ---
 # <a name="prebuilt-entities-to-recognize-common-data-types"></a>Előre összeállított entitások felismerésére általános adattípusok
 
@@ -25,7 +25,7 @@ LUIS az általános típusú adatok, például a dátumok, időpontok, számok, 
 
 1. Nyissa meg az alkalmazás nevére kattintva **saját alkalmazások** lapon, és kattintson a **entitások** a bal oldalon. 
 
-1. Az a **entitások** kattintson **előre összeállított entitások kezelése**.
+1. Az a **entitások** kattintson **előre összeállított entitás hozzáadása**.
 
 1. A **előre összeállított entitások hozzáadása** párbeszédpanelen jelölje ki a datetimeV2 előre összeállított entitások. 
 

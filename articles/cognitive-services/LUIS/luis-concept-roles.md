@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 94a02a06335b35a36c35d4b69776b1eb630b402d
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: fea70e2b1912bde94e23dbd98fa933784d2a69ac
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086024"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140315"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>A minták entitás szerepkör a környezeti altípus
 Ezek az entitások csak a felhasznált nevesített, környezetfüggő altípusainak [minták](luis-concept-patterns.md).
@@ -55,4 +55,4 @@ Az előre összeállított entitások datetimeV2, hajtja végre egy remek, szám
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg, hogyan adhat hozzá [szerepkörök](luis-how-to-add-entities.md#add-role-to-pattern-based-entity)
+* Ismerje meg, hogyan adhat hozzá [szerepkörök](luis-how-to-add-entities.md#add-a-role-to-pattern-based-entity)

@@ -6,30 +6,30 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 07/12/2018
+ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 822e02d42be8ce516901190af4be579d13ac841d
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 61a4e3700e88efba1ea9cea876b19e2f7ed4168b
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888322"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50137070"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>A prediktív karbantartási megoldásgyorsító áttekintése
 
-A prediktív karbantartási megoldásgyorsító olyan teljes körű megoldást nyújt az üzleti forgatókönyvekben, amely előrejelzi a meghibásodás várható idejét. Ezt a megoldásgyorsítót proaktív módon használhatja olyan tevékenységekhez, mint a karbantartás optimalizálása. A megoldás kombinálja a fő Azure IoT megoldásgyorsító-szolgáltatásokat, mint például az IoT Hub, a Stream Analytics, valamint egy [Azure Machine Learning][lnk-machine-learning]-munkaterületet. Ezen a munkaterületen egy modell található a repülőmotorok maradék hasznos élettartamának (RUL-jének) előrejelzéséhez egy nyilvános minta adatkészlet alapján. A megoldás az IoT üzleti forgatókönyv teljes megvalósítását biztosítja kiindulópontként, amellyel megtervezheti és megvalósíthatja ezt a megoldást a saját üzleti követelményeinek megfelelően.
+A prediktív karbantartási megoldásgyorsító olyan teljes körű megoldást nyújt az üzleti forgatókönyvekben, amely előrejelzi a meghibásodás várható idejét. Ezt a megoldásgyorsítót proaktív módon használhatja olyan tevékenységekhez, mint a karbantartás optimalizálása. A megoldás kombinálja a fő Azure IoT megoldás megoldásgyorsítók szolgáltatásokat, mint az IoT Hub és a egy [Azure Machine Learning] [ lnk-machine-learning] munkaterületen. Ezen a munkaterületen egy modell található a repülőmotorok maradék hasznos élettartamának (RUL-jének) előrejelzéséhez egy nyilvános minta adatkészlet alapján. A megoldás az IoT üzleti forgatókönyv teljes megvalósítását biztosítja kiindulópontként, amellyel megtervezheti és megvalósíthatja ezt a megoldást a saját üzleti követelményeinek megfelelően.
 
 ## <a name="logical-architecture"></a>Logikai architektúra
 
 A következő diagram a megoldásgyorsító logikai összetevőit vázolja fel:
 
-![][img-architecture]
+![Logikai architektúra][img-architecture]
 
 A kék elemek Azure-szolgáltatások, amelyek a megoldásgyorsító üzembe helyezésének régiójában vannak kiépítve. A régiók listája, amelyekben a megoldásgyorsító üzembe helyezhető, az [üzembehelyezési oldalon][lnk-azureiotsuite] jelenik meg.
 
-A zöld elem egy repülőmotort jelképező szimulált eszköz. Ezekről a szimulált eszközökről a [szimulált eszközökkel](#simulated-devices) foglalkozó szakaszban tudhat meg többet.
+A zöld elem egy szimulált repülő motorját. Ezekről a szimulált eszközökről a [szimulált eszközökkel](#simulated-devices) foglalkozó szakaszban tudhat meg többet.
 
-A szürke elemek az *eszközfelügyeleti* képességeket megvalósító összetevőket jelölik. A prediktív karbantartási megoldásgyorsító jelenlegi kiadása nem biztosítja ezeket az erőforrásokat. Eszközök felügyeletével kapcsolatos további tudnivalókért tekintse meg a [távoli figyelési megoldásgyorsító][lnk-remote-monitoring].
+A szürke elemek megvalósító összetevőket *Eszközkezelés* képességeket. A prediktív karbantartási megoldásgyorsító jelenlegi kiadása nem biztosítja ezeket az erőforrásokat. Eszközök felügyeletével kapcsolatos további tudnivalókért tekintse meg a [távoli figyelési megoldásgyorsító][lnk-remote-monitoring].
 
 ## <a name="azure-resources"></a>Azure-erőforrások
 
@@ -37,17 +37,17 @@ A kiépített erőforrások megtekintéséhez az Azure Portalon keresse meg a ki
 
 ![Gyorsító erőforrások][img-resource-group]
 
-A megoldásgyorsító kiépítésekor egy e-mailt kap, amely tartalmazza a Machine Learning-munkaterületre mutató hivatkozást. A Machine Learning-munkaterületet is elérheti a [a Microsoft Azure IoT-Megoldásgyorsítók] [ lnk-azureiotsuite] lap a kiépített megoldáshoz. Amikor a megoldás **Kész** állapotban van, elérhetővé válik egy csempe ezen az oldalon.
+A megoldásgyorsító kiépítésekor egy e-mailt kap, amely tartalmazza a Machine Learning-munkaterületre mutató hivatkozást. A Machine Learning-munkaterületet is elérheti a [a Microsoft Azure IoT-Megoldásgyorsítók] [ lnk-azureiotsuite] lapot. Amikor a megoldás **Kész** állapotban van, elérhetővé válik egy csempe ezen az oldalon.
 
 ![Machine learning-modell][img-machine-learning]
 
 ## <a name="simulated-devices"></a>Szimulált eszközök
 
-A megoldásgyorsítóban a szimulált eszközök repülőmotorokat jelképeznek. A megoldás egyetlen repülőhöz tartozó két motorral van kiépítve. Mindegyik motor négy típusú telemetriát bocsát ki: a 9. érzékelő, a 11. érzékelő, a 14. érzékelő és a 15. érzékelő telemetriáját, amelyek a motor fennmaradó hasznos élettartamának (RUL) kiszámítására szolgáló Machine Learning-modellhez szükséges adatokat biztosítják. Mindegyik szimulált eszköz a következő telemetriai üzeneteket küldi el az IoT Hubnak:
+A megoldásgyorsító egy szimulált eszközök repülőmotorokat jelképeznek. A megoldás egyetlen repülőhöz tartozó két motorral van kiépítve. Mindegyik motor négy típusú telemetriát bocsát ki: a 9. érzékelő, a 11. érzékelő, a 14. érzékelő és a 15. érzékelő telemetriáját, amelyek a motor fennmaradó hasznos élettartamának (RUL) kiszámítására szolgáló Machine Learning-modellhez szükséges adatokat biztosítják. Mindegyik szimulált eszköz a következő telemetriai üzeneteket küldi el az IoT Hubnak:
 
-*Ciklusszám*. A ciklusok két és tíz óra közti időtartamú befejezett repülőutakat jelölnek. A rendszer félóránként rögzíti a telemetriai adatokat a repülőutak közben.
+*Ciklusszám*. A ciklus a következő két és tíz óra közti időtartamú befejezett repülőjegyet. A rendszer félóránként rögzíti a telemetriai adatokat a repülőutak közben.
 
-*Telemetria*. Négy érzékelő jelzi a motorattribútumokat. Az érzékelők általában a 9. érzékelő, 11. érzékelő, 14. érzékelő és 15. érzékelő felirattal rendelkeznek. Ez a négy érzékelő elegendő telemetriai adatot biztosít ahhoz, hogy hasznos eredmények érkezzenek az RUL-modellről. A megoldásgyorsítóban használt modell egy nyilvános adatkészletből jön létre, amely valódi motorérzékelők adatait tartalmazza. További információ a modell eredeti adatkészletből való létrehozásáról: [Cortana Intelligence Gallery Predictive Maintenance Template][lnk-cortana-analytics] (A Cortana Intelligence Gallery prediktív karbantartási sablonja).
+*Telemetria*. Nincsenek négy érzékelő jelzi a motor attribútumok rögzíti. Az érzékelők általában a 9. érzékelő, 11. érzékelő, 14. érzékelő és 15. érzékelő felirattal rendelkeznek. Ez a négy érzékelő elegendő ahhoz, hogy hasznos eredmények érkezzenek az RUL-modellről telemetriát küldjön. A megoldásgyorsítóban használt modell egy nyilvános adatkészletből jön létre, amely valódi motorérzékelők adatait tartalmazza. További információ a modell eredeti adatkészletből való létrehozásáról: [Cortana Intelligence Gallery Predictive Maintenance Template][lnk-cortana-analytics] (A Cortana Intelligence Gallery prediktív karbantartási sablonja).
 
 A szimulált eszközök a megoldás részét képező IoT Hubról küldött következő parancsokat tudják kezelni:
 
@@ -62,25 +62,25 @@ Az IoT Hub nyugtázza az eszközparancsokat.
 
 **Feladat: Telemetria** – a bejövő eszköz telemetriastreamjén működik két utasítással.
 
-* Az első kiválasztja az összes telemetriát az eszközökről, és ezeket az adatokat Blob Storage-ba küldi. Itt a webalkalmazásban jelennek meg.
+* Az első kiválasztja az összes telemetriát az eszközökről, és ezeket az adatokat Blob Storage-ba küldi. Itt azt a rendszer vizualizálja a webalkalmazásban.
 * A második kiszámítja az átlagos érzékelőértékeket egy kétperces csúszóablakban, és ezeket az adatokat az eseményközponton keresztül egy **eseményfeldolgozóba** küldi.
 
 ## <a name="event-processor"></a>Eseményfeldolgozó
-Az **Event Processor Host** egy Azure-beli webes feladatban fut. Az **eseményfeldolgozó** a befejezett ciklusok átlagos érzékelőértékeit kezeli. Ezeket az értékeket azután egy olyan API-ra küldi, amely közzéteszi a betanított modellt egy motor RUL értékének kiszámításához. Az API-t a megoldás részeként üzembe helyezett Machine Learning-munkaterület teszi közzé.
+Az **Event Processor Host** egy Azure-beli webes feladatban fut. Az **eseményfeldolgozó** a befejezett ciklusok átlagos érzékelőértékeit kezeli. Ezután továbbítja ezeket az értékeket egy betanított modellt egy motor rul értékének kiszámítására. Egy API-t a modell a Machine Learning-munkaterület a megoldás részét képező hozzáférést biztosít.
 
 ## <a name="machine-learning"></a>Machine Learning
 A Machine Learning összetevő egy olyan modellt használ, amely valódi repülőgépek adataiból jött lére. A Machine Learning-munkaterületet a megoldás csempéjéről érheti el, amely az [azureiotsuite.com][lnk-azureiotsuite] oldalon található. A csempe akkor érhető el, amikor a megoldás **Kész** állapotban van.
 
-Az Azure Machine Learning-modellel mutatja be ezeket a képességeket, IoT-megoldás megoldásgyorsítók szolgáltatásokon keresztül gyűjtött eszköztelemetriából dolgozik sablonként érhető el. A Microsoft felépítette egy [regressziós modell] [ lnk_regression_model] felépítette egy repülőmotor nyilvánosan elérhető adatok alapján<sup>\[1\]</sup>, és lépésenkénti útmutatóját a modell használatának módjáról.
+Machine Learning-modellhez, amely bemutatja, hogyan működik az IoT-megoldás gyorsító szolgáltatásokon keresztül gyűjtött telemetriával sablonként érhető el. A Microsoft felépítette egy [regressziós modell] [ lnk_regression_model] felépítette egy repülőmotor nyilvánosan elérhető adatok alapján<sup>\[1\]</sup>, és lépésenkénti útmutatóját a modell használatának módjáról.
 
-Az Azure IoT prediktív karbantartási megoldásgyorsító az ebből a sablonból létrehozott regressziós modellt használja. A rendszer az Azure-előfizetésben helyezi üzembe a modellt, és egy automatikusan létrehozott API-n keresztül teszi közzé. A megoldásban a tesztadatok egy része szerepel, amely (összesen 100-ból) 4 motort és (összesen 21-ből) 4 érzékelőadat-streamet ábrázol. Ezek az adatok elegendők ahhoz, hogy pontos eredményt biztosítsanak a betanított modellből.
+Az Azure IoT prediktív karbantartási megoldásgyorsító az ebből a sablonból létrehozott regressziós modellt használja. A modell az Azure-előfizetésben helyezi üzembe, és a egy automatikusan létrehozott API-n keresztül elérhetővé tett. A megoldás tartalmaz egy részhalmazt a tesztelési (összesen 100-ból) 4 motort és (összesen 21-ből) 4 streamet ábrázol. Ezek az adatok elegendők ahhoz, hogy pontos eredményt biztosítsanak a betanított modellből.
 
 *\[1\] A. Saxena és K. Goebel (2008). „Turbofan Engine Degradation Simulation Data Set”, NASA Ames Prognostics Data Repository (https://c3.nasa.gov/dashlink/resources/139/), NASA Ames Research Center, Moffett Field, CA*
 
 ## <a name="next-steps"></a>További lépések
 A prediktív karbantartási megoldásgyorsító fő összetevőinek áttekintése után érdemes lehet testre szabni azt.
 
-Megismerheti az IoT-megoldásgyorsítók egyéb szolgáltatásait és funkcióit is:
+Emellett megismerheti az IoT-megoldásgyorsítók egyéb funkcióit:
 
 * [Gyakran ismételt kérdések az IoT-megoldásgyorsítókról][lnk-faq]
 * [IoT-biztonság létrehozása az alapoktól][lnk-security-groundup]

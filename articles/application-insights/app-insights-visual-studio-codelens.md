@@ -3,7 +3,7 @@ title: Application Insights Telemetria a Visual Studio CodeLensben | Microsoft D
 description: A CodeLens használatával gyorsan elérheti az Application Insights-kérést és a kivételtelemetriát a Visual Studióban.
 services: application-insights
 documentationcenter: .net
-author: mrbullwinkle
+author: NumberByColors
 manager: carmonm
 ms.assetid: 93559e44-23cb-4b9d-8425-60f7f0d0a82c
 ms.service: application-insights
@@ -13,14 +13,15 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/17/2017
-ms.reviewer: daviste
-ms.author: mbullwin
-ms.openlocfilehash: 7df49258895aa0dfa5c8cc592914ba6998a97cb8
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.reviewer: mbullwin
+ms.pm_owner: daviste;NumberByColors
+ms.author: daviste
+ms.openlocfilehash: 70b0f66fcbcd54b5eb2f3dc938b005090a08c62f
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442110"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50137259"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Application Insights Telemetria a Visual Studio CodeLensben
 A telemetriával megjegyzések fűzhetők a webalkalmazás kódjában szereplő metódusokhoz a futásidejű kivételekkel és a kérések válaszidejével kapcsolatban. Ha telepíti az [Azure Application Insights-t](app-insights-overview.md) az alkalmazásban, a telemetria megjelenik a Visual Studio [CodeLensben](https://msdn.microsoft.com/library/dn269218.aspx) – az egyes függvények felett láthatók a jegyzetek, ahol korábban a függvény hivatkozási helyeinek száma, a legutóbbi szerkesztő neve vagy egyéb hasznos információk jelentek meg.

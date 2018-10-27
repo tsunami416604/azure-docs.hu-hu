@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 94f96d949f2a05f71e9565fdcbc7b48ed2c2a5c5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f1df22c505bffdfaf60bf9c6eec3ad4e698fff02
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972659"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139526"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Az Azure Data Explorer adatbetöltés
 
@@ -60,9 +60,15 @@ Kusto ügyféloldali SDK-val kell fogadni és kérdezhet le adatokat a felhaszn�
 
 * [Java SDK](https://docs.microsoft.com/azure/kusto/api/java/kusto-java-client-library)
 
+* [Node SDK]
+
 * [REST API](https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-client-rest)
 
 **Programozott feldolgozási technikákat**:
+
+* Tölt be adatot az Azure Data Explorer data management szolgáltatás (nagy átviteli sebességű és megbízható Adatbetöltési) keresztül
+
+  * [**Batch-betöltési** ](https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (SDK által rendelkezésre bocsátott): az ügyfél feltölti az adatokat az Azure Blob storage (az Azure Data Explorer data management szolgáltatás által jelölt) és a egy Azure-üzenetsor értesítést küld bejegyzést. Ez a nagy mennyiségű, megbízható és költséghatékony Adatbetöltési a javasolt módszer.
 
 * Adatok bevitele az Azure Data Explorer motor (leginkább megfelelő adatáttekintési és prototípus-készítéshez) közvetlenül be:
 
@@ -71,10 +77,6 @@ Kusto ügyféloldali SDK-val kell fogadni és kérdezhet le adatokat a felhaszn�
   * **A lekérdezés betöltését**: vezérlési parancsot (.set, .set vagy hozzáfűző, .set vagy lecserélése) lekérdezés eredményeit mutató jelentéseket vagy kis ideiglenes táblák létrehozásához szolgál.
 
   * **Storage-ból betöltési**: külsőleg tárolt adatok (például az Azure Blob Storage)-vezérlő parancsot (.ingest be) lehetővé teszi, hogy az adatok hatékony tömeges betöltési.
-
-* Tölt be adatot az Azure Data Explorer data management szolgáltatás (nagy átviteli sebességű és megbízható Adatbetöltési) keresztül
-
-  * [**Batch-betöltési** ](https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (SDK által rendelkezésre bocsátott): az ügyfél feltölti az adatokat az Azure Blob storage (az Azure Data Explorer data management szolgáltatás által jelölt) és a egy Azure-üzenetsor értesítést küld bejegyzést. Ez az az ajánlott módszer a nagy mennyiségű, megbízható, és a költséghatékony adatbetöltés.
 
 **Különböző módszerekkel késését**:
 
@@ -125,7 +127,7 @@ Séma-hozzárendelés segít a determinisztikus módon kötése forrás datová 
 
 ## <a name="next-steps"></a>További lépések
 
-[Gyors útmutató: Betölteni az adatokat az Event Hubs az Azure Data Explorer](ingest-data-event-hub.md)
+[Rövid útmutató: Adatok betöltése az Event Hubsból az Azure Data Explorerbe](ingest-data-event-hub.md)
 
-[Rövid útmutató: Az Azure Data Explorer Python-kódtár használata az adatok betöltése](python-ingest-data.md)
+[Rövid útmutató: Adatok betöltése az Azure Data Explorer Python-kódtárral](python-ingest-data.md)
 

@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: b9f5e5d0b774d3875999fa5337f41040c4217c8b
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50164658"
+---
 <!--author=alkohli last changed: 11/07/16 -->
 
 #### <a name="to-install-updates-via-the-azure-portal"></a>Frissítések telepítése az Azure Portalon keresztül
@@ -50,6 +63,6 @@
 
     ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate16m.png)
 
-9. A frissítés sikeres telepítését követően megjelenik egy üzenet az eszközön a frissítések panelen erről. A szoftververzió módosítja is **10.0.10288.0**. 
+9. A frissítések sikeres telepítése után az eszköz frissítéseket panelen erről üzenet jelenik meg. A szoftververzió a következőre változik **10.0.10288.0**. 
 
     ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate17m.png)

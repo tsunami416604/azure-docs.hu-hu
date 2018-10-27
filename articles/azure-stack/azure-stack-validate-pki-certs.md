@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: cdd5114b78776a776985b0525789cdabf2e65900
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 2a9de36322b0206d67ac7320012ac431e7b03454
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649267"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155728"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Az Azure Stack PKI-tanúsítványok ellenőrzése
 
@@ -74,7 +74,7 @@ Használja ezeket a lépéseket, előkészítéséhez és az Azure Stack PKI-tan
     ```PowerShell  
     New-Item C:\Certificates -ItemType Directory
     
-    $directories = 'ACSBlob','ACSQueue','ACSTable','Admin Portal','ARM Admin','ARM Public','KeyVault','KeyVaultInternal','Public Portal'
+    $directories = 'ACSBlob','ACSQueue','ACSTable','Admin Portal','ARM Admin','ARM Public','KeyVault','KeyVaultInternal','Public Portal','Admin Extension Host','Public Extension Host'
     
     $destination = 'c:\certificates'
     

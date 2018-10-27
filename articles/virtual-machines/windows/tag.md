@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
-ms.openlocfilehash: 6c461fe06e1a869d0495551ab014452c03dc60b2
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 75a6466578808cb5c0dd8d2e32d9445a6e5a5bf8
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054279"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140536"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Az Azure-beli Windows virtuális gép címkézése
 Ez a cikk ismerteti a különböző módjait a Windows virtuális gép címkézése Azure-ban a Resource Manager-alapú üzemi modellel. A címkék olyan felhasználó által definiált kulcs/érték párok, amelyeket közvetlenül az erőforrás vagy erőforráscsoport helyezhető. Az Azure jelenleg támogatja az erőforrás és erőforráscsoport legfeljebb 15 címkék. Címkék erőforrás elhelyezve a létrehozásakor vagy hozzáadni egy meglévő erőforrást. Vegye figyelembe, hogy a címkék csak a Resource Manager üzemi modell használatával létrehozott erőforrások támogatottak. Ha szeretne Linux virtuális gép címkézése, [Linux rendszerű virtuális gép címkézése Azure-ban](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -51,22 +51,20 @@ Az első parancsmag beállítja elhelyezett címkék *MyTestVM* , a *$tags* vál
 
 A második parancs jeleníti meg a címkéket az adott változó.
 
-        PS C:\> $tags
-
-        Name        Value
-        ----                           -----
-        Value        MyDepartment
-        Name        Department
-        Value        MyApp1
-        Name        Application
-        Value        MyName
-        Name        Created By
-        Value        Production
-        Name        Environment
+```
+    PS C:\> $tags
+    
+    Key           Value
+    ----          -----
+    Department    MyDepartment
+    Application   MyApp1
+    Created By    MyName
+    Environment   Production
+```
 
 A harmadik parancs hozzáad egy további címkét a *$tags* változó. Vegye figyelembe a használatát a **+=** hozzáfűzni a kulcs-érték párokat a *$tags* listája.
 
-        PS C:\> $tags += @{Name="Location";Value="MyLocation"}
+        PS C:\> $tags += @{Location="MyLocation"}
 
 A negyedik parancs beállítja a megadott címkék mindegyikével a *$tags* változó az adott erőforráshoz. Ebben az esetben MyTestVM.
 
@@ -74,20 +72,17 @@ A negyedik parancs beállítja a megadott címkék mindegyikével a *$tags* vál
 
 Az ötödik parancs megjeleníti, címkék az erőforráson. Amint láthatja, *hely* most számít, ha a címke *MyLocation* értékeként.
 
-        PS C:\> (Get-AzureRmResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
+```
+    PS C:\> (Get-AzureRmResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
 
-        Name        Value
-        ----                           -----
-        Value        MyDepartment
-        Name        Department
-        Value        MyApp1
-        Name        Application
-        Value        MyName
-        Name        Created By
-        Value        Production
-        Name        Environment
-        Value        MyLocation
-        Name        Location
+    Key           Value
+    ----          -----
+    Department    MyDepartment
+    Application   MyApp1
+    Created By    MyName
+    Environment   Production
+    Location      MyLocation
+```
 
 Címkézés PowerShell-lel kapcsolatos további információkért tekintse meg a [Azure erőforrás-parancsmagok][Azure Resource Cmdlets].
 

@@ -3,7 +3,7 @@ title: 'Az Azure Active Directory tartományi szolgáltatások: Felügyeleti út
 description: Hozzon létre egy szervezeti egység (OU) az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 52602ad8-2b93-4082-8487-427bdcfa8126
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
-ms.author: maheshu
-ms.openlocfilehash: 31fe241a94cedb04e1f8c50819eef7ebf675d2fb
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: cd4964939aa9b9ebd96a2fb29e1a6f7bf422d477
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504838"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50154828"
 ---
 # <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>Hozzon létre egy szervezeti egység (OU) a az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz
 Az Azure AD Domain Services felügyelt tartomány "AADDC számítógépek" és "AADDC felhasználók" nevű, illetve két beépített tárolók közé tartozik. A "AADDC számítógépek" tároló rendelkezik minden olyan számítógép, a felügyelt tartományhoz csatlakoztatott számítógép-objektumai. A "AADDC felhasználók" tároló tartalmazza a felhasználók és csoportok az Azure AD-bérlőben. Alkalmanként lehet a felügyelt tartomány számítási feladatok üzembe helyezéséhez a szolgáltatásfiókok létrehozásához szükséges. Erre a célra hozzon létre egy egyéni szervezeti egység (OU) a felügyelt tartományon, és a szervezeti egységre belül szolgáltatásfiókok létrehozása. Ez a cikk bemutatja, hogyan hozhat létre egy szervezeti Egységet a felügyelt tartományra.

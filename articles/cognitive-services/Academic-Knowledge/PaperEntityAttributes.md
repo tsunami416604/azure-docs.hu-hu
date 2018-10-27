@@ -10,12 +10,12 @@ ms.component: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: c1f97896a8c3264fca0e76a0800731b8c6c85267
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: ae238a3c3af091b764147fcde8aa2a98986da92e
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901601"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158890"
 ---
 # <a name="paper-entity"></a>A tanulmány entitás
 
@@ -25,26 +25,26 @@ ms.locfileid: "48901601"
 Name (Név)    |Leírás                                        |Típus       | Műveletek
 ------- | ------------------------------------------------- | --------- | ----------------------------
 Azonosító      |Entitásazonosító                                          |Int64      |Egyenlő
-Ti      |A tanulmány címe                                        |Sztring     |Egyenlő,<br/>StartsWith
-L       |A tanulmány nyelvi kód kötőjellel elválasztva "\@@@\"            |Sztring     |Egyenlő
+Ti      |A tanulmány címe                                        |Karakterlánc     |Egyenlő,<br/>StartsWith
+L       |Tanulmány nyelvkód elválasztva "\@@@"            |Karakterlánc     |Egyenlő
 I       |A tanulmány év                                         |Int32      |Egyenlő,<br/>IsBetween
 D       |A tanulmány dátuma                                         |Dátum       |Egyenlő,<br/>IsBetween
 Másolat      |Idézetet száma                                     |Int32      |nincs  
 ECC     |Becsült idézetet száma                           |Int32      |nincs
-AA. AuN  |Szerző neve                                        |Sztring     |Egyenlő,<br/>StartsWith
+AA. AuN  |Szerző neve                                        |Karakterlánc     |Egyenlő,<br/>StartsWith
 AA. AuId |Szerző azonosítója                                          |Int64      |Egyenlő
-AA. AfN  |Szerző kapcsolat neve                            |Sztring     |Egyenlő,<br/>StartsWith
+AA. AfN  |Szerző kapcsolat neve                            |Karakterlánc     |Egyenlő,<br/>StartsWith
 AA. AfId |Szerző kapcsolatot azonosítója                              |Int64      |Egyenlő
 AA. S    |Szerző ahhoz, hogy a tanulmány                         |Int32      |Egyenlő
-F.FN    |Tanulmány név mező                                |Sztring     |Egyenlő,<br/>StartsWith
+F.FN    |Tanulmány név mező                                |Karakterlánc     |Egyenlő,<br/>StartsWith
 F.FId   |Tanulmány azonosító mezője                                  |Int64      |Egyenlő
-J.JN    |Napló neve                                       |Sztring     |Egyenlő,<br/>StartsWith
+J.JN    |Napló neve                                       |Karakterlánc     |Egyenlő,<br/>StartsWith
 J.JId   |Napló azonosítója                                         |Int64      |Egyenlő
-C.CN    |Konferencia az adatsorozat neve                             |Sztring     |Egyenlő,<br/>StartsWith
+C.CN    |Konferencia az adatsorozat neve                             |Karakterlánc     |Egyenlő,<br/>StartsWith
 C.CId   |Konferencia sorozat azonosítója                               |Int64      |Egyenlő
 A relatív azonosítók     |Hivatkozott tanulmányok azonosítója                              |Int64]    |Egyenlő
 W       |A tanulmány címe és absztrakt szavakat                |String]   |Egyenlő
-E       |Kiterjesztett metaadatok (lásd az alábbi táblázatot)                |Sztring     |nincs  
+E       |Kiterjesztett metaadatok (lásd az alábbi táblázatot)                |Karakterlánc     |nincs  
         
 
 

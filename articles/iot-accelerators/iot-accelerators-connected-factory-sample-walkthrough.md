@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 12/12/2017
+ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: ae5218bae12b9489d67b0264f0e5fdb6d833cb9e
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 23b36fb647c2949dca1c5efe7f8194ec5a397965
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187767"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140400"
 ---
 # <a name="connected-factory-solution-accelerator-walkthrough"></a>A csatlakoztatottgyár-alapú megoldásgyorsító bemutatója
 
@@ -53,7 +53,7 @@ A megoldás webalkalmazásba integrált OPC UA-ügyféllel is rendelkezik, amely
 
 A gyártósorok szimulált állomásokból és szimulált gyártási végrehajtó rendszerekből (MES) állnak. A szimulált eszközök és az OPC-publikációs modul az OPC Foundation által kiadott [OPC UA .NET standardon][lnk-OPC-UA-NET-Standard] alapul.
 
-Az OPC Proxy és az OPC Publisher modulként van megvalósítva az [Azure IoT Edge][lnk-Azure-IoT-Gateway] alapján. Mindegyik szimulált gyártósorhoz kijelölt átjáró van csatlakoztatva.
+Az OPC Proxy és az OPC Publisher modulként van megvalósítva az [Azure IoT Edge][lnk-Azure-IoT-Gateway] alapján. Mindegyik szimulált gyártósorhoz az átjáró csatlakoztatva van.
 
 Minden szimulációs összetevő Azure Linux virtuális gépen futtatott Docker-tárolókban fut. A szimuláció úgy van konfigurálva, hogy alapértelmezés szerint nyolc szimulált gyártósort futtasson.
 
@@ -61,15 +61,19 @@ Minden szimulációs összetevő Azure Linux virtuális gépen futtatott Docker-
 
 A gyártósorok alkatrészeket gyártanak. Különböző állomásokból állnak: összeszerelő állomásból, tesztelő állomásból és csomagoló állomásból.
 
-A szimuláció futtatja és frissíti az OPC UA-csomópontokon keresztül közzétett adatokat. Minden szimulált gyártósori állomást a MES vezényel az OPC UA-n keresztül.
+A szimuláció futtatja és frissíti az adatokat az OPC UA-csomópontokon keresztül teszik elérhetővé. Minden szimulált gyártósori állomást a MES vezényel az OPC UA-n keresztül.
 
 ## <a name="simulated-manufacturing-execution-system"></a>Szimulált gyártási végrehajtó rendszer
 
-A MES az OPC UA-n keresztül figyeli a gyártósor egyes állomásait azok állapotváltozásainak észlelése érdekében. OPC UA-metódusokat hív meg az állomások vezérlése érdekében, és egyik állomásról a következőre továbbítja a termékeket a befejezésükig.
+A MES az OPC UA-n keresztül figyeli a gyártósor egyes állomásait azok állapotváltozásainak észlelése érdekében. Ez a meghívja az OPC UA az állomások vezérlése érdekében, és továbbítja egyik állomásról a következőre befejezéséig.
 
 ## <a name="gateway-opc-publisher-module"></a>Átjáró OPC kiadói modul
 
-Az OPC kiadói modul az állomás OPC UA-kiszolgálóihoz csatlakozik és feliratkozik a kiadandó OPC-csomópontokra. A modul a csomópontadatokat JSON-formátumba alakítja, titkosítja, majd az IoT Hubra küldi OPC UA Pub/Sub üzenetekként.
+Az OPC kiadói modul az állomás OPC UA-kiszolgálóihoz csatlakozik és feliratkozik a kiadandó OPC-csomópontokra. A modul:
+
+1. A csomópont adatokat JSON formátumba alakítja át.
+1. A JSON titkosítja.
+1. A JSON az IoT Hub küldi OPC UA Pub/Sub üzenetekként.
 
 Az OPC kiadói modulnak csak kimenő https-portra (443) van szüksége, és képes együttműködni a meglévő vállalati infrastruktúrával.
 
@@ -77,7 +81,7 @@ Az OPC kiadói modulnak csak kimenő https-portra (443) van szüksége, és kép
 
 Az átjáró OPC UA-proxymodul bináris OPC UA-parancs- és vezérlési üzeneteket továbbít, és csak kimenő https-portot (443) igényel. Képes a meglévő vállalati infrastruktúrát használni, beleértve a webes proxykat is.
 
-IoT Hub-eszközmetódusokkal viszi át a csomagolt TCP/IP-adatokat az alkalmazásrétegen, így az SSL/TLS segítségével biztosítja a végpontok megbízhatóságát, az adatok titkosítását és az integritást.
+IoT Hub Device módszereket használ az alkalmazási rétegben annak biztosítása érdekében a végpontok megbízhatóságát, az adattitkosítás és az SSL/TLS segítségével integritása eszközmetódusokkal TCP/IP-adatok átviteléhez.
 
 A magán a proxyn keresztül továbbított OPC UA bináris protokoll UA-hitelesítést és -titkosítást használ.
 
@@ -93,13 +97,13 @@ Az IoT Hub eseményforrást biztosít az Azure TSI-nek. A TSI 30 napig tárol ad
 * Forrás időbélyege
 * OPC UA DisplayName
 
-A TSI jelenleg nem engedélyezi, hogy az ügyfelek testreszabják, mennyi ideig szeretnék megőrizni az adatokat.
+A TSI jelenleg nem engedélyezi az ügyfelek számára a testre szabhatja, hogy mennyi ideig szeretnék megőrizni az adatokat.
 
-A TSI a csomópontadatok lekérdezését egy **SearchSpan** (**Time.From**, **Time.To**), az összesítést pedig az **OPC UA ApplicationUri**, az **OPC UA NodeId** vagy az **OPC UA DisplayName** attribútum alapján végzi.
+Lekérdezések TSI a csomópontadatok egy időalapú **SearchSpan** összesítést pedig az **OPC UA ApplicationUri** vagy **OPC UA NodeId** vagy **OPC UA DisplayName**.
 
-Az OEE- és a KPI-mérőműszer adatainak és az idősorozat-diagramok lekérdezése érdekében a rendszer az események száma, valamint a Sum, az Avg, a Min és a Max értékek alapján összesíti az adatokat.
+Az OEE és KPI-mérőműszer és az idősorozat-diagramok adatok lekéréséhez, a megoldás összesíti az adatokat a események száma szerint **Sum**, **átlagos**, **Min**, és  **Maximális**.
 
-Az idősorozatok más folyamattal vannak felépítve. Az OEE és a KPI-k állomások alapadataiból vannak kiszámítva és buborékba vannak rendezve a topológiához (gyártósorok, gyárak, vállalat) az alkalmazásban.
+Az idősorozatok más folyamattal vannak felépítve. A megoldás állomások alapadataiból OEE és KPI értékeket számít ki, és az értékeket a gyártósorok, gyárak és vállalati buborékok.
 
 Ezenkívül az OEE- és a KPI-topológia idősorozatai az alkalmazásban lesznek kiszámítva, amikor egy megjelenített időtartomány készen áll. A nap nézet például minden teljes órában frissül.
 
@@ -116,7 +120,7 @@ A megoldásban az IoT Hub ezenkívül a következőket teszi:
 A megoldás Azure Blob Storage tárolót használ a virtuális gép lemezes tárolójaként, valamint az üzembehelyezési adatok tárolásához.
 
 ## <a name="web-app"></a>Webalkalmazás
-A megoldásgyorsító részeként üzembe helyezett webalkalmazás integrált OPC UA-ügyfélből, riasztások feldolgozásából és a telemetria megjelenítéséből áll.
+A megoldásgyorsító részeként üzembe helyezett webalkalmazás integrált OPC UA-ügyfélből, riasztások feldolgozásából és telemetria tartalmazza.
 
 ## <a name="telemetry-data-flow"></a>Telemetria-adatfolyam
 
@@ -161,7 +165,7 @@ A megoldásgyorsító részeként üzembe helyezett webalkalmazás integrált OP
     - Ez a lépés az adatközpontban történik.
 
 11. A webböngésző a csatlakoztatott gyár webalkalmazásához csatlakozik.
-    - Rendereli a csatlakoztatott gyár irányítópultját.
+    - Megjeleníti a csatlakoztatott gyári irányítópultot.
     - HTTPS-en keresztül csatlakozik.
     - A csatlakoztatott gyár alkalmazásának eléréséhez az Azure Active Directoryn keresztül kell hitelesíteni a felhasználót.
     - A csatlakoztatott gyár alkalmazásába irányuló összes WebApi-hívást hamisítás elleni tokenek védik.
@@ -182,9 +186,9 @@ A megoldásgyorsító részeként üzembe helyezett webalkalmazás integrált OP
 
 2. Az OPC-proxy (kiszolgáló-összetevő) regisztrálja magát az IoT Hubbal.
     - Beolvassa az összes ismert eszközét az IoT Hubról.
-    - Socketen vagy Secure WebSocketen keresztüli TLS protokollon keresztüli MQTT-t használ.
+    - MQTT-t használ TLS protokollon keresztüli Socketen vagy Secure Websocketen keresztül.
 
-3. A webböngésző a csatlakoztatott gyár webalkalmazásához csatlakozik, és rendereli a csatlakoztatott gyár irányítópultját.
+3. Webböngésző a csatlakoztatott gyári webalkalmazás csatlakozik, és megjeleníti a csatlakoztatott gyári irányítópultot.
     - HTTPS-t használ.
     - A felhasználó kiválasztja azt az OPC UA-kiszolgálót, amelyhez csatlakozni kíván.
 
@@ -212,7 +216,7 @@ A megoldásgyorsító részeként üzembe helyezett webalkalmazás integrált OP
     - Ezeket az adatokat az OPC UA-szoftvercsatornára kézbesíti a rendszer a csatlakoztatott gyári alkalmazásban.
 
 11. A csatlakoztatott gyár webalkalmazása visszaküldi az OPC UA-kiszolgálótól kapott OPC UA-specifikus adatokkal kiegészült OPC UX-et a webböngészőnek renderelésre.
-    - Az OPC-címtérben való böngészés és az OPC-címtérben lévő csomópontokra történő függvényalkalmazás közben az OPC böngészői UX HTTPS-en keresztüli, hamisításgátló tokenekkel védett AJAX-hívásokkal kéri le az adatokat a csatlakoztatott gyári webalkalmazásból.
+    - Amíg a felhasználó az OPC-címtérben keresztül jut, és az OPC-címtérben lévő csomópontokra vonatkozik a Funkciók, az OPC UX-et ügyfél AJAX-hívások le adatokat a csatlakoztatott gyári webalkalmazás Hamisításgátló jogkivonatokkal védett HTTPS-kapcsolaton keresztül használja.
     - Szükség esetén az ügyfél a 4-10. lépésekben leírt kommunikációval cserél információkat az OPC UA-kiszolgálóval.
 
 > [!NOTE]

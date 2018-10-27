@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: d2ed07be829e48cc4fc0538c08fd498dea99e71e
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: ad77f1f0a99fbdb355163e1bc83461c8c4eb75fa
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985175"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157700"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Eszköz csatlakoztatása az Azure IoT Central
 
@@ -102,7 +102,7 @@ Tömeges exportálása eszközök az alkalmazásból:
 1.  Jelölje ki az eszközöket, amelyeket szeretne exportálni, majd kattintson a **exportálása** művelet.
 1.  Az exportálás befejezése után a sikert jelző üzenet jelenik meg együtt egy hivatkozás a létrehozott fájl letöltéséhez.
 1.  Kattintson a letölteni a fájlt egy helyi mappába a lemezen a sikert jelző üzenet.
-1.  Az exportált CSV-fájlt a következő oszlopok adatokat fog rendelkezni: **eszköz azonosítója, eszköznév, Priamary/ellékútvonal Eszközkulcsok és elsődleges és másodlagos tanúsítvány thumbrpints**
+1.  Az exportált CSV-fájlt a következő oszlopok adatokat fog rendelkezni: **eszköz azonosítója, az eszköz neve, a eszköz elsődleges és másodlagos kulcsok és a elsődleges és másodlagos tanúsítvány-ujjlenyomatai**
     *   IOTC_DEVICEID
     *   IOTC_DEVICENAME
     *   IOTC_SASKEY_PRIMARY
@@ -232,7 +232,7 @@ Eszköz Registeretd során
 Iot hub eszköz kapcsolati karakterláncát az Azure IoT Hub használatával lekérheti az alábbi lépéseket 
 1. Például beolvasni a kapcsolat adatait **hatókör azonosítója, az eszköz Azonosítóját, a eszköz elsődleges kulcs** az eszköz oldalról (itt van az eszköz lapon > kattintson a csatlakozás) 
 
-    ![Kapcsolat részletei](media\concepts-connectivity\device-connect.PNG)
+    ![Kapcsolat adatai](media\concepts-connectivity\device-connect.PNG)
 
 1. Az alábbi parancs parancssori eszköz használatával, az eszköz kapcsolati karakterláncának beolvasása.
     Használja az alábbi utasításokat követve az eszköz kapcsolati karakterláncának lekérése  

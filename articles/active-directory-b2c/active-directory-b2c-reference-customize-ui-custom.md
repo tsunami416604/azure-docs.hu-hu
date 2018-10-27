@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c6882dd56ee96e1fcab5926b77f11ce928bf950b
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: c363056fc013cc8b8fd67fb9d656d3550d3bf5a2
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442355"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139509"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Egyéni házirendek felhasználói út, a felhasználói felület testreszabása
 
@@ -41,7 +41,7 @@ A régi hagyományos módszerétől, ahol sablon oldalak tulajdonosa a megoldás
 Megadhatja, hogy annyi tartalom oldalak tetszés szerint elvégezte a megfelelő HTML5/CSS-fájlokat.
 
 > [!NOTE]
-> Biztonsági okokból JavaScript használata jelenleg le van tiltva a testreszabáshoz. JavaScript zárolásának feloldásához használja az Azure AD B2C-bérlő egy egyéni tartománynév van szükség.
+> Biztonsági okokból JavaScript használata jelenleg le van tiltva a testreszabáshoz. 
 
 Minden, a HTML5-alapú/CSS-sablonok, adjon meg egy *forráshorgony* elem, amely megfelel a szükséges `<div id=”api”>` elem a HTML-kódot vagy a tartalom lap, a továbbiakban mutatják be. Az Azure AD B2C megköveteli, hogy minden tartalom lap az adott div.
 
@@ -76,7 +76,7 @@ Annak érdekében, hogy minden megfelelően működik-e, tegye a következőket:
 
 Köszönhetően ez a CORS-alapú megközelítés a végfelhasználók rendelkezik az alkalmazás és az Azure AD B2C által üzemeltetett oldalak közötti egységes felületeket.
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
 Előfeltételként hozzon létre egy tárfiókot kell. Azure-előfizetéssel, hozzon létre egy Azure Blob Storage-fiók van szüksége. Regisztrálhat egy ingyenes próbaidőszakot a [Azure-webhelyen](https://azure.microsoft.com/pricing/free-trial/).
 

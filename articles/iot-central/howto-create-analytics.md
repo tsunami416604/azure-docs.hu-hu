@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: bf86e769aff4a9b03d5df1b1aef702814c605fa4
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: c170f573a473d3fdfca5c916b4be594dc93d6b27
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368086"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156323"
 ---
 # <a name="how-to-use-analytics-to-analyze-your-device-data"></a>Az adatok elemzéséhez analytics használata
 
 
-*Ez a cikk az operátorok, a kapcsolat építői és a rendszergazdák vonatkozik.*
+*Ez a cikk operátorokra, fejlesztőkre és rendszergazdákra vonatkozik.*
 
 
-A Microsoft Azure IoT Central jelentéssel bírnak az eszközök adatainak nagy mennyiségű megoldásban gazdag analitikai funkciókat biztosít. Első lépésként látogasson el a **Analytics** a bal oldali navigációs menüben. 
+Az Azure IoT Central jelentéssel bírnak az eszközök adatainak nagy mennyiségű megoldásban gazdag analitikai funkciókat biztosít. Első lépésként látogasson el a **Analytics** a bal oldali navigációs menüben. 
 
   ![IoT-központ navigációs analyticshez](media\howto-create-analytics\analytics-navigation.png)
 
@@ -40,7 +40,7 @@ to-do: do we need to explain how fiters work?
 * **Szűrők:** igény szerint hozzáadhat szűrők a keresést, hogy az adatok alaposabb vizsgálatát. Egyszerre legfeljebb 10 szűrőket is hozzáadhat. Például Oakland az összes hűtőszekrények belül található, amelyek hőmérséklet kellett volna nyissa meg a fenti 60 fok. 
 * **Adott időszakban:** alapértelmezés szerint azt fogjuk-adatokat lekérni az elmúlt 10 percben. Egy előre meghatározott időpontra tartományok módosítani ezt az értéket, vagy válasszon egy egyéni időszakot. 
 
- ![Elemzési lekérdezés](media\howto-create-analytics\analytics-query.png)
+ ![Analytics-lekérdezés](media\howto-create-analytics\analytics-query.png)
 
 ## <a name="visualizing-your-data"></a>Az adatok megjelenítése
 
@@ -60,12 +60,12 @@ to-do: confirm if 10 is the max number of measurements
 
 Hogy különféle módokon, amelyben további módosíthatja a lekérdezés eredményeit, a Vizualizáció igényeinek. A diagram nézet és a egy rácsnézet között, bejövő és kimenő nagyítás, frissítse az adatkészletet, és módosítsa a hogyan sorok jelennek meg.
 
-* **Rács megjelenítése:** az eredmények táblázatos formában való mutatják az adott érték az egyes elérhető lesz. Ez a nézet is megfelel az akadálymentességi sztenderdeknek. 
+* **Rács megjelenítése:** az eredmények táblázatos formátumban, lehetővé téve a megtekintheti az adott érték az egyes elérhető lesz. Ez a nézet is megfelel az akadálymentességi sztenderdeknek. 
 * **Diagram megjelenítése:** egyszerűen a kritikus pontok elkerülése érdekében felfelé vagy lefelé trendek és rendellenességek sor formátumban jelennek meg az eredményeket. 
 
  ![A rácsnézet elemzési megjelenítése](media\howto-create-analytics\analytics-showgrid.png)
 
-Nagyítás lehetővé teszi az adatok alaposabb vizsgálatát. Ha úgy találja, hogy egy adott időszakban, szeretné belül az eredményhalmazban összpontosítanak használatával a kurzor fogd a terület, amelyeket szeretne nagyítása, és a rendelkezésre álló vezérlők segítségével hajtsa végre az alábbi műveletek egyikét:
+Nagyítás lehetővé teszi az adatok alaposabb vizsgálatát. Ha azt tapasztalja, hogy egy adott időszakban, összpontosítson az eredményhalmaz belül szeretné, használja a kurzort megnyitása a terület, amelyeket szeretne nagyítása, és a rendelkezésre álló vezérlők segítségével hajtsa végre az alábbi műveletek egyikét:
 * **Nagyítás:** nagyítás Miután kiválasztotta, hogy egy adott időszakban, a engedélyezve lesz, és lehetővé teszi az adatokhoz a nagyításhoz.
 * **Kicsinyítés:** Ez a vezérlő lehetővé teszi, hogy az utolsó nagyítás kicsinyítés egy szinttel. Például, ha már ráközelít az adatokhoz három alkalommal, kicsinyítés vesz igénybe egy lépésben egy biztonsági másolatot.
 * **Nagyítás visszaállítási:** különböző szintjeit nagyításához végzett el, miután a Nagyítás visszaállítási vezérlő térjen vissza az eredeti eredményhalmaz használhatja. 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: aa01513a2381143edcaa59b215bb97951f333118
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: fae82d702158b98e0182a0cfa575249c19236ccb
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087712"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157666"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Az Azure Functions az Azure Cosmos DB-kötéseket 2.x
 
@@ -719,7 +719,7 @@ A következő példa bemutatja egy [C#-szkriptfüggvény](functions-reference-cs
       "Id": "{Query.id}"
     }
   ],
-  "disabled": true
+  "disabled": false
 }
 ```
 
@@ -1035,7 +1035,7 @@ A következő példa bemutatja egy [JavaScript-függvény](functions-reference-n
       "Id": "{Query.id}"
     }
   ],
-  "disabled": true
+  "disabled": false
 }
 ```
 

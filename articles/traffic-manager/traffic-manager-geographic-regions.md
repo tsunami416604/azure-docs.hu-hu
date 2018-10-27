@@ -1,12 +1,9 @@
 ---
-title: Ország vagy régió hierarchia Azure Traffic Manager földrajzi útválasztási típus által használt |} Microsoft Docs
-description: Ez a cikk felsorolja az ország vagy régió hierarchia használják az Azure Traffic Manager földrajzi útválasztási típus
+title: Az Azure Traffic Manager földrajzi útválasztási típus által használt ország/régió-hierarchia |} A Microsoft Docs
+description: Ez a cikk felsorolja az Azure Traffic Manager földrajzi útválasztási típus által használt ország/régió-hierarchia
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-ms.openlocfilehash: 45fa209b4417ce8b65d1fa4f2f59ff6c2d50f3a4
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 1609daa4edbc3db9384941d575c141faaa799fb6
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28201496"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138242"
 ---
-# <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Ország vagy régió hierarchia Azure Traffic Manager által használt földrajzi forgalom-útválasztási módszert
+# <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>A földrajzi forgalom-útválasztási módszer az Azure Traffic Manager által használt ország/régió-hierarchia
 
-Ez a cikk felsorolja a országokból és régiókból használják a **Geographic** forgalom-útválasztási módszer az Azure Traffic Managerben. Is beszerezhető ezt az információt programozott módon meghívásával a [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/). 
+Ez a cikk felsorolja az országok és régiók használják a **Geographic** forgalom-útválasztási módszer az Azure Traffic Managerben. Is beszerezhető ezek az információk programozott módon meghívásával a [Azure Traffic Manager REST API-val](https://docs.microsoft.com/rest/api/trafficmanager/). 
 
 - WORLD(World)
 
@@ -35,9 +32,9 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - AT(Austria)
 
-        - AX (Åland-szigetek)
+        - Az AX (Aland-szigetek)
 
-        - BA (bosnyák)
+        - BA (Bosznia-Hercegovina)
 
         - BE(Belgium)
 
@@ -61,11 +58,11 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - Fi(Finland)
 
-        - FŐ (Feröer-szigetek)
+        - FO (Feröer-szigetek)
 
         - FR(France)
 
-        - GB (Egyesült Királyságban)
+        - GB-os (Egyesült Királyság)
 
         - GG(Guernsey)
 
@@ -79,7 +76,7 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - IE(Ireland)
 
-        - Csevegés (Man-szigeti)
+        - Csevegési (Man-Man)
 
         - IS(Iceland)
 
@@ -101,7 +98,7 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - Me(Montenegro)
 
-        - MK(Macedonia, FYRO)
+        - Az MK (Macedónia, V.J.K.)
 
         - MT(Malta)
 
@@ -113,7 +110,7 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - PT(Portugal)
 
-        - RO(Romania)
+        - RO(ROMANIA)
 
         - RS(Serbia)
 
@@ -127,19 +124,19 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - SK(Slovakia)
 
-        - SM(San Marino)
+        - Service Manager (a San Marino)
 
         - UA(Ukraine)
 
-        - VA (Vatikán)
+        - Sebezhetőség-Felmérési (Vatikánváros)
 
-        - XJ(Jan Mayen)
+        - XJ (Jan Mayen)
 
         - XK(Kosovo)
 
-    - Földrajzi-ME(Middle East)
+    - GEO-ME(Middle East)
 
-        - AE (Egyesült Arab emírségekbeli)
+        - AE (Egyesült Arab Emírségek)
 
         - BH(Bahrain)
 
@@ -149,7 +146,7 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - IR(Iran)
 
-        - JO(Jordan)
+        - Jo(Jordan)
 
         - KW(Kuwait)
 
@@ -157,7 +154,7 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - OM(OMAN)
 
-        - PS (Palesztina)
+        - PS (palesztin nemzeti hatóság)
 
         - QA(Qatar)
 
@@ -169,7 +166,7 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - YE(Yemen)
 
-    - Földrajzi-NA(North America / Central America / Caribbean)
+    - GEO-NA(North America / Central America / Caribbean)
 
         - Rendelkezésre állási csoport (Antigua és Barbuda)
 
@@ -179,7 +176,7 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - BB(Barbados)
 
-        - BL(Saint Barthélemy)
+        - BL (Saint Barthélemy)
 
         - BM(Bermuda)
 
@@ -205,7 +202,7 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
             - CA-NT(Northwest Territories)
 
-            - CA-NU(Nunavut)
+            - CA-Nu(Nunavut)
 
             - CA-on(Ontario)
 
@@ -217,7 +214,7 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
             - CA-YT(Yukon Territory)
 
-        - CR(Costa Rica)
+        - Létrehozva (Costa Rica)
 
         - Cu(Cuba)
 
@@ -225,11 +222,11 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - DM(Dominica)
 
-        - Nincs (Dominikai Köztársaság)
+        - Hajtsa végre (Dominikai Köztársaság)
 
         - GD(Grenada)
 
-        - GL(Greenland)
+        - GL(GREENLAND)
 
         - GP(Guadeloupe)
 
@@ -243,11 +240,11 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - KN (Saint Kitts és Nevis)
 
-        - Key (Kajmán-szigetek)
+        - KY (Kajmán-szigetek)
 
         - LC(Saint Lucia)
 
-        - MF(Saint Martin)
+        - MF (Saint-Martin)
 
         - MQ(Martinique)
 
@@ -259,23 +256,23 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - PA(Panama)
 
-        - PM (Saint-Pierre és Miquelon)
+        - DU. (Saint Pierre és Miquelon)
 
-        - Törlés a ka (Puerto Rico)
+        - Pull-kérelem (Puerto Rico)
 
-        - SV(El Salvador)
+        - SV (El Salvador)
 
-        - SX(Sint Maarten)
+        - SX (Sint Maarten)
 
-        - TC (Turks és Caicos-szigetek)
+        - TC (a Turks és Caicos-szigetek)
 
-        - (Trinidad és Tobago) TT
+        - TT (Trinidad és Tobago)
 
-        - UM(U.S. Külbirtokai)
+        - UM (EGYESÜLT ÁLLAMOK Külbirtokai)
 
         - US(United States)
 
-            - US-AK(Alaska)
+            - US-ak(Alaska)
 
             - US-AL(Alabama)
 
@@ -303,23 +300,23 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
             - US-ID(Idaho)
 
-            - US-IL(Illinois)
+            - US-il(Illinois)
 
-            - US-IN(Indiana)
+            - US-in(Indiana)
 
             - US-KS(Kansas)
 
             - US-KY(Kentucky)
 
-            - US-LA(Louisiana)
+            - US-la(Louisiana)
 
             - US-MA(Massachusetts)
 
             - US-MD(Maryland)
 
-            - US-ME(Maine)
+            - US-Me(Maine)
 
-            - US-MI(Michigan)
+            - US-mi(Michigan)
 
             - US-MN(Minnesota)
 
@@ -365,7 +362,7 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
             - US-ut(Utah)
 
-            - US-VA(Virginia)
+            - US-va(Virginia)
 
             - US-VT(Vermont)
 
@@ -383,7 +380,7 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - VI(U.S. Szűz-szigetek)
 
-        - XE(Sint Eustatius)
+        - XE (Sint Eustatius)
 
         - XS(Saba)
 
@@ -401,11 +398,11 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - BT(Bhutan)
 
-        - Másolatot kap (Cocos (Keeling)-szigetek)
+        - CC (Kókusz (Keeling)-szigetek)
 
         - CN(China)
 
-        - CX(Christmas Island)
+        - A CX (Karácsony-sziget)
 
         - GE(Georgia)
 
@@ -437,7 +434,7 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - Mn(Mongolia)
 
-        - MO (MAKAÓI)
+        - Hónap (Makaó (KKT))
 
         - MV(Maldives)
 
@@ -479,17 +476,17 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - BW(Botswana)
 
-        - CD (Kongói))
+        - CD (Kongó (KDK))
 
-        - CF (közép-afrikai Köztársaság)
+        - CF-hez (közép-afrikai Köztársaság)
 
         - CG(Congo)
 
-        - CI(Côte d’Ivoire)
+        - Konfigurációelem (rendelkező d'Ivoire)
 
         - CM(Cameroon)
 
-        - KtgE (Cabo Verde-i)
+        - CV (Cabo Verde)
 
         - DJ(Djibouti)
 
@@ -509,7 +506,7 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - GN(Guinea)
 
-        - GQ (Egyenlítői guineai)
+        - GQ (Egyenlítői-Guinea)
 
         - GW(Guinea_Bissau)
 
@@ -549,7 +546,7 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - SC(Seychelles)
 
-        - SD(Sudan)
+        - SD(SUDAN)
 
         - SH (Szent Ilona, Ascension és Tristan da Cunha)
 
@@ -557,11 +554,11 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - SN(Senegal)
 
-        - SO(Somalia)
+        - So(Somalia)
 
         - SS (Dél-szudán)
 
-        - St. (São Tomé és Príncipe)
+        - St. (Sao Tome és Principe)
 
         - SZ(Swaziland)
 
@@ -579,7 +576,7 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - YT(Mayotte)
 
-        - ZA (Dél-afrikai)
+        - ZA (Dél-Afrika)
 
         - ZM(Zambia)
 
@@ -589,13 +586,13 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - AQ(Antarctica)
 
-    - Földrajzi-SA(South America)
+    - GEO-SA(South America)
 
         - AR(Argentina)
 
         - BO(Bolivia)
 
-        - BR(Brazil)
+        - BR(brazil)
 
         - Cl(Chile)
 
@@ -607,7 +604,7 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - GF (Francia Guyana)
 
-        - GS (Dél-Georgia és Déli-Sandwich-szigetek)
+        - A GS (Dél-Georgia és Déli-Sandwich-szigetek)
 
         - GY(Guyana)
 
@@ -621,7 +618,7 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - VE(Venezuela)
 
-    - Földrajzi-AP(Australia / Pacific)
+    - GEO-AP(Australia / Pacific)
 
         - AS(American Samoa)
 
@@ -639,11 +636,11 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
             - AU-TAS(Tasmania)
 
-            - AU-VIC(Victoria)
+            - AU-Vic(Victoria)
 
             - AU-WA(Western Australia)
 
-        - CK (Cook-szigetek)
+        - Mart LOCK (Cook-szigetek)
 
         - FJ(Fiji)
 
@@ -657,9 +654,9 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - MH (Marshall-szigetek)
 
-        - Felügyeleti csomag (Északi Mariana-szigetek)
+        - Felügyeleti csomag (Észak-Mariana-szigetek)
 
-        - NC (Új-Kaledónia)
+        - Hálózati vezérlő (Új-Kaledónia)
 
         - NF (Norfolk-sziget)
 
@@ -671,7 +668,7 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - PF (Francia Polinézia)
 
-        - A védelmi (Pápua Új-guineai)
+        - PG (Pápua Új-Guinea)
 
         - PN (Pitcairn-szigetek)
 
@@ -687,10 +684,10 @@ Ez a cikk felsorolja a országokból és régiókból használják a **Geographi
 
         - VU(Vanuatu)
 
-        - A Windows Tűzfal (és Futuna)
+        - A Windows Tűzfal (Wallis és Futuna)
 
         - WS(Samoa)
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ [Geographic forgalom-útválasztási módszer az Azure Traffic Managerben](traffic-manager-routing-methods.md#geographic).
+- Tudjon meg többet [Geographic forgalom-útválasztási módszer az Azure Traffic Managerben](traffic-manager-routing-methods.md#geographic).

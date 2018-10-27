@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ef72829d507d6a471ec9a8972ead262da7f7b582
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4362a6b936c52319f6f6fc625370733f3c84e361
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068696"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158856"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect-topológiák
 Ez a cikk ismerteti a különböző helyszíni és Azure Active Directory (Azure AD) topológiákat, amelyek az Azure AD Connect-szinkronizálást használ, a főbb integrációs megoldása. Ez a cikk is támogatott, és nem támogatott konfigurációkat tartalmaz.
@@ -87,7 +87,7 @@ Egynél több Azure AD Connect szinkronizálási kiszolgáló csatlakozik egy Az
 ### <a name="multiple-forests-separate-topologies"></a>Több erdő, külön topológiák
 ![A felhasználók csak egyszer jelölő címtárak összességében lehetőség](./media/plan-connect-topologies/MultiForestUsersOnce.png)
 
-![Több erdő, és külön topológiák ábrázolása](./media/plan-connect-topologies/MultiForestSeperateTopologies.png)
+![Több erdő, és külön topológiák ábrázolása](./media/plan-connect-topologies/MultiForestSeparateTopologies.png)
 
 Ebben a környezetben helyszíni erdőket külön entitásokként kell kezelni. Nincs felhasználó nem található bármely másik erdőben. Minden olyan erdőben, a saját Exchange-szervezet rendelkezik, és nincs GALSync az erdők között van. Ez a topológia fúzió vagy felvásárlás után, vagy egy szervezet a helyzet lehet, ahol mindegyik üzleti egység egymástól függetlenül működik. Erdők ugyanazon a szervezeten belül, az Azure ad-ben és az egyesített GAL jelennek meg. Az előző képen látható minden erdőben lévő minden egyes objektum tartozik a metaverzumba egyszer jelölt és összevonva jelenik meg a céloldali Azure AD-bérlő.
 

@@ -3,7 +3,7 @@ title: A Windows Server rendszerű virtuális gép csatlakoztatása az Azure Act
 description: A Windows Server virtuális gépek csatlakoztatása felügyelt tartományhoz az Azure Resource Manager-sablonok használatával.
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 4eabfd8e-5509-4acd-86b5-1318147fddb5
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
-ms.author: maheshu
-ms.openlocfilehash: 40eb0e8133626e77a1f61ddfc5df69ecf1b958f2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: ergreenl
+ms.openlocfilehash: a083bd2fe730f9723330abf9bce03d760b7442d8
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950794"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157258"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-a-resource-manager-template"></a>Egy Windows Servert futtató virtuális gép csatlakoztatása felügyelt tartományokhoz Resource Manager-sablon használatával
 Ez a cikk bemutatja, hogyan egy Windows Servert futtató virtuális gép csatlakoztatása az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz Resource Manager-sablonok használatával.

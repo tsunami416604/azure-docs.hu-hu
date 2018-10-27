@@ -8,13 +8,13 @@ ms.topic: reference
 author: hning86
 ms.author: haining
 ms.reviewer: j-martens
-ms.date: 03/28/2018
-ms.openlocfilehash: 58d0d028c920faa7e86884c85f8fb677ce67c390
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.date: 10/24/2018
+ms.openlocfilehash: 0927ae14d232ec2ce3a46bb66ed535deabbe0138
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389921"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158686"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
@@ -24,19 +24,19 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
 
 ### <a name="azure-machine-learning-sdk-for-python-v0168"></a>Az Azure Machine Learning SDK for Python v0.1.68
 
-#### <a name="new-features"></a>Új funkciók
- * Több bérlős támogatással új munkaterület létrehozása során.
++ **Új funkciók**
+  * Több bérlős támogatással új munkaterület létrehozása során.
 
-#### <a name="breaking-changes"></a>Kompatibilitástörő változások
- * **A következő kiadásban közelgő** *Workspace.compute_targets, adattárolók, kísérletek, képek, a modellek* és *problémák megoldásához segítséget* módszer helyett tulajdonságai válnak. Helyettesítse be például *Workspace.compute_targets()* a *Workspace.compute_targets*.
++ **Használhatatlanná tévő változásai**
+  * **A következő kiadásban közelgő** *Workspace.compute_targets, adattárolók, kísérletek, képek, a modellek* és *problémák megoldásához segítséget* módszer helyett tulajdonságai válnak. Helyettesítse be például *Workspace.compute_targets()* a *Workspace.compute_targets*.
 
-#### <a name="bugs-fixed"></a>Javított hibák
- * A pynacl könyvtár verzió már nem rögzíthetők a webszolgáltatáshoz való telepítésekor.
++ **Javított hibák**
+  * A pynacl könyvtár verzió már nem rögzíthetők a webszolgáltatáshoz való telepítésekor.
 
 ### <a name="azure-machine-learning-data-prep-sdk-v030"></a>Az Azure Machine Learning adat-előkészítési SDK v0.3.0
 
-#### <a name="new-features"></a>Új funkciók:
-* Hozzáadott metódus transform_partition_with_file(script_path), amely lehetővé teszi a felhasználók számára, hogy az elérési útját egy Python-fájlt, végrehajtására
++ **Új funkciók**
+  * Hozzáadott metódus transform_partition_with_file(script_path), amely lehetővé teszi a felhasználók számára, hogy az elérési útját egy Python-fájlt, végrehajtására
 
 ## <a name="2018-10-01"></a>2018-10-01
 
@@ -45,56 +45,55 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
 
 Lásd: [kapcsolatos ismert problémák listája](resource-known-issues.md) ismert hibák és a lehetséges megoldások megismeréséhez.
 
-#### <a name="breaking-changes"></a>Kompatibilitástörő változások
- * Workspace.experiments, Workspace.models, Workspace.compute_targets, Workspace.images, Workspace.web_services visszatérési szótár, korábban visszaadott listában. Lásd: [azureml.core.Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) API dokumentációja.
++ **Használhatatlanná tévő változásai**
+  * Workspace.experiments, Workspace.models, Workspace.compute_targets, Workspace.images, Workspace.web_services visszatérési szótár, korábban visszaadott listában. Lásd: [azureml.core.Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) API dokumentációja.
 
- * Automatizált Machine Learning Normalizált négyzetes hiba eltávolítja az elsődleges metrikákat.
+  * Automatizált Machine Learning Normalizált négyzetes hiba eltávolítja az elsődleges metrikákat.
 
++ **HyperDrive**
+  * Különböző HyperDrive hibajavítások a Bayes, a javított teljesítménye, metrikák hívások beolvasása. 
+  * 1.9 Tensorflow 1.10 verzióról 
+  * Docker-rendszerkép optimalizálást a hidegindítás. 
+  * Feladat a most jelentés megfelelő akkor is, ha a hiba kilépnek-as állapotkódot más, mint 0. 
+  * RunConfig attribútum érvényesítése, az SDK-t. 
+  * Futtatás HyperDrive objektum Futtatás szabályos hasonló Mégse támogatja: nincs szükség adja át a paramétereket. 
+  * Widget fejlesztései legördülő értékeit az elosztott futtatási és HyperDrive futtatások állapotának fenntartásához. 
+  * Paraméterkiszolgáló TensorBoard és a többi napló-fájloknak támogatniuk rögzíteni. 
+  * Intel(R) MPI szolgáltatás oldalán támogatja. 
+  * Bugfix a finomhangolással az elosztott futtatási javítás BatchAI az érvényesítés során. 
+  * Környezet Manager mostantól azonosítja az elsődleges példány. 
 
-#### <a name="hyperdrive"></a>HyperDrive
- * Különböző HyperDrive hibajavítások a Bayes, a javított teljesítménye, metrikák hívások beolvasása. 
- * 1.9 Tensorflow 1.10 verzióról 
- * Docker-rendszerkép optimalizálást a hidegindítás. 
- * Feladat a most jelentés megfelelő akkor is, ha a hiba kilépnek-as állapotkódot más, mint 0. 
- * RunConfig attribútum érvényesítése, az SDK-t. 
- * Futtatás HyperDrive objektum Futtatás szabályos hasonló Mégse támogatja: nincs szükség adja át a paramétereket. 
- * Widget fejlesztései legördülő értékeit az elosztott futtatási és HyperDrive futtatások állapotának fenntartásához. 
- * Paraméterkiszolgáló TensorBoard és a többi napló-fájloknak támogatniuk rögzíteni. 
- * Intel(R) MPI szolgáltatás oldalán támogatja. 
- * Bugfix a finomhangolással az elosztott futtatási javítás BatchAI az érvényesítés során. 
- * Környezet Manager mostantól azonosítja az elsődleges példány. 
++ **Azure portal felületének**
+  * Futtatás részletei log_table() és log_row() támogatottak. 
+  * Automatikusan hozzon létre diagramokat a táblák és sorok 1,2 vagy 3 numerikus oszlopok és a egy választható kategorikus oszlop.
 
-#### <a name="azure-portal-experience"></a>Azure portal felületének
- * Futtatás részletei log_table() és log_row() támogatottak. 
- * Automatikusan hozzon létre diagramokat a táblák és sorok 1,2 vagy 3 numerikus oszlopok és a egy választható kategorikus oszlop.
++ **Automatizált Machine Learning**
+  * Továbbfejlesztett hiba- és dokumentáció 
+  * Rögzített futtatási tulajdonság lekérése teljesítménybeli problémák. 
+  * Rögzített futtatási a probléma továbbra is. 
+  * Rögzített ensembling iteráció problémákat.
+  * Rögzített méretű betanítási módosítási hiba a MAC OS.
+  * Egyszerűsítés makró átlagos Pull-kérelem/ROC-görbe egyéni ellenőrzési forgatókönyvben.
+  * Eltávolítja a felesleges index logikát.
+  * Szűrő távolítva get_output API-t.
 
-#### <a name="automated-machine-learning"></a>Automatizált Machine Learning
- * Továbbfejlesztett hiba- és dokumentáció 
- * Rögzített futtatási tulajdonság lekérése teljesítménybeli problémák. 
- * Rögzített futtatási a probléma továbbra is. 
- * Rögzített ensembling iteráció problémákat.
- * Rögzített méretű betanítási módosítási hiba a MAC OS.
- * Egyszerűsítés makró átlagos Pull-kérelem/ROC-görbe egyéni ellenőrzési forgatókönyvben.
- * Eltávolítja a felesleges index logikát.
- * Szűrő távolítva get_output API-t.
++ **Folyamatok**
+  * A metódus egy folyamatot, közvetlenül közzé anélkül, hogy az első futtatás végrehajtási Pipeline.publish() hozzá.   
+  * Hozzáadott metódus PipelineRun.get_pipeline_runs() beolvasni a folyamat fut, amely közzétett folyamat jött létre.
 
-#### <a name="pipelines"></a>Folyamatok
- * A metódus egy folyamatot, közvetlenül közzé anélkül, hogy az első futtatás végrehajtási Pipeline.publish() hozzá.   
- * Hozzáadott metódus PipelineRun.get_pipeline_runs() beolvasni a folyamat fut, amely közzétett folyamat jött létre.
-
-#### <a name="project-brainwave"></a>Project Brainwave
- * FPGA-kban elérhető új AI modelleket frissített támogatása.
++ **Project Brainwave**
+  * FPGA-kban elérhető új AI modelleket frissített támogatása.
 
 ### <a name="azure-machine-learning-data-prep-sdk-v020"></a>Az Azure Machine Learning adat-előkészítési SDK v0.2.0
 [Verzió 0.2.0](https://pypi.org/project/azureml-dataprep/0.2.0/) tartalmazza a következő szolgáltatásokat és bugfixes:
 
-**Új funkciók:** 
- * Egy gyakori kódolási támogatása
- * Ki osztóérték átalakító támogatása
++ **Új funkciók**
+  * Egy gyakori kódolási támogatása
+  * Ki osztóérték átalakító támogatása
    
-**Hiba kijavítva:**
- * Bármely tornádó verziójával működik nincs szükség alacsonyabb szolgáltatásszintre váltásához az tornádó verzió
- * Értékek száma az összes értéket, nem csak az első három
++ **Hiba kijavítva:**
+  * Bármely tornádó verziójával működik nincs szükség alacsonyabb szolgáltatásszintre váltásához az tornádó verzió
+  * Értékek száma az összes értéket, nem csak az első három
 
 ## <a name="2018-09-public-preview-refresh"></a>2018-09 (nyilvános előzetes verzió frissítése)
 

@@ -1,3 +1,16 @@
+---
+author: rayne-wiselman
+ms.service: site-recovery
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: raynew
+ms.openlocfilehash: b6e3abb56ebd02131fac78c2a8f03ddcbf50958a
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50164210"
+---
 1. Indítsa ez az Azure Site Recovery UnifiedSetup.exe fájlt
 2. Az **Előkészületek** területen válassza a **További folyamatkiszolgálók hozzáadása az üzembe helyezés horizontális felskálázásához** lehetőséget.
 

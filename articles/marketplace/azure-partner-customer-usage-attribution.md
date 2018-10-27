@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: a0b3c220a1cd857bc8bea0eb5ab41625845fcc5d
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 604eb528ef33a95993aa5b6d3ff6eebb77936aa2
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365623"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157938"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure-partneri ügyfél használati megnevezése
 
@@ -44,7 +44,7 @@ Számos partneri megoldás telepítve vannak, egy ügyfél előfizetését Resou
 
 Adjon hozzá egy globálisan egyedi azonosítóját (GUID), győződjön meg a fő sablonfájl egyetlen módosítása:
 
-1. [Hozzon létre egy GUID Azonosítót](#create-guids) (pl. eb7927c8-dd66-43e1-b0cf-c346a422063) és [regisztrálja a GUID](#register-guids-and-offers).
+1. [Hozzon létre egy GUID Azonosítót](#create-guids) a javasolt módszer használatával és [regisztrálja a GUID](#register-guids-and-offers).
 
 1. Nyissa meg a Resource Manager-sablon.
 
@@ -58,9 +58,26 @@ Adjon hozzá egy globálisan egyedi azonosítóját (GUID), győződjön meg a f
 
 1. [Sikerességéről GUID Azonosítóját a sablon központi telepítésben lévő](#verify-the-guid-deployment).
 
-### <a name="sample-template-code"></a>Sablon mintakód
+### <a name="sample-resource-manager-template-code"></a>Mintául szolgáló Resource Manager-sablon kódot
+Ellenőrizze, hogy módosítani az alábbi mintakód a saját adatbevitel a fő sablonfájl hozzáadásakor.
+Az erőforrás a hozzá kell adnia a **mainTemplate.json** vagy **azuredeploy.json** fájl csak, és nem az összes beágyazott vagy kapcsolódó sablonok.
+```
+// Make sure to modify this sample code with your own inputs where applicable
 
-![Sablon mintakód](media/marketplace-publishers-guide/tracking-sample-code-for-lu-1.PNG)
+{ // add this resource to the mainTemplate.json (do not add the entire file)
+    "apiVersion": "2018-02-01",
+    "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" // use your generated GUID here
+    "type": "Microsoft.Resources/deployments",
+    "properties": {
+        "mode": "Incremental",
+        "template": {
+            "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+            "contentVersion": "1.0.0.0",
+            "resources": []
+        }
+    }
+} // remove all comments from the file when complete
+```
 
 ## <a name="use-the-resource-manager-apis"></a>A Resource Manager API-k
 
@@ -77,7 +94,7 @@ Amikor az API-hívások, a nyomon követési módszer a felhasználói ügynök 
 > [!Note]
 > A karakterlánc formátuma fontos. Ha a **pid -** előtag nem tartalmaz, ezért nem lehetséges az adatok lekérdezéséhez. Különböző SDK-k eltérően nyomon követése. Ez a metódus megvalósításához, tekintse át a támogatási, és nyomon követi a megközelítést az előnyben részesített Azure SDK-hoz készült. 
 
-### <a name="example-the-python-sdk"></a>Példa: A Python SDK-t
+#### <a name="example-the-python-sdk"></a>Példa: A Python SDK-t
 
 A Python, használja a **config** attribútum. Az attribútum csak egy UserAgent adhat hozzá. Például:
 
@@ -104,7 +121,7 @@ export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 
 ## <a name="create-guids"></a>Hozzon létre GUID-azonosítói
 
-GUID 32 hexadecimális számjegyet tartalmaz egyedi hivatkozási szám. Követési GUID azonosítókat létrehozni, egy GUID-generátort kell használnia. Javasoljuk, hogy kihasználhatja [Azure Storage GUID generátor űrlap](https://aka.ms/StoragePartners). Azonban nem szeretné használni az Azure Storage GUID-generátort, van-e több [online GUID generátorok](https://www.bing.com/search?q=guid%20generator) használható.
+GUID 32 hexadecimális számjegyet tartalmaz egyedi hivatkozási szám. Követési GUID azonosítókat létrehozni, egy GUID-generátort kell használnia. Az Azure Storage csapata létrehozott egy [GUID generátor űrlap](https://aka.ms/StoragePartners) , amely e-mailt küld, egy GUID Azonosítót a helyes formátumú, és a különböző nyomkövetési rendszerek felhasználhatók. 
 
 > [!Note]
 > Erősen ajánlott a használata [Azure Storage GUID generátor űrlap](https://aka.ms/StoragePartners) hozhat létre a GUID Azonosítót. További információkért lásd: a [– gyakori kérdések](#faq).

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: glenga
-ms.openlocfilehash: 0a6939ae32945c4efc22cbcaece402180a183c10
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: a16b71bf6c3f40d0595e1db136dd5631b029ed48
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087321"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139174"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Az Azure storage táblakötések az Azure Functions szolgáltatáshoz
 
@@ -437,7 +437,7 @@ public int run(
  
 A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a következő attribútumokat a bemeneti tábla kötésének konfigurálása:
 
-* [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs)
+* [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs)
 
   Az attribútum konstruktorának paramétereként meg a táblázat neve, a partíciókulcs és a sorkulcs. Használat egy out paraméterben, illetve a függvény visszatérési értéke a következő példában látható módon:
 
@@ -723,7 +723,7 @@ module.exports = function (context) {
 
 ## <a name="output---attributes"></a>Kimenet – attribútumok
 
-A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs).
+A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs).
 
 Az attribútum konstruktorának paramétereként meg a tábla neve. A használat egy `out` paraméter vagy a visszaadott érték a függvény az alábbi példában látható módon:
 

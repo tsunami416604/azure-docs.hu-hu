@@ -3,7 +3,7 @@ title: 'Az Azure AD tartományi szolgáltatások: Hálózati útmutató |} A Mic
 description: Hálózati megfontolások az Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 23a857a5-2720-400a-ab9b-1ba61e7b145a
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/01/2017
-ms.author: maheshu
-ms.openlocfilehash: de5f3582a931cbf21d5504afd1fd385066874f45
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: eb97e709e18daba3722dc43a869ef034dbe573cf
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504233"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157428"
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Hálózati megfontolások az Azure AD tartományi szolgáltatások
 ## <a name="how-to-select-an-azure-virtual-network"></a>Az Azure virtuális hálózat kiválasztása

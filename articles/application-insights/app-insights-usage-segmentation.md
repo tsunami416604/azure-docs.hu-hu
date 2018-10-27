@@ -3,7 +3,7 @@ title: Az Azure Application insights szolgáltatásban felhasználói, munkamene
 description: A felhasználók a webalkalmazás demográfiai elemzése.
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: NumberByColors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,14 +11,15 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/24/2018
-ms.reviewer: daviste
-ms.author: mbullwin
-ms.openlocfilehash: 2bc10a292855832b7ddb9b8e3a59fbe0f17d8dc6
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.reviewer: mbullwin
+ms.pm_owner: daviste;NumberByColors
+ms.author: daviste
+ms.openlocfilehash: 6fd8adab93f5741afe6d3eab0c50ca50a327fbff
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093808"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140332"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Felhasználók, munkamenetek és események elemzése az Application insights szolgáltatásban
 
@@ -48,10 +49,10 @@ Ismerje meg a különböző felhasználói csoportokhoz a felhasználók eszköz
 * Használja ki: válassza ki az egyéni események és Lapmegtekintések.
 * Során: Válasszon időtartományt.
 * Szerint: Válassza ki a gyűjtőbe az adatokat, vagy egy bizonyos idő, vagy egy másik tulajdonságot, mint például a böngészőben vagy az városa módját.
-* Felosztási szempont: Válassza ki egy tulajdonságot amely split vagy szegmens az adatokat. 
-* Vegyen fel szűrőket: Korlátozza a lekérdezést, hogy bizonyos felhasználók, munkamenetek és események azok tulajdonságait, például a böngészőben vagy az városa alapján. 
- 
-## <a name="saving-and-sharing-reports"></a>És jelentések megosztása 
+* Felosztási szempont: Válassza ki egy tulajdonságot amely split vagy szegmens az adatokat. 
+* Vegyen fel szűrőket: Korlátozza a lekérdezést, hogy bizonyos felhasználók, munkamenetek és események azok tulajdonságait, például a böngészőben vagy az városa alapján. 
+ 
+## <a name="saving-and-sharing-reports"></a>És jelentések megosztása 
 A Mindenki más az Application Insights-erőforrást a megosztott jelentések szakasz hozzáféréssel rendelkező felhasználók jelentéseket, vagy a saját csak a saját jelentések szakaszban Ön, vagy megosztott mentheti.
 
 A felhasználók, munkamenetek és események jelentés; mutató hivatkozás megosztása Kattintson a **megosztás** az eszköztáron, majd másolja a hivatkozást.

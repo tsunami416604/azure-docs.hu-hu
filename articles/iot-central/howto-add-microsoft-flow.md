@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 7a52ee11e52367755d2a241a0bea2cfc053cff3d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: cc54a3a375fa2780e289a20b699df5d65aaf08cc
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039938"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155575"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Hozzon létre munkafolyamatokat az IoT Central-összekötő a Microsoft Flow
 
@@ -96,6 +96,8 @@ Ez a szakasz bemutatja, hogyan eszközbeállítások, illetve egy mobileszközö
     ![IoT-központ device explorer eszköz azonosítója](./media/howto-add-microsoft-flow/iotcdeviceid.PNG)
 
 1. Frissítheti az eszköz nevét. Az eszköz tulajdonságok és a beállítások bármelyikét frissítéséhez válassza ki a frissíteni kívánt az eszköz az eszköz sablon a **eszköz sablon** legördülő listából. A művelet csempe kibontása a tulajdonságok és frissítheti beállítások megjelenítése.
+
+    ![A folyamat eszköz munkafolyamat](./media/howto-add-microsoft-flow/flowupdatedevice.PNG)
 
 1. Válassza ki az egyes tulajdonságok és frissíteni a kívánt beállításokat. A dinamikus tartalmú ablaktábla válassza ki a megfelelő bemenet a trigger által. Ebben a példában a hely érték propagálja le tulajdonság frissítése az eszköz helyét.
 

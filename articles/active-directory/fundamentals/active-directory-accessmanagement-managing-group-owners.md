@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.custom: it-pro
-ms.openlocfilehash: f546ea5b5f9288849334d27cd1721f0c22fb8806
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: fae68bccbeaa54ca1bab9d77510fe6baecd11fcc
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297775"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139720"
 ---
 # <a name="how-to-add-or-remove-group-owners-in-azure-active-directory"></a>Hogyan: hozzáadása vagy eltávolítása a csoportok tulajdonosainak az Azure Active Directoryban
 Az Azure Active Directory (Azure AD-) csoportok tulajdonosai és kezeli a csoport tulajdonosai. Csoporttulajdonosok rendeli hozzá egy csoportot és annak tagjait kezelheti az erőforrás tulajdonosa (rendszergazda). Csoporttulajdonosok lehetnek a csoport tagjai, nem szükséges. Miután a csoport tulajdonosa hozzá lett rendelve, csak egy erőforrás tulajdonosa hozzáadhat vagy eltávolíthat tulajdonosai.
@@ -27,9 +27,9 @@ Bizonyos esetekben a rendszergazda dönthet nem rendelhet hozzá a csoport tulaj
 További csoporttulajdonosok hozzáadása egy csoporthoz, az Azure AD használatával.
 
 ### <a name="to-add-a-group-owner"></a>Csoporttulajdonos hozzáadása
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) a címtár egy globális rendszergazdai fiók használatával.
+1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-2. Válassza ki **Azure Active Directory**, jelölje be **csoportok**, majd válassza ki a csoport, amelynek tulajdonosa hozzá szeretne (ebben a példában _mobileszköz-kezelési szabályzat – Nyugat-India_).
+2. Válassza ki **Azure Active Directory**, jelölje be **csoportok**, majd válassza ki a csoport, amelynek tulajdonosa hozzá szeretne (ebben a példában *mobileszköz-kezelési szabályzat – Nyugat-India*).
 
 3. Az a **mobileszköz-kezelési szabályzat – Nyugat-India – áttekintés** lapon jelölje be **tulajdonosok**.
 
@@ -45,9 +45,9 @@ További csoporttulajdonosok hozzáadása egy csoporthoz, az Azure AD használat
 Tulajdonos eltávolítása az Azure AD-csoport.
 
 ### <a name="to-remove-an-owner"></a>Tulajdonos eltávolítása
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) a címtár egy globális rendszergazdai fiók használatával.
+1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-2. Válassza ki **Azure Active Directory**, jelölje be **csoportok**, majd válassza ki a csoport, amelynek tulajdonosa hozzá szeretne (ebben a példában _mobileszköz-kezelési szabályzat – Nyugat-India_).
+2. Válassza ki **Azure Active Directory**válassza **csoportok**, majd válassza ki a csoportot, amelyre el kívánja távolítani egy olyan tulajdonost (ebben a példában *mobileszköz-kezelési szabályzat – Nyugat-India*).
 
 3. Az a **mobileszköz-kezelési szabályzat – Nyugat-India – áttekintés** lapon jelölje be **tulajdonosok**.
 

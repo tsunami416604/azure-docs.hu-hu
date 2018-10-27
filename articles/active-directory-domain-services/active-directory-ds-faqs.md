@@ -3,7 +3,7 @@ title: Gyakori kérdések – Azure Active Directory Domain Servicesben |} A Mic
 description: Az Azure Active Directory Domain Services kapcsolatos gyakori kérdések
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 48731820-9e8c-4ec2-95e8-83dba1e58775
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.author: maheshu
-ms.openlocfilehash: 8747e597883d96756e676061bde04b920b13cadd
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.author: ergreenl
+ms.openlocfilehash: c2f10b1bf3b61577a2b0616be6fa50f7639559ba
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023205"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158914"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Az Azure Active Directory tartományi szolgáltatások: Gyakori kérdések (GYIK)
 Ezen a lapon az Azure Active Directory Domain Services kapcsolatos gyakori kérdésekre ad választ. Tartsa vissza a frissítések keresése.
@@ -51,7 +51,7 @@ A szolgáltatás nem támogatja közvetlenül ebben a forgatókönyvben. A felü
 Igen. Lásd: [engedélyezése az Azure AD Domain Services a PowerShell-lel](active-directory-ds-enable-using-powershell.md).
 
 ### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>Resource Manager-sablon használatával az Azure AD tartományi szolgáltatások engedélyezése
-Igen. Lásd: [engedélyezése az Azure AD Domain Services a PowerShell-lel](active-directory-ds-enable-using-powershell.md).
+Nem, akkor még nem jelenleg lehet engedélyezni az Azure AD tartományi szolgáltatások sablon használatával. Helyette használhatja az PowerShell, [engedélyezése az Azure AD Domain Services a PowerShell-lel](active-directory-ds-enable-using-powershell.md).
 
 ### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Az Azure AD tartományi szolgáltatások által felügyelt tartományokhoz való is hozzáadhatok tartományvezérlőket?
 Nem. Az Azure AD tartományi szolgáltatások által biztosított tartomány egy felügyelt tartományon. Nem kell kiépíteni, konfigurálhatja vagy egyéb módon kezelni a tartományvezérlők a tartomány - e felügyeleti tevékenységek szolgáltatás Microsoft által biztosított. Ezért nem adhat hozzá további tartományvezérlőket (olvasási és írási vagy csak olvasható) a felügyelt tartományhoz.

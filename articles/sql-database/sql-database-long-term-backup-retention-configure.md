@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/04/2018
-ms.openlocfilehash: 1775e1810a164bfbdd1cddea9360674592cf446c
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 10/24/2018
+ms.openlocfilehash: b4736f47d066d1e2b8e5c7115cb14abeb1cc566a
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857533"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50137225"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Az Azure SQL-adatbázis hosszú távú megőrzésének kezelése
 
@@ -172,6 +172,9 @@ Ez a példa bemutatja a törlése az LTR biztonsági mentést a biztonsági más
 $ltrBackup = $ltrBackups[0]
 Remove-AzureRmSqlDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.ResourceId
 ```
+> [!IMPORTANT]
+> Biztonsági mentés nem visszafejthető LTR törlése. Értesítéseket állíthat be kapcsolatos minden törlése az Azure monitorban szűrésével művelethez "Töröl egy hosszú távú adatmegőrzés céljából készített biztonsági". A tevékenységnapló arról, hogy ki és a kérést leadó információkat tartalmaz. Lásd: [tevékenységnapló-riasztások létrehozása](../monitoring-and-diagnostics/monitoring-create-activity-log-alerts-with-resource-manager-template.md) részletes útmutatást.
+>
 
 ### <a name="restore-from-ltr-backups"></a>Vissza az LTR biztonsági másolataiból
 Ez a példa bemutatja, hogyan az LTR biztonsági másolatból történő visszaállítását. Ne feledje, ez az interfész nem változott, de az erőforrás-azonosító paraméter mostantól csak az LTR biztonsági mentési erőforrás-azonosítója. 

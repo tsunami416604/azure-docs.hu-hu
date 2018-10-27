@@ -3,17 +3,17 @@ title: Egy általános Node.js ügyfél-alkalmazás csatlakoztatása az Azure Io
 description: Eszköz fejlesztőként egy általános Node.js-eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz.
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 04/16/2018
+ms.date: 10/26/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8a5d880d0238e38fbbaa9de22fc1baf604f0fc07
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 4702b0eb53897f173311c40469c912cf41751f24
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733464"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155150"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Az Azure IoT Central-alkalmazást (Node.js) egy általános ügyfél-alkalmazás csatlakoztatása
 
@@ -34,16 +34,16 @@ Az Azure IoT Central-alkalmazás lesz szüksége a következő mérések és esz
 
 Adja hozzá a következő telemetriát a **mérések** oldalon:
 
-| Megjelenítendő név | Mezőnév  | Egység | Min | Max | Tizedeshelyek |
+| Megjelenítendő név | Mezőnév  | Egység | Min | Max | Tizedesjegyek |
 | ------------ | ----------- | ----- | --- | --- | -------------- |
 | Hőmérséklet  | hőmérséklet | F     | 60  | 110 | 0              |
 | Páratartalom     | páratartalom    | %     | 0   | 100 | 0              |
 | Pressure     | pressure    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
-  A telemetriai adatok mérték adattípusának dupla.
+  A telemetriai adatok mérték adattípusa lebegőpontos szám.
 
-Adja meg a mezők neve pontosan, ahogy az a tábla az eszköz sablonba be. Ha a mező nevei nem egyeznek, a telemetria az alkalmazás nem lehet megjeleníteni.
+Adja meg a mezők neve pontosan, ahogy az a tábla az eszköz sablonba be. Ha a mező nevei nem egyeznek meg a megfelelő eszköz kód tulajdonság nevét, a telemetriai adatokat, az alkalmazás nem lehet megjeleníteni.
 
 ### <a name="state-measurements"></a>Állapot mérések
 
@@ -54,9 +54,9 @@ Adja hozzá a következő állapotot a a **mérések** oldalon:
 | Ventilátor mód     | fanmode     | 1       | Fut      | 0       | Leállítva      |
 
 > [!NOTE]
-  Az állapot mérték adattípusának egy karakterlánc.
+  Az állapot mérték adattípusa karakterlánc.
 
-Adja meg a mezők neve pontosan, ahogy az a tábla az eszköz sablonba be. Ha a mező nevei nem egyeznek, az állapot nem lehet megjeleníteni az alkalmazásban.
+Adja meg a mezők neve pontosan, ahogy az a tábla az eszköz sablonba be. A mező nevei nem egyeznek meg a megfelelő eszköz kód tulajdonságneveket, ha az állapot nem lehet megjeleníteni az alkalmazásban.
 
 ### <a name="event-measurements"></a>Esemény mérések
 
@@ -67,7 +67,7 @@ Adja hozzá a következő esemény a **mérések** oldalon:
 | Életbe  | melegedjen túl    | Hiba    |
 
 > [!NOTE]
-  Az esemény mérték adattípusának egy karakterlánc.
+  Az esemény mérték adattípusa karakterlánc.
 
 ### <a name="device-properties"></a>Eszköztulajdonságok
 
@@ -78,7 +78,7 @@ Adja hozzá a következő eszköztulajdonságokat a a **tulajdonságai lap**:
 | Sorozatszám       | serialNumber      | szöveg      |
 | Eszköz gyártója | gyártó      | szöveg      |
 
-A mezők nevét adja meg a pontosan az eszköz sablonba be a táblázatban látható módon. Ha a mező nevei nem egyeznek, az alkalmazás nem jeleníthető meg a tulajdonság értéke.
+A mezők nevét adja meg a pontosan az eszköz sablonba be a táblázatban látható módon. Ha a mező nevei nem egyeznek meg a megfelelő eszköz kód tulajdonság nevét, az alkalmazás nem jeleníthető meg az eszköz tulajdonság értéke.
 
 ### <a name="settings"></a>Beállítások
 
@@ -89,15 +89,15 @@ Adja hozzá a következő **szám** beállításait a **beállítások lapon**:
 | Sebesség ventilátor       | fanSpeed       | rpm   | 0        | 0   | 3000 | 0       |
 | Megadott hőmérséklet | setTemperature | F     | 0        | 20  | 200  | 80      |
 
-Adja meg a mező neve pontosan a eszköz sablonba a táblázatban látható módon. Ha a mező nevei nem egyeznek, akkor az eszköz a beállítás értéke nem tud fogadni.
+Adja meg a mező neve pontosan a eszköz sablonba a táblázatban látható módon. Ha a mező nevei nem egyeznek meg a megfelelő eszköz kód tulajdonság nevét, az eszköz a beállítás értéke nem tud fogadni.
 
 ## <a name="add-a-real-device"></a>Valós eszköz hozzáadása
 
-Az Azure IoT Central-alkalmazás hozzáadása egy igazi eszközön az eszköz sablonból, létrehozása, és jegyezze fel az eszköz kapcsolati karakterláncát. További információkért lásd: [valós eszköz hozzáadása az Azure IoT Central alkalmazáshoz](tutorial-add-device.md)
+Az Azure IoT Central-alkalmazás hozzáadása egy igazi eszközön az eszköz sablonból, létrehozása, és jegyezze fel az eszköz kapcsolati karakterláncát. IoT Central egy Node.js-alkalmazás csatlakoztatása a részletes útmutatót lásd: [valós eszköz kapcsolati karakterláncára generálhatók az alkalmazás](tutorial-add-device.md#generate-connection-string-for-real-device-from-application) és [előkészítése az Ügyfélkód](tutorial-add-device.md#prepare-the-client-code) az oktatóanyagok > Egy eszköz hozzáadásához.
 
 ### <a name="create-a-nodejs-application"></a>Node.js alkalmazás létrehozása
 
-A következő lépések bemutatják, hogyan hozhat létre, amely megvalósítja az az alkalmazáshoz hozzáadott valós eszköz ügyfélalkalmazás.
+A következő lépések bemutatják, hogyan hozhat létre, amely megvalósítja az az alkalmazáshoz hozzáadott valós eszköz ügyfélalkalmazás. Itt a Node.js-alkalmazás a tényleges fizikai eszközt jelenti. 
 
 1. Hozzon létre egy `connected-air-conditioner-adv` nevű mappát a gépén. Keresse meg a mappát a parancssori környezetben.
 
@@ -130,10 +130,10 @@ A következő lépések bemutatják, hogyan hozhat létre, amely megvalósítja 
     ```
 
   > [!NOTE]
-   > Az Azure IoT Central átváltott használatával az Azure IoT Hub Device Provisioning service (DPS) az összes eszköz kapcsolat, kövesse az alábbi instrustions [az eszköz kapcsolati karakterláncának lekérése](concepts-connectivity.md#getting-device-connection-string) és az oktatóanyag további részeinek folytatásához.
+  > Az Azure IoT Central átváltott használatával az Azure IoT Hub Device Provisioning service (DPS) az összes eszköz kapcsolat, kövesse az alábbi instrustions [az eszköz kapcsolati karakterláncának lekérése](concepts-connectivity.md#getting-device-connection-string) és az oktatóanyag további részeinek folytatásához. További segítségért keresse meg a részletes utasításkészlet [előkészítése az Ügyfélkód](tutorial-add-device.md#prepare-the-client-code) oktatóanyagok > egy eszköz hozzáadásához.
 
 
-    Frissítse a helyőrző `{your device connection string}` az eszköz kapcsolati karakterlánccal. Ebben a példában azt inicializálása `targetTemperature` nulla, igény szerint elvégezhető az eszköz aktuális olvasásakor vagy értéket az ikereszközről. 
+  Frissítse a helyőrző `{your device connection string}` az eszköz kapcsolati karakterlánccal. Ebben a példában azt inicializálása `targetTemperature` nulla, igény szerint elvégezhető az eszköz aktuális olvasásakor vagy értéket az ikereszközről. 
 
 1. A telemetriai adatokat, állapota és esemény mérések küldése az Azure IoT Central alkalmazáshoz, adja hozzá a fájlhoz a következő függvényt:
 
@@ -157,7 +157,7 @@ A következő lépések bemutatják, hogyan hozhat létre, amely megvalósítja 
     }
     ```
 
-    1. Eszköztulajdonságokat küldik az Azure IoT Central alkalmazáshoz, adja hozzá a fájlhoz a következő függvényt:
+1. Eszköztulajdonságokat küldik az Azure IoT Central alkalmazáshoz, adja hozzá a fájlhoz a következő függvényt:
 
     ```javascript
     // Send device properties.
@@ -269,11 +269,11 @@ Az Azure IoT központi alkalmazás kezelőként a valódi eszköz a következők
 
     ![Telemetria megtekintése](media/howto-connect-nodejs/viewtelemetry.png)
 
-* Tekintse meg az eszköz tulajdonság értékeket, a rendszer küldi az eszközről a **tulajdonságok** lapot.
+* Tekintse meg az eszköz tulajdonság értékeket, a rendszer küldi az eszközről a **tulajdonságok** lapot. Az eszköz tulajdonságok csempék frissülnek, ha a kapcsolat létrejött. 
 
     ![Az eszköz tulajdonságai](media/howto-connect-nodejs/viewproperties.png)
 
-* Állítsa be a ventilátor sebesség és a cél hőmérséklet a **beállítások** lapot.
+* Állítsa be a ventilátor sebesség és a cél hőmérséklet a **beállítások** lapot. A beállításértékeket szinkronizálódnak, ha a kapcsolat létrejött. 
 
     ![Set Ventilátor sebessége](media/howto-connect-nodejs/setfanspeed.png)
 

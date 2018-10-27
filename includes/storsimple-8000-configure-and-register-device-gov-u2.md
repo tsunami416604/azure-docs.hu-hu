@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: c54431009105c1d213e6cefeba06c39c781e2c1a
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166103"
+---
 <!--author=SharS last changed: 06/22/2016-->
 
 ### <a name="to-configure-and-register-the-device"></a>Az eszköz konfigurálása és regisztrálása
@@ -6,47 +19,47 @@
 3. Ekkor a rendszer arra kéri, hogy válassza ki az eszközhöz beállítani kívánt nyelvet. Válassza ki a nyelvet, majd nyomja le az **Enter** billentyűt.
    
     ![StorSimple-eszköz konfigurálása és regisztrálása, 1](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice1-gov-include.png)
-4. A soros konzol megjelenő menüjében válassza az 1. lehetőség – **jelentkezzen be a teljes körű hozzáférési**.
+4. A soros konzol megjelenő menüjében válassza az 1. lehetőséget a **teljes körű hozzáféréssel való bejelentkezéshez**.
    
     ![StorSimple-eszköz regisztrálása, 2](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice2-gov-include.png)
-5. A következő lépésekkel adja meg az eszköz minimális szükséges hálózati beállításait.
+5. Hajtsa végre az alábbi lépéseket az eszköz a minimálisan szükséges hálózati beállításainak konfigurálásához.
    
    > [!IMPORTANT]
-   > Ezeket a konfigurálási lépéseket az eszköz aktív vezérlőjén kell elvégezni. A vezérlő állapota a soros konzol menüjének címsorában látható. Ha nem csatlakozik az aktív vezérlővel, válassza le, és csatlakozzon újra az aktív vezérlőhöz.
+   > Ezeket a konfigurálási lépéseket az eszköz aktív vezérlőjén kell elvégezni. A vezérlő állapota a soros konzol menüjének címsorában látható. Nem csatlakozik az aktív vezérlőt, ha válassza le, hogyan csatlakozhat az aktív vezérlőt.
    
    1. Írja be a jelszót a parancssorba. Az eszköz alapértelmezett jelszava: **Password1**.
    2. Írja be a következő parancsot:
       
         `Invoke-HcsSetupWizard`
-   3. Ekkor megjelenik egy telepítővarázsló az eszköz hálózati beállításainak konfigurálásához. Adja meg a következő információkat:
+   3. Ekkor megjelenik egy telepítővarázsló az eszköz hálózati beállításainak konfigurálásához. Adja meg az alábbi adatokat:
       
-      * DATA 0 hálózati adapterén IP-címe
+      * DATA 0 hálózati adapter IP-címe
       * Alhálózati maszk
       * Átjáró
       * Az elsődleges DNS-kiszolgáló IP-címe
       * Az elsődleges NTP-kiszolgáló IP-címe
       
       > [!NOTE]
-      > Előfordulhat, hogy az alhálózati maszk és a DNS-beállítások alkalmazása néhány percet vár.
+      > Előfordulhat, hogy az alhálózati maszk és a DNS-beállítások alkalmazása néhány percet várnia kell.
     
-   4. Igény szerint állítsa be a proxy-webkiszolgáló.
+   4. Szükség esetén konfigurálja a webproxy-kiszolgálót.
       
       > [!IMPORTANT]
       > Bár a webproxy konfigurálása nem kötelező, vegye figyelembe, hogy ha olyan webproxyt használ, csak konfigurálhatja azt itt. További információ: [Configure web proxy for your device](../articles/storsimple/storsimple-configure-web-proxy.md) (Webproxy beállítása az eszközhöz).
      
-6. Használja a Ctrl + C billentyűket a telepítővarázslóból való kilépéshez.
-8. Futtassa az alábbi parancsmagot, mutasson az eszköz a Microsoft Azure Government Portal (mert alapértelmezés szerint a nyilvános klasszikus Azure portálra mutat). Ez mindkét tartományvezérlők újraindul. Azt javasoljuk, hogy egyszerre kapcsolódó mindkét vezérlőket, hogy a tartományvezérlők újraindításakor láthatóvá két PuTTY munkamenet használja.
+6. Nyomja le a Ctrl + C billentyűkombinációval kilép a varázslóból.
+8. Futtassa az alábbi parancsmagot az eszköz átirányítása a Microsoft Azure Government-portálon (mert alapértelmezés szerint a nyilvános klasszikus Azure portálra mutat). A művelet újraindítja a mindkét vezérlőn. Azt javasoljuk, hogy két PuTTY munkamenet használatával egyszerre mindkét vezérlő kapcsolódhat, hogy az egyes tartományvezérlők újraindításakor látható.
    
     `Set-CloudPlatform -AzureGovt_US`
    
-   Egy megerősítő üzenet jelenik meg. Fogadja el az alapértelmezett (**Y**).
-9. Futtassa a telepítő folytatja a következő parancsmagot:
+   Egy megerősítő üzenetet fog látni. Fogadja el az alapértelmezett (**Y**).
+9. Futtassa a telepítés folytatásához a következő parancsmagot:
    
     `Invoke-HcsSetupWizard`
    
     ![A telepítővarázsló folytatása](./media/storsimple-configure-and-register-device-gov-u2/HCS_ResumeSetup-gov-include.png)
    
-10. Fogadja el a hálózati beállításokat. Egy érvényesítési üzenet jelenik meg, ha elfogadja, hogy egyes beállítások.
+10. Fogadja el a hálózati beállításokat. Egyes beállítások elfogadása után látni fogja az érvényesítési üzenetet.
 11. Biztonsági okokból az eszköz rendszergazdai jelszava az első munkamenet végeztével lejár, így ezt most meg kell változtatnia. Amikor a rendszer erre kéri, adjon meg az eszközhöz egy rendszergazdai jelszót. Az eszköz rendszergazdai jelszavának 8–15 karakter hosszúságúnak kell lennie. A jelszónak az alábbiak közül hármat tartalmaznia kell: kisbetűk, nagybetűk, számok és speciális karakterek.
     
     <br/>![StorSimple-eszköz regisztrálása, 5](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice5_gov-include.png)
@@ -55,20 +68,20 @@
     > [!NOTE]
     > A Ctrl + C billentyűkombinációval bármikor kiléphet a varázslóból. Ha minden hálózati beállítást megadott (a Data 0 IP-címe, alhálózati maszk és átjáró), akkor a bejegyzéseket megőrzi a rendszer.
     
-    ![A StorSimple regisztrációs folyamat](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegistrationProgress-gov-include.png)
-13. Az eszköz regisztrálása után megjelenik egy szolgáltatásadat-titkosítási kulcs. Másolja ki a kulcsot, és mentse egy biztonságos helyre. **Ezt a kulcsot meg kell adni a szolgáltatás regisztrációs kulcsot, további eszközök regisztrálása a StorSimple Device Manager szolgáltatásban.** További információk a kulccsal kapcsolatban: [A StorSimple biztonsági megoldásai](../articles/storsimple/storsimple-8000-security.md).
+    ![A StorSimple-regisztrációs folyamat](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegistrationProgress-gov-include.png)
+13. Az eszköz regisztrálása után megjelenik egy szolgáltatásadat-titkosítási kulcs. Másolja ki a kulcsot, és mentse egy biztonságos helyre. **Ez a kulcs megadása kötelező a szolgáltatás regisztrációs kulcsával együtt szeretne további eszközöket regisztrálni a StorSimple-Eszközkezelő szolgáltatásban.** További információk a kulccsal kapcsolatban: [A StorSimple biztonsági megoldásai](../articles/storsimple/storsimple-8000-security.md).
     
     ![StorSimple-eszköz regisztrálása, 7](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice7_gov-include.png)
     > [!IMPORTANT]
     > Ha ki szeretné másolni a szöveget a soros konzol ablakából, egyszerűen jelölje ki azt. A szöveget ezután a vágólapra vagy bármilyen szövegszerkesztőbe beillesztheti.
     > 
-    > Ne használjon **Ctrl + C** a szolgáltatásadat-titkosítási kulcs másolása. Használatával **Ctrl + C** miatt a telepítővarázslóból való kilépéshez. Ennek eredményeképpen az eszköz rendszergazdai jelszava nem változik meg, és az eszköz visszaállítja az alapértelmezett jelszót.
+    > Ne használjon **Ctrl + C** a szolgáltatásadat-titkosítási kulcs másolásához. Használatával **Ctrl + C** eredményezi, hogy a telepítő varázslóból való kilépéshez. Ennek eredményeképpen az eszköz rendszergazdai jelszava nem változik meg, és az eszköz visszaállítja az alapértelmezett jelszót.
     
 14. Lépjen ki a soros konzolból.
 15. Térjen vissza az Azure Government portálra, és kövesse az alábbi lépéseket:
     
     1. Nyissa meg a StorSimple-eszközkezelő szolgáltatást.
-    2. Kattintson az **Eszközök** elemre. Az eszközök a listából az, hogy-e ddeploying eszköz azonosítására. Győződjön meg arról, hogy az eszköz sikeresen csatlakozott a szolgáltatás által állapotát. Az eszköznek **Online** állapotúnak kell lennie.
+    2. Kattintson az **Eszközök** elemre. Az eszközök a listából, hogy-e ddeploying eszköz azonosításához. Győződjön meg arról, hogy az eszköz sikeresen csatlakozott a szolgáltatáshoz-állapotát. Az eszköznek **Online** állapotúnak kell lennie.
             
         Ha az eszköz állapota **Offline**, akkor várjon néhány percet, amíg az eszköz online állapotú nem lesz.
        

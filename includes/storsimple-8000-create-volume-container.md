@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: abef93d30ff9cdf1ecdbbfd450d9f96e6352a513
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165902"
+---
 <!--author=alkohli last changed: 06/22/17-->
 
 #### <a name="to-create-a-volume-container"></a>Kötettároló létrehozása
@@ -20,7 +33,7 @@
       Ha hozzáfér a sávszélesség-használati adatokhoz, lehetősége van a sávszélesség ütemezett lefoglalására a **Sávszélességsablon kiválasztása** beállítás megadásával. Az eljárás pontos lépéseit a [Sávszélességsablon hozzáadása](../articles/storsimple/storsimple-8000-manage-bandwidth-templates.md#add-a-bandwidth-template) szakaszban találja.
 
       ![Kötettároló panel](./media/storsimple-8000-create-volume-container/createvolumecontainer6b.png)
-   7. Kattintson a **Létrehozás** gombra.
+   7. Kattintson a **Create** (Létrehozás) gombra.
 
         ![Kötettároló panel](./media/storsimple-8000-create-volume-container/createvolumecontainer6.png)
    

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: fb428e63be54688744bcdb022ba276a957f8aee1
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 1b0b3d0db2067a492905d8f828934f0b63fb8f54
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648770"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155983"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>A Kubernetes alapvető fogalmainak Azure Kubernetes Service (AKS)
 
@@ -71,6 +71,27 @@ Az Azure virtuális gép méretét a csomópontok határozza meg, hány processz
 Az aks-ben Ubuntu Linux esetében a fürtben található csomópontok a Virtuálisgép-lemezkép jelenleg alapján. AKS-fürt létrehozása vagy vertikális felskálázás a csomópontok számát, az Azure platform a kért számú virtuális gépeket hoz létre, és konfigurálja őket. Nem tartozik a végezhető el a manuális konfiguráció.
 
 Egyéni csomagok vagy egy másik gazdagép operációs Rendszeréhez, tároló-futtatókörnyezet, használni kell, ha a saját Kubernetes fürt használatával telepíthet [acs-engine][acs-engine]. A felsőbb rétegbeli `acs-engine` kiadott szolgáltatások és konfigurációs lehetőségeket nyújtanak, mielőtt hivatalosan támogatott az AKS-fürt. Például, ha szeretné használni a Windows-tárolók vagy egy eltérő Docker container modul, használhatja `acs-engine` konfigurálásához és üzembe helyezéséhez a Kubernetes-fürt, amely az aktuális igényeinek.
+
+### <a name="resource-reservations"></a>Erőforrás-foglalások
+
+Nem kell minden egyes csomóponton Kubernetes alapösszetevők kezelhet, mint a *kubelet*, *kube-proxy*, és *kube-dns*, azonban néhány, a rendelkezésre álló igényelnek a számítási erőforrásokat. A csomópont teljesítményének és funkcionalitásának fenntartása a következő számítási erőforrások vannak lefoglalva minden egyes csomóponton:
+
+- **CPU** – 60ms
+- **Memória** – 4 GIB-ra legfeljebb 20 %-os
+
+Ezeket a fenntartásokat jelenti azt, hogy a rendelkezésre álló Processzor- és az alkalmazások memória mennyisége adatbázisénál kisebb, mint a csomópont önmaga tartalmaz. Ha korlátozott erőforrások miatt a futtatott alkalmazások számát, ezeket a fenntartásokat biztosítása a CPU és memória továbbra is elérhető, a Kubernetes alapvető összetevők. Az erőforrás-foglalások nem módosítható.
+
+Példa:
+
+- **Standard DS2 v2** csomópontméret tartalmaz 2 vCPU és 7 GB memória
+    - 7 GB memória 20 %-át 1,4 GB =
+    - Összesen *(7-1.4) 5.6-os GiB =* memória érhető el a csomópontot
+    
+- **Standard szintű E4s v3** csomópont mérete 4 vCPU, és a 32 GiB memóriát tartalmaz
+    - 20 % 32 GiB memóriát = 6.4 GIB-ra, de az AKS csak fenntart egy legfeljebb 4 GiB
+    - Összesen *(32-4) 28 GiB =* érhető el a csomópontot
+    
+Az alapul szolgáló OS csomópont is igényli néhány saját alapvető funkcióinak végrehajtásához a CPU és memória-erőforrások mennyiségét.
 
 ### <a name="node-pools"></a>Csomópontkészletek
 

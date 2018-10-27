@@ -1,54 +1,67 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 3888242f0379cc97bbe511e49a31a0f7eb8c5372
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165192"
+---
 <!--author=SharS last changed: 1/14/2016 -->
 
 > [!NOTE]
-> A StorSimple-adaptert SharePoint RBS konfigurációs beállításainak módosításakor, meg kell bejelentkeznie, amely a Tartománygazdák csoporthoz tartozó fiókkal. A lap továbbá egy központi adminisztrációs ugyanazon a gazdagépen futó böngészőben kell elérnie.
+> A StorSimple Adapter for SharePoint RBS konfigurációs beállításainak módosításakor, meg kell bejelentkeznie, amely a Tartománygazdák csoporthoz tartozó felhasználói fiókkal. Emellett a konfigurációs lapon kell elérnie egy központi adminisztrációs ugyanazon a gazdagépen futó böngészőben.
 > 
 > 
 
 #### <a name="to-configure-rbs"></a>RBS konfigurálása
-1. Nyissa meg a SharePoint központi felügyelet lapját, és keresse meg a **rendszerbeállítások**. 
-2. Az a **Azure StorSimple** kattintson **konfigurálása a StorSimple-Adapter**.
+1. Nyissa meg a SharePoint központi felügyelet lapján, és keresse meg a **rendszerbeállítások**. 
+2. Az a **Azure StorSimple** területén kattintson **konfigurálása a StorSimple Adapter**.
    
-    ![A StorSimple-Adapter konfigurálásához.](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS1-include.png) 
-3. Az a **konfigurálása a StorSimple-Adapter** lap:
+    ![A StorSimple Adapter konfigurálása](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS1-include.png) 
+3. Az a **konfigurálása a StorSimple Adapter** oldalon:
    
    1. Győződjön meg arról, hogy a **szerkesztési útvonal engedélyezéséhez** jelölőnégyzet be van jelölve.
-   2. A szövegmezőbe írja be az univerzális elnevezési konvenció (UNC) szerinti elérési utat a BLOB-tároló.
+   2. A szövegmezőbe írja be az univerzális elnevezési konvenció (UNC) szerinti elérési útját a BLOB-tároló.
       
       > [!NOTE]
-      > A BLOB-tároló kötetet a StorSimple eszközön konfigurált iSCSI-köteten kell elhelyezni.
+      > A BLOB-tároló kötet kell futhat egy iSCSI-kötet konfigurálása a StorSimple eszközön.
 
-   3. Kattintson a **engedélyezése** távtároló konfigurálni kívánt tartalom-adatbázisok mindegyike esetében gombra.
+   3. Kattintson a **engedélyezése** alábbi távoli tároló konfigurálni kívánt tartalom-adatbázisok mindegyike gombra.
       
       > [!NOTE]
-      > A BLOB-tárolónak kell lennie megosztott és elérhető-e az összes webes előtér-(WFE) kiszolgáló által, és a felhasználói fiók, amelyet a SharePoint-kiszolgálófarm beállított rendelkeznie kell a megosztás eléréséhez.
+      > A BLOB-tárolóban kell lennie megosztott és érhető el az összes webes előtér (WFE) kiszolgálók, és a felhasználói fiók, amely konfigurálva van a SharePoint-kiszolgálófarm rendelkeznie kell hozzáféréssel a megosztáshoz.
       
       ![A RBS szolgáltató engedélyezése](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS2-include.png)
       
-      Ha engedélyezi vagy letiltja a RBS, akkor is látható a következő üzenetet.
+      Amikor engedélyezi vagy letiltja a RBS, a következő üzenetet is látni fogja.
       
-      ![Konfigurálja a StorSimple Adapter engedélyezése letiltása](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_ConfigureStorSimpleAdapterEnableDisableMessage-include.png)
+      ![A StorSimple Adapter engedélyezése letiltása konfigurálása](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_ConfigureStorSimpleAdapterEnableDisableMessage-include.png)
 
-   4. Kattintson a **frissítés** a beállítások gombra. Amikor rákattint az **frissítés** gombra, a RBS konfiguráció állapota frissülni fog a ELŐTÉR-webkiszolgáló és a teljes farmban lesznek RBS engedélyezve van. A következő üzenet jelenik meg.
+   4. Kattintson a **frissítés** gomb a alkalmazni a konfigurációt. Amikor rákattint a **frissítés** gomb, RBS konfigurációs állapota frissülni fog a WFE-kiszolgálóval, és a teljes farmban RBS engedélyezve van. A következő üzenet jelenik meg.
       
-      ![Csatoló konfigurációs üzenet](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS3-include.png)
+      ![Adapter konfigurációs üzenet](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS3-include.png)
       
       > [!NOTE]
-      > RBS nagyon sok (több mint 200) adatbázisok SharePoint-farm beállításakor, a SharePoint központi felügyelet weblap előfordulhat, hogy túllépi az időkorlátot. Ha ez történik, frissítse az oldalt. Ez nem befolyásolja a konfigurációs folyamat.
+      > Egy nagyon nagy számú (több mint 200) adatbázisok SharePoint-farm beállításakor RBS, a SharePoint központi felügyelet weblap lehet, hogy időtúllépés. Ha ez bekövetkezik, frissítse az oldalt. Ez nem befolyásolja a konfigurációs folyamat.
 
 4. A konfiguráció ellenőrzése:
    
-   1. Jelentkezzen be a SharePoint központi felügyeleti webhelyet, és keresse meg a **konfigurálása a StorSimple-Adapter** lap.
-   2. Ellenőrizze a konfigurációs adatait, győződjön meg arról, hogy ezek megegyeznek-e a megadott beállításokat. 
+   1. Jelentkezzen be a SharePoint központi felügyeleti webhelyet, és keresse meg a **konfigurálása a StorSimple Adapter** lapot.
+   2. Ellenőrizze a konfigurációs adatait, győződjön meg arról, hogy azok megfelelnek a megadott beállításokat. 
 5. Győződjön meg arról, hogy RBS megfelelően működik-e:
    
-   1. SharePoint dokumentum feltöltése. 
-   2. Tallózással keresse meg a beállított UNC elérési utat. Győződjön meg arról, hogy létrejött-e a RBS könyvtárszerkezetét és a feltöltött objektumot tartalmaz.
-6. (Választható) Használhatja a Microsoft RBS `Migrate()` részét képező SharePoint meglévő blobtartalom át a StorSimple eszköz PowerShell-parancsmagot. További információkért lásd: [tartalmat át a virtuális gépbe vagy onnan a SharePoint 2013 RBS] [ 6] vagy [tartalmat át a virtuális gépbe vagy onnan RBS (SharePoint Foundation 2010)] [7].
-7. (Választható) A teszt telepítésekre ellenőrizheti, hogy a Blobok került kívül a tartalom-adatbázist az alábbiak szerint: 
+   1. Töltse fel a dokumentum a SharePoint. 
+   2. Keresse meg a beállított UNC elérési utat. Győződjön meg arról, hogy létrejött-e a RBS könyvtárstruktúrát és a feltöltött objektumot tartalmaz.
+6. (Nem kötelező) Használhatja a Microsoft RBS `Migrate()` SharePoint meglévő BLOB-tartalmak migrálása a StorSimple-eszközt a mellékelt PowerShell-parancsmagot. További információkért lásd: [tartalmainak Migrálása, vagy onnan máshová a SharePoint 2013-ban RBS] [ 6] vagy [tartalmainak Migrálása, vagy onnan máshová RBS (a SharePoint Foundation 2010)] [7].
+7. (Nem kötelező) A teszt telepítésekre ellenőrizheti, hogy a Blobok át lettek helyezve kívül a tartalom-adatbázist a következő: 
    
    1. Indítsa el az SQL Management Studiót.
-   2. A ListBlobsInDB_2010.sql vagy ListBlobsInDB_2013.sql lekérdezés futtatása, az alábbiak szerint.
+   2. A következőképpen futtassa a ListBlobsInDB_2010.sql vagy ListBlobsInDB_2013.sql lekérdezést.
       
       ```
       **ListBlobsInDB_2013.sql**
@@ -91,18 +104,18 @@
         GO
       ```
       
-      Ha RBS megfelelően lett konfigurálva, NULL értéket meg kell jelennie az összes objektum feltöltött, illetve a RBS sikeresen externalized SizeOfContentInDB oszlop.
-8. (Választható) Miután RBS konfigurálása, és helyezze át az összes BLOB tartalma a StorSimple eszköz, az eszköz áthelyezheti a tartalom-adatbázist. A tartalom-adatbázis áthelyezése választja, azt javasoljuk, hogy az eszköz elsődleges kötetként konfigurálása a tartalom-adatbázist tároló. Használja majd, SQL Server ajánlott eljárások a tartalom-adatbázis áttelepítéséhez a StorSimple-eszköz létrehozása. 
+      Ha RBS megfelelően lett konfigurálva, a NULL értéket meg kell jelennie a SizeOfContentInDB oszlop lett töltve, és sikeresen externalized RBS az objektumhoz.
+8. (Nem kötelező) Miután RBS konfigurálása és az összes BLOB tartalma áthelyezése a StorSimple-eszköz, továbbléphet a tartalom-adatbázist az eszközön. A tartalom-adatbázis áthelyezése választja, azt javasoljuk, hogy konfigurálja-e a tartalom-adatbázist tároló mint elsődleges kötet az eszközön. Ezután használja az SQL Server ajánlott eljárások a tartalom-adatbázis áttelepítése a StorSimple-eszköz jön létre. 
    
    > [!NOTE]
-   > A tartalom-adatbázis áthelyezése az eszköz csak a StorSimple 8000 series (de még nem támogatott a 5000 vagy 7000-es sorozathoz) támogatott.
+   > A tartalom-adatbázis áthelyezése az eszköz csak a támogatott a StorSimple 8000 sorozat (nem támogatott a 5000 és 7000-es sorozathoz).
    
-   Blobok és a tartalom-adatbázist a StorSimple eszköz külön köteteken tárolja, azt javasoljuk a kötet tárolóhoz konfigurálása. Ez biztosítja, hogy azok készül biztonsági másolat együtt.
+   Ha a Blobok és a tartalom-adatbázist a StorSimple eszközön külön köteteken tárolja, azt javasoljuk, ugyanabban a tárolóban kötet konfigurálása. Ez biztosítja, hogy azok mikor készüljön biztonsági másolat együtt.
    
    > [!WARNING]
-   > RBS nincs engedélyezve, ha a tartalom-adatbázis áthelyezése a StorSimple-eszköz nem ajánlott. Ez a nem tesztelt konfigurálása során.
+   > Ha nem engedélyezte a RBS, a tartalom-adatbázis áthelyezése a StorSimple-eszköz nem javasoljuk. Ez az egy nem tesztelt konfigurációt.
    
-9. Nyissa meg a következő lépéssel: [szemétgyűjtés konfigurálása](#configure-garbage-collection).
+9. Nyissa meg a következő lépés: [szemétgyűjtés konfigurálása](#configure-garbage-collection).
 
 [6]: https://technet.microsoft.com/library/ff628254(v=office.15).aspx
 [7]: https://technet.microsoft.com/library/ff628255(v=office.14).aspx

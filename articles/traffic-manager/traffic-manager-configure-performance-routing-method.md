@@ -1,12 +1,9 @@
 ---
-title: Teljesítmény forgalom-útválasztási módszert használja az Azure Traffic Manager konfigurálása |} Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan Traffic Manager irányíthatja a forgalmat a végpontnak a legkisebb mértékű késleltetést konfigurálása
+title: Konfigurálja a teljesítmény forgalom-útválasztási módszer az Azure Traffic Managerrel |} A Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan Traffic Manager konfigurálása a végpontra irányíthatja a forgalmat a legkisebb késés
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: 6dca6de1-18f7-4962-bd98-6055771fab22
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,42 +11,42 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: kumud
-ms.openlocfilehash: 014aa646459cd64fca7c697419324caa3edaeeea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c378043a9e10a0aed5344ac3182af6163d217c7b
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23876312"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140468"
 ---
-# <a name="configure-the-performance-traffic-routing-method"></a>A teljesítmény forgalom útválasztási módszer konfigurálása
+# <a name="configure-the-performance-traffic-routing-method"></a>A teljesítmény forgalom-útválasztási módszer konfigurálása
 
-A teljesítmény forgalom-útválasztási módszert közvetlen forgalom a végponthoz, a legkisebb mértékű késleltetést az ügyfél hálózati teszi lehetővé. A legkisebb mértékű késleltetést az Adatközpont jellemzően a legközelebbi földrajzi távolságot. A forgalom-útválasztási módszert nem fiókot használja a hálózati konfigurációban valós idejű módosításokat, vagy nem tölthető be.
+A teljesítmény forgalom-útválasztási módszer lehetővé teszi, hogy a forgalom irányítása a végpontra a legkisebb késést az ügyfél hálózati. Az adatközpontban a legkisebb késéssel rendelkező jellemzően a legközelebbi földrajzi távolság. A forgalom-útválasztási módszer nem a valós idejű módosításokat a hálózati konfigurációban fiók vagy betöltése.
 
-##  <a name="to-configure-performance-routing-method"></a>Teljesítmény útválasztási módszer konfigurálása
+##  <a name="to-configure-performance-routing-method"></a>Teljesítménycentrikus útválasztási mód konfigurálása
 
 1. Egy böngészőben jelentkezzen be az [Azure Portalra](http://portal.azure.com). Ha még nincs fiókja, regisztrálhat egy [egy hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free/). 
-2. A portál keresősávban, keresse meg a **Traffic Manager-profilok** és kattintson a profil nevére, amelyet vonatkozó útválasztási módszer konfigurálása.
-3. Az a **Traffic Manager-profil** panelen ellenőrizze, hogy a felhőszolgáltatás és a webhelyeket, amelyeket a konfigurációt szeretne megtalálhatók.
-4. Az a **beállítások** területen kattintson **konfigurációs**, majd a a **konfigurációs** panelen, befejeződött, az alábbi módon:
-    1. A **forgalom-útválasztási módszer beállításai**, a **útválasztási módszer** válasszon **teljesítmény**.
-    2. Állítsa be a **végpont figyelőbeállítások** azonos összes minden végponton belül ezt a profilt, az alábbiak szerint:
+2. A portál keresősávjában keressen a **Traffic Manager-profilok** és kattintson a profil nevét, amelyet szeretne az útválasztási módszer konfigurálása.
+3. Az a **Traffic Manager-profil** panelen ellenőrizze, hogy a cloud services és a webhelyeket, amelyeket fel szeretne venni a konfiguráció jelen.
+4. Az a **beállítások** területén kattintson **konfigurációs**, majd a a **konfigurációs** panelen adja meg a következőket:
+    1. A **forgalom-útválasztási módszer beállításait**, a **útválasztási módszer** kiválasztása **teljesítmény**.
+    2. Állítsa be a **Végpontfigyelő beállításai** azonos az összes minden végpontot a profiljában, az alábbiak szerint:
         1. Válassza ki a megfelelő **protokoll**, és adja meg a **Port** számát. 
-        2. A **elérési** írja be a perjellel  */* . Figyelő végpontokat, az elérési útnak és fájlnévnek kell megadnia. A perjel "/" relatív elérési útja érvényes bejegyzés, és azt jelenti, hogy a fájl a gyökérmappában lévő (alapértelmezett).
+        2. A **elérési** írja be a perjellel */*. Végpontok monitorozása, az elérési útvonalat és fájlnevet kell megadnia. A perjel "/" érvényes bejegyzés a relatív elérési útja, és azt jelenti, hogy a fájl a gyökérmappában lévő (alapértelmezett).
         3. Kattintson a lap tetején **mentése**.
-5.  Tesztelje a módosításokat a konfigurációt az alábbiak szerint:
-    1.  A portál keresősávban, keresse meg a Traffic Manager-profil nevét, majd kattintson az eredményeket a Traffic Manager-profilt, amely a jelennek meg.
+5.  A módosítások teszteléséhez a konfiguráció a következő:
+    1.  A portál keresősávjában, keresse meg a Traffic Manager-profil nevét és a Traffic Manager-profil az eredmények között kattintson, amely jelenik meg.
     2.  Az a **Traffic Manager** profil panelen, kattintson a **áttekintése**.
-    3.  A **Traffic Manager-profil** csempe megjeleníti az újonnan létrehozott Traffic Manager-profil DNS-nevét. Ez használhatja olyan ügyfelek (például úgy, hogy keresse meg webböngészővel) az beszerzése irányítja át a megfelelő végpont, határozza meg az Útválasztás típusa. Ebben az esetben az összes rendszer kérést átirányítja a végpont és a legkisebb mértékű az ügyfél hálózatról.
-6. A Traffic Manager-profil működik, ha a vállalata tartománynevét mutasson a Traffic Manager tartományneve a mérvadó DNS-kiszolgálón a DNS-rekord szerkesztése
+    3.  A **Traffic Manager-profil** panel megjeleníti az újonnan létrehozott Traffic Manager-profil DNS-nevét. Ezzel használhatja az ügyfelek (például megnyitásával, egy webböngésző használatával), mint a megfelelő végpontra van irányítva határozza meg az útválasztási típus. Ebben az esetben az összes kérelem irányul, a végpont a legkisebb késéssel rendelkező az ügyfél hálózatról.
+6. Miután a Traffic Manager-profil működik, szerkessze a DNS-rekordot a mérvadó DNS-kiszolgálón a vállalata tartománynevét átirányítása a Traffic Manager szolgáltatásbeli tartománynévre.
 
-![Teljesítmény forgalom-útválasztási módszert használja a Traffic Manager konfigurálása][1]
+![Teljesítmény forgalom-útválasztási módszer használatával a Traffic Manager konfigurálása][1]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További tudnivalók [forgalom-útválasztási módszert súlyozott](traffic-manager-configure-weighted-routing-method.md).
-- További tudnivalók [prioritású virtuális gép útválasztási módszer](traffic-manager-configure-priority-routing-method.md).
-- További tudnivalók [földrajzi útválasztási módszer](traffic-manager-configure-geographic-routing-method.md).
-- Megtudhatja, hogyan [Traffic Manager-beállítások tesztelésére](traffic-manager-testing-settings.md).
+- További információ a [súlyozott forgalom útválasztási metódusról](traffic-manager-configure-weighted-routing-method.md).
+- További információ az [elsődleges útválasztási metódusról](traffic-manager-configure-priority-routing-method.md).
+- További információ a [földrajzi útválasztási metódusról](traffic-manager-configure-geographic-routing-method.md).
+- Ismerje meg, hogyan [Traffic Manager beállításainak tesztelése](traffic-manager-testing-settings.md).
 
 <!--Image references-->
 [1]: ./media/traffic-manager-performance-routing-method/traffic-manager-performance-routing-method.png

@@ -11,25 +11,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kumud
-ms.openlocfilehash: eb43b59a26bc9c1b514921a7b6dfa4b920a8fe5f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 57ae9f3a747ef3fde1a21de8a56ec4059becf392
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955218"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139340"
 ---
 # <a name="traffic-manager-routing-methods"></a>Traffic Manager útválasztási módszerek
 
 Az Azure Traffic Manager támogatja, határozza meg, hogyan irányíthatja a hálózati forgalmat a különböző Szolgáltatásvégpontok hat forgalom-útválasztási módszer. A Traffic Manager bármilyen profilhoz társítva van hozzá minden DNS-lekérdezést kap, a forgalom-útválasztási módszer vonatkozik. A forgalom-útválasztási módszer meghatározza, hogy melyik végponthoz a DNS-választ adott vissza.
 
-Négy forgalom-útválasztási módszer érhető el a Traffic Managerben:
+A következő forgalom-útválasztási módszerek érhetők el a Traffic Managerben:
 
 * **[Prioritás](#priority):** kiválasztása **prioritású** Ha szeretne egy elsődleges végpontot használja minden forgalom, és adja meg a biztonsági mentések esetben az elsődleges vagy a biztonsági mentési végpont sem érhető el.
 * **[Súlyozott](#weighted):** kiválasztása **súlyozott** szeretné elosztani a forgalmat végpontok között, vagy egyenlő arányban vagy súlyok, amely alapján határozzák meg.
 * **[Teljesítmény](#performance):** kiválasztása **teljesítmény** Ha végpontok különböző földrajzi helyeken rendelkezik, és a végfelhasználók számára, hogy a legalacsonyabb hálózati késéssel szempontjából a "legközelebbi" végpont használni szeretne.
 * **[Földrajzi](#geographic):** kiválasztása **földrajzi** úgy, hogy a felhasználók mely földrajzi helye alapján meghatározott végpontokhoz (Azure, külső vagy beágyazott) a rendszer átirányítja a DNS-lekérdezés származik. Ez lehetővé teszi a Traffic Manager-ügyfelek olyan forgatókönyvekben, ahol, hogy a felhasználó földrajzi régióban, és azokat, amelyek alapján útválasztás fontos engedélyezéséhez. Ilyenek például az adatok szuverenitását megbízás tartalom és a felhasználói felület honosítása megfelel, és a különféle régiókból származó forgalom mérése.
 * **[Típushoz](#multivalue):** kiválasztása **típushoz** a Traffic Manager-profilok, amelyek csak IPv4/IPv6-címek végpontként rendelkezhet. Ehhez a profilhoz fogadásakor egy lekérdezést, a rendszer az összes kifogástalan állapotú végpontok adja vissza.
-* **[Alhálózat](#subnet):** kiválasztása **alhálózati** forgalom-útválasztási módszer beállítása a végfelhasználói IP-címtartományok beállítását leképezése egy adott végpontot egy Traffic Manager-profilon belül. Amikor kérelem érkezik, a végpont az egyik rendelendő a kérés IP-forráscím adott vissza. 
+* **[Alhálózat](#subnet):** kiválasztása **alhálózati** forgalom-útválasztási módszer beállítása a végfelhasználói IP-címtartományok beállítását leképezése egy adott végpontot egy Traffic Manager-profilon belül. Amikor kérelem érkezik, a végpont az egyik rendelendő a kérés IP-forráscím adott vissza. 
 
 
 Traffic Manager-profilok közé tartozik a végpontonkénti állapotot és a végpont az Automatikus feladatátvétel figyelését. További információkért lásd: [Traffic Manager végpont figyelése](traffic-manager-monitoring.md). Egyetlen Traffic Manager-profil csak egyetlen forgalom-útválasztási módszert használhatja. A profil bármikor választhat a különböző forgalom-útválasztási módszert. Egy percen belül lépnek életbe a módosítások, és üzemkimaradást sem okoz merül fel. Forgalom-útválasztási módszer kombinálható is beágyazott Traffic Manager-profilok használatával. A beágyazási lehetővé teszi, hogy kifinomult és rugalmas forgalom-útválasztási beállítani, a nagyobb méretű, összetett alkalmazások igényeihez. További információkért lásd: [beágyazott Traffic Manager-profilok](traffic-manager-nested-profiles.md).

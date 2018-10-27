@@ -2,18 +2,18 @@
 title: Ügyféloldali titkosítás a Microsoft Azure Storage .NET-tel |} A Microsoft Docs
 description: Az Azure Storage ügyféloldali kódtára a .NET-hez támogatja az ügyféloldali titkosítás és az Azure Key Vault-integráció az Azure Storage-alkalmazások számára a maximális biztonság érdekében.
 services: storage
-author: craigshoemaker
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 10/20/2017
-ms.author: cshoe
+ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 4d94096c82f56254c1cd40a2192b4309ce0c9f30
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 857ab3ad9870407b91b0fdc9c552a89fd1f4ccd4
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521730"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140519"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>A Microsoft Azure Storage ügyféloldali titkosítása és az Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]

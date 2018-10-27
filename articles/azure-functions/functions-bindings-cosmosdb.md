@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 5487ff0b74176493f7e1ef621d1427dbc18f8a2e
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 155e3f5184c19267ea64f3457bf12666479d1602
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087537"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139103"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Az Azure Functions az Azure Cosmos DB-kötéseket 1.x
 
@@ -33,9 +33,8 @@ Ez a cikk azt ismerteti, hogyan használható a [Azure Cosmos DB](..\cosmos-db\s
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="supported-apis"></a>Támogatott API-k
-
-[!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
+> [!NOTE]
+> Az Azure Cosmos DB-kötések csak az SQL API-val használhatók. Az összes többi Azure Cosmos DB API-k, kell az adatbázis eléréséhez fog a funkció a statikus ügyfél segítségével az API-hoz, beleértve a [MongoDB API](../cosmos-db/mongodb-introduction.md)] (.. /cosmos-DB/mongodb-Introduction.MD), [Cassandra API](../cosmos-db/cassandra-introduction.md), [Gremlin API](../cosmos-db/graph-introduction.md), és [Table API](../cosmos-db/table-introduction.md).
 
 ## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
 

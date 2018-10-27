@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/02/2018
+ms.date: 10/25/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 322b21ae2273b949e9a46e0c47a9f9e4d661603e
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 3ba1f9afda1b4f7f227c996615cc17a8c604d5fb
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267953"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138225"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>PowerShell-szkriptek futtatása a Windows virtuális gép futtatása paranccsal
 
@@ -37,6 +37,9 @@ A következő korlátozások vonatkoznak, ha futtatása paranccsal:
 * Nem vethető el a parancsprogram futtatásához
 * A maximális idő egy parancsfájlt az 90 perc után, amelyben az időkorlátja
 * A virtuális gépről kimenő kapcsolat szükséges a parancsfájl eredményét adja vissza.
+
+> [!NOTE]
+> A megfelelő működéshez, a futtatása paranccsal kapcsolódnia kell (a 443-as port) az Azure nyilvános IP-címeket. Ha a bővítmény nem rendelkezik a fenti végpontokkal való hozzáférést, a parancsfájlok sikeresen lefutott, de az eredményeket ad vissza. Ha blokkolja a forgalmat a virtuális gépen, akkor használhatja [szolgáltatáscímkéket](../../virtual-network/security-overview.md#service-tags) , hogy a forgalom az Azure nyilvános IP-címek használatával a `AzureCloud` címke.
 
 ## <a name="run-a-command"></a>Parancs futtatása
 

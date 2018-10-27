@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: eb5d1ee88fc95f7d02842ea089f65c6d17a6d69d
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 127f6a5cd8f46b72a4cddcef09cb31b60edd0582
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091741"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157190"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Hozzáférés a Kubernetes webes irányítópultot az Azure Kubernetes Service (AKS)
 
@@ -34,8 +34,8 @@ A Kubernetes-irányítópult indításához használja a [az aks browse] [ az-ak
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
-> [!NOTE]
-> Ha ez a parancs az Azure Cloud Shellben futtatja, kell hozzáadni a `--enable-cloud-console-aks-browse` paraméter segítségével lehet megnyitni az irányítópultot.
+> [!TIP]
+> Ha az Azure Cloud Shellben futtatja ezt a parancsot, adja hozzá a `--enable-cloud-console-aks-browse` paraméter megfelelően az irányítópult megnyitásához.
 
 Ez a parancs létrehoz egy proxy között a fejlesztői rendszerhez, és a Kubernetes API-t, és a Kubernetes-irányítópult egy webböngészőben megnyílik. Egy webes böngésző nem nyílik meg, a Kubernetes-irányítópultot, ha másolja és illessze be az URL-cím általában az Azure CLI-feljegyzett *http://127.0.0.1:8001*.
 

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 13820dd511d31217b79385e893edbb55a3a57693
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: e66dcac1d83c71174ad5d7c3fdcd2310143f8e01
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430019"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140806"
 ---
 # <a name="tune-hyperparameters-for-your-model"></a>Hiperparaméterek a modell finomhangolása
 
@@ -238,16 +238,18 @@ Ebben a példában a korai lemondási házirendet alkalmazza minden időközönk
 
 ### <a name="no-termination-policy"></a>Nincs lemondási házirend
 
-Ha azt szeretné, hogy minden a betanítási Futtatás befejezését, NoTerminationPolicy használja. Ez lesz a nem a bármely korai lemondási-házirend alkalmazásának.
+Ha azt szeretné, hogy minden a betanítási Futtatás befejezését, a házirend beállítása None. Ez lesz a nem a bármely korai lemondási-házirend alkalmazásának.
 
 ```Python
-from azureml.train.hyperdrive import NoTerminationPolicy
-early_termination_policy = NoTerminationPolicy()
+policy=None
 ```
 
 ### <a name="default-policy"></a>Alapértelmezett szabályzat
 
-Ha nincs szabályzat van megadva, a hiperparaméter finomhangolása szolgáltatás használja-e a középérték leállítása házirendet `evaluation_interval` 1 és `delay_evaluation` alapértelmezés szerint 5. Ezek a konzervatív beállításait, amely körülbelül 35 %-os 25 %-os megtakarítás adatvesztés nélkül képes biztosítani az elsődleges metrika (értékelési adatok alapján).
+Ha nincs szabályzat van megadva, a hiperparaméter finomhangolása a szolgáltatás lehetővé teszi az összes a betanítási Futtatás befejezését.
+
+>[!NOTE] 
+>Megtakarítás ígéret feladatok megszakítása nélkül biztosító konzervatív szabályzatot keres, ha a középérték leállítása szabályzat használhatja `evaluation_interval` 1 és `delay_evaluation` 5. Ezek a konzervatív beállításait, amely körülbelül 35 %-os 25 %-os megtakarítás adatvesztés nélkül képes biztosítani az elsődleges metrika (értékelési adatok alapján).
 
 ## <a name="allocate-resources"></a>Erőforrásokat
 

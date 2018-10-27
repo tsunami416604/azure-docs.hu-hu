@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2017
+ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: nigu
 ms.custom: seohack1
-ms.openlocfilehash: 3bdf44e0a1cf0ccda6d015fa3683964f3530d4af
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: eefbfcf741db3d0949910bc5da8494e087c39ec7
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003483"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139147"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Az Azure Active Directory Identity Protection és a Microsoft Graph használatának első lépései
 A Microsoft Graph a Microsoft unified API-végpont és az otthoni [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) API-k. Az első API **identityRiskEvents**, lehetővé teszi, hogy a Microsoft Graph lekérdezése listáját [kockázati események](../reports-monitoring/concept-risk-events.md) és a kapcsolódó adatokat. Ez a cikk lépéseit, az API lekérdezése beolvasása. Részletes bemutatása, teljes dokumentációt és a Graph Explorer a hozzáférést, tekintse meg a [Microsoft Graph-hely](https://graph.microsoft.io/).
@@ -37,8 +37,11 @@ Az Identity Protection-adatok elérése a Microsoft Graphon keresztül négy lé
 
 Mielőtt elkezdené, szüksége lesz:
 
-* Rendszergazdai jogosultságok az alkalmazás létrehozása az Azure ad-ben
-* A bérlői tartomány (például contoso.onmicrosoft.com) neve
+- Az Azure AD P2-bérlő
+
+- Rendszergazdai jogosultságok az alkalmazás létrehozása az Azure ad-ben
+
+- A bérlői tartomány (például contoso.onmicrosoft.com) neve
 
 
 ## <a name="retrieve-your-domain-name"></a>A tartománynév beolvasása 
@@ -49,12 +52,14 @@ Mielőtt elkezdené, szüksége lesz:
    
     ![Az alkalmazás létrehozása](./media/graph-get-started/41.png)
 
+3. Kattintson a **egyéni tartománynevek**.
 
-3. Az a **kezelés** területén kattintson **tulajdonságok**.
+    ![Egyéni tartománynevek](./media/graph-get-started/71.png)
 
-    ![Az alkalmazás létrehozása](./media/graph-get-started/42.png)
+4. Tartománynevek listája másolja a tartomány nevét, amely meg van jelölve elsődlegesként.
 
-4. Copy your domain name.
+    ![Egyéni tartománynevek](./media/graph-get-started/72.png)
+
 
 
 ## <a name="create-a-new-app-registration"></a>Hozzon létre egy új alkalmazás regisztrálása
@@ -74,7 +79,7 @@ Mielőtt elkezdené, szüksége lesz:
 
     a. Az a **neve** szövegmezőbe írja be az alkalmazás nevét (pl.: AADIP kockázati esemény API-alkalmazás).
    
-    b. Mint **típus**válassza **webalkalmazás és / vagy webes API-t**.
+    b. Mint **alkalmazástípus**válassza **webalkalmazás és / vagy webes API-t**.
    
     c. Az a **bejelentkezési URL-** szövegmezőbe írja be `http://localhost`.
 

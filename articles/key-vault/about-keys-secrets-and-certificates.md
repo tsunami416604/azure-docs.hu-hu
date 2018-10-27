@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bryanla
-ms.openlocfilehash: d93ad4185be3d4875c5747fd10359baab69af95d
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 00a2c0d50a2476995dfb0d16d0cdbc5bd0ec313b
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958652"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138996"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Tudnivalók a kulcsok, titkos kódok és tanúsítványok
 
@@ -245,7 +245,7 @@ A titkos adatok mellett a következő attribútumokkal lehet megadni:
 
 - *Exp*: IntDate, nem kötelező, alapértelmezett érték a **örökre**. A *exp* (lejárati ideje) attribútum azonosítja a lejárati időt, vagy azt követően, amely a titkos adatokat kell nem olvashatók be, kivéve az [adott helyzetekben](#date-time-controlled-operations). Ez a mező **tájékoztató** célra használja, csak, hogy tájékoztatja a felhasználókat a key vault szolgáltatást, hogy egy adott titkos kód nem használható. Az érték egy IntDate értéket tartalmazó számnak kell lennie.   
 - *NBF*: IntDate, nem kötelező, alapértelmezett érték a **most**. A *nbf* (nem előtt) attribútum azonosítja az idő, ameddig a titkos adatokat kell nem olvashatók be, kivéve az [adott helyzetekben](#date-time-controlled-operations). Ez a mező **tájékoztató** csak célra használja. Az érték egy IntDate értéket tartalmazó számnak kell lennie. 
-- *engedélyezett*: logikai érték, nem kötelező, alapértelmezett érték a **igaz**. Ez az attribútum meghatározza, hogy a titkos adatok lekérhetők. Az engedélyezett attribútum együtt használatos, és *exp* között-művelet bekövetkezésekor exp, akkor lesz csak engedélyezett, ha engedélyezve van, és értékre van állítva **igaz**. Műveletek kívül a *nbf* és *exp* ablak a program automatikusan nem megengedett, kivéve a [adott helyzetekben](#date-time-controlled-operations).  
+- *engedélyezett*: logikai érték, nem kötelező, alapértelmezett érték a **igaz**. Ez az attribútum meghatározza, hogy a titkos adatok lekérhetők. Az engedélyezett attribútum együtt használatos *nbf* és *exp* között-művelet bekövetkezésekor *nbf* és *exp*, csak akkor lesz engedélyezett, ha engedélyezve beállítva **igaz**. Műveletek kívül a *nbf* és *exp* ablak a program automatikusan nem megengedett, kivéve a [adott helyzetekben](#date-time-controlled-operations).  
 
 Nincsenek további csak olvasható attribútumok telepítésben lévő semmilyen választ, amely tartalmazza a titkos attribútumok:  
 

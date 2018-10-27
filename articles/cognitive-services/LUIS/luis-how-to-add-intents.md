@@ -7,140 +7,113 @@ author: diberry
 manager: cgronlun
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 10/24/2018
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 9b7207a16a89e48ad64b2dbc48a5293d0cf8aa25
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 495b7e99319126b3ee9e655b2d9aa4af940e1d56
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036082"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139921"
 ---
-# <a name="manage-intents"></a>Leképezések kezelése 
-Adjon hozzá [leképezések](luis-concept-intent.md) az olyan kérdések vagy ugyanazon céljaira rendelkező parancsok azonosítására a LUIS-alkalmazás. 
+# <a name="add-intents"></a>Leképezések hozzáadása 
 
-A felügyelt leképezések a **hozhat létre** felső eszköztárának szakasz. Adhat hozzá és kezelhet, a leképezések a **leképezések** oldalon, a bal oldali panelen érhető el. 
+Adjon hozzá [leképezések](luis-concept-intent.md) az olyan kérdések és azonos szándékkal rendelkező parancsok azonosítására a LUIS-alkalmazás. 
 
-Az alábbi eljárás bemutatja, hogyan hozzáadása "Bookflight" célja az TravelAgent alkalmazásban.
+Leképezések a felső navigációs sávban felügyelt **hozhat létre** című szakaszában, majd a bal oldali panelen **leképezések**. 
 
-## <a name="add-intent"></a>Leképezés hozzáadása
+## <a name="create-an-app"></a>Alkalmazás létrehozása
 
-1. Nyissa meg az alkalmazás (például TravelAgent) nevére kattintva **saját alkalmazások** lapon, és kattintson a **leképezések** a bal oldali panelen. 
-2. Az a **leképezések** kattintson **új leképezésének létrehozása**.
+1. Jelentkezzen be a [LUIS](https://www.luis.ai) portálon.
 
-3. Az a **új leképezésének létrehozása** párbeszédpanelen írja be a leképezés "BookFlight" nevet, és kattintson a **kész**.
+1. Válassza a **Create new app** (Új alkalmazás létrehozása) lehetőséget. 
+
+1. Nevezze el az új alkalmazás `MyHumanResourcesApp`. Válassza ki a **angol** kulturális környezet. A leírás megadása nem kötelező. 
+
+1. Válassza a **Done** (Kész) lehetőséget. 
+
+## <a name="add-intent"></a>Szándék hozzáadása
+
+1. Az alkalmazás megnyílik a **leképezések** listája.
+
+1. Az **Intents** (Szándékok) lapon válassza a **Create new intent** (Új szándék létrehozása) lehetőséget.
+
+1. Az a **új leképezésének létrehozása** párbeszédpanelen adja meg a leképezés nevét `GetEmployeeInformation`, és kattintson a **kész**.
 
     ![Leképezés hozzáadása](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
-    Az újonnan hozzáadott szándékkal, szándék Részletek lapján [beszédmódok hozzáadása](#add-an-utterance-on-intent-page).
+## <a name="add-an-example-utterance"></a>Adjon hozzá egy példa utterance (kifejezés)
 
-## <a name="rename-intent"></a>Nevezze át a leképezés
+Példa utterances Példák szöveges felhasználói kérdések vagy parancsok. Language Understanding (LUIS), akik az példa beszédmódok hozzáadása egy beszédszándék kell.
 
-1. A a **szándékot** lap, kattintson az Átnevezés ikon ![átnevezése szándékot](./media/luis-how-to-add-intents/Rename-Intent-btn.png) a leképezés neve mellett. 
-
-2. Az a **szándékot** lapon jelenik meg a párbeszédpanelen az aktuális szándék nevét. Szerkessze a leképezés nevét, és nyomja le az enter. Az új név mentett és a szándék lapon jelennek meg.
-
-    ![Leképezés szerkesztése](./media/luis-how-to-add-intents/EditIntent-dialogbox.png)
-
-## <a name="delete-intent"></a>Leképezés törlése
-A none szándék megjelölésű törlésekor kiválaszthatja a Nincs leképezés hozzáadása a kimondott szöveg. Ez akkor hasznos, ha át kell helyeznie azokat törlése helyett a kimondott szöveg.   
-
-1. Az a **szándékot** lap, kattintson a **leképezés törlése** mellett a szándék nevétől jobbra látható gombra. 
-
-    ![Leképezési gomb törlése](./media/luis-how-to-add-intents/DeleteIntent.png)
-
-2. Kattintson az "Ok" gombra a megerősítő párbeszédpanelen.
-
-<!--
-    TBD: waiting for confirmation about which delete dialog is going to be in //BUILD
-
-    ![Delete Intent Dialog](./media/luis-how-to-add-intents/DeleteIntent-Confirmation.png)
--->
-
-
-## <a name="add-an-utterance-on-intent-page"></a>Adja hozzá az utterance (kifejezés) szándék az oldalon
-
-A leképezési lapon adja meg egy megfelelő utterance (kifejezés) adatraktáraktól a felhasználók számára, mint például `book 2 adult business tickets to Paris tomorrow on Air France` alatti leképezési nevét, és nyomja le az ENTER billentyűt a szövegmezőben. 
+1. Az a **GetEmployeeInformation** szándék részletei lap, adja meg egy megfelelő utterance (kifejezés) adatraktáraktól a felhasználók számára, mint például `Does John Smith work in Seattle?` alatti leképezési nevét, és nyomja le az ENTER billentyűt a szövegmezőben.
  
->[!NOTE]
->A LUIS összes utterances kisbetűvé alakítja.
+    ![Képernyőkép a leképezések Részletek lapján az utterance (kifejezés) kiemelésével](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
 
-![Képernyőkép a leképezések Részletek lapján az utterance (kifejezés) kiemelésével](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
+    A LUIS kisbetűvé alakítja az összes kimondott szöveg, és hozzáadja a jogkivonatok kötőjeleket például szóközt.
 
-Beszédmódok kerülnek a kimondott szöveg listája a jelenlegi leképezés. Miután hozzáadta az utterance (kifejezés), [címkézését a entitások](luis-how-to-add-example-utterances.md) megcímkézzen belül és [betanításához](luis-how-to-train.md) az alkalmazást. 
+## <a name="intent-prediction-discrepancy-errors"></a>Leképezési előrejelzési eltérést észlelt hibák 
 
-## <a name="create-a-pattern-from-an-utterance"></a>Hozzon létre egy minta az utterance (kifejezés)
-Lásd: [Hozzáadás minta a leképezés vagy entitás oldalon meglévő utterance (kifejezés)](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
+Előfordulhat, hogy az utterance (kifejezés) megjelölésű a egy leképezési előrejelzés eltérés van a kiválasztott célt és az előrejelzési pontszám között. LUIS azt jelzi, hogy a piros Keretes ez eltérést észlelt a **szándékot feliratú** a sorban található az a példában utterance (kifejezés). 
 
-## <a name="edit-an-utterance-on-intent-page"></a>Egy leképezési oldalon utterance (kifejezés) szerkesztése
+![Képernyőkép a leképezések Részletek lapján az utterance (kifejezés) kiemelésével](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
 
-Az utterance (kifejezés) szerkesztéséhez kattintson a három pontra (***...*** ) gombra, hogy utterance (kifejezés) vonal a jobb végén, és válassza ki **szerkesztése**. Módosítsa a szöveget, majd nyomja le az Enter billentyűt.
+Válassza ki a felső navigációs **Train**. Az előrejelzés eltérés van most szűnt.
 
-![Képernyőkép a leképezések Részletek lap, három pontot ábrázoló gomb kiemelésével](./media/luis-how-to-add-intents/edit-utterance.png) 
+## <a name="add-a-custom-entity"></a>Egyéni entitás hozzáadása
 
-## <a name="reassign-utterances-on-intent-page"></a>Beszédmódok szándék oldalon újbóli hozzárendelése
-Egy vagy több utterances szándéka megváltoztatást őket egy másik beszédszándék módosíthatja. 
+Az utterance (kifejezés) megjelölésű ad hozzá, miután kiválaszthatja az utterance (kifejezés) hozhat létre egyéni entitásokat származó szöveg. Egyéni entitás módja a kinyerési, és a megfelelő leképezés címke szövegét. 
 
-Ismételt hozzárendelése egy egyetlen utterance (kifejezés), egy másik szándékkal, a jobb végén az utterance (kifejezés) sor, jelölje ki a megfelelő szándék nevét a a **szándékot feliratú** oszlop. Az utterance (kifejezés) törlődik a jelenlegi leképezés utterance (kifejezés) listából. 
+1. Válassza ki a word-, `Seattle`, az az utterance (kifejezés). Hranaté závorky dolgozzák a szöveget, és megjelenik egy legördülő menü. 
 
-![Képernyőkép a BookFlight szándék lap alatt Labeled szándék oszlop ki van jelölve az utterance (kifejezés) célja](./media/luis-how-to-add-intents/reassign-1-utterance.png)
+    ![Képernyőkép a leképezések részletező lapján, az egyéni entitások](./media/luis-how-to-add-intents/create-custom-entity.png) 
 
-Több utterances szándéka módosításához jelölje be a jelölőnégyzeteket megcímkézzen balra, és válassza **újbóli hozzárendelése a leképezés**. Válassza ki a megfelelő leképezést a listából.
+    Ebben a példában egy entitás megjelölése egyetlen szó választja ki. Egyetlen működik és kifejezések entitásokként jelölheti meg.
 
-![Képernyőkép a BookFlight szándék lap az utterance (kifejezés) be van jelölve, és a újbóli hozzárendelésének szándék gomb kiemelésével](./media/luis-how-to-add-intents/delete-several-utterances.png) 
+1. A felső szöveg-, a menü, adja meg `Location`, majd **új entitás létrehozása**. 
 
-## <a name="delete-utterances-on-intent-page"></a>Beszédmódok szándék oldalon törlése
+    ![Képernyőkép a leképezések Részletek lapján nevű egyéni entitás létrehozása](./media/luis-how-to-add-intents/create-custom-entity-name.png) 
 
-Az utterance (kifejezés) törléséhez válassza ki a három pontra (***...*** ) gombra, hogy utterance (kifejezés) vonal a jobb végén, és válassza ki **törlése**. Az utterance (kifejezés) listájából és a LUIS alkalmazás törlődik.
+1. Az a **milyen típusú entitást szeretne létrehozni?** előugró ablak az entitás létrehozását, ellenőrizze, hogy a **entitás neve** van _hely_, és a **entitás típusa**  van _egyszerű_. Válassza a **Done** (Kész) lehetőséget.
 
-![Képernyőkép a leképezések Részletek lap törlése lehetőséggel kiemelve](./media/luis-how-to-add-intents/delete-utterance-ddl.png)
+## <a name="entity-prediction-discrepancy-errors"></a>Entitás előrejelzési eltérést észlelt hibák 
 
-Több kimondott szöveg törléséhez:
+Vörös jelzi az entitás aláhúzott egy [entitás előrejelzés eltérés](luis-how-to-add-example-utterances.md#entity-status-predictions). Ez az entitás a első előfordulása, mert nem áll elég nagy magabiztossággal rendelkeznie LUIS példákat, hogy ez a szöveg van megjelölve a megfelelő entitással. Ez az eltérés törlődik, ha az alkalmazás be van tanítva. 
 
-1. Jelölje be a jelölőnégyzeteket megcímkézzen balra, és válassza **beszédmódok (s) törlése**. 
+![Képernyőkép a leképezések Részletek lap, kék színnel egyéni entitás neve](./media/luis-how-to-add-intents/create-custom-entity-name-blue-highlight.png) 
 
-    ![Képernyőkép a leképezések részletek oldala, amelyen utterances be van jelölve, és törölje a utterance(s) gomb](./media/luis-how-to-add-intents/delete-several-utterances.png)
+A szöveg kék színnel, egy entitás jelző van kiemelve.  
 
-2. Válassza ki **kész** a a **utterances törlése?** felugró párbeszédpanel.
+## <a name="add-a-prebuilt-entity"></a>Egy előre létrehozott entitás hozzáadása
 
-## <a name="search-in-utterances-on-intent-page"></a>Keresés a szándék oldalon kimondott szöveg
-Beszédmódok (szavak vagy kifejezések) szöveget tartalmazó kereshet a leképezés utterance (kifejezés) listában. Például Észreveheti, hogy egy hiba, amely magában foglalja egy adott szó, és meg szeretne keresni, hogy adott szó tartalmazó összes példákat. 
+További információ: [előre összeállított entitások](luis-how-to-add-entities.md#add-prebuilt-entity).
 
-1. Az eszköztáron válassza ki a Nagyító ikont.
+## <a name="using-the-contextual-toolbar"></a>A környezetfüggő eszköztár
 
-    ![Képernyőkép-leképezések oldala, amelyen a kiemelt Nagyító keresés ikonra](./media/luis-how-to-add-intents/magnifying-glass.png)
+Ha a bal oldalán az utterance (kifejezés) négyzet bejelölésével, egy vagy több példa utterances a listában, az eszköztáron az utterance (kifejezés) lista fölött lehetővé teszi hajtsa végre a következő műveleteket:
 
-2. Megjelenik a keresési szövegmezőbe. Írja be a keresőmezőbe, a jobb felső sarokban található a kimondott szöveg lista szó vagy kifejezés. A kimondott szöveg listája frissítéseket, csak a kimondott szöveg, amely tartalmazza a keresett szöveg megjelenítéséhez. 
+* Leképezés ismételt hozzárendelése: utterance(s) áthelyezése másik leképezés
+* Utterance(s) törlése
+* Entitás szűrők: csak a szűrt entitásokat tartalmazó kimondott szöveg megjelenítése
+* Az összes megjelenítése / csak a hibák: előrejelzés hibákkal kimondott szöveg vagy az összes kimondott szöveg megjelenítése
+* Entitások/tokenek megtekintése: entitás névvel rendelkező entitásokat nézet vagy az utterance (kifejezés) nyers szöveg megjelenítése
+* Nagyító: keresse meg a meghatározott szöveget tartalmazó kimondott szöveg
 
-    ![Képernyőkép a leképezések oldala, amelyen kiemelve a keresési szövegmezőbe](./media/luis-how-to-add-intents/search-textbox.png)
+## <a name="working-with-an-individual-utterance"></a>Az egyes utterance (kifejezés) használata
 
-    Szakítsa meg a keresést, és állítsa vissza a kimondott szöveg teljes listáját, törölje a beírt keresési szöveget. Gombra kattintva zárja be a keresési szövegmezőbe, válassza újra az eszköztáron a Nagyító ikont.
+Az alábbi műveleteket az egyes utterance (kifejezés) a három pont menüben jobb oldalán az utterance (kifejezés) hajtható végre:
 
-## <a name="prediction-discrepancy-errors-on-intent-page"></a>Előrejelzési eltérést észlelt hibák szándék az oldalon
-Előfordulhat, hogy egy megjelölésű az utterance (kifejezés) a kiválasztott célt és az előrejelzési pontszám közötti eltérést. A LUIS azt jelzi, hogy ezt a pontszámot a piros Keretes eltérést észlelt. 
+* Szerkesztés: az utterance (kifejezés) szövegének módosítása
+* Törlés: a leképezés eltávolítása az utterance (kifejezés). Ha továbbra is az utterance (kifejezés), célszerűbb áthelyezni, hogy-e a **nincs** szándékot. 
+* Adjon hozzá egy minta: A minta lehetővé teszi, hogy egy közös utterance (kifejezés) igénybe vehet, és jelölje be a cserélhető és szöveg figyelmen kívül hagyható, ezáltal csökkentve a további utterances a SZÁNDÉKTÓL. 
 
-![BookFlight szándékot képernyőkép oldala, amelyen kiemelve előrejelzés eltérés pontszám](./media/luis-how-to-add-intents/score-discrepancy.png) 
-
-## <a name="filter-by-intent-prediction-discrepancy-errors-on-intent-page"></a>Szűrés a szándék előrejelzési eltérést észlelt hibák szándék lapon
-A Váltás az utterance (kifejezés) lista, csak egy leképezési előrejelzés eltérés van a kimondott szöveg szűréséhez **összes megjelenítése** való **csak a hibák** az eszköztáron. 
-
-## <a name="filter-by-entity-type-on-intent-page"></a>Szűrés a szándék oldalon entitás típusa
-Használja a **entitás szűrők** legördülő megcímkézzen entitás alapján szűrheti az eszköztáron. 
-
-![Képernyőkép a leképezések oldala, amelyen kiemelve entitás szűrő](./media/luis-how-to-add-intents/filter-by-entities.png) 
-
-Távolítsa el a szűrőt, válassza a kék szűrőmezőbe az adott szó vagy kifejezés alatt az eszköztáron.  
-<!-- TBD: waiting for ux fix - bug in ux of prebuit entity number -- when filtering by it, it doesn't show the list -->
-
-## <a name="switch-to-token-view-on-intent-page"></a>A leképezési lapon token nézetre váltani
-Váltógomb **jogkivonatok nézet** helyett az entitás típusnevek jogkivonatok megtekintéséhez. A billentyűzet is használhatja **Control + E** megjelenítése. 
-
-![Képernyőkép a BookFlight szándékkal, a kiemelt Token nézettel](./media/luis-how-to-add-intents/toggle-tokens-view.png)
+A **szándékot feliratú** oszlop lehetővé teszi, hogy az utterance (kifejezés) célját módosítani.
 
 ## <a name="train-your-app-after-changing-model-with-intents"></a>Modell, szándék fog vonatkozni módosítása után az alkalmazás betanítása
-Után adja hozzá, szerkeszthet és eltávolíthat szándék fog vonatkozni, [betanításához](luis-how-to-train.md) és [közzététele](luis-how-to-publish-app.md) a végpont lekérdezéseket érintő módosítások alkalmazásához. 
+
+Miután hozzáadása, szerkesztése vagy eltávolítása a szándék fog vonatkozni, [betanításához](luis-how-to-train.md) és [közzététele](luis-how-to-publish-app.md) az alkalmazás úgy, hogy a módosítások a végpont-lekérdezésekre. 
 
 ## <a name="next-steps"></a>További lépések
 
-Leképezések hozzáadása az alkalmazáshoz, után a következő feladata, kezdje el hozzáadni [példa utterances](luis-how-to-add-example-utterances.md) számára a hozzáadott leképezések. 
+További adásával kapcsolatos [példa utterances](luis-how-to-add-example-utterances.md) entitásokkal. 

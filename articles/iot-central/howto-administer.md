@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1bb0bc0aa7ad6bbbad502832ba8e0a96f36de428
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 25b4777be4257933b84d58d0f10cf12571de9590
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268302"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155320"
 ---
 # <a name="administer-your-iot-central-application"></a>Az IOT központi alkalmazás felügyelete
 
@@ -33,7 +33,7 @@ A **felügyeleti** szakaszban:
 
 Az a **felügyeleti** a szakaszban egy másodlagos navigációs menü a különböző felügyeleti feladatokra mutató hivatkozásokat tartalmaz.
 
-Hogy eléri és használja a **felügyeleti** szakaszban kell lennie a a **rendszergazda** szerepkört az Azure IoT Central alkalmazáshoz. Azure IoT Central alkalmazást hoz létre, ha automatikusan kapott a **rendszergazda** szerepkör az adott alkalmazáshoz. A *felhasználók kezelésével* szakasz ebben a cikkben a hozzárendelése több ismerteti a **rendszergazda** szerepkör más felhasználók számára.
+Hogy eléri és használja a **felügyeleti** szakaszban kell lennie a a **rendszergazda** szerepkört az Azure IoT Central alkalmazáshoz. Azure IoT Central alkalmazást hoz létre, ha automatikusan kapott a **rendszergazda** szerepkör az adott alkalmazáshoz. A [felhasználók kezelésével](#manage-users) szakasz ebben a cikkben a hozzárendelése több ismerteti a **rendszergazda** szerepkör más felhasználók számára.
 
 ## <a name="change-application-name"></a>Alkalmazás nevének módosítása
 

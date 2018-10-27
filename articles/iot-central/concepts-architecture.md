@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT-központ architekturális fogalmak |} Microsoft Docs
-description: Ez a cikk be Azure IoT központi architektúrájával kapcsolatos alapvető fogalmakat
+title: Az Azure IoT Central architekturális fogalmak |} A Microsoft Docs
+description: Ez a cikk bemutatja az Azure IoT Central architektúrájával kapcsolatos alapfogalmak
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/30/2017
@@ -8,94 +8,94 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 44408e7b6ad1a068f265bf7b78d973e6aae3001b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 564ea3efe35a1054b8c905cff4b7f4c739cc9216
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628759"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156374"
 ---
-# <a name="azure-iot-central-architecture"></a>Azure IoT központi architektúra
+# <a name="azure-iot-central-architecture"></a>Az Azure IoT Central architektúrája
 
-Ez a cikk a Microsoft Azure IoT központi architektúra áttekintése.
+Ez a cikk a Microsoft Azure IoT Central-architektúra áttekintése.
 
 ![Legfelső szintű architektúra](media/concepts-architecture/architecture.png)
 
 ## <a name="devices"></a>Eszközök
 
-Eszközök exchange-adatok az Azure IoT központi alkalmazással. Egy eszköz a következőket teheti:
+Eszközök exchange-adatok az Azure IoT Central alkalmazáshoz. Egy eszköz a következőket teheti:
 
-- Mérések, például a telemetriai adatok küldése.
-- Beállítások szinkronizálása az alkalmazást.
+- Például a telemetriai adatok mérések küldése.
+- Beállítások szinkronizálása az alkalmazását.
 
-Az Azure IoT központban egy eszközt az alkalmazással továbbíthatja az adatokat egy eszköz sablonban van beállítva. Eszköz sablonokkal kapcsolatos további információkért lásd: [metaadatok felügyeleti](#metadata-management).
+Az Azure IoT Central egy eszközt az alkalmazással is exchange-adatok egy eszköz sablonban megadott. Eszköz sablonokkal kapcsolatos további információkért lásd: [metaadatok felügyeleti](#metadata-management).
 
-Eszközök hogyan kapcsolódnak az Azure IoT központi alkalmazás kapcsolatos további információkért lásd: [eszközkapcsolatok](concepts-connectivity.md).
+Hogyan eszközök csatlakoztatása az Azure IoT Central alkalmazásnak kapcsolatos további információkért lásd: [eszközkapcsolatok](concepts-connectivity.md).
 
 ## <a name="cloud-gateway"></a>Átjáró
 
-Az Azure IoT központi Azure IoT Hub használja, mint egy átjáró, amely lehetővé teszi az eszköz kapcsolatot. Az IoT-központ lehetővé teszi, hogy:
+Az Azure IoT Central egy felhőátjáróhoz, amely lehetővé teszi az eszköz csatlakoztatása Azure IoT Hub használja. Az IoT Hub a következőket:
 
-- A felhőben léptékű adatfeldolgozást.
-- Eszközkezelés.
-- Biztonságos eszköz kapcsolatot.
+- A felhőbeli nagy mennyiségű adatbetöltés.
+- Eszközök kezelése.
+- Biztonságos kapcsolat az eszközzel.
 
-Az IoT-központ kapcsolatos további információkért lásd: [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/).
+Az IoT Hub kapcsolatos további információkért lásd: [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/).
 
-Az Azure IoT-központ eszközkapcsolatok kapcsolatos további információkért lásd: [eszközkapcsolatok](concepts-connectivity.md).
+Eszköz csatlakoztatása az Azure IoT Central kapcsolatos további információkért lásd: [eszközkapcsolatok](concepts-connectivity.md).
 
 ## <a name="data-stores"></a>Adattárolók
 
-Az Azure IoT központi alkalmazás adatot tárol a felhőben. Alkalmazás tárolt adatokat tartalmazza:
+Az Azure IoT Central alkalmazásadat tárol a felhőben. Alkalmazásadatok tárolása tartalmazza:
 
 - Eszköz sablonok.
-- Eszköz identitásokat.
+- Eszközidentitások.
 - Eszköz metaadatait.
-- Felhasználó- és szerepkör-adatokat.
+- Felhasználó és szerepkör-adatokat.
 
-Azure IoT központi egy adatsorozat tárolására időt használja az eszközök elküldött mérési adatokat. Az analitikai szolgáltatás által használt eszközök idő adatsorozat adatait.
+Az Azure IoT Central egy alkalommal sorozat a mérési adatokat az eszközök által küldött használ. Idősorozat-adatok az analytics szolgáltatás által használt eszközökről.
 
 ## <a name="analytics"></a>Elemzés
 
-Az analitikai szolgáltatás feladata az alkalmazás által megjelenített egyéni jelentési adatok létrehozásához. Operátor is [testre szabhatja az analytics](howto-create-analytics.md) jelennek meg az alkalmazást. Az analitikai szolgáltatás a beépített [Azure idő adatsorozat Insights](https://azure.microsoft.com/services/time-series-insights/) és a mérési adatokat az eszközök által küldött dolgozza fel.
+Az elemzési szolgáltatás, amely megjeleníti az alkalmazás egyéni jelentésadatok generálása felelős. Az operátor is [testre szabhatja az analytics](howto-create-analytics.md) az alkalmazásban jeleníthető meg. Az elemzés szolgáltatás a beépített [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/) és a mérési adatokat az eszközök által küldött dolgozza fel.
 
 ## <a name="rules-and-actions"></a>Szabályok és műveletek
 
-[Szabályok és a műveletek](howto-create-telemetry-rules.md) munkahelyi szoros együtt az alkalmazáson belül feladatok automatizálására. A jelentéskészítő alapján, például a megadott küszöbértéket meghaladó hőmérséklete telemetriát adhat meg. Azure IoT központi adatfolyam processzort alapján határozza meg, amikor a szabály feltételek. A szabály feltétele teljesül, amikor elindítja a határozzák meg a jelentéskészítő művelet. Például egy műveletet az, hogy egy eszköz hőmérséklete túl magas egy mérnököt értesítése e-mailt küldhet.
+[Szabályok és műveletek](howto-create-telemetry-rules.md) szorosan együtt, automatizálhatja a feladatokat az alkalmazásban lévő munkahelyi. A jelentéskészítő adhat meg szabályokat, például a hőmérséklet egy megadott küszöbértéket meghaladó eszköz telemetriai adatokon alapul. Az Azure IoT Central egy adatfolyam-feldolgozó alapján határozza meg, ha teljesülnek-e a szabály feltételeit. Amikor egy szabály a feltétel teljesül, elindítja a szerkesztő által meghatározott műveletet. Például egy művelet küldhet egy e-mailben értesíteni mérnökként, hogy egy eszköz hőmérséklete túl magas.
 
 ## <a name="metadata-management"></a>Metaadatok kezelése
 
-Egy Azure IoT központi alkalmazásban eszköz sablonok a viselkedést, és képes eszköz típusa határozza meg. Például hűtő eszköz sablon meghatározza a telemetriai adatokat egy hűtő elküldi az alkalmazásnak.
+Azure IoT Central alkalmazáshoz eszközsablonok viselkedését és különböző típusú eszköz képesség határoz meg. Például hűtő eszköz sablont adja meg a telemetriát küld egy hűtőszekrények alkalmazására.
 
-![Sablon architektúrája](media/concepts-architecture/template_architecture.png)
+![Sablon-architektúra](media/concepts-architecture/template_architecture.png)
 
-Az eszköz sablont:
+Egy eszköz sablonban:
 
-- **Mérések** adja meg az eszköz telemetriai adatok elküldi az alkalmazásnak.
-- **Beállítások** adja meg a konfigurációk operátor állíthatja be.
-- **Tulajdonságok** adja meg a metaadatokat, amelyek operátor állíthatja be.
-- **Szabályok** automatizálhatja viselkedést az alkalmazás egy eszközről küldött adatok alapján.
-- **Irányítópultok** testreszabható nézetek egy eszköz, az alkalmazásban.
+- **Mértékek** adja meg az eszköz telemetriai adatokat küld az alkalmazáshoz.
+- **Beállítások** adja meg a konfigurációk, az operátornak állíthatja be.
+- **Tulajdonságok** adja meg a metaadatokat, amelyek az operátornak állíthatja be.
+- **Szabályok** automatizálhatja az eszközről küldött adatok alapján az alkalmazás viselkedését.
+- **Az irányítópultok** olyan eszköz, az alkalmazás testre szabható nézetek.
 
-Egy alkalmazás rendelkezhet egy vagy több szimulált és valós eszköz minden eszköz sablon alapján.
+Egy alkalmazás egy vagy több szimulált és valódi eszközön minden egyes eszköz sablon alapján is rendelkezik.
 
-## <a name="rbac"></a>RBAC
+## <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
 
-Egy [rendszergazda adhatja meg a hozzáférési szabályok](howto-administer.md) az előre definiált szerepkörök használata az Azure IoT központi alkalmazáshoz. A rendszergazda felhasználókat rendelhet szerepköröket, amelyek meghatározzák, milyen területeken az alkalmazás a felhasználó rendelkezik hozzáférési jogosultsággal.
+Egy [rendszergazdai hozzáférési szabályokat definiálhat](howto-administer.md) az előre definiált szerepkörök használatával az Azure IoT Central alkalmazáshoz. A rendszergazda felhasználókat rendelhet szerepköröket, amelyek meghatározzák, milyen területeken, az alkalmazás a felhasználónak hozzáférése van.
 
 ## <a name="security"></a>Biztonság
 
-Azure IoT központi belül biztonsági szolgáltatások a következők:
+Azure IoT Central belül biztonsági szolgáltatások a következők:
 
-- Adattitkosítás átvitel közben, és inaktív.
-- Azure Active Directory vagy a Microsoft Account biztosítja a hitelesítést. Kéttényezős hitelesítést is támogatja.
+- Az átvitel során, míg az inaktív adatok titkosítása.
+- Hitelesítés Azure Active Directory vagy a Microsoft Account biztosítunk. A kétfaktoros hitelesítést is támogatja.
 - Teljes bérlők elkülönítését.
 - Eszköz biztonság.
 
 ## <a name="ui-shell"></a>Felhasználói felület rendszerhéj
 
-A felhasználói felület rendszerhéj a modern, rugalmas, HTML5 webböngésző-alapú alkalmazáshoz.
+A felhasználói felület shell egy modern, rugalmas, HTML5-alapú böngészőalapú alkalmazás.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy az Azure IoT központi architektúrája megismerte a javasolt következő lépésre megismeréséhez [eszközkapcsolatok](concepts-connectivity.md) az Azure IoT-központ.
+Most, hogy az Azure IoT Central architektúrája megismerkedett a javasolt következő lépésre kapcsolatos [eszközkapcsolatok](concepts-connectivity.md) az Azure IoT Central.

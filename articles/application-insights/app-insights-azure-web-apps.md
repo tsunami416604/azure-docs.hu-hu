@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/05/2017
+ms.date: 10/25/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5743408b000dd7497a10f27db2a4ea9d87082b8d
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 91b050c4e1ca37c0af208d6df1ce4f8272235294
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091795"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139771"
 ---
 # <a name="monitor-azure-web-app-performance"></a>Azure-webapp teljesítményének figyelése
 Az [Azure Portalon](https://portal.azure.com) beállíthat alkalmazásteljesítmény-figyelést [Azure-webappjaihoz](../app-service/app-service-web-overview.md). Az [Azure Application Insights](app-insights-overview.md) úgy alakítja ki az alkalmazást, hogy telemetriát küldjön tevékenységeiről az Application Insights szolgáltatásnak, amely tárolja és elemzi azokat. Itt metrikus diagramok és keresőeszközök segítségével diagnosztizálhat problémákat, javíthatja a teljesítményt, és felmérheti a használatot.
@@ -33,24 +33,32 @@ A figyelés konfigurálásához kétféle módon alakíthatja ki az alkalmazást
 Ha már futtat egy webappot az Azure-ban, a kéréseket és a hibák gyakoriságát a rendszer már figyeli. Az Application Insights hozzáadásával további figyelési funkciók érhetők el, például a válaszidők figyelése, a függőségek hívásainak figyelése, az intelligens észlelés és a hatékony Log Analytics lekérdezési nyelv. 
 
 1. Webappja Azure-kezelőpaneljén válassza az **Application Insights** elemet.
-   
-    ![A Figyelés területen válassza az Application Insights lehetőséget](./media/app-insights-azure-web-apps/05-extend.png)
-   
-   * Válassza új erőforrás létrehozását, kivéve, ha korábban már beállított Application Insights-erőforrást ehhez az alkalmazáshoz egy másik útvonalon.
-2. **Alakítsa ki webappját** az Application Insights telepítése után. 
-   
-    ![Webapp kialakítása](./media/app-insights-azure-web-apps/restart-web-app-for-insights.png)
+
+    ![A beállítások területen válassza az Application Insights](./media/app-insights-azure-web-apps/settings-app-insights.png)
+
+   * Válassza ki, hozzon létre egy új erőforrást, kivéve, ha korábban már beállított egy Application Insights-erőforrást ehhez az alkalmazáshoz. 
+
+    > [!NOTE]
+    > Amikor rákattint **OK** meg fogja kérni az új erőforrás létrehozása **figyelési beállítások alkalmazása**. Kiválasztásával **Folytatás** társítani fogja az új Application Insights-erőforrást a web app alkalmazásban is ezzel **kezdeményezzen újraindítást a webalkalmazás**. 
+
+    ![Webapp kialakítása](./media/app-insights-azure-web-apps/create-resource.png)
+
+2. Válassza ki az erőforrás létrehozása után **ellenőrizze és frissítse a webalkalmazáshoz tartozó Application Insights bővítményt** meggyőződni arról, hogy a bővítmény naprakész.
+
+     ![Ellenőrizze és frissítse a site-bővítmény](./media/app-insights-azure-web-apps/check-and-update.png)
+
+3. **Alakítsa ki webappját** az Application Insights telepítése után.
 
    **Engedélyezze az ügyféloldali figyelést** a lapmegtekintések és a felhasználók telemetriai adatainak gyűjtéséhez.
 
    * Válassza a Beállítások > Alkalmazásbeállítások lehetőséget.
-   * Az alkalmazásbeállításoknál adjon meg egy új kulcs-érték párt: 
-   
-    Kulcs: `APPINSIGHTS_JAVASCRIPT_ENABLED` 
-    
+   * Az alkalmazásbeállításoknál adjon meg egy új kulcs-érték párt:
+
+    Kulcs: `APPINSIGHTS_JAVASCRIPT_ENABLED`
+
     Érték: `true`
    * **Mentse** a beállításokat, és **indítsa újra** az alkalmazást.
-3. **Figyelje alkalmazását**.  [Vizsgálja meg az adatokat](#explore-the-data).
+4. Az alkalmazás figyelési adatok megismerése kattintva **beállítások** > **Application Insights** > **megtekintése további az Application Insights**.
 
 Később igény szerint felépítheti az alkalmazást az Application Insights segítségével.
 
@@ -63,14 +71,14 @@ Ha telepít egy SDK-t alkalmazásába, az Application Insights részletesebb tel
 
 1. A **Visual Studióban** (2013 2. frissítés vagy újabb) konfigurálja az Application Insightst a projektjéhez.
 
-    Kattintson a jobb gombbal a webes projektre, és válassza a **Hozzáadás -> Application Insights** vagy az **Application Insights konfigurálása** lehetőséget.
-   
+    Kattintson a jobb gombbal a webes projektre, és válassza ki **Hozzáadás > Application Insights** vagy **projekt** > **Application Insights**  >  **Az Application Insights beállítása**.
+
     ![Kattintson a jobb gombbal a webes projektre, és válassza a Hozzáadás vagy az Application Insights konfigurálása lehetőséget](./media/app-insights-azure-web-apps/03-add.png)
-   
+
     Ha a rendszer arra kéri, hogy jelentkezzen be, használja az Azure-fiókjához tartozó hitelesítő adatokat.
-   
+
     A műveletnek két hatása van:
-   
+
    1. Létrehoz az Azure-ban egy Application Insights-erőforrást, ahol tárolja, elemzi és megjeleníti a telemetriát.
    2. Hozzáadja a kódhoz (ha korábban még nem szerepelt benne) az Application Insights NuGet-csomagot, és konfigurálja, hogy az telemetriát küldjön az Azure-erőforrásnak.
 2. **Tesztelje a telemetriát** az alkalmazás a fejlesztői gépén való futtatásával (F5).
@@ -79,29 +87,6 @@ Ha telepít egy SDK-t alkalmazásába, az Application Insights részletesebb tel
 *Hogyan válthatok más Application Insights-erőforrásnak való küldésre?*
 
 * Kattintson a jobb gombbal a projektre a Visual Studióban, válassza az **Application Insights konfigurálása** lehetőséget, majd válassza ki a kívánt erőforrást. Megjelenik az új erőforrás létrehozásának lehetősége. Építse újra, és ismételten helyezze üzembe.
-
-## <a name="explore-the-data"></a>Az adatok vizsgálata
-1. Webappja kezelőpanelének Application Insights paneljén látható az Élő mérőszámok, amely egy-két másodperccel az előfordulásukat követően mutatja a kérelmeket és a hibákat. Hasznos funkció, ha ismételten teszi közzé alkalmazását, mert azonnal látható minden probléma.
-2. Kattintással lépjen a teljes Application Insights-erőforráshoz.
-
-    ![Végiglépkedés kattintással](./media/app-insights-azure-web-apps/view-in-application-insights.png)
-
-    Az Azure-erőforrásnavigációból közvetlenül is odaléphet.
-
-1. A részletekért kattintson végig bármelyik diagramon:
-   
-    ![Kattintson egy diagramra az Application Insights áttekintési paneljén](./media/app-insights-azure-web-apps/07-dependency.png)
-   
-    [Testreszabhatja a mérőszámpaneleket](app-insights-metrics-explorer.md).
-2. Kattintson tovább az egyes események és tulajdonságaik megtekintéséhez:
-   
-    ![Kattintson egy eseménytípusra az adott típusra szűrő keresés megnyitásához](./media/app-insights-azure-web-apps/08-requests.png)
-   
-    A „...” hivatkozásra kattintva megnyithatja az összes tulajdonságot.
-   
-    [Testreszabhatja a kereséseket](app-insights-diagnostic-search.md).
-
-Telemetriája még hatékonyabb kereséséhez használja a [Log Analytics lekérdezési nyelvet](app-insights-analytics-tour.md).
 
 ## <a name="more-telemetry"></a>További telemetria
 

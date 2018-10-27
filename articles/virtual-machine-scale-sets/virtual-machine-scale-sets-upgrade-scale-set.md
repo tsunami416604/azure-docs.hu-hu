@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: 49414b06010cf83c10bbc9519f2bced2126661a4
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: d065f9765ca279f14b9de45e2412b75c94ef3dd8
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49322073"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139028"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Virtuális gép méretezési csoportok módosítása
 Az alkalmazások életciklusa során szükség lehet módosítására vagy frissítésére a virtuálisgép-méretezési csoportot. Ezek a frissítések tartalmazhatnak frissítse a konfigurációt a méretezési, vagy módosítsa az alkalmazás konfigurációját. Ez a cikk ismerteti, hogyan módosíthatja egy meglévő méretezési csoportot a REST API-k, az Azure PowerShell vagy az Azure CLI.
@@ -162,7 +162,7 @@ $ az vmss show --resource-group myResourceGroup --name myScaleSet
 }
 ```
 
-Ezek a tulajdonságok nem konfigurációját a méretezési csoport teljes VM-példány konfigurálását. Például, a méretezési csoport modelljéből, `overprovision` tulajdonságainál, a modell egy méretezési csoportban lévő Virtuálisgép-példányokhoz tartozó azonban nem. Ez a különbség van, mert túlzott egy tulajdonságot a méretezési csoport, egy teljes, nem az egyéni Virtuálisgép-példányok a méretezési csoportban lévő (túlzott kapcsolatos további információkért lásd: [kialakítási szempontok a méretezési csoportok](virtual-machine-scale-sets-design-overview.md#overprovisioning)).
+Ezek a tulajdonságok egy méretezési csoportot, nem a teljes méretezési konfiguráció belül egy VM-példány konfigurálását. Például, a méretezési csoport modelljéből, `overprovision` tulajdonságként, amíg a modell számára egy egy méretezési csoportban lévő Virtuálisgép-példány nem létezik. Ez a különbség van, mert túlzott egy tulajdonságot a méretezési csoport, egy teljes, nem az egyéni Virtuálisgép-példányok a méretezési csoportban lévő (túlzott kapcsolatos további információkért lásd: [kialakítási szempontok a méretezési csoportok](virtual-machine-scale-sets-design-overview.md#overprovisioning)).
 
 
 ### <a name="the-scale-set-vm-instance-view"></a>A méretezési csoport Virtuálisgép-példányokat tartalmazó nézet
@@ -239,7 +239,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 }
 ```
 
-Ezek a Tulajdonságok írják le, hogy a Virtuálisgép-példány, a méretezési csoporthoz a alkalmazni kiterjesztések tartalmazó aktuális futási állapotát.
+Ezek a Tulajdonságok írják le egy Virtuálisgép-példány egy méretezési csoportot, a méretezési csoporthoz a alkalmazni kiterjesztések tartalmazó belüli aktuális futási állapotát.
 
 
 ## <a name="how-to-update-global-scale-set-properties"></a>Globális méretezhetőség frissítése tulajdonságainak beállítása

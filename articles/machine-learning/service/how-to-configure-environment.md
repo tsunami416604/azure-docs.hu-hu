@@ -9,13 +9,13 @@ ms.component: core
 ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
-ms.date: 8/6/2018
-ms.openlocfilehash: 657a762874f7c2fb40553552ef6c17d9b5b6da0f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.date: 10/24/2018
+ms.openlocfilehash: 6c2d5a776f603161ef730028168b91844c120aec
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958618"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158992"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
@@ -120,12 +120,16 @@ További információ a Data Science virtuális gépeken: [adatelemző virtuáli
     pip install --upgrade azureml-sdk[notebooks,automl] azureml-dataprep
     ```
 
-    > [!NOTE]
-    > Ha egy üzenetet kap, amely `PyYAML` nem lehet eltávolítani, helyette használja a következő parancsot:
-    >
-    > `pip install --upgrade azureml-sdk[notebooks,automl] azureml-dataprep --ignore-installed PyYAML`
+   A Python referenciadokumentumai osztályok és módszerek a következő SDK-k tekintheti meg:
+   + [Az Azure Machine Learning SDK a Pythonhoz](https://aka.ms/aml-sdk)
+   + [Azure Machine Learning adat-előkészítési SDK](https://aka.ms/data-prep-sdk)
 
-    Eltarthat néhány percig, az SDK telepítése.
+   > [!NOTE]
+   > Ha egy üzenetet kap, amely `PyYAML` nem lehet eltávolítani, helyette használja a következő parancsot:
+   >
+   > `pip install --upgrade azureml-sdk[notebooks,automl] azureml-dataprep --ignore-installed PyYAML`
+
+   Eltarthat néhány percig, az SDK telepítése.
 
 1. A machine learning-kísérletezés a csomagok telepítéséhez. A következő parancsot, és cserélje le `<new package>` a csomag telepítéséhez:
 

@@ -10,14 +10,14 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.service: azure-functions
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 03/04/2018
+ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: eb9387cec98621e27aff7dcb40b8897e326c6706
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: d61570cd5d56cda7737bdb2d1a8d681fc2364610
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353492"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139390"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript-fejlesztői útmutató
 Ez az útmutató az Azure Functions JavaScript írása jainak részleteivel kellene információt tartalmaz.
@@ -400,13 +400,14 @@ A Függvényalkalmazás-csomagok telepítése a két módja van:
     Ez a művelet tölti le a csomagokat a package.json fájlban jelzett, és újraindítja a függvényalkalmazást.
 
 ## <a name="environment-variables"></a>Környezeti változók
-Egy környezeti változó vagy olyan alkalmazás, beállítás értékét, amelyet `process.env`, amint az itt látható a `GetEnvironmentVariable` függvény:
+
+A függvények [Alkalmazásbeállítások](functions-app-settings.md), például a szolgáltatás kapcsolati karakterláncok, ki vannak téve környezeti változókként végrehajtása során. Ezek a beállítások használatával is elérheti `process.env`, amint az itt látható a `GetEnvironmentVariable` függvény:
 
 ```javascript
 module.exports = function (context, myTimer) {
     var timeStamp = new Date().toISOString();
 
-    context.log('Node.js timer trigger function ran!', timeStamp);   
+    context.log('Node.js timer trigger function ran!', timeStamp);
     context.log(GetEnvironmentVariable("AzureWebJobsStorage"));
     context.log(GetEnvironmentVariable("WEBSITE_SITE_NAME"));
 
@@ -418,6 +419,10 @@ function GetEnvironmentVariable(name)
     return name + ": " + process.env[name];
 }
 ```
+
+[!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
+
+Helyi futtatáskor az alkalmazásbeállítások olvassa a rendszer a [local.settings.json](functions-run-local.md#local-settings-file) soubor projektu.
 
 ## <a name="configure-function-entry-point"></a>Függvénybelépési pont konfigurálása
 

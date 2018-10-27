@@ -1,34 +1,31 @@
 ---
-title: 'Az Azure Databricks: Gyakori kérdések és Súgó |} A Microsoft Docs'
+title: 'Az Azure Databricks: Gyakori kérdések és Súgó'
 description: Válaszok a gyakori kérdéseket és az Azure Databricks kapcsolatos hibaelhárítási információkat.
 services: azure-databricks
-documentationcenter: ''
-author: nitinme
-manager: cgronlun
-editor: cgronlun
+author: mamccrea
+ms.author: mamccrea
+ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: c3ba235c60480c38a21ee3264c54b4a4dcdea340
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.topic: conceptual
+ms.date: 10/25/2018
+ms.openlocfilehash: 3bcc511ec6ad8a246c2b1b3a33eb59043a45830e
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434601"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138361"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Az Azure Databricks kapcsolatos gyakori kérdések
 
-Ez a cikk a leggyakoribb lekérdezések, előfordulhat, hogy rendelkezik az Azure databricks kapcsolódó sorolja fel. Databricks használatakor előfordulhat néhány gyakori problémát is felsorolja. További információkért lásd: [Mi az Azure Databricks](what-is-azure-databricks.md). 
+Ez a cikk felsorolja a, előfordulhat, hogy rendelkezik az Azure databricks kapcsolatos leggyakoribb kérdésekre. Databricks használatakor előfordulhat néhány gyakori problémát is felsorolja. További információkért lásd: [Mi az Azure Databricks](what-is-azure-databricks.md). 
 
-## <a name="can-i-use-my-own-keys-for-local-encryption"></a>Használható a helyi titkosítási kulcsok saját? 
-A jelenlegi kiadásban a saját kulcsok Azure Key vault használata nem támogatott. 
+## <a name="can-i-use-azure-key-vault-to-store-keyssecrets-to-be-used-in-azure-databricks"></a>Azure Key Vault használatával tárolja a kulcsok vagy titkos kódokkal használható az Azure Databricks?
+Igen. Az Azure Key Vault használatával tárolja az Azure Databricks használja kulcsokkal vagy titkos kódokkal. További információkért lásd: [Azure Key Vault biztonsági hatókörök](https://docs.azuredatabricks.net/user-guide/secrets/secret-scopes.html#akv-ss).
+
 
 ## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>Használható az Azure virtuális hálózatok a Databricks?
-Databricks üzembe helyezésének részeként jön létre egy új virtuális hálózatot. Ebben a kiadásban a saját Azure virtuális hálózat nem használható.
+Igen. Az Azure Databricks az Azure Virtual Network (VNET) is használhatja. További információkért lásd: [üzembe helyezése az Azure Databricks az Azure virtuális hálózaton](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html).
 
 ## <a name="how-do-i-access-azure-data-lake-store-from-a-notebook"></a>Hogyan érhetem el az Azure Data Lake Store a jegyzetfüzet? 
 
@@ -116,7 +113,7 @@ További részletes utasítások: [erőforrás-szolgáltatókat és típusaikat]
 
 #### <a name="background"></a>Háttér
 
-Az Azure Databricks integrálva van az Azure ad-ben. Ez lehetővé teszi, hogy az Azure databricksben engedélyek beállítása (mint például a jegyzetfüzetek és a fürtök) megadásával a felhasználók Azure AD-ből. Az Azure Databricksnek tudják listázza a nevüket, a felhasználók az Azure AD-ből szükséges adatok olvasási engedéllyel. Ehhez a jóváhagyást. Ha a jóváhagyás már nem érhető el, a következő hibát látja.
+Az Azure Databricks integrálva van az Azure Active Directoryban. Beállíthatja az Azure Databricks engedélyek (például a jegyzetfüzetek és a fürtök) megadásával a felhasználók Azure AD-ből. A tudják listázza a nevüket, a felhasználók az Azure AD-ből az Azure Databricks megtalálhasson olvasási engedélyt ezt az információt és engedélyt adjanak meg kell adni. Ha a jóváhagyás már nem érhető el, a következő hibát látja.
 
 #### <a name="solution"></a>Megoldás
 

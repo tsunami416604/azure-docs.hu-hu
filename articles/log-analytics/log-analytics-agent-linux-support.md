@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 01b3fe57cd52149c5c1191345b42bd8544202652
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 3f23464776036a8c91b180d46341782fddb9d5e8
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404579"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140959"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>A Linuxhoz készült Log Analytics-ügynök hibáinak elhárítása 
 
@@ -161,17 +161,9 @@ Alább a kimeneti beépülő modult, állítsa vissza a következő szakasz elt�
 * A proxy, az előkészítés során megadott helytelen volt.
 * A Log Analytics és Azure Automation szolgáltatás végpontok nem érhetők szerepel az engedélyezési listán a helyi adatközpontban 
 
-<<<<<<< HEAD
-### <a name="resolutions"></a>Megoldások
-1. A Log Analytics használatával a következő parancsot a lehetőséggel Linuxhoz készült Log Analytics-ügynökkel rendelkező Reonboard `-v` engedélyezve van. Ez lehetővé teszi, hogy az ügynök csatlakoztatása a Log Analytics-proxyn keresztül történő részletes kimenet. 
-`/opt/microsoft/omsagent/bin/omsadmin.sh -w <Log Analytics Workspace ID> -s <Log Analytics Workspace Key> -p <Proxy Conf> -v`
-
-  [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
-=======
 ### <a name="resolution"></a>Megoldás:
 1. A Log Analytics szolgáltatás a Log Analytics-ügynökkel rendelkező Linux rendszeren a beállítással a következő parancs használatával Reonboard `-v` engedélyezve van. Az ügynök csatlakoztatása a Log Analytics szolgáltatáshoz a proxyn keresztül részletes kimenet lehetővé teszi. 
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
->>>>>>> fa48342aa69f6626ec310992464ba935729675b3
 
 2. Tekintse át a szakasz [proxy beállításainak frissítése](log-analytics-agent-manage.md#update-proxy-settings) ellenőrizze, hogy megfelelően konfigurálta az ügynök közötti kommunikációhoz egy proxykiszolgálón keresztül.    
 * Ellenőrizze, hogy a következő Log Analytics-végpontok-e az engedélyezési listán:
@@ -193,11 +185,7 @@ Alább a kimeneti beépülő modult, állítsa vissza a következő szakasz elt�
 
 1. Ellenőrizze az idő a Linux-kiszolgálón, a parancs dátummal. Ha az idő +/-aktuális időtől számítva 15 percig, majd előkészítés sikertelen lesz. Megfelelő ez frissítse a dátumot és/vagy a Linux-kiszolgáló időzónáját. 
 2. Ellenőrizze, hogy telepítette a Linuxhoz készült Log Analytics-ügynök legújabb verzióját.  A legújabb verzióra most már értesítést küld, ha időeltérési a bevezetési hibát okozó.
-<<<<<<< HEAD
-3. Reonboard megfelelő munkaterület-Azonosítót és a telepítési utasításokat a témakör korábbi szakaszában a következő munkaterület kulcsa.
-=======
 3. Használja a megfelelő munkaterület-Azonosítót és a cikk korábbi telepítési utasításai Munkaterületkulcsot Reonboard.
->>>>>>> fa48342aa69f6626ec310992464ba935729675b3
 
 ## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>Probléma: Egy 500 és 404-es hibaüzenetet látja a naplófájlban közvetlenül az előkészítés után
 Ez az egy ismert probléma, amely akkor fordul elő, a Log Analytics-munkaterület az első Linux adatok feltöltése. Ez nem befolyásolja a adat rangsorát elküldött vagy service felhasználói élményt.
@@ -206,17 +194,6 @@ Ez az egy ismert probléma, amely akkor fordul elő, a Log Analytics-munkaterül
 
 ### <a name="probable-causes"></a>Lehetséges okok
 
-<<<<<<< HEAD
-- Nem sikerült a Log Analytics megoldás előkészítése
-- A Log Analyticshez való kapcsolat le van tiltva.
-- Log Analytics-ügynököket a Linux-adatok biztonsági mentése
-
-### <a name="resolutions"></a>Megoldások
-1. Ellenőrizze, hogy bevezetési Log Analytics a következő fájl létezik-e sikeres volt: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
-2. Reonboard használatával a `omsadmin.sh` parancssori utasításokat
-3. Ha proxyt használ, tekintse meg a korábban megadott proxy megoldási lépések.
-4. Bizonyos esetekben amikor a Linuxhoz készült Log Analytics-ügynök nem tud kommunikálni a szolgáltatás adatai az ügynökön várólistára van állítva a teljes puffert méretét, amely 50 MB-ot. A Linuxhoz készült Log Analytics-ügynököt újra kell indítani a következő parancs futtatásával: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`. 
-=======
 - A Log Analytics szolgáltatás üzembe helyezése nem sikerült
 - A Log Analytics szolgáltatással létesített kapcsolat le van tiltva.
 - Log Analytics-ügynököket a Linux-adatok biztonsági mentése
@@ -226,10 +203,9 @@ Ez az egy ismert probléma, amely akkor fordul elő, a Log Analytics-munkaterül
 2. Reonboard használatával a `omsadmin.sh` parancssori utasításokat
 3. Ha proxyt használ, tekintse meg a korábban megadott proxy megoldási lépések.
 4. Bizonyos esetekben amikor a Linuxhoz készült Log Analytics-ügynök nem tud kommunikálni a szolgáltatás adatai az ügynökön várólistára van állítva a teljes puffert méretét, amely 50 MB-ot. Az ügynök újra kell indítani a következő parancs futtatásával: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`. 
->>>>>>> fa48342aa69f6626ec310992464ba935729675b3
 
     >[!NOTE]
-    >This issue is fixed in agent version 1.1.0-28 and later.
+    >Az ügynök verziója 1.1.0-28 és újabb verzióiban ez a problémát megoldottuk.
 
 
 ## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>Probléma: Nem láthatóak a továbbított Syslog-üzeneteket 

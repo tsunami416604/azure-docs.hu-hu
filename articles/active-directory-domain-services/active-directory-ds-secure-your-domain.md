@@ -3,7 +3,7 @@ title: Az Azure Active Directory Domain Services felügyelt tartomány Secure |}
 description: A felügyelt tartomány Secure
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 6b4665b5-4324-42ab-82c5-d36c01192c2a
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
-ms.author: maheshu
-ms.openlocfilehash: 20579f7abd6cd815377c3e97d820a3e5490e0f95
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.author: ergreenl
+ms.openlocfilehash: 1dea3def00423ecf092562aa47c76258316194a9
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902519"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50159060"
 ---
 # <a name="secure-your-azure-ad-domain-services-managed-domain"></a>Az Azure AD Domain Services felügyelt tartomány Secure
 Ez a cikk segítséget nyújt a felügyelt tartomány secure. Kapcsolja ki a gyenge titkosító csomag használatát, és NTLM hitelesítő adatok a Jelszókivonat-szinkronizálás letiltása.
@@ -36,9 +36,9 @@ Kövesse a cikkben szereplő utasításokat [az Azure PowerShell-modul telepít�
 
 ## <a name="disable-weak-cipher-suites-and-ntlm-credential-hash-synchronization"></a>A gyenge titkosító csomagok és NTLM hitelesítő adatok a Jelszókivonat-szinkronizálás letiltása
 A következő PowerShell-parancsprogram használata:
-1. Tiltsa le az NTLM v1 támogatását a felügyelt tartományon.
+1. Tiltsa le a NTLM v1-támogatást a felügyelt tartományban.
 2. A helyszíni NTLM-jelszókivonatok szinkronizálásának letiltása AD.
-3. Tiltsa le a TLS v1 a felügyelt tartományon.
+3. Tiltsa le a TLS v1-et a felügyelt tartományban.
 
 ```powershell
 // Login to your Azure AD tenant

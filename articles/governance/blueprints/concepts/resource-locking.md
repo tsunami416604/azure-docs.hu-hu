@@ -8,12 +8,12 @@ ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: c071c8f422e0cb3a4e0d5e528989dd2987a6796f
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 4e71797837927fe5f5233bcf88d35fef98f504e9
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094847"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139442"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Erőforrás zárolása az Azure-tervek ismertetése
 
@@ -42,7 +42,7 @@ Válik, a hozzárendelés által létrehozott erőforrások törléséhez szüks
 Az RBAC szerepkör `denyAssignments` összetevő erőforrások során alkalmazzák a tervezet-hozzárendelést a hozzárendelés kijelölésével a **zárolási** lehetőséget. A szerepkör által kezelt identitását a tervezet-hozzárendelést kerülnek, és csak eltávolíthatók az összetevő-erőforrások által a azonos felügyelt identitás. Ez biztonsági okokból a zárolási mechanizmus kikényszeríti, és megakadályozza, hogy a tervek kívül a tervezet zárolás eltávolítása. A szerepkör és a Zárolás eltávolítása csak akkor lehetséges, a tervezet-hozzárendelést, amely megfelelő jogosultsággal rendelkező egyének csak végezhető eltávolításával.
 
 > [!IMPORTANT]
-> Az Azure Active Directory akár 30 percig gyorsítótárazza a szerepkör-hozzárendelés részletei. Ennek eredményeképpen `denyAssignments` a tervezet erőforrás nem azonnal el teljes körű érvénybe. Ez idő alatt, előfordulhat, hogy lehet törölni a tervezet zárolások fogja védeni kívánt erőforrás.
+> Az Azure Resource Manager akár 30 percig gyorsítótárazza a szerepkör-hozzárendelés részletei. Ennek eredményeképpen `denyAssignments` a tervezet erőforrás nem azonnal el teljes körű érvénybe. Ez idő alatt, előfordulhat, hogy lehet törölni a tervezet zárolások fogja védeni kívánt erőforrás.
 
 ## <a name="next-steps"></a>További lépések
 

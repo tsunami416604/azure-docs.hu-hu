@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 5e0358ebf525c39c09df4268971fa71c02457821
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: fb0760f24b8f384818db8154ffe871d7fd4ce429
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094193"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138344"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Figyelheti és hibakeresése az Azure Batch .NET-alkalmazás, az Application insights segítségével
 
@@ -25,6 +25,10 @@ ms.locfileid: "47094193"
 Ez a cikk bemutatja, hogyan adhat hozzá és Application Insights-könyvtár konfigurálása az Azure Batch .NET-megoldásba, és alakítsa ki az alkalmazás kódjában. Azt is bemutatja, monitorozhatók az alkalmazások az Azure Portalon, és egyéni irányítópultokat hozhat létre. Az Application Insights támogatja a más nyelveken, tekintse meg a [nyelvek, platformok és integrációk dokumentáció](../application-insights/app-insights-platforms.md).
 
 Minta C#-megoldásból, és ez a cikk kísérő kódot érhető el a [GitHub](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights). Ebben a példában az Application Insights-kialakítási kód hozzáadja a [TopNWords](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/TopNWords) példa. Ha még nem ismeri az, hogy a példában készítése és TopNWords először próbálja meg. Ennek a segítségével megismerheti a bemeneti blobokat több számítási csomóponton párhuzamosan készletét feldolgozási alapszintű Batch munkafolyamat. 
+
+> [!TIP]
+> Alternatív megoldásként konfigurálhatja a Batch-megoldás, például a virtuális gép teljesítményszámlálók Application Insights-adatok megjelenítése a Batch Explorer. [A Batch Explorer](https://github.com/Azure/BatchExplorer) egy ingyenes, számos funkcióval ellátott, különálló ügyféleszköz létrehozásához, hibakereséséhez és monitorozásához az Azure Batch-alkalmazások segítségével. Töltse le a [telepítőcsomagot](https://azure.github.io/BatchExplorer/) Mac, Linux vagy Windows rendszerre. Tekintse meg a [batch-insights tárház](https://github.com/Azure/batch-insights) gyors lépések az Application Insights-adatok a Batch Explorer engedélyezze a. 
+>
 
 ## <a name="prerequisites"></a>Előfeltételek
 * [Visual Studio 2017](https://www.visualstudio.com/vs)

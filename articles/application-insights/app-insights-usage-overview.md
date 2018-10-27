@@ -3,7 +3,7 @@ title: Használatelemzés az Azure Application Insights |} A Microsoft docs
 description: Ismerje meg a felhasználók számára, és mit tesznek azt az alkalmazást.
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: NumberByColors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,13 +11,15 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/10/2017
-ms.author: mbullwin
-ms.openlocfilehash: d5b580df531e2f0c61ac1d43cfd5ae353f314fce
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.pm_owner: daviste;NumberByColors
+ms.reviewer: mbullwin
+ms.author: daviste
+ms.openlocfilehash: eeaf46a9ce523ecd11689d0aa430fcc522732f70
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091901"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139856"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Használatelemzés az Application Insights szolgáltatással
 
@@ -82,7 +84,7 @@ Mi történik, ha vizsgálni kívánt a forgalmának kiszolgálására részlete
 
 ## <a name="retention---how-many-users-come-back"></a>Megőrzés – hány felhasználók visszatérő használóivá?
 
-Adatmegőrzési segítségével megismerheti, milyen gyakran adja vissza a felhasználók használni az alkalmazást, a felhasználók által végrehajtott bizonyos üzleti művelet során egy bizonyos idő gyűjtő kohorszok alapján. 
+Adatmegőrzési segítségével megismerheti, milyen gyakran adja vissza a felhasználók használni az alkalmazást, a felhasználók által végrehajtott bizonyos üzleti művelet során egy bizonyos idő gyűjtő kohorszok alapján. 
 
 - Milyen funkciók felhasználóktól származnak, vissza több, mint a többi ismertetése 
 - Űrlap feltételezéseket valós felhasználói adatok alapján 

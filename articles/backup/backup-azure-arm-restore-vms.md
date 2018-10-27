@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: geg
-ms.openlocfilehash: 450314dddd49825bae689701b694f9a26758835e
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 5812bafbcfa104150325dcdde374f88200b071c0
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377639"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155201"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Virtuális gépek visszaállítása az Azure portal használatával
 Védje adatait az adatpillanatképek meghatározott időközönként végrehajtásával. Ezek a pillanatképek a helyreállítási pontok nevezzük, és a Recovery Services-tárolók tárolásuk. Szükség esetén javítsa ki vagy építse újra a virtuális gép (VM), visszaállíthatja a virtuális gép bármelyik mentett helyreállítási pontokat. Egy helyreállítási pontot állítja vissza, ha Ön a következőket teheti:
@@ -151,7 +151,7 @@ Az a **konfiguráció visszaállítása** panelen válassza ki **OK** a visszaá
 A **hely visszaállítása** lapján történik **cserélje le a meglévő**.
 
 ## <a name="replace-existing-disks-from-a-restore-point"></a>Cserélje le a meglévő lemezek egy visszaállítási pont
-**Cserélje le a meglévő** funkció lehetővé teszi az aktuális virtuális gép a meglévő lemezek lecseréli a kiválasztott helyreállítási pont. Ez a művelet csak elvégezhető, ha az aktuális virtuális gép létezik. Ha bármilyen okból miatt törölve lett, a művelet nem hajtható végre; azt is megteheti, javasoljuk, hogy **új létrehozása** virtuális gép vagy lemezek folytassa a visszaállítási műveleteket. Során cserélje le a meglévő operations (eke) t, óvintézkedésként, hogy az adatok biztonsági másolatának kezdeményezése a csere lemezek műveletek előtt. Ha a visszaállítási pont lemezzel rendelkezik. a több vagy kevesebb, mint a jelenlegi virtuális Gépet, majd a visszaállítási pont a lemezek száma csak a virtuális gépen fogja tartalmazni. Cserélje le a meglévő beállítás jelenleg csak a Managed Disks esetében támogatott, és nem titkosított virtuális gépek.  
+**Cserélje le a meglévő** funkció lehetővé teszi az aktuális virtuális gép a meglévő lemezek lecseréli a kiválasztott helyreállítási pont. Ez a művelet csak elvégezhető, ha az aktuális virtuális gép létezik. Ha bármilyen okból miatt törölve lett, a művelet nem hajtható végre; azt is megteheti, javasoljuk, hogy **új létrehozása** virtuális gép vagy lemezek folytassa a visszaállítási műveleteket. Során cserélje le a meglévő operations (eke) t, óvintézkedésként, hogy az adatok biztonsági másolatának kezdeményezése a csere lemezek műveletek előtt. Ha a visszaállítási pont lemezzel rendelkezik. a több vagy kevesebb, mint a jelenlegi virtuális Gépet, majd a visszaállítási pont a lemezek száma csak a virtuális gépen fogja tartalmazni. **Cserélje le a meglévő** lehetőség jelenleg nem támogatja a nem felügyelt lemezek és virtuális gépek titkosítva. Azt is nem támogatja a [általánosított virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) és a használatával létrehozott virtuális gépek [egyéni rendszerképek](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/).  
 
  Az a **konfiguráció visszaállítása** panelen csak az input, amelyet ki kell választani a **átmeneti hely**.
 

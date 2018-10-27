@@ -1,12 +1,9 @@
 ---
-title: Ellenőrizze az Azure Traffic Manager-beállítások |} Microsoft Docs
+title: Ellenőrizze a beállításokat az Azure Traffic Manager |} A Microsoft Docs
 description: Ez a cikk segít a Traffic Manager beállításainak ellenőrzése
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: 2180b640-596e-4fb2-be59-23a38d606d12
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,64 +11,64 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: aadff1806a7cb22347283143563467366e857569
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ce6467f2cdb47dd7cc61897831019a34e174478f
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23876354"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140451"
 ---
-# <a name="verify-traffic-manager-settings"></a>A Traffic Manager beállításainak ellenőrzése
+# <a name="verify-traffic-manager-settings"></a>Traffic Manager-beállítások ellenőrzése
 
-A Traffic Manager beállítások teszteléséhez szüksége több ügyfelet, hogy különböző helyeken, ahol a tesztek futtatása. Ezt követően is betöltheti a végpontok a Traffic Manager-profil egyenként le.
+Traffic Manager-beállítások teszteléséhez szüksége lesz a több ügyfél különböző helyeken, amelyből a tesztek futtatása. A Traffic Manager-profil le egyenként, majd betöltheti a végpontok.
 
-* Állítsa be a DNS-élettartam értéke alacsony, hogy módosításának propagálása gyorsan (például az 30 másodperc).
-* Az IP-címek az Azure felhőszolgáltatások és webhelyek a tesztelni kívánt profil tudja.
-* Eszközök, amelyek lehetővé teszik a feloldani egy DNS-nevet egy IP-címre, és megjeleníti ezt a címet használja.
+* Állítsa be a DNS-Élettartamot érték alacsony, hogy a módosítások propagálása gyorsan (Ha például 30 másodperc).
+* Hogy az IP-címét az Azure cloud services és websites teszteli a profilban.
+* Eszközök, amelyekkel egy DNS-név feloldása IP-címhez, és megjeleníti ezt a címet használja.
 
-Rendszer ellenőrzi, hogy, hogy a DNS-nevek a profil végpontjainak IP-címeket feloldani. A nevek oldja fel a forgalom-útválasztási módszert a Traffic Manager-profilban megadott konzisztens módon. Az eszközök, például a **nslookup** vagy **átrágniuk** DNS-nevek feloldására.
+Ellenőrzi, hogy a profil végpontjainak IP-címeket feloldani a DNS-nevek megtekintéséhez. A neveket a forgalom-útválasztási módszert a Traffic Manager-profilban megadott konzisztens módon kell feloldhatónak lennie. Az eszközök, például **nslookup** vagy **dig** DNS-nevek feloldására.
 
-Az alábbi példák segítséget nyújtanak a Traffic Manager-profil tesztelése.
+Az alábbi példák segítenek a Traffic Manager-profil teszteléséhez.
 
-### <a name="check-traffic-manager-profile-using-nslookup-and-ipconfig-in-windows"></a>Ellenőrizze az nslookup és ipconfig használatát Windows Traffic Manager-profil
+### <a name="check-traffic-manager-profile-using-nslookup-and-ipconfig-in-windows"></a>Ellenőrizze az nslookup és IP-konfiguráció használata a Windows a Traffic Manager-profilt
 
-1. Nyissa meg rendszergazdaként egy parancs vagy a Windows PowerShell parancssorába.
+1. Nyisson meg egy parancs vagy a Windows PowerShell-parancssort rendszergazdaként.
 2. Típus `ipconfig /flushdns` kiüríteni a DNS-gyorsítótárban.
-3. Gépelje be: `nslookup <your Traffic Manager domain name>`. Például a következő parancs ellenőrzi a tartomány nevét a előtaggal *myapp.contoso*
+3. Gépelje be: `nslookup <your Traffic Manager domain name>`. Például az a következő parancs ellenőrzi a tartomány nevét a előtaggal *myapp.contoso*
 
         nslookup myapp.contoso.trafficmanager.net
 
-    Általános eredményt a következő információkat tartalmazza:
+    Egy tipikus eredményt jeleníti meg a következő információkat:
 
-    + A DNS-nevét és IP-címet a DNS-kiszolgáló férnek hozzá a megoldásához a Traffic Manager szolgáltatásbeli tartománynevére.
-    + A Traffic Manager szolgáltatásbeli tartománynevére írta be a parancssorba "nslookup" és az IP-címet, amelyre a Traffic Manager-tartományra mutat. A második IP-cím, a fontos egy ellenőrzéséhez. Meg kell felelnie a felhőszolgáltatások és webhelyek teszteli a Traffic Manager-profil az egyik nyilvános virtuális IP-cím (VIP) cím.
+    + A DNS-nevet és megoldása érdekében a Traffic Manager szolgáltatásbeli tartománynévre hozzáfér a DNS-kiszolgáló IP-címét.
+    + A Traffic Manager szolgáltatásbeli tartománynévre írta be a parancssorba "nslookup" és az IP-cím, amelyhez a Traffic Manager-tartományra feloldása után. Ellenőrizze, hogy fontos a második IP-cím lesz. Az egyik vagy a webhely a Traffic Manager-profil teszteli a nyilvános virtuális IP-cím (VIP) címet meg kell egyeznie.
 
-## <a name="how-to-test-the-failover-traffic-routing-method"></a>A feladatátvételi forgalom-útválasztási módszert tesztelése
+## <a name="how-to-test-the-failover-traffic-routing-method"></a>A feladatátvételi forgalom-útválasztási módszer tesztelése
 
-1. Hagyja végpontjai fel.
-2. DNS-feloldás a vállalata tartománynevét, nslookup vagy egy hasonló segédprogram segítségével az egyetlen ügyfél használatával kérelmet.
-3. Győződjön meg arról, hogy a feloldott IP-cím megegyezik-e az elsődleges végpont.
-4. Állítsa le az elsődleges végpont, vagy távolítsa el a figyelési fájlt úgy, hogy a Traffic Manager úgy értelmezi, hogy az alkalmazás nem működik.
-5. Várjon, amíg a DNS idő élettartamát (TTL) a Traffic Manager-profil, valamint további két percet. Például ha a DNS-élettartam 300 másodpercen (5 percen), meg kell várnia a hét perc.
-6. Ürítse ki a DNS-ügyfél gyorsítótárába, a kérelem DNS névfeloldásban nslookup parancs segítségével. A Windows rendszerben ürítse ki a DNS-gyorsítótár az ipconfig/flushdns paranccsal.
-7. Győződjön meg arról, hogy a feloldott IP-cím megegyezik-e a másodlagos végponti.
-8. Ismételje meg a folyamat minden egyes végpont pedig leáll. Győződjön meg arról, hogy a DNS-ben az IP-cím a következő végpont a lista adja vissza. Minden végpontok nem működnek, ha az IP-cím, az elsődleges végpont újra kell beszerezniük.
+1. Hagyja meg az összes végpontok fel.
+2. DNS-feloldás az nslookup vagy egy hasonló eszköz használatával a vállalata tartománynevét egyetlen ügyfél használja, kérhet.
+3. Győződjön meg arról, hogy a feloldott IP-cím megegyezik-e az elsődleges végpontot.
+4. Állítsa le az elsődleges végpontot, vagy távolítsa el a figyelési fájlt, így a Traffic Manager fenyegetésként észlel, hogy az alkalmazás le van-e.
+5. Várjon, amíg a DNS idő-az-élettartam (TTL) a Traffic Manager-profil és a egy további két percet tevődik össze. Például ha a DNS-Élettartamot 300 másodpercig (5 perc), meg kell várnia hét perc.
+6. Kiüríti a DNS ügyfél gyorsítótára és a kérés DNS-feloldás nslookup parancs segítségével. A Windows kiürítheti a DNS-gyorsítótár a ipconfig/flushdns paranccsal paranccsal.
+7. Győződjön meg arról, hogy a feloldott IP-cím megegyezik-e a másodlagos végpontra.
+8. Ismételje meg a folyamatot, viszont így minden végpont le. Győződjön meg arról, hogy a DNS-ben a következő végpont IP-címét a lista adja vissza. Minden végpontjai működnek, ha újra kell beszerezni az elsődleges végpont IP-címét.
 
-## <a name="how-to-test-the-weighted-traffic-routing-method"></a>A súlyozott forgalom-útválasztási módszert tesztelése
+## <a name="how-to-test-the-weighted-traffic-routing-method"></a>Súlyozott forgalom-útválasztási módszer tesztelése
 
-1. Hagyja végpontjai fel.
-2. DNS-feloldás a vállalata tartománynevét, nslookup vagy egy hasonló segédprogram segítségével az egyetlen ügyfél használatával kérelmet.
-3. Győződjön meg arról, hogy a feloldott IP-cím megegyezik a végpont közül.
-4. Ürítse ki a DNS-ügyfél gyorsítótárába, és ismételje meg a 2. és 3 végpontok. Megtekintheti az adott vissza az egyes a végpontok különböző IP-címeket.
+1. Hagyja meg az összes végpontok fel.
+2. DNS-feloldás az nslookup vagy egy hasonló eszköz használatával a vállalata tartománynevét egyetlen ügyfél használja, kérhet.
+3. Győződjön meg arról, hogy a feloldott IP-cím megegyezik a végpontok egyikét.
+4. A DNS-ügyfél gyorsítótára ürítése, és ismételje meg a 2. és 3 végpontok. Minden végpont visszaadott különböző IP-címeket kell megjelennie.
 
-## <a name="how-to-test-the-performance-traffic-routing-method"></a>A teljesítmény forgalom-útválasztási módszert tesztelése
+## <a name="how-to-test-the-performance-traffic-routing-method"></a>A teljesítmény forgalom-útválasztási módszer tesztelése
 
-A teljesítmény forgalom-útválasztási módszert hatékonyan teszteléséhez a világ különböző pontjain található ügyfelek kell rendelkeznie. Ügyfelek, amelyek segítségével tesztelheti a szolgáltatások különböző Azure régiókban hozhat létre. Ha egy globális hálózata, távolról jelentkezzen be a világ többi részén lévő ügyfelek és a tesztek futtatása onnan.
+A teljesítmény forgalom-útválasztási módszert hatékonyan teszteléséhez rendelkeznie kell a világ különböző pontjain található ügyfelek számára. Az ügyfelek különböző Azure-szolgáltatásait teszteléséhez használható régióban hozhat létre. Ha egy globális hálózata, távolról jelentkezzen be a világ más részein lévő ügyfelek és a tesztek futtatása onnan.
 
-Azt is megteheti, nincsenek ingyenes, webalapú DNS-címkeresés és elmerülne a rendszer az elérhető szolgáltatások. Egyes eszközök biztosítanak ellenőrizhető a DNS-név feloldása a világ különböző helyekről. Hajtsa végre a Keresés a "DNS-címkeresés" példákat. Külső szolgáltatásokat, mint a Gomez vagy Előadásbeli segítségével győződjön meg arról, hogy a profilok terjeszti forgalom várt módon.
+Azt is megteheti, ingyenes webes DNS-címkeresés és vannak további elérhető szolgáltatások. Egyes eszközök lehetővé teszik, ellenőrizze a DNS-névfeloldás világszerte különböző helyekről. Példák a "DNS-címkeresés" Keresés végrehajtása. Külső szolgáltatások, például Gomez vagy Nyitóelőadást, győződjön meg arról, hogy a profilok terjeszti forgalom a várt módon használható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [A Traffic Manager forgalom-útválasztási módszerei](traffic-manager-routing-methods.md)
+* [Tudnivalók a Traffic Manager útválasztási módszerei](traffic-manager-routing-methods.md)
 * [A Traffic Manager teljesítményével kapcsolatos megfontolások](traffic-manager-performance-considerations.md)
 * [A Traffic Manager csökkentett teljesítményének elhárítása](traffic-manager-troubleshooting-degraded.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2018
 ms.author: jeedes
-ms.openlocfilehash: c9134ceebca696ed2b3376a69e26c2ea06f4f0f6
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: c33edf13a8bcafd4a6c3d4885553fc856ec941d8
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506205"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158125"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-4me"></a>Oktatóanyag: Azure Active Directory-integráció az 4me
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 4me az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy 4me egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az Azure AD integrálása a 4me konfigurálásához hozzá kell 4me a katalógus
 
 **4me hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Az Azure Active Directory gomb][1]
 
@@ -177,7 +177,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     c. Alatt **SAML** ebben a szakaszban a **SAML egyszeri bejelentkezési URL-cím** szövegmezőbe, illessze be az értéket, **SAML egyszeri bejelentkezési szolgáltatás URL-cím**, az Azure Portalról másolt.
 
-    d. Az a **tanúsítvány-ujjlenyomat** szövegmezőjébe illessze be a **UJJLENYOMAT** egy kettőspontot sorrendben duplets (AA:BB:CC:DD:EE:FF:GG:HH:II), amely az Azure Portalról másolt érték adható.
+    d. Az a **tanúsítvány-ujjlenyomat** szövegmezőjébe illessze be a **UJJLENYOMAT** érték sorrendben duplets (AA:BB:CC:DD:EE:FF:GG:HH:II), amely az Azure Portalról másolt kettősponttal elválasztva.
 
     e. Kattintson a **Save** (Mentés) gombra.
 
@@ -218,7 +218,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 Ez a szakasz célja 4me Britta Simon nevű felhasználó létrehozásához. 4me támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az 4me elérésére, ha még nem létezik tett kísérlet során.
 
 >[!Note]
->Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [4me támogatási csapatának](mailto:support@4me.com).
+>Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [4me támogatási csapatának](mailto:support@4me.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
@@ -250,7 +250,7 @@ Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejel
 
 7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 

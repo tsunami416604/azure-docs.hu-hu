@@ -3,7 +3,7 @@ title: 'Az Azure Active Directory Domain Services: A SharePoint felhasználói p
 description: Profilszinkronizálás támogatásának a SharePoint Server Azure Active Directory Domain Services a felügyelt tartományok konfigurálása
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
-ms.author: maheshu
-ms.openlocfilehash: c25fca2f3645a0397a999cec7552de15f20fb6be
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: 982984912494598e9791968e5ee3ccee52c5a7c9
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502075"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50154934"
 ---
 # <a name="configure-a-managed-domain-to-support-profile-synchronization-for-sharepoint-server"></a>Profilszinkronizálás támogatásának a SharePoint Server felügyelt tartomány konfigurálása
 A SharePoint Server tartalmaz egy felhasználói profil szolgáltatás, amely a felhasználói profil szinkronizáláshoz szolgál. Állítsa be a felhasználói profil szolgáltatás, a megfelelő engedélyekkel kell rendelkeznie az Active Directory-tartományban. További információkért lásd: [profilszinkronizáláshoz a SharePoint Server 2013-ban az Active Directory Domain Services engedélyeket](https://technet.microsoft.com/library/hh296982.aspx).

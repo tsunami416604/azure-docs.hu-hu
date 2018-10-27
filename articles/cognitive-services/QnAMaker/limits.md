@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 76024266a8ae3eb03e910e140184a07ae363e881
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 53fadc0e3ea21b94ca656774baf077192c0394b4
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384949"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50137293"
 ---
 # <a name="qna-maker-limits"></a>A QnA Maker korlátok
 A QnA Maker között korlátok átfogó listáját.
@@ -26,7 +26,7 @@ A QnA Maker között korlátok átfogó listáját.
 
 |**Az Azure Search szolgáltatásréteg** | **Ingyenes** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
-|Engedélyezett közzétett tudásbázisok maximális számát (indexek maximális száma – 1 (fenntartott teszt)|2|14|49|199|199|2999|
+|Engedélyezett közzétett tudásbázisok maximális számát (indexek maximális száma – 1 (fenntartott teszt)|2|14|49|199|199|2,999|
 
 ## <a name="extraction-limits"></a>Kibontási korlátok
 * Eseménystreamek olvashatóak fájlok maximális számát és méretét: lásd: [QnAMaker díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)
@@ -37,11 +37,11 @@ A QnA Maker között korlátok átfogó listáját.
 
 |**Az Azure Search szolgáltatásréteg** | **Ingyenes** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
-|Maximális metaadatokat tartalmazó mezőket a QnA Maker szolgáltatás (között az összes Tudásbázis)|1000|100 *|1000|1000|1000|1000|
+|Maximális metaadatokat tartalmazó mezőket a QnA Maker szolgáltatás (között az összes Tudásbázis)|1,000|100 *|1,000|1,000|1,000|1,000|
 
 ## <a name="knowledge-base-content-limits"></a>Tudásbázis-tartalmat korlátok
 Általános korlátozások a tartalmat a Tudásbázis:
-* Válasz szöveg hossza: 250000
+* Válasz szöveg hossza: 25 000
 * Kérdés szöveg hossza: 1000
 * Metaadatok kulcs/érték szöveg hossza: 100
 * A metaadat neve által támogatott karakterek: betűk, számjegyek és _  

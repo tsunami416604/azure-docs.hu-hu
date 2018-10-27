@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: fd43c62f1a291a59d5d373437a49b263d6af4cb3
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 6f9b85ec4821ff2454970136b3c8af2cb0f92154
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345888"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140823"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Az Azure Lab Services tesztkörnyezetfiókok kezelése 
 Az Azure Lab Services tesztkörnyezetfiók az osztályterem-tesztkörnyezetek például felügyelt tesztkörnyezetek tárolója. A rendszergazda állítja be az Azure Lab Services tesztkörnyezetfiók és labortulajdonosok labs hozhat létre a fiók számára hozzáférést biztosít. Ez a cikk bemutatja, hogyan tesztkörnyezetfiók létrehozása, megtekintheti az összes tesztkörnyezetfiókok, vagy törölheti a labor.
@@ -55,17 +55,17 @@ A felhasználónak **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkezn
     ![Felhasználó hozzáadása a Tesztkörnyezet-létrehozó szerepkörhöz](../media/tutorial-setup-lab-account/add-user-to-lab-creator-role.png)
 
 ## <a name="specify-marketplace-images-available-to-lab-owners"></a>A tesztkörnyezet-tulajdonosok számára elérhető rendszerképek megadása a Marketplace-en
-Labortulajdonosként fiókot adja meg a Marketplace-rendszerképek, labor alkotói segítségével tesztkörnyezetek létrehozása a lab-fiókban. 
+A tesztkörnyezetfiók tulajdonosaként megadhatja azokat a Marketplace-beli rendszerképeket, amelyek használatával a tesztkörnyezet-létrehozók tesztkörnyezeteket hozhatnak létre a tesztkörnyezetfiókban. 
 
 1. Válassza a bal oldali menüből a **Marketplace-beli rendszerképek** elemet. Alapértelmezés szerint a rendszerképek teljes listája jelenik meg (az engedélyezett és a letiltott rendszerképek egyaránt). A fenti legördülő listában a **Csak az engedélyezettek**/**Csak a letiltottak** lehetőségre kattintva szűrheti a listát, hogy csak az engedélyezett/letiltott rendszerképek jelenjenek meg. 
     
     ![Marketplace-beli rendszerképek oldal](../media/tutorial-setup-lab-account/marketplace-images-page.png)
 
-    A Marketplace-rendszerképek a listában megjelenő csak azokat, amelyek megfelelnek a következő feltételeknek:
+    A listában csak azok a Marketplace-beli rendszerképek jelennek meg, amelyek megfelelnek a következő feltételeknek:
         
-    - Egyetlen virtuális Gépet hoz létre.
-    - Virtuális gépek üzembe helyezése Azure Resource Manager használatával
-    - Nincs szükség egy külön licencelési csomag vásárlása
+    - Egyetlen virtuális gépet hoznak létre.
+    - A virtuális gépek üzembe helyezéséhez az Azure Resource Managert használják.
+    - Nincs szükség külön licenccsomag vásárlására.
 2. Egy engedélyezett Marketplace-beli rendszerkép **letiltásának** a következő módjai vannak: 
     1. Kattintson az utolsó oszlopban a három pontra **(...)**, majd a **Rendszerkép letiltása** lehetőségre. 
 
@@ -90,6 +90,28 @@ Kövesse az utasításokat az előző szakaszban, hogy a lab-fiókokban listába
 2. Válassza ki **törlése** az eszköztáron. 
 3. Típus **Igen** megerősítést.
 4. Válassza a **Törlés** elemet. 
+
+## <a name="view-and-manage-labs-in-the-lab-account"></a>Megtekintheti és kezelheti a labs labor-fiókban
+
+1. Az a **labor fiók** lapon jelölje be **Labs** a bal oldali menüben.
+
+    ![A fiókban lévő Labs](../media/how-to-manage-lab-accounts/labs-in-account.png)
+1. Megjelenik egy **tesztkörnyezetek listájában** a számlán a következő információkat: 
+    1. A labor nevét.
+    2. A dátum, amelyen a labor létrehozása. 
+    3. E-mail-címét a felhasználó, aki létrehozta a labor létrehozása. 
+    4. A laborkörnyezetbe engedélyezett felhasználók maximális száma. 
+    5. A labor állapotát. 
+
+## <a name="delete-a-lab-in-the-lab-account"></a>A lab-fiókban tesztkörnyezet törlése
+Kövesse az utasításokat az előző szakaszban a labor-fiókban a labs listájának megtekintéséhez.
+
+1. Válassza ki **... három (pont)** , és válassza ki **törlése**. 
+
+    ![Tesztkörnyezet törlése – gomb](../media/how-to-manage-lab-accounts/delete-lab-button.png)
+2. Válassza ki **Igen** a figyelmeztető üzenet jelenik meg. 
+
+
 
 ## <a name="next-steps"></a>További lépések
 Kezdje meg egy tesztkörnyezet létrehozását az Azure Lab Services használatával:

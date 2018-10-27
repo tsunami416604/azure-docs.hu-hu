@@ -1,13 +1,9 @@
 ---
-title: Az az Azure Traffic Manager a Visual Studio Mobile központtal felhasználó mérések |} Microsoft Docs
-description: A Visual Studio Mobile Center küldése valós felhasználói mérések felvétele a Traffic Manager segítségével létrehozott mobilalkalmazás beállítása
+title: Valós Felhasználóiélmény-mérések az Azure Traffic Manager Visual Studio Mobile Center |} A Microsoft Docs
+description: A Traffic Manager valós felhasználói mérések küldése a Visual Studio Mobile Center használatával fejlesztett mobile alkalmazás beállítása
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
-manager: timlt
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -16,55 +12,55 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 893e84b07b365fb0b534e0ddc021b2249c4174cf
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: eec13db8bdbe1f40a51df14077adb8740e977f5d
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30181010"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138412"
 ---
-# <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Valós felhasználói mérések felvétele a Traffic Manager Visual Studio Mobile Center küldése
+# <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Valós felhasználói mérések küldése a Traffic Manager a Visual Studio Mobile Center
 
-A Visual Studio Mobile Center küldendő valós felhasználói mérések felvétele a Traffic Manager következő lépések segítségével létrehozott mobilalkalmazás állíthat be:
+Beállíthatja a mobilalkalmazást az alábbi lépéseket a Traffic Manager valós felhasználói mérések küldése a Visual Studio Mobile Center segítségével fejlesztett:
 
 >[!NOTE]
-> Jelenleg valós felhasználói mérések küld a Traffic manager használata csak támogatott Android rendszeren.
+> Jelenleg a Traffic manager valós Felhasználóiélmény-mérések küldése csak támogatott Android.
 
-Valós felhasználói mérések konfigurálásához meg kell-kulcs beszerzése és állíthatnak be az alkalmazás a RUM csomag.
+Valós felhasználói mérések konfigurálásához szüksége a az csomag az alkalmazás tagolását, és egy kulcs beszerzése.
 
-## <a name="step-1-obtain-a-key"></a>1. lépés: A kulcs beszerzése
+## <a name="step-1-obtain-a-key"></a>1. lépés: Egy kulcs beszerzése
     
-A mérési igénybe vehet, és az ügyfélalkalmazás által kiküldött felvétele a Traffic Manager azonosítja a szolgáltatást egy egyedi karakterlánc, a tényleges felhasználói mérések (RUM) kulcsot. Az Azure portál, a REST API használatával RUM kulcs kaphat vagy a PowerShell használatával / CLI felületek.
+A mérési igénybe vehet, és a Traffic Manager, az ügyfélalkalmazás által küldött azonosítja a szolgáltatást egy egyedi karakterlánccá, neve a valós felhasználói mérések (RUM) kulcs használatával. Az Azure portal, a REST API használatával az kulcs kap vagy a PowerShell használatával / parancssori felületek.
 
-Az Azure-portálon az alábbi eljárást követve RUM kulcs beszerzése:
-   1. Egy böngészőből jelentkezzen be az Azure-portálon. Ha már nincs fiókja, regisztrálhat egy ingyenes egy hónapos próbaverzióra.
-   2. A portál keresősávban, keresse meg a módosítani kívánt Traffic Manager-profil neve, és kattintson a Traffic Manager-profilt az eredmények között, amelyek a jelennek meg.
-   3. A Traffic Manager oldalon, kattintson **valós felhasználói mérések** alatt **beállítások**.
-   4. Kattintson a **készítése kulcs** RUM új kulcs létrehozásához.
+Az Azure Portalon a következő eljárással RUM kulcs beszerzése:
+   1. Egy böngészőben jelentkezzen be az Azure Portalon. Ha még nincs fiókja, akkor regisztráljon egy ingyenes egy hónapos próbaidőszak.
+   2. A portál keresősávjában keressen a Traffic Manager-profil neve, amelyet módosítani szeretne, majd kattintson az eredményeket a Traffic Manager-profilt, amely jelenik meg.
+   3. A Traffic Manager-profil oldalon kattintson **valós felhasználói mérések** alatt **beállítások**.
+   4. Kattintson a **kulcs létrehozása** RUM új kulcs létrehozásához.
         
-   ![Valós felhasználói mérések kulcs létrehozása](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
+   ![Valós felhasználói mérések kulcsának létrehozása](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
-   **1. ábra: Valós felhasználói mérések kulcs létrehozása**
+   **1. ábra: A valós felhasználói mérések kulcsának generálása**
 
-   5.   A lap megjeleníti a RUM kulcs, amely akkor jön létre, és a JavaScript kódrészletet, amelyet a beilleszthető a HTML-lapot.
+   5.   A lap megjeleníti a RUM kulcs, amely akkor jön létre, és a egy JavaScript kódrészletet, amelyet a HTML-oldalt beilleszthető.
  
-   ![Valós felhasználói mérések kulcs JavaScript-kód](./media/traffic-manager-create-rum-visual-studio/rum-key.png)
+   ![Valós felhasználói mérések kulcsát a JavaScript-kódot](./media/traffic-manager-create-rum-visual-studio/rum-key.png)
 
-   **2. ábra: Felhasználó mérések kulcs és a mérési JavaScript**
+   **2. ábra: A valós felhasználói mérések kulcsának és a mérési JavaScript**
  
-   6. Kattintson a **másolási** RUM kulcsának az átmásolása gombra. 
+   6. Kattintson a **másolási** gombra, hogy a RUM kulcsot. 
 
-## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>2. lépés: Állíthatnak be az alkalmazás a Mobile Center SDK RUM csomag
+## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>2. lépés: A Mobile Center SDK-t, az csomag az alkalmazás kialakítása
 
-Ha most ismerkedik a Visual Studio Mobile Center, látogasson el a [webhely](https://mobile.azure.com). Az SDK-integráció részletes utasításokért lásd: [Bevezetés az Android SDK-val](https://docs.microsoft.com/mobile-center/sdk/getting-started/Android).
+Ha most ismerkedik a Visual Studio Mobile Center, keresse fel a [webhely](https://mobile.azure.com). Az SDK-integráció részletes utasításokért lásd: [az Android SDK – első lépések](https://docs.microsoft.com/mobile-center/sdk/getting-started/Android).
 
-A tényleges felhasználói mérések használatához kövesse az alábbi lépéseket:
+Valós felhasználói mérések használatához kövesse az alábbi lépéseket:
 
-1.  Az SDK hozzáadása a projekthez
+1.  Adja hozzá az SDK-t a projekthez
 
-    Az előzetes ATM RUM SDK explicit módon a csomag összetevőtárházat hivatkoznia kell.
+    ATM RUM SDK az előzetes verzióban, explicit módon hivatkoznia kell a csomagtárház.
 
-    Az a **app/build.gradle** fájlt adja hozzá a következő sorokat:
+    Az a **app/build.gradle** fájlban adja hozzá a következő sorokat:
 
     ```groovy
     repositories {
@@ -73,7 +69,7 @@ A tényleges felhasználói mérések használatához kövesse az alábbi lépé
         }
     }
     ```
-    Az a **app/build.gradle** fájlt adja hozzá a következő sorokat:
+    Az a **app/build.gradle** fájlban adja hozzá a következő sorokat:
 
     ```groovy
     dependencies {   
@@ -100,10 +96,10 @@ A tényleges felhasználói mérések használatához kövesse az alábbi lépé
     ```
 
 ## <a name="next-steps"></a>További lépések
-- További információ [valós felhasználói mérések](traffic-manager-rum-overview.md)
+- Tudjon meg többet [valós felhasználói mérések](traffic-manager-rum-overview.md)
 - Ismerje meg, [Traffic Manager működése](traffic-manager-overview.md)
-- További információ [Mobile Center](https://docs.microsoft.com/mobile-center/)
+- Tudjon meg többet [Mobile Center](https://docs.microsoft.com/mobile-center/)
 - [Regisztráció](https://mobile.azure.com) Mobile Center
-- További információ a [forgalom-útválasztási módszert](traffic-manager-routing-methods.md) Traffic Manager által támogatott
-- Megtudhatja, hogyan [Traffic Manager-profil létrehozása](traffic-manager-create-profile.md)
+- Tudjon meg többet a [forgalom-útválasztási módszerek](traffic-manager-routing-methods.md) a Traffic Manager által támogatott
+- Ismerje meg, hogyan [Traffic Manager-profil létrehozása](traffic-manager-create-profile.md)
 

@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/17/2018
-ms.openlocfilehash: e0a4e069995c1e905834ff541b3562140b6ab01c
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 716277e7ef4fa239c82562176c75bb20568a12af
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379009"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140925"
 ---
 # <a name="use-sql-database-managed-instance-with-virtual-networks-and-near-100-compatibility"></a>Használja az SQL Database felügyelt példánya, közel 100 %-os kompatibilitással és a virtuális hálózatokkal
 
@@ -218,7 +218,7 @@ Felügyelt példány előnyei nem mindig felfelé-elejétől számított a felh�
 
 ### <a name="managed-instance-administration-features"></a>Felügyelt példány felügyeleti funkciók
 
-A felügyelt példány engedélyezése rendszergazdák számára, hogy vállalati a legfontosabb dolgokra koncentrálni. Sok rendszergazda/DBA rendszertevékenységek nem szükségesek, vagy egyszerű. Ha például az operációs rendszer / relációsadatbázis-kezelő rendszer telepítési és javítása, a dinamikus példány, átméretezése és a konfiguráció, a biztonsági mentések [adatbázis-replikáció](replication-with-sql-database-managed-instance.md) (beleértve a rendszeradatbázisok), magas rendelkezésre állású, és rendszerállapot-konfigurációt és alkalmazásteljesítmény-figyelés adatfolyamokat.
+A felügyelt példány engedélyezése rendszergazdák számára, hogy vállalati a legfontosabb dolgokra koncentrálni. Sok rendszergazda/DBA rendszertevékenységek nem szükségesek, vagy egyszerű. Ha például az operációs rendszer / relációsadatbázis-kezelő rendszer telepítési és javítása, a dinamikus példány, átméretezése és a konfiguráció, a biztonsági mentések [adatbázis-replikáció](replication-with-sql-database-managed-instance.md) (beleértve a rendszeradatbázisok), magas rendelkezésre állású, és rendszerállapot-konfigurációt és [alkalmazásteljesítmény-figyelési](../log-analytics/log-analytics-azure-sql.md) adatfolyamokat.
 
 > [!IMPORTANT]
 > Támogatott, részlegesen támogatott és nem támogatott funkciók listáját lásd: [SQL Database funkciói](sql-database-features.md). Felügyelt példány az SQL Server és a T-SQL különbségek listája: [felügyelt példány T-SQL eltérései az SQL Serverről](sql-database-managed-instance-transact-sql-information.md)
@@ -241,4 +241,5 @@ Az alábbi táblázat Transact SQL-n keresztül elérhető számos tulajdonság,
 - A VNetek konfigurálásával kapcsolatos további információkért tekintse meg a [felügyelt példányok VNetjének konfigurálásával kapcsolatos](sql-database-managed-instance-vnet-configuration.md) cikket.
 - Ha a rövid útmutató, amely létrehoz egy felügyelt példányt, és visszaállít egy adatbázist egy biztonsági mentési fájlból, lásd: [létrehoz egy felügyelt példányt](sql-database-managed-instance-get-started.md).
 - Az Azure Database Migration Service migráláshoz való használatát a [felügyelt példány DMS használatával történő migrálását](../dms/tutorial-sql-server-to-managed-instance.md) bemutató oktatóanyag ismerteti.
+- A speciális hibaelhárítási beépített intelligenciával felügyelt példány adatbázis-teljesítmény figyelését: [figyelése Azure SQL Database az Azure SQL Analytics használatával ](../log-analytics/log-analytics-azure-sql.md) 
 - Díjszabási információkért tekintse meg a [SQL Database felügyelt példányain díjszabás](https://azure.microsoft.com/pricing/details/sql-database/managed/).

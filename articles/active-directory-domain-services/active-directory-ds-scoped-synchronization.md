@@ -3,7 +3,7 @@ title: 'Az Azure Active Directory Domain Services: A szinkronizálási hatókör
 description: A felügyelt tartományok az Azure ad-ből hatókörön belüli szinkronizálás konfigurálása
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 9389cf0f-0036-4b17-95da-80838edd2225
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
-ms.author: maheshu
-ms.openlocfilehash: a6f56a9c855e296fb49b1c24d09189177175c9d6
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.author: ergreenl
+ms.openlocfilehash: cdf5403e78c8136c923c7d2ff95a337db810c7a9
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041866"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155932"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>A felügyelt tartomány Azure AD-ből a hatókörön belüli szinkronizálás konfigurálása
 Ez a cikk bemutatja, hogyan konfigurálása csak adott felhasználói fiókokat, az Azure AD-címtár szinkronizálható az Azure AD tartományi szolgáltatásokkal felügyelt tartományban.

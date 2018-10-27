@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/02/2018
+ms.date: 10/25/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 9ba60f770c094f65ee5a4ed6dc21a5e07bac3d27
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: e865d4e9cbad2c2064d961bc6e407440ce8556fc
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267749"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158805"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>A Linux rendszerű virtuális gép futtatása paranccsal shell-szkript futtatása
 
@@ -38,6 +38,9 @@ Az alábbiakban találhatók, amikor futtatása paranccsal korlátozásainak lis
 * A maximális idő egy parancsfájlt az 90 perc után, amelyben az időkorlátja
 * A virtuális gépről kimenő kapcsolat szükséges a parancsfájl eredményét adja vissza.
 
+> [!NOTE]
+> A megfelelő működéshez, a futtatása paranccsal kapcsolódnia kell (a 443-as port) az Azure nyilvános IP-címeket. Ha a bővítmény nem rendelkezik a fenti végpontokkal való hozzáférést, a parancsfájlok sikeresen lefutott, de az eredményeket ad vissza. Ha blokkolja a forgalmat a virtuális gépen, akkor használhatja [szolgáltatáscímkéket](../../virtual-network/security-overview.md#service-tags) , hogy a forgalom az Azure nyilvános IP-címek használatával a `AzureCloud` címke.
+
 ## <a name="azure-cli"></a>Azure CLI
 
 Az alábbiakban egy példa a használatával a [az virtuális gép Futtatás-parancs](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) parancsot beírva futtassa azt a héjparancsfájlt-beli Linux rendszerű virtuális gépen.
@@ -55,7 +58,7 @@ Keresse meg a virtuális gép [Azure](https://portal.azure.com) válassza **futt
 
 ![Futtassa a parancsot listája](./media/run-command/run-command-list.png)
 
-Válassza ki a futtatni kívánt parancs. Parancsai közül néhányat, előfordulhat, nem kötelező vagy szükséges bemeneti paramétereket. Ezek a parancsok a paramétereket, hogy adja meg a bemeneti szöveges mezők jelennek meg. Megtekintheti a parancsfájl által bővítése futtató minden egyes parancsnál **parancsfájl megjelenítése**. **RunShellScript** eltér a többi parancs, mert Ön a saját egyéni parancsfájl biztosít. 
+Válassza ki a futtatni kívánt parancs. Parancsai közül néhányat, előfordulhat, nem kötelező vagy szükséges bemeneti paramétereket. Ezek a parancsok a paramétereket, hogy adja meg a bemeneti szöveges mezők jelennek meg. Megtekintheti a parancsfájl által bővítése futtató minden egyes parancsnál **parancsfájl megjelenítése**. **RunShellScript** eltér a többi parancs, mert Ön a saját egyéni parancsfájl biztosít.
 
 > [!NOTE]
 > A beépített parancsok, amelyek nem szerkeszthető.

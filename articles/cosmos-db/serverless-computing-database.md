@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: c183bbe2c20bdc1772160cbbd8260dece0b6eb54
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 7348f76ab0d5a1057e9fd929e8a55dd0a9e99eb6
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309501"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140976"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB és az Azure Functions használatával kiszolgáló nélküli adatbázis-használat
 
@@ -31,7 +31,8 @@ Az Azure Cosmos DB és az Azure Functions lehetővé teszi az adatbázisok és a
 * Egy függvény kötést létrehozni egy Azure Cosmos DB tároló használatával egy **kimeneti kötésének**. Kimeneti kötések adatokat írni egy tárolót, egy függvény befejezéséről.
 
 > [!NOTE]
-> Jelenleg az Azure Cosmos DB eseményindító, bemeneti és kimeneti kötések használata csak az SQL API és a Gremlin API fiókok.
+> Jelenleg az Azure Cosmos DB eseményindító, bemeneti és kimeneti kötések támogatottak a csak az SQL API segítségével. Az összes többi Azure Cosmos DB API-k, kell az adatbázis eléréséhez fog a függvényéből az API-hoz, beleértve a MongoDB API-t, a Cassandra API-hoz, a Gremlin API és a Table API a statikus ügyfél használatával.
+
 
 A következő ábra szemlélteti ezen három Integrációk: 
 

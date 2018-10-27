@@ -13,12 +13,12 @@ ms.date: 06/13/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: b1d3439412e324c71687c43aa9e47c520cb72262
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: ab752799c9e64e47abe0200a26215f9e01c489f6
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42058739"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139686"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Az Azure Active Directory-bérlő törlése
 A bérlő törlése esetén a bérlőn található összes erőforrás is törlődik. Elő kell készítenie a bérlő törlése előtt az összes kapcsolódó erőforrás termékeikkel. Csak egy Azure Active Directory (Azure AD) globális rendszergazda törölheti az Azure AD-bérlő a portálról.
@@ -73,7 +73,7 @@ Az előfizetés helyezheti egy **Deprovisoned** állapot használatával a Micro
   
   ![feltételek és kikötések](./media/directory-delete-howto/delete-terms.png)
 
-4. Most az előfizetés állapota megváltozott, az előfizetés törlésre van kijelölve. Az előfizetés eneters a **megszüntetett** állapot 72 óra múlva.
+4. Most az előfizetés állapota megváltozott, az előfizetés törlésre van kijelölve. Az előfizetés beírja a **megszüntetett** állapot 72 óra múlva.
 
 5. Után a bérlő, a törölt egy előfizetést, és 72 óra telt, jelentkezhet be az Azure AD felügyeleti központ biztonsági újra, és ott kell lennie nincs szükség művelet, és nem blokkolja-e a bérlő törlése előfizetések. Sikerült törölni az Azure AD-bérlő tudni kell lennie.
   

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: e2f9bee2adcebfd47ca088a1bbe76b870e285044
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: b0f4ef5079ac689827cb49884fa1c6a51529ea83
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580435"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140349"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az eseményvezérelt háttérben történő feldolgozás az Azure WebJobs SDK használatának első lépései
 
@@ -182,7 +182,7 @@ Ebben a szakaszban beállíthatja az új keretrendszert használó konzol napló
 
 Az Azure Storage emulator helyileg futó nem rendelkezik az a Funkciók, amelyek a WebJobs SDK-nak kell. Tehát ebben a szakaszban, hozzon létre egy tárfiókot az Azure-ban, és konfigurálja a használatára.
 
-1. Nyissa meg **Server Explorer** , és jelentkezzen be az Azure-bA. Kattintson a jobb gombbal a **Azure** csomópontot, és válassza ki **kapcsolódás a Microsoft Azure-előfizetéshez**.
+1. Nyissa meg **Server Explorer** a Visual studio és a jelentkezzen be az Azure-bA. Kattintson a jobb gombbal a **Azure** csomópontot, és válassza ki **kapcsolódás a Microsoft Azure-előfizetéshez**.
 
    ![Bejelentkezés az Azure-ba](./media/webjobs-sdk-get-started/sign-in.png)
 
@@ -245,7 +245,7 @@ Ebben a szakaszban Ön hozhat létre, és a projekt helyi futtatása, majd aktiv
 
 1. A konzolablak bezárásához.
 
-1. A **Server Explorer**, bontsa ki a csomópontot az új tárfiókhoz, és kattintson a jobb gombbal **üzenetsorok**. 
+1. A **Server Explorer** a Visual Studióban bontsa ki a csomópontot az új tárfiókhoz, és kattintson a jobb gombbal **üzenetsorok**. 
 
 1. Válassza ki **üzenetsor létrehozása**. 
 
@@ -310,7 +310,7 @@ Ebben a szakaszban a következő feladatokat állíthat be az Application Insigh
 
 ### <a name="configure-app-settings"></a>Alkalmazásbeállítások konfigurálása 
 
-1. A **Server Explorer**, bontsa ki a **App Service-ben** csomópont alatt **Azure**.
+1. A **Server Explorer** a Visual Studióban bontsa ki a **App Service-ben** csomópont alatt **Azure**.
 
 1. Bontsa ki az erőforráscsoportot, amely az App Service-alkalmazást, és kattintson a jobb gombbal az App Service-alkalmazást.
 
@@ -396,7 +396,7 @@ Ebben a szakaszban a következő feladatokat állíthat be az Application Insigh
 
 Ebben a szakaszban, futtassa helyileg újra, győződjön meg arról, hogy naplózási adatok most intézni fog az Application Insights, valamint a konzol esetleges szabályozási hiányosságok elhárítását.
 
-1. Használat **Server Explorer** üzenetsori üzenetek létrehozásához azonos módon tette [korábbi](#trigger-the-function), azzal a különbséggel adja meg *Hello App Insights!* az üzenet szövege.
+1. Használat **Server Explorer** a Visual Studióban hozzon létre üzenetsori üzenet, ugyanúgy tette [korábbi](#trigger-the-function), azzal a különbséggel adja meg *Hello App Insights!* az üzenet szövege.
 
 1. Futtassa a projektet.
 
@@ -442,7 +442,6 @@ Ez a szakasz a Webjobs-feladatként, telepítse a projektet. Az App Service-alka
 
 1. Ellenőrizze, hogy Ön nem helyi futtatás (Ha még mindig nyitva, a a konzolablak bezárásához). Ellenkező esetben a helyi példány lehet az első olyan hoz létre üzenetsor-üzeneteket feldolgoznia.
 
-1. Használat **Server Explorer** üzenetsori üzenetek létrehozásához azonos módon tette [korábbi](#trigger-the-function), azzal a különbséggel adja meg *Hello Azure!*.
 
 1. Frissítse a **várólista** a Visual Studio és az új üzenet lap eltűnt, mert az Azure App Service-ben futó függvény azt feldolgozott.
 
@@ -485,7 +484,7 @@ A bemeneti kötések egyszerűbbé teszik a kódot, amely adatokat olvas be. Ebb
 
 1. Hozzon létre egy blobtárolót a tárfiókjában.
 
-   a. A **Server Explorer**, bontsa ki a tárfiók a csomópontot, kattintson a jobb gombbal **Blobok**, majd válassza ki **Blobtároló létrehozása**.
+   a. A **Server Explorer** a Visual Studióban bontsa ki a tárfiók csomópontot, kattintson a jobb gombbal **Blobok**, majd válassza ki **Blobtároló létrehozása**.
 
    b. Az a **Blobtároló létrehozása** párbeszédpanelen adja meg *tároló* , a tároló nevét, és kattintson **OK**.
 

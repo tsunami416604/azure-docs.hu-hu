@@ -4,9 +4,6 @@ description: Ez a cikk azt ismerteti, hogyan forgalom Ciklikus időszeleteléses
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: 6dca6de1-18f7-4962-bd98-6055771fab22
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: kumud
-ms.openlocfilehash: 6637132481ee33d43ec2b747ba89a56983205ff2
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 132cbecdad8303414f15ff3f18caaccd6d430ded
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432443"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50154925"
 ---
 # <a name="configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Súlyozott forgalom-útválasztási módszer a Traffic Manager konfigurálása
 
-A forgalom útválasztási módszer egyik azonos végpontok, amely tartalmazza a felhőszolgáltatásokat és webhelyeket, és mindegyik ciklikus multiplexelés a forgalmat küldeni. Ez a típusú forgalom-útválasztási módszer konfigurálása lépései.
+Forgalom útválasztási módszer egyik biztosítanak megegyező végpontokat, amely tartalmazza a felhőszolgáltatásokat és webhelyeket, és a forgalom küldése minden egyes egyaránt. Ez a típusú forgalom-útválasztási módszer konfigurálása lépései.
 
 > [!NOTE]
-> Az Azure Web App már Ciklikus időszeleteléses terheléselosztást a webhelyekhez (több adatközpontot tartalmaz) egy Azure-régión belül biztosít. A TRAFFIC Manager lehetővé teszi, hogy adja meg a webhelyek ciklikus időszeletelési forgalom-útválasztási módszer különböző adatközpontokban.
+> Az Azure Web App már Ciklikus időszeleteléses terheléselosztást a webhelyekhez (amely több adatközpontot is tartalmazhat, amelyeket) egy Azure-régión belül biztosít. A TRAFFIC Manager lehetővé teszi különböző adatközpontokban található webhely elosztani a forgalmat.
 
 ## <a name="to-configure-the-weighted-traffic-routing-method"></a>Súlyozott forgalom-útválasztási módszer konfigurálása
 
@@ -51,7 +48,7 @@ A forgalom útválasztási módszer egyik azonos végpontok, amely tartalmazza a
 
 - Ismerje meg [prioritású forgalom-útválasztási módszer](traffic-manager-configure-priority-routing-method.md).
 - Ismerje meg [teljesítmény forgalom-útválasztási módszer](traffic-manager-configure-performance-routing-method.md).
-- Ismerje meg [földrajzi útválasztási mód](traffic-manager-configure-geographic-routing-method.md).
+- További információ a [földrajzi útválasztási metódusról](traffic-manager-configure-geographic-routing-method.md).
 - Ismerje meg, hogyan [Traffic Manager beállításainak tesztelése](traffic-manager-testing-settings.md).
 
 <!--Image references-->

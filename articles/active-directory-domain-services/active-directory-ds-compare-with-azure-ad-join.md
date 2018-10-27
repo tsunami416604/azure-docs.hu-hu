@@ -3,7 +3,7 @@ title: Az Azure AD Join és az Azure Active Directory Domain Services összehaso
 description: Érdemesebb Azure AD-csatlakozás, Azure AD tartományi szolgáltatások
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 31a71d36-58c1-4839-b958-80da0c6a77eb
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2017
-ms.author: maheshu
-ms.openlocfilehash: e4357738417a202d5dd5a97907b5240cf855f395
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: 275f537511f721ea3f01c22a962462bab458129c
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504114"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156579"
 ---
 # <a name="choose-between-azure-active-directory-join-and-azure-active-directory-domain-services"></a>Válasszon az Azure Active Directory join és az Azure Active Directory Domain Services
 Ez a cikk ismerteti az Azure Active Directory (AD) való csatlakozás és az Azure AD tartományi szolgáltatások és a választja, a használati esetek alapján segít közötti különbségeket.
@@ -73,7 +73,7 @@ A tartományhoz csatlakozó a felhasználói hitelesítés NTLM vagy Kerberos-hi
 * [Megismerheti, hogyan szinkronizálja az Azure AD tartományi szolgáltatásokat az Azure AD-címtár](active-directory-ds-synchronization.md)
 
 ### <a name="learn-more-about-azure-ad-join"></a>Tudjon meg többet az Azure AD-csatlakozás
-* [Az Eszközfelügyelet az Azure Active Directory bemutatása](../active-directory/device-management-introduction.md)
+* [Az Azure Active Directory eszközkezelésének alapjai](../active-directory/device-management-introduction.md)
 
 ### <a name="get-started-with-azure-ad-domain-services"></a>Ismerkedés az Azure AD tartományi szolgáltatásokkal
 * [Az Azure Portalon az Azure AD tartományi szolgáltatások engedélyezése](active-directory-ds-getting-started.md)

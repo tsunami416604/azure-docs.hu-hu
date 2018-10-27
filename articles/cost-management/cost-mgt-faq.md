@@ -5,41 +5,41 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 10/26/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 4984332e1a149ae838bc76a24abec90364f5699e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: ba6d8250d70320b33822d73c9213e9005128633f
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221978"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157207"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>A Cloudyn kapcsolatos gyakori kérdések
 
-Ez a cikk foglalkozik a Cloudyn kapcsolatos gyakori kérdésekre. Ha kérdései vannak a Cloudyn, megkérheti csatlakoztatásukról [– gyakori kérdések a Cloudyn](https://social.msdn.microsoft.com/Forums/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-azure-cost-management-by-cloudyn?forum=Cloudyn).
+Ez a cikk foglalkozik a Cloudyn kapcsolatos gyakori kérdésekre. Ha kérdései vannak a Cloudyn, megkérheti csatlakoztatásukról [– gyakori kérdések a Cloudyn](https://social.msdn.microsoft.com/Forums/home?forum=faqs-for-azure-cost-management-by-cloudyn).
 
 ## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>Hogyan oldhatom fel a közvetett nagyvállalati telepítő kapcsolatos gyakori problémák?
 
-A Cloudyn portál első használatakor, ha Ön egy vállalati szerződésben, vagy a Cloud Solution Provider (CSP) felhasználó láthatja az alábbi üzenetek:
+Amikor először használja a Cloudyn portálját, a következő üzenetek jelenhetnek meg, ha Ön Nagyvállalati szerződést kötött, vagy egy felhőszolgáltató felhasználója:
 
 - "A megadott API-kulcs nem legfelső szintű regisztrációs kulcs" megjelennek a **Cloudyn beállítása** varázsló.
 - "A közvetlen regisztráció – nem" a nagyvállalati szerződés portálon jelenik meg.
 - "Nem használati adatok az elmúlt 30 napban nem található. A Cloudyn portálon lépjen kapcsolatba a terjesztőt, hogy ellenőrizze, hogy jelölőnyelvi engedélyezve lett, az Azure-fiók"jelenik meg.
 
-Az előző üzenetek arra utalnak, hogy egy viszonteladón vagy felhőszolgáltatón keresztül vásárolt Azure Nagyvállalati szerződést. Engedélyeznie kell a viszonteladóhoz vagy a CSP _jelölőnyelvi_ számára, hogy a Cloudyn megtekintheti az adatokat az Azure-fiók.
+Az előző üzenetek arra utalnak, hogy egy viszonteladón vagy felhőszolgáltatón keresztül vásárolt Azure Nagyvállalati szerződést. A viszonteladónak vagy a felhőszolgáltatónak kell engedélyeznie a _korrektúrát_ az Azure-fiókjában, mielőtt Ön megtekinthetné az adatait a Cloudyn szolgáltatásban.
 
 A problémák megoldása:
 
 1. A viszonteladónak engedélyeznie kell a _korrektúrát_ a fiókjában. Útmutatás: [Közvetett ügyfeleknek szóló előkészítési útmutató](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
 
-2. Az Azure nagyvállalati szerződéssel kulcs a Cloudyn segítségével hozza létre. Útmutatásért lásd: [hozzáadása az Azure nagyvállalati szerződéssel rendelkező](https://support.cloudyn.com/hc/articles/210429585-Adding-Your-AZURE-EA) vagy [keresse meg az EA regisztrációs azonosító és API-kulcs](https://youtu.be/u_phLs_udig).
+2. Létre kell hoznia egy kulcsot az Azure Nagyvállalati Szerződésben, amelyet a Cloudynnel használhat. Útmutatásért lásd: [hozzáadása az Azure nagyvállalati szerződéssel rendelkező](quick-register-ea.md#register-with-cloudyn) vagy [keresse meg az EA regisztrációs azonosító és API-kulcs](https://youtu.be/u_phLs_udig).
 
-Csak egy Azure-szolgáltatás-rendszergazda engedélyezheti a Cloudyn. A társadminisztrátori jogosultság ehhez nem elegendő.
+A Cloudyn szolgáltatást csak egy Azure-szolgáltatásadminisztrátor engedélyezheti. A társadminisztrátori jogosultság ehhez nem elegendő.
 
-Mielőtt beállításához a Cloudyn Azure nagyvállalati szerződés API-kulcsot is létrehozhat, engedélyeznie kell az Azure Billing API webhelyen található utasításokat követve:
+A Cloudyn beállításához az Azure Nagyvállalati Szerződés API-kulcsának létrehozása előtt engedélyeznie kell az Azure számlázási API-t a következő útmutató követésével:
 
 - [Jelentéskészítő API-k Enterprise-ügyfeleknek – áttekintés](../billing/billing-enterprise-api.md)
 - [Microsoft Azure Enterprise Portal jelentéskészítő API](https://ea.azure.com/helpdocs/reportingAPI) **Az adatok az API-hoz való hozzáférésének engedélyezése** területen
@@ -100,7 +100,7 @@ Kerülje a Cloudyn közvetlen URL-cím https://app.cloudyn.com.
 
 ## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Hogyan lehet aktiválni az Azure-beli hitelesítő időközét adja meg fiókokat?
 
-Amint az Azure-fiókok a Cloudyn által felfedezett költségadatok azonnal nyújtott költség-alapú jelentésekhez. Azonban a Cloudyn használati és teljesítményadatokat biztosít, akkor regisztrálnia kell a fiókok Azure hitelesítő adatait. Útmutatásért lásd: [hozzáadása Azure Resource Manager](https://support.cloudyn.com/hc/articles/212784085-Adding-Azure-Resource-Manager).
+Amint az Azure-fiókok a Cloudyn által felfedezett költségadatok azonnal nyújtott költség-alapú jelentésekhez. Azonban a Cloudyn használati és teljesítményadatokat biztosít, akkor regisztrálnia kell a fiókok Azure hitelesítő adatait. Útmutatásért lásd: [vegyen fel egy fiókot, vagy egy előfizetés frissítése](activate-subs-accounts.md#add-an-account-or-update-a-subscription).
 
 Az Azure a hitelesítő adatait, a Cloudyn portálon hozzáadásához válassza a Szerkesztés szimbólum jobb oldalán a fiók neve, nem az előfizetés.
 
@@ -108,10 +108,7 @@ Az Azure-beli hitelesítő hozzá vannak adva a Cloudyn, amíg a fiók megjeleni
 
 ## <a name="how-do-i-add-multiple-accounts-and-entities-to-an-existing-subscription"></a>Hogyan adhatok hozzá több fiókhoz és entitások egy meglévő előfizetéshez?
 
-További entitásokat segítségével további nagyvállalati szerződések hozzáadása a Cloudyn-előfizetéshez. Az alábbi hivatkozások további entitások hozzáadása ismertetik:
-
-- [Entitás hozzáadása](https://support.cloudyn.com/hc/articles/212016145-Adding-an-Entity) cikk
-- [A hierarchiában a költségelemek meghatározása](https://support.cloudyn.com/hc/articles/115005142529-Video-Defining-your-hierarchy-with-Cost-Entities) videó
+További entitásokat segítségével további nagyvállalati szerződések hozzáadása a Cloudyn-előfizetéshez. További információkért lásd: [létrehozása és kezelése az entitások](tutorial-user-access.md#create-and-manage-entities).
 
 A CSP-k:
 

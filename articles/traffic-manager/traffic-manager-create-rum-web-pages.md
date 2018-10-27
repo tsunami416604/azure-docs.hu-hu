@@ -1,13 +1,9 @@
 ---
-title: Valós felhasználói mérések Azure Traffic Manager a weblapokat |} Microsoft Docs
-description: Állítsa be a weblapok felvétele a Traffic Manager valós felhasználói mérések küldhet.
+title: Valós felhasználói mérések az Azure Traffic Manager weblapokat |} A Microsoft Docs
+description: Valós felhasználói mérések küldése a Traffic Manager a weblapok beállítása
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -16,60 +12,60 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 71661d8640dbe14082292cb9637964adac9fa803
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 19a641ba86333047b90c36cef242d524ccad5fe1
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30180622"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138177"
 ---
-# <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Valós felhasználói mérések küldése az Azure Traffic Manager weblapjainak használata
+# <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Valós felhasználói mérések küldése az Azure Traffic Manager weblapok használata
 
-A weblapok valós felhasználói mérések felvétele a Traffic Manager küldhet egy valós felhasználói mérések (RUM) kulcs beszerzése és beágyazása a weblapra a generált kódot is konfigurálhat.
+Konfigurálhatja a weblapok a Traffic Manager valós felhasználói mérések küldése a valós felhasználói mérések (RUM) kulcs beszerzése és beágyazása a weblapra a generált kódot.
 
-## <a name="obtain-a-real-user-measurements-key"></a>Egy valós felhasználói mérések kulcs beszerzése
+## <a name="obtain-a-real-user-measurements-key"></a>A valós felhasználói mérések kulcs beszerzése
 
-A mérési igénybe vehet, és az ügyfélalkalmazást a Traffic Manager küldjön a szolgáltatást egy egyedi karakterlánc, úgynevezett használatával azonosítják a **valós felhasználói mérések (RUM) kulcs**. Kaphat egy RUM kulcsot az Azure-portált használja, a REST API-t vagy a PowerShell vagy az Azure parancssori felület használatával.
+A mérések igénybe vehet, és a Traffic Manager küldött az ügyfélalkalmazás egy egyedi karakterlánccá, nevű szolgáltatáspéldányt azonosítja a **valós felhasználói mérések (RUM) kulcs**. Megtekintheti az Azure portal, a REST API használatával az kulcs vagy a PowerShell vagy az Azure CLI használatával.
 
-Az Azure-portál használatával RUM kulcs beszerzése:
-1. Egy böngészőből jelentkezzen be az Azure-portálon. Ha már nincs fiókja, regisztrálhat egy ingyenes egy hónapos próbaverzióra.
-2. A portál keresősávban, keresse meg a módosítani kívánt Traffic Manager-profil neve, és kattintson a Traffic Manager-profilt az eredmények között, amelyek a jelennek meg.
-3. Kattintson a Traffic Manager-profil panelje **valós felhasználói mérések** alatt **beállítások**.
-4. Kattintson a **készítése kulcs** RUM új kulcs létrehozásához.
+Az Azure portal használatával RUM kulcs beszerzése:
+1. Egy böngészőben jelentkezzen be az Azure Portalon. Ha még nincs fiókja, akkor regisztráljon egy ingyenes egy hónapos próbaidőszak.
+2. A portál keresősávjában keressen a Traffic Manager-profil neve, amelyet módosítani szeretne, majd kattintson az eredményeket a Traffic Manager-profilt, amely jelenik meg.
+3. A Traffic Manager-profil panelen kattintson a **valós felhasználói mérések** alatt **beállítások**.
+4. Kattintson a **kulcs létrehozása** RUM új kulcs létrehozásához.
  
-  ![Valós felhasználói mérések kulcs létrehozása](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
+  ![Valós felhasználói mérések kulcsának létrehozása](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
-   **1. ábra: Felhasználó mérések kulcs létrehozása**
+   **1. ábra: A valós felhasználói mérések kulcs létrehozása**
 
-5. A panel most hozza létre a RUM kulcsot és a JavaScript kódrészletet, amelyet a beilleszthető a HTML-weblap jeleníti meg.
+5. A panel most hozza létre a RUM kulcsot és a egy JavaScript kódrészletet, amelyet a HTML-oldalt beilleszthető jeleníti meg.
  
-    ![Valós felhasználói mérések kulcs JavaScript-kód](./media/traffic-manager-create-rum-web-pages/rum-javascript-code.png)
+    ![Valós felhasználói mérések kulcsát a JavaScript-kódot](./media/traffic-manager-create-rum-web-pages/rum-javascript-code.png)
 
-    **2. ábra: Felhasználó mérések kulcs és a mérési JavaScript**
+    **2. ábra: A valós felhasználói mérések kulcsának és a mérési JavaScript**
  
-6.  Kattintson a **másolási** gomb másolni a JavaScript-kódot. 
+6.  Kattintson a **másolási** gombra, hogy a JavaScript-kódot. 
 
 >[!IMPORTANT]
-> A generált JavaScript valós felhasználói mérések funkció használatával működnek majd megfelelően. Ez a parancsfájl vagy a valós felhasználói mérések által használt parancsfájlok módosításait előre nem látható viselkedéshez vezethet.
+> Használja a létrehozott JavaScript valós felhasználói mérések funkció megfelelő működéséhez. Ez a szkript és a valós felhasználói mérések által használt parancsfájlok módosítása előre nem látható viselkedéshez vezethet.
 
-## <a name="embed-the-code-to-an-html-web-page"></a>A kód egy HTML-weblap beágyazása
+## <a name="embed-the-code-to-an-html-web-page"></a>Ágyazhat be a kódot, és a egy HTML-weblap
 
-Ha beszerezte a RUM kulcsot, a következő lépéssel hoz a másolt JavaScript beágyazása a felhasználók által felkeresett HTML-lapot. HTML szerkesztésével teheti az sokféleképpen és más eszközök és a munkafolyamatok. Ez a példa bemutatja a parancsfájl hozzáadása egy HTML-weblap frissítése. Ez az útmutató segítségével a HTML-forrás felügyeleti munkafolyamat igazodjon.
+Ha beszerezte a az kulcsot, a következő lépés az a másolt JavaScript beágyazása egy HTML-oldalt, amely a végfelhasználók számára, keresse fel. HTML-szerkesztés számos módon elvégezhető, és különböző eszközökkel és munkafolyamatokkal. Ez a példa bemutatja, hogyan frissíthető egy HTML-oldalt hozzáadni ezt a szkriptet. Ez az útmutató segítségével a HTML-forrás-felügyeleti munkafolyamat igazodjon.
 
-1.  Egy szövegszerkesztőben nyissa meg a HTML-weblap
-2.  Illessze be a másolt volt az előző lépésben a HTML törzs szakaszába JavaScript-kódot (a másolt kódot sor 8 & 9, lásd a 3. ábra:).
+1.  Egy szövegszerkesztőben nyissa meg a HTML-oldal
+2.  Illessze be a JavaScript-kódot a HTML TÖRZSÉBEN szakaszában a korábbi lépésben másolt volt (a másolt kód 8 & 9. sor, tekintse meg a 3. ábra).
  
-    ![Weblap valós felhasználói mérések Javascript-kód beágyazása](./media/traffic-manager-create-rum-web-pages/real-user-measurement-embed-script.png)  
+    ![Javascript-kód beágyazza a weblap a valós felhasználói mérések](./media/traffic-manager-create-rum-web-pages/real-user-measurement-embed-script.png)  
 
     **3. ábra: A beágyazott valós felhasználói mérések JavaScript egyszerű HTML**
 
-3.  Mentse a HTML-fájlba, valamint a gazdagép egy webkiszolgálót a csatlakoztatva az internethez. 
-4. Ez a lap megjelenítése egy webböngészőben, amikor legközelebb letölti a hivatkozott JavaScript, és a parancsfájl hajtja végre a mérési és jelentéskészítési műveletek.
+3.  Mentse a HTML-fájl és a gazdagép, a webkiszolgáló csatlakozik az internethez. 
+4. Ezen a lapon jelenik meg a böngészőben, amikor legközelebb letölti a hivatkozott JavaScript, és a szkriptet fogja végrehajtani, a mérés és jelentéskészítési műveletek.
 
 
 ## <a name="next-steps"></a>További lépések
-- További információ [valós felhasználói mérések](traffic-manager-rum-overview.md)
+- Tudjon meg többet [valós felhasználói mérések](traffic-manager-rum-overview.md)
 - Ismerje meg, [Traffic Manager működése](traffic-manager-overview.md)
-- További információ a [forgalom-útválasztási módszert](traffic-manager-routing-methods.md) Traffic Manager által támogatott
-- Megtudhatja, hogyan [Traffic Manager-profil létrehozása](traffic-manager-create-profile.md)
+- Tudjon meg többet a [forgalom-útválasztási módszerek](traffic-manager-routing-methods.md) a Traffic Manager által támogatott
+- Ismerje meg, hogyan [Traffic Manager-profil létrehozása](traffic-manager-create-profile.md)
 

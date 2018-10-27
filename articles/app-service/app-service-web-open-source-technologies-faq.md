@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: d65a33dc13d0b91a9ace04dab0be6c37bcd2188f
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 4185cbad6358f6b2e48513c0d79c0a357eb6235a
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42623296"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156476"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Nyílt forráskódú technológiákat az Azure Web Apps vonatkozó gyakori kérdések
 
@@ -43,9 +43,9 @@ PHP-naplózás bekapcsolása:
 9. Kattintson a **Mentés** gombra.
 10. Kattintson a ceruza ikonra a **wp-config.php**.
 11. Módosítsa a szöveget az alábbi kódot:
-   ```
+   ```php
    //Enable WP_DEBUG modedefine('WP_DEBUG', true);//Enable debug logging to /wp-content/debug.logdefine('WP_DEBUG_LOG', true);
-   //Supress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Supress PHP errors to screenini_set('display_errors', 0);
+   //Suppress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Supress PHP errors to screenini_set('display_errors', 0);
    ```
 12. Az Azure Portalon, a webes alkalmazás menüjében indítsa újra a webalkalmazást.
 
@@ -70,7 +70,7 @@ A Node.js-alkalmazás verziójának módosításához használhatja az alábbi l
 *   Módosítsa a iisnode.yml fájlt. A Node.js verzió iisnode.yml fájlt a módosítása csak beállítja a futtatási környezetet, amelyet az iisnode használja. A Kudu cmd parancsot, és másokkal is használható a Node.js-verzió az **Alkalmazásbeállítások** az Azure Portalon.
 
     Manuálisan állítsa be az iisnode.yml fájlt, hozzon létre egy iisnode.yml fájlt az alkalmazás gyökérmappájában lévő mappának. A fájl tartalmazza a következő sort:
-   ```
+   ```yml
    nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
    ```
    
@@ -80,7 +80,7 @@ A Node.js-alkalmazás verziójának módosításához használhatja az alábbi l
     2. Egy alapértelmezett üzembe helyezési parancsfájlt hoz létre, ha nincs a webes alkalmazás gyökérmappájában (Deploy.cmd fájl, .deployment fájl) ilyen.
     3. A telepítési parancsfájlt, amelyben létrehoz egy iisnode.yml fájlt. Ha már javítva az a package.json fájlt a Node.js-verzió fut > motor `"engines": {"node": "5.9.1","npm": "3.7.3"}`
     4. Iisnode.yml fájlt a következő kódsort rendelkezik:
-        ```
+        ```yml
         nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
         ```
 
@@ -146,7 +146,7 @@ A hiba megoldásához:
 2. Ha az egyéni Tomcat vagy az Azure Marketplace-en Tomcat webkiszolgáló használ, másolja a .jar-fájl a Tomcat lib mappájába.
 3. Ha engedélyezi a Java az Azure Portalon (kiválasztása **Java 1.8-as** > **Tomcat kiszolgálót**), másolja a sqljdbc.* jar-fájlt abban a mappában, párhuzamos, és az alkalmazás. Ezután adja hozzá a következő osztályútvonal beállítást a web.config fájlt:
 
-    ```
+    ```xml
     <httpPlatform>
     <environmentVariables>
     <environmentVariablename ="JAVA_OPTS" value=" -Djava.net.preferIPv4Stack=true
