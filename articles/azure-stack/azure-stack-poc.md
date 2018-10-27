@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/15/2018
+ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
 ms.custom: mvc
-ms.openlocfilehash: b2b81938eafe104369e52e72f9958e2adf2cca6f
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 041d679cfc428278737a5668887e73f13ac694b1
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345220"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50137053"
 ---
 # <a name="what-is-azure-stack"></a>Mi az Azure Stack?
 
@@ -30,7 +30,7 @@ A Microsoft Azure Stack egy hibrid felhő platform, amely lehetővé teszi az Az
 Azure Stack tartományregisztráció két központi telepítési beállításai az igényeinek.
 
 ## <a name="azure-stack-integrated-systems"></a>Az Azure Stackkel használható integrált rendszerek
-Integrált rendszerek felkínált keresztül egy partneri kapcsolat áll fenn a Microsoft Azure Stack és [hardverszállító partnerétől](https://azure.microsoft.com/overview/azure-stack/integrated-systems/), megoldást kínál a felhőben programról ütemben elsajátítható innováció létrehozása és az informatika felügyeleti egyszerűség. Azure Stack érhető el egy integrált hardver- és szoftver-, mert rendelkezik a rugalmasság és a vezérlés van szüksége, és innovációját annak a felhőből lehetőséget. Azure Stack integrált rendszerek mérete a 4 – 12 csomópontok között, és a hardver partner és a Microsoft által közösen támogatott.  Integrált Azure Stack rendszerek használata új forgatókönyvek létrehozása és telepítése az új megoldások a termelési számítási feladatokhoz.
+Integrált rendszerek felkínált keresztül egy partneri kapcsolat áll fenn a Microsoft Azure Stack és [hardverszállító partnerétől](https://azure.microsoft.com/overview/azure-stack/integrated-systems/), megoldást kínál a felhőben programról ütemben elsajátítható innováció létrehozása és az informatika felügyeleti egyszerűség. Azure Stack érhető el egy integrált hardver- és szoftver-, mert rendelkezik a rugalmasság és a vezérlés van szüksége, és innovációját annak a felhőből lehetőséget. Az Azure Stack integrált rendszerek mérete 4 és 16 közötti csomópontjáról tartományt, és közösen a hardver partner és a Microsoft által támogatott.  Integrált Azure Stack rendszerek használata új forgatókönyvek létrehozása és telepítése az új megoldások a termelési számítási feladatokhoz.
 
 ## <a name="azure-stack-development-kit"></a>Azure Stack fejlesztői készlete
 
