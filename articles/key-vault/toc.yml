@@ -41,6 +41,10 @@ items:
     href: key-vault-ovw-throttling.md
   - name: Virtuális hálózati szolgáltatásvégpontok
     href: key-vault-overview-vnet-service-endpoints.md
+  - name: Hitelesítés, kérelmek és válaszok
+    href: authentication-requests-and-responses.md
+  - name: Gyakori paraméterek és fejlécek
+    href: common-parameters-and-headers.md
   - name: A kulcsok, titkos kódok és tanúsítványok ismertetése
     href: about-keys-secrets-and-certificates.md
     items:
@@ -88,11 +92,6 @@ items:
     href: /python/api/overview/azure/key-vault?view=azure-python
   - name: REST
     href: /rest/api/keyvault
-    items:
-    - name: Hitelesítés, kérelmek és válaszok
-      href: authentication-requests-and-responses.md
-    - name: Gyakori paraméterek és fejlécek
-      href: common-parameters-and-headers.md
   - name: Fejlesztés
     items:
     - name: Fejlesztői útmutató
@@ -123,14 +122,14 @@ items:
     href: /learn/browse/?products=azure-key-vault
   - name: Ügyféladatok
     href: key-vault-customer-data.md
+  - name: Kibocsátási megjegyzések
+    href: key-vault-versions.md
   - name: Szolgáltatás
     items:
     - name: Díjszabás
       href: https://azure.microsoft.com/pricing/details/key-vault/
     - name: Régiónkénti elérhetőség
       href: https://azure.microsoft.com/global-infrastructure/services/?products=key-vault
-    - name: Kibocsátási megjegyzések
-      href: key-vault-versions.md
     - name: Szolgáltatói szerződés (SLA)
       href: https://azure.microsoft.com/support/legal/sla/key-vault/
     - name: Szolgáltatási korlátozások
@@ -143,9 +142,9 @@ items:
     href: http://blogs.technet.com/b/kv/
 - name: Termékkel kapcsolatos visszajelzés
   href: https://feedback.azure.com/forums/906355-azure-key-vault
-ms.openlocfilehash: 727a44d903d481974a95635f092468754085db1b
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 64b4f6cbb26da244898d46b8fd5250a2eeeef91e
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50084968"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140942"

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: e901ba81b92a5d7a7454fbfaca96902e1e8008a8
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: c45b86913f8c76b80da921e2813d405b61d08041
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41928404"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139191"
 documentType: LandingData
 title: Az IoT-megoldásgyorsítók dokumentációja
 metadata:
@@ -17,7 +17,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 07/24/2018
+  ms.date: 10/26/2018
   ms.author: dobett
 abstract:
   description: Megismerkedhet az IoT-megoldásgyorsítók használatával. Ezek a cikkek a megoldásgyorsítók használatát mutatják be, hogy neki tudjon kezdeni olyan gyakori IoT-forgatókönyvek megvalósításához, mint például a távoli monitorozás, az ipari IoT, a prediktív karbantartás és az eszközszimuláció.
@@ -43,4 +43,5 @@ sections:
     - html: <a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-monitor">IoT-eszközök monitorozása</a>
     - html: <a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-automate">A monitorozási megoldáshoz csatlakoztatott eszközök problémáinak észlelése</a>
     - html: <a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-manage">A monitorozási megoldáshoz csatlakoztatott eszközök konfigurálása és kezelése</a>
+    - html: <a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-root-cause-analysis">Riasztás kiváltó okainak elemzése</a>
     - html: <a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-maintain">Riasztások használata és eszközökkel kapcsolatos problémák megoldása</a>

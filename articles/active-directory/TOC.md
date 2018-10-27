@@ -326,12 +326,6 @@
 
 ## [Hibaelhárítás](fundamentals/active-directory-troubleshooting-support-howto.md)
 
-## Az Azure AD központi telepítése – A koncepció igazolása (Proof of Concept, PoC)
-### [PoC-útmutató: Bevezetés](active-directory-playbook-intro.md)
-### [PoC-útmutató: Kellékek](active-directory-playbook-ingredients.md)
-### [PoC-útmutató: Megvalósítás](active-directory-playbook-implementation.md)
-### [PoC-útmutató: Építőelemek](active-directory-playbook-building-blocks.md)
-
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [Azure PowerShell-parancsmagok](/powershell/azure/overview)
