@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: kgremban
-ms.openlocfilehash: d3c32c2258f7542a02549fbc531aa9e8293d0235
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c400a084a78af6313e355d65bcbc07a520f55514
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996298"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156051"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub állapotának monitorozásához és a problémák gyorsan diagnosztizálása
 
@@ -42,6 +42,8 @@ Az adott mérőszámok és eseményeket figyeli az Azure Monitor kapcsolatos tov
 
 Az Azure Monitor nyomon követi az IoT Hub előforduló különféle műveletek. Az egyes kategóriákhoz hogyan készül jelentés adott kategóriába tartozó eseményeket definiáló séma. 
 
+
+
 #### <a name="connections"></a>Kapcsolatok
 
 A kapcsolatok kategóriában nyomon követi eszköz csatlakoztatása, és események leválasztása az IoT hubra, valamint a hibák. Ebbe a kategóriába követési akkor hasznos, jogosulatlan kapcsolódási kísérletek azonosításához és nyomon követésére, ha a kapcsolat azért területein gyenge hálózati eszközökhöz.
@@ -56,26 +58,31 @@ A kapcsolatok kategóriában nyomon követi eszköz csatlakoztatása, és esemé
     "operationName": "deviceConnect",
     "category": "Connections",
     "level": "Information",
-    "properties": "{\"deviceId\":\"<deviceId>\",\"protocol\":\"<protocol>\",\"authType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\",\"maskedIpAddress\":\"<maskedIpAddress>\"}", 
+    "properties": "{\"deviceId\":\"<deviceId>\",\"protocol\":\"<protocol>\",\"authType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\",\"maskedIpAddress\":\"<maskedIpAddress>\"}", 
     "location": "Resource location"
 }
 ```
 
-#### <a name="cloud-to-device-commands"></a>Felhőből az eszközre irányuló parancsok
+#### <a name="cloud-to-device-commands"></a>Felhő–eszköz irányú parancsok
 
 A felhőből az eszközre irányuló parancsok kategória előforduló hibák az IoT hubra a felhőből az eszközre irányuló üzenetek folyamat kapcsolódó követi nyomon. Ez a kategória tartalmazza a hibák fordulhatnak elő, amikor a felhőből az eszközre irányuló üzenetküldés (például illetéktelen küldő), (például a szállítási darabszám túllépve) a felhőből az eszközre irányuló üzenetek fogadása és visszajelzés a felhőből az eszközre irányuló üzenetek fogadása (mint például a visszajelzések lejárt). Ez a kategória nem dolgozza hibák az eszközről, amely nem megfelelően kezeli a felhőből az eszközre irányuló üzenet, ha a felhőből az eszközre irányuló üzenet sikeresen kézbesítve.
 
 ```json
 {
-    "time": " UTC timestamp",
-    "resourceId": "Resource Id",
-    "operationName": "messageExpired",
-    "category": "C2DCommands",
-    "level": "Error",
-    "resultType": "Event status",
-    "resultDescription": "MessageDescription",
-    "properties": "{\"deviceId\":\"<deviceId>\",\"messageId\":\"<messageId>\",\"messageSizeInBytes\":\"<messageSize>\",\"protocol\":\"Amqp\",\"deliveryAcknowledgement\":\"<None, NegativeOnly, PositiveOnly, Full>\",\"deliveryCount\":\"0\",\"expiryTime\":\"<timestamp>\",\"timeInSystem\":\"<timeInSystem>\",\"ttl\":<ttl>, \"EventProcessedUtcTime\":\"<UTC timestamp>\",\"EventEnqueuedUtcTime\":\"<UTC timestamp>\", \"maskedIpAddresss\": \"<maskedIpAddress>\", \"statusCode\": \"4XX\"}",
-    "location": "Resource location"
+    "records": 
+    [
+        {
+            "time": " UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "messageExpired",
+            "category": "C2DCommands",
+            "level": "Error",
+            "resultType": "Event status",
+            "resultDescription": "MessageDescription",
+            "properties": "{\"deviceId\":\"<deviceId>\",\"messageId\":\"<messageId>\",\"messageSizeInBytes\":\"<messageSize>\",\"protocol\":\"Amqp\",\"deliveryAcknowledgement\":\"<None, NegativeOnly, PositiveOnly, Full>\",\"deliveryCount\":\"0\",\"expiryTime\":\"<timestamp>\",\"timeInSystem\":\"<timeInSystem>\",\"ttl\":<ttl>, \"EventProcessedUtcTime\":\"<UTC timestamp>\",\"EventEnqueuedUtcTime\":\"<UTC timestamp>\", \"maskedIpAddresss\": \"<maskedIpAddress>\", \"statusCode\": \"4XX\"}",
+            "location": "Resource location"
+        }
+    ]
 }
 ```
 
@@ -85,15 +92,20 @@ Eszközkategória identitás műveletek nyomon követi, létrehozásához, friss
 
 ```json
 {
-    "time": "UTC timestamp",
-    "resourceId": "Resource Id",
-    "operationName": "get",
-    "category": "DeviceIdentityOperations",
-    "level": "Error",    
-    "resultType": "Event status",
-    "resultDescription": "MessageDescription",
-    "properties": "{\"maskedIpAddress\":\"<maskedIpAddress>\",\"deviceId\":\"<deviceId>\", \"statusCode\":\"4XX\"}",
-    "location": "Resource location"
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "get",
+            "category": "DeviceIdentityOperations",
+            "level": "Error",    
+            "resultType": "Event status",
+            "resultDescription": "MessageDescription",
+            "properties": "{\"maskedIpAddress\":\"<maskedIpAddress>\",\"deviceId\":\"<deviceId>\", \"statusCode\":\"4XX\"}",
+            "location": "Resource location"
+        }
+    ]
 }
 ```
 
@@ -103,13 +115,18 @@ Az üzenet-útválasztási kategória üzenet útvonal értékelése és a végp
 
 ```json
 {
-    "time": "UTC timestamp",
-    "resourceId": "Resource Id",
-    "operationName": "endpointUnhealthy",
-    "category": "Routes",
-    "level": "Error",
-    "properties": "{\"deviceId\": \"<deviceId>\",\"endpointName\":\"<endpointName>\",\"messageId\":<messageId>,\"details\":\"<errorDetails>\",\"routeName\": \"<routeName>\"}",
-    "location": "Resource location"
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "endpointUnhealthy",
+            "category": "Routes",
+            "level": "Error",
+            "properties": "{\"deviceId\": \"<deviceId>\",\"endpointName\":\"<endpointName>\",\"messageId\":<messageId>,\"details\":\"<errorDetails>\",\"routeName\": \"<routeName>\"}",
+            "location": "Resource location"
+        }
+    ]
 }
 ```
 
@@ -119,15 +136,20 @@ Az eszközkategória telemetriai előforduló hibák az IoT hubra kapcsolódnak,
 
 ```json
 {
-    "time": "UTC timestamp",
-    "resourceId": "Resource Id",
-    "operationName": "ingress",
-    "category": "DeviceTelemetry",
-    "level": "Error",
-    "resultType": "Event status",
-    "resultDescription": "MessageDescription",
-    "properties": "{\"deviceId\":\"<deviceId>\",\"batching\":\"0\",\"messageSizeInBytes\":\"<messageSizeInBytes>\",\"EventProcessedUtcTime\":\"<UTC timestamp>\",\"EventEnqueuedUtcTime\":\"<UTC timestamp>\",\"partitionId\":\"1\"}", 
-    "location": "Resource location"
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "ingress",
+            "category": "DeviceTelemetry",
+            "level": "Error",
+            "resultType": "Event status",
+            "resultDescription": "MessageDescription",
+            "properties": "{\"deviceId\":\"<deviceId>\",\"batching\":\"0\",\"messageSizeInBytes\":\"<messageSizeInBytes>\",\"EventProcessedUtcTime\":\"<UTC timestamp>\",\"EventEnqueuedUtcTime\":\"<UTC timestamp>\",\"partitionId\":\"1\"}", 
+            "location": "Resource location"
+        }
+    ]
 }
 ```
 
@@ -143,16 +165,21 @@ Ez a kategória nem tényleges jelentkező hibák közvetlenül az eszköz egy f
 
 ```json
 {
-    "time": "UTC timestamp",
-    "resourceId": "Resource Id",
-    "operationName": "ingress",
-    "category": "FileUploadOperations",
-    "level": "Error",
-    "resultType": "Event status",
-    "resultDescription": "MessageDescription",
-    "durationMs": "1",
-    "properties": "{\"deviceId\":\"<deviceId>\",\"protocol\":\"<protocol>\",\"authType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\",\"blobUri\":\"http//bloburi.com\"}",
-    "location": "Resource location"
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "ingress",
+            "category": "FileUploadOperations",
+            "level": "Error",
+            "resultType": "Event status",
+            "resultDescription": "MessageDescription",
+            "durationMs": "1",
+            "properties": "{\"deviceId\":\"<deviceId>\",\"protocol\":\"<protocol>\",\"authType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\",\"blobUri\":\"http//bloburi.com\"}",
+            "location": "Resource location"
+        }
+    ]
 }
 ```
 
@@ -162,14 +189,19 @@ A felhő ikereszköz műveletkategória események szolgáltatás által az iker
 
 ```json
 {
-    "time": "UTC timestamp",
-    "resourceId": "Resource Id",
-    "operationName": "read",
-    "category": "C2DTwinOperations",
-    "level": "Information",
-    "durationMs": "1",
-    "properties": "{\"deviceId\":\"<deviceId>\",\"sdkVersion\":\"<sdkVersion>\",\"messageSize\":\"<messageSize>\"}", 
-    "location": "Resource location"
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "read",
+            "category": "C2DTwinOperations",
+            "level": "Information",
+            "durationMs": "1",
+            "properties": "{\"deviceId\":\"<deviceId>\",\"sdkVersion\":\"<sdkVersion>\",\"messageSize\":\"<messageSize>\"}", 
+            "location": "Resource location"
+        }
+    ]
 }
 ```
 
@@ -179,14 +211,19 @@ Az eszközről a felhőbe – az ikereszköz műveletkategória eszköz által k
 
 ```json
 {
-    "time": "UTC timestamp",
-    "resourceId": "Resource Id",
-    "operationName": "update",
-    "category": "D2CTwinOperations",
-    "level": "Information",
-    "durationMs": "1",
-    "properties": "{\"deviceId\":\"<deviceId>\",\"protocol\":\"<protocol>\",\"authenticationType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\"}", 
-    "location": "Resource location"
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "update",
+            "category": "D2CTwinOperations",
+            "level": "Information",
+            "durationMs": "1",
+            "properties": "{\"deviceId\":\"<deviceId>\",\"protocol\":\"<protocol>\",\"authenticationType\":\"{\\\"scope\\\":\\\"device\\\",\\\"type\\\":\\\"sas\\\",\\\"issuer\\\":\\\"iothub\\\",\\\"acceptingIpFilterRule\\\":null}\"}", 
+            "location": "Resource location"
+        }
+    ]
 }
 ```
 
@@ -196,14 +233,19 @@ Az ikereszköz-lekérdezéseket kategória, amely a felhőben kezdeményezett ik
 
 ```json
 {
-    "time": "UTC timestamp",
-    "resourceId": "Resource Id",
-    "operationName": "query",
-    "category": "TwinQueries",
-    "level": "Information",
-    "durationMs": "1",
-    "properties": "{\"query\":\"<twin query>\",\"sdkVersion\":\"<sdkVersion>\",\"messageSize\":\"<messageSize>\",\"pageSize\":\"<pageSize>\", \"continuation\":\"<true, false>\", \"resultSize\":\"<resultSize>\"}", 
-    "location": "Resource location"
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "query",
+            "category": "TwinQueries",
+            "level": "Information",
+            "durationMs": "1",
+            "properties": "{\"query\":\"<twin query>\",\"sdkVersion\":\"<sdkVersion>\",\"messageSize\":\"<messageSize>\",\"pageSize\":\"<pageSize>\", \"continuation\":\"<true, false>\", \"resultSize\":\"<resultSize>\"}", 
+            "location": "Resource location"
+        }
+    ]
 }
 ```
 
@@ -213,14 +255,19 @@ A feladatok műveletkategória feladatkérések ikereszközök frissítéséhez,
 
 ```json
 {
-    "time": "UTC timestamp",
-    "resourceId": "Resource Id",
-    "operationName": "jobCompleted",
-    "category": "JobsOperations",
-    "level": "Information",
-    "durationMs": "1",
-    "properties": "{\"jobId\":\"<jobId>\", \"sdkVersion\": \"<sdkVersion>\",\"messageSize\": <messageSize>,\"filter\":\"DeviceId IN ['1414ded9-b445-414d-89b9-e48e8c6285d5']\",\"startTimeUtc\":\"Wednesday, September 13, 2017\",\"duration\":\"0\"}", 
-    "location": "Resource location"
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "jobCompleted",
+            "category": "JobsOperations",
+            "level": "Information",
+            "durationMs": "1",
+            "properties": "{\"jobId\":\"<jobId>\", \"sdkVersion\": \"<sdkVersion>\",\"messageSize\": <messageSize>,\"filter\":\"DeviceId IN ['1414ded9-b445-414d-89b9-e48e8c6285d5']\",\"startTimeUtc\":\"Wednesday, September 13, 2017\",\"duration\":\"0\"}", 
+            "location": "Resource location"
+        }
+    ]
 }
 ```
 
@@ -230,14 +277,19 @@ A közvetlen metódusok kategória nyomon követi a kérés-válasz interakciók
 
 ```json
 {
-    "time": "UTC timestamp",
-    "resourceId": "Resource Id",
-    "operationName": "send",
-    "category": "DirectMethods",
-    "level": "Information",
-    "durationMs": "1",
-    "properties": "{\"deviceId\":\"<deviceId>\", \"RequestSize\": 1, \"ResponseSize\": 1, \"sdkVersion\": \"2017-07-11\"}", 
-    "location": "Resource location"
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "send",
+            "category": "DirectMethods",
+            "level": "Information",
+            "durationMs": "1",
+            "properties": "{\"deviceId\":\"<deviceId>\", \"RequestSize\": 1, \"ResponseSize\": 1, \"sdkVersion\": \"2017-07-11\"}", 
+            "location": "Resource location"
+        }
+    ]
 }
 ```
 
@@ -246,67 +298,67 @@ A közvetlen metódusok kategória nyomon követi a kérés-válasz interakciók
 Miután beállította a diagnosztikai beállításokon keresztül eseménynaplózás, olvassa el a naplókat, hogy azok az információk alapján műveleteket végezheti el alkalmazásokat hozhat létre. A mintakód beolvassa a naplók egy adott eseményközpontból:
 
 ```csharp
-class Program 
-{ 
-    static string connectionString = "{your AMS eventhub endpoint connection string}"; 
-    static string monitoringEndpointName = "{your AMS event hub endpoint name}"; 
-    static EventHubClient eventHubClient; 
-//This is the Diagnostic Settings schema 
-    class AzureMonitorDiagnosticLog 
-    { 
-        string time { get; set; } 
-        string resourceId { get; set; } 
-        string operationName { get; set; } 
-        string category { get; set; } 
-        string level { get; set; } 
-        string resultType { get; set; } 
-        string resultDescription { get; set; } 
-        string durationMs { get; set; } 
-        string callerIpAddress { get; set; } 
-        string correlationId { get; set; } 
-        string identity { get; set; } 
-        string location { get; set; } 
-        Dictionary<string, string> properties { get; set; } 
-    }; 
-    static void Main(string[] args) 
-    { 
-        Console.WriteLine("Monitoring. Press Enter key to exit.\n"); 
-        eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, monitoringEndpointName); 
-        var d2cPartitions = eventHubClient.GetRuntimeInformation().PartitionIds; 
-        CancellationTokenSource cts = new CancellationTokenSource(); 
-        var tasks = new List<Task>(); 
-        foreach (string partition in d2cPartitions) 
-        { 
-            tasks.Add(ReceiveMessagesFromDeviceAsync(partition, cts.Token)); 
-        } 
-        Console.ReadLine(); 
-        Console.WriteLine("Exiting..."); 
-        cts.Cancel(); 
-        Task.WaitAll(tasks.ToArray()); 
-    } 
-    private static async Task ReceiveMessagesFromDeviceAsync(string partition, CancellationToken ct) 
-    { 
-        var eventHubReceiver = eventHubClient.GetDefaultConsumerGroup().CreateReceiver(partition, DateTime.UtcNow); 
-        while (true) 
-        { 
-            if (ct.IsCancellationRequested) 
-            { 
-                await eventHubReceiver.CloseAsync(); 
-                break; 
-            } 
-            EventData eventData = await eventHubReceiver.ReceiveAsync(new TimeSpan(0,0,10)); 
-            if (eventData != null) 
-            { 
-                string data = Encoding.UTF8.GetString(eventData.GetBytes()); 
-                Console.WriteLine("Message received. Partition: {0} Data: '{1}'", partition, data); 
-                var deserializer = new JavaScriptSerializer(); 
-                //deserialize json data to azure monitor object 
-                AzureMonitorDiagnosticLog message = new JavaScriptSerializer().Deserialize<AzureMonitorDiagnosticLog>(result); 
- 
-            } 
-        } 
-    } 
-} 
+class Program 
+{ 
+    static string connectionString = "{your AMS eventhub endpoint connection string}"; 
+    static string monitoringEndpointName = "{your AMS event hub endpoint name}"; 
+    static EventHubClient eventHubClient; 
+//This is the Diagnostic Settings schema 
+    class AzureMonitorDiagnosticLog 
+    { 
+        string time { get; set; } 
+        string resourceId { get; set; } 
+        string operationName { get; set; } 
+        string category { get; set; } 
+        string level { get; set; } 
+        string resultType { get; set; } 
+        string resultDescription { get; set; } 
+        string durationMs { get; set; } 
+        string callerIpAddress { get; set; } 
+        string correlationId { get; set; } 
+        string identity { get; set; } 
+        string location { get; set; } 
+        Dictionary<string, string> properties { get; set; } 
+    }; 
+    static void Main(string[] args) 
+    { 
+        Console.WriteLine("Monitoring. Press Enter key to exit.\n"); 
+        eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, monitoringEndpointName); 
+        var d2cPartitions = eventHubClient.GetRuntimeInformation().PartitionIds; 
+        CancellationTokenSource cts = new CancellationTokenSource(); 
+        var tasks = new List<Task>(); 
+        foreach (string partition in d2cPartitions) 
+        { 
+            tasks.Add(ReceiveMessagesFromDeviceAsync(partition, cts.Token)); 
+        } 
+        Console.ReadLine(); 
+        Console.WriteLine("Exiting..."); 
+        cts.Cancel(); 
+        Task.WaitAll(tasks.ToArray()); 
+    } 
+    private static async Task ReceiveMessagesFromDeviceAsync(string partition, CancellationToken ct) 
+    { 
+        var eventHubReceiver = eventHubClient.GetDefaultConsumerGroup().CreateReceiver(partition, DateTime.UtcNow); 
+        while (true) 
+        { 
+            if (ct.IsCancellationRequested) 
+            { 
+                await eventHubReceiver.CloseAsync(); 
+                break; 
+            } 
+            EventData eventData = await eventHubReceiver.ReceiveAsync(new TimeSpan(0,0,10)); 
+            if (eventData != null) 
+            { 
+                string data = Encoding.UTF8.GetString(eventData.GetBytes()); 
+                Console.WriteLine("Message received. Partition: {0} Data: '{1}'", partition, data); 
+                var deserializer = new JavaScriptSerializer(); 
+                //deserialize json data to azure monitor object 
+                AzureMonitorDiagnosticLog message = new JavaScriptSerializer().Deserialize<AzureMonitorDiagnosticLog>(result); 
+ 
+            } 
+        } 
+    } 
+} 
 ```
 
 ## <a name="use-azure-resource-health"></a>Az Azure Resource Health eszközt használni
