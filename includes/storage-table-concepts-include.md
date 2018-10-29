@@ -1,3 +1,16 @@
+---
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: tamram
+ms.openlocfilehash: 042aedf1a043cd89d74ff099554642d38a3c7dd3
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165303"
+---
 ## <a name="what-is-table-storage"></a>A Table Storage ismertetése
 Az Azure Table Storage nagy mennyiségű strukturált adat tárolására alkalmas. A szolgáltatás egy NoSQL-adattár, amely az Azure-felhőből és azon kívülről érkező hitelesített hívásokat fogadja. Az Azure-táblák strukturált, nem relációs adatok tárolására alkalmasak. A Table Storage gyakori használati módjai:
 
@@ -13,16 +26,16 @@ A Table Storage a következő összetevőkből áll:
 
 ![Table Storage-összetevők ábrája][Table1]
 
-* **URL-formátum:** Azure Table Storage-fiókok ezt a formátumot használja:`http://<storage account>.table.core.windows.net/<table>`
+* **URL-formátum:** Az Azure Table Storage-fiókok a következő formátumot használják: `http://<storage account>.table.core.windows.net/<table>`
 
-  Az Azure Cosmos DB tábla API-fiókok ezt a formátumot használja:`http://<storage account>.table.cosmosdb.azure.com/<table>`  
+  Az Azure Cosmos DB Table API-fiókok formátuma a következő: `http://<storage account>.table.cosmosdb.azure.com/<table>`  
 
   Az Azure-táblákat közvetlenül is elérheti, ha a fenti címet használja az OData protokollal. További információk az [OData.org][OData.org] webhelyen találhatók.
-* **Fiókok:** Azure Storage minden hozzáférés a storage-fiók segítségével történik. A tárfiókok kapacitásával kapcsolatos további információkért lásd: [Azure Storage Scalability and Performance Targets](../articles/storage/common/storage-scalability-targets.md) (Az Azure Storage méretezhetőségi és teljesítménycéljai). 
+* **Fiókok:** Minden Azure Storage-hozzáférés tárfiókon keresztül valósítható meg. A tárfiókok kapacitásával kapcsolatos további információkért lásd: [Azure Storage Scalability and Performance Targets](../articles/storage/common/storage-scalability-targets.md) (Az Azure Storage méretezhetőségi és teljesítménycéljai). 
 
-    Azure Cosmos DB hozzáférésének a tábla API fiókon keresztül történik. Lásd: [tábla API-fiók létrehozása](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account) részletek tábla API-fiók létrehozása.
+    Minden Azure Cosmos DB-hozzáférés Table API-fiókon keresztül valósítható meg. A Table API-fiókok létrehozásával kapcsolatos információkért lásd a [Table API-fiók létrehozását](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account) ismertető témakört.
 * **Tábla:** A tábla az entitások gyűjteményét tartalmazza. A táblák nem kényszerítenek sémát az entitásokra, ami azt jelenti, hogy egyetlen tábla különböző tulajdonságkészletekkel rendelkező entitásokat is tartalmazhat.  
-* **Entitás:** Az entitás egy adatbázissorhoz hasonló tulajdonságkészlet. Az Azure Storage entitás legfeljebb 1MB méretű is lehet. Az Azure Cosmos Adatbázisba entitás legfeljebb 2MB méretű is lehet.
+* **Entitás:** Az entitás egy adatbázissorhoz hasonló tulajdonságkészlet. Egy Azure Storage-entitás legfeljebb 1 MB méretű lehet. Egy Azure Cosmos DB-entitás legfeljebb 2 MB méretű lehet.
 * **Tulajdonságok:** A tulajdonság egy név-érték pár. Minden entitás legfeljebb 252 tulajdonságot tartalmazhat adattárolás céljából. Minden entitás három rendszertulajdonsággal rendelkezik, amelyek egy partíciókulcsot, egy sorkulcsot és egy időbélyegzőt adnak meg. Az azonos partíciókulcsú entitások gyorsabban lekérdezhetők, illetve szűrhatók be/frissíthetők atomi műveletek során. Egy entitás sorkulcsa a partíción belüli azonosítója.
 
 A táblák és tulajdonságok elnevezésével kapcsolatos további információkért lásd: [Understanding the Table Service Data Model](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) (A Table szolgáltatás adatmodelljének ismertetése).
