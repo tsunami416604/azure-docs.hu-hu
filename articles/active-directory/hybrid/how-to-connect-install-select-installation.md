@@ -43,7 +43,7 @@ A következőket kínálja:
 
 Ha továbbra is használhatja az Express beállításai:
 
-- Ha nem szeretné szinkronizálni az összes szervezeti, továbbra is használhatja az Express és az utolsó oldalon törölje **... a szinkronizálási folyamat indítása x. Ezután futtassa újra a telepítővarázslót, és módosítsa a szervezeti [konfigurációs beállítások](how-to-connect-installation-wizard.md#customize-synchronization-options) és ütemezett szinkronizálás engedélyezése.
+- Ha nem szeretné szinkronizálni az összes szervezeti, továbbra is használhatja az Express és az utolsó oldalon törölje **... a szinkronizálási folyamat indítása x**\*. Ezután futtassa újra a telepítővarázslót, és módosítsa a szervezeti [konfigurációs beállítások](how-to-connect-installation-wizard.md#customize-synchronization-options) és ütemezett szinkronizálás engedélyezése.
 - Szeretné engedélyezni, például a jelszóvisszaírást az Azure AD Premium szolgáltatásainak egyike. Először próbálja ki expressz beolvasni a kezdeti telepítés befejeződött. Ezután futtassa újra a telepítővarázslót, és módosítsa a [konfigurációs lehetőségek](how-to-connect-installation-wizard.md#customize-synchronization-options).
 
 ## <a name="custom"></a>Egyéni
