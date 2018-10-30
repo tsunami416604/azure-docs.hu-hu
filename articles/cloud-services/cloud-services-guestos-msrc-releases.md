@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/24/2018
+ms.date: 10/28/2018
 ms.author: raiye
-ms.openlocfilehash: 989627388e9ad1c99daa31bd9c8af884ab16b421
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 0430eefb55893420cf7ea603998f14465fb2cc60
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087780"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215514"
 ---
 # <a name="azure-guest-os"></a>Azure Guest OS
 Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure vendég operációs rendszerre alkalmazott frissítések. Ez a cikk meghatározni, ha az adott frissítés alkalmazza a vendég operációs rendszer keresése. Frissítések mindig átviszi az adott [termékcsalád] [ family-explain] azokat a jelentek meg.
@@ -30,11 +30,11 @@ Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure 
 | Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |
 | 18-10 rel | [4462917] | A Windows 10 biztonsági | 5,24 | 2018. október 9. |
-| 18-10 rel | [4464330] | A Windows 10 biztonsági | 6.01-es | 2018. október 9. |
+| 18-10 rel | [4464330] | A Windows 10 biztonsági | 6.0 | 2018. október 9. |
 | 18-10 rel | [4462915] | Windows biztonsági | 2.79 | 2018. október 9. |
 | 18-10 rel | [4462931] | Windows biztonsági | 3.66 | 2018. október 9. |
 | 18-10 rel | [4462941] | Windows biztonsági | 4.59 | 2018. október 9. |
-| 18-10 rel | [4462930] | Flash | 3.66, 4.59, 5,24, 6.01-es | 2018. október 9. |
+| 18-10 rel | [4462930] | Flash | 3.66, 4.59, 5,24, 6.0-s | 2018. október 9. |
 | 18-10 rel | [4462949] | Internet Explorer | 2.79, 3.66, 4.59 | 2018. október 9. |
 | – | [4339284] | Időzóna-frissítés | 2.79, 3.66, 4.59 | 2018. július 24. |
 | – | [4457144] | Szeptember nem – a biztonság összegzése | 2.79 | 2018. szeptember 11. |

@@ -6,18 +6,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.topic: conceptual
 ms.service: site-recovery
-ms.date: 10/09/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 802c2223a72a89dbe2a97404aab4b0fc85c391ed
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 9da64ebe675f9d481c7474a81fec294d50e49ce7
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902824"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215208"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Az Azure Stack-alapú virtuális gépek replikálása az Azure-bA
 
-Ez a cikk bemutatja, hogyan állítható be vészhelyreállítást az Azure-bA az Azure Stack virtuális gépek, használatával a [Azure Site Recovery szolgáltatás](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview).
+Ez a cikk bemutatja, hogyan állítható be az Azure-bA az Azure Stack virtuális gépek vész-helyreállítási használatával a [Azure Site Recovery szolgáltatás](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview).
 
 A Site Recovery hozzájárul (az üzleti folytonossági és vészhelyreállítási BCDR) stratégia. A szolgáltatás biztosítja, hogy a virtuális gépek számítási feladataihoz és továbbra is elérhető, amikor várhatóan váratlan leállások esetén.
 
@@ -189,7 +189,7 @@ Most telepíteni a konfigurációs kiszolgáló:
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> A konfigurációs kiszolgálót a parancssorból is telepíthető. [További információk](http://aka.ms/installconfigsrv).
+> A konfigurációs kiszolgálót a parancssorból is telepíthető. [További információk](physical-manage-configuration-server.md#install-from-the-command-line).
 
 > Akár 15 vagy még több percbe is beletelhet, amíg a fiók neve megjelenik a portálon. Az azonnali frissítéshez válassza a **Konfigurációs kiszolgálók** > ***kiszolgáló neve*** > **Kiszolgáló frissítése** elemet.
 

@@ -1,23 +1,22 @@
 ---
-title: Gyakori kérdések – VMware-ből az Azure-bA az Azure Site Recoveryvel |} A Microsoft Docs
-description: Ez a cikk összefoglalja a gyakori kérdésekre, az Azure-ban az Azure Site Recovery a helyszíni VMware virtuális gépek replikálásakor
-services: site-recovery
+title: Gyakori kérdések – VMware-ből az Azure Site recoveryvel Azure-beli vészhelyreállításához |} A Microsoft Docs
+description: Ez a cikk gyakori kérdésekre foglalja össze, amikor, vészhelyreállítás beállítása helyszíni VMware virtuális gépek az Azure-bA az Azure Site Recovery használatával
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 07/19/2018
+ms.date: 10/29/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 487e0c763ca4b247f1818b2beaf3282734fc4e27
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 086acdd74932836627c600b5545bc4353052ad6f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388442"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215446"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
-Ez a cikk gyakori kérdéseket, láthatjuk, ha a helyszíni VMware virtuális gépek replikálása Azure-bA. Ha kérdése van a cikk elolvasása után, el őket az a [Azure Recovery Services fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
+Ez a cikk gyakori kérdéseket, láthatjuk, a helyszíni VMware virtuális gépek vészhelyreállítása az Azure-bA telepítésekor. Ha kérdése van a cikk elolvasása után, el őket az a [Azure Recovery Services fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
 
 
 ## <a name="general"></a>Általános kérdések
