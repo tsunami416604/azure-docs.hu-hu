@@ -1,24 +1,24 @@
 ---
 title: Azure-bA replikációs architektúra az Azure Site Recovery |} A Microsoft Docs
-description: Ez a cikk az Azure Site Recovery szolgáltatással az Azure-régiók közötti Azure virtuális gépek replikálásakor használt összetevőkről és architektúráról áttekintést nyújt.
+description: Ez a cikk az Azure virtuális gépek, az Azure Site Recovery szolgáltatással az Azure-régiók között vész-helyreállítási beállításakor használt összetevőkről és architektúráról áttekintést nyújt.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 20387c325497934ccb2e02188b24a0125f937e00
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 0069ece5d02ad52b6fea9add7817e63fa3c412b6
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078257"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212731"
 ---
-# <a name="azure-to-azure-replication-architecture"></a>Azure-ról Azure-replikáció architektúrája
+# <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure-bA vész-helyreállítási architektúra
 
 
-Ez a cikk ismerteti a használható replikálni, átadja a feladatokat, és helyreállítása Azure virtuális gépeken (VM) Azure-régiók használatával között architektúra a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás.
+Ez a cikk ismerteti a vész-helyreállítási a replikálása, feladatátvétele és helyreállítása Azure virtuális gépeken (VM) Azure-régiók használatával között telepítéséhez használt architektúra a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás.
 
 
 

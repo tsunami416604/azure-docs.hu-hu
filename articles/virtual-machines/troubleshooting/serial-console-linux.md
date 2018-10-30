@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/11/2018
 ms.author: harijay
-ms.openlocfilehash: bccf53ed5554579f4ff0a864c38562b7b7f0d3ca
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 57abb01d70929144a8457a04ebc0caf9aecaa61c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885289"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212403"
 ---
 # <a name="virtual-machine-serial-console"></a>Virtuális gépek soros konzolja
 
@@ -217,5 +217,6 @@ A. A virtuális gép méretezési csoport példányaihoz a soros konzoljához va
 ## <a name="next-steps"></a>További lépések
 * Használja a soros konzol [indítsa el a grub-HIBÁT, és adja meg az egyfelhasználós mód](serial-console-grub-single-user-mode.md)
 * A soros konzol [NMI és SysRq hívások](serial-console-nmi-sysrq.md)
+* Ismerje meg, hogyan használható a soros konzol [GRUB engedélyezése a különböző disztribúciók](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)
 * A soros konzolon érhető el is [Windows](../windows/serial-console.md) virtuális gépek
 * Tudjon meg többet [rendszerindítási diagnosztika](boot-diagnostics.md)

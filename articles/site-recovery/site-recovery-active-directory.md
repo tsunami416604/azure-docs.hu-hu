@@ -1,6 +1,6 @@
 ---
-title: Active Directory és az Azure Site Recovery DNS védelme |} A Microsoft Docs
-description: Ez a cikk ismerteti, hogyan valósíthat meg egy vész-helyreállítási megoldást az Active Directory az Azure Site Recovery használatával.
+title: Vészhelyreállítás beállítása az Active Directory és DNS az Azure Site Recoveryvel |} A Microsoft Docs
+description: Ez a cikk ismerteti a vész-helyreállítási megoldás megvalósítása az Active Directory és DNS az Azure Site Recovery.
 services: site-recovery
 documentationcenter: ''
 author: mayurigupta13
@@ -9,14 +9,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 1072c903e9bd9ccb3d63cae426283a677d10077e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 51d435d9edea5e341127cac89bc96a71c7bc8bb4
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354291"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211893"
 ---
-# <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Active Directory és DNS védelme az Azure Site Recovery használatával
+# <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Vészhelyreállítás beállítása az Active Directory és DNS
 
 Vállalati alkalmazások, például a SharePoint, a Dynamics AX és az SAP attól függ, az Active Directory és DNS-infrastruktúra a megfelelő működéshez. Alkalmazások vészhelyreállítása beállításakor gyakran kell az Active Directory és DNS-helyre, mielőtt helyreállítja más alkalmazás-összetevők, hogy helyes-e az alkalmazás funkciói.
 

@@ -1,29 +1,22 @@
 ---
-title: Egy többrétegű Dynamics AX-telepítés replikálása az Azure Site Recovery használatával |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan replikálja, és a Dynamics AX védelme az Azure Site Recovery használatával
-services: site-recovery
-documentationcenter: ''
+title: Egy többrétegű Dynamics AX-telepítéshez vészhelyreállítás beállítása az Azure Site Recovery használatával |} A Microsoft Docs
+description: Ez a cikk ismerteti az Azure Site Recovery a Dynamics AX vész-helyreállítási beállítása
 author: asgang
 manager: rochakm
-editor: ''
-ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: eb6f7d9b34e00ce1efd8c871439c2504e5f550d5
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: e2cba8cb53e73bd1fc25f1fe43fa0365247e2bd2
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669442"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210822"
 ---
-# <a name="replicate-a-multitier-dynamics-ax-application-by-using-azure-site-recovery"></a>Egy többrétegű Dynamics AX-alkalmazás replikálása az Azure Site Recovery használatával
+# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Állítsa be a Dynamics AX Többrétegű alkalmazások vészhelyreállítása 
 
-## <a name="overview"></a>Áttekintés
+
 
 
  A Dynamics AX egyike a vállalat használja a helyek közötti szabványosíthatják a folyamatokat, kezelheti az erőforrásokat és leegyszerűsítse a megfelelőség a legnépszerűbb ERP-megoldásokat. Mivel az alkalmazás kritikus nyújtva a cég katasztrófa esetén az alkalmazás minimális idő kell lennie a helyezheti üzembe.

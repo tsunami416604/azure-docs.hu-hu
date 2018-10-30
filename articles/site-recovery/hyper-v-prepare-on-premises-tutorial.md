@@ -1,19 +1,19 @@
 ---
-title: Hyper-V virtuális gépek vészhelyreállítása az Azure-bA a helyszíni Hyper-V kiszolgáló előkészítése |} A Microsoft Docs
-description: Ismerje meg, hogyan készíti elő az Azure Site Recovery szolgáltatással az Azure-bA vész-helyreállítási System Center VMM által nem felügyelt helyszíni Hyper-V virtuális gépeket.
+title: A helyszíni Hyper-V kiszolgálók előkészítése Hyper-V virtuális gépek vészhelyreállítása az Azure-bA |} A Microsoft Docs
+description: Ismerje meg, hogyan készíti elő a helyszíni Hyper-V virtuális gépeket az Azure Site Recovery szolgáltatással az Azure-bA vész-helyreállítási.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: f1899817ee2d0efec4ab561a64f24e49cb173c29
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 5f46f22ab524e1d51b01fcedb4ea1420d755ecbe
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720769"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209887"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Vészhelyreállítás az Azure-bA a helyszíni Hyper-V kiszolgálók előkészítése
 

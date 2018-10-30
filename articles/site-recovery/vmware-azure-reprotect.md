@@ -1,21 +1,20 @@
 ---
-title: Az Azure-ból a helyszíni helyre virtuális gépek ismételt védelme |} A Microsoft Docs
-description: Az Azure virtuális gépek a feladatátvételt követően térjen vissza a helyszíni virtuális gépek csatlakozva a feladat-visszavételhez is kezdeményezhető. Megtudhatja, hogyan védi meg ismét a feladat-visszavétel előtt.
-services: site-recovery
+title: Egy helyszíni helyhez az Azure virtuális gépek ismételt védelme a során a VMware virtuális gépek és fizikai kiszolgálók vészhelyreállítása |} A Microsoft Docs
+description: Miután a feladatátvétel során a VMware virtuális gépek és fizikai kiszolgálók vészhelyreállítása az Azure-bA megtudhatja, hogyan meghiúsul az Azure-ból a helyszíni helyre.
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 1b410b2832d856f80d640aab2096fef270156c81
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 3f661ab5ff2a127ba7507a64bb4520cbad740473
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346679"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213287"
 ---
-# <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>Egy helyszíni helyhez az Azure-ból gépek ismételt védelme
+# <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Ismételt védelme, és a egy helyszíni helyhez vissza gépek feladatai az Azure-bA a feladatátvételt követően
 
 Miután [feladatátvételi](site-recovery-failover.md) a helyszíni VMware virtuális gépek vagy fizikai kiszolgálók Azure-ba, a sikertelen első lépése az a helyszíni hely, hogy a feladatátvétel során létrehozott Azure virtuális gépek ismételt védelme. Ez a cikk azt ismerteti, hogyan teheti ezt. 
 

@@ -1,5 +1,16 @@
-
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: b83e1ef752fede446b41153e3d486a872c2707f3
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227335"
+---
 A virtuálisgép-bővítmények a következőkben lehetnek a segítségére:
 
 * Biztonsági és identitásszolgáltatások (például a fiókértékek visszaállítása vagy a kártevőirtó szoftverek használata) módosítása
@@ -31,7 +42,7 @@ A virtuálisgép-ügynök a következő helyzetekben van engedélyezve:
       $vm.VM.ProvisionGuestAgent = $TRUE
       Update-AzureVM –Name $name –VM $vm.VM –ServiceName $svc
 
-* Ha egy olyan virtuálisgép-rendszerképet hoz létre, amely tartalmaz egy telepített virtuálisgép-ügynököt. Amint a virtuálisgép-ügynököt tartalmazó rendszerkép létrejött, feltöltheti az Azure-ba. Windows-alapú virtuális gépek esetében töltse le a [Windows virtuálisgép-ügynök .msi fájlját](http://go.microsoft.com/fwlink/?LinkID=394789), és telepítse a virtuálisgép-ügynököt. A Linux virtuális gépek, telepítse a virtuális gép ügynököt a GitHub-tárházban található <https://github.com/Azure/WALinuxAgent>. A virtuálisgép-ügynök Linux rendszeren való telepítésével kapcsolatos további információkért lásd [az Azure Linux virtuálisgép-ügynökökkel kapcsolatos felhasználói kézikönyvet](../articles/virtual-machines/extensions/agent-linux.md).
+* Ha egy olyan virtuálisgép-rendszerképet hoz létre, amely tartalmaz egy telepített virtuálisgép-ügynököt. Amint a virtuálisgép-ügynököt tartalmazó rendszerkép létrejött, feltöltheti az Azure-ba. Windows-alapú virtuális gépek esetében töltse le a [Windows virtuálisgép-ügynök .msi fájlját](http://go.microsoft.com/fwlink/?LinkID=394789), és telepítse a virtuálisgép-ügynököt. Linux rendszerű virtuális gép, Virtuálisgép-ügynök telepítése a GitHub-adattárból származó <https://github.com/Azure/WALinuxAgent>. A virtuálisgép-ügynök Linux rendszeren való telepítésével kapcsolatos további információkért lásd [az Azure Linux virtuálisgép-ügynökökkel kapcsolatos felhasználói kézikönyvet](../articles/virtual-machines/extensions/agent-linux.md).
 
 > [!NOTE]
 > Szolgáltatásként nyújtott platformok (PaaS) esetében a virtuálisgép-ügynök neve **WindowsAzureGuestAgent**, és mindig elérhető a webes és feldolgozói szerepkörű virtuális gépeken. (További információ: [Azure szerepkör-architektúra](http://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx).) A szerepkörrel rendelkező virtuális gépek virtuálisgép-ügynöke mostantól ugyanúgy adhat bővítményeket a felhőszolgáltatásbeli virtuális gépekhez, mint a perzisztens virtuális gépekhez. A legnagyobb különbség a szerepkörrel rendelkező és a perzisztens virtuális gépek virtuálisgép-bővítményei között a bővítmények hozzáadásában van. A szerepkörrel rendelkező virtuális gépek esetében a bővítmények először a felhőszolgáltatáshoz lesznek hozzáadva, majd a felhőszolgáltatásban lévő üzemelő példányokhoz.

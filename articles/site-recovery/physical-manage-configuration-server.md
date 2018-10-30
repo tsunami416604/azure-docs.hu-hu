@@ -1,18 +1,18 @@
 ---
-title: " A fizikai kiszolgáló vészhelyreállítása az Azure Site Recovery konfigurációs kiszolgáló kezelése |} A Microsoft Docs"
-description: Ez a cikk ismerteti, hogyan kezelheti a meglévő konfigurációs kiszolgáló fizikai kiszolgáló vész-helyreállítási az Azure-bA az Azure Site Recovery szolgáltatással.
+title: Az Azure-bA az Azure Site Recovery a helyszíni fizikai kiszolgálók vészhelyreállítása a konfigurációs kiszolgáló kezelése |} A Microsoft Docs
+description: Ez a cikk ismerteti, hogyan kezelheti az Azure Site Recovery konfigurációs kiszolgálónak a fizikai kiszolgáló vészhelyreállítása az Azure-bA.
 services: site-recovery
-author: AnoopVasudavan
+author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
-ms.author: anoopkv
-ms.openlocfilehash: 068d2774791995fab1c07c73e6d733a6e09379f1
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.date: 10/29/2018
+ms.author: ramamill
+ms.openlocfilehash: 4bf9277598c3e56c0429dddcb2204cb1338a33be
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951176"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213253"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Fizikai kiszolgáló vészhelyreállításhoz használt konfigurációs kiszolgáló kezelése
 

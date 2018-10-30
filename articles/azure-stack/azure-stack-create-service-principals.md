@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2018
+ms.date: 10/26/2018
 ms.author: sethm
-ms.openlocfilehash: 96137b95f46f24bca6a4ee6a39d93a490a03c431
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: a6d8ef698c005429c1184b5565b1a9387d05e062
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958448"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230114"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Hozzáférést biztosít az alkalmazásoknak az Azure Stackhez
 
@@ -77,6 +77,13 @@ A parancsfájl-ERCS virtuális gépen fut az emelt szintű végpontról.
 Követelmények:
 - Egy tanúsítványra szükség.
 
+A Tanúsítványkövetelményekről:
+ - A kriptográfiai szolgáltató (CSP) örökölt kulcsszolgáltató kell lennie.
+ - A tanúsítvány formátuma kell lennie a PFX-fájl, mivel a nyilvános és titkos kulcsok szükségesek. Windows-kiszolgálók használata a nyilvános kulcs fájlját (SSL-tanúsítványfájlja) tartalmazó .pfx fájlok és a kapcsolódó titkos kulcs fájlját.
+ - Éles környezetben a tanúsítvány egy belső hitelesítésszolgáltató vagy egy nyilvános hitelesítésszolgáltató kell kiállítani. Nyilvános hitelesítésszolgáltató használata, ha a Microsoft megbízható legfelső szintű hatóság Program részeként alap operációs rendszer lemezképét kell tartalmazza a szolgáltatót. A teljes listáját megtalálhatja [a Microsoft megbízható Root Certificate Program: résztvevők](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
+ - Az Azure Stack-infrastruktúra a hitelesítésszolgáltató visszavont tanúsítványok listája (CRL) helyre a tanúsítványt a közzétett hálózati hozzáféréssel kell rendelkeznie. A CRL-t egy HTTP-végpontot kell lennie.
+
+
 #### <a name="parameters"></a>Paraméterek
 
 Az alábbi adatokra szükség az automation-paraméterek bemenetként:
@@ -93,7 +100,7 @@ Az alábbi adatokra szükség az automation-paraméterek bemenetként:
 1. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet, és futtassa a következő parancsokat:
 
    > [!NOTE]
-   > Ez a példa létrehoz egy önaláírt tanúsítványt. Éles környezetben ezek a parancsok futtatásakor használja [Get-tanúsítvány](/powershell/module/pkiclient/get-certificate) a tanúsítványobjektumot is használni szeretné a tanúsítvány lekéréséhez.
+   > Ez a példa létrehoz egy önaláírt tanúsítványt. Éles környezetben ezek a parancsok futtatásakor használja [Get-Item](/powershell/module/Microsoft.PowerShell.Management/Get-Item) a tanúsítványobjektumot is használni szeretné a tanúsítvány lekéréséhez.
 
    ```PowerShell  
     # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
@@ -102,7 +109,7 @@ Az alábbi adatokra szükség az automation-paraméterek bemenetként:
     # Creating a PSSession to the ERCS PrivilegedEndpoint
     $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
 
-    # This produces a self signed cert for testing purposes. It is prefered to use a managed certificate for this.
+    # This produces a self signed cert for testing purposes. It is preferred to use a managed certificate for this.
     $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
 
     $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name '<yourappname>' -ClientCertificates $using:cert}

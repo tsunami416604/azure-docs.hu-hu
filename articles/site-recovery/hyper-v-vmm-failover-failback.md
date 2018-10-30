@@ -1,19 +1,19 @@
 ---
-title: Átadása és visszavétele Hyper-V virtuális gépek replikálása egy másodlagos adatközpontba a Site Recoveryvel |} A Microsoft Docs
-description: A másodlagos helyszíni helyre Hyper-V virtuális gépek feladatainak átadása és feladat-visszavételhez elsődleges helyet, az Azure Site Recoveryvel
+title: Átadása és visszavétele Hyper-V virtuális gépek replikálása egy másodlagos adatközpontba vészhelyreállítás az Azure Site Recoveryvel |} A Microsoft Docs
+description: Ismerje meg, hogy a másodlagos helyszíni helyre Hyper-V virtuális gépek feladatainak átadása és feladat-visszavételhez elsődleges helyet, az Azure Site Recovery a vészhelyreállítás során.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 782ddc3ebb7b3c533d0eb5c4b7735a13cbaf268c
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 80a26f7f2c97fdbc5342d8845277facd79f22a62
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077680"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210006"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>Átadása és visszavétele Hyper-V virtuális gépek replikálása a másodlagos helyszíni helyre
 
@@ -68,7 +68,7 @@ A másodlagos helyről az elsődleges replikálásának megkezdéséhez, és a f
  
 1. Kattintson a virtuális Gépre > kattintson a **visszirányú replikálása**.
 2. Ha a feladat befejeződött, kattintson a virtuális Gépre > a **feladatátvételi**, ellenőrizze a feladatátvétel iránya (a másodlagos VMM-felhőben), és válassza ki a forrás- és helyek. 
-4. Kezdeményezze a feladatátvételt. A feladatátvételi folyamat előrehaladásának követheti a **feladatok** fülre.
+4. Indítsa el a feladatátvételt. A feladatátvételi folyamatot a **Feladatok** lapon követheti nyomon.
 5. Az elsődleges VMM-felhő ellenőrizze, hogy elérhető legyen-e a virtuális gép.
 6. Ha azt szeretné, az elsődleges virtuális gép replikálása a másodlagos hely újra elindítani, kattintson a **visszirányú replikálása**.
 

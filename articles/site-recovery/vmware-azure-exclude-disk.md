@@ -1,19 +1,19 @@
 ---
-title: Lemezek kizárása a védelem az Azure Site Recoveryvel |} A Microsoft Docs
-description: Ez a cikk azt ismerteti, miért és hogyan zárhat ki virtuálisgép-lemezeket a VMware–Azure replikációkból.
+title: Lemezek kizárása a replikációból VMware-vészhelyreállításhoz az Azure-bA az Azure Site Recoveryvel |} A Microsoft Docs
+description: Leírja, hogy miért és hogyan zárhat ki Virtuálisgép-lemezek a replikációból VMware-vészhelyreállításhoz az Azure-bA.
 author: nsoneji
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: ea0e9f3572287139612256863ee28b72c83cd4ef
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: f8e5fd094e453088dab83c1967bc0733f91a2b98
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092423"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210586"
 ---
-# <a name="exclude-disks-from-replication-for-vmware-to-azure-scenario"></a>Lemezek kizárása a VMware–Azure replikációs forgatókönyvből
+# <a name="exclude-disks-from-replication-of-vmware-vms-to-azure"></a>Lemezek kizárása a VMware virtuális gépek replikálása az Azure-bA
 
 Ez a cikk azt ismerteti, hogyan zárhat ki lemezeket, amikor a VMware virtuális gépek replikálása Azure-bA. A kizárás segítségével optimalizálható a felhasznált replikációs sávszélesség, valamint optimalizálhatók a lemezek által felhasznált céloldali erőforrások. Ha a lemezek kizárása a Hyper-V információ van szüksége, olvassa el [Ez a cikk](hyper-v-exclude-disk.md)
 

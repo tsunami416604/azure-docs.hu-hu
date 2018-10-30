@@ -1,21 +1,20 @@
 ---
-title: Kapacitás megtervezése és skálázás az Azure-bA az Azure Site Recovery VMware-replikációhoz |} A Microsoft Docs
-description: Ez a cikk a kapacitás megtervezése és a méretezési csoport használja, ha a VMware virtuális gépek replikálása az Azure Site Recoveryvel Azure-bA
-services: site-recovery
+title: Kapacitás megtervezése és skálázása az Azure-bA az Azure Site Recovery VMware-vészhelyreállítás |} A Microsoft Docs
+description: Ez a cikk a kapacitás megtervezése és a méretezési csoport használja, ha beállítása VMware virtuális gépek vészhelyreállítása az Azure-bA az Azure Site Recoveryvel
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.topic: conceptual
 ms.author: rayne
-ms.openlocfilehash: 833000cb09d315a996ebc9e2d66210c805160f2a
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 9bc0d5976cf01eb61c2a09a35ccd3a834313ca00
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067552"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210499"
 ---
-# <a name="plan-capacity-and-scaling-for-vmware-replication-with-azure-site-recovery"></a>Kapacitás megtervezése és skálázás az Azure Site Recovery VMware-replikáláshoz
+# <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-auzre"></a>Kapacitás és méretezés VMware vész-helyreállítási való bevezetésének megtervezése
 
 Ez a cikk segítségével azonosítani a kapacitástervezés és skálázás, ha a helyszíni VMware virtuális gépek és fizikai kiszolgálók replikálása az Azure-bA [Azure Site Recovery](site-recovery-overview.md).
 

@@ -1,21 +1,18 @@
 ---
 title: VMware virtuális gépek vagy fizikai kiszolgálók másodlagos helyre az Azure Site Recoveryvel történő vészhelyreállításának beállítása |} A Microsoft Docs
 description: Ismerje meg, hogyan állítható be, valamint VMware virtuális gépeket, vagy a Windows és Linux rendszerű fizikai kiszolgálókat, az Azure Site Recovery egy másodlagos helyre.
-services: site-recovery
-author: nsoneji
-manager: gauarvd
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.workload: backup-recovery
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 08/01/2018
+ms.topic: conceptual
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 94abdd30dc9cd279ab791541250787a111f80d30
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: fe6199aea91bbb7518ccdbfe640848a59edcee49
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618988"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215463"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>A helyszíni VMware virtuális gépek vagy fizikai kiszolgálók másodlagos helyre történő vészhelyreállításának beállítása
 
@@ -118,7 +115,7 @@ Töltse le a [frissítése](https://aka.ms/asr-scout-update6) .zip-fájlt. A fá
 1. Beállítja a replikációt a forrás között, és célozhat meg VMware-webhelyek.
 2. További információ a telepítés, védelem és helyreállítás a következő dokumentumokban talál:
 
-   * [Kiadási megjegyzések](https://aka.ms/asr-scout-release-notes)
+   * [Kibocsátási megjegyzések](https://aka.ms/asr-scout-release-notes)
    * [Kompatibilitási mátrix](https://aka.ms/asr-scout-cm)
    * [Felhasználói útmutató](https://aka.ms/asr-scout-user-guide)
    * [RX felhasználói útmutató](https://aka.ms/asr-scout-rx-user-guide)
@@ -176,7 +173,7 @@ Scout Update 5 a kumulatív frissítés. Update 4-es frissítés 1-től az össz
 > [!NOTE]
 > * A P2V-fürt javítások csak az újonnan védett a Site Recovery Scout Update 5 fizikai MSCS-fürtök vonatkoznak. A fürt javítások a védett P2V MSCS-fürtökben régebbi frissítések telepítéséhez hajtsa végre a frissítési lépéseket szakaszában 12 a [Site Recovery Scout kibocsátási megjegyzések](https://aka.ms/asr-scout-release-notes).
 > * Ha ismételt védelem idején ugyanazokat a lemezek aktív mindegyik fürtcsomópont, amikor az eredetileg védett, majd egy fizikai MSCS-fürt ismételt védelem csak felhasználhatja meglévő lemezeit. Ha nem, majd kövesse a manuális szakaszában 12 [Site Recovery Scout kibocsátási megjegyzések](https://aka.ms/asr-scout-release-notes), a cél egymás lemezek áthelyezése a megfelelő adattároló elérési útját, újból ismételt védelem során. A P2V módban MSCS-fürt frissítési lépések nélkül ismételt védelme, ha a céloldali ESXi-kiszolgálón létrehoz egy új lemezt. Szüksége lesz a régi lemezt manuálisan törölje az adattárhoz.
-> * Ha a forrás SLES11 vagy SLES11 (az összes szervizcsomaggal) kiszolgáló szabályosan újraindul, majd manuális megjelöléséhez a **legfelső szintű** lemez replikációs párok újbóli szinkronizáláshoz. Nincs a CX felületen nem kap értesítést. Ha a legfelső szintű lemez újraszinkronizálásra nem jelöli be, megfigyelheti az adatok épségével kapcsolatos problémákat.
+> * Ha a forrás SLES11 vagy SLES11 (az összes szervizcsomaggal) kiszolgáló szabályosan újraindul, majd manuális megjelöléséhez a **legfelső szintű** lemez replikációs párok újbóli szinkronizáláshoz. Nincs a CX felületen nem kap értesítést. Ha a legfelső szintű lemez újraszinkronizálásra nem jelöli be, megfigyelheti az adatok épségével kapcsolatos problémákat.
 
 
 ### <a name="azure-site-recovery-scout-801-update-4"></a>Az Azure Site Recovery Scout 8.0.1 Update 4

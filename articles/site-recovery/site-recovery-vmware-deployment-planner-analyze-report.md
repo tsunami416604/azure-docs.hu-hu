@@ -1,21 +1,21 @@
 ---
-title: Azure Site Recovery Deployment Planner – VMware – Azure | Microsoft Docs
-description: Ez a cikk az Azure Site Recovery Deployment Planner VMware – Azure forgatókönyvére vonatkozó jelentést ismerteti.
-services: site-recovery
+title: Vész-helyreállítási VMware Azure-bA az Azure Site Recovery Deployment Planner jelentés elemzése |} A Microsoft Docs
+description: Ez a cikk ismerteti az Azure Site Recovery Deployment Planner a VMware-vészhelyreállításhoz az Azure-bA a létrehozott jelentés elemzése.
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: e6aa3a8c788fe06a528a9c363a28faffa0a9ca88
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: d709b13aaf6b6ee9a913484ed503da1e76982d17
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094088"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213916"
 ---
-# <a name="azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery Deployment Planner-jelentés
+# <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>A VMware-vészhelyreállításhoz az Azure-bA az Azure Site Recovery Deployment Planner jelentés elemzése
+
 Az elkészített Microsoft Excel-jelentés a következő táblázatokat tartalmazza:
 ## <a name="on-premises-summary"></a>Helyszíni összefoglalás
 A Helyszíni összefoglalás munkalap áttekintést nyújt arról a VMware-környezetről, amelyről profilt készített.

@@ -1,21 +1,20 @@
 ---
-title: Egy többszintes Azure Site Recovery használatával az IIS-alapú webes alkalmazás replikálása |} A Microsoft Docs
+title: Vészhelyreállítás beállítása egy többszintes Azure Site Recovery használatával az IIS-alapú webes alkalmazás fo |} A Microsoft Docs
 description: Ismerje meg, hogyan replikáljon az IIS webkiszolgáló farm virtuális gépek Azure Site Recovery használatával.
-services: site-recovery
 author: nsoneji
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 830ced767a34302a635b9e685a2aee60c95fc81f
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: bac995829e90fea35eebf5e5e57a0ffb85bbba0c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920848"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211825"
 ---
-# <a name="replicate-a-multi-tier-iis-based-web-application"></a>Egy többrétegű az IIS-alapú webes alkalmazás replikálása
+# <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Vészhelyreállítás beállítása a többrétegű az IIS-alapú webalkalmazás
 
 Alkalmazás szoftver egy szervezet üzleti termelékenység motorját. A webalkalmazások különböző a szervezeten belüli különböző célt szolgálhat ki. Előfordulhat, hogy egyes alkalmazások, például a bérszámfejtési feldolgozását, a pénzügyi alkalmazások és az ügyfelek által használt webhelyeken használt alkalmazásokat a szervezet kritikus fontosságú. Termelékenység az adatvesztés elkerülése érdekében, fontos a szervezet számára, hogy ezek az alkalmazások folyamatosan folyamatosan üzemben rendelkezik. Ami még fontosabb hogy ezek az alkalmazások folyamatosan rendelkezésre álló megakadályozhatja kárt a márkáról vagy a szervezet képe.
 

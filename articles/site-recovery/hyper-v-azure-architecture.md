@@ -1,20 +1,20 @@
 ---
-title: Hyper-V – Azure replikációs architektúra az Azure Site Recovery |} A Microsoft Docs
-description: Ez a cikk áttekintést nyújt a helyszíni Hyper-V (VMM nélküli) virtuális gépeknek az Azure Site Recovery szolgáltatással az Azure-ba történő replikációjakor használt összetevőkről és architektúráról.
+title: Hyper-V – Azure vészhelyreállítási helyreállítási architektúra az Azure Site Recovery |} A Microsoft Docs
+description: Ez a cikk összetevőkről és architektúráról vész-helyreállítási a helyszíni Hyper-V virtuális gépek (VMM nélkül) az Azure-bA az Azure Site Recovery szolgáltatásban való üzembe helyezése során használt áttekintést nyújt.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 49059415c5f96eeb4dd871e7d2c8ae4ab9b2c12e
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 23b12f5b0423f717e96ec1f59480f0175648c75f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078358"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210652"
 ---
-# <a name="hyper-v-to-azure-replication-architecture"></a>Hyper-V – Azure-replikáció architektúrája
+# <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V – Azure vészhelyreállítási recovery architektúrájáról
 
 
 Ez a cikk azt ismerteti, architektúrájának és folyamatainak replikálni, a feladatátvétel és helyreállítás a Hyper-V virtuális gépek (VM) a helyszíni Hyper-V-gazdagépek és az Azure között használt használatával a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás.

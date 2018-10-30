@@ -10,12 +10,12 @@ ms.component: bing-video-search
 ms.topic: conceptual
 ms.date: 1/25/2018
 ms.author: rosh
-ms.openlocfilehash: 3d8656748a9632ac20b6a658e4bcbdd647c0573e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 951ab55d737a4344c5523aad2991c42fa143316e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224681"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214494"
 ---
 # <a name="bing-search-sdk"></a>A Bing Search SDK
 A Bing Videókeresési API minták közé tartoznak a forgatókönyvek, amelyek:
@@ -25,14 +25,14 @@ A Bing Videókeresési API minták közé tartoznak a forgatókönyvek, amelyek:
 4.  A lekérdezés a videó gazdag információt használatával például a forrás a videót, cím, stb.
 
 A Bing Search SDK-k győződjön webes keresőt könnyen elérhető, az alábbi programozási nyelveken:
-* Ismerkedés a [.NET-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+* Ismerkedés a [.NET-mintákkal](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
     * [NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VideoSearch/1.2.0)
-    * Lásd még: [.NET-kódtárakra](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Search/BingVideoSearch) definíciókat és függőségeit.
-* Ismerkedés a [Node.js-minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples) 
-    * Lásd még: [Node.js kódtárak](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/videoSearch) definíciókat és függőségeit.
-* Ismerkedés a [Java-példák](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples) 
-    * Lásd még: [Java-kódtárak](h https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch) definíciókat és függőségeit.
-* Ismerkedés a [példák Python programnyelvhez](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) 
-    * Lásd még: [Python-kódtárakat](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-search-videosearch) definíciókat és függőségeit.
+    * További definíciókat és függőségeket találhat a [.NET-kódtárakban](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Search/BingVideoSearch).
+* Ismerkedés a [Node.js-mintákkal](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples) 
+    * További definíciókat és függőségeket találhat a [Node.js-kódtárakban](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/videoSearch).
+* Ismerkedés a [Java-mintákkal](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples) 
+    * További definíciókat és függőségeket találhat a [Java-kódtárakban](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch).
+* Ismerkedés a [Python-mintákkal](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) 
+    * További definíciókat és függőségeket találhat a [Python-kódtárakban](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-search-videosearch).
 
-SDK-minták az egyes nyelvekhez Előfeltételek és a minták telepítése/futó fontos fájljai tartalmazzák.
+Az egyes nyelvek SDK-mintái tartalmaznak egy ReadMe-fájlt, amely a minták előfeltételeivel és a telepítésükkel/futtatásukkal kapcsolatos információkat tartalmaz.

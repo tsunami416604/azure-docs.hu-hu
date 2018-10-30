@@ -1,6 +1,6 @@
 ---
-title: Site Recovery-tároló törlése
-description: Ismerje meg, hogyan lehet törölni az Azure Site Recovery-tároló, a Site Recovery forgatókönyv alapján.
+title: Az Azure Site Recovery szolgáltatás konfigurált a Recovery Services-tároló törlése
+description: Ismerje meg az Azure Site Recovery konfigurálása a Recovery Services-tároló törlése
 author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
@@ -8,14 +8,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 9c4a88d8a3d63555a57bd5553b721cfbcd77df2c
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: f351bd715baf86407c249e13aa02cf3c37e374c4
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971188"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212420"
 ---
-# <a name="delete-a-site-recovery-vault"></a>Site Recovery-tároló törlése
+# <a name="delete-a-site-recovery-recovery-services-vault"></a>Site Recovery helyreállítási tár törlése
 
 Függőségek megakadályozzák az az Azure Site Recovery-tároló törlése. Milyen lépéseket kell tennie a Site Recovery forgatókönyv függ. Az Azure Backup tároló törlése, lásd: [törlése az Azure Backup-tároló](../backup/backup-azure-delete-vault.md).
 

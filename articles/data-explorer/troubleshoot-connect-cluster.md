@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f66dcc55b01b407c59c65ea300757ab4ee1002ac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d10d39a65acd3664c99e8b5aa5cc015a76d9d1aa
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965058"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209377"
 ---
 # <a name="troubleshoot-failure-to-connect-to-a-cluster-in-azure-data-explorer"></a>Elhárítása: Hiba az Adatkezelőben az Azure-fürthöz való csatlakozáshoz
 
@@ -31,4 +31,4 @@ Ha Ön nem tud csatlakozni az Azure Data Explorer egy fürt, kövesse az alábbi
 
     Ha az állapot nem **jó** (zöld pipa), próbálja meg a fürthöz való csatlakozás után az állapot javítja.
 
-1. Ha továbbra is a probléma megoldásához segítségre van szüksége, nyisson egy támogatási kérelmét a [az Azure portal](https://portal.azure.com).
+1. Ha továbbra is a probléma megoldásához segítségre van szüksége, nyisson egy támogatási kérelmét a [az Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).

@@ -1,21 +1,21 @@
 ---
-title: Támogatási mátrixa a VMM-ben a Hyper-V virtuális gépek replikálása másodlagos helyre az Azure Site Recovery felhők |} A Microsoft Docs
+title: Támogatási mátrixa a VMM-ben a Hyper-V virtuális gépek vészhelyreállítása egy másodlagos helyre az Azure Site Recovery felhők |} A Microsoft Docs
 description: Hyper-V virtuális gép replikációja egy másodlagos helyre az Azure Site Recovery VMM-felhőkben támogatását összegzi.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: e1a0ee2a9ad958a5938569927a489785edd8ee1f
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 3203ae48163ba325c8dad2f29c9f566e330928b5
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078838"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214290"
 ---
-# <a name="support-matrix-for-replication-of-hyper-v-vms-to-a-secondary-site"></a>A Hyper-V virtuális gépek replikálása másodlagos helyre támogatási mátrix
+# <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>A Hyper-V virtuális gépek vészhelyreállítása egy másodlagos helyre támogatási mátrix
 
 Ez a cikk összefoglalja, mit támogat használatakor a [Azure Site Recovery](site-recovery-overview.md) szolgáltatást, hogy a Hyper-V virtuális gépek replikálása másodlagos helyre a System Center Virtual Machine Manager (VMM) felhőkben felügyelt. Ha azt szeretné, a Hyper-V virtuális gépek replikálása az Azure-ba, tekintse át a [a támogatási mátrix](hyper-v-azure-support-matrix.md).
 

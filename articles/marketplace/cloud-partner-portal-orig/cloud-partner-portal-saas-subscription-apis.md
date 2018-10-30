@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c9ed3f3511def085f5e0658bbcbd7978e3a7ce20
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 9ffb67a2d3d07e75df29070ca198bac1661f95cc
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079315"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212964"
 ---
 <a name="saas-sell-through-azure---apis"></a>SaaS-értékesítési Azure - API-k segítségével
 ==============================
 
-Ez a cikk bemutatja, hogyan hozhat létre egy SaaS-ajánlatok API-kkal. Ha rendelkezik értékesítési kiválasztott Azure-on keresztül, amely lehetővé teszi, hogy az SaaS-ajánlat előfizetéseinek az API-k szükségesek. Ha szeretne létrehozni, amelyen nincs engedélyezve a kereskedelmi rendszeres SaaS listaelem, tekintse meg a [SaaS alkalmazás műszaki közzétételi Guide]./cloud-partner-portal-saas-offers-tech-publishing-guide.md).
+Ez a cikk bemutatja, hogyan hozhat létre egy SaaS-ajánlatok API-kkal. Ha rendelkezik értékesítési kiválasztott Azure-on keresztül, amely lehetővé teszi, hogy az SaaS-ajánlat előfizetéseinek az API-k szükségesek. Ha szeretne létrehozni, amely nem kereskedelmi engedélyezve van, tekintse meg rendszeres SaaS listaelem [SaaS alkalmazás – műszaki közzétételi útmutató](./cloud-partner-portal-saas-offers-tech-publishing-guide.md).
 
 Ez a cikk két részből áll:
 
@@ -189,10 +189,10 @@ A POST művelet oldja meg a végpont lehetővé teszi a felhasználóknak oldja 
 
 | **Paraméter neve** | **Adattípus** | **Leírás**                       |
 |--------------------|---------------|---------------------------------------|
-| id                 | Sztring        | Az SaaS-előfizetés azonosítója.          |
-| subscriptionName| Sztring| Az SaaS-előfizetés beállítása az Azure-ban a felhasználó a SaaS-szolgáltatásra előfizető neve.|
-| Ajánlat azonosítója            | Sztring        | Ajánlat azonosítója, amelyre a felhasználó előfizetett. |
-| planId             | Sztring        | Tervezze meg, hogy a felhasználó előfizetett azonosítója.  |
+| id                 | Karakterlánc        | Az SaaS-előfizetés azonosítója.          |
+| subscriptionName| Karakterlánc| Az SaaS-előfizetés beállítása az Azure-ban a felhasználó a SaaS-szolgáltatásra előfizető neve.|
+| Ajánlat azonosítója            | Karakterlánc        | Ajánlat azonosítója, amelyre a felhasználó előfizetett. |
+| planId             | Karakterlánc        | Tervezze meg, hogy a felhasználó előfizetett azonosítója.  |
 |  |  |  |
 
 
@@ -440,9 +440,9 @@ Ez a végpont lehetővé teszi a felhasználó egy aktivált aszinkron művelet 
 
 | **Paraméter neve** | **Adattípus** | **Leírás**                                                                                                                                               |
 |--------------------|---------------|-------------------------------------------------------------------------------------------|
-| id                 | Sztring        | A művelet azonosítója.                                                                      |
+| id                 | Karakterlánc        | A művelet azonosítója.                                                                      |
 | status             | Enum          | A művelet állapotát, a következők egyikét: `In Progress`, `Succeeded`, vagy `Failed`.          |
-| resourceLocation   | Sztring        | Az előfizetést, amelyhez a létrehozott vagy módosított mutató hivatkozás. Ez segít az ügyfél megszerezni a frissítve állapotot post műveletet. Ez az érték nincs beállítva `Unsubscribe` műveleteket. |
+| resourceLocation   | Karakterlánc        | Az előfizetést, amelyhez a létrehozott vagy módosított mutató hivatkozás. Ez segít az ügyfél megszerezni a frissítve állapotot post műveletet. Ez az érték nincs beállítva `Unsubscribe` műveleteket. |
 | létrehozva            | DateTime      | A művelet létrehozásának időpontja (UTC).                                                           |
 | módosítás dátuma       | DateTime      | Utolsó frissítése (UTC), a műveletet.                                                      |
 |  |  |  |
@@ -509,10 +509,10 @@ A Get műveletet az előfizetési végpont lehetővé teszi, hogy egy felhaszná
 ```
 | **Paraméter neve**     | **Adattípus** | **Leírás**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id                     | Sztring        | Előfizetés erőforrás azonosítója, SaaS az Azure-ban.    |
-| OfferId                | Sztring        | Ajánlat azonosítója, amelyre a felhasználó előfizetett.         |
-| planId                 | Sztring        | Tervezze meg, hogy a felhasználó előfizetett azonosítója.          |
-| saasSubscriptionName   | Sztring        | Az SaaS-előfizetés neve.                |
+| id                     | Karakterlánc        | Előfizetés erőforrás azonosítója, SaaS az Azure-ban.    |
+| OfferId                | Karakterlánc        | Ajánlat azonosítója, amelyre a felhasználó előfizetett.         |
+| planId                 | Karakterlánc        | Tervezze meg, hogy a felhasználó előfizetett azonosítója.          |
+| saasSubscriptionName   | Karakterlánc        | Az SaaS-előfizetés neve.                |
 | saasSubscriptionStatus | Enum          | A művelet állapotát.  A következők egyikét:  <br/> - `Subscribed`: Előfizetés már aktív.  <br/> - `Pending`: A felhasználó létrehozása az erőforrás, de nem aktiválódik, a független szoftvergyártó.   <br/> - `Unsubscribed`: A felhasználó leiratkozott rendelkezik.   <br/> - `Suspended`: A felhasználó felfüggesztette az előfizetést.   <br/> - `Deactivated`: Az azure-előfizetés fel van függesztve.  |
 | létrehozva                | DateTime      | Előfizetés létrehozása időbélyeg értékét (UTC). |
 | módosítás dátuma           | DateTime      | Előfizetés módosítása időbélyegző-érték (UTC). |
@@ -583,10 +583,10 @@ A Get műveletet előfizetések végponton lehetővé teszi, hogy egy felhaszná
 
 | **Paraméter neve**     | **Adattípus** | **Leírás**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id                     | Sztring        | Előfizetés erőforrás azonosítója, SaaS az Azure-ban.    |
-| OfferId                | Sztring        | Ajánlat azonosítója, amelyre a felhasználó előfizetett.         |
-| planId                 | Sztring        | Tervezze meg, hogy a felhasználó előfizetett azonosítója.          |
-| saasSubscriptionName   | Sztring        | Az SaaS-előfizetés neve.                |
+| id                     | Karakterlánc        | Előfizetés erőforrás azonosítója, SaaS az Azure-ban.    |
+| OfferId                | Karakterlánc        | Ajánlat azonosítója, amelyre a felhasználó előfizetett.         |
+| planId                 | Karakterlánc        | Tervezze meg, hogy a felhasználó előfizetett azonosítója.          |
+| saasSubscriptionName   | Karakterlánc        | Az SaaS-előfizetés neve.                |
 | saasSubscriptionStatus | Enum          | A művelet állapotát.  A következők egyikét:  <br/> - `Subscribed`: Előfizetés már aktív.  <br/> - `Pending`: A felhasználó létrehozása az erőforrás, de nem aktiválódik, a független szoftvergyártó.   <br/> - `Unsubscribed`: A felhasználó leiratkozott rendelkezik.   <br/> - `Suspended`: A felhasználó felfüggesztette az előfizetést.   <br/> - `Deactivated`: Az azure-előfizetés fel van függesztve.  |
 | létrehozva                | DateTime      | Előfizetés létrehozása időbélyeg értékét (UTC). |
 | módosítás dátuma           | DateTime      | Előfizetés módosítása időbélyegző-érték (UTC). |

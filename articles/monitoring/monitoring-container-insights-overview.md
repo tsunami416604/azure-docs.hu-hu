@@ -1,5 +1,5 @@
 ---
-title: Tárolók az Azure Monitor szolgáltatás áttekintése |} A Microsoft Docs
+title: Tárolók (előzetes verzió) az Azure Monitor szolgáltatás áttekintése |} A Microsoft Docs
 description: Ez a cikk ismerteti az Azure Monitor-tárolókhoz, amely figyeli az AKS Container Insights megoldás és az érték azt tesz lehetővé, hogy az AKS-fürt és az Azure Container Instances állapotának figyelése.
 services: azure-monitor
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 6819cf96eb968e8faad5441cf3f3dd672653f1cd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 13fde8a4ec4ecf43b9997d5d4d181a232505626f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971433"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212998"
 ---
-# <a name="azure-monitor-for-containers-overview"></a>Az Azure Monitor tárolók áttekintése
+# <a name="azure-monitor-for-containers-preview-overview"></a>Az Azure Monitor tárolók (előzetes verzió) – áttekintés
 
 Az Azure Monitor for containers szolgáltatásban üzembe helyezett Azure Kubernetes Service (AKS) az üzemeltetett Kubernetes-fürtök felügyelt tárolókhoz kapcsolódó számítási feladatok teljesítményének figyelésére tervezett funkciója. A tárolók alapvető fontosságú, különösen akkor, ha nagy mennyiségű, több alkalmazással rendelkező egy éles fürtöt futtat.
 

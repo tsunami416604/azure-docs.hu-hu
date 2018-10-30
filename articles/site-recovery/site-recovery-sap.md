@@ -1,27 +1,23 @@
 ---
-title: Többrétegű SAP NetWeaver alkalmazás központi telepítése az Azure Site Recovery védelme |} A Microsoft Docs
-description: Ez a cikk ismerteti, hogyan védheti meg az SAP NetWeaver alkalmazás-KözpontiTelepítés Azure Site Recovery használatával.
-services: site-recovery
-documentationcenter: ''
+title: Állítsa be a vész-helyreállítási többrétegű SAP NetWeaver alkalmazás üzembe helyezése az Azure Site recoveryvel |} A Microsoft Docs
+description: Ez a cikk ismerteti, hogyan állítható be SAP NetWeaver-alkalmazások központi telepítése az Azure Site Recovery használata vész-helyreállítási.
 author: asgang
 manager: rochakm
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: a498ac9f973bbcf87bec104f18b542cc7e8b5800
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: c83cf9fb319c21881f0db8bd94dc9a94a3b811bc
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318690"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211723"
 ---
-# <a name="protect-a-multi-tier-sap-netweaver-application-deployment-by-using-site-recovery"></a>Egy többrétegű SAP NetWeaver alkalmazás központi telepítésének védeni a Site Recovery használatával
+# <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Egy többrétegű SAP NetWeaver alkalmazás üzembe helyezése a vészhelyreállítás beállítása
 
 A legtöbb nagy méretű és közepes méretű SAP-környezetekhez valamilyen vész-helyreállítási megoldást használja. A robusztus és testable vészhelyreállítási megoldások fontosságát, több alapvető üzleti folyamatokat, mint az SAP alkalmazások áthelyezett nőtt. Az Azure Site Recovery tesztelte, és az SAP-alkalmazások integrált. A Site Recovery meghaladja a legtöbb helyszíni vészhelyreállítási megoldások, és egy alacsonyabb teljes birtoklási költség (TCO) versengő megoldások, mint a képességeket.
 
@@ -62,7 +58,7 @@ Azt javasoljuk, hogy az infrastruktúra létrehozásához, a Site Recovery üzem
 
 Ez a referenciaarchitektúra bemutatja, az SAP NetWeaver környezetben futó Windows Azure-ban magas rendelkezésre állású.  Ez az architektúra, amely a szervezet igényeinek megfelelően módosíthatja adott virtuális gép (VM) méretek van telepítve.
 
-![Az SAP üzembe helyezési jellegzetes ábrája](./media/site-recovery-sap/reference_sap.png)
+![Az SAP üzembe helyezési jellegzetes ábrája](./media/site-recovery-sap/sap-netweaver_latest.png)
 
 ## <a name="disaster-recovery-considerations"></a>Vészhelyreállítási szempontok
 

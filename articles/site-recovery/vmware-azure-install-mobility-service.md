@@ -1,19 +1,19 @@
 ---
-title: A mobilitási szolgáltatás (VMware vagy fizikai az Azure-bA) telepítése |} A Microsoft Docs
-description: Ismerje meg, hogy a védelme érdekében a helyszíni VMware virtuális gépek és fizikai kiszolgálók az Azure Site Recovery mobilitási szolgáltatás ügynökének telepítése.
+title: Telepítse a mobilitási szolgáltatás VMware virtuális gépek és fizikai kiszolgálók vészhelyreállítása az Azure-bA |} A Microsoft Docs
+description: Ismerje meg, hogyan kell telepíteni a mobilitási szolgáltatás ügynökének vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók az Azure-bA az Azure Site Recovery szolgáltatással.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: 094c1776c0760c04d85aff6ad3d812a2ad7afa56
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 145affbcff128e0ec599ad1f97c79260b0dcae5a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526997"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212692"
 ---
-# <a name="install-the-mobility-service"></a>A mobilitási szolgáltatás telepítése 
+# <a name="install-the-mobility-service-for-disaster-recovery-of-vmware-vms-and-physical-servers"></a>A VMware virtuális gépek és fizikai kiszolgálók vészhelyreállítása a mobilitási szolgáltatás telepítése
 
 Az Azure Site Recovery mobilitási szolgáltatás VMware virtuális gépeken és fizikai kiszolgálók Azure-bA replikálni kívánt telepítve van. A szolgáltatás rögzíti az adatok írásáért egy számítógépen, és továbbítja őket a folyamatkiszolgálónak. Minden olyan számítógép (a VMware virtuális gépek vagy fizikai kiszolgáló), amely az Azure-bA replikálni kívánt mobilitási szolgáltatás üzembe helyezése. A mobilitási szolgáltatást a kiszolgálókon és a VMware virtuális gépeket szeretné a védelmét, a következő módszerekkel helyezhető üzembe:
 
@@ -113,7 +113,7 @@ Az alábbi módszerek valamelyikével távolítsa el a mobilitási szolgáltatá
 2. Válassza ki **a Microsoft Azure Site Recovery mobilitási szolgáltatás vagy fő célkiszolgálóként kiszolgáló**, majd válassza ki **Eltávolítás**.
 
 ### <a name="uninstall-at-a-command-prompt"></a>Távolítsa el a parancsot a parancssorba
-1. Nyisson meg egy parancssori ablakot rendszergazdaként.
+1. Nyissa meg a parancssori ablakot rendszergazdaként.
 2. Távolítsa el a mobilitási szolgáltatást, futtassa a következő parancsot:
 
     ```

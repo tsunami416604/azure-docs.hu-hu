@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
 ms.author: harijay
-ms.openlocfilehash: facd9be037894932e516e8294e36b6b0e55374c8
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 2cde7d2af4dee9e2bd241f0856b8f2d29ccad6ad
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024416"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210737"
 ---
 # <a name="virtual-machine-serial-console"></a>Virtuális gépek soros konzolja
 
@@ -54,20 +54,26 @@ A virtuális gépek soros konzolon keresztül csak érhető el [az Azure portal]
   4. Görgessen le a támogatás és hibaelhárítás szakaszhoz, és kattintson a "Soros konzol" lehetőséget. A soros konzol segítségével egy új panel megnyitja és indítsa el a kapcsolatot.
 
 ## <a name="enable-serial-console-in-custom-or-older-images"></a>Soros konzol engedélyezése egyéni vagy régebbi képeken
-Újabb Windows Server-rendszerképeket az Azure-ban kell [speciális felügyeleti konzol](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) alapértelmezés szerint engedélyezve van. SAC a Windows server-verziók esetében támogatott, de nem áll rendelkezésre az ügyfél-verziók (például a Windows 10, Windows 8 vagy Windows 7). Ahhoz, hogy a 2018 Februárja előtt létrehozott Windows virtuális gépek soros konzolon, használja az alábbi lépéseket: 
+Újabb Windows Server-rendszerképeket az Azure-ban kell [speciális felügyeleti konzol](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) alapértelmezés szerint engedélyezve van. SAC a Windows server-verziók esetében támogatott, de nem áll rendelkezésre az ügyfél-verziók (például a Windows 10, Windows 8 vagy Windows 7). 
+
+A régebbi Windows Server-rendszerképeket (a 2018 Februárja előtt létrehozott) automatikusan engedélyezheti a soros konzol futtatása paranccsal a szolgáltatás az Azure Portalon keresztül. Keresse meg az Azure Portalon "EnableEMS" nevű futtatása paranccsal.
+
+![](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-runcommand.png)
+
+Azt is megteheti a soros konzol a 2018 Februárja előtt létrehozott Windows virtuális gépek manuális engedélyezéséhez használja az alábbi lépéseket: 
 
 1. Csatlakozás a Windows virtuális géphez a távoli asztalon keresztül
-2. Egy rendszergazdai parancssorból a következő parancsok futtatásával. 
-* `bcdedit /ems {current} on`
-* `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
-3. Indítsa újra a rendszert a SAC konzol engedélyezni kell
+1. Egy rendszergazdai parancssorból a következő parancsok futtatásával. 
+    * `bcdedit /ems {current} on`
+    * `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
+1. Indítsa újra a rendszert a SAC konzol engedélyezni kell
 
-![](/media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
+![](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
 
 Szükség esetén a SAC is engedélyezése kapcsolat nélküli módban is:
 
 1. SAC adatlemezként meglévő virtuális géphez konfigurált kívánt windows-lemez csatolása. 
-2. Egy rendszergazdai parancssorból a következő parancsok futtatásával. 
+1. Egy rendszergazdai parancssorból a következő parancsok futtatásával. 
 * `bcdedit /store <mountedvolume>\boot\bcd /ems {default} on`
 * `bcdedit /store <mountedvolume>\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 

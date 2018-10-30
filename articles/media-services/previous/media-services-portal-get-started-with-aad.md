@@ -1,114 +1,114 @@
 ---
-title: Ismerkedés az Azure AD-alapú hitelesítés az Azure portál használatával |} Microsoft Docs
-description: 'Útmutató: Azure Active Directory (Azure AD-) hitelesítést használ az Azure Media Services API eléréséhez használja az Azure-portálon.'
+title: Ismerkedés az Azure AD-hitelesítés az Azure portal használatával |} A Microsoft Docs
+description: Útmutató az Azure portal használata az Azure Active Directory (Azure AD-) hitelesítést használhat az Azure Media Services API eléréséhez.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/17/2017
+ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: 6267dd8dca4c932d4a4d96b34a8eaa26f6a59c20
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: bae134d30bd175656e4da9121bca8dbfcfe7fcdd
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790327"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50229459"
 ---
-# <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>Ismerkedés az Azure AD-alapú hitelesítés az Azure portál használatával
+# <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>Ismerkedés az Azure AD-hitelesítés az Azure portal használatával
 
-Útmutató az Azure portál Azure Active Directory (Azure AD-) hitelesítés az Azure Media Services API eléréséhez elérésére használhat.
+Ismerje meg, hogyan használható az Azure portal eléréséhez az Azure Active Directory (Azure AD-) hitelesítést az Azure Media Services API eléréséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Azure-fiók. Ha nincs fiókja, kezdje egy [Azure ingyenes próbát](https://azure.microsoft.com/pricing/free-trial/). 
-- Egy Media Services-fiók. További információkért lásd: [Azure Media Services-fiók létrehozása az Azure-portál használatával](media-services-portal-create-account.md).
-- Győződjön meg arról, hogy tekintse át a [eléréséhez Azure Media Services API-t az Azure AD hitelesítési áttekintés](media-services-use-aad-auth-to-access-ams-api.md). 
+- Egy Azure-fiók. Ha nem rendelkezik fiókkal, kezdje egy [Azure ingyenes próbaverziója](https://azure.microsoft.com/pricing/free-trial/). 
+- Egy Media Services-fiók. További információkért lásd: [Azure Media Services-fiók létrehozása az Azure portal használatával](media-services-portal-create-account.md).
+- Győződjön meg arról, hogy tekintse át a [elérése az Azure Media Services API Azure AD-hitelesítés – áttekintés](media-services-use-aad-auth-to-access-ams-api.md). 
 
-Az Azure AD-alapú hitelesítés használatakor az Azure Media Services hitelesítési két lehetőség közül választhat:
+Az Azure AD-hitelesítés használatakor az Azure Media Services két hitelesítési lehetősége van:
 
-- **Felhasználó hitelesítése**. Hitelesítés a személy, aki használja az alkalmazás interakciót Media Services-erőforrásokkal. Az interaktív alkalmazás először kell kérni a felhasználót a hitelesítő adatokat. Példa: egy kódolási feladatok figyelése, vagy live streaming jogosult felhasználók által használt felügyeleti konzol alkalmazást. 
-- **Szolgáltatás egyszerű hitelesítési**. A szolgáltatás hitelesítéséhez. Ezt a hitelesítési módszert gyakran használó alkalmazások olyan alkalmazások, amelyeket démon szolgáltatások, a középső rétegbeli szolgáltatások vagy az ütemezett feladatok futtatása: webalkalmazások, függvény alkalmazások, a logic apps, API-k vagy egy mikroszolgáltatási.
+- **Felhasználói hitelesítés**. A személy, aki használja az alkalmazást az való kommunikációhoz a Media Services-erőforrások hitelesítéséhez. Az interaktív alkalmazás először kéri a felhasználótól a hitelesítő adatokat. Ilyen például, a kódolási feladatok figyelésére, vagy az élő adások online közvetítése jogosult felhasználók által használt felügyeleti konzolalkalmazást. 
+- **Egyszerű szolgáltatásnév hitelesítése**. Egy szolgáltatás hitelesítéséhez. Ezt a hitelesítési módszert gyakran használó alkalmazások olyan alkalmazások, amelyeket démonszolgáltatásokat, a középső rétegű services vagy az ütemezett feladatok futtatása: web apps, a függvényalkalmazások, a logic apps, API-k vagy mikroszolgáltatások.
 
 > [!IMPORTANT]
-> A Media Services jelenleg az Azure hozzáférés-vezérlés szolgáltatásmodell-hitelesítés. Azonban a 2018. június 1 elavulttá válik hozzáférés-vezérlés engedélyt. Javasoljuk, hogy mielőbb térjen át az Azure AD-hitelesítési modellre.
+> Jelenleg a Media Services az Azure Access Control service hitelesítési modellt támogatja. Azonban a hozzáférés-vezérlés engedélyezési érvénytelenné válnak 2018. június 1. Javasoljuk, hogy mielőbb térjen át az Azure AD-hitelesítési modellre.
 
 ## <a name="select-the-authentication-method"></a>A hitelesítési módszer kiválasztása
 
-1. Az a [Azure-portálon](https://portal.azure.com/), válassza ki a Media Services-fiókját.
-2. Válassza ki a Kapcsolódás a Media Services API.
+1. Az a [az Azure portal](https://portal.azure.com/), válassza ki a Media Services-fiókját.
+2. Válassza ki a Media Services API-t kapcsolódás.
 
     ![Válassza ki a csatlakozási módszer lapja](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started01.png)
 
 ## <a name="user-authentication"></a>Felhasználóhitelesítés
 
-A Media Services API segítségével csatlakozni a felhasználói hitelesítést választja, az ügyfélalkalmazás van szüksége, kérje az Azure AD jogkivonatban az alábbi paraméterekkel rendelkezik:  
+A felhasználó hitelesítési lehetőség használatával csatlakozni a Media Services API-t, az ügyfélalkalmazás van szüksége az Azure AD-token a következő paraméterekkel rendelkező kérelem:  
 
-* Azure AD-bérlő végpont
-* A Media Services erőforrás URI azonosítója
-* A Media Services (natív) alkalmazás ügyfél-azonosító 
-* Media Services (natív) alkalmazás átirányítási URI 
-* Erőforrás URI azonosítója a többi Media Services szolgáltatásokhoz
+* Az Azure AD-bérlő végpont
+* A Media Services-erőforrás-URI
+* A Media Services (natív) alkalmazás Ügyfélazonosítója 
+* A Media Services (natív) alkalmazás átirányítási URI 
+* Erőforrás URI-t a Media Services – REST
 
-Kaphat az értékeket a paraméterek a **Media Services API és a felhasználói hitelesítés** lap. 
+Megtekintheti az értékeket a paraméterek a **Media Services API-hoz felhasználói hitelesítéssel** lapot. 
 
 ![Csatlakozás a felhasználói hitelesítés lap](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started02.png)
 
-A Media Services Microsoft .NET SDK használatával kapcsolódik a Media Services API-t, ha a szükséges értékeket rendelkezésére álljanak a SDK részeként. További információkért lásd: [elérni az Azure Media Services API a .NET hitelesítés használata az Azure AD](media-services-dotnet-get-started-with-aad.md).
+A Media Services a Microsoft .NET SDK-val csatlakozik a Media Services API-t, ha a szükséges értékek lesznek elérhetők az SDK részeként. További információkért lásd: [eléréséhez az Azure Media Services API .NET-keretrendszerrel történő hitelesítés használata az Azure AD](media-services-dotnet-get-started-with-aad.md).
 
-Ha nem használja a Media Services .NET SDK ügyfél, manuálisan kell létrehoznia az Azure AD-jogkivonatkérelem a korábban tárgyalt paraméterek használatával. További információkért lásd: [hogyan használható az Azure AD Authentication Library az Azure AD-token beszerzése](../../active-directory/develop/active-directory-authentication-libraries.md).
+Ha a Media Services .NET client SDK nem használ, manuálisan kell létrehoznia egy Azure AD-jogkivonatkérelem a korábban említett paraméterek használatával. További információkért lásd: [jogkivonat beszerzése az Azure AD használata az Azure AD Authentication Library](../../active-directory/develop/active-directory-authentication-libraries.md).
 
 ## <a name="service-principal-authentication"></a>Egyszerű szolgáltatásnév hitelesítése
 
-Csatlakozás a Media Services API a szolgáltatás egyszerű lehetőséget, a középső rétegbeli (webes API-t vagy webalkalmazás) kell kérjen egy Azure AD-tokent, amely a következő paraméterekkel rendelkezik:  
+A szolgáltatás egyszerű lehetőség használatával csatlakozni a Media Services API-t, a középső rétegbeli alkalmazás (webes API-t vagy webes alkalmazás) van szüksége az Azure AD-token a következő paraméterekkel rendelkező kérelem:  
 
-* Azure AD-bérlő végpont
-* A Media Services erőforrás URI azonosítója 
-* Erőforrás URI azonosítója a többi Media Services szolgáltatásokhoz
-* Az Azure AD alkalmazás értékeket: a **ügyfél-azonosító** és **ügyfélkulcs**
+* Az Azure AD-bérlő végpont
+* A Media Services-erőforrás-URI 
+* Erőforrás URI-t a Media Services – REST
+* Az Azure AD-alkalmazás értékeire: a **ügyfél-azonosító** és **titkos Ügyfélkód**
 
-Kaphat az értékeket a paraméterek a **kapcsolódás a Media Services API-t a szolgáltatás egyszerű** lap. Ezen a lapon hozzon létre egy új Azure AD-alkalmazást, vagy válasszon ki egy meglévőt. Miután kiválasztotta az Azure AD-alkalmazáshoz, az ügyfél-azonosítót (Alkalmazásazonosító), és az ügyfél titkos (kulcs) értékek generálásához. 
+Megtekintheti az értékeket a paraméterek a **kapcsolódás a Media Services API-hoz szolgáltatásnévvel** lapot. Ezen a lapon hozzon létre egy új Azure AD-alkalmazást, vagy válasszon ki egy meglévőt. Miután kiválasztotta az Azure AD-alkalmazás, ügyfél-azonosító (Alkalmazásazonosító) beszerzése, és az ügyfél titkos kulcs (kulcs) értékek létrehozásához. 
 
-![Csatlakozás szolgáltatás egyszerű lap](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started04.png)
+![Szolgáltatás egyszerű oldal összekapcsolása](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started04.png)
 
-Ha a **egyszerű** panel nyílik meg, az első Azure AD-alkalmazás, amely megfelel a következő elemet:
+Ha a **szolgáltatásnév** panel nyílik meg, az első Azure AD-alkalmazást, amely megfelel a következő feltételeknek van kiválasztva:
 
 - Egy regisztrált Azure AD-alkalmazást.
-- A fiók közreműködői vagy Owner Role-Based hozzáférés-vezérlés engedéllyel rendelkezik.
+- A fiók közreműködői vagy hozzáférés-vezérlés Owner Role-Based engedélyekkel rendelkezik.
 
-Miután hoz létre, vagy válasszon ki egy Azure AD-alkalmazást, hozhat létre, és másolja át egy ügyfélkulcsot (kulcs) és az ügyfél-azonosító (Alkalmazásazonosító). A titkos ügyfélkulcs és ügyfél-azonosító eléréséhez az ebben a forgatókönyvben token szükségesek.
+Miután hoz létre, vagy válassza ki az Azure AD-alkalmazás, hozzon létre, és másolja ki az ügyfél titkos kulcs (kulcs) és az ügyfél-azonosító (Alkalmazásazonosító). A titkos Ügyfélkód és ügyfél-Azonosítót a hozzáférési jogkivonat ebben a forgatókönyvben beszerzése szükségesek.
 
-Ha nem rendelkezik engedélyekkel az Azure AD-alkalmazásai létrehozására a tartományban, a panel az Azure AD alkalmazás vezérlők nem láthatók, és megjelenik egy figyelmeztető üzenet.
+Ha nem rendelkezik a tartományban lévő Azure AD-alkalmazások létrehozásához szükséges engedélyek, az Azure AD alkalmazás-vezérlők a panel nem látható, és a egy figyelmeztető üzenet jelenik meg.
 
-Ha a Media Services .NET SDK használatával kapcsolódik a Media Services API-t, tekintse meg [elérni az Azure Media Services API a .NET hitelesítés használata az Azure AD](media-services-dotnet-get-started-with-aad.md).
+Ha a Media Services .NET SDK használatával csatlakozik a Media Services API-t, tekintse meg [eléréséhez az Azure Media Services API .NET-keretrendszerrel történő hitelesítés használata az Azure AD](media-services-dotnet-get-started-with-aad.md).
 
-Ha nem használ a Media Services .NET SDK ügyfél, manuálisan kell létrehoznia egy Azure AD-jogkivonatkérelem, a korábban tárgyalt paraméterek használatával. További információkért lásd: [hogyan használható az Azure AD Authentication Library az Azure AD-token beszerzése](../../active-directory/develop/active-directory-authentication-libraries.md).
+Ha nem a Media Services .NET client SDK-t használ, manuálisan kell létrehoznia egy Azure ad-ben jogkivonat kérése a korábban ismertetett paraméterekkel. További információkért lásd: [jogkivonat beszerzése az Azure AD használata az Azure AD Authentication Library](../../active-directory/develop/active-directory-authentication-libraries.md).
 
-### <a name="get-the-client-id-and-client-secret"></a>Az ügyfél-azonosító és a titkos ügyfélkódot beolvasása
+### <a name="get-the-client-id-and-client-secret"></a>Az ügyfél-azonosító és titkos Ügyfélkód
 
-Válasszon ki egy meglévő Azure AD-alkalmazást, vagy hozzon létre egy újat választja, a következő gombok jelennek meg:
+Válasszon ki egy meglévő Azure AD alkalmazást, vagy hozzon létre egy új beállítással után az alábbi gombok jelennek meg:
 
 ![Engedélyek és kezelés alkalmazás gomb kezelése](./media/media-services-portal-get-started-with-aad/media-services-portal-manage.png)
 
-Az Azure AD alkalmazás panel megnyitásához kattintson **alkalmazás kezeléséhez**. Az a **alkalmazás kezeléséhez** panelen kaphat az alkalmazás ügyfél-azonosító (Alkalmazásazonosító). Egy ügyfélkulcsot (kulcs) létrehozásához, jelölje be **kulcsok**.
+Az Azure AD-alkalmazás paneljén megnyitásához kattintson a **alkalmazás kezeléséhez**. Az a **alkalmazás kezeléséhez** panelen megtekintheti az alkalmazás ügyfél-azonosító (Alkalmazásazonosító). Ügyfél titkos kulcs (kulcs) létrehozásához válassza **kulcsok**.
 
-![Alkalmazás panel kulcsok beállítás kezelése](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started06.png) 
+![Alkalmazás panelen kulcs lehetőség kezelése](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started06.png) 
 
 ### <a name="manage-permissions-and-the-application"></a>Engedélyek és az alkalmazás kezelése
 
-Miután kiválasztotta az Azure AD-alkalmazás, kezelheti az alkalmazás és az engedélyek. Más alkalmazások elérése az Azure AD alkalmazás beállításához kattintson **kezeli az engedélyeket**. A fájlkezelési feladatok, például megváltoztatni a kulcsok és a válasz URL-címek, illetve módosíthatja az alkalmazás jegyzékében, kattintson a **alkalmazás kezeléséhez**.
+Miután kiválasztotta az Azure AD-alkalmazás, kezelheti az alkalmazás és az engedélyek. Az Azure AD-alkalmazás más alkalmazás-hozzáférési beállításához kattintson **kezelheti az engedélyeiket**. Kattintson a felügyeleti feladatokat, például a kulcsok és a válasz URL-címek módosítása, vagy szerkesztheti az alkalmazás jegyzékfájlját, **alkalmazás kezeléséhez**.
 
-### <a name="edit-the-apps-settings-or-manifest"></a>Az alkalmazás beállításainak módosítása vagy manifest
+### <a name="edit-the-apps-settings-or-manifest"></a>Az alkalmazás beállításainak szerkesztése vagy manifest
 
-Az alkalmazás beállításai vagy jegyzékfájl szerkesztéséhez kattintson **alkalmazás kezeléséhez**.
+Az alkalmazás beállításait, vagy a jegyzékfájl szerkesztéséhez kattintson **alkalmazás kezeléséhez**.
 
 ![Alkalmazások lap kezelése](./media/media-services-portal-get-started-with-aad/media-services-portal-get-started05.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerkedés a [fájlok feltöltése a fiókjához](media-services-portal-upload-files.md).
+Ismerkedés a [fájlokat tölthet fel a fiók](media-services-portal-upload-files.md).

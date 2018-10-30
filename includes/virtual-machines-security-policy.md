@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 4887dbcc89180c54b8e991e6fa152463476c5ce9
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227312"
+---
 Fontos a futtatott alkalmazások biztonságát a virtuális gép (VM). A virtuális gépek védelme is tartalmazhat, egy vagy több Azure-szolgáltatásokat és funkciókat, mind a biztonságos hozzáférés a virtuális gépek és az adatok biztonságos tárolását. Ez a cikk nyújt információt, amely lehetővé teszi a virtuális gép és az alkalmazások biztonságának megőrzéséhez.
 
 ## <a name="antimalware"></a>Kártevőirtó
@@ -26,7 +39,7 @@ Virtuális gépek csatlakozni, ha a nyilvános kulcsú jelentkezzen be őket egy
 
 A felhőalapú alkalmazások készítése során általános kihívást jelenti a hitelesítő adatok a kódban való kezelése, amelyekkel az alkalmazás magát a felhőalapú szolgáltatásokban hitelesíti. A hitelesítő adatok biztonságának megőrzése fontos feladat. Ideális esetben a hitelesítő adatok soha nem jelennek meg a fejlesztői munkaállomásokon, és a verziókövetési rendszerbe sem kerülnek be. Az Azure Key Vault módot kínál a hitelesítő adatok, titkos kódok és egyéb kulcsok biztonságos tárolására, azonban a kódnak hitelesítenie kell magát a Key Vaultban az adatok lekéréséhez. 
 
-Az Azure-erőforrások szolgáltatásokhoz az Azure Active Directoryban (Azure AD) a felügyelt identitásokból megoldja a problémát. A szolgáltatás automatikusan felügyelt identitást biztosít az Azure-szolgáltatások számára az Azure AD-ben. Ezzel az identitással bármely, az Azure AD-hitelesítést támogató szolgáltatásban, többek között a Key Vaultban is elvégezheti a hitelesítést anélkül, hogy a hitelesítő adatok a kódban szerepelnének.  A kódot, amely a virtuális gép fut-e elérhető csak a virtuális gépen két végpontot is jogkivonatot kérhet. További részletes információ a szolgáltatásról, tekintse át a [felügyelt identitások az Azure-erőforrások](../articles/active-directory/managed-identities-azure-resources/overview.md) – áttekintés oldalra.   
+Az Azure Active Directory (Azure AD) Azure-erőforrások felügyelt identitásai szolgáltatása megoldást kínál erre a problémára. A szolgáltatás automatikusan felügyelt identitást biztosít az Azure-szolgáltatások számára az Azure AD-ben. Ezzel az identitással bármely, az Azure AD-hitelesítést támogató szolgáltatásban, többek között a Key Vaultban is elvégezheti a hitelesítést anélkül, hogy a hitelesítő adatok a kódban szerepelnének.  A kódot, amely a virtuális gép fut-e elérhető csak a virtuális gépen két végpontot is jogkivonatot kérhet. További részletes információ a szolgáltatásról, tekintse át a [felügyelt identitások az Azure-erőforrások](../articles/active-directory/managed-identities-azure-resources/overview.md) – áttekintés oldalra.   
 
 ## <a name="policies"></a>Házirendek
 

@@ -1,22 +1,20 @@
 ---
-title: Az Azure Site Recovery az Azure-bA helyszíni hálózati adapterek kezelése |} A Microsoft Docs
-description: Ismerteti, hogyan lehet az Azure-bA az Azure Site Recovery helyszíni hálózati adapterek kezelése
-services: site-recovery
+title: Az Azure Site Recovery a helyszíni vészhelyreállítás az Azure hálózati adapterek kezelése |} A Microsoft Docs
+description: Ismerteti, hogyan lehet az Azure-bA az Azure Site Recovery a helyszíni vész-helyreállítási hálózati adapterek kezelése
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 0ca2d32910e57042d2cbc9d3b772d226d835b545
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: afa8dfc39177e3f15db0092691d910b6b2cd3764
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352410"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212454"
 ---
-# <a name="manage-virtual-machine-network-interfaces-for-on-premises-to-azure-replication"></a>Az Azure-bA helyszíni virtuális gép hálózati adapterek kezelése
-
+# <a name="manage-virtual-machine-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Az Azure-bA a helyszíni vész-helyreállítási virtuális gép hálózati adapterek kezelése
 Az Azure-beli virtuális gép (VM) rendelkeznie kell legalább egy hálózati adapter csatlakozik. Hálózati adapter csatlakozik a virtuális gép mérete támogatja, mint rendelkezhet.
 
 Alapértelmezés szerint az első hálózati adapter egy Azure virtuális géphez csatolt számít, ha az elsődleges hálózati adapter. A virtuális gép más hálózati adapterek másodlagos hálózati adapterek. Is alapértelmezés szerint minden kimenő forgalom a virtuális gép küldése az elsődleges hálózati adapter elsődleges IP-konfigurációhoz rendelt IP-címét.

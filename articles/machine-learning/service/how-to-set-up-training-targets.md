@@ -10,18 +10,18 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 7754e93035a5f76d31f6a4202c757c909706a52a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 2c4255b70ae9eb3b31b6fdfce33853f0d517aa1f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156935"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215480"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>Válassza ki, és a egy számítási célnak használja a modell betanításához
 
-Az Azure Machine Learning szolgáltatással akkor is számos különböző környezetekben modellje betanításához. Ezekben a környezetekben, nevű __számítási céljainak__, helyi vagy a felhőben. Ebből a dokumentumból megtanulhatja a támogatott számítási célokhoz és azok használatát.
+Az Azure Machine Learning szolgáltatással, segítségével különböző környezetekben modellje betanításához. Ezekben a környezetekben, nevű __számítási céljainak__, helyi vagy a felhőben. Ebben a dokumentumban megismerkedhet a támogatott számítási célokhoz és azok használatát.
 
-Egy számítási célnak, hogy az erőforrás a tanítási szkriptet vagy futtató gazdagépek a modell telepítése webszolgáltatásként. Ezeket a hozhatók létre és kezeli az Azure Machine Learning SDK vagy parancssori felület használatával. Ha rendelkezik (például az Azure Portalon vagy az Azure CLI) egy másik folyamat által létrehozott számítási célnak, használhatja őket az Azure Machine Learning szolgáltatás munkaterületén csatolásával.
+Egy számítási célnak, hogy az erőforrás, amely a tanítási szkriptet futtatja, vagy futtatja a modellt webszolgáltatásként telepítésekor. Ezeket a hozhatók létre és kezeli az Azure Machine Learning SDK vagy parancssori felület használatával. Ha rendelkezik (például az Azure Portalon vagy az Azure CLI) egy másik folyamat által létrehozott számítási célnak, használhatja őket az Azure Machine Learning szolgáltatás munkaterületén csatolásával.
 
 Indítsa el a helyi fut a gépen, és ezután más környezetekben, például a távoli Data Science virtuális gépek a GPU-n és az Azure Batch AI vertikális felskálázás és kibővítés. 
 
@@ -36,8 +36,13 @@ Az Azure Machine Learning szolgáltatás a következő számítási célnak tám
 |----|:----:|:----:|:----:|:----:|
 |[Helyi számítógép](#local)| Talán | &nbsp; | ✓ | &nbsp; |
 |[Adatelemző virtuális gép (DSVM)](#dsvm) | ✓ | ✓ | ✓ | ✓ |
-|[Az Azure Batch AI](#batch)| ✓ | ✓ | ✓ | ✓ | ✓ |
+|[Az Azure Batch AI](#batch)| ✓ | ✓ | ✓ | ✓ |
+|[Azure Databricks](#databricks)| &nbsp; | &nbsp; | &nbsp; | ✓[*](#pipeline-only) |
+|[Az Azure Data Lake Analytics](#adla)| &nbsp; | &nbsp; | &nbsp; | ✓[*](#pipeline-only) |
 |[Az Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
+
+> [!IMPORTANT]
+> <a id="pipeline-only"></a>* Az azure Databricks és az Azure Data Lake Analytics képes __csak__ egy folyamatban használni. A folyamatok további információkért lásd: a [folyamatokat az Azure Machine Learning](concept-ml-pipelines.md) dokumentumot.
 
 __[Az Azure Container Instances (aci) Szolgáltatásban](#aci)__  modelleket taníthat be is használható. Egy kiszolgáló nélküli felhőalapú szolgáltatás, amely költségkímélő és könnyen hozhat létre, és dolgozhat. ACI nem támogatja a GPU-gyorsítás, hangolása, automatizált hyper paraméter, vagy az automatizált modell kiválasztása. Ezenkívül azt nem használható egy folyamatban.
 
@@ -52,7 +57,7 @@ Az Azure Machine Learning SDK, Azure CLI-vel vagy az Azure portal használatáva
 > [!IMPORTANT]
 > Meglévő Azure-tárolók példány a munkaterülethez nem csatolható. Ehelyett hozzon létre egy új példányát.
 >
-> Nem hozható létre egy Azure HDInsight-fürtön belül a munkaterülethez. Ehelyett egy meglévő fürthöz kell csatolnia.
+> Az Azure HDInsight, az Azure Databricks és az Azure Data Lake Store nem hozható létre a munkaterületen belül. Ehelyett kell létrehozni az erőforrást, és csatolja a munkaterületet.
 
 ## <a name="workflow"></a>Munkafolyamat
 
@@ -311,6 +316,106 @@ Is igénybe vehet néhány másodperc, néhány perc alatt létrehozni egy ACI s
 
 Jupyter Notebook azt mutatja be, az Azure-Tárolópéldányon képzés, lásd: [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci/03.train-on-aci.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci/03.train-on-aci.ipynb).
 
+## <a id="databricks"></a>Az Azure Databricks
+
+Az Azure Databricks egy Apache Spark-alapú környezetben az Azure-felhőben. Az Azure Machine Learning-folyamat modellek betanításakor számítási célt, használható.
+
+> [!IMPORTANT]
+> Az Azure Databricks számítási célnak csak akkor használható a Machine Learning folyamat.
+>
+> Létre kell hoznia egy Azure Databricks-munkaterület és a modell betanításához. Ezek az erőforrás létrehozásához tekintse meg a [Spark-feladatok futtatása Azure Databricksen](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) dokumentumot.
+
+Csatlakoztassa az Azure Databricks, egy számítási célnak, az Azure Machine Learning SDK, és adja meg a következő információkat:
+
+* __Számítási neve__: a számítási erőforrás hozzárendelni kívánt nevét.
+* __Erőforrás-azonosító__: az Azure Databricks-munkaterület erőforrás-Azonosítóját. A következő szöveg arra példát, ez az érték formátuma:
+
+    ```text
+    /subscriptions/<your_subscription>/resourceGroups/<resource-group-name>/providers/Microsoft.Databricks/workspaces/<databricks-workspace-name>
+    ```
+
+    > [!TIP]
+    > Az erőforrás-azonosító lekéréséhez használja az Azure CLI-parancsot. Cserélje le `<databricks-ws>` a Databricks-munkaterület nevét:
+    > ```azurecli-interactive
+    > az resource list --name <databricks-ws> --query [].id
+    > ```
+
+* __Hozzáférési jogkivonat__: A hozzáférési jogkivonatot az Azure databricks hitelesítéséhez. Hozzáférési jogkivonat létrehozásához, tekintse meg a [hitelesítési](https://docs.azuredatabricks.net/api/latest/authentication.html) dokumentumot.
+
+A következő kód bemutatja, hogyan csatlakoztathat Azure Databricks, egy számítási célnak mutat be:
+
+```python
+databricks_compute_name = os.environ.get("AML_DATABRICKS_COMPUTE_NAME", "<databricks_compute_name>")
+databricks_resource_id = os.environ.get("AML_DATABRICKS_RESOURCE_ID", "<databricks_resource_id>")
+databricks_access_token = os.environ.get("AML_DATABRICKS_ACCESS_TOKEN", "<databricks_access_token>")
+
+try:
+    databricks_compute = ComputeTarget(workspace=ws, name=databricks_compute_name)
+    print('Compute target already exists')
+except ComputeTargetException:
+    print('compute not found')
+    print('databricks_compute_name {}'.format(databricks_compute_name))
+    print('databricks_resource_id {}'.format(databricks_resource_id))
+    print('databricks_access_token {}'.format(databricks_access_token))
+    databricks_compute = DatabricksCompute.attach(
+             workspace=ws,
+             name=databricks_compute_name,
+             resource_id=databricks_resource_id,
+             access_token=databricks_access_token
+         )
+    
+    databricks_compute.wait_for_completion(True)
+```
+
+## <a id="adla"></a>Az Azure Data Lake Analytics
+
+Az Azure Data Lake Analytics egy big data-elemzési platform az Azure-felhőben. Az Azure Machine Learning-folyamat modellek betanításakor számítási célt, használható.
+
+> [!IMPORTANT]
+> Az Azure Data Lake Analytics számítási célnak csak akkor használható a Machine Learning folyamat.
+>
+> Létre kell hoznia egy Azure Data Lake Analytics-fiók és a modell betanításához. Ez az erőforrás létrehozásához tekintse meg a [Ismerkedés az Azure Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal) dokumentumot.
+
+Csatlakoztassa a Data Lake Analytics számítási célként, az Azure Machine Learning SDK, és adja meg a következő információkat:
+
+* __Számítási neve__: a számítási erőforrás hozzárendelni kívánt nevét.
+* __Erőforrás-azonosító__: a Data Lake Analytics-fiók erőforrás-Azonosítóját. A következő szöveg arra példát, ez az érték formátuma:
+
+    ```text
+    /subscriptions/<your_subscription>/resourceGroups/<resource-group-name>/providers/Microsoft.DataLakeAnalytics/accounts/<datalakeanalytics-name>
+    ```
+
+    > [!TIP]
+    > Az erőforrás-azonosító lekéréséhez használja az Azure CLI-parancsot. Cserélje le `<datalakeanalytics>` nevét a Data Lake Analytics-fiók neve:
+    > ```azurecli-interactive
+    > az resource list --name <datalakeanalytics> --query [].id
+    > ```
+
+A következő kód bemutatja, hogyan csatlakoztathat a Data Lake Analytics számítási célként mutat be:
+
+```python
+adla_compute_name = os.environ.get("AML_ADLA_COMPUTE_NAME", "<adla_compute_name>")
+adla_resource_id = os.environ.get("AML_ADLA_RESOURCE_ID", "<adla_resource_id>")
+
+try:
+    adla_compute = ComputeTarget(workspace=ws, name=adla_compute_name)
+    print('Compute target already exists')
+except ComputeTargetException:
+    print('compute not found')
+    print('adla_compute_name {}'.format(adla_compute_name))
+    print('adla_resource_id {}'.format(adla_resource_id))
+    adla_compute = AdlaCompute.attach(
+             workspace=ws,
+             name=adla_compute_name,
+             resource_id=adla_resource_id
+         )
+    
+    adla_compute.wait_for_completion(True)
+```
+
+> [!TIP]
+> Az Azure Machine Learning-folyamatokat a Data Lake Analytics-fiók az alapértelmezett data store-ban tárolt adatokkal folytatott csak működik. Ha adatokat kell a munkahelyi egy nem alapértelmezett tároló, használhat egy [ `DataTransferStep` ](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) képzési előtt az adatok másolásához.
+
 ## <a id="hdinsight"></a>Egy HDInsight-fürt csatolása 
 
 HDInsight egy népszerű big-data elemzési platform. Az Apache Spark, amely a modell betanításához használható biztosít.
@@ -351,8 +456,19 @@ run_config.auto_prepare_environment = True
 ```
 
 ## <a name="submit-training-run"></a>Küldje el a betanítási Futtatás
-    
-A betanítási Futtatás elküldésére szolgáló kód azonos, függetlenül a számítási célt:
+
+A betanítási Futtatás elküldése két módja van:
+
+* Küldjön egy `ScriptRunConfig` objektum.
+* Küldjön egy `Pipeline` objektum.
+
+> [!IMPORTANT]
+> Az Azure Databricks Azure Datalake-Analytics és Azure HDInsight számítási céljainak csak akkor használható a folyamat.
+> A helyi számítási célnak a folyamat nem használható.
+
+### <a name="submit-using-scriptrunconfig"></a>Küldés használatával `ScriptRunConfig`
+
+A képzési elküldésére szolgáló kód minta fusson, `ScriptRunConfig` azonos, függetlenül a számítási célt:
 
 * Hozzon létre egy `ScriptRunConfig` objektumot használ a számítási célnak a futtatási konfigurációtól.
 * Küldje el a futtatást.
@@ -360,13 +476,46 @@ A betanítási Futtatás elküldésére szolgáló kód azonos, függetlenül a 
 
 Az alábbi példa a konfigurációt használja, a jelen dokumentum korábbi szakaszában létrehozott helyi számítási rendszer által felügyelt cél:
 
-```pyghon
+```python
 src = ScriptRunConfig(source_directory = script_folder, script = 'train.py', run_config = run_config_system_managed)
 run = exp.submit(src)
 run.wait_for_completion(show_output = True)
 ```
 
 Jupyter Notebook azt mutatja be, a Spark on HDInsight-képzés, lásd: [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark/05.train-in-spark.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark/05.train-in-spark.ipynb).
+
+### <a name="submit-using-a-pipeline"></a>Küldje el a folyamat használata
+
+A kód a képzési fusson, a folyamat elküldése azonos, függetlenül a számítási célnak a mintát:
+
+* Lépés hozzáadása a folyamathoz a számítási erőforrás.
+* Küldjön el egy futtatás, a folyamat használatával.
+* Várjon, amíg a Futtatás befejeződik.
+
+Az alábbi példában az Azure Databricks számítási célnak a jelen dokumentum korábbi létrehozva:
+
+```python
+dbStep = DatabricksStep(
+    name="databricksmodule",
+    inputs=[step_1_input],
+    outputs=[step_1_output],
+    num_workers=1,
+    notebook_path=notebook_path,
+    notebook_params={'myparam': 'testparam'},
+    run_name='demo run name',
+    databricks_compute=databricks_compute,
+    allow_reuse=False
+)
+# list of steps to run
+steps = [dbStep]
+pipeline = Pipeline(workspace=ws, steps=steps)
+pipeline_run = Experiment(ws, 'Demo_experiment').submit(pipeline)
+pipeline_run.wait_for_completion()
+```
+
+További információ a machine learning-folyamatokat, tekintse meg a [folyamatok és az Azure Machine Learning](concept-ml-pipelines.md) dokumentum.
+
+Például a Jupyter Notebooks, amelyek bemutatják a képzést nyújt egy folyamatot, tekintse meg [ https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline ](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline).
 
 ## <a name="view-and-set-up-compute-using-the-azure-portal"></a>Megtekintheti, és állítsa be a compute az Azure portal használatával
 
@@ -387,11 +536,18 @@ A fenti lépésekkel számítási célnak listájának megtekintéséhez, és a 
 
 1. Adjon meg egy nevet a számítási célnak.
 1. Válassza ki a számítási csatolni a __képzési__. 
+
+    > [!IMPORTANT]
+    > Nem minden számítási típusok az Azure portal használatával hozható létre. Jelenleg a képzéshez létrehozható típusok a következők:
+    > 
+    > * Virtuális gép
+    > * Batch AI
+
 1. Válassza ki __hozzon létre új__ és az űrlap kitöltésekor. 
 1. Kattintson a __Létrehozás__ elemre.
 1. Megtekintheti az állapotát a listából a számítási tároló-létrehozási művelet.
 
-    ![Compute-lista megtekintése](./media/how-to-set-up-training-targets/View_list.png) ekkor megjelenik a számítási erőforrások részleteit.
+    ![Compute-lista megtekintése](./media/how-to-set-up-training-targets/View_list.png) ekkor megjelenik a számítási célnak részleteit.
     ![Részletek megtekintése](./media/how-to-set-up-training-targets/vm_view.PNG)
 1. Ezeken a célokon leírtaknak megfelelően a fenti elleni Futtatás most már küldhet.
 
@@ -401,8 +557,16 @@ A fenti lépésekkel számítási célnak listájának megtekintéséhez, majd k
 
 1. Kattintson a **+** bejelentkezés hozzáadása egy számítási célnak.
 2. Adjon meg egy nevet a számítási célnak.
-3. Válassza ki a számítási képzéshez csatolni. A Batch AI és a virtuális gépek jelenleg támogatott képzéshez a portálon.
-4. Válassza ki a "Meglévő használata".
+3. Válassza ki a számítási képzéshez csatolni.
+
+    > [!IMPORTANT]
+    > Nem az összes számítási típus lehet csatolni a portál használatával.
+    > Jelenleg a képzéshez csatolható típusok a következők:
+    > 
+    > * Virtuális gép
+    > * Batch AI
+
+1. Válassza ki a "Meglévő használata".
     - Batch AI-fürtök csatlakoztatása, válassza ki a számítási célnak a legördülő listából, válassza ki a Batch AI-munkaterület és a Batch AI-fürtöt, és kattintson **létrehozás**.
     - Csatlakoztatása egy virtuális gépet, adja meg az IP-címe, felhasználónév/jelszó kombináció, privát és nyilvános kulcsok és a portot, és kattintson a Létrehozás gombra.
 
@@ -412,7 +576,7 @@ A fenti lépésekkel számítási célnak listájának megtekintéséhez, majd k
     > * [Hozzon létre és használhat SSH-kulcsokat a Linux vagy macOS rendszeren]( https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
     > * [Hozzon létre és SSH-kulcsok használata a Windows]( https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
 
-5. Válassza ki a számítási célnak a számítási erőforrások listáját megtekintheti a kiépítési állapota állapotát.
+5. A kiépítési állapotot az állapotát megtekintheti a számítási célnak a listából.
 6. Ezeken a célokon elleni Futtatás most már küldhet.
 
 ## <a name="examples"></a>Példák

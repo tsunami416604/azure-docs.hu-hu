@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 0e46caf855bca184ff8a714d2c93d573b910fea8
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226536"
+---
 Könnyen [automatikus méretezése](../articles/monitoring-and-diagnostics/insights-autoscale-best-practices.md) a [virtuális gépeken (VM)](../articles/virtual-machines/windows/overview.md) használatakor [a virtual machine scale sets](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) és a [az Azure automatikus skálázási funkcióval A figyelő](../articles/monitoring-and-diagnostics/monitoring-overview-autoscale.md). A virtuális gépek kell lennie egy méretezési csoport automatikus skálázását tagjai. Ez a cikk nyújt információt, amely lehetővé teszi, hogy jobban megértheti a virtuális gépek vertikális és horizontális skálázást végezhet módszerekkel automatikus és manuális méretezése.
 
 ## <a name="horizontal-or-vertical-scaling"></a>Vízszintes vagy függőleges skálázás

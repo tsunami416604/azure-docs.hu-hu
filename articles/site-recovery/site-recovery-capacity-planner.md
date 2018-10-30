@@ -1,27 +1,20 @@
 ---
-title: Az Azure-ban a replikáció kapacitás becslése |} A Microsoft Docs
-description: Ez a cikk segítségével kapacitás becsült replikálhat az Azure Site Recovery használatával
-services: site-recovery
-documentationcenter: ''
+title: Kapacitás megtervezése a Hyper-V vészhelyreállítás az Azure Site Recoveryvel |} A Microsoft Docs
+description: Ez a cikk segítségével megbecsülheti a kapacitás beállítása az Azure Site Recovery szolgáltatással vészhelyreállítás során.
 author: rayne-wiselman
-manager: jwhit
-editor: ''
-ms.assetid: 0a1cd8eb-a8f7-4228-ab84-9449e0b2887b
+manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 10/11/2018
-ms.author: nisoneji
-ms.openlocfilehash: 3df7bd5ed44bdf514d48e451468329bd11fdf596
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.date: 10/28/2018
+ms.author: raynew
+ms.openlocfilehash: f600471e8a3602628a5040051f382e6e020f29d5
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094037"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211417"
 ---
-# <a name="plan-capacity-for-protecting-hyper-v-vms-with-site-recovery"></a>Kapacitás megtervezése a Hyper-V virtuális gépek védelmének a Site Recovery
+# <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Kapacitás megtervezése a Hyper-V-beli virtuális gépek vészhelyreállításához 
 
 A továbbfejlesztett verziójának [Azure Site Recovery Deployment Planner a Hyper-V – Azure-beli](site-recovery-hyper-v-deployment-planner.md) már elérhető. Lecseréli a régi eszközt. Az új eszköz használata az üzembe helyezés megtervezése.
 Az eszköz biztosítja a következő irányelveket:

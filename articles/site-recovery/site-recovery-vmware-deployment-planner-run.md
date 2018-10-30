@@ -1,21 +1,20 @@
 ---
-title: Azure Site Recovery Deployment Planner – VMware – Azure | Microsoft Docs
-description: Ez a cikk az Azure Site Recovery Deployment Planner futtatásának módjait ismerteti a VMware – Azure forgatókönyvhöz.
-services: site-recovery
+title: Futtassa az Azure Site Recovery Deployment Planner a VMware-vészhelyreállításhoz az Azure-bA |} A Microsoft Docs
+description: Ez a cikk ismerteti, hogyan futtathat Azure Site Recovery Deployment Planner a VMware-vészhelyreállításhoz az Azure-bA.
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: f83ab78cae17859dc28349cf7c435d7101c5fa3b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: b890dce5d94c2177c8fc8cdb5477b92df15c8095
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093159"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211026"
 ---
-# <a name="run-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Az Azure Site Recovery Deployment Planner VMware – Azure-hoz futtatása
+# <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Futtassa az Azure Site Recovery Deployment Planner a VMware-vészhelyreállításhoz az Azure-bA
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
 
 

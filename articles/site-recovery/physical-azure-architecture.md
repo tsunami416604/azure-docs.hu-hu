@@ -1,20 +1,20 @@
 ---
-title: Fizikai kiszolgálóról az Azure-bA architektúra az Azure Site Recovery |} A Microsoft Docs
-description: Ez a cikk áttekintést, ha a helyszíni fizikai kiszolgálók replikálása az Azure-bA az Azure Site Recovery szolgáltatással használt összetevőkről és architektúráról
+title: Az Azure-bA az Azure Site Recovery használata vész-helyreállítási fizikai kiszolgáló architektúrája |} A Microsoft Docs
+description: Ez a cikk a helyszíni fizikai kiszolgálók-Azure-bA az Azure Site Recovery szolgáltatással vészhelyreállítás során használt összetevőkről és architektúráról áttekintést nyújt.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 15e8e9ce7b12585f7ea89a0440fdb93cfb171feb
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 9dd60e31867e874ba59a6e2084714a22b661afdd
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077039"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213049"
 ---
-# <a name="physical-server-to-azure-replication-architecture"></a>Fizikai kiszolgálóról az Azure-replikáció architektúrája
+# <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Fizikai kiszolgáló Azure vész-helyreállítási architektúra
 
 Ez a cikk azt ismerteti, architektúrájának és folyamatainak használatos, ha replikálni, a feladatátvétel és helyreállítás a fizikai Windows és Linux-kiszolgálók között egy helyszíni hely és az Azure használatával a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás.
 

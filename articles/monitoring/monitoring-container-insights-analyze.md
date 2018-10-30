@@ -1,5 +1,5 @@
 ---
-title: AKS-fürt teljesítmény figyelése és az Azure Monitor-tárolókhoz |} A Microsoft Docs
+title: AKS-fürt teljesítmény monitorozása az Azure Monitor szolgáltatással tárolók (előzetes verzió) |} A Microsoft Docs
 description: Ez a cikk bemutatja, hogyan megtekintheti és a teljesítmény- és naplófájl-adatok elemzése az Azure Monitor for containers szolgáltatásban.
 services: azure-monitor
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 430145119721ac947162d3b661377290a0ae2c11
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: daec3d6e6cd8e4df3fdfe45fbb8ee98966c8a38e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637998"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214154"
 ---
-# <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Az AKS fürtteljesítmény és az Azure Monitor-tárolókhoz ismertetése
+# <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers-preview"></a>Megismerheti az AKS fürtteljesítmény az Azure Monitor szolgáltatással tárolók (előzetes verzió)
 Megtekintés a teljesítmény az Azure Kubernetes Service (AKS) fürtök figyelhető meg két perspektíva adatai és az Azure Monitor-tárolókhoz, közvetlenül a egy AKS-fürt vagy egy előfizetést az Azure Monitor összes AKS-fürt megtekintése. 
 
 Ez a cikk segít megérteni a felhasználói élményt a két perspektíva adatai, és hogyan gyorsan felmérheti, kivizsgálásán és elhárításán észlelt problémák között.

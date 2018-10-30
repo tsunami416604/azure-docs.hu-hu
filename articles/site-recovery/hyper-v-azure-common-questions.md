@@ -1,21 +1,21 @@
 ---
-title: Gyakori kérdések – a Hyper-V az Azure-bA az Azure Site Recoveryvel |} A Microsoft Docs
-description: Ez a cikk összefoglalja a helyszíni Hyper-V virtuális gépek replikálása az Azure-bA az Azure Site Recovery használatával kapcsolatos gyakori kérdésekre.
+title: Gyakori kérdések – a Hyper-V – Azure vészhelyreállítás az Azure Site Recoveryvel |} A Microsoft Docs
+description: Ez a cikk összefoglalja a vész-helyreállítási beállítása a helyszíni Hyper-V virtuális gépeket az Azure-bA az Azure Site Recovery-hely kapcsolat használatával kapcsolatos gyakori kérdésekre.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 7c5316aea2bfdb9a96b9aeb2dd5387b2643a92b2
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 6345cf47d19f7990e776e0fe4ec2bafd005c9cf2
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319727"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212488"
 ---
-# <a name="common-questions---hyper-v-to-azure-replication"></a>Gyakori kérdések – a Hyper-V Azure-bA
+# <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Gyakori kérdések – Hyper-V – Azure-beli vészhelyreállításához
 
 Ez a cikk gyakori kérdéseket, láthatjuk, ha a helyszíni Hyper-V virtuális gépek replikálása Azure-bA. 
 

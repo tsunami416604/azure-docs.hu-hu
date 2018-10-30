@@ -1,17 +1,17 @@
 ---
-title: Automatizálhatja a mobilitási szolgáltatás telepítése az Azure Site Recovery használatával a System Center Configuration Manager |} A Microsoft Docs
-description: Ez a cikk segítségével automatizálhatja a mobilitási szolgáltatás telepítése a System Center Configuration Manager használatával.
+title: Automatizálhatja az Azure Site Recovery mobilitási szolgáltatás VMware virtuális gépek vész-helyreállítási telepítését és fizikai kiszolgálók a System Center Configuration Manager használatával Azure-ban |} A Microsoft Docs
+description: Ez a cikk segítségével automatizálhatja a telepítés a mobilitási szolgáltatást a System Center Configuration Managerrel, a VMware virtuális gépek és fizikai kiszolgálók Azure Site Recovery használata vész-helyreállítási.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: 6aff17908d220557720776a2d7884adc28b5deee
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: f14c02404dae5a923aabcd2df8279a6150c42f57
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "37917169"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215293"
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>Automatizálhatja a mobilitási szolgáltatás telepítése a System Center Configuration Managerrel
 

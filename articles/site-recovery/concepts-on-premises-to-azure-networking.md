@@ -1,22 +1,21 @@
 ---
-title: IP-címzés beállítása az Azure-bA az Azure Site Recovery a feladatátvételt követően kapcsolódni |} A Microsoft Docs
-description: Ismerteti, hogyan állíthatja be az IP-címek az Azure virtuális géphez való kapcsolódásra a feladatátvételt követően a helyszínről az Azure Site Recoveryvel
+title: Az IP-címkezelést kapcsolódás után a vész-helyreállítási és az Azure-bA az Azure Site Recovery feladatátvételi |} A Microsoft Docs
+description: Ismerteti, hogyan állíthatja be az IP-címek az Azure virtuális géphez való kapcsolódásra vész-helyreállítási és a feladatátvétel után a helyszínről az Azure Site Recoveryvel
 services: site-recovery
-documentationcenter: ''
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 9b7797ba58a44e64460f4dbc58d562b4c470c043
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: ce7e5fde60503a969b88892be890173861fb15be
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353087"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215225"
 ---
-# <a name="set-up-ip-addressing-to-connect-after-failover-to-azure"></a>IP-címek az Azure-bA a feladatátvételt követően kapcsolódni beállítása
+# <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>Az IP-címkezelés Azure virtuális géphez való kapcsolódásra a feladatátvételt követően
 
 Ez a cikk ismerteti a hálózati követelmények használata után az Azure virtuális gépekhez való csatlakozáshoz a [Azure Site Recovery](site-recovery-overview.md) replikáció és feladatátvétel az Azure szolgáltatásba.
 

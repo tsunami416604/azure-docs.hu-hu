@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8882a44b0b6db1b3c23c017a072ebddfe9aa20f5
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 3adf0c9c2e2b264904e66b82716447d634aaeee7
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49090872"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209649"
 ---
 # <a name="import-a-power-bi-desktop-file"></a>A Power BI Desktop-fájl importálása
 
 Azure Analysis Services adatmodellt a Power BI Desktop-fájl (pbix) importálhatja. Modell metaadatainak, a gyorsítótárazott adatok és az adatforrás-kapcsolatok importálása. Jelentések és Vizualizációk nem lesznek importálva. Importált adatok a Power BI Desktopból modellek az 1400-as kompatibilitási szinten.
 
 > [!IMPORTANT]
-> Ez a funkció elavult. Előfordulhat, hogy azt eltávolították, vagy egy jövőbeli frissítéssel jelentősen módosult. Ajánlott, hogy megszakítja a meglévő és új projektek a funkciók segítségével fenntartja a jövőbeli frissítések kompatibilitást. Speciális modell fejlesztési és tesztelési célszerű a Visual Studio (SSDT) és az SQL Server Management Studio (SSMS) használja.
+> Ez a funkció elavult. Előfordulhat, hogy azt eltávolították, vagy egy jövőbeli frissítéssel jelentősen módosult. Ajánlott, hogy megszüntesse a funkció használatát az új és meglévő projekteket a jövőbeli frissítések való kompatibilitás megőrzése érdekében. Speciális modell fejlesztési és tesztelési célszerű a Visual Studio (SSDT) és az SQL Server Management Studio (SSMS) használja.
 
 **Korlátozások**   
 

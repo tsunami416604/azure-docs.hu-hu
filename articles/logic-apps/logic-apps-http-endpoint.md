@@ -1,8 +1,8 @@
 ---
-title: Hívja, indítsa el, vagy a HTTP-végpontok – Azure Logic Apps munkafolyamatok beágyazásához |} Microsoft Docs
-description: Állítson be HTTP-végpontokról hívja, eseményindító, vagy az Azure Logic Apps munkafolyamatok egymásba
+title: Hívása, aktiválása vagy beágyazása a HTTP-végpontokat – Azure Logic Apps-munkafolyamatok |} A Microsoft Docs
+description: Állítsa be a HTTP-végpontok hívása, eseményindító, vagy a munkafolyamatok beágyazása az Azure Logic Apps
 services: logic-apps
-keywords: munkafolyamatok, HTTP-végpontok
+keywords: a munkafolyamatok, HTTP-végpontokat
 author: jeffhollan
 manager: jeconnoc
 editor: ''
@@ -16,18 +16,18 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
 ms.author: klam; LADocs
-ms.openlocfilehash: 9c02a0f540f52007412a850b9d69e337743fc35f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 7920fee1bacf569ac41c36142fc68080b4de5780
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300198"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230488"
 ---
-# <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>Hívja, eseményindító, vagy a logic Apps alkalmazások a HTTP-végpontokról munkafolyamatok egymásba
+# <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>Hívása, eseményindító, vagy HTTP-végpontokat, a logic apps-munkafolyamatok beágyazása
 
-Is natív módon teszi ki szinkron HTTP-végpontokról a logic apps eseményindítóként használható, hogy indul el, vagy hívja a logic apps segítségével egy URL-címet. A logic Apps alkalmazásait is ágyazhatók be munkafolyamatok hívható végpontok egy mintát.
+Natív módon, közzéteheti a szinkron HTTP-végpontokat eseményindítóként, a logic apps szolgáltatásról, hogy indíthat, vagy hívja a logic apps egy URL-címmel. Beágyazhatja munkafolyamatok is a logikai alkalmazások használata hívható végpontok egy minta használatával.
 
-HTTP-végpontokat hoz létre, adja hozzá ezek az eseményindítók, hogy a logic apps bejövő kérelmek fogadására:
+HTTP-végpontokat létrehozni, ezek az eseményindítók úgy, hogy a logikai alkalmazások fogadhatnak bejövő kérések is hozzáadhat:
 
 * [Kérés](../connectors/connectors-native-reqres.md)
 
@@ -36,22 +36,22 @@ HTTP-végpontokat hoz létre, adja hozzá ezek az eseményindítók, hogy a logi
 * [HTTP Webhook](../connectors/connectors-native-webhook.md)
 
    > [!NOTE]
-   > Bár az ezekben a példákban a **kérelem** eseményindító, a felsorolt HTTP-eseményindítók bármelyikét használhatja, és az összes azonos alapelvek a többi eseményindító típusától.
+   > Bár az ezekben a példákban a **kérelem** eseményindító, bármilyen a felsorolt HTTP-eseményindítók és a farmja minden elvek vonatkoznak a triggerek típusának.
 
-## <a name="set-up-an-http-endpoint-for-your-logic-app"></a>A Logic Apps alkalmazást HTTP végpont beállítása
+## <a name="set-up-an-http-endpoint-for-your-logic-app"></a>Állítsa be a logikai alkalmazás egy HTTP-végpontot
 
-Hozzon létre egy HTTP-végpontot, vegyen fel egy eseményindítót, amely képes fogadni a beérkező kéréseket.
+Hozzon létre egy HTTP-végpontot, adja hozzá egy eseményindítót, amely képes fogadni a bejövő kérelmeket.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com "Azure Portal") Nyissa meg a logikai alkalmazáshoz, és nyissa meg a Logic App Tervező.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com "Azure Portal") Nyissa meg a logikai alkalmazást, és nyissa meg a Logikaialkalmazás-Tervező.
 
-2. Adjon hozzá egy eseményindító, amely lehetővé teszi, hogy a bejövő kérések fogadásához Logic Apps alkalmazást. Adja hozzá például a **kérelem** eseményindító a logikai alkalmazáshoz.
+2. Adjon hozzá egy eseményindítót, amely lehetővé teszi, hogy a logikai alkalmazás bejövő kérelmek fogadásához. Például adja hozzá a **kérelem** eseményindítót a logikai alkalmazáshoz.
 
-3.  A **kérelem törzse JSON-séma**, nem kötelezően megadhat egy JSON-séma az eseményindító fogadni várt tartalom (adatok).
+3.  A **kérelem Kéréstörzs JSON-sémája**, igény szerint megadhatja egy JSON-sémájában fogadásához az eseményindító várt adattartalom (adatok).
 
-    A Tervező, amellyel a Logic Apps alkalmazást használ, elemzi és adatok adhatók át az eseményindító a munkafolyamaton keresztül jogkivonatokat előállító használja ebben a sémában. 
-    További részletek [JSON-sémák alapján generált jogkivonatok](#generated-tokens).
+    A Tervező ebben a sémában jogkivonatokat, amelyeket a logikai alkalmazás használatával felhasználását, elemzése és adatokat átadni a munkafolyamaton keresztül az eseményindító létrehozásához használja. 
+    Többet is megtudhat [által létrehozott JSON-sémáinak jogkivonatok](#generated-tokens).
 
-    Ehhez a példához írja be a tervezőben megjelennek a séma:
+    Ebben a példában adja meg a sémában a tervezőben látható:
 
     ```json
     {
@@ -71,10 +71,10 @@ Hozzon létre egy HTTP-végpontot, vegyen fel egy eseményindítót, amely képe
 
     > [!TIP]
     > 
-    > A sémát a JSON hasznos generálása egy eszköz, például [jsonschema.net](http://jsonschema.net/), vagy a **kérelem** kiválasztásával eseményindító **séma létrehozásához használja a minta hasznos**. 
-    > Adjon meg a minta-adattartalmat, és válassza a **végzett**.
+    > Egy eszköz, például a sémát a JSON hasznosadat-minta is létrehozhat [jsonschema.net](http://jsonschema.net/), vagy a **kérelem** eseményindító kiválasztásával **Mintaadat használata séma létrehozásához**. 
+    > Adja meg a hasznosadat-minta, és válassza a **kész**.
 
-    Ha például a minta hasznos:
+    Ha például a hasznosadat-minta:
 
     ```json
     {
@@ -82,7 +82,7 @@ Hozzon létre egy HTTP-végpontot, vegyen fel egy eseményindítót, amely képe
     }
     ```
 
-    hoz létre ebben a sémában:
+    állít elő, ha a sémát:
 
     ```json
     {
@@ -95,16 +95,16 @@ Hozzon létre egy HTTP-végpontot, vegyen fel egy eseményindítót, amely képe
     }
     ```
 
-4.  Mentse a logikai alkalmazást. A **az URL-címet a HTTP POST**, most látnia kell egy generált visszahívási URL-t, például ebben a példában:
+4.  Mentse a logikai alkalmazást. A **HTTP POST ezen URL-címen**, most látnia kell egy generált visszahívási URL-CÍMÉT, például ebben a példában:
 
-    ![Generált visszahívási végpont URL-címe](./media/logic-apps-http-endpoint/generated-endpoint-url.png)
+    ![Generált visszahívási URL-végpont](./media/logic-apps-http-endpoint/generated-endpoint-url.png)
 
-    Az URL-cím a hitelesítéshez használt lekérdezési paraméterek közös hozzáférésű Jogosultságkód (SAS) kulcsot tartalmaz. 
-    A HTTP-végpont URL-címet is lekérheti a logic app áttekintése az Azure portálon. A **eseményindító előzmények**, válassza ki az eseményindító:
+    Az URL-címet tartalmaz egy közös hozzáférésű Jogosultságkód (SAS) kulcsot a lekérdezési paraméterek, amelyek a hitelesítéshez használhatók. 
+    A HTTP-végpont URL-címe is kérhet a logic app – áttekintés az Azure Portalon. A **eseményindítási előzményeinek**, az eseményindító kiválasztása:
 
-    ![HTTP-végpont URL-cím beszerzése az Azure portálról][2]
+    ![HTTP-végpont URL-cím lekérése az Azure Portalról][2]
 
-    Vagy adott hívás végrehajtása kaphat az URL-cím:
+    Vagy azáltal, hogy a hívás URL-CÍMÉT is kap:
 
     ```
     POST https://management.azure.com/{logic-app-resourceID}/triggers/{myendpointtrigger}/listCallbackURL?api-version=2016-06-01
@@ -112,69 +112,69 @@ Hozzon létre egy HTTP-végpontot, vegyen fel egy eseményindítót, amely képe
 
 ## <a name="change-the-http-method-for-your-trigger"></a>A HTTP-metódus az eseményindító módosítása
 
-Alapértelmezés szerint a **kérelem** eseményindító vár HTTP POST-kérelmet, de különböző HTTP-metódus használatával kérheti le. 
+Alapértelmezés szerint a **kérelem** eseményindító egy HTTP POST-kérést vár, de más HTTP módszert is használhat. 
 
 > [!NOTE]
 > Megadhatja, hogy csak egy metódus típusa.
 
-1. Az a **kérelem** indítható el, válassza a **speciális beállítások megjelenítése**.
+1. Az a **kérelem** aktiválhat, válassza a **speciális beállítások megjelenítése**.
 
-2. Nyissa meg a **metódus** listája. Ehhez a példához válassza ki a **beolvasása** , hogy később tesztelheti a HTTP-végpont URL-CÍMÉT.
+2. Nyissa meg a **metódus** listája. Ebben a példában válassza **első** úgy, hogy a HTTP-végpont URL-cím újabb teszteléséhez.
 
     > [!NOTE]
-    > Jelölje be más HTTP-metódus, vagy adjon meg egyéni módszer a saját logikai alkalmazást.
+    > Bármilyen más HTTP-metódus kiválasztása, vagy adjon meg egy egyéni módszer a saját logikai alkalmazás.
 
-    ![HTTP-metódus módosítása](./media/logic-apps-http-endpoint/change-method.png)
+    ![Módosítsa a HTTP-metódus](./media/logic-apps-http-endpoint/change-method.png)
 
-## <a name="accept-parameters-through-your-http-endpoint-url"></a>Fogadja el a paraméterek használatával a HTTP-végpont URL-címe
+## <a name="accept-parameters-through-your-http-endpoint-url"></a>Fogad el paramétereket a HTTP-végpont URL-CÍMEN keresztül
 
-Ha azt szeretné, hogy a HTTP végponti URL-Címének fogadnak el paramétereket, testre szabhatja a trigger elem relatív elérési útja.
+Ha azt szeretné, hogy a HTTP végpont URL-címe, paraméterek elfogadásához, testre szabhatja a trigger relatív elérési út.
 
-1. Az a **kérelem** indítható el, válassza a **speciális beállítások megjelenítése**. 
+1. Az a **kérelem** aktiválhat, válassza a **speciális beállítások megjelenítése**. 
 
-2. A **metódus**, adja meg a HTTP-metódus, amely azt szeretné, hogy a kérelemhez. Ehhez a példához válassza ki a **beolvasása** metódust, ha még nem tette meg, így ellenőrizheti, hogy a HTTP-végpont URL-címet.
+2. A **metódus**, adja meg, amelyeket szeretne használni a kérelem HTTP-metódust. Ebben a példában válassza ki a **első** módszert, ha még nem tette, így ellenőrizheti, hogy a HTTP-végpont URL-címe.
 
       > [!NOTE]
-      > Relatív elérési útvonal az eseményindító megadása esetén az eseményindító közvetlenül is adjon meg egy HTTP-metódus.
+      > A trigger relatív elérési utat ad meg, amikor az eseményindító közvetlenül is adjon meg egy HTTP-metódust.
 
-3. A **relatív elérési út**, adja meg a paraméter, amely az URL-CÍMÉRE kell fogadnia, például a relatív elérési útnak `customers/{customerID}`.
+3. A **relatív elérési út**, adja meg a paraméter, amely az URL-cím elfogadjon, például a következő relatív elérési `customers/{customerID}`.
 
-    ![Adja meg a HTTP-metódus és a relatív elérési út paraméter](./media/logic-apps-http-endpoint/relativeurl.png)
+    ![Adja meg a HTTP-metódust és a relatív elérési út paraméter](./media/logic-apps-http-endpoint/relativeurl.png)
 
-4. A paraméter használata esetén vegye fel a **válasz** műveletet úgy, hogy a Logic Apps alkalmazást. (Válassza ki az eseményindító **új lépés** > **művelet hozzáadása** > **válasz**) 
+4. Használja ezt a paramétert, adjon hozzá egy **válasz** művelet a logikai alkalmazáshoz. (Az eseményindító területén válassza a **új lépés** > **művelet hozzáadása** > **válasz**) 
 
-5. A válaszban szereplő **törzs**, tartalmazza a jogkivonatot a paraméter, a trigger elem relatív elérési utat adott meg.
+5. A válaszban **törzs**, tartalmazza a tokent a paraméterhez, a trigger relatív elérési utat adott meg.
 
-    Ahhoz például, hogy vissza `Hello {customerID}`, frissítése az Ön válaszára **törzs** rendelkező `Hello {customerID token}`. 
-    A dinamikus tartalom listába kell jelenik meg, és megjelenítése a `customerID` token ki.
+    Például adja vissza `Hello {customerID}`, frissítse a válasz **törzs** a `Hello {customerID token}`. 
+    A dinamikus tartalmak listája jelenik meg kell, és megjelenítése a `customerID` token választható.
 
-    ![Választörzs paraméter hozzáadása](./media/logic-apps-http-endpoint/relativeurlresponse.png)
+    ![Paraméter hozzáadása a válasz törzse](./media/logic-apps-http-endpoint/relativeurlresponse.png)
 
-    A **törzs** ebben a példában hasonlóan kell kinéznie:
+    A **törzs** példához hasonlóan kell kinéznie:
 
     ![Választörzs paraméterrel](./media/logic-apps-http-endpoint/relative-url-with-parameter.png)
 
 6. Mentse a logikai alkalmazást. 
 
-    A HTTP-végpont URL-cím mostantól tartalmazza a relatív elérési út, például: 
+    A HTTP-végpont URL-CÍMÉT most már tartalmazza a relatív elérési út, például: 
 
     https&#58;//prod-00.southcentralus.logic.azure.com/workflows/f90cb66c52ea4e9cabe0abf4e197deff/triggers/manual/paths/invoke/customers/{customerID}...
 
-7. A HTTP-végpont teszteléséhez másolja és illessze be a frissített URL-cím egy másik böngészőablakban, de cserélje le `{customerID}` rendelkező `123456`, és nyomja le az ENTER billentyűt.
+7. A HTTP-végpont tesztelése, másolja és illessze be a frissített URL-cím egy másik böngészőablakban, de cserélje le `{customerID}` a `123456`, és nyomja le az Enter billentyűt.
 
-    A böngésző ezt a szöveget kell megjelenítése: 
+    A böngésző ezt a szöveget kell megjelennie: 
 
     `Hello 123456`
 
 <a name="generated-tokens"></a>
 
-### <a name="tokens-generated-from-json-schemas-for-your-logic-app"></a>A logikai alkalmazásnak JSON-sémák alapján generált jogkivonatok
+### <a name="tokens-generated-from-json-schemas-for-your-logic-app"></a>JSON-sémáinak a logikai alkalmazás által létrehozott jogkivonatok
 
-Ha megadta a JSON-séma a a **kérelem** eseményindító, a Logic App Designer azokhoz a tulajdonságokhoz jogkivonatokat hoz létre a séma. A jogkivonatok az adatokat a logic app munkafolyamaton keresztül használhatja.
+Ha megadta a JSON-séma a **kérelem** , a Logic App Designerben az eseményindító tulajdonságok jogkivonatokat hoz létre, hogy a séma. A logikai alkalmazás munkafolyamatának keresztül adatok átadására ezután használhatja ezeket a jogkivonatokat.
 
-Ehhez a példához, ha a `title` és `name` tulajdonságokat a JSON-séma, a jogkivonatok is elérhető munkafolyamat a későbbi lépésekben használatára. 
+Ebben a példában, ha a `title` és `name` tulajdonságokat a JSON-sémájában, tokenjeiket immár újabb munkafolyamat-lépéseit az elérhető legyen. 
 
-A teljes JSON-séma a következő:
+A következő teljes JSON-sémája:
 
 ```json
 {
@@ -198,24 +198,24 @@ A teljes JSON-séma a következő:
 }
 ```
 
-## <a name="create-nested-workflows-for-logic-apps"></a>Beágyazott munkafolyamatok a logic Apps alkalmazások létrehozása
+## <a name="create-nested-workflows-for-logic-apps"></a>A logic apps beágyazott munkafolyamatok létrehozása
 
-A Logic Apps alkalmazást a munkafolyamatok ágyazhatja más logikai alkalmazások fogadhassanak kérelmek hozzáadásával. Ezek a logic apps, történő felvételéhez adja hozzá a **Azure Logic Apps - válassza ki a Logic Apps munkafolyamat** az eseményindító művelet. Ezután kiválaszthatja a megfelelő logic Apps alkalmazásokból.
+A logikai alkalmazás munkafolyamatok ágyazhatja más logikai alkalmazások fogadhassanak kérelmek hozzáadásával. Ezek a logic apps történő felvételéhez adja hozzá a **Azure Logic Apps -, válasszon ki egy Logic Apps-munkafolyamatot** az eseményindító műveletet. Ezután kiválaszthatja a megfelelő logikai alkalmazásokból.
 
-![Egy másik logikai alkalmazás hozzáadása](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
+![Adjon hozzá egy másik logikai alkalmazás](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
 
-## <a name="call-or-trigger-logic-apps-through-http-endpoints"></a>Hívás vagy eseményindítót, a logic apps HTTP-végpontokról keresztül
+## <a name="call-or-trigger-logic-apps-through-http-endpoints"></a>Hívás vagy eseményindítót, a logic apps HTTP-végpontokon keresztül
 
-A HTTP-végpont létrehozása után a logikai alkalmazás keresztül is elindíthatja egy `POST` metódust a teljes URL-címet. A Logic apps van a közvetlen hozzáférés végpontok beépített támogatása.
+Miután létrehozta a HTTP-végpontot, a logikai alkalmazás használatával aktiválhat egy `POST` módszer a teljes URL-címre. A Logic apps beépített támogatást nyújt a közvetlen hozzáférési végpontok rendelkezik.
 
 > [!NOTE] 
-> Manuálisan a logikai alkalmazás bármikor futtathatja őket, a Logic App Designer vagy a Logic App kódnézetben eszköztáron válassza a **futtatása**.
+> Egy logikai alkalmazást futtathatja manuálisan tetszőleges időpontban, vagy a logikai alkalmazás Kódnézete Logikaialkalmazás-Tervező eszköztárán válassza a **futtatása**.
 
-## <a name="reference-content-from-an-incoming-request"></a>Olyan bejövő kérelemre a referencia-tartalom
+## <a name="reference-content-from-an-incoming-request"></a>Segédanyagok a bejövő kérések
 
-Ha a tartalom típusa `application/json`, a bejövő kérelem tulajdonságok is hivatkozni. Ellenkező esetben a tartalom egyetlen egységként bináris, amely képes továbbadni más API-k kezelnek. Ez a munkafolyamat belüli tartalom hivatkozik, akkor konvertálni kell ezt a tartalmat. Ha át például `application/xml` tartalom, használhat `@xpath()` egy XPath kiolvasásához vagy `@json()` az XML konvertálása JSON. További tudnivalók [tartalomtípusok használata](../logic-apps/logic-apps-content-type.md).
+Ha a tartalom típusa `application/json`, a bejövő kérelem tulajdonságai hivatkozhat. Ellenkező esetben tartalom, amely más API-kkal adhat át egy bináris egységet számít. Ezt a tartalmat, a munkafolyamat belül, hivatkozni kell konvertálnia a tartalom. Például, ha a felhasználó `application/xml` tartalom, használhat `@xpath()` egy XPath kivonására vagy `@json()` for XML átalakítása JSON. Ismerje meg [tartalomtípusok használata](../logic-apps/logic-apps-content-type.md).
 
-Ahhoz, hogy a kimenet egy bejövő kérelem, használhatja a `@triggerOutputs()` függvény. A kimeneti ebben a példában látható:
+A kimenet kérhet egy bejövő kérésnek, használhatja a `@triggerOutputs()` függvény. Ebben a példában a kimeneti hasonló lehet:
 
 ```json
 {
@@ -228,30 +228,30 @@ Ahhoz, hogy a kimenet egy bejövő kérelem, használhatja a `@triggerOutputs()`
 }
 ```
 
-Hozzáférés a `body` tulajdonság kifejezetten, használhatja a `@triggerBody()` helyi. 
+Hozzáférés a `body` tulajdonság, használhatja a `@triggerBody()` parancsikon. 
 
-## <a name="respond-to-requests"></a>Válasz a kérelmekre
+## <a name="respond-to-requests"></a>Válaszol a kérelmekre
 
-Előfordulhat, hogy a logikai alkalmazás tartalom visszaküldésével a hívónak bizonyos kérésekre való válaszolás érdemes. Az állapotkód, a fejléc és a szervezet az Ön válaszára történő összeállításához, használhatja a **válasz** művelet. Ez a művelet bárhol megjelenhet a Logic Apps alkalmazást, nem csak a munkafolyamat végén.
+Érdemes bizonyos kérelmei, amelyek elindítják a logikai alkalmazás tartalom visszaküldésével a hívónak. Az állapotkód, fejléc és a válasz törzse hozhatnak létre, használhatja a **válasz** művelet. Ez a művelet a logikai alkalmazást, nem csak a munkafolyamat végén bárhol megjelenhet.
 
 > [!NOTE] 
-> Ha nem adja meg a Logic Apps alkalmazást egy **válasz**, válaszol a HTTP-végpont *azonnal* rendelkező egy **202 elfogadott** állapotát. Is, az eredeti kérés lekérni a választ, a válasz lépéseit Befejezés belül a [kérelem időkorlátja](./logic-apps-limits-and-config.md) csak akkor hívható meg a munkafolyamat beágyazott logikai alkalmazás számára. Nincs válasz a határidőn belül történik, ha a bejövő kérelem időkorlátja lejár, és a HTTP-válasz fogadása **408 az ügyfél időtúllépése**. A beágyazott a logic apps a szülő logikai alkalmazás továbbra is fennáll, a válaszra, amíg befejeződik, függetlenül attól, hogy mennyi idő szükséges.
+> Ha nem adja meg a logikai alkalmazás egy **válasz**, válaszol a HTTP-végpontot *azonnal* együtt egy **202-es elfogadva** állapotát. Ezenkívül lekérni a választ az eredeti kérés, a válasz lépéseit Befejezés belül a [kérelem időkorlátja](./logic-apps-limits-and-config.md) , kivéve, ha a munkafolyamat számára egy beágyazott logikai alkalmazást hívja. Nincs válasz a határidőn belül nem történik, ha a bejövő kérelem túllépi az időkorlátot, és a HTTP-válasz fogadása **408 ügyfél időkorlátját**. A beágyazott logic apps a szülő logikai alkalmazás továbbra is várniuk a válaszra, amíg befejeződik, függetlenül attól, hogy mennyi idő szükség.
 
 ### <a name="construct-the-response"></a>A válasz szerkezet
 
-Az adott válasz törzsének egynél több fejléc és a tartalom bármilyen típusú tartalmazhatnak. A példa egy válasz, a fejléc meghatározza, hogy rendelkezik-e a válasz tartalomtípusa `application/json`. és törzsében `title` és `name`korábban frissítve a JSON-séma alapján a **kérelem** eseményindító.
+A válasz törzsében tartalmazhatnak egynél több fejlécet és a tartalom bármilyen típusú. A példa válaszban a fejléc Megadja, hogy rendelkezik-e a válasz tartalomtípusa `application/json`. a törzse tartalmazza, és `title` és `name`korábban frissítve a JSON-sémája alapján a **kérelem** eseményindító.
 
 ![HTTP-válasz művelet][3]
 
-Válaszok ezekkel a tulajdonságokkal rendelkeznek:
+Válaszok rendelkezik, ezeket a tulajdonságokat:
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| állapotkód |Meghatározza a bejövő kérelem válaszol a HTTP-állapotkód. Ez a kód bármilyen érvényes állapotkód 2xx, 4xx vagy 5xx kezdetű lehet. 3xx állapotkódok azonban nem engedélyezett. |
-| fejlécek |Meghatározza bármely fejlécek ahhoz, hogy a válasz szerepeljen. |
-| törzs |Adja meg a szervezet objektum, amely egy karakterlánc lehet, egy JSON-objektumból, vagy az előző lépésben hivatkozott még bináris tartalom. |
+| Állapotkód |Itt adhatja meg a bejövő kérelem válaszol a HTTP-állapotkódot. Ez a kód bármilyen érvényes állapotkód: 2xx, 4xx vagy 5xx kezdetű is lehet. Azonban 3xx állapotkódok használata nem engedélyezett. |
+| A fejlécek |A válasz tartalmazza a fejlécek tetszőleges számú határozza meg. |
+| törzs |Megadja egy szervezet objektum, amely egy karakterlánc lehet, egy JSON-objektum, vagy akár bináris tartalom hivatkozni az előző lépésben. |
 
-Ez a JSON-séma néz most a **válasz** művelet:
+Itt látható a JSON-sémája néz ki most a **válasz** művelet:
 
 ``` json
 "Response": {
@@ -271,48 +271,48 @@ Ez a JSON-séma néz most a **válasz** művelet:
 ```
 
 > [!TIP]
-> A Logic App Designer a Logic Apps alkalmazást teljes JSON-definícióból megtekintéséhez válassza **nézet Code**.
+> A Logic App Designerben a teljes JSON-definíciót a logikai alkalmazás megtekintéséhez válassza **Kódnézet**.
 
 ## <a name="q--a"></a>Kérdések és válaszok
 
-#### <a name="q-what-about-url-security"></a>K: Mi a helyzet URL-cím biztonsági?
+#### <a name="q-what-about-url-security"></a>K: Mi a helyzet biztonsági URL-cím?
 
-V: azure biztonságosan logika visszahívási URL-címek egy közös hozzáférésű Jogosultságkód (SAS) használatával hoz létre. Az aláírás haladnak keresztül lekérdezési paramétert, és ellenőrizni kell, mielőtt a Logic Apps alkalmazást is érvényesítést. Az aláírás logikai alkalmazás, az eseményindító neve és a végrehajtandó műveletet a titkos kulcs egyedi kombinációját használva az Azure létrehoz. Kivéve, ha valaki hozzáfér a titkos logic app kulcs, azok nem hoznak létre érvényes aláírással.
+V: az azure biztonságos készítésére szolgál a logikai alkalmazás visszahívási URL egy közös hozzáférésű Jogosultságkód (SAS) használatával. Az aláírás halad keresztül, mint egy lekérdezési paraméter, és ellenőrizni kell, mielőtt a logikai alkalmazás aktiválódik is. Az Azure az aláírást, valamint a logikai alkalmazást, az eseményindító neve és a végrehajtandó műveletet egy titkos kulcs egyedi együttes használatával hoz létre. Ezért, ha valaki hozzáfér a titkos logic app-kulcs, azok nem hoznak létre érvényes aláírással.
 
    > [!IMPORTANT]
-   > A gyártás és biztonságos erősen ajánlott szemben a Logic Apps alkalmazást hívja közvetlenül a böngészőből, mert:
+   > Az éles és biztonságos rendszerek javasoljuk, hogy ellen a logikai alkalmazás meghívása közvetlenül a böngészőből, mivel:
    > 
-   > * A megosztott elérési kulcsot az URL-cím jelenik meg.
-   > * Biztonságos tartalom házirendek megosztott tartományok miatt nem tudja kezelni a logikai alkalmazást az ügyfelek között.
+   > * A közös hozzáférési kulcs az URL-cím jelenik meg.
+   > * Biztonságos tartalomszabályzat megosztott tartományok miatt nem kezelheti a logikai alkalmazás ügyfelek között.
 
-#### <a name="q-can-i-configure-http-endpoints-further"></a>K: beállítani a HTTP-végpontokról további?
+#### <a name="q-can-i-configure-http-endpoints-further"></a>K: további HTTP-végpontok konfigurálása?
 
-V: Igen, támogatja a HTTP-végpontokról a keresztül speciális konfigurációs [ **API Management**](../api-management/api-management-key-concepts.md). Ez a szolgáltatás is lehetőséget nyújt a ahhoz, hogy következetesen minden az API-kat, beleértve a logic Apps alkalmazásokat kezeléséhez, állítson be egyéni tartománynevek, használja a további hitelesítési módszerek és egyéb, például:
+V: Igen, támogatja a HTTP-végpontokat a Speciális konfiguráció keresztül [ **az API Management**](../api-management/api-management-key-concepts.md). Ez a szolgáltatás is lehetőséget nyújt a, hogy egységesen kezelheti minden API-k, beleértve a logic apps, egyéni tartománynevek beállítása, használja a további hitelesítési módszereket, és egyéb, például:
 
-* [A kérelem módszerének módosítása](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#SetRequestMethod)
+* [A kérelem módjának módosítása](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#SetRequestMethod)
 * [Módosítsa az URL-szegmenseknek a kérelem](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#RewriteURL)
-* Az API Management tartományok beállítása a [Azure-portálon](https://portal.azure.com/ "Azure-portálon")
-* Ellenőrizze az egyszerű hitelesítés házirend beállítása
+* Az API Management tartományok beállítása a [az Azure portal](https://portal.azure.com/ "Azure Portalon")
+* Állítsa be a szabályzatot, az egyszerű hitelesítés ellenőrzése
 
-#### <a name="q-what-changed-when-the-schema-migrated-from-the-december-1-2014-preview"></a>K: Mi változott, a séma áttelepítésekor a 2014. decemberi 1 Preview?
+#### <a name="q-what-changed-when-the-schema-migrated-from-the-december-1-2014-preview"></a>K: Mi változott, a 2014. December 1-én előzetes való migrálásakor a séma?
 
-V: Itt található egy Összegzés, ezekről a változásokról:
+V: Itt található egy összefoglaló változásokkal kapcsolatban:
 
-| 2014. decemberi 1 preview | 2016. június 1. |
+| 2014. december 1-előzetes verzió | 2016. június 1-én |
 | --- | --- |
-| Kattintson a **HTTP-figyelő** API-alkalmazás |Kattintson a **kézi indítási** (API-alkalmazás nem kötelező) |
-| HTTP-figyelő beállítás "*automatikusan választ küld*" |Tartalmaznak egy **válasz** művelet vagy nem a munkafolyamat-definíciót |
-| Basic vagy az OAuth-hitelesítés konfigurálása |API Management szolgáltatáson keresztül |
-| HTTP-módszer konfigurálása |A **speciális beállítások megjelenítése**, válassza a HTTP-metódus |
-| Adja meg relatív elérési útját |A **speciális beállítások megjelenítése**, relatív elérési út |
-| A bejövő törzsében keresztül hivatkozik `@triggerOutputs().body.Content` |A hivatkozás `@triggerOutputs().body` |
-| **HTTP-válasz küldése** műveletet alkalmazza a HTTP-figyelő |Kattintson a **válaszol a HTTP-kérelem** (API-alkalmazás nem kötelező) |
+| Kattintson a **HTTP-figyelő** API-alkalmazás |Kattintson a **manuális eseményindító** (API-alkalmazás nem kötelező) |
+| HTTP-figyelő beállítása "*automatikusan választ küld*" |Tartalmaznak egy **válasz** művelet vagy a munkafolyamat-definíció nem található |
+| Basic vagy OAuth-hitelesítés konfigurálása |API Management szolgáltatáson keresztül |
+| Konfigurálja a HTTP-metódus |A **speciális beállítások megjelenítése**, válassza a HTTP-metódus |
+| Relatív elérési út konfigurálása |A **speciális beállítások megjelenítése**, egy relatív elérési út hozzáadása |
+| A bejövő törzsében keresztül hivatkozhat. `@triggerOutputs().body.Content` |– Referencia `@triggerOutputs().body` |
+| **HTTP-válasz küldése** műveletet a HTTP-figyelő |Kattintson a **HTTP-kérelem megválaszolásához** (API-alkalmazás nem kötelező) |
 
 ## <a name="get-help"></a>Segítségkérés
 
 Látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps), ahol kérdéseket tehet fel és válaszolhat meg, valamint megtudhatja, mivel foglalkoznak az Azure Logic Apps más felhasználói.
 
-Ha szeretné segíteni az Azure Logic Apps és összekötők fejlesztését, szavazzon az ötletekre az [Azure Logic Apps felhasználói visszajelzések oldalán](http://aka.ms/logicapps-wish), vagy küldje be saját javaslatait.
+Ha szeretné segíteni az Azure Logic Apps és összekötők fejlesztését, szavazzon az ötletekre az [Azure Logic Apps felhasználói visszajelzések oldalán](https://aka.ms/logicapps-wish), vagy küldje be saját javaslatait.
 
 ## <a name="next-steps"></a>További lépések
 

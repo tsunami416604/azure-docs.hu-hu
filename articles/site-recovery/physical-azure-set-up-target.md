@@ -1,19 +1,18 @@
 ---
-title: Cél (fizikai az Azure-bA) előkészítése |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan indítása a Windows vagy Linux rendszerű Azure-bA fizikai kiszolgálókat replikál az Azure-környezet előkészítése.
-services: site-recovery
+title: Vészhelyreállításhoz helyszíni fizikai kiszolgálók Azure-bA a célkörnyezet beállítása |} A Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan állítható be a cél Azure-környezet a fizikai kiszolgálók Azure Site Recovery használata vész-helyreállítási.
 author: bsiva
 manager: abhemraj
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: bsiva
-ms.openlocfilehash: 370d245e39b848acade18d0e73f60a3246737629
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: b89d04a6e2fd11a61de8b56690664f6204c208ad
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915520"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209292"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>Cél (VMware – Azure) előkészítése
 

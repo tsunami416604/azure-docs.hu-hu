@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: f5906a93e92691cb6046fb04a9fd83f3484e17b8
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 0ff56b86243956d1fa6b51a6dfd14af9e00d8367
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427399"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212777"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -228,8 +228,8 @@ A következő mezők támogatottak:
 
 A házirend hatása a következő típusú támogatja:
 
-- **Megtagadási**: eseményt hoz létre a felügyeleti napló és a kérelem meghiúsul
-- **Naplózási**: hoz létre egy figyelmeztető esemény auditálási naplóba kerülnek, de a kérelem végrehajtása nem sikerül
+- **Megtagadási**: a tevékenységnapló eseményt hoz létre, és a kérelem meghiúsul
+- **Naplózási**: állít elő, egy figyelmeztető esemény tevékenységnaplóban, de a kérelem végrehajtása nem sikerül
 - **Hozzáfűzés**: a meghatározott készletével mezőket ad hozzá a kérelem
 - **AuditIfNotExists**: lehetővé teszi a naplózást, ha egy erőforrás nem létezik.
 - **DeployIfNotExists**: üzembe helyezi egy erőforrást, ha azt nem létezik.

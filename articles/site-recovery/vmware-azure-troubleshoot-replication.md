@@ -1,19 +1,18 @@
 ---
-title: A VMware virtuális gépek és fizikai kiszolgálók replikálásához az Azure-bA az Azure Site Recovery replikációs problémák elhárítása |} A Microsoft Docs
-description: Ez a cikk ismerteti, amikor a VMware virtuális gépek és fizikai kiszolgálók replikálása az Azure-bA az Azure Site Recovery közös replikációs problémáinak elhárítása.
-services: site-recovery
+title: Vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók az Azure-bA az Azure Site Recovery replikációs problémák elhárítása |} A Microsoft Docs
+description: Ez a cikk a VMware virtuális gépek vészhelyreállítása során általános replikációs problémákat hibaelhárítási információkat és fizikai kiszolgálók az Azure-bA az Azure Site Recovery nyújt.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: c2100ee2388ae09bd309167b1be77f7bdbe32f69
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 915f7d7d2d6be02dfef0cd6bb9a2fa156ed565bc
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126017"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214732"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware virtuális gépek és fizikai kiszolgálók replikációjával kapcsolatos problémák elhárítása
 

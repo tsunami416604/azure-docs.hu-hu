@@ -6,29 +6,29 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: 61d05a7e9936a0edd17c5528ce4f55233b6e7e0e
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 7eddea7e0d57b89318232da6f086bbe2f649ee77
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324114"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211927"
 ---
-# <a name="device-connectivity-and-telemetry-ingress"></a>Eszköz kapcsolat- és telemetriabevitelt
+# <a name="device-connectivity-and-telemetry-ingress"></a>Eszközkapcsolatok és bemenő telemetriaadatok
 
 Az eszközök és érzékelők által küldött telemetriai adatokat bármely IoT-megoldás gerincét alkotnak. Mint ilyen ezek az erőforrások különálló jelölő és kezelésének őket egy helyen kontextusában az IoT-alkalmazások fejlesztése a fő szempont. Azure digitális Twins eszközök és a egy térbeli intelligencia graph érzékelők összesítésével egyszerűbbé teszi az IoT-megoldások fejlesztését.
 
-Első lépésként egy `IoTHub` erőforrást kell létrehozni a térbeli grafikon, így minden eszköz alatt üzenetek küldéséhez a legfelső szintű hely gyökérmappájában. Után az IoT Hub létrehozása, és olyan eszközök vannak regisztrálva, a digitális Twins példány belül, az eszközök a digitális Twins szolgáltatás keresztül történő adatküldés megkezdheti a [Azure IoT eszközoldali SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks).
+Első lépésként egy IoT Hub-erőforrást kell létrehozni a térbeli grafikon, így minden eszköz alatt üzenetek küldéséhez a legfelső szintű hely gyökérmappájában. Után az IoT Hub létrehozása, és olyan eszközök vannak regisztrálva, a digitális Twins példány belül, az eszközök a digitális Twins szolgáltatás keresztül történő adatküldés megkezdheti a [Azure IoT eszközoldali SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks).
 
-Egy lépésenkénti útmutató előkészítési eszközökön található a [Oktatóanyaggal, telepítheti és konfigurálhatja a digitális Twins](tutorial-facilities-setup.md). Egy pillanat alatt a lépések a következők:
+Egy lépésenkénti útmutató az előkészítési eszközökön található a [Oktatóanyaggal, telepítheti és konfigurálhatja a digitális Twins](tutorial-facilities-setup.md). Egy pillanat alatt a lépések a következők:
 
 - Az Azure digitális Twins üzembe a [Azure Portalon](https://portal.azure.com)
 - Tárolóhelyek létrehozása a Graph
-- Hozzon létre egy `IoTHub` erőforrás, és rendelje hozzá a gráfban található szóközt
+- Hozzon létre egy IoT Hub-erőforrást, és rendelje hozzá a gráfban található szóközt
 - Eszközök és érzékelők létrehozása a graph, és hozzárendelheti azokat a fenti lépések során létrehozott tárolóhelyek
 - Hozzon létre egy megfeleltetőben megadott feltételek alapján telemetriai üzeneteket szűrése
-- Hozzon létre egy [ **felhasználó által definiált függvény** ](concepts-user-defined-functions.md) és rendelje hozzá a grafikon a telemetriai üzeneteket egyéni feldolgozásához szóközt
+- Hozzon létre egy [felhasználó által definiált függvény](concepts-user-defined-functions.md) és rendelje hozzá a grafikon a telemetriai üzeneteket egyéni feldolgozásához szóközt
 - Rendelhet egy szerepkört, hogy a felhasználó által definiált függvény a grafikon adatainak eléréséhez
 - A digitális Twins felügyeleti API-k az IoT Hub eszköz kapcsolati karakterláncának lekérése
 - Az eszköz kapcsolati karakterláncának konfigurálása az Azure IoT eszközoldali SDK-eszközön
@@ -49,11 +49,11 @@ https://yourManagementApiUrl/api/v1.0/devices?hardwareIds=yourDeviceHardwareId&i
 
 | Egyéni attribútum neve | Cserélje le |
 | --- | --- |
-| `yourManagementApiUrl` | A felügyeleti API teljes URL-címe |
-| `yourDeviceGuid` | Az eszköz azonosítója |
-| `yourDeviceHardwareId` | Az eszköz hardveres azonosítója |
+| *yourManagementApiUrl* | A felügyeleti API teljes URL-címe |
+| *yourDeviceGuid* | Az eszköz azonosítója |
+| *yourDeviceHardwareId* | Az eszköz hardveres azonosítója |
 
-A válasz hasznos adatban, másolja ki az eszköz `connectionString` tulajdonság, amely adatokat küldeni az Azure digitális Twins fogja használni az Azure IoT eszközoldali SDK hívása során.
+A válasz hasznos adatban, másolja ki az eszköz *connectionString* tulajdonság, amely adatokat küldeni az Azure digitális Twins fogja használni az Azure IoT eszközoldali SDK hívása során.
 
 ## <a name="device-to-cloud-message"></a>Felhőüzenet eszköz
 
@@ -61,14 +61,14 @@ Az eszköz üzenet formátuma és a hasznos adat a megoldás igényei szerint sz
 
 ### <a name="telemetry-properties"></a>Telemetriai adatok tulajdonságai
 
-Miközben hasznos tartalmát egy `Message` tetszőleges adatokat lehet van néhány követelmény 256 KB-os méretig, a másolatot a várt [Message.Properties](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet). Az alábbi lépéseket követve tükrözi a rendszer támogatja a szükséges és választható tulajdonságok:
+Miközben hasznos tartalmát egy **üzenet** tetszőleges adatokat lehet van néhány követelmény 256 KB-os méretig, a másolatot a várt [ `Message.Properties` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet). Az alábbi lépéseket követve tükrözi a rendszer támogatja a szükséges és választható tulajdonságok:
 
 | Tulajdonság neve | Érték | Szükséges | Leírás |
 |---|---|---|---|
-| DigitalTwins-Telemetria | 1.0 | igen | Egy állandó érték, amely azonosítja a rendszer üzenetet |
-| DigitalTwins-SensorHardwareId | `string(72)` | igen | Egy egyedi azonosítója az érzékelő küld a `Message`. Ezt az értéket meg kell egyeznie egy objektum `HardwareId` tulajdonság esetében a rendszer feldolgozza azt. Például: `00FF0643BE88-CO2` |
-| CreationTimeUtc | `string` | nem | Egy [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) azonosításával a tartalom a mintavételi idő dátum karakterlánc formátumú. Például: `2018-09-20T07:35:00.8587882-07:00` |
-| CorrelationId | `string` | nem | A `uuid` , amelyek segítségével nyomkövetési eseményeket a rendszer között. Például: `cec16751-ab27-405d-8fe6-c68e1412ce1f`
+| *DigitalTwins-Telemetria* | 1.0 | Igen | Egy állandó érték, amely azonosítja a rendszer üzenetet |
+| *DigitalTwins-SensorHardwareId* | `string(72)` | Igen | Egy egyedi azonosítója az érzékelő küld a **üzenet**. Ezt az értéket meg kell egyeznie egy objektum **HardwareId** tulajdonság esetében a rendszer feldolgozza azt. Például: `00FF0643BE88-CO2` |
+| *CreationTimeUtc* | `string` | Nem | Egy [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) azonosításával a tartalom a mintavételi idő dátum karakterlánc formátumú. Például: `2018-09-20T07:35:00.8587882-07:00` |
+| *korrelációs azonosító* | `string` | Nem | A rendszer a nyomkövetési események használható UUID azonosítója. Például: `cec16751-ab27-405d-8fe6-c68e1412ce1f`
 
 ### <a name="sending-your-message-to-digital-twins"></a>Az üzenetet küld a digitális Twins
 

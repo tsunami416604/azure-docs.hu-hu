@@ -6,16 +6,16 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: b7561848ffd0158e22e97530774112dcee2a9864
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: a45f82b142ee4f4c9c88ea755607b88323feaae5
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324110"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210125"
 ---
-# <a name="data-processing-and-user-defined-functions"></a>Adatfeldolgozás és a felhasználó által definiált függvények
+# <a name="data-processing-and-user-defined-functions"></a>Adatfeldolgozás és felhasználó által definiált függvények
 
 Az Azure digitális Twins fejlett számítási képességeket kínál. A fejlesztők definiálása és felhasználói függvények beérkező telemetriai üzeneteket küldhet eseményeket előre definiált végpontjainak futtatásához.
 
@@ -25,7 +25,7 @@ Eszközök telemetriai adatokat küldeni a digitális Twins, miután a fejleszt�
 
 ![Digitális Twins adatfeldolgozási folyamat][1]
 
-1. A _ellenőrzése_ fázis átalakítja a beérkező telemetriai üzenetet egy közérthető [ `data transfer object` ](https://en.wikipedia.org/wiki/Data_transfer_object) formátumban. Ebben a fázisban az eszközök és érzékelők érvényesítési is végez.
+1. A _ellenőrzése_ fázis átalakítja a beérkező telemetriai üzenetet egy közérthető [ **adatátviteli objektumot** ](https://en.wikipedia.org/wiki/Data_transfer_object) formátumban. Ebben a fázisban az eszközök és érzékelők érvényesítési is végez.
 1. A _megfelelő_ fázis megkeresi a megfelelő felhasználó által megadott több funkciójának futtatásához. Előre definiált matchers megtalálja a felhasználó által megadott több funkciójának az eszköz-, érzékelő és a bejövő telemetriát üzenet terület adatai alapján.
 1. A _számítási_ fázis futtatja a felhasználó által megadott több funkciójának egyezik az előző szakaszban. Ezek több funkciójának előfordulhat, hogy olvasása és frissítése a térbeli gráf csomópontjai kiszámított értékek és is gridre bocsáthatja ki az egyéni értesítések.
 1. A _dispatch_ fázis irányítja bármely egyéni értesítéseket állíthat be a számítási fázis, a gráf meghatározva a végpontjai.
@@ -40,11 +40,11 @@ Adatfeldolgozás az Azure digitális Twins áll három objektum meghatározása:
 
 _Matchers_ meghatároz egy olyan feltételek, amelyek kiértékelik a milyen művelet végbemegy, bejövő érzékelő telemetriai adatokon alapul. Ezek a feltételek az egyezés meghatározásához lehetnek az érzékelő, a érzékelő szülő eszköz és az érzékelő szülő hely tulajdonságai. A feltételek fejezik összehasonlítások elleni egy [JSON-útvonal](http://jsonpath.com/) az alábbi példában látható módon:
 
-- Az adattípus az összes érzékelő `Temperature`.
+- Az adattípus az összes érzékelő **hőmérséklet**.
 - Kellene `01` azok port.
-- A kiterjesztett tulajdonság kulccsal amely tartozó eszközök `Manufacturer` értékre `GoodCorp`.
-- Amely típusú tárolóhelyek tartozik `Venue`.
-- Amely leszármazottai szülő `SpaceId` `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`.
+- A kiterjesztett tulajdonság kulccsal amely tartozó eszközök **gyártó** értékre `"GoodCorp"`.
+- Amely típusú tárolóhelyek tartozik `"Venue"`.
+- Amely leszármazottai szülő **SpaceId** `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`.
 
 ```JSON
 {

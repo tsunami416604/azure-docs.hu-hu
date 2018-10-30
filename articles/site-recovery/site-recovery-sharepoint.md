@@ -1,27 +1,20 @@
 ---
-title: Egy Azure Site Recovery használatával több rétegből álló SharePoint-alkalmazás replikálása |} A Microsoft Docs
-description: Ez a cikk ismerteti, hogyan replikálhat egy többrétegű SharePoint-alkalmazás az Azure Site Recovery képességeivel.
-services: site-recovery
-documentationcenter: ''
+title: Állítsa be az Azure Site Recovery SharePoint Többrétegű alkalmazások vészhelyreállítása |} A Microsoft Docs
+description: Ez a cikk ismerteti, hogyan állítható be az Azure Site Recovery képességeivel Többrétegű alkalmazások SharePoint vész-helyreállítása.
 author: sujayt
 manager: rochakm
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: sutalasi
-ms.openlocfilehash: eb5801988b6fa966a0326c39be4a267ea08500a8
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 5e3ebd7d3aa5555fbe5ea77dece6eb3177809de7
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916785"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215073"
 ---
-# <a name="replicate-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Azure Site Recovery használata vész-helyreállítási SharePoint Többrétegű alkalmazások replikálása
+# <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Állítsa be az Azure Site Recovery használata vész-helyreállítási SharePoint Többrétegű alkalmazások vészhelyreállítása
 
 Ez a cikk részletesen ismerteti, hogyan védheti meg a SharePoint alkalmazást a [Azure Site Recovery](site-recovery-overview.md).
 

@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
 ms.date: 01/31/18
-ms.openlocfilehash: 0d5a7cb97636b9ca3aabf6c4199ce9e41bc1665d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 6249c45a1cd3a8acbb9770fc39da881d8da9057f
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304424"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230138"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Gyakori forgatókönyvek, példák, oktatóanyagok és útmutatók az Azure Logic Apps
 
@@ -59,7 +59,7 @@ Rendszerek és szolgáltatások, előfordulhat, hogy nem közzétett összeköt�
 * [A munkafolyamat-futtatások hosszú ideig futó műveletek beállítása](../logic-apps/logic-apps-create-api-app.md)
 * [Külső események és műveletek webhookokkal válaszolni](../logic-apps/logic-apps-create-api-app.md)
 * [Hívása, eseményindító, vagy a HTTP-kérelmekre szinkron válaszok munkafolyamatok beágyazása](../logic-apps/logic-apps-http-endpoint.md)
-* [Oktatóanyag: Egy mesterséges Intelligencia által működtetett közösségi irányítópult létrehozása percek alatt, a Logic Apps és a Power bi-ban](http://aka.ms/logicappsdemo)
+* [Oktatóanyag: Egy mesterséges Intelligencia által működtetett közösségi irányítópult létrehozása percek alatt, a Logic Apps és a Power bi-ban](https://aka.ms/logicappsdemo)
 * [Videó: Twilio SMS webhookok válaszolni, és a egy SMS-válasz küldése](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
 
 ## <a name="control-flow-error-handling-and-logging-capabilities"></a>Átvitelvezérlés hibakezelést és naplózási képességek
@@ -84,11 +84,11 @@ Teljes körűen fejlesztéséhez és üzembe helyezése a Visual Studio, az Azur
 
 ## <a name="content-types-conversions-and-transformations-within-a-run"></a>Tartalomtípusok, átalakítás és átalakítások belüli Futtatás
 
-Elérését, átalakítás és a számos függvényt az Azure Logic Apps használatával több tartalomtípus átalakítása [munkafolyamat-definíciós nyelv](http://aka.ms/logicappsdocs). Például átválthat egy karakterlánc, a JSON és az XML-között a `@json()` és `@xml()` munkafolyamat a kifejezéseket. A Logic Apps-motor megőrzi a támogatásához a tartalomátvitel-szolgáltatások közötti veszteségmentes módon tartalomtípusokat.
+Elérését, átalakítás és a számos függvényt az Azure Logic Apps használatával több tartalomtípus átalakítása [munkafolyamat-definíciós nyelv](https://aka.ms/logicappsdocs). Például átválthat egy karakterlánc, a JSON és az XML-között a `@json()` és `@xml()` munkafolyamat a kifejezéseket. A Logic Apps-motor megőrzi a támogatásához a tartalomátvitel-szolgáltatások közötti veszteségmentes módon tartalomtípusokat.
 
 * [A logic apps munkafolyamat-kifejezések működése](../logic-apps/logic-apps-author-definitions.md)
 * [Tartalomtípusok kezelése nem JSON](../logic-apps/logic-apps-content-type.md), pl. `application/xml`, `application/octet-stream`, és `multipart/formdata`
-* [Az Azure Logic Apps munkafolyamat Definition Language séma](http://aka.ms/logicappsdocs)
+* [Az Azure Logic Apps munkafolyamat Definition Language séma](https://aka.ms/logicappsdocs)
 
 ## <a name="other-integrations-and-capabilities"></a>Más Integrációk és képességek
 

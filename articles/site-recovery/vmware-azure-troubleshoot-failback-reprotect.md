@@ -1,22 +1,20 @@
 ---
-title: Az Azure az Azure Site Recovery a helyszíni VMware virtuális gépek feladat-visszavétel során hibák elhárítása |} A Microsoft Docs
-description: Ez a cikk ismerteti azokat a módszereket, feladat-visszavétel és ismételt védelem jelentkező gyakori hibák elhárítása feladat-visszavétel során a VMware Azure-ból az Azure Site Recovery használatával.
-services: site-recovery
-documentationcenter: ''
+title: Hibaelhárítás a feladat-visszavételhez helyszíni VMware virtuális gép vészhelyreállítás az Azure-bA az Azure Site Recovery |} A Microsoft Docs
+description: Ez a cikk ismerteti azokat a módszereket, feladat-visszavétel és ismételt védelem hibáinak elhárítása az Azure-bA az Azure Site Recovery VMware virtuális gép vészhelyreállítás során.
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: c5ba0f1d98f3e4023e767bf3eea7a0b497d47686
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 89484e14d69493c74ed1ff983cf88ec146e0313d
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920969"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210363"
 ---
-# <a name="troubleshoot-failback-from-azure-to-vmware"></a>A feladat-visszavétel az Azure-ból VMware hibaelhárítása
+# <a name="troubleshoot-failback-to-on-premises-from-azure"></a>A helyszíni feladat-visszavétel az Azure-ból – hibaelhárítás
 
 Ez a cikk ismerteti az Azure virtuális gépek átadja az Azure-bA a feladatátvételt követően a helyszíni VMware-infrastruktúra előforduló hibáinak elhárítása [Azure Site Recovery](site-recovery-overview.md).
 

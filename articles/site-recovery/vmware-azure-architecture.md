@@ -1,25 +1,26 @@
 ---
-title: VMware-ből az Azure-bA architektúra az Azure Site Recovery |} A Microsoft Docs
-description: Ez a cikk áttekintést az Azure-bA az Azure Site Recovery a helyszíni VMware virtuális gépek replikálásakor használt összetevőkről és architektúráról
+title: VMware – Azure vészhelyreállítási helyreállítási architektúra az Azure Site Recovery |} A Microsoft Docs
+description: Ez a cikk áttekintést az Azure-bA az Azure Site Recovery a helyszíni VMware virtuális gépek vész-helyreállítási beállításakor használt összetevőkről és architektúráról
 author: rayne-wiselman
 ms.service: site-recovery
+ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: raynew
-ms.openlocfilehash: 498c41324bfc85f6f91acc8000df4c34856cf428
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 58129ece0fb1b7f446e5f8d738b5d1135aa0256e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715754"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212386"
 ---
-# <a name="vmware-to-azure-replication-architecture"></a>VMware-ből az Azure-replikáció architektúrája
+# <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware – Azure vészhelyreállítási recovery architektúrájáról
 
-Ez a cikk azt ismerteti, architektúrájának és folyamatainak használatos, ha replikálni, a feladatátvétel és helyreállítás a VMware virtuális gépek (VM) egy helyszíni VMware-hely és az Azure közötti használatával [Azure Site Recovery](site-recovery-overview.md).
+Ez a cikk ismerteti az architektúra és a vész-helyreállítási replikáció, feladatátvétel és helyreállítás VMware virtuális gépek (VM) telepítéséhez használt folyamatok között egy helyszíni VMware-hely és az Azure-ban a [Azure Site Recovery](site-recovery-overview.md) servuce.
 
 
 ## <a name="architectural-components"></a>Az architektúra összetevői
 
-A következő táblázat és grafikus adja meg a VMware – Azure replikálás használt összetevők magas szintű nézetét.
+A következő táblázat és grafikus adja meg a VMware-vészhelyreállításhoz az Azure-ban használt összetevők magas szintű nézetét.
 
 **Összetevő** | **Követelmény** | **Részletek**
 --- | --- | ---

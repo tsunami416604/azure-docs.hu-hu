@@ -1,20 +1,17 @@
 ---
-title: Hozzon létre, és a feladatátvétel és helyreállítás az Azure Site Recovery helyreállítási tervek testreszabása |} A Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre, és az Azure Site Recovery helyreállítási tervek testreszabása. Ez a cikk ismerteti a feladatátvétel és helyreállítás a virtuális gépek és fizikai kiszolgálók.
-services: site-recovery
-documentationcenter: ''
-author: rayne-wiselman
+title: Létrehozása és testreszabása az Azure Site Recovery használata vész-helyreállítási helyreállítási tervek |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre, és az Azure Site Recovery szolgáltatással vész-helyreállítási helyreállítási tervek testreszabása.
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 145b23aa7b8e48a0301676595c8d59a64bebdd0b
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 5253b5743216fdb7cea9e3d387f64fdba8f56d8a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226668"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212335"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Hozzon létre, és a helyreállítási tervek testreszabása
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/03/2018
+ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 49688b958d904450c50944725b18e0d518e27146
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 32cd373499a1ac6dd8cc02e666b0f6ff70688157
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269258"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215259"
 ---
 # <a name="using-service-map-solution-in-azure"></a>A Service Map megoldást használ az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. A Service Map, megtekintheti a kiszolgálók ahogyan Ön gondol rájuk: rendszerekként, amelyek kritikus fontosságú szolgáltatások biztosításához. A Service Map megmutatja a kiszolgálók, a folyamatok, a bejövő és kimenő kapcsolat késési kapcsolatokat, és portok között, bármely TCP-kapcsolattal összekötött architektúrában, semmilyen beállítást nem szükséges ügynököt telepíteni.
@@ -72,11 +72,6 @@ Gépek a leképezés megjelenítéséhez a futó bővíthetők ki csoportokat é
 
 Alapértelmezés szerint a Service Map maps megjelenítése a függőségi adatokat az elmúlt 30 percben. Bal felső idő vezérlők használatával lekérdezheti a maps múltbéli porttartományok akár egy óráig bemutatják, hogyan függőségek kikeresi az elmúlt (például az incidens alatt vagy előtt történt változás). Fizetős munkaterületek 30 napig, és a munkaterületek 7 napig a Service Map adatokat tárolja.
 
-
-
-
-
-
 ## <a name="status-badges-and-border-coloring"></a>Állapot jelvények és szegély színezés
 A térképen minden kiszolgáló alján lehet a kiszolgáló állapotinformációról igényinek állapot jelvények listáját. A jelvény jelzi, hogy a kiszolgáló a megoldáshoz való integrációt közül néhány vonatkozó adatot. Egy jelvény kattintva megnyílik a közvetlenül a jobb oldali panelen az állapot részleteit. A jelenleg rendelkezésre álló állapot jelvények közé tartozik a riasztások, Service Desk, módosítások, biztonsági és frissítéseket.
 
@@ -104,7 +99,7 @@ Itt választhat **új létrehozása** , és adja meg a csoport nevét.
 ![Csoport neve](media/monitoring-service-map/machine-groups-name.png)
 
 >[!NOTE]
->Gépcsoportok 10 kiszolgálók jelenleg korlátozott, de hamarosan a kvótahatár növelését tervezzük.
+>Gépcsoportok 10 kiszolgálók korlátozódnak.
 
 ### <a name="viewing-a-group"></a>Egy csoport megtekintése
 Miután létrehozott néhány csoportot, válassza ki a csoportok lapon megtekintheti őket.
@@ -307,7 +302,7 @@ Kezelheti a költségeket és összetettséget, csatlakozási rekordjainak nem f
 |:--|:--|
 |Irány |A kapcsolat irányát, értéke *bejövő* vagy *kimenő* |
 |Gép |A számítógép teljes Tartományneve |
-|Folyamat |Identitáskezelési folyamat vagy a csoportok a folyamatok, a kapcsolat kezdeményezése és elfogadása |
+|Feldolgozás |Identitáskezelési folyamat vagy a csoportok a folyamatok, a kapcsolat kezdeményezése és elfogadása |
 |SourceIp |A forrás IP-címe |
 |DestinationIp |A cél-IP-cím |
 |DestinationPort |A cél-port száma |

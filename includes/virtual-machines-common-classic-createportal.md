@@ -1,5 +1,16 @@
-
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 127ade3b37380c50461c5b648265b431a2f4467e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227283"
+---
 Az *egyéni* virtuális gép egyszerűen egy olyan virtuális gép, amelyet a **Marketplace** egy **kiemelt alkalmazásával** hoz létre, mert elvégzi a munka oroszlánrészét Ön helyett. Emellett továbbra is több konfigurációs lehetőség közül választhat. Ezek többek között a következők:
 
 * A virtuális gép csatlakoztatása virtuális hálózathoz.

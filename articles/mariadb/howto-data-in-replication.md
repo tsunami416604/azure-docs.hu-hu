@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 13d1353b0f8b3320972973d428f4aedb0fb68ac8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f75b3e33cbd5719211bb30b22ab8d53c344b5579
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990688"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212760"
 ---
 # <a name="how-to-configure-azure-database-for-mariadb-data-in-replication"></a>Azure Database MariaDB-adatok a replikáció konfigurálása
 
@@ -62,7 +62,7 @@ Az alábbi lépéseket előkészítése, és konfigurálja a MariaDB futó kiszo
 
    A fő kiszolgálón konfigurált replikációs jogosultságokkal rendelkező felhasználói fiók létrehozása. Ezt az SQL-parancsokat vagy egy eszköz, például a MySQL Workbench segítségével teheti meg. Vegye figyelembe, hogy azt tervezi, hogy SSL-lel való replikálásához, ezt is meg kell adni, ha a felhasználó létrehozása. A MariaDB dokumentációjában tudni, hogyan [felhasználói fiókokat felvenni](https://mariadb.com/kb/en/library/create-user/) a fölérendelt kiszolgálón. 
 
-   Az alábbi parancsokat a létrehozott új replikációs szerepkör minden olyan gép, nem csak magát a fő futtató géphez, a fő elérhetik. Ez történik, megadásával "syncuser@'%" "a Létrehozás felhasználói parancsban. A MariaDB dokumentációjában talál további információkat talál [nevének megadásával](https://mariadb.com/kb/en/library/create-user/#account-names).
+   Az alábbi parancsokat a létrehozott új replikációs szerepkör minden olyan gép, nem csak magát a fő futtató géphez, a fő elérhetik. Ez történik, megadásával "syncuser\@(%)" a Létrehozás felhasználói parancsban. A MariaDB dokumentációjában talál további információkat talál [nevének megadásával](https://mariadb.com/kb/en/library/create-user/#account-names).
 
    **SQL-parancs**
 

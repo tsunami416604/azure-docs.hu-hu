@@ -6,27 +6,27 @@ manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/26/2018
 ms.author: dwalthermsft
-ms.openlocfilehash: aa5f6053bf1c98d2b84c02617da30f5d856ed3fc
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: f9a3d934de47630ac3fd2356001014d006c2a4eb
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324111"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212267"
 ---
-# <a name="public-preview-service-limits"></a>Nyilvános előzetes verziójú szolgáltatásokra vonatkozó korlátozások
+# <a name="public-preview-service-limits"></a>A szolgáltatás nyilvános előzetes verziójának korlátozásai
 
-A nyilvános előzetes verzióban az Azure digitális Twins lesz ideiglenes előfizetés, a példány- és sebességkorlátok, amelyek az alábbiakban tekintheti át.
+Során **nyilvános előzetes verzióban**, az Azure digitális Twins fog rendelkezni, ideiglenes előfizetés, a példány- és sebességkorlátok, amelyek az alábbiakban tekintheti át.
 
 Ezek a korlátozások létezik, így egyszerűsítve az új szolgáltatást és a számos funkciót.
 
 > [!NOTE]
-> Ezek a korlátok fogja növelni, illetve által általánosan elérhető (GA) eltávolítva.
+> Ezek a korlátok fog lehet növelni és/vagy eltávolítja **általános rendelkezésre állás** (**GA**).
 
 ## <a name="per-subscription-limits"></a>Előfizetésenként korlátok
 
-A nyilvános előzetes verzióban minden egyes Azure-előfizetés létrehozása, vagy is pontosan egy Azure digitális Twins-példány fut egyszerre.
+Során **nyilvános előzetes verzióban**, Azure-előfizetések létrehozása, vagy is pontosan egy Azure digitális Twins-példány fut egyszerre.
 
 > [!TIP]
 > Törli a példány lehetővé teszi, hogy hozzon létre egy újat.
@@ -35,9 +35,9 @@ A nyilvános előzetes verzióban minden egyes Azure-előfizetés létrehozása,
 
 Ezután minden egyes Azure digitális Twins példány veheti fel:
 
-- Egy `IoTHub` erőforrás
-- Egy `EventHub` eseménytípus DeviceMessage végpontja
-- Legfeljebb három `EventHub`, `ServiceBus`, vagy `EventGrid` esemény típusú végpontok `SensorChange`, `SpaceChange`, `TopologyOperation`, vagy `UdfCustom`
+- Egy **IoTHub** erőforrás
+- Egy **EventHub** eseménytípus végpontja **DeviceMessage**
+- Legfeljebb három **EventHub**, **ServiceBus**, vagy **EventGrid** esemény típusú végpontok **SensorChange**, **SpaceChange** , **TopologyOperation**, vagy **UdfCustom**
 
 ## <a name="management-api-limits"></a>Felügyeleti API-korlátok
 
@@ -54,7 +54,7 @@ A kérelem sebességhatárok a felügyeleti API-hoz a következők:
 Az alábbi korlátozások beállítása az Azure digitális Twins-példány összes felhasználó által definiált függvény hívások teljes száma:
 
 - 400 client library hívások / másodperc
-- 100 SendNotification hívások / másodperc
+- 100 **SendNotification** hívások / másodperc
 
 > [!NOTE]
 > A következő műveleteket okozhat a alkalmazni ideiglenesen további sebességhatárok:

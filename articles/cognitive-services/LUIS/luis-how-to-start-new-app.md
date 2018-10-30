@@ -1,5 +1,6 @@
 ---
-title: Új alkalmazás létrehozása az intelligens hangfelismerési szolgáltatással
+title: Hozzon létre egy új alkalmazást a Language Understanding használatánál
+titleSuffix: Azure Cognitive Services
 description: Létrehozhat és kezelhet az alkalmazások, a Language Understanding (LUIS) weblapon.
 services: cognitive-services
 author: diberry
@@ -9,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 55af0559c98c9fc63fd6902d80b4e6f2f0a7d2da
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: a4dbea40e59ef8fb3a89fefc24f43060c46a91eb
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870115"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214205"
 ---
 # <a name="create-an-app"></a>Alkalmazás létrehozása
 Nincsenek többféle módon LUIS-alkalmazások létrehozásához. A LUIS-alkalmazásokon hozhat létre a [LUIS](https://www.luis.ai) portál, vagy a LUIS szerzői [API-k](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).

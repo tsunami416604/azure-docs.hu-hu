@@ -1,21 +1,20 @@
 ---
-title: Az Azure-bA feladatátvétel tesztelése az Azure Site Recovery |} A Microsoft Docs
-description: Ismerje meg a feladatátvételi teszt futtatása a helyszínről az Azure-ba, az Azure Site Recovery szolgáltatással.
-services: site-recovery
+title: Futtassa a vészhelyreállítási próbát az Azure-bA az Azure Site Recoveryvel |} A Microsoft Docs
+description: Ismerje meg a irányuló vészhelyreállítási próbát a helyszínről az Azure-ba, az Azure Site Recovery szolgáltatással.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 09/11/2018
+ms.topic: conceptual
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 4c72a58cdc6082a40fe80b7a3cf8cf964199371e
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 6eb1ee90b22b9e37dcae900cd80f80cb549090e9
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391776"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213950"
 ---
-# <a name="test-failover-to-azure-in-site-recovery"></a>Az Azure-bA a Site Recovery feladatátvételi teszt
+# <a name="run-a-disaster-recovery-drill-to-azure"></a>Vészhelyreállítási próba végrehajtása az Azure-ba 
 
 
 Ez a cikk ismerteti, hogyan futtathat egy vészhelyreállítási próba végrehajtása az Azure Site Recovery feladatátvételi teszt segítségével.  
@@ -77,13 +76,13 @@ A következő esetekben feladatátvételi egy extra közbenső lépés, amely á
 Minden más esetben nincs köztes lépés nem kötelező, és a feladatátvételi jelentősen kevesebb időt vesz igénybe.
 
 
-## <a name="create-a-network-for-test-failover"></a>Hozzon létre egy hálózatot a feladatátvételi teszthez
+## <a name="create-a-network-for-test-failover"></a>Hálózat létrehozása feladatátvételi teszt számára
 
-Azt javasoljuk, hogy a teszt feladatátvételhez választja egy elkülönített hálózatot az éles hálózattól helyreállítási hely az adott a **számítás és hálózat** minden virtuális gép beállításait. Alapértelmezés szerint az Azure virtuális hálózat létrehozásakor különítve más hálózatokhoz. A tesztelési célú hálózat az éles hálózattól kell utánoznia:
+Azt javasoljuk, hogy a feladatátvétel teszteléséhez olyan hálózatot válasszon, amely el van különítve az éles helyreállítási oldal hálózatától, amely az egyes virtuális gépek **számítási és hálózati** beállításaiban van megadva. Alapértelmezés szerint egy Azure-beli virtuális hálózat létrehozásakor a hálózat el van különítve az egyéb hálózatoktól. A teszthálózatnak az éles hálózatot kell utánoznia:
 
-- A tesztelési célú hálózat az éles hálózattól alhálózatok egyező számú kell rendelkeznie. Alhálózatok ugyanazokat a neveket kell rendelkeznie.
-- A tesztelési célú hálózat az IP-címtartományból kell használnia.
-- Frissítse a DNS, a tesztelési célú hálózat, a DNS virtuális gép a megadott IP-címmel **számítás és hálózat** beállításait. Olvasási [Active Directoryra vonatkozó feladatátvételi szempontokat részletező cikkben](site-recovery-active-directory.md#test-failover-considerations) további részletekért.
+- A teszthálózatnak ugyanannyi alhálózattal kell rendelkeznie, mint az éles hálózatnak. Az alhálózatoknak ugyanazzal a névvel kell rendelkezniük.
+- A teszthálózatnak ugyanazt az IP-címtartományt kell használnia.
+- Frissítse a teszthálózat DNS-ét a DNS VM-hez a **számítási és hálózati** beállítások között megadott IP-címmel. További információkért olvassa el az [Active Directoryra vonatkozó feladatátvételi szempontokat](site-recovery-active-directory.md#test-failover-considerations) ismertető cikket.
 
 
 ## <a name="test-failover-to-a-production-network-in-the-recovery-site"></a>Feladatátvételi teszt, éles hálózati környezetben a helyreállítási hely
@@ -111,7 +110,7 @@ Ha azt szeretné, az Azure-beli virtuális gépek a feladatátvételt követően
 **Linux rendszerű Azure virtuális Gépen** | A helyi gépen a feladatátvétel előtt | Győződjön meg arról, hogy a virtuális gépen a Secure Shell szolgáltatás rendszerindításkor automatikusan elinduljon értéke.<br/><br/> Ellenőrizze, hogy a tűzfalszabályok engedélyezik-e az SSH-kapcsolatot.
 **Linux rendszerű Azure virtuális Gépen** | Az Azure virtuális Géphez feladatátvétel után | A hálózati biztonsági csoport szabályai a feladatait átadó virtuális gép (és az Azure-alhálózaton, amelyhez csatlakoztatva van) engedélyeznie kell az SSH-port bejövő kapcsolatait.<br/><br/> [Nyilvános IP-cím hozzáadása](https://aka.ms/addpublicip) a virtuális gép számára.<br/><br/> Ellenőrizze **rendszerindítási diagnosztika** egy Képernyőkép a virtuális gép számára.<br/><br/>
 
-Ismertetett lépéseket követve [Itt](site-recovery-failover-to-azure-troubleshoot.md) bármely-kapcsolatának hibaelhárítása a problémákat a feladatátvétel után.
+Kövesse az [itt](site-recovery-failover-to-azure-troubleshoot.md) leírt lépéseket a feladatátvitelt követő csatlakozási problémák megoldása érdekében.
 
 ## <a name="next-steps"></a>További lépések
 Miután végzett egy vészhelyreállítási próbát, tudjon meg többet a más típusú [feladatátvételi](site-recovery-failover.md).

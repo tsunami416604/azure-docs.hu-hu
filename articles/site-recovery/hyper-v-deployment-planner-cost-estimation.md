@@ -1,6 +1,6 @@
 ---
-title: Az Azure Site Recovery Deployment Planner költségbecslési részletei a Hyper-V – Azure-hoz | Microsoft Docs
-description: Ez a cikk az Azure Site Recovery Deployment Planner Hyper-V – Azure forgatókönyvére vonatkozóan létrehozott jelentés költségbecslési részleteit ismerteti.
+title: Tekintse át az Azure Site Recovery Deployment Planner költségbecslési jelentést a Hyper-V virtuális gépek vészhelyreállítása az Azure cost |} A Microsoft Docs
+description: Ez a cikk ismerteti a költségek áttekintése költségbecslési jelentést hoz létre az Azure Site Recovery Deployment Planner a Hyper-V vész-helyreállítási az Azure-bA.
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 40a8e2e6d994608d4aa26f6d9b3723c0ee27d3db
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 0233446f817436632efc4110872e84b6b3105453
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387242"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213185"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Az Azure Site Recovery Deployment Planner költségbecslési jelentése 
 

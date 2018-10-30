@@ -1,19 +1,19 @@
 ---
-title: A Linuxos fő célkiszolgáló feladatátvételi telepítse az Azure-ból a helyszíni |} A Microsoft Docs
-description: Egy Linux rendszerű virtuális gép ismételt védelme, mielőtt szüksége van egy Linux rendszerű fő célkiszolgálót. Ismerje meg, hogyan telepítsen egyet.
+title: Telepítse a Linuxos fő célkiszolgáló a feladat-visszavételhez helyszíni helyhez |} A Microsoft Docs
+description: Ismerje meg, hogyan állítható be egy Linux-fő célkiszolgálót egy helyszíni helyre történő feladat-visszavétel VMware virtuális gépek vészhelyreállítása az Azure-ban az Azure Site Recovery során.
 author: nsoneji
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 470d4547a63105e319f072461a4d8f24ebe3dbe8
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 415b50b94052e7d428ddfa55d5288c8954a3ff1a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094122"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212369"
 ---
-# <a name="install-a-linux-master-target-server"></a>A Linuxos fő célkiszolgáló telepítése
+# <a name="install-a-linux-master-target-server-for-failback"></a>Telepítse a Linuxos fő célkiszolgáló a feladat-visszavételhez
 Miután átadja a feladatokat a virtuális gépek az Azure-ba, visszaadhatja a virtuális gépek, a helyszíni helyre. Feladat-visszavételt, ismételt védelem a virtuális gép az Azure-ból a helyszíni helyre kell. Ez a folyamat szüksége lesz egy a helyszíni fő célkiszolgáló forgalom fogadására. 
 
 Ha a védett virtuális gépet egy Windows virtuális gépet, majd meg kell egy Windows fő célkiszolgáló. Linuxos virtuális gép szüksége lesz egy Linux rendszerű fő célkiszolgálót. Olvassa el az alábbi lépések végrehajtásával megtudhatja, hogyan hozhat létre, és a Linuxos fő célkiszolgáló telepítéséhez.

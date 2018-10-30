@@ -11,15 +11,15 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.component: users-groups-roles
-ms.date: 06/02/2017
+ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15b52920774a878cd386ced5966d507768a8af70
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 9b94bf4c499a5d6323e774df90304f0134bc5894
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627389"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215412"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Forgatókönyvek, korlátait és ismert problémák csoportok használata kezelheti az Azure Active Directory licencelése
 
@@ -211,23 +211,21 @@ A PowerShell vagy Graph API-csoport törlése közben hasonló hibák jelenhetne
 
 Ha Csoportalapú licencelést használ, célszerű Ismerkedjen meg az alábbi listában szereplő korlátozásai és ismert problémáit.
 
-- Csoportalapú licencelés jelenleg nem támogatja a más (beágyazott csoportok) tartalmazó csoportok. A beágyazott csoporttagság licenc alkalmazza, ha csak a azonnali első szintű felhasználó a csoport rendelkezik a alkalmazni licenceket.
+- Csoportalapú licencelés jelenleg nem támogatja a más (beágyazott csoportok) tartalmazó csoportok. Ha egy beágyazott csoportra alkalmaz egy licencet, az csak a csoport közvetlen első szintű felhasználótagjaira lesz alkalmazva.
 
-- A funkció csak használható biztonsági csoportokkal. Office-csoportok használata jelenleg nem támogatott, és nem tudják használni őket a licenc-hozzárendelési folyamat.
+- A funkció csak akkor használható a biztonsági csoportok és az Office 365-csoportokat, amelyek rendelkeznek a securityEnabled = TRUE.
 
 - A [Office 365 felügyeleti portálján](https://portal.office.com ) jelenleg nem támogatja a Csoportalapú licencelés. Ha egy felhasználói licenccel örököl egy csoportot, ez a licenc jelenik meg az Office rendszergazdai portál egy felhasználói licenccel. Ha megpróbálja módosítani a licencet, vagy próbálja meg eltávolítani a licencet, a portál hibaüzenetet ad vissza. Az örökölt csoportok licenceire közvetlenül a felhasználó nem módosítható.
 
-- Amikor a felhasználó el lesz távolítva a csoportból, és elveszti a licencet, a vannak beállítva a szolgáltatási csomagokat (például a SharePoint Online) a licenc az egy **felfüggesztett** állapota. A szolgáltatási csomagokat nincs megadva, a végső, letiltott állapotba. Az eszközeikről felhasználói adatokat, szándékos eltávolításából elkerülheti, ha egy rendszergazda hibásan gépeli tagság kezelése.
-
 - Licencek hozzárendelve, vagy módosította egy nagy méretű csoport (például 100 000 felhasználó), amikor azt sikerült hatással a teljesítményre. Pontosabban, a módosításokat az Azure AD-automatizálás által generált mennyisége negatív hatással lehet a az Azure AD közötti címtár-szinkronizálás teljesítménye és a helyszíni rendszerekben.
 
-- Nagy terhelés esetekben bizonyos licenc feldolgozási késhet, és módosítja például egy csoport hozzáadása vagy eltávolítása licenc vagy a felhasználók hozzáadása vagy eltávolítása a csoportból, feldolgozásra hosszú ideig eltarthat. Ha megjelenik a módosítások több mint 24 órán feldolgozásához, kérjük [hozzon létre egy támogatási jegyet](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest) lehetővé teszi, hogy vizsgálata. Most javítsuk teljesítményjellemzői ezt a szolgáltatást, mielőtt elérnék *általános rendelkezésre állás*.
+- Ha dinamikus csoportokat használ a felhasználóhoz tartozó tagság kezeléséhez, ellenőrizze, hogy a felhasználó a csoport tagja-e, mert ez szükséges a licenc hozzárendeléséhez. Ha nem, [ellenőrizze dinamikus csoporthoz tartozó tagsági szabály feldolgozási folyamatának állapotát](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule#check-processing-status-for-a-membership-rule). 
+
+- Nagy terhelés esetekben bizonyos csoportok licencmódosítások vagy a meglévő licenccel rendelkező csoportok csoporttagsági változások feldolgozása hosszú ideig is eltarthat. Ha megjelenik a módosítások 24 órán belül több mint 60K felhasználók méretét vagy annál kisebb, csoport feldolgozni [hozzon létre egy támogatási jegyet](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest) lehetővé teszi, hogy vizsgálata. 
 
 - A Szolgáltatáskezelési automatizálás licenc automatikusan nem reagál a minden típusú változtatásokat a környezetben. Például, valószínűleg elfogyott licenceket, néhány hibás állapotú felhasználók okozza. A szabadítson fel a rendelkezésre álló munkaállomásszámot, eltávolíthatja néhány közvetlenül hozzárendelt licencek más felhasználóktól. Azonban a rendszer automatikusan ezt a módosítást reagáltak és hárítsa el a felhasználókat, hogy a hibás állapotú.
 
   Az ilyen jellegű korlátozások Áthidaló megoldásként nyissa meg a **csoport** panel az Azure ad-ben, és kattintson a **újrafeldolgozása**. Ez a parancs dolgozza fel a benne lévő összes felhasználó számára, és oldja fel a hibaállapotok, ha lehetséges.
-
-- Csoportalapú licencelést nem rögzíti a hibákat, ha a licenc nem sikerült hozzárendelni egy felhasználóhoz egy ismétlődő proxy cím konfiguráció miatt az Exchange Online; az ilyen felhasználók licenc-hozzárendelés során a rendszer kihagyja. Azonosíthatja és megoldhatja a problémát kapcsolatos további információkért lásd: [ebben a szakaszban](licensing-groups-resolve-problems.md#license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online).
 
 ## <a name="next-steps"></a>További lépések
 
@@ -237,3 +235,5 @@ A csoportalapú licencelés segítségével folytatott licenckezelés egyéb for
 * [Licencek hozzárendelése egy csoporthoz az Azure Active Directoryban](licensing-groups-assign.md)
 * [A csoportok licencproblémáinak azonosítása és megoldása az Azure Active Directoryban](licensing-groups-resolve-problems.md)
 * [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre az Azure Active Directoryban](licensing-groups-migrate-users.md)
+* [Felhasználók az Azure Active Directoryban Csoportalapú licencelést használ terméklicencek közötti migrálása](../users-groups-roles/licensing-groups-change-licenses.md)
+* [PowerShell forgatókönyvek Csoportalapú licenceléshez az Azure Active Directoryban](../users-groups-roles/licensing-ps-examples.md)

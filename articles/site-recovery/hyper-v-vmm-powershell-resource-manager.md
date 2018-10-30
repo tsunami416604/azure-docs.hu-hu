@@ -1,6 +1,6 @@
 ---
-title: A Virtual Machine Manager-felhőkben a Hyper-V virtuális gépek replikálása másodlagos helyre a PowerShell-lel (Azure Resource Manager) |} A Microsoft Docs
-description: Ismerteti, hogyan lehet a Virtual Machine Manager-felhőkben a Hyper-V virtuális gépek replikálása másodlagos Virtual Machine Manager-helyre PowerShell (Resource Manager) használatával
+title: Állítsa be a Hyper-V virtuális gépek vészhelyreállítása egy másodlagos helyre a PowerShell és az Azure Site Recovery VMM-felhőkben |} A Microsoft Docs
+description: Ismerteti, hogyan állítható be Hyper-V virtuális gépek vészhelyreállítása egy másodlagos VMM-helyről az Azure Site Recovery és a PowerShell használatával a VMM-felhőkben.
 services: site-recovery
 author: sujayt
 manager: rochakm
@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: sutalasi
-ms.openlocfilehash: 896b3cb3c40673dfbc7269cab1d37790f78912b0
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 6ade1d584fad05e33a72a0ff5099378a9cf7f29f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041356"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214579"
 ---
-# <a name="replicate-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Hyper-V virtuális gépek replikálása másodlagos helyre a PowerShell (Resource Manager) használatával
+# <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Állítsa be a Hyper-V virtuális gépek vészhelyreállítása egy másodlagos helyre a PowerShell (Resource Manager) használatával
 
 Ez a cikk bemutatja, hogyan automatizálhatja a lépéseket, replikációját a Hyper-V virtuális gépeket a System Center Virtual Machine Manager-felhőkben a Virtual Machine Manager cloud egy másodlagos helyszíni hely használatával [Azure Site Recovery](site-recovery-overview.md).
 

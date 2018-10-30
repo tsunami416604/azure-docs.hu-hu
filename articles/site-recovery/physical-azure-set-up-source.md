@@ -1,20 +1,20 @@
 ---
-title: A forráskörnyezet (fizikai kiszolgálók Azure-bA) beállítása |} A Microsoft Docs
-description: Ez a cikk ismerteti, hogyan állítható be a helyszíni környezetben való fizikai kiszolgálók, Windows vagy Linux rendszerű Azure-ba való replikálásának megkezdéséhez.
+title: Állítsa be a konfigurációs kiszolgálót a fizikai kiszolgálók az Azure-bA az Azure Site Recovery használata vész-helyreállítási |} A Microsoft Docs
+description: Ez a cikk ismerteti, hogyan állítható be a helyszíni konfigurációs kiszolgáló, valamint a helyszíni fizikai kiszolgálóknak az Azure-bA.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/21/2018
+ms.topic: conceptual
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 0cbba45ce49667293d8f16bf370424acd70ff78b
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 739129045fab72a9b535be25b853c902c7dbd251
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213486"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209547"
 ---
-# <a name="set-up-the-source-environment-physical-server-to-azure"></a>A forráskörnyezet (fizikai kiszolgáló Azure-bA) beállítása
+# <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Állítsa be a konfigurációs kiszolgáló, valamint fizikai kiszolgálók Azure-bA
 
 Ez a cikk ismerteti, hogyan állítható be a helyszíni környezetben való fizikai kiszolgálók, Windows vagy Linux rendszerű Azure-ba való replikálásának megkezdéséhez.
 

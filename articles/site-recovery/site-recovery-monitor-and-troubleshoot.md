@@ -1,19 +1,18 @@
 ---
 title: Az Azure Site Recovery monitorozása |} A Microsoft Docs
 description: Figyelése és hibaelhárítása az Azure Site Recovery replikációs problémákat és a műveletek a portál használatával
-services: site-recovery
 author: bsiva
 manager: abhemra
 ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 07/19/2018
 ms.author: bsiva
-ms.openlocfilehash: 89270a0bd1914a2486c8cc634563bdded743adaa
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: dc089e29889b12a5a6d3fcb17328cfc13fe8d0c9
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746473"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211808"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>Monitorozás és hibaelhárítás a Site Recovery
 

@@ -1,22 +1,20 @@
 ---
-title: 'Az Azure Site Recovery-ügynök hibák elhárítása: Vendég ügynök állapota nem érhető el |} A Microsoft Docs'
-description: Tünetek okok és az Azure Site Recovery hibák az ügynök és a bővítmény kapcsolatos megoldások
-services: site-recovery
+title: Az Azure Site Recovery-ügynökökkel kapcsolatos problémák elhárítása |} A Microsoft Docs
+description: Tünetek, az az oka, és a megoldások az Azure Site Recovery-ügynök hibáinak arról nyújt tájékoztatást.
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: troubleshooting
+ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: c0429e87f6c58ef2b9c7a268bee596d769e95910
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 3090dd9e0d9681dbf77f052e9d324f2add0a1910
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919804"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215038"
 ---
-# <a name="troubleshoot-azure-site-recovery-extension-failures-issues-with-the-agent-or-extension"></a>Az Azure Site Recovery-bővítmény hibáinak elhárítása: az ügynök vagy a bővítmény kapcsolatos problémák
+# <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Az Azure Site Recovery-ügynök hibáinak elhárítása
 
 Ez a cikk ismerteti a hibaelhárítási lépéseket tartalmaz, amely segítségével kapcsolódó Virtuálisgép-ügynök és a bővítmény az Azure Site Recovery-hibák elhárításához.
 
@@ -105,7 +103,7 @@ A bővítmény eltávolítása:
 
 1. Az a [az Azure portal](https://portal.azure.com/), nyissa meg a virtuális gép, amelyen a biztonsági mentési hiba jelentkezik.
 2. Válassza ki **beállítások**.
-3. Válassza ki **bővítmények**.
+3. Kattintson az **Extensions** (Bővítmények) gombra.
 4. Válassza ki **Site Recovery-bővítmény**.
 5. Válassza ki **eltávolítása**.
 

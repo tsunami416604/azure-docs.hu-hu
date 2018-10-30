@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 10/26/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: e8f0077bf5a1a2911b3aec032fadacf31ad75463
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 13d6ed9feab4654d3574a5aced72efa0345365a6
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855272"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215327"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Az Azure Active Directory a dinamikus tagsági szabályok
 
@@ -61,7 +61,7 @@ Zárójelek egyetlen kifejezés nem kötelezően megadandó jellegűek. A tagsá
 Három feltételtípus tulajdonságok, a tagsági szabály létrehozására használható.
 
 * Logikai
-* Sztring
+* Karakterlánc
 * Karakterlánc-gyűjtemény
 
 Az alábbiakban a felhasználói tulajdonságok, amelyek segítségével hozzon létre egy egyetlen kifejezés.
@@ -316,7 +316,7 @@ A "Minden eszköz" szabály jön létre a - ne operátor és a null érték egye
 device.objectid -ne null
 ```
 
-### <a name="extension-properties-and-custom-extension-properties"></a>Bővítmény tulajdonságai és egyéni bővítmény tulajdonságai
+## <a name="extension-properties-and-custom-extension-properties"></a>Bővítmény tulajdonságai és egyéni bővítmény tulajdonságai
 
 A dinamikus tagsági szabályok karakterlánc tulajdonságai bővítményattribútumok és egyéni extenson tulajdonságok támogatottak. A bővítményattribútumok szinkronizálva lesznek a helyszíni Windows Server AD, és tegye meg "ExtensionAttributeX", ahol az X értéke 1 – 15 formátumát. Íme egy példa bővítményattribútum-tulajdonságként használó szabály:
 
@@ -335,7 +335,7 @@ Például egy szabályt, amely egy egyéni bővítmény tulajdonságot használj
 user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
 ```
 
-Az egyéni tulajdonság neve található a címtárban lekérdezi a felhasználó által a tulajdonság Graph Explorer használatával, és megkeresi a tulajdonság nevét.
+Az egyéni tulajdonság neve található a címtárban lekérdezi a felhasználó által a tulajdonság Graph Explorer használatával, és megkeresi a tulajdonság nevét. Ezenkívül bejelölheti **egyéni bővítménytulajdonság lekérése** hivatkozásra a dinamikus felhasználói csoport szabály builder adjon meg egy egyedi Alkalmazásazonosító, és teljes listája megtalálható a dinamikus tagsági szabály létrehozásakor egyéni bővítménytulajdonságok fogadására. Ez a lista is frissíthetők úgy, hogy minden olyan új egyéni bővítmény tulajdonságainak lekérése az adott alkalmazáshoz.
 
 ## <a name="rules-for-devices"></a>Eszközök szabályai
 

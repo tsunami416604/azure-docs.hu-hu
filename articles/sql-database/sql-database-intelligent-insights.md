@@ -1,5 +1,5 @@
 ---
-title: Az Intelligent Insights – Azure SQL Database adatbázis-használat figyelése |} A Microsoft Docs
+title: Intelligent Insights – Azure SQL Database-adatbázis teljesítményének figyelése |} A Microsoft Docs
 description: Intelligent Insights az Azure SQL Database beépített intelligenciával folyamatosan mesterséges intelligencia révén az adatbázis-használat figyeléséhez, és észleli azokat a káros eseményeket, amelyek gyenge teljesítményhez vezethetnek használ.
 services: sql-database
 ms.service: sql-database
@@ -12,14 +12,14 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: b64c8f5d30f95cccf8a029adfd5c443a81597c4d
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: e87cd3742a5dcd52c3a447bb66ea9089c18d5aee
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870689"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214681"
 ---
-# <a name="intelligent-insights-using-artificial-intelligence-to-monitor-database-usage"></a>Intelligent Insights mesterséges intelligencia használatával figyelheti az adatbázis-használat
+# <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Mesterséges Intelligencia használatával monitorozásának és hibaelhárításának intelligens elemzési adatbázis-teljesítmény
 
 Az Azure SQL Database Intelligent Insights lehetővé teszi, hogy mi történik az SQL Database és a felügyelt példány az adatbázis teljesítményét.
 

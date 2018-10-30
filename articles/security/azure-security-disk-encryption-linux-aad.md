@@ -7,12 +7,12 @@ ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 09/19/2018
-ms.openlocfilehash: 81a9f84a925fc424fc6371fcbe02a141d4ee8ec1
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: b0b67121e172bb29d1f95e56d3b31f509552bf2e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498351"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211230"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms-previous-release"></a>Az Azure Disk Encryption engedélyezése a Linux rendszerű IaaS virtuális gépekhez (előző kiadás)
 
@@ -192,8 +192,11 @@ A paraméter kerül, ha az összes partíció, és titkosítja azokat, amennyibe
 - Nem legfelső szintű vagy az operációs rendszer és rendszerindító partíció
 - Már nem titkosított
 - Nem rendelkeznek BEk-KEL kötet
+- Nem RAID-kötet
+- LVM kötet nem
 - Csatlakoztatva van
 
+A RAID vagy LVM kötetet, hanem a RAID vagy LVM kötetet alkotó lemezek titkosítása.
 
 ### <a name="bkmk_EFATemplate"> </a> Használja a EncryptFormatAll paramétert a sablon alapján
 Az EncryptFormatAll beállítást használja, minden olyan már meglévő Azure Resource Manager-sablon, amely titkosítja a Linux rendszerű virtuális gép használja, és módosítsa a **EncryptionOperation** AzureDiskEncryption erőforrás mezőjét.

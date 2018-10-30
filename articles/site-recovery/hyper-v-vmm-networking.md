@@ -1,19 +1,19 @@
 ---
 title: Állítsa be az IP-címek az Azure Site Recovery a feladatátvételt követően csatlakozni egy másodlagos helyszíni helyre |} A Microsoft Docs
-description: Ismerteti, hogyan állíthatja be az IP-címzés virtuális gépek egy másodlagos helyszíni hely csatlakozik az Azure Site Recovery a feladatátvételt követően.
+description: Ismerteti, hogyan állíthatja be az IP-címkezelés vész-helyreállítási és az Azure Site Recovery a feladatátvétel utáni virtuális gépek egy másodlagos helyszíni helyre való csatlakozáshoz.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: rayne
-ms.openlocfilehash: dc28611f4b27d263e19f76ce4313f8d531a8cba2
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 1a9a89138dc71f7a0255b8ab4084182848d6e994
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077002"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211740"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>Az IP-címkezelést a feladatátvételt követően csatlakozni egy másodlagos helyszíni helyre
 

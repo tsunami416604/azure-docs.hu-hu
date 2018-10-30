@@ -1,21 +1,22 @@
 ---
-title: Feladatátvétel a Site Recoveryben |} A Microsoft Docs
-description: Az Azure Site Recovery koordinálja a replikációt, feladatátvételének és helyreállításának virtuális gépek és fizikai kiszolgálók. További információ az Azure-ban vagy egy másodlagos adatközpontba történő feladatátvételt.
+title: Vészhelyreállítás az Azure Site Recovery feladatátvételi |} A Microsoft Docs
+description: Ismerje meg, feladat-visszavétel során a virtuális gépek és fizikai kiszolgálók az Azure Site Recovery szolgáltatással vészhelyreállítás során.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/11/2018
-ms.author: ponatara
-ms.openlocfilehash: c9a2f258ca952ca36000e1ca0630fbde31ba7ba0
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.date: 10/28/2018
+ms.author: raynew
+ms.openlocfilehash: 6e16529740377b9a082fda4f3e4409b57441715e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391317"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215157"
 ---
-# <a name="failover-in-site-recovery"></a>Feladatátvétel a Site Recoveryben
+# <a name="fail-over-vms-and-physical-servers"></a>Virtuális gépek és fizikai kiszolgálók feladatátvételét 
+
 Ez a cikk bemutatja, hogyan a feladatátvételi virtuális gépekhez és fizikai kiszolgálók Site Recovery által védett.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -110,13 +111,13 @@ Előfordulhat, hogy automatizálni szeretné bizonyos műveleteket feladatátvé
 ## <a name="post-failover-considerations"></a>Feladatátvételi szempontokat részletező cikkben közzététele
 Vegye figyelembe a következőket érdemes feladatátvétel után:
 ### <a name="retaining-drive-letter-after-failover"></a>Meghajtóbetűjel megőrzése feladatátvétel után
-A meghajtó betűjelét, a virtuális gépek a feladatátvételt követően megőrzéséhez beállíthatja a **TÁROLÓHÁLÓZATI szabályzata** a virtuális gép **OnlineAll**. [További információk](https://support.microsoft.com/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure).
+A meghajtó betűjelét, a virtuális gépek a feladatátvételt követően megőrzéséhez beállíthatja a **TÁROLÓHÁLÓZATI szabályzata** a virtuális gép **OnlineAll**. [További információ](https://support.microsoft.com/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure).
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Felkészülés az Azure virtuális gépekhez való kapcsolódásra a feladatátvételt követően
 
-Ha azt szeretné, az Azure-beli virtuális gépek a feladatátvételt követően RDP/SSH segítségével kapcsolódni, kövesse a követelmények a táblázat foglalja össze [Itt](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+Ha a feladatátvételt követően RDP vagy SSH segítségével szeretne kapcsolódni az Azure-beli virtuális gépekhez, kövesse a táblázatban összefoglalt követelményeket, [itt](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 
-Ismertetett lépéseket követve [Itt](site-recovery-failover-to-azure-troubleshoot.md) bármely-kapcsolatának hibaelhárítása a problémákat a feladatátvétel után.
+Kövesse az [itt](site-recovery-failover-to-azure-troubleshoot.md) leírt lépéseket a feladatátvitelt követő csatlakozási problémák megoldása érdekében.
 
 
 ## <a name="next-steps"></a>További lépések

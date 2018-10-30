@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: 49566d21fa6897f5c1371bbea2bb602a393de66d
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 8094965da5fb0a5fad0313fd96e2878f86d78aa7
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140789"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215497"
 ---
 # <a name="how-to-use-user-defined-functions-in-azure-digital-twins"></a>Felhasználó által definiált függvények használata az Azure digitális Twins
 
@@ -50,9 +50,9 @@ Matchers olyan graph objektumok, amelyek meghatározzák, hogy mely felhasznál�
 - `SensorDevice`
 - `SensorSpace`
 
-A következő példa megfeleltetőben megadott kiértékelik igaz értékre az összes érzékelő telemetriai esemény `Temperature` adatok típusú értékként. A felhasználó által definiált függvény több matchers hozhat létre.
+A következő példa megfeleltetőben megadott kiértékelik igaz értékre az összes érzékelő telemetriai esemény `"Temperature"` adatok típusú értékként. A felhasználó által definiált függvény több matchers hozhat létre.
 
-```text
+```plaintext
 POST https://yourManagementApiUrl/api/v1.0/matchers
 {
   "Name": "Temperature Matcher",
@@ -123,9 +123,9 @@ function process(telemetry, executionContext) {
 
 ### <a name="example-functions"></a>Példa funkciók
 
-Állítsa be az érzékelő telemetriai típusú adatokat közvetlenül az érzékelő olvasása `Temperature`, amely `sensor.DataType`:
+Állítsa be az érzékelő telemetriai típusú adatokat közvetlenül az érzékelő olvasása **hőmérséklet**, amely `sensor.DataType`:
 
-```javascript
+```JavaScript
 function process(telemetry, executionContext) {
 
   // Get sensor metadata
@@ -139,7 +139,7 @@ function process(telemetry, executionContext) {
 }
 ```
 
-A `telemetry` paraméter tesz közzé egy `SensorId` és `Message`. A `executionContext` paramétert mutatja meg a következő attribútumokat:
+A *telemetriai* paraméter tesz elérhetővé a **SensorId** és **üzenet** attribútumok (egy érzékelő által küldött üzenet megfelelő). A *executionContext* paramétert mutatja meg a következő attribútumokat:
 
 ```csharp
 var executionContext = new UdfExecutionContext
@@ -153,7 +153,7 @@ var executionContext = new UdfExecutionContext
 
 A következő példában azt fog rögzít egy üzenetet, ha az érzékelő telemetria olvasása idővesztesége egy előre meghatározott küszöbértéket. A diagnosztikai beállítások engedélyezve vannak a digitális Twins-példányon, ha a rendszer felhasználó által definiált függvények származó naplók is továbbítja:
 
-```javascript
+```JavaScript
 function process(telemetry, executionContext) {
 
   // Retrieve the sensor value
@@ -168,7 +168,7 @@ function process(telemetry, executionContext) {
 
 Az alábbi kód értesítést aktivál, ha hőmérséklet szintje meghaladja a előre definiált konstans.
 
-```javascript
+```JavaScript
 function process(telemetry, executionContext) {
 
   // Retrieve the sensor value
@@ -196,7 +196,7 @@ Egy összetettebb UDF kódmintát talál [elérhető tárolóhelyek friss vezet�
 
 A felhasználó által definiált függvény végrehajtása alatt a szerepkör-hozzárendelés létrehozása kell. Ha nem, nem lesz kommunikál a felügyeleti API-t gráfsémákkal műveleteket hajthat végre a megfelelő engedélyekkel. A végrehajtandó műveleteket végez a felhasználó által definiált függvény nem mentesülnek a szerepköralapú hozzáférés-vezérlést a digitális Twins felügyeleti API-k belül. Ezek is lehet korlátozott hatókör egyes szerepkörök vagy a megadott access control elérési útjait megadásával. További információkért lásd: [szerepköralapú hozzáférés-vezérlés](./security-role-based-access-control.md) dokumentációját.
 
-- A szerepkörök le, és az UDF; hozzárendelni kívánt szerepkört Azonosítójának lekéréséhez Adja meg azt az alábbi szerepkör azonosítója.
+1. A szerepkörök le, és az UDF; hozzárendelni kívánt szerepkört Azonosítójának lekéréséhez Adja át azt, hogy **RoleId** alatt.
 
 ```plaintext
 GET https://yourManagementApiUrl/api/v1.0/system/roles
@@ -206,8 +206,9 @@ GET https://yourManagementApiUrl/api/v1.0/system/roles
 | --- | --- |
 | *yourManagementApiUrl* | A felügyeleti API teljes URL-címe  |
 
-- ObjectId lesz a korábban létrehozott UDF-azonosító
-- Keresés `Path` szóközt azok teljes elérési útja, és másolja az lekérdezésével a `spacePaths` értéket. Illessze be az alábbi elérési út a UDF szerepkör-hozzárendelés létrehozása során
+2. **ObjectId** lesz a korábban létrehozott UDF-azonosító.
+3. Keresse meg az értéket a **elérési** a szóközt az lekérdezésével `fullpath`.
+4. Másolja a visszaadott `spacePaths` értéket. Használhat, amely alatt.
 
 ```plaintext
 GET https://yourManagementApiUrl/api/v1.0/spaces?name=yourSpaceName&includes=fullpath
@@ -217,6 +218,8 @@ GET https://yourManagementApiUrl/api/v1.0/spaces?name=yourSpaceName&includes=ful
 | --- | --- |
 | *yourManagementApiUrl* | A felügyeleti API teljes URL-címe  |
 | *yourSpaceName* | A használni kívánt terület neve |
+
+4. Illessze be a visszaadott `spacePaths` be érték **elérési út** UDF szerepkör-hozzárendelés létrehozásához.
 
 ```plaintext
 POST https://yourManagementApiUrl/api/v1.0/roleassignments
@@ -253,7 +256,7 @@ Egy helyet azonosító, a megadott kérdezi le a területet a diagramon.
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `id`  | `guid` | Hely azonosítója |
+| *id*  | `guid` | Hely azonosítója |
 
 ### <a name="getsensormetadataid--sensor"></a>getSensorMetadata(id) ⇒ `sensor`
 
@@ -263,7 +266,7 @@ Egy helyet azonosító, a megadott kérdezi le a területet a diagramon.
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `id`  | `guid` | érzékelő azonosítója |
+| *id*  | `guid` | érzékelő azonosítója |
 
 ### <a name="getdevicemetadataid--device"></a>getDeviceMetadata(id) ⇒ `device`
 
@@ -273,7 +276,7 @@ Eszközazonosító, a megadott lekérdezi az eszköz a diagramon.
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `id`  | `guid` | Eszközazonosító |
+| *id* | `guid` | Eszközazonosító |
 
 ### <a name="getsensorvaluesensorid-datatype--value"></a>(sensorId, dataType) getSensorValue ⇒ `value`
 
@@ -283,8 +286,8 @@ Adja meg az érzékelő-azonosítót és jeho datovému typu, kérje le az aktu�
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `sensorId`  | `guid` | érzékelő azonosítója |
-| `dataType`  | `string` | érzékelő adattípus |
+| *sensorId*  | `guid` | érzékelő azonosítója |
+| *Adattípus*  | `string` | érzékelő adattípus |
 
 ### <a name="getspacevaluespaceid-valuename--value"></a>(spaceId, értéknév) getSpaceValue ⇒ `value`
 
@@ -294,8 +297,8 @@ A jelenlegi érték az adott hely tulajdonságnál adja meg a helyet azonosító
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `spaceId`  | `guid` | Hely azonosítója |
-| `valueName` | `string` | lemezterület-tulajdonság neve |
+| *spaceId*  | `guid` | Hely azonosítója |
+| *Értéknév* | `string` | lemezterület-tulajdonság neve |
 
 ### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>(sensorId, dataType) getSensorHistoryValues ⇒ `value[]`
 
@@ -305,8 +308,8 @@ Adja meg az érzékelő-azonosítót és jeho datovému typu, lekérni az adott 
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `sensorId` | `guid` | érzékelő azonosítója |
-| `dataType` | `string` | érzékelő adattípus |
+| *sensorId* | `guid` | érzékelő azonosítója |
+| *Adattípus* | `string` | érzékelő adattípus |
 
 ### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>(spaceId, dataType) getSpaceHistoryValues ⇒ `value[]`
 
@@ -316,8 +319,8 @@ Adja meg a helyet azonosító és a neve, lekérni az adott tulajdonságnál a t
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `spaceId` | `guid` | Hely azonosítója |
-| `valueName` | `string` | lemezterület-tulajdonság neve |
+| *spaceId* | `guid` | Hely azonosítója |
+| *Értéknév* | `string` | lemezterület-tulajdonság neve |
 
 ### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces(spaceId) ⇒ `space[]`
 
@@ -327,7 +330,7 @@ Adja meg a helyet azonosító, beolvasni az, hogy a fölérendelt hely alárende
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `spaceId` | `guid` | Hely azonosítója |
+| *spaceId* | `guid` | Hely azonosítója |
 
 ### <a name="getspacechildsensorsspaceid--sensor"></a>getSpaceChildSensors(spaceId) ⇒ `sensor[]`
 
@@ -337,7 +340,7 @@ Adja meg a helyet azonosító, beolvasni a gyermek érzékelőket, hogy a fölé
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `spaceId` | `guid` | Hely azonosítója |
+| *spaceId* | `guid` | Hely azonosítója |
 
 ### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices(spaceId) ⇒ `device[]`
 
@@ -347,7 +350,7 @@ Adja meg a helyet azonosító, lekéréséhez, hogy a fölérendelt hely a gyerm
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `spaceId` | `guid` | Hely azonosítója |
+| *spaceId* | `guid` | Hely azonosítója |
 
 ### <a name="getdevicechildsensorsdeviceid--sensor"></a>getDeviceChildSensors(deviceId) ⇒ `sensor[]`
 
@@ -357,7 +360,7 @@ Adja meg egy eszközazonosítót, beolvasni a gyermek érzékelők szülő eszk�
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `deviceId` | `guid` | Eszközazonosító |
+| *az eszközazonosító* | `guid` | Eszközazonosító |
 
 ### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace(childSpaceId) ⇒ `space`
 
@@ -367,7 +370,7 @@ Adja meg a helyet azonosító, beolvasni a fölérendelt hely.
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `childSpaceId` | `guid` | Hely azonosítója |
+| *childSpaceId* | `guid` | Hely azonosítója |
 
 ### <a name="getsensorparentspacechildsensorid--space"></a>getSensorParentSpace(childSensorId) ⇒ `space`
 
@@ -377,7 +380,7 @@ Adja meg az érzékelő azonosítót, beolvasni a fölérendelt hely.
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `childSensorId` | `guid` | érzékelő azonosítója |
+| *childSensorId* | `guid` | érzékelő azonosítója |
 
 ### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace(childDeviceId) ⇒ `space`
 
@@ -387,7 +390,7 @@ Adja meg egy eszközazonosítót, beolvasni a fölérendelt hely.
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `childDeviceId` | `guid` | Eszközazonosító |
+| *childDeviceId* | `guid` | Eszközazonosító |
 
 ### <a name="getsensorparentdevicechildsensorid--space"></a>getSensorParentDevice(childSensorId) ⇒ `space`
 
@@ -397,7 +400,7 @@ Adja meg az érzékelő azonosítót, beolvasni a hozzá tartozó szülő eszkö
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `childSensorId` | `guid` | érzékelő azonosítója |
+| *childSensorId* | `guid` | érzékelő azonosítója |
 
 ### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>(spaceId, propertyName) getSpaceExtendedProperty ⇒ `extendedProperty`
 
@@ -407,8 +410,8 @@ Adja meg a helyet azonosító, lekérdezni a tulajdonság és az értékét a te
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `spaceId` | `guid` | Hely azonosítója |
-| `propertyName` | `string` | lemezterület-tulajdonság neve |
+| *spaceId* | `guid` | Hely azonosítója |
+| *a propertyName* | `string` | lemezterület-tulajdonság neve |
 
 ### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>(sensorId, propertyName) getSensorExtendedProperty ⇒ `extendedProperty`
 
@@ -418,8 +421,8 @@ Adja meg az érzékelő azonosítót, lekérdezni a tulajdonság és annak ért�
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `sensorId` | `guid` | érzékelő azonosítója |
-| `propertyName` | `string` | érzékelő tulajdonság neve |
+| *sensorId* | `guid` | érzékelő azonosítója |
+| *a propertyName* | `string` | érzékelő tulajdonság neve |
 
 ### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>(deviceId, propertyName) getDeviceExtendedProperty ⇒ `extendedProperty`
 
@@ -429,8 +432,8 @@ Adja meg egy eszközazonosítót, lekérdezni a tulajdonság és annak értéké
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `deviceId` | `guid` | Eszközazonosító |
-| `propertyName` | `string` | eszköz tulajdonság neve |
+| *az eszközazonosító* | `guid` | Eszközazonosító |
+| *a propertyName* | `string` | eszköz tulajdonság neve |
 
 ### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue (sensorId, dataType, érték)
 
@@ -440,9 +443,9 @@ Beállít egy értéket a megadott adattípus-érzékelő objektumon.
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `sensorId` | `guid` | érzékelő azonosítója |
-| `dataType`  | `string` | érzékelő adattípus |
-| `value`  | `string` | érték |
+| *sensorId* | `guid` | érzékelő azonosítója |
+| *Adattípus*  | `string` | érzékelő adattípus |
+| *value*  | `string` | érték |
 
 ### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue (spaceId, dataType, érték)
 
@@ -452,9 +455,9 @@ Beállít egy értéket a megadott adattípus-terület objektumon.
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `spaceId` | `guid` | Hely azonosítója |
-| `dataType` | `string` | adattípus |
-| `value` | `string` | érték |
+| *spaceId* | `guid` | Hely azonosítója |
+| *Adattípus* | `string` | adattípus |
+| *value* | `string` | érték |
 
 ### <a name="logmessage"></a>log(Message)
 
@@ -464,7 +467,7 @@ A felhasználó által definiált függvényen belül a következő üzenetet na
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `message` | `string` | üzenet be kell jelentkeznie |
+| *üzenet* | `string` | üzenet be kell jelentkeznie |
 
 ### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification (topologyObjectId, topologyObjectType, hasznos adat)
 
@@ -474,9 +477,9 @@ Küld értesítő üzenet egyéni szövegében küldik.
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `topologyObjectId`  | `guid` | Graph-objektum azonosítóját (például. terület / érzékelő/Device ID)|
-| `topologyObjectType`  | `string` | (például. terület / érzékelő vagy eszköz)|
-| `payload`  | `string` | az értesítéssel elküldendő JSON-adattartalmat |
+| *topologyObjectId*  | `guid` | Graph-objektum azonosítóját (például. terület / érzékelő/Device ID)|
+| *topologyObjectType*  | `string` | (például. terület / érzékelő vagy eszköz)|
+| *hasznos adat*  | `string` | az értesítéssel elküldendő JSON-adattartalmat |
 
 ## <a name="return-types"></a>Návratové Typy
 
@@ -515,7 +518,7 @@ A kiterjesztett tulajdonság és az aktuális hely értékét adja vissza.
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `propertyName` | `string` | a bővített tulajdonság neve |
+| *a propertyName* | `string` | a bővített tulajdonság neve |
 
 #### <a name="valuevaluename--value"></a>Value(VALUENAME) ⇒ `value`
 
@@ -523,7 +526,7 @@ Az aktuális hely értékét adja vissza.
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `valueName` | `string` | az érték neve |
+| *Értéknév* | `string` | az érték neve |
 
 #### <a name="historyvaluename--value"></a>History(VALUENAME) ⇒ `value[]`
 
@@ -531,7 +534,7 @@ Az aktuális hely korábbi értékeit adja vissza.
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `valueName` | `string` | az érték neve |
+| *Értéknév* | `string` | az érték neve |
 
 #### <a name="notifypayload"></a>Notify(Payload)
 
@@ -539,7 +542,7 @@ A megadott hasznos adattal értesítést küld.
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `payload` | `string` | Az értesítés foglalandó JSON-adattartalmat |
+| *hasznos adat* | `string` | Az értesítés foglalandó JSON-adattartalmat |
 
 ### <a name="device"></a>Eszköz
 
@@ -575,7 +578,7 @@ A kiterjesztett tulajdonság és az aktuális eszköz értékét adja vissza.
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `propertyName` | `string` | a bővített tulajdonság neve |
+| *a propertyName* | `string` | a bővített tulajdonság neve |
 
 #### <a name="notifypayload"></a>Notify(Payload)
 
@@ -583,7 +586,7 @@ A megadott hasznos adattal értesítést küld.
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `payload` | `string` | Az értesítés foglalandó JSON-adattartalmat |
+| *hasznos adat* | `string` | Az értesítés foglalandó JSON-adattartalmat |
 
 ### <a name="sensor"></a>Érzékelő
 
@@ -623,7 +626,7 @@ A kiterjesztett tulajdonság és az aktuális érzékelő értékét adja vissza
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `propertyName` | `string` | a bővített tulajdonság neve |
+| *a propertyName* | `string` | a bővített tulajdonság neve |
 
 #### <a name="value--value"></a>Value() – ⇒ `value`
 
@@ -639,7 +642,7 @@ A megadott hasznos adattal értesítést küld.
 
 | Param  | Típus                | Leírás  |
 | ------ | ------------------- | ------------ |
-| `payload` | `string` | Az értesítés foglalandó JSON-adattartalmat |
+| *hasznos adat* | `string` | Az értesítés foglalandó JSON-adattartalmat |
 
 ### <a name="value"></a>Érték
 

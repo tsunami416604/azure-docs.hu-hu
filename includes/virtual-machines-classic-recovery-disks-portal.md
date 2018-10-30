@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 5490bdd3934b438a683ce4271fbec20b3d13735d
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226788"
+---
 Ha az Azure-ban valamely virtuális gép (VM) indítási vagy lemezhibát észlel, előfordulhat, hogy magán a virtuális merevlemezen kell elvégeznie a hibaelhárítást. Egy gyakori példa erre, amikor egy sikertelen alkalmazásfrissítés megakadályozza, hogy a virtuális gép sikeresen elinduljon. A cikk leírja, hogyan csatlakoztathatja virtuális merevlemezét egy másik virtuális géphez az Azure Portal használatával a hibák javítása és az eredeti virtuális gép ismételt létrehozása érdekében.
 
 
@@ -54,9 +67,9 @@ Miután a hibákat kijavította, válassza le a meglévő virtuális merevlemezt
 
 ## <a name="create-a-vm-from-the-original-hard-disk"></a>Virtuális gép létrehozása az eredeti merevlemezről
 
-Egy virtuális Gépet hozhat létre az eredeti virtuális merevlemez [Azure-portálon](https://portal.azure.com).
+Egy virtuális Gépet hozhat létre az eredeti virtuális merevlemez [az Azure portal](https://portal.azure.com).
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. A portálon, válassza a bal felső at **hozzon létre egy erőforrást** > **számítási** > **virtuális gép** > **a Gyűjteményelem**.
+2. A portálon, válassza a bal felső at **erőforrás létrehozása** > **számítási** > **virtuális gép** > **a Katalógus**.
 3. A **Kép kiválasztása** szakaszban válassza a **Saját lemezek** lehetőséget, majd válassza ki az eredeti virtuális merevlemezt. Ellenőrizze a helyadatokat. Ez az a régió, ahol a virtuális gépet üzembe kell helyezni. Válassza a Tovább gombot.
 4. A **Virtuális gép konfigurációja** szakaszban írja be a virtuális gép nevét, majd válasszon méretet a virtuális gép számára.

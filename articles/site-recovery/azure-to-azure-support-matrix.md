@@ -1,26 +1,23 @@
 ---
-title: Az Azure-ból az Azure-ba történő replikálásához az Azure Site Recovery támogatási mátrix |} A Microsoft Docs
+title: Vész-helyreállítási Azure IaaS virtuális gépek az Azure Site Recoveryvel Azure-régiók közti Azure Site Recovery támogatási mátrix |} A Microsoft Docs
 description: Foglalja össze a támogatott operációs rendszerek és konfigurációk az Azure Site Recovery-replikációja az Azure-beli virtuális gépek (VM) egy adott régióban található, egy másik a vész-helyreállítási igényeit.
 services: site-recovery
-author: sujayt
-manager: rochakm
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.date: 09/10/2018
-ms.author: sujayt
-ms.openlocfilehash: 49773e076ed8bb06ff76f9f654b914a709051fb5
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.topic: conceptual
+ms.date: 10/28/2018
+ms.author: raynew
+ms.openlocfilehash: a2668ab99ef110c89ddd69cd5e8df858552d27af
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378618"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215055"
 ---
-# <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Egy Azure-régióból a másikba történő replikálásához támogatási mátrix
+# <a name="support-matrix-for-disaster-recovery-of-azure-vms-between-azure-regions"></a>Azure virtuális gépek vészhelyreállítása az Azure-régiók között-támogatási mátrixa
 
-
-
-Ez a cikk összefoglalja a támogatott konfigurációk és replikálásakor összetevők és az Azure virtuális gépek helyreállítása egy adott régióban található egy másik régióba, használja a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás.
+Ez a cikk összefoglalja támogatott konfigurációk és összetevők replikálása, feladatátvétele és helyreállítása Azure-beli virtuális gépek egy Azure-régióból a másikba, a vész-helyreállítási telepítésekor használja a [Azure Site Recovery](site-recovery-overview.md) a szolgáltatás.
 
 ## <a name="user-interface-options"></a>Felhasználói felület beállításai
 

@@ -1,6 +1,16 @@
-
-
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 45a6bd349169265ef411d01a3601a27551847633
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226760"
+---
 Ez a cikk néhány, a felhasználók által a klasszikus üzemi modellel létrehozott Azure-beli virtuális gépekkel kapcsolatban gyakran feltett kérdéssel foglalkozik.
 
 ## <a name="can-i-migrate-my-vm-created-in-the-classic-deployment-model-to-the-new-resource-manager-model"></a>Át tudom telepíteni a klasszikus üzemi modellben létrehozott virtuális gépeket az új Resource Manager-modellbe?
@@ -48,7 +58,7 @@ A klasszikus üzemi modellben létrehozott virtuális gépek esetében használh
 A virtuális gép létrehozásakor meg kell adnia azt a hálózatot, amelyhez a virtuális gép tartozni fog. Meglévő virtuális gépet nem csatlakoztathat egy virtuális hálózathoz. Ezt azonban megkerülheti úgy, hogy leválasztja a virtuális merevlemezt (VHD) a meglévő virtuális gépről, majd egy új, a kívánt hálózati konfigurációval rendelkező virtuális gép létrehozásához használja.
 
 ## <a name="how-can-i-access--my-virtual-machine"></a>Hogyan érhetem el a virtuális gépem?
-Szeretne távoli kapcsolatot létesíteni a távoli asztali kapcsolattal egy Windows virtuális gép vagy egy Secure Shell (SSH) a Linux virtuális gépek jelentkezzen be a virtuális gép. További útmutatásért lásd:
+Jelentkezzen be a virtuális géphez a távoli asztali kapcsolat egy Windows virtuális gép vagy egy Secure Shell (SSH) a Linux rendszerű virtuális gép távoli kapcsolatot létesíteni szükség. További útmutatásért lásd:
 
 * [Bejelentkezés egy Windows Servert futtató virtuális gépre](../articles/virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Legfeljebb 2 párhuzamos kapcsolat támogatott, kivéve, ha a kiszolgáló Távoli asztali szolgáltatások-munkamenetgazdaként van konfigurálva.  
 * [Bejelentkezés egy Linuxot futtató virtuális gépre](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Alapértelmezés szerint az SSH legfeljebb 10 párhuzamos kapcsolatot tesz lehetővé. Ezt a számot a konfigurációs fájl szerkesztésével növelheti.
@@ -57,7 +67,7 @@ Ha problémákat tapasztal a Távoli asztallal vagy az SSH-val kapcsolatban, tel
 
 Windows rendszerű virtuális gépek esetén a további lehetőségek is a rendelkezésére állnak:
 
-* Az Azure-portálon keresse meg a virtuális Gépet, majd kattintson az **távelérés alaphelyzetbe** a parancssávon.
+* Az Azure Portalon keresse meg a virtuális Gépet, majd kattintson a **távelérés visszaállítása** a parancssávon.
 * Tekintse át a [távoli asztali kapcsolatok Windows-alapú virtuális gépeken történő hibaelhárításával](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) foglalkozó témakört.
 * Használja a Windows PowerShell távoli eljáráshívást a virtuális géphez való csatlakozásra, vagy hozzon létre további végpontokat egyéb erőforrások számára a virtuális géphez való csatlakozáshoz. Részletekért lásd a [végpontok virtuális gépekhez történő beállítását](../articles/virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) ismertető cikket.
 
@@ -78,13 +88,13 @@ A frissítés kifejezés általában azt jelenti, hogy az operációs rendszeré
 Általános adatok a Windows Server migrálásának eszközeiről és folyamatairól: [Szerepkörök és szolgáltatások áttelepítése Windows Serverre](http://go.microsoft.com/fwlink/p/?LinkId=396940).
 
 ## <a name="whats-the-default-user-name-and-password-on-the-virtual-machine"></a>Mi az alapértelmezett felhasználónév és jelszó a virtuális gépen?
-Az Azure által biztosított rendszerképek nem rendelkeznek előre konfigurált felhasználónévvel és jelszóval. Ha ezeket a képeket egyikével virtuális gépet hoz létre, szüksége lesz a adjon meg egy felhasználónevet és jelszót, és jelentkezzen be a virtuális gép fogja használni.
+Az Azure által biztosított rendszerképek nem rendelkeznek előre konfigurált felhasználónévvel és jelszóval. Amikor hoz létre virtuális gépet egy ilyen rendszerképpel, szüksége, adjon meg egy felhasználónevet és jelszót, amely segítségével jelentkezzen be a virtuális gép.
 
 Ha elfelejtette a felhasználónevet vagy jelszót, és telepítette a VM Agent szolgáltatást, a [VMAcess](../articles/virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) bővítmény telepítésével és használatával megoldhatja a problémát.
 
 További részletek:
 
-* A Linux-lemezképek, ha használja az Azure-portálon, "azureuser" kap egy alapértelmezett felhasználónév, de ezt hozza létre a virtuális gépet úgy a "A gyűjtemény" gyors létrehozása helyett segítségével módosíthatja. A „Katalógusból” használatával ezenkívül eldöntheti, hogy a bejelentkezéshez jelszavat, SSH-kulcsot vagy mindkettőt kívánja használni. A felhasználói fiók egy nem kiemelt jogosultságú felhasználó, aki „sudo” hozzáféréssel rendelkezik a kiemelt jogosultságot igénylő parancsok futtatásához. A „root” fiók le van tiltva.
+* A Linux-lemezképekhez Ha használja az Azure Portalon, alapértelmezett felhasználónév "azureuser" van megadva, de ezt módosíthatja úgy a "Katalógusból" helyett "Gyors létrehozás" segítségével hozza létre a virtuális gépet is. A „Katalógusból” használatával ezenkívül eldöntheti, hogy a bejelentkezéshez jelszavat, SSH-kulcsot vagy mindkettőt kívánja használni. A felhasználói fiók egy nem kiemelt jogosultságú felhasználó, aki „sudo” hozzáféréssel rendelkezik a kiemelt jogosultságot igénylő parancsok futtatásához. A „root” fiók le van tiltva.
 * Windows-rendszerképek esetén meg kell adnia egy felhasználónevet és jelszót a virtuális gép létrehozásakor. A rendszer hozzáadja a fiókot a Rendszergazdák csoporthoz.
 
 ## <a name="can-azure-run-anti-virus-on-my-virtual-machines"></a>Tud víruskeresőt futtatni az Azure a virtuális gépeimen?
@@ -104,7 +114,7 @@ Az Azure óradíjas rendszerben számláz, a virtuális gép mérete és az oper
 
 A futó és a leállított állapotú virtuális gépek után fizetnie kell, a Leállítva (Felszabadítva) állapotúak után azonban nem. Ha a virtuális gépet Leállítva (Felszabadítva) állapotba kívánja helyezni, tegye a következők egyikét:
 
-* Állítsa le vagy törölje a virtuális gép Azure-portálról.
+* Állítsa le vagy törölje a virtuális gépet az Azure Portalon.
 * Használja a Stop-AzureVM parancsmagot, amely az Azure PowerShell modulban érhető el.
 * Használja a Szerepkör leállítása műveletet a szolgáltatásfelügyeleti REST API-n, és adja meg a StoppedDeallocated paramétert a PostShutdownAction elemhez.
 
@@ -117,7 +127,7 @@ Nem tervezett karbantartási események előfordulhatnak, ha az Azure komoly har
 
 Bármely különálló virtuális gép esetén (amely azt jelenti, hogy a virtuális gép nem része egy rendelkezésre állási csoportnak) az Azure e-mailben értesíti az előfizetés szolgáltatás-rendszergazdáját legalább egy héttel a tervezett karbantartás előtt, hogy a virtuális gépek újraindulhatnak a frissítés során. Előfordulhat, hogy a virtuális gépeken futtatott alkalmazások működése leáll.
 
-Is használhatja az Azure portálon vagy az Azure PowerShell megtekintése az újraindítás naplókat, ha az újraindítás tervezett karbantartás miatt történt. További részletek: [Virtuális gépek újraindítási naplóinak megtekintése](https://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/).
+Is használhatja az Azure portal vagy Azure PowerShell-lel az újraindítási naplóinak megtekintése, ha az újraindítás tervezett karbantartás miatt történt. További részletek: [Virtuális gépek újraindítási naplóinak megtekintése](https://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/).
 
 Redundancia biztosításához helyezzen két vagy több hasonlóan konfigurált virtuális gépet ugyanabba a rendelkezésre állási csoportba. Ezzel biztosítja, hogy legalább egy virtuális gép elérhető maradjon a tervezett vagy nem tervezett karbantartás alatt. Az Azure garantálja a virtuális gépek bizonyos szintű rendelkezésre állását ebben a konfigurációban. Részletes információ: [Virtuális gépek rendelkezésre állásának kezelése](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

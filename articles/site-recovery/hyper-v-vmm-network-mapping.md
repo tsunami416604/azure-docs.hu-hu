@@ -1,21 +1,21 @@
 ---
-title: Hálózatleképezés (VMM-mel) a Hyper-V virtuális gépek replikálásához az Azure Site recoveryvel kapcsolatos |} A Microsoft Docs
-description: Ismerteti, hogyan lehet az Azure Site Recovery VMM-felhőkben felügyelt Hyper-V virtuális gépek replikálását hálózatleképezés beállítása.
+title: Információk a hálózatleképezésről Hyper-V virtuális gépek (VMM-mel) vész-helyreállítási az Azure Site recoveryvel |} A Microsoft Docs
+description: Ismerteti, hogyan állíthat be hálózatleképezés (VMM-felhőkben felügyelt) Hyper-V virtuális gépek vészhelyreállítása az Azure-ba, az Azure Site Recoveryvel.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: d683554a97a1616b0d4d7b1ae95d62b476de04eb
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: cecc1df23ebed88db315e7de14ea850ba5297697
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078511"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212981"
 ---
-# <a name="prepare-network-mapping-for-hyper-v-vm-replication-to-azure"></a>Hálózatleképezés előkészítése Hyper-V rendszerű virtuális gépek Azure-ba történő replikálásához
+# <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Az Azure-bA Hyper-V virtuális gép vész-helyreállítási hálózatleképezés előkészítése
 
 
 Ez a cikk segít könnyebben átláthatja és készítse elő a hálózatleképezésre, ha a System Center Virtual Machine Manager (VMM) felhőkben a Hyper-V virtuális gépek replikálása az Azure-bA vagy egy másodlagos helyre, használja a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás.

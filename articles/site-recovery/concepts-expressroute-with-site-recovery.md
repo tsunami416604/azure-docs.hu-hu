@@ -1,20 +1,19 @@
 ---
-title: Az Azure Site Recovery az Azure ExpressRoute |} A Microsoft Docs
-description: Ismerteti, hogyan lehet az Azure Site Recovery az Azure ExpressRoute használata vész-helyreállítási és áttelepítés
+title: Tudnivalók az Azure Site Recovery az Azure ExpressRoute használata vész-helyreállítási és áttelepítési |} A Microsoft Docs
+description: Ismerteti, hogyan lehet a vészhelyreállításra és migrálás az Azure Site Recovery szolgáltatással az Azure ExpressRoute használata.
 services: site-recovery
-documentationcenter: ''
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 13d07546f1d82782e211213816b53373913e80b3
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 14d74c879ee37306f541c89d2ba325109a4ff7f3
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353883"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214868"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Az Azure Site Recovery az Azure ExpressRoute
 

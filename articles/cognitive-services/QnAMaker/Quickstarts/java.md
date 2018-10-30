@@ -1,7 +1,7 @@
 ---
 title: REST API-t (V4) – Java – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: REST-alapú információk lekérése, és kódminták segítségével gyorsan használatának első lépései a Microsoft Translator Text API a Microsoft Cognitive Services, Azure-ban.
+description: Java REST-alapú információk lekérése, és kódminták segítségével gyorsan használatának első lépései a Microsoft Translator Text API a Microsoft Cognitive Services, Azure-ban.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -10,17 +10,17 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: c92addcbb6a4071022474c5c157c498364ebf0f6
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: efde57e31389558feb39b5e7ec163a1d5175470c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647935"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210567"
 ---
 # <a name="qna-maker-rest-api-with-java"></a>A QnA Maker – REST API a Javával 
 <a name="HOLTop"></a>
 
-Ez a cikk bemutatja, hogyan használhatja a [Microsoft QnA Maker API-t](../Overview/overview.md) Java segítségével az alábbi célokra.
+Ez a cikk bemutatja, hogyan használható a [Microsoft QnA Maker API](../Overview/overview.md) a Javával, így tegye a következőket.
 
 - [Új tudásbázis létrehozása.](#Create)
 - [Meglévő tudásbázis frissítése.](#Update)

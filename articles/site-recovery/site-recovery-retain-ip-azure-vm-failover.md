@@ -1,22 +1,19 @@
 ---
-title: IP-cím megőrzése, ha egy másik Azure-régióba az Azure virtuális gépek feladatátvétele |} A Microsoft Docs
-description: Ismerteti, hogyan lehet IP-címek az Azure-bA feladatátvételi forgatókönyvek az Azure Site Recovery megőrzése
+title: Azure virtuális gép feladatátvételi IP-címek megőrzése |} A Microsoft Docs
+description: Ismerteti, hogyan lehet IP-cím megőrzése, ha katasztrófa utáni helyreállítás egy másodlagos régióba az Azure Site Recovery az Azure virtuális gépek feladatátvétele
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 10/16/2018
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 4260a4487480c42b518374965d8deda1e7803e62
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 86adaa21a069c168b512231ba231940bfa2ef9e8
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353322"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213032"
 ---
-# <a name="ip-address-retention-for-azure-virtual-machine-failover"></a>Azure virtuális gép feladatátvételi IP-cím megőrzési
+# <a name="ip-address-retention-for-azure-vm-failover"></a>Azure virtuális gép feladatátvételi IP-cím megőrzési
 
 Az Azure Site Recovery az Azure virtuális gépek lehetővé teszi a vészhelyreállítást. Feladatátvétele egy Azure-régióból a másikba, amikor az ügyfelek gyakran igényelnek az IP-konfigurációk megőrzése. Site Recovery alapértelmezés szerint utánozza forrás virtuális hálózati és alhálózati struktúra ezeket az erőforrásokat a célrégióban létrehozásakor. Az Azure virtuális gépek konfigurált statikus magánhálózati IP-címekkel rendelkező a Site Recovery egy ajánlott erőfeszítés, ha az IP-Címre már nem tiltják le egy Azure-erőforrás vagy a replikált virtuális gép kiépítése a cél virtuális Gépre, azonos magánhálózati IP kísérlet is teszi.
 

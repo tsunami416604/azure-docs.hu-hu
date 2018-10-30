@@ -1,18 +1,18 @@
 ---
-title: Feladatátadás és feladatátvétel a Site recoveryvel Azure-bA replikált fizikai kiszolgálók |} A Microsoft Docs
-description: Útmutató az Azure-bA fizikai kiszolgálók feladatait átadja, és visszaadják feladataikat a helyszíni hely, az Azure Site Recoveryvel
+title: Feladatátadás és feladatátvétel a Site Recovery az Azure-bA vész-helyreállítási fizikai kiszolgálók |} A Microsoft Docs
+description: Útmutató az Azure-bA fizikai kiszolgálók feladatait átadja, és a feladat-visszavételhez vész-helyreállítási az Azure Site Recovery a helyszíni hely
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 1a818d37efd370ce0b3e27bff73a153544763ebb
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 309da6f7753d95bc6830d61ecca7d86e002ddedf
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456626"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214835"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Átadása és visszavétele Azure-bA replikált fizikai kiszolgálók
 

@@ -6,22 +6,29 @@ author: adiganmsft
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/26/2018
+ms.date: 10/29/2018
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0c1d7a404ffd9b4da4868f56a5e17300495b57db
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 945a91b9021ed5ff02e8c1ef7baf85e2098202ca
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269360"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214664"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 Ez a cikk bemutatja a lépést kell végrehajtania a jelentések az Azure Backup konfigurálása a Recovery Services-tároló használatával. Azt is bemutatja, hogyan lehet hozzáférni a jelentésekhez a Power BI használatával. Miután elvégezte ezeket a lépéseket, megnyithatja közvetlenül a Power BI segítségével megtekintheti, testreszabása és jelentéseket hozhat létre.
 
+> [!IMPORTANT]
+> Az 1. November, 2018 egyes ügyfelek jelenhetnek problémák egy részét a Power bi-ban, amely arról tájékoztat, "felesleges karaktereket észleltünk a JSON-bevitel végén az Azure Backup alkalmazásban az adatok betöltése. A kivétel lett kiváltva az IDataReader felület okozta."
+Ez az a következő formátumban, ahol-adatok betöltése a tárfiókba megváltozása miatt.
+Frissítse az alkalmazást a legújabb verzióra a probléma elkerülése érdekében.
+>
+>
+
 ## <a name="supported-scenarios"></a>Támogatott esetek
 - Az Azure Backup-jelentések támogatottak az Azure virtuális gépek biztonsági mentésének és a fájl és mappa biztonsági mentés a felhőbe az Azure Recovery Services Agent használatával.
-- Az Azure SQL Database, a Data Protection Manager és az Azure Backup server jelentések jelenleg nem támogatottak.
+- Az Azure SQL Database, Azure-beli fájlmegosztásokat, a Data Protection Manager és az Azure Backup server jelentések jelenleg nem támogatottak.
 - Tárolók és az előfizetések között megtekintheti jelentéseket, ha ugyanazt a tárfiókot az egyes a tárolók van konfigurálva. A kiválasztott tárfiók és a Recovery Services-tárolónak ugyanabban a régióban kell lennie.
 - A jelentések ütemezett frissítésének gyakoriságát a Power BI 24 óra. Egy ad-hoc frissítése a jelentéseket a Power bi-ban hajthat végre. Ebben az esetben az ügyfél tárfiókja a legfrissebb adatok jelentések előállítására szolgál.
 

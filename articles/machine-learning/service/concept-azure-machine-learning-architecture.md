@@ -9,12 +9,12 @@ ms.author: haining
 author: hning86
 ms.reviewer: larryfr
 ms.date: 10/24/2018
-ms.openlocfilehash: b00f72c987b6ce8c44796bd036af670ec39fa7a6
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 95f74b23b9d0c89966347f066041b23f64f3b82c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093632"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210686"
 ---
 # <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Az Azure Machine Learning szolgáltatás működése: architektúra és fogalmak
 
@@ -143,7 +143,7 @@ Futtatás a következő egy rekordot, amely a következő információkat tartal
 
 * Metaadatait, a Futtatás (timestamp, időtartam stb.)
 * A parancsfájl által naplózott mérőszámok
-* Kimeneti fájlok automatikusan gyűjtött által a kísérletet, vagy explicit módon Ön által feltöltött.
+* Kimeneti fájlok autocollected által a kísérletet, vagy explicit módon Ön által feltöltött.
 * A könyvtár, amely tartalmazza a parancsprogramok, a Futtatás előtt pillanatképét
 
 Futtatás a modell betanításához parancsfájl elküldésekor jön létre. Futtató rendelkezhet, nulla vagy több alárendelt futtatások. Így előfordulhat, hogy a legfelső szintű futtatás két gyermek futtatásakor a rendelkezhetnek, amelyek mindegyike saját gyermek futtatja.
@@ -156,23 +156,28 @@ Kísérlet egy adott parancsfájlból származó számos futtatások csoportja. 
 
 Egy kísérlet használatának példájáért lásd a [a rövid útmutató: Ismerkedés az Azure Machine Learning szolgáltatás](quickstart-get-started.md) dokumentum.
 
-
 ## <a name="pipelines"></a>Folyamatok
 
-A folyamatok létrehozásához és kezeléséhez a munkafolyamatok, például az adat-előkészítés, modell betanítása, modell-üzembehelyezés és következtetési varrva együtt machine learning (gépi tanulás) fázisok szolgálnak. Az egyes fázisok is magában foglalja a több lépésből, amelyek mindegyike a különböző számítási célnak beavatkozás nélkül futtatható.
+A folyamatok létrehozásához és kezeléséhez a munkafolyamatok, amelyek összefűzheti a használt gépi tanulási fázisait. Például egy folyamatot tartalmazhat adat-előkészítés, modell betanítása, modell-üzembehelyezés és következtetési fázisait. Az egyes fázisok is magában foglalja a több lépésből, amelyek mindegyike a különböző számítási célnak beavatkozás nélkül futtatható.
 
 Machine learning-folyamatokat ezzel a szolgáltatással kapcsolatban tekintse meg a cikket [folyamatok és az Azure Machine Learning](concept-ml-pipelines.md).
 
 ## <a name="compute-target"></a>Számítási célt
 
-Egy számítási célnak a tanítási szkriptet futtatni, vagy üzemeltetése a webszolgáltatás üzembe számítási erőforrásokat. A támogatott számítási célnak a következők: 
+Egy számítási célnak, hogy az a tanítási szkriptet futtatni, vagy a szolgáltatás üzembe helyezésének üzemeltetéséhez használt számítási erőforrás. A támogatott számítási célnak a következők: 
 
-* A helyi számítógépen
-* Linux rendszerű virtuális gép az Azure-ban (például a Data Science virtuális gép)
-* Az Azure Batch AI-fürtön
-* Az Apache Spark for HDInsight
-* Azure Container Instance
-* Azure Kubernetes Service
+| Számítási célt | Képzés | Környezet |
+| ---- |:----:|:----:|
+| A helyi számítógépen | ✓ | &nbsp; |
+| Linux rendszerű virtuális gép az Azure-ban</br>(például a Data Science virtuális gép) | ✓ | &nbsp; |
+| Az Azure Batch AI-fürtön | ✓ | &nbsp; |
+| Azure Databricks | ✓ | &nbsp; | &nbsp; |
+| Azure Data Lake Analytics | ✓ | &nbsp; |
+| Az Apache Spark for HDInsight | ✓ | &nbsp; |
+| Azure Container Instance | ✓ | ✓ |
+| Azure Kubernetes Service | &nbsp; | ✓ |
+| Azure IoT Edge | &nbsp; | ✓ |
+| Project Brainwave</br>(Field-programmable gate array) | &nbsp; | ✓ |
 
 Számítási célnak csatolt munkaterület. Számítási, a munkaterület felhasználók által megosztott célok nem a helyi gépen.
 
@@ -194,7 +199,7 @@ Például futtatási konfigurációkat, tekintse meg a [kiválasztása és haszn
 
 A modell betanítását, meg kell adni a tanítási szkriptet és a kapcsolódó fájlokat tartalmazó könyvtárra. Is megad, egy kísérlet neve, amely a betanítás során gyűjtött adatok tárolására szolgál. Során képzés, a teljes címtárra kerül a képzési környezet (számítási célt), és a parancsfájl a futtatási konfiguráció által meghatározott elindult. A könyvtár pillanatképet is tárolja a munkaterületen a kísérlet keretében.
 
-A parancsfájlok használata a modell betanításához egy példa: [hozzon létre egy munkaterületet a Pythonnal](quickstart-get-started.md)
+Egy vonatkozó példáért lásd: [hozzon létre egy munkaterületet a Pythonnal](quickstart-get-started.md)
 
 ## <a name="logging"></a>Naplózás
 

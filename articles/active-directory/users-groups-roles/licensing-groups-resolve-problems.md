@@ -11,15 +11,15 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 06/05/2017
+ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5d64cf71ea3a44b7539835e3616150218e8b3635
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: ee441a8c9a0d8a70a2797f090a143189cdb6872a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861772"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211536"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azonosíthatja és a egy Azure Active Directory-csoporthoz hozzárendelt kapcsolatos problémák megoldásához
 
@@ -65,7 +65,7 @@ Ha szeretné látni, milyen felhasználókkal és csoportokkal licenceket haszn�
 
 **Probléma:** a termékeket, a csoportban megadott egyik tartalmaz egy service-csomagot, amely ütközik egy másik service-csomag már hozzá van rendelve egy másik termékkel küldése a felhasználónak. Néhány service-csomagok olyan módon, hogy azok nem rendelhető hozzá ugyanahhoz a felhasználóhoz, mint egy másik, a kapcsolódó service-csomagban vannak konfigurálva.
 
-Vegye figyelembe az alábbi példában. Egy felhasználói licenccel rendelkezik az Office 365 nagyvállalati verzió *E1* közvetlenül, rendelt minden a tervek engedélyezve van. A felhasználó van adva egy csoportot, amelynek az Office 365 nagyvállalati verzió *E3* termék rendelve. A E3 termék service-csomagok, amelyek nem lehetnek átfedésben a terv részét képező E1, így a licenc-hozzárendelés sikertelen, és a "Ütköző szolgáltatási csomagok" tartalmazza. Ebben a példában az ütköző szolgáltatási csomagok a következők:
+Lásd az alábbi példát. Egy felhasználói licenccel rendelkezik az Office 365 nagyvállalati verzió *E1* közvetlenül, rendelt minden a tervek engedélyezve van. A felhasználó van adva egy csoportot, amelynek az Office 365 nagyvállalati verzió *E3* termék rendelve. A E3 termék service-csomagok, amelyek nem lehetnek átfedésben a terv részét képező E1, így a licenc-hozzárendelés sikertelen, és a "Ütköző szolgáltatási csomagok" tartalmazza. Ebben a példában az ütköző szolgáltatási csomagok a következők:
 
 -   A SharePoint Online (2. csomag) nem felel meg a SharePoint Online (1. csomag).
 -   Az Exchange Online (2. csomag) ütközik a Exchange Online (1. csomag).
@@ -96,6 +96,19 @@ A probléma megoldásához távolítsa el a felhasználókat nem támogatott hel
 
 > [!NOTE]
 > Az Azure AD csoport licenceket rendel hozzá, anélkül, hogy a megadott felhasználási hely bármely felhasználó örökli a könyvtár helye. Azt javasoljuk, hogy a rendszergazdák be a megfelelő használati értékei, a felhasználók helyi jogszabályoknak és előírásoknak ahhoz, hogy a Csoportalapú licencelés használata előtt.
+
+## <a name="duplicate-proxy-addresses"></a>Ismétlődő proxycímek
+
+Ha az Exchange Online használata esetén a bérlő néhány felhasználója előfordulhat, hogy megfelelően konfigurálva proxy cím ugyanarra az értékre. Ha Csoportalapú licencelést rendeljen egy licencet az ilyen felhasználó próbál, nem sikerül, és látható a "proxycím már használatban van".
+
+> [!TIP]
+> Szeretné látni, hogy van-e ismétlődő proxycímet, hajtsa végre a következő PowerShell-parancsmag elleni Exchange online-hoz:
+```
+Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
+```
+> A problémáról további információk: ["proxycím már használatban van" hibaüzenet jelenik meg az Exchange online-hoz](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). A cikk emellett tartalmaz információt a [hogyan kapcsolódhat az Exchange online-hoz távoli PowerShell-lel](https://technet.microsoft.com/library/jj984289.aspx). További információt ebben a cikkben [hogyan a proxyAddresses attribútum feltöltése az Azure ad-ben a](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
+
+Teljesítése után bármely proxy cím az érintett felhasználók számára, ügyeljen arra, hogy a csoport, győződjön meg arról, hogy az licenceket is érvényesek, a licenc feldolgozási kényszerítése.
 
 ## <a name="what-happens-when-theres-more-than-one-product-license-on-a-group"></a>Mi történik, ha egy csoport egynél több termék licence van?
 
@@ -134,19 +147,7 @@ Ehhez a csoporthoz hozzáadott felhasználók mostantól egy-egy licencet a E3 t
 > [!TIP]
 > Minden előfeltétel szolgáltatáscsomag több csoportot is létrehozhat. Például az Office 365 nagyvállalati E1 csomag és az Office 365 nagyvállalati E3 csomag használatakor a felhasználók csoportot is létrehozhat két Microsoft Workplace Analytics licencre: egy előfeltétel, míg a másik E3 használó E1 használó. Ez lehetővé teszi a bővítményt az E1, E3 és felhasználók terjesztése további licenceket felhasználása nélkül.
 
-## <a name="license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online"></a>A licenc-hozzárendelés sikertelen csendes egy felhasználó ismétlődő proxycímeket miatt az Exchange Online
 
-Ha az Exchange Online használata esetén a bérlő néhány felhasználója előfordulhat, hogy megfelelően konfigurálva proxy cím ugyanarra az értékre. Ha Csoportalapú licencelést rendeljen egy licencet az ilyen felhasználó próbál, nem sikerül, és nem rögzíti a hibát. A hiba, jegyezze fel a hiba ebben a példában ez a funkció előzetes verziójának korlátozása, és cím azt megelőzően fogjuk *általános rendelkezésre állás*.
-
-> [!TIP]
-> Ha azt tapasztalja, hogy néhány felhasználó nem kapott licencet, és nem történt hiba rögzített azoknak a felhasználóknak, először ellenőrizze, ha van egy azonos proxycímmel.
-> Szeretné látni, hogy van-e ismétlődő proxycímet, hajtsa végre a következő PowerShell-parancsmag elleni Exchange online-hoz:
-```
-Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
-```
-> A problémáról további információk: ["proxycím már használatban van" hibaüzenet jelenik meg az Exchange online-hoz](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online). A cikk emellett tartalmaz információt a [hogyan kapcsolódhat az Exchange online-hoz távoli PowerShell-lel](https://technet.microsoft.com/library/jj984289.aspx).
-
-Teljesítése után bármely proxy cím az érintett felhasználók számára, ügyeljen arra, hogy a csoport, győződjön meg arról, hogy az licenceket is érvényesek, a licenc feldolgozási kényszerítése.
 
 ## <a name="how-do-you-force-license-processing-in-a-group-to-resolve-errors"></a>Hogyan kényszerítheti licenc feldolgozási hibák megoldásához egy csoportban?
 
@@ -154,11 +155,19 @@ Milyen lépéseket, a hibák elhárításához készített, attól függően sz�
 
 Például ha Ön szabadítson fel néhány licenccel, közvetlen licenc-hozzárendelés eltávolítása a felhasználók által szüksége csoportokat, amelyek korábban nem sikerült teljesen licenc az összes felhasználói tagok feldolgozásának indításához. Egy csoport újrafeldolgozása, nyissa meg a csoport panelen nyissa meg **licencek**, majd válassza ki a **újrafeldolgozása** gombra az eszköztáron.
 
+## <a name="how-do-you-force-license-processing-on-a-user-to-resolve-errors"></a>Hogyan kényszerítheti licenc feldolgozási egy felhasználót, hogy ki a hibákat?
+
+Milyen lépéseket, a hibák elhárításához készített, attól függően szükség lehet manuálisan indítható a felhasználót, hogy a felhasználók állapotának frissítése feldolgozását.
+
+Például miután ismétlődő proxy cím egy érintett felhasználót a probléma megoldásához szüksége a felhasználó a feldolgozás aktiválásához. Újból feldolgozza a felhasználó, lépjen a felhasználói panelen nyissa meg a **licencek**, majd válassza ki a **újrafeldolgozása** gombra az eszköztáron.
+
 ## <a name="next-steps"></a>További lépések
 
 Licenc felügyeleti csoportok használatával kapcsolatos egyéb forgatókönyvek kapcsolatos további információkért tekintse meg a következőket:
 
-* [Licencek hozzárendelése egy csoporthoz az Azure Active Directory](licensing-groups-assign.md)
 * [Mit jelent a Csoportalapú licencelés az Azure Active Directoryban?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [Hogyan kell egyéni licenccel rendelkező felhasználók migrálása Csoportalapú licencelésre, az Azure Active Directoryban](licensing-groups-migrate-users.md)
-* [Csoportalapú licencelés további forgatókönyvek az Azure Active Directory](licensing-group-advanced.md)
+* [Licencek hozzárendelése egy csoporthoz az Azure Active Directoryban](licensing-groups-assign.md)
+* [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre az Azure Active Directoryban](licensing-groups-migrate-users.md)
+* [Felhasználók az Azure Active Directoryban Csoportalapú licencelést használ terméklicencek közötti migrálása](licensing-groups-change-licenses.md)
+* [Az Azure Active Directory csoportalapú licencelésének további forgatókönyvei](licensing-group-advanced.md)
+* [PowerShell forgatókönyvek Csoportalapú licenceléshez az Azure Active Directoryban](licensing-ps-examples.md)

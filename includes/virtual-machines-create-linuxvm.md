@@ -1,4 +1,16 @@
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: ae29451e3f7ec263f296e69656a5c66045334687
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226753"
+---
 1. Jelentkezzen be az Azure-előfizetés a szükséges lépések [csatlakozás az Azure-bA az Azure klasszikus parancssori felületen](/cli/azure/authenticate-azure-cli).
 
 2. Az alábbiak szerint győződjön meg róla, hogy a klasszikus üzembe helyezési módban van:

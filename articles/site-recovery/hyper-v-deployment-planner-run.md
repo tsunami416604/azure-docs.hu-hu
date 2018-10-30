@@ -1,20 +1,20 @@
 ---
-title: Azure Site Recovery Deployment Planner Hyper-V és Azure közötti áthelyezéshez | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan az Azure-bA a Site Recovery deployment planner foro Hyper-V futtatását.
+title: Futtassa az Azure Site Recovery Deployment Planner a Hyper-V vész-helyreállítási az Azure-bA |} A Microsoft Docs
+description: Ez a cikk ismerteti, hogyan futtathat az Azure Site Recovery Deployment Planner a Hyper-V vész-helyreállítási az Azure-bA.
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 9da79884973c620bbf8b6a191f3dd6db5bd19064
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 1df8f7025787eb864b7e9ad6f41105df8fb2cc8a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094190"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213338"
 ---
-# <a name="run-azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Az Azure Site Recovery Deployment Planner futtatása a Hyper-V – Azure-hoz
+# <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Futtassa az Azure Site Recovery deployment planner a Hyper-V vészhelyreállítás az Azure-bA
 
 Futtathatja a Site Recovery deployment planner parancssori eszköz (ASRDeploymentPlanner.exe) a négy mód bármelyikében: 
 -   [A virtuálisgép-lista lekérdezése](#get-vm-list-for-profiling-hyper-v-vms)

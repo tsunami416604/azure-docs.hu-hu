@@ -1,5 +1,5 @@
 ---
-title: Az Azure virtuális gépek Azure Site Recovery használata vész-helyreállítási Azure ExpressRoute integrálása |} A Microsoft Docs
+title: Vész-helyreállítási Azure-beli virtuális gépek az Azure Site Recovery szolgáltatással az Azure ExpressRoute integrálása |} A Microsoft Docs
 description: Ismerteti, hogyan lehet Azure-beli virtuális gépek Azure Site Recovery és az Azure ExpressRoute használatával vészhelyreállítás beállítása
 services: site-recovery
 author: mayurigupta13
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 03fac23ea17a6baa1b43e748a4390cf142661a19
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: e7c63fba892f70ca0e18c1bffcda0782316b7ada
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353541"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211553"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Vészhelyreállítás az Azure virtuális gépek Azure ExpressRoute integrálása
 

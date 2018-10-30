@@ -1,21 +1,20 @@
 ---
-title: VMware-replikáció az Azure Site Recovery és a Cloud Solution Provider (CSP) program több-bérlős környezet beállítása |} A Microsoft Docs
-description: Ismerteti, hogyan hozhat létre és a CSP programban bérlői előfizetések kezelése és üzembe helyezése az Azure Site Recovery egy több-bérlős beállítása
-services: site-recovery
+title: VMware-vészhelyreállításhoz az Azure-bA a Site Recovery és a Cloud Solution Provider (CSP) program egy több-bérlős környezet beállítása |} A Microsoft Docs
+description: Ismerteti, hogyan állíthatja be a VMware-vészhelyreállítás több-bérlős környezetben az Azure Site Recoveryvel.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: bd356a7e4285f8663b91da1f200cc2ae3c266bf3
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: c26421f848cf25e391589fa791f801e30fd14797
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354121"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50208901"
 ---
-# <a name="set-up-vmware-replication-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>A Cloud Solution Provider (CSP) program, több-bérlős környezetben VMware-replikálás beállítása
+# <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>A Cloud Solution Provider (CSP) program, több-bérlős környezetben VMware-vészhelyreállítás beállítása
 
 A [CSP program](https://partner.microsoft.com/en-US/cloud-solution-provider) elősegíti a Microsoft felhőszolgáltatásai, beleértve az Office 365, Enterprise Mobility Suite és a Microsoft Azure jobbak együtt történetek. CSP, a partnerek saját a végpontok közötti kapcsolatot az ügyfelekkel, és az elsődleges kapcsolathoz kapcsolódási pont lesz. Partnerek üzembe helyezése az Azure-előfizetések ügyfelek számára, és kombinálhatja a saját értéknövelő, személyre szabott ajánlatokat az előfizetéseket.
 

@@ -8,18 +8,18 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: b0fb2cd79c0ee685ad2000c5444a84d53e462f24
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 287b95b59b0ec2b308d3e455c4f6ffce4baf4ff7
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868275"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212879"
 ---
 # <a name="manage-azure-data-explorer-database-permissions"></a>Adatkezelő az Azure adatbázis-engedélyek kezelése
 
 Az Azure Data Explorer lehetővé teszi, hogy ki férhet hozzá az adatbázisokat és táblákat, használatával egy *szerepköralapú hozzáférés-vezérlés* modell. Ez a modell alapján *rendszerbiztonsági tagok* (felhasználók, csoportok és alkalmazások) vannak leképezve *szerepkörök*. Rendszerbiztonsági tagok hozzá vannak rendelve a szerepköröknek megfelelően erőforrások eléréséhez.
 
-Ez a cikk ismerteti az elérhető szerepkörök és rendszerbiztonsági tagok hozzárendelése ezeket a szerepköröket.
+Ez a cikk ismerteti az elérhető szerepkörök és rendszerbiztonsági tagok hozzárendelése az Azure Portallal és az Azure Data Explorer kezelési parancsok ezeket a szerepköröket.
 
 ## <a name="roles-and-permissions"></a>Szerepkörök és engedélyek
 
@@ -77,4 +77,4 @@ Az adatkezelő az Azure rendelkezik a következő szerepkörök:
 
 ## <a name="next-steps"></a>További lépések
 
-[A lekérdezésírásra összpontosíthat](write-queries.md)
+[Lekérdezések írása](write-queries.md)

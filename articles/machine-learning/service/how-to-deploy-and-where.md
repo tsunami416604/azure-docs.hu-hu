@@ -9,12 +9,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/29/2018
-ms.openlocfilehash: 606e8aed42bce69d5b3210b4e97f8cbfeaaf104c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 97ac405db3de4fa2c6f1173f813eafd41a5361ad
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961008"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209445"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -22,36 +22,41 @@ Az Azure Machine Learning szolgáltatás a betanított modell telepíthet több 
 
 A következő számítási célnak modellek helyezhető üzembe:
 
-- Az Azure Container Instances (aci Szolgáltatásban)
-- Azure Kubernetes Service (AKS)
-- Azure IoT Edge
-- A mező-programmable gate array (FPGA)
+- [Az Azure Container Instances (aci) Szolgáltatásban](#aci): gyors üzembe helyezés. Jó fejlesztési vagy tesztelési célokra.
+- [Az Azure Kubernetes Service (AKS)](#aks): jó nagy méretű éles környezetekben üzemelő példányok. Automatikus skálázást és gyors válaszidők biztosít.
+- [Az Azure IoT Edge](#iotedge): IoT-eszközök a modellek üzembe helyezése. Következtetési történik az eszközön.
+- [A mező-programmable gate array (FPGA)](#fpga): valós idejű következtetési ultraalacsony késése.
 
 Ez a dokumentum többi része ezen lehetőségek részletesen ismerteti.
 
-## <a name="azure-container-instances"></a>Azure Container Instances
+## <a id="aci"></a>Az Azure Container Instances szolgáltatásban
 
 A modellek telepítéséről, egy REST API-végpont, ha egy vagy több az alábbi feltételek használata Azure Container Instances szolgáltatásban teljesül:
-- A gyors üzembe helyezés pontozása és a modell érvényesítése érdekében keres. ACI üzembe helyezés általában kevesebb mint 5 perc alatt befejeződött.
+- Gyors üzembe helyezése és a modell érvényesítése kell. ACI üzembe helyezés befejeződött, kevesebb mint 5 perc alatt.
 - A találatokat helyezi üzembe a modellt fejlesztési vagy tesztelési környezetben. ACI-előfizetésenként 20 tárolócsoportok üzembe teszi lehetővé. További információkért lásd: a [kvóták és régiók rendelkezésre állása az Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-quotas) dokumentumot.
 
 További információkért lásd: a [modell üzembe helyezése az Azure Container Instances](how-to-deploy-to-aci.md) dokumentumot.
 
-## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
+## <a id="aks"></a>Az Azure Kubernetes Service
 
-Nagy léptékű termelési forgatókönyvekhez helyezheti üzembe a modellt az Azure Kubernetes Service (AKS). Használjon egy meglévő AKS-fürtöt, vagy hozzon létre egy újat az Azure Machine Learning SDK-t, a parancssori felület vagy az Azure portal használatával.
+A nagy léptékű termelési forgatókönyvekhez használja az Azure Kubernetes Service (AKS). Használjon egy meglévő AKS-fürtöt, vagy hozzon létre egy újat az Azure Machine Learning SDK-t, a parancssori felület vagy az Azure portal használatával.
 
-Fürt létrehozása AKS áll egy folyamat, amikor a munkaterülethez. Létrehozása után újból felhasználhatja a fürt több telepítéshez. Ha törli a fürtöt vagy az azt tartalmazó erőforráscsoportot, majd kell létrehoznia egy új fürtöt, üzembe kell helyeznie legközelebb.
+AKS-fürt létrehozása az egy folyamatot, amikor a munkaterülethez. Újból felhasználhatja a fürt több telepítéshez. Ha törli a fürtöt, majd kell létrehoznia egy új fürtöt, üzembe kell helyeznie legközelebb.
 
-Az aks üzembe helyezéséhez biztosít, automatikus méretezést, naplózás, a modelladatok gyűjtésének és gyors válaszidők, a webszolgáltatások. 
+Az Azure Kubernetes Service az alábbi képességeket biztosítja:
+
+* Automatikus skálázás
+* Naplózás
+* A modelladatok gyűjtésének
+* A webes szolgáltatások gyors válaszidők
 
 AKS-fürt létrehozása nagyjából 20 percet vesz igénybe.
 
 További információkért lásd: a [modell üzembe helyezése az Azure Kubernetes Service](how-to-deploy-to-aks.md) dokumentumot.
 
-## <a name="azure-iot-edge"></a>Azure IoT Edge
+## <a id="iotedge"></a>Az Azure IoT Edge
 
-Az IoT-eszközök azt az gyorsabban szükséges pontozáshoz elvégzendő műveleteken helyett a felhőbe történő adatküldés és a egy felhőben üzemeltetett modellt adatokat adja vissza a vár az eszközön. Az Azure IoT Edge segítségével a modell a peremhálózati eszközökön is üzemeltethet. A modell üzembe helyezése IoT Edge-ben Ha egy vagy több, a következő funkciók van szüksége:
+Az IoT-eszközök azt az gyorsabban szükséges pontozáshoz elvégzendő műveleteken pontozó a felhőbe történő adatküldés helyett az eszközön. Az Azure IoT Edge segítségével a modell a peremhálózati eszközökön is üzemeltethet. A modell üzembe helyezése IoT Edge-ben Ha egy vagy több, a következő funkciók van szüksége:
 - Felhőalapú kapcsolat nélkül is helyileg, a feladatok prioritása kezeléséhez
 - A létrehozott adatok a felhőben gyorsan lekéréshez túl nagy
 - Engedélyezze a keresztül intelligencia a és a helyi eszközök közel valós idejű feldolgozás
@@ -62,7 +67,7 @@ További információkért lásd: a [üzembe helyezés az Azure IoT Edge](https:
 Az IoT Edge szolgáltatás további információkért lásd: a [Azure IoT Edge dokumentációja](https://docs.microsoft.com/azure/iot-edge/).
 
 
-## <a name="field-programmable-gate-arrays-fpga"></a>A mező-programmable gate arrays (FPGA)
+## <a id="fpga"></a>A mező-programmable gate arrays (FPGA)
 
 Hardver gyorsított modellek segítségével Project Brainwave ultramagas közel valós idejű következtetési kérelmek eléréséhez lehetővé teszik. Project Brainwave gyorsítja Neurális hálózatok (DNN) mező-programmable gate arrays az Azure-felhőben üzembe helyezett. Leggyakrabban használt dnn-eket egyaránt elérhetők a tanulással featurizers, vagy saját adatai testre szabható a súlyok betanított.
 

@@ -1,21 +1,20 @@
 ---
-title: Azure Site Recovery Deployment Planner – VMware – Azure | Microsoft Docs
-description: Ez az Azure Site Recovery Deployment Planner felhasználói útmutatója
-services: site-recovery
+title: Tekintse át az Azure Site Recovery Deployment Planner költségbecslési jelentést |} A Microsoft Docs
+description: Ez a cikk ismerteti az Azure-beli vészhelyreállításához tekintse át az Azure Site Recovery Deployment Planner költségbecslési jelentést a VMware.
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 7470dab537a8ab248228b9c445e1124e7ec9c444
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 7244aa2c0b665b47d597662b98ec291d6bfeeddd
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387803"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215021"
 ---
-# <a name="cost-estimation-report-of-azure-site-recovery-deployment-planner"></a>Az Azure Site Recovery Deployment Planner költségbecslési jelentése  
+# <a name="review-the-cost-estimation-report-in-the-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Tekintse át a VMware-vészhelyreállításhoz az Azure-bA a Site Recovery Deployment Planner költségbecslési jelentést
 
 A Deployment Planner jelentése a [Javaslatok](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) táblázatokban költségbecslési összefoglalást, a Költségbecslés táblázatban pedig részletes költségelemzést biztosít. Részletes költségelemzést tartalmaz virtuális gépenként. 
 

@@ -1,6 +1,6 @@
 ---
-title: Hyper-V hibaelhárítása az Azure-bA az Azure Site Recoveryvel |} A Microsoft Docs
-description: Ismerteti, hogyan, az Azure-bA az Azure Site Recovery használata Hyper-V-vel kapcsolatos hibák elhárítása
+title: Hyper-V hibaelhárítása az Azure Site recoveryvel Azure-beli vészhelyreállításához |} A Microsoft Docs
+description: Ismerteti, hogyan lehet az Azure-bA az Azure Site Recovery használata Hyper-V vész helyreállítási hibáinak elhárítása
 services: site-recovery
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: ramamill
-ms.openlocfilehash: 027107cca1872ddd504567b74c798fc00e9af214
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 753f666c9ac0167f672353ff33e28d0f7e68b755
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067389"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212947"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V hibaelhárítása az Azure-replikáció és feladatátvétel
 

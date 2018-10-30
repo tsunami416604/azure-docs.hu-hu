@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: 1c2068af510cb3733ce99a6ae7b40487a8c1a015
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: c1d66e0b58567244f8c1406ee258c9311994ff20
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324117"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215106"
 ---
 # <a name="understanding-digital-twins-object-models-and-spatial-intelligence-graph"></a>Digitális Twins objektummodellt és térbeli intelligencia graph ismertetése
 
@@ -25,7 +25,7 @@ A _digitális Twins objektummodellt_ és _Ontology_ teljesülnek, egy fel lehet 
 
 ![Digitális Twins térbeli gráf létrehozása][1]
 
-<a id="model" />
+<a id="model"></a>
 
 A térbeli graph foglal tárolóhelyek, eszközök, érzékelők és felhasználókat. Minden egyes összekapcsolásával úgy, hogy a való világból a modellek: 43 helyszín rendelkezik négy emeleteken, amelyek mindegyike több különböző területekre. A felhasználók társítva a munkaállomásokat, és a gráf részeit kapjanak hozzáférést.  Ha például egy rendszergazda megfelelő jogosultságot kapó módosításokat a Térbeli diagramhoz, míg a látogatói előfordulhat, hogy csak bizonyos épület adatainak megtekintése a rights.
 
@@ -52,19 +52,19 @@ Az objektumok egyéb kategóriák a következők:
 - **Matchers** objektumok, amelyek meghatározzák, hogy mely felhasználói függvények mindenképpen végrehajtja az adott telemetriai üzenetet is.
 - **Végpontok** a helyek, ahol telemetriai üzeneteket és a digitális Twins események átirányíthatók, például `Event Hub`, `Service Bus`, `Event Grid`.
 
-<a id="graph" />
+<a id="graph"></a>
 
-## <a name="spatial-intelligence-graph"></a>Térbeli üzletiintelligencia-grafikon
+## <a name="spatial-intelligence-graph"></a>Térbeliintelligencia-diagramok
 
 **Térbeli graph** a hierarchikus grafikonjával kezdheti, szóközöket, eszközök, és meghatározott személyek a **digitális Twins hálózatiobjektum-modellt**. Támogatja a térbeli graph _öröklési_, _szűrés_, _áthaladó_, _méretezhetőség_, és _bővíthetőség_ . Felhasználók kezelése és a REST API-k (lásd alább) gyűjteménye a térbeli graph interakcióba.
 
-Üzembe helyez egy digitális Twins-szolgáltatás előfizetésének a felhasználó lesz globális rendszergazdája a legfelső szintű csomópont automatikusan a teljes struktúra teljes hozzáférést biztosít. Ez a felhasználó hogyan építhet ki a graph használatával a tárolóhelyek a `Space` API-t. Eszközök sikerült kiosztott használatával a `Device` API-t, érzékelők segítségével sikerült kiépítendő `Sensor` API-t, és így tovább. Emellett [nyílt forráskódú eszközök](https://github.com/Azure-Samples/digital-twins-samples-csharp) a diagramra a tömeges kiépítéséhez.
+Üzembe helyez egy digitális Twins-szolgáltatás előfizetésének a felhasználó lesz globális rendszergazdája a legfelső szintű csomópont automatikusan a teljes struktúra teljes hozzáférést biztosít. Ez a felhasználó majd helyezhet üzembe a tárolóhelyek a grafikon, a hely API-val. Eszközök sikerült építhető ki az eszköz API-val, érzékelők sikerült kiosztott használatával érzékelő API-t, és így tovább. Emellett [nyílt forráskódú eszközök](https://github.com/Azure-Samples/digital-twins-samples-csharp) a diagramra a tömeges kiépítéséhez.
 
 Graph _öröklési_ engedélyeit és a egy szülő csomópont, az összes csomóponton alatta csökkenő növekvő tulajdonságok vonatkozik. Például egy szerepkör van rendelve egy felhasználó egy adott csomópont, amikor a felhasználó engedéllyel rendelkezik majd a szerepkör az adott csomópont, és minden csomópont alá. Emellett minden egyes tulajdonság kulcs és a egy adott csomópont meghatározott kiterjesztett típus örökli a csomópontokon, hogy a csomópont alatt.
 
-Graph _szűrés_ lehetővé teszi, hogy a felhasználók számára a kérés eredményeket szerint azonosítók, name, típusok, altípus, szülő hely, társított tárolóhelyek, érzékelő adattípusok, tulajdonság kulcsok és értékek, adatforgalma áthalad; minLevel, maxLevel és más OData-szűrő a paraméterek.
+Graph _szűrés_ lehetővé teszi a felhasználók azonosítók, name, típusok, altípus, szülő hely, társított tárolóhelyek, érzékelő adattípusok, tulajdonság kulcsok és értékek, a kérelem eredmények szűkítéséhez *bejárása*,  *minLevel*, *maxLevel*, és egyéb OData szűrési paraméterekhez.
 
-Graph _áthaladó_ lehetővé teszi a felhasználóknak, hogy a térbeli grafikon a mélységének és szélességének keresztül. A mélység, a graph sikerült kell haladnia fentről lefelé vagy alulról felfelé navigációs paraméterek használatával `traverse`, `minLevel`, `maxLevel`. A technológiai spektrumunk kihasználtságának növelését a graph sikerült munkamenetének beolvasása testvér csomópontok közvetlenül kapcsolódik a fölérendelt hely vagy a leszármazottai közül. Az objektum lekérdezésekor sikerült-e az összes kapcsolódó objektumok, amelyek kapcsolatok az, hogy az objektum a `includes` az első API-k paraméterében.
+Graph _áthaladó_ lehetővé teszi a felhasználóknak, hogy a térbeli grafikon a mélységének és szélességének keresztül. A mélység, a graph sikerült kell haladnia fentről lefelé vagy alulról felfelé navigációs paraméterek használatával *bejárása*, *minLevel*, *maxLevel*. A technológiai spektrumunk kihasználtságának növelését a graph sikerült munkamenetének beolvasása testvér csomópontok közvetlenül kapcsolódik a fölérendelt hely vagy a leszármazottai közül. Egy objektum lekérdezésekor sikerült-e az összes kapcsolódó objektumok, amelyek kapcsolatok az, hogy az objektum a *tartalmaz* az első API-k paraméterében.
 
 Az Azure digitális Twins garantálja graph _méretezhetőség_, így a való életből vett számítási feladatokat tud kezelni. Digitális Twins képviselő ingatlan, infrastruktúra, eszközök, érzékelők, telemetriai adatok és további nagy portfóliók kialakításában is használható.
 
@@ -80,8 +80,8 @@ https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
 
 | Egyéni attribútum neve | Cserélje le |
 | --- | --- |
-| `yourInstanceName` | Az Azure digitális Twins-példány nevét |
-| `yourLocation` | Melyik kiszolgáló régióban lévő üzemeltetett a példány |
+| *Példánynév* | Az Azure digitális Twins-példány nevét |
+| *yourLocation* | Melyik kiszolgáló régióban lévő üzemeltetett a példány |
 
  A teljes URL-formátum használja az alábbi ábrán láthatók:
 

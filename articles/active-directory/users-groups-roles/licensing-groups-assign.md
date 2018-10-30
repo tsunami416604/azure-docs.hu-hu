@@ -11,15 +11,15 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.component: users-groups-roles
-ms.date: 06/05/2017
+ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7a235851d7172d32d62c64b163e0b7635a1a47fd
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e08ca3453cc43fa0f35102ca5563b4b07ce45dea
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861869"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215004"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Licencek hozzárendelése a felhasználók által az Azure Active Directory biztonságicsoport-tagság
 
@@ -28,7 +28,7 @@ Ez a cikk végigvezeti a termék licencek hozzárendelése az Azure Active Direc
 Ebben a példában a bérlő tartalmazza-e nevű biztonsági csoport **HR részleg**. Ez a csoport összes tagja az emberi erőforrások részleg (körülbelül 1000 felhasználó) tartalmazza. Office 365 nagyvállalati E3 csomag licenceket hozzárendelheti az egész részleg szeretné. A vállalati Yammer-szolgáltatás, amely megtalálható a termék kell lehet ideiglenesen le van tiltva addig, amíg a részleg készen áll a használatának megkezdéséhez. Akkor is telepíteni kívánja Enterprise Mobility + Security-licenc, az ugyanazon felhasználói csoporthoz.
 
 > [!NOTE]
-> Bizonyos Microsoft-szolgáltatások nem érhetők el az összes helyen. Mielőtt egy úgy lehet licencet a felhasználóhoz, a rendszergazda adja meg a használati helyet jelölő tulajdonsághoz meg a felhasználó rendelkezik.
+> Nem minden Microsoft-szolgáltatás érhető el minden területen. Mielőtt egy úgy lehet licencet a felhasználóhoz, a rendszergazda adja meg a használati helyet jelölő tulajdonsághoz meg a felhasználó rendelkezik.
 
 > A licenc-hozzárendelések bármely felhasználó felhasználás helyének megadása nélkül örökli a könyvtár helye. Ha több helyen felhasználóval rendelkezik, azt javasoljuk, hogy mindig állítsa a felhasználási hely része a felhasználói létrehozásának folyamatát, amely biztosítja a licenc-hozzárendelés eredménye (pl. keresztül az AAD Connect-konfiguráció) – Azure AD-ben mindig helyes, és a felhasználók nem kapnak szolgáltatások, a helyeken, amelyek nem engedélyezettek.
 
@@ -52,7 +52,7 @@ Ebben a példában a bérlő tartalmazza-e nevű biztonsági csoport **HR részl
 
    ![Hozzárendelési beállítások](./media/licensing-groups-assign/assignment-options.png)
 
-7. A hozzárendelés végrehajtása a **licenc hozzárendelése** ablaktáblán kattintson a **hozzárendelése** a panel alján.
+7. A hozzárendelés véglegesítéséhez kattintson a **Licenc hozzárendelése** panelen a lap alján található **Hozzárendelés** gombra.
 
 8. Megjelenik egy értesítés, amely tartalmazza az állapot és a folyamat eredményéről jobb felső sarokban. Ha az a csoport-hozzárendelés (például a csoport már meglévő licenccel) miatt nem sikerült végrehajtani, kattintson az értesítés a hiba részleteinek megtekintéséhez.
 
@@ -104,6 +104,8 @@ Mi most megadott-licencsablon, a HR-osztály csoport. Az Azure ad-ben háttérfo
 Csoportokon keresztül licenckezelésre funkciókészlethez kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 * [Mit jelent a Csoportalapú licencelés az Azure Active Directoryban?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [Az Azure Active Directory csoport kapcsolatos problémák észleléséhez és a](licensing-groups-resolve-problems.md)
-* [Hogyan kell egyéni licenccel rendelkező felhasználók migrálása Csoportalapú licencelésre, az Azure Active Directoryban](licensing-groups-migrate-users.md)
-* [Csoportalapú licencelés további forgatókönyvek az Azure Active Directory](../active-directory-licensing-group-advanced.md)
+* [A csoportok licencproblémáinak azonosítása és megoldása az Azure Active Directoryban](licensing-groups-resolve-problems.md)
+* [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre az Azure Active Directoryban](licensing-groups-migrate-users.md)
+* [Felhasználók az Azure Active Directoryban Csoportalapú licencelést használ terméklicencek közötti migrálása](licensing-groups-change-licenses.md)
+* [Az Azure Active Directory csoportalapú licencelésének további forgatókönyvei](../active-directory-licensing-group-advanced.md)
+* [PowerShell forgatókönyvek Csoportalapú licenceléshez az Azure Active Directoryban](licensing-ps-examples.md)

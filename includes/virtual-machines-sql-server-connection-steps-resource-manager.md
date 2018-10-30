@@ -1,3 +1,16 @@
+---
+author: rothja
+ms.service: virtual-machines-sql
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: jroth
+ms.openlocfilehash: 4e79fef08af8ff73ce63ab4732c9efd77e3a5d3f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226466"
+---
 ### <a name="configure-a-dns-label-for-the-public-ip-address"></a>DNS-címke konfigurálása a nyilvános IP-címhez
 
 Ha az internetről szeretne csatlakozni az SQL Server-adatbázismotorhoz, érdemes létrehoznia egy DNS-címkét a nyilvános IP-címhez. Csatlakozhat IP-cím alapján, de a DNS-címke létrehoz egy könnyebben azonosítható A rekordot, és kivonatolja az alapul szolgáló nyilvános IP-címet.

@@ -6,20 +6,20 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: c917fab84448684cf29af162ec0781d764605f71
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: c09ee84cda5f0a9747d3ee1f8f1b37d1323f2cc2
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324142"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212250"
 ---
 # <a name="egress-and-endpoints"></a>Kimenő forgalom és a végpontok
 
 Az Azure digitális Twins támogatja a fogalmat _végpontok_ ahol végpontot jelenti-e egy üzenet/eseményközvetítőből a felhasználó Azure-előfizetésében. Események és az üzenetek elküldhetők **Eseményközpont**, **Event Grid**, és **Service Bus-témakörök**.
 
-Eseményeket küld az előre meghatározott útválasztási beállítások szerint végpontok: a felhasználó úgy adhat meg, melyik végponthoz meg kell kapnia a következő események bármelyike:`TopologyOperation`, `UdfCustom`, `SensorChange`, `SpaceChange`, vagy `DeviceMessage`.
+Eseményeket küld az előre meghatározott útválasztási beállítások szerint végpontok: a felhasználó úgy adhat meg, melyik végponthoz meg kell kapnia a következő események bármelyike: **TopologyOperation**, **UdfCustom**, **SensorChange**, **SpaceChange**, vagy **DeviceMessage**.
 
 Útválasztás események és eseménytípusok alapvető ismeretekkel, tekintse meg a [útválasztás események és az üzenetek](concepts-events-routing.md).
 
@@ -27,9 +27,9 @@ Eseményeket küld az előre meghatározott útválasztási beállítások szeri
 
 Az egyes az eseménytípusok esemény formátumok a következők:
 
-- `TopologyOperation`
+- **TopologyOperation**
 
-  Metaadatgráf-módosítások vonatkozik. A `subject` tulajdonság határozza meg az érintett objektum típusa. Az objektumok, amelyek válthatja ki ezt az eseményt típusok a következők: `Device, DeviceBlobMetadata`, `DeviceExtendedProperty`, `ExtendedPropertyKey`, `ExtendedType`, `KeyStore`, `Report`, `RoleDefinition`, `Sensor`, `SensorBlobMetadata`, `SensorExtendedProperty`, `Space` ,  `SpaceBlobMetadata`, `SpaceExtendedProperty`, `SpaceResource`, `SpaceRoleAssignment`, `System`, `User`, `UserBlobMetadata`, `UserExtendedProperty`.
+  Metaadatgráf-módosítások vonatkozik. A *tulajdonos* tulajdonság határozza meg az érintett objektum típusa. Az objektumok, amelyek válthatja ki ezt az eseményt típusok a következők: **eszköz**, **DeviceBlobMetadata**, **DeviceExtendedProperty**, **ExtendedPropertyKey**, **ExtendedType**, **KeyStore**, **jelentés**, **RoleDefinition**, **érzékelő**, **SensorBlobMetadata**, **SensorExtendedProperty**, **terület**, **SpaceBlobMetadata**,  **SpaceExtendedProperty**, **SpaceResource**, **SpaceRoleAssignment**, **rendszer**, **felhasználói**, **UserBlobMetadata**, **UserExtendedProperty**.
 
   Példa:
 
@@ -55,11 +55,14 @@ Az egyes az eseménytípusok esemény formátumok a következők:
 
     | Egyéni attribútum neve | Cserélje le |
     | --- | --- |
-    | `yourTopicName` | Az egyéni témakör neve |
+    | *yourTopicName* | Az egyéni témakör neve |
 
-- `UdfCustom`
+- **UdfCustom**
 
-  Felhasználó által definiált függvény (UDF) által elküldött esemény. Vegye figyelembe, hogy ez az esemény rendelkezik explicit módon elküldjék az UDF magát.
+  Felhasználó által definiált függvény (UDF) által elküldött esemény. 
+  
+  > [!IMPORTANT]
+  > Ez az esemény rendelkezik explicit módon elküldjék az UDF magát.
 
   Példa:
 
@@ -83,9 +86,9 @@ Az egyes az eseménytípusok esemény formátumok a következők:
 
     | Egyéni attribútum neve | Cserélje le |
     | --- | --- |
-    | `yourTopicName` | Az egyéni témakör neve |
+    | *yourTopicName* | Az egyéni témakör neve |
 
-- `SensorChange`
+- **SensorChange**
 
   Egy frissítés egy érzékelő állapotba telemetriai végbement változások alapján.
 
@@ -118,9 +121,9 @@ Az egyes az eseménytípusok esemény formátumok a következők:
 
     | Egyéni attribútum neve | Cserélje le |
     | --- | --- |
-    | `yourTopicName` | Az egyéni témakör neve |
+    | *yourTopicName* | Az egyéni témakör neve |
 
-- `SpaceChange`
+- **SpaceChange**
 
   Telemetriai végbement változások alapján a hely állapotának frissítése.
 
@@ -153,15 +156,15 @@ Az egyes az eseménytípusok esemény formátumok a következők:
 
     | Egyéni attribútum neve | Cserélje le |
     | --- | --- |
-    | `yourTopicName` | Az egyéni témakör neve |
+    | *yourTopicName* | Az egyéni témakör neve |
 
-- `DeviceMessage`
+- **DeviceMessage**
 
-  Lehetővé teszi, hogy adjon meg egy `EventHub` , amelyhez nyers telemetria-eseményeinek átirányíthatók, valamint az Azure digitális Twins kapcsolat.
+  Lehetővé teszi, hogy adjon meg egy **EventHub** , amelyhez nyers telemetria-eseményeinek átirányíthatók, valamint az Azure digitális Twins kapcsolat.
 
 > [!NOTE]
-> - `DeviceMessage` csak a kombinálható `EventHub`; nem lesz képes egyesíteni `DeviceMessage` az bármelyik más esemény típusa.
-> - Adja meg a típus együttes használata csak egy végpont lesz `EventHub` / `DeviceMessage`.
+> - **DeviceMessage** csak a kombinálható **EventHub**; nem lesz képes egyesíteni **DeviceMessage** az bármelyik más esemény típusa.
+> - Adja meg a típus együttes használata csak egy végpont lesz **EventHub** vagy **DeviceMessage**.
 
 ## <a name="configuring-endpoints"></a>Végpontok konfigurálása
 
@@ -171,7 +174,7 @@ Felügyeleti végpontot a végpontok API-n keresztül történik. Szívesen adun
 POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 ```
 
-- Irányíthatja a **a Service Bus** eseménytípusok: `SensorChange`, `SpaceChange`, `TopologyOperation`
+- Irányíthatja a **a Service Bus** eseménytípusok: **SensorChange**, **SpaceChange**, **TopologyOperation**
 
   ```JSON
   {
@@ -189,12 +192,12 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | Egyéni attribútum neve | Cserélje le |
     | --- | --- |
-    | `yourNamespace` | A névtér a végpont |
-    | `yourPrimaryKey` | Hitelesítéshez használt elsődleges kapcsolati karakterlánc |
-    | `yourSecondaryKey` | Hitelesítéshez használt másodlagos kapcsolati karakterlánc |
-    | `yourTopicName` | Az egyéni témakör neve |
+    | *yourNamespace* | A névtér a végpont |
+    | *yourPrimaryKey* | Hitelesítéshez használt elsődleges kapcsolati karakterlánc |
+    | *yourSecondaryKey* | Hitelesítéshez használt másodlagos kapcsolati karakterlánc |
+    | *yourTopicName* | Az egyéni témakör neve |
 
-- Irányíthatja a **Event Grid** eseménytípusok: `SensorChange`, `SpaceChange`, `TopologyOperation`
+- Irányíthatja a **Event Grid** eseménytípusok: **SensorChange**, **SpaceChange**, **TopologyOperation**
 
   ```JSON
   {
@@ -212,11 +215,11 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | Egyéni attribútum neve | Cserélje le |
     | --- | --- |
-    | `yourPrimaryKey` | Hitelesítéshez használt elsődleges kapcsolati karakterlánc|
-    | `yourSecondaryKey` | Hitelesítéshez használt másodlagos kapcsolati karakterlánc |
-    | `yourTopicName` | Az egyéni témakör neve |
+    | *yourPrimaryKey* | Hitelesítéshez használt elsődleges kapcsolati karakterlánc|
+    | *yourSecondaryKey* | Hitelesítéshez használt másodlagos kapcsolati karakterlánc |
+    | *yourTopicName* | Az egyéni témakör neve |
 
-- Irányíthatja a **Eseményközpont** eseménytípusok: `SensorChange`, `SpaceChange`, `TopologyOperation`
+- Irányíthatja a **Eseményközpont** eseménytípusok: **SensorChange**, **SpaceChange**, **TopologyOperation**
 
   ```JSON
   {
@@ -234,12 +237,12 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | Egyéni attribútum neve | Cserélje le |
     | --- | --- |
-    | `yourNamespace` | A névtér a végpont |
-    | `yourPrimaryKey` | Hitelesítéshez használt elsődleges kapcsolati karakterlánc |
-    | `yourSecondaryKey` | Hitelesítéshez használt másodlagos kapcsolati karakterlánc |
-    | `yourEventHubName` | Az Eseményközpont neve |
+    | *yourNamespace* | A névtér a végpont |
+    | *yourPrimaryKey* | Hitelesítéshez használt elsődleges kapcsolati karakterlánc |
+    | *yourSecondaryKey* | Hitelesítéshez használt másodlagos kapcsolati karakterlánc |
+    | *yourEventHubName* | Neve a **Eseményközpont** |
 
-- Irányíthatja a **Eseményközpont** eseménytípusok `DeviceMessage`. Vegye figyelembe a felvételét _EntityPath_ a a `connectionString`, amely megadása kötelező.
+- Irányíthatja a **Eseményközpont** esemény típusa: **DeviceMessage**. Felvételét `EntityPath` a a **connectionString** megadása kötelező.
 
   ```JSON
   {
@@ -255,10 +258,10 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
 
     | Egyéni attribútum neve | Cserélje le |
     | --- | --- |
-    | `yourNamespace` | A névtér a végpont |
-    | `yourPrimaryKey` | Hitelesítéshez használt elsődleges kapcsolati karakterlánc |
-    | `yourSecondaryKey` | Hitelesítéshez használt másodlagos kapcsolati karakterlánc |
-    | `yourEventHubName` | Az Eseményközpont neve |
+    | *yourNamespace* | A névtér a végpont |
+    | *yourPrimaryKey* | Hitelesítéshez használt elsődleges kapcsolati karakterlánc |
+    | *yourSecondaryKey* | Hitelesítéshez használt másodlagos kapcsolati karakterlánc |
+    | *yourEventHubName* | Neve a **Eseményközpont** |
 
 > [!NOTE]
 > Új végpont a létrehozás után is igénybe vehet legfeljebb 5 10 percre elindításához a fogadott események a végponton.

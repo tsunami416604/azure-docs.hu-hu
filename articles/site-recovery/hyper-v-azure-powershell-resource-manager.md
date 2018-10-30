@@ -1,19 +1,18 @@
 ---
-title: A PowerShell és az Azure Resource Manager a Hyper-V-Virtuálisgépek replikálása |} A Microsoft Docs
-description: Automatizálhatja a replikálást a Hyper-V virtuális gépek az Azure-bA az Azure Site Recovery PowerShell és az Azure Resource Manager használatával.
-services: site-recovery
+title: Az Azure-bA vészhelyreállítás beállítása a Hyper-V virtuális gépekhez a PowerShell és Azure Resource Manager használatával |} A Microsoft Docs
+description: Hyper-V virtuális gépek vészhelyreállítása az Azure automatizálása PowerShell és Azure Resource Manager használata az Azure Site Recovery szolgáltatással.
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: sutalasi
-ms.openlocfilehash: 1d72d56188c3b787ab335ced554eb7c1dc74e0b7
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: f8f690a4f94ee56cfaa5532fa090fada1a33bddf
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427433"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214783"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Az Azure-bA vészhelyreállítás beállítása a Hyper-V virtuális gépekhez a PowerShell és Azure Resource Manager használatával
 

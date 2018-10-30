@@ -1,42 +1,53 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 2e72d669abcc784fe8159fd4c54bd074dc60299c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227033"
+---
+![Virtuális gépek egy önálló cloud service-ben](./media/virtual-machines-common-classic-connect-vms/CloudServiceExample.png)
 
+Ha a virtuális gépet helyez egy virtuális hálózatban, megadhatja, hogy a használni kívánt hány cloud services és a rendelkezésre állási csoportok betöltése. Ezenkívül rendezheti a virtuális gépek alhálózatok ugyanúgy a helyszíni hálózat és a virtuális hálózat csatlakoztatása a helyszíni hálózat. Például:
 
-![Önálló virtuális gépek a felhőalapú szolgáltatás](./media/virtual-machines-common-classic-connect-vms/CloudServiceExample.png)
+![A virtuális hálózatban a virtuális gépek](./media/virtual-machines-common-classic-connect-vms/VirtualNetworkExample.png)
 
-Ha a virtuális gépeket helyez egy virtuális hálózatot, megadhatja, hogy a használni kívánt hány felhőszolgáltatások betölteni a terheléselosztás és a rendelkezésre állási készletek. Emellett rendezheti a virtuális gépek alhálózatok ugyanúgy a helyszíni hálózat és a virtuális hálózathoz csatlakozni a helyszíni hálózat. Például:
+Virtuális hálózatok javasolt módon az Azure-beli virtuális gépek csatlakozni. Az ajánlott eljárás, hogy az alkalmazás mindegyik rétegéhez konfigurálása egy különálló cloud service-ben. Azonban szükség lehet néhány virtuális gépnél a különböző alkalmazásrétegek egyesítendő ugyanazon a felhőszolgáltatáson belül a maximálisan megengedett száma előfizetésenként 200 a cloud services kell maradniuk. Ez és egyéb korlátok áttekintéséhez lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../articles/azure-subscription-service-limits.md).
 
-![A virtuális hálózatban lévő virtuális gépek](./media/virtual-machines-common-classic-connect-vms/VirtualNetworkExample.png)
+## <a name="connect-vms-in-a-virtual-network"></a>Virtuális gépek csatlakoztatása egy virtuális hálózaton
+Csatlakozás virtuális hálózatban lévő virtuális gépek:
 
-Virtuális hálózatok az ajánlott módszer a virtuális gépek Azure-ban való csatlakoztatásához. Az ajánlott eljárás az alkalmazás egyes rétegeinek konfigurálása külön felhőszolgáltatásban. Azonban szükség lehet néhány virtuális gépnél, a másik alkalmazási rétegek egyesítése a azonos felhőszolgáltatás 200 felhőszolgáltatások előfizetésenként legfeljebb belül maradjon. Ezzel és más korlátozások ellenőrzéséhez tekintse meg [Azure-előfizetés és szolgáltatási korlátok, kvóták és megkötések](../articles/azure-subscription-service-limits.md).
+1. A virtuális hálózat létrehozása a [az Azure portal](../articles/virtual-network/virtual-networks-create-vnet-classic-pportal.md) , és adja meg a "klasszikus üzembe helyezési".
+2. Hozzon létre a felhőalapú szolgáltatások a rendelkezésre állási csoportok a Tervező, és a terheléselosztás a központi telepítéshez. Az Azure Portalon kattintson **erőforrás létrehozása > Számítás > Felhőszolgáltatás** minden felhőszolgáltatás.
 
-## <a name="connect-vms-in-a-virtual-network"></a>Csatlakozás a virtuális gépek virtuális hálózatban
-A virtuális hálózatban lévő virtuális gépek csatlakozni:
+  Adja meg az a felhőalapú szolgáltatás részleteit, válassza ki ugyanazt _erőforráscsoport_ használja a virtuális hálózattal.
 
-1. A virtuális hálózat létrehozása a [Azure-portálon](../articles/virtual-network/virtual-networks-create-vnet-classic-pportal.md) , és adja meg a "klasszikus üzembe helyezési".
-2. Hozzon létre a felhőalapú szolgáltatások a környezetet, hogy tükrözze a tervező a rendelkezésre állási csoportok és a terheléselosztás. Az Azure portálon kattintson **hozzon létre egy erőforrást > számítási > Felhőszolgáltatás** minden felhőalapú szolgáltatás.
+3. Minden egyes új virtuális gép létrehozásához kattintson a **erőforrás létrehozása > számítás**, majd válassza ki a megfelelő Virtuálisgép-lemezképet, a **kiemelt alkalmazások**.
 
-  Mivel kitöltötte a felhőalapú szolgáltatás részleteit, válassza ki ugyanazt _erőforráscsoport_ együtt a virtuális hálózat.
-
-3. Minden új virtuális gép létrehozásához kattintson a **hozzon létre egy erőforrást > számítási**, majd válassza ki a megfelelő Virtuálisgép-lemezkép a **a kiemelt alkalmazások**.
-
-  A virtuális gép **alapjai** panelen válassza ki ugyanazt _erőforráscsoport_ együtt a virtuális hálózat.
+  A virtuális gép **alapjai** panelen válassza ki ugyanazt _erőforráscsoport_ használja a virtuális hálózattal.
 
   ![Virtuális gép alapvető beállítások panel egy virtuális hálózat használatakor](./media/virtual-machines-common-classic-connect-vms/CreateVM_Basics_VN.png)
 
-4. Adja meg a virtuális Gépet, **beállítások**, válassza ki a megfelelő _felhőalapú szolgáltatás_ vagy _virtuális hálózati_ a virtuális gép számára.
+4. Ahogy, töltse ki a virtuális gép **beállítások**, válassza ki a megfelelő _felhőalapú szolgáltatás_ vagy _virtuális hálózati_ a virtuális gép.
 
-  Azure fogja kiválasztani az egyéb elem a kijelölés alapján.
+  Az Azure a többi elem a választott beállítás alapján fogja kiválasztani.
 
-  ![Virtuálisgép-beállítások panel egy virtuális hálózat használatakor](./media/virtual-machines-common-classic-connect-vms/CreateVM_Settings_VN.png)
+  ![Virtuális hálózat használata esetén a virtuális gép beállításainak panel](./media/virtual-machines-common-classic-connect-vms/CreateVM_Settings_VN.png)
 
 
-## <a name="connect-vms-in-a-standalone-cloud-service"></a>Csatlakozás a virtuális gépek önálló felhőszolgáltatásban
-Önálló felhőalapú szolgáltatásként lévő virtuális gépek csatlakozni:
+## <a name="connect-vms-in-a-standalone-cloud-service"></a>Virtuális gépek csatlakoztatása az önálló felhőalapú szolgáltatásként
+Csatlakozás virtuális gépek egy önálló cloud service-ben:
 
-1. A felhőszolgáltatás létrehozása a [Azure-portálon](http://portal.azure.com). Kattintson a **új > számítási > Felhőszolgáltatás**. Vagy a felhőalapú szolgáltatás, az üzembe helyezéshez hozhat létre, amikor az első virtuális gép létrehozása.
-2. A virtuális gépek létrehozásakor válassza ki a felhőalapú szolgáltatással használt ugyanabban az erőforráscsoportban.
+1. A felhőszolgáltatás létrehozása a [az Azure portal](http://portal.azure.com). Kattintson a **új > Számítás > Felhőszolgáltatás**. Vagy az első virtuális gép létrehozásakor hozhat létre a felhőalapú szolgáltatás, az üzembe helyezéshez.
+2. A virtuális gépek létrehozásakor válassza ki a felhőalapú szolgáltatáshoz használt ugyanabban az erőforráscsoportban.
 
-  ![A virtuális gépek hozzáadása egy meglévő felhőszolgáltatáshoz](./media/virtual-machines-common-classic-connect-vms/CreateVM_Basics_SA.png)
+  ![Virtuális gép hozzáadása egy meglévő felhőszolgáltatáshoz](./media/virtual-machines-common-classic-connect-vms/CreateVM_Basics_SA.png)
 
-3.  Adja meg az a virtuális gép részleteit, mivel válassza ki az első lépésben létrehozott felhőalapú szolgáltatás nevét.
+3.  Adja meg az a virtuális gép adatait, mivel az első lépésben létrehozott felhőalapú szolgáltatás nevének kiválasztása.
 
-  ![A virtuális gép egy felhőalapú szolgáltatás kiválasztása](./media/virtual-machines-common-classic-connect-vms/CreateVM_Settings_SA.png)
+  ![Virtuális gép egy felhőszolgáltatás kiválasztása](./media/virtual-machines-common-classic-connect-vms/CreateVM_Settings_SA.png)

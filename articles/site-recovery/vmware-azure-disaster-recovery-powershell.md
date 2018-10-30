@@ -1,21 +1,20 @@
 ---
-title: Replikálja, és átadja a feladatokat az Azure-bA az Azure Site Recovery PowerShell használatával a VMware virtuális gépek |} A Microsoft Docs
-description: Megtudhatja, hogyan állíthatja be a replikáció és feladatátvétel az Azure-bA a VMware virtuális gépekhez az Azure Site Recovery PowerShell használatával.
-services: site-recovery
+title: Állítsa be a VMware virtuális gépek vészhelyreállítása az Azure-bA az Azure Site Recovery PowerShell használatával |} A Microsoft Docs
+description: Ismerje meg, hogyan állítható be a replikáció és feladatátvétel az Azure PowerShell-lel az Azure Site Recovery VMware virtuális gépek vész-helyreállítási.
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.date: 07/06/2018
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: 070e51b132828e4fdf597d28fc2ad602adf76692
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 631225e6e0a7bb3bc42741e2761e3746c001c217
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042802"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211638"
 ---
-# <a name="replicate-and-fail-over-vmware-vms-to-azure-with-powershell"></a>Replikálja, és átadja a feladatokat a VMware virtuális gépek Azure-ban a PowerShell-lel
+# <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Állítsa be a VMware virtuális gépek vészhelyreállítása az Azure-ban a PowerShell-lel
 
 Ebben a cikkben láthatja a replikálás és feladatátvételi VMware virtuális gépeket az Azure PowerShell használatával. 
 

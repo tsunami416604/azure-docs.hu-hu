@@ -1,5 +1,5 @@
 ---
-title: PowerShell forgatókönyvek Csoportalapú licenceléshez az Azure ad-ben |} A Microsoft Docs
+title: Az Azure AD-ben Csoportalapú licencelés PowerShell és a Microsoft Graph példák |} A Microsoft Docs
 description: Az Azure Active Directory Csoportalapú licencelés PowerShell-forgatókönyvek
 services: active-directory
 keywords: Az Azure AD licencelése
@@ -11,21 +11,21 @@ ms.service: active-directory
 ms.component: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 04/23/2018
+ms.date: 10/29/2018
 ms.author: curtand
-ms.openlocfilehash: 9ff51308022881dabb0bd8efaa5852d0f296474a
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: d046b8e6c054131a4154654637f12dbdc26608a6
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37872041"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210431"
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>PowerShell forgatókönyvek Csoportalapú licenceléshez az Azure ad-ben
 
-A Csoportalapú licencelés összes funkciójának keresztül érhető el a [az Azure portal](https://portal.azure.com), és a PowerShell-támogatása jelenleg korlátozott. Vannak azonban néhány hasznos feladatot, használja a meglévő végrehajtható [MSOnline PowerShell-parancsmagok](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory). Ez a dokumentum mi minden lehetséges példákat.
+A Csoportalapú licencelés összes funkciójának keresztül érhető el a [az Azure portal](https://portal.azure.com), és a PowerShell és a Microsoft Graph-támogatása jelenleg korlátozott. Vannak azonban néhány hasznos feladatot, használja a meglévő végrehajtható [MSOnline PowerShell-parancsmagok](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) és a Microsoft Graph. Ez a dokumentum mi minden lehetséges példákat.
 
 > [!NOTE]
-> Parancsmagok futtatása előtt győződjön meg arról, hogy kapcsolódni a bérlő először futtassa a `Connect-MsolService` parancsmagot.
+> Parancsmagok futtatása előtt győződjön meg arról, hogy kapcsolódni a bérlő először futtassa a `Connect-MsolService`  parancsmagot.
 
 > [!WARNING]
 > Ez a kód biztosítunk példaként, bemutatási céllal. Ha szeretne használni, a környezetben, fontolja meg, vizsgálja, hogy először egy kisméretű, vagy külön tesztelési célú bérlői. Előfordulhat, hogy kell módosítania a kódot az adott környezet igényeinek kielégítése érdekében.
@@ -46,6 +46,34 @@ EMSPREMIUM
 
 > [!NOTE]
 > Az adatok a termékinformációk (Termékváltozat) korlátozódik. Nincs lehetőség le van tiltva, a licenc service-csomagok listáját.
+
+Kövesse az alábbi ugyanazokat az adatokat beolvasni a Microsoft Graph szolgáltatásból
+
+```
+GET https://graph.microsoft.com/beta/groups/99c4216a-56de-42c4-a4ac-e411cd8c7c41$select=assignedLicenses
+```
+Kimenet:
+```
+HTTP/1.1 200 OK
+{
+  “value”: [
+{
+  “assignedLicenses”: [
+     {
+          "accountId":"f1b45b40-57df-41f7-9596-7f2313883635",
+          "skuId":"c7df2760-2c81-4ef7-b578-5b5392b571df",
+      "disabledPlans":[]
+     },
+     {
+          "accountId":"f1b45b40-57df-41f7-9596-7f2313883635",
+          "skuId":" b05e124f-c7cc-45a0-a6aa-8cf78c946968",
+      "disabledPlans":[]
+     },
+  ],
+}
+  ]
+}
+```
 
 ## <a name="get-all-groups-with-licenses"></a>Licenccel rendelkező összes csoport beolvasása
 
@@ -141,6 +169,34 @@ ObjectId                             DisplayName             GroupType Descripti
 --------                             -----------             --------- -----------
 11151866-5419-4d93-9141-0603bbf78b42 Access to Office 365 E1 Security  Users who should have E1 licenses
 ```
+Kövesse az alábbi ugyanazokat az adatokat beolvasni a Microsoft Graph szolgáltatásból
+```
+GET https://graph.microsoft.com/beta/groups?$filter=hasMembersWithLicenseErrors+eq+true
+```
+Kimenet:
+```
+HTTP/1.1 200 OK
+{
+  "value":[
+    {
+      "odata.type": "Microsoft.DirectoryServices.Group",
+      "objectType": "Group",
+      "id": "11151866-5419-4d93-9141-0603bbf78b42",
+      ... # other group properties.
+    },
+    {
+      "odata.type": "Microsoft.DirectoryServices.Group",
+      "objectType": "Group",
+      "id": "c57cdc98-0dcd-4f90-a82f-c911b288bab9",
+      ...
+    },
+    ... # other groups with license errors.
+  ]
+"odata.nextLink":"https://graph.microsoft.com/beta/ groups?$filter=hasMembersWithLicenseErrors+eq+true&$skipToken=<encodedPageToken>"
+}
+```
+
+
 ## <a name="get-all-users-with-license-errors-in-a-group"></a>Minden felhasználó csoport licenc hibákkal be
 
 Adja meg egy csoportot, amely tartalmaz néhány licenccel kapcsolatos hibákat, most listázhatja azokat a hibák által érintett összes felhasználó. A felhasználó túl lehet más csoportokhoz, a hibákat. Azonban az ebben a példában csak a hibák az adott csoportra vonatkozó, az eredmények modelljeként ellenőrzésével a **ReferencedObjectId** minden egyes tulajdonság **IndirectLicenseError** bejegyzést a felhasználóra.
@@ -167,6 +223,28 @@ ObjectId                             DisplayName      License Error
 --------                             -----------      ------------
 6d325baf-22b7-46fa-a2fc-a2500613ca15 Catherine Gibson MutuallyExclusiveViolation
 ```
+Kövesse az alábbi ugyanazokat az adatokat beolvasni a Microsoft Graph szolgáltatásból
+```
+GET https://graph.microsoft.com/beta/groups/11151866-5419-4d93-9141-0603bbf78b42/membersWithLicenseErrors
+```
+Kimenet:
+```
+HTTP/1.1 200 OK
+{
+  "value":[
+    {
+      "odata.type": "Microsoft.DirectoryServices.User",
+      "objectType": "User",
+      "id": "6d325baf-22b7-46fa-a2fc-a2500613ca15",
+      ... # other user properties.
+    },
+    ... # other users.
+  ],
+  "odata.nextLink":"https://graph.microsoft.com/beta/groups/11151866-5419-4d93-9141-0603bbf78b42/membersWithLicenseErrors?$skipToken=<encodedPageToken>" 
+}
+
+```
+
 ## <a name="get-all-users-with-license-errors-in-the-entire-tenant"></a>Licenc hibák a teljes bérlő összes felhasználó mindenre
 
 A következő parancsfájl egy vagy több csoportot a licenc-hibákkal rendelkező felhasználók beolvasásához használható. A parancsfájl megjeleníti a soronként egy felhasználói licenccel kapcsolatos hibát, amely lehetővé teszi, hogy egyértelműen azonosítani a forrás az összes hiba száma.
@@ -299,6 +377,58 @@ ObjectId                             SkuId       AssignedDirectly AssignedFromGr
 157870f6-e050-4b3c-ad5e-0f0a377c8f4d contoso:EMS             True             False
 1f3174e2-ee9d-49e9-b917-e8d84650f895 contoso:EMS            False              True
 240622ac-b9b8-4d50-94e2-dad19a3bf4b5 contoso:EMS             True              True
+```
+
+Graph nem rendelkezik egy egyszerű módja az eredmény megjelenítése, de látható, az API-ból
+```
+GET https://graph.microsoft.com/beta/users/e61ff361-5baf-41f0-b2fd-380a6a5e406a?$select=licenseAssignmentStates
+```
+Kimenet:
+```
+HTTP/1.1 200 OK
+{
+  "value":[
+    {
+      "odata.type": "Microsoft.DirectoryServices.User",
+      "objectType": "User",
+      "id": "e61ff361-5baf-41f0-b2fd-380a6a5e406a",
+      "licenseAssignmentState":[
+        {
+          "skuId": "157870f6-e050-4b3c-ad5e-0f0a377c8f4d”,
+          "disabledPlans":[],
+          "assignedByGroup": null, # assigned directly.
+          "state": "Active",
+          "error": "None"
+        },
+        {
+          "skuId": "1f3174e2-ee9d-49e9-b917-e8d84650f895",
+          "disabledPlans":[],
+          "assignedByGroup": “e61ff361-5baf-41f0-b2fd-380a6a5e406a”, # assigned by this group.
+          "state": "Active",
+          "error": "None"
+        },
+        {
+          "skuId": "240622ac-b9b8-4d50-94e2-dad19a3bf4b5", 
+          "disabledPlans":[
+            "e61ff361-5baf-41f0-b2fd-380a6a5e406a"
+          ],
+          "assignedByGroup": "e61ff361-5baf-41f0-b2fd-380a6a5e406a",
+          "state": "Active",
+          "error": "None"
+        },
+        {
+          "skuId": "240622ac-b9b8-4d50-94e2-dad19a3bf4b5",
+          "disabledPlans":[],
+          "assignedByGroup": null, # It is the same license as the previous one. It means the license is assigned directly once and inherited from group as well.
+          "state": " Active ",
+          "error": " None"
+        }
+      ],
+      ...
+    }
+  ],
+}
+
 ```
 
 ## <a name="remove-direct-licenses-for-users-with-group-licenses"></a>Távolítsa el a felhasználók számára csoportok licenceire közvetlen licenceket
@@ -481,7 +611,9 @@ aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipp
 Csoportokon keresztül licenckezelésre funkciókészlethez kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 * [Mit jelent a Csoportalapú licencelés az Azure Active Directoryban?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [Licencek hozzárendelése egy csoporthoz az Azure Active Directory](licensing-groups-assign.md)
-* [Az Azure Active Directory csoport kapcsolatos problémák észleléséhez és a](licensing-groups-resolve-problems.md)
-* [Hogyan kell egyéni licenccel rendelkező felhasználók migrálása Csoportalapú licencelésre, az Azure Active Directoryban](licensing-groups-migrate-users.md)
-* [Csoportalapú licencelés további forgatókönyvek az Azure Active Directory](licensing-group-advanced.md)
+* [Licencek hozzárendelése egy csoporthoz az Azure Active Directoryban](licensing-groups-assign.md)
+* [A csoportok licencproblémáinak azonosítása és megoldása az Azure Active Directoryban](licensing-groups-resolve-problems.md)
+* [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre az Azure Active Directoryban](licensing-groups-migrate-users.md)
+* [Felhasználók az Azure Active Directoryban Csoportalapú licencelést használ terméklicencek közötti migrálása](../users-groups-roles/licensing-groups-change-licenses.md)
+* [Az Azure Active Directory csoportalapú licencelésének további forgatókönyvei](licensing-group-advanced.md)
+* [PowerShell forgatókönyvek Csoportalapú licenceléshez az Azure Active Directoryban](../users-groups-roles/licensing-ps-examples.md)

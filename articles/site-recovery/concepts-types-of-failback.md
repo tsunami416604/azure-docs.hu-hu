@@ -1,6 +1,6 @@
 ---
-title: Feladat-visszavétel az Azure Site Recoveryvel |} A Microsoft Docs
-description: Ez a cikk áttekintést különféle típusú feladat-visszavétel és figyelmeztetések vissza a helyszíni az Azure Site Recovery szolgáltatással az irányuló során figyelembe kell venni.
+title: Feladat-visszavétel az Azure Site Recovery a vészhelyreállítás során |} A Microsoft Docs
+description: Ez a cikk áttekintést különféle típusú feladat-visszavétel és figyelmeztetések irányuló vissza a helyszíni az Azure Site Recovery szolgáltatással vészhelyreállítás során figyelembe kell venni.
 services: site-recovery
 author: rajani-janaki-ram
 manager: guaravd
@@ -8,16 +8,16 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajanki
-ms.openlocfilehash: 2a9ee380fc16c4088d98875dd465509c4023d037
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: e97d736e7e117e0ccce6dc021a9de2ea15ac5484
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920389"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210142"
 ---
 # <a name="overview-of-failback"></a>Feladat-visszavétel áttekintése
 
-Miután Ön rendelkezik a feladatátvétel az Azure-ba is visszaadja a feladatokat a helyszíni helyre. Van két különböző típusú feladat-visszavétel az Azure Site Recovery lehetséges: 
+Miután Ön rendelkezik a feladatátvétel az Azure-bA a vész-helyreállítási folyamat részeként is visszaadja a feladatokat a helyszíni helyre. Van két különböző típusú feladat-visszavétel az Azure Site Recovery lehetséges: 
 
 - A feladat-visszavételhez az eredeti helyre 
 - A feladat-visszavételhez egy másik helyre

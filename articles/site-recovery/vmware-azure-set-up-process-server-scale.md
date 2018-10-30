@@ -1,21 +1,20 @@
 ---
-title: Az Azure-ban folyamatkiszolgáló beállítása VMware virtuális gépek és fizikai kiszolgálók feladat-visszavétel az Azure Site Recovery |} A Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan állítható be a folyamatkiszolgáló az Azure-ban feladat-visszavétel VMware virtuális gépek Azure.
-services: site-recovery
+title: Állítsa be az Azure-ban folyamatkiszolgáló sikertelen vissza a vészhelyreállítás során a VMware virtuális gépek és fizikai kiszolgálók az Azure Site Recovery |} A Microsoft Docs
+description: Ez a cikk ismerteti, hogyan állítható be a folyamatkiszolgáló az Azure-ban, sikertelen lesz az Azure-ból a helyszíni VMware virtuális gépek és fizikai kiszolgálók vészhelyreállítása során.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 641f671f23dde0bcc32ad1ef8343a5a84227c67f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 330f0197b8a7735043e93f00dc4baa5578f50228
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955379"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212233"
 ---
-# <a name="set-up-additional-process-servers-for-scalability"></a>A méretezhetőség érdekében további folyamatkiszolgálók beállítása
+# <a name="scale-for-failback-with-additional-process-servers"></a>Méretezési csoport és további folyamatkiszolgálók feladat-visszavételhez
 
 Alapesetben, amikor replikál a VMware virtuális gépek vagy fizikai kiszolgálók Azure-bA [Site Recovery](site-recovery-overview.md), folyamatkiszolgáló a konfigurációs kiszolgáló gépen telepítve van, és koordinálja a Site Recovery közötti adatátvitelt és a helyszíni infrastruktúrával. Kapacitás és a horizontális felskálázás a replikációtelepítés növelése érdekében hozzáadhat további önálló folyamatkiszolgálók. Ez a cikk azt ismerteti, hogyan teheti ezt.
 

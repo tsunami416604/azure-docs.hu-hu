@@ -1,22 +1,21 @@
 ---
-title: Nyilvános IP-címet a Site Recoveryvel |} A Microsoft Docs
-description: Ismerteti, hogyan állíthatja be nyilvános IP-címek az Azure Site Recovery és az Azure Traffic Manager vész-helyreállítási és áttelepítés
+title: Az Azure Site Recovery a feladatátvételt követően nyilvános IP-címek használata |} A Microsoft Docs
+description: Ismerteti, hogyan állíthat be vészhelyreállítást és az áttelepítés az Azure Site Recovery és az Azure Traffic Manager nyilvános IP-címek
 services: site-recovery
-documentationcenter: ''
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 09/28/2018
 ms.author: mayg
-ms.openlocfilehash: fd17c786515a6db1f8aa5c1aff7c0dcd42ed7dc6
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 80c38ecc766d60fba578e877998aeb216ea66012
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435213"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215276"
 ---
-# <a name="public-ip-address-with-site-recovery"></a>A Site Recovery nyilvános IP-cím
+# <a name="set-up-public-ip-addresses-after-failover"></a>A feladatátvételt követően nyilvános IP-címek beállítása
 
 A nyilvános IP-címek lehetővé teszik az internetes erőforrások bejövő kommunikációját az Azure-erőforrásokkal. A nyilvános IP-címek emellett lehetővé teszik az Azure-erőforrások kimenő kommunikációját az internettel és a nyilvános Azure-szolgáltatásokkal, az erőforráshoz rendelt IP-címet használva.
 - Az erőforrás, például az Azure Virtual Machines (VM), az Azure Application Gateway átjárók, az Azure Load Balancer Terheléselosztók, Azure VPN Gateway és mások az internetről bejövő kommunikációt. Továbbra is kommunikálhat egyes erőforrásokat, például a virtuális gépek, az internetről, ha a virtuális gép nem rendelkezik egy nyilvános IP-cím rendelhető, mindaddig, amíg a virtuális gép része egy load balancer háttérkészlethez, és a terheléselosztó nyilvános IP-cím van hozzárendelve.

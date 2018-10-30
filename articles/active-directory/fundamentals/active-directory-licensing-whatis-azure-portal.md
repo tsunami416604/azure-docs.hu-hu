@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.component: fundamentals
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 10/29/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 7848b52bcf5204a871920cbfab8a0e95223654d4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 3f23b28c1b20155e50fddf17db90cd2a53c04855
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735901"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209819"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Mit jelent a Csoportalapú licencelés az Azure Active Directoryban?
 
@@ -28,14 +28,12 @@ A licencek hozzárendelése eddig csak az egyes felhasználók szintjén volt le
 
 Ezen kihívások kezelésére biztosítja az Azure AD a csoportalapú licencelést. A terméklicenceket hozzárendelheti egy csoporthoz. Ezután az Azure AD gondoskodik arról, hogy megtörténjen a licencek hozzárendelése a csoport mindegyik tagjához. A csoporthoz csatlakozó új tagokhoz is hozzárendeli a megfelelő licenceket. Amikor a felhasználók elhagyják a csoportot, eltávolítja a licenceket. Így már nincs szükség arra, hogy a PowerShell segítségével megvalósított automatikus licenckezeléssel, a felhasználók szintjén kelljen kezelni a szervezet és a részlegek szerkezetében történt változásokat.
 
->[!Note]
->A csoportalapú licencelés jelenleg az Azure Active Directory (Azure AD) nyilvános előzetes verziójú funkciójaként bármilyen fizetős Azure AD-licenccsomaggal elérhető. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="features"></a>Szolgáltatások
 
 A csoportalapú licencelés fő funkciói az alábbiak:
 
-- A licencek bármilyen biztonsági csoporthoz hozzárendelhetők az Azure AD-ben. A biztonsági csoportok a helyszínen szinkronizálhatók az Azure AD Connecttel. Biztonsági csoportokat közvetlenül az Azure AD-ben is létrehozhat (csak felhőalapú csoportok), vagy pedig automatikusan, az Azure AD dinamikus csoportok kezelésére szolgáló funkciójával.
+- A licencek bármilyen biztonsági csoporthoz hozzárendelhetők az Azure AD-ben. Biztonsági csoportok is szinkronizálható a helyszíni, az Azure AD Connect használatával. Biztonsági csoportokat közvetlenül az Azure AD-ben is létrehozhat (csak felhőalapú csoportok), vagy pedig automatikusan, az Azure AD dinamikus csoportok kezelésére szolgáló funkciójával.
 
 - Egy terméklicencnek csoporthoz való hozzárendelésekor a rendszergazda letilthat szolgáltatáscsomagokat a termékben. Ez általában akkor szükséges, amikor a szervezet még nem áll készen a termékben található valamelyik szolgáltatás használatának a megkezdéséhez. A rendszergazda hozzárendelheti például az Office 365-öt egy részleghez, de átmenetileg letilthatja a Yammer szolgáltatást.
 
@@ -45,11 +43,11 @@ A csoportalapú licencelés fő funkciói az alábbiak:
 
 - Az Azure AD automatikusan kezeli a csoporttagság változásaiból eredő licencmódosításokat. A licencmódosítások általában a tagság változása után pár percen belül érvénybe lépnek.
 
-- A felhasználók egyszerre több, eltérő licencszabályzattal rendelkező csoport tagjai is lehetnek. A felhasználók emellett rendelkezhetnek a csoportokon kívül, közvetlenül hozzárendelt licencekkel is. A megjelenő felhasználóállapot a hozzárendelt termék- és szolgáltatáslicencek mindegyikének összességét tükrözi.
+- A felhasználók egyszerre több, eltérő licencszabályzattal rendelkező csoport tagjai is lehetnek. A felhasználók emellett rendelkezhetnek a csoportokon kívül, közvetlenül hozzárendelt licencekkel is. A megjelenő felhasználóállapot a hozzárendelt termék- és szolgáltatáslicencek mindegyikének összességét tükrözi. A felhasználó ugyanolyan licenc van hozzárendelve, több forrásból származó, a licenc csak egyszer fognak használni.
 
 - Bizonyos esetekben nem rendelhető licenc a felhasználókhoz. Lehetséges például, hogy nincs elegendő rendelkezésre álló licenc a bérlőben, vagy ütköző szolgáltatások lettek egy időben hozzárendelve. A rendszergazdák hozzáférhetnek azokkal a felhasználókkal kapcsolatos információkhoz, akik esetén az Azure AD nem tudta teljes mértékben feldolgozni a csoportlicenceket. Ezután korrekciós műveleteket hajthatnak végre az információk alapján.
 
-- A nyilvános előzetes verzióban az Azure AD Basic vagy Premium kiadására szóló fizetős vagy próbaverziós előfizetés szükséges a bérlőben a csoportalapú licenckezelés használatához.
+- A fizetős vagy próba előfizetést az Azure AD alapszintű vagy egy fizetős vagy próba Office 365 nagyvállalati E3 csomag, az Office 365 a3-as vagy újabb verziója esetén a bérlő felügyeleti csoport alapú licenc használatához szükséges. Ez a funkció a csoporthoz hozzárendelt licencet mindegyik egyedi felhasználói licencre van szükség. Licencek hozzárendelése a felhasználókhoz a számukra licenc hozzárendelt csoportok tagjai nem szükséges, de minimálisan hány licencet kell rendelkeznie ahhoz, hogy biztosítsák a minden ilyen felhasználót a bérlőben. Például ha 1000 egyedi felhasználók összesen elérhető összes a bérlőhöz hozzárendelt licencekkel rendelkeznek, kell legalább 1000 licencek, a licenc követelmény kielégítése érdekében.
 
 ## <a name="your-feedback-is-welcome"></a>Szívesen vesszük visszajelzését!
 
@@ -62,4 +60,6 @@ A csoportalapú licencelés segítségével folytatott licenckezelés egyéb for
 * [Licencek hozzárendelése egy csoporthoz az Azure Active Directoryban](../users-groups-roles/licensing-groups-assign.md)
 * [A csoportok licencproblémáinak azonosítása és megoldása az Azure Active Directoryban](../users-groups-roles/licensing-groups-resolve-problems.md)
 * [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre az Azure Active Directoryban](../users-groups-roles/licensing-groups-migrate-users.md)
+* [Felhasználók az Azure Active Directoryban Csoportalapú licencelést használ terméklicencek közötti migrálása](../users-groups-roles/licensing-groups-change-licenses.md)
 * [Az Azure Active Directory csoportalapú licencelésének további forgatókönyvei](../users-groups-roles/licensing-group-advanced.md)
+* [PowerShell forgatókönyvek Csoportalapú licenceléshez az Azure Active Directoryban](../users-groups-roles/licensing-ps-examples.md)

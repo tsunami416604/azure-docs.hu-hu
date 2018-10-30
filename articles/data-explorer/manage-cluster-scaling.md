@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 59a6a94e2906413423a4ae03a7c1c115b2ec0cc0
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bd3be916587ab884ea5579234a6189af54b53797
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047546"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209207"
 ---
 # <a name="manage-cluster-scaling-to-accommodate-changing-demand"></a>Fürtméretezés változó igényeket elégíthet kezelése
 
@@ -63,4 +63,4 @@ A következő ábrán látható a folyamat a következő néhány lépést. Tov�
 
 Most már konfigurálta az Azure Data Explorer fürt egy horizontális felskálázási művelet. Adjon meg egy másik szabályt a horizontális leskálázási művelet. Ez lehetővé teszi a fürt méretezése kihasználtsági mérőszámokat, Ön által megadott alapján dinamikusan.
 
-Ha segítségre van szüksége a fürtméretezés problémák, nyisson egy támogatási kérést az a [az Azure portal](https://portal.azure.com).
+Ha segítségre van szüksége a fürtméretezés problémák, nyisson egy támogatási kérést az a [az Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).

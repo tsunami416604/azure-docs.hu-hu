@@ -1,36 +1,29 @@
 ---
-title: Replikálni egy többrétegű a Citrix XenDesktop XenApp központi és az Azure Site Recoveryvel |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan védelme és helyreállítása az Azure Site Recovery használatával a Citrix XenDesktop és XenApp telepítések.
-services: site-recovery
-documentationcenter: ''
+title: Állítsa be a többrétegű a Citrix XenDesktop és XenApp-KözpontiTelepítés Azure Site Recovery használata vész-helyreállítási |} A Microsoft Docs
+description: Ez a cikk bemutatja, hogyan állíthat be vészhelyreállítást fo XenApp és a Citrix XenDesktop üzemelő példányok az Azure Site Recovery használatával.
 author: ponatara
 manager: abhemraj
-editor: ''
-ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: 45d366842416ddfa7b0153a1d075ee6de58e45a1
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 0b8d9765766191533745da4c653f1a91ce635c24
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213633"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210312"
 ---
-# <a name="replicate-a-multi-tier-citrix-xenapp-and-xendesktop-deployment-using-azure-site-recovery"></a>Egy többrétegű Citrix XenApp és xendesktop-példányok üzembe helyezés az Azure Site Recovery replikálása
+# <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>egy többrétegű Citrix XenApp és xendesktop-példányok üzembe helyezés a vészhelyreállítás beállítása
 
-## <a name="overview"></a>Áttekintés
+
 
 A Citrix XenDesktop asztali virtualizálási megoldás, amely asztali környezetek és alkalmazások egy ondemand-szolgáltatás biztosít bármely felhasználó számára, bárhol is. A FlexCast kézbesítési technológia XenDesktop gyorsan és biztonságosan közvetíti alkalmazások és asztali felhasználók.
 Még ma Citrix XenApp nem biztosít semmilyen vész helyreállítási funkciók.
 
 Jó vész-helyreállítási megoldást is engedélyeznie kell a modellezést, a helyreállítási tervek körül a fenti összetett architektúrák, és emellett lehetővé teszi, hogy testre szabott lépéseket, ezért az egy kattintással biztosít különböző rétegek közötti alkalmazás-hozzárendelések kezeléséhez Képernyőkép arról megoldás és a egy alacsonyabb RTO egy esetleges vészhelyzet esetén.
 
-Ez a dokumentum egy című útmutató lépésenként ismerteti, amellyel egy vész-helyreállítási megoldást a helyszíni Hyper-V és VMware vSphere-platformok Citrix XenApp-telepítéshez. Ez a dokumentum is ismerteti, hogyan hajthat végre egy feladatátvételi tesztet (vészhelyreállítási próbát) és a nem tervezett feladatátvétel az Azure-ban, a helyreállítási terv által támogatott konfigurációk és az előfeltételek.
+Ez a dokumentum létrehozásához egy vész-helyreállítási megoldást a helyszíni Hyper-V és VMware vSphere-platformokon a Citrix XenApp üzemelő példányok részletes útmutatást nyújt. Ez a dokumentum is ismerteti, hogyan hajthat végre egy feladatátvételi tesztet (vészhelyreállítási próbát) és a nem tervezett feladatátvétel az Azure-ban, a helyreállítási terv által támogatott konfigurációk és az előfeltételek.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -46,7 +39,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy megértette a következő:
 
 ## <a name="deployment-patterns"></a>Üzembe helyezési minták
 
-A Citrix XenApp és xendesktop-példányok farm általában az alábbi üzembe helyezési minta rendelkezik:
+A Citrix XenApp és xendesktop-példányok farm általában rendelkeznek a következő üzembe helyezési minta:
 
 **Üzembe helyezési minta**
 
@@ -75,7 +68,7 @@ XenApp Észrevételek 7.7 vagy újabb verzióját az Azure-ban támogatott, mive
 
 1. Védelem és helyreállítás a helyszínen üzemelő példányok XenApp közzétett asztalok és a kiszolgálói operációs rendszert használ, hogy a XenApp gépek közzétett alkalmazások használata támogatott.
 
-2. A helyszíni üzemelő operációs rendszer asztali gépek használata a virtuális asztalok, beleértve a Windows 10-es, továbbítására asztali VDI-ügyfél védelme és helyreállítása nem támogatott. Ennek az oka az ASR nem támogatja a desktopban OS'es gépek helyreállítását.  Emellett néhány ügyfél virtuális asztali operációs rendszer (például) Windows 7) még nem támogatottak a licencelése az Azure-ban. [Itt részletesen tájékozódhat](https://azure.microsoft.com/pricing/licensing-faq/) az ügyfél/kiszolgáló asztali környezeteinek Azure-ban történő licenceléséről.
+2. A helyszíni üzemelő operációs rendszer asztali gépek használata a virtuális asztalok, beleértve a Windows 10-es, továbbítására asztali VDI-ügyfél védelme és helyreállítása nem támogatott. Ennek az az oka a Site Recovery nem támogatja a desktopban OS'es gépek helyreállítását.  Emellett néhány ügyfél virtuális asztali operációs rendszer (például) Windows 7) még nem támogatottak a licencelése az Azure-ban. [Itt részletesen tájékozódhat](https://azure.microsoft.com/pricing/licensing-faq/) az ügyfél/kiszolgáló asztali környezeteinek Azure-ban történő licenceléséről.
 
 3.  Az Azure Site Recovery nem replikálja, és meglévő helyszíni MCS vagy PVS klónok védelme.
 Hozza létre újra a e klónok használatával az Azure RM-Alkalmazáskézbesítési vezérlőt a kiépítés kell.
@@ -152,7 +145,7 @@ A helyreállítási terv feladatátvételi csoportok az adott indítási sorrend
 
 ### <a name="adding-scripts-to-the-recovery-plan"></a>A helyreállítási tervbe szkriptek hozzáadása
 
-Parancsfájlokat lehet futtatni előtt vagy után adott csoportban lévő helyreállítási terv. Manuális műveletek is lehet is tartalmaz és feladatátvétel során.
+Parancsfájlokat lehet futtatni előtt vagy után adott csoportban lévő helyreállítási terv. Manuális műveletek is tartalmazza, és végre feladatátvétel során.
 
 A testre szabott helyreállítási terv néz ki az alábbi:
 
@@ -163,20 +156,20 @@ A testre szabott helyreállítási terv néz ki az alábbi:
    >[!NOTE]     
    >Csak egy helyszíni xenapp alkalmazandók, 4, 6, 7 manuális vagy parancsfájl műveleteket tartalmazó lépéseket > MCS/PVS katalógusok környezetet.
 
-4. 3. csoport manuális vagy parancsfájl művelet: fő VDA virtuális gép a fő VDA virtuális gép leállítása az Azure-ba irányuló feladatátvételkor futó állapotban lesz. Hozhat létre új MCS-katalógusok Azure ARM használatával, a fő VDA virtuális gép szükség lehet a Leállítva (de lefoglalt) állapot. Állítsa le a virtuális gép az Azure Portalról.
+4. 3. csoport manuális vagy parancsfájl művelet: leállítási fő VDA virtuális gép a fő VDA virtuális Gépet az Azure-ba irányuló feladatátvételkor futó állapotban lesz. Hozhat létre új MCS-katalógus használatával az Azure üzemeltetési, a fő VDA virtuális gép szükség lehet a Leállítva (de lefoglalt) állapot. Állítsa le a virtuális gép az Azure Portalról.
 
 5. Feladatátvételi 4: Alkalmazáskézbesítési vezérlőt és StoreFront-kiszolgáló virtuális gépek
 6. 3 manuális vagy parancsfájl 1 művelet:
 
     ***Azure RM-gazdagép kapcsolat hozzáadása***
 
-    Hozzon létre Azure ARM-gazdagép kapcsolati Alkalmazáskézbesítési vezérlőt gép kiépítése az Azure-ban új MCS-katalógusok. Kövesse a lépéseket, amint azt ez [cikk](https://www.citrix.com/blogs/2016/07/21/connecting-to-azure-resource-manager-in-xenapp-xendesktop/).
+    Azure-beli gazdagéppel kapcsolat létrehozása ezen a gép üzembe helyezése az Azure-ban új MCS-katalógusok Alkalmazáskézbesítési vezérlőt. Kövesse a lépéseket, amint azt ez [cikk](https://www.citrix.com/blogs/2016/07/21/connecting-to-azure-resource-manager-in-xenapp-xendesktop/).
 
 7. 3 manuális vagy parancsfájl művelet 2:
 
     ***Hozza létre újból az Azure-ban MCS-katalógusok***
 
-    Az Azure-ba nem lesznek replikálva az elsődleges hely meglévő MCS vagy PVS klónok. Hozza létre újra a e klónok használatával a replikált főkiszolgáló VDA és az Azure ARM-ből Alkalmazáskézbesítési vezérlőt kell. Kövesse a lépéseket, amint azt ez [cikk](https://www.citrix.com/blogs/2016/09/12/using-xenapp-xendesktop-in-azure-resource-manager/) MCS-katalógusok létrehozása az Azure-ban.
+    Az Azure-ba nem lesznek replikálva az elsődleges hely meglévő MCS vagy PVS klónok. Hozza létre újra a e klónok használatával a replikált főkiszolgáló VDA és Alkalmazáskézbesítési vezérlőt-ből az Azure kell. Kövesse a lépéseket, amint azt ez [cikk](https://www.citrix.com/blogs/2016/09/12/using-xenapp-xendesktop-in-azure-resource-manager/) MCS-katalógusok létrehozása az Azure-ban.
 
 ![Helyreállítási terv XenApp-összetevők](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-recoveryplan.png)
 

@@ -1,23 +1,22 @@
 ---
-title: A replikáció VMware virtuális gépek vagy fizikai kiszolgálók másodlagos VMware-helyről az Azure Site Recovery támogatási mátrix |} A Microsoft Docs
-description: Összefoglalja a VMware-ről/fizikai kiszolgáló replikálása másodlagos helyre az Azure Site Recovery támogatása
-services: site-recovery
+title: Vész-helyreállítási VMware virtuális gépek vagy fizikai kiszolgálók másodlagos VMware-helyről az Azure Site Recovery támogatási mátrix |} A Microsoft Docs
+description: A VMware virtuális gépek és fizikai kiszolgálók másodlagos helyre az Azure Site Recovery vész-helyreállítási támogatás foglalja össze.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 4df929e8a185a04aef5cb13f30c19b0db707e765
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 8406cf2b31b87cdb4f6c9b6ba3d06559cf1d4d41
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44021993"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209802"
 ---
-# <a name="support-matrix-for-replication-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>A VMware virtuális gépek és fizikai kiszolgálók másodlagos helyre támogatási mátrix
+# <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók másodlagos helyre támogatási mátrix
 
-Ez a cikk összefoglalja, mit támogat használatakor a [Azure Site Recovery](site-recovery-overview.md) szolgáltatást, hogy a VMware virtuális gépeket vagy Windows/Linux fizikai kiszolgálók replikálása másodlagos helyre VMware.
+Ez a cikk összefoglalja, mit támogat használatakor a [Azure Site Recovery](site-recovery-overview.md) szolgáltatás vész-helyreállítási VMware virtuális gépeket és a Windows/Linux fizikai kiszolgálók másodlagos VMware-hellyel.
 
 - Ha azt szeretné, a VMware virtuális gépek vagy fizikai kiszolgálók replikálása az Azure-ba, tekintse át a [a támogatási mátrix](vmware-physical-azure-support-matrix.md).
 - Ha azt szeretné, a Hyper-V virtuális gépek replikálása másodlagos helyre, tekintse át a [a támogatási mátrix](hyper-v-azure-support-matrix.md).

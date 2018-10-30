@@ -1,21 +1,20 @@
 ---
-title: A VMware replikálásához az Azure Site Recovery replikációs szabályzatok konfigurálására és felügyeletére |} A Microsoft Docs
-description: Ismerteti, hogyan lehet VMware Azure-ba történő replikálás beállításainak konfigurálása az Azure Site Recoveryvel.
-services: site-recovery
+title: A VMware-vészhelyreállításhoz az Azure-bA az Azure Site Recovery replikációs szabályzatok konfigurálására és felügyeletére |} A Microsoft Docs
+description: Útmutatás a vész-helyreállítási VMware – Azure replikálás beállításainak konfigurálása az Azure Site Recoveryvel.
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: sutalasi
-ms.openlocfilehash: 03197d1f42a17d6fc99b85d3fbc3635468b1e6ae
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: fd987097c2ca7b1e7509a1a0e63905c36ec8fec8
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423606"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212896"
 ---
-# <a name="configure-and-manage-replication-policies-for-vmware-replication"></a>VMware-replikációhoz a replikációs szabályzatok konfigurálására és felügyeletére
+# <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>Vész-helyreállítási VMware – Azure replikációs szabályzatok konfigurálására és felügyeletére
 Ez a cikk ismerteti a replikációs szabályzat konfigurálása, Ön VMware virtuális gépek replikálása az Azure-ba, amikor használatával [Azure Site Recovery](site-recovery-overview.md).
 
 

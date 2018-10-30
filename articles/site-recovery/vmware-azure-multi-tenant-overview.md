@@ -1,22 +1,20 @@
 ---
-title: VMware virtuális gép replikálása az Azure (CSP) az Azure Site Recovery több-bérlős támogatásának áttekintése |} A Microsoft Docs
-description: Áttekintést nyújt az Azure Site Recovery támogatási bérlőhöz tartozó előfizetések több-bérlős környezetben, a CSP program keretében.
-services: site-recovery
+title: VMware virtuális gép az Azure (CSP) Azure Site Recovery használata vész-helyreállítási több-bérlős támogatásának áttekintése |} A Microsoft Docs
+description: Az Azure Site Recovery támogatási áttekintést nyújt a VMWare-vészhelyreállításhoz az Azure-bA egy több-bérlős környezet (CSP) program.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 4cd0c3baf385a864e2173de9bbce897bb5066dae
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 89e731d6c255092b087f0615bad49185c7181f1f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352871"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210756"
 ---
-# <a name="overview-of-multi-tenant-support-for-vmware-replication-to-azure-with-csp"></a>VMware-replikáció az Azure CSP-több-bérlős támogatásának áttekintése
+# <a name="overview-of-multi-tenant-support-for-vmware-fisaster-recovery-to-azure-with-csp"></a>VMware fisaster recovery az Azure-bA a CSP több-bérlős támogatásának áttekintése
 
 [Az Azure Site Recovery](site-recovery-overview.md) bérlői előfizetések támogatja a több-bérlős környezetben. Több-bérlős létrehozása és felügyelete a Microsoft Cloud Solution Provider (CSP) program keretében bérlői előfizetéseket is támogatja.
 

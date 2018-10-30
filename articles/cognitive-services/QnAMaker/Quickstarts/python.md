@@ -1,7 +1,7 @@
 ---
 title: REST API-t (V4) – Python – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Ezekkel a rövid útmutatókkal és kódmintákkal gyorsan megkezdheti a Microsoft Translator Text API használatát a Microsoft Cognitive Servicesben az Azure-on.
+description: Get Python információkat és a kód a minták segítségével gyorsan használatának első lépései a Microsoft Translator Text API a Microsoft Cognitive Services, Azure-ban.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -10,17 +10,17 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 595eee6a10192d877aa77f4849bac494dff05808
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 1eff6ab146bb3a7ee053b8ac7fe3137d7c58c93a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650009"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212471"
 ---
 # <a name="qna-maker-rest-api-with-python"></a>A QnA Maker – REST API a Pythonnal
 <a name="HOLTop"></a>
 
-Ez a cikk bemutatja, hogyan használhatja a [Microsoft QnA Maker API-t](../Overview/overview.md) Python segítségével az alábbi célokra.
+Ez a cikk bemutatja, hogyan használható a [Microsoft QnA Maker API](../Overview/overview.md) tegye a következőket a Python használatával.
 
 - [Új tudásbázis létrehozása.](#Create)
 - [Meglévő tudásbázis frissítése.](#Update)

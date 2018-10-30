@@ -2,19 +2,18 @@
 title: Az Azure Site Recovery az Azure Traffic Manager |} A Microsoft Docs
 description: Az Azure Traffic Manager használata az Azure Site Recovery vész-helyreállítási és áttelepítés
 services: site-recovery
-documentationcenter: ''
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 8f303ec3349b0003ef764e437c6f06cf498dcc57
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 42422bf94b4bb401850b6b6b21b089c4ab261d75
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353254"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212795"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>Azure Traffic Manager az Azure Site Recovery-vel
 

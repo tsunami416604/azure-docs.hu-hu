@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 1c3996c3f40da496af0cd795d0873864667a1f19
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226493"
+---
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 1. Válassza ki a virtuális gép ismételt üzembe helyezése, majd válassza a kívánt a *ismételt üzembe helyezése* gombra a *beállítások* panelen. Szükség lehet legörgetve találja meg a **támogatás és hibaelhárítás** szakaszt, amely tartalmazza a "Ismételt üzembe helyezés" gomb az alábbi példában látható módon:
    

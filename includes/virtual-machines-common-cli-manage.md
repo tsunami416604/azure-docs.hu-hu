@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: e08e6ca4f6413b475bd8a0e5ff30b74921c2f0e6
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226720"
+---
 Az Azure parancssori felület lehetővé teszi, hogy hozhat létre, és a macOS, Linux és Windows Azure-erőforrások kezeléséhez. Ez a cikk részletesen hozhat létre és kezelhet virtuális gépeket (VM) leggyakoribb parancsai közül néhányat.
 
 Ehhez a cikkhez az Azure CLI 2.0.4-es vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne, olvassa el [Azure CLI telepítése](/cli/azure/install-azure-cli). Is [Cloud Shell](/azure/cloud-shell/quickstart) a böngészőben.

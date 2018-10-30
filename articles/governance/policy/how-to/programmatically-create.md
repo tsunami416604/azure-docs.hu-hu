@@ -4,16 +4,16 @@ description: Ez a cikk végigvezeti programozott módon szabályzatok létrehoz�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/29/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: dd7ec4f1d0c018a3c7eed19bea523f7c09bfea3e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4a68b60df76dcc554158d6c8db4d0dfe8dd32be7
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985316"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209224"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programozott módon szabályzatok létrehozása és a megfelelőségi adatok megtekintése
 
@@ -85,6 +85,12 @@ Az erőforrások jobb rálátást biztosít az első lépését, hogy a szabály
    ```
 
    Cserélje le _ContosoRG_ az importálni kívánt erőforráscsoport nevét.
+
+   A **hatókör** paraméterrel `New-AzureRmPolicyAssignment` az előfizetések és a felügyeleti csoportok is működik. A paraméter használja a teljes erőforrás-elérési útját, amely a **ResourceId** tulajdonsága `Get-AzureRmResourceGroup` adja vissza. Minta **hatókör** az egyes tárolók a következőképpen történik.  Cserélje le `{rgName}`, `{subId}`, és `{mgName}` az erőforrás-csoport nevét, az előfizetés-azonosító és a felügyeleti csoport neve, illetve.
+
+   - Erőforráscsoport- `/subscriptions/{subId}/resourceGroups/{rgName}`
+   - Előfizetés – `/subscriptions/{subId}/`
+   - Felügyeleti csoport – `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 Erőforrás-szabályzatok az Azure Resource Manager PowerShell-modullal kezelésével kapcsolatos további információkért lásd: [AzureRM.Resources](/powershell/module/azurerm.resources/#policies).
 

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 10/26/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: e418316a74ccf27ec730261957a8b6c64de5d063
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d521406e37920dcd76c0078d2fdf54c16b7a0461
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040601"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209989"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Dinamikus csoport létrehozása és állapotának ellenőrzése
 
@@ -39,8 +39,9 @@ Ez a cikk részletesen bemutatja az Azure Portalon a biztonsági vagy Office 365
 
    ![Dinamikus tagsági szabály hozzáadása](./media/groups-create-rule/add-dynamic-group-rule.png)
 
-5. A szabály létrehozása után válassza ki a **lekérdezés hozzáadása** a panel alján.
-6. Válassza ki **létrehozás** a a **csoport** panelen a csoport létrehozásához.
+5. Teljes listája megtalálható az ügyfél bővítménytulajdonság is hozzáadhat a tagsági lekérdezést, jelölje ki a **Get ügyfél bővítménytulajdonságok**, adjon meg egy egyedi Alkalmazásazonosító, és válassza **tulajdonságainakfrissítése**. A teljes Izraeli normál idő szerint tulajdonságok kiválasztható lesz.
+6. A szabály létrehozása után válassza ki a **lekérdezés hozzáadása** a panel alján.
+7. Válassza ki **létrehozás** a a **csoport** panelen a csoport létrehozásához.
 
 > [!TIP]
 > Csoport létrehozása sikertelen lesz, ha a megadott szabály helytelenül formázott vagy érvénytelen volt. A tartalmazó annak magyarázatát, miért érdemes a szabályt nem sikerült feldolgozni a portál jobb felső sarkában megjelenik egy értesítés. Olvassa el, hogy alaposan megismerheti, hogyan, hogy a szabály érvényes, hogy módosítani kell.

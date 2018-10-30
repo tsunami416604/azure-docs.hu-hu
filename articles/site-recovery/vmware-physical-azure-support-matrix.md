@@ -1,21 +1,20 @@
 ---
-title: A VMware virtuális gépek és fizikai kiszolgálók replikálása az Azure-bA az Azure Site Recovery támogatási mátrix |} A Microsoft Docs
-description: A támogatott operációs rendszerek és a VMware virtuális gépek és fizikai kiszolgálók replikálása az Azure-ban az Azure Site Recovery összetevőinek foglalja össze.
-services: site-recovery
+title: Vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók az Azure-bA az Azure Site Recovery támogatási mátrix |} A Microsoft Docs
+description: A támogatott operációs rendszerek és a vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók az Azure-ban az Azure Site Recovery összetevőinek foglalja össze.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: f6f1ceb4f9afaaeb0a436879802144bdebc06280
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: b472ed1c32e64b8f8ac881c09f22590c49f39c75
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378652"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215361"
 ---
-# <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware-alapú és fizikai kiszolgáló replikálása az Azure-támogatási mátrixa
+# <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-támogatási mátrixa
 
 Ez a cikk összefoglalja a támogatott összetevők és a VMware virtuális gépek vészhelyreállítása az Azure-bA beállításait [Azure Site Recovery](site-recovery-overview.md).
 

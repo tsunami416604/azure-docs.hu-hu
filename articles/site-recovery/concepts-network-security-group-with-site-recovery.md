@@ -1,20 +1,18 @@
 ---
 title: Hálózati biztonsági csoportok az Azure Site Recoveryvel |} A Microsoft Docs
 description: Hálózati biztonsági csoportok használata az Azure Site Recovery vész-helyreállítási és áttelepítés
-services: site-recovery
-documentationcenter: ''
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: fc4beb9f664bb3be52907cb6cd746dad0aa37e64
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: fca56453d931588fdb5e509237ac538f0de9d0ec
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352727"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214392"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>Hálózati biztonsági csoportok az Azure Site Recoveryvel
 

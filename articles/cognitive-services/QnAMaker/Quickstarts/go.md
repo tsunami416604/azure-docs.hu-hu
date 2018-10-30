@@ -1,7 +1,7 @@
 ---
 title: REST API (V4) – Ugrás – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: REST-alapú információk lekérése, és kódminták segítségével gyorsan használatának első lépései a Microsoft Translator Text API a Microsoft Cognitive Services, Azure-ban.
+description: Információ G0 REST-alapú, és kódminták segítségével gyorsan használatának első lépései a Microsoft Translator Text API a Microsoft Cognitive Services, Azure-ban.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -10,17 +10,17 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 1b4f4c50c8c3fbdc2cc556705bdd446cb360ef2c
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: b9451d51bf0c0c684cebf89ad448b66fee59d9ea
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650230"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210703"
 ---
 # <a name="qna-maker-rest-api-with-go"></a>A QnA Maker REST API-t a Go 
 <a name="HOLTop"></a>
 
-Ez a cikk bemutatja, hogyan hajthatja végre a következő feladatokat a [Microsoft QnA Maker API](../Overview/overview.md) a Góval való használatával.
+Ez a cikk bemutatja, hogyan használható a [Microsoft QnA Maker API](../Overview/overview.md) a Go, tegye a következőket.
 
 - [Új tudásbázis létrehozása.](#Create)
 - [Meglévő tudásbázis frissítése.](#Update)

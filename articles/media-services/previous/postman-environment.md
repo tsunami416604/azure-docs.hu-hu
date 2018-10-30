@@ -1,28 +1,28 @@
 ---
-title: Importálja a Postman környezet az Azure Media Services REST-hívások
-description: Ez a témakör a Postman környezet az Azure Media Services REST-hívásokhoz definícióját.
+title: Importálja a Postman-környezetből az Azure Media Services REST-hívások
+description: Ez a témakör az Azure Media Services REST-hívások a Postman-környezet definíciójának.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2018
+ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: aa3e1bb4c6ae53e24e3153dd55f6a6d07e29e091
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 037bdc233090e79695c17df197bb4c7adb517b20
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790376"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50229796"
 ---
-# <a name="import-the-postman-environment"></a>Importálja a Postman környezet 
+# <a name="import-the-postman-environment"></a>Importálja a Postman-környezet 
 
-Ez a cikk a definíciót tartalmaz a **Postman** környezeti változókat, amelyek a [Postman gyűjtemény](postman-collection.md) , amely tartalmazza a Media Services REST API-k hívása csoportosított HTTP-kérelmekre. A környezet és a gyűjtés fájlokat használja a [konfigurálása Postman Media Services REST API-hívások](media-rest-apis-with-postman.md) oktatóanyag.
+Ez a cikk a definíciót tartalmaz a **Postman** környezeti változókat, amelyek a [Postman-gyűjtemény](postman-collection.md) , amely tartalmazza a Media Services REST API-k hívása a csoportosított HTTP-kérelmekre. A környezet és a gyűjtemény fájlokat használja a [Postman konfigurálása a Media Services REST API-hívások](media-rest-apis-with-postman.md) oktatóanyag.
 
 ```
 {

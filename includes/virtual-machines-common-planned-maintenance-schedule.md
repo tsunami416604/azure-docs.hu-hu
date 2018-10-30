@@ -1,18 +1,29 @@
-
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: c7fe0d6f8e03501cca7a8b98f95286b6a21c0476
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227406"
+---
 ## <a name="multi-and-single-instance-vms"></a>Többszörös és egypéldányos virtuális gépek
-Sok ügyfél futó Azure száma akkor fontos, hogy azok ütemezhető a virtuális gépek tervezett karbantartás miatt az állásidő--változni mintegy 15 percre leáll--, amely akkor fordul elő, karbantartás során. Rendelkezésre állási csoportok segítségével szabályozhatja, amikor kiosztott virtuális gépek tervezett karbantartás.
+Számos szolgáltatást használó ügyfeleink az Azure száma szerint, kritikus fontosságú, hogy azok ütemezhető a virtuális gépek tervezett karbantartás miatt az állásidő--rendelkezéseinknek körülbelül 15 perc –, amelyek akkor fordul elő, karbantartás során. Használhatja a rendelkezésre állási csoportok segítségével szabályozhatja, amikor az üzembe helyezett virtuális gépek megkapják a tervezett karbantartás.
 
-Nincsenek Azure-on futó virtuális gépek két lehetséges konfigurációkat. Virtuális gépek vagy többpéldányos vagy egypéldányos kell konfigurálni. Ha virtuális gépek rendelkezésre állási csoportba, majd vannak konfigurálva több példányt. Vegye figyelembe, még akkor is egyetlen, virtuális gépek is telepíthető egy rendelkezésre állási csoportot, hogy több példányt kezelje őket. Ha a virtuális gépek nincsenek egy rendelkezésre állási csoportot, majd vannak konfigurálva, Egypéldányos.  További részletek a rendelkezésre állási csoportok: [a Windows virtuális gépek rendelkezésre állásának kezelése](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) vagy [a Linux virtuális gépek rendelkezésre állásának kezelése](../articles/virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Nincsenek Azure-on futó virtuális gépek két lehetséges konfigurációkat. Virtuális gépek vagy a többpéldányos vagy egypéldányos konfigurálni. Ha virtuális gépeket egy rendelkezésre állási csoportban, majd beállításuk többpéldányos. Vegye figyelembe, akár egyetlen virtuális gép is telepíthető egy rendelkezésre állási csoportot, hogy több példányt kezelje őket. Ha a virtuális gépek nem állnak rendelkezésre állási csoportban, majd beállításuk egypéldányos.  További információ a rendelkezésre állási csoportok: [, a Windows virtuális gépek rendelkezésre állásának kezelése](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) vagy [kezelése a Linux rendszerű virtuális gépek rendelkezésre állásának](../articles/virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Egypéldányos és többpéldányos virtuális gépek tervezett karbantartás frissítések külön-külön fordulhat elő. A virtuális gépek kell egypéldányos (ha többpéldányos) vagy (ha egypéldányos) többpéldányos újrakonfigurálásával szabályozhatja, ha a virtuális Gépeik kapni a tervezett karbantartáshoz. Lásd: [a tervezett karbantartások Azure Linux virtuális gépek](../articles/virtual-machines/linux/planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [a tervezett karbantartásról, a Azure Windows virtuális gépek](../articles/virtual-machines/windows/planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) Azure virtuális gépek tervezett karbantartása leírását.
+Egypéldányos és többpéldányos virtuális gépek tervezett karbantartási frissítéseinek külön-külön történik. A virtuális gépek kell egypéldányos (Ha a többpéldányos) vagy (ha az Egypéldányos) többpéldányos újrakonfigurálásával szabályozhatja, ha a virtuális gépeiken kapni a tervezett karbantartás. Lásd: [Azure-beli Linuxos virtuális gépek tervezett karbantartásának](../articles/virtual-machines/linux/planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [Azure Windows virtuális gépek tervezett karbantartásának](../articles/virtual-machines/windows/planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) Azure virtuális gépek tervezett karbantartása részleteiért.
 
-## <a name="for-multi-instance-configuration"></a>Többpéldányos konfiguráció
-Kiválaszthatja, hogy a tervezett karbantartások hatással van a virtuális gépek üzembe helyezett egy rendelkezésre állási csoport konfigurációs feloldhatja a virtuális gépek rendelkezésre állási készletek idő.
+## <a name="for-multi-instance-configuration"></a>A többpéldányos konfiguráció
+Kiválaszthatja, hogy a tervezett karbantartás hatással van a virtuális gépek által üzembe helyezett egy rendelkezésre állási csoport konfigurációjában ezeket a virtuális gépeket távolíthat egy rendelkezésre állási csoportok idő.
 
-1. E-mailt kap hét nappal a többpéldányos konfigurációban a virtuális gépek tervezett karbantartás előtt. Az előfizetés-azonosítók és a többpéldányos érintett virtuális gépek nevét az e-mail törzsében szerepelnek.
-2. E hét napban kiválaszthatja a frissítésekor a példányok vannak az adott régióban eltávolításával a többpéldányos virtuális gépek a rendelkezésre állási csoport. Ez a változás a konfigurációban újraindítás, azt eredményezi, mint egy fizikai gazdagép karbantartás, egy másik fizikai gazdagépre, amely nem érvényes az karbantartási szánt továbbítása a virtuális gép.
-3. A virtuális gép eltávolíthatja a rendelkezésre állási csoportban, az Azure portálon.
+1. E-mailt kap a virtuális gépek egy többpéldányos konfigurációban a tervezett karbantartás előtt, hétnapos naptárban. Az előfizetés azonosítókat és az érintett többpéldányos virtuális gépek nevét az e-mail törzsében szerepelnek.
+2. E hét napban lehetősége van az üzemelő példányok frissítése a többpéldányos virtuális gépek az adott régióban eltávolítását a rendelkezésre állási idő. Ez a változtatás konfigurációs újraindítás, hatására a, a virtuális gép egy fizikai gazdagép karbantartás, egy másik fizikai gazdagépre, amely nem karbantartás céljából megcélzott van való áttérés.
+3. A rendelkezésre állási az Azure Portalon a virtuális gép távolíthat el.
 
    1. A portálon válassza ki a virtuális gép eltávolítása a rendelkezésre állási csoportban.  
 
@@ -20,36 +31,36 @@ Kiválaszthatja, hogy a tervezett karbantartások hatással van a virtuális gé
 
       ![Rendelkezésre állási csoport kiválasztása](./media/virtual-machines-planned-maintenance-schedule/availabilitysetselection.png)
 
-   3. A rendelkezésre állási csoport legördülő menüre, válassza ki a "Nem részei egy rendelkezésre állási csoportnak."
+   3. A rendelkezésre állási csoportban legördülő menüre, válassza ki a "Nem része egy rendelkezésre állási csoportban."
 
       ![Távolítsa el a készletből](./media/virtual-machines-planned-maintenance-schedule/availabilitysetwarning.png)
 
-   4. A lap tetején kattintson **mentése**. Kattintson a **Igen** megerősíti, hogy ez a művelet újraindítja a virtuális gép számára.
+   4. A lap tetején kattintson **mentése**. Kattintson a **Igen** gombra annak megerősítéséhez, hogy ez a művelet újraindítja a virtuális Gépet.
 
    >[!TIP]
-   >A virtuális gépek a többpéldányos később újrakonfigurálhatja a listában szereplő rendelkezésre állási csoportok kiválasztásával.
+   >A virtuális Gépet a többpéldányos később újrakonfigurálhatja a listán szereplő rendelkezésre állási csoportok kiválasztásával.
 
-4. Virtuális gépek rendelkezésre állási készletek távolítva egypéldányos állomások kerülnek, és nem frissülnek a rendelkezésre állási beállítása beállításokat a tervezett karbantartás alatt.
-5. A rendelkezésre állási beállítása virtuális gépekhez a frissítés befejezése után (megfelelően az eredeti e-mailt leírt ütemezés), adja hozzá a virtuális gépek a rendelkezésre állási készletek programba. Rendelkezésre állási csoport tagjaivá újrakonfigurálja a virtuális gépek több példányt, és a újraindítását eredményezi. Általában ha minden többpéldányos frissítés a teljes Azure-környezetéhez között megadta, Egypéldányos karbantartási követi.
+4. Virtuális gépek rendelkezésre állási csoportok távolítva egypéldányos gazdagépek kerül, és nem frissülnek a rendelkezésre állási beállítása konfigurációk a tervezett karbantartás során.
+5. Rendelkezésre állási készletet használó virtuális gépek, a frissítés befejezése után (az eredeti e-mailben leírt ütemezésnek), adja a virtuális gépeket újra üzembe a rendelkezésre állási csoportok. Rendelkezésre állási csoport részévé újrakonfigurálja a virtuális gépek több példányt, és újraindítását eredményezi. Általában minden többpéldányos frissítések végezhető el a teljes Azure-környezetre, miután egy példányban – karbantartás követi.
 
-A virtuális gép eltávolítása a rendelkezésre állási csoport is elérhető Azure PowerShell használatával:
+Virtuális gép eltávolítása egy rendelkezésre állási csoportot is elérhető az Azure PowerShell használatával:
 
 ```
 Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Remove-AzureAvailabilitySet | Update-AzureVM
 ```
 
-## <a name="for-single-instance-configuration"></a>Egypéldányos konfiguráció
-Kiválaszthatja, hogy a tervezett karbantartások hatással van, virtuális gépek egypéldányos konfigurációban adja hozzá a virtuális gépeken a rendelkezésre állási készletek idő.
+## <a name="for-single-instance-configuration"></a>Az Egypéldányos konfigurációban
+Kiválaszthatja, hogy az idő a tervezett karbantartás hatással van, virtuális gépek egypéldányos konfigurációban adja hozzá ezek a virtuális gépek rendelkezésre állási csoportokba.
 
 Lépésről lépésre
 
-1. E-mailt kap hét nappal egypéldányos konfigurációban a virtuális gépek tervezett karbantartás előtt. Az előfizetés-azonosítók és a érintett egypéldányos virtuális gépek nevét az e-mail törzsében szerepelnek.
-2. E hét napban kiválaszthatja az idő, a példány újraindítja az Egypéldányos virtuális gépek rendelkezésre állási készlet ugyanabban a régióban való hozzáadásával. Ez a változás a konfigurációban újraindítás, azt eredményezi, mint egy fizikai gazdagép karbantartás, egy másik fizikai gazdagépre, amely nem érvényes az karbantartási szánt továbbítása a virtuális gép.
-3. Kövesse az utasításokat itt meglévő virtuális gépek rendelkezésre állási készletek használata az Azure portál és az Azure PowerShell hozzáadni. (Lásd az Azure PowerShell-példa, amely ezeket a lépéseket.)
-4. Miután a virtuális gépek több példányt voltak, tartoznak a a tervezett karbantartások egypéldányos virtuális gépekhez.
-5. Az Egypéldányos VM frissítése (futtatása ütemezés szerint az eredeti e-mailben) után visszatérhet a virtuális gépek egypéldányos feloldhatja a virtuális gépek a rendelkezésre állási készletek.
+1. E-mailt kap egy egypéldányos konfigurációban a virtuális gépek tervezett karbantartás előtt, hétnapos naptárban. Az előfizetés azonosítókat és az érintett egypéldányos virtuális gépek nevét az e-mail törzsében szerepelnek.
+2. E hét nap alatt válassza ki a példány újraindul az Egypéldányos virtuális gépeket ad hozzá egy rendelkezésre állási csoportot, hogy ugyanabban a régióban az idő. Ez a változtatás konfigurációs újraindítás, hatására a, a virtuális gép egy fizikai gazdagép karbantartás, egy másik fizikai gazdagépre, amely nem karbantartás céljából megcélzott van való áttérés.
+3. Kövesse az utasításokat követve adja hozzá a meglévő virtuális gépek rendelkezésre állási csoportokba, az Azure portal és az Azure PowerShell használatával. (Lásd az Azure PowerShell-mintát, kövesse az alábbi lépéseket.)
+4. Ezek a virtuális gépek laborkörnyezetekben több példányt, ha ki vannak zárva a tervezett karbantartás az Egypéldányos virtuális gépekhez.
+5. Az Egypéldányos virtuális gép frissítése (ütemezésnek az eredeti e-mailben) befejezése után a virtuális gépek eltávolítását a rendelkezésre állási csoportok egypéldányos térhet vissza a virtuális gépek.
 
-A virtuális gépek felvétele a rendelkezésre állási készlet is elérhető Azure PowerShell használatával:
+Virtuális gép hozzáadása egy rendelkezésre állási csoport is elérhető az Azure PowerShell használatával:
 
     Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Set-AzureAvailabilitySet -AvailabilitySetName "<AvSetName>" | Update-AzureVM
 

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
 ms.author: sajagtap
-ms.openlocfilehash: 1c08b30c0e59aac21d24f75d88530ba51b67d6b4
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 2e1a912f2d2aa8a6f9b165524351f2a16232537c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023933"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212199"
 ---
 # <a name="human-in-the-loop"></a>Emberi hurok
 
@@ -31,3 +31,5 @@ Az emberi ellenőrző eszközt, ha a gépi támogatású képmoderálás API-kka
 5. Adja hozzá az emberi ellenőrző bármely API-t vagy az üzleti folyamat egyszerűen egy olyan összekötő létrehozásával.
 6. Az alapértelmezett összekötők használatával a Microsoft PhotoDNA, a Szövegelemzés és a Face API-k eredmények áttekintése.
 7. Bevezetés a fő teljesítménymutatói a tartalom-jóváhagyás folyamatokat.
+
+![A Content Moderator videovizsgálati eszköze](../images/video-review-default-view.png)

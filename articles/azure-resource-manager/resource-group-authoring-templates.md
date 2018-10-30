@@ -14,39 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 28ef94113c76cd70e12a9682e1c523afc3f0a233
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 8f1fc9eb5e7b19f25af2005cb3a99cb320cba640
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945875"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214545"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Megismerheti a szerkezetének és szintaxisának az Azure Resource Manager-sablonok
 Ez a cikk ismerteti az Azure Resource Manager-sablonok szerkezetének. Egy sablon és az elérhető tulajdonságok köre szakaszt az eltérő szakaszok tükrözze. A sablon JSON-t és kifejezések, amelyek segítségével kialakíthatja az üzemelő példány értékeit áll. Sablonok létrehozásának részletes útmutató: [az első Azure Resource Manager-sablon létrehozása](resource-manager-create-first-template.md).
 
-## <a name="quickstarts-and-tutorials"></a>Rövid útmutatóink és oktatóanyagaink
-
-A következő rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan fejleszthet Resource Manager-sablonokat:
-
-- Gyors útmutatók
-
-  	|Beosztás|Leírás|
-  	|------|-----|
-  	|[Az Azure Portal használata](./resource-manager-quickstart-create-templates-use-the-portal.md)|Hozzon létre egy sablon az a portálon, és a szerkesztési és helyezi üzembe a sablont.|
-  	|[A Visual Studio kód használata](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)|A Visual Studio Code használatával létrehozása és szerkesztése a sablonokat, és hogyan sablonok üzembe helyezése az Azure Cloud shell használatával.|
-  	|[A Visual Studio használata](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)|Létrehozására, szerkesztésére és sablonok üzembe helyezése a Visual Studio használatával.|
-
-- Oktatóanyagok
-
-  	|Beosztás|Leírás|
-  	|------|-----|
-  	|[Használja a sablon leírása](./resource-manager-tutorial-create-encrypted-storage-accounts.md)|A sablon referenciadokumentációjából sablonok fejlesztéséhez használ. Az oktatóanyag a storage-fiók sémájának található, és az információk használatával hozzon létre egy titkosított tárfiókban.|
-  	|[Több példány létrehozása](./resource-manager-tutorial-create-multiple-instances.md)|Azure-erőforrásokat több példányának létrehozása. Az oktatóanyagban hoz létre a storage-fiók több példányát.|
-  	|[Erőforrás telepítési sorrendet](./resource-manager-tutorial-create-templates-with-dependent-resources.md)|Erőforrás-függőségek meghatározása. Az oktatóanyagban létrehozhat egy virtuális hálózatot, virtuális gépek és a függő Azure-erőforrások. Megtudhatja, hogyan vannak definiálva a függőségeket.|
-  	|[Feltételek használata](./resource-manager-tutorial-use-conditions.md)|Néhány paraméter értékei alapján erőforrások üzembe helyezése. Az oktatóanyagban egy sablont hozzon létre egy új tárfiókot, vagy használjon egy meglévő tárfiókot egy paraméter értéke alapján határozza meg.|
-  	|[A key vault integrálása](./resource-manager-tutorial-use-key-vault.md)|Az Azure Key Vault titkos kódok és jelszavak lekérését. Az oktatóanyagban egy virtuális gépet hoz létre.  A virtuális gép rendszergazdai jelszó veszi át egy Key Vaultot.|
-  	|[Csatolt sablonok létrehozása](./resource-manager-tutorial-create-linked-templates.md)|Sablonok modularize, és egy sablon alapján más-sablonok meghívására. Az oktatóanyagban létrehozhat egy virtuális hálózatot, virtuális gépek és a tőle függő erőforrások.  A függő tárfiók van meghatározva egy hivatkozott sablonnak. |
-  	|[Használata biztonságos üzembe helyezési eljárások](./deployment-manager-tutorial.md)|Az Azure Deployment manager használja. |
+[!INCLUDE [arm-tutorials-quickstarts](../../includes/resource-manager-tutorials-quickstarts.md)]
 
 ## <a name="template-format"></a>Sablon formátuma
 

@@ -15,12 +15,12 @@ ms.date: 05/04/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 0d139437a069406db2ae0f189480072f8063a327
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 73854cba151dfbebe53862a39fbe980502192c2d
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982272"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230063"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Átirányítási szoftveresen kötött mutató hivatkozásokat az Azure AD-alkalmazásproxyval közzétett alkalmazások
 
@@ -97,6 +97,7 @@ A jobb teljesítmény és biztonság érdekében egyes hivatkozások nem szerepe
 
 - Hivatkozások nem kód címkék belül. 
 - Hivatkozások nem szereplő HTML és CSS. 
+- A hivatkozások URL-ként kódolt formátumban.
 - Belső hivatkozások más programok nyithatók meg. E-mailben vagy csevegőüzenetekkel keresztül, vagy más dokumentumokban szereplő hivatkozások nem fordítható le. Nyissa meg a külső URL-cím, ismernie kell a felhasználókat.
 
 Kell egy két forgatókönyv esetében támogatott, ha használja az azonos belső és külső URL-címek helyett hivatkozást fordítási.  

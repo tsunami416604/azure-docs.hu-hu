@@ -1,7 +1,7 @@
 ---
 title: REST API-t (V4) – node.js-szel – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: REST-alapú információk lekérése, és kódminták segítségével gyorsan használatának első lépései a Microsoft Translator Text API a Microsoft Cognitive Services, Azure-ban.
+description: Node.js REST-alapú információk lekérése, és kódminták segítségével gyorsan használatának első lépései a Microsoft Translator Text API a Microsoft Cognitive Services, Azure-ban.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -10,17 +10,17 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 68ec8fe90c19106c989f072dc041ee81af536389
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: cd3d159e4482b43c6356ab7b657a79fa59159c60
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647918"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214987"
 ---
 # <a name="qna-maker-rest-api-with-nodejs"></a>A QnA Maker – REST API a node.js használatával 
 <a name="HOLTop"></a>
 
-Ez a cikk bemutatja, hogyan hajthatja végre a következő feladatokat a [Microsoft QnA Maker API](../Overview/overview.md) a Node.js-sel való használatával.
+Ez a cikk bemutatja, hogyan használható a [Microsoft QnA Maker API](../Overview/overview.md) tegye a következőket a node.js használatával.
 
 - [Új tudásbázis létrehozása.](#Create)
 - [Meglévő tudásbázis frissítése.](#Update)

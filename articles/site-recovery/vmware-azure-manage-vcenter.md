@@ -1,20 +1,19 @@
 ---
-title: " Az Azure Site Recovery VMware vCenter-kiszolgálók kezelése |} A Microsoft Docs"
-description: Ez a cikk azt ismerteti, hogyan hozzáadása és kezelése az Azure Site Recovery VMware vCenter.
+title: A VMware virtuális gépek vészhelyreállítása az Azure-ban az Azure Site Recovery VMware vCenter-kiszolgálók kezelése |} A Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan adja hozzá, és a VMware virtuális gépek vészhelyreállítása az Azure-bA az Azure Site Recovery VMware vCenter kezelése.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: ramamill
-ms.openlocfilehash: 6f3edf8e5d7a6fda1795991ac0a21cc316c29414
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 854d7724aebd882414287b19c015ef1425bfa6db
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950444"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210295"
 ---
-# <a name="manage-vmware-vcenter-servers"></a>VMware vCenter-kiszolgálók kezelése 
+# <a name="manage-vmware-vcenter-server"></a>VMware vCenter-kiszolgáló kezelése
 
 Ez a cikk ismerteti a különböző a Site Recovery-műveletek egy VMware vcenter végrehajtható. Ellenőrizze a [Előfeltételek](vmware-physical-azure-support-matrix.md#replicated-machines) megkezdése előtt.
 

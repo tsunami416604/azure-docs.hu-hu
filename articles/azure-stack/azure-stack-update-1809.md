@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2018
+ms.date: 10/27/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 161b54620bd8a3c9994228a30bd7495717064168
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: d80e7bc1d391d9b5bfd718ca2dc0e9dc7ecb2268
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158466"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210873"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 frissítése
 
@@ -38,6 +38,8 @@ Az Azure Stack 1809 frissítés buildszáma **1.1809.0.90**.
 ### <a name="new-features"></a>Új funkciók
 
 Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza:
+
+- Ezzel a kiadással az Azure Stackkel integrált rendszerek által támogatott konfigurációk 4 és 16 közötti csomópontok.
 
 - <!--  2712869   | IS  ASDK -->  **Azure Stack syslog-ügyfél (nyilvánosan elérhetők)** az ügyfél lehetővé teszi, hogy a naplózás, a riasztások és a syslog server vagy a biztonsági biztonságiadat- és eseménykezelés (SIEM) felügyeleti szoftverek az Azure Stack infrastruktúrájának biztonsági naplók továbbítását külső az Azure Stackhez. A syslog-ügyfél már támogatja a portot, amelyen a syslog-kiszolgáló figyel.
 
@@ -147,6 +149,8 @@ További információ a biztonsági rések, kattintson a fenti hivatkozásokat a
 - <!-- 2468613 - IS --> Ez a frissítés telepítése során láthatja a címmel riasztások *hiba – a sablon typu FaultType UserAccounts.New hiányzik.*  Ezek a riasztások nyugodtan figyelmen kívül hagyhatja. A frissítés telepítésének befejezése után ezek a riasztások automatikusan bezáródik.
 
 - <!-- 2489559 - IS --> Ne kísérelje meg a frissítés telepítése során a virtuális gépek létrehozása. Frissítések kezelésével kapcsolatos további információkért lásd: [kezelheti a frissítéseket az Azure Stack áttekintés](azure-stack-updates.md#plan-for-updates).
+
+- <!-- 3139614 | IS --> Ha már telepített egy frissítés az Azure Stack, az OEM, a **frissítés érhető el** értesítési nem jelenhet meg az Azure Stack felügyeleti portálon. A Microsoft update telepítéséhez töltse le és importálja manuálisan az itt található utasításokat követve [alkalmazza a frissítéseket az Azure Stackben](azure-stack-apply-updates.md).
 
 ### <a name="post-update-steps"></a>Frissítés utáni lépések
 

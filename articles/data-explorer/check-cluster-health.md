@@ -8,18 +8,18 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 0746247d2c912ba66e81b95f45b168e32b522130
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d07873b34a41ff20b5007a88743f6b150d4d8a3d
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988427"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212828"
 ---
 # <a name="check-the-health-of-an-azure-data-explorer-cluster"></a>Az Azure Data Explorer fürt állapotának ellenőrzése
 
 Nincsenek számos tényező befolyásolja az Azure Data Explorer egy fürt, többek között a CPU, memória és a lemez alrendszerébe állapotát. Ez a cikk bemutatja a fürt állapotának felmérésére használjuk is igénybe vehet néhány alapvető lépéseit.
 
-1. Jelentkezzen be a [ https://dataexplorer.azure.com ](https://dataexplorer.azure.com).
+1. Jelentkezzen be itt: [https://dataexplorer.azure.com](https://dataexplorer.azure.com).
 
 1. A bal oldali panelen válassza ki a fürtöt, és futtassa a következő parancsot.
 
@@ -35,6 +35,8 @@ Nincsenek számos tényező befolyásolja az Azure Data Explorer egy fürt, töb
 
     ![Fürt életben tartsa metrika](media/check-cluster-health/portal-metrics.png)
 
-1. Adja hozzá például a Processzor- és memória-gyorsítótárazás a mérőműszer-Erőforrás-kihasználtsága a fürt más metrikákkal.
+1. A diagram egyéb metrika hozzáadása lehetőség. Ezután válassza ki a diagram **metrika hozzáadása**. Válassza ki egy másik metrikát – Ez a példa bemutatja **CPU**.
 
-1. Ha a fürt állapotának a problémák diagnosztizálása segítségre van szüksége, nyisson egy támogatási kérést a [az Azure portal](https://portal.azure.com).
+    ![Metrika hozzáadása](media/check-cluster-health/add-metric.png)
+
+1. Ha a fürt állapotának a problémák diagnosztizálása segítségre van szüksége, nyisson egy támogatási kérést a [az Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).

@@ -1,19 +1,19 @@
 ---
-title: Nem sikerült az Azure-ból az Azure Site Recovery VMware |} A Microsoft Docs
-description: Az Azure virtuális gépek a feladatátvételt követően térjen vissza a helyszíni virtuális gépek csatlakozva a feladat-visszavételhez is elindítható. Ismerje meg, hogy a feladat-visszavételt lépéseit.
+title: Az Azure-ból sikertelen során a VMware virtuális gépek vészhelyreállítása az Azure-bA az Azure Site Recoveryvel |} A Microsoft Docs
+description: Útmutató a feladat-visszavételhez a helyszíni hely Azure-ba, a feladatátvételt követően VMware virtuális gépek és fizikai kiszolgálók Azure-bA a vészhelyreállítás során.
 author: nsoneji
 ms.service: site-recovery
 ms.date: 10/11/2018
 ms.topic: conceptual
 ms.author: nisoneji
-ms.openlocfilehash: 841e036555723051dfeaf946f31eaf9eedaee798
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: becf0b8c9f14d81b0a25fb1727b69452c3ff690c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093510"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215174"
 ---
-# <a name="fail-back-from-azure-to-an-on-premises-site"></a>Az Azure-ból a helyszíni helyhez sikertelen
+# <a name="fail-back-vmware-vms-and-physical-servers-from-azure-to-an-on-premises-site"></a>Visszavétel VMware virtuális gépek és fizikai kiszolgálók Azure-ból a helyszíni helyre
 
 Ez a cikk ismerteti, hogyan végezhet vissza virtuális gépeket az Azure Virtual Machines egy helyszíni VMware-környezetről. Ez a cikk utasításait követve sikertelen biztonsági a VMware virtuális gépek vagy Windows/Linux hely után, a feladatátvétel a helyszíni fizikai kiszolgálóknak az Azure-bA használatával kövesse a [az Azure Site Recovery feladatátvételi](site-recovery-failover.md) oktatóanyag.
 

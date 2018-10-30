@@ -1,21 +1,21 @@
 ---
-title: Hyper-V-replikáció az Azure-támogatási mátrixa |} A Microsoft Docs
-description: Összefoglalja a támogatott összetevők és a Hyper-V-replikáció az Azure-bA az Azure Site Recovery-követelményei
+title: Vész-helyreállítási a helyszíni Hyper-V virtuális gépek az Azure-támogatási mátrixa |} A Microsoft Docs
+description: Összefoglalja a támogatott összetevők és a Hyper-V virtuális gép vészhelyreállítás az Azure-bA az Azure Site Recovery követelményei
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 83d2fabbe3a1b0ab44cb97e53baf0aa40349aeed
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: e389f37448211afc35fb98572161be4fcaea7556
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079208"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210720"
 ---
-# <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Hyper-V-replikáció az Azure-támogatási mátrixa
+# <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Vész-helyreállítási a helyszíni Hyper-V virtuális gépek az Azure-támogatási mátrixa
 
 
 Ez a cikk összefoglalja a támogatott összetevők és az Azure-bA a helyszíni Hyper-V virtuális gépek vész-helyreállítási beállítások használatával [Azure Site Recovery](site-recovery-overview.md).

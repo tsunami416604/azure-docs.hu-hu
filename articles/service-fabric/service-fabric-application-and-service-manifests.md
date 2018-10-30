@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric-alkalmazások és szolgáltatások leíró |} Microsoft Docs
-description: Ismerteti, hogyan történik a jegyzékfájlban Service Fabric-alkalmazások és szolgáltatások használata.
+title: Ismertető az Azure Service Fabric-alkalmazások és szolgáltatások |} A Microsoft Docs
+description: Ismerteti, hogyan történik a jegyzékek írja le a Service Fabric-alkalmazások és szolgáltatások használata.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,20 +12,20 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 2/23/2018
+ms.date: 10/29/2018
 ms.author: ryanwi
-ms.openlocfilehash: b79206b9d456226d14984e8a1c1002c07c4f626a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 78315409c5d83a98321e16913b1090e8996ed8ce
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208471"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230284"
 ---
-# <a name="service-fabric-application-and-service-manifests"></a>Service Fabric-alkalmazás és szolgáltatás jegyzékfájlokban
-Ez a cikk ismerteti, hogyan történik a Service Fabric-alkalmazások és szolgáltatások, hogy meghatározott és rendszerverzióval ellátott ApplicationManifest.xml és ServiceManifest.xml fájlokat használja.  Az XML-séma a jegyzék fájlok részletes ismertetését lásd: [ServiceFabricServiceModel.xsd séma dokumentáció](service-fabric-service-model-schema.md).
+# <a name="service-fabric-application-and-service-manifests"></a>Service Fabric-alkalmazás- és szolgáltatásjegyzékek
+Ez a cikk bemutatja, hogyan történik a Service Fabric-alkalmazásokat és szolgáltatásokat, hogy meghatározott és verziószámmal ApplicationManifest.xml és ServiceManifest.xml fájlokat használja.  További részletes példák: [alkalmazás és a service manifest példák](service-fabric-manifest-examples.md).  Ezek a jegyzékfájlok XML-séma leírása itt található [ServiceFabricServiceModel.xsd séma dokumentáció](service-fabric-service-model-schema.md).
 
-## <a name="describe-a-service-in-servicemanifestxml"></a>ServiceManifest.xml szolgáltatás leírása
-A szolgáltatás deklarációval jegyzékfájl szolgáltatás típusától és verziójától. Azt adja meg a szolgáltatás metaadatokat, például szolgáltatás típusa, a rendszerállapot-tulajdonságai, a terheléselosztás metrikák, a bináris fájljait és a konfigurációs fájlok.  Másképp fogalmazva, a kódot, a konfiguráció és az adatok csomagok a service-csomag egy vagy több szolgáltatás típusainak használatát lehetővé alkotó ismerteti. A szolgáltatás jegyzék több kódot, konfiguráció és adatok csomagok, amelyek egymástól függetlenül lehet rendszerverzióval ellátott tartalmazhat. Ez a szolgáltatás az ASP.NET Core előtér webszolgáltatás a jegyzék a [mintaalkalmazás szavazás](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart):
+## <a name="describe-a-service-in-servicemanifestxml"></a>Egy szolgáltatás a ServiceManifest.xml leírása
+A szolgáltatásjegyzék deklaratív szolgáltatás típusa és verziója határozza meg. Azt adja meg a szolgáltatás metaadatokat, például a szolgáltatás típusának, egészségügyi tulajdonságok, terheléselosztási metrikák, bináris fájljait és konfigurációs fájlok.  Másképp fogalmazva, a kód, a konfiguráció és az adatok csomagok egy szolgáltatási csomagot, amely egy vagy több szolgáltatás típusok támogatása az alkotó ismerteti. A szolgáltatásjegyzék több kódot, konfiguráció és adatok csomagokat, amelyek egymástól függetlenül lehet rendszerverzióval ellátott is tartalmazhat. Itt van az ASP.NET Core webes kezelőfelületi szolgáltatás a szolgáltatás jegyzékfájl a [mintául szolgáló Szavazóalkalmazás](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) (és néhány [részletesebb példákat](service-fabric-manifest-examples.md)):
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -65,24 +65,24 @@ A szolgáltatás deklarációval jegyzékfájl szolgáltatás típusától és v
 </ServiceManifest>
 ```
 
-**Verzió** attribútumok strukturálatlan karakterláncok, és a rendszer nem elemzi. Verzió attribútumok használt verziója minden egyes összetevő frissítésre.
+**Verzió** attribútumok strukturálatlan karakterláncok és a rendszer nem elemzi. Verzió attribútumok használt verzió az egyes összetevők frissítéseket.
 
-**ServiceTypes** kijelenti, hogy milyen típusú szolgáltatásokat által támogatott **CodePackages** a jegyzékfájlban. Amikor egy szolgáltatás létrejön az említett szolgáltatás ellen, a jegyzékfájlban deklarált összes kódot csomag aktívak a belépési pontok futtatásával. Az eredményül kapott folyamatok várhatóan a támogatott típusok regisztrálása a futási időben. A jegyzék szintjét és a nem a kód csomag szintjén deklarált típusú szolgáltatásokat. Ezért ha több kód csomagot, az összes aktiválás amikor a rendszer megkeresi a deklarált szolgáltatás típusok egyikét sem.
+**ServiceTypes** deklarálja, hogy milyen szolgáltatástípusok által támogatott **CodePackages** a jegyzékfájlban. Amikor egy szolgáltatás létrejön az említett szolgáltatás ellen, a jegyzékfájlban deklarált összes kódcsomagok a rendszer a belépési pontok futtatásával aktiválja. Az amiatt végbemenő folyamatok várhatóan a támogatott szolgáltatástípusok regisztrálja a futási időben. Szolgáltatástípusok deklarált a jegyzékfájl szintjén, és nem a kód szintű csomag. Ezért ha több kódot csomag, az összes aktiválás, amikor a rendszer figyeli a nem a deklarált szolgáltatástípusok közül bármelyik.
 
-A megadott végrehajtható fájl **EntryPoint** általában a hosszan futó szolgáltatás gazdagép legyen. **SetupEntryPoint** egy jogosultsági szintű belépési pontja, amelynek ugyanazokat a hitelesítő adatokat, mint a Service Fabric (általában a *LocalSystem* fiók) más belépési pont előtt.  Egy külön telepítő belépési pont jelenléte elkerülhető, hogy rendelkezik jogosultságokkal történő futtatása az adatszolgáltatás gazdájának magas huzamosabb ideig. A megadott végrehajtható fájl **EntryPoint** futtatása **SetupEntryPoint** sikeresen kilép. Ha valaha is a folyamat leáll, vagy összeomlik, az eredményül kapott folyamat ellenőrzött és újraindítása (újra kezdve **SetupEntryPoint**).  
+A megadott végrehajtható fájl **EntryPoint** általában a hosszan futó szolgáltatásgazda van. **SetupEntryPoint** egy emelt szintű belépési pontja, amely ugyanazokat a hitelesítő adatokat, mint a Service Fabric-fut (általában a *LocalSystem* fiók) bármilyen egyéb belépési pont előtt.  Egy külön szolgáltatásbeállítás belépési pontjának jelenléte elkerülhető, hogy nem kell futtatni a szolgáltatásgazda magas szintű jogosultságokkal rendelkező huzamosabb ideig. A megadott végrehajtható fájl **EntryPoint** futtatása **SetupEntryPoint** sikeresen kilép. Ha a folyamat minden eddiginél leáll vagy összeomlik, az eredményül kapott folyamat felügyelt és újraindul (újra kezdve **SetupEntryPoint**).  
 
-A jellemző forgatókönyvek **SetupEntryPoint** Biztosan futtatni egy végrehajtható fájlt a szolgáltatás indítása előtt, vagy egy emelt szintű jogosultságokkal műveletét úgy végezheti el. Példa:
+A tipikus forgatókönyvek **SetupEntryPoint** is futtatni egy végrehajtható fájlt a szolgáltatás indítása előtt, vagy egy emelt szintű jogosultságokkal műveletet hajt végre. Példa:
 
-* Beállítását, valamint a környezeti változókat, amelyek a szolgáltatás futtatható fájlja kell inicializálása. Ez nem csak a Service Fabric programozási modell használatával írt végrehajtható korlátozódik. Például npm.exe kell néhány környezetiblokk-változót, egy node.js-alkalmazás telepítéséhez konfigurált.
-* Hozzáférés-vezérlés beállítása biztonsági tanúsítványok telepítésével.
+* Beállítását, és a környezeti változók, amelyet a szolgáltatás futtatható fájlja inicializálása. Ez nem csak a Service Fabric programozási modell használatával írt végrehajtható korlátozódik. Például npm.exe kell néhány környezeti változók konfigurált node.js-alkalmazás üzembe helyezéséhez.
+* Hozzáférés-vezérlés beállítása a biztonsági tanúsítványok telepítésével.
 
-Konfigurálásával kapcsolatos további részletekért a **SetupEntryPoint**, lásd: [egy szolgáltatás-telepítés belépési pont vonatkozó házirend konfigurálása](service-fabric-application-runas-security.md)
+A SetupEntryPoint konfigurálásáról további információkért lásd: [a házirend-szolgáltatásbeállítás belépési pontjának konfigurálása](service-fabric-application-runas-security.md)
 
-**Változók** (nincs beállítva az előző példában) a környezeti változókat, amelyek be vannak állítva a kódcsomag listáját tartalmazza. Környezeti változók felülbírálhatók a `ApplicationManifest.xml` különböző szolgáltatáspéldány különböző értékének megadására. 
+**EnvironmentVariables** (nem ismeretlenre van állítva az előző példában) környezeti változók vannak beállítva, a kód csomag listáját tartalmazza. A környezeti változók felülbírálhatók a `ApplicationManifest.xml` különböző szolgáltatáspéldányok a különböző értékek megadását. 
 
-**DataPackage** (nincs beállítva az előző példában) deklarál egy által nevű mappát a **neve** attribútum, amely tartalmazza a futási időben a folyamat által felhasznált tetszőleges statikus adatok.
+**DataPackage** (nem ismeretlenre van állítva az előző példában) deklarál egy szerint nevű mappát a **neve** futási időben a folyamat által használt tetszőleges statikus adatokat tartalmazó attribútum.
 
-**ConfigPackage** deklarál egy által nevű mappát a **neve** attribútum, amely tartalmaz egy *Settings.xml* fájlt. A fájl a felhasználó által definiált, a kulcs-érték pár beállítások a folyamat futási időben vissza olvasó részeket tartalmazza. Ha csak frissítés során a **ConfigPackage** **verzió** változott, és nem indítják újra a futó folyamattal. Ehelyett egy visszahívási értesíti, hogy a konfigurációs beállításai módosultak, így azok dinamikusan lehetett újra a folyamatot. Példa *Settings.xml* fájlt:
+**ConfigPackage** szerint nevű mappa, deklarálja a **neve** attribútum, amely tartalmaz egy *Settings.xml* fájl. A fájl a felhasználó által definiált, a kulcs-érték párt a beállításokat, amelyeket a folyamat beolvassa a futási időben vissza szakaszokat tartalmazza. Ha csak frissítés során a **ConfigPackage** **verzió** módosult, akkor a futó folyamat nem indul újra. Ehelyett egy visszahívást, amely a konfigurációs beállításai megváltoztak, így azok dinamikusan kell tölteni a folyamat értesítést küld. Íme egy példa *Settings.xml* fájlt:
 
 ```xml
 <Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -93,7 +93,7 @@ Konfigurálásával kapcsolatos további részletekért a **SetupEntryPoint**, l
 </Settings>
 ```
 
-**Erőforrások**, például a végpontok, használt a szolgáltatás kell lennie a deklarálva, illetve nem módosítható a lefordított kód módosítása nélkül.  A szolgáltatás jegyzékben megadott az erőforrásokhoz való hozzáférés szabályozható a **a(z) biztonsági csoporthoz** az alkalmazásjegyzékben.  Ha egy **végpont** erőforrás van definiálva, a szolgáltatás jegyzékben, a Service Fabric rendeli hozzá portokat a fenntartott alkalmazás porttartományát, ha a port nincs megadva explicit módon.  Tudjon meg többet az [megadásával, vagy a végpont erőforrások felülbírálása](service-fabric-service-manifest-resources.md).
+**Erőforrások**, például a végpontok, amelyekkel a szolgáltatás által deklarált vagy módosítani kell a lefordított kód módosítása nélkül.  A szolgáltatásjegyzék megadott erőforrásokhoz való hozzáférés szabályozható a **SecurityGroup** az alkalmazásjegyzékben.  Ha egy **végpont** erőforrás van definiálva a szolgáltatásjegyzékben, Service Fabric rendeli hozzá a portokat a fenntartott tartománya, ha a port nincs megadva explicit módon.  Tudjon meg többet [megadásával vagy a végpont erőforrások felülírása](service-fabric-service-manifest-resources.md).
 
 
 <!--
@@ -105,10 +105,10 @@ For more information about other features supported by service manifests, refer 
 *TODO: Configuration overrides
 -->
 
-## <a name="describe-an-application-in-applicationmanifestxml"></a>Az alkalmazás ApplicationManifest.xml leírása
-Az alkalmazás jegyzékében deklarációval ismerteti az alkalmazástípus és -verzió. Azt adja meg a szolgáltatás összeállítás metaadatai köztük, példányok száma vagy replikációs tényező, biztonsági/elkülönítési házirenddel, placement Constraints korlátozásokat, konfigurációs felülbírálások, és a bennük foglalt szolgáltatástípusok stabil nevét. A terheléselosztás tartományok, amelybe helyezkedik el az alkalmazást is ismerteti.
+## <a name="describe-an-application-in-applicationmanifestxml"></a>Egy alkalmazás az ApplicationManifest.xml leírása
+Az alkalmazásjegyzék deklaratív ismerteti az alkalmazás típusát és verzióját. Azt adja meg a szolgáltatás összeállítás metaadatokat, például stabil nevek, particionálási sémát, instance count vagy replikációs tényezőt, biztonsági vagy elkülönítési szabályzat, elhelyezési korlátozások, konfigurációs felülbírálások és alkotó szolgáltatástípusok. A terheléselosztás tartományok, ahol az alkalmazás helyezni van is ismerteti.
 
-Emiatt alkalmazásjegyzéket az alkalmazás szintjén elemeket ismerteti, és egy vagy több szolgáltatás jegyzékfájlokat alkalmazástípust írása hivatkozik. Ez az alkalmazás jegyzékfájljának a [mintaalkalmazás szavazás](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart):
+Ennélfogva alkalmazásjegyzéket az alkalmazás szintjén-elemeket ismerteti, és egy vagy több szolgáltatásjegyzékek, hogy az alkalmazástípust hivatkozik. Itt látható az alkalmazás jegyzékfájljának a [mintául szolgáló Szavazóalkalmazás](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) (és néhány [részletesebb példákat](service-fabric-manifest-examples.md)):
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -150,19 +150,19 @@ Emiatt alkalmazásjegyzéket az alkalmazás szintjén elemeket ismerteti, és eg
 </ApplicationManifest>
 ```
 
-Szolgáltatás jegyzékfájlban, például **verzió** attribútumok strukturálatlan karakterláncok, és a rendszer nem elemzi a rendszer. Attribútumok verziója is használt verziója minden egyes összetevő frissítésre.
+Szolgáltatásjegyzékek, például **verzió** attribútumok strukturálatlan karakterláncok és a rendszer nem elemzi. Verzió attribútumokat is használt verzió az egyes összetevők frissítéseket.
 
-**Paraméterek** határozza meg az alkalmazás jegyzékében során használt paraméterek. Ezek a paraméterek értékeit is megadni, ha az alkalmazás instatiated, és szeretné felülbírálni az alkalmazás vagy szolgáltatás konfigurációs beállításait.  A paraméter alapértelmezett értéke akkor használatos, ha az érték nem módosul alkalmazás történt. Különböző alkalmazás-és egyedi környezetek paramétereket, lásd: [alkalmazás paramétereinek több környezet kezelése](service-fabric-manage-multiple-environment-app-configuration.md).
+**Paraméterek** a paramétereket, az alkalmazás jegyzékfájlja során használt. Ezek a paraméterek is megadni, ha az alkalmazás példányosítása, és felül lehet bírálni, alkalmazás vagy szolgáltatás konfigurációs beállításait.  A paraméter alapértelmezett értéke akkor használatos, ha az érték nem módosul az alkalmazás történt. További információk a fenntartása a különböző alkalmazás és szolgáltatás paraméterei, az egyes környezetekhez,: [kezelése több környezethez alkalmazásparamétereket](service-fabric-manage-multiple-environment-app-configuration.md).
 
-**ServiceManifestImport** szolgáltatás jegyzékfájlokban, ez az alkalmazástípus alkotó mutató hivatkozásokat tartalmaz. Az alkalmazás jegyzékében több service manifest importálja, a egymástól függetlenül minden egyes lehetnek rendszerverzióval ellátott. Importált service jegyzékfájlokban meghatározására, hogy milyen típusú szolgáltatásokat érvényes ez az alkalmazástípus belül. A ServiceManifestImport belül bírálja felül konfigurációs ServiceManifest.xml fájlok Settings.xml és környezeti változók értékeit. **Házirendek** (nincs beállítva az előző példában) végpont kötése, a biztonsági és a hozzáférés és a csomag megosztási állítható be importált service jegyzékfájljai.  További információkért lásd: [konfigurálhat biztonsági házirendeket az alkalmazás](service-fabric-application-runas-security.md).
+**ServiceManifestImport** tento typ aplikace alkotó szolgáltatásjegyzékek mutató hivatkozásokat tartalmaz. Alkalmazásjegyzék tartalmazhat több service manifest import, egyenként is lehetnek rendszerverzióval ellátott egymástól függetlenül. Importált szolgáltatásjegyzékek határozza meg, milyen szolgáltatástípusok tento typ aplikace belül érvényesek. A ServiceManifestImport belül bírálja felül a ServiceManifest.xml fájlban Settings.xml és környezeti változók konfigurációs értékeket. **Házirendek** (az előző példában nincs beállítva) a végpont kötésének, a biztonsági és a hozzáférés és a csomag megosztási is beállíthat importált szolgáltatásjegyzékek.  További információkért lásd: [konfigurálhat biztonsági házirendeket az alkalmazás](service-fabric-application-runas-security.md).
 
-**DefaultServices** szolgáltatáspéldány, amikor egy alkalmazás létrejön az alkalmazás típusa alapján automatikusan létrehozott deklarál. Alapértelmezett szolgáltatások csupán a könnyebb elérhetőség érdekében, és minden tekintetben normál szolgáltatások viselkednek, azok létrehozását követően. Azok az alkalmazáspéldány bármely más szolgáltatásokkal együtt verzióra frissíti, és is távolíthatók el. Az alkalmazás jegyzékében több alapértelmezett szolgáltatás is tartalmazhat.
+**DefaultServices** deklarálja a szolgáltatáspéldány, amely automatikusan létrejön, amikor egy alkalmazás van példányosítva tento typ aplikace ellen. Alapértelmezett szolgáltatások csak a kényelmi célokat szolgál, és minden tekintetben normál szolgáltatások viselkednek a létrehozásuk után. Ezek az alkalmazáspéldány bármely egyéb szolgáltatásokkal együtt frissül, és is eltávolítható. Alkalmazásjegyzék alapértelmezett több szolgáltatást is tartalmazhatnak.
 
-**Tanúsítványok** (nincs beállítva az előző példában) deklarálja a tanúsítványok [beállítása HTTPS-végpontnak](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service) vagy [az alkalmazásjegyzékben szereplő titkos kulcsok titkosítására](service-fabric-application-secret-management.md).
+**Tanúsítványok** (nem ismeretlenre van állítva az előző példában) kijelenti, hogy használt tanúsítványok [beállítása HTTPS-végpontok](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service) vagy [titkosítani a titkos kulcsok az alkalmazásjegyzékben](service-fabric-application-secret-management.md).
 
-**Házirendek** (nincs beállítva az előző példában), írja le az adatgyűjtést, [futtató alapértelmezett](service-fabric-application-runas-security.md), [állapotfigyelő](service-fabric-health-introduction.md#health-policies), és [biztonsági hozzáférési](service-fabric-application-runas-security.md) házirendek beállítása a alkalmazás szintjét.
+**Házirendek** (nem ismeretlenre van állítva az előző példában) ismerteti a naplógyűjtő [alapértelmezett futtató](service-fabric-application-runas-security.md), [egészségügyi](service-fabric-health-introduction.md#health-policies), és [biztonsági hozzáférési](service-fabric-application-runas-security.md) szabályzatok beállítása a alkalmazás szintjén.
 
-**Rendszerbiztonsági tagok** (nincs beállítva az előző példában) ismertetik a rendszerbiztonsági tag (felhasználók vagy csoportok) szükséges [futtatási szolgáltatások és erőforrások biztonságos szolgáltatás](service-fabric-application-runas-security.md).  A hivatkozott rendszerbiztonsági tagok a **házirendek** szakaszok.
+**Rendszerbiztonsági tagok** (az előző példában nincs beállítva) írja le a rendszerbiztonsági tagok (felhasználók vagy csoportok) szükséges [futtatási szolgáltatások és biztonságos-szolgáltatási erőforrások](service-fabric-application-runas-security.md).  A hivatkozott rendszerbiztonsági tagok a **házirendek** szakaszokat.
 
 
 
@@ -178,12 +178,12 @@ For more information about other features supported by application manifests, re
 
 
 ## <a name="next-steps"></a>További lépések
-- [Egy alkalmazás becsomagolása](service-fabric-package-apps.md) és üzembe helyezésére teszi.
-- [Központi telepítése és távolíthat el alkalmazásokat](service-fabric-deploy-remove-applications.md).
-- [Paraméterek és a környezeti változók különböző alkalmazás-példányok konfigurálása](service-fabric-manage-multiple-environment-app-configuration.md).
+- [Alkalmazás becsomagolása](service-fabric-package-apps.md) , és győződjön meg arról, hogy üzembe.
+- [Üzembe helyezése és távolíthat el alkalmazásokat](service-fabric-deploy-remove-applications.md).
+- [Paraméterek és a különböző alkalmazáspéldányok a környezeti változók konfigurálása](service-fabric-manage-multiple-environment-app-configuration.md).
 - [Az alkalmazás biztonsági szabályzatainak konfigurálásához](service-fabric-application-runas-security.md).
-- [A telepítő HTTPS-végpontnak](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service).
-- [Az alkalmazásjegyzékben szereplő titkos kulcsok titkosítása](service-fabric-application-secret-management.md)
+- [HTTPS-végpontok beállítása](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service).
+- [Az alkalmazásjegyzékben titkok titkosítását](service-fabric-application-secret-management.md)
 
 <!--Image references-->
 [appmodel-diagram]: ./media/service-fabric-application-model/application-model.png
