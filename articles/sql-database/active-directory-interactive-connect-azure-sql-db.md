@@ -124,13 +124,13 @@ A névtér támaszkodik a C#-program **Microsoft.IdentityModel.Clients.ActiveDir
 
 C#-példában támaszkodik egy névtér van **System.Data.SqlClient**. Érdeklik az enum **SqlAuthenticationMethod**. Ez az enumerálás rendelkezik a következő értékeket:
 
-- **SqlAuthenticationMethod.ActiveDirectory * interaktív x:&nbsp; használja ezt az egy Azure AD-felhasználó nevét, a multi-factor authentication, MFA eléréséhez.
+- **SqlAuthenticationMethod.ActiveDirectory \*interaktív x**\*:&nbsp; használja ezt az egy Azure AD-felhasználó nevét, a multi-factor authentication, MFA eléréséhez.
     - Ez az érték a fókusz a jelen cikk. A felhasználó jelszavát, majd a többtényezős hitelesítés érvényesítés párbeszédpanelek megjelenítésével, ha a többtényezős hitelesítés a felhasználó a várakozásnak küld egy interaktív élmény.
     - Ezt az értéket a .NET-keretrendszer verziója 4.7.2 kezdődően elérhető.
 
-- **SqlAuthenticationMethod.ActiveDirectory * integrált x:&nbsp; használata esetén ez egy *összevont* fiókot. Összevont fiókok a felhasználó nevét ismert, hogy a Windows-tartományhoz. Ez a módszer nem támogatja a többtényezős hitelesítés.
+- **SqlAuthenticationMethod.ActiveDirectory \*integrált x**\*:&nbsp; használata esetén ez egy *összevont* fiókot. Összevont fiókok a felhasználó nevét ismert, hogy a Windows-tartományhoz. Ez a módszer nem támogatja a többtényezős hitelesítés.
 
-- **SqlAuthenticationMethod.ActiveDirectory * jelszó x:&nbsp; használja a hitelesítéshez, amely egy Azure AD-felhasználót és a felhasználó jelszót igényel. Az Azure SQL Database végrehajtja a hitelesítést. Ez a módszer nem támogatja a többtényezős hitelesítés.
+- **SqlAuthenticationMethod.ActiveDirectory \*jelszó x**\*:&nbsp; használja a hitelesítéshez, amely egy Azure AD-felhasználót és a felhasználó jelszót igényel. Az Azure SQL Database végrehajtja a hitelesítést. Ez a módszer nem támogatja a többtényezős hitelesítés.
 
 
 
