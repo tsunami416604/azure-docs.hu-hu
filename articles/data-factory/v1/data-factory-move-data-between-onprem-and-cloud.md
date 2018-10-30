@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: d695627efddc0ca02c3d9299f4b8a13bdc85e8fb
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 3094075607f096200ce1fb7ad499776bdcd3e093
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056708"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233599"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Adatok áthelyezése egy helyszíni forrásra, és a felhő között az adatkezelési átjáróval
 > [!NOTE]
@@ -65,7 +65,7 @@ Ebben a lépésben, az Azure portal használatával hozzon létre egy Azure Data
    > [!IMPORTANT]
    > Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a hibaüzenetet kapja: **nem érhető el a Data factory name "ADFTutorialOnPremDF"**, módosítsa a nevet az adat-előállító (például yournameADFTutorialOnPremDF), és próbálkozzon újra a létrehozással. Ez a név helyett ADFTutorialOnPremDF használja ez az oktatóanyag fennmaradó lépéseinek végrehajtása során.
    >
-   > A data factory neve később **DNS**-névként regisztrálható, így nyilvánosan láthatóvá válhat.
+   > Az adat-előállító nevét regisztrálható egy **DNS** nevét, a jövőben így válhat publicaly látható.
    >
    >
 4. Jelölje ki azt az **Azure-előfizetést**, ahol létre szeretné hozni a data factoryt.
@@ -304,7 +304,7 @@ Ebben a lépésben olyan bemeneti és kimeneti adatkészleteket hoz létre, amel
 ## <a name="create-pipeline"></a>Folyamat létrehozása
 Ebben a lépésben hozzon létre egy **folyamat** egy **másolási tevékenység** használó **EmpOnPremSQLTable** bemenetként, és **OutputBlobTable** , kimenet.
 
-1. A Data Factory Editorban kattintson **... Továbbiak**, majd az **Új adatcsatorna** elemre.
+1. A Data Factory Editorban kattintson **... Továbbiak**, majd az **Új adatcsatorna elemre.
 2. Cserélje le a JSON a jobb oldali panelen a következő szöveget:    
 
     ```JSON   

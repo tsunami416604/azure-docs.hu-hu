@@ -8,29 +8,29 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/23/2018
-ms.openlocfilehash: 508274d11a9693d28a9b3a01bd6ebbd7198e8711
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: b549aeaf24bd774245ee1f2ff6924ac1f6dbeee3
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586665"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427896"
 ---
-# <a name="create-and-configure-an-azure-database-for-mysql-server-using-ansible-preview"></a>Azure Database for MySQL-kiszolgáló létrehozása és konfigurálása az Ansible (előzetes verzió) használatával
-Az [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) egy felügyelt szolgáltatás, amellyel a magas rendelkezésre állású MySQL-adatbázisokat futtathatja, kezelheti és skálázhatja a felhőben. Ez a rövid útmutató bemutatja, hogyan hozhat létre nagyjából öt perc alatt egy Azure Database for MySQL-kiszolgálót az Azure Portal használatával. 
+# <a name="create-and-configure-an-azure-database-for-mysql-server-by-using-ansible-preview"></a>Azure Database for MySQL-kiszolgáló létrehozása és konfigurálása az Ansible (előzetes verzió) használatával
+Az [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) egy felügyelt szolgáltatás, amellyel magas rendelkezésre állású MySQL-adatbázisokat futtathat, kezelhet és skálázhat a felhőben. Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. 
 
-Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Ebből a cikkből megtudhatja, hogy az Ansible használatával hogyan hozhat létre öt perc alatt egy Azure Database for MySQL-kiszolgálót, majd hogyan konfigurálhatja a tűzfalszabályát. 
+Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre egy Azure Database for MySQL-kiszolgálót és konfigurálhatja annak tűzfalszabályát az Ansible használatával. Ezeket a feladatokat nagyjából öt perc alatt elvégezheti az Azure Portalon.
 
 ## <a name="prerequisites"></a>Előfeltételek
 - **Azure-előfizetés** – Ha nem rendelkezik Azure-előfizetéssel, első lépésként hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> Az oktatóanyagban szereplő következő forgatókönyvek futtatásához az Ansible 2.7-es verziója szükséges. A `sudo pip install ansible[azure]==2.7.0rc2` parancs futtatásával telepítheti az Ansible 2.7 RC verziót. Az Ansible 2.7 2018 októberében válik elérhetővé. Ezt követően nem kell megadnia a verziót, mert az alapértelmezett verzió a 2.7-es lesz.
+> Az oktatóanyagban szereplő következő forgatókönyvek futtatásához az Ansible 2.7-es verziója szükséges. A `sudo pip install ansible[azure]==2.7.0rc2` parancs futtatásával telepítheti az Ansible 2.7 RC verziót. Az Ansible 2.7 kiadását követően nem kell majd megadnia a verziót, mert az alapértelmezett verzió a 2.7-es lesz.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
-Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.  
+Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.  
 
-A következő példában létrehozunk egy **myResourceGroup** nevű erőforráscsoportot az **eastus** helyen.
+A következő példában létrehozunk egy **myResourceGroup** nevű erőforráscsoportot az **EastUS** helyen:
 
 ```yml
 - hosts: localhost
@@ -44,15 +44,15 @@ A következő példában létrehozunk egy **myResourceGroup** nevű erőforrásc
         location: "{{ location }}"
 ```
 
-Mentse a fenti forgatókönyvet *rg.yml* néven. A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
+Mentse a fenti forgatókönyvet **rg.yml** néven. A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
 ```bash
 ansible-playbook rg.yml
 ```
 
-## <a name="create-mysql-server-and-database"></a>MySQL-kiszolgáló és adatbázis létrehozása
-A következő példa egy **mysqlserveransible** nevű MySQL-kiszolgálót és egy **mysqldbansible** nevű Azure Database for MySQL-adatbázist hoz létre. Ez egy alapszintű 5. generációs kiszolgáló 1 virtuális maggal. Vegye figyelembe, hogy a **mysqlserver_name** értékének egyedinek kell lennie, valamint tekintse meg a [tarifacsomagok dokumentációjában](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers) az egyes régiónkra és csomagokra vonatkozó érvényes értékeket. 
+## <a name="create-a-mysql-server-and-database"></a>MySQL-kiszolgáló és -adatbázis létrehozása
+A következő példa egy **mysqlserveransible** nevű MySQL-kiszolgálót és egy **mysqldbansible** nevű Azure Database for MySQL-példányt hoz létre. Ez egy alapszintű 5. generációs kiszolgáló egy virtuális maggal. 
 
-Adja meg a saját `<server_admin_password>`-jelszavát:
+A **mysqlserver_name** értékének egyedinek kell lennie. A régiónként és csomagonként elérhető érvényes értékek megismeréséhez tekintse meg a [tarifacsomagok dokumentációját](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers). Cserélje le a `<server_admin_password>` értéket egy jelszóra.
 
 ```yml
 - hosts: localhost
@@ -84,15 +84,16 @@ Adja meg a saját `<server_admin_password>`-jelszavát:
         name: "{{ mysqldb_name }}"
 ```
 
-Mentse a fenti forgatókönyvet *mysql_create.yml* néven. A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
+Mentse a fenti forgatókönyvet **mysql_create.yml** néven. A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
 ```bash
 ansible-playbook mysql_create.yml
 ```
 
-## <a name="configure-firewall-rule"></a>Tűzfalszabály konfigurálása
-A kiszolgálószintű tűzfalszabályok olyan külső alkalmazások használatát teszik lehetővé, mint a **mysql** parancssori eszköz vagy a MySQL Workbench, amelyekkel kapcsolódhat a kiszolgálóhoz az Azure-beli MySQL-szolgáltatás tűzfalán keresztül. A következő példában egy olyan **externalaccess** nevű tűzfalszabályt hozunk létre, amely bármely külső IP-címről engedélyezi a csatlakozást. 
+## <a name="configure-a-firewall-rule"></a>Tűzfalszabály konfigurálása
+Egy kiszolgálószintű tűzfalszabály lehetővé teszi külső alkalmazások számára, hogy kapcsolódjanak a kiszolgálóhoz az Azure MySQL szolgáltatás tűzfalán keresztül. Ilyen külső alkalmazás például a **mysql** parancssori eszköz vagy a MySQL Workbench.
+A következő példában egy olyan **externalaccess** nevű tűzfalszabályt hozunk létre, amely bármely külső IP-címről engedélyezi a csatlakozást. 
 
-Írja be a saját **startIpAddress** és **endIpAddress** értékét a csatlakozási helyének megfelelő IP-címtartománnyal: 
+Adja meg a saját értékeit a **startIpAddress** és az **endIpAddress** paraméterhez. Használja a csatlakozási helyének megfelelő IP-címtartományt. 
 
 ```yml
 - hosts: localhost
@@ -117,27 +118,27 @@ A kiszolgálószintű tűzfalszabályok olyan külső alkalmazások használatá
 ```
 
 > [!NOTE]
-> A MySQL-hez készült Azure-adatbázis kapcsolatai a 3306-os porton keresztül kommunikálnak. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy nem engedélyezett a kimenő forgalom a 3306-as porton keresztül. Ebben az esetben addig nem tud csatlakozni a kiszolgálóhoz, amíg az informatikai részleg meg nem nyitja a 3306-os portot.
+> A MySQL-hez készült Azure-adatbázis kapcsolatai a 3306-os porton keresztül kommunikálnak. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy nem engedélyezett a kimenő forgalom a 3306-as porton keresztül. Ebben az esetben addig nem tud csatlakozni a kiszolgálóhoz, amíg az informatikai részleg meg nem nyitja az 3306-os portot.
 > 
 
-Itt az **azure_rm_resource** modullal végzi el ezt a feladatot, amely lehetővé teszi a REST API közvetlen használatát.
+Itt az **azure_rm_resource** modullal lehet elvégezni ezt a feladatot. Ez a REST API közvetlen használatát teszi lehetővé.
 
-Mentse a fenti forgatókönyvet *mysql_firewall.yml* néven. A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
+Mentse a fenti forgatókönyvet **mysql_firewall.yml** néven. A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
 ```bash
 ansible-playbook mysql_firewall.yml
 ```
 
-## <a name="connect-to-the-server-using-command-line-tool"></a>Csatlakozás a kiszolgálóhoz parancssori eszköz használatával
-A MySQL-t [innen](https://dev.mysql.com/downloads/) töltheti le és telepítheti számítógépén. Vagy kattinthat a kódmintákban található **Kipróbálom** gombra vagy az Azure Portal jobb felső eszköztárán található `>_` gombra is az **Azure Cloud Shell** megnyitásához.
+## <a name="connect-to-the-server-by-using-the-command-line-tool"></a>Csatlakozás a kiszolgálóhoz a parancssori eszközzel
+[Letöltheti a MySQL-t](https://dev.mysql.com/downloads/) és telepítheti a számítógépére. Másik lehetőségként rákattinthat a kódmintákban található **Kipróbálás** gombra vagy az Azure Portal jobb felső eszköztárában található **>_** gombra is az **Azure Cloud Shell** megnyitásához.
 
 Írja be a következő parancsokat: 
 
-1. Csatlakozás a kiszolgálóhoz a **mysql** parancssori eszköz használatával:
+1. Csatlakozás a kiszolgálóhoz a **mysql** parancssori eszközzel:
 ```azurecli-interactive
  mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
 ```
 
-2. Kiszolgáló állapotának megtekintése:
+2. A kiszolgáló állapotának megtekintése:
 ```sql
  mysql> status
 ```
@@ -185,7 +186,7 @@ Threads: 5  Questions: 559  Slow queries: 0  Opens: 96  Flush tables: 3  Open ta
 ```
 
 ## <a name="using-facts-to-query-mysql-servers"></a>Tények használata MySQL-kiszolgálók lekérdezéséhez
-A következő példa lekérdezi a **myResourceGroup** csoportban lévő MySQL-kiszolgáló(ka)t, és a kiszolgálón lévő összes adatbázist:
+A következő példa lekérdezi a **myResourceGroup** erőforráscsoportban lévő MySQL-kiszolgálókat, és a kiszolgálókon lévő összes adatbázist:
 
 ```yml
 - hosts: localhost
@@ -213,7 +214,7 @@ A következő példa lekérdezi a **myResourceGroup** csoportban lévő MySQL-ki
         var: mysqldatabasefacts
 ```
 
-Mentse a fenti forgatókönyvet *mysql_query.yml* néven. A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
+Mentse a fenti forgatókönyvet **mysql_query.yml** néven. A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
 
 ```bash
 ansible-playbook mysql_query.yml
@@ -243,7 +244,7 @@ Ezután a következő kimenet jelenik meg a MySQL-kiszolgálóhoz:
 ]
 ```
 
-És a MySQL-adatbázis következő kimenetét is láthatja:
+Emellett a következő kimenet is megjelenik a MySQL-adatbázishoz:
 ```json
 "databases": [
     {
@@ -279,7 +280,7 @@ Ezután a következő kimenet jelenik meg a MySQL-kiszolgálóhoz:
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha ezekre az erőforrásokra már nincs szüksége, az alábbi példa futtatásával törölheti őket. Ez töröl egy **myResourceGroup** nevű erőforráscsoportot. 
+Ha ezekre az erőforrásokra már nincs szüksége, a következő példa futtatásával törölheti őket. Ez töröl egy **myResourceGroup** nevű erőforráscsoportot. 
 
 ```yml
 - hosts: localhost
@@ -292,12 +293,12 @@ Ha ezekre az erőforrásokra már nincs szüksége, az alábbi példa futtatás�
         state: absent
 ```
 
-Mentse a fenti forgatókönyvet *rg_delete.yml* néven. A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
+Mentse a fenti forgatókönyvet **rg_delete.yml** néven. A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
 ```bash
 ansible-playbook rg_delete.yml
 ```
 
-Ha csak az újonnan létrehozott MySQL-kiszolgálót szeretné törölni, az alábbi példa futtatásával törölheti:
+Ha csak az egyetlen újonnan létrehozott MySQL-kiszolgálót szeretné törölni, az alábbi példát futtassa:
 
 ```yml
 - hosts: localhost
@@ -312,7 +313,7 @@ Ha csak az újonnan létrehozott MySQL-kiszolgálót szeretné törölni, az al�
         state: absent
 ```
 
-Mentse a fenti forgatókönyvet *mysql_delete.yml* néven. A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
+Mentse a fenti forgatókönyvet **mysql_delete.yml** néven. A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
 ```bash
 ansible-playbook mysql_delete.yml
 ```
