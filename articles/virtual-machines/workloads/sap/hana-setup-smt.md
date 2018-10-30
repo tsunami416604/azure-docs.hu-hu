@@ -1,6 +1,6 @@
 ---
-title: A telepítő SMT server, SAP Hana az Azure-ban (nagyméretű példányok) hogyan |} A Microsoft Docs
-description: Hogyan állíthatja be az Azure-ban (nagyméretű példányos) SAP Hana SMT kiszolgáló.
+title: Az SAP Hana az Azure-ban (nagyméretű példányok) SMT kiszolgáló beállítása |} A Microsoft Docs
+description: Hogyan állítható be SMT server, SAP Hana az Azure-ban (nagyméretű példányok).
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
@@ -14,47 +14,49 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f387c1afe88f2bba476309b2e2e01942d2b7ae5b
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: d9fe644b7cc7d1a13cb9ed2f7016f25b3e346dfb
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982625"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233174"
 ---
-# <a name="setting-up-smt-server-for-suse-linux"></a>SUSE Linux SMT kiszolgáló beállítása
-SAP HANA nagyméretű példányok nem rendelkezik közvetlen kapcsolódás az internethez. Ezért nem egy egyszerű folyamatot egy ilyen egység regisztrálása operációsrendszer-szolgáltatóval, és töltse le és -javítások alkalmazása a. Ha a SUSE Linux, egy megoldás lehet egy Azure-beli virtuális gépen SMT kiszolgáló beállítása. Mivel az Azure virtuális gép a felhőben egy Azure virtuális hálózat, amely kapcsolódik a nagyméretű HANA-példányt szeretne. Az ilyen az SMT kiszolgálóval a nagyméretű HANA-példány egység sikerült regisztrálni és létesít a javítókészletek letöltéséhez. 
+# <a name="set-up-smt-server-for-suse-linux"></a>SUSE Linux SMT kiszolgáló beállítása
+Nagy példányok, SAP HANA nincs közvetlen kapcsolódás az internethez. Nem egy ilyen egység regisztrálja az operációs rendszer szolgáltatót, és a letöltés és frissítések alkalmazása egy egyszerű folyamatot. SUSE Linux-megoldás, hogy egy Azure virtuális gépen SMT kiszolgáló beállítása. Az Azure virtuális hálózat, amely kapcsolódik a HANA nagyméretű példányok az a virtuális gép működtetéséhez. Az ilyen az SMT kiszolgálóval a nagyméretű HANA-példány egység sikerült regisztrálása és a frissítések letöltése. 
 
-SUSE Ez a témakör egy nagyobb útmutató azok [előfizetés felügyeleti eszköze SLES 12 SP2](https://www.suse.com/documentation/sles-12/pdfdoc/book_smt/book_smt.pdf). 
+A SUSE rendszeren további dokumentációjáért lásd: a [előfizetés felügyeleti eszköze SLES 12 SP2](https://www.suse.com/documentation/sles-12/pdfdoc/book_smt/book_smt.pdf). 
 
-A feladatot választják a nagyméretű HANA-példány egy SMT kiszolgáló telepítésének előfeltétele, mint kell:
+A feladatot választják HANA nagyméretű példányokhoz SMT kiszolgáló telepítésével előfeltételei a következők:
 
-- Egy Azure virtuális hálózatot, amelyhez a HANA nagyméretű példány ER-kapcsolatcsoporthoz csatlakozik.
-- SUSE-fiók, amely egy szervezet társítva van. Mivel a szervezet rendelkezik néhány érvényes SUSE-előfizetéssel kell.
+- Egy Azure virtuális hálózatra, amelyhez a HANA nagyméretű példány ExpressRoute-kapcsolatcsoporthoz csatlakozik.
+- SUSE-fiók, amely egy szervezet társítva van. A szervezet érvényes SUSE-előfizetéssel kell rendelkeznie.
 
-## <a name="installation-of-smt-server-on-azure-vm"></a>Az Azure virtuális gépen SMT server telepítése
+## <a name="install-smt-server-on-an-azure-virtual-machine"></a>SMT kiszolgáló telepítése egy Azure virtuális gépen
 
-Ebben a lépésben egy Azure-beli virtuális gépen a SMT kiszolgálót telepíti. Az első mérték a bejelentkezni a [SUSE ügyfél Center](https://scc.suse.com/).
+Első lépésként jelentkezzen be a [SUSE ügyfél Center](https://scc.suse.com/).
 
-Bejelentkezett, lépjen a szervezet a szervezeti hitelesítő adataival-->. Az adott szakaszban keresse meg a szükséges hitelesítő adatokat az SMT kiszolgáló beállításához.
+Lépjen a **szervezet** > **szervezeti hitelesítő adataival**. Az adott szakaszt keresse meg a szükséges hitelesítő adatokat az SMT kiszolgáló beállításához.
 
-A harmadik lépésben pedig a SUSE Linux virtuális gép telepítése az Azure virtuális hálózat. A virtuális gép üzembe helyezéséhez hajtsa végre a SLES 12 SP2 image z galerie Azure (válassza ki saját SUSE kép). A telepítési folyamat során nem ad meg egy DNS-nevet, és nem használ statikus IP-címek ezen a képernyőfelvételen látható módon
+Ezután telepítse a SUSE Linux virtuális gép az Azure virtuális hálózatban. A virtuális gép üzembe helyezéséhez hajtsa végre a SLES 12 SP2 image z galerie Azure (válassza ki saját SUSE kép). A telepítési folyamat során nem ad meg egy DNS-nevet, és ne használja a statikus IP-címeket.
 
-![virtuális gép üzembe helyezésének SMT kiszolgáló](./media/hana-installation/image3_vm_deployment.png)
+![Képernyőkép a virtuális gép üzembe helyezésének SMT kiszolgáló](./media/hana-installation/image3_vm_deployment.png)
 
-Az üzembe helyezett virtuális gép egy kisebb méretű virtuális gép volt, és az Azure virtuális hálózat 10.34.1.4 a belső IP-címe van. A virtuális gép nevét smtserver volt. A telepítés után a kapcsolat a HANA nagyméretű példány egység lett érvényesítve. Függ, hogyan vannak rendszerezve névfeloldás szüksége lehet a nagyméretű HANA-példány egységek megoldás konfigurálása a stb/a gazdagépeket, az Azure virtuális Gépen. Adjon hozzá egy további lemezt a virtuális gép, amelyet szeretne használni, amely tárolja a javítások. Lehet, hogy a rendszerindító lemez maga túl kicsi. A bemutatott esetben a lemez az alábbi képernyőképen látható módon /srv/www/htdocs van csatlakoztatva. Egy 100 GB-os lemezt elegendőnek kell lennie.
+A telepített virtuális gépek kisebb, és kapott a belső IP-címet 10.34.1.4 Azure virtuális hálózatban. A virtuális gép neve *smtserver*. A telepítés után a kapcsolat a HANA nagyméretű példányok egység vagy egységek be van jelölve. Attól függően, hogyan vannak rendszerezve névfeloldás szüksége lehet a nagyméretű HANA-példány egységek megoldás konfigurálása a stb/a gazdagépeket, az Azure virtuális gépen. 
 
-![virtuális gép üzembe helyezésének SMT kiszolgáló](./media/hana-installation/image4_additional_disk_on_smtserver.PNG)
+Adjon hozzá egy lemezt a virtuális géphez. Használja ezt a lemezt, amely tárolja a frissítéseket, és lehet, hogy a rendszerindító lemez maga túl kicsi. Itt a lemez van csatlakoztatva /srv/www/htdocs, az alábbi képernyőképen látható módon. Egy 100 GB-os lemezt elegendőnek kell lennie.
 
-Jelentkezzen be a nagyméretű HANA-példány egység, a Hosts fenntartására, és ellenőrizze, hogy az Azure virtuális Gépen, amely már szabadna futtatni a SMT kiszolgáló a hálózaton keresztül érhető el.
+![Képernyőkép a virtuális gép üzembe helyezésének SMT kiszolgáló](./media/hana-installation/image4_additional_disk_on_smtserver.PNG)
 
-Után ez az ellenőrzés sikeresen befejeződött, jelentkezzen be az Azure virtuális Gépen, amely az SMT kiszolgáló kell futnia kell. Jelentkezzen be a virtuális gép a putty-t használ, ha szüksége ezen parancsok sorozatát végrehajtása a bash-ablakban:
+Jelentkezzen be a nagyméretű HANA-példány egység vagy egységek, Hosts karbantartása, és ellenőrizze, hogy az Azure virtuális gépen, amely már szabadna futtatni a SMT kiszolgáló a hálózaton keresztül érhető el.
+
+Az ellenőrzés után jelentkezzen be az Azure virtuális gépen, amely az SMT kiszolgáló kell futnia. Jelentkezzen be a virtuális gép a putty-t használ, ha ez a parancssorozat futtassa a bash ablakban:
 
 ```
 cd ~
 echo "export NCURSES_NO_UTF8_ACS=1" >> .bashrc
 ```
 
-Ezek a parancsok végrehajtása után indítsa újra aktiválni a beállításokat a bash. Indítsa el YAST.
+Indítsa újra a bash aktiválása a beállításokat. Indítsa el YAST.
 
 Csatlakozzon a virtuális gép (smtserver) a SUSE-helyhez.
 
@@ -66,7 +68,7 @@ Using E-Mail: email address
 Successfully registered system.
 ```
 
-Miután a virtuális gép csatlakoztatva van a SUSE-helyhez, a smt csomagok telepítéséhez. A következő paranccsal putty az smt csomagok telepítéséhez.
+A SUSE-helyre a virtuális gép csatlakoztatása után az smt csomagok telepítéséhez. A következő paranccsal putty az smt csomagok telepítéséhez.
 
 ```
 smtserver:~ # zypper in smt
@@ -77,28 +79,28 @@ Resolving package dependencies...
 ```
 
 
-YAST eszköz használatával telepítse a smt csomagokat. A YAST lépjen a szoftverfrissítési karbantartás, és keresse meg a smt. Válassza ki az smt, amely automatikusan vált, amennyiben az yast2-smt alább látható módon
+A YAST eszközzel is a smt csomagok telepítéséhez. YAST, lépjen a **Szoftverkarbantartást**, és keresse meg a smt. Válassza ki **smt**, amely automatikusan vált, amennyiben az yast2-smt.
 
-![A yast SMT](./media/hana-installation/image5_smt_in_yast.PNG)
+![A YAST SMT képernyőképe](./media/hana-installation/image5_smt_in_yast.PNG)
 
 
-Fogadja el a kijelölést a smtserver telepíthető. A telepítést követően nyissa meg a SMT konfigurációjának, és adja meg a szervezeti hitelesítő adatokkal a korábban kapott SUSE-ügyfél központban. Az Azure virtuális gép állomásneve is adja meg az SMT kiszolgáló URL-címet. Ebben a bemutatóban volt https://smtserver jelenik meg a következő ábrák szerint.
+Fogadja el a kijelölést a smtserver telepíthető. A telepítés befejezése után nyissa meg a SMT kiszolgáló konfigurációját. Adja meg a szervezeti hitelesítő adatokkal a korábban kapott SUSE-ügyfél központban. Az Azure virtuális gép állomásneve is adja meg az SMT kiszolgáló URL-címet. Ebben a bemutatóban rendelkezik https://smtserver.
 
-![SMT kiszolgáló konfigurációja](./media/hana-installation/image6_configuration_of_smtserver1.png)
+![Képernyőkép az SMT kiszolgálókonfiguráció](./media/hana-installation/image6_configuration_of_smtserver1.png)
 
-Következő lépésként tesztelje a kapcsolatot a SUSE-ügyfél Center működik-e kell. Ahogyan az a következő ábrák a bemutató esetben látható, működött.
+Most tesztelje a kapcsolatot a SUSE-ügyfél Center működik-e. Ahogyan az alábbi képernyőképen Ez a bemutató esetben látható, működött.
 
-![Teszt SUSE ügyfél Center csatlakozni.](./media/hana-installation/image7_test_connect.png)
+![A kapcsolat tesztelése a SUSE-ügyfél központ képernyőképe](./media/hana-installation/image7_test_connect.png)
 
-Egyszer a SMT telepítő elindul, meg kell adnia jelszót. Mivel ez egy új telepítést, határozza meg, hogy a jelszó, ahogyan az a következő ábrák kell.
+Az SMT telepítő elindulása után adja meg a jelszót. Mivel a szolgáltatás új telepítést, az alábbi képernyőképen látható módon meg kell határozni, hogy a jelszó.
 
-![Adatbázis jelszavának megadása](./media/hana-installation/image8_define_db_passwd.PNG)
+![Képernyőkép a database jelszavát meghatározása](./media/hana-installation/image8_define_db_passwd.PNG)
 
-A következő kapcsolati van akkor, ha a tanúsítvány jön létre. A párbeszédpanelen látható a következő módon meg, és lépjen tovább, a lépést.
+A következő lépés, hogy hozzon létre egy tanúsítványt.
 
-![A SMT server tanúsítvány létrehozása](./media/hana-installation/image9_certificate_creation.PNG)
+![Képernyőkép a SMT Server tanúsítvány létrehozása](./media/hana-installation/image9_certificate_creation.PNG)
 
-Előfordulhat, hogy néhány percet töltött "Futtatás szinkronizálásának ellenőrzése" lépésében a konfiguráció végén. A telepítés után a SMT kiszolgáló konfigurációját, a címtár-adattárat a csatlakoztatási pont /srv/www/htdocs alatt keresse meg és ezen felül az egyes alkönyvtárak tárház alatt. 
+A konfiguráció végén is igénybe vehet néhány percet a szinkronizálási ellenőrzés futtatásához. A telepítés után a SMT kiszolgáló konfigurációját, a címtár-adattárat a csatlakoztatási pont /srv/www/htdocs alatt keresse meg és. Is találhatók a tárház egyes alkönyvtárak. 
 
 Indítsa újra az SMT kiszolgáló és a hozzá kapcsolódó szolgáltatások, az alábbi parancsokkal.
 
@@ -108,52 +110,50 @@ systemctl restart smt.service
 systemctl restart apache2
 ```
 
-## <a name="download-of-packages-onto-smt-server"></a>A csomagok SMT szerveren letöltése
+## <a name="download-packages-onto-smt-server"></a>SMT szerveren-csomagok letöltése
 
-Után minden szolgáltatás újra lesz indítva, jelölje ki a megfelelő csomagok SMT felügyelet Yast használatával. A csomag kiválasztása attól függ, a nagyméretű HANA-példányt kiszolgáló operációsrendszer-lemezkép, és ne a SLES kiadás vagy a SMT kiszolgálón futó virtuális gép verziója. Az alábbiakban látható egy példa a kiválasztására szolgáló képernyő megjelenítéséhez.
+Miután az összes szolgáltatás újra lesz indítva, jelölje ki a megfelelő csomagok SMT felügyeleti YAST használatával. A csomag kijelölése az operációs rendszer lemezképét, a nagyméretű HANA-példányt kiszolgáló függ. A csomag kijelölése nem függ a SLES kiadás vagy a SMT kiszolgálón futó virtuális gép verziója. A következő képernyőképen látható egy példa a kiválasztására szolgáló képernyő megjelenítéséhez.
 
-![Csomagok kiválasztása](./media/hana-installation/image10_select_packages.PNG)
+![Képernyőkép a csomagok kiválasztása](./media/hana-installation/image10_select_packages.PNG)
 
-Miután végzett a csomag kijelölése, akkor indítsa el a kezdeti másolatot készít az SMT kiszolgáló beállítása a select csomagok. Ezt a példányt a rendszerhéj használatával a parancs smt-tükör alább látható módon aktiválódik
+Ezután indítsa el a kezdeti másolatot készít az SMT kiszolgáló beállítása a select csomagok. Ezt a példányt a rendszerhéj akkor aktiválódik, a parancs smt tükör használatával.
 
+![Képernyőkép letöltése a csomagok SMT kiszolgálóra](./media/hana-installation/image11_download_packages.PNG)
 
-![Töltse le a csomagokat SMT kiszolgálóra](./media/hana-installation/image11_download_packages.PNG)
-
-Ahogyan fent látható, a csomagok kell másolja be azokat a címtárakat, a csatlakoztatási pont /srv/www/htdocs alatt létrejön. Ez a folyamat eltarthat egy ideig. Függő csomagok számát választja, azt is igénybe vehet egy óráig vagy tovább.
-Mivel ez a folyamat befejezését követően kell helyezze át az SMT ügyfél telepítése. 
+A csomagok kell másolja be azokat a címtárakat, a csatlakoztatási pont /srv/www/htdocs alatt létrejön. A folyamat eltarthat egy óráig vagy tovább függően a kiválasztott csomagok számát. Ez a folyamat befejezését követően helyezze át az SMT ügyfél beállítása. 
 
 ## <a name="set-up-the-smt-client-on-hana-large-instance-units"></a>A nagyméretű HANA-példány egységek az SMT ügyfél beállítása
 
-Az ügyféltől/ügyfelektől érkezők ebben az esetben a nagyméretű HANA-példány egységek. A SMT kiszolgáló telepítését a parancsfájl clientSetup4SMT.sh átmásolhatja az Azure virtuális Gépen. Parancsfájl keresztül a nagyméretű HANA-példány egység, példányt szeretne csatlakozni az SMT kiszolgálóhoz. Indítsa el a szkriptet a -h beállítással és adjon neki paraméterként az SMT kiszolgáló nevét. Az ebben a példában smtserver.
+Az ügyfél vagy ügyfelek ebben az esetben a nagyméretű HANA-példány egységek. A SMT kiszolgáló telepítését a parancsfájl clientSetup4SMT.sh átmásolhatja az Azure virtuális gépen. Parancsfájl keresztül a nagyméretű HANA-példány egység, példányt szeretne csatlakozni az SMT kiszolgálóhoz. Indítsa el a szkriptet a -h beállítással, és nevezze el a paramétert a SMT kiszolgáló. Ebben a példában a neve a következő *smtserver*.
 
-![SMT ügyfél konfigurálása](./media/hana-installation/image12_configure_client.PNG)
+![Képernyőkép az SMT ügyfél konfigurálása](./media/hana-installation/image12_configure_client.PNG)
 
-Előfordulhat, hogy egy olyan forgatókönyvet, ahol az ügyfél által a kiszolgálóról a tanúsítvány betöltése sikeres volt, de a regisztráció sikertelen volt, ahogy az alábbi.
+Lehetőség, hogy az ügyfél által a kiszolgálóról a tanúsítvány a betöltés sikeres, de a regisztráció meghiúsul, az alábbi képernyőképen látható módon.
 
-![Ügyfél regisztrálása meghiúsul](./media/hana-installation/image13_registration_failed.PNG)
+![Képernyőkép az ügyfél-regisztrációs hiba](./media/hana-installation/image13_registration_failed.PNG)
 
-Ha a regisztráció sikertelen, olvassa el ezt [SUSE támogatja a dokumentum](https://www.suse.com/de-de/support/kb/doc/?id=7006024) , és hajtsa végre az ott ismertetett lépéseket.
+Ha a regisztráció meghiúsul, tekintse meg [SUSE támogatja a dokumentum](https://www.suse.com/de-de/support/kb/doc/?id=7006024), és ott futtatása leírt lépéseket.
 
 > [!IMPORTANT] 
-> Kiszolgáló neve, meg kell adnia a virtuális gép, ez megkülönbözteti a kis smtserver, anélkül, hogy a teljes tartománynév a nevét. Csak a virtuális gép neve működését. 
+> A kiszolgáló neveként adja meg a virtuális gép nevét (ebben az esetben *smtserver*), anélkül, hogy a teljesen minősített tartománynevét. 
 
-Után a lépések végrehajtása megtörtént, hajtsa végre a következő parancsot a nagyméretű HANA-példány egységen kell
+Miután ezeket a lépéseket, futtassa a következő parancsot a nagyméretű HANA-példány egység:
 
 ```
 SUSEConnect –cleanup
 ```
 
 > [!Note] 
-> A vizsgálatok során mindig becsületessége Várjon pár percet után ezt a lépést. Az azonnali végrehajtás clientSetup4SMT.sh után a korrekciós intézkedéseket, a SUSE-cikkben leírt fejeződött be, hogy a tanúsítvány nem lenne érvényes még üzeneteket. Általában 5 – 10 percet várakozik, és clientSetup4SMT.sh végrehajtása befejeződött, a sikeres ügyfél-konfigurációval.
+> Várjon néhány percet után ezt a lépést. Ha clientSetup4SMT.sh azonnal futtatja, előfordulhat, hogy hibaüzenetet kap.
 
-Ha a probléma akkor szükséges, javítsa ki a lépéseket, a SUSE-cikk alapján történő futtatta, indítsa újra a nagyméretű HANA-példány egységen clientSetup4SMT.sh újra szeretne. Most azt sikeresen be kell alább látható módon.
+Ha szeretné javítani a lépéseket, a SUSE-cikk alapján problémát tapasztal, indítsa újra a nagyméretű HANA-példány egységen clientSetup4SMT.sh. Most, hogy sikeresen befejeződik.
 
-![Sikeres ügyfél-regisztrációk](./media/hana-installation/image14_finish_client_config.PNG)
+![Képernyőkép a regisztráció sikeres ügyfélművelet](./media/hana-installation/image14_finish_client_config.PNG)
 
-Az ebben a lépésben a nagyméretű HANA-példány egység való csatlakozáshoz a SMT kiszolgálón telepítette, az Azure-beli virtuális gépen az SMT ügyfél konfigurálva. Most már elvégezhető "mentése a zypper használatával" vagy "a zypper használatával" az operációs rendszer telepíthetnek nagyméretű HANA-példányokhoz, vagy további csomagokat telepíteni. Egyetértés, hogy csak kap, amely a SMT kiszolgálón előzőleg letöltött javítások.
+Konfigurálta az SMT ügyfél, a nagyméretű HANA-példány egység telepítette az Azure-beli virtuális gépen az SMT-kiszolgálóhoz való csatlakozáshoz. Most már veheti "mentése a zypper használatával" vagy "a zypper használatával" HANA nagyméretű példányok az operációs rendszer frissítéseinek telepítése, illetve további csomagokat telepíteni. Csak a SMT kiszolgálón előzőleg letöltött frissítések kérheti le.
 
-**Következő lépések**
-- Tekintse meg [HLI HANA-telepítés](hana-example-installation.md).
+## <a name="next-steps"></a>További lépések
+- [HANA-telepítés HLI](hana-example-installation.md).
 
 
 

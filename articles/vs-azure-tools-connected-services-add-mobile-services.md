@@ -15,12 +15,12 @@ ms.workload: mobile
 ms.custom: vs-azure
 ms.date: 12/16/2015
 ms.author: mlearned
-ms.openlocfilehash: 6cceb760ab62ea4f7225c9cc0cee7a6baf8ed8be
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: a1b2524b059601e1f6f999af7a9d9e063f7c0420
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442211"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233446"
 ---
 # <a name="adding-mobile-services-by-using-visual-studio-connected-services"></a>Mobilszolgáltatások hozzáadása a Visual Studio csatlakoztatott szolgáltatásain használatával
 A Visual Studio 2015, Azure Mobile Services használatával csatlakozhat a **csatlakoztatott szolgáltatás hozzáadása** párbeszédpanel. Minden olyan C# ügyfélalkalmazás, bármely JavaScript-alkalmazást vagy a platformfüggetlen Cordova-alkalmazáshoz csatlakozhat. Miután csatlakoztatta, létrehozása és adatok eléréséhez, hozzon létre egyéni API-k és az ütemezett feladatok, vagy adja hozzá a leküldéses értesítések támogatását.  A csatlakoztatott szolgáltatások művelet hozzáadja a megfelelő hivatkozások és a kapcsolat kódot. Emellett igénybe veheti a beépített támogatást nyújt a különböző népszerű identitáskezelési rendszerek, például az Azure AD-hitelesítés a Facebook, Twitter és a Microsoft Accounts.
@@ -68,7 +68,7 @@ A csatlakoztatott szolgáltatás párbeszédpanel segítségével csatlakozhat a
 6. A Kódminták segítségképp indítsa el a kódot, amely a mobilszolgáltatás írása!
 
 ## <a name="how-your-project-is-modified"></a>Hogyan módosul a projekthez
-Hogyan módosítja a Visual Studio a projektjéhez attól függ, hogy a projekt típusa. C# ügyfélalkalmazások, lásd: [Mi történt – C# projekty](http://go.microsoft.com/fwlink/p/?LinkId=513119). JavaScript-ügyfélalkalmazások, lásd: [Mi történt – JavaScript-projektek](http://go.microsoft.com/fwlink/p/?LinkId=513120). A Cordova-alkalmazások esetén lásd: [Mi történt – a Cordova-projekt](http://go.microsoft.com/fwlink/p/?LinkId=513116).
+Hogyan módosítja a Visual Studio a projektjéhez attól függ, hogy a projekt típusa. A C# ügyfélalkalmazások, lásd: [Mi történt – C# projektek](http://go.microsoft.com/fwlink/p/?LinkId=513119). JavaScript-ügyfélalkalmazások, lásd: [Mi történt – JavaScript-projektek](http://go.microsoft.com/fwlink/p/?LinkId=513120). A Cordova-alkalmazások esetén lásd: [Mi történt – a Cordova-projekt](http://go.microsoft.com/fwlink/p/?LinkId=513116).
 
 ## <a name="next-steps"></a>További lépések
 Tegyen fel kérdéseket, és kérjen segítséget: 

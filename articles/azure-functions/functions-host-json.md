@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 704a41ec840e2a252a1bbb5c20688f722bd0cdfd
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 7a049a1fb57d65824fa2c44b40d3d51083459973
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887036"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232246"
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>az Azure Functions – Host.JSON referencia
 
@@ -195,7 +195,7 @@ Megadja, hogy hány függvény meghívásához összesített mikor [kiszámítá
 
 ## <a name="applicationinsights"></a>applicationInsights
 
-Szabályozza a [mintavételezés funkció az Application Insights](functions-monitoring.md#configure-sampling). A verzió 2.x, ez a beállítás nem gyermeke [naplózás](#log).
+Szabályozza a [mintavételezés funkció az Application Insights](functions-monitoring.md#configure-sampling). A verzió 2.x, ez a beállítás nem gyermeke [naplózás](#logging).
 
 ```json
 {

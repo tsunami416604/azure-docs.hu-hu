@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 5/21/2018
+ms.date: 10/29/2018
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: ee8057be98d18db5963a3e5f1ba1f8bd8d76fe05
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: c08557156848d4e7fcf0b1adbe6c8faa4ee00c82
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242517"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231372"
 ---
 # <a name="hyperledger-fabric-single-member-network"></a>Hyperledger Fabric egyetlen tag hálózati
 
@@ -28,15 +28,15 @@ A cikk elolvasása után:
 
 ## <a name="about-blockchain"></a>Információ a blockchainről
 
-Ha most ismerkedik a blockchain-Közösséggel, ez a nagyszerű lehetőséget biztosít a technológia megismerheti az Azure-ban könnyen és konfigurálható módon. Blockchain az alapul szolgáló technológiát Bitcoin; mögött azonban sokkal több, mint egy virtuális pénznem programkódként. Olyan meglévő adatbázis, az elosztott rendszer és a titkosítási technológiák összetett, amely lehetővé teszi a biztonságos több résztvevős számítási garanciákkal módosíthatatlansági, verifiability, auditability és rugalmasság, a támadásokkal szemben. A különböző protokollok szoftverbiztonsági használható különböző mechanizmusokat biztosít, ezek az attribútumok. [Hyperledger Fabric](https://github.com/hyperledger/fabric) egyik protokoll.
+Ha most ismerkedik a blockchain-Közösséggel, ez a megoldássablon egy nagyszerű lehetőséget biztosít a technológia megismerheti az Azure-ban könnyen és konfigurálható módon. Blockchain az alapul szolgáló technológiát Bitcoin; mögött azonban sokkal több, mint egy virtuális pénznem programkódként. Olyan meglévő adatbázis, az elosztott rendszer és a titkosítási technológiák összetett, amely lehetővé teszi a biztonságos több résztvevős számítási garanciákkal módosíthatatlansági, verifiability, auditability és rugalmasság, a támadásokkal szemben. A különböző protokollok szoftverbiztonsági használható különböző mechanizmusokat biztosít, ezek az attribútumok. [Hyperledger Fabric](https://github.com/hyperledger/fabric) egyik protokoll.
 
 ## <a name="consortium-architecture-on-azure"></a>Az Azure Consortium architektúra
 
 Ez a sablon üzembe helyez egy topológia segítségével tesztelheti, és szimulálhatja a felhasználók számára egy éles szervezet (egyetlen tag). A központi telepítés magában foglalja, egyetlen régióban, hamarosan több régióban ki kell bővíteni, több csomópontos hálózat.
 
-A hálózati csomópont három típusú áll:
+A hálózati csomópont három típusú tevődik össze:
 
-1. **Tag csomópont**: a háló tagsági szolgáltatást, amely regisztrálja és kezeli a hálózat tagjai futtató csomópont. Ez a csomópont végül csoportosíthatók a méretezhetőség és a magas rendelkezésre állás érdekében, azonban a laborban egyetlen tag csomópont használható.
+1. **Tag csomópont**: a háló tagsági szolgáltatást, amely regisztrálja és kezeli a hálózat tagjai futtató csomópont. Ez a csomópont lehet, hogy fürtözött, a méretezhetőség és a magas rendelkezésre állású; Azonban a laborban egyetlen tag csomópont fogja használni.
 2. **Megrendelő csomópontok**: egy kézbesítési garanciával, például a teljes végrehajtási kommunikációs szolgáltatást futtató csomópont order szórási vagy elemi tranzakciókat.
 3. **Csomópontok társviszonyt**: egy csomópont, amely véglegesíti a tranzakciókat, és fenntartja az állapot és a egy példányát az elosztott Főkönyv.
 
@@ -57,13 +57,13 @@ Ha már rendelkezik előfizetéssel, nyissa meg a [az Azure portal](https://port
 
 ## <a name="deployment"></a>Környezet
 
-Válassza a **Hyperledger Fabric egyetlen tag Blockchain** kattintson **létrehozás**. Ekkor megnyílik a **alapjai** panelen a varázslóban.
+Jelölje a **Hyperledger Fabric egyetlen tag Blockchain** kattintson **létrehozás** megnyitásához a **alapjai** panelen a varázslóban.
 
 A sablon üzembe helyezéséhez végigvezeti a több csomópontos hálózati konfigurálása. Az üzembe helyezési folyamat három lépésben oszlik: alapjait a hálózati konfiguráció vagy a háló konfigurációja.
 
 ### <a name="basics"></a>Alapvető beállítások
 
-Alatt a **alapjai** panelen adja meg a környezethez, például az előfizetés, erőforráscsoport és az alapszintű virtuális gép tulajdonságainak standard paraméterek értékeit.
+Az a **alapjai** panelen adja meg minden olyan központi telepítés standard paraméterek értékeit. Például előfizetés, erőforráscsoport és az alapszintű virtuális gép tulajdonságait.
 
 ![Alapvető beállítások](./media/hyperledger-fabric-single-member-blockchain/basics.png)
 
@@ -72,7 +72,7 @@ Paraméter neve| Leírás| Megengedett értékek|Alapértelmezett érték
 **Erőforrás-előtag**| A telepített erőforrások elnevezési alapként használt karakterlánc.|6 karakter vagy kevesebb|NA
 **Virtuális gép felhasználóneve**| Azon felhasználó felhasználónevét, a rendszergazda minden ehhez a taghoz telepített virtuális gépekhez.|1 – 64 karakter|azureuser
 **Hitelesítés típusa**| A módszert a virtuális géphez.|Jelszó vagy SSH nyilvános kulcs|Jelszó
-**Jelszó (hitelesítési típus = jelszó)**|Az egyes üzembe helyezett virtuális gépek a rendszergazdai fiók jelszava. A jelszónak tartalmaznia kell a következő 3: 1 nagybetűt, 1 kisbetűt, 1 szám és 1 különleges karakter.<br /><br />Minden virtuális gép kezdetben van ugyanazt a jelszót, üzembe helyezés után módosíthatja a jelszót.|12 – 72 karakter|NA
+**Jelszó (hitelesítési típus = jelszó)**|Az egyes üzembe helyezett virtuális gépek a rendszergazdai fiók jelszava. A jelszónak tartalmaznia kell hármat a következő karaktertípusból: 1 nagybetűt, 1 kisbetűt, 1 szám és 1 különleges karakter.<br /><br />Minden virtuális gép kezdetben van ugyanazt a jelszót, üzembe helyezés után módosíthatja a jelszót.|12 – 72 karakter|NA
 **SSH-kulcs (hitelesítési típus = a nyilvános kulcs)**|A secure shell-kulcsot a távoli bejelentkezéshez használt.||NA
 **IP-cím alapján korlátozzák a hozzáférést**|A beállítás típusa határozza meg, hogy ügyfél végponti hozzáférés korlátozott-e vagy sem.|Igen/nem| Nem
 **Engedélyezett IP-cím vagy alhálózat (IP-cím alapján korlátozzák a hozzáférést = Yes)**|Az IP-cím vagy IP-címek készletét, amely az ügyfél végponti hozzáférhet, ha engedélyezve van a hozzáférés-vezérlés.||NA
@@ -82,7 +82,7 @@ Paraméter neve| Leírás| Megengedett értékek|Alapértelmezett érték
 
 ### <a name="network-size-and-performance"></a>A hálózat méretétől és a teljesítmény
 
-A következő **méretének és teljesítményének, hálózati** bemenetek méretét, a consortium hálózathoz, például a tagság megrendelő és társ csomópontok számát adja meg. Válassza ki az infrastruktúra-beállításokat és a virtuális gép méretét.
+Ezután **méretének és teljesítményének, hálózati** méretét, a consortium network bemenetek megadása. Például, a tagsági megrendelő és társ csomópontok száma. Válassza ki az infrastruktúra-beállításokat és a virtuális gép méretét.
 
 ![A hálózat méretétől és a teljesítmény](./media/hyperledger-fabric-single-member-blockchain/network-size-performance.png)
 
@@ -94,7 +94,7 @@ Paraméter neve| Leírás| Megengedett értékek|Alapértelmezett érték
 **Tároló-teljesítményre**|A tárolás, a üzembe helyezett csomópontok biztonsági típusát. További storage-ról, látogasson el [a Microsoft Azure Storage bemutatása](https://docs.microsoft.com/azure/storage/common/storage-introduction) és [prémium szintű Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage).|Standard vagy prémium szintű|Standard
 **Virtuális gép mérete** |A hálózaton lévő összes csomópont használt virtuálisgép-méret|Standard szintű, és<br />Standard D<br />Standard D v2<br />Standard F sorozat<br />Standard DS-ben<br />és a Standard FS|Standard D1_v2
 
-### <a name="fabric-specific-settings"></a>Adott hálóbeállítások
+### <a name="fabric-specific-settings"></a>Fabric-specifikus beállításokat
 
 Végül **Hálóbeállítások**, adja meg a háló kapcsolatos konfigurációját.
 
@@ -129,13 +129,13 @@ A kimeneti paraméter elérésére, először kattintson az a **központi telep�
 
 Az üzembe helyezési előzmények kattintson a listában, és tekintse meg a részleteket az első üzembe helyezés.
 
-![Üzembe helyezés részleteit](./media/hyperledger-fabric-single-member-blockchain/deployment-details.png)
+![Telepítés részletei](./media/hyperledger-fabric-single-member-blockchain/deployment-details.png)
 
 A részletek képernyőn megjelenik a központi telepítés három hasznos kimeneti paramétert kiegészítve összefoglalása:
 
 - A _API-VÉGPONT_ is használható, ha telepít egy alkalmazást a hálózaton.
 - A _ELŐTAG_ , más néven is néven _üzembe helyezési előtag_ , egyedi módon azonosítja az erőforrások és a központi telepítés. Ha a parancssori eszközök használatával lesz használható.
-- A _SSH-FIRST--VM_ , előre összeállított ssh parancs a megfelelő paraméterekkel nyújt az első virtuális gép a hálózat eléréséhez szükséges; esetén Hyperledger Fabric, a Fabric-CA csomópontra lesz.
+- A _SSH-FIRST--VM_ biztosít, előre összeállított ssh parancs a megfelelő paraméterekkel a hálózaton; az első virtuális Géphez való csatlakozáshoz szükséges Hyperledger fabric a Fabric-CA csomópontra lesz.
 
 Távolról csatlakozhat a virtuális gépek SSH-n keresztül minden egyes csomópont esetében a megadott rendszergazdai felhasználónév és jelszó vagy SSH-kulccsal. Mivel a csomópont virtuális gépek nem rendelkeznek saját nyilvános IP-címek, szüksége lesz a terheléselosztón keresztül, és adja meg a portszámot. Az első tranzakció csomópontjának eléréséhez az SSH-parancs a harmadik a sablon kimeneti ** SSH-FIRST--VM (az üzembe helyezési minta: `sh -p 3000 azureuser@hlf2racpt.northeurope.cloudapp.azure.com`). További tranzakciós csomópontok lekéréséhez egyesével a portszám (például az első tranzakció csomópont van a porton 3000, a második 3001, a harmadik pedig a 3002, stb.).
 

@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, LADocs
 ms.topic: article
 ms.date: 08/25/2018
-ms.openlocfilehash: 41dd8ad721329c4c4d2761c9e4a37c640251dac3
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 0c30ffec58b1542fa80cf0c9873a0e6df8641104
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125278"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232545"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Csatlakozhat a helyszíni fájlrendszereket az Azure Logic Apps
 
@@ -99,7 +99,7 @@ További technikai részletek korlátok, eseményindítók és műveletek, amely
 
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 
-* Szeretné segíteni az Azure Logic Apps és összekötők fejlesztését, szavazzon vagy küldje el javaslatait a [Azure Logic Apps felhasználói visszajelzési webhelyen](http://aka.ms/logicapps-wish).
+* Szeretné segíteni az Azure Logic Apps és összekötők fejlesztését, szavazzon vagy küldje el javaslatait a [Azure Logic Apps felhasználói visszajelzési webhelyen](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
-ms.openlocfilehash: ae6f7646192b7bee8cbd836f1eff3814c26a6b46
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: ed35380e66e6d5d59058552d8e0504220c100b73
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427329"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231389"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Az Azure Active Directory-hitelesítés engedélyezése az SMB-n keresztül az Azure Files (előzetes verzió)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -88,7 +88,11 @@ Az alábbi képen látható az Azure AD-hitelesítés engedélyezése az SMB-n k
   
 ### <a name="powershell"></a>PowerShell  
 
-Az Azure AD-hitelesítés engedélyezése az Azure PowerShell SMB-n keresztül, először telepítse a `AzureRM.Storage 6.0.0-preview` modul. PowerShell telepítésével kapcsolatos információkért lásd: [Azure PowerShell telepítése a Windows a Powershellgettel](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+Az Azure AD-hitelesítés engedélyezése az Azure PowerShell SMB-n keresztül, először telepítse a `AzureRM.Storage` modul, a verzió `6.0.0-preview`, az alábbiak szerint. PowerShell telepítésével kapcsolatos további információkért lásd: [Azure PowerShell telepítése a Windows a Powershellgettel](https://docs.microsoft.com/powershell/azure/install-azurerm-ps):
+
+```powershell
+Install-Module -Name AzureRM.Storage -RequiredVersion 6.0.0-preview -AllowPrerelease
+```
 
 Következő lépésként hozzon létre egy új tárfiókot fiókra, majd hívjon [Set-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/set-azurermstorageaccount) és állítsa be a **EnableAzureFilesAadIntegrationForSMB** paramétert **igaz**. Az alábbi példában a vágólapra a helyőrző értékeket cserélje le a saját értékeire.
 

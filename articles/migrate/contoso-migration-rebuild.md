@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6c68d90605590ed8a17296e83276c7ef5396d6a2
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 48b4878eef7395b51d19c59443736bae5aeb7365
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092975"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233582"
 ---
 # <a name="contoso-migration-rebuild-an-on-premises-app-to-azure"></a>Contoso áttelepítése: az Azure-bA a helyszíni alkalmazás újraépítése
 
@@ -116,7 +116,7 @@ Contoso kiértékeli a javasolt tervezési által bármik lehetnek, és hátrán
 --- | --- | ---
 [AZ AKS](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Leegyszerűsíti a Kubernetes felügyeleti, üzembe helyezési és műveleteket. Egy teljes körűen felügyelt Kubernetes tárolószervező szolgáltatást biztosít.  | Az AKS szolgáltatás ingyenes.  Csak a virtuális gépeket, és a hozzájuk kapcsolódó tárterületért és a felhasznált hálózati erőforrásokért kell fizetnie. [További információk](https://azure.microsoft.com/pricing/details/kubernetes-service/).
 [Azure Functions](https://azure.microsoft.com/services/functions/) | Gyorsítja egy eseményvezérelt, kiszolgáló nélküli számítási környezettel történő fejlesztést. Igény szerint skálázhatja.  | Fizetés csak a felhasznált erőforrásokat. Csomag / másodperc erőforrás-használat és a végrehajtás alapján számítjuk fel. [További információk](https://azure.microsoft.com/pricing/details/functions/).
-[Az Azure Container Registrybe](https://azure.microsoft.com/services/container-registry/) | Tárolja a lemezképeket a tárolópéldányok összes típusára vonatkozóan. | A Funkciók, a storage és a használati időtartama alapján költsége. [További információk](https://azure.microsoft.com/pricing/details/container-registry/).
+[Azure Container Registry](https://azure.microsoft.com/services/container-registry/) | Tárolja a lemezképeket a tárolópéldányok összes típusára vonatkozóan. | A Funkciók, a storage és a használati időtartama alapján költsége. [További információk](https://azure.microsoft.com/pricing/details/container-registry/).
 [Azure App Service](https://azure.microsoft.com/services/app-service/containers/) | Gyorsan létrehozhat, üzembe helyezhet és méretezhet nagyvállalati szintű webes, mobil- és API-alkalmazásokat, amelyek bármilyen platformon képesek futni. | Az App Service-csomagok díjszabása másodpercalapú. [További információk](https://azure.microsoft.com/pricing/details/app-service/windows/).
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -139,7 +139,7 @@ Itt látható, hogyan Contoso fog futni az áttelepítési:
 > * **1. lépés: Üzembe AKS és ACR**: Contoso látja el a felügyelt AKS-fürt és a PowerShell-lel az Azure container registrybe
 > * **2. lépés: A Docker-tárolók létrehozása**: folyamatos Integráció beállítása az Azure DevOps segítségével Docker-tárolókat, és azok leküldése az ACR-REL.
 > * **3. lépés: A háttér-mikroszolgáltatások üzembe helyezéséhez**: azokat a többi fog javítható a háttér-mikroszolgáltatás-alapú infrastruktúra üzembe.
-> * **4. lépés: Előtér-infrastruktúra üzembe helyezése**: azok az előtér-infrastruktúra, állatokért blob storage a kisállat-telefonokon, a Cosmos DB és a Vision API üzembe helyezése.
+> * **4. lépés: Előtér-infrastruktúra üzembe helyezése**: azokat az előtér-infrastruktúrát, beleértve a blob storage a kisállat-telefonokon, a Cosmos DB és a Vision API-telepítése.
 > * **5. lépés: A háttér áttelepítése**: mikroszolgáltatások üzembe helyezéséhez, és a futtatása az aks-en, a háttéralkalmazás áttelepíteni.
 > * **6. lépés: Közzététel a kezelőfelület**: azok a SmartHotel360 alkalmazás közzététele az Azure App Service-ben, és a Függvényalkalmazást, amely a kisállat szolgáltatás fogja meghívni.
 
@@ -545,7 +545,7 @@ Contoso-rendszergazdák mostantól teheti közzé a webhelyén.
 
     ![Új környezet](./media/contoso-migration-rebuild/vsts-publishfront8.png)
 
-14. Kiválasztják **Azure App Service üzembe helyezési tárolóhellyel**, és nevezze el a ellenőrzésével **éles**.
+14. Kiválasztják **Azure App Service üzembe helyezési tárolóhellyel**, és nevezze el a környezet **éles**.
 15. Kattintanak a **1 feladat, 2 feladatok**, és válassza ki az előfizetés, az app service-neve, és a **átmeneti** tárolóhely.
 
     ![Környezet neve](./media/contoso-migration-rebuild/vsts-publishfront10.png)

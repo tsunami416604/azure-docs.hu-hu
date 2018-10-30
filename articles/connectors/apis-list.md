@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: 6b31882ec3916e60ac7dc7b8117328176abef1b4
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 3230692208d27ebac073e257266c885b5e03095c
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818534"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233633"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Az Azure Logic Apps összekötői
 
@@ -158,7 +158,7 @@ Ahhoz, hogy egyéni API-alkalmazások és összekötők bárki használhatja az 
 
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 
-* Küldje el, vagy szavazzon ötleteit az Azure Logic Apps és összekötők, látogasson el a [Logic Apps felhasználói visszajelzések oldalon](http://aka.ms/logicapps-wish).
+* Küldje el, vagy szavazzon ötleteit az Azure Logic Apps és összekötők, látogasson el a [Logic Apps felhasználói visszajelzések oldalon](https://aka.ms/logicapps-wish).
 
 * Azok a docs-cikkek vagy részleteit úgy gondolja, hogy hiányzó fontosak? Ha igen, adja hozzá a létező cikkek vagy, ha a saját segíthet. A dokumentáció nyílt forráskódú és elérhető a Githubon. Első lépések az Azure-dokumentáció [GitHub-adattár](https://github.com/Microsoft/azure-docs). 
 

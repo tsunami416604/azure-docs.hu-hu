@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2018
+ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: fbb51d8dc3b1ea4c6b34120e8fe35474ae949cf2
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 7071e22d703ab7ec3a51eff02d1694fc04cb3417
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116912"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231236"
 ---
 # <a name="troubleshoot-your-deployment-to-kubernetes-to-azure-stack"></a>A Kubernetes az Azure Stack üzembe helyezés hibaelhárítása
 
@@ -28,7 +28,7 @@ ms.locfileid: "49116912"
 > [!Note]  
 > Az Azure Stacken Kubernetes szolgáltatás előzetes verzióban.
 
-A következő cikket úgy tűnik, a Kubernetes-fürt hibaelhárítása. Tekintse át a központi telepítési riasztás, és a telepítéshez szükséges elemek által a központi telepítés állapotának áttekintése. Szükség lehet a telepítési naplók gyűjtését az Azure Stack vagy a Linux rendszerű virtuális gépek, amelyeken Kubernetes. Ezenkívül szükség lehet felügyeleti végpont naplók lekérése az Azure Stack rendszergazdával együttműködve.
+A következő cikket úgy tűnik, a Kubernetes-fürt hibaelhárítása. Tekintse át a központi telepítési riasztás, és tekintse át a központi telepítés állapotát a telepítéshez szükséges elemek megtekintésével. Szükség lehet a telepítési naplók gyűjtését az Azure Stack vagy a Linux rendszerű virtuális gépek, amelyeken Kubernetes. Ezenkívül szükség lehet felügyeleti végpont naplók lekérése az Azure Stack rendszergazdával együttműködve.
 
 ## <a name="overview-of-deployment"></a>Üzembe helyezés áttekintése
 
@@ -47,7 +47,7 @@ Az alábbi ábrán látható, az általános folyamat a fürt üzembe helyezés�
     Adja meg az értékeket, be kell állítania a Kubernetes fürt többek között:
     -  **Felhasználónév** a Linux rendszerű virtuális gépek, a Kubernetes-fürt részét képező és a DVM felhasználónevet.
     -  **Nyilvános SSH-kulcs** engedély az összes Linux a Kubernetes-fürt és a DVM részeként létrehozott használt kulcs
-    -  **Egyszerű szolgáltatás** az azonosító a Kubernetes Azure-felhő szolgáltató által használt. Az ügyfél-azonosító az Alkalmazásazonosítót azonosította az eseményt az egyszerű szolgáltatás létrehozásakor. 
+    -  **Egyszerű szolgáltatás** az azonosító a Kubernetes Azure-felhő szolgáltató által használt. Az ügyfél-azonosító azonosított az Alkalmazásazonosítót, ha a szolgáltatás egyszerű jönnek. 
     -  **Titkos Ügyfélkód** azok fő létrehozott egyszerű szolgáltatás létrehozásakor.
 
 2. Üzembe helyezés virtuális Gépet hoz létre és az egyéni szkriptek futtatására szolgáló bővítmény.

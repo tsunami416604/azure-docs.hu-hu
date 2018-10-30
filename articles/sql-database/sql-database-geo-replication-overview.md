@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: 9332bcb5849deacde13d67e4a18ea19af8af2977
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 10/29/2018
+ms.openlocfilehash: 3495a923683d78446e61ff0545c7d86023c14bc0
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471475"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233854"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Áttekintés: Aktív georeplikációs és automatikus feladatátvételi csoportok
 
@@ -281,18 +281,18 @@ Ahogy korábban tárgyalt, automatikus feladatátvételi csoportok és az aktív
 | --- | --- |
 | [Hozzon létre vagy az adatbázis frissítése (createMode visszaállítási =)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Hoz létre, frissít, vagy visszaállítja az elsődleges vagy másodlagos adatbázis. |
 | [Get létrehozása, vagy az adatbázis állapotának frissítése](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |A létrehozási művelet során állapotának visszaadása. |
-| [Másodlagos adatbázist beállítani az elsődleges (tervezett feladatátvétel)](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_failover) |Beállítja, mely az adatbázis-replikát elsődleges által az aktuális elsődleges replika adatbázis feladatátvételét. |
-| [Másodlagos adatbázist beállítani az elsődleges (nem tervezett feladatátvétel)](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_failoverallowdataloss) |Beállítja, mely az adatbázis-replikát elsődleges által az aktuális elsődleges replika adatbázis feladatátvételét. Ez a művelet adatvesztést okozhat. |
-| [Replikációs hivatkozás beszerzése](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_get) |Lekéri egy adott replikációs hivatkozás egy adott SQL-adatbázis georeplikációs partnerséget. Lekéri az adatokat a sys.geo_replication_links katalógusnézet látható. |
-| [Replikációs hivatkozások - lista-adatbázis](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_listbydatabase) | Minden replikációs hivatkozásnak lekéri egy adott SQL-adatbázis georeplikációs partnerséget. Lekéri az adatokat a sys.geo_replication_links katalógusnézet látható. |
-| [Replikációs hivatkozás törlése](https://docs.microsoft.com/rest/api/sql/replicationlinks/replicationlinks_delete) | Egy adatbázis-replikációs hivatkozás törlése. Nem hajtható végre feladatátvétel során. |
-| [Hozzon létre vagy feladatátvételi csoport frissítése](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_createorupdate) | Létrehoz vagy frissít egy feladatátvételi csoportot |
-| [Feladatátvételi csoport törlése](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_delete) | A feladatátvételi csoport eltávolítása a kiszolgálóról |
-| [Feladatátvétel (tervezett)](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_failover) | Átadja a feladatokat az aktuális elsődleges kiszolgálóról a kiszolgálóhoz. |
-| [Kényszerített feladatátvétel adatvesztés engedélyezése](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_forcefailoverallowdataloss) |ails keresztül az aktuális elsődleges kiszolgálóról a kiszolgálóhoz. Ez a művelet adatvesztést okozhat. |
-| [Feladatátvételi csoport lekérése](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_get) | A feladatátvételi csoport lekérése. |
-| [Kiszolgáló feladatátvételi csoportok listázása](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_listbyserver) | A kiszolgálón a feladatátvételi csoportok listája. |
-| [Feladatátvételi csoport](https://docs.microsoft.com/rest/api/sql/failovergroups/failovergroups_update) | Frissíti egy feladatátvételi csoportot. |
+| [Másodlagos adatbázist beállítani az elsődleges (tervezett feladatátvétel)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failover) |Beállítja, mely az adatbázis-replikát elsődleges által az aktuális elsődleges replika adatbázis feladatátvételét. |
+| [Másodlagos adatbázist beállítani az elsődleges (nem tervezett feladatátvétel)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failoverallowdataloss) |Beállítja, mely az adatbázis-replikát elsődleges által az aktuális elsődleges replika adatbázis feladatátvételét. Ez a művelet adatvesztést okozhat. |
+| [Replikációs hivatkozás beszerzése](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Lekéri egy adott replikációs hivatkozás egy adott SQL-adatbázis georeplikációs partnerséget. Lekéri az adatokat a sys.geo_replication_links katalógusnézet látható. |
+| [Replikációs hivatkozások - lista-adatbázis](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Minden replikációs hivatkozásnak lekéri egy adott SQL-adatbázis georeplikációs partnerséget. Lekéri az adatokat a sys.geo_replication_links katalógusnézet látható. |
+| [Replikációs hivatkozás törlése](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | Egy adatbázis-replikációs hivatkozás törlése. Nem hajtható végre feladatátvétel során. |
+| [Hozzon létre vagy feladatátvételi csoport frissítése](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Létrehoz vagy frissít egy feladatátvételi csoportot |
+| [Feladatátvételi csoport törlése](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | A feladatátvételi csoport eltávolítása a kiszolgálóról |
+| [Feladatátvétel (tervezett)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | Átadja a feladatokat az aktuális elsődleges kiszolgálóról a kiszolgálóhoz. |
+| [Kényszerített feladatátvétel adatvesztés engedélyezése](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) |ails keresztül az aktuális elsődleges kiszolgálóról a kiszolgálóhoz. Ez a művelet adatvesztést okozhat. |
+| [Feladatátvételi csoport lekérése](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | A feladatátvételi csoport lekérése. |
+| [Kiszolgáló feladatátvételi csoportok listázása](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | A kiszolgálón a feladatátvételi csoportok listája. |
+| [Feladatátvételi csoport](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Frissíti egy feladatátvételi csoportot. |
 |  | |
 
 ## <a name="next-steps"></a>További lépések

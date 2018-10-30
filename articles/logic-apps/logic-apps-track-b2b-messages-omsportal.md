@@ -1,5 +1,5 @@
 ---
-title: Az Azure Log Analytics – Azure Logic Apps B2B-üzenetek nyomon követése |} A Microsoft Docs
+title: A Log Analytics – Azure Logic Apps B2B-üzenetek nyomon követése |} A Microsoft Docs
 description: Integrációs fiókok és az Azure Log Analytics az Azure Logic Apps B2B kommunikációs nyomon követése
 services: logic-apps
 ms.service: logic-apps
@@ -8,18 +8,17 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
-ms.date: 06/19/2018
-ms.openlocfilehash: 666c998a781f13ea2a26ccfc0b94aeead0308f5b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.date: 10/19/2018
+ms.openlocfilehash: 0bfb652d9e64b9dbf61ad4032f1449fd484cc80a
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405684"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233556"
 ---
-# <a name="track-b2b-communication-with-azure-log-analytics"></a>Nyomon követheti az Azure Log Analytics B2B-kommunikáció
+# <a name="track-b2b-messages-with-azure-log-analytics"></a>Az Azure Log Analytics B2B üzenetek nyomon követése
 
-Miután beállította a B2B-kommunikáció két közötti üzleti folyamatokkal vagy az integrációs fiók használatával fut ezeket az entitásokat is tudjon cserélni egymással üzeneteket. Ellenőrizze, hogy megfelelően dolgozzák fel ezeket az üzeneteket, AS2, X12, nyomon követheti és EDIFACT üzenetek [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Például üzenetek nyomon követése a webes követési képességek is használhatja:
+Miután beállította a kereskedelmi partnerek az integrációs fiókban lévő B2B kommunikációját, ezek a partnerek is exchange-protokollok, például az AS2, X 12 és EDIFACT-üzenetek. Ellenőrizze, hogy ezek az üzenetek feldolgozása megfelelően, ezeket az üzeneteket a követheti [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Például üzenetek nyomon követése a webes követési képességek is használhatja:
 
 * Üzenetek száma és állapota
 * Visszaigazolás állapota
@@ -27,7 +26,10 @@ Miután beállította a B2B-kommunikáció két közötti üzleti folyamatokkal 
 * Hibák részletes leírását
 * Keresési funkciókkal
 
-## <a name="requirements"></a>Követelmények
+> [!NOTE]
+> Ezen a lapon a fentiekben már említettük, az a Microsoft Operations Management Suite (OMS), amely a feladatok végrehajtásához szükséges lépéseket [kivonása a január 2019](../log-analytics/log-analytics-oms-portal-transition.md), hanem az Azure Log Analytics váltja fel ezeket a lépéseket. 
+
+## <a name="prerequisites"></a>Előfeltételek
 
 * Egy logikai alkalmazást, amely a diagnosztikai naplózás be van állítva. Ismerje meg, [Logic Apps-alkalmazás létrehozása](quickstart-create-first-logic-app-workflow.md) és [a logikai alkalmazás naplózásának beállítása](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
@@ -35,51 +37,57 @@ Miután beállította a B2B-kommunikáció két közötti üzleti folyamatokkal 
 
 * Ha még nem tette, [diagnosztikai adatok közzététele a Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
-> [!NOTE]
-> Miután teljesítette az előbbi követelményeknek, rendelkeznie kell egy Log Analytics-munkaterületnek. A B2B-kommunikáció a Log Analytics követési használjon ugyanazon a munkaterületen. 
->  
-> Ha nem rendelkezik a Log Analytics-munkaterületet, további [Log Analytics-munkaterület létrehozása](../log-analytics/log-analytics-quick-create-workspace.md).
+* Miután megfelel a fenti követelményeknek, Log Analytics-munkaterület, amellyel nyomon követési B2B kommunikációs Log Analytics segítségével is szükséges. Ha nem rendelkezik a Log Analytics-munkaterületet, további [Log Analytics-munkaterület létrehozása](../log-analytics/log-analytics-quick-create-workspace.md).
 
-## <a name="add-the-logic-apps-b2b-solution-to-azure"></a>Adja hozzá a Logic Apps B2B-megoldás az Azure-bA
+## <a name="install-logic-apps-b2b-solution"></a>Logic Apps B2B-megoldás telepítése
 
-Ahhoz, hogy a logikai alkalmazás B2B üzenetek nyomon követése a Log Analytics, hozzá kell adnia a **Logic Apps B2B** megoldás a Log Analytics szolgáltatásba. Tudjon meg többet [megoldások hozzáadása a Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
+Ahhoz, hogy képes a Log Analytics, a logikai alkalmazás B2B üzenetek nyomon követése, adja hozzá a **Logic Apps B2B** megoldás a Log Analytics szolgáltatásba. Tudjon meg többet [megoldások hozzáadása a Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
 
-1. Az a [az Azure portal](https://portal.azure.com), válassza a **minden szolgáltatás**. Keresse meg a "log analytics", és válassza a **Log Analytics** itt látható módon:
+1. Az [Azure Portalon](https://portal.azure.com) válassza a **Minden szolgáltatás** elemet. A keresőmezőbe, keresse meg a "log analytics", és válassza ki **Log Analytics**.
 
-   ![Keresse meg a Log Analytics](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)
+   ![Válassza ki a Log Analytics](media/logic-apps-track-b2b-messages-omsportal/find-log-analytics.png)
 
-2. A **Log Analytics**, keresse meg és válassza ki a Log Analytics-munkaterületre. 
+1. A **Log Analytics**, keresse meg és válassza ki a Log Analytics-munkaterületre. 
 
-   ![Válassza ki a Log Analytics-munkaterület](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
+   ![Válassza ki a Log Analytics-munkaterület](media/logic-apps-track-b2b-messages-omsportal/select-log-analytics-workspace.png)
 
-3. A **felügyeleti**, válassza a **munkaterület összefoglalás**.
+1. A **Ismerkedés a Log Analytics** > **figyelési megoldások konfigurálása**, válassza a **megoldások megtekintése**.
 
-   ![Válassza ki a Log Analytics-portál](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
+   ![Válassza a "Megoldások megtekintése"](media/logic-apps-track-b2b-messages-omsportal/log-analytics-workspace.png)
 
-4. Válassza a kezdőlap nyílik meg, miután **Hozzáadás** Logic Apps B2B-megoldás telepítéséhez.    
-   ![Válassza ki a Megoldástárából](media/logic-apps-track-b2b-messages-omsportal/add-b2b-solution.png)
+1. Az Áttekintés oldalon válassza ki a **Hozzáadás**, kattintással megnyílik a **felügyeleti megoldások** listája. Válassza ki a listáról, **Logic Apps B2B**. 
 
-5. A **felügyeleti megoldások**, keresése és létrehozása **Logic Apps B2B** megoldás.     
-   ![Válassza ki a Logic Apps B2B](media/logic-apps-track-b2b-messages-omsportal/create-b2b-solution.png)
+   ![Logic Apps B2B-megoldás kiválasztása](media/logic-apps-track-b2b-messages-omsportal/add-b2b-solution.png)
 
-   A kezdőlapon, csempéje **Logic Apps B2B-üzenetek** jelenik meg. 
-   Ez a csempe frissíti az üzenetek száma, amikor a rendszer a B2B-üzenetek feldolgozása.
+   Ha nem találja a megoldást, a lista alján válassza **Továbbiak betöltése** , amíg megjelenik a megoldás.
+
+1. Válasszon **létrehozás**, erősítse meg a Log Analytics-munkaterületet, ahol szeretné telepíteni a megoldás, és válassza a **létrehozás** újra.   
+
+   ![Válassza a "Create" Logic Apps B2B-hez](media/logic-apps-track-b2b-messages-omsportal/create-b2b-solution.png)
+
+   Ha nem szeretné használni egy meglévő munkaterületet, most is létrehozhat egy új munkaterületet.
+
+1. Ha elkészült, lépjen vissza a munkaterület **áttekintése** lapot. 
+
+   A Logic Apps B2B-megoldás mostantól az Áttekintés lap jelenik meg. 
+   B2B-üzenetek feldolgozása, az üzenetek száma ezen a lapon frissül.
 
 <a name="message-status-details"></a>
 
-## <a name="track-message-status-and-details-in-log-analytics"></a>Üzenet állapotával és részleteivel kapcsolatban a Log Analytics nyomon követése
+## <a name="view-b2b-message-information"></a>B2B üzenetek információk megtekintése
 
-1. Után B2B-üzenetek feldolgozása, megtekintheti a állapotának és részleteinek ezeket az üzeneteket. Az Áttekintés oldalon válassza ki a **Logic Apps B2B-üzenetek** csempére.
+Után B2B-üzenetek feldolgozása, megtekintheti a állapotával és részleteivel kapcsolatban, az ezeket az üzeneteket a **Logic Apps B2B** csempére.
+
+1. Nyissa meg a logikai Analytics-munkaterületre, és az Áttekintés lap megnyitásához. Válasszon **Logic Apps B2B**.
 
    ![Frissített üzenetek száma](media/logic-apps-track-b2b-messages-omsportal/b2b-overview-tile.png)
 
    > [!NOTE]
-   > Alapértelmezés szerint a **Logic Apps B2B-üzenetek** csempe egy nap alapján jeleníti meg. Az adatok hatókör egy másik időköz módosításához válassza a lap tetején a hatókör vezérlő:
+   > Alapértelmezés szerint a **Logic Apps B2B** csempe egy nap alapján jeleníti meg. Az adatok hatókör egy másik időköz módosításához válassza a lap tetején a hatókör vezérlő:
    > 
-   > ![Adatok hatókörének módosítása](media/logic-apps-track-b2b-messages-omsportal/server-filter.png)
-   >
+   > ![Módosításának időköze](media/logic-apps-track-b2b-messages-omsportal/change-interval.png)
 
-2. Az üzenet állapota irányítópult megjelenése után egy meghatározott üzenet típusát, amely egy nap alapján adatokat jelenít meg további részleteket is megtekintheti. Válassza ki a csempét **AS2**, **X12**, vagy **EDIFACT**.
+1. Az üzenet állapota irányítópult megjelenése után egy meghatározott üzenet típusát, amely egy nap alapján adatokat jelenít meg további részleteket is megtekintheti. Válassza ki a csempét **AS2**, **X12**, vagy **EDIFACT**.
 
    ![Üzenet állapotának megtekintése](media/logic-apps-track-b2b-messages-omsportal/omshomepage5.png)
 

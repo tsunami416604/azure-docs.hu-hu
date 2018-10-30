@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8f3bd4e62aa85c69a0bfafeacf13bc3e472136d5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0d3c6b78944d9365d1e7e88ed33aba852b71a9c1
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964701"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232018"
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>A több terabájtnyi adatot feldolgozó kiszolgálói számítási feladatok előrejelzése
 
@@ -80,7 +80,7 @@ A DSVM IP-cím | xxx|
 
  Mező neve| Érték |  
  |------------|------|
- Tárfiók neve| xxx|
+ Storage account name (Tárfiók neve)| xxx|
  Hozzáférési kulcs  | xxx|
 
 
@@ -100,7 +100,7 @@ Futtatás `git status` a fájlok nyomon követése verzió állapotának vizsgá
 
 ## <a name="data-description"></a>Adatok leírása
 
-Ebben a példában használt adatok szintetizált kiszolgáló-munkaterhelési adatok el. Egy Azure Blob storage-fiókot, amely nyilvánosan elérhető az USA keleti régiójában vannak tárolva. Az adott tárolási fiók adatai megtalálhatók a `dataFile` mezőjében [ `Config/storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json) formátumban "wasb: / /<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>". Az adatok közvetlenül a Blob storage-ból is használhatja. Ha a storage egyszerre több felhasználó használ, akkor használhatja [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) saját színvonalú Kísérletezési a storage-bA az adatok letöltéséhez. 
+Ebben a példában használt adatok szintetizált kiszolgáló-munkaterhelési adatok el. Egy Azure Blob storage-fiókot, amely USA keleti régiójában elérhető publicaly vannak tárolva. Az adott tárolási fiók adatai megtalálhatók a `dataFile` mezőjében [ `Config/storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json) formátumban "wasb: / /<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>". Az adatok közvetlenül a Blob storage-ból is használhatja. Ha a storage egyszerre több felhasználó használ, akkor használhatja [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) saját színvonalú Kísérletezési a storage-bA az adatok letöltéséhez. 
 
 Az összes adat mérete körülbelül 1 TB. Minden fájl körülbelül 1 – 3 GB, és a CSV fájlformátum, fejléc nélküli. Minden egyes sorára adatokat jelöli a terhelés egy adott kiszolgálón futó tranzakció. A részletes információkat a sémát a következőképpen történik:
 
@@ -120,8 +120,8 @@ Oszlopszám | Mező neve| Típus | Leírás |
 12 | `SubService_5_Load`| Dupla |      Subservice 5 betöltése
 13 |`SecureBytes_Load`  | Dupla | Biztonságos bájt betöltése
 14 |`TotalLoad` | Dupla | A kiszolgáló teljes terhelés
-15 |`ClientIP` | Sztring|    Ügyfél IP-címe
-16 |`ServerIP` | Sztring|    Kiszolgáló IP-címe
+15 |`ClientIP` | Karakterlánc|    Ügyfél IP-címe
+16 |`ServerIP` | Karakterlánc|    Kiszolgáló IP-címe
 
 
 
@@ -191,11 +191,11 @@ Az első argumentum `configFilename`, ahol tárolni a Blob storage-adatokat, és
 
 | Mező | Típus | Leírás |
 |-----------|------|-------------|
-| storageAccount | Sztring | Az Azure Storage-fiók neve |
-| storageContainer | Sztring | Az Azure Storage-fiók segítségével tárolja a köztes eredményeket tároló |
-| StorageKey tulajdonságát | Sztring |Az Azure Tárfiók hozzáférési kulcsát |
-| dataFile|Sztring | Forrásfájljainak adatok  |
-| időtartam| Sztring | Az adatok az adatforrásfájlokat időtartama|
+| storageAccount | Karakterlánc | Az Azure Storage-fiók neve |
+| storageContainer | Karakterlánc | Az Azure Storage-fiók segítségével tárolja a köztes eredményeket tároló |
+| StorageKey tulajdonságát | Karakterlánc |Az Azure Tárfiók hozzáférési kulcsát |
+| dataFile|Karakterlánc | Forrásfájljainak adatok  |
+| időtartam| Karakterlánc | Az adatok az adatforrásfájlokat időtartama|
 
 A módosítsa `Config/storageconfig.json` és `Config/fulldata_storageconfig.json` konfigurálása a tárfiókot, tárkulcs és a blob-tároló tárolja a köztes eredményeket. Alapértelmezés szerint a blob-tároló futtatása egy hónapig adatok a `onemonthmodel`, és a blob-tároló, a teljes adatkészlet futtatásához `fullmodel`. Ellenőrizze, hogy ezen két tárolót hoz létre a storage-fiókban. A `dataFile` mező [ `Config/fulldata_storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldatastorageconfig.json) konfigurálja, hogy milyen adatok betöltése a [ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py). A `duration` mezőben konfigurálja a tartomány szerepel. Az időtartam ONE_MONTH értékre van állítva, ha az adatok betöltése csak egy .csv fájlt az adatok hét fájlok között kell lennie a 2016. június. Ha a teljes, a teljes adatkészletet (1 TB) be van töltve. Nem kell módosítani `dataFile` és `duration` ezen két konfigurációs fájlokban.
 

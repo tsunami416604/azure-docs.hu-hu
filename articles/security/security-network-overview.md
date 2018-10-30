@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/19/2018
+ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 309dddcea1022d9f14c1d4492f5564f2a4ad3b6f
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 69818fdb8124b9afa176ccd4dfd74cf0f2f4b346
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498504"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233803"
 ---
 # <a name="azure-network-security-overview"></a>Azure-hálózat biztonsági áttekintése
 
@@ -29,12 +29,15 @@ Ez a cikk ismerteti az Azure által kínált hálózati biztonság területén o
 
 * Az Azure-hálózatok
 * Hálózati hozzáférés-vezérlés
+* Azure Firewall
 * Biztonságos távoli hozzáférést és a létesítmények közötti kapcsolat
 * Rendelkezésre állás
 * Névfeloldás
 * Szegélyhálózat (DMZ) hálózati architektúra
-* Figyelés és a fenyegetésészlelés
 * Azure DDoS Protection
+* Az Azure bejárati ajtajának
+* Traffic Manager
+* Figyelés és a fenyegetésészlelés
 
 ## <a name="azure-networking"></a>Az Azure-hálózatok
 
@@ -126,6 +129,19 @@ Ha például a biztonsági követelmények a következők lehetnek:
 
 Következő nagyobb hálózati biztonsági funkciók érhetők el az egy Azure-partneri megoldás használatával. Annak a legújabb Azure-partneri hálózati biztonsági megoldások meglátogatják a [Azure Marketplace-en](https://azure.microsoft.com/marketplace/), és keressen a "security" és "hálózati biztonság."
 
+## <a name="azure-firewall"></a>Azure Firewall
+
+Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltatás, amely Azure Virtual Network-erőforrásait védi. Ez egy szolgáltatásként nyújtott teljesen állapotalapú tűzfal, beépített magas rendelkezésre állással és korlátlan felhőalapú skálázhatósággal. Egyes funkciók a következők:
+
+* Magas rendelkezésre állás
+* Felhő méretezhetősége
+* Alkalmazások teljes tartománynevére vonatkozó szűrési szabályok
+* Hálózati forgalomra vonatkozó szűrési szabályok
+
+További információ:
+
+* [Az Azure tűzfal áttekintése](../firewall/overview.md)
+
 ## <a name="secure-remote-access-and-cross-premises-connectivity"></a>Biztonságos távoli hozzáférést és a létesítmények közötti kapcsolat
 
 A telepítő, konfigurációs és felügyeleti feladatot távolról kell elvégezni az Azure-erőforrások igényeihez. Emellett érdemes telepíteni [hibrid informatikai](http://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) a megoldásokat, amelyek összetevőit a helyszínen és az Azure nyilvános felhő. Ezek a forgatókönyvek biztonságos távoli hozzáférést igényelnek.
@@ -139,9 +155,15 @@ Az Azure-hálózatok a következő biztonságos távoli hozzáférést forgatók
 
 ### <a name="connect-individual-workstations-to-a-virtual-network"></a>Egyéni munkaállomások csatlakoztatása egy virtuális hálózathoz
 
-Előfordulhat, hogy szeretné engedélyezni az egyéni fejlesztők számára és a műveleti személyzet kezelheti a virtuális gépek és szolgáltatások az Azure-ban. Például tegyük fel, hozzá kell férnie a virtuális hálózat egy virtuális gépet. De a biztonsági házirend nem engedélyezi az egyes virtuális gépekhez RDP vagy SSH távoli hozzáférést. Ebben az esetben egy pont – hely VPN-kapcsolat is használhatja.
+Előfordulhat, hogy szeretné engedélyezni az egyéni fejlesztők számára és a műveleti személyzet kezelheti a virtuális gépek és szolgáltatások az Azure-ban. Például tegyük fel, hozzá kell férnie a virtuális hálózat egy virtuális gépet. De a biztonsági házirend nem engedélyezi az egyes virtuális gépekhez RDP vagy SSH távoli hozzáférést. Ebben az esetben használhatja egy [pont – hely VPN](../vpn-gateway/point-to-site-about.md) kapcsolat.
 
-A pont – hely VPN-kapcsolatot használ a [az SSTP VPN](https://technet.microsoft.com/library/cc731352.aspx) protokollt ahhoz, hogy egy védett és biztonságos kapcsolatot a felhasználó és a virtuális hálózat között. A VPN-kapcsolat létrejött, amikor a felhasználó is RDP vagy SSH a VPN-kapcsolaton keresztül, a virtuális hálózaton lévő bármelyik virtuális gépet. (A parancs feltételezi, hogy a felhasználói hitelesítést, és engedélyezett.)
+A pont – hely VPN-kapcsolat lehetővé teszi egy védett és biztonságos kapcsolatot a felhasználó és a virtuális hálózat között. A VPN-kapcsolat létrejött, amikor a felhasználó is RDP vagy SSH a VPN-kapcsolaton keresztül, a virtuális hálózaton lévő bármelyik virtuális gépet. (A parancs feltételezi, hogy a felhasználói hitelesítést, és engedélyezett.) Pont – hely VPN-JE támogatja:
+
+* Secure Socket Tunneling Protocol (SSTP), egy egyéni SSL-alapú VPN-protokollt. Az SSL VPN-megoldás behatolásának tűzfalak, mivel a legtöbb tűzfal nyitva TCP 443-as portot, amely az SSL. Az SSTP csak a Windows-eszközökön támogatott. Az Azure Windows SSTP (Windows 7 és újabb) rendelkező összes verziója támogatja.
+
+* IKEv2 VPN, egy szabványalapú IPsec VPN-megoldás. Az IKEv2 VPN segítségével Macről is lehetségessé válik a csatlakozás (OSX 10.11-es vagy újabb verziók használata esetén).
+
+* [OpenVPN](https://azure.microsoft.com/updates/openvpn-support-for-azure-vpn-gateways/)
 
 További információ:
 
@@ -165,11 +187,13 @@ Pont – hely és helyek közötti VPN-kapcsolatok létesítmények közötti ka
 * VPN-kapcsolatok az interneten keresztül helyezze át az adatokat. Ez elérhetővé teszi ezeket a kapcsolatokat, az érintett adatok áthelyezése egy nyilvános hálózaton keresztül a potenciális biztonsági problémákat. Ezenkívül megbízhatóságot és rendelkezésre állást, a hálózati kapcsolatok használata esetén nem garantálható.
 * Virtuális hálózatok VPN-kapcsolatok nem feltétlenül a sávszélesség az egyes alkalmazások és céljából, amint azok körülbelül 200 Mbps sebességnél, max.
 
-A szervezetek, általában szükség van a legmagasabb szintű biztonság és elérhetőség a létesítmények közötti kapcsolatok dedikált WAN-kapcsolatok használatával távoli helyekhez való csatlakozáshoz. Az Azure lehetővé teszi egy dedikált WAN-kapcsolaton, amellyel a helyszíni hálózat csatlakoztatása egy virtuális hálózatot használja. Az Azure ExpressRoute lehetővé teszi ezt.
+A szervezetek, általában szükség van a legmagasabb szintű biztonság és elérhetőség a létesítmények közötti kapcsolatok dedikált WAN-kapcsolatok használatával távoli helyekhez való csatlakozáshoz. Az Azure lehetővé teszi egy dedikált WAN-kapcsolaton, amellyel a helyszíni hálózat csatlakoztatása egy virtuális hálózatot használja. Az Azure ExpressRoute Express route közvetlen, és az Express route globális jelenléttel engedélyezéséhez.
 
 További információ:
 
 * [Az ExpressRoute technikai áttekintése](../expressroute/expressroute-introduction.md)
+* [Az ExpressRoute közvetlen](../expressroute/expressroute-erdirect-about.md)
+* [Express route globális elérhetőséggel](..//expressroute/expressroute-global-reach.md)
 
 ### <a name="connect-virtual-networks-to-each-other"></a>Egymáshoz virtuális hálózatok összekapcsolása
 
@@ -287,6 +311,46 @@ További információ:
 
 * [A Microsoft Cloud Services és a hálózati biztonság](../best-practices-network-security.md)
 
+## <a name="azure-ddos-protection"></a>Azure DDoS Protection
+
+Az elosztott szolgáltatásmegtagadási (DDoS-) támadásokat néhány a legnagyobb rendelkezésre állással és biztonsággal kapcsolatos aggályokat rendelkező ügyfelek számára a saját alkalmazásait a felhőbe áthelyezni. A DDoS-támadások próbál lefoglalhat egy alkalmazás-erőforrások, így az alkalmazás nem érhető el a jogosult felhasználók számára. DDoS-támadások célozhatják bármely, amely az interneten keresztül nyilvánosan elérhető végponton.
+A Microsoft biztosítja a DDoS protection néven **alapszintű** az Azure Platform részeként. Ez díjmentesen érhető el, és mindig tartalmazza a figyelési és valós idejű csökkenti a közös hálózati szintű támadásoktól. Mellett a védelmet, a DDoS protection részét képező **alapszintű** engedélyezheti a **Standard** lehetőséget. A DDoS Protection Standard funkciók:
+
+* **Natív platformintegráció:** natív módon integrált Azure-bA. Az Azure Portalon keresztül konfigurációit is beleértve. A DDoS Protection Standard tisztában van azzal erőforrásait és erőforrás-konfigurációhoz.
+* **Kulcsrakész védelem:** egyszerűsített konfiguráció azonnal védelmet biztosít egy virtuális hálózaton lévő összes erőforrást, amint a DDoS Protection Standard van engedélyezve. Nincs beavatkozás vagy a felhasználó megadása nem kötelező. A DDoS Protection Standard azonnal és automatikusan csökkenti a támadási után a rendszer azt észlelte.
+* **Mindig forgalomfigyelést:** az alkalmazás forgalmi mintázatait figyelt 24 óránként, naponta, a hét, DDoS-támadások kijelzőjét keres. Kockázatcsökkentési alkalmazásvédelmi szabályzatok túllépése esetén történik.
+* **Kockázatcsökkentési jelentések támadási** támadási kockázatcsökkentési jelentések összesített hálózati forgalmi adatai segítségével az erőforrások irányuló támadások részletes információkat tartalmaznak.
+* **Kockázatcsökkentési Flow naplók támadási** támadási kockázatcsökkentési Flow naplók lehetővé teszi, hogy tekintse át az eldobott forgalomhoz továbbított forgalom és a más támadási adatainak közel valós időben aktív DDoS-támadás során.
+* **Adaptív hangolás:** intelligens adatforgalom-profilkészítés képes megtanulni az alkalmazás forgalmának idővel, és kiválasztja, és frissíti a profilt, amely a szolgáltatás a legmegfelelőbb. A profil módosítja, a forgalom változik az idő múlásával. 3. rétegbeli 7. rétegbeli Protection: teljes verem DDoS elleni védelem, biztosít egy webalkalmazási tűzfallal rendelkező használatakor.
+* **Széles körű kockázatcsökkentési méretezési:** 60 feletti különböző támadási típusok enyhíthető, globális kapacitással, a legnagyobb ismert DDoS-támadásokkal szembeni védelem érdekében.
+* **Metrikák támadási:** minden támadástól Summarized metrikák érhetők el Azure monitoron keresztül.
+* **A támadás riasztási:** riasztások konfigurálhatók a kezdő és a egy támadás leállítása és a támadás időtartama alatt a beépített támadási mérőszámok segítségével. Riasztások integrálható a működési szoftver a Microsoft Azure Log Analytics, Splunk, Azure Storage, e-mailek és az Azure Portalon.
+* **A Cost garancia:** adatátviteli és az alkalmazás horizontális felskálázás szolgáltatásokhoz biztosított kreditek a dokumentált DDoS-támadások.
+* **DDoS gyors, rugalmas** DDoS Protection Standard használó ügyfelek mostantól hozzáférhet a Rapid Response team aktív támadás során. A támadás vizsgálat során egy támadás és a támadás utáni elemzés egyéni megoldások DRR segíthet.
+
+
+További információ:
+
+* [A DDOS protection áttekintése](../virtual-network/ddos-protection-overview.md)
+
+## <a name="azure-front-door"></a>Az Azure bejárati ajtajának
+
+Az Azure bejárati ajtajának szolgáltatás lehetővé teszi definiálása, kezelhet és monitorozhat globális továbbítani tudja a webes forgalom. Optimalizálja a forgalom-útválasztást a legjobb teljesítmény és a magas rendelkezésre állás. Az Azure Front Doorral egyéni webalkalmazási tűzfalszabályok (WAF-szabályok) készítésével hozzáférés-vezérlést valósíthat meg, amellyel megvédheti a HTTP/HTTPS-számítási feladatait attól, hogy feltörjék őket az ügyféloldali IP-cím, országkód és HTTP-paraméterek alapján. Ezenkívül bejárati ajtajának lehetővé teszi, hogy a sebesség korlátozása élesben kártékony forgalmával szabályokat létrehozni, az SSL-kiürítés, és a egy – HTTP/HTTPS-kérést, olyan alkalmazásréteg feldolgozás.
+
+Bejárati ajtajának platform magát az Azure DDoS Protection alapszintű védi. További védelemként engedélyezheti a virtuális hálózatain a Standard szintű Azure DDoS Protectiont, így automatikus finomhangolással és kárenyhítéssel megvédheti erőforrásait a hálózati rétegből érkező (TCP/UDP) támadásokkal szemben. Bejárati ajtajának egy 7. rétegbeli fordított proxy, csak lehetővé teszi webes forgalom áthaladását biztonsági vége a kiszolgálók és más típusú forgalom tiltása az alapértelmezés szerint.
+
+További információ:
+
+* További információ az Azure az előtérbeli teljes készletét a nyomtató ajtaja képességek áttekintheti a [Azure bejárati ajtajának áttekintése](../frontdoor/front-door-overview.md)
+
+## <a name="azure-traffic-manager"></a>Az Azure Traffic manager
+
+Az Azure Traffic Manager egy DNS-alapú forgalom-terheléselosztó, amely lehetővé teszi a szolgáltatásokhoz érkező forgalom optimális elosztását a globális Azure-régiókban, miközben magas rendelkezésre állást és válaszkészséget biztosít. A Traffic Manager DNS használatával a leginkább megfelelő szolgáltatási végpontra irányítja az ügyfélkéréseket a forgalom-útválasztási módszer és a végpont állapota alapján. A végpont egy, az Azure-on kívül vagy belül üzemeltetett, internetkapcsolattal rendelkező szolgáltatás. A TRAFFIC manager figyeli a végpontok, és nem irányítja a forgalmat olyan végpontok, amelyek nem érhetők el.
+
+További információ:
+
+* [Az Azure Traffic manager áttekintése](../traffic-manager/traffic-manager-overview.md)
+
 ## <a name="monitoring-and-threat-detection"></a>Figyelés és a fenyegetésészlelés
 
 Azure segíti a korai észlelését, figyelés, a kulcs területen képességeket biztosít, és a hálózati forgalom gyűjtése és ellenőrzése.
@@ -318,6 +382,14 @@ További információ:
 
 * [Az Azure Security Center bemutatása](../security-center/security-center-intro.md)
 
+### <a name="virtual-network-tap"></a>Virtual Network TAP
+
+Az Azure virtuális hálózati TAP (Terminálszolgáltatások hozzáférési pont) lehetővé teszi folyamatosan stream a virtuális gép hálózati forgalmat egy hálózati csomag adatgyűjtőnek vagy az analytics eszközt. A gyűjtő vagy elemzőeszköz egy hálózati virtuális berendezés partnerek biztosítják. Az azonos virtuális hálózatban a forgalom összesítéséhez erőforrás KOPPINTSON az azonos vagy eltérő előfizetésekben lévő több hálózati adapterrel is használhatja.
+
+További információ:
+
+* [Virtuális hálózati TAP](../virtual-network/virtual-network-tap-overview.md)
+
 ### <a name="logging"></a>Naplózás
 
 Naplózási hálózati szintjén minden olyan hálózati biztonsági forgatókönyv a fő függvény. Az Azure-ban bejelentkezhet az NSG-ket hálózati szintű naplózási adatok beszerzése kapott adatok alapján. NSG-naplózást, információkat a következőket kínálja:
@@ -330,21 +402,3 @@ Is [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/), egy ha
 További információ:
 
 * [Naplóelemzés hálózati biztonsági csoportok (NSG-k)](../virtual-network/virtual-network-nsg-manage-log.md)
-
-## <a name="azure-ddos-protection"></a>Azure DDoS Protection
-
-Az elosztott szolgáltatásmegtagadási (DDoS-) támadásokat néhány a legnagyobb rendelkezésre állással és biztonsággal kapcsolatos aggályokat rendelkező ügyfelek számára a saját alkalmazásait a felhőbe áthelyezni. A DDoS-támadások próbál lefoglalhat egy alkalmazás-erőforrások, így az alkalmazás nem érhető el a jogosult felhasználók számára. DDoS-támadások célozhatják bármely, amely az interneten keresztül nyilvánosan elérhető végponton.
-A Microsoft biztosítja a DDoS protection néven **alapszintű** az Azure Platform részeként. Ez díjmentesen érhető el, és mindig tartalmazza a figyelési és valós idejű csökkenti a közös hálózati szintű támadásoktól. Mellett a védelmet, a DDoS protection részét képező **alapszintű** engedélyezheti a **Standard** lehetőséget. A DDoS Protection Standard funkciók:
-
-* **Natív platformintegráció:** natív módon integrált Azure-bA. Az Azure Portalon keresztül konfigurációit is beleértve. A DDoS Protection Standard tisztában van azzal erőforrásait és erőforrás-konfigurációhoz.
-* **Kulcsrakész védelem:** egyszerűsített konfiguráció azonnal védelmet biztosít egy virtuális hálózaton lévő összes erőforrást, amint a DDoS Protection Standard van engedélyezve. Nincs beavatkozás vagy a felhasználó megadása nem kötelező. A DDoS Protection Standard azonnal és automatikusan csökkenti a támadási után a rendszer azt észlelte.
-* **Mindig forgalomfigyelést:** az alkalmazás forgalmi mintázatait figyelt 24 óránként, naponta, a hét, DDoS-támadások kijelzőjét keres. Kockázatcsökkentési alkalmazásvédelmi szabályzatok túllépése esetén történik.
-* **Adaptív hangolás:** intelligens adatforgalom-profilkészítés képes megtanulni az alkalmazás forgalmának idővel, és kiválasztja, és frissíti a profilt, amely a szolgáltatás a legmegfelelőbb. A profil módosítja, a forgalom változik az idő múlásával. 3. rétegbeli 7. rétegbeli Protection: teljes verem DDoS elleni védelem, biztosít egy webalkalmazási tűzfallal rendelkező használatakor.
-* **Széles körű kockázatcsökkentési méretezési:** 60 feletti különböző támadási típusok enyhíthető, globális kapacitással, a legnagyobb ismert DDoS-támadásokkal szembeni védelem érdekében.
-* **Metrikák támadási:** minden támadástól Summarized metrikák érhetők el Azure monitoron keresztül.
-* **A támadás riasztási:** riasztások konfigurálhatók a kezdő és a egy támadás leállítása és a támadás időtartama alatt a beépített támadási mérőszámok segítségével. Riasztások integrálható a működési szoftver a Microsoft Azure Log Analytics, Splunk, Azure Storage, e-mailek és az Azure Portalon.
-* **A Cost garancia:** adatátviteli és az alkalmazás horizontális felskálázás szolgáltatásokhoz biztosított kreditek a dokumentált DDoS-támadások.
-
-További információ:
-
-* [A DDOS protection áttekintése](../virtual-network/ddos-protection-overview.md)

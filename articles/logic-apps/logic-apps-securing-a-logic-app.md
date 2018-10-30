@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 11/22/2016
-ms.openlocfilehash: 1307b6df22c51af9710d44abb23178d65e3507aa
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 0fe35b67a424caedcea2c71885d1757943ace9d1
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377394"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232596"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Biztonságos hozzáférés az Azure Logic Appsben
 
@@ -168,7 +168,7 @@ Ha használ egy [központi telepítési sablont](logic-apps-create-deploy-templa
 
 ### <a name="using-parameters-and-secure-parameters"></a>Paraméterek és biztonságos paraméterek
 
-Egy erőforrás paraméter futásidőben, eléréséhez a [munkafolyamat-definíciós nyelv](http://aka.ms/logicappsdocs) biztosít egy `@parameters()` műveletet. Azt is megtehetjük, [paramétereket adja meg az erőforrás üzembe helyezési sablon](../azure-resource-manager/resource-group-authoring-templates.md#parameters). Ha a paraméter típusa, adja meg, de `securestring`, a paraméter nem adható vissza a többi erőforrás-definícióban, és nem lesznek elérhetők üzembe helyezést követően az erőforrás megtekintésével.
+Egy erőforrás paraméter futásidőben, eléréséhez a [munkafolyamat-definíciós nyelv](https://aka.ms/logicappsdocs) biztosít egy `@parameters()` műveletet. Azt is megtehetjük, [paramétereket adja meg az erőforrás üzembe helyezési sablon](../azure-resource-manager/resource-group-authoring-templates.md#parameters). Ha a paraméter típusa, adja meg, de `securestring`, a paraméter nem adható vissza a többi erőforrás-definícióban, és nem lesznek elérhetők üzembe helyezést követően az erőforrás megtekintésével.
 
 > [!NOTE]
 > Ha a paraméter a fejléc vagy a kérelem törzsében a paraméter lehet látható a futási előzményeket és kimenő HTTP-kérelem elérésével. Ellenőrizze, hogy ennek megfelelően a tartalom-hozzáférési házirendeket állíthat be.

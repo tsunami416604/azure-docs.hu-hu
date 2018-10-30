@@ -1,6 +1,6 @@
 ---
-title: Adja hozzá a hurkokra, ismételje meg a műveleteket, illetve feldolgozni tömbök - Azure Logic Apps |} Microsoft Docs
-description: Ismételje meg a munkafolyamat-műveleteket, vagy az Azure Logic Apps tömbök feldolgozni hurkok létrehozása
+title: Adja hozzá a hurkok, ismételje meg a műveletet, vagy feldolgozni tömbök – Azure Logic Apps |} A Microsoft Docs
+description: Hurkok, ismételje meg a munkafolyamat-műveletek, vagy az Azure Logic Appsben tömbök feldolgozni létrehozása
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
@@ -10,72 +10,72 @@ ms.date: 03/05/2018
 ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 87595eeb0330a2d8210258c097c29b205b628cf4
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 5ba5e5abef4ebdc58c44cbe7f5ba584efe8abfc7
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298185"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233106"
 ---
-# <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Ismételje meg a munkafolyamat-műveleteket, vagy az Azure Logic Apps tömbök feldolgozni hurkok létrehozása
+# <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Hurkok, ismételje meg a munkafolyamat-műveletek, vagy az Azure Logic Appsben tömbök feldolgozni létrehozása
 
-A Logic Apps alkalmazást tömbjei iterációt, használhatja a ["Foreach" hurok](#foreach-loop) vagy egy [szekvenciális "Foreach" loop](#sequential-foreach-loop). A szekvenciális "Foreach" hurok ismétlésének egyenként futása közben, párhuzamos futtatása egy szabványos "Foreach" hurok ismétlésének. A maximális elemszáma tömb, amely "Foreach" hurkok képes futtatni egy logikai alkalmazásban, lásd: [korlátozásai és konfigurációja](../logic-apps/logic-apps-limits-and-config.md). 
+A logikai alkalmazás a tömb végigléptetni, használhatja a ["Foreach" ciklus](#foreach-loop) vagy egy ["Foreach" szekvenciális hurok](#sequential-foreach-loop). Az ismétlések egy standard szintű "Foreach" ciklus párhuzamosan is futtatni, a "Foreach" szekvenciális hurok ismétlések egyenként futtatása közben. A "Foreach" hurkok feldolgozására képes futtatni egyetlen logikai alkalmazás a tömb elemek maximális számát, lásd: [korlátozások és konfiguráció](../logic-apps/logic-apps-limits-and-config.md). 
 
 > [!TIP] 
-> Ha rendelkezik egy eseményindító fogadó egy tömb, és szeretné futtatni a munkafolyamat minden tömb elemhez, *debatch* , hogy a tömb a [ **SplitOn** tulajdonság indítás](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). 
+> Ha rendelkezik egy eseményindítót, amely egy tömböt kap, és szeretne futtatni egy munkafolyamatot a tömb mindegyik elemén, *debatch* a tömböt a [ **SplitOn** tulajdonság-trigger](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). 
   
-Ismételje meg a műveletet, amíg a feltétel teljesül, vagy bizonyos állapota megváltozott, használja az ["Csak" hurok](#until-loop). A Logic Apps alkalmazást először végrehajtja a műveleteket a hurkon belül, és ellenőrzi a feltétel utolsó lépéseként. Ha a feltétel teljesül, a hurok leáll. Ellenkező esetben a hurok ismétlődik. Hurkok futtatja, egyetlen logikai alkalmazás tekintse meg a maximális száma "Csak" [korlátozásai és konfigurációja](../logic-apps/logic-apps-limits-and-config.md). 
+Ismételje meg a műveleteket, amíg egy feltétel teljesül, vagy bizonyos állapota megváltozott, használja az ["Until" ciklus](#until-loop). A logikai alkalmazás először hajt végre a hurok belüli összes műveletet, és azután ellenőrzi a feltételt, utolsó lépésként. Ha a feltétel teljesül, a hurok leáll. Ellenkező esetben a hurok ismétlődik. Hurkok egyetlen logikai alkalmazás futtatásának, lásd: "Until" maximális száma [korlátozások és konfiguráció](../logic-apps/logic-apps-limits-and-config.md). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
-* Alapszintű ismerete [logic Apps alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Alapvető ismeretek szerezhetők [logikai alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 <a name="foreach-loop"></a>
 
-## <a name="foreach-loop"></a>"Foreach" hurok
+## <a name="foreach-loop"></a>"Foreach" ciklus
 
-Ismételje meg a műveletek minden elemhez a tömbben, használja a logic app munkafolyamat "Foreach" hurkot. Egy "Foreach" ciklus is felvehet több művelet, és ágyazhatja "Foreach" hurkok belül egymással. Alapértelmezés szerint a szabványos "Foreach" ismétlődő ciklust párhuzamosan futnak. A maximális száma párhuzamos ciklusok, hogy "Foreach" hurkokat is futtatható, a következő témakörben: [korlátozásai és konfigurációs](../logic-apps/logic-apps-limits-and-config.md).
+Ismételje meg a műveletet egy tömb minden egyes elemén, használja a logikai alkalmazás munkafolyamatának a "Foreach" hurkot. A "Foreach" ciklus több művelet is felvehet, és beágyazhatja a "Foreach" hurkok belül egymással. Alapértelmezés szerint a standard "Foreach" hurkot a könyvtárfában párhuzamosan futnak. A párhuzamos maximális számát a "Foreach" hurkok futtathatja ciklusok, lásd: [határértékek és konfiguráció](../logic-apps/logic-apps-limits-and-config.md).
 
 > [!NOTE] 
-> A "Foreach" hurkot csak egy tömb dolgozik, és a hurok a műveletek a `@item()` hivatkozás feldolgozni a tömb minden elemet. Nem tömb adatokat ad meg, ha a logic app munkafolyamat sikertelen lesz. 
+> A "Foreach" ciklus csak egy tömb dolgozik, és a hurok műveletek használata a `@item()` referencia feldolgozni a tömb egyes elemeiről. Ha nem a tömbben adatok adja meg, a logikai alkalmazás munkafolyamata sikertelen lesz. 
 
-Például a logikai alkalmazás küld Önnek napi összegzését az RSS-hírcsatorna egy webhelyet. Az alkalmazás használ, amelyet az e-mailt küld, minden egyes új cikk található "Foreach" hurkot.
+Például a logikai alkalmazás küldi el, a napi összesítés egy webhely RSS-hírcsatornában. Az alkalmazás használja a "Foreach" hurkot, amely minden egyes új elem található e-mailt küld.
 
-1. [Ez a minta logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md) Outlook.com vagy az Office 365 Outlook-fiókkal.
+1. [Ez a minta logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md) Outlook.com-os vagy Office 365 Outlook-fiókkal.
 
-2. Az RSS közötti indul el, és küldjön e-mailek művelet, vegye fel a "Foreach" hurkot. 
+2. Között az RSS-trigger és e-mail küldése műveletet, adja hozzá a "Foreach" hurkot. 
 
-   Lépések között hurkot hozzáadásához húzza az egérmutatót a nyíl ahol hozzáadandó a hurok. 
-   Válassza ki a **pluszjel** (**+**), amely akkor jelenik meg, majd válassza a **hozzáadása egy minden**.
+   Lépések közötti hurkot felvételéhez vigye az egérmutatót a nyíl felett kívánja az iteráció hozzáadása. 
+   Válassza ki a **plusz jelre** (**+**), amely akkor jelenik meg, majd válassza a **hozzáadása egy minden**.
 
-   ![Adja hozzá a "Foreach" hurkot lépések között](media/logic-apps-control-flow-loops/add-for-each-loop.png)
+   ![Adjon hozzá egy "Foreach" iterációt lépések közötti](media/logic-apps-control-flow-loops/add-for-each-loop.png)
 
-3. Most hozhat létre. a hurok. A **kimenetnek válassza az előző lépéseket** után a **dinamikus tartalom hozzáadása az** megjelenik a listán, válassza ki a **hivatkozások hírcsatorna** tömb, amely az RSS-eseményindítóval kimeneti. 
+3. A kör most felépítése. A **kimenet választása az előző lépésekből** után a **dinamikus tartalom hozzáadása** lista jelenik meg, válassza ki a **hírcsatorna-hivatkozások** tömb, amely az RSS-trigger kimenete. 
 
-   ![Válassza ki a dinamikus tartalom listából](media/logic-apps-control-flow-loops/for-each-loop-dynamic-content-list.png)
+   ![Válassza ki a dinamikus tartalmú listából](media/logic-apps-control-flow-loops/for-each-loop-dynamic-content-list.png)
 
    > [!NOTE] 
-   > Kiválaszthatja *csak* tömb kiírja az előző lépésben.
+   > Választhat *csak* az előző lépésben kimenete tömb.
 
-   A kijelölt tömb most itt jelenik meg:
+   A kiválasztott tömbben most itt jelenik meg:
 
-   ![Válassza ki a tömb](media/logic-apps-control-flow-loops/for-each-loop-select-array.png)
+   ![Válassza ki a tömböt](media/logic-apps-control-flow-loops/for-each-loop-select-array.png)
 
-4. Egy műveletet minden egyes tömb elemen, húzza a **egy e-mailek küldése** a művelet a **minden** hurok. 
+4. Egy műveletet a tömb mindegyik elemén, húzza a **e-mail küldése** művelet be a **minden** ciklus. 
 
-   A Logic Apps alkalmazást ebben a példában hasonlót nézhet ki:
+   A logikai alkalmazás következőhöz hasonlít:
 
-   ![Vegyen fel olyan lépéseket "Foreach" hurok](media/logic-apps-control-flow-loops/for-each-loop-with-step.png)
+   ![Lépések hozzáadása a "Foreach" hurok](media/logic-apps-control-flow-loops/for-each-loop-with-step.png)
 
-5. Mentse a logikai alkalmazást. Manuálisan tesztelje a Logic Apps alkalmazást, a designer eszköztáron kattintson a **futtatása**.
+5. Mentse a logikai alkalmazást. Manuális tesztelése a logikai alkalmazást, a Tervező eszköztárán válassza a **futtatása**.
 
 <a name="for-each-json"></a>
 
-## <a name="foreach-loop-definition-json"></a>"Foreach" hurok definition (JSON)
+## <a name="foreach-loop-definition-json"></a>"Foreach" hurkot definition (JSON)
 
-Ha a logikai alkalmazásnak kódnézetben dolgozik, megadhatja a `Foreach` hurok a Logic Apps alkalmazást JSON-definícióban, például:
+Ha a logikai alkalmazás kódnézete a dolgozik, meghatározhatja a `Foreach` hurok a JSON-definíciójában a logikai alkalmazás, például:
 
 ``` json
 "actions": {
@@ -112,19 +112,19 @@ Ha a logikai alkalmazásnak kódnézetben dolgozik, megadhatja a `Foreach` hurok
 
 <a name="sequential-foreach-loop"></a>
 
-## <a name="foreach-loop-sequential"></a>"Foreach" loop: szekvenciális
+## <a name="foreach-loop-sequential"></a>"Foreach" ciklus: szekvenciális
 
-Alapértelmezés szerint az egyes ciklusok "Foreach" ismétlődő minden tömb elemhez párhuzamosan fut. Az egyes ciklusok egymás után futnak, állítsa be a **Sorostevékenység** beállítás a "Foreach" ciklusban.
+Alapértelmezés szerint minden ciklusban, a "Foreach" hurkot a tömb mindegyik elemén párhuzamosan futtatja. Az egyes ciklusok egymás után futnak, állítsa be a **szekvenciális** hurokba, és a "Foreach" lehetőséget.
 
-1. Válassza ki a hurok jobb felső sarokban, **folytatást jelző pontokra** (**...** ) > **Beállítások**.
+1. A hurok jobb felső sarokban, válassza ki a **három pont** (**...** ) > **Beállítások**.
 
-   ![A "Foreach" hurok, válassza az "..." > "Beállítások"](media/logic-apps-control-flow-loops/for-each-loop-settings.png)
+   ![A "Foreach" ciklus, válassza a "..." > "Beállítások"](media/logic-apps-control-flow-loops/for-each-loop-settings.png)
 
-2. Kapcsolja be a **Sorostevékenység** beállítást, majd válassza a **végzett**.
+2. Kapcsolja be a **szekvenciális** beállítást, majd válassza a **kész**.
 
-   ![Kapcsolja be a "Foreach" hurok szekvenciális beállítás](media/logic-apps-control-flow-loops/for-each-loop-sequential-setting.png)
+   ![Kapcsolja be a "Foreach" hurkot a szekvenciális beállítás](media/logic-apps-control-flow-loops/for-each-loop-sequential-setting.png)
 
-Azt is beállíthatja a **operationOptions** paramétert `Sequential` a Logic Apps alkalmazást JSON-definícióban. Példa:
+Is beállíthat a **operationOptions** paramétert `Sequential` a logikai alkalmazás JSON-definíciójában. Példa:
 
 ``` json
 "actions": {
@@ -143,22 +143,22 @@ Azt is beállíthatja a **operationOptions** paramétert `Sequential` a Logic Ap
 
 <a name="until-loop"></a>
 
-## <a name="until-loop"></a>"Csak" hurok
+## <a name="until-loop"></a>"Until" ciklus
   
-Ismételje meg a műveletet, amíg a feltétel teljesül, vagy bizonyos állapota megváltozott, használja a logic app munkafolyamat egy "Csak" hurok. Az alábbiakban néhány gyakori alkalmazási esetekben, ahol ugyanúgy használhatók egy "Csak" loop:
+Ismételje meg a műveleteket, amíg egy feltétel teljesül, vagy bizonyos állapota megváltozott, használja a logikai alkalmazás munkafolyamata egy "Csak" hurkot. Az alábbiakban néhány gyakori alkalmazási helyzetek, használhat egy "Csak" hurok:
 
-* A végpont hívható, amíg elér a választ, amely a kívánt.
-* Hozzon létre egy rekordot egy adatbázisban, várjon, amíg egy adott mező abban, hogy a rekord jóváhagyását és feldolgozás folytatásához. 
+* A végpont hívja, amíg a kívánt választ kap.
+* Hozzon létre egy rekordot egy adatbázisban, várja meg, amíg egy adott mezőben abban, hogy a rekord jóváhagyását, és folytatja a feldolgozást. 
 
-Például 8:00 órakor naponta, a logikai alkalmazás növeli a változó mindaddig, amíg a változó értéke 10. Ezt követően a logic app küld egy e-mailt, amely megerősíti, hogy a jelenlegi érték. Bár ez a példa az Office 365 Outlook, használhatja a Logic Apps által támogatott e-mail szolgáltató ([tekintse át az összekötők listán Itt](https://docs.microsoft.com/connectors/)). Ha más e-mail-fiókot használ, a lépések ugyanazok, de a felhasználói felület kissé eltérhet. 
+Ha például 8:00 órakor minden nap, a logikai alkalmazás egy változó értékének növelése mindaddig, amíg a változó értéke 10. Ezután a logikai alkalmazás küld egy e-mailt, amely megerősíti, hogy a jelenlegi érték. Bár ebben a példában az Office 365 Outlook, a Logic Apps által támogatott bármely e-mail-szolgáltatónál is használhatja ([tekintse át az itt felsorolt összekötőket](https://docs.microsoft.com/connectors/)). Ha más e-mail-fiókot használ, a lépések ugyanazok, de a felhasználói felület kissé eltérhet. 
 
-1. Üres logikai alkalmazás létrehozása. Logic App Designer "ismétlődési", és adja meg az eseményindító: **ütemezés - ismétlődési** 
+1. Üres logikai alkalmazás létrehozása. A Logic App Designerben keresse meg a "recurrence", és válassza ki a következő eseményindítót: **ütemezés – ismétlődés** 
 
-   ![Adja hozzá a "Ütemezés – ismétlődési" eseményindító](./media/logic-apps-control-flow-loops/do-until-loop-add-trigger.png)
+   !["Ütemezés – ismétlődés" eseményindító hozzáadása](./media/logic-apps-control-flow-loops/do-until-loop-add-trigger.png)
 
-2. Adja meg, ha az eseményindító következik be, úgy, hogy az intervallum, gyakoriságát és a nap órája. Állítsa be az órát, válassza a **speciális beállítások megjelenítése**.
+2. Adja meg, amikor az eseményindító aktiválódik az időköz, gyakoriságát és a nap órájának beállításával. Válassza ki, hogy az óra, **speciális beállítások megjelenítése**.
 
-   ![Adja hozzá a "Ütemezés – ismétlődési" eseményindító](./media/logic-apps-control-flow-loops/do-until-loop-set-trigger-properties.png)
+   !["Ütemezés – ismétlődés" eseményindító hozzáadása](./media/logic-apps-control-flow-loops/do-until-loop-set-trigger-properties.png)
 
    | Tulajdonság | Érték |
    | -------- | ----- |
@@ -167,75 +167,75 @@ Például 8:00 órakor naponta, a logikai alkalmazás növeli a változó mindad
    | **Ezekben az órákban** | 8 |
    ||| 
 
-3. Válassza ki az eseményindító **új lépés** > **művelet hozzáadása**. Keresse meg a "változók", és válassza ki ezt a műveletet: **változók - inicializálási változó**
+3. Az eseményindító területén válassza a **új lépés** > **művelet hozzáadása**. Keresse meg a "változók", és válassza a művelet: **változók – változó inicializálása**
 
-   ![Adja hozzá a "Változók - inicializálási változó" művelet](./media/logic-apps-control-flow-loops/do-until-loop-add-variable.png)
+   ![Adja hozzá a "Változók – változó inicializálása" művelet](./media/logic-apps-control-flow-loops/do-until-loop-add-variable.png)
 
-4. Ezekkel az értékekkel a változó beállítása:
+4. Állítsa be ezeket az értékeket a változót:
 
-   ![Változó tulajdonságainak beállítása](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
+   ![Változó tulajdonságainak megadása](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
 
    | Tulajdonság | Érték | Leírás |
    | -------- | ----- | ----------- |
    | **Name (Név)** | Korlát | A változó neve | 
    | **Típus** | Egész szám | A változó adattípusa | 
-   | **Érték** | 0 | A változó a kezdőérték | 
+   | **Érték** | 0 | A változó értéke a indítása | 
    |||| 
 
-5. Az a **inicializálása változó** művelet, válassza a **új lépés** > **további**. Válassza ki a hurok: **csak egy tegye hozzáadása**
+5. Alatt a **változó inicializálása** műveletet, válassza a **új lépés** > **további**. Válassza ki a hurok: **egy do until hozzáadása**
 
-   !["Do csak" loop hozzáadása](./media/logic-apps-control-flow-loops/do-until-loop-add-until-loop.png)
+   !["Do-until" ciklus hozzáadása](./media/logic-apps-control-flow-loops/do-until-loop-add-until-loop.png)
 
-6. A hurok kilépési feltétele build kiválasztásával a **korlát** változó és a **egyenlő** operátor. Adja meg **10** összehasonlító értékeként.
+6. Válassza a hurok kilépési feltétele készítését a **korlátot** változót és a **egyenlő** operátor. Adja meg **10** összehasonlító értéket.
 
-   ![Build leállítása a hurok kilépési feltétele](./media/logic-apps-control-flow-loops/do-until-loop-settings.png)
+   ![Build leállítása folyamatban van a hurok kilépési feltétele](./media/logic-apps-control-flow-loops/do-until-loop-settings.png)
 
-7. Válassza ki a hurok belül **művelet hozzáadása**. "Változó" keressen, és adja hozzá az ezzel a művelettel: **változók - növekmény változó**
+7. A hurok belül válassza **művelet hozzáadása**. Keresse meg a "változók", és adja hozzá az ezzel a művelettel: **változók – változó értékének növelése**
 
-   ![A változó növekvő művelet hozzáadása](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable.png)
+   ![Művelet hozzáadása a változó növekszik](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable.png)
 
 8. A **neve**, jelölje be a **korlát** változó. A **érték**, adja meg az "1". 
 
-   ![1 "Korlátot" növekmény](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
+   ![1 "Limit" növekmény](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
 
-9. Alatt, de a hurok kívül az e-mailt küld művelet hozzáadása. Ha a rendszer kéri, jelentkezzen be az e-mail-fiókjába.
+9. Alatt, de a tömbön kívül adjon hozzá egy műveletet, amely e-mailt küld. Ha a rendszer kéri, jelentkezzen be az e-mail-fiókjába.
 
-   ![Műveletet, amely e-mailt küld](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
+   ![E-mailt elküldő művelet hozzáadása](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
 
-10. Az e-mailt tulajdonságainak beállítása. Adja hozzá a **korlát** változó a tulajdonosnak. Ezzel a módszerrel úgy ellenőrizheti a változó aktuális értéke megfelel a megadott feltétel, például:
+10. Állítsa be az e-mail-tulajdonságok. Adja hozzá a **korlát** változó a tulajdonosnak. Így ellenőrizheti, a változó aktuális értéke megfelel a megadott feltétel, például:
 
-    ![E-mailek tulajdonságainak beállítása](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
+    ![E-mail-tulajdonságok beállítása](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
     | Tulajdonság | Érték | Leírás |
     | -------- | ----- | ----------- | 
-    | **Címzett** | *<email-address@domain>* | a címzett e-mail címét. Tesztelési, e-mail címét használja. | 
-    | **Tárgy** | Aktuális érték "Korlát" **korlátot** | Adja meg az e-mail tárgyát. Például győződjön meg arról, hogy a **korlát** változó. | 
-    | **Törzs** | <*email-content*> | Adja meg az elküldeni kívánt e-mail üzenet tartalma. Ehhez a példához írja be a függetlenül zárult szöveges. | 
+    | **Címzett** | *<email-address@domain>* | a címzett e-mail címét. Tesztelésre a saját e-mail cím használható. | 
+    | **Tárgy** | Jelenlegi "Limit" értéke **korlát** | Adja meg az e-mail tárgyát. Ebben a példában győződjön meg arról, hogy tartalmazzák a **korlát** változó. | 
+    | **Törzs** | <*email-content*> | Adja meg az e-mail üzenet tartalma is szeretne küldeni. Ebben a példában adja meg bármilyen kívánt szöveg. | 
     |||| 
 
-11. Mentse a logikai alkalmazást. Manuálisan tesztelje a Logic Apps alkalmazást, a designer eszköztáron kattintson a **futtatása**.
+11. Mentse a logikai alkalmazást. Manuális tesztelése a logikai alkalmazást, a Tervező eszköztárán válassza a **futtatása**.
 
-    Fut a logika elindulása után a tartalomhoz, amelyet e-mailt kap:
+    Miután a logikai futni kezd, kap egy e-mailt a megadott tartalommal:
 
-    ![Beérkezett e-mail](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
+    ![Fogadott e-mailben](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
 
-## <a name="prevent-endless-loops"></a>Végtelen hurkok megakadályozása
+## <a name="prevent-endless-loops"></a>Végtelen hurkok elkerülése
 
-Egy "Csak" hurok van alapértelmezett korlát végrehajtási le, ha az alábbi feltételek valamelyikének fordulhat elő:
+Egy "Csak" hurkot rendelkezik alapértelmezett korlátai, állítsa le a végrehajtást, ha bármely feltétel:
 
 | Tulajdonság | Alapértelmezett érték | Leírás | 
 | -------- | ------------- | ----------- | 
-| **Száma** | 60 | A maximális száma, amelyek végrehajtása a hurok kilépjen-e hurok. Az alapértelmezett érték 60 ciklusokat. | 
-| **Időtúllépés** | PT1H | A maximális időt a hurok előtt hurkot futtatásához kilép. Alapértelmezés szerint egy óra, és az ISO 8601 formátum van megadva. <p>Az időtúllépés értéke minden hurok ciklus állapított meg. A ciklus minden művelet tovább tart, mint az időkorlátot, ha az aktuális ciklus nem leállítása, de a következő ciklusban nem indul el, mert a korlát feltétel nem teljesül. | 
+| **Száma** | 60 | Hurkok, amely előtt a hurok kilépjen maximális számát. Az alapértelmezett érték 60 ciklusokat. | 
+| **Időtúllépés** | PT1H | Kilépés a legnagyobb egy hurkot, mielőtt a hurok futási idejét. Az alapértelmezett érték egy óra és az ISO 8601 formátumban van megadva. <p>Az időtúllépés értéke abban az esetben minden ciklus ciklus. Ha a hurok bármely művelet, mint a megadott időkorláton hosszabb időt vesz igénybe, a jelenlegi időszakra leállítása nem, de a következő ciklusig az újbóli nem indul el, mert a korlát feltétel nem teljesül. | 
 |||| 
 
-Alapértelmezett működés felső korlátjának módosításához válassza **speciális beállítások megjelenítése** hurok művelet alakú.
+Ezek alapértelmezett korlátok módosításához válassza **speciális beállítások megjelenítése** a hurok művelet minősége.
 
 <a name="until-json"></a>
 
-## <a name="until-definition-json"></a>"Csak" definition (JSON)
+## <a name="until-definition-json"></a>"Until" definíciójának (JSON)
 
-Ha a logikai alkalmazásnak kódnézetben dolgozik, megadhat egy `Until` hurok a Logic Apps alkalmazást JSON-definícióban, például:
+Ha a logikai alkalmazás kódnézete a dolgozik, megadhat egy `Until` hurok a JSON-definíciójában a logikai alkalmazás, például:
 
 ``` json
 "actions": {
@@ -273,10 +273,10 @@ Ha a logikai alkalmazásnak kódnézetben dolgozik, megadhat egy `Until` hurok a
 },
 ```
 
-Egy másik példa a "Csak" hurok meghívja a HTTP-végponttal, amely létrehoz egy erőforrást, és leáll, amikor a HTTP-válasz törzsében "Befejezve" állapotú adja vissza. Végtelen hurkok megelőzése érdekében a hurok azt is leáll, ha fordulhat elő, az alábbi feltételek valamelyikének:
+Egy másik példa a "Csak" hurkot meghívja egy HTTP-végpontot, amely egy erőforrást hoz létre, és leáll, amikor a HTTP-válasz törzsében "Kész" állapot adja vissza. Végtelen hurkok elkerülése érdekében a hurok azt is leáll, ha bármely feltétel:
 
-* A hurok 10-szer által megadott futott a `count` attribútum. Az alapértelmezett érték 60 alkalommal. 
-* A hurok megpróbálta két órán keresztül leírt módon futtassa a `timeout` attribútum ISO 8601 formátumban. Az alapértelmezett érték 1 óra.
+* A hurok 10 alkalommal által megadott futott a `count` attribútum. Az alapértelmezett érték 60 alkalommal. 
+* A hurok próbálta meg két órán keresztül által megadott futtassa a `timeout` attribútum ISO 8601 formátumban. Az alapértelmezett érték egy óra.
   
 ``` json
 "actions": {
@@ -311,11 +311,11 @@ Egy másik példa a "Csak" hurok meghívja a HTTP-végponttal, amely létrehoz e
 ## <a name="get-support"></a>Támogatás kérése
 
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Az elküldés és a szolgáltatásokat és javaslataikat, szavazhatnak [Azure Logic Apps felhasználói visszajelzési webhelyet](http://aka.ms/logicapps-wish).
+* Az elküldés és a funkciók és javaslatok, szavazzon [Azure Logic Apps felhasználói visszajelzések oldalon](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>További lépések
 
-* [A lépéseket (feltételes utasítások) feltétel alapján](../logic-apps/logic-apps-control-flow-conditional-statement.md)
-* [Futtatás (kapcsoló utasítások) eltérő értékek alapján](../logic-apps/logic-apps-control-flow-switch-statement.md)
-* [Futtatás vagy egyesítési párhuzamos lépéseket (ágak)](../logic-apps/logic-apps-control-flow-branches.md)
-* [Futtassa a csoportosított (hatókör) állapota alapján](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
+* [Hajtsa végre a lépéseket, egy feltételt (feltételes kifejezések) alapján](../logic-apps/logic-apps-control-flow-conditional-statement.md)
+* [Hajtsa végre a lépéseket, a különböző értékek (switch-utasítások) alapján](../logic-apps/logic-apps-control-flow-switch-statement.md)
+* [Futtatás vagy egyesítési párhuzamos lépéseket (ág)](../logic-apps/logic-apps-control-flow-branches.md)
+* [Hajtsa végre a lépéseket, a csoportosított műveleti állapota (hatóköröket) alapján](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)

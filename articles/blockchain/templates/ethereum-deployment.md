@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 5/21/2018
+ms.date: 10/29/2018
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: 823bea9bac8ff270d5b5c02e3b76a2f7236c9c99
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: fa58ecf4607efc1d212e40b98d199756d4b987f8
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242554"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231797"
 ---
 # <a name="ethereum-proof-of-work-consortium-solution-template"></a>Ethereum proof of work consortium megoldássablon
 
@@ -119,7 +119,7 @@ Negyedik régió| Negyedik régióban való üzembe helyezése a consortium netw
 
 ### <a name="network-size-and-performance"></a>A hálózat méretétől és a teljesítmény
 
-A következő **méretének és teljesítményének hálózati** bemenetek a consortium hálózathoz, például számát és méretét, adatbányászati és tranzakciós csomópontok méretét adja meg.
+A következő **méretének és teljesítményének hálózati** méretét, a consortium network bemenetek megadása. Például számát és méretét, adatbányászati és tranzakciós csomópontok.
 
 ![A hálózat méretétől és a teljesítmény](./media/ethereum-deployment/network-size-performance.png)
 
@@ -261,10 +261,10 @@ Ezután importálja a modult:
 
 Végül futtassa a függvényt a megfelelő bemenet:
 
-- **MyGatewayResourceId** : az átjáró erőforrás elérési útja. Ez az a sablon üzembe helyezési kimeneti paraméter nevű **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **OtherGatewayResourceId** : a csatlakozó tag átjáró erőforrás elérési útja. Ez a csatlakozó tagja által biztosított, és a sablon üzembe helyezési kimeneti paraméter a is neve **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **Kapcsolat neve** : azonosíthatja a Gateway-kapcsolat nevét.
-- **Megosztott kulcs** : két tagjai között a consortium network, amely kapcsolatot létesít az előre meghatározott titkos kulcsot.
+- **MyGatewayResourceId:** a átjáró erőforrás elérési útja. Ez az a sablon üzembe helyezési kimeneti paraméter nevű **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **OtherGatewayResourceId:** a csatlakozó tag átjáró erőforrás elérési útja. Ez a csatlakozó tagja által biztosított, és a sablon üzembe helyezési kimeneti paraméter a is neve **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **Kapcsolat neve:** azonosíthatja a Gateway-kapcsolat nevét.
+- **Megosztott kulcs:** két tagjai között a consortium network, amely kapcsolatot létesít az előre meghatározott titkos kulcsot.
 
 **CreateConnection** -MyGatewayResourceId <resource path of your Gateway> - OtherGatewayResourceId < a csatlakozó tag átjáró erőforrás elérési útja > - ConnectionName Sajátkapcsolat - SharedKey "MySharedKeyAbc123"
 
@@ -274,11 +274,11 @@ Az Azure CLI-szkript letöltése, és helyileg tárolja. A sablon üzembe helyez
 
 Futtassa a parancsfájlt a megfelelő bemenet:
 
-- **MyGatewayResourceId** : az átjáró erőforrás elérési útja. Ez az a sablon üzembe helyezési kimeneti paraméter nevű **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **OtherGatewayResourceId** : a csatlakozó tag átjáró erőforrás elérési útja. Ez a csatlakozó tagja által biztosított, és a központi telepítés is nevű sablonparaméter üzembe helyezési **CONSORTIUM_MEMBER_GATEWAY_ID**.
-- **Kapcsolat neve** : azonosíthatja a Gateway-kapcsolat nevét.
-- **Megosztott kulcs** : két tagjai között a consortium network, amely kapcsolatot létesít az előre meghatározott titkos kulcsot.
-- **Hely** : az Azure-régió, ahol az átjáró erőforrás üzembe van helyezve.
+- **MyGatewayResourceId:** a átjáró erőforrás elérési útja. Ez az a sablon üzembe helyezési kimeneti paraméter nevű **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **OtherGatewayResourceId:** a csatlakozó tag átjáró erőforrás elérési útja. Ez a csatlakozó tagja által biztosított, és a központi telepítés is nevű sablonparaméter üzembe helyezési **CONSORTIUM_MEMBER_GATEWAY_ID**.
+- **Kapcsolat neve:** azonosíthatja a Gateway-kapcsolat nevét.
+- **Megosztott kulcs:** két tagjai között a consortium network, amely kapcsolatot létesít az előre meghatározott titkos kulcsot.
+- **Hely:** az Azure-régióban, az átjáró erőforrás üzembe van helyezve.
 
 ``` powershell
 az network vpn-connection create --name $ConnectionName --resource-group
@@ -316,7 +316,7 @@ A bővítmény telepítéséhez a Chrome-ban, Ugrás a testreszabás, és szabá
 
 ![MetaMask bővítmény](./media/ethereum-deployment/metamask-extension.png)
 
-A telepítést követően nyissa meg a MetaMask, és hozzon létre egy új tárolót. Alapértelmezés szerint a tároló csatlakoznak a Morden tesztelési célú hálózat. Ez az üzembe helyezett privát consortium hálózati kifejezetten a terheléselosztó tartománynévcímkéje a tranzakció csomópontok csatlakozni kell. A sablon kimenetből lekérni a közzétett Ethereum RPC végpont a következő port 8545, mivel `ETHEREUM-RPC-ENDPOINT`, és adja meg az egyéni RPC alább látható módon.
+A telepítést követően nyissa meg a MetaMask, és hozzon létre egy új tárolót. Alapértelmezés szerint a tároló csatlakoznak a Morden tesztelési célú hálózat. Módosítsa az kifejezetten a terheléselosztó tartománynévcímkéje a tranzakció csomópontok, az üzembe helyezett privát consortium hálózathoz való csatlakozáshoz. A sablon kimenetből lekérni a közzétett Ethereum RPC végpont a következő port 8545, mivel `ETHEREUM-RPC-ENDPOINT`, és adja meg az egyéni RPC alább látható módon.
 
 ![MetaMask beállításai](./media/ethereum-deployment/metamask-settings.png)
 

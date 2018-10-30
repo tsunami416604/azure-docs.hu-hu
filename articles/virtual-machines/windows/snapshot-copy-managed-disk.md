@@ -14,16 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 87d78178c32aea3ae601983ec14e9df0732b59e2
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 0f223660f8dc99b590f8aa80a03d60fcbf3aa5d3
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091300"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232579"
 ---
 # <a name="create-a-snapshot"></a>Pillanatkép létrehozása
 
-Pillanatkép a virtuális merevlemez (VHD) egy teljes körű, csak olvasható példányát. A rendszer- és lemez VHD-t használja, mint a biztonsági mentés, vagy a virtuális gép (VM) hibák elhárításához pillanatképet is igénybe vehet. 
+Pillanatkép a virtuális merevlemez (VHD) egy teljes körű, csak olvasható példányát. A rendszer- és lemez VHD-t használja, mint a biztonsági mentés, vagy a virtuális gép (VM) hibák elhárításához pillanatképet is igénybe vehet.
+
+Ha azt tervezi, a pillanatkép használatával hozzon létre egy új virtuális Gépet, azt javasoljuk, hogy Ön bezárva, a virtuális gép pillanatkép, tisztítsa meg a folyamatban lévő folyamatok való kiléptetése előtt.
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata 
 

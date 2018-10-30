@@ -7,20 +7,22 @@ ms.service: firewall
 ms.topic: article
 ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: cba8ee486e13f00043a6b2092ae98bd84f9f6cba
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: cff31ba73730b7cf7cb27ecb132ec70806234924
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095176"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233395"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Azure Log Analytics tűzfal-minták
 
-A következő Log Analytics-minták az Azure-tűzfal naplók elemzéséhez használható.
+A következő Log Analytics-minták az Azure-tűzfal naplók elemzéséhez használható. A Log Analytics Nézettervező épül fel a mintafájlt a [Log Analytics Nézettervező](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) cikkben további információkat tartalmaz arról Nézetterv fogalma.
 
 ## <a name="log-analytics-view"></a>Log Analytics-nézet
 
-Íme egy példa log analytics vizualizációs konfigurálásához. Letöltheti a példa Vizualizáció [Itt](scripts/AzureFirewall.omsview). Hajtsa végre a nézet hozzáadása a log analytics-munkaterület az alábbi lépéseket:
+Íme egy példa log analytics vizualizációs konfigurálásához. A példa vizualizációkat letöltheti a [azure-docs-json-samples](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-firewall/AzureFirewall.omsview) tárház. A legegyszerűbben a jobb gombbal a hivatkozás ezen az oldalon, és *Mentés másként* , és adjon meg egy nevet, például **AzureFirewall.omsview**. 
+
+Hajtsa végre a nézet hozzáadása a log analytics-munkaterület az alábbi lépéseket:
 
 1. Az Azure Portalon nyissa meg a log analytics-munkaterületet.
 2. Nyissa meg **Designer megtekintése** alábbi **általános**.

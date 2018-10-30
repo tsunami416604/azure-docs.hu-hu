@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: ac184ce790a0700fcacc63f70c2bb321142d7224
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: aac59e087ba106bc20d94fea85cb8a3cd9273482
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320543"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233072"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Az Azure Logic Appsben hatókörökkel csoport állapota alapján műveletek futtatása
 
@@ -213,7 +213,7 @@ Ezután adjon hozzá egy hatókörhöz, hogy bizonyos műveletek csoport, és az
 
       ![Válassza ki a hatókör-állapotok](./media/logic-apps-control-flow-run-steps-group-scopes/select-run-after-statuses.png)
 
-   1. Ha elkészült, válassza ki a **kész**. 
+   1. Ha elkészült, válassza a **Kész** lehetőséget. 
    A feltétel most jeleníti meg a "-információk" ikont.
 
 1. Az a **ha igaz** és **ha hamis** ágak, adja hozzá a végrehajtani kívánt műveletek alapján minden hatókör állapotát, például az egy e-mailben vagy az üzenet küldése.
@@ -389,7 +389,7 @@ Ha kód nézetben dolgozik, megadhat egy hatókör struktúra a logikai alkalmaz
 ## <a name="get-support"></a>Támogatás kérése
 
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Küldje el, vagy szavazhat a funkciók és javaslatok, látogasson el a [Azure Logic Apps felhasználói visszajelzések oldalon](http://aka.ms/logicapps-wish).
+* Küldje el, vagy szavazhat a funkciók és javaslatok, látogasson el a [Azure Logic Apps felhasználói visszajelzések oldalon](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>További lépések
 

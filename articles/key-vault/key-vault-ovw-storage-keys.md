@@ -9,12 +9,12 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: adc8b84f0f22e85de88c4bd80c10a2a35d7b490a
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 02fffe7c4a3acff6ce6d68046eee4286003b1766
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114600"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232222"
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Az Azure Key Vault-Tárfiókkulcsok
 
@@ -31,38 +31,45 @@ ms.locfileid: "49114600"
 --------------
 1. [Az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) az Azure CLI telepítése   
 2. [Storage-fiók létrehozása](https://azure.microsoft.com/services/storage/)
-    - Ezen lépések végrehajtásával [dokumentum](https://docs.microsoft.com/azure/storage/) a storage-fiók létrehozása  
+    - Kövesse a jelen [dokumentum](https://docs.microsoft.com/azure/storage/) a storage-fiók létrehozása  
     - **Elnevezési irányelvei:** Tárfiókok nevének 3 – 24 karakter hosszúságúnak kell lennie, és számokat, és csak kisbetűket tartalmazhat.        
       
 <a name="step-by-step-instructions"></a>Útmutató lépés
 -------------------------
+Az az alábbi utasítások végrehajtásával, hogy társítja az Key Vault engedélyekkel kell rendelkeznie operátor a tárfiók szolgáltatásként
 
-1. Az erőforrás-Azonosítóját az Azure Storage-fiókot, amelyet kezelni szeretne kaphat.
-    a. Storage-fiók létrehozása után futtassa a következő parancsot a kezelni kívánt beolvasni a storage-fiók erőforrás-azonosító
+1. Miután létrehozott egy tárfiókot, a storage-fiók erőforrás-azonosító beolvasásához a következő parancsot, a felügyelni kívánt
+
     ```
     az storage account show -n storageaccountname (Copy ID out of the result of this command)
     ```
+    
 2. Alkalmazás azonosítója az Azure Key Vault szolgáltatás egyszerű beolvasása 
+
     ```
     az ad sp show --id cfa8b339-82a2-471a-a3c9-0fc0be7a4093
     ```
+    
 3. Tárolás kulcs operátori szerepkör hozzárendelése az Azure Key Vault Identity
+
     ```
     az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id hhjkh --scope idofthestorageaccount
     ```
+    
 4. Key Vault létrehozása felügyelt Tárfiók.     <br /><br />
-   Alábbi parancsot a tárfiókkulcsok rendszeresen újragenerálja a regenerációs időszakot a Key Vault kéri. Az alábbi azt állítja egy 90 napos regenerációs időszakot. 90 nap után a Key Vault "1. kulcs" újragenerálása és cseréje: key1"a"2. kulcs: az aktív kulcs.
-   ### <a name="key-regeneration"></a>Kulcs újragenerálása
+   Az alábbi azt állítja egy 90 napos regenerációs időszakot. 90 nap után a Key Vault "1. kulcs" újragenerálása és cseréje: key1"a"2. kulcs: az aktív kulcs.
+   
     ```
-    az keyvault storage add --vault-name <YourVaultName> -n <StorageAccountName> --active-key-name key2 --auto-generate-key --regeneration-period P90D --resource-id <Resource-id-of-storage-account>
+    az keyvault storage add --vault-name <YourVaultName> -n <StorageAccountName> --active-key-name key2 --auto-regenerate-key --regeneration-period P90D --resource-id <Resource-id-of-storage-account>
     ```
     Abban az esetben a felhasználó nem hozott létre a tárfiókot, és nem rendelkezik engedélyekkel a storage-fiókba, az alábbi lépéseket, győződjön meg arról, hogy a Key Vault a tárolási engedélyek segítségével kezelheti a fiók engedélyeit, állítsa be.
-    [!NOTE] Abban az esetben, hogy a felhasználó végrehajtja-e a tárfiókhoz, először lekérjük a felhasználói objektum azonosítója nem engedélyeket
+ > [!NOTE] 
+    Abban az esetben, hogy a felhasználó nem rendelkezik engedélyekkel a tárfiók először lekérjük a felhasználó objektumazonosítóját
 
     ```
     az ad user show --upn-or-object-id "developer@contoso.com"
 
-    az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover purge restore set setsas update
+    az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
     ```
 
 ### <a name="relevant-powershell-cmdlets"></a>Kapcsolódó Powershell-parancsmagok

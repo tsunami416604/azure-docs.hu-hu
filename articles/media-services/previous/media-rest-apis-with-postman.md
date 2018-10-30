@@ -1,60 +1,60 @@
 ---
-title: Az Azure Media Services REST API-hívásokhoz Postman konfigurálása
-description: Megtudhatja, hogyan Postman konfigurálása a Media Services REST API-hívásokat.
+title: Postman konfigurálása az Azure Media Services REST API-hívások
+description: Ismerje meg, a Media Services REST API-hívások a Postman konfigurálása.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: 72b110cac8d4945c958d760ff98e2da2f2796b62
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ee7f87a9c358f2b6ee655d13b74297a96b25cfcc
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788262"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233786"
 ---
-# <a name="configure-postman-for-media-services-rest-api-calls"></a>A Media Services REST API-hívások Postman konfigurálása
+# <a name="configure-postman-for-media-services-rest-api-calls"></a>A Media Services REST API-hívások a Postman konfigurálása
 
-Ez az oktatóanyag bemutatja, hogyan konfigurálhatja **Postman** így Azure Media Services (AMS) REST API-k hívására is használható. Az oktatóanyag bemutatja, hogyan környezet és a gyűjtés fájlok importálását **Postman**. A gyűjteményt, amely hívja az Azure Media Services (AMS) REST API-kat a HTTP-kérések csoportosított definíciókat tartalmazza. A környezeti változókat, amelyek a gyűjteményenként tartalmaz.
+Az oktatóanyag bemutatja, hogyan konfigurálhatja **Postman** így is használható az Azure Media Services (AMS) REST API-k meghívására. Az oktatóanyag bemutatja, hogyan környezet és a gyűjtemény fájlok importálását **Postman**. A gyűjtemény, amely az Azure Media Services (AMS) REST API-k hívása a HTTP-kérések csoportosított definíciókat tartalmazza. A környezeti változókat, amelyek a gyűjteményt tartalmaz.
 
-A környezet és a gyűjtemény cikkeket, amelyek bemutatják, hogyan különböző feladatokat az Azure Media Services REST API-k eléréséhez használatos.
+A környezet és a gyűjtemény cikkek, amelyek bemutatják a különböző feladatok az Azure Media Services REST API-k eléréséhez használatos.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Telepítse a [Postman](https://www.getpostman.com/) többi ügyfél a REST API-k az AMS REST oktatóanyagok némelyike látható. 
+- Telepítse a [Postman](https://www.getpostman.com/) REST-ügyfelet, hogy végrehajtsa az AMS REST oktatóanyagok egy részében látható REST API-kat. 
 
-    Használjuk **Postman** , de a többi eszközt lenne megfelelő. Más alternatív megoldások: **Visual Studio Code** , a többi beépülő modul vagy **Telerik Fiddler**. 
+    A **Postmant** használjuk, de bármely egyéb REST-eszköz is megfelelő. Egyéb alternatívák: **Visual Studio Code** REST beépülő modullal vagy **Telerik Fiddler**. 
 
 ## <a name="configure-the-environment"></a>A környezet konfigurálása 
 
-1. Hozzon létre egy .JSON kiterjesztésű fájlt, amely tartalmazza a környezeti változók AMS oktatóanyagok szerepel. A fájl neve (például **AzureMediaServices.postman_environment.json**). Nyissa meg a fájlt, és illessze be a kódot, amely meghatározza a Postman környezet [a kód listaelem](postman-environment.md). 
-2. Nyissa meg a **Postman**.
-3. A képernyő jobb, jelölje ki a **kezelése környezet** lehetőséget.
+1. A környezeti változókat az AMS oktatóanyagokban használt tartalmazó .json fájl létrehozásához. A fájl neve (például **AzureMediaServices.postman_environment.json**). Nyissa meg a fájlt, és illessze be a kódot, amely meghatározza a Postman környezetben [ez kódlista](postman-environment.md). 
+2. Nyissa meg a **Postmant**.
+3. A képernyő jobb oldalán válassza a **Manage environment (Környezet felügyelete)** lehetőséget.
 
     ![Fájl feltöltése](./media/media-services-rest-upload-files/postman-create-env.png)
-4. Az a **kezelése környezet** párbeszédpanel, kattintson a **importálási**.
-5. Keresse meg és jelölje ki a **AzureMediaServices.postman_environment.json** fájlt.
-6. A **AzureMedia** környezet jelenik meg.
+4. A **Manage environment (Környezet felügyelete)** párbeszédablakban kattintson az **Import (Importálás)** gombra.
+5. Keresse meg és válassza a **AzureMediaServices.postman_environment.json** fájlt.
+6. A **AzureMedia** környezet kerül.
 7. Zárja be a párbeszédpanelt.
 8. Válassza ki a **AzureMedia** környezetben.
 
     ![Fájl feltöltése](./media/media-services-rest-upload-files/postman-choose-env.png)
 
-## <a name="configure-the-collection"></a>A gyűjtemény konfigurálásához
+## <a name="configure-the-collection"></a>A gyűjtemény konfigurálása
 
-1. Hozzon létre egy .JSON kiterjesztésű fájlt, amely tartalmazza a **Postman** , amelyek szükségesek ahhoz, hogy a fájl feltöltése a Media Services összes műveletet tartalmazó gyűjtemény. A fájl neve (például **AzureMediaServicesOperations.postman_collection.json**). Nyissa meg a fájlt, és illessze be a kódot, amely meghatározza a **Postman** gyűjteményben [a kód listaelem](postman-collection.md).
-2. Kattintson a **importálása** a gyűjtemény fájl importálásához.
+1. Hozzon létre egy .JSON kiterjesztésű fájlt, amely tartalmazza a **Postman** adatgyűjtés és a Media Services-fájl feltöltéséhez szükséges összes műveletet. A fájl neve (például **AzureMediaServicesOperations.postman_collection.json**). Nyissa meg a fájlt, és illessze be a kódot, amely meghatározza a **Postman** gyűjteményben [ez kódlista](postman-collection.md).
+2. Kattintson az **Import (Importálás)** gombra a gyűjteményfájl importálásához.
 3. Válassza ki a **AzureMediaServicesOperations.postman_collection.json** fájlt.
 
     ![Fájl feltöltése](./media/media-services-rest-upload-files/postman-import-collection.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [eszközök feltöltése](media-services-rest-upload-files.md) cikk.  
+Tekintse meg a [adategységek feltöltése](media-services-rest-upload-files.md) cikk.  

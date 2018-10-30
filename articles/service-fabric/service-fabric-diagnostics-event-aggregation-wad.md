@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: a870c99718ecafe8af33e13be9aa46631888c8cb
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: d670b90404d441876727336fc50a848965082de5
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389683"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232494"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Események összesítése és -gyűjteményt Windows Azure Diagnostics használatával
 > [!div class="op_single_selector"]
@@ -292,7 +292,7 @@ Ha egy Application Insights fogadó használja az alábbi szakaszban leírtak sz
 
 ## <a name="send-logs-to-application-insights"></a>Naplók küldése az Application Insights
 
-Monitorozási és diagnosztikai adatok küldése az Application Insights (AI) elvégezhető a WAD-konfiguráció részeként. Ha úgy dönt, az esemény elemzési és vizualizációs használható a mesterséges Intelligencia, olvassa el a [beállítása egy AI fogadó](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template) a "WadCfg" részeként.
+Monitorozási és diagnosztikai adatok küldése az Application Insights (AI) elvégezhető a WAD-konfiguráció részeként. Ha úgy dönt, az esemény elemzési és vizualizációs használható a mesterséges Intelligencia, olvassa el a [beállítása egy AI fogadó](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template) a "WadCfg" részeként.
 
 ## <a name="next-steps"></a>További lépések
 

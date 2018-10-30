@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: troubleshooting
 ms.date: 10/06/2017
 ms.author: v-jerkin
-ms.openlocfilehash: b0b8fd3eb80d7418546788565402042de20ab3e7
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 2d43a73d93b24599b28af849ee9d1532441ef6bc
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129318"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233555"
 ---
 # <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 
@@ -35,9 +35,9 @@ Különösen fontos megőrizni az ügyfél-Azonosítót, és küldje vissza a k�
 
 Azonban amikor a Bing Web Search API hívása JavaScript, a böngésző beépített biztonsági funkciókat (CORS) előfordulhat, hogy megakadályozzák a fér hozzá a következő fejlécek értékeit.
 
-A fejlécek eléréséhez, hogy a Bing Web Search API-kérelem CORS proxyn keresztül. Ilyen proxyn válasza rendelkezik egy `Access-Control-Expose-Headers` fejléc adott listáinak válaszfejlécek, és elérhetővé teszi azokat a JavaScript.
+A fejlécek eléréséhez, hogy a Bing Web Search API-kérelem CORS proxyn keresztül. Az ilyen proxyk válasza rendelkezik egy `Access-Control-Expose-Headers` fejléccel, amely engedélyezési listára teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
 
-Egyszerű, hogy a CORS-proxy telepítéséhez a [oktatóanyag alkalmazása](tutorial-bing-web-search-single-page-app.md) eléréséhez a választható ügyféltanúsítvány-fejléceket. Ha még nem rendelkezik, először [a Node.js telepítéséhez](https://nodejs.org/en/download/). Majd adja meg a következő parancsot a parancssorba.
+Egyszerű, hogy a CORS-proxy telepítéséhez a [oktatóanyag alkalmazása](tutorial-bing-web-search-single-page-app.md) eléréséhez a választható ügyféltanúsítvány-fejléceket. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Majd adja meg a következő parancsot a parancssorba.
 
     npm install -g cors-proxy-server
 
@@ -45,17 +45,17 @@ Ezután módosítsa a Bing Web Search API-végpont lévő a HTML-fájl:
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
 
-Végezetül indítsa el a CORS-proxy a következő parancsot:
+Végül indítsa el a CORS-proxyt a következő paranccsal:
 
     cors-proxy-server
 
-Hagyja meg a parancssori ablakban nyissa meg az oktatóanyag alkalmazása; használata közben az ablak bezárása leállítja a proxy. A bővíthető HTTP-fejlécek szakaszban alább a keresési eredmények között, most már megtekintheti a `X-MSEdge-ClientID` fejléc (többek között), és ellenőrizze, hogy minden egyes kérés esetében azonos.
+Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
 
 ## <a name="response-headers-in-production"></a>Éles környezetben válaszfejlécek
 
 Az előző válasz leírt CORS proxy megközelítés a fejlesztés, tesztelés és tanulás a megfelelő.
 
-Éles környezetben azonban kell üzemeltetése egy kiszolgálóoldali parancsprogram, amely a Bing Web Search API weblapként ugyanabban a tartományban. Ez a szkript kell ténylegesen hajtsa végre az API-hívások kérésre a weblap JavaScript-alapú, és adja át az összes eredmény, beleértve a fejléceket, az ügyfélnek. A két erőforrás (oldal és parancsfájl) oszt meg egy eredeti adatforrást, mert a CORS nem jut, és a speciális fejlécek acessible a JavaScript a weblapon.
+Éles környezetben azonban kell üzemeltetése egy kiszolgálóoldali parancsprogram, amely a Bing Web Search API weblapként ugyanabban a tartományban. Ez a szkript kell ténylegesen hajtsa végre az API-hívások kérésre a weblap JavaScript-alapú, és adja át az összes eredmény, beleértve a fejléceket, az ügyfélnek. A két erőforrás (oldal és parancsfájl) oszt meg egy eredeti adatforrást, mert a CORS nem jut, és a speciális fejlécek elérhetők a JavaScript a weblapon.
 
 Ez a megközelítés is védelmet nyújt az API-kulcsot a nyilvános való kitettség mivel csak a kiszolgálóoldali parancsprogram szükség van. A szkript egy másik módszer segítségével ellenőrizze, hogy a kérés engedélyezett.
 

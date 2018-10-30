@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: c90ef26c0170db67b1d422701b6969ca3f9c9e38
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 9f2adfcbf2d6ca5de79cc787029f5139138b0e52
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958516"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230437"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault hozzáadása a webalkalmazás a Visual Studio csatlakoztatott szolgáltatásai segítségével
 
@@ -57,7 +57,7 @@ A módosításokat, hogy csatlakoztatott szolgáltatásai lehetővé teszi a pro
 
    ![Csatlakoztatott szolgáltatás hozzáadása a projekthez](media/vs-key-vault-add-connected-service/KeyVaultConnectedService4.PNG)
 
-1. Ezután adjon hozzá egy titkos kulcsot a Key vaultban az Azure-ban. A portálon jó helyen lekéréséhez kattintson a kezelés titkos kulcsok a Key vaultban tárolt mutató hivatkozás. Ha már bezárta a lap, vagy a projekthez, navigálhat a a [az Azure portal](https://portal.azure.com) kiválasztásával **minden szolgáltatás**alatt **biztonsági**, válassza a **Key Vault**, majd válassza ki az újonnan létrehozott Key Vault.
+1. Ezután adjon hozzá egy titkos kulcsot a Key vaultban az Azure-ban. A portálon jó helyen lekéréséhez kattintson a kezelés titkos kulcsok a Key vaultban tárolt mutató hivatkozás. Ha már bezárta a lap, vagy a projekthez, navigálhat a a [az Azure portal](https://portal.azure.com) kiválasztásával **minden szolgáltatás**alatt **biztonsági**, válassza a **Key Vault**, majd válassza ki a létrehozott Key Vault.
 
    ![Navigálás a portálon](media/vs-key-vault-add-connected-service/manage-secrets-link.jpg)
 
@@ -65,7 +65,7 @@ A módosításokat, hogy csatlakoztatott szolgáltatásai lehetővé teszi a pro
 
    ![Titkos kulcs létrehozás/importálás](media/vs-key-vault-add-connected-service/generate-secrets.jpg)
 
-1. Adja meg a titkos kulcs, például a "MySecret", és adjon neki teszteléshez használhat bármilyen karakterlánc típusú értéket, majd válassza a **létrehozás** gombra.
+1. Adja meg a titkos kulcs, például a "MySecret" és a teszteléshez használhat bármilyen karakterlánc típusú értéket adjon meg hozzá, majd válassza a **létrehozás** gombra.
 
    ![Titkos kulcs létrehozása](media/vs-key-vault-add-connected-service/create-a-secret.jpg)
 
@@ -73,94 +73,62 @@ A módosításokat, hogy csatlakoztatott szolgáltatásai lehetővé teszi a pro
  
 Most a kód a titkos kulcsokat is elérheti. A következő lépések eltérnek attól függően, hogy a ASP.NET 4.7.1- vagy ASP.NET Core.
 
-## <a name="access-your-secrets-in-code-aspnet-core-projects"></a>A titkos kód (az ASP.NET Core-projektek) eléréséhez
+## <a name="access-your-secrets-in-code"></a>A titkos kód eléréséhez
 
-A kapcsolat a Key Vault beállítása indításkor implementáló osztályt [Microsoft.AspNetCore.Hosting.IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup?view=aspnetcore-2.1) használatával, amely az indítási viselkedést leírt [egy külső alkalmazás javítása az ASP.NET Core és IHostingStartup szerelvény](/aspnet/core/fundamentals/host/platform-specific-configuration). Az indítási osztályt használ két, a Key Vault kapcsolati adatait tartalmazó környezeti változókat: ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONENABLED, állítsa igaz értékre, és az ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONVAULT, a kulcs beállítása Tároló URL-címe. A launchsettings.json fájlba kerülnek hozzáadásra, amikor futtatja a **csatlakoztatott szolgáltatás hozzáadása** folyamat.
+1. A két nuget-csomagok telepítéséhez [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet-kódtárakat.
 
-A titkos kulcsok elérése:
+2. Nyissa meg a Program.cs fájlt, és frissítse a kódot az alábbira: 
+```
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            BuildWebHost(args).Run();
+        }
 
-1. A Visual Studióban, az ASP.NET Core-projektben most már hivatkozhat titkos adatokat az alábbi kifejezések használatával a kódban:
- 
-   ```csharp
-      config["MySecret"] // Access a secret without a section
-      config["Secrets:MySecret"] // Access a secret in a section
-      config.GetSection("Secrets")["MySecret"] // Get the configuration section and access a secret in it.
-   ```
+        public static IWebHost BuildWebHost(string[] args) =>
+           WebHost.CreateDefaultBuilder(args)
+               .ConfigureAppConfiguration((ctx, builder) =>
+               {
+                   var keyVaultEndpoint = GetKeyVaultEndpoint();
+                   if (!string.IsNullOrEmpty(keyVaultEndpoint))
+                   {
+                       var azureServiceTokenProvider = new AzureServiceTokenProvider();
+                       var keyVaultClient = new KeyVaultClient(
+                           new KeyVaultClient.AuthenticationCallback(
+                               azureServiceTokenProvider.KeyVaultTokenCallback));
+                       builder.AddAzureKeyVault(
+                           keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
+                   }
+               }
+            ).UseStartup<Startup>()
+             .Build();
 
-1. .Cshtml lapon tegyük fel, hogy About.cshtml, adja hozzá a @inject irányelv tetején, a fájl egy változó beállításához használhatja a Key Vault-konfiguráció.
+        private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
+    }
+```
+3. Ezután nyissa meg a About.cshtml.cs fájlt, és írja be az alábbi kódot
+    1. Ez Microsoft.Extensions.Configuration hivatkozást tartalmaz a utasítás használatával    
+        ```
+        using Microsoft.Extensions.Configuration
+        ```
+    2. Ez a konstruktor hozzáadása
+        ```
+        public AboutModel(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+        ```
+    3. Frissítse a OnGet módot. A helyőrző értékét az itt látható a fenti parancsok létrehozott titkos nevű frissítése
+        ```
+        public void OnGet()
+        {
+            //Message = "Your application description page.";
+            Message = "My key val = " + _configuration["<YourSecretNameThatWasCreatedAbove>"];
+        }
+        ```
 
-   ```cshtml
-      @inject Microsoft.Extensions.Configuration.IConfiguration config
-   ```
-
-1. Egy teszt, ellenőrizheti, hogy a titkos kód érhető el az egyik oldalra megjelenítésével. Használat @config a konfigurációs változója hivatkozni.
- 
-   ```cshtml
-      <p> @config["MySecret"] </p>
-      <p> @config.GetSection("Secrets")["MySecret"] </p>
-      <p> @config["Secrets:MySecret"] </p>
-   ```
-
-1. Hozhat létre és futtassa a webalkalmazást, navigáljon a névjegy lapra, és tekintse meg a "secret" értéket.
-
-## <a name="access-your-secrets-in-code-aspnet-471-projects"></a>Hozzáférési kód a titkos kulcsokat (ASP.NET 4.7.1 projektek)
-
-A kapcsolat a Key vault be van állítva a ConfigurationBuilder osztály, amely hozzá lett adva a web.config fájl futtatásakor információk a **csatlakoztatott szolgáltatás hozzáadása** folyamat.
-
-A titkos kulcsok elérése:
-
-1. Módosítsa a következőképpen web.config. A kulcsokat a helyőrzők, amely a Key Vault titkos értékeket az azurekeyvault értékre van ConfigurationBuilder lesz lecserélve.
-
-   ```xml
-     <appSettings configBuilders="AzureKeyVault">
-       <add key="webpages:Version" value="3.0.0.0" />
-       <add key="webpages:Enabled" value="false" />
-       <add key="ClientValidationEnabled" value="true" />
-       <add key="UnobtrusiveJavaScriptEnabled" value="true" />
-       <add key="MySecret" value="dummy1"/>
-       <add key="Secrets--MySecret" value="dummy2"/>
-     </appSettings>
-   ```
-
-1. A HomeController a névjegy vezérlő metódusban adja hozzá a következő sorokat beolvasni a titkos kulcsot, és tárolja a ViewBag.
- 
-   ```csharp
-            var secret = ConfigurationManager.AppSettings["MySecret"];
-            var secret2 = ConfigurationManager.AppSettings["Secrets--MySecret"];
-            ViewBag.Secret = $"Secret: {secret}";
-            ViewBag.Secret2 = $"Secret2: {secret2}";
-   ```
-
-1. A About.cshtml nézetben adja hozzá a következőt jeleníti meg a titkos kulcsot (csak tesztelés) értékét.
-
-   ```csharp
-      <h3>@ViewBag.Secret</h3>
-      <h3>@ViewBag.Secret2</h3>
-   ```
-
-1. Futtassa az alkalmazást helyileg, győződjön meg arról, hogy az Azure Portalon, a konfigurációs fájl nem a helyőrző értéket a megadott titkos érték olvashat.
-
-Ezután közzéteheti alkalmazását az Azure-bA.
-
-## <a name="publish-to-azure-app-service"></a>Közzététel az Azure App Service-ben
-
-1. Kattintson a jobb gombbal a projektcsomópontra, majd válassza **közzététel**. Megjelenik egy képernyő, amely szerint **válasszon egy közzétételi cél**. A bal oldalon válassza ki a **App Service-ben**, majd **hozzon létre új**.
-
-   ![Közzététel az App Service-ben](media/vs-key-vault-add-connected-service/AppServicePublish1.PNG)
-
-1. Az a **létrehozása App Service** képernyőn, győződjön meg arról, hogy az előfizetésben és erőforráscsoportban ugyanazt a Key Vault a létrehozott, és válassza ki, **létrehozás**.
-
-   ![App Service létrehozása](media/vs-key-vault-add-connected-service/AppServicePublish2.PNG)
-
-1. A webes alkalmazás létrehozása után a **közzététel** képernyő jelenik meg. Vegye figyelembe a közzétett webes alkalmazásba, az Azure-ban üzemeltetett URL-CÍMÉT. Ha látja **nincs** melletti **Key Vault**, továbbra is fennáll, ossza meg az App Service-ben való csatlakozáshoz milyen Key Vault. Válassza ki a **hozzáadása a Key Vault** hivatkozásra, és válassza ki a létrehozott Key Vault.
-
-   ![Adja hozzá a Key Vaulttal](media/vs-key-vault-add-connected-service/AppServicePublish3.PNG)
-
-   Ha látja **kezelése a Key Vault**, kattinthat, hogy az aktuális beállítások, szerkesztési engedéllyel megtekintése vagy módosítása a titkos kulcsok az Azure Portalon.
-
-1. Ezután válassza a webhely URL-címe hivatkozásra a webalkalmazás a böngészőben. Győződjön meg arról, hogy megjelenik-e a megfelelő értéket a Key vaultból.
-
-Gratulálunk, meggyőződött róla, hogy a webalkalmazás eléréséhez az Azure-ban biztonságosan tárolt titkos kulcsok a Key Vault használhatja.
+Futtassa az alkalmazást helyileg navigáljon az oldalról. Meg kell beolvasni a titkos érték
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

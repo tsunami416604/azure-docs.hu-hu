@@ -1,6 +1,6 @@
 ---
-title: Biztonsági integrálása az Azure architekturális tervek |} Microsoft Docs
-description: " Ez a cikk segít a az alkalmazás- és architektúra az Azure biztonsági integrálja a tervezési és megvalósítási könnyebb megérteni. "
+title: Biztonsági integrálása az Azure architekturális tervek |} A Microsoft Docs
+description: " Ez a cikk segítséget nyújt az Azure-ban biztonsági integrálhatók a tervezési és megvalósítási könnyebb az alkalmazások és szolgáltatások architektúrájának ismertetése. "
 services: security
 documentationcenter: na
 author: TomShinder
@@ -14,45 +14,45 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: f15378c50dbf80863305ed4d1f31ae75f46a7789
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 8ca9f0b75627e7ad366b3c02ec3126713a283ed2
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2017
-ms.locfileid: "25549430"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233735"
 ---
 # <a name="application-architecture-on-azure"></a>Alkalmazásarchitektúra az Azure-on
-Biztonságossá a felhőalapú megoldások a Microsoft Azure-ban egy erős architekturális foundation fontos. Mérnökök, tervezők és implementers minden alkalmazás- és architektúra erős ismerete kihasználhassa. A legalapvetőbb Tudásbázis segít megérteni a felhőalapú megoldások összetevőit, és könnyebben biztonsági integrálja a tervezési és megvalósítási minden szempontját.
+Védelme érdekében a felhőalapú megoldások, Microsoft Azure-ban egy erős architekturális foundation, kritikus fontosságú. Tervezők, tervezők és a végrehajtók összes kihasználhatják a alkalmazások és szolgáltatások architektúra erős ismerete. Ezen alapvető ismeretek segítségével megismerheti a felhőalapú megoldások összetevőit, és megkönnyíti a biztonsági integrálhatók a tervezési és megvalósítási minden aspektusát.
 
-Segítséget nyújt a architekturális vizsgálatok és tervek a következő vezetünk be:
+A következő segítséget nyújt az architekturális vizsgálatok és a tervek van:
 
-* Az architektúra infographics
-* Az architektúra tervrajzokat
+* Architekturális infografikák
+* Architektúrát szemléltető ábrák
 * Felhőalapú és nagyvállalati szimbólum beállítása
-* 3D tervezetének Visio sablon
+* Tervrajz 3D Visio-sablon
 
-## <a name="architectural-infographics"></a>Az architektúra infographics
-A Microsoft több architekturális kapcsolódó poszterek/infographics közzéteszi. Ezek a következők:
+## <a name="architectural-infographics"></a>Architekturális infografikák
+A Microsoft számos architekturális kapcsolódó poszterek/infografikák tesz közzé. Ezek a következők:
 
-* [Épület valós felhőalapú alkalmazásokhoz](https://azure.microsoft.com/documentation/infographics/building-real-world-cloud-apps/)
-* [A Cloud Serviceshez skálázás](https://azure.microsoft.com/documentation/infographics/cloud-services/)
+* [Valós felhőalapú alkalmazások létrehozása](https://azure.microsoft.com/documentation/infographics/building-real-world-cloud-apps/)
+* [A Cloud Services méretezése](https://azure.microsoft.com/documentation/infographics/cloud-services/)
 
-## <a name="architectural-blueprints"></a>Az architektúra tervrajzokat
-A Microsoft tesz közzé egy készletét magas szintű [architekturális tervrajzokat](http://aka.ms/azblueprints) bemutatja, hogyan hozhat létre a Microsoft termékeket rendszerek adott típusú.
-Minden egyes tervezetének alábbiakat:
+## <a name="architectural-blueprints"></a>Architektúrát szemléltető ábrák
+A Microsoft tesz közzé egy készletét magas szintű [architektúrát szemléltető ábrák](https://aka.ms/azblueprints) : hogyan hozhat létre az adott típusú rendszerekbe a Microsoft-termékek.
+Minden egyes tervezet v: tartalmaz
 
-* Egyszerű 2D Visio 2003-alapú fájl letöltése és módosítása
-* Színes meghatározó 3D perspektíva PDF-fájl szerkezeti terve bevezetni kevesebb műszaki célcsoportok számára
-* Videót, amely végigvezeti a 3D verziója
+* Egyszerű 2D-Visio 2003-alapú fájlt, amely letölthető és módosítása
+* Színes 3D perspektíva be a tervezet technikai célközönséggel a PDF-fájl
+* A videó, amely végigvezeti a 3D verzió
 
 ## <a name="cloud-and-enterprise-symbol-set"></a>Felhőalapú és nagyvállalati szimbólum beállítása
-[A Visio és szimbólumok betanítása videó megtekintése](http://aka.ms/CnESymbolsVideo) , majd [töltse le a felhő, és állítsa be a vállalati szimbólum](http://aka.ms/CnESymbols) Azure, a Windows Server, SQL Server és további műszaki anyagok létrehozásához. A szimbólumok architektúra, oktatóanyagok, bemutatók, adatlapok, infographics, tanulmányok emblémája és még a harmadik féltől származó könyvek is használhatja, ha a könyv betanítja személy is használja a Microsoft-termékek. Azonban nem használhatók felhasználói felületek használható.
+[A Visio és szimbólumok képzési videók megtekintése](https://aka.ms/CnESymbolsVideo) , majd [töltse le a felhőalapú és nagyvállalati szimbólum állítsa](https://aka.ms/CnESymbols) műszaki anyagok, amelyek bemutatják az Azure, a Windows Server, SQL Server és több létrehozása érdekében. Architektúra-diagramok, oktatóanyagok, bemutatók, adatlapok, infografikák, tanulmányok és még a harmadik féltől származó könyvek szereplő szimbólumok jelentései is használhatja, ha a könyv betanítja a Microsoft-termékek használhatnak. Azonban nem jogosultak a felhasználói felületek használatos.
 
-## <a name="3d-blueprint-visio-template"></a>3D tervezetének Visio sablon
-A 3D verziói a [Microsoft architektúra tervrajzokat](http://aka.ms/azblueprints) volt egy nem Microsoft-eszközzel hoztak létre. A 2015. augusztus 5 részeként rendszerrel szállított új Visio 2013 (vagy újabb verzió) sablont egy [Microsoft Architecture hitelesítő működés során, a terjesztés EDX.ORG](https://docs.microsoft.com/azure/architecture/#microsoft-architecture-certification-course).
+## <a name="3d-blueprint-visio-template"></a>Tervrajz 3D Visio-sablon
+A 3D verziói a [Microsoft architektúrát szemléltető ábrák](https://aka.ms/azblueprints) egy nem Microsoft eszköz kezdetben létrejöttek. Részeként 2015. augusztus 5-én új Visio 2013 (vagy újabb verzió) sablont le szállítani egy [Microsoft Architecture minősítési tanfolyam EDX.ORG elosztott](https://docs.microsoft.com/azure/architecture/#microsoft-architecture-certification-course).
 
-A sablon az állomásokon kívül is érhető el.
+A sablon a tanfolyam kívül is érhető el.
 
-* [Tekintse meg a képzés videót](http://aka.ms/3dBlueprintTemplateVideo) első, így megtudhatja, miért lehet hasznos
-* Töltse le a [Microsoft 3d tervezetének Visio sablon](http://aka.ms/3DBlueprintTemplate)
-* Töltse le a [felhőalapú és nagyvállalati szimbólumok](https://docs.microsoft.com/azure/architecture/#drawing-symbol-and-icon-sets) a 3D sablon használata
+* [Megtekintheti az oktatóvideót](https://aka.ms/3dBlueprintTemplateVideo) első, hogy tudja, mi mindent
+* Töltse le a [Microsoft tervezet 3d Visio-sablon](https://aka.ms/3DBlueprintTemplate)
+* Töltse le a [felhőalapú és nagyvállalati szimbólumok](https://docs.microsoft.com/azure/architecture/#drawing-symbol-and-icon-sets) a 3D-sablon használata

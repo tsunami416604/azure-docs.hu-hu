@@ -1,6 +1,6 @@
 ---
-title: Értékek - Azure Logic Apps mentése változók létrehozása |} Microsoft Docs
-description: Mentse és kezelése az Azure Logic Apps változók létrehozásával
+title: Változók értékei – Azure Logic Apps mentése létrehozása |} A Microsoft Docs
+description: Mentse és kezelése az Azure Logic Appsben változók létrehozásával
 services: logic-apps
 author: ecfan
 manager: jeconnoc
@@ -10,77 +10,77 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 0efce9fbbbd241f335f08bb258b6ba343982fdb9
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c0f2802bae366637fd93d47e33619746b7142f53
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299188"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231627"
 ---
-# <a name="create-variables-for-saving-and-managing-values-in-azure-logic-apps"></a>Mentés és kezelése az Azure Logic Apps értékek változók létrehozása
+# <a name="create-variables-for-saving-and-managing-values-in-azure-logic-apps"></a>Mentés és kezelése az Azure Logic Appsben értékek változók létrehozása
 
-Ez a cikk bemutatja, hogyan tárolhatja és változók létrehozásával a Logic Apps alkalmazást egészében meghiúsulhatnak értékekkel. Például változók segítségével hurkot futtató hányszor száma. Ha egy tömb keresztül léptetés, vagy egy adott cikk tömb ellenőrzése, segítségével változó minden tömb elemhez indexszámát hivatkozik. 
+Ez a cikk bemutatja, hogyan tárolhatja és változók létrehozásával a logikai alkalmazás teljes értékekkel működik. Például változók segítségével, amely hurkot hányszor száma. Amikor léptetés keresztül egy tömb, vagy az adott elem egy tömb ellenőrzése, használhatja egy változót való hivatkozáshoz a tömb mindegyik elemén indexszámát. 
 
-Létrehozhat például az egész szám, lebegőpontos, logikai érték, karakterlánc, tömb vagy objektum adattípusok változói. Miután létrehozott egy változót, más feladatok elvégzése, például:
+Az adattípusok, például az egész szám, lebegőpontos, logikai érték, karakterlánc, tömb vagy objektum változókat hozhat létre. Miután létrehozott egy változót, egyéb feladatok, például hajthatja végre:
 
 * GET, vagy hivatkozzon a változó értékét.
-* Növelheti vagy csökkentheti a változót egy állandó értékkel, más néven *növekmény* és *csökkentheti*.
-* Rendelje hozzá a változó egy másik értéket.
-* Helyezze be vagy *hozzáfűzése* egy karakterlánc vagy tömb legutóbbi, a változó értékét.
+* Növelheti vagy csökkentheti a változót egy állandó érték, más néven *növekmény* és *csökkentés*.
+* Rendeljen egy másik értéket a változóhoz.
+* Helyezze be vagy *hozzáfűzése* a változó értéke a legutóbbi alkalommal tömb vagy karakterlánc.
 
-Változók és azok globális csak az őket létrehozó logic app-példány belül. Továbbá megőrzik a hurok ismétlési belül a logic app-példány között. Való hivatkozáskor az egy változót, használja a változó nevét a jogkivonatot, nem a művelet neve, amely a szokásos módon való hivatkozáshoz egy művelet kimenetének létrehozása.
+Változók és azok globális csak belül a logikaialkalmazás-példányt, amely létrehozza őket. Emellett azok kivonatuk bármely ciklus ismétléseinek belül egy logikaialkalmazás-példányt. Ha egy változóra hivatkozik, használja a változó nevét a jogkivonatot, nem a művelet neve, amely a szokásos módon való hivatkozáshoz egy műveleti kimenetek.
 
-Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiók</a>. 
+Ha nem rendelkezik Azure-előfizetésem, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókkal</a>. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Kövesse a cikkben, az alábbiakban a szükséges elemeket:
+Ez a cikk követéséhez az alábbiakban szükséges elemek:
 
-* A logikai alkalmazást, ahová változó létrehozása 
+* A logikai alkalmazás, ahol szeretné változó létrehozása 
 
-  Ha most ismerkedik a logic apps, tekintse át a [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [gyors üzembe helyezés: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+  Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [a rövid útmutató: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-* A [eseményindító](../logic-apps/logic-apps-overview.md#logic-app-concepts) a Logic Apps alkalmazást első lépéseként 
+* A [eseményindító](../logic-apps/logic-apps-overview.md#logic-app-concepts) a logikai alkalmazás első lépéseként 
 
-  Mielőtt hozzáadhatna műveleteket az változók létrehozására és kezelésére, a logikai alkalmazás eseményindítót kell kezdődnie.
+  Az változók létrehozására és kezelésére vonatkozó műveletek hozzáadása előtt a logikai alkalmazás egy eseményindítóval kell elindítania.
 
 <a name="create-variable"></a>
 
 ## <a name="initialize-variable"></a>Változó inicializálása
 
-Hozzon létre egy változót, és az adattípus és a kezdeti érték – a Logic Apps alkalmazást az egy-egy művelettel belül deklarálható. Csak deklarálhatnak változók globális szinten, nem esik a hatókörök, a feltételek és a hurkok. 
+Hozzon létre egy változót, és az adattípus és a kezdeti érték – egy műveletet a logikai alkalmazásban lévő összes deklarálható. Akkor is csak deklarálja a változókat globális szinten, nem a hatókörök, feltételek és ciklusok belül. 
 
-1. Az a <a href="https://portal.azure.com" target="_blank">Azure-portálon</a> vagy a Visual Studio, nyissa meg a Logic Apps alkalmazást a Logic App tervezőben. 
+1. Az a <a href="https://portal.azure.com" target="_blank">az Azure portal</a> vagy a Visual Studio, a logikai alkalmazás megnyitása a Logikaialkalmazás-tervezőben. 
 
-   Ebben a példában az Azure portál és a logikai alkalmazás egy meglévő eseményindítót használ.
+   Ebben a példában egy meglévő eseményindítót használ az Azure portal és a egy logikai alkalmazást.
 
-2. A Logic Apps alkalmazást, ahol egy változó hozzáadni kívánt feladatütemezésekben kövesse az alábbi lépések egyikét: 
+2. A logikai alkalmazásban kívánja adjon hozzá egy változóhoz, feladatütemezésekben kövesse az alábbi lépéseket: 
 
-   * Az utolsó lépésben művelet hozzáadása, válassza ki a **új lépés** > **művelet hozzáadása**.
+   * Válassza ki az utolsó lépés a művelet hozzáadása, **új lépés** > **művelet hozzáadása**.
 
-     ![művelet hozzáadása](./media/logic-apps-create-variables-store-values/add-action.png)
+     ![Művelet hozzáadása](./media/logic-apps-create-variables-store-values/add-action.png)
 
-   * Lépések közötti művelet hozzáadása az egérmutatót a kapcsolódó nyíl ezért a pluszjel (+) jelenik meg. 
-   Válassza ki a plusz jelre, és válassza a **művelet hozzáadása**.
+   * Lépések közötti művelet hozzáadása, vigye az egérmutatót a csatlakozó mutató nyílra, megjelenik a plusz jelre (+). 
+   Válassza a plusz jelre, majd ez után **művelet hozzáadása**.
 
-3. A keresési mezőbe írja be a "változók" szűrőként. Válassza a műveletek listájának **változók - inicializálási változó**.
+3. A Keresés mezőbe írja be a "változók" szűrőként. Válassza a műveletek listájának **változók – változó inicializálása**.
 
-   ![Kijelölési művelet](./media/logic-apps-create-variables-store-values/select-initialize-variable-action.png)
+   ![Művelet kiválasztása](./media/logic-apps-create-variables-store-values/select-initialize-variable-action.png)
 
-4. Ezek az információk a változó:
+4. Adja meg ezt az információt a változó:
 
    | Tulajdonság | Szükséges | Érték |  Leírás |
    |----------|----------|-------|--------------|
-   | Name (Név) | Igen | <*változó-neve*> | Növelje a változó neve | 
-   | Típus | Igen | <*változó-típus*> | A változó az adattípus | 
-   | Érték | Nem | <*Kezdőérték*> | A változó kezdeti értéke <p><p>**Tipp**: nem kötelező, állítsa ezt az értéket az ajánlott eljárás, a változó mindig tudja kezdőértékét. | 
+   | Name (Név) | Igen | <*a változó neve*> | Növelje a változó neve | 
+   | Típus | Igen | <*változó-típus*> | A változó adattípusa | 
+   | Érték | Nem | <*Start-érték*> | A változó kezdeti értéke <p><p>**Tipp**: Bár nem kötelező, csak ezt az értéket ajánlott eljárásként, hogy mindig tudja, a kezdő érték a változó. | 
    ||||| 
 
    ![Változó inicializálása](./media/logic-apps-create-variables-store-values/initialize-variable.png)
 
-5. Most már folytathatja a hozzáadni kívánt műveleteket. Amikor elkészült, a designer eszköztáron válassza **mentése**.
+5. Most már folytathatja a hozzáadni kívánt műveleteket. Ha elkészült, a Tervező eszköztárán válassza a **mentése**.
 
-Ha átvált a tervező a kód nézet szerkesztése, ez a módszer a **inicializálása változó** művelet belül a logic app-definíciót, JavaScript Object Notation (JSON) formátumban jelenik meg:
+Ha átvált a tervezőben a nézet Kódszerkesztő, Íme módja a **változó inicializálása** művelet a logikai alkalmazás definíciójának, amely JavaScript Object Notation (JSON) formátumú belül jelenik meg:
 
 ```json
 "actions": {
@@ -98,9 +98,9 @@ Ha átvált a tervező a kód nézet szerkesztése, ez a módszer a **inicializ�
 },
 ```
 
-Az alábbiakban néhány más változó típusok példái:
+Az alábbiakban néhány egyéb változótípusok példákat:
 
-*Karakterlánc-változóvá*
+*Karakterlánc-változóhoz*
 
 ```json
 "actions": {
@@ -136,7 +136,7 @@ Az alábbiakban néhány más változó típusok példái:
 },
 ```
 
-*Egész számok tömb*
+*Az egész számok tömb*
 
 ```json
 "actions": {
@@ -154,7 +154,7 @@ Az alábbiakban néhány más változó típusok példái:
 },
 ```
 
-*Karakterláncok tömb*
+*Karakterláncot tartalmazó tömb*
 
 ```json
 "actions": {
@@ -176,10 +176,10 @@ Az alábbiakban néhány más változó típusok példái:
 
 ## <a name="get-the-variables-value"></a>A változó értékének beolvasása
 
-Beolvasása, vagy hivatkozzon egy változó tartalmát, is használhatja a [variables() függvény](../logic-apps/workflow-definition-language-functions-reference.md#variables) a Logic App Designer és a kód nézet szerkesztése.
-Való hivatkozáskor az egy változót, használja a változó nevét a jogkivonatot, nem a művelet neve, amely a szokásos módon való hivatkozáshoz egy művelet kimenetének létrehozása. 
+Beolvasni, vagy egy változó tartalmát hivatkozhat, használhatja a [variables() függvény](../logic-apps/workflow-definition-language-functions-reference.md#variables) a Logikaialkalmazás-Tervező, és a Kódszerkesztő megtekintése.
+Ha egy változóra hivatkozik, használja a változó nevét a jogkivonatot, nem a művelet neve, amely a szokásos módon való hivatkozáshoz egy műveleti kimenetek. 
 
-Például ebben a kifejezésben lekérése az elemeket a tömbváltozó [ebben a cikkben korábban létrehozott](#append-value) használatával a **variables()** függvény. A **string()** függvény karakterlánc-formátum a változó tartalmát adja vissza: `"1, 2, 3, red"`
+Például ez a kifejezés a elemeinek beolvasása a tömbváltozó [ebben a cikkben korábban létrehozott](#append-value) használatával a **variables()** függvény. A **string()** függvény karakterlánc-formátum a változó tartalmát adja vissza: `"1, 2, 3, red"`
 
 ```json
 @{string(variables('myArrayVariable'))}
@@ -189,35 +189,35 @@ Például ebben a kifejezésben lekérése az elemeket a tömbváltozó [ebben a
 
 ## <a name="increment-variable"></a>Változó értékének növelése 
 
-Növeléséhez vagy *növekmény* egy változó egy állandó értékkel adja hozzá a **változók - növekmény változó** műveletet úgy, hogy a Logic Apps alkalmazást. Ez a művelet csak egész és lebegőpontos változók működik.
+Növelheti vagy *növekmény* egy változót egy állandó értékkel adja hozzá a **változók – változó értékének növelése** művelet a logikai alkalmazáshoz. Ez a művelet csak egész szám és lebegőpontos szám értékű változók működik.
 
-1. Logic App tervezőben, ahol egy létező változó bővíteni szeretné feladatütemezésekben válasszon **új lépés** > **művelet hozzáadása**. 
+1. Logikaialkalmazás-Tervező, hol bővíteni szeretné egy meglévő változó, feladatütemezésekben válassza **új lépés** > **művelet hozzáadása**. 
 
-   Például a logikai alkalmazás már rendelkezik egy eseményindító és egy művelet által létrehozott egy változót. Igen adjon hozzá egy új műveletet az alábbi lépéseket:
+   Például a logikai alkalmazás már rendelkezik egy eseményindítót és a egy műveletet, amely egy változó létrehozva. Adjunk hozzá egy új művelet a következő lépéseket:
 
-   ![művelet hozzáadása](./media/logic-apps-create-variables-store-values/add-increment-variable-action.png)
+   ![Művelet hozzáadása](./media/logic-apps-create-variables-store-values/add-increment-variable-action.png)
 
-   Meglévő lépései közötti művelet hozzáadása az egérmutatót a kapcsolódó mutató nyílra, hogy a plusz jelre (+) jelenik meg. Válassza ki a plusz jelre, és válassza a **művelet hozzáadása**.
+   Meglévő lépések közötti művelet hozzáadása, vigye az egérmutatót a csatlakozó mutató nyílra, hogy a plusz jelre (+) jelenik meg. Válassza a plusz jelre, majd ez után **művelet hozzáadása**.
 
-2. A keresési mezőbe írja be a "növekmény változó" szűrőként. A műveletek listában válassza ki a **változók - növekmény változó**.
+2. A Keresés mezőbe írja be a "változó értékének növelése" szűrőként. A műveletek listájában válassza ki a **változók – változó értékének növelése**.
 
-   ![Válassza ki a "Biztonsági változó" művelet](./media/logic-apps-create-variables-store-values/select-increment-variable-action.png)
+   !["Változó értékének növelése" művelet kiválasztása](./media/logic-apps-create-variables-store-values/select-increment-variable-action.png)
 
-3. Adja meg ezt az információt a változó növekvő:
+3. Az információkat növekszik a változót:
 
    | Tulajdonság | Szükséges | Érték |  Leírás |
    |----------|----------|-------|--------------|
-   | Name (Név) | Igen | <*változó-neve*> | Növelje a változó neve | 
-   | Érték | Nem | <*növekményérték*> | Növekvő a változó értékét. Az alapértelmezett érték: egyet. <p><p>**Tipp**: nem kötelező, állítsa ezt az értéket az ajánlott eljárás, hogy mindig a meghatározott növekvő a változó értéke. | 
+   | Name (Név) | Igen | <*a változó neve*> | Növelje a változó neve | 
+   | Érték | Nem | <*növekmény-érték*> | Növekszik a változó értékét. Az alapértelmezett érték egyike. <p><p>**Tipp**: Bár nem kötelező, csak ezt az értéket ajánlott eljárásként, hogy mindig tudja, adott növekszik a változó értékét. | 
    |||| 
 
    Példa: 
    
-   ![Növekvő értéket – példa](./media/logic-apps-create-variables-store-values/increment-variable-action-information.png)
+   ![Növekmény érték példa](./media/logic-apps-create-variables-store-values/increment-variable-action-information.png)
 
-4. Amikor elkészült, a designer eszköztáron válassza **mentése**. 
+4. Ha elkészült, a Tervező eszköztárán válassza a **mentése**. 
 
-Ha átvált a tervező a kód nézet szerkesztése, ez a módszer a **növekmény változó** művelet belül a logic app-definíciót, JSON formátumban jelenik meg:
+Ha átvált a tervezőben a nézet Kódszerkesztő, Íme módja a **változó értékének növelése** művelet belül a logikai alkalmazás definíciójának, amely JSON formátumban jelenik meg:
 
 ```json
 "actions": {
@@ -232,68 +232,68 @@ Ha átvált a tervező a kód nézet szerkesztése, ez a módszer a **növekmén
 },
 ```
 
-## <a name="example-create-loop-counter"></a>Példa: Hurok számlálójának létrehozása
+## <a name="example-create-loop-counter"></a>Példa: Hurok számláló létrehozása
 
-A szám, ahányszor egy hurok futtató leltárhoz gyakran használják a változók. Ez a példa bemutatja, hogyan hozzon létre és változók használni ezt a feladatot hoz létre, amely megjeleníti a mellékleteket, e-mailben hurkot.
+A számbavételi hurkot futtat hányszor gyakran használják a változókat. Ez a példa bemutatja, hogyan hozzon létre és változók használni ezt a feladatot hoz létre, amely a mellékleteket egy e-mailben counts hurkot.
 
-1. Az Azure-portálon hozzon létre egy üres logikai alkalmazást. Adjon hozzá egy eseményindító, amely az új e-mailek és a mellékleteit ellenőrzi. 
+1. Az Azure Portalon hozzon létre egy üres logikai alkalmazás. Adjon hozzá egy eseményindítót, amely ellenőrzi, hogy új e-mailt és a mellékleteit. 
 
-   Ez a példa az Office 365 Outlook eseményindítója a következőnek: **egy új e-mailt fogadásakor**. 
-   Ehhez az eseményindítóhoz állíthat be az érvényesítést, csak ha az e-mail mellékleteket.
-   Azonban az új e-mailekhez, a mellékleteket, például az Outlook.com-os összekötő, amely ellenőrzi a csatlakozókat is használhatja.
+   Ez a példa az Office 365 Outlook eseményindítót használ **új e-mail érkezésekor**. 
+   Ez az eseményindító csak akkor, ha az e-mailt címkéz üzenetszám állíthat.
+   Használhatja azonban minden olyan összekötőt, amely ellenőrzi a mellékleteket, például az Outlook.com-összekötőt tartalmazó új e-mailekhez.
 
-2. Válassza ki az eseményindító **speciális beállítások megjelenítése**. Beállíthatja, hogy az eseményindító mellékletek kereséséhez, és továbbítja azokat a mellékleteket a Logic Apps alkalmazást munkafolyamat **Igen** ezekhez a tulajdonságokhoz:
+2. Az eseményindító területén válassza **speciális beállítások megjelenítése**. Beállíthatja, hogy az eseményindító mellékletek ellenőrzése és a mellékletek átadandó a logikai alkalmazás munkafolyamat **Igen** ezekhez a tulajdonságokhoz:
    
    * **Melléklettel rendelkezik** 
    * **Mellékletek is** 
 
-   ![Ellenőrizze a és a mellékletek](./media/logic-apps-create-variables-store-values/check-include-attachments.png)
+   ![Keresse meg és a mellékletek is](./media/logic-apps-create-variables-store-values/check-include-attachments.png)
 
-3. Adja hozzá a [ **inicializálása változó** művelet](#create-variable). Hozzon létre egy egész szám típusú változó nevű **száma** kezd értéke nulla.
+3. Adja hozzá a [ **változó inicializálása** művelet](#create-variable). Hozzon létre egy egész szám típusú változó nevű **száma** esetében a kezdeti érték.
 
-   !["Initialize változó" műveletének hozzáadása](./media/logic-apps-create-variables-store-values/initialize-variable.png)
+   ![A "Változó inicializálása" művelet hozzáadása](./media/logic-apps-create-variables-store-values/initialize-variable.png)
 
-4. Váltás az egyes mellékletek, vegye fel a *minden* kiválasztásával hurok **új lépés** > **további** > **hozzáadása egy az egyes**.
+4. Az egyes mellékletek léptetés, adjon hozzá egy *minden* kiválasztásával hurok **új lépés** > **további** > **hozzáadása egy az egyes**.
 
-   !["Az egyes" hurkot hozzáadása](./media/logic-apps-create-variables-store-values/add-loop.png)
+   ![Adjon hozzá egy "for each" iterációt](./media/logic-apps-create-variables-store-values/add-loop.png)
 
-5. Belül a hurok, kattintson a **kimenetnek válassza az előző lépéseiből** mezőbe. Amikor megjelenik a dinamikus tartalom listába, válassza ki a **mellékletek**. 
+5. A hurok, kattintson a **kimenet választása az előző lépésekből** mezőbe. Ha a dinamikus tartalmak listája jelenik meg, válassza ki a **mellékletek**. 
 
    ![A „Mellékletek” elem kiválasztása](./media/logic-apps-create-variables-store-values/select-attachments.png)
 
-   A **mellékletek** mező olyan tömb, amely rendelkezik az e-mail mellékletek az eseményindító kimeneti azokat a hurok továbbítja.
+   A **mellékletek** mező átadja egy tömb, amely a hurokhoz azokat a trigger kimenetéből származó e-mail melléklettel rendelkezik.
 
-6. Válassza a "az egyes" hurok **művelet hozzáadása**. 
+6. Válassza a "mindegyikre" hurkot, **művelet hozzáadása**. 
 
    ![Válassza a "Művelet hozzáadása"](./media/logic-apps-create-variables-store-values/add-action-2.png)
 
-7. A keresési mezőbe írja be a "növekmény változó" szűrőként. Válassza a műveletek listájának **változók - növekmény változó**.
+7. A Keresés mezőbe írja be a "változó értékének növelése" szűrőként. Válassza a műveletek listájának **változók – változó értékének növelése**.
 
    > [!NOTE]
-   > Győződjön meg arról, hogy a **növekmény változó** művelet a hurkon belül jelenik meg. Ha a művelet jelenik meg a hurok kívül, húzza a művelet a hurok.
+   > Győződjön meg arról, hogy a **változó értékének növelése** művelet belül a hurok jelenik meg. Ha a műveletet a tömbön kívül jelenik meg, húzza a ciklus a művelet.
 
-8. Az a **növekmény változó** művelet, a a **neve** listáról válassza ki a **száma** változó. 
+8. Az a **változó értékének növelése** műveletet, az a **neve** listáról válassza ki a **száma** változó. 
 
    ![Válassza ki a "Count" változó](./media/logic-apps-create-variables-store-values/add-increment-variable-example.png)
 
-9. Adja hozzá a hurok bármely művelet, amely küld Önnek a Csatolmányok száma. A művelet tartalmaznak az értéket a **száma** változó, például: 
+9. Adja hozzá a hurok bármely művelet, amely a Csatolmányok számát. A működés közben, az értéket tartalmazza a **száma** változó, például: 
 
-   ![Eredmények küldő művelet hozzáadása](./media/logic-apps-create-variables-store-values/send-email-results.png)
+   ![Adjon hozzá egy műveletet, amely elküldi az eredményeket](./media/logic-apps-create-variables-store-values/send-email-results.png)
 
 10. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés** parancsot. 
 
 ### <a name="test-your-logic-app"></a>A logikai alkalmazás tesztelése
 
-1. Ha a logikai alkalmazás nincs engedélyezve a logic app menüben válassza a **áttekintése**. Az eszköztáron válassza **engedélyezése**. 
+1. Ha a logikai alkalmazás nincs engedélyezve, a logikai alkalmazás menüjében válassza a **áttekintése**. Az eszköztáron válassza **engedélyezése**. 
 
-2. A Logic App Designer eszköztáron válassza **futtatása**. Ebben a lépésben kézzel indítja el a Logic Apps alkalmazást.
+2. Logikaialkalmazás-Tervező eszköztárán válassza a **futtatása**. Ezzel a lépéssel manuálisan indíthatja a logikai alkalmazást.
 
-3. A használt e-mail fiókba egy vagy több mellékletet tartalmazó e-mailt küldeni ebben a példában.
+3. Ebben a példában használt e-mail-fiókjába egy vagy több mellékleteket tartalmazó e-mail küldése.
 
-   Ez a lépés akkor következik be, a logikai alkalmazás eseményindító, amely hoz létre, és a logikai alkalmazás munkafolyamat-példány futtatja.
-   Ennek eredményeképpen a logic app küld Önnek egy üzenet vagy e-mailek, az e-mailben elküldött mellékleteket számát jeleníti meg.
+   Ez a lépés akkor aktiválódik, a logikai alkalmazás eseményindítójának, amely hoz létre, és a logikai alkalmazás munkafolyamat egy példányát futtatja.
+   Ennek eredményeképpen a logikai alkalmazás küld Önnek egy üzenet vagy e-mailt, amely az e-mailben elküldött mellékleteket számát jeleníti meg.
 
-Ha átvált a tervező a kód nézet szerkesztése, itt módja a "az egyes" hurok jelenik meg, amelyen a **növekmény változó** művelet belül a logic app-definíciót, JSON formátumban.
+Ha átvált a tervezőben a nézet Kódszerkesztő, Íme a módja a "for each" hurok jelenik meg, amelyen a **változó értékének növelése** művelet a logikai alkalmazás definíciójának, amely JSON formátumban vannak.
 
 ```json
 "actions": {
@@ -321,17 +321,17 @@ Ha átvált a tervező a kód nézet szerkesztése, itt módja a "az egyes" huro
 
 ## <a name="decrement-variable"></a>Változó értékének csökkentése
 
-Csökkenti a vagy *csökkentheti* egy változó egy állandó értékkel, kövesse a [változó növelése](#increment-value) azzal a különbséggel, hogy keresse meg és jelölje ki a **változók - csökkentést változó**művelet helyette. Ez a művelet csak egész és lebegőpontos változók működik.
+A csökkentése vagy *csökkentenie* egy változót egy állandó értékkel, kövesse a lépéseket [változó növelése](#increment-value) azzal a különbséggel, hogy keresse meg, és válassza ki a **változók – változó értékének csökkentése**művelet helyett. Ez a művelet csak egész szám és lebegőpontos szám értékű változók működik.
 
-Az alábbiakban tulajdonságai között a **csökkentést változó** művelet:
+Az alábbiakban a tulajdonságokat a **változó értékének csökkentése** művelet:
 
 | Tulajdonság | Szükséges | Érték |  Leírás |
 |----------|----------|-------|--------------|
-| Name (Név) | Igen | <*változó-neve*> | A csökkentenie kell a változó nevét | 
-| Érték | Nem | <*növekményérték*> | A csökkenő a változó értéke. Az alapértelmezett érték: egyet. <p><p>**Tipp**: nem kötelező, állítsa ezt az értéket az ajánlott eljárás közöljük mindig csökkenő megadott értékét a változót. | 
+| Name (Név) | Igen | <*a változó neve*> | Csökkentenie kell a változó neve | 
+| Érték | Nem | <*növekmény-érték*> | Csökkenő a változó értékét. Az alapértelmezett érték egyike. <p><p>**Tipp**: Bár nem kötelező, csak ezt az értéket ajánlott eljárásként, hogy mindig tudja, csökkenő egyedi értékét a változót. | 
 ||||| 
 
-Ha átvált a tervező a kód nézet szerkesztése, ez a módszer a **csökkentést változó** művelet belül a logic app-definíciót, JSON formátumban jelenik meg.
+Ha átvált a tervezőben a nézet Kódszerkesztő, Íme módja a **változó értékének csökkentése** művelet belül a logikai alkalmazás definíciójának, amely JSON formátumban jelenik meg.
 
 ```json
 "actions": {
@@ -351,31 +351,31 @@ Ha átvált a tervező a kód nézet szerkesztése, ez a módszer a **csökkent�
 
 ## <a name="set-variable"></a>Változó beállítása
 
-Egy másik értéket rendelni egy létező változó, kövesse a lépéseket a [változó növelése](#increment-value) , kivéve, hogy: 
+Egy másik értéket rendel egy létező változó, kövesse a [változó növelése](#increment-value) , kivéve, amikor: 
 
-1. Keresse meg és jelölje ki a **változók - készlet változó** művelet helyette. 
+1. Keresse meg és válassza a **változók – változó beállítása** művelet helyett. 
 
-2. Adja meg a változó nevét és a hozzárendelni kívánt értékét. Változó pedig az új érték a azonos típusúnak kell lennie.
-Az értéket kell adni, mert ez a művelet nem tartalmazhat alapértelmezett értéket. 
+2. Adja meg a változó nevét és a hozzárendelni kívánt érték. Változó pedig az új értéket az azonos típusúnak kell lennie.
+A értékét kötelező megadni, mert ez a művelet nem rendelkezik alapértelmezett értékkel. 
 
-Az alábbiakban tulajdonságai között a **Set változó** művelet:
+Az alábbiakban a tulajdonságokat a **változó beállítása** művelet:
 
 | Tulajdonság | Szükséges | Érték |  Leírás | 
 |----------|----------|-------|--------------| 
-| Name (Név) | Igen | <*változó-neve*> | Módosítsa a változó neve | 
-| Érték | Igen | <*új érték*> | Szeretne hozzárendelni a változó értéke. Mind a azonos típusúnak kell lennie. | 
+| Name (Név) | Igen | <*a változó neve*> | Módosíthatja a változó neve | 
+| Érték | Igen | <*új érték*> | A változó hozzárendelni kívánt érték. Írja be a ugyanazokat az adatokat is kell rendelkeznie. | 
 ||||| 
 
 > [!NOTE]
-> Csak abban az esetben növekvő vagy csökkenő változók, hurkokat belül változók módosítása *előfordulhat, hogy* váratlan eredményekhez létrehozni, mert a hurkok párhuzamosan, vagy egy időben, alapértelmezés szerint futnak. Ezekben az esetekben próbálja ki a hurok egymás után futnak beállítása. Ha szeretne hivatkozni, a változó értékét a hurok belül, és elvárják, ugyanazt az értéket a kezdő és a hurok példánynak végén, például kövesse az alábbi lépéseket a hurok működésével módosítása: 
+> Kivéve, ha Ön a növekvő vagy csökkenő változót, hurkokat belül változók módosítása *előfordulhat, hogy* ciklusok futtatása alapértelmezés szerint párhuzamos, vagy egy időben, mert a váratlan eredményeket hozhatnak létre. Ezekben az esetekben próbálja meg egymás után futnak a hurok beállítást. Ha szeretné a változó értékét a hurok található hivatkozásra, és ugyanazt az értéket a kezdő és a végén a hurok-példány várható, például kövesse az alábbi lépéseket módosításához, hogyan a ciklus fut: 
 >
-> 1. A hurok jobb felső sarokban, a három ponttal (…) gombra, és válassza a **beállítások**.
+> 1. A hurok jobb felső sarokban a három pontra (...) gombra, és válassza **beállítások**.
 > 
-> 2. A **egyidejűség-vezérlési**, módosítsa a **felülbírálása alapértelmezett** beállítást **a**.
+> 2. Alatt **egyidejűség-vezérlés**, módosítsa a **alapértelmezett felülbírálás** beállítást **a**.
 >
-> 3. Húzza a **mértékben a párhuzamosság** csúszkát **1**.
+> 3. Húzza a **mértékét a párhuzamosság** csúszka **1**.
 
-Ha átvált a tervező a kód nézet szerkesztése, ez a módszer a **Set változó** művelet belül a logic app-definíciót, JSON formátumban jelenik meg. Ebben a példában a "Count" változó aktuális értéke egy másik értéket módosítja. 
+Ha átvált a tervezőben a nézet Kódszerkesztő, Íme módja a **változó beállítása** művelet belül a logikai alkalmazás definíciójának, amely JSON formátumban jelenik meg. Ebben a példában a "Count" változó aktuális értéke átvált egy másik értéket. 
 
 ```json
 "actions": {
@@ -405,27 +405,27 @@ Ha átvált a tervező a kód nézet szerkesztése, ez a módszer a **Set válto
 
 <a name="append-value"></a>
 
-## <a name="append-to-variable"></a>Változó hozzáfűzése
+## <a name="append-to-variable"></a>A változó hozzáfűzése
 
-A karakterlánc vagy tömb tároló változók, beszúrásához vagy *hozzáfűzése* e karakterlánc vagy tömb utolsó eleme, a változó értékét. A lépések a [változó növelése](#increment-value) azzal a különbséggel, hogy ehelyett kövesse ezeket a lépéseket: 
+Változók karakterláncok vagy a tömb tároló beszúrhatja vagy *hozzáfűzése* egy változó értékének ezeket a karakterláncok vagy tömbök utolsó helyén. A lépések a [változó növelése](#increment-value) azzal a különbséggel, hogy ehelyett hajtsa végre ezeket a lépéseket: 
 
-1. Keresse meg és válassza ki a következő műveletek alapján-e a változó a karakterlánc vagy tömb: 
+1. Keresse meg és válassza ki az egyik ilyen művelet, a változó e karakterlánc vagy egy tömb alapján: 
 
-  * **Változók - karakterlánc-változóvá hozzáfűzése**
-  * **Változók - tömbváltozó hozzáfűzése** 
+  * **Változók – hozzáfűzni kívánt karakterlánc-változóhoz**
+  * **Változók – Hozzáfűzés tömbváltozóhoz** 
 
-2. Adja meg a hozzáfűzendő karakterlánc vagy tömb utolsó elemként értékét. Kötelezően megadandó érték. 
+2. Adja meg a tömb vagy karakterlánc utolsó elemként hozzáfűzni kívánt értékét. Kötelezően megadandó érték. 
 
-Az alábbiakban tulajdonságai között a **hozzáfűzése...**  műveletek:
+Az alábbiakban a tulajdonságokat a **hozzáfűzése...**  műveletek:
 
 | Tulajdonság | Szükséges | Érték |  Leírás | 
 |----------|----------|-------|--------------| 
-| Name (Név) | Igen | <*változó-neve*> | Módosítsa a változó neve | 
-| Érték | Igen | <*hozzáfűzendő érték*> | A szeretne hozzáfűzni, érték, amely bármilyen | 
+| Name (Név) | Igen | <*a változó neve*> | Módosíthatja a változó neve | 
+| Érték | Igen | <*Hozzáfűzés-érték*> | A Hozzáfűzés, kívánt érték, amely bármilyen típusú | 
 |||||  
 
-Ha átvált a tervező a kód nézet szerkesztése, ez a módszer a **tömbváltozó Hozzáfűzés** művelet belül a logic app-definíciót, JSON formátumban jelenik meg.
-Ebben a példában egy tömbváltozó hoz létre, és egy másik értéket hozzáadja a tömb utolsó elemként. A eredménye egy frissített változó, amely a tömb tartalmazza: `[1,2,3,"red"]` 
+Ha átvált a tervezőben a nézet Kódszerkesztő, Íme módja a **Hozzáfűzés tömbváltozóhoz** művelet belül a logikai alkalmazás definíciójának, amely JSON formátumban jelenik meg.
+Ez a példa létrehoz egy tömbváltozó, és hozzáadja egy másik értéket, az utolsó elem a tömbben. Az eredmény az lesz egy frissített változó, amely tartalmazza ezt a tömböt: `[1,2,3,"red"]` 
 
 ```json
 "actions": {
@@ -456,8 +456,8 @@ Ebben a példában egy tömbváltozó hoz létre, és egy másik értéket hozz�
 ## <a name="get-support"></a>Támogatás kérése
 
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](http://aka.ms/logicapps-wish).
+* A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>További lépések
 
-* További tudnivalók [Logic Apps-összekötők](../connectors/apis-list.md)
+* Ismerje meg [Logic Apps-összekötők](../connectors/apis-list.md)

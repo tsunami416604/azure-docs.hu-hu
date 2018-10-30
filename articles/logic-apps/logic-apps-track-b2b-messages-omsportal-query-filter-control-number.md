@@ -1,6 +1,6 @@
 ---
-title: A Log Analytics – Azure Logic Apps B2B-üzenetek lekérdezéséhez |} A Microsoft Docs
-description: Létrehozhat olyan lekérdezéseket, AS2, X 12 és EDIFACT-üzenetek a Log Analytics használatával az Azure Logic Apps nyomon követése
+title: A Log Analytics – Azure Logic Apps B2B-üzenetek nyomon követése lekérdezések létrehozása |} A Microsoft Docs
+description: Létrehozhat olyan lekérdezéseket, AS2, X 12 és EDIFACT-üzeneteket az Azure Log Analytics az Azure Logic Apps nyomon követése
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,109 +8,127 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.date: 06/19/2018
-ms.openlocfilehash: baccd255fc2812eae0de3a98dfcef3dcbc7e1b46
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.date: 10/19/2018
+ms.openlocfilehash: af1d00e49819f1d69e08c0fa99891690e07b489f
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124270"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233752"
 ---
-# <a name="create-queries-for-tracking-as2-x12-and-edifact-messages-in-log-analytics-for-azure-logic-apps"></a>A lekérdezések nyomon követésére AS2, X 12 és EDIFACT-üzenetek a Log Analytics az Azure Logic Apps létrehozása
+# <a name="create-tracking-queries-for-b2b-messages-in-azure-log-analytics-for-azure-logic-apps"></a>B2B-üzenetek nyomon követése lekérdezések létrehozása az Azure Log Analytics az Azure Logic Apps
 
-Az AS2 megkereséséhez X12 vagy EDIFACT üzeneteket, hogy követi nyomon a [Azure Log Analytics](../log-analytics/log-analytics-overview.md), meghatározott feltétel alapján műveleteket szűrő lekérdezéseket hozhat létre. Például egy adott adatcsere ellenőrzőszáma üzeneteket is megtalálhatja.
+AS2 megkereséséhez X12 vagy EDIFACT üzeneteket, hogy követi nyomon a [Azure Log Analytics](../log-analytics/log-analytics-overview.md), meghatározott feltétel alapján műveleteket szűrő lekérdezéseket hozhat létre. Például egy adott adatcsere ellenőrzőszáma üzeneteket is megtalálhatja.
 
-## <a name="requirements"></a>Követelmények
+> [!NOTE]
+> Ezen a lapon a fentiekben már említettük, az a Microsoft Operations Management Suite (OMS), amely a feladatok végrehajtásához szükséges lépéseket [kivonása a január 2019](../log-analytics/log-analytics-oms-portal-transition.md), hanem az Azure Log Analytics váltja fel ezeket a lépéseket. 
 
-* Egy logikai alkalmazást, amely a diagnosztikai naplózás be van állítva. Ismerje meg, [Logic Apps-alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md) és [a logikai alkalmazás naplózásának beállítása](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
+## <a name="prerequisites"></a>Előfeltételek
+
+* Egy logikai alkalmazást, amely a diagnosztikai naplózás be van állítva. Ismerje meg, [Logic Apps-alkalmazás létrehozása](quickstart-create-first-logic-app-workflow.md) és [a logikai alkalmazás naplózásának beállítása](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
 * Egy integrációs fiók, amely a figyelés és naplózás be van állítva. Ismerje meg, [egy integrációs fiók létrehozása](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) és [monitorozási és naplózási fiók beállítása](../logic-apps/logic-apps-monitor-b2b-message.md).
 
 * Ha még nem tette, [diagnosztikai adatok közzététele a Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) és [-üzenet követési a Log Analytics beállítása](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
-> [!NOTE]
-> Miután teljesítette az előbbi követelményeknek, rendelkeznie kell egy Log Analytics-munkaterületnek. A B2B-kommunikáció a Log Analytics követési használjon ugyanazon a munkaterületen. 
->  
-> Ha nem rendelkezik a Log Analytics-munkaterületet, további [Log Analytics-munkaterület létrehozása](../log-analytics/log-analytics-quick-create-workspace.md).
+## <a name="create-queries-with-filters"></a>Lekérdezések létrehozása szűrőkkel
 
-## <a name="create-message-queries-with-filters-in-log-analytics"></a>Állapotüzenet-lekérdezések létrehozása a Log Analytics-szűrők
+Egyes tulajdonságok és értékek alapján üzenetek megkereséséhez szűrőket használó lekérdezéseket is létrehozhat. 
 
-Ez a példa bemutatja, hogyan találhatja meg az adatcsere ellenőrzőszáma üzeneteket.
+1. Az [Azure Portalon](https://portal.azure.com) válassza a **Minden szolgáltatás** elemet. A keresőmezőbe, keresse meg a "log analytics", és válassza ki **Log Analytics**.
 
-> [!TIP] 
-> Ha ismeri a Log Analytics-munkaterület neve, nyissa meg a munkaterület kezdőlap (`https://{your-workspace-name}.portal.mms.microsoft.com`), és 4. lépés: Indítsa el. Ellenkező esetben kezdje: 1. lépés.
+   ![Válassza ki a Log Analytics](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/find-log-analytics.png)
 
-1. Az a [az Azure portal](https://portal.azure.com), válassza a **minden szolgáltatás**. Keresse meg a "log analytics", és válassza a **Log Analytics** itt látható módon:
+1. A **Log Analytics**, keresse meg és válassza ki a Log Analytics-munkaterületre. 
 
-   ![Keresse meg a Log Analytics](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/browseloganalytics.png)
+   ![Válassza ki a Log Analytics-munkaterület](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/select-log-analytics-workspace.png)
 
-2. A **Log Analytics**, keresse meg és válassza ki a Log Analytics-munkaterületre.
+1. A munkaterület menüjében alatt **általános**, ezek közül bármelyikre **naplók (klasszikus)** vagy **naplók**. 
 
-   ![Válassza ki a Log Analytics-munkaterület](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/selectla.png)
+   Ez a példa bemutatja, hogyan használható a klasszikus naplók megtekintése. 
+   Ha úgy dönt, **megtekinthetők a naplófájlok** a a **maximalizálhatja a Log Analytics felhasználói élmény** szakasz **keresési és -naplók elemzése**, kap a **naplók (klasszikus nézetben)** . 
 
-3. A **felügyeleti**, válassza a **naplóbeli keresés**.
+   ![Klasszikus naplók megtekintése](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/view-classic-logs.png)
 
-   ![Válasszon Lo keresése](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/azure-portal-page.png)
+1. A lekérdezésben szerkesztheti a mezőbe, és kezdje el begépelni a keresni kívánt mező nevét. Amikor elkezdi beírni, a Lekérdezésszerkesztő jeleníti meg, a lehetséges egyezések és a műveletek is használhatja. Miután létrehozta a lekérdezést, válassza ki a **futtatása** vagy nyomja le az Enter billentyűt.
 
-4. A keresőmezőbe, írja be a megkereséséhez, majd nyomja meg a kívánt mező **Enter**. Amikor elkezdi beírni, Log Analytics megjeleníti a lehetséges egyezések és használható műveletek. Tudjon meg többet [adatok megkeresése a Log Analytics](../log-analytics/log-analytics-log-searches.md).
+   Ebben a példában a keres egyezések **LogicAppB2B**. 
+   Tudjon meg többet [adatok megkeresése a Log Analytics](../log-analytics/log-analytics-log-searches.md).
 
-   Ebben a példában az eseményeket keres **típus = AzureDiagnostics**.
+   ![Kezdje el begépelni a lekérdezési karakterlánc](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/create-query.png)
 
-   ![Kezdje el begépelni a lekérdezési karakterlánc](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-start-query.png)
+1. Meg szeretné tekinteni, a bal oldali ablaktáblán, az időkeret módosításához válassza ki a időtartama listából, vagy húzza a csúszkát. 
 
-5. A bal oldali sávon válassza ki a megtekinteni kívánt időkeretet. A lekérdezés ad hozzá egy szűrőt, válassza a **+ Hozzáadás**.
+   ![Változás időkeretre](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/change-timeframe.png)
 
-   ![Lekérdezési szűrő hozzáadása](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/query1.png)
+1. A lekérdezés ad hozzá egy szűrőt, válassza a **Hozzáadás**. 
 
-6. A **szűrők hozzáadása**, adja meg a szűrő nevét, így megtalálhatja a kívánt szűrőt. Válassza ki a szűrőt, és válassza a **+ Hozzáadás**.
+   ![Lekérdezési szűrő hozzáadása](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/add-filter.png)
 
-   Keresse meg az adatcsere-ellenőrzőszám, ebben a példában "adatcsere" szóra keres, és kiválasztja **event_record_messageProperties_interchangeControlNumber_s** a szűrőként.
+1. A **szűrők hozzáadása**, adja meg a keresett szűrő nevét. Ha a szűrőt, válassza ki a szűrőnek. A bal oldali panelen válassza ki a **Hozzáadás** újra.
 
-   ![Válassza ki a szűrő](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-add-filter.png)
+   Itt például van egy másik lekérdezést, a keresési **típus == "AzureDiagnostics"** események és talál eredményeket az adatcsere-ellenőrzőszám kiválasztásával a **event_record_messageProperties_ interchangeControlNumber_s** szűrőt.
 
-7. A bal oldali sávon válassza ki a szűrő értéket használja, és válassza a kívánt **alkalmaz**.
+   ![Válassza ki a szűrő értéke](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/filter-example.png)
 
-   Ebben a példában az adatcsere ellenőrzőszáma szeretnénk az üzeneteket választja ki.
+   Miután kiválasztotta **Hozzáadás**, a lekérdezés frissül a kijelölt szűrő esemény és az értéket. 
+   Az előző eredmények most túl vannak szűrve. 
 
-   ![Válassza ki a szűrő értéke](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-select-filter-value.png)
+   Például ez a lekérdezés keres **típus == "AzureDiagnostics"** eredmények használatával egy adatcsere ellenőrzőszáma alapján megkeresi a **event_record_messageProperties_interchangeControlNumber_s**szűrőt.
 
-8. Most már térjen vissza a lekérdezést, amely fejleszt. A lekérdezés a kijelölt szűrő esemény és érték frissítve lett. Az előző eredmények most túl vannak szűrve.
-
-    ![Térjen vissza a lekérdezést a szűrt eredmények](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-filtered-results.png)
+   ![Szűrt eredmények](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/filtered-results.png)
 
 <a name="save-oms-query"></a>
 
-## <a name="save-your-query-for-future-use"></a>A későbbi használat céljából lekérdezés mentése
+## <a name="save-query"></a>Lekérdezés mentése
 
-1. A lekérdezés a a **naplóbeli keresés** lapon a **mentése**. Adja meg a lekérdezés nevét, válasszon egy kategóriát, és válassza a **mentése**.
+A lekérdezés mentéséhez **naplók (klasszikus)** megtekintheti, kövesse az alábbi lépéseket:
 
-   ![A lekérdezést adjon meg egy nevet és a kategória](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-save.png)
+1. A lekérdezés a a **naplók (klasszikus)** lapon a **Analytics**. 
 
-2. A lekérdezés megtekintéséhez válassza **Kedvencek**.
+   ![Válassza a "Analytics"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/choose-analytics.png)
 
-   ![Válassza a "Kedvencek"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-favorites.png)
+1. A lekérdezés eszköztárán válassza **mentése**.
 
-3. A **mentett keresések**, válassza ki a lekérdezést, hogy az eredmények megtekinthetők. Frissítse a lekérdezést, hogy a különböző eredményeket talál, módosítsa a lekérdezést.
+   ![A „Mentés” elem kiválasztása](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/save-query.png)
 
-   ![Válassza ki a lekérdezést](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-log-search-find-favorites.png)
+1. Például adja meg a lekérdezés adatait, adja meg a lekérdezés nevét, válassza ki **lekérdezés**, és adja meg a kategória nevét. Ha elkészült, kattintson a **Mentés** gombra.
 
-## <a name="find-and-run-saved-queries-in-log-analytics"></a>Keresse meg és a mentett lekérdezéseket futtathat a Log Analyticsben
+   ![A „Mentés” elem kiválasztása](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/query-details.png)
 
-1. Nyissa meg a Log Analytics munkaterület kezdőlapját (`https://{your-workspace-name}.portal.mms.microsoft.com`), és válassza a **naplóbeli keresés**.
+1. Mentett lekérdezések megtekintéséhez lépjen vissza a lekérdezés lapon. A lekérdezés eszköztárán válassza **mentett keresések**.
 
-   ![A Log Analytics kezdőlapján válassza a "Log Search"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
+   ![Válassza a "Mentett keresések"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/choose-saved-searches.png)
 
-   – vagy –
+1. A **mentett keresések**, válassza ki a lekérdezést, így megtekintheti az eredményeket. 
 
-   ![A menüben válassza a "Log Search"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
+   ![Válassza ki a lekérdezést](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/saved-query-results.png)
 
-2. Az a **naplóbeli keresés** kezdőlapját, válassza a **Kedvencek**.
+   Frissítse a lekérdezést, hogy a különböző eredményeket talál, módosítsa a lekérdezést.
 
-   ![Válassza a "Kedvencek"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-log-search-favorites.png)
+## <a name="find-and-run-saved-queries"></a>Keresse meg és futtassa a mentett lekérdezések
 
-3. A **mentett keresések**, válassza ki a lekérdezést, hogy az eredmények megtekinthetők. Frissítse a lekérdezést, hogy a különböző eredményeket talál, módosítsa a lekérdezést.
+1. Az [Azure Portalon](https://portal.azure.com) válassza a **Minden szolgáltatás** elemet. A keresőmezőbe, keresse meg a "log analytics", és válassza ki **Log Analytics**.
 
-   ![Válassza ki a lekérdezést](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-log-search-find-favorites.png)
+   ![Válassza ki a Log Analytics](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/find-log-analytics.png)
+
+1. A **Log Analytics**, keresse meg és válassza ki a Log Analytics-munkaterületre. 
+
+   ![Válassza ki a Log Analytics-munkaterület](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/select-log-analytics-workspace.png)
+
+1. A munkaterület menüjében alatt **általános**, ezek közül bármelyikre **naplók (klasszikus)** vagy **naplók**. 
+
+   Ez a példa bemutatja, hogyan használható a klasszikus naplók megtekintése. 
+
+1. Miután megnyílik a lekérdezés lapon, a lekérdezés eszköztárán válassza a **mentett keresések**.
+
+   ![Válassza a "Mentett keresések"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/choose-saved-searches.png)
+
+1. A **mentett keresések**, válassza ki a lekérdezést, így megtekintheti az eredményeket. 
+
+   ![Válassza ki a lekérdezést](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/saved-query-results.png) 
+
+   A lekérdezés fut automatikusan, de ha a lekérdezés nem fut a bármilyen okból, a lekérdezés-szerkesztőben válassza **futtatása**.
 
 ## <a name="next-steps"></a>További lépések
 

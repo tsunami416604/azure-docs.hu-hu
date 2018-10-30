@@ -1,21 +1,20 @@
 ---
 title: Az Azure Site Recovery VMware-vészhelyreállításhoz használt konfigurációs kiszolgáló üzembe helyezése |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan helyezhet üzembe egy konfigurációs kiszolgáló VMware-vészhelyreállításhoz az Azure Site Recoveryvel
-services: site-recovery
+description: Ez a cikk ismerteti az Azure-bA az Azure Site Recovery VMware-vészhelyreállítási konfigurációs kiszolgáló telepítése
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 4222214705c42fe09d90d77faa7be63cc2a13206
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 516edd922d6ead9a71f81c3b9b777b15f1fb28ae
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025276"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233157"
 ---
-# <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
+# <a name="deploy-a-configuration-server-for-vmware-disaster-recovery-to-azure"></a>Konfigurációs kiszolgáló üzembe helyezése VMware-vészhelyreállításhoz az Azure-bA
 
 Egy helyszíni konfigurációs kiszolgálót telepít, használatakor [Azure Site Recovery](site-recovery-overview.md) vész-helyreállítási VMware virtuális gépek és fizikai kiszolgálók Azure-bA. A konfigurációs kiszolgáló koordináták kommunikációhoz között a helyszíni VMware és az Azure. Azt is felügyeli az adatreplikációt. Ez a cikk végigvezeti a konfigurációs kiszolgáló telepítése, ha VMware virtuális gépeket replikál az Azure-bA szükséges lépéseket. [Kövesse az ebben a cikkben](physical-azure-set-up-source.md) Ha kell állítani a konfigurációs kiszolgálót fizikai kiszolgáló replikációjához.
 
@@ -117,6 +116,14 @@ Ha szeretne további hálózati Adaptereket adhat hozzá a konfigurációs kiszo
 8. Válassza a **Konfiguráció véglegesítése** elemet a regisztráció befejezéséhez.
 9. Regisztráció befejezését követően nyissa meg az Azure Portalon, ellenőrizze, hogy a konfigurációs kiszolgáló és a VMware-kiszolgáló szerepel-e **Recovery Services-tároló** > **kezelés**  >  **Site Recovery-infrastruktúra** > **konfigurációs kiszolgálók**.
 
+## <a name="upgrade-the-configuration-server"></a>A konfigurációs kiszolgáló frissítése
+
+A konfigurációs kiszolgáló frissítése a legújabb verzióra, kövesse az alábbi [lépéseket](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
+
+## <a name="manage-the-configuration-server"></a>A konfigurációs kiszolgáló kezelése
+
+Folyamatban lévő replikáció megszakítása a szükséges elkerülése érdekében győződjön meg arról, hogy a konfigurációs kiszolgáló IP-címe nem módosul a konfigurációs kiszolgáló regisztrálva van egy tárolóba után. További információ a konfigurációs kiszolgáló gyakori felügyeleti feladatok [Itt](vmware-azure-manage-configuration-server.md).
+
 ## <a name="faq"></a>GYIK
 
 1. A virtuális gép, amelyen a konfigurációs kiszolgáló telepítve van, különböző célokra használható?
@@ -140,14 +147,6 @@ Ha szeretne további hálózati Adaptereket adhat hozzá a konfigurációs kiszo
 7. Honnan tölthetem le tároló regisztrációs kulcsokat?
 
     Az a **Recovery Services-tároló**, **kezelése** > **Site Recovery-infrastruktúra** > **konfigurációskiszolgálók**. Válassza ki a kiszolgálók **regisztrációs kulcs letöltése** töltheti le a tároló hitelesítőadat-fájlja.
-
-## <a name="upgrade-the-configuration-server"></a>A konfigurációs kiszolgáló frissítése
-
-A konfigurációs kiszolgáló frissítése a legújabb verzióra, kövesse az alábbi [lépéseket](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
-
-## <a name="manage-the-configuration-server"></a>A konfigurációs kiszolgáló kezelése
-
-Folyamatban lévő replikáció megszakítása a szükséges elkerülése érdekében győződjön meg arról, hogy a konfigurációs kiszolgáló IP-címe nem módosul a konfigurációs kiszolgáló regisztrálva van egy tárolóba után. További információ a konfigurációs kiszolgáló gyakori felügyeleti feladatok [Itt](vmware-azure-manage-configuration-server.md).
 
 ## <a name="troubleshoot-deployment-issues"></a>Üzembe helyezési problémák elhárítása
 

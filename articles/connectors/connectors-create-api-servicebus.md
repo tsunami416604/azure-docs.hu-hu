@@ -11,12 +11,12 @@ ms.assetid: d6d14f5f-2126-4e33-808e-41de08e6721f
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 813df5b4ef37ad1264df48863aa8f0ed5a4d4789
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 68378c87e18df874059579445352b8fd1b2b6c13
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048774"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232715"
 ---
 # <a name="exchange-messages-in-the-cloud-with-azure-service-bus-and-azure-logic-apps"></a>A felhőben az Azure Service Bus és az Azure Logic Apps, az Exchange-üzenetek
 
@@ -64,7 +64,7 @@ Győződjön meg róla, hogy a logikai alkalmazás a Service Bus-névtér való 
       ![A Service Bus-névtér kapcsolati karakterlánc másolása](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > Győződjön meg arról, hogy a kapcsolati karakterlánc vagy társítva a Service Bus-névtér egy üzenetküldési entitásra, például egy üzenetsort, keresse meg a kapcsolati karakterláncát a `EntityPath` paraméter. Ha ezt a paramétert, a kapcsolati karakterláncot egy adott entitás van, és nem a megfelelő karakterlánc, a logikai alkalmazás használata.
+   > Győződjön meg arról, hogy a kapcsolati karakterlánc vagy társítva a Service Bus-névtér egy üzenetküldési entitásra, például egy üzenetsort, keresse meg a kapcsolati karakterláncát a `EntityPath`  paraméter. Ha ezt a paramétert, a kapcsolati karakterláncot egy adott entitás van, és nem a megfelelő karakterlánc, a logikai alkalmazás használata.
 
 ## <a name="add-trigger-or-action"></a>Adja hozzá az eseményindítót vagy műveletet
 
@@ -140,7 +140,7 @@ További technikai részletek korlátok, eseményindítók és műveletek, amely
 ## <a name="get-support"></a>Támogatás kérése
 
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](http://aka.ms/logicapps-wish).
+* A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>További lépések
 

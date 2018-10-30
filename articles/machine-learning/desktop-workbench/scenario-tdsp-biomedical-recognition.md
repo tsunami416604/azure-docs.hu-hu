@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 775d0701f9eeaf7d26a83b814711bea630efb2a6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a3ae9c0926f9c2a8bb900e25b610f8c2f4e6d292
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973762"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231576"
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>Orvosbiológiai entitásfelismerés csoportos adatelemzési folyamat (TDSP) sablon használatával
 
@@ -64,7 +64,7 @@ A következő ábrán az adatok feldolgozására, és modelleket taníthat be a 
 ## <a name="data-description"></a>Adatok leírása
 
 ### <a name="1-word2vec-model-training-data"></a>1. Word2Vec modell betanítási adatok
-A nyers MEDLINE absztrakt adatokat az először letöltött [MEDLINE](https://www.nlm.nih.gov/pubs/factsheets/medline.html). Az adatok nyilvánosan elérhető az XML-fájlok formájában azok [FTP-kiszolgáló](https://ftp.ncbi.nlm.nih.gov/pubmed/baseline). Érhetők el 892 XML-fájlok a kiszolgálón, és az XML-fájlok mindegyike 30 000 cikkekben információkat tartalmaz. Az adatgyűjtési lépés további információt a Projektstruktúra szakaszban szerepelnek. Minden egyes fájl szerepel a mezők 
+A nyers MEDLINE absztrakt adatokat az először letöltött [MEDLINE](https://www.nlm.nih.gov/pubs/factsheets/medline.html). Az adatokat az XML-fájlok formájában elérhető publicaly azok [FTP-kiszolgáló](https://ftp.ncbi.nlm.nih.gov/pubmed/baseline). Érhetők el 892 XML-fájlok a kiszolgálón, és az XML-fájlok mindegyike 30 000 cikkekben információkat tartalmaz. Az adatgyűjtési lépés további információt a Projektstruktúra szakaszban szerepelnek. Minden egyes fájl szerepel a mezők 
         
         abstract
         affiliation
