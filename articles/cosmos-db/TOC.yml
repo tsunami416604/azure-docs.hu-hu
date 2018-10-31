@@ -74,21 +74,27 @@ items:
     href: sql-api-resources.md
   - name: Globális terjesztés
     items:
-    - name: Bevezetés
+    - name: Áttekintés
       href: distribute-data-globally.md
-    - name: Főbb előnyök
-      href: distribute-data-globally-benefits.md
-    - name: Globálisan terjeszthető
-      href: distribute-data-globally-turnkey.md
-    - name: Lehetséges a több főkiszolgálós telepítés
-      href: enable-multi-master.md
-    - name: Nem relációs (NoSQL) adatbázisok több főkiszolgálós telepítése
-      href: multi-master-oss-nosql.md
-    - name: Ütközések feloldása
-      href: multi-master-conflict-resolution.md
+    - name: Konzisztenciaszintek
+      href: consistency-levels.md
+    - name: A megfelelő konzisztenciaszint kiválasztása
+      href: consistency-levels-choosing.md
+    - name: Konzisztenciaszintek és Cosmos DB API-k
+      href: consistency-levels-across-apis.md
+    - name: Kompromisszumok a konzisztencia, a rendelkezésre állás és a teljesítmény között
+      href: consistency-levels-tradeoffs.md
+    - name: Magas rendelkezésre állás
+      href: high-availability.md
+    - name: Átviteli sebesség globális méretezése
+      href: scaling-throughput.md
+    - name: Ütközésfeloldási szabályzatok
+      href: conflict-resolution-policies.md
+    - name: Globális terjesztés – technikai részletek
+      href: global-dist-under-the-hood.md
   - name: Teljesítmény
     items:
-    - name: Bevezetés
+    - name: Áttekintés
       href: request-units.md
     - name: Átviteli sebesség lekérése és beállítása
       href: set-throughput.md
@@ -96,8 +102,6 @@ items:
     href: partition-data.md
   - name: Indexelés
     href: indexing-policies.md
-  - name: Konzisztenciamodellek
-    href: consistency-levels.md
   - name: Csatorna módosítása
     href: change-feed.md
   - name: Élettartam
@@ -106,7 +110,7 @@ items:
     href: unique-keys.md
   - name: Biztonság
     items:
-    - name: Bevezetés
+    - name: Áttekintés
       href: database-security.md
     - name: Adattitkosítás
       href: database-encryption-at-rest.md
@@ -122,8 +126,6 @@ items:
     href: cosmos-db-reserved-capacity.md
   - name: Biztonsági mentés és visszaállítás
     href: online-backup-and-restore.md
-  - name: Magas rendelkezésre állás
-    href: regional-failover.md
 - name: Többmodelles API-k
   items:
   - name: SQL API-dokumentumok
@@ -190,6 +192,8 @@ items:
         href: programming.md
       - name: SQL-adatparticionálás
         href: sql-api-partition-data.md
+      - name: Java Async SDK-hibák elhárítása
+        href: troubleshoot-java-async-sdk.md
       - name: Adattípusok
         items:
         - name: DateTime
@@ -417,6 +421,14 @@ items:
       href: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb
   - name: VSTS CI-/CD-folyamat beállítása
     href: tutorial-setup-ci-cd.md
+  - name: Globális terjesztés
+    items:
+    - name: Adatbázisfiók kezelése
+      href: how-to-manage-database-account.md
+    - name: Konzisztencia kezelése
+      href: how-to-manage-consistency.md
+    - name: Ütközések kezelése
+      href: how-to-manage-conflicts.md
   - name: Ajánlott eljárások
     items:
     - name: Teljesítménnyel kapcsolatos tippek
@@ -501,9 +513,9 @@ items:
       href: use-cases.md
     - name: Közösségimédia-alkalmazások
       href: social-media-apps.md
-ms.openlocfilehash: dfa5b34127abf569a359814b6064ec981f57796d
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 55a0bb09e56667078d463846d90cd086cb05dd4e
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985828"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240426"

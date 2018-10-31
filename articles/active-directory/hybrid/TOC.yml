@@ -83,6 +83,8 @@ items:
       href: plan-connect-performance-factors.md
     - name: Hogyan jelentkeznek be a felhasználók?
       href: plan-connect-user-signin.md
+    - name: Az Azure AD UserPrincipalName feltöltése
+      href: plan-connect-userprincipalname.md
     - name: Példányokra vonatkozó különleges szempontok
       href: reference-connect-instances.md
     - name: Hibrid identitáskezelés – kialakítási szempontok
@@ -153,6 +155,8 @@ items:
       href: how-to-connect-fed-ssl-update.md
     - name: AD FS-megbízhatóság kezelése az Azure AD segítségével
       href: how-to-connect-azure-ad-trust.md
+    - name: Az O365 RP kivonatoló algoritmusának módosítása
+      href: how-to-connect-fed-sha256-guidance.md
     - name: Az Azure AD összevonás kompatibilitási listája
       href: how-to-connect-fed-compatibility.md
     - name: SAML 2.0-kiszolgáló használata identitásszolgáltatóként
@@ -287,9 +291,9 @@ items:
     href: reference-connect-sync-functions-reference.md
   - name: Az Azure AD összevonás kompatibilitási listája
     href: how-to-connect-fed-compatibility.md
-ms.openlocfilehash: eda2a26a9bd3d5a484865a8458246506f24bb518
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: e5d89e467b9dd6b41e246c889f41ad9abe21182b
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351932"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249671"

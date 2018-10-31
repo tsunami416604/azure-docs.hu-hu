@@ -4,19 +4,24 @@ items:
 - name: Áttekintés
   items:
   - name: Az Azure szabályzatának áttekintése
+    displayName: rbac, assign, initiative, parameters, count
     href: overview.md
 - name: Gyors útmutatók
   items:
   - name: Szabályzat hozzárendelése – Portál
+    displayName: assign, compliance
     href: assign-policy-portal.md
   - name: Szabályzat hozzárendelése – PowerShell
+    displayName: assign, compliance
     href: assign-policy-powershell.md
   - name: Szabályzat hozzárendelése – Azure CLI
+    displayName: assign, compliance
     href: assign-policy-azurecli.md
   expanded: true
 - name: Oktatóanyagok
   items:
   - name: Azure-szabályzat létrehozása és kezelése
+    displayName: assign, definition, compliance, exempt, exclusion
     href: ./tutorials/create-and-manage.md
 - name: Példák
   href: ./samples/index.md
@@ -26,166 +31,222 @@ items:
     - name: Elnevezés
       items:
       - name: Több névminta egyikének megkövetelése
+        displayName: deny, indexed
         href: samples/allow-multiple-name-patterns.md
       - name: Hasonló minta szükséges
+        displayName: deny, indexed
         href: samples/enforce-like-pattern.md
       - name: Egyező minta szükséges
+        displayName: deny, indexed
         href: samples/enforce-match-pattern.md
       - name: A címke és a minta egyezése szükséges
+        displayName: deny, all
         href: samples/enforce-tag-match-pattern.md
     - name: Címkék
       items:
       - name: Címke és alapértelmezett címkeérték alkalmazása
+        displayName: append, builtin, concat
         href: samples/apply-tag-def-val.md
       - name: Számlázási címkék szabályzatának kezdeményezése
         href: samples/billing-tags-policy-init.md
       - name: Címke és a hozzá tartozó érték kényszerítése
+        displayName: deny, concat, builtin
         href: samples/enforce-tag-val.md
       - name: Címke és címkeérték kényszerített használata erőforráscsoportokra
+        displayName: deny, concat
         href: samples/enforce-tag-rg.md
     - name: Helyek
       items:
       - name: Engedélyezett helyek
+        displayName: deny, builtin, location
         href: samples/allowed-locs.md
     - name: Erőforrástípusok
       items:
       - name: Engedélyezett erőforrástípusok
+        displayName: deny, builtin, resourceTypes
         href: samples/allowed-res-types.md
       - name: Nem engedélyezett erőforrástípusok
+        displayName: deny, builtin, resourceTypes
         href: samples/not-allowed-res-type.md
   - name: Compute
     items:
     - name: Virtual machines (Virtuális gépek)
       items:
       - name: Egyéni VM-lemezképek engedélyezése egy adott erőforráscsoportból
+        displayName: deny, concat, ExistingResourceGroups
         href: samples/allow-custom-vm-image.md
       - name: Tárfiókok és virtuális gépek engedélyezett termékváltozatai
+        displayName: initiative, vmSKUs, storageSKUs
         href: samples/allowed-skus-storage.md
       - name: Jóváhagyott VM-lemezképek
+        displayName: deny
         href: samples/allowed-custom-images.md
       - name: Naplózás hiányzó bővítmény esetén
+        displayName: auditIfNotExists
         href: samples/audit-ext-not-exist.md
       - name: Tiltott virtuálisgép-bővítmények
+        displayName: deny
         href: samples/not-allowed-vm-ext.md
     - name: Virtuálisgép-méretezési csoportok
       items:
       - name: Felügyelt lemezeket nem használó virtuális gépek naplózása
+        displayName: audit
         href: samples/create-vm-managed-disk.md
       - name: Virtuális gép létrehozása felügyelt lemezzel
+        displayName: deny
         href: samples/use-managed-disk-vm.md
       - name: Hybrid Use Benefit tiltása
+        displayName: deny
         href: samples/deny-hybrid-use.md
       - name: Csak bizonyos platformú VM-lemezkép használatának engedélyezése
+        displayName: deny
         href: samples/allow-certain-vm-image.md
   - name: Data Lake
     items:
     - name: Data Lake Store-titkosítás megkövetelése
+      displayName: deny
       href: samples/enforce-datalakestore-encryption.md
   - name: Figyelés
     items:
     - name: Diagnosztikai beállítás naplózása
+      displayName: auditIfNotExists, resourceTypes
       href: samples/audit-diag-setting.md
   - name: Network (Hálózat)
     items:
     - name: Hálózati illesztők
       items:
       - name: NSG X minden hálózati adapteren
+        displayName: deny
         href: samples/nsg-on-nic.md
       - name: Jóváhagyott alhálózat megkövetelése a virtuális gépek hálózati adapterén
+        displayName: deny
         href: samples/use-approved-subnet-vm-nics.md
       - name: Jóváhagyott virtuális hálózat megkövetelése a virtuális gépek hálózati adapterén
+        displayName: deny, concat
         href: samples/use-approved-vnet-vm-nics.md
     - name: Virtuális hálózatok
       items:
       - name: Engedélyezett termékváltozatok alkalmazásátjárókhoz
+        displayName: deny
         href: samples/allowed-app-gate-sku.md
       - name: Hálózati társviszony tiltása egy erőforráscsoportban lévő hálózatban
+        displayName: deny, all, concat, ExistingResourceGroups
         href: samples/no-peering-er-net.md
       - name: Ne legyen felhasználó által megadott útválasztási táblázat
+        displayName: deny, all
         href: samples/no-user-def-route-table.md
       - name: NSG X minden alhálózaton
+        displayName: deny, all
         href: samples/nsg-on-subnet.md
       - name: Jóváhagyott alhálózat megkövetelése a virtuális gépek hálózati adapterén
+        displayName: deny
         href: samples/use-approved-subnet-vm-nics.md
       - name: Jóváhagyott virtuális hálózat megkövetelése a virtuális gépek hálózati adapterén
+        displayName: deny
         href: samples/use-approved-vnet-vm-nics.md
     - name: Network security groups (Hálózati biztonsági csoportok)
       items:
       - name: NSG X minden hálózati adapteren
+        displayName: deny
         href: samples/nsg-on-nic.md
       - name: NSG X minden alhálózaton
+        displayName: deny, all
         href: samples/nsg-on-subnet.md
     - name: ExpressRoute-útvonalak
       items:
       - name: Express Route-sávszélesség megkövetelése
+        displayName: deny
         href: samples/allowed-er-band.md
       - name: Engedélyezett termékváltozatok Express Route-útvonalakhoz
+        displayName: deny
         href: samples/allowed-er-skus.md
       - name: Engedélyezett társviszony-létesítési helyek Express Route-útvonalakhoz
+        displayName: deny, Location
         href: samples/allowed-peering-er.md
     - name: Network Watchers
       items:
       - name: Naplózás, ha a Network Watcherek nincsenek engedélyezve a régióban
+        displayName: auditIfNotExists, Location
         href: samples/net-watch-not-enabled.md
     - name: Alkalmazásátjárók
       items:
       - name: Engedélyezett termékváltozatok alkalmazásátjárókhoz
+        displayName: deny
         href: samples/allowed-app-gate-sku.md
   - name: SQL
     items:
     - name: SQL Server-kiszolgálók
       items:
       - name: Azure Active Directory-rendszergazda hiányának naplózása
+        displayName: auditIfNotExists
         href: samples/audit-no-aad-admin.md
       - name: Kiszolgálószintű fenyegetésészlelési beállítás naplózása
+        displayName: auditIfNotExists
         href: samples/audit-sql-ser-threat-det-setting.md
       - name: SQL-kiszolgáló naplózási beállításainak naplózása
+        displayName: auditIfNotExists, builtin
         href: samples/sql-server-audit.md
       - name: SQL-kiszolgálói szintű naplózási beállítások naplózása
+        displayName: auditIfNotExists
         href: samples/audit-sql-ser-leve-audit-setting.md
       - name: Az SQL Server 12.0-ás verziójának megkövetelése
+        displayName: deny, builtin
         href: samples/req-sql-12.md
     - name: SQL Database-adatbázisok
       items:
       - name: Engedélyezett termékváltozatok SQL-adatbázisokhoz
+        displayName: deny
         href: samples/allowed-sql-db-skus.md
       - name: SQL-adatbázisszintű fenyegetésészlelési beállítás naplózása
+        displayName: auditIfNotExists
         href: samples/audit-db-threat-det-setting.md
       - name: SQL-adatbázis titkosításának naplózása
+        displayName: auditIfNotExists, disabled, indexed, builtin
         href: samples/sql-database-encryption-audit.md
       - name: SQL-adatbázisszintű naplózási beállítás naplózása
+        displayName: auditIfNotExists
         href: samples/audit-sql-db-audit-setting.md
-      - name: Transzparens adattitkosítás állapotának naplózása
-        href: samples/audit-trans-data-enc-status.md
   - name: Storage
     items:
     - name: Tárfiókok és virtuális gépek engedélyezett termékváltozatai
+      displayName: initiative, vmSKUs, storageSKUs
       href: samples/allowed-skus-storage.md
     - name: Engedélyezett tárfiók-termékváltozatok
+      displayName: deny, builtin, storageSKUs
       href: samples/allowed-stor-acct-skus.md
     - name: Ritka elérésű hozzáférési szint használatának tiltása a tárfiókoknak
+      displayName: deny, all
       href: samples/deny-cool-access-tiering.md
     - name: HTTPS-adatforgalom kényszerítése a tárfiókok számára
+      displayName: deny, all
       href: samples/ensure-https-stor-acct.md
     - name: Fájltitkosítás megkövetelése a tárfiókokban
+      displayName: deny, all
       href: samples/ensure-store-file-enc.md
     - name: Tárfiók-titkosítás megkövetelése
+      displayName: deny, builtin
       href: samples/req-store-acct-enc.md
 - name: Alapelvek
   items:
   - name: Azure szabályzatdefiníciók struktúrája
+    displayName: parameters, location, rule, alias, initiatives
     href: ./concepts/definition-structure.md
   - name: A szabályzat hatásainak megismerése
+    displayName: order, evaluation
     href: ./concepts/effects.md
   - name: Vendégkonfigurációval rendelkező virtuális gépek naplózása
+    displayName: provider, tools, definition
     href: ./concepts/guest-configuration.md
 - name: Útmutatók
   items:
   - name: Szabályzatok létrehozása programozott módon
+    displayName: assign, definition
     href: ./how-to/programmatically-create.md
   - name: A megfelelőségi adatok beszerzése
+    displayName: evaluation, scan, summarize, query, events, log analytics
     href: ./how-to/getting-compliance-data.md
   - name: Nem megfelelő erőforrások szervizelése
+    displayName: managed identity, task, definition, roleDefinitionIds
     href: ./how-to/remediate-resources.md
 - name: Referencia
   items:
@@ -209,6 +270,10 @@ items:
       href: /rest/api/resources/policydefinitions
     - name: Kezdeményezésdefiníciók
       href: /rest/api/resources/policysetdefinitions
+    - name: Szabályzattal nyomon követett erőforrások
+      href: /rest/api/policy-insights/policytrackedresources
+    - name: Javítások
+      href: /rest/api/policy-insights/remediations
     - name: Vendégkonfiguráció (Előzetes verzió)
       href: /rest/api/guestconfiguration/
 - name: További források
@@ -225,9 +290,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: UserVoice
     href: https://feedback.azure.com/forums/915958-azure-governance
-ms.openlocfilehash: a71c43e53e9e4ab85c6b550d6e446814be0e16ba
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 3fbe1f250dbf07fc27f9fda58f6ea85347066018
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944277"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248370"

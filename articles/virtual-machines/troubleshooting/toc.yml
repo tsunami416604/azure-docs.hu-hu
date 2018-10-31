@@ -9,8 +9,6 @@ items:
     href: allocation-failure-classic.md
 - name: RDP
   items:
-  - name: A kapcsolat gyakran megszakad
-    href: troubleshoot-rdp-intermittent-connectivity.md
   - name: RDP alaphelyzetbe állítása
     href: reset-rdp.md
   - name: RDP hibaelhárítása
@@ -19,8 +17,16 @@ items:
     href: detailed-troubleshoot-rdp.md
   - name: Konkrét hibák elhárítása
     href: troubleshoot-specific-rdp-errors.md
-  - name: Az RDP-kapcsolat gyakori megszakadásának hibaelhárítása
+  - name: Licenckiszolgáló hiányával kapcsolatos hibák elhárítása
+    href: troubleshoot-rdp-no-license-server.md
+  - name: Távoli asztali szolgáltatásokkal kapcsolatos hibák elhárítása
+    href: troubleshoot-remote-desktop-services-issues.md
+  - name: Belső hibák elhárítása
+    href: Troubleshoot-rdp-internal-error.md
+  - name: Gyakori kapcsolatmegszakadási hibák elhárítása
     href: troubleshoot-rdp-intermittent-connectivity.md
+  - name: Általános hibák elhárítása
+    href: troubleshoot-rdp-general-error.md
 - name: SSH
   items:
   - name: SSH hibaelhárítása
@@ -129,9 +135,9 @@ items:
   href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: Rendszer-újraindítás ismertetése
   href: understand-vm-reboot.md
-ms.openlocfilehash: 49e216bfd9f1b7ad9c8e9f74ae67d38359f7f474
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 749bfa9916431b4131dd7d0e814835baa96c6d64
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138274"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209241"
