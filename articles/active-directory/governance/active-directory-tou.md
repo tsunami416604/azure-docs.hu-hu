@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 10/19/2018
+ms.date: 10/30/2018
 ms.author: rolyon
-ms.openlocfilehash: be00f6fb41572c0a9599f7005f2cdd1d6587f15a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 87b08ce138cde5cc70c5a80cc414c68dd7aea743
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944143"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249802"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory – Használati feltételek funkció
 Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal. Ez a bemutató gondoskodik arról, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat. Ez a cikk azt ismerteti, hogyan kezdheti el a használati feltételeket tartalmazó fájl.
@@ -46,6 +46,7 @@ Az Azure AD Használati feltételek funkció a következőket teszi lehetővé:
 - Segít az adatvédelmi előírások teljesítése.
 - Felsorolja, hogy ki fogadta el a használati feltételeket, és ki nem.
 - Feltételek használata tevékenység megfelelőségi és naplózási naplóját jeleníti meg.
+- Létrehozásához és kezeléséhez használja a feltételek [Microsoft Graph API-k](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/agreement) (jelenleg előzetes verzióban érhető el).
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az Azure AD Használati feltételek funkció konfigurálásához a következők szükségesek:

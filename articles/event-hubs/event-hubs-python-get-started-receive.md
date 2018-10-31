@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: sethm
-ms.openlocfilehash: f5388f2de599d94f68a1d24a7d701a2cb4795915
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 9707f0cf5a76c0ac4006b53ca8166d3b42fc9af4
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43703664"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240562"
 ---
 # <a name="receive-events-from-event-hubs-using-python"></a>Események fogadása az Event Hubs Python használatával
 
@@ -108,14 +108,7 @@ start python recv.py
 ```
  
 ## <a name="next-steps"></a>További lépések
-
-Eseményeket küldeni, tekintse meg [a megfelelő küldési cikk](event-hubs-python-get-started-send.md).
-
-Látogasson el a következő oldalakon további információt az Event Hubsról:
-
-* [Event Hubs – áttekintés][Event Hubs overview]
-* [Eseményközpont létrehozása](event-hubs-create.md)
-* [Event Hubs – gyakori kérdések](event-hubs-faq.md)
+Ebben a rövid útmutatóban létrehozott egy Python-alkalmazás, amely a fogadott üzeneteket egy eseményközpontból. Ismerje meg, hogyan küldhet eseményeket egy eseményközpontba Python használatával, lásd: [események küldése az event hubs - Python](event-hubs-python-get-started-send.md).
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-about.md

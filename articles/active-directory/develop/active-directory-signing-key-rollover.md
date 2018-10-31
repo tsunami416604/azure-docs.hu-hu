@@ -16,12 +16,12 @@ ms.date: 10/20/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3b41436ffae2f5761b1917af3048327b90952b78
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: eaaeaf1b37c0d732d8d0009ad5a66f2118674b66
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470962"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240454"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Az Azure Active Directory aláírókulcs
 Ez a cikk ismerteti, mit kell tudni az Azure Active Directory (Azure AD) biztonsági jogkivonatok aláírásához használt nyilvános kulcsok. Fontos megjegyezni, hogy a kulcsok váltása rendszeres időközönként, és a egy robotkart sikerült kell leváltani azonnal. Minden alkalmazás, amely az Azure AD használata programozott módon kezelni a kulcshoz kapcsolódó kulcsváltás folyamat vagy rendszeres manuális váltása folyamatot képesnek kell lennie. Tudni, hogyan működnek a kulcsokat, olvassa tovább az alkalmazás a Váltás hatásainak kiértékelését és frissítheti az alkalmazást, vagy időszakos manuális váltása folyamatot kulcsváltás kezelésére, ha szükséges.
@@ -285,7 +285,7 @@ Kövesse az alábbi lépéseket, győződjön meg arról, hogy működik-e a kul
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. Az a **<add thumbprint=””>** beállításban módosítsa az ujjlenyomat értékét egy másik bármely karakter lecserélésével. Mentse a **Web.config** fájlt.
+2. Az a **<add thumbprint="">** beállításban módosítsa az ujjlenyomat értékét egy másik bármely karakter lecserélésével. Mentse a **Web.config** fájlt.
 3. Hozza létre az alkalmazást, és futtassa azt. A bejelentkezési folyamat elvégzése is, ha az alkalmazás sikeresen frissítése folyamatban van a kulcsot úgy, hogy letölti a szükséges adatokat a címtár összevonási metaadatok dokumentuma az. Ha előfizetéssel kapcsolatos problémák merülnek fel, győződjön meg arról, a módosítások az alkalmazás helyesek olvassa el a [hozzáadása bejelentkezés a webes alkalmazás Using Azure ad-ben](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) cikket, vagy töltsön le és az alábbi kódmintában vizsgálatával: [ Több-Bérlős felhőalapú alkalmazások az Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="vs2010"></a>Erőforrások védelme és a Visual Studio 2008 vagy 2010 hoztak létre webes alkalmazásokat és a .NET 3.5 a Windows Identity Foundation (WIF) v1.0

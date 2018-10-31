@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: rafats
-ms.openlocfilehash: d74aa6b7ef762b7971fd67654e7fc1a23a8d83cc
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: e0cbf806b7999a56ccdf2826a735238fe8130bf5
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42060130"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240579"
 ---
 # <a name="azure-cosmos-db-database-security"></a>Az Azure Cosmos DB adatbázis-biztonság
 
@@ -67,7 +67,7 @@ Tájékozódjon részletesebben mindegyikhez.
 |Felhasználók és engedélyek|Használatával a [főkulcs](#master-key) a fiók felhasználói engedély erőforrásokat adatbázisonként és hozhat létre. A [erőforrás-jogkivonat](#resource-token) társított engedély egy adatbázisban, és határozza meg, hogy a felhasználó rendelkezik-e az adatbázis egy alkalmazás-erőforrást (olvasási és írási, csak olvasható, vagy nincs hozzáférés) elérését. Alkalmazás-erőforrások közé tartoznak a tároló, dokumentumok, a mellékleteket, tárolt eljárások, eseményindítók és felhasználói függvények. Az erőforrás-jogkivonat-hitelesítés során majd használni a vagy megtagadja a hozzáférést az erőforráshoz.<br><br>További információ: [Azure Cosmos DB-erőforrásokhoz való hozzáférés biztonságossá tétele](secure-access-to-data.md).|
 |Active directory-integráció (RBAC)| Hozzáférés-vezérlés (IAM) használatával az Azure Portalon, az adatbázis-fiókjához való hozzáférés is megadhatja, hogy a táblázat alatti a képernyőképen látható módon. Az IAM szerepköralapú hozzáférés-vezérlést biztosít, és együttműködik az Active Directoryval. Beépített szerepkörök vagy egyéni szerepkörök használata felhasználók és csoportok a következő képen látható módon.|
 |Globális replikálás|Az Azure Cosmos DB kínál a kulcsrakész globális disztribúciót, amely lehetővé teszi, hogy az adatok replikálása egy gombra kattintva elküldjön világméretű az Azure-adatközpontok közül. Globális replikálás lehetővé teszi, hogy globálisan méretezhető legyen, és kis késésű hozzáférést az adataihoz, a világ különböző pontjain.<br><br>Biztonsági környezetében globális replikáció biztosítja az adatok védelmet élveznek a regionális meghibásodásokkal szemben.<br><br>További információ: [Globális adatterjesztés](distribute-data-globally.md).|
-|Régiónkénti feladatátvétel|Ha egynél több adatközpontban az adatok replikálása, az Azure Cosmos DB automatikusan áthalad a műveletek kell egy regionális adatközpont kapcsolat nélküli módba. A régió, amelyben a rendszer replikálja az adatokat használó feladatátvevő régiók rangsorolt listáját is létrehozhat. <br><br>További információ: [aktivált regionális feladatátvétel az Azure Cosmos DB](regional-failover.md).|
+|Régiónkénti feladatátvétel|Ha egynél több adatközpontban az adatok replikálása, az Azure Cosmos DB automatikusan áthalad a műveletek kell egy regionális adatközpont kapcsolat nélküli módba. A régió, amelyben a rendszer replikálja az adatokat használó feladatátvevő régiók rangsorolt listáját is létrehozhat. <br><br>További információ: [aktivált regionális feladatátvétel az Azure Cosmos DB](high-availability.md).|
 |A helyi replikációt|Még egyetlen adatközpontba, az Azure Cosmos DB automatikusan replikálja az adatokat a magas rendelkezésre álláshoz, így a kiválasztott [konzisztenciaszintek](consistency-levels.md). Ez garantálja a 99,99 %-os [rendelkezésre állási SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) minden egyrégiós és többrégiós fiókokat az összes enyhe konzisztencia, valamint 99,999 %-os olvasási rendelkezésre állás minden többrégiós adatbázisfiókhoz.|
 |Automatikus online biztonsági másolatok|Az Azure Cosmos DB-adatbázisok rendszeresen biztonsági másolat, és a egy georedundant tárolja. <br><br>További információ: [automatikus online biztonsági mentés és visszaállítás az Azure Cosmos DB](online-backup-and-restore.md).|
 |Törölt adatok helyreállításához|Az automatikus online biztonsági másolatok helyreállítani az adatokat, előfordulhat, hogy véletlenül törölt az esemény után akár KB. 30 napig használható. <br><br>További információ: [automatikus online biztonsági mentés és visszaállítás Azure Cosmos DB-vel](online-backup-and-restore.md)|

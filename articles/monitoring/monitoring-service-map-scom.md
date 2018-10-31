@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
-ms.openlocfilehash: 6fc6afa9c0ccbddcfa408556dee92618fe63c8fb
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b9146bfc284a469f12eb626c2434f4afe52335dc
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407112"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250441"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>A Service Map System Center Operations Manager-integráció
   > [!NOTE]
@@ -53,19 +53,19 @@ A Service Map integráció konfigurálásához tegye a következőket:
 
 1. A konfigurációs varázsló megnyitásához a **Service Map áttekintése** ablaktáblán kattintson a **munkaterület hozzáadása**.  
 
-    ![Service Map áttekintő panel](media/monitoring-service-map/scom-configuration.png)
+    ![Service Map áttekintő panel](media/monitoring-service-map-scom/scom-configuration.png)
 
 2. Az a **kapcsolat konfigurációja** ablakban írja be a bérlő neve vagy azonosítója, azonosítója (más néven a felhasználónév vagy a clientID) és az egyszerű szolgáltatás jelszava, és kattintson **tovább**. További információért ugorjon [egyszerű szolgáltatás létrehozása](#creating-a-service-principal).
 
-    ![A kapcsolat konfigurációs ablaka](media/monitoring-service-map/scom-config-spn.png)
+    ![A kapcsolat konfigurációs ablaka](media/monitoring-service-map-scom/scom-config-spn.png)
 
 3. Az a **előfizetés kiválasztására** ablakban válassza ki az Azure-előfizetéssel, Azure-erőforráscsoportot (az egy, a Log Analytics-munkaterületet tartalmazó) és Log Analytics-munkaterületet, és kattintson **tovább**.
 
-    ![Az Operations Manager konfigurációs munkaterület](media/monitoring-service-map/scom-config-workspace.png)
+    ![Az Operations Manager konfigurációs munkaterület](media/monitoring-service-map-scom/scom-config-workspace.png)
 
 4. Az a **gép Csoportválasztás** melyik Service Map gépcsoportok szeretné szinkronizálni az Operations Manager választja az ablakban. Kattintson a **gépcsoportok hozzáadása/eltávolítása**, listájából válassza ki a csoportokat **rendelkezésre álló gépcsoportok**, és kattintson a **Hozzáadás**.  Ha befejezte a csoportok kiválasztásával, kattintson a **Ok** befejezéséhez.
     
-    ![Az Operations Manager konfigurációs gépcsoportok](media/monitoring-service-map/scom-config-machine-groups.png)
+    ![Az Operations Manager konfigurációs gépcsoportok](media/monitoring-service-map-scom/scom-config-machine-groups.png)
     
 5. Az a **kiszolgáló kiválasztása** ablakban konfigurálja a Service Map kiszolgálók csoport az Operations Manager és a Service Map közötti szinkronizálni kívánt kiszolgálón. Kattintson a **kiszolgálók hozzáadása/eltávolítása**.   
     
@@ -75,36 +75,36 @@ A Service Map integráció konfigurálásához tegye a következőket:
     * A Service Map által felügyelt
     * A Service Map kiszolgálók csoport szerepel
 
-    ![Az Operations Manager konfigurációs csoport](media/monitoring-service-map/scom-config-group.png)
+    ![Az Operations Manager konfigurációs csoport](media/monitoring-service-map-scom/scom-config-group.png)
 
 6. Választható lehetőség: Válassza ki a Log Analytics kommunikálni a felügyeleti kiszolgálókat tartalmazó erőforráskészlet, és kattintson a **munkaterület hozzáadása**.
 
-    ![Az Operations Manager konfigurációs erőforráskészlet](media/monitoring-service-map/scom-config-pool.png)
+    ![Az Operations Manager konfigurációs erőforráskészlet](media/monitoring-service-map-scom/scom-config-pool.png)
 
     Konfigurálása és regisztrálása a Log Analytics-munkaterületet egy percig is eltarthat. Beállítások konfigurálása után az Operations Manager a Service Map első szinkronizálás indítja el.
 
-    ![Az Operations Manager konfigurációs erőforráskészlet](media/monitoring-service-map/scom-config-success.png)
+    ![Az Operations Manager konfigurációs erőforráskészlet](media/monitoring-service-map-scom/scom-config-success.png)
 
 
 ## <a name="monitor-service-map"></a>A figyelő a Service Map
 Miután a Log Analytics-munkaterülethez van csatlakoztatva, egy új mappát, a Service Map, megjelenik a **figyelés** az Operations Manager-konzol ablaktáblában.
 
-![Az Operations Manager figyelés ablaktáblán](media/monitoring-service-map/scom-monitoring.png)
+![Az Operations Manager figyelés ablaktáblán](media/monitoring-service-map-scom/scom-monitoring.png)
 
 A Service Map mappa négy csomóponttal rendelkezik:
 * **Aktív riasztások**: az Operations Manager és a Service Map közötti kommunikáció kapcsolatos összes aktív riasztás listája.  Vegye figyelembe, hogy ezek a riasztások nem a Log Analytics-riasztások szinkronizálódik az Operations Manager. 
 
 * **Kiszolgálók**: Megjeleníti a figyelt kiszolgálók konfigurált való szinkronizálása a Service Map.
 
-    ![Az Operations Manager figyelési kiszolgálók panel](media/monitoring-service-map/scom-monitoring-servers.png)
+    ![Az Operations Manager figyelési kiszolgálók panel](media/monitoring-service-map-scom/scom-monitoring-servers.png)
 
 * **A gép függőségi Csoportnézeteket**: minden, a Service Map szinkronizált gépcsoportok sorolja fel. Minden csoport az elosztottalkalmazás-diagram megtekintése gombra.
 
-    ![Az Operations Manager elosztottalkalmazás-diagram](media/monitoring-service-map/scom-group-dad.png)
+    ![Az Operations Manager elosztottalkalmazás-diagram](media/monitoring-service-map-scom/scom-group-dad.png)
 
 * **Kiszolgáló függőségi nézetek**: minden olyan kiszolgáló, a Service Map szinkronizált sorolja fel. Bármely kiszolgáló az elosztottalkalmazás-diagram megtekintése gombra.
 
-    ![Az Operations Manager elosztottalkalmazás-diagram](media/monitoring-service-map/scom-dad.png)
+    ![Az Operations Manager elosztottalkalmazás-diagram](media/monitoring-service-map-scom/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>Szerkesztheti vagy törölheti a munkaterületet
 Ön módosíthatja és törölheti a konfigurált munkaterületével keresztül a **Service Map áttekintése** ablaktáblán (**felügyeleti** panel > **Operations Management Suite**  >  **Service Map**).
@@ -114,12 +114,12 @@ A Service Map mappa négy csomóponttal rendelkezik:
 
 Most beállíthatja a csak egy Log Analytics-munkaterületet.
 
-![Az Operations Manager szerkesztése munkaterület ablaktáblán](media/monitoring-service-map/scom-edit-workspace.png)
+![Az Operations Manager szerkesztése munkaterület ablaktáblán](media/monitoring-service-map-scom/scom-edit-workspace.png)
 
 ## <a name="configure-rules-and-overrides"></a>Szabályok és felülbírálások konfigurálása
 Egy szabály _Microsoft.SystemCenter.ServiceMapImport.Rule_, rendszeres időközönként beolvasni az adatokat a Szolgáltatástérkép jön létre. Szinkronizálási időzítésüket módosításához felülbírálások a szabály konfigurálható (**szerzői műveletek** panel > **szabályok** > **Microsoft.SystemCenter.ServiceMapImport.Rule**) .
 
-![Az Operations Manager felülbírálások tulajdonságok ablak](media/monitoring-service-map/scom-overrides.png)
+![Az Operations Manager felülbírálások tulajdonságok ablak](media/monitoring-service-map-scom/scom-overrides.png)
 
 * **Engedélyezett**: engedélyezi vagy letiltja az automatikus frissítések. 
 * **IntervalMinutes**: alaphelyzetbe állítása a frissítések közötti idő. Az alapértelmezett érték egy óra. Kiszolgáló maps gyakrabban szinkronizálni szeretné, ha az értéke módosíthatja.

@@ -10,12 +10,12 @@ ms.date: 08/31/2018
 ms.service: key-vault
 ms.workload: identity
 ms.topic: conceptual
-ms.openlocfilehash: 9b0600a7afb07600116440461037c7abcb9236de
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6e0029e051e418bc54471284547329a0b0a2e9cd
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404324"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50246654"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuális hálózati Szolgáltatásvégpontok az Azure Key Vaultban
 
@@ -44,7 +44,7 @@ Az alábbiakban a tűzfalak és virtuális hálózatok konfigurálásához szük
 Tekintse meg [konfigurálása az Azure Key Vault tűzfalak és virtuális hálózatok](key-vault-network-security.md) részletes útmutatásért.
 
 > [!IMPORTANT]
-> Ha tűzfalszabályok érvényben, az összes Key Vault [adatsík](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) csak akkor hajtható végre műveleteket, ha a hívó ügyfélkérések engedélyezett virtuális hálózat vagy IPV4-címtartományokat. Ez vonatkozik a key vault elérése az Azure Portalról. Amíg a felhasználó böngészőben is a key vault Azure Portalról, előfordulhat, hogy nem tudnak kulcsok/titkos kulcsok és tanúsítványok listája, ha az ügyfélszámítógép nem szerepel az engedélyezési listán. Ez is hatással van a "Key Vault választó" más Azure-szolgáltatások. Lehet, hogy a felhasználók kulcstartók listája, de nem kulcsok, listázását, ha a tűzfal-szabályok megakadályozzák fejlesztőkörnyezetükben.
+> Ha tűzfalszabályok érvényben, az összes Key Vault [adatsík](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) csak akkor hajtható végre műveleteket, ha a hívó ügyfélkérések engedélyezett virtuális hálózat vagy IPV4-címtartományokat. (A felügyeleti sík és adatsík kapcsolatos további információért olvassa [ez](../key-vault/key-vault-secure-your-key-vault.md#management-plane-access-control) Ugyanez vonatkozik a kulcstartó elérését az Azure Portalról. Amíg a felhasználó böngészőben is a key vault Azure Portalról, előfordulhat, hogy nem tudnak kulcsok/titkos kulcsok és tanúsítványok listája, ha az ügyfélszámítógép nem szerepel az engedélyezési listán. Ez is hatással van a "Key Vault választó" más Azure-szolgáltatások. Lehet, hogy a felhasználók kulcstartók listája, de nem kulcsok, listázását, ha a tűzfal-szabályok megakadályozzák fejlesztőkörnyezetükben.
 
 
 > [!NOTE]

@@ -1,48 +1,48 @@
 ---
-title: Azure Media Encoder Standard segítségével automatikusan előállítja a sávszélességű létra |} Microsoft Docs
-description: Ez a témakör bemutatja, hogyan egy bemeneti feloldási és átviteli sebesség alapján sávszélességű létra automatikus létrehozása a Media Encoder Standard (MES) segítségével. A bemeneti megoldás és sávszélességű soha nem túllépése. Például ha a bemeneti 720p, 3 MB/s, kimeneti lesz 720p legjobb maradnak, és alacsonyabb, mint 3 MB/s sebesség időpontban fog elindulni.
+title: Az Azure Media Encoder Standard használatával skála automatikus létrehozását |} A Microsoft Docs
+description: Ez a témakör bemutatja, hogyan bementi felbontás és átviteli sebesség alapján a skála automatikus létrehozása a Media Encoder Standard (MES) használatával. A bementi felbontás és sávszélességű soha nem lehet túllépni. Például ha a bemenet 720p, 3 MB/s, a kimeneti lesz 720p legjobb maradnak, és elkezdi alacsonyabb, mint 3 MB/s díjakat.
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 80f76f413ec2c267ba8fb93514480e168563f470
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1d02f64cce5e539dd43a9372a00cd3ec1ddd5f0c
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788626"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50246976"
 ---
-#  <a name="use-azure-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Azure Media Encoder Standard segítségével egy sávszélességű létra automatikus létrehozása
+#  <a name="use-azure-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Az Azure Media Encoder Standard használatával skála automatikus létrehozása
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a cikk bemutatja, hogyan sávszélességű létra (sávszélességű felbontású párok) a bemeneti feloldási és átviteli sebesség alapján automatikus létrehozása a Media Encoder Standard (MES) segítségével. Az automatikusan generált előre definiált nem haladhatja meg a bemeneti megoldás és átviteli sebesség. Például ha a bemeneti 720p, 3 MB/s, kimeneti 720p legjobb marad, és alacsonyabb, mint 3 MB/s sebesség időpontban fog elindulni.
+Ez a cikk bemutatja, hogyan skála (sávszélességű felbontású párok) a bementi felbontás és átviteli sebesség alapján automatikus létrehozása a Media Encoder Standard (MES) használatával. A bementi felbontás és átviteli sebesség nem haladhatja meg az automatikusan generált beállításkészlet. Például ha a bemeneti 3 Mbps sebességnél 720p, kimeneti 720p legjobb marad, és elkezdi alacsonyabb, mint 3 MB/s díjakat.
 
-### <a name="encoding-for-streaming-only"></a>Az adatfolyamként történő csak kódolás
+### <a name="encoding-for-streaming-only"></a>Csak folyamatos átviteli kódolás
 
-Ha a szándéka az, a forrás videó csak az adatfolyamként történő kódolásához, majd használja a "adaptív Streameléshez" egy kódolási feladat létrehozásakor beállított. Használatakor a **adaptív Streameléshez** előzetesen létrehozott, a MES kódoló fog intelligens módon cap egy sávszélességű létra. Azonban nem lesz szabályozhatja a kódolás költségek, mivel a szolgáltatás határozza meg, hány rétegek használata, és milyen felbontásban. Példa látható miatt kódolás MES által előállított kimeneti rétegek a **adaptív Streameléshez** Ez a cikk végén az adott néven beállítás. Az eszköz MP4-fájlokat tartalmazza, ahol hang- és kimeneti nem időosztásos.
+Ha a leképezés kódolnia a forrásvideókat, csak a streaming, inkább a "adaptív Streamelés" előbeállítást kódolási tevékenység létrehozásakor. Használatakor a **adaptív Streamelés** készletet, a MES kódoló rendszer intelligensen költségplafont, skála. Azonban nem lesz a kódolási költségek, mivel a szolgáltatás határozza meg, hány rétegek használatával szabályozhatja, és milyen felbontásban. Eredményeként kódolás MES által előállított kimeneti rétegek példa látható a **adaptív Streamelés** Ez a cikk végén található előbeállítást. Az Eszközintelligencia MP4-fájlokat tartalmazza, ahol az audio- és kimeneti nem időosztásos.
 
-### <a name="encoding-for-streaming-and-progressive-download"></a>Adatfolyam-továbbításhoz és progresszív letöltés kódolása
+### <a name="encoding-for-streaming-and-progressive-download"></a>Adatfolyam-továbbítási és progresszív letöltéshez kódolás
 
-Ha a szándéka az, a forrás videó az adatfolyamként történő kódolásához, valamint MP4-fájlok progresszív letöltés létrehozásához, majd használja a "tartalom adaptív több sávszélességű MP4" egy kódolási feladat létrehozásakor beállított. Használatakor a **tartalom adaptív több sávszélességű MP4** beállított, a MES kódoló érvényes kódolási logikák a fenti, de most a kimeneti adategységen MP4 fájljait adott hang pedig videó időosztásos van. A MP4-fájlok (például a legmagasabb sávszélességű verzió) valamelyikét használhatja a progresszív letöltés fájlként.
+Ha a leképezés kódolnia a forrásvideókat streameléshez valamint MP4-fájlok progresszív letöltéshez szükséges, inkább a "tartalom adaptív több sávszélességű MP4" előbeállítást kódolási tevékenység létrehozásakor. Használatakor a **tartalom adaptív több sávszélességű MP4** készletet, a MES kódoló alkalmazza, a fenti kódolási ugyanazt a logikát, de most a kimeneti adategység fogja tartalmazni MP4-fájlokat, hang és videó közbeékeléses van. A progresszív letöltés fájlként a MP4-fájlok (például a legmagasabb bitsebességű verziót) egyikét használhatja.
 
-## <a id="encoding_with_dotnet"></a>A Media Services .NET SDK kódolás
+## <a id="encoding_with_dotnet"></a>Kódolás a Media Services .NET SDK használatával
 
-Az alábbi példakód Media Services .NET SDK-t használja a következő feladatok végezhetők el:
+Az alábbi példakód a Media Services .NET SDK-t használja a következő feladatokat:
 
-- Hozzon létre egy kódolási feladat.
-- A Media Encoder Standard encoder mutató hivatkozás beszerzése.
-- Adja hozzá a feladatot egy kódolási feladatot, és adja meg, hogy használja a **adaptív Streameléshez** előre. 
-- Hozzon létre egy kimeneti eszközt, amely tartalmazza a kódolt objektumhoz.
-- Adjon hozzá egy eseménykezelő, ellenőrizze a feladat előrehaladását.
+- Hozzon létre egy kódolási feladatot.
+- A Media Encoder Standard kódolóval mutató hivatkozás beolvasása.
+- Adja hozzá a kódolási tevékenység a feladathoz, és adja meg, hogy használja a **adaptív Streamelés** beállításkészletet. 
+- A kódolt objektumhoz tartalmazó kimeneti adategység létrehozása.
+- Adjon hozzá egy eseménykezelőt a feladat állapotának ellenőrzése.
 - A feladat elküldéséhez.
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
@@ -167,14 +167,14 @@ namespace AdaptiveStreamingMESPresest
 }
 ```
 
-## <a id="output"></a>Kimeneti
+## <a id="output"></a>Kimenet
 
-Ez a szakasz ismerteti a kimeneti rétegek MES miatt kódolás három példái a **adaptív Streameléshez** előre. 
+Ez a szakasz eredményeként kódolás MES által előállított kimeneti rétegek három példákat mutat be a **adaptív Streamelés** beállításkészletet. 
 
 ### <a name="example-1"></a>1. példa
-A magasság "1080" és "29.970" képkockasebességhez forrás 6 videó rétegek hoz létre:
+Forrás magasság "1080" és "29.970" képkockasebesség 6 videó rétegek hoz létre:
 
-|Réteg|Magassága|Szélessége|Bitrate(kbps)|
+|Réteg|Magasság|Szélesség|Bitrate(kbps)|
 |---|---|---|---|
 |1|1080|1920|6780|
 |2|720|1280|3520|
@@ -184,9 +184,9 @@ A magasság "1080" és "29.970" képkockasebességhez forrás 6 videó rétegek 
 |6|180|320|380|
 
 ### <a name="example-2"></a>2. példa
-A magasság "720" és "23.970" képkockasebességhez forrás 5 videó rétegek hoz létre:
+Forrás magasság "720" és "23.970" képkockasebesség 5 videó rétegek hoz létre:
 
-|Réteg|Magassága|Szélessége|Bitrate(kbps)|
+|Réteg|Magasság|Szélesség|Bitrate(kbps)|
 |---|---|---|---|
 |1|720|1280|2940|
 |2|540|960|1850|
@@ -195,9 +195,9 @@ A magasság "720" és "23.970" képkockasebességhez forrás 5 videó rétegek h
 |5|180|320|320|
 
 ### <a name="example-3"></a>3. példa
-A magasság "360" és "29.970" képkockasebességhez forrás 3 videó rétegek hoz létre:
+Forrás magasság "360" és "29.970" képkockasebesség 3 videó rétegek hoz létre:
 
-|Réteg|Magassága|Szélessége|Bitrate(kbps)|
+|Réteg|Magasság|Szélesség|Bitrate(kbps)|
 |---|---|---|---|
 |1|360|640|700|
 |2|270|480|440|
@@ -209,5 +209,5 @@ A magasság "360" és "29.970" képkockasebességhez forrás 3 videó rétegek h
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Lásd még:
-[Media Services kódolási áttekintése](media-services-encode-asset.md)
+[A Media Services kódolási áttekintése](media-services-encode-asset.md)
 

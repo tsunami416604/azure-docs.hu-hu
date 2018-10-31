@@ -14,12 +14,12 @@ ms.date: 03/09/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 29a53101bff8c384d01f952c4498e09d9d970ee3
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 9e73a979950e856a7fc2bfa2193ea4ca0d59bac2
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841734"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242228"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Az Office 365-csoportok-elévülési szabályzatának konfigurálása
 
@@ -55,9 +55,9 @@ Engedélyek visszaállítani egy törölt csoport további információkért lá
 
 4. Az a **lejárati** panelen is:
 
-  * Állítsa be a csoport élettartama napban. Kiválaszthatja az előre megadott értékeket, vagy egy egyéni értéket (kell lennie, vagy több 31 napon belül). 
-  * Adjon meg egy e-mail címet, ahol a megújítási és a lejárati értesítést küldni Ha egy csoportnak nincs tulajdonosa. 
-  * Válassza ki, mely Office 365-csoportok lejár. Engedélyezheti a lejárat **összes** Office 365-csoportokat, ha szeretné, csak engedélyezi **kijelölt** Office 365-csoportokat, vagy válassza ki a **nincs** letiltása az összes csoport lejárati .
+  * Állítsa be a csoport élettartama napban. Kiválaszthatja az előre megadott értékeket, vagy egy egyéni értéket (kell lennie, vagy több 31 napon belül). 
+  * Adjon meg egy e-mail címet, ahol a megújítási és a lejárati értesítést küldni Ha egy csoportnak nincs tulajdonosa. 
+  * Válassza ki, mely Office 365-csoportok lejár. Engedélyezheti a lejárat **összes** Office 365-csoportokat, ha szeretné, csak engedélyezi **kijelölt** Office 365-csoportokat, vagy válassza ki a **nincs**  letiltása az összes csoport lejárati.
   * Ha elkészült, válassza a beállítások mentéséhez **mentése**.
 
 
@@ -78,8 +78,8 @@ Ha a csoportban van visszaállítása dokumentumokat, SharePoint-webhelyek vagy 
 > [!NOTE]
 > * Amikor először állítsa be a lejárat, minden olyan csoportok, amelyek régebbiek lejárati időközét 30 lejáratig hátralévő napok vannak állítva. Az első megújítási értesítő e-mail küldése egy napon belül. 
 >   Például csoport 400 napja hozták létre, és a lejárati időközét 180 napra van állítva. Lejárati beállítások alkalmazásakor csoport rendelkezik törlése előtt 30 nappal, kivéve, ha a tulajdonos megújítja azt.
-> * Jelenleg csak egy elévülési szabályzatot is konfigurálható a bérlő az Office 365-csoportok.
-> * Ha egy dinamikus csoport törlése és visszaállítása, látható egy új csoportot, és újra feltölti a szabálya szerint. Ez a folyamat akár 24 órát is igénybe vehet.
+> * Jelenleg csak egy lejárati szabályzat konfigurálható egy bérlő Office 365-csoportjaihoz.
+> * Egy dinamikus csoport törlésekor és visszaállításakor a rendszer új csoportként kezeli azt, és újból feltölti a szabálynak megfelelően. A folyamat akár 24 órát is igénybe vehet.
 
 ## <a name="how-office-365-group-expiration-works-with-a-mailbox-on-legal-hold"></a>Office 365-csoport lejárati működése egy postaláda jogi okokból történő megőrzést
 Egy csoport lejár, és törlik, majd 30 napig törlés után a csoporthoz tartozó adatokat az alkalmazásokból, például a Planner, helyek, vagy a csoportok véglegesen törölve lesz, de a csoport-postaládát jogi okokból történő megőrzést marad, és nem véglegesen törlődik. A rendszergazda az Exchange-parancsmagok használatával állítsa helyre a postaládát az adatok beolvasása. 
@@ -116,19 +116,19 @@ Az alábbiakban példát, hogyan használhatja PowerShell-parancsmagok az Office
 4. A Set-AzureADMSGroupLifecyclePolicy meglévő szabályzat frissítése: ezt a parancsmagot használja egy meglévő szabályzatot frissítésére. Az alábbi példában a meglévő házirendben lévő csoport élettartama 180 nap módosul 365 nap. 
   
   ````
-  Set-AzureADMSGroupLifecyclePolicy -Id “26fcc232-d1c3-4375-b68d-15c296f1f077”   -GroupLifetimeInDays 180 -AlternateNotificationEmails "emailaddress@contoso.com"
+  Set-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -GroupLifetimeInDays 180 -AlternateNotificationEmails "emailaddress@contoso.com"
   ````
   
 5. Adott csoportok felvétele a szabályzatba Add-AzureADMSLifecyclePolicyGroup: Ez a parancsmag hozzáadja egy csoporthoz az életciklus-szabályzat. Példa: 
   
   ````
-  Add-AzureADMSLifecyclePolicyGroup -Id “26fcc232-d1c3-4375-b68d-15c296f1f077” -groupId "cffd97bd-6b91-4c4e-b553-6918a320211c"
+  Add-AzureADMSLifecyclePolicyGroup -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -groupId "cffd97bd-6b91-4c4e-b553-6918a320211c"
   ````
   
 6. Távolítsa el a meglévő házirend Remove-AzureADMSGroupLifecyclePolicy: Ez a parancsmag törli az Office 365-csoport lejárati beállítások, de elengedhetetlen hozzá, a házirend-azonosítóhoz. Ezzel a lépéssel letiltja az Office 365-csoportok lejárati idejét. 
   
   ````
-  Remove-AzureADMSGroupLifecyclePolicy -Id “26fcc232-d1c3-4375-b68d-15c296f1f077”
+  Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
   ````
   
 Az alábbi parancsmagok segítségével részletesebben a szabályzat konfigurálása. Tekintse meg a vonatkozó tudnivalókat, [PowerShell-dokumentáció](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&branch=master#groups).

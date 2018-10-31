@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: fcbba3578627f53ff1de29fe6e309db9608b31c9
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 693fd7b80d69c20971315d8636f27daeb0cacaee
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231508"
+ms.locfileid: "50240885"
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence-versenyek – GYIK
 **Mi a Cortana Intelligence-versenyek?**
 
-A Microsoft Cortana Intelligence-versenyek álló globális Közösséget adatokkal foglalkozó szakemberek által együttesen néhány, a világ legösszetettebb data science problémák megoldására több egység. Cortana Intelligence-versenyek adatokkal foglalkozó szakemberek a versenyben, és nagyon pontos és intelligens adatelemző modelleket hozhat létre a világ átvitelét teszi lehetővé. Ezek üzemeltetett versenyek elérhető publicaly végzett az első alkalommal egyedi adatkészleteihez alapulnak. Résztvevők jutalmakat win vagy felismerés keresztül a felső 10 nyilvános ranglista első is. Hozzáférhet a versenyek kezdőlapot [aka.ms/CIComp](http://aka.ms/CIComp).
+A Microsoft Cortana Intelligence-versenyek álló globális Közösséget adatokkal foglalkozó szakemberek által együttesen néhány, a világ legösszetettebb data science problémák megoldására több egység. Cortana Intelligence-versenyek adatokkal foglalkozó szakemberek a versenyben, és nagyon pontos és intelligens adatelemző modelleket hozhat létre a világ átvitelét teszi lehetővé. Ezek üzemeltetett versenyek egyedi adatkészleteihez tett érhető el nyilvánosan először alapulnak. Résztvevők jutalmakat win vagy felismerés keresztül a felső 10 nyilvános ranglista első is. Hozzáférhet a versenyek kezdőlapot [aka.ms/CIComp](http://aka.ms/CIComp).
 
 **Milyen gyakran közzéteszik a Microsoft új versenyek?**
 

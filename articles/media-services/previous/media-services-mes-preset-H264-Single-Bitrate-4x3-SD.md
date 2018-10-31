@@ -1,8 +1,8 @@
 ---
-title: H264 egyféle sávszélességű 4 x 3 SD Media Encoder Standard előre definiált - Azure |} Microsoft Docs
-description: A témakör áttekintést a **H264 egyféle sávszélességű 4 x 3 SD** feladat az adott néven beállítás.
+title: SD Media Encoder Standard előre H264 egyféle sávszélességű 4 x 3 – Azure |} A Microsoft Docs
+description: A témakör áttekintést nyújt a **H264 egyféle sávszélességű 4 x 3 SD** feladat előbeállítást.
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,21 +12,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 61fac597c6e9ee425cedd1df2d819acebb148280
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e9d400de159048a5eb72d8f674cbbf9c42d50e17
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788241"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247147"
 ---
 # <a name="h264-single-bitrate-4x3-sd"></a>H264 Egyféle sávszélességű 4 x 3 SD
-`Media Encoder Standard` Meghatározza a kódolási készletek kódolási feladatok létrehozásakor használható. Használhatja a `preset name` adhatja meg, melyik formátumba kódolja a médiafájl szeretné. Másik lehetőségként létrehozhat saját JSON- vagy XML-alapú készletek (UTF-8 vagy UTF-16 kódolás használatával. Az egyéni készletet a kódoló majd át lesz. Ez által támogatott összes előre definiált nevek listája `Media Encoder Standard` kódoló, lásd: [feladat készletek a Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard` határozza meg a kódolási készletek is használhatja a kódolási feladat létrehozásakor. Használhatja egy `preset name` mely formátumba, amelyet szeretne kódolása a media-fájl megadásához. Vagy létrehozhat saját JSON vagy XML-alapú készletek (UTF-8 és UTF-16 kódolást használatával. Az egyéni készletet a kódoló majd kellene átadnia. Ez által támogatott összes előre definiált nevek a lista `Media Encoder Standard` kódoló, lásd: [feladat készletek Media Encoder standard](media-services-mes-presets-overview.md).  
   
- Ez a témakör bemutatja a `H264 Single Bitrate 4x3 SD` beállított XML és a JSON formátumban.  
+ Ez a témakör bemutatja a `H264 Single Bitrate 4x3 SD` előre definiált XML és JSON formátumban.  
   
- Ez egy 1800 kbit/s és sztereó AAC hang sávszélességű előre definiált előállított egyetlen MP4 fájl. Profillal kapcsolatos részletes információkért sávszélességű mintavételi arány stb. a készletet, vizsgálja meg az XML- vagy JSON-ban megadva. Az egyes milyen egyes elemei a készletek azt jelenti, és az érvényes értékek az egyes elemekhez, tekintse meg a [Media Encoder Standard séma](media-services-mes-schema.md) témakör.  
+ Ez egy 1800 KB/s és sztereó AAC hang sávszélességű előre beállított eredményez olyan egyetlen MP4 fájlt. Profillal kapcsolatos részletes információkért sávszélességű, mintavételi arány, stb. Ez a készletet, vizsgálja meg az XML- vagy JSON lényegét az alábbiakban. Az egyes milyen egyes elemei, és ezen készletek azt jelenti, hogy az érvényes értékek az egyes elemekhez, tekintse meg a [Media Encoder Standard-séma](media-services-mes-schema.md) témakör.  
   
  XML  
   

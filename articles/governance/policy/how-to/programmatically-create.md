@@ -4,16 +4,16 @@ description: Ez a cikk végigvezeti programozott módon szabályzatok létrehoz�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/29/2018
+ms.date: 10/30/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 4a68b60df76dcc554158d6c8db4d0dfe8dd32be7
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: d72c9c1747bb697f66fa53489636b1726053060c
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209224"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242628"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programozott módon szabályzatok létrehozása és a megfelelőségi adatok megtekintése
 
@@ -74,7 +74,13 @@ Az erőforrások jobb rálátást biztosít az első lépését, hogy a szabály
    New-AzureRmPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy 'AuditStorageAccounts.json'
    ```
 
-   A parancs létrehoz egy szabályzatdefiníciót nevű _naplózási Storage fiókok nyissa meg a nyilvános hálózatok_. Más paramétereket, amelyeket használhat kapcsolatos további információkért lásd: [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition).
+   A parancs létrehoz egy szabályzatdefiníciót nevű _naplózási Storage fiókok nyissa meg a nyilvános hálózatok_.
+   Más paramétereket, amelyeket használhat kapcsolatos további információkért lásd: [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition).
+
+   Hely paraméterek nélkül meghívni `New-AzureRmPolicyDefinition` , az alapértelmezett érték a szabályzat-definíció mentése az munkamenet-környezet a kijelölt előfizetésben. A definíció mentése más helyre, használja a következő paraméterekkel:
+
+   - **SubscriptionId** -másik előfizetésbe való mentéséhez. Szükséges egy _GUID_ értéket.
+   - **ManagementGroupName** -mentse egy felügyeleti csoporthoz. Szükséges egy _karakterlánc_ értéket.
 
 1. Miután létrehozta a szabályzat-definíció, létrehozhat egy szabályzat-hozzárendelést a következő parancsok futtatásával:
 
@@ -86,7 +92,8 @@ Az erőforrások jobb rálátást biztosít az első lépését, hogy a szabály
 
    Cserélje le _ContosoRG_ az importálni kívánt erőforráscsoport nevét.
 
-   A **hatókör** paraméterrel `New-AzureRmPolicyAssignment` az előfizetések és a felügyeleti csoportok is működik. A paraméter használja a teljes erőforrás-elérési útját, amely a **ResourceId** tulajdonsága `Get-AzureRmResourceGroup` adja vissza. Minta **hatókör** az egyes tárolók a következőképpen történik.  Cserélje le `{rgName}`, `{subId}`, és `{mgName}` az erőforrás-csoport nevét, az előfizetés-azonosító és a felügyeleti csoport neve, illetve.
+   A **hatókör** paraméterrel `New-AzureRmPolicyAssignment` az előfizetések és a felügyeleti csoportok is működik. A paraméter használja a teljes erőforrás-elérési útját, amely a **ResourceId** tulajdonsága `Get-AzureRmResourceGroup` adja vissza. Minta **hatókör** az egyes tárolók a következőképpen történik.
+   Cserélje le `{rgName}`, `{subId}`, és `{mgName}` az erőforrás-csoport nevét, az előfizetés-azonosító és a felügyeleti csoport neve, illetve.
 
    - Erőforráscsoport- `/subscriptions/{subId}/resourceGroups/{rgName}`
    - Előfizetés – `/subscriptions/{subId}/`

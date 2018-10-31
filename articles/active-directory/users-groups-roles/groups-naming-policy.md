@@ -14,12 +14,12 @@ ms.date: 05/21/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 111be7d3ee00f2b40ace3bfe4efdacc5029ccf77
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 2857f95eff0b2d039a1a3c7bbe566a8ed3ca4fea
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239134"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50243129"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Az Azure Active Directoryban (előzetes verzió) az Office 365-csoportokra vonatkozó elnevezési szabályzat kényszerítése
 
@@ -49,7 +49,7 @@ Karakterláncok könnyebb vizsgálata és a globális címlista és a bal oldali
 
 #### <a name="user-attributes"></a>Felhasználói attribútumok
 
-Attribútumok, amelyek segítségével is használhatja, és a felhasználók azonosítására, melyik részleg, az office vagy a földrajzi régióban, amely a csoport létrehozásának. Például, ha a csoportelnevezési házirend, megadhat `PrefixSuffixNamingRequirement = “GRP [GroupName] [Department]”`, és `User’s department = Engineering`, akkor lehet, hogy az érvényben levő csoport neve "Csoport saját csoport mérnöki." Támogatott az Azure AD-attribútumok vannak \[részleg\], \[vállalati\], \[Office\], \[StateOrProvince\], \[CountryOrRegion \], \[Cím\]. Nem támogatott felhasználói attribútumok rögzített karakterláncként kell kezelni. például "\[postalCode\]". A bővítményattribútumok és egyéni attribútumok nem támogatottak.
+Attribútumok, amelyek segítségével is használhatja, és a felhasználók azonosítására, melyik részleg, az office vagy a földrajzi régióban, amely a csoport létrehozásának. Például, ha a csoportelnevezési házirend, megadhat `PrefixSuffixNamingRequirement = "GRP [GroupName] [Department]"`, és `User’s department = Engineering`, akkor lehet, hogy az érvényben levő csoport neve "Csoport saját csoport mérnöki." Támogatott az Azure AD-attribútumok vannak \[részleg\], \[vállalati\], \[Office\], \[StateOrProvince\], \[CountryOrRegion \], \[Cím\]. Nem támogatott felhasználói attribútumok rögzített karakterláncként kell kezelni. például "\[postalCode\]". A bővítményattribútumok és egyéni attribútumok nem támogatottak.
 
 Azt javasoljuk, hogy használja-e az attribútumokat, amelyek kitölti a rendszer az összes felhasználó számára a cégnél értékeket, és ne használja az attribútumokat, amelyek hosszú értékeket.
 
@@ -75,34 +75,34 @@ Kijelölt rendszergazdák kivonhatók a ezek a házirendek összes csoport szám
 
 ## <a name="install-powershell-cmdlets-to-configure-a-naming-policy"></a>A kiosztási szabályzat konfigurálása a PowerShell-parancsmagjainak telepítése
 
-Ügyeljen arra, hogy távolítsa el az összes régebbi verzióját az Azure Active Directory PowerShell grafikon modul Windows PowerShell, telepítse [Graph – nyilvános előzetes kiadásban 2.0.0.137 Azure Active Directory PowerShell](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) futtatása előtt a PowerShell-parancsokat. 
+A PowerShell-parancsok futtatása előtt mindenképpen távolítsa el a Windows PowerShellhez készült Azure Active Directory PowerShell for Graph modul összes régebbi verzióját, és telepítse az [Azure Active Directory PowerShell for Graph 2.0.0.137-es nyilvános előzetes kiadását](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137). 
 
 1. Nyissa meg a Windows PowerShell alkalmazást rendszergazdaként.
-2. Távolítsa el a AzureADPreview minden korábbi verzióját.
+2. Távolítsa el az AzureADPreview korábbi verzióit.
   
   ````
   Uninstall-Module AzureADPreview
   ````
-3. Telepítse a legújabb verziót az AzureADPreview.
+3. Telepítse az AzureADPreview legújabb verzióját.
   
   ````
   Install-Module AzureADPreview
   ````
-Ha egy nem megbízható adattár elérése kéri, írja be a **Y**. Az új modulhoz telepítendő néhány percbe is telhet.
+Ha a rendszer megerősítését kér a nem megbízható adattár eléréséhez, nyomja le az **Y** billentyűt. Az új modul telepítése igénybe vehet néhány percet.
 
 ## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-ad-powershell"></a>A bérlő Azure AD PowerShell-lel csoportelnevezési házirend konfigurálása
 
 1. Nyisson meg egy Windows PowerShell-ablakot a számítógépen. Azt is nyissa meg emelt szintű jogosultságok nélkül.
 
-2. Futtassa az alábbi parancsokat a parancsmagok futtatásához.
+2. Futtassa a következő parancsokat a parancsmagok futtatásának előkészítéséhez.
   
   ````
   Import-Module AzureADPreview
   Connect-AzureAD
   ````
-  Az a **bejelentkezni a fiókjába** képernyő, amely megnyílik, adja meg a rendszergazdai fiók és jelszó kapcsolódik a szolgáltatáshoz, és válassza ki a **jelentkezzen be a**.
+  A megjelenő **Bejelentkezés a fiókba** párbeszédpanelen adja meg a rendszergazdai fiókot és jelszót, hogy kapcsolatot létesítsen a szolgáltatással, majd válassza a **Bejelentkezés** lehetőséget.
 
-3. Kövesse a [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](groups-settings-cmdlets.md) ehhez a bérlőhöz tartozó csoport beállításokat szeretne létrehozni.
+3. Kövesse az [Azure Active Directory-parancsmagok a csoportbeállítások konfigurálásához](groups-settings-cmdlets.md) című rész lépéseit a bérlő csoportbeállításainak létrehozásához.
 
 ### <a name="view-the-current-settings"></a>Az aktuális beállítások megtekintése
 
@@ -112,7 +112,7 @@ Ha egy nem megbízható adattár elérése kéri, írja be a **Y**. Az új modul
   $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
   ````
   
-2. A jelenlegi beállítások megjelenítéséhez.
+2. Jelenítse meg az aktuális csoportbeállításokat.
   
   ````
   $Setting.Values
@@ -120,19 +120,19 @@ Ha egy nem megbízható adattár elérése kéri, írja be a **Y**. Az új modul
   
 ### <a name="set-the-naming-policy-and-custom-blocked-words"></a>Adja meg a csoportelnevezési házirend és egyéni letiltott szavakat
 
-1. Állítsa be a csoport előtagok és utótagok az Azure AD PowerShell.
+1. Állítsa be a csoportnév előtagjait és utótagjait az Azure AD PowerShellben.
   
   ````
   $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
   ````
   
-2. Állítsa be a korlátozni kívánt egyéni letiltott szavakat. A következő példa bemutatja, hogyan adhat hozzá a saját egyéni szavakat.
+2. Állítsa be az egyéni letiltott szavakat, amelyek használatát korlátozni szeretné. A következő példa szemlélteti, hogyan adhatja hozzá saját egyéni szavait.
   
   ````
   $Setting["CustomBlockedWordsList"]=“Payroll,CEO,HR"
   ````
   
-3. Hatékony, mint például a következő példában az új házirend a beállítások mentéséhez.
+3. Az új szabályzat alkalmazáshoz mentse a beállításait a következő példának megfelelően.
   
   ````
   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting

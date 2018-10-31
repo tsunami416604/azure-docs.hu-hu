@@ -1,7 +1,7 @@
 ---
-title: Adatok tudományos virtuális gép Fejlesztőeszközök - Azure |} Microsoft Docs
-description: Adatok tudományos virtuális gép Fejlesztőeszközök.
-keywords: adatok tudományos eszközök, adatok tudományos virtuális gép, adattudomány, linux adattudomány eszközei
+title: Adatok adatelemzési virtuális gép fejlesztői eszközök – Azure |} A Microsoft Docs
+description: Data Science virtuális gép fejlesztői eszközök.
+keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
 documentationcenter: ''
 author: gopitk
@@ -15,80 +15,80 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: b8b0b8934b51080c3583281673183c1498c26417
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2f642a91bd656cb74cdce2a98c44372a64f23cb9
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31408309"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50237877"
 ---
-# <a name="development-tools-on-the-data-science-virtual-machine"></a>Az adatok tudományos virtuális gép Fejlesztőeszközök
+# <a name="development-tools-on-the-data-science-virtual-machine"></a>Fejlesztőeszközök a Data Science virtuális gépen
 
-A tudományos virtuális gép (DSVM) által számos népszerű eszközök és IDE kötegelése hatékony a fejlesztési környezetet biztosít. Íme néhány a DSVM lévő eszközök. 
+Az adatelemzési virtuális gép (DSVM) biztosítja, hogy a fejlesztési környezetbe a kötegelés több népszerű eszközeivel és IDE. Íme néhány a DSVM lévő eszközök. 
 
 ## <a name="visual-studio-2017"></a>Visual Studio 2017  
 |    |           |
 | ------------- | ------------- |
 | Mi ez?   | Általános célú IDE      |
-| Támogatott DSVM verziók      | Windows      |
-| A gyakori felhasználási      | Szoftverfejlesztői    |
-| Hogyan van azt konfigurált / a DSVM telepítve?      | Adatok tudományos munkaterhelés (Python és R eszközök), Azure számítási (Hadoop, Data Lake), Node.js, SQL Server-eszközök [AI Visual Studio eszközök](https://github.com/Microsoft/vs-tools-for-ai)    |
-| Hogyan használja az / futtatni?      | Asztali parancsikonra (`C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.exe`)    |
-| A DSVM a kapcsolódó eszközök      |     A Visual Studio Code, Rstudióból, Juno  |
+| A DSVM támogatott verziói      | Windows      |
+| Gyakori használati      | A szoftverfejlesztői    |
+| Hogyan van azt konfigurálni / telepíteni a dsvm-hez?      | Adatok tudományos munkaterhelés (Python- és R-eszközök), az Azure-beli számítási (Hadoop, a Data Lake), a Node.js, SQL Server-eszközök [Visual Studio Tools for AI](https://github.com/Microsoft/vs-tools-for-ai)    |
+| Hogyan futtathatja / használata?      | Asztali parancsikon (`C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.exe`)    |
+| A dsvm-hez kapcsolódó eszközök      |     A Visual Studio Code-ban, az RStudio Juno  |
 
 ## <a name="visual-studio-code"></a>Visual Studio Code 
 |    |           |
 | ------------- | ------------- |
 | Mi ez?   | Általános célú IDE      |
-| Támogatott DSVM verziók      | Windows, Linux     |
-| A gyakori felhasználási      | Kód szerkesztése és a Git integráció   |
-| Hogyan használja az / futtatni?      | Asztali parancsikonra (`C:\Program Files (x86)\Microsoft VS Code\Code.exe`) a Windows, a asztali parancsikonjára vagy a Terminálszolgáltatások (`code`) a Linux    |
-| A DSVM a kapcsolódó eszközök      |     A Visual Studio 2017, Rstudióból, Juno  |
+| A DSVM támogatott verziói      | Windows, Linux     |
+| Gyakori használati      | A kód és a Git-integráció   |
+| Hogyan futtathatja / használata?      | Asztali parancsikon (`C:\Program Files (x86)\Microsoft VS Code\Code.exe`) Windows-, asztali parancsikonjára vagy terminálon (`code`) Linux rendszeren    |
+| A dsvm-hez kapcsolódó eszközök      |     A Visual Studio 2017, az RStudio, Juno  |
 
-## <a name="rstudio--desktop"></a>Rstudióból asztali 
+## <a name="rstudio--desktop"></a>Az RStudio Desktop 
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   | Az R IDE ügyfél    |
-| Támogatott DSVM verziók      | Windows, Linux      |
-| A gyakori felhasználási      |  R fejlesztési     |
-| Hogyan használja az / futtatni?      | Asztali parancsikonra (`C:\Program Files\RStudio\bin\rstudio.exe`) a Windows asztali parancsikonra (`/usr/bin/rstudio`) Linux rendszeren      |
-| A DSVM a kapcsolódó eszközök      |   A Visual Studio 2017, a Visual Studio Code, Juno      |
+| Mi ez?   | Ügyfél R ide-vel    |
+| A DSVM támogatott verziói      | Windows, Linux      |
+| Gyakori használati      |  R-fejlesztés     |
+| Hogyan futtathatja / használata?      | Asztali parancsikon (`C:\Program Files\RStudio\bin\rstudio.exe`) a Windows-, asztali parancsikon (`/usr/bin/rstudio`) Linux rendszeren      |
+| A dsvm-hez kapcsolódó eszközök      |   A Visual Studio 2017, a Visual Studio Code-ban Juno      |
 
 ## <a name="rstudio--server"></a>RStudio  Server 
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   | Az R webes IDE    |
-| Támogatott DSVM verziók      | Linux      |
-| A gyakori felhasználási      |  R fejlesztési     |
-| Hogyan használja az / futtatni?      | Engedélyezze a szolgáltatást a _systemctl rstudióból-kiszolgáló engedélyezése_, majd indítsa el a szolgáltatást, amely _systemctl rstudióból-kiszolgáló indítása_. Ezután bejelentkezhet Rstudióból kiszolgálóra http://your-vm-ip:8787.       |
-| A DSVM a kapcsolódó eszközök      |   A Visual Studio 2017, a Visual Studio Code, Rstudióból asztali      |
+| Mi ez?   | Webes IDE az r nyelvhez    |
+| A DSVM támogatott verziói      | Linux      |
+| Gyakori használati      |  R-fejlesztés     |
+| Hogyan futtathatja / használata?      | Engedélyezze a szolgáltatást a _systemctl engedélyezése az rstudio-kiszolgáló_, majd indítsa el a szolgáltatást a _systemctl indítsa el az rstudio-kiszolgálót_. Ezután bejelentkezhet az RStudio Serverhez, http://your-vm-ip:8787.       |
+| A dsvm-hez kapcsolódó eszközök      |   A Visual Studio 2017, a Visual Studio Code-ban az RStudio Desktop      |
 
 ## <a name="juno"></a>Juno 
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   | Ágnes nyelvi IDE-ügyfél   |
-| Támogatott DSVM verziók      | Windows, Linux      |
-| A gyakori felhasználási      |  Ágnes fejlesztési     |
-| Hogyan használja az / futtatni?      | Asztali parancsikonra (`C:\JuliaPro-0.5.1.1\Juno.bat`) a Windows asztali parancsikonra (`/opt/JuliaPro-VERSION/Juno`) Linux rendszeren      |
-| A DSVM a kapcsolódó eszközök      |   A Visual Studio 2017, a Visual Studio Code, Rstudióból      |
+| Mi ez?   | Ügyfél IDE a Julia nyelvhez   |
+| A DSVM támogatott verziói      | Windows, Linux      |
+| Gyakori használati      |  Julia fejlesztés     |
+| Hogyan futtathatja / használata?      | Asztali parancsikon (`C:\JuliaPro-0.5.1.1\Juno.bat`) a Windows-, asztali parancsikon (`/opt/JuliaPro-VERSION/Juno`) Linux rendszeren      |
+| A dsvm-hez kapcsolódó eszközök      |   A Visual Studio 2017, a Visual Studio Code-ot, az RStudio      |
 
 ## <a name="pycharm"></a>Pycharm
 |    |           |
 | ------------- | ------------- |
 | Mi ez?   | Ügyfél IDE Python nyelvhez    |
-| Támogatott DSVM verziók      | Linux      |
-| A gyakori felhasználási      |  R fejlesztési     |
-| Hogyan használja az / futtatni?      | Asztali parancsikonra (`/usr/bin/pycharm`) Linux rendszeren      |
-| A DSVM a kapcsolódó eszközök      |   A Visual Studio 2017, a Visual Studio Code, Rstudióból      |
+| A DSVM támogatott verziói      | Linux      |
+| Gyakori használati      |  Python-fejlesztés     |
+| Hogyan futtathatja / használata?      | Asztali parancsikon (`/usr/bin/pycharm`) Linux rendszeren      |
+| A dsvm-hez kapcsolódó eszközök      |   A Visual Studio 2017, a Visual Studio Code-ot, az RStudio      |
 
 
 
-## <a name="powerbi-desktop"></a>Power bi Desktop 
+## <a name="powerbi-desktop"></a>PowerBI Desktop 
 |    |           |
 | ------------- | ------------- |
-| Mi ez?   | Adatok interaktív képi megjelenítés és BI eszköz    |
-| Támogatott DSVM verziók      | Windows  |
-| A gyakori felhasználási      |  Adatok vizuális és irányítópultok felépítése   |
-| Hogyan használja az / futtatni?      | Asztali parancsikonra (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
-| A DSVM a kapcsolódó eszközök      |   A Visual Studio 2017, a Visual Studio Code, Juno      |
+| Mi ez?   | Interaktív adatábrázolás és Üzletiintelligencia-eszköze    |
+| A DSVM támogatott verziói      | Windows  |
+| Gyakori használati      |  Adatvizualizációk és -irányítópultokat készít   |
+| Hogyan futtathatja / használata?      | Asztali parancsikon (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
+| A dsvm-hez kapcsolódó eszközök      |   A Visual Studio 2017, a Visual Studio Code-ban Juno      |
 

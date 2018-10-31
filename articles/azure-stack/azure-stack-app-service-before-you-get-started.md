@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: anwestg
-ms.openlocfilehash: 08fcaa44fc807f986324b8304010792af99fd838
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 786f6ca3b3a1ad26d36c751c54d3cf69ae1d2fd4
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388000"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240868"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Mielőtt elkezdené, az Azure Stack App Service-szel
 
@@ -170,7 +170,7 @@ Az Azure App Service egy fájlkiszolgálóhoz van szükség. Éles környezetekb
 Csak az Azure Stack Development Kit központi telepítése esetén használhatja a [példa az Azure Resource Manager üzembe helyezési sablon](https://aka.ms/appsvconmasdkfstemplate) konfigurált egy csomópontos fájlkiszolgáló üzembe helyezéséhez. Egy csomópontos fájlkiszolgáló munkacsoport lesz.
 
 >[!IMPORTANT]
-> Ha úgy dönt, hogy egy meglévő virtuális hálózatot, a fájlkiszolgáló üzembe szeretné helyezni az App Service-ből egy külön alhálózatot az App Service üzembe helyezése.
+> Ha egy meglévő virtuális hálózatot az App Service üzembe helyezése, a fájlkiszolgáló az App Service-ből egy külön alhálózatot kell telepíteni.
 
 ### <a name="provision-groups-and-accounts-in-active-directory"></a>Csoportok és az Active Directory fiókok kiépítése
 

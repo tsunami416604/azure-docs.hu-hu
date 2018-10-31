@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Edge biztonsági |} Microsoft Docs
-description: Biztonsági, hitelesítési és engedélyezési IoT peremhálózati eszköz
+title: Az Azure IoT Edge biztonsági |} A Microsoft Docs
+description: Biztonság, hitelesítés és engedélyezés az IoT Edge-eszközök
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -8,81 +8,78 @@ ms.date: 10/05/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f198efe9ff5e4862a3bbe872ab50e5848c9dbb5c
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 890189f6b6e18ef10f274324915cc7dee019f1f0
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030580"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249135"
 ---
-# <a name="securing-azure-iot-edge"></a>Az Azure IoT peremhálózati biztonságossá tétele
+# <a name="securing-azure-iot-edge"></a>Az Azure IoT Edge védelme
 
-Biztonságossá tétele az intelligens él szükség, felruházza a művelet egy teljes körű IoT-megoldás-be vetett bizalmat. Azure IoT peremhálózati készült biztonsági bővíthető különböző kockázati profilok, a központi telepítési forgatókönyve esetén, és az összes Azure-szolgáltatásokat a várt azonos védelmet nyújt.
+Intelligens peremhálózat biztosítása szükség, felruházza a bizalom a teljes körű IoT-megoldás működésére. Az Azure IoT Edge lett tervezve, amelyet a különböző kockázati-profilok központi telepítési forgatókönyv, bővíthető, és ugyanazt az összes Azure-szolgáltatásokból származó várt védelmet kínál.
 
-Az Azure IoT peremhálózati fut másik hardverre, támogatja a Linux és a Windows, és különböző telepítési forgatókönyvek alkalmazandó.  Becsült kockázattal sok szempontok, beleértve a megoldás tulajdonjogát, központi telepítési geográfiai, adatok érzékenysége, adatvédelmi, alkalmazás függőleges és szabályozási követelmények függ.  Ahelyett, hogy az adott forgatókönyveket konkrét megoldást kínál, így megtervezheti egy bővíthető biztonsági keretrendszer méretezési tervezett jól grounded alapelvek alapján. 
- 
-Ez a cikk áttekintést biztonsági keretében. További információkért lásd: [biztonságossá tétele az intelligens él][lnk-edge-blog].
+Az Azure IoT Edge más hardvereken fut, támogatja a Linux és a Windows, és különböző telepítési forgatókönyvek alkalmazható.  Felmért kockázatokat attól függ, hogy számos szempontok, beleértve a megoldás tulajdonjogát, térségétől, adatok érzékenysége, adatvédelmi, alkalmazás vertikális, és szabályozási követelményeikkel.  Ahelyett, hogy bizonyos forgatókönyvek esetén konkrét megoldást kínál, logikus tervezhet egy bővíthető biztonsági keretrendszert, a méretezési csoport tervezett jól grounded elvek alapján. 
+ 
+Ez a cikk a biztonsági keretrendszer áttekintést nyújt. További információkért lásd: [intelligens peremhálózat biztosítása](https://azure.microsoft.com/blog/securing-the-intelligent-edge/).
 
 ## <a name="standards"></a>Szabványok
 
-Szabványok egyszerű vizsgálati és a könnyű végrehajtására, amelyek biztonsági hallmark lépteti elő.  A megfelelően felépített biztonsági megoldás alkalmasnak kell vizsgálatra értékelje megbízhatósági kapcsolat létrehozásához, és nem lehet a telepítéshez a küszöbértéket.  A Tervező keretrendszer Azure IoT peremhálózati biztonságossá jelentette time-tested, és kihasználhatják a tesztkörnyezet és újbóli protokollok bizonyítása iparági biztonsági. 
+Szabványok alapos könnyű és az egyszerű megvalósítása, amelyek a biztonsági hallmark előléptetése.  Megvalósíthatná biztonsági megoldást kell jellegűvé alatt hozhat létre megbízható értékelési vizsgálat, és nem lehet üzemelő példány egy küszöbértéket.  A kialakítás biztonságossá tétele az Azure IoT Edge-keretrendszer jelentette tesztelt és iparágban már bizonyított biztonsági protokollok kihasználhatja a megszokott és újbóli felhasználáshoz. 
 
 ## <a name="authentication"></a>Hitelesítés
 
-Milyen szereplője, eszközök és összetevők teljes körű IoT-megoldás értékesnek kézbesítését részt ismerete nélkül egy kétséges kiemelkedő megbízhatósági fejlesztése során.  Ilyen Tudásbázis történő beléptetésre engedélyezése való biztonságos accountability kínál.  Az Azure IoT peremhálózati eléri a Tudásbázis-hitelesítésen keresztül.  Az elsődleges módszer hitelesítéshez az Azure IoT peremhálózati platformhoz Tanúsítványalapú hitelesítés használata.  A mechanizmus előírásait nyilvános kulcsokra épülő infrastruktúrát (PKiX) az Internet Engineering Task Force (IETF) által meghatározott osztályból származik.     
+Milyen szándékú felhasználók, eszközök és összetevők teljes körű IoT-megoldások révén a értékközvetítést résztvevő ismerete nélkül egy bizonytalan létfontosságú a megbízhatósági kapcsolat létrehozásához.  Az ilyen ismeretek való engedélyezésével már a betegfelvétel alapját biztonságos accountability kínál.  Az Azure IoT Edge teljesítsük a Tudásbázis-hitelesítésen keresztül.  A hitelesítés az Azure IoT Edge platformon az elsődleges mechanizmusa Tanúsítványalapú hitelesítés.  Ez a mechanizmus szabványokat fogalmaz meg a nyilvános kulcsú infrastruktúra (PKiX) az Internet Engineering Task Force (IETF) által meghatározott használatából.     
 
-Az Azure IoT peremhálózati biztonsági keretrendszere meghívja a tanúsítvány egyedi identitások az eszközök, modulok (tárolókat foglalják magukban az eszközön belüli logika) és szereplője használják az Azure IoT peremhálózati eszköz a fizikailag vagy hálózati kapcsolaton keresztül kell azt.  Nem minden forgatókönyv vagy összetevő nyújthatnak maga a tanúsítvány alapú hitelesítést, amelynek a biztonsági keretrendszer bővítési kínál az Elhelyezés biztonságos rendszere. 
+Az Azure IoT Edge biztonsági keretrendszer egyedi tanúsítványt minden eszközök, modulok (tárolók, amely magába foglalja az eszközön belül logikai) és az Azure IoT Edge-eszköz használata, fizikailag vagy a hálózati kapcsolat legyen az actors identitásainak szükségessé teszi.  Nem minden forgatókönyvben vagy összetevő előfordulhat, hogy a verziókövetésre, amelynek a biztonsági keretrendszer bővíthetőségét kínál biztonságos kialakítható vendéglátóipar a tanúsítványalapú hitelesítést. 
 
 ## <a name="authorization"></a>Engedélyezés
 
-Szolgáltató és a vezérlés hozzáférés delegálására képes elengedhetetlen alapvető biztonsági irányelveket – a legalacsonyabb jogosultsági szint elvét elérésére.  Eszközök, modulok és szereplője előfordulhat, hogy hozzáférést csak erőforrásokhoz és adatokhoz, az engedély hatókörén belül, és csak akkor, ha architektúráját engedélyezett.  Ez azt jelenti, hogy néhány engedélyekre elegendő jogosultsága és mások architektúráját kényszerített konfigurálhatók.  Például egy modul használatával kezdeményeznek kapcsolatot az Azure IoT Hub engedélyezhető kiemelt konfigurálással, amíg nincs miért egy Azure IoT peremhálózati eszköz a modul hozzá kell férnie egy másik Azure IoT peremhálózati eszköz modul iker OK.  Ezért az utóbbi kellene lennie architektúráját kizár elmozdulást. 
+Szolgáltató és hozzáférés delegálása lehetővé teszi elengedhetetlen alapvető biztonsági irányelveket – a minimális jogosultság elvének elérésére.  Eszközök, modulok és actors is elérhet csak erőforrások és adatok engedély hatálya alá, és csak akkor, ha tekintve megengedett.  Ez azt jelenti, hogy néhány engedélyt konfigurálható elegendő jogosultsággal és másokkal tekintve érvényben.  Például egy modul rendszerjogosultságú konfigurálásával engedélyezhető használatával kezdeményeznek kapcsolatot az Azure IoT hubhoz, amíg nem indokolt miért modul egy Azure IoT Edge-eszköz hozzá kell férnie az ikereszköz egy másik Azure IoT Edge-eszköz modul.  Ezért az utóbbi kellene lennie tekintve kizár elmozdulást. 
 
-Más hitelesítési sémák a következők: tanúsítvány-aláírási jogosultságokat, valamint a szerepköralapú hozzáférés-vezérlést (RBAC).  Biztonsági keretrendszer kiterjeszthetőség lehetővé teszi a más érett hitelesítési sémák elfogadását. 
+Egyéb engedélyezési rendszerek például a tanúsítvány-aláírási jogok és a szerepköralapú hozzáférés-vezérlés (RBAC).  A biztonsági keretrendszer bővíthetőségét lehetővé teszi, hogy más érett engedélyezési rendszerek bevezetését. 
 
 ## <a name="attestation"></a>Igazolás
 
-Állapotigazolási szoftver bits sértetlenségének biztosítja.  Fontos felderítésére és megelőzésére kártevő szoftver.  Az Azure IoT peremhálózati biztonsági keretrendszere osztályoz igazolás a három fő kategóriák:
+Igazolási garantálja a tárműveletek sértetlenségét szoftver bits.  Fontos észlelésére és megelőzésére kártevő szoftverek.  Az Azure IoT Edge biztonsági keretrendszer igazolási alatt három fő kategóriába sorolja be:
 
 * Statikus igazolás
-* Futásidejű igazolás
+* Futtatókörnyezet-igazolás
 * Szoftver-igazolás
 
 ### <a name="static-attestation"></a>Statikus igazolás
 
-Statikus igazolás az összes szoftver az operációs rendszerek, minden futtatókörnyezetek, beleértve integritásának ellenőrzését, és bekapcsolási eszköz konfigurációs adatokat.  Ez gyakran nevezik biztonságos rendszerindítást.  Az Azure IoT peremeszközök biztonsági keretét szilícium szállítókkal is kiterjed, és magában foglalja a biztonságos ingrained hardverképességeinek ahhoz, hogy biztosítsa a statikus igazolás folyamatok. Ezeket a folyamatokat tartalmazzák a biztonságos rendszerindítás és biztonságos belső vezérlőprogramjának azonnali frissítése a folyamatok.  Működik-e a szilícium szállítók szorosan együttműködve megszünteti a felesleges belső vezérlőprogram rétegek ezáltal minimalizálja a fenyegetés felületet. 
+Statikus igazolási az összes szoftver az operációs rendszerek, az összes futásidejének tekintetében, beleértve az integritás ellenőrzése és bekapcsolási funkciójának eszköz konfigurációs adatokat.  Ezt gyakran nevezik a biztonságos rendszerindítás.  Az Azure IoT Edge-eszközök biztonsági keretrendszer szilícium-szállítók is kiterjed, és biztonságos ingrained hardvertulajdonságaival ahhoz, hogy biztosítsa statikus igazolási folyamat magában foglalja. Ezeket a folyamatokat tartalmazzák a biztonságos rendszerindítás és a biztonságos belső vezérlőprogram frissítése a folyamatokat.  Szilícium-szállítók szoros együttműködésben dolgozik kiküszöböli a felesleges belső vezérlőprogram rétegek ezáltal minimálisra csökkentik a fenyegetés felületet. 
 
-### <a name="runtime-attestation"></a>Futásidejű igazolás
+### <a name="runtime-attestation"></a>Futtatókörnyezet-igazolás
 
-Után a rendszer egy érvényesített rendszerindítási folyamat befejeződött, és működik-e és fut, jól kidolgozott biztonságos rendszerek észleléséhez volna megkísérli szúrjon kártevő szoftver, a rendszer portokat és interfészeket keresztül, és tegye meg a megfelelő ellenintézkedések.  Az intelligens peremeszközök fizikai fogva a rosszindulatú szereplője szúrjon malcontent eszköz felületek, például az illetéktelen módosítást eltérő módon lehet, és ügyféloldali csatorna támadások.   Ilyen malcontent, amely rosszindulatú vagy jogosulatlan konfigurációs módosításokat formájában, általában észlelése nem történne a biztonságos rendszerindítási folyamat, mert ezek után történjen, amikor a rendszerindítási folyamat számára.  Ellenintézkedések kínált vagy kényszeríti ki az eszköz hardver jelentősen hozzájárul a warding ilyen veszélyek ki.  A biztonsági keretrendszere az Azure IoT peremhálózati explicit módon hívásokat futásidejű fenyegetések combatting-bővítmények.     
+A rendszer egy ellenőrzött rendszerindítási folyamat befejeződött, és működik, és fut, a jól megtervezett biztonságos rendszerek észleléséhez lenne megkísérli beszúrása a rendszerek portokat és interfészeket keresztül kártevők és a megfelelő ellenintézkedések.  Intelligens peremhálózat-eszközökhöz a fizikai felügyeleti lánc rosszindulatú szereplők eszköz felületek, például illetéktelen eltérő módon malcontent beszúrható legyen, és kiszolgálóoldali-csatorna támadások.   Ilyen malcontent, amely rosszindulatú vagy jogosulatlan konfigurációs módosításokat formájában, általában nem lennének megtalálhatóak a biztonságos rendszerindítási folyamat, mert a rendszerindítási folyamat után történjen, amikor.  Ellenintézkedések érhető el, vagy kényszeríti ki az eszköz hardvere nagyban hozzájárul a warding ilyen fenyegetések ki.  Az Azure IoT Edge biztonsági keretében explicit módon meghívja a futtatókörnyezet fenyegetések combatting-bővítmények.     
 
 ### <a name="software-attestation"></a>Szoftver-igazolás
 
-Intelligens peremhálózati rendszerek például az összes megfelelő rendszer alkalmas frissítések és javítások kell lennie.  Biztonsági fontos a frissítési folyamat más módon potenciális fenyegetési vektoroknak enged utat is lehetnek.  Azure IoT peremhálózati hívások frissítésekhez biztonsági keretében mért, és írja alá a csomagok integritását biztosítja, és a csomagok forrását.  Ez az összes operációs rendszerek és alkalmazás szoftver bits alkalmazandó. 
+Intelligens peremhálózat rendszerek például az összes kifogástalan rendszer alkalmas javításokat és frissítéseket kell lennie.  Biztonsági fontos a frissítési folyamat más módon potenciális fenyegetési vektoroknak lehetnek.  A security keretrendszere frissítéseit az Azure IoT Edge-hívást mérni, és írja alá a biztonságának biztosítása és a hitelesítéshez a csomagok a forrás-csomagok.  Ez az összes operációs rendszer és alkalmazás szoftver bits alkalmazható. 
 
 ## <a name="hardware-root-of-trust"></a>Hardver legfelső szintű megbízhatóság
 
-Az intelligens peremeszközök, különösen a helyen, ahol lehetséges rosszindulatú szereplője fizikai hozzáférésük az eszközre telepített sok telepítéséhez a hardver által kínált biztonsági az utolsó védelmi védelemre.  Emiatt az illetéktelen módosítások ellen védett hardver rögzítő megbízhatósági elengedhetetlen leginkább az ilyen környezetekben.  Az Azure IoT szegély biztonsági keretrendszere biztonságos szilícium hardvergyártótól megvásárolható különböző változatban is elkészíti a különböző kockázati profilok és telepítési forgatókönyvek hardver bizalomforrásához kínálta együttműködés terjed ki. Ezek közé tartozik a használata biztonságos szilícium betartásáért közös biztonsági protokoll szabványok, például a platformmegbízhatósági modul (ISO/IEC 11889) és Trusted Computing Group's eszköz azonosítója összeállítás motor (feldarabolására HASZNÁLNAK).  Ezek közé biztonságos enklávét technológiák, például a TrustZones és szoftver őr Extensions (SGX) is tartozik. 
+A hardver által kínált biztonsági számos intelligens peremhálózati eszközökre, különösen a telepített helyen, ahol esetleges rosszindulatú actors fizikailag hozzáfér az eszköz telepítése az utolsó védelmi védelemre.  Emiatt az illetéktelen módosítás ellen védett hardver rögzítő megbízhatósági elengedhetetlen leginkább az ilyen környezetekhez.  Az Azure IoT Edge biztonsági keretében különböző változataira jellemző hardver gyökér megbízhatósági különböző kockázati, és a központi telepítési forgatókönyv kínálta biztonságos szilícium hardvergyártótól együttműködési jár. Ezek közé tartozik a biztonságos szilícium efféle közös biztonsági protokoll szabványok, például a platformmegbízhatósági modul (ISO/IEC 11889) és Trusted Computing Group az eszköz azonosítója Composition Engine (DICE) használatát.  Ide tartoznak a biztonságos enklávé technológiákkal, mint például a TrustZones és szoftverek Guard Extensions (SGX) is. 
 
 ## <a name="certification"></a>Tanúsítvány
 
-Ügyfelek kérdésekre vonatkozó döntések meghozatalában, amikor Azure IoT peremeszközök a telepítés az beszerzése érdekében az Azure IoT peremhálózati keretrendszer magában foglalja a hardvertanúsítvány követelményeit.  Ezeknek a követelményeknek való eligazodást: vonatkozó biztonsági jogcímeinek minősítései közül és érvényesítése biztonsági végrehajtására vonatkozó minősítései közül.  Például egy biztonsági jogcím hitelesítő volna tájékoztatja, hogy az IoT-peremhálózati eszköz használja-e a biztonságos rendszerindítás támadások ellenáll ismert hardver. Egy érvényesítési hitelesítő volna tájékoztatja, hogy a biztonságos hardveren lett a megfelelően megvalósított kínálta ezt az értéket az eszközt.  Egyszerűség elvének betartásával keretében kínál a látnia, minimális tartja certification okozta terheket.   
+Ügyfelek pedig megalapozottabb döntéseket, ha a központi telepítés az Azure IoT Edge-eszközök beszerzése érdekében az Azure IoT Edge-keretrendszert tartalmaz hardvertanúsítvány követelményeit.  A követelményeket ismertet a kérelmekre vonatkozó biztonsági jogcímeinek tanúsítványok és a tanúsítványok érvényesítése biztonsági végrehajtására vonatkozó.  Például a biztonsági jogcím minősítési lenne tájékoztatja, hogy az IoT Edge-eszköz ellenáll a rendszerindító támadások ismert, biztonságos hardvert használja a. Érvényesítési minősítés lenne tájékoztatja, hogy a biztonságos hardver megfelelően lett megvalósítva kínáló ezt az értéket az eszköz.  Az egyszerűség elvének betartásával keretében kínál a stratégiai hitelesítő terhe minimális védelmében.   
 
 ## <a name="extensibility"></a>Bővíthetőség
 
-Bővíthetőségi Azure IoT peremhálózati biztonsági keretében első osztályú állampolgára.  A különböző üzleti átalakítások vezetői IoT technológia valószínűleg, hogy biztonsági zökkenőmentesen kell alakítani lockstep forgatókönyvek feltörekvő címre.  Az Azure IoT peremhálózati biztonsági keretrendszere kezdődik, amelyen azt a különböző dimenziókban felvenni bővítési buildek alapos rálátással: 
+Bővítési egy első osztályú citizen az Azure IoT Edge biztonsági keretében.  A különböző típusú üzleti átalakítást vezetési IoT technológiát azt jelöli, hogy biztonsági zökkenőmentesen kell alakítani az új forgatókönyvek címre lockstep okból.  Az Azure IoT Edge biztonsági keretrendszert, amelyen, számos tekintetben az bővíthetőség tartalmazza a különböző dimenziókban az alapos rálátással kezdődik: 
 
-* Első fél biztonsági szolgáltatások, például az eszköz kiépítése szolgáltatáshoz Azure IoT hub.
-* Harmadik féltől származó szolgáltatással, például kezelt biztonsági szolgáltatások különböző alkalmazás referenciaegyenesen (például a ipari vagy egészségügyi) vagy technológia fókusz (ilyen például a figyelés biztonsági háló hálózatok vagy szilícium hardver igazolási szolgáltatásokról) a gazdag hálózaton keresztül partnerek.
-* A másik biztonsági stratégiák alkalmazásával felvenni a régebbi rendszerekre, például technológiával biztonságos eltérő tanúsítványok hitelesítés és identitás-kezelésre.
-* Hardver biztonságos hardveren feltörekvő technológiákkal és szilícium zökkenőmentes elfogadását partner hozzájárulások biztonságos.
+* Belső biztonsági szolgáltatásokba, mint a Device Provisioning Service az Azure IoT Hub.
+* Harmadik féltől származó szolgáltatásokkal, például a felügyelt biztonsági szolgáltatások (például az ipari vagy egészségügyi) különböző alkalmazás referenciaegyenesen vagy technológiai fókusz (ilyen például a biztonságfigyelés háló hálózatokat vagy a szilícium hardver igazolási szolgáltatásokról), gazdag hálózaton keresztül partnerek.
+* Tartalmazza a helyettesítő biztonsági stratégiák, történő régebbi rendszerekkel, mint tanúsítványok nem biztonságos technológia használatával hitelesítést és identitáskezelést biztosít a.
+* Hardver biztonságos hardver újonnan megjelenő technológiák és szilícium zökkenőmentes bevezetését a partner hozzájárulások biztonságos.
 
-Példák néhány dimenziók, a bővítést és Azure IoT peremhálózati biztonsági keretrendszere az célja, hogy a bővíthetőség támogatásához biztonságos alapoktól kell. 
+Ezek csak néhány példa a dimenziók, a bővítést és az Azure IoT Edge biztonsági keretrendszer tervezték biztonságos az alapjaitól kezdve a bővíthetőség támogatásához. 
 
-A végén a legmagasabb sikeres, az intelligens él védelméhez annak az eredménye egy nyissa meg a közös érdekelt IoT által vezérelt közösségi hozzájárulásokat együttműködést.  Ezek a hozzájárulások lehet biztonságos technológiák vagy szolgáltatások formájában.  Az Azure IoT peremhálózati biztonsági keretrendszere biztonsági, megbízhatósági és az intelligens él, az Azure-felhőbe integritás ugyanolyan szintű kínálta maximális kitöltésének bővíthető ben szilárd alapokat nyújt.  
+A végén az intelligens peremhálózat biztosítása a legmagasabb sikeres eredménye a közös érdekeltséget IoT biztonságossá tétele tárolásuk egy nyílt közösségi hozzájárulásokat által biztosított együttműködési környezettel.  Ezek a hozzájárulások lehet biztonságos technológiákat és szolgáltatásokat formájában.  Az Azure IoT Edge biztonsági keretrendszer, bővíthető, az a maximális lefedettség kínálta megbízhatósági és az intelligens peremhálózat, mint az Azure-felhőben lévő integritási azonos szintű biztonság szilárd alapokat nyújt.  
 
 ## <a name="next-steps"></a>További lépések
 
-További információk az Azure IoT peremhálózati Mitől [biztonságossá tétele az intelligens él][lnk-edge-blog].
-
-<!-- Links -->
-[lnk-edge-blog]: https://azure.microsoft.com/blog/securing-the-intelligent-edge/ 
+További információk a hogyan Azure IoT Edge van [intelligens peremhálózat biztosítása](https://azure.microsoft.com/blog/securing-the-intelligent-edge/).

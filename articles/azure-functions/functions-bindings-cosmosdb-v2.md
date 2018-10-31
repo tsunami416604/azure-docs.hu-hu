@@ -3,20 +3,20 @@ title: A Functions az Azure Cosmos DB-kötéseket 2.x
 description: Megtudhatja, hogyan használhatja az Azure Cosmos DB-eseményindítók és kötések az Azure Functions szolgáltatásban.
 services: functions
 documentationcenter: na
-author: ggailey777
+author: craigshoemaker
 manager: jeconnoc
 keywords: az Azure functions, függvények, eseményfeldolgozás, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.service: azure-functions; cosmos-db
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
-ms.author: glenga
-ms.openlocfilehash: fae82d702158b98e0182a0cfa575249c19236ccb
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.author: cshoe
+ms.openlocfilehash: 4a1f9552b9a578cd34f3482e793947e06bb24407
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157666"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249783"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Az Azure Functions az Azure Cosmos DB-kötéseket 2.x
 
@@ -1707,6 +1707,33 @@ Alapértelmezés szerint ha a függvényben a kimeneti paraméter írni egy doku
 | Kötés | Leírások |
 |---|---|
 | CosmosDB | [CosmosDB-hibakódok](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
+
+<a name="host-json"></a>  
+
+## <a name="hostjson-settings"></a>Host.JSON-beállítások
+
+Ez a szakasz ismerteti a globális konfigurációs beállításoknak a kötéshez verziójában elérhető 2.x. További információ a globális konfigurációs beállításoknak verzióban 2.x verzióját, lásd: [verzióját az Azure Functions – host.json referencia 2.x](functions-host-json.md).
+
+```json
+{
+    "version": "2.0",
+    "extensions": {
+        "cosmosDB": {
+            "connectionMode": "Gateway",
+            "protocol": "Https",
+            "leaseOptions": {
+                "leasePrefix": "prefix1"
+            }
+        }
+    }
+}
+```  
+
+|Tulajdonság  |Alapértelmezett | Leírás |
+|---------|---------|---------| 
+|GatewayMode|Átjáró|A csatlakozási mód, a függvény által felhasznált az Azure Cosmos DB szolgáltatáshoz való csatlakozáskor. Lehetőségek a következők `Direct` és `Gateway`|
+|Protokoll|Https|A függvény által használt kapcsolati protokollt amikor az Azure Cosmos DB szolgáltatással létesített kapcsolat.  Olvasási [itt mindkét mód ismertetése](../cosmos-db/performance-tips.md#networking)| 
+|leasePrefix|n/a|Bérlet előtagot használja az összes függvényt egy alkalmazásban.| 
 
 ## <a name="next-steps"></a>További lépések
 
