@@ -4,7 +4,6 @@
 ## [Mi az az Azure Active Directory?](fundamentals/active-directory-whatis.md)
 ## [Tudnivalók az Azure-identitáskezelésről](fundamentals/identity-fundamentals.md)
 ## [Az Azure identitáskezelési megoldásainak ismertetése](fundamentals/understand-azure-identity-solutions.md)
-## [Hibrid identitáskezelési megoldás](choose-hybrid-identity-solution.md)
 ## [Azure-előfizetések társítása](fundamentals/active-directory-how-subscriptions-associated-directory.md)
 ## [Lakhely és adatkezelési szempontok](fundamentals/active-directory-data-storage-eu.md)
 ## [Gyakori kérdések](fundamentals/active-directory-faq.md)
@@ -47,7 +46,6 @@
 ### [Új felhasználók hozzáadása az Azure AD-hez](fundamentals/add-users-azure-active-directory.md)
 ### [Felhasználói profilok kezelése](fundamentals/active-directory-users-profile-azure-portal.md)
 ### [Felhasználói jelszavak alaphelyzetbe állítása](fundamentals/active-directory-users-reset-password-azure-portal.md)
-### [Fiókok megosztása](active-directory-sharing-accounts.md)
 ### [Felhasználók hozzárendelése rendszergazdai szerepkörökhöz ](fundamentals/active-directory-users-assign-role-azure-portal.md)
 ### [Vendég felhasználók hozzáadása másik címtárból (B2B)](b2b/what-is-b2b.md)
 #### [B2B-felhasználók rendszergazdák általi hozzáadása](b2b/add-users-administrator.md)
@@ -320,11 +318,15 @@
 
 ### [Privileged Identity Management](privileged-identity-management/pim-configure.md?toc=%2fazure%2factive-directory%2ftoc.json)
 
-## [Az AD FS üzembe helyezése az Azure-ban](hybrid/how-to-connect-fed-azure-adfs.md)
-### [Magas rendelkezésre állás](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
-### [Az aláírás-kivonatoló algoritmus módosítása](active-directory-federation-sha256-guidance.md)
+
 
 ## [Hibaelhárítás](fundamentals/active-directory-troubleshooting-support-howto.md)
+
+## Az Azure AD központi telepítése – A koncepció igazolása (Proof of Concept, PoC)
+### [PoC-útmutató: Bevezetés](active-directory-playbook-intro.md)
+### [PoC-útmutató: Kellékek](active-directory-playbook-ingredients.md)
+### [PoC-útmutató: Megvalósítás](active-directory-playbook-implementation.md)
+### [PoC-útmutató: Építőelemek](active-directory-playbook-building-blocks.md)
 
 # Referencia
 ## [Kódminták](https://azure.microsoft.com/resources/samples/?service=active-directory)
