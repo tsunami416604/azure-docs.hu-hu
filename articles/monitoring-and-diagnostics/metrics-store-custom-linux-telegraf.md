@@ -47,7 +47,7 @@ Hozzon létre egy új Linux rendszerű virtuális Gépet:
 
     ![Virtuális gép mérete telegráf ügynök – áttekintés](./media/metrics-store-custom-linux-telegraf/vm-size.png)
 
-1. Az a **beállítások** lap **hálózati** > **hálózati biztonsági csoport**   >  ** Nyilvános bejövő portok kiválasztása**válassza **HTTP** és **SSH (22)**. Hagyja meg az alapértelmezett beállításokat, és válassza ki a többi **OK**. 
+1. Az a **beállítások** lap **hálózati** > **hálózati biztonsági csoport** > **Nyilvános bejövő portok kiválasztása**válassza **HTTP** és **SSH (22)**. Hagyja meg az alapértelmezett beállításokat, és válassza ki a többi **OK**. 
 
 1. Az összefoglalás lapon válassza ki a **létrehozás** a virtuális gép üzembe helyezésének megkezdéséhez. 
 
