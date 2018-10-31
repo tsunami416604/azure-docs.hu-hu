@@ -4,15 +4,15 @@ description: Ismerteti, hogyan derítheti fel és értékelheti ki a helyszíni 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 09/21/2018
+ms.date: 10/24/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b2bb6636aef9e26a81988d344f04f23c23ea1622
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: f468bac6f4d8c209fae51f0b84980dc8c611a29b
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161879"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025886"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Helyszíni VMware virtuális gépek felderítése és kiértékelése az Azure-ba való migráláshoz
 
@@ -69,12 +69,18 @@ Az Azure Migrate létrehoz egy gyűjtőberendezésnek nevezett helyszíni virtu�
 1. Az Azure Migrate projektben kattintson a **Bevezetés** > **Felderítés és értékelés** > **Gépek felderítése** elemre.
 2. A **Gépek felderítése** területen kétféle berendezés közül választhat. Kattintson a **Letöltés** gombra az igényeinek megfelelő berendezés letöltéséhez.
 
-    a. **Egyszeri felderítés:** Az ilyen modellű berendezés a vCenter Serverrel kommunikálva gyűjt metaadatokat a virtuális gépekről. A virtuális gépek teljesítményadatainak gyűjtése esetén a teljesítményadatoknak a vCenter Serveren tárolt előzményeit veszi figyelembe, és az előző hónap teljesítményelőzményeit gyűjti össze. Ebben a modellben az Azure Migrate a metrikák átlagszámlálóit (nem pedig a maximumszámlálóit) gyűjti össze. [További információ] (https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected). Ez egy egyszeri felderítés, így a felderítés befejeződését követően nem fognak megjelenni a helyszíni környezet változásai. Ha szeretné, hogy megjelenjenek ezek a változások, végre kell hajtania egy ismételt felderítést ugyanennek a projektnek ugyanezen környezetén.
+    a. **Egyszeri felderítés:** Az ilyen modellű berendezés a vCenter Serverrel kommunikálva gyűjt metaadatokat a virtuális gépekről. A virtuális gépek teljesítményadatainak gyűjtése esetén a teljesítményadatoknak a vCenter Serveren tárolt előzményeit veszi figyelembe, és az előző hónap teljesítményelőzményeit gyűjti össze. Ebben a modellben az Azure Migrate a metrikák átlagértékeit (nem pedig a maximumértékeit) gyűjti. [További információ](https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected). Ez egy egyszeri felderítés, így a felderítés befejeződését követően nem fognak megjelenni a helyszíni környezet változásai. Ha szeretné, hogy megjelenjenek ezek a változások, végre kell hajtania egy ismételt felderítést ugyanennek a projektnek ugyanezen környezetén.
 
     b. **Folyamatos felderítés:** Az ilyen modellű berendezés folyamatosan profilkészítést végez a helyszíni környezeten, így valós idejű használati adatokat gyűjt az egyes virtuális gépekről. Ez a modell a metrikák (processzorhasználat, memóriahasználat stb.) maximumszámlálóit gyűjti össze. Ez a modell a teljesítményadatok gyűjtése során nem függ a vCenter Server statisztikai beállításaitól. A berendezésben bármikor leállítható a folyamatos profilkészítés.
 
+    Vegye figyelembe, hogy a berendezés a teljesítményadatok folyamatosan gyűjtését végzi, és nem észleli a konfiguráció változását a helyszíni környezetben (pl. virtuális gépek hozzáadását, törlését, lemezek hozzáadását stb.). Ha a helyszíni környezet konfigurációja módosul, a következőket teheti a változások tükrözésére a portálon:
+
+    1. Elemek (virtuális gépek, lemezek, magok stb.) hozzáadása: Ezeknek a módosításoknak az Azure Portalon való tükrözéséhez állítsa le, majd indítsa újra a felderítést a berendezésen. Ez biztosítja, hogy a módosítások frissítése megtörténjen az Azure Migrate-projektben.
+
+    2. Virtuális gépek törlése: A berendezés kialakítása miatt a virtuális gépek törlése akkor sem lesz látható, ha leállítja, majd újraindítja a felderítést. Ennek az oka, hogy a későbbi felderítések adatait a rendszer hozzáfűzi a korábbi felderítések adataihoz, nem pedig felülírja azokat. Ebben az esetben egyszerűen figyelmen kívül hagyhatja a virtuális gépet a portálon. Ehhez távolítsa el a csoportból, és számítsa újra az értékelést.
+
     > [!NOTE]
-    > A folyamatos felderítés funkciója jelenleg előzetes verzióban érhető el.
+    > A folyamatos felderítés funkciója jelenleg előzetes verzióban érhető el. Javasoljuk, hogy így járjon el, mivel ez a módszer részletes teljesítményadatokat gyűjt, és pontosan számítja a megfelelő méretezést.
 
 3. A **Projekt hitelesítő adatainak másolása** területen másolja ki a projekt azonosítóját és kulcsát. Ezekre a gyűjtő konfigurálásához lesz szüksége.
 
@@ -91,6 +97,14 @@ A telepítése előtt ellenőrizze, hogy az .OVA-fájl biztonságos-e.
 3. A létrehozott kivonatnak egyeznie kell ezekkel a beállításokkal.
 
 #### <a name="one-time-discovery"></a>Egyszeri felderítés
+
+  Az OVA 1.0.9.15-ös verziója esetén
+
+  **Algoritmus** | **Kivonat értéke**
+  --- | ---
+  MD5 | e9ef16b0c837638c506b5fc0ef75ebfa
+  SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864
+  SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
 
   Az OVA 1.0.9.14-es verziója esetén
 
@@ -174,7 +188,7 @@ Importálja a letöltött fájlt a vCenter Serverre.
     - A **Collection scope** (Gyűjtés hatóköre) mezőben válassza ki a virtuális gépek felderítésének hatókörét. A gyűjtő csak a megadott hatókörön belül deríti fel a virtuális gépeket. A hatókör egy adott mappára, adatközpontra vagy fürtre állítható be. Nem tartalmazhat 1500-nál több virtuális gépet. [Itt tekinthet meg további információkat](how-to-scale-assessment.md) azzal kapcsolatban, hogyan fedezheti fel a nagyméretű környezeteket.
 
 7. A **Specify migration project** (Migrálási projekt megadása) területen adja meg az Azure Migrate projekt a portálról kimásolt azonosítóját és kulcsát. Ha nem másolta ki őket, nyissa meg az Azure Portalt a gyűjtő virtuális gépről. A projekt **Áttekintés** lapján kattintson a **Gépek felderítése** elemre, és másolja ki az értékeket.  
-8. Az **Adatgyűjtési folyamat megtekintése** részen monitorozhatja a felderítés állapotát. További tudnivalók](https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected) az Azure Migrate Collector szolgáltatás által gyűjtött adatokról.
+8. Az **Adatgyűjtési folyamat megtekintése** részen monitorozhatja a felderítés állapotát. [Itt tekinthet meg további információkat](https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected) az Azure Migrate-gyűjtő által gyűjtött adatokról.
 
 > [!NOTE]
 > Az adatgyűjtő csak az „Angol (Egyesült Államok)” nyelvet támogatja az operációs rendszer és az adatgyűjtő felület nyelveként.

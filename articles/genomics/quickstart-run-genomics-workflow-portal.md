@@ -8,12 +8,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: quickstart
 ms.date: 12/07/2017
-ms.openlocfilehash: e1d10b578d33ba8d96f43666b82e94ef5503fe77
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: b8afaf9675dfac29449769e1f2ab323417376897
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731087"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026211"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Rövid útmutató: Munkafolyamat futtatása a Microsoft Genomics szolgáltatással
 
@@ -40,7 +40,7 @@ Konfigurálja Genomics-fiókját az alábbi információkkal az előző képen l
  |:-------------       |:-------------         |:----------            |
  |Fióknév         | MyGenomicsAccount     |Válasszon egyedi fiókazonosítót. Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
  |Előfizetés         | Az Ön előfizetésének neve|Ez az Azure-szolgáltatásokhoz tartozó számlázási egység – Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.azure.com/Subscriptions) ismertető cikket. |      
- |Erőforráscsoport       | MyResourceGroup       |  Az erőforráscsoportok használatával több Azure-erőforrást (Storage-fiók, Genomics-fiók stb.) rendezhet egy csoportba a könnyebb kezelhetőség érdekében. További információért lásd: [Erőforráscsoportok] (https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups). Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
+ |Erőforráscsoport       | MyResourceGroup       |  Az erőforráscsoportok használatával több Azure-erőforrást (Storage-fiók, Genomics-fiók stb.) rendezhet egy csoportba a könnyebb kezelhetőség érdekében. További információkért lásd: [Erőforráscsoportok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups). Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
  |Hely                   | USA nyugati régiója, 2.                    |    A szolgáltatás a következő régiókban érhető el: az USA 2. nyugati régiója, Nyugat-Európa, és Délkelet-Ázsia |
 
 

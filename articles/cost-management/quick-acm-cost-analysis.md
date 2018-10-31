@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 12b7a605350b07565660e9e4d1334b286aa5ac00
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 6b935322c9d892793f3695e0922d15f5886c7e25
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079106"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471288"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rövid útmutató – Költségek feltérképezése és elemzése a Költségelemzés szolgáltatás használatával
 
@@ -34,21 +34,25 @@ Ezen rövid útmutató segítségével megtanulhatja a következőket:
 
 A Költségelemzés az összes [Nagyvállalati Szerződéssel](https://azure.microsoft.com/pricing/enterprise-agreement/) rendelkező ügyfél számára elérhető. A költségadatok megtekintéséhez olvasási jogosultsággal kell rendelkeznie a következő hatókörök legalább egyikében:
 
-- A *Számlázási fiók* hatókör meghatározása a https://ea.azure.com webhelyen olvasható, használatához vállalati rendszergazdai hozzáférés szükséges. Nincs szükség vállalati rendszergazdai beállítások előzetes megadására. A költségelemzés számlázási adatai összesítve jelennek meg a nagyvállalati szerződés hatálya alá tartozó összes előfizetésre vonatkozóan. A számlázási fiókra gyakran *Nagyvállalati Szerződés* vagy *Igénylés* néven hivatkoznak.
 
-- A *Részleg* hatókör meghatározása a https://ea.azure.com webhelyen olvasható, használatához részlegszintű rendszergazdai hozzáférés szükséges. A nagyvállalati szerződések portálján engedélyezni kell azt a beállítást, hogy **a részlegszintű rendszergazda láthassa a díjtételeket**. A költségelemzés számlázási adatai összesítve jelennek meg az adott részleghez kapcsolt regisztrációs fiókhoz tartozó összes előfizetésre vonatkozóan.
+|**Hatókör**|**Meghatározás helye**|**Szükséges hozzáférés a hatókörbe eső költségek elemzéséhez**|**Nagyvállalati Szerződés előfeltételként szükséges beállítása**|**Számlázási adatok összesítésének helye**|
+|---                |---                  |---                   |---            |---           |
+|Számlázási fiók<sup>1</sup>|[https://ea.azure.com ](https://ea.azure.com )|Vállalati rendszergazda|None|A Nagyvállalati Szerződésben foglalt összes előfizetés|
+|Részleg|[https://ea.azure.com ](https://ea.azure.com )|Részlegszintű rendszergazda|Díjtételek megtekintésének engedélyezése a részlegszintű rendszergazda számára|A részleghez kapcsolt regisztrációs fiókhoz tartozó összes előfizetés|
+|Regisztrációs fiók<sup>2</sup2>|[https://ea.azure.com ](https://ea.azure.com )|Fióktulajdonos|Díjtételek megtekintésének engedélyezése a fióktulajdonos számára|A regisztrációs fiókhoz tartozó összes előfizetés|
+|Felügyeleti csoport|[https://portal.azure.com ](https://portal.azure.com )|Cost Management-olvasó (vagy olvasó)|Díjtételek megtekintésének engedélyezése a fióktulajdonos számára|A felügyeleti csoport alá tartozó összes előfizetés|
+|Előfizetés|[https://portal.azure.com ](https://portal.azure.com )|Cost Management-olvasó (vagy olvasó)|Díjtételek megtekintésének engedélyezése a fióktulajdonos számára|Az előfizetésben szereplő összes erőforrás/erőforráscsoport|
+|Erőforráscsoport|[https://portal.azure.com ](https://portal.azure.com )|Cost Management-olvasó (vagy olvasó)|Díjtételek megtekintésének engedélyezése a fióktulajdonos számára|Az erőforráscsoportban található összes erőforrás|
 
-- A *Regisztrációs fiók* hatókör meghatározása a https://ea.azure.com webhelyen olvasható, használatához fióktulajdonosi hozzáférés szükséges. A nagyvállalati szerződések portálján engedélyezni kell azt a beállítást, hogy **a fióktulajdonos láthassa a díjtételeket**. A költségelemzés számlázási adatai összesítve jelennek meg a regisztrációs fiókhoz tartozó összes előfizetésre vonatkozóan. A regisztrációs fiókra gyakran *fióktulajdonos* néven hivatkoznak.
+<sup>1</sup>A számlázási fiókot gyakran Nagyvállalati Szerződésnek vagy Beléptetésnek is nevezik.
 
-- A *Felügyeleti csoport* hatókör meghatározása a https://portal.azure.com webhelyen olvasható, használatához Cost Management-olvasói (vagy olvasói) hozzáférés szükséges. A nagyvállalati szerződések portálján engedélyezni kell azt a beállítást, hogy **a fióktulajdonos láthassa a díjtételeket**. A költségelemzés számlázási adatai összesítve jelennek meg a felügyeleti csoport alá tartozó összes előfizetésre vonatkozóan.
-
-- Az *Előfizetés* hatókör meghatározása a https://portal.azure.com webhelyen olvasható, használatához Cost Management-olvasói (vagy olvasói) hozzáférés szükséges. A nagyvállalati szerződések portálján engedélyezni kell azt a beállítást, hogy **a fióktulajdonos láthassa a díjtételeket**. A költségelemzés számlázási adatai összesítve jelennek meg az előfizetéshez tartozó összes erőforrásra és erőforráscsoportra vonatkozóan.
-
-- Az *Erőforráscsoport* hatókör meghatározása a https://portal.azure.com webhelyen olvasható, használatához Cost Management-olvasói (vagy olvasói) hozzáférés szükséges. A nagyvállalati szerződések portálján engedélyezni kell azt a beállítást, hogy **a fióktulajdonos láthassa a díjtételeket**. A költségelemzés számlázási adatai összesítve jelennek meg az erőforráscsoporthoz tartozó összes erőforrásra vonatkozóan.
-
-
+<sup>2</sup>A regisztrációs fiókot gyakran fióktulajdonosnak is nevezik.
 
 A díjtételeket a **részlegszintű rendszergazda** és a **fióktulajdonos** számára láthatóvá tevő beállítások konfigurálásával kapcsolatos további információkért lásd [a díjtételekhez való hozzáféréssel foglalkozó részt](../billing/billing-enterprise-mgmt-grp-troubleshoot-cost-view.md#enabling-access-to-costs).
+
+
+
+
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 

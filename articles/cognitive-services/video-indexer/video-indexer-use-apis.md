@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: A Video Indexer API használata'
+title: A Video Indexer API használata
 titlesuffix: Azure Cognitive Services
 description: Ez a cikk bemutatja a Video Indexer API használatának első lépéseit.
 services: cognitive services
@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 10/20/2018
 ms.author: juliako
-ms.openlocfilehash: 7bd7ed1b2d2f437ef57598c42ca12ce8bfb174a1
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 401811ec8803f3ede5a829dc96edc1e7f15e5ee0
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985565"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637748"
 ---
-# <a name="tutorial-use-the-video-indexer-api"></a>Oktatóanyag: A Video Indexer API használata
+# <a name="use-the-video-indexer-api"></a>A Video Indexer API használata
 
 > [!Note]
 > A Video Indexer API 1-es verziója 2018. augusztus 1-jével elavult. Használja a Video Indexer API 2-es verzióját. <br/>A Video Indexer API-k 2-es verziójával való fejlesztéshez tekintse át az [itt](https://api-portal.videoindexer.ai/) található útmutatót. 
@@ -51,6 +51,9 @@ Ez a cikk azt mutatja be, hogyan használhatják ki a fejlesztők a [Video Index
     Ha feliratkozott, megtekintheti a feliratkozását, valamint az elsődleges és másodlagos kulcsokat. A kulcsok védelmet igényelnek. Csak a kiszolgálókód használhatja a kulcsokat. Az ügyféloldalon (.js, .html stb.) nem lehetnek elérhetők.
 
     ![Regisztráció](./media/video-indexer-use-apis/video-indexer-api03.png)
+
+> [!TIP]
+> Egy Video Indexer-felhasználó egyetlen előfizetői kulccsal több Video Indexer-fiókhoz is csatlakozhat. Ezek a Video Indexer-fiókok pedig különböző Media Services-fiókokhoz társíthatók.
 
 ## <a name="obtain-access-token-using-the-authorization-api"></a>Hozzáférési jogkivonat beszerzése az Engedélyezési API-val
 

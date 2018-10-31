@@ -1,20 +1,20 @@
 ---
 title: Több útvonal az Azure Maps használatával | Microsoft Docs
 description: Útvonalak keresése különböző utazási módokhoz az Azure Maps használatával
-author: dsk-2015
-ms.author: dkshir
-ms.date: 10/02/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 10/22/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 340bf83f07b9e730cc43baccc60a39f5ba1f9942
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 864f662cd6be3c5929166db92f2dad92b9c6586e
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815307"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648207"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Útvonalak keresése különböző utazási módokhoz az Azure Maps használatával
 
@@ -74,15 +74,16 @@ Az alábbi lépések bemutatják, hogyan hozhat létre egy statikus HTML-oldalt,
     </html>
     ```
     A HTML-fejléc beágyazza a CSS- és a JavaScript-fájlok erőforráshelyeit az Azure Maps-kódtárba. A HTML törzsében lévő *script* szakasz tartalmazza a térképhez tartozó beágyazott JavaScript-kódot.
+
 3. Adja hozzá a következő JavaScript-kódot a HTML-fájl *szkript* blokkjához. A **\<your account key\>** sztringet cserélje le a Maps-fiókból kimásolt elsődleges kulcsra. Ha nem határozza meg, hogy a térkép hova fókuszáljon, az egész világot látni fogja. Ez a kód beállítja a térkép középpontját, és deklarál egy nagyítási szintet, hogy alapértelmezés szerint egy adott területre fókuszálhasson.
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var MapsAccountKey = "<your account key>";
+    var mapCenterPosition = [-73.985708, 40.75773];
+    atlas.setSubscriptionKey("<your account key>");
     var map = new atlas.Map("map", {
-        "subscription-key": MapsAccountKey
-         center: [-118.2437, 34.0522],
-         zoom: 12
+      center: mapCenterPosition,
+      zoom: 11
     });
     ```
     Az Azure Térkép vezérlőelem API **atlas.Map** összetevőjével egy vizuális és interaktív webes térkép vezérelhető.
@@ -93,10 +94,10 @@ Az alábbi lépések bemutatják, hogyan hozhat létre egy statikus HTML-oldalt,
 
 ## <a name="visualize-traffic-flow"></a>A forgalom megjelenítése
 
-1. Adja hozzá a térképhez a forgalom megjelenítését.  A **map.addEventListener** biztosítja, hogy a térképhez hozzáadott összes térképfunkció betöltődjön a térkép teljes betöltése után.
+1. Adja hozzá a térképhez a forgalom megjelenítését.  A **map.events.add** biztosítja, hogy a térképhez hozzáadott összes térképfunkció betöltődjön a térkép teljes betöltése után.
 
     ```JavaScript
-    map.addEventListener("load", function() {
+    map.events.add("load", function() {
         // Add Traffic Flow to the Map
         map.setTraffic({
             flow: "relative"
@@ -146,7 +147,7 @@ A jelen oktatóanyag esetében állítson be indulási pontnak egy Fabrikam nev�
         padding: 100
     });
     
-    map.addEventListener("load", function() { 
+    map.events.add("load", function() { 
         // Add pins to the map for the start and end point of the route
         map.addPins([startPin, destinationPin], {
             name: "route-pins",
@@ -155,7 +156,7 @@ A jelen oktatóanyag esetében állítson be indulási pontnak egy Fabrikam nev�
         });
     });
     ```
-    A **map.setCameraBounds** hívás a kiindulási és végpontok koordinátái alapján állítja be a térkép ablakát. A **map.addEventListener** biztosítja, hogy a térképhez hozzáadott összes térképfunkció betöltődjön a térkép teljes betöltése után. A **map.addPins** API vizuális összetevőként adja hozzá a pontokat a Térkép vezérlőelemhez.
+    A **map.setCameraBounds** hívás a kiindulási és végpontok koordinátái alapján állítja be a térkép ablakát. A **map.events.add** biztosítja, hogy a térképhez hozzáadott összes térképfunkció betöltődjön a térkép teljes betöltése után. A **map.addPins** API vizuális összetevőként adja hozzá a pontokat a Térkép vezérlőelemhez.
 
 3. Mentse a fájlt, majd frissítse a böngészőt, hogy a gombostűk megjelenjenek a térképen. Bár Los Angelest adta meg a térkép középpontjaként, a **map.setCameraBounds** úgy igazította a nézetet, hogy a kiindulási és végpontok jelenjenek meg.
 
@@ -165,7 +166,7 @@ A jelen oktatóanyag esetében állítson be indulási pontnak egy Fabrikam nev�
 
 ## <a name="render-routes-prioritized-by-mode-of-travel"></a>útvonalak megjelenítése utazási mód alapján rendezve.
 
-Ez a szakasz bemutatja, hogyan kereshet egy indulási és célpont között több útvonalat az utazás módja alapján a Maps útvonal-szolgáltatás API-jával. Az útvonal-szolgáltatás API-kat biztosít a két hely közötti *leggyorsabb*, *legrövidebb*, *leggazdaságosabb* vagy *leglátványosabb* útvonal megtervezéséhez, az aktuális forgalmi viszonyokat figyelembe véve. A felhasználók előre is megtervezhetik az útvonalakat az Azure széles körű forgalmi adatbázisával, amely előre jelzi az útvonalak menetidejét bármely napon és időpontban. További információ: [Útvonal keresése](https://docs.microsoft.com/rest/api/maps/route/getroutedirections).  Az összes alábbi kódblokkot fel kell vennie **a térképbetöltés eventListener elemébe**, hogy a térkép teljes betöltése után betöltődjenek.
+Ez a szakasz bemutatja, hogyan kereshet egy indulási és célpont között több útvonalat az utazás módja alapján a Maps útvonal-szolgáltatás API-jával. Az útvonal-szolgáltatás API-kat biztosít a két hely közötti *leggyorsabb*, *legrövidebb*, *leggazdaságosabb* vagy *leglátványosabb* útvonal megtervezéséhez, az aktuális forgalmi viszonyokat figyelembe véve. A felhasználók előre is megtervezhetik az útvonalakat az Azure széles körű forgalmi adatbázisával, amely előre jelzi az útvonalak menetidejét bármely napon és időpontban. További információ: [Útvonal keresése](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Az összes alábbi kódblokkot fel kell vennie **a térképbetöltés eventListener elemébe**, hogy a térkép teljes betöltése után betöltődjenek.
 
 1. Először adjon egy új réteget a térképhez az útvonal vagy *linestring* megjelenítéséhez. Ebben az oktatóanyagban két különböző útvonal van, a **car-route** és a **truck-route**, és mindkettő saját stílussal rendelkezik. Adja hozzá a következő JavaScript-kódot a *script* blokkhoz:
 
@@ -233,7 +234,7 @@ Ez a szakasz bemutatja, hogyan kereshet egy indulási és célpont között töb
     // Execute the car route query then add the route to the map once a response is received  
     client.route.getRouteDirections(routeQuery).then(response => {
         // Parse the response into GeoJSON
-        var geoJsonResponse = new tlas.service.geojson
+        var geoJsonResponse = new atlas.service.geojson
             .GeoJsonRouteDiraectionsResponse(response);
 
         // Get the first in the array of routes and add it to the map 
@@ -260,7 +261,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Utazási módot deklaráló útvonal-lekérdezések létrehozása
 > * Több útvonal megjelenítése a térképen
 
-Az oktatóanyag mintakódját itt érheti el:
+Az oktatóanyag kódmintáját itt érheti el:
 
 > [Több útvonal az Azure Maps használatával](https://github.com/Azure-Samples/azure-maps-samples/blob/master/src/truckRoute.html)
 

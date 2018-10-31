@@ -6,15 +6,15 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: tutorial
-ms.date: 09/25/2018
+ms.date: 10/24/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: ff52c0fa647dd0e86b22bcfdf7af04062a135f94
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 9f9464874230538bf2976b47896dae8e67c9744f
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392805"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024392"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Oktatóanyag: Jelenetek renderelése az Azure Batch segítségével 
 
@@ -31,7 +31,7 @@ Az oktatóanyagban egy 3ds Max-jelenetet fog renderelni a Batch és az [Arnold](
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha használatalapú fizetést szeretne alkalmazni a Batch renderelő alkalmazásaira, használatalapú előfizetésre vagy egy egyéb Azure vásárlási opcióra van szüksége. A használatalapú fizetés licencelése nem támogatott, ha olyan ingyenes Azure-ajánlatot használ, amely kreditfeltöltést kínál.
+Ha használatalapú fizetést szeretne alkalmazni a Batch renderelő alkalmazásaira, használatalapú előfizetésre vagy egy egyéb Azure vásárlási opcióra van szüksége. **A használatalapú fizetés licencelése nem támogatott, ha olyan ingyenes Azure-ajánlatot használ, amely elkölthető kreditet biztosít.**
 
 Az oktatóanyagban szereplő 3ds Max-mintajelenet, valamint a Bash-mintaszkript és a JSON konfigurációs fájlok elérhetők a [GitHubon](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene). A 3ds Max-jelenet az [Autodesk 3ds Max-mintafájlok](http://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe) közül származik. (Az Autodesk 3ds Max-mintafájlok az Attribution-NonCommercial-Share Alike Creative Commons-licenc szerint érhetők el. Copyright © Autodesk, Inc.)
 
@@ -175,7 +175,7 @@ az storage account generate-sas \
     --permissions w \
     --resource-types co \
     --services b \
-    --expiry 2018-11-15
+    --expiry 2019-11-15
 ```
 
 Jegyezze fel a parancs által visszaadott, a következőhöz hasonló jogkivonatot. A jogkivonatot egy későbbi lépésben fogja használni.

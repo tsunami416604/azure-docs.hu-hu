@@ -31,7 +31,7 @@ AnomalyDetection operátort észleli a rendellenességeket háromféle:
 
 * **Lassú negatív trendek**: idővel a trendek lassú csökkenését.  
 
-Amikor a AnomalyDetection operátort használja, meg kell adnia a **Limit Duration** záradékban. Ez a záradék megadja az időintervallum (milyen vissza az előzményekben az aktuális esemény) kell alkalmazni, amikor a rendellenességek észlelése. Ez az operátor dönthet úgy, hogy csak olyan események, amelyek megfelelnek egy bizonyos tulajdonság vagy feltétel használatával korlátozni az  **amikor** záradékban. Ez az operátor is képes feldolgozni a megadott kulcs külön-külön alapján események csoportjait a **partíció által** záradékban. Betanítási és Predikciós fordulhat elő, egymástól függetlenül minden partíció esetében. 
+Amikor a AnomalyDetection operátort használja, meg kell adnia a **Limit Duration** záradékban. Ez a záradék megadja az időintervallum (milyen vissza az előzményekben az aktuális esemény) kell alkalmazni, amikor a rendellenességek észlelése. Ez az operátor dönthet úgy, hogy csak olyan események, amelyek megfelelnek egy bizonyos tulajdonság vagy feltétel használatával korlátozni az  **amikor**  záradékban. Ez az operátor is képes feldolgozni a megadott kulcs külön-külön alapján események csoportjait a **partíció által** záradékban. Betanítási és Predikciós fordulhat elő, egymástól függetlenül minden partíció esetében. 
 
 ## <a name="syntax-for-anomalydetection-operator"></a>AnomalyDetection operátort szintaxisa
 

@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Arcfelismerés képen – Face API, Python'
+title: 'Rövid útmutató: Arcfelismerés egy képen a REST API és a Python használatával'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban arcokat fog felismerni egy képen a Face API segítségével és Python használatával.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: pafarley
-ms.openlocfilehash: 581c2a7d4508833647d4dbb9861000fddd75cde8
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 76a9260d534057e3a03f8c8f1d7420329713ea80
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339581"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957275"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-python"></a>Rövid útmutató: Arcfelismerés egy képen Python használatával
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-python"></a>Rövid útmutató: Arcfelismerés egy képen a REST API és a Python használatával
 
 Ebben a rövid útmutatóban emberi arcokat fog felismerni egy távoli képen a Face szolgáltatás segítségével. Az észlelt arcokat téglalappal keretezi be, és minden egyes személynél ráírja a nemet és az életkort. Helyi kép használathoz a szintaxist lásd: [Computer Vision: helyi kép elemzése Pythonnal](../../Computer-vision/QuickStarts/python-disk.md).
 

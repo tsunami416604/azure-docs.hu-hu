@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
 ms.date: 07/26/2018
-ms.openlocfilehash: c416937f98f6bcb49f86fce18213ca4ed349c513
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: cf71eb5e227003f7b9ee0c395d0bc04538e64cfa
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902059"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024886"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával
 
@@ -97,7 +97,7 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
     * Adjon egy nevet a fürtnek.
     * Ehhez a cikkhez a **4.0** futtatókörnyezetben hozzon létre fürtöt. 
-    * Mindenképpen jelölje be a **Leállítás ___ percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
+    * Mindenképpen jelölje be a **Leállítás \_\_ percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
     
     Válassza a **Fürt létrehozása** lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
 

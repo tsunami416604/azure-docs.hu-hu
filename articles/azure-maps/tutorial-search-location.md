@@ -1,20 +1,20 @@
 ---
 title: Keresés az Azure Maps használatával | Microsoft Docs
 description: Közeli hasznos hely keresése az Azure Maps használatával
-author: dsk-2015
-ms.author: dkshir
-ms.date: 10/02/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 10/22/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 761674c5839f0513532355116db07604f9e9d9dc
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 10fb30b77cc3cd18cbb6b3def9682349474fba71
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816820"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645814"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Közeli hasznos helyek keresése az Azure Maps használatával
 
@@ -116,11 +116,10 @@ A térképkezelési API egy kényelmes ügyféloldali kódtár, amely segítség
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var MapsAccountKey = "<your account key>";
-    var map = new atlas.Map("map", {
-        "subscription-key": MapsAccountKey
-    });
+    atlas.setSubscriptionKey("<your account key>");
+    var map = new atlas.Map("map");
     ```
+
     Ez a szakasz inicializálja az Azure Maps-fiók kulcsához tartozó térképkezelési API-t. Az **Atlas** az a névtér, amely az API-t és a hozzá tartozó vizuális összetevőket tartalmazza. Az **Atlas.Map** biztosítja a vizuális és interaktív webes térkép vezérlőit.
 
 4. Mentse a fájl módosításait, és nyissa meg a HTML-oldalt egy böngészőben. Ez a legegyszerűbb térkép, amelyet az **atlas.map** meghívásával és a fiókkulcs használatával létrehozhat.
@@ -148,14 +147,14 @@ Ez a szakasz bemutatja, hogyan használható a Maps Search API egy hasznos hely 
     var client = new atlas.service.Client(MapsAccountKey);
     ```
 
-3. A térkép betöltése után az összes függvénynek be kell töltődnie. Ezt úgy biztosíthatja, ha az összes térképfüggvényt a térkép eseményfigyelő blokkjába helyezi. A következő kódsorok hozzáadásával adjon hozzá a térképhez egy [eseményfigyelőt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addeventlistener), hogy a térkép teljesen betöltődjön, mielőtt funkciókat ad hozzá.
+3. A térkép betöltése után az összes függvénynek be kell töltődnie. Ezt úgy biztosíthatja, ha az összes térképfüggvényt a térkép eseményfigyelő blokkjába helyezi. A következő kódsorok hozzáadásával adjon hozzá a térképhez egy [eseményfigyelőt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events), hogy a térkép teljesen betöltődjön, mielőtt funkciókat ad hozzá.
     
     ```JavaScript
-         map.addEventListener("load", function() {
+         map.events.add("load", function() {
          });
     ```
 
-4. A lekérdezés felépítéséhez adja hozzá a következő szkriptblokkot **a térképbetöltő eseményfigyelőhöz**. A kódrészlet a Search Service alapszintű Fuzzy Search Service (Intelligens keresés) keresési API-ját használja. A Fuzzy Search Service a legtöredékesebb bemeneti adatokat is kezeli, például a címek vagy hasznos helyet (POI-t) jelölő tokenek bármely kombinációját. Rákeres a közeli benzinkutakra egy megadott sugarú körön belül. A választ ezután GeoJSON formátumba szegmentálja, és pontelemekké alakítja, amelyeket azután gombostűkként felvesz a térképre. A szkript utolsó része kamerahatárokat ad a térképhez a Map [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) tulajdonságával.
+4. A lekérdezés felépítéséhez adja hozzá a következő szkriptblokkot **a térképbetöltő eseményekhez**. A kódrészlet a Search Service alapszintű Fuzzy Search Service (Intelligens keresés) keresési API-ját használja. A Fuzzy Search Service a legtöredékesebb bemeneti adatokat is kezeli, például a címek vagy hasznos helyet (POI-t) jelölő tokenek bármely kombinációját. Rákeres a közeli benzinkutakra egy megadott sugarú körön belül. A választ ezután GeoJSON formátumba szegmentálja, és pontelemekké alakítja, amelyeket azután gombostűkként felvesz a térképre. A szkript utolsó része kamerahatárokat ad a térképhez a Map [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) tulajdonságával.
 
     ```JavaScript
 
@@ -190,8 +189,8 @@ Ez a szakasz bemutatja, hogyan használható a Maps Search API egy hasznos hely 
             map.setCameraBounds({
                bounds: geojsonResponse.getGeoJsonResults().bbox,
                padding: 50
-            );
-        });
+            });
+    });
     ```
 5. Mentse a **MapSearch.html** fájlt, és frissítse a böngészőt. Most azt kell látnia, hogy Seattle van a térkép középpontjában, és a benzinkutak helyét kék gombostűk jelölik.
 

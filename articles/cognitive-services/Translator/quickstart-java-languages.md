@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Támogatott nyelvek lekérése – Translator Text, Java'
+title: 'Rövid útmutató: Támogatott nyelvek lekérése, Java – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban lekéri a fordításhoz, átíráshoz és szótárban való kereséshez támogatott nyelvek, valamint példák listáját a Translator Text API és Java segítségével.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
-ms.author: nolachar
-ms.openlocfilehash: 64954c06d90ff8110b77874846fe57072faf2f76
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 2af7ceeeef347d1959b571aebf3f26bd5035e4c4
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126972"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646168"
 ---
-# <a name="quickstart-get-supported-languages-with-java"></a>Rövid útmutató: Támogatott nyelvek lekérése a Java használatával
+# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-java"></a>Rövid útmutató: Támogatott nyelvek lekérése a Translator Text REST API használatával (Java)
 
 Ebben a rövid útmutatóban lekéri a fordításhoz, átíráshoz és szótárban való kereséshez támogatott nyelvek, valamint példák listáját a Translator Text API segítségével.
 

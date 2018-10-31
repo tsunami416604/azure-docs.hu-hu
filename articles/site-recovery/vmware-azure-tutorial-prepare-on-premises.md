@@ -6,22 +6,25 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 10/19/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: facf8895770f890bfbbef946a32cc681f685e998
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 361a1934a1e0cdcc0647c4c4f62af98f52b8c899
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915202"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456878"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Helyszíni VMware-kiszolgálók előkészítése az Azure-ba irányuló vészhelyreállításához
 
 Az [Azure Site Recovery](site-recovery-overview.md) működőképes állapotban tartja az üzleti alkalmazásokat a tervezett és nem tervezett leállások idején, így segít a vállalatoknak az üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégia megvalósításában. A Site Recovery felügyeli és koordinálja a helyszíni gépek és az Azure-beli virtuális gépek vészhelyreállítását, beleértve a replikálást, a feladatátvételt és a helyreállítást.
 
 - Ez az oktatóanyag a második rész abban a sorozatban, amely bemutatja, hogyan állíthat be Azure-ba irányuló vészhelyreállítást helyszíni VMware virtuális gépekhez. Az első oktatóanyagban [konfiguráltuk a VMware vészhelyreállításhoz szükséges Azure-összetevőket](tutorial-prepare-azure.md).
-- Az oktatóanyagokat úgy terveztük meg, hogy az adott forgatókönyvhöz a legegyszerűbb üzembehelyezési utat mutassák be. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. 
+
+
+> [!NOTE]
+> Az oktatóanyagokat úgy terveztük meg, hogy az adott forgatókönyvhöz a legegyszerűbb üzembehelyezési utat mutassák be. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. Részletes utasításokért lásd a **vonatkozó forgatókönyvet ismertető** szakaszt.
 
 Ebben a cikkben bemutatjuk, hogyan készítse elő a helyszíni VMware-környezetet, ha replikálni szeretné a VMware virtuális gépeket az Azure-ba az Azure Site Recovery segítségével. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -101,11 +104,13 @@ Ha a feladatátvételt követően SSH segítségével szeretne kapcsolódni a Li
 - [Nyilvános IP-cím hozzáadása](site-recovery-monitoring-and-troubleshooting.md) a virtuális gép számára.
 - Ellenőrizheti a **Rendszerindítási diagnosztika** részt a virtuális gép képernyőképének megtekintéséhez.
 
+
+## <a name="failback-requirements"></a>Feladat-visszavételre vonatkozó követelmények
+A helyszíni rendszerre való feladat-visszavételhez gondoskodnia kell [bizonyos előfeltételek teljesüléséről](vmware-azure-reprotect.md##before-you-begin). Ezek azonban a virtuális gépek **vészhelyreállításának engedélyezéséhez még nem szükségesek**, sőt akár az Azure-ra való feladatátvételt követően is teljesíthetők.
+
 ## <a name="useful-links"></a>Hasznos hivatkozások
 
 Ha több virtuális gépet replikál, ennek megkezdése előtt érdemes megterveznie a kapacitást és az üzembe helyezést. [További információk](site-recovery-deployment-planner.md).
-
-
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Szöveg fordítása – Translator Text, C#'
+title: 'Rövid útmutató: Szöveg lefordítása, C# – Translator Text'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban szöveget fordít le egy nyelvről egy másikra a Translator Text API és C# segítségével.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: 2b524591f3af32e566b0ca364626daf7aaf4ace2
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.author: erhopf
+ms.openlocfilehash: ffd46969bd7333d2422654c8683f66ff313706c2
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318452"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648462"
 ---
-# <a name="quickstart-translate-text-with-c35"></a>Rövid útmutató: Szöveg lefordítása a C&#35; használatával
+# <a name="quickstart-translate-text-with-the-translator-text-rest-api-c"></a>Rövid útmutató: Szöveg lefordítása a Translator Text REST API (C#) használatával
 
 Ebben a rövid útmutatóban szöveget fordít le egy nyelvről egy másikra a Translator Text API segítségével.
 

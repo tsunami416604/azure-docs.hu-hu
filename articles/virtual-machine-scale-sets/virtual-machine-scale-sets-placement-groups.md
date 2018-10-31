@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/9/2017
 ms.author: rajraj
-ms.openlocfilehash: f45b78f1c30119f5e892287719c9c2edfae57ce6
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 5280936cdec25f7b5fc4b77c989b31c7a01f7bd6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364214"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958635"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Nagyméretű virtuálisgép-méretezési csoportok használata
 Mostantól akár 1000 virtuális gép kapacitású Azure [virtuálisgép-méretezési csoportokat](/azure/virtual-machine-scale-sets/) is létrehozhat. Ebben a dokumentumban a _nagyméretű virtuálisgép-méretezési csoport_ egy 100 virtuális gépnél nagyobb skálázásra képes méretezési csoportként van meghatározva. Ezt a képességet a méretezési csoport egyik tulajdonsága adja meg (_singlePlacementGroup=False_). 
@@ -36,14 +36,14 @@ A _nagyméretű_ méretezési csoportot nem a virtuális gépek, hanem a tartalm
 Annak eldöntéséhez, hogy az alkalmazás hatékony tudja-e használni a nagyméretű méretezési csoportokat, vegye fontolóra a következő követelményeket:
 
 - Ha sok virtuális gépet tervez üzembe helyezni, szükségessé válhat a Számítási vCPU-kvóta korlátozásának emelése. 
-- A nagyméretű méretezési csoportokhoz az Azure Managed Disks szükséges. Azokhoz a méretezési csoportokhoz, amelyeket nem a Managed Disksszel hoztak létre, több tárfiókra van szükség (egyre minden 20 virtuális géphez). A nagyméretű méretezési csoportokat arra tervezték, hogy kizárólag a Managed Disksszel működjenek annak érdekében, hogy csökkenjen a tárolókezelés munkaterhelése, és hogy megszűnjön a tárfiókhoz tartozó előfizetés-korlát elérésének veszélye. Ha nem használja a Managed Diskst, a méretezési csoport legfeljebb 100 virtuális gép méretű lehet.
 - Az Azure Marketplace rendszerképekből létrehozott méretezési csoportok akár 1000 virtuális gépig skálázhatók.
 - Az egyéni rendszerképekből (olyan virtuálisgép-rendszerképek, amelyeket a felhasználó maga hoz létre és tölt fel) létrehozott méretezési csoportok akár 600 virtuális gépig skálázhatók.
+- A nagyméretű méretezési csoportokhoz az Azure Managed Disks szükséges. Azokhoz a méretezési csoportokhoz, amelyeket nem a Managed Disksszel hoztak létre, több tárfiókra van szükség (egyre minden 20 virtuális géphez). A nagyméretű méretezési csoportokat arra tervezték, hogy kizárólag a Managed Disksszel működjenek annak érdekében, hogy csökkenjen a tárolókezelés munkaterhelése, és hogy megszűnjön a tárfiókhoz tartozó előfizetés-korlát elérésének veszélye. 
 - A 4. rétegbeli terheléselosztáshoz több elhelyezési csoportból álló méretezési csoport esetén szükség van az [Azure Load Balancer standard termékváltozatára](../load-balancer/load-balancer-standard-overview.md). A Load Balancer standard termékváltozata további előnyöket biztosít, például a több méretezési csoport közötti terheléselosztást. A standard termékváltozat emellett azt is megköveteli, hogy a méretezési csoporthoz hozzá legyen rendelve egy hálózati biztonsági csoport, különben a NAT-készletek nem működnek megfelelően. Ha az Azure Load Balancer alapszintű termékváltozatát szeretné használni, győződjön meg arról, hogy a méretezési csoport egyetlen elhelyezési csoport használatára van konfigurálva, ami az alapértelmezett beállítás is.
 - A 7. rétegbeli terheléselosztás az Azure Application Gatewayjel minden méretezési csoporthoz támogatott.
 - A méretezési csoport egyetlen alhálózattal van meghatározva – győződjön meg róla, hogy az alhálózat megfelelő méretű névtérrel rendelkezik minden virtuális géphez. A méretezési csoport alapértelmezés szerint a szükségesnél több erőforrást hoz létre (további virtuális gépeket hoz létre az üzembe helyezés során vagy a felskálázáskor, amelyek nem járnak többletköltséggel), hogy javítsa az üzembe helyezés megbízhatóságát és teljesítményét. Lehetővé teszi egy címtér számára, hogy 20%-kal nagyobb legyen, mint a virtuális gépek száma, amelyekhez skálázni szeretne.
-- A tartalék tartományok és a frissítési tartományok csak az elhelyezési csoporton belül konzisztensek. Ez az architektúra nem módosítja a méretezési csoport általános elérhetőségét, mivel a virtuális gépek egyenlően vannak elosztva a különböző fizikai hardvereken, de azt jelenti, hogy ha biztosítania kell, hogy két virtuális gép különböző hardveren legyen, meg kell győződnie arról, hogy különböző tartalék tartományban találhatók ugyanabban az elhelyezési csoportban. A tartalék tartomány és az elhelyezési csoport azonosítója a méretezési csoport virtuális gépének _példány nézetében_ tekinthető meg. A méretezési csoport virtuális gépének példány nézetét az [Azure Resource Explorerben](https://resources.azure.com/) tekintheti meg.
-
+- A tartalék tartományok és a frissítési tartományok csak az elhelyezési csoporton belül konzisztensek. Ez az architektúra nem módosítja a méretezési csoport általános elérhetőségét, mivel a virtuális gépek egyenlően vannak elosztva a különböző fizikai hardvereken, de azt jelenti, hogy ha biztosítania kell, hogy két virtuális gép különböző hardveren legyen, meg kell győződnie arról, hogy különböző tartalék tartományban találhatók ugyanabban az elhelyezési csoportban. Kövesse ezt a hivatkozást az [Azure-régiók és a rendelkezésre állás](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability/) megtekintéséhez. 
+- A tartalék tartomány és az elhelyezési csoport azonosítója a méretezési csoport virtuális gépének _példány nézetében_ tekinthető meg. A méretezési csoport virtuális gépének példány nézetét az [Azure Resource Explorerben](https://resources.azure.com/) tekintheti meg.
 
 ## <a name="creating-a-large-scale-set"></a>Nagyméretű méretezési csoport létrehozása
 Amikor méretezési csoportot hoz létre az Azure Portalon, csak adja meg a *Példányszám* értékét (legfeljebb 1000-ig). Ha több mint 100 példánya van, akkor a *Skálázás engedélyezése 100-nál több példányig* beállítás értéke *Igen* lesz, így több elhelyezési csoporthoz skálázhat. 

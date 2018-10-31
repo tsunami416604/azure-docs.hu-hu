@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 18903dfbe187de73a6edb14196fa29e02d35dbca
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 126677df01ad34d488863dd83e2f8c9a2d947824
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185380"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958890"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-azure-powershell"></a>Útmutató: Stream Analytics-feladat létrehozása az Azure PowerShell használatával
 
@@ -285,7 +285,9 @@ Remove-AzureRmResourceGroup `
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban egy egyszerű Stream Analytics-feladatot helyezett üzembe. Az egyéb bemeneti források beállításával és a valós idejű észlelés végrehajtásával kapcsolatos információkért olvassa el az alábbi cikkeket:
+Ebben a rövid útmutatóban egy egyszerű Stream Analytics-feladatot helyezett üzembe a PowerShell használatával. A Stream Analytics-feladatokat az [Azure Portallal](stream-analytics-quick-create-portal.md) és a [Visual Studióval](stream-analytics-quick-create-vs.md) is üzembe helyezheti.
+
+Az egyéb bemeneti források beállításával és a valós idejű észlelés végrehajtásával kapcsolatos információkért olvassa el az alábbi cikkeket:
 
 > [!div class="nextstepaction"]
 > [Valós idejű csalásészlelés az Azure Stream Analytics használatával](stream-analytics-real-time-fraud-detection.md)

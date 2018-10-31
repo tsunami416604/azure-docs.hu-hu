@@ -1,23 +1,23 @@
 ---
 title: 'Rövid útmutató: Tudásbázis frissítése – REST, C# – QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Ez a rövid útmutató végigvezeti egy QnA Maker-tudásbázisminta (KB) programozott módon való frissítésén. A tudásbázis frissítéséhez használt JSON-definíció lehetővé teszi kérdés-válasz párosok hozzáadását, módosítását vagy törlését.
+description: Ez a REST-alapú rövid útmutató végigvezeti egy QnA Maker-tudásbázisminta (KB) programozott módon való frissítésén. A tudásbázis frissítéséhez használt JSON-definíció lehetővé teszi kérdés-válasz párosok hozzáadását, módosítását vagy törlését.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 9fa57a02f11461a3ea9a08b7b1b101b143924037
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 463fb4bc1cfd6ba7a7fc4df2fcde53bda7767488
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801693"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648232"
 ---
-# <a name="quickstart-update-a-qna-maker-knowledge-base-in-c"></a>Rövid útmutató: QnA Maker-tudásbázis frissítése C# nyelven
+# <a name="quickstart-update-a-knowledge-base-in-qna-maker-using-c"></a>Rövid útmutató: Tudásbázis frissítése a QnA Makerben a C# használatával
 
 Ez a rövid útmutató végigvezeti egy meglévő QnA Maker tudásbázis (KB) programozott módon való frissítésén.  Ez a JSON lehetővé teszi, hogy adatforrások hozzáadásával, módosításával vagy törlésével frissítse a tudásbázist.
 

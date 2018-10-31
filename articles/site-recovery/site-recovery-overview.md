@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 442e8d425e60566df5ce919e3463235ef1d6e4f0
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 334b7aa3a3a174055c3741f20a4817063efd21f6
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078096"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456643"
 ---
 # <a name="about-site-recovery"></a>Tudnivalók a Site Recovery szolgáltatásról
 
@@ -29,7 +29,7 @@ Az Azure Recovery Services segít a BCDR-stratégia kidolgozásában:
 A Site Recovery a következők replikációját képes kezelni:
 
 - Azure virtuális gépek replikációja Azure-régiók között.
-- Helyszíni virtuális gépek és fizikai kiszolgálók replikációja az Azure-ba vagy egy másodlagos helyre.
+- Helyszíni virtuális gépek, Azure Stack virtuális gépek és fizikai kiszolgálók.
 
 
 ## <a name="what-does-site-recovery-provide"></a>Mit nyújt a Site Recovery?
@@ -56,10 +56,9 @@ A Site Recovery a következők replikációját képes kezelni:
 
 **Támogatott** | **Részletek**
 --- | ---
-**Replikációs forgatókönyvek** | Azure-beli virtuális gépeket replikálhat egyik Azure-régióból a másikba.<br/><br/>  Helyszíni VMware virtuális gépeket, Hyper-V virtuális gépeket, valamint fizikai kiszolgálókat (Windows és Linux) replikálhat az Azure-ba.<br/><br/> Helyszíni VMware virtuális gépeket, a System Center VMM által felügyelt Hyper-V virtuális gépeket, valamint fizikai kiszolgálókat replikálhat egy másodlagos helyre.
+**Replikációs forgatókönyvek** | Azure-beli virtuális gépeket replikálhat egyik Azure-régióból a másikba.<br/><br/>  Helyszíni VMware virtuális gépeket, Hyper-V virtuális gépeket, fizikai kiszolgálókat (Windows és Linux), valamint Azure Stack virtuális gépeket replikálhat az Azure-ba.<br/><br/> Helyszíni VMware virtuális gépeket, a System Center VMM által felügyelt Hyper-V virtuális gépeket, valamint fizikai kiszolgálókat replikálhat egy másodlagos helyre.
 **Régiók** | Áttekintheti a Site Recovery által [támogatott régiókat](https://azure.microsoft.com/regions/services/). |
 **Replikált gépek** | Áttekintheti az [Azure-beli virtuális gépeknek](azure-to-azure-support-matrix.md#support-for-replicated-machine-os-versions), a [helyszíni VMware virtuális gépeknek és fizikai kiszolgálóknak](vmware-physical-azure-support-matrix.md#replicated-machines), valamint a [helyszíni Hyper-V virtuális gépeknek](hyper-v-azure-support-matrix.md#replicated-vms) a replikációs követelményeit.
-**VMware-kiszolgálók/-gazdagépek** | A replikálni kívánt VMware virtuális gépek a [támogatott gazdagépeken és virtualizációs kiszolgálókon](vmware-physical-azure-support-matrix.md) helyezhetők el.
 **Számítási feladatok** | A támogatott replikációs gépeken futó bármilyen számítási feladat replikálható. Ezenkívül a Site Recovery csapata alkalmazásspecifikus tesztelést végzett [néhány alkalmazáshoz](site-recovery-workload.md#workload-summary).
 
 

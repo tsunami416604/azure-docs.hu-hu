@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Mondathosszok lekérése – Translator Text API, C#'
+title: 'Rövid útmutató: Mondathosszok lekérése, C# – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban kideríti egy szövegben a mondatok hosszát a Translator Text API és C# segítségével.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: 699c4b775f2c5745a5b52593d44a0af408c5e73a
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.author: erhopf
+ms.openlocfilehash: c10a38164c71eaa4239072fe10973932ce8cce3b
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319606"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645037"
 ---
-# <a name="quickstart-get-sentence-lengths-with-c35"></a>Rövid útmutató: Mondathosszok lekérése a C&#35; használatával
+# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-c"></a>Rövid útmutató: Mondathosszok lekérése a Translator Text REST API használatával (C#)
 
 Ebben a rövid útmutatóban kideríti egy szövegben a mondatok hosszát a Translator Text API segítségével.
 

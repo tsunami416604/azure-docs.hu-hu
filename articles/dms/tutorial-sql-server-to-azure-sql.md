@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 86b1cc50128cd74f4a11ff599c1ca26ce5ae5117
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 6b8b6994b810db939a5e690d16d3c5d2f1a0825f
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067840"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945399"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>SQL Server migrálása felügyelt Azure SQL Database-példányra kapcsolat nélküli üzemmódban, a DMS használatával
 Az Azure Database Migration Service használatával migrálhatja egy helyszíni SQL Server-példány adatbázisait az [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/)-be. Ebben az oktatóanyagban az SQL Server 2016 (vagy újabb) helyi példányára visszaállított **Adventureworks2012** adatbázist migrálhatja egy Azure SQL Database-példányba az Azure Database Migration Service használatával.
@@ -30,6 +30,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * A migrálás futtatása.
 > * A migrálás monitorozása.
 > * Migrálási jelentés letöltése.
+
+[!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
+
+Ez a cikk egy offline migrálást mutat be az SQL Serverről az Azure SQL Database-be. Az online migrálással kapcsolatban tekintse meg az [SQL Server online migrálása az Azure SQL Database-be a DMS használatával](tutorial-sql-server-azure-sql-online.md) című cikket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:

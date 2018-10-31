@@ -1,0 +1,2 @@
+> [!TIP]
+> Amikor adatbázisokat migrál az Azure-ba az Azure Database Migration Service használatával, *offline* vagy *online* migrálást végezhet. Offline migrálás esetén az alkalmazás akkor áll le, amikor a migrálás elkezdődik. Online migrálás esetén az állásidő a migrálás végén lévő átállítás idejére korlátozódik. Azt javasoljuk, hogy próbálja ki az offline migrálást, és határozza meg, hogy elfogadható-e az állásidő; ha nem, végezzen online migrálást.

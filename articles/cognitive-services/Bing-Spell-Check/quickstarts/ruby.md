@@ -10,16 +10,16 @@ ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 3fe8729a9e2524cc2ccda168a857d58664a98b10
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: e75b8e8b23bbb8e49cb8d8ec55e42f6ffb204197
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801080"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023497"
 ---
 # <a name="quickstart-for-bing-spell-check-api-with-ruby"></a>Rövid útmutató a Bing Spell Check API és a Ruby használatához 
 
-Ez a cikk bemutatja, hogyan használhatja a [Bing Spell Check API-t](https://azure.microsoft.com/services/cognitive-services/spell-check/) a Rubyval. A Spell Check API visszaadja a fel nem ismert szavak listáját a javasolt cserekifejezésekkel együtt. Általános esetben küld egy szöveget az API-nak, majd végrehajtja a javasolt cseréket a szövegben, vagy megmutatja azokat az alkalmazás felhasználójának, hogy ő dönthesse el, végre szeretné-e hajtani a cserét. Ez a cikk bemutatja, hogyan küldhet el egy olyan kérést, amely a „Hollo, wrld!” szöveget tartalmazza. A javasolt cserekifejezés a „Hello” és a „world” lesz.
+Ez a cikk bemutatja, hogyan használhatja a [Bing Spell Check API-t](https://azure.microsoft.com/services/cognitive-services/spell-check/)  a Rubyval. A Spell Check API visszaadja a fel nem ismert szavak listáját a javasolt cserekifejezésekkel együtt. Általános esetben küld egy szöveget az API-nak, majd végrehajtja a javasolt cseréket a szövegben, vagy megmutatja azokat az alkalmazás felhasználójának, hogy ő dönthesse el, végre szeretné-e hajtani a cserét. Ez a cikk bemutatja, hogyan küldhet el egy olyan kérést, amely a „Hollo, wrld!” szöveget tartalmazza. A javasolt cserekifejezés a „Hello” és a „world” lesz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -31,7 +31,7 @@ Rendelkeznie kell egy, a **Bing Spell Check API 7-es verzióját** tartalmazó [
 
 1. Hozzon létre egy új Ruby-projektet a kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
-3. A `subscriptionKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
+3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
 ```ruby

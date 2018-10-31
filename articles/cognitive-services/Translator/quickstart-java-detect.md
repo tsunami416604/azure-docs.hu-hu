@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Szöveg nyelvének azonosítása – Translator Text, Java'
+title: 'Rövid útmutató: Szöveg nyelvének azonosítása, Java – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban felismeri a forrásszöveg nyelvét a Translator Text API és Java segítségével.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
-ms.author: nolachar
-ms.openlocfilehash: 244ba0bb3836923536cd77fa697b4250f751668e
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: dd08280b0a4a4608888cf262957c51499412612c
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129420"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647119"
 ---
-# <a name="quickstart-identify-language-from-text-with-java"></a>Rövid útmutató: Szöveg nyelvének felismerése a Java használatával
+# <a name="quickstart-identify-language-from-text-with-the-translator-text-rest-api-java"></a>Rövid útmutató: Szöveg nyelvének azonosítása a Translator Text REST API (Java) használatával
 
 Ebben a rövid útmutatóban felismeri a forrásszöveg nyelvét a Translator Text API segítségével.
 

@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 03/23/2018
 ms.author: nitinme
 ms.custom: mvc
-ms.openlocfilehash: 21f30e5db59f07b6384304f9e64157d312547ad9
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 225571379cc1dd3d747219db7613fbf4a53bac9a
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731306"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024103"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Rövid útmutató: Spark-feladatok futtatása Azure Databricksen az Azure Resource Manager-sablon használatával
 
@@ -73,7 +73,7 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet hoz létre az Azure Reso
 
     * Adjon egy nevet a fürtnek.
     * Ehhez a cikkhez a **4.0** futtatókörnyezetben hozzon létre fürtöt. 
-    * Mindenképpen jelölje be a **Leállítás ___ percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
+    * Mindenképpen jelölje be a **Leállítás \_\_ percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
     
     Válassza a **Fürt létrehozása** lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat. 
 

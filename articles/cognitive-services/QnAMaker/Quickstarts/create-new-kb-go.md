@@ -1,23 +1,30 @@
 ---
-title: 'Rövid útmutató: Go nyelvű API – Tudásbázis létrehozása – QnA Maker'
+title: 'Rövid útmutató: Tudásbázis létrehozása – REST, Go – QnA Maker'
 titlesuffix: Azure Cognitive Services
-description: Ez a rövid útmutató programozott módon végigvezeti egy minta QnA Maker tudásbázis létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
+description: Ez a REST-alapú rövid útmutató végigvezeti egy olyan minta QnA Maker-tudásbázis programozott módon történő létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: d7181b95780f726e15b1162188909b579b056fd9
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: e3a498e983985a2610ee4e52a497ad6c7f7b87a8
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384802"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647374"
 ---
-# <a name="create-a-new-knowledge-base-in-go"></a>Új tudásbázis létrehozása Go nyelven
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-go"></a>Rövid útmutató: Tudásbázis létrehozása a QnA Makerben a Go használatával
+
+Ez a rövid útmutató végigvezeti egy minta QnA Maker-tudásbázis programozott módon való létrehozásán. A QnA Maker automatikusan nyer ki kérdéseket és válaszokat a félig strukturált tartalmak, például a gyakori kérdések közül, az [adatforrásokból](../Concepts/data-sources-supported.md). A tudásbázis modelljét az API-kérés törzsében küldött JSON definiálja. 
+
+Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
+* [Tudásbázis létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+* [Műveletek részleteinek lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 

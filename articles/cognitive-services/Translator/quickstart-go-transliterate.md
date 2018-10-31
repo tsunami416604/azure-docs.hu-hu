@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Szöveget konvertáló parancsfájl – Translator Text, Go'
+title: 'Rövid útmutató: Szövegátalakítási szkript, Go – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban szöveget alakít át egy nyelven egy szkriptből egy másikba a Translator Text API és Go segítségével.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
-ms.author: nolachar
-ms.openlocfilehash: c4930e03f5d366eb3f21b44c5be90c20230065c3
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: fd41eff65c312c125594bb3251f9c4fe74108eaf
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126751"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648360"
 ---
-# <a name="quickstart-transliterate-text-with-go"></a>Rövid útmutató: Szöveg átírása a Go használatával
+# <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-go"></a>Rövid útmutató: Szöveg átírása a Translator Text REST API (Go) használatával
 
 Ebben a rövid útmutatóban szöveget alakít át egy nyelven egy szkriptből egy másikba a Translator Text API segítségével.
 

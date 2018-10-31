@@ -12,12 +12,12 @@ ms.author: daredis
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 09/07/2018
-ms.openlocfilehash: ceed69503900b38d7f6a29bbe116ab9a4d54e396
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: b81e76201f7f751ee01e903d83f316811abaf483
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857958"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955475"
 ---
 # <a name="secure-your-azure-sql-database"></a>Az Azure SQL Database-adatbázis védelme
 
@@ -59,7 +59,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 Az SQL Database-adatbázisokat tűzfal védi az Azure-ban. A rendszer alapértelmezés szerint elutasítja a kiszolgálóra és a kiszolgálón lévő adatbázisokra irányuló összes kapcsolatot, a más Azure-szolgáltatások irányából érkező kapcsolatokat kivéve. További információkért lásd: [Kiszolgáló- és adatbázisszintű Azure SQL Database-tűzfalszabályok](sql-database-firewall-configure.md).
 
-A legbiztonságosabb konfigurációt az „Azure-szolgáltatásokhoz való hozzáférés engedélyezése” beállítás kikapcsolása biztosítja. Ha az adatbázishoz Azure-beli virtuális gépről vagy felhőszolgáltatásból kíván csatlakozni, létre kell hoznia egy [fenntartott IP-címet](../virtual-network/virtual-networks-reserved-public-ip.md), és a tűzfalon keresztüli hozzáférést csak ezen fenntartott IP-cím számára tegye lehetővé. 
+A legbiztonságosabb konfigurációt az „Azure-szolgáltatásokhoz való hozzáférés engedélyezése” beállítás kikapcsolása biztosítja. Ha az adatbázishoz Azure-beli virtuális gépről vagy felhőszolgáltatásból kíván csatlakozni, létre kell hoznia egy [fenntartott IP-címet (klasszikus üzembe helyezés)](../virtual-network/virtual-networks-reserved-public-ip.md), és a tűzfalon keresztüli hozzáférést csak ezen fenntartott IP-cím számára tegye lehetővé. Ha a [Resource Manager](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)-alapú üzemi modellt használja, a rendszer egy dedikált nyilvános IP-címet rendel az erőforráshoz, és ezt az IP-címet engedélyeznie kell a tűzfalon.
 
 Kövesse az alábbi lépéseket, és hozzon létre egy [SQL Database kiszolgálószintű tűzfalszabályt](sql-database-firewall-configure.md) a kiszolgáló számára az adott IP-címről történő kapcsolódás engedélyezéséhez. 
 

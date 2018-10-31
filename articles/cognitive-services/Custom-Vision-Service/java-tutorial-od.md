@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Objektum észlelési projekt létrehozása – Custom Vision API, Java'
+title: 'Oktatóanyag: Objektumészlelési projekt létrehozása a Javához készült Custom Vision SDK-val – Custom Vision Service'
 titlesuffix: Azure Cognitive Services
 description: Hozzon létre projektet, adjon hozzá címkéket, töltsön fel képeket, tanítsa be a projektet és adjon előrejelzést az alapértelmezett végpont használatával.
 services: cognitive-services
@@ -10,20 +10,20 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: 661242e4962a8218c48d7ea66d8a6f728b5154c8
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: d4af3315cfca18da594730cc402236684f81bfc8
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365025"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957335"
 ---
-# <a name="tutorial-build-an-object-detection-project-with-java"></a>Oktatóanyag: Objektumészlelési projekt készítése Java nyelven
+# <a name="tutorial-create-an-object-detection-project-with-the-custom-vision-sdk-for-java"></a>Oktatóanyag: Objektumészlelési projekt létrehozása a Javához készült Custom Vision SDK-val
 
 Nézze meg, hogyan készít a Computer Vision API használatával objektumészlelési projektet egy egyszerű Java alkalmazás. Miután elkészült, adhat hozzá címkézett régiókat, tölthet fel képeket, betaníthatja a projektet, megkaphatja a projekt alapértelmezett előrejelzési végpont URL-címét és ezt a végpontot felhasználhatja kép programozott tesztelésére. Ez a nyílt forráskódú példa sablonként használható saját, Custom Vision API használatával készülő alkalmazásaihoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag használatához a következőkre lesz szüksége:
+Az oktatóanyag használatához a következőket kell tennie:
 
 - Telepítse a JDK 7 vagy 8 verziót.
 - Telepítse a Maven-t.

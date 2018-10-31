@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: e9ed0ba8d24f30f67dbb315848dc4c260cae4f50
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 7e586e7e3ec8c16dcd215dbc11251d1b9fe928e1
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391368"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457064"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Az Azure-ba replikált VMware virtuális gépek és fizikai kiszolgálók feladatátvétele és feladat-visszavétele
 
@@ -93,13 +93,12 @@ Kövesse az [itt](site-recovery-failover-to-azure-troubleshoot.md) leírt lépé
 
 ## <a name="preparing-for-reprotection-of-azure-vm"></a>Azure-beli virtuális gép ismételt védelmének előkészítése
 
-### <a name="create-a-process-server-in-azure"></a>Folyamatkiszolgáló létrehozása az Azure-ban
+- Használhatja az **Azure ExpressRoute-kapcsolat használata esetén** a telepítés részeként a konfigurációs kiszolgálóra automatikusan telepített helyszíni folyamatkiszolgálót (beépített folyamatkiszolgálót).
 
-A folyamatkiszolgáló adatokat fogad az Azure-beli virtuális gépről, és elküldi azokat a helyszíni helyre. Kis késleltetésű hálózatra van szükség a folyamatkiszolgáló és a védett virtuális gép között.
+> [!IMPORTANT]
+> Ha a helyszíni környezet és az Azure között VPN-kapcsolat van, az ismételt védelemhez és a feladat-visszavételhez be kell állítania egy Azure-beli virtuális gépet folyamatkiszolgálóként. A folyamatkiszolgálók Azure-ban való beállításához kövesse az [ebben a cikkben](vmware-azure-set-up-process-server-azure.md) szereplő utasításokat.
 
-- Ha Azure ExpressRoute-kapcsolata van, tesztelési célból használhatja a konfigurációs kiszolgálóra automatikusan telepített helyszíni folyamatkiszolgálót (beépített folyamatkiszolgálót).
-- Ha VPN-kapcsolata van, vagy ha éles környezetben futtat feladat-visszavételt, a feladat-visszavételhez be kell állítania egy Azure-beli virtuális gépet Azure alapú folyamatkiszolgálóként.
-- A folyamatkiszolgálók Azure-ban való beállításához kövesse az [ebben a cikkben](vmware-azure-set-up-process-server-azure.md) szereplő utasításokat.
+Az ismételt védelemmel és a feladat-visszavétellel kapcsolatos további információért lásd ezt a [szakaszt] ](vmware-azure-reprotect.md##before-you-begin). 
 
 ### <a name="configure-the-master-target-server"></a>A fő célkiszolgáló konfigurálása
 

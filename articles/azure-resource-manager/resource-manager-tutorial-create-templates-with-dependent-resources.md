@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/09/2018
+ms.date: 10/19/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 50f1c81f08787181de2fe3a9f6fb97a96a2bd882
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 5e198310dd18cc8574b5510b9318ff4badaffca3
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114312"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646309"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Oktatóanyag: Függő erőforrásokkal ellátott Azure Resource Manager-sablonok létrehozása
 
@@ -29,7 +29,7 @@ Az oktatóanyag során egy tárfiókot, egy virtuális gépet, egy virtuális h�
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
-> * A Key Vault előkészítése
+> * Biztonságos környezet beállítása
 > * Gyorsindítási sablon megnyitása
 > * A sablon vizsgálata
 > * A paraméterfájl szerkesztése
@@ -42,77 +42,12 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 * [Visual Studio Code](https://code.visualstudio.com/) a Resource Manager Tools bővítménnyel.  Lásd [a bővítmény telepítését](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites) ismertető részt.
-
-## <a name="prepare-key-vault"></a>A Key Vault előkészítése
-
-A szórásos jelszófeltöréses támadások megelőzése érdekében javasoljuk a rendszer által automatikusan létrehozott jelszavak használatát a virtuális gép rendszergazda fiókjához, valamint a Key Vault használatát a jelszó tárolására. Az alábbi eljárás létrehoz egy Key Vault-tárolót és egy titkos kódot a jelszó tárolására. Ezen felül konfigurálja a sablonok üzembe helyezéséhez szükséges engedélyeket a Key Vaultban tárolt titkos kódhoz való hozzáféréshez. Ha a Key Vault másik Azure-előfizetés alatt van, további hozzáférési szabályzatokra is szükség lesz. További információért lásd azt a cikket, amely azzal foglalkozik, hogyan lehet [használni az Azure Key Vaultot biztonságos paraméterértékek megadásához az üzembe helyezés során](./resource-manager-keyvault-parameter.md).
-
-1. Jelentkezzen be az [Azure Cloud Shellbe](https://shell.azure.com).
-2. Váltson arra környezetre a bal felső sarokban, amelyet használni szeretne. Ez a **PowerShell** vagy a **Bash** lehet.
-3. Futtassa az alábbi Azure PowerShell- vagy Azure CLI-parancsot.  
+* A szórásos jelszófeltöréses támadások megelőzése érdekében automatikusan hozzon létre jelszót a virtuális gép rendszergazdai fiókjához. Íme egy példa:
 
     ```azurecli-interactive
-    keyVaultName='<your-unique-vault-name>'
-    resourceGroupName='<your-resource-group-name>'
-    location='Central US'
-    userPrincipalName='<your-email-address-associated-with-your-subscription>'
-    
-    # Create a resource group
-    az group create --name $resourceGroupName --location $location
-    
-    # Create a Key Vault
-    keyVault=$(az keyvault create \
-      --name $keyVaultName \
-      --resource-group $resourceGroupName \
-      --location $location \
-      --enabled-for-template-deployment true)
-    keyVaultId=$(echo $keyVault | jq -r '.id')
-    az keyvault set-policy --upn $userPrincipalName --name $keyVaultName --secret-permissions set delete get list
-
-    # Create a secret
-    password=$(openssl rand -base64 32)
-    az keyvault secret set --vault-name $keyVaultName --name 'vmAdminPassword' --value $password
-    
-    # Print the useful property values
-    echo "You need the following values for the virtual machine deployment:"
-    echo "Resource group name is: $resourceGroupName."
-    echo "The admin password is: $password."
-    echo "The Key Vault resource ID is: $keyVaultId."
+    openssl rand -base64 32
     ```
-
-    ```azurepowershell-interactive
-    $keyVaultName = "<your-unique-vault-name>"
-    $resourceGroupName="<your-resource-group-name>"
-    $location='Central US'
-    $userPrincipalName="<your-email-address-associated-with-your-subscription>"
-    
-    # Create a resource group
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-        
-    # Create a Key Vault
-    $keyVault = New-AzureRmKeyVault `
-      -VaultName $keyVaultName `
-      -resourceGroupName $resourceGroupName `
-      -Location $location `
-      -EnabledForTemplateDeployment
-    Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userPrincipalName -PermissionsToSecrets set,delete,get,list
-      
-    # Create a secret
-    $password = openssl rand -base64 32
-    
-    $secretValue = ConvertTo-SecureString $password -AsPlainText -Force
-    Set-AzureKeyVaultSecret -VaultName $keyVaultName -Name "vmAdminPassword" -SecretValue $secretValue
-    
-    # Print the useful property values
-    echo "You need the following values for the virtual machine deployment:"
-    echo "Resource group name is: $resourceGroupName."
-    echo "The admin password is: $password."
-    echo "The Key Vault resource ID is: " $keyVault.ResourceID
-    ```
-4. Jegyezze fel a kimeneti értékeket. Az oktatóanyag későbbi részében még szüksége lesz rájuk.
-
-> [!NOTE]
-> Az egyes Azure-szolgáltatások különböző jelszókövetelményeket szabnak meg. Az Azure-beli virtuális gépek követelményei például megtalálhatók a virtuális gépek létrehozásakor érvényesülő jelszókövetelményeket ismertető cikkben.
+    Az Azure Key Vault funkciója a titkosítási kulcsok és egyéb titkos kulcsok biztonságos megőrzése. További információkért lásd [Oktatóanyag: Az Azure Key Vault integrálása a Resource Manager-sablon üzembehelyezési folyamatába](./resource-manager-tutorial-use-key-vault.md). Javasoljuk továbbá, hogy a jelszót három havonta frissítse.
 
 ## <a name="open-a-quickstart-template"></a>Gyorsindítási sablon megnyitása
 
@@ -126,7 +61,6 @@ Az Azure-beli gyorsindítási sablonok a Resource Manager-sablonok adattárakén
     ```
 3. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt.
 4. A **File** (Fájl) > **Save As** (Mentés másként) kiválasztásával mentheti a fájl egy másolati példányát a helyi számítógépre, **azuredeploy.json** néven.
-5. Ismételje meg az 1–4. lépést a **https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.parameters.json** megnyitásához, majd mentse a fájlt **azuredeploy.parameters.json** néven.
 
 ## <a name="explore-the-template"></a>A sablon vizsgálata
 
@@ -170,44 +104,16 @@ A következő ábrán az erőforrások és az ehhez a sablonhoz tartozó függő
 
 A függőségek megadásával a Resource Manager már hatékonyan képes üzembe helyezni a megoldást. Mivel nincs közöttük függőség, a tárfiók, a nyilvános IP-cím és a virtuális hálózat párhuzamosan lesz létrehozva. A nyilvános IP-cím és a virtuális hálózat után a hálózati adapter üzembe helyezése következik. A Resource Manager azt követően helyezi üzembe helyezve, hogy az összes többi erőforrás üzembe helyezése megtörtént.
 
-## <a name="edit-the-parameters-file"></a>A paraméterfájl szerkesztése
-
-A sablonfájlt nem kell módosítania. Módosítania kell azonban a paraméterfájlt, hogy le tudja kérni a rendszergazdai jelszót a Key Vaultból.
-
-1. Ha még nincs megnyitva, nyissa meg az **azuredeploy.parameters.json** fájlt a Visual Studio Code-ban.
-2. Frissítse az **adminPassword** paramétert a következőre:
-
-    ```json
-    "adminPassword": {
-        "reference": {
-            "keyVault": {
-            "id": "/subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>"
-            },
-            "secretName": "vmAdminPassword"
-        }
-    },
-    ```
-    Az **id** elemet cserélje le az előző eljárásban létrehozott Key Vault-tároló erőforrás-azonosítójára. Ez az egyik kimenet. 
-
-    ![A Key Vault és a Resource Manager-sablon integrációja, a virtuális gép üzembehelyezési paraméterfájljai](./media/resource-manager-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
-3. Adja meg a következők értékét:
-
-    - **adminUsername**: a virtuális gép rendszergazdai fiókjának neve.
-    - **dnsLabelPrefix**: a dnsLabelPrefix neve.
-4. Mentse a módosításokat.
-
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 A sablonok üzembe helyezésének számos módszere létezik.  Ebben az oktatóanyagban az Azure Portal Cloud Shelljét fogja használni.
 
-1. Jelentkezzen be a [Cloud Shellbe](https://shell.azure.com). Azt is megteheti, hogy bejelentkezik az [Azure Portalra](https://portal.azure.com), majd kiválasztja a jobb felső sarokból a **Cloud Shellt** (lásd az alábbi ábrát):
-
-    ![Azure Portal – Cloud Shell](./media/resource-manager-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell.png)
+1. Jelentkezzen be a [Cloud Shellbe](https://shell.azure.com). 
 2. Válassza a Cloud Shell bal felső sarkában található **PowerShell** elemet, majd a **Megerősítés** lehetőséget.  Ebben az oktatóanyagban a PowerShellt fogja használni.
 3. A Cloud Shellben kattintson a **Fájl feltöltése** lehetőségre:
 
     ![Azure Portal – Cloud Shell – Fájl feltöltése](./media/resource-manager-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)
-4. Válassza ki az oktatóanyag korábbi részében mentett fájlokat. Az alapértelmezett nevek: **azuredeploy.json** és **azuredeploy.paraemters.json**.  Ha ilyen néven már léteznek fájlok, akkor a rendszer értesítés nélkül felülírja a régi fájlokat.
+4. Válassza ki az oktatóanyag korábbi részében mentett sablont. Alapértelmezés szerint a fájl neve a következő: **azuredeploy.json**.  Ha ilyen néven már létezik fájl, a rendszer értesítés nélkül felülírja a régit.
 5. A fájl sikeres feltöltésének ellenőrzéséhez futtassa az alábbi parancsot a Cloud Shellben. 
 
     ```bash
@@ -222,22 +128,28 @@ A sablonok üzembe helyezésének számos módszere létezik.  Ebben az oktatóa
 
     ```bash
     cat azuredeploy.json
-    cat azuredeploy.parameters.json
     ```
-7. Futtassa az alábbi PowerShell-parancsokat a Cloud Shellben. A mintaszkript a Key Vaulthoz létrehozott erőforráscsoportot használja, így ugyanis könnyebb lesz törölni az erőforrásokat.
+7. Futtassa az alábbi PowerShell-parancsokat a Cloud Shellben. A biztonság növelése érdekében automatikusan létrehozott jelszót használjon a virtuális gép rendszergazdai fiókjához. Lásd: [Előfeltételek](#prerequisites).
 
-    ```powershell
-    $resourceGroupName = "<Enter the resource group name>"
-    $deploymentName = "<Enter a deployment name>"
+    ```azurepowershell
+    $deploymentName = Read-Host -Prompt "Enter the name for this deployment"
+    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+    $adminUsername = Read-Host -Prompt "Enter the virtual machine admin username"
+    $adminPassword = Read-Host -Prompt "Enter the admin password"
+    $dnsLablePrefix = Read-Host -Prompt "Enter the DNS label prefix"
 
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
     New-AzureRmResourceGroupDeployment -Name $deploymentName `
         -ResourceGroupName $resourceGroupName `
-        -TemplateFile azuredeploy.json `
-        -TemplateparameterFile azuredeploy.parameters.json
+        -adminUsername = $adminUsername `
+        -adminPassword = $adminPassword `
+        -dnsLabelPrefix = $dnsLabelPrefix `
+        -TemplateFile azuredeploy.json 
     ```
 8. Az alábbi PowerShell-parancs futtatásával megjelenítheti az újonnan létrehozott virtuális gépet:
 
-    ```powershell
+    ```azurepowershell
+    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
     Get-AzureRmVM -Name SimpleWinVM -ResourceGroupName $resourceGroupName
     ```
 

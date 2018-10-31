@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 4f5097f8555d0345add7de8a0f648190bd4e1e00
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 0346cf456c53b14fd3c5b14b2e40eddd8b89fe4d
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41918752"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465950"
 ---
 # <a name="create-and-publish-a-product"></a>Termékek létrehozása és közzététele  
 
@@ -31,7 +31,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Termékek létrehozása és közzététele
 > * API hozzáadása a termékhez
 
-![termék hozzáadása](media/api-management-howto-add-products/added-product.png)
+![Termék hozzáadását bemutató oktatóanyag](media/api-management-howto-add-products/added-product.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,10 +40,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="create-and-publish-a-product"></a>Termékek létrehozása és közzététele
 
+![Termék hozzáadása](media/api-management-howto-add-products/02-create-publish-product-01.png)
+
 1. Kattintson a bal oldali menü **Termékek** lehetőségére a **Termékek** oldal megjelenítéséhez.
 2. Kattintson a **+Hozzáadás** gombra.
-
-    ![hozzáadott termék](media/api-management-howto-add-products/add-product.png)
 
     Termék hozzáadásakor meg kell adnia a következő információkat: 
 
@@ -77,7 +77,7 @@ A fejlesztőknek elő kell fizetniük a termékre az API-k eléréséhez. Amikor
 
 ### <a name="add-an-api-to-an-existing-product"></a>API hozzáadása meglévő termékhez
 
-![termék hozzáadása, API](media/api-management-howto-add-products/add-product-api.png)
+![termék hozzáadása, API](media/api-management-howto-add-products/02-create-publish-product-02.png)
 
 1. Válasszon ki egy terméket a **Termékek** lapon.
 2. Lépjen az **API-k** lapra.

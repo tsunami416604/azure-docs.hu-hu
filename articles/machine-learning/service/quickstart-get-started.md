@@ -9,18 +9,20 @@ ms.reviewer: sgilley
 author: rastala
 ms.author: roastala
 ms.date: 09/24/2018
-ms.openlocfilehash: 14bd85a23e2630a1cf2a8b5621d669c4c6748168
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: b81e40298eae0f0b44f37e7f8f16beaddad999a5
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376618"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456813"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Rövid útmutató: Ismerkedés az Azure Machine Learning szolgáltatással az Azure Portalon
 
 Ebben a rövid útmutatóban egy Azure Machine Learning-munkaterületet fog létrehozni az Azure Portalon. A Machine Learning használata során ez a munkaterület szolgál a gépi tanulási modellekkel való kísérletezés, valamint a betanításuk és üzembe helyezésük alapjául a felhőben. 
 
-Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
+
+Ebben a rövid útmutatóban a következőket hajtja végre:
 
 * Munkaterület létrehozása az Azure-előfizetésben.
 * A munkaterület kipróbálása a Pythonnal egy Azure-notebookban és az értékek naplózása több iterációban.
@@ -107,13 +109,13 @@ Ezeket az értékeket a kód futtatása után tekintheti meg a munkaterületen.
 
 A notebook összes cellájának futtatása után lépjen vissza a portál oldalára.  
 
-Válassza a `View Experiments` lehetőséget.
+Válassza a(z) `View Experiments` lehetőséget.
 
 ![Kísérletek megtekintése](./media/quickstart-get-started/view_exp.png)
 
 Zárja be a `Reports` előugró ablakot.
 
-Válassza a `my-first-experiment` lehetőséget.
+Válassza a(z) `my-first-experiment` lehetőséget.
 
 Tekintse meg az imént elvégzett futtatás információit. Görgessen le az oldalon a futtatások táblájának megkereséséhez. Kattintson a futtatás számának hivatkozására.
 

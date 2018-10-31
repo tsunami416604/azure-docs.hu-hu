@@ -1,19 +1,21 @@
 ---
-title: Nyelvi modell létrehozása a Speech Services segítségével – Microsoft Cognitive Services
-description: Arra vonatkozó információk, hogyan hozhat létre nyelvi modellt a Microsoft Cognitive Services Speech Services szolgáltatásával.
+title: 'Oktatóanyag: Nyelvi modell létrehozása a Speech Service segítségével'
+titlesuffix: Azure Cognitive Services
+description: Megismerheti a nyelvi modellek létrehozását a Speech Service segítségével.
 services: cognitive-services
 author: PanosPeriorellis
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: d74a5ded7d86969b3ca2cc20a59ddc20af7dc932
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: b8d58450ccc5081e3be3131761d1321a32567df3
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364115"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468993"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Oktatóanyag: Egyéni nyelvi modell létrehozása
 

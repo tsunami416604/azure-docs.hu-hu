@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Windows-alkalmazás készítése Custom Vision szolgáltatáshoz C# nyelven'
+title: 'Oktatóanyag: Képosztályozási projekt létrehozása a C#-hoz készült Custom Vision SDK-val'
 titlesuffix: Azure Cognitive Services
 description: Hozzon létre projektet, adjon hozzá címkéket, töltsön fel képeket, tanítsa be a projektet és adjon előrejelzést az alapértelmezett végpont használatával.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: 9e5ed71d4620f7ffeac8acb15f90d67964a86870
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: e046fe452a13384ae7929be805c6252d6ad2fbf9
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366641"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953043"
 ---
-# <a name="tutorial-use-the-custom-vision-service-from-a-c-application"></a>Oktatóanyag: Custom Vision Service használata C# alkalmazásból
+# <a name="tutorial-create-an-image-classification-project-with-the-custom-vision-sdk-for-c"></a>Oktatóanyag: Képosztályozási projekt létrehozása a C#-hoz készült Custom Vision SDK-val
 
-Ismerje meg hogyan történhet a Custom Vision Service használata C# alkalmazásból. Miután elkészült, adhat hozzá címkéket, tölthet fel képeket, betaníthatja a projektet, megkaphatja a projekt alapértelmezett előrejelzési végpont URL-címét és ezt a végpontot felhasználhatja kép programozott tesztelésére. Ez a nyílt forráskódú példa sablonként használható saját, Custom Vision Service API használatával készülő Windows alkalmazásaihoz.
+Útmutató a Custom Vision Service SDK C#-alkalmazásban történő használatához. Miután elkészült, adhat hozzá címkéket, tölthet fel képeket, betaníthatja a projektet, megkaphatja a projekt alapértelmezett előrejelzési végpont URL-címét és ezt a végpontot felhasználhatja kép programozott tesztelésére. Ez a nyílt forráskódú példa sablonként használható saját, Custom Vision Service API használatával készülő Windows alkalmazásaihoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

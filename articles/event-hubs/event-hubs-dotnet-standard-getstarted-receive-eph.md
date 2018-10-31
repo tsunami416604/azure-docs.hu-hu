@@ -14,47 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 5abb2447fa90ea5900afb86746cc17eff62c2d2e
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 03cba90874d0f42e6c404009dc4115fb4f1798ed
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166284"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468075"
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>Üzenetek fogadása az Event Processor Hosttal .NET Standardban – első lépések
+Az Event Hubs szolgáltatás a csatlakoztatott eszközökről és alkalmazásokból származó nagy mennyiségű eseményadatot dolgoz fel (telemetria). Miután összegyűjtötte az adatokat az Event Hubsban, az adatok egy tárolási fürt használatával tárolhatja, vagy átalakíthatja egy valós idejű elemzési szolgáltató segítségével. Ez az átfogó eseménygyűjtési és -feldolgozási képesség kulcsfontosságú alkotóeleme a modern alkalmazásarchitektúráknak, beleértve az eszközök internetes hálózatát (IoT). Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
+
+Ez az oktatóanyag ismerteti, hogyan írható olyan .NET Core-konzolalkalmazás, amely egy eseményközpontból fogad üzeneteket az [Event Processor Host](event-hubs-event-processor-host.md) használatával. Az [Event Processor Host](event-hubs-event-processor-host.md) egy .NET-osztály, amely leegyszerűsíti az események fogadását az Event Hubsból, mivel kezeli az állandó ellenőrzőpontokat és a párhuzamos fogadásokat az adott Event Hubs-eseményközpontokból. Az Event Processor Host használatával több fogadó között oszthatja el az eseményeket, még akkor is, ha ezek különböző csomópontokon üzemelnek. Ez a példa bemutatja, hogyan használható az Event Processor Host egyetlen fogadóhoz. [A horizontálisan felskálázott eseményfeldolgozási][Az Event Hubst használó horizontálisan felskálázott eseményfeldolgozási] minta bemutatja, hogyan használható az Event Processor Host több fogadóval.
 
 > [!NOTE]
-> Ez a minta elérhető a [GitHubon](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver).
-
-Ez az oktatóanyag ismerteti, hogyan írható olyan .NET Core-konzolalkalmazás, amely egy eseményközpontból fogad üzeneteket az **Event Processor Host** kódtár használatával. Futtathatja a [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) megoldást jelenlegi állapotában, kicserélve a sztringekat az eseményközpont és a Storage-fiók értékeire. Vagy létrehozhatja a saját megoldását is az oktatóanyag lépései alapján.
+> Letöltheti ezt a rövid útmutatót mintaként a [GitHubról](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver), és miután lecserélte az `EventHubConnectionString`, `EventHubName`, `StorageAccountName`, `StorageAccountKey` és `StorageContainerName` sztringeket az eseményközpontja értékeire, futtathatja. Vagy létrehozhatja saját megoldását is az oktatóanyag lépései alapján.
 
 ## <a name="prerequisites"></a>Előfeltételek
-
 * [Microsoft Visual Studio 2015 vagy 2017](http://www.visualstudio.com). Az oktatóanyag példái a Visual Studio 2017-et használják, de a Visual Studio 2015 is támogatott.
 * [.NET Core Visual Studio 2015- vagy 2017-eszközök](http://www.microsoft.com/net/core).
-* Azure-előfizetés.
-* Azure Event Hubs-névtér és -eseményközpont.
-* Egy Azure-tárfiók.
 
-## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs-névtér és eseményközpont létrehozása  
+## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs-névtér és eseményközpont létrehozása
+Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és az eseményközpont létrehozásához kövesse az [ebben a cikkben](event-hubs-create.md) olvasható eljárást, majd folytassa a jelen oktatóanyag további lépéseivel.
 
-Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és az eseményközpont létrehozásához kövesse az [ebben a cikkben](event-hubs-create.md) látható eljárást, majd folytassa az oktatóanyagot.  
-
-## <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása  
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).  
-2. A Portal bal oldali navigációs paneljén válassza az **Erőforrás létrehozása** elemet, majd a **Storage** kategóriát, végül a **Tárfiók – blob, fájl, tábla, üzenetsor** lehetőséget.  
-3. Töltse ki a mezőket a **Tárfiók létrehozása** ablakban, majd kattintson a **Felülvizsgálat + létrehozás** lehetőségre. 
-
-    ![Storage-fiók létrehozása][1]
-
-4. A **Felülvizsgálat + létrehozás** lapon tekintse át a mezők értékeit, majd kattintson a **Létrehozás** lehetőségre. 
-5. Miután megjelenik **Az üzembe helyezések sikerültek** üzenet, kattintson az új tárfiók nevére. 
-6. Az **Alapvető erőforrások** ablakban kattintson a **Blobok** elemre. 
-7. A lap tetején kattintson a **+ Tároló** elemre. Nevezze el a tárolót.  
-8. Kattintson a bal oldali ablakban található **Hozzáférési kulcsok** elemre, és másolja ki a tároló és a tárfiók nevét, valamint a **key1** értékét. 
-
-    Mentse ezeket az értékeket a Jegyzettömbbe vagy egy másik ideiglenes helyre.
+[!INCLUDE [event-hubs-create-storage](../../includes/event-hubs-create-storage.md)]
 
 ## <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
 
@@ -118,7 +100,7 @@ A következő lépéseket végrehajtva adja hozzá a .NET Standard kódtár [**M
     }
     ```
 
-## <a name="write-a-main-console-method-that-uses-the-simpleeventprocessor-class-to-receive-messages"></a>Az üzenetek fogadásához a SimpleEventProcessor osztályt használó fő konzolmetódus írása
+## <a name="update-the-main-method-to-use-simpleeventprocessor"></a>A fő metódus frissítése a SimpleEventProcessor használatára
 
 1. Adja hozzá az alábbi `using` utasításokat a Program.cs fájl elejéhez.
 
@@ -220,12 +202,11 @@ A következő lépéseket végrehajtva adja hozzá a .NET Standard kódtár [**M
 
 Gratulálunk! Sikeresen fogadott üzeneteket egy eseményközpontból az Event Processor Host használatával.
 
-## <a name="next-steps"></a>További lépések
-Az alábbi webhelyeken további információt talál az Event Hubsról:
+> [!NOTE]
+> Ez az oktatóprogram az [EventProcessorHost](event-hubs-event-processor-host.md) egyetlen példányát használja. Az átviteli sebesség növelése érdekében javasoljuk az [EventProcessorHost](event-hubs-event-processor-host.md) több példányának futtatását, amelyre a [horizontálisan felskálázott eseményfeldolgozási](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3) mintában láthat példát. Ilyen esetekben a példányok automatikusan koordinálnak egymással a fogadott események terhelésének kiegyenlítéséhez. 
 
-* [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md)
-* [Eseményközpont létrehozása](event-hubs-create.md)
-* [Event Hubs – gyakori kérdések](event-hubs-faq.md)
+## <a name="next-steps"></a>További lépések
+Ebben a rövid útmutatóban egy .NET Standard-alkalmazást hozott létre, amely üzeneteket fogadott egy eseményközpontból. Az események a .NET Standard használatával eseményközpontokba küldésével kapcsolatban lásd az [események a .NET Standard használatával eseményközpontba küldésére](event-hubs-dotnet-standard-getstarted-send.md) vonatkozó cikket.
 
 [1]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/event-hubs-python1.png
 [2]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/netcorercv.png

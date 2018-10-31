@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Szöveget konvertáló parancsfájl – Translator Text, Python'
+title: 'Rövid útmutató: Szövegátalakítási szkript, Python – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban szöveget alakít át egy nyelven egy szkriptből egy másikba a Translator Text API és Python segítségével.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
-ms.author: nolachar
-ms.openlocfilehash: 24fe0dc23703bdca4ce74ba1a527990a70ac2ffc
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 2621e3ae165efe9f592400e3ad2782b396cf2a60
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122111"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647447"
 ---
-# <a name="quickstart-transliterate-text-with-python"></a>Rövid útmutató: Szöveg átírása a Python használatával
+# <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-python"></a>Rövid útmutató: Szöveg átírása a Translator Text REST API (Python) használatával
 
 Ebben a rövid útmutatóban szöveget alakít át egy nyelven egy szkriptből egy másikba a Translator Text API segítségével.
 

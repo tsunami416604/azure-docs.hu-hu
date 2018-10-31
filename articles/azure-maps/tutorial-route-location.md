@@ -1,20 +1,20 @@
 ---
 title: Útvonalkeresés az Azure Mapsszel | Microsoft Docs
 description: Útvonal keresése egy hasznos helyhez az Azure Mapsszel
-author: dsk-2015
-ms.author: dkshir
-ms.date: 10/02/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 10/22/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3bf1aa6d1b9bd65c28ef99ddbac71fb75daf99e7
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: fda234b882cbf4a155881895bbf8401fe3ff3aca
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816718"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645076"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Útvonal keresése egy hasznos helyhez az Azure Mapsszel
 
@@ -80,11 +80,10 @@ Az alábbi lépések bemutatják, hogyan hozhat létre egy statikus HTML-oldalt,
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var MapsAccountKey = "<your account key>";
-    var map = new atlas.Map("map", {
-        "subscription-key": MapsAccountKey
-    });
+    atlas.setSubscriptionKey("<your account key>");
+    var map = new atlas.Map("map");
     ```
+
     Az Azure Térkép vezérlőelem API **atlas.Map** összetevőjével egy vizuális és interaktív webes térkép vezérelhető.
 
 4. Mentse a fájlt, és nyissa meg a böngészőben. Ekkor már rendelkezik egy egyszerű, fejleszthető térképpel.
@@ -126,7 +125,7 @@ A jelen oktatóanyag esetében a Microsoftot állítsa be kiindulási pontnak, c
         padding: 50
     });
 
-    map.addEventListener("load", function () { 
+    map.events.add("load", function () { 
         // Add pins to the map for the start and end point of the route
         map.addPins([startPin, destinationPin], {
             name: "route-pins",
@@ -135,7 +134,7 @@ A jelen oktatóanyag esetében a Microsoftot állítsa be kiindulási pontnak, c
         });
     });
     ```
-    A **map.setCameraBounds** a kiindulási és végpontok koordinátái alapján állítja be a térkép ablakát. A **map.addEventListener** biztosítja, hogy a térképhez hozzáadott összes térképfunkció betöltődjön a térkép teljes betöltése után. Az eseményfigyelő **map.addPins** API-ja vizuális összetevőként adja hozzá a pontokat a térkép vezérlőelemhez.
+    A **map.setCameraBounds** a kiindulási és végpontok koordinátái alapján állítja be a térkép ablakát. A **map.events.add** biztosítja, hogy a térképhez hozzáadott összes térképfunkció betöltődjön a térkép teljes betöltése után. Az eseményfigyelő **map.addPins** API-ja vizuális összetevőként adja hozzá a pontokat a térkép vezérlőelemhez.
 
 3. Mentse a **MapRoute.html** fájlt, és frissítse a böngészőt. Most Seattle látható a térkép középpontjában, a kezdőpontot a kerek kék gombostű jelzi, a végpontot pedig a kék gombostű.
 
@@ -207,7 +206,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Címkoordináták beállítása
 > * Hasznos helyre vezető útvonal lekérdezése a Route Service-ből
 
-Az oktatóanyag mintakódját itt érheti el:
+Az oktatóanyag kódmintáját itt érheti el:
 
 > [Útvonalkeresés az Azure Maps használatával](https://github.com/Azure-Samples/azure-maps-samples/blob/master/src/route.html)
 

@@ -6,21 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/08/2018
+ms.date: 10/19/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 4729e08399132243543c6f4e1cadd537d185e9e3
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: ba77fc4596d9bb245b3cea2538804b1816e9ad14
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166253"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466970"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge-preview"></a>Oktatóanyag: Adatok átalakítása az Azure Data Box Edge segítségével (előzetes verzió)
 
 Az oktatóanyag ismerteti, hogyan konfigurálhat számítási szerepköröket a Data Box Edge-ben. Miután konfigurált egy számítási szerepkört, a Data Box Edge képessé válik az adatok átalakítására, mielőtt beküldené őket az Azure-nak.
 
-A folyamat elvégzése körülbelül 30-45 percet vesz igénybe. 
+A folyamat elvégzése körülbelül 30-45 percet vesz igénybe.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -31,7 +31,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Adatok átalakításának ellenőrzése és adatok átvitele
 
 > [!IMPORTANT]
-> A Data Box Edge előzetes verzióban érhető el. A megoldás megrendelése és üzembe helyezése előtt tekintse át az [Azure előzetes verziókra vonatkozó szolgáltatási feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> A Data Box Edge előzetes verzióban érhető el. A megoldás megrendelése és üzembe helyezése előtt tekintse át az [Azure előzetes verziókra vonatkozó szolgáltatási feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
  
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -48,7 +48,8 @@ Részletes útmutatásért lásd az [új IoT Hub létrehozását](https://docs.m
 
 ![IoT Hub-erőforrás létrehozása](./media/data-box-edge-deploy-configure-compute/create-iothub-resource-1.png)
 
-Ha az Edge számítási szerepkör még nincs beállítva, vegye figyelembe az alábbiakat: 
+Ha az Edge számítási szerepkör még nincs beállítva, vegye figyelembe az alábbiakat:
+
 - Az IoT Hub-erőforrás nem rendelkezik IoT-eszközökkel vagy IoT Edge-eszközökkel.
 - Nem hozhat létre helyi Edge-megosztásokat. Amikor megosztást ad hozzá, nincs engedélyezve az a lehetőség, amely engedélyezné a helyi megosztások létrehozását az Edge-számításokhoz.
 
@@ -91,12 +92,12 @@ Az alábbi lépésekkel állíthat be számítási szerepkört az eszközön.
 
     ![Számítási szerepkör beállítása](./media/data-box-edge-deploy-configure-compute/setup-compute-8.png) 
 
-Az Edge-eszköz egyelőre nem tartalmaz egyéni modulokat, azokat most tudja hozzáadni.
+Az Edge-eszköz egyelőre nem tartalmaz egyéni modulokat, azokat most tudja hozzáadni. Az egyéni modulok létrehozásának megismeréséért lépjen [a C#-modulok a Data Box Edge-hez való fejlesztését ismertető szakaszra](data-box-edge-create-iot-edge-module.md).
 
 
 ## <a name="add-a-custom-module"></a>Egyéni modul hozzáadása
 
-Ebben a szakaszban egy egyéni modult fog hozzáadni az IoT Edge-eszközhöz. 
+Ebben a szakaszban egy egyéni modult fog hozzáadni [a C#-modulok a Data Box Edge-hez való fejlesztését ismertető szakaszban](data-box-edge-create-iot-edge-module.md) létrehozott IoT Edge-eszközhöz. 
 
 Az eljárás egy olyan példát használ, amelyben az egyéni modul az Edge-eszköz helyi megosztásából fájlokat helyez át az eszköz felhőalapú megosztásába. A felhőalapú megosztás ezután a vele társított Azure-tárfiókba küldi tovább a fájlokat. 
 
@@ -133,11 +134,26 @@ Az eljárás egy olyan példát használ, amelyben az egyéni modul az Edge-eszk
 
         ![Egyéni modul hozzáadása](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-6.png) 
  
-    2. Adja meg az egyéni IoT Edge-modul beállításait. Adja meg a modul **nevét** és **képi URI-ját**. 
+    2. Adja meg az egyéni IoT Edge-modul beállításait. Adja meg a modul **nevét** és a hozzá tartozó tárolórendszerkép **képi URI-ját**. 
     
         ![Egyéni modul hozzáadása](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-7.png) 
 
-    3. A **Tároló-létrehozási beállításoknál** adja meg az Edge-modulok korábbi lépésekben kimásolt, felhőalapú és helyi megosztásokhoz tartozó helyi csatlakozási pontjait (fontos, hogy ezeket az elérési utakat használja újak létrehozása helyett). Ezek a megosztások a hozzájuk tartozó tároló csatlakozási pontjaira vannak leképezve. A modul minden környezeti változóját is meg kell adni.
+    3. A **Tároló-létrehozási beállításoknál** adja meg az Edge-modulok korábbi lépésekben kimásolt, felhőalapú és helyi megosztásokhoz tartozó helyi csatlakozási pontjait (fontos, hogy ezeket az elérési utakat használja újak létrehozása helyett). A helyi csatlakozási pontok a megfelelő **InputFolderPath** és **OutputFolderPath** útvonalakra vannak leképezve, amelyeket [a modul egyéni kóddal való frissítésekor](data-box-edge-create-iot-edge-module.md#update-the-module-with-custom-code) határozott meg a modulban. 
+    
+        Az alább látható mintát bemásolhatja a **Tároló-létrehozási beállításokhoz**: 
+        
+        ```
+        {
+         "HostConfig": {
+          "Binds": [
+           "/home/hcsshares/mysmblocalshare:/home/LocalShare",
+           "/home/hcsshares/mysmbshare1:/home/CloudShare"
+           ]
+         }
+        }
+        ```
+
+        A modul minden környezeti változóját is meg kell adni.
 
         ![Egyéni modul hozzáadása](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-8.png) 
  
@@ -146,6 +162,8 @@ Az eljárás egy olyan példát használ, amelyben az egyéni modul az Edge-eszk
         ![Egyéni modul hozzáadása](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-9.png) 
  
 6.  Az **Útvonalak megadása** területen állítsa be a modulok közötti útvonalakat. Jelen példában adja meg annak a helyi megosztásnak a nevét, ami a felhőalapú megosztásba küldi majd le az adatokat. Kattintson a **Tovább** gombra.
+
+    Az útvonalat lecserélheti a következő útvonalsztringre:       "route": "FROM /* WHERE topic = 'mysmblocalshare' INTO BrokeredEndpoint(\"/modules/filemovemodule/inputs/input1\")"
 
     ![Egyéni modul hozzáadása](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-10.png) 
  

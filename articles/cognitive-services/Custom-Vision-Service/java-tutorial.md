@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Képosztályozó projekt építése – Custom Vision Service, Java'
+title: 'Oktatóanyag: Képosztályozási projekt létrehozása a Javához készült Custom Vision SDK-val'
 titlesuffix: Azure Cognitive Services
 description: Hozzon létre projektet, adjon hozzá címkéket, töltsön fel képeket, tanítsa be a projektet és adjon előrejelzést az alapértelmezett végpont használatával.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: 9a7f50e0eb33016d6a2d8f28be047b327135c51f
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: e302fc580d9c83d269f0deedd051a3ea23bd274e
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367355"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957213"
 ---
-# <a name="tutorial-build-an-image-classification-project-with-java"></a>Oktatóanyag: Képosztályozó projekt építése Java nyelven
+# <a name="tutorial-create-an-image-classification-project-with-the-custom-vision-sdk-for-java"></a>Oktatóanyag: Képosztályozási projekt létrehozása a Javához készült Custom Vision SDK-val
 
 Megismerheti, hogyan lehet képosztályozó projektet készíteni a Custom Vision Service használatával Java nyelven. Miután elkészült, adhat hozzá címkéket, tölthet fel képeket, betaníthatja a projektet, lekérheti a projekt alapértelmezett előrejelzési végpont URL-címét és ezt felhasználhatja a kép programozott tesztelésére. Ez a nyílt forráskódú példa sablonként használható saját, Custom Vision API használatával készülő alkalmazásaihoz.
 

@@ -1,38 +1,37 @@
 ---
-title: Azure-fájlmegosztások kezelése az Azure CLI használatával
-description: Itt megismerheti, hogyan kezelheti az Azure Files szolgáltatást az Azure CLI használatával.
+title: Rövid útmutató az Azure-fájlmegosztások felügyeletéhez az Azure CLI-vel
+description: Ebből a rövid útmutatóból megtudhatja, hogyan felügyelheti az Azure Files szolgáltatást az Azure CLI használatával.
 services: storage
 author: wmgries
 ms.service: storage
-ms.topic: get-started-article
-ms.date: 03/26/2018
+ms.topic: quickstart
+ms.date: 10/18/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: de48789c42ccd2d7e090af6f430f323b16416e9c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: aab248ac7c9adf7d996406ec35e0317594ce0b68
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389785"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945018"
 ---
-# <a name="manage-azure-file-shares-using-azure-cli"></a>Azure-fájlmegosztások kezelése az Azure CLI használatával
-Az [Azure Files](storage-files-introduction.md) a Microsoft egyszerűen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások Windows, Linux és macOS rendszeren csatlakoztathatók. Ez a cikk az Azure-fájlmegosztások az Azure CLI segítségével való használatának alapvető lépéseit mutatja be. Az alábbiak végrehajtásának módját ismerheti meg: 
-
-> [!div class="checklist"]
-> * Erőforráscsoport és tárfiók létrehozása
-> * Azure-fájlmegosztás létrehozása 
-> * Könyvtár létrehozása
-> * Fájl feltöltése 
-> * Fájl letöltése
-> * Megosztási pillanatkép létrehozása és használata
+# <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Rövid útmutató: Azure-fájlmegosztások létrehozása és felügyelete az Azure CLI-vel
+Ez az útmutató az [Azure-fájlmegosztások](storage-files-introduction.md) Azure CLI-vel történő használatának alapvető lépéseit mutatja be. Az Azure-fájlmegosztások nem különböznek más fájlmegosztásoktól, a tárolásuk azonban a felhőben történik, és az Azure platform nyújt számukra támogatást. Az Azure-fájlmegosztások támogatják az iparági szabvány SMB protokollt, és lehetővé teszik a több gép, alkalmazás és példány közötti fájlmegosztást. 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha az Azure CLI helyi telepítését és használatát választja, akkor a jelen cikkben szereplő lépésekhez az Azure CLI 2.0.4-es vagy újabb verzióját kell futtatnia. Az Azure CLI-verzió megkereséséhez futtassa az **az --version** parancsot. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
+Ha az Azure CLI helyi telepítését és használatát választja, akkor a jelen cikkben szereplő lépésekhez az Azure CLI 2.0.4-es vagy újabb verzióját kell futtatnia. Az Azure CLI-verzió megkereséséhez futtassa az **az --version** parancsot. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). 
 
 Az Azure CLI-parancsok alapértelmezés szerint JavaScript Object Notation- (JSON-) választ adnak vissza. A JSON az üzenetek REST API-kba való küldésének és onnan történő fogadásának szabványos módja. A JSON-válaszok használatának megkönnyítése érdekében a jelen cikk néhány példája a *query* paramétert használja az Azure CLI-parancsokon. Ez a paraméter a [JMESPath lekérdezési nyelvet](http://jmespath.org/) használja a JSON elemzéséhez. Az Azure CLI-parancsok eredményeinek JMESPath lekérdezési nyelvvel való használatáról a [JMESPath oktatóanyagában](http://jmespath.org/tutorial.html) talál további információt.
+
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+Ha az Azure CLI-t helyileg használja, nyisson meg egy parancssort, és ha még nem tette meg, jelentkezzen be az Azure-ba.
+
+```bash 
+az login
+```
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Ha még nem rendelkezik Azure-erőforráscsoporttal, létrehozhat egyet az [az group create](/cli/azure/group#create) paranccsal. 
@@ -77,15 +76,26 @@ az storage share create \
     --name "myshare" 
 ```
 
-> [!IMPORTANT]  
-> A fájlmegosztások neve csak kisbetűket, számokat és kötőjeleket tartalmazhat (de nem kezdődhet kötőjellel). A fájlmegosztások és fájlok elnevezésére vonatkozó információkért tekintse meg a [megosztások, könyvtárak, fájlok és metaadatok elnevezésével és a rájuk való hivatkozással](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata) foglalkozó cikket.
+A fájlmegosztások neve csak kisbetűket, számokat és kötőjeleket tartalmazhat (de nem kezdődhet kötőjellel). A fájlmegosztások és fájlok elnevezésére vonatkozó információkért tekintse meg a [megosztások, könyvtárak, fájlok és metaadatok elnevezésével és a rájuk való hivatkozással](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata) foglalkozó cikket.
 
-## <a name="work-with-the-contents-of-an-azure-file-share"></a>Az Azure-fájlmegosztások tartalmának használata
-Most, hogy létrehozott egy Azure-fájlmegosztást, csatlakoztathatja az SMB használatával [Windows](storage-how-to-use-files-windows.md), [Linux](storage-how-to-use-files-linux.md) vagy [macOS](storage-how-to-use-files-mac.md) rendszeren. Másik megoldásként az Azure CLI-vel is használhatja az Azure-fájlmegosztást. Az Azure CLI használata azért előnyösebb a fájlmegosztás SMB-vel való csatlakoztatásánál, mert az Azure CLI-vel kezdeményezett kérések mindegyike a Fájl REST API-t használja. A Fájl REST API segítségével létrehozhat, módosíthat és törölhet fájlokat és könyvtárakat a fájlmegosztásban ezekről a helyekről:
+## <a name="use-your-azure-file-share"></a>Az Azure-fájlmegosztás használata
+Az Azure Files két módszert biztosít a fájloknak és mappáknak az Azure-fájlmegosztásban való használatához: az iparági szabvány [Server Message Block (SMB) protokollt](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) és a [Fájl REST protokollt](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api). 
 
-- A Bash Azure Cloud Shell (amely nem tud fájlmegosztásokat csatlakoztatni az SMB-n keresztül)
-- Az SMB-megosztások csatlakoztatására nem képes ügyfelek, például olyan helyszíni ügyfelek, amelyekben nincs engedélyezve a 445-ös port
-- Kiszolgáló nélküli forgatókönyvek, például az [Azure Functions](../../azure-functions/functions-overview.md)ben
+A fájlmegosztás SMB-vel való csatlakoztatásához tekintse meg a használt operációs rendszernek megfelelő dokumentumot az alábbiak közül:
+- [Linux](storage-how-to-use-files-linux.md)
+- [macOS](storage-how-to-use-files-mac.md)
+- [Windows](storage-how-to-use-files-windows.md)
+
+### <a name="using-an-azure-file-share-with-the-file-rest-protocol"></a>Azure-fájlmegosztások használata a Fájl REST protokollal 
+A Fájl REST protokollal közvetlenül is dolgozhat (vagyis saját maga készítheti el a REST HTTP-hívásokat), de a Fájl REST protokoll használatának legáltalánosabb módja az Azure CLI, az [AzureRM PowerShell-modul](storage-how-to-use-files-powershell.md) vagy egy Azure Storage SDK használata, amelyek megfelelő burkolóval látják el a Fájl REST protokollt a választott parancs-/programozási nyelven.  
+
+Arra számítunk, hogy a legtöbb Azure Files-felhasználó az SMB protokollon keresztül kíván majd dolgozni az Azure-fájlmegosztásával, mivel ez lehetővé teszi számukra a mások által is vélhetően használt meglévő alkalmazások és eszközök használatát. A Fájl REST API használata azonban számos előnnyel jár az SMB-vel szemben, például a következő esetekben:
+
+- A fájlmegosztást az Azure Bash Cloud Shellben böngészi (amely nem tud fájlmegosztásokat csatlakoztatni az SMB-n keresztül).
+- Olyan ügyfélről kell szkriptet vagy alkalmazást futtatnia, amely nem tud SMB-megosztásokat csatlakoztatni, például a helyszíni ügyfelekről, amelyekhez nincs feloldva a 445-ös port.
+- Ki szeretné használni a kiszolgáló nélküli erőforrások, például az [Azure Functions](../../azure-functions/functions-overview.md) előnyeit. 
+
+Az alábbi példák azt mutatják be, hogyan használhatja az AzureRM PowerShell-modult az Azure-fájlmegosztás Fájl REST protokollal való módosítására. 
 
 ### <a name="create-a-directory"></a>Könyvtár létrehozása
 Ha egy új, *myDirectory* nevű könyvtárat szeretne létrehozni az Azure-fájlmegosztás gyökérmappájában, használja az [`az storage directory create`](/cli/azure/storage/directory#az_storage_directory_create) parancsot:
@@ -176,84 +186,6 @@ az storage file list \
 
 Bár az `az storage file copy start` parancs kényelmes megoldás a fájlok Azure-fájlmegosztások és Azure Blob Storage-tárolók közötti áthelyezéséhez, a nagyobb léptékű áthelyezésekhez az AzCopy használata ajánlott. (A nagyobb lépték alatt itt az áthelyezett fájlok nagyobb méretét és számát értjük.) További információ: [AzCopy segédprogram Linux rendszeren](../common/storage-use-azcopy-linux.md) és [AzCopy segédprogram Windows rendszeren](../common/storage-use-azcopy.md). Az AzCopyt helyileg kell telepíteni. Az AzCopy nem érhető el a Cloud Shellben. 
 
-## <a name="create-and-modify-share-snapshots"></a>Megosztási pillanatképek létrehozása és módosítása
-Az Azure-fájlmegosztással végezhető egyik további hasznos feladat a megosztási pillanatképek létrehozása. A pillanatképek megőrzik az Azure-fájlmegosztások adott időpontban látható másolatát. A megosztási pillanatképek hasonlók néhány, esetleg már ismert operációsrendszer-technológiához:
-- [Logikaikötet-kezelő (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) pillanatképek Linux rendszerekhez
-- [Apple fájlrendszer (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) pillanatképek macOS rendszerhez
-- [Kötet árnyékmásolata szolgáltatás (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) Windows-fájlrendszerekhez (például NTFS és ReFS)
-
-A megosztási pillanatképek az [`az storage share snapshot`](/cli/azure/storage/share#az_storage_share_snapshot) paranccsal hozhatók létre:
-
-```azurecli-interactive
-SNAPSHOT=$(az storage share snapshot \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --name "myshare" \
-    --query "snapshot" | tr -d '"')
-```
-
-### <a name="browse-share-snapshot-contents"></a>Böngészés a megosztási pillanatképek tartalmában
-A megosztási pillanatképek tartalmában való böngészéshez illessze a rögzített megosztási pillanatkép időbélyegét az `az storage file list` parancs `$SNAPSHOT` változójába:
-
-```azurecli-interactive
-az storage file list \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --share-name "myshare" \
-    --snapshot $SNAPSHOT \
-    --output table
-```
-
-### <a name="list-share-snapshots"></a>Megosztási pillanatképek felsorolása
-A következő paranccsal tekintheti meg a megosztásról készített pillanatképek listáját:
-
-```azurecli-interactive
-az storage share list \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --include-snapshot \
-    --query "[? name=='myshare' && snapshot!=null]" | tr -d '"'
-```
-
-### <a name="restore-from-a-share-snapshot"></a>Visszaállítás megosztási pillanatképből
-A fájlokat a korábban már használt `az storage file copy start` paranccsal állíthatja vissza. Először törölje a feltöltött SampleUpload.txt fájlt, hogy visszaállíthassa a pillanatképből:
-
-```azurecli-interactive
-# Delete SampleUpload.txt
-az storage file delete \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --share-name "myshare" \
-    --path "myDirectory/SampleUpload.txt"
-
-# Build the source URI for a snapshot restore
-URI=$(az storage account show \
-    --resource-group "myResourceGroup" \
-    --name $STORAGEACCT \
-    --query "primaryEndpoints.file" | tr -d '"')
-
-URI=$URI"myshare/myDirectory/SampleUpload.txt?sharesnapshot="$SNAPSHOT
-
-# Restore SampleUpload.txt from the share snapshot
-az storage file copy start \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --source-uri $URI \
-    --destination-share "myshare" \
-    --destination-path "myDirectory/SampleUpload.txt"
-```
-
-### <a name="delete-a-share-snapshot"></a>Megosztási pillanatkép törlése
-A megosztási pillanatképek az [`az storage share delete`](/cli/azure/storage/share#az_storage_share_delete) paranccsal törölhetők. Használja a `--snapshot` paraméterre mutató `$SNAPSHOT` hivatkozást tartalmazó változót:
-
-```azurecli-interactive
-az storage share delete \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --name "myshare" \
-    --snapshot $SNAPSHOT
-```
-
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Amikor végzett, az [`az group delete`](/cli/azure/group#delete) paranccsal távolítsa el az erőforráscsoportot és az összes kapcsolódó erőforrást: 
 
@@ -288,7 +220,6 @@ Alternatív megoldásként egyenként is eltávolíthatja az erőforrásokat.
     ```
 
 ## <a name="next-steps"></a>További lépések
-- [Fájlmegosztások felügyelete az Azure Portal használatával](storage-how-to-use-files-portal.md)
-- [Fájlmegosztások felügyelete az Azure PowerShell használatával](storage-how-to-use-files-powershell.md)
-- [Fájlmegosztások felügyelete a Storage Explorer használatával](storage-how-to-use-files-storage-explorer.md)
-- [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
+
+> [!div class="nextstepaction"]
+> [Mi az Azure Files?](storage-files-introduction.md)

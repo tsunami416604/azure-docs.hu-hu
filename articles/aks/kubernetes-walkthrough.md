@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: cc61ed7d83b7ff4858b97a0b05f149cf4e7c9952
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: a24d0080dcb714f409506bf6abe514e3f5022ccd
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394932"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457890"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Rövid útmutató: Azure Kubernetes Service- (AKS-) fürt üzembe helyezése
 
@@ -23,6 +23,8 @@ Ebben a rövid útmutatóban egy AKS-fürtöt helyezünk üzembe az Azure CLI-ve
 ![Az Azure Vote keresését ábrázoló kép](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
 Ez a rövid útmutató feltételezi, hogy ismeri a Kubernetes alapvető fogalmait. A Kubernetesszel kapcsolatos részletes információkért lásd a [Kubernetes dokumentációját][kubernetes-documentation].
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -95,7 +97,10 @@ k8s-myAKSCluster-36346190-0   Ready     agent     2m        v1.7.7
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-A Kubernetes-jegyzékfájl meghatározza a fürt célállapotát, például azt, hogy milyen tárolórendszerképeknek kell futniuk. Ebben a példában egy jegyzékfájlt használunk az Azure Vote alkalmazás futtatásához szükséges összes objektum létrehozásához. Ez a jegyzékfájl tartalmaz két [Kubernetes-telepítést][kubernetes-deployment], egyet az Azure Vote Python-alkalmazásoknak, egyet pedig a Redis-példánynak. Emellett létrejön két [Kubernetes-szolgáltatás][kubernetes-service]: egy belső szolgáltatás a Redis-példánynak, és egy külső szolgáltatás az Azure Vote-alkalmazás internetről való eléréséhez.
+A Kubernetes-jegyzékfájl meghatározza a fürt célállapotát, például azt, hogy milyen tárolórendszerképeknek kell futniuk. Ebben a rövid útmutatóban egy jegyzékfájlt használunk az Azure Vote-alkalmazás futtatásához szükséges összes objektum létrehozásához. Ez a jegyzékfájl tartalmaz két [Kubernetes-telepítést][kubernetes-deployment], egyet az Azure Vote Python-alkalmazásoknak, egyet pedig a Redis-példánynak. Emellett létrejön két [Kubernetes-szolgáltatás][kubernetes-service]: egy belső szolgáltatás a Redis-példánynak, és egy külső szolgáltatás az Azure Vote-alkalmazás internetről való eléréséhez.
+
+> [!TIP]
+> A rövid útmutatóban manuálisan hozza létre és helyezi üzembe az alkalmazásjegyzék-fájlokat az AKS-fürtön. A valósághoz közelebbi felhasználási forgatókönyvekben az [Azure Dev Spaces][azure-dev-spaces] használatával közvetlenül az AKS-fürtön végezheti a kód gyors iterálását és hibaelhárítását. A Dev Spaces több operációsrendszer-platformon és fejlesztői környezetben használható, és támogatja a csapaton belüli együttműködést.
 
 Hozzon létre egy `azure-vote.yaml` nevű fájlt, és másolja bele a következő YAML-kódot. Ha az Azure Cloud Shellben dolgozik, ez a fájl a vi vagy a Nano segítségével hozható létre, ugyanúgy, mint egy virtuális vagy fizikai rendszeren.
 
@@ -277,6 +282,7 @@ Az AKS-sel kapcsolatos további információkért és a kódtól az üzembe hely
 [kubernetes-documentation]: https://kubernetes.io/docs/home/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubernetes-service]: https://kubernetes.io/docs/concepts/services-networking/service/
+[azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
 
 <!-- LINKS - internal -->
 [aks-monitor]: https://aka.ms/coingfonboarding

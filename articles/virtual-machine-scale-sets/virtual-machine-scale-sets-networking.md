@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: negat
-ms.openlocfilehash: 43aa74e7250f4825702e249032db1566346ab558
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 6ed3488218a5b813478fa18f7bb05dcfb07a319c
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831211"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955151"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure-beli virtuálisgép-méretezési csoportok hálózatkezelése
 
@@ -50,10 +50,26 @@ Az Azure Gyorsított hálózatkezelés javítja a hálózati teljesítményt az�
 ## <a name="create-a-scale-set-that-references-an-existing-azure-load-balancer"></a>Már létező Azure Load Balancerre hivatkozó méretezési csoport létrehozása
 Amikor az Azure Portal használatával hoz létre méretezési csoportot, a rendszer a legtöbb konfigurációs beállítás számára létrehoz egy új terheléselosztót. Ha olyan méretezési csoportot hoz létre, amelynek egy már létező terheléselosztóra kell hivatkoznia, azt a CLI-ben teheti meg. Az alábbi példa létrehoz egy terheléselosztót, majd egy arra hivatkozó méretezési csoportot:
 ```bash
-az network lb create -g lbtest -n mylb --vnet-name myvnet --subnet mysubnet --public-ip-address-allocation Static --backend-pool-name mybackendpool
+az network lb create \
+    -g lbtest \
+    -n mylb \
+    --vnet-name myvnet \
+    --subnet mysubnet \
+    --public-ip-address-allocation Static \
+    --backend-pool-name mybackendpool
 
-az vmss create -g lbtest -n myvmss --image Canonical:UbuntuServer:16.04-LTS:latest --admin-username negat --ssh-key-value /home/myuser/.ssh/id_rsa.pub --upgrade-policy-mode Automatic --instance-count 3 --vnet-name myvnet --subnet mysubnet --lb mylb --backend-pool-name mybackendpool
-
+az vmss create \
+    -g lbtest \
+    -n myvmss \
+    --image Canonical:UbuntuServer:16.04-LTS:latest \
+    --admin-username negat \
+    --ssh-key-value /home/myuser/.ssh/id_rsa.pub \
+    --upgrade-policy-mode Automatic \
+    --instance-count 3 \
+    --vnet-name myvnet \
+    --subnet mysubnet \
+    --lb mylb \
+    --backend-pool-name mybackendpool
 ```
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Application Gateway-re hivatkozó méretezési csoport létrehozása
@@ -91,7 +107,7 @@ Ha egyéni DNS-kiszolgálókat szeretne konfigurálni egy Azure-sablonban, adja 
 ```
 
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>Konfigurálható virtuálisgép-tartománynevekkel rendelkező méretezési csoport létrehozása
-Ha olyan méretezési csoportot szeretne létrehozni a CLI használatával, amelyben a virtuális gépek egyéni DNS-névvel rendelkeznek, adja hozzá a **--vm-domain-name** argumentumot a **vmss create** parancshoz, majd ezek után adja meg a tartománynév sztringjét.
+Ha olyan méretezési csoportot szeretne létrehozni a CLI használatával, amelyben a virtuális gépek egyéni DNS-névvel rendelkeznek, adja hozzá a **--vm-domain-name** argumentumot a **virtual machine scale set create** parancshoz, majd ezek után adja meg a tartománynév sztringjét.
 
 Ha egyéni tartománynevet szeretne konfigurálni egy Azure-sablonban, adja hozzá a **dnsSettings** tulajdonságot a méretezési csoport **networkInterfaceConfigurations** szakaszához. Például:
 
@@ -155,23 +171,35 @@ A méretezési csoportok virtuális gépeihez hozzárendelt nyilvános IP-címek
 
 Ha a PowerShell-lel szeretné lekérdezni a méretezési csoportok nyilvános IP-címeinek listáját, használja a _Get-AzureRmPublicIpAddress_ parancsot. Például:
 ```PowerShell
-PS C:\> Get-AzureRmPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
+Get-AzureRmPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
 ```
 
 A nyilvános IP-címeket úgy is lekérdezheti, ha közvetlenül a nyilvános IP-cím konfigurációjának erőforrás-azonosítójára hivatkozik. Például:
 ```PowerShell
-PS C:\> Get-AzureRmPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
+Get-AzureRmPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 ```
 
-A méretezési csoportok virtuális gépeihez hozzárendelt nyilvános IP-címeket az [Azure Erőforrás-kezelő](https://resources.azure.com) használatával, illetve az Azure REST API **2017-03-30-as** vagy újabb verziójával kérdezheti le.
+A méretezési csoportok virtuális gépeihez hozzárendelt nyilvános IP-címeket az [Azure Resource Explorer](https://resources.azure.com), illetve az Azure REST API **2017-03-30-as** vagy újabb verzióját lekérdezve is megjelenítheti.
 
-Ha az Erőforrás-kezelő használatával szeretné megtekinteni a méretezési csoportokhoz tartozó nyilvános IP-címeket, tekintse meg a méretezési csoport alatti **publicipaddresses** szakaszt. Például: https://resources.azure.com/subscriptions/_saját_előfizetés_azonosító_/resourceGroups/_saját_ecs_/providers/Microsoft.Compute/virtuálisGépMéretezésiCsoportok_saját_vmss_/nyilvánosipcímek
+Az [Azure Resource Explorer](https://resources.azure.com) lekérdezése:
 
-```
+1. Nyissa meg az [Azure Resource Explorert](https://resources.azure.com) egy böngészőben.
+1. Bontsa ki a bal oldalon található *előfizetéseket* a mellettük lévő *+* elemre kattintva. Ha az *előfizetések* alatt csak egy elem található, lehet, hogy az előfizetés már ki lett bontva.
+1. Bontsa ki az előfizetést.
+1. Bontsa ki az erőforráscsoportot.
+1. Bontsa ki a *Szolgáltatók* csomópontot.
+1. Bontsa ki a *Microsoft.Compute* csomópontot.
+1. Bontsa ki a *virtualMachineScaleSets* csomópontot.
+1. Bontsa ki a méretezési csoportot.
+1. Kattintson a *publicipaddresses* elemre.
+
+Az Azure REST API lekérdezése:
+
+```bash
 GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG name}/providers/Microsoft.Compute/virtualMachineScaleSets/{scale set name}/publicipaddresses?api-version=2017-03-30
 ```
 
-Példa a kimenetre:
+Az [Azure Resource Explorer](https://resources.azure.com) és az Azure REST API példakimenete:
 ```json
 {
   "value": [
@@ -289,12 +317,14 @@ A következő példa egy olyan méretezési csoport hálózati profilja, amely t
 ```
 
 ## <a name="nsg--asgs-per-scale-set"></a>Hálózati biztonsági csoport és alkalmazásbiztonsági csoportok méretezési csoportonként
+A [hálózati biztonsági csoportokkal](../virtual-network/security-overview.md) az Azure virtuális hálózatokban lévő Azure-erőforrások bejövő és kimenő forgalmát szűrheti biztonsági szabályok használatával. Az [alkalmazásbiztonsági csoportokkal](../virtual-network/security-overview.md#application-security-groups) az Azure-erőforrások hálózati biztonságát kezelheti, és az alkalmazás struktúrájának kiterjesztéseként csoportosíthatja őket.
+
 A hálózati biztonsági csoportok közvetlenül alkalmazhatók a méretezési csoportokra, ha hozzáadja a hivatkozást a méretezési csoport virtuálisgép-tulajdonságainak hálózatiadapter-konfiguráció szakaszához.
 
 Az alkalmazásbiztonsági csoportok közvetlenül is megadhatók a méretezési csoportoknál, ha hozzáad egy hivatkozást a méretezési csoport virtuálisgép-tulajdonságain belül a hálózati adapter IP-konfigurációját tartalmazó szakaszhoz.
 
 Például: 
-```
+```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
         {
@@ -334,6 +364,42 @@ Például:
     ]
 }
 ```
+
+Annak ellenőrzéséhez, hogy a hálózati biztonsági csoport társítva van-e a méretezési csoporttal, használja az `az vmss show` parancsot. Az alábbi példában a `--query` attribútummal történik az eredmények szűrése, és csak a kimenet releváns része látható.
+
+```bash
+az vmss show \
+    -g myResourceGroup \
+    -n myScaleSet \
+    --query virtualMachineProfile.networkProfile.networkInterfaceConfigurations[].networkSecurityGroup
+
+[
+  {
+    "id": "/subscriptions/.../resourceGroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/nsgName",
+    "resourceGroup": "myResourceGroup"
+  }
+]
+```
+
+Annak ellenőrzéséhez, hogy az alkalmazásbiztonsági csoport társítva van-e a méretezési csoporttal, használja az `az vmss show` parancsot. Az alábbi példában a `--query` attribútummal történik az eredmények szűrése, és csak a kimenet releváns része látható.
+
+```bash
+az vmss show \
+    -g myResourceGroup \
+    -n myScaleSet \
+    --query virtualMachineProfile.networkProfile.networkInterfaceConfigurations[].ipConfigurations[].applicationSecurityGroups
+
+[
+  [
+    {
+      "id": "/subscriptions/.../resourceGroups/myResourceGroup/providers/Microsoft.Network/applicationSecurityGroups/asgName",
+      "resourceGroup": "myResourceGroup"
+    }
+  ]
+]
+```
+
+
 
 ## <a name="next-steps"></a>További lépések
 Az Azure-beli virtuális hálózatokról az [Azure-beli virtuális hálózatok áttekintését](../virtual-network/virtual-networks-overview.md) ismertető dokumentumban talál további információt.

@@ -9,12 +9,12 @@ ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 0c4c86017655facd6ab29f8e9e6c8f496ef79c72
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 61bcb01f549b6a47f3c4899975d4b1b23fbd9e3b
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166219"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957020"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Oktatóanyag: C#-alapú IoT Edge-modul fejlesztése és üzembe helyezése szimulált eszközön
 
@@ -266,7 +266,7 @@ Az előző szakaszban létrehozott egy IoT Edge-megoldást, és hozzáadott egy 
 
 3. A deployment.template.json fájl **registryCredentials** szakasza tartalmazza a Docker regisztrációs adatbázis hitelesítő adatait. A tényleges felhasználónév–jelszó párokat az .env fájl tárolja, amelyet a Git figyelmen kívül hagy.  
 
-4. Adja hozzá a **CSharpModule** modul ikerdokumentumát az üzembehelyezési jegyzékhez. Szúrja be a következő JSON-tartalmat a **moduleContent** szakasz alján, az **$edgeHub** modul ikerdokumentuma után: 
+4. Adja hozzá a **CSharpModule** modul ikerdokumentumát az üzembehelyezési jegyzékhez. Szúrja be a következő JSON-tartalmat a **modulesContent** szakasz alján, az **$edgeHub** modul ikerdokumentuma után: 
     ```json
         "CSharpModule": {
             "properties.desired":{

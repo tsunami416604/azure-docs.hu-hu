@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Támogatott nyelvek lekérése – Translator Text, Go'
+title: 'Rövid útmutató: Támogatott nyelvek lekérése, Go – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban lekéri a fordításhoz, átíráshoz és szótárban való kereséshez támogatott nyelvek, valamint példák listáját a Translator Text API és Go segítségével.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
-ms.author: nolachar
-ms.openlocfilehash: 6f8725c834e4417321722f7d49e09765e19a3b6d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 2a93ee7b4d2c8426ad7a7f30a986d07e14192cc4
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127771"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648292"
 ---
-# <a name="quickstart-get-supported-languages-with-go"></a>Rövid útmutató: Támogatott nyelvek lekérése a Go használatával
+# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-go"></a>Rövid útmutató: Támogatott nyelvek lekérése a Translator Text REST API (Go) használatával
 
 Ebben a rövid útmutatóban lekéri a fordításhoz, átíráshoz és szótárban való kereséshez támogatott nyelvek, valamint példák listáját a Translator Text API segítségével.
 

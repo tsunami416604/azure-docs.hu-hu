@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 9/24/2018
+ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: 1940fb210481dc75fe48d110776185e90cb3e42f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 875efddfff9b50ab05665cb8c158467dc46c8d0d
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991045"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987432"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Oktatóanyag: Az Azure Firewall naplóinak és metrikáinak monitorozása
 
@@ -51,11 +51,11 @@ A diagnosztikai naplózás bekapcsolása után eltarthat néhány percig, amíg 
 5. Ebben a példában a Log Analytics tárolja a naplókat, ezért névként adja meg a következőt: **Firewall log analytics**.
 6. A munkaterület konfigurálásához kattintson a **Küldés a Log Analyticsnek** elemre. Eseményközpontot és tárfiókot is használhat a diagnosztikai naplók mentésére.
 7. A **Log Analytics**területen kattintson a**Konfigurálás** elemre.
-8. Az OMS-munkaterületek oldalon kattintson az **Új munkaterület létrehozása** elemre.
-9. A **Log Analytics-munkaterület** lapon az új **OMS-munkaterület** nevének írja be a **firewall-oms** értéket.
+8. A Log Analytics-munkaterületek oldalon kattintson az **Új munkaterület létrehozása** elemre.
+9. A **Log Analytics-munkaterület** lapon az új **Log Analytics-munkaterület** nevének írja be a **firewall-oms** nevet.
 10. Válassza ki az előfizetést, használja a meglévő tűzfal erőforráscsoportot (**Test-FW-RG**), válassza az **USA keleti régiója** helyet, majd válassza az **Ingyenes** tarifacsomagot.
 11. Kattintson az **OK** gombra.
-   ![A konfigurációs folyamat indítása][1]
+   ![A konfigurációs folyamat indítása][1] Az OMS-munkaterületeket mostantól Log Analytics-munkaterületeknek nevezzük.  
 12. A **Naplók** területen kattintson az **AzureFirewallApplicationRule** és az **AzureFirewallNetworkRule** elemre az alkalmazásszabályok és hálózati szabályok naplóinak gyűjtéséhez.
    ![Diagnosztikai beállítások mentése][2]
 13. Kattintson a **Save** (Mentés) gombra.
@@ -95,6 +95,8 @@ A tevékenységnaplók adatainak megtekintéséhez és elemzéséhez használja 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>A hálózati szabályok és alkalmazásszabályok naplóinak megtekintése és elemzése
 
 Az Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) a számlálónapló- és eseménynapló-fájlokat gyűjti. A Log Analytics vizualizációkat és hatékony keresési lehetőségeket is tartalmaz a naplók elemzéséhez.
+
+Az Azure Firewall Log Analytics mintalekérdezéseit [az Azure Firewall Log Analytics mintáit](log-analytics-samples.md) ismertető cikkben tekintheti meg.
 
 A Storage-fiókjához is csatlakozhat, és lekérheti a hozzáférés- és teljesítménynaplók JSON-naplóbejegyzéseit. A letöltött JSON-fájlokat átalakíthatja CSV-fájlokká, és ezeket megtekintheti az Excelben, Power BI-ban vagy bármely más adatvizualizációs eszközben.
 

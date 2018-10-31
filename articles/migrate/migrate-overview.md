@@ -4,15 +4,15 @@ description: A cikk áttekintést nyújt az Azure Migrate szolgáltatásról.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 09/25/2018
+ms.date: 10/23/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d2a8885ffb9148d408eff0e8a7d2ef09121e5359
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 30cca10a83be09b8c9736df546958c3a1fe66f37
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162038"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025635"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -29,16 +29,16 @@ Az Azure Migrate az alábbiakban nyújt segítséget:
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
-- Jelenleg csak a helyszíni VMware virtuális gépek Azure-beli virtuális gépekre való migrálásának lehetőségeit értékelheti ki. A VMware virtuális gépeket egy 5.5-ös, 6.0-s vagy 6.5-ös verziójú vCenter Servernek kell felügyelnie.
+- Csak a helyszíni VMware virtuális gépeket értékelheti ki az Azure-beli virtuális gépekre való migráláshoz. A VMware virtuális gépeket egy 5.5-ös, 6.0-s vagy 6.5-ös verziójú vCenter Servernek kell felügyelnie.
 - Hyper-V virtuális gépek felméréséhez az [Azure Site Recovery Deployment Plannert](http://aka.ms/asr-dp-hyperv-doc), fizikai gépek felméréséhez pedig [partnereszközeinket](https://azure.microsoft.com/migration/partners/) használja.
 - Egyetlen felderítéssel legfeljebb 1500 virtuális gépet, egyetlen projekt részeként pedig szintén legfeljebb 1500 virtuális gépet deríthet fel. Egyetlen értékeléssel emellett legfeljebb 1500 virtuális gépet értékelhet.
 - Ha egy nagyobb méretű környezetet szeretne felderíteni, feloszthatja a felderítést, és létrehozhat több projektet. [További információk](how-to-scale-assessment.md). Az Azure Migrate előfizetésenként legfeljebb 20 projektet támogat.
 - Az Azure Migrate kizárólag a felügyelt lemezek migrálásfelmérését támogatja.
-- Azure Migrate-projektet csak egyesült államokbeli földrajzi helyen lehet létrehozni. Ettől függetlenül megtervezheti a migrálást egy tetszőleges Azure-beli célhelyre. A migrálási projekt helyét a rendszer csak a helyszíni környezetből felderített metaadatok tárolására használja. [További információ](https://docs.microsoft.com/azure/migrate/resources-faq#discovery-and-assessment) az Azure Migrate által gyűjtött metaadatokról. A gyűjtött metaadatok a kijelölt [Azure-régiócsoport](https://azure.microsoft.com/global-infrastructure/geographies/) egyik régiójában vannak tárolva:
+-  Azure Migrate-projektet csak egyesült államokbeli földrajzi helyen lehet létrehozni. Azonban bármilyen Azure-beli célhelyre tervezhet migrálást.
+    - A migrálási projekt régiója csak a helyszíni környezetből felderített metaadatokat tárolja.
+    - A metaadatok tárolása a következő földrajzi területek valamelyik régiójában történik: USA nyugati középső régiója/USA keleti régiója.
+    - Ha függőségvizualizációt használ egy Log Analytics-munkaterületen, azt a projekttel egy régióban hozza létre a rendszer. 
 
-**Régiócsoport** | **Régiók**
---- | ---
-Egyesült Államok | USA nyugati középső régiója, USA keleti régiója
 
 ## <a name="what-do-i-need-to-pay-for"></a>Mi az, amiért fizetnem kell?
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 56bd3ab61045ff99601ed50cd27332b370204795
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4d46a438708e2e72d625f5104293b4605f7b096d
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068026"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49946079"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-managed-instance-online-using-dms"></a>SQL Server online migrálása felügyelt Azure SQL Database-példányra a DMS használatával
 Az Azure Database Migration Service használatával minimális állásidővel migrálhatja egy helyszíni SQL Server-példány adatbázisait egy [felügyelt Azure SQL Database-példányra](../sql-database/sql-database-managed-instance.md). Ha olyan módszerek is érdeklik, amelyek esetenként manuális beavatkozást is igényelhetnek, tekintse át az [SQL Server-példány felügyelt Azure SQL Database-példányra történő migrálásával](../sql-database/sql-database-managed-instance-migrate.md) foglalkozó témakört.
@@ -32,6 +32,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Migrálási projekt létrehozása és az online migrálás indítása az Azure Database Migration Service használatával.
 > * A migrálás monitorozása.
 > * Átállás a migrálás elkészültekor.
+
+[!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
+
+Ez a cikk egy online migrálást mutat be az SQL Serverről egy felügyelt Azure SQL Database-példányra. Az offline migrálással kapcsolatban tekintse meg az [SQL Server migrálása felügyelt offline Azure SQL Database-példányra a DMS használatával](tutorial-sql-server-to-managed-instance.md) című cikket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:

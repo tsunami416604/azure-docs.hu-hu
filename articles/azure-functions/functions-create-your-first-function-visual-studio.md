@@ -1,5 +1,5 @@
 ---
-title: Az első függvény létrehozása az Azure-ban a Visual Studio használatával | Microsoft Docs
+title: Az első függvény létrehozása az Azure-ban a Visual Studióval
 description: Hozzon létre és tegyen közzé HTTP-triggerrel aktivált Azure Functions-függvényt a Visual Studióval.
 services: functions
 documentationcenter: na
@@ -10,21 +10,23 @@ ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: quickstart
-ms.date: 05/22/2018
+ms.date: 10/17/2018
 ms.author: glenga
-ms.custom: mvc, devcenter, , vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: b7c9b08d1f6cb1c52419519658765ab687a234fc
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
+ms.openlocfilehash: 51f6fb8c0dc1450a39173fafb0d71efc9a59a536
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116589"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649975"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Az első függvény létrehozása a Visual Studio használatával
 
 Az Azure Functions lehetővé teszi a kód [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) környezetben történő végrehajtását anélkül, hogy először létre kellene hoznia egy virtuális gépet, vagy közzé kellene tennie egy webalkalmazást.
 
 Ebből a cikkből megtudhatja, hogy az Azure Functions Visual Studio 2017-es eszközei használatával miként hozhat létre és tesztelhet helyileg egy „Helló világ!”-függvényt. Ezután közzéteheti a függvénykódot az Azure-ban. Ezek az eszközök a Visual Studio 2017 Azure-fejlesztési számítási feladatának részeként érhetők el.
+
+![A függvény által visszaadott localhost válasz a böngészőben](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
 A témakör tartalmaz [egy videót](#watch-the-video) is, amely ugyanezeket az alapszintű lépéseket mutatja be.
 
@@ -54,13 +56,13 @@ Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi f
 
 2. Másolja a függvény URL-címét az Azure-függvény futtatókörnyezetéből.
 
-    ![Az Azure helyi futtatókörnyezete](./media/functions-create-your-first-function-visual-studio/functions-vstools-f5.png)
+    ![Az Azure helyi futtatókörnyezete](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-debugging.png)
 
-3. Illessze be a HTTP-kérelem URL-címét a böngésző címsorába. Az URL-címhez fűzze hozzá a `?name=<yourname>` lekérdezési sztringet, és hajtsa végre a kérelmet. Az alábbiakban látható a böngészőben a helyi GET kérelemre a függvény által visszaadott válasz: 
+3. Illessze be a HTTP-kérelem URL-címét a böngésző címsorába. Az URL-címhez fűzze hozzá a `?name=<YOUR_NAME>` lekérdezési sztringet, és hajtsa végre a kérelmet. Az alábbiakban látható a böngészőben a helyi GET kérelemre a függvény által visszaadott válasz: 
 
-    ![A függvény által visszaadott localhost válasz a böngészőben](./media/functions-create-your-first-function-visual-studio/functions-test-local-browser.png)
+    ![A függvény által visszaadott localhost válasz a böngészőben](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local.png)
 
-4. A hibakeresés leállításához nyomja le a Shift + F5 billentyűkombinációt.
+4. A hibakeresés leállításához nyomja le a **Shift + F5** billentyűkombinációt.
 
 Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépen, tegye közzé a projektet az Azure-ban.
 
@@ -72,15 +74,15 @@ A projekt közzétételéhez rendelkeznie kell egy függvényalkalmazással.az A
 
 ## <a name="test-your-function-in-azure"></a>A függvény tesztelése az Azure-ban
 
-1. Másolja a függvényalkalmazás alap URL-címét a Publish (Közzététel) profiloldalról. Cserélje ki a függvény helyi tesztelésekor használt `localhost:port` URL-címrészt az új alap URL-címmel. Ahogyan korábban, most is az URL-címhez fűzze hozzá a `?name=<yourname>` lekérdezési sztringet, és hajtsa végre a kérelmet.
+1. Másolja a függvényalkalmazás alap URL-címét a Publish (Közzététel) profiloldalról. Cserélje ki a függvény helyi tesztelésekor használt `localhost:port` URL-címrészt az új alap URL-címmel. Ahogyan korábban, most is az URL-címhez fűzze hozzá a `?name=<YOUR_NAME>` lekérdezési sztringet, és hajtsa végre a kérelmet.
 
     A HTTP-eseményindítót használó függvényt meghívó URL-címnek az alábbi formátumban kell lennie:
 
-        http://<functionappname>.azurewebsites.net/api/<functionname>?name=<yourname> 
+        http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?name=<YOUR_NAME> 
 
 2. Illessze be a HTTP-kérelem új URL-címét a böngésző címsorába. Az alábbiakban látható a böngészőben a távoli GET kérelemre a függvény által visszaadott válasz:
 
-    ![A függvény által visszaadott válasz a böngészőben](./media/functions-create-your-first-function-visual-studio/functions-test-remote-browser.png)
+    ![A függvény által visszaadott válasz a böngészőben](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png)
 
 ## <a name="watch-the-video"></a>Videó megtekintése
 

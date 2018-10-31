@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 34c8ec0650ea859365ca30606b364f4b6f81f1a6
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 4da20ffebb9943787fa487336dbd2ba22fdcf875
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394154"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458173"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Rövid útmutató: Azure Kubernetes Service- (AKS-) fürt üzembe helyezése
 
@@ -22,6 +22,8 @@ Ebben a rövid útmutatóban egy AKS-fürtöt helyezünk üzembe az Azure Portal
 ![Az Azure Vote mintaalkalmazás keresését ábrázoló kép](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
 A rövid útmutató feltételezi, hogy rendelkezik a Kubernetes használatára vonatkozó alapvető ismeretekkel. A Kubernetesszel kapcsolatos részletes információkért lásd a [Kubernetes dokumentációját][kubernetes-documentation].
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -96,6 +98,9 @@ aks-agentpool-14693408-0   Ready     agent     10m       v1.11.2
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 A Kubernetes-jegyzékfájlok meghatározzák a fürt célállapotát, például azt, hogy milyen tárolórendszerképeknek kell futniuk. Ebben a rövid útmutatóban egy jegyzékfájlt használunk az Azure Vote mintaalkalmazás futtatásához szükséges összes objektum létrehozásához. Ezen objektumok közé tartozik két [Kubernetes-telepítés][kubernetes-deployment], egy az Azure Vote kezelőfelülete, egy pedig a Redis-példány számára. Emellett létrejön két [Kubernetes-szolgáltatás][kubernetes-service]: egy belső szolgáltatás a Redis-példány számára, és egy külső szolgáltatás az Azure Vote alkalmazás internetről történő eléréséhez.
+
+> [!TIP]
+> A rövid útmutatóban manuálisan hozza létre és helyezi üzembe az alkalmazásjegyzék-fájlokat az AKS-fürtön. A valósághoz közelebbi felhasználási forgatókönyvekben az [Azure Dev Spaces][azure-dev-spaces] használatával közvetlenül az AKS-fürtön végezheti a kód gyors iterálását és hibaelhárítását. A Dev Spaces több operációsrendszer-platformon és fejlesztői környezetben használható, és támogatja a csapaton belüli együttműködést.
 
 Hozzon létre egy `azure-vote.yaml` nevű fájlt, és másolja bele a következő YAML-kódot. Ha az Azure Cloud Shellben dolgozik, ez a fájl a `vi` vagy a `Nano` alkalmazással hozható létre, ugyanúgy mint egy virtuális vagy fizikai rendszeren.
 
@@ -229,15 +234,15 @@ Amikor létrehozta a fürtöt, engedélyezte a tárolóelemzés monitorozását.
 Az adatok Azure Portalra történő feltöltése eltarthat néhány percig. Az Azure Vote-podok jelenlegi állapotának, üzemidejének és erőforrás-felhasználásának megjelenítéséhez lépjen vissza az AKS-erőforráshoz az Azure Portalon (például *myAKSCluster*). Az állapotot ezután a következő módon érheti el:
 
 1. A bal oldali **Monitorozás** részen válassza ki az **Insights (előzetes verzió)** elemet
-1. Felül válassza a **+ szűrő hozzáadása** lehetőséget
-1. Válassza ki *Névtér* értéket tulajdonságként, majd válassza ki a *\<Kube rendszer kivételével az összes\>* lehetőséget
-1. Válassza ki a **tárolók** megtekintéséhez.
+1. Válassza a **+ Szűrő hozzáadása** elemet a képernyő felső részén
+1. Válassza ki a *Névtér* tulajdonságot, majd az *\<All but kube-system\>* (Összes, kivéve a kube rendszer) lehetőséget
+1. Válassza a **Tárolók** nézetet.
 
-A *azure-vote-back* és *azure-vote-front* tárolók az alábbi példában látható módon jelennek meg:
+Megjelenik az *azure-vote-back* és az *azure-vote-front* tároló, az alábbi példában látható módon:
 
 ![Futó tárolók állapotának megtekintése az AKS-ben](media/kubernetes-walkthrough-portal/monitor-containers.png)
 
-Az `azure-vote-front` pod naplóinak megtekintéséhez kattintson a **Tárolónaplók megtekintése** hivatkozásra a tárolók listájának jobb oldalán. Ezek a naplók tartalmazzák a tároló *stdout* és *stderr* streamjét is.
+Az `azure-vote-front` pod naplóinak megtekintéséhez kattintson a **View container logs** (Tárolónaplók megtekintése) hivatkozásra a tárolók listájának jobb oldalán. Ezek a naplók tartalmazzák a tároló *stdout* és *stderr* streamjét is.
 
 ![Tárolók naplóinak megtekintése az AKS-ben](media/kubernetes-walkthrough-portal/monitor-container-logs.png)
 
@@ -286,3 +291,4 @@ Az AKS-sel kapcsolatos további információkért és a kódtól az üzembe hely
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [http-routing]: ./http-application-routing.md
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
+[azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/

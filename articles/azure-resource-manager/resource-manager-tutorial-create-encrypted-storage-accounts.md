@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/07/2018
+ms.date: 10/18/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d48374d7919be3d141ea199e8238a220dbfe0332
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: a3fc3e0cc30b379c84ac0ba12f733d2db4e41587
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419525"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945790"
 ---
 # <a name="tutorial-create-an-azure-resource-manager-template-for-deploying-an-encrypted-storage-account"></a>Oktatóanyag: Titkosított tárfiók üzembe helyezésére szolgáló Azure Resource Manager-sablon létrehozása
 
@@ -40,8 +40,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
-* [Visual Studio Code](https://code.visualstudio.com/).
-* Resource Manager Tools bővítmény. A telepítésről további információkat [a Resource Manager Tools bővítmény telepítését](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites) ismertető részben talál.
+* [Visual Studio Code](https://code.visualstudio.com/) [Resource Manager Tools bővítménnyel](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
 
 ## <a name="open-a-quickstart-template"></a>Gyorsindítási sablon megnyitása
 
@@ -56,7 +55,7 @@ Az ebben a rövid útmutatóban használt sablon [standard szintű tárfiók lé
 3. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt.
 4. A **File** (Fájl) > **Save as** (Mentés másként) lehetőség kiválasztásával mentheti a fájlt a helyi számítógépre, **azuredeploy.json** néven.
 
-## <a name="understand-the-format"></a>A formátum ismertetése
+## <a name="understand-the-schema"></a>A séma bemutatása
 
 A VS Code-ban csukja össze a sablont a gyökérszintig. Az ekkor előálló legegyszerűbb struktúra a következő elemeket tartalmazza:
 
@@ -69,7 +68,7 @@ A VS Code-ban csukja össze a sablont a gyökérszintig. Az ekkor előálló leg
 * **resources**: adja meg az erőforráscsoportban üzembe helyezett vagy frissített erőforrástípusokat.
 * **outputs**: adja meg az üzembe helyezés után visszaadott értékeket.
 
-## <a name="use-parameters-in-template"></a>Paraméterek használata a sablonban
+## <a name="use-parameters"></a>Paraméterek használata
 
 Paraméterek megadásával testreszabhatja az üzemelő példányt úgy, hogy az adott környezetnek megfelelő értékeket ad meg. A tárfiókhoz tartozó értékek beállításakor a sablonban meghatározott paramétereket fogja használni.
 
@@ -90,7 +89,7 @@ A sablonban meghatározott paraméterek használata:
 "name": "[parameters('storageAccountType')]"
 ```
 
-## <a name="use-variables-in-template"></a>Változók használata a sablonban
+## <a name="use-variables"></a>Változók használata
 
 A változók segítségével a sablonban használható értékeket állíthat össze. A változók segítségével leegyszerűsíthetők a sablonok.
 
@@ -117,9 +116,7 @@ Az oktatóanyag célja, hogy meghatározza a titkosított tárfiók létrehozás
 
     ![Resource Manager-sablonreferencia – tárfiók](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
 
-    resource-manager-template-resources-reference-storage-accounts
-1. Tekintse át a titkosítással kapcsolatos információkat.  
-1. A tárfiók erőforrás-definíciójának tulajdonságokat tartalmazó eleméhez adja hozzá a következő JSON-adatokat:
+4. Keresse meg a titkosítással kapcsolatos definíció információit.  
 
     ```json
     "encryption": {
@@ -131,11 +128,9 @@ Az oktatóanyag célja, hogy meghatározza a titkosított tárfiók létrehozás
         }
     }
     ```
-    Ebben a részben történik a Blob Storage szolgáltatás titkosítási funkciójának engedélyezése.
-
-A Visual Studio Code-ban módosítsa úgy a sablont, hogy a végső erőforráselem a következőképpen nézzen ki:
-
-![Resource Manager-sablon – Titkosított tárfiók – Erőforrások](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
+5. A Visual Studio Code-ban módosítsa úgy a sablont, hogy a végső erőforráselem a következőképpen nézzen ki:
+    
+    ![Resource Manager-sablon – Titkosított tárfiók – Erőforrások](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 

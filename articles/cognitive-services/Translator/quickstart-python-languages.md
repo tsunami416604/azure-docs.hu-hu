@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Támogatott nyelvek lekérése – Translator Text, Python'
+title: 'Rövid útmutató: Támogatott nyelvek lekérése, Python – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban lekéri a fordításhoz, átíráshoz és szótárban való kereséshez támogatott nyelvek, valamint példák listáját a Translator Text API és Java segítségével.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
-ms.author: nolachar
-ms.openlocfilehash: a68a1b31cb844a4873bf34c6a292beeb2a4b61c0
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: b920b08d3bc5d4e340aa8ade6b26e5fe61208098
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46121736"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49644725"
 ---
-# <a name="quickstart-get-supported-languages-with-python"></a>Rövid útmutató: Támogatott nyelvek lekérése a Python használatával
+# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-python"></a>Rövid útmutató: Támogatott nyelvek lekérése a Translator Text REST API használatával (Python)
 
 Ebben a rövid útmutatóban lekéri a fordításhoz, átíráshoz és szótárban való kereséshez támogatott nyelvek, valamint példák listáját a Translator Text API segítségével.
 

@@ -1,22 +1,22 @@
 ---
 title: 'Rövid útmutató: Tudásbázis létrehozása – REST, Node.js – QnA Maker'
-description: Ez a rövid útmutató programozott módon végigvezeti egy minta QnA Maker tudásbázis létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
+description: Ez a REST-alapú rövid útmutató végigvezeti egy olyan minta QnA Maker-tudásbázis programozott módon történő létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/02/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: f0375affa547f657ae36de71901298047359cae2
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: fdba785e33c16c397e2ffaeb4462ea2066a99126
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884916"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647544"
 ---
-# <a name="quickstart-create-a-qna-maker-knowledge-base-in-nodejs"></a>Oktatóanyag: QnA Maker-tudásbázis létrehozása Node.js nyelven
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-nodejs"></a>Rövid útmutató: Tudásbázis létrehozása a QnA Makerben a Node.js használatával
 
 Ez a rövid útmutató végigvezeti egy minta QnA Maker-tudásbázis programozott módon való létrehozásán. A QnA Maker automatikusan nyer ki kérdéseket és válaszokat a félig strukturált tartalmak, például a gyakori kérdések közül, az [adatforrásokból](../Concepts/data-sources-supported.md). A tudásbázis modelljét az API-kérés törzsében küldött JSON definiálja. 
 

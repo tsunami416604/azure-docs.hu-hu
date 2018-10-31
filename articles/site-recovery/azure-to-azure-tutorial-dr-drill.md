@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 90d82abb6570028308b8d516a868fa981c75eb94
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: b1893d9713f70ee7553392a320fec52fe5c88f3c
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49066989"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458054"
 ---
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>Azure-beli virtuális gépek vészhelyreállítási próbájának végrehajtása egy másodlagos Azure-régióba
 
@@ -26,12 +26,13 @@ Ez az oktatóanyag azt ismerteti, hogy hogyan hajthat végre vészhelyreállít�
 > * Az előfeltételek ellenőrzése
 > * Feladatátvételi teszt futtatása egyetlen virtuális gép esetén
 
-
+> [!NOTE]
+> Ennek az oktatóanyagnak a célja, hogy végigvezesse a felhasználót a vészhelyreállítási próba folyamatán a lehető legkevesebb lépésben. Ha részletesebben szeretné megismerni a vészhelyreállítási próba végrehajtásával kapcsolatos különféle szempontokat, beleértve a hálózatkezelést, az automatizálást és a hibaelhárítást, tekintse meg az Azure-beli virtuális gépekre vonatkozó útmutatók között található dokumentációt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Javasoljuk, hogy a feladatátvételi teszt futtatása előtt ellenőrizze a virtuális gép tulajdonságait, hogy biztosan minden a várt módon működjön.  Lépjen a virtuális gép tulajdonságaihoz a **Replikált elemek** területen. Az **Alapvető erőforrások** panel megjeleníti a gépek beállításaira és állapotára vonatkozó információkat.
-- Javasoljuk, hogy a feladatátvételi teszthez a replikáció engedélyezésekor beállított alapértelmezett hálózat helyett használjon egy külön Azure-beli virtuálisgép-hálózatot.
+- **Javasoljuk, hogy a feladatátvételi teszthez a replikáció engedélyezésekor beállított alapértelmezett hálózat helyett használjon egy külön Azure-beli virtuálisgép-hálózatot**.
 
 
 ## <a name="run-a-test-failover"></a>Feladatátvételi teszt futtatása

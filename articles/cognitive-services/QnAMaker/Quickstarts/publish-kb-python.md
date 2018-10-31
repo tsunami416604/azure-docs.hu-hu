@@ -1,25 +1,28 @@
 ---
-title: 'Rövid útmutató: Tudásbázis közzététele Python nyelven – QnA Maker'
+title: 'Rövid útmutató: Tudásbázis közzététele – REST, Python – QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Tudásbázis közzététele Python nyelven a QnA Makerhez.
+description: Ez a REST-alapú rövid útmutató végigvezeti a tudásbázisok közzétételének folyamatán, amely során a tudásbázis legutolsó tesztelt verzióját leküldéssel továbbítja egy dedikált Azure Search-indexre, amely a közzétett tudásbázist képviseli. Egy végpontot is létre fog hozni, amelyet az alkalmazásban vagy a csevegőrobot meg tud hívni.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 92a0f54c8fca6a53cf869ce21c8007ad2a1eba5b
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: e58b344102eb900ffe41bb90e541258eb3b59286
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887717"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646814"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-python"></a>Rövid útmutató: Tudásbázis közzététele Python nyelven
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>Rövid útmutató: Tudásbázis közzététele a QnA Makerben a Python használatával
 
-A következő kód egy meglévő tudásbázist tesz közzé a [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) metódussal.
+Ez a rövid útmutató végigvezeti a tudásbázisok (KB) programozott módon való közzétételén. A közzététel leküldi a tudásbázis legújabb verzióját egy dedikált Azure Search-indexre, és létrehoz egy, az alkalmazásban vagy csevegőrobotban meghívható végpontot.
+
+Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
+* [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) – ehhez az API-hoz nem kell megadni információkat a kérés törzsében.
 
 [!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 

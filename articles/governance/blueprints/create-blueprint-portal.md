@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 7af0d4819d4044f4cccc43cde1cffe7dff7982a7
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 6b7ca276f3273faa485d08633061f882493f72f7
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056437"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647272"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>Azure Blueprints-tervek definiálása és hozzárendelése a portálon
 
@@ -42,7 +42,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 
    ![Terv létrehozása](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. A **Terv neve** tulajdonságban adja meg például a „MyBlueprint” nevet a tervnek (betűkből és számokból, legfeljebb 48 karakterből állhat, szóközt és különleges karaktert nem tartalmazhat), a **Terv leírása** viszont egyelőre maradjon üresen.  A **Hely megadása** mezőben kattintson a jobb oldali három pontra, jelölje ki azt a [felügyeleti csoportot](../management-groups/overview.md), amelybe a tervet menteni kívánja, majd kattintson a **Kiválasztás** lehetőségre.
+1. A **Terv neve** tulajdonságban adja meg például a „MyBlueprint” nevet a tervnek (betűkből és számokból, legfeljebb 48 karakterből állhat, szóközt és különleges karaktert nem tartalmazhat), a **Terv leírása** viszont egyelőre maradjon üresen.  A **Definíció helye** mezőben kattintson a jobb oldalon található három pontra, válassza ki azt a [felügyeleti csoportot](../management-groups/overview.md), amelybe menteni szeretné a tervet, majd kattintson a **Kiválasztás** elemre.
 
    > [!NOTE]
    > Tervdefiníciók csak felügyeleti csoportokba menthetők. Első felügyeleti csoportját az [alábbi lépések](../management-groups/create.md) alapján hozhatja létre.
@@ -111,7 +111,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 
    ![Összetevő – Resource Manager-sablon](./media/create-blueprint-portal/add-resource-manager-template.png)
 
-1. Kész tervének az alábbi ábrán láthatóhoz kell hasonlítania. Figyelje meg, hogy minden összetevő _Paraméterek_ oszlopában szerepel az „_y_ paraméterből _x_ kitöltve” szöveg. A **dinamikus paraméterek** a terv egyes hozzárendelései során lesznek beállítva, a szerepkör-hozzárendelés egyetlen **statikus paramétere** viszont már konfigurálva van.
+1. Kész tervének az alábbi ábrán láthatóhoz kell hasonlítania. Figyelje meg, hogy minden összetevő _Paraméterek_ oszlopában szerepel az „_y_ paraméterből _x_ kitöltve” szöveg. A **dinamikus paraméterek** beállítása a terv egyes hozzárendeléseikor történik.
 
    ![Kész terv](./media/create-blueprint-portal/completed-blueprint.png)
 

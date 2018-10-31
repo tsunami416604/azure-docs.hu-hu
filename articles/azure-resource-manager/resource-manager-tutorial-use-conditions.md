@@ -10,21 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/02/2018
+ms.date: 10/18/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 216e474f519e57352b017dc3e6bcdd74d48b03de
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 552b39c520396942fa81f963c0cfa1c8c7b47db4
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238646"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456966"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Oktatóanyag: Feltételek használata az Azure Resource Manager-sablonokban
 
 Megtudhatja, hogyan helyezhet üzembe Azure-erőforrásokat feltételek alapján. 
 
-Az ebben az oktatóanyagban használt forgatókönyv a [függő erőforrásokkal ellátott Azure Resource Manager-sablonok létrehozását ismertető oktatóanyagban](./resource-manager-tutorial-create-templates-with-dependent-resources.md) szereplőhöz hasonló. Az oktatóanyagban található utasításokkal egy tárfiókot, egy virtuális gépet, egy virtuális hálózatot és egyéb függő erőforrásokat fog létrehozni. Új tárfiók létrehozása helyett a felhasználók maguk dönthetik el, hogy új tárfiókot hoznak létre, vagy egy meglévőt használnak. Ehhez egy további paramétert kell meghatároznia. Ha a paraméter értéke „új”, akkor a rendszer új tárfiókot hoz létre.
+Az ebben az oktatóanyagban használt forgatókönyv a [függő erőforrásokkal ellátott Azure Resource Manager-sablonok létrehozását ismertető oktatóanyagban](./resource-manager-tutorial-create-templates-with-dependent-resources.md) szereplőhöz hasonló. Az oktatóanyagban található utasításokkal egy virtuális gépet, egy virtuális hálózatot és egyéb függő erőforrásokat, köztük egy tárfiókot fog létrehozni. Ahelyett, hogy minden alkalommal egy új tárfiókot kellene létrehozni, megengedheti a felhasználóknak, hogy maguk döntsék el, új tárfiókot hoznak létre vagy egy meglévőt használnak. Ehhez egy további paramétert kell meghatároznia. Ha a paraméter értéke „új”, akkor a rendszer új tárfiókot hoz létre.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -59,7 +59,7 @@ Az Azure-beli gyorsindítási sablonok a Resource Manager-sablonok adattárakén
 
 A meglévő sablont két helyen kell módosítania:
 
-* Adjon hozzá egy paramétert a tárfiók nevének megadásához. Ezzel a paraméterrel a felhasználó megadhatja egy meglévő tárfiók nevét. A megadott érték az új tárfiók neveként is használható.
+* Adjon hozzá egy tárfióknév paramétert. A felhasználók megadhatnak egy új tárfióknevet vagy egy meglévő tárfiók nevét is.
 * Adjon hozzá egy új, **newOrExisting** nevű paramétert. Az üzemelő példány e paraméter alapján határozza meg, hogy mikor hozzon létre új tárfiókot, és mikor használjon egy meglévőt.
 
 1. Nyissa meg az **azuredeploy.json** fájlt a Visual Studio Code-ban.
@@ -72,11 +72,15 @@ A meglévő sablont két helyen kell módosítania:
 4. Adja hozzá a sablonhoz az alábbi két paramétert:
 
     ```json
-    "newOrExisting": {
-      "type": "string"
-    },
     "storageAccountName": {
       "type": "string"
+    },    
+    "newOrExisting": {
+      "type": "string", 
+      "allowedValues": [
+        "new", 
+        "existing"
+      ]
     },
     ```
     A frissített paraméterdefiníció a következőképpen néz ki:
@@ -86,7 +90,7 @@ A meglévő sablont két helyen kell módosítania:
 5. Adja hozzá a következő kódsort a tárfiók-definíció elejéhez.
 
     ```json
-    "condition": "[equals(parameters('newOrExisting'),'yes')]",
+    "condition": "[equals(parameters('newOrExisting'),'new')]",
     ```
 
     A feltétel ellenőrzi a **newOrExisting** nevű paraméter értékét. Ha a paraméter értéke **new** (új), az üzemelő példány létrehozza a tárfiókot.
@@ -94,8 +98,15 @@ A meglévő sablont két helyen kell módosítania:
     A frissített tárfiók-definíció a következőképpen néz ki:
 
     ![Feltétel használata a Resource Managerben](./media/resource-manager-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
+6. Frissítse a **storageUri** értékét a következőre:
 
-6. Mentse a módosításokat.
+    ```json
+    "storageUri": "[concat('https://', parameters('storageAccountName'), '.blob.core.windows.net')]"
+    ```
+
+    Ez a módosítás szükséges, ha egy eltérő erőforráscsoport alá tartozó másik tárfiókot használ.
+
+7. Mentse a módosításokat.
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
@@ -103,19 +114,21 @@ Kövesse [a sablon üzembe helyezését](./resource-manager-tutorial-create-temp
 
 A sablon Azure PowerShell használatával történő üzembe helyezésekor egy további paramétert kell megadnia:
 
-```powershell
-$resourceGroupName = "<Enter the resource group name>"
-$storageAccountName = "Enter the storage account name>"
-$location = "<Enter the Azure location>"
-$vmAdmin = "<Enter the admin username>"
-$vmPassword = "<Enter the password>"
-$dnsLabelPrefix = "<Enter the prefix>"
+```azurepowershell
+$resourceGroupName = Read-Host -Prompt "Enter the resource group name"
+$storageAccountName = Read-Host -Prompt "Enter the storage account name"
+$newOrExisting = Read-Host -Prompt "Create new or use existing (Enter new or existing)"
+$location = Read-Host -Prompt "Enter the Azure location (i.e. centralus)"
+$vmAdmin = Read-Host -Prompt "Enter the admin username"
+$vmPassword = Read-Host -Prompt "Enter the admin password"
+$dnsLabelPrefix = Read-Host -Prompt "Enter the DNS Label prefix"
 
 New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 $vmPW = ConvertTo-SecureString -String $vmPassword -AsPlainText -Force
-New-AzureRmResourceGroupDeployment -Name mydeployment0710 -ResourceGroupName $resourceGroupName `
-    -TemplateFile azuredeploy.json -adminUsername $vmAdmin -adminPassword $vmPW `
-    -dnsLabelPrefix $dnsLabelPrefix -storageAccountName $storageAccountName -newOrExisting "new"
+New-AzureRmResourceGroupDeployment -Name mydeployment1018 -ResourceGroupName $resourceGroupName `
+    -adminUsername $vmAdmin -adminPassword $vmPW `
+    -dnsLabelPrefix $dnsLabelPrefix -storageAccountName $storageAccountName -newOrExisting $newOrExisting `
+    -TemplateFile azuredeploy.json
 ```
 
 > [!NOTE]

@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Szöveg nyelvének azonosítása -Translator Text API, C#'
+title: 'Rövid útmutató: Szöveg nyelvének azonosítása, C# – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban azonosítjuk a forrásszöveg nyelvét a Translator Text API használatával C# nyelven.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: b9a5dbdc1e7950400597c76359b8eee4268af6d0
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.author: erhopf
+ms.openlocfilehash: d92b5f7815c7aeb43ef81bb7b06aa1cda64f32dc
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320373"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647102"
 ---
-# <a name="quickstart-identify-language-from-text-with-c35"></a>Rövid útmutató: Szöveg nyelvének felismerése a C&#35; használatával
+# <a name="quickstart-identify-language-from-text-with-the-translator-text-rest-api-c"></a>Rövid útmutató: Szöveg nyelvének azonosítása a Translator Text REST API (C#) használatával
 
 Ebben a rövid útmutatóban felismeri a forrásszöveg nyelvét a Translator Text API segítségével.
 

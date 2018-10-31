@@ -3,7 +3,7 @@ title: Az első API importálása és közzététele az Azure API Management szo
 description: Megismerheti, hogyan importálhatja és teheti közzé az első API-t az API Management szolgáltatással.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 538977b9057a5699d61d6c2cc44209367e3550e2
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: cf913c0aaf7dd9957f21452caf8e43a9e3c8b2db
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093402"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467395"
 ---
 # <a name="import-and-publish-your-first-api"></a>Az első API importálása és közzététele 
 
@@ -73,9 +73,11 @@ Ez a szakasz bemutatja az OpenAPI-specifikációjú háttérrendszeri API import
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Az új APIM API tesztelése az Azure Portalon
 
+![API-leképezés tesztelése](./media/api-management-get-started/01-import-first-api-01.png)
+
 A műveleteket meg lehet hívni közvetlenül az Azure Portalról, ami kényelmes módot biztosít az API műveleteinek megtekintésére és tesztelésére.  
 1. Válassza ki az előző lépésben létrehozott API-t (az **API-k** lapról).
-2. Kattintson a **Teszt** fülre.  ![API tesztelése](./media/api-management-get-started/test-api.png)
+2. Kattintson a **Teszt** fülre.
 3. Kattintson a **GetSpeakers** elemre.
     A lapon megjelennek a lekérdezési paraméterek mezői (ilyenek ebben az esetben nincsenek), valamint a fejlécek. Az ehhez az API-hoz társított termék előfizetői azonosítójának egyik fejléce „Ocp-Apim-Subscription-Key” értékű. A kulcsot automatikusan kitölti a rendszer.
 4. Kattintson a **Küldés** gombra.
@@ -87,7 +89,8 @@ A műveleteket meg lehet hívni közvetlenül az Azure Portalról, ami kényelme
 Műveletek is meghívhatók a **fejlesztői portálról** az API-k teszteléséhez.
 
 1. Lépjen a **fejlesztői portálra**.
-![Fejlesztői portálon](./media/api-management-get-started/developer-portal.png)
+
+ ![Fejlesztői portál](./media/api-management-get-started/developer-portal.png)
 
 2. Kattintson az **API-k**, majd a **Demo Conference API**, majd a **GetSpeakers** lehetőségre.
     

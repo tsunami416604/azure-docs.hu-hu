@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Alternatív fordítások lekérése – Translator Text, Go'
+title: 'Rövid útmutató: Alternatív fordítások keresése, Go – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban a kifejezések alternatív fordításait és példáit keresi meg a szövegkörnyezetben a Translator Text API segítségével és Go használatával.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
-ms.author: nolachar
-ms.openlocfilehash: 4ea21673c993c6dd9478f42bfee790b62317946f
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 0c4872aaf222110a0044095040db08d0180e37c4
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128876"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649635"
 ---
-# <a name="quickstart-find-alternate-translations-and-usage-with-go"></a>Rövid útmutató: Alternatív fordítások és használat lekérése a Go használatával
+# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-go"></a>Rövid útmutató: Alternatív fordítások keresése a Translator Text REST API (Go) használatával
 
 Ebben a rövid útmutatóban a kifejezések lehetséges alternatív fordításaival kapcsolatos részleteket, valamint az alternatív fordítások használatának példáit keresi meg a Translator Text API segítségével.
 

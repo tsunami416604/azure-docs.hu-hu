@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Arcfelismerés képen – Face API, PHP'
+title: 'Rövid útmutató: Arcfelismerés egy képen a REST API és a PHP használatával'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban arcokat fog felismerni egy képről a Face API segítségével és PHP használatával.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: pafarley
-ms.openlocfilehash: 62434efdaf161463de7492535a49cf879da32e43
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: be322cafc381dbc6e8b7cf03cd65e1dd5f9c9ad4
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339661"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954901"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-php"></a>Rövid útmutató: Arcfelismerés egy képen a PHP használatával
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Rövid útmutató: Arcfelismerés egy képen a REST API és a PHP használatával
 
 Ebben a rövid útmutatóban emberi arcokat fog felismerni egy képen a Face API segítségével.
 

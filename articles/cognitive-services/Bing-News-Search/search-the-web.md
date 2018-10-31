@@ -10,12 +10,12 @@ ms.component: bing-news-search
 ms.topic: overview
 ms.date: 06/21/2016
 ms.author: scottwhi
-ms.openlocfilehash: 787fdea047f9e7d77ca0a156f1c41fa50fd2fa48
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 4ed816b117d11dd38e6a8ea5191171b812db0f1c
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801471"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023202"
 ---
 # <a name="what-is-bing-news-search"></a>Mi a Bing News Search?
 
@@ -265,7 +265,7 @@ Ha egyéb cikkek is kapcsolódnak egy hírhez, a hír tartalmazhatja a [clustere
 
 Annak érdekében, hogy gyorsan nekiláthasson az első kérelem létrehozásának, olvassa el az [első kérelem létrehozását bemutató](./quickstart.md) cikket.
 
-Ismerkedjen meg a [Bing News Search API v7] (https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) referenciájával. A referencia olyan végpontok, fejlécek és lekérdezési paraméterek listáját tartalmazza, amelyekkel keresési eredményeket kérhet le, és a válaszobjektumok definícióit is megtalálja benne.
+Ismerkedjen meg a [Bing News Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) referenciájával. A referencia olyan végpontok, fejlécek és lekérdezési paraméterek listáját tartalmazza, amelyekkel keresési eredményeket kérhet le, és a válaszobjektumok definícióit is megtalálja benne.
 
 A keresőmező felhasználói élményének fejlesztésére vonatkozó további tudnivalókért tekintse át a [Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) ismertetését. Ahogy a felhasználó megadja a lekérdezési kifejezést, meghívhatja ezt az API-t, hogy mások által használt kapcsolódó lekérdezési kifejezéseket jelenítsen meg.
 

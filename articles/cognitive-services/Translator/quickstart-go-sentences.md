@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Mondathosszok lekérése – Translator Text, Go'
+title: 'Rövid útmutató: Mondathosszok lekérése, Go – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban kideríti egy szövegben a mondatok hosszát a Translator Text API és a Go segítségével.
 services: cognitive-services
 author: noellelacharite
-manager: cgronlun
+manager: erhopf
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
-ms.author: nolachar
-ms.openlocfilehash: 34b30179d674a42f6c9c2c358c0feb6e083089f6
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 92ea2291760edf16863dc58a00bac4389f818e72
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129454"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49644923"
 ---
-# <a name="quickstart-get-sentence-lengths-with-go"></a>Rövid útmutató: Mondathosszok lekérése a Go használatával
+# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-go"></a>Rövid útmutató: Mondathosszok lekérése a Translator Text REST API használatával (Go)
 
 Ebben a rövid útmutatóban kideríti egy szövegben a mondatok hosszát a Translator Text API segítségével.
 

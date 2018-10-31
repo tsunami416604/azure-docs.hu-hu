@@ -1,25 +1,28 @@
 ---
-title: 'Rövid útmutató: Tudásbázis közzététele Java nyelven – QnA Maker'
+title: 'Rövid útmutató: Tudásbázis közzététele – REST, Java – QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Tudásbázis közzététele Java nyelven a QnA Makerhez.
+description: Ez a REST-alapú rövid útmutató végigvezeti a tudásbázisok közzétételének folyamatán, amely során a tudásbázis legutolsó tesztelt verzióját leküldéssel továbbítja egy dedikált Azure Search-indexre, amely a közzétett tudásbázist képviseli. Egy végpontot is létre fog hozni, amelyet az alkalmazásban vagy a csevegőrobot meg tud hívni.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: defd0cb7fc22423db9b2c7d25960b5dc27042506
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 83390ace8d9747d218fdd5c6b50ba9bdc6d11957
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885084"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648819"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-java"></a>Rövid útmutató: Tudásbázis közzététele Java nyelven
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>Rövid útmutató: Tudásbázis közzététele a QnA Makerben a Java használatával
 
-A következő kód egy meglévő tudásbázist tesz közzé a [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) metódussal.
+Ez a rövid útmutató végigvezeti a tudásbázisok (KB) programozott módon való közzétételén. A közzététel leküldi a tudásbázis legújabb verzióját egy dedikált Azure Search-indexre, és létrehoz egy, az alkalmazásban vagy csevegőrobotban meghívható végpontot.
+
+Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
+* [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) – ehhez az API-hoz nem kell megadni információkat a kérés törzsében.
 
 [!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 

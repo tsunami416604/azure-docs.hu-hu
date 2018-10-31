@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Alternatív fordítások lekérése – Translator Text, Python'
+title: 'Rövid útmutató: Alternatív fordítások keresése, Python – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban a kifejezések alternatív fordításait és példáit keresi meg a szövegkörnyezetben a Translator Text API segítségével és a Python használatával.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
-ms.author: nolachar
-ms.openlocfilehash: 9035f718dda4cd1a8b34aa72272cfa376be99cac
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: cb8f6addd9fa68cd5a4683f52621b05dcd25e7b4
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122722"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646412"
 ---
-# <a name="quickstart-find-alternate-translations-and-usage-with-python"></a>Rövid útmutató: Alternatív fordítások és használat lekérése a Python használatával
+# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-python"></a>Rövid útmutató: Alternatív fordítások keresése a Translator Text REST API használatával (Python)
 
 Ebben a rövid útmutatóban a kifejezések lehetséges alternatív fordításaival kapcsolatos részleteket, valamint az alternatív fordítások használatának példáit keresi meg a Translator Text API segítségével.
 

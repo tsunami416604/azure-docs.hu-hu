@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 06/21/2018
 ms.author: alehall
-ms.openlocfilehash: a06ee5b03521fa2e0a711f5194cf01b32e7cea37
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 4a70801fa11316fbd023f348981743639fe111dc
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308696"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024417"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Oktatóanyag: Adatok streamelése az Azure Databricksbe az Event Hubs használatával
 
@@ -56,7 +56,7 @@ Ezeket az előfeltételeket az [Azure Event Hubs-névtér és eseményközpont l
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks-munkaterület létrehozása
 
@@ -102,7 +102,7 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
     * Adjon egy nevet a fürtnek.
     * Ehhez a cikkhez a **4.0** futtatókörnyezetben hozzon létre fürtöt.
-    * Mindenképpen jelölje be a **Leállítás ___ percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
+    * Mindenképpen jelölje be a **Leállítás \_\_ percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
 
     Válassza a **Fürt létrehozása** lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
 

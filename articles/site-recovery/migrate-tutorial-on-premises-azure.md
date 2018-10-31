@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/12/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: bd41244192efa1333bc90bec8c00f38aaaa7f612
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 446d9ead47e9d9380a608933ced3793e99241622
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714989"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026330"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Helyszíni gépek áttelepítése az Azure-ba
 
@@ -33,7 +33,7 @@ Az oktatóanyag bemutatja, hogyan migrálhatja a helyszíni virtuális gépeket 
 Ez az oktatóanyag egy sorozat harmadik része. Ez az oktatóanyag feltételezi, hogy elvégezte az előző oktatóanyagok feladatait:
 
 1. [Az Azure előkészítése](tutorial-prepare-azure.md)
-2. Helyszíni [VMware](vmware-azure-tutorial-prepare-on-premises.md) vagy [Hyper-V] (hyper-v-prepare-on-premises-tutorial.md) kiszolgálók előkészítése.
+2. Helyszíni [VMware](vmware-azure-tutorial-prepare-on-premises.md)- vagy [Hyper-V](hyper-v-prepare-on-premises-tutorial.md)-kiszolgálók előkészítése.
 
 Mielőtt elkezdené, érdemes áttekinteni a [VMware](vmware-azure-architecture.md) vagy a [Hyper-V](hyper-v-azure-architecture.md) architektúrát az esetleges vészhelyreállítás megkönnyítése érdekében.
 

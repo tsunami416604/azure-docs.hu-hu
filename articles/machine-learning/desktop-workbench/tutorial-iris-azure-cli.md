@@ -11,12 +11,12 @@ ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 10/15/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: b9b515a2ccaedc40fc531d6a1cc58cbe98212b4a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c5f7b8b98f97e020b4f6fb4b125d444df87f8d5a
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967897"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025752"
 ---
 # <a name="tutorial-classifying-iris-using-the-command-line-interface"></a>Oktatóanyag: Írisz osztályozása a parancssori felület segítségével
 
@@ -143,13 +143,13 @@ $ az ml project create --name <project name> --workspace <workspace name> --acco
 ```
 
 ### <a name="create-a-new-project-associated-with-a-cloud-git-repository"></a>Felhőbeli Git-adattárhoz társított új projekt létrehozása
-Létrehozhat egy Azure DevOps Git-adattárral társított új projektet. A rendszer minden kísérlet elküldésekor a távoli Git-adattárba menti a teljes projektmappáról készült pillanatfelvételt. További részletekért tekintse meg a [Git-adattár és az Azure Machine Learning Workbench-projekt együttes használatát ismertető](using-git-ml-project.md) cikket.
+Létrehozhat egy Azure Repos-beli Git-adattárral társított új projektet. A rendszer minden kísérlet elküldésekor a távoli Git-adattárba menti a teljes projektmappáról készült pillanatfelvételt. További részletekért tekintse meg a [Git-adattár és az Azure Machine Learning Workbench-projekt együttes használatát ismertető](using-git-ml-project.md) cikket.
 
 > [!NOTE]
-> Az Azure Machine Learning csak az Azure DevOpsban létrehozott üres Git-adattárakat támogatja.
+> Az Azure Machine Learning csak az Azure Reposban létrehozott üres Git-adattárakat támogatja.
 
 ```azure-cli
-$ az ml project create --name <project name> --workspace <workspace name> --account <experimentation account name> --resource-group <resource group name> --path <local folder path> --repo <VSTS repo URL>
+$ az ml project create --name <project name> --workspace <workspace name> --account <experimentation account name> --resource-group <resource group name> --path <local folder path> --repo <repo URL>
 ```
 > [!TIP]
 > Ha „Az adattár URL-címe valószínűleg érvénytelen vagy a felhasználónak nincs hozzáférése” hibaüzenet jelenik meg, létrehozhat egy biztonsági tokent Azure DevOpsban (a _Security_ (Biztonság), _Add personal access tokens_ (Személyes hozzáférési tokenek hozzáadása) menüben), és a `--vststoken` argumentumot használhatja a projekt létrehozásakor. 

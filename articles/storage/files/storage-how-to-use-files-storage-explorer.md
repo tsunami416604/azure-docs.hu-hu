@@ -1,36 +1,29 @@
 ---
-title: Azure-fájlmegosztások felügyelete az Azure Storage Explorerrel
-description: Megismerheti, hogyan kezelheti az Azure Files szolgáltatást az Azure Storage Explorerrel.
+title: Rövid útmutató az Azure-fájlmegosztások felügyeletéhez az Azure Storage Explorerrel
+description: Ebből a rövid útmutatóból megtudhatja, hogyan felügyelheti az Azure Files szolgáltatást az Azure Storage Explorerrel.
 services: storage
 author: wmgries
 ms.service: storage
-ms.topic: get-started-article
-ms.date: 02/27/2018
+ms.topic: quickstart
+ms.date: 10/18/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 949d96bb1b5ffdc948737d4a47ffa14b2e344b5e
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: f86a86fd9858fcc6f0b78256da1e96effbcbe68c
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574731"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944218"
 ---
-# <a name="manage-azure-file-shares-with-azure-storage-explorer"></a>Azure-fájlmegosztások felügyelete az Azure Storage Explorerrel 
-Az [Azure Files](storage-files-introduction.md) a Microsoft egyszerűen használható felhőalapú fájlrendszere. Ez a cikk az Azure-fájlmegosztások az [Azure Storage Explorerrel](https://azure.microsoft.com/features/storage-explorer/) való használatának alapvető lépéseit mutatja be. A Storage Explorer a Windows, macOS és Linux esetén egyaránt elérhető népszerű ügyféleszköz. A Storage Explorer segítségével felügyelheti az Azure-fájlmegosztásokat és más tárolási erőforrásokat.
+# <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>Rövid útmutató: Azure-fájlmegosztások létrehozása és felügyelete az Azure Storage Explorerrel
+Ez az útmutató az [Azure-fájlmegosztások](storage-files-introduction.md) Azure Storage Explorerrel történő használatának alapvető lépéseit mutatja be. Az Azure-fájlmegosztások nem különböznek más fájlmegosztásoktól, a tárolásuk azonban a felhőben történik, és az Azure platform nyújt számukra támogatást. Az Azure-fájlmegosztások támogatják az iparági szabvány SMB protokollt, és lehetővé teszik a több gép, alkalmazás és példány közötti fájlmegosztást. 
 
+Az Azure Storage Explorer a Windows, macOS és Linux esetén egyaránt elérhető népszerű ügyféleszköz. A Storage Explorer segítségével felügyelheti az Azure-fájlmegosztásokat és más tárolási erőforrásokat.
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
+## <a name="prerequisites"></a>Előfeltételek
 A rövid útmutatóhoz a Storage Explorer telepítése szükséges. A letöltéséhez és telepítéséhez keresse fel az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) webhelyét.
-
-Ebben a cikkben az alábbiakkal ismerkedhet meg:
-
-> [!div class="checklist"]
-> * Erőforráscsoport és tárfiók létrehozása
-> * Azure-fájlmegosztás létrehozása 
-> * Könyvtár létrehozása
-> * Fájl feltöltése
-> * Fájl letöltése
-> * Megosztási pillanatkép létrehozása és használata
-
-Ha nem rendelkezik Azure-előfizetéssel, első lépésként létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 A Storage Explorer nem használható új erőforrások létrehozására. A bemutatóhoz hozzon létre egy tárfiókot az [Azure Portalon](https://portal.azure.com/). 
@@ -49,7 +42,7 @@ Ebben a rövid útmutatóban az Azure-fiókjával jelentkezzen be. Válassza az 
 ![A Microsoft Azure Storage Explorer – Csatlakozás ablak képernyőképe](./media/storage-how-to-use-files-storage-explorer/connect-to-azure-storage-1.png)
 
 ### <a name="create-a-file-share"></a>Fájlmegosztás létrehozása
-Az első Azure-fájlmegosztás létrehozása a *storageacct<random number>* tárfiókban:
+Az első Azure-fájlmegosztás létrehozása a `storageacct<random number>` tárfiókban:
 
 1. Bontsa ki a létrehozott tárfiókot.
 2. Kattintson a jobb gombbal a **Fájlmegosztások** elemre, majd válassza a **Fájlmegosztás létrehozása** lehetőséget.  
@@ -57,13 +50,12 @@ Az első Azure-fájlmegosztás létrehozása a *storageacct<random number>* tár
 
 3. Adja a *myshare* nevet a fájlmegosztásnak, majd nyomja le az Enter billentyűt.
 
-> [!IMPORTANT]  
-> A fájlmegosztások neve csak kisbetűket, számokat és kötőjeleket tartalmazhat (de nem kezdődhet kötőjellel). A fájlmegosztások és fájlok elnevezésére vonatkozó információkért tekintse meg a [megosztások, könyvtárak, fájlok és metaadatok elnevezésével és a rájuk való hivatkozással](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata) foglalkozó cikket.
+A fájlmegosztások neve csak kisbetűket, számokat és kötőjeleket tartalmazhat (de nem kezdődhet kötőjellel). A fájlmegosztások és fájlok elnevezésére vonatkozó információkért tekintse meg a [megosztások, könyvtárak, fájlok és metaadatok elnevezésével és a rájuk való hivatkozással](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata) foglalkozó cikket.
 
 Ha a fájlmegosztás létrejött, a jobb oldali panelen megnyílik a fájlmegosztás lapja. 
 
-## <a name="work-with-the-contents-of-an-azure-file-share"></a>Az Azure-fájlmegosztások tartalmának használata
-Most, hogy létrehozott egy Azure-fájlmegosztást, csatlakoztathatja azt az SMB szolgáltatással [Windows](storage-how-to-use-files-windows.md), [Linux](storage-how-to-use-files-linux.md) vagy [macOS](storage-how-to-use-files-mac.md) rendszeren. Másik megoldásként az Azure CLI-vel is használhatja az Azure-fájlmegosztást. Az Azure CLI használata azért előnyösebb a fájlmegosztás SMB-vel való csatlakoztatásánál, mert az Azure CLI-vel kezdeményezett kérések mindegyike a Fájl REST API-t használja. A Fájl REST API segítségével létrehozhat, módosíthat és törölhet fájlokat és könyvtárakat az SMB-hozzáféréssel nem rendelkező ügyfeleken is.
+## <a name="use-your-azure-file-share"></a>Az Azure-fájlmegosztás használata
+Most, hogy létrehozott egy Azure-fájlmegosztást, csatlakoztathatja azt az SMB szolgáltatással [Windows](storage-how-to-use-files-windows.md), [Linux](storage-how-to-use-files-linux.md) vagy [macOS](storage-how-to-use-files-mac.md) rendszeren. Másik megoldásként az Azure Storage Explorerrel is használhatja az Azure-fájlmegosztást. Az Azure Storage Explorer használata azért előnyösebb a fájlmegosztás SMB-vel való csatlakoztatásánál, mert az Azure Storage Explorerrel kezdeményezett kérések mindegyike a Fájl REST API-t használja. A Fájl REST API segítségével létrehozhat, módosíthat és törölhet fájlokat és könyvtárakat az SMB-hozzáféréssel nem rendelkező ügyfeleken is.
 
 ### <a name="create-a-directory"></a>Könyvtár létrehozása
 Egy könyvtár hozzáadása hierarchikus struktúrát biztosít a fájlmegosztás felügyeletéhez. A könyvtárban több szintet is létrehozhat. Az alkönyvtárak létrehozása előtt azonban mindig győződjön meg arról, hogy a szülőkönyvtárak léteznek. A myDirectory/mySubDirectory elérési út esetében például előbb a *myDirectory* könyvtárat kell létrehozni. Ezután hozhatja létre a *mySubDirectory* alkönyvtárat. 
@@ -89,41 +81,12 @@ Ha le szeretné tölteni a fájlmegosztásból valamelyik fájl másolatát, kat
 
 A letöltés állapota az ablak alján található **Tevékenységek** panelen látható.
 
-## <a name="create-and-modify-share-snapshots"></a>Megosztási pillanatképek létrehozása és módosítása
-A pillanatképek megőrzik az Azure-fájlmegosztások adott időpontban látható másolatát. A fájlmegosztások pillanatképei hasonlók az esetleg már ismert egyéb technológiákhoz:
-- [Kötet árnyékmásolata szolgáltatás (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) Windows-fájlrendszerekhez (például NTFS és ReFS)
-- [Logikaikötet-kezelő (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) pillanatképek Linux rendszerekhez
-- [Apple fájlrendszer (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) pillanatképek macOS rendszerhez
-
-Megosztási pillanatkép létrehozása:
-
-1. Kattintson a *myshare* fájlmegosztás lapjára.
-2. A felső menüben válassza a **Pillanatkép készítése** elemet. (A Storage Explorer ablakának méreteitől függően előfordulhat, hogy a beállítás megjelenítéséhez először a **Továbbiak** elemre kell kattintania.)  
-    ![Képernyőkép a menü Pillanatkép készítése gombjáról](media/storage-how-to-use-files-storage-explorer/create-share-snapshot-1.png)
-
-### <a name="list-and-browse-share-snapshots"></a>Megosztási pillanatképek listázása és böngészése
-A pillanatkép létrehozása után a **Fájlmegosztás pillanatképeinek megtekintése** elemet választva jelenítheti meg a megosztás pillanatképeinek listáját. (A Storage Explorer ablakának méreteitől függően előfordulhat, hogy a beállítás megjelenítéséhez először a **Továbbiak** elemre kell kattintania.) Az egyes megosztási pillanatképek böngészéséhez kattintson duplán a pillanatképre.
-
-![A Pillanatképek böngészése ablak képernyőképe](media/storage-how-to-use-files-storage-explorer/list-browse-snapshots-1.png)
-
-### <a name="restore-from-a-share-snapshot"></a>Visszaállítás megosztási pillanatképből
-Annak érdekében, hogy bemutathassuk a fájlok visszaállítását egy megosztás pillanatképéből, először törölnünk kell egy fájlt az éles Azure-fájlmegosztásból. Lépjen a *myDirectory* mappába, kattintson a jobb gombbal a feltöltött fájlra, majd válassza a **Törlés** elemet. A fájl visszaállítása a megosztás pillanatképéből:
-
-1. Válassza a **Fájlmegosztás pillanatképeinek megtekintése** elemet. (A Storage Explorer ablakának méreteitől függően előfordulhat, hogy a beállítás megjelenítéséhez először a **Továbbiak** elemre kell kattintania.)
-2. A megosztás pillanatképeinek listáján kattintson duplán a megosztás pillanatképére.
-3. A pillanatképben tallózva keresse meg a törölt fájlt. Válassza ki a fájlmegosztást, majd válassza a **Pillanatkép visszaállítása** elemet. (A Storage Explorer ablakának méreteitől függően előfordulhat, hogy a beállítás megjelenítéséhez először a **Továbbiak** elemre kell kattintania.) Megjelenik egy ablak, amely figyelmezteti, hogy a fájl visszaállítása felülírja a fájlmegosztás tartalmát, és a művelet nem vonható vissza. Kattintson az **OK** gombra.
-4. A fájlnak most az eredeti helyén kell lennie, az éles Azure-fájlmegosztás alatt.
-
-### <a name="delete-a-share-snapshot"></a>Megosztási pillanatkép törlése
-Megosztás pillanatképének törléséhez lépjen a [megosztások pillanatképeinek listájára](#list-and-browse-share-snapshots). Kattintson a jobb gombbal a törölni kívánt megosztás-pillanatképre, majd válassza a **Törlés** elemet.
-
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 A Storage Explorer nem használható erőforrások eltávolítására. A jelen gyors útmutató fölöslegessé vált elemeinek törléséhez az [Azure Portalt](https://portal.azure.com/) használhatja. 
 
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 
 ## <a name="next-steps"></a>További lépések
-- [Fájlmegosztások felügyelete az Azure Portal használatával](storage-how-to-use-files-portal.md)
-- [Fájlmegosztások felügyelete az Azure PowerShell használatával](storage-how-to-use-files-powershell.md)
-- [Fájlmegosztások felügyelete az Azure CLI használatával](storage-how-to-use-files-cli.md)
-- [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
+
+> [!div class="nextstepaction"]
+> [Mi az Azure Files?](storage-files-introduction.md)

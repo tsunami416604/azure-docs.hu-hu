@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Objektumészlelési projekt létrehozása – Custom Vision API, Python'
+title: 'Oktatóanyag: Objektumészlelési projekt létrehozása a Pythonhoz készült Custom Vision SDK-val – Custom Vision Service'
 titlesuffix: Azure Cognitive Services
 description: Hozzon létre projektet, adjon hozzá címkéket, töltsön fel képeket, tanítsa be a projektet és adjon előrejelzést az alapértelmezett végpont használatával.
 services: cognitive-services
@@ -10,22 +10,22 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 05/03/2018
 ms.author: areddish
-ms.openlocfilehash: f49f5ab32d834b32de54be2d96c3671ad46f79f3
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 36b283965766130e86e079c807139998cd01c8a6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363700"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958533"
 ---
-# <a name="tutorial-build-an-object-detection-project-with-python"></a>Oktatóanyag: Objektumészlelési projekt készítése Python nyelven
+# <a name="tutorial-create-an-object-detection-project-with-the-custom-vision-sdk-for-python"></a>Oktatóanyag: Objektumészlelési projekt létrehozása a Pythonhoz készült Custom Vision SDK-val
 
 Nézze meg, hogyan készít a Computer Vision API használatával objektumészlelési projektet egy egyszerű Python alkalmazás. Miután elkészült, adhat hozzá címkézett régiókat, tölthet fel képeket, betaníthatja a projektet, megkaphatja a projekt alapértelmezett előrejelzési végpont URL-címét és ezt a végpontot felhasználhatja kép programozott tesztelésére. Ez a nyílt forráskódú példa sablonként használható saját, Custom Vision API használatával készülő alkalmazásaihoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag használatához a következőkre lesz szüksége:
+Az oktatóanyag használatához a következőket kell tennie:
 
-- Vagy Python 2.7 + vagy Python 3.5+ telepítése.
+- Telepítse a Python 2.7 vagy újabb, illetve a Python 3.5 vagy újabb verzióját.
 - Pip telepítése.
 
 ### <a name="platform-requirements"></a>Platform követelmények

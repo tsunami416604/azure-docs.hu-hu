@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: ca00a414402c1cfdef55cfbde9291688f091bf77
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: aecb193d1d9a10dbb5c936401f9900c4b2be071f
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095919"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638240"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Az Azure Data Factory és a Data Factory 1. verziójának összehasonlítása
 Ez a cikk a Data Factoryt hasonlítja össze a Data Factory 1. verziójával. A Data Factory megismeréséhez tekintse meg a [Data Factoryt bemutató](introduction.md) cikket. A Data Factory 1. verziójának megismeréséhez olvassa el az [Azure Data Factory használatának első lépéseit](v1/data-factory-introduction.md) ismertető cikket. 
@@ -62,7 +62,7 @@ A [ForEach tevékenység](control-flow-for-each-activity.md) ismétlődő átvit
 Az [Until](control-flow-until-activity.md) tevékenység ugyanazokat a funkciókat biztosítja, mint a programnyelvek Do-Until ciklusos szerkezete. Egy tevékenységkészletet futtat le ciklusosan addig, amíg a tevékenységhez rendelt feltétel `true` értéket nem ad vissza. Megadhat egy időtúllépési értéket az Until tevékenységhez a Data Factoryban.  
 
 ### <a name="trigger-based-flows"></a>Eseményindító-alapú folyamatok
-A folyamatok igény szerint vagy időpont alapján indíthatók. A [Folyamatok és eseményindítók](concepts-pipeline-execution-triggers.md) című cikk részletes információkat tartalmaz az eseményindítókról. 
+A folyamatok igény szerint (esemény alapján, például blobbejegyzés esetén) vagy időpont alapján aktiválhatóak. A [Folyamatok és eseményindítók](concepts-pipeline-execution-triggers.md) című cikk részletes információkat tartalmaz az eseményindítókról. 
 
 ### <a name="invoking-a-pipeline-from-another-pipeline"></a>Folyamat meghívása egy másik folyamatból
 A [Folyamat végrehajtása tevékenység](control-flow-execute-pipeline-activity.md) lehetővé teszi egy Data Factory-folyamat számára egy másik folyamat meghívását.

@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Szöveget konvertáló parancsfájl – Translator Text, Java'
+title: 'Rövid útmutató: Szövegszkript átalakítása, Java – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban szöveget alakít át egy nyelven egy szkriptből egy másikba a Translator Text API és Java segítségével.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
-ms.author: nolachar
-ms.openlocfilehash: 47d0462dcf7e54a3c2b2e2ea8b713b02af2baf37
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.author: erhopf
+ms.openlocfilehash: 53482c725b2cb20ec8c53354ee9683bb0c4c61d0
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297429"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645217"
 ---
-# <a name="quickstart-transliterate-text-with-java"></a>Rövid útmutató: Szöveg átírása a Java használatával
+# <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-java"></a>Rövid útmutató: Szöveg átírása a Translator Text REST API használatával (Java)
 
 Ebben a rövid útmutatóban szöveget fog átalakítani egy nyelven egyik szkriptből egy másikba a Translator Text API segítségével.
 

@@ -1,24 +1,30 @@
 ---
-title: 'Rövid útmutató: Tudásbázis frissítése Python nyelven – QnA Maker'
-description: Tudásbázis frissítése Python nyelven a QnA Makerhez.
+title: 'Rövid útmutató: Tudásbázis frissítése – REST, Python – QnA Maker'
+description: Ez a REST-alapú rövid útmutató végigvezeti egy QnA Maker-tudásbázisminta (KB) programozott módon való frissítésén. A tudásbázis frissítéséhez használt JSON-definíció lehetővé teszi kérdés-válasz párosok hozzáadását, módosítását vagy törlését.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: d58e12df30ab1b45e460cf8a4ea098d350164ec3
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 35ef0222de6093e7bae3b41377db2ea3fd3c3d75
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031934"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645914"
 ---
-# <a name="update-a-knowledge-base-in-python"></a>Tudásbázis frissítése Python nyelven
+# <a name="quickstart-update-a-knowledge-base-in-qna-maker-using-python"></a>Rövid útmutató: Tudásbázis frissítése a QnA Makerben a Python használatával
 
-A következő kód egy meglévő tudásbázist frissít az [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) metódussal.
+Ez a rövid útmutató végigvezeti egy meglévő QnA Maker tudásbázis (KB) programozott módon való frissítésén.  Ez a JSON lehetővé teszi, hogy adatforrások hozzáadásával, módosításával vagy törlésével frissítse a tudásbázist.
+
+Ez az API egyenértékű azzal, mintha szerkesztést végezne, majd a QnA Maker portál **Save and train** (Mentés és betanítás) gombját használná.
+
+Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
+* [Frissítés](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) – A tudásbázis modelljét az API-kérés törzsében küldött JSON definiálja. 
+* [Műveletek részleteinek lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
 
 [!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 

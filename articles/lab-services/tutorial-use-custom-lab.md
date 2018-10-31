@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: cd623767c9627810afb64ca9185c991c5c9f3858
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ab52206230c4dfe2d92c97f1e291ee00a086c570
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638024"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470863"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Oktatóanyag: Tesztkörnyezet elérése az Azure DevTest Labs szolgáltatásban
 Ebben az oktatóanyagban az [Oktatóanyag: Tesztkörnyezet létrehozása az Azure DevTest Labs szolgáltatásban](tutorial-create-custom-lab.md) című szakaszban létrehozott tesztkörnyezetet használatát ismerheti meg.
@@ -57,6 +57,10 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
     ![Csatlakozás virtuális géphez](./media/tutorial-use-custom-lab/connect-button.png)
 2. Mentse a letöltött **RDP**-fájlt a merevlemezre, majd a használatával csatlakozzon a virtuális géphez. Adja meg a felhasználónevet és jelszót, amelyeket a virtuális gép létrehozásakor határozott meg. 
+
+    > [!NOTE] 
+    > Linux rendszerű virtuális géphez való csatlakozáshoz a virtuális gép esetében engedélyezni kell az SSH- vagy az RDP-hozzáférést. A Linux rendszerű virtuális gépekhez történő RDP-csatlakozással kapcsolatban lásd: [Távoli asztal telepítése és konfigurálása Azure-beli Linux virtuális géphez való csatlakozáshoz](../virtual-machines/linux/use-remote-desktop.md). 
+
 
 ## <a name="unclaim-the-vm"></a>A virtuális gép lefoglalásának feloldása
 Ha már nem használja a virtuális gépet, az alábbi lépéseket követve oldja fel azt: 

@@ -1,25 +1,25 @@
 ---
-title: 'Rövid útmutató: Java nyelvű API – Tudásbázis létrehozása – QnA Maker'
+title: 'Rövid útmutató: Tudásbázis létrehozása – REST, Java – QnA Maker'
 titlesuffix: Azure Cognitive Services
-description: Ez a rövid útmutató programozott módon végigvezeti egy minta QnA Maker tudásbázis létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
+description: Ez a REST-alapú rövid útmutató végigvezeti egy olyan minta QnA Maker-tudásbázis programozott módon történő létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 572895e51d579efb3b141322a87e374283af1648
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 72a687d6a67ba8e4ccc49cf622cb368e7c8d0db2
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384701"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649669"
 ---
-# <a name="create-a-new-knowledge-base-in-java"></a>Új tudásbázis létrehozása Java nyelven
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Rövid útmutató: Tudásbázis létrehozása a QnA Makerben a Java használatával
 
-Ez a rövid útmutató programozott módon végigvezeti egy minta QnA Maker tudásbázis létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
+Ez a rövid útmutató végigvezeti egy minta QnA Maker-tudásbázis programozott módon való létrehozásán. A QnA Maker automatikusan nyer ki kérdéseket és válaszokat a félig strukturált tartalmak, például a gyakori kérdések közül, az [adatforrásokból](../Concepts/data-sources-supported.md). A tudásbázis modelljét az API-kérés törzsében küldött JSON definiálja. 
 
 [!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 

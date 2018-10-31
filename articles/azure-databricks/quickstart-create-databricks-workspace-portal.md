@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 07/23/2018
 ms.custom: mvc
-ms.openlocfilehash: becf592d07f650c00263e26ccff2ad8525310dac
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 38e254c3ddc976a0ffebaa8c6fe1c60fd3b7c840
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363475"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025565"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Rövid útmutató: Spark-feladatok futtatása Azure Databricksen az Azure Portal használatával
 
@@ -77,7 +77,7 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
     * Adjon egy nevet a fürtnek.
     * Ehhez a cikkhez a **4.0** futtatókörnyezetben hozzon létre fürtöt. 
-    * Mindenképpen jelölje be a **Leállítás ___ percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
+    * Mindenképpen jelölje be a **Leállítás \_\_ percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
     
     Válassza a **Fürt létrehozása** lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat. 
 

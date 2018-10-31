@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4a92bfc9d682346c874ce91fc9835558402bae84
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 1d9f84a176d4c2483c83e8961bf426e70933aaa2
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078987"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457153"
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>Azure-erőforrások előkészítése helyszíni gépek replikálásához
 
@@ -21,7 +21,8 @@ ms.locfileid: "49078987"
 
 Ez az oktatóanyag az első rész abban a sorozatban, amely bemutatja, hogyan állíthat be vészhelyreállítást helyszíni virtuális gépekhez. Lényeges szempont, hogy helyszíni VMware virtuális gépek, Hyper-V virtuális gépek vagy fizikai kiszolgálók számára kíván védelmet biztosítani.
 
-Az oktatóanyagokat úgy terveztük meg, hogy az adott forgatókönyvhöz a legegyszerűbb üzembehelyezési utat mutassák be. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. 
+> [!NOTE]
+> Az oktatóanyagokat úgy terveztük meg, hogy az adott forgatókönyvhöz a legegyszerűbb üzembehelyezési utat mutassák be. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. Részletes utasításokért lásd a **vonatkozó forgatókönyvet ismertető** szakaszt.
 
 A cikk bemutatja, hogyan készítse elő az Azure-összetevőket, amikor helyszíni virtuális gépeket (Hyper-V vagy VMware) vagy Windows/Linux rendszerű fizikai kiszolgálókat szeretne replikálni az Azure-ba. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

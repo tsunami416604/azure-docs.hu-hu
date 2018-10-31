@@ -1,22 +1,23 @@
 ---
-title: Mi az a beszédszolgáltatás?
-description: 'A Speech service a Microsoft Cognitive Services részét képezi, és több, korábban külön elérhető Azure-beszédszolgáltatást egyesít: a Bing Speech (beszédfelismerés és szövegfelolvasás), a Custom Speech és a beszédfordítási szolgáltatást.'
+title: Mi az a Speech Service?
 titleSuffix: Azure Cognitive Services
+description: 'A Speech service az Azure Cognitive Services részét képezi, és több, korábban külön elérhető beszédszolgáltatást egyesít: a Bing Speech (beszédfelismerés és szövegfelolvasás), a Custom Speech és a beszédfordítási szolgáltatást.'
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: overview
 ms.date: 09/24/2018
 ms.author: erhopf
-ms.openlocfilehash: 7a61d85d96b993d49a536c38c2907a3d6ef55e65
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: ba4204c23f3467ff07940fd6a72464e67604dde1
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365458"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470446"
 ---
-# <a name="what-is-the-speech-service"></a>Mi az a beszédszolgáltatás?
+# <a name="what-is-the-speech-service"></a>Mi az a Speech Service?
 
 
 A többi Azure-beszédszolgáltatáshoz hasonlóan a Speech service hátterét is azok a beszédtechnológiák adják, amelyeket többek között a Cortana vagy a Microsoft Office is használ.

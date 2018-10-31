@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Szöveg fordítása – Translator Text, Node.js'
+title: 'Rövid útmutató: Szöveg lefordítása, Node.js – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban szöveget fordít le egy nyelvről egy másikra a Translator Text API és Node.js segítségével.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
-ms.author: nolachar
-ms.openlocfilehash: fe81b7fffd1705cb940e3aa52f397cf0f2cf1b14
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: fc6995c44e145b12a1173e7b4ac650348c1c180a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122182"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648479"
 ---
-# <a name="quickstart-translate-text-with-nodejs"></a>Rövid útmutató: Szöveg lefordítása a Node.js használatával
+# <a name="quickstart-translate-text-with-the-translator-text-rest-api-nodejs"></a>Rövid útmutató: Szöveg lefordítása a Translator Text REST API (Node.js) használatával
 
 Ebben a rövid útmutatóban szöveget fordít le egy nyelvről egy másikra a Translator Text API segítségével.
 

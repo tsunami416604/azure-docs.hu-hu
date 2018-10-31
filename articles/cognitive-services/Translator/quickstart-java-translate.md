@@ -1,23 +1,23 @@
 ---
-title: 'Rövid útmutató: Szöveg fordítása – Translator Text, Java'
+title: 'Rövid útmutató: Szöveg lefordítása, Java – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban szöveget fordít le egy nyelvről egy másikra a Translator Text API segítségével Javával.
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
-ms.author: nolachar
-ms.openlocfilehash: 806ab636827d873c5c23e4964492c144d1489a95
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 5a2b478d39f14b993a389fc48e037e1980d83e52
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126190"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646144"
 ---
-# <a name="quickstart-translate-text-with-java"></a>Rövid útmutató: Szöveg lefordítása a Java használatával
+# <a name="quickstart-translate-text-with-the-translator-text-rest-api-java"></a>Rövid útmutató: Szöveg lefordítása a Translator Text REST API használatával (Java)
 
 Ebben a rövid útmutatóban szöveget fordít le egy nyelvről egy másikra a Translator Text API segítségével.
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 5a93feec7996fc0ebf742b8d62b159dca5f1c1ed
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c3eecfdf4bc2e6bf6798a6b3845cdc2e2e243341
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636987"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467429"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Oktatóanyag: Tesztkörnyezet létrehozása az Azure DevTest Labs szolgáltatással
 Ebben az oktatóanyagban létrehoz egy tesztkörnyezetet az Azure Portalon. A tesztkörnyezet rendszergazdája létrehozza a tesztkörnyezetet a vállalaton belül és a virtuális gépeket a tesztkörnyezetben, továbbá konfigurálja a szabályzatokat. A tesztkörnyezet felhasználói (például a fejlesztők és a tesztelők) lefoglalják a tesztkörnyezet virtuális gépeit, csatlakoznak azokhoz, és használják azokat. 
@@ -55,7 +55,7 @@ A következő lépések bemutatják, hogyan használhatja az Azure Portalt labor
 1. A **DevTest Labs-tesztkörnyezet** lapon kattintson az eszköztár **+ Hozzáadás** elemére. 
 
     ![Hozzáadás gomb](./media/tutorial-create-custom-lab/add-vm-to-lab-button.png)
-1. Az **Alap kiválasztása** lapon keressen az **Ubuntu** kulcsszóra, majd válasszon ki egy alaprendszerképet a listából. 
+1. Az **Alap kiválasztása** lapon keressen egy kulcsszóra (például Windows vagy Ubuntu), majd válasszon ki egy alaprendszerképet a listából. 
 1. A **Virtuális gép** oldalon tegye a következőket: 
     1. A **Virtuális gép neve** mezőbe írja be a virtuális gép nevét. 
     2. A **Felhasználónév** mezőbe írja be a felhasználó nevét, aki hozzáférhet a virtuális géphez. 
@@ -71,6 +71,9 @@ A következő lépések bemutatják, hogyan használhatja az Azure Portalt labor
 
         ![Virtuális gép létrehozásának állapota](./media/tutorial-create-custom-lab/vm-creation-status.png)
 1. A létrehozott virtuális gép megjelenik a **Lefoglalható virtuális gépek** listában. 
+
+    > [!NOTE] 
+    > Amikor egy Linux rendszerű virtuális gépet ad hozzá egy laborhoz, engedélyezheti a virtuális gép SSH- és RDP-hozzáférését. Ha a virtuális gép létrehozása során nem engedélyezi a hozzáférést, az SSH- és RDP-portok megnyitására szolgáló szabályokat manuálisan is hozzáadhatja a virtuális géphez tartozó hálózati biztonsági csoportban.
 
 ## <a name="add-a-user-to-the-lab-user-role"></a>Felhasználó hozzáadása a tesztkörnyezet-felhasználó szerepkörhöz
 
