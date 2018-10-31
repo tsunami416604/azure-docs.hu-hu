@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: fc4b2f153c89d4253bc3fdd9c5a49973baa38752
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 79a6636043499cffb7eded409cdc27c56de98e33
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310215"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430221"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Oktatóanyag: Új Azure AD-jelszó kérése a bejelentkezési képernyőről
 
@@ -118,6 +118,8 @@ Ha a szabályzat a Ctrl+Alt+Del billentyűparancs használatát követeli meg, v
 Az Azure AD auditnaplója információkat tartalmaz az IP-címről és az ügyféltípusról, ahol az új jelszó kérése megtörtént.
 
 ![Példa új jelszó kérésére a bejelentkezési képernyőn az Azure AD auditnaplójában](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+
+Ha a Windows 10-es gépek proxykiszolgáló vagy tűzfal mögött találhatók, a passwordreset.microsoftonline.com és ajax.aspnetcdn.com helyekre irányuló HTTPS-forgalmat (443) engedélyezni kell.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 07/17/2018
 ms.author: danlep
-ms.openlocfilehash: 62457fe5b0336cb6ae6ac4fc63f4884ed14cf9d3
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: dc6aab03ec3e0ec47026c7d435ea538612c7bffb
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856037"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405599"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>Tárolópéldány-naplózás az Azure Log Analytics használatával
 
@@ -100,7 +100,7 @@ Röviddel a parancs kiadását követően választ kell kapnia az Azure-tól, am
 
 A tárolócsoport üzembe helyezése után néhány percbe telik (legfeljebb 10 percbe), hogy az Azure Portalon megjelenjenek az első naplóbejegyzések. A tárolócsoport naplóinak megtekintéséhez nyissa meg a Log Analytics-munkaterületet, majd:
 
-1. Az **OMS-munkaterület** áttekintésénél válassza ki a **Naplók keresése** lehetőséget
+1. Az **OMS-munkaterület** áttekintésénél válassza a **Naplók keresése** lehetőséget. Az OMS-munkaterületeket mostantól Log Analytics-munkaterületeknek nevezzük.  
 1. A **További kipróbálható lekérdezések** között válassza ki **Az összes összegyűjtött adat** hivatkozást
 
 Ekkor számos eredményt kell megjelenítenie a `search *` lekérdezésnek. Ha elsőre nem lát eredményeket, várjon néhány percet, majd kattintson a **FUTTATÁS** gombra a lekérdezés újbóli végrehajtásához. Alapértelmezés szerint a naplóbejegyzések „Lista” nézetben jelennek meg. Válassza a **tábla** lehetőséget a tömörebb formában való megjelenítéshez. Ezután a sorokat kibontva tekintheti meg az egyes naplóbejegyzések tartalmát.

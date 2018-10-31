@@ -1,6 +1,6 @@
 ---
 title: Azure-webalkalmazás létrehozása az Ansible (előzetes verzió) használatával
-description: Megtudhatja, hogy az Ansible használatával Linux rendszeren hogyan hozhat létre webalkalmazást Java 8-cal és Tomcat-tároló futtatókörnyezettel az App Service-ben
+description: Megtudhatja, hogyan hozhat létre az Ansible használatával Linux rendszeren webalkalmazást Java 8-cal és Tomcat-tároló futtatókörnyezettel az App Service-ben.
 ms.service: ansible
 keywords: ansible, azure, devops, bash, forgatókönyv, Azure App Service, webalkalmazás, Java
 author: tomarcher
@@ -8,29 +8,29 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/20/2018
-ms.openlocfilehash: 1899b1fc1e0a38d859fb3a7ce2153585579650f3
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 48b4c201b2b96bd4662e8c90be7298a4f418af53
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586668"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426554"
 ---
-# <a name="create-azure-app-service-web-apps-using-ansible-preview"></a>Azure App Service Web Apps létrehozása az Ansible (előzetes verzió) használatával
-Az [Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) (vagy röviden Web Apps) webalkalmazásokat, REST API-kat és mobilháttereket üzemeltető szolgáltatás. Kedvenc nyelvén fejleszthet, legyen az .NET, .NET Core, Java, Ruby, Node.js, PHP, vagy Python.
+# <a name="create-azure-app-service-web-apps-by-using-ansible-preview"></a>Azure App Service Web Apps létrehozása az Ansible (előzetes verzió) használatával
+Az [Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) (vagy röviden Web Apps) webalkalmazásokat, REST API-kat és mobilháttereket üzemeltet. Kedvenc nyelvén fejleszthet, legyen az&mdash;.NET, .NET Core, Java, Ruby, Node.js, PHP vagy Python.
 
-Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Ebből a cikkből megtudhatja, hogyan hozhat létre webalkalmazást Java futtatókörnyezettel az Ansible használatával. 
+Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Ebből a cikkből megtudhatja, hogyan hozhat létre az Ansible segítségével webalkalmazásokat Java futtatókörnyezet használatával. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 - **Azure-előfizetés** – Ha nem rendelkezik Azure-előfizetéssel, első lépésként hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> Az oktatóanyagban szereplő következő forgatókönyvek futtatásához az Ansible 2.7-es verziója szükséges. A `sudo pip install ansible[azure]==2.7.0rc2` parancs futtatásával telepítheti az Ansible 2.7 RC verziót. Az Ansible 2.7 2018 októberében válik elérhetővé. Ezt követően nem kell megadnia a verziót, mert az alapértelmezett verzió a 2.7-es lesz. 
+> Az oktatóanyagban szereplő következő forgatókönyvek futtatásához az Ansible 2.7-es verziója szükséges. Az Ansible 2.7 RC verziót a `sudo pip install ansible[azure]==2.7.0rc2` parancs futtatásával telepítheti. Az Ansible 2.7-es kiadását követően nem kell megadnia a verziót, mert az alapértelmezett verzió a 2.7-es lesz. 
 
 ## <a name="create-a-simple-app-service"></a>Egyszerű App Service létrehozása
 Ez a szakasz egy Ansible-mintaforgatókönyvet mutat be, amely az alábbi erőforrásokat határozza meg:
 - Erőforráscsoport, amelyben az App Service-csomagot és a webalkalmazást üzembe helyezi
-- Webalkalmazás, egy webalkalmazás Java 8-cal és Tomcat-tároló futtatókörnyezettel az App Service-ben, Linux rendszeren
+- Webalkalmazás Java 8-cal és a Tomcat-tároló futtatókörnyezettel az App Service-ben, Linux rendszeren
 
 ```
 - hosts: localhost
@@ -62,7 +62,7 @@ Ez a szakasz egy Ansible-mintaforgatókönyvet mutat be, amely az alábbi erőfo
               java_container: tomcat
               java_container_version: 8.5
 ```
-Mentse a fenti forgatókönyvet firstwebapp.yml néven.
+Mentse a fenti forgatókönyvet **firstwebapp.yml** néven.
 
 A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
 ```bash
@@ -84,8 +84,8 @@ PLAY RECAP *********************************************************************
 localhost                  : ok=2    changed=2    unreachable=0    failed=0   
 ```
 
-## <a name="create-app-service-with-traffic-manager"></a>App Service létrehozása a Traffic Manager használatával
-Az [Azure Traffic Manager](https://docs.microsoft.com/azure/app-service/web-sites-traffic-manager) használatával irányíthatja, hogyan legyenek elosztva a webes ügyfelektől származó kérések az alkalmazások között az Azure App Service-ben. Amikor App Service-végpontokat ad egy Azure Traffic Manager-profilhoz, az Azure Traffic Manager nyomon követi az App Service-alkalmazások állapotát (fut, leállítva vagy törölve), így eldöntheti, hogy melyik végpont kapja a forgalmat.
+## <a name="create-an-app-service-by-using-traffic-manager"></a>App Service létrehozása a Traffic Manager használatával
+Az [Azure Traffic Manager](https://docs.microsoft.com/azure/app-service/web-sites-traffic-manager) használatával irányíthatja, hogyan legyenek elosztva a webes ügyfelektől származó kérések az alkalmazások között az Azure App Service-ben. Amikor App Service-végpontokat ad egy Azure Traffic Manager-profilhoz, a Traffic Manager nyomon követi az App Service-alkalmazások állapotát. Az állapotok lehetnek: fut, leállítva és törölve. A Traffic Manager így eldöntheti, hogy melyik végpontok fogadják a forgalmat.
 
 Az App Service-ben az alkalmazások [App Service-csomagban](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview
 ) futnak. Az App Service-csomagok határozzák meg a futtatni kívánt webalkalmazások számítási erőforrásait. Különböző csoportokban kezelheti az App Service-csomagot és a webalkalmazást.
@@ -94,9 +94,9 @@ Ez a szakasz egy Ansible-mintaforgatókönyvet mutat be, amely az alábbi erőfo
 - Erőforráscsoport, amelyben az App Service-csomagot üzembe helyezi
 - App Service-csomag
 - Másodlagos erőforráscsoport, amelyben a webalkalmazást üzembe helyezi
-- Webalkalmazás, egy webalkalmazás Java 8-cal és Tomcat-tároló futtatókörnyezettel az App Service-ben, Linux rendszeren
+- Webalkalmazás Java 8-cal és a Tomcat-tároló futtatókörnyezettel az App Service-ben, Linux rendszeren
 - Traffic Manager-profil
-- Traffic Manager-végpont, létrehozott webhellyel
+- Traffic Manager-végpont, a létrehozott webhellyel
 
 ```
 - hosts: localhost
@@ -179,7 +179,7 @@ Ez a szakasz egy Ansible-mintaforgatókönyvet mutat be, amely az alábbi erőfo
       target_resource_id: "{{ webapp.webapps[0].id }}"
 
 ```
-Mentse a fenti forgatókönyvet webapp.yml néven, vagy [töltse le a forgatókönyvet](https://github.com/Azure-Samples/ansible-playbooks/blob/master/webapp.yml).
+Mentse a fenti forgatókönyvet **webapp.yml** néven, vagy [töltse le a forgatókönyvet](https://github.com/Azure-Samples/ansible-playbooks/blob/master/webapp.yml).
 
 A forgatókönyv futtatásához használja az **ansible-playbook** parancsot a következőképpen:
 ```bash

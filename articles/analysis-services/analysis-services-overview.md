@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d09fcde90cf182bc8197c579718ecef7c5ce1eed
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 3cdc4a8a670b5af43e72b38d7a3b6d9aafdac348
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394527"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429439"
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 
@@ -81,29 +81,34 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 |Dél-Brazília     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Közép-Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |USA keleti régiója     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
-|USA 2. keleti régiója     |     B1, B2, S0, S1, S2, S4, D1  <br>S8, S9   |    7<br>1    |
+|USA 2. keleti régiója     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
+|USA 2. keleti régiója     |     S8, S9   |    1    |
 |USA északi középső régiója     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA déli középső régiója     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA nyugati középső régiója   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
-|USA nyugati régiója     |    B1, B2, S0, S1, S2, S4, D1  <br>S8, S9   |    7<br>2  |
-|USA 2. nyugati régiója    |    B1, B2, S0, S1, S2, S4, D1   <br>S8, S9  |    3<br>1     |
+|USA nyugati régiója     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
+|USA nyugati régiója     |    S8, S9   |    2  |
+|USA 2. nyugati régiója    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
+|USA 2. nyugati régiója    |    S8, S9  |    1     |
 
 ### <a name="europe"></a>Európa
 
 |Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Észak-Európa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
-|Az Egyesült Királyság déli régiója   |    B1, B2, S0, S1, S2, S4, D1      |     1    |
-|Nyugat-Európa     |    B1, B2, S0, S1, S2, S4, D1   <br>S8, S9    |    7<br>1     |
+|Az Egyesült Királyság déli régiója     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
+|Nyugat-Európa     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
+|Nyugat-Európa    |   S8, S9  |  1  |
 
 ### <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség 
 
 |Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
+|Kelet-Ausztrália     |    B1, B2, S0, S1, S2, S4     |    3     |
+|Kelet-Ausztrália     |    S8, S9    |    1     |
 |Délkelet-Ausztrália     | B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Kelet-Ausztrália     |    B1, B2, S0, S1, S2, S4    <br>S8, S9    |    3<br>1     |
-|Kelet-Japán  |   B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Kelet-Japán     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Délkelet-Ázsia     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |   1      |
 |Nyugat-India     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
@@ -184,9 +189,11 @@ További információk az Azure Securityről: [Microsoft biztonsági és adatkez
 
 ![BI-fejlesztői eszközök](./media/analysis-services-overview/aas-overview-dev-tools.png)
 
-### <a name="sql-server-data-tools-ssdt-for-visual-studio"></a>Visual Studióhoz készült SQL Server Data Tools (SSDT)
+### <a name="visual-studio"></a>Visual Studio
 
-Az ingyenes [Visual Studióhoz készült SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx) használatával modelleket fejleszthet és helyezhet üzembe. Az SSDT Analysis Services-projektsablonokat is tartalmaz a gyors üzembe állítás érdekében. Az SSDT már tartalmazza a Tabular 1400-modellekkel használható modern Adatok lekérése adatforrás-lekérdezési és adategyesítési funkciót is. Ha már ismeri a Power BI Desktop és az Excel 2016 Adatok lekérése funkcióját, akkor tudja, milyen egyszerűen hozhat létre nagymértékben testre szabott adatforrás-lekérdezéseket. A Microsoft Analysis Services-projektek telepíthető VSIX-csomagként érhetők el a Visual Studióhoz. [Letöltés a Marketplace-ről](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects).
+Az ingyenes [Visual Studióhoz készült SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx) használatával modelleket fejleszthet és helyezhet üzembe. Az SSDT Analysis Services-projektsablonokat is tartalmaz a gyors üzembe állítás érdekében. Az SSDT már tartalmazza a Tabular 1400-modellekkel használható modern Adatok lekérése adatforrás-lekérdezési és adategyesítési funkciót is. Ha már ismeri a Power BI Desktop és az Excel 2016 Adatok lekérése funkcióját, akkor tudja, milyen egyszerűen hozhat létre nagymértékben testre szabott adatforrás-lekérdezéseket. 
+
+A Visual Studio 2017 használata esetén a Microsoft Analysis Services-projektek ingyenesen telepíthető VSIX-csomagként elérhetők. [Letöltés a Marketplace-ről](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects).
 
 ### <a name="sql-server-management-studio"></a>Sql Server Management Studio
 

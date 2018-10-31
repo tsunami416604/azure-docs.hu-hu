@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0404774f1cb347ceead8b78d1a9a6506712dea5c
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: ab79201442fe9c7334525972c34eba86daf27e99
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069097"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457425"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása
 
@@ -27,6 +27,9 @@ Az oktatóanyag bemutatja, hogyan állíthat be vészhelyreállítást egy máso
 > * A célerőforrások beállításainak ellenőrzése.
 > * Virtuális gépek kimenő hozzáférésének beállítása.
 > * Virtuális gép replikálásának engedélyezése
+
+> [!NOTE]
+> Ennek az oktatóanyagnak a célja, hogy végigvezesse a felhasználót a replikáció engedélyezésének folyamatán minimális testreszabással. Amennyiben részletesebben szeretné megismerni a vészhelyreállítással kapcsolatos különféle szempontokat, beleértve a hálózatkezelést, az automatizálást és a hibaelhárítást, tekintse meg az Azure-beli virtuális gépekre vonatkozó ismertető dokumentumokat.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -193,7 +196,7 @@ Az alapértelmezett titkosítási beállítások felülbírálásához és egyé
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy Azure-beli virtuális gép vészhelyreállítását konfigurálta. A következő lépés a konfiguráció tesztelése.
+Ebben az oktatóanyagban egy Azure-beli virtuális gép vészhelyreállítását konfigurálta. A következő lépés a konfiguráció tesztelése egy DR-részletezés indításával.
 
 > [!div class="nextstepaction"]
 > [Vészhelyreállítási próba végrehajtása](azure-to-azure-tutorial-dr-drill.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-példaszkript – Linux rendszerű virtuális gép létrehozása OMS-monitorozással | Microsoft Docs
-description: Azure CLI-példaszkript – Linux rendszerű virtuális gép létrehozása OMS-monitorozással
+title: Azure CLI-példaszkript – Linux rendszerű virtuális gép létrehozása Azure-beli monitorozással | Microsoft Docs
+description: Azure CLI-példaszkript – Linux rendszerű virtuális gép létrehozása Azure-beli monitorozással
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 92bc86a1db4aca563a089e20c3e19557517f2d9b
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: cedb8d9c2ef4acd9d7a896153bce6be790ed83a3
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932619"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407964"
 ---
-# <a name="monitor-a-vm-with-operations-management-suite"></a>Virtuális gép monitorozása az Operations Management Suite használatával
+# <a name="monitor-a-vm-with-azure-monitoring"></a>Virtuális gép monitorozása az Azure Monitor használatával
 
-Ez a szkript egy Azure-beli virtuális gépet hoz létre, telepíti az Operations Management Suite- (OMS-) ügynököt, és regisztrálja a rendszert egy OMS-munkaterületen. A szkript futtatását követően a virtuális gép megjelenik az OMS-konzolon.
+Ez a szkript egy Azure-beli virtuális gépet hoz létre, telepíti a Log Analytics-ügynököt, és regisztrálja a rendszert egy Log Analytics-munkaterületen. A szkript futtatását követően a virtuális gép megjelenik a konzolon.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -51,7 +51,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | Létrehozza a virtuális gépet, és csatlakoztatja a hálózati kártyához, a virtuális hálózathoz, az alhálózathoz és az NSG-hez. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai jelszavakat.  |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Futtat egy virtuálisgép-bővítményt egy virtuális gépen. Ebben az esetben az Operations Management Suite-ügynökbővítmény telepíti az OMS-ügynököt, és regisztrálja a virtuális gépet egy OMS-munkaterületen. |
+| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Futtat egy virtuálisgép-bővítményt egy virtuális gépen. Ebben az esetben a Log Analytics-ügynökbővítmény telepíti a Log Analytics-ügynököt, és regisztrálja a virtuális gépet egy Log Analytics-munkaterületen. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések

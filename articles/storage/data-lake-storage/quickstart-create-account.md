@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 4c3354786d7320caee0dfe2f0eca44909d77f2fe
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 2dae7938c63ee141ea6705ab4c324882f575e298
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386851"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426872"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>Rövid útmutató: Előzetes verziójú, 2. generációs Azure Data Lake Storage-tárfiók létrehozása
 
@@ -87,7 +87,7 @@ Az Azure Portalon a következő lépések végrehajtásával hozhat létre egy e
 Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozásához az Azure Portalon:
 
 > [!NOTE]
-> A hierarchikus névtér csak a következő régiókban támogatott: USA keleti régiója, USA keleti régiója 2, USA nyugati régiója, USA nyugati régiója 2, USA nyugati középső régiója, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia és Kelet-Ausztrália. A tárfiók létrehozásakor ügyeljen arra, hogy a két régió valamelyikét adja meg.
+> A hierarchikus névtér jelenleg minden nyilvános régióban elérhető, a privát régiókban azonban nem. Szuverén felhőkben jelenleg nem érhető el.
 
 1. Az Azure Portalon nyissa ki bal oldalon a szolgáltatásmenüt, és válassza a **Minden szolgáltatás** lehetőséget. Ezután görgessen le a **Storage** szakaszig, és válassza a **Storage-fiókok** lehetőséget. A megjelenő **Storage-fiókok** ablakban válassza a **Hozzáadás** lehetőséget.
 2. Adja meg a tárfiók nevét.
@@ -135,7 +135,7 @@ Ezután indítsa újra a felületet.
 Az új erőforráscsoport PowerShell használatával történő létrehozása a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) paranccsal történik: 
 
 > [!NOTE]
-> A hierarchikus névtér csak a következő régiókban támogatott: USA keleti régiója, USA keleti régiója 2, USA nyugati régiója, USA nyugati régiója 2, USA nyugati középső régiója, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia és Kelet-Ausztrália. A tárfiók létrehozásakor ügyeljen arra, hogy a két régió valamelyikét adja meg.
+> > A hierarchikus névtér jelenleg minden nyilvános régióban elérhető, a privát régiókban azonban nem. Szuverén felhőkben jelenleg nem érhető el.
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -196,7 +196,7 @@ az group create \
 ```
 
 > [!NOTE]
-> A hierarchikus névtér csak a következő régiókban támogatott: USA keleti régiója, USA keleti régiója 2, USA nyugati régiója, USA nyugati régiója 2, USA nyugati középső régiója, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia és Kelet-Ausztrália. A tárfiók létrehozásakor ügyeljen arra, hogy a két régió valamelyikét adja meg.
+> > A hierarchikus névtér jelenleg minden nyilvános régióban elérhető, a privát régiókban azonban nem. Szuverén felhőkben jelenleg nem érhető el.
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>Általános célú 2-es verziójú tárfiók létrehozása
 

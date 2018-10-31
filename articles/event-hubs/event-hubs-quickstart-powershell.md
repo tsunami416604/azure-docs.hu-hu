@@ -11,23 +11,24 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 305776db1d3e0bacc266e514e0a59fe6b3fbd4b4
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 25c64b3ac2d051aac5998d23f07e149a1dd57bc9
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388527"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456229"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Rövid útmutató: Eseményközpont létrehozása a PowerShell-lel
 
-Az Azure Event Hubs egy kiválóan méretezhető adatstreamelési platform és feldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Ez a rövid útmutató bemutatja, hogyan hozhat létre egy eseményközpontot az Azure PowerShell-lel, majd hogyan küldhet, illetve fogadhat adatokat egy eseményközpontból a .NET Standard SDK használatával.
+Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
 
-A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot][], mielőtt hozzákezd.
+Ebben a rövid útmutatóban az Azure PowerShell használatával hoz létre eseményközpontot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a következőkkel:
 
+- Egy Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot][], mielőtt hozzákezd.
 - [Visual Studio 2017 3-as frissítés (verziószám: 15.3, 26730.01)](http://www.visualstudio.com/vs) vagy újabb.
 - A [.NET Standard SDK](https://www.microsoft.com/net/download/windows) 2.0-s vagy újabb verziója.
 
@@ -35,9 +36,7 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a köv
 
 Ha helyileg használja a PowerShellt, a rövid útmutató elvégzéséhez a PowerShell legújabb verzióját kell futtatnia. Ha telepíteni vagy frissíteni szeretne: [Az Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0).
 
-## <a name="provision-resources"></a>Erőforrások kiosztása
-
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az erőforráscsoport Azure-erőforrások logikai gyűjteménye. Az eseményközpont létrehozásához szüksége lesz egy erőforráscsoportra. 
 
@@ -47,7 +46,7 @@ A következő példa létrehoz egy erőforráscsoportot az USA keleti régiójá
 New-AzureRmResourceGroup –Name myResourceGroup –Location eastus
 ```
 
-### <a name="create-an-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
+## <a name="create-an-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
 
 Az erőforráscsoport létrehozása után hozzon létre egy Event Hubs-névteret az erőforráscsoportban. Az Event Hubs-névtér egyedi, teljes tartománynevet biztosít, amelyben létrehozhatja az eseményközpontot. Cserélje le a `namespace_name` elemet a névtér egyedi nevére:
 
@@ -55,7 +54,7 @@ Az erőforráscsoport létrehozása után hozzon létre egy Event Hubs-névteret
 New-AzureRmEventHubNamespace -ResourceGroupName myResourceGroup -NamespaceName namespace_name -Location eastus
 ```
 
-### <a name="create-an-event-hub"></a>Eseményközpont létrehozása
+## <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
 Most, hogy rendelkezik Event Hubs-névtérrel, hozzon létre egy eseményközpontot abban a névtérben:
 
@@ -63,98 +62,14 @@ Most, hogy rendelkezik Event Hubs-névtérrel, hozzon létre egy eseményközpon
 New-AzureRmEventHub -ResourceGroupName myResourceGroup -NamespaceName namespace_name -EventHubName eventhub_name
 ```
 
-### <a name="create-a-storage-account-for-event-processor-host"></a>Tárfiók létrehozása az Event Processor Host számára
-
-Az Event Processor Host leegyszerűsíti az események fogadását az Event Hubsból, mivel kezeli az ellenőrzőpontokat és a párhuzamos fogadókat. Az ellenőrzőpontok használatához az Event Processor Hostnak tárfiókra van szüksége. A tárfiók létrehozásához és a hozzá tartozó kulcsok lekéréséhez futtassa az alábbi parancsokat:
-
-```azurepowershell-interactive
-# Create a standard general purpose storage account 
-New-AzureRmStorageAccount -ResourceGroupName myResourceGroup -Name storage_account_name -Location eastus -SkuName Standard_LRS 
-e
-# Retrieve the storage account key for accessing it
-Get-AzureRmStorageAccountKey -ResourceGroupName myResourceGroup -Name storage_account_name
-```
-
-### <a name="get-the-connection-string"></a>A kapcsolati sztring lekérése
-
-Az eseményközponthoz való csatlakozáshoz és az események feldolgozásához szükség van egy kapcsolati sztringre. A kapcsolati sztring lekéréséhez futtassa a következőt:
-
-```azurepowershell-interactive
-Get-AzureRmEventHubKey -ResourceGroupName myResourceGroup -NamespaceName namespace_name -Name RootManageSharedAccessKey
-```
-
-## <a name="stream-into-event-hubs"></a>Streamelés az Event Hubsba
-
-Most már elkezdhet streamelni az Event Hubsba. A mintákat letöltheti vagy Git-klónozhatja az [Event Hubs-adattárból](https://github.com/Azure/azure-event-hubs)
-
-### <a name="ingest-events"></a>Események betöltése
-
-Az események streamelésének megkezdéséhez töltse le a [SampleSender](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) mintát a GitHubról, vagy klónozza az [Event Hubs GitHub-adattárát](https://github.com/Azure/azure-event-hubs) a következő paranccsal:
-
-```bash
-git clone https://github.com/Azure/azure-event-hubs.git
-```
-
-Lépjen az \azure-event-hubs\samples\DotNet\Microsoft.Azure.EventHubs\SampleSender mappába, és töltse be a SampleSender.sln fájlt a Visual Studióba.
-
-Ezután adja hozzá a [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet-csomagot a projekthez.
-
-A Program.cs fájlban cserélje le a következő helyőrzőket az eseményközpont nevére és a kapcsolati sztringre:
-
-```C#
-private const string EhConnectionString = "Event Hubs connection string";
-private const string EhEntityPath = "Event Hub name";
-
-```
-
-Hozza létre és futtassa a mintát. Láthatja, ahogy az események betöltődnek az eseményközpontba:
-
-![][3]
-
-### <a name="receive-and-process-events"></a>Események fogadása és feldolgozása
-
-Most töltse le az Event Processor Host-fogadómintát, amely fogadja az elküldött üzeneteket. Töltse le a [SampleEphReceiver](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) mintát a GitHubról, vagy klónozza az [Event Hubs GitHub-adattárát](https://github.com/Azure/azure-event-hubs) a következő paranccsal:
-
-```bash
-git clone https://github.com/Azure/azure-event-hubs.git
-```
-
-Lépjen az \azure-event-hubs\samples\DotNet\Microsoft.Azure.EventHubs\SampleEphReceiver mappába, és töltse be a SampleEphReceiver.sln megoldásfájlt a Visual Studióba.
-
-Ezután adja hozzá a [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) és a [Microsoft.Azure.EventHubs.Processor](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) NuGet-csomagokat a projekthez.
-
-A Program.cs fájlban cserélje le a következő állandókat a megfelelő értékekre:
-
-```C#
-private const string EventHubConnectionString = "Event Hubs connection string";
-private const string EventHubName = "Event Hub name";
-private const string StorageContainerName = "Storage account container name";
-private const string StorageAccountName = "Storage account name";
-private const string StorageAccountKey = "Storage account key";
-```
-
-Hozza létre és futtassa a mintát. Láthatja, ahogy a mintaalkalmazás fogadja az eseményeket:
-
-![][4]
-
-Az Azure Portalon az itt látható módon tekintheti meg az események feldolgozási sebességét egy adott Event Hubs-névtérnél:
-
-![][5]
-
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-A rövid útmutató befejezése után törölheti az erőforráscsoportot és a benne található névteret, tárfiókot és eseményközpontot. Cserélje le a `myResourceGroup` elemet a létrehozott erőforráscsoport nevére. 
-
-```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup
-```
+Gratulálunk! Az Azure PowerShell segítségével létrehozott egy Event Hubs-névteret és egy eseményközpontot a névtéren belül. 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben egy Event Hubs-névteret és az eseményközpontba történő eseményküldéshez és -fogadáshoz szükséges egyéb erőforrásokat hozott létre. További információért folytassa az alábbi oktatóanyaggal:
+Ebben a cikkben egy Event Hubs-névteret hozott létre, és mintaalkalmazások használatával eseményeket küldött az eseményközpontba, illetve fogadott onnan. Az események az eseményközpontokba való küldésével vagy onnan való fogadásával kapcsolatos részletes utasításokért tekintse meg a következő oktatóanyagokat: 
 
-> [!div class="nextstepaction"]
-> [Event Hubs-adatstreamek adatanomáliáinak vizualizációja](event-hubs-tutorial-visualize-anomalies.md)
+- **Események küldése eseményközpontba**: [.NET Standard](event-hubs-dotnet-standard-getstarted-send.md), [.NET-keretrendszer](event-hubs-dotnet-framework-getstarted-send.md), [Java](event-hubs-java-get-started-send.md), [Python](event-hubs-python-get-started-send.md), [Node.js](event-hubs-node-get-started-send.md), [Go](event-hubs-go-get-started-send.md), [C](event-hubs-c-getstarted-send.md)
+- **Események fogadása eseményközpontból**: [.NET Standard](event-hubs-dotnet-standard-getstarted-receive-eph.md), [.NET-keretrendszer](event-hubs-dotnet-framework-getstarted-receive-eph.md), [Java](event-hubs-java-get-started-receive-eph.md), [Python](event-hubs-python-get-started-receive.md), [Node.js](event-hubs-node-get-started-receive.md), [Go](event-hubs-go-get-started-receive-eph.md), [Apache Storm](event-hubs-storm-getstarted-receive.md)
 
 [hozzon létre egy ingyenes fiókot]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Install and Configure Azure PowerShell]: https://docs.microsoft.com/powershell/azure/install-azurerm-ps

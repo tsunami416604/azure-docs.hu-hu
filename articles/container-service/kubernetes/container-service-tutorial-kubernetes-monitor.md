@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/05/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6d178fe3caa121c51ef081708ca440113871938e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 249e286b16b78643c33b567f705a4c92991f5553
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996910"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404868"
 ---
 # <a name="monitor-a-kubernetes-cluster-with-log-analytics"></a>Kubernetes-fürt monitorozása a Log Analytics használatával
 
@@ -149,7 +149,7 @@ Ha a tárolómegoldást a [Log Analytics-portál](https://mms.microsoft.com) seg
 
 A Log Analytics-portálon keresse meg a **Tárolók** összefoglaló csempét az irányítópulton. Kattintson a csempére többek között a következő részletekért: tárolóesemények, hibák, állapot, rendszerképek leltára, valamint processzor- és memóriahasználat. Részletesebb információkért kattintson egy sorra bármely csempén, vagy végezzen [naplókeresést](../../log-analytics/log-analytics-log-searches.md).
 
-![Tárolók irányítópultja az OMS-portálon](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
+![Tárolók irányítópult az Azure Portalon](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
 
 Hasonlóképpen az Azure Portalon lépjen a **Log Analytics** területre, és válassza ki a munkaterület nevét. A **Tárolók** összefoglaló-csempe megtekintéséhez kattintson a **Megoldások** > **Tárolók** elemre. A részletek megtekintéséhez kattintson a csempére.
 

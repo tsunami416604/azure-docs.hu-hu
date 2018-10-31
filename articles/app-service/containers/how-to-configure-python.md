@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: astay;cephalin;kraigb
 ms.custom: mvc
-ms.openlocfilehash: 71cbf0bb31a72e3b257f25c159d9d9eea31dbfbb
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: a29f0f4be6286f8acf367a3ea0b4b0e6b31e7d98
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901618"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406466"
 ---
 # <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>Python-alkalmazás konfigurálása az Azure App Service szolgáltatáshoz Linux rendszeren
 
@@ -74,10 +74,16 @@ Ha a fő alkalmazásmodul egy másik fájlban található, használjon másik ne
 
 ### <a name="custom-startup-command"></a>Egyéni indítási parancs
 
-A tároló indítási viselkedését egy egyéni Gunicorn indítási parancs megadásával szabályozhatja. Például, ha rendelkezik olyan Flask-alkalmazással, amelynek főmodulja *hello.py*, és a Flask-alkalmazásobjektum neve `myapp`, akkor a parancs a következő lesz:
+A tároló indítási viselkedését egy egyéni Gunicorn indítási parancs megadásával szabályozhatja. Ha például egy olyan Flask-alkalmazással rendelkezik, amelynek a főmodulja a *hello.py*, és a fájlban a Flask-alkalmazásobjektum neve `myapp`, a parancs a következő lesz:
 
 ```bash
 gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
+```
+
+Ha a főmodul egy almappában található (például `website`), a mappát a `--chdir` argumentummal határozhatja meg:
+
+```bash
+gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
 A Gunicorn számára további argumentumokat is adhat a parancshoz, például: `--workers=4`. További információkért lásd: [A Gunicorn futtatása](http://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
@@ -105,9 +111,10 @@ Ha az App Service nem talál egyéni parancsot, vagy Django-, illetve Flask-alka
 
 - **Saját alkalmazáskódjának telepítése után megjelenik az alapértelmezett alkalmazás.**  Az alapértelmezett alkalmazás azért jelenik meg, mert ténylegesen nem telepítette az alkalmazáskódját az App Service-be, vagy az App Service nem találta meg az alkalmazáskódját, és helyette az alapértelmezett alkalmazást futtatta.
   - Indítsa újra az App Service-t, várjon 15-20 másodpercet, és ellenőrizze újra az alkalmazást.
-  - SSH- vagy a Kudu konzol használatával közvetlenül csatlakozzon az App Service-hez, és győződjön meg arról, hogy a fájlok léteznek a *site/wwwroot* könyvtárban. Ha a fájlok nem léteznek, tekintse át a telepítési folyamatot, és telepítse újra az alkalmazást.
+  - Bizonyosodjon meg róla, hogy az App Service Linux- és nem Windows-alapú példányát használja. Az Azure CLI parancssori felületről futtassa az `az webapp show --resource-group <resource_group_name> --name <app_service_name> --query kind` parancsot, a `<resource_group_name>` és az `<app_service_name>` helyőrzőket megfelelően behelyettesítve. Az `app,linux` kimenetet kell látnia, máskülönben hozza újra létre az App Service szolgáltatást, és válassza a linuxos verziót.
+    - SSH- vagy a Kudu konzol használatával közvetlenül csatlakozzon az App Service-hez, és győződjön meg arról, hogy a fájlok léteznek a *site/wwwroot* könyvtárban. Ha a fájlok nem léteznek, tekintse át a telepítési folyamatot, és telepítse újra az alkalmazást.
   - Ha a fájlok léteznek, az App Service nem tudta azonosítani az adott indítási fájlt. Ellenőrizze, hogy az alkalmazás struktúrája megfelel-e annak, amit az App Service a [Django](#django-app) vagy a [Flask](#flask-app) számára elvár, vagy használjon [egyéni indítási parancsot](#custom-startup-command).
-
+  
 - **A böngészőben megjelenik „A szolgáltatás nem érhető el” üzenet.** A böngésző az App Service válaszára vára túllépte az időkorlátot, ami azt jelzi, hogy az App Service elindította a Gunicorn-kiszolgálót, de az alkalmazás kódját meghatározó argumentumok helytelenek.
   - Frissítse a böngészőt, különösen akkor, ha az App Service-csomag legalacsonyabb tarifacsomagját használja. Az alkalmazás ingyenes szolgáltatásszintjeink használatakor például indítása hosszabb időt vehet igénybe, de a böngésző frissítése után ismét reagálni fog.
   - Ellenőrizze, hogy az alkalmazás struktúrája megfelel-e annak, amit az App Service a [Django](#django-app) vagy a [Flask](#flask-app) számára elvár, vagy használjon [egyéni indítási parancsot](#custom-startup-command).
