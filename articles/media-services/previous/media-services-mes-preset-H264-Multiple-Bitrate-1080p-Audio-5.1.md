@@ -1,8 +1,8 @@
 ---
-title: H264 Több Bitrate 1080p hang 5.1 |} Microsoft Docs
-description: A témakör áttekintést a **H264 Multiple Bitrate 1080p hang 5.1** feladat az adott néven beállítás.
+title: H264 Több Bitrate 1080p hang 5.1 |} A Microsoft Docs
+description: A témakör áttekintést nyújt a **H264 Multiple Bitrate 1080p hang 5.1** feladat előbeállítást.
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,24 +12,24 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 6774e925fc34a57c4f10975c550b36e0f271fbc6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3b49ac0a38c18ab19d991e4f07350c56db6a172f
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788472"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250386"
 ---
 # <a name="h264-multiple-bitrate-1080p-audio-51"></a>H264 Több Bitrate 1080p hang 5.1
-`Media Encoder Standard` Meghatározza a kódolási készletek kódolási feladatok létrehozásakor használható. Használhatja a `preset name` adhatja meg, melyik formátumba kódolja a médiafájl szeretné. Másik lehetőségként létrehozhat saját JSON- vagy XML-alapú készletek (UTF-8 vagy UTF-16 kódolás használatával. Az egyéni készletet a kódoló majd át lesz. Ez által támogatott összes előre definiált nevek listája `Media Encoder Standard` kódoló, lásd: [feladat készletek a Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard` határozza meg a kódolási készletek is használhatja a kódolási feladat létrehozásakor. Használhatja egy `preset name` mely formátumba, amelyet szeretne kódolása a media-fájl megadásához. Vagy létrehozhat saját JSON vagy XML-alapú készletek (UTF-8 és UTF-16 kódolást használatával. Az egyéni készletet a kódoló majd kellene átadnia. Ez által támogatott összes előre definiált nevek a lista `Media Encoder Standard` kódoló, lásd: [feladat készletek Media Encoder standard](media-services-mes-presets-overview.md).  
   
- Ez a témakör bemutatja a `H264 Multiple Bitrate 1080p Audio 5.1` beállított XML és a JSON formátumban.  
+ Ez a témakör bemutatja a `H264 Multiple Bitrate 1080p Audio 5.1` előre definiált XML és JSON formátumban.  
   
- Az előre definiált létrejön egy 8 GOP igazított MP4-fájlok 400 kbit/s, és AAC 5.1 hang 6000 kbps kezdve. Profillal kapcsolatos részletes információkért sávszélességű mintavételi arány stb. a készletet, vizsgálja meg az XML- vagy JSON-ban megadva. Az egyes azt jelenti, hogy milyen egyes elemei, és az érvényes értékek az egyes elemekhez, tekintse meg a [Media Encoder Standard séma](media-services-mes-schema.md).  
+ Ez a készlet 8 Képcsoporttal igazított MP4-fájlokat, és a 6000 KB/s 400 kb/s és AAC 5.1 hang eredményez. Profillal kapcsolatos részletes információkért sávszélességű, mintavételi arány, stb. Ez a készletet, vizsgálja meg az XML- vagy JSON lényegét az alábbiakban. Az egyes melyik minden elem azt jelenti, és az érvényes értékek az egyes elemekhez, tekintse meg a [Media Encoder Standard-séma](media-services-mes-schema.md).  
   
 > [!NOTE]
->  Ha módosítja a `Width` és `Height` értékek különböző rétegek, győződjön meg arról, hogy az eredeti oldalarányok konzisztensek maradnak. Például: 1920 x 1080, 1280 x 720, 1080 x 576, 640 x 360. Például ne használjon méretarányoknak megfelelően keverékével: 1280 x 720, 720 x 480, 640 x 360.  
+>  Ha módosítja a `Width` és `Height` értékek különböző rétegek, győződjön meg arról, hogy az eredeti oldalarányok konzisztens marad. Például: 1920 × 1080 képpont, 1280 x 720 között, 1080 x 576, 640 x 360. Például ne használjon nézik, vegyesen: 1280 x 720, 720 x 480-as, 640 x 360.  
   
  XML  
   

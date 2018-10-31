@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: e11b115d7a6421c34e7f1371ad8931b6affa0436
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 1639194741fb343391f80790d0a2cc7f392218ac
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815171"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238115"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>A linuxon futó App Service-hez Java fejlesztői útmutatója
 
@@ -146,6 +146,8 @@ Kövesse az utasításokat a [meglévő egyéni SSL-tanúsítvány kötése](/az
 
 >[!NOTE]
 > Ha az alkalmazás a Spring-keretrendszert vagy a Spring Boot, beállíthatja Spring adatok JPA adatbázis-kapcsolódási információt környezeti változókként [fájlban az alkalmazás Tulajdonságok]. Ezután [Alkalmazásbeállítások](/azure/app-service/web-sites-configure#app-settings) határozhat meg ezeket az értékeket az alkalmazás az Azure portal vagy a parancssori felület.
+
+Ebben a szakaszban szereplő példa konfigurációs kódrészletek a MySQL-adatbázis használatára. További információkért lásd: a konfigurációs dokumentációja [MySQL](https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-usagenotes-tomcat.html) , [SQL Server JDBC](https://docs.microsoft.com/en-us/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?view=sql-server-2017), és [PostgreSQL](https://jdbc.postgresql.org/documentation/head/index.html).
 
 A Tomcat adatbázisaihoz Java adatbázis-kapcsolat (JDBC) vagy a Java adatmegőrzés API (JPA), a felügyelt kapcsolatok használatára konfigurálja, testre szabhatja a CATALINA_OPTS környezeti változó Tomcat, indítson el. Az App Service-Maven bővítménnyel, állítsa be ezeket az értékeket egy alkalmazásbeállításhoz keresztül:
 

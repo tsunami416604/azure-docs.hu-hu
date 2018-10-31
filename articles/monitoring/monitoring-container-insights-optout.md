@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 56250625a0770828fc31985f737df944f76d3f13
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: d2cf2fec50e3dd803d828537ddd724ee61015c71
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209613"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248286"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers-preview"></a>Az Azure Kubernetes Service (AKS) tárolókat (előzetes verzió) és az Azure Monitor figyelésének leállítása
 
@@ -111,7 +111,7 @@ Ha az Azure CLI-vel, akkor először helyi telepítése és használata a paranc
 
 4. Értékeinek szerkesztéséhez **aksResourceId** és **aksResourceLocation** értékeit az AKS-fürtöt, amely a használatával a **tulajdonságok** a kijelölt fürt lap .
 
-    ![Tároló tulajdonságai lap](./media/monitoring-container-health/container-properties-page.png)
+    ![Tároló tulajdonságai lap](media/monitoring-container-insights-optout/container-properties-page.png)
 
     Ha a **tulajdonságok** területén is átmásolja a **munkaterület erőforrás-azonosító**. Az értéket kötelező megadni, ha úgy dönt, hogy később törli a Log Analytics-munkaterületet. Ez a folyamat részeként a Log Analytics-munkaterület törlése nem történik. 
 

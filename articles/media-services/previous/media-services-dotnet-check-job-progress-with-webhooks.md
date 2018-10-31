@@ -1,10 +1,10 @@
 ---
-title: Azure Webhookok segítségével figyelheti a feladat értesítések Media Services .NET |} Microsoft Docs
-description: 'Útmutató: Azure Webhookok a figyelheti a Media Services feladat értesítések. A példakód C# nyelven írt, és a .NET-keretrendszerhez készült Media Services SDK használja.'
+title: Az Azure-Webhookok használata a .NET-keretrendszerrel történő Media Services feladatértesítések figyelése |} A Microsoft Docs
+description: Ismerje meg, hogyan lehet Azure-Webhookok használata a Media Services feladatértesítések figyelésére használt. A kódminta nyelven van megírva C# , és használja a Media Services SDK a .NET-hez.
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: a61fe157-81b1-45c1-89f2-224b7ef55869
 ms.service: media-services
@@ -12,31 +12,31 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: 564fc25699c3ae627804d49bfdc40ae9dd559269
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b3ce3731f19565bfe950d03a2bbc980dda55a7f4
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33789410"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238658"
 ---
-# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Használata Azure Webhookok feladat értesítések Media Services .NET figyelése
-Feladatok futtatása, ha gyakran kell segítségével nyomon követheti a feladat előrehaladását. Azure Webhookok használatával figyelheti a Media Services feladat értesítések vagy [Azure Queue storage](media-services-dotnet-check-job-progress-with-queues.md). Ez a cikk bemutatja, hogyan webhookok dolgozni.
+# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Azure Webhookok használata a .NET-keretrendszerrel történő Media Services feladatértesítések figyelése
+Feladatok futtatásakor gyakran igényelnek olyan módon, a feladat előrehaladásának nyomon követéséhez. Az Azure-Webhookok használatával figyelheti a Media Services feladatértesítések vagy [Azure Queue storage](media-services-dotnet-check-job-progress-with-queues.md). Ez a cikk bemutatja, hogyan használható a webhookok.
 
-Ez a cikk bemutatja, hogyan
+Ez a cikk bemutatja, hogyan lehet
 
-*  Adja meg az Azure-függvény, testre szabott webhookok válaszolni. 
+*  Adja meg a webhookok válaszolni testre szabott Azure-függvény. 
     
-    Ebben az esetben a webhook váltja ki, a Media Services a kódolási feladat állapotának megváltozásakor. A függvény a webhook hívás vissza a Media Services értesítések figyeli, és a kimeneti adategységen tesz közzé, ha a feladat befejeződik. 
+    Ebben az esetben a webhook által aktivált Media Services a kódolási feladat állapotának változásakor. A függvény visszaküldi a Media Services-értesítések a webhook hívásához figyeli, és közzéteszi a kimeneti objektum, a feladat befejezése után. 
     
     >[!NOTE]
-    >A folytatás előtt győződjön meg arról, hogy hogyan [Azure Functions HTTP és a webhook kötések](../../azure-functions/functions-bindings-http-webhook.md) működik.
+    >A folytatás előtt győződjön meg arról, hogy hogyan [Azure Functions – HTTP- és webhookkötések](../../azure-functions/functions-bindings-http-webhook.md) működik.
     >
     
-* A webhook hozzáadása a kódolási feladat, és adja meg a webhook URL-CÍMÉT és a titkos kulcsot, amely válaszol a webhook. Egy példa, amely egy webhook ad hozzá a kódolási feladat a cikk végén található.  
+* Webhook hozzáadása a kódolási feladat, és adja meg a webhook URL-CÍMÉT és a titkos kulcsot, amely ezt a webhookot válaszol. Egy példa, amely hozzáad egy webhookot a kódolási feladat a cikk végén találja.  
 
-Definíciók különböző Media Services .NET az Azure Functions (beleértve a cikkben szereplő) található [Itt](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).
+Definíciók különböző Media Services .NET az Azure Functions (beleértve az a cikkben látható) található [Itt](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,42 +44,42 @@ Az ismertetett eljárás végrehajtásához a következők szükségesek:
 
 * Egy Azure-fiók. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * Egy Media Services-fiók. A Media Services-fiók létrehozásáról a [Media Services-fiók létrehozása](media-services-portal-create-account.md) című cikk nyújt tájékoztatást.
-* Megértését [használata az Azure Functions](../../azure-functions/functions-overview.md). Ezenkívül tekintse át a [Azure Functions HTTP és a webhook kötések](../../azure-functions/functions-bindings-http-webhook.md).
+* Ismeretekkel [használata az Azure Functions](../../azure-functions/functions-overview.md). Ezenkívül tekintse át a [Azure Functions – HTTP- és webhookkötések](../../azure-functions/functions-bindings-http-webhook.md).
 
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
 1. Nyissa meg az [Azure Portalt](http://portal.azure.com), és jelentkezzen be az Azure-fiókjával.
-2. Függvény-alkalmazás létrehozása leírtak [Itt](../../azure-functions/functions-create-function-app-portal.md).
+2. Hozzon létre egy függvényalkalmazást, amint [Itt](../../azure-functions/functions-create-function-app-portal.md).
 
-## <a name="configure-function-app-settings"></a>Függvény-Alkalmazásbeállítások konfigurálása
+## <a name="configure-function-app-settings"></a>A funkció beállításainak konfigurálása
 
-A Media Services funkciók fejlesztésekor célszerű adja hozzá a környezeti változókat, amelyek a funkciók használjuk. Beállítások konfigurálásához kattintson az alkalmazás beállításainak konfigurálása hivatkozásra. 
+A Media Services-funkciók fejlesztése, esetén praktikus környezeti változókat, amelyek fogja használni a teljes a függvények hozzáadásához. Az Alkalmazásbeállítások konfigurálása hivatkozásra kattintva beállításainak konfigurálása. 
 
-A [Alkalmazásbeállítások](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings) szakaszban definiálja a paramétereket, illetve a webhook meghatározva ebben a cikkben. A következő paraméterek is hozzá az alkalmazás beállításaiban. 
+A [Alkalmazásbeállítások](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings) szakasz határozza meg a paramétereket, az ebben a cikkben meghatározott webhook. A következő paramétereket is hozzá az alkalmazásbeállításokat. 
 
 |Name (Név)|Meghatározás|Példa| 
 |---|---|---|
-|SigningKey |Az aláírási kulcs.| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
-|WebHookEndpoint | A webhook végpont címe. A webhook függvény létrehozása után az URL-CÍMÉT is másolhatja a **függvény URL-cím beszerzése** hivatkozásra. | https://juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==.|
+|SigningKey |Aláíró kulcs.| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
+|WebHookEndpoint | Egy webhook-végpont címe. A webhook függvény létrehozása után is másolhatja az URL-címet a **függvény URL-Címének lekérése** hivatkozásra. | https://juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==.|
 
 ## <a name="create-a-function"></a>Függvény létrehozása
 
-A függvény az alkalmazást telepíti, ha megtalálja között **alkalmazásszolgáltatások** Azure Functions.
+A függvényalkalmazás üzembe helyezése után található között **App Services** Azure Functions.
 
-1. Válassza ki a függvény alkalmazást, majd kattintson a **új függvény**.
-2. Válassza ki **C#** kódot és **API & Webhookok** forgatókönyv. 
-3. Válassza ki **általános Webhook - C#**.
-4. A webhook, és nyomja le az neve **létrehozása**.
+1. Válassza ki a függvényalkalmazást, és kattintson a **új függvény**.
+2. Válassza ki **C#** kódot és **API és Webhookok** forgatókönyv. 
+3. Válassza ki **általános Webhook – C#** .
+4. Nevezze el a webhookot, és nyomja meg **létrehozás**.
 
 ### <a name="files"></a>Fájlok
 
-Az Azure-függvény kódot és egyéb fájlokat ebben a szakaszban ismertetett társítva. Alapértelmezés szerint a következő függvényt társított **function.json** és **run.csx** (C#) fájlok. Hozzá kell adnia egy **project.json** fájlt. Ez a szakasz a többi ezeket a fájlokat a definícióit tartalmazza.
+Az Azure-függvény kódja és egyéb fájlokat, az ebben a szakaszban leírt társítva. Alapértelmezés szerint a függvény társított **function.json** és **run.csx** (C#) fájlokat. Hozzá kell adnia egy **project.json** fájlt. Ez a szakasz a többi definícióit is tartalmazza ezeket a fájlokat jeleníti meg.
 
 ![fájl megjelenítése](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 #### <a name="functionjson"></a>function.json
 
-A function.json fájl határozza meg, a függvénykötés és egyéb konfigurációs beállításokkal. A futtatókörnyezet ezt a fájlt határozza meg a figyelendő események és adja át az adatokat, és vissza adatokat, a függvény végrehajtása használja. 
+A function.json fájlt határozza meg, a függvény kötéseket és egyéb konfigurációs beállításokkal. A modul használja ezt a fájlt határozza meg az események figyelésére, és adja át az adatokat, és adatokat adja vissza a függvény végrehajtási. 
 
 ```json
 {
@@ -102,7 +102,7 @@ A function.json fájl határozza meg, a függvénykötés és egyéb konfigurác
 
 #### <a name="projectjson"></a>project.json
 
-A project.json függőségeket tartalmaz. 
+A project.json fájlban függőségeket tartalmaz. 
 
 ```json
 {
@@ -121,11 +121,11 @@ A project.json függőségeket tartalmaz.
     
 #### <a name="runcsx"></a>run.csx
 
-Ebben a szakaszban a kódot, amely egy webhook Azure-függvény megvalósítása jeleníti meg. Ez a példa a függvény a webhook hívásához vissza a Media Services értesítések figyeli, és a kimeneti adategységen tesz közzé, ha a feladat befejeződik.
+Ebben a szakaszban lévő kódot az Azure-függvény, amely egy webhook megvalósítását mutatja be. Ebben a példában a függvény a webhook hívásához vissza a Media Services értesítéseket figyeli, és közzéteszi a kimeneti objektum, a feladat befejezése után.
 
-A webhook egy aláírási kulcs (hitelesítő adatok) adja meg az értesítési végpont konfigurálásakor egyeznie vár. Az aláírási kulcs értéke 64 bájtos Base64-kódolású védelemmel való ellátásához és az Azure Media Services a Webhookok visszahívások biztonságos használt. 
+A webhook vár az értesítési végpont konfigurálásakor át kell adnia egy megfelelő aláírási kulcs (hitelesítő adatok). Az aláíró kulcs értéke 64 bájt méretű Base64-kódolású, amellyel védelmében a Webhookok visszahívások az Azure Media Services. 
 
-A webhook definition kód, amely a következő a **VerifyWebHookRequestSignature** metódus végzi az ellenőrzés az értesítő üzenet. Az ellenőrzés célja annak biztosítására, hogy az üzenet Azure Media Services által küldött, és nem módosítják. Az aláírás nem kötelező megadni az Azure Functions, mert már van a **kód** érték, mint egy lekérdezési paraméter Transport Layer Security (TLS) keresztül. 
+A következő webhook definíció kódban a **VerifyWebHookRequestSignature** metódus végzi üzenet ellenőrzése. Az ellenőrzés célja, hogy az üzenet az Azure Media Services által küldött, és nem módosították illetéktelenül. Az aláírás megadása nem kötelező az Azure Functions szolgáltatáshoz, mert a **kód** lekérdezési paramétert keresztül Transport Layer Security (TLS) értéket. 
 
 >[!NOTE]
 >A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információ [ebben](media-services-dotnet-manage-entities.md#limit-access-policies) a témakörben érhető el.
@@ -344,11 +344,11 @@ internal sealed class NotificationMessage
 }
 ```
 
-Mentse, és futtassa a funkciót.
+Mentse és futtassa a függvényt.
 
-### <a name="function-output"></a>Függvény kimeneti
+### <a name="function-output"></a>Függvény kimenete
 
-A webhook akkor váltódik ki, ha a fenti példában a következő kimenetet hoz létre, az értékek eltérőek.
+A webhook akkor aktiválódik, ha a fenti példa a következő kimenetet ad, az értékek változhatnak.
 
     C# HTTP trigger function processed a request. RequestUri=https://juliako001-functions.azurewebsites.net/api/Notification_Webhook_Function?code=9376d69kygoy49oft81nel8frty5cme8hb9xsjslxjhalwhfrqd79awz8ic4ieku74dvkdfgvi
     Request Body = 
@@ -370,17 +370,17 @@ A webhook akkor váltódik ki, ha a fenti példában a következő kimenetet hoz
     
     URL to the manifest for client streaming using HLS protocol: http://mediapkeewmg5c3peq.streaming.mediaservices.windows.net/0ac98077-2b58-4db7-a8da-789a13ac6167/BigBuckBunny.ism/manifest(format=m3u8-aapl)
 
-## <a name="add-a-webhook-to-your-encoding-task"></a>A webhook hozzáadása a kódolási feladat
+## <a name="add-a-webhook-to-your-encoding-task"></a>A kódolási feladat egy webhook hozzáadása
 
-Ebben a szakaszban a kódot, amely egy feladatot ad hozzá egy webhook értesítés jelenik meg. Egy feladat szintű értesítések, amelyek több számára hasznos lehet egy feladat láncolt feladatok is hozzáadhat.  
+Ebben a szakaszban a kódot, amely egy feladatot ad hozzá egy webhook értesítés jelenik meg. Egy feladat szintű értesítések, amelyek egy feladathoz, a kapcsolt műveletek hasznosabb lenne is hozzáadhat.  
 
 1. A Visual Studióban hozzon létre egy új Visual C#-konzolalkalmazást. Adja meg a nevét, helyét és a megoldás nevét, és kattintson az OK gombra.
-2. Használjon [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) Azure Media Services telepítése.
-3. Frissítse az App.config fájl megfelelő értékekkel: 
+2. Használat [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) Azure Media Services telepítéséhez.
+3. Frissítse az App.config fájlt a megfelelő értékekre: 
     
-    * Az Azure Media Services kapcsolati információt 
-    * webhook URL-CÍMÉT, amely a értesítésekre vár 
-    * az aláírási kulcs, amely megfelel a kulcsot, a webhook vár. Az aláírási kulcs értéke 64 bájtos Base64-kódolású védelemmel való ellátásához és az Azure Media Services a webhookok visszahívások biztonságos használt. 
+    * Az Azure Media Services kapcsolatadatok 
+    * webhook URL-CÍMÉT, amely várhatóan az értesítések küldése 
+    * az aláíró kulcs, amely megfelel a kulcs, amelyet a webhook vár. Az aláíró kulcs értéke 64 bájt méretű Base64-kódolású, amellyel védelmében a webhookok visszahívások az Azure Media Services. 
 
     ```xml
             <appSettings>
@@ -395,7 +395,7 @@ Ebben a szakaszban a kódot, amely egy feladatot ad hozzá egy webhook értesít
             </appSettings>
     ```
 
-4. A Program.cs fájlban frissítse az alábbi kódra:
+4. A Program.cs fájlban frissítse a következő kóddal:
 
     ```csharp
             using System;

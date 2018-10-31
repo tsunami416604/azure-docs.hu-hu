@@ -1,73 +1,73 @@
 ---
-title: Speciális Media Encoder prémium munkafolyamat kódolás |} Microsoft Docs
-description: Útmutató a Media Encoder prémium munkafolyamat kódolása. Kódminták C# nyelven íródtak, és a Media Services SDK használata a .NET-hez.
+title: Speciális kódolás a Media Encoder Premium munkafolyamat |} A Microsoft Docs
+description: Ismerje meg, hogyan kódolás a Media Encoder Premium munkafolyamat. Kódminták nyelven írták C# , és használja a Media Services SDK a .NET-hez.
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 9b341b244d53993699dfc9096a86305def82cad7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b718e2a3431be451c1c62079f92c18156f817a10
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788703"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50246245"
 ---
-# <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Speciális Media Encoder prémium munkafolyamat kódolás
+# <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Speciális kódolás a Media Encoder Premium munkafolyamat
 > [!NOTE]
-> Media Encoder prémium munkafolyamat media processzor cikkben említett Kínában nem érhető el.
+> Kínában nem érhető el ebben a cikkben tárgyalt Media Encoder Premium munkafolyamat médiafeldolgozót.
 >
 >
 
-Prémium szintű kódolás kérdéseket tesz fel, e-mailben mepd@microsoft.com.
+Ha kérdése van a prémium szintű kódoló, e-mailben mepd@microsoft.com.
 
 ## <a name="overview"></a>Áttekintés
-A Microsoft Azure Media Services bevezeti a **Media Encoder prémium munkafolyamat** media processzor. A processzor ajánlatok előzetes lehetőségeket biztosít a prémium szintű igény szerinti munkafolyamatok kódolást.
+A Microsoft Azure Media Services-ban bevezetjük az **Media Encoder Premium munkafolyamat** médiafeldolgozót. A processzor ajánlatok speciális kódolási funkciókat a prémium szintű igény szerinti munkafolyamatok.
 
-A következő témakörök szerkezeti kapcsolatos részleteket **Media Encoder prémium munkafolyamat**:
+A következő témakörök szerkezeti kapcsolatos részleteket **Media Encoder Premium munkafolyamat**:
 
-* [A Media Encoder prémium munkafolyamat által támogatott formátumok](media-services-premium-workflow-encoder-formats.md) – foglalkozik a fájl formázása és a kodek által támogatott **Media Encoder prémium munkafolyamat**.
-* [Áttekintés és igény szerinti Azure media kódolók összehasonlítása](media-services-encode-asset.md) összehasonlítja a kódolási képességeit **Media Encoder prémium munkafolyamat** és **Media Encoder Standard**.
+* [A Media Encoder Premium munkafolyamat által támogatott formátumok](media-services-premium-workflow-encoder-formats.md) – foglalkozik a fájl formázza és kodekei által támogatott **Media Encoder Premium munkafolyamat**.
+* [Áttekintése és összehasonlítása az Azure igény szerinti médiakódolók](media-services-encode-asset.md) hasonlítja össze a kódolási képességeit **Media Encoder Premium munkafolyamat** és **Media Encoder Standard**.
 
-Ez a cikk bemutatja, hogyan kell a kódolása **Media Encoder prémium munkafolyamat** .NET használatával.
+Ez a cikk bemutatja, hogyan kódolás a **Media Encoder Premium munkafolyamat** .NET használatával.
 
-Kódolási feladatok a **Media Encoder prémium munkafolyamat** külön konfigurációs fájlt, egy munkafolyamat-fájlnak nevezett igényelnek. Ezek a fájlok .workflow kiterjesztést és használatával hozhatók létre a [munkafolyamat-Tervező](media-services-workflow-designer.md) eszköz.
+Kódolási feladatok a **Media Encoder Premium munkafolyamat** egy külön konfigurációs fájlt, egy munkafolyamatfájlt nevű igényelnek. Ezek a fájlok .workflow kiterjesztést és használatával jön létre a [munkafolyamat-tervezővel](media-services-workflow-designer.md) eszközt.
 
-Letöltheti az alapértelmezett munkafolyamat-fájlok [Itt](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows). A mappa is leírja, hogy ezeket a fájlokat tartalmazza.
+Is használhatja az alapértelmezett munkafolyamat-fájlok [Itt](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows). A mappa leírását, ezeket a fájlokat is tartalmaz.
 
-A munkafolyamat-fájlokat kell fel kell tölteni a Media Services-fiók eszközként, és ez az eszköz a kódolási feladat a kell átadni.
+A munkafolyamat-fájlokat kell feltölteni a Media Services-fiók eszközként, és az adategység kell átadni a kódolási feladat.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
 Állítsa be a fejlesztési környezetet, és töltse fel az app.config fájlt a kapcsolatadatokkal a [.NET-keretrendszerrel történő Media Services-fejlesztést](media-services-dotnet-how-to-use.md) ismertető dokumentumban leírtak szerint. 
 
-## <a name="encoding-example"></a>Kódolási – példa
+## <a name="encoding-example"></a>Kódolási példa
 
-A következő példa bemutatja, hogyan rendelkező kódolni **Media Encoder prémium munkafolyamat**.
+Az alábbi példa bemutatja, hogyan kódolás a **Media Encoder Premium munkafolyamat**.
 
-A következő lépéseket kell végrehajtani:
+Az alábbi lépéseket kell végrehajtani:
 
-1. Hozzon létre egy eszközt, és a munkafolyamat-fájl feltöltése.
-2. Hozzon létre egy eszközt, és a forrás-adathordozó fájl feltöltése.
-3. A "Media Encoder prémium Workflow" media processzor beolvasása.
-4. Hozzon létre egy feladatot, és egy feladatot.
+1. Hozzon létre egy objektumot, és a egy munkafolyamat-fájl feltöltése.
+2. Hozzon létre egy objektumot, és töltse fel a forrás médiafájl.
+3. A "Media Encoder Premium munkafolyamat" médiafeldolgozót beolvasása.
+4. Hozzon létre egy feladatot és a egy feladatot.
 
-    A legtöbb esetben a konfiguráció a következő feladathoz karakterlánca üres (például az alábbi példában). Néhány speciális esetben (igénylő futásidejű tulajdonságának beállítása dinamikusan) ebben az esetben meg kellene adnia a kódolási feladat XML-karakterlánc. Ilyen forgatókönyvek például a következők: egy átmeneti területre, párhuzamos vagy egymást követő adathordozók varrással, feliratozás létrehozása.
-5. Két bemeneti eszközök adja hozzá a feladatot.
+    A legtöbb esetben a konfigurációs karakterláncból, a tevékenység az üres (például a következő példában). Néhány speciális esetben (igénylő futásidejű tulajdonságok dinamikusan állítható be), amely esetben biztosítja, a kódolási feladat XML-karakterlánc. Példák ilyen forgatókönyvek például: egy átmeneti területre, párhuzamos és soros vágása, a feliratozás adathordozó létrehozása.
+5. Két bemeneti eszközeinek adja hozzá a feladatot.
 
-    1. 1. – a munkafolyamat eszköz.
-    2. 2. – a video asset.
+    1. 1. – a munkafolyamat-objektumot.
+    2. 2. – a videó eszköz.
 
     >[!NOTE]
-    >A munkafolyamat eszköz hozzá kell adni a tevékenységhez, a media eszköz előtt.
-   A konfigurációs karakterláncból, a feladathoz üresnek kell lennie.
+    >A feladat a médiaobjektum előtt hozzá kell adni a munkafolyamat-objektumot.
+   Lehet, hogy erre a célra a konfigurációs karakterlánc üres.
    
 6. A kódolási feladat elküldéséhez.
 
@@ -231,7 +231,7 @@ namespace MediaEncoderPremiumWorkflowSample
 }
 ```
 
-Prémium szintű kódolás kérdéseket tesz fel, e-mailben mepd@microsoft.com.
+Ha kérdése van a prémium szintű kódoló, e-mailben mepd@microsoft.com.
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

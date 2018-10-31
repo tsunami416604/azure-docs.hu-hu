@@ -8,18 +8,18 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 259d61125828ee487b74daa525f3635cfa592ce7
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: ecc48adfeef30a777ae4d96c9b996c8bcdfea12d
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017704"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247810"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Az Edge agentet és az Edge hub ikermodulokkal tulajdonságai
 
 Az Edge agentet és az Edge hub az IoT Edge-futtatókörnyezet alkotó két modult. Minden modul hajt végre milyen feladatokat kapcsolatos további információkért lásd: [megismerheti az Azure IoT Edge-futtatókörnyezet és az architektúrára](iot-edge-runtime.md). 
 
-Ez a cikk a kívánt tulajdonságok és a futtatókörnyezet ikermodulokkal jelentett tulajdonságait. A modulok IoT Edge-eszközökön üzembe helyezése további információkért lásd: [központi telepítési és figyelési][lnk-deploy].
+Ez a cikk a kívánt tulajdonságok és a futtatókörnyezet ikermodulokkal jelentett tulajdonságait. A modulok IoT Edge-eszközökön üzembe helyezése további információkért lásd: [központi telepítési és figyelési](module-deployment-monitoring.md).
 
 ## <a name="edgeagent-desired-properties"></a>EdgeAgent desired tulajdonságai
 
@@ -30,26 +30,26 @@ Az Edge Agent ikermodulja nevezzük `$edgeAgent` és koordinálja a kommunikáci
 | sémaverzióval | "1.0" kell lennie | Igen |
 | Runtime.Type | Kell lennie a "docker" | Igen |
 | runtime.settings.minDockerVersion | Állítsa be a manifest nasazení által megkövetelt minimális Docker verzióra | Igen |
-| runtime.settings.loggingOptions | Az Edge agent tároló a naplózási beállításokat tartalmazó sztringesített JSON. [Docker naplózási lehetőségek][lnk-docker-logging-options] | Nem |
+| runtime.settings.loggingOptions | Az Edge agent tároló a naplózási beállításokat tartalmazó sztringesített JSON. [Docker naplózási lehetőségek](https://docs.docker.com/engine/admin/logging/overview/) | Nem |
 | runtime.settings.registryCredentials<br>. {registryId} .username | A tároló-beállításjegyzék felhasználóneve. Az Azure Container Registry esetében a felhasználónév általában a beállításjegyzék nevét.<br><br> A tárolójegyzék hitelesítő adatainak szükségesek, amelyek nem nyilvános modul képeket. | Nem |
 | runtime.settings.registryCredentials<br>. {registryId} .password | A tárolóregisztrációs adatbázis jelszava. | Nem |
 | runtime.settings.registryCredentials<br>. {registryId} .address | A tárolóregisztrációs adatbázis címe. Az Azure Container Registry esetében a címe általában *{registryname}.azurecr.IO/Azure-vote-Front:V1*. | Nem |  
 | systemModules.edgeAgent.type | Kell lennie a "docker" | Igen |
 | systemModules.edgeAgent.settings.image | Az URI-ját az Edge agent képe. Az Edge agent jelenleg nem lehet frissíteni az magát. | Igen |
-| systemModules.edgeAgent.settings<br>.createOptions | Az Edge agent tároló létrehozását, a beállításokat tartalmazó sztringesített JSON. [Docker-létrehozási beállítások][lnk-docker-create-options] | Nem |
+| systemModules.edgeAgent.settings<br>.createOptions | Az Edge agent tároló létrehozását, a beállításokat tartalmazó sztringesített JSON. [Docker-létrehozási beállítások](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nem |
 | systemModules.edgeAgent.configuration.id | Az üzemelő példány, amelyre ez a modul telepítve azonosítója. | Ez a tulajdonság értéke az IoT Hub alkalmazásakor a jegyzékfájlban egy üzemelő példány használatával. Nem része egy manifest nasazení. |
 | systemModules.edgeHub.type | Kell lennie a "docker" | Igen |
 | systemModules.edgeHub.status | "Futnia kell" | Igen |
 | systemModules.edgeHub.restartPolicy | Kell lennie a "mindig" | Igen |
 | systemModules.edgeHub.settings.image | Az URI-ját az Edge hub képe. | Igen |
-| systemModules.edgeHub.settings<br>.createOptions | Az Edge hub tároló létrehozását, a beállításokat tartalmazó sztringesített JSON. [Docker-létrehozási beállítások][lnk-docker-create-options] | Nem |
+| systemModules.edgeHub.settings<br>.createOptions | Az Edge hub tároló létrehozását, a beállításokat tartalmazó sztringesített JSON. [Docker-létrehozási beállítások](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nem |
 | systemModules.edgeHub.configuration.id | Az üzemelő példány, amelyre ez a modul telepítve azonosítója. | Ez a tulajdonság értéke az IoT Hub alkalmazásakor a jegyzékfájlban egy üzemelő példány használatával. Nem része egy manifest nasazení. |
 | modules.{moduleId}.version | Egy felhasználó által megadott karakterlánc, amely a modul verzióját. | Igen |
 | modulok. {moduleId} .type | Kell lennie a "docker" | Igen |
 | modulok. {moduleId} .status | {"fut" \| "leállított"} | Igen |
 | modulok. {moduleId} .restartPolicy | {"soha" \| "a – nem sikerült" \| "a – nem megfelelő állapotú" \| "mindig"} | Igen |
 | modules.{moduleId}.settings.image | A modul kép URI Azonosítóját. | Igen |
-| modules.{moduleId}.settings.createOptions | A modul tároló létrehozását, a beállításokat tartalmazó sztringesített JSON. [Docker-létrehozási beállítások][lnk-docker-create-options] | Nem |
+| modules.{moduleId}.settings.createOptions | A modul tároló létrehozását, a beállításokat tartalmazó sztringesített JSON. [Docker-létrehozási beállítások](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nem |
 | modules.{moduleId}.configuration.id | Az üzemelő példány, amelyre ez a modul telepítve azonosítója. | Ez a tulajdonság értéke az IoT Hub alkalmazásakor a jegyzékfájlban egy üzemelő példány használatával. Nem része egy manifest nasazení. |
 
 ## <a name="edgeagent-reported-properties"></a>EdgeAgent jelentett tulajdonságok
@@ -63,7 +63,7 @@ Az Edge agent jelentett tulajdonságok három fő információt tartalmaznak:
 Az utolsó adat, akkor hasznos, abban az esetben a legújabb kívánt tulajdonságok nem alkalmazása sikeresen futásidőben, és az eszköz továbbra is fut egy előző manifest nasazení.
 
 > [!NOTE]
-> A jelentett tulajdonságok az Edge Agent hasznosak lehetnek, a lekérdezhetők a [IoT Hub lekérdezési nyelv] [ lnk-iothub-query] vizsgálhatja a nagy mennyiségű központi telepítések állapotát. Az Edge agent tulajdonságai állapot használatával további információkért lásd: [ismertetése IoT Edge-telepítések egyetlen eszközök vagy ipari méretekben][lnk-deploy].
+> A jelentett tulajdonságok az Edge Agent hasznosak lehetnek, a lekérdezhetők a [IoT Hub lekérdezési nyelv](../iot-hub/iot-hub-devguide-query-language.md) vizsgálhatja a nagy mennyiségű központi telepítések állapotát. Az Edge agent tulajdonságai állapot használatával további információkért lásd: [ismertetése IoT Edge-telepítések egyetlen eszközök vagy ipari méretekben](module-deployment-monitoring.md).
 
 A következő táblázat nem tartalmazza a kívánt tulajdonságok, másolja az információkat.
 
@@ -117,9 +117,3 @@ Az Edge hub az ikermodul nevezzük `$edgeHub` és koordinálja a kommunikációt
 ## <a name="next-steps"></a>További lépések
 
 Ezek a tulajdonságok használatával hozhatja létre a központi telepítési jegyzékek kapcsolatban lásd: [megismerheti, hogyan IoT Edge-modulok használják, konfigurálhatók, és újra felhasználható](module-composition.md).
-
-<!--links -->
-[lnk-deploy]: module-deployment-monitoring.md
-[lnk-docker-create-options]: https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate
-[lnk-docker-logging-options]: https://docs.docker.com/engine/admin/logging/overview/
-[lnk-iothub-query]: ../iot-hub/iot-hub-devguide-query-language.md

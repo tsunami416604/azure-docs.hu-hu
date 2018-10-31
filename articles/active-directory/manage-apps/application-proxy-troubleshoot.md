@@ -15,12 +15,12 @@ ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: aa7962e3659618b8c5a4f161d667c5e90477acc9
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 8be0e909ea391ed1b66fc78349cc2283d009e8cb
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347647"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240375"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Az alkalmazásproxy-problémák és hibaüzenetek hibaelhárítása
 Ha hiba lép fel, a közzétett alkalmazás eléréséhez, vagy az alkalmazások közzétételéhez, ellenőrizze a megtekintéséhez, hogy a Microsoft Azure AD-alkalmazásproxy megfelelően működik-e a következő beállításokat:
@@ -43,7 +43,7 @@ Ha módosítja a hivatkozott tartalmat foglaljon magába, de továbbra is szüks
 
 Regisztrációs összekötő varázsló telepítése közben meghiúsul, ha két módon megtekintéséhez a hiba okát. Vagy tekintse meg az eseménynaplóban **alkalmazások és szolgáltatások Logs\Microsoft\AadApplicationProxy\Connector\Admin**, vagy futtassa a következő Windows PowerShell-parancsot:
 
-    Get-EventLog application –source “Microsoft AAD Application Proxy Connector” –EntryType “Error” –Newest 1
+    Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
 
 Amikor a Összekötőjével kapcsolatos hiba az esemény eseménynaplóból való megkereséséhez használja ez a táblázat a gyakori hibák a probléma megoldásához:
 

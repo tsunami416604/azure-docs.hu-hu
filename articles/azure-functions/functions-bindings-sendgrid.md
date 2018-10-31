@@ -3,19 +3,19 @@ title: Az Azure Functions SendGrid-kötések
 description: Az Azure Functions SendGrid-kötések hivatkozhat.
 services: functions
 documentationcenter: na
-author: ggailey777
+author: craigshoemaker
 manager: jeconnoc
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/29/2017
-ms.author: glenga
-ms.openlocfilehash: 79fb24e85dea5a8d8d9ca637612ea4a65339a4e3
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.author: cshoe
+ms.openlocfilehash: 23ec5cd6eee3333922b5371a0ece631ebbc20939
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087412"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248031"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Az Azure Functions SendGrid-kötések
 
@@ -199,6 +199,31 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**Szöveg**|**Szöveg**| az e-mail tartalma. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+<a name="host-json"></a>  
+
+## <a name="hostjson-settings"></a>Host.JSON-beállítások
+
+Ez a szakasz ismerteti a globális konfigurációs beállításoknak a kötéshez verziójában elérhető 2.x. Az alábbi példa host.json-fájl csak a verzió 2.x beállításait tartalmazza ezt a kötést. További információ a globális konfigurációs beállításoknak verzióban 2.x verzióját, lásd: [verzióját az Azure Functions – host.json referencia 2.x](functions-host-json.md).
+
+> [!NOTE]
+> Az a funkciók host.json odkaz 1.x, lásd: [Azure Functions – host.json referencia 1.x](functions-host-json-v1.md).
+
+```json
+{
+    "version": "2.0",
+    "extensions": {
+        "sendGrid": {
+            "from": "Azure Functions <samples@functions.com>"
+        }
+    }
+}
+```  
+
+|Tulajdonság  |Alapértelmezett | Leírás |
+|---------|---------|---------| 
+|forrás:|n/a|A feladó e-mail-cím közötti összes funkciót.| 
+
 
 ## <a name="next-steps"></a>További lépések
 

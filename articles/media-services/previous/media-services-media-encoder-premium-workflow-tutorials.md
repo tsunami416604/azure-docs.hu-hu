@@ -1,10 +1,10 @@
 ---
-title: Avanced Media Encoder prémium munkafolyamat oktatóprogramok
-description: Ez a dokumentum tartalmaz forgatókönyvek, amelyek megjelenítik a Media Encoder prémium munkafolyamat speciális feladatok elvégzéséhez, és a munkafolyamat-tervezővel bonyolult munkafolyamatok létrehozásához.
+title: Avanced Media Encoder Premium munkafolyamat-oktatóanyagok
+description: Ez a dokumentum azt mutatják be, hogyan hajthat végre a Media Encoder Premium munkafolyamat speciális feladatokat, és hogyan hozhat létre komplex munkafolyamatok a munkafolyamat-tervezővel útmutatókat tartalmazza.
 services: media-services
 documentationcenter: ''
 author: xstof
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 1ba52865-b4a8-4ca0-ac96-920d55b9d15b
 ms.service: media-services
@@ -12,279 +12,279 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 10/30/2018
 ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: 3cba7a6a8bf6fbe199664b738b68ceca3a7746f8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 79b2aa22307e4742d00d9422535d52c80485e2db
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33789032"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249034"
 ---
-# <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Speciális Media Encoder prémium munkafolyamat oktatóprogramok
+# <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Media Encoder Premium munkafolyamat speciális oktatóanyagok
 ## <a name="overview"></a>Áttekintés
-Ez a dokumentum tartalmaz, amelyek megjelenítik a munkafolyamatok testreszabása forgatókönyvek **munkafolyamat-Tervező**. A tényleges munkafolyamatfájlokat található [Itt](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples).  
+Ez a dokumentum tartalmaz, amelyek bemutatják, hogyan szabhatja testre a munkafolyamatok forgatókönyvek **munkafolyamat-tervezővel**. A tényleges munkafolyamatfájlokat annak [Itt](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples).  
 
 ## <a name="toc"></a>TARTALOMJEGYZÉK
-A következő témaköröket:
+A következő témákat tárgyalja:
 
-* [Az egyszeres sávszélességű MP4 kódolási MXF](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)
-  * [Új munkafolyamat indítása](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_start_new)
-  * [A Media fájl bemeneti használatával](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_file_input)
-  * [Tanulmányozza az adatfolyamok](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_streams)
-  * [Az egy videókódoló hozzáadása. MP4-fájl létrehozása](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_file_generation)
-  * [Kódolás a hangadatfolyam](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_audio)
-  * [Audió és videó-adatfolyamokat multiplexáló egy MP4-tárolóba](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_audio_and_fideo)
-  * [A MP4-fájl írása](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_writing_mp4)
-  * [A kimeneti fájl létrehozása a Media Services eszközök](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_asset_from_output)
+* [Kódolási MXF egy egyféle sávszélességű MP4-be](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)
+  * [Új munkamenet indítása](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_start_new)
+  * [A Media bemeneti fájllal](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_file_input)
+  * [Adatfolyamok vizsgálata](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_streams)
+  * [Egy videó kódolót hozzáadása. MP4-fájl létrehozása](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_file_generation)
+  * [Az audio-adatfolyam kódolása](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_audio)
+  * [Hang és videó-adatfolyamokat multiplexálási egy MP4-tárolóba](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_audio_and_fideo)
+  * [Az MP4-fájl írása](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_writing_mp4)
+  * [A kimeneti fájlt hoz létre egy Media Services-eszköz](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_asset_from_output)
   * [A befejezett munkafolyamat helyi tesztelése](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_test)
-* [Kódolás MXF multibitrate MP4 - a dinamikus becsomagolás engedélyezve](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)
+* [Több MP4 - fájlnak az MXF kódolás engedélyezve van a dinamikus csomagolás](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging)
   * [Egy vagy több további MP4 kimenetek hozzáadása](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_more_outputs)
-  * [A kimeneti fájl nevének konfigurálása](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_conf_output_names)
+  * [A fájl kimeneti név beállítása](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_conf_output_names)
   * [Egy külön lejátszása hozzáadása](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_audio_tracks)
   * [A "ISM" SMIL fájl hozzáadása](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_ism_file)
-* [Kódolási MXF multibitrate MP4 - továbbfejlesztett tervezetének be](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4)
-  * [Javítása érdekében a munkafolyamat áttekintése](#workflow-overview-to-enhance)
-  * [A fájlok elnevezési konvenciók](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_file_naming)
+* [Kódolási MXF, több MP4 - továbbfejlesztett tervezet](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4)
+  * [A munkafolyamat áttekintése növelése érdekében](#workflow-overview-to-enhance)
+  * [A fájlok elnevezési konvenciói](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_file_naming)
   * [A munkafolyamat legfelső szintű alakzatot közzétételi összetevő tulajdonságai](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_publishing)
-  * [Kimeneti fájl nevét közzétett tulajdonságértékek támaszkodnak hozta létre.](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_output_files)
-* [Miniatűrök multibitrate MP4 kimenet hozzáadása](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)
-  * [Miniatűrök hozzáadandó munkafolyamat áttekintése](#workflow-overview-to-add-thumbnails-to)
-  * [JPG kódolás hozzáadása](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4__with_jpg)
-  * [A szín terület átalakítás foglalkozó](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_color_space)
+  * [Kimeneti fájl nevek támaszkodjon közzétett tulajdonságértékek hoztak létre.](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_output_files)
+* [A miniatűrök ad hozzá több MP4-kimenetre](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)
+  * [Miniatűrök hozzáadása a munkafolyamat áttekintése](#workflow-overview-to-add-thumbnails-to)
+  * [Hozzáadás a JPG-kódolás](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4__with_jpg)
+  * [Szín terület átalakítás többé vesződnie a sérült](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_color_space)
   * [A miniatűrök írása](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_writing_thumbnails)
-  * [A munkafolyamat hibáinak észleléséhez](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_errors)
-  * [Befejezett munkafolyamat](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_finish)
-* [Tisztítás időalapú multibitrate MP4 kimenet](media-services-media-encoder-premium-workflow-tutorials.md#time_based_trim)
-  * [Hozzáadni a tisztítás, a munkafolyamat áttekintése](media-services-media-encoder-premium-workflow-tutorials.md#time_based_trim_start)
-  * [Az adatfolyam vágó használatával](media-services-media-encoder-premium-workflow-tutorials.md#time_based_trim_use_stream_trimmer)
-  * [Befejezett munkafolyamat](media-services-media-encoder-premium-workflow-tutorials.md#time_based_trim_finish)
-* [A parancsprogram-alapú összetevők bemutatása](media-services-media-encoder-premium-workflow-tutorials.md#scripting)
-  * [A munkafolyamaton belül Scripting: hello world](media-services-media-encoder-premium-workflow-tutorials.md#scripting_hello_world)
-* [Keret-alapú levágási multibitrate MP4 kimenet](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim)
-  * [Tisztítás való felvételéhez tervezetének áttekintése](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_start)
-  * [Az XML klip listáról](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_clip_list)
-  * [Egy parancsprogram összetevő klip listájának módosítása](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_modify_clip_list)
-  * [Egy ClippingEnabled kényelmi tulajdonság hozzáadása](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_clippingenabled_prop)
+  * [Hibák észlelése, a munkafolyamat](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_errors)
+  * [A munkafolyamat befejeződött](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_finish)
+* [Időalapú levágási több MP4-kimenetre](media-services-media-encoder-premium-workflow-tutorials.md#time_based_trim)
+  * [Kezdje el hozzáadni a tisztítás, a munkafolyamat áttekintése](media-services-media-encoder-premium-workflow-tutorials.md#time_based_trim_start)
+  * [A Stream vágó használatával](media-services-media-encoder-premium-workflow-tutorials.md#time_based_trim_use_stream_trimmer)
+  * [A munkafolyamat befejeződött](media-services-media-encoder-premium-workflow-tutorials.md#time_based_trim_finish)
+* [A parancsfájlalapú összetevő bemutatása](media-services-media-encoder-premium-workflow-tutorials.md#scripting)
+  * [Egy munkafolyamaton belül Scripting: hello world](media-services-media-encoder-premium-workflow-tutorials.md#scripting_hello_world)
+* [Keret-alapú levágási több MP4-kimenetre](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim)
+  * [Kezdje el hozzáadni a tisztítás a tervezet áttekintése](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_start)
+  * [A videoklip lista XML használata](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_clip_list)
+  * [A parancsfájlalapú összetevőtől klip listájának módosítása](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_modify_clip_list)
+  * [Kényelmi ClippingEnabled tulajdonság hozzáadása](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim_clippingenabled_prop)
 
-## <a id="MXF_to_MP4"></a>Az egyszeres sávszélességű MP4 kódolási MXF
-Ez a szakasz bemutatja, hogyan hozzon létre egy egyszeres sávszélességű. MP4-fájlokat a AAC-HE kódolású hangja egy. MXF bemeneti fájl.
+## <a id="MXF_to_MP4"></a>Kódolási MXF egy egyféle sávszélességű MP4-be
+Ez a szakasz bemutatja, hogyan hozhat létre egy egyféle sávszélességű. Az AAC-HE MP4-fájl kódolású hangjának egy. MXF bemeneti fájl.
 
-### <a id="MXF_to_MP4_start_new"></a>Új munkafolyamat indítása
-Nyissa meg a munkafolyamat-tervezőben, és válassza ki a fájl > Új munkaterület > átkódolására tervezetének
+### <a id="MXF_to_MP4_start_new"></a>Új munkamenet indítása
+Nyissa meg a munkafolyamat-Tervező, és válassza ki a fájl > Új munkaterület > átkódolása tervezet
 
-Az új munkafolyamat három elemeit tartalmazza:
+Az új munkafolyamat három elemet jeleníti meg:
 
 * Elsődleges forrásfájl
-* XML klip listázása
+* Klip lista XML
 * Kimeneti fájl vagy eszköz  
 
-![Új kódolási munkafolyamat](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-transcode-blueprint.png)
+![Új kódolási munkafolyamatokat.](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-transcode-blueprint.png)
 
-*Új kódolási munkafolyamat*
+*Új kódolási munkafolyamatokat.*
 
-### <a id="MXF_to_MP4_with_file_input"></a>A Media fájl bemeneti használatával
-Ahhoz, hogy a bemeneti médiafájl elfogadásához induljon el adja hozzá az adathordozó fájl bemeneti összetevőt. Vegyen fel összetevőt a munkafolyamathoz, keresse meg azt a tárház keresési mezőbe, és a kívánt bejegyzés húzza a Tervező ablak. Ismételje meg a műveletet a Media fájl bemeneti, és csatlakoztassa az elsődleges forrásfájl összetevőt a fájlnév bemeneti PIN-kód az adathordozó fájl bemeneti.
+### <a id="MXF_to_MP4_with_file_input"></a>A Media bemeneti fájllal
+Annak érdekében, hogy fogadja a bemeneti fájlt, egy kiindulópontja egy adathordozó fájl bemeneti összetevő hozzáadása. Összetevő hozzáadása a munkafolyamat, a tárház keresőmezőbe keresése, és a kívánt bejegyzést a Tervező ablaktáblán húzzon. A művelet az adathordozó fájl bemeneti esetében, és csatlakozhat az elsődleges forrásfájl összetevőt a fájlnév bemeneti PIN-kód az adathordozó fájl bemeneti.
 
-![Csatlakoztatott médiafájl bemeneti](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-file-input.png)
+![Csatlakoztatott médiakiszolgálók a bemeneti fájl](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-file-input.png)
 
-*Csatlakoztatott médiafájl bemeneti*
+*Csatlakoztatott médiakiszolgálók a bemeneti fájl*
 
-Egy megfelelő mintafájl egy egyéni munkafolyamat tervezése során használandó kezdetben azonosításához. Ehhez kattintson a Tervező ablak háttérben, és keresse meg a elsődleges forrásfájl tulajdonság, a jobb oldali tulajdonság panelen. A mappa ikonra, és válassza ki a kívánt fájlt, a munkafolyamat teszteléshez. A Media fájl bemeneti összetevő megvizsgálja a fájlt, és tölti fel a kimeneti PIN-kód megfelelően az ellenőrzött mintafájl részleteit.
+Egy egyéni munkafolyamat tervezése során használandó megfelelő mintafájl kezdetben azonosításához. Ehhez kattintson a Tervező ablak háttérben, és keresse meg a elsődleges forrásfájl tulajdonság a jobb oldali tulajdonság panelen. A mappa ikonra, és válassza ki a kívánt fájlt a munkafolyamat tesztelése. A Media bemeneti fájllal összetevő megvizsgálja a fájlt, és tölti fel a kimeneti PIN-kódok, hogy a mintafájlt, ellenőrzött részleteit.
 
-![Ki van töltve médiafájl bemeneti](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-populated-media-file-input.png)
+![Feltöltött médiafájl-bemenet](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-populated-media-file-input.png)
 
-*Ki van töltve médiafájl bemeneti*
+*Feltöltött médiafájl-bemenet*
 
-A bemeneti fel van töltve, a következő lépéssel fogja kódolási beállítások; kimeneti beállítása. A hasonló elsődleges forrásfájl konfigurálása után konfigurálhatja a kimeneti mappa változóját megadó tulajdonság csak alá.
+Most, hogy a bemeneti adatok feltöltése a következő lépés az kódolási beállítások kimeneti beállítása. Hasonló a elsődleges forrásfájl lett konfigurálva, mostantól beállíthatja a kimeneti mappa változó tulajdonságot használja, ez alatt.
 
-![Konfigurált bemeneti és kimeneti tulajdonságai](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-configured-io-properties.png)
+![Konfigurált bemeneti és kimeneti tulajdonságok](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-configured-io-properties.png)
 
-*Konfigurált bemeneti és kimeneti tulajdonságai*
+*Konfigurált bemeneti és kimeneti tulajdonságok*
 
-### <a id="MXF_to_MP4_streams"></a>Tanulmányozza az adatfolyamok
-Gyakran az rendelkezik szeretné tudni, hogyan az adatfolyam a következőképpen néz azt tranzakciós a munkafolyamaton keresztül. Vizsgálja meg a munkafolyamat bármely pontján adatfolyam, kattintson egy kimeneti vagy bemeneti PIN-kódjának az összetevők. Ebben az esetben próbálkozzon a tömörítetlen videó kimeneti PIN-kódot, a Media fájl bemeneti kattint. A párbeszédpanel megnyílik, amely lehetővé teszi a kimenő videó vizsgálata.
+### <a id="MXF_to_MP4_streams"></a>Adatfolyamok vizsgálata
+Gyakran ez rendelkezik a kívánt tudni, hogy hogyan a stream néz ki a munkafolyamat áthaladó. Vizsgálja meg a stream a munkafolyamat bármely pontján, kattintson egy kimeneti vagy valamelyik összetevő a bemeneti PIN-kódot. Ebben az esetben próbálkozzon a tömörítetlen videó kimeneti PIN-kódot, a Media fájl bemeneti kattint. Egy párbeszédpanel megnyílik, amely lehetővé teszi, hogy a kimenő videó vizsgálhatja meg.
 
-![Tanulmányozza a tömörítetlen videó kimeneti PIN-kód](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-inspecting-uncompressed-video-output.png)
+![A videó tömörítetlen kimeneti PIN-kód vizsgálatával](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-inspecting-uncompressed-video-output.png)
 
-*Tanulmányozza a tömörítetlen videó kimeneti PIN-kód*
+*A videó tömörítetlen kimeneti PIN-kód vizsgálatával*
 
-Ebben az esetben azt mutatja, hogy a videó tartalmaz egy 1920 x 1080 ráfordítás 24 képkockák másodpercenkénti 4:2:2 mintavételi szinte 2 perces videót.
+Ebben az esetben azt mutatja, hogy a videó tartalmaz egy 1920 × 1080 képpont ráfordítás 24 képkockák másodpercenkénti a 4:2:2 mintavételi majdnem 2 perces videót.
 
-### <a id="MXF_to_MP4_file_generation"></a>Az egy videókódoló hozzáadása. MP4-fájl létrehozása
-Most egy tömörítetlen Video és PIN-kódok érhetők el több tömörítetlen hang kimeneti használja a Media fájl bemeneti. Ahhoz, hogy a bejövő videó kódolása egy kódolási összetevő hozzá kell adni a munkafolyamat - ebben az esetben előállítása érdekében. MP4-fájlokat.
+### <a id="MXF_to_MP4_file_generation"></a>Egy videó kódolót hozzáadása. MP4-fájl létrehozása
+Most egy tömörítetlen videó és a PIN-kódok érhetők el a több tömörítetlen hang kimeneti használja a Media bemeneti fájllal. Annak érdekében, hogy a bejövő videó kódolása, egy kódolási összetevő hozzá kell adnia a munkafolyamat - ebben az esetben előállítása érdekében. MP4-fájlokat.
 
-A video-adatfolyamot H.264 kódolására, adja hozzá a AVC Videókódoló összetevőt a Tervező felületére. Ez az összetevő egy Kibontás video-adatfolyamot bemenetként veszi, és kézbesíti az AVC tömörített video-adatfolyamot a kimeneti PIN-kód a.
+A video-adatfolyamot H.264 kódolásához, adja hozzá a AVC Videókódoló a Tervező felületére. Ez az összetevő-Kibontás video-adatfolyamot bemenetként fogadja, és biztosít egy AVC tömörített video-adatfolyamot a kimenet a PIN-kódját.
 
-![Frissíthető AVC kódoló](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-unconnected-avc-encoder.png)
+![Csatlakoztatott AVC kódoló](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-unconnected-avc-encoder.png)
 
-*Frissíthető AVC kódoló*
+*Csatlakoztatott AVC kódoló*
 
-A tulajdonság határozza meg, hogyan történik a kódolás pontosan. Most rá egy pillantást, néhány fontosabb beállítás:
+A tulajdonságait határozza meg, hogyan történik a kódolás pontosan. Nézzük meg, néhány fontosabb beállítás található:
 
-* Kimeneti szélességének és magasságának kimeneti: meghatározza, hogy a kódolt videó felbontása. Ebben az esetben 640 x 360 a helyes beállítást.
-* Képkockasebessége: Ha beállítása csatlakoztatott fog csak fogadja el a forrás képkockasebessége, akkor lehet, ha felülbírálja ezt. Ilyen képkockasebességhez átalakítás nem mozgásérzékelő – a kompenzációt.
-* Profil és szint: meghatározza, hogy a AVC profil és a szintnek. További információ a különböző szintű és profilokkal kényelmesen beszerzéséhez kattintson a kérdőjel ikon AVC videó kódoló összetevőjének, és a súgó lapon megjelenik az egyes szintjének további információkra. Például használhatja a fő profilt 3.2 (alapértelmezett) szinten.
-* Értékelje a mód és átviteli sebesség (KB/s): Ebben a forgatókönyvben választhat egy állandó átviteli sebesség (CBR) kimeneti, 1200-as kbit/s
-* Videó formátum: a VUI (videó használhatóság adatokat), amely lekérdezi a H.264 adatfolyamba való mentésre (ügyféloldali vonatkozó információkat a dekóder javítása érdekében a megjelenítési által használt, de nem feltétlenül megfelelő dekódolása) írt kapcsolatos információkat tartalmazza:
-* NTSC (Egyesült Államok vagy japán, 30 fps használatával a jellemző)
-* PAL (Európa, 25 fps használatával a jellemző)
-* GOP méretezési módját: GOP rögzített méretű beállítása a lezárt GOPs 2 másodperc kulcs időközt a célokra. 2 másodpercben a beállítást választja, a dinamikus becsomagolás Azure Media Services-kompatibilitási mód biztosítja.
+* Kimeneti szélességének és magasságának kimeneti: azt határozza meg, a kódolt videó felbontása. 640 x 360 ebben az esetben a megfelelő beállítást.
+* Képkockasebesség: Ha passthrough értéke lesz csak fogadja el a forrás képkockasebessége, lehetőség azonban felülbírálja ezt. Az ilyen képkockasebesség átalakítás nem mozgásban lévő adatoknak egyaránt-kompenzációt.
+* Profil és a szintje: AVC profil és szint határozza meg. Kényelmesen részletes tájékoztatást nyújt a különböző szintek és a profilok, kattintson a AVC videó kódoló összetevő található kérdőjel ikonra, és részletesen szintjének jelennek meg a következő súgóoldalt. Ebben a példában használja a központi profil 3.2-es (alapértelmezett) szintjén.
+* Ellenőrzési mód és az átviteli sebesség (KB/s): Ebben a forgatókönyvben egy állandó kimeneti, 1200-as KB/s sávszélességű (CBR) optimalizált
+* Videó formátum: (ügyféloldali információkat, amelyek lehetnek a dekóder javíthatják a megjelenített használja, de nem elengedhetetlen megfelelően dekódolandó) H.264 adatfolyamba írt lekérdezi VUI (videó a használhatósági információk) kapcsolatos információkat tartalmazza:
+* NTSC (jellemző, USA-beli vagy japán használatával 30 képkocka/s)
+* PAL (Európa, 25 fps használatával jellemző)
+* Képcsoporttal mérete mód: a jelen a lezárt GOPs 2 másodperc kulcs időközt Képcsoporttal rögzített méretű beállítása. A beállítás 2 másodperces biztosítja, hogy a dinamikus csomagolás révén az Azure Media Services kompatibilitást biztosít.
 
-Az AVC kódoló hírcsatornát, csatlakozzon a tömörítetlen videó kimeneti PIN-kódot az adathordozó fájl bemeneti összetevőtől a tömörítetlen videó bemeneti PIN-kódot az AVC kódoló.
+Hírcsatorna a AVC kódoló, csatlakozzon a tömörítetlen videó kimeneti PIN-kód az adathordozó fájl bemeneti összetevőtől a tömörítetlen videó bemeneti PIN-kódot a AVC kódoló.
 
 ![Csatlakoztatott AVC kódoló](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connected-avc-encoder.png)
 
 *Csatlakoztatott AVC fő kódoló*
 
-### <a id="MXF_to_MP4_audio"></a>Kódolás a hangadatfolyam
-Ezen a ponton az eredeti tömörítetlen hangadatfolyam továbbra is meg kell tömöríthetők. A hangadatfolyam tömörítési AAC kódoló (Dolby) összetevő hozzáadása a munkafolyamathoz.
+### <a id="MXF_to_MP4_audio"></a>Az audio-adatfolyam kódolása
+Ezen a ponton az eredeti tömörítetlen hang stream továbbra is tömörítendő van szüksége. A hang Stream tömörítési AAC Encoder (Dolby) összetevő hozzáadása a munkafolyamatnak.
 
-![Frissíthető AVC kódoló](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-unconnected-aac-encoder.png)
+![Csatlakoztatott AVC kódoló](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-unconnected-aac-encoder.png)
 
-*Frissíthető AAC kódoló*
+*Csatlakoztatott AAC-kódoló*
 
-Most nincs inkompatibilitás: nincs csak a egyetlen tömörítetlen hang bemeneti PIN-kódot a AAC kódoló, miközben valószínűleg több, mint az adathordozó fájl bemeneti két különböző tömörítetlen hang adatfolyamok érhető el: egy a bal oldali hang csatorna, egy, a jobb. (Ha között legyen hang foglalkozó, ez hat csatornák.) Így nincs lehetőség a közvetlenül kapcsolódnak a hang a Media fájl bemeneti forrás a AAC hang kódoló. A AAC összetevő vár az úgynevezett "kihagyásos" hangadatfolyam: egyetlen adatfolyam, amely rendelkezik a bal és a jobb oldali csatornák időosztásos egymással. Egyszer azt tudja megállapítani a forrás-adathordozó fájlból, zeneszámok milyen helyzetben a forráshelyen, az azt hozhat létre a bal és jobb megfelelően hozzárendelt hangalapú pozíciójának ilyen kihagyásos hangadatfolyam.
+Most már van egy kompatibilitási: van csak egyetlen tömörítetlen hang bemeneti PIN-kódot az AAC-kódoló, miközben valószínűleg több, mint az adathordozó fájl bemeneti lesz két különböző tömörítetlen audiostreamek lejátszásával érhető el: egy, a bal oldali hang csatorna, egy pedig a jobb oldalon. (Ha legyen hang foglalkozó, amely a hat csatornák.) Így nincs lehetőség közvetlenül kapcsolódni a hanganyag a forrás-adathordozó bemeneti fájllal a AAC hang kódoló. Az AAC-összetevő vár egy úgynevezett "kihagyásos" audio-adatfolyam: egyetlen streammel, amely rendelkezik a bal és a megfelelő csatornák közbeékeléses egymással. Egyszer tudjuk, hogy a forrás-adathordozó fájlból, hogy hangsáv-e a milyen helyzetben a forrás, hogy hozhat létre ilyen összefűzéses audio-adatfolyam a megfelelően hozzárendelt speaker a beosztások bal és jobb.
 
-Először egy szeretne használatával hozzon létre egy kihagyásos adatfolyam a szükséges forrás hang csatornák. A hang adatfolyam Interleaver összetevő kezeli, ez az USA. Adja hozzá a munkafolyamat, és csatlakozzon a hang kimenetek Media fájl bemeneti bele.
+Először egy szeretné, hozzon létre egy kihagyásos stream a szükséges forrás hang csatornákat. A hang Stream Interleaver összetevő kezeli ez velünk a kapcsolatot. Adja hozzá a munkafolyamatot, és a hang kimenetek csatlakoztatása a Media fájl bemeneti bele.
 
-![Csatlakoztatott hangadatfolyam Interleaver](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connected-audio-stream-interleaver.png)
+![Hang Stream Interleaver csatlakoztatva](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connected-audio-stream-interleaver.png)
 
-*Csatlakoztatott hangadatfolyam Interleaver*
+*Hang Stream Interleaver csatlakoztatva*
 
-Most, hogy egy kihagyásos hangadatfolyam, azt még nem helyének megadása a bal vagy jobb hangalapú pozíciók való hozzárendelése. Ahhoz, hogy ezek megadása után a hangalapú pozíció Assigner használhatják azt.
+Most, hogy egy kihagyásos audio-adatfolyam, hogy még nem adott meg, a bal vagy jobb speaker pozíciók rendelhet. Adja meg, hogy kiaknázhatja a beosztás Speaker hozzárendelő.
 
-![Egy hangalapú pozíció Assigner hozzáadása](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-adding-speaker-position-assigner.png)
+![A Speaker pozíció hozzárendelő hozzáadása](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-adding-speaker-position-assigner.png)
 
-*Egy hangalapú pozíció Assigner hozzáadása*
+*A Speaker pozíció hozzárendelő hozzáadása*
 
-A hangalapú pozíció Assigner használatra konfigurálja sztereó bemeneti adatfolyam keresztül egy kódoló beállított szűrő az "Egyéni", "(L, R) 2.0." a csatorna az adott néven beállítás neve (Ez hozzárendeli a bal oldali hangalapú állapot csatornához 1 és jobb oldali hangalapú csatorna 2.)
+A Speaker pozíció hozzárendelő használatra konfigurálja egy sztereó bemeneti Stream egy kódoló beállított szűrő az "Egyéni" és a csatorna Előbeállítást nevű, "(L, R) 2.0." (Ez hozzárendeli a bal oldali speaker állapot, a channel 1 és jobb speaker csatornán 2.)
 
-Csatlakoztassa a hangalapú pozíció Assigner kimenetét a AAC kódoló a bemeneti. Ezt követően adja a AAC kódoló használható a "2.0 (L, R)" csatorna-készletet, így az tudni fogja a bemeneti sztereó hang kezelésére.
+A beosztás Speaker hozzárendelő kimenete csatlakozhat a AAC kódoló a bemeneti. Ezután ossza meg a 2.0-val egy"(L, R)" működéséhez AAC kódoló csatorna készletet, így az tudni fogja sztereó hang bemeneteként foglalkozni.
 
-### <a id="MXF_to_MP4_audio_and_fideo"></a>Audió és videó-adatfolyamokat multiplexáló egy MP4-tárolóba
-Az AVC megadott kódolt video-adatfolyamot és a AAC kódolású hangadatfolyam, azt is rögzítheti, mindkettő egy. MP4-tároló. A különböző adatfolyamokba keverési be egyetlen egy folyamathoz "multiplexáló" (vagy a "muxing"). Ebben az esetben azt még kihagyásos a hang- és a video-adatfolyamot összefüggő egyetlen. MP4-csomag. A koordináló Ez az összetevő egy. MP4-tárolónak a neve a ISO MPEG-4 Multiplexer. Vegyen fel egyet a Tervező felületére, és csatlakozzon a AVC videó kódoló, mind a AAC kódoló a bemeneti adatok.
+### <a id="MXF_to_MP4_audio_and_fideo"></a>Hang és videó-adatfolyamokat multiplexálási egy MP4-tárolóba
+A AVC megadott kódolt video-adatfolyamot, és az AAC kódolású audio-adatfolyam, be is rögzíthetők egy. MP4-tároló. A különböző Streamek keverési be egyetlen egy folyamat neve "multiplexálási" (vagy a "muxing"). Ebben az esetben mi vagyunk kihagyásos a hang- és a video-adatfolyamokat egyetlen egységes. MP4-csomag. Az összetevőt, ez a koordináló egy. MP4-tároló neve Multiplexer ISO MPEG-4. Vegyen fel egy, a Tervező felületére, és csatlakozzon a AVC videó kódoló és a az AAC-kódoló bemenete.
 
 ![Csatlakoztatott MPEG4 Multiplexer](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connected-mpeg4-multiplexer.png)
 
 *Csatlakoztatott MPEG4 Multiplexer*
 
-### <a id="MXF_to_MP4_writing_mp4"></a>A MP4-fájl írása
-Kimeneti fájl írásakor, a kimeneti fájl összetevő szolgál. Nem lehet csatlakozni ez kimenetét a ISO MPEG-4 Multiplexer, hogy a kimeneti lekérdezi írt lemezre. Ehhez az szükséges, csatlakoztassa a tároló (MPEG-4) kimeneti PIN-kód írási bemeneti PIN-kódja a kimeneti fájl.
+### <a id="MXF_to_MP4_writing_mp4"></a>Az MP4-fájl írása
+Kimeneti fájl írásakor, a kimeneti fájl összetevő szolgál. Csatlakozhassunk ezt az ISO MPEG-4 Multiplexer kimenetét, hogy a kimeneti írt lekérdezi a lemezre. Ehhez a tároló (MPEG-4) kimeneti PIN-kód csatlakozhat a kimeneti fájl bemeneti írási PIN kódját.
 
 ![Kimeneti fájl csatlakoztatva](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connected-file-output.png)
 
 *Kimeneti fájl csatlakoztatva*
 
-A használt fájlnevet a fájl tulajdonság határozza meg. Tulajdonság lehetnek szoftveresen kötött egy adott értékre, nagy valószínűséggel szeretne inkább beállítása kifejezésből.
+A használt fájlnevet a fájl tulajdonság határozza meg. A tulajdonság a megadott érték nem változtatható lehetnek, nagy valószínűséggel szeretne helyette állítsa kifejezésből.
 
-A munkafolyamatot, automatikusan határozza meg a kimeneti névtulajdonság kifejezésből fájlt, kattintson a gombra a fájl neve (ikon a mappa) mellett. A legördülő menüből válassza ki "Kifejezése." Ekkor megjelenik a kifejezés-szerkesztőt. Először törölje a tartalmát a szerkesztőbe.
+Szeretné, hogy a munkafolyamat automatikusan meghatározni a kimeneti fájlt a name tulajdonság egy kifejezésből, kattintson a gombra (mappa ikon) mellett látható a fájl neve melletti. A legördülő menüből válassza ki "Kifejezés." Ekkor megjelenik a kifejezésszerkesztőbe. Először törölje a szerkesztőben a tartalmát.
 
-![Üres kifejezés-szerkesztő](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-empty-expression-editor.png)
+![Üres Kifejezésszerkesztőbe](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-empty-expression-editor.png)
 
-*Üres kifejezés-szerkesztő*
+*Üres Kifejezésszerkesztőbe*
 
-A kifejezés szerkesztő segítségével adhat meg szövegkonstans értéket, egy vagy több változót. Változók dollárjelet kezdődik. Elérte a $ kulcs, mert a szerkesztő változók közül választhat a legördülő listában jeleníti meg. Abban az esetben, ha a kimeneti könyvtár változó és a bemeneti alap fájlnév változó fogjuk használni:
+A kifejezésszerkesztőbe lehetővé teszi, hogy adjon meg egy szöveges értéket, egy vagy több változót. Változók dollárjelet kezdődik. Eléri a $ kulcsot, mert a szerkesztő megjeleníti az elérhető változók közül választhat a legördülő listából. Ebben az esetben használjuk a kimeneti könyvtár változót és az alap, a bemeneti fájl neve változó:
 
     ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}.MP4
 
-![Kitöltött kimenő kifejezés-szerkesztő](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-expression-editor.png)
+![A Kifejezésszerkesztőbe ki kitöltve](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-expression-editor.png)
 
-*Kitöltött kimenő kifejezés-szerkesztő*
+*A Kifejezésszerkesztőbe ki kitöltve*
 
 > [!NOTE]
-> Ahhoz, hogy az Azure-ban a kódolási feladat kimeneti fájl megtekintéséhez meg kell adnia egy értéket a kifejezés-szerkesztőben.
+> Annak érdekében, hogy az Azure-ban a kódolási feladat kimeneti fájl megtekintéséhez meg kell adnia egy értéket a kifejezésszerkesztőbe.
 >
 >
 
-Ha úgy, hogy elérte-e az OK gombra a kifejezés győződjön meg arról, a Tulajdonságok ablak előnézetét jeleníti meg a fájl tulajdonság oldja fel a rendszer ezen a ponton a időben történő értéket.
+Lenyomásával az OK gombra a kifejezés győződjön meg arról, ha a tulajdonságának ablakban előnézetét jeleníti meg a fájl tulajdonság feloldása ezen a ponton a időben történő értéket.
 
-![Fájl kifejezés kimeneti dir oldja fel.](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-file-expression-resolves-output-dir.png)
+![Fájl kifejezés, oldja fel a dir parancs kimenete](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-file-expression-resolves-output-dir.png)
 
-*Fájl kifejezés kimeneti dir oldja fel.*
+*Fájl kifejezés, oldja fel a dir parancs kimenete*
 
-### <a id="MXF_to_MP4_asset_from_output"></a>A kimeneti fájl létrehozása a Media Services eszközök
-Azt írt kimeneti MP4-fájlokat, amíg azt továbbra is meg kell adnia, hogy a fájl tartozik a kimeneti adategységen, mely media services állít elő, a munkafolyamat végrehajtása miatt. Ennek érdekében a kimeneti fájl/eszköz csomópont a munkafolyamat vásznon szolgál. Ez a csomópont minden bejövő fájlok ellenőrizze az eredményül kapott Azure Media Services-eszközt.
+### <a id="MXF_to_MP4_asset_from_output"></a>A kimeneti fájlt hoz létre egy Media Services-eszköz
+Bár a Microsoft írásos engedélye szükséges. a kimeneti fájl MP4, továbbra is jelzi, hogy ez a fájl tartozik-e a kimeneti adategységen, mely a media services állít elő, ez a munkafolyamat célpéldányának kell. Ennek érdekében a kimeneti fájl vagy eszköz csomópont a munkafolyamat vásznon szolgál. Ez a csomópont minden bejövő fájlok győződjön meg az eredményül kapott Azure Media Services-objektum részét.
 
-A kimeneti fájl összetevő csatlakozni a kimeneti fájl/eszköz összetevő a munkafolyamat befejezéséhez.
+A kimeneti fájl összetevő csatlakozhat a kimeneti fájl vagy eszköz összetevő, a munkafolyamat befejezéséhez.
 
-![Befejezett munkafolyamat](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow.png)
+![A munkafolyamat befejeződött](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow.png)
 
-*Befejezett munkafolyamat*
+*A munkafolyamat befejeződött*
 
 ### <a id="MXF_to_MP4_test"></a>A befejezett munkafolyamat helyi tesztelése
-Helyileg a munkafolyamat tesztelése, kattintson a lejátszás gombra a felső eszköztáron. Befejezésekor a munkafolyamat végrehajtása, tekintse meg a kimenetet, a megadott kimeneti mappában jön létre. Látni fogja, hogy a MXF bemeneti forrásfájlból kódolt végzett MP4 kimeneti fájl.
+A munkafolyamatot a helyi teszteléséhez nyomja le a lejátszás gombra az eszköztáron az oldal tetején. Végeztével a munkafolyamat végrehajtása, tekintse meg a kimenetet, a megadott kimeneti mappában jön létre. Látni fogja a kész MP4 kimeneti fájl, amely a bemeneti forrásfájl MXF kódolt.
 
-## <a id="MXF_to_MP4_with_dyn_packaging"></a>Kódolás MXF MP4 - multibitrate a dinamikus becsomagolás engedélyezve
-Ez a forgatókönyv hoz létre a több sávszélességű MP4-fájlokat kódolású AAC egyetlen hang. MXF bemeneti fájl.
+## <a id="MXF_to_MP4_with_dyn_packaging"></a>A dinamikus csomagolás engedélyezve az MP4 - több MXF kódolás
+Ez a forgatókönyv hoz létre egy bitsebességű MP4-fájlok készlete kódolású AAC hang egyetlen. MXF bemeneti fájl.
 
-Ha egy többszörös sávszélességű eszköz kimeneti szükséges együttesen használják az Azure Media Services szolgáltatásban több GOP igazított MP4-fájlok az egyes egy másik átviteli sebesség és a feloldási generálása kell a dinamikus becsomagolás szolgáltatásaira. Ehhez a [kódolás MXF be egy egyféle sávszélességű MP4](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4) útmutatóul szolgál, az jó kiindulási pont.
+Ha egy eszköz és többféle sávszélességű kimeneti van szükség együttesen használják az Azure Media Services szolgáltatásban több Képcsoporttal igazított MP4-fájlok az egyes egy másik átviteli sebesség és a megoldási kell létrehozni a dinamikus csomagolási funkcióit. Ehhez a [kódolás MXF be egy egyféle sávszélességű MP4](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4) forgatókönyv biztosítja számunkra az jó kiindulási pont.
 
-![Munkafolyamat indítása](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-starting-workflow.png)
+![A munkafolyamat indítása](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-starting-workflow.png)
 
-*Munkafolyamat indítása*
+*A munkafolyamat indítása*
 
 ### <a id="MXF_to_MP4_with_dyn_packaging_more_outputs"></a>Egy vagy több további MP4 kimenetek hozzáadása
-Minden MP4-fájlokat az eredményül kapott Azure Media Services eszközt egy másik átviteli sebesség és a megoldás támogatja. Adjuk hozzá egy vagy több MP4 kimeneti fájlt a munkafolyamathoz.
+Az eredményül kapott Azure Media Services-adategység minden MP4-fájl egy másik átviteli sebesség és a megoldás támogatja. Adjunk hozzá egy vagy több MP4 kimeneti fájlok a munkafolyamatnak.
 
-Győződjön meg arról, hogy a videó kódolók ugyanazokkal a beállításokkal létrehozott kell, hogy célszerű a leginkább a már meglévő AVC Videókódoló duplikált, és egy másik kombinációja megoldás és (adjuk hozzá 960 x 540 egyikét: 25 képkockák másodpercenkénti 2,5 Mbit/s átviteli sebesség konfigurálása ). A meglévő kódoló duplikálásához másolási illessze be a Tervező felületére.
+Ahhoz, hogy rendelkezünk a videó kódolók létrehozott ugyanazokkal a beállításokkal, célszerű a leginkább a már meglévő AVC Videókódoló ismétlődő, és egy másik megoldás és a (adjunk hozzá egy 960 × 540: 25 képkockamásodperc 2,5 Mbit/s sávszélességű kombinációja konfigurálása ). A meglévő kódoló duplikálásához másolási illessze be a Tervező felületére.
 
-Az új AVC összetevőt a tömörítetlen videó kimeneti PIN-kódot, a Media fájl bemeneti kapcsolódnak.
+A Media bemeneti fájllal tömörítetlen videó kimeneti PIN-kód az új AVC összetevő csatlakoztathatnak.
 
-![Második AVC kódoló csatlakoztatva](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-second-avc-encoder-connected.png)
+![Csatlakoztatott második AVC kódoló](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-second-avc-encoder-connected.png)
 
-*Második AVC kódoló csatlakoztatva*
+*Csatlakoztatott második AVC kódoló*
 
-Most alkalmazkodnak az új AVC kódoló 960 x 540 2,5 Mbit/s kimeneti konfigurációját. (Használható tulajdonságok "kimeneti szélességének", "Kimeneti magasság" és "Átviteli sebesség (KB/s)" a ez.)
+Most már alkalmazkodik a kimenetben 960 × 540 2,5 MB/s, az új AVC encoder konfigurációját. (Használja a Tulajdonságok "kimeneti szélesség", "Kimeneti magasság" és "Sávszélességű (kbps)" ennek.)
 
-Megadott szeretnénk az eredményül kapott eszköz Azure Media Services dinamikus becsomagolást együtt használja, a streamvégpontján kell lennie, pontosan igazított egymáshoz oly módon, hogy az ügyfelek, amelyek között különböző bitrates vált le a egy egyetlen zökkenőmentes folyamatos videó és a hang élmény HLS/Fragmented MP4/DASH-töredék MP4 fájlokat képesek. Ellenőrizze, hogy fordulhat elő, győződjön meg arról, hogy mindkét AVC kódolók a GOP ("csoport képek") tulajdonságainak mindkét MP4-fájlok mérete értéke 2 másodperc, amely végezhető el kell:
+Adott szeretnénk az eredményül kapott eszköz az Azure Media Services dinamikus becsomagolást együtt használja, a streamvégpontnak kell lennie az érintett MP4-fájlok HLS/Fragmented MP4/DASH töredék pontosan igazított egymáshoz módon képesek, ügyfelek, amelyek különböző bitsebességre való átkódolása közötti váltás, a zökkenőmentes folyamatos video- és egyesített beolvasása. Ellenőrizze, hogy történik, győződjön meg arról, hogy mindkét AVC kódolók a Képcsoporttal ("csoport képek") tulajdonságainak mindkét MP4-fájlok mérete értéke 2 másodperc, amely hajtható végre kell:
 
-* a GOP mérete mód beállítása rögzített GOP méretével és
-* a kulcs keret időköz két másodpercre.
-* Állítson be úgy az összes GOPs biztosításához lezárt GOP GOP IDR vezérlő vannak állandó nélkül saját függőségekkel
+* az Képcsoporttal mérete mód beállítása rögzített Képcsoporttal méretre és
+* a kulcs keret időköz két másodperc.
+* is beállíthatja az Képcsoporttal IDR vezérlő Képcsoporttal lezárt összes GOPs biztosításához rendelkezésére állnak a saját nélkül függőségek
 
-Ellenőrizze a munkafolyamat könnyebben érthetőek legyenek, nevezze át az első AVC kódoló a "AVC videó kódoló 640 x 360 1200-as kbit/s" és a második AVC kódoló "AVC videó kódoló 960 x 540 2500 kbps."
+Ahhoz, hogy ez a munkafolyamat megérteni, nevezze át az első AVC kódolót "AVC videó kódoló 640 x 360 1200-as KB/s" és a második AVC kódoló "AVC videó kódoló 960 × 540 2 500 kbps."
 
-Ezután adja hozzá a második ISO MPEG-4 Multiplexer és egy második fájl kimenet. Az új AVC kódoló a multiplexer csatlakozik, és győződjön meg arról, annak kimenetét a kimeneti fájl be van átirányítva. Ezután is csatlakoznak a AAC hang kódolás kimenete az új multiplexer tartozó bemeneti. A kimeneti fájl pedig majd csatlakozhat veheti fel a Media Services eszköz, amely létrehozza a kimeneti fájl/eszköz csomópontra.
+Adjon hozzá egy második ISO MPEG-4 Multiplexer és a egy második fájl kimeneti. Az új AVC kódoló a multiplexer csatlakozik, és ellenőrizze, hogy a kimenetét a kimeneti fájl be van irányítva. Ezután is csatlakoztathat a AAC hang kódoló kimeneti az új multiplexer a bemeneti. A kimeneti fájl viszont majd csatlakoztathatók, adja hozzá a Media Services eszköz, amely létrehozza a kimeneti fájl vagy eszköz csomópont.
 
 ![Második Muxer és a kimeneti fájl csatlakoztatva](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-second-muxer-file-output-connected.png)
 
 *Második Muxer és a kimeneti fájl csatlakoztatva*
 
-Az Azure Media Services dinamikus becsomagolást is kompatibilisek a multiplexer adatrészlet módnál GOP count vagy időtartama, és állítsa 1-adattömbök száma GOPs. (Ez az alapértelmezett kell.)
+Kompatibilitás érdekében az Azure Media Services dinamikus csomagolást Képcsoporttal száma vagy időtartama a multiplexer adattömbök mód konfigurálása, és az adattömbök száma GOPs állítsa 1-re. (Ez legyen az alapértelmezett.)
 
-![Muxer adatrészlet módok](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-muxer-chunk-modes.png)
+![Muxer adattömbök módok](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-muxer-chunk-modes.png)
 
-*Muxer adatrészlet módok*
+*Muxer adattömbök módok*
 
-Megjegyzés: Előfordulhat, hogy szeretné bármely más átviteli sebesség és a feloldási kombináció hozzá kell adni az eszköz kimeneti kívánt ismételje meg ezt a folyamatot.
+Megjegyzés: Előfordulhat, hogy szeretné bármely más átviteli sebesség és a megoldási kombináció hozzá kell adni az eszközintelligencia kimeneti szeretné ismételje meg ezt a folyamatot.
 
-### <a id="MXF_to_MP4_with_dyn_packaging_conf_output_names"></a>A kimeneti fájl nevének konfigurálása
-A kimeneti adategységen hozzá egynél több egyetlen fájl van. Ez lehetővé teszi a érdekében gondoskodjon arról, hogy a kimeneti fájlok minden egyes fájlneveket egymástól különböző, és lehet, hogy még érvényes a fájl-elnevezési konvenció így világossá válik, a fájl neve a most foglalkozó.
+### <a id="MXF_to_MP4_with_dyn_packaging_conf_output_names"></a>A fájl kimeneti név beállítása
+A kimeneti objektum egynél több egyetlen fájl van. Ez biztosítja, hogy ellenőrizze, hogy a kimeneti fájlok mindegyike a fájlnevek különböznek egymástól, és lehet, ezért törölje a fájl neve a használt foglalkozó is alkalmazhat egy fájl-elnevezési konvenciót kell.
 
-Kimeneti fájlelnevezésnél szabályozható kifejezések a tervezőben. Nyissa meg a kimeneti fájl összetevői a tulajdonság ablaktáblában, és nyissa meg a fájl tulajdonság kifejezés-szerkesztőt. Az első kimeneti fájl a következő kifejezés használatával lett konfigurálva (lásd az útmutató át [az egyszeres sávszélességű MP4 kimeneti MXF](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)):
+A tervezőben kifejezések kimeneti fájlelnevezésnél szabályozható. A kimeneti fájl egyik tulajdonság panel megnyitásához, és nyissa meg a kifejezésszerkesztőbe fájl tulajdonság. Az első kimeneti fájl lett konfigurálva, a következő kifejezés használatával (lásd a következő oktatóanyagban azzal [egy egyféle sávszélességű MP4-kimenetre a MXF](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)):
 
     ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}.MP4
 
-Ez azt jelenti, hogy a fájlnév határozza meg két változót: írni kimeneti könyvtár és a forrás-fájlnevet. A korábbi tesz elérhetővé a munkafolyamat legfelső szintű tulajdonságaként, és a bejövő fájl alapján. A kimeneti könyvtár nem helyi tesztelési; használja Ez a tulajdonság felülbírálja a munkafolyamat-motor a munkafolyamat a felhő alapú adathordozót feldolgozó Azure Media Services eljárás végrehajtásakor.
-A kimeneti fájlok elnevezési konzisztens kimeneti, biztosítva kifejezés első fájlelnevezési módosítása:
+Ez azt jelenti, hogy a fájlnév határozza meg két változót: írni a kimeneti könyvtárba, és a forrásfájl alap neve. Az előbbi ki van téve a munkafolyamat legfelső szintű tulajdonságot, és a bejövő fájl által meghatározott. A kimeneti könyvtárba való helyi tesztelést; használata Ez a tulajdonság felülírja a rendszer a munkafolyamat-motor a munkafolyamat által a felhőalapú médiaprocesszorral Azure Media Services végrehajtásakor.
+Egy kimeneti egységes elnevezési adni a kimeneti fájlokat, az elnevezési kifejezés első fájl módosítása:
 
     ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4
 
-és a másik pedig:
+a másik pedig:
 
     ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_960x540_2.MP4
 
-Hajtsa végre egy köztes teszt futtatásával győződjön meg arról, hogy mindkét MP4 kimeneti fájlok megfelelően jönnek létre.
+Hajtsa végre egy köztes teszt futtatásával ellenőrizze, hogy mindkét MP4 kimeneti fájlok megfelelően jönnek létre.
 
 ### <a id="MXF_to_MP4_with_dyn_packaging_audio_tracks"></a>Egy külön lejátszása hozzáadása
-Megtanulhatja, később azt egy .ism-fájlt az MP4 kimeneti fájlok nal generálásakor, mivel azt is igényel csak MP4-fájlokat, a hang nyomon követése az adaptív streameléshez. A fájl létrehozásához, egy további muxer hozzá a munkafolyamathoz (Multiplexer ISO-MPEG-4), és csatlakozzon a AAC kódoló kimenő pin a bemeneti PIN-kód követése 1.
+A későbbiekben látni fogjuk Ha az általunk létrehozott .ism-fájlt, a kimeneti MP4-fájlokat a go, is szükséges lesz egy csak MP4-fájlt a hangsávot, az adaptív streameléshez. A fájl létrehozásához, egy további muxer hozzá a munkafolyamathoz (ISO-MPEG-4 Multiplexer), és nyomon követése 1 az AAC-kódoló kimenő pin összekapcsolása a bemeneti PIN-kódját.
 
 ![Hang Muxer hozzáadva](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-audio-muxer-added.png)
 
 *Hang Muxer hozzáadva*
 
-Hozzon létre egy harmadik kimeneti fájl összetevő a kimenő adatfolyam a muxer a kimeneti, és konfigurálja a fájlelnevezési kifejezés:
+Hozzon létre egy harmadik kimeneti fájl összetevő kimeneti a muxer kimenő streamjét, és konfigurálhatja a fájlelnevezési kifejezés:
 
     ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_128kbps_audio.MP4
 
@@ -293,7 +293,7 @@ Hozzon létre egy harmadik kimeneti fájl összetevő a kimenő adatfolyam a mux
 *Hang Muxer kimeneti fájl létrehozása*
 
 ### <a id="MXF_to_MP4_with_dyn_packaging_ism_file"></a>Hozzáadás a. ISM SMIL fájl
-A dinamikus csomagolás működjön együtt MP4 fájlokat (és a csak MP4) a Media Services eszközt is el kell jegyzékfájlt (más néven "SMIL" fájlba: multimédia integrációs nyelvi szinkronizálva). Ez a fájl meghatározza, hogy az Azure Media Services milyen MP4-fájlok dinamikus becsomagolás és azokat figyelembe kell venni a hang folyamatos közül melyik érhető el. Egy tipikus jegyzékfájl állítja be a MP4 meg egyetlen hangadatfolyam a következőképpen néz ki:
+A dinamikus becsomagolást is MP4 fájlokat (és a csak hangfájlt tartalmazó MP4) a Media Services eszközben dolgozhat együtt, a is kell a jegyzékfájlt (más néven "SMIL" fájlba: multimédiás integrációs nyelvi szinkronizálva). Ez a fájl azt jelzi, hogy az Azure Media Services milyen MP4-fájlokat a dinamikus csomagolás és melyiket érdemes figyelembe venni a hang streameléshez érhetők el. Egy tipikus Alkalmazásjegyzék-fájl egy egyetlen hang Stream MP4 a készletének így néz ki:
 
 ```xml
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
@@ -312,295 +312,295 @@ A dinamikus csomagolás működjön együtt MP4 fájlokat (és a csak MP4) a Med
     </smil>
 ```
 
-A .ism-fájlt egy switch utasításban, egy hivatkozást az egyes mellett ezeket is egy (vagy több) hangfájl hivatkozik egy MP4 csak tartalmaz a hang és az egyes videokártya MP4-fájlokat tartalmazza.
+A .ism-fájlt egy switch utasításban, minden egyes az egyes videó MP4-fájlokat, és ezeket is egy (vagy több) hangfájl hivatkozik egy MP4 csak a hangot tartalmazó mellett egy hivatkozást tartalmaz.
 
-A jegyzékfájl MP4 meg az adott vonatkozóan létrehozása végezhető el a "AMS jegyzékfájl írta." nevű összetevő A használatához húzza azt a felületet, és kapcsolódjon a három kimeneti fájl összetevői az "Írás kész" kimeneti PIN-kód AMS Manifest író bemenetet. Ezután ellenőrizze, hogy csatlakozzon az AMS-Manifest író kimenetét a kimeneti fájl vagy eszköz számára.
+A csoporton MP4 a jegyzékfájl létrehozása végezhető el a "AMS jegyzékfájl író." nevű összetevő A használatához húzza át a felületet, és az "Írás teljes" kimeneti PIN-kód az AMS-jegyzékfájl író bemeneti három fájl kimeneti összetevők csatlakozni. Ezután ellenőrizze, hogy az AMS-jegyzékfájl író kimenetét a kimeneti fájl vagy eszköz a csatlakozáshoz.
 
-A többi fájl kimeneti összetevők konfigurálását a .ism kimeneti fájlnév kifejezés:
+Mivel a más összetevőkkel fájl kimeneti, adja meg a kifejezés .ism fájlt kimeneti elé:
 
     ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_manifest.ism
 
-A befejezett munkafolyamat néz az alábbi:
+A befejezett munkafolyamat néz ki az alábbi:
 
-![Befejezett MXF multibitrate MP4-munkafolyamathoz](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-mxf-to-multibitrate-mp4-workflow.png)
+![Befejezett MXF több MP4-munkafolyamathoz](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-mxf-to-multibitrate-mp4-workflow.png)
 
-*Befejezett MXF multibitrate MP4-munkafolyamathoz*
+*Befejezett MXF több MP4-munkafolyamathoz*
 
-## <a id="MXF_to__multibitrate_MP4"></a>Kódolási MXF multibitrate MP4 - továbbfejlesztett tervezetének be
-Az a [előző munkafolyamat forgatókönyv](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging) azt láthatta, hogyan MXF egyetlen bemeneti eszköz létrehozható egy kimeneti eszköz többszörös sávszélességű MP4-fájlok, a csak MP4-fájlokat és a jegyzékfájlt, az Azure Media együtt használható Services dinamikus becsomagolást.
+## <a id="MXF_to__multibitrate_MP4"></a>Kódolási MXF, több MP4 - továbbfejlesztett tervezet
+Az a [a munkafolyamat előző bemutatón](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging) megtudtuk, hogyan MXF egyetlen bemeneti eszköz létrehozható egy kimeneti objektum többszörös sávszélességű MP4-fájlokat, egy csak MP4-fájlt és a egy jegyzékfájl használható együtt az Azure Media A dinamikus csomagolás szolgáltatásokat.
 
-Ez a bemutató ismerteti, hogyan néhány azokat a vonatkozásait melyek fejlesztése és kényelmesebb végzett.
+Ez az útmutató bemutatja, hogyan bizonyos szempontjait fejlesztése és kényelmesebb végzett.
 
-### <a id="MXF_to_multibitrate_MP4_overview"></a>Javítása érdekében a munkafolyamat áttekintése
-![Multibitrate MP4 munkafolyamat javítása érdekében](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-multibitrate-mp4-workflow-to-enhance.png)
+### <a id="MXF_to_multibitrate_MP4_overview"></a>A munkafolyamat áttekintése növelése érdekében
+![Több MP4 javíthatja a munkafolyamat](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-multibitrate-mp4-workflow-to-enhance.png)
 
-*Multibitrate MP4 munkafolyamat javítása érdekében*
+*Több MP4 javíthatja a munkafolyamat*
 
-### <a id="MXF_to__multibitrate_MP4_file_naming"></a>A fájlok elnevezési konvenciók
-Az előző munkafolyamatban kimeneti fájl nevének létrehozásának alapjául szolgáló azt meg egyetlen egyszerű kifejezésbe. Néhány duplikálva lettek-e, ha van: az egyes kimeneti fájl összetevőket megadott ilyen kifejezés.
+### <a id="MXF_to__multibitrate_MP4_file_naming"></a>A fájlok elnevezési konvenciói
+Az előző munkafolyamatban a egyetlen egyszerű kifejezésbe generálása a kimeneti fájl nevét alapjaként beállítottunk. Azonban van néhány duplikáció: minden egyes kimeneti fájl összetevője megadott ilyen kifejezés.
 
-Például a fájl kimeneti összetevőjének az első videofájl ebben a kifejezésben van konfigurálva:
+Például a fájl kimeneti összetevő esetében az első videó fájl van konfigurálva a következő kifejezést:
 
     ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4
 
-A második kimeneti a videót, például a kifejezés vezetünk be:
+A videó második kimenet van például egy kifejezést:
 
     ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_960x540_2.MP4
 
-Lenne kevésbé vannak téve, és kényelmesebbé teszik hiba tisztító Ha igazolnia sikerült távolítson el néhányat a duplikálva lettek-e, és dolgot több konfigurálható helyette? Szerencsére alábbiakat tehetjük: a Tervező kifejezés képességek képes létrehozni az egyéni tulajdonságok a munkafolyamat legfelső szintű együtt fog kényelmi hozzáadott rétegeket biztosítson.
+Hát nem lenne, letisztultabb, kevésbé hiba rejt magában, és kényelmesebb Ha tudjuk sikerült távolítson el néhányat a duplikációt tartalmaz, és dolgokat több konfigurálható inkább? Szerencsére is: a Tervező kifejezés képességek lehetővé teszi az egyéni tulajdonságok létrehozása a munkafolyamat legfelső szintű együtt biztosít egy réteggel is kényelmi célokat szolgál.
 
-Tegyük fel, azt fogja az egyes MP4-fájlok bitrates a fájlnév konfigurációs meghajtó. Ezek bitrates igyekszünk fog konfigurálni egy központi helyen vannak (a legfelső szintű a grafikon), ahol azok lesz hozzáférhető konfigurálása és a meghajtó fájlnév létrehozása. Ehhez először a sávszélességű tulajdonság mindkét AVC kódolók a, a munkafolyamat legfelső szintű közzétételével, hogy maga az AVC kódolók mindkét a legfelső szintű is elérhető lesz. (Még akkor is, ha két különböző tesztüzeméhez jelenik meg, nincs csak egy alapul szolgáló érték.)
+Tegyük fel, azt fogja a bitsebességre való átkódolása az egyes MP4-fájlokká a filename konfigurációs meghajtó. Ezek bitsebességre való átkódolása igyekszünk fogja konfigurálni egy központi helyen (gyökere a graph), ahol azok lesz elérhető konfigurálása és a meghajtó fájlnév létrehozása. Ehhez, azt először tegye közzé a sávszélességű tulajdonság mindkét AVC kódolók a munkafolyamat, a legfelső szintű, hogy az elérhető mind a legfelső szintű, valamint a AVC kódolók időszakhoz. (Akkor is, ha két különböző kritikus pontok elkerülése érdekében jelenik meg, nincs mögöttes csak egy érték.)
 
 ### <a id="MXF_to__multibitrate_MP4_publishing"></a>A munkafolyamat legfelső szintű alakzatot közzétételi összetevő tulajdonságai
-Nyissa meg az első AVC kódoló nyissa meg az átviteli sebesség (KB/s) tulajdonság és a legördülő listából válassza ki a közzététel.
+Nyissa meg az első AVC kódoló, nyissa meg az átviteli sebesség (kbps) tulajdonságot, és a legördülő listából válassza a közzététel.
 
 ![Az átviteli sebesség tulajdonság közzététele](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-publishing-bitrate-property.png)
 
 *Az átviteli sebesség tulajdonság közzététele*
 
-A közzététel a, a munkafolyamat gráf legfelső szintű közzététele párbeszédpanelen állítson be egy közzétett neve "video1bitrate" és "Videó 1 sávszélességű" olvasható megjelenítendő neve. Konfigurálja az egyéni csoport neve "Streaming Bitrates" néven, majd nyomja le a közzététel.
+Állítsa be a közzétételi párbeszédpanelre, közzététel a munkafolyamat grafikon, a legfelső szintű egy közzétett neve "video1bitrate" és "A videó 1 sávszélességű" olvasható megjelenítendő nevét. Konfigurálja az egyéni "Streaming bitsebességre való átkódolása" nevű csoport nevét, és kattintson a közzététel.
 
 ![Az átviteli sebesség tulajdonság közzététele](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-publishing-dialog-for-bitrate-property.png)
 
-*Átviteli sebesség tulajdonság közzétételi párbeszédpanel*
+*Közzététel párbeszédpanelen sávszélességű tulajdonság*
 
-Ismételje meg a ugyanaz a második AVC kódoló sávszélességű tulajdonságához, és nevezze el az azonos egyéni csoport "Streaming Bitrates" megjelenítendő nevű "Videó 2 sávszélességű", "video2bitrate".
+Ismételje meg ugyanaz a második AVC kódoló sávszélességű tulajdonságához, és adja neki a ugyanazon egyéni csoport "Streaming bitsebességre való átkódolása" megjelenített névvel "A videó 2 sávszélességű", "video2bitrate".
 
-Ha azt most vizsgálhatja meg a munkafolyamat legfelső szintű tulajdonságait, megtanulhatja az egyéni csoportban található, a két közzétett tulajdonság jelenik meg. Mindkét van tükrözve a megfelelő AVC kódoló sávszélességű értékét.
+Ha azt most már megvizsgálhatja a munkafolyamat legfelső szintű tulajdonságait, láthatjuk, az egyéni csoportot a két közzétett tulajdonságai jelennek meg. Mindkét van tükrözve azok megfelelő AVC kódoló sávszélességű értékét.
 
-![A munkafolyamat legfelső szintű közzétett sávszélességű tulajdonságai](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-published-bitrate-props-on-workflow-root.png)
+![A munkafolyamat legfelső szintű közzétett sávszélességű Kellékek](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-published-bitrate-props-on-workflow-root.png)
 
 Amikor azt szeretné elérni ezeket a tulajdonságokat kódot vagy egy kifejezés, azt is megteheti ehhez hasonló:
 
-* a beágyazott kód egy összetevő a gyökér alatti jobb oldali: node.getPropertyAsString('.. / video1bitrate ", null)
+* a beágyazott kódot egy összetevő jobb gyökere alatt: node.getPropertyAsString('.. / video1bitrate ", NULL értékű)
 * kifejezésben: ${ROOT_video1bitrate}
 
-A "Folyamatos átviteli Bitrates" csoport befejezéseként közzététele a zenei sávszélességű rajta is. A AAC kódoló tulajdonságain belül keresse meg a sávszélességű beállítást, és látható a legördülő listából válassza ki a közzététel. A gyökér neve "audio1bitrate" a gráf közzététele, és megjelenítendő név "Hang 1 sávszélességű" a "Folyamatos átviteli Bitrates" egyéni csoporton belül.
+Tegye közzé a hangsávra sávszélességű, valamint a "Streaming bitsebességre való átkódolása" csoport befejezéséhez. A tulajdonságok a AAC kódoló keresse meg a sávszélességű beállítást, majd válassza a közzététel mellett a legördülő listából. A gráf neve "audio1bitrate" gyökerében közzététele, és a megjelenített név "Audio 1 sávszélességű" a "Streaming bitsebességre való átkódolása" egyéni csoporton belül.
 
-![A hang sávszélességű közzétételi párbeszédpanel](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-publishing-dialog-for-audio-bitrate.png)
+![Számára audiotartalmak sávszélességű közzététel párbeszédpanel](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-publishing-dialog-for-audio-bitrate.png)
 
-*A hang sávszélességű közzétételi párbeszédpanel*
+*Számára audiotartalmak sávszélességű közzététel párbeszédpanel*
 
-![A gyökérszintű eredményül kapott video- és tulajdonságai](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-resulting-video-and-audio-props-on-root.png)
+![A legfelső szintű eredményül kapott video- és Kellékek](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-resulting-video-and-audio-props-on-root.png)
 
-*A gyökérszintű eredményül kapott video- és tulajdonságai*
+*A legfelső szintű eredményül kapott video- és Kellékek*
 
-Ezen három megváltoztatásával értékeket is Átkonfigurálás, és megváltoztatja az értékeket a megfelelő összetevők vannak összekapcsolva (és egyes esetekben közzétett).
+Ezen három bármelyikét módosítása értékeket is Átkonfigurálás, és megváltoztatja az értékeket a megfelelő összetevőinek vannak összekapcsolva (és ha közzétett).
 
-### <a id="MXF_to__multibitrate_MP4_output_files"></a>Kimeneti fájl nevét közzétett tulajdonságértékek támaszkodnak hozta létre.
-Hardcoding helyett a létrehozott fájl nevének azt mostantól megváltoztatható a fájlnév kifejezést a kimeneti fájl összetevői használják a azt a gráf legfelső szintű közzétett sávszélességű tulajdonságait. Az első kimeneti fájl verziótól kezdődően található a fájl tulajdonság, és a Szerkesztés ehhez hasonló:
+### <a id="MXF_to__multibitrate_MP4_output_files"></a>Kimeneti fájl nevek támaszkodjon közzétett tulajdonságértékek hoztak létre.
+Hardcoding helyett a generált fájlneveket, most már átalakíthatjuk az egyes számíthat a Microsoft graph legfelső szintű közzétett sávszélességű tulajdonságait a kimeneti fájl összetevőt a fájlnév kifejezés. Az első kimeneti fájl kezdve található fájl tulajdonsága, és ehhez hasonló kifejezés szerkesztése:
 
     ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video1bitrate}kbps.MP4
 
-A különböző paraméterek ebben a kifejezésben érhető el, és adja meg a kifejezés ablakban a billentyűzeten a dollárjel elérte-e. A rendelkezésre álló paraméterek egyike fel azt a korábban közzétett video1bitrate tulajdonság.
+Ebben a kifejezésben a különböző paraméterek érheti el és a billentyűzeten a kifejezés ablakban dollárjel lenyomásával megadott. A rendelkezésre álló paraméterek egyike az, hogy a korábban közzétett video1bitrate tulajdonság.
 
 ![Paraméterek kifejezésben elérése](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-accessing-parameters-within-an-expression.png)
 
 *Paraméterek kifejezésben elérése*
 
-Tegye meg ugyanezt a fájl kimenetét a második videót:
+Használja ugyanazt a fájlt kimenetét a második videó:
 
     ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video2bitrate}kbps.MP4
 
-és csak hang-fájl kimenetének:
+és a csak hangfájlt tartalmazó fájl kimeneti:
 
     ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_audio1bitrate}bps_audio.MP4
 
-Most módosítjuk az átviteli sebesség a video- vagy fájlokat, ha a megfelelő kódoló újrakonfigurálni, és az átviteli sebesség alapú fájl neve egyezmény szerződéses kötelezettségeket összes automatikus.
+Ha most módosítjuk az átviteli sebesség a video- vagy fájlokat, a megfelelő kódoló újra kell konfigurálni, és az MP4-alapú fájl neve egyezmény lesz lesz érvényes az összes automatikus.
 
-## <a id="thumbnails_to__multibitrate_MP4"></a>Miniatűrök multibitrate MP4 kimenet hozzáadása
-Állít elő, munkafolyamat-től kezdődő [egy multibitrate MP4 kimenete egy bemeneti MXF](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging), azt most kell keresése a miniatűrök hozzáadása a kimenetet.
+## <a id="thumbnails_to__multibitrate_MP4"></a>A miniatűrök ad hozzá több MP4-kimenetre
+Egy munkafolyamatot, amely állít elő, kezdve [az MXF, adjon meg egy több MP4 kimenete](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging), azt most keresse az miniatűrök ad hozzá a kimenetet.
 
-### <a id="thumbnails_to__multibitrate_MP4_overview"></a>Miniatűrök hozzáadandó munkafolyamat áttekintése
-![Kiinduló Multibitrate MP4-munkafolyamat](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-multibitrate-mp4-workflow-to-start-from.png)
+### <a id="thumbnails_to__multibitrate_MP4_overview"></a>Miniatűrök hozzáadása a munkafolyamat áttekintése
+![Indítsa el a munkafolyamatot több MP4](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-multibitrate-mp4-workflow-to-start-from.png)
 
-*Kiinduló Multibitrate MP4-munkafolyamat*
+*Indítsa el a munkafolyamatot több MP4*
 
-### <a id="thumbnails_to__multibitrate_MP4__with_jpg"></a>JPG kódolás hozzáadása
-A miniatűr generációs lelke fogja tudni kimeneti JPG fájlok JPG kódoló összetevő.
+### <a id="thumbnails_to__multibitrate_MP4__with_jpg"></a>Hozzáadás a JPG-kódolás
+A miniatűrkészítés lelke a JPG-kódoló összetevő, a kimeneti fájlok JPG tudni lesz.
 
-![JPG kódoló](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-jpg-encoder.png)
+![JPG-kódoló](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-jpg-encoder.png)
 
 *JPG Encoder*
 
-Nem azonban közvetlenül kapcsolódni a tömörítetlen Video-adatfolyamot Media fájl bemeneti azokat a JPG kódoló. Ehelyett várhatóan egyes keretek kell átadni. Ez a videó keret kapu összetevő segítségével végezzük.
+Nem sikerült azonban közvetlenül csatlakozni a tömörítetlen Video-adatfolyamot a Media fájl bemeneti a JPG-kódoló be. Ehelyett várhatóan át kell adni egyes keretek. Ez a videó keret kapu összetevő keresztül elvégezhető.
 
-![A keret kapu csatlakozik a JPG kódoló](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connect-frame-gate-to-jpg-encoder.png)
+![A keret kapu csatlakozik a JPG-kódoló](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connect-frame-gate-to-jpg-encoder.png)
 
-*A keret kapu csatlakozik a JPG kódoló*
+*A keret kapu csatlakozik a JPG-kódoló*
 
-A keret kapu egyszer sok másodpercenként vagy keretek lehetővé teszi, hogy képkockát adja át. Az időköz, amely Ez akkor fordul elő időeltolódás pedig tulajdonságaiban konfigurálható.
+A keret kapu sok másodpercenként vagy keretek lehetővé teszi, hogy egy videó keret át. Az időközt, és amely ez történik az időeltolódás tulajdonságaiban konfigurálható.
 
 ![Videó keret kapu tulajdonságai](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-video-frame-gate-properties.png)
 
 *Videó keret kapu tulajdonságai*
 
-Hozzon létre egy miniatűr percenként idő (másodperc) és az időtartamot 60 a mód beállításával.
+Hozzunk létre egy miniatűr percenként idő (másodperc) és 60 intervallum a mód beállításával.
 
-### <a id="thumbnails_to__multibitrate_MP4_color_space"></a>A szín terület átalakítás foglalkozó
-Logikai mindkét tömörítetlen videó PIN-kódok a keret kapu és a Media fájl bemeneti most csatlakozhat tűnik, amíg azt visszajelzést kap a figyelmeztetést, ha azt szeretné ehhez.
+### <a id="thumbnails_to__multibitrate_MP4_color_space"></a>Szín terület átalakítás többé vesződnie a sérült
+Logikai mindkét tömörítetlen videó PIN-kódok a keret kapu és az adathordozó bemeneti fájllal most már csatlakoztatható tűnik, miközben tartozna figyelmeztetés, ha szeretné tesszük.
 
 ![Bemeneti szín helyének hibája](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-input-color-space-error.png)
 
 *Bemeneti szín helyének hibája*
 
-Ennek oka az, mely színnel információk jelennek meg az eredeti nyers tömörítetlen video-adatfolyammá alakítja, a MXF érkező módja eltér a Mi a JPG kódoló által várt paraméterekkel. Pontosabban egy úgynevezett "szín lemezterület" a "RGB" vagy "Szürkeárnyalatos" várt rendszer. Ez azt jelenti, hogy a videó keret kapu bejövő video-adatfolyamot alkalmazza a szín terület vonatkozó először konverzió rendelkeznie kell.
+Ennek oka az, megjelenítésének színe az adatokat az eredeti nyers tömörítetlen video-adatfolyamot, a érkező, az MXF, különbözik a Mi a JPG-kódoló feltételez. Pontosabban egy úgynevezett "szín terület", "RGB" vagy "Szürkeárnyalatos" várhatóan a flow a. Ez azt jelenti, hogy a videó keret kapu bejövő video-adatfolyamot kell rendelkeznie a szín terület kapcsolatban először alkalmazza az átalakításhoz.
 
-Húzza a munkafolyamat a szín terület konverter - Intel, és csatlakoztassa a keret kapu.
+Húzza a munkafolyamat a szín terület Converter - Intel, és csatlakoztathatja azt a keret kapu.
 
 ![Csatlakozás egy szín terület konverter](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-connect-color-space-convertor.png)
 
 *Csatlakozás egy szín terület konverter*
 
-A Tulajdonságok ablakban válassza ki a BGR 24 bejegyzést, az előre definiált listából.
+A Tulajdonságok ablakban válassza ki a készlet listából a BGR 24 bejegyzést.
 
 ### <a id="thumbnails_to__multibitrate_MP4_writing_thumbnails"></a>A miniatűrök írása
-A MP4 videó eltér a JPG kódoló összetevő kimenete egynél több fájlt. Ahhoz, hogy megmaradjon, használhatja a leképezni kívánt jelenetben keresési JPG fájl író összetevője: a bejövő JPG miniatűrök vesz igénybe, és írja őket, minden egyes eltérő számú által éppen utótaggal fájlnév. (A azonosítószámát általában a másodperc/egységek számát, amely a miniatűr megrajzolása az adatfolyamban.)
+A MP4 videó-től eltérően a JPG-kódoló összetevő jelenít meg több fájlt. Annak érdekében, hogy ez foglalkozik, egy jelenet keresési JPG fájl író összetevővel is használható: azt a bejövő JPG miniatűrök fogadja, és minden folyamatban van egy másik számmal suffixed filename ír ki, azokat. (A általában az a streamben, amely a miniatűr megrajzolása másodperc/egységek számát jelző szám.)
 
-![A leképezni kívánt jelenetben keresési JPG fájl író bemutatása](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-scene-search-jpg-file-writer.png)
+![A jelenet keresési JPG-fájl író bemutatása](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-scene-search-jpg-file-writer.png)
 
-*A leképezni kívánt jelenetben keresési JPG fájl író bemutatása*
+*A jelenet keresési JPG-fájl író bemutatása*
 
-A kimeneti mappa elérési útja tulajdonság beállítása a következő kifejezéssel: ${ROOT_outputWriteDirectory}
+A kimeneti mappa elérési útja tulajdonság beállítása a kifejezésben: ${ROOT_outputWriteDirectory}
 
-és a fájlnév előtag tulajdonság:
+és a fájlnév előtag tulajdonságot:
 
     ${ROOT_sourceFileBaseName}_thumb_
 
-Az előtag határozza meg, hogyan a miniatűr fájlok neve alatt. Azok a görgetőgomb pozíciót az adatfolyamban azonosítószámát a rendszer utótaggal.
+Az előtag határozza meg, hogyan a miniatűr fájlok neve alatt. Ezek a streambeli pozíció a bütykének jelző szám vannak utótaggal.
 
-![Megjelenítés keresési JPG fájl író tulajdonságai](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-scene-search-jpg-file-writer-properties.png)
+![Jelenet JPG-fájl író keresési tulajdonságok](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-scene-search-jpg-file-writer-properties.png)
 
-*Megjelenítés keresési JPG fájl író tulajdonságai*
+*Jelenet JPG-fájl író keresési tulajdonságok*
 
-A kimeneti fájl/eszköz csomópont a leképezni kívánt jelenetben keresési JPG fájl író csatlakozni.
+A kimeneti fájl vagy eszköz a csomóponthoz csatlakozás a jelenet keresési JPG-fájl író.
 
-### <a id="thumbnails_to__multibitrate_MP4_errors"></a>A munkafolyamat hibáinak észleléséhez
-A szín terület konverter a bemenetben csatlakozni a nyers tömörítetlen videokimenetéhez. Egy tesztcélú helyi futtatásához a munkafolyamat végrehajtható. A munkafolyamat hirtelen leállítja a végrehajtása és a vizsgált összetevő hibába ütközött egy piros vázlatot jelzi esély van:
+### <a id="thumbnails_to__multibitrate_MP4_errors"></a>Hibák észlelése, a munkafolyamat
+A bemeneti a szín terület konverter csatlakozhat a nyers tömörítetlen videokimenetet. Most egy helyi tesztet végrehajtani a munkafolyamat futtatásához. A munkafolyamat hirtelen leáll a végrehajtása, és egy piros vázlatot, az a komponens, amely a hibát jelezze esély van:
 
-![Szín terület konverter hiba](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-color-space-converter-error.png)
+![Szín terület konvertálási hiba](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-color-space-converter-error.png)
 
-*Szín terület konverter hiba*
+*Szín terület konvertálási hiba*
 
-Kattintson a jobb felső sarokban, mi az az oka a kódolási kísérlet megtekintéséhez a szín terület konverter összetevő sarkában sikertelen kevés piros "E" ikonra.
+Kattintson a jobb sarkában a szín terület Converter összetevő megtekintéséhez, mi az az oka, a kódolási kísérlet nem sikerült felső kis red "E" ikont.
 
-![Szín terület konverter hiba-párbeszédpanelen.](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-color-space-converter-error-dialog.png)
+![Szín terület Converter hiba-párbeszédpanelen.](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-color-space-converter-error-dialog.png)
 
-*Szín terület konverter hiba-párbeszédpanelen.*
+*Szín terület Converter hiba-párbeszédpanelen.*
 
-Változik, ahogy látja, hogy rendelkezik-e a bejövő szín terület szabványt állít fel a szín terület konverter kell lennie a kért átalakításához YUV RGB-rec601. Az adatfolyam látszólag nem jelzi a rec601. (Jav. 601 a digitális videót formában váltakozó analóg videó jelek kódolási szabványos. Azt adja meg az aktív terület 720 fénysűrűség mintákat és 360 chrominance minták soronként. A rendszer kódolás szín YCbCr 4 néven: 2:2.)
+Azt tapasztaltuk, ahogy láthatjuk, hogy rendelkezik-e a bejövő szín terület a szín terület átalakító szabvány a kért átalakításához meg YUV RGB-rec601 kell. A stream látszólag nem jelzi a rec601. (Jav. 601 egy digitális videót formában váltakozó analóg videó jelek kódolási szabvány. Azt adja meg egy aktív régió 720 fényességének minták és a egy sorban 360 chrominance minták. A rendszer kódolás szín YCbCr 4 néven: 2:2.)
 
-A javítás érdekében azt fogja jelzi az adatfolyam, amely jelenleg éppen foglalkozó rec601 tartalom metaadatainak. Ehhez a videó adatok típusa Frissítőjének összetevő, amelyeket igazolnia kell a Between a nyers forrás- és a szín terület átalakítás összetevőjének fogjuk használni. Ezen adatok típusa frissítőjének lehetővé teszi, hogy az egyes videokártya adatok manuális frissítése típus tulajdonságai. Jelzi a szín terület szabványos a "Rec 601" konfigurálja. Ennek hatására a videó adatok típusa megtekinti a címkézésére "Rec 601" szín területtel rendelkező adatfolyam, ha nincs meghatározva szín terület történt. (Ez nem bírálja felül a meglévő metaadatokat, hacsak a felülbírálás jelölőnégyzetet, de.)
+A probléma megoldásához, jeleztük fogja meg a stream, azt még foglalkozó rec601 tartalmak metaadatait. Ehhez egy videó adatok típusa Updater összetevőt, amely a nyers forrás- és a szín terület átalakítás összetevő között elhelyezzük fogjuk használni. Ezen adatok típusa updater lehetővé teszi, hogy az egyes videó adatok manuális frissítés tulajdonságait. Konfigurálja egy szín terület Standard, "Rec 601" jelzi. Ezáltal a videó adatok típusa Updater címkézése a streamet, a "Rec 601" szín területtel rendelkező, ha nem volt nincs még definiált színt hely. (Nem felülírja a meglévő metaadatokat, hacsak a felülbírálás jelölőnégyzetet, de.)
 
 ![Szín terület Standard megtekinti a adatok típusa a frissítése](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-update-color-space-standard-on-data-type.png)
 
 *Szín terület Standard megtekinti a adatok típusa a frissítése*
 
-### <a id="thumbnails_to__multibitrate_MP4_finish"></a>Befejezett munkafolyamat
-Most, hogy a munkafolyamat befejeződött, hajtsa végre egy másik teszt haladnak megjelenítéséhez futtassa.
+### <a id="thumbnails_to__multibitrate_MP4_finish"></a>A munkafolyamat befejeződött
+Most, hogy a munkafolyamat befejeződött, hajtsa végre egy másik Futtatás megtekintéséhez adja át.
 
-![Befejezett munkafolyamat vázlattal multi-mp4-kimenet](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow-for-multi-mp4-thumbnails.png)
+![Miniatűrökkel multi-mp4-kimenetre a befejezett munkafolyamat](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow-for-multi-mp4-thumbnails.png)
 
-*Befejezett munkafolyamat vázlattal multi-mp4-kimenet*
+*Miniatűrökkel multi-mp4-kimenetre a befejezett munkafolyamat*
 
-## <a id="time_based_trim"></a>Tisztítás időalapú multibitrate MP4 kimenet
-Amely hoz létre egy munkafolyamat-től kezdődő [egy multibitrate MP4 kimenete egy bemeneti MXF](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging), azt most kell keresése a forrás videó időbélyegeket alapján díszítésre be.
+## <a id="time_based_trim"></a>Időalapú levágási több MP4-kimenetre
+Egy munkafolyamatot, amely állít elő, kezdve [az MXF, adjon meg egy több MP4 kimenete](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging), azt most keresse a forrás-videó-időbélyegek alapján vágást be.
 
-### <a id="time_based_trim_start"></a>Hozzáadni a tisztítás, a munkafolyamat áttekintése
+### <a id="time_based_trim_start"></a>Kezdje el hozzáadni a tisztítás, a munkafolyamat áttekintése
 ![Adja hozzá a tisztítás kezdő munkafolyamat](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-starting-workflow-to-add-trimming.png)
 
 *Adja hozzá a tisztítás kezdő munkafolyamat*
 
-### <a id="time_based_trim_use_stream_trimmer"></a>Az adatfolyam vágó használatával
-Az adatfolyam vágó összetevő vághatja a kezdő és egy alap mérve az időt (másodpercben, perc,...) adatokat a bemeneti adatfolyam befejezése teszi lehetővé. A vágó nem támogatja a keret-alapú tisztítás.
+### <a id="time_based_trim_use_stream_trimmer"></a>A Stream vágó használatával
+A Stream vágó összetevő lehetővé teszi, hogy a tároló visszaigénylésének elején és a egy alap túllépik az információk (másodperc, perc,...) a bemeneti Stream befejezési. A vágó nem támogatja a keret-alapú tisztítás.
 
-![Az adatfolyam vágó](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-stream-trimmer.png)
+![Stream vágó](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-stream-trimmer.png)
 
-*Az adatfolyam vágó*
+*Stream vágó*
 
-Helyett, ha a AVC kódolók és hangalapú pozíció assigner Media fájl bemeneti közvetlenül, azt fogja put Between azokat az adatfolyam vágó. (Egy a videó jel, egy másik pedig a kihagyásos hang jelet.)
+Helyett, ha a AVC kódolók és beszélőfelismerési pozíció hozzárendelő az adathordozó bemeneti fájllal közvetlenül, elhelyezzük között azokat a stream vágó. (Egy a videó jel, valamint a kihagyásos hang jel esetében.)
 
-![Az adatfolyam vágó helyezze a kettő között](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-put-stream-trimmer-in-between.png)
+![Stream vágó helyezze a kettő között](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-put-stream-trimmer-in-between.png)
 
-*Az adatfolyam vágó helyezze a kettő között*
+*Stream vágó helyezze a kettő között*
 
-A vágó pedig konfiguráljuk az, hogy a videó és hang 15 másodperc és a videó 60 másodperc között csak azt fogja feldolgozni.
+Így a videó és hang 15 másodperc és a videóban 60 másodperc közötti csak azt fogja feldolgozni, konfiguráljuk a vágó.
 
-Nyissa meg a Video-adatfolyamot vágó tulajdonságait, és mindkét kezdete konfigurálása (15 s) és befejezési időpontja (60 s) tulajdonságait. Annak biztosításához, mind a hang- és vágó mindig vannak konfigurálva a megegyező kezdő és záró értékek, közzétesszük azokat a legfelső szintű a munkafolyamat.
+Nyissa meg a videó Stream vágó tulajdonságait, és konfigurálása mindkét Kezdés időpontja (15 s) és befejezési időpontja (60 s) tulajdonságait. Ahhoz, hogy mind az audio- és vágó mindig megtörténik az megegyező kezdő és záró értéket, hogy közzé azokat, a munkafolyamat legfelső szintű.
 
-![A kezdési idő tulajdonságot adatfolyam vágó közzététele](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-publish-start-time-from-stream-trimmer.png)
+![A kezdési idő tulajdonságot Stream vágó közzététele](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-publish-start-time-from-stream-trimmer.png)
 
-*A kezdési idő tulajdonságot adatfolyam vágó közzététele*
+*A kezdési idő tulajdonságot Stream vágó közzététele*
 
-![A kezdő időpont tulajdonság párbeszédpanel közzététele](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-publish-dialog-for-start-time.png)
+![Közzététel tulajdonság párbeszédpanel kezdési ideje](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-publish-dialog-for-start-time.png)
 
-*A kezdő időpont tulajdonság párbeszédpanel közzététele*
+*Közzététel tulajdonság párbeszédpanel kezdési ideje*
 
-![Tulajdonság párbeszédpanel közzé a befejezési időpontja](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-publish-dialog-for-end-time.png)
+![Közzététel tulajdonság párbeszédpanel a befejezési idő](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-publish-dialog-for-end-time.png)
 
-*Tulajdonság párbeszédpanel közzé a befejezési időpontja*
+*Közzététel tulajdonság párbeszédpanel a befejezési idő*
 
-Azt a munkafolyamat gyökérmappájában most vizsgálja meg, ha mindkét tulajdonságok egyszerű jelennek meg és konfigurálható onnan.
+Azt a munkafolyamat a legfelső szintű most vizsgálja meg, mindkét tulajdonság-e eligazíthatja megjelenített és konfigurálható onnan.
 
-![A gyökérszintű elérhető közzétett tulajdonságok](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-published-properties-available-on-root.png)
+![Elérhető a legfelső szintű közzétett tulajdonságai](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-published-properties-available-on-root.png)
 
-*A gyökérszintű elérhető közzétett tulajdonságok*
+*Elérhető a legfelső szintű közzétett tulajdonságai*
 
-Most nyissa meg a tisztítás tulajdonságokat a hang vágó, és konfigurálja a kezdő és záró időpontjának a közzétett tulajdonságai a munkafolyamat legfelső szintű hivatkozó kifejezést.
+Most nyissa meg a tisztítás tulajdonságait a hang vágó, és a közzétett tulajdonságai a munkafolyamat legfelső szintű hivatkozó kifejezést is kezdési és befejezési idejének konfigurálása.
 
-A hang levágási kezdési idő:
+A csonkolás Audio kezdő időpont:
 
     ${ROOT_TrimmingStartTime}
 
-és a befejezési ideje:
+és a Befejezés időpontja:
 
     ${ROOT_TrimmingEndTime}
 
-### <a id="time_based_trim_finish"></a>Befejezett munkafolyamat
-![Befejezett munkafolyamat](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow-time-base-trimming.png)
+### <a id="time_based_trim_finish"></a>A munkafolyamat befejeződött
+![A munkafolyamat befejeződött](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow-time-base-trimming.png)
 
-*Befejezett munkafolyamat*
+*A munkafolyamat befejeződött*
 
-## <a id="scripting"></a>A parancsprogram-alapú összetevők bemutatása
-Parancsprogram-alapú összetevők tetszőleges parancsfájlokat futtathat a munkafolyamat végrehajtásának fázisában. Négy különböző parancsprogramok hajt végre, az adott jellemzőit és a saját helyét, a munkafolyamat-életciklusának:
+## <a id="scripting"></a>A parancsfájlalapú összetevő bemutatása
+Parancsfájlalapú összetevők parancsfájlok hajthat végre, a munkafolyamat-végrehajtási fázisaiban. Négy különböző parancsprogramok is végrehajtható, egyenként egyedi jellemzőit, és saját helyen, a munkafolyamat-életciklusának:
 
 * **commandScript**
 * **realizeScript**
 * **processInputScript**
 * **lifeCycleScript**
 
-A dokumentáció a parancsprogram-összetevő kerül részletesebben minden, a fentiek közül. A [a következő szakasz](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim), a **realizeScript** parancsfájl-kezelési összetevő összeállításához egy cliplist xml menet közben a munkafolyamat indításakor szolgál. A parancsprogram neve csak egyszer történik, életciklus összetevő telepítése során.
+A dokumentáció a parancsfájlalapú összetevő kerül részletesen a fenti minden. A [az alábbi szakasz](media-services-media-encoder-premium-workflow-tutorials.md#frame_based_trim), a **realizeScript** parancsfájl-kezelési összetevő létrehozására egy cliplist XML-t működés közben, amikor elindítja a munkafolyamat használható. Ez a szkript neve, amely csak egyszer történik, annak életciklusát összetevő telepítésekor.
 
-### <a id="scripting_hello_world"></a>A munkafolyamaton belül Scripting: hello world
-Egy parancsprogram összetevő húzza a Tervező felületére, és adjon neki (például "SetClipListXML").
+### <a id="scripting_hello_world"></a>Egy munkafolyamaton belül Scripting: hello world
+Húzzon egy parancsprogrammal létrehozva összetevő a tervezőfelületére, és nevezze (például "SetClipListXML").
 
 ![A parancsfájlalapú összetevő hozzáadása](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-add-scripted-comp.png)
 
 *A parancsfájlalapú összetevő hozzáadása*
 
-A parancsprogram összetevő tulajdonságainak vizsgálja meg, ha a különböző parancsfájl négyféle lesz látható, minden egyes konfigurálható különböző parancsfájlba.
+A parancsfájlalapú összetevő tulajdonságainak nézze meg, a másik parancsprogramot négyféle lesz látható, minden állítható be egy másik szkriptet.
 
-![A parancsfájlalapú összetevő tulajdonságai](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-scripted-comp-properties.png)
+![Parancsfájlalapú összetevő tulajdonságai párbeszédpanel](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-scripted-comp-properties.png)
 
-*A parancsfájlalapú összetevő tulajdonságai*
+*Parancsfájlalapú összetevő tulajdonságai párbeszédpanel*
 
-Törölje a processInputScript, és nyissa meg a realizeScript szerkesztője. Most azt még beállítás és felkészülés a parancsfájlkezelés megkezdéséhez.
+Törölje a jelet a processInputScript, és nyissa meg a realizeScript szerkesztője. Most már beállított és készen áll a parancsfájlkezelés megkezdéséhez.
 
-Parancsfájlok Groovy, egy dinamikusan lefordított programozási nyelv a Java platform, amely megőrzi a kompatibilitást a Java nyelven íródtak. A legtöbb Java-kóddal ténylegesen, érvényes Groovy kód.
+Parancsfájlok Groovy, egy dinamikusan lefordított programozási nyelv, a Java platform, amely megtartja a kompatibilitás a Java nyelven íródtak. Valójában a legtöbb Java-kódok érvényes Groovy kódot.
 
-Ideje lefuttatni egy egyszerű hello world groovy parancsfájl a realizeScript környezetében. A szerkesztőben írja be a következőket:
+A realizeScript kontextusában ideje lefuttatni egy egyszerű hello world groovy parancsfájlt. A szerkesztőben írja be a következőket:
 
     node.log("hello world");
 
-Egy tesztcélú helyi Futtatás most végrehajtani. Ehhez a futtató után vizsgálja meg (a parancsprogram-összetevőjének rendszer lap) a naplók tulajdonság.
+Most már végre egy tesztcélú helyi Futtatás. A Futtatás után vizsgálja meg (keresztül a rendszer a parancsfájlalapú összetevő lapján) a naplók tulajdonság.
 
-![Hello world kimenet](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-log-output.png)
+![Hello world napló kimenetét](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-log-output.png)
 
-*Hello world kimenet*
+*Hello world napló kimenetét*
 
-A csomópont-objektum, a napló metódus hívása az aktuális "csomópont" vagy az összetevőt, azt hogy scripting belül hivatkozik. Minden összetevő használja, így képes a kimeneti naplózási adatokat, a rendszer lapon keresztül érhető el. Ebben az esetben azt kimeneti a szövegkonstans "hello world". Fontos tudni, hogy ez hasznos információt hibakeresési eszközt, a parancsfájl ténylegesen tevékenységétől ismereteket elérhető bizonyítja ez.
+A csomópont-objektum a napló metódus nevezzük, az aktuális "csomópont" vagy az összetevőt, azt hogy parancsfájl-kezelési belül hivatkozik. Minden összetevő ilyen képes kimeneti naplózási adatokat, a rendszer fülre keresztül érhető el. Ebben az esetben azt kimeneti a szövegkonstans "hello world." Fontos tudni, itt látható, hogy ez felbecsülhetetlen értékű hibakeresési eszközt, hogy milyen a parancsfájl ténylegesen módon adatforgalmáról bizonyíthatja.
 
-A belül a parancsfájl-kezelési környezet, azt is hozzáférhetnek a tulajdonságok más összetevőket. Próbálkozzon a következővel:
+A parancsfájl-kezelési környezetből. azt is hozzáféréssel rendelkezik a többi összetevő. Megpróbálhatja a következőt:
 
 ```java
     //inspect current node:
@@ -618,67 +618,67 @@ A belül a parancsfájl-kezelési környezet, azt is hozzáférhetnek a tulajdon
     node.log("source file name with extension " + sourceFileExt + " is: " + sourceFileName);
 ```
 
-A napló ablakban a következő látható:
+A napló ablak megmutatja a következőket:
 
-![Napló kimeneti elérési útjának eléréséhez](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-log-output2.png)
+![Kimenet elérési útjának eléréséhez](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-log-output2.png)
 
-*Napló kimeneti elérési útjának eléréséhez*
+*Kimenet elérési útjának eléréséhez*
 
-## <a id="frame_based_trim"></a>Keret-alapú levágási multibitrate MP4 kimenet
-Amely hoz létre egy munkafolyamat-től kezdődő [egy multibitrate MP4 kimenete egy bemeneti MXF](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging), azt most kell keresése a keret érintett alapján forrás videó díszítésre be.
+## <a id="frame_based_trim"></a>Keret-alapú levágási több MP4-kimenetre
+Egy munkafolyamatot, amely állít elő, kezdve [az MXF, adjon meg egy több MP4 kimenete](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging), azt most keresse a forrásvideókat, keret érintett alapján vágást be.
 
-### <a id="frame_based_trim_start"></a>Tisztítás való felvételéhez tervezetének áttekintése
-![Hozzáadni a tisztítás, a munkafolyamat](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-workflow-start-adding-trimming-to.png)
+### <a id="frame_based_trim_start"></a>Kezdje el hozzáadni a tisztítás a tervezet áttekintése
+![A munkafolyamat elindításához a tisztítás hozzáadása](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-workflow-start-adding-trimming-to.png)
 
-*Hozzáadni a tisztítás, a munkafolyamat*
+*A munkafolyamat elindításához a tisztítás hozzáadása*
 
-### <a id="frame_based_trim_clip_list"></a>Az XML klip listáról
-Az összes korábbi munkafolyamat oktatóanyag a bemeneti videoforrást az adathordozó fájl bemeneti összetevő használja azt. Ebben a forgatókönyvben azonban fogjuk használni a klip forráslista összetevő helyette. Ne legyen az előnyben részesített módja működő; csak akkor alkalmazza a klip forráslista, ha egy valódi ok arra, hogy ehhez (a következő esetében, ahol azt hajt végre, például a klip lista levágási képességek használatát).
+### <a id="frame_based_trim_clip_list"></a>A videoklip lista XML használata
+Az összes korábbi munkafolyamat oktatóanyagok a Media fájl bemeneti összetevő, a videó bemeneti forrás használtuk. Ebben a forgatókönyvben, fogjuk használni a klipek lista forrása összetevő helyette. Ne legyen működő; az előnyben részesített módja csak akkor használja a klipek lista forrása, ha ehhez valós indok van (például a következő esetben, ahol végzünk klip lista levágási funkcióinak használatát).
 
-Ha az adathordozó fájl bemenet a klip forráslista a, a klip forráslista összetevő húzza a tervezési felülethez, és a klip lista XML PIN-kód csatlakozzon a munkafolyamat-Tervező klip lista XML-csomópont. Ez a klip forráslista a kimeneti PIN-kód, a bemeneti videóhoz megfelelően tölti fel. Most csatlakoztassa a tömörítetlen videó és tömörítetlen hang PIN-kódok a klip lista forrásból származó megfelelő AVC kódolók és hang adatfolyam Interleaver. A Media fájl bemeneti eltávolítása.
+Ha az adathordozó bemeneti fájllal, a klipek lista forrása a, a klipek lista forrása összetevő húzza a tervezőfelületére, és csatlakozzon a klipek lista XML PIN-kód a munkafolyamat-tervezővel klip lista XML-csomópont. Ez a klip lista forrása a kimeneti PIN-kód, a bemeneti videó alapján tölti fel. Mostantól csatlakozhat a tömörítetlen videó és hang tömörítetlen PIN-kódok a klipek lista forrásból a megfelelő AVC kódolók és hang Stream Interleaver. Most már távolítsa el a Media bemeneti fájllal.
 
-![A Media fájl bemeneti cseréli a klip forráslista](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-replaced-media-file-with-clip-source.png)
+![A Media bemeneti fájllal cseréli a klipek lista forrása](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-replaced-media-file-with-clip-source.png)
 
-*A Media fájl bemeneti cseréli a klip forráslista*
+*A Media bemeneti fájllal cseréli a klipek lista forrása*
 
-A klip forráslista összetevő fogadja a bemeneti adatként "Klip listáját XML." A forrásfájl helyileg tesztelni kiválasztásakor a a klip lista XML-kódja, automatikusan feltölti az Ön.
+A lista forrása klip összetevő felvesz bemenetként egy "klip XML." A forrás-fájl a helyi teszteléshez kiválasztásakor a klipek lista xml-automatikusan kitölti az Ön számára kódja.
 
-![Automatikus feltöltve klip lista XML-tulajdonság](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-auto-populated-clip-list-xml-property.png)
+![Klip lista XML-tulajdonság automatikusan kitöltve](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-auto-populated-clip-list-xml-property.png)
 
-*Automatikus feltöltve klip lista XML-tulajdonság*
+*Klip lista XML-tulajdonság automatikusan kitöltve*
 
-Keresése egy kicsit közelebb az XML-fájl, ez az hogyan hasonlóan néz ki:
+Szeretne egy kicsit közelebb az XML-fájl, ez hogyan is néz ki:
 
-![Szerkesztése klip lista párbeszédpanel](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-edit-clip-list-dialog.png)
+![Klip tartalmazó párbeszédpanelen szerkesztése](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-edit-clip-list-dialog.png)
 
-*Szerkesztése klip lista párbeszédpanel*
+*Klip tartalmazó párbeszédpanelen szerkesztése*
 
-Ez azonban nem tükrözi a klip lista xml képességeit. Egy lehetőség van egy vegyen fel egy "Vágás" mindkét a video- és a forrás területen ehhez hasonló:
+Ez azonban nem tükrözi a klipek lista xml képességeit. Az egyik lehetőség van, hogy adjon hozzá egy "Vágás" elemet mindkét video- és forrás alatt, ehhez hasonló:
 
-![A vágás elem felvétele a klip listájára](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-adding-trim-element-to-clip-list.png)
+![Egy vágás elem felvétele a klipek listához](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-adding-trim-element-to-clip-list.png)
 
-*A vágás elem felvétele a klip listájára*
+*Egy vágás elem felvétele a klipek listához*
 
-Ha módosítja a klip lista xml ilyen felett, és helyi ellenőrzéséhez futtassa, láthatja a videó megfelelően lett levágja a videó 10 és 20 másodperc között.
+Ha ilyen fent klip lista xml módosítja, és hajtson végre egy helyi tesztet futtatni, látni fogja a videó megfelelően lett vágott a videóban 10 és 20 másodperc között.
 
-Mi történik, ha a helyi Futtatás tegye, ellentétesen az azonos cliplist xml nem kellene ugyanaz az eredmény az Azure Media Services futó munkafolyamatot alkalmazásakor. Azure prémium szintű kódolás indításakor az cliplist XML-fájl jön létre minden alkalommal, amikor újra, a kódolási feladat adtak meg a bemeneti fájl alapján. Ez azt jelenti, hogy a módosításokat az XML-végezzük volna sajnos bírálható felül.
+Mi történik, ha azonban mégis egy helyi futtatás, ellentétesen az azonos cliplist xml nem kell a ugyanaz a hatása, ha egy munkafolyamatot, amely futtatja az Azure Media Services a alkalmazni. Azure prémium szintű kódoló indításakor az cliplist XML-fájl jön létre minden alkalommal újra, a kódolási feladat a megadott bemeneti fájl alapján. Ez azt jelenti, hogy változtatásokat végzünk az XML sajnos bírálható felül lenne.
 
-A számláló az egy kódolási feladat indításakor adatainak törlése cliplist xml, azt is ismét menet közben a munkafolyamat elindítása után. Ilyen egyéni műveletek is lehet képernyőfelvételt készíteni, keresztül úgynevezett "Parancsfájlalapú Component." További információkért lásd: [vezet be, a parancsprogram összetevő](media-services-media-encoder-premium-workflow-tutorials.md#scripting).
+A számláló a cliplist xml-kódolási feladat indításakor törlődnek, azt újból létrehozhatja azt menet közben csak a munkafolyamat megkezdése után. Az ilyen egyéni műveletek elvégezhet keresztül az úgynevezett "Parancsfájlalapú Component." További információkért lásd: [bemutatása a parancsfájlalapú összetevő](media-services-media-encoder-premium-workflow-tutorials.md#scripting).
 
-Húzzon egy parancsprogram-összetevő a Tervező felületére, és nevezze át a "SetClipListXML."
+Húzzon egy parancsprogrammal létrehozva összetevő a Tervező felületére, és nevezze át a "SetClipListXML."
 
 ![A parancsfájlalapú összetevő hozzáadása](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-add-scripted-comp.png)
 
 *A parancsfájlalapú összetevő hozzáadása*
 
-A parancsprogram összetevő tulajdonságainak vizsgálja meg, amikor a négy különböző parancsfájl típusok a következők látható, minden egyes konfigurálható különböző parancsfájlba.
+A parancsfájlalapú összetevő tulajdonságainak nézze meg, amikor a négy különböző parancsfájl-típusok a következők látható, minden állítható be egy másik szkriptet.
 
-![A parancsfájlalapú összetevő tulajdonságai](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-scripted-comp-properties.png)
+![Parancsfájlalapú összetevő tulajdonságai párbeszédpanel](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-scripted-comp-properties.png)
 
-*A parancsfájlalapú összetevő tulajdonságai*
+*Parancsfájlalapú összetevő tulajdonságai párbeszédpanel*
 
-### <a id="frame_based_trim_modify_clip_list"></a>Egy parancsprogram összetevő klip listájának módosítása
-Azt írni a munkafolyamat indítása során létrehozott cliplist xml, igazolnia kell kell a cliplist XML-tulajdonság és a tartalmak eléréséhez. Ehhez hasonló azt is megteheti:
+### <a id="frame_based_trim_modify_clip_list"></a>A parancsfájlalapú összetevőtől klip listájának módosítása
+Azt is újraírási cliplist XML-kód jön létre a munkafolyamat-indítás közben, mielőtt azt kell hozzáféréssel rendelkezik a cliplist XML-tulajdonság és a tartalom. Ehhez hasonló azt is megteheti:
 
 ```java
     // get cliplist xml:
@@ -690,26 +690,26 @@ Azt írni a munkafolyamat indítása során létrehozott cliplist xml, igazolnia
 
 *A naplózott bejövő klip listája*
 
-Először tudja határozni, hogy mely pontról amikor csak lehet levágni a videó szeretnénk kell. Legyen Ez kényelmes kevésbé-technikai felhasználóját, hogy a munkafolyamat, tegye közzé a gráf legfelső szintű két tulajdonság. Ehhez kattintson a jobb gombbal a Tervező felületére, és válassza ki a "Tulajdonság hozzáadása":
+Először szükségünk meg tudja határozni, hogy melyik pontból melyik pont csak a videó vágása szeretnénk. Ahhoz, hogy ez kényelmes kevésbé-technikai felhasználóját, hogy a munkafolyamat, tegye közzé a grafikon a legfelső szintű két tulajdonság. Ehhez kattintson a jobb gombbal a Tervező felületére, és válassza ki a "Tulajdonság hozzáadása":
 
 * Első tulajdonság: "ClippingTimeStart" típusú: "IDŐKÓD"
 * A második tulajdonság: "ClippingTimeEnd" típusú: "IDŐKÓD"
 
-![Hozzáadása tulajdonsághoz párbeszédpanel Kivágás kezdési ideje](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-clip-start-time.png)
+![Adja hozzá a tulajdonság párbeszédpanel kapcsolást kezdési ideje](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-clip-start-time.png)
 
-*Hozzáadása tulajdonsághoz párbeszédpanel Kivágás kezdési ideje*
+*Adja hozzá a tulajdonság párbeszédpanel kapcsolást kezdési ideje*
 
-![Közzétett a munkafolyamat legfelső szintű idő tulajdonságai Kivágás](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-clip-time-props.png)
+![A munkafolyamat legfelső szintű idő Kellékek levágott közzétett](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-clip-time-props.png)
 
-*Közzétett a munkafolyamat legfelső szintű idő tulajdonságai Kivágás*
+*A munkafolyamat legfelső szintű idő Kellékek levágott közzétett*
 
-Konfigurálja a megfelelő értéket tulajdonságot is:
+Adja meg mindkét tulajdonság értékét:
 
-![Konfigurálása a Kivágás kezdő és befejező tulajdonságok](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-configure-clip-start-end-prop.png)
+![Konfigurálása a Kivágás kezdő és záró tulajdonságai](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-configure-clip-start-end-prop.png)
 
-*Konfigurálása a Kivágás kezdő és befejező tulajdonságok*
+*Konfigurálása a Kivágás kezdő és záró tulajdonságai*
 
-Most a belül a parancsfájl azt férhetnek hozzá mindkét tulajdonságok ehhez hasonló:
+Most a belül a parancsfájl elérheti az mindkét tulajdonság, ehhez hasonló:
 
 ```java
     // get start and end of clipping:
@@ -720,11 +720,11 @@ Most a belül a parancsfájl azt férhetnek hozzá mindkét tulajdonságok ehhez
     node.log("clipping end: " + clipend);
 ```
 
-![Kezdő és záró a Kivágás tartalmazó napló ablak](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-show-start-end-clip.png)
+![Napló ablak, rajta az elejéről és végéről, Kivágás](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-show-start-end-clip.png)
 
-*Kezdő és záró a Kivágás tartalmazó napló ablak*
+*Napló ablak, rajta az elejéről és végéről, Kivágás*
 
-Most értelmezhető a időkód karakterláncok egy kényelmesebb egyszerű reguláris kifejezést használ, az űrlapot használhatja:
+Nézzük elemezni a időkód karakterláncokat az űrlap használatával egy egyszerű reguláris kifejezés használatát egy kényelmesebbé:
 
 ```java
     //parse the start timing:
@@ -744,27 +744,27 @@ Most értelmezhető a időkód karakterláncok egy kényelmesebb egyszerű regul
     node.log("framerate end is: " + endframerate);
 ```
 
-![Napló ablakban az elemzett időkód kimenete](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-output-parsed-timecode.png)
+![Elemzett időkód kimenetét a napló ablak](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-output-parsed-timecode.png)
 
-*Napló ablakban az elemzett időkód kimenete*
+*Elemzett időkód kimenetét a napló ablak*
 
-Az információ az elvégzendő azt mostantól módosíthatják a kezdő és záró időpontjának a film a kívánt keret pontos Kivágás megfelelően cliplist xml.
+Ezen információk csak olyan mélységben is most úgy módosítjuk, hogy a kívánt keret pontos Kivágás a film kezdési és befejezési időpontjai cliplist xml.
 
-![Parancsfájlkód vágás elemek hozzáadása](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-add-trim-elements.png)
+![Szkriptkódot, hogy a vágás elemek hozzáadása](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-add-trim-elements.png)
 
-*Parancsfájlkód vágás elemek hozzáadása*
+*Szkriptkódot, hogy a vágás elemek hozzáadása*
 
-Ez normál karakterlánc fájlkezelési műveleteket keresztül végezhető el. Az eredményül kapott módosított klip lista xml van visszaírását a clipListXML tulajdonság a munkafolyamat legfelső szintű "setProperty" metódusával. A napló ablak egy másik teszt futtatása után szeretné jeleníti meg a következő us:
+Ez azért volt szükség keresztül normál karakterlánc fájlkezelési műveleteket. Az eredményül kapott módosított klip lista xml írt vissza a clipListXML tulajdonság a munkafolyamat legfelső szintű a "setProperty" metódus segítségével. Egy másik teszt futtatása után a napló ablak jelenik meg velünk a kapcsolatot a következők:
 
-![Naplózási a klip listájában](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-log-result-clip-list.png)
+![Az eredményül kapott klip listát naplózása](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-log-result-clip-list.png)
 
-*Naplózási a klip listájában*
+*Az eredményül kapott klip listát naplózása*
 
-Teheti meg, hogy hogyan lettek a video- és adatfolyamok levágva vizsgálat. Módon teheti meg egynél több vizsgálat levágási pontok különböző értékekkel, láthatja, hogy a rendszer nem figyelembe kell venni azonban! Ennek oka az, hogy a Tervező, az Azure futásidejű eltérően nem bírálja felül a cliplist xml minden futtatás. Ez azt jelenti, hogy csak az első alkalommal van beállítva, az a és pontokon, ki, akkor az XML-átalakítási és minden egyéb esetben a őr záradék (Ha (clipListXML.indexOf ("<trim>") == -1)) megakadályozza, hogy a munkafolyamat egy másik vágás elem felvétele esetén már létezik egy.
+Hajtsa végre a megtekintéséhez, hogyan lett a videó- és audio-adatfolyamokat levágva vizsgálat. Egynél több teszt futtatása a tisztítás pontok eltérő értékek teheti meg, ahogy azt láthatja, hogy a rendszer nem figyelembe kell venni azonban! Ennek oka az, hogy a Tervező, eltérően az Azure-futtatókörnyezetben nem bírálja felül az cliplist XML-fájl minden egyes futtatáskor. Ez azt jelenti, hogy csak az első alkalommal állította a is és pontokon, ki okoz az XML-átalakítás, minden más esetben az alkalmazásőr záradék (Ha (clipListXML.indexOf ("<trim>") == -1)) megakadályozza, hogy a munkafolyamat egy másik vágás elem felvétele esetén már egy.
 
-Ahhoz, hogy a munkafolyamat tesztelése helyileg kényelmes, a Microsoft ajánlott adja hozzá néhány house-karbantartási kódot, amely megvizsgálja, ha a vágás elem már található. Ha igen, azt is távolítsa el az új értékekkel xml módosításával a folytatás előtt. Ahelyett, hogy az egyszerű karakterlánc-feldolgozás, akkor valószínűleg biztonságosabb ehhez keresztül valós xml elemzése.
+Ahhoz, hogy a munkafolyamat tesztelése helyileg kényelmes, ajánlott hozzáadunk néhány vezetése ház kódot, amely megvizsgálja, ha a vágás elem már jelen volt. Ha igen, törölhetjük az XML-fájl az új értékekkel módosításával a folytatás előtt. Ahelyett, hogy használja az egyszerű karakterlánc-feldolgozás, az valószínűleg biztonságosabb ehhez keresztül valós xml-elemzés hálózatiobjektum-modellt.
 
-Ahhoz azonban vehessen fel ilyen kód, kell adni az importálási utasításban a parancsfájl elején először:
+Mielőtt azonban számos importálási utasításokat a parancsfájl elején először hozzá kell hozzá lehessen adni az ilyen kód:
 
 ```java
     import javax.xml.parsers.*;
@@ -777,7 +777,7 @@ Ahhoz azonban vehessen fel ilyen kód, kell adni az importálási utasításban 
     import javax.xml.transform.dom.*;
 ```
 
-Ezt követően azt is vegye fel a szükséges tisztítási kódot:
+Ezt követően hozzáadhatja a szükséges tisztítási kódot:
 
 ```java
     //for local testing: delete any pre-existing trim elements from the clip list xml by parsing the xml into a DOM:
@@ -813,20 +813,20 @@ Ezt követően azt is vegye fel a szükséges tisztítási kódot:
     clipListXML = result.getWriter().toString();
 ```
 
-Ez a kód kerül a pont, ahol azt a vágás elemek hozzáadása a cliplist xml felett.
+Ez a kód csak túllépik a pont, ahol a cliplist XML hozzáadjuk a vágás elemeket.
 
-Ezen a ponton azt futtathatja és módosíthatja a munkafolyamat, mint azt szeretnénk, ha során legalább egyszer a módosított rendelkező idő.    
+Ezen a ponton azt futtatható és módosítható munkafolyamatunkat a, akár mellett a módosításokat, minden eddiginél a alkalmazni kívánt időben.    
 
-### <a id="frame_based_trim_clippingenabled_prop"></a>Egy ClippingEnabled kényelmi tulajdonság hozzáadása
-Nem minden esetben érdemes díszítésre megtörténjen-e, mivel most Befejezés ki a munkafolyamat egy kényelmes logikai jelző, amely azt jelzi-e azt engedélyezni szeretné a díszítésre / Kivágás hozzáadásával.
+### <a id="frame_based_trim_clippingenabled_prop"></a>Kényelmi ClippingEnabled tulajdonság hozzáadása
+Nem mindig szívesen vágást megtörténjen, mivel most befejezéséhez ki a munkafolyamat adjon hozzá egy kényelmes logikai jelzőt, amely azt jelzi-e szeretnénk vágást / levágott engedélyezése.
 
-Mint korábban tegye közzé a legfelső szintű a munkafolyamat "ClippingEnabled" nevű új tulajdonsággal "Logikai" típusúnak.
+Mint korábban tegye közzé az új tulajdonság a legfelső szintű, az úgynevezett "ClippingEnabled" munkafolyamat "Logikai" típusú.
 
-![Közzétett egy tulajdonság Kivágás engedélyezése](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-enable-clip.png)
+![Közzétett egy tulajdonság kapcsolást engedélyezése](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-enable-clip.png)
 
-*Közzétett egy tulajdonság Kivágás engedélyezése*
+*Közzétett egy tulajdonság kapcsolást engedélyezése*
 
-Az az alábbi egyszerű őr záradék, azt is ellenőrizze, hogy a tisztítás szükség és döntse el, ha klip listáját használja, így kell vagy nem módosítható.
+Az az alábbi egyszerű guard záradék esetében lehet ellenőrizze, hogy a tisztítás megadása kötelező és döntse el, ha a klipek lista ilyen módosítani kell, vagy sem.
 
 ```java
     //check if clipping is required:
@@ -840,7 +840,7 @@ Az az alábbi egyszerű őr záradék, azt is ellenőrizze, hogy a tisztítás s
     }
 ```
 
-### <a id="code"></a>Teljes kód
+### <a id="code"></a>Teljes kódját
 
 ```java
     import javax.xml.parsers.*;
@@ -939,17 +939,17 @@ Az az alábbi egyszerű őr záradék, azt is ellenőrizze, hogy a tisztítás s
 ```
 
 ## <a name="also-see"></a>Lásd még:
-[Prémium szintű kódolás az Azure Media Services bemutatása](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
+[Introducing Premium Encoding in Azure Media Services](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
 
 [Prémium szintű kódolás az Azure Media Services használatával](http://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 
-[Az Azure Media Services kódolási igény tartalom](media-services-encode-asset.md#media-encoder-premium-workflow)
+[Az Azure Media Services az igény szerinti Tartalomterjesztésről kódolás](media-services-encode-asset.md#media-encoder-premium-workflow)
 
 [A Media Encoder Premium munkafolyamat formátumai és kodekei](media-services-premium-workflow-encoder-formats.md)
 
 [Minta munkafolyamat-fájlok](http://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)
 
-[Azure Media Services Explorer eszköz](http://aka.ms/amse)
+[Az Azure Media Services Explorer eszköz](http://aka.ms/amse)
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

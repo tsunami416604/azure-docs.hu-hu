@@ -3,21 +3,21 @@ title: Az Azure storage üzenetsorkötések az Azure Functions szolgáltatáshoz
 description: Megtudhatja, hogyan használhatja az Azure Queue storage eseményindítója, és kimeneti kötése az Azure Functions szolgáltatásban.
 services: functions
 documentationcenter: na
-author: ggailey777
+author: craigshoemaker
 manager: jeconnoc
 keywords: az Azure functions, függvények, eseményfeldolgozás, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
-ms.author: glenga
+ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: b3d4019fc5bde2eb10f0534291749dd25e7b5bed
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: e47233f075482b9ad00336ce1aaeae78465be2d5
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086930"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248562"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Az Azure storage üzenetsorkötések az Azure Functions szolgáltatáshoz
 
@@ -538,6 +538,39 @@ A JavaScript-függvények használata `context.bindings.<name>` eléréséhez az
 | Várólista | [Üzenetsor-hibakódok](https://docs.microsoft.com/rest/api/storageservices/queue-service-error-codes) |
 | BLOB, tábla, üzenetsor | [Storage-hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
 | BLOB, tábla, üzenetsor |  [hibaelhárítással](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+
+<a name="host-json"></a>  
+
+## <a name="hostjson-settings"></a>Host.JSON-beállítások
+
+Ez a szakasz ismerteti a globális konfigurációs beállításoknak a kötéshez verziójában elérhető 2.x. Az alábbi példa host.json-fájl csak a verzió 2.x beállításait tartalmazza ezt a kötést. További információ a globális konfigurációs beállításoknak verzióban 2.x verzióját, lásd: [verzióját az Azure Functions – host.json referencia 2.x](functions-host-json.md).
+
+> [!NOTE]
+> Az a funkciók host.json odkaz 1.x, lásd: [Azure Functions – host.json referencia 1.x](functions-host-json-v1.md).
+
+```json
+{
+    "version": "2.0",
+    "extensions": {
+        "queues": {
+            "maxPollingInterval": "00:00:02",
+            "visibilityTimeout" : "00:00:30",
+            "batchSize": 16,
+            "maxDequeueCount": 5,
+            "newBatchThreshold": 8
+        }
+    }
+}
+```  
+
+
+|Tulajdonság  |Alapértelmezett | Leírás |
+|---------|---------|---------| 
+|maxPollingInterval|00:00:02|Lekérdezi a várólista közötti maximális időtartam. Minimális érték 00:00:00.100 (100 ms). | 
+|visibilityTimeout|00:00:00|Az üzenet feldolgozása során az újrapróbálkozások közötti időintervallum sikertelen lesz. | 
+|batchSize|16|A Functions futtatókörnyezete egy időben kéri le, és párhuzamosan dolgozza fel üzenetsorbeli üzenetek száma. Ha a feldolgozás alatt szám lekérdezi le a a `newBatchThreshold`, a modul egy másik köteg lekérdezi, és elindítja a feldolgozási ezeket az üzeneteket. A függvény feldolgozott egyidejű üzenetek maximális száma így `batchSize` plusz `newBatchThreshold`. Ez a korlátozás külön-külön mindegyik üzenetsor által aktivált függvény vonatkozik. <br><br>Ha el szeretné kerülni a párhuzamos végrehajtása egy üzenetsorban fogadott üzenetek, beállíthat `batchSize` 1-re. Azonban ez a beállítás használata esetén nem egyidejűségi csak, feltéve, hogy a függvényalkalmazás futtatása egyetlen virtuális gépen (VM). Ha több virtuális gépre méretezhető a függvényalkalmazás, minden virtuális gép futhat egy példányát minden egyes üzenetsor által aktivált függvény.<br><br>A maximális `batchSize` 32. | 
+|maxDequeueCount|5|A hányszor próbálkozzon, egy üzenet feldolgozása az ártalmas üzenetsor áthelyezés előtt.| 
+|newBatchThreshold|batchSize/2|Minden alkalommal, amikor ez a szám a lekérdezi az egyidejűleg feldolgozott üzenetek száma, a modul egy másik köteg kérdezi le.| 
 
 ## <a name="next-steps"></a>További lépések
 

@@ -3,7 +3,7 @@ title: Rugalmas adatbázis-feladatok telepítése |} A Microsoft Docs
 description: A rugalmas feladat funkció telepítése végig.
 services: sql-database
 ms.service: sql-database
-subservice: operations
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 37052c86736a05012b9bb996f07bbf2568d7c879
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 69a4364c1d110ae78370fbf0ba1b4a92e033a862
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163168"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241564"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Elastic Database-feladatok telepítésének áttekintése
 

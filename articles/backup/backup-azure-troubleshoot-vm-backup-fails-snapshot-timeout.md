@@ -7,14 +7,14 @@ manager: cshepard
 keywords: Az Azure backup; A Virtuálisgép-ügynök; Hálózati kapcsolat;
 ms.service: backup
 ms.topic: troubleshooting
-ms.date: 06/25/2018
+ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: ce4a889cae852d333ea9862138f4d44471677c26
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 5c37e2e3cabb81ed123146f283c7d568cc58816d
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544013"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242622"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibaelhárítása: az ügynök vagy a bővítmény kapcsolatos problémák
 
@@ -181,7 +181,7 @@ A bővítmény eltávolítása:
 
 1. Az a [az Azure portal](https://portal.azure.com/), nyissa meg a virtuális gép, amelyen a biztonsági mentési hiba jelentkezik.
 2. Válassza ki **beállítások**.
-3. Válassza ki **bővítmények**.
+3. Kattintson az **Extensions** (Bővítmények) gombra.
 4. Válassza ki **Vmsnapshot-bővítmény**.
 5. Válassza ki **eltávolítása**.
 
@@ -195,7 +195,7 @@ A probléma csak a felügyelt virtuális gépek, a felhasználó zárolja magát
 #### <a name="solution"></a>Megoldás
 
 A probléma megoldásához távolítsa el a zárolást az erőforráscsoportból, és eltávolítja a visszaállításipont-gyűjtemény a következő lépéseket: 
- 
+ 
 1. Távolítsa el a zárolást, ahol a virtuális gép is található az erőforráscsoportban. 
 2. ARMClient telepíti a chocolatey-t: <br>
    https://github.com/projectkudu/ARMClient

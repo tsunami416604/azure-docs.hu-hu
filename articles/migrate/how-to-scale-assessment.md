@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: f289e9745eb220e735cc5c58ce8006c9fea7e61e
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: b5685640a55e2ce52a202c341cb293fe9315ab14
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086658"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240188"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Nagy méretű VMware-környezet felderítése és értékelése
 
@@ -150,8 +150,11 @@ Ellenőrizze, hogy az OVA-fájl biztonságos-e az üzembe helyezés előtt:
 
 Az OVA verziója 1.0.9.15 (10/23/2018 engedélyezett)
 
-**Algoritmus** | **kivonat értéke**
->>>>>>> 20dc93529e7c0a4d17f2f4524752b5e2bead4e37---|} ---MD5-TEL |} e9ef16b0c837638c506b5fc0ef75ebfa SHA1 |} 37b4b1e92b3c6ac2782ff5258450df6686c89864 SHA256 |} 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
+**Algoritmus** | **Kivonat értéke**
+--- | ---
+MD5 | e9ef16b0c837638c506b5fc0ef75ebfa
+SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864
+SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
 
 Az OVA verziója 1.0.9.14 (8/24/2018 engedélyezett)
 

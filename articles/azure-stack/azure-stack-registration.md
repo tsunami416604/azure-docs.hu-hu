@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2018
+ms.date: 10/30/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: c9106557c7c113281b04d37f1bc3d8b29e2087cc
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 12f14e3448f1c05449ee4b6a681b3248de8152b9
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310453"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250920"
 ---
 # <a name="register-azure-stack-with-azure"></a>Regisztráljon az Azure Stack az Azure-ral
 
@@ -234,7 +234,7 @@ Ha regisztrál az Azure Stack kapcsolat nélküli környezetben (az internet-hoz
 
    ```Powershell
    $FilePathForRegistrationToken = $env:SystemDrive\RegistrationToken.txt
-   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential -UsageReportingEnabled:$False $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
+   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential $YourCloudAdminCredential -UsageReportingEnabled:$False -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
    ```
    A Get-AzsRegistrationToken parancsmagról további információkért lásd: [Alkalmazásregisztráció-referencia](#registration-reference).
 
@@ -426,15 +426,15 @@ A parancsmag futtatásához szüksége:
 | Paraméter | Típus | Leírás |
 |-------------------------------|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | PrivilegedEndpointCredential | PSCredential | A használt hitelesítő adatok [az emelt szintű végpontot](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). A felhasználónevet a következő formátumban kell **AzureStackDomain\CloudAdmin**. |
-| PrivilegedEndpoint | Sztring | Egy előre konfigurált távoli PowerShell-konzolt, amely biztosít, mint például a naplógyűjtés és egyéb post telepítési feladatokat. További tudnivalókért tekintse meg a [használatával a privilegizált végpont](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint) cikk. |
+| PrivilegedEndpoint | Karakterlánc | Egy előre konfigurált távoli PowerShell-konzolt, amely biztosít, mint például a naplógyűjtés és egyéb post telepítési feladatokat. További tudnivalókért tekintse meg a [használatával a privilegizált végpont](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint) cikk. |
 | AzureContext | PSObject |  |
-| ResourceGroupName | Sztring |  |
-| ResourceGroupLocation | Sztring |  |
-| BillingModel | Sztring | A számlázási modell, amely az előfizetés használja. Engedélyezett, ez a paraméter értékei a következők: kapacitás, PayAsYouUse és fejlesztésére. |
+| ResourceGroupName | Karakterlánc |  |
+| ResourceGroupLocation | Karakterlánc |  |
+| BillingModel | Karakterlánc | A számlázási modell, amely az előfizetés használja. Engedélyezett, ez a paraméter értékei a következők: kapacitás, PayAsYouUse és fejlesztésére. |
 | MarketplaceSyndicationEnabled |  |  |
 | UsageReportingEnabled | Igaz/hamis | Az Azure Stack használati metrikai jelentések alapértelmezés szerint. Kapacitás használt vagy leválasztott környezetben támogató kezelők kell kikapcsolni a használati jelentések készítése. Engedélyezett, ez a paraméter értékei a következők: True, False. |
-| AgreementNumber | Sztring |  |
-| registrationName | Sztring | Állítsa be egy egyedi nevet a regisztráció, ha futtatja a regisztrációs szkriptet az Azure Stack több példányának használatával az ugyanabban az Azure előfizetés-azonosító. A paraméter alapértelmezett értéke van **AzureStackRegistration**. Azonban, ha ugyanazzal a névvel egynél több Azure Stack-példányt használ, a parancsfájl futtatása sikertelen lesz. |
+| AgreementNumber | Karakterlánc |  |
+| registrationName | Karakterlánc | Állítsa be egy egyedi nevet a regisztráció, ha futtatja a regisztrációs szkriptet az Azure Stack több példányának használatával az ugyanabban az Azure előfizetés-azonosító. A paraméter alapértelmezett értéke van **AzureStackRegistration**. Azonban, ha ugyanazzal a névvel egynél több Azure Stack-példányt használ, a parancsfájl futtatása sikertelen lesz. |
 
 ### <a name="get-azsregistrationtoken"></a>Get-AzsRegistrationToken
 
@@ -448,14 +448,14 @@ Get-AzsRegistrationToken létrehoz egy regisztrációs tokent a bemeneti paramé
 | Paraméter | Típus | Leírás |
 |-------------------------------|--------------|-------------|
 | PrivilegedEndpointCredential | PSCredential | A használt hitelesítő adatok [az emelt szintű végpontot](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). A felhasználónevet a következő formátumban kell **AzureStackDomain\CloudAdmin**. |
-| PrivilegedEndpoint | Sztring |  Egy előre konfigurált távoli PowerShell-konzolt, amely biztosít, mint például a naplógyűjtés és egyéb post telepítési feladatokat. További tudnivalókért tekintse meg a [használatával a privilegizált végpont](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint) cikk. |
+| PrivilegedEndpoint | Karakterlánc |  Egy előre konfigurált távoli PowerShell-konzolt, amely biztosít, mint például a naplógyűjtés és egyéb post telepítési feladatokat. További tudnivalókért tekintse meg a [használatával a privilegizált végpont](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint) cikk. |
 | AzureContext | PSObject |  |
-| ResourceGroupName | Sztring |  |
-| ResourceGroupLocation | Sztring |  |
-| BillingModel | Sztring | A számlázási modell, amely az előfizetés használja. Engedélyezett, ez a paraméter értékei a következők: kapacitás, PayAsYouUse és fejlesztésére. |
+| ResourceGroupName | Karakterlánc |  |
+| ResourceGroupLocation | Karakterlánc |  |
+| BillingModel | Karakterlánc | A számlázási modell, amely az előfizetés használja. Engedélyezett, ez a paraméter értékei a következők: kapacitás, PayAsYouUse és fejlesztésére. |
 | MarketplaceSyndicationEnabled | Igaz/hamis |  |
 | UsageReportingEnabled | Igaz/hamis | Az Azure Stack használati metrikai jelentések alapértelmezés szerint. Kapacitás használt vagy leválasztott környezetben támogató kezelők kell kikapcsolni a használati jelentések készítése. Engedélyezett, ez a paraméter értékei a következők: True, False. |
-| AgreementNumber | Sztring |  |
+| AgreementNumber | Karakterlánc |  |
 
 
 ## <a name="next-steps"></a>További lépések

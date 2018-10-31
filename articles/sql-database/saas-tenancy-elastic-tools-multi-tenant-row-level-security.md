@@ -7,24 +7,24 @@ ms.subservice: scenario
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: tmullaney
-ms.author: thmullan
+author: VanMSFT
+ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 94430d3b72bb5b8e8bde0e9e2e9fb2eb2b0c3632
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: d669e7beb2d0e41ff26408d4f71c3e1648c41e3a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056284"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242568"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Az elastic database-eszközökkel és a sorszintű biztonság több-bérlős alkalmazások
 
 [Elastic database-eszközök](sql-database-elastic-scale-get-started.md) és [sorszintű biztonság (RLS)] [ rls] együttműködnek az Azure SQL Database több-bérlős alkalmazás adatrétegének skálázás engedélyezése. Ezek a technológiák együtt egy jól skálázható adatréteggel rendelkező alkalmazást készíthet segítségével. Az adatréteg több-bérlős szilánkok támogatja, és használja **ADO.NET SqlClient** vagy **Entity Framework**. További információkért lásd: [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database-](saas-tenancy-app-design-patterns.md).
 
 - **Elastic database-eszközök** horizontális felskálázása az adatréteg standard alapuló, horizontális particionálási eljárásokkal, .NET-kódtárakkal és az Azure-szolgáltatás sablonok használatával a fejlesztők. A szegmensek történő kezelésével a [Elastic Database-Ügyfélkódtár] [ s-d-elastic-database-client-library] segít automatizálhatja és korszerűsítheti számos, a horizontális skálázás általában társított infrastrukturális feladatokat.
-- **Sorszintű biztonság** lehetővé teszi a fejlesztők számára, hogy biztonságosan tárolva az adatok több bérlő ugyanabban az adatbázisban. Az RLS-biztonsági házirendek szűrése ki a sorokat, amely a lekérdezést végrehajtó bérlőhöz tartozik. Az adatbázisban a szűrő logika központosítása egyszerűbbé teszi a karbantartási, és csökkenti a biztonsági hiba kockázatát. Az összes ügyfél enfore biztonsági kódot a függő kockázatos esetben.
+- **Sorszintű biztonság** lehetővé teszi a fejlesztők számára, hogy biztonságosan tárolva az adatok több bérlő ugyanabban az adatbázisban. Az RLS-biztonsági házirendek szűrése ki a sorokat, amely a lekérdezést végrehajtó bérlőhöz tartozik. Az adatbázisban a szűrő logika központosítása egyszerűbbé teszi a karbantartási, és csökkenti a biztonsági hiba kockázatát. A biztonság kényszerítése minden Ügyfélkód hagyatkoznia a kockázatos esetben.
 
 A funkciók használatával együtt, egy alkalmazás adatok tárolhatók ugyanabban a szegmensben az adatbázisban több bérlő számára. Ez kevesebb költséggel jár bérlőnként, amikor a bérlők osztoznak egy adatbázist. Még ugyanazt az alkalmazást is is letilthatja a prémium szintű bérlők a saját dedikált egybérlős szegmens kellene fizetnie. Egybérlős elkülönítési egyik előnye nagyobb fokú biztonság érdekében teljesítményre vonatkozó garanciákat. Egy egybérlős adatbázis nincs semmilyen más bérlővel versengő erőforrások.
 
@@ -39,8 +39,8 @@ A cél az, hogy a rugalmas adatbázis ügyfélkönyvtárának [Adatfüggő útv�
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-- Használja a Visual Studio (2012 vagy újabb) 
-- Három Azure SQL-adatbázisok létrehozása 
+- Használja a Visual Studio (2012 vagy újabb)
+- Három Azure SQL-adatbázisok létrehozása
 - Töltse le a mintaprojektet: [Elastic DB eszközök az Azure SQL - több-Bérlős szilánkok](http://go.microsoft.com/?linkid=9888163)
   - Adja meg az adatokat az adatbázisok elején **Program.cs** 
 

@@ -3,7 +3,7 @@ title: Az Azure Event Hubs-kötések az Azure Functions szolgáltatáshoz
 description: Megtudhatja, hogyan használhatja az Azure Event Hubs kötéseit az Azure Functions szolgáltatásban.
 services: functions
 documentationcenter: na
-author: ggailey777
+author: craigshoemaker
 manager: jeconnoc
 keywords: az Azure functions, függvények, eseményfeldolgozás, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.assetid: daf81798-7acc-419a-bc32-b5a41c6db56b
@@ -11,13 +11,13 @@ ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/08/2017
-ms.author: glenga
-ms.openlocfilehash: 401517abf75c5144a2e166663408be52934c92e3
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.author: cshoe
+ms.openlocfilehash: 3f1a9535037f099cdfe7bf4ec41a337fdf6a434d
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086828"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248778"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Az Azure Event Hubs-kötések az Azure Functions szolgáltatáshoz
 
@@ -625,6 +625,36 @@ A JavaScript, elérni a kimeneti esemény `context.bindings.<name>`. `<name>` az
 | Kötés | Leírások |
 |---|---|
 | Eseményközpont | [Üzemeltetési útmutató](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
+
+<a name="host-json"></a>  
+
+## <a name="hostjson-settings"></a>Host.JSON-beállítások
+
+Ez a szakasz ismerteti a globális konfigurációs beállításoknak a kötéshez verziójában elérhető 2.x. Az alábbi példa host.json-fájl csak a verzió 2.x beállításait tartalmazza ezt a kötést. További információ a globális konfigurációs beállításoknak verzióban 2.x verzióját, lásd: [verzióját az Azure Functions – host.json referencia 2.x](functions-host-json.md).
+
+> [!NOTE]
+> Az a funkciók host.json odkaz 1.x, lásd: [Azure Functions – host.json referencia 1.x](functions-host-json-v1.md).
+
+```json
+{
+    "version": "2.0",
+    "extensions": {
+        "eventHubs": {
+            "batchCheckpointFrequency": 5,
+            "eventProcessorOptions": {
+                "maxBatchSize": 256,
+                "prefetchCount": 512
+            }
+        }
+    }
+}  
+```  
+
+|Tulajdonság  |Alapértelmezett | Leírás |
+|---------|---------|---------| 
+|maxBatchSize|64|A ciklust a fogadás egy fogadott események maximális száma.|
+|prefetchCount|n/a|Az alapértelmezett PrefetchCount, amely az alapul szolgáló EventProcessorHost használni fog.| 
+|batchCheckpointFrequency|1|Az EventHub kurzor ellenőrzőpont létrehozása előtt feldolgozható kötegek esemény száma.| 
 
 ## <a name="next-steps"></a>További lépések
 

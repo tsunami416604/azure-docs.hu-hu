@@ -14,12 +14,12 @@ ms.date: 04/06/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 210526e105793820a2e8a80a11b356b1d7d764da
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 857d58d31565e413a207162202f1a680d7da7c65
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42054100"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250733"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Rendszergazdaként az Azure Active Directoryban egy nem felügyelt könyvtár átvétele
 Ez a cikk ismerteti egy DNS-tartománynevet az Azure Active Directoryban (Azure AD) egy nem felügyelt könyvtár átvétele kétféle módon. Amikor egy önkiszolgáló felhasználó regisztrál egy Azure AD-t használó felhőszolgáltatásra, a rendszer az e-mail-címe alapján hozzáadja egy nem felügyelt Azure AD-címtárhoz. Önkiszolgáló vagy "vírusos" regisztráció kapcsolatos további információkért lásd: [Mi az Azure Active Directory önkiszolgáló regisztráció?](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup)
@@ -124,11 +124,11 @@ A parancsmag | Használat
 `confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Ha továbbra is nem ellenőrzi a tartománynevet, folytathatja a **- ForceTakeover** lehetőséget. Ellenőrzi, hogy a TXT-rekord lett létrehozva, és az átvétel folyamat elindít.<li>A **- ForceTakeover** beállítás hozzá kell adni a parancsmag csak akkor, ha egy külső alá vonhatja rendszergazdai átvétellel, például ha a nem felügyelt bérlőt rendelkezik a Office 365-szolgáltatások blokkolja az átvétel kényszerítése.
 `get-msoldomain` | A tartományok listáját jeleníti meg most tartománynevet **ellenőrzött**.
 
-### <a name="powershell-example"></a>A PowerShell-példa
+### <a name="powershell-example"></a>PowerShell-példa
 
 1. Csatlakozás az Azure AD önkiszolgáló előfizetésért válaszolni használt hitelesítő adatok használatával:
   ````
-    import-module MSOnline
+    Install-Module -Name MSOnline
     $msolcred = get-credential
     
     connect-msolservice -credential $msolcred

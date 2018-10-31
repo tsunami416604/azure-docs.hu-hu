@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/20/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: e4d698b8b9c3f9e304780ee49bd4243a76e69138
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e33871f35613fbd5cdc5bf3162855b942056807f
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471530"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50254758"
 ---
 ### <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -111,10 +111,7 @@ Set-AzureRmFirewall -AzureFirewall $azfw
 
 ### <a name="what-are-the-known-service-limits"></a>Mik az ismert szolgáltatási korlátai?
 
-* Azure tűzfal esetében a helyreállítható legfeljebb 1000 TB / hó tűzfal /.
-* Egy példányát a központi virtuális hálózaton futó Azure tűzfal a virtuális hálózati korlátozások, mely legfeljebb 50 küllő virtuális hálózatok közötti társviszony rendelkezik.  
-* Azure-tűzfalon nem működik globális társviszony-létesítéshez, ezért rendelkeznie kell legalább egy tűzfal központi telepítési régiónként.
-* Az Azure tűzfal 10 k alkalmazás és 10 k hálózati szabályok támogatja.
+A tűzfal az Azure-szolgáltatások korlátozásai, lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../articles/azure-subscription-service-limits.md#azure-firewall-limits)
 
 ### <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>A központi virtuális hálózaton előre Azure tűzfal is, és küllő virtuális hálózatok közötti hálózati forgalom szűrése?
 

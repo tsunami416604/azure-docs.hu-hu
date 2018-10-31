@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: daseidma;bwren
-ms.openlocfilehash: 70cf6fe1e2256ba2ed58d020111669e59d9db56b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9d574e7e8b0b285093aa0960243300dfe9f6d417
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405514"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248999"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurálja a Service Map az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Használhatja a kiszolgálók megtekintéséhez, ahogyan Ön gondol rájuk összekapcsolt rendszerekkel, amelyek kritikus fontosságú szolgáltatásokat. A Service Map megmutatja a kapcsolatokat kiszolgálók, folyamatok és portok között bármely TCP-kapcsolattal összekötött architektúrában semmilyen beállítást nem szükséges, eltérő ügynököt telepíteni.
@@ -146,7 +146,7 @@ Ebben a cikkben azt fog hivatkozni, az ügynökök, hogy Linux vagy Windows csat
 
 A Service Map-ügynök nem továbbít adatokat magát, és nem igényel tűzfalak és a portok módosítása. A Service Map az mindig továbbított adatok által a Log Analytics-ügynököket a Log Analytics szolgáltatásba, vagy közvetlenül a Log Analytics-átjárón.
 
-![A Service Map ügynökök](media/monitoring-service-map/agents.png)
+![A Service Map ügynökök](media/monitoring-service-map-configure/agents.png)
 
 Ha egy System Center Operations Manager-ügyfél a Log Analytics csatlakozik a felügyeleti csoport:
 

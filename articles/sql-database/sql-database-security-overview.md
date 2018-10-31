@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 9978497f8bd3ebb11247f3bffe319866128e9f1d
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 2a1d8a993f805c6ef814088af6fc4e3051519e37
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646507"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248795"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database biztonsági lehetőségeinek áttekintése
 
@@ -32,7 +32,7 @@ Az SQL minden fajtájában elérhető biztonsági funkciók teljes körű áttek
 Az SQL Database a mozgásban lévő adatokat a [Transport Layer Security](https://support.microsoft.com/kb/3135244) protokoll, az inaktív adatokat [transzparens adattitkosítás](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql), a használatban lévő adatokat pedig az [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) protokoll használatával titkosítja az adatok védelme érdekében.
 
 > [!IMPORTANT]
-> Az Azure SQL Database biztonsága ne sérüljön titkosítás (SSL/TLS) minden esetben minden parancs, amely biztosítja, hogy az összes adat titkosítva van "átvitel" az adatbázis és az ügyfél között. Ez történik, függetlenül a beállítás a **titkosítása** vagy **TrustServerCertificate** a kapcsolati karakterláncban.
+> Az Azure SQL Database biztonsága ne sérüljön titkosítás (SSL/TLS) minden esetben minden kapcsolatot, amely biztosítja, hogy az összes adat titkosítva van "átvitel" az adatbázis és az ügyfél között. Ez történik, függetlenül a beállítás a **titkosítása** vagy **TrustServerCertificate** a kapcsolati karakterláncban.
 >
 > Az alkalmazás kapcsolati karakterláncában, győződjön meg arról, hogy a megadott titkosított kapcsolatot és *nem* megbízható a tanúsítvány (Ez az ADO.NET-illesztőprogram **Encrypt = True** és  **TrustServerCertificate = False**). Ez segít meggátolni egy férfiról, aki a középső támadás esetén az alkalmazás által az alkalmazás ellenőrizze a kiszolgáló és a végrehajtó titkosítás. A kapcsolati karakterlánc lekérését az Azure Portalról, ha a helyes beállításokat fog rendelkezni.
 >

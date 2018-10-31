@@ -12,17 +12,17 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: d61570cd5d56cda7737bdb2d1a8d681fc2364610
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 470128344182cc6a06a378a0f4ab75b19e9a646e
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139390"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249780"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript-fejlesztői útmutató
 Ez az útmutató az Azure Functions JavaScript írása jainak részleteivel kellene információt tartalmaz.
 
-JavaScript-függvény egy exportált `function` , amely végrehajtja a adatvezérelt ([eseményindítók konfigurált function.json](functions-triggers-bindings.md)). Minden függvény átadása egy `context` objektum, amely fogadó és küldő kötés adatok, naplózás, és a futtatókörnyezet való kommunikáció során használatos.
+JavaScript-függvény egy exportált `function` , amely végrehajtja a adatvezérelt ([eseményindítók konfigurált function.json](functions-triggers-bindings.md)). Minden függvény átadása az első argumentum értéke egy `context` objektum, amely fogadó és küldő kötés adatok, naplózás, és a futtatókörnyezet való kommunikáció során használatos.
 
 Ez a cikk feltételezi, hogy már elolvasta a [Azure Functions fejlesztői segédanyagai](functions-reference.md). Továbbá ajánlatos, hogy követte az oktatóanyag a "Gyors útmutatók" [az első függvény létrehozása](functions-create-first-function-vs-code.md).
 
@@ -48,42 +48,28 @@ FunctionsProject
  | - bin
 ```
 
-A projekt gyökerében van egy megosztott [host.json](functions-host-json.md) fájlt, amely a függvényalkalmazás konfigurálása használható. Minden függvény rendelkezik a saját kódfájl (.js) és a kötési konfigurációs fájl (function.json) nevű mappa.
+A projekt gyökerében van egy megosztott [host.json](functions-host-json.md) fájlt, amely a függvényalkalmazás konfigurálása használható. Minden függvény rendelkezik a saját kódfájl (.js) és a kötési konfigurációs fájl (function.json) nevű mappa. Nevére `function.json`a könyvtár (szülő) mindig a függvényalkalmazás nevére.
 
 A kötési bővítményeket szükséges [verzió 2.x](functions-versions.md) a Functions runtime vannak meghatározva a `extensions.csproj` fájlt, a tényleges függvénytárfájlok a `bin` mappát. Ha helyileg fejlesztésével, akkor meg kell [regisztrálja a kötési bővítményeket](functions-triggers-bindings.md#local-development-azure-functions-core-tools). Amikor fejlesztéséről az Azure Portalon, a regisztrációt, készen áll.
 
 ## <a name="exporting-a-function"></a>Egy függvény exportálása
 
-JavaScript-függvények keresztül kell exportálni [ `module.exports` ](https://nodejs.org/api/modules.html#modules_module_exports) (vagy [ `exports` ](https://nodejs.org/api/modules.html#modules_exports)). Az alapértelmezett esetben az exportált függvény kell lennie a fájlból, az Exportálás nevű kivitel `run`, vagy az Exportálás nevű `index`. A függvény az alapértelmezett hely a `index.js`, ahol `index.js` szülő könyvtárába a kapcsolódó oszt `function.json`. Vegye figyelembe, hogy neve `function.json`a könyvtár (szülő) mindig a függvényalkalmazás nevére. 
+JavaScript-függvények keresztül kell exportálni [ `module.exports` ](https://nodejs.org/api/modules.html#modules_module_exports) (vagy [ `exports` ](https://nodejs.org/api/modules.html#modules_exports)). Az exportált függvény JavaScript-függvény, amely végrehajtja a elindításakor kell lennie.
 
-Konfigurálja a fájl helyét, és exportálja a függvényalkalmazás nevére, olvassa el [konfigurálása a függvény belépési pont](functions-reference-node.md#configure-function-entry-point) alatt.
+Alapértelmezés szerint a Functions futtatókörnyezete keres a függvényhez `index.js`, ahol `index.js` közös szülő könyvtárába annak megfelelő `function.json`. Az alapértelmezett esetben az exportált függvény kell lennie, a fájl csak export vagy az Exportálás nevű `run` vagy `index`. Konfigurálja a fájl helyét, és exportálja a függvényalkalmazás nevére, olvassa el [konfigurálása a függvény belépési pont](functions-reference-node.md#configure-function-entry-point) alatt.
 
-Az exportált függvénybelépési pont mindig szükség van egy `context` az első paraméterként az objektumot.
+Az exportált függvény végrehajtása a átadott argumentumok számos. Az első argumentum vesz mindig van egy `context` objektum. Ha a függvény szinkron (nem ad vissza egy megtartva), át kell adnia a `context` objektumot, mint hívása `context.done` megfelelő használata szükséges.
 
 ```javascript
-// You must include a context, other arguments are optional
+// You should include context, other arguments are optional
 module.exports = function(context, myTrigger, myInput, myOtherInput) {
     // function logic goes here :)
     context.done();
 };
 ```
-```javascript
-// You can also use 'arguments' to dynamically handle inputs
-module.exports = async function(context) {
-    context.log('Number of inputs: ' + arguments.length);
-    // Iterates through trigger and input binding data
-    for (i = 1; i < arguments.length; i++){
-        context.log(arguments[i]);
-    }
-};
-```
-
-Eseményindítók és kötések bemeneti (vazby prvku `direction === "in"`) is lehet a függvénynek átadott paraméterek. A függvény ugyanabban a sorrendben vannak meghatározva, a rendszer átad *function.json*. Bemenet a JavaScript használatával dinamikusan kezelheti [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) objektum. Például, ha rendelkezik `function(context, a, b)` , és módosítsa a következőre `function(context, a)`, továbbra is használhatja az értékét `b` lépésként tekintse át a függvény kódját a `arguments[2]`.
-
-Összes kötését iránya, függetlenül is továbbít a `context` objektumba a `context.bindings` tulajdonság.
 
 ### <a name="exporting-an-async-function"></a>Egy aszinkron függvény exportálása
-Ha a JavaScript használatával [ `async function` ](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) nyilatkozat vagy egyszerű JavaScript [ígéretek](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) (nem érhető el a függvények v1.x), nem explicit módon kell meghívni a [ `context.done` ](#contextdone-method) visszahívási, hogy jelezze, hogy befejeződött-e a függvényt. A függvény befejezi az exportált aszinkron függvény/Promise befejezéséről.
+Ha a JavaScript használatával [ `async function` ](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) nyilatkozat vagy más módon visszaadása egy JavaScript [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) (nem érhető el a függvények v1.x), nem explicit módon kell meghívni a [ `context.done` ](#contextdone-method) visszahívási, hogy jelezze, hogy befejeződött-e a függvényt. A függvény lefutott, az exportált aszinkron függvény/Promise befejezéséről.
 
 Például ez az egyszerű függvény, amely naplózza, hogy lett elindítva, és azonnal a végrehajtás befejeződik.
 ``` javascript
@@ -92,7 +78,7 @@ module.exports = async function (context) {
 };
 ```
 
-Egy aszinkron függvény exportálásakor kimeneti kötések érvénybe is konfigurálhatja a `return` értéket. Ez az egy alternatív módszer használatával Kimenetek hozzárendelésével a [ `context.bindings` ](#contextbindings-property) tulajdonság.
+Egy aszinkron függvény exportálásakor egy kimeneti kötés érvénybe is konfigurálhatja a `return` értéket. Ez akkor ajánlott, ha csak egy kimeneti kötés van.
 
 Egy kimeneti-nal hozzárendelendő `return`, módosítsa a `name` tulajdonságot `$return` a `function.json`.
 ```json
@@ -113,10 +99,81 @@ module.exports = async function (context, req) {
 }
 ```
 
-## <a name="context-object"></a>környezeti objektumra
-A futtatókörnyezet-használja egy `context` objektum át adat és a függvényt, és lehetővé teszi, hogy futtatókörnyezetével.
+## <a name="bindings"></a>Kötések 
+A JavaScript [kötések](functions-triggers-bindings.md) konfigurált, és a egy függvény function.json definiálva. Kötések számos módon dolgozhat funkciók.
 
-A `context` objektum mindig a függvény első paraméterként, és szerepelnie kell, mert módszerek például `context.done` és `context.log`, amely ahhoz, hogy a futtatókörnyezet megfelelően használni. Elnevezheti az objektum bármit szeretne (például `ctx` vagy `c`).
+### <a name="reading-trigger-and-input-data"></a>Olvasási eseményindítót és a bemeneti adatok
+Trigger és a bemeneti kötések (vazby prvku `direction === "in"`) háromféleképpen függvény által olvasható:
+ - **_[Ajánlott]_  a függvénynek átadott paraméterek.** A függvény ugyanabban a sorrendben vannak meghatározva, a rendszer átad *function.json*. Vegye figyelembe, hogy a `name` meghatározott tulajdonság *function.json* nem kell egyeznie a paraméter nevével, bár azt kell.
+   ``` javascript
+   module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
+   ```
+ - **Tagként az [ `context.bindings` ](#contextbindings-property) objektum.** Minden tag neve szerint a `name` meghatározott tulajdonság *function.json*.
+   ``` javascript
+   module.exports = async function(context) { 
+       context.log("This is myTrigger: " + context.bindings.myTrigger);
+       context.log("This is myInput: " + context.bindings.myInput);
+       context.log("This is myOtherInput: " + context.bindings.myOtherInput);
+   };
+   ```
+ - **A JavaScript használatával bemenetként [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) objektum.** Ez lényegében azonos passing bemenetei között meg paraméterként, de lehetővé teszi, hogy dinamikusan kezeli a bemenetek.
+   ``` javascript
+   module.exports = async function(context) { 
+       context.log("This is myTrigger: " + arguments[1]);
+       context.log("This is myInput: " + arguments[2]);
+       context.log("This is myOtherInput: " + arguments[3]);
+   };
+   ```
+
+### <a name="writing-data"></a>Adatok írása
+Kimenetek (vazby prvku `direction === "out"`) számos módon a függvény által írhatók. Minden esetben a `name` tulajdonság a kötés, ahogyan az az *function.json* felel meg a függvényben írt az objektumtag neve. 
+
+Kimeneti kötések adatok rendelhet a következő módszerek valamelyikével. Ezek a módszerek nem ötvözze.
+- **_[Több kimenetek ajánlott]_  Objektum visszaadása.** Egy aszinkron/Promise visszaadó függvény használatakor visszatérhessen hozzárendelt kimeneti adatokat tartalmazó objektumot. Az alábbi példában a kimeneti kötések neve "httpResponse" és "queueOutput" a *function.json*.
+  ``` javascript
+  module.exports = async function(context) {
+      let retMsg = 'Hello, world!';
+      return {
+          httpResponse: {
+              body: retMsg
+          },
+          queueOutput: retMsg
+      };
+  };
+  ```
+  Egy szinkron függvényt használja, ha az objektum segítségével visszatérhet [ `context.done` ](#contextdone-method) (lásd a példát).
+- **_[Ajánlott egyetlen kimeneti]_  Közvetlenül érték visszaadása, és az $return kötés használatával.** Ez csak az aszinkron/Promise visszatérő függvények esetében működik. A példa [exportálása egy aszinkron függvény](#exporting-an-async-function). 
+- **Az értékeket rendel `context.bindings`**  közvetlenül a context.bindings rendelhet értéket.
+  ``` javascript
+  module.exports = async function(context) {
+      let retMsg = 'Hello, world!';
+      context.bindings.httpResponse = {
+          body: retMsg
+      };
+      context.bindings.queueOutput = retMsg;
+      return;
+  };
+  ```
+ 
+### <a name="bindings-data-type"></a>Kötései adattípusa
+
+Bemeneti kötés adattípusát meghatározásához használja a `dataType` tulajdonság a kötés-definícióban. Olvassa el a tartalom HTTP-kérés bináris formátumú, például a típus használja `binary`:
+
+```json
+{
+    "type": "httpTrigger",
+    "name": "req",
+    "direction": "in",
+    "dataType": "binary"
+}
+```
+
+A beállítások `dataType` vannak: `binary`, `stream`, és `string`.
+
+## <a name="context-object"></a>környezeti objektumra
+A futtatókörnyezet-használja egy `context` objektum át adat és a függvényt, és lehetővé teszi, hogy futtatókörnyezetével. A context objektumot is használható olvasása és kötések beállítást adatok, naplók írása és használata a `context.done` visszahívást, ha az exportált függvény szinkron.
+
+A `context` objektum minden esetben a függvény első paraméterként. Akkor kell kiválasztani, mert fontos módszerek például `context.done` és `context.log`. Elnevezheti az objektum bármit szeretne (például `ctx` vagy `c`).
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -173,7 +230,7 @@ context.done([err],[propertyBag])
 
 Arról tájékoztatja a futtatókörnyezet, amely a kód befejeződött. Ha a függvényt használ a JavaScript [ `async function` ](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) deklarace (érhető el a függvények verzió 8 + csomópontja használatával 2.x-es), nem szeretné használni `context.done()`. A `context.done` visszahívási implicit módon nevezzük.
 
-Ha a függvény nem egy aszinkron függvény **hívja meg** `context.done` tájékoztatja a futtatókörnyezet, hogy helyesek-e a függvényt. A végrehajtás időtúllépést okoz, ha hiányzik.
+Ha a függvény nem egy aszinkron függvény **hívja meg** `context.done` tájékoztatja a futtatókörnyezet, hogy helyesek-e a függvényt. Végrehajtási időtúllépés történik, ha hiányzik.
 
 A `context.done` módszer lehetővé teszi, hogy vissza mindkét egy felhasználó által definiált hiba történt a modul és a egy kimeneti kötés adatokat tartalmazó JSON-objektum adnia. Az átadott tulajdonságok `context.done` bármit beállítása felülírja a `context.bindings` objektum.
 
@@ -183,7 +240,7 @@ A `context.done` módszer lehetővé teszi, hogy vissza mindkét egy felhasznál
 context.bindings.myOutput = { text: 'hello world', number: 123 };
 // If we pass an object to the done function...
 context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
-// the done method will overwrite the myOutput binding to be: 
+// the done method overwrites the myOutput binding to be: 
 //  -> text: 'hello there, world', noNumber: true
 ```
 
@@ -211,24 +268,9 @@ Is [konfigurálja a nyomkövetési szintű küszöbértéket, a naplózáshoz](#
 
 Olvasási [Azure Functions figyelése](functions-monitoring.md) tudhat meg többet a megtekintése, és a függvény naplóinak lekérdezéséhez.
 
-## <a name="binding-data-type"></a>Kötés adattípus
-
-Bemeneti kötés adattípusát meghatározásához használja a `dataType` tulajdonság a kötés-definícióban. Olvassa el a tartalom HTTP-kérés bináris formátumú, például a típus használja `binary`:
-
-```json
-{
-    "type": "httpTrigger",
-    "name": "req",
-    "direction": "in",
-    "dataType": "binary"
-}
-```
-
-A beállítások `dataType` vannak: `binary`, `stream`, és `string`.
-
 ## <a name="writing-trace-output-to-the-console"></a>A konzol nyomkövetési írása 
 
-A függvények, használja a `context.log` módszerek nyomkövetési írni a konzolon. A Functions 2.x, nyomkövetési keresztül ouputs `console.log` rögzítve lesznek a Függvényalkalmazás szintjén. Ez azt jelenti, hogy a kimenet `console.log` nem kötődnek, egy adott függvény meghívási, és ezért nem jelenik meg egy adott függvény naplóihoz. Azok, azonban továbbterjeszti az Application Insightsba. A Functions v1.x, nem használhat `console.log` írni a konzolon. 
+A függvények, használja a `context.log` módszerek nyomkövetési írni a konzolon. A Functions 2.x, nyomkövetési keresztül ouputs `console.log` rögzítve lesznek a Függvényalkalmazás szintjén. Ez azt jelenti, hogy a kimenet `console.log` nem kötődnek, egy adott függvény meghívási, és ezért nem jelenik meg egy adott függvény naplóihoz. Ezek azonban az Application Insightsba, propagálása. A Functions v1.x, nem használhat `console.log` írni a konzolon. 
 
 Meghívásakor `context.log()`, az üzenet íródik a konzolt a nyomkövetési szint, amely a _info_ nyomkövetési szint. A következő kódot ír a konzolban, amikor az információ a nyomkövetési szintet:
 
@@ -312,7 +354,7 @@ A `context.res` (válasz) objektum a következő tulajdonságokkal rendelkezik:
 
 Ha HTTP-eseményindítók használata során a HTTP kérés- és objektumokat számos módon érheti el:
 
-+ A `req` és `res` tulajdonságai a `context` objektum. Ezzel a módszerrel használhatja a hagyományos minta adatokhoz való hozzáférésének HTTP a context objektumot, az összes használata helyett a `context.bindings.name` mintát. Az alábbi példa bemutatja, hogyan lehet hozzáférni a `req` és `res` az objektumokat a `context`:
++ **A `req` és `res` tulajdonságai a `context` objektum.** Ezzel a módszerrel használhatja a hagyományos minta adatokhoz való hozzáférésének HTTP a context objektumot, az összes használata helyett a `context.bindings.name` mintát. Az alábbi példa bemutatja, hogyan lehet hozzáférni a `req` és `res` az objektumokat a `context`:
 
     ```javascript
     // You can access your http request off the context ...
@@ -321,7 +363,7 @@ Ha HTTP-eseményindítók használata során a HTTP kérés- és objektumokat sz
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
-+ A nevesített bemeneti és kimeneti kötések. Ezzel a módszerrel a HTTP-eseményindítóval és kötések működik ugyanaz, mint bármely másik kötés. Az alábbi példa a válasz objektum beállítja a használatával egy nevesített `response` kötést: 
++ **A nevesített bemeneti és kimeneti kötések.** Ezzel a módszerrel a HTTP-eseményindítóval és kötések működik ugyanaz, mint bármely másik kötés. Az alábbi példa a válasz objektum beállítja a használatával egy nevesített `response` kötést: 
 
     ```json
     {
@@ -333,9 +375,9 @@ Ha HTTP-eseményindítók használata során a HTTP kérés- és objektumokat sz
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ _[Csak válasz]_  Meghívásával `context.res.send(body?: any)`. HTTP-választ jön létre a bemeneti `body` , a válasz törzse. `context.done()` implicit módon nevezzük.
++ **_[Csak válasz]_  Meghívásával `context.res.send(body?: any)`.** HTTP-választ jön létre a bemeneti `body` , a válasz törzse. `context.done()` implicit módon nevezzük.
 
-+ _[Csak válasz]_  Meghívásával `context.done()`. HTTP-kötést egy különleges visszaadja a választ, az átadott a `context.done()` metódust. A következő HTTP-kimeneti kötés határozza meg a `$return` kimeneti paraméterként:
++ **_[Csak válasz]_  Meghívásával `context.done()`.** HTTP-kötést egy különleges visszaadja a választ, az átadott a `context.done()` metódust. A következő HTTP-kimeneti kötés határozza meg a `$return` kimeneti paraméterként:
 
     ```json
     {
@@ -500,7 +542,7 @@ Amikor létrehoz egy függvényalkalmazást, amelyet az App Service-csomagot has
 Közvetlen támogatást még nem létezik automatikus fordítása TypeScript vagy CoffeeScript a modulon keresztül, mert az ilyen támogatás kezelendő kívül a futtatókörnyezet üzembe helyezéskor. 
 
 ### <a name="cold-start"></a>Hidegindítási
-Fejlesztése az Azure Functions a kiszolgáló nélküli üzemeltetési modell, ritkán használt indításakor vannak a valóság. "Hidegindítás" arra utal, hogy a Függvényalkalmazás indításakor tétlen időszak után első alkalommal hosszabb ideig tart indul el. A JavaScript-függvények nagy függőségi fa-, ez okozhat fő lassulás. Annak érdekében, hogy a folyamat, ha lehetséges, gyorsítható [a függvények futtató egy csomagfájlt](run-functions-from-deployment-package.md). Alapértelmezés szerint ez a modell használatának számos központi telepítési módszer, de ha nagy kiküszöbölik tapasztaló és a egy csomagfájlt nem futnak, ez lehet egy nagy javítása.
+Fejlesztése az Azure Functions a kiszolgáló nélküli üzemeltetési modell, ritkán használt indításakor vannak a valóság. "Hidegindítás" arra utal, hogy a Függvényalkalmazás indításakor tétlen időszak után első alkalommal hosszabb ideig tart, elindításához. A JavaScript-függvények nagy függőségi fa-, ez okozhat fő lassulás. Annak érdekében, hogy a folyamat, ha lehetséges, gyorsítható [a függvények futtató egy csomagfájlt](run-functions-from-deployment-package.md). Alapértelmezés szerint ez a modell használatának számos központi telepítési módszer, de ha nagy kiküszöbölik tapasztaló és a egy csomagfájlt nem futnak, ez lehet egy nagy javítása.
 
 ## <a name="next-steps"></a>További lépések
 További információkért lásd a következőket:

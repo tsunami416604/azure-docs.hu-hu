@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 10/30/2018
 ms.author: terrylan
-ms.openlocfilehash: fb6a984ff838305b4ce411538465c0b9b5c152da
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 631fe91bc72093cf5ad87779853df4901a27a068
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886914"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249117"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Az Azure virtuális gépek biztonsági áttekintése
+
 Azure Virtual Machines használatával a legkülönbözőbb számítástechnikai megoldások széles üzembe. A szolgáltatás támogatja a Microsoft Windows, Linux, a Microsoft SQL Server, Oracle, IBM, SAP és az Azure BizTalk Services. Telepíthet tehát bármilyen számítási feladatot és programnyelvtől függetlenül, szinte bármely operációs rendszeren.
 
 Az Azure virtuális gépek anélkül biztosítják a virtualizálás rugalmasságát, hogy a virtuális gépet futtató fizikai hardvereket kellene vásárolnia és karbantartania. Hozhat létre, és üzembe helyezett az adatok nem védett és biztonságos a rendkívül biztonságos adatközpontjainkban.
@@ -37,6 +38,7 @@ Az Azure-ral hozhat létre biztonságos, előírásoknak megfelelő megoldások,
 Ez a cikk célja az alapvető áttekintést biztosít az Azure biztonsági szolgáltatások virtuális gépekkel is használható. Cikkek hivatkozásainak egyes szolgáltatások részletei adjon meg, hogy többet is megtudhat.  
 
 ## <a name="antimalware"></a>Kártevőirtó
+
 Az Azure-ral biztonsági megoldásokkal foglalkozó forgalmazó, például a Microsoft, a Symantec, a Trend Micro és a Kaspersky kártevőirtó szoftvert is használhatja. Ez a szoftver segítségével, a virtuális gépek kártékony fájlokkal, hirdetőprogramokkal és egyéb fenyegetések védelme.
 
 A Microsoft Antimalware az Azure Cloud Services és Virtual Machines a vírusok, kémprogramok és más kártevők azonosításában és segít a valós idejű védelem funkcióval.  A Microsoft Antimalware az Azure biztosít konfigurálható riasztást, ha ismert kártevő vagy nemkívánatos szoftver megkísérli a telepítést, vagy futtassa az Azure rendszeren.
@@ -64,7 +66,24 @@ További információ a kártevőirtó szoftver, a virtuális gépek védelme é
 * [Telepítése és a Symantec Endpoint Protection konfigurálása a Windows virtuális gép](../virtual-machines/windows/classic/install-symantec.md)
 * [Biztonsági megoldások az Azure Marketplace-en](https://azure.microsoft.com/marketplace/?term=security)
 
+Még hatékonyabb védelme érdekében fontolja meg [Windows Defender komplex veszélyforrások elleni védelem](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection). A Windows Defender ATP-ben a következőket kínálja:
+
+* [Támadási felület csökkentése](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/overview-attack-surface-reduction)  
+* [Következő generációs védelme](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)  
+* [Az Endpoint protection-válasz](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/overview-endpoint-detection-response)
+* [Automatizált vizsgálati és javítási](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/automated-investigations-windows-defender-advanced-threat-protection)
+* [biztonságos pontszám](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/overview-secure-score-windows-defender-advanced-threat-protection)
+* [Speciális vadászat](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/overview-hunting-windows-defender-advanced-threat-protection)
+* [Felügyeleti és API-k](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/management-apis)
+* [Microsoft Threat Protection](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)
+
+További információ: 
+
+* [WDATP használatának első lépései](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/get-started)  
+* [WDATP képességek áttekintése](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/overview)  
+
 ## <a name="hardware-security-module"></a>Hardveres biztonsági modul
+
 Kulcs biztonságának növelése javíthatja a titkosítási és hitelesítési védelmet. A kezelését és a létfontosságú kulcsok és titkok biztonságos tárolása az Azure Key Vault egyszerűsítheti. 
 
 A Key Vault segítségével a kulcsokat a 2-es szintű FIPS 140-2 szabványnak megfelelő hardveres biztonsági modulokban (HSM) őrizheti. Az SQL Server titkosítási kulcsok biztonsági mentése vagy [transzparens adattitkosítás](https://msdn.microsoft.com/library/bb934049.aspx) összes tárolható a Key Vault- és az alkalmazások titkos. Engedélyek és a hozzáférést ezekhez a védett elemekhez kezelhető [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
@@ -76,6 +95,7 @@ További információ:
 * [Az Azure Key Vault-blog](https://blogs.technet.microsoft.com/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>Virtuális gép lemeztitkosítás
+
 Az Azure Disk Encryption egy új funkció a Windows és Linux rendszerű virtuális gépek lemezeinek titkosításához. Az Azure Disk Encryption használja az iparági szabványnak megfelelő [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) Windows szolgáltatása és a [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) biztosít az operációs rendszer és az adatlemezek kötettitkosítását Linux funkcióját.
 
 A megoldás integrálva van az Azure Key Vault segítségével vezérelheti és felügyelheti a lemeztitkosítási kulcsokat és titkos kulcsokat a key vault-előfizetés. Biztosítja, hogy a virtuálisgép-lemezeken lévő összes adatot is titkosítása az Azure Storage-ban.
@@ -86,6 +106,7 @@ További információ:
 * [Gyors útmutató: Az Azure PowerShell használatával Windows IaaS virtuális gép titkosítása](../security/quick-encrypt-vm-powershell.md)
 
 ## <a name="virtual-machine-backup"></a>Virtuális gép biztonsági mentése
+
 Az Azure Backup egy méretezhető megoldás, amely segít megvédeni a nulla tőkebefektetés és minimális működési költségek mellett megőrizheti alkalmazásadatait. Az alkalmazáshibák adatai sérülését okozhatják, az emberi hibák pedig az alkalmazások meghibásodásához vezethetnek. Az Azure Backup szolgáltatással a Windows és Linux rendszerű virtuális gépek védett.
 
 További információ:
@@ -95,6 +116,7 @@ További információ:
 * [Az Azure Backup szolgáltatás – gyakori kérdések](../backup/backup-azure-backup-faq.md)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
+
 Fontos része annak a szervezete BCDR-stratégia van foglalkozhatunk azzal, hogyan kell fenntartani a vállalati számítási feladatok és alkalmazások futására tervezett és nem tervezett leállások. Az Azure Site Recovery segítségével előkészíthető a replikáció, feladatátvétel és helyreállítás munkaterhelések és alkalmazások úgy, hogy a megjelenésük egy másodlagos helyre, ha az elsődleges hely leáll.
 
 A Site Recovery:
@@ -112,6 +134,7 @@ További információ:
 * [Milyen számítási feladatokat az Azure Site Recovery által védett?](../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>Virtuális hálózat
+
 Virtuális gépek hálózati kapcsolat szükséges. Ezt a követelményt támogatása érdekében az Azure-beli virtuális hálózathoz csatlakoztatni kívánt virtuális gépek van szüksége. 
 
 Azure-beli virtuális hálózathoz egy logikai szerkezet, a fizikai az Azure hálózati háló épülnek. Minden logikai Azure virtuális hálózat el különítve a minden más Azure virtuális hálózatokkal. Elkülönítés segítségével biztosítja, hogy a központi telepítések a hálózati forgalom nem érhető el a más Microsoft Azure-ügyfelek.
@@ -123,6 +146,7 @@ További információ:
 * [A hálózati szolgáltatásokkal és partneri kapcsolatoknak vonatkozó vállalati forgatókönyvek](https://azure.microsoft.com/blog/networking-enterprise/)
 
 ## <a name="security-policy-management-and-reporting"></a>Biztonsági házirend kezelése és jelentéskészítés
+
 Az Azure Security Center segít megelőzését, észlelését és háríthatja el a fenyegetéseket. A Security Center lehetővé teszi, nagyobb betekintést és szabályozhatóbbá, az Azure-erőforrások biztonságát. Integrált biztonsági monitorozást és felügyeletet biztosít az Azure-előfizetések között. Segít a fenyegetések szabályzatkezelést, és a biztonsági megoldások széles ökoszisztémájával képes együttműködni.
 
 A Security Center segítségével optimalizálásához, figyeléséhez, a virtuális gépek biztonságát:
@@ -137,9 +161,24 @@ További információ:
 * [Az Azure Security Center tervezéséhez és](../security-center/security-center-planning-and-operations-guide.md)
 
 ## <a name="compliance"></a>Megfelelőség
+
 Az Azure Virtual Machines a FISMA, a FedRAMP, a HIPAA, a PCI DSS Level 1 és más programok minősítésével megkapta a minősítést. A minősítési megkönnyíti a saját Azure-megfelelőségi követelmények teljesítése érdekében az alkalmazások és a cége számára hazai és nemzetközi szabályozások széles skáláját.
 
 További információ:
 
 * [A Microsoft adatvédelmi központ: megfelelőség](https://www.microsoft.com/en-us/trustcenter/compliance)
 * [A megbízható felhő: Microsoft Azure biztonsági, adatvédelmi és megfelelőségi](http://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
+
+## <a name="confidential-computing"></a>Bizalmas számítástechnika
+
+Bizalmas nem része technikailag virtuális gép biztonsági számítástechnika, amíg a témakör a virtuális gép biztonsági "compute" biztonsági magasabb szintű tárgya tartozik. Bizalmas számítási "compute" biztonsági kategóriájába tartozik. 
+
+Bizalmas számítási biztosítja, hogy "az a titkosítatlan" adatok esetén azért szükség a hatékony feldolgozás, az adatok védelmét egy megbízható végrehajtási környezetet https://en.wikipedia.org/wiki/Trusted_execution_environment (TEE – más néven az enklávé), az alábbi ábrán látható egy példa .  
+
+T-idomok győződjön meg arról, nem lehet adatokat vagy a művelet kívülről, még a hibakereső megtekintéséhez. Ezek még akkor is győződjön meg arról, hogy csak akkor engedélyezett, ha a kód számára engedélyezett hozzáférési adatokat. Ha a kódot módosítva vagy illetéktelen módosítás, a műveleteket a rendszer megtagadja, és a környezet le van tiltva. A TEE kikényszeríti a védelem a benne található kód végrehajtása során. 
+
+További információ:
+
+* [Introducing Azure bizalmas számítástechnika](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/)  
+* [Az Azure bizalmas számítástechnika](https://azure.microsoft.com/blog/azure-confidential-computing/)  
+

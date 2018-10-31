@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: de67d71a209ea0889b4dc5c87fed254700cb9916
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 554718f0bb465ca757fc4dcf6c22d3b0dd80f2fb
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395136"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50251090"
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -36,11 +36,11 @@ Azure Cosmos DB a megfelelő választás az olyan új webes, mobil-, játék-, �
 ### <a name="how-does-azure-cosmos-db-offer-predictable-performance"></a>Hogyan kínál a Azure Cosmos DB kiszámítható teljesítményt?
 A [kérelemegység](request-units.md) (RU) az Azure Cosmos DB-ben a teljesítmény mértékegysége. Egy 1 – RU átviteli sebesség az átviteli sebesség egy 1 KB-os dokumentum Get felel meg. Olvasási, írási, SQL-lekérdezések és a tárolt eljárás-végrehajtás, beleértve az Azure Cosmos DB-ben minden művelet értéke determinisztikus RU a művelet végrehajtásához szükséges teljesítmény alapján. Szem előtt tartva CPU, IO, és a memória és azok minden adatátviteli teljesítmény, helyett alkalmazásteljesítményre RU egyetlen mérték.
 
-Egyes Azure Cosmos DB-tárolók a kiosztott átviteli sebesség szempontjából másodpercenkénti kérelemegység tartható fenn. Bármilyen méret esetén az alkalmazások benchmark egyes kérelmeket Kérelemegység-értékük, és kezelje az összes kérelem összes kérelemegységének tároló üzembe helyezése. Vertikális felskálázás is, vagy a tároló átviteli sebességet az alkalmazás változásával igényeinek megfelelően méretezhető. További információ a kérelemegységekről és a meghatározásához a tároló alkalmazástípusokról [átviteli sebesség becslése](request-units.md#estimating-throughput-needs) , és próbálkozzon a [átviteli Számológép](https://www.documentdb.com/capacityplanner). Az előfizetési időszak *tároló* itt hivatkozik egy SQL API-gyűjtemény, a Gremlin API-grafikon, a MongoDB API-gyűjtemény és a Table API-tábla hivatkozik. 
+Egyes Azure Cosmos DB-tárolók a kiosztott átviteli sebesség szempontjából másodpercenkénti kérelemegység tartható fenn. Bármilyen méret esetén az alkalmazások benchmark egyes kérelmeket Kérelemegység-értékük, és kezelje az összes kérelem összes kérelemegységének tároló üzembe helyezése. Vertikális felskálázás is, vagy a tároló átviteli sebességet az alkalmazás változásával igényeinek megfelelően méretezhető. További információ a kérelemegységekről és a meghatározásához a tároló alkalmazástípusokról [átviteli sebesség becslése](request-units.md#estimating-throughput-needs) , és próbálkozzon a [átviteli Számológép](https://www.documentdb.com/capacityplanner). Az előfizetési időszak *tároló* itt egy SQL API-gyűjtemény, a Gremlin API-grafikon, a MongoDB API-gyűjtemény és a Table API-tábla hivatkozik. 
 
-### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Hogyan támogatja az Azure Cosmos DB különböző adatmodelleket, például a kulcs/érték, Oszlopalapú, a dokumentum és a graph?
+### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Hogyan támogatja az Azure Cosmos DB különböző adatmodelleket, például a kulcs/érték, Oszlopalapú, dokumentum és graph?
 
-Kulcs/érték (tábla), Oszlopalapú, dokumentum- és a modellek is natívan támogatja az ARS (atomokból, -rekordok és -sorozatok) miatt a tervezési, hogy az Azure Cosmos DB graph adatváltozásainak épül. Atom, a rekordokat és a feladatütemezések egyszerűen leképezve és előre jelzett különböző adatmodelleket. Az API-k, a modellek egy részhalmaza számára elérhető már zajlik (SQL, MongoDB, tábla és Gremlin API-k) és mások további adatmodellek jellemző elérhető lesz a jövőben.
+Kulcs/érték (tábla), Oszlopalapú, dokumentum és modellek natív módon támogatja a ARS (atomokból, rekordokat és feladatütemezések) miatt a grafikon adatainak tervezése az Azure Cosmos DB épül. Atom, a rekordokat és a feladatütemezések egyszerűen leképezve és előre jelzett különböző adatmodelleket. Az API-k, a modellek egy részhalmaza számára elérhető már zajlik (SQL, MongoDB, tábla és Gremlin API-k) és mások további adatmodellek jellemző elérhető lesz a jövőben.
 
 Az Azure Cosmos DB egy séma sémafüggetlen indexelés összetevő, amely képes automatikusan indexeli az azt betöltő anélkül, hogy bármiféle séma vagy másodlagos indexek a fejlesztőtől származó összes adatot tartalmaz. A motor logikai index elrendezések (fordított, Oszlopalapú, fa), amelyek a tárolási elrendezés az index és a Lekérdezésfeldolgozás alrendszerek szétválaszthatók készletét támaszkodik. A cosmos DB lehetővé teszi az átviteli protokollokat és API-k támogatása kibővíthető módon és kéréseivé átalakítani azokat hatékonyan a core data model (1) és a logikai index elrendezések (2) így egyedileg képes, a natív módon több adatmodellt is tartalmaz.
 
@@ -53,11 +53,11 @@ Egy tárolót az Azure Cosmos DB tárolható adatok teljes mennyisége nincs kor
 ### <a name="what-are-the-throughput-limits-of-azure-cosmos-db"></a>Mik az Azure Cosmos DB átviteli sebességének korlátai?
 Átviteli sebesség egy tárolót az Azure Cosmos DB által támogatott teljes mennyisége nincs korlátozva van. A fő cél, hogy a munkaterhelés nagyjából egyenletes elosztása megfelelően nagy számú partíciós kulcsok között.
 
-### <a name="are-direct-and-gateway-connectivity-modes-encrypted-"></a>Közvetlen és az átjáró kapcsolódási módjai titkosított? 
+### <a name="are-direct-and-gateway-connectivity-modes-encrypted"></a>Közvetlen és az átjáró kapcsolódási módjai titkosított? 
 Igen mindkét mód mindig teljes mértékben titkosított. 
 
 ### <a name="how-much-does-azure-cosmos-db-cost"></a>Azure Cosmos DB mennyibe?
-Részletekért tekintse meg a [díjszabásáról az Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) lapot. Az Azure Cosmos DB-használati díjak üzembe helyezett tárolók, a tárolók is online órák száma számát határozza meg, és az egyes tárolók a kiosztott átviteli sebesség. Az előfizetési időszak *tárolók* itt hivatkozik az SQL API-gyűjtemény, a Gremlin API (gráf), a MongoDB API-gyűjtemény és a Table API-táblákat. 
+Részletekért tekintse meg a [díjszabásáról az Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) lapot. Az Azure Cosmos DB-használati díjak üzembe helyezett tárolók, a tárolók is online órák száma számát határozza meg, és az egyes tárolók a kiosztott átviteli sebesség. A kifejezés tároló itt az SQL API-gyűjtemény, a Gremlin API (gráf), a MongoDB API-gyűjtemény és a Table API táblák hivatkozik. 
 
 ### <a name="is-a-free-account-available"></a>Van egy ingyenes fiókot?
 Igen, akkor regisztráljon egy időben korlátozott fiók ingyenesen, kötelezettségvállalás nélkül. Ha szeretne regisztrálni, keresse fel a [próbálja ki ingyenesen az Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) vagy további információ: a [próbálja ki az Azure Cosmos DB – gyakori kérdések](#try-cosmos-db).
@@ -72,7 +72,7 @@ Technikai kérdés, az alábbi két kérdés egyik közzététele, és válaszol
 * [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
 * [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb). A stack Overflow a legjobb a programozási kérdéseit. Ellenőrizze, hogy a kérdés [témához illeszkedő](https://stackoverflow.com/help/on-topic) és [adja meg a legtöbb adatot lehet, így a kérdést, egyértelmű és megválaszolható](https://stackoverflow.com/help/how-to-ask). 
 
-Javasolhat új funkciókat, hozzon létre egy új kérelmet [Uservoice](https://feedback.azure.com/forums/263030-azure-cosmos-db).
+Javasolhat új funkciókat, hozzon létre egy új kérelmet [User voice](https://feedback.azure.com/forums/263030-azure-cosmos-db).
 
 Ha a fiókjával van probléma, nyújtson be [támogatási kérelmet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) az Azure Portalon.
 
@@ -88,8 +88,8 @@ Próbálja meg az Azure Cosmos DB előfizetések jelennek meg az Azure portal me
 A következő feltételek lesznek érvényesek, próbálja ki az Azure Cosmos DB-előfizetések:
 
 * A tároló egy táblázat, SQL és Gremlin API-fiókok előfizetésenként.
-* MongoDB-fiókok előfizetésenként legfeljebb 3 gyűjteményeket.
-* 10 GB tárolókapacitással.
+* MongoDB-fiókok előfizetésenként legfeljebb három gyűjteményeket.
+* 10 GB-os tárolási kapacitás.
 * Globális replikálás érhető el a következő [Azure-régiók](https://azure.microsoft.com/regions/): USA középső RÉGIÓJA, Észak-Európa és Délkelet-Ázsia
 * 5 ezer Kérelemegység/s maximális átviteli sebesség.
 * Előfizetések 24 óra után lejárnak, és legfeljebb 48 óra teljes kiterjeszthető.
@@ -116,7 +116,7 @@ Tároló és az adatbázis átviteli szintű üzembe helyezésének egymástól 
 
 ### <a name="how-do-i-create-fixed-collection-with-partition-key"></a>Hogyan hozhatok létre a rögzített gyűjtemény partíciós kulccsal
 
-Jelenleg létrehozhat gyűjtemény partíciós kulcs adattovábbítási kapacitással rendelkező használatával a [CreatePartitionedCollection](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L118) metódus a .net SDK-t vagy a használatával a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/cosmosdb/collection?view=azure-cli-latest#az-cosmosdb-collection-create). A rögzített gyűjtemény létrehozása az Azure portal használatával jelenleg nem érhető támogatott.  
+Jelenleg létrehozhat gyűjtemény partíciós kulcs adattovábbítási kapacitással rendelkező használatával a [CreatePartitionedCollection](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L118) metódus a .net SDK-t vagy a használatával a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/cosmosdb/collection?view=azure-cli-latest#az-cosmosdb-collection-create). Az Azure portal használatával egy rögzített gyűjtemény létrehozása jelenleg nem támogatott.  
 
 ### <a name="does-azure-cosmosdb-support-time-series-analysis"></a>Azure cosmos DB támogatja az idősoros elemzés? 
 Igen Azure cosmos DB támogatja az idősoros elemzés, a következő egy minta [sorozat Időminta](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/samples/Patterns). Ez a példa bemutatja, hogyan használható az idősorozat-adatok a build összesített nézetek csatorna módosítása. Ez a megközelítés a spark streaming vagy egy másik stream adatfeldolgozó használatával kiterjesztheti.
@@ -161,7 +161,7 @@ Az SQL API-fiókok által támogatott SQL lekérdező nyelve az SQL Server álta
 Az SQL API támogatja a közel valós idejű aggregációs aggregátumfüggvények keresztül bármilyen méretben `COUNT`, `MIN`, `MAX`, `AVG`, és `SUM` az SQL-szintaxis használatával. További információkért lásd: [összesítő függvény](sql-api-sql-query.md#Aggregates).
 
 ### <a name="how-does-the-sql-api-provide-concurrency"></a>Hogyan nyújt az SQL API az egyidejűséget?
-Az SQL API támogatja a HTTP entitáscímkék vagy ETag-EK keresztül hozzáférések optimista vezérlését (OCC). Minden SQL API-erőforrás rendelkezik egy ETag, és minden alkalommal, amikor a dokumentum frissül az ETag címke értéke a kiszolgálón. Az ETag fejrészt és a jelenlegi érték szerepel parancsválasz-üzeneteket. Döntse el, hogy egy erőforrás frissíteni kell a kiszolgáló ETag használható az If-Match fejlécet. If-Match értéke alapján kell ellenőrizni az ETag-érték. Ha az ETag-érték megfelel a kiszolgáló ETag-érték, az erőforrás frissítése. Ha az ETag címke már nem aktuális, a kiszolgáló elutasítja a műveletet egy "HTTP 412 sikertelen előfeltétel" válaszkóddal. Az ügyfél majd újból lekéri az erőforrás beszerezni az erőforrás jelenlegi ETag-érték. Emellett ETag segítségével az If-None-Match fejléc határozza meg, hogy szükség van-e az erőforrás ismét beolvassa.
+Az SQL API támogatja a HTTP entitáscímkék vagy ETag-EK keresztül hozzáférések optimista vezérlését (OCC). Minden SQL API-erőforrás rendelkezik egy ETag, és minden alkalommal, amikor a dokumentum frissül az ETag címke értéke a kiszolgálón. Az ETag fejrészt és a jelenlegi érték szerepel parancsválasz-üzeneteket. Döntse el, hogy egy erőforrás frissíteni kell a kiszolgáló ETag használható az If-Match fejlécet. If-Match értéke alapján kell ellenőrizni az ETag-érték. Ha az ETag-érték megfelel a kiszolgáló ETag-érték, az erőforrás frissítése. Ha az ETag címke már nem aktuális, a kiszolgáló elutasítja a műveletet egy "HTTP 412 sikertelen előfeltétel" válaszkóddal. Az ügyfél ezután refetches az erőforrás beszerezni az erőforrás jelenlegi ETag-érték. Emellett ETag segítségével az If-None-Match fejléc határozza meg, hogy szükség van-e egy refetch erőforrás.
 
 Használjon optimista egyidejűséget, a .NET-ben, használja a [AccessCondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx) osztály. A .NET-minta: [Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) a DocumentManagement minta a Githubon.
 
@@ -230,13 +230,13 @@ Nem, a meglévő storage SDK-k továbbra is működnie kell. Ajánlott azonban, 
 ### <a name="where-is-table-api-not-identical-with-azure-table-storage-behavior"></a>Ha nem Table API az Azure Table storage működése azonos?
 Van néhány viselkedésbeli különbségeket, hogy az Azure Table storage-ból érkező táblázatok létrehozása az Azure Cosmos DB Table API az kívánó felhasználóknak érdemes figyelembe:
 
-* Az Azure Cosmos DB Table API-tartalékkapacitást modellt használ a garantált teljesítmény biztosítása érdekében, de ez azt jelenti, hogy egy havidíja fedezi a kapacitást, amint az a tábla jön létre, akkor is, ha a kapacitás nincs használatban. Az Azure Table storage egy csak azért fizet, ténylegesen használt kapacitás. Ez segít annak magyarázata, hogy miért Table API elérhetővé teheti egy 10 ms olvasási és 15 ms írási SLA 99 százalékon, az Azure Table storage egy 10 második SLA-t biztosít. De ennek következtében a Table API-táblákkal, minden kéréshez, a költség pénzt azokat bármely, a szolgáltatási kéréseinek kezeléséhez rendelkezésre álló kapacitás biztosítása nélkül is üres táblák által kínált Azure Cosmos DB.
+* Az Azure Cosmos DB Table API-tartalékkapacitást modellt használ a garantált teljesítmény biztosítása érdekében, de ez azt jelenti, hogy egy havidíja fedezi a kapacitást, amint az a tábla jön létre, akkor is, ha a kapacitás nincs használatban. Az Azure Table storage egy csak azért fizet, használt kapacitás. Ez segít annak magyarázata, hogy miért kínálnak Table API 10 ms és 15 ms 99 százalékon olvasási SLA-t, az Azure Table storage biztosít a 10 másodperces szolgáltatásszint-szerződéssel. De ennek következtében a Table API-táblákkal, minden kéréshez, a költség pénzt azokat bármely, a szolgáltatási kéréseinek kezeléséhez rendelkezésre álló kapacitás biztosítása nélkül is üres táblák által kínált Azure Cosmos DB.
 * A Table API által visszaadott lekérdezési eredmények nem jelennek meg partíció sorkulcs sorrendjének, azok az Azure Table storage-ban.
 * Sorkulcsok csak legfeljebb 255 bájt lehet
 * Kötegek tartalmazhat legfeljebb 2 MB
 * A CORS jelenleg nem támogatott
 * Az Azure Table storage-beli táblázatnevek nem kis-és nagybetűket, de azok az Azure Cosmos DB Table API
-* Egyes Azure Cosmos DB belső formátumok kódolási információk, például bináris mezőket, jelenleg nem annyira hatékony, például előfordulhat, hogy az egyik. Ezért az adatok mérete váratlan korlátozások léphetnek föl. Például jelenleg egyik nem használható a teljes 1 Meg egy tábla entitás bináris adatok tárolására, mert a kódolás növeli az adatok mérete.
+* Egyes Azure Cosmos DB belső formátumok kódolási információk, például bináris mezőket, jelenleg nem annyira hatékony, például előfordulhat, hogy az egyik. Ezért az adatok mérete váratlan korlátozások léphetnek föl. Például jelenleg egyik nem használható a teljes egy tábla entitás Meg a bináris adatok tárolására, mert a kódolás növeli az adatok mérete.
 * Entitás tulajdonság neve "Id" jelenleg nem támogatott
 * TableQuery TakeCount nem korlátozódik az 1000
 
@@ -260,17 +260,17 @@ A .NET SDK-hoz készült különösen vannak osztályok és módszerek, amely az
 |                  | \*ServiceStats* |
 | CloudTable | SetPermissions* |
 |            | GetPermissions * |
-| TableServiceContext | * (Ez az osztály ténylegesen elavult) |
+| TableServiceContext | * (Ez az osztály elavult) |
 | TableServiceEntity | " " |
 | TableServiceExtensions | " " |
 | TableServiceQuery | " " |
 
-Ha bármelyik a különbségeket a projekt probléma, forduljon [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com) és tudassa velünk.
+Ha ezek a különbségek bármelyike a projekt probléma, forduljon a [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com) és tudassa velünk.
 
 ### <a name="how-do-i-provide-feedback-about-the-sdk-or-bugs"></a>Hogyan küldhetek visszajelzést az SDK-t vagy a hibák?
 Az alábbi módokon is ossza meg velünk véleményét:
 
-* [Uservoice](https://feedback.azure.com/forums/599062-azure-cosmos-db-table-api)
+* [Felhasználói visszajelzési webhelyen](https://feedback.azure.com/forums/263030-azure-cosmos-db)
 * [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
 * [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb). A stack Overflow a legjobb a programozási kérdéseit. Ellenőrizze, hogy a kérdés [témához illeszkedő](https://stackoverflow.com/help/on-topic) és [adja meg a legtöbb adatot lehet, így a kérdést, egyértelmű és megválaszolható](https://stackoverflow.com/help/how-to-ask).
 
@@ -329,7 +329,7 @@ Nem, hozzon létre, és használja a meglévő Azure Table storage eszközök b�
 Az Azure Cosmos DB Portallal [globális replikációs beállítások](tutorial-global-distribution-sql-api.md#portal) régiók, amelyek alkalmasak az alkalmazás hozzáadásához. A globálisan elosztott alkalmazások fejlesztése, hozzá kell az alkalmazás a PreferredLocation adatokkal állítsa be a helyi régiónak, amelyek biztosítják az alacsony olvasási késés. 
 
 ### <a name="how-do-i-change-the-primary-write-region-for-the-account-in-the-table-api"></a>Hogyan módosíthatom a Table API-ban a fiók az elsődleges írási régiót?
-Az Azure Cosmos DB globális replikációt portál panel használatával hozzáadta a régiót, és ezután átadja a feladatokat a szükséges régió. Útmutatásért lásd: [fejlesztés a többrégiós Azure Cosmos DB-fiókok](regional-failover.md). 
+Az Azure Cosmos DB globális replikációt portál panel használatával hozzáadta a régiót, és ezután átadja a feladatokat a szükséges régió. Útmutatásért lásd: [fejlesztés a többrégiós Azure Cosmos DB-fiókok](high-availability.md). 
 
 ### <a name="how-do-i-configure-my-preferred-read-regions-for-low-latency-when-i-distribute-my-data"></a>Hogyan konfigurálhatom az alacsony késés érdekében saját előnyben részesített olvasási régiók I adataimat terjesztésekor? 
 Annak érdekében, olvassa el a helyi helyről, használja a PreferredLocation kulcsot az app.config fájlban. Meglévő alkalmazások a Table API hibát jelez, ha LocationMode van beállítva. Távolítsa el a adott kódot, mert a tábla API szerzi be ezt az információt az app.config fájlból. További információkért lásd: [Azure Cosmos DB-képességek](../cosmos-db/tutorial-develop-table-dotnet.md#azure-cosmos-db-capabilities).
@@ -351,7 +351,7 @@ Az Azure Cosmos DB az adatokat a helyi régióban tartósan véglegesítések, �
 Az Azure Cosmos DB a konzisztenciaszint beállíthatja a tároló szintjén (a leírásban). A .NET SDK használatával módosíthatja a szintet TableConsistencyLevel kulcsot az app.config fájlban az érték megadásával. A lehetséges értékek a következők: erős, PBS, munkamenet, konzisztens előtag és végleges. További információkért lásd: [adatok aprólékosan beállítható konzisztenciaszintek az Azure Cosmos DB](consistency-levels.md). A kulcs lényege, hogy nem állítható be a kérelem konzisztencia szint több, mint a beállítást a táblára vonatkozóan:. Például a konzisztenciaszint a táblához nem beállítása végleges, és a kérés konzisztenciaszint erős. 
 
 ### <a name="how-does-the-table-api-handle-failover-if-a-region-goes-down"></a>Hogyan a Table API kezeli feladatátvételi Ha leáll egy régióban? 
-A Table API a az Azure Cosmos DB globálisan elosztott platformot használ. Győződjön meg arról, hogy az alkalmazás működését adatközpont-leállás, engedélyezni kell legalább egy további régióban, a fiók az Azure Cosmos DB portál [fejlesztés a többrégiós Azure Cosmos DB-fiókok](regional-failover.md). A portál használatával beállíthatja az a régió prioritásának [fejlesztés a többrégiós Azure Cosmos DB-fiókok](regional-failover.md). 
+A Table API a az Azure Cosmos DB globálisan elosztott platformot használ. Győződjön meg arról, hogy az alkalmazás működését adatközpont-leállás, engedélyezni kell legalább egy további régióban, a fiók az Azure Cosmos DB portál [fejlesztés a többrégiós Azure Cosmos DB-fiókok](high-availability.md). A portál használatával beállíthatja az a régió prioritásának [fejlesztés a többrégiós Azure Cosmos DB-fiókok](high-availability.md). 
 
 A fiók, és szabályozhatja, ahol azt átveheti azáltal, hogy a feladatátvétel prioritási tetszőleges számú régiót adhat hozzá. Természetesen az adatbázis használatához meg kell adnia egy alkalmazást is túl. Ha így tesz, az ügyfelek nem tapasztalható üzemszünet. A [legújabb .NET ügyféloldali SDK-val](table-sdk-dotnet.md) automatikus helykezelési van, de a más SDK-k nem. Észlelését, azt a régiót, amelyben nem működik, és automatikusan átadja a feladatokat az új régióban.
 
@@ -431,7 +431,7 @@ Az Azure Cosmos DB garanciákat nyújt a teljesítmény és a késés, a felső 
 
 Az átviteli sebesség meghatározása révén rugalmasan módosíthatja, hogy az alkalmazás a szezonalitás kihasználhatják, az átviteli sebesség igényeinek és költségeit.
 
-### <a name="azure-table-storage-has-been-very-inexpensive-for-me-because-i-pay-only-to-store-the-data-and-i-rarely-query-the-azure-cosmos-db-table-api-offering-seems-to-be-charging-me-even-though-i-have-not-performed-a-single-transaction-or-stored-anything-can-you-please-explain"></a>Az Azure Table storage nagyon alacsony költségű számomra, lett, mert csak szeretné tárolni az adatokat, és csak ritkán lekérdezést kell fizetni. Az Azure Cosmos DB Table API-ajánlat úgy tűnik, hogy lehet díjszabási me annak ellenére, hogy e végre egy tranzakció vagy nem tárolt semmit. Adjon melyek?
+### <a name="azure-table-storage-has-been-inexpensive-for-me-because-i-pay-only-to-store-the-data-and-i-rarely-query-the-azure-cosmos-db-table-api-offering-seems-to-be-charging-me-even-though-i-have-not-performed-a-single-transaction-or-stored-anything-can-you-please-explain"></a>Az Azure Table storage számomra, költségkímélő lett, mert csak szeretné tárolni az adatokat, és csak ritkán lekérdezést kell fizetni. Az Azure Cosmos DB Table API-ajánlat úgy tűnik, hogy lehet díjszabási me annak ellenére, hogy e végre egy tranzakció vagy nem tárolt semmit. Adjon melyek?
 
 Az Azure Cosmos DB egy globálisan elosztott, SLA-alapú rendszer rendelkezésre állását, a késés és az átviteli sebesség garanciákkal tervezték. Fenntartott átviteli sebesség az Azure Cosmos DB, amikor biztosított, ellentétben más rendszerek az átviteli sebességet. Az Azure Cosmos DB további képességeket biztosít, amelyek ügyfelek kért, például a másodlagos indexek és globális disztribúciót.  
 
@@ -456,13 +456,13 @@ Az Azure Cosmos DB Gremlin API a nyílt forráskódú illesztőprogramokat haszn
 
 ### <a name="how-are-rus-charged-when-running-queries-on-a-graph-database"></a>Hogyan számlázzuk a RU/s a gráfadatbázisok lekérdezések futtatásakor? 
 
-Az összes gráfsémákkal, csúcsok és élek, a háttérben JSON-dokumentumok formájában jelennek meg. Mivel egy Gremlin lekérdezési módosíthatja egy vagy több graph-objektumok egyszerre, a költség társítva isbe közvetlenül kapcsolódik az objektumok, a lekérdezés által feldolgozott élek. Ez az eljárást minden más API-t használó Azure Cosmos DB. További információkért lásd: [Azure Cosmos DB-ben a kérelemegység](request-units.md).
+Minden gráfsémákkal, csúcsokat és éleket, a háttérben JSON-dokumentumok formájában jelennek meg. Egy Gremlin lekérdezési módosíthatja egy vagy több graph-objektumok egyszerre, mivel a hozzá társított költségek közvetlenül kapcsolódik az objektumok, a lekérdezés által feldolgozott élek. Ez az eljárást minden más API-t használó Azure Cosmos DB. További információkért lásd: [Azure Cosmos DB-ben a kérelemegység](request-units.md).
 
 A Kérelemegység díj alapja az bejárási munkakészletének adatokat, és nem az eredményt. Például ha egy lekérdezést a célja, hogy egyetlen csúcs eredményeképpen beszerzése a következőnek kell von haladnak át a több más objektumot, majd a költségek alapul fog tartani a egy eredményt csúcspont számítási graph-objektumon.
 
 ### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Mi az a maximális skála, amelyeken egy gráfadatbázist az Azure Cosmos DB Gremlin API-hoz? 
 
-Az Azure Cosmos DB teszi [horizontális particionálást](partition-data.md) tárolási és átviteli követelményei automatikusan cím növekedéséhez. Számítási feladatok maximális adatátviteli és tárolási kapacitása egy adott gyűjteményhez társított partíciók mennyiségét határozza meg. Azonban a Gremlin API-gyűjtemény van egy meghatározott készletének a szabályokat, hogy a megfelelő teljesítmény biztosítása érdekében, ipari méretekben. További információ és ajánlott eljárások: [ajánlott particionálási eljárások](partition-data.md#best-practices-when-choosing-a-partition-key) dokumentumot. 
+Az Azure Cosmos DB teszi [horizontális particionálást](partition-data.md) tárolási és átviteli követelményei automatikusan cím növekedéséhez. Egy adott gyűjteményhez társított partíciók száma egy számítási feladat maximális adatátviteli és tárolási kapacitása határozza meg. Azonban a Gremlin API-gyűjtemény van egy meghatározott készletének a szabályokat, hogy a megfelelő teljesítmény biztosítása érdekében, ipari méretekben. További információ és ajánlott eljárások: [ajánlott particionálási eljárások](partition-data.md#best-practices-when-choosing-a-partition-key) dokumentumot. 
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Hogyan tudja megvédeni Gremlin-illesztőprogramokkal injektálási támadások ellen? 
 
@@ -472,7 +472,7 @@ Legtöbb natív Tinkerpop Gremlin-illesztőprogramok a lehetőséget, ha a leké
 
 Az Azure Cosmos DB Gremlin API valósítja meg a Gremlin támadási meghatározott funkciók egy részét. Támogatott lépések és további tudnivalókat lásd: [Gremlin-támogatás](gremlin-support.md) cikk.
 
-A legjobb megoldás, hogy írja át a Gremlin szükséges lépéseket a támogatott funkciókkal, mivel az Azure Cosmos DB által támogatott összes alapvető fontosságú gremlinnel kapcsolatos lépések.
+A legjobb megoldás, hogy a szükséges Gremlin-lépések újraírási a támogatott funkciókkal, mivel az Azure Cosmos DB által támogatott összes alapvető fontosságú gremlinnel kapcsolatos lépések.
 
 ### <a name="why-am-i-getting-the-websocketexception-the-server-returned-status-code-200-when-status-code-101-was-expected-error"></a>Miért jelenik meg a "WebSocketException: A kiszolgáló állapotkód:"200"adott vissza, ha a várt állapotkód:"101: "hiba?
 
@@ -501,7 +501,7 @@ A Gremlin kapcsolat WebSocket kapcsolaton keresztül. Bár a WebSocket-kapcsolat
 
 ### <a name="why-cant-i-use-fluent-api-calls-in-the-native-gremlin-drivers"></a>Miért nem használható a natív Gremlin-illesztőprogramok fluent API-hívások?
 
-Fluent API-hívások még nem támogatottak az Azure Cosmos DB Gremlin API által. Fluent API-hívások bytecode támogatása, amely az Azure Cosmos DB Gremlin API jelenleg nem támogatja más néven egy belső formázási szolgáltatás szükséges. Ugyanebből az okból miatt a legújabb Gremlin-JavaScript-illesztőprogramot is jelenleg nem támogatott. 
+Fluent API-hívások még nem támogatottak az Azure Cosmos DB Gremlin API által. Fluent API-hívások bytecode támogatása az Azure Cosmos DB Gremlin API jelenleg nem támogatja, más néven egy belső formázási szolgáltatás szükséges. Ugyanebből az okból miatt a legújabb Gremlin-JavaScript-illesztőprogramot is jelenleg nem támogatott. 
 
 ### <a name="how-can-i-evaluate-the-efficiency-of-my-gremlin-queries"></a>Hogyan tudom értékelni a Gremlin-lekérdezések hatékonyságának?
 
@@ -579,7 +579,7 @@ A fenti profil kimenetét jeleníti meg, mennyi időt vesz igénybe a csúcspont
 ## <a id="cassandra"></a> Cassandra API
 
 ### <a name="what-is-the-protocol-version-supported-in-the-private-preview-is-there-a-plan-to-support-other-protocols"></a>Mi az a private preview verzióban támogatott protokoll verziója? Egyéb protokollok támogatása csomag van?
-Az Azure Cosmos DB Apache Cassandra API ma CQL 4-es verziója támogatja. Ha más protokollt támogatásával kapcsolatos visszajelzést szeretne küldeni, ossza meg velünk keresztül [uservoice-visszajelzések](https://feedback.azure.com/forums/263030-azure-cosmos-db) , vagy küldjön egy e-mailek [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com). 
+Az Azure Cosmos DB Apache Cassandra API ma CQL 4-es verziója támogatja. Ha más protokollt támogatásával kapcsolatos visszajelzést szeretne küldeni, ossza meg velünk keresztül [felhasználói visszajelzések](https://feedback.azure.com/forums/263030-azure-cosmos-db) , vagy küldjön egy e-mailek [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com). 
 
 ### <a name="why-is-choosing-a-throughput-for-a-table-a-requirement"></a>Miért megválasztása a tábla egy átviteli követelmény?
 Az Azure Cosmos DB alapértelmezett átviteli sebességet beállítja a tárolóhoz rendeltek, ahol létrehozhatja az a tábla - portálon vagy a CQL. Az Azure Cosmos DB garanciákat nyújt a teljesítmény és a késés, a felső korlátja a műveletet. Ez garantálja a motor kényszerítheti a cégirányítási műveletek a bérlő esetén lehetséges. Beállítás átviteli biztosítja, hogy kap a garantált átviteli sebességgel és késéssel, mert a platform fenntartja a kapacitást, és garantálja a művelet sikeres. Rugalmasan módosíthatja az átviteli sebességet, hogy az alkalmazás a szezonalitás előnyös és költségeit.
@@ -604,7 +604,7 @@ simpleStatement.SetOutgoingPayload(outgoingPayload);
 ``` 
 
 ### <a name="what-happens-when-throughput-is-exceeded"></a>Mi történik a átviteli sebesség túllépésekor? 
-Az Azure Cosmos DB garanciákat nyújt a teljesítmény és a késés, a felső korlátja a műveletet. Ez garantálja a motor kényszerítheti a cégirányítási műveletek a bérlő esetén lehetséges. Ez akkor lehetséges, az átviteli sebességet, amely biztosítja, hogy kap a garantált átviteli sebességgel és késéssel, mert a platform fenntartja a kapacitást, és garantálja a művelet sikeres beállítás alapján. Ha túllépi a kapacitást túlterhelt jellegű hibaüzenetet kap üzenetet a rendszer túllépte a kapacitást. 0x1001 túlterhelt: nem lehet feldolgozni a kérelmet, mert a "Túl sok kérelmet adott". Ebben a pillanatban elengedhetetlen, hogy milyen műveleteket, és a mennyiségi okozza a problémát. Felhasznált kapacitása meghaladja a kiosztott kapacitást a portálon a metrikákkal kapcsolatos ötlet kérheti le. Ezután győződjön meg arról, szinte felhasznált kapacitás egyaránt összes alapul szolgáló partíciók között. Ha egy partíció által felhasznált átviteli a legtöbb, rendelkezik torzulása számítási feladat. 
+Az Azure Cosmos DB garanciákat nyújt a teljesítmény és a késés, a felső korlátja a műveletet. Ez garantálja a motor kényszerítheti a cégirányítási műveletek a bérlő esetén lehetséges. Ez akkor lehetséges, az átviteli sebességet, amely biztosítja, hogy kap a garantált átviteli sebességgel és késéssel, mert a platform fenntartja a kapacitást, és garantálja a művelet sikeres beállítás alapján. Ha túllépi a kapacitást, túlterhelt jellegű hibaüzenetet kap üzenetet a rendszer túllépte a kapacitást. 0x1001 túlterhelt: nem lehet feldolgozni a kérelmet, mert a "Túl sok kérelmet adott". Ebben a pillanatban elengedhetetlen, hogy milyen műveleteket, és a mennyiségi okozza a problémát. Felhasznált kapacitása meghaladja a kiosztott kapacitást a portálon a metrikákkal kapcsolatos ötlet kérheti le. Ezután győződjön meg arról, szinte felhasznált kapacitás egyaránt összes alapul szolgáló partíciók között. Ha egy partíció által felhasznált átviteli a legtöbb, rendelkezik torzulása számítási feladat. 
 
 Metrikák érhetők el, amelyek bemutatják, átviteli sebesség használatáról órában, napban, és a egy hét nap, több partícióra kiterjedő vagy Összesítés. További információkért lásd: [megfigyelési és a hibakeresést az Azure Cosmos DB metrikákkal](use-metrics.md).
 
@@ -614,55 +614,55 @@ Diagnosztikai naplók mutatjuk be a [diagnosztikai naplózás az Azure Cosmos DB
 Igen, a partíciókulcs megfelelő helyen helyezi el az entitás szolgál. Az Azure Cosmos DB szolgál, hogy egy fizikai partíciónak jobb logikai partíció található. A particionálási fogalma jól ismertetése a [particionálási és horizontális az Azure Cosmos DB](partition-data.md) cikk. Az alapvető hajtsa végre a megfelelő nyelvet a lenti listában itt látható, hogy a logikai partíció nem haladhatja meg a 10 GB-os korlát még ma. 
 
 ### <a name="what-happens-when-i-get-a-quota-full-notification-indicating-that-a-partition-is-full"></a>Mi történik, ha a teljes kvóta jelenik meg:"értesítés arról, hogy a partíció nem teljes?
-Az Azure Cosmos DB egy rendszer SLA-alapú, amely korlátlan számú skálázási késés, átviteli sebesség, rendelkezésre állás és konzisztencia vonatkozó garanciákat biztosít. Cassandra API lehetővé teszi a korlátlan tárolási adatok túl. A korlátlan tárolási fő fogalmat, a particionálás használata adatok vízszintes horizontális felskálázás alapul. A particionálási fogalma jól ismertetése a [particionálási és horizontális az Azure Cosmos DB](partition-data.md) cikk.
+Az Azure Cosmos DB egy rendszer SLA-alapú, amely korlátlan számú skálázási késés, átviteli sebesség, rendelkezésre állás és konzisztencia vonatkozó garanciákat biztosít. A korlátlan tárolási kívül fő fogalmat, a particionálás használata az adatok horizontális skálázás alapul. A particionálási fogalma jól ismertetése a [particionálási és horizontális az Azure Cosmos DB](partition-data.md) cikk.
 
-Az entitások vagy meg kell felelnie logikai partíciónként elemek számának 10 GB-os korlát. Győződjön meg arról, hogy az alkalmazás jól skálázható, javasoljuk, hogy Ön *nem* az egy partícióban kapcsolatos összes információ tárolása és lekérdezése, gyakori elérésű partíciót létrehozni. Ez a hiba csak származnak, ha az adatokat, akkor torzítja – Ez akkor nagy mennyiségű adat az egy partíciókulcsot – azaz a is 10 GB-nál. A storage-portál használata az adatok eloszlása találja. Ez a hiba kijavításának módja recrete, a tábla, válassza ki a részletes elsődleges (partíciókulcs), amely lehetővé teszi az adatok jobb elosztása.
+Az entitások vagy meg kell felelnie logikai partíciónként elemek számának 10 GB-os korlát. Győződjön meg arról, hogy az alkalmazás jól skálázható, javasoljuk, hogy Ön *nem* az egy partícióban kapcsolatos összes információ tárolása és lekérdezése, gyakori elérésű partíciót létrehozni. Ez a hiba csak származhatnak, ha az adatok van torzítja –, amelyek nagy mennyiségű adatot a 10 GB-nál több egy partíciókulcs - azt jelenti, hogy van. A storage-portál használata az adatok eloszlása találja. Ez a hiba elhárításához módja hozza létre újból a táblát, és válassza a részletes elsődleges (partíciókulcs), amely lehetővé teszi az adatok jobb elosztása.
 
 ### <a name="is-it-possible-to-use-cassandra-api-as-key-value-store-with-millions-or-billions-of-individual-partition-keys"></a>A Cassandra API-kulcs-érték tárolóként használható a több millió vagy egyéni partíciókulcsok milliárd?
 Az Azure Cosmos DB korlátlan adatot tárolhat a storage horizontális felskálázásával. Ez az az átviteli sebesség független. Tárolására és beolvasására, kulcs/érték megadásával a megfelelő elsődleges/partíciókulcs Igen Cassandra API csak mindig használhatja. Ezek a egyedi kulcsok saját logikai partíció beolvasása, és problémamentesen fizikai partíciók felett található. 
 
 ### <a name="is-it-possible-to-create-multiple-tables-with-apache-cassandra-api-of-azure-cosmos-db"></a>Az lehetőség több tábla létrehozása az Apache Cassandra API-t az Azure Cosmos DB?
-Igen, Kréta lehetőség több tábla Apache Cassandra API-val. Ezeket a táblákat és tárolásért egység számít. 
+Igen, akkor lehet az Apache Cassandra API-val több tábla létrehozásához. Ezeket a táblákat és tárolásért egység számít. 
 
 ### <a name="is-it-possible-to-create-multiple-tables-in-succession"></a>Az egymás után több tábla létrehozására?
-Az Azure Cosmos DB rendszer erőforrás szabályozott adatokat és a vezérlési sík tevékenységekhez. Tárolók, például gyűjtemények, a táblák olyan futásidejű entitások, amelyek a megadott átviteli kapacitás kiépítése. Egymás után gyorsan tárolók létrehozása nem várt tevékenységet és szabályozott. Ha teszteket, amelyek közvetlen/táblák létrehozása azonnal - próbálja címterét őket.
+Az Azure Cosmos DB rendszer erőforrás szabályozott adatokat és a vezérlési sík tevékenységekhez. Tárolók, például gyűjtemények, táblák olyan futásidejű entitások, amelyek a megadott átviteli kapacitás kiépítése. Egymás után gyorsan tárolók létrehozása nem várt tevékenységet és szabályozott. Ha rendelkezik, amely közvetlen/táblák létrehozása azonnal - tesztek próbálkozzon térköz őket.
 
-### <a name="what-is-maximum-number-of-tables-which-can-be-created"></a>Mit jelent a táblákat, amelyek hozható létre maximális számát?
-A táblák száma nem fizikai korlátozott, küldjön egy e-mailt [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com) Ha nagyon nagy számú táblák (ahol a teljes állandó mérete meghaladja a 10 TB-nyi adatot), amely a szokásos 10s vagy 100s kell létrehozni. 
+### <a name="what-is-maximum-number-of-tables-that-can-be-created"></a>Mit jelent a létrehozott táblák maximális száma?
+A táblák száma nem fizikai korlátozott, küldjön egy e-mailt [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com) Ha nagy számú táblák (ahol a teljes állandó mérete meghaladja a 10 TB-nyi adatot), amely a szokásos 10s vagy 100s kell létrehozni. 
 
-### <a name="what-is-the-maximum--of-keyspace-which-we-can-create"></a>Mi az a kulcstér, amelyeket létrehozhatunk maximális száma? 
-Mivel ezek metaadat-tárolók van fizikai keyspaces száma korlátlan, küldjön egy e-mailt [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com) Ha valamilyen okból keyspaces nagyon nagy számú rendelkezik. 
+### <a name="what-is-the-maximum--of-keyspace-that-we-can-create"></a>Mi az, hogy hozhat létre kulcstér maximális száma? 
+Mivel ezek metaadat-tárolók van fizikai keyspaces száma korlátlan, küldjön egy e-mailt [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com) Ha valamilyen okból keyspaces nagy számú. 
 
 ### <a name="is-it-possible-to-bring-in-lot-of-data-after-starting-from-normal-table"></a>Az is nagy mennyiségű adatot betöltheti a normál táblából elindítása után? 
 A tárolási kapacitás automatikusan kezeli, és leküldte a további adatok minél jobban növekszik. Így magabiztosan importálhatja legtöbb adatot nélkül kezelése, és üzembe helyezését a csomópontokon, stb. 
 
 ### <a name="is-it-possible-to-supply-yaml-file-settings-to-configure-apache-casssandra-api-of-azure-cosmos-db-behavior"></a>Az Apache Casssandra API az Azure Cosmos DB-viselkedés yaml fájl beállításait adja meg a lehetséges?
-Az Apache Cassandra API-t az Azure Cosmos DB platform szolgáltatása. Szolgáltatói használható protokoll biztosítja a műveletek végrehajtása. Elrejti azonnal felügyeleti, monitorozási és konfigurációs bonyolultságát. Fejlesztői/felhasználóként, nem kell aggódnia a rendelkezésre állási, törlésjelzőit, kulcsfontosságú cache sor gyorsítótár, virágzó szűrő és számos egyéb beállítást. Az Azure Cosmos DB Apache Cassandra API megoldásai lehetővé, hogy és olvasási teljesítményt megkövetelése nélkül konfigurálással és felügyelettel járó többletterhelést.
+Az Apache Cassandra API-t az Azure Cosmos DB platform szolgáltatása. Szolgáltatói kompatibilitási protokoll biztosítja a műveletek végrehajtása. Elrejti azonnal felügyeleti, monitorozási és konfigurációs bonyolultságát. Fejlesztői/felhasználóként nem kell aggódnia a rendelkezésre állási, törlésjelzőit, kulcsfontosságú gyorsítótár, sor gyorsítótár, virágzó szűrő és számos egyéb beállításokat. Az Azure Cosmos DB Apache Cassandra API megoldásai lehetővé, hogy és olvasási teljesítményt megkövetelése nélkül konfigurálással és felügyelettel járó többletterhelést.
 
 ### <a name="will-apache-cassandra-api-for-azure-cosmos-db-support-node-additioncluster-statusnode-status-commands"></a>Az Azure Cosmos DB Apache Cassandra API támogatja csomópont hozzáadása/fürt állapotának/csomópont állapota parancsokat?
-Az Apache Cassandra API olyan platformszolgáltatás, ami lehetővé teszi a kapacitástervezés, az átviteli sebesség és a tárhely rugalmassági igényeinek válaszol egy pofonegyszerű. Az Azure Cosmos DB, oszthatnak ki átviteli kapacitásokat van szüksége. Majd méretezhető felfelé és tetszőleges számú alkalommal napon keresztül, nem kell bajlódnunk csomópontok hozzáadásával és eltávolításával, vagy kezelnie azokat. Ez azt jelenti, hogy nem szeretné használni a csomópont, a fürtkezelő túl. 
+Az Apache Cassandra API olyan platformszolgáltatás, amely lehetővé teszi a kapacitástervezés, az átviteli sebesség és a tárhely rugalmassági igényeinek válaszol egy pofonegyszerű. Az Azure Cosmos DB, kioszthatja az átviteli sebességet, szükséges. Majd méretezhető felfelé és tetszőleges számú alkalommal napon keresztül, nem kell bajlódnunk csomópontok hozzáadásával és eltávolításával, vagy kezelnie azokat. Ez azt jelenti, hogy nem szeretné használni a csomópont, a fürtkezelő túl. 
 
 ### <a name="what-happens-with-respect-to-various-config-settings-for-keyspace-creation-like-simplenetwork"></a>Mi történik, különböző konfigurációs beállítások kulcstér létrehozására például egyszerű/hálózati vonatkozóan?
 Azure Cosmos DB biztosítja a rendelkezésre állás és a közel valós idejű okokból kulcsrakész globális disztribúciót. Nem kell a telepítő replikák stb. Az összes írási művelet mindig tartósan véglegesítve egy minden olyan régióban, ahol írási művelet során gondoskodik a teljesítményre vonatkozó garanciákat kvórum.  
 
-### <a name="what-happens-with-respect-to-various-settings-for-table-metadata-like-bloom-filter-caching-read-repair-change-gcgrace-compression-memtableflushperiod-etc"></a>Olvassa el vonatkozóan különböző beállításait tábla metaadatainak virágzó szűrőt, például a gyorsítótárazás, mi történik, javítás módosítása, gc_grace, tömörítés memtable_flush_period stb?
-Az Azure Cosmos DB olvasási/írási műveleteket és bármely konfigurációs beállítás, és véletlenül kezelésére szolgáló őket érintése nélkül átviteli teljesítményt nyújt.  
+### <a name="what-happens-with-respect-to-various-settings-for-table-metadata-like-bloom-filter-caching-read-repair-change-gcgrace-compression-memtableflushperiod-etc"></a>Mi történik megállapodást tábla metaadatainak különböző beállításait, például virágzó szűrőt, gyorsítótárazás, olvassa el a javítási módosítása, gc_grace, tömörítés memtable_flush_period stb.?
+Az Azure Cosmos DB olvasási/írási műveleteket és kell foglalkoznia a konfigurációs beállításait, és véletlenül kezelésére szolgáló őket átviteli teljesítményt nyújt.  
 
 ### <a name="is-time-to-live-ttl-supported-for-cassandra-tables"></a>Cassandra-táblák esetén támogatott idő – Élettartam (TTL)? 
 Igen, TTL támogatott. 
 
 ### <a name="is-it-possible-to-monitor-node-status-replica-status-gc-and-os-parameters-earlier-with-various-tools-what-needs-to-be-monitored-now"></a>Ennyi az egész lehet figyelő csomópont állapota, a replika állapota, a globális katalógus és a különböző eszközök révén korábban operációs rendszer paraméterek? Mit kell figyelni most?
-Az Azure Cosmos DB egy platformszolgáltatás, amely segít a hatékonyság növeléséhez, és nem kell foglalkoznia kezeléséhez és monitorozásához infrastruktúra. Csak akkor kell gondoskodunk, amely elérhető a portál mérőszámai keresése, ha Ön szabályozott első és növeléséhez vagy csökkentéséhez, hogy az átviteli teljesítmény. A figyelő [SLA-k](monitor-accounts.md).
+Az Azure Cosmos DB egy platformszolgáltatás, amely segít a hatékonyság növeléséhez, és nem kell foglalkoznia kezeléséhez és monitorozásához infrastruktúra. Egyszerűen, amely elérhető a portál mérőszámai keresése, ha Ön szabályozott első és növeléséhez vagy csökkentéséhez, hogy az átviteli teljesítmény gondoskodik. A figyelő [SLA-k](monitor-accounts.md).
 Használat [metrikák](use-metrics.md) használata [diagnosztikai naplók](logging.md).
 
 ### <a name="which-client-sdks-can-work-with-apache-cassandra-api-of-azure-cosmos-db"></a>Melyik ügyfél SDK-k is használható az Apache Cassandra API-t az Azure Cosmos DB?
-A privát előzetes verzió az Apache Cassandra SDK-ügyfél illesztőprogramokat, amelyek CQLv3 ügyfélprogramok használták. Ha rendelkezik más illesztőprogramokat használja, vagy ha problémái, az e-mailek küldésére [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com). 
+A privát előzetes verzió az Apache Cassandra SDK-ügyfél CQLv3 használó illesztőprogramok ügyfélprogramok használták. Ha rendelkezik más illesztőprogramokat használja, vagy ha problémái, az e-mailek küldésére [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com). 
 
 ### <a name="is-composite-partition-key-supported"></a>Összetett partíciókulcs támogatott?
 Igen, rendszeres szintaxis használatával összetett partíciós kulcs létrehozása. 
 
-### <a name="can-i-use-sstable-loader-for-data-loading"></a>Használhatok sstable betöltő Adatbetöltési?
-Nem, az előzetes verzióban sstable betöltő nem támogatott. 
+### <a name="can-i-use-stable-loader-for-data-loading"></a>Használhatok stabil betöltő Adatbetöltési?
+Nem, előzetes verzió ideje alatt stabil betöltő nem támogatott. 
 
 ### <a name="can-an-on-premises-cassandra-cluster-be-paired-with-azure-cosmos-dbs-apache-cassandra-api"></a>Is egy a helyszíni cassandra-fürtjére kell megfeleltetni az Azure Cosmos DB Apache Cassandra API-hoz?
 A jelenlegi Azure Cosmos DB egy optimalizált megoldás műveletek nélkül terhelés a felhőalapú környezet rendelkezik. Ha párosítás van szüksége, küldjön egy levelet a [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com) az az eset leírását.
@@ -671,7 +671,7 @@ A jelenlegi Azure Cosmos DB egy optimalizált megoldás műveletek nélkül terh
 Az Azure Cosmos DB biztosítja a két ingyenes teljes mentésekre négy óra időköz még ma az összes API-k között. Ez biztosítja, hogy nem kell beállítani a biztonsági mentési ütemezést stb. Ha azt szeretné, módosíthatja a megőrzési és gyakoriságát, küldjön egy e-mailek [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com) vagy egy támogatási esetet előléptetése. Információ a biztonsági mentési funkció megtalálható a [automatikus online biztonsági mentés és visszaállítás az Azure Cosmos DB](online-backup-and-restore.md) cikk. 
 
 ### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>Hogyan a Cassandra API-fiókot kezeli feladatátvételi Ha leáll egy régióban? 
-Az Azure Cosmos DB Cassandra API telephelyeken az Azure Cosmos DB globálisan elosztott platformról. Győződjön meg arról, hogy az alkalmazás működését adatközpont-leállás, engedélyezni kell legalább egy további régióban, a fiók az Azure Cosmos DB portál [fejlesztés a többrégiós Azure Cosmos DB-fiókok](regional-failover.md). A portál használatával beállíthatja az a régió prioritásának [fejlesztés a többrégiós Azure Cosmos DB-fiókok](regional-failover.md). 
+Az Azure Cosmos DB Cassandra API telephelyeken az Azure Cosmos DB globálisan elosztott platformról. Győződjön meg arról, hogy az alkalmazás működését adatközpont-leállás, engedélyezni kell legalább egy további régióban, a fiók az Azure Cosmos DB portál [fejlesztés a többrégiós Azure Cosmos DB-fiókok](high-availability.md). A portál használatával beállíthatja az a régió prioritásának [fejlesztés a többrégiós Azure Cosmos DB-fiókok](high-availability.md). 
 
 A fiók, és szabályozhatja, ahol azt átveheti azáltal, hogy a feladatátvétel prioritási tetszőleges számú régiót adhat hozzá. Az adatbázis használatára, meg kell adnia a-alkalmazást is túl. Ha így tesz, az ügyfelek nem tapasztalható üzemszünet. 
 
@@ -688,7 +688,7 @@ Ezen képesség támogatásához a jövőben tervezzük.
 Az Apache Cassandra API Apache Cassandra azonos CQL funkciókat biztosít. Tervezzük megvalósítható-képességek a jövőbeli támogatási megvizsgáljuk.
 
 ### <a name="feature-x-of-regular-cassandra-api-is-not-working-as-today-where-can-the-feedback-be-provided"></a>Rendszeres Cassandra API x funkciója nem működik, még ma, ahol is a visszajelzést adni?
-Visszajelzés küldése keresztül [uservoice-visszajelzések](https://feedback.azure.com/forums/263030-azure-cosmos-db).
+Visszajelzés küldése keresztül [felhasználói visszajelzések](https://feedback.azure.com/forums/263030-azure-cosmos-db).
 
 [azure-portal]: https://portal.azure.com
 [query]: sql-api-sql-query.md

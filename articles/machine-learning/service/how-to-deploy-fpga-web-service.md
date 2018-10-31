@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
-ms.date: 10/01/2018
-ms.openlocfilehash: 925173f85301d6481ae3b9cf891041239b06bc8f
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.date: 10/29/2018
+ms.openlocfilehash: 3b2ff5bf4413c5d6a681aff66f0f338567f3b6a8
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113716"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242738"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning"></a>Modell üzembe helyezése az Azure Machine Learning-FPGA webszolgáltatásként
 
@@ -23,8 +23,6 @@ Telepíthet egy modellt webszolgáltatásként, amely a [programmable gate array
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
-
-- Kell igényelnie, és az FPGA-kvótát kell jóváhagyni. Hozzáférés kérése, töltse ki az űrlap kvóta: https://aka.ms/aml-real-time-ai
 
 - Az Azure Machine Learning szolgáltatás munkaterület és az Azure Machine Learning SDK telepítve van a Pythonhoz készült. Ezekről az előfeltételekről használatával beszerzéséről a [a fejlesztési környezet konfigurálása](how-to-configure-environment.md) dokumentumot.
  
@@ -132,7 +130,7 @@ except WebserviceException:
     service.wait_for_deployment(true)
 ```
 
-### <a name="test-the-service"></a>Tesztelheti a szolgáltatást
+### <a name="test-the-service"></a>A szolgáltatás tesztelése
 Kép küldése az API-hoz, és tesztelje a választ, adja hozzá a kimeneti Osztályazonosító leképezés épít osztálynév.
 
 ```python

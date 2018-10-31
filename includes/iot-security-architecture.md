@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: bbdff5a9aa74ab08dc99c41f8ab847f901e18256
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: ac51dc8b7cbfa08ebca201c42c0c82356b7d5b6c
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227440"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50254599"
 ---
 # <a name="internet-of-things-security-architecture"></a>IOT-biztonsági architektúrája
 
@@ -21,7 +21,7 @@ A rendszer tervezésekor fontos, hogy a rendszer a potenciális fenyegetések, �
 
 ## <a name="security-starts-with-a-threat-model"></a>Biztonsági kezdődik a fenyegetések modellezése
 
-A Microsoft már hosszú használt modelljei termékei és által végrehajtott folyamat publicaly elérhető modellezési a vállalat veszélyforrások elleni. A vállalat felhasználói élményt ismerteti, hogy rendelkezik-e a modellezési túli fenyegetések Mik a legtöbb azonnali ismeretekkel nem várt előnyök vonatkozóan. Például is létrehoz egy sérülésre egy megnyitott beszélgetéshez másokkal kívül a fejlesztői csapat, ami új ötleteket és fejlesztések a termékben.
+A Microsoft már hosszú használt modelljei termékei és által végrehajtott folyamat nyilvánosan elérhető modellezési a vállalat veszélyforrások elleni. A vállalat felhasználói élményt ismerteti, hogy rendelkezik-e a modellezési túli fenyegetések Mik a legtöbb azonnali ismeretekkel nem várt előnyök vonatkozóan. Például is létrehoz egy sérülésre egy megnyitott beszélgetéshez másokkal kívül a fejlesztői csapat, ami új ötleteket és fejlesztések a termékben.
 
 Fenyegetés modellezési célja, hogy hogyan egy támadó képes veszélyeztetheti a rendszer, és ezután ellenőrizze, hogy megfelelő megoldások vannak érvényben. Veszélyforrások elleni modellezési kényszeríti a rendszert úgy tervezték, hanem után a rendszer a megoldások, érdemes figyelembe venni a tervezési csapattal van üzembe helyezve. A tény, különösen fontos, mivel az eszközök a mezőben a számtalan biztonsági védelmekkel történő lehessen hozni, hibalehetőségeket rejt magában, és hagyja ügyfeleinek kockáztatja.
 

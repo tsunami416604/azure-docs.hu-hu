@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/30/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 36db41308678f3f1bd713561f9a844288f5db401
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 19a4b77be613eb7ddb4367ca5dc5731c4e0a0287
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312241"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249254"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Azure AD Connect használatával a meglévő ADSync-adatbázis telepítése
 Az Azure AD Connect adatok tárolásához SQL Server-adatbázis szükséges. Az alapértelmezett Azure AD connecttel telepített SQL Server 2012 Express LocalDB használata, vagy használja a saját SQL teljes verziójával. Korábban amikor telepítette az Azure AD Connect, az egy új adatbázist ADSync mindig létrejött. Az Azure AD Connect verziója 1.1.613.0 (vagy után) lehetősége van az Azure AD Connect telepítése meglévő ADSync-adatbázis jelzésével.
@@ -86,6 +86,17 @@ Fontos megjegyzések figyelembe vegye figyelembe a folytatás előtt:
  
 11. Miután a telepítés befejeződött, az Azure AD Connect-kiszolgáló automatikusan engedélyezve lesz az átmeneti módhoz. Javasoljuk, hogy az átmeneti mód letiltása előtt ellenőrizze a kiszolgáló konfigurációját és a függőben lévő exportálásokat, nehogy nem várt módosításokkal kelljen számolnia. 
 
+## <a name="post-installation-tasks"></a>Telepítés utáni feladatok
+Amikor egy adatbázis biztonsági másolatának visszaállítása egy verziójával létrehozott előtt, az Azure AD Connect <our pending release>, az átmeneti kiszolgáló automatikusan a bejelentkezési módszer kiválasztása **ne konfiguráljon**. A Jelszókivonat-szinkronizálás és jelszóvisszaíró jelszóbeállításait lesz visszaállítva, amíg a többi olyan szabályzat érvényben a aktív szinkronizálási kiszolgáló a megfelelő bejelentkezési módszer később módosítania kell.  Hiba a lépések elvégzéséhez megakadályozhatja a felhasználók bejelentkezésének a kell ezen a kiszolgálón aktívvá válik.  
+
+Az alábbi táblázat segítségével ellenőrizheti a további lépések szükségesek.
+
+|Szolgáltatás|Lépések|
+|-----|-----|
+|Jelszókivonat-szinkronizálás| a Jelszókivonat-szinkronizálás és a jelszó-visszaírás beállításokat teljes mértékben visszaállnak AADC verziói kezdve <our impending release>.  Ha visszaállítása AADC egy régebbi verzióját használja, tekintse át a szinkronizálási beállítások a következő szolgáltatások biztosítására, hogy azok megfelelnek a aktív szinkronizálási kiszolgáló.  Lehet, hogy további konfigurációs lépések szükségesek.|
+|Összevonás az AD FS rendszerrel|Az Azure-hitelesítés továbbra is az aktív szinkronizálási kiszolgálóhoz beállított ADFS-házirend használata.  Ha az Azure AD Connect használatával kezelheti az AD FS farmon, igény szerint módosíthatja a bejelentkezési módszer az aktív szinkronizálást példány váljon a készenléti kiszolgáló előkészítése az AD FS összevonási.   Ha eszközbeállítások az aktív szinkronizálást kiszolgálón engedélyezve vannak, állítsa be ezeket a beállításokat ezen a kiszolgálón a "Eszközbeállítások konfigurálása" feladat futtatásával.|
+|Az átmenő hitelesítés és asztali egyszeri bejelentkezés|Frissítse a bejelentkezési módszert az aktív szinkronizálási kiszolgálón a konfigurációnak megfelelően.  Ha ez nem követi az elsődleges, átmenő hitelesítést, zökkenőmentes egyszeri bejelentkezést és a kiszolgáló előléptetése előtt le lesz tiltva, és a bérlő előfordulhat, hogy tagadják, ha nincs biztonsági mentési bejelentkezési beállítás nál. Azt is vegye figyelembe, hogy átmeneti módban átmenő hitelesítés engedélyezésekor egy új hitelesítési agent telepítve lesz, regisztrálja, és fog futni, és a egy magas rendelkezésre állású ügynök, amely bejelentkezési kéréseket fogad.|
+|Összevonás a PingFederate-tel|Az Azure-hitelesítés továbbra is használja a PingFederate-házirendet, az aktív szinkronizálási kiszolgáló konfigurálva.  A bejelentkezési módszer a PingFederate előkészítésekor a készenléti kiszolgáló váljon az aktív szinkronizálást példány igény szerint módosítható.  Ebben a lépésben elhalasztható, amíg nem kell vonni a pingfederate-tel további tartományokat.|
 ## <a name="next-steps"></a>További lépések
 
 - Miután az Azure AD Connect telepítése megtörtént, [ellenőrizheti a telepítést, és hozzárendelheti a licenceket](how-to-connect-post-installation.md).

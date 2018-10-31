@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/09/2018
 ms.author: markvi
 ms.reviewer: ravenn
-ms.openlocfilehash: cde364cb5231c1cc0b1947da35994862cf45b571
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 267e398305939048014038b7350b2a10481fdfbd
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042161"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238726"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközök
 
@@ -92,9 +92,9 @@ Kezdve a **Windows 10 1709-es** kiadásban hajthat végre ezt a feladatot **beá
  
 Ezenkívül is hozzáadhat felhasználókat a parancssor használatával:
 
-- Ha a bérlői felhasználó számára a helyszíni Active Directoryból szinkronizált, `net localgroup administrators /add “Contoso\username”`.
+- Ha a bérlői felhasználó számára a helyszíni Active Directoryból szinkronizált, `net localgroup administrators /add "Contoso\username"`.
 
-- Ha az Azure AD-bérlő felhasználóit jönnek létre, `net localgroup administrators /add “AzureAD\UserUpn”`
+- Ha az Azure AD-bérlő felhasználóit jönnek létre, `net localgroup administrators /add "AzureAD\UserUpn"`
 
 
 ## <a name="considerations"></a>Megfontolandó szempontok 
@@ -109,8 +109,8 @@ Felhasználók eltávolítása az eszközadminisztrátori szerepkörre, ha tová
 
 ## <a name="next-steps"></a>További lépések
 
-- Áttekintheti az Azure Portalon eszközök felügyelete, lásd: [az Eszközfelügyelet az Azure portal használatával](device-management-azure-portal.md)
+- További információk az eszközök Azure Portalon végzett felügyeletéről: [Eszközfelügyelet az Azure Portalon](device-management-azure-portal.md).
 
-- Eszközalapú feltételes hozzáférési kapcsolatos további információkért lásd: [Azure Active Directory eszközalapú feltételes hozzáférési szabályzatok konfigurálhatók](../conditional-access/require-managed-devices.md).
+- További információk az eszközalapú feltételes hozzáférésről: [Eszközalapú Azure Active Directory feltételes hozzáférési szabályzatok konfigurálása](../conditional-access/require-managed-devices.md).
 
 

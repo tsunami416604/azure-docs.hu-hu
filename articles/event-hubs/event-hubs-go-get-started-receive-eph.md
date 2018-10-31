@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: shvija
-ms.openlocfilehash: eaea6adbaef7baf9bb1e617ba0a709cf14edf781
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 0a8cb349be0ffefecb07bc705391684dc57f1b96
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005578"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239491"
 ---
 # <a name="receive-events-from-event-hubs-using-go"></a>Események fogadása az Event Hubs Go használatával
 
@@ -80,7 +80,7 @@ import (
 
 ## <a name="create-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-Hozzon létre egy új egyszerű szolgáltatást a következő témakör utasításait követve [Azure-beli szolgáltatásnév létrehozása az Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli). A megadott hitelesítő adatok mentéséhez a környezetben a következő nevekkel. Keresse meg a változók nevében a Góhoz készült Azure SDK és az Event Hubs-csomaggal is fürtjének.
+Hozzon létre egy új egyszerű szolgáltatást a következő témakör utasításait követve [Azure-beli szolgáltatásnév létrehozása az Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli). A megadott hitelesítő adatok mentéséhez a környezetben a következő nevekkel: mind az Azure SDK a Go és az Event Hubs-csomag fürtjének keresse meg a változók nevében.
 
 ```bash
 export AZURE_CLIENT_ID=
@@ -197,13 +197,7 @@ if err != nil {
 Ez az oktatóprogram az **EventProcessorHost** egyetlen példányát használja. Átviteli sebesség és a megbízhatóság növelése érdekében érdemes több példányának futtatása **EventProcessorHost** különböző rendszereken. A rendszer gondoskodik arról, hogy csak egyetlen fogadó Leaser társítva van, és üzeneteket fogad, egy megadott partícióra, egy megadott időpontban.
 
 ## <a name="next-steps"></a>További lépések
-
-Látogasson el a további információ az Event Hubs ezeket az oldalakat:
-
-* [Események küldése az Go](event-hubs-go-get-started-send.md)
-* [Event Hubs – áttekintés](event-hubs-about.md)
-* [Event Hub létrehozása](event-hubs-create.md)
-* [Event Hubs – gyakori kérdések](event-hubs-faq.md)
+Ebben a rövid útmutatóban létrehozott egy Go-alkalmazást, amely a fogadott üzeneteket egy eseményközpontból. Ismerje meg, hogyan küldhet eseményeket egy eseményközpontba, Go használatával, lásd: [események küldése az event hubs - Go](event-hubs-go-get-started-send.md).
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-about.md

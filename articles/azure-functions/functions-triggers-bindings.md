@@ -3,20 +3,20 @@ title: Eseményindítók és kötések az Azure Functions szolgáltatásban
 description: Ismerje meg, eseményindítók és kötések használata az Azure Functions a végrehajtás online események és a felhőalapú szolgáltatásokhoz való csatlakozáshoz.
 services: functions
 documentationcenter: na
-author: ggailey777
+author: craigshoemaker
 manager: jeconnoc
 keywords: azure-függvények, függvények, eseményfeldolgozás, webhookok, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/24/2018
-ms.author: glenga
-ms.openlocfilehash: 6227e9c522cb4b041e56f2bbdd703a68b44ecf92
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.author: cshoe
+ms.openlocfilehash: 5e529953d06c37f382bdd5e65c23fe16d9928008
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087678"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250903"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Az Azure Functions eseményindítók és kötések fogalmak
 

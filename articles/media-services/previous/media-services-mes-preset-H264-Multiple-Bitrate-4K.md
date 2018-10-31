@@ -1,8 +1,8 @@
 ---
-title: H264 Multiple Bitrate 4 KB-os Media Encoder Standard előre definiált - Azure |} Microsoft Docs
-description: A témakör áttekintést a **H264 Multiple Bitrate 4 KB-os** feladat az adott néven beállítás.
+title: Media Encoder Standard előre H264 Multiple Bitrate 4K – Azure |} A Microsoft Docs
+description: A témakör áttekintést nyújt a **H264 Multiple Bitrate 4K** feladat előbeállítást.
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,27 +12,27 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 2d150fec68378e22ac644c0b8ccfe09c7f364738
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 97c852bc2b2bc046fa6942a8d4853231ab3b14bd
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788507"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50246586"
 ---
-# <a name="h264-multiple-bitrate-4k"></a>H264 Multiple Bitrate 4 KB-os
-`Media Encoder Standard` Meghatározza a kódolási készletek kódolási feladatok létrehozásakor használható. Használhatja a `preset name` adhatja meg, melyik formátumba kódolja a médiafájl szeretné. Másik lehetőségként létrehozhat saját JSON- vagy XML-alapú készletek (UTF-8 vagy UTF-16 kódolás használatával. Az egyéni készletet a kódoló majd át lesz. Ez által támogatott összes előre definiált nevek listája `Media Encoder Standard` kódoló, lásd: [feladat készletek a Media Encoder Standard](media-services-mes-presets-overview.md).  
+# <a name="h264-multiple-bitrate-4k"></a>H264 Multiple Bitrate 4K
+`Media Encoder Standard` határozza meg a kódolási készletek is használhatja a kódolási feladat létrehozásakor. Használhatja egy `preset name` mely formátumba, amelyet szeretne kódolása a media-fájl megadásához. Vagy létrehozhat saját JSON vagy XML-alapú készletek (UTF-8 és UTF-16 kódolást használatával. Az egyéni készletet a kódoló majd kellene átadnia. Ez által támogatott összes előre definiált nevek a lista `Media Encoder Standard` kódoló, lásd: [feladat készletek Media Encoder standard](media-services-mes-presets-overview.md).  
   
- Ez a témakör bemutatja a `H264 Multiple Bitrate 4K` beállított XML és a JSON formátumban.  
+ Ez a témakör bemutatja a `H264 Multiple Bitrate 4K` előre definiált XML és JSON formátumban.  
   
- Ezt a készletet hoz létre a 12 GOP igazított MP4-fájlokat, és 1000 KB/s és sztereó AAC hang 20000 kbit/s közötti. Profillal kapcsolatos részletes információkért sávszélességű mintavételi arány stb. a készletet, vizsgálja meg az XML- vagy JSON-ban megadva. Az egyes milyen egyes elemei a készletek azt jelenti, és az érvényes értékek az egyes elemekhez, tekintse meg a [Media Encoder Standard séma](media-services-mes-schema.md) témakör.  
-  
-> [!NOTE]
->  A prémium szintű fenntartott egységnek kapja meg a 4 KB-os típus kódolja. További információkért lásd: [hogyan méretezési kódolás](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+ Ez a előbeállítás 12 Képcsoporttal igazított MP4-fájlokat, és a 20000 KB/s 1000 KB/s és sztereó AAC hang hoz létre. Profillal kapcsolatos részletes információkért sávszélességű, mintavételi arány, stb. Ez a készletet, vizsgálja meg az XML- vagy JSON lényegét az alábbiakban. Az egyes milyen egyes elemei, és ezen készletek azt jelenti, hogy az érvényes értékek az egyes elemekhez, tekintse meg a [Media Encoder Standard-séma](media-services-mes-schema.md) témakör.  
   
 > [!NOTE]
->  Ha módosítja a `Width` és `Height` értékek különböző rétegek, győződjön meg arról, hogy az eredeti oldalarányok konzisztensek maradnak. Például: 1920 x 1080, 1280 x 720, 1080 x 576, 640 x 360. Például ne használjon méretarányoknak megfelelően keverékével: 1280 x 720, 720 x 480, 640 x 360.  
+>  Szerezheti be a prémium szintű szolgáltatás számára fenntartott egység típussal rendelkező 4K kódolja. További információkért lásd: [How to Scale kódolás](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+  
+> [!NOTE]
+>  Ha módosítja a `Width` és `Height` értékek különböző rétegek, győződjön meg arról, hogy az eredeti oldalarányok konzisztens marad. Például: 1920 × 1080 képpont, 1280 x 720 között, 1080 x 576, 640 x 360. Például ne használjon nézik, vegyesen: 1280 x 720, 720 x 480-as, 640 x 360.  
   
  XML  
   

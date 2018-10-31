@@ -11,22 +11,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 10/29/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: cb2b4bdee445587b32516c8db869170ab067b8d3
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c94ecc223c4e2c0533c23e58823bb203064ceef6
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406857"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250456"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Szinkronizálási hibák elhárítása
 Hibák fordulhatnak elő, amikor a azonosító adatok szinkronizálása a Windows Server Active Directory (AD DS) az Azure Active Directory (Azure AD). Ez a cikk szinkronizálási hibák, a lehetséges forgatókönyvek ezeket a hibákat és lehetséges módon javítsa a hibákat okozó némelyike különböző típusainak áttekintése. Ez a cikk a gyakori alkalmazáshiba-típusok tartalmazza, és a lehetséges hibák terjedhet ki.
 
  Ez a cikk feltételezi, hogy az olvasó ismerik a mögöttes [tervezési alapelvei, az Azure AD és az Azure AD Connect](plan-connect-design-concepts.md).
 
-Az Azure AD Connect legújabb verziójának \(augusztus 2016-os vagy magasabb\), a szinkronizálási hibák jelentés érhető el a [az Azure Portal](https://aka.ms/aadconnecthealth) az Azure AD Connect Health szinkronizálási szolgáltatás részeként.
+Az Azure AD Connect legújabb verziójának \(augusztus 2016-os vagy magasabb\), a szinkronizálási hibák jelentés érhető el a [az Azure portal](https://aka.ms/aadconnecthealth) az Azure AD Connect Health szinkronizálási szolgáltatás részeként.
 
 2016. szeptember 1-től [Azure Active Directory ismétlődő attribútumok rugalmassága](how-to-connect-syncservice-duplicate-attribute-resiliency.md) funkció alapértelmezés szerint az összes engedélyezzük a *új* Azure Active Directory-bérlők. Ez a funkció automatikusan engedélyezve lesz a meglévő bérlők számára a soron következő hónapban.
 
@@ -219,6 +219,29 @@ Amikor egy attribútum túllép az engedélyezett méretkorlátot, maximális ho
 
 ### <a name="how-to-fix"></a>Hogyan háríthatja el a
 1. Győződjön meg arról, hogy az attribútum okozza a hibát az engedélyezett korlát belül van-e.
+
+## <a name="existing-admin-role-conflict"></a>Meglévő rendszergazdai szerepkör-ütközés
+
+### <a name="description"></a>Leírás
+Egy **meglévő rendszergazdai szerepkör ütközés** történjen a user objektum a szinkronizálás során a felhasználói objektum rendelkezik:
+
+- rendszergazdai engedélyekkel, és
+- az azonos UserPrincipalName olyan meglévő Azure AD-objektum
+
+Az Azure AD Connect nem megengedett a helyreállítható találatra felhasználói objektum a helyszíni AD-felhasználói objektum, amely rendelkezik hozzárendelt felügyeleti szerepkörű Azure AD-ben.  További információ: [Azure AD UserPrincipalName feltöltése](plan-connect-userprincipalname.md)
+
+![Meglévő felügyeleti](media/tshoot-connect-sync-errors/existingadmin.png)
+
+
+### <a name="how-to-fix"></a>Hogyan háríthatja el a
+Ez a probléma tegye a következők egyikét megoldása:
+
+
+- Módosítsa a UserPrincipalName értéke nem egyezik meg egy rendszergazdai felhasználót az Azure AD - hoz létre egy új felhasználót a megfelelő UserPrincipalName az Azure AD-ben
+- az Azure ad-ben, amely lehetővé teszi a helyreállítható egyeznek a helyi felhasználói objektum és a meglévő Azure AD-felhasználói objektum távolítsa el a rendszergazdai felhasználót a rendszergazdai szerepkört.
+
+>[!NOTE]
+>Hozzárendelheti a rendszergazdai szerepkör a meglévő felhasználói objektum újra a helyreállítható egyeznek a helyi felhasználói objektum és az Azure AD-felhasználói objektum befejeződése után.
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
 * [Keresse meg az Active Directory-objektumok az Active Directory felügyeleti központ](https://technet.microsoft.com/library/dd560661.aspx)

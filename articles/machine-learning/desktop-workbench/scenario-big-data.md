@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0d3c6b78944d9365d1e7e88ed33aba852b71a9c1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 4a3329c7f08dfabdf1bb8a010ad5bc865fc509f4
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232018"
+ms.locfileid: "50241650"
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>A több terabájtnyi adatot feldolgozó kiszolgálói számítási feladatok előrejelzése
 
@@ -100,7 +100,7 @@ Futtatás `git status` a fájlok nyomon követése verzió állapotának vizsgá
 
 ## <a name="data-description"></a>Adatok leírása
 
-Ebben a példában használt adatok szintetizált kiszolgáló-munkaterhelési adatok el. Egy Azure Blob storage-fiókot, amely USA keleti régiójában elérhető publicaly vannak tárolva. Az adott tárolási fiók adatai megtalálhatók a `dataFile` mezőjében [ `Config/storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json) formátumban "wasb: / /<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>". Az adatok közvetlenül a Blob storage-ból is használhatja. Ha a storage egyszerre több felhasználó használ, akkor használhatja [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) saját színvonalú Kísérletezési a storage-bA az adatok letöltéséhez. 
+Ebben a példában használt adatok szintetizált kiszolgáló-munkaterhelési adatok el. Egy Azure Blob storage-fiókot, amely nyilvánosan elérhető az USA keleti régiójában vannak tárolva. Az adott tárolási fiók adatai megtalálhatók a `dataFile` mezőjében [ `Config/storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json) formátumban "wasb: / /<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>". Az adatok közvetlenül a Blob storage-ból is használhatja. Ha a storage egyszerre több felhasználó használ, akkor használhatja [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) saját színvonalú Kísérletezési a storage-bA az adatok letöltéséhez. 
 
 Az összes adat mérete körülbelül 1 TB. Minden fájl körülbelül 1 – 3 GB, és a CSV fájlformátum, fejléc nélküli. Minden egyes sorára adatokat jelöli a terhelés egy adott kiszolgálón futó tranzakció. A részletes információkat a sémát a következőképpen történik:
 

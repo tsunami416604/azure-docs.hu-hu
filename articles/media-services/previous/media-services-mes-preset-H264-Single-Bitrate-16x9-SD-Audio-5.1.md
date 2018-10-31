@@ -1,8 +1,8 @@
 ---
-title: H264 Egyszeres sávszélességű 16 x 9 SD hang 5.1 |} Microsoft Docs
-description: A témakör áttekintést a **H264 egyféle sávszélességű 16 x 9 SD hang 5.1** feladat az adott néven beállítás.
+title: H264 Egyszeres sávszélességű 16 x 9 SD hang 5.1 |} A Microsoft Docs
+description: A témakör áttekintést nyújt a **H264 egyféle sávszélességű 16 x 9 SD hang 5.1** feladat előbeállítást.
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,21 +12,21 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 6e8b7201d1c37deb02803f2e5160c68c8fdf1ed8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 15e45d959d8aa5c377db0615fdf3ad2e5f762f43
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788311"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50246262"
 ---
 # <a name="h264-single-bitrate-16x9-sd-audio-51"></a>H264 Egyféle sávszélességű 16 x 9 SD hang 5.1
-`Media Encoder Standard` Meghatározza a kódolási készletek kódolási feladatok létrehozásakor használható. Használhatja a `preset name` adhatja meg, melyik formátumba kódolja a médiafájl szeretné. Másik lehetőségként létrehozhat saját JSON- vagy XML-alapú készletek (UTF-8 vagy UTF-16 kódolás használatával. Az egyéni készletet a kódoló majd át lesz. Ez által támogatott összes előre definiált nevek listája `Media Encoder Standard` kódoló, lásd: [feladat készletek a Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard` határozza meg a kódolási készletek is használhatja a kódolási feladat létrehozásakor. Használhatja egy `preset name` mely formátumba, amelyet szeretne kódolása a media-fájl megadásához. Vagy létrehozhat saját JSON vagy XML-alapú készletek (UTF-8 és UTF-16 kódolást használatával. Az egyéni készletet a kódoló majd kellene átadnia. Ez által támogatott összes előre definiált nevek a lista `Media Encoder Standard` kódoló, lásd: [feladat készletek Media Encoder standard](media-services-mes-presets-overview.md).  
   
- Ez a témakör bemutatja a `H264 Single Bitrate 16x9 SD Audio 5.1` beállított XML és a JSON formátumban.  
+ Ez a témakör bemutatja a `H264 Single Bitrate 16x9 SD Audio 5.1` előre definiált XML és JSON formátumban.  
   
- Ezt a készletet hoz létre egyetlen MP4-fájl egy sávszélességű 2200 kbit/s és AAC 5.1 hang. Profillal kapcsolatos részletes információkért sávszélességű mintavételi arány stb. a készletet, vizsgálja meg az XML- vagy JSON-ban megadva. Az egyes azt jelenti, hogy milyen egyes elemei, és az érvényes értékek az egyes elemekhez, tekintse meg a [Media Encoder Standard séma](media-services-mes-schema.md).  
+ A készlet egyetlen MP4-fájl egy 2200 KB/s és AAC 5.1 hang sávszélességű eredményez. Profillal kapcsolatos részletes információkért sávszélességű, mintavételi arány, stb. Ez a készletet, vizsgálja meg az XML- vagy JSON lényegét az alábbiakban. Az egyes melyik minden elem azt jelenti, és az érvényes értékek az egyes elemekhez, tekintse meg a [Media Encoder Standard-séma](media-services-mes-schema.md).  
   
  XML  
   

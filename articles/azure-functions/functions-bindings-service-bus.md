@@ -3,7 +3,7 @@ title: Az Azure Szolgáltatásbusz-kötések az Azure Functions szolgáltatásho
 description: Megtudhatja, hogyan használhatja az Azure Service Bus-eseményindítók és kötések az Azure Functions szolgáltatásban.
 services: functions
 documentationcenter: na
-author: ggailey777
+author: craigshoemaker
 manager: jeconnoc
 keywords: az Azure functions, függvények, eseményfeldolgozás, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
@@ -11,13 +11,13 @@ ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
-ms.author: glenga
-ms.openlocfilehash: 38e3d7f7e05bb48ecc70ff5bbaec4a4e0725b949
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.author: cshoe
+ms.openlocfilehash: f440e92f62c7c61966145a1e74d3d3be9f6b7825
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087253"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250558"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Az Azure Szolgáltatásbusz-kötések az Azure Functions szolgáltatáshoz
 
@@ -597,6 +597,38 @@ A JavaScript, az üzenetsor vagy témakör segítségével hozzáférni `context
 |---|---|
 | Service Bus | [Service Bus-hibakódok](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-exceptions) |
 | Service Bus | [Service Bus-korlátok](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
+
+<a name="host-json"></a>  
+
+## <a name="hostjson-settings"></a>Host.JSON-beállítások
+
+Ez a szakasz ismerteti a globális konfigurációs beállításoknak a kötéshez verziójában elérhető 2.x. Az alábbi példa host.json-fájl csak a verzió 2.x beállításait tartalmazza ezt a kötést. További információ a globális konfigurációs beállításoknak verzióban 2.x verzióját, lásd: [verzióját az Azure Functions – host.json referencia 2.x](functions-host-json.md).
+
+> [!NOTE]
+> Az a funkciók host.json odkaz 1.x, lásd: [Azure Functions – host.json referencia 1.x](functions-host-json-v1.md).
+
+```json
+{
+    "version": "2.0",
+    "extensions": {
+        "serviceBus": {
+            "prefetchCount": 100,
+            "messageHandlerOptions": {
+                "autoComplete": false,
+                "maxConcurrentCalls": 32,
+                "maxAutoRenewDuration": "00:55:00"
+        }
+    }
+}
+```
+
+|Tulajdonság  |Alapértelmezett | Leírás |
+|---------|---------|---------| 
+|autoRenewTimeout|00:05:00|A maximális időtartamot, amelyen belül az üzenet zárolási újul meg automatikusan.| 
+|az automatikus kiegészítés|false|E az eseményindító kell azonnal minősítés befejezése (automatikus kiegészítés), vagy várjon, amíg meghívásához teljes feldolgozása.| 
+|maxConcurrentCalls|16|Egyidejű hívás, amely az üzenet szivattyú kell kezdeményezni a visszahívás maximális számát. Alapértelmezés szerint a Functions futtatókörnyezete dolgozza fel a több üzenetet egy időben. A közvetlen egyszerre csak egy üzenetsor vagy témakör üzenetet feldolgozni a futtatókörnyezetet, állítsa `maxConcurrentCalls` 1-re. | 
+|prefetchCount|n/a|Az alapértelmezett PrefetchCount, amely az alapul szolgáló MessageReceiver használni fog.| 
+
 
 ## <a name="next-steps"></a>További lépések
 

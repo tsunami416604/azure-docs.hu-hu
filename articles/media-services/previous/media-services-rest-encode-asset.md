@@ -1,10 +1,10 @@
 ---
-title: Egy Azure-objektum kódolása a Media Encoder Standard használatával hogyan |} Microsoft Docs
-description: 'Útmutató: Media Encoder Standard segítségével az Azure Media Services media tartalom kódolása. Kódminták REST API-t használja.'
+title: Egy Azure-objektum kódolása a Media Encoder Standard használatával |} A Microsoft Docs
+description: Ismerje meg az Azure Media Services médiatartalmak kódolása a Media Encoder Standard használatával. Kódminták REST API-val.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 2a7273c6-8a22-4f82-9bfe-4509ff32d4a4
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 78087bbb43d12af65bfbde93f54e2f29309ac093
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 34652400acaf2efca3648bb4c7cde795861c3101
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790418"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247929"
 ---
-# <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Egy eszköz kódolással Media Encoder Standard használatával
+# <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Adategység kódolása a Media Encoder Standard használatával hogyan
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encode-with-media-encoder-standard.md)
 > * [REST](media-services-rest-encode-asset.md)
@@ -30,42 +30,42 @@ ms.locfileid: "33790418"
 >
 
 ## <a name="overview"></a>Áttekintés
-Digitális videót továbbíthasson az interneten, meg kell végezni a tartalom tömörítését. Digitális videofájlok nagyok, és lehet, hogy az interneten keresztül, vagy a felhasználók eszközökhöz megfelelően megjeleníthető túl nagy. Kódolás tömörítés videó és hang, így az ügyfelek megtekintheti a media során a rendszer.
+A digitális videót továbbíthasson az interneten keresztül, akkor kell tömörítését. Digitális videofájlok nagy, és előfordulhat, hogy az interneten, vagy az ügyfelek eszközök jelennek meg megfelelően túl nagy. Kódolás az a folyamat tömöríti az audio- és videofájlokat, így az ügyfelek tekintheti meg az adathordozó.
 
-Kódolási feladatok olyan Azure Media Services a leggyakrabban használt feldolgozási műveletek. A kódolási feladat a médiafájlokat alakítja át egy meghatározott kódolásból egy másikra. Amikor kódolásához, a Media Services beépített kódoló (Media Encoder Standard) is használhatja. Egy Media Services partner által biztosított kódoló is használható. Külső kódolókkal az Azure piactéren keresztül érhetők el. Megadhatja a kódolási feladatokhoz a kódoló-készlet karakterláncokat használatával, vagy előre definiált konfigurációs fájlok részletes adatait. A készletek rendelkezésre álló típusú, olvassa el [feladat készletek a Media Encoder Standard](http://msdn.microsoft.com/library/mt269960).
+Kódolási feladatot hajt végre az Azure Media Services leggyakoribb feldolgozási műveletek tartoznak. A kódolási feladat a médiafájlokat alakítja át egy meghatározott kódolásból egy másikra. Kódolás, ha a Media Services beépített kódoló (Media Encoder Standard) is használhatja. Egy Media Services-partner által biztosított kódoló is használhatja. Külső kódolókkal az Azure Marketplace-en keresztül érhetők el. Megadhatja, hogy a részletek a kódolási feladatokat a kódolóra meghatározott előre beállított karakterláncok használatával, vagy előre beállított konfigurációs fájlok használatával. A rendelkezésre álló készletek típusú megtekintéséhez lásd: [feladat készletek Media Encoder standard](http://msdn.microsoft.com/library/mt269960).
 
-Minden feladat elvégzéséhez kívánt feldolgozási típusától függően egy vagy több feladat is rendelkezhetnek. A REST API használatával hozhat létre feladatokat és azok kapcsolódó feladatok az alábbi két módszer egyikével:
+Minden egyes feladat elvégezni kívánt feldolgozási típusától függően egy vagy több feladat is rendelkezhet. A REST API-n keresztül hozhat létre feladatokat és azok kapcsolódó tevékenységeket a két módszer egyikével:
 
-* Feladatok lehet meghatározott beágyazott a feladatok navigációs tulajdonság a feladat entitások keresztül.
-* OData kötegfeldolgozási használja.
+* Feladatok lehetnek a tevékenységek navigációs tulajdonság entitások feladat keresztül definiálva van soron belül.
+* OData kötegelt feldolgozás használja.
 
-Javasoljuk, hogy mindig kódolása egy adaptív sávszélességű MP4 állítsa be a forrásfájlokat, és majd a készlet át kell alakítania a kívánt formátum használatával [dinamikus becsomagolás](media-services-dynamic-packaging-overview.md).
+Javasoljuk, hogy a forrásfájlok mindig kódolandó egy adaptív sávszélességű MP4-készletet, és alakítsa át a készlet a kívánt formátumra használatával [dinamikus csomagolási](media-services-dynamic-packaging-overview.md).
 
-Ha az kimeneti adategységen tárolótitkosítást alkalmaz, konfigurálnia kell az adategység továbbítási házirendjét. További információkért lásd: [objektumtovábbítási szabályzat konfigurálása](media-services-rest-configure-asset-delivery-policy.md).
+Ha a kimeneti objektum tárolása titkosítva, konfigurálnia kell az adategység továbbítási házirendjét. További információkért lásd: [objektumtovábbítási szabályzat konfigurálása](media-services-rest-configure-asset-delivery-policy.md).
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-A Media Services entitások elérésekor be kell meghatározott fejlécmezők és értékek a HTTP-kérelmekre. További információkért lásd: [a Media Services REST API fejlesztési telepítő](media-services-rest-how-to-use.md).
+A Media Services entitások elérésekor a be kell állítani a HTTP-kérelmekre a meghatározott fejlécmezők és értékek. További információkért lásd: [beállítása a Media Services REST API-k fejlesztését](media-services-rest-how-to-use.md).
 
-Mielőtt media processzorok hivatkozik, győződjön meg arról, hogy rendelkezik-e a megfelelő adathordozót processzor azonosítóját. További információkért lásd: [media processzorok beolvasása](media-services-rest-get-media-processor.md).
+Mielőtt elkezdené a médiaelemzés médiafeldolgozói hivatkozik, ellenőrizze, hogy rendelkezik-e a megfelelő adathordozót megadva processzor azonosítóját. További információkért lásd: [médiafeldolgozók első](media-services-rest-get-media-processor.md).
 
 ## <a name="connect-to-media-services"></a>Kapcsolódás a Media Services szolgáltatáshoz
 
-Az AMS API-hoz kapcsolódáshoz információkért lásd: [elérni az Azure Media Services API-t az Azure AD-alapú hitelesítés](media-services-use-aad-auth-to-access-ams-api.md). 
+Az AMS API-t kapcsolódás információkért lásd: [eléréséhez az Azure Media Services API Azure AD-hitelesítés](media-services-use-aad-auth-to-access-ams-api.md). 
 
-## <a name="create-a-job-with-a-single-encoding-task"></a>Hozzon létre egy feladatot egyetlen kódolási feladat
+## <a name="create-a-job-with-a-single-encoding-task"></a>Hozzon létre egy feladatot az egy kódolási feladat
 > [!NOTE]
-> Dolgozunk a Media Services REST API-t, ha a következők érvényesek:
+> Dolgozik, a Media Services REST API-val, amikor a következő szempontokat kell figyelembe venni:
 >
-> A Media Services entitások elérésekor be kell meghatározott fejlécmezők és értékek a HTTP-kérelmekre. További információkért lásd: [Media Services REST API fejlesztési telepítő](media-services-rest-how-to-use.md).
+> A Media Services entitások elérésekor a be kell állítani a HTTP-kérelmekre a meghatározott fejlécmezők és értékek. További információkért lásd: [Media Services REST API fejlesztési telepítő](media-services-rest-how-to-use.md).
 >
-> Ha JSON használatával és használandó megadásával a **__metadata** kulcsszó a kérés (például, hogy a hivatkozás csatolt objektum), meg kell adni a **elfogadás** fejlécének [részletes JSON formátumban](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/): Fogadja el: az application/json; odata = részletes.
+> Ha JSON használatával, és adja meg a használandó a **__metadata** kulcsszó a kérelemben (például, hogy hivatkozási csatolt objektum), be kell a **elfogadás** fejlécet [arészletesJSONformátumban](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/): Fogadja el: application/json; odata = részletes.
 >
 >
 
-A következő példa bemutatja, hogyan hozhat létre, és indítsa el egy feladat az adott feloldási és minőségi videó kódolására beállítani egy feladat. A Media Encoder Standard kódol, használhatja a megadott feladat konfigurációs készletek [Itt](http://msdn.microsoft.com/library/mt269960).
+Az alábbi példa bemutatja, hogyan hozhat létre, és a egy feladatot tartalmazó adott feloldási és minőségi videó kódolásához beállítása egy feladat küldése. A Media Encoder standarddal kódol, használhatja a megadott feladat konfigurációs készletek [Itt](http://msdn.microsoft.com/library/mt269960).
 
-A kérelem:
+Kérés:
 
     POST https://media.windows.net/API/Jobs HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -85,27 +85,27 @@ Válasz:
 
     . . .
 
-### <a name="set-the-output-assets-name"></a>A kimeneti adategységen nevének megadása
-A következő példa bemutatja, hogyan assetName attribútum:
+### <a name="set-the-output-assets-name"></a>Állítsa be a kimeneti objektum nevét
+Az alábbi példa bemutatja, hogyan assetName attribútum:
 
     { "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"}
 
 ## <a name="considerations"></a>Megfontolandó szempontok
-* TaskBody tulajdonságok literális XML segítségével határozza meg a bemeneti számát, vagy a tevékenység által használt eszközök kimeneti. A feladat a cikk az XML-Schema definíció az XML-fájl tartalmazza.
-* A TaskBody definícióban minden belső értékének <inputAsset> és <outputAsset> JobInputAsset(value) vagy JobOutputAsset(value) be kell állítani.
-* Kimeneti adategységek feladatonként. Egy JobOutputAsset(x) csak egyszer használható egy feladatot a feladatok kimeneteként.
-* A tevékenység bemeneti eszközként JobInputAsset vagy JobOutputAsset adhat meg.
-* Feladatok kell nem alkotnak hurkot.
-* Az érték paraméter jelzi, hogy átadta JobInputAsset vagy JobOutputAsset az eszközhöz tartozó index értékét jelöli. A tényleges eszközök entitás feladatdefinícióban InputMediaAssets és OutputMediaAssets navigációs tulajdonságok vannak definiálva.
-* A Media Services OData v3 épül, mert az egyes eszközök a InputMediaAssets és OutputMediaAssets navigációs tulajdonság gyűjteményeket hivatkozott keresztül a "__metadata: uri" név-érték pár.
-* Egy vagy több olyan eszközt, a Media Services InputMediaAssets rendeli hozzá. A rendszer OutputMediaAssets hozza létre. Egy meglévő eszköz nem hivatkozó.
-* OutputMediaAssets elnevezheti a assetName attribútum használatával. Ha ez az attribútum nincs jelen, akkor a OutputMediaAsset nevét bármilyen belső szöveges értékét a <outputAsset> eleme az előtagja pedig a feladat nevének értékét, vagy a feladat-azonosító értéke (abban az esetben, ha a Name tulajdonság nincs megadva). Például ha assetName "Mintájának" értéket állítsa be, majd a OutputMediaAsset neve tulajdonság értéke "Minta." Azonban ha assetName értékének beállítása nem, de adta meg az "NewJob" a feladat nevét, majd a OutputMediaAsset név lesz "_NewJob JobOutputAsset (érték)."
+* TaskBody tulajdonságai szövegkonstans XML segítségével meghatározhatja a beviteli számát, vagy a tevékenység által használt eszközök kimeneti. A feladat a cikk az XML-séma definíció az XML-fájl tartalmazza.
+* A TaskBody definíciójában minden egyes belső értékét <inputAsset> és <outputAsset> JobInputAsset(value) vagy JobOutputAsset(value) kell beállítani.
+* Több kimeneti objektumok feladatonként. Egy JobOutputAsset(x) csak egyszer használhatók fel a feladat a feladat kimeneteként.
+* Megadhatja a feladat bemeneti adategység JobInputAsset vagy JobOutputAsset.
+* Feladatok kell nem alkotnak kört.
+* A paraméter, amely JobInputAsset vagy JobOutputAsset adja át az adott eszköz számára index értékét jelöli. A tényleges eszközöket a feladat definícióját a InputMediaAssets és OutputMediaAssets navigációs tulajdonságok vannak meghatározva.
+* A Media Services OData v3 épül, mert az egyes eszközöket a InputMediaAssets és OutputMediaAssets navigációs tulajdonság gyűjteményeket a hivatkozott keresztül egy "__metadata: uri" név-érték pár.
+* Egy vagy több eszközt, amely a Media Services szolgáltatásban létrehozott InputMediaAssets rendeli hozzá. A rendszer OutputMediaAssets hoznak létre. Ezek nem hivatkozhat egy meglévő eszköz.
+* OutputMediaAssets elnevezheti az assetName attribútum használatával. Ha ez az attribútum nem szerepel, akkor a OutputMediaAsset neve, függetlenül a belső szöveges értéket a <outputAsset> elem van, a feladat név-érték, vagy a feladat azonosítóérték (abban az esetben, ha a Name tulajdonság nincs definiálva) utótaggal. Például, ha a "Mintaként" assetName értékét, majd a OutputMediaAsset neve tulajdonság értéke "Sample." Azonban ha assetName értékét nem állította be, de adta meg az "NewJob" a feladat nevét, majd a OutputMediaAsset neve lenne "_NewJob JobOutputAsset (érték)."
 
-## <a name="create-a-job-with-chained-tasks"></a>Hozzon létre egy feladatot láncolt feladatok
-Számos alkalmazás forgatókönyvben az fejlesztők kíván létrehozni a feldolgozási feladatok sorozata. A Media Services szolgáltatásban láncolt feladatok sorozatát hozhat létre. Minden tevékenység különböző feldolgozó lépéseket hajtja végre, és különböző media processzorok használhatja. A láncolt feladatokat is kiosztják egy eszköz egy feladat a másikra, az eszköz lineáris sorozatát feladatok végrehajtására. A feladatok a feladatokat azonban nem szükségesek sorrendben kell. Amikor a láncolt láncolt feladat létrehozásához **ITask** objektumok létrehozásakor egyetlen **IJob** objektum.
+## <a name="create-a-job-with-chained-tasks"></a>Hozzon létre egy feladatot a kapcsolt műveletek
+A sok alkalmazás-forgatókönyvek fejlesztőknek létrehozni kívánt feldolgozási feladatok sorozatát. A Media Services szolgáltatásban hozzon létre egy kapcsolt műveletek sorát. Minden tevékenység eltérő feldolgozási lépést hajt végre, és különböző médiafeldolgozók szolgál. A kapcsolt műveletek is kiosztják az eszköz egy feladatot a másikra, lineáris sorozatát feladatokat végez az eszköz. Egy feladat végrehajtott feladatok azonban nem szükségesek sorrendben kell. Amikor hoz létre egy kapcsolt feladat, a kapcsolt **ITask** objektumok jönnek létre egyetlen **IJob** objektum.
 
 > [!NOTE]
-> Jelenleg legfeljebb 30 tevékenységek maximális száma feladat. Ha több mint 30 feladatok láncolt van szüksége, hozzon létre több feladatot a feladatok tárolására.
+> Jelenleg legfeljebb 30 feladatok száma alapján történik. Ha összekapcsolja a több mint 30 feladatok van szüksége, hozzon létre a feladatok tárolására egynél több feladatot.
 >
 >
 
@@ -145,11 +145,11 @@ Számos alkalmazás forgatókönyvben az fejlesztők kíván létrehozni a feldo
 ### <a name="considerations"></a>Megfontolandó szempontok
 Ahhoz, hogy a feladat-láncolás:
 
-* Egy feladat legalább két tevékenységet kell rendelkeznie.
-* Legalább egy tevékenységet, amelynek a bemeneti érték a feladat egy másik feladat kimenetének kell lennie.
+* Egy feladat legalább két feladatot kell rendelkeznie.
+* Legalább egy tevékenységet, amelynek nincs egy másik feladat a feladat kimenetének kell lennie.
 
-## <a name="use-odata-batch-processing"></a>Használhatja a kötegelt feldolgozást OData
-A következő példa bemutatja, hogyan OData kötegfeldolgozási használata a feladatok és a feladatok létrehozásához. Kötegfeldolgozási információkért lásd: [nyitott Data (OData) protokollnak kötegelt feldolgozása](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
+## <a name="use-odata-batch-processing"></a>Használja az OData kötegelt feldolgozás
+Az alábbi példa bemutatja, hogyan OData kötegelt feldolgozási feladatok és tevékenységek létrehozásához használandó. Kötegelt feldolgozás kapcsolatos tudnivalókat lásd: [Open Data (OData) protokollnak kötegelt feldolgozási](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
     POST https://media.windows.net/api/$batch HTTP/1.1
     DataServiceVersion: 1.0;NetFx
@@ -209,10 +209,10 @@ A következő példa bemutatja, hogyan OData kötegfeldolgozási használata a f
 
 
 
-## <a name="create-a-job-by-using-a-jobtemplate"></a>Hozzon létre egy feladatot a JobTemplate használatával
-Több eszköz feladatok közös beállításkészletre segítségével dolgozza fel, ha a egy JobTemplate adhatja meg az alapértelmezett feladat készletek vagy feladatok sorrendjének beállításához.
+## <a name="create-a-job-by-using-a-jobtemplate"></a>Hozzon létre egy feladatot egy JobTemplate használatával
+Adategységek feladatok készletének használatával dolgozza fel, amikor egy JobTemplate használja, és adja meg az alapértelmezett feladat készletek, vagy a sorrendet, feladatok.
 
-A következő példa bemutatja, hogyan hozzon létre egy JobTemplate egy TaskTemplate, amely meghatározott beágyazott. A TaskTemplate használja a Media Encoder Standard a MediaProcessor kódolására az adategységfájlon. Azonban más MediaProcessors használható is.
+Az alábbi példa bemutatja, hogyan hozzon létre egy JobTemplate egy TaskTemplate, amelyek definiálva van soron belül van. A TaskTemplate használja a Media Encoder Standard a MediaProcessor adategységfájlon kódolása. Azonban más MediaProcessors használható is.
 
     POST https://media.windows.net/API/JobTemplates HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -228,18 +228,18 @@ A következő példa bemutatja, hogyan hozzon létre egy JobTemplate egy TaskTem
 
 
 > [!NOTE]
-> Eltérően egyéb Media Services entitások egy új GUID azonosító megadása minden TaskTemplate és naplózza azt a taskTemplateId és az Id tulajdonság a kérés törzsében. A tartalom azonosítási séma hajtsa végre a rendszer az Azure Media Services entitások azonosítása leírt. JobTemplates is, nem lehet frissíteni. Ehelyett hozzon létre egy újat a frissített módosításokat.
+> Ellentétben más Media Services-entitásokkal egy új GUID azonosító minden TaskTemplate definiálása és tegyük a taskTemplateId és azonosító tulajdonságot a kérelem törzsében. A tartalom azonosítási séma a rendszer az Azure Media Services entitások azonosítása leírt kell követnie. Ezenkívül JobTemplates nem lehet frissíteni. Ehelyett hozzon létre egy újat a frissített módosításokat.
 >
 >
 
-Ha sikeres, a következő választ ad vissza:
+Ha ez sikeres, a következő választ adja vissza:
 
     HTTP/1.1 201 Created
 
     . . .
 
 
-A következő példa bemutatja, hogyan hozzon létre egy feladatot, amely JobTemplate azonosítóra hivatkozik:
+Az alábbi példa bemutatja, hogyan hozhat létre egy feladatot, amely JobTemplate azonosítóra hivatkozik:
 
     POST https://media.windows.net/API/Jobs HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -254,19 +254,19 @@ A következő példa bemutatja, hogyan hozzon létre egy feladatot, amely JobTem
     {"Name" : "NewTestJob", "InputMediaAssets" : [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3A3f1fe4a2-68f5-4190-9557-cd45beccef92')"}}], "TemplateId" : "nb:jtid:UUID:15e6e5e6-ac85-084e-9dc2-db3645fbf0aa"}
 
 
-Ha sikeres, a következő választ ad vissza:
+Ha ez sikeres, a következő választ adja vissza:
 
     HTTP/1.1 201 Created
 
     . . .
 
 
-## <a name="advanced-encoding-features-to-explore"></a>Speciális kódolás szolgáltatások felfedezése
-* [A miniatűrök létrehozásának módját](media-services-dotnet-generate-thumbnail-with-mes.md)
-* [Miniatűrök létrehozása során kódolás](media-services-dotnet-generate-thumbnail-with-mes.md#example-of-generating-a-thumbnail-while-encoding)
-* [Kódolás során körülvágása videók](media-services-crop-video.md)
-* [Kódolási készletek testreszabása](media-services-custom-mes-presets-with-dotnet.md)
-* [Átfedő, vagy olyan képpel videó vízjel](media-services-advanced-encoding-with-mes.md#overlay)
+## <a name="advanced-encoding-features-to-explore"></a>Speciális kódolási funkciókat megismerése
+* [Miniatűrök létrehozása](media-services-dotnet-generate-thumbnail-with-mes.md)
+* [Miniatűrök létrehozása a kódolás során](media-services-dotnet-generate-thumbnail-with-mes.md#example-of-generating-a-thumbnail-while-encoding)
+* [Videók körülvágása a kódolás során](media-services-crop-video.md)
+* [Kódolási beállításkészletek testreszabása](media-services-custom-mes-presets-with-dotnet.md)
+* [Átfedő vagy a kép a videó küszöbérték](media-services-advanced-encoding-with-mes.md#overlay)
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -275,7 +275,7 @@ Ha sikeres, a következő választ ad vissza:
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy tudja, hogyan hozzon létre egy feladatot, amely egy eszköz kódolására, lásd: [ellenőrzése a feladat előrehaladását a Media Services](media-services-rest-check-job-progress.md).
+Most, hogy már tudja, hogyan hozzon létre egy feladatot az adategység kódolása, lásd: [a Media Services a feladat előrehaladásának ellenőrzése annak](media-services-rest-check-job-progress.md).
 
 ## <a name="see-also"></a>Lásd még
-[Media processzorok beolvasása](media-services-rest-get-media-processor.md)
+[A Médiaelemzés Médiafeldolgozói beolvasása](media-services-rest-get-media-processor.md)

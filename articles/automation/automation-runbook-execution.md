@@ -6,19 +6,19 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/17/2018
+ms.date: 10/30/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 85ff0013b469c006d1922c3994ec58a0595d1dd2
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: bb6236203a1165361505c8699ba94bff54e41c2a
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091985"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247350"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
 
-Ha az Azure Automationben elindít egy runbookot, létrejön egy feladat. Egy feladat a runbook egyszeri futtatási példánya. Egy Azure Automation-feldolgozó rendelt minden egyes feladat futtatása. Feldolgozók számos Azure-fiókok által megosztott, miközben másik Automation-fiókok feladatok különítve egymástól. Melyik worker keresztül services, a kérés a feladat nem irányítás. Egyetlen runbook fut egyszerre sok feladat lehet. A feladatok ugyanazt az Automation-fiók végrehajtási környezetének felhasználhatók. A runbookok listája az Azure Portalon történő megtekintésekor az összes minden runbook elindított feladatok állapotának sorolja fel. Megtekintheti a feladatok minden runbook minden egyes állapotának nyomon követését. Legfeljebb 30 napig feladatnaplóit tárolódnak. A különböző feladatok állapotai leírását [feladatállapotok](#job-statuses).
+Ha az Azure Automationben elindít egy runbookot, létrejön egy feladat. Egy feladat a runbook egyszeri futtatási példánya. Egy Azure Automation-feldolgozó rendelt minden egyes feladat futtatása. Feldolgozók számos Azure-fiókok által megosztott, miközben másik Automation-fiókok feladatok különítve egymástól. Melyik worker keresztül services, a kérés a feladat nem irányítás. Egyetlen runbook fut egyszerre sok feladat lehet. A feladatok ugyanazt az Automation-fiók végrehajtási környezetének felhasználhatók. Egyidejűleg futtatja a feladatot, a gyakrabban azok elirányíthatók az azonos tesztkörnyezetben. A védőfal ugyanabban a folyamatban futó feladatok hatással lehetnek egymással, például fut-e a `Disconnect-AzureRMAccount` parancsmagot. Futtatja ezt a parancsmagot lenne válassza le a megosztott védőfalfolyamat minden egyes forgatókönyv-feladatot. A runbookok listája az Azure Portalon történő megtekintésekor az összes minden runbook elindított feladatok állapotának sorolja fel. Megtekintheti a feladatok minden runbook minden egyes állapotának nyomon követését. Legfeljebb 30 napig feladatnaplóit tárolódnak. A különböző feladatok állapotai leírását [feladatállapotok](#job-statuses).
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 

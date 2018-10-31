@@ -3,20 +3,20 @@ title: Notification Hubs kötéseit az Azure Functions szolgáltatáshoz
 description: Megismerheti az Azure Notification Hub-kötés az Azure Functions használatával.
 services: functions
 documentationcenter: na
-author: ggailey777
+author: craigshoemaker
 manager: jeconnoc
 keywords: az Azure functions, függvények, eseményfeldolgozás, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
-ms.author: glenga
-ms.openlocfilehash: d85c281f198e928be48af950c67c9f53a9d6e547
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.author: cshoe
+ms.openlocfilehash: e51a74783f7d7f080d1caa237bb7aabab0100e72
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086107"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248586"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>A Notification Hubs kimeneti kötése az Azure Functions szolgáltatáshoz
 

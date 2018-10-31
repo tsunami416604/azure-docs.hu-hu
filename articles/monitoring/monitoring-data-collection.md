@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: 8d3e0874637bc3f13905c6038349b34c18b5fe56
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: a810de5c3c70322560bb45bcc2aee5cf0798cea9
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637797"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248710"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Az Azure Monitor által gyűjtött adatok figyelése
 [Az Azure Monitor](../azure-monitor/overview.md) egy szolgáltatás, amellyel figyelheti az alkalmazások és az erőforrások támaszkodnak. Figyelt erőforrások központi az alábbi függvényre van telemetriai és egyéb adatok tárolására. A cikk ismerteti, hogyan az adatok tárolásának és az Azure Monitor által használt teljes leírását.
 
 Az Azure Monitor által gyűjtött összes adat illeszkedik a két alapvető típusok, [metrikák](#metrics) és [naplók](#logs). Metrikák numerikus értékek időben bizonyos elemeit a rendszer egy adott időpontban ismertetik. Azok a könnyen használható, és képes a közel valós idejű feldolgozásához. Naplók tartalmaznak különböző típusú adatokkal rendelkező különböző tulajdonságokat az egyes rekordok vannak rendezve. Telemetriai adatokat – például az események és nyomok formájában tárolja naplók emellett teljesítményadatokká úgy, hogy azt az összes kombinálható is elemzés céljából.
 
-![Az Azure Monitor áttekintése](../azure-monitor/media/overview/overview.png)
+![Az Azure Monitor áttekintése](media/monitoring-data-collection/overview.png)
 
 ## <a name="metrics"></a>Mérőszámok
 Metrikák numerikus értékek írja le a rendszer bizonyos elemeit egy adott időpontban. Azok a könnyen használható, és képes a közel valós idejű feldolgozásához. Rendszeres időközönként metrikákat gyűjt az érték-e. Hasznos, mert azok gyakran kell mintát, és riasztást gyorsan is fired viszonylag egyszerű logikával riasztási zajlik. 

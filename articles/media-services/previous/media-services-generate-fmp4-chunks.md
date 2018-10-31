@@ -1,30 +1,30 @@
 ---
-title: Hozzon létre egy Azure Media Services kódolási feladat fMP4 adattömbök generáló |} Microsoft Docs
-description: Ez a témakör bemutatja, hogyan hoz létre fMP4 adattömbök kódolási feladat létrehozása. A Media Encoder Standard vagy a Media Encoder prémium munkafolyamat kódoló használja ezt a feladatot, ha a kimeneti adategységen fMP4 adattömbök ISO MP4-fájlok helyett fogja tartalmazni.
+title: Hozzon létre egy Azure Media Services kódolási feladat által létrehozott fMP4 adattömbök |} A Microsoft Docs
+description: Ez a témakör bemutatja, hogyan hozhat létre a kódolási tevékenység által létrehozott fMP4 adattömböket. Ha ez a feladat a Media Encoder Standard vagy a Media Encoder Premium munkafolyamat kódoló együtt használják, a kimeneti adategység fMP4 adattömbök ISO MP4-fájlok helyett fog tartalmazni.
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 09dd5ea447449bc23f49699dc69647550f62738a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f2f3784ea2cb4a7864faef6a4e49edd7a289afc2
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788206"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250554"
 ---
-#  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>Állít elő, fMP4 adattömbök kódolási feladat létrehozása
+#  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>Állít elő, fMP4 adattömbök kódolási tevékenység létrehozása
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a cikk bemutatja, hogyan hoz létre töredezett MP4-kódolási feladat létrehozása (fMP4) adattömbök ISO MP4-fájlok helyett. FMP4 adattömbök létrehozásához használja a **Media Encoder Standard** vagy **Media Encoder prémium munkafolyamat** kódolási feladat létrehozása, és adja meg a kódoló **AssetFormatOption.AdaptiveStreaming** beállítás, ahogy az következő kódrészletet:  
+Ez a cikk bemutatja, hogyan hozhat létre a kódolási tevékenység által létrehozott darabolt MP4 (fMP4) adattömbök ISO MP4-fájlok helyett. Létrehozás fMP4 adattömböket, használja a **Media Encoder Standard** vagy **Media Encoder Premium munkafolyamat** kódolót hozzon létre egy kódolási feladatot, és megadhat **AssetFormatOption.AdaptiveStreaming**  beállítás, ez a kódrészlet látható módon:  
     
 ```csharp
     task.OutputAssets.AddNew(@"Output Asset containing fMP4 chunks", 
@@ -32,15 +32,15 @@ Ez a cikk bemutatja, hogyan hoz létre töredezett MP4-kódolási feladat létre
             formatOption: AssetFormatOption.AdaptiveStreaming);
 ```
 
-## <a id="encoding_with_dotnet"></a>A Media Services .NET SDK kódolás
+## <a id="encoding_with_dotnet"></a>Kódolás a Media Services .NET SDK használatával
 
-Az alábbi példakód Media Services .NET SDK-t használja a következő feladatok végezhetők el:
+Az alábbi példakód a Media Services .NET SDK-t használja a következő feladatokat:
 
-- Hozzon létre egy kódolási feladat.
-- Hivatkozás a **Media Encoder Standard** kódoló.
-- Adja hozzá a feladatot egy kódolási feladatot, és adja meg, hogy használja a **adaptív Streameléshez** előre. 
-- Hozzon létre egy kimeneti eszközt, amely fMP4 adattömbök és .ism-fájlt fogja tartalmazni.
-- Adjon hozzá egy eseménykezelő, ellenőrizze a feladat előrehaladását.
+- Hozzon létre egy kódolási feladatot.
+- Hivatkozás beszerzése a **Media Encoder Standard** kódoló.
+- Adja hozzá a kódolási tevékenység a feladathoz, és adja meg, hogy használja a **adaptív Streamelés** beállításkészletet. 
+- FMP4 adattömbök és a egy .ism-fájlt tartalmazó kimeneti adategység létrehozása.
+- Adjon hozzá egy eseménykezelőt a feladat állapotának ellenőrzése.
 - A feladat elküldéséhez.
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
@@ -177,5 +177,5 @@ namespace AdaptiveStreaming
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Lásd még:
-[Media Services kódolási áttekintése](media-services-encode-asset.md)
+[A Media Services kódolási áttekintése](media-services-encode-asset.md)
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/22/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 95f2ffb1a51184f1194f87a4a5e9a54e682edf80
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cbafe7fcdf2ccd515dfec5554c93bec9c7f3537a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312003"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50243163"
 ---
 # <a name="connector-version-release-history"></a>Összekötő verziókiadásai
 Az összekötők a Forefront Identity Manager (FIM) és a Microsoft Identity Manager (MIM) rendszeresen frissülnek.
@@ -98,7 +98,7 @@ Kapcsolódó hivatkozások:
 * Általános webes szolgáltatások:
   * A Wsconfig eszköz nem megfelelő átalakítani a Json-tömb, a REST szolgáltatás esetén "mintakérelemből" való. Ez problémákat okozott a szerializálása a Json-tömb, a többi kéréshez.
   * Webes szolgáltatás-összekötő konfigurálása eszközben nem támogatja a hely szimbólumok használatának JSON attribútumnevek 
-    * Helyettesítés mintát is hozzáadhatók manuálisan a WSConfigTool.exe.config fájlt, például: ```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```
+    * Helyettesítés mintát is hozzáadhatók manuálisan a WSConfigTool.exe.config fájlt, például: ```<appSettings> <add key="JSONSpaceNamePattern" value="__" /> </appSettings>```
 > [!NOTE]
 > JSONSpaceNamePattern kulcsot kötelező megadni, ahogy exportálása a következő hibaüzenetet kap: üzenet: üres a név nem lehet. 
 
@@ -143,7 +143,7 @@ Kiadás dátuma: 2017. március
 ### <a name="enhancements"></a>Fejlesztések
 
 * Általános SQL:</br>
-  **A forgatókönyv tünetek:** egy jól ismert korlátozás nevezhetjük csak egy hivatkozást egy objektumtípus engedélyezése és kereszthivatkozás tagjaival szükséges az SQL-összekötővel. </br>
+  **A forgatókönyv tünetek:**   egy jól ismert korlátozás nevezhetjük csak egy hivatkozást egy objektumtípus engedélyezése és kereszthivatkozás tagjaival szükséges az SQL-összekötővel. </br>
   **Megoldás leírása:** hivatkozásokat a feldolgozási lépést a voltak "*" lehetőséget választja, minden kombinációja objektumtípusok ad vissza vissza a szinkronizálási motor.
 
 >[!Important]

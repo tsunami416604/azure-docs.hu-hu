@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: e2dc9b7e7cf5964c36b21418a0162c1c2ef92dc8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b5f240091cf5ce9331ada818c218db04f508dbc8
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430181"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241803"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Oktatóanyag: Azure Active Directory-integráció az Sprinklr
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Sprinklr az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy Sprinklr egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az Azure AD integrálása a Sprinklr konfigurálásához hozzá kell Sprinklr a 
 
 **Sprinklr hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -161,7 +161,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     h. Illessze be a **kijelentkezéses URL-cím** érték, amely az Azure Portalról másolta a **Identity Provider kijelentkezési URL-címe** szövegmezőbe.
      
-    i. Mint **SAML felhasználói azonosító típusa**válassza **helyességi feltétel tartalmaz felhasználói "s sprinklr.com felhasználónév**.
+    i. Mint **SAML felhasználói azonosító típusa**válassza **helyességi feltétel tartalmaz sprinklr.com felhasználónév**.
 
     j. Mint **SAML felhasználói azonosító hely**, jelölje be **felhasználói Azonosítóját a tulajdonos utasítás Névazonosító elemében van**.
 

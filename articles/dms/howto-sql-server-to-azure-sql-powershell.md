@@ -1,6 +1,6 @@
 ---
-title: Az SQL-kiszolgáló áttelepítése a Microsoft Azure PowerShell használata az Azure Database Migration Service modul a helyszíni Azure SQL DB-hez |} A Microsoft Docs
-description: Megismerheti, hogyan kell áttelepíteni a helyszíni SQL Serverről az Azure SQL Azure PowerShell használatával.
+title: SQL Server migrálása az Azure SQL Database a Database Migration Service és a PowerShell segítségével |} A Microsoft Docs
+description: Megismerheti, hogyan kell áttelepíteni a helyszíni SQL Serverről az Azure SQL Database Azure PowerShell használatával.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: ffa4d5f87a722ed3cb95d873d02707ed1c797dc6
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 0a4e88ed52e2da814d1b10dbc695c9c61b899ef1
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886666"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248196"
 ---
-# <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>A helyszíni SQL Server migrálása az Azure SQL DB, Azure PowerShell-lel
+# <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>A helyszíni SQL Server migrálása az Azure SQL Database, Azure PowerShell-lel
 Ebben a cikkben telepít át a **Adventureworks2012** adatbázis egy helyi példányára, az SQL Server 2016 vagy újabb visszaállítása egy Azure SQL Database a Microsoft Azure PowerShell használatával. Telepíthet át adatbázisokat egy helyszíni SQL Server-példány az Azure SQL Database használatával a `AzureRM.DataMigration` a Microsoft Azure PowerShell-modulja.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e78e7b5b4dba0bfea4f3398ca20b381a291fe44f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 410559ab03f0e0be71f2eba27ed71c9f7cf05862
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313305"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238539"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Az Azure AD Connect: Hogyan helyreállítás 10-GB ra korlátozott localdb adatbázisból
 Az identitásadatok tárolásához az Azure AD Connectnek szüksége van egy SQL Server-adatbázisra. Használhatja az Azure AD Connecttel együtt telepített alapértelmezett SQL Server 2012 Express LocalDB-t, vagy használhatja saját teljes SQL-kiszolgálóját. Az SQL Server Express 10 GB-os méretkorláttal rendelkezik. Ha a LocalDB-t használja és eléri a korlátot, az Azure AD Connect szinkronizálási szolgáltatása többé nem indul majd el, vagy nem végzi el megfelelően a szinkronizálást. Ez a cikk ismerteti a helyreállítási lépéseket.
@@ -71,7 +71,7 @@ Az Azure AD Connect létrehozott adatbázis neve nem **ADSync**. Zsugorítási m
 
 3. Lépjen a mappába `%ProgramFiles%\Microsoft SQL Server\110\Tools\Binn`.
 
-4. Indítsa el **sqlcmd** segédprogram a parancs futtatásával `./SQLCMD.EXE -S “(localdb)\.\ADSync” -U <Username> -P <Password>`, a sysadmin (rendszergazda) vagy az adatbázis DBO a hitelesítő adatok használatával.
+4. Indítsa el **sqlcmd** segédprogram a parancs futtatásával `./SQLCMD.EXE -S "(localdb)\.\ADSync" -U <Username> -P <Password>`, a sysadmin (rendszergazda) vagy az adatbázis DBO a hitelesítő adatok használatával.
 
 5. Az adatbázis az Sqlcmd parancsot a parancssorba zsugorítása (1 >), adja meg `DBCC Shrinkdatabase(ADSync,1);`, utána pedig `GO` a következő sorban.
 

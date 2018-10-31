@@ -18,12 +18,12 @@ ms.date: 10/25/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: ef10f45cbe02bd364563be4b0d62f9c491848452
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 3825d527e520fae87d0dd2712df767090adad4e5
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50097944"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248421"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Az Azure Active Directoryban hibaelhárítási Enterprise State Roaming beállítások
 
@@ -74,7 +74,7 @@ Az eszköz regisztrálása az Azure ad-vel Enterprise State Roaming igényel. B�
 **Lehetséges probléma**: **WamDefaultSet** és **AzureAdJoined** egyaránt mező értéke "Nem" rendelkeznek, az eszköz volt a tartományhoz csatlakoztatott és az Azure AD-ben regisztrált és nem szinkronizálja az eszköz. Ez látható, ha az eszköz is kell várnia a alkalmazni lehessen a házirend vagy az eszköz a hitelesítés sikertelen, amikor csatlakozik az Azure ad-ben. A felhasználó jogosult az a alkalmazni lehessen a szabályzat néhány óráig várnia. További hibaelhárítási lépéseket tartalmazhatnak automatikus regisztráció újrapróbálkozás kijelentkezés és a biztonsági, illetve a feladat a Feladatütemező indítása. Bizonyos esetekben futtatása "*dsregcmd.exe /leave*" egy rendszergazda jogú parancssori ablakban, a rendszer újraindítása, és próbálkozzon újra a regisztrációs segíthet a probléma megoldásához.
 
 
-**Lehetséges probléma**: mezőjére **SettingsUrl** üres és nem szinkronizálja az eszközt. A felhasználó előfordulhat, hogy utoljára bejelentkezett az eszközt ahhoz Enterprise State Roaming engedélyezve lett az Azure Active Directory portálon. Indítsa újra az eszközt, és a felhasználói bejelentkezési rendelkezik. Szükség esetén a portálon, próbálja letiltását és újraengedélyezését, felhasználók, előfordulhat, hogy szinkronizálási beállítások és a vállalati alkalmazások adatainak rendszergazdának kellene. Ha újra engedélyezi, indítsa újra az eszközt, és a felhasználói bejelentkezési rendelkezik. Ha ez nem oldja meg a problémát, **SettingsUrl** hibás eszköz tanúsítvány esetén üres is lehet. Ebben az esetben fut "*dsregcmd.exe /leave*" egy rendszergazda jogú parancssori ablakban, a rendszer újraindítása, és próbálkozzon újra a regisztrációs segíthet a probléma megoldásához.
+**Lehetséges probléma**: mezőjére **SettingsUrl** üres és nem szinkronizálja az eszközt. A felhasználó előfordulhat, hogy utoljára bejelentkezett az eszközt ahhoz Enterprise State Roaming engedélyezve lett az Azure Active Directory portálon. Indítsa újra az eszközt, és a felhasználói bejelentkezési rendelkezik. Szükség esetén a portálon lépjen a rendszergazdának kellene próbálja **Azure Active Directory** > **eszközök** > **Enterprise State Roaming** letiltását és újraengedélyezését **felhasználók szinkronizálhatják a beállításokat és alkalmazásadatokat különböző eszközökön**. Ha újra engedélyezi, indítsa újra az eszközt, és a felhasználói bejelentkezési rendelkezik. Ha ez nem oldja meg a problémát, **SettingsUrl** hibás eszköz tanúsítvány esetén üres is lehet. Ebben az esetben fut "*dsregcmd.exe /leave*" egy rendszergazda jogú parancssori ablakban, a rendszer újraindítása, és próbálkozzon újra a regisztrációs segíthet a probléma megoldásához.
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming és a multi-factor Authentication hitelesítés 
 

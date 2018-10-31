@@ -10,14 +10,14 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 07/23/2018
+ms.date: 10/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 33bfe28bf612c47c9f42345dabccc017337c3d45
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 5f0b5d1695603a7cd2a3c7ac1dbc484e44257d88
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190156"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249611"
 ---
 # <a name="assign-azure-ad-directory-roles-in-pim"></a>A PIM az Azure AD-címtárbeli szerepkörök hozzárendelése
 
@@ -112,6 +112,39 @@ Kövesse az alábbi lépéseket egy adott felhasználó eltávolítása a címt�
     ![A szerepkör eltávolítása](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
 
     A szerepkör-hozzárendelés eltávolítása.
+
+## <a name="authorization-error-when-assigning-roles"></a>Engedélyezési hiba a szerepkörök hozzárendelése
+
+Ha nemrég engedélyezte a PIM-előfizetéssel, és meg, hogy olyan címtárbeli szerepkörrel jogosult felhasználó hitelesítési hibaüzenetet kap, lehet, mert az MS-PIM szolgáltatás típusú rendszerbiztonsági taghoz még nem rendelkezik megfelelő engedélyekkel. Az MS-PIM szolgáltatás típusú rendszerbiztonsági taghoz kell rendelkeznie a [felhasználói hozzáférés rendszergazdája](../../role-based-access-control/built-in-roles.md#user-access-administrator) szerepkör más szerepkörök hozzárendelése. Várnia, amíg az MS-PIM hozzá van rendelve a felhasználói hozzáférés rendszergazdájának szerepköre, rendelheti hozzá kézzel.
+
+Kövesse az alábbi lépéseket a felhasználói hozzáférés rendszergazdája szerepkör hozzárendelése az előfizetéshez tartozó egyszerű MS-PIM szolgáltatás.
+
+1. Jelentkezzen be az Azure Portalra globális rendszergazdaként.
+
+1. Válasszon **minden szolgáltatás** , majd **előfizetések**.
+
+1. Válassza ki az előfizetését.
+
+1. Válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget az előfizetési hatókörben található szerepkör-hozzárendelések aktuális listájának megtekintéséhez.
+
+   ![Egy előfizetés hozzáférés-vezérlés (IAM) paneljén](./media/pim-how-to-add-role-to-user/ms-pim-access-control.png)
+
+1. Ellenőrizze, hogy a **MS-PIM** egyszerű szolgáltatás a **felhasználói hozzáférés rendszergazdája** szerepkör.
+
+1. Ha nem, válassza a **Hozzáadás** megnyitásához a **engedélyek hozzáadása** ablaktáblán.
+
+1. Az a **szerepkör** legördülő listában válassza a **felhasználói hozzáférés rendszergazdája** szerepkör.
+
+1. Az a **kiválasztása** listában keresse meg és válassza ki a **MS-PIM** egyszerű szolgáltatást.
+
+   ![A PIM-MS-engedélyek hozzáadása](./media/pim-how-to-add-role-to-user/ms-pim-add-permissions.png)
+
+1. Válasszon **mentése** a szerepkör hozzárendelése.
+
+   Néhány pillanat múlva a MS-PIM egyszerű szolgáltatást a felhasználói hozzáférés rendszergazdájának szerepköre az előfizetések szintjén van hozzárendelve.
+
+   ![Felhasználói hozzáférés rendszergazdájának szerepköre a MS-PIM szolgáltatásra](./media/pim-how-to-add-role-to-user/ms-pim-user-access-administrator.png)
+
 
 ## <a name="next-steps"></a>További lépések
 

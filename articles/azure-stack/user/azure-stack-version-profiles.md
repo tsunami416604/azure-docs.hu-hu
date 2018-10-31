@@ -67,7 +67,7 @@ Inkább, mint a minden erőforrás-szolgáltató és az Azure Stack által támo
 
 API-profilok, amelyek használják az Azure Resource Managerrel, például a PowerShell, az Azure CLI, az SDK-t mind a Microsoft Visual Studio code tools együttműködve. Eszközök és SDK-k segítségével profilok olvassa el a modulok és a egy application készítése során alkalmazandó kódtárak melyik verzióját.
 
-Például, ha a PowerShell használatával hozzon létre egy tárolási fiókot a **Microsoft.Storage** erőforrás-szolgáltató, amely támogatja az api-verzió 2016-03-30 és a egy virtuális Gépet a Microsoft.Compute erőforrás-szolgáltató használatával az api-verzió 2015-12-01, keresse ki az PowerShell-modul támogatja a 2016-03-30 Storage kell, és mely modul támogatja a 2015-02-01-es számítási és telepítheti azokat. Ehelyett egy profil is használhatja. A parancsmag ** telepítés-profil * profilename x és PowerShell betölti a modulokat megfelelő verzióját.
+Például, ha a PowerShell használatával hozzon létre egy tárolási fiókot a **Microsoft.Storage** erőforrás-szolgáltató, amely támogatja az api-verzió 2016-03-30 és a egy virtuális Gépet a Microsoft.Compute erőforrás-szolgáltató használatával az api-verzió 2015-12-01, keresse ki az PowerShell-modul támogatja a 2016-03-30 Storage kell, és mely modul támogatja a 2015-02-01-es számítási és telepítheti azokat. Ehelyett egy profil is használhatja. A parancsmag **telepítés-profil \*profilename**\* x és PowerShell betölti a modulokat megfelelő verzióját.
 
 Ehhez hasonlóan ha Python-alapú alkalmazás készítése a Python SDK-t használja, megadhatja a profil. Az SDK-t a parancsfájlban megadott erőforrás-szolgáltatókat betölti a megfelelő modulokat.
 

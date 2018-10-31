@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 10/16/2018
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 44e195055c74babd903cf4fb830167ab92951d4a
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 8124b399b859f812ec3bf9f7ea64b6643446a1b5
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376788"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249296"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>A Media Services-események Azure Event Grid-sémák
 
@@ -116,9 +116,7 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 
 Ha a feladat állapota lehet egy értéket: *várólistán*, *ütemezett*, *feldolgozása*, *befejezett*, *hiba*, *Meg lett szakítva*, *megszakítása*
 
-### <a name="jobscheduled"></a>JobScheduled
-### <a name="jobprocessing"></a>JobProcessing
-### <a name="jobcanceling"></a>JobCanceling
+### <a name="jobscheduled-jobprocessing-jobcanceling"></a>JobScheduled, JobProcessing, JobCanceling
 
 Feladat (például JobScheduled, JobProcessing, JobCanceling) állapotban nem végleges módosítás esetén a példa séma a következőhöz hasonlóan néz ki:
 
@@ -142,9 +140,7 @@ Feladat (például JobScheduled, JobProcessing, JobCanceling) állapotban nem v�
 }]
 ```
 
-### <a name="jobfinished"></a>JobFinished
-### <a name="jobcanceled"></a>JobCanceled
-### <a name="joberrored"></a>JobErrored
+### <a name="jobfinished-jobcanceled-joberrored"></a>JobFinished, JobCanceled, JobErrored
 
 Végső feladat állapota módosítás (például JobFinished, JobCanceled, JobErrored) esetén a példa séma az alábbihoz hasonlóan néz ki:
 
@@ -215,12 +211,7 @@ Az alábbi példa bemutatja a séma, a **JobOutputStateChange** esemény:
 }]
 ```
 
-### <a name="joboutputscheduled"></a>JobOutputScheduled
-### <a name="joboutputprocessing"></a>JobOutputProcessing
-### <a name="joboutputfinished"></a>JobOutputFinished
-### <a name="joboutputcanceling"></a>JobOutputCanceling
-### <a name="joboutputcanceled"></a>JobOutputCanceled
-### <a name="joboutputerrored"></a>JobOutputErrored
+### <a name="joboutputscheduled-joboutputprocessing-joboutputfinished-joboutputcanceling-joboutputcanceled-joboutputerrored"></a>JobOutputScheduled, JobOutputProcessing, JobOutputFinished, JobOutputCanceling, JobOutputCanceled, JobOutputErrored
 
 Az egyes JobOutput állapotváltozás a példa séma az alábbihoz hasonlóan néz ki:
 
@@ -420,7 +411,7 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | TrackName | sztring | A track neve. |
 | Átviteli sebesség | egész szám | A szám sávszélességű. |
 | Időbélyeg | sztring | Az adathalmaz időbélyegét eltávolította. |
-| időskálára | sztring | Az időbélyeg-időskálára. |
+| Időskála | sztring | Az időbélyeg-időskálára. |
 | Eredménykód | sztring | Az adatok adatköteget csepp OK. **FragmentDrop_OverlapTimestamp** vagy **FragmentDrop_NonIncreasingTimestamp**. |
 
 ### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
@@ -463,7 +454,7 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | EncoderIp | sztring  | A kódoló IP-cím. |
 | EncoderPort | sztring | A kódoló a stream forrását a port. |
 | Időbélyeg | sztring | Első időbélyegzője az adathalmaz kapott. |
-| időskálára | sztring | Amelyben időbélyeg jelölt időskálára. |
+| Időskála | sztring | Amelyben időbélyeg jelölt időskálára. |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
 
@@ -534,7 +525,7 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | FirstDuration | sztring | Az adathalmaz első időbélyeggel időtartama. |
 | SecondTimestamp | sztring  | Az időbélyeg néhány egyéb nyomon követése és minőségi szintjét a videó típus érkezett. |
 | SecondDuration | sztring | A második időbélyeggel adathalmaz időtartama. |
-| időskálára | sztring | Időskálára időbélyegeket és időtartamát.|
+| Időskála | sztring | Időskálára időbélyegeket és időtartamát.|
 
 ### <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
 
@@ -577,7 +568,7 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | Átviteli sebesség | egész szám | A szám sávszélességű. |
 | IncomingBitrate | egész szám | Számított sávszélességű származó kódolóval adattömbök alapján. |
 | LastTimestamp | sztring | Az elmúlt 20 másodperc nyomon kapott legújabb időbélyegző. |
-| időskálára | sztring | Időskálára, amelyben időbélyeggel van megadva. |
+| Időskála | sztring | Időskálára, amelyben időbélyeggel van megadva. |
 | OverlapCount | egész szám | Adattömbök száma az elmúlt 20 másodperc kellett átfedett időbélyegzőnél. |
 | DiscontinuityCount | egész szám | Az elmúlt 20 másodperc megfigyelt folytonosság megszakítását száma. |
 | NonIncreasingCount | egész szám | A múltban időbélyegzőnél adattömbök száma az elmúlt 20 másodperc alatt érkezett. |
@@ -622,7 +613,7 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | PreviousTimestamp | sztring | Az előző töredék időbélyegét. |
 | NewTimestamp | sztring | Az aktuális töredék időbélyegét. |
 | DiscontinuityGap | sztring | Különbség a két időbélyegek felett. |
-| időskálára | sztring | A melyik időbélyeg és a kihagyást gap időskálára szerepelnek. |
+| Időskála | sztring | A melyik időbélyeg és a kihagyást gap időskálára szerepelnek. |
 
 ### <a name="common-event-properties"></a>Közös Eseménytulajdonságok
 
@@ -631,14 +622,19 @@ Egy esemény a következő legfelső szintű adatokat tartalmaz:
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | témakör | sztring | A EventGrid-témakör. Ez a tulajdonság az erőforrás-azonosító, a Media Services-fiók rendelkezik. |
-| Tulajdonos | sztring | A Media Services-csatorna a Media Services-fiók erőforrás elérési útja. A témakör és a tulajdonos számára, az erőforrás a feladat AZONOSÍTÓJÁT kiszámításával. |
+| tárgy | sztring | A Media Services-csatorna a Media Services-fiók erőforrás elérési útja. A témakör és a tulajdonos számára, az erőforrás a feladat AZONOSÍTÓJÁT kiszámításával. |
 | eventType | sztring | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. Például "Microsoft.Media.JobStateChange." |
 | eventTime | sztring | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
 | id | sztring | Az esemény egyedi azonosítója. |
-| adatok | objektum | A Media Services eseményadatokat. |
+| adat | objektum | A Media Services eseményadatokat. |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
 | metadataVersion | sztring | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
 
 ## <a name="next-steps"></a>További lépések
 
 [Regisztráljon a feladat állapotváltozási események](job-state-events-cli-how-to.md)
+
+## <a name="see-also"></a>Lásd még
+
+- [EventGrid .NET SDK-t, amely tartalmazza a Media Services-események](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
+- [A Media Services-események definíciók](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)

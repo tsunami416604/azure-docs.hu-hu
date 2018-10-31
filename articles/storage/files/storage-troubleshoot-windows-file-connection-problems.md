@@ -6,19 +6,19 @@ author: jeffpatt24
 tags: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 10/30/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 59eb0ddad72f5e54a23a97a260477f84019eb62c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 5e730e52d55f6c8c2dd02f69e3efa67017af152b
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386341"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242976"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>A Windows Azure Files-problémák hibaelhárítása
 
-Ez a cikk a gyakori problémák a Microsoft Azure Files kapcsolódó Windows-ügyfelek csatlakozáskor sorolja fel. Is biztosít a lehetséges okokért és megoldásokért ezeket a problémákat. A hibaelhárítási lépéseket ebben a cikkben mellett is használhatja [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) , hogy a Windows ügyfél környezet legyen-e a megfelelő előfeltételek. AzFileDiagnostics automatizálja a jelenség a jelen cikkben említett, és a segítségével állítsa be a környezetet az optimális teljesítmény eléréséhez a legtöbb felismerése. Ezt az információt is megtalálhatja a [Azure-fájlmegosztási hibaelhárító](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) , amelyek segítenek a problémák az Azure Files csatlakozás és leképezés/csatlakoztatási fájlmegosztások lépéseit ismerteti.
+Ez a cikk a gyakori problémák a Microsoft Azure Files kapcsolódó Windows-ügyfelek csatlakozáskor sorolja fel. Is biztosít a lehetséges okokért és megoldásokért ezeket a problémákat. A hibaelhárítási lépéseket ebben a cikkben mellett is használhatja [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) , hogy a Windows ügyfél környezet legyen-e a megfelelő előfeltételek. AzFileDiagnostics automatizálja a jelenség a jelen cikkben említett, és a segítségével állítsa be a környezetet az optimális teljesítmény eléréséhez a legtöbb felismerése. Ezt az információt is megtalálhatja a [Azure-fájlmegosztási hibaelhárító](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) , amelyek segítenek a problémák az Azure Files csatlakozás és leképezés/csatlakoztatási fájlmegosztások lépéseit ismerteti.
 
 
 <a id="error53-67-87"></a>
@@ -189,6 +189,24 @@ Fájl másolása a hálózaton keresztül, akkor először vissza kell fejtenie 
   - Érték = 1
 
 Vegye figyelembe, hogy a beállításkulcs megadása hatással van minden, hálózati megosztások végzett másolási művelet.
+
+## <a name="slow-enumeration-of-files-and-folders"></a>A fájlok és mappák lassú enumerálása
+
+### <a name="cause"></a>Ok
+
+Ez a probléma akkor fordulhat elő, ha nincs elegendő gyorsítótárazás nagy méretű könyvtárak ügyfélszámítógépen.
+
+### <a name="solution"></a>Megoldás
+
+Ez a probléma megoldásához módosításával a **DirectoryCacheEntrySizeMax** beállításazonosítót a gyorsítótárba helyezése az ügyfélszámítógépen a nagyobb könyvtárlistákon:
+
+- Hely: HKLM\System\CCS\Services\Lanmanworkstation\Parameters
+- Érték mane: DirectoryCacheEntrySizeMax 
+- Típus: DWORD érték
+ 
+ 
+Például beállíthatja azt a 0x100000, és tekintse meg, ha a teljesítmény jobb válnak.
+
 
 ## <a name="need-help-contact-support"></a>Segítség Forduljon az ügyfélszolgálathoz.
 Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) beolvasni a probléma gyors megoldása érdekében.

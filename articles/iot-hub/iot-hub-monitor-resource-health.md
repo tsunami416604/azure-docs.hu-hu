@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: kgremban
-ms.openlocfilehash: c400a084a78af6313e355d65bcbc07a520f55514
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: b470ca15163ef1e74ec9795ad0a2581a24c83474
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156051"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250409"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub állapotának monitorozásához és a problémák gyorsan diagnosztizálása
 
@@ -24,13 +24,13 @@ Az Azure Monitor egyetlen adatforrás a figyelés és naplózás az Azure-szolg�
 > [!IMPORTANT]
 > A diagnosztikai naplók az Azure Monitor használatával az IoT Hub-szolgáltatás által kibocsátott események a rendszer nem garantált, hogy a megbízható és rendezett. Néhány esemény esetleg elvész, vagy -i üzemen kívüli. Diagnosztikai naplók is nincsenek szinkronban kell lennie a valós idejű, és jelentkezzen be a kívánt rendeltetési események több percig is eltarthat.
 
-Az Azure Resource Health segítségével diagnosztizálhatja és a támogatás igénylésében, ha az Azure problémái kihat az erőforrásaira. A személyre szabott irányítópultok az IoT-központok biztosít a jelenlegi és korábbi állapotát. Olvassa ebből a cikkből megtudhatja, hogyan [használata az Azure Resource Health](#use-azure-resource-health) az IoT hubbal. 
+Az Azure Resource Health segítségével diagnosztizálhatja és a támogatás igénylésében, ha egy Azure-beli probléma kihat az erőforrásaira. A személyre szabott irányítópultok az IoT-központok biztosít a jelenlegi és korábbi állapotát. Olvassa ebből a cikkből megtudhatja, hogyan [használata az Azure Resource Health](#use-azure-resource-health) az IoT hubbal. 
 
-A két szolgáltatás integrálása, az IoT Hub is nyújt a saját mérőszámok, amelyek segítségével az IoT-erőforrások állapotának ismertetése. További tudnivalókért lásd: [megismerheti az IoT Hub-metrikák][lnk-metrics].
+IoT Hub is biztosít a saját mérőszámok, amelyek segítségével az IoT-erőforrások állapotának ismertetése. További tudnivalókért lásd: [megismerheti az IoT Hub-metrikák][lnk-metrics].
 
 ## <a name="use-azure-monitor"></a>Az Azure Monitor használata
 
-Az Azure Monitor erőforrás-szintű diagnosztikai adatokat, ami azt jelenti, hogy figyelemmel kísérheti a történik az IoT hub-műveletek biztosít. 
+Az Azure Monitor biztosít a diagnosztikai adatokat az Azure-erőforrásokhoz, ami azt jelenti, hogy figyelemmel kísérheti a műveleteket, az IoT hub között kerül sor. 
 
 Az Azure Monitor diagnosztikai beállításait lecseréli az IoT Hub-műveletek monitorozása. Ha jelenleg használja a műveletek figyelése, át kell telepítenie a munkafolyamatokat. További információkért lásd: [a műveletek figyelése a diagnosztikai beállítások][lnk-migrate].
 
@@ -42,11 +42,9 @@ Az adott mérőszámok és eseményeket figyeli az Azure Monitor kapcsolatos tov
 
 Az Azure Monitor nyomon követi az IoT Hub előforduló különféle műveletek. Az egyes kategóriákhoz hogyan készül jelentés adott kategóriába tartozó eseményeket definiáló séma. 
 
-
-
 #### <a name="connections"></a>Kapcsolatok
 
-A kapcsolatok kategóriában nyomon követi eszköz csatlakoztatása, és események leválasztása az IoT hubra, valamint a hibák. Ebbe a kategóriába követési akkor hasznos, jogosulatlan kapcsolódási kísérletek azonosításához és nyomon követésére, ha a kapcsolat azért területein gyenge hálózati eszközökhöz.
+A kapcsolatok kategóriában nyomon követi eszköz csatlakoztatása, és események leválasztása az IoT hubra, valamint a hibák. Ez a kategória jogosulatlan kapcsolódási kísérletek azonosításával és vagy a riasztás az eszköz kapcsolata megszakad, ha hasznos.
 
 > [!NOTE]
 > Az eszközök megbízható kapcsolat állapotának ellenőrzése [eszköz szívverés][lnk-devguide-heartbeat].
@@ -65,7 +63,13 @@ A kapcsolatok kategóriában nyomon követi eszköz csatlakoztatása, és esemé
 
 #### <a name="cloud-to-device-commands"></a>Felhő–eszköz irányú parancsok
 
-A felhőből az eszközre irányuló parancsok kategória előforduló hibák az IoT hubra a felhőből az eszközre irányuló üzenetek folyamat kapcsolódó követi nyomon. Ez a kategória tartalmazza a hibák fordulhatnak elő, amikor a felhőből az eszközre irányuló üzenetküldés (például illetéktelen küldő), (például a szállítási darabszám túllépve) a felhőből az eszközre irányuló üzenetek fogadása és visszajelzés a felhőből az eszközre irányuló üzenetek fogadása (mint például a visszajelzések lejárt). Ez a kategória nem dolgozza hibák az eszközről, amely nem megfelelően kezeli a felhőből az eszközre irányuló üzenet, ha a felhőből az eszközre irányuló üzenet sikeresen kézbesítve.
+A felhőből az eszközre irányuló parancsok kategória előforduló hibák az IoT hubra a felhőből az eszközre irányuló üzenetek folyamat kapcsolódó követi nyomon. Ez a kategória tartalmazza a felmerülő hibák:
+
+* Felhőből az eszközre irányuló üzenetek küldése (például a jogosulatlan feladótól hibák)
+* (Például a szállítási darabszám túllépve hibák), a felhőből az eszközre irányuló üzenetek fogadása és
+* A visszajelzést a felhőből az eszközre irányuló üzenet (például a visszajelzések hibák lejárt). 
+
+Ez a kategória nem hibák észlelését, ha a felhőből az eszközre irányuló üzenet sikeresen kézbesítve, de nem megfelelően kezeli a rendszer az eszköz által.
 
 ```json
 {
@@ -111,7 +115,13 @@ Eszközkategória identitás műveletek nyomon követi, létrehozásához, friss
 
 #### <a name="routes"></a>Útvonalak
 
-Az üzenet-útválasztási kategória üzenet útvonal értékelése és a végpont-állapotot az IoT Hub által érzékelt során felmerülő hibák nyomon követi. Ez a kategória tartalmazza az eseményeket, mint például amikor egy szabály eredménye "nem definiált", amikor az IoT Hub jelöli meg a végpont kézbesítetlen, valamint a végpont kapott más hibák. Ebbe a kategóriába nem tartalmazza a konkrét hibákat maguk az üzenetek (például a szabályozási hibák eszköz), amely az "eszköz telemetriai" kategóriában szerepelnek.
+Az üzenet-útválasztási kategória üzenet útvonal értékelése és a végpont-állapotot az IoT Hub által érzékelt során felmerülő hibák nyomon követi. Ez a kategória események például tartalmazza:
+
+* Szabály eredménye "nem definiált",
+* Az IoT Hub, a kézbesítetlen levelek, jelöli meg a végpont vagy
+* A végpont kapott esetleges hibákat. 
+
+Ebbe a kategóriába nem tartalmazza a konkrét hibákat maguk az üzenetek (például a szabályozási hibák eszköz), amely az "eszköz telemetriai" kategóriában szerepelnek.
 
 ```json
 {
@@ -365,7 +375,7 @@ class Program 
 
 Az Azure Resource Health segítségével figyelheti az IoT hub működik-e. Emellett megismerjük, akár regionális kimaradás az IoT hub állapotának negatív hatással van. Szeretné megtudni, részletes adatait az Azure IoT Hub állapotát, akkor javasoljuk, hogy Ön [használata az Azure Monitor](#use-azure-monitor). 
 
-Az Azure IoT Hub egy regionális szinten állapotát jelzi. Ha van egy regionális kimaradás, mely negatív hatással az IoT hub, az egészségügyi állapota **ismeretlen**. Az Azure Resource Health végző adott állapot-ellenőrzések kapcsolatos további információkért lásd: [erőforrástípusok és állapot-ellenőrzések a az Azure resource health segítségével elérhető][lnk-ARH-checks].
+Az Azure IoT Hub egy regionális szinten állapotát jelzi. Regionális kimaradás hatással van az IoT hubhoz, ha az állapot mutatja **ismeretlen**. További tudnivalókért lásd: [erőforrástípusok és állapot-ellenőrzések a az Azure resource health segítségével elérhető][lnk-ARH-checks].
 
 Az IoT hub állapotának ellenőrzéséhez kövesse az alábbi lépéseket:
 

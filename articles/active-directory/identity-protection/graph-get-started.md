@@ -17,12 +17,12 @@ ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: nigu
 ms.custom: seohack1
-ms.openlocfilehash: eefbfcf741db3d0949910bc5da8494e087c39ec7
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 3cbded3224e7622d13e7af362cb3532a1813787e
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139147"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242160"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Az Azure Active Directory Identity Protection és a Microsoft Graph használatának első lépései
 A Microsoft Graph a Microsoft unified API-végpont és az otthoni [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) API-k. Az első API **identityRiskEvents**, lehetővé teszi, hogy a Microsoft Graph lekérdezése listáját [kockázati események](../reports-monitoring/concept-risk-events.md) és a kapcsolódó adatokat. Ez a cikk lépéseit, az API lekérdezése beolvasása. Részletes bemutatása, teljes dokumentációt és a Graph Explorer a hozzáférést, tekintse meg a [Microsoft Graph-hely](https://graph.microsoft.io/).
@@ -173,7 +173,7 @@ Hitelesítést végezni, küldjön egy post kérelmet `https://login.microsoft.c
 Ha ez sikeres, ez egy hitelesítési tokent ad vissza.  
 Hívja az API-t, hozzon létre egy fejléc a következő paramétert:
 
-    `Authorization`=”<token_type> <access_token>"
+    `Authorization`="<token_type> <access_token>"
 
 
 A hitelesítéskor, a jogkivonat típusa és a hozzáférési jogkivonat megtalálhatja a visszaadott jogkivonat.

@@ -4,15 +4,15 @@ description: A gyűjtőberendezés az Azure Migrate ismerteti.
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/24/2018
+ms.date: 10/30/2018
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 006a246323e9f82ea9c9a6a2940ed624d7e44e13
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 81e6731068db84f02073f02c49bea9a8fb7c7c70
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986780"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241191"
 ---
 # <a name="about-the-collector-appliance"></a>A gyűjtőberendezés kapcsolatban
 
@@ -20,6 +20,38 @@ ms.locfileid: "49986780"
 
 Az Azure Migrate Collector egy egyszerűsített készülék vCenter a helyszíni környezet felderítéséhez kiértékelés céljából használható a [Azure Migrate](migrate-overview.md) szolgáltatástól, az Azure-ba való migrálás előtt.  
 
+## <a name="discovery-methods"></a>A felderítési módszerek
+
+A gyűjtő berendezés, a felderítés egyszeri felderítés vagy a folyamatos felderítési két lehetőség van.
+
+### <a name="one-time-discovery"></a>Egyszeri felderítés
+
+A gyűjtőberendezés kommunikál a vCenter Server kérdezze le a virtuális gépek metaadatait egyszeri. Ezzel a módszerrel:
+
+- A berendezés folyamatosan nincs csatlakoztatva az Azure Migrate-projekt.
+- A helyszíni környezetben nem tükröződnek az Azure Migrate felderítési befejeződése után. Bármely változásainak kell újra felderítése ugyanabban a projektben ugyanabban a környezetben.
+- Teljesítményadatok összegyűjtése egy virtuális géphez, a berendezést a vCenter Serverben tárolt korábbi teljesítményadatok támaszkodik. Teljesítményelőzmények összegyűjti az elmúlt hónapban.
+- Korábbi teljesítményadatok gyűjtésére a statisztikai beállítások megadása a vCenter-kiszolgáló három szintre kell. Miután beállította a szint három, várjon, amíg legalább egy napot a vcenter teljesítményszámlálók gyűjtéséhez kell. Ezért javasoljuk, hogy legalább egy napot követően futtassa a felderítés. Ha azt szeretné, 1 hét vagy 1 hónap teljesítményadatai a környezet felmérése, várjon annak megfelelően szeretne.
+- Ez a felderítési módszer gyűjti az Azure Migrate minden metrika (helyett csúcs számlálók) átlagos ami korrigáljuk méretezési számlálókat. Azt javasoljuk, hogy használja-e a folyamatos felderítési beállítás több pontos eredményeket méretezése.
+
+### <a name="continuous-discovery"></a>Folyamatos felderítés
+
+A gyűjtőberendezés folyamatosan csatlakozik az Azure Migrate-projektben, és folyamatosan gyűjti a teljesítményadatokat a virtuális gépek.
+
+- A gyűjtő folyamatosan profilokat a helyszíni környezetben, valós idejű használati adatok gyűjtéséhez 20 másodpercenként.
+- A berendezés összesíti a 20 másodperces mintákat, és létrehoz egy adatpont 15 percenként.
+- Az adatok létrehozásához a készülék pont csúcsértéke kiválasztja a 20 másodperces mintákat, és elküldi azt az Azure-bA.
+- Ez a modell nem függ a vCenter Server statisztikai beállításait teljesítményadatok gyűjtéséhez.
+- Folyamatos profilkészítés címen bármikor a gyűjtő is leállíthatja.
+
+Vegye figyelembe, hogy a berendezés csak az folyamatosan teljesítményadatokat gyűjt, semmilyen konfigurálási változást nem észleli a helyszíni környezetben (pl. virtuális gép hozzáadása, törlése, lemez hozzáadása stb.). Ha egy konfigurációmódosítás a helyszíni környezetben, hogy tükrözzék a változásokat a portál a következőket teheti:
+
+- További elemek (virtuális gépek, lemezek, magok stb.): A változásoknak az Azure Portalon, a felderítés a készülék leállítása és elindítása azt újra. Ez biztosítja, hogy a változtatások az Azure Migrate-projektben.
+
+- Virtuális gépek törlése: lehet a célja, a készülék, virtuális gépek törlése nem jelenik meg akkor is, ha leállítja és elindítja a felderítést. Ennek az oka, hogy az ezt követő felderítések adatokat hozzáfűzi korábbi felderítések, és nem bírálja felül. Ebben az esetben egyszerűen figyelmen kívül hagyhatja a portálon, a virtuális gép eltávolítása a csoportból, és az értékelés újraszámításakor.
+
+> [!NOTE]
+> Folyamatos felderítési funkciója előzetes verzióban érhető el. Azt javasoljuk, hogy ezt a módszert használja, ez a módszer részletes teljesítményadatait gyűjti, és pontos megfelelő méretezéséhez eredményez.
 
 ## <a name="deploying-the-collector"></a>A gyűjtő telepítése
 
@@ -163,43 +195,6 @@ Az OVA újra letöltése nélkül frissítheti a gyűjtő a legújabb verzióra.
 3. Másolja a zip-fájlt az Azure Migrate gyűjtő virtuális gép (gyűjtőberendezés).
 4. Kattintson a jobb gombbal a zip-fájlt, és válassza ki az összes kibontása.
 5. Kattintson a jobb gombbal a Setup.ps1, és válassza a Futtatás a PowerShell-lel, és kövesse a képernyőn a frissítés telepítéséhez.
-
-
-## <a name="discovery-methods"></a>A felderítési módszerek
-
-Két módszerrel, a gyűjtőberendezés felderítése, a felderítés egyszeri felderítés vagy a folyamatos felderítési használhat.
-
-
-### <a name="one-time-discovery"></a>Egyszeri felderítés
-
-A gyűjtő a vCenter Server kérdezze le a virtuális gépek metaadatait egyszeri kommunikál. Ezzel a módszerrel:
-
-- A berendezés folyamatosan nincs csatlakoztatva az Azure Migrate-projekt.
-- A helyszíni környezetben nem tükröződnek az Azure Migrate felderítési befejeződése után. Bármely változásainak kell újra felderítése ugyanabban a projektben ugyanabban a környezetben.
-- Ez a felderítési módszer esetében a statisztikai beállítások megadása a vCenter-kiszolgáló három szintre kell.
-- Biztonsági szint három, miután vesz igénybe naponta létrehozni a teljesítményszámlálók. Ezért javasoljuk, hogy a felderítés futtatásakor egy nap.
-- Teljesítményadatok összegyűjtése egy virtuális géphez, a berendezést a vCenter Serverben tárolt korábbi teljesítményadatok támaszkodik. Teljesítményelőzmények összegyűjti az elmúlt hónapban.
-- Az Azure Migrate minden metrika, ami korrigáljuk méretezési átlagos számlálók (helyett csúcs számláló) gyűjti.
-
-### <a name="continuous-discovery"></a>Folyamatos felderítés
-
-A gyűjtőberendezés folyamatosan csatlakozik az Azure Migrate-projektben, és folyamatosan gyűjti a teljesítményadatokat a virtuális gépek.
-
-- A gyűjtő folyamatosan profilokat a helyszíni környezetben, valós idejű használati adatok gyűjtéséhez 20 másodpercenként.
-- Ez a modell nem függ a vCenter Server statisztikai beállításait teljesítményadatok gyűjtéséhez.
-- A berendezés összesíti a 20 másodperces mintákat, és létrehoz egy adatpont 15 percenként.
-- Az adatok létrehozásához a készülék pont csúcsértéke kiválasztja a 20 másodperces mintákat, és elküldi azt az Azure-bA.
-- Folyamatos profilkészítés címen bármikor a gyűjtő is leállíthatja.
-
-Vegye figyelembe, hogy a berendezés csak az folyamatosan teljesítményadatokat gyűjt, semmilyen konfigurálási változást nem észleli a helyszíni környezetben (pl. virtuális gép hozzáadása, törlése, lemez hozzáadása stb.). Ha egy konfigurációmódosítás a helyszíni környezetben, hogy tükrözzék a változásokat a portál a következőket teheti:
-
-1. További elemek (virtuális gépek, lemezek, magok stb.): A változásoknak az Azure Portalon, a felderítés a készülék leállítása és elindítása azt újra. Ez biztosítja, hogy a változtatások az Azure Migrate-projektben.
-
-2. Virtuális gépek törlése: lehet a célja, a készülék, virtuális gépek törlése nem jelenik meg akkor is, ha leállítja és elindítja a felderítést. Ennek az oka, hogy az ezt követő felderítések adatokat hozzáfűzi korábbi felderítések, és nem bírálja felül. Ebben az esetben egyszerűen figyelmen kívül hagyhatja a portálon, a virtuális gép eltávolítása a csoportból, és az értékelés újraszámításakor.
-
-> [!NOTE]
-> Folyamatos felderítési funkciója előzetes verzióban érhető el. Azt javasoljuk, hogy ezt a módszert használja, ez a módszer részletes teljesítményadatait gyűjti, és pontos megfelelő méretezéséhez eredményez.
-
 
 ## <a name="discovery-process"></a>Felderítési folyamat
 

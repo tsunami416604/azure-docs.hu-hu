@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/17/2018
+ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 4ed4e73348db8cfffb6e79afaa9d196e242d7488
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 759de1c62cb9cb4aa642fa564378b1ed551d7dae
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42054520"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239355"
 ---
 # <a name="azure-storage-security-overview"></a>Az Azure Storage biztonsági áttekintése
 
@@ -33,6 +33,7 @@ Az Azure Storage az ügyfelek igényeihez alkalmazkodó, modern, a tartósságra
 * Analytics segítségével nyomon követheti a tároló elérésekor valaki által használt hitelesítési módszert.
 
 Az Azure Storage biztonsági részletesebb tekintse meg, lásd: a [Azure Storage biztonsági útmutatóját](../storage/common/storage-security-guide.md). Ez az útmutató egy Azure Storage biztonsági funkcióinak részletes ismertetése. Ilyen például a tárfiók kulcsaihoz, adattitkosítás átvitel, mind REST-en, és a storage analytics.
+
 
 Ez a cikk az Azure Storage használható az Azure security funkcióit. Cikkek hivatkozásainak egyes szolgáltatások részletei adjon meg, hogy többet is megtudhat.
 
@@ -91,13 +92,35 @@ Részletek
 
 * [Az Azure Disk Encryption Windows és Linux rendszerű IaaS virtuális gépek](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
 
-## <a name="azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage-tűzfalak és virtuális hálózatok
+## <a name="firewalls-and-virtual-networks"></a>Tűzfalak és virtuális hálózatok
 
 Az Azure storage lehetővé teszi, hogy a tárfiókok tűzfalszabályok engedélyezése. Egyszer engedélyezett, akkor blokkolja a beérkező adatokat, beleértve a más Azure-szolgáltatásokhoz érkező kérelmeket. Konfigurálhatja a kivételeket úgy, hogy engedélyezze a forgalmat. Előfordulhat, hogy engedélyezni kell a tűzfalszabályokat, a meglévő tárfiókok vagy létrehozás közben.
 
 Ez a funkció engedélyezett hálózatok egy meghatározott készletének a storage-fiókok védelméhez használjon.
 
 További információ az Azure storage-tűzfalak és virtuális hálózatok tekintse át a [konfigurálása az Azure Storage-tűzfalak és virtuális hálózatok](../storage/common/storage-network-security.md)
+
+## <a name="azure-data-box"></a>Azure Data Box
+
+A Data Box, a Data Box Disk és a Data Box Heavy lehetővé teszi, hogy nagy mennyiségű adatot helyezzen át az Azure-ba, ha a hálózati megoldás nem használható. Offline adatok átvitel eszközök mellékelt szervezet és az Azure-adatközpontban. Az eszközök AES-titkosítást használnak, amelyek a szállítás közben védik az adatait, a feltöltés után pedig alapos megtisztítási folyamaton esnek át, amelynek során minden adata törölve lesz az eszközről.
+
+A Data Box Edge és a Data Box Gateway online adatáthelyezésre használható termékek, amelyek hálózati tárolóátjáróként funkcionálnak, és az Ön helyszíne és az Azure között kezelik az adatokat. A Data Box Edge egy helyszíni hálózati eszköz, amely az adatokat az Azure és a helyszín között helyezi át, és az adatok feldolgozásához mesterséges intelligenciát használó peremhálózati számítási megoldást használ. A Data Box Gateway egy tárolóátjáró képességgel rendelkező virtuális berendezés.
+
+További információ:
+
+* [Az Azure Data Box](https://azure.microsoft.com/services/storage/databox/)
+* [Az Azure Data Box Edge](../databox-online/data-box-edge-overview.md)
+* [Az Azure Data Box-átjáró](..//databox-online/data-box-gateway-overview.md)
+
+## <a name="advanced-threat-protection"></a>Fejlett fenyegetésvédelem
+
+Az Azure Storage által észlelt szokatlan és vélhetően kárt okozó kísérleteket elérni vagy kiaknázni a storage-fiók biztonsági intelligencia egy további réteget biztosít a komplex veszélyforrások elleni védelem. Komplex veszélyforrások elleni védelem figyelők diagnosztikai naplók az Azure Storage gyanús olvasási, írási vagy törlési kérések a Blob storage. 
+
+A speciális veszélyforrások elleni védelem riasztások tekinthetők [az Azure Security Center](https://azure.microsoft.com/services/security-center/). Az Azure Security Center biztosít bármely gyanús tevékenység részleteit észlelt, és teendőket javasol problémák kivizsgálásához és elhárításához, a potenciális fenyegetést. 
+
+További információ:
+
+* [Az Azure Storage komplex veszélyforrások elleni védelem áttekintése](../storage/common/storage-advanced-threat-protection.md)
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
 

@@ -4,16 +4,16 @@ description: Az Azure IoT Edge által támogatott platformok
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 6/21/2018
+ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2163179d3353626e12495381fc64792db56ec78e
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: b8b4664540d07b76d0cebe5df99ba2cc67dd47e6
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286362"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248555"
 ---
 # <a name="azure-iot-edge-support"></a>Az Azure IoT Edge-támogatás
 Nincsenek többféle módon, hogy az Azure IoT Edge-termék támogatása.
@@ -65,6 +65,3 @@ Nyilvános előzetes verzió
 ## <a name="container-engines"></a>Tároló-motorok
 Az Azure IoT Edge kell egy tároló motor modulok, függetlenül attól, amelyen futó operációs rendszer elindításához. A Microsoft biztosít egy tároló motor moby-motor, ez a követelmény teljesítéséhez. A Moby nyílt forráskódú projekt alapul. A docker CE és a Docker EE más népszerű motorokkal. Ezeket is alapján a Moby megnyílik forráskódú projektje, és kompatibilis az Azure IoT Edge segítségével. A Microsoft biztosít a elérhető legjobb lehetőség támogatásával rendszerekben a tároló motorok; használatával a Microsoft azonban nem rendelkezik az LHS.Gold.Multi.B4 őket hibák javításait teszi. Ebből kifolyólag a Microsoft azt javasolja, az éles rendszereket moby-motor használatával.
 
-
-<!-- Links -->
-[lnk-edge-blog]: https://azure.microsoft.com/blog/securing-the-intelligent-edge/ 

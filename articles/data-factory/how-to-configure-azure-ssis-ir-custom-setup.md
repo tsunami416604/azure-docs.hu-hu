@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/21/2018
+ms.date: 10/28/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: ad3ec09f039b38290929289c7bca77664b0fb554
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3ba3e6036821323146f00cf9c255b70606771aed
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441785"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241157"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>A telepítő az Azure-SSIS integrációs modul testreszabása
 
@@ -98,7 +98,11 @@ Testre szabhatja az Azure-SSIS integrációs modul, a következőkre van szüks�
 
        ![Másolja ki és mentse a közös hozzáférésű jogosultságkód igénylése](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image8.png)
 
-    1.  Amikor üzembe, vagy konfigurálja újra a PowerShell-lel, az Azure-SSIS integrációs modul az Azure-SSIS integrációs modul indítása előtt, futtassa a `Set-AzureRmDataFactoryV2IntegrationRuntime` parancsmagot az új értéket a tároló SAS URI-azonosítójú `SetupScriptContainerSasUri` paraméter. Példa:
+    1.  Amikor üzembe, vagy konfigurálja újra az Azure-SSIS IR a Data Factory felhasználói felülete, az Azure-SSIS integrációs modul indítása előtt, adja meg a tároló SAS URI-t a megfelelő mezőben:
+
+       ![Adja meg a közös hozzáférésű Jogosultságkód](media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
+
+       Amikor üzembe, vagy konfigurálja újra a PowerShell-lel, az Azure-SSIS integrációs modul az Azure-SSIS integrációs modul indítása előtt, futtassa a `Set-AzureRmDataFactoryV2IntegrationRuntime` parancsmagot az új értéket a tároló SAS URI-azonosítójú `SetupScriptContainerSasUri` paraméter. Példa:
 
        ```powershell
        Set-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName `
@@ -143,7 +147,7 @@ Testre szabhatja az Azure-SSIS integrációs modul, a következőkre van szüks�
 
        1. Egy `MSDTC` mappába, amely tartalmaz egy egyéni telepítés módosításához a hálózati és biztonsági konfigurációi a Microsoft elosztott tranzakciók koordinátora (MSDTC) szolgáltatást minden egyes csomóponton, az Azure-SSIS integrációs modult. Győződjön meg arról, hogy el van-e az MSDTC, adja hozzá folyamat végrehajtása tevékenység, hajtsa végre a következő parancsot a csomagokban átvitelvezérlés elejére: `%SystemRoot%\system32\cmd.exe /c powershell -Command "Start-Service MSDTC"` 
 
-       1. Egy `ORACLE ENTERPRISE` mappába, amely tartalmazza az egyéni telepítési parancsfájl (`main.cmd`) és a Csendes telepítési konfigurációs fájl (`client.rsp`) minden egyes csomópontján az Azure-SSIS integrációs modul Enterprise Edition Oracle OCI illesztőprogram telepítéséhez. Ez a beállítás lehetővé teszi az Oracle-Csatlakozáskezelő, forrás és cél használatát. Először töltse le a legújabb Oracle-ügyfél – például `winx64_12102_client.zip` – ki [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) , majd töltse fel azt a `main.cmd` és `client.rsp` alkalmazásfájlokat a tárolóba. Ha TNS használatával csatlakozhat az Oracle, is szeretné letölteni `tnsnames.ora`, szerkeszthetik és feltöltése a tárolóba, akkor lehet másolni az Oracle telepítési mappába telepítés során.
+       1. Egy `ORACLE ENTERPRISE` mappába, amely tartalmazza az egyéni telepítési parancsfájl (`main.cmd`) és a Csendes telepítési konfigurációs fájl (`client.rsp`) az Oracle-összekötők és OCI illesztőprogram telepítése az Azure-SSIS integrációs modul Enterprise Edition minden egyes csomópontjára. Ez a beállítás lehetővé teszi az Oracle-Csatlakozáskezelő, forrás és cél használatát. Először töltse le a Microsoft Connectors 5.0-s verzió Oracle (`AttunitySSISOraAdaptersSetup.msi` és `AttunitySSISOraAdaptersSetup64.msi`) származó [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=55179) és a legújabb Oracle-ügyfél – például `winx64_12102_client.zip` – ki [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html), majd feltölti őket az összes együtt `main.cmd` és `client.rsp` alkalmazásfájlokat a tárolóba. Ha TNS használatával csatlakozhat az Oracle, is szeretné letölteni `tnsnames.ora`, szerkeszthetik és feltöltése a tárolóba, akkor lehet másolni az Oracle telepítési mappába telepítés során.
 
        1. Egy `ORACLE STANDARD` mappába, amely tartalmazza az egyéni telepítési parancsfájl (`main.cmd`) telepítése az Oracle ODP.NET-illesztőt használja az Azure-SSIS integrációs modult. minden egyes csomópontjára Ez a beállítás lehetővé teszi az ADO.NET kapcsolati Manager forrás és cél használatát. Először töltse le a legújabb Oracle ODP.NET-illesztőt – például `ODP.NET_Managed_ODAC122cR1.zip` – ki [Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html), majd töltse fel a `main.cmd` alkalmazásfájlokat a tárolóba.
 

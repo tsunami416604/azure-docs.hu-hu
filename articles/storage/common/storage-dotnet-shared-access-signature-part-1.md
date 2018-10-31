@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/18/2017
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: d170fc0a0e4113b0f58c3b78f3a61aa2b08e69ff
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: c7d2c16ef135644c1ff23d7a71c66bec27ac930d
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231534"
+ms.locfileid: "50241045"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Közös hozzáférésű jogosultságkódok (SAS) használata
 
@@ -222,7 +222,7 @@ Az alábbi javaslatok a közös hozzáférésű jogosultságkódok használata s
 6. **Az erőforrás érhető el az adott legyen.** Biztonsági szempontból ajánlott, hogy adjon egy felhasználónak a minimálisan szükséges jogosultságokkal. Ha a felhasználó csak egyetlen entitás olvasási hozzáférésre van szüksége, adja meg számukra, hogy egyetlen entitás olvasási hozzáférést, és nem olvasási, írási és törlési hozzáférés az összes entitáshoz. Ez is segít, ha SAS sérült, mert a biztonsági Társítások kevesebb energiát a támadó tagoknál, így csökkentheti a sérülés.
 7. **Ismerje meg, hogy a fiók felüli használati díjakat, beleértve a SAS használatával végzett díjat kell fizetni.** Írási hozzáférés egy blobba ad meg, ha egy felhasználó dönthet úgy, hogy feltölt egy 200 GB-os blobot is. Feljogosított őket olvasási hozzáféréssel is, ha azok dönthet úgy is 10 alkalommal letöltheti 2 TB-os kellene a kimenő adatforgalmi költségek az Ön számára. Adja meg újra, a korlátozott engedélyekkel segítségével mérsékelhetik a rosszindulatú felhasználók a lehetséges műveletek. Rövid élettartamú SAS használatával csökkentheti a fenyegetés (de kell szem előtt tartva torzulása a befejezésének órája).
 8. **SAS használatával írt adatok érvényesítéséhez.** Amikor egy ügyfélalkalmazás a tárfiókba írja az adatokat, vegye figyelembe, hogy az az adatokkal kapcsolatos problémák lehetnek. Ha az alkalmazás adatokat érvényesítve vagy előtt, készen áll a használatra jogosult igényel, az ellenőrzés után írja az adatokat, és mielőtt az alkalmazás által kell végezni. Ez az eljárás sérült vagy rosszindulatú bájtnyi adat íródik a fiókjához, a felhasználó, aki megfelelően beszerzett SAS vagy egy felhasználó ártó szándékkal használja fel a kiszivárgott SAS szemben is védi.
-9. **Nem mindig használja az SAS.** Néha egy adott művelet tárfiókra járó kockázatok nyomósabbak SAS előnyeit. Az ilyen műveletek hozzon létre egy középső rétegű szolgáltatás, amely a storage-fiókjába ír üzleti elvégzése után érvényesítést, hitelesítési és naplózási szabály. Néha sokkal egyszerűbb, egyéb módon-hozzáférés kezelése. Például, ha szeretne egy tároló publicaly összes BLOB olvashatóvá, akkor is használhatja a tároló nyilvános, ahelyett, hogy hozzáférést biztosító SAS minden ügyfél számára.
+9. **Nem mindig használja az SAS.** Néha egy adott művelet tárfiókra járó kockázatok nyomósabbak SAS előnyeit. Az ilyen műveletek hozzon létre egy középső rétegű szolgáltatás, amely a storage-fiókjába ír üzleti elvégzése után érvényesítést, hitelesítési és naplózási szabály. Néha sokkal egyszerűbb, egyéb módon-hozzáférés kezelése. Például, ha meg szeretné olvashatóvá összes BLOB-tárolóban nyilvánosan, akkor is használhatja a tároló nyilvános, ahelyett, hogy hozzáférést biztosító SAS minden ügyfél számára.
 10. **A Storage Analytics segítségével figyelheti az alkalmazást.** Naplózás és mérőszámok segítségével bármely megnövekedett leállás miatt fellépő hitelesítési hibákkal figyelje meg, a SAS-szolgáltató szolgáltatásban vagy egy tárolt hozzáférési szabályzat nem szándékos eltávolítását. Tekintse meg a [Azure Storage csapat blogja](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx) további információt.
 
 ## <a name="sas-examples"></a>SAS-példák

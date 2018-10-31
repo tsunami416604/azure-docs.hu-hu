@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b3ee62ec6b8155841121eed6c4ab9c12b08f0e9b
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: f0c852b0b3de4edcf894d80ae397eae6c8980d49
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165218"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240409"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Kapcsolódás az Azure Analysis Services ügyfélkódtárak
 
@@ -59,7 +59,7 @@ A Microsoft ügyfélalkalmazások, mint a Power BI Desktop és az Excel mindhár
 
 ### <a name="amo"></a>AMO  
 
- AMO egy felügyeleti kiszolgáló és az adatok meghatározása használt felügyelt klienskódtár. Eszközök és az ügyfélalkalmazások által használt, és telepítve. Például az SQL Server Management Studio (SSMS) AMO Analysis Serviceshez való csatlakozáshoz használ. Egy AMO használatával kapcsolat általában minimális, amely `“data source=\<servername>”`. A kapcsolat létrejötte után az API-t használhatja az adatbázis-gyűjtemények és főobjektumok használata. Az SSDT és az SSMS AMO használatával csatlakozhat egy Analysis Services-példányhoz.  
+ AMO egy felügyeleti kiszolgáló és az adatok meghatározása használt felügyelt klienskódtár. Eszközök és az ügyfélalkalmazások által használt, és telepítve. Például az SQL Server Management Studio (SSMS) AMO Analysis Serviceshez való csatlakozáshoz használ. Egy AMO használatával kapcsolat általában minimális, amely `"data source=\<servername>"`. A kapcsolat létrejötte után az API-t használhatja az adatbázis-gyűjtemények és főobjektumok használata. Az SSDT és az SSMS AMO használatával csatlakozhat egy Analysis Services-példányhoz.  
 
   
 ### <a name="adomd"></a>ADOMD

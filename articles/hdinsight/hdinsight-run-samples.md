@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 59e6fd0a05374329efb20201c8d904cbbdc72b1a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 84c28eebc2bcf1bfdfcb0995f1caa05ed19629e2
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43110999"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250835"
 ---
 # <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Hadoop MapReduce-minták futtatása a Windows-alapú HDInsight
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
-Minták segítséget nyújt az első lépések futó MapReduce-feladatok használata Azure HDInsight Hadoop-fürtök a biztosított. Ezek a minták a HDInsight által felügyelt fürtöket, Ön által létrehozott minden egyes végrehajtott érhető el. Ezek a minták futtatása révén megismerkedhet a feladatok futtatásához a Hadoop-fürtök Azure PowerShell-parancsmagok használatával.
+Minták segítséget nyújt az első lépések futó MapReduce-feladatok használata Azure HDInsight Hadoop-fürtök a van megadva. Ezek a minták a HDInsight által felügyelt fürtöket, Ön által létrehozott minden egyes végrehajtott érhető el. Ezek a minták futtatása révén megismerkedhet a feladatok futtatásához a Hadoop-fürtök Azure PowerShell-parancsmagok használatával.
 
 * [**Szószámlálás**][hdinsight-sample-wordcount]: előfordulásait számláló egy szövegfájlba.
 * [**C# word-count streamelési**][hdinsight-sample-csharp-streaming]: előfordulásait számláló egy szövegfájlba, a Hadoop streamelési felületén.
@@ -167,7 +167,7 @@ Ehhez a mintához megadott parancsfájl egy Hadoop-jar feladatot, és értéke l
     ```
 
 ## <a name="hdinsight-sample-10gb-graysort"></a>10 GB-os Graysort
-Ez a minta egy szerény 10GB adatot használja, így viszonylag gyorsan futtatható. A MapReduce alkalmazások Owen O'Malley és Arun Murthy, amely az általános célú ("daytona") terabájt éves rendezési teljesítményteszt megnyert 0.578 TB/perc (100 TB-os 173 percek) arány 2009 által fejlesztett használ. Erről és más rendezési referenciaalapokhoz képest történő további információkért lásd: a [Sortbenchmark](http://sortbenchmark.org/) hely.
+Ez a minta egy szerény 10 GB adatot használja, így viszonylag gyorsan futtatható. A MapReduce alkalmazások Owen O'Malley és Arun Murthy, amely az általános célú ("daytona") terabájt éves rendezési teljesítményteszt megnyert 0.578 TB/perc (100 TB-os 173 percek) arány 2009 által fejlesztett használ. Erről és más rendezési referenciaalapokhoz képest történő további információkért lásd: a [Sortbenchmark](http://sortbenchmark.org/) hely.
 
 Ebben a példában három különböző MapReduce-programok:
 
@@ -211,7 +211,6 @@ Ez a cikk és az egyes, a minták a cikkeket útmutatóból megtudhatta, hogyan 
 * [A Pig használata a HDInsight Hadoop-keretrendszerrel][hdinsight-use-pig]
 * [A Hive használata a HDInsight Hadoop-keretrendszerrel][hdinsight-use-hive]
 * [A HDInsight Hadoop-feladatok elküldése][hdinsight-submit-jobs]
-* [Az Azure HDInsight SDK dokumentációja][hdinsight-sdk-documentation]
 
 ## <a name="appendix-a---the-word-count-source-code"></a>A függelék – a Word száma forráskód
 
@@ -977,8 +976,6 @@ public class TeraSort extends Configured implements Tool {
     }
 }
 ```
-
-[hdinsight-sdk-documentation]: https://msdn.microsoft.com/library/azure/dn479185.aspx
 
 [hdinsight-submit-jobs]: hadoop/submit-apache-hadoop-jobs-programmatically.md
 [hdinsight-introduction]:hadoop/apache-hadoop-introduction.md

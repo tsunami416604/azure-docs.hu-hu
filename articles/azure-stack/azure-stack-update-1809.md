@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2018
+ms.date: 10/29/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: d80e7bc1d391d9b5bfd718ca2dc0e9dc7ecb2268
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 38a8cd35d123f58d6379ade4d900e86b36b416ec
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210873"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240137"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 frissítése
 
@@ -39,7 +39,7 @@ Az Azure Stack 1809 frissítés buildszáma **1.1809.0.90**.
 
 Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza:
 
-- Ezzel a kiadással az Azure Stackkel integrált rendszerek által támogatott konfigurációk 4 és 16 közötti csomópontok.
+- Ezzel a kiadással az Azure Stackkel integrált rendszerek által támogatott konfigurációk 4 és 16 közötti csomópontok. Használhatja a [Azure Stack Capacity Planner](http://aka.ms/azstackcapacityplanner) az Azure Stack-kapacitás és a konfiguráció megtervezéséhez.
 
 - <!--  2712869   | IS  ASDK -->  **Azure Stack syslog-ügyfél (nyilvánosan elérhetők)** az ügyfél lehetővé teszi, hogy a naplózás, a riasztások és a syslog server vagy a biztonsági biztonságiadat- és eseménykezelés (SIEM) felügyeleti szoftverek az Azure Stack infrastruktúrájának biztonsági naplók továbbítását külső az Azure Stackhez. A syslog-ügyfél már támogatja a portot, amelyen a syslog-kiszolgáló figyel.
 

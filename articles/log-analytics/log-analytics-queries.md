@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 0340a4d527023c050e2c776d31c02b59161a1316
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 904502e5c73127cca7920da2173edd013e55762f
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429473"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242245"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Az Azure monitorban Log Analytics-adatok elemzése
 
-Az Azure Monitor által gyűjtött naplóadatok a Log Analytics, amely telemetriai és egyéb adatokat gyűjt különböző forrásokból, és a egy lekérdezési nyelvet biztosít a fejlett analitikai tárolódik.
+Log Analytics-munkaterületet, amely alapján a tárolt naplóadatokat az Azure Monitor által gyűjtött [Azure adatkezelő](/data-explorer). Különböző forrásokból származó telemetriai adatokat gyűjti és használja a [lekérdezési nyelv az adatkezelő](/kusto) lekérése és elemzéséhez.
 
 > [!NOTE]
 > A log Analytics korábban volt kezelni saját szolgáltatása az Azure-ban. Az Azure Monitor egy részének most számít és a tárolási és elemzése a lekérdezési nyelv segítségével naplóadatok összpontosít. Log Analytics Windows és Linux-ügynökök az adatgyűjtés, a nézetek megjelenítése a meglévő adatok és riasztások segítségével proaktívan kaphat értesítést problémák, például részének tekintendők funkciók nem változtak, de most az Azure Monitor részének tekinthetők.
@@ -51,7 +51,7 @@ A különböző módon, hogy a Log Analytics lekérdezések használja a követk
 ![Naplókeresések](media/log-analytics-queries/queries-overview.png)
 
 ## <a name="write-a-query"></a>A lekérdezés írása
-A log Analytics biztosít [egy részletes lekérdezési nyelvet](query-language/get-started-queries.md) , amely lehetővé teszi lekérni, és elemezheti a naplófájlok adatait egy számos különböző módon.  Általában megkezdi az alapvető lekérdezések, és majd a Speciális függvények igényeinek egyre összetettebb halad.
+Log Analytics használati [az adatkezelő lekérdezési nyelv egy verziója](query-language/get-started-queries.md) lekérésére és elemezheti a naplófájlok adatait egy számos különböző módon.  Általában megkezdi az alapvető lekérdezések, és majd a Speciális függvények igényeinek egyre összetettebb halad.
 
 Az alapszintű struktúrát egy lekérdezés az operátorok függőleges vonás karakterrel elválasztott sorozatát követ forrástábla `|`.  Láncolhatja össze több operátor pontosítsa az adatokat, és végezze el a speciális funkciók.
 

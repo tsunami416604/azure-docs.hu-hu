@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 049f5211e800dace4b8968cd9e3db9ad968f8813
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: c4071da60ed1311d8dd75d6a369c48cf711778cb
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050746"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50243214"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Létrehozhatja és üzembe helyezheti a mikroszolgáltatások kiszámítható módon az Azure-ban
 Ez az oktatóanyag bemutatja, hogyan létrehozása és üzembe helyezése egy alkalmazás összetevői [mikroszolgáltatások](https://en.wikipedia.org/wiki/Microservices) a [Azure App Service](https://azure.microsoft.com/services/app-service/) egyetlen egységként, és a egy erőforráscsoport-sablonok JSON használatával kiszámítható módon és PowerShell-parancsprogramok. 
@@ -148,7 +148,7 @@ A beállítások egy beágyazott erőforrást is vannak meghatározva.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-6-webappsettings.png)
 
-Az a `properties` eleme `config/appsettings`, a következő formátumban van két alkalmazás beállítását `“<name>” : “<value>”`.
+Az a `properties` eleme `config/appsettings`, a következő formátumban van két alkalmazás beállítását `"<name>" : "<value>"`.
 
 * `PROJECT` van egy [KUDU beállítás](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) , amely közli, az Azure-telepítés használata több projektet a Visual Studio-megoldásban projektet. Bemutatom majd, hogyan később verziókövetés van konfigurálva, de mivel a ToDoApp kód több projektet a Visual Studio-megoldásban, ezt a beállítást kell.
 * `clientUrl` az egyszerűen egy alkalmazás, beállítás, amely az alkalmazáskód használja.
@@ -158,7 +158,7 @@ A kapcsolati karakterláncok egy beágyazott erőforrást is vannak meghatározv
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
 
-Az a `properties` eleme `config/connectionstrings`, minden egyes kapcsolati karakterláncot is definiálva van: név-érték párban, meghatározott formátumban `“<name>” : {“value”: “…”, “type”: “…”}`. Az a `type` elem, a lehetséges értékek: `MySql`, `SQLServer`, `SQLAzure`, és `Custom`.
+Az a `properties` eleme `config/connectionstrings`, minden egyes kapcsolati karakterláncot is definiálva van: név-érték párban, meghatározott formátumban `"<name>" : {"value": "…", "type": "…"}`. Az a `type` elem, a lehetséges értékek: `MySql`, `SQLServer`, `SQLAzure`, és `Custom`.
 
 > [!TIP]
 > A kapcsolati karakterlánc típusú végleges listájának megjelenítéséhez futtassa a következő parancsot az Azure PowerShell: \[Enum]::GetNames("Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")

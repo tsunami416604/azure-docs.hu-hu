@@ -1,6 +1,6 @@
 ---
-title: Hogyan hibrid konfigurálása Azure Active Directoryhoz csatlakoztatott eszközök |} A Microsoft Docs
-description: Megtudhatja, hogyan konfigurálhatja a hibrid Azure Active Directoryhoz csatlakoztatott eszközökön.
+title: Hibrid Azure Active Directory-csatlakoztatott eszközök konfigurálása | Microsoft Docs
+description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja a hibrid Azure Active Directory-csatlakoztatott eszközöket.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,27 +13,27 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 10/29/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 12d3b358be8bb90b63e5e7310123f8ae7093994c
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 28344ac7c50b48b472ba6f907b116b3b202de454
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190272"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238797"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>A hibrid Azure Active Directory join megvalósítás tervezése
 
-Hasonló módon a felhasználó eszköz neve lesz a védelmét, és az erőforrások védelméhez bármely időben és helyen is használja egy másik identitás. A cél, és az eszközök identitásokat az Azure AD a következő módszerek egyikének használatával végezheti el:
+A felhasználókhoz hasonlóan az eszközök is olyan identitásokká válnak, amelyeket mindig, mindenhol védelem alatt tartunk, illetve felhasználunk az erőforrásaink védelméhez. Ezt úgy tehetjük meg, ha az eszközök identitásait bevonjuk az Azure AD-be, a következő módszerek egyikével:
 
 - Azure AD-csatlakozás
 - Hibrid Azure AD-csatlakozás
 - Azure AD-regisztráció
 
-Biztosítja az eszközök Azure ad-hez, a felhőalapú és helyszíni erőforrások a felhasználók hatékonyságát egyszeri bejelentkezés (SSO) maximalizálása meg. Egy időben, hozzáférés gondoskodhat a felhőbeli és helyszíni erőforrások [feltételes hozzáférési](../active-directory-conditional-access-azure-portal.md).
+Az Azure AD-be való bevonással maximalizálható a felhasználók munkahatékonysága, köszönhetően az egyszeri bejelentkezésnek (SSO), amely a felhőbeli és a helyszíni erőforrásokhoz is hozzáférést nyújt. Ugyanakkor a felhőbeli és a helyszíni erőforrások hozzáférése külön [feltételes hozzáférésekkel](../active-directory-conditional-access-azure-portal.md) is biztosítható.
 
-Ha rendelkezik a helyszíni Active Directory-környezetben, és azt szeretné, a tartományhoz csatlakoztatott eszközök csatlakoztatása az Azure ad-ben, ez elvégezhető a hibrid Azure AD-csatlakoztatott eszközök konfigurálásával. Ez a cikk ismerteti, és a kapcsolódó lépéseket kell végrehajtani egy hibrid Azure AD join a környezetben. 
+Ha helyszíni Active Directory-környezettel rendelkezik, és csatlakoztatni szeretné a tartományokhoz csatlakoztatott eszközeit az Azure AD-hoz, ezt hibrid Azure AD-csatlakoztatott eszközök konfigurálásával teheti meg. Ez a cikk ismerteti, és a kapcsolódó lépéseket kell végrehajtani egy hibrid Azure AD join a környezetben. 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -95,18 +95,18 @@ Megbízható függő entitásokat a rendszer-előkészítő eszköz (Sysprep), h
 
 Ha további virtuális gépek létrehozása egy virtuális gép (VM) pillanatképre, győződjön meg arról, hibrid Azure AD-csatlakozás a virtuális gép pillanatképét, amely nincs konfigurálva használhat.
 
-A Windows régebbi verziójú eszközök regisztrálása nem támogatott eszközök felhasználói profil központi vagy a hitelesítő adatok barangolás konfigurálva. Ha Ön hagyatkoznia a barangoló profilok vagy a beállítások, használja a Windows 10-es.
+Hibrid Azure AD-csatlakozás régebbi verziójú Windows-eszközök:
 
-- A Windows régebbi verziójú eszközök regisztrációja **van** nem összevont környezetben keresztül zökkenőmentes egyszeri bejelentkezést támogatja [Azure Active Directory zökkenőmentes egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start). 
- 
-- A Windows régebbi verziójú eszközök regisztrációja **nem** nélkül zökkenőmentes egyszeri bejelentkezést az Azure AD átmenő hitelesítés használata esetén támogatott.
+- **Van** nem összevont környezetben keresztül támogatott [Azure Active Directory zökkenőmentes egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start). 
 
-- A Windows régebbi verziójú eszközök regisztrációja **nem** barangoló profilok használó eszközök esetében támogatott. Ha Ön hagyatkoznia a barangoló profilok vagy a beállítások, használja a Windows 10-es.
+- **Nem** nélkül zökkenőmentes egyszeri bejelentkezést az Azure AD átmenő hitelesítés használata esetén támogatott.
+
+- **Nem** hitelesítő adatokat a központi vagy a barangoló felhasználói profil használata vagy a virtuális asztali infrastruktúra (VDI) használata esetén támogatott.
 
 
 A regisztráció, a tartományvezérlőn (DC) szerepkört futtató Windows Server nem támogatott.
 
-Ha a szervezet az interneten keresztül egy hitelesített kimenő proxy hozzáférésre van szüksége, győződjön meg arról, hogy a Windows 10-es számítógépek és a kimenő proxy sikeresen hitelesítik. Windows 10-es számítógépek számítógép-környezet használatával történő eszközregisztrációval futtatni, mivel, használatával a számítógép-környezet kimenő proxy-hitelesítés konfigurálása szükséges.
+Ha a szervezet egy hitelesített kimenő proxy használatát írja elő az internethez való csatlakozáshoz, gondoskodni kell arról, hogy a Windows 10 rendszerű számítógépek sikeres hitelesítést tudjanak végezni a kimenő proxyval. Mivel a Windows 10-es számítógépek az eszközregisztrációt gépi kontextusban futtatják, a kimenő proxy hitelesítését is gépi kontextus használatával kell konfigurálni.
 
 
 Hibrid Azure AD-csatlakozás egy olyan folyamat, automatikusan regisztrálja az Azure AD a helyi tartományhoz csatlakoztatott eszközök. Előfordulhatnak olyan esetek, amikor nem szeretné automatikusan regisztrálja az eszközök. Ha ez igaz az Ön számára, lásd: [eszközt, a hibrid Azure AD join vezérlése](hybrid-azuread-join-control.md).
@@ -128,7 +128,7 @@ Ha a környezet rendelkezik felügyelt tartományok, a hibrid Azure AD-csatlakoz
 
 - A zökkenőmentes egyszeri bejelentkezés (SSO) (nál) Jelszókivonat-szinkronizálás 
 
-1.1.819.0 verzióval kezdve az Azure AD Connect biztosít a hibrid Azure AD-csatlakozás konfigurálása varázsló segítségével. A varázsló lehetővé teszi a jelentősen megkönnyíti a konfigurációs folyamat. További információkért lásd:
+Az 1.1.819.0-s verziótól kezdve az Azure AD Connectben egy varázsló segíti a hibrid Azure AD-csatlakozások konfigurálását. Ez a varázsló jelentősen leegyszerűsíti a konfigurálási folyamatot. További információkért lásd:
 
 - [A hibrid Azure Active Directory-csatlakozás konfigurálása összevont tartományokhoz](hybrid-azuread-join-federated-domains.md)
 

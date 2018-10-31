@@ -1,10 +1,10 @@
 ---
-title: Egy eszköz kódolása a Media Encoder Standard Azure-portálon |} Microsoft Docs
-description: Ez az oktatóanyag végigvezeti a kódolási eszközként az Azure-portálon a Media Encoder Standard használatával.
+title: Adategység kódolása a Media Encoder Standard használatával az Azure Portalon |} A Microsoft Docs
+description: Ez az oktatóanyag végigvezeti a lépéseken, egy eszköz kódolás a Media Encoder Standard használatával az Azure Portalon.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 107d9e9a-71e9-43e5-b17c-6e00983aceab
 ms.service: media-services
@@ -12,33 +12,33 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 470eb8613416f441c1becee628acf3c898591c84
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 958c53108c024cb349922a1bd10b2cdc2dba41a3
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790222"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247282"
 ---
-# <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>Egy eszköz kódolása a Media Encoder Standard Azure-portálon
+# <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>Adategység kódolása a Media Encoder Standard használatával az Azure Portalon
 
 > [!NOTE]
 > Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További részletek: [Ingyenes Azure-próbafiók](https://azure.microsoft.com/pricing/free-trial/). 
 > 
 > 
 
-A leggyakoribb forgatókönyve az, hogy működik-e az Azure Media Services egyik elkötelezett adaptív sávszélességű streamelés az ügyfelek számára. Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming és dinamikus adaptív adatfolyam-(kötőjel, más néven MPEG-DASH) http Protokollon keresztül. Az adaptív sávszélességű streamelés videók előkészítéséhez kódolás kimenete a forrás videó többszörös sávszélességű fájlként. Azure Media Encoder Standard segítségével a videók kódolásához.  
+A leggyakoribb forgatókönyvek az Azure Media Services az egyik forgatókönyve az adaptív sávszélességű streamelés az ügyfelek felé. Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming és dinamikus adaptív Streamelés (DASH, más néven MPEG-DASH) HTTP protokollon keresztül. Pedig előkészítheti a videók adaptív sávszélességű streamelés, először kódolnia a forrásvideókat többszörös sávszélességű MP4-fájlok formájában. Az Azure Media Encoder Standard használatával a videók kódolásához.  
 
-A Media Services biztosítja a dinamikus csomagolás lehetőségét. A dinamikus csomagolás biztosíthat a többszörös sávszélességű MP4 HLS, Smooth Streaming és MPEG-DASH, anélkül, hogy újból létre kell hozni az ezekbe a formátumokba. Dinamikus becsomagolás használatakor tárolhatnak, és a fájlok egyetlen-tárolási formátumban kell fizetnie. A Media Services alapszik, és betölti az ügyfél által kért a megfelelő választ.
+A Media Services biztosítja a dinamikus csomagolás lehetőségét. A dinamikus csomagolás, a többszörös átviteli sebességű MP4-fájlnak a HLS, Smooth Streaming és MPEG-DASH, anélkül, hogy az ezekbe a formátumokba újracsomagolás juttathat el. Ha a dinamikus csomagolás használ, tárolja, és a fájlokat egyetlen tárolási formátumban kell fizetnie. A Media Services összeállítja és szolgálja ki a megfelelő választ az ügyfél által kért.
 
-Annak érdekében, hogy kihasználhassa a dinamikus csomagolást, kódolja többszörös sávszélességű MP4-fájlokká a forrásfájlt. A kódolás lépéseit egy a cikk későbbi részében.
+Annak érdekében, hogy kihasználhassa a dinamikus csomagolást, kódolja többszörös sávszélességű MP4-fájlokká a forrásfájlt. A kódolás lépéseit a cikk későbbi részében találja meg.
 
-Media feldolgozási méretezése kapcsolatban [skálázása az Azure portál használatával feldolgozása media](media-services-portal-scale-media-processing.md).
+Méretezhető médiafeldolgozás kezelésével kapcsolatos információkért lásd: [méretezése az Azure portal használatával médiafeldolgozási](media-services-portal-scale-media-processing.md).
 
-## <a name="encode-in-the-azure-portal"></a>Az Azure portálon kódolása
+## <a name="encode-in-the-azure-portal"></a>Az Azure Portalon kódolása
 
-A tartalom kódolni Media Encoder Standard használatával:
+Kódolás a Media Encoder Standard használatával:
 
 1. Az [Azure-portálon](https://portal.azure.com/) válassza ki Azure Media Services-fiókját.
 2. Válassza a **Settgings (Beállítások)** > **Assets (Objektumok)** lehetőséget. Válassza ki a kódolni kívánt objektumot.
@@ -57,5 +57,5 @@ A tartalom kódolni Media Encoder Standard használatával:
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>További lépések
-* [A kódolási feladat előrehaladásának figyeléséhez](media-services-portal-check-job-progress.md) az Azure portálon.  
+* [A kódolási feladat előrehaladásának figyeléséhez](media-services-portal-check-job-progress.md) az Azure Portalon.  
 

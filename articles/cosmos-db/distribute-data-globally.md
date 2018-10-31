@@ -7,45 +7,46 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 10/26/2018
 ms.author: mjbrown
-ms.openlocfilehash: 227c243d82665dc533e3bfa6a1fe3e9bb775a262
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 68ac603964593892dfcbc3488b4e6f2c91a0eb92
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408895"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238274"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db"></a>Az Azure Cosmos DB globális terjesztési
 
-Az Azure széles körben használt – Ez egy globális lefedettséggel rendelkezik több mint 50 földrajzi régióban, és folyamatosan bővülnek. A globális jelenlét és több főkiszolgálós támogatással elkészítheti, telepítheti és globálisan elosztott alkalmazások egyszerű kezelés lehetővé teszi a fejlesztők számára kínál az Azure egyedi képességeit egyik célja.
+A napjaink alkalmazásai számos futtathatja, vagy rendelkezik ambitions világra futtatásához. Ezek mindig működnek, és a felhasználók számára a világ minden pontján elérhető. A globális terjesztés, miközben nagy teljesítményű és magas rendelkezésre állást biztosít az alkalmazások által használt adatok kezelése rögzített probléma. A cosmos DB egy globálisan elosztott adatbázis-szolgáltatás, amely rendelkezik lett kihasználására tervezett egészen az alapoktól be a fenti kérdések megválaszolása.
 
-Az [Azure Cosmos DB](../cosmos-db/introduction.md) a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása az alapvető fontosságú alkalmazásokhoz. Azure Cosmos DB biztosítja a kulcsrakész globális disztribúciót, [átviteli sebesség és tárterület rugalmas méretezését](../cosmos-db/partition-data.md) világszerte, egyjegyű olvasási és írási ezredmásodperces késés 99 százalékon [jól definiált modellek](consistency-levels.md), és garantált magas rendelkezésre állású, mindezt [iparágvezető átfogó SLA-k](https://azure.microsoft.com/support/legal/sla/cosmos-db/). Az Azure Cosmos DB [automatikusan indexeli az összes adatot](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) anélkül, hogy sémákkal vagy indexkezeléssel foglalkozik.
+A cosmos DB egy alapvető Azure-szolgáltatás, amely az összes elérhető [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/) alapértelmezés szerint. A Microsoft Azure-adatközpontokban világszerte több mint 50 régióban működik, és tovább bővíti az ügyfelek növekvő igényeknek. A Microsoft üzemelteti a Cosmos DB szolgáltatás 24/7, így Ön az alkalmazásokra koncentrálhat. Amikor létrehoz egy Cosmos DB-fiókot, döntse el szeretné helyezni a vásárlásom.
 
-## <a name="global-distribution-with-multi-master"></a>Több főkiszolgálós globális terjesztés
+Cosmos DB-ügyfelek a globálisan elosztott és elérhető az 1-től bárhol 50 + Azure-régiók adatbázisaikat konfigurálhatja. Csökkentheti a késést, érdemes a helyezze közelebb a felhasználó tartózkodási helyén, így a régiók mellett dönt, és az, hogy melyik régiót kell futtatni attól függ, a globális elérni az alkalmazást, és hol találhatók a felhasználók. A cosmos DB transzparensen replikálja az Cosmos-fiókban lévő összes adatot a konfigurált régiók. A cosmos DB a Cosmos-adatbázis és a tárolók, egyetlen rendszerképet biztosít az, hogy az alkalmazás olvashat és írhat helyileg. A Cosmos DB használatával adja hozzá, vagy távolítsa el a bármikor a fiókjához társított régiók. Az alkalmazás nem kell szüneteltetve vagy újratelepítése, és továbbra is magas rendelkezésre állású kiszolgáló mindig köszönhetően, amely a szolgáltatás biztosít a többkiszolgálós képességekkel.
 
-Felhőalapú szolgáltatásként az Azure Cosmos DB gondosan kategóriában a több-bérlős, a globális terjesztés és a több főkiszolgálós a dokumentum, kulcs-érték, gráf és oszlopcsalád-adatmodelleket.
+## <a name="key-benefits-of-global-distribution"></a>Fő előnyei a globális terjesztés
 
-![Az Azure Cosmos DB-tárolók particionált, és az elosztott három régióban](./media/distribute-data-globally/global-apps.png)
+**Alkalmazásfejlesztés globális aktív-aktív, egyszerűen**: több főkiszolgálós képessége lehetővé teszi, minden régióban (mellett olvasható) írható, korlátlan rugalmas engedélyezése írás méretezhetősége, 99,999 %-os olvasási és írási, a világ minden tájáról, és garantált gyors olvasások és írások kevesebb mint 10 ezredmásodperc, 99 százalékon szolgálja ki.  
 
-**Egyetlen Azure Cosmos DB-tároló particionált, és több Azure-régiók között elosztva**
+Az Azure Cosmos DB többkiszolgálós API-k, az alkalmazás mindig tudni fogja a legközelebbi régió, és kérelmet küld az adott régióban. Konfigurációs módosítások nélkül legközelebbi régiót azonosítja. Adjon hozzá vagy távolít el a régióban a Cosmos DB-fiókja, az alkalmazás nem kell újra el kell végezni, és továbbra is magas rendelkezésre állású legyen.
 
-Ahogy megtudtuk rendelkezik Azure Cosmos DB létrehozása közben, globális terjesztés hozzáadása nem másodrangú ügyként kezelni. Nem lehet "menetes az" egy "egyszeri" adatbázis helyrendszer interaktív irányítópultunkat. Egy globálisan elosztott adatbázis által kínált funkciók kiterjednek az olyan hagyományos földrajzi vész-helyreállítási (Geo-DR) "egyhelyes" adatbázisok által kínált által nyújtott szolgáltatások mellett. Egyetlen hely adatbázisok Geo-DR-funkciót kínál a egy szigorú alkészletéből állnak a globálisan elosztott adatbázisok.
+**Reagáló alkalmazásokat készíthet**: az alkalmazás könnyedén megtervezhetők úgy, a közel valós idejű olvasási és írási, egyszámjegyű ezredmásodperces késleltetéssel, szemben az összes régióban az adatbázis választotta.  Az Azure Cosmos DB belsőleg kezeli az adatreplikáció úgy, hogy garantálja a Cosmos-fiók választott konzisztenciaszinttől-régiók között.
 
-Az Azure Cosmos DB kulcsrakész globális disztribúciót a fejlesztők nem rendelkezik a saját replikációs szerkezetkialakító hozhat létre, az adatbázis naplója keresztül Lambda minta alkalmazó, vagy "dupla írások" végrehajtása több régióban. Végzünk *nem* ezek a módszerek ajánljuk, mivel nem lehetséges, az ilyen megközelítés majd eredményes SLA-kat biztosít.
+Számos alkalmazásban a teljesítményt érintő továbbfejlesztés többrégiós (helyi) írási műveletek elvégzésének képességét a élvezheti. Egyes alkalmazások, például azokkal, amelyek igényelnek erős konzisztencia, a tölcsér összes írási művelet egyetlen régióban történő részesíti előnyben. A cosmos DB támogatja a konfigurációk, a egyrégiós és többrégiós.
+
+**Magas rendelkezésre állású alkalmazásokat készíthet**: egy adatbázis több régióban üzemelő javítja az adatbázis rendelkezésre állását. Ha egy régió elérhetetlenné válik, más régiókban automatikusan fogja kezelni az alkalmazásokra irányuló kérések. Az Azure Cosmos DB kínál 99,999 %-os írási és olvasási többrégiós adatbázisok rendelkezésre állását.
+
+**Üzletmenet-folytonossági során a regionális üzemkimaradások utáni helyreállításon**: Azure Cosmos DB támogatja a [automatikus feladatátvétel](how-to-manage-database-account.md#enable-automatic-failover-for-your-cosmos-account) egy regionális kimaradás során. Ezen felül egy regionális kimaradás során Cosmos DB továbbra is a késés, a rendelkezésre állási, a konzisztencia és az átviteli SLA-k kezelése. Annak biztosítására, a teljes alkalmazás nem magas rendelkezésre állású, az Azure Cosmos DB manuális feladatátvétel API-t egy regionális kimaradás szimulálása kínál. Ez az API használatával rendszeres üzleti folytonossági gyakorlatok végrehajtása, és készen áll.
+
+**Globális írási és olvasási méretezhetőség**: több főkiszolgálós képességgel rugalmasan skálázhatja olvasási és írási átviteli sebesség a világ minden tájáról. Több főkiszolgálós funkció biztosítja, hogy az átviteli sebességet, hogy az alkalmazás konfigurálása egy Azure Cosmos DB adatbázison, vagy egy tárolót az összes régióban elérhető, valamint által védett [pénzügyileg támogatott SLA-k](https://aka.ms/acdbsla).
+
+**Többszörös, jól definiált konzisztenciamodellekkel**: Azure Cosmos DB replikációs protokoll, amelyet az öt jól definiált, gyakorlati kínál, és intuitív konzisztencia a konzisztencia és a teljesítmény egyértelmű magával az egyes modellek. Ezek konzisztenciamodell lehetővé teszi egyszerű megfelelő globálisan elosztott alkalmazásokat hozhat létre.
 
 ## <a id="Next Steps"></a>Következő lépések
 
-* [Hogyan teszi lehetővé az Azure Cosmos DB a kulcsrakész globális terjesztés](distribute-data-globally-turnkey.md)
+További információ a globális terjesztés, az alábbi cikkeket:
 
-* [Az Azure Cosmos DB globális terjesztésének előnyei](distribute-data-globally-benefits.md)
-
-* [Azure Cosmos DB globális adatbázis-replikáció konfigurálása](tutorial-global-distribution-sql-api.md)
-
-* [Azure Cosmos DB-fiókok több főkiszolgálós engedélyezése](enable-multi-master.md)
-
-* [Az Azure Cosmos DB automatikus és kézi feladatátvételi működése](regional-failover.md)
-
-* [Az Azure Cosmos DB ütközésfeloldás ismertetése](multi-master-conflict-resolution.md)
-
-* [több főkiszolgálós használata a nyílt forráskódú NoSQL-adatbázisok](multi-master-oss-nosql.md)
+* [Globális terjesztés – technikai részletek](global-dist-under-the-hood.md)
+* [A többkiszolgálós ügyfelek konfigurálása](how-to-manage-database-account.md#configure-clients-for-multi-homing)
+* [Hogyan régiók hozzáadása/eltávolítása az adatbázisból](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+* [Egy egyéni ütközésfeloldási házirend SQL API-fiókok létrehozása](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

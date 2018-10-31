@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: 251d1a187c2a6742c361349274fd1e0bb1e41525
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 2dc81a96f1e83c3a6b1ddee92f57b2f0bae4196d
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817149"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248916"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Létrehozhat és konfigurálhat egy saját üzemeltetésű integrációs modul
 Az integrációs modul (IR) a számítási infrastruktúra, amellyel Azure Data Factory adatintegrációs képességeket biztosítja különböző hálózati környezetekben. Integrációs modul kapcsolatos részletekért lásd: [Integration runtime áttekintése](concepts-integration-runtime.md).
@@ -146,6 +146,8 @@ Az alábbiakban az integrációsmodul-csomópontot integrációs közötti kommu
 ## <a name="sharing-the-self-hosted-integration-runtime-with-multiple-data-factories"></a>A saját üzemeltetésű integrációs modul osztanak meg több adat-előállítók
 
 Használhat egy meglévő saját üzemeltetésű integrációs modul infrastruktúra, amely korábban már beállított egy adat-előállítóban. Ez lehetővé teszi, hogy hozzon létre egy *társított saját üzemeltetésű integrációs modul* a másik egy meglévő hivatkozva factory saját üzemeltetésű IR (megosztott).
+
+Szeretne megosztani egy saját üzemeltetésű integrációs modult használja a Powershellt, tekintse meg a [megosztott saját üzemeltetésű integrációs modul létrehozása az Azure Data Factoryban a PowerShell-lel](create-shared-self-hosted-integration-runtime-powershell.md).
 
 ### <a name="terminology"></a>Terminológia
 

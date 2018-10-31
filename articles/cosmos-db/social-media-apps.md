@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: maquaran
-ms.openlocfilehash: 5c916f847bf5098145c3ed14fad87c7669d916c8
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 3c97c89bde40357981d82dce8dd53febff25c8f3
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222692"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239882"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Közösségi tartalom az Azure Cosmos DB használatával
 Egy nagy mértékben összekapcsolt társadalom élő azt jelenti, hogy életre valamely pontján, részévé válik a **közösségi hálózati**. Használhat közösségi hálózatokkal, hogy barátai, munkatársai, termékcsalád vagy más néven közös érdeklődési rendelkező személyek a szenvedélyét megosztani.
@@ -233,7 +233,7 @@ Mi történik, ha a dolgok jobbak és a felhasználók egy másik régióba, ors
 
 Várjon..., de hamarosan kiderülhet a platform élményt nem optimális; azok, amennyiben a működési forrásadatok, hogy a késés Félelmetes, és természetesen nem szeretné, lépjen ki. Ha csak egy egyszerű módja volt **kiterjesztése a globális jelenlét**... de!
 
-A cosmos DB lehetővé teszi, hogy [replikálja adatait globálisan](../cosmos-db/tutorial-global-distribution-sql-api.md) és transzparens módon mindössze pár kattintással, és automatikusan a rendelkezésre álló régiók közül választhat a [Ügyfélkód](../cosmos-db/tutorial-global-distribution-sql-api.md). Ez azt is jelenti, hogy is [több, feladatátvételi régióban](regional-failover.md). 
+A cosmos DB lehetővé teszi, hogy [replikálja adatait globálisan](../cosmos-db/tutorial-global-distribution-sql-api.md) és transzparens módon mindössze pár kattintással, és automatikusan a rendelkezésre álló régiók közül választhat a [Ügyfélkód](../cosmos-db/tutorial-global-distribution-sql-api.md). Ez azt is jelenti, hogy is [több, feladatátvételi régióban](high-availability.md). 
 
 Ha az adatok globális replikálása, győződjön meg arról, hogy az ügyfelek kihasználhatják ezt kell. Ha a webes előtérrendszer használata vagy API-k elérése a mobileszközről, telepíthet [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) , illetve klónozza őket az Azure App Service összes kívánt régiókhoz,-teljesítmény konfigurációt támogatása a kiterjesztett globális lefedettség. Amikor az ügyfelek hozzáférnek az előtér- vagy API-k, azok lesznek átirányítva a legközelebbi alkalmazás szolgáltatása, amely ezután kapcsolódik a Cosmos DB helyi replika.
 

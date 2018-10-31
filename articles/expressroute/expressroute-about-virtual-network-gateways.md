@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 10/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 34d84a27406f0ebabd7bca576ee443da1d0c9bcd
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: bc48101decce9a92a01b8e6958bed08850a94b7e
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348804"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241395"
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>Az ExpressRoute virtuális hálózati átjáróinak ismertetése
 A virtuális hálózati átjáró Azure virtuális hálózatok közötti hálózati adatforgalom elküldésére használatosak, és a helyszínek. Használhatja egy virtuális hálózati átjáró vagy ExpressRoute-forgalmat, vagy VPN-forgalmat is használható. Ez a cikk az ExpressRoute virtuális hálózati átjárók összpontosít.
@@ -62,7 +62,7 @@ További technikai erőforrások és a megadott szintaxissal kapcsolatos követe
 
 | **Klasszikus** | **Resource Manager** |
 | --- | --- |
-| [PowerShell](https://msdn.microsoft.com/library/mt270335.aspx) |[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.network#networking) |
+| [PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#azure) |[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.network#networking) |
 | [REST API](https://msdn.microsoft.com/library/jj154113.aspx) |[REST API](https://msdn.microsoft.com/library/mt163859.aspx) |
 
 ## <a name="next-steps"></a>További lépések

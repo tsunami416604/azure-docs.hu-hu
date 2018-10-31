@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 701373efa3c3c22eb5969705927e1c0cc6e3f36b
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 7f5e1f2141a58f666367d253d5fc313499e64c9f
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215804"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239390"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Az Azure virtuális Gépen RDP általános hiba elhárítása
 
 Ez a cikk ismerteti egy általános hibát tapasztalhat, ha a kapcsolat létrehozása távoli asztal protokoll (RDP) a Windows virtuális gép (VM) az Azure-ban.
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptom"></a>Jelenség
 
 Ha egy RDP-kapcsolat ablak virtuális géphez az Azure-ban, a következő általános hibaüzenet jelenhet meg:
 
@@ -61,11 +61,11 @@ Az RDP-figyelő helytelenül van konfigurálva.
 
 ## <a name="solution"></a>Megoldás
 
-Ez a probléma megoldásához [készítsen biztonsági másolatot az operációsrendszer-lemez](../windows/snapshot-copy-managed-disk.md), és [az operációsrendszer-lemez csatolása a virtuális gép mentési](troubleshoot-recovery-disks-portal-windows.md), majd hajtsa végre a megoldási lehetőségeket az ennek megfelelően, vagy próbálja ki a megoldásokat, egyenként.
+Ez a probléma megoldásához [készítsen biztonsági másolatot az operációsrendszer-lemez](../windows/snapshot-copy-managed-disk.md), és [az operációsrendszer-lemez csatolása a virtuális gép mentési](troubleshoot-recovery-disks-portal-windows.md), majd kövesse a lépéseket.
 
 ### <a name="serial-console"></a>Soros konzol
 
-#### <a name="step-1-turn-on-remote-desk"></a>1. lépés: Távoli asztali bekapcsolása
+#### <a name="step-1-turn-on-remote-deskop"></a>1. lépés: Távoli asztali bekapcsolása
 
 1. Hozzáférés a [soros konzol](serial-console-windows.md) kiválasztásával **támogatás és hibaelhárítás** > **soros konzol (előzetes verzió)**. A szolgáltatás engedélyezve van a virtuális gépen, a virtuális gép sikeresen csatlakoztathatja.
 
@@ -76,14 +76,7 @@ Ez a probléma megoldásához [készítsen biztonsági másolatot az operációs
    ```
    ch -si 1
    ```
-
-4. A távoli asztal engedélyezése a csoportházirend-objektum csoportházirend segítségével úgy módosítja a következő szabályzatot:
-
-   ```
-   Computer Configuration\Policies\Administrative Templates: Policy definitions\Windows Components\Remote Desktop Services\Remote Desktop Session Host\Connections\Allow users to connect remotely by using Remote Desktop Services
-   ```
-
-5. Néhány más beállításkulcsok, amelyek a probléma, ellenőrizze a a beállításkulcsokat a következő:
+4. Ellenőrizze a a beállításkulcsokat a következőképpen:
 
    1. Győződjön meg arról, hogy engedélyezve van-e az RDP-összetevő.
 
@@ -97,7 +90,7 @@ Ez a probléma megoldásához [készítsen biztonsági másolatot az operációs
 
       Ha a tartományi házirend létezik, a rendszer felülírja a telepítőt a helyi házirend.
 
-         - Ha a tartományi házirend arról, hogy RDP letiltva (1), majd az AD-házirend frissítése.
+         - Ha a tartományi házirend arról, hogy RDP letiltva (1), majd a frissítés az AD szabályzat a tartományvezérlő.
          - Ha a tartományi házirend arról, hogy az RDP engedélyezve (0), majd nincs szükség frissítésre.
 
       Ha a tartományi házirend nem létezik, és a helyi házirend szerint az, hogy RDP le van tiltva (1), engedélyezze az RDP a következő paranccsal:
@@ -184,75 +177,63 @@ További információkért lásd: [a távoli asztal gyakran leválasztja az Azur
 
 ### <a name="offline-repair"></a>Offline javítása
 
-#### <a name="step-1-turn-on-remote-desk"></a>1. lépés: Távoli asztali bekapcsolása
+#### <a name="step-1-turn-on-remote-deskop"></a>1. lépés: Távoli asztali bekapcsolása
 
-> [!NOTE]  
-> Azt feltételezik, hogy a meghajtóbetűjel, a csatlakoztatott operációsrendszer-lemez rendelt F. cserélje le a megfelelő értéket a virtuális gépen. A rendszer és a SZOFTVEREK struktúrák kell majd csatlakoztatni és leválasztani.
+1. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális Géphez](../windows/troubleshoot-recovery-disks-portal.md).
+2. Indítsa el a helyreállítási virtuális Gépet egy távoli asztali kapcsolatot.
+3. Győződjön meg arról, hogy a lemez megjelölt **Online** a Lemezkezelés konzol. Vegye figyelembe a meghajtóbetűjelet, amely a csatlakoztatott operációsrendszer-lemez van rendelve.
+3. Indítsa el a helyreállítási virtuális Gépet egy távoli asztali kapcsolatot.
+4. Nyisson meg egy rendszergazda jogú parancssort munkamenetet (**Futtatás rendszergazdaként**). Futtassa a következő szkripteket. Ez a szkript feltételezzük, hogy a meghajtóbetűjel van rendelve a csatlakoztatott operációsrendszer-lemez-e F. cserélje le ezt a meghajtóbetűjelet, a virtuális gép a megfelelő értékkel.
 
-1. Nyisson meg egy rendszergazda jogú CMD-példányt, és futtassa az alábbi parancsfájlok a virtuális gép mentési:
+      ```
+      reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv 
+      reg load HKLM\BROKENSOFTWARE F:\windows\system32\config\SOFTWARE.hiv 
+ 
+      REM Ensure that Terminal Server is enabled 
 
-   ```
-   reg load HKLM\BROKENSYSTEM f:\windows\system32\config\SYSTEM.hiv
-   reg load HKLM\BROKENSOFTWARE f:\windows\system32\config\SOFTWARE.hiv
+      reg add "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server" /v TSEnabled /t REG_DWORD /d 1 /f 
+      reg add "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server" /v TSEnabled /t REG_DWORD /d 1 /f 
 
-   REM Ensure that Terminal Server is enabled
-   reg add "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server" /v TSEnabled /t REG_DWORD /d 1 /f
-   reg add "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server" /v TSEnabled /t REG_DWORD /d 1 /f
+      REM Ensure Terminal Service is not set to Drain mode 
+      reg add "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server" /v TSServerDrainMode /t REG_DWORD /d 0 /f 
+      reg add "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server" /v TSServerDrainMode /t REG_DWORD /d 0 /f 
 
-   REM Ensure Terminal Service is not set to Drain mode
-   reg add "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server" /v TSServerDrainMode /t REG_DWORD /d 0 /f
-   reg add "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server" /v TSServerDrainMode /t REG_DWORD /d 0 /f
+      REM Ensure Terminal Service has logon enabled 
+      reg add "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server" /v TSUserEnabled /t REG_DWORD /d 0 /f 
+      reg add "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server" /v TSUserEnabled /t REG_DWORD /d 0 /f 
 
-   REM Ensure Terminal Service has logon enabled
-   reg add "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server" /v TSUserEnabled /t REG_DWORD /d 0 /f
+      REM Ensure the RDP Listener is not disabled 
+      reg add "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v fEnableWinStation /t REG_DWORD /d 1 /f 
+      reg add "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v fEnableWinStation /t REG_DWORD /d 1 /f 
 
-   REM Ensure the RDP Listener is not disabled
-   reg add "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\Winstations\RDP-Tcp" /v fEnableWinStation /t REG_DWORD /d 1 /f
-   reg add "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\Winstations\RDP-Tcp" /v fEnableWinStation /t REG_DWORD /d 1 /f
+      REM Ensure the RDP Listener accepts logons 
+      reg add "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v fLogonDisabled /t REG_DWORD /d 0 /f 
+      reg add "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v fLogonDisabled /t REG_DWORD /d 0 /f 
 
-   REM Ensure the RDP Listener accepts logons
-   reg add "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\Winstations\RDP-Tcp" /v fLogonDisabled /t REG_DWORD /d 0 /f
-   reg add "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\Winstations\RDP-Tcp" /v fLogonDisabled /t REG_DWORD /d 0 /f
+      REM RDP component is enabled 
+      reg add "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f 
+      reg add "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f 
+      reg add "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections /t REG_DWORD /d 0 /f 
 
-   REM RDP component is enabled
-   reg add "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
-   reg add "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
-   reg add "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+      reg unload HKLM\BROKENSYSTEM 
+      reg unload HKLM\BROKENSOFTWARE 
+      ```
 
-   reg unload HKLM\BROKENSYSTEM
-   reg unload HKLM\BROKENSOFTWARE
-   ```
-
-2. Csatlakoztassa a rendszer és a SZOFTVEREK struktúrák.
-
-   ```
-   reg load HKLM\BROKENSYSTEM f:\windows\system32\config\SYSTEM
-   reg load HKLM\BROKENSOFTWARE f:\windows\system32\config\SOFTWARE
-   ```
-
-3. Ha a virtuális gép tartományhoz, RDP házirend szintű sikerült letiltani. Annak ellenőrzése, ha ez a helyzet, ellenőrizze a következő beállításkulcsot:
+3. Ha a virtuális gép tartományhoz csatlakoztatott, ellenőrizze a következő beállításkulcsot, ha van-e olyan csoportházirenddel, amely letiltja az RDP. 
 
    ```
-   HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fDenyTSConnectionS
+   HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\fDenyTSConnectionS
    ```
 
-4. Ha a kulcs értékét 1-re van állítva, az RDP a házirend le van tiltva.
 
-5. A távoli asztal engedélyezése a csoportházirend-objektum csoportházirend segítségével úgy módosítja a következő szabályzatot:
+      Ha ezt a kulcsértéket értéke 1, amely azt jelenti, hogy az RDP a házirend le van tiltva. Távoli asztal engedélyezése a csoportházirend-objektum csoportházirend segítségével, a tartományvezérlő következő szabályzatának módosítása:
 
    ```
    Computer Configuration\Policies\Administrative Templates: Policy definitions\Windows Components\Remote Desktop Services\Remote Desktop Session Host\Connections\Allow users to connect remotely by using Remote Desktop Services
    ```
 
-6. Ha a beállításkulcs nem létezik, ellenőrizze a következő beállításkulcsot:
-
-   ```
-   HKLM\System\CurrentControlSet\Control\Terminal Server\fDenyTSConnections
-   ```
-
-7. Ha ez a kulcs 1 értékre van állítva, az RDP kapcsolja be kapcsolva. A kulcs értékét állítsa 0.
-8. Válassza le a lemezt a virtuális gép mentési.
-9. [Hozzon létre egy új virtuális Gépet a lemezről](../windows/create-vm-specialized.md).
+4. Válassza le a lemezt a virtuális gép mentési.
+5. [Hozzon létre egy új virtuális Gépet a lemezről](../windows/create-vm-specialized.md).
 
 Ha a probléma továbbra is történik, helyezze át a 2. lépés.
 

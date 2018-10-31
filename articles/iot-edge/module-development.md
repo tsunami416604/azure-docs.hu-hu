@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT peremhálózati modulok fejlesztése |} Microsoft Docs
-description: További tudnivalók az egyéni modulok létrehozása az Azure IoT peremhálózati
+title: Az Azure IoT Edge-modulok fejlesztése |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre egyéni modulok az Azure IoT Edge-hez
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -8,78 +8,71 @@ ms.date: 10/05/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: dbbd07e93602855afb0c9755e8872e0b46557611
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 761485de4bf52b7261ac8f1f8c3d937486c66546
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030019"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248000"
 ---
-# <a name="understand-the-requirements-and-tools-for-developing-iot-edge-modules"></a>Követelmények és eszközök adattárházzal történő, IoT peremhálózati modulok
+# <a name="understand-the-requirements-and-tools-for-developing-iot-edge-modules"></a>A követelmények és az eszközök IoT Edge-modulok megismerése
 
-Ez a cikk azt ismerteti, milyen funkciói érhetők el, ha IoT peremhálózati modulként futó alkalmazások és azok előnyeit.
+Ez a cikk azt ismerteti, milyen funkciók érhetők el az alkalmazásokat, amelyek IoT Edge-modul futtató írásakor és azok előnyeit.
 
-## <a name="iot-edge-runtime-environment"></a>Az IoT-Edge futásidejű környezet
-Az IoT-Edge futásidejű teszi több IoT peremhálózati modul funkcióinak integrálását, és telepítheti őket az IoT-peremeszközök alakzatot infrastruktúrát. Magas szinten a program hozzáadható egy IoT peremhálózati modulként. Azonban teljes körű kihasználása IoT peremhálózati kommunikációs és felügyeleti funkciók, a program futtatása egy modulban is képes csatlakozni a helyi IoT peremhálózati hub, az IoT-Edge futásidejű integrálva.
+## <a name="iot-edge-runtime-environment"></a>IoT Edge-futtatókörnyezet
+Az IoT Edge-futtatókörnyezet biztosít az infrastruktúra több IoT Edge-modulok funkciójának integrálásához és az IoT Edge-eszközökön való üzembe helyezés helyszíne. Magas szinten bármely program is csomagolva, mint az IoT Edge-modul. Azonban teljes mértékben kihasználhatja az IoT Edge kommunikációs és felügyeleti funkciók, a program futtatása egy modulban is képes csatlakozni a helyi IoT Edge hub, az IoT Edge-futtatókörnyezet integrálva.
 
-## <a name="using-the-iot-edge-hub"></a>A peremhálózati IoT hub használatával
-A peremhálózati IoT hub biztosít két fő funkciói: proxy IoT-központot, és helyi kommunikáció.
+## <a name="using-the-iot-edge-hub"></a>Használja az IoT Edge hubot
+Az IoT Edge hub által biztosított két fő funkciói: az IoT Hub és a helyi hírközlő proxy.
 
-### <a name="iot-hub-primitives"></a>Az IoT-központ primitívek
-Az IoT Hub láthatják a modul példány adatproblémák eszközre, abban az értelemben, hogy az informatikai:
+### <a name="iot-hub-primitives"></a>Az IoT Hub primitívek
+IoT Hub számára egy modul példány adatproblémák eszközre, abban az értelemben, hogy az informatikai:
 
-* rendelkezik a modul a két, különböző és elkülönül a [eszköz iker] [ lnk-devicetwin] és az egyéb modul twins az adott eszköz;
-* küldésére [eszköz a felhőbe küldött üzeneteket][lnk-iothub-messaging];
-* megkaphatja a [módszerek közvetlen] [ lnk-methods] identitása irányul.
+* ikermodul, amely különböző, és elkülönülnek a rendelkezik a [ikereszköz](../iot-hub/iot-hub-devguide-device-twins.md) és az egyéb ikermodulokkal; eszközön
+* küldhet [eszköz – felhő üzeneteket](../iot-hub/iot-hub-devguide-messaging.md);
+* megkaphatja a [közvetlen metódusok](../iot-hub/iot-hub-devguide-direct-methods.md) identitása célozza.
 
-Jelenleg egy modul nem felhő eszközre üzeneteket fogadni, sem a fájl feltöltése a szolgáltatással.
+Jelenleg egy modul nem felhőből az eszközre irányuló üzenetek fogadása és nem használja a fájlfeltöltési funkcióval.
 
-A modul írásakor segítségével egyszerűen a [Azure IoT eszköz SDK] [ lnk-devicesdk] a peremhálózati IoT hub és a fenti funkciót használja, mint egy alkalmazást, az IoT-központ használatakor az egyetlen különbség, az alkalmazás háttérszolgáltatáshoz, hogy utal, a modul identitása helyett az eszközidentitást.
+Amikor-modul írása, egyszerűen használhatja a [Azure IoT eszközoldali SDK](../iot-hub/iot-hub-devguide-sdks.md) csatlakozni az IoT Edge hubot és a fenti funkciót használja, mint egy alkalmazást, az egyetlen különbség, hogy az IoT Hub használata esetén a alkalmazás-alapú háttérrendszerrel, akkor tekintse meg a modul identitás helyett az eszközidentitást.
 
-Lásd: [fejlesztése és egy peremhálózati IoT-modul telepítése a szimulált eszköz] [ lnk-tutorial2] egy modul alkalmazás, amely eszköz-a-felhőbe küldött üzeneteket küld, és használja a modul a két példát.
+Lásd: [fejlesztés és üzembe helyezése az IoT Edge-modul egy szimulált eszköz](tutorial-csharp-module.md) egy modul alkalmazás, amely eszköz – felhő üzeneteket, és az ikermodul használ példaként.
 
 ### <a name="device-to-cloud-messages"></a>Az eszközről a felhőbe irányuló üzenetek
-Ahhoz, hogy bonyolult az eszközről a felhőbe üzenetek feldolgozása peremhálózati IoT hub biztosít deklaratív üzenetek modulokat, valamint modulok és az IoT-központ között.
-Ez lehetővé teszi, hogy a intercept-modulok és a folyamat üzenetek más modulok által küldött, és továbbíthatja őket az összetett folyamatok.
-A cikk [modul-összeállítást] [ lnk-module-comp] ismerteti, hogyan állítható össze a modulok az összetett folyamatok útvonalak használatával.
+Ahhoz, hogy összetett eszközt a felhőbe irányuló üzenetek feldolgozása az IoT Edge hub által biztosított deklaratív az üzenetek útválasztását a modulok között, és a modulok és az IoT Hub között.
+Ez lehetővé teszi, hogy a modulok intercept és más modulok által küldött üzenetek feldolgozásával, és átvezeti őket az összetett folyamatok.
+A cikk [modul-összeállítását](module-composition.md) modulok compose az útvonalak használatával összetett folyamatokat ismerteti.
 
-Egy IoT peremhálózati modul működnek, mint egy normál IoT Hub eszköz alkalmazás tudnak eszközről a felhőbe üzeneteket fogadni, amelyeket a helyi biztonsági IoT hubból proxy ahhoz, hogy dolgozza fel őket.
+Az IoT Edge-modul működnek, mint a szokásos IoT Hub eszközalkalmazás kapnak annak érdekében, hogy fel használ proxyt a helyi IoT Edge hub által éppen eszköz – felhő üzeneteket.
 
-Peremhálózati IoT hub az üzenetek a modul deklaratív útvonalak leírtak alapján tölti ki a [modul-összeállítást] [ lnk-module-comp] cikk. Az IoT-Edge modul fejlesztésekor fogadhat ezek az üzenetek üzenet kezelők beállításával látható módon az oktatóanyag [fejlesztése és egy peremhálózati IoT-modul telepítése a szimulált eszköz][lnk-tutorial2].
+IoT Edge hub az üzeneteket a modul deklaratív útvonalak leírtak alapján tölti ki a [modul-összeállítását](module-composition.md) cikk. Amikor egy IoT Edge-modul fejlesztése, fogadhat ezeket az üzeneteket üzenet kezelők, beállításával, ahogyan az oktatóanyag [fejlesztés és üzembe helyezése az IoT Edge-modul egy szimulált eszköz] [lnk-tutorial2].
 
-Útvonalak létrehozásának egyszerűsítése érdekében IoT peremhálózati hozzáadja a modul fogalmát *bemeneti* és *kimeneti* végpontok. Egy modul csatlakoznak bármely bemeneti megadása nélkül eszköz-a-felhőbe küldött üzeneteket fogadhat, és az eszköz a felhőbe küldött üzeneteket küldhet kimenetet megadása nélkül.
-Explicit bemenetekhez és kimenetekhez, azonban révén útválasztási szabályokat egyszerűbb megértéséhez. Lásd: [modul-összeállítást] [ lnk-module-comp] további információt az útválasztási szabályokat és a modulok bemeneti és kimeneti végpontok.
+Annak érdekében, hogy az útvonalak létrehozása egyszerűbb, IoT Edge hozzáadja a modul fogalmát *bemeneti* és *kimeneti* végpontok. Egy modul fogadhat semmilyen bemenetet megadása nélkül irányítja az összes eszköz – felhő üzeneteket, és az eszköz – felhő üzeneteket küldhetnek kimenetet megadása nélkül.
+Explicit bemeneteit és kimeneteit, azonban révén a útválasztási szabályok egyszerűbb megértéséhez. Lásd: [modul-összeállítását](module-composition.md) további információt az útválasztási szabályokat és modulok bemeneti és kimeneti végpontok.
 
-Végezetül a peremhálózati központ által kezelt eszköz-felhő üzenetek vannak megjelölve a következő tulajdonságai:
+Végül az Edge hub által kezelt eszköz – felhő üzenetek vannak megjelölve a következő tulajdonságai:
 
 | Tulajdonság | Leírás |
 | -------- | ----------- |
-| $connectionDeviceId | Az üzenetet küldő ügyfél az eszköz azonosítója |
+| $connectionDeviceId | Az ügyfél elküldte az üzenetet, az eszköz azonosítója |
 | $connectionModuleId | A modul az üzenetet küldő modul azonosítója |
-| $inputName | A bemeneti, ezt az üzenetet kapott. Üres is lehet. |
-| $outputName | A kimenet az üzenet. Üres is lehet. |
+| $inputName | A bemenet, amely kapta ezt az üzenetet. Üres is lehet. |
+| $outputName | A kimenet az üzenet elküldéséhez használt. Üres is lehet. |
 
-### <a name="connecting-to-iot-edge-hub-from-a-module"></a>Peremhálózati IoT hub csatlakozik egy modulból
-Egy modult a helyi biztonsági IoT hub csatlakozás két lépésből áll: a kapcsolati karakterlánc használhatja, ha az IoT-Edge futásidejű a modul indításakor, és győződjön meg arról, hogy az alkalmazás elfogadja a tanúsítványt a peremhálózati IoT hub azokon az eszközökön.
+### <a name="connecting-to-iot-edge-hub-from-a-module"></a>Csatlakozás az IoT Edge hubot a modulból
+Csatlakozás a helyi IoT Edge hubot a modulból két lépésből áll: a kapcsolati karakterláncot használja az IoT Edge-futtatókörnyezet, a modul indításakor, és ellenőrizze, hogy az alkalmazás fogad el, hogy az eszközről az IoT Edge hub által bemutatott tanúsítványt a megadott.
 
-A kapcsolati karakterlánca a környezeti változóban IoT Edge-futtatókörnyezet van beszúrta `EdgeHubConnectionString`. Így minden programot, amely kívánja használni, akkor érhető el.
+A használandó karakterláncban szúrhatja be a környezeti változó az IoT Edge-futtatókörnyezete által `EdgeHubConnectionString`. Így elérhető minden olyan alkalmazást használni szeretné.
 
-Adatproblémák, a peremhálózati IoT hub kapcsolat használni kívánt tanúsítványt nézetmodellbe, a peremhálózati IoT futtatókörnyezet egy fájl elérési úton érhető el a környezeti változó `EdgeModuleCACertificateFile`.
+A tanúsítványt használja, az IoT Edge hub-kapcsolat ellenőrzése adatproblémák szúrhatja be egy fájlban, amelynek elérési útja környezeti változóban érhető el az IoT Edge-futtatókörnyezete által `EdgeModuleCACertificateFile`.
 
-Az oktatóanyag [fejlesztése és egy peremhálózati IoT-modul telepítése a szimulált eszköz] [ lnk-tutorial2] bemutatja, hogyan győződjön meg arról, hogy van-e a tanúsítvány a számítógép tárolójában, a modul alkalmazásban. Egyértelműen bármilyen más módon megbízhatósági kapcsolatok tanúsítvány munka használatával.
+Az oktatóanyag [fejlesztés és üzembe helyezése az IoT Edge-modul egy szimulált eszköz] [lnk-tutorial2] mutatja be, ügyeljen arra, hogy a tanúsítvány a számítógép tárolójában, a modul alkalmazásában. Világosan minden más módszer megbízható a tanúsítvány munkahelyi kapcsolatokat.
 
-## <a name="packaging-as-an-image"></a>Csomagolás képként
-Az IoT-Edge modulok Docker képként vannak csomagolva.
-Docker toolchain közvetlenül, vagy a Visual Studio Code is használhatja a látható módon az oktatóanyag [fejlesztése és egy peremhálózati IoT-modul telepítése a szimulált eszköz][lnk-tutorial2].
+## <a name="packaging-as-an-image"></a>A csomagolási képként
+IoT Edge-modulok vannak csomagolva, mint a Docker-rendszerképeket.
+Közvetlenül a Docker eszközlánc, vagy a Visual Studio Code módon használhatja a jelen oktatóanyagban ismertetett [fejlesztés és üzembe helyezése az IoT Edge-modul egy szimulált eszköz] [lnk-tutorial2].
 
 ## <a name="next-steps"></a>További lépések
 
-Egy modul elkészítéséhez után megtudhatja, hogyan [telepítés IoT peremhálózati modulok léptékű figyelése és][lnk-howto-deploy].
+Miután modul fejlesztése, megtudhatja, hogyan [üzembe helyezés és nagy mennyiségű IoT Edge-modulok figyelése](how-to-deploy-monitor.md).
 
-[lnk-devicesdk]: ../iot-hub/iot-hub-devguide-sdks.md
-[lnk-devicetwin]: ../iot-hub/iot-hub-devguide-device-twins.md
-[lnk-iothub-messaging]: ../iot-hub/iot-hub-devguide-messaging.md
-[lnk-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
-[lnk-tutorial2]: tutorial-csharp-module.md
-[lnk-module-comp]: module-composition.md
-[lnk-howto-deploy]: how-to-deploy-monitor.md

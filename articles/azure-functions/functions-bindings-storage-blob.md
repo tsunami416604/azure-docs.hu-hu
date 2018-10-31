@@ -3,20 +3,20 @@ title: Az Azure Blob storage-kötések az Azure Functions szolgáltatáshoz
 description: Megtudhatja, hogyan használhatja az Azure Blob storage-eseményindítók és kötések az Azure Functions szolgáltatásban.
 services: functions
 documentationcenter: na
-author: ggailey777
+author: craigshoemaker
 manager: jeconnoc
 keywords: az Azure functions, függvények, eseményfeldolgozás, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
-ms.author: glenga
-ms.openlocfilehash: 0c6f62b4390ba6084abce9b1354fbcf17a9d3b79
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.author: cshoe
+ms.openlocfilehash: c9e6898d83e5bc1360bb5b1539b12bace8acdb3f
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232970"
+ms.locfileid: "50251039"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Blob storage-kötések az Azure Functions szolgáltatáshoz
 
