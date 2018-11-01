@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 10/30/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: febdb2e3ae4432c36ca839f81ba7a1d333df1a2f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a9e601d0bd9a4d7879ecd205488c6a901a464021
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952001"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419834"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Oktatóanyag: Alkalmazások telepítése az Azure és az Azure Stackben
 
@@ -273,21 +273,57 @@ Végpontok létrehozása a Visual Studio online-hoz (VSTO) build helyezzen üzem
 10. Válassza ki **módosítások mentése**.
 
 Most, hogy létezik a végpont adatait, az Azure DevOps-szolgáltatásokkal az Azure Stack kapcsolat készen áll a használatra. A fordító-ügynökhöz az Azure Stackben utasításokat olvas be az Azure DevOps-szolgáltatásokkal, és ezután az ügynök közvetíti a kommunikációt az Azure Stack-végpontjának információit.
+
 ## <a name="create-an-azure-stack-endpoint"></a>Az Azure Stack-végpont létrehozása
+
+### <a name="create-an-endpoint-for-azure-ad-deployments"></a>Az Azure AD központi telepítésekhez végpont létrehozása
 
 Az utasítások a [kapcsolatot hozhat létre egy Azure Resource Manager szolgáltatás egy meglévő szolgáltatás egyszerű ](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) hozzon létre egy szolgáltatás-kapcsolatot egy meglévő szolgáltatás egyszerű, és használja a következő társítás a cikk:
 
-- Környezet: AzureStack
-- Környezet URL-címe: Hasonló dolgot `https://management.local.azurestack.external`
-- Előfizetés azonosítója: Felhasználói előfizetés-azonosító az Azure Stackben
-- Előfizetés neve: az Azure Stack felhasználói előfizetés neve
-- Egyszerű szolgáltatás ügyfél-azonosító: a résztvevő-Azonosítóval [ez](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal) szakasz ebben a cikkben.
-- Egyszerű szolgáltatásnév kulcsát: A kulcsát, az ugyanebben a cikkben (vagy a jelszót, ha a szkriptet használta).
-- Bérlőazonosító: A bérlő Azonosítóját kérheti le az utasítás a következő [a Bérlőazonosító beszerzése](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id).
+Használatával a következő hozzárendelést szolgáltatás kapcsolatot hozhat létre:
 
-Most, hogy a végpont a létrehozás, a vsts-ben az Azure Stack kapcsolat készen áll a használatra. A fordító-ügynökhöz az Azure Stackben utasításokat lekérdezi a VSTS-ből, és ezután az ügynök közvetíti a kommunikációt az Azure Stack-végpontjának információit.
+| Name (Név) | Példa | Leírás |
+| --- | --- | --- |
+| Kapcsolat neve | Az Azure Stack Azure ad-ben | A kapcsolat neve. |
+| Környezet | 1.2.9-es | A környezet neve. |
+| Környezet URL-címe | `https://management.local.azurestack.external` | A felügyeleti végpontra. |
+| Hatókör szintjén | Előfizetés | A kapcsolat hatókörének. |
+| Előfizetés azonosítója | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | Az Azure Stack felhasználói előfizetés azonosítója |
+| Előfizetés neve | name@contoso.com | Az Azure Stack felhasználói előfizetés neve |
+| Egyszerű szolgáltatás ügyfél-azonosító | FF74AACF-XXXX-4776-OS-93FC-C63E6E021D59 | A résztvevő-Azonosítóval [ez](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal) szakasz ebben a cikkben. |
+| Egyszerű szolgáltatásnév kulcsa | THESCRETGOESHERE = | A kulcs az ugyanebben a cikkben (vagy a jelszót, ha a szkriptet használta). |
+| Bérlőazonosító | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | A Bérlőazonosító kérheti le az alábbi utasítás a lekérése a bérlő azonosítóját. A Bérlőazonosító kérheti le az utasítás a következő [a Bérlőazonosító beszerzése](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id).  |
+| Kapcsolat: | Nincs ellenőrizve | Ellenőrizze az egyszerű szolgáltatás kapcsolati beállításokat. |
 
-![Az ügynök létrehozása](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
+Most, hogy a végpont a létrehozás, a DevOps-kapcsolat Azure Stackhez készen áll a használatra. A fordító-ügynökhöz az Azure Stackben fejlesztési és üzemeltetési útmutatást olvas, és ezután az ügynök közvetíti a kommunikációt az Azure Stack-végpontjának információit.
+
+![Az Azure AD ügynök létrehozása](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
+
+### <a name="create-an-endpoint-for-ad-fs"></a>Hozzon létre egy végpontot az AD FS-hez
+
+A legújabb frissítést az Azure DevOps lehetővé teszi, hogy a tanúsítvány egyszerű szolgáltatás használatával hitelesítési szolgáltatás kapcsolatot. Ez azért szükséges, az Azure Stack telepítésekor és az AD FS identitás-szolgáltatóként. 
+
+![Ügynök Active Directory összevonási szolgáltatások létrehozása](media\azure-stack-solution-hybrid-pipeline\image06.png)
+
+Használatával a következő hozzárendelést szolgáltatás kapcsolatot hozhat létre:
+
+| Name (Név) | Példa | Leírás |
+| --- | --- | --- |
+| Kapcsolat neve | Az Azure Stack ADFS | A kapcsolat neve. |
+| Környezet | 1.2.9-es | A környezet neve. |
+| Környezet URL-címe | `https://management.local.azurestack.external` | A felügyeleti végpontra. |
+| Hatókör szintjén | Előfizetés | A kapcsolat hatókörének. |
+| Előfizetés azonosítója | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | Az Azure Stack felhasználói előfizetés azonosítója |
+| Előfizetés neve | name@contoso.com | Az Azure Stack felhasználói előfizetés neve |
+| Egyszerű szolgáltatás ügyfél-azonosító | FF74AACF-XXXX-4776-OS-93FC-C63E6E021D59 | Az egyszerű szolgáltatás ügyfél-Azonosítót hozott létre az AD FS-hez. |
+| Tanúsítvány | `<certificate>` |  A tanúsítványfájl konvertálása PFX PEM. Tanúsítvány PEM-fájl tartalmának illessze be ezt a mezőt. <br> PEM konvertálása PFX:<br>`openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>` |
+| Bérlőazonosító | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | A Bérlőazonosító kérheti le az alábbi utasítás a lekérése a bérlő azonosítóját. A Bérlőazonosító kérheti le az utasítás a következő [a Bérlőazonosító beszerzése](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id). |
+| Kapcsolat: | Nincs ellenőrizve | Ellenőrizze az egyszerű szolgáltatás kapcsolati beállításokat. |
+
+Most, hogy a végpont a létrehozás, az Azure DevOps-kapcsolat Azure Stackhez készen áll a használatra. A fordító-ügynökhöz az Azure Stackben utasításokat olvas be az Azure DevOps, és ezután az ügynök közvetíti a kommunikációt az Azure Stack-végpontjának információit.
+
+> [!Note]
+> Az Azure Stack felhasználói ARM-végpont nem lesz közzétéve az interneten, ha a kapcsolat érvényesítése sikertelen lesz. Ez várható, és a egy egyszerű feladatlista-kiadási folyamatok létrehozásával ellenőrizheti a kapcsolatot. 
 
 ## <a name="develop-your-application-build"></a>Fejlesztés a sestavení aplikace
 

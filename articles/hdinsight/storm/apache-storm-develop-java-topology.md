@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 10ea0eb3907abc0a90e589e57970c0e4622a4d56
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: e236b4fcb179a8ed218915e9d3dd579928a0700f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43043929"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418585"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Az Apache Storm-topológia létrehozása Java nyelven
 
@@ -28,7 +28,7 @@ Ebben a dokumentumban a lépések elvégzése után telepítheti a topológia az
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Java fejlesztői készlet (JDK) 8-as verzió](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Java fejlesztői készlet (JDK) 8-as verzió](https://aka.ms/azure-jdks)
 
 * [Maven (https://maven.apache.org/download.cgi)](https://maven.apache.org/download.cgi): Maven project rendszert, a Java-projektek.
 
@@ -76,7 +76,7 @@ Törölje a létrehozott teszt és az alkalmazás fájljai:
 
 ## <a name="add-maven-repositories"></a>Adja hozzá a Maven-adattárak
 
-HDInsight alapul a a Hortonworks Data Platform (HDP), ezért javasoljuk, hogy a Hortonworks tárház használatával töltse le az Apache Storm-projektek függőségeit. Az a __pom.xml__ fájlban adja hozzá a következő XML formátumú után a `<url>http://maven.apache.org</url>` sor:
+HDInsight alapul a a Hortonworks Data Platform (HDP), ezért javasoljuk, hogy a Hortonworks tárház használatával töltse le az Apache Storm-projektek függőségeit. Az a __pom.xml__ fájlban adja hozzá a következő XML formátumú után a `<url> http://maven.apache.org</url>` sor:
 
 ```xml
 <repositories>
