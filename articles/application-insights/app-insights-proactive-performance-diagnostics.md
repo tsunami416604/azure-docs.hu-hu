@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: 8c34696f81e40b4db13e6868f6bdaa1b2a8e7a2a
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: b0256e899d47e3b6f8141218c11e1a7a62ca8e1a
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095463"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419724"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligens detektálás – teljesítménnyel kapcsolatos anomáliák
 
@@ -47,7 +47,7 @@ Nem, egy értesítés nem jelenti azt, hogy az alkalmazás mindenképp van probl
 Az értesítések közé tartoznak a diagnosztikai adatokat. Például:
 
 
-![Íme egy példa kiszolgálói válaszidő romlása észlelés](./media/app-insights-proactive-diagnostics/server_response_time_degradation.png)
+![Íme egy példa kiszolgálói válaszidő romlása észlelés](media/app-insights-proactive-performance-diagnostics/server_response_time_degradation.png)
 
 1. **Osztályozási**. Az értesítés megtudhatja, hány felhasználóra vagy hány műveletek érintettek. Ez segíthet a probléma prioritást rendelhet.
 2. **Hatókör**. A probléma érintő minden forgalmat, vagy csak egyes oldalak? Ez korlátozódik bizonyos böngészők vagy helyek? Ez az információ szerezhető az értesítést.
@@ -61,7 +61,7 @@ Az értesítések közé tartoznak a diagnosztikai adatokat. Például:
 
 Az intelligens észlelés értesítések alapértelmezés szerint engedélyezve van, és azok, akik küldött [tulajdonosoknak, közreműködőknek és olvasóknak a hozzáférést az Application Insights-erőforrást](app-insights-resources-roles-access-control.md). Ez módosításához kattintson a **konfigurálása** az e-mail-értesítés vagy az Application Insights intelligens detektálási beállítások megnyitása. 
   
-  ![Intelligens detektálási beállítások](./media/app-insights-proactive-diagnostics/smart_detection_configuration.png)
+  ![Intelligens detektálási beállítások](media/app-insights-proactive-performance-diagnostics/smart_detection_configuration.png)
   
   * Használhatja a **leiratkozás** hivatkozás az intelligens detektálási e-mailben az e-mail-értesítéseket kapni.
 
@@ -143,7 +143,7 @@ A modern alkalmazásnak a mikroszolgáltatásokhoz tervezési megközelítés, a
 
 A példában a függőségi teljesítménycsökkenés értesítés:
 
-![Íme egy példa a függőségi időtartam teljesítménycsökkenése észlelés](./media/app-insights-proactive-diagnostics/dependency_duration_degradation.png)
+![Íme egy példa a függőségi időtartam teljesítménycsökkenése észlelés](media/app-insights-proactive-performance-diagnostics/dependency_duration_degradation.png)
 
 Figyelje meg, amely megadja, hogy:
 
@@ -161,7 +161,7 @@ Figyelje meg, amely megadja, hogy:
 
 Az Application Insights megkeresése, amelyek csak érintik bizonyos része a felhasználók számára, vagy csak az egyes esetekben felhasználókat érintő teljesítménybeli problémák. Például oldalak terhelési értesítési egyfajta böngésző, mint a böngészők, más típusú lassabb lesz-e, vagy ha kérelmek egy adott kiszolgálóról lassabban fájlnévkiterjesztései. Azt is felfedezhetik tulajdonságok kombinációja kapcsolódó problémák, például a lassú oldal megfelelően töltődik be egy földrajzi területen adott operációs rendszert használó ügyfelek számára.  
 
-Az alábbiakhoz hasonló rendellenességek észlelése az adatok vizsgálatával csak nagyon nehéz, de gyakoribbak, mint gondolná. Gyakran azok csak surface, amikor az ügyfelek panaszok. Adott időpontig késő: az érintett felhasználók már vált át a versenytársak!
+Az alábbiakhoz hasonló rendellenességek észlelése az adatok vizsgálatával csak nagyon nehéz, de gyakoribbak, mint gondolná. Gyakran azok csak surface, amikor az ügyfelek panaszok. Adott időpontig, s késő: az érintett felhasználók már vált át a versenytársak!
 
 Jelenleg az algoritmusok lapbetöltési idők, a kérelem válaszidejének a kiszolgálón és a válaszidők függőségi meg.  
 
