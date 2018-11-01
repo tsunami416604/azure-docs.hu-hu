@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 78e3bec0d00336ce7cedc1434bf6ad7c65435969
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 995e93290e7c305e217c1f44609d383f69d83a9a
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978182"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420557"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Automatikus méretezés speciális konfigurálása Resource Manager-sablonok használata Virtuálisgép-méretezési csoportok
 Horizontális le- és a Virtual Machine Scale Sets alapuló teljesítmény-mérőszám küszöbértékén, ismétlődő ütemezés szerint, vagy egy adott dátumot kibővített is. Skálázási műveletek értesítései e-mailt és webhookot is konfigurálhatja. Ez az útmutató bemutatja egy példa az összes ezeket az objektumokat a Virtuálisgép-méretezési Resource Manager-sablon használatával.
@@ -29,7 +29,7 @@ Ez az útmutató használjuk [Azure erőforrás-kezelő](https://resources.azure
 1. Egy alapszintű automatikus méretezési beállítás új méretezési csoport üzembe helyezése. Ebben a cikkben az Azure katalógusából a rövid útmutató, amely rendelkezik egy Windows egy méretezési csoport egy alapszintű automatikus méretezési sablonnal. Linux méretezési csoportok ugyanúgy működnek.
 2. A méretezési készlet létrehozása után keresse meg a méretezési csoport erőforrás az Azure Resource Explorerben. A következő Microsoft.Insights csomópont alatt láthatja.
 
-    ![Az Azure Explorer](./media/insights-advanced-autoscale-vmss/azure_explorer_navigate.png)
+    ![Az Azure Explorer](media/insights-advanced-autoscale-virtual-machine-scale-sets/azure_explorer_navigate.png)
 
     A sablon végrehajtása hozott létre egy alapértelmezett automatikus skálázási beállítás neve **"autoscalewad"**. A jobb oldalon tekintheti meg az automatikus méretezési beállítás a teljes meghatározását. Ebben az esetben az alapértelmezett automatikus skálázási beállítás együttműködik a CPU-alapú % horizontális felskálázást és a horizontális leskálázási szabály.  
 
@@ -58,11 +58,11 @@ Ez az útmutató használjuk [Azure erőforrás-kezelő](https://resources.azure
 
 5. Ellenőrizze, hogy van a **olvasási/írási** mód az erőforrás-kezelőben
 
-    ![Autoscalewad, alapértelmezett automatikus skálázási beállítás](./media/insights-advanced-autoscale-vmss/autoscalewad.png)
+    ![Autoscalewad, alapértelmezett automatikus skálázási beállítás](media/insights-advanced-autoscale-virtual-machine-scale-sets/autoscalewad.png)
 
 6. Kattintson a Szerkesztés gombra. **Cserélje le** a "profilok" elem az automatikus skálázási beállítás a következő beállításokkal:
 
-    ![Profilok](./media/insights-advanced-autoscale-vmss/profiles.png)
+    ![Profilok](media/insights-advanced-autoscale-virtual-machine-scale-sets/profiles.png)
 
     ```
     {

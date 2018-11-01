@@ -8,14 +8,14 @@ editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
 ms.topic: troubleshooting
-ms.date: 06/15/2018
+ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: 64641f8acfe7b58763756e2a0707fa799ee804b2
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 9341458336e4c95b84590eadbc86073e7dbf09a0
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414087"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419554"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>A rendszerindítási diagnosztika használata az Azure-beli virtuális gépek hibaelhárítása
 
@@ -24,6 +24,10 @@ Támogatása két hibakereső szolgáltatás már elérhető az Azure-ban: konzo
 Ha a saját rendszerképét az Azure-ban, vagy valamelyik platform rendszerképét indítja, számos oka lehet, miért lekérdezi a virtuális gép rendszerindításra képtelen állapotba lehet. Ezeket a funkciókat, amelyekkel könnyedén diagnosztizálhatja és helyreállíthatja a virtuális gépeket rendszerindítási hibák engedélyezése.
 
 Linux rendszerű virtuális gépek a portálról a konzol naplófájljának kimenetét egyszerűen megtekintheti. Windows- és Linux virtuális gépek Azure is lehetővé teszi, hogy megtekintsen egy képernyőképet a virtuális gépről a hipervizortól. Mindkét szolgáltatás támogatott az Azure-beli virtuális gépek minden régióban. Ne feledje, akár 10 percet is igénybe vehet, hogy a képernyőképek és a kimenet megjelenjen a tárfiókjában.
+
+Kiválaszthatja a **rendszerindítási diagnosztika** lehetőség segítségével megtekintheti a napló és a képernyőkép.
+
+![Resource Manager](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
 
 ## <a name="common-boot-errors"></a>Gyakori rendszerindítási hibák
 
@@ -70,7 +74,7 @@ Linux rendszerű virtuális gépek a portálról a konzol naplófájljának kime
             "diagnosticsProfile": {
                 "bootDiagnostics": {
                 "enabled": true,
-                "storageUri": "[concat('http://', parameters('newStorageAccountName'), '.blob.core.windows.net')]"
+                "storageUri": "[concat('https://', parameters('newStorageAccountName'), '.blob.core.windows.net')]"
                 }
             }
             }

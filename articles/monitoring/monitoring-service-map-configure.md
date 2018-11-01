@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: daseidma;bwren
-ms.openlocfilehash: 9d574e7e8b0b285093aa0960243300dfe9f6d417
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 4461b98c56bcf99fc11aa9d89e6c6dc5961c86ac
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248999"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419520"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurálja a Service Map az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Használhatja a kiszolgálók megtekintéséhez, ahogyan Ön gondol rájuk összekapcsolt rendszerekkel, amelyek kritikus fontosságú szolgáltatásokat. A Service Map megmutatja a kapcsolatokat kiszolgálók, folyamatok és portok között bármely TCP-kapcsolattal összekötött architektúrában semmilyen beállítást nem szükséges, eltérő ügynököt telepíteni.
@@ -172,7 +172,7 @@ Az adatok gyűjtésének és felhasználásának további információkért lás
 
 ## <a name="installation"></a>Telepítés
 
-## <a name="azure-vm-extension"></a>Az Azure Virtuálisgép-bővítmény
+### <a name="azure-vm-extension"></a>Az Azure Virtuálisgép-bővítmény
 Egy bővítmény (DependencyAgentWindows) Windows és Linux (DependencyAgentLinux) is elérhető, és a függőségi ügynököt az Azure virtuális gépek használatával könnyedén telepítheti egy [Azure Virtuálisgép-bővítmény](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-features).  Az Azure Virtuálisgép-bővítménnyel a függőségi ügynököt telepítheti a Windows és Linux rendszerű virtuális gépekhez, vagy egy PowerShell-parancsfájl használatával, vagy közvetlenül a virtuális gép az Azure Resource Manager-sablon használatával.  Ha telepíti az ügynököt az Azure Virtuálisgép-bővítménnyel, az ügynökök automatikusan frissülnek a legújabb verzióra.
 
 A PowerShell-lel az Azure Virtuálisgép-bővítmény telepítéséhez, használhatja az alábbi példában:

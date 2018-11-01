@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.openlocfilehash: 670d465f1481592862f5e653a508460c19be07d8
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 4e99ed88eb6a58308ecd972931ca877493504fea
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049691"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419833"
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>A HDInsight Apache Storm írhat HDFS-be
 
@@ -29,7 +29,7 @@ Letölthető érhető el a projektet, amely tartalmazza az ebben a topológiába
 
 Ez a projekt fordításához, szükség van a következő konfigurációt a fejlesztési környezetet:
 
-* [Java JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) vagy újabb verzió. A HDInsight 3.5 vagy magasabb verziójához Java 8 szükséges.
+* [Java JDK 1.8](https://aka.ms/azure-jdks) vagy újabb verzió. A HDInsight 3.5 vagy magasabb verziójához Java 8 szükséges.
 
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 
@@ -63,7 +63,7 @@ Az alábbi táblázatban a különböző helyzetekhez a fájl rendszer használa
 
 További információkért lásd: a [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) referencia az Apache.org webhelyen.
 
-### <a name="example-configuration"></a>Konfigurálása – példa
+### <a name="example-configuration"></a>Konfigurációs példa
 
 A következő yaml-kódot egy olyan, a rendszer a `resources/writetohdfs.yaml` fájlban szerepel a példában. Ez a fájl határozza meg, a Storm topology használatával a [fluxus](https://storm.apache.org/releases/1.1.2/flux.html) Apache Storm-keretrendszer.
 

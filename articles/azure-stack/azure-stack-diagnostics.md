@@ -7,15 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 10/31/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 5a9621ef9a8d6c545617e5bf3ef6f4197b70be88
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: 3dd3e3391cc2536f56a5e42610c09c85b4068234
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419607"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740553"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack-diagnosztikai eszközök
 
@@ -86,32 +86,38 @@ if($s)
   Gyűjtse össze az összes napló összes szerepköre:
 
   ```powershell
-  Get-AzureStackLog -OutputPath C:\AzureStackLogs
+  Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred
   ```
 
   Naplók gyűjtése a virtuális gép és BareMetal szerepkörök:
 
   ```powershell
-  Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal
+  Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal
   ```
 
   Gyűjtsön naplókat azokról a virtuális gép és BareMetal szerepkörök, a dátum szerinti szűrést a naplófájlok az elmúlt 8 óra:
     
   ```powershell
-  Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
+  Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
   ```
 
   Gyűjtsön naplókat azokról a virtuális gép és BareMetal szerepkörök, a dátum szerinti szűrést a naplófájlokon 8 órával ezelőtt és 2 órával ezelőtt között az adott időszakban:
 
   ```powershell
-  Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
+  Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
   ```
 
 ### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>A paraméter szempontok ASDK és integrált rendszereket
 
 - Ha a **FromDate** és **ToDate** paraméter nincs megadva, a naplók alapértelmezés szerint az elmúlt 4 órán keresztül gyűjtött.
-- Használja a **FilterByNode** paraméter naplók szűrése a számítógép neve szerint. Például:```Get-AzureStackLog -OutputPath <path> -FilterByNode azs-xrp01```
-- Használja a **FilterByLogType** paraméter típusa szerint naplók szűrése. Ha szeretné, fájl, fájlmegosztás vagy WindowsEvent alapján. Például:```Get-AzureStackLog -OutputPath <path> -FilterByLogType File```
+- Használja a **FilterByNode** paraméter naplók szűrése a számítógép neve szerint. Példa:
+```powershell
+Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred ` -FilterByNode azs-xrp01
+```
+- Használja a **FilterByLogType** paraméter típusa szerint naplók szűrése. Ha szeretné, fájl, fájlmegosztás vagy WindowsEvent alapján. Példa:
+```powershell
+Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred ` -FilterByLogType File
+```
 - Használhatja a **TimeOutInMinutes** paraméter segítségével állítsa be a naplógyűjtés időkorlátja. Időintervallumként 150 (2,5 óra) alapértelmezés szerint.
 - Az 1805 és újabb memóriakép-fájl naplógyűjtés alapértelmezés szerint le van tiltva. Annak engedélyezéséhez használja a **IncludeDumpFile** paraméter váltani. 
 - Jelenleg is használhatja a **FilterByRole** szűrőt szeretne gyűjteni a következő szerepkörök paramétert:

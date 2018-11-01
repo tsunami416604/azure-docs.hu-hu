@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: c419a3c44a38f72d56f2b7b362c62e683fc20c7f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 057ce4b93be27c27e27d49e61a89a7c2b9e46dc8
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993017"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421067"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>A Log Analytics az Azure diagnosztikai naplók Stream
 
@@ -44,21 +44,21 @@ A Log Analytics-munkaterület nem rendelkezik és a naplókat kibocsátó mindad
 ## <a name="stream-diagnostic-logs-using-the-portal"></a>Stream diagnosztikai naplók a portál használatával
 1. A portálon lépjen az Azure Monitor, és kattintson a **diagnosztikai beállítások**
 
-    ![Az Azure Monitor figyelési szakasza](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-blade.png)
+    ![Az Azure Monitor figyelési szakasza](media/monitor-stream-diagnostic-logs-log-analytics/diagnostic-settings-blade.png)
 
 2. Igény szerint szűrje a listát, erőforráscsoport vagy erőforrás típusa, majd kattintson az a erőforrás, amelynek szeretné egy diagnosztikai beállítás.
 
 3. Ha a beállítások nem létezik az erőforráson kiválasztott, kéri létre beállítást. Kattintson a "Engedélyezze a diagnosztikát."
 
-   ![Diagnosztikai beállítás - beállítások nélkül hozzáadása](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-none.png)
+   ![Diagnosztikai beállítás - beállítások nélkül hozzáadása](media/monitor-stream-diagnostic-logs-log-analytics/diagnostic-settings-none.png)
 
    Ha meglévő beállításokat az erőforráson, látni fogja a beállítások már konfigurálva van a ehhez az erőforráshoz. Kattintson a "Diagnosztikai beállítás hozzáadása."
 
-   ![Diagnosztikai beállítás - meglévő beállítások hozzáadása](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-multiple.png)
+   ![Diagnosztikai beállítás - meglévő beállítások hozzáadása](media/monitor-stream-diagnostic-logs-log-analytics/diagnostic-settings-multiple.png)
 
 3. Adja meg a beállítás a neve, és jelölje be a **Küldés a Log Analyticsnek**, majd válassza ki a Log Analytics-munkaterületet.
 
-   ![Diagnosztikai beállítás - meglévő beállítások hozzáadása](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-configure.png)
+   ![Diagnosztikai beállítás - meglévő beállítások hozzáadása](media/monitor-stream-diagnostic-logs-log-analytics/diagnostic-settings-configure.png)
 
 4. Kattintson a **Save** (Mentés) gombra.
 

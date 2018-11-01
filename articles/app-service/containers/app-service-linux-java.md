@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: 1639194741fb343391f80790d0a2cc7f392218ac
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: f07d830e90045c11d870a921d091b45de6d2a89b
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238115"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418534"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>A linuxon futó App Service-hez Java fejlesztői útmutatója
 
@@ -235,7 +235,7 @@ A kiszolgálói szintű közös erőforrások:
 
 ## <a name="docker-containers"></a>Docker-tárolók
 
-Szeretné használni az Azure által támogatott Zulu JDK a tárolókban, ügyeljen arra, hogy lekéréséhez, és használja a felsorolt előre elkészített rendszerképek [Azul a letöltési oldalon](https://www.azul.com/downloads/azure-only/zulu/#docker) vagy használja a `Dockerfile` példákat a a [Microsoft Java GitHub-adattárat](https://github.com/Microsoft/java/tree/master/docker).
+Szeretné használni az Azure által támogatott Zulu JDK a tárolókban, ügyeljen arra, hogy lekéréséhez, és használja az előre elkészített rendszerképek a dokumentált módon a [Azul Zulu Enterprise támogatott Azure letöltési oldalát](https://www.azul.com/downloads/azure-only/zulu/) vagy használja a `Dockerfile` példákat a a[Microsoft Java GitHub-adattárat](https://github.com/Microsoft/java/tree/master/docker).
 
 ## <a name="runtime-availability-and-statement-of-support"></a>Futásidejű rendelkezésre állását és a rendszerállapot-támogatás
 

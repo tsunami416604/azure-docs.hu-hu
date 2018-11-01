@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: d99c9732bb1bf494b87d2073ba002264c7a51634
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 3066da9a492fc12dd8b333a089b8aabbbb647414
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221247"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421356"
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Cassandra-fürt futtatásához az Azure-ban Node.js linuxon
 
@@ -118,13 +118,13 @@ Az alábbi szoftververziók a telepítése során van szükség:
 
 <table>
 <tr><th>Szoftver</th><th>Forrás</th><th>Verzió</th></tr>
-<tr><td>JRE    </td><td>[JRE 8](http://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html) </td><td>8U5</td></tr>
+<tr><td>JRE    </td><td>[JRE 8](https://aka.ms/azure-jdks) </td><td>8U5</td></tr>
 <tr><td>JNA    </td><td>[JNA](https://github.com/twall/jna) </td><td> 3.2.7</td></tr>
 <tr><td>Cassandra</td><td>[Az Apache Cassandra 2.0.8](http://www.apache.org/dist/cassandra/)</td><td> 2.0.8</td></tr>
 <tr><td>Ubuntu    </td><td>[Microsoft Azure](https://azure.microsoft.com/) </td><td>14.04 LTS</td></tr>
 </table>
 
-Az Oracle-licencének manuálisan el kell fogadnia, JRE letöltésekor. Így az üzembe helyezés egyszerűsítéséhez, töltse le a szükséges szoftverek az asztalon. Töltse fel azt az Ubuntu sablon rendszerképet, hozzon létre egy előzetes, hogy a fürt üzembe helyezése.
+Az üzembe helyezés egyszerűsítéséhez, töltse le a szükséges szoftvereknek az asztalon. Töltse fel azt az Ubuntu sablon rendszerképet, hozzon létre egy előzetes, hogy a fürt üzembe helyezése.
 
 A fenti szoftverek letöltési be egy jól ismert letöltési könyvtár (például a Windows %TEMP%/downloads vagy ~/Downloads a legtöbb Linux-disztribúciók vagy Mac) a helyi számítógépen.
 
@@ -321,7 +321,7 @@ Adja hozzá a következő alhálózatok:
 <table>
 <tr><th>Name (Név)</th><th>Kezdő IP-cím</th><th>CIDR</th><th>Megjegyzések</th></tr>
 <tr><td>web</td><td>10.1.1.0</td><td>/24 (251)</td><td>A webfarm-alhálózatot</td></tr>
-<tr><td>adatok</td><td>10.1.2.0</td><td>/24 (251)</td><td>Az adatbázis-csomópont alhálózatot</td></tr>
+<tr><td>adat</td><td>10.1.2.0</td><td>/24 (251)</td><td>Az adatbázis-csomópont alhálózatot</td></tr>
 </table>
 
 Adatok és a webes alhálózatok – Ez a cikk az hatókörén kívül esik a lefedettségét a hálózati biztonsági csoportok védelme biztosítható.  
@@ -330,14 +330,14 @@ Adatok és a webes alhálózatok – Ez a cikk az hatókörén kívül esik a le
 
 <table>
 <tr><th>Gépnév    </th><th>Alhálózat    </th><th>IP-cím    </th><th>Rendelkezésre állási csoport</th><th>DC/állvány</th><th>Kezdőérték?</th></tr>
-<tr><td>HK-c1 – Nyugat-USA    </td><td>adatok    </td><td>10.1.2.4    </td><td>hk-c-aset-1    </td><td>DC = WESTUS állvány = rack1 </td><td>Igen</td></tr>
-<tr><td>hk-c2-west-us    </td><td>adatok    </td><td>10.1.2.5    </td><td>hk-c-aset-1    </td><td>DC = WESTUS állvány = rack1    </td><td>Nem </td></tr>
-<tr><td>HK-C3 csomag – Nyugat-USA    </td><td>adatok    </td><td>10.1.2.6    </td><td>hk-c-aset-1    </td><td>DC = WESTUS állvány = rack2    </td><td>Igen</td></tr>
-<tr><td>hk-c4-west-us    </td><td>adatok    </td><td>10.1.2.7    </td><td>hk-c-aset-1    </td><td>DC = WESTUS állvány = rack2    </td><td>Nem </td></tr>
-<tr><td>HK-C5 csomag – Nyugat-USA    </td><td>adatok    </td><td>10.1.2.8    </td><td>hk-c-aset-2    </td><td>DC = WESTUS állvány = rack3    </td><td>Igen</td></tr>
-<tr><td>HK-C6 csomag – Nyugat-USA    </td><td>adatok    </td><td>10.1.2.9    </td><td>hk-c-aset-2    </td><td>DC = WESTUS állvány = rack3    </td><td>Nem </td></tr>
-<tr><td>HK-c7 – Nyugat-USA    </td><td>adatok    </td><td>10.1.2.10    </td><td>hk-c-aset-2    </td><td>DC = WESTUS állvány = rack4    </td><td>Igen</td></tr>
-<tr><td>hk-c8-west-us    </td><td>adatok    </td><td>10.1.2.11    </td><td>hk-c-aset-2    </td><td>DC = WESTUS állvány = rack4    </td><td>Nem </td></tr>
+<tr><td>HK-c1 – Nyugat-USA    </td><td>adat    </td><td>10.1.2.4    </td><td>hk-c-aset-1    </td><td>DC = WESTUS állvány = rack1 </td><td>Igen</td></tr>
+<tr><td>hk-c2-west-us    </td><td>adat    </td><td>10.1.2.5    </td><td>hk-c-aset-1    </td><td>DC = WESTUS állvány = rack1    </td><td>Nem </td></tr>
+<tr><td>HK-C3 csomag – Nyugat-USA    </td><td>adat    </td><td>10.1.2.6    </td><td>hk-c-aset-1    </td><td>DC = WESTUS állvány = rack2    </td><td>Igen</td></tr>
+<tr><td>hk-c4-west-us    </td><td>adat    </td><td>10.1.2.7    </td><td>hk-c-aset-1    </td><td>DC = WESTUS állvány = rack2    </td><td>Nem </td></tr>
+<tr><td>HK-C5 csomag – Nyugat-USA    </td><td>adat    </td><td>10.1.2.8    </td><td>hk-c-aset-2    </td><td>DC = WESTUS állvány = rack3    </td><td>Igen</td></tr>
+<tr><td>HK-C6 csomag – Nyugat-USA    </td><td>adat    </td><td>10.1.2.9    </td><td>hk-c-aset-2    </td><td>DC = WESTUS állvány = rack3    </td><td>Nem </td></tr>
+<tr><td>HK-c7 – Nyugat-USA    </td><td>adat    </td><td>10.1.2.10    </td><td>hk-c-aset-2    </td><td>DC = WESTUS állvány = rack4    </td><td>Igen</td></tr>
+<tr><td>hk-c8-west-us    </td><td>adat    </td><td>10.1.2.11    </td><td>hk-c-aset-2    </td><td>DC = WESTUS állvány = rack4    </td><td>Nem </td></tr>
 <tr><td>HK-w1 – Nyugat-USA    </td><td>web    </td><td>10.1.1.4    </td><td>hk-w-aset-1    </td><td>                       </td><td>–</td></tr>
 <tr><td>HK-w2 – Nyugat-USA    </td><td>web    </td><td>10.1.1.5    </td><td>hk-w-aset-1    </td><td>                       </td><td>–</td></tr>
 </table>
@@ -482,7 +482,7 @@ Adja hozzá a következő alhálózatok:
 <table>
 <tr><th>Name (Név)    </th><th>Kezdő IP-cím    </th><th>CIDR    </th><th>Megjegyzések</th></tr>
 <tr><td>web    </td><td>10.2.1.0    </td><td>/24 (251)    </td><td>A webfarm-alhálózatot</td></tr>
-<tr><td>adatok    </td><td>10.2.2.0    </td><td>/24 (251)    </td><td>Az adatbázis-csomópont alhálózatot</td></tr>
+<tr><td>adat    </td><td>10.2.2.0    </td><td>/24 (251)    </td><td>Az adatbázis-csomópont alhálózatot</td></tr>
 </table>
 
 
@@ -527,13 +527,13 @@ Az Ubuntu-rendszerkép létrehozása a következő lépéseket vagy a #2 régió
 
 | Gépnév | Alhálózat | IP-cím | Rendelkezésre állási csoport | DC/állvány | Kezdőérték? |
 | --- | --- | --- | --- | --- | --- |
-| HK-c1 – kelet-USA |adatok |10.2.2.4 |hk-c-aset-1 |DC = USA keleti RÉGIÓJA rack = rack1 |Igen |
-| hk-c2-east-us |adatok |10.2.2.5 |hk-c-aset-1 |DC = USA keleti RÉGIÓJA rack = rack1 |Nem |
-| HK-C3 csomag – kelet-USA |adatok |10.2.2.6 |hk-c-aset-1 |DC = USA keleti RÉGIÓJA rack = rack2 |Igen |
-| HK-C5 csomag – kelet-USA |adatok |10.2.2.8 |hk-c-aset-2 |DC = USA keleti RÉGIÓJA rack = rack3 |Igen |
-| hk-c6-east-us |adatok |10.2.2.9 |hk-c-aset-2 |DC = USA keleti RÉGIÓJA rack = rack3 |Nem |
-| hk-c7-east-us |adatok |10.2.2.10 |hk-c-aset-2 |DC = USA keleti RÉGIÓJA rack = rack4 |Igen |
-| HK-c8 – kelet-USA |adatok |10.2.2.11 |hk-c-aset-2 |DC = USA keleti RÉGIÓJA rack = rack4 |Nem |
+| HK-c1 – kelet-USA |adat |10.2.2.4 |hk-c-aset-1 |DC = USA keleti RÉGIÓJA rack = rack1 |Igen |
+| hk-c2-east-us |adat |10.2.2.5 |hk-c-aset-1 |DC = USA keleti RÉGIÓJA rack = rack1 |Nem |
+| HK-C3 csomag – kelet-USA |adat |10.2.2.6 |hk-c-aset-1 |DC = USA keleti RÉGIÓJA rack = rack2 |Igen |
+| HK-C5 csomag – kelet-USA |adat |10.2.2.8 |hk-c-aset-2 |DC = USA keleti RÉGIÓJA rack = rack3 |Igen |
+| hk-c6-east-us |adat |10.2.2.9 |hk-c-aset-2 |DC = USA keleti RÉGIÓJA rack = rack3 |Nem |
+| hk-c7-east-us |adat |10.2.2.10 |hk-c-aset-2 |DC = USA keleti RÉGIÓJA rack = rack4 |Igen |
+| HK-c8 – kelet-USA |adat |10.2.2.11 |hk-c-aset-2 |DC = USA keleti RÉGIÓJA rack = rack4 |Nem |
 | HK-w1 – kelet-USA |web |10.2.1.4 |hk-w-aset-1 |– |– |
 | HK-w2 – kelet-USA |web |10.2.1.5 |hk-w-aset-1 |– |– |
 

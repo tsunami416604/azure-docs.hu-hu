@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 190e173e035716431c92533e42ded97e147f21a7
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 4faea38817a546dbab02064d22a0813362f77b3d
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409203"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416460"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-termékekkel/szolgáltatásokkal csatlakozzon az IT Service Management-összekötő
 Ez a cikk ismerteti az ITSM-termék vagy szolgáltatás és az IT Service Management Connector (ITSMC) közötti kapcsolat konfigurálása a Log Analytics központilag kezelheti a munkaelemeket. ITSMC kapcsolatos további információkért lásd: [áttekintése](log-analytics-itsmc-overview.md).
@@ -57,7 +57,7 @@ A következő eljárással ITSMC csatlakozni a System Center Service Manager-pé
 
 2.  A **MUNKATERÜLET ADATFORRÁSAI** kattintson **ITSM-kapcsolatok**.
 
-    ![Új kapcsolat](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![Új kapcsolat](media/log-analytics-itsmc-connections/add-new-itsm-connection.png)
 
 3. Kattintson a jobb oldali ablaktábla tetején **Hozzáadás**.
 
@@ -78,7 +78,7 @@ A következő eljárással ITSMC csatlakozni a System Center Service Manager-pé
 | **Adatok szinkronizálása** | Írja be az adatokat a kívánt múltbeli napok száma. **Felső korlát**: 120 nap. |
 | **Új konfigurációs elem létrehozása az ITSM-megoldással** | Válassza ezt a lehetőséget, ha azt szeretné, a konfigurációelemek létrehozása az ITSM-termékben. Kiválasztásakor a Log Analytics hoz létre az érintett Konfigurációelemek (esetén a nem létező CIs) konfigurációelemként a támogatott ITSM-rendszer. **Alapértelmezett**: le van tiltva. |
 
-![Service manager-kapcsolat](./media/log-analytics-itsmc/service-manager-connection.png)
+![Service manager-kapcsolat](media/log-analytics-itsmc-connections/service-manager-connection.png)
 
 **Ha sikeresen csatlakoztatva és szinkronizálva**:
 
@@ -128,14 +128,14 @@ A következő eljárás használatával állítsa be a hibrid kapcsolatot, hogy 
 2. Kattintson a **beállítások** > **hálózatkezelés**.
 3. A **hibrid kapcsolatok**, kattintson a **hibrid kapcsolati végpontok konfigurálása**.
 
-    ![Hibrid kapcsolat hálózatkezelés](./media/log-analytics-itsmc/itsmc-hybrid-connection-networking-and-end-points.png)
+    ![Hibrid kapcsolat hálózatkezelés](media/log-analytics-itsmc-connections/itsmc-hybrid-connection-networking-and-end-points.png)
 4. Az a **hibrid kapcsolatok** panelen kattintson a **hibrid kapcsolat hozzáadása**.
 
-    ![Hibrid kapcsolat hozzáadása](./media/log-analytics-itsmc/itsmc-new-hybrid-connection-add.png)
+    ![Hibrid kapcsolat hozzáadása](media/log-analytics-itsmc-connections/itsmc-new-hybrid-connection-add.png)
 
 5. Az a **adja hozzá a hibrid kapcsolatok** panelen kattintson a **hozzon létre új hibrid kapcsolat**.
 
-    ![Új hibrid kapcsolat](./media/log-analytics-itsmc/itsmc-create-new-hybrid-connection.png)
+    ![Új hibrid kapcsolat](media/log-analytics-itsmc-connections/itsmc-create-new-hybrid-connection.png)
 
 6. Írja be a következő értékeket:
 
@@ -146,14 +146,14 @@ A következő eljárás használatával állítsa be a hibrid kapcsolatot, hogy 
     - **Hely**: válassza ki azt a helyet.
     -  **Név**: Adja meg a nevet a servicebus létrehozásakor azt.
 
-    ![Hibrid kapcsolat értékek](./media/log-analytics-itsmc/itsmc-new-hybrid-connection-values.png)
+    ![Hibrid kapcsolat értékek](media/log-analytics-itsmc-connections/itsmc-new-hybrid-connection-values.png)
 6. Kattintson a **OK** gombra kattintva zárja be a **hibrid kapcsolat létrehozása** panelen, majd a hibrid kapcsolat létrehozásának indítása.
 
     A hibrid kapcsolat létrehozása után megjelenik a panelen.
 
 7. A hibrid kapcsolat létrehozása után válassza ki a kapcsolatot, és kattintson a **hozzáadása a kiválasztott hibrid kapcsolat**.
 
-    ![Új hibrid kapcsolat](./media/log-analytics-itsmc/itsmc-new-hybrid-connection-added.png)
+    ![Új hibrid kapcsolat](media/log-analytics-itsmc-connections/itsmc-new-hybrid-connection-added.png)
 
 #### <a name="configure-the-listener-setup"></a>A figyelő beállítása konfigurálása
 
@@ -171,14 +171,14 @@ Az alábbi eljárás segítségével konfigurálhatja a figyelő beállítása a
 
 A hibrid kapcsolat sikeresen csatlakoztatva van.
 
-![sikeres hibrid kapcsolat](./media/log-analytics-itsmc/itsmc-hybrid-connection-listener-set-up-successful.png)
+![sikeres hibrid kapcsolat](media/log-analytics-itsmc-connections/itsmc-hybrid-connection-listener-set-up-successful.png)
 > [!NOTE]
 
 > Után a hibrid kapcsolat jön létre, győződjön meg arról, és tesztelje a kapcsolatot a Service Manager üzembe helyezett webalkalmazás felkeresésével. Győződjön meg arról, a kapcsolat létrejött, mielőtt megpróbál csatlakozni az Azure-ban ITSMC.
 
 Az alábbi képet a sikeres kapcsolat részleteit jeleníti meg:
 
-![Hibrid kapcsolat tesztelése](./media/log-analytics-itsmc/itsmc-hybrid-connection-test.png)
+![Hibrid kapcsolat tesztelése](media/log-analytics-itsmc-connections/itsmc-hybrid-connection-test.png)
 
 ## <a name="connect-servicenow-to-it-service-management-connector-in-azure"></a>A ServiceNow csatlakoztatása a IT Service Management-összekötő az Azure-ban
 
@@ -209,7 +209,7 @@ Az alábbi eljárással hozhat létre egy ServiceNow-csatlakoztatás:
 1. Az Azure Portalon lépjen a **összes erőforrás** , és keressen **ServiceDesk(YourWorkspaceName)**
 
 2.  A **MUNKATERÜLET ADATFORRÁSAI** kattintson **ITSM-kapcsolatok**.
-    ![Új kapcsolat](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![Új kapcsolat](media/log-analytics-itsmc-connections/add-new-itsm-connection.png)
 
 3. Kattintson a jobb oldali ablaktábla tetején **Hozzáadás**.
 
@@ -232,7 +232,7 @@ Az alábbi eljárással hozhat létre egy ServiceNow-csatlakoztatás:
 | **Adatok szinkronizálása** | Írja be az adatokat a kívánt múltbeli napok száma. **Felső korlát**: 120 nap. |
 | **Új konfigurációs elem létrehozása az ITSM-megoldással** | Válassza ezt a lehetőséget, ha azt szeretné, a konfigurációelemek létrehozása az ITSM-termékben. Kiválasztásakor ITSMC hoz létre az érintett Konfigurációelemek (esetén a nem létező CIs) konfigurációelemként a támogatott ITSM-rendszerben. **Alapértelmezett**: le van tiltva. |
 
-![ServiceNow-csatlakoztatás](./media/log-analytics-itsmc/itsm-connection-servicenow-connection-latest.png)
+![ServiceNow-csatlakoztatás](media/log-analytics-itsmc-connections/itsm-connection-servicenow-connection-latest.png)
 
 **Ha sikeresen csatlakoztatva és szinkronizálva**:
 
@@ -304,7 +304,7 @@ A következő eljárással Provance kapcsolat létrehozása:
 1. Az Azure Portalon lépjen a **összes erőforrás** , és keressen **ServiceDesk(YourWorkspaceName)**
 
 2.  A **MUNKATERÜLET ADATFORRÁSAI** kattintson **ITSM-kapcsolatok**.
-    ![Új kapcsolat](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![Új kapcsolat](media/log-analytics-itsmc-connections/add-new-itsm-connection.png)
 
 3. Kattintson a jobb oldali ablaktábla tetején **Hozzáadás**.
 
@@ -326,7 +326,7 @@ A következő eljárással Provance kapcsolat létrehozása:
 | **Adatok szinkronizálása** | Írja be az adatokat a kívánt múltbeli napok száma. **Felső korlát**: 120 nap. |
 | **Új konfigurációs elem létrehozása az ITSM-megoldással** | Válassza ezt a lehetőséget, ha azt szeretné, a konfigurációelemek létrehozása az ITSM-termékben. Kiválasztásakor ITSMC hoz létre az érintett Konfigurációelemek (esetén a nem létező CIs) konfigurációelemként a támogatott ITSM-rendszerben. **Alapértelmezett**: le van tiltva.|
 
-![Provance kapcsolat](./media/log-analytics-itsmc/itsm-connections-provance-latest.png)
+![Provance kapcsolat](media/log-analytics-itsmc-connections/itsm-connections-provance-latest.png)
 
 **Ha sikeresen csatlakoztatva és szinkronizálva**:
 
@@ -355,7 +355,7 @@ A következő eljárással Provance kapcsolat létrehozása:
 1. Az Azure Portalon lépjen a **összes erőforrás** , és keressen **ServiceDesk(YourWorkspaceName)**
 
 2.  A **MUNKATERÜLET ADATFORRÁSAI** kattintson **ITSM-kapcsolatok**.
-    ![Új kapcsolat](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![Új kapcsolat](media/log-analytics-itsmc-connections/add-new-itsm-connection.png)
 
 3. Kattintson a jobb oldali ablaktábla tetején **Hozzáadás**.
 
@@ -378,7 +378,7 @@ A következő eljárással Provance kapcsolat létrehozása:
 | **Új konfigurációs elem létrehozása az ITSM-megoldással** | Válassza ezt a lehetőséget, ha azt szeretné, a konfigurációelemek létrehozása az ITSM-termékben. Kiválasztásakor ITSMC hoz létre az érintett Konfigurációelemek (esetén a nem létező CIs) konfigurációelemként a támogatott ITSM-rendszerben. **Alapértelmezett**: le van tiltva. |
 
 
-![Provance kapcsolat](./media/log-analytics-itsmc/itsm-connections-cherwell-latest.png)
+![Provance kapcsolat](media/log-analytics-itsmc-connections/itsm-connections-cherwell-latest.png)
 
 **Ha sikeresen csatlakoztatva és szinkronizálva**:
 
@@ -396,7 +396,7 @@ Az ügyfél-azonosítója és kulcsa Cherwell létrehozni, használja az alábbi
 2. Kattintson a **biztonsági** > **szerkesztése a REST API-val ügyfélbeállítások**.
 3. Válassza ki **hozzon létre új ügyfél** > **titkos Ügyfélkód**.
 
-    ![Cherwell felhasználói azonosító](./media/log-analytics-itsmc/itsmc-cherwell-client-id.png)
+    ![Cherwell felhasználói azonosító](media/log-analytics-itsmc-connections/itsmc-cherwell-client-id.png)
 
 
 ## <a name="next-steps"></a>További lépések

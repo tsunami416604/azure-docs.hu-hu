@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: a5e86b7c93344a6c61fecaa41b98bc1daa20f36f
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: af37822429098f904e08404462deb134d4370898
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423221"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421203"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-java-modules-for-azure-iot-edge"></a>Fejlesztés és hibakeresés Java-modulok az Azure IoT Edge-hez a Visual Studio Code használatával
 
@@ -33,7 +33,7 @@ Mivel ez a cikk a fő fejlesztőeszközt, Visual Studio Code-ot használ, a VS C
 * [Docker-bővítmény](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 
 Hozzon létre egy modult, szüksége van a Java és a maven használatával való létrehozásához és futtatásához a modul kód, Docker, a modul rendszerképének és tároló-beállításjegyzék létrehozása a modul lemezkép tárolására:
-* A [Java SE Development Kit 10](http://www.oracle.com/technetwork/java/javase/downloads/index.html), valamint úgy [állítsa be a `JAVA_HOME` környezeti változót](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/), hogy a JDK-telepítésre mutasson.
+* A [Java SE Development Kit 10](https://aka.ms/azure-jdks), valamint úgy [állítsa be a `JAVA_HOME` környezeti változót](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/), hogy a JDK-telepítésre mutasson.
 * [Maven 3](https://maven.apache.org/)
 * [Docker](https://docs.docker.com/engine/installation/)
 * [Az Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) vagy [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)

@@ -4,22 +4,19 @@ description: Ismerje meg, hogyan hozható létre belső terheléselosztó az Azu
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jennoc
-tags: azure-resource-manager
-ms.assetid: c6c98981-df9d-4dd7-a94b-cc7d1dc99369
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 1b599e5b88026c06a6912ede9952497c489b0269
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 4e99411ec56f25e249429e4e65bae4a8e7071cc1
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38697304"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412686"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Belső terheléselosztó létrehozása az Azure PowerShell-modullal
 

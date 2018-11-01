@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 8cc654fca8e645253ffc79ef808075bdbe887530
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 31ee14369cc3f1c03d13c59e1239aa567bce3552
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043294"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419775"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Nézettervező vizualizációs részére a Log Analytics használati útmutató
 Nézettervező az Azure Log Analytics használatával egyéni nézeteket hozhat létre az Azure Portalon, amelyek a Log Analytics-munkaterület adatvizualizációk széles. Ez a cikk egy referencia-útmutató a beállítások a vizualizációs rész, amely szerepel az egyéni nézetek.
@@ -50,7 +50,7 @@ A következő szakaszok ismertetik a csempe típusát és azok tulajdonságait a
 ## <a name="list-of-queries-part"></a>Lekérdezések rész listája
 A lista lekérdezések egy részét a naplóbeli keresési lekérdezések listáját jeleníti meg. Kiválaszthatja az egyes lekérdezések eredményeinek megjelenítéséhez. A nézet tartalmazza az alapértelmezés szerint egyetlen lekérdezést, és kiválaszthatja **+ lekérdezés** további lekérdezések hozzáadásához.
 
-![Lekérdezések megtekintése listája](media/log-analytics-view-designer/view-list-queries.png)
+![Lekérdezések megtekintése listája](media/log-analytics-view-designer-parts/view-list-queries.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
@@ -66,7 +66,7 @@ A lista lekérdezések egy részét a naplóbeli keresési lekérdezések listá
 ## <a name="number-and-list-part"></a>Szám és lista
 A fejléc egyetlen szám, amely megjeleníti a naplóbeli keresési lekérdezés rekordjainak számát jeleníti meg. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg.
 
-![Lekérdezések megtekintése listája](media/log-analytics-view-designer/view-number-list.png)
+![Lekérdezések megtekintése listája](media/log-analytics-view-designer-parts/view-number-list.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
@@ -95,7 +95,7 @@ A fejléc egyetlen szám, amely megjeleníti a naplóbeli keresési lekérdezés
 ## <a name="two-numbers-and-list-part"></a>Két szám és lista része
 A fejléc van két szám, amely megjeleníti az külön naplóbeli keresési lekérdezések rekordjainak számát. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg.
 
-![Két szám és lista megtekintése](media/log-analytics-view-designer/view-two-numbers-list.png)
+![Két szám és lista megtekintése](media/log-analytics-view-designer-parts/view-two-numbers-list.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
@@ -126,7 +126,7 @@ A fejléc van két szám, amely megjeleníti az külön naplóbeli keresési lek
 ## <a name="donut-and-list-part"></a>Fánkdiagram és lista
 A fejléc egyetlen szám, amely összefoglalja a log lekérdezésben érték oszlop jeleníti meg. A fánkdiagram grafikusan felső három rekord eredményeit jeleníti meg.
 
-![Fánkdiagram és lista megtekintése](media/log-analytics-view-designer/view-donut-list.png)
+![Fánkdiagram és lista megtekintése](media/log-analytics-view-designer-parts/view-donut-list.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
@@ -167,7 +167,7 @@ A fejléc egyetlen szám, amely összefoglalja a log lekérdezésben érték osz
 ## <a name="two-timelines-and-list-part"></a>Két idősor és lista része
 A fejléc két naplófájl lekérdezések eredményeit oszlopdiagramként, a kihívás, amely egyetlen szám, amely összefoglalja a log lekérdezésben érték oszlop megjeleníti az idő függvényében jeleníti meg. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg.
 
-![Két idősor és lista megtekintése](media/log-analytics-view-designer/view-two-timelines-list.png)
+![Két idősor és lista megtekintése](media/log-analytics-view-designer-parts/view-two-timelines-list.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
@@ -199,7 +199,7 @@ A fejléc két naplófájl lekérdezések eredményeit oszlopdiagramként, a kih
 ## <a name="information-part"></a>Információs rész
 A fejléc statikus szöveget és a egy nem kötelező hivatkozást jeleníti meg. A listában egy vagy több elemet egy statikus címet és szöveget jeleníti meg.
 
-![Információk megtekintése](media/log-analytics-view-designer/view-information.png)
+![Információk megtekintése](media/log-analytics-view-designer-parts/view-information.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
@@ -220,7 +220,7 @@ A fejléc statikus szöveget és a egy nem kötelező hivatkozást jeleníti meg
 ## <a name="line-chart-callout-and-list-part"></a>Vonaldiagram, képfelirat és lista része
 A fejléc log lekérdezésből származó több sorozat vonaldiagramot időt és a egy kihívás az összesített értéket jeleníti meg. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg.
 
-![Vonaldiagram, képfelirat és lista megtekintése](media/log-analytics-view-designer/view-line-chart-callout-list.png)
+![Vonaldiagram, képfelirat és lista megtekintése](media/log-analytics-view-designer-parts/view-line-chart-callout-list.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
@@ -260,7 +260,7 @@ A fejléc log lekérdezésből származó több sorozat vonaldiagramot időt és
 ## <a name="line-chart-and-list-part"></a>Diagram és a lista rész sor
 A fejléc log lekérdezésből származó több sorozat vonaldiagramot idővel jeleníti meg. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg.
 
-![Sor diagram és a lista megtekintése](media/log-analytics-view-designer/view-line-chart-callout-list.png)
+![Sor diagram és a lista megtekintése](media/log-analytics-view-designer-parts/view-line-chart-callout-list.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
@@ -296,7 +296,7 @@ A fejléc log lekérdezésből származó több sorozat vonaldiagramot idővel j
 ## <a name="stack-of-line-charts-part"></a>Sor diagramok rész verem
 A vonaldiagram-verem három külön vonaldiagramok használata több sorozat idővel log lekérdezésből jeleníti meg, itt látható módon:
 
-![Vonaldiagram-halom](media/log-analytics-view-designer/view-stack-line-charts.png)
+![Vonaldiagram-halom](media/log-analytics-view-designer-parts/view-stack-line-charts.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |

@@ -1,8 +1,8 @@
 ---
-title: Az Azure Active Directory, alkalmazásalapú feltételes hozzáférés |} A Microsoft Docs
-description: Ismerje meg az Azure Active Directory alapján az alkalmazásalapú feltételes hozzáférés működését.
+title: A jóváhagyott ügyfélalkalmazások szükségesek a felhőalapú alkalmazás-hozzáférés az Azure Active Directory feltételes hozzáférés hogyan |} A Microsoft Docs
+description: Útmutató a jóváhagyott ügyfélalkalmazások szükségesek a felhőalapú alkalmazás-hozzáférés a feltételes hozzáférés az Azure Active Directoryban.
 services: active-directory
-keywords: feltételes hozzáférés az alkalmazásokhoz, az Azure AD feltételes hozzáférés, biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési szabályzatok
+keywords: feltételes hozzáférés az alkalmazásokhoz, feltételes hozzáférés az Azure AD-vel, biztonságos hozzáférés a vállalati erőforrásokhoz, feltételes hozzáférési szabályzatok
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -17,18 +17,18 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: f34fc4c41094292db9bed1294ee7b26ec04c96c6
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 68c2178440264aa6a6efce074b299f4e3deaa10f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630602"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415389"
 ---
-# <a name="azure-active-directory-app-based-conditional-access"></a>Az Azure Active Directory, alkalmazásalapú feltételes hozzáférés  
+# <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Útmutató: Igényel jóváhagyott ügyfélalkalmazások, a feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés 
 
-Az alkalmazottak mobileszközöket használnak a személyes és munkahelyi feladatokhoz. Gondoskodik róla, hogy az alkalmazottak számára hatékony munkavégzést, miközben is szeretné megakadályozni az adatvesztést. Az Azure Active Directory (Azure AD) alapján az alkalmazásalapú feltételes hozzáférés a felhőalkalmazásokhoz, az ügyfélalkalmazások, amelyek segítenek a vállalati adatok védelmében korlátozhatja a hozzáférést.  
+Az alkalmazottak mobileszközöket használnak a személyes és munkahelyi feladatokhoz. Gondoskodik róla, hogy az alkalmazottak számára hatékony munkavégzést, miközben is szeretné megakadályozni az adatvesztést. Az Azure Active Directory (Azure AD) feltételes hozzáférés korlátozhatja a felhőalapú alkalmazások a jóváhagyott ügyfélalkalmazások, amelyek a vállalati adatait védheti a hozzáférést.  
 
-Ez a témakör ismerteti az Azure AD alkalmazásalapú feltételes hozzáférés konfigurálása.
+Ez a témakör ismerteti a jóváhagyott ügyfélalkalmazások igénylő feltétele hozzáférési szabályzatok konfigurálása.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -36,7 +36,7 @@ A [Azure AD feltételes hozzáférés](overview.md), finomhangolhatja hogyan eng
 
 Használhat [az Intune alkalmazásvédelmi szabályzatai](https://docs.microsoft.com/intune/app-protection-policy) a vállalati adatok védelme érdekében. Az Intune alkalmazásvédelmi szabályzatai nem igénylik a mobileszköz-kezelési (MDM) megoldás, amely lehetővé teszi egy Eszközkezelési megoldás az eszközök regisztrációja nélkül a vállalati adatok védelmét.
 
-Az Azure Active Directory alkalmazásalapú feltételes hozzáférés lehetővé teszi, hogy korlátozni az ügyfélalkalmazások, amelyek támogatják az Intune alkalmazásvédelmi szabályzatai felhőalapú alkalmazásait. Például korlátozhatja hozzáférést az Exchange online-hoz az Outlook alkalmazást.
+Az Azure Active Directory feltételes hozzáférés lehetővé teszi, hogy korlátozni az ügyfélalkalmazások, amelyek támogatják az Intune alkalmazásvédelmi szabályzatai felhőalapú alkalmazásait. Például korlátozhatja hozzáférést az Exchange online-hoz az Outlook alkalmazást.
 
 A feltételes hozzáférés-terminológia, az ügyfél ezeket az alkalmazásokat nevezzük **jóváhagyott ügyfélalkalmazások**.  
 
@@ -120,9 +120,9 @@ Ebben a lépésben a feltételes hozzáférési szabályzat konfigurálja a köv
 
     ![Feltételes hozzáférés](./media/app-based-conditional-access/03.png)
 
-    b. Mint **ügyfélalkalmazás**válassza **mobilalkalmazások és asztali alkalmazások**.
+    b. Mint **ügyfélalkalmazások (előzetes verzió)** válassza **mobilalkalmazások és asztali alkalmazások** és **Modern hitelesítési ügyfelek**.
 
-    ![Feltételes hozzáférés](./media/app-based-conditional-access/04.png)
+    ![Feltételes hozzáférés](./media/app-based-conditional-access/91.png)
 
 5. Mint **hozzáférés-vezérlés**, rendelkeznie kell **jóváhagyott ügyfélalkalmazás (előzetes verzió) megkövetelése** kiválasztott.
 
@@ -144,11 +144,11 @@ Ebben a lépésben a feltételes hozzáférési szabályzat konfigurálja a köv
 
     ![Feltételes hozzáférés](./media/app-based-conditional-access/07.png)
 
-4. **Feltételek:** , **feltételek**, konfigurálnia kell **ügyfélalkalmazás**. 
+4. **Feltételek:** , **feltételek**, konfigurálnia kell **ügyfélalkalmazások (előzetes verzió)**. 
 
-    a. Mint **ügyfélalkalmazás**válassza **Exchange Active Sync**.
+    a. Mint **ügyfélalkalmazások (előzetes verzió)** válassza **mobilalkalmazások és asztali ügyfelek** és **Exchange ActiveSync-ügyfelek**.
 
-    ![Feltételes hozzáférés](./media/app-based-conditional-access/08.png)
+    ![Feltételes hozzáférés](./media/app-based-conditional-access/92.png)
 
     b. Mint **hozzáférés-vezérlés**, rendelkeznie kell **jóváhagyott ügyfélalkalmazás (előzetes verzió) megkövetelése** kiválasztott.
 
@@ -201,9 +201,9 @@ Ebben a lépésben a feltételes hozzáférési szabályzat konfigurálja a köv
 
     ![Feltételes hozzáférés](./media/app-based-conditional-access/03.png)
 
-    b. Mint **ügyfélalkalmazás**válassza **mobilalkalmazások és asztali alkalmazások**.
+    b. Mint **ügyfélalkalmazások (előzetes verzió)** válassza **mobilalkalmazások és asztali ügyfelek** és **Modern hitelesítési ügyfelek**.
 
-    ![Feltételes hozzáférés](./media/app-based-conditional-access/04.png)
+    ![Feltételes hozzáférés](./media/app-based-conditional-access/91.png)
 
 5. Mint **hozzáférés-vezérlés**, rendelkeznie kell **jóváhagyott ügyfélalkalmazás (előzetes verzió) megkövetelése** kiválasztott.
 
@@ -228,9 +228,9 @@ Ebben a lépésben a feltételes hozzáférési szabályzat konfigurálja a köv
 
 4. **Feltételek:** , **feltételek**, konfigurálnia kell **ügyfélalkalmazás**:
 
-    a. Mint **ügyfélalkalmazás**válassza **Exchange Active Sync**.
+    a. Mint **ügyfélalkalmazások (előzetes verzió)** válassza **mobilalkalmazások és asztali ügyfelek** és **Exchange ActiveSync-ügyfelek**.
 
-    ![Feltételes hozzáférés](./media/app-based-conditional-access/08.png)
+    ![Feltételes hozzáférés](./media/app-based-conditional-access/92.png)
 
     b. Mint **hozzáférés-vezérlés**, rendelkeznie kell **jóváhagyott ügyfélalkalmazás (előzetes verzió) megkövetelése** kiválasztott.
 
@@ -285,9 +285,9 @@ Ebben a lépésben a feltételes hozzáférési szabályzat konfigurálja a köv
 
     ![Feltételes hozzáférés](./media/app-based-conditional-access/03.png)
 
-    b. Mint **ügyfélalkalmazás**válassza **mobilalkalmazások és asztali alkalmazások**.
+    b. Mint **ügyfélalkalmazások (előzetes verzió)** válassza **mobilalkalmazások és asztali ügyfelek** és **Modern hitelesítési ügyfelek**.
 
-    ![Feltételes hozzáférés](./media/app-based-conditional-access/04.png)
+    ![Feltételes hozzáférés](./media/app-based-conditional-access/91.png)
 
 5. Mint **hozzáférés-vezérlés**, szüksége lesz kiválasztva a következőket:
 
@@ -317,9 +317,9 @@ Ebben a lépésben a feltételes hozzáférési szabályzat konfigurálja a köv
 
 4. **Feltételek:** , **feltételek**, konfigurálnia kell **ügyfélalkalmazás**. 
 
-    Mint **ügyfélalkalmazás*válassza **Exchange Active Sync**.
+    Mint **ügyfélalkalmazások (előzetes verzió)** válassza **mobilalkalmazások és asztali ügyfelek** és **Exchange ActiveSync-ügyfelek**.
 
-    ![Feltételes hozzáférés](./media/app-based-conditional-access/08.png)
+    ![Feltételes hozzáférés](./media/app-based-conditional-access/91.png)
 
 5. Mint **hozzáférés-vezérlés**, rendelkeznie kell **jóváhagyott ügyfélalkalmazás (előzetes verzió) megkövetelése** kiválasztott.
  
@@ -381,9 +381,9 @@ Ebben a lépésben a feltételes hozzáférési szabályzat konfigurálja a köv
 
     ![Feltételes hozzáférés](./media/app-based-conditional-access/03.png)
 
-    b. Mint **ügyfélalkalmazás**válassza **mobilalkalmazások és asztali alkalmazások**.
+    b. Mint **ügyfélalkalmazások (előzetes verzió)** válassza **mobilalkalmazások és asztali alkalmazások** és **Modern hitelesítési ügyfelek**.
 
-    ![Feltételes hozzáférés](./media/app-based-conditional-access/04.png)
+    ![Feltételes hozzáférés](./media/app-based-conditional-access/91.png)
 
 5. Mint **hozzáférés-vezérlés**, szüksége lesz kiválasztva a következőket:
 
@@ -411,11 +411,11 @@ Ebben a lépésben a feltételes hozzáférési szabályzat konfigurálja a köv
 
     ![Feltételes hozzáférés](./media/app-based-conditional-access/07.png)
 
-4. **Feltételek:** , **feltételek**, konfigurálnia kell **ügyfélalkalmazás**. 
+4. **Feltételek:** , **feltételek**, konfigurálnia kell **ügyfélalkalmazások (előzetes verzió)**. 
 
-    Mint **ügyfélalkalmazás**válassza **Exchange Active Sync**.
+    Mint **ügyfélalkalmazások (előzetes verzió)** válassza **mobilalkalmazások és asztali ügyfelek** és **Exchange ActiveSync-ügyfelek**.
 
-    ![Feltételes hozzáférés](./media/app-based-conditional-access/08.png)
+    ![Feltételes hozzáférés](./media/app-based-conditional-access/92.png)
 
 5. Mint **hozzáférés-vezérlés**, szüksége lesz kiválasztva a következőket:
 
@@ -446,4 +446,4 @@ Lásd: [alkalmazások és a Microsoft Intune-nal adatainak védelme](https://doc
 
 Ha azt szeretné tudni, hogyan lehet feltételes hozzáférési szabályzat konfigurálása, lásd: [többtényezős hitelesítés megkövetelése az Azure Active Directory feltételes hozzáférés az adott alkalmazások](app-based-mfa.md).
 
-Ha készen áll a környezetre vonatkozó feltételes hozzáférési szabályzatok konfigurálására, tekintse meg a [ajánlott eljárások az Azure Active Directory feltételes hozzáférés](best-practices.md). 
+Ha kész feltételes hozzáférési szabályzatokat konfigurálni a környezetében, tekintse át [az Azure Active Directory feltételes hozzáféréssel kapcsolatos ajánlott eljárásait](best-practices.md). 

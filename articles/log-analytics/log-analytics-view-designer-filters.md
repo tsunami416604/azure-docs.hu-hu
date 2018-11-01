@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 3851bfef71aab6553e109bb8108edd7bec182f0e
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 87cfcefd91652194adc0a5ca4580a8d00ba4d234
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041952"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412747"
 ---
 # <a name="filters-in-log-analytics-views"></a>A Log Analytics-nézetekben szűrők
 A **szűrő** a egy [megtekintése a Log Analytics](log-analytics-view-designer.md) lehetővé teszi a felhasználóknak az adatok nézetben található szűrés egy adott tulajdonságának értéke maga a nézet módosítása nélkül.  Például az adatok csak egy adott számítógép a nézet szűréséhez a nézet felhasználókat vagy számítógépeket sikerült engedélyezése.  Az, hogy a felhasználók több tulajdonság szerinti szűréshez használandó egyetlen nézetben több szűrőt is létrehozhat.  Ez a cikk bemutatja, hogyan használhatja egy szűrőt, és adjon hozzá egyet, egyéni nézet.
@@ -28,12 +28,12 @@ A **szűrő** a egy [megtekintése a Log Analytics](log-analytics-view-designer.
 ## <a name="using-a-filter"></a>A szűrők használatával
 Kattintson egy nézetre annak megnyitásához, ahol módosíthatja az adatok időintervallumát a nézet legördülő tetején az adatok időtartományt.
 
-![Példa szűrése](media/log-analytics-view-designer/filters-example-time.png)
+![Példa szűrése](media/log-analytics-view-designer-filters/filters-example-time.png)
 
 Kattintson a **+** használatával egyéni szűrőket a nézet szűrő hozzáadásához. Vagy válassza ki a szűrő egy értéket a legördülő listából, vagy írjon be egy értéket. Szűrők hozzáadása gombra kattintva folytassa a **+**. 
 
 
-![Példa szűrése](media/log-analytics-view-designer/filters-example-custom.png)
+![Példa szűrése](media/log-analytics-view-designer-filters/filters-example-custom.png)
 
 Ha eltávolítja az összes szűrő értékeit, majd a szűrő már nem lépnek érvénybe.
 
@@ -42,7 +42,7 @@ Ha eltávolítja az összes szűrő értékeit, majd a szűrő már nem lépnek 
 
 A szűrő létrehozása a **szűrők** lapon mikor [szerkesztési nézet](log-analytics-view-designer.md).  A szűrő a nézet globális, és a nézetben minden részére vonatkozik.  
 
-![Szűrőbeállítások](media/log-analytics-view-designer/filters-settings.png)
+![Szűrőbeállítások](media/log-analytics-view-designer-filters/filters-settings.png)
 
 A következő táblázat ismerteti az egy szűrő beállításait.
 

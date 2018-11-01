@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2018
 ms.author: bahariri
-ms.openlocfilehash: 4b78cef29c64c5c4c522ad5c751c10bbf6a7057c
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 18224c3ebf3b5dd9920dcc4b4868ee8bb42e5f91
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363418"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418789"
 ---
 # <a name="stream-into-event-hubs-for-the-apache-kafka"></a>Streamelés az Apache Kafkához készült Event Hubsba
 Ez a rövid útmutató bemutatja, hogyan streamelhet a Kafka-kompatibilis Event Hubsba anélkül, hogy módosítaná a protokollügyfeleket vagy saját fürtöket futtatna. Megtudhatja, hogyan érheti el egy egyszerű konfigurációmódosítással az alkalmazásokban, hogy az előállítók és a fogyasztók kommunikáljanak a Kafka-kompatibilis Event Hubsszal. Az Azure Event Hubs az [Apache Kafka 1.0-s verzióját](https://kafka.apache.org/10/documentation.html) támogatja.
@@ -32,7 +32,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek a
 
 * Olvassa át az [Apache Kafkához készült Event Hubsot](event-hubs-for-kafka-ecosystem-overview.md) ismertető cikket.
 * Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), mielőtt hozzákezd.
-* [Java fejlesztői készlet (JDK) 1.7+](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
+* [Java fejlesztői készlet (JDK) 1.7+](https://aka.ms/azure-jdks).
 * Egy [letöltött](http://maven.apache.org/download.cgi) és [telepített](http://maven.apache.org/install.html) Maven bináris archívum.
 * [Git](https://www.git-scm.com/)
 * [Kafka-kompatibilis Event Hubs-névtér](event-hubs-create.md)

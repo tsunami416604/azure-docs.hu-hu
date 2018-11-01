@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/22/2018
 ms.author: dobett
-ms.openlocfilehash: 6b7de80d18250550c9bd7e52537a7a950e6ffea7
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 3e936b3e08884c1728809aea9054278ffdb99045
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364767"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416987"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>Rövid útmutató: IoT Hubhoz csatlakozó eszköz vezérlése (Java)
 
@@ -36,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A rövid útmutatóban futtatott két mintaalkalmazás a Java használatával készült. A fejlesztői gépen szükség lesz a Java SE 8-as vagy újabb verziójára.
 
-A Javát az [Oracle](http://www.oracle.com/technetwork/java/javase/downloads/index.html) webhelyéről töltheti le többféle platformra.
+A Javát az [Oracle](https://aka.ms/azure-jdks) webhelyéről töltheti le többféle platformra.
 
 A Java aktuális verzióját a következő paranccsal ellenőrizheti a fejlesztői gépen:
 

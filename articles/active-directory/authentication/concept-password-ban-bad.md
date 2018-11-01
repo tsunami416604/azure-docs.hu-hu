@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: 1ad499e2703ff8376c063d933c0cc1f03765fc23
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 4c5fead0a7f4634a8f5ee005114d24cae9a2590f
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42054072"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739821"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Rossz jelszavak, a szervezet számára
 
@@ -70,4 +70,4 @@ Sajnos a jelszó tartalmaz egy szót, kifejezést vagy mintát, amely lehetővé
 ## <a name="next-steps"></a>További lépések
 
 * [Az egyéni letiltott jelszavak listájának konfigurálása](howto-password-ban-bad.md)
-* [Engedélyezze az Azure AD jelszó védelmi ügynököket a helyszíni](howto-password-ban-bad-on-premises.md)
+* [Engedélyezze az Azure AD jelszó védelmi ügynököket a helyszíni](howto-password-ban-bad-on-premises-deploy.md)
