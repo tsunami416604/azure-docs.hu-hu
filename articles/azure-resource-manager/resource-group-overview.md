@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2c5d0dc322a4a56f0de9bd3c1af7efc158131a89
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 16e78784337771d1e31d826f475c92c86fe20411
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954215"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212318"
 ---
 # <a name="azure-resource-manager-overview"></a>Az Azure Resource Manager áttekintése
 Az alkalmazás infrastruktúrája általában számos összetevőből áll – például egy virtuális gépből, tárfiókból és virtuális hálózatból, vagy egy webalkalmazásból, adatbázisból, adatbázis-kiszolgálóból és harmadik féltől származó szolgáltatásokból. Ezeket az összetevőket nem külön entitásokként látja, hanem egyetlen entitás kapcsolódó és egymással összefüggő részeiként. Csoportként érdemes telepíteni, kezelni és megfigyelni őket. Az Azure Resource Manager lehetővé teszi, hogy a megoldásában az erőforrásokkal egy csoportként dolgozzon. A megoldás összes erőforrását egyetlen, koordinált műveletben telepítheti, frissítheti vagy törölheti. A telepítéshez egy sablon használatos, amely különböző, például tesztelési, átmeneti és üzemi környezetben is képes működni. A Resource Manager biztonsági, naplózási és címkézési szolgáltatásokat biztosít, hogy segítsen az erőforrások kezelésében a telepítést követően. 
@@ -65,29 +65,7 @@ Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription gov
 
 Az [Azure Resource Manager-sablonok létrehozása felhőkonzisztenciához](templates-cloud-consistency.md) című témakörben javaslatokat talál olyan Resource Manager-sablonok létrehozásához, amelyek használhatóak a globális Azure-ban, az Azure szuverén felhőben és az Azure Stackben is.
 
-## <a name="quickstarts-and-tutorials"></a>Rövid útmutatók és oktatóanyagok
-
-Az alábbi rövid útmutatók és oktatóanyagok segítségével megismerheti, hogyan fejleszthet Resource Manager-sablonokat:
-
-- Gyors útmutatók
-
-    |Cím|Leírás|
-    |------|-----|
-    |[Az Azure Portal használata](./resource-manager-quickstart-create-templates-use-the-portal.md)|Sablon létrehozása a Portallal, valamint a sablon szerkesztésének és üzembe helyezésének folyamata.|
-    |[A Visual Studio Code használata](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)|Sablonok létrehozása és szerkesztése a Visual Studio Code használatával, és a sablonok üzembe helyezése az Azure Cloud Shell-lel.|
-    |[A Visual Studio használata](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)|Sablonok létrehozása, szerkesztése és üzembe helyezése a Visual Studióval.|
-
-- Oktatóanyagok
-
-    |Cím|Leírás|
-    |------|-----|
-    |[A sablonreferencia felhasználása](./resource-manager-tutorial-create-encrypted-storage-accounts.md)|A sablon referenciadokumentációjának használata sablonok fejlesztéséhez. Az oktatóanyagban megtalálja a tárfiók sémáját, és létrehoz egy titkosított tárfiókot az információk felhasználásával.|
-    |[Több példány létrehozása](./resource-manager-tutorial-create-multiple-instances.md)|Azure-erőforrások több példányának létrehozása. Az oktatóanyagban több tárfiókpéldányt hoz létre.|
-    |[Erőforrások üzembehelyezési sorrendjének beállítása](./resource-manager-tutorial-create-templates-with-dependent-resources.md)|Erőforrás-függőségek meghatározása. Az oktatóanyagban létrehoz egy virtuális hálózatot, egy virtuális gépet és a függő Azure-erőforrásokat. Megismerheti a függőségek meghatározásának a módját.|
-    |[Feltételek használata](./resource-manager-tutorial-use-conditions.md)|Erőforrások üzembe helyezése paraméterértékek alapján. Az oktatóanyagban meghatároz egy sablont egy új tárfiók létrehozásához, vagy egy meglévő tárfiókot használ egy paraméterérték alapján.|
-    |[A Key Vault integrálása](./resource-manager-tutorial-use-key-vault.md)|Titkos kulcsok/jelszavak lekérése az Azure Key Vaultból. Az oktatóanyagban létrehoz egy virtuális gépet.  A virtuális gép rendszergazdai jelszavának lekérése egy Key Vaultból történik.|
-    |[Csatolt sablonok létrehozása](./resource-manager-tutorial-create-linked-templates.md)|Sablonok modularizálása, és más sablonok meghívása egy sablonból. Az oktatóanyagban létrehoz egy virtuális hálózatot, egy virtuális gépet és a függő erőforrásokat.  A függő tárfiók egy hivatkozott sablonban van meghatározva. |
-    |[Biztonságos üzembehelyezési gyakorlatok](./deployment-manager-tutorial.md)|Az Azure Deployment Manager használata. |
+[!INCLUDE [arm-tutorials-quickstarts](../../includes/resource-manager-tutorials-quickstarts.md)]
 
 ## <a name="resource-groups"></a>Erőforráscsoportok
 Néhány fontos tényezőt érdemes figyelembe venni az erőforráscsoport meghatározásakor:

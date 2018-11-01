@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1373882fa64ac334b92dc772fc04d4b40260cc25
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 2e40e518f9f04809b1fd59b0ed12dcee9b1da9ce
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093408"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240911"
 ---
 # <a name="tutorial-use-azure-portal-to-create-a-data-factory-pipeline-to-copy-data"></a>Oktatóanyag: Az Azure Portal használata Data Factory-folyamatok létrehozására adatmásolás céljából 
 > [!div class="op_single_selector"]
@@ -102,7 +102,7 @@ A data factory egy vagy több folyamattal rendelkezhet. A folyamaton belül egy 
       > [!IMPORTANT]
       > Data Factory-példány létrehozásához a [Data Factory közreműködője](../../role-based-access-control/built-in-roles.md#data-factory-contributor) szerepkör tagjának kell lennie az előfizetés/erőforráscsoport szintjén.
       > 
-      > A data factory neve később DNS-névként regisztrálható, így nyilvánosan láthatóvá válhat.                
+      > Az adat-előállító neve később DNS-névként regisztrálható, így nyilvánosan láthatóvá tehető.                
       > 
       > 
 3. Az irányítópulton megjelenő csempén a következő állapotleírás látható: **Adat-előállító üzembe helyezése**. 

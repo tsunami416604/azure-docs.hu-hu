@@ -1,25 +1,21 @@
 ---
-title: 'Oktatóanyag: Adatok streamelése az Azure Databricksbe az Event Hubs használatával | Microsoft Docs'
+title: 'Oktatóanyag: Adatok streamelése az Azure Databricksbe az Event Hubs használatával '
 description: Ismerje meg, hogyan tölthet be streamadatokat a Twitterről, és hogyan olvashatja őket közel valós időben az Azure Databricks és az Event Hubs segítségével.
 services: azure-databricks
-documentationcenter: ''
 author: lenadroid
-manager: cgronlun
-editor: cgronlun
+ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.custom: mvc
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 06/21/2018
 ms.author: alehall
-ms.openlocfilehash: 4a70801fa11316fbd023f348981743639fe111dc
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: a5415ed8f2440a52d18004a31b87487cdb584c03
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024417"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415456"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Oktatóanyag: Adatok streamelése az Azure Databricksbe az Event Hubs használatával
 

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 12/18/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: e6511b9511d2598b58fd3afee34803ceb09ac5ce
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c41873d8f87a9a1203cefa37f99098f23e7aab92
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582852"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239005"
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: Fejlesztés a Table API-val .NET-keretrendszerben
 
@@ -45,7 +45,7 @@ Ez az oktatóanyag olyan fejlesztőknek szól, akik ismerik az Azure Table Stora
 
 Ha jelenleg az Azure Table Storage-et használja, az alábbi előnyökben részesülhet az Azure Cosmos DB Table API használatakor:
 
-- Kulcsrakész [globális terjesztés](distribute-data-globally.md) több kiszolgálóval és [automatikus és manuális feladatátvételekkel](regional-failover.md).
+- Kulcsrakész [globális terjesztés](distribute-data-globally.md) több kiszolgálóval és [automatikus és manuális feladatátvételekkel](high-availability.md).
 - Az automatikus sémafüggetlen indexelés támogatása minden tulajdonsághoz („másodlagos indexek”) és gyors lekérdezéshez 
 - [A tároló és az átviteli sebesség független méretezése](partition-data.md) bármennyi régió között
 - A [táblánkénti dedikált átviteli sebesség](request-units.md) támogatása, amely másodpercenként több száztól akár több millió kérésig méretezhető

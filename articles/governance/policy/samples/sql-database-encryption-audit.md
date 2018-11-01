@@ -6,15 +6,15 @@ author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 09/18/2018
+ms.date: 10/29/2018
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 4e825317cd7faf75e024e92393585e7d9812c7e1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d7e8571c0b8301da953d84893ac48934a2392d55
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958849"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230003"
 ---
 # <a name="audit-sql-database-encryption"></a>SQL Database-adatbázis titkosításának naplózása
 
@@ -24,37 +24,7 @@ Ez a beépített szabályzat naplózza, ha az SQL Database-adatbázisban nincs e
 
 ## <a name="sample-template"></a>Példasablon
 
-```json
-{
-  "if": {
-    "allOf": [
-      {
-        "field": "type",
-        "equals": "Microsoft.Sql/servers/databases"
-      },
-      {
-        "field": "name",
-        "notEquals": "master"
-      }
-    ]
-  },
-  "then": {
-    "effect": "AuditIfNotExists",
-    "details": {
-      "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
-      "name": "current",
-      "existenceCondition": {
-        "allOf": [
-          {
-            "field": "Microsoft.Sql/transparentDataEncryption.status",
-            "equals": "enabled"
-          }
-        ]
-      }
-    }
-  }
-}
-```
+[!code-json[main](../../../../policy-templates/samples/SQL/audit-sql-db-tde-status/azurepolicy.json "Audit TDE for SQL Database")]
 
 A sablon az [Azure Portal](#deploy-with-the-portal), a [PowerShell](#deploy-with-powershell) vagy az [Azure CLI](#deploy-with-azure-cli) használatával helyezhető üzembe. A beépített szabályzat lekéréséhez használja a következő azonosítót: `17k78e20-9358-41c9-923c-fb736d382a12`.
 
@@ -98,4 +68,4 @@ az policy assignment delete --name "SQL TDE Audit" --resource-group myResourceGr
 
 ## <a name="next-steps"></a>További lépések
 
-- További minták [Az Azure Policy mintái](index.md) oldalon
+- További példákat [Az Azure Policy-minták](index.md) oldalon talál.

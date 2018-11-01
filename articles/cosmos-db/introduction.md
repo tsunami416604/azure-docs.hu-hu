@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: b9c4c2595bb7d5347397bff95c90fbdc91902bcd
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 12e3cf028b4812abd43dd2b6f23190fa6b75157a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696448"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242290"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 
@@ -55,7 +55,7 @@ Globálisan elosztott adatbázis-szolgáltatásként az Azure Cosmos DB segíts�
 * **Always On rendelkezésre állás**
     * 99,99%-os rendelkezésre állású SLA minden egyrégiós adatbázisfiókhoz, valamint 99,999%-os olvasási rendelkezésre állás minden többrégiós adatbázisfiókhoz.
     * Bármennyi [Azure-régiót](https://azure.microsoft.com/regions) üzembe helyezhet a magasabb rendelkezésre állás és a nagyobb teljesítmény elérése érdekében.
-    * Dinamikus régióprioritás-beállítást és [hibaszimulációt](regional-failover.md) végezhet el egy vagy több régióban, adatvesztés elleni garanciával a teljes alkalmazás végpontok közötti (nem csak az adatbázishoz kapcsolódó) rendelkezésre állásának teszteléséhez. 
+    * Dinamikus régióprioritás-beállítást és [hibaszimulációt](high-availability.md) végezhet el egy vagy több régióban, adatvesztés elleni garanciával a teljes alkalmazás végpontok közötti (nem csak az adatbázishoz kapcsolódó) rendelkezésre állásának teszteléséhez. 
 
 * **Globálisan terjesztett alkalmazások írása, a helyes módon**
     * Az öt jól definiált, célszerűen alkalmazható és intuitív [konzisztenciamodellből](consistency-levels.md) álló kínálat az SQL által nyújtottakhoz hasonló konzisztenciától az enyhén korlátozott NoSQL-hez hasonló végleges konzisztenciáig minden igényt képes lefedni. 

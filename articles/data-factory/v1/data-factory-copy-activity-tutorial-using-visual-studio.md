@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1152074f6dd45d9169f507aedf01541332d6f8f2
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: ae8374dc8b3424f953e24ef74796602d34413bc8
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43096843"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240834"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>Oktatóanyag: Másolási tevékenységgel rendelkező folyamat létrehozása a Visual Studio használatával
 > [!div class="op_single_selector"]
@@ -342,7 +342,7 @@ Vegye figyelembe a következő szempontokat:
     Get-AzureRmResourceProvider
     ```
   * Az Azure-előfizetés használatával jelentkezzen be az [Azure Portalra](https://portal.azure.com), és navigáljon egy Data Factory panelre, vagy hozzon létre egy data factoryt az Azure Portalon. Ezzel a művelettel automatikusan regisztrálja a szolgáltatót.
-* A data factory neve később DNS-névként regisztrálható, így nyilvánosan láthatóvá válhat.
+* Az adat-előállító neve később DNS-névként regisztrálható, így nyilvánosan láthatóvá tehető.
 
 > [!IMPORTANT]
 > Data Factory-példányok létrehozásához az Azure-előfizetés adminisztrátorának/társadminisztrátorának kell lennie

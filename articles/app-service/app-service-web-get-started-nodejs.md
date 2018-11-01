@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/27/2018
+ms.date: 10/30/2018
 ms.author: cephalin;msangapu
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 347fc291fc7357481bfdc88c9019c3d688925c2f
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 6d3f367ce21e9574282805737f2eff6c83ea6157
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067517"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248190"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Node.js-webalkalmazás létrehozása az Azure-ban
 
@@ -112,7 +112,7 @@ A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló
 
 ### <a name="set-nodejs-runtime"></a>Node.js-futtatókörnyezet beállítása
 
-Állítsa a Node-futtatókörnyezetet 8.11.1-re. <!-- To see all supported runtimes, run [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes). -->
+Állítsa a Node-futtatókörnyezetet 8.11.1-re. Az összes támogatott futtatókörnyezet megtekintéséhez futtassa az [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) parancsot.
 
 ```azurecli-interactive
 # Bash and Powershell
@@ -161,7 +161,7 @@ zip -r myUpdatedAppFiles.zip .
 
 # PowerShell
 Compress-Archive -Path * -DestinationPath myUpdatedAppFiles.zip
-``` 
+```
 
 Telepítse ezt az új ZIP-fájlt az App Service-be [A ZIP-fájl üzembe helyezése](#deploy-zip-file) részben már ismertetett lépésekkel.
 

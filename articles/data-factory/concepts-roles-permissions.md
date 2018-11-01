@@ -77,7 +77,7 @@ Egyéni szerepkörök létrehozásával, és ezeket a szerepköröket a felhaszn
   Ebben a forgatókönyvben két szerepkör hozzárendelése szükséges.
 
   1. Rendelje hozzá a beépített **közreműködői** szerepkör a data factory szintjén.
-  2. Egyéni szerepkör létrehozása engedéllyel rendelkező * Microsoft.Resources/deployments/**. Az egyéni szerepkör hozzárendelése a felhasználóhoz erőforráscsoport szintjén.
+  2. Egyéni szerepkör létrehozása engedéllyel rendelkező *Microsoft.Resources/deployments/*\*. Az egyéni szerepkör hozzárendelése a felhasználóhoz erőforráscsoport szintjén.
 
 - A felhasználó frissítése a PowerShell vagy az SDK-t, de nem az Azure portal data factory segítségével.
 

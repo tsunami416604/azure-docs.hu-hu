@@ -113,11 +113,11 @@ Ha nincs lehetősége eszközök használatára, az alábbi részletes útmutat�
 
 1. Megbecsülheti az edtu-k vagy a virtuális magok a készlet a következő szükséges:
 
-   A DTU-alapú vásárlási modell: MAX (<*adatbázisok száma* X *átlagos DTU-használata*>,<br>
-   <*A kiugró kihasználtsággal egyszerre működő adatbázisok száma* X *Az egyes adatbázisok kiugró DTU-használata*)
+   A DTU-alapú vásárlási modell: MAX (<*adatbázisok száma* X *átlagos DTU-használata* >,<br>
+   < *A kiugró kihasználtsággal egyszerre működő adatbázisok száma* X *Az egyes adatbázisok kiugró DTU-használata* >)
 
    A Virtuálismag-alapú vásárlási modell: MAX (<*adatbázisok száma* X *átlagos virtuális mag használata*>,<br>
-   <*Több egyidejűleg kiugró kihasználtságú adatbázisok* X *csúcs-virtuális mag használata*)
+   < *Több egyidejűleg kiugró kihasználtságú adatbázisok* X *csúcs-virtuális mag használata* >)
 
 2. A készlethez szükséges tárterület méretének becsléséhez adja össze a készlet egyes adatbázisaihoz szükséges bájtok számát. Ezután határozza meg a szükséges tárhelyet biztosító eDTU-készlet méretét.
 3. A DTU-alapú vásárlási modell igénybe meghatározott eDTU-becslések közül a nagyobb 1. lépést és a 2. lépés. A Virtuálismag-alapú vásárlási modell figyelembe venni a virtuális mag becslés az 1. lépésben.

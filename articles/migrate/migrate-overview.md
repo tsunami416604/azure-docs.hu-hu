@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/23/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 30cca10a83be09b8c9736df546958c3a1fe66f37
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 1aeaff486ed9f7cb99ea0b95451fc765344847a1
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025635"
+ms.locfileid: "50086675"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -37,7 +37,7 @@ Az Azure Migrate az alábbiakban nyújt segítséget:
 -  Azure Migrate-projektet csak egyesült államokbeli földrajzi helyen lehet létrehozni. Azonban bármilyen Azure-beli célhelyre tervezhet migrálást.
     - A migrálási projekt régiója csak a helyszíni környezetből felderített metaadatokat tárolja.
     - A metaadatok tárolása a következő földrajzi területek valamelyik régiójában történik: USA nyugati középső régiója/USA keleti régiója.
-    - Ha függőségvizualizációt használ egy Log Analytics-munkaterületen, azt a projekttel egy régióban hozza létre a rendszer. 
+    - Ha függőségvizualizációt használ egy Log Analytics-munkaterületen, azt a projekttel egy régióban hozza létre a rendszer.
 
 
 ## <a name="what-do-i-need-to-pay-for"></a>Mi az, amiért fizetnem kell?
