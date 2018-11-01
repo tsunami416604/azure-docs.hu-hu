@@ -5,23 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 10/30/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: c164c2465a4e9d60159ea9596139f2e4938f792f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 6832f6f9d09cbbfea6ccaa69160ad93209c7ac8c
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242500"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741181"
 ---
 # <a name="preview-azure-ad-password-protection-monitoring-reporting-and-troubleshooting"></a>Előzetes verzió: Azure AD jelszó-védelem figyelési, jelentéseket és hibaelhárítás
 
 |     |
 | --- |
-| Az Azure AD jelszóvédelem és a letiltott jelszavak egyéni lista a nyilvános előzetes verziójú funkciók az Azure Active Directory. Előzetes verziók kapcsolatos további információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| Az Azure AD jelszóvédelem az Azure Active Directory nyilvános előzetes verziójú funkció. Előzetes verziók kapcsolatos további információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
 Az Azure AD jelszóvédelem telepítése után a figyelés és jelentéskészítés elvégzendő alapvető feladatok. Ez a cikk részletezik segítségével megismeri, ahol minden szolgáltatás információkat naplózza, és az Azure AD jelszóvédelem használatakor jelentése.
@@ -88,7 +88,7 @@ Néhány egyéb fő Eseménynapló-üzenetek érdemes figyelembe vennie vannak:
 
 A megadott felhasználó jelszavát elfogadták, mert egy Azure jelszóházirend még nem érhető el
 
-Felhasználónév: <user> FullName: <user>
+Felhasználónév: SomeUser FullName: néhány felhasználó
 
 Ez a feltétel okozhatja egy vagy több, a következő okok miatt: % n
 

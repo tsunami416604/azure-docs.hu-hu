@@ -4,9 +4,6 @@ description: Ismerje meg, hogyan hozhat létre egy Azure Load Balancer – REST 
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: load-balancer
 ms.date: 06/06/2018
 ms.author: kumud
-ms.openlocfilehash: ca952fa4fbea742121e579b28be35d834f17eade
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 2f5d3584a429ce35e6905b14bb412c3782fb0185
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057086"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416919"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>Az Azure alapszintű terheléselosztó létrehozása a REST API használatával
 
@@ -43,7 +40,7 @@ A következő HTTP PUT kérelmet használatával hozzon létre egy új Azure ala
 
 
 
-### <a name="request-body"></a>Kérelem törzse
+### <a name="request-body"></a>A kérés törzse
 
 Csak a szükséges paraméter `location`. Ha nem adja meg a *Termékváltozat* verziója, egy alapszintű Load Balancer alapértelmezés szerint létrejön.  Használat [választható paraméterek](https://docs.microsoft.com/rest/api/load-balancer/loadbalancers/createorupdate#request-body) szabhatja testre a terheléselosztóhoz.
 
@@ -65,7 +62,7 @@ Alapszintű Load Balancer, nevű létrehozása ebben a lépésben *lb* , a **USA
   ```HTTP    
   PUT https://management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb?api-version=2018-02-01
   ```
-#### <a name="request-body"></a>Kérelem törzse
+#### <a name="request-body"></a>A kérés törzse
 
   ```JSON
    {
@@ -79,7 +76,7 @@ Ebben a lépésben konfigurálja a terheléselosztó *lb* erőforrásokat, péld
   ```HTTP    
   PUT https://management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb?api-version=2018-02-01
   ```
-#### <a name="request-body"></a>Kérelem törzse
+#### <a name="request-body"></a>A kérés törzse
 
   ```JSON
 {

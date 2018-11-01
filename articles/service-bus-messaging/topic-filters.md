@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: ac30718a92d76dedcb5b0ef3bdd2f282dd117720
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 41af53dbfbb5c863007a332445a2f184fcbcbf81
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48853521"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741062"
 ---
 # <a name="topic-filters-and-actions"></a>Témakörszűrők és -műveletek
 
@@ -40,7 +40,7 @@ Az összes szűrő kiértékelése üzenet tulajdonságai. Szűrők az üzenet t
 
 ## <a name="actions"></a>Műveletek
 
-SQL-szűrő feltételekkel meghatározhatja egy műveletet, amely képes jegyzettel láthatja el az üzenet hozzáadása, eltávolítása vagy cseréje a tulajdonságok és azok értékei alapján. A művelet [használ egy SQL-szerű](service-bus-messaging-sql-filter.md) , amely lazán leans a frissítés az SQL-utasítás szintaxisa a. Miután egyeztetett azt, és mielőtt az üzenet témakörben van kiválasztva, az üzenet végrehajtott művelet. Az üzenet tulajdonságainak módosítását az üzenet átmásolhatja az előfizetés csak a.
+SQL-szűrő feltételekkel meghatározhatja egy műveletet, amely képes jegyzettel láthatja el az üzenet hozzáadása, eltávolítása vagy cseréje a tulajdonságok és azok értékei alapján. A művelet [használ egy SQL-szerű](service-bus-messaging-sql-filter.md) , amely lazán leans a frissítés az SQL-utasítás szintaxisa a. Miután egyeztetett azt, és mielőtt az üzenetet, az előfizetés van kiválasztva, az üzenet végrehajtott művelet. Az üzenet tulajdonságainak módosítását az üzenet átmásolhatja az előfizetés csak a.
 
 ## <a name="usage-patterns"></a>Használati minták
 

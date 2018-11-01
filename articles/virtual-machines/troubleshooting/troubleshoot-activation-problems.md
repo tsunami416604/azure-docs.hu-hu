@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/11/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: e8ecdf1fffb51c0b8e9ce996307595a5444a64ee
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: eeecf37a6cc7a0f86662f002b6f0efab5ef8c35c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414098"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417463"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows virtuális gép aktiválással kapcsolatos problémák elhárítása
 
@@ -82,7 +82,7 @@ Ez a lépés nem vonatkozik a Windows 2012 vagy Windows 2008 R2. Az Automation v
 2. Ugrás a kezdő, keressen a Windows PowerShell, kattintson a jobb gombbal a Windows PowerShell, és válassza a Futtatás rendszergazdaként.
 
 3. Győződjön meg arról, hogy a virtuális gép a megfelelő Azure KMS-kiszolgáló használatára van konfigurálva. Ehhez futtassa a következő parancsot:
-  
+  
     ```
     iex “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms
     kms.core.windows.net:1688
@@ -90,11 +90,11 @@ Ez a lépés nem vonatkozik a Windows 2012 vagy Windows 2008 R2. Az Automation v
     A parancs kell visszaadnia: kulcskezelő szolgáltatás gépnév sikeresen beállítva kms.core.windows.net:1688.
 
 4. Győződjön meg arról, hogy a KMS-kiszolgálóval való kapcsolat Psping használatával. Váltson arra a mappára, ahová kibontotta a Pstools.zip letöltése, és futtassa a következő:
-  
+  
     ```
     \psping.exe kms.core.windows.net:1688
     ```
-  
+  
   Az utolsó előtti másodperc sorban a kimenet, győződjön meg arról, hogy látja: küldött = 4, a fogadott = 4, elveszett = 0 (0 %-os adatveszteség).
 
   Ha elveszett nagyobb, mint 0 (nulla), a virtuális gép nem rendelkezik kapcsolattal a KMS-kiszolgálóra. Ebben a helyzetben a virtuális gép egy virtuális hálózaton van, és rendelkezik egy egyéni DNS-kiszolgáló, meg kell győződnie arról, hogy a DNS-kiszolgáló el tudja kms.core.windows.net megoldásához. Vagy a DNS-kiszolgáló módosítsa, hogy kms.core.windows.net megoldásához.

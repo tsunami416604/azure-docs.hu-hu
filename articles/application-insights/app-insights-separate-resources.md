@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: 88626c3a4bfd4a1ff3a2e9cbc8c3f2b1c5553295
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 83852333d8e66c76f2d2710b1813a4400622e624
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303625"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417310"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Telemetria elválasztja a fejlesztési, tesztelési és éles környezetben
 
@@ -156,7 +156,7 @@ Ne feledje azonban, hogy a buildverzió számát csak a Microsoft Build Engine h
 ### <a name="release-annotations"></a>Kiadási jegyzetek
 Ha használja az Azure DevOps, [jelölőt lekérése](app-insights-annotations.md) hozzáadódik a diagramokat, amikor új verzió kiadása. Az alábbi képen látható, hogy jelenik meg a jelölő.
 
-![Diagramon található példa kiadási jegyzet képernyőképe](./media/app-insights-asp-net/release-annotation.png)
+![Diagramon található példa kiadási jegyzet képernyőképe](media/app-insights-separate-resources/release-annotation.png)
 ## <a name="next-steps"></a>További lépések
 
 * [Több szerepkör megosztott erőforrások](app-insights-monitor-multi-role-apps.md)

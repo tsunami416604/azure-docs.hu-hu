@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/21/2017
 ms.author: sngun
-ms.openlocfilehash: 82ab30ebab1b69d5ae636702b3b56d3792c09010
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: b115058353d14a3bd7c774197e06de088030ffff
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394573"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741351"
 ---
 # <a name="create-an-azure-cosmos-db-account-using-powershell"></a>Egy PowerShell-lel az Azure Cosmos DB-fiók létrehozása
 
-Ez az útmutató azt ismerteti, automatizált felügyelete az Azure Powershell-lel az Azure Cosmos DB-adatbázisfiókhoz a parancsokat. Fiókkulcsok és a feladatátvételi prioritásokat a [többrégiós adatbázisfiókhoz] kezelésére szolgáló parancsokat is tartalmaz [terjesztése, adatok, globally.md]. Az adatbázis-fiók frissítése lehetővé teszi módosítása konzisztencia házirendek és régiók hozzáadása/eltávolítása. Platformfüggetlen kezelése érdekében az Azure Cosmos DB-fiókot, vagy használhatja [Azure CLI-vel](cli-samples.md), a [erőforrás-szolgáltató REST API][rp-rest-api], vagy a [Azure Portalon ](create-sql-api-dotnet.md#create-account).
+Ez az útmutató azt ismerteti, automatizált felügyelete az Azure Powershell-lel az Azure Cosmos DB-adatbázisfiókhoz a parancsokat. Fiókkulcsok és a feladatátvételi prioritások kezelésére szolgáló parancsokat is tartalmaz [többrégiós adatbázisfiókhoz][distribute-data-globally]. Az adatbázis-fiók frissítése lehetővé teszi módosítása konzisztencia házirendek és régiók hozzáadása/eltávolítása. Platformfüggetlen kezelése érdekében az Azure Cosmos DB-fiókot, vagy használhatja [Azure CLI-vel](cli-samples.md), a [erőforrás-szolgáltató REST API][rp-rest-api], vagy a [Azure Portalon ](create-sql-api-dotnet.md#create-account).
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -33,7 +33,7 @@ Kövesse a [telepítése és konfigurálása az Azure PowerShell-lel] [ powershe
 
 ## <a id="create-documentdb-account-powershell"></a> Egy Azure Cosmos DB-fiók létrehozása
 
-Ez a parancs lehetővé teszi, hogy hozzon létre egy Azure Cosmos DB-adatbázisfiók. Konfigurálja az új adatbázis-fiók vagy az egyetlen régióban, vagy az [többrégiós] [terjesztése, adatok, globally.md] egy bizonyos [konzisztencia-szabályzat](consistency-levels.md).
+Ez a parancs lehetővé teszi, hogy hozzon létre egy Azure Cosmos DB-adatbázisfiók. Konfigurálja az új adatbázis-fiók vagy egyetlen régióban vagy [többrégiós] [ distribute-data-globally] az egy adott [konzisztencia-szabályzat](consistency-levels.md).
 
     $locations = @(@{"locationName"="<write-region-location>"; "failoverPriority"=0}, @{"locationName"="<read-region-location>"; "failoverPriority"=1})
     $iprangefilter = "<ip-range-filter>"
@@ -60,7 +60,7 @@ Példa:
     New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Location "West US" -Name "docdb-test" -Properties $CosmosDBProperties
 
 ### <a name="notes"></a>Megjegyzések
-* Az előző példában egy adatbázis-fiókot hoz létre két régióban. Akkor is egy adatbázis-fiók létrehozása az egyik régió (amely ki van jelölve, az írási régió, és a feladatátvételi prioritási értéke 0) vagy a több mint két régióban. További információkért lásd: [többrégiós adatbázisfiókhoz] [terjesztése, adatok, globally.md].
+* Az előző példában egy adatbázis-fiókot hoz létre két régióban. Akkor is egy adatbázis-fiók létrehozása az egyik régió (amely ki van jelölve, az írási régió, és a feladatátvételi prioritási értéke 0) vagy a több mint két régióban. További információkért lásd: [többrégiós adatbázisfiókhoz][distribute-data-globally].
 * A helyek, amelyben az Azure Cosmos DB általánosan elérhető a régióban kell lennie. Aktuális régiók listája, a megadott a [Azure-régiók lap](https://azure.microsoft.com/regions/#services).
 
 ## <a id="update-documentdb-account-powershell"></a> Frissítés az Azure Cosmos DB-adatbázisfiók
@@ -195,6 +195,7 @@ Példa:
 * Való csatlakozáshoz a Node.js használatával, tekintse meg [Node.js és MongoDB-alkalmazás végzett csatlakozásról és lekérdezésről](create-mongodb-nodejs.md).
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
+
 [powershell-install-configure]: https://docs.microsoft.com/azure/powershell-install-configure
 [scaling-globally]: distribute-data-globally.md#EnableGlobalDistribution
 [distribute-data-globally]: distribute-data-globally.md

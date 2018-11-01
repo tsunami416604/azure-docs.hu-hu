@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 945a91b9021ed5ff02e8c1ef7baf85e2098202ca
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 493a8881975e6b7568a7823bfc86fc97b4389378
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214664"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418279"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 Ez a cikk bemutatja a lépést kell végrehajtania a jelentések az Azure Backup konfigurálása a Recovery Services-tároló használatával. Azt is bemutatja, hogyan lehet hozzáférni a jelentésekhez a Power BI használatával. Miután elvégezte ezeket a lépéseket, megnyithatja közvetlenül a Power BI segítségével megtekintheti, testreszabása és jelentéseket hozhat létre.
@@ -22,7 +22,7 @@ Ez a cikk bemutatja a lépést kell végrehajtania a jelentések az Azure Backup
 > [!IMPORTANT]
 > Az 1. November, 2018 egyes ügyfelek jelenhetnek problémák egy részét a Power bi-ban, amely arról tájékoztat, "felesleges karaktereket észleltünk a JSON-bevitel végén az Azure Backup alkalmazásban az adatok betöltése. A kivétel lett kiváltva az IDataReader felület okozta."
 Ez az a következő formátumban, ahol-adatok betöltése a tárfiókba megváltozása miatt.
-Frissítse az alkalmazást a legújabb verzióra a probléma elkerülése érdekében.
+Töltse le a legújabb alkalmazást (1.8-as) a probléma elkerülése érdekében.
 >
 >
 
@@ -74,23 +74,24 @@ Kövesse az alábbi lépéseket egy Recovery Services-tárolót a storage-fiók 
       ![Diagnosztikai beállítás 9. lépés.](./media/backup-azure-configure-reports/diagnostic-setting-row.png)
 
 > [!NOTE]
-> A storage-fiókban mentésével jelentések konfigurálása után *Várjon 24 órát* a kezdeti adatok leküldés befejezéséhez. Importálja az Azure Backup-tartalomcsomaghoz a Power BI csak az adott időpont után. További információkért lásd: a [gyakori kérdésekkel foglalkozó szakaszban](#frequently-asked-questions). 
+> A storage-fiókban mentésével jelentések konfigurálása után *Várjon 24 órát* a kezdeti adatok leküldés befejezéséhez. Importálja az Azure Backup-alkalmazás a Power BI csak az adott időpont után. További információkért lásd: a [gyakori kérdésekkel foglalkozó szakaszban](#frequently-asked-questions). 
 >
 >
 
 ## <a name="view-reports-in-power-bi"></a>Jelentések megtekintése a Power bi-ban 
 Miután egy tárfiókot a jelentések egy Recovery Services-tároló használatával konfigurálta, indítsa el a beérkező jelentési adatok körülbelül 24 óra vesz igénybe. Storage-fiókot, 24 óra után kövesse az alábbi lépéseket a Power BI-jelentések megtekintéséhez.
-1. [Jelentkezzen be a](https://powerbi.microsoft.com/landing/signin/) a Power bi-bA.
-2. Válassza az **Adatok lekérése** lehetőséget. Az a **tartalomtár csomag**alatt **szolgáltatások**válassza **lekérése**. Kövesse a [hozzá a tartalomcsomag a Power BI dokumentációja](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/).
+Ha testre szabhatja, és megosztja a jelentést, hozzon létre egy munkaterületet, és tegye a következőket
 
-     ![Csomag importálása](./media/backup-azure-configure-reports/content-pack-import.png)
+1. [Jelentkezzen be a](https://powerbi.microsoft.com/landing/signin/) a Power bi-bA.
+2. Válassza az **Adatok lekérése** lehetőséget. Az a **további lehetőségek a saját tartalmak létrehozására**válassza **szolgáltatás-tartalomcsomagok**. Kövesse a [kapcsolódni egy szolgáltatáshoz a Power BI dokumentációja](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/).
+
 3. Az a **keresési** sáv, adja meg **Azure Backup** válassza **Letöltés most**.
 
       ![Tartalomcsomag beszerzése](./media/backup-azure-configure-reports/content-pack-get.png)
 4. Adja meg a storage-fiókot, amelyet az előző lépésben 5 nevét, és válassza ki **tovább**.
 
     ![A tárfiók nevének megadása](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
-5. Adja meg a tárfiókhoz a tárfiók-kulcsot. A [megtekintése és másolása a tárelérési kulcsok](../storage/common/storage-account-manage.md#access-keys), lépjen a tárfiókhoz az Azure Portalon. 
+5. "Key" hitelesítési módszert használ, adja meg a tárfiókhoz a tárfiók-kulcsot. A [megtekintése és másolása a tárelérési kulcsok](../storage/common/storage-account-manage.md#access-keys), lépjen a tárfiókhoz az Azure Portalon. 
 
      ![Adja meg a storage-fiók](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
      
@@ -102,9 +103,7 @@ Miután egy tárfiókot a jelentések egy Recovery Services-tároló használat�
     
     ![Sikeres tartalomcsomag importálása](./media/backup-azure-configure-reports/content-pack-import-success.png) <br/>
     
-7. Miután sikeresen, importálja az adatokat a **Azure Backup** tartalomcsomag jelenik meg a **alkalmazások** a navigációs ablaktáblán. A **irányítópultok**, **jelentések**, és **adatkészletek**, a lista most már tartalmazza az Azure Backup az újonnan importált jelentések jelző sárga csillaggal.
-
-     ![Az Azure Backup-tartalomcsomaghoz](./media/backup-azure-configure-reports/content-pack-azure-backup.png) <br/>
+7. Miután sikeresen, importálja az adatokat a **Azure Backup** tartalomcsomag jelenik meg a **alkalmazások** a navigációs ablaktáblán. Alatt **irányítópultok**, **jelentések**, és **adatkészletek**, a lista most az Azure Backup látható.
      
 8. Alatt **irányítópultok**válassza **Azure Backup**, amely mutat be rögzített kulcs jelentések.
 

@@ -8,14 +8,14 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5d80b6438569e74ee254d27e0061443a87efc6ce
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 80679d6efd44598fbe403707ad2e757010eb8d91
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423391"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741674"
 ---
-# <a name="understand-azure-iot-edge-modules"></a>Az Azure IoT Edge-modulok megismerése
+# <a name="understand-azure-iot-edge-modules"></a>Az Azure IoT Edge-modulok ismertetése
 
 Az Azure IoT Edge lehetővé teszi, hogy központi telepítésére és felügyeletére az üzleti logikát az Edge formájában *modulok*. Az Azure IoT Edge-modulok a legkisebb számítási egységek, IoT Edge által felügyelt, és az Azure-szolgáltatások (például az Azure Stream Analytics) vagy a saját megoldásspecifikus kódját is tartalmazhat. Tudni, hogyan modulok kifejlesztett, telepített, és karbantartott, segít a négy fogalmi alkotóelemeit modul gondol:
 
@@ -31,7 +31,7 @@ A képek a felhőben található, és azok frissíthetők, megváltozott, és k�
 
 Minden alkalommal, amikor egy modul rendszerképének központi telepítése egy eszközön, és az IoT Edge-futtatókörnyezet használatának lépései egy adott modul új példányát jön létre. A világ különböző részein két eszközt használhatja ugyanazt a modul lemezképet; azonban minden egyes kellene saját modulpéldány a modul indításakor az eszközön. 
 
-![A modul képeket a felhőben – modul példányok az eszközökön][1]
+![A modul képeket a felhőben – modul példányok az eszközökön](./media/iot-edge-modules/image_instance.png)
 
 Végrehajtására, a modulok képek jelen vannak egy tárházban lévő tárolórendszerképek, és modul példányok olyan tárolók, az eszközökön. 
 
@@ -46,23 +46,23 @@ Az identitás, a modul-példányhoz társított függ az eszköz az identitássa
 
 Természetesen forgatókönyvek üzembe kell helyeznie egy modul rendszerképének többször ugyanazon az eszközön, amikor üzembe helyezéséhez használható többször, különböző neveket ugyanazt a lemezképet.
 
-![A modul identitások egyediek.][2]
+![A modul identitások egyediek.](./media/iot-edge-modules/identity.png)
 
 ## <a name="module-twins"></a>Ikermodulokkal
 
 Minden egyes modul példány is rendelkezik egy megfelelő ikermodul, amely a modul példány konfigurálásához használhatja. A példány és az ikereszköz kapcsolódnak egymással a modul identitás keresztül. 
 
-Egy ikermodul egy JSON-dokumentum, amely a modul információkat és konfigurációs tulajdonságok tárolja. A fogalom a parallels a [ikereszköz] [ lnk-device-twin] koncepció az IoT hubról. Egy ikermodul struktúrája megegyezik pontosan egy ikereszközt. Az API-kat, és mindkét típusú twins kommunikációhoz használható is ugyanezek. Az egyetlen különbség a kettő között az identitásnak az hozza létre az ügyfél-SDK. 
+Egy ikermodul egy JSON-dokumentum, amely a modul információkat és konfigurációs tulajdonságok tárolja. A fogalom a parallels a [ikereszköz](../iot-hub/iot-hub-devguide-device-twins.md) koncepció az IoT hubról. Egy ikermodul struktúrája megegyezik pontosan egy ikereszközt. Az API-kat, és mindkét típusú twins kommunikációhoz használható is ugyanezek. Az egyetlen különbség a kettő között az identitásnak az hozza létre az ügyfél-SDK. 
 
 ```csharp
-// Create a ModuleClient object. This ModuleClient will act on behalf of a 
-// module since it is created with a module’s connection string instead 
-// of a device connection string. 
-ModuleClient client = new ModuleClient.CreateFromEnvironmentAsync(settings); 
-await client.OpenAsync(); 
- 
-// Get the module twin 
-Twin twin = await client.GetTwinAsync(); 
+// Create a ModuleClient object. This ModuleClient will act on behalf of a 
+// module since it is created with a module’s connection string instead 
+// of a device connection string. 
+ModuleClient client = new ModuleClient.CreateFromEnvironmentAsync(settings); 
+await client.OpenAsync(); 
+ 
+// Get the module twin 
+Twin twin = await client.GetTwinAsync(); 
 ```
 
 ## <a name="offline-capabilities"></a>Offline képességek
@@ -79,15 +79,8 @@ IoT Edge-modulok mindaddig, amíg az alábbi követelmények teljesülnek-e hoss
 További offline funkciók is elérhetők a nyilvános előzetes verzióban érhető el. További információkért lásd: [ismertetése az IoT Edge kiterjesztett offline képességeiről, eszközök, a modulok és a gyermek eszközök](offline-capabilities.md).
 
 ## <a name="next-steps"></a>További lépések
- - [A követelmények és az eszközök IoT Edge-modulok megismerése][lnk-mod-dev]
- - [Az Azure IoT Edge-futtatókörnyezet és architektúrájának ismertetése][lnk-runtime]
+ - [A követelmények és az eszközök IoT Edge-modulok megismerése](module-development.md)
+ - [Az Azure IoT Edge-futtatókörnyezet és architektúrájának ismertetése](iot-edge-runtime.md)
 
 <!-- Images -->
-[1]: ./media/iot-edge-modules/image_instance.png
 [2]: ./media/iot-edge-modules/identity.png
-
-<!-- Links -->
-[lnk-device-identity]: ../iot-hub/iot-hub-devguide-identity-registry.md
-[lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
-[lnk-runtime]: iot-edge-runtime.md
-[lnk-mod-dev]: module-development.md

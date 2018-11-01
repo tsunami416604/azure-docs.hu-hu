@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: geg
-ms.openlocfilehash: 5812bafbcfa104150325dcdde374f88200b071c0
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 7de9d1674860a6369c1dc09462a06def672fbdf2
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155201"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420523"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Virtuális gépek visszaállítása az Azure portal használatával
 Védje adatait az adatpillanatképek meghatározott időközönként végrehajtásával. Ezek a pillanatképek a helyreállítási pontok nevezzük, és a Recovery Services-tárolók tárolásuk. Szükség esetén javítsa ki vagy építse újra a virtuális gép (VM), visszaállíthatja a virtuális gép bármelyik mentett helyreállítási pontokat. Egy helyreállítási pontot állítja vissza, ha Ön a következőket teheti:
@@ -170,7 +170,7 @@ A hivatkozásra, nyissa meg az értesítések **BackupJobs** listája. A részle
 
 A **biztonsági mentési feladatok** panel megnyitja és megjeleníti a feladatok listáját.
 
-![A tárolóban lévő virtuális gépek listája](./media/backup-azure-arm-restore-vms/restore-job-completed.png)
+![A tárolóban lévő virtuális gépek listája](./media/backup-azure-arm-restore-vms/restore-job-in-progress1.png)
 
 ## <a name="use-templates-to-customize-a-restored-vm"></a>A visszaállított virtuális gép testreszabása sablonok használatával
 Miután a [lemezvisszaállítási műveletet elkészült](#Track-the-restore-operation), a sablon használatával létrehozott a visszaállítási művelet részeként létrehozhat egy új virtuális gép konfigurálása eltér a biztonsági mentési konfiguráció. Is használhatja azt egy új virtuális gép létrehozása egy helyreállítási pontról, a folyamat során létrehozott erőforrások neveit testreszabásához.

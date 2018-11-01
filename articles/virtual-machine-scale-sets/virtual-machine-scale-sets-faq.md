@@ -3,7 +3,7 @@ title: Azure-beli virtuálisgép-méretezési csoportok – gyakori kérdések |
 description: Virtuálisgép-méretezési csoportokkal kapcsolatos gyakori kérdésekre adott válaszok.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: mayanknayar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
-ms.author: negat
+ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 8ce8d0cda6f81aca0e5ea89dd813b371f61e8404
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7b8faca82a23875b403d0b51b2e8719549d845fb
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407367"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740688"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure-beli virtuálisgép-méretezési csoportok – gyakori kérdések
 
@@ -269,8 +269,8 @@ Egyszerű szöveges nyilvános SSH-kulcsokat a Linux rendszerű virtuális gép 
 linuxConfiguration elem neve | Szükséges | Típus | Leírás
 --- | --- | --- | --- |  ---
 ssh | Nem | Gyűjtemény | Adja meg a Linux operációs rendszer SSH-kulcs konfigurációja
-elérési út | Igen | Sztring | Linux fájl elérési útját adja meg, az SSH-kulcsokat, vagy a tanúsítványt kell lennie
-keyData | Igen | Sztring | Adja meg a base64-kódolású SSH nyilvános kulcs
+elérési út | Igen | Karakterlánc | Linux fájl elérési útját adja meg, az SSH-kulcsokat, vagy a tanúsítványt kell lennie
+keyData | Igen | Karakterlánc | Adja meg a base64-kódolású SSH nyilvános kulcs
 
 Egy vonatkozó példáért lásd: [a 101-vm-ssh-kulcsfájl GitHub gyorsindítási sablon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
 
