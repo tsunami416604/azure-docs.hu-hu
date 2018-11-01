@@ -9,12 +9,12 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: ad315b822a908212a95b3a2ab9420a343a1803f9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 1d2be579dda9f90f06897f11d62ccd08076f892e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404944"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413570"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Oktatóanyag: Leltár frissítése parancssori felület és témakörök/előfizetések használatával
 
@@ -38,7 +38,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként létrehozhat egy [i
 
 Ha Service Bus-alkalmazást szeretne létrehozni a Java használatával, akkor a számítógépre a következőket kell telepíteni:
 
-- [Java fejlesztői készlet](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), legújabb verzió.
+- [Java fejlesztői készlet](https://aka.ms/azure-jdks), legújabb verzió.
 - [Azure CLI](https://docs.microsoft.com/cli/azure)
 - Az [Apache Maven](https://maven.apache.org) 3.0-s vagy újabb verziója.
 

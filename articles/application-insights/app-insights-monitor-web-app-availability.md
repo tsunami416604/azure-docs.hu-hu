@@ -11,15 +11,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 10/30/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: cf5f85d4f7e9dbe1278e9dc4290967d781b398f3
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 3869b47c4e435443bb569ae7b90df7fba9687ba7
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632823"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421254"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése
 Miután telepítette a webappot vagy a webhelyet bármely kiszolgálóra, webes teszteket állíthat be az alkalmazás rendelkezésre állásának és válaszkészségének megfigyeléséhez. Az [Azure Application Insights](app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást jelenít meg, ha az alkalmazás nem válaszol, vagy lassan válaszol.
@@ -47,7 +47,7 @@ Az új erőforrás Áttekintés paneljének megnyitásához kattintson az **Öss
 ## <a name="setup"></a>URL-ping teszt létrehozása
 Nyissa meg a Rendelkezésre állás panelt, és adjon hozzá egy tesztet.
 
-![Töltse ki legalább a webhelye URL-címét](./media/app-insights-monitor-web-app-availability/13-availability.png)
+![Töltse ki legalább a webhelye URL-címét](./media/app-insights-monitor-web-app-availability/001-create-test.png)
 
 * **Az URL-cím** bármilyen tesztelni kívánt weblap lehet, de láthatónak kell lennie a nyilvános internetről. Az URL-cím tartalmazhat lekérdezési sztringet. Tehát például kísérletezhet egy kicsit az adatbázissal. Ha az URL feloldása egy átirányítást eredményez, legfeljebb 10 átirányításig követjük.
 * **Függő kérelmek elemzése**: Ha a beállítás be van jelölve, a teszt lekéri a tesztelt weblap képeit, szkriptjeit, stílusfájljait és más erőforrásait. A rögzített válaszidőbe a fájlok lekérése is beleszámít. A teszt meghiúsul, ha nem tölthető le sikeresen az összes erőforrás a teljes teszt időtúllépése előtt. Ha a beállítás nincs bejelölve, a teszt csak a fájlt és a megadott URL-címet kéri le.
@@ -56,10 +56,10 @@ Nyissa meg a Rendelkezésre állás panelt, és adjon hozzá egy tesztet.
 
 * **Teszt gyakorisága**: Beállítja, hogy milyen gyakran fut a teszt mindegyik teszthelyen. Öt perces alapértelmezett gyakorisággal és öt teszthellyel a helyén átlagosan percenként egy teszt történik.
 
-* A **Teszthelyek** olyan helyek, ahonnan a kiszolgálóink webes kérelmeket küldenek az Ön URL-címére. Többet válasszon, hogy megkülönböztethesse webhelye problémáit a hálózati hibáktól. Legfeljebb 16 hely választható ki.
+* A **Teszthelyek** olyan helyek, ahonnan a kiszolgálóink webes kérelmeket küldenek az Ön URL-címére. Az ajánlott teszthelyszín minimális száma: öt biztosítására, hogy megkülönböztethesse problémák webhelye a hálózati hibáktól. Legfeljebb 16 hely választható ki.
 
-> [!NOTE] 
-> * Javasoljuk, hogy több helyről, hogy egy adott helyen az átmeneti hibák eredő vakriasztások tesztelése.
+> [!NOTE]
+> * Javasoljuk, hogy legalább öt, több helyről történő teszteléséhez. Ez a vakriasztások eredményeképpen előfordulhat, hogy egy adott helyen az átmeneti hibák elkerülése érdekében. Ezen kívül található, hogy az optimális konfigurálás az, hogy a teszt helyek száma egyenlő a riasztási hely küszöbértéke + 2 rendelkezik. 
 > * Annak lehetővé tétele egy szigorúbb ellenőrzés "Függő kérelmek elemzése" lehetőséget az eredményeket. A teszt sikertelen lehet olyan esetekben, előfordulhat, hogy az nem lesz észrevehető a helyet manuálisan böngészésekor.
 
 * **Sikeresség feltétele**:
@@ -70,10 +70,12 @@ Nyissa meg a Rendelkezésre állás panelt, és adjon hozzá egy tesztet.
 
     **Tartalmi egyezés**: egy sztring, például „Üdvözöljük!” Teszteljük, hogy minden válaszban előfordul-e a kis- és nagybetűket figyelembe véve is pontos egyezés. Egyszerű sztringnek kell lennie helyettesítő karakterek nélkül. Ne feledje, hogy ha a laptartalom megváltozik, lehet, hogy ezt is frissíteni kell.
 
+* **Riasztási hely küszöbértéke**: azt javasoljuk, hogy legalább 3 vagy 5 helyeket. Az optimális riasztási hely küszöbértéke és tesztelési helyek közötti kapcsolat **riasztási hely küszöbértéke** = **teszthelyszín száma** – 2-ától legalább öt tesztelése helyek.
+
 ## <a name="multi-step-web-tests"></a>Többlépéses webes tesztek
 Olyan forgatókönyveket is figyelhet, amelyek egy URL-címek sorozatából állnak. Ha például egy értékesítési webhelyet figyel, tesztelheti, hogy megfelelően működik-e a termékek kosárba helyezése.
 
-> [!NOTE] 
+> [!NOTE]
 > A többlépéses webes tesztek díjkötelesek. [Díjszabási séma](http://azure.microsoft.com/pricing/details/application-insights/)
 > 
 

@@ -1,3 +1,16 @@
+---
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 08/23/2018
+ms.author: crdun
+ms.openlocfilehash: 1d1d593b7305e0cd9899f4ec388cb441ced90b10
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133620"
+---
 1. Látogasson el az [Azure Portal] Mac gépéről. Kattintson az **Összes szolgáltatás** > **Alkalmazásszolgáltatások** lehetőségre, majd az imént létrehozott háttérrendszerre. A mobilalkalmazás beállításaiban válassza ki a kívánt nyelvet:
 
     - Objective-C&ndash; **Gyorsindítás** > **iOS (Objective-C)**

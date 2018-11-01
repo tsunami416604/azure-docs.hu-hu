@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 93bd141b591cda5ec6ff1d9d042222070d3146e6
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: f0a9ac1700d635365ebea0c5966489ed3d2d797b
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390312"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420243"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect: Verziókiadások
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -37,6 +37,37 @@ Szükséges engedélyek | Tekintse meg a frissítés alkalmazásához szüksége
 
 Letöltés |} [Töltse le az Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771).
 
+## <a name="12650"></a>1.2.65.0 
+
+### <a name="release-status"></a>Kiadási állapot 
+
+10/25/2018:, amely a letölthető
+
+ 
+### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések 
+
+
+- Attribútum késleltetve visszaírt üzemeltetett hangposta elvárt működésének biztosítása érdekében funkciójának megváltozott.  Bizonyos körülmények között az Azure AD során késleltetve visszaírt null értékű volt felülírása msExchUcVoicemailSettings attribútum.  Az Azure AD most már nem törli az attribútum értéke a helyszíni, ha a felhő érték nincs megadva.
+- A továbbfejlesztett módosított alapértelmezett szabályok kezelése. Most már értesítést kap, ha módosításokat végzett az alapértelmezett szabályokat, és javítsa ki az alapértelmezett szabályok a beállítások érhetők el. 
+- Diagnosztika az Azure AD Connect varázsló vizsgálja meg, és azonosíthatja a kapcsolati hibákat az Azure AD hozzá. Ezek azonos diagnosztikai is futtathatja közvetlenül a Powershellen keresztül a Test - AdSyncAzureServiceConnectivity parancsmag használatával. 
+- Diagnosztikai hozzá, vizsgálja meg, és azonosíthatja a kapcsolati hibákat ad az Azure AD Connect varázsló. Ezek azonos diagnosztikai is futtathatja közvetlenül a Powershellen keresztül a ADConnectivityTools Powershell-modul a Start-ConnectivityValidation függvény használatával.  További információ: [Mi az a ADConnectivityTool PowerShell-modult?](how-to-connect-adconnectivitytools.md)
+- A hibrid Azure Active Directory-csatlakozás és az eszközvisszaírás egy AD séma verziója előzetes ellenőrzés hozzáadva 
+- A Directory-bővítményt lap attribútum keresés nagybetűk nem lehet módosítani.
+-   Teljes támogatás hozzáadva a TLS 1.2. Ez a kiadás támogatja az összes többi protokoll le van tiltva és a gépen, amelyen telepítve van-e az Azure AD Connect engedélyezése csak a TLS 1.2.  További információ: [az Azure AD Connect a TLS 1.2 kényszerítése](reference-connect-tls-enforcement.md)
+
+ 
+
+### <a name="fixed-issues"></a>Hibák kijavítva:   
+
+- Kijavítva a hiba, ahol az Azure AD Connect frissítés sikertelen lesz, ha az SQL Always On használt. 
+- Kijavítva a hiba, megfelelően elemezni a szervezeti egység neve perjelet tartalmaz. 
+- Javítva lett egy probléma, ha az átmenő hitelesítés bővítés le lesz tiltva az átmeneti módban tiszta telepítését. 
+- Kijavítva a hiba, amely meggátolta a PowerShell-modult kell betölteni, ha futtatja a hibaelhárítási eszközök 
+- Kijavítva a hiba, blokkolhatja az ügyfelek a numerikus értékek használatát első karaktere az állomásnevet. 
+- Kijavítva a hiba, ahol az Azure AD Connect lehetővé tenné, hogy érvénytelen partíciókat és tároló kiválasztása 
+- Kijavítva a "Jelszó érvénytelen" hibaüzenet, ha asztali egyszeri bejelentkezés engedélyezve van. 
+- Különböző hibajavítások a az AD FS-megbízhatóság kezelése  
+- Eszközvisszaírás - konfigurálásakor rögzített a séma-ellenőrzés, amelyet meg kíván keresni az msDs-DeviceContainer objektumosztály (WS2012 R2 rendszerben jelent meg)
 
  
 ## <a name="118820"></a>1.1.882.0  
