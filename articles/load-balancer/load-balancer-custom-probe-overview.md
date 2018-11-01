@@ -4,10 +4,6 @@ description: Állapot-mintavételei használata a terheléselosztó mögött pé
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 46b152c5-6a27-4bfc-bea3-05de9ce06a57
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -15,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/04/2018
 ms.author: kumud
-ms.openlocfilehash: ecc33fc6078dac4affe3942f1be7e039ae9e9e70
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 134c7ab8156f3acb558e8b8a2da343961a6aad4e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43695425"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419333"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer állapot-mintavételei
 
@@ -95,7 +91,7 @@ Ha Felhőszolgáltatásokat használ, és webes szerepkörök, amelyek a w3wp.ex
 
 Egy olyan HTTP / HTTPS-mintavétel meghiúsul, ha:
 * Állapotminta-végpontot egy HTTP-válaszkód, 200-as (például a 403-as, 404-es vagy 500-as) eltérő adja vissza. Ezzel a művelettel kijelöli az állapotminta azonnal. 
-* Állapotminta-végpontot a során egyáltalán nem válaszol a 31-ig második időtúllépési időszakot. Az időtúllépési érték, amely be van állítva, attól függően több mintavételi kérések mehet megválaszolatlan előtt nem fut, a mintavétel megjelölve (azaz előtt SuccessFailCount mintavételek érkeznek).
+* Állapotminta-végpontot a 31-ig második időkorlát során egyáltalán nem válaszol. Az időtúllépési érték, amely be van állítva, attól függően több mintavételi kérések mehet megválaszolatlan előtt nem fut, a mintavétel megjelölve (azaz előtt SuccessFailCount mintavételek érkeznek).
 * Állapotminta-végpontot lezárja a kapcsolatot a TCP alaphelyzetbe állítása keresztül.
 
 #### <a name="resource-manager-templates"></a>Resource Manager-sablonok
@@ -126,7 +122,7 @@ Egy olyan HTTP / HTTPS-mintavétel meghiúsul, ha:
 
 ### <a name="guestagent"></a>Vendég ügynök szonda (csak Klasszikus modell)
 
-A felhőszolgáltatásokhoz tartozó szerepkörök (a feldolgozói szerepkörök és a webes szerepkörök) mintavételi figyelés alapértelmezés szerint a vendégügynököt használja.   Vegye figyelembe a végső lehetőség.  Az explicit módon egy TCP-állapotminta vagy a HTTP-mintavétel mindig érdemes definiálni. Vendég ügynök mintavétel nem hatásos, explicit módon megadott mintavételek a legtöbb alkalmazás forgatókönyvhöz.  
+A felhőszolgáltatásokhoz tartozó szerepkörök (a feldolgozói szerepkörök és a webes szerepkörök) mintavételi figyelés alapértelmezés szerint a vendégügynököt használja.   Vegye figyelembe a végső lehetőség.  Egy explicit módon egy TCP-állapotminta vagy a HTTP-mintavétel mindig érdemes definiálni. Vendég ügynök mintavétel nem hatásos, explicit módon megadott mintavételek a legtöbb alkalmazás forgatókönyvhöz.  
 
 Vendég ügynök mintavétel a vendégügynököt a virtuális gép ellenőrzése. Ezután figyeli, és válaszol egy HTTP 200 OK válasz csak akkor, ha a példány a kész állapotban van. (A többi állapotot foglalt, újrahasznosítás vagy leállítása is.)
 
@@ -163,11 +159,11 @@ Terheléselosztási szabály egyetlen állapotmintát definiálva van a megfelel
 
 ### <a name="tcp-connections"></a>TCP-kapcsolatok
 
-Új TCP-kapcsolatok a háttér-példányra, amely állapota kifogástalan, és a vendég operációs rendszer és az alkalmazás képes fogadni az új folyamat sikeres lesz.
+Új TCP-kapcsolatok sikeresek lesznek, kifogástalan állapotú, és a vendég operációs rendszer és az alkalmazás képes fogadni az új folyamat háttér-példányhoz.
 
 Ha egy háttér-példány állapotadat-mintavétel meghiúsul, a háttér-példányhoz létrehozott TCP-kapcsolatok továbbra is.
 
-Minden mintavételek háttérkészlet szereplő összes példány sikertelen lesz, ha nincsenek új folyamatok küld a háttérkészlethez. A standard Load Balancer lehetővé teszik a létrehozott TCP-adatfolyamok folytatásához.  Alapszintű Load Balancer le fog állni az összes meglévő TCP-adatfolyamok a háttérkészlethez.
+Minden mintavételek háttérkészlet szereplő összes példány sikertelen lesz, ha nincsenek új folyamatok küld a háttérkészlethez. A standard Load Balancer lehetővé teszik a létrehozott TCP-adatfolyamok folytatásához.  Alapszintű Load Balancer le fog állni az összes meglévő TCP forgalom a háttérkészlethez.
  
 Mivel a folyamat minden esetben az ügyfél és a virtuális gép vendég operációs rendszerek között, a készlet összes mintákkal le egy előtérbeli ne válaszolna a TCP-kapcsolódási nyílt kísérletek nem megfelelően működő háttér-példány megkapja a folyamat nem miatt.
 

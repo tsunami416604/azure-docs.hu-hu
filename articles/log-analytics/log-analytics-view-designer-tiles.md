@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 1c9c93c198b4d88da55ecd241e096e73e4a40d5d
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: aa9e91614152aed6a04fa748521991920a0ed569
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042186"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413060"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Az adatforrásnézet-tervezőből csempék a Log Analytics használati útmutató
 Nézettervező az Azure Log Analytics használatával egyéni nézeteket hozhat létre az Azure Portalon, amelyek a Log Analytics-munkaterület adatvizualizációk széles. Ez a cikk egy referencia-útmutató a csempék az egyéni nézetekben elérhető beállításai.
@@ -47,7 +47,7 @@ A következő szakaszok ismertetik a csempe típusát és azok tulajdonságait a
 ## <a name="number-tile"></a>Számot tartalmazó csempe
 A **szám** csempe mindkét naplófájl lekérdezés és a egy címkét a rekordok számát jeleníti meg.
 
-![Számot tartalmazó csempe](media/log-analytics-view-designer/tile-number.png)
+![Számot tartalmazó csempe](media/log-analytics-view-designer-tiles/tile-number.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
@@ -65,7 +65,7 @@ A **szám** csempe mindkét naplófájl lekérdezés és a egy címkét a rekord
 ## <a name="two-numbers-tile"></a>Két szám csempe
 Ez a csempe minden két különböző naplófájl-lekérdezések és a egy címkét a rekordok számát jeleníti meg.
 
-![Két szám csempe](media/log-analytics-view-designer/tile-two-numbers.png)
+![Két szám csempe](media/log-analytics-view-designer-tiles/tile-two-numbers.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
@@ -86,7 +86,7 @@ Ez a csempe minden két különböző naplófájl-lekérdezések és a egy címk
 ## <a name="donut-tile"></a>Fánkdiagram csempe
 A **Fánkdiagram** csempe egyetlen szám, amely összefoglalja a log lekérdezésben érték oszlop jeleníti meg. A fánkdiagram grafikusan felső három rekord eredményeit jeleníti meg.
 
-![Fánkdiagram csempe](media/log-analytics-view-designer/tile-donut.png)
+![Fánkdiagram csempe](media/log-analytics-view-designer-tiles/tile-donut.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
@@ -110,7 +110,7 @@ A **Fánkdiagram** csempe egyetlen szám, amely összefoglalja a log lekérdezé
 ## <a name="line-chart-tile"></a>Sor diagram csempe
 Ez a csempe nem egy vonaldiagramot, amely megjeleníti a log lekérdezésből származó több sorozat idővel. 
 
-![Vonal és képfelirat diagram csempe](media/log-analytics-view-designer/tile-line-chart.png)
+![Vonal és képfelirat diagram csempe](media/log-analytics-view-designer-tiles/tile-line-chart.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
@@ -131,7 +131,7 @@ Ez a csempe nem egy vonaldiagramot, amely megjeleníti a log lekérdezésből sz
 ## <a name="line-chart-and-callout-tile"></a>Vonal és képfelirat diagram csempe
 Ez a csempe rendelkezik mindkét egy sor diagram azt mutatja, hogy a naplóból származó több sorozat lekérdezési idő és a egy kihívás az összesített érték. 
 
-![Vonal és képfelirat diagram csempe](media/log-analytics-view-designer/tile-line-chart-callout.png)
+![Vonal és képfelirat diagram csempe](media/log-analytics-view-designer-tiles/tile-line-chart-callout.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
@@ -156,7 +156,7 @@ Ez a csempe rendelkezik mindkét egy sor diagram azt mutatja, hogy a naplóból 
 ## <a name="two-timelines-tile"></a>Két idősor csempe
 A **két idősor** csempe oszlopdiagramként idővel két naplófájl lekérdezések eredményeit jeleníti meg. Minden sorozatot a felirat jelenik meg. 
 
-![Két idősor csempe](media/log-analytics-view-designer/tile-two-timelines.png)
+![Két idősor csempe](media/log-analytics-view-designer-tiles/tile-two-timelines.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |

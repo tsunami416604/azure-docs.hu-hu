@@ -302,8 +302,6 @@
 ##### [Probléma egy egyénileg fejlesztett alkalmazásban](manage-apps/application-sign-in-problem-custom-dev.md)
 ##### [Probléma egy helyszíni alkalmazásban – Alkalmazásproxy](manage-apps/application-sign-in-problem-on-premises-application-proxy.md)
 
-### [Alkalmazásfejlesztés](active-directory-applications-guiding-developers-for-lob-applications.md)
-
 
 ## Címtár kezelése
 ### [Azure AD Connect](hybrid/whatis-hybrid-identity.md)

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: df88e9025da305701dc7168f663cad2e8f5ac738
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 5b52fd41fc3e37078bbddc721c0c54af2c430b43
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42819916"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419231"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Egyesített összetevőt tranzakció diagnosztikája
 
@@ -38,7 +38,7 @@ Az egyesített diagnosztika terén automatikusan kiszolgálóoldali telemetria u
 ## <a name="transaction-diagnostics-experience"></a>Tranzakció diagnosztikája élmény
 Ez a nézet részből négy fő: eredmények listája, összetevőt tranzakció diagramot, ezt a műveletet, és bármely kiválasztott telemetriai elem a bal oldali ablaktáblában kapcsolódó összes telemetriai adat idő – feladatütemezési listáját.
 
-![Főrész](media/app-insights-e2eTxn-diagnostics/4partsCrossComponent.png)
+![Főrész](media/app-insights-transaction-diagnostics/4partsCrossComponent.png)
 
 ## <a name="cross-component-transaction-chart"></a>Összetevőt tranzakció diagram
 
@@ -57,19 +57,19 @@ Az összetevőinek hívásaihoz két sor: egy sort képvisel a kimenő hívás (
 
 Ez a szakasz a tranzakció kapcsolatos összes telemetriai adat idő sorozatát időrendi listanézet mutatja. Az egyéni eseményeket és a nyomkövetési adatok nem jelennek meg, a tranzakciós diagram is mutatja. Szűrheti a listát egy adott összetevő hívás által létrehozott telemetriát. Ebben a listában, hogy megfelelő kiválaszthatja az összes telemetriai elem [részletei a jobb oldali](#details-of-the-selected-telemetry).
 
-![Minden telemetriai adat idő sorrendje](media/app-insights-e2eTxn-diagnostics/allTelemetryDrawerOpened.png)
+![Minden telemetriai adat idő sorrendje](media/app-insights-transaction-diagnostics/allTelemetryDrawerOpened.png)
 
 ## <a name="details-of-the-selected-telemetry"></a>A kiválasztott telemetriai adatait
 
 Az összecsukható ablaktábla bármely a tranzakció diagramot, vagy a listából kiválasztott elem részleteinek megtekintéséből jeleníti meg. "Az összes megjelenítése" felsorolja az összes gyűjtött szabványos attribútumát. Egyéni attribútumokat külön-külön az alábbiak a szabványos készlet. Kattintson a "..." alatt a stack nyomkövetési ablakban másolja a nyomkövetés beolvasásához. "Nyílt profiler hívásláncai" vagy "hibakeresési pillanatfelvétel megnyitása" látható kód kódszintű diagnosztika megfelelő részletei ablaktábla.
 
-![Kivételek részletei](media/app-insights-e2eTxn-diagnostics/exceptiondetail.png)
+![Kivételek részletei](media/app-insights-transaction-diagnostics/exceptiondetail.png)
 
 ## <a name="search-results"></a>Keresési eredmények
 
 Az összecsukható panel megjeleníti az eredményeket, a szűrési feltételeknek. Kattintson a frissíteni a saját adatait a fenti 3 szakaszok minden eredményt. Próbálja ki, amelyek a legnagyobb valószínűséggel, így az összes összetevő elérhető adatok akkor is, ha a mintavétel van alkalmazva. Ezek közül bármelyik a minták keresése. Ezek láthatók, mint a "ajánlott" mintát.
 
-![Keresési eredmények](media/app-insights-e2eTxn-diagnostics/searchResults.png)
+![Keresési eredmények](media/app-insights-transaction-diagnostics/searchResults.png)
 
 ## <a name="profiler-and-snapshot-debugger"></a>Profiler és a pillanatkép-hibakereső
 
@@ -79,7 +79,7 @@ Ha nem sikerült a Profiler működik, lépjen kapcsolatba **serviceprofilerhelp
 
 Ha nem sikerült a pillanatkép-hibakereső működik, lépjen kapcsolatba **snapshothelp@microsoft.com**
 
-![Profiler-integráció](media/app-insights-e2eTxn-diagnostics/profilerTraces.png)
+![Profiler-integráció](media/app-insights-transaction-diagnostics/profilerTraces.png)
 
 ## <a name="faq"></a>GYIK
 

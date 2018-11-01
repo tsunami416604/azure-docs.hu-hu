@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4e60425edaebf9e77b7e71f43fa3fe2f2ac3227c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: a1dbc04a83e80281fb6cd516c546c1dddff6db37
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221904"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413799"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése Azure HDInsight - infrastruktúra ajánlott eljárások
 
@@ -45,11 +45,11 @@ Alkalmazások és összetevők, amelyek nem voltak elérhetők a helyi fürtökb
 
 |**Alkalmazás**|**Integráció**
 |---|---|
-|Légmozgás|IaaS-vagy HDI Élcsomóponthoz
+|Légmozgás|IaaS-vagy HDInsight Élcsomóponthoz
 |Alluxio|IaaS  
 |Arcadia|IaaS 
 |Atlas|Egyik sem (csak HDP)
-|Datameer|HDI élcsomóponthoz
+|Datameer|HDInsight élcsomóponthoz
 |A Datastax (Cassandra)|IaaS (helyett az Azure cosmos DB)
 |DataTorrent|IaaS 
 |Drill|IaaS 
@@ -58,15 +58,15 @@ Alkalmazások és összetevők, amelyek nem voltak elérhetők a helyi fürtökb
 |Mapador|IaaS 
 |Mongo|IaaS (helyett az Azure cosmos DB)
 |NiFi|IaaS 
-|Presto|IaaS-vagy HDI Élcsomóponthoz
+|Presto|IaaS-vagy HDInsight Élcsomóponthoz
 |Python 2|PaaS 
 |Python 3|PaaS 
 |R|PaaS 
 |SAS|IaaS 
 |Vertica|IaaS (SQLDW helyett az Azure-ban)
 |Tableau|IaaS 
-|Vízvonallal|HDI élcsomóponthoz
-|StreamSets|HDI Edge 
+|Vízvonallal|HDInsight élcsomóponthoz
+|StreamSets|HDInsight Edge 
 |Palantir|IaaS 
 |Sailpoint|Iaas 
 
@@ -213,7 +213,7 @@ HDInsight az Azure Virtual Networkökhöz és VPN-átjáró segítségével csat
 - Konfigurálja a DNS-névfeloldás a virtuális hálózat és helyszíni hálózat között.
 - Konfigurálja a hálózati biztonsági csoportok vagy a felhasználó által megadott útvonalak (UDR) szabályozhatja a hálózati forgalmat.
 
- További információkért tekintse meg a cikket [HDInsight csatlakoztatása a helyszíni hálózathoz](../connect-on-premises-network.md)
+További információkért tekintse meg a cikket [HDInsight csatlakoztatása a helyszíni hálózathoz](../connect-on-premises-network.md)
 
 ## <a name="next-steps"></a>További lépések
 

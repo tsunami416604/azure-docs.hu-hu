@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 10/31/2018
 ms.author: jingwang
-ms.openlocfilehash: 958d1ea09ce4d85afc59af412e1050efc6290a1a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 7dc60c18e105c9be190b5bfede786f61a65feec3
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002245"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416936"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Másolási tevékenységek teljesítményéhez és finomhangolási útmutató
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -56,7 +56,7 @@ Hivatkozásként van listázva, alábbi táblázatban látható a másolási át
 Tudnivalók:
 
 * Átviteli sebesség kiszámításához a rendszer az alábbi képlettel: [forrás adatsorból beolvasott adatok mérete] / [a másolási tevékenység futtatási időtartama].
-* A tábla hivatkozási teljesítményszámokhoz is méri [TPC-H](http://www.tpc.org/tpch/) adatkészlet egy másolási tevékenység futtatása.
+* A tábla hivatkozási teljesítményszámokhoz is méri [TPC-H](http://www.tpc.org/tpch/) adatkészlet egy másolási tevékenység futtatása. A fájlalapú tárolók tesztfájlok, 10GB-nál több fájlt.
 * Az Azure-beli adat-áruházaiban nagyban forrás- és fogadóadattárként is, azonos Azure-régióban.
 * A helyszíni és felhő közötti hibrid másolás adattárak, minden egyes helyi Integration Runtime csomópontja futott olyan számítógépen, amelyen az adattárból az alábbi specifikáció elkülönített. Egyetlen tevékenység futtatásakor a rendszer a másolási művelet csak egy részét a tesztgép CPU, memória és hálózati sávszélességet használja fel.
     <table>
@@ -76,7 +76,7 @@ Tudnivalók:
 
 
 > [!TIP]
-> Nagyobb átviteli sebességet érhet el további adatok integrációs egységek (DIU), mint az engedélyezett maximális DIUs, amelyek egy felhő-a-felhőbe másolási tevékenység futtatása esetén 32 alapértelmezett használatával. Például a 100 DIUs érheti el adatmásolásra az Azure-Blobból az Azure Data Lake Store, **1.0GBps**. Tekintse meg a [integrációs adategységek](#data-integration-units) adatait a szolgáltatás és a támogatott forgatókönyv a következő szakaszban. Kapcsolattartó [az Azure-támogatás](https://azure.microsoft.com/support/) további DIUs kéréséhez.
+> Nagyobb átviteli sebességet érhet el további adatok integrációs egységek (DIU) használatával. Például a 100 DIUs érheti el adatmásolásra az Azure-Blobból az Azure Data Lake Store, **1.0GBps**. Tekintse meg a [integrációs adategységek](#data-integration-units) adatait a szolgáltatás és a támogatott forgatókönyv a következő szakaszban. 
 
 ## <a name="data-integration-units"></a>Adategységek-integráció
 
@@ -94,7 +94,7 @@ Ez az alapértelmezett felülbírálásához, adjon meg értéket a **dataIntegr
 Láthatja, hogy a ténylegesen felhasznált adatok integrációs egységek minden egyes példányra, futtassa a másolási tevékenység kimenetét, ha egy tevékenységet a figyelést. A részletek [másolása figyelését](copy-activity-overview.md#monitoring).
 
 > [!NOTE]
-> Ha egy nagyobb átviteli sebességet további DIUs van szüksége, forduljon a [az Azure-támogatás](https://azure.microsoft.com/support/). 8 beállítása, a fenti jelenleg működik csak akkor, ha Ön **több fájlok másolását a Blob storage/Data Lake Store/Amazon S3/felhő FTP/felhő SFTP bármely más felhőalapú adattárolókhoz**.
+> DIUs beállításaként **nagyobb, mint 4** csak akkor, ha jelenleg működik, **több fájlt másol a Blob storage és Data Lake Storage/Amazon S3-/ cloud FTP/felhőbeli SFTP-bármely más felhőalapú adatokat tárolja.**.
 >
 
 **Példa**

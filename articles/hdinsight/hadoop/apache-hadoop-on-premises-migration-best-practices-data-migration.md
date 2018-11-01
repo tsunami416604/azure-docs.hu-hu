@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 95b753a3be824b5815a70fee84913f1c129f2605
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 6b06b8eb8d5e18acd3107ec5cccac79fc7be7edc
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221901"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418177"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése az Azure HDInsight - adatok áttelepítése – ajánlott eljárások
 
@@ -100,14 +100,14 @@ A hive-metaadattár a parancsprogramok használatával vagy az adatbázis-replik
 
 #### <a name="hive-metastore-migration-using-scripts"></a>Hive-metaadattár áttelepítési parancsfájlok használata
 
-- Hozza létre a Hive-DDLs helyszíni Hive-metaadattár. Ebben a lépésben végezhető használatával egy [burkoló bash-szkript](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md)
-- A létrehozott DDL HDFS URL-címet lecseréli a WASB vagy ADLS/ABFS URL-címek szerkesztése
-- Futtassa a frissített DDL a metaadattár a HDI-fürt
-- Ügyeljen arra, hogy a Hive-metaadattár verziója kompatibilis a helyszíni és a felhő között
+1. Hozza létre a Hive-DDLs helyszíni Hive-metaadattár. Ebben a lépésben végezhető [burkoló bash parancsfájl] használatával. (https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md)
+1. A létrehozott DDL HDFS URL-címet lecseréli a WASB vagy ADLS/ABFS URL-címek szerkesztése
+1. A frissített DDL a metaadattár futhatnak a HDInsight-fürtből
+1. Ügyeljen arra, hogy a Hive-metaadattár verziója kompatibilis a helyszíni és a felhő között
 
 #### <a name="hive-metastore-migration-using-db-replication"></a>Hive-metaadattár migrálás, adatbázis-replikációval
 
-- A helyszíni Hive-metaadattár DB és a HDI-metaadattár DB közötti adatbázis-replikáció beállítása
+- A helyszíni Hive-metaadattár DB és a HDInsight-metaadattár DB közötti adatbázis-replikáció beállítása
 - Használja a "Hive MetaTool" HDFS URL-címet lecseréli WASB vagy ADLS/ABFS URL-címek, például:
 
 ```bash
@@ -116,9 +116,9 @@ A hive-metaadattár a parancsprogramok használatával vagy az adatbázis-replik
 
 ### <a name="ranger"></a>Ranger
 
-- A helyszíni Ranger-házirendek xml-fájlok exportálása
-- A helyszíni egyedi HDFS-alapú elérési utak WASB vagy ADLS XSLT hasonló eszköz használatával történő átalakítása
-- a hdi-n futó Ranger be házirendek importálása
+- Exportálja a helyi Ranger-házirendek xml-fájlok.
+- Alakítsa át a helyszíni egyedi HDFS-alapú elérési utak a WASB vagy ADLS XSLT hasonló eszköz használatával.
+- A HDInsight futó Ranger be házirendek importálása.
 
 ## <a name="next-steps"></a>További lépések
 

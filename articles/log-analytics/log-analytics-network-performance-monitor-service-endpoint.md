@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: fb84b20630eb63cb53ccb1d13a383ed6287b802b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 76c8421286633dc3c81a073423a7d9f9ca1e1d85
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406619"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420846"
 ---
 # <a name="service-connectivity-monitor"></a>Szolgáltatás-összekapcsolhatósági monitor
 
@@ -35,13 +35,13 @@ A következő függvényeket, a szolgáltatás Kapcsolatfigyelő végezheti el:
 - A hotspotok a hálózaton, amelyek gyenge teljesítményt okozza az egyes ugrások meg topológia százalékaránya késés megtekintésével azonosíthatja.
 
 
-![Szolgáltatás-összekapcsolhatósági monitor](media/log-analytics-network-performance-monitor/service-endpoint-intro.png)
+![Szolgáltatás-összekapcsolhatósági monitor](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-intro.png)
 
 
 ## <a name="configuration"></a>Konfiguráció 
 Nyissa meg a Network Performance Monitor konfigurációját, nyissa meg a [Network Performance Monitor megoldás](log-analytics-network-performance-monitor.md) válassza **konfigurálása**.
 
-![A Network Performance Monitor konfigurálása](media/log-analytics-network-performance-monitor/npm-configure-button.png)
+![A Network Performance Monitor konfigurálása](media/log-analytics-network-performance-monitor-service-endpoint/npm-configure-button.png)
 
 
 ### <a name="configure-log-analytics-agents-for-monitoring"></a>Figyelés a Log Analytics-ügynökök konfigurálása
@@ -79,7 +79,7 @@ A tesztek a szolgáltatásvégpontokra irányuló hálózati kapcsolat figyelés
 10. Válassza ki a feltételek figyelése. Beállíthat egyedi küszöbértékeket health-események létrehozása a küszöbértékek megadásával. Minden alkalommal, amikor a feltétel értéke a megadott küszöbértéknél, a kiválasztott hálózat vagy alhálózat pár túllépik, állapottal kapcsolatos esemény jön létre. 
 11. Válassza ki **mentése** a konfiguráció mentéséhez. 
 
-    ![Szolgáltatás Kapcsolatfigyelő tesztelési konfigurációkat](media/log-analytics-network-performance-monitor/service-endpoint-configuration.png)
+    ![Szolgáltatás Kapcsolatfigyelő tesztelési konfigurációkat](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-configuration.png)
 
 
 
@@ -87,11 +87,11 @@ A tesztek a szolgáltatásvégpontokra irányuló hálózati kapcsolat figyelés
 
 A Network Performance Monitor irányítópult nézet megnyitása. A létrehozott különböző vizsgálatok állapotának összegzését lekéréséhez tekintse meg a **szolgáltatás Kapcsolatfigyelő** lap. 
 
-![Szolgáltatás Kapcsolatfigyelő lap](media/log-analytics-network-performance-monitor/service-endpoint-blade.png)
+![Szolgáltatás Kapcsolatfigyelő lap](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-blade.png)
 
 Kattintson a csempére a teszt részleteinek megtekintéséhez a **tesztek** lapot. A bal oldalon található a táblázatban megtekintheti, időponthoz állapotát és a szolgáltatás válaszideje, hálózati késés és a vizsgálatok során a csomagvesztés értékét. A hálózat állapotát rögzítő vezérlő használatával megtekintheti a hálózati pillanatképet az elmúlt egy másik időpontban. Válassza ki a teszt a vizsgálni kívánt tábla. A jobb oldali panelen a diagramok és megtekintheti az adatveszteség, a késés és a válasz time típusú értékek előzményadatok trendjét. Válassza ki a **részletei** hivatkozásra kattintva ki minden csomópontból a teljesítményt.
 
-![Szolgáltatás Kapcsolatfigyelő tesztek](media/log-analytics-network-performance-monitor/service-endpoint-tests.png)
+![Szolgáltatás Kapcsolatfigyelő tesztek](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-tests.png)
 
 Az a **Tesztcsomópontok** nézetben figyelheti, hogy az egyes csomópontok a hálózati kapcsolat. Válassza ki a csomópontot, a teljesítménycsökkenés rendelkezik. Ez az a csomópont, ahol az alkalmazás lassan fut, meg.
 
@@ -99,15 +99,15 @@ Megállapításához, hogy a gyenge alkalmazásteljesítményt a hálózaton vag
 
 * **Alkalmazással kapcsolatos problémát:** válaszidő ugrásszerű, de a hálózati késést a konzisztencia javasolja, hogy a hálózat megfelelően működik-e, és lehet, hogy a probléma a alkalmazás végén probléma miatt. 
 
-    ![Szolgáltatás Kapcsolatfigyelő alkalmazással kapcsolatos problémát](media/log-analytics-network-performance-monitor/service-endpoint-application-issue.png)
+    ![Szolgáltatás Kapcsolatfigyelő alkalmazással kapcsolatos problémát](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-application-issue.png)
 
 * **A hálózati problémát:** válaszideje, amely a hálózati késés megfelelő ugrásszerű ugrásszerű javasolja, hogy a hálózati késés növekedése miatt lehet a válaszidő növelése. 
 
-    ![Kapcsolatfigyelő szolgáltatás hálózati hiba](media/log-analytics-network-performance-monitor/service-endpoint-network-issue.png)
+    ![Kapcsolatfigyelő szolgáltatás hálózati hiba](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-network-issue.png)
 
 Miután azt állapítja meg, hogy van-e a probléma miatt a hálózaton, válassza ki a **topológia** megtekintése hivatkozásra a feladatátvételnek Ugrás a topológia-térképként azonosításához. Az alábbi képen egy példa látható. A 105-teljes késése (ms) között a csomópont és az alkalmazás végpontjának, kívül 96 ms miatt a pirossal kiemelt Ugrás van. Miután azonosította a feladatátvételnek Ugrás, korrekciós műveleteket végezheti el. 
 
-![Szolgáltatás Kapcsolatfigyelő tesztek](media/log-analytics-network-performance-monitor/service-endpoint-topology.png)
+![Szolgáltatás Kapcsolatfigyelő tesztek](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-topology.png)
 
 ## <a name="diagnostics"></a>Diagnosztika 
 

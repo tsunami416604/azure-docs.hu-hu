@@ -9,12 +9,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c9f14664ca035b3de1af80ca3101c22751c83237
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7507cdd7f3967dc132eecf81de347f2da791487f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963645"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414981"
 ---
 # <a name="collect-distributed-traces-from-python-preview"></a>Elosztott nyomkövetések gyűjtéséhez a Python (előzetes verzió)
 
@@ -22,7 +22,7 @@ Az Application Insights most már támogatja az elosztott nyomkövetést Python-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Azure-előfizetés szükséges.
+- Rendelkeznie kell Azure-előfizetéssel.
 - Python-nek telepítve kell lennie, ez a cikk [Python 3.7.0](https://www.python.org/downloads/), bár a korábbi verzióiban valószínűleg kisebb helyesbítéssel fognak működni.
 - Kövesse az utasításokat követve telepítse a [helyi továbbító Windows szolgáltatásként](./opencensus-local-forwarder.md#windows-service)
 
@@ -180,7 +180,7 @@ Először meg kell létrehoznia az Application Insights-erőforrást egy kialak�
 
     Azt is csak nyomkövetés egy metódus hívása, mert az alkalmazás-hozzárendelés nem is érdekes. De alkalmazástérkép méretezhető sokkal könnyebben elosztott alkalmazás megjelenítése:
 
-   ![Alkalmazástérkép](./media/app-insights-nodejs-quick-start/application-map.png)
+   ![Alkalmazástérkép](media/opencensus-python/application-map.png)
 
 4. Válassza ki **teljesítményének vizsgálata** részletes teljesítményelemzését végez, és a lassú teljesítmény okának meghatározásához.
 

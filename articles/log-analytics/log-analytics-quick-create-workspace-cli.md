@@ -15,12 +15,12 @@ ms.topic: conceptal
 ms.date: 10/02/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 19334bd7a6c2d451e51237cc16462bae2cfffb0a
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: e3201562bd532084e528dddbee667bbafc39ede6
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041322"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416541"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Log Analytics-munkaterület létrehozásához Azure CLI 2.0 használatával
 
@@ -123,7 +123,7 @@ A következő paraméterekkel állítsa be az alapértelmezett érték:
 
 Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, megjelenik egy üzenet, amely tartalmazza az eredmény az alábbihoz hasonló:
 
-![Ha üzembe helyezés kész eredményének](./media/log-analytics-template-workspace-configuration/template-output-01.png)
+![Ha üzembe helyezés kész eredményének](media/log-analytics-quick-create-workspace-cli/template-output-01.png)
 
 ## <a name="next-steps"></a>További lépések
 Most, hogy a munkaterület érhető el, figyelési telemetriai adatok gyűjtésének konfigurálása, naplókereséseket elemezheti az adatokat, és adjon hozzá egy felügyeleti megoldás, további adat- és elemzési elemzéseket biztosít.  

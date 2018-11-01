@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 49aed496d8c125da8c2269186b569693c794d290
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: fc9ed37ef24e776336124bf097def2f6a00ee83e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404562"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419792"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>OMS-portálon való váltás az Azure portálon a Log Analytics felhasználók kapcsolatos gyakori kérdések
 A log Analytics kezdetben a saját Portalt használta az OMS-portál nevű felügyelje a konfigurációt, és elemezheti az összegyűjtött adatokat.  Ezen a portálon az összes funkció át lett helyezve az Azure Portalra, továbbra is ki kell alakítani.
@@ -32,7 +32,7 @@ Nem. Nem változtak, a Log Analyticshez való kerül sor, így semmit nem kell �
 ## <a name="where-do-i-find-log-analytics-in-azure"></a>Hol találom a Log Analytics az Azure-ban?
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) címen.  Kattintson a **minden szolgáltatás**, és az erőforrások listájában írja be a **Log Analytics**. Válassza ki **Log Analytics** , és válassza ki a munkaterülethez. A munkaterület összegzés lapján jelenik meg.
 
-![Azure-beli monitorozási munkaterület](media/log-analytics-new-portal/log-analytics.png)
+![Log Analytics-munkaterület](media/log-analytics-oms-portal-faq/log-analytics.png)
 
 ## <a name="how-do-i-manage-permissions"></a>Hogyan kezelhetem engedélyeket?
 A Log Analytics-munkaterületet az Azure Portalon nem érheti el, ha szüksége konfigurálja az engedélyeik [Azure szerepköralapú hozzáférés-](../active-directory/role-based-access-control-configure.md). A munkaterület-engedélyek kezelésének részletes ismertetéséért lásd: [munkaterületeinek kezeléséhez](../log-analytics/log-analytics-manage-access.md#manage-accounts-and-users). A riasztásokra vonatkozó engedélyekkel kezeléséről további információért lásd: [szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md).
@@ -40,12 +40,12 @@ A Log Analytics-munkaterületet az Azure Portalon nem érheti el, ha szüksége 
 ## <a name="how-do-i-create-a-new-workspace"></a>Hogyan hozhatok létre egy új munkaterületet? 
 A munkaterület listája, az Azure Portalon, kattintson **Hozzáadás** munkaterületek listájában.  További információkat lásd: [Log Analytics-munkaterület létrehozása az Azure Portalon](../log-analytics/log-analytics-quick-create-workspace.md).
 
-![– Áttekintés oldalra](media/log-analytics-new-portal/new-workspace.png)
+![– Áttekintés oldalra](media/log-analytics-oms-portal-faq/new-workspace.png)
 
 ## <a name="where-is-my-overview-page"></a>Hol található az Áttekintés lapon?
 Az OMS-portálon fő képernyőjén jeleníti meg az telepítve van a munkaterületet, és az egyéni nézetek létrehozott felügyeleti megoldások csempéi. Ez a nézet az Azure Portalon érhető el. A munkaterületen válassza ki a **munkaterület összefoglalás**.
 
-![– Áttekintés oldalra](media/log-analytics-new-portal/overview.png)
+![– Áttekintés oldalra](media/log-analytics-oms-portal-faq/overview.png)
 
 ## <a name="how-do-i-open-log-search-and-view-designer"></a>Hogyan nyitható meg a naplóbeli keresés és az adatforrásnézet-tervezőből?
 Mindkét **naplóbeli keresés** és **adatforrásnézet-tervezőből** érhetők el a fő oldalon, és az Azure Portalon, a munkaterület bal oldali menüben lévő közvetlenül ezután a **áttekintése**.
@@ -53,7 +53,7 @@ Mindkét **naplóbeli keresés** és **adatforrásnézet-tervezőből** érhető
 ## <a name="where-do-i-find-settings"></a>Hol találom meg a beállításokat?
 Számos, a beállítások a **beállítások** szakaszában az OMS-portálon érhetők el a **speciális beállítások** menüben a munkaterület az Azure Portalon.
 
-![Speciális beállítások](media/log-analytics-new-portal/advanced-settings.png)
+![Speciális beállítások](media/log-analytics-oms-portal-faq/advanced-settings.png)
 
 Az alábbi szakaszok nyújtanak, hogyan férhet hozzá a korábban elérhető beállítások teljes listáját a **beállítások** szakaszában az OMS-portálon.
 
@@ -118,7 +118,7 @@ A [saját irányítópult](../log-analytics/log-analytics-dashboards.md) a Log A
 ## <a name="how-do-i-check-my-usage"></a>Hogyan tudom ellenőrizni, a használat?
 Is most már egyszerűen megtekinthető és kezelhető a használat és a Log Analytics költsége kiválasztásával **felhasználás és becsült költségek** a munkaterületén.
 
-![Használat és becsült költségek](media/log-analytics-new-portal/usage.png)
+![Használat és becsült költségek](media/log-analytics-oms-portal-faq/usage.png)
 
 
 ## <a name="can-i-still-use-the-classic-portal"></a>Továbbra is használható a klasszikus portálon?

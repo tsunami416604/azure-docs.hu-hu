@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: laevenso
-ms.openlocfilehash: db9d42cca4bc327d216229f45f5fa1742f70fb9a
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 683abd9bad93bff51bea84c8081d2b8f9d300cd4
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138809"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419248"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>A GPU-k használata a nagy számítási igényű számítási feladatokhoz az Azure Kubernetes Service (AKS)
 
@@ -121,6 +121,9 @@ Non-terminated Pods:         (9 in total)
 A grafikus Processzor működés közben látni, hogy a megfelelő erőforrás-kérelemmel GPU-kompatibilis munkaterhelések ütemezése. Ebben a példában futtassunk egy [Tensorflow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) feladat ellen a [MNIST adatkészlet](http://yann.lecun.com/exdb/mnist/).
 
 Hozzon létre egy fájlt *minták – tf-mnist-demo.yaml* , és illessze be a következő YAML-jegyzékfájlt. A következő feladat jegyzékfájlt tartalmaz erőforrás legfeljebb `nvidia.com/gpu: 1`:
+
+> [!NOTE]
+> Ha egy verzióeltérési hiba hívásakor, illesztőprogramok, például a CUDA-illesztőprogram verziója nem elegendő a CUDA verze modulu runtime, tekintse át az nVidia illesztőprogram mátrix kompatibilitási diagramja – [https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
 
 ```yaml
 apiVersion: batch/v1

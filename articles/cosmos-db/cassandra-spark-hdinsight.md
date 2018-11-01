@@ -9,12 +9,12 @@ ms.devlang: spark-scala
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ankhanol
-ms.openlocfilehash: 34293ffc70ebbc2a8639913aefe3b62ed8e618d4
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: a86b7375122d38d36707a419b265dcd3c1b57087
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222777"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741691"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>Hozzáférés az Azure Cosmos DB Cassandra API a Spark a YARN-HDInsight
 
@@ -34,7 +34,7 @@ Ez a cikk bemutatja, hogyan a Spark on HDInsight-Spark a YARN a spark-shell az A
 
 * **Cassandra API-konfigurációt a Spark2** -Cassandra a Spark-összekötő szükséges, hogy a Cassandra-kapcsolatot a részletek a Spark környezet részeként inicializálni. Ha elindítja egy Jupyter notebookot, a spark-munkamenetet, és a környezet már inicializálva vannak, és nem tanácsos leállítása és a Spark környezet újrainicializálása, kivéve, ha ez kész, de minden beállítani, a HDInsight alapértelmezett Jupyter notebook indítási konfiguráció. Egy lehetséges megoldást, hogy a Cassandra példány részleteit hozzá Ambari, közvetlenül a Spark2 szolgáltatás konfigurációja. Ez a Spark2 szolgáltatás újraindítását igénylő fürtönként egy egyszeri tevékenységet.
  
-  1. Nyissa meg az Ambari, Spark2 szolgáltatást, majd kattintson a konfigurációk
+  1. Nyissa meg az Ambari, Spark2 szolgáltatás és a select configs
 
   2. Ezután nyissa meg az egyéni spark2-alapértelmezett, és adja hozzá az alábbi új tulajdonság, és Spark2 szolgáltatás újraindítása:
 

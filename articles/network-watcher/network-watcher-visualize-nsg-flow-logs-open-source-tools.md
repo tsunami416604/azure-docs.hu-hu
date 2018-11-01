@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: aa83ba1f428e70cd78cba2af6d39989179d5b30f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 61354803f4fced7cd8fee31f10b5f72401f267da
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42059620"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414947"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Nyílt forráskódú eszközök használatával az Azure Network Watcher NSG forgalmi naplók megjelenítése
 
@@ -43,7 +43,7 @@ NSG-Folyamatnaplók az Elastic Stack rendelkező csatlakoztatásával létrehozh
 
 #### <a name="install-elasticsearch"></a>Az Elasticsearch telepítése
 
-1. Az Elastic Stacket az 5.0-s verzió vagy újabb Java 8 van szükség. Futtassa a parancsot `java -version` a verzió ellenőrzéséhez. Ha nem rendelkezik java telepíteni, tekintse meg a dokumentációt [Oracle webhely](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html).
+1. Az Elastic Stacket az 5.0-s verzió vagy újabb Java 8 van szükség. Futtassa a parancsot `java -version` a verzió ellenőrzéséhez. Ha nem rendelkezik java telepíti, ha nincs telepítve, a java, tekintse meg dokumentációját a a [Azure-suppored segítségével](https://aka.ms/azure-jdks).
 2. Töltse le a rendszer a megfelelő bináris csomagot:
 
    ```bash

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: cbe6ddc2c4680028d5a4a0491756c7a7b9897c69
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: ed6b2fafbb3329e20985b75f55d29b52dcc5da57
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233242"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415701"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Riasztások kiterjesztése a Log Analytics az Azure-riasztások
 A riasztások szolgáltatása az Azure Log Analyticsben váltja fel az Azure-riasztások. Az átállás részeként a riasztásokat, amelyek eredetileg konfigurálták a Log Analytics kiterjesztik az Azure-bA. Ha nem szeretné automatikusan Azure-ba való áthelyezésének várja, is kezdeményezhet a folyamat:
@@ -27,26 +27,26 @@ A riasztások szolgáltatása az Azure Log Analyticsben váltja fel az Azure-ria
 ## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>1. lehetőség: Az Operations Management Suite portálján az kezdeményezése
 Az alábbi lépéseket a munkaterületre vonatkozó riasztások kiterjesztése az Operations Management Suite portálján a ismertetik.  
 
-1. Az Azure Portalon válassza ki a **minden szolgáltatás**. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
+1. Az Azure Portalon válassza a **Minden szolgáltatás** elemet. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 2. A Log Analytics-előfizetések ablaktábláján válasszon ki egy munkaterületet, és válassza a **OMS-portálon** csempére.
-![Képernyőkép a Log Analytics előfizetés ablaktáblán kiemelt OMS-portálon csempével](./media/monitor-alerts-extend/azure-portal-01.png) 
+![Képernyőkép a Log Analytics előfizetés ablaktáblán kiemelt OMS-portálon csempével](media/monitoring-alerts-extend-tool/azure-portal-01.png) 
 3. Után a rendszer átirányítja az Operations Management Suite portálra, válassza ki a **beállítások** ikonra.
-![Képernyőkép az Operations Management Suite portálján, a beállítások ikonja kiemelve](./media/monitor-alerts-extend/oms-portal-settings-option.png) 
+![Képernyőkép az Operations Management Suite portálján, a beállítások ikonja kiemelve](media/monitoring-alerts-extend-tool/oms-portal-settings-option.png) 
 4. Az a **beállítások** lapon jelölje be **riasztások**.  
 5. Válassza ki **kiterjesztése az Azure-bA**.
-![Képernyőkép az Operations Management Suite portál riasztási beállítások oldala, amelyen a kiemelt Azure-ba való bővítése](./media/monitor-alerts-extend/ExtendInto.png)
+![Képernyőkép az Operations Management Suite portál riasztási beállítások oldala, amelyen a kiemelt Azure-ba való bővítése](media/monitoring-alerts-extend-tool/ExtendInto.png)
 6. Megjelenik egy három lépéses varázsló, a **riasztások** ablaktáblán. Olvassa el az áttekintést, és válassza ki **tovább**.
-![1. lépés a varázsló képernyőképe](./media/monitor-alerts-extend/ExtendStep1.png)  
+![1. lépés a varázsló képernyőképe](media/monitoring-alerts-extend-tool/ExtendStep1.png)  
 7. A második lépésben látja összegzését, javasolt változtatás ajánlati megfelelő [Műveletcsoportok](monitoring-action-groups.md) a riasztások. Hasonló műveletek közötti egynél több riasztás is látható, ha a varázsló azokat egyetlen művelettel csoport hozzárendelése javasolja.  Az elnevezési szabályt követik a következőképpen történik: *WorkspaceName_AG_ #Number*. A továbblépéshez válasszon **tovább**.
-![2. lépés a varázsló képernyőképe](./media/monitor-alerts-extend/ExtendStep2.png)  
+![2. lépés a varázsló képernyőképe](media/monitoring-alerts-extend-tool/ExtendStep2.png)  
 8. A varázsló utolsó lépése, jelölje ki **Befejezés**, és győződjön meg arról, amikor a rendszer kéri a folyamat elindításához. Igény szerint megadhat egy e-mail-címet, így értesítést kap a folyamat befejeződik, és az összes riasztás sikeresen helyezte az Azure Alerts szolgáltatáshoz.
-![3. lépés a varázsló képernyőképe](./media/monitor-alerts-extend/ExtendStep3.png)
+![3. lépés a varázsló képernyőképe](media/monitoring-alerts-extend-tool/ExtendStep3.png)
 
 Ha a varázsló nem végzett, a **riasztási beállítások** lap, riasztások kiterjesztése az Azure-bA lehetősége el lett távolítva. A háttérben a riasztásokat az Azure-ba kerülnek, és ez eltarthat egy ideig. A művelet során nem végezhet módosításokat a riasztásokat az Operations Management Suite-portálon. A portál tetején a szalagcímen az aktuális állapota látható. Ha korábban megadott e-mail-címmel, egy e-mailt kap, amikor a folyamat sikeresen befejeződött.  
 
 
 Riasztások továbbra is megjelennek az Operations Management Suite-portálon, az Azure-bA sikeresen áthelyezett után is.
-![Képernyőkép az Operations Management Suite portál riasztási beállítások lap](./media/monitor-alerts-extend/PostExtendList.png)
+![Képernyőkép az Operations Management Suite portál riasztási beállítások lap](media/monitoring-alerts-extend-tool/PostExtendList.png)
 
 
 ## <a name="option-2-use-the-alertsversion-api"></a>2. lehetőség: A AlertsVersion API használata
@@ -460,7 +460,7 @@ Riasztások kiterjesztése az a folyamat során problémák megakadályozhatja a
 > Ha Azure nyilvános felhő alapú Log Analytics-felhasználók 2018. július 5. előtt nem kell a következő javítási lépéseket, a riasztások az Azure-ban futnak, de nem indulnak el, bármilyen művelet vagy az értesítés. Értesítés küldése riasztások, kell manuálisan szerkessze, és adja hozzá [Műveletcsoportok](monitoring-action-groups.md), vagy használja az előző [egyéni PowerShell-parancsprogram](#option-3---using-custom-powershell-script).
 
 Minden egyes hibához szervizelés lépései a következők:
-- **Chyba: Hatókör zár megtalálható előfizetés/erőforráscsoport szintjén az írási műveletek**: ![lapjának képernyőképe, az Operations Management Suite portál riasztási beállítások, kiemelve hatókör zárolási hibaüzenet](./media/monitor-alerts-extend/ErrorScopeLock.png)
+- **Chyba: Hatókör zár megtalálható előfizetés/erőforráscsoport szintjén az írási műveletek**: ![lapjának képernyőképe, az Operations Management Suite portál riasztási beállítások, kiemelve hatókör zárolási hibaüzenet](media/monitoring-alerts-extend-tool/ErrorScopeLock.png)
 
     Hatókör zár engedélyezve van, amikor a szolgáltatás korlátozza (Operations Management Suite) Log Analytics-munkaterületnek tartalmazó előfizetés vagy az erőforrás-csoport minden olyan új változásáról. A rendszer nem tudja riasztások kiterjesztése az Azure-ba, és a szükséges Műveletcsoportok létrehozása.
     
@@ -468,7 +468,7 @@ Minden egyes hibához szervizelés lépései a következők:
     
     A cikkben bemutatott lépések segítségével hárítsa el a hibát, ha az Operations Management Suite az Azure-bA a riasztások kiterjeszti a következő napra ütemezett futtatását. Nem kell további műveleteket, vagy kezdeményezzen semmit.
 
-- **Hiba: A házirend jelen előfizetés/erőforráscsoport szintjén**: ![lapjának képernyőképe, az Operations Management Suite portál riasztási beállítások, kiemelve a házirend hibaüzenet](./media/monitor-alerts-extend/ErrorPolicy.png)
+- **Hiba: A házirend jelen előfizetés/erőforráscsoport szintjén**: ![lapjának képernyőképe, az Operations Management Suite portál riasztási beállítások, kiemelve a házirend hibaüzenet](media/monitoring-alerts-extend-tool/ErrorPolicy.png)
 
     Amikor [Azure Policy](../azure-policy/azure-policy-introduction.md) van érvényben, korlátozza a Log Analytics (az Operations Management Suite) munkaterületet tartalmazó előfizetés vagy az erőforrás csoportban bármilyen új erőforrást. A rendszer nem tudja riasztások kiterjesztése az Azure-ba, és a szükséges Műveletcsoportok létrehozása.
     

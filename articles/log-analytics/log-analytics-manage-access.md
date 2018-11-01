@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 633bf2cf68449849c019ba940644d78d1478efc3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 75faceb641382df29a93c44803af48dcfed142d4
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042326"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421169"
 ---
 # <a name="manage-workspaces"></a>Munkaterületek kezelése
 
@@ -64,7 +64,7 @@ A munkaterületek adatait az Azure Portalon tekintheti meg.
 
 2. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.  
 
-    ![Azure Portal](./media/log-analytics-quick-collect-azurevm/azure-portal-01.png)  
+    ![Azure Portal](media/log-analytics-manage-access/azure-portal-01.png)  
 
 3. Az a Log Analytics-előfizetések ablaktábláján válasszon egy munkaterületet.
 

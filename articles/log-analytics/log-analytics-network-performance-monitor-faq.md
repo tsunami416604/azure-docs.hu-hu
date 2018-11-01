@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 2821f3fa07d8d9ada02da212084639c93e469d0b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 91cfa35cd10772da0042566bdd9030f780329f93
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408880"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415185"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
-![Hálózati Teljesítményfigyelő szimbólum](media/log-analytics-network-performance-monitor/npm-symbol.png)
+![Hálózati Teljesítményfigyelő szimbólum](media/log-analytics-network-performance-monitor-faq/npm-symbol.png)
 
 Ez a cikk rögzíti a gyakori kérdések (GYIK) kapcsolatos Network Performance monitort (NPM) az Azure-ban
 
@@ -54,7 +54,7 @@ Az ExpressRoute-figyelő szolgáltatás az Azure-csomópontok csatlakoznia kell 
 ### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>Többek között a TCP és az ICMP protokoll figyelésre kell választani?
 Ha a hálózat, Windows server-alapú csomópontokat használ, javasoljuk, TCP figyelési protokollként használhatja, mivel ez nagyobb pontosságot biztosít. 
 
-A Windows asztali számítógépek vagy Windows-ügyfél operációs rendszeren alapuló csomópontok esetében ICMP használata javasolt, mivel ezen a platformon nem engedi meg a TCP-adatok, amely azonban szükséges NPM által a hálózati topológia felderítése nyers szoftvercsatornákon keresztül küldendő.
+ICMP használata ajánlott Windows asztali számítógépek vagy Windows-ügyfél operációs rendszer-alapú csomópontokat. Ezen a platformon nem engedélyezi a TCP-adatok nyers szoftvercsatornákon keresztül küldendő melyik az npm segítségével való hálózati topológia felderítése.
 
 További részleteket az egyes protokoll relatív előnyeit is megjeleníthet [Itt](log-analytics-network-performance-monitor-performance-monitor.md#choose-the-protocol).
 

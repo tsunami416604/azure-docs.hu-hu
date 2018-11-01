@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 0e5d42dddf550d8c7d4a579afd8436343749a995
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 24b7e03808cb5df9fa4c122ca4c9317f723dac72
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233650"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414641"
 ---
 # <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Az Azure Kubernetes Service (AKS) terheléselosztót statikus nyilvános IP-cím használata
 
@@ -93,9 +93,13 @@ kubectl apply -f load-balancer-service.yaml
 
 ## <a name="use-a-static-ip-address-outside-of-the-node-resource-group"></a>A csomópont erőforráscsoport kívül statikus IP-cím
 
-Kubernetes 1.10 vagy újabb akkor a csomópont erőforráscsoport kívül létrehozott statikus IP-cím. Az AKS-fürt által használt egyszerű szolgáltatást kell delegált engedélyekkel kell rendelkeznie a másik erőforráscsoportban, az alábbi paranccsal SP-engedélyek megadására:
-```
-az role assignment create --assignee <SP Client ID> --role "Network Contributor" --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
+Kubernetes 1.10 vagy újabb akkor a csomópont erőforráscsoport kívül létrehozott statikus IP-cím. Az AKS-fürt által használt egyszerű szolgáltatást kell delegált engedélyekkel kell rendelkeznie a másik erőforráscsoportban, az alábbi példában látható módon:
+
+```azurecli
+az role assignment create\
+    --assignee <SP Client ID> \
+    --role "Network Contributor" \
+    --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
 
 A csomópont erőforrás csoporton kívüli IP-címet használ, adja hozzá a szolgáltatás definíciós jegyzet. Az alábbi példa beállítja a jegyzet elnevezésű erőforráscsoportot *myResourceGroup*. Adja meg a saját erőforráscsoport neve:

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: maxluk
-ms.openlocfilehash: b3dd31c7890812dfa7e9e5740a48f094badc604e
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 51e1e7696ece46e63358b2ed6efa55bbf6ab01fd
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167341"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420778"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>IntelliJ-hez készült Azure eszközkészlet használata Spark-alkalmazások egy HDInsight-fürt létrehozása
 
@@ -33,7 +33,7 @@ A projekt létrehozásához tekintse meg a [Spark-alkalmazások létrehozása az
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Apache Spark-fürtök HDInsight Linux rendszeren. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
-- Oracle Java Development Kitet. A telepítheti a [Oracle webhely](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+- Oracle Java Development Kitet. A telepítheti a [Oracle webhely](https://aka.ms/azure-jdks).
 - IntelliJ IDEA. Ez a cikk 2017.1 verzióját használja. A telepítheti a [eszközt webhely](https://www.jetbrains.com/idea/download/).
 
 ## <a name="install-azure-toolkit-for-intellij"></a>IntelliJ-hez készült Azure-eszközkészlet telepítése

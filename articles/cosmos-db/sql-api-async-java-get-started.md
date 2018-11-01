@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: sngun
-ms.openlocfilehash: aa2613f7cb73c2c338189aaaa48587c49a3093f5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e8450251da537be410582645e76e9e42c87d0586
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962203"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415781"
 ---
 # <a name="build-a-java-application-by-using-azure-cosmos-db-async-java-sdk"></a>Java-alkalmazás létrehozása az Azure Cosmos DB aszinkron Java SDK használatával 
 
@@ -48,7 +48,7 @@ Győződjön meg róla, hogy rendelkezik az alábbiakkal:
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 * [Git](https://git-scm.com/downloads).
-* [Java fejlesztői készlet (JDK) 8+](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
+* [Java fejlesztői készlet (JDK) 8+](https://aka.ms/azure-jdks).
 * [Maven](http://maven.apache.org/download.cgi).
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>1. lépés: Azure Cosmos DB-fiók létrehozása

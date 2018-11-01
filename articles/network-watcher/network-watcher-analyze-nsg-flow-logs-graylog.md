@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
-ms.openlocfilehash: db3b08ae8092661e6ffa0f2dd7e460f341a8d013
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 3030fdcec95d91b75974465ad30f707837263367
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666059"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414777"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Kezelheti és elemezheti a hálózati biztonsági csoport folyamatnaplóit az Azure Network Watcher és a Graylog használatával
 
@@ -38,7 +38,7 @@ Hálózati biztonsági csoport folyamatnaplóit engedélyezve vannak a Network W
 
 ### <a name="enable-network-security-group-flow-logging"></a>Engedélyezze a hálózati biztonsági csoportforgalom naplózása
 
-Ebben a forgatókönyvben a hálózati biztonsági csoportforgalom naplózása legalább egy hálózati biztonsági csoport a fiókban engedélyezni kell rendelkeznie. Engedélyezésével kapcsolatos hálózati biztonsági csoport folyamatnaplóit, tekintse meg a következő cikket [csoportforgalom naplózása a hálózati biztonsági csoportok bemutatása](network-watcher-nsg-flow-logging-overview.md).
+Ebben a forgatókönyvben a hálózati biztonsági csoportforgalom naplózása legalább egy hálózati biztonsági csoport a fiókban engedélyezni kell rendelkeznie. Engedélyezésével kapcsolatos hálózati biztonsági csoport folyamatnaplóit, tekintse meg a következő cikket [csoportforgalom naplózása a hálózati biztonsági csoportok bemutatása](network-watcher-nsg-flow-logging-overview.md).
 
 ### <a name="setting-up-graylog"></a>Graylog beállítása
 
@@ -51,7 +51,7 @@ Ebben a példában a minimális Graylog beállítása (vagyis) egyetlen példán
 
 Graylog platform és beállítások függően többféleképpen is telepíthető. Lehetséges telepítési módszerek teljes listájáért tekintse meg a Graylog hivatalos [dokumentáció](http://docs.graylog.org/en/2.2/pages/installation.html). A Graylog kiszolgálóalkalmazás Linux-disztribúciót futtat, és előfeltételei a következők:
 
--  Oracle Java használata 8 vagy újabb – [Oracle-dokumentáció](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)
+-  Java használata 8 vagy újabb – [Azul Azure JDK-dokumentáció](https://aka.ms/azure-jdks)
 -  Rugalmas keresés 2.x (2.1.0 vagy újabb) – [Elasticsearch-dokumentáció](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
 -  2.4-es vagy újabb – MongoDB [MongoDB-dokumentáció](https://docs.mongodb.com/manual/administration/install-on-linux/)
 
@@ -244,4 +244,4 @@ A Network Watcher integrációval Graylog, kezelheti és jelenítheti meg a hál
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan jelenítheti meg a hálózati biztonsági csoport folyamatnaplóit, ha a Power bi-JAL funkcionáló [Visualize hálózati biztonsági csoport és a Power BI forgalomnaplók](network-watcher-visualize-nsg-flow-logs-power-bi.md).
+Ismerje meg, hogyan jelenítheti meg a hálózati biztonsági csoport folyamatnaplóit, ha a Power bi-JAL funkcionáló [Visualize hálózati biztonsági csoport és a Power BI forgalomnaplók](network-watcher-visualize-nsg-flow-logs-power-bi.md).

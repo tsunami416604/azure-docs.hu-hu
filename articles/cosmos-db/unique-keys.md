@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.author: rafats
-ms.openlocfilehash: 5811cb1e08ed5d02038da2a4460ae4b63580833b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: ff432de59e5a5fdfeaad4c3a5361554ee32e21b0
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696139"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740008"
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Azure Cosmos DB-ben egyedi kulcsaival
 
@@ -130,7 +130,7 @@ Példa JSON-dokumentumok.
 Az alábbi parancs minta bemutatja, hogyan hozzon létre egy egyedi indexet a firstName, lastName és e-mailek mezőket a felhasználóknak gyűjtemény a MongoDB API-hoz. Ez biztosítja az egyedi-e az összes három mezőt kombinációja a gyűjteményben lévő összes dokumentum. MongoDB API-gyűjtemény az egyedi index jön létre a gyűjtemény létrehozása után, de a gyűjtemény feltöltése előtt.
 
 > [!NOTE]
-> A MongoDB API-fiókok egyedi kulcs formátuma eltér a az SQL API-fiókok, ahol nem kell a fordított perjel (/) karakter előtt a mező nevét adja meg. 
+> A MongoDB API-fiókok egyedi kulcs formátuma eltér a az SQL API-fiókok, ahol, nem kell megadnia a perjellel (/) karaktert a mező neve előtt. 
 
 ```
 db.users.createIndex( { firstName: 1, lastName: 1, email: 1 }, { unique: true } )

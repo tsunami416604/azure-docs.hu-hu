@@ -8,19 +8,18 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 725f32fd-d0ad-49c7-b137-1cc246bf85d7
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 10/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 907cec2784b4ad22555f6b29efb6d670ce7d48d0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 0437bd46537d8b7024618706aba12660abca5512
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443647"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414692"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-line-works"></a>Oktatóanyag: Azure Active Directory-integráció az sor működése
 
@@ -38,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása a sor WORKS, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - Egy sor működik az egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -53,28 +52,28 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. SOR WORKS hozzáadása a katalógusból
-1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-line-works-from-the-gallery"></a>SOR WORKS hozzáadása a katalógusból
 Konfigurálása az Azure AD integrálása a sor működik, hozzá kell sor működik a galériából a felügyelt SaaS-alkalmazások listájára.
 
 **SOR WORKS hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
-    ![Az Azure Active Directory gomb][1]
+    ![image](./media/worksmobile-tutorial/selectazuread.png)
 
-1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panelen][2]
+    ![image](./media/worksmobile-tutorial/a_select_app.png)
     
-1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-    ![Az új alkalmazás gomb][3]
+    ![image](./media/worksmobile-tutorial/a_new_app.png)
 
-1. A Keresés mezőbe írja be a **sor WORKS**, jelölje be **sor WORKS** eredmény panelen kattintson a **hozzáadása** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **sor WORKS**, jelölje be **sor WORKS** eredmény panelen kattintson a **hozzáadása** gombra kattintva vegye fel az alkalmazást.
 
-    ![SOR működik a találatok listájában](./media/worksmobile-tutorial/tutorial_lineworks_addfromgallery.png)
+     ![image](./media/worksmobile-tutorial/tutorial_lineworks_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
@@ -82,15 +81,13 @@ Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentk
 
 Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó sor Works mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó a sor WORKS hivatkozás kapcsolata kell létrehozni.
 
-SOR működik, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
-
 SOR működik az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Hozzon létre egy sor WORKS tesztfelhasználót](#create-a-line-works-test-user)**  – egy megfelelője a Britta Simon sor működik, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[Hozzon létre egy sor WORKS tesztfelhasználót](#create-a-line-works-test-user)**  – egy megfelelője a Britta Simon sor működik, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -98,132 +95,109 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 **Szeretné konfigurálni az Azure AD egyszeri bejelentkezés sor működik, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure Portalon az a **sor működik** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), a a **sor WORKS** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
+    ![image](./media/worksmobile-tutorial/b1_b2_select_sso.png)
 
-1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
-    ![Egyszeri bejelentkezési párbeszédpanel](./media/worksmobile-tutorial/tutorial_lineworks_samlbase.png)
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen kattintson **kiválasztása** a **SAML** módot az egyszeri bejelentkezés engedélyezése.
 
-1. Az a **sor WORKS tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
+    ![image](./media/worksmobile-tutorial/b1_b2_saml_sso.png)
 
-    ![SOR WORKS tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/worksmobile-tutorial/tutorial_lineworks_url.png)
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://auth.worksmobile.com/d/login/{domain}/?userId={ID@domain}`
+    ![image](./media/worksmobile-tutorial/b1-domains_and_urlsedit.png)
 
-    b. Az a **azonosító** szövegmezőbe írja be az értéket: `worksmobile.com`
+4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    > [!NOTE] 
-    > Az érték nem valódi. Ez az érték frissítse a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [sor WORKS ügyfél-támogatási csapatának](mailto:dl_ssoinfo@worksmobile.com) lekérni ezt az értéket.
+    a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím: `https://auth.worksmobile.com/d/login/<domain>/?userId=<ID@domain>`
 
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson **Certificate(Raw)** , és mentse a tanúsítványfájlt, a számítógépen.
+    b. Az a **azonosító** szövegmezőbe írja be egy URL-címe: `worksmobile.com`
 
-    ![A tanúsítvány letöltési hivatkozás](./media/worksmobile-tutorial/tutorial_lineworks_certificate.png) 
+    ![image](./media/worksmobile-tutorial/tutorial_lineworks_url.png)
 
-1. Kattintson a **mentése** gombra.
+5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **(Raw)tanúsítvány** , és mentse a számítógépre.
 
-    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/worksmobile-tutorial/tutorial_general_400.png)
+    ![image](./media/worksmobile-tutorial/tutorial_lineworks_certficate.png)
 
-1. Az a **sor WORKS konfigurációs** területén kattintson **konfigurálása sor WORKS** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+6. Az a **állítsa be a sor WORKS** területén másolja a megfelelő URL-címet a követelmény alapján.
 
-    ![VONAL WORKS konfigurációja](./media/worksmobile-tutorial/tutorial_lineworks_configure.png) 
+    a. Bejelentkezési URL
 
-1. Az egyszeri bejelentkezés konfigurálása **sor WORKS** oldalon kell küldenie a letöltött **tanúsítvány-fájl, kijelentkezéses URL-címe, SAML Entitásazonosító és SAML egyszeri bejelentkezési szolgáltatás URL-cím** való [sor WORKS támogatja csapat](mailto:dl_ssoinfo@worksmobile.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+    b. Azure AD-azonosító
 
-> [!TIP]
-> Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Azure ad-ben embedded – dokumentáció]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    c. Kijelentkezési URL
+
+    ![image](./media/worksmobile-tutorial/d1_samlsonfigure.png) 
+
+7. Az egyszeri bejelentkezés konfigurálása **sor WORKS** oldalán, kérjük, olvassa el a [sor WORKS SSO dokumentumok](https://developers.worksmobile.com/jp/document/1001080101) és a egy sor WORKS beállítás konfigurálása.
+
+> [!NOTE]
+> A letöltött tanúsítvány-fájl .cert átalakítása .pem kell
+
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+    ![image](./media/worksmobile-tutorial/d_users_and_groups.png)
 
-1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure Active Directory gomb](./media/worksmobile-tutorial/create_aaduser_01.png)
+    ![image](./media/worksmobile-tutorial/d_adduser.png)
 
-1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/worksmobile-tutorial/create_aaduser_02.png)
-
-1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
-
-    ![A Hozzáadás gombra.](./media/worksmobile-tutorial/create_aaduser_03.png)
-
-1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
-
-    ![A felhasználó párbeszédpanel](./media/worksmobile-tutorial/create_aaduser_04.png)
+    ![image](./media/worksmobile-tutorial/d_userproperties.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
+  
+    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    Például: BrittaSimon@contoso.com
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
+    c. Válassza ki **tulajdonságok**, jelölje be a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
-    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
-
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** gombra.
  
 ### <a name="create-a-line-works-test-user"></a>SOR WORKS tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy sor Works Britta Simon nevű felhasználó létrehozásához. Együttműködve [sor WORKS támogatási csoportjának](mailto:dl_ssoinfo@worksmobile.com) a felhasználók hozzáadása a sor WORKS platformon.
+Ebben a szakaszban egy sor Works Britta Simon nevű felhasználó létrehozásához. Hozzáférés [sor WORKS rendszergazda lap](https://admin.worksmobile.com) , és adja hozzá a felhasználókat a sor WORKS platformon.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban engedélyezze Britta Simon a hozzáférés biztosításával sor Works Azure egyszeri bejelentkezés használatára.
 
-![A felhasználói szerepkör hozzárendelése][200] 
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**válassza **minden alkalmazás**.
 
-**Britta Simon rendel WORKS sor, hajtsa végre az alábbi lépéseket:**
+    ![image](./media/worksmobile-tutorial/d_all_applications.png)
 
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
+2. Az alkalmazások listájában jelölje ki a **sor WORKS**.
 
-    ![Felhasználó hozzárendelése][201] 
+    ![image](./media/worksmobile-tutorial/tutorial_lineworks_app.png)
 
-1. Az alkalmazások listájában jelölje ki a **sor WORKS**.
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
-    ![A sor WORKS hivatkozásra az alkalmazások listáját](./media/worksmobile-tutorial/tutorial_lineworks_app.png)  
+    ![image](./media/worksmobile-tutorial/d_leftpaneusers.png)
 
-1. A bal oldali menüben kattintson **felhasználók és csoportok**.
+4. Válassza ki a **Hozzáadás** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A "Felhasználók és csoportok" hivatkozásra][202]
+    ![image](./media/worksmobile-tutorial/d_assign_user.png)
 
-1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-    ![A hozzárendelés hozzáadása panel][203]
-
-1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
-
-1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
-
-1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+5. Az a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelése** gombra.
     
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
 Ha a hozzáférési panelen a sor WORKS csempére kattint, meg kell lekérése automatikusan bejelentkezett a sor WORKS alkalmazásba.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-<!--Image references-->
-
-[1]: ./media/lineworks-tutorial/tutorial_general_01.png
-[2]: ./media/lineworks-tutorial/tutorial_general_02.png
-[3]: ./media/lineworks-tutorial/tutorial_general_03.png
-[4]: ./media/lineworks-tutorial/tutorial_general_04.png
-
-[100]: ./media/lineworks-tutorial/tutorial_general_100.png
-
-[200]: ./media/lineworks-tutorial/tutorial_general_200.png
-[201]: ./media/lineworks-tutorial/tutorial_general_201.png
-[202]: ./media/lineworks-tutorial/tutorial_general_202.png
-[203]: ./media/lineworks-tutorial/tutorial_general_203.png
 

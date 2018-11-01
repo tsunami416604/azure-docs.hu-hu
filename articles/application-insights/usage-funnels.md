@@ -14,12 +14,12 @@ ms.date: 07/17/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 2233fc1068891ec63dacaf5871eef7957c3ac7dc
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 3d4d6ba7e185b1cc5fdcee1633a11e579d8194e8
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139873"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413961"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Fedezze fel, ügyfeleink miként használják alkalmazását az Application Insights tölcsérek
 
@@ -40,7 +40,7 @@ Az alábbiakban a lépéseket, a tölcsér.
 A következő képernyőképen látható egy példa, hogy milyen típusú adatokat a tölcsérek eszközt hoz létre. A Fabrikam tulajdonosok láthatja, hogy az utolsó 90 napban, ügyfeleiknek a kezdőlap, létrehozott egy felhasználói jegy látogató 54.3 százaléka. Akkor is megtekintheti, hogy ügyfelei 2,700 származik az indexbe a kezdőlapon. Ez jelentheti a hibát egy frissítési probléma.
 
 
-![Képernyőkép a tölcsérek eszköz adatokkal](./media/app-insights-understand-usage-patterns/funnel1.png)
+![Képernyőkép a tölcsérek eszköz adatokkal](media/usage-funnels/funnel1.png)
 
 ### <a name="funnels-features"></a>Tölcsérek funkciók
 Az előző képernyőképen látható öt kiemelt területet foglal magában. Ezek a tölcsérek funkcióját. Az alábbi lista további ismerteti a képernyőképen látható minden egyes megfelelő terület:

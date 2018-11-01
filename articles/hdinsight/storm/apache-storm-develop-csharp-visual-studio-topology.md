@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 371f8c1d69482381e3a400da6010825bc3ac7c1a
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 2765021d80701826644f095d22c650160001e907
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697781"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414896"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Az Apache Storm C#-topológiák fejlesztése a Data Lake tools for Visual Studio használatával
 
@@ -57,7 +57,7 @@ A Data Lake tools for Visual Studio telepítése, kövesse a lépéseket a [Isme
 
 A Visual Studióból Storm-topológia elküldésekor SCP.NET állít elő, a topológia és a függőségeket tartalmazó zip-fájlt. Java ezek a zip-fájlok létrehozására szolgál, mert használja, amely több Linux-alapú fürtök kompatibilis formátumban.
 
-1. Telepítse a Java fejlesztői készlet (JDK) 7 vagy annál újabb verzió a fejlesztési környezetet. Beszerezheti a az Oracle-JDK [Oracle](http://www.oracle.com/technetwork/java/javase/downloads/index.html). Is [más Java felosztások](http://openjdk.java.net/).
+1. Telepítse a Java fejlesztői készlet (JDK) 7 vagy annál újabb verzió a fejlesztési környezetet. Beszerezheti a az Oracle-JDK [Oracle](https://aka.ms/azure-jdks). Is [más Java felosztások](http://openjdk.java.net/).
 
 2. A `JAVA_HOME` környezeti változó Java tartalmazó könyvtárra kell mutatnia.
 
@@ -70,30 +70,30 @@ using System;
 using System.IO;
 namespace ConsoleApplication2
 {
-   class Program
-   {
-       static void Main(string[] args)
-       {
-           string javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
-           if (!string.IsNullOrEmpty(javaHome))
-           {
-               string jarExe = Path.Combine(javaHome + @"\bin", "jar.exe");
-               if (File.Exists(jarExe))
-               {
-                   Console.WriteLine("JAVA Is Installed properly");
-                    return;
-               }
-               else
-               {
-                   Console.WriteLine("A valid JAVA JDK is not found. Looks like JRE is installed instead of JDK.");
-               }
-           }
-           else
-           {
-             Console.WriteLine("A valid JAVA JDK is not found. JAVA_HOME environment variable is not set.");
-           }
-       }  
-   }
+   class Program
+   {
+       static void Main(string[] args)
+       {
+           string javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
+           if (!string.IsNullOrEmpty(javaHome))
+           {
+               string jarExe = Path.Combine(javaHome + @"\bin", "jar.exe");
+               if (File.Exists(jarExe))
+               {
+                   Console.WriteLine("JAVA Is Installed properly");
+                    return;
+               }
+               else
+               {
+                   Console.WriteLine("A valid JAVA JDK is not found. Looks like JRE is installed instead of JDK.");
+               }
+           }
+           else
+           {
+             Console.WriteLine("A valid JAVA JDK is not found. JAVA_HOME environment variable is not set.");
+           }
+       }  
+   }
 }
 ```
 
@@ -451,11 +451,11 @@ A Data Lake tools for Visual Studio használatával hozzon létre hibrid topoló
 
 Példa egy hibrid topológia, hozzon létre egy projektet, és válassza ki **Storm hibrid minta**. Ez a minta-típus a következő fogalmak mutat be:
 
-* **Java spout** és **C# bolt**: a megadott **HybridTopology_javaSpout_csharpBolt**.
+* **Java spout** és  **C# bolt**: a megadott **HybridTopology_javaSpout_csharpBolt**.
 
     * Egy tranzakciós verzió meghatározott **HybridTopologyTx_javaSpout_csharpBolt**.
 
-* **C# spout** és **Java bolt**: a megadott **HybridTopology_csharpSpout_javaBolt**.
+* **C#spout** és **Java bolt**: a megadott **HybridTopology_csharpSpout_javaBolt**.
 
     * Egy tranzakciós verzió meghatározott **HybridTopologyTx_csharpSpout_javaBolt**.
 

@@ -1,5 +1,5 @@
 ---
-title: Az Azure Graph-integráció az Azure Stack ellenőrzése
+title: Ellenőrizze az Azure Stack Azure Graph-integráció
 description: Az Azure Stack-készültségi ellenőrző segítségével ellenőrizze a graph-integráció az Azure Stackhez.
 services: azure-stack
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: patricka
 ms.reviewer: jerskine
-ms.openlocfilehash: e1c1ba0a065a20874bf51d7464cbcfdfa13a571d
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 43f30989fa09e711fc71941e7722dcd195212472
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49947261"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416231"
 ---
 # <a name="validate-graph-integration-for-azure-stack"></a>Ellenőrizze a graph-integráció az Azure Stackhez
 
-Az Azure Stack készültségi ellenőrző eszköz (AzsReadinessChecker) használatával, hogy az készen áll az Azure Stack graph-integráció. Data center integrálása megkezdése előtt, illetve az Azure Stack üzembe helyezés előtt ellenőriznie kell a graph-integráció.
+Az Azure Stack készültségi ellenőrző eszköz (AzsReadinessChecker) használatával, hogy az készen áll az Azure Stack graph-integráció. Adatközpont integrációja megkezdése előtt, illetve az Azure Stack üzembe helyezés előtt érvényesíteni a graph-integráció.
 
 A készenléti ellenőrző ellenőrzi:
 
@@ -33,11 +33,11 @@ A készenléti ellenőrző ellenőrzi:
 * A KDC feloldható és felerősítéséhez.
 * Szükséges hálózati kapcsolat van.
 
-Azure Stack data center integrációval kapcsolatos további információkért lásd: [Azure Stack adatközpont integrációja - identitás](azure-stack-integrate-identity.md)
+Azure Stack adatközpont-integrációval kapcsolatos további információkért lásd: [Azure Stack adatközpont integrációja - identitás](azure-stack-integrate-identity.md).
 
 ## <a name="get-the-readiness-checker-tool"></a>A készenléti-ellenőrző eszköz beolvasása
 
-Az Azure Stack készültségi ellenőrző eszköz (AzsReadinessChecker) legújabb verziójának letöltése a [PSGallery](https://aka.ms/AzsReadinessChecker).
+Az Azure Stack készültségi ellenőrző eszköz (AzsReadinessChecker) legújabb verziójának letöltése a [PowerShell-galériából](https://aka.ms/AzsReadinessChecker).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -46,31 +46,31 @@ A következő előfeltételek vonatkoznak a helyen kell lennie.
 **A számítógép, amelyen az eszköz fut:**
 
 * Windows 10-es vagy Windows Server 2016, a tartományi kapcsolat.
-* A PowerShell 5.1-es vagy újabb. A verzió ellenőrzéséhez futtassa az alábbi PowerShell-parancsot, és tekintse át a *fő* verzió és *kisebb* verziók:  
+* A PowerShell 5.1-es vagy újabb. A verzió ellenőrzéséhez futtassa a következő PowerShell-parancsot, és tekintse át a *fő* verzió és *kisebb* verziók:  
    > `$PSVersionTable.PSVersion`
-* Az Active Directory PowerShell-modul
-* A legújabb verzióját a [a Microsoft Azure Stack készültségi ellenőrző](https://aka.ms/AzsReadinessChecker) eszköz
+* Az Active Directory PowerShell-modul.
+* Legújabb verzióját a [a Microsoft Azure Stack készültségi ellenőrző](https://aka.ms/AzsReadinessChecker) eszközt.
 
 **Az Active Directory-környezetet:**
 
-* A felhasználónevet és jelszót a meglévő Active Directory graph szolgáltatása esetében egy olyan fiók azonosítása
-* Az Active Directory-erdő gyökerének teljes tartománynév azonosítása
+* Azonosítsa a felhasználónevet és jelszót egy olyan fiók, a graph szolgáltatás a meglévő Active Directory-példányban.
+* Azonosítsa az Active Directory-erdő gyökerének teljes Tartománynevét.
 
-## <a name="validate-graph"></a>Graph ellenőrzése
+## <a name="validate-the-graph-service"></a>A graph szolgáltatás ellenőrzése
 
-1. A számítógépen, amely megfelel az előfeltételeknek nyisson meg egy rendszergazdai PowerShell-parancssort, és futtassa a következő parancsot a AzsReadinessChecker telepítéséhez.
+1. A számítógépen, amely megfelel az előfeltételeknek nyisson meg egy rendszergazdai PowerShell-parancssort, és futtassa a következő parancsot a AzsReadinessChecker telepítéséhez:
 
      `Install-Module Microsoft.AzureStack.ReadinessChecker -Force`
 
-1. A PowerShell parancssorában futtassa a következőt beállítása *$graphCredential* változót a gráfadatbázis-fiók. Cserélje le `contoso\graphservice` a fiók használatakor a `domain\username` formátumban.
+1. A PowerShell használatával futtassa az alábbi parancsot a *$graphCredential* változót a gráfadatbázis-fiók. Cserélje le `contoso\graphservice` használatával a fiókjához a `domain\username` formátumban.
 
     `$graphCredential = Get-Credential contoso\graphservice -Message "Enter Credentials for the Graph Service Account"`
 
-1. A PowerShell használatával futtassa a következő érvényesítési gráf elindításához. Adja meg az értékét **- ForestFQDN** az erdő legfelső szintű FQDN-ként:
+1. A PowerShell használatával a következő parancsot a graph szolgáltatás ellenőrzés indításához. Adja meg az értékét **- ForestFQDN** az erdő legfelső szintű FQDN-ként.
 
      `Invoke-AzsGraphValidation -ForestFQDN contoso.com -Credential $graphCredential`
 
-1. Az eszköz futtatása után tekintse át a kimenetet. Győződjön meg róla, az állapot OK: a graph-integrációs követelményeinek. Sikeres ellenőrzés az alábbihoz hasonlóan jelenik meg:
+1. Az eszköz futtatása után tekintse át a kimenetet. Győződjön meg arról, hogy az állapot rendben grafikon integrációs követelményeinek. Egy sikeres ellenőrzése az alábbi példához hasonló:
 
     ```
     Testing Graph Integration (v1.0)
@@ -94,24 +94,24 @@ A következő előfeltételek vonatkoznak a helyen kell lennie.
     Invoke-AzsGraphValidation Completed
     ```
 
-Éles környezetben operátorok munkaállomásról a hálózati kapcsolat tesztelése nem tekinthető teljes mértékben az Azure Stack számára elérhető kapcsolatok jelezhetnek. Az Azure Stack-blokk nyilvános VIP-hálózat lesz szüksége a kapcsolatot az LDAP-forgalom identitásintegráció végrehajtásához.
+Éles környezetben az operátor munkaállomás a hálózati kapcsolat tesztelése nem teljes mértékben az Azure Stack számára elérhető kapcsolatok jelezhetnek. Az Azure Stack-blokk nyilvános VIP-hálózat lesz szüksége a kapcsolatot az LDAP-forgalom identitásintegráció végrehajtásához.
 
 ## <a name="report-and-log-file"></a>A jelentés és-naplófájl
 
-Minden egyes alkalommal érvényesítési fut, az eredmények naplózza **AzsReadinessChecker.log** és **AzsReadinessCheckerReport.json**. Ezek a fájlok helyét jeleníti meg az ellenőrzés eredményét a PowerShellben.
+Minden egyes alkalommal érvényesítési fut, az eredmények naplózza **AzsReadinessChecker.log** és **AzsReadinessCheckerReport.json**. Ezek a fájlok helyét jelenik meg az ellenőrzés eredményét a PowerShellben.
 
 Az érvényesítés fájlok segítségével megoszthatja állapot érvényesítési problémák vizsgálatához vagy az Azure Stack üzembe helyezése előtt. Mindkét fájlt megmarad, egyes további ellenőrzés eredményeit. A jelentés tartalmazza a telepítési csapat megerősítés az identitás-konfiguráció. A naplófájl segíthet a telepítés vagy a támogatási csapat érvényesítési problémák kivizsgálásában.
 
-Alapértelmezés szerint mindkét fájlt írt `C:\Users\<username>\AppData\Local\Temp\AzsReadinessChecker\`
+Alapértelmezés szerint mindkét fájlt írt `C:\Users\<username>\AppData\Local\Temp\AzsReadinessChecker\`.
 
 Használat:
 
-* **-OutputPath** *elérési út* végén található egy másik jelentés helyét adja meg a futtatási parancssori paraméter.
-* **-CleanReport** törölje a futtatási parancs végén paraméter *AzsReadinessCheckerReport.json* előző jelentés információk. További információkért lásd: [Azure Stack érvényesítési jelentés](azure-stack-validation-report.md).
+* **-OutputPath**: A *elérési út* paraméter adja meg egy másik jelentés helyét a futtatási parancs végén.
+* **-CleanReport**: A paraméter, törölje a futtatási parancs végén *AzsReadinessCheckerReport.json* előző jelentés információk. További információkért lásd: [Azure Stack érvényesítési jelentés](azure-stack-validation-report.md).
 
 ## <a name="validation-failures"></a>Érvényesítési hibák
 
-Ha egy ellenőrzés nem sikerül, a hibával kapcsolatos részleteket a PowerShell-ablakban jeleníti meg. Az eszköz is naplózza az adatokat a *AzsGraphIntegration.log*.
+Ha egy ellenőrzés nem sikerül, a hiba részleteit a PowerShell-ablakban jelennek meg. Az eszköz is naplózza az adatokat *AzsGraphIntegration.log*.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -4,8 +4,6 @@ description: Ez a cikk bemutatja a Standard Load Balancer konfigurálása a load
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jpconnock
-tags: azure-resource-manager
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: a6d442452fe5ffc61648b3c004c03f1756f8f57e
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 0759b6a8e3deb9bc1d04e41598e4eef9304ecd83
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160655"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416409"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>Terheléselosztás és a kimenő szabályok konfigurálása az Azure CLI-vel Standard Load Balancer
 
-A rövid útmutató azt ismerteti, hogyan konfigurálja a kimenő szabályok a Standard Load Balancer az Azure CLI használatával.  
+Ez a rövid útmutató bemutatja, hogyan kimenő szabályok konfigurálása a Standard Load Balancer az Azure CLI használatával.  
 
 Amikor elkészült, a terheléselosztó erőforrás tartalmaz két előterek és szabály tartozik: egy a bejövő és a egy másik kimenő.  Minden egyes előtérbeli nyilvános IP-cím és a egy másik nyilvános IP-cím a bejövő és kimenő forgatókönyv használ vonatkozó hivatkozás van.   A terheléselosztási szabály csak a bejövő terheléselosztást biztosít, és a kimenő szabály szabályozza a kimenő NAT a virtuális Géphez megadott.
 
@@ -63,7 +61,7 @@ A webalkalmazás internetes eléréséhez a terheléselosztónak nyilvános IP-c
 
 ## <a name="create-outbound-public-ip-address"></a>Kimenő nyilvános IP-cím létrehozása 
 
-Hozzon létre egy szabványos IP-címet a terheléselosztó előtérbeli kimenő konfiguráció [az network public-ip létrehozása](https://docs.microsoft.com/cli/azure/network/public-ip#create) nevű *mypublicipoutbound* a *myresourcegroupoutbound*.
+Hozzon létre egy szabványos IP-címet a terheléselosztó előtérbeli kimenő konfiguráció használatával [az network public-ip létrehozása](https://docs.microsoft.com/cli/azure/network/public-ip#create).
 
 ```azurecli-interactive
   az network public-ip create --resource-group myresourcegroupoutbound --name mypublicipoutbound --sku standard
@@ -81,7 +79,7 @@ Ez a szakasz részletesen ismerteti a terheléselosztó következő összetevői
 
 ### <a name="create-load-balancer"></a>Load Balancer létrehozása
 
-A bejövő IP cím használatával hozzon létre egy terheléselosztó [az network lb létrehozása](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) nevű *lb* , amely tartalmaz egy bejövő előtérbeli IP-konfiguráció nevű *myfrontendinbound*, nevű háttérkészlet *bepool* társított nyilvános IP-cím *mypublicipinbound* az előző lépésben létrehozott.
+A bejövő IP cím használatával hozzon létre egy terheléselosztó [az network lb létrehozása](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) nevű *lb* , amely tartalmaz egy bejövő előtérbeli IP-konfigurációt és a egy háttérkészlet társított nyilvános IP-cím *mypublicipinbound* az előző lépésben létrehozott.
 
 ```azurecli-interactive
   az network lb create \

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Resource Manager sablon paraméter szakaszában |} Microsoft Docs
-description: Ismerteti a Paraméterek szakaszban az Azure Resource Manager-sablonok deklaratív JSON-szintaxis használatával.
+title: Az Azure Resource Manager-sablon paraméterek szakaszához |} A Microsoft Docs
+description: Az Azure Resource Manager-sablonok deklaratív JSON-szintaxist használva a paraméterek szakasza ismerteti.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,23 +11,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/18/2018
+ms.date: 10/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6d09a057d9b8a02c7f8313161e64aa3a42eb6db2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 83ba1b94413990c0eb8dff42c49d46456a658d5a
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604335"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417769"
 ---
 # <a name="parameters-section-of-azure-resource-manager-templates"></a>Paraméterek szakaszban az Azure Resource Manager-sablonok
-A sablon a Paraméterek szakaszban adja meg az erőforrások telepítése során is bemeneti értékeket. A paraméterértékek lehetővé teszik a központi telepítés testreszabása egy adott környezetben (például a fejlesztői, tesztelési és éles) is lefednek értékek megadásával. A sablon a paraméterek megadása nem szükséges, de a paraméterek nélkül a sablon mindig központilag ugyanazon a nevét, helyét és tulajdonságok ugyanazokat az erőforrásokat.
+A sablon a Paraméterek szakaszban megadhatja az erőforrások üzembe helyezésekor mely értékeket kell megadni. Ezek a paraméterértékek szabhatja testre az üzembe helyezés értékek, amelyek azáltal, hogy egy adott környezetben (például fejlesztési, tesztelési és éles környezetben). Nem kell adnia a sablonban szereplő paraméterekkel, de paraméterek nélkül a sablon mindig telepít az azonos nevek, helyek és tulajdonságok ugyanazokhoz az erőforrásokhoz.
 
-Azonban legfeljebb 255 paramétereket a sablonban. A paraméterek számát csökkentheti objektumokat, amelyek több tulajdonság használatával, a cikkben ismertetett módon.
+Most már legfeljebb 256 paramétereket a sablonban. A paraméterek számát, csökkentheti a több tulajdonságot tartalmazó objektumok használatával, ahogyan az ebben a cikkben.
 
-## <a name="define-and-use-a-parameter"></a>Adja meg, és egy paraméterrel
+## <a name="define-and-use-a-parameter"></a>Határozza meg, és a egy paraméterrel
 
-Az alábbi példában egy egyszerű paraméterek definícióját. A paraméter nevét adja meg, és meghatározza, hogy egy karakterláncértéket vesz igénybe. A paraméter csak a való használat jelentéssel bírnak értékeket fogad el. Ha nem ad meg értéket központi telepítés során megadott alapértelmezett értéket határoz meg. Végezetül a paraméter használata leírását tartalmazza. 
+Az alábbi példa bemutatja egy egyszerű paraméterdefinícióhoz. A paraméter nevét adja meg, és meghatározza, hogy egy karakterlánc értéket vesz igénybe. A paraméter csak fogad értékeket, amelyek használat bírnak. Azt adja meg az alapértelmezett értéket, amikor nem érték van megadva üzembe helyezés során. Végül a paraméter használatakor leírását tartalmazza. 
 
 ```json
 "parameters": {
@@ -48,7 +48,7 @@ Az alábbi példában egy egyszerű paraméterek definícióját. A paraméter n
 }
 ```
 
-A sablon hivatkozik a következő szintaxissal paraméter értékét:
+A sablon a következő szintaxissal a paraméter értékére hivatkozik:
 
 ```json
 "resources": [
@@ -64,7 +64,7 @@ A sablon hivatkozik a következő szintaxissal paraméter értékét:
 
 ## <a name="available-properties"></a>Rendelkezésre álló tulajdonságok
 
-Az előző példában bemutatta, csak az egyes tulajdonságok a paraméter szakaszban használható. A rendelkezésre álló tulajdonságok a következők:
+Az előző példa bemutatta, csak az egyes tulajdonságok segítségével használhatja a paraméterek szakaszához. A rendelkezésre álló tulajdonságok a következők:
 
 ```json
 "parameters": {
@@ -85,19 +85,19 @@ Az előző példában bemutatta, csak az egyes tulajdonságok a paraméter szaka
 
 | Elem neve | Szükséges | Leírás |
 |:--- |:--- |:--- |
-| parameterName |Igen |A paraméter neve. Egy érvényes JavaScript-azonosítónak kell lennie. |
+| parameterName |Igen |A paraméter neve. Érvényes JavaScript-azonosítónak kell lennie. |
 | type |Igen |A paraméter értékének típusa. Az engedélyezett típusokkal és az értékek **karakterlánc**, **securestring**, **int**, **bool**, **objektum**, **secureObject**, és **tömb**. |
-| DefaultValue érték |Nem |A paraméternek, ha nincs érték megadva, a paraméter alapértelmezett értéke. |
-| Storageaccount_accounttype |Nem |Győződjön meg arról, hogy a megfelelő érték van megadva a paraméter megengedett értékei tömbje. |
-| A MinValue |Nem |A minimális int típusú paraméterekhez, ez az érték értéke között lehet. |
-| MaxValue |Nem |A maximális int típusú paraméterekhez, ez az érték értéke között lehet. |
-| a minLength |Nem |A minimális string, securestring és array típusú paraméterekhez, ez az érték hossza határokat is beleértve. |
-| maxLength |Nem |A string, securestring és array típusú paraméterekhez, ez az érték hossza legfeljebb határokat is beleértve. |
-| leírás |Nem |A paraméter, akkor jelenik meg, a felhasználók számára a portálon keresztül leírása. |
+| DefaultValue érték |Nem |A paramétert, ha a nem érték van megadva a paraméter alapértelmezett értéke. |
+| allowedValues |Nem |Győződjön meg arról, hogy a megfelelő értéket adott-e, hogy a paraméter megengedett értékek tömbje. |
+| a minValue |Nem |Int típusú paraméterekhez minimális értéke, ez az érték, amely naptól. |
+| maxValue |Nem |A maximális int típusú paraméterekhez, ez az érték értéke is beleértve. |
+| a minLength |Nem |A minimális string, securestring és array típusú paraméterekhez, ez az érték hossza között lehet. |
+| maxLength |Nem |String, securestring és array típusú paraméterekhez maximális hosszát, ezt az értéket, amely naptól. |
+| leírás |Nem |A portálon keresztül a felhasználók számára megjelenő paraméter leírása. |
 
-## <a name="template-functions-with-parameters"></a>Sablon függvényeket paraméterekkel
+## <a name="template-functions-with-parameters"></a>A paraméterekkel sablonfüggvények
 
-Ha az alapértelmezett értéket ad meg az egyik paraméter, legtöbb sablonfüggvényei is használhatja. Egy másik paraméter értéke hozhat létre egy alapértelmezett érték. A következő sablon bemutatja, hogy az alapértelmezett érték a funkciók:
+Egy paraméter alapértelmezett értékének megadása esetén a legtöbb sablonfüggvények is használhatja. Egy másik paraméter értékének használatával hozhat létre egy alapértelmezett értéket. A következő sablon az alapértelmezett érték a functions használatát mutatja be:
 
 ```json
 "parameters": {
@@ -118,13 +118,13 @@ Ha az alapértelmezett értéket ad meg az egyik paraméter, legtöbb sablonfüg
 }
 ```
 
-Nem használhatja a `reference` függvény a Paraméterek szakaszban. Paraméterek kiértékelése központi telepítés előtt úgy a `reference` függvény nem tudja megszerezni egy erőforrást a futásidejű állapot. 
+Nem használhatja a `reference` függvény a Paraméterek szakaszban. Paraméterek értékeli ki a telepítés előtt úgy a `reference` függvény nem lehet lekérni egy erőforrást futási állapotát. 
 
-## <a name="objects-as-parameters"></a>Paraméterek és
+## <a name="objects-as-parameters"></a>Objektumok paraméterek
 
-Kapcsolódó érték rendezése úgy, hogy azokat objektumként könnyebben lehet. Ezt a módszert használja a sablon a paraméterek számát is csökkenti.
+Kapcsolódó értékek rendszerezheti azokat objektumként átadásával könnyebben lehet. Ez a megközelítés a paraméterek számát, a sablonban is csökkenti.
 
-A paraméter a sablonban megadott, és adjon meg egyetlen érték helyett egy JSON-objektum üzembe helyezése során. 
+Adja meg a paramétert a sablont, és adja meg a JSON-objektum egyetlen érték helyett üzembe helyezés során. 
 
 ```json
 "parameters": {
@@ -154,7 +154,7 @@ A paraméter a sablonban megadott, és adjon meg egyetlen érték helyett egy JS
 },
 ```
 
-Ezt követően hivatkozik a altulajdonságokat paraméter a pont operátor használatával.
+Ezután hivatkozhat a altulajdonságokat paraméter a pont operátor használatával.
 
 ```json
 "resources": [
@@ -189,17 +189,17 @@ Ezt követően hivatkozik a altulajdonságokat paraméter a pont operátor haszn
 ```
 
 ## <a name="recommendations"></a>Javaslatok
-Az alábbi információ segítségével esetleg megállapítható, paraméterek használata:
+Paraméterek való munka során hasznos lehet a következő információkat:
 
-* Minimalizálása érdekében a paraméterek használatával. Amikor csak lehetséges, használjon egy változó vagy konstansérték. Paraméterek csak ezek helyzetekben használhatja:
+* Minimalizálja a paraméterek használatát. Amikor csak lehetséges, használja a változó vagy konstans érték. Paraméterek használata csak az ilyen feladatokhoz szükséges:
    
-   * Környezet (SKU, méret, kapacitás) megfelelően változatait használni kívánt beállításokat.
-   * Erőforrás neve, amely könnyebbé teszi a beazonosítást szeretne megadni.
-   * (Például egy rendszergazda felhasználóneve) más feladatok elvégzéséhez gyakran használt értékek.
-   * A titkos kulcsokat (például a jelszavak).
-   * A szám vagy tömb erőforrástípus több példánya létrehozásakor használandó.
-* -És nagybetűhasználattal teve a paraméterek nevei.
-* A metaadatokban minden paraméter leírását adhatja meg:
+   * Környezet (Termékváltozat, méret, kapacitás) megfelelően változata használni kívánt beállításokat.
+   * Erőforrás neve, amely egyszerű azonosító szeretne megadni.
+   * Egyéb (például rendszergazdai felhasználójának neve) a feladatokat gyakran használt értékeket.
+   * A titkos kulcsokat (például jelszavakat).
+   * A szám vagy értékek tömbje az erőforrástípus több példány létrehozásakor használja.
+* Nagybetűs használata a paraméterek nevei.
+* Adja meg a metaadatokban minden paraméter leírása:
 
    ```json
    "parameters": {
@@ -212,7 +212,7 @@ Az alábbi információ segítségével esetleg megállapítható, paraméterek 
    }
    ```
 
-* Határozza meg (kivéve a jelszavak és SSH-kulcsok) paraméter alapértelmezett értékét. Alapértelmezett érték megadásával a paraméter ilyenkor opcionális üzembe helyezése során. Az alapértelmezett érték lehet üres karakterlánc. 
+* (Kivéve a jelszó és SSH-kulcsok) paraméterek alapértelmezett értékeinek meghatározása. Alapértelmezett érték megadásával a paraméter lesz választható központi telepítése során. Az alapértelmezett érték egy üres karakterlánc lehet. 
    
    ```json
    "parameters": {
@@ -226,7 +226,7 @@ Az alábbi információ segítségével esetleg megállapítható, paraméterek 
    }
    ```
 
-* Használjon **securestring** a jelszavak és a titkos kulcsok. A JSON-objektumból átadni a bizalmas adatokat, ha a **secureObject** típusa. Sablonparaméterek securestring vagy secureObject típusú erőforrások telepítése után nem lehet olvasni. 
+* Használat **securestring** jelszavak és a titkos kulcsok. Ha a bizalmas adatokat egy JSON-objektumot adja át, a **secureObject** típusa. Sablonparaméterek securestring vagy secureObject típusú erőforrás üzembe helyezés után nem lehet olvasni. 
    
    ```json
    "parameters": {
@@ -239,7 +239,7 @@ Az alábbi információ segítségével esetleg megállapítható, paraméterek 
    }
    ```
 
-* Egy paraméter segítségével adjon meg helyet, és a lehető legnagyobb mértékben paraméterérték megosztása erőforrásokat, amelyek valószínűleg ugyanazon a helyen. Ez a megközelítés minimálisra csökkenti a szám, ahányszor a felhasználó felkérést kap arra, hogy helyére vonatkozó információkat. Ha egy erőforrás típusa csak korlátozott számú helyeken támogatott, érdemes adjon meg egy érvényes helyet közvetlenül a sablonban, vagy adja hozzá egy másik hely paramétert. Amikor egy szervezet korlátozza a felhasználók számára engedélyezett régiók a **resourceGroup () .location** kifejezés megakadályozhatja, hogy a felhasználók nem tudnak a sablon telepítéséhez. Például egy felhasználó egy régióban hoz létre egy erőforráscsoportot. A második felhasználó erőforráscsoport kell telepíteni, de nem rendelkezik hozzáféréssel a régióban. 
+* Egy paraméter használatával adja meg a helyet, és megoszthatja a lehető legnagyobb mértékben paraméterérték erőforrások, amelyek ugyanazon a helyen valószínűleg. Ez a megközelítés minimálisra csökkenti a helyre vonatkozó adatokat adja meg a rendszer kéri a felhasználóktól számát. Ha egy erőforrás típusa támogatott helyek száma korlátozott, érdemes adjon meg egy érvényes helyet közvetlenül a sablonban, vagy egy másik hely paraméter hozzáadásához. Amikor egy szervezet korlátozza a felhasználók számára az engedélyezett régiók a **resourceGroup () .location** kifejezés megakadályozhatja a felhasználó helyezi üzembe a sablont. Például egy felhasználó egy régióban egy erőforráscsoportot hoz létre. Egy második felhasználó az adott erőforráscsoporton kell telepíteni, de nem rendelkezik hozzáféréssel ahhoz a régióhoz. 
    
    ```json
    "resources": [
@@ -253,21 +253,21 @@ Az alábbi információ segítségével esetleg megállapítható, paraméterek 
    ]
    ```
     
-* Kerülje a paraméter vagy változó erőforrástípus API-verzió számára. Erőforrás-tulajdonságok és értékek alapján verziószáma változhat. A kód szerkesztése az IntelliSense nem határozható meg, hogy a megfelelő sémát az API-verzió beállítása egy paraméter vagy változó. Ehelyett a sablonban merevlemez-kódot az API-verzió.
-* Ne adjon meg a paraméter neve, amely megfelel a telepítési parancsot kell megadni a paraméter a sablonban. Erőforrás-kezelő a utótag hozzáadásával oldja fel a névütközés **FromTemplate** a sablon paraméterhez. Például, ha nevű paraméter **ResourceGroupName** a sablonban ütközik a **ResourceGroupName** paramétere a [új-AzureRmResourceGroupDeployment ](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) parancsmag. A telepítés során kéri adjon meg egy értéket a **ResourceGroupNameFromTemplate**.
+* Kerülje a következő paraméternek vagy változónak az API-verzió, az erőforrástípushoz. Erőforrás-tulajdonságok és értékek verziószám alapján változhat. A Kódszerkesztő az IntelliSense nem állapítható meg a megfelelő sémát, ha egy paraméter vagy változó értéke az API-verziót. Ehelyett a sablonban rögzítse szoftveresen az API-verzió.
+* Ne adjon meg a paraméter neve, amely megfelel a telepítési parancs egy paramétert a sablonban. Resource Manager az elnevezési ütközés feloldása az utótag hozzáadásával **FromTemplate** sablon paraméteréhez. Például, ha nevű paraméter adja meg az **ResourceGroupName** a sablonban ütközik a **ResourceGroupName** paramétert a [New-AzureRmResourceGroupDeployment ](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) parancsmagot. Üzembe helyezés során a kéri adjon meg egy értéket a **ResourceGroupNameFromTemplate**.
 
 ## <a name="example-templates"></a>Példa sablonok
 
-A példa sablonok bemutatják, bizonyos esetekben a paraméterek használatával. Tesztelje a különböző alkalmazási helyzetek kezelésének paraméterek való telepítéséhez.
+A példa sablonok bemutatják, bizonyos forgatókönyvek paraméterek használatával. Tesztelje a paraméterek kezelésének módját a különböző helyzetekben való telepítéséhez.
 
 |Sablon  |Leírás  |
 |---------|---------|
-|[az alapértelmezett értékek functions paraméterek](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Bemutatja, hogyan használja a sablon funkciók paramétereinek alapértelmezett értékei meghatározásakor. A sablon nem kell telepítenie minden olyan erőforrásnál. A paraméterértékek hoz létre, és ezeket az értékeket adja vissza. |
-|[A paraméter objektum](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Azt mutatja be egy objektumot az egyik paraméter használatával. A sablon nem kell telepítenie minden olyan erőforrásnál. A paraméterértékek hoz létre, és ezeket az értékeket adja vissza. |
+|[a functions alapértelmezett értékeket a paraméterek](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Bemutatja, hogyan használható a sablonokban használható függvények paramétereinek alapértelmezett értékei meghatározásakor. A sablon nem üzembe erőforrásokat. Ez hoz létre a paraméterértékeket, és ezeket az értékeket ad vissza. |
+|[A paraméter objektum](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Azt mutatja be, a paraméter egy objektum használatával. A sablon nem üzembe erőforrásokat. Ez hoz létre a paraméterértékeket, és ezeket az értékeket ad vissza. |
 
 ## <a name="next-steps"></a>További lépések
 
 * A különböző megoldástípusokhoz használható teljes sablonok megtekintéséhez lásd: [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/).
-* A telepítés során az értékek a bemeneti tudnivalókat [Azure Resource Manager-sablon az alkalmazás központi telepítését](resource-group-template-deploy.md). 
-* A sablonon belül használhatja a functions szolgáltatással kapcsolatos részletekért lásd: [Azure Resource Manager Sablonfüggvényei](resource-group-template-functions.md).
-* Olyan parameter objektumot használatával kapcsolatos információkért lásd: [objektum használata Azure Resource Manager-sablon egyik paraméterének](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+* Bemeneti paraméter értékét üzembe helyezés során, olvassa el a [alkalmazás üzembe helyezése Azure Resource Manager-sablonnal](resource-group-template-deploy.md). 
+* A sablonon belül használhatja függvényeivel kapcsolatos részletekért lásd: [Azure Resource Manager-Sablonfüggvények](resource-group-template-functions.md).
+* Egy paraméter objektum használatával kapcsolatos információkért lásd: [objektum használata paraméterként egy Azure Resource Manager-sablonban](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).

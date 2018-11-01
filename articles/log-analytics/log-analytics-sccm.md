@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 28ddfea0f4127f402b82388a10ee150b30a65736
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: dfa0a4b637153d6fa3cce5c9b402587950686341
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954232"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418075"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>A Configuration Manager csatlakoztatása a Log Analyticsbe
 A System Center Configuration Manager-környezet szinkronizálási eszköz gyűjtemény adatait az Azure Log Analyticshez csatlakozhat, és ezeket a gyűjteményeket, a Log Analytics és Azure Automation hivatkozhat.  
@@ -49,7 +49,7 @@ A következő eljárásban biztosítson a *közreműködői* szerepkör a Log An
 > A Log Analytics a Configuration Manager engedélyeket kell adnia. Ellenkező esetben hibaüzenet kap, a konfigurációs varázsló a Configuration Manager használata esetén.
 >
 
-1. Az Azure Portal bal felső sarkában kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+1. Az Azure Portal bal felső sarkában kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.<br><br> ![Azure Portal](media/log-analytics-sccm/azure-portal-01.png)<br><br>  
 2. A Log Analytics-munkaterületek listájában válassza ki a munkaterület módosításához.
 3. A bal oldali panelen válassza ki a **hozzáférés-vezérlés (IAM)**.
 4. A hozzáférés-vezérlés oldalon kattintson **Hozzáadás** és a **engedélyek hozzáadása** ablaktáblán jelenik meg.
@@ -101,7 +101,7 @@ Eszközgyűjtemények importálásához a hierarchia kezdeti konfigurálása ut�
 
 1. Az Azure Portal bal felső sarkában kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 2. A Log Analytics-munkaterületek listájában válassza ki a munkaterületet, a Configuration Manager regisztrálva van.  
-3. Válassza ki a **Speciális beállítások** elemet.<br><br> ![A Log Analytics speciális beállításai](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
+3. Válassza ki a **Speciális beállítások** elemet.<br><br> ![A Log Analytics speciális beállításai](media/log-analytics-sccm/log-analytics-advanced-settings-01.png)<br><br>  
 4. Válassza ki **számítógépcsoportok** majd **SCCM**.  
 5. Válassza ki **importálása a Configuration Manager-gyűjteménytagságok** majd **mentése**.  
    ![Számítógépcsoportok – SCCM lap](./media/log-analytics-sccm/sccm-computer-groups01.png)

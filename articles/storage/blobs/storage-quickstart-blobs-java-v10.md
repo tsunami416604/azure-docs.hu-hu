@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 10/19/2018
 ms.author: rogarana
-ms.openlocfilehash: c675dd17994abaaf6d0eed1934bec8f2220e7435
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: ea94a4e537a46ac8287e4454a2cfd10c59db590b
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955698"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416868"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>Rövid útmutató: Blobok feltöltése, letöltése és listázása a Java Storage SDK V10 használatával
 
@@ -24,7 +24,7 @@ A rövid útmutató azt ismerteti, hogyan használható az új Java Storage SDK 
 Telepítse és konfigurálja a következő alkalmazásokat:
 
 * A [Mavent](http://maven.apache.org/download.cgi) a parancssorból való használathoz, vagy más használni kívánt Java integrált fejlesztőkörnyezetet
-* [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [JDK](https://aka.ms/azure-jdks)
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 

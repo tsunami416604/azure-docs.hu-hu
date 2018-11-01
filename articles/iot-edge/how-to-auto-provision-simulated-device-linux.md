@@ -4,16 +4,16 @@ description: Linux rendszerű virtuális gép egy szimulált TPM-eszköz segíts
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/27/2018
+ms.date: 10/31/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2416d70e3c9d0f66ff755d8049e78e0275c89258
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 6d0d2adfb4a727ec93db6d44e6a3e8f923760b91
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232069"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739668"
 ---
 # <a name="create-and-provision-an-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>A Linux rendszerű virtuális gép virtuális TPM-mel az Edge-eszköz létrehozása és kiépítése
 
@@ -63,7 +63,7 @@ Ha hibába ütközik, az új virtuális kapcsoló létrehozása során, győződ
 
    1. **Adja meg a generáció**: válasszon **2. generációs**.
    2. **A hálózatkezelés konfigurálását**: állítsa **kapcsolat** a virtuális kapcsolóhoz, amely az előző szakaszban létrehozott. 
-   3. **Telepítési lehetőségek**: válasszon **operációs rendszer telepítése rendszerindító lemezkép-fájlból** és keresse meg a helyileg mentett lemezképfájllal.
+   3. **Telepítési beállítások**: válasszon **operációs rendszer telepítése rendszerindító lemezkép-fájlból** és keresse meg a helyileg mentett lemezképfájllal.
 
 Az új virtuális gép létrehozása egy nézet percig is eltarthat. 
 
@@ -180,7 +180,7 @@ Az alábbi lépések segítségével TPM hozzáférést. Azt is megteheti, vége
    A sikeres kimenet az alábbihoz hasonló:
 
    ```output
-   crw------- 1 root root 10, 224 Jun 28 22:34 /dev/tpm0
+   crw------- 1 root iotedge 10, 224 Jul 20 16:27 /dev/tpm0
    ```
 
 8. Nyissa meg az IoT Edge-futtatókörnyezet felülbírálja a fájlt. 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 708b80787337d549ebc5e66bca21e734620616ac
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: dde2983c57d0f3ec9c58537809f2d2d952b4a00e
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388297"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741946"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>A Microsoft Azure Storage Explorer kibocsátási megjegyzései
 
@@ -27,13 +27,110 @@ Ez a cikk az Azure Storage Explorer 1.4.3 kiadás kibocsátási megjegyzései, v
 
 [A Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) egy önálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 
+## <a name="version-150"></a>Verzió 1.5.0
+10/29 vagy 2018.
+
+### <a name="download-azure-storage-explorer-150"></a>Az Azure Storage Explorer 1.5.0 letöltése
+- [Az Azure Storage Explorer 1.5.0 Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Az Azure Storage Explorer 1.5.0 Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Az Azure Storage Explorer 1.5.0 linuxhoz](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>Új
+
+* Most már használhatja [AzCopy v10 (előzetes verzió)](https://github.com/Azure/azure-storage-azcopy) feltöltése és letöltése a blobokat. Ez a funkció engedélyezéséhez válassza a "Kísérleti" menü, és kattintson a "Használata az AzCopy a továbbfejlesztett Blob feltöltése és letöltése". Ha engedélyezve van, az AzCopy fogja használni a következő esetekben:
+   * Töltse fel a blob-tárolók, akár az eszköztár fájlokat és mappákat, vagy húzza.
+   * Letölti a mappákat és fájlokat, vagy az eszköztár vagy helyi menüjében.
+
+* Ezenkívül az AzCopy használata esetén:
+   * A vágólapra az átadás végrehajtására szolgáló AzCopy-parancs másolásával. Egyszerűen kattintson a "Másolás AzCopy parancs vágólapra" a tevékenységnaplóban.
+   * A blob-szerkesztő feltöltése után manuálisan frissítenie kell.
+   * Hozzáfűző blobok, fájlok feltöltése nem támogatott, .vhds lapblobként töltődnek fel, és minden más fájlnál töltődnek fel a blokkblobok formájában.
+   * Hibák és a fel- vagy letöltést során fellépő ütközések nem jelennek meg addig, amíg a feltöltés után, vagy a letöltést.
+
+Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhető a jövőben.
+* Storage Explorer Electron 2.0.11 verziót használ.
+* Használhatatlanná tévő bérleteket is most már csak hajtható végre egy blob egy időben. Ezenkívül rendelkezik az a blob nevét, amelynek meg bontja bérleti meg. A módosítás a valószínűségét, hogy véletlenül bérletének érvénytelenítése egy, a virtuális gépek .vhds esetén különösen csökkentése érdekében. #394
+* Ha minden eddiginél bejelentkezési problémák, most megpróbálhat alaphelyzetbe állítása hitelesítési. Nyissa meg a "Súgó" menü, és kattintson az "Új" Ez a funkció eléréséhez. #419
+
+### <a name="fix"></a>Javítás
+
+* Erős felhasználói visszajelzéseket, miután az alapértelmezett emulátor csomópont újra engedélyezve lett. Továbbra is hozzáadhat további emulátor kapcsolatok keresztül a Csatlakozás párbeszédpanel, de ha az emulátor az alapértelmezett portok használatára van konfigurálva az "Emulátor * alapértelmezett portok" csomópont "Helyi és csatolt/Storage-fiókok" is használható. #669
+* Storage Explorer többé nem tesztszabályzatokat állíthat a blob metaadatértékeket rendelkező kezdő vagy záró szóközt. #760
+* A "Bejelentkezés" gomb mindig engedélyezték a Csatlakozás párbeszédpanel azonos oldalain. Most már tiltva, ha szükséges. #761
+* A gyors hozzáférés már nem generál hibát a konzolon a gyors hozzáférés elemek hozzáadásakor.
+
+### <a name="known-issues"></a>Ismert problémák
+
+* Egy erőforráshoz, például egy blob-tároló SAS URI-t, összekapcsolnia leválasztása a hibát, amely megakadályozza, hogy a többi megfelelően jelenik meg a mellékleteket okozhat. A probléma megkerüléséhez frissítse a a csoport csomópontot. Tekintse meg a #537 további információt.
+* Ha VS használ a Mac számítógépen, és minden eddiginél hozott létre egyéni AAD-konfigurációt, előfordulhat, hogy nem tudja jelentkezik be. A probléma megkerüléséhez tartalmának törlése ~ /. IdentityService/AadConfigurations. Ha ez így nem zárolásának feloldásához, várjuk a ennél a hibánál megjegyzéseket.
+* Azurite még nem teljes körűen megvalósítva összes Storage API-t. Emiatt lehetséges, hogy nem várt hibák vagy viselkedés fejlesztési tárterülettel Azurite használatakor.
+* Ritka esetekben a fa fókusz előfordulhat, hogy elakadnak a gyors hozzáférés. Ezt követően a fókuszt, frissítse az összes is.
+* Feltöltés a OneDrive-mappából egy NodeJS hibája miatt nem működik. Kijavítva a hiba, de Electron még nincs integrálva. A probléma megoldása mikor blobtárolóba való feltöltéshez, vagy egy blob-tárolóba való letöltéséhez, a kísérleti AzCopy funkciót is használhatja.
+* Ha az Azure Stack célozza, bizonyos fájlokat, a hozzáfűző blobok feltöltése meghiúsulhat.
+* "Mégse gombra" kattint egy feladatot, miután ezt a feladatot megszakítja egy ideig is eltarthat. Ennek az oka az itt leírt Mégse szűrő megoldást használjuk.
+* Ha úgy dönt, hogy a megfelelő PIN-kód/intelligens kártya tanúsítványt, majd szüksége lesz ahhoz, hogy a Storage Explorer felejtse el, hogy döntést kell újraindítani.
+* Blobok (külön-külön vagy átnevezett blob-tárolóban) átnevezése nem őrzi meg a pillanatképeket. Minden egyéb tulajdonságok és metaadatok a blobok, fájlok és entitások egy átnevezése közben megőrződnek.
+* Az Azure Stack nem támogatja a következő funkciókat. Ezek a szolgáltatások használata közben az Azure Stack használatával próbál erőforrások váratlan hibákhoz vezethet.
+   * Fájlmegosztások
+   * Hozzáférési szintek
+   * Helyreállítható törlés
+* A Storage Explorer által használt Electron rendszerhéj rendelkezik néhány GPU (grafikai processzor) a hardveres gyorsítás ütközik. Ha a Storage Explorer egy üres (üres) fő ablakot jelenít meg, próbálkozzon a Storage Explorer indítása a parancssorból, és a GPU-gyorsítás letiltása hozzáadásával a `--disable-gpu` váltani:
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Ubuntu 17.04 felhasználójához GConf telepíteni kell, – a következő parancsok futtatásával, és indítsa újra a gép erre:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="previous-releases"></a>Korábbi kiadások
+
+* [Verzió 1.4.4](#version-144)
+* [Verzió 1.4.3](#version-143)
+* [1.4.2 verziója](#version-142)
+* [1.4.1 verzió](#version-141)
+* [Verzió 1.3.0](#version-130)
+* [1.2.0-s vagy annál újabb verzió](#version-120)
+* [1.1.0-s verzió](#version-110)
+* [1.0.0-s verziójának](#version-100)
+* [Verzió 0.9.6](#version-096)
+* [Verzió 0.9.5](#version-095)
+* [0.9.4 és 0.9.3-as verzió](#version-094-and-093)
+* [Verzió 0.9.2](#version-092)
+* [0.9.1 és 0.9.0-s verziója](#version-091-and-090)
+* [Verzió 0.8.16](#version-0816)
+* [Verzió 0.8.14](#version-0814)
+* [Verzió 0.8.13](#version-0813)
+* [0.8.12 és 0.8.11 és 0.8.10 verzió](#version-0812-and-0811-and-0810)
+* [0.8.9 és 0.8.8 verzió](#version-089-and-088)
+* [Verzió 0.8.7](#version-087)
+* [Verzió 0.8.6](#version-086)
+* [Verzió 0.8.5](#version-085)
+* [Verzió 0.8.4](#version-084)
+* [Verzió 0.8.3](#version-083)
+* [Verzió 0.8.2](#version-082)
+* [Verzió 0.8.0](#version-080)
+* [Verzió 0.7.20160509.0](#version-07201605090)
+* [Verzió 0.7.20160325.0](#version-07201603250)
+* [Verzió 0.7.20160129.1](#version-07201601291)
+* [Verzió 0.7.20160105.0](#version-07201601050)
+* [Verzió 0.7.20151116.0](#version-07201511160)
+
 ## <a name="version-144"></a>Verzió 1.4.4
 10/15/2018.
-
-### <a name="download-azure-storage-explorer-144"></a>Az Azure Storage Explorer 1.4.4 letöltése
-- [Az Azure Storage Explorer 1.4.4 Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Az Azure Storage Explorer 1.4.4 Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Az Azure Storage Explorer 1.4.4 linuxhoz](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="hotfixes"></a>Gyorsjavítások
 * Az Azure Resource Management Api-verzió vissza lett állítva az Azure US Government felhasználók tiltásának feloldása. [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
@@ -87,38 +184,6 @@ Ez a cikk az Azure Storage Explorer 1.4.3 kiadás kibocsátási megjegyzései, v
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-## <a name="previous-releases"></a>Korábbi kiadások
-
-* [Verzió 1.4.3](#version-143)
-* [1.4.2 verziója](#version-142)
-* [1.4.1 verzió](#version-141)
-* [Verzió 1.3.0](#version-130)
-* [1.2.0-s vagy annál újabb verzió](#version-120)
-* [1.1.0-s verzió](#version-110)
-* [1.0.0-s verziójának](#version-100)
-* [Verzió 0.9.6](#version-096)
-* [Verzió 0.9.5](#version-095)
-* [0.9.4 és 0.9.3-as verzió](#version-094-and-093)
-* [Verzió 0.9.2](#version-092)
-* [0.9.1 és 0.9.0-s verziója](#version-091-and-090)
-* [Verzió 0.8.16](#version-0816)
-* [Verzió 0.8.14](#version-0814)
-* [Verzió 0.8.13](#version-0813)
-* [0.8.12 és 0.8.11 és 0.8.10 verzió](#version-0812-and-0811-and-0810)
-* [0.8.9 és 0.8.8 verzió](#version-089-and-088)
-* [Verzió 0.8.7](#version-087)
-* [Verzió 0.8.6](#version-086)
-* [Verzió 0.8.5](#version-085)
-* [Verzió 0.8.4](#version-084)
-* [Verzió 0.8.3](#version-083)
-* [Verzió 0.8.2](#version-082)
-* [Verzió 0.8.0](#version-080)
-* [Verzió 0.7.20160509.0](#version-07201605090)
-* [Verzió 0.7.20160325.0](#version-07201603250)
-* [Verzió 0.7.20160129.1](#version-07201601291)
-* [Verzió 0.7.20160105.0](#version-07201601050)
-* [Verzió 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-143"></a>Verzió 1.4.3
 10/11/2018.

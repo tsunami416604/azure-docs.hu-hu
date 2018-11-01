@@ -9,10 +9,10 @@ ms.date: 10/15/2018
 ms.author: alkohli
 ms.component: common
 ms.openlocfilehash: 3a42f09967ec42b47947823025f2f0dcd081d1b1
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
+ms.lasthandoff: 10/31/2018
 ms.locfileid: "49352237"
 ---
 # <a name="azure-importexport-system-requirements"></a>Az Azure Import/Export rendszerre vonatkozó követelmények
@@ -49,7 +49,7 @@ Storage-fiókokkal kapcsolatos további információkért lásd: [az Azure stora
 Minden egyes feladat előfordulhat, hogy használható-adatok áthelyezésénél csak egy storage-fiókból. Más szóval egy egyetlen importálási/exportálási feladat terjedhetnek ki több tárfiókon keresztül. Új tárfiók létrehozásával kapcsolatos információkért lásd: [Storage-fiók létrehozása](storage-quickstart-create-account.md).
 
 > [!IMPORTANT] 
-> Az Azure importálási exportálása szolgáltatás nem támogatja a storage-fiókok, a [virtuális hálózati Szolgáltatásvégpontok](../../virtual-network/virtual-network-service-endpoints-overview.md) funkció engedélyezve van. 
+> Az Azure importálási exportálása szolgáltatás nem támogatja a storage-fiókok, a [virtuális hálózati Szolgáltatásvégpontok](../../virtual-network/virtual-network-service-endpoints-overview.md) funkció engedélyezve van. 
 
 ## <a name="supported-storage-types"></a>Támogatott tárolási típus
 

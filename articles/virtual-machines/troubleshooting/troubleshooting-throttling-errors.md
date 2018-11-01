@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: vashan, rajraj, changov
-ms.openlocfilehash: b951d0b8d91729340cf382e70f72511fb009053e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 15a4ff73476ce54f0617a88e040ac64d7288e9a8
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386552"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741113"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>API szabályozási hibák elhárítása 
 
@@ -76,6 +76,18 @@ Content-Type: application/json; charset=utf-8
 A fennmaradó hívások számát, a 0-házirend miatt, amely a sávszélesség-szabályozási hibát adott vissza lesz. Ebben az esetben ez `HighCostGet30Min`. A válasz törzse általános formátuma az általános Azure Resource Manager API-hiba formátum (OData megfelelő). A fő hibakód `OperationNotAllowed`, egy számítási erőforrás-szolgáltató jelentheti a szabályozási hibák (többek között a más típusú ügyfél hibák) használja. A `message` a belső hiba (hibák) tulajdonságát a sávszélesség-szabályozási megsértése részleteit tartalmazó szerializált JSON struktúrát tartalmaz.
 
 Ahogy fent ábrázolt minden szabályozási hiba magában foglalja a `Retry-After` fejléc, így másodpercek minimális száma az ügyfél várnia kell a kérés újbóli megkísérlése előtt. 
+
+## <a name="api-call-rate-and-throttling-error-analyzer"></a>API hívása arányát és a sávszélesség-szabályozási hiba elemző
+A számítási erőforrás-szolgáltató API-hoz a hibaelhárítási funkcióval előzetes verziója érhető el. PowerShell-parancsmagokat API kérés egységár időintervallum művelet és a sávszélesség-szabályozási szabálysértések (házirend) művelet csoportonként statisztikáit meg:
+-   [Export-AzureRmLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/azurerm.compute/export-azurermloganalyticrequestratebyinterval)
+-   [Export-AzureRmLogAnalyticThrottledRequests](https://docs.microsoft.com/powershell/module/azurerm.compute/export-azurermloganalyticthrottledrequests)
+
+Az API-hívás statisztikái is nagyszerű cybercrime egy előfizetésben ügyféltől/ügyfelektől érkezők viselkedését, és engedélyezze a szabályozás okozó hívás minták egyszerű azonosítása.
+
+Az elemző jelenleg korlátozva, hogy a számláló nem kérelmek erőforrástípusok lemez és a pillanatkép (támogatásához a felügyelt lemezeket). A CRP a telemetriai adatokat gyűjt, mivel azt is nem segít az ARM szabályozási hibák azonosítására. De azok azonosíthatók egyszerűen alapján ARM megkülönböztető válaszfejlécek taglaltak szerint.
+
+A PowerShell-parancsmagokat használ a szolgáltatás REST API, amely egyszerűen közvetlenül az ügyfelek (bár a még nem hivatalosan támogatott). A HTTP-kérés formátuma megtekintéséhez futtassa a parancsmagokat a - Debug paraméter vagy Bepillantás azok végrehajtását a Fiddler.
+
 
 ## <a name="best-practices"></a>Ajánlott eljárások 
 

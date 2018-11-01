@@ -9,12 +9,12 @@ ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: b5e3d87e026b65a602b7bdf2e52365d13b21f62f
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 41b4a89c8d06ed94d27612cc0d090da801fb6dd8
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166831"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412873"
 ---
 # <a name="create-an-azure-cosmos-db-cassandra-api-account-database-and-a-table-by-using-a-java-application"></a>Azure Cosmos DB Cassandra API-fiók, adatbázis és tábla létrehozása egy Java-alkalmazással
 
@@ -33,7 +33,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 * Ha nem rendelkezik Azure-előfizetéssel, első lépésként létrehozhat egy  [ingyenes](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)  fiókot. Alternatív lehetőségként  [kipróbálhatja ingyenesen az Azure Cosmos DB-t](https://azure.microsoft.com/try/cosmosdb/)  Azure-előfizetés, díjfizetés és elköteleződés nélkül. 
 
-* Szerezze be a [Java fejlesztői készlet (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) legfrissebb verzióját 
+* Szerezze be a [Java fejlesztői készlet (JDK)](https://aka.ms/azure-jdks) legfrissebb verzióját 
 
 * [Töltse le](http://maven.apache.org/download.cgi) és [telepítse](http://maven.apache.org/install.html) a [Maven](http://maven.apache.org/) bináris archívumot 
   - Ubuntu rendszeren futtathatja az  `apt-get install maven`  parancsot a Maven telepítéséhez. 

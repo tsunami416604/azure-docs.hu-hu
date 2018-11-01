@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 45682caedaaaac1c9d335a45db64f16d713dfd7f
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 60ecc2bc1d700c223d4a52b05e3b9362241f3f82
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233497"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414610"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>A Log Analytics-riasztások kiterjesztése az Azure-riasztások
 Nemrég, amíg az Azure Log Analytics a saját riasztási funkcióval rendelkezik, amely sikerült proaktívan kaphat értesítést a Log Analytics-adatok alapuló feltételek tartalmazza. A Microsoft Operations Management Suite portál riasztási szabályok felügyelt. A riasztások új kezelőfelülete mostantól integrálva van riasztási között különböző szolgáltatások, Microsoft Azure-ban. Érhető el **riasztások** alatt az Azure Monitor az Azure Portalon, és támogatja a vizsgálati naplók, metrikák, a riasztások és a Log Analytics és az Azure Application Insights-naplók. 
@@ -35,7 +35,7 @@ Nincsenek számos előnnyel jár. a létrehozása és kezelése például a rias
 
 Riasztások a Log Analytics-munkaterület, ki kell terjeszteni az Azure-bA ütemezésekor mindaddig működnek, és nem az egyébként veszélyeztetheti a konfigurációt. Ütemezése, a riasztások előfordulhat, hogy nem érhető el, a módosítás átmenetileg, de továbbra is új Azure-riasztások létrehozásához ebben az időszakban. Ha próbál szerkeszteni vagy létrehozni a riasztásokat az Operations Management Suite-portálon, akkor a beállítást, így a Log Analytics-munkaterületet hoz létre. Azt is beállíthatja az Azure Portalon az Azure-riasztások létrehozásához őket.
 
- ![Riasztások létrehozása Log Analytics vagy az Azure Alerts beállítás képernyőképe](./media/monitor-alerts-extend/ScheduledDirection.png)
+ ![Riasztások létrehozása Log Analytics vagy az Azure Alerts beállítás képernyőképe](media/monitoring-alerts-extend/ScheduledDirection.png)
 
 > [!NOTE]
 > Riasztások kiterjesztése a Log Analytics az Azure-ba nem díjkötelesek a fiókjához. Lekérdezés alapú Log Analytics-riasztások Azure Alerts használatával nem kell fizetniük keretein belül, és a megadott feltételek a [házirend díjszabás az Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).  
@@ -47,7 +47,7 @@ Kiterjeszti a riasztásokat az Azure Alerts szolgáltatáshoz, az Operations Man
 ## <a name="experience-after-extending-your-alerts"></a>A riasztások kiterjesztését az után élmény
 Után a riasztások bővítve lettek az Azure Alerts szolgáltatáshoz, ezek továbbra is az Operations Management Suite portálon felügyeleti nem működnek, mint a korábban is.
 
-![Képernyőkép az Operations Management Suite portálján, a felsorolt riasztások](./media/monitor-alerts-extend/PostExtendList.png)
+![Képernyőkép az Operations Management Suite portálján, a felsorolt riasztások](media/monitoring-alerts-extend/PostExtendList.png)
 
 Ha egy meglévő riasztást szerkesztheti, vagy hozzon létre egy új riasztás az Operations Management Suite portálon próbál, automatikusan átirányítjuk az Azure Alerts szolgáltatáshoz.  
 

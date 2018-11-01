@@ -11,12 +11,12 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: 5e002de273d50de9095c6e58b8e1a9fb9a05ed4f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 1a7cc7d58975aa0cd5903581610d642193951ec4
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295342"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412466"
 ---
 # <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-java"></a>Rövid útmutató: Keresési lekérdezések küldése a Bing Image Search REST API és Java használatával
 
@@ -28,7 +28,7 @@ A minta forráskódja további hibakezeléssel és kódmegjegyzésekkel együtt 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Java fejlesztői készlet (JDK) 7-es vagy 8-as verziója](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* A [Java fejlesztői készlet (JDK) 7-es vagy 8-as verziója](https://aka.ms/azure-jdks)
 
 * A [Gson-kódtár](https://github.com/google/gson)
 

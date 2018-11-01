@@ -1,6 +1,6 @@
 ---
-title: Telepítési problémák esetére, a Microsoft Azure Cloud Services – gyakori kérdések |} Microsoft Docs
-description: Ez a cikk felsorolja a kapcsolatos gyakori kérdések a Microsoft Azure-szolgáltatásokhoz központi telepítés.
+title: Üzembe helyezési problémák a Microsoft Azure Cloud Services – gyakori kérdések |} A Microsoft Docs
+description: Ez a cikk a Microsoft Azure Cloud Servicesben üzembe helyezés – gyakori kérdések listája.
 services: cloud-services
 documentationcenter: ''
 author: genlin
@@ -13,71 +13,70 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 05217129d4993514acaf8c717847040584984cb3
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: d44cfc0164892c34bcbe16ca07e9ec67190ada24
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068904"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415304"
 ---
-# <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure-szolgáltatásokhoz központi telepítési problémák: gyakran ismételt kérdések (GYIK)
+# <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services üzembe helyezési problémák: gyakran ismételt kérdések (GYIK)
 
-Ez a cikk tartalmazza a központi telepítési problémái kapcsolatos gyakran ismételt kérdések [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Is tud kezelni a [felhőalapú szolgáltatások Virtuálisgép-méretet lap](cloud-services-sizes-specs.md) mérete információt.
+Ez a cikk tartalmazza a felmerülő üzembehelyezési hibák – gyakori kérdések [a Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Is tud kezelni a [Cloud Services Virtuálisgép-méretet lapján](cloud-services-sizes-specs.md) mérete információt.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="why-does-deploying-a-cloud-service-to-the-staging-slot-sometimes-fail-with-a-resource-allocation-error-if-there-is-already-an-existing-deployment-in-the-production-slot"></a>Miért nem felhőalapú szolgáltatás telepítése az átmeneti helyet néha sikertelen, és egy erőforrás-elosztási hiba, ha már van egy meglévő telepítését az éles ponton?
-Ha egy felhőalapú szolgáltatás a központi telepítés vagy tárolóhelye van, a teljes felhőszolgáltatás adott fürt van rögzítve. Ez azt jelenti, hogy a központi telepítés már szerepel az éles webalkalmazásra, ha egy új átmeneti telepítési csak lehet hozzárendelni a fürtön, amelyen az éles webalkalmazásra.
+## <a name="why-does-deploying-a-cloud-service-to-the-staging-slot-sometimes-fail-with-a-resource-allocation-error-if-there-is-already-an-existing-deployment-in-the-production-slot"></a>Miért nem néha az előkészítési ponton történő üzembe helyezése egy felhőalapú szolgáltatás sikertelen és a egy erőforrás-foglalási hiba, ha már van egy meglévő üzemelő példány az üzemelési?
+Ha egy felhőalapú szolgáltatás egy központi telepítést vagy a tárolóhely, a teljes felhőalapú szolgáltatás egy adott fürtben van rögzítve. Ez azt jelenti, hogy ha egy telepítés már létezik az üzemelési, egy új átmeneti üzembe helyezés csak lehet hozzárendelni a fürtön, az éles webalkalmazásra.
 
-Pufferallokációs hibák akkor történik, ha a fürt, ahol megtalálható a felhőalapú szolgáltatás nem rendelkezik elég fizikai számítási erőforrásokat, a központi telepítés kérelem teljesítéséhez.
+Foglalási hibák fordulhatnak elő, amikor a fürt hol helyezkedik el a felhőalapú szolgáltatás nem rendelkezik elég fizikai számítási erőforrásokat az üzembe helyezés kérelem teljesítéséhez.
 
-Ilyen pufferallokációs hibák kiküszöböléséhez útmutatásért lásd: [Felhőszolgáltatás memóriafoglalási hiba: megoldásokkal](cloud-services-allocation-failures.md#solutions).
+Az ilyen hibák csökkentése, lásd [Felhőszolgáltatás-foglalási hiba: megoldások](cloud-services-allocation-failures.md#solutions).
 
-## <a name="why-does-scaling-up-or-scaling-out-a-cloud-service-deployment-sometimes-result-in-allocation-failure"></a>Miért nem vertikális felskálázásával vagy scaling out néha egy felhőalapú szolgáltatás telepítését, ezért foglalási nem?
-Amikor telepít egy felhőalapú szolgáltatás, akkor általában lekérdezi rögzítve fürtön. Ez azt jelenti, hogy egy meglévő felhőszolgáltatáshoz fel és kimeneti skálázás kell rendelnie az ugyanabban a fürtben található új példányok. A fürt közelít kapacitásának határához, vagy a kívánt virtuális gép mérete/típus nem érhető el, ha a kérelem sikertelen lehet.
+## <a name="why-does-scaling-up-or-scaling-out-a-cloud-service-deployment-sometimes-result-in-allocation-failure"></a>Miért nem és leskálázása ki egy felhőszolgáltatás üzembe helyezésének néha eredményez a foglalási hiba?
+Amikor telepít egy felhőalapú szolgáltatás, általában lekérdezi rögzítve egy adott fürtön. Ez azt jelenti, hogy új példányok ugyanazon fürt méretezése felfelé és kimenő egy meglévő felhőszolgáltatáshoz kell lefoglalni. Ha a fürt közelít kapacitásának határához, vagy nem érhető el a kívánt virtuális gép méretének/típusának, a kérelem sikertelen lehet.
 
-Ilyen pufferallokációs hibák kiküszöböléséhez útmutatásért lásd: [Felhőszolgáltatás memóriafoglalási hiba: megoldásokkal](cloud-services-allocation-failures.md#solutions).
+Az ilyen hibák csökkentése, lásd [Felhőszolgáltatás-foglalási hiba: megoldások](cloud-services-allocation-failures.md#solutions).
 
-## <a name="why-does-deploying-a-cloud-service-into-an-affinity-group-sometimes-result-in-allocation-failure"></a>Miért nem olyan lesznek üzembe helyezve egy felhőalapú szolgáltatás affinitáscsoporthoz néha eredményez memóriafoglalási hiba?
-Új központi telepítést egy üres felhőszolgáltatásban oszthat ki által a hálót a fürthöz az adott régióban, kivéve, ha a felhőalapú szolgáltatás affinitáscsoporthoz van rögzítve. Ugyanabban az affinitáscsoportban történő telepítését ugyanazon a fürtön kísérli meg a rendszer. Ha a fürt közelít kapacitásának határához, a kérelem sikertelen lehet.
+## <a name="why-does-deploying-a-cloud-service-into-an-affinity-group-sometimes-result-in-allocation-failure"></a>Miért nem környezetbe való üzembe helyezés egy felhőalapú szolgáltatás affinitáscsoporthoz néha eredményez foglalási hiba?
+Új üzemelő példányt egy üres felhőszolgáltatásban a háló minden olyan fürt, az adott régióban, oszthat ki, kivéve, ha a felhőszolgáltatás egy affinitáscsoporthoz van rögzítve. Központi telepítések számára ugyanabban az affinitáscsoportban kísérli meg a rendszer ugyanazon a fürtön. Ha a fürt közelít kapacitásának határához, a kérelem sikertelen lehet.
 
-Ilyen pufferallokációs hibák kiküszöböléséhez útmutatásért lásd: [Felhőszolgáltatás memóriafoglalási hiba: megoldásokkal](cloud-services-allocation-failures.md#solutions).
+Az ilyen hibák csökkentése, lásd [Felhőszolgáltatás-foglalási hiba: megoldások](cloud-services-allocation-failures.md#solutions).
 
-## <a name="why-does-changing-vm-size-or-adding-a-new-vm-to-an-existing-cloud-service-sometimes-result-in-allocation-failure"></a>Miért nem módosítása a Virtuálisgép-méretet, vagy egy új virtuális gép hozzáadása egy meglévő felhőalapú szolgáltatást néha eredményez memóriafoglalási hiba?
-Előfordulhat, hogy az adatközpontban a fürtök különböző konfigurációiról gépek típusainak (például egy sorozat Av2 adatsorozat, D sorozat, Dv2 adatsorozat, G adatsorozat, H adatsorozat, stb.). De a fürt nem feltétlenül kell minden olyan virtuális gépek. Például ha egy virtuális gép D sorozat hozzáadása egy felhőszolgáltatás, amely már üzembe van helyezve A csak adatsorozat-fürtben lévő, a működés egy memóriafoglalási hiba. Ez akkor is történik, ha megpróbálja módosítani VM SKU méretének (például egy A-sorozatú naplókról a D sorozat).
+## <a name="why-does-changing-vm-size-or-adding-a-new-vm-to-an-existing-cloud-service-sometimes-result-in-allocation-failure"></a>Miért nem virtuális gép méretének módosítása vagy egy új virtuális gép hozzáadása egy meglévő felhőszolgáltatáshoz néha eredményez foglalási hiba?
+Előfordulhat, hogy az egy kínai adatközpont fürtök különböző konfigurációjú géptípus (például egy sorozat, az Av2 sorozat, a D sorozat, a Dv2 sorozat, G sorozat, H-sorozat stb.). De a fürtök nem feltétlenül kell minden olyan virtuális gépek. Például ha a D sorozatú virtuális gép hozzáadása egy felhőszolgáltatás, amely már üzembe helyezte A csak sorozat fürtben, tapasztalható-foglalási hiba. Ez is történik, ha megpróbálja módosítani a VM-Termékváltozatok (például az A sorozatú átváltása a D sorozat) mérete.
 
-Ilyen pufferallokációs hibák kiküszöböléséhez útmutatásért lásd: [Felhőszolgáltatás memóriafoglalási hiba: megoldásokkal](cloud-services-allocation-failures.md#solutions).
+Az ilyen hibák csökkentése, lásd [Felhőszolgáltatás-foglalási hiba: megoldások](cloud-services-allocation-failures.md#solutions).
 
-Az adott régióban elérhető méretek ellenőrzéséhez tekintse meg a [Microsoft Azure: régiónként rendelkezésre álló termékek](https://azure.microsoft.com/regions/services).
+A régióban elérhető méretek megtekintéséhez [Microsoft Azure: elérhető termékek régiók szerint](https://azure.microsoft.com/regions/services).
 
-## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>Miért nem egy felhőalapú szolgáltatás telepítése egy kis ideig miatt sikertelenek korlátok/kvóták/megkötések a előfizetés vagy szolgáltatás?
-Egy felhőalapú szolgáltatás telepítése sikertelen lehet, ha az erőforrásokat lefoglalni szükséges meghaladja az alapértelmezett vagy a szolgáltatás a régió/adatközpont szinten engedélyezett kvóta felső határát. További információkért lásd: [Felhőszolgáltatások korlátozza](../azure-subscription-service-limits.md#cloud-services-limits).
+## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>Miért nem egy felhőszolgáltatás telepítésének valamikor miatt meghiúsul korlátok és kvóták/megkötések a saját előfizetés vagy szolgáltatás?
+A felhőszolgáltatás üzemelő példányának meghiúsulhatnak, ha az erőforrások lefoglalását szükséges meghaladja az alapértelmezett vagy a régió/adatközpont szinten a szolgáltatás számára engedélyezett maximális kvótát. További információkért lásd: [korlátozza a Cloud Services](../azure-subscription-service-limits.md#cloud-services-limits).
 
-Az előfizetést, a portál sikerült is nyomon az aktuális memóriahasználati kvóta: Azure-portálon = > előfizetések = > \<a megfelelő előfizetés > = > "Használati + kvóta".
+Az előfizetést, a portálon is a jelenlegi használati kvóta sikerült nyomon: az Azure portal = > előfizetések = > \<a megfelelő előfizetést > = > "Használati + kvóta".
 
-Erőforrás-használat/fogyasztás kapcsolatos információkat is beolvashatók az Azure számlázási API-k használatával. Lásd: [az Azure erőforrás-használat (előzetes verzió) API](../billing/billing-usage-rate-card-overview.md#azure-resource-usage-api-preview).
+Erőforrás-használat, felhasználás-kapcsolatos adatai is beolvashatók az Azure számlázási API-kon keresztül. Lásd: [Azure erőforrás-használati API (előzetes verzió)](../billing/billing-usage-rate-card-overview.md#azure-resource-usage-api-preview).
 
-## <a name="how-can-i-change-the-size-of-a-deployed-cloud-service-vm-without-redeploying-it"></a>Hogyan lehet módosítani, üzembe helyezésével telepített felhőszolgáltatás virtuális gép mérete?
-A Virtuálisgép-méretet a telepített felhőszolgáltatást, üzembe helyezésével nem módosítható. A Virtuálisgép-méretet a CSDEF, amelyek csak egy helyezze üzembe újra frissíthető van beépítve.
+## <a name="how-can-i-change-the-size-of-a-deployed-cloud-service-vm-without-redeploying-it"></a>Hogyan módosíthatom egy üzembe helyezett felhőalapú szolgáltatás virtuális gép méretének újbóli üzembe helyezése nélkül?
+Üzembe helyezett cloud service Virtuálisgép-méretének újbóli üzembe helyezése nélkül nem módosítható. A Virtuálisgép-méretet, amely frissíthetők egy ismételt üzembe helyezése csak a CSDEF be van építve.
 
 További információkért lásd: [egy felhőalapú szolgáltatás frissítése](cloud-services-update-azure-service.md).
 
-## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Miért nem tudja telepíteni a Service Management API-k vagy a Powershellen keresztül Cloud Services, Azure Resource Manager tárfiók használata esetén? 
+## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Miért nem tudok üzembe helyezéséhez a Service Management API-k vagy a Powershellen keresztül a Cloud Services, Azure Resource Manager-tárfiókok használata? 
 
-Mivel a felhőalapú szolgáltatás egy klasszikus erőforrást, amely nem kompatibilis közvetlenül az Azure Resource Manager modellt, az Azure Resource Manager tárfiókokkal nem társítható. Íme néhány lehetőség: 
+Mivel a felhőalapú szolgáltatás, nem közvetlenül az Azure Resource Manager-modell kompatibilis klasszikus erőforráshoz, az Azure Resource Manager tárfiókok nem társítható. Az alábbiakban néhány lehetőséget: 
+ 
+- Az üzembe helyezést REST API-t.
+
+    Service Management REST API-n keresztül történő telepítésekor, a blob Storage, amely működik a klasszikus és az Azure Resource Manager-Storage-fiók egy SAS URL-cím megadásával megkerülésében sikerült a korlátozást. További információ a "PackageUrl" tulajdonság [Itt](https://msdn.microsoft.com/library/azure/ee460813.aspx).  
+- Az üzembe helyezést [az Azure portal](https://portal.azure.com).
+
+    Ez akkor fog működni a a [az Azure portal](https://portal.azure.com) , a hívás halad végig a proxy/kódrészlet, amely lehetővé teszi, hogy az Azure Resource Manager és klasszikus erőforrások közti kommunikációt. 
  
-- Deploying REST API-n keresztül.
+## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Miért az Azure portal szükséges ponton, és adja meg a tárfiók üzembe helyezéshez? 
 
-    Telepítésekor Service Management REST API-n keresztül, akkor lehetett beolvasni a korlátozás körül megadásával a blob-tároló, amely működni fog-e mind a klasszikus, és a Azure Resource Manager Tárfiók SAS URL-CÍMÉT. További információk a "PackageUrl" tulajdonság [Itt](https://msdn.microsoft.com/library/azure/ee460813.aspx).
-  
-- Keresztül telepítése [Azure-portálon](https://portal.azure.com).
+A klasszikus portálon a csomag közvetlenül a felügyeleti API-réteget feltöltött, és csak utána az API-réteget szeretné ideiglenesen a csomag be egy belső tárfiókot.  Ez a folyamat teljesítményét és méretezhetőségét problémákat okoz, mivel az API-réteget nem lehet egy fájl feltöltési szolgáltatás tervezték.  Az Azure Portalon (Resource Manager üzembe helyezési modell) azt kell telepítővarázslója kihagyja a közbenső lépés az API-réteget, hogy először feltöltene gyorsabb és megbízhatóbb központi telepítések eredményez. 
 
-    Ez a fog működni a [Azure-portálon](https://portal.azure.com) , a hívást a proxy/kódrészlet Azure Resource Manager és klasszikus erőforrások közötti kommunikációs így végig kell vinnie. 
- 
-## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Miért nem Azure-portálon követeljen meg a tárfiók számára történő központi telepítés? 
-
-A klasszikus portálon a csomag közvetlenül a felügyeleti API réteg feltöltött, majd a API réteg volna ideiglenesen tegye a csomag egy belső tároló figyelembe.  Ez a folyamat teljesítményének és méretezhetőségének problémákat okoz, mivel az API réteg nem volt célja, hogy a fájl feltöltési szolgáltatás lehet.  Az Azure portálon (Resource Manager üzembe helyezési modellben) azt kell megkerülte az ideiglenes lépés API réteg első feltöltése a gyorsabb és megbízhatóbb központi telepítések eredményez. 
-
-A költség, mint nagyon kicsi, és újra felhasználhatja a tárfiókon összes központi telepítések egységességét. Használhatja a [tárolási költség Számológép](https://azure.microsoft.com/pricing/calculator/#storage1) annak meghatározásához, a költség, töltse fel a service-csomag (CSPKG), töltse le a CSPKG, majd törölje a CSPKG. 
+A költség, mint a nagyon kicsi, és újra felhasználhatja ugyanazt a tárfiókot az összes üzemelő alkalmazáspéldányok között. Használhatja a [tárolási költségkalkulátor](https://azure.microsoft.com/pricing/calculator/#storage1) annak megállapításához, a költség, a service-csomag (CSPKG) feltöltése, letöltése a CSPKG, majd törölje a CSPKG. 

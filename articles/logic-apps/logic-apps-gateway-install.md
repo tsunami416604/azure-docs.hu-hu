@@ -6,15 +6,15 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: yshoukry, LADocs
+ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 07/20/2018
-ms.openlocfilehash: 5fc4ccacaaedfc3fe6c77fa9a0ad693530bdde93
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 10/01/2018
+ms.openlocfilehash: 2934eadce9e3e0d5e0375dff4eec359a33bd4479
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855425"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420098"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>A helyszíni adatátjárót telepíthet az Azure Logic Apps
 
@@ -60,10 +60,12 @@ Az átjáró más szolgáltatásokkal való használatával kapcsolatos további
 * Az alábbiakban a helyi számítógépre vonatkozó követelményeket:
 
   **Minimális követelmények**
+
   * .NET-keretrendszer 4.5.2-es verziója
   * 64 bites Windows 7 vagy Windows Server 2008 R2 (vagy újabb)
 
   **Javasolt követelményeknek**
+
   * 8 magos CPU
   * 8 GB memória
   * a Windows Server 2012 R2 (vagy újabb) 64 bites verziója
@@ -75,11 +77,11 @@ Az átjáró más szolgáltatásokkal való használatával kapcsolatos további
     > [!TIP]
     > A késés minimalizálása érdekében az átjáró igyekezzen minél, az adatforráshoz, vagy ugyanazon a számítógépen, feltéve, hogy Ön jogosult is telepítheti.
 
-  * Telepítse az átjárót olyan számítógépre, amely csatlakozik az internethez, a mindig bekapcsolva, és *nem* alvó állapot. Ellenkező esetben az átjáró nem tud futni. Ezenkívül teljesítménye csökkenhet, vezeték nélküli hálózaton keresztül.
+  * Telepítse az átjárót olyan számítógépre, amely csatlakozik az internethez, a mindig bekapcsolva, és *nem* alvó állapot. Ellenkező esetben az átjáró nem tud futni. 
+  Ezenkívül teljesítménye csökkenhet, vezeték nélküli hálózaton keresztül.
 
-  * A telepítés során csak jelentkezhet be egy [munkahelyi vagy iskolai fiók](../active-directory/sign-up-organization.md) , amely kezeli az Azure Active Directory (Azure AD), és nem Microsoft-fiókkal. 
-  Ellenőrizzük, hogy ez a fiók nem egy Azure B2B (vendég) fiókot. 
-  Akkor is használnia kell az ugyanazon bejelentkezési fiók az Azure Portalon is regisztrálhatja, az átjáró telepítése egy Azure-erőforrás a átjáró létrehozásával. 
+  * A telepítés során csak jelentkezhet be egy [munkahelyi vagy iskolai fiók](../active-directory/sign-up-organization.md) által felügyelt Azure Active Directory (Azure AD), például @contoso.onmicrosoft.com, és nem az Azure B2B (vendég) fiók vagy személyes Microsoft-fiók, mint például @hotmail.com vagy @outlook.com. 
+  Ellenőrizze, hogy az ugyanazon bejelentkezési fiók használata is regisztrálhatja, az átjáró telepítése az Azure Portalon hoz létre egy átjáró-erőforrást. 
   Ezután kiválaszthatja az átjáró-erőforrás, a kapcsolat létrehozásakor a logikai alkalmazás a helyszíni adatforráshoz. 
   [Miért kell egy Azure ad-ben munkahelyi vagy iskolai fiókkal?](#why-azure-work-school-account)
 
@@ -96,6 +98,19 @@ Az átjáró más szolgáltatásokkal való használatával kapcsolatos további
   * Ha már rendelkezik egy átjárót, hogy beállította a telepítő 14.16.6317.4 verziónál korábbi, a legújabb telepítőjének futtatásával az átjáró helye nem módosítható. Azonban a legújabb telepítő használatával állítsa be a helyre, hanem az új átjárót.
   
     Ha egy átjáró telepítőjének korábbi verziójú 14.16.6317.4 rendelkezik, de még nem telepítette az átjárót, letöltheti és a legújabb telepítő használja helyette.
+
+## <a name="high-availability-support"></a>Magas rendelkezésre állás támogatása
+
+A helyszíni adatátjáró támogatja a magas rendelkezésre állású, ha több mint egy átjáró telepített, és állítsa be őket fürtként. Ha egy meglévő átjáró amikor létrehoz egy másik átjárót, létrehozhat magas rendelkezésre állású fürtöket igény szerint. Ezek a fürtök átjárók, amely segíthet a kritikus hibapontok elkerülése érdekében csoportokba rendezheti. Emellett a minden helyszíni átjáró adatösszekötők mostantól támogatja a magas rendelkezésre állás.
+
+A helyszíni adatátjáró használatához, tekintse át ezeket a követelményeket és szempontokat:
+
+* Már rendelkeznie kell legalább egy átjáró telepítése az elsődleges átjárót és a helyreállítási kulcsot a telepítést, az azonos Azure-előfizetésen belül. 
+
+* Az elsődleges átjárót az átjáró frissítése 2017 novemberi vagy újabb kell futnia.
+
+E követelmények teljesítése után a következő átjáró létrehozásakor válassza **hozzáadása egy meglévő átjárófürthöz**, válassza ki a fürt elsődleges átjárójának, és adja meg az adott elsődleges átjáró helyreállítási kulcsával.
+További információkért lásd: [magas rendelkezésre állású fürtök helyszíni adatátjáróhoz tartozó](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters).
 
 <a name="install-gateway"></a>
 
@@ -161,19 +176,6 @@ Az átjáró más szolgáltatásokkal való használatával kapcsolatos további
 
 10. Most regisztrálja az átjárót az Azure- [az átjáró telepítésekor egy Azure-erőforrás létrehozása](../logic-apps/logic-apps-gateway-connection.md). 
 
-## <a name="enable-high-availability"></a>Magas rendelkezésre állás engedélyezése
-
-A helyszíni adatátjáró támogatja a magas rendelkezésre állású, ha több mint egy átjáró telepített, és állítsa be őket fürtként. Ha egy meglévő átjáró amikor létrehoz egy másik átjárót, létrehozhat magas rendelkezésre állású fürtöket igény szerint. Ezek a fürtök átjárók, amely segíthet a kritikus hibapontok elkerülése érdekében csoportokba rendezheti. Ez a funkció használatához, tekintse át ezeket a követelményeket és szempontokat:
-
-* Egyes összekötők csak magas rendelkezésre állású, például a fájlrendszer-összekötő von támogatja. 
-     
-* Már rendelkeznie kell legalább egy átjáró telepítése az elsődleges átjárót és a helyreállítási kulcsot a telepítést, az azonos Azure-előfizetésen belül. 
-
-* Az elsődleges átjárót az átjáró frissítése 2017 novemberi vagy újabb kell futnia.
-
-E követelmények teljesítése után a következő átjáró létrehozásakor válassza **hozzáadása egy meglévő átjárófürthöz**, válassza ki a fürt elsődleges átjárójának, és adja meg az adott elsődleges átjáró helyreállítási kulcsával.
-További információkért lásd: [magas rendelkezésre állású fürtök helyszíni adatátjáróhoz tartozó](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters).
-
 <a name="update-gateway-installation"></a>
 
 ## <a name="change-location-migrate-restore-or-take-over-existing-gateway"></a>Módosítsa a helyet, áttelepítése, visszaállítása vagy meglévő átjáró átvétele
@@ -226,7 +228,7 @@ PingReplyDetails (RTT) : 0 ms
 TcpTestSucceeded       : True
 ```
 
-Ha **TcpTestSucceeded** értéke **igaz**, előfordulhat, hogy az átjáró blokkolja tűzfal. Ha szeretne átfogó, helyettesítse be a **ComputerName** és **Port** alatt felsorolt értékekkel értékek [portok konfigurálása](#configure-ports) ebben a cikkben.
+Ha **TcpTestSucceeded** értéke **igaz**, előfordulhat, hogy az átjáró blokkolja tűzfal. Ha szeretne átfogó, cserélje le a **ComputerName** és **Port** alatt felsorolt értékekkel értékek [portok konfigurálása](#configure-ports) ebben a cikkben.
 
 A tűzfal is előfordulhat, hogy blokkolja a kapcsolatokat, az Azure Service Bus hajt végre az Azure-adatközpontokból. Ez a forgatókönyv akkor fordul elő, ha jóváhagyása (feloldania) azokat az Ön régiójában adatközpontok összes IP-címet. Az adott IP-címek [lekérése az Azure IP-címlistát Itt](https://www.microsoft.com/download/details.aspx?id=41653).
 
@@ -253,7 +255,7 @@ Bizonyos esetekben az Azure Service Bus-kapcsolatok teljes tartománynevek helye
 
 ### <a name="force-https-communication-with-azure-service-bus"></a>Az Azure Service busszal HTTPS-kommunikáció kényszerítése
 
-Vannak proxyk, amelyek lehetővé teszik a forgalmat csak a 80-as és 443-as porton. Alapértelmezés szerint az Azure Service Bus a kommunikációt a 443-astól különböző portokon történik.
+Vannak proxyk, amelyek lehetővé teszik, csak a 80-as és 443-as forgalom. Alapértelmezés szerint az Azure Service Bus a kommunikációt a 443-astól különböző portokon történik.
 Kényszerítheti az átjárót keresztül közvetlen TCP helyett HTTPS az Azure Service Bus kommunikálni, de ez így is nagymértékben csökkenti a teljesítményt. Ez a feladat végrehajtásához kövesse az alábbi lépéseket:
 
 1. Keresse meg a helyet, a helyszíni adatok átjáró ügyfél, amely általában itt talál: ```C:\Program Files\On-premises data gateway\Microsoft.PowerBI.EnterpriseGateway.exe```
@@ -283,7 +285,7 @@ A helyszíni adatátjáró fut, mint egy Windows-szolgáltatás "Helyszíni adat
 
 ## <a name="restart-gateway"></a>Átjáró újraindítása
 
-Az átjáró fut egy ablak, így bármely más Windows szolgáltatás, például elindíthatja és állítsa le az átjárót, többféle módon. Például nyisson meg egy parancssort emelt szintű engedélyekkel a számítógépen, amelyen az átjáró fut, és mindkét parancs futtatásával:
+Az átjáró fut egy ablak, így bármely más Windows szolgáltatás, például, elindíthatja és leállíthatja a különféle módon az átjárót. Például nyisson meg egy parancssort emelt szintű engedélyekkel a számítógépen, amelyen az átjáró fut, és mindkét parancs futtatásával:
 
 * Állítsa le a szolgáltatást, a következő parancs futtatásával:
   
@@ -372,7 +374,7 @@ Ezeket a lépéseket írja le, mi történik, ha egy felhasználó a felhőben e
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ez a szakasz azon beállítása és a helyszíni adatátjáró használata során esetleg felmerülő gyakori problémákat.
+Ez a szakasz azon néhány gyakori probléma, lehetséges, hogy közben beállításával és a helyszíni adatátjáró használatával.
 
 **Q**: Miért volt az átjáró telepítése sikertelen? <br/>
 **A**: A probléma akkor fordulhat elő, ha a víruskereső szoftver a cél számítógépen elavult. Frissítse a víruskereső szoftvert, vagy az tiltsa le a víruskereső szoftverek azonban csak az átjáró telepítése során, és majd engedélyezze újra a szoftvert.

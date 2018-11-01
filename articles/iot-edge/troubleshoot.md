@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a63a31c5ceb4298829f85627196fea5d7a38ca4b
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 632a91e9c76f14bceace00c9cee29a189b604464
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068502"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740212"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
@@ -21,7 +21,7 @@ Ha a környezetében az Azure IoT Edge futtatásakor problémákat tapasztal, ez
 
 ## <a name="standard-diagnostic-steps"></a>Általános diagnosztikai lépések 
 
-Ha problémát tapasztal, a tárolónaplók és az eszközre küldött és az arról származó üzenetek áttekintésével további információt tudhat meg az IoT Edge-eszköz állapotáról. Az ebben a szakaszban szereplő parancsokkal és eszközökkel további információt gyűjthet. 
+Ha problémát tapasztal, további információ az IoT Edge-eszköz állapotát a tárolónaplók és az üzeneteket, hogy az eszköz áttekintésével. Az ebben a szakaszban szereplő parancsokkal és eszközökkel további információt gyűjthet. 
 
 ### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>Az IoT Edge Security Manager és a naplók állapotának ellenőrzéséhez:
 
@@ -108,7 +108,7 @@ Miután az IoT Edge biztonsági démon fut, tekintse meg a naplókat a tárolók
 
 ### <a name="view-the-messages-going-through-the-edge-hub"></a>Az Edge hubon áthaladó üzeneteket megtekintése
 
-Megtekintheti az Edge hubon áthaladó üzeneteket, és gyűjtsön információt a részletes naplók eszköztulajdonságok frissítéseiről a edgeAgent és edgeHub futtatókörnyezet tárolóiból származó. Ezek a tárolók a részletes naplók bekapcsolásához állítsa `RuntimeLogLevel` a yaml-konfigurációs fájlban. A fájl megnyitásához:
+Megtekintheti az Edge hubon áthaladó üzeneteket, és gyűjtsön információt a futtatókörnyezet tárolóiból származó részletes naplók a. Ezek a tárolók a részletes naplók bekapcsolásához állítsa `RuntimeLogLevel` a yaml-konfigurációs fájlban. A fájl megnyitásához:
 
 Linux:
 
@@ -122,7 +122,7 @@ Windows rendszeren:
    notepad C:\ProgramData\iotedge\config.yaml
    ```
 
-Alapértelmezés szerint a `agent` elem lesz a következőhöz hasonló:
+Alapértelmezés szerint a `agent` elem a következő példához hasonlóan fog kinézni:
 
    ```yaml
    agent:
@@ -146,7 +146,7 @@ Cserélje le `env: {}` együtt:
 
 Mentse a fájlt, és indítsa újra a IoT Edge-kezelő.
 
-Az IoT Hub és az IoT Edge-eszközök között küldött üzeneteket is ellenőrizheti. Ezeket az üzeneteket a Visual Studio Code [Azure IoT-eszközkészlet](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) bővítményével tekintheti meg. További útmutatásért lásd [az Azure IoT-fejlesztések esetén hasznos eszközt](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
+Az IoT Hub és az IoT Edge-eszközök között küldött üzeneteket is ellenőrizheti. Ezeket az üzeneteket a Visual Studio Code [Azure IoT-eszközkészlet](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) bővítményével tekintheti meg. További információkért lásd: [hasznos eszközt az Azure IoT fejlesztése során](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
 
 ### <a name="restart-containers"></a>Indítsa újra a tárolók
 Miután megvizsgálta a naplók és üzenetek információit, próbálja meg újraindítani a tárolók:
@@ -181,7 +181,7 @@ Windows rendszeren:
 
 ## <a name="edge-agent-stops-after-about-a-minute"></a>Az Edge Agent körülbelül egy perc után leáll
 
-Az Edge Agent elindul, és körülbelül egy percig sikeresen fut, majd leáll. A naplók szerint az Edge Agent megpróbál kapcsolódni az IoT Hubhoz AMQP-n keresztül, és körülbelül 30 másodperc múlva megpróbál csatlakozni az AMQP használatával websocketen keresztül. Ha ez nem sikerül, az Edge Agent kilép. 
+Az Edge Agent elindul, és körülbelül egy percig sikeresen fut, majd leáll. A naplók jelzik, hogy az Edge Agent megpróbál kapcsolódni az IoT hubhoz amqp-n keresztül, és ezután megpróbál csatlakozni az AMQP használatával websocketen. Ha ez nem sikerül, az Edge Agent kilép. 
 
 Példa az Edge Agent-naplókra:
 
@@ -193,7 +193,7 @@ Példa az Edge Agent-naplókra:
 ```
 
 ### <a name="root-cause"></a>Gyökérok
-A gazdahálózaton egy hálózati konfiguráció meggátolja, hogy az Edge Agent elérje a hálózatot. Az ügynök először megpróbál AMQP-n keresztül csatlakozni (az 5671-es porton). Ha ez nem sikerül, a websockettel próbálkozik (a 443-as porton).
+A gazdahálózaton egy hálózati konfiguráció meggátolja, hogy az Edge Agent elérje a hálózatot. Az ügynök először megpróbál AMQP-n keresztül csatlakozni (az 5671-es porton). Ha a kapcsolódás sikertelen, a websockettel (a 443-as porton).
 
 Az IoT Edge-futtatókörnyezet minden modulon beállít egy-egy hálózatot a kommunikációhoz. Linux rendszeren ez a hálózat egy hídhálózat. Windows rendszeren NAT-ot használ. Ez a probléma gyakoribb a NAT-hálózatot használó Windows-tárolókat igénybe vevő windowsos eszközökön. 
 
@@ -235,7 +235,7 @@ Error parsing user input data: invalid hostname. Hostname cannot be empty or gre
 ```
 
 ### <a name="root-cause"></a>Gyökérok
-Az IoT Edge-futtatókörnyezet csak támogatja, amelyek 64 karakternél rövidebb gazdanévvel. Ez általában nem jelent problémát, fizikai gépek számára, de előfordulhatnak, ha a virtuális gépen a futtatókörnyezet beállítása. Az automatikusan létrehozott gazdanevek Windows virtuális gépek az Azure-ban üzemeltetett, általában hosszú. 
+Az IoT Edge-futtatókörnyezet csak támogatja, amelyek 64 karakternél rövidebb gazdanévvel. Fizikai gépek általában nem rendelkezik hosszú állomásnevek, de a probléma gyakoribb a virtuális gépen. Az automatikusan létrehozott gazdanevek Windows virtuális gépek az Azure-ban üzemeltetett, általában hosszú. 
 
 ### <a name="resolution"></a>Megoldás:
 Ha ezt a hibát látja, feloldhatja konfigurálásával a virtuális gép DNS-nevét, és beállítja a DNS-nevét a setup parancs az állomásnevet.
@@ -265,16 +265,16 @@ Ha ezt a hibát látja, feloldhatja konfigurálásával a virtuális gép DNS-ne
 Felmerülhet korlátozott eszközökön, például a Raspberry Pi-októl stabilitását, különösen akkor, ha az átjáróként használt. Memória kivételeket az edge hub modul kívül tünetei, alsóbb rétegbeli eszközök nem csatlakoznak, vagy az eszköz nem a telemetriai üzeneteket küld a néhány óra múlva.
 
 ### <a name="root-cause"></a>Gyökérok
-Az edge hub, az edge-futtatókörnyezet része, amely alapértelmezés szerint a teljesítmény optimalizáltuk, és megpróbálja nagy mennyiségű memóriát lefoglalni. Ez nem ideális korlátozott edge-eszközök és stabilitását problémákat okozhat.
+Az edge hub, az edge-futtatókörnyezet része, amely alapértelmezés szerint a teljesítmény optimalizáltuk, és megpróbálja nagy mennyiségű memóriát lefoglalni. Az optimalizálás nem ideális korlátozott peremhálózati eszközökre, és stabilitását problémákat okozhat.
 
 ### <a name="resolution"></a>Megoldás:
-Az Edge hub környezeti változó értéke **OptimizeForPerformance** való **hamis**. Ehhez két módja van:
+Az edge hub, a környezeti változó értéke **OptimizeForPerformance** való **hamis**. Ehhez két módja van:
 
 A felhasználói felületen: 
 
 A portálon *eszközadatok*->*modulok beállítása*->*speciális Edge-futtatókörnyezet-beállítások konfigurálása*, egy környezeti változó létrehozása nevű *OptimizeForPerformance* , amely *hamis* számára a *Edge hubot*.
 
-![optimizeforperformance][img-optimize-for-perf]
+![optimizeforperformance](./media/troubleshoot/OptimizeForPerformanceFalse.png)
 
 **VAGY**
 
@@ -297,7 +297,7 @@ A manifest nasazení:
 Ha egy EventLogException használatakor `Get-WinEvent` Windows, ellenőrizze a beállításjegyzékbeli bejegyzéseket.
 
 ### <a name="root-cause"></a>Gyökérok
-A `Get-WinEvent` PowerShell-paranccsal támaszkodik egy bejegyzés egy adott naplók keresése jelen `ProviderName`.
+A `Get-WinEvent` PowerShell-paranccsal támaszkodik egy beállításjegyzékbeli bejegyzést jelen naplók keresése egy adott `ProviderName`.
 
 ### <a name="resolution"></a>Megoldás:
 Állítsa be az IoT Edge-démon egy beállításjegyzék-bejegyzést. Hozzon létre egy **iotedge.reg** fájlt az alábbi tartalommal, és a Windows beállításjegyzék importálása a dupla kattintással vagy használatával a `reg import iotedge.reg` parancsot:
@@ -320,26 +320,24 @@ Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/ada
 ```
 
 ### <a name="root-cause"></a>Gyökérok
-Az IoT Edge-démon érvényesíti a folyamat azonosítóját összes modult a biztonsági okokból edgeHub csatlakozik. Ellenőrzi, hogy egy modul által küldött összes üzenet származik-e a fő a modul folyamatazonosítója. Egy üzenet egy másik folyamat azonosítója, mint az eredetileg létrehozott a modul által küldött, ha azt az üzenetet a 404-es hibaüzenettel elutasítja.
+Az IoT Edge-démon érvényesíti a folyamat azonosítóját összes modult a biztonsági okokból edgeHub csatlakozik. Ellenőrzi, hogy egy modul által küldött összes üzenet származik-e a fő a modul Folyamatazonosítója. Egy üzenet egy másik folyamat azonosítója, mint az eredetileg létrehozott a modul által küldött, ha azt az üzenetet a 404-es hibaüzenettel elutasítja.
 
 ### <a name="resolution"></a>Megoldás:
-Győződjön meg arról, hogy az azonos folyamatazonosító mindig használják az egyéni IoT Edge-modul üzeneteket küldeni a edgeHub. Például, ügyeljen arra, hogy `ENTRYPOINT` helyett `CMD` parancsot a Docker-fájlban, mivel `CMD` vezet a modul egy folyamat azonosítója és a bash-parancs a fő program fut, mivel egy másik folyamat azonosítója `ENTRYPOINT` lesz egy egyetlen folyamat azonosítója.
+Győződjön meg arról, hogy az azonos Folyamatazonosító mindig használják az egyéni IoT Edge-modul üzeneteket küldeni a edgeHub. Például, ügyeljen arra, hogy `ENTRYPOINT` helyett `CMD` parancsot a Docker-fájlban, mivel `CMD` eredményezi egy folyamat. a modul és a bash-parancs a fő program fut, mivel egy másik folyamat azonosító `ENTRYPOINT` lesz egy egyetlen folyamat azonosítója.
 
 
 ## <a name="firewall-and-port-configuration-rules-for-iot-edge-deployment"></a>Üzemelő IoT Edge-példány konfigurációs szabályokat tűzfal- és portbeállítások
-Az Azure IoT Edge lehetővé teszi, hogy az Azure-felhőben az IoT Hub támogatott protokollok használatával és egy helyszíni peremhálózati kiszolgáló közötti kommunikáció, lásd: [kommunikációs protokoll kiválasztása](../iot-hub/iot-hub-devguide-protocols.md). A fokozott biztonság érdekében az Azure IoT Edge és az Azure IoT Hub közötti kommunikációs csatornákat mindig megtörténik az lennie kimenő; Ez alapján a [szolgáltatások támogatott kommunikációs mintát](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/), amely minimálisra csökkenti a támadási felületet a rosszindulatú entitás megismerése. Csak a bejövő kommunikációhoz szükséges bizonyos forgatókönyvek esetén, ahol az Azure IoT Hub kell leküldéses üzenetek le az Azure IoT Edge-kiszolgáló (például felhő az eszközök üzenetküldése), ezek biztonságos TLS-csatorna használatával újra védelemmel, és további segítségével biztosítható X.509 a tanúsítványok és a TPM-eszköz modulok. Az Azure IoT Edge biztonsági Manager szabályozza, hogy ez a kommunikáció hogyan lehet létrehozni, tekintse meg [IoT Edge-biztonságkezelő](../iot-edge/iot-edge-security-manager.md).
+Az Azure IoT Edge lehetővé teszi, hogy az Azure-felhőben az IoT Hub támogatott protokollok használatával és egy helyszíni peremhálózati kiszolgáló közötti kommunikáció, lásd: [kommunikációs protokoll kiválasztása](../iot-hub/iot-hub-devguide-protocols.md). A fokozott biztonság érdekében a kommunikációs csatornák között az Azure IoT Edge és az Azure IoT Hub mindig konfigurálni kell a kimenő. Ez a konfiguráció alapján a [szolgáltatások támogatott kommunikációs mintát](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/), amely minimálisra csökkenti a támadási felületet a rosszindulatú entitás megismerése. Bejövő kommunikáció csak akkor szükséges, ahol az Azure IoT Hub kell üzenetek leküldése az Azure IoT Edge-eszköz bizonyos forgatókönyvek esetén. Felhőből az eszközre irányuló üzenetek biztonságos TLS-csatorna használatával véd, és további segítségével biztosítható X.509-tanúsítványokat és a TPM-eszköz modulok. Az Azure IoT Edge biztonsági Manager szabályozza, hogy ez a kommunikáció hogyan lehet létrehozni, tekintse meg [IoT Edge-biztonságkezelő](../iot-edge/iot-edge-security-manager.md).
 
 IoT Edge biztosít továbbfejlesztett konfigurálása az Azure IoT Edge-futtatókörnyezet, és üzembe helyezett modulokat, az továbbra is függ az alapul szolgáló machine és a hálózati konfiguráció. Ezért elengedhetetlen, annak érdekében, hogy biztonságos peremhálózati és a felhő közötti kommunikációhoz megfelelő hálózati és tűzfalbeállításokat szabályok vannak beállítva. A következő használhatja útmutatóként tűzfalszabályok konfigurálása az alapul szolgáló kiszolgálók az Azure IoT Edge-futtatókörnyezet üzemeltető:
 
 |Protokoll|Port|bejövő|Kimenő|Útmutatás|
 |--|--|--|--|--|
 |MQTT|8883|TILTOTT (alapértelmezett)|TILTOTT (alapértelmezett)|<ul> <li>Konfigurálja a kimenő (kimenő) kell nyílt, amikor az MQTT protokoll használatával.<li>az MQTT 1883 IoT Edge által nem támogatott. <li>Bejövő (bejövő) kapcsolatok le kell tiltani.</ul>|
-|AMQP|5671|TILTOTT (alapértelmezett)|NYÍLT (alapértelmezett)|<ul> <li>Alapértelmezett kommunikációs protokollt az IoT Edge-hez. <li> Nyissa meg kell, ha más támogatott protokollok nincs konfigurálva az Azure IoT Edge vagy az AMQP protokoll kívánt kell konfigurálni.<li>az AMQP 5672 IoT Edge által nem támogatott.<li>Tiltsa le ezt a portot, ha az Azure IoT Edge használata egy másik IoT Hub protokoll támogatott.<li>Bejövő (bejövő) kapcsolatok le kell tiltani.</ul></ul>|
-|HTTPS|443|TILTOTT (alapértelmezett)|NYÍLT (alapértelmezett)|<ul> <li>Konfigurálja a kimenő (kimenő) kell nyissa meg a 443-as kiépítése az IoT Edge, ez akkor szükséges, ha manuális parancsprogramokkal vagy az Azure IoT Device Provisioning Service (DPS). <li>Bejövő (bejövő) kapcsolatot kell lennie a nyílt csak az adott forgatókönyveket: <ul> <li>  Ha a levéleszközök is küldhet kéréseket metódus, amely transzparens átjáró. Ebben az esetben 443-as portot nem kell megnyitni a külső hálózatokhoz IoTHub csatlakozni, vagy adja meg az IoTHub-szolgáltatások az Azure IoT Edge segítségével. Így a bejövő szabály csak megnyitásához a belső hálózatról bejövő (bejövő) korlátozott lehet. <li> -Ügyfél (C2D) eszközök esetén.</ul><li>IoT Edge által nem támogatott a 80-as HTTP-hez.<li>Ha nem HTTP protokollt (például AMQP, MQTT) nem konfigurálható a vállalat; az üzenetek küldhetők a websockets protokoll. 443-as portot ebben az esetben WebSocket-kommunikációhoz fogja használni.</ul>|
+|AMQP|5671|TILTOTT (alapértelmezett)|NYÍLT (alapértelmezett)|<ul> <li>Alapértelmezett kommunikációs protokollt az IoT Edge-hez. <li> Nyissa meg kell, ha más támogatott protokollok nincs konfigurálva az Azure IoT Edge vagy az AMQP protokoll kívánt kell konfigurálni.<li>az AMQP 5672 IoT Edge által nem támogatott.<li>Tiltsa le ezt a portot, ha az Azure IoT Edge használja egy másik IoT Hub protokoll támogatott.<li>Bejövő (bejövő) kapcsolatok le kell tiltani.</ul></ul>|
+|HTTPS|443|TILTOTT (alapértelmezett)|NYÍLT (alapértelmezett)|<ul> <li>Konfigurálja a kimenő (kimenő) kell nyissa meg a 443-as kiépítése az IoT Edge. Ez a konfiguráció manuális parancsprogramokkal vagy az Azure IoT Device Provisioning Service (DPS) szükség. <li>Bejövő (bejövő) kapcsolatot kell lennie a nyílt csak az adott forgatókönyveket: <ul> <li>  Ha a levéleszközök is küldhet kéréseket metódus, amely transzparens átjáró. Ebben az esetben 443-as portot nem kell megnyitni a külső hálózatokhoz IoTHub csatlakozni, vagy adja meg az IoTHub-szolgáltatások az Azure IoT Edge segítségével. Így a bejövő szabály csak megnyitásához a belső hálózatról bejövő (bejövő) korlátozott lehet. <li> -Ügyfél (C2D) eszközök esetén.</ul><li>IoT Edge által nem támogatott a 80-as HTTP-hez.<li>Ha nem HTTP-protokoll (például AMQP és MQTT) nem konfigurálható a vállalat; az üzenetek küldhetők a websockets protokoll. 443-as portot ebben az esetben WebSocket-kommunikációhoz fogja használni.</ul>|
 
 
 ## <a name="next-steps"></a>További lépések
-Úgy gondolja, hogy hibát talált az IoT Edge platformon? Kérjük, a kijavításához [küldje el a problémát](https://github.com/Azure/iotedge/issues). 
+Úgy gondolja, hogy hibát talált az IoT Edge platformon? [Küldje el a problémát](https://github.com/Azure/iotedge/issues) , hogy továbbra is javíthatja. 
 
-<!-- Images -->
-[img-optimize-for-perf]: ./media/troubleshoot/OptimizeForPerformanceFalse.png

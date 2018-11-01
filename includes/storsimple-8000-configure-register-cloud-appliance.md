@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: d004de75284011f4ceaaca88fd19e61900824f51
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165255"
+---
 #### <a name="to-configure-and-register-the-cloud-appliance"></a>A felhőalapú berendezés konfigurálása és regisztrálása
 
 1. Az **Eszközök** panelen válassza ki a létrehozott StorSimple Cloud Appliance-t, majd kattintson rá.

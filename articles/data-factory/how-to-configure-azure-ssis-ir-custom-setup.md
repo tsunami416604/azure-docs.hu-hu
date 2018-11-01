@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 10/31/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 3ba3e6036821323146f00cf9c255b70606771aed
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 2edaea1cfb02b250b27c47d58b6c1d1ef6501480
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241157"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420268"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>A telepítő az Azure-SSIS integrációs modul testreszabása
 
@@ -98,7 +98,7 @@ Testre szabhatja az Azure-SSIS integrációs modul, a következőkre van szüks�
 
        ![Másolja ki és mentse a közös hozzáférésű jogosultságkód igénylése](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image8.png)
 
-    1.  Amikor üzembe, vagy konfigurálja újra az Azure-SSIS IR a Data Factory felhasználói felülete, az Azure-SSIS integrációs modul indítása előtt, adja meg a tároló SAS URI-t a megfelelő mezőben:
+    1.  Amikor üzembe, vagy konfigurálja újra az Azure-SSIS IR a Data Factory felhasználói felülete, az Azure-SSIS integrációs modul indítása előtt, meg kell adni SAS URI-ját a tároló a megfelelő mezőben **speciális beállítások** panelen:
 
        ![Adja meg a közös hozzáférésű Jogosultságkód](media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
 
@@ -141,6 +141,8 @@ Testre szabhatja az Azure-SSIS integrációs modul, a következőkre van szüks�
 
        1. A `.NET FRAMEWORK 3.5` mappába, amely tartalmazza a .NET-keretrendszer, amely az Azure-SSIS integrációs modult. minden egyes csomópontjára egyéni összetevők szükség lehet egy korábbi telepítése egy egyéni telepítés
 
+       1. Egy `AAS` mappába, amely tartalmaz egy egyéni telepítés klienskódtárak telepítése az Azure-SSIS integrációs modul helyének, amelyek lehetővé teszik a szolgáltatás egyszerű hitelesítés használata az Azure Analysis Serviceshez (AAS) példányhoz való csatlakozáshoz az Analysis Services feladatok minden egyes csomóponton. Először töltse le a legújabb **MSOLAP (amd64)** és **AMO** ügyfél könyvtárak/Windows telepítők – például `x64_15.0.900.108_SQL_AS_OLEDB.msi` és `x64_15.0.900.108_SQL_AS_AMO.msi` – ki [Itt](https://docs.microsoft.com/en-us/azure/analysis-services/analysis-services-data-providers), majd Töltse fel őket az összes együtt `main.cmd` alkalmazásfájlokat a tárolóba.  
+
        1. A `BCP` mappába, amely egy egyéni telepítő telepítse az SQL Server parancssori segédeszközöket tartalmaz (`MsSqlCmdLnUtils.msi`), beleértve a tömeges másolási funkciójával (`bcp`), az Azure-SSIS integrációs modult. minden egyes csomópontjára
 
        1. Egy `EXCEL` mappába, amely egy egyéni telepítőt, és telepítse a nyílt forráskódú szerelvényeket tartalmazza (`DocumentFormat.OpenXml.dll`, `ExcelDataReader.DataSet.dll`, és `ExcelDataReader.dll`) minden egyes csomópontján az Azure-SSIS integrációs modult.
@@ -155,7 +157,7 @@ Testre szabhatja az Azure-SSIS integrációs modul, a következőkre van szüks�
 
        1. A `STORAGE` mappába, amely tartalmazza az Azure PowerShell telepítése az Azure-SSIS integrációs modult. minden egyes csomópontjára egy egyéni telepítés A telepítő lehetővé teszi a üzembe helyezése és futtatása SSIS-csomagok futtató [PowerShell-parancsfájlok segítségével kezelheti az Azure Storage-fiók](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-use-blobs-powershell). Másolás `main.cmd`, egy minta `AzurePowerShell.msi` (vagy telepítse a legújabb verziót), és `storage.ps1` a tárolóba. A csomagok PowerShell.dtsx sablonként használni. A csomag sablont egyesít egy [Azure Blob letöltése feladat](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task), mely letöltések `storage.ps1` módosíthatóvá PowerShell-parancsfájl, és a egy [folyamat végrehajtása tevékenység](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/) a parancsfájl, amely végrehajtja a minden egyes csomóponton.
 
-       1. A `TERADATA` mappába, amely tartalmazza az egyéni telepítési parancsfájl (`main.cmd)`, az adott fájl (`install.cmd`), és csomagok (`.msi`). Ezeket a fájlokat a Teradata összekötők, a Tpt-vel API-t és az ODBC-illesztő az Azure-SSIS integrációs modul Enterprise Edition minden egyes csomópontjára telepítse. Ez a beállítás lehetővé teszi a Teradata Csatlakozáskezelő forrás és cél használatát. Először töltse le a Teradata-eszközök és segédprogramok (TTU) 15.x zip-fájl (például `TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip`) származó [Teradata](http://partnerintelligence.teradata.com), majd töltse fel a fenti együtt `.cmd` és `.msi` fájlok a tárolóba.
+       1. A `TERADATA` mappába, amely tartalmazza az egyéni telepítési parancsfájl (`main.cmd`), az adott fájl (`install.cmd`), és csomagok (`.msi`). Ezeket a fájlokat a Teradata összekötők, a Tpt-vel API-t és az ODBC-illesztő az Azure-SSIS integrációs modul Enterprise Edition minden egyes csomópontjára telepítse. Ez a beállítás lehetővé teszi a Teradata Csatlakozáskezelő forrás és cél használatát. Először töltse le a Teradata-eszközök és segédprogramok (TTU) 15.x zip-fájl (például `TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip`) származó [Teradata](http://partnerintelligence.teradata.com), majd töltse fel a fenti együtt `.cmd` és `.msi` fájlok a tárolóba.
 
     ![A felhasználó forgatókönyvek mappában található mappák](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
 

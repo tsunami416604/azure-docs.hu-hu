@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: jasonh
-ms.openlocfilehash: 836bdccbf3f8887a47da38b47b414722c878be04
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: ab3f4dcdc5a5ad8528080c90fa6c17f9493d19ac
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046012"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420302"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>Eclipse-hez készült Azure eszközkészlet használata Spark-alkalmazások egy HDInsight-fürt létrehozása
 
@@ -32,7 +32,7 @@ Az Azure Toolkit for Eclipse HDInsight Tools használatával írt Scala Spark al
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A HDInsight Apache Spark-fürt. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
-* Oracle Java Development Kit 8-as verzió, az Eclipse IDE-modul használt. A letöltheti a [Oracle webhely](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+* Oracle Java Development Kit 8-as verzió, az Eclipse IDE-modul használt. A letöltheti a [Oracle webhely](https://aka.ms/azure-jdks).
 * Az eclipse IDE. Ez a cikk az Eclipse Neon használja. A telepítheti a [Eclipse webhely](https://www.eclipse.org/downloads/).
 
 

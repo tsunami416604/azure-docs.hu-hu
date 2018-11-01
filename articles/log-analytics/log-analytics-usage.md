@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: d3714f7226de2a457f37e6ea4afa2b066ee460d1
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c14013121517267445e89f43e228b03ba184f013
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409135"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415256"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Az adathasználat elemzése a Log Analyticsben
 
@@ -49,12 +49,12 @@ A **Log Analytics-használat** irányítópult az alábbi információkat jelen�
     - Az adatok gyűjtésével és indexelésével eltelt idő  
 - Lekérdezések listája
 
-![Használat és költségek irányítópult](./media/log-analytics-manage-cost-storage/usage-estimated-cost-dashboard-01.png)<br>
+![Használat és költségek irányítópult](media/log-analytics-usage/usage-estimated-cost-dashboard-01.png)<br>
 )
 
 ### <a name="to-work-with-usage-data"></a>A használati adatok használata
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.<br><br> ![Azure Portal](./media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+2. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.<br><br> ![Azure Portal](media/log-analytics-usage/azure-portal-01.png)<br><br>  
 3. A Log Analytics-munkaterületek listájában válasszon ki egy munkaterületet.
 4. A bal oldali panelen található listában válassza ki a **Használat és becsült költségek** elemet.
 5. A **Használat és becsült költségek** irányítópulton az **Idő: Elmúlt 24 óra** elemre kattintva módosíthatja az időintervallumot.<br><br> ![időintervallum](./media/log-analytics-usage/usage-time-filter-01.png)<br><br>

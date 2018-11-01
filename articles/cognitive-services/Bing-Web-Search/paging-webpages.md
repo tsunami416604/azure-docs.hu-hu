@@ -11,12 +11,12 @@ ms.component: bing-web-search
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: erhopf
-ms.openlocfilehash: 4aa3509fcdfc6fd1bccb4db95a8c916a42ce23d2
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: e98407dface348dfdbc99a1146d50c46f3bb03a7
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125272"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739243"
 ---
 # <a name="how-to-page-through-results-from-the-bing-web-search-api"></a>A Bing Web Search API az eredmények között
 
@@ -61,4 +61,7 @@ Host: api.cognitive.microsoft.com
 
 A Web Search API, amelyek közé tartozik a weblapok és képek, videók és hírek tartalmazhatnak eredményt adja vissza. Ha a keresési eredmények oldalon lapozás a [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) válasz és nem a többi válaszok például képeket vagy híreket. Például, ha a beállított `count` 50, vissza 50 weblap eredményeket kap, de a válasz tartalmazhat további válaszokat is az eredményeket. A válasz tartalmazhat például 15 képek és 4 híreket. Is lehetőség, hogy előfordulhat, hogy az eredmények tartalmazzák a híreket az első oldal, de nem a második oldal, vagy fordítva.   
 
-Ha megad a `responseFilter` lekérdezési paraméter, és nem szerepel a lista weblapok, ne használja a `count` és `offset` paramétereket.  
+Ha megad a `responseFilter` lekérdezési paraméter, és nem szerepel a lista weblapok, ne használja a `count` és `offset` paramétereket. 
+
+> [!NOTE]
+> A `TotalEstimatedAnswers` mező elszámolás kérheti le az aktuális lekérdezés keresési eredmények teljes száma.  Ha `count` és `offset` paraméterek, a `TotalEstimatedAnswers` száma változhat. 

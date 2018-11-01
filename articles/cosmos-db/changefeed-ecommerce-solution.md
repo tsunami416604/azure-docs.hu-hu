@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: d2c4c890e1a1599e68fba1a0728061ec244f382f
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 241cd2fddf31373ed9ca208efb0612dd4332131c
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055724"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740977"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Használja az Azure Cosmos DB módosításcsatornáját valós idejű adatelemzés megjelenítése
 
@@ -207,7 +207,7 @@ Az Azure Stream Analytics egy teljes körűen felügyelt felhőszolgáltatás, a
    * Hagyja **eseményszerializációs formátum** , **JSON**.  
    * Hagyja **Encoding mező** beállítása **UTF-8**.  
    * Hagyja **esemény tömörítési típusa** mező értéke **None**.  
-   * Kattintson a **Mentés** gombra.
+   * Válassza ki a **Mentés** gombot.
 
 5. Lépjen vissza a stream analytics-feladat oldalát, és válassza ki **kimenetek**.  
 
@@ -219,10 +219,10 @@ Az Azure Stream Analytics egy teljes körűen felügyelt felhőszolgáltatás, a
    * Hagyja a **csoportos munkaterület** mező értéke **engedélyezze a kapcsolatot a munkaterületek betöltése**.  
    * Az a **adatkészlet neve** írja be a következőt **averagePrice**.  
    * Az a **táblanév** írja be a következőt **averagePrice**.  
-   * Kattintson a **engedélyezés** gombra, majd kövesse az utasításokat a Power bi-bA a kapcsolat engedélyezéséhez.  
-   * Kattintson a **Mentés** gombra.  
+   * Válassza ki a **engedélyezés** gombra, majd kövesse az utasításokat a Power bi-bA a kapcsolat engedélyezéséhez.  
+   * Válassza ki a **Mentés** gombot.  
 
-8. Ezután lépjen vissza a **streamjob1** kattintson **lekérdezés szerkesztése**.
+8. Ezután lépjen vissza a **streamjob1** válassza **lekérdezés szerkesztése**.
 
    ![Lekérdezés szerkesztése](./media/changefeed-ecommerce-solution/edit-query.png)
  
@@ -235,9 +235,9 @@ Az Azure Stream Analytics egy teljes körűen felügyelt felhőszolgáltatás, a
     FROM input  
     GROUP BY Action, TumblingWindow(second,5) 
    ```
-10. Kattintson a **mentése** a bal felső sarkában.  
+10. Válassza ki **mentése** a bal felső sarkában.  
 
-11. Most lépjen vissza **streamjob1** , és kattintson a **Start** gombra a lap tetején. Az Azure Stream Analytics indítása pár percet is igénybe vehet, de végül azt látja, módosítsa "Indítás" értékről "Fut".
+11. Most lépjen vissza **streamjob1** , és válassza ki a **Start** gombra a lap tetején. Az Azure Stream Analytics indítása pár percet is igénybe vehet, de végül azt látja, módosítsa "Indítás" értékről "Fut".
 
 ## <a name="connect-to-power-bi"></a>Power bi-hoz
 
@@ -249,9 +249,9 @@ Power BI egy üzleti elemzési eszközök az adatok elemzése és elemzéseket o
 
 3. Válassza ki **+ csempe hozzáadása** a jobb felső sarokban.  
 
-4. Válassza ki **egyedi Streamelési adatok**, majd kattintson a **tovább** gombra.  
+4. Válassza ki **egyedi Streamelési adatok**, majd válassza ki a **tovább** gombra.  
  
-5. Válassza ki **averagePrice** a **az ADATKÉSZLETEK**, majd kattintson a **tovább**.  
+5. Válassza ki **averagePrice** a **az ADATKÉSZLETEK**, majd **tovább**.  
 
 6. Az a **Vizualizáció típusának** mezőben válassza ki **fürtözött sávdiagram** a legördülő menüből. A **tengely**, adja hozzá a műveletet. Kihagyás **jelmagyarázat** bármit hozzáadása nélkül. Ezután a következő szakaszban nevű **érték**, adjon hozzá **átlagos**. Válassza ki **tovább**, majd a diagram cím, és válassza ki **alkalmaz**. Az irányítópulton megjelenik egy új diagram!  
 
@@ -261,7 +261,7 @@ Power BI egy üzleti elemzési eszközök az adatok elemzése és elemzéseket o
    b. **Kimeneti alias:** top5Output, adatkészlet neve: top5, tábla neve: top5  
    c. **Kimeneti alias:** uniqueVisitorCountOutput, adatkészlet neve: uniqueVisitorCount, tábla neve: uniqueVisitorCount
 
-   Kattintson a **lekérdezés szerkesztése** , és illessze be a következő lekérdezéseket **fent** egy már megírt.
+   Válassza ki **lekérdezés szerkesztése** , és illessze be a következő lekérdezéseket **fent** egy már megírt.
 
    ```sql
     /*TOP 5*/
@@ -329,7 +329,7 @@ Mostantól megfigyelheti hogyan használhatja az új adatok eszköz valódi e-ke
 
    Adjon hozzá egy másik gyűjteményt az **changefeedlabdatabase** nevű **topItems** a **korlátlan** tárolási kapacitást. Írási **/cikk** partíciókulcsként.
 
-2. Kattintson a a **topItems** gyűjteményt, majd a **méretezés és beállítások** állítsa be a **élettartama** kell **30 másodperc** úgy, hogy topItems frissítése Ez lehet 30 másodperc.
+2. Válassza ki a **topItems** gyűjteményt, majd a **méretezés és beállítások** állítsa be a **élettartama** kell **30 másodperc** úgy, hogy topItems frissítése Ez lehet 30 másodperc.
 
    ![Élettartam](./media/changefeed-ecommerce-solution/time-to-live.png)
 

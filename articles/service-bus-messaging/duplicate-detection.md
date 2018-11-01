@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: spelluru
-ms.openlocfilehash: fb42f9920ce173b25cbc16725cf1f9dfd96fcc9e
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 5241020b1db3797891ae13da54cc9225bbd4619b
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48853453"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741267"
 ---
 # <a name="duplicate-detection"></a>Duplikálás észlelése
 
@@ -41,6 +41,9 @@ A *üzenetazonosító* mindig lehet néhány GUID, de az azonosító az üzleti 
 A portálon, a funkció be van kapcsolva az entitás létrehozása során a **ismétlődések észlelésének engedélyezése** jelölőnégyzetet, amely alapértelmezés szerint ki van kapcsolva. Új témakörök létrehozására szolgáló beállítás egyenértékű.
 
 ![][1]
+
+> [!IMPORTANT]
+> Ön nem engedélyezi/letiltja duplikáltelem-észlelési az üzenetsor létrehozása után. Csak ehhez az üzenetsor létrehozása idején. 
 
 Programozott módon, állítsa be a jelzőt mellékel a [QueueDescription.requiresDuplicateDetection](/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection) tulajdonság a .NET API teljes keretében. Az Azure Resource Manager API-val a beállítás értéke az a [queueProperties.requiresDuplicateDetection](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) tulajdonság.
 

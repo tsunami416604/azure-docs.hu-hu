@@ -4,20 +4,30 @@ description: Ismert problémák az Azure Migrate szolgáltatás és a hibaelhár
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/24/2018
+ms.date: 10/31/2018
 ms.author: raynew
-ms.openlocfilehash: a32b1b73a12242a6c6b1c29fbf116aff73515b46
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 0b2954ddfda0ab4c94ddf6176d76d8bcd937fa42
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086743"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413333"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
 ## <a name="troubleshoot-common-errors"></a>Gyakori hibák elhárítása
 
 [Az Azure Migrate](migrate-overview.md) felméri a helyszíni számítási feladatokat az Azure-ba való migrálásra. Ez a cikk segítségével üzembe helyezése és az Azure Migrate szolgáltatással kapcsolatos problémák elhárítása.
+
+### <a name="i-am-using-the-continuous-discovery-ova-but-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>Az OVA, de a saját helyszíni környezetben törölt virtuális gépek továbbra is alatt jelennek meg a portál folyamatos felderítési használok.
+
+A folyamatos felderítési Appliance berendezés csak az folyamatosan teljesítményadatokat gyűjt, semmilyen konfigurálási változást nem észleli a helyszíni környezetben (pl. virtuális gép hozzáadása, törlése, lemez hozzáadása stb.). Ha a helyszíni környezet konfigurációja módosul, a következőket teheti a változások tükrözésére a portálon:
+
+- Elemek (virtuális gépek, lemezek, magok stb.) hozzáadása: Ezeknek a módosításoknak az Azure Portalon való tükrözéséhez állítsa le, majd indítsa újra a felderítést a berendezésen. Ez biztosítja, hogy a módosítások frissítése megtörténjen az Azure Migrate-projektben.
+
+   ![Felderítés leállítása](./media/troubleshooting-general/stop-discovery.png)
+
+- Virtuális gépek törlése: A berendezés kialakítása miatt a virtuális gépek törlése akkor sem lesz látható, ha leállítja, majd újraindítja a felderítést. Ennek az oka, hogy a későbbi felderítések adatait a rendszer hozzáfűzi a korábbi felderítések adataihoz, nem pedig felülírja azokat. Ebben az esetben egyszerűen figyelmen kívül hagyhatja a virtuális gépet a portálon. Ehhez távolítsa el a csoportból, és számítsa újra az értékelést.
 
 ### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>Migrálási projekt létrehozása nem sikerült hiba *kérelmek felhasználó identitást meghatározó fejléceket kell tartalmaznia.*
 
@@ -40,14 +50,6 @@ Ahhoz, hogy a lemez- és teljesítményadatok gyűjtése, módosítsa a statiszt
 Megnyithatja a **Essentials** című rész a **áttekintése** a projekt a pontos helyét a metaadatokat tároló azonosításához. A hely egyben véletlenszerűen földrajzi helyen belül az Azure Migrate, és nem módosítható. Ha csak egy adott régióban hozzon létre egy projektet, a migrálási projekt létrehozása a REST API-k segítségével, adja át a kívánt régiót.
 
    ![Projekt helye](./media/troubleshooting-general/geography-location.png)
-
-### <a name="i-am-using-the-continuous-discovery-ova-but-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>Az OVA, de a saját helyszíni környezetben törölt virtuális gépek továbbra is alatt jelennek meg a portál folyamatos felderítési használok.
-
-A folyamatos felderítési Appliance berendezés csak az folyamatosan teljesítményadatokat gyűjt, semmilyen konfigurálási változást nem észleli a helyszíni környezetben (pl. virtuális gép hozzáadása, törlése, lemez hozzáadása stb.). Ha egy konfigurációmódosítás a helyszíni környezetben, hogy tükrözzék a változásokat a portál a következőket teheti:
-
-1. További elemek (virtuális gépek, lemezek, magok stb.): A változásoknak az Azure Portalon, a felderítés a készülék leállítása és elindítása azt újra. Ez biztosítja, hogy a változtatások az Azure Migrate-projektben.
-
-2. Virtuális gépek törlése: lehet a célja, a készülék, virtuális gépek törlése nem jelenik meg akkor is, ha leállítja és elindítja a felderítést. Ennek az oka, hogy az ezt követő felderítések adatokat hozzáfűzi korábbi felderítések, és nem bírálja felül. Ebben az esetben egyszerűen figyelmen kívül hagyhatja a portálon, a virtuális gép eltávolítása a csoportból, és az értékelés újraszámításakor.
 
 ## <a name="collector-errors"></a>Naplógyűjtők hibái
 
@@ -219,9 +221,8 @@ Esemény nyomkövetése for Windows gyűjteni, tegye a következőket:
 
 ## <a name="collector-error-codes-and-recommended-actions"></a>Gyűjtő hibakódok és ajánlott műveletek
 
-|           |                                |                                                                               |                                                                                                       |                                                                                                                                            |
-|-----------|--------------------------------|-------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| Hibakód | Hiba neve                      | Üzenet                                                                       | Lehetséges okok                                                                                        | Javasolt művelet                                                                                                                          |
+| Hibakód | Hiba neve   | Üzenet   | Lehetséges okok | Javasolt művelet  |
+| --- | --- | --- | --- | --- |
 | 601       | CollectorExpired               | A gyűjtő érvényessége lejárt.                                                        | A gyűjtő érvényessége lejárt.                                                                                    | Töltse le a gyűjtő egy új verzióját, majd próbálkozzon újra.                                                                                      |
 | 751       | UnableToConnectToServer        | Nem sikerült csatlakozni a(z) %Name; vCenter Server-kiszolgálóhoz a következő hiba miatt: %ErrorMessage;.     | További részletekért tekintse meg a hibaüzenetet.                                                             | Hárítsa el a problémát, és próbálkozzon újra.                                                                                                           |
 | 752       | InvalidvCenterEndpoint         | A(z) %Name; nem vCenter Server-kiszolgáló.                                  | Adja meg a VCenter Server-kiszolgáló adatait.                                                                       | Próbálja megismételni a műveletet helyes vCenter Server-kiszolgálói adatokkal.                                                                                   |

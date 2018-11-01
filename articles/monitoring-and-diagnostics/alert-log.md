@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 627c0ee5a2fab333b8a120867ab54ea76bc66823
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fd183b5776f30b12d577a94be147eabef05d258f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976839"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419367"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával riasztások  
 
@@ -34,26 +34,26 @@ Részletes tovább lépésenkénti útmutató, amellyel az Azure portal felület
 
 ### <a name="create-a-log-alert-rule-with-the-azure-portal"></a>A riasztási szabály létrehozása az Azure portal használatával
 1. Az a [portál](https://portal.azure.com/), jelölje be **figyelő** , és válassza ki a MONITOR terület - **riasztások**.  
-    ![Monitorozás](./media/monitor-alerts-unified/AlertsPreviewMenu.png)
+    ![Monitorozás](media/alert-log/AlertsPreviewMenu.png)
 
 1. Válassza ki a **Új riasztási szabály** gombra kattintva hozzon létre egy új értesítés az Azure-ban.
-    ![Riasztás hozzáadása](./media/monitor-alerts-unified/AlertsPreviewOption.png)
+    ![Riasztás hozzáadása](media/alert-log/AlertsPreviewOption.png)
 
 1. A riasztás létrehozása szakaszt a három részből álló mellett látható: *riasztási feltétel megadása*, *riasztás részleteinek megadása*, és *definiálása műveletcsoport*.
 
-    ![Szabály létrehozása](./media/monitor-alerts-unified/AlertsPreviewAdd.png)
+    ![Szabály létrehozása](media/alert-log/AlertsPreviewAdd.png)
 
 1.  A riasztási feltétel megadása használatával a **erőforrás kiválasztása** hivatkozásra, és adja meg a cél erőforrás kijelölésével. Válassza ki a szűrő a _előfizetés_, _erőforrástípus_, és a szükséges _erőforrás_. 
 
     >[!NOTE]
 
     > A napló létrehozása a riasztás – ellenőrzése a **log** jel a kiválasztott erőforrás érhető el, mielőtt továbblépne.
-    ![Erőforrás kiválasztása](./media/monitor-alerts-unified/Alert-SelectResourceLog.png)
+    ![Erőforrás kiválasztása](media/alert-log/Alert-SelectResourceLog.png)
 
  
 1. *Naplóriasztások*: Győződjön meg arról **erőforrástípus** van egy analytics-forrásokhoz, például *Log Analytics* vagy *Application Insights* és típusa, jelezze **napló** , majd egyszer megfelelő **erőforrás** van kiválasztva, kattintson a *kész*. Következő az a **adja meg a feltételeket** érhető el, az erőforrás és a jel listából jel beállítások listájának megtekintése gombra **egyéni naplóbeli keresés** beállítást a kiválasztott log figyelő szolgáltatásokhoz, mint az *napló Analytics* vagy *az Application Insights*.
 
-   ![Válasszon ki egy erőforrást – egyéni keresés](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog.png)
+   ![Válasszon ki egy erőforrást – egyéni keresés](media/alert-log/AlertsPreviewResourceSelectionLog.png)
 
    > [!NOTE]
 
@@ -61,7 +61,7 @@ Részletes tovább lépésenkénti útmutató, amellyel az Azure portal felület
 
 1.  *Naplóriasztások*: a kijelölt riasztási lekérdezés is fel kell tüntetni **keresési lekérdezés** mező; Ha a lekérdezés szintaxisa helytelen a mezőben az hiba vörös színnel jelenik meg. Ha a lekérdezés szintaxisa helyes - referenciaként előzményadatok a megadott lekérdezés látható gráfként kapcsolóval, hogy a Teljesítménybeállítások az időtartomány utolsó 6 óra múlt héten.
 
- ![Riasztási szabály konfigurálása](./media/monitor-alerts-unified/AlertsPreviewAlertLog.png)
+ ![Riasztási szabály konfigurálása](media/alert-log/AlertsPreviewAlertLog.png)
 
  > [!NOTE]
 
@@ -69,7 +69,7 @@ Részletes tovább lépésenkénti útmutató, amellyel az Azure portal felület
 
     >  Az Application insights használatával Naplóriasztások Metrikamérés típusú, mely adott változó az adatok csoportosításához használatával megadhatja a **az összesített** lehetőséget; az alábbi képen szemléltetett módon:
 
-    ![a beállítás az összesítés](./media/monitor-alerts-unified/aggregate-on.png)
+    ![a beállítás az összesítés](media/alert-log/aggregate-on.png)
 
 1.  *Naplóriasztások*: A helyen, a Vizualizáció **riasztási logika** kiválaszthatók a megjelenített beállítások a feltétel, az összesítés, végül a küszöbértéket. Végül adja meg a logikai időt a megadott feltétel értékelése használatával **időszak** lehetőséget. Milyen gyakran fusson a riasztás a kiválasztásával együtt **gyakorisága**.
 A **Naplóriasztások** riasztások alapjául is:
@@ -83,7 +83,7 @@ A **Naplóriasztások** riasztások alapjául is:
 
     - **Riasztások mellőzésének időtartama**: bekapcsolja a riasztási szabály letiltásra, amikor a szabály műveletek le vannak tiltva, egy meghatározott ideig új riasztás létrehozása után. A szabály továbbra is fut, és riasztási rekordokat hoz létre a megadott feltétel teljesülése. Ami lehetővé teszi, ideje a probléma javításához ismétlődő műveletek futtatása nélkül.
 
-        ![Naplóriasztásokra vonatkozó figyelmeztetések mellőzése](./media/monitor-alerts-unified/AlertsPreviewSuppress.png)
+        ![Naplóriasztásokra vonatkozó figyelmeztetések mellőzése](media/alert-log/AlertsPreviewSuppress.png)
 
         > [!TIP]
         > Adjon meg egy mellőzése riasztási érték nagyobb, mint a riasztásból értesítéseket le lesz állítva, átfedés nélkül gyakorisága
@@ -98,19 +98,19 @@ A **Naplóriasztások** riasztások alapjául is:
     - **E-mailes értesítés**: felülbírálások *e-mail tárgya* az e-mailben küldött műveletcsoport; Ha egy vagy több e-mail-művelet az említett műveleti csoport létezik. Az üzenet törzsét nem módosítható, és ez a mező **nem** e-mail-cím.
     - **Egyéni Json-adattartalom tartalmaznak**: felülbírálja a webhook Műveletcsoportok; által használt JSON-Beállításfájlt, ha az említett műveleti csoport szerepel egy vagy több webhook-műveletek. Felhasználó úgy adhat meg a JSON társított műveletcsoport; konfigurált összes webhookok használandó formátumát a webhook-formátumokról további információkért lásd: [Naplóriasztásokra vonatkozó webhook művelettel](monitor-alerts-unified-log-webhook.md). Nézet Webhook lehetőséget biztosítunk formátumú JSON-mintafájl adatairól használatával ellenőrizheti.
 
-        ![Naplóriasztásokra vonatkozó művelet felülbírálások](./media/monitor-alerts-unified/AlertsPreviewOverrideLog.png)
+        ![Naplóriasztásokra vonatkozó művelet felülbírálások](media/alert-log/AlertsPreviewOverrideLog.png)
 
 
 1. Ha érvényes az összes mező kitöltése és a zöld osztásjelek a **riasztási szabály létrehozása** gombra, ha rájuk kattint, és a egy riasztás jön létre az Azure Monitor - riasztásokat. A riasztások irányítópult minden riasztás is megtekinthetők.
 
-    ![A szabály létrehozása](./media/monitor-alerts-unified/AlertsPreviewCreate.png)
+    ![A szabály létrehozása](media/alert-log/AlertsPreviewCreate.png)
 
     Néhány percen belül a riasztás aktív, és elindítja a fent leírtaknak megfelelően.
 
 Felhasználók is fejeződik be, a saját elemzési lekérdezés [naplók elemzési lap az Azure Portalon](../log-analytics/log-analytics-log-search-portals.md#log-analytics-page
 ) és majd leküldeni a keresztül beállítva riasztás gomb - riasztás létrehozása, majd a következő utasításokat a 6. lépés és újabb verziók esetében a fenti oktatóanyagban.
 
- ![Log Analytics - riasztás beállítása](./media/monitor-alerts-unified/AlertsAnalyticsCreate.png)
+ ![Log Analytics - riasztás beállítása](media/alert-log/AlertsAnalyticsCreate.png)
 
 ### <a name="view--manage-log-alerts-in-azure-portal"></a>Megtekinthet és az Azure Portalon riasztások kezelése
 
@@ -122,7 +122,7 @@ Felhasználók is fejeződik be, a saját elemzési lekérdezés [naplók elemz�
 
 
 1. Válassza ki a **szabályok kezelése** gombot a felső sávon, nyissa meg a szabály felügyeleti szakaszra - létrehozott összes riasztási szabályt listázó; többek között a riasztásokat, amelyek le vannak tiltva.
-    ![ Riasztási szabályok kezelése](./media/monitoring-activity-log-alerts-new-experience/manage-alert-rules.png)
+    ![ Riasztási szabályok kezelése](media/alert-log/manage-alert-rules.png)
 
 ## <a name="managing-log-alerts-using-azure-resource-template"></a>Azure Resource-sablonnal riasztások kezelése
 Riasztás hozható létre log jelenleg két különböző erőforrás sablonok használatával alapján, az analytics platform a riasztás van (vagyis) Log Analytics vagy az Application Insights alapjául.

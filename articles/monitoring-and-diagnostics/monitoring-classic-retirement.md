@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: ebbb231e7d9eefa8eb681b0e14c711e2c4f1fad7
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: f7efafe5e3080de15781496032b688bc5fa71df2
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386519"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418420"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Egyesített riasztások és -monitorozás az Azure monitorban váltja fel a klasszikus riasztások és -monitorozás
 
@@ -21,7 +21,7 @@ Az Azure Monitor vált, am egységes teljes verem figyelési szolgáltatást, am
 
 Az új Azure monitorozási és riasztási platform helyben, az azt fogja kell kivonása a "klasszikus" figyelési és riasztási platform - ban üzemeltetett *klasszikus riasztások megtekintése* szakaszban az Azure-riasztások elavulttá válik. június 2019.
 
- ![Az Azure Portalon a klasszikus riasztás](./media/monitoring-overview-alerts-classic/monitor-alert-screen2.png) 
+ ![Az Azure Portalon a klasszikus riasztás](media/monitoring-classic-retirement/monitor-alert-screen2.png) 
 
 Javasoljuk, hogy első lépéseket, és hozza létre újra a riasztásokat az új platformon. Nagy számú riasztást rendelkező ügyfelek hogy folyamatban van az új riasztások rendszerre, hogy megszakítás nélkül helyezze át a létező klasszikus riasztások automatikus módot biztosítanak a, vagy hozzáadhatja költségek.
 

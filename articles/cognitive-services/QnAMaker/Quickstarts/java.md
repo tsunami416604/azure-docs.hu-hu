@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: efde57e31389558feb39b5e7ec163a1d5175470c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 70fa8c5af4f00500c39ce3832e182a5532721799
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210567"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419707"
 ---
 # <a name="qna-maker-rest-api-with-java"></a>A QnA Maker – REST API a Javával 
 <a name="HOLTop"></a>
@@ -41,7 +41,7 @@ Ez a cikk bemutatja, hogyan használható a [Microsoft QnA Maker API](../Overvie
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kód lefordításához és futtatásához a [JDK 7 vagy 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) telepítése szükséges. Ha van kedvence, használhat Java IDE-t vagy egy szövegszerkesztőt is.
+A kód lefordításához és futtatásához a [JDK 7 vagy 8](https://aka.ms/azure-jdks) telepítése szükséges. Ha van kedvence, használhat Java IDE-t vagy egy szövegszerkesztőt is.
 
 Egy **Microsoft QnA Maker API-t** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Egy fizetős előfizetői kulcsra van szüksége az [Azure-irányítópultról](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 

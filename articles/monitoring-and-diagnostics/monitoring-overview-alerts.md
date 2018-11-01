@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: 7565c536b5d24c859b164a960f74bd1e2ce97b63
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f044cf7e0b614d338ec9b294dfbf02c26c4351b1
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960634"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413860"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>A Microsoft Azure-ban riasztások áttekintése 
 
@@ -23,7 +23,7 @@ Ez a cikk azt ismerteti, milyen riasztásokat, azok előnyeit, és hogyan lehet 
 ## <a name="what-are-alerts-in-microsoft-azure"></a>Mik a figyelmeztetések a Microsoft Azure-ban?
 Proaktív módon kap értesítést, ha fontos feltételek a figyelési adatok találhatók. Lehetővé teszik, hogy azonosítsa és problémákat, mielőtt azokat a felhasználókat a rendszer figyelje meg. 
 
-Ez a cikk ismerteti az egyesített riasztási élmény az Azure monitorban, amely már tartalmazza a Log Analytics és az Application Insights. A [korábbi riasztási élmény](monitoring-overview-alerts.md)és riasztási típusok korábbi megnevezése **klasszikus riasztások**. Kattintva megtekintheti a régi felületet és a régebbi riasztástípus **klasszikus riasztások megtekintése** a riasztás oldalának tetején. 
+Ez a cikk ismerteti az egyesített riasztási élmény az Azure monitorban, amely már tartalmazza a Log Analytics és az Application Insights. A [korábbi riasztási élmény](monitoring-overview-alerts.md) és riasztási típusok korábbi megnevezése **klasszikus riasztások**. Kattintva megtekintheti a régi felületet és a régebbi riasztástípus **klasszikus riasztások megtekintése** a riasztás oldalának tetején.
 
 
 ## <a name="overview"></a>Áttekintés
@@ -70,7 +70,7 @@ A következő riasztási állapotok támogatottak.
 
 A riasztás állapotát a figyelési feltétel eltér. Riasztás állapota a felhasználó állítja be, és független a figyelési feltétel. Ha törli a aktivált riasztás kiváltó feltételt, a riasztás a figyelési feltétel értéke megoldott. Bár a rendszer beállíthatók megoldani a figyelési feltétel, a riasztás állapota nem változik, amíg a felhasználó megváltoztatná. Ismerje meg, [módosítása a riasztások és az intelligens csoportok állapotát](https://aka.ms/managing-alert-smart-group-states).
 
-## <a name="smart-groups"></a>Az intelligens csoportok 
+## <a name="smart-groups"></a>Intelligens csoportok 
 Az intelligens csoportok vannak előzetes verzióban érhető el. 
 
 Az intelligens csoportjai összesítések alapján gépi tanulási algoritmusok, amely megkönnyíti a riasztásokat riasztási zaj csökkentésére, és a hibaelhárítással támogatási. [További információk az intelligens csoportokról](https://aka.ms/smart-groups) és [az intelligens csoportok kezelése](https://aka.ms/managing-smart-groups).
@@ -96,8 +96,8 @@ Válassza ki a következő értékeket felső részén egy másik nyissa meg a r
 | Érték | Leírás |
 |:---|:---|
 | Riasztások összesen | A kiválasztott feltételeknek megfelelő riasztások teljes száma. Válassza ki ezt az értéket az összes riasztás megtekintése nyissa meg a szűrő sincs. |
-| Az intelligens csoportok | A kiválasztott feltételeknek a riasztások alapján létrehozott intelligens csoportok teljes száma. Válassza ki ezt az értéket az összes riasztás nézetben az intelligens csoportok listájának megnyitásához.
-| Riasztási szabályok száma | A kijelölt előfizetésben és erőforráscsoportban csoport riasztási szabályok teljes száma. Válassza ki ezt az értéket a szűrés alapjául a kijelölt előfizetésben és erőforráscsoportban szabályok nézet megnyitásához.
+| Intelligens csoportok | A kiválasztott feltételeknek a riasztások alapján létrehozott intelligens csoportok teljes száma. Válassza ki ezt az értéket az összes riasztás nézetben az intelligens csoportok listájának megnyitásához.
+| Riasztási szabályok összesen | A kijelölt előfizetésben és erőforráscsoportban csoport riasztási szabályok teljes száma. Válassza ki ezt az értéket a szűrés alapjául a kijelölt előfizetésben és erőforráscsoportban szabályok nézet megnyitásához.
 
 
 ## <a name="manage-alert-rules"></a>Riasztási szabályok kezelése
@@ -142,7 +142,7 @@ Válassza ki a következő értékeket a lap tetején lévő legördülő listá
 | Erőforrás típusa | Válassza ki egy vagy több erőforrás-típus. Csak azon riasztások t a kiválasztott típusú megtalálhatók a nézetet. Ez az oszlop csak akkor használható, miután lett megadva egy erőforráscsoportot. |
 | Erőforrás | Válasszon ki egy erőforrást. Csak azon riasztások t célként adott erőforrásra a nézet szerepelnek. Ez az oszlop csak akkor használható, miután egy erőforrás-típus lett megadva. |
 | Severity | Egy riasztás súlyosságának kiválasztása, vagy válasszon *összes* minden súlyossági szint esetében riasztásokat tartalmazza. |
-| Figyelési feltétel | Válasszon figyelőre érvényes feltételt, vagy válasszon *összes* feltételek riasztásokat tartalmazza. |
+| Figyelőre érvényes feltétel | Válasszon figyelőre érvényes feltételt, vagy válasszon *összes* feltételek riasztásokat tartalmazza. |
 | Riasztás állapota | Válasszon egy riasztási állapotot, vagy válasszon *összes* állapotok riasztásokat tartalmazza. |
 | Szolgáltatás monitorozása | Válasszon ki egy szolgáltatást, vagy válasszon *összes* tartalmazza az összes szolgáltatás. Csak a szolgáltatási cél használó szabályok által létrehozott riasztásokat is. |
 | Időtartomány | Csak az adott időtartamon belül aktivált riasztások nézetében megtalálhatók. Támogatott értékei a következők: az elmúlt egy órában, az elmúlt 24 órában, az elmúlt 7 napban és az elmúlt 30 napban. |

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: d359ad0e619e4d7784d763e70599ce784aa852cd
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 97ca4f69f4bf2aa814d51cc17970c1aead8399e8
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945813"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414403"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Mentse, és a Git használatával az API Management-szolgáltatás konfigurációjának beállítása
 
@@ -161,7 +161,7 @@ Minden mappa tartalmazhat egy vagy több fájlt, és olykor egy vagy több mapp�
 
 | Fájltípus | Cél |
 | --- | --- |
-| JSON-ban |Konfigurációs információkat az adott entitás |
+| JSON |Konfigurációs információkat az adott entitás |
 | HTML |Entitás, a fejlesztői portál gyakran megjelenik leírásai |
 | xml |Házirend-utasítások |
 | CSS |A fejlesztői portál testreszabása stíluslapok |
@@ -190,7 +190,8 @@ A legfelső szintű `api-management` mappa tartalmaz egy `configuration.json` f�
     "DelegationEnabled": "False",
     "DelegationUrl": "",
     "DelegatedSubscriptionEnabled": "False",
-    "DelegationValidationKey": ""
+    "DelegationValidationKey": "",
+    "RequireUserSigninEnabled": "false"
   },
   "$ref-policy": "api-management/policies/global.xml"
 }
@@ -200,10 +201,11 @@ Az első négy beállítások (`RegistrationEnabled`, `UserRegistrationTerms`, `
 
 | Identitás beállítása | A Maps |
 | --- | --- |
-| RegistrationEnabled |**Névtelen felhasználók átirányítása a bejelentkezési oldal** jelölőnégyzet |
+| RegistrationEnabled |Jelenléte **felhasználónév és jelszó** identitásszolgáltató |
 | UserRegistrationTerms |**Használati feltételek felhasználói regisztrációkor** szövegmező |
 | UserRegistrationTermsEnabled |**Használati feltételek megjelenítése a regisztrációs lapon** jelölőnégyzet |
 | UserRegistrationTermsConsentRequired |**Jóváhagyás szükséges** jelölőnégyzet |
+| RequireUserSigninEnabled |**Névtelen felhasználók átirányítása a bejelentkezési oldal** jelölőnégyzet |
 
 A következő négy beállításokat (`DelegationEnabled`, `DelegationUrl`, `DelegatedSubscriptionEnabled`, és `DelegationValidationKey`) az alábbi beállításokat a térkép a **delegálás** lapján a **biztonsági** szakaszban.
 

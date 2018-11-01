@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: nberdy
-ms.openlocfilehash: f5da3759e97eaa2f89a393d55ae95eb6623fbc5d
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 34a561c5bb523b914f4b88dc8c6edc2bd00627d0
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158324"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741929"
 ---
 # <a name="understand-iot-hub-metrics"></a>Megismerheti az IoT Hub-metrikák
 
@@ -26,11 +26,15 @@ Alapértelmezés szerint engedélyezve vannak a metrikákat. Az IoT Hub-mérősz
 
 2. Az IoT hub panel megnyitásához. Itt kattintson **metrikák**.
    
-    ![Az IoT hub metrikák paneljén](./media/iot-hub-metrics/enable-metrics-1.png)
+    ![Ahol a metrikák lehetőség van az IoT Hub-erőforrások oldalának képernyőképe](./media/iot-hub-metrics/enable-metrics-1.png)
 
-3. A metrikák paneljén a metrikákat tekinthet meg az IoT hub, és a metrikák, egyéni nézeteket hozhat létre. A metrikák adatai küld az Event Hubs a végpont vagy egy Azure Storage-fiók kattintva választhatja **diagnosztikai beállítások**.
+3. A metrikák paneljén a metrikákat tekinthet meg az IoT hub, és a metrikák, egyéni nézeteket hozhat létre. 
    
-    ![Diagnosztikai beállítások](./media/iot-hub-metrics/enable-metrics-2.png)
+    ![Az IoT Hub a metrikák lapot ábrázoló képernyőfelvétel](./media/iot-hub-metrics/enable-metrics-2.png)
+    
+4. A metrikák adatai küld az Event Hubs a végpont vagy egy Azure Storage-fiók kattintva választhatja **diagnosztikai beállítások**, majd **diagnosztikai beállítás hozzáadása**
+
+   ![Képernyőfelvétel: hol van a diagnosztikai beállítások gomb](./media/iot-hub-metrics/enable-metrics-3.png)
 
 ## <a name="iot-hub-metrics-and-how-to-use-them"></a>Az IoT Hub-mérőszámok és azok használatát
 

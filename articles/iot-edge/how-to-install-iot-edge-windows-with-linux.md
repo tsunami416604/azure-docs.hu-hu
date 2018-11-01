@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 2ff7c3482100545c476040ba556d464b9f44e434
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: c389f904fb3ea21c9bcc538a62c7a866ef3b254d
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031118"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739260"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows-to-use-with-linux-containers"></a>Telepítse az Azure IoT Edge-modul Windows, Linux-tárolók használata
 
@@ -36,9 +36,9 @@ További információt arról, hogy mely jelenleg támogatott operációs rendsz
 
 ## <a name="install-the-container-runtime"></a>A tároló-modul telepítése 
 
-Az Azure IoT Edge támaszkodik egy [OCI-kompatibilis] [ lnk-oci] container modul (például Docker). 
+Az Azure IoT Edge támaszkodik egy [OCI-kompatibilis](https://www.opencontainers.org/) container modul (például Docker). 
 
-Használhat [Docker for Windows] [ lnk-docker-for-windows] fejlesztési és tesztelési célra. Konfigurálja a Docker for Windows [Linux-tárolók használata][lnk-docker-config]
+Használhat [Docker for Windows](https://www.docker.com/docker-windows) fejlesztési és tesztelési célra. Konfigurálja a Docker for Windows [Linux-tárolók használata](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
 
 ## <a name="install-the-azure-iot-edge-security-daemon"></a>Az Azure IoT Edge biztonsági démon telepítése
 
@@ -49,7 +49,7 @@ Egy adott IoT Edge-eszköz kiépítése az IoT Hub által biztosított eszközö
 
 ### <a name="option-1-install-and-manually-provision"></a>1. lehetőség: Telepítés és a manuális üzembe helyezése
 
-1. Kövesse a [egy új Azure IoT Edge-eszköz regisztrálása] [ lnk-dcs] regisztrálja az eszközt, és az eszköz kapcsolati karakterláncának beolvasása. 
+1. Kövesse a [egy új Azure IoT Edge-eszköz regisztrálása](how-to-register-device-portal.md) regisztrálja az eszközt, és az eszköz kapcsolati karakterláncának beolvasása. 
 
 2. IoT Edge-eszközén futtassa a PowerShellt rendszergazdaként. 
 
@@ -64,7 +64,7 @@ Egy adott IoT Edge-eszköz kiépítése az IoT Hub által biztosított eszközö
 
 ### <a name="option-2-install-and-automatically-provision"></a>2. lehetőség: Telepítse és automatikus kiépítése
 
-1. Kövesse a [létrehozásával és kiépítésével egy szimulált TPM-eszköz peremhálózati eszköz, a Windows] [ lnk-dps] a Device Provisioning Service beállítása és lekérése a **hatókör azonosítója**, a TPM-eszköz szimulálása eszköz- és lekérése a **regisztrációs azonosító**, majd hozzon létre egyéni regisztrációt. Miután az eszköz regisztrálva van az IoT hub, a telepítés folytatásához.  
+1. Kövesse a [létrehozásával és kiépítésével egy szimulált TPM-eszköz peremhálózati eszköz, a Windows](how-to-auto-provision-simulated-device-windows.md) a Device Provisioning Service beállítása és lekérése a **hatókör azonosítója**, TPM-eszköz szimulálása és lekérése a  **Regisztrációs azonosító**, majd hozzon létre egyéni regisztrációt. Miután az eszköz regisztrálva van az IoT hub, a telepítés folytatásához.  
 
    >[!TIP]
    >Tartsa meg az ablak, amely a TPM-szimulátor fut, nyissa meg a telepítés során, és a tesztelés. 
@@ -114,20 +114,6 @@ Ha a hálózat rendelkezik egy proxykiszolgáló, kövesse a [a proxykiszolgál�
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy az IoT Edge-eszköz kiosztva a modul telepítve van, [üzembe helyezése IoT Edge-modulok][lnk-modules].
+Most, hogy az IoT Edge-eszköz kiosztva a modul telepítve van, [üzembe helyezése IoT Edge-modulok](how-to-deploy-modules-portal.md).
 
-Ha az Edge-futtatókörnyezet megfelelően telepíti a problémák merülnek fel, tekintse meg a [hibaelhárítási] [ lnk-trouble] lapot.
-
-
-<!-- Images -->
-[img-docker-nat]: ./media/how-to-install-iot-edge-windows-with-linux/dockernat.png
-
-<!-- Links -->
-[lnk-docker-config]: https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers
-[lnk-dcs]: how-to-register-device-portal.md
-[lnk-dps]: how-to-auto-provision-simulated-device-windows.md
-[lnk-oci]: https://www.opencontainers.org/
-[lnk-moby]: https://mobyproject.org/
-[lnk-trouble]: troubleshoot.md
-[lnk-docker-for-windows]: https://www.docker.com/docker-windows
-[lnk-modules]: how-to-deploy-modules-portal.md
+Ha az Edge-futtatókörnyezet megfelelően telepíti a problémák merülnek fel, tekintse meg a [hibaelhárítási](troubleshoot.md) lapot.

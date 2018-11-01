@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 677cd65b011ed69868564617ff79b7a57947c230
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2b9e7615fc0c2262c33ab5d7be39bdb99bc752bd
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404443"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412958"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows-számítógépek csatlakoztatása a Log Analytics szolgáltatás az Azure-ban
 
@@ -42,7 +42,7 @@ A Windowshoz készült Microsoft Monitoring Agent telepítése előtt szüksége
 
 1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 2. A Log Analytics-munkaterületek listájában válassza ki a munkaterületet, jelenteni szeretné a az ügynök telepítése.
-3. Válassza ki a **Speciális beállítások** elemet.<br><br> ![A Log Analytics speciális beállításai](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
+3. Válassza ki a **Speciális beállítások** elemet.<br><br> ![A Log Analytics speciális beállításai](media/log-analytics-agent-windows/log-analytics-advanced-settings-01.png)<br><br>  
 4. Válassza ki a **Csatlakoztatott források**, majd a **Windowsos kiszolgálók** elemet.   
 5. Másolja és illessze be a kedvenc szerkesztőjébe a **munkaterület-Azonosítót** és **elsődleges kulcs**.    
    
@@ -54,11 +54,11 @@ Az alábbi lépéseket telepítése és konfigurálása az ügynök a Log Analyt
 2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra.
 3. A **Licencfeltételek** oldalon olvassa el és fogadja el a licencet, majd kattintson az **Elfogadom** gombra.
 4. A **Célmappa** lapon fogadja el az alapértelmezett telepítési mappát, vagy adjon meg egy másikat, majd kattintson a **Tovább** gombra.
-5. Az a **ügynök telepítésének beállításai** lapon, az ügynök csatlakoztatása az Azure Log Analyticshez, és kattintson a **tovább**.   
+5. **Az ügynök telepítésének beállításai** lapon csatlakoztassa az ügynököt az Azure Log Analyticshez, majd kattintson a **Tovább** gombra.   
 6. Az **Azure Log Analytics** lapon végezze el a következőket:
    1. Illessze be az előzőleg kimásolt **Munkaterület-azonosítót** és **Munkaterületkulcsot (Elsődleges kulcs)**.  Ha a gépnek egy Azure Government-felhőbeli Log Analytics-munkaterületnek kell jelentenie, válassza az **Azure US Government** lehetőséget az **Azure Cloud** legördülő listából.  
    2. Ha a számítógépnek egy proxykiszolgálón keresztül kell kommunikálnia a Log Analytics szolgáltatással, kattintson a **Speciális** gombra, majd adja meg a proxykiszolgáló URL-címét és portszámát.  Ha a proxykiszolgáló hitelesítést igényel, írja be a felhasználónevet és jelszót a proxykiszolgálóval való hitelesítéshez, majd kattintson a **Tovább** gombra.  
-7. A szükséges konfigurációs beállítások megadása után kattintson a **Tovább** gombra.<br><br> ![illessze be a Munkaterület-azonosítót és az Elsődleges kulcsot](media/log-analytics-quick-collect-windows-computer/log-analytics-mma-setup-laworkspace.png)<br><br>
+7. A szükséges konfigurációs beállítások megadása után kattintson a **Tovább** gombra.<br><br> ![illessze be a Munkaterület-azonosítót és az Elsődleges kulcsot](media/log-analytics-agent-windows/log-analytics-mma-setup-laworkspace.png)<br><br>
 8. A **Telepítésre kész** oldalon ellenőrizze a beállításokat, majd kattintson a **Telepítés** elemre.
 9. **A konfigurálás sikeresen befejeződött** lapon kattintson a **Befejezés** gombra.
 
@@ -160,7 +160,7 @@ Közvetlenül az ügynök telepítési csomagból lekérdezheti a termékkód, h
 
 Az ügynök telepítésének befejezése után a annak ellenőrzésére, hogy sikeresen csatlakozott, és a reporting kétféleképpen végezhető.  
 
-A számítógépről a **Vezérlőpult**, keresse meg az elemet **Microsoft Monitoring Agent**.  Válassza ki, és az a **Azure Log Analytics** lapon jelenítsék meg az ügynök a következő üzenetet: **a Microsoft Monitoring Agent sikeresen csatlakozott a Microsoft Operations Management Suite szolgáltatásban.**<br><br> ![MMA kapcsolati állapota a Log Analytics felé](media/log-analytics-quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
+A számítógépről a **Vezérlőpult**, keresse meg az elemet **Microsoft Monitoring Agent**.  Válassza ki, és az a **Azure Log Analytics** lapon jelenítsék meg az ügynök a következő üzenetet: **a Microsoft Monitoring Agent sikeresen csatlakozott a Microsoft Operations Management Suite szolgáltatásban.**<br><br> ![MMA kapcsolati állapota a Log Analytics felé](media/log-analytics-agent-windows/log-analytics-mma-laworkspace-status.png)
 
 Egy egyszerű naplóbeli keresést is elvégezheti az Azure Portalon.  
 

@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 10/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: cb004745cfbc6af185a06c4787fb34326eccc69a
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 25352d12e578c289ccb4ab8aab60dc55a444762e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381256"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413502"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>A technikai profil meghatározása az egyéni Azure Active Directory B2C-házirendek a JWT jogkivonat kibocsátója
 
@@ -52,7 +52,7 @@ A **InputClaims**, **OutputClaims**, és **PersistClaims** elemek a következők
 | id_token_lifetime_secs | Nem | Azonosító jogkivonat élettartama. Az alapértelmezett érték 3600 másodperc (1 óra). A (inkluzív) minimális érték 300 másodpercig (5 perc). (A határokat is beleértve) a maximális érték másodperc 86,400 (24 óra). | 
 | refresh_token_lifetime_secs | Nem | Frissítse a jogkivonatok élettartamának. Amely előtt a frissítési jogkivonatok segítségével egy új hozzáférési jogkivonat beszerzése, ha az alkalmazás a offline_access hatókör volt megadva a maximális időtartam. Az alapértelmezett érték 120,9600 másodperc (14 nap). A (inkluzív) minimális érték 86 400 másodperc (24 óra). (A határokat is beleértve) a maximális érték 7,776,000 másodperc (90 nap). | 
 | rolling_refresh_token_lifetime_secs | Nem | Frissítési jogkivonat csúszóablak-élettartama. Ez az időtartam elteltével a felhasználónak kötelező hitelesítse magát újra, attól függetlenül, az érvényességi időtartam legutóbbi az alkalmazás által beszerzett jogkivonat frissítésére. Ha nem szeretné kényszeríteni a csúszóablak-élettartama, állítsa a allow_infinite_rolling_refresh_token `true`. Az alapértelmezett érték 7,776,000 másodperc (90 nap). A (inkluzív) minimális érték 86 400 másodperc (24 óra). (A határokat is beleértve) a maximális érték 31,536,000 másodperc (365 napos). | 
-| rolling_refresh_token_lifetime_secs | Nem | Ha beállítása `true`, a csúszóablakon frissítési jogkivonat élettartama soha nem jár le. |
+| allow_infinite_rolling_refresh_token | Nem | Ha beállítása `true`, a csúszóablakon frissítési jogkivonat élettartama soha nem jár le. |
 | IssuanceClaimPattern | Igen | Azt szabályozza, hogy a kibocsátói (iss) jogcím. Az értékek egyikét:<ul><li>AuthorityAndTenantGuid - az iss jogcím tartalmazza a tartomány nevét, például `login.microsoftonline` vagy `tenant-name.b2clogin.com`, és a bérlő azonosítója https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/</li><li>AuthorityWithTfp - az iss jogcím tartalmazza a tartomány nevét, például `login.microsoftonline` vagy `tenant-name.b2clogin.com`, a bérlő azonosítóját és a függő entitás házirend neve. https://login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> | 
 | AuthenticationContextReferenceClaimPattern | Nem | Szabályozza a `acr` jogcím értéke.<ul><li>Nincs – Azure AD B2C-vel nem jogcímet ad az acr</li><li>PolicyId – a `acr` jogcím a szabályzat nevét tartalmazza.</li></ul>Az érték a lehetőségeket TFP (bizalmi keretrendszer házirend) és az ACR (hitelesítési környezeti hivatkozás). Ajánlott, ha az érték TFP, az érték beállítása, biztosítása a `<Item>` az a `Key="AuthenticationContextReferenceClaimPattern"` létezik értéke pedig `None`. Adja hozzá a függő entitás házirendjében <OutputClaims> cikkhez, ez az elem hozzáadása `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />`. Ügyeljen arra, hogy a házirend tartalmazza a jogcím típusa `<ClaimType Id="trustFrameworkPolicy"> <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` | 
 

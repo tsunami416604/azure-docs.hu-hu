@@ -1,6 +1,6 @@
 ---
-title: Operációs rendszer működőképességét Azure App Service
-description: Az operációs rendszer funkció érhető el webes, mobil-háttéralkalmazások és Azure App Service API apps megismerése
+title: Az Azure App Service-ben az operációs rendszer funkcionalitása
+description: 'További tudnivalók: web apps, mobil-háttéralkalmazások és az Azure App Service API Apps-alkalmazások számára elérhető OS-funkciók'
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -12,116 +12,120 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/01/2016
+ms.date: 10/30/2018
 ms.author: cephalin
-ms.openlocfilehash: 00b5f9c78000fbb9bf86e8c1d8b06e3645795a12
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 9b4c87bd0889718fcb8938a9e3bb9207b8fe727a
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850154"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420456"
 ---
-# <a name="operating-system-functionality-on-azure-app-service"></a>Operációs rendszer működőképességét Azure App Service
-Ez a cikk összes futó alkalmazások számára elérhető közös eredeti operációs rendszer funkcióit mutatja be [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). Ez a funkció tartalmazza a fájl, hálózati, és a beállításjegyzék elérése és diagnosztikai naplók és események. 
+# <a name="operating-system-functionality-on-azure-app-service"></a>Az Azure App Service-ben az operációs rendszer funkcionalitása
+Ez a cikk ismerteti a gyakori alapkonfiguráció operációs rendszer funkcionalitása futó összes Windows-alkalmazások számára elérhető [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). Ez a funkció tartalmazza a fájl, hálózati, és az adatbázis eléréséhez, és a diagnosztikai naplók és események. 
+
+> [!NOTE] 
+> [A Linux-alkalmazások](containers/app-service-linux-intro.md) saját futtathatők App Service-ben. A gazdagép operációs rendszere nincs hozzáférése engedélyezett, rendelkezik legfelső szintű hozzáféréssel a tárolóhoz. Hasonlóképpen, a [Windows-tárolókban futó alkalmazások](app-service-web-get-started-windows-container.md), rendelkezik rendszergazdai hozzáféréssel a tárolóhoz, de a gazdagép operációs rendszeréhez sem fér hozzá. 
+>
 
 <a id="tiers"></a>
 
-## <a name="app-service-plan-tiers"></a>Az alkalmazásszolgáltatási csomag rétegek
-App Service alkalmazások vevői futtat egy több-bérlős üzemeltetési környezet. Alkalmazások telepítése a **szabad** és **megosztott** rétegek futtatásához a munkavégző folyamatok megosztott virtuális gépeken, alkalmazások telepítésekor a a **szabványos** és **Premium**  rétegek futó virtuális gépek dedikált kifejezetten az egyetlen ügyfél társított alkalmazások.
+## <a name="app-service-plan-tiers"></a>Az App Service-csomagom
+App Service-ben ügyfélalkalmazások egy több-bérlős üzemeltetési környezetben fut. A telepített alkalmazások a **ingyenes** és **megosztott** rétegek futás munkavégző folyamatok a megosztott virtuális gépeken telepített alkalmazások a **Standard** és **prémium**  rétegek kifejezetten az egyetlen ügyfél társított alkalmazások számára dedikált virtuális gép(ek) futhatnak.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-Mivel az App Service különböző rétegek közötti méretezési gördülékenyen támogatja, a biztonsági beállítások, az App Service apps érvényes változatlan marad. Ez biztosítja, hogy alkalmazásokat nem hirtelen eltérően viselkednek, nem várt módon sikertelenek lesznek, amikor az App Service-csomag egyrétegű a másikra vált.
+Mivel az App Service támogatja a különböző rétegek közötti méretezési zökkenőmentesen, a biztonsági beállítások, az App Service-alkalmazás által kényszerített változatlan marad. Ez biztosítja, hogy alkalmazásokat nem hirtelen eltérően viselkednek, nem várt módon működik, amikor az App Service-csomag egyik rétegről a másikra vált.
 
 <a id="developmentframeworks"></a>
 
 ## <a name="development-frameworks"></a>Fejlesztési keretrendszerek
-App Service tarifacsomagok mértékének szabályozására a számítási erőforrások (CPU, lemezterület, memória és a kimenő hálózati forgalom) elérhető alkalmazásokra. Azonban a hardverekről keretrendszer funkció érhető el az alkalmazások változatlan marad, függetlenül a méretezési rétegek.
+Az App Service-tarifacsomag irányítása a számítási erőforrások (CPU, lemezterület, memória és a kimenő hálózati adatforgalom) elérhető alkalmazásokra. Keretrendszer funkciók alkalmazások számára elérhető technológiai spektrumunk kihasználtságának növelését, függetlenül a méretezési réteg változatlan marad.
 
-App Service számos fejlesztési keretrendszerek, beleértve az ASP.NET, klasszikus ASP, node.js, PHP és Python -, amelyek mindegyikén kiterjesztéseket IIS belül. Egyszerűsítése és biztonsági konfigurációs optimalizálására, az App Service apps általában akkor futnak a különböző fejlesztési keretrendszerek az alapértelmezett beállításokkal. Alkalmazások konfigurálása az egyik módszer az API felület és minden egyes fejlesztési keretrendszer testreszabásához lehetett volna. App Service egy általánosabbá megközelítés helyette azáltal, hogy az operációs rendszer működőképességét, függetlenül az alkalmazás-fejlesztési keretrendszer közös alapterv vesz igénybe.
+Az App Service többféle fejlesztési keretrendszerekkel, beleértve az ASP.NET, klasszikus ASP, node.js, PHP és Python - bővítmények belül IIS futtató összes támogatja. Egyszerűsítése és biztonsági konfiguráció normalizálása, App Service-alkalmazások futtatására általában a különböző fejlesztési keretrendszerekkel az alapértelmezett beállításokkal. Alkalmazások konfigurálása az egyik lehetőség lehetett volna API felület és minden egyes fejlesztési keretrendszer funkciók testreszabásához. App Service-ben több általános megközelítés inkább egy alkalmazást fejlesztői keretrendszer függetlenül operációs rendszer funkcionalitása közös alapvető engedélyezésével vesz igénybe.
 
-A következő szakaszok összegzik az általános típusú operációs rendszer funkció érhető el az App Service-alkalmazásokhoz.
+A következő szakaszok összegzik az operációs rendszer funkcionalitása elérhető App Service-alkalmazások általános típusú.
 
 <a id="FileAccess"></a>
 
 ## <a name="file-access"></a>Fájlhozzáférés
-Különböző meghajtó belül App Service, beleértve a helyi és hálózati meghajtókat.
+Különböző meghajtókon található App Service, beleértve a helyi és hálózati meghajtókat.
 
 <a id="LocalDrives"></a>
 
 ### <a name="local-drives"></a>Helyi meghajtók
-A a fő App Service az Azure PaaS (platformok) infrastruktúrán futó szolgáltatásban. Ennek eredményeképpen a helyi meghajtókra, "csatlakoztatott" virtuális gép olyan a azonos meghajtón bármely Azure-beli feldolgozói szerepkör számára elérhető. Az érintett műveletek közé tartoznak az alábbiak:
+A core, az App Service szolgáltatás az Azure PaaS (szolgáltatásként nyújtott platformon) infrastruktúra felett futó szolgáltatásban. Ennek eredményeképpen a helyi meghajtókat "csatlakoztatott" virtuális gép olyan az azonos meghajtón bármely Azure-ban futó feldolgozói szerepkör számára elérhető. Az érintett műveletek közé tartoznak az alábbiak:
 
 - Az operációsrendszer-meghajtó (a D:\ meghajtóra)
-- Egy alkalmazás meghajtót, amely tartalmazza az Azure cspkg használt csomagfájlok kizárólag az App Service által (és az ügyfél számára nem érhető el)
-- A "user" meghajtóhoz (a C:\), amelynek mérete a virtuális gép méretétől függően változik. 
+- Egy alkalmazás meghajtó, amely tartalmazza az Azure cspkg használt csomagfájlok kizárólag az App Service (és az ügyfelek számára nem érhető el)
+- A "user" meghajtó (a C:\ meghajtóra), amelynek mérete a virtuális gép méretétől függően változik. 
 
-Fontos, a lemezhasználat figyelése, ahogy az alkalmazás növekszik. A lemezkvóta elérésekor az alkalmazás a negatív hatások rendelkezhet.
+Fontos a lemezhasználat monitorozása az alkalmazás növekedésével. Ha a lemez kvóta elérése az alkalmazásnak a negatív hatások rendelkezhet.
 
 <a id="NetworkDrives"></a>
 
-### <a name="network-drives-aka-unc-shares"></a>Hálózati meghajtók (más néven UNC közös)
-Az App Service-alkalmazás telepítési és karbantartási egyszerű teszi egyedi vonatkozásait egyike, hogy minden felhasználó tartalom UNC-megosztásokhoz a megfelelő tárolja. Ez a modell is a megszokott mintát követi, a tartalom tárolási helyszíni webszolgáltatási környezetekben, melyekben még több elosztott terhelésű kiszolgálók által használt rendeli hozzá. 
+### <a name="network-drives-aka-unc-shares"></a>Hálózati meghajtók (más néven UNC fájlmegosztások)
+Az App Service, amely az alkalmazás üzembe helyezése és karbantartása egyszerű egyedi aspektusai egyike, hogy minden felhasználó tartalomtárolást különböző UNC-megosztásokhoz. Ez a modell és a gyakori minta, tartalom, a üzemeltetési környezetek, amelyek több, elosztott terhelésű kiszolgálókat a helyi webes által felhasznált tárterület rendeli hozzá. 
 
-App Service-ben belül az egyes adatközpont létrehozott UNC-megosztásokhoz száma. A felhasználó tartalom az ügyfelek minden egyes adatközpont százalékos le van foglalva minden UNC-megosztás. Továbbá a tartalom, az egyetlen ügyfél-előfizetést mindig el van helyezve a azonos UNC-fájl osztoznak. 
+App Service-ben belül létrehozott minden adatközpontban UNC-megosztásokhoz számos van. Minden adatközpontban minden ügyfél számára a felhasználói tartalom százalékában van lefoglalva minden egyes UNC megosztást. Továbbá a fájl számára egy egy ügyfél-előfizetés mindig el van helyezve az azonos UNC tartalom mindegyikét megosztani. 
 
-Az Azure működése, mert az UNC-megosztásnevet üzemeltető felelős az adott virtuális gép változnak az idők lesz. A garantált, hogy különböző virtuális gépek UNC-megosztásokhoz lesz csatlakoztatva, a normális működés során az Azure üzemeltetése során felfelé és lefelé vont. Emiatt alkalmazásokat kell soha ne, hogy a gép adatait egy UNC elérési útja marad stabil időbeli kódolt feltételezéseket. Helyette használják inkább a a kényelmes *ál* abszolút elérési út **D:\home\site** , amely az App Service biztosít. Az ál abszolút elérési út lehetővé teszi a hordozható, alkalmazás-és-felhasználó-független saját alkalmazás hivatkozik. A **D:\home\site**, egy vihetők át megosztott fájlok app alkalmazást anélkül, hogy minden új abszolút elérési útnak konfigurálásához.
+Az Azure működése, mert az adott virtuális gép egy UNC megosztást üzemeltető felelős idővel változni fognak. Garantált, hogy különböző virtuális gépek által UNC-megosztásokhoz lesz csatlakoztatva, a normál működés során az Azure üzemeltetése során felfelé és lefelé vont. Ebből kifolyólag alkalmazásokat soha nem győződjön meg, hogy a fájl UNC elérési út adatai marad állandó idővel változtatható feltételezéseket. Akkor érdemes inkább a kényelmes *ál* abszolút elérési út **D:\home\site** , amelyek az App Service biztosítja. Ez ál abszolút elérési utat a saját alkalmazásra hivatkozó hordozható, és-felhasználó-alkalmazásfüggetlen módszert biztosít. Használatával **D:\home\site**, egy vihet át a megosztott app alkalmazást minden új abszolút elérési útnak konfigurálása nélkül.
 
 <a id="TypesOfFileAccess"></a>
 
-### <a name="types-of-file-access-granted-to-an-app"></a>Fájl hozzáférést biztosít az alkalmazások típusai
-Minden ügyfél-előfizetést egy fenntartott directory struktúrája adatközponton belül meghatározott UNC-megosztáson található. Előfordulhat, hogy az ügyfél megosztása több alkalmazás belül egy adott adatközpont jött létre, ezért a könyvtárakat egyetlen ügyfél-előfizetések alá tartozó összes jönnek létre, az azonos UNC. A megosztás könyvtárak, például a tartalmat, hiba és diagnosztikai naplók és az alkalmazás hozta létre a verziókövetési rendszerrel korábbi verzióinak is tartalmazhat. Elvárás ügyfél app könyvtárak érhetők el az olvasási és írási hozzáférés az alkalmazás alkalmazás kód futási időben.
+### <a name="types-of-file-access-granted-to-an-app"></a>Típusú fájl a hozzáférést egy alkalmazáshoz
+Minden egyes ügyfél-előfizetés rendelkezik egy fenntartott könyvtárstruktúrát adatközponton belül meghatározott UNC-megosztáson található. Előfordulhat, hogy az ügyfél megosztani több alkalmazás létrehozott egy adott adatközponton belül, így az azonos UNC jönnek létre a könyvtárak egyetlen ügyfél-előfizetések alá tartozó összes. A megosztás lehet olyan címtárakat, például a tartalmat, a hiba és a diagnosztikai naplók és a korábbi verzióiban a verziókövetés által létrehozott alkalmazás. Megfelelően működik, a felhasználó alkalmazás könyvtárak érhetők el az olvasási és írási hozzáférés az alkalmazás alkalmazáskód által futásidőben.
 
-A helyi meghajtókon csatolva a virtuális géphez, amely egy alkalmazást futtat az App Service fenntartja a rendszer az alkalmazás-specifikus ideiglenes helyi tárolására a C:\ meghajtón rendelkezésre álló. Habár egy alkalmazás teljes olvasási/írási hozzáférést a saját helyi ideiglenes tárhelyre, tárolási valóban nem célja, hogy közvetlenül az alkalmazás kódjának használják. Ehelyett a szándéka az, hogy ideiglenes fájlok tárolására biztosítanak az IIS és a webes alkalmazás-keretrendszerek számára. App Service is korlátozza ideiglenes helyi tárterület érhető el minden egyes alkalmazáshoz megakadályozhatja, hogy egyes alkalmazások a helyi fájl tárolási túl nagy mennyiségű fel.
+A helyi meghajtókon csatolva a virtuális géphez, amely egy alkalmazást futtat az App Service fenntart egy szövegrészletet, alkalmazás-specifikus ideiglenes helyi tárolóhoz tartozó a C:\ meghajtón található helyet. Bár az alkalmazás a saját ideiglenes helyi tárhely teljes írási/olvasási hozzáféréssel rendelkezik, hogy a tárolási valóban használata nem javasolt közvetlenül az alkalmazás kódja által használható. A célja, biztosít ideiglenes fájlok tárolására az IIS és a webes alkalmazás-keretrendszerek. App Service-ben is elérhető minden alkalmazás megakadályozza, hogy egyes alkalmazások felhasználása a helyi fájl tárolási túlzott mennyiségű ideiglenes helyi tárhely mennyiségét korlátozza.
 
-Hogyan használja az App Service a helyi ideiglenes tárolási két többek között az ideiglenes ASP.NET-fájlok a könyvtárban, és az IIS a könyvtár a tömörített fájlok. Az ASP.NET-fordítási rendszer a "Temporary ASP.NET Files" könyvtárat használja, mint egy ideiglenes fordítási gyorsítótár helyét. Az IIS az "IIS ideiglenes tömörített fájlok" könyvtár a tömörített válasz kimenetének tárolására használja. Mindkét említett típusú fájl használati (valamint más) vannak újra társítva az App Service alkalmazásonkénti ideiglenes helyi tárterület. Az újbóli hozzárendelés biztosítja, hogy funkció továbbra is a várt módon.
+Hogyan használja az App Service-ben a helyi ideiglenes tárhely két példa az ideiglenes ASP.NET-fájlok a könyvtárban, és az IIS-címtárnak tömörített fájlok. Az ASP.NET-fordítási rendszer a "Ideiglenes ASP.NET-fájlok" könyvtárat használja egy ideiglenes fordítási gyorsítótár helyét. Az IIS tömörített válasz kimenetének tárolására a "IIS ideiglenes tömörített fájlok" könyvtárat használja. Mindkét említett típusú fájl használati (ahogy mások) rendszer újramegfeleltetése alatt App Service-ben alkalmazásonkénti ideiglenes helyi tárba. Az újbóli hozzárendelés biztosítja, hogy funkciói továbbra is a várt módon.
 
-Minden alkalmazás az App Service fut egy véletlenszerű egyedi alacsony jogosultsági szintű munkavégző folyamat identitásaként hívása a "alkalmazáskészlet-identitás", itt további leírt: [ http://www.iis.net/learn/manage/configuring-security/application-pool-identities ](http://www.iis.net/learn/manage/configuring-security/application-pool-identities). Alkalmazáskód ezzel az identitással a rendszermeghajtó (a D:\ meghajtóra) alapvető csak olvasási hozzáféréssel használja. Ez azt jelenti, hogy alkalmazáskód közös könyvtárstruktúrák listában, és az operációs rendszer meghajtóján közös fájlok olvasását. Bár ez tűnhet némileg széles körre kiterjeszteni access, az ugyanazon könyvtárak és fájlok hozzáférhetők, amikor a feldolgozói szerepkör egy Azure-ban üzemeltetett szolgáltatás, és olvassa el a meghajtó tartalmát. 
+Minden alkalmazás az App Service-ben fut, egy véletlenszerű egyedi alacsony jogosultsági szintű munkavégző folyamat identitása, a "alkalmazáskészlet-identitás", továbbá az itt leírtak szerint nevű: [ http://www.iis.net/learn/manage/configuring-security/application-pool-identities ](http://www.iis.net/learn/manage/configuring-security/application-pool-identities). Alkalmazás kódja ezt az identitást használja az alapszintű csak olvasási hozzáféréssel az operációs rendszer meghajtójára (a D:\ meghajtóra). Ez azt jelenti, hogy alkalmazáskód közös könyvtárstruktúrák listában, és az operációs rendszer meghajtóján közös fájlok olvasását. Bár ez jelenhet meg kell a hozzáférést, az ugyanazon könyvtárak és fájlok némileg széles körben elérhetők, amikor üzembe helyez egy feldolgozói szerepkört az Azure-ban üzemeltetett szolgáltatás, és olvassa el a meghajtó tartalmát. 
 
 <a name="multipleinstances"></a>
 
-### <a name="file-access-across-multiple-instances"></a>Fájlhozzáférés több példánya között
-A kezdőkönyvtár az alkalmazás forráskódjának tartalom található, és alkalmazáskód írhat rá. Ha egy alkalmazás több példánya fut, a kezdőkönyvtár osztozik összes példányát, hogy minden példány könyvtárába. Így például ha egy alkalmazás a kezdőkönyvtár feltöltött fájlok mentése, ezeket a fájlokat érhetők el azonnal összes példányára. 
+### <a name="file-access-across-multiple-instances"></a>Az egyes példányok a fájlhozzáférés
+A kezdőkönyvtár tartalmazza az alkalmazás tartalmát, és az alkalmazáskód írható-e. Ha egy alkalmazás több példánya fut, a kezdőkönyvtár között megosztott összes példányát, hogy az összes példány megtekintéséhez ugyanabban a címtárban. Tehát például ha egy alkalmazás feltöltött fájlokat a kezdőkönyvtárba menti, ezeket a fájlokat érhetők el azonnal az összes példányra. 
 
 <a id="NetworkAccess"></a>
 
 ## <a name="network-access"></a>Hálózati hozzáférés
-Alkalmazás kódja segítségével TCP/IP és UDP-alapú protokollt Internet elérhető végpontok külső szolgáltatásokat nyújtó a kimenő hálózati kapcsolatokat. Alkalmazások az Azure-szolgáltatásokhoz való használhatják ezeket a protokollokat&#151;például úgy, hogy az SQL Database HTTPS-kapcsolatok létrehozása.
+Alkalmazás felhasználhat TCP/IP és UDP-alapú protokollokat, hogy az internetről hozzáférhető végpontokkal, amely a külső szolgáltatások a kimenő hálózati kapcsolatokat. Alkalmazások használhatják ezeket a protokollokat, az Azure-szolgáltatásokhoz&#151;például úgy, hogy az SQL Database-HTTPS-kapcsolatok létesítése.
 
-Egy korlátozott képesség alkalmazások között egy helyi visszacsatolási-kapcsolat létrehozásához, és figyelni, hogy helyi visszacsatolási szoftvercsatornán egy alkalmazás is van. Ez a funkció lehetővé teszi az alkalmazások, amelyek a helyi visszacsatolási sockets működés részeként figyelik a elsősorban létezik. Minden alkalmazás "saját" visszacsatolási kapcsolatot látja. "A" App "B" alkalmazás által létrehozott helyi visszacsatolási szoftvercsatornához nem lehet figyelni.
+Az alkalmazások egyetlen helyi visszacsatolási kapcsolat, és a egy alkalmazást figyelni, hogy helyi visszacsatolási szoftvercsatornán rendelkezik egy korlátozott funkciókkal is van. Ez a funkció elsősorban az alkalmazások, amelyek a helyi visszacsatolási sockets funkcióikkal részeként figyelik létezik. Minden alkalmazás "privát" visszacsatolási kapcsolat fog látni. "A" alkalmazás "B" alkalmazás által létrehozott helyi visszacsatolási szoftvercsatornához nem tudja figyelni.
 
-A nevesített csöveket is támogatottak, amelyek együttesen az IOS-alkalmazásokat futtatnak, különböző folyamatok közötti folyamatok közti kommunikációja (IPC) módszerként. Az IIS FastCGI-modul például az egyes folyamatok PHP lapokat futtató nevesített csövek támaszkodik.
+Nevesített csövek egy másik alkalmazás együttesen futó folyamatok közötti folyamatok közti kommunikációja (IPC) mechanizmust is támogatottak. Az IIS FastCGI-modul például az egyes folyamatok PHP lapokat futtató nevesített csövek támaszkodik.
 
 <a id="Code"></a>
 
-## <a name="code-execution-processes-and-memory"></a>Programkód, folyamatok és memória
-Ahogy azt korábban említettük, alkalmazások egy véletlenszerű alkalmazáskészlet-identitás használatával alacsony jogosultsági szintű munkavégző folyamatok belül fut. Alkalmazás kódjának a memória, a munkavégző folyamat, valamint a gyermek folyamatokat is lehet indított CGI folyamatok és más alkalmazásokkal társított hozzáférése van. Azonban egy alkalmazás nem fér hozzá a memória vagy egy másik alkalmazás adatok akkor is, ha az azonos virtuális gépen.
+## <a name="code-execution-processes-and-memory"></a>Végrehajtás, folyamatok és a memória
+Korábban feljegyzett az alkalmazások egy véletlenszerű alkalmazáskészlet-identitás használatával alacsony jogosultsági szintű munkavégző folyamatok belül futnak. Alkalmazáskód hozzáfér a memória, a munkavégző folyamat, valamint a gyermek folyamatokat is lehet generálandó CGI-folyamatok és más alkalmazásokkal társított. Azonban egy alkalmazás nem fér hozzá a memória vagy az adatok egy másik alkalmazás akkor is, ha ugyanazon a virtuális gépen.
 
-Alkalmazások parancsfájlokat, illetve a támogatott webes fejlesztési keretrendszerek írt lapok futtathatók. App Service nem konfigurálja a webes keretrendszer szűkebb módok. Például App Service futó ASP.NET alkalmazások figyelésekor egy szűkebb megbízhatósági mód "teljes" megbízhatósági szinten futtassa. Webes keretrendszerek, beleértve a klasszikus ASP és az ASP.NET, a folyamaton belüli COM-komponensek (de nem kívüli folyamat COM-komponensek) például ADO (ActiveX Data Objects) alapértelmezés szerint a Windows operációs rendszerben regisztrált elő tudják hívni.
+Alkalmazások futtathat szkripteket vagy a támogatott webfejlesztési keretrendszerekre írt lapok. App Service-ben nem konfigurálja minden olyan webes keretrendszer szűkebb módokat. App Service-ben futó ASP.NET-alkalmazások például futtassa a "teljes" megbízhatósági helyett egy szűkebb megbízhatósági módot. Webes keretrendszereket is a klasszikus ASP és az ASP.NET, meghívhatja a folyamaton belüli COM-komponensek (de nem kívüli folyamat COM-komponensek) például ADO (ActiveX Data Objects), amelyek a Windows operációs rendszeren alapértelmezés szerint.
 
-Alkalmazások elindítanak és futtathatják. Egy olyan alkalmazáshoz, többek között a származtatása a parancssorba vagy egy PowerShell-parancsfájl futtatása engedélyezett legyen. Azonban annak ellenére, hogy tetszőleges kódot és a folyamatok tud indított az alkalmazásokból, végrehajtható programokat és parancsfájlokat korlátozódnak továbbra is a szülő alkalmazáskészlethez jogosultsággal. Például egy alkalmazás is elindítanak egy végrehajtható fájl, amely lehetővé teszi egy kimenő HTTP-hívás, azonban, hogy az azonos végrehajtható nem próbál szüntesse meg a virtuális gépek adapter IP-címe Alacsony jogosultsági szintű kód egy kimenő hálózati hívás engedélyezett, de a hálózati beállítások a virtuális gép próbált rendszergazdai jogosultságokra van szüksége.
+Alkalmazások is tudott gyermekfolyamatként létrehozni, és tetszőleges kódot futtatni. Egy alkalmazás elvégzésére gyermekfolyamatként létrehozni egy parancs-rendszerhéj vagy egy PowerShell-szkript futtatása engedélyezett. Azonban Bár tetszőleges kódot és a folyamatok is létrehozta az alkalmazásokból, végrehajtható programokat és parancsfájlokat korlátozódnak továbbra is a szülő alkalmazáskészlethez jogosultsággal. Például egy alkalmazást is tudott gyermekfolyamatként létrehozni egy végrehajtható fájl, amely lehetővé teszi egy kimenő HTTP-hívással, azonban, hogy ugyanaz a végrehajtható fájl nem próbál meg a hálózati adapteren. a virtuális gép IP-címe a kötés megszüntetését Alacsony jogosultsági szintű kód egy kimenő hálózati hívás engedélyezett, de a kísérlet a hálózati beállítások a virtuális gép rendszergazdai jogosultságra van szükség.
 
 <a id="Diagnostics"></a>
 
 ## <a name="diagnostics-logs-and-events"></a>Diagnosztikai naplók és események
-Naplózási adatok egy másik adatok, amelyek bizonyos alkalmazásokban való hozzáférés megkísérlése egy. A naplózási információk érhetők el az App Service-ben futó típusú diagnosztikai tartalmazza, és egy alkalmazás, amely könnyen elérhető, az alkalmazás által generált adatok naplózására. 
+Naplóadatok az adatokat, amelyek bizonyos alkalmazásokhoz való hozzáférés megkísérlése egy másik csoportja. A naplóadatok futó App Service-ben elérhető típusú diagnosztikai tartalmazza, és naplózza az információkat, hogy könnyen elérhető, az alkalmazás által generált. 
 
-Például a W3C HTTP egy aktív alkalmazás által generált érhetők el naplók vagy a hálózati megosztásnak a helyét, az alkalmazás vagy a blob Storage tárolóban elérhető létrehozása, ha az ügyfél Storage W3C-naplózás a naplókönyvtár. Az utóbbi lehetőséget lehetővé teszi, hogy a nagy mennyiségű naplók anélkül, hogy a meghaladó fájl tárolási egy hálózati megosztásra társított összegyűjteni.
+Például egy aktív alkalmazás által generált W3C HTTP-naplókat érhetők el vagy egy könyvtárat a létrehozott az alkalmazás vagy a blob storage szolgáltatásban elérhető, ha egy ügyfél úgy állította be W3C-naplózást, tárolási és hálózati megosztás helye. Az utóbbi lehetőséget lehetővé teszi nagy mennyiségű anélkül, hogy egy hálózati megosztásra a file storage korlátait meghaladó gyűjtendő naplók.
 
-Egy hasonló tekintettel a valós idejű diagnosztikai információkat, a .NET-alkalmazás is bejelentkezhet a .NET-nyomkövetés és diagnosztika infrastruktúra használata a beállítások a nyomkövetési adatokat írni az alkalmazás hálózati megosztást, vagy másik lehetőségként blob tárolóhelyre.
+Egy hasonló tekintettel a .NET-alkalmazások valós idejű diagnosztikai adatait is naplózható használatával a .NET-nyomkövetési és diagnosztikai infrastruktúra, a beállításokkal a nyomkövetési adatokat írni az alkalmazás hálózati megosztásra, vagy másik lehetőségként egy blob tárolási helyére.
 
-Diagnosztikai naplózás és nyomkövetés, amelyek nem érhetők el az alkalmazások területek a következők: Windows ETW-események és a gyakori Windows-Eseménynapló (például rendszer, az alkalmazás és a biztonsági eseménynaplók). ETW-nyomkövetési adatokat is lehet megtekinthető gépre kiterjedő (az ACL-ek jobbra), mert az olvasási és írási hozzáférés ETW-események letiltva. A fejlesztők észrevette, hogy, hogy API hívások olvasási és írási ETW események és a Windows eseménynaplóiban keresse meg közös jelennek meg a munkahelyi, de, mivel az App Service van "faking" a hívásokat, hogy sikeres legyen. A valóságban az alkalmazás kódja nem rendelkezik hozzáféréssel az eseményadatok.
+Diagnosztikai naplózás és nyomkövetés, amelyek nem érhetők el az alkalmazások a következő területekre Windows ETW-események és a gyakori Windows-eseménynaplók (például rendszer, alkalmazás és biztonsági eseménynaplók). ETW-nyomkövetési információkat lehet megtekinthető gépre kiterjedő (együtt jobb ACL-ek), mivel olvasási és írási hozzáférés ETW-események le vannak tiltva. A fejlesztők előfordulhat, hogy figyelje meg, hogy API-hívások olvasása és írása az ETW, események és a gyakori Windows-eseménynaplók úgy tűnik, hogy működik, de az App Service-ben a "faking" a hívások azért van, hogy azok megjelenhessenek sikeres. A valóságban ez az alkalmazás kódja nem rendelkezik hozzáféréssel az eseményadatokat.
 
 <a id="RegistryAccess"></a>
 
-## <a name="registry-access"></a>Beállításjegyzék elérésének
-Az alkalmazások rendelkezzenek csak olvasási hozzáféréssel a legtöbb (azonban nem mindegyik) a virtuális gép a gazdagépen futnak a beállításjegyzék. A gyakorlatban ez azt jelenti, amelyek lehetővé teszik az olvasási hozzáférést a helyi felhasználók csoport beállításkulcsok érhetők el alkalmazások. A beállításjegyzékben, amely jelenleg nem támogatott olvasási vagy írási hozzáférés egy részén a HKEY\_aktuális\_felhasználói struktúra.
+## <a name="registry-access"></a>Beállításjegyzék-hozzáférés
+Alkalmazások rendelkeznek csak olvasható hozzáférést (bár nem: mind) a beállításjegyzék, a virtuális gép, amelyen futnak. A gyakorlatban ez azt jelenti, amelyek lehetővé teszik a helyi felhasználók csoport a csak olvasható hozzáférést beállításkulcsok alkalmazások által elérhető. Része a beállításjegyzékben, amely jelenleg nem támogatott olvasási vagy írási hozzáférése a HKEY\_aktuális\_felhasználói hive.
 
-A beállításjegyzéket írási le van tiltva, beleértve a felhasználói beállításkulcsok való hozzáférést. Az alkalmazás szempontjából a beállításjegyzéket írási hozzáféréssel kell soha nem lehet hivatkozni az Azure környezetben óta alkalmazások (illetve használhat) települnek át a különböző virtuális gépek között. Az alkalmazás által kell függött csak állandó írható tárolóhoz az alkalmazáson belüli tartalom könyvtárstruktúrát a az App Service UNC-megosztásokon tárolt. 
+A beállításjegyzék írási hozzáféréssel le van tiltva, beleértve a felhasználónkénti beállításkulcsok való hozzáférést. Az alkalmazás szempontjából, a beállításjegyzéket írási hozzáféréssel kell soha nem lehet hivatkozni az Azure-környezetben, mivel az alkalmazások (és is) települnek át a különböző virtuális gépek között. A csak írható adattárolásra, amely képes lehet alárendelve, az alkalmazás által az alkalmazásonkénti tartalom könyvtárstruktúrát a az App Service UNC-megosztásokon tárolt. 
 
 ## <a name="more-information"></a>További információ
 
-[Az Azure Web App védőfal](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) -a végrehajtási környezet, az App Service a legfrissebb információkat. Ezen a lapon közvetlenül az App Service fejlesztői csapat tartja fenn.
+[Az Azure Web App védőfal](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) – a legfrissebb információkat az App Service a végrehajtási környezetben. Ezen a lapon közvetlenül az App Service fejlesztői csapat által karbantartott.
 
 > [!NOTE]
 > Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az Azure App Service kipróbálása](https://azure.microsoft.com/try/app-service/) oldalra. Itt azonnal létrehozhat egy ideiglenes, kezdő szintű webalkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.

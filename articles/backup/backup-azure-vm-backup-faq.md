@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: 910225e74fcd4655a9eff711d3ac1316d948c2b3
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ba77ec34e7887f676ea3df101e87c1ea80fceec5
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886194"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414794"
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Kérdések az Azure VM Backup szolgáltatással kapcsolatban
 A cikk gyakori kérdésekre adott válaszokat tartalmazó szakaszaiban gyorsan áttekinthető az Azure VM Backup összetevőinek működése. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -48,7 +48,7 @@ Igen. Akkor is, ha egy gép le van állítva a biztonsági mentések használhat
 Igen. Megszakíthatja a biztonsági mentési feladat, ha "Pillanatkép elkészítéséhez" fázisban. **Egy feladat nem szakítható meg, ha folyamatban van az adatátviteli pillanatképből**.
 
 ### <a name="i-enabled-resource-group-lock-on-my-backed-up-managed-disk-vms-will-my-backups-continue-to-work"></a>Erőforráscsoport zárolási bekapcsolva a biztonsági másolat felügyelt lemezes virtuális gépek A biztonsági mentések továbbra is működni fognak?
-Ha a felhasználó zárolja magát az erőforráscsoportot, a Backup szolgáltatás, nem tudja törölni a régebbi helyreállítási pontokat. Emiatt új biztonsági mentései kezdenek, a háttérbeli előírt maximális 18 visszaállítási pontok korlátozva van. Ha a biztonsági mentések egy belső hiba miatt nem működik a RG zárolás után, kövesse az alábbi [a visszaállítás eltávolítására vonatkozó lépéseket pont gyűjtemény](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock).
+Ha a felhasználó zárolja magát az erőforráscsoportot, a Backup szolgáltatás, nem tudja törölni a régebbi helyreállítási pontokat. Emiatt új biztonsági mentései kezdenek, a háttérbeli előírt maximális 18 visszaállítási pontok korlátozva van. Ha a biztonsági mentések egy belső hiba miatt nem működik a RG zárolás után, kövesse az alábbi [a visszaállítás eltávolítására vonatkozó lépéseket pont gyűjtemény](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-portal-created-by-backup-service).
 
 ### <a name="does-backup-policy-take-daylight-saving-timedst-into-account"></a>Biztonsági mentési szabályzat nem figyelembe vennie a nyári mentése Time(DST)?
 Nem. Vegye figyelembe, hogy dátum és idő a helyi számítógépen megjelenik a helyi idő és a nyári időszámítás aktuális. Így a beállított ütemezett biztonsági mentések idejét nyári Időszámítás miatt a helyi idő eltérő lehet.

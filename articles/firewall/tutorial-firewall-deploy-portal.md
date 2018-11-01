@@ -3,18 +3,17 @@ title: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalo
 description: Ebből az oktatóanyagból megtudhatja, hogyan helyezheti üzembe és konfigurálhatja az Azure Firewallt az Azure Portalon.
 services: firewall
 author: vhorne
-manager: jpconnock
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 10/5/2018
+ms.date: 10/30/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8fb459d197c15cf7760a924c7161fed59cc1caac
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 47a04df843ec307b54cc1d6597f9a3cf8668e291
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801879"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238828"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon
 
@@ -31,7 +30,7 @@ A hálózati forgalmat a konfigurált tűzfalszabályok irányítják, ha alapé
 
 Az alkalmazás- és hálózatszabályokat *szabálygyűjteményekben* tárolja a rendszer. A szabálygyűjtemény olyan szabályok listája, amelyeknek a művelete és a prioritása megegyezik.  A hálózatszabályok gyűjteménye hálózati szabályokat, az alkalmazásszabály-gyűjtemény alkalmazásszabályokat tartalmaz.
 
-Az Azure Firewall NAT-szabályokat, hálózati szabályokat és alkalmazásszabályokat tartalmaz. Az Azure Firewall szabályfeldolgozási logikájával kapcsolatos további információkért tekintse meg az [Azure Firewall szabályfeldolgozási logikájával](rule-processing.md) kapcsolatos cikket.
+Az Azure Firewall szabályfeldolgozási logikájával kapcsolatos további információkért tekintse meg az [Azure Firewall szabályfeldolgozási logikájával](rule-processing.md) kapcsolatos cikket.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -42,8 +41,6 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Alkalmazásszabályok konfigurálása
 > * Hálózati szabályok konfigurálása
 > * A tűzfal tesztelése
-
-
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -56,32 +53,32 @@ Ebben az oktatóanyagban egyetlen virtuális hálózatot hozunk létre három al
 
 Ez az oktatóanyag egy leegyszerűsített hálózati konfigurációt használ a könnyű üzembe helyezés érdekében. Éles környezetekben javasolt egy [küllős modell](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) használata, ahol a tűzfal a saját virtuális hálózatán található, a számítási feladatok kiszolgálói pedig társított virtuális hálózatokon vannak ugyanabban a régióban, egy vagy több alhálózaton.
 
-
-
 ## <a name="set-up-the-network-environment"></a>A hálózati környezet beállítása
+
 Először is hozzon létre egy erőforráscsoportot, amely a tűzfal üzembe helyezéséhez szükséges erőforrásokat tartalmazza. Ezután hozzon létre egy virtuális hálózatot, alhálózatokat és tesztkiszolgálókat.
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
-1. Jelentkezzen be az Azure Portalra a [http://portal.azure.com](http://portal.azure.com) webhelyen.
-1. Az Azure Portal kezdőlapján kattintson az **Erőforráscsoportok** elemre, majd a **Hozzáadás** elemre.
-2. Az **Erőforráscsoport neve** mezőbe írja be a következőt: **Test-FW-RG**.
-3. Az **Előfizetés** beállításnál válassza ki az előfizetését.
-4. Az **Erőforráscsoport helye** beállításnál válasszon ki egy helyet. Minden ezután létrehozott erőforrásnak ugyanezen a helyen kell lennie.
-5. Kattintson a **Create** (Létrehozás) gombra.
 
+1. Jelentkezzen be az Azure Portalra a [http://portal.azure.com](http://portal.azure.com) webhelyen.
+2. Az Azure Portal kezdőlapján kattintson az **Erőforráscsoportok** elemre, majd a **Hozzáadás** elemre.
+3. Az **Erőforráscsoport neve** mezőbe írja be a következőt: **Test-FW-RG**.
+4. Az **Előfizetés** beállításnál válassza ki az előfizetését.
+5. Az **Erőforráscsoport helye** beállításnál válasszon ki egy helyet. Minden ezután létrehozott erőforrásnak ugyanezen a helyen kell lennie.
+6. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="create-a-vnet"></a>Virtuális hálózat létrehozása
+
 1. Az Azure Portal kezdőlapján kattintson a **Minden szolgáltatás** elemre.
 2. A **Hálózat** területen kattintson a **Virtuális hálózatok** elemre.
 3. Kattintson a **Hozzáadás** parancsra.
 4. A **Név** mezőbe írja be a következőt: **Test-FW-VN**.
 5. A **Címtér** mezőbe írja be a következőt: **10.0.0.0/16**.
-7. Az **Előfizetés** beállításnál válassza ki az előfizetését.
-8. Az **Erőforráscsoport** mezőben válassza a **Meglévő használata**, majd a **Test-FW-RG** lehetőséget.
-9. A **Hely** elemnél válassza a korábban használt helyet.
-10. Az **Alhálózat** területen a **Név** mezőbe írja be a következőt: **AzureFirewallSubnet**. Ezen az alhálózaton lesz a tűzfal. Az alhálózat neve **kizárólag** AzureFirewallSubnet lehet.
-11. A **Címtartomány** mezőbe írja be a következőt: **10.0.1.0/24**.
-12. Használja a többi alapértelmezett beállítást, és kattintson a **Létrehozás** elemre.
+6. Az **Előfizetés** beállításnál válassza ki az előfizetését.
+7. Az **Erőforráscsoport** mezőben válassza a **Meglévő használata**, majd a **Test-FW-RG** lehetőséget.
+8. A **Hely** elemnél válassza a korábban használt helyet.
+9. Az **Alhálózat** területen a **Név** mezőbe írja be a következőt: **AzureFirewallSubnet**. Ezen az alhálózaton lesz a tűzfal. Az alhálózat neve **kizárólag** AzureFirewallSubnet lehet.
+10. A **Címtartomány** mezőbe írja be a következőt: **10.0.1.0/24**.
+11. Használja a többi alapértelmezett beállítást, és kattintson a **Létrehozás** elemre.
 
 > [!NOTE]
 > Az AzureFirewallSubnet alhálózat mérete legalább /25.
@@ -138,13 +135,11 @@ Ugyanezt az eljárást megismételve hozzon létre egy virtuális gépet **Srv-W
 
 Az Srv-Work virtuális gép **beállításainak** konfigurálásához használja a következő táblázatban lévő információkat: A többi beállítás ugyanaz, mint az Srv-Jump virtuális gép esetében.
 
-
 |Beállítás  |Érték  |
 |---------|---------|
 |Alhálózat|Workload-SN|
 |Nyilvános IP-cím|None|
 |Nyilvános bejövő portok kiválasztása|Nincsenek nyilvános bejövő portok|
-
 
 ## <a name="deploy-the-firewall"></a>A tűzfal üzembe helyezése
 
@@ -168,7 +163,6 @@ Az Srv-Work virtuális gép **beállításainak** konfigurálásához használja
    Az üzembe helyezés néhány percet vesz igénybe.
 4. Ha az üzembe helyezés elkészült, nyissa meg a **Test-FW-RG** erőforráscsoportot, majd kattintson a **Test-FW01** tűzfalra.
 6. Jegyezze fel a magánhálózati IP-címet. Később, az alapértelmezett útvonal létrehozásakor szükség lesz rá.
-
 
 ## <a name="create-a-default-route"></a>Alapértelmezett útvonal létrehozása
 
@@ -200,9 +194,7 @@ A **Workload-SN** alhálózatot konfigurálja úgy, hogy a kimenő alapértelmez
 18. A **Következő ugrás címe** mezőbe írja be a tűzfal magánhálózati IP-címét, amelyet korábban feljegyzett.
 19. Kattintson az **OK** gombra.
 
-
 ## <a name="configure-application-rules"></a>Alkalmazásszabályok konfigurálása
-
 
 1. Nyissa meg a **Test-FW-RG** erőforráscsoportot, majd kattintson a **Test-FW01** tűzfalra.
 2. A **Test-FW01** oldal **Beállítások** területén kattintson a **Szabályok** elemre.
@@ -244,7 +236,6 @@ Ebben az oktatóanyagban tesztelés céljából konfiguráljuk az elsődleges é
 6. Kattintson a **Save** (Mentés) gombra. 
 7. Indítsa újra az **Srv-Work** virtuális gépet.
 
-
 ## <a name="test-the-firewall"></a>A tűzfal tesztelése
 
 1. Az Azure Portalon tekintse át az **Srv-Work** virtuális gép hálózati beállításait, és jegyezze fel a gép magánhálózati IP-címét.
@@ -267,7 +258,6 @@ Ezzel ellenőrizte, hogy a tűzfalszabályok működnek-e:
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is használhatja, vagy ha már nincs rá szükség, törölje a **Test-FW-RG** erőforráscsoportot, és vele együtt a tűzfalhoz kapcsolódó összes erőforrást.
-
 
 ## <a name="next-steps"></a>További lépések
 

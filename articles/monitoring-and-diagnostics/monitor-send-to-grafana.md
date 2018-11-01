@@ -1,5 +1,5 @@
 ---
-title: Azure-szolgáltatások és alkalmazások monitorozása a Grafanával
+title: Azure-szolgáltatások és alkalmazások grafanával figyelése
 description: Útvonal az Azure Monitor és az Application Insights-adatok így meg tudja őket tekinteni a Grafana.
 services: azure-monitor
 keywords: ''
@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: ''
-ms.openlocfilehash: b4fbd1248f91e0766cca66d1c51033a8b338c324
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 75b1edf80f1dad5f0db48c11329effe080760820
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957377"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413145"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>A Grafana az Azure-szolgáltatások figyelése
 Most is figyelemmel kísérheti az Azure szolgáltatásainak és alkalmazásainak [Grafana](https://grafana.com/) használatával a [Azure Monitor adatforrás-beépülő modul](https://grafana.com/plugins/grafana-azure-monitor-datasource). A beépülő modul az Application Insights SDK által gyűjtött alkalmazásteljesítmény-adatokat, valamint az Azure Monitor által szolgáltatott infrastruktúra adatokat gyűjt. Ezután a Grafana irányítópulton jeleníti meg ezeket az adatokat.
@@ -37,13 +37,13 @@ A következő lépések segítségével állítja be a Grafana kiszolgálót az 
 ## <a name="log-in-to-grafana"></a>Jelentkezzen be a Grafana számára
 1. Az üzembe helyezés befejezése után jelölje be az **erőforráscsoport megnyitása**. Az újonnan létrehozott erőforrások listáját láthatja.
 
-    ![Grafana erőforrás csoportobjektumokhoz](.\media\monitor-how-to-grafana\grafana1.png)
+    ![Grafana erőforrás csoportobjektumokhoz](media/monitor-send-to-grafana/grafana1.png)
 
     Ha a hálózati biztonsági csoport (*grafana-nsg* ebben az esetben), láthatja, hogy port 3000 szolgál a Grafana kiszolgálóhoz való hozzáféréshez.
 
 2. Lépjen vissza az erőforrásokat, és válassza ki a lista **nyilvános IP-cím**. Írja be az ezen a képernyőn található értékeket használja, *http://<IP address>: 3000* vagy a  *<DNSName>: 3000* a böngészőben. A bejelentkezési lapot a Grafana kiszolgáló csak beépített kell megjelennie.
 
-    ![Grafana bejelentkezési képernyő](.\media\monitor-how-to-grafana\grafana2.png)
+    ![Grafana bejelentkezési képernyő](media/monitor-send-to-grafana/grafana2.png)
 
 3. Jelentkezzen be a felhasználói nevet a következőként *rendszergazdai* és a korábban létrehozott Grafana kiszolgáló-rendszergazdai jelszót.
 
@@ -51,7 +51,7 @@ A következő lépések segítségével állítja be a Grafana kiszolgálót az 
 
 Miután sikeresen bejelentkezett, láthatja, hogy az Azure Monitor adatforrás beépülő modul már megtalálható.
 
-![Grafana jeleníti meg az Azure Monitor beépülő modul](.\media\monitor-how-to-grafana\grafana3.png)
+![Grafana jeleníti meg az Azure Monitor beépülő modul](media/monitor-send-to-grafana/grafana3.png)
 
 1. Válassza ki **adatforrás hozzáadása** konfigurálása az Azure Monitor és az Application Insights.
 
@@ -70,7 +70,7 @@ Grafana egy Azure Active Directory-szolgáltatásnevet használatával csatlakoz
 
 4. Miután megadta az összes ezeket az adatokat, válassza ki a **mentése** és a Grafana teszteli, az API-t. Egy a következőhöz hasonló üzenetnek kell megjelennie.  
 
-    ![Grafana jeleníti meg az Azure Monitor beépülő modul](.\media\monitor-how-to-grafana\grafana4-1.png)
+    ![Grafana jeleníti meg az Azure Monitor beépülő modul](media/monitor-send-to-grafana/grafana4-1.png)
 
 > [!NOTE]
 > A beépülő modul adhatja meg, melyik Azure-felhő (nyilvános, az Azure US Government, Azure Germany vagy Azure China) szeretné, hogy a beépülő modul ellen kell konfigurálni.
@@ -83,7 +83,7 @@ Grafana egy Azure Active Directory-szolgáltatásnevet használatával csatlakoz
 
 2. Az új irányítópultot, válassza ki a **Graph**. Próbálja meg más diagramkészítési lehetőségek, de ez a cikk *Graph* példaként.
 
-    ![Új lesz a Grafana irányítópultja](.\media\monitor-how-to-grafana\grafana5.png)
+    ![Új lesz a Grafana irányítópultja](media/monitor-send-to-grafana/grafana5.png)
 
 3. Az irányítópulton megjelenik egy üres diagram.
 
@@ -93,14 +93,14 @@ Grafana egy Azure Active Directory-szolgáltatásnevet használatával csatlakoz
 
 Következő egy könnyen áttekinthető irányítópult használatával két diagram. A bal oldali mutatja, a két virtuális gépet a Processzorhasználat (%). A diagram a jobb oldalon a tranzakciók az Azure Storage-fiókot, a tranzakciós API-típus szerinti bontásban jeleníti meg.
 
-![Grafana két diagramok példa](.\media\monitor-how-to-grafana\grafana6.png)
+![Grafana két diagramok példa](media/monitor-send-to-grafana/grafana6.png)
 
 
 ## <a name="optional-create-dashboard-playlists"></a>Választható lehetőség: Irányítópult listák létrehozása
 
 A Grafana számos hasznos funkcióját egyik, az irányítópult-lista. Több irányítópultokat hozhat létre, és hozzáadhatja őket a lista konfigurálása mindegyik irányítópult megjelenítéséhez időköze. Válassza ki **lejátszása** megtekintéséhez az irányítópultok közötti váltáshoz. Előfordulhat, hogy szeretné, adja meg a csoport egy "állapot"tábla nagy üzenőfal figyelő megjeleníti azokat.
 
-![Példa a Grafana lejátszási lista](.\media\monitor-how-to-grafana\grafana7.png)
+![Példa a Grafana lejátszási lista](media/monitor-send-to-grafana/grafana7.png)
 
 
 ## <a name="optional-monitor-your-custom-metrics-in-the-same-grafana-server"></a>Választható lehetőség: Nyomon követheti a egyéni metrikákat Grafana ugyanazon a kiszolgálón
@@ -117,7 +117,7 @@ Az alábbiakban útmutatással cikkek Telegraf, InfluxDB, Prometheus és a Docke
  - [Docker-gazdagépek, a tárolók és a tárolóalapú szolgáltatásokat figyelési megoldást](https://stefanprodan.com/2016/a-monitoring-solution-for-docker-hosts-containers-and-containerized-services/)
 
 Íme egy teljes lesz a Grafana irányítópultja, amely rendelkezik az Azure Monitor és az Application Insights metrikáit képe.
-![Grafana például metrikák](.\media\monitor-how-to-grafana\grafana8.png)
+![Grafana például metrikák](media/monitor-send-to-grafana/grafana8.png)
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

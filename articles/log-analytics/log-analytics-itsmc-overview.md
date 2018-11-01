@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: b99c14e6022fa34d41caaa02bfc9feecb3c840ce
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 4f8261983feb8e655333f548b0b90f822eda30a6
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407503"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421186"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Csatlakozás az Azure ITSM-eszközeit IT Service Management-összekötő használatával
 
-![Informatikai szolgáltatásfelügyeleti összekötő szimbólum](./media/log-analytics-itsmc/itsmc-symbol.png)
+![Informatikai szolgáltatásfelügyeleti összekötő szimbólum](media/log-analytics-itsmc-overview/itsmc-symbol.png)
 
 Az IT Service Management Connector (ITSMC) lehetővé teszi az Azure és a egy támogatott IT Service Management (ITSM) termék vagy szolgáltatás összekapcsolása.
 
@@ -56,18 +56,18 @@ Kapcsolat létrehozása előtt kell hozzáadni az ITSM-összekötő megoldással
 
 1.  Az Azure Portalon, kattintson a **+ új** ikonra.
 
-    ![Az Azure új erőforrás](./media/log-analytics-itsmc/azure-add-new-resource.png)
+    ![Az Azure új erőforrás](media/log-analytics-itsmc-overview/azure-add-new-resource.png)
 
 2.  Keresse meg **informatikai szolgáltatásfelügyeleti összekötő** a Marketplace-en, majd kattintson a **létrehozás**.
 
-    ![ITSMC megoldás hozzáadása](./media/log-analytics-itsmc/add-itsmc-solution.png)
+    ![ITSMC megoldás hozzáadása](media/log-analytics-itsmc-overview/add-itsmc-solution.png)
 
 3.  Az a **OMS-munkaterület** területen válassza ki az Azure Log Analytics-munkaterületet, amelyre telepíteni a megoldás.
    >[!NOTE]
    >Az Azure Monitor folyamatos Váltás a Microsoft Operations Management Suite (OMS) részeként az OMS-munkaterületek most nevezzük Log Analytics-munkaterületek.
 4.  Az a **OMS-munkaterület beállításait** területen válassza ki az erőforráscsoport, ahol szeretné a megoldás-erőforrás létrehozásához.
 
-    ![ITSMC munkaterület](./media/log-analytics-itsmc/itsmc-solution-workspace.png)
+    ![ITSMC munkaterület](media/log-analytics-itsmc-overview/itsmc-solution-workspace.png)
     >[!NOTE]
     >Az Azure Monitor folyamatos Váltás a Microsoft Operations Management Suite (OMS) részeként az OMS-munkaterületek most nevezzük Log Analytics-munkaterületek.
 
@@ -93,12 +93,12 @@ Ha rendelkezik elő lett készítve az ITSM-eszközeit, az alábbi lépésekkel 
 
 1.  Lépjen a **összes erőforrás**, keressen **ServiceDesk(YourWorkspaceName)**.
 2.  A **MUNKATERÜLET ADATFORRÁSAI** a bal oldali ablaktáblán kattintson a **ITSM-kapcsolatok**.
-    ![ITSM-kapcsolatok](./media/log-analytics-itsmc/itsm-connections.png)
+    ![ITSM-kapcsolatok](media/log-analytics-itsmc-overview/itsm-connections.png)
 
     Ez a lap megjeleníti a kapcsolatok listájában.
 3.  Kattintson a **kapcsolat hozzáadása**.
 
-    ![ITSM-kapcsolat hozzáadása](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![ITSM-kapcsolat hozzáadása](media/log-analytics-itsmc-overview/add-new-itsm-connection.png)
 
 4.  Adja meg a kapcsolati beállításokat leírtak szerint [ITSMC kapcsolat beállítása az ITSM-termékekkel/szolgáltatásokkal cikkébe](log-analytics-itsmc-connections.md).
 
@@ -106,7 +106,7 @@ Ha rendelkezik elő lett készítve az ITSM-eszközeit, az alábbi lépésekkel 
 
     > Alapértelmezés szerint a ITSMC 24 óránként egyszer a frissíti a kapcsolat konfigurációs adatokat. Instantly szerkesztések és sablon szoftverfrissítésekkel, ellenőrizze a kapcsolati adatok frissítéséhez kattintson a **szinkronizálási** gombra a kapcsolat panelen.
 
-    ![Kapcsolat frissítése](./media/log-analytics-itsmc/itsmc-connections-refresh.png)
+    ![Kapcsolat frissítése](media/log-analytics-itsmc-overview/itsmc-connections-refresh.png)
 
 
 ## <a name="using-the-solution"></a>A megoldás használata
@@ -123,16 +123,16 @@ Kövesse az alábbi eljárást:
 1. Az Azure Portalon, kattintson a **figyelő**.
 2. A bal oldali ablaktáblán kattintson a **Műveletcsoportok**. A **műveleti csoport hozzáadása** ablak jelenik meg.
 
-    ![Műveletcsoportok](media/log-analytics-itsmc/action-groups.png)
+    ![Műveletcsoportok](media/log-analytics-itsmc-overview/action-groups.png)
 
 3. Adja meg **neve** és **ShortName** a műveleti csoport számára. Válassza ki a **erőforráscsoport** és **előfizetés** kívánja a műveletcsoport létrehozásához.
 
-    ![Csoport részletei](media/log-analytics-itsmc/action-groups-details.png)
+    ![Csoport részletei](media/log-analytics-itsmc-overview/action-groups-details.png)
 
 4. A műveletek listájában válassza ki a **ITSM** a legördülő menüből a **művelettípus**. Adjon meg egy **neve** a műveletet, majd kattintson a **részleteinek szerkesztése**.
 5. Válassza ki a **előfizetés** ahol Log Analytics-munkaterület megtalálható. Válassza ki a **kapcsolat** neve (ITSM-összekötő neve), a munkaterület neve követ. Ha például a "MyITSMMConnector(MyWorkspace)."
 
-    ![ITSM-művelet részletei](./media/log-analytics-itsmc/itsm-action-details.png)
+    ![ITSM-művelet részletei](media/log-analytics-itsmc-overview/itsm-action-details.png)
 
 6. Válassza ki **munkaelem** típusát a legördülő menüből.
    Válasszon egy meglévő sablont, vagy adja meg az ITSM-termék szükséges mezőket.
@@ -151,7 +151,7 @@ A konfiguráció alapján a kapcsolat beállításához, ITSM-összekötő szink
 
 Az incidenshez és változáskéréshez kérelem adatai az alábbi ábra a megoldás az ITSM-összekötő irányítópulttal.
 
-![Log Analytics képernyő](./media/log-analytics-itsmc/itsmc-overview-sample-log-analytics.png)
+![Log Analytics képernyő](media/log-analytics-itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
 Az irányítópult összekötő állapotát, amely a kapcsolatok problémák elemzéséhez kiindulási pontként használható információkat is biztosít.
 
@@ -161,7 +161,7 @@ A Service Map automatikusan felderíti az alkalmazás-összetevőket Windows és
 
 Ha a Service Map megoldást használja, az ügyfélszolgálati elemek létrehozása az ITSM-megoldások az alábbi példában látható módon tekintheti meg:
 
-![Log Analytics képernyő](./media/log-analytics-itsmc/itsmc-overview-integrated-solutions.png)
+![Log Analytics képernyő](media/log-analytics-itsmc-overview/itsmc-overview-integrated-solutions.png)
 
 További információ: [Service Map](../operations-management-suite/operations-management-suite-service-map.md)
 
@@ -254,7 +254,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Category_s | Kategória |
 | Title_s|  Rövid leírás |
 | Description_s|  Megjegyzések |
-| CreatedDate_t|  Megnyitott |
+| CreatedDate_t|  Megnyitva |
 | ClosedDate_t| Lezárt|
 | ResolvedDate_t|Feloldva|
 | Computer  | Konfigurációs elem |

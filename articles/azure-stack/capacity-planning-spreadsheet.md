@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 10/31/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.openlocfilehash: 5ebddbf1fea49fbf868d15a544a18e5a8c6369fd
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: ec4d8ef43510c07e73ab18de227176d3c282b8e1
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078307"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740841"
 ---
 # <a name="azure-stack-capacity-planner"></a>Az Azure Stack Capacity Planner
 Az Azure Stack Capacity Planner egy táblázatot, használja az Azure Stack resource kapacitástervezés. A capacity planner lehetőséget nyújt a számítási erőforrások különböző hozzárendelések tervezéséhez, és tekintse meg, hogyan ezek lenne elférjenek hardver ajánlatok kijelölés. Az Azure Stack Számológép használatára vonatkozó részletes útmutatást az alábbiakban találhatók.
@@ -56,7 +56,7 @@ Ezzel az eszközzel; Virtuálisgép-erőforrások kiosztásával kétféle móds
 ## <a name="definebyvmfootprint-instructions"></a>DefineByVMFootprint utasításokat
 Létrehoz egy modellt használ a különböző méretű és virtuális gépek mennyiségét egy gyűjteményt, válassza a "DefineByVMFootprint" lapot, és kövesse a feladatütemezési lépéseket.
 
-1. Ez a munkalap jobb felső sarokban a legördülő listában szerepelnek vezérlők segítségével válassza ki a egy kezdeti szám (4 és 12) között kiszolgálók telepíteni kívánt minden egyes hardver rendszerben (Termékváltozat). A kiszolgálók számának megtekintéséhez, hogyan befolyásolja ez összességében a modellezési folyamat során bármikor módosítható az erőforrás-elosztási modellt számára elérhető erőforrások.
+1. Ez a munkalap jobb felső sarokban a legördülő listában szerepelnek vezérlők segítségével válassza ki a egy kezdeti szám (4 és 16) között kiszolgálók telepíteni kívánt minden egyes hardver rendszerben (Termékváltozat). A kiszolgálók számának megtekintéséhez, hogyan befolyásolja ez összességében a modellezési folyamat során bármikor módosítható az erőforrás-elosztási modellt számára elérhető erőforrások.
 2. Ha azt szeretné, a modell a különböző virtuális gépek erőforrás-hozzárendelések egy adott hardverkonfiguráción ellen, a kék legördülő lista közvetlenül az "Aktuális Termékváltozat" címke alatt található az oldal jobb felső sarkában. Kérje le a lista, és válassza ki a kívánt hardver SKU.
 3. Most már készen áll, kezdje el hozzáadni a különböző méretű virtuális gépeket a modell az. Adja meg egy adott virtuális gép típusát, írjon be egy mennyiség értéket, a kék bekeretezett bal oldalán, a virtuális gép bejegyzést.
 
@@ -73,7 +73,7 @@ Létrehoz egy modellt használ az Azure Stack-munkaterhelések gyűjteménye, v�
 > [!TIP]
 > Egy Azure Stack-beli virtuális gép a megadott tárfiók méretének módosításához tekintse meg a megjegyzést. az előző szakaszban három lépésben.
 
-1. Ez az oldal jobb felső sarokban a legördülő listában szerepelnek vezérlők segítségével válassza ki a egy kezdeti szám (4 és 12) között kiszolgálók telepíteni kívánt minden egyes hardver rendszerben (Termékváltozat).
+1. Ez az oldal jobb felső sarokban a legördülő listában szerepelnek vezérlők segítségével válassza ki a egy kezdeti szám (4 és 16) között kiszolgálók telepíteni kívánt minden egyes hardver rendszerben (Termékváltozat).
 2. Ha azt szeretné, a modell a különböző virtuális gépek erőforrás-hozzárendelések egy adott hardverkonfiguráción ellen, a kék legördülő lista közvetlenül az "Aktuális Termékváltozat" címke alatt található az oldal jobb felső sarkában. Kérje le a lista, és válassza ki a kívánt hardver SKU.
 3. Válassza ki a megfelelő tárolási méretét a kívánt Azure Stack-beli virtuális DefineByVMFootprint lapon minden egyes DefineByVMFootprint utasításokat harmadik lépése a fentieknek megfelelően. A tárhelyméretet a virtuális gép a DefineByVMFootprint lap van definiálva.
 4. A lap bal felső sarkában a DefineByWorkloadFootprint kezdődően létrehozásához konfigurációk legfeljebb hat különböző számítási feladatok esetében minden egyes VM-típus található, hogy a számítási feladatok mennyisége. Ez történik, numerikus értékeket közvetlenül az adott számítási feladat neve alatt az oszlopba való elhelyezésével. Számítási feladat nevét módosítani lehet, hogy milyen típusú számítási feladatok, amelyek ezt a konfigurációt támogat.

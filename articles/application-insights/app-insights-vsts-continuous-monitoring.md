@@ -9,12 +9,12 @@ ms.date: 11/13/2017
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ecda8621640223f1c27f32834f2e4a098da4aba6
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 75401614b6892402083af5192b691f00d82c8d05
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301624"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413621"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>A kiadási folyamathoz folyamatos megfigyelés hozzáadása
 
@@ -28,13 +28,13 @@ Az Azure DevOps-szolgáltatásokkal mostantól támogatja a folyamatos monitoroz
 
 2. A kurzort **készítése és kiadása** > válassza **kiadásokban** > kattintson a **plusz jelre** > **kiadási definíció létrehozása** > Keresse meg **figyelési** > **az Azure App Service üzembe helyezés, a folyamatos figyelés.**
 
-   ![Új Azure fejlesztési és üzemeltetési szolgáltatások kibocsátási folyamatok](.\media\app-insights-continuous-monitoring\001.png)
+   ![Új Azure fejlesztési és üzemeltetési szolgáltatások kibocsátási folyamatok](media/app-insights-vsts-continuous-monitoring/001.png)
 
 3. Kattintson a **vonatkoznak.**
 
 4. A piros felkiáltójel mellett jelölje ki a szöveget a kék **környezettel kapcsolatos feladatok megtekintéséhez.**
 
-   ![Környezet feladatok megtekintése](.\media\app-insights-continuous-monitoring\002.png)
+   ![Környezet feladatok megtekintése](media/app-insights-vsts-continuous-monitoring/002.png)
 
    Egy konfigurációs képernyő jelenik meg, a következő táblázat segítségével az adatbeviteli mezők kitöltéséhez.
 
@@ -60,7 +60,7 @@ Az Azure DevOps-szolgáltatásokkal mostantól támogatja a folyamatos monitoroz
 
 3. Módosítsa a rendelkezésre állási **küszöbérték** a szolgáltatási szint követelményeinek.
 
-   ![Riasztás módosítása](.\media\app-insights-continuous-monitoring\003.png)
+   ![Riasztás módosítása](media/app-insights-vsts-continuous-monitoring/003.png)
 
 4. Válassza ki **OK** > **mentése** > adjon meg egy leíró megjegyzés > kattintson **OK.**
 
@@ -68,13 +68,13 @@ Az Azure DevOps-szolgáltatásokkal mostantól támogatja a folyamatos monitoroz
 
 1. Kattintson a **folyamat** > Válassza ki a **előtti** vagy **üzembe helyezés utáni feltételek** függően a szakaszban egy folyamatos figyelési kapu igénylő szimbólum.
 
-   ![Központi telepítés előtti feltételek](.\media\app-insights-continuous-monitoring\004.png)
+   ![Központi telepítés előtti feltételek](media/app-insights-vsts-continuous-monitoring/004.png)
 
 2. Állítsa be **kapuk** való **engedélyezve** > **jóváhagyási kapuk**> kattintson **hozzáadása.**
 
 3. Válassza ki **Azure Monitor** (Ez a beállítás lehetővé teszi a hozzáférés riasztásokra mind az Azure Monitor és az Application Insights)
 
-    ![Azure Monitor](.\media\app-insights-continuous-monitoring\005.png)
+    ![Azure Monitor](media/app-insights-vsts-continuous-monitoring/005.png)
 
 4. Adjon meg egy **kapuk időtúllépési** értéket.
 
@@ -86,7 +86,7 @@ Miután hozzáadta a központi telepítési kapuk, az Application insights szolg
 
 Tekintse meg ezt a viselkedést, jelölje be **kiadásokban** > kattintson a jobb gombbal kiadás neve **nyissa meg a** > **naplókat.**
 
-![Logs](.\media\app-insights-continuous-monitoring\006.png)
+![Logs](media/app-insights-vsts-continuous-monitoring/006.png)
 
 ## <a name="next-steps"></a>További lépések
 

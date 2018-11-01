@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: bcede1f985937058196b75a93f539cb34da73992
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 49607809d6bb8697cc6b7a4063a45d893b9e1eac
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365062"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421084"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Naplóriasztások az Azure monitorban
 Ez a cikk ismerteti a riasztások részleteinek közé tartoznak a különböző típusú riasztások belül támogatott a [Azure Alerts](monitoring-overview-unified-alerts.md) és a felhasználó használhat az Azure elemzési platform alapjaként, mert így.
@@ -93,7 +93,7 @@ Példaként vegyünk egy forgatókönyvet, ahol szeretett volna egy riasztás mi
 
 A lekérdezés minden olyan számítógépen átlagos értékét hozna létre, 5 perces időközönként.  Ez a lekérdezés szeretné futtatni át 5 percenként összegyűjtött adatokat az előző 30 perc.  Mintaadatok három számítógép az alább látható.
 
-![Mintául szolgáló lekérdezés eredményei](./media/monitor-alerts-unified/metrics-measurement-sample-graph.png)
+![Mintául szolgáló lekérdezés eredményei](media/monitor-alerts-unified-log/metrics-measurement-sample-graph.png)
 
 Ebben a példában külön riasztások létrehozott srv02 és srv03 mivel ezek a 90 %-os küszöbértéket megsértették háromszor keresztül az adott időszakban.  Ha a **eseményindító riasztás alapján:** értékről **folyamatos** és a egy riasztás akkor hozhatók létre csak srv03 óta, a három egymást követő minták küszöbértéket megsértették.
 

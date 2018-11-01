@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 904502e5c73127cca7920da2173edd013e55762f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 6e587f79f0f77446ea5a61cbb989f3f1c3655e0a
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242245"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741759"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Az Azure monitorban Log Analytics-adatok elemzése
 
@@ -97,7 +97,7 @@ union Update, workspace("contoso-workspace").Update
 ## <a name="how-log-analytics-data-is-organized"></a>Hogyan vannak rendszerezve a Log Analytics-adatok
 Ha egy lekérdezést hoz létre, akkor meghozatalához melyik táblákhoz, amely a keresett adatokat tartalmaznak. Különböző típusú adatok meg vannak osztva az egyes dedikált táblák [Log Analytics-munkaterület](log-analytics-quick-create-workspace.md).  Különböző adatforrásokhoz tartozó dokumentációk az adattípus, amely létrehozza a nevére, és az egyes a tulajdonságok leírását tartalmazza.  Több lekérdezés csak egyetlen tábla adatait, de mások használatával számos lehetőség több tábla adatait tartalmazza.
 
-Miközben [Application Insights](../application-insights/app-insights-overview.md) tárolók adatokat, mint a kérelmeket, kivételeket, nyomkövetéseket és a Log Analytics, az adatok használati tárolva van, mint a naplózási adatokat egy másik partíció. Az azonos lekérdezési nyelv használatával is hozzáfér az adatokhoz, de kell a [Application Insights-konzol](../application-insights/app-insights-analytics.md) vagy [Application Insights REST API](https://dev.applicationinsights.io/) az eléréséhez. Használhat [cross-erőforrások lekérdezések](log-analytics-cross-workspace-search.md) úgy, hogy más adatokat a Log Analytics az Application Insights-adatok.
+Miközben [Application Insights](../application-insights/app-insights-overview.md) tárolók adatokat, mint a kérelmeket, kivételeket, nyomkövetéseket és a Log Analytics, az adatok használati tárolva van, mint a naplózási adatokat egy másik partíció. Ugyanazt a lekérdezési nyelvet használja az adatok elérésére, de kell használnia a [Application Insights-konzol](../application-insights/app-insights-analytics.md) vagy [Application Insights REST API](https://dev.applicationinsights.io/) az eléréséhez. Használhat [cross-erőforrások lekérdezések](log-analytics-cross-workspace-search.md) úgy, hogy más adatokat a Log Analytics az Application Insights-adatok.
 
 
 ![Táblák](media/log-analytics-queries/queries-tables.png)

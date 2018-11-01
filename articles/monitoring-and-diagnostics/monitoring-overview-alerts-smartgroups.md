@@ -1,5 +1,5 @@
 ---
-title: Az intelligens csoportok
+title: Intelligens csoportok
 description: Az intelligens csoportok olyan riasztásokat, amelyek segítséget nyújtanak az összesítések riasztási zaj csökkentésére
 author: anantr
 services: azure-monitor
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: 58a66cfdfaada34981ef166635b0d04e2e6e8f61
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 57ec7c13cdf5c2e44abf23dc0452e5eab3eb77ff
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976883"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412618"
 ---
-# <a name="smart-groups"></a>Az intelligens csoportok
+# <a name="smart-groups"></a>Intelligens csoportok
 A riasztások kezelésével kapcsolatosan van átnéznie a zaj ismerje meg, hogy ténylegesen lényegre – intelligens csoportok szánt a megoldást a problémára, ha megmérkőzött közös kihívást.  
 
 Intelligens csoportokat úgy, hogy egyetlen problémára képviselő kapcsolódó riasztások gépi tanulási algoritmusok használatával automatikusan jönnek létre.  Ha riasztás jön létre, az algoritmus hozzáad egy új intelligens csoportot vagy egy meglévő, például a korábbi minták, hasonló tulajdonságok és hasonló szerkezet információi alapján intelligens csoporthoz. Ha egy adott előfizetéshez több virtuális gépen % CPU egyidejűleg hirtelen megugró kihasználtság, és az egyes riasztások, és ha az ilyen riasztások együtt történt bármikor múltbeli időpont, ezek a riasztások valószínűleg csoportosítja a rendszer egyetlen intelligens csoportba, amely arra utal, például egy lehetséges leggyakoribb okát. Ez azt jelenti, hogy valaki hibaelhárítási figyelmeztetések, intelligens csoportok nem csak lehetővé teszi őket a zaj csökkentésére, mivel kezeli az kapcsolódó riasztások összesített egyetlen egységként, azt is segítséget nyújt számukra az felé gyakori kiváltó okok felderítése érdekében, a riasztások esetén lehetséges.
@@ -32,7 +32,7 @@ A következő intelligens csoport állapotok támogatottak.
 | Állapot | Leírás |
 |:---|:---|
 | Új | A probléma csak észlelt, és még nem lett felülvizsgálva. |
-| Arra vonatkozik | A rendszergazda tekintse át az intelligens csoport és a munka megkezdése. |
+| Visszaigazolva | A rendszergazda tekintse át az intelligens csoport és a munka megkezdése. |
 | Lezárva | A probléma megoldódott. Egy intelligens csoport lezárása után nyissa meg újra egy másik állapotának módosításával. |
 
 [Megtudhatja, hogyan módosíthatja az intelligens csoport állapotát.](https://aka.ms/managing-alert-smart-group-states)
@@ -44,7 +44,7 @@ A következő intelligens csoport állapotok támogatottak.
 
 Az intelligens Részletek lapján jelenik meg, válasszon ki egy intelligens csoportot. Az intelligens csoport, beleértve az indoklást, amely a csoport létrehozásához használt, és lehetővé teszi, hogy az állapotváltozáshoz. részleteket biztosít.
  
-![Az intelligens csoport részletei](media/monitoring-overview-unified-alerts/smart-group-detail.png)
+![Az intelligens csoport részletei](media/monitoring-overview-alerts-smartgroups/smart-group-detail.png)
 
 
 Az intelligens Részletek lapján az alábbi szakaszokat tartalmazza.

@@ -50,7 +50,7 @@ Tekintse meg [konfigurálása az Azure Key Vault tűzfalak és virtuális háló
 > [!NOTE]
 > * Egy legfeljebb 127 VNET-szabályok és 127 IPv4-szabályok használata engedélyezett. 
 > * Kis címtartományok használatával "/ 31" vagy "/ 32" előtag méretei nem támogatottak. Ezek a tartományok egyedi IP-cím szabályok használatával kell konfigurálni.
-> * IP-hálózati szabályok csak a nyilvános IP-címek engedélyezettek. Magánhálózatok számára fenntartott (RFC 1918-ban meghatározott) IP-címtartományok az IP-szabályok nem engedélyezettek. Magánhálózatokat közé tartozik a címek kezdődő * 10.* *, * 172.16. **, és a * 192.168. **. 
+> * IP-hálózati szabályok csak a nyilvános IP-címek engedélyezettek. Magánhálózatok számára fenntartott (RFC 1918-ban meghatározott) IP-címtartományok az IP-szabályok nem engedélyezettek. Magánhálózatokat közé tartozik a címek kezdődő *10.*\*, *172.16.*\*, és a *192.168.*\*. 
 > * Jelenleg csak az IPv4-cím támogatott.
 
 ## <a name="trusted-services"></a>Megbízható szolgáltatások

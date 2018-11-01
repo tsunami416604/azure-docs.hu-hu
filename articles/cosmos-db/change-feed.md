@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: b6d05c5e9bc59df9df7ef8840b70ab027b6e2f74
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 09f827e8784fe2a97c587524d70baf76ae4458ba
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269496"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741861"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>A módosítási hírcsatorna támogatása az Azure Cosmos DB használata
 
@@ -34,7 +34,7 @@ A **módosítási hírcsatorna támogatása** az Azure Cosmos DB lehetővé tesz
 
 ## <a name="how-does-change-feed-work"></a>Hogyan módosítási munkahelyi hírcsatorna?
 
-Módosítási hírcsatorna támogatása az Azure Cosmos DB működését úgy, hogy történt egy Azure Cosmos DB-gyűjtemény. Majd megjeleníti a dokumentumok a sorrendben, amelyben a módosítás módosult a listán. A változtatások megmaradnak, aszinkron módon és Növekményesen a dolgozhatók, és a kimenet egy vagy több ügyfél párhuzamos feldolgozáshoz szét lehetnek osztva. 
+Módosítási hírcsatorna támogatása az Azure Cosmos DB működését úgy, hogy történt egy Azure Cosmos DB-gyűjtemény. Majd megjeleníti a dokumentumok a sorrendben, amelyben a módosítás módosult a listán. A módosítások meg lesznek őrizve, feldolgozhatók aszinkron és fokozatos módon is, a kimenet pedig több fogyasztó között is elosztható a párhuzamos feldolgozáshoz. 
 
 A változáscsatorna három különböző módon olvashat ebben a cikkben leírt módon:
 
@@ -47,7 +47,7 @@ A módosítási hírcsatorna egyes partíciókulcs-tartományok belül a dokumen
 ![Elosztott feldolgozásához Azure Cosmos DB – csatorna módosítása](./media/change-feed/changefeedvisual.png)
 
 További részletek:
-* Az összes fiók alapértelmezés szerint engedélyezve van a módosítási hírcsatorna.
+* A változáscsatorna alapértelmezés szerint minden fiókhoz engedélyezve van.
 * Használhatja a [kiosztott átviteli sebesség](request-units.md) az írási régiót, vagy bármely [olvasási régió](distribute-data-globally.md) olvasni a változáscsatorna, ugyanúgy, mint az Azure Cosmos DB fel más műveletekhez.
 * A módosítási hírcsatorna beszúrások és a gyűjteményben lévő dokumentumokon végrehajtott frissítési műveletek tartalmazza. Törlések rögzítheti is egy "helyreállítható törlés" jelző törlése helyett a dokumentumokon belül. Másik lehetőségként beállíthatja egy véges lejárati idejét via a dokumentumok a [TTL képesség](time-to-live.md), például 24 óra és a törlések rögzítéséhez tulajdonság értékét használja. Ezzel a megoldással hogy a TTL lejárata időszaknál rövidebb időközt belül feldolgozza a módosításokat.
 * Minden egyes dokumentum módosítása pontosan egyszer jelenik meg a változáscsatorna, és az ügyfelek kezelése az ellenőrzőpontok használata logic. A változáscsatorna feldolgozói könyvtárával biztosít automatikus ellenőrzőpont-készítés és a "legalább egyszer" szemantika.
@@ -77,7 +77,7 @@ A következő kép bemutatja, hogyan fogadása és használhatja az Azure Cosmos
 Ezenkívül belül a [kiszolgáló nélküli](http://azure.com/serverless) webes és mobil alkalmazások, például a felhasználói profil, beállítások vagy helyre bizonyos műveleteket, például a leküldéses értesítések küldése használatávaltörténőindításáhozanyomonkövethetiazeseményeketis[Az azure Functions](#azure-functions). Készítsen játékot használata Azure Cosmos DB, akkor is, például használata módosításcsatornáját befejezett játékok a pontszámok alapján a valós idejű ranglisták megvalósításához.
 
 <a id="azure-functions"></a>
-## <a name="using-azure-functions"></a>Az Azure Functions használatával 
+## <a name="using-azure-functions"></a>Az Azure Functions használatával 
 
 Azure Functions használata, a legegyszerűbb szeretne csatlakozni egy Azure Cosmos DB-módosítási hírcsatorna egy Azure Cosmos DB-eseményindító hozzáadása az Azure Functions-alkalmazás. Ha az Azure Functions alkalmazásokban hoz létre egy Azure Cosmos DB-eseményindítóval, választja, az Azure Cosmos DB-gyűjtemények való csatlakozáshoz, és a függvény akkor aktiválódik, amikor a gyűjteménybe módosításakor. 
 
@@ -114,9 +114,9 @@ Ez a szakasz végigvezeti a változáscsatorna használata az SQL SDK használat
     ```csharp
     FeedResponse pkRangesResponse = await client.ReadPartitionKeyRangeFeedAsync(
         collectionUri,
-        new FeedOptions
-            {RequestContinuation = pkRangesResponseContinuation });
-     
+        new FeedOptions
+            {RequestContinuation = pkRangesResponseContinuation });
+     
     partitionKeyRanges.AddRange(pkRangesResponse);
     pkRangesResponseContinuation = pkRangesResponse.ResponseContinuation;
     ```
@@ -125,29 +125,29 @@ Ez a szakasz végigvezeti a változáscsatorna használata az SQL SDK használat
 
     ```csharp
     foreach (PartitionKeyRange pkRange in partitionKeyRanges){
-        string continuation = null;
-        checkpoints.TryGetValue(pkRange.Id, out continuation);
-        IDocumentQuery<Document> query = client.CreateDocumentChangeFeedQuery(
-            collectionUri,
-            new ChangeFeedOptions
-            {
-                PartitionKeyRangeId = pkRange.Id,
-                StartFromBeginning = true,
-                RequestContinuation = continuation,
-                MaxItemCount = -1,
-                // Set reading time: only show change feed results modified since StartTime
-                StartTime = DateTime.Now - TimeSpan.FromSeconds(30)
-            });
-        while (query.HasMoreResults)
-            {
-                FeedResponse<dynamic> readChangesResponse = query.ExecuteNextAsync<dynamic>().Result;
+        string continuation = null;
+        checkpoints.TryGetValue(pkRange.Id, out continuation);
+        IDocumentQuery<Document> query = client.CreateDocumentChangeFeedQuery(
+            collectionUri,
+            new ChangeFeedOptions
+            {
+                PartitionKeyRangeId = pkRange.Id,
+                StartFromBeginning = true,
+                RequestContinuation = continuation,
+                MaxItemCount = -1,
+                // Set reading time: only show change feed results modified since StartTime
+                StartTime = DateTime.Now - TimeSpan.FromSeconds(30)
+            });
+        while (query.HasMoreResults)
+            {
+                FeedResponse<dynamic> readChangesResponse = query.ExecuteNextAsync<dynamic>().Result;
     
-                foreach (dynamic changedDocument in readChangesResponse)
-                    {
-                         Console.WriteLine("document: {0}", changedDocument);
-                    }
-                checkpoints[pkRange.Id] = readChangesResponse.ResponseContinuation;
-            }
+                foreach (dynamic changedDocument in readChangesResponse)
+                    {
+                         Console.WriteLine("document: {0}", changedDocument);
+                    }
+                checkpoints[pkRange.Id] = readChangesResponse.ResponseContinuation;
+            }
     }
     ```
 
@@ -165,13 +165,13 @@ A fenti 4. lépésben a kódban a **ResponseContinuation** az utolsó sort az ut
 Az ellenőrzőpont-tömb így csak megakadályozza a a Naplósorszám minden partíció esetében. De a partíciók kezelésére nem szeretné, ha ellenőrzőpontokat, Naplósorszám, kezdési idő, stb. a egyszerűbb lehetőség a változáscsatorna feldolgozói kódtára használandó.
 
 <a id="change-feed-processor"></a>
-## <a name="using-the-change-feed-processor-library"></a>Használatával a módosítási hírcsatorna feldolgozói kódtára 
+## <a name="using-the-change-feed-processor-library"></a>Használatával a módosítási hírcsatorna feldolgozói kódtára 
 
 A [Azure Cosmos DB-módosítási hírcsatorna feldolgozói kódtára](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet-changefeed) segítségével könnyedén feloszthatja az események feldolgozása több ügyfél között. Ebben a könyvtárban olvasási módosítások egyszerűbbé teszi a partíciók és több szál párhuzamos használata.
 
 Változáscsatorna feldolgozói könyvtárával fő előnye, hogy nem kell kezelni az egyes partíciók és a folytatási tokent, és nem rendelkezik az egyes gyűjtemények manuális lekérdezésére.
 
-A változáscsatorna feldolgozói könyvtárával olvasási módosítások egyszerűbbé teszi a partíciók és több szál párhuzamos használata.  A bérlet mechanizmussal partíciójára olvasási módosítások automatikusan kezeli. Ha két a változáscsatorna feldolgozói kódtára használó ügyfelek az alábbi képen, láthatjuk, ahogy azok a munkát egymás között osztja fel. Növelheti az ügyfelek továbbra is, mivel azok tartsa osztani a munkát egymás között.
+A változáscsatorna feldolgozói könyvtárával olvasási módosítások egyszerűbbé teszi a partíciók és több szál párhuzamos használata.  A bérlet mechanizmussal partíciójára olvasási módosítások automatikusan kezeli. Ha két a változáscsatorna feldolgozói kódtára használó ügyfelek az alábbi képen, láthatjuk, ahogy azok a munkát egymás között osztja fel. Növelheti az ügyfelek továbbra is, mivel azok tartsa osztani a munkát egymás között.
 
 ![Elosztott feldolgozásához Azure Cosmos DB – csatorna módosítása](./media/change-feed/change-feed-output.png)
 
@@ -433,7 +433,7 @@ Ezért létrehozásakor olvassa el a több Azure Functions ugyanaz a módosítá
 
 ### <a name="my-document-is-updated-every-second-and-i-am-not-getting-all-the-changes-in-azure-functions-listening-to-change-feed"></a>A dokumentum másodpercenként frissül, és nem érkeznek meg hozzám a módosításokat az Azure Functions módosításcsatornáját figyeli.
 
-Az Azure Functions szavazások változás hírcsatornáját 5 másodpercenként, 5 másodperc között végrehajtott módosítások elvesznek. Az Azure Cosmos DB tárolja csak egyetlen verziója 5 másodpercenként, 5. a módosítás megjelenik a dokumentum. Azonban ha azt szeretné, 5 másodperc alatt, és szeretné lekérdezni a változáscsatorna másodpercenként, akkor is konfigurálja a lekérdezési idő "feedPollTime", lásd: [Azure Cosmos DB-kötéseket](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration). Az alapértelmezett 5000-es érték ezredmásodpercben van definiálva. 1 másodperc alatt a lehetőség lehetséges, de nem javasolt, több Processzor írás indul.
+Az Azure Functions szavazások változás hírcsatornáját 5 másodpercenként, 5 másodperc között végrehajtott módosítások elvesznek. Az Azure Cosmos DB tárolja csak egyetlen verziója 5 másodpercenként, 5. a módosítás megjelenik a dokumentum. Azonban ha azt szeretné, 5 másodperc alatt, és szeretné lekérdezni a változáscsatorna másodpercenként, akkor is konfigurálja a lekérdezési idő "feedPollDelay", lásd: [Azure Cosmos DB-kötéseket](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration). Az alapértelmezett 5000-es érték ezredmásodpercben van definiálva. 1 másodperc alatt a lehetőség lehetséges, de nem javasolt, több Processzor írás indul.
 
 ### <a name="i-inserted-a-document-in-the-mongo-api-collection-but-when-i-get-the-document-in-change-feed-it-shows-a-different-id-value-what-is-wrong-here"></a>A Mongo-API-gyűjtemény beszúrt egy dokumentumot, de a dokumentum a módosítási hírcsatorna kapok, ha egy másik azonosító értéket mutatja. Miért nem megfelelő Itt?
 

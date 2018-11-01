@@ -10,16 +10,16 @@ ms.component: bing-video-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 9b030312c562d1c0a6cbacfc7f424289dee2e8de
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: cd5d6ef6a75088d02bc34558f66ed520c230e06b
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225565"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741889"
 ---
 # <a name="paging-videos"></a>Lapozófájl-videók
 
-A Videókeresési API hívásakor a Bing eredmények listáját adja vissza. A lista a lekérdezéshez kapcsolódó összes találat egy részét tartalmazza. Az első rendelkezésre álló válaszokat becsült teljes száma, a válasz-objektum eléréséhez [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos-totalestimatedmatches) mező.  
+Amikor meghívja a Video Search API-t, a Bing visszaad egy eredménylistát. A lista a lekérdezéshez kapcsolódó összes találat egy részét tartalmazza. Az első rendelkezésre álló válaszokat becsült teljes száma, a válasz-objektum eléréséhez [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos-totalestimatedmatches) mező.  
   
 A következő példa bemutatja a `totalEstimatedMatches` mező, amely egy videó válasz tartalmazza.  
   
@@ -65,3 +65,6 @@ Például, ha szeretné 30 videók lapon egyszerre, így állíthatja be `count`
 
 > [!NOTE]
 > Lapozófájl csak videók search (Keresés/videók /), és nem feltárását (/ videók/részletei) vagy a felkapott videók (/ videókat és népszerű) vonatkozik.
+
+> [!NOTE]
+> A `TotalEstimatedAnswers` mező elszámolás kérheti le az aktuális lekérdezés keresési eredmények teljes száma.  Ha `count` és `offset` paraméterek, a `TotalEstimatedAnswers` száma változhat. 

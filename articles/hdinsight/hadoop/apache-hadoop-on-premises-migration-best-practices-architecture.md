@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 64e735a1090972a6e4cef85d1a51909e8550c536
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 02db6b4691beb4bfefa3815c87cf54f350219d81
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221899"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418007"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése az Azure HDInsight - architektúra ajánlott eljárásai
 
@@ -92,8 +92,7 @@ HDInsight az Azure SQL Database, az Oozie és a Hive-metaadattárak. A HDInsight
     - Fürtöket hozhat létre és metaadatok, mint például a Hive séma Oozie feladat részletes elvesztése nélkül.
     - Egyetlen metaadattár db megoszthatók a különféle típusú fürtök
     - Metaadattár is vertikálisan fel igény szerint
-
-További információkért tekintse meg a cikket: [külső metaadat-tárolók az Azure HDInsight használata](../hdinsight-use-external-metadata-stores.md).
+    - További információkért lásd: [külső metaadat-tárolók az Azure HDInsight használata](../hdinsight-use-external-metadata-stores.md).
 
 ## <a name="best-practices-for-hive-metastore"></a>Ajánlott eljárások a Hive-Metaadattár
 
@@ -105,20 +104,20 @@ Egy HDInsight Hive-metaadattár ajánlott eljárások a következők:
 - Rendszeresen készítsen biztonsági másolatot az egyéni metaadattár.
 - A metaadattár és a HDInsight-fürt tartsa ugyanabban a régióban.
 - A metaadattár a teljesítmény és rendelkezésre állás az Azure SQL-adatbázis figyelési eszközökkel, például az Azure Portalon vagy az Azure Log Analytics használatával figyelheti.
-- Hajtsa végre a **elemzése tábla** létrehozni statisztikákat a táblák és oszlopok kötelezőként parancsot. Például: `ANALYZE TABLE [table_name] COMPUTE STATISTICS`
+- Hajtsa végre a **elemzése tábla** létrehozni statisztikákat a táblák és oszlopok kötelezőként parancsot. Például: `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
 ## <a name="best-practices-for-different-types-of-workloads"></a>Ajánlott eljárások a különféle számítási feladatok
 
 - Érdemes megfontolni az LLAP-fürtöt interaktív Hive-lekérdezések és a továbbfejlesztett válaszidő [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) Hive 2.0, amely lehetővé teszi a memórián belüli gyorsítótárazáshoz, a lekérdezések új szolgáltatása. LLAP teszi akár sokkal gyorsabb Hive-lekérdezések [26 x gyorsabb, mint a Hive-1.x bizonyos esetekben](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
-- Fontolja meg a Hive-feladatok helyett a Spark-feladatok használata
-- Fontolja meg, és cserélje le az impala-alapú lekérdezések LLAP-lekérdezések
-- Fontolja meg, és cserélje le a MapReduce-feladatok Spark-feladatok
-- Fontolja meg, és cserélje le a közel valós idejű batch-feladatok a Spark-feladatok a Spark strukturált Stream használata
-- Adatok előkészítése--fontolja meg az Azure Data Factory(ADF) 2.0
-- Az Ambari fontolja meg a fürt felügyeletéhez
-- Módosítsa az adattárolás helyszíni HDFS-ből WASB vagy az ADLS vagy az ADFS feldolgozás céljából parancsprogramok
-- Fontolja meg a Ranger RBAC használata a Hive-táblák és naplózás
-- Fontolja meg cosmos DB MongoDB vagy Cassandra helyett
+- Spark-feladatok Hive-feladatok helyett érdemes lehet.
+- Fontolja meg, és cserélje le az impala-alapú lekérdezések LLAP-lekérdezéseket.
+- Fontolja meg, és cserélje le a MapReduce-feladatok Spark-feladatok.
+- Fontolja meg, és cserélje le a közel valós idejű batch-feladatok a Spark-feladatok a Spark strukturált Stream használata.
+- Fontolja meg az adatok előkészítése az Azure Data Factory (ADF) 2.0 használatával.
+- Fontolja meg az Ambari fürt felügyeletéhez.
+- Módosítsa az adattárolás helyszíni HDFS-ből WASB vagy az ADLS vagy az ADFS parancsfájlok feldolgozás céljából.
+- Fontolja meg a Ranger RBAC használata a Hive-táblák és a naplózás.
+- Cosmos DB MongoDB vagy Cassandra helyett érdemes lehet.
 
 ## <a name="next-steps"></a>További lépések
 

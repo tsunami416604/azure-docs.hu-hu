@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: 1254afc1ad1c513c18d565be8a6543a6ee0ae94b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 17a15ca00d7343064bde84860de91b62ff136cfe
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48040591"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414117"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Network Performance Monitor megoldás: alkalmazásteljesítmény-figyelés
 
@@ -33,12 +33,12 @@ A Teljesítményfigyelő képesség [Network Performance Monitor](log-analytics-
 - Az SNMP protokollt kellene nélkül, a hálózat állapotának figyelése.
 
 
-![Hálózati teljesítményfigyelő](media/log-analytics-network-performance-monitor/npm-performance-monitor.png)
+![Hálózati teljesítményfigyelő](media/log-analytics-network-performance-monitor-performance-monitor/npm-performance-monitor.png)
 
 ## <a name="configuration"></a>Konfiguráció
 Nyissa meg a Network Performance Monitor konfigurációját, nyissa meg a [Network Performance Monitor megoldás](log-analytics-network-performance-monitor.md), és válassza ki **konfigurálása**.
 
-![A Network Performance Monitor konfigurálása](media/log-analytics-network-performance-monitor/npm-configure-button.png)
+![A Network Performance Monitor konfigurálása](media/log-analytics-network-performance-monitor-performance-monitor/npm-configure-button.png)
 
 ### <a name="create-new-networks"></a>Új hálózatok létrehozása
 
@@ -120,21 +120,21 @@ A részletezés oldal azt mutatja, hogy a **DMZ2-DMZ1** hálózati kapcsolat nem
 
 A részletezés oldal bemutatja az alhálózati kapcsolatok a **DMZ2-DMZ1** hálózati kapcsolat. Mindkét alhálózati hivatkozások a várakozási ideje túllépte a küszöbértéket, ami lehetővé teszi a hálózati kapcsolat nem kifogástalan. Mindkét alhálózati kapcsolatok késés Trendy is láthatja. Használja a gráf összpontosíthat a szükséges időtartomány szabályozhatja az időbeállítást. Láthatja, hogy a késés elérésekor a maximális napi időpontot. Keresse meg a naplókat később ebben az időszakban a probléma kivizsgálására. Válassza ki **csomóponti hivatkozások megtekintése** további részletesen elemezheti. 
  
- ![Alhálózati hivatkozások lap](media/log-analytics-network-performance-monitor/subnetwork-links.png) 
+ ![Alhálózati hivatkozások lap](media/log-analytics-network-performance-monitor-performance-monitor/subnetwork-links.png) 
 
 Hasonló az előző oldalra, a részletezés oldal, az adott alhálózat-hivatkozás felsorolja a különböző csomóponti hivatkozások. Hasonló műveletek végezhetők el itt, ahogy az előző lépésben tette. Válassza ki **topológia megtekintése** a két csomópont közötti topológia megtekintéséhez. 
  
- ![Csomópont hivatkozások lap](media/log-analytics-network-performance-monitor/node-links.png) 
+ ![Csomópont hivatkozások lap](media/log-analytics-network-performance-monitor-performance-monitor/node-links.png) 
 
 A két kijelölt csomópont közötti összes elérési utat a topológia térkép is megjelennek. A Ugrás ugrásra felépülő topológiát a topológia-térképként két csomópont közötti útvonalak jelenítheti meg. Biztosít egy világos képet hány útvonalak léteznek között, illetve a két csomópont elérési utak adatcsomagok igénybe vehet. Hálózati teljesítmény szűk vörös színnel jelennek meg. Hibás hálózati kapcsolat vagy egy hibás hálózati eszköz megkereséséhez tekintse meg a piros elemeket a topológia-térképként. 
 
- ![A topológia topológiai irányítópult](media/log-analytics-network-performance-monitor/topology-dashboard.png) 
+ ![A topológia topológiai irányítópult](media/log-analytics-network-performance-monitor-performance-monitor/topology-dashboard.png) 
 
 Az adatveszteség, késés és az egyes útvonalán ugrások számát, áttekintheti a **művelet** ablaktáblán. A görgetősáv használatával a nem jó elérési utak részleteinek megtekintéséhez. A szűrők segítségével válassza ki a nem megfelelő állapotú Ugrás az elérési utakat úgy, hogy csak a kiválasztott elérési utak topológiájának ábrázolja. Nagyítás vagy a topológia térkép kívül, az egér kereke használja. 
 
 Az alábbi ábrán a problémás területek, az adott szakaszt az a hálózat kiváltó okának jelennek meg a piros elérési utak és az útválasztók ugrásainak. Válasszon ki egy csomópontot a topológia térképen, a csomópont, amely tartalmazza a teljes tartománynév és IP-cím tulajdonságainak megjelenítéséhez. Hop kiválasztásával tekinthet meg a következő ugrás IP-címét. 
  
-![Topológia térkép a kijelölt csomópont tulajdonságai](media/log-analytics-network-performance-monitor/topology-dashboard-root-cause.png) 
+![Topológia térkép a kijelölt csomópont tulajdonságai](media/log-analytics-network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
 ## <a name="next-steps"></a>További lépések
 [Naplók keresése](log-analytics-log-searches.md) részletes hálózati teljesítmény adatfelderítési rekordok megtekintéséhez.

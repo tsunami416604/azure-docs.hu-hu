@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: a95cdbb48371cf960211f55bf077cea9db783db5
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 3c8202f762c65d72417020b0524e415e55076eb0
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248329"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415262"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és használata az Azure Monitor tevékenységnapló-riasztások kezelése  
 
@@ -43,11 +43,11 @@ Kövesse az alábbi eljárást:
 1. Az Azure Portalon válassza ki a **figyelő** > **riasztások**
 2. Kattintson a **Új riasztási szabály** felső részén a **riasztások** ablak.
 
-     ![Új riasztási szabály](./media/monitor-alerts-unified/AlertsPreviewOption.png)
+     ![Új riasztási szabály](media/alert-activity-log/AlertsPreviewOption.png)
 
      A **létrehozás szabály** ablak jelenik meg.
 
-      ![Új riasztási szabály-beállítások](./media/monitoring-activity-log-alerts-new-experience/create-new-alert-rule-options.png)
+      ![Új riasztási szabály-beállítások](media/alert-activity-log/create-new-alert-rule-options.png)
 
 3. **Adja meg a riasztási feltétel alapján** adja meg a következő adatokat, és kattintson a **kész**.
 
@@ -57,7 +57,7 @@ Kövesse az alábbi eljárást:
 
     > kiválaszthatja, hogy egy erőforrás, erőforráscsoport vagy egy tevékenységnaplóbeli a teljes előfizetés.
 
-    **Riasztás cél minta nézet** ![cél kiválasztása](./media/monitoring-activity-log-alerts-new-experience/select-target.png)
+    **Riasztás cél minta nézet** ![cél kiválasztása](media/alert-activity-log/select-target.png)
 
     - A **cél feltételek**, kattintson a **adja meg a feltételeket** és a cél az összes rendelkezésre álló jelek jelennek meg, beleértve azokat a különböző kategóriák **tevékenységnapló**; eszközkategória-név hozzáfűzi a **Monitor Service** nevét.
 
@@ -67,7 +67,7 @@ Kövesse az alábbi eljárást:
 
     **Feltételek képernyő hozzáadása**
 
-    ![feltételek hozzáadása](./media/monitoring-activity-log-alerts-new-experience/add-criteria.png)
+    ![feltételek hozzáadása](media/alert-activity-log/add-criteria.png)
 
     **Előzmények idő**: elérhető a kiválasztott művelet események algoritmus keresztül az elmúlt 6 és 12 vagy 24 óra (vagy) az elmúlt héten.
 
@@ -79,7 +79,7 @@ Kövesse az alábbi eljárást:
 
         Minta jel gráf riasztási logika a alkalmazni:
 
-        ![ kijelölt feltétel](./media/monitoring-activity-log-alerts-new-experience/criteria-selected.png)
+        ![ kijelölt feltétel](media/alert-activity-log/criteria-selected.png)
 
 4. A **riasztási szabályok részletei**, adja meg a következő adatokat:
 
@@ -99,20 +99,20 @@ Kövesse az alábbi eljárást:
 
 Azt is megteheti, egy egyszerű analógia ismertetése feltételek, amelyeken riasztási szabályok hozható létre a tevékenységnapló-, a rendszer és felfedezni vagy szűrheti az eseményeket a [tevékenységnapló az Azure Portalon](monitoring-overview-activity-logs.md#query-the-activity-log-in-the-azure-portal). Az Azure Monitor - tevékenységnapló-, egy is szűrheti vagy keresse meg szükséges esemény és majd a használatával hozzon létre egy riasztást a **tevékenységnapló-riasztás hozzáadása** gombra; majd lépésekkel 4 és újabb verziók esetében az oktatóanyag a fenti leírtak alapján.
     
- ![ riasztás hozzáadása a tevékenységnaplóról](./media/monitoring-activity-log-alerts-new-experience/add-activity-log.png)
+ ![ riasztás hozzáadása a tevékenységnaplóról](media/alert-activity-log/add-activity-log.png)
     
 
 ### <a name="view-and-manage-in-azure-portal"></a>Megtekintése és kezelése az Azure Portalon
 
 1. Az Azure Portalon kattintson **figyelő** > **riasztások** kattintson **szabályok kezelése** , az ablak bal felső.
 
-    ![ Riasztási szabályok kezelése](./media/monitoring-activity-log-alerts-new-experience/manage-alert-rules.png)
+    ![ Riasztási szabályok kezelése](media/alert-activity-log/manage-alert-rules.png)
 
     Megjelenik a rendelkezésre álló szabályok listája.
 
 2. Keressen rá a módosítani kívánt tevékenység log szabály.
 
-    ![ keresési tevékenység naplóriasztási szabály](./media/monitoring-activity-log-alerts-new-experience/searth-activity-log-rule-to-edit.png)
+    ![ keresési tevékenység naplóriasztási szabály](media/alert-activity-log/searth-activity-log-rule-to-edit.png)
 
     A rendelkezésre álló szűrők - _előfizetés_, _erőforráscsoport_, _erőforrás_, _jeltípus_, vagy _állapota_  a szerkeszteni kívánt tevékenység szabály található.
 
@@ -122,7 +122,7 @@ Azt is megteheti, egy egyszerű analógia ismertetése feltételek, amelyeken ri
 
 3.  Válassza ki a szabályt, és kattintson duplán a szabály beállítások szerkesztéséhez. Végezze el a szükséges módosításokat, és kattintson a **mentése**.
 
-    ![ Riasztási szabályok kezelése](./media/monitoring-activity-log-alerts-new-experience/activity-log-rule-edit-page.png)
+    ![ Riasztási szabályok kezelése](media/alert-activity-log/activity-log-rule-edit-page.png)
 
 4.  Letiltása, engedélyezése vagy egy szabály törlése. Válassza ki a 2. lépésben leírtaknak megfelelően a szabály kiválasztása után a megfelelő lehetőséget az ablak tetején.
 

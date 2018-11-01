@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b6fef23b3624703305a13b205b588c83dd135764
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: f57a5a2413103ddcf7484f3b1fc5b4170b7bdc98
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094738"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412857"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Az Azure AD Connect: Az AD DS-összekötő fiók engedélyeinek konfigurálása 
 
-Elnevezett ADSyncConfig.psm1 jelent meg az új PowerShell-modul 1.1.880.0 (2018 augusztus jelent meg), amely segít a megfelelő Active Directory-engedélyek konfigurálása a az Azure AD Connect telepítési parancsmagok gyűjteményét is hozhat létre. 
+Egy új PowerShell-modul nevű [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) jelent meg a build 1.1.880.0 (2018 augusztus jelent meg), amely segít a megfelelő Active Directory-engedélyek konfigurálása az Azure AD-parancsmagok egy gyűjteményét tartalmazza. Csatlakozás a központi telepítés. 
 
 ## <a name="overview"></a>Áttekintés 
 A következő PowerShell-parancsmagok segítségével az AD DS-összekötő fiók Active Directory-engedélyek beállítása az egyes szolgáltatásokhoz, az Azure AD Connect engedélyezéséhez kiszűrésére. Esetleges problémák megelőzése érdekében meg kell előkészítenie, Active Directory-engedélyek előre, amikor az Azure AD Connect egyéni tartományi fiókkal az erdőhöz való csatlakozáshoz telepíteni kívánja. Ez a modul ADSyncConfig is használható engedélyek konfigurálása az Azure AD Connect telepítése után.
@@ -49,7 +49,8 @@ Install-WindowsFeature RSAT-AD-Tools
 ```
 ![Konfigurálás](media/how-to-connect-configure-ad-ds-connector-account/configure2.png)
 
->! [MEGJEGYZÉS] A fájl is másolhatja **C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncConfig\ADSyncConfig.psm1** egy olyan tartományvezérlőre, amely már rendelkezik az RSAT, az AD DS telepítve van, és ott a PowerShell-modult használja.
+>[!NOTE]
+>A fájl is másolhatja **C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncConfig\ADSyncConfig.psm1** egy olyan tartományvezérlőre, amely már rendelkezik az RSAT, az AD DS telepítve van, és ott a PowerShell-modult használja.
 
 A ADSyncConfig használatának megkezdéséhez szüksége betölteni a modult a Windows PowerShell-ablakban: 
 
@@ -118,7 +119,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountName <String> -ADConnectorAcco
 ```
 
 
-vagy; 
+Vagy; 
 
 ``` powershell
 Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -146,7 +147,7 @@ Az ms-Ds-konzisztencia-Guid attribútumot használja forráshorgony-(más néven
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 
-vagy; 
+Vagy; 
 
 ``` powershell
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -166,7 +167,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <String> -ADConnec
 ```
 
 
-vagy; 
+Vagy; 
 
 ``` powershell
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonParameters>] 
@@ -187,7 +188,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName <String> -ADConne
 ```
 
 
-vagy;
+Vagy;
 
 ``` powershell
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -206,7 +207,7 @@ Csoportvisszaírás használata esetén az AD DS-összekötő fiókhoz tartozó 
 ``` powershell
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
-vagy; 
+Vagy; 
 
 ``` powershell
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>]
@@ -228,7 +229,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName <String> -ADC
 ```
 
 
-vagy; 
+Vagy; 
 
 ``` powershell
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -252,7 +253,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName <String> -
 ```
 
 
-vagy; 
+Vagy; 
 
 ``` powershell
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>] 
@@ -301,3 +302,5 @@ Ez a parancsmag állítja a következő engedélyekkel:
 - [Azure AD Connect: fiókok és engedélyek](reference-connect-accounts-permissions.md)
 - [Az Expressz telepítés](how-to-connect-install-express.md)
 - [Egyéni telepítés](how-to-connect-install-custom.md)
+- [ADSyncConfig referencia](reference-connect-adsyncconfig.md)
+

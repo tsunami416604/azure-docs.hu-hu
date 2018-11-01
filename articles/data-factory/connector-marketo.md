@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 10/31/2018
 ms.author: jingwang
-ms.openlocfilehash: efbc020f482a46621eb5c3e3cd6137d1114da6de
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 02d21db5c5fadb65ec63e41cbd9e2db8869ed2e7
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129607"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415831"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Adatok másolása az Azure Data Factory (előzetes verzió) használatával Marketo
 
@@ -32,6 +32,9 @@ Ez a cikk ismerteti az Azure Data Factory a másolási tevékenység használat�
 A Marketo szoftveréből származó adatok másolhatja bármely támogatott fogadó adattárba. A másolási tevékenység által, források és fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
 
 Az Azure Data Factory kapcsolat beépített illesztőprogramot tartalmaz, ezért nem kell manuálisan telepítenie az összes illesztőprogram ezzel az összekötővel.
+
+>[!NOTE]
+>A Marketo-összekötő a Marketo REST API épül. Vegye figyelembe, hogy rendelkezik-e a Marketo [egyidejű kérelmeinek maximális száma](http://developers.marketo.com/rest-api/) szolgáltatás oldalán. Ha eléri a hibák közli, hogy "hiba történt a REST API-val kísérlet során: maximális sebesség túllépte a korlátot"100"a"20"másodperc (606)" vagy "REST API-val tett kísérlet során hiba: (615) elérte az egyidejű hozzáférés korlátot"10"", való egyidejű másolási tevékenység-végrehajtás csökkentése érdekében fontolja meg Csökkentse a kérelmek száma a szolgáltatás.
 
 ## <a name="getting-started"></a>Első lépések
 

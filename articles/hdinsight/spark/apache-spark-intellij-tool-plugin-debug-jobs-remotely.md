@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: 1a7fcc11bf1b98d5feaeae07264e556acce2b14b
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 55f32b498b83203a3823999a2e31024266bf37bc
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736080"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413264"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-spark-applications-remotely-in-hdinsight-through-vpn"></a>A VPN-kapcsolaton keresztül a HDInsight Spark-alkalmazások hibakeresése az IntelliJ-hez készült Azure eszközkészlet használata
 
@@ -31,7 +31,7 @@ Ebben a cikkben részletes útmutatást nyújt az IntelliJ-hez és a egy HDInsig
 ## <a name="prerequisites"></a>Előfeltételek
 * **Azure-előfizetés**. További információkért lásd: [az Azure ingyenes próbaverzió beszerzése](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * **A HDInsight Apache Spark-fürt**. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
-* **Oracle Java development Kitet**. A telepítheti a [Oracle webhely](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+* **Oracle Java development Kitet**. A telepítheti a [Oracle webhely](https://aka.ms/azure-jdks).
 * **Az IntelliJ IDEA**. Ez a cikk 2017.1 verzióját használja. A telepítheti a [eszközt webhely](https://www.jetbrains.com/idea/download/).
 * **HDInsight-eszközök az IntelliJ-hez készült Azure-eszközkészlet**. IntelliJ-hez készült HDInsight eszközök érhetők el az IntelliJ-hez készült Azure-eszközkészlet részeként. Azure-eszközkészlet telepítésével kapcsolatos útmutatásért lásd: [IntelliJ-hez készült Azure eszközkészlet telepítése](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation).
 * **Jelentkezzen be az Azure-előfizetéshez az IntelliJ IDEA**. Kövesse a [Spark-alkalmazások HDInsight-fürt létrehozása az IntelliJ-hez készült Azure eszközkészlet használata](apache-spark-intellij-tool-plugin.md).

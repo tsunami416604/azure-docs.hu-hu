@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 10/31/2018
 ms.author: babanisa
-ms.openlocfilehash: 2fd8712cbe5d34baed158a56e6f06b6235f5d4b2
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: a9bffe148339bfac89796405b771e9c2816eb0de
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068195"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741521"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid biztonsági és hitelesítés 
 
@@ -37,7 +37,7 @@ Ha bármilyen más típusú végpont, például egy HTTP-eseményindító-alapú
 
 1. **ValidationCode kézfogás**: esemény-előfizetés létrehozása idején EventGrid tesz közzé egy "előfizetés érvényesítési esemény" a végponthoz. Ez az esemény sémája hasonlít bármilyen más EventGridEvent, és ez az esemény adatok részének tartalmaz egy `validationCode` tulajdonság. Miután az alkalmazás ellenőrizte, hogy van-e az érvényesítési kérelmet egy várt esemény-előfizetés, az alkalmazás kódjában kell válaszolnia a echo vissza az érvényesítési kódot EventGrid által. A kézfogás mechanizmus az összes EventGrid-verziót támogatja.
 
-2. **ValidationURL kézfogás (manuális kézfogás)**: bizonyos esetekben valószínűleg nem rendelkezik a forráskódot a végpont tudják megvalósítani a alapú ValidationCode kézfogás ellenőrzése. Például, ha egy külső szolgáltatást használ (például [Zapier](https://zapier.com) vagy [IFTTT](https://ifttt.com/)), nem fogja tudni programozott módon reagálhat az érvényesítési kóddal vissza. Verzió 2018-05-01-preview verziótól kezdődően EventGrid mostantól támogatja a kézi ellenőrzés kézfogás. Ha egy esemény-előfizetés az új API verzió (2018-05-01-preview), EventGrid küld használó SDK és eszközök használatával hoz létre egy `validationUrl` tulajdonság az előfizetés érvényesítése esemény adatok részének részeként. A kézfogás elvégzéséhez tegye egy GET kérelmek az URL-CÍMRE, vagy a REST-ügyféllel, vagy a webböngésző használatával. A megadott érvényesítési URL-CÍMÉT a érvényes csak nagyjából 10 percet. Az időszakban az üzembe helyezési az esemény-előfizetés állapota `AwaitingManualAction`. Ha nem végezte el a kézi ellenőrzés 10 percen belül, a kiépítési állapot értéke `Failed`. Az esemény-előfizetés a kézi ellenőrzés előtt újra létre kell.
+2. **ValidationURL kézfogás (manuális kézfogás)**: bizonyos esetekben valószínűleg nem rendelkezik a forráskódot a végpont megvalósításához a alapú ValidationCode kézfogás ellenőrzése. Például, ha egy külső szolgáltatást használ (például [Zapier](https://zapier.com) vagy [IFTTT](https://ifttt.com/)), programozott módon az érvényesítési kóddal vissza nem válaszol. Verzió 2018-05-01-preview verziótól kezdődően EventGrid mostantól támogatja a kézi ellenőrzés kézfogás. Ha egy esemény-előfizetést hoz létre egy SDK-t, vagy az eszközt, amely API verzió 2018-05-01-preview vagy későbbi, EventGrid küld egy `validationUrl` tulajdonság az előfizetés érvényesítése esemény adatok részének részeként. A kézfogás elvégzéséhez tegye egy GET kérelmek az URL-CÍMRE, vagy a REST-ügyféllel, vagy a webböngésző használatával. A megadott érvényesítési URL-CÍMÉT a érvényes csak nagyjából 10 percet. Az időszakban az üzembe helyezési az esemény-előfizetés állapota `AwaitingManualAction`. Ha nem végezte el a kézi ellenőrzés 10 percen belül, a kiépítési állapot értéke `Failed`. Az esemény-előfizetés a kézi ellenőrzés előtt újra létre kell.
 
 Ez a mechanizmus manuális érvényesítésének az előzetes verzióban. A használatához telepítenie kell az [Event Grid-bővítményt](/cli/azure/azure-cli-extensions-list) az [Azure CLI](/cli/azure/install-azure-cli)-hez. A telepítést az `az extension add --name eventgrid` paranccsal tudja végrehajtani. Ha a REST API-t használ, ellenőrizze, hogy használ `api-version=2018-05-01-preview`.
 
@@ -93,7 +93,7 @@ Esemény előfizetés létrehozása során, ha például egy hibaüzenetet lát 
 
 ### <a name="event-delivery-security"></a>Kézbesítési biztonsági esemény
 
-Egy esemény-előfizetés létrehozásakor lekérdezési paraméterek hozzáadásával a webhook URL-cím gondoskodhat a webhook-végpontot. Állítsa be a lehet például egy titkos kulcsot a lekérdezési paraméterek egyike egy [hozzáférési jogkivonat](https://en.wikipedia.org/wiki/Access_token) , amelyet a webhook használatával ismerik fel az esemény érkezik Event Grid érvényes engedélyekkel. Event Grid a webhook minden eseménykézbesítés tartalmazza a lekérdezési paraméterek.
+Egy esemény-előfizetés létrehozásakor lekérdezési paraméterek hozzáadásával a webhook URL-cím gondoskodhat a webhook-végpontot. Állítsa be a lehet például egy titkos kulcsot a lekérdezési paraméterek egyike egy [hozzáférési jogkivonat](https://en.wikipedia.org/wiki/Access_token). A webhook használatával ismeri fel az esemény érkezik Event Grid érvényes engedélyekkel. Event Grid a webhook minden eseménykézbesítés tartalmazza a lekérdezési paraméterek.
 
 Az esemény-előfizetés szerkesztésekor a lekérdezési paraméterek nem jelenik meg vagy nem adott vissza, ha a [--– teljes-végpont-URL-címek](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) paraméter használata az Azure-ban [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).
 
@@ -174,11 +174,11 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 
 ## <a name="management-access-control"></a>Felügyeleti hozzáférés-vezérlése
 
-Az Azure Event Grid lehetővé teszi a különböző felügyeleti műveleteket, például az esemény-előfizetések listája, újakat hoz létre, és hozzon létre kulcsokat, a különböző felhasználókhoz megadott hozzáférési szintet szabályozza. Event Grid használja az Azure szerepköralapú hozzáférés ellenőrzése (RBAC).
+Az Azure Event Grid lehetővé teszi a különböző felügyeleti műveleteket, például az esemény-előfizetések listája, újakat hoz létre, és hozzon létre kulcsokat, a különböző felhasználókhoz megadott hozzáférési szintet szabályozza. Event Grid használja az Azure szerepköralapú hozzáférés-vezérlés (RBAC).
 
 ### <a name="operation-types"></a>Művelet típusa
 
-Az Azure event grid támogatja a következő műveleteket:
+Event Grid támogatja a következő műveleteket:
 
 * Microsoft.EventGrid/*/read
 * Microsoft.EventGrid/*/write
@@ -187,13 +187,17 @@ Az Azure event grid támogatja a következő műveleteket:
 * Microsoft.EventGrid/topics/listKeys/action
 * Microsoft.EventGrid/topics/regenerateKey/action
 
-Az utolsó három műveletek potenciálisan titkos információt, amely lekérdezi a normál olvasási műveletek szűrt adja vissza. Javasoljuk, hogy korlátozza a hozzáférést ezeket a műveleteket. Egyéni szerepkörök használatával hozható létre [Azure PowerShell-lel](../role-based-access-control/role-assignments-powershell.md), [Azure parancssori felület (CLI)](../role-based-access-control/role-assignments-cli.md), és a [REST API-val](../role-based-access-control/role-assignments-rest.md).
+Az utolsó három műveletek potenciálisan titkos információt, amely lekérdezi a normál olvasási műveletek szűrt adja vissza. Javasoljuk, hogy korlátozza a hozzáférést ezeket a műveleteket. 
 
-### <a name="enforcing-role-based-access-check-rbac"></a>Kényszerítése a szerepkör alapú hozzáférés-ellenőrzés (RBAC)
+### <a name="built-in-roles"></a>Beépített szerepkörök
 
-A következő lépések segítségével a különböző felhasználók számára az RBAC kényszerítése:
+Event Grid két beépített szerepkörrel biztosít esemény-előfizetések kezeléséhez. Ezek a szerepkörök felelnek `EventSubscription Contributor (Preview)` és `EventSubscription Reader (Preview)`. Ezek fontosak, esemény-tartományok végrehajtása során. A megadott műveleteivel kapcsolatos további információkért lásd: [esemény tartomány - hozzáférés-kezelés](event-domains.md#access-management).
 
-#### <a name="create-a-custom-role-definition-file-json"></a>Hozzon létre egy egyéni szerepkör-definíciós fájlt (.json)
+Is [ezeket a szerepköröket hozzárendelni egy felhasználóhoz vagy csoporthoz](../role-based-access-control/quickstart-assign-role-user-portal.md).
+
+### <a name="custom-roles"></a>Egyéni szerepkörök
+
+Ha adja meg az engedélyeket, amelyek eltérnek a beépített szerepkörök van szüksége, létrehozhat egyéni szerepköröket is.
 
 Az alábbiakban a minta Event Grid szerepkör-definíciók, amelyek lehetővé teszik a felhasználók számára a különböző műveleteket.
 
@@ -201,18 +205,18 @@ Az alábbiakban a minta Event Grid szerepkör-definíciók, amelyek lehetővé t
 
 ```json
 {
-  "Name": "Event grid read only role",
-  "Id": "7C0B6B59-A278-4B62-BA19-411B70753856",
-  "IsCustom": true,
-  "Description": "Event grid read only role",
-  "Actions": [
-    "Microsoft.EventGrid/*/read"
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/<Subscription Id>"
-  ]
+  "Name": "Event grid read only role",
+  "Id": "7C0B6B59-A278-4B62-BA19-411B70753856",
+  "IsCustom": true,
+  "Description": "Event grid read only role",
+  "Actions": [
+    "Microsoft.EventGrid/*/read"
+  ],
+  "NotActions": [
+  ],
+  "AssignableScopes": [
+    "/subscriptions/<Subscription Id>"
+  ]
 }
 ```
 
@@ -220,22 +224,22 @@ Az alábbiakban a minta Event Grid szerepkör-definíciók, amelyek lehetővé t
 
 ```json
 {
-  "Name": "Event grid No Delete Listkeys role",
-  "Id": "B9170838-5F9D-4103-A1DE-60496F7C9174",
-  "IsCustom": true,
-  "Description": "Event grid No Delete Listkeys role",
-  "Actions": [
-    "Microsoft.EventGrid/*/write",
-    "Microsoft.EventGrid/eventSubscriptions/getFullUrl/action"
-    "Microsoft.EventGrid/topics/listkeys/action",
-    "Microsoft.EventGrid/topics/regenerateKey/action"
-  ],
-  "NotActions": [
-    "Microsoft.EventGrid/*/delete"
-  ],
-  "AssignableScopes": [
-    "/subscriptions/<Subscription id>"
-  ]
+  "Name": "Event grid No Delete Listkeys role",
+  "Id": "B9170838-5F9D-4103-A1DE-60496F7C9174",
+  "IsCustom": true,
+  "Description": "Event grid No Delete Listkeys role",
+  "Actions": [
+    "Microsoft.EventGrid/*/write",
+    "Microsoft.EventGrid/eventSubscriptions/getFullUrl/action"
+    "Microsoft.EventGrid/topics/listkeys/action",
+    "Microsoft.EventGrid/topics/regenerateKey/action"
+  ],
+  "NotActions": [
+    "Microsoft.EventGrid/*/delete"
+  ],
+  "AssignableScopes": [
+    "/subscriptions/<Subscription id>"
+  ]
 }
 ```
 
@@ -243,37 +247,25 @@ Az alábbiakban a minta Event Grid szerepkör-definíciók, amelyek lehetővé t
 
 ```json
 {
-  "Name": "Event grid contributor role",
-  "Id": "4BA6FB33-2955-491B-A74F-53C9126C9514",
-  "IsCustom": true,
-  "Description": "Event grid contributor role",
-  "Actions": [
-    "Microsoft.EventGrid/*/write",
-    "Microsoft.EventGrid/*/delete",
-    "Microsoft.EventGrid/topics/listkeys/action",
-    "Microsoft.EventGrid/topics/regenerateKey/action",
-    "Microsoft.EventGrid/eventSubscriptions/getFullUrl/action"
-  ],
-  "NotActions": [],
-  "AssignableScopes": [
-    "/subscriptions/<Subscription id>"
-  ]
+  "Name": "Event grid contributor role",
+  "Id": "4BA6FB33-2955-491B-A74F-53C9126C9514",
+  "IsCustom": true,
+  "Description": "Event grid contributor role",
+  "Actions": [
+    "Microsoft.EventGrid/*/write",
+    "Microsoft.EventGrid/*/delete",
+    "Microsoft.EventGrid/topics/listkeys/action",
+    "Microsoft.EventGrid/topics/regenerateKey/action",
+    "Microsoft.EventGrid/eventSubscriptions/getFullUrl/action"
+  ],
+  "NotActions": [],
+  "AssignableScopes": [
+    "/subscriptions/<Subscription id>"
+  ]
 }
 ```
 
-#### <a name="create-and-assign-custom-role-with-azure-cli"></a>Hozzon létre, és az Azure CLI-vel egyéni szerepkör hozzárendelése
-
-Egyéni szerepkör létrehozása, használata:
-
-```azurecli
-az role definition create --role-definition @<file path>
-```
-
-A szerepkör hozzárendelése felhasználóhoz, használja:
-
-```azurecli
-az role assignment create --assignee <user name> --role "<name of role>"
-```
+Létrehozhat egyéni szerepköröket a [PowerShell](../role-based-access-control/custom-roles-powershell.md), [Azure CLI-vel](../role-based-access-control/custom-roles-cli.md), és [REST](../role-based-access-control/custom-roles-rest.md).
 
 ## <a name="next-steps"></a>További lépések
 

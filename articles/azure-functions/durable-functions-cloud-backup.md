@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 44e71c8e9256bdfd3a55cdd21a6658bccfd5daad
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 4fec410db81077fd454f29d3359dc3728aad4bff
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987534"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739617"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Fan-kimenő/fan-alatt forgatókönyv Durable Functions – felhőalapú biztonsági mentési példa
 
@@ -131,7 +131,7 @@ Content-Length: 20
 ```
 
 > [!NOTE]
-> A `HttpStart` meghívott függvény csak a JSON-formátumú tartalommal működik. Ebből kifolyólag a `Content-Type: application/json` fejlécét kötelező megadni, és a egy JSON-karakterlánc kódolása a könyvtár elérési útja.
+> A `HttpStart` meghívott függvény csak a JSON-formátumú tartalommal működik. Ebből kifolyólag a `Content-Type: application/json` fejlécét kötelező megadni, és a egy JSON-karakterlánc kódolása a könyvtár elérési útja. Továbbá, HTTP a kódtöredék azt feltételezi, hogy a bejegyzés a `host.json` fájlt, amely eltávolítja az alapértelmezett `api/` előtag a HTTP eseményindító függvény URL-címekhez. Ezt a konfigurációt a jelölőnyelvi megtalálja a `host.json` a mintákban található fájl.
 
 Ez a HTTP-kérés eseményindítók a `E2_BackupSiteContent` orchestrator, és átadja a karakterlánc `D:\home\LogFiles` paraméterként. A válasz egy hivatkozást kínál a biztonsági mentési művelet állapotának lekérése:
 

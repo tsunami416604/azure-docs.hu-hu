@@ -1,9 +1,9 @@
 ---
-title: Virtuálisgép-méretezési készlet sablonok megismerése |} Microsoft Docs
-description: Ismerje meg a virtuálisgép-méretezési csoportok minimális életképes méretezési készlet sablon létrehozása
+title: További információ a virtuális gép méretezésicsoport-sablon |} A Microsoft Docs
+description: Ismerje meg, hogyan hozzon létre egy virtuálisgép-méretezési csoportokhoz tartozó minimális működőképes méretezési csoport sablon
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: mayanknayar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
-ms.author: negat
-ms.openlocfilehash: 5cd495d1332c71d7eae775f933b73d98826f10e4
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.author: manayar
+ms.openlocfilehash: 29c0a1a15db7670d83ff384a1ba0f37499389ef7
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26781255"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741879"
 ---
-# <a name="learn-about-virtual-machine-scale-set-templates"></a>További tudnivalók a virtuálisgép-méretezési készlet sablonok
-Az [Azure Resource Manager-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) remek megoldást kínálnak egymáshoz kapcsolódó erőforráscsoportok üzembe helyezésére. Az oktatóanyag adatsorozat egy minimális életképes méretezési készlet sablon létrehozása és a különböző forgatókönyvekben megfelelően sablon módosításával jeleníti meg. Minden példában ez származhat [GitHub-tárházban](https://github.com/gatneil/mvss). 
+# <a name="learn-about-virtual-machine-scale-set-templates"></a>További információ a virtuális gép méretezési csoportok sablonjairól
+Az [Azure Resource Manager-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) remek megoldást kínálnak egymáshoz kapcsolódó erőforráscsoportok üzembe helyezésére. Az oktatóanyag-sorozat bemutatja egy minimális működőképes méretezési csoport sablonjának létrehozása és módosítása a sablon igény szerint a különböző forgatókönyvekben. Valamennyi példa származnak, ez [GitHub-adattár](https://github.com/gatneil/mvss). 
 
-Ez a sablon olyan egyszerűek legyenek. Skála teljesebb példákat sablonok, olvassa el a [Azure gyors üzembe helyezési sablonokat GitHub-tárházban](https://github.com/Azure/azure-quickstart-templates) és a keresési karakterláncot tartalmazó mappák `vmss`.
+Ez a sablon készült egyszerű. A skála teljes példákat sablonok, olvassa el a [Azure gyorsindítási sablonok GitHub-tárház](https://github.com/Azure/azure-quickstart-templates) , és keresse meg a karakterláncot tartalmazó mappák `vmss`.
 
-Ha már ismeri a sablonok létrehozásával, ugorjon a "További lépések" című szakaszt a ismerheti meg a sablon módosítására.
+Ha már ismeri a sablonok létrehozásával, kihagyhatja a "Következő lépések" szakaszban megtudhatja, hogyan módosíthatja ezt a sablont.
 
 ## <a name="review-the-template"></a>Tekintse át a sablon
 
-Tekintse át a sablon a minimális életképes méretezési beállítása a GitHub segítségével [azuredeploy.json](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json).
+Tekintse át a minimális működőképes méretezési csoport sablonjában, a GitHub használatával [azuredeploy.json](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json).
 
-Ebben az oktatóanyagban vizsgáljuk meg a diff (`git diff master minimum-viable-scale-set`) a minimális életképes méretezési készlet létrehozása sablon adat által adat.
+Ebben az oktatóanyagban most vizsgálja meg a diff (`git diff master minimum-viable-scale-set`) a minimális működőképes méretezési csoport létrehozása sablon darab által darab beállítása.
 
 ## <a name="define-schema-and-contentversion"></a>$Schema és contentVersion megadása
-Először határozza meg `$schema` és `contentVersion` a sablonban. A `$schema` elem határozza meg a sablon nyelvi verzióját, és a Visual Studio szintaxis kiemelését és hasonló érvényesítési szolgáltatások használható. A `contentVersion` elem nem használja az Azure-ban. Ehelyett segít nyomon követjük, hogy a sablon verziója.
+Először határozzon meg `$schema` és `contentVersion` a sablonban. A `$schema` elem határozza meg a sablon nyelvi verzióját, és a Visual Studio Szintaxiselemek kiemelése és hasonló érvényesítési szolgáltatások használatos. A `contentVersion` elem nem használja az Azure-ban. Ehelyett segít is nyomon követheti a tanúsítványsablon verziójának.
 
 ```json
 {
@@ -44,7 +44,7 @@ Először határozza meg `$schema` és `contentVersion` a sablonban. A `$schema`
   "contentVersion": "1.0.0.0",
 ```
 ## <a name="define-parameters"></a>Paraméterek megadása
-Ezt követően adja meg a két paraméter `adminUsername` és `adminPassword`. A paraméterek olyan értékek adja meg, ha a telepítés során. A `adminUsername` paraméter egyszerűen egy `string` típusa, de mivel `adminPassword` egy titkos, adja meg, írja be az `securestring`. Később ezek a paraméterek vannak átadott a méretezési készlet konfigurációja.
+Ezt követően adja meg a két paramétert `adminUsername` és `adminPassword`. A paraméterek olyan értékek, megadhatja a központi telepítési idején. A `adminUsername` paraméter egyszerűen egy `string` típusa, de mivel `adminPassword` egy titkos, adja meg, írja be a `securestring`. Később ezek a paraméterek vannak átadott a méretezésicsoport-konfigurációt.
 
 ```json
   "parameters": {
@@ -57,20 +57,20 @@ Ezt követően adja meg a két paraméter `adminUsername` és `adminPassword`. A
   },
 ```
 ## <a name="define-variables"></a>Változók meghatározása
-Resource Manager-sablonok segítségével adja meg a sablont később használt változókat is. A példa nem használja a változó, ezért a JSON-objektum üres.
+Resource Manager-sablonok segítségével később a sablonban használandó változókat határozhat meg is. A példában minden változó nem használ, ezért a JSON-objektum üres.
 
 ```json
   "variables": {},
 ```
 
-## <a name="define-resources"></a>Adja meg az erőforrások
-Ezután az a sablon a források szakaszában. Itt meg mi ténylegesen számára telepíteni kívánja. Eltérően `parameters` és `variables` (amelyeket JSON-objektumok), `resources` JSON JSON-objektumok listáját.
+## <a name="define-resources"></a>Erőforrások meghatározása
+Ezután a rendszer a sablon erőforrás szakaszába. Itt akkor megadhatja, hogy milyen ténylegesen üzembe helyezéséhez. Ellentétben `parameters` és `variables` (amely olyan a JSON-objektumok), `resources` JSON-objektumok JSON listája.
 
 ```json
    "resources": [
 ```
 
-Összes erőforrást igényelnek `type`, `name`, `apiVersion`, és `location` tulajdonságok. Ez a példa első erőforrás fájltípusú `Microsft.Network/virtualNetwork`nevű `myVnet`, és apiVersion `2016-03-30`. (A legújabb API-verziót egy erőforrástípusra, lásd: a [Azure REST API-dokumentáció](https://docs.microsoft.com/rest/api/).)
+Összes erőforrást igényelnek `type`, `name`, `apiVersion`, és `location` tulajdonságait. Ez a példa első erőforrás típusa rendelkezik `Microsft.Network/virtualNetwork`nevű `myVnet`, és API-verzió `2016-03-30`. (A legújabb API-verzió az erőforrástípushoz, lásd: a [Azure REST API-dokumentáció](https://docs.microsoft.com/rest/api/).)
 
 ```json
      {
@@ -79,15 +79,15 @@ Ezután az a sablon a források szakaszában. Itt meg mi ténylegesen számára 
        "apiVersion": "2016-12-01",
 ```
 
-## <a name="specify-location"></a>Adjon meg helyet
-A virtuális hálózat helyének megadásához használja a [Resource Manager sablon függvény](../azure-resource-manager/resource-group-template-functions.md). Ez a funkció ajánlatok és a kapcsos zárójeleket kell tenni: `"[<template-function>]"`. Ebben az esetben használja a `resourceGroup` függvény. Veszi a argumentum nélkül, és az erőforráscsoportot, a központi telepítés telepítése kapcsolatos metaadatok egy JSON-objektumot ad vissza. Az erőforráscsoport a telepítés során a felhasználó által megadott. Ez az érték majd a JSON-objektum az az indexelt `.location` lekérni a hely JSON-objektumból.
+## <a name="specify-location"></a>Hely megadása
+A virtuális hálózat helyének megadásához használja a [Resource Manager-sablon függvény](../azure-resource-manager/resource-group-template-functions.md). Ez a függvény zárójelbe kell foglalni a idézőjelek között, és ehhez hasonló szögletes zárójelek: `"[<template-function>]"`. Ebben az esetben használja a `resourceGroup` függvény. Ez fogadja a argumentumok nélkül, és adja vissza egy JSON-objektum-metaadatait, az erőforráscsoport, a központi telepítés telepítése. Az erőforráscsoport központi telepítés alkalmával a felhasználó által van beállítva. Ez az érték majd be a JSON-objektum az indexelt `.location` beolvasni a hely JSON-objektumból.
 
 ```json
        "location": "[resourceGroup().location]",
 ```
 
-## <a name="specify-virtual-network-properties"></a>Adja meg a virtuális hálózati tulajdonságok
-Minden erőforrás-kezelő erőforrás rendelkezik saját `properties` szakasz az jellemző az erőforrás-konfigurációhoz. Ebben az esetben adja meg, hogy a virtuális hálózati kell-e a privát IP-címtartományt egy alhálózatot `10.0.0.0/16`. A méretezési mindig szerepel egy alhálózaton belül. Alhálózatok nem foglal magába.
+## <a name="specify-virtual-network-properties"></a>Adja meg a virtuális hálózat tulajdonságai
+Minden egyes Resource Manager-erőforrással rendelkezik a saját `properties` konfigurációk jellemző az erőforrás a következő szakaszban. Ebben az esetben adja meg, hogy a virtuális hálózathoz kell rendelkeznie a magánhálózati IP-címtartomány használatával több alhálózat `10.0.0.0/16`. Egy méretezési csoportot mindig szerepel egy alhálózaton belül. Alhálózatok nem terjedhetnek ki.
 
 ```json
        "properties": {
@@ -109,9 +109,9 @@ Minden erőforrás-kezelő erőforrás rendelkezik saját `properties` szakasz a
 ```
 
 ## <a name="add-dependson-list"></a>Adja hozzá a dependsOn listája
-A szükséges mellett `type`, `name`, `apiVersion`, és `location` tulajdonságok, az egyes erőforrások lehetnek egy nem kötelező `dependsOn` karakterláncok listáját. Ez a lista megadja, hogy más erőforrások, a központi telepítésből Befejezés ehhez az erőforráshoz telepítése előtt.
+A szükséges mellett `type`, `name`, `apiVersion`, és `location` tulajdonságai között az egyes erőforrások rendelkezhet egy választható `dependsOn` karakterláncok listáját. Ez a lista megadja, hogy az erőforrás üzembe helyezése előtt Befejezés más erőforrások, a központi telepítésből.
 
-Ebben az esetben nincs csak egy elemet a listában, a virtuális hálózat az előző példából. A függőség adja meg, mert a méretezési kell a hálózaton található bármely virtuális gépek létrehozása előtt. Ezzel a módszerrel a méretezési a korábban a hálózati tulajdonságaiban megadott IP-címtartomány a biztosíthat a virtuális gépek magánhálózati IP-címét. A dependsOn listán minden karakterlánc formátuma `<type>/<name>`. Ugyanazon `type` és `name` korábban használt, a virtuális hálózati erőforrás-definícióban.
+Ebben az esetben nincs csak egy elemet a listában, az előző példában a virtuális hálózat. A függőség meg kell adnia, mert a méretezési csoport szükség van a hálózaton található olyan virtuális gépek létrehozása előtt. Ezzel a módszerrel a méretezési biztosíthat ezen virtuális gépek magánhálózati IP-címek hálózati tulajdonságok korábban megadott IP-címtartományból. A dependsOn listája az egyes karakterlánc formátuma `<type>/<name>`. Ugyanaz, mint `type` és `name` korábban használt a virtuális hálózati erőforrás-definícióban.
 
 ```json
      {
@@ -123,10 +123,10 @@ Ebben az esetben nincs csak egy elemet a listában, a virtuális hálózat az el
          "Microsoft.Network/virtualNetworks/myVnet"
        ],
 ```
-## <a name="specify-scale-set-properties"></a>Adja meg a skála tulajdonságainak beállítása
-Méretezési csoportok a a méretezési csoportban lévő virtuális gépek testreszabásának sok tulajdonságokkal rendelkezik. Ezek a tulajdonságok teljes listáját lásd: a [méretezési REST API-dokumentáció](https://docs.microsoft.com/rest/api/virtualmachinescalesets/create-or-update-a-set). A jelen oktatóanyag esetében csak néhány gyakran használt vannak beállítva.
-### <a name="supply-vm-size-and-capacity"></a>Adja meg a Virtuálisgép-méretet és a kapacitás
-A méretezési milyen méretű virtuális gép ("sku name") létrehozásához tudnia kell, és hogy hány ilyen virtuális gép létrehozása ("termékváltozat-kapacitás"). Mely Virtuálisgép-méretek érhetők el, olvassa el a [Virtuálisgép-méretek dokumentáció](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes).
+## <a name="specify-scale-set-properties"></a>Adja meg a méretezési csoport tulajdonságainak beállítása
+A méretezési csoportok a méretezési csoportban lévő virtuális gépek testreszabásának számos tulajdonságokkal rendelkezik. Ezek a tulajdonságok teljes listáját lásd: a [méretezési csoport REST API-dokumentáció](https://docs.microsoft.com/rest/api/virtualmachinescalesets/create-or-update-a-set). Ebben az oktatóanyagban csak néhány gyakran használt tulajdonságok vannak beállítva.
+### <a name="supply-vm-size-and-capacity"></a>Adja meg a virtuális gép mérete és a kapacitás
+A méretezési csoport a virtuális gép létrehozása ("sku name") milyen méretű tudnia kell, és hány ezekhez a virtuális gépekhez ("kapacitás" sku) létrehozásához. Melyik Virtuálisgép-méret érhető el, olvassa el a [Virtuálisgép-méretek dokumentáció](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes).
 
 ```json
        "sku": {
@@ -135,8 +135,8 @@ A méretezési milyen méretű virtuális gép ("sku name") létrehozásához tu
        },
 ```
 
-### <a name="choose-type-of-updates"></a>Válassza ki a kívánt frissítések típusát
-A méretezési készletben is tudnia kell, hogy hogyan kezeljék a méretezési csoportban lévő frissítések. Jelenleg nincsenek két lehetőség `Manual` és `Automatic`. A kettő közötti különbségekkel kapcsolatos további információkért lásd a dokumentációt [frissítése egy méretezési](./virtual-machine-scale-sets-upgrade-scale-set.md).
+### <a name="choose-type-of-updates"></a>A frissítések típusának kiválasztása
+A méretezési csoportot is tudnia kell, hogyan kezelje a frissítések a méretezési csoportban. Két lehetőség van jelenleg `Manual` és `Automatic`. A kettő közötti különbségekről további információkért tekintse meg a dokumentációt [frissítése a méretezési](./virtual-machine-scale-sets-upgrade-scale-set.md).
 
 ```json
        "properties": {
@@ -146,7 +146,7 @@ A méretezési készletben is tudnia kell, hogy hogyan kezeljék a méretezési 
 ```
 
 ### <a name="choose-vm-operating-system"></a>Válassza ki a virtuális gép operációs rendszer
-A méretezési milyen operációs rendszert a virtuális gépek elhelyezése tudnia kell. Itt hozzon létre a virtuális gépeket egy teljes mértékben javított Ubuntu 16.04-es lts verzió lemezképet.
+A méretezési csoport milyen operációs rendszert a virtuális gépek elhelyezése tudnia kell. A virtuális gépek itt, hozzon létre egy teljes körűen javított Ubuntu 16.04-LTS-rendszerképhez.
 
 ```json
          "virtualMachineProfile": {
@@ -161,9 +161,9 @@ A méretezési milyen operációs rendszert a virtuális gépek elhelyezése tud
 ```
 
 ### <a name="specify-computernameprefix"></a>Adja meg a gépnév előtagja
-A méretezési több virtuális gép telepítését. Minden virtuális gép nevének megadása helyett adja meg a `computerNamePrefix`. A méretezési hozzáfűzi a index előtag az egyes virtuális gépek, így a virtuális gép nevei `<computerNamePrefix>_<auto-generated-index>`.
+A méretezési csoportban több virtuális gépet helyez üzembe. Helyett adja meg mindegyik virtuális gép nevét, adja meg a `computerNamePrefix`. A méretezési fűz index előtagot az egyes virtuális Gépekhez, így a virtuális gépek nevei `<computerNamePrefix>_<auto-generated-index>`.
 
-A következő kódrészletet a paramétereket, mielőtt a segítségével állítsa be a rendszergazdai jogosultságú felhasználónevet és jelszót a méretezési csoportban lévő virtuális gép esetében. Ez a folyamat használja a `parameters` sablonfüggvény. Ez a függvény egy karakterlánc, amely meghatározza, melyik paraméterrel lehet hivatkozni, és kiírja, hogy a paraméter értéke időt vesz igénybe.
+Az alábbi kódrészletben a paramétereket, mielőtt a használatával állítsa be a rendszergazdai felhasználónevet és jelszót a méretezési csoportban lévő virtuális gépekre. Ez a folyamat használja a `parameters` sablonfüggvény. Ez a függvény egy karakterlánc, amely meghatározza, mely paraméterrel lehet hivatkozni, és visszaadja, hogy a paraméter értéke vesz igénybe.
 
 ```json
            "osProfile": {
@@ -173,12 +173,12 @@ A következő kódrészletet a paramétereket, mielőtt a segítségével állí
            },
 ```
 
-### <a name="specify-vm-network-configuration"></a>Adja meg a Virtuálisgép-hálózati konfiguráció
-Végül adja meg a virtuális gépek hálózati beállításait a méretezési csoportban lévő. Ebben az esetben csak szeretné adja meg a korábban létrehozott alhálózati Azonosítót. Ez alapján a méretezési készletben, amelyre a hálózati adapterek az alhálózaton.
+### <a name="specify-vm-network-configuration"></a>Adja meg a virtuális gép hálózati konfigurációja
+Végül adja meg a hálózati konfigurációt a virtuális gépek a méretezési csoportban. Ebben az esetben csak kell a korábban létrehozott alhálózati azonosító megadása. A méretezési csoport helyezni ezt az alhálózatot a hálózati adapterek azonban igen.
 
-Kaphat, hogy a virtuális hálózat használatával a alhálózati tartalmazó Azonosítóját a `resourceId` sablonfüggvény. Ez a funkció időt vesz igénybe, a típus és az erőforrás neve, és az adott erőforrás teljesen minősített azonosítójának beolvasása. Ezt az Azonosítót az űrlap rendelkezik:`/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/<resourceProviderNamespace>/<resourceType>/<resourceName>`
+A virtuális hálózat, amely tartalmazza az alhálózat használatával a Azonosítójának lekéréséhez a `resourceId` sablonfüggvény. Ez a funkció a típusa és a egy erőforrás nevét, és adja vissza a teljes azonosítót az erőforrás. Ez az azonosító formában van: `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/<resourceProviderNamespace>/<resourceType>/<resourceName>`
 
-Azonban a virtuális hálózat azonosító nem elegendő. Adja meg, hogy a méretezési virtuális gépek az adott alhálózaton kell lennie. Ehhez összefűzésére `/subnets/mySubnet` számára a virtuális hálózat Azonosítójává. A teljesen minősített azonosítója az alhálózat eredménye. A kapott, tegye a `concat` funkció, amely a karakterláncok több időt vesz igénybe, és visszaadja a kapott.
+A virtuális hálózat azonosítója viszont nem elegendő. Adja meg az adott alhálózat, a méretezési csoport, hogy virtuális gépeket kell lennie. Ehhez összefűzni `/subnets/mySubnet` , a virtuális hálózat azonosítója. Ez az alhálózat teljesen minősített azonosítója. Ez az összefűzés tegye a `concat` függvény, amely fogadja a karakterláncok egy sorozatát, és azok összefűzésével adja vissza.
 
 ```json
            "networkProfile": {

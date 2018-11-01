@@ -3,19 +3,19 @@ title: Mi az Academic Knowledge API?
 titlesuffix: Azure Cognitive Services
 description: Az Academic Knowledge API segítségével értelmezhetők a felhasználói lekérdezések és részletes információk kérhetők le az Academic Graph-ból.
 services: cognitive-services
-author: mvorvoreanu
+author: darrine
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
 ms.topic: overview
-ms.date: 03/27/2017
-ms.author: mivorvor
-ms.openlocfilehash: d08cd7124b232e50365e72753eba97c6309f401c
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.date: 10/30/2018
+ms.author: darrine
+ms.openlocfilehash: aa945eb8f0b79a6b0760650bd34dba55d80ef3a4
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901210"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240358"
 ---
 # <a name="academic-knowledge-api"></a>Academic Knowledge API
 
@@ -32,13 +32,10 @@ Az Academic Knowledge API négy egymáshoz kapcsolódó REST-végpontból áll:
   1. **interpret** (értelmezés) – Értelmez egy természetes nyelven megfogalmazott felhasználói lekérdezési sztringet. Jegyzettel ellátott értelmezéseket ad vissza, amelyek lehetővé teszik a keresőmezők automatikus kiegészítését, előre jelezve, hogy a felhasználó mit fog írni.  
   2. **evaluate** (kiértékelés) – Kiértékel egy lekérdezési kifejezést és visszaadja az Academic Knowledge-entitásokkal kapcsolatos eredményeket.  
   3. **calchistogram** (hisztogramszámítás) – Kiszámítja egy keresőkifejezés által visszaadott tudományos entitások attribútumértékeinek eloszlási hisztogramját, pl. egy adott szerző idézettségének évenkénti eloszlását.  
-  4. **graph search** (gráfkeresés) – Egy adott gráfmintázatot keres, és az annak megfelelő entitásokat adja vissza eredményként.
-
+  
 Ezen API-metódusok együttes használatával részletes szemantikai keresési felületet hozhat létre. Egy megadott felhasználói lekérdezési sztring esetén az **interpret** metódus visszaadja a lekérdezés egy jegyzetekkel ellátott verzióját és egy strukturált lekérdezési kifejezést, miközben a mögöttes tudományos adatok szemantikája alapján opcionálisan kiegészíti a felhasználói lekérdezést. Például ha a felhasználó által beírt sztring a *látens s*, az **interpret** metódus képes megadni különböző értelmezések egy rangsorolt készletét, amelyek alapján a felhasználó kereshet a *látens szemantikai elemzés* területre, a *látens struktúraelemzés* tanulmányra, vagy bármely más entitáskifejezésre, amelynek kezdete a *látens s*. Ezen információk segítségével a felhasználó gyorsan eljuthat a kívánt keresési eredményekhez.
 
 Az **evaluate** metódus segítségével egyező tanulmányentitások kérhetők le a tudományos tudásbázisból, a **calchistogram** metódussal pedig kiszámítható a tanulmányentitások attribútumértékeinek eloszlása, amely alapján tovább szűrhetők a keresési eredmények.        
-
-A **graph search** metódusnak két módja van: *json* és *lambda*. A *json* módban gráfminták egyeztetése végezhető el egy JSON-objektum által megadott gráfmintáknak megfelelően. A *lambda* mód kiszolgálóoldali számításokat végezhet el a gráfok bejárása során a felhasználó által megadott lambda-kifejezéseknek megfelelően.
 
 ## <a name="getting-started"></a>Első lépések 
 Részletes dokumentációt a bal oldali altémakörökben talál.  Vegye figyelembe, hogy a példák olvashatóbbá tétele érdekében a REST API-hívások olyan karaktereket is tartalmaznak (például szóközöket), amelyek nem URL-kódolásúak.  Saját kódjának mindig a megfelelő URL-kódolásokat kell alkalmaznia.

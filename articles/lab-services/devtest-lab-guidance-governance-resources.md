@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 2edfa84530c147e1f716aef10c967ac36eadc922
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 2d17f4471383be623cb40276ec1e51257bf3fbce
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251035"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740374"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Irányítás az Azure DevTest Labs-infrastruktúra - erőforrások
 Ez a cikk foglalkozik az igazítási és erőforrások kezelését a DevTest Labs a szervezeten belül. 
@@ -67,7 +67,7 @@ Azt javasoljuk, hogy üzleti egységek és az azonos alkalmazásfejlesztési pro
 
 Szükség lehet figyelembe venni a földrajzi határokon. Például a fejlesztők az észak-keleti Egyesült Államok (amerikai) felhasználhatja az üzembe helyezett 2. keleti régiója labor. És a fejlesztők számára, Dallas, Texas, és Denver, Colorado irányított használjon egy erőforrást, az USA déli középső régiója. Ha egy külső külső gyártótól származó egy együttműködésen alapuló tevékenységi, azok sikerült hozzárendelni a belső fejlesztők által nem használt laborokhoz. 
 
-Tesztkörnyezet egy adott projekt a Visual Studio Team Services csapatprojekt belül is használhatja. Ezután alkalmazza megadott Azure Active Directory csoporthoz, amely lehetővé teszi, hogy mindkét erőforráskészlettel való hozzáférés biztonságát. A virtuális hálózat a labor rendelt egyesíthetők a felhasználók egy másik határ lehet.
+Az Azure DevOps projects belül egy adott projekt labor is használhatja. Ezután alkalmazza megadott Azure Active Directory csoporthoz, amely lehetővé teszi, hogy mindkét erőforráskészlettel való hozzáférés biztonságát. A virtuális hálózat a labor rendelt egyesíthetők a felhasználók egy másik határ lehet.
 
 ## <a name="deletion-of-resources"></a>Az erőforrások törlése
 

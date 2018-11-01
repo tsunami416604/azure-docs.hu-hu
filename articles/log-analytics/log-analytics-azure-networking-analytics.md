@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: f1db673ad750a5d9d9d6bda9f41555d5e3affe8d
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: bc2b93312ed005154aa7d2530fb5493278a15c67
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043090"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418602"
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>A Log Analytics megoldások monitorozása az Azure-hálózatok
 
@@ -70,7 +70,7 @@ Az alábbi táblázat adatgyűjtési módszerek és egyéb hogyan adatgyűjtés 
 
 ## <a name="azure-application-gateway-analytics-solution-in-log-analytics"></a>Az Azure Application Gateway analytics megoldás a Log Analyticsben
 
-![Az Azure Application Gateway Analytics szimbólum](./media/log-analytics-azure-networking/azure-analytics-symbol.png)
+![Az Azure Application Gateway Analytics szimbólum](media/log-analytics-azure-networking-analytics/azure-analytics-symbol.png)
 
 Az Application Gateway átjárók támogatottak a következő naplók kapcsolódnak:
 
@@ -94,10 +94,10 @@ Az alábbi utasítások segítségével telepítheti és konfigurálhatja az Azu
 1. Az Azure Portalon keresse meg az Application Gateway erőforrás figyelése
 2. Válassza ki *diagnosztikai naplók* nyissa meg a következő
 
-   ![az Azure Application Gateway-erőforrásának képe](./media/log-analytics-azure-networking/log-analytics-appgateway-enable-diagnostics01.png)
+   ![az Azure Application Gateway-erőforrásának képe](media/log-analytics-azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
 3. Kattintson a *diagnosztika bekapcsolása* nyissa meg a következő
 
-   ![az Azure Application Gateway-erőforrásának képe](./media/log-analytics-azure-networking/log-analytics-appgateway-enable-diagnostics02.png)
+   ![az Azure Application Gateway-erőforrásának képe](media/log-analytics-azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
 4. Engedélyezze a diagnosztikát, kattintson a *a* alatt *állapota*
 5. Kattintson a jelölőnégyzetre a *Küldés a Log Analyticsnek*
 6. Válasszon ki egy meglévő Log Analytics-munkaterületet, vagy hozzon létre egy munkaterületet
@@ -117,7 +117,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $work
 ```
 
 ### <a name="use-azure-application-gateway-analytics"></a>Az Azure Application Gateway analytics használata
-![az Azure Application Gateway analytics csempére képe](./media/log-analytics-azure-networking/log-analytics-appgateway-tile.png)
+![az Azure Application Gateway analytics csempére képe](media/log-analytics-azure-networking-analytics/log-analytics-appgateway-tile.png)
 
 Miután rákattintott a **Azure Application Gateway analytics** csempére az Áttekintés a a naplók összegzéseinek megtekintése és majd jelenítse meg a részleteket az alábbi kategóriákban:
 
@@ -130,9 +130,9 @@ Miután rákattintott a **Azure Application Gateway analytics** csempére az Át
   * Számítógép állapota az Application Gateway számára
   * Az Application Gateway számára maximális és a 95. percentilis sikertelen kérelmek
 
-![az Azure Application Gateway analytics-irányítópult képe](./media/log-analytics-azure-networking/log-analytics-appgateway01.png)
+![az Azure Application Gateway analytics-irányítópult képe](media/log-analytics-azure-networking-analytics/log-analytics-appgateway01.png)
 
-![az Azure Application Gateway analytics-irányítópult képe](./media/log-analytics-azure-networking/log-analytics-appgateway02.png)
+![az Azure Application Gateway analytics-irányítópult képe](media/log-analytics-azure-networking-analytics/log-analytics-appgateway02.png)
 
 Az a **Azure Application Gateway analytics** irányítópult, tekintse át az összefoglaló adatokat az egyik a paneleket, és kattintson az egyik, a keresési oldalon található részletes információk megtekintéséhez.
 
@@ -141,7 +141,7 @@ Bármelyik, log search, az eredmények megtekintéséhez idő, a részletes ered
 
 ## <a name="azure-network-security-group-analytics-solution-in-log-analytics"></a>Azure-beli hálózati biztonsági csoport analytics megoldás a Log Analyticsben
 
-![Azure-beli hálózati biztonsági csoport Analytics szimbólum](./media/log-analytics-azure-networking/azure-analytics-symbol.png)
+![Azure-beli hálózati biztonsági csoport Analytics szimbólum](media/log-analytics-azure-networking-analytics/azure-analytics-symbol.png)
 
 > [!NOTE]
 > A hálózati biztonsági csoport analytics megoldás áll át közösségi támogatás, mivel szolgáltatásait váltotta [Traffic Analytics](../network-watcher/traffic-analytics.md).
@@ -165,10 +165,10 @@ Az alábbi utasítások segítségével telepítheti és konfigurálhatja az Azu
 1. Az Azure Portalon keresse meg a hálózati biztonsági csoport erőforrást figyelése
 2. Válassza ki *diagnosztikai naplók* nyissa meg a következő
 
-   ![Azure-beli hálózati biztonsági csoport erőforrás képe](./media/log-analytics-azure-networking/log-analytics-nsg-enable-diagnostics01.png)
+   ![Azure-beli hálózati biztonsági csoport erőforrás képe](media/log-analytics-azure-networking-analytics/log-analytics-nsg-enable-diagnostics01.png)
 3. Kattintson a *diagnosztika bekapcsolása* nyissa meg a következő
 
-   ![Azure-beli hálózati biztonsági csoport erőforrás képe](./media/log-analytics-azure-networking/log-analytics-nsg-enable-diagnostics02.png)
+   ![Azure-beli hálózati biztonsági csoport erőforrás képe](media/log-analytics-azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
 4. Engedélyezze a diagnosztikát, kattintson a *a* alatt *állapota*
 5. Kattintson a jelölőnégyzetre a *Küldés a Log Analyticsnek*
 6. Válasszon ki egy meglévő Log Analytics-munkaterületet, vagy hozzon létre egy munkaterületet
@@ -196,9 +196,9 @@ Miután rákattintott a **Azure-beli hálózati biztonsági csoport analytics** 
   * Hálózati biztonsági csoportszabályok és engedélyezett forgalom
   * MAC-címek és engedélyezett forgalom
 
-![Azure-beli hálózati biztonsági csoport analytics-irányítópult képe](./media/log-analytics-azure-networking/log-analytics-nsg01.png)
+![Azure-beli hálózati biztonsági csoport analytics-irányítópult képe](media/log-analytics-azure-networking-analytics/log-analytics-nsg01.png)
 
-![Azure-beli hálózati biztonsági csoport analytics-irányítópult képe](./media/log-analytics-azure-networking/log-analytics-nsg02.png)
+![Azure-beli hálózati biztonsági csoport analytics-irányítópult képe](media/log-analytics-azure-networking-analytics/log-analytics-nsg02.png)
 
 Az a **Azure-beli hálózati biztonsági csoport analytics** irányítópult, tekintse át az összefoglaló adatokat az egyik a paneleket, és kattintson az egyik, a keresési oldalon található részletes információk megtekintéséhez.
 

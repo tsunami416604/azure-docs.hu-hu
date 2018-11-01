@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: f89cf9431d3d72b74bc856093108a7bc0ab5a0b4
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 4f4aedd1d85a83e6f55d5729b82b88e2e9e8c00d
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221902"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415933"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése Azure HDInsight - storage ajánlott eljárásai
 
@@ -47,23 +47,27 @@ Az Azure Storage kínál [blob-objektumok a helyreállítható Törlés](../../s
 Létrehozhat [blobpillanatképet](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob). Egy pillanatképet egy blob egy időben végrehajtott egy csak olvasható verziója, és lehetővé teszi a blob mentésére. Pillanatkép létrehozása után azt is olvassa el, másolja, vagy törölni, de nem módosulnak.
 
 > [!Note]
-> A helyi helyszíni Hadoop Disztribúciók a "wasbs" tanúsítvány nem rendelkező régebbi verzióját a Java megbízhatósági tároló importálni kell. A következő parancsok segítségével tanúsítványok importálása a Java megbízhatósági tárolójába:
+> A helyi helyszíni Hadoop Disztribúciók a "wasbs" tanúsítvány nem rendelkező régebbi verzióját a Java megbízhatósági tároló importálni kell.
 
-- Egy fájlba az Azure Blob ssl-tanúsítvány letöltése
+A következő módszerek használhatók tanúsítványok importálása a Java megbízhatósági tárolójába:
+
+Egy fájlba az Azure Blob ssl-tanúsítvány letöltése
 
 ```bash
 echo -n | openssl s_client -connect <storage-account>.blob.core.windows.net:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > Azure_Storage.cer
 ```
 
-- A fenti fájlt importálja az összes csomóponton, a Java megbízhatósági tároló
+A fenti fájlt importálja az összes csomóponton, a Java megbízhatósági tároló
 
 ```bash
 keytool -import -trustcacerts -keystore /path/to/jre/lib/security/cacerts -storepass changeit -noprompt -alias blobtrust -file Azure_Storage.cer
 ```
 
-- Ellenőrizze, hogy az új tanúsítvány szerepel-e a megbízhatósági tároló
+Ellenőrizze, hogy az új tanúsítvány szerepel-e a megbízhatósági tároló
 
-`keytool -list -v -keystore /path/to/jre/lib/security/cacerts`
+```bash
+keytool -list -v -keystore /path/to/jre/lib/security/cacerts
+```
 
 További információkért tekintse át a következő cikkeket:
 
@@ -152,23 +156,31 @@ Alapértelmezés szerint a HDInsight a fürthöz társított Azure Storage-fiók
     - storage_account_key mezőbe: az a tárfiók kulcsát.
     - storage_container_name: A tároló, amely korlátozza a hozzáférést a kívánt storage-fiókban.
     - example_file_path: A tárolóba feltöltött fájl elérési útja
+
 2. A SASToken.py fájl együtt származik a `ContainerPermissions.READ + ContainerPermissions.LIST` engedélyeket, és a használati eset alapján.
+
 3. Hajtsa végre a parancsfájl a következőképpen: `python SASToken.py`
+
 4. A parancsfájl lefutásakor megjeleníti a SAS-jogkivonatát az alábbi szöveghez hasonló: `sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14`
 
 5. Egy tároló közös hozzáférésű Jogosultságkód való hozzáférés korlátozásához adjon egy egyéni bejegyzést a hely konfigurációjának a fürthöz, a hely hozzáadása az Ambari HDFS Configs speciális egyéni tulajdonság.
+
 6. A következő értékeket használja a **kulcs** és **érték** mezők:
 
-    **Kulcs**: fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net **érték**: az SAS-kulcsot a Python alkalmazást FROM fenti 4. lépéssel által visszaadott
+    **Kulcs**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **érték**: az SAS-kulcsot a Python alkalmazást FROM fenti 4. lépéssel által visszaadott.
 
 7. Kattintson a **Hozzáadás** gombra kattintva mentse a kulcs-érték, majd kattintson a **mentése** gombot a konfigurációs módosítások mentéséhez. Amikor a rendszer kéri, adjon meg egy leírást a változás ("Hozzáadás SAS-tároló hozzáférés" például), és kattintson a **mentése**.
+
 8. Az az Ambari webes felhasználói Felületét, HDFS válassza a bal oldali listából, és válassza **indítsa újra az összes érintett** a a szolgáltatási műveletek legördülő menü a jobb oldali listából. Amikor a rendszer kéri, válassza ki a **megerősítése indítsa újra az összes**.
+
 9. Ismételje meg ezt a folyamatot MapReduce2 és YARN.
 
 Van három fontos Megjegyzendő tudnivalók az Azure-beli SAS-jogkivonatok használatával kapcsolatban:
 
 1. Ha SAS-tokeneket "+ LIST OLVASÁSA" engedélyekkel jönnek létre, a Blob-tároló a SAS-jogkivonat használatával hozzáféréssel rendelkező felhasználókat nem lehet "írási és törlési" adat. Felhasználók, akik a SAS-jogkivonat használatával a blobtároló eléréséhez és próbálja meg az írási vagy törlési művelet, hasonló üzenet jelenik meg `"This request is not authorized to perform this operation"`.
+
 2. Az SAS-jogkivonatok létrehozásának `READ + LIST + WRITE` engedélyek (korlátozása `DELETE` csak), parancsok, például `hadoop fs -put` először írni egy `\_COPYING\_` fájlt, és ismételje meg a fájl átnevezéséhez. A HDFS-művelet képez le egy `copy+delete` a WASB. Mivel a `DELETE` engedély nem lett megadva, a "put" sikertelen lesz. A `\_COPYING\_` műveletet egy olyan Hadoop-szolgáltatás, szolgál, hogy néhány egyidejűség-vezérlés. Jelenleg nincs lehetőség a korlátozása csak a "Törlés" művelet "WRITE" műveletek, valamint befolyásolása nélkül.
+
 3. Sajnos a hadoop hitelesítőadat-szolgáltató és a visszafejtési kulcs szolgáltató (ShellDecryptionKeyProvider) jelenleg nem működik a SAS-tokeneket, és így már jelenleg nem biztosítható a látható-e.
 
 További információkért lásd: [használata az Azure Storage közös hozzáférésű Jogosultságkódokat HDInsight adatok való hozzáférés korlátozása](../hdinsight-storage-sharedaccesssignature-permissions.md)
@@ -180,7 +192,9 @@ Azure Storage tárterületre írt összes adat automatikusan titkosítva lesznek
 - [Helyileg redundáns tárolás (LRS)](../../storage/common/storage-redundancy-lrs.md)
 - [Zónaredundáns tárolás (ZRS)](../../storage/common/storage-redundancy-zrs.md)
 - [Georedundáns tárolás (GRS)](../../storage/common/storage-redundancy-grs.md)
-- [Írásvédett georedundáns tárolás (RA-GRS)](../../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) Azure Data Lake Storage biztosítja a helyileg redundáns tárolás (LRS), de érdemes is kritikus fontosságú adatokat másol egy másik Data Lake Storage-fiók egy másik régióban igényeihez igazodó gyakorisággal a vész-helyreállítási terv. Különböző módszerekkel másolhatja az adatokat, többek között [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md), a DistCp, [Azure PowerShell-lel](../../data-lake-store/data-lake-store-get-started-powershell.md), vagy [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md). Emellett ajánlott hozzáférési szabályzatok érvényesítését a Data Lake tárfiókot véletlen törlés megelőzése érdekében.
+- [Írásvédett georedundáns tárolás (RA-GRS)](../../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
+
+Az Azure Data Lake Storage biztosítja a helyileg redundáns tárolás (LRS), de kell is kritikus fontosságú adatokat másol egy másik Data Lake Storage-fiók egy másik régióban található a Vészhelyreállítási terv igényeihez igazodó gyakorisággal. Különböző módszerekkel másolhatja az adatokat, többek között [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md), a DistCp, [Azure PowerShell-lel](../../data-lake-store/data-lake-store-get-started-powershell.md), vagy [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md). Emellett ajánlott hozzáférési szabályzatok érvényesítését a Data Lake tárfiókot véletlen törlés megelőzése érdekében.
 
 További információkért tekintse át a következő cikkeket:
 

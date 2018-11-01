@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 08/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 3642c1b7d3de751ecb8a72edaecfe7a15c0acbdb
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 0a00bc4a1baa413a21f8179ede6893b0fa4add9c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320832"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416494"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Az Azure Event Hubs-beli Apache kafka Apache Flink használata
 Az oktatóanyag bemutatja, hogyan lehet Apache Flink csatlakozni Kafka-kompatibilis az event hubs nélkül módosítja a protokollt használó ügyfelek vagy a saját fürtök. Támogatja az Azure Event Hubs [Apache Kafka 1.0-s verziója.](https://kafka.apache.org/10/documentation.html).
@@ -38,7 +38,7 @@ Az oktatóanyag elvégzéséhez, ellenőrizze, hogy a következő előfeltétele
 
 * Olvassa át az [Apache Kafkához készült Event Hubsot](event-hubs-for-kafka-ecosystem-overview.md) ismertető cikket. 
 * Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), mielőtt hozzákezd.
-* [Java fejlesztői készlet (JDK) 1.7+](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Java fejlesztői készlet (JDK) 1.7+](https://aka.ms/azure-jdks)
     * Ubuntu rendszeren futtassa az `apt-get install default-jdk` parancsot a JDK telepítéséhez.
     * Ügyeljen arra, hogy a JAVA_HOME környezeti változó arra a mappára mutasson, ahová a JDK telepítve lett.
 * [Töltse le](http://maven.apache.org/download.cgi) és [telepítése](http://maven.apache.org/install.html) a Maven bináris archívum
@@ -135,7 +135,7 @@ Ebben az oktatóanyagban a megismert Apache Flink Kafka-kompatibilis az event hu
 További információ az Event Hubs és az Event Hubs a Kafka, a következő témakörben talál:  
 
 * [Ismerkedés az Event Hubs szolgáltatással](event-hubs-what-is-event-hubs.md)
-* [További információ az Event Hubs, Kafka for](event-hubs-for-kafka-ecosystem-overview.md)
-* [További minták felfedezése az Event Hubs a Kafka github](https://github.com/Azure/azure-event-hubs-for-kafka)
+* [Ismerkedés a Kafkához készült Event Hubs szolgáltatással](event-hubs-for-kafka-ecosystem-overview.md)
+* [További minták megismerése a Kafkához készült Event Hubs GitHub-oldalán](https://github.com/Azure/azure-event-hubs-for-kafka)
 * A [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) használatával [eseményeket streamelhet a helyszíni Kafkából a felhőben található Kafka-kompatibilis Event Hubsba.](event-hubs-kafka-mirror-maker-tutorial.md)
 * Ismerje meg, hogyan streamelése Kafka az engedélyezett az Event Hubs használatával [Kafka natív alkalmazások](event-hubs-quickstart-kafka-enabled-event-hubs.md) vagy [Akka adatfolyamok](event-hubs-kafka-akka-streams-tutorial.md)

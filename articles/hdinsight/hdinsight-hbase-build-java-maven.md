@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: fc2bd03156d6005f1e10252583b4a13451f66dbf
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c10fcb8e45dc163629186cfb48408e8734bc5a56
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43092627"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418211"
 ---
 # <a name="use-maven-to-build-java-applications-that-use-hbase-with-windows-based-hdinsight-hadoop"></a>A Maven használata Java-alkalmazások, amelyek Windows-alapú HDInsight (hadoop eszközzel) HBase használata
 Ismerje meg, hogyan hozhat létre, és hozhat létre egy [Apache HBase](http://hbase.apache.org/) alkalmazás javában az Apache Maven segítségével. Ezután használja az alkalmazást az Azure HDInsight (Hadoop).
@@ -25,7 +25,7 @@ Ismerje meg, hogyan hozhat létre, és hozhat létre egy [Apache HBase](http://h
 > A jelen dokumentumban leírt lépések szükség egy HDInsight-fürt által használt Windows. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="requirements"></a>Követelmények
-* [A Java platform JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 vagy újabb verzió
+* [A Java platform JDK](https://aka.ms/azure-jdks) 7 vagy újabb verzió
 * [Maven 3](http://maven.apache.org/)
 * Egy Windows-alapú HDInsight-fürtöt, a hbase-ben
 

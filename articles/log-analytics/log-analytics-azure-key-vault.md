@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: 1c72421be6cfb266293c98d9ad06bd6adb35019b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: be0a12bbb84db1e4016bd7126a38e750e6c0c3ad
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043588"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412822"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Az Azure Key Vault Analytics megoldás a Log Analyticsben
 
-![A Key Vault szimbólum](./media/log-analytics-azure-keyvault/key-vault-analytics-symbol.png)
+![A Key Vault szimbólum](media/log-analytics-azure-key-vault/key-vault-analytics-symbol.png)
 
 A Log Analyticsben az Azure Key Vault megoldással áttekintheti az Azure Key Vault AuditEvent-naplókat.
 
@@ -46,10 +46,10 @@ Kövesse az alábbi utasításokat, telepítése és konfigurálása az Azure Ke
 1. Az Azure Portalon lépjen a Key Vault erőforrás figyelése
 2. Válassza ki *diagnosztikai naplók* nyissa meg a következő
 
-   ![az Azure Key Vault csempét ábrázoló kép](./media/log-analytics-azure-keyvault/log-analytics-keyvault-enable-diagnostics01.png)
+   ![az Azure Key Vault csempét ábrázoló kép](media/log-analytics-azure-key-vault/log-analytics-keyvault-enable-diagnostics01.png)
 3. Kattintson a *diagnosztika bekapcsolása* nyissa meg a következő
 
-   ![az Azure Key Vault csempét ábrázoló kép](./media/log-analytics-azure-keyvault/log-analytics-keyvault-enable-diagnostics02.png)
+   ![az Azure Key Vault csempét ábrázoló kép](media/log-analytics-azure-key-vault/log-analytics-keyvault-enable-diagnostics02.png)
 4. Engedélyezze a diagnosztikát, kattintson a *a* alatt *állapota*
 5. Kattintson a jelölőnégyzetre a *Küldés a Log Analyticsnek*
 6. Válasszon ki egy meglévő Log Analytics-munkaterületet, vagy hozzon létre egy munkaterületet
@@ -81,7 +81,7 @@ Az alábbi táblázat adatgyűjtési módszerek és egyéb hogyan adatgyűjtés 
 ## <a name="use-azure-key-vault"></a>Az Azure Key Vault használata
 Miután [a megoldás telepítése](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview), a Key Vault adatainak megtekintéséhez kattintson a **Azure Key Vault** a csempe a **áttekintése** Log Analytics lapján.
 
-![az Azure Key Vault csempét ábrázoló kép](./media/log-analytics-azure-keyvault/log-analytics-keyvault-tile.png)
+![az Azure Key Vault csempét ábrázoló kép](media/log-analytics-azure-key-vault/log-analytics-keyvault-tile.png)
 
 Miután rákattintott a **áttekintése** csempét, a naplók összegzéseinek megtekintése, és ezután jelenítse meg a részleteket az alábbi kategóriákban:
 
@@ -90,9 +90,9 @@ Miután rákattintott a **áttekintése** csempét, a naplók összegzéseinek m
 * Művelet átlagos műveleti késés
 * A műveletek, amelyek több mint 1000 ms műveletek száma és a műveletek, amelyek több mint 1000 ms listáját a szolgáltatásminőség
 
-![az Azure Key Vault-irányítópult képe](./media/log-analytics-azure-keyvault/log-analytics-keyvault01.png)
+![az Azure Key Vault-irányítópult képe](media/log-analytics-azure-key-vault/log-analytics-keyvault01.png)
 
-![az Azure Key Vault-irányítópult képe](./media/log-analytics-azure-keyvault/log-analytics-keyvault02.png)
+![az Azure Key Vault-irányítópult képe](media/log-analytics-azure-key-vault/log-analytics-keyvault02.png)
 
 ### <a name="to-view-details-for-any-operation"></a>Bármely művelet részleteinek megtekintése
 1. Az a **áttekintése** lap, kattintson a **Azure Key Vault** csempére.
