@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8ec5f1cef3f9ca82953093d2086b615087db1a7f
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 154dedaf5e657803417e1bb113489c49f8879a26
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024768"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914584"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics hozzáadása mentett keresések és a riasztások felügyeleti megoldásra (előzetes verzió)
 
@@ -27,13 +27,13 @@ ms.locfileid: "50024768"
 > Ez az előzetes dokumentum, jelenleg előzetes verzióban elérhető kezelési megoldások létrehozásához. Semmilyen sémát, az alábbiakban a változhat.   
 
 
-[Felügyeleti megoldások](monitoring-solutions.md) rendszerint tartalmazza a [mentett keresések](../log-analytics/log-analytics-log-searches.md) a Log Analytics megoldás által összegyűjtött adatok elemzéséhez.  Ezen felül is meghatározhatnak [riasztások](../log-analytics/log-analytics-alerts.md) értesíti a felhasználót, vagy automatikusan hajtsa végre a műveletet egy kritikus problémát adott válaszként.  Ez a cikk azt ismerteti, hogyan adhat meg a Log Analytics-beli mentett keresések, és a riasztást egy [Resource Management-sablonnal](../resource-manager-template-walkthrough.md) így is szerepelni a [felügyeleti megoldások](monitoring-solutions-creating.md).
+[Felügyeleti megoldások](monitoring-solutions.md) rendszerint tartalmazza a [mentett keresések](../log-analytics/log-analytics-log-search.md) a Log Analytics megoldás által összegyűjtött adatok elemzéséhez.  Ezen felül is meghatározhatnak [riasztások](../log-analytics/log-analytics-alerts.md) értesíti a felhasználót, vagy automatikusan hajtsa végre a műveletet egy kritikus problémát adott válaszként.  Ez a cikk azt ismerteti, hogyan adhat meg a Log Analytics-beli mentett keresések, és a riasztást egy [Resource Management-sablonnal](../resource-manager-template-walkthrough.md) így is szerepelni a [felügyeleti megoldások](monitoring-solutions-creating.md).
 
 > [!NOTE]
 > Ebben a cikkben a minták használata, paraméterek és változók, kötelező vagy közös felügyeleti megoldások és az itt ismertetett [tervezés és felépítés felügyeleti megoldás az Azure-ban](monitoring-solutions-creating.md)  
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk feltételezi, hogy már megismerkedett az [felügyeleti megoldás létrehozása](monitoring-solutions-creating.md) és szerkezete egy [Resource Manager-sablon](../resource-group-authoring-templates.md) és a megoldásfájlt.
+Ez a cikk feltételezi, hogy már megismerkedett az [felügyeleti megoldás létrehozása](monitoring-solutions-creating.md) és szerkezete egy [Resource Manager-sablon](../azure-resource-manager/resource-group-authoring-templates.md) és a megoldásfájlt.
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics-munkaterület
@@ -54,9 +54,9 @@ Az alábbi táblázat az ebben a példában használt erőforrás API-verzió.
 
 
 ## <a name="saved-searches"></a>Mentett keresések
-Például [mentett keresések](../log-analytics/log-analytics-log-searches.md) a megoldás a felhasználók a megoldás által összegyűjtött adatokat lekérdezni.  Mentett keresések meg fog jelenni **mentett keresések** az Azure Portalon.  Mentett keresés is az egyes riasztások szükség.   
+Például [mentett keresések](../log-analytics/log-analytics-log-search.md) a megoldás a felhasználók a megoldás által összegyűjtött adatokat lekérdezni.  Mentett keresések meg fog jelenni **mentett keresések** az Azure Portalon.  Mentett keresés is az egyes riasztások szükség.   
 
-[A log Analytics-beli mentett keresés](../log-analytics/log-analytics-log-searches.md) erőforrás rendelkezik egy típusú `Microsoft.OperationalInsights/workspaces/savedSearches` és az alábbi struktúrával rendelkeznek.  Ez magában foglalja közös változók és paraméterek, így másolhatja, és ez a kódrészlet illessze be a megoldásfájlt, és módosítsa a paraméterek nevei. 
+[A log Analytics-beli mentett keresés](../log-analytics/log-analytics-log-search.md) erőforrás rendelkezik egy típusú `Microsoft.OperationalInsights/workspaces/savedSearches` és az alábbi struktúrával rendelkeznek.  Ez magában foglalja közös változók és paraméterek, így másolhatja, és ez a kódrészlet illessze be a megoldásfájlt, és módosítsa a paraméterek nevei. 
 
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name)]",

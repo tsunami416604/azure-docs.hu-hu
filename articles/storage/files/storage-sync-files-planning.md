@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: e4e793ac5735f7f3b07d285dea027a8f603b7964
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 0c9c254625ccca27a3525c45da0303f5e045ef44
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237897"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914328"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -27,13 +27,13 @@ Első adatait, az Azure File Sync üzembe helyezésének megtervezése, mielőtt
 A Storage Sync Service az Azure File Sync legfelső szintű Azure-erőforrás. A Storage Sync Service erőforrás társa a tárfiók típusú erőforrást, és az Azure-erőforráscsoportok hasonló módon telepíthető. A tárfiók típusú erőforrást a distinct legfelsőbb szintű erőforráshoz szükség, mert a Storage Sync Service hozhat létre szinkronizálási kapcsolatot több tárfiókon keresztül több szinkronizálási csoporttal. Egy előfizetéshez tartozhat több Társzinkronizálási szolgáltatás forrásokkal.
 
 ### <a name="sync-group"></a>Szinkronizálási csoport
-Szinkronizálási csoport határozza meg, hogy a fájlokat a sync-topológiát. Végpontok egy szinkronizálási csoportban vannak szinkronban egymással. Ha például van két külön csoportja, amely az Azure File Sync használatával kezelni kívánt fájlokat, lenne, két szinkronizálási csoport létrehozása, és különböző végpontok hozzáadása az összes szinkronizálási csoportból. Társzinkronizálási szolgáltatás tetszőleges számú szinkronizálási csoportok igény szerint is üzemeltethet.  
+A szinkronizálási csoport határozza meg fájlok egy halmazára a szinkronizálási topológiát. Végpontok egy szinkronizálási csoportban vannak szinkronban egymással. Ha például van két külön csoportja, amely az Azure File Sync használatával kezelni kívánt fájlokat, lenne, két szinkronizálási csoport létrehozása, és különböző végpontok hozzáadása az összes szinkronizálási csoportból. Társzinkronizálási szolgáltatás tetszőleges számú szinkronizálási csoportok igény szerint is üzemeltethet.  
 
 ### <a name="registered-server"></a>Regisztrált kiszolgáló
 A regisztrált kiszolgáló objektum képviseli a kiszolgáló (vagy fürt) közötti megbízhatósági kapcsolat, és a Storage Sync Service. A Storage Sync Service-példányhoz annyi kiszolgálót a kívánt regisztrálhat. Azonban a kiszolgáló (vagy fürt) regisztrálhatók csak egy Társzinkronizálási szolgáltatást egyszerre.
 
 ### <a name="azure-file-sync-agent"></a>Az Azure File Sync ügynök
-Az Azure File Sync ügynök csomag egy letölthető, amely lehetővé teszi a Windows Serverről az Azure-fájlmegosztások való szinkronizálása megtörténik. Az Azure File Sync ügynök három fő részből áll: 
+Az Azure File Sync ügynök egy letölthető csomag, amely lehetővé teszi a Windows Server szinkronizálását Azure-fájlmegosztással. Az Azure File Sync ügynök három fő részből áll: 
 - **FileSyncSvc.exe**: A háttérben futó Windows-szolgáltatás, amely figyeli a változásokat a kiszolgálói végpontot, és az Azure-bA szinkronizálási munkamenetek kezdeményezése a felelős.
 - **StorageSync.sys**: az Azure File Sync fájlrendszerszűrő, amelynek feladata rétegezési fájlokat az Azure Files (ha felhőbeli rétegezés engedélyezve van).
 - **PowerShell-parancsmagok felügyeleti**: Microsoft.StorageSync Azure erőforrás-szolgáltatóval való kommunikációhoz használható PowerShell-parancsmagokkal. Ezek a következő helyeken (alapértelmezett) találhatja meg:
@@ -41,7 +41,7 @@ Az Azure File Sync ügynök csomag egy letölthető, amely lehetővé teszi a Wi
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll
 
 ### <a name="server-endpoint"></a>Kiszolgálói végpont
-Kiszolgálói végpont egy adott helyen, egy regisztrált kiszolgálón, például az egyik mappájába, egy kötetet jelöl. Ha a névterek ne legyenek átfedésben több kiszolgálói végpontot létezhet ugyanazon a köteten (például `F:\sync1` és `F:\sync2`). Külön-külön az egyes kiszolgálói végpontot a felhőalapú rétegezési házirendeket konfigurálhat. 
+A kiszolgálói végpont a regisztrált kiszolgálón egy konkrét helyet jelöl, például egy mappát egy kiszolgálói köteten. Ha a névterek ne legyenek átfedésben több kiszolgálói végpontot létezhet ugyanazon a köteten (például `F:\sync1` és `F:\sync2`). Külön-külön az egyes kiszolgálói végpontot a felhőalapú rétegezési házirendeket konfigurálhat. 
 
 Kiszolgálói végpont a csatlakoztatási pont használatával is létrehozhat. Vegye figyelembe, hogy akkor csatlakozási belül a kiszolgálói végpontot a rendszer kihagyja.  
 
@@ -242,7 +242,9 @@ Az Azure File Sync csak az alábbi régiókban érhető el:
 | Kelet-Ázsia | Hongkong KKT |
 | USA keleti régiója | Virginia |
 | USA 2. keleti régiója | Virginia |
+| USA északi középső régiója | Illinois |
 | Észak-Európa | Írország |
+| USA déli középső régiója | Texas |
 | Dél-India | Csennai |
 | Délkelet-Ázsia | Szingapúr |
 | Az Egyesült Királyság déli régiója | London |
@@ -269,6 +271,7 @@ Georedundáns tárolás és az Azure File Sync feladatátvételi integrációjá
 | USA keleti régiója             | USA nyugati régiója            |
 | USA 2. keleti régiója           | USA középső régiója         |
 | Észak-Európa        | Nyugat-Európa        |
+| USA északi középső régiója    | USA déli középső régiója   |
 | Dél-India         | Közép-India      |
 | Délkelet-Ázsia      | Kelet-Ázsia          |
 | Az Egyesült Királyság déli régiója            | Az Egyesült Királyság nyugati régiója            |

@@ -11,15 +11,15 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, srbozovi, bonova
 manager: craigg
-ms.date: 09/13/2018
-ms.openlocfilehash: 08b8e37493ea7bc549a2352aaa6714ef7c65bfdb
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 11/01/2018
+ms.openlocfilehash: 97362cb91c16f91d637283df7a583f685124a21b
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159516"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913670"
 ---
-# <a name="configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Azure-beli virtuális gép csatlakozni egy Azure SQL Database felügyelt példányába konfigurálása
+# <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Gyors útmutató: Azure-beli virtuális gép csatlakozni egy Azure SQL Database felügyelt példányába konfigurálása
 
 Ez a rövid útmutató bemutatja, hogyan szeretne csatlakozni egy Azure SQL Database felügyelt példányába SQL Server Management Studio (SSMS) használatával egy Azure virtuális gép konfigurálása. A rövid útmutató, amely egy pont – hely kapcsolattal a helyszíni ügyfélszámítógépről összekapcsolása, lásd: [pont – hely kapcsolat konfigurálása](sql-database-managed-instance-configure-p2s.md) 
 
@@ -37,7 +37,7 @@ Az alábbi lépéseket egy új alhálózatot létrehozni a felügyelt példány 
 
 1. Nyissa meg az erőforráscsoport a felügyelt példány, amelyet a [létrehoz egy felügyelt példányt](sql-database-managed-instance-get-started.md) rövid, és válassza ki a virtuális hálózatot a felügyelt példány, és kattintson a **alhálózatok**.
 
-   ![A felügyelt példány erőforrások](./media/sql-database-managed-instance-configure-vm/resources.png)
+   ![Felügyelt példány erőforrásai](./media/sql-database-managed-instance-configure-vm/resources.png)
 
 2. Kattintson a **+** melletti jelentkezzen **alhálózati** hozhat létre egy új alhálózatot.
 
@@ -142,5 +142,5 @@ A csatlakozás után megtekintheti a rendszer- és felhasználói adatbázisokat
 ## <a name="next-steps"></a>További lépések
 
 - A rövid útmutató, amely egy pont – hely kapcsolattal a helyszíni ügyfélszámítógépről összekapcsolása, lásd: [pont – hely kapcsolat konfigurálása](sql-database-managed-instance-configure-p2s.md).
-- Az alkalmazások csatlakozási lehetőségek áttekintését lásd: [összekötheti saját alkalmazásait a felügyelt példány](sql-database-managed-instance-connect-app.md).
-- Meglévő SQL Server-adatbázis visszaállítása helyi egy felügyelt példányra, használhatja a [Azure Database Migration Service (DMS) az áttelepítéshez](../dms/tutorial-sql-server-to-managed-instance.md) vissza egy adatbázis biztonságimásolat-fájlt vagy a [T-SQL RESTORE a parancs](sql-database-managed-instance-get-started-restore.md) vissza egy adatbázis biztonságimásolat-fájlt.
+- Az alkalmazások csatlakozási lehetőségeinek áttekintéséért lásd: [Alkalmazások csatlakoztatása felügyelt példányhoz](sql-database-managed-instance-connect-app.md).
+- Ha vissza kíván állítani egy meglévő SQL-adatbázist egy felügyelt példányra, használhatja az [Azure Database Migration Services (DMS) migrálásához](../dms/tutorial-sql-server-to-managed-instance.md) szolgáltatást, amellyel a visszaállítás egy adatbázis biztonságimásolat-fájljából történik, vagy a [T-SQL RESTORE parancsot](sql-database-managed-instance-get-started-restore.md), amellyel egy adatbázis biztonságimásolat-fájljából végezhet visszaállítást.

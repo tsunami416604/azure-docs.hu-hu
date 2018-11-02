@@ -8,12 +8,12 @@ ms.date: 09/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 30b85f15d8718e21af66634db5a4afd5623a77e6
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: d84df3e5e0b961b8a53044102f99205ee0fe9896
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340171"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914107"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Megismerheti a kiterjesztett offline funkcióit az IoT Edge-eszközök, a modulok és a gyermek eszközökön (előzetes verzió)
 
@@ -142,4 +142,4 @@ Cserélje le `<HostStoragePath>` és `<ModuleStoragePath>` a gazdagép és a mod
 
 ## <a name="next-steps"></a>További lépések
 
-A transzparens átjáró forgatókönyvek a kiterjesztett offline műveletek engedélyezése [Linux](how-to-create-transparent-gateway-linux.md) vagy [Windows](how-to-create-transparent-gateway-windows.md) eszközök.
+A kiterjesztett offline műveletek engedélyezése a [transzparens átjáró](how-to-create-transparent-gateway.md) forgatókönyveket.

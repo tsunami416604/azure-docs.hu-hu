@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: ba77ec34e7887f676ea3df101e87c1ea80fceec5
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ff97d164ee8b2059e1b46377067041d6c381052b
+ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414794"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50753967"
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Kérdések az Azure VM Backup szolgáltatással kapcsolatban
 A cikk gyakori kérdésekre adott válaszokat tartalmazó szakaszaiban gyorsan áttekinthető az Azure VM Backup összetevőinek működése. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -48,13 +48,13 @@ Igen. Akkor is, ha egy gép le van állítva a biztonsági mentések használhat
 Igen. Megszakíthatja a biztonsági mentési feladat, ha "Pillanatkép elkészítéséhez" fázisban. **Egy feladat nem szakítható meg, ha folyamatban van az adatátviteli pillanatképből**.
 
 ### <a name="i-enabled-resource-group-lock-on-my-backed-up-managed-disk-vms-will-my-backups-continue-to-work"></a>Erőforráscsoport zárolási bekapcsolva a biztonsági másolat felügyelt lemezes virtuális gépek A biztonsági mentések továbbra is működni fognak?
-Ha a felhasználó zárolja magát az erőforráscsoportot, a Backup szolgáltatás, nem tudja törölni a régebbi helyreállítási pontokat. Emiatt új biztonsági mentései kezdenek, a háttérbeli előírt maximális 18 visszaállítási pontok korlátozva van. Ha a biztonsági mentések egy belső hiba miatt nem működik a RG zárolás után, kövesse az alábbi [a visszaállítás eltávolítására vonatkozó lépéseket pont gyűjtemény](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-portal-created-by-backup-service).
+Ha a felhasználó zárolja magát az erőforráscsoportot, a Backup szolgáltatás, nem tudja törölni a régebbi helyreállítási pontokat. Emiatt új biztonsági mentései kezdenek, a háttérbeli előírt maximális 18 visszaállítási pontok korlátozva van. Ha a biztonsági mentések egy belső hiba miatt nem működik a RG zárolás után, kövesse az alábbi [a visszaállítás eltávolítására vonatkozó lépéseket pont gyűjtemény](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal).
 
 ### <a name="does-backup-policy-take-daylight-saving-timedst-into-account"></a>Biztonsági mentési szabályzat nem figyelembe vennie a nyári mentése Time(DST)?
 Nem. Vegye figyelembe, hogy dátum és idő a helyi számítógépen megjelenik a helyi idő és a nyári időszámítás aktuális. Így a beállított ütemezett biztonsági mentések idejét nyári Időszámítás miatt a helyi idő eltérő lehet.
 
 ### <a name="maximum-of-how-many-data-disks-can-i-attach-to-a-vm-to-be-backed-up-by-azure-backup"></a>Legfeljebb hány adatlemez is csatlakoztatok a virtuális gép biztonsági mentése az Azure Backup?
-Az Azure Backup mostantól támogatja az akár 32 lemezekkel rendelkező virtuális gépek biztonsági mentése. A támogatás lemez 32 [frissítés az Azure virtuális gép biztonsági mentési vermének v2 verziójára](backup-upgrade-to-vm-backup-stack-v2.md). Védelem 24-én Szeptembertől, 2018-as virtuális gép fog első támogatott.
+Az Azure Backup mostantól támogatja az akár 16 lemezekkel rendelkező virtuális gépek biztonsági mentése. A 16 lemez támogatás [frissítés az Azure virtuális gép biztonsági mentési vermének v2 verziójára](backup-upgrade-to-vm-backup-stack-v2.md). Védelem 24-én Szeptembertől, 2018-as virtuális gép fog első támogatott.
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disk"></a>Az Azure biztonsági mentését támogató Standard SSD felügyelt lemez?
 Az Azure Backup támogatja [SSD standard szintű Managed Disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/), egy új Microsoft Azure-beli virtuális gépek tartós tárolási típusú. A felügyelt lemezek esetében támogatott [Azure virtuális gép biztonsági mentési vermének v2 verziójára](backup-upgrade-to-vm-backup-stack-v2.md).

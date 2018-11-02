@@ -6,17 +6,17 @@ author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 10/30/2018
-ms.openlocfilehash: fe66ca8b8f5b4474290e302f73b35868dce68caa
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.date: 11/01/2018
+ms.openlocfilehash: b5a1e521f46da7feffd2eb556ad1662a9ccaee55
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634056"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913836"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Event Grid-témakörök kezelésére szolgáló esemény tartományok ismertetése
 
-Ez a cikk ismerteti az esemény tartományok használata kezelheti a különféle üzleti cégek vagy intézmények, ügyfelek és alkalmazások egyéni eseményeit a folyamatot. Az esemény-tartományok használata:
+Ez a cikk ismerteti az esemény tartományok használata kezelheti a különböző szervezetek üzleti, felhasználók vagy alkalmazások egyéni eseményeit a folyamatot. Az esemény-tartományok használata:
 
 * Kezelheti a több-bérlős eseménykezelési architektúrák ipari méretekben.
 * Az engedélyezés és hitelesítés kezeléséhez.
@@ -25,18 +25,17 @@ Ez a cikk ismerteti az esemény tartományok használata kezelheti a különfél
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
+## <a name="event-domain-overview"></a>Esemény tartományi áttekintése
 
-## <a name="event-domains-overview"></a>Esemény tartományok áttekintése
+Egy esemény-tartomány egy felügyeleti eszköz, az Event Grid-témakörök ugyanazzal az alkalmazással kapcsolatos nagy számú. Felfogható, rendelkezhet több ezer, az egyes témakörök meta-témakör.
 
-Egy esemény-tartomány egy felügyeleti eszköz, az Event Grid-témakörök ugyanazzal az alkalmazással kapcsolatos nagy számú. Ön felfoghatjuk úgy, mint metaadat-Ez a témakör az egyes témakörök ezer tartalmazhat.
-
-Esemény tartományok győződjön meg arról, az architektúra az Azure services, Storage és az IoT Hub használatával elvégezhető a közzététel használhatja a saját rendszerben elérhető eseményeket. Lehetővé teszik, hogy tegye közzé az eseményeket témakörök ezer. Tartományok is lehetővé teszik, minden a témakör a hitelesítési és engedélyezési felett, így a bérlők particionáló.
+Esemény tartományok elérhetővé, az események közzététele az Azure-szolgáltatások (például a Storage és az IoT Hub) által használt azonos architektúrája. Lehetővé teszik, hogy tegye közzé az eseményeket témakörök ezer. Tartományok is lehetővé teszik, minden a témakör a hitelesítési és engedélyezési felett, így a bérlők particionáló.
 
 ### <a name="example-use-case"></a>Példa használati esetekhez
 
-Esemény tartományok a legkönnyebben magyarázata példa használatával. Tegyük fel, Contoso konstrukció gép, ahol gyártott traktorok, eszközök és egyéb gyakori gépek digging futtatja. Egy futtatásának részeként az üzleti, valós idejű információk leküldése ügyfelek kapcsolatos berendezések karbantartás, rendszerek állapot-szerződést kötöttek a frissítéseknek stb. Az összes ezeket az adatokat különböző végpontok, beleértve az alkalmazás, ügyfél-végpontok kerül, és más infrastruktúra-ügyfelek beállítása után.
+Esemény tartományok a legkönnyebben magyarázata példa használatával. Tegyük fel, Contoso konstrukció gép, ahol gyártott traktorok, eszközök és egyéb gyakori gépek digging futtatja. Egy futtatásának részeként az üzleti valós idejű információkat ügyfeleinek, berendezések karbantartási, helyrendszerek és szerződés frissítések leküldése. Különböző végpontok, beleértve az alkalmazás, ügyfél-végpontok és más ügyfelek beállított infrastruktúra az összes fenti információ irányul.
 
-Esemény tartományok lehetővé teszi a modell Contoso konstrukció gépek eseménykezelési egyetlen egységként. Az ügyfelek mindegyike jelenik meg a témakör a tartományban / hitelesítési és engedélyezési kezelése Azure Active Directory használatával. Az ügyfelek mindegyike feliratkozunk a témakörre, és azok szállított események működnek beolvasása. Az esemény tartományon keresztül felügyelt hozzáférést biztosítja, hogy csak azok a témakör eléréséhez.
+Esemény tartományok lehetővé teszik a modell Contoso konstrukció gépek eseménykezelési egyetlen egységként. Az ügyfelek mindegyike jelenik meg a témakör a tartományon belül. Hitelesítés és engedélyezés kezelése Azure Active Directory használatával. Az ügyfelek mindegyike feliratkozunk a témakörre, és azok szállított események működnek beolvasása. Az esemény tartományon keresztül felügyelt hozzáférést biztosítja, hogy csak azok a témakör eléréséhez.
 
 Azt is lehetővé teszi egy végpontot, amely minden, az ügyfél közzéteheti. Event Grid gondoskodik a gondoskodik róla, hogy minden a témakör csak a bérlő hatóköre események tisztában.
 
@@ -44,89 +43,23 @@ Azt is lehetővé teszi egy végpontot, amely minden, az ügyfél közzéteheti.
 
 ## <a name="access-management"></a>Hozzáférés-kezelés
 
- Egy tartomány első részletes hitelesítési és engedélyezési vezérlése minden témakörhöz keresztül az Azure szerepköralapú hozzáférés ellenőrzése (RBAC) keresztül. Ezek a szerepkörök segítségével minden bérlő korlátozása csak a kívánt hozzáférést biztosít nekik a témakörök az alkalmazásban.
+Az egy tartományi szolgáltatás részletes hitelesítési és engedélyezési vezérlése az Azure szerepköralapú hozzáférés-vezérlés (RBAC) keresztül minden egyes témakör alatt. Ezek a szerepkörök segítségével minden bérlő korlátozása csak a kívánt hozzáférést biztosít nekik a témakörök az alkalmazásban.
 
-Szerepköralapú hozzáférés ellenőrzése (RBAC) esemény tartományokban ugyanúgy működik [hozzáférés-vezérlés által felügyelt](https://docs.microsoft.com/azure/event-grid/security-authentication#management-access-control) Event Grid és az Azure többi működik. Az RBAC használatával hozzon létre és érvényesítsen az egyéni szerepkör-definíciók esemény tartományokban.
+Esemény tartományokban RBAC ugyanúgy működik [hozzáférés-vezérlés által felügyelt](security-authentication.md#management-access-control) Event Grid és az Azure többi működik. Az RBAC használatával hozzon létre és érvényesítsen az egyéni szerepkör-definíciók esemény tartományokban.
 
 ### <a name="built-in-roles"></a>Beépített szerepkörök
 
-Event Grid könnyebbé tenni az RBAC két beépített szerepkör-definíciók rendelkezik:
+Event Grid két beépített szerepkör-definíciók, hogy könnyebben esemény tartományok használata az RBAC rendelkezik. Ezek a szerepkörök felelnek **EventGrid EventSubscription Közreműködője (minta)** és **EventGrid EventSubscription olvasója (minta)**. Ezek a szerepkörök hozzárendelése az esemény tartományban témákra iratkozhat fel felhasználóknak. Csak a felhasználók igénylő előfizetni a témakör a szerepkör-hozzárendelés hatókörét.
 
-#### <a name="eventgrid-eventsubscription-contributor-preview"></a>EventGrid EventSubscription Közreműködője (minta)
-
-```json
-[
-  {
-    "Description": "Lets you manage EventGrid event subscription operations.",
-    "IsBuiltIn": true,
-    "Id": "428e0ff05e574d9ca2212c70d0e0a443",
-    "Name": "EventGrid EventSubscription Contributor (Preview)",
-    "IsServiceRole": false,
-    "Permissions": [
-      {
-        "Actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.EventGrid/eventSubscriptions/*",
-          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
-          "Microsoft.Insights/alertRules/*",
-          "Microsoft.Resources/deployments/*",
-          "Microsoft.Resources/subscriptions/resourceGroups/read",
-          "Microsoft.Support/*"
-        ],
-        "NotActions": [],
-        "DataActions": [],
-        "NotDataActions": [],
-        "Condition": null
-      }
-    ],
-    "Scopes": [
-      "/"
-    ]
-  }
-]
-```
-
-#### <a name="eventgrid-eventsubscription-reader-preview"></a>EventGrid EventSubscription olvasója (minta)
-
-```json
-[
-  {
-    "Description": "Lets you read EventGrid event subscriptions.",
-    "IsBuiltIn": true,
-    "Id": "2414bbcf64974faf8c65045460748405",
-    "Name": "EventGrid EventSubscription Reader (Preview)",
-    "IsServiceRole": false,
-    "Permissions": [
-      {
-        "Actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.EventGrid/eventSubscriptions/read",
-          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
-          "Microsoft.Resources/subscriptions/resourceGroups/read"
-        ],
-        "NotActions": [],
-        "DataActions": [],
-        "NotDataActions": []
-       }
-    ],
-    "Scopes": [
-      "/"
-    ]
-  }
-]
-```
+Ezek a szerepkörök kapcsolatos információkért lásd: [beépített szerepkörök az Event Gridhez](security-authentication.md#built-in-roles).
 
 ## <a name="subscribing-to-topics"></a>Való előfizetéssel kapcsolatos témakörök
 
-Feliratkozik az eseményekre a témakör egy esemény-tartományon belül pedig ugyanaz, mint [egy esemény-előfizetést egy egyéni témakör létrehozása](./custom-event-quickstart.md) vagy esemény-közzétevők Azure kínálja a beépített előfizetés.
+Feliratkozik az eseményekre a témakör egy esemény-tartományon belül pedig ugyanaz, mint [egy esemény-előfizetést egy egyéni témakör létrehozása](./custom-event-quickstart.md) vagy feliratkozik egy eseményt az Azure-szolgáltatások.
 
 ### <a name="domain-scope-subscriptions"></a>Tartományi hatókör előfizetések
 
-Esemény tartományok is lehetővé teszik a tartományi hatókör előfizetésekhez. Egy esemény-előfizetést egy esemény tartományban a tartományhoz, függetlenül a témakör az események küldhetők az összes esemény fog kapni. Tartományi hatókör-előfizetések kezelése és naplózási célokra hasznos lehet.
+Esemény tartományok is lehetővé teszik, tartomány-hatókör előfizetés esetében. Egy esemény-előfizetést egy esemény tartományban a tartományhoz, függetlenül a témakör az események küldhetők az összes esemény fog kapni. Tartományi hatókör-előfizetések kezelése és naplózási célokra hasznos lehet.
 
 ## <a name="publishing-to-an-event-domain"></a>Egy esemény-tartományhoz való közzététel
 
@@ -163,21 +96,21 @@ Például az alábbi tömböt események közzététele küld el esemény `"id":
 }]
 ```
 
-Esemény tartományok kezeléséhez, témakörökre való közzététel. Helyett minden egyes felügyelt külön-külön témakör eseményeket tesz közzé, közzéteheti minden, a tartomány-végponthoz, és Event Grid gondoskodik arról, hogy minden a rendszer a megfelelő témakörben.
+Esemény tartományok kezeléséhez, témakörökre való közzététel. Minden egyes külön-külön kezelt témakörhöz közzétételi események helyett közzétehet minden, a tartomány-végpontra. Event Grid biztosítja, hogy minden a rendszer a megfelelő témakört.
 
 ## <a name="limits-and-quotas"></a>Korlátok és kvóták
 
 ### <a name="control-plane"></a>Vezérlősík
 
-Az előzetes verzióban Event tartományok csak egy tartományon belüli 1000 témakörök és a egy tartományon belüli témakör 50 eseményfeliratkozások lesz. Tartományi hatókör eseményelőfizetések legfeljebb 50-re is.
+Az előzetes verzióban event tartományokban korlátozva, 1000 témakörök egy tartományon belül, és a egy tartományon belüli témakör 50 eseményfeliratkozások. Tartományi hatókör eseményelőfizetések 50 is korlátozódnak.
 
 ### <a name="data-plane"></a>Adatsík
 
-Az előzetes verzióban Event tartomány sebességű korlátozódik második betöltési arány, amely az egyéni témakörök korlátozottak száma összesen 5 000 ugyanazokat az eseményeket.
+Az előzetes verzióban event tartomány sebességű korlátozódik második betöltési arány, amely az egyéni témakörök korlátozottak száma összesen 5 000 ugyanazokat az eseményeket.
 
 ## <a name="pricing"></a>Díjszabás
 
-Az előzetes verzióban Event tartományok használandó azonos [díjszabás operations](https://azure.microsoft.com/pricing/details/event-grid/) , amely az Event Grid összes többi funkció használata.
+Az előzetes verzióban event tartományok használata azonos [díjszabás operations](https://azure.microsoft.com/pricing/details/event-grid/) , amely az Event Grid összes többi funkció használata.
 
 Műveletek azonos esemény tartományokban működik, mint az egyéni témaköröket is. Minden belépő esemény tartományhoz egy esemény-művelet, és minden egyes kézbesítési kísérlet egy esemény egy művelet.
 

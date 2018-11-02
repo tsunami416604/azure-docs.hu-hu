@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
-ms.openlocfilehash: bfbb72d6fd101932f00e12ad18ab079ec30a0d3a
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: c137f6cfdff9d043a656783f38ec9b894e644338
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818820"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913019"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Leküldéses értesítések hozzáadása Windows-alkalmazáshoz
 
@@ -37,21 +37,23 @@ Ha nem használja a letöltött gyorsútmutató-kiszolgálói projektet, szüks�
 
 ## <a name="register-your-app-for-push-notifications"></a>Alkalmazás regisztrálása leküldéses értesítésekhez
 
-A Microsoft Store az alkalmazás beküldése, majd konfigurálja a kiszolgálói projektet, integrálható a Windows értesítési szolgáltatása (WNS) leküldéses küldeni kell.
+A Microsoft Store az alkalmazás beküldése, majd konfigurálja a integrálni kell [Windows értesítési szolgáltatása (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) leküldéses küldéséhez.
 
 1. A Visual Studio Megoldáskezelőben kattintson a jobb gombbal az UWP-alkalmazásprojektet, kattintson a **Store** > **a Store alkalmazás hozzárendelése...** .
 
     ![Alkalmazás társítása a Microsoft Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
+
 2. A varázslóban kattintson **tovább**, jelentkezzen be Microsoft-fiókjával, adjon meg egy nevet az alkalmazáshoz tartozó **foglaljon le egy új nevet az alkalmazáshoz**, majd kattintson a **tartalék**.
 3. Az alkalmazásregisztráció sikeres létrehozása után válassza ki az új alkalmazás nevét, kattintson a **tovább**, és kattintson a **társítása**. Ez hozzáadja a Microsoft Store szükséges regisztrációs adatokat az alkalmazásjegyzékhez.
-4. Keresse meg a [Windows Dev Center](https://dev.windows.com/en-us/overview), jelentkezzen be Microsoft-fiókjával, ha az új alkalmazás regisztrálása a **saját alkalmazások**, majd bontsa ki a **szolgáltatások**  >   **Leküldéses értesítések**.
-5. Az a **leküldéses értesítések** kattintson **Live Services webhely** alatt **a Microsoft Azure Mobile Services**.
-6. A regisztrációs oldalon jegyezze fel az értéket **titkos alkalmazáskulcsok** és a **csomag biztonsági azonosítója**, amely ezután segítségével konfigurálhatja a mobil-háttéralkalmazás.
+4. Keresse meg a [alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/) , és jelentkezzen be Microsoft-fiókjával. Kattintson az előző lépésben hozzárendelt a Windows Store-alkalmazás.
+5. A regisztrációs oldalon jegyezze fel az értéket **titkos alkalmazáskulcsok** és a **csomag biztonsági azonosítója**, amely ezután segítségével konfigurálhatja a mobil-háttéralkalmazás.
 
     ![Alkalmazás társítása a Microsoft Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
 
    > [!IMPORTANT]
    > A titkos ügyfélkulcs és a csomag biztonsági azonosítója fontos biztonsági hitelesítő adatok. Ezeket az értékeket ne ossza meg senkivel, és ne terjessze az alkalmazással. A **alkalmazásazonosító** Microsoft Account hitelesítésének konfigurálása a titkos kulcs szolgál.
+
+[Az App Center](https://docs.microsoft.com/appcenter/sdk/push/uwp#prerequisite---register-your-app-for-windows-notification-services-wns) UWP-alkalmazások leküldéses értesítések konfigurálásával kapcsolatos utasításokat is tartalmaz.
 
 ## <a name="configure-the-backend-to-send-push-notifications"></a>A háttérrendszer küldhetők leküldéses értesítések konfigurálása
 

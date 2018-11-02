@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: 1918ed664a79a46f25cfc5162a28b311bea29cd8
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 18ff0e3fadad64f7bd7fe014a6dcec6a628ef1b9
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740450"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914549"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript-fejlesztői útmutató
 
@@ -76,7 +76,7 @@ Használatakor a [ `async function` ](https://developer.mozilla.org/docs/Web/Jav
 
 Az alábbi példában egy egyszerű függvényt, amely naplózza, hogy lett elindítva, és azonnal végrehajtásának befejeződése.
 
-``` javascript
+```javascript
 module.exports = async function (context) {
     context.log('JavaScript trigger function processed a request.');
 };
@@ -112,19 +112,24 @@ A JavaScript [kötések](functions-triggers-bindings.md) konfigurált, és a egy
 ### <a name="reading-trigger-and-input-data"></a>Olvasási eseményindítót és a bemeneti adatok
 Trigger és a bemeneti kötések (vazby prvku `direction === "in"`) háromféleképpen függvény által olvasható:
  - **_[Ajánlott]_  a függvénynek átadott paraméterek.** A függvény ugyanabban a sorrendben vannak meghatározva, a rendszer átad *function.json*. Vegye figyelembe, hogy a `name` meghatározott tulajdonság *function.json* nem kell egyeznie a paraméter nevével, bár azt kell.
-   ``` javascript
+ 
+   ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
+   
  - **Tagként az [ `context.bindings` ](#contextbindings-property) objektum.** Minden tag neve szerint a `name` meghatározott tulajdonság *function.json*.
-   ``` javascript
+ 
+   ```javascript
    module.exports = async function(context) { 
        context.log("This is myTrigger: " + context.bindings.myTrigger);
        context.log("This is myInput: " + context.bindings.myInput);
        context.log("This is myOtherInput: " + context.bindings.myOtherInput);
    };
    ```
+   
  - **A JavaScript használatával bemenetként [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) objektum.** Ez lényegében azonos passing bemenetei között meg paraméterként, de lehetővé teszi, hogy dinamikusan kezeli a bemenetek.
-   ``` javascript
+ 
+   ```javascript
    module.exports = async function(context) { 
        context.log("This is myTrigger: " + arguments[1]);
        context.log("This is myInput: " + arguments[2]);
@@ -137,7 +142,8 @@ Kimenetek (vazby prvku `direction === "out"`) számos módon a függvény által
 
 Kimeneti kötések adatok rendelhet a következő módszerek valamelyikével. Ezek a módszerek nem ötvözze.
 - **_[Több kimenetek ajánlott]_  Objektum visszaadása.** Egy aszinkron/Promise visszaadó függvény használatakor visszatérhessen hozzárendelt kimeneti adatokat tartalmazó objektumot. Az alábbi példában a kimeneti kötések neve "httpResponse" és "queueOutput" a *function.json*.
-  ``` javascript
+
+  ```javascript
   module.exports = async function(context) {
       let retMsg = 'Hello, world!';
       return {
@@ -148,10 +154,12 @@ Kimeneti kötések adatok rendelhet a következő módszerek valamelyikével. Ez
       };
   };
   ```
+  
   Egy szinkron függvényt használja, ha az objektum segítségével visszatérhet [ `context.done` ](#contextdone-method) (lásd a példát).
 - **_[Ajánlott egyetlen kimeneti]_  Közvetlenül érték visszaadása, és az $return kötés használatával.** Ez csak az aszinkron/Promise visszatérő függvények esetében működik. A példa [exportálása egy aszinkron függvény](#exporting-an-async-function). 
 - **Az értékeket rendel `context.bindings`**  közvetlenül a context.bindings rendelhet értéket.
-  ``` javascript
+
+  ```javascript
   module.exports = async function(context) {
       let retMsg = 'Hello, world!';
       context.bindings.httpResponse = {

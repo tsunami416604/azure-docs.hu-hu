@@ -1,6 +1,6 @@
 ---
-title: A felügyeleti megoldás fájl létrehozása az Azure-ban |} Microsoft Docs
-description: -Kezelési megoldás biztosítja, hogy az ügyfelek adhat hozzá az Azure környezetben csomagolt felügyeleti lehetőségeket.  Ez a cikk részletesen hogyan hozhat létre a saját környezetében használható felügyeleti megoldás, vagy szeretné elérhetővé tenni az ügyfelek számára.
+title: Hozzon létre egy felügyeleti megoldás fájlt az Azure-ban |} A Microsoft Docs
+description: Felügyeleti megoldások adja meg, hogy az ügyfelek adhat hozzá az Azure-környezet csomagolt felügyeleti forgatókönyvek.  Ez a cikk részletesen hogyan használható a saját környezetben felügyeleti megoldásokat hozhat létre, vagy szeretné elérhetővé tenni az ügyfelek számára.
 services: monitoring
 documentationcenter: ''
 author: bwren
@@ -15,32 +15,32 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 46e6ea791752045b0f1afbf1e83e43f498415e54
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 13da68f826f7077acec9a64d1aa0ea18c66be6ff
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887887"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914243"
 ---
-# <a name="creating-a-management-solution-file-in-azure-preview"></a>Felügyeleti megoldás fájl létrehozása az Azure (előzetes verzió)
+# <a name="creating-a-management-solution-file-in-azure-preview"></a>Hozzon létre egy felügyeleti megoldás fájlt az Azure-ban (előzetes verzió)
 > [!NOTE]
-> Ez az előzetes dokumentum megoldások létrehozásához Azure, amely jelenleg előzetes verziójúak. Az alábbiakban a séma van változhat.  
+> Ez a felügyeleti megoldások létrehozásához az Azure-ban, jelenleg előzetes verzióban érhető el előzetes dokumentációjában talál. Semmilyen sémát, az alábbiakban a változhat.  
 
-Az Azure-ban megoldások használják, mint [Resource Manager-sablonok](../azure-resource-manager/resource-manager-template-walkthrough.md).  A fő feladat hozhatnak létre megoldások hogyan van tanulási hogyan [sablon szerzői](../azure-resource-manager/resource-group-authoring-templates.md).  Ez a cikk ismerteti egyedi megoldások és a szokásos megoldás erőforrások konfigurálása használt sablonokat.
+Felügyeleti megoldások az Azure-ban megvalósított [Resource Manager-sablonok](../azure-resource-manager/resource-manager-template-walkthrough.md).  Megtudhatja, hogyan hozhat létre megoldásokat a fő feladat a tanulási útmutató [sablon készítése](../azure-resource-manager/resource-group-authoring-templates.md).  Ebben a cikkben használt megoldások és a tipikus megoldásokkal kapcsolatos forrásanyagok konfigurálása sablonok egyedi részleteit.
 
 
 ## <a name="tools"></a>Eszközök
 
-Megoldás fájlok szövegszerkesztőben használhatja, de javasoljuk, hogy a következő cikkekben ismertetett módon a Visual Studio vagy Visual Studio Code nyújtott szolgáltatásokat kihasználva.
+Bármilyen szövegszerkesztővel segítségével dolgozhat a megoldásfájlok, de javasoljuk, hogy az alábbi cikkekben leírtak szerint a Visual Studióban vagy a Visual Studio Code megadott kihasználva.
 
-- [Létrehozása és telepítése a Visual Studio használatával Azure erőforráscsoport-sablonok](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
-- [A Visual Studio Code Azure Resource Manager-sablonok használata](../azure-resource-manager/resource-manager-vs-code.md)
+- [Létrehozása és telepítése az Azure erőforráscsoport-sablonok a Visual Studio](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
+- [A Visual Studio Code-ban az Azure Resource Manager-sablonok használata](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
 
 
 
 
 ## <a name="structure"></a>struktúra
-A felügyeleti megoldás fájl alapvető szerkezete megegyezik egy [Resource Manager-sablon](../azure-resource-manager/resource-group-authoring-templates.md#template-format), amely a következőképpen történik.  A legfelső szintű elem és azok tartalmát, a megoldás az alábbi szakaszok mindegyikének ismerteti.  
+Az alapszintű struktúrát egy felügyeleti megoldás fájl pedig ugyanaz, mint egy [Resource Manager-sablon](../azure-resource-manager/resource-group-authoring-templates.md#template-format), amely a következőképpen történik.  A legfelső elemeket és azok tartalmát, a megoldás az alábbi szakaszokban mindegyike ismerteti.  
 
     {
        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -52,12 +52,12 @@ A felügyeleti megoldás fájl alapvető szerkezete megegyezik egy [Resource Man
     }
 
 ## <a name="parameters"></a>Paraméterek
-[Paraméterek](../azure-resource-manager/resource-group-authoring-templates.md#parameters) értékek, amelyekre szüksége van a felhasználótól a felügyeleti megoldás telepítésekor.  Standard paramétert, amely minden megoldás fog rendelkezni, és az adott megoldáshoz szükség szerint további paramétereket is hozzáadhat.  Hogyan felhasználók nyújtják a paraméterértékek való telepítésekor a megoldás függ az adott paraméter és a megoldás telepítésének módját.
+[Paraméterek](../azure-resource-manager/resource-group-authoring-templates.md#parameters) értékek, amelyekre szüksége van a felhasználótól való telepítésekor a felügyeleti megoldás.  Standard paraméterei, amely az összes megoldáshoz fog rendelkezni, és az adott megoldáshoz szükség szerint további paramétereket is hozzáadhat.  Hogyan felhasználók fog adja meg a paraméterértékeket a megoldás telepítéskor függ az adott paraméter, és hogyan a megoldás telepítése folyamatban van.
 
-Ha egy felhasználó [telepíti a felügyeleti megoldás](monitoring-solutions.md#install-a-management-solution) keresztül az Azure piactér vagy Azure gyors üzembe helyezési sablonokat azok megadását kéri a [Naplóelemzési munkaterületet, és az Automation-fiók](monitoring-solutions.md#log-analytics-workspace-and-automation-account).  Ezek használhatók a szabványos paraméterek értékeit feltöltéséhez.  Nem kéri a felhasználót, hogy közvetlenül a szabványos paraméterek értékének megadására, de meg kell minden további paraméterek értékének megadására.
+Ha egy felhasználó [telepíti a felügyeleti megoldás](monitoring-solutions.md#install-a-management-solution) keresztül az Azure Marketplace-en vagy az Azure gyorsindítási sablonok kiválasztása bekapcsolják a [Log Analytics-munkaterületet és Automation-fiók](monitoring-solutions.md#log-analytics-workspace-and-automation-account).  Ezek használhatók a standard szintű paraméterek értékeinek feltöltéséhez.  Közvetlenül a standard szintű paraméterek értékének megadására nem kéri a felhasználótól, de azokat a rendszer kéri a további paraméterek értékének megadására.
 
 
-Az alábbiakban látható egy minta paraméter.  
+Az alábbiakban látható egy példa a paraméter.  
 
     "startTime": {
         "type": "string",
@@ -67,34 +67,34 @@ Az alábbiakban látható egy minta paraméter.
             "category": "Schedule"
         }
 
-Az alábbi táblázatban a paraméter attribútumait.
+Az alábbi táblázatban a paraméter attribútumait ismerteti.
 
 | Attribútum | Leírás |
 |:--- |:--- |
-| type |A paraméter adattípusa. A bemeneti vezérlő jelenik meg a felhasználói adatok típusától függ.<br><br>logikai érték - a legördülő listából<br>karakterlánc - szövegmező<br>int - szövegmező<br>SecureString - jelszó mező<br> |
-| category |A paraméter nem kötelező kategóriát.  Paraméterek ugyanabba a kategóriába sorolhatók. |
-| vezérlő |További funkciók karakterlánc-paraméter.<br><br>datetime - Datetime vezérlő jelenik meg.<br>GUID - Guid-érték automatikusan jön létre, és a paraméter nem jelenik meg. |
-| leírás |A paraméter nem kötelező leírása.  Megjelenik az adatokat a buborékban megjelenő mellett a paraméter. |
+| type |A paraméter adattípusa. A bemeneti vezérlőelem jelenik meg a felhasználó az adatok típusától függ.<br><br>logikai – a legördülő listából<br>karakterlánc - szövegmező<br>int - szövegmező<br>SecureString - jelszó mező<br> |
+| category |A kategória nem kötelező paraméter.  Paraméterek ugyanahhoz a kategóriához vannak csoportosítva. |
+| Vezérlő |További funkciókat lekérdezésikarakterlánc-paramétereket.<br><br>dátum és idő – dátum és idő vezérlőelem jelenik meg.<br>GUID - érték a GUID azonosító automatikusan jön létre, és a paraméter nem jelenik meg. |
+| leírás |A paraméter szükséges, leírását.  Megjelenik egy információk buborékra a paraméter mellett. |
 
 ### <a name="standard-parameters"></a>Szabványos paraméterek
-Az alábbi táblázat a minden felügyeleti megoldások szabványos paraméterek.  Ezek az értékek fel van töltve, a felhasználó helyett adatkérés el a megoldás az Azure piactér vagy gyorsindítási sablonok telepítésekor.  Ha a megoldás telepítve van egy másik módszerrel a felhasználó értékeket kell adnia a számukra.
+Az alábbi táblázat felsorolja az összes felügyeleti megoldások szabványos paramétereit.  Ezeket az értékeket a felhasználó helyett adatkérés el a megoldás az Azure Marketplace vagy gyorsindítási sablonok telepítésekor a rendszer kitölti.  Ha a megoldás telepítve van egy másik módszerrel a felhasználó értékeket kell megadnia a számukra.
 
 > [!NOTE]
-> A felhasználói felület az Azure piactér és gyorsindítási sablonok által várt paraméterekkel a paraméterek nevei a táblában.  Ha különböző paraméternevek használja majd a felhasználót a rendszer kéri a számukra, és azok nem automatikusan tölti fel.
+> A felhasználói felület az Azure Marketplace-en és a gyorsindítási sablonok, a várt paraméter nevét a táblázatban.  Ha paraméterek különböző neveket használ majd a felhasználó felszólítást kap a számukra, és azok nem automatikusan kitöltődnek.
 >
 >
 
 | Paraméter | Típus | Leírás |
 |:--- |:--- |:--- |
-| Fióknév |karakterlánc |Azure Automation-fiók nevét. |
-| pricingTier |karakterlánc |A Naplóelemzési munkaterület- és Azure Automation-fiók tarifacsomagot. |
-| regionId |karakterlánc |Az Azure Automation-fiók területet. |
-| Megoldás neve |karakterlánc |A megoldás neve.  Ha a megoldás gyorsindítási sablonok keresztül telepíti, majd meg kell határozni megoldás neve paraméterként úgy határozhatja meg kell adnia egy felhasználói helyette igénylő karakterlánc. |
-| workspaceName |karakterlánc |Napló Analytics munkaterület neve. |
-| workspaceRegionId |karakterlánc |A Naplóelemzési munkaterület területet. |
+| Fióknév |sztring |Az Azure Automation-fiók nevét. |
+| pricingTier |sztring |Log Analytics-munkaterületet és az Azure Automation-fiók tarifacsomagját. |
+| regionId |sztring |Az Azure Automation-fiók régiója. |
+| megoldás neve |sztring |A megoldás nevére.  A megoldás gyorsindítási sablonok használatával helyez üzembe, majd meg kell határozni solutionName paraméterként így meghatározhatja, hogy inkább igénylő a felhasználó számára adjon meg egy karakterláncot. |
+| workspaceName |sztring |Log Analytics-munkaterület neve. |
+| workspaceRegionId |sztring |A Log Analytics-munkaterület régiója. |
 
 
-Az alábbiakban olvashatja a szabványos paraméterek, másolja és illessze be a megoldásfájlt szerkezete.  
+Következő, másolja és illessze be a megoldásfájlt a szabványos paraméterek struktúráját.  
 
     "parameters": {
         "workspaceName": {
@@ -130,12 +130,12 @@ Az alábbiakban olvashatja a szabványos paraméterek, másolja és illessze be 
     }
 
 
-Tekintse meg a paraméterértékeket a megoldás a szintaxissal más elemei **paraméter ("név" paraméternek)**.  Például a munkaterület neve eléréséhez használja **parameters('workspaceName')**
+Tekintse meg a paraméterértékeket a más elemek, a megoldás a szintaxissal **paraméter ("a paraméter neve")**.  Ha például a munkaterület nevének elérését, használja **parameters('workspaceName')**
 
 ## <a name="variables"></a>Változók
-[Változók](../azure-resource-manager/resource-group-authoring-templates.md#variables) szüksége lesz a megoldásról a további értékek.  Ezek az értékek nem érhetők el a felhasználó telepíti a megoldást.  A szerző biztosítania meg egy helyet, ahol értékeket, amelyeket az lehet, hogy több alkalommal a megoldás teljes kezelésére szolgálnak. El kell helyezni minden olyan értéket adott változók figyelésekor rögzített kódolási azokat a megoldáshoz a **erőforrások** elemet.  Ez a kód olvashatóbbá teszi és könnyen módosíthatja ezeket az értékeket az újabb verziókban.
+[Változók](../azure-resource-manager/resource-group-authoring-templates.md#variables) többi része a felügyeleti megoldást használni kívánt érték.  Ezek az értékek nem jelennek meg a megoldást telepítő felhasználónak a.  A szerző biztosít egy egyetlen helyen, ahol felügyelheti az értékeket, amelyeket lehet, hogy több alkalommal a megoldás teljes szolgálnak. El kell helyezni minden olyan értéket adott a változók helyett sorszámozás az azokat a megoldást a **erőforrások** elemet.  Ez olvashatóbbá teszi a kódot, és egyszerűen módosíthatja ezeket az értékeket későbbi verziókban.
 
-Az alábbiakban látható egy példa egy **változók** elem megoldások használt általános paraméterekkel.
+Az alábbiakban egy példát a egy **változók** megoldásokban használt szokásos paraméterekkel rendelkező elemet.
 
     "variables": {
         "SolutionVersion": "1.1",
@@ -145,9 +145,9 @@ Az alábbiakban látható egy példa egy **változók** elem megoldások haszná
         "AutomationApiVersion": "2015-10-31"
     },
 
-Tekintse meg a változó a megoldással a szintaxissal **változók ("változó neve")**.  Például a megoldás neve változó eléréséhez használja **variables('SolutionName')**.
+Tekintse meg a változó értéke a szintaxissal a megoldáson keresztül **változók ("változó neve")**.  Ha például SolutionName változó eléréséhez használja **variables('SolutionName')**.
 
-Azt is megadhatja, komplex változók értékeinek beállítja, hogy több.  Ezek akkor igazán hasznosak-kezelési megoldásokban ahol több különböző típusú erőforrások tulajdonság meghatározásakor.  Például sikerült átalakítása a megoldás változók a következőhöz fent látható.
+Azt is megadhatja, összetett változók értékeinek beállítja, hogy több.  Az alábbiak különösen hasznos lehet az eszközfelügyeleti megoldások, ahol több különböző típusú erőforrások tulajdonság határoz.  Például akkor lehetett átalakítása a megoldás változók, a következőhöz fent látható.
 
     "variables": {
         "Solution": {
@@ -159,21 +159,21 @@ Azt is megadhatja, komplex változók értékeinek beállítja, hogy több.  Eze
         "AutomationApiVersion": "2015-10-31"
     },
 
-Ebben az esetben hivatkozik, a megoldással a szintaxissal változók értékeinek **variables('variable name').property**.  Például a megoldás neve változó eléréséhez használja **variables('Solution'). Név**.
+Ebben az esetben tekintse meg a változó értéke a szintaxissal a megoldáson keresztül **variables('variable name').property**.  Például a megoldás neve változó eléréséhez használja **variables('Solution'). Név**.
 
 ## <a name="resources"></a>További források
-[Erőforrások](../azure-resource-manager/resource-group-authoring-templates.md#resources) határozza meg a különböző erőforrások, amelyek a felügyeleti megoldás telepíteni és konfigurálni fog.  Ez a sablon, a legnagyobb, és a legösszetettebb része lesz.  A struktúra és a teljes leírását az erőforrás-elemek [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md#resources).  Különböző erőforrások, amelyek általában meghatározzák részletes leírást talál további cikkeit a jelen dokumentációban. 
+[Erőforrások](../azure-resource-manager/resource-group-authoring-templates.md#resources) határozza meg a különböző erőforrások, amelyek a felügyeleti megoldás telepíteni és konfigurálni fog.  Ez a sablon a legnagyobb és legösszetettebb része lesz.  A struktúra és a teljes leírását az erőforrás-elemek is igénybe [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md#resources).  Különböző erőforrásokhoz, amelyek általában határoz más cikkek ebben a dokumentációban részletes leírást talál. 
 
 
 ### <a name="dependencies"></a>Függőségek
-A **dependsOn** elem azt adja meg a [függőségi](../azure-resource-manager/resource-group-define-dependencies.md) egy másik erőforrás.  A megoldás telepítésekor egy erőforrás nem jön létre, amíg az összes függősége létrejött.  A megoldás lehet például [runbookot](monitoring-solutions-resources-automation.md#runbooks) használatával telepített egy [erőforrás feladat](monitoring-solutions-resources-automation.md#automation-jobs).  A feladat erőforrás lenne erőforrástól függ a runbook győződjön meg arról, hogy a runbook létrehozása, a feladat létrehozása előtt.
+A **dependsOn** elem azt határozza meg a [függőségi](../azure-resource-manager/resource-group-define-dependencies.md) egy másik erőforrás.  Telepítette a megoldást, ha egy erőforrás nem jön létre, mindaddig, amíg a létrehozott összes függőségét.  A megoldás Előfordulhat, hogy például [elindít egy runbookot](monitoring-solutions-resources-automation.md#runbooks) amikor segítségével telepítve van egy [erőforrás feladat](monitoring-solutions-resources-automation.md#automation-jobs).  A feladat erőforrás lenne, győződjön meg arról, hogy a runbook létrejött-e, mielőtt a feladat jön létre, a runbook erőforrástól függ-e.
 
-### <a name="log-analytics-workspace-and-automation-account"></a>A Naplóelemzési munkaterület és Automation-fiók
-Megoldások szükséges egy [Naplóelemzési munkaterület](../log-analytics/log-analytics-manage-access.md) nézeteket tartalmaz, és egy [Automation-fiók](../automation/automation-security-overview.md#automation-account-overview) magában foglalja a runbookok és kapcsolódó erőforrások.  Ezek előtt elérhetőnek kell lennie a megoldás az erőforrások jönnek létre, és nem lehet megadni, a megoldás magát.  A felhasználó fog [adjon meg egy munkaterület és a fiók](monitoring-solutions.md#log-analytics-workspace-and-automation-account) amikor azok a megoldás üzembe helyezéséhez, de a szerző vegye figyelembe a következő szempontokat.
+### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics-munkaterületet és Automation-fiók
+Felügyeleti megoldások szükséges egy [Log Analytics-munkaterület](../log-analytics/log-analytics-manage-access.md) nézeteket tartalmaznak, és a egy [Automation-fiók](../automation/automation-security-overview.md#automation-account-overview) a runbookok és kapcsolódó erőforrásokat tartalmaznak.  Ezek előtt kell lenniük az erőforrásokat a megoldás jönnek létre, és nem lehet megadni, magát a megoldásban.  A felhasználó fog [adja meg a munkaterület és fiók](monitoring-solutions.md#log-analytics-workspace-and-automation-account) amikor azokat üzembe helyezheti megoldását, de a szerző, vegye figyelembe a következőket.
 
 
-## <a name="solution-resource"></a>Megoldás erőforrás
-Minden egyes megoldáshoz szükségesek egy erőforrás bejegyzés a **erőforrások** elem, amely meghatározza a megoldás magát.  Ez lesz az olyan típusú **Microsoft.OperationsManagement/solutions** és az alábbi szerkezettel rendelkezik. Ez magában foglalja [szabványos paraméterek](#parameters) és [változók](#variables) , amely általában meghatározásához használják a megoldás tulajdonságait.
+## <a name="solution-resource"></a>Megoldás-erőforrás
+Minden megoldáshoz egy erőforrás bejegyzést a **erőforrások** elem, amely meghatározza a megoldás magát.  Ez a típusú lesz **Microsoft.OperationsManagement/solutions** és az alábbi struktúrával rendelkeznek. Ez magában foglalja [szabványos paraméterek](#parameters) és [változók](#variables) , amelyek jellemzően a megoldás tulajdonságainak definiálásához.
 
 
     {
@@ -207,41 +207,41 @@ Minden egyes megoldáshoz szükségesek egy erőforrás bejegyzés a **erőforr�
 
 
 ### <a name="dependencies"></a>Függőségek
-A megoldás erőforrás rendelkeznie kell egy [függőségi](../azure-resource-manager/resource-group-define-dependencies.md) minden más erőforráshoz, a megoldás, mert azokat léteznie kell a megoldás hozhatók létre.  Az egyes erőforrásokra vonatkozó bejegyzés hozzáadásával ehhez a **dependsOn** elemet.
+A megoldás erőforrásnak rendelkeznie kell egy [függőségi](../azure-resource-manager/resource-group-define-dependencies.md) minden egyéb erőforrás a megoldásban, mivel a megoldás létrehozása előtt léteznie kell.  Egy bejegyzés az egyes erőforrások hozzáadásával ehhez a **dependsOn** elemet.
 
 ### <a name="properties"></a>Tulajdonságok
-A megoldás erőforrás tulajdonságokkal rendelkezik, az alábbi táblázatban.  Ez magában foglalja az erőforrások hivatkozik, és szerepelnie kell a megoldás, amely meghatározza, hogyan kezeli az erőforrás a megoldás telepítése után.  A megoldás az egyes erőforrások kell szerepelnie, akár a **referencedResources** vagy a **containedResources** tulajdonság.
+A megoldás erőforrás tulajdonságokkal rendelkezik, az alábbi táblázatban.  Ez magában foglalja az erőforrások hivatkozik, és a megoldás, amely meghatározza, hogyan kezeli az erőforrás a megoldás telepítése után által tartalmazott.  A megoldás minden egyes erőforrás vagy a szerepelnie kell a **referencedResources** vagy a **containedResources** tulajdonság.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| workspaceResourceId |A Naplóelemzési munkaterület formájában azonosító  *<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<Munkaterületnevet\>*. |
-| referencedResources |Az erőforrások listájához a a megoldás, nem lehet eltávolítani, a megoldás eltávolításakor. |
-| containedResources |Az erőforrások listájához a a megoldás, amely el kell távolítani a megoldás eltávolításakor. |
+| workspaceResourceId |A képernyőn a Log Analytics-munkaterület azonosítója  *<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<Munkaterületnév\>*. |
+| referencedResources |A megoldás, nem lehet eltávolítani, ha a megoldás a rendszer eltávolítja az erőforrások listájában. |
+| containedResources |A megoldás, amely a megoldás eltávolításakor el kell távolítani az erőforrások listájában. |
 
-A fenti példa egy megoldást egy runbookot, egy ütemezést, és tekintse meg a rendszer.  Az ütemezés és a runbook *hivatkozott* a a **tulajdonságok** elem, ezért nem eltávolítva a megoldás eltávolításakor.  A nézet *tartalmazott* , a rendszer eltávolítja a megoldás eltávolításakor.
+A fenti példában van egy runbookot, egy ütemezés és a nézet a megoldás.  Az ütemezés és a runbook *hivatkozott* a a **tulajdonságok** elemet, így azok nem törlődnek a megoldás eltávolításakor.  A nézet *tartalmazott* , a rendszer eltávolítja a megoldás eltávolításakor.
 
 ### <a name="plan"></a>Felkészülés
 A **terv** entitás a megoldás erőforrás tulajdonságokkal rendelkezik, az alábbi táblázatban.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| név |A megoldás neve. |
-| verzió: |A megoldás a szerző által meghatározott verziója. |
+| név |A megoldás nevére. |
+| version |A megoldás a szerző által meghatározott verziója. |
 | termék |A megoldás azonosításához egyedi karakterlánc. |
-| publisher |A megoldás közzétevője. |
+| publisher |Adott megoldás kiadójával. |
 
 
 
 ## <a name="sample"></a>Sample
-A következő helyeken megoldás erőforrással megoldásfájlok mintáit tekintheti meg.
+Minták megoldás fájlnak a megoldás erőforrás a következő helyeken tekintheti meg.
 
 - [Automation-erőforrások](monitoring-solutions-resources-automation.md#sample)
-- [Keresés és a riasztás erőforrások](monitoring-solutions-resources-searches-alerts.md#sample)
+- [Keresés és riasztás erőforrás](monitoring-solutions-resources-searches-alerts.md#sample)
 
 
 ## <a name="next-steps"></a>További lépések
-* [Adja hozzá a mentett keresések és riasztások](monitoring-solutions-resources-searches-alerts.md) a kezelési megoldással.
-* [Nézetek hozzáadása](monitoring-solutions-resources-views.md) a kezelési megoldással.
-* [Adja hozzá a runbookok és egyéb automatizálási erőforrások](monitoring-solutions-resources-automation.md) a kezelési megoldással.
-* További részleteit [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md).
-* Keresési [Azure gyors üzembe helyezési sablonokat](https://azure.microsoft.com/documentation/templates) példákért különböző Resource Manager-sablonok.
+* [Adja hozzá a mentett keresések és a riasztások](monitoring-solutions-resources-searches-alerts.md) a felügyeleti megoldáshoz.
+* [Nézetek hozzáadása](monitoring-solutions-resources-views.md) a felügyeleti megoldáshoz.
+* [Adja hozzá a runbookok és a más Automation-erőforrások](monitoring-solutions-resources-automation.md) a felügyeleti megoldáshoz.
+* Ismerje meg az adatait [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md).
+* Keresés [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates) minták a különböző Resource Manager-sablonok.

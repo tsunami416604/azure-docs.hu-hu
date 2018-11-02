@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: f55f81d1e28a7626dfe00f6bea349bf74e3a1d24
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 8cca69109f07cbcffe2a5d796262e51fc9233cc5
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092774"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914685"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Hogyan üzembe helyezni az Azure figyeli, hogy virtuális gépeket (előzetes verzió)
 Ez a cikk ismerteti, hogyan állítható be az Azure Monitor az Azure-beli virtuális gépek operációs rendszer állapotának figyelésére és felderítése és képezze le az alkalmazás függőségeit, amelyek rajtuk üzemeltethető virtuális gépek számára.  
@@ -355,12 +355,12 @@ Az alábbi táblázat felsorolja a megadott szabályzatdefiníciók.
 |Name (Név) |Leírás |Típus |  
 |-----|------------|-----|  
 |[Előzetes verzió]: a virtuális gépek az Azure Monitor engedélyezése |Az Azure Monitor engedélyezése a virtuális gépek (VM) a megadott hatókör (felügyeleti csoport, előfizetéshez vagy erőforráscsoportot). Log Analytics-munkaterület szükséges paraméterként. |Kezdeményezés |  
-|[Előzetes verzió]: naplózási függőségi ügynök telepítése – virtuális gép rendszerkép (OS) listán nem szereplő |Jelentések virtuális gépek nem megfelelő, ha a virtuális gép rendszerkép (OS) nem szerepel a listában meghatározott, és az ügynök nincs telepítve. |Szabályzat |  
-|[Előzetes verzió]: naplózási Log Analytics ügynök telepítése – virtuális gép rendszerkép (OS) listán nem szereplő |Jelentések virtuális gépek nem megfelelő, ha a virtuális gép rendszerkép (OS) nem szerepel a listában meghatározott, és az ügynök nincs telepítve. |Szabályzat |  
-|[Előzetes verzió]: függőségi ügynök Linux rendszerű virtuális gépek üzembe helyezése |Ha az ügynök nincs telepítve, és a virtuális gép rendszerkép (OS) a definiált listában függőségi ügynök telepítése Linux rendszerű virtuális gépek. |Szabályzat |  
-|[Előzetes verzió]: a függőségi ügynököt Windows virtuális gépek üzembe helyezése |Ha a virtuális gép rendszerkép (OS) a definiált listában, és az ügynök nincs telepítve, telepítse a függőségi ügynököt Windows virtuális. |Szabályzat |  
-|[Előzetes verzió]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése |Ha az ügynök nincs telepítve, és a virtuális gép rendszerkép (OS) a definiált listában üzembe helyezése a Log Analytics-ügynököket Linux rendszerű virtuális gépekhez. |Szabályzat |  
-|[Előzetes verzió]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése |Log Analytics ügynök Windows virtuális gépek üzembe helyezése, ha a virtuális gép rendszerkép (OS) a definiált listában, és az ügynök nincs telepítve. |Szabályzat |  
+|[Előzetes verzió]: naplózási függőségi ügynök telepítése – virtuális gép rendszerkép (OS) listán nem szereplő |A virtuális gépek nem megfelelőként való jelentése, ha a VM-lemezkép (operációs rendszer) nem szerepel a definiált listában, és az ügynök nincs telepítve. |Szabályzat |  
+|[Előzetes verzió]: naplózási Log Analytics ügynök telepítése – virtuális gép rendszerkép (OS) listán nem szereplő |A virtuális gépek nem megfelelőként való jelentése, ha a VM-lemezkép (operációs rendszer) nem szerepel a definiált listában, és az ügynök nincs telepítve. |Szabályzat |  
+|[Előzetes verzió]: függőségi ügynök Linux rendszerű virtuális gépek üzembe helyezése |A linuxos virtuális gépekhez készült Dependency Agent telepítése, ha a VM-lemezkép (operációs rendszer) szerepel a definiált listában, és az ügynök nincs telepítve. |Szabályzat |  
+|[Előzetes verzió]: a függőségi ügynököt Windows virtuális gépek üzembe helyezése |A windowsos virtuális gépekhez készült Dependency Agent telepítése, ha a VM-lemezkép (operációs rendszer) szerepel a definiált listában, és az ügynök nincs telepítve. |Szabályzat |  
+|[Előzetes verzió]: Log Analytics-ügynök Linux rendszerű virtuális gépek üzembe helyezése |A linuxos virtuális gépekhez készült Log Analytics Agent telepítése, ha a VM-lemezkép (operációs rendszer) nem szerepel a definiált listában, és az ügynök nincs telepítve. |Szabályzat |  
+|[Előzetes verzió]: Log Analytics-ügynököket Windows virtuális gépek üzembe helyezése |A windowsos virtuális gépekhez készült Log Analytics Agent telepítése, ha a VM-lemezkép (operációs rendszer) nem szerepel a definiált listában, és az ügynök nincs telepítve. |Szabályzat |  
 
 Önálló házirend (amelyet a kezdeményezés nem tartalmaz) 
 

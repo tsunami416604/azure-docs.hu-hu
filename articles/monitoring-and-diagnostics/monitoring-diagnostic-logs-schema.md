@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 3b665ed0539a41ffeca87511154f3607a57cff4a
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 17efbfffde68208b76120d449f4e1d70e843fc7d
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116193"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914345"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Támogatott szolgáltatások, a sémák és a kategóriákat, az Azure diagnosztikai naplók
 
@@ -92,9 +92,11 @@ A séma az erőforrás-diagnosztikai naplók az erőforrás- és naplózási kat
 |Microsoft.Batch/batchAccounts|ServiceLog|Szolgáltatás naplói|
 |Microsoft.Cdn/profiles/endpoints|CoreAnalytics|A végpont metrikáinak (például sávszélesség, kimenő forgalom, stb.) beolvasása|
 |Microsoft.ClassicNetwork/networksecuritygroups|Hálózati biztonsági csoportbeli szabályfolyamat-esemény|Hálózati biztonsági csoportbeli szabályfolyamat-esemény|
-|Microsoft.CognitiveServices/accounts|Naplózás|Naplózás|
+|Microsoft.CognitiveServices/accounts|Naplózás|Naplók|
+|Microsoft.CognitiveServices/accounts|Operace RequestResponse|Kérelem- és válasznaplók|
 |Microsoft.ContainerService/managedClusters|kube-apiserver|Kubernetes API-kiszolgálóhoz|
 |Microsoft.ContainerService/managedClusters|kube-tartományvezérlő-kezelő|Kubernetes-vezérlő kezelője|
+|Microsoft.ContainerService/managedClusters|fürt-méretező|Kubernetes-fürt méretező|
 |Microsoft.ContainerService/managedClusters|kube-ütemező|Kubernetes-ütemező|
 |Microsoft.ContainerService/managedClusters|alkalmazásőr|Hitelesítési Webhook|
 |Microsoft.CustomerInsights/hubs|Listázásával|Listázásával|
@@ -105,7 +107,7 @@ A séma az erőforrás-diagnosztikai naplók az erőforrás- és naplózási kat
 |Microsoft.DataLakeAnalytics/accounts|Kérelmek|Kérelmekről készült naplók|
 |Microsoft.DataLakeStore/accounts|Naplózás|Naplók|
 |Microsoft.DataLakeStore/accounts|Kérelmek|Kérelmekről készült naplók|
-|Microsoft.DBforMySQL/servers|MySqlSlowLogs|MySQL lassú lekérdezések naplói|
+|Microsoft.DBforMySQL/servers|MySqlSlowLogs|MySQL-kiszolgáló naplóit|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|PostgreSQL-kiszolgáló naplóit|
 |Microsoft.Devices/IotHubs|Kapcsolatok|Kapcsolatok|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|Eszköztelemetria|
@@ -128,6 +130,14 @@ A séma az erőforrás-diagnosztikai naplók az erőforrás- és naplózási kat
 |Microsoft.EventHub/namespaces|ArchiveLogs|Naplói archiválása|
 |Microsoft.EventHub/namespaces|OperationalLogs|Műveleti naplók|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|Automatikus skálázási naplók|
+|Microsoft.Insights/AutoscaleSettings|AutoscaleEvaluations|Automatikus skálázás kiértékelései|
+|Microsoft.Insights/AutoscaleSettings|AutoscaleScaleActions|Automatikus skálázás skálázási műveletei|
+|Microsoft.IoTSpaces/Graph|Nyomkövetés|Nyomkövetés|
+|Microsoft.IoTSpaces/Graph|Működik|Működik|
+|Microsoft.IoTSpaces/Graph|Naplózás|Naplózás|
+|Microsoft.IoTSpaces/Graph|UserDefinedFunction|UserDefinedFunction|
+|Microsoft.IoTSpaces/Graph|Bejövő forgalom|Bejövő forgalom|
+|Microsoft.IoTSpaces/Graph|Kimenő forgalom|Kimenő forgalom|
 |Microsoft.KeyVault/vaults|AuditEvent|Naplók|
 |Microsoft.Logic/workflows|Kontejner Typu|Munkafolyamat futásidejű diagnosztikai eseményei|
 |Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|Integrációs fiók követési eseményei|
@@ -136,6 +146,8 @@ A séma az erőforrás-diagnosztikai naplók az erőforrás- és naplózási kat
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|A terheléselosztó figyelmeztetési események betöltése|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|A Load Balancer mintavételi egészségügyi állapota|
 |Microsoft.Network/publicIPAddresses|DDoSProtectionNotifications|A DDoS protection-értesítések|
+|Microsoft.Network/publicIPAddresses|DDoSMitigationFlowLogs|A rendszer a DDoS-kockázatcsökkentést döntéseket hozhat|
+|Microsoft.Network/publicIPAddresses|DDoSMitigationReports|A DDoS-megoldások jelentések|
 |Microsoft.Network/virtualNetworks|VMProtectionAlerts|Virtuális gép védelmi riasztások|
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|Application Gateway – hozzáférési napló|
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|Application Gateway teljesítmény-naplók|
@@ -151,6 +163,8 @@ A séma az erőforrás-diagnosztikai naplók az erőforrás- és naplózási kat
 |Microsoft.Network/virtualNetworkGateways|P2SDiagnosticLog|P2S-diagnosztikai naplók|
 |Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|A TRAFFIC Manager mintavételi egészségügyi eredményeket esemény|
 |Microsoft.Network/expressRouteCircuits|PeeringRouteLog|Társviszony-létesítési útvonal Táblanaplók|
+|Microsoft.Network/frontdoors|FrontdoorAccessLog|Frontdoor hozzáférési napló|
+|Microsoft.Network/frontdoors|FrontdoorWebApplicationFirewallLog|Frontdoor webes alkalmazás tűzfal naplója|
 |Microsoft.PowerBIDedicated/capacities|Adatbázismotor|Adatbázismotor|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Az Azure Backup-jelentésadatok|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Az Azure Site Recovery-feladatok|
@@ -173,10 +187,21 @@ A séma az erőforrás-diagnosztikai naplók az erőforrás- és naplózási kat
 |Microsoft.Sql/servers/databases|Holtpontok|Holtpontok|
 |Microsoft.Sql/servers/databases|Naplózás|Naplók|
 |Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|Az SQL biztonsági esemény naplózása|
-|Microsoft.Sql/servers/databases|SqlDw_Requests|Az SQL DW-kérelmek|
-|Microsoft.Sql/servers/databases|SqlDw_RequestSteps|Az SQL DW-kérelem lépések|
+|Microsoft.Sql/servers/databases|DmsWorkers|A DMS feldolgozók|
+|Microsoft.Sql/servers/databases|ExecRequests|Exec kérelmek|
+|Microsoft.Sql/servers/databases|RequestSteps|Kérelem lépések|
+|Microsoft.Sql/servers/databases|SqlRequests|SQL-kérelmek|
+|Microsoft.Sql/servers/databases|Várakozások|Várakozások|
+|Microsoft.Sql/managedInstances|ResourceUsageStats|Erőforrás-használati statisztikáit|
+|Microsoft.Sql/managedInstances|SQLSecurityAuditEvents|Az SQL biztonsági esemény naplózása|
+|Microsoft.Sql/managedInstances/databases|SQLInsights|SQL-megállapítások|
+|Microsoft.Sql/managedInstances/databases|QueryStoreRuntimeStatistics|Query Store futásidejű statisztikája|
+|Microsoft.Sql/managedInstances/databases|QueryStoreWaitStatistics|Query Store várakozási statisztika|
+|Microsoft.Sql/managedInstances/databases|Hibák|Hibák|
 |Microsoft.StreamAnalytics/streamingjobs|Futtatási|Futtatási|
 |Microsoft.StreamAnalytics/streamingjobs|Szerzői műveletek|Szerzői műveletek|
+|Microsoft.Web/Sites|FunctionExecutionLogs|Függvény-végrehajtási naplók|
+|Microsoft.Web/Sites/slots|FunctionExecutionLogs|Függvény-végrehajtási naplók|
 
 ## <a name="next-steps"></a>További lépések
 

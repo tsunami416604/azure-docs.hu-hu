@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 11/01/2018
 ms.author: babanisa
-ms.openlocfilehash: a9bffe148339bfac89796405b771e9c2816eb0de
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: fe13c424a3da91e92a04cceb807b98fd1ffe4db0
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741521"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914039"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid biztonsági és hitelesítés 
 
@@ -191,15 +191,83 @@ Az utolsó három műveletek potenciálisan titkos információt, amely lekérde
 
 ### <a name="built-in-roles"></a>Beépített szerepkörök
 
-Event Grid két beépített szerepkörrel biztosít esemény-előfizetések kezeléséhez. Ezek a szerepkörök felelnek `EventSubscription Contributor (Preview)` és `EventSubscription Reader (Preview)`. Ezek fontosak, esemény-tartományok végrehajtása során. A megadott műveleteivel kapcsolatos további információkért lásd: [esemény tartomány - hozzáférés-kezelés](event-domains.md#access-management).
+Event Grid két beépített szerepkörrel biztosít esemény-előfizetések kezeléséhez. Implementálásakor fontosak [esemény tartományok](event-domains.md) , mivel a felhasználóknak szükségük van a esemény tartományban témákra iratkozhat fel az engedélyeket biztosítanak. Ezek a szerepkörök eseményelőfizetések összpontosítanak, és ne adjon hozzáférést műveleteket, mint például a témakörök létrehozására.
 
 Is [ezeket a szerepköröket hozzárendelni egy felhasználóhoz vagy csoporthoz](../role-based-access-control/quickstart-assign-role-user-portal.md).
+
+**EventGrid EventSubscription Közreműködője (minta)**: Event Grid-előfizetés műveletek kezelése
+
+```json
+[
+  {
+    "Description": "Lets you manage EventGrid event subscription operations.",
+    "IsBuiltIn": true,
+    "Id": "428e0ff05e574d9ca2212c70d0e0a443",
+    "Name": "EventGrid EventSubscription Contributor (Preview)",
+    "IsServiceRole": false,
+    "Permissions": [
+      {
+        "Actions": [
+          "Microsoft.Authorization/*/read",
+          "Microsoft.EventGrid/eventSubscriptions/*",
+          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
+          "Microsoft.EventGrid/locations/eventSubscriptions/read",
+          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
+          "Microsoft.Insights/alertRules/*",
+          "Microsoft.Resources/deployments/*",
+          "Microsoft.Resources/subscriptions/resourceGroups/read",
+          "Microsoft.Support/*"
+        ],
+        "NotActions": [],
+        "DataActions": [],
+        "NotDataActions": [],
+        "Condition": null
+      }
+    ],
+    "Scopes": [
+      "/"
+    ]
+  }
+]
+```
+
+**EventGrid EventSubscription olvasója (minta)**: olvassa el az Event Grid-előfizetések
+
+```json
+[
+  {
+    "Description": "Lets you read EventGrid event subscriptions.",
+    "IsBuiltIn": true,
+    "Id": "2414bbcf64974faf8c65045460748405",
+    "Name": "EventGrid EventSubscription Reader (Preview)",
+    "IsServiceRole": false,
+    "Permissions": [
+      {
+        "Actions": [
+          "Microsoft.Authorization/*/read",
+          "Microsoft.EventGrid/eventSubscriptions/read",
+          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
+          "Microsoft.EventGrid/locations/eventSubscriptions/read",
+          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
+          "Microsoft.Resources/subscriptions/resourceGroups/read"
+        ],
+        "NotActions": [],
+        "DataActions": [],
+        "NotDataActions": []
+       }
+    ],
+    "Scopes": [
+      "/"
+    ]
+  }
+]
+```
 
 ### <a name="custom-roles"></a>Egyéni szerepkörök
 
 Ha adja meg az engedélyeket, amelyek eltérnek a beépített szerepkörök van szüksége, létrehozhat egyéni szerepköröket is.
 
-Az alábbiakban a minta Event Grid szerepkör-definíciók, amelyek lehetővé teszik a felhasználók számára a különböző műveleteket.
+Az alábbiakban a minta Event Grid szerepkör-definíciók, amelyek lehetővé teszik a felhasználók számára a különböző műveleteket. Ezek egyéni szerepkörök nem azonosak a beépített szerepkörök, mivel azok csak az esemény-előfizetések, mint szélesebb körű hozzáférés biztosítása.
 
 **EventGridReadOnlyRole.json**: engedélyezése csak a csak olvasható műveletekhez.
 

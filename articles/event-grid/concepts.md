@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2a288cdb96a1e1ff7e261d4782f7e02aee12868f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 89f0f5847f157cff59a57f7958508e4f260355c3
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621201"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747558"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Az Azure Event Griddel kapcsolatos fogalmak
 
@@ -58,9 +58,17 @@ Az előfizetés-létrehozási példákért lásd:
 
 További információ az aktuális event grid-előfizetések első: [lekérdezés Event Grid-előfizetések](query-event-subscriptions.md).
 
+## <a name="event-subscription-expiration"></a>Esemény-előfizetés lejárta
+
+A [Event Grid-bővítmény](/cli/azure/azure-cli-extensions-list) az Azure parancssori felület lehetővé teszi, hogy állítsa be a lejárati dátum, amikor egy esemény-előfizetés létrehozása. Ha a REST API-t használ, használja a `api-version=2018-09-15-preview`
+
+Az esemény-előfizetés ezt követően automatikusan lejárt. Beállíthatja egy esemény-előfizetésekhez, amely csak korlátozott ideig szükséges lejárati idejét, és nem kívánja ezen előfizetések törlése foglalkoznia. Például amikor a forgatókönyv teszteléséhez egy esemény-előfizetést hoz létre, érdemes beállíthatja egy lejárati idejét. 
+
+Egy példa egy lejárati beállítása: [előfizetés a speciális szűrők](how-to-filter-events.md#subscribe-with-advanced-filters).
+
 ## <a name="event-handlers"></a>Eseménykezelők
 
-Event Grid szempontból egy eseménykezelő a hely, ahol a rendszer. A kezelő néhány további művelet feldolgozni az eseményt vesz igénybe. Event Grid több kezelő típusokat támogatja. Használhatja a kezelő egy támogatott Azure-szolgáltatás vagy a saját webhook. Kezelő típusától függően az Event Grid követi az események kézbesítésének garantálása érdekében használható különböző mechanizmusokat. A HTTP-webhook eseménykezelőket, az esemény mindaddig, amíg a kezelő állapotkódot adja vissza újrapróbált `200 – OK`. Az Azure Storage-üzenetsor az események megismétlődnek mindaddig, amíg a várólista szolgáltatás nem tudja sikeresen feldolgozni az üzenetet leküldéses az üzenetsorba.
+Event Grid szempontból egy eseménykezelő a hely, ahol a rendszer. A kezelő néhány további művelet feldolgozni az eseményt vesz igénybe. Event Grid számos kezelő különböző támogatja. Használhatja a kezelő egy támogatott Azure-szolgáltatás vagy a saját webhook. Kezelő típusától függően az Event Grid követi az események kézbesítésének garantálása érdekében használható különböző mechanizmusokat. A HTTP-webhook eseménykezelőket, az esemény mindaddig, amíg a kezelő állapotkódot adja vissza újrapróbált `200 – OK`. Az Azure Storage-üzenetsor az események megismétlődnek mindaddig, amíg a Queue szolgáltatás sikeresen feldolgozza az üzenetet leküldéses az üzenetsorba.
 
 A támogatott Event Grid-kezelők bármelyikét megvalósításával kapcsolatos további információkért lásd: [eseménykezelők az Azure Event Grid](event-handlers.md).
 
@@ -74,7 +82,7 @@ Event Grid nem győződjön meg arról, hogy az előfizető végpontja egy esem�
 
 ## <a name="batching"></a>Kötegelés
 
-Egy egyéni témakör használatakor az események mindig közzé kell tenni a tömbben. Ez lehet egy alacsony átviteli sebességű forgatókönyveket, a kötegelt azonban nagy mennyiségű usecases, javasoljuk, hogy a batch együttes száma több esemény közzététele nagyobb hatékonyság elérése érdekében. Kötegek legfeljebb 1 MB lehet. Minden esemény még mindig nem lehet hosszabb 64 KB-os.
+Egy egyéni témakör használatakor az események mindig közzé kell tenni a tömbben. Ez lehet egy kötegelt, az alacsony átviteli sebességű forgatókönyvek, azonban a nagy mennyiségű használati esetek, azt javasoljuk, hogy több batch együtt kiszolgálónként események közzététele nagyobb hatékonyság elérése érdekében. Kötegek legfeljebb 1 MB lehet. Minden esemény még mindig nem lehet 64 KB-nál nagyobb.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -5,23 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: reference
-ms.date: 05/11/2018
+ms.date: 10/29/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: b4407ac6b7a0d9fdbf52b84fb94223c32868f0c5
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 9f82deaa3ca048342c3501e111470eaea2ed9437
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983852"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748408"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Az Azure Active Directory B2B-együttműködés – gyakori kérdések
 
 Ezek az Azure Active Directory (Azure AD)-vállalatközi (B2B) együttműködés kapcsolatos gyakori kérdések (GYIK) rendszeres időközönként frissülnek az új témaköröket tartalmazza.
 
-### <a name="can-we-customize-our-sign-in-page-so-it-is-more-intuitive-for-our-b2b-collaboration-guest-users"></a>Hogy testre a bejelentkezési oldalát, hogy a B2B együttműködési vendégfelhasználók számára intuitívabb legyen?
+### <a name="can-we-customize-our-sign-in-page-so-its-more-intuitive-for-our-b2b-collaboration-guest-users"></a>Hogy testre a bejelentkezési oldalát, hogy a B2B együttműködési vendégfelhasználók számára intuitívabb legyen?
 Feltétlenül! Tekintse meg a [funkcióról szóló blogbejegyzést](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/). A munkahelyi bejelentkezési lap testreszabásával kapcsolatos további információkért lásd: [adja hozzá a vállalati arculat megjelenítése a bejelentkezés és a hozzáférési Panel oldalakon](../fundamentals/customize-branding.md).
 
 ### <a name="can-b2b-collaboration-users-access-sharepoint-online-and-onedrive"></a>A SharePoint Online és onedrive vállalati verzió hozzáférhet B2B együttműködési felhasználókat?
@@ -46,7 +46,7 @@ Ez a funkció egy későbbi kiadásban tervezünk, akkor választhatja ki kizár
 Egy szervezet hozzáadása a B2B-együttműködés felhasználók, alkalmazások szükség szerint építse és majd a Meghívók küldése kíván. A B2B-együttműködés meghívó API segítségével testre szabhatja a regisztrációs munkafolyamat.
 
 ### <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Készíthetek vendégfelhasználók látható az Exchange globális címlista?
-Igen. Alapértelmezés szerint Vendég objektumok nem láthatók a szervezet globális címlista, de használhatja az Azure Active Directory PowerShell láthatóvá tegye őket. További információkért lásd: **lehet Vendég objektumok a globális címlista látható?** a [vendég hozzáférés az Office 365-csoportok](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6#PickTab=FAQ).
+Igen. Vendég objektumok nem látható a szervezet globális címlista alapértelmezés szerint, de használhatja az Azure Active Directory PowerShell láthatóvá tegye őket. Lásd: **lehet Vendég objektumok a globális címlista látható?** a [vendég hozzáférés az Office 365-csoportok](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6#PickTab=FAQ).
 
 ### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>Tehetők a vendégfelhasználó korlátozott rendszergazda?
 Abszolút. További információkért lásd: [vendég felhasználók hozzáadása szerepkörökhöz](add-guest-to-role.md).
@@ -68,19 +68,16 @@ A vendégfelhasználó való hozzáférés letiltását a [az Azure portal](http
 ### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>A multi-factor authentication és a fogyasztói e-mail-fiókokat támogatja az Azure AD B2B együttműködés?
 Igen. Többtényezős hitelesítés és a fogyasztói e-mail-fiókokat az Azure AD B2B együttműködés támogatottak.
 
-### <a name="do-you-plan-to-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Tervezi támogatja az új jelszó kérését az Azure AD B2B együttműködési felhasználókat?
-Igen. Itt találhatók az önkiszolgáló jelszó-visszaállítás (SSPR) a B2B-felhasználó, akit meghívtak az egy fiókpartner-szervezet fontos részletei:
+### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Új jelszó kérését az Azure AD B2B együttműködés felhasználók támogatja?
+Ha egy felhasználó a kezdőkönyvtárba, az Azure AD-bérlővel is [a felhasználó jelszavának alaphelyzetbe állítása](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal#how-to-reset-the-password-for-a-user) az Azure Portalról. De nem közvetlenül állítható be új vendégfelhasználó, aki egy másik Azure AD directory és a külső identitásszolgáltató által felügyelt fiókkal jelentkezik be egy jelszót. Csak a meghívott felhasználónak vagy a felhasználó kezdőkönyvtárához a rendszergazda alaphelyzetbe állíthatja a jelszót. Íme néhány példa a jelszó-visszaállítás módja a vendégfelhasználók számára:
  
-* SSPR csak a B2B-felhasználó szolgáltatásidentitás bérlője történik.
-* Ha a szolgáltatásidentitás bérlője egy Microsoft-fiókkal, a Microsoft-fiókot az SSPR mechanizmus szolgál.
-* Ha a szolgáltatásidentitás bérlője egy – igény (szerinti JIT) vagy "vírusos" bérlői, egy jelszó alaphelyzetbe állítása e-mailt küld.
-* Más bérlők számára a standard szintű SSPR folyamat után B2B-felhasználók számára következik. Például a B2B-felhasználók, az erőforrás kontextusában SSPR tagot bérlős üzemmód le van tiltva. 
-
-### <a name="is-password-reset-available-for-guest-users-in-a-just-in-time-jit-or-viral-tenant-who-accepted-invitations-with-a-work-or-school-email-address-but-who-didnt-have-a-pre-existing-azure-ad-account"></a>Jelszó alaphelyzetbe áll egy – igény (szerinti JIT) vendég felhasználók vagy a "vírusos" bérlő számára elfogadható meghívót a munkahelyi vagy iskolai e-mail-cím, de akiknek nem kell egy már meglévő Azure AD-fiókot?
-Igen. A jelszó alaphelyzetbe állítása mail elküldött, amely lehetővé teszi a felhasználóknak új jelszót kérnek az igény szerinti bérlet.
+* Vendég felhasználók, akik a Microsoft-fiókkal (például guestuser@live.com) is alaphelyzetbe állíthatja saját jelszavait, önkiszolgáló jelszó-visszaállítási (SSPR) Microsoft-fiókjával. Lásd: [Microsoft-fiók jelszavának alaphelyzetbe állítása](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password).
+* Jelentkezzen be Google-fiók vagy egy másik külső identitásszolgáltató vendég felhasználók is alaphelyzetbe állíthatja saját jelszavait, azok identitásszolgáltató SSPR metódus használatával. Ha például egy Google-fiókkal vendégfelhasználó guestuser@gmail.com is alaphelyzetbe állíthatja a jelszavát a következő témakör utasításait követve [módosítása vagy a jelszó alaphelyzetbe](https://support.google.com/accounts/answer/41078).
+* Ha a szolgáltatásidentitás bérlője egy – igény (szerinti JIT) vagy "vírusos" bérlői (azaz egy különálló, nem felügyelt Azure-bérlőhöz), csak a meghívott felhasználónak alaphelyzetbe állíthatja a jelszavát.
+* Ha a vendégfelhasználó saját címtárral az Azure AD-bérlővel, alaphelyzetbe állíthatja a jelszót. Például, előfordulhat, hogy létrehozott egy felhasználó vagy a felhasználó a helyszíni Active Directoryból szinkronizált és állítsa be a UserType Vendég. Mivel ezt a felhasználót a címtárban az előbbi, alaphelyzetbe állíthatja a jelszavát, az Azure Portalról.
 
 ### <a name="does-microsoft-dynamics-365-provide-online-support-for-azure-ad-b2b-collaboration"></a>Nem a Microsoft Dynamics 365 online-támogatást nyújt az Azure AD B2B együttműködés?
-Igen, Dynamics 365 (online) támogatást nyújt az Azure AD B2B együttműködés. További információkért tekintse meg a Dynamics 365 cikket [meghívása a felhasználók az Azure AD B2B együttműködés](https://docs.microsoft.com/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration).
+Igen, a Dynamics 365 (online) támogatja az Azure AD B2B együttműködés. További információkért tekintse meg a Dynamics 365 cikket [meghívása a felhasználók az Azure AD B2B együttműködés](https://docs.microsoft.com/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration).
 
 ### <a name="what-is-the-lifetime-of-an-initial-password-for-a-newly-created-b2b-collaboration-user"></a>Mi az, hogy egy újonnan létrehozott B2B együttműködés felhasználó kezdeti jelszavát élettartama?
 Az Azure AD rendelkezik egy rögzített karakter, a jelszó erősségét és a fiók zárolása követelmények egyaránt érvényesek minden Azure ad felhőalapú felhasználói fiókok. Felhőalapú felhasználói fiókok olyan fiókok, nem összevont más identitásszolgáltatóval, például 
@@ -92,24 +89,24 @@ Az Azure AD rendelkezik egy rögzített karakter, a jelszó erősségét és a f
 Összevont fiókok esetében jelszóházirendet a házirendet, amely a helyszíni bérlős és a felhasználó Microsoft-fiók beállításainak alkalmazása függ.
 
 ### <a name="an-organization-might-want-to-have-different-experiences-in-their-applications-for-tenant-users-and-guest-users-is-there-standard-guidance-for-this-is-the-presence-of-the-identity-provider-claim-the-correct-model-to-use"></a>Egy szervezet szüksége lehet a különböző környezeteket bérlői és vendég felhasználók az alkalmazásokba. A standard szintű útmutatást van? Az identitásszolgáltató jelenléte jogcím a megfelelő modellt?
- Vendégfelhasználó használhatja bármely identitásszolgáltató hitelesítésére. További információkért lásd: [B2B együttműködés felhasználói tulajdonságok](user-properties.md). Használja a **UserType** tulajdonság határozza meg a felhasználói élmény. A **UserType** jogcím jelenleg nem szerepel a jogkivonatban. A felhasználó számára a címtár lekérdezésére, és a UserType beolvasásához, alkalmazások a Graph API-t kell használnia.
+Vendégfelhasználó használhatja bármely identitásszolgáltató hitelesítésére. További információkért lásd: [B2B együttműködés felhasználói tulajdonságok](user-properties.md). Használja a **UserType** tulajdonság határozza meg a felhasználói élmény. A **UserType** jogcím jelenleg nem szerepel a jogkivonatban. A felhasználó számára a címtár lekérdezésére, és a UserType beolvasásához, alkalmazások a Graph API-t kell használnia.
 
 ### <a name="where-can-i-find-a-b2b-collaboration-community-to-share-solutions-and-to-submit-ideas"></a>Hol található a B2B együttműködés közösségi megoldások megosztása és ötleteket szeretne elküldeni?
-Folyamatosan figyelünk a B2B-együttműködés javítása érdekében a visszajelzés. Felkérjük, hogy a felhasználó megosztása forgatókönyvek, ajánlott eljárások és mi tetszik Önnek az Azure AD B2B együttműködés. Csatlakozzon a beszélgetéshez a [a Microsoft technikai Közösség](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b).
- 
+Folyamatosan figyelünk a B2B-együttműködés javítása érdekében a visszajelzés. Ossza meg a felhasználó forgatókönyvek, ajánlott eljárások és mi tetszik Önnek az Azure AD B2B együttműködés. Csatlakozzon a beszélgetéshez a [a Microsoft technikai Közösség](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b).
+ 
 Azt is meghívhat, akkor küldje be az ötletek és a későbbi funkciókkal, szavazzon [B2B együttműködés ötleteket](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas).
 
 ### <a name="can-we-send-an-invitation-that-is-automatically-redeemed-so-that-the-user-is-just-ready-to-go-or-does-the-user-always-have-to-click-through-to-the-redemption-url"></a>Is küldünk egy meghívást arra, hogy automatikusan beváltott, úgy, hogy a felhasználó csak "készen áll"? Vagy a felhasználó mindig rendelkezik, kattintással lépjen a beváltási URL-cím?
-Egy meghívót küldő személy meghívhatja a a fiókpartner-szervezet többi felhasználója a felhasználói felület, a PowerShell-parancsprogramok használatával vagy API-k. Ezt követően a meghívót küldő személy küldhet a vendégfelhasználó egy közvetlen hivatkozást egy megosztott alkalmazás. A legtöbb esetben már nem látható az e-mailes meghívót megnyitásához, majd kattintson a beváltási URL-cím szükséges. További információkért lásd: [Azure Active Directory B2B együttműködés vendégmeghívás beváltása](redemption-experience.md).
+A felhasználói felület, a PowerShell-parancsfájlok használatával meghívhatja munkatársait, a a fiókpartner-szervezet többi felhasználója vagy API-k. Ezután elküldheti a vendégfelhasználó közvetlen hivatkozás egy megosztott alkalmazás. A legtöbb esetben már nem látható az e-mailes meghívót megnyitásához, majd kattintson a beváltási URL-cím szükséges. Lásd: [Azure Active Directory B2B együttműködés vendégmeghívás beváltása](redemption-experience.md).
 
 ### <a name="how-does-b2b-collaboration-work-when-the-invited-partner-is-using-federation-to-add-their-own-on-premises-authentication"></a>Hogyan működik a B2B-együttműködés a Ha a meghívott partner összevonási segítségével adja hozzá a saját helyszíni hitelesítéssel?
 Ha a partner van összevonva a helyszíni hitelesítési infrastruktúráját az Azure AD-bérlő, a helyszíni egyszeri bejelentkezés (SSO) automatikusan érhető el. Ha a partner Azure AD-bérlő nem rendelkezik, az Azure AD-fiók jön létre az új felhasználók számára. 
 
 ### <a name="i-thought-azure-ad-b2b-didnt-accept-gmailcom-and-outlookcom-email-addresses-and-that-b2c-was-used-for-those-kinds-of-accounts"></a>E úgy Gondoltuk, az Azure AD B2B nem fogadja el a gmail.com és az Outlook.com-os e-mail-címeket, és a B2C használatát az ilyen típusú fiókokat?
-B2B és üzleti – fogyasztói (B2C) együttműködés szempontjából, amely az identitások támogatottak közötti különbségekről megszüntetjük. Az identitásnak nem választhat B2B használatával, vagy pedig a B2C jó oka áll. Az együttműködési lehetőség kiválasztásával kapcsolatban további információkért lásd: [összehasonlítása B2B-együttműködés és az Azure Active Directory B2C](compare-with-b2c.md).
+B2B és üzleti – fogyasztói (B2C) együttműködés szempontjából, amely az identitások támogatottak közötti különbségekről megszüntetjük. Az identitásnak nem választhat B2B használatával, vagy pedig a B2C jó oka. Az együttműködési lehetőség kiválasztásával kapcsolatban további információkért lásd: [összehasonlítása B2B-együttműködés és az Azure Active Directory B2C](compare-with-b2c.md).
 
 ### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>Milyen alkalmazásokat és szolgáltatásokat támogatják az Azure B2B vendégfelhasználók?
-Minden Azure AD-val integrált alkalmazásokat támogatja az Azure B2B vendégfelhasználókat. 
+Minden Azure AD-val integrált alkalmazásokat Azure B2B vendégfelhasználókat is támogatja, de a vendég felhasználók hitelesítése egy ábráját végpontot kell használniuk. Előfordulhat, hogy szükség [testre szabhatja a jogcímek](claims-mapping.md) az SAML-jogkivonatban kiadott, ha a Vendég felhasználó hitelesíti magát az alkalmazást. 
 
 ### <a name="can-we-force-multi-factor-authentication-for-b2b-guest-users-if-our-partners-dont-have-multi-factor-authentication"></a>Hogy kényszerítheti a többtényezős hitelesítés B2B vendégfelhasználók Ha partnerei nem rendelkeznek a multi-factor authentication?
 Igen. További információkért lásd: [feltételes hozzáférés B2B-együttműködés felhasználók](conditional-access.md).

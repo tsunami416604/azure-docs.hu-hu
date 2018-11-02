@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f0ed4b20f9dbfef4824f66eab3ab953a5dbcfaae
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4960ee485ac8c6b233eacc569cdac6748481887d
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060912"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50746428"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Az Azure Premium Storage: Nagy teljesítményű rendszer tervezése
 
@@ -30,6 +30,10 @@ Ez a cikk segít a válasz a következő gyakori kérdésekre az Azure Premium S
 * Hogyan, optimalizálhatja az IOPS, sávszélesség és késés?  
 
 Adtunk ezeket az irányelveket kifejezetten a Premium Storage számára, mert a prémium szintű Storage futó számítási feladatok magas teljesítmény-és nagybetűket. Példák adtunk meg, ahol szükséges. Is alkalmazhat az egyes ezeket az irányelveket, Standard szintű Storage-lemezekkel IaaS virtuális gépeken futó alkalmazások.
+
+> [!NOTE]
+> Egyes esetekben egy teljesítményprobléma tűnik ténylegesen hálózati szűk keresztmetszeteket. Ezekben a helyzetekben, optimalizálja a [hálózati teljesítményt](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md).
+> Biztosítania kell, a virtuális gép támogatja a gyorsított hálózatkezeléssel. Ha igen, engedélyezheti azt mindkét központi telepítés után is [windows](../articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) és [linux](../articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) virtuális gépeket.
 
 Mielőtt elkezdené, ha új prémium szintű Storage, először olvassa el a [Premium Storage: nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz](../articles/virtual-machines/windows/premium-storage.md) és [Azure Storage méretezhetőségi és Teljesítménycéljai](../articles/storage/common/storage-scalability-targets.md)cikkeket.
 
@@ -221,11 +225,11 @@ Ha Linux rendszerű a Premium Storage, ellenőrizze a nagy teljesítmény biztos
 
 Az Azure Premium Storage általánosan elérhető nyolc adatlemez-méretet és a három adatlemez-méretet, amely jelenleg előzetes verzióban elérhető kínál. Minden lemezméret esetében a különböző méretezési IOPS-, sávszélesség-és tárolási. Válassza ki a jobb oldalon az alkalmazás követelményei és a nagy méretű virtuális gép méretétől függően a prémium szintű Storage-lemez mérete. Az alábbi táblázat az tizenegy lemezek méretek és azok képességeinek. P4, P6, P15, P60, P70 és P80 méretek a következők jelenleg csak a Managed Disks esetében támogatott.
 
-| Prémium szintű lemezek típusa  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
+| Prémium szintű lemezek típusa  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-| Lemezméret           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1024 giB (1 TiB)    | A 2048 giB (2 Tib-ra)    | 4095 giB (4 TiB)    | 8192 giB (8 TiB)    | 16384 giB (16 TiB)    | 32 767 giB (32 GiB)    |
-| IOPS-érték lemezenként       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500              | 15 000              | 20,000              |
-| Adattovábbítás lemezenként | 25 MiB másodpercenként  | 50 MiB másodpercenként  | 100 MiB másodpercenként |125 MiB másodpercenként | Másodpercenként 150 MiB | 200 MiB másodpercenként | 250 MiB másodpercenként | 250 MiB másodpercenként | 480 MiB másodpercenként | 750 MiB másodpercenként | 750 MiB másodpercenként |
+| Lemezméret           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1024 giB (1 TiB)    | A 2048 giB (2 Tib-ra)    | 4095 giB (4 TiB)    | 8192 giB (8 TiB)    | 16384 giB (16 TiB)    | 32 767 giB (32 GiB)    |
+| IOPS-érték lemezenként       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500              | 15 000              | 20,000              |
+| Adattovábbítás lemezenként | 25 MiB másodpercenként  | 50 MiB másodpercenként  | 100 MiB másodpercenként |125 MiB másodpercenként | Másodpercenként 150 MiB | 200 MiB másodpercenként | 250 MiB másodpercenként | 250 MiB másodpercenként | 480 MiB másodpercenként | 750 MiB másodpercenként | 750 MiB másodpercenként |
 
 Hány lemezek határozza meg, hogy a lemez méretét a választott. Egyetlen P50 lemez vagy több P10 lemezt használhat az alkalmazás követelményeinek kielégítése érdekében. Amikor a választás az alább felsorolt fiókok és jogosultságok figyelembe.
 
@@ -258,7 +262,7 @@ Fontos a megfelelő lemezek készlete, a gyorsítótár engedélyezése. E lehet
 
 | **Lemez típusa** | **Alapértelmezett az Ügyfélgyorsítótár beállítása** |
 | --- | --- |
-| Operációsrendszer-lemez |Az olvasási és írási |
+| Operációsrendszer-lemez |ReadWrite |
 | Adatlemez |ReadOnly |
 
 Az alábbiakban az adatlemezeket, ajánlott lemez gyorsítótárazási beállításai
@@ -267,7 +271,7 @@ Az alábbiakban az adatlemezeket, ajánlott lemez gyorsítótárazási beállít
 | --- | --- |
 | None |Gazdagép-gyorsítótár sem csak írási és írási műveltekből lemezek konfigurálása. |
 | ReadOnly |Csak olvasható gazdagép-gyorsítótár konfigurálása az olvasási és írási-olvasási lemezek. |
-| Az olvasási és írási |Gazdagép-gyorsítótár konfigurálja az olvasási és írási csak akkor, ha az alkalmazás megfelelően kezeli a gyorsítótárazott adatok írását szükség esetén állandó lemezt. |
+| ReadWrite |Gazdagép-gyorsítótár konfigurálja az olvasási és írási csak akkor, ha az alkalmazás megfelelően kezeli a gyorsítótárazott adatok írását szükség esetén állandó lemezt. |
 
 *Csak olvasható*  
 A Premium Storage-adatok gyorsítótárazása lemezek ReadOnly konfigurálásával érhet el alacsony olvasási késés, és nagyon magas olvasási IOPS és átviteli sebesség lekérése az alkalmazáshoz. Ez a két okok miatt

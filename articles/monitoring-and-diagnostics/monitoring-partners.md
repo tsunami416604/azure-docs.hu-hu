@@ -5,28 +5,28 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 8/08/2018
+ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 3a15cfeb39cea31a24d27fd8b350d7e8a6696f31
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8ffeac78b809ea19163360e85d1c841c55b2364a
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955367"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914618"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Az Azure Monitor partnerintegrációk
 | Partnerek |  |  |
 | --- | --- | --- |
-| [**AlertLogic**<br/>![Partner-embléma][alertlogic-logo]][alertlogic-anchor] | [**AppDynamics**<br/>![Partner-embléma][appdynamics-logo]][appdynamics-anchor]  | [**Atlassian**<br/>![Partner-embléma][atlassian-logo]][atlassian-anchor] 
-| [**Botmetric**][botmetric-anchor] | [**Circonus**<br/>![Partner-embléma][circonus-logo]][circonus-anchor]  | [**CloudHealth**<br/>![Partner-embléma][cloudhealth-logo]][cloudhealth-anchor] 
-| [**CloudMonix** <br/> ![Partner-embléma][cloudmonix-logo]][cloudmonix-anchor] | [**A Cloudyn**<br/>![Partner-embléma][cloudyn-logo]][cloudyn-anchor] | [**Datadoggal**<br/>![Partner-embléma][datadog-logo]][datadog-anchor] 
-| [**Dynatrace** <br/> ![Partner-embléma][dynatrace-logo]][dynatrace-anchor] | [**Grafana**<br/>![Partner-embléma][grafana-logo]][grafana-anchor] | [**Influxdata**<br/>![Partner-embléma][influxdata-logo]][influxdata-anchor]
-| [**Logikai figyelő**<br/>![Partner-embléma][logicmonitor-logo]][logicmonitor-anchor] | [**Moogsoft**<br/>![Partner-embléma][moogsoft-logo]][moogsoft-anchor] | [**NewRelic**<br/>![Partner-embléma][newrelic-logo]][newrelic-anchor] | [**Opsgenie segítségével**<br/>![Partner-embléma][opsgenie-logo]][opsgenie-anchor] 
-| [**PagerDuty**<br/>![Partner-embléma][pagerduty-logo]][pagerduty-anchor] | [**QRadar**<br/>![Partner-embléma][qradar-logo]][qradar-anchor] | [**ScienceLogic**<br/>![Partner-embléma][sciencelogic-logo]][sciencelogic-anchor] 
-| [**SignalFx**<br/>![Partner-embléma][signalfx-logo]<br/>][signalfx-anchor] | [**SIGNL4**<br/>![Partner-embléma][signl4-logo]][signl4-anchor] | [**SolarWinds**][solarwinds-anchor] 
-| [**Splunk** <br/> ![Partner-embléma][splunk-logo]][splunk-anchor] | [**Sumo logikai**<br/>![Partner-embléma][sumologic-logo]][sumologic-anchor] | [**A Turbonomic**<br/>![Partner-embléma][turbonomic-logo]][turbonomic-anchor] 
-
+| [**AlertLogic**<br/>![Partner-embléma][alertlogic-logo]][alertlogic-anchor] | [**AppDynamics**<br/>![Partner-embléma][appdynamics-logo]][appdynamics-anchor] | [**ArcSight**][arcsight-anchor] |
+| [**Atlassian**<br/>![Partner-embléma][atlassian-logo]][atlassian-anchor] | [**Botmetric**][botmetric-anchor] | [**Circonus**<br/>![Partner-embléma][circonus-logo]][circonus-anchor] |
+| [**CloudHealth**<br/>![Partner-embléma][cloudhealth-logo]][cloudhealth-anchor] | [**CloudMonix** <br/> ![Partner-embléma][cloudmonix-logo]][cloudmonix-anchor] | [**Datadoggal**<br/>![Partner-embléma][datadog-logo]][datadog-anchor] |
+| [**Dynatrace** <br/> ![Partner-embléma][dynatrace-logo]][dynatrace-anchor] | [**Rugalmas**<br/>![Partner-embléma][elastic-logo]][elastic-anchor] | [**Grafana**<br/>![Partner-embléma][grafana-logo]][grafana-anchor] |
+| [**Influxdata**<br/>![Partner-embléma][influxdata-logo]][influxdata-anchor] | [**Logikai figyelő**<br/>![Partner-embléma][logicmonitor-logo]][logicmonitor-anchor] | [**Moogsoft**<br/>![Partner-embléma][moogsoft-logo]][moogsoft-anchor] |
+| [**NewRelic**<br/>![Partner-embléma][newrelic-logo]][newrelic-anchor] | [**Opsgenie segítségével**<br/>![Partner-embléma][opsgenie-logo]][opsgenie-anchor] | [**PagerDuty**<br/>![Partner-embléma][pagerduty-logo]][pagerduty-anchor] |
+| [**QRadar**<br/>![Partner-embléma][qradar-logo]][qradar-anchor] | [**ScienceLogic**<br/>![Partner-embléma][sciencelogic-logo]][sciencelogic-anchor] | [**SignalFx**<br/>![Partner-embléma][signalfx-logo]<br/>][signalfx-anchor] |
+| [**SIGNL4**<br/>![Partner-embléma][signl4-logo]][signl4-anchor] | [**SolarWinds**][solarwinds-anchor] | [**Splunk** <br/> ![Partner-embléma][splunk-logo]][splunk-anchor] |
+| [**Sumo logikai**<br/>![Partner-embléma][sumologic-logo]][sumologic-anchor] | [**A Turbonomic**<br/>![Partner-embléma][turbonomic-logo]][turbonomic-anchor] |
 
 ## <a name="alertlogic-log-manager"></a>AlertLogic Log Manager
 Az alert Logic Log Manager a virtuális Gépet, az alkalmazás és az Azure platform naplók biztonsági elemzés és megőrzési gyűjti. Az Azure-tevékenységnapló az Azure Monitor API-n keresztül is összegyűjti. Ez az információ malfeasance és megfelelőségi követelmények teljesítése érdekében szolgál.
@@ -37,6 +37,11 @@ Az alert Logic Log Manager a virtuális Gépet, az alkalmazás és az Azure plat
 AppDynamics alkalmazásteljesítmény-felügyeleti (APM) lehetővé teszi, hogy az alkalmazástulajdonosok számára a gyors teljesítmény szűk hibaelhárítása és az Azure-környezetben futó alkalmazások teljesítményének optimalizálásához. Azt figyelheti az Azure Cloud Services (PaaS), webes és feldolgozói szerepkörök, virtuális gépek (IaaS), távoli szolgáltatás észlelése (Microsoft Azure Service Bus), a Microsoft Azure Queue, a Microsoft Azure Services (Azure Blob), az Azure Queue (a Microsoft a Service Bus), adatok Tárolás és a Microsoft Azure Blob Storage. AppDynamics APM az Azure piactéren érhető el.
 
 [Nyissa meg a dokumentációt.][appdynamics-doc]
+
+## <a name="microfocus-arcsight"></a>Microfocus ArcSight
+ArcSight rendelkezik egy intelligens Azure Monitor az event hubs-összekötő.
+
+[tudj meg többet.][arcsight-doc]
 
 ## <a name="atlassian-jira"></a>Atlassian JIRA
 JIRA-jegyeket az Azure Monitor-riasztásokat is létrehozhat.
@@ -62,11 +67,6 @@ CloudMonix felügyelet, automatizálás, és önjavító tárolószervezéssel p
 
 [Nyissa meg a dokumentációt.][cloudmonix-doc]
 
-## <a name="cloudyn"></a>Cloudyn
-A Cloudyn kezeli, és optimalizálja a több platformra, hibrid felhő központi telepítések segítségével a vállalatok teljes vegye figyelembe a lehetséges a felhőben. A Szolgáltatottszoftver-megoldás használati, teljesítmény és költség betekintést tesz lehetővé. Elemzések és intelligens optimalizálása és a felhő cégirányítási gyakorlatban hasznosítható javaslatokat biztosít. A Cloudyn accountability pontos jóváírással és a hierarchikus Költségkezelés foglalási keresztül lehetővé teszi. A Cloudyn integrálva van az Azure Monitoring elemzések és végrehajtható javaslatokat az Azure-alapú optimalizálása.
-
-[Nyissa meg a dokumentációt.][cloudyn-doc]
-
 ## <a name="datadog"></a>Datadoggal
 Datadoggal szolgáltatás felhőméretű alkalmazások figyelése a világ vezető. Ez magában foglal adatok a kiszolgálók, adatbázisok, eszközök és szolgáltatások egységes a teljes verem képviselniük. Ezek a képességek egy adatok SaaS-alapú elemzési platform az állnak rendelkezésre. Ez a szolgáltatás lehetővé teszi, hogy a fejlesztési és operátor csapatok az együttműködés elősegítése érdekében a segítségével elkerülhető az állásidő, oldja meg a teljesítménybeli problémákat, és győződjön meg arról, hogy a fejlesztés és üzembe helyezési ciklust Befejezés időben. Datadoggal és az Azure integrálásával begyűjtheti és mérőszámainak megtekintése az infrastruktúrában. Virtuális gép metrikái összevetését az alkalmazás-szintű metrikákat. Részletekbe menően vizsgálhatja a metrikákat, tetszőleges kombinációjával, tulajdonságok és az egyéni címkéket.
 
@@ -76,6 +76,11 @@ Datadoggal szolgáltatás felhőméretű alkalmazások figyelése a világ vezet
 A dynatrace-szel OneAgent integrálható az Azure virtuális gépek és alkalmazásszolgáltatások Azure bővítmény mechanizmus révén. Ezzel a módszerrel Dynatrace OneAgent gazdagépek, hálózati és szolgáltatásokkal kapcsolatos teljesítmény-mérőszámokat gyűjthet. Mellett csak megjelenítése metrikák, a dynatrace-szel megjeleníti a környezet teljes körű. Az adatbázis réteg az ügyféloldalról tranzakciók jeleníti meg. Dynatrace mesterséges intelligencián alapuló korrelációs problémák biztosít, és teljesen integrálva-okának biztosíthat metódus szintű elemzéseket kaphat alkalmazáskód és adatbázis. Az ilyen elemzések sokkal egyszerűbbé teszi a hibaelhárítás és a teljesítmény optimalizálása.
 
 [Nyissa meg a dokumentációt.][dynatrace-doc]
+
+## <a name="elastic"></a>Rugalmas
+Rugalmas keresés vállalat esetében. Az Elastic Stack (Elasticsearch, Kibana, Beats és Logstash) létrehozói, mint a rugalmas buildek önállóan felügyelt, és adatok használhatóvá tétele valós idejű és nagy méretekben a keresés, naplózás, biztonsági és elemzési SaaS-ajánlatok használati eseteket.
+
+[Nyissa meg a dokumentációt.][elastic-doc]
 
 ## <a name="grafana"></a>Grafana
 Grafana egy nyílt forráskódú alkalmazás, amely lehetővé teszi, hogy a metrika idősorozat-adatok megjelenítése.
@@ -167,14 +172,15 @@ A Turbonomic hibrid felhőkhöz biztosítja a számítási feladatok automatizá
 <!--Partner Anchors-->
 [alertlogic-anchor]: #alertlogic-log-manager "AlertLogic"
 [appdynamics-anchor]: #appdynamics "AppDynamics"
+[arcsight-anchor]: #microfocus-arcsight "ArcSight"
 [atlassian-anchor]: #atlassian-jira "Atlassian"
 [botmetric-anchor]: #botmetric "Botmetric"
 [circonus-anchor]: #circonus "Circonus"
 [cloudhealth-anchor]: #cloudhealth "CloudHealth"
 [cloudmonix-anchor]: #cloudmonix "CloudMonix"
-[cloudyn-anchor]: #cloudyn "Cloudyn"
 [datadog-anchor]: #datadog "Datadog"
 [dynatrace-anchor]: #dynatrace "Dynatrace-szel"
+[elastic-anchor]: #elastic "Rugalmas"
 [newrelic-anchor]: #newrelic "NewRelic"
 [grafana-anchor]: #grafana "Grafana"
 [influxdata-anchor]: #Influxdata "Influxdata"
@@ -198,9 +204,9 @@ A Turbonomic hibrid felhőkhöz biztosítja a számítási feladatok automatizá
 [circonus-logo]: ./media/partner-logos/circonus.png
 [cloudhealth-logo]: ./media/partner-logos/cloudhealth.png
 [cloudmonix-logo]: ./media/partner-logos/cloudmonix.png
-[cloudyn-logo]: ./media/partner-logos/cloudyn.png
 [datadog-logo]: ./media/partner-logos/datadog.png
 [dynatrace-logo]: ./media/partner-logos/dynatrace.png
+[elastic-logo]: ./media/partner-logos/elastic.png
 [newrelic-logo]: ./media/partner-logos/newrelic.png
 [grafana-logo]: ./media/partner-logos/grafana.png
 [influxdata-logo]: ./media/partner-logos/influxdata.png
@@ -219,14 +225,15 @@ A Turbonomic hibrid felhőkhöz biztosítja a számítási feladatok automatizá
 <!--Partner Documentation-->
 [alertlogic-doc]: https://docs.alertlogic.com/userGuides/log-manager-collection-sources.htm "AlertLogic dokumentációját."
 [appdynamics-doc]: https://www.appdynamics.com/net/azure/ "AppDynamics-dokumentációt."
+[arcsight-doc]: https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "ArcSight dokumentációját."
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
 [botmetric-doc]: https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/ "Botmetric bemutatása."
 [circonus-doc]: https://support.circonus.com/support/solutions/articles/24000013515-azure-integration 
 [cloudhealth-doc]: https://www.cloudhealthtech.com/azure
 [cloudmonix-doc]: http://cloudmonix.com/features/azure-management/ "CloudMonix bemutatása."
-[cloudyn-doc]: https://www.cloudyn.com/azure-monitoring "A Cloudyn bemutatása."
 [datadog-doc]: http://docs.datadoghq.com/integrations/azure/ "Datadoggal dokumentációját."
 [dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dokumentáció a dynatrace-szel."
+[elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Elastic dokumentációjában."
 [grafana-doc]: ./monitor-send-to-grafana.md "Az Azure Monitor Grafana integráció."
 [influxdata-doc]: ./metrics-store-custom-linux-telegraf.md "Az Azure Monitor Influxdata Telegraf integráció."
 [logicmonitor-doc]: https://www.logicmonitor.com/lmcloud-azure/ "Logikai dokumentációja."

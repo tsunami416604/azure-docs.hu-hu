@@ -11,7 +11,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 10/25/2018
 ms.locfileid: "50133448"
 ---
-1. Látogasson el az [Azure Portal].
+1. Látogasson el az [Azure Portalra].
 2. Kattintson az **App Services** elemre > a létrehozott háttérrendszerre.
 3. A mobilalkalmazás beállításaiban kattintson az **Első lépések** > **Cordova** elemre.
 ![Azure Portal a kiemelt Mobile Apps Quickstarttal][quickstart]
@@ -29,4 +29,4 @@ Más platformok esetén megismételheti a 3–5. lépést.
 [quickstart]: ./media/app-service-mobile-configure-new-backend/quickstart.png
 
 <!-- URLs -->
-[Azure Portal]: https://portal.azure.com/
+[Azure Portalra]: https://portal.azure.com/

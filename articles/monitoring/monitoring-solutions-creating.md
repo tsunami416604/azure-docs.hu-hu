@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a07a17105b4d84b51689e9636cfacc7a3b5428ad
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 2f7871aac0469e5fb8eaaebef9ca48404609bab7
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528027"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912560"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Megtervezik és megvalósítják a felügyeleti megoldás az Azure-ban (előzetes verzió)
 > [!NOTE]
@@ -30,7 +30,7 @@ ms.locfileid: "39528027"
 
 ## <a name="what-is-a-management-solution"></a>Mi az felügyeleti megoldás?
 
-Felügyeleti megoldások Azure-erőforrások, amelyek együttműködve érhet el egy adott felügyeleti forgatókönyvet tartalmaz.  Ezek vannak implementálva [Resource Management-sablonokat](../azure-resource-manager/resource-manager-template-walkthrough.md) bemutatja, hogyan telepítheti és konfigurálhatja a benne foglalt erőforrásokat a megoldás telepítésekor, amely tartalmazza.
+Felügyeleti megoldások Azure-erőforrások, amelyek együttműködve érhet el egy adott felügyeleti forgatókönyvet tartalmaz.  Ezek vannak implementálva [Resource Management-sablonokat](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) bemutatja, hogyan telepítheti és konfigurálhatja a benne foglalt erőforrásokat a megoldás telepítésekor, amely tartalmazza.
 
 Az alapszintű stratégia, hogy indítsa el a felügyeleti megoldás az Azure-környezetben az egyes összetevők létrehozásával.  Ha már rendelkezik az a funkciók működését, megkezdheti a csomagolás őket egy [felügyeleti megoldásfájlt]( monitoring-solutions-solution-file.md). 
 
@@ -49,7 +49,7 @@ Adatforrások leírtak szerint a Log Analytics-adattárban gyűjtött számos m�
 Nem minden elérhető adatforrások-n keresztül elérhető adatok van szüksége, akkor használhatja a [HTTP-adatgyűjtő API](../log-analytics/log-analytics-data-collector-api.md) így a használatával írhat adatokat a Log Analytics-tárházba bármely ügyfélnek, amely segítségével meghívhatja a REST API-t.  A leggyakoribb azt jelenti, hogy egyéni adatgyűjtés felügyeleti megoldás az, hogy hozzon létre egy [az Azure Automation runbook](../automation/automation-runbook-types.md) , amely a szükséges adatokat gyűjti össze az Azure- vagy külső erőforrásokat, és az adatgyűjtő API segítségével írni a adattár.  
 
 ### <a name="log-searches"></a>Naplókeresések
-[Naplókeresések](../log-analytics/log-analytics-log-searches.md) kibontása és elemzése a Log Analytics-adattárban lévő adatok használhatók.  Ezek a nézetek és riasztások mellett lehetővé teszi a felhasználónak az ad hoc elemzést az adatok a tárházban szolgálnak.  
+[Naplókeresések](../log-analytics/log-analytics-log-search.md) kibontása és elemzése a Log Analytics-adattárban lévő adatok használhatók.  Ezek a nézetek és riasztások mellett lehetővé teszi a felhasználónak az ad hoc elemzést az adatok a tárházban szolgálnak.  
 
 Meg kell határozni, hogy úgy gondolja, hogy akkor is hasznos lehet a felhasználónak, akkor is, ha nem használta azokat bármilyen nézeteket és riasztásokat lekérdezéseket.  Ezek őket a mentett keresések, a portálon elérhető lesz, és is hozzáadhatja őket egy [lista a lekérdezés vizualizációs rész](../log-analytics/log-analytics-view-designer-parts.md#list-of-queries-part) az egyéni nézetben.
 
@@ -58,7 +58,7 @@ Meg kell határozni, hogy úgy gondolja, hogy akkor is hasznos lehet a felhaszn�
 
 Ha a probléma esetleg egy automatizált folyamattal javítani kell, majd általában létrehozhat egy runbook az Azure Automationben a szervizelés végrehajtásához.  A legtöbb Azure-szolgáltatások kezelhetők [parancsmagok](/powershell/azure/overview) , amely a runbook szeretné kihasználni a funkció végrehajtásához.
 
-Ha a megoldáshoz szükséges külső funkciók egy riasztásra adott válaszként, akkor használhat egy [webhook válasza](../log-analytics/log-analytics-alerts-actions.md).  Ez lehetővé teszi, hogy egy külső webes szolgáltatás adatokat küld a riasztásokból meghívható.
+Ha a megoldáshoz szükséges külső funkciók egy riasztásra adott válaszként, akkor használhat egy [webhook válasza](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).  Ez lehetővé teszi, hogy egy külső webes szolgáltatás adatokat küld a riasztásokból meghívható.
 
 ### <a name="views"></a>Nézetek
 A nézetek a Log Analytics segítségével a Log Analytics-adattárban adatainak megjelenítése.  Egyes megoldások általában fogja tartalmazni a szolgáltatással egyetlen nézetben egy [csempe](../log-analytics/log-analytics-view-designer-tiles.md) , amely a felhasználó fő irányítópultján jelenik meg.  A nézet tartalmazhat tetszőleges számú [Vizualizáció részek](../log-analytics/log-analytics-view-designer-parts.md) különböző megjelenítését tartalmazza az összegyűjtött adatokat biztosít a felhasználó számára.

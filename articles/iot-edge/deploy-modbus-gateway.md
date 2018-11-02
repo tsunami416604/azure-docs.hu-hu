@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: kgremban
-ms.openlocfilehash: 031524f4ef00b57f598c1114d594fb70eeedd15b
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: e9db20a1458c398913387e40d247400ee933578b
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394000"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912305"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Modbus TCP-eszközök csatlakoztatása az IoT Edge-eszközátjárón keresztül
 
@@ -99,5 +99,5 @@ Az eszköz által küldött telemetriát is megtekintheti a [Visual Studio Code 
 
 ## <a name="next-steps"></a>További lépések
 
-- További információk az IoT Edge-eszközök átjáróként való működéséről: [Transzparens átjáróként működő IoT Edge-eszköz létrehozása](./how-to-create-transparent-gateway-linux.md).
+- További információk az IoT Edge-eszközök átjáróként való működéséről: [Transzparens átjáróként működő IoT Edge-eszköz létrehozása](./how-to-create-transparent-gateway.md).
 - További információk az IoT Edge-modulok működéséről: [Az Azure IoT Edge-modulok megismerése](iot-edge-modules.md)

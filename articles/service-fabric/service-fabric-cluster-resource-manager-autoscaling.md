@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: fbaf6b92a2605d284a749365d542c223e09f730d
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 1bee48225448a964da7caa2a7b284b274c52bea6
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362602"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914056"
 ---
 # <a name="introduction-to-auto-scaling"></a>Automatikus skálázás bemutatása
 Automatikus skálázás egy további lehetőség a Service Fabric dinamikusan méretezheti az services szolgáltatásokat jelent, vagy az erőforrások használat alapján a terhelés alapján. Automatikus skálázás nagy rugalmasságot biztosít, és lehetővé teszi, hogy további példányok vagy a partíciók az igény szerinti szolgáltatás kiépítése. A teljes automatikus skálázást folyamat automatizált és átlátható, és a szabályzatok a szolgáltatás beállítása után esetén nem kell a szolgáltatási szintű manuális méretezési műveletekhez. Automatikus skálázás is be kell kapcsolni vagy szolgáltatás-létrehozás időpontjában, vagy bármikor a szolgáltatás frissítésével.
@@ -41,7 +41,7 @@ A Service Fabric-fürt minden egyes szolgáltatás automatikus skálázást ház
 Nincsenek kétféle által jelenleg támogatott automatikus skálázás. Az első egy kifejezés az állapotmentes szolgáltatások esetében vagy for containers szolgáltatásban, ahol az automatikus skálázás történik hozzáadásával vagy eltávolításával [példányok](service-fabric-concepts-replica-lifecycle.md). A egyaránt állapotalapú és állapotmentes szolgáltatások esetében az automatikus skálázás is végrehajtható hozzáadásával vagy eltávolításával nevű [partíciók](service-fabric-concepts-partitioning.md) a szolgáltatás.
 
 > [!NOTE]
-> Jelenleg nincs szolgáltatásonként csak egy méretezési szabályzat támogatása.
+> Jelenleg nincs szolgáltatásonként csak egy méretezési szabályzat, és csak egy méretezési eseményindító szabályzatonként támogatása.
 
 ## <a name="average-partition-load-trigger-with-instance-based-scaling"></a>Átlagos partíció terhelés eseményindító-alapú példányok skálázása
 Az első típusú trigger állapotmentes szolgáltatás partíció-példánya a terhelés alapján történik. Metrika terhelések vannak először Görbített beszerzése a terhelés egy partíció minden példányát, és majd ezeket az értékeket átlagolja az a partíció összes példányát. Nincsenek mindhárom tényezőt, amelyek meghatározzák, hogy mikor lesz skálázva a szolgáltatást:

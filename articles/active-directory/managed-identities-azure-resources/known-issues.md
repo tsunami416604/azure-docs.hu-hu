@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 2a759aea4288af2e90335b47244408d6a537e24b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: fa872c184429e69eb46fb4da112c08ee9432f1c4
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295581"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913988"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Gyakori kérdések és ismert problémái az Azure-erőforrások felügyelt identitásokból
 
@@ -29,7 +29,7 @@ ms.locfileid: "44295581"
 ## <a name="frequently-asked-questions-faqs"></a>Gyakori kérdések (GYIK)
 
 > [!NOTE]
-> Felügyelt identitások Azure-erőforrások számára az új nevet a szolgáltatás-ként ismert, Felügyeltszolgáltatás-identitás (MSI).
+> Az Azure-erőforrások felügyelt identitásai a Managed Service Identity (MSI) szolgáltatás új neve.
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Az Azure-erőforrások felügyelt identitások működik az Azure Cloud Services?
 
@@ -60,7 +60,7 @@ Az Azure Instance Metadata szolgáltatás további információkért lásd: [IMD
 
 Felügyelt identitások az Azure-erőforrásokhoz a IMDS végponton keresztül az összes Azure IaaS által támogatott Linux-disztribúciók is használható. 
 
-Megjegyzés: A felügyelt identitások az Azure-erőforrások (elavult. január 2019 a tervezett) Virtuálisgép-bővítmény a következő Linux-disztribúciók csak támogatja:
+A felügyelt identitások az Azure-erőforrások (elavult. január 2019 a tervezett) Virtuálisgép-bővítmény csak a következő Linux-disztribúciók támogatja:
 - CoreOS Stable
 - CentOS 7.1
 - Red Hat 7.2
@@ -124,16 +124,23 @@ Miután a virtuális gép elindul, a címke távolíthatja el az alábbi parancs
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
 
-## <a name="known-issues-with-user-assigned-identities"></a>Felhasználó által hozzárendelt identitások ismert problémái
+### <a name="vm-extension-provisioning-fails"></a>Virtuálisgép-bővítmény kiépítése sikertelen
 
-- Identitás-hozzárendelések felhasználó által hozzárendelt virtuális gép és a VMSS csak érhetők el. Fontos: felhasználó által hozzárendelt identitás hozzárendelések módosítani fogja a hónapon belül.
-- Az azonos VM/VMSS a felhasználó által hozzárendelt identitások ismétlődő, okoz a VM/VMSS sikertelen lesz. Ez magában foglalja az identitások, a másik kis-és a hozzáadott. Példa: MyUserAssignedIdentity és myuserassignedidentity. 
-- DNS-keresési hibák miatt meghiúsulhat a virtuális géphez (tervezett elavult a január 2019 esetében) a Virtuálisgép-bővítmény kiépítése. Indítsa újra a virtuális Gépet, és próbálkozzon újra. 
-- Sikertelen a virtuális gép hozzáadása egy "nem létező" felhasználó által hozzárendelt identitással miatt. 
-- Egy felhasználó által hozzárendelt identitás létrehozása a különleges karakterek (például aláhúzásjelet lehet) a neve, nem támogatott.
-- felhasználó által hozzárendelt identitás nevek korlátozva, végpontok közötti forgatókönyv 24 karakter hosszúságú lehet. a 24 karakternél hosszabb nevű, felhasználó által hozzárendelt identitások nem fogja tudni hozzárendelni.
+A Virtuálisgép-bővítmény kiépítése a DNS-keresési hibák miatt meghiúsulhat. Indítsa újra a virtuális Gépet, és próbálkozzon újra.
+ 
+> [!NOTE]
+> A Virtuálisgép-bővítmény által január 2019 elavulásának tervezünk. Azt javasoljuk, hogy áthelyezi a IMDS végpont használatával.
+
+### <a name="transferring-a-subscription-between-azure-ad-directories"></a>Egy előfizetés átvitele az Azure AD-címtár között
+
+Felügyelt identitások nem módosul, ha egy előfizetés áthelyezték vagy át egy másik címtárban. Ennek eredményeképpen bármely létező alapértelmezett vagy felhasználó által hozzárendelt felügyelt identitások működésképtelen lesz. 
+
+Áthidaló megoldásként után az előfizetés át lett helyezve, letilthatja felügyelt identitások rendszer által hozzárendelt, és újra engedélyeznie kell őket. Hasonlóképpen törölje és hozza létre újra a felügyelt felhasználó által hozzárendelt identitások. 
+
+## <a name="known-issues-with-user-assigned-managed-identities"></a>Felügyelt identitások felhasználó által hozzárendelt ismert problémái
+
+- Egy felhasználó által hozzárendelt felügyelt identitás létrehozása a különleges karakterek (például aláhúzásjelet lehet) a neve, nem támogatott.
+- Felhasználó által hozzárendelt identitás nevek korlátozódnak 24 karakter hosszúságú lehet. Ha a név legfeljebb 24 karakter hosszúságú, az identitás sikertelen lesz-e hozzá kell rendelni egy erőforrást (pl. virtuális gép.)
 - (Elavult. január 2019 a tervezett) felügyelt identitás virtuálisgép-bővítmény használata esetén a támogatott határértéke 32, felhasználó által hozzárendelt felügyelt identitások. Nem felügyelt identitás virtuálisgép-bővítmény a támogatott határértéke 512.  
-- Egy második felhasználó által hozzárendelt identitással hozzáadásakor a clientID előfordulhat, hogy nem érhető el, a Virtuálisgép-bővítmény kérések jogkivonatok. A megoldás, indítsa újra a felügyelt identitásokból Virtuálisgép-bővítmény a következő két bash-parancsok az Azure-erőforrások:
- - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
- - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`
-- Amikor egy virtuális Gépet egy felhasználó által hozzárendelt identitással, de nem alapértelmezett azonosító, a portál felhasználói felületén jelennek meg felügyelt identitásokat az Azure-erőforrások, mert le van tiltva. Ahhoz, hogy a rendszer által hozzárendelt identitás, az Azure Resource Manager-sablonok, az Azure CLI-vel vagy egy SDK-t használja.
+- Egy felhasználó által hozzárendelt felügyelt identitás áthelyezése egy másik erőforráscsoportban található az identitás érvényteleníteni miatt. Ennek eredményeképpen nem képes az identitáshoz tartozó jogkivonatok kérelmezésére. 
+- Előfizetés átadása egy másik címtárban megszakítja a meglévő felhasználó által hozzárendelt felügyelt identitást. 

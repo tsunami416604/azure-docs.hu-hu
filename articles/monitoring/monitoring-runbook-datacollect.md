@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: f1a106a4f99c09134b8784e98ca547db51ce0eae
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2efaae7794cf5f12719d3d1420d9db6903592559
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409509"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913189"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Adatgyűjtés, a Log Analytics az Azure Automation-runbook
 Számos különféle forrásból például gyűjthet adatokat a Log Analytics jelentős mennyiségű [adatforrások](../log-analytics/log-analytics-data-sources.md) ügynökökön és is [adatokat gyűjteni az Azure-ból](../log-analytics/log-analytics-azure-storage.md).  Vannak olyan forgatókönyvek ellenére, hogy hol kell gyűjtenie az adatokat, amely nem érhető el standard források segítségével.  Ezekben az esetekben használhatja a [HTTP-adatgyűjtő API](../log-analytics/log-analytics-data-collector-api.md) használatával írhat adatokat a Log Analyticsbe bármely REST API-ügyfélből.  Egy általános módszer az adatgyűjtést az Azure Automation runbook használ.   
@@ -30,8 +30,8 @@ Ez az oktatóanyag végigvezeti a folyamat létrehozásához és az adatok írá
 ## <a name="prerequisites"></a>Előfeltételek
 Ebben a forgatókönyvben a következő erőforrások konfigurált az Azure-előfizetés szükséges.  Mindkettő egy ingyenes fiók is lehet.
 
-- [Log Analytics-munkaterület](../log-analytics/log-analytics-get-started.md).
-- [Azure automation-fiók](../automation/automation-offering-get-started.md).
+- [Log Analytics-munkaterület](../log-analytics/log-analytics-quick-create-workspace.md).
+- [Azure automation-fiók](..//automation/automation-quickstart-create-account.md).
 
 ## <a name="overview-of-scenario"></a>Forgatókönyv áttekintése
 Ebben az oktatóanyagban egy runbook Automation-feladatokkal kapcsolatos információkat összegyűjtő fog írni.  Az Azure Automation Runbookjai vannak megvalósítva a PowerShell-lel, így fogja kezdeni a és a egy parancsfájl tesztelésre az Azure Automation-szerkesztőben.  Miután meggyőződött arról, hogy a szükséges adatokat gyűjt, fog adatokat írni a Log Analytics és az egyéni adattípus ellenőrzése.  Végül létre fog hozni egy ütemezést, rendszeres időközönként a runbook elindításához.
@@ -67,7 +67,7 @@ A PowerShell-galériából, ha lehetővé teszi egy gyors lehetőség, amely kö
 | Tulajdonság | Munkaterület-azonosító értéke | Munkaterület kulcs-érték |
 |:--|:--|:--|
 | Name (Név) | Munkaterület azonosítója | WorkspaceKey |
-| Típus | Sztring | Sztring |
+| Típus | Karakterlánc | Karakterlánc |
 | Érték | Illessze be a munkaterület Azonosítóját, a Log Analytics-munkaterületre. | Beillesztés jelentkezzen be az elsődleges vagy másodlagos kulcsot a Log Analytics-munkaterület. |
 | Titkosított | Nem | Igen |
 
@@ -145,7 +145,7 @@ Az Azure Automation tartalmaz egy környezetet [tesztelheti a runbookját](../au
     ![POST-kimenet](media/monitoring-runbook-datacollect/post-output.png)
 
 ## <a name="5-verify-records-in-log-analytics"></a>5. A Log Analytics ellenőrzése
-Miután befejeződött a runbook tesztelése, és ellenőrizte, hogy a kimenet sikeresen megérkezett, ellenőrzéséhez, hogy a rekordok használatával létrehozott egy [a Log Analytics naplóbeli keresés](../log-analytics/log-analytics-log-searches.md).
+Miután befejeződött a runbook tesztelése, és ellenőrizte, hogy a kimenet sikeresen megérkezett, ellenőrzéséhez, hogy a rekordok használatával létrehozott egy [a Log Analytics naplóbeli keresés](../log-analytics/log-analytics-log-search.md).
 
 ![Napló kimenetét](media/monitoring-runbook-datacollect/log-output.png)
 

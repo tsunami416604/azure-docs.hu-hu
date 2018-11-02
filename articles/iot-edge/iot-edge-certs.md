@@ -8,12 +8,12 @@ ms.date: 09/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a782a7341e53420dbc31fefc86007951df967a9e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: af1a14f87eaf20a7f49a8fc6112c4f3c7595f6bd
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313417"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914366"
 ---
 # <a name="azure-iot-edge-certificate-usage-detail"></a>Az Azure IoT Edge-tanúsítvány felhasználási részletek
 
@@ -78,9 +78,9 @@ Gyártó és operátor folyamatok el vannak különítve, mert nincsenek néhán
 
 ## <a name="devtest-implications"></a>Fejlesztés/tesztelés – következmények
 
-A fejlesztés megkönnyítése érdekében, és tesztelési forgatókönyvek, a Microsoft biztosít [kényelmi parancsfájlok](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) : az IoT Edge-hez nem éles tanúsítványok létrehozása a transzparens átjáró használata esetén a.
+A fejlesztés megkönnyítése érdekében, és tesztelési forgatókönyvek, a Microsoft biztosít [kényelmi parancsfájlok](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) : az IoT Edge-hez nem éles tanúsítványok létrehozása a transzparens átjáró használata esetén a. A parancsfájlok működésének példákért lásd: [a transzparens átjáróként működő IoT Edge-eszköz konfigurálása](how-to-create-transparent-gateway.md).
 
-Ezek a szkriptek a tanúsítvány láncot szerkezetűek ebben a cikkben ismertetett tanúsítványok előállításához. A [Linux](how-to-create-transparent-gateway-linux.md#certificate-creation) vagy [Windows](how-to-create-transparent-gateway-windows.md#certificate-creation). Az alábbi parancsokat a "legfelső szintű Hitelesítésszolgáltatói tanúsítvány" és a egy egyetlen "köztes Hitelesítésszolgáltatói tanúsítványt" elő.
+Ezek a szkriptek a tanúsítvány láncot szerkezetűek ebben a cikkben ismertetett tanúsítványok előállításához. Az alábbi parancsokat a "legfelső szintű Hitelesítésszolgáltatói tanúsítvány" és a egy egyetlen "köztes Hitelesítésszolgáltatói tanúsítványt" elő.
 
 ```bash
 ./certGen.sh create_root_and_intermediate 
@@ -124,6 +124,4 @@ Láthatja, hogy megjelenjen a képernyőképen tanúsítvány mélysége hierarc
 
 [Az Azure IoT Edge-modulok megismerése](iot-edge-modules.md)
 
-[IoT Edge-eszköz használata transzparens átjáróként (Linux)](how-to-create-transparent-gateway-linux.md)
-
-[IoT Edge-eszköz használata transzparens átjáróként (Windows)](how-to-create-transparent-gateway-windows.md)
+[A transzparens átjáróként működő IoT Edge-eszköz konfigurálása](how-to-create-transparent-gateway.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: d5d75c25d03c02d6d49fc2fd8aeec995cea52314
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 7977dc55d101c99bf1f850a529083916367308b4
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414267"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747813"
 ---
 # <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>Hogyan állítható be a statikus belső magánhálózati IP-cím (klasszikus) PowerShell-lel
 A legtöbb esetben nem kell a virtuális gép statikus belső IP-címet adjon meg. Egy virtuális hálózatban lévő virtuális gépek automatikusan fog kapni a belső IP-cím megadott tartományból. De bizonyos esetekben egy adott virtuális gép által használt statikus IP-cím megadása van értelme. Ha például a virtuális gép kívánja futtatni a DNS vagy a tartományvezérlő lesz. Statikus belső IP-címet a virtuális gép akár keresztül olyan leállítása vagy megszüntetési állapotban marad. 
@@ -28,9 +28,14 @@ A legtöbb esetben nem kell a virtuális gép statikus belső IP-címet adjon me
 > Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén használja a [Resource Manager üzemi modell](virtual-networks-static-private-ip-arm-ps.md).
 > 
 > 
+## <a name="install-the-azure-powershell-service-management-module"></a>Az Azure PowerShell Service Management moduljának telepítése
+
+Futtassa a következő parancsokat, előtt győződjön meg arról, hogy a [Azure PowerShell Service Management modul](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0
+) telepítve van a gépen. Azure PowerShell Service Management modul korábbi verzióinak, lásd: [Azure-modul a PowerShell-galériában](https://www.powershellgallery.com/packages/Azure/5.3.0).
 
 ## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>Azt, hogyan ellenőrizheti egy adott IP-cím elérhető-e
-Arra, ha az IP-cím *10.0.0.7* érhető el egy vnet nevű *TestVnet*, futtassa a következő PowerShell-parancsot, és ellenőrizze a értéke *IsAvailable*:
+Arra, ha az IP-cím *10.0.0.7* érhető el egy vnet nevű *TestVnet*, futtassa a következő PowerShell-parancsot, és ellenőrizze a értéke *IsAvailable*.
+
 
     Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 10.0.0.7 
 

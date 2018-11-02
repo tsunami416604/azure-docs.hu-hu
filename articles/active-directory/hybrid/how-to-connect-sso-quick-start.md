@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/21/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8cfe8c309c11eb24bc6e7af9fc3ba3eef0422c35
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: c16da55540faaf165faa592c3565b317a8eab922
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638216"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914090"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyors üzembe helyezési
 
@@ -50,7 +50,7 @@ Győződjön meg arról, hogy a következő előfeltételeket:
     * Az Azure AD-keresztül az Azure AD Connect szinkronizálása.
     * Közvetlen egyszeri bejelentkezés engedélyezése kívánt felhasználókat tartalmazza.
     
-* **A modern hitelesítés engedélyezése**: engedélyeznie kell a [modern hitelesítést](https://aka.ms/modernauthga) a bérlő esetében ez a funkció működéséhez.
+* **A modern hitelesítés engedélyezése**: engedélyeznie kell a [modern hitelesítést](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) a bérlő esetében ez a funkció működéséhez.
 
 * **Az Office 365-ügyfelek a legújabb verziókat használhatja**: szeretne kapni a beavatkozás nélküli bejelentkezést az Office 365-ügyfelek (Outlook, Word, Excel és mások), a felhasználók számára szeretné használni a verziók 16.0.8730.xxxx vagy újabb.
 

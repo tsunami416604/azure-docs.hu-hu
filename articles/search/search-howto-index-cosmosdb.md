@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 robot: noindex
-ms.openlocfilehash: c74563ba98835403f12a4df048d7ff358014b826
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 07768ee1590fa087a1eb1486cb59ab0f57d02b64
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406670"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747541"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Csatlakozás a Cosmos DB az Azure Search indexelők használatával
 
@@ -48,6 +48,8 @@ További API-k támogatása az azonnali. Annak érdekében, fontossági sorrendj
 ## <a name="prerequisites"></a>Előfeltételek
 
 A Cosmos DB-fiók mellett rendelkeznie kell egy [Azure Search szolgáltatás](search-create-service-portal.md). 
+
+A Cosmos DB-fiók választhatja ki kívánja-e a gyűjtemény összes dokumentum automatikusan indexelése. Alapértelmezés szerint minden dokumentum automatikusan indexelt, de a felhasználók bármikor kikapcsolhatják az automatikus indexeléshez. Ha az indexelés ki van kapcsolva, dokumentumok csak keresztül elérhető azok önmagukra mutató hivatkozások, vagy a lekérdezések használatával, hogy a dokumentum azonosítója. Az Azure Search van szükség a Cosmos DB automatikus indexelést, a gyűjtemény, amely indexelését az Azure Search által működnie kell. 
 
 <a name="Concepts"></a>
 ## <a name="azure-search-indexer-concepts"></a>Az Azure Search-indexelő alapfogalmai
@@ -182,7 +184,7 @@ Győződjön meg arról, hogy a célindex sémája kompatibilis sémáját, a fo
 | Logikai |Edm.Boolean, Edm.String |
 | Hasonló egész számok |Edm.Int32, Edm.Int64, Edm.String |
 | Számok, tekintse meg például a nem fix pontok |Edm.Double, Edm.String |
-| Sztring |Edm.String |
+| Karakterlánc |Edm.String |
 | Ha például ["a", "b", "c"] egyszerű típusú tömbök |Collection(Edm.String) |
 | Karakterláncok, dátumok hasonló |Edm.DateTimeOffset, Edm.String |
 | A GeoJSON-objektumok, például {"type": "Pont", "koordináták": [hosszú, szél]} |Edm.GeographyPoint |

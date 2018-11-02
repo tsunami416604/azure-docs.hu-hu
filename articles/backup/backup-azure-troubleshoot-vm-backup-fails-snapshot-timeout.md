@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 55e4195e2666aed371a5a5664b331184afcf5e36
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 25c9cbcaf852aa07bcbe4f71bf69de366d4dbb87
+ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420965"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50754035"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibaelhárítása: az ügynök vagy a bővítmény kapcsolatos problémák
 
@@ -48,7 +48,6 @@ Miután regisztrálta, és a egy virtuális Gépet az Azure Backup szolgáltatá
 
 **Hibakód:**: UserErrorRpCollectionLimitReached <br>
 **Chybová zpráva**: elérte a Visszaállításipont-gyűjtemény maximális korlátját. <br>
-Leírás:  
 * A probléma akkor fordulhat elő, ha a helyreállítási pont erőforráscsoport megakadályozza az automatikus tisztítás helyreállítási pont található egy zárolás.
 * A probléma is előfordulhat, ha naponta több biztonsági mentése esetén. Jelenleg javasoljuk, hogy csak egy biztonsági mentés azonnali RPs 7 napig maradnak, naponta, és csak 18 azonnali RPs társítható egy virtuális Gépet egy adott időpontban. <br>
 
@@ -59,7 +58,7 @@ A probléma megoldásához távolítsa el a zárolást a az erőforráscsoportot
     > A biztonsági mentési szolgáltatás létrehoz egy külön erőforráscsoportot, mint az erőforráscsoport, a virtuális gép visszaállításipont-gyűjtemény tárolásához. Ügyfelek, a Backup szolgáltatás használni létrehozott erőforráscsoportot zárolása nem végigvitelével. A Backup szolgáltatás által létrehozott erőforráscsoport elnevezési formátuma: AzureBackupRG_`<Geo>`_`<number>` Eg: AzureBackupRG_northeurope_1
 
 
-**1. lépés: [távolítsa el a zárolást az erőforráscsoportból visszaállítási pont csoport](#remove_lock_from_the_recovery_point_resource_group)** <br>
+**1. lépés: [távolítsa el a zárolást a visszaállítási pont erőforráscsoportból](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **2. lépés: [visszaállításipont-gyűjtemény törlése](#clean_up_restore_point_collection)**<br>
 
 ## <a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork - pillanatkép-készítési művelet sikertelen volt, mert nincs hálózati kapcsolat a virtuális gépen
@@ -95,6 +94,21 @@ Miután regisztrálta, és a egy virtuális Gépet az Azure Backup szolgáltatá
 **4. ok: [nem kérhető le a pillanatfelvétel állapotáról, vagy nem lehet egy pillanatképet készíteni](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **5. ok: [a biztonsági mentési bővítményt frissítésére vagy betöltése sikertelen](#the-backup-extension-fails-to-update-or-load)**  
 **6. ok: [Backup szolgáltatásnak nincs engedélye a régi helyreállítási pontok törlése egy erőforrás-csoport zárolás miatt](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)**
+
+## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-1023gb"></a>UserErrorUnsupportedDiskSize – a jelenleg az Azure Backup nem támogatja a 1023GB-nál nagyobb lemezméretek
+
+**Hibakód:**: UserErrorUnsupportedDiskSize <br>
+**Chybová zpráva**: jelenleg az Azure Backup nem támogatja az 1023 GB-nál nagyobb lemezméretek <br>
+
+A biztonsági mentési művelet sikertelen lehet, mivel a tároló nem frissül az Azure virtuális gép biztonsági mentési vermének v2 verziójára az 1023GB-nál nagyobb méretű virtuális Gépet is biztonsági. Azure VM Backup frissítését stack V2 biztosít akár 4 TB-os támogatja. Tekintse át a [előnyöket](backup-upgrade-to-vm-backup-stack-v2.md), [szempontok](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade), majd folytassa a következő frissítési [utasításokat](backup-upgrade-to-vm-backup-stack-v2.md#upgrade).  
+
+## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported – a jelenleg az Azure Backup nem támogatja a Standard SSD-lemez
+
+**Hibakód:**: UserErrorStandardSSDNotSupported <br>
+**Chybová zpráva**: az Azure Backup jelenleg nem támogatja a Standard SSD-lemez <br>
+
+Az Azure Backup jelenleg csak a tárolók az Azure virtuális gép biztonsági mentési vermének v2 verziójára frissített támogatja a Standard SSD-lemezeket. Tekintse át a [előnyöket](backup-upgrade-to-vm-backup-stack-v2.md), [szempontok](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade), majd folytassa a következő frissítési [utasításokat](backup-upgrade-to-vm-backup-stack-v2.md#upgrade).
+
 
 ## <a name="causes-and-solutions"></a>Okait és megoldásait
 
@@ -208,7 +222,7 @@ Ezen lépések elvégzése hatására a következő biztonsági mentés során �
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Távolítsa el a zárolást a helyreállítási pont erőforráscsoportból
 1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com/).
-2. Lépjen a **összes erőforrás lehetőséget**, válassza ki a visszaállítási pont gyűjtemény erőforráscsoportot a következő formátumban AzureBackupRG_<Geo>_<number>.
+2. Lépjen a **összes erőforrás lehetőséget**, válassza ki a visszaállítási pont gyűjtemény erőforráscsoportot a következő formátumban AzureBackupRG_`<Geo>`_`<number>`.
 3. Az a **beállítások** szakaszban jelölje be **zárolások** a zárolások megjelenítéséhez.
 4. Távolítsa el a zárolást, kattintson a három pontra, és kattintson a **törlése**.
 
@@ -217,17 +231,17 @@ Ezen lépések elvégzése hatására a következő biztonsági mentés során �
 ### <a name="clean_up_restore_point_collection"></a> Visszaállításipont-gyűjtemény törlése
 A zár feloldása után a visszaállítási pontok törölni kell. A visszaállítási pontok törléséhez kövesse a módszerekkel:<br>
 * [A futó ad hoc biztonsági másolat visszaállításipont-gyűjtemény törlése](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
-* [A portálon a biztonsági mentési szolgáltatás által létrehozott visszaállításipont-gyűjtemény törlése](#clean-up-restore-point-collection-from-portal-created-by-backup-service)<br>
+* [Távolítsa el a visszaállítási pont gyűjtemény Azure Portalról](#clean-up-restore-point-collection-from-azure-portal)<br>
 
 #### <a name="clean-up-restore-point-collection-by-running-ad-hoc-backup"></a>A futó ad hoc biztonsági másolat visszaállításipont-gyűjtemény törlése
 Zárolás eltávolítása után egy ad-hoc vagy manuális biztonsági mentés indítása. Ez biztosítja, a visszaállítási pontok automatikusan törlődnek. Sikertelen első alkalommal; az ad-hoc vagy manuális művelet várható az automatikus tisztítás manuális visszaállítási pontok törlése helyett azonban biztosítja. A következő ütemezett biztonsági mentés utáni tisztítás sikeres legyen.
 
 > [!NOTE]
-    > Automatikus karbantartás, az ad-hoc vagy manuális biztonsági mentésének elindítása néhány óra múlva történik meg. Ha az ütemezett biztonsági mentés továbbra is sikertelen, akkor próbálja meg manuálisan törölni a visszaállításipont-gyűjtemény lépésekkel felsorolt [Itt](#clean-up-restore-point-collection-from-portal-created-by-backup-service).
+    > Automatikus karbantartás, az ad-hoc vagy manuális biztonsági mentésének elindítása néhány óra múlva történik meg. Ha az ütemezett biztonsági mentés továbbra is sikertelen, akkor próbálja meg manuálisan törölni a visszaállításipont-gyűjtemény lépésekkel felsorolt [Itt](#clean-up-restore-point-collection-from-azure-portal).
 
-#### <a name="clean-up-restore-point-collection-from-portal-created-by-backup-service"></a>A portálon a biztonsági mentési szolgáltatás által létrehozott visszaállításipont-gyűjtemény törlése<br>
+#### <a name="clean-up-restore-point-collection-from-azure-portal"></a>Távolítsa el a visszaállítási pont gyűjtemény Azure Portalról <br>
 
-Törölje manuálisan a visszaállítási pontok gyűjteményeket, amelyek nem törlődnek, az erőforráscsoport, a következő lépéseket a zárolása miatt:
+Törölje manuálisan a visszaállítási pontok gyűjteményt, amely miatt a zárolást a az erőforráscsoport nem törlődnek, az alábbi lépéseket:
 1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com/).
 2. Az a **Hub** menüben kattintson a **összes erőforrás**, válassza ki az erőforráscsoportot és a következő formátumú AzureBackupRG_`<Geo>`_`<number>` ahol a virtuális gép megtalálható.
 

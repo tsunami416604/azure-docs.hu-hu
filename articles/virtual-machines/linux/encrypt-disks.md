@@ -13,44 +13,38 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/31/2018
+ms.date: 10/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 044486424f8bcc9d66998f775154eff9c52e7d1b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b80c2fe44ddd15e0e31a83e5baab37736dc57fca
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981229"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913767"
 ---
 # <a name="how-to-encrypt-a-linux-virtual-machine-in-azure"></a>Az Azure-beli Linuxos virtuális gép titkosítása
 
 Bővített virtuális gép (VM) biztonsági és megfelelőségi virtuális lemezeket és a virtuális gépre titkosíthatók. Virtuális gépek vannak titkosítva, amely egy Azure Key vaultban biztosított titkosítási kulcsok használatával. Szabályozhatja a kriptográfiai kulcsokat és naplózhatja azok használatát. Ez a cikk részletesen bemutatja az Azure parancssori felületével Linux virtuális gép virtuális lemezeinek titkosításához. 
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
+
+Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
+
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon is elindíthatja a [https://shell.azure.com/bash](https://shell.azure.com/bash) cím megnyitásával. A **Másolás** kiválasztásával másolja és illessze be a kódrészleteket a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 Ha helyi telepítése és használata a parancssori felület, ez a cikk megköveteli, hogy futnak-e az Azure CLI 2.0.30-as verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="overview-of-disk-encryption"></a>Lemeztitkosítás – áttekintés
-Rest használatával titkosított virtuális lemezhez a Linux rendszerű virtuális gépek [dm-crypt](https://wikipedia.org/wiki/Dm-crypt). Nem jár költséggel az Azure-beli virtuális lemezek titkosításához. Titkosítási kulcsok Azure Key Vault szoftver védelemmel vannak tárolva, vagy Ön importálhat vagy hozhat létre a kulcsokat hardveres biztonsági modulokban (HSM) certified FIPS 140-2 szabványnak megfelelő 2. szint. Ezek a titkosítási kulcsok feletti ellenőrzés megtartása és naplózhatja azok használatát. Ezek a titkosítási kulcsok titkosítására és visszafejtésére a virtuális Géphez csatolt virtuális lemezek segítségével. Egy Azure Active Directory egyszerű szolgáltatás lehetővé teszi a biztonságos kiállító a kriptográfiai kulcsokat, a virtuális gépek vannak kapcsolva, és ki.
+Rest használatával titkosított virtuális lemezhez a Linux rendszerű virtuális gépek [dm-crypt](https://wikipedia.org/wiki/Dm-crypt). Nem jár költséggel az Azure-beli virtuális lemezek titkosításához. Titkosítási kulcsok Azure Key Vault szoftver védelemmel vannak tárolva, vagy Ön importálhat vagy hozhat létre a kulcsokat hardveres biztonsági modulokban (HSM) certified FIPS 140-2 szabványnak megfelelő 2. szint. Ezek a titkosítási kulcsok feletti ellenőrzés megtartása és naplózhatja azok használatát. Ezek a titkosítási kulcsok titkosítására és visszafejtésére a virtuális Géphez csatolt virtuális lemezek segítségével. 
 
 Virtuális gépek titkosításához a folyamat a következőképpen történik:
 
 1. Hozzon létre egy titkosítási kulcsot az Azure Key vaultban.
-2. A titkosítási kulcs is használható titkosításához lemezek konfigurálása.
-3. A titkosítási kulcs olvasni az Azure Key Vault, egy Azure Active Directory egyszerű szolgáltatás létrehozása a megfelelő engedélyekkel.
-4. Adja ki a parancsot a virtuális lemezeket, és adja meg az Azure Active Directory szolgáltatás egyszerű és a megfelelő titkosítási kulcs használható titkosításához.
-5. Az Azure Active Directory egyszerű szolgáltatás a szükséges titkosítási kulcs Azure Key vault kérelmek.
-6. A virtuális lemezek vannak titkosítva, a megadott titkosítási kulcs használatával.
+1. A titkosítási kulcs is használható titkosításához lemezek konfigurálása.
+1. A virtuális lemezek lemeztitkosítás engedélyezve.
+1. A szükséges titkosítási kulcsokat az Azure Key vault kérnek.
+1. A virtuális lemezek vannak titkosítva, a megadott titkosítási kulcs használatával.
 
-## <a name="encryption-process"></a>Titkosítási folyamat
-Lemeztitkosítás támaszkodik a következő további összetevők:
-
-* **Az Azure Key Vault** – az a lemez titkosítási/visszafejtési folyamathoz használt kriptográfiai kulcsok és titkos védelme érdekében.
-  * Ha ilyen használhatja egy meglévő Azure Key Vaultban. Nem kell rendelnie egy Key Vaultot a lemezek titkosítása.
-  * Külön adminisztratív határokat és a kulcs láthatóságát, létrehozhat egy dedikált Key Vaultot.
-* **Az Azure Active Directory** -szükséges titkosítási kulcsokat és a hitelesítés kért műveletek biztonságos cserélt kezeli.
-  * Használhat meglévő Azure Active Directory-példány elhelyezésére szolgáló az alkalmazás általában.
-  * Az egyszerű szolgáltatás használatával igényelhet és állítanak ki a megfelelő titkosítási kulcsok biztonságos módot biztosít. Nem fejleszt egy tényleges alkalmazás, amely integrálható az Azure Active Directoryban.
 
 ## <a name="requirements-and-limitations"></a>Követelmények és korlátozások
 Támogatott esetek és lemeztitkosításhoz követelmények:
@@ -79,16 +73,17 @@ Engedélyezze az Azure Key Vault-szolgáltató belül az Azure-előfizetésbe [a
 
 ```azurecli-interactive
 az provider register -n Microsoft.KeyVault
-az group create --name myResourceGroup --location eastus
+resourcegroup="myResourceGroup"
+az group create --name $resourcegroup --location eastus
 ```
 
 Az Azure Key Vault a kriptográfiai kulcsokat és a kapcsolódó számítási erőforrásokat, például a storage és a virtuális gépre tartalmazó ugyanabban a régióban kell lennie. Hozzon létre egy Azure Key Vault- [az keyvault létrehozása](/cli/azure/keyvault#az-keyvault-create) , és engedélyezze a Key Vault lemeztitkosítás való használatra. Adjon meg egy egyedi Key Vault számára *keyvault_name* módon:
 
 ```azurecli-interactive
-keyvault_name=myuniquekeyvaultname
+keyvault_name=myvaultname$RANDOM
 az keyvault create \
     --name $keyvault_name \
-    --resource-group myResourceGroup \
+    --resource-group $resourcegroup \
     --location eastus \
     --enabled-for-disk-encryption True
 ```
@@ -98,27 +93,10 @@ Titkosítási kulcsok használatával a szoftver vagy hardver biztonsági modell
 Mindkét védelme esetében az Azure platform kell hozzáférést kérni a titkosítási kulcsok a virtuális gép indításakor a virtuális lemezek visszafejtéséhez. Hozzon létre egy titkosítási kulcsot a Key vaultban a [az keyvault key létrehozása](/cli/azure/keyvault/key#az-keyvault-key-create). A következő példában létrehozunk egy kulcsot *myKey*:
 
 ```azurecli-interactive
-az keyvault key create --vault-name $keyvault_name --name myKey --protection software
-```
-
-
-## <a name="create-an-azure-active-directory-service-principal"></a>Azure Active Directory-szolgáltatásnév létrehozása
-Virtuális lemezek titkosítása vagy visszafejtése, meg kell adnia egy fiókot, amely kezeli a hitelesítési és titkosítási kulcsok a Key Vaultból cseréje. Ezt a fiókot, egy Azure Active Directory-szolgáltatásnevet, lehetővé teszi, hogy az Azure platform kérése a megfelelő titkosítási kulcsok a virtuális gép nevében. Egy alapértelmezett Azure Active Directory-példányt az előfizetésében, érhető el, bár számos szervezet rendelkezik dedikált Azure Active Directory-címtár.
-
-Az Azure Active Directory-szolgáltatásnév létrehozása [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac). Az alábbi példa az egyszerű szolgáltatás és a jelszót használni a későbbi parancsokban olvassa be az értékeket:
-
-```azurecli-interactive
-read sp_id sp_password <<< $(az ad sp create-for-rbac --query [appId,password] -o tsv)
-```
-
-A jelszó csak akkor jelenik meg, ha Ön az egyszerű szolgáltatás létrehozása. Ha szükséges, megtekintheti, és jegyezze fel a jelszót (`echo $sp_password`). A szolgáltatásnevek az listázhatja [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) és a egy egyszerű, az adott szolgáltatás kapcsolatos további információk megtekintéséhez [az ad sp show](/cli/azure/ad/sp#az-ad-sp-show).
-
-Sikeresen titkosítására vagy visszafejtésére virtuális lemezek, engedélyezi az Azure Active Directory szolgáltatás egyszerű, olvassa el a kulcsokat a Key vaultban tárolt titkosítási kulcs engedélyeket kell beállítani. A Key Vault-engedélyek beállítása [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy). A következő példában a szolgáltatásnév-Azonosítót az ezt megelőző parancsban megadott:
-
-```azurecli-interactive
-az keyvault set-policy --name $keyvault_name --spn $sp_id \
-  --key-permissions wrapKey \
-  --secret-permissions set
+az keyvault key create \
+    --vault-name $keyvault_name \
+    --name myKey \
+    --protection software
 ```
 
 
@@ -127,7 +105,7 @@ Egy virtuális gépet a [az virtuális gép létrehozása](/cli/azure/vm#az-vm-c
 
 ```azurecli-interactive
 az vm create \
-    --resource-group myResourceGroup \
+    --resource-group $resourcegroup \
     --name myVM \
     --image UbuntuLTS \
     --admin-username azureuser \
@@ -139,21 +117,14 @@ Ssh-KAPCSOLATOT a virtuális gépet a *publicIpAddress* az előző parancs kimen
 
 
 ## <a name="encrypt-the-virtual-machine"></a>A virtuális gép titkosítása
-A virtuális lemezek titkosítását, hogy egyesítik az előző összetevők:
 
-1. Adja meg az Azure Active Directory egyszerű szolgáltatás és a jelszót.
-2. Adja meg a Key Vault, a titkosított lemezek metaadatok tárolására.
-3. Adja meg a titkosítási kulcsok használata a tényleges titkosításra és visszafejtésre.
-4. Adja meg, hogy szeretné-e az operációsrendszer-lemez, az adatlemezeket, vagy az összes titkosítása.
 
 A virtuális gép titkosítása [az vm encryption engedélyezése](/cli/azure/vm/encryption#az-vm-encryption-enable). Az alábbi példában a *$sp_id* és *$sp_password* az előző változók [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) parancsot:
 
 ```azurecli-interactive
 az vm encryption enable \
-    --resource-group myResourceGroup \
+    --resource-group $resourcegroup \
     --name myVM \
-    --aad-client-id $sp_id \
-    --aad-client-secret $sp_password \
     --disk-encryption-keyvault $keyvault_name \
     --key-encryption-key myKey \
     --volume-type all
@@ -162,53 +133,33 @@ az vm encryption enable \
 A titkosítási folyamat végrehajtásához némi időt vesz igénybe. A folyamat állapotának monitorozásához [az vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show):
 
 ```azurecli-interactive
-az vm encryption show --resource-group myResourceGroup --name myVM
+az vm encryption show --resource-group $resourcegroup --name myVM --query 'status'
 ```
 
-A kimenet az alábbihoz csonkolva hasonlít:
+Amikor végzett, a kimenet a következő példához hasonló fog kinézni:
 
 ```json
 [
-  "dataDisk": "EncryptionInProgress",
-  "osDisk": "EncryptionInProgress"
+  {
+    "code": "ProvisioningState/succeeded",
+    "displayStatus": "Provisioning succeeded",
+    "level": "Info",
+    "message": "Encryption succeeded for all volumes",
+    "time": null
+  }
 ]
 ```
 
-Várjon, amíg az operációs rendszer állapota lemez jelentések **VMRestartPending**, majd indítsa újra a virtuális gép [az virtuális gép újraindítása](/cli/azure/vm#az-vm-restart):
-
-```azurecli-interactive
-az vm restart --resource-group myResourceGroup --name myVM
-```
-
-A titkosítási folyamat akkor fejeződik be, a rendszerindítási folyamat során, ezért Várjon néhány percet, mielőtt újra a titkosítás állapotának ellenőrzésével [az vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show):
-
-```azurecli-interactive
-az vm encryption show --resource-group myResourceGroup --name myVM
-```
-
-Az állapota most jelentse az operációsrendszer-lemez és a, adatlemez **titkosított**.
-
 
 ## <a name="add-additional-data-disks"></a>További adatlemezek hozzáadása
-Az adatlemezek titkosított, miután később további virtuális lemezek hozzáadása a virtuális gép, és a titkosításhoz is őket. Ha például lehetővé teszi egy második virtuális lemez hozzáadása a virtuális gépre a következő:
+Az adatlemezek titkosított, miután további virtuális lemezek hozzáadása a virtuális Géphez, és titkosítani. 
 
-```azurecli-interactive
-az vm disk attach \
-    --resource-group myResourceGroup \
-    --vm-name myVM \
-    --disk myDataDisk \
-    --new \
-    --size-gb 5
-```
-
-Futtassa újra a parancsot a virtuális lemezek titkosítása a következőképpen:
+Után az adatlemezt a virtuális gép van adva, futtassa újra a parancsot a virtuális lemezek titkosítása a következőképpen:
 
 ```azurecli-interactive
 az vm encryption enable \
-    --resource-group myResourceGroup \
+    --resource-group $resourcegroup \
     --name myVM \
-    --aad-client-id $sp_id \
-    --aad-client-secret $sp_password \
     --disk-encryption-keyvault $keyvault_name \
     --key-encryption-key myKey \
     --volume-type all

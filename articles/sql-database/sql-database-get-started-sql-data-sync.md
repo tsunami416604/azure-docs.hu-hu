@@ -11,15 +11,15 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 98d30d2987d42a2c4893e00c3ba2ea6acd471bef
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.date: 11/01/2018
+ms.openlocfilehash: 71e5ae2a6b486873df147e7c2c0518e1c47b09c7
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318809"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914005"
 ---
-# <a name="set-up-sql-data-sync-to-sync-data-between-azure-sql-database-and-sql-server-on-premises"></a>A helyszíni adatokat az Azure SQL Database és SQL Server között, az SQL Data Sync beállítása
+# <a name="tutorial-set-up-sql-data-sync-to-sync-data-between-azure-sql-database-and-sql-server-on-premises"></a>Oktatóanyag: Azure SQL Database és a helyszíni SQL Server közötti adatokat beállítása az SQL Data Sync szolgáltatással
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan hozzon létre egy hibrid szinkronizálási csoport, amely tartalmazza az Azure SQL Database és az SQL Server-példányok Azure SQL Data Sync beállítása. Az új szinkronizálási csoport teljes van konfigurálva, és a beállított ütemezés szerint szinkronizálja.
 

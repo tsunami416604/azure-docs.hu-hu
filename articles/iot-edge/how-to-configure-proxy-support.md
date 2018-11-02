@@ -4,16 +4,16 @@ description: Hogyan állíthatja be az Azure IoT Edge-futtatókörnyezet és bá
 author: kgremban
 manager: ''
 ms.author: kgremban
-ms.date: 09/24/2018
+ms.date: 11/01/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6e6a1d2f758cabca41ac405a01de1f0d8bfd0a7b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 72855058c5e8294eece55f8dbcdc501025c9aabf
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037456"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913223"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Egy proxykiszolgálón keresztül kommunikáljon az IoT Edge-eszköz konfigurálása
 
@@ -25,6 +25,18 @@ Proxykiszolgáló használata az IoT Edge-eszköz konfigurálása a következő 
 2. A Docker-démont és az IoT Edge-démon konfigurálja a proxykiszolgáló használatára az eszközön.
 3. Az eszközön a config.yaml fájlban edgeAgent tulajdonságainak konfigurálása.
 4. Környezeti változókat az IoT Edge-futtatókörnyezet és az egyéb IoT Edge modulok beállítása manifest nasazení. 
+
+## <a name="know-your-proxy-url"></a>Tudja, a proxy URL-címe
+
+A Docker-démont és az IoT Edge konfigurálása az eszközön, akkor ismernie kell a proxykiszolgáló URL-CÍMÉT. 
+
+Proxykiszolgáló URL-címeket is a következő formátumban: **protokoll**://**proxy_host**:**proxyport**. 
+
+* A **protokoll** HTTP vagy HTTPS van. A Docker-démon mindkét protokollt, a container registry beállításoktól függően a konfigurálható, de az IoT Edge-démont és futásidejű tárolók mindig HTTPS PROTOKOLLT használnak.
+
+* A **proxy_host** esetében a proxykiszolgáló-cím. Ha a proxykiszolgáló hitelesítést igényel, a hitelesítő adatokat biztosíthat a proxy_host formátumban részeként **felhasználói**:**jelszó**@**proxy_host**. 
+
+* A **proxyport** a hálózati portot, amelyen a proxy válaszol hálózati forgalmat. 
 
 ## <a name="install-the-runtime"></a>A modul telepítése
 
@@ -47,7 +59,7 @@ A Docker és az IoT Edge démonok, az IoT Edge-eszközön fut, hogy a proxykiszo
 
 ### <a name="docker-daemon"></a>Docker-démon
 
-Tekintse meg a Docker dokumentációt a Docker-démon konfigurálása a környezeti változókat. A legtöbb tároló-beállításjegyzékek (beleértve a DockerHub és az Azure Container Registry) támogatja a HTTPS-kéréseket, így, állítsa be a változó **HTTPS_PROXY**. Ha Ön stahují se Image. a beállításjegyzékből, amely nem támogatja a transport layer security (TLS), akkor előfordulhat, hogy kell beállítania a **HTTP_PROXY**. 
+Tekintse meg a Docker dokumentációt a Docker-démon konfigurálása a környezeti változókat. A legtöbb tároló-beállításjegyzékek (beleértve a DockerHub és az Azure Container Registry) támogatja a HTTPS-kéréseket, így a paraméter, amely kell beállítania **HTTPS_PROXY**. Ha Ön stahují se Image. a beállításjegyzékből, amely nem támogatja a transport layer security (TLS), majd állítsa be a **HTTP_PROXY** paraméter. 
 
 Válassza ki a cikket, amely a Docker verziójára: 
 
@@ -113,7 +125,9 @@ Nyissa meg az IoT Edge-eszköz config.yaml fájlt. Linux rendszerek esetében ez
 
 Config.yaml a fájlban keresse meg a **az Edge Agent modul specifikációja** szakaszban. Az Edge agent definíciója tartalmaz egy **env** paraméter, ahol hozzáadhat környezeti változókat. 
 
-![edgeAgent definíciója](./media/how-to-configure-proxy-support/edgeagent-unedited.png)
+<!--
+![edgeAgent definition](./media/how-to-configure-proxy-support/edgeagent-unedited.png)
+-->
 
 Távolítsa el a kapcsos zárójeleket helyőrzőket az env paraméterhez, és az új változó hozzáadása egy új sort. Ne feledje, hogy a YAML francia éppen két szóköz. 
 
@@ -201,7 +215,7 @@ Ha tartalmazza a **UpstreamProtocol** környezeti változót az IoT Edge-eszköz
 ```json
 "env": {
     "https_proxy": {
-        "value": "<proxy URL"
+        "value": "<proxy URL>"
     },
     "UpstreamProtocol": {
         "value": "AmqpWs"

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f0a9ac1700d635365ebea0c5966489ed3d2d797b
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 335db0130ae6dd3d11d6592208fdf37e762509e5
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420243"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914821"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect: Verziókiadások
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -48,7 +48,6 @@ Letöltés |} [Töltse le az Azure AD Connect](http://go.microsoft.com/fwlink/?L
 
 
 - Attribútum késleltetve visszaírt üzemeltetett hangposta elvárt működésének biztosítása érdekében funkciójának megváltozott.  Bizonyos körülmények között az Azure AD során késleltetve visszaírt null értékű volt felülírása msExchUcVoicemailSettings attribútum.  Az Azure AD most már nem törli az attribútum értéke a helyszíni, ha a felhő érték nincs megadva.
-- A továbbfejlesztett módosított alapértelmezett szabályok kezelése. Most már értesítést kap, ha módosításokat végzett az alapértelmezett szabályokat, és javítsa ki az alapértelmezett szabályok a beállítások érhetők el. 
 - Diagnosztika az Azure AD Connect varázsló vizsgálja meg, és azonosíthatja a kapcsolati hibákat az Azure AD hozzá. Ezek azonos diagnosztikai is futtathatja közvetlenül a Powershellen keresztül a Test - AdSyncAzureServiceConnectivity parancsmag használatával. 
 - Diagnosztikai hozzá, vizsgálja meg, és azonosíthatja a kapcsolati hibákat ad az Azure AD Connect varázsló. Ezek azonos diagnosztikai is futtathatja közvetlenül a Powershellen keresztül a ADConnectivityTools Powershell-modul a Start-ConnectivityValidation függvény használatával.  További információ: [Mi az a ADConnectivityTool PowerShell-modult?](how-to-connect-adconnectivitytools.md)
 - A hibrid Azure Active Directory-csatlakozás és az eszközvisszaírás egy AD séma verziója előzetes ellenőrzés hozzáadva 

@@ -11,15 +11,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: 053dbc27908b14e70fa2c7502ec7c4e3ae652bf5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 11/01/2018
+ms.openlocfilehash: 913e374e51b968650b14d3f6563f64c217b76ad0
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469758"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913797"
 ---
-# <a name="import-a-bacpac-file-to-a-new-azure-sql-database"></a>Az új Azure SQL-adatbázis BACPAC-fájl importálása
+# <a name="quickstart-import-a-bacpac-file-to-a-new-azure-sql-database"></a>Gyors útmutató: Az új Azure SQL-adatbázis BACPAC-fájl importálása
 
 Mikor kell az adatbázis importálására az archívumot, vagy egy másik platformon áttelepítésekor az adatbázis-séma és adatok importálhatja egy [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) fájlt. BACPAC-fájl egy ZIP-fájlt tartalmazó a metaadatokat és az adatokat az SQL Server-adatbázis BACPAC kiterjesztési. BACPAC-fájl importálhatók az Azure blob storage (csak standard szintű storage) vagy a helyszíni helyen a helyi tárolóból. Az importálás sebesség maximalizálása azt javasoljuk, hogy adjon meg egy magasabb szolgáltatási szintre és méretét, például egy P6 szintű számítási és majd a sikeres importálása után szükség szerint lefelé skálázhatja. Az adatbázis kompatibilitási szintjét az importálás után is, a forrás-adatbázis kompatibilitási szintje alapján.
 

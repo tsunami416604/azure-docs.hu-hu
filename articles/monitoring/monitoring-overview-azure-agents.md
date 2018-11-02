@@ -1,6 +1,6 @@
 ---
-title: Az Azure-figyelő ügynökök áttekintése |} Microsoft Docs
-description: Ez a cikk az Azure ügynökök elérhető monitoring Azure virtuális gépeket támogató részletes áttekintést nyújt.
+title: Az Azure monitorozási ügynökök |} A Microsoft Docs
+description: Ez a cikk részletes áttekintést nyújt az Azure-ügynökök érhető el, amely támogatja az Azure virtuális gépek figyelése.
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: magoedte
-ms.openlocfilehash: a399c3968e5ee1e2d1f6d623a68dbb1e15cef212
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 62edeb36fcd56733630edc6fa27c9963f20b0186
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37088644"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913546"
 ---
-# <a name="overview-of-the-azure-agents-to-monitor-azure-virtual-machines"></a>Az Azure virtuális gépek figyelése céljából Azure ügynökök áttekintése
-A Microsoft Azure különféle típusú adatokat gyűjteni az Azure vagy más Microsoft Windows és Linux rendszerű szolgáltatók futtatott virtuális gépek több lehetőséget nyújt.  Ez a cikk segít ahhoz, hogy segítségével meghatározhatja, melyik támogatja a kezelő ügynököket érhető el vagy általános követelmények figyelési képességek és a különbségeket ismerteti.  
+# <a name="overview-of-the-azure-agents-to-monitor-azure-virtual-machines"></a>Az Azure-ügynökök figyeléséhez az Azure-beli virtuális gépek áttekintése
+A Microsoft Azure több módszert is biztosít a különböző típusú adatok gyűjtésére az Azure rendszerben vagy egyéb felhőszolgáltatók, Microsoft Windows és Linux rendszerű virtuális gépek.  Ez a cikk segít a különbségek és képességek érhető el minden ügynök arra, hogy melyik támogatni fogja a service management sorrendben vagy általános figyelési követelmények leírása.  
 
-## <a name="comparing-azure-diagnostic-and-log-analytics-agent"></a>Azure diagnosztikai és Naplóelemzési ügynök összehasonlítása
-Ma az Azure két típusa van ügynökök egy Azure virtuális gép - figyelhető a Azure Diagnostics bővítményt, és a Linux és a Windows Log Analytics Agent.  Alapvetően ügynökök készültek, metrikákat és a naplók összegyűjtésére és a tárház továbbítja. Azonban, hogy, ahol azok Hasonlóságok végén.  
+## <a name="comparing-azure-diagnostic-and-log-analytics-agent"></a>Azure diagnosztikai és a Log Analytics-ügynök összehasonlítása
+Még ma az Azure-ban két típusa van az ügynökök egy Azure-beli Virtuálisgép - figyelhető az Azure Diagnostics bővítmény és a Log Analytics-ügynököket a Linux és Windows.  Alapvetően ezeket az ügynököket úgy tervezték, metrikák és naplók összegyűjtése, és továbbítsa a tárházhoz. Azonban, hogy, ahol azok Hasonlóságok vége.  
 
-A [Azure Diagnostics bővítmény](../monitoring-and-diagnostics/azure-diagnostics.md), amely adtak meg Azure-szolgáltatásokhoz 2010, elérhetővé vált, mivel egy olyan ügynök, egy Azure IaaS erőforrás, például egy virtuális Gépet, az letölti a egyszerű diagnosztikai adatok gyűjtésére és megőrizni az Azure storage.  Ha a tároló úgy döntött, hogy egyike a számos elérhető eszköz, például megtekintheti [a Visual Studio Server Explorer](../vs-azure-tools-storage-resources-server-explorer-browse-manage.md) és [Azure Tártallózó](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+A [Azure Diagnostics bővítmény](../monitoring-and-diagnostics/azure-diagnostics.md), amely megadva az Azure Cloud Services 2010, általánosan elérhető vált, mert olyan ügynök, amely egy Azure IaaS-erőforrás, például egy virtuális Gépet, a diagnosztikai adatok egyszerű gyűjteménye biztosít, és azt az Azure storage-megmarad.  Miután a tároló úgy döntött, hogy az egyik számos elérhető eszköz, például megtekintheti [a Visual Studio Server Explorer](../vs-azure-tools-storage-resources-server-explorer-browse-manage.md) és [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
-Ha szeretné gyűjteni:
+Ha szeretné, gyűjtése:
 
-* Operációs rendszer teljesítményszámlálók és Eseménynapló, vagy előre definiált is adja meg, hogy gyűjtéséhez. 
-* Kérelmek, illetve a sikertelen kérelmek egy IIS webkiszolgálón
-* Nyomkövetési naplók kimeneti .NET-alkalmazás
+* Előre definiált operációs rendszer teljesítményszámlálók és az eseménynaplókat, vagy amelyek gyűjtésére is megadhat. 
+* Összes kérelem és/vagy egy IIS-webkiszolgálón a sikertelen kérelmek
+* .NET-alkalmazás nyomkövetési kimeneti naplók
 * Esemény-nyomkövetés Windows (ETW)-események 
-* Syslog alkalmazásnapló-események gyűjtése  
+* Alkalmazásnapló-események gyűjtése a syslog  
 * összeomlási memóriaképek, 
 
-Adatok alternatív továbbítható [Application Insights](../application-insights/app-insights-cloudservices.md), [Naplóelemzési](../log-analytics/log-analytics-overview.md), vagy az-Azure szolgáltatások használatával [Eseményközpont](../event-hubs/event-hubs-what-is-event-hubs.md). 
+Adatok is továbbítható [Application Insights](../application-insights/app-insights-cloudservices.md), [Log Analytics](../log-analytics/log-analytics-overview.md), vagy az-Azure szolgáltatások használatával [Eseményközpont](../event-hubs/event-hubs-about.md). 
 
-Speciális figyelésére több mint gyűjtését metrikák és a naplók részhalmazát kell, a Windows és Linux Log Analyticshez ügynök megadása kötelező.  Ez az ügynök az Azure-szolgáltatások például az automatizálás és Naplóelemzési, beleértve a teljes készletét kínálnak, képes biztosítani az Azure virtuális gépeken, a teljes életciklusuk átfogó felügyeleti funkciókat használatára képesek az. Az érintett műveletek közé tartoznak az alábbiak:
+Speciális monitorozás esetében van szüksége több mint gyűjtését metrikák és naplók egy részét, a Log Analytics-ügynököket Windows és Linux rendszerhez készült szükség.  Ez az ügynök az Ön Azure-szolgáltatások például Automation és a Log Analyticsben, az általuk kínált, hogy az Azure-beli virtuális életciklusuk átfogó felügyeleti funkciók teljes készletét használhatja. Az érintett műveletek közé tartoznak az alábbiak:
 
-* [Azure Automation frissítéskezelés](../automation/automation-update-management.md) az operációs rendszer frissítése
-* [Azure Automation kívánt állapot konfigurációs](../automation/automation-dsc-overview.md) konzisztens konfigurációs-állapot karbantartásához
-* A konfigurációs változások követése [Azure Automation változások követése és szoftverleltár](../automation/automation-change-tracking.md)
-* Operációs rendszer és az üzemeltetett alkalmazások, mint például az egyéni naplókat gyűjteménye [FluentD](../log-analytics/log-analytics-data-sources-json.md), [egyéni naplókat](../log-analytics/log-analytics-data-sources-custom-logs.md), [MySQL és Apache](../log-analytics/log-analytics-data-sources-linux-applications.md) a Naplóelemzési
-* Azure-szolgáltatások, mint [Application Insights](https://docs.microsoft.com/azure/application-insights/) és [az Azure Security Center](https://docs.microsoft.com/azure/security-center/) natív módon tárolja az adatokat közvetlenül a Naplóelemzési.  
+* [Az Azure Automation Update management](../automation/automation-update-management.md) operációsrendszer-frissítések
+* [Azure Automation Desired State Configuration](../automation/automation-dsc-overview.md) konzisztens konfiguráció-állapot karbantartásához
+* Konfigurációs változások követése a [Azure Automation Change Tracking and Inventory](../automation/automation-change-tracking.md)
+* Az operációs rendszer és üzemeltetett alkalmazások, mint például az egyéni naplók gyűjtésének [FluentD](../log-analytics/log-analytics-data-sources-json.md), [egyéni naplók](../log-analytics/log-analytics-data-sources-custom-logs.md), [MySQL és az Apache](../log-analytics/log-analytics-data-sources-linux-applications.md) a Log Analytics használatával
+* Azure-szolgáltatások például [Application Insights](https://docs.microsoft.com/azure/application-insights/) és [az Azure Security Center](https://docs.microsoft.com/azure/security-center/) natív módon tárolja az adatokat közvetlenül a Log Analyticsben.  
 
 ## <a name="next-steps"></a>További lépések
 
-- Lásd: [adatokat gyűjteni a Log Analyticshez környezetében lévő számítógépek](../log-analytics/log-analytics-concept-hybrid.md) tekintse át a rendszerkövetelményeket és a rendelkezésre álló metódusok telepítse az ügynököt az adatközpontból vagy egyéb felhőalapú környezetben lévő számítógépek számára.
+- Lásd: [adatok gyűjtése a Log Analytics szolgáltatással környezetében számítógépekről](../log-analytics/log-analytics-concept-hybrid.md) , tekintse át a követelményeket és a választható módszerek az ügynök telepítése a számítógépekre az adatközpontban vagy egyéb felhőalapú környezetben.
 - Az adatgyűjtés Azure-beli virtuális gépekről való konfigurálásáról lásd: [Adatgyűjtés Azure-beli virtuális gépekről](../log-analytics/log-analytics-quick-collect-azurevm.md). 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
 ms.component: disks
-ms.openlocfilehash: de5322709b5d7f7bcfe6c512bab94b025d9a56a7
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: d6491ea1fd46d1dbd3d258a79a8d8e932173dae5
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023553"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912288"
 ---
 # <a name="about-disks-storage-for-azure-windows-vms"></a>Az Azure Windows virtuális gépek disks storage-ról
 
@@ -42,7 +42,7 @@ Az Azure általi az ideiglenes lemez további információkért lásd: [az ideig
 
 ### <a name="data-disk"></a>Adatlemez
 
-Adatlemez egy alkalmazás vagy egyéb adatok továbbra is szeretné tárolni a virtuális géphez csatolt virtuális merevlemez. Adatlemezek SCSI-meghajtók, regisztrálva van, és betűvel, Ön által választott vannak ellátva. Az egyes adatlemezek kapacitása maximum 4095 GB-ot, a felügyelt lemezek – 32 767 TiB maximális kapacitását. A virtuális gép mérete határozza meg, hány adatlemez csatolható, és a tárolás típusát használhatja a lemezek.
+Adatlemez egy alkalmazás vagy egyéb adatok továbbra is szeretné tárolni a virtuális géphez csatolt virtuális merevlemez. Adatlemezek SCSI-meghajtók, regisztrálva van, és betűvel, Ön által választott vannak ellátva. Az egyes adatlemezek kapacitása maximum 4095 GB-ot, a felügyelt lemezek – 32 767 GiB maximális kapacitását. A virtuális gép mérete határozza meg, hány adatlemez csatolható, és a tárolás típusát használhatja a lemezek.
 
 > [!NOTE]
 > Virtuális gépek kapacitások kapcsolatos további információkért lásd: [méretek a Windows virtuális gépek](sizes.md).

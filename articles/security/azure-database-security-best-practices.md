@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: tomsh
-ms.openlocfilehash: 0f738348dd0a000df8b1da299bb7b58ebc5a1165
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 50cfc2e8420d9f427b02c739f497d8546d880d7c
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040097"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747762"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure database ajánlott biztonsági eljárások
 Biztonsági adatbázis elsődleges szempont, és azt mindig az, hogy prioritást [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). Az adatbázisok szorosan leköthetőek súgó megfelel a legtöbb szabályozási és biztonsági követelmények, többek között a HIPAA, az ISO 27001/27002 és a PCI DSS Level 1. Biztonsági megfelelőségi tanúsítványok aktuális listáját érhető el: a [Microsoft Trust Center webhely](http://azure.microsoft.com/support/trust-center/services/). Is kiválaszthatja, hogy az adott Azure-adatközpontok a szabályozási követelményeknek megfelelően az adatbázisok helyezze.
@@ -72,22 +72,18 @@ Előnyei a következők:
 
 > [!NOTE]
 > SQL Server-hitelesítés nem használható a Kerberos biztonsági protokollt.
->
->
 
 Ha az SQL Server-hitelesítést használ, a következőket kell tennie:
 
 - Az erős hitelesítő adatok kezelése saját magának.
 - A kapcsolati karakterláncban a hitelesítő adatok védelmét.
-- A hitelesítő adatokat a hálózaton keresztül továbbított a webkiszolgáló az adatbázishoz (vélhetően) védelmét. További információkért lásd: [hogyan: Kapcsolódás az SQL Server használata az SQL-hitelesítés az ASP.NET 2.0](https://msdn.microsoft.com/library/ms998300.aspx).
+- A hitelesítő adatokat a hálózaton keresztül továbbított a webkiszolgáló az adatbázishoz (vélhetően) védelmét. További információkért lásd: [hogyan: Kapcsolódás az SQL Server használata az SQL-hitelesítés az ASP.NET 2.0](/previous-versions/msp-n-p/ff648340(v=pandp.10)).
 
 ### <a name="azure-active-directory-ad-authentication"></a>*Az Azure Active Directory (AD) hitelesítési*
 Az Azure AD-hitelesítés egy Azure SQL Database-adatbázishoz kapcsolódáskor mechanizmust és [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) identitásokat az Azure AD-ben. Az Azure AD-hitelesítés az identitások, az adatbázis-felhasználók és más Microsoft-szolgáltatások egyetlen központi helyen kezelheti. Központi azonosítófelügyeleti biztosít egy helyen adatbázis-felhasználók kezelése és egyszerűsíti az engedélyek kezelését.
 
 > [!NOTE]
 > Javasoljuk, hogy az Azure AD-hitelesítés az SQL Server-hitelesítés használatára.
->
->
 
 Előnyei a következők:
 
@@ -112,12 +108,12 @@ A konfigurálás lépéseinek végrehajtásához konfigurálhatja és használha
 
 A részletes információkat [használható Azure Active Directory-hitelesítést a hitelesítés az SQL Database felügyelt példányába vagy az SQL Data Warehouse](../sql-database/sql-database-aad-authentication.md).
 
-## <a name="protect-your-data-by-using-encryption"></a>Az adatok védelme titkosítás segítségével
-[Az Azure SQL Database transzparens adattitkosításának](https://msdn.microsoft.com/library/dn948096.aspx) védi a lemezen lévő adatokat, és a védelmet, hardver való jogosulatlan hozzáféréssel szemben. Valós idejű titkosítási és visszafejtési az adatbázis, azokhoz kapcsolódó biztonsági mentési és tranzakciós naplófájlokra inaktív azt végez anélkül, hogy a módosításokat. Transzparens adattitkosítás a tárolót a teljes adatbázisra az adatbázis-titkosítási kulcs nevű szimmetrikus kulcs használatával titkosítja.
+## <a name="protect-your-data-by-using-encryption-and-row-level-security"></a>Az adatok védelme titkosítás és a sorszintű biztonság használatával
+[Az Azure SQL Database transzparens adattitkosításának](../sql-database/transparent-data-encryption-azure-sql.md) védi a lemezen lévő adatokat, és a védelmet, hardver való jogosulatlan hozzáféréssel szemben. Valós idejű titkosítási és visszafejtési az adatbázis, azokhoz kapcsolódó biztonsági mentési és tranzakciós naplófájlokra inaktív azt végez anélkül, hogy a módosításokat. Transzparens adattitkosítás a tárolót a teljes adatbázisra az adatbázis-titkosítási kulcs nevű szimmetrikus kulcs használatával titkosítja.
 
 Akkor is, ha a teljes tárolási titkosított, fontos, maga az adatbázis is titkosíthatja. Ez az adatvédelmi jellegű defense megközelítés megvalósítását. Ha használ az Azure SQL Database és számára védelmet kíván biztosítani a bizalmas adatok (például hitelkártya vagy társadalombiztosítási szám), titkosíthatók adatbázisok a FIPS 140-2 hitelesített 256 bites AES-titkosítás. A titkosítás megfelel a követelményeknek (például a HIPAA és a PCI) számos iparági szabvány.
 
-Kapcsolódó fájlok [(BPE) kiterjesztés puffer](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) nem titkosítottak, amikor egy adatbázis transzparens adattitkosítás használatával titkosítja. Rendszer-fájlszintű titkosítás és hasonló eszközökkel kell használnia [BitLocker](https://technet.microsoft.com/library/cc732774) vagy a [titkosított fájlrendszer (EFS)]() kapcsolatos BPE fájlok számára.
+Kapcsolódó fájlok [(BPE) kiterjesztés puffer](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) nem titkosítottak, amikor egy adatbázis transzparens adattitkosítás használatával titkosítja. Rendszer-fájlszintű titkosítás és hasonló eszközökkel kell használnia [BitLocker](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11)) vagy a [titkosított fájlrendszer (EFS)](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc749610(v%3dws.10)) kapcsolatos BPE fájlok számára.
 
 Egy jogosult felhasználó, például a biztonsági rendszergazda vagy egy adatbázis-rendszergazda férhet hozzá az adatokhoz, még akkor is, ha az adatbázis transzparens adattitkosítással titkosítva van, mert is hajtsa végre ezeket a javaslatokat:
 
@@ -128,9 +124,9 @@ Egy jogosult felhasználó, például a biztonsági rendszergazda vagy egy adatb
 
 Az adatok titkosításának egyéb módjaira vonatkozóan fontolja meg az alábbiakat:
 
-- A [cellaszintű titkosítás](https://msdn.microsoft.com/library/ms179331.aspx) használatával az egyes oszlopokat, vagy akár a cellákat is külön titkosítási kulccsal titkosíthatja.
-- [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx), amely lehetővé teszi az ügyfelek számára a bizalmas adatok ügyfélalkalmazásokon belüli titkosítását, és soha ne adja meg a titkosítási kulcsokat az adatbázismotorhoz (SQL Database vagy SQL Server). Ennek eredményeképpen azoknak, akik a saját adatok (és annak megtekintéséhez) elkülönülését Always Encrypted funkciója, és azok számára, akik kezelése az adatok (de nem rendelkezhetnek).
-- [Sorszintű biztonság](https://msdn.microsoft.com/library/dn765131), amely lehetővé teszi az ügyfelek számára, hogy szabályozzák egy adatbázistábla soraihoz, a rendszer a lekérdezést végrehajtó felhasználó jellemzői alapján való hozzáférést. (A példában mutatókat csoport tagságát, és végrehajtási környezetben.)
+- A [cellaszintű titkosítás](/sql/relational-databases/security/encryption/encrypt-a-column-of-data) használatával az egyes oszlopokat, vagy akár a cellákat is külön titkosítási kulccsal titkosíthatja.
+- [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine), amely lehetővé teszi az ügyfelek számára a bizalmas adatok ügyfélalkalmazásokon belüli titkosítását, és soha ne adja meg a titkosítási kulcsokat az adatbázismotorhoz (SQL Database vagy SQL Server). Ennek eredményeképpen azoknak, akik a saját adatok (és annak megtekintéséhez) elkülönülését Always Encrypted funkciója, és azok számára, akik kezelése az adatok (de nem rendelkezhetnek).
+- [Sorszintű biztonság](/sql/relational-databases/security/row-level-security), amely lehetővé teszi az ügyfelek számára, hogy szabályozzák egy adatbázistábla soraihoz, a rendszer a lekérdezést végrehajtó felhasználó jellemzői alapján való hozzáférést. (A példában mutatókat csoport tagságát, és végrehajtási környezetben.)
 
 Előfordulhat, hogy a szervezetek számára, amelyek nem használja az adatbázis-titkosítást fokozottabban ki a támadásokkal szemben, amelyek veszélyeztetik az SQL-adatbázisokban található adatokat.
 

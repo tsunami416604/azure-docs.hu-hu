@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: ergreenl
-ms.openlocfilehash: de77050206c98832b274e8bdbda8026fc115610e
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 9188e7a8dc5364592772b95c302c59a16bfad2be
+ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156221"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50754069"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Biztonságos LDAP (LDAPS-t) az Azure AD Domain Services felügyelt tartomány konfigurálása
 Ez a cikk bemutatja, hogyan engedélyezheti a biztonságos Lightweight Directory Access Protocol (LDAPS) számára az Azure AD tartományi szolgáltatásokkal felügyelt tartományban. A Secure LDAP van más néven "Lightweight Directory Access Protocol (LDAP) Secure Sockets Layer (SSL) rétegen keresztül / Transport Layer Security (TLS)".
@@ -45,7 +45,7 @@ A következő irányelveket kiszolgálónként érvényes tanúsítványt beszer
 
 1. **Megbízható kiállítók** – a tanúsítvány egy szolgáltató által a felügyelt tartomány secure LDAP használatával kapcsolódó számítógépek megbízhatónak kell kiállítaniuk. Ez a szolgáltató egy nyilvános hitelesítésszolgáltató (CA) vagy egy vállalati hitelesítésszolgáltató, ezek a számítógépek megbízhatónak lehet.
 2. **Élettartam** – a tanúsítványnak érvényesnek kell lennie legalább a következő 3 – 6 hónapra. A felügyelt tartomány Secure LDAP-hozzáférését megszakad, ha a tanúsítvány lejár.
-3. **Tulajdonos neve** – a tanúsítványon a tulajdonos nevét a felügyelt tartomány helyettesítő karaktert kell lennie. Például ha a tartomány neve a "contoso100.com", a tanúsítvány tulajdonos neve kell lennie ' *. contoso100.com ". A helyettesítő karaktert tartalmazó nevet a DNS-név (tulajdonos alternatív neve) értékre.
+3. **Tulajdonos neve** – a tanúsítványon a tulajdonos nevét a felügyelt tartománynévnek kell lennie. Például ha a tartomány neve a "contoso100.com", akkor a tanúsítvány tulajdonos neve "contoso100.com" kell lennie. 
 4. **Kulcshasználat** -tanúsítvány esetében a következő használ – digitális aláírások és kulcstitkosítás kell konfigurálni.
 5. **Tanúsítvány célja** – a tanúsítványnak kell lennie az SSL-kiszolgálói hitelesítés esetén érvényes.
 

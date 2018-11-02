@@ -1,18 +1,18 @@
 ---
 title: Az Azure IoT Hub lekérdezési nyelv ismertetése |} A Microsoft Docs
 description: Fejlesztői útmutató – a leírását az SQL-szerű IoT Hub lekérdezési nyelvet, az IoT hub eszköz/ikermodulokkal és feladatok kapcsolatos információk olvashatók be.
-author: fsautomata
+author: rezasherafat
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/26/2018
-ms.author: elioda
-ms.openlocfilehash: f28a41f4a80806df14e314dae05405b7b45449b1
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.date: 10/29/2018
+ms.author: rezas
+ms.openlocfilehash: b7919a86c5f0b6b6990b465ed0c563fb42ea8bbc
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318248"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747915"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub lekérdezési nyelv az eszköz és a modul twins, feladatokkal és üzenet-útválasztása
 
@@ -389,6 +389,11 @@ GROUP BY <group_by_element>
 **Attribute_name** a JSON-dokumentum a KIINDULÓ gyűjtemény tulajdonságra sem hivatkozik.
 
 A GROUP BY záradék jelenleg csak támogatott ikereszközök lekérdezésekor.
+
+> [!IMPORTANT]
+> Az előfizetési időszak `group` jelenleg számít egy speciális kulcsszót a lekérdezésekben. Abban az esetben, használhat `group` a tulajdonság nevét, fontolja meg a zárójelek hibák, például elkerülése érdekében tesszük `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'`.
+>
+>
 
 ## <a name="expressions-and-conditions"></a>Kifejezések és feltételekkel
 Magas szinten egy *kifejezés*:

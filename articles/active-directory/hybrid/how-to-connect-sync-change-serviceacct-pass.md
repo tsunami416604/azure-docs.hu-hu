@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 10/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b0b88622069801124aff5b44dc4b813838f41c73
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 331c536970445dacdb9afc9d3cfa5711b82bfbf0
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315167"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747252"
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Az Azure AD Connect szinkronizálási szolgáltatásfiók jelszavának módosítása
 Az Azure AD Connect szinkronizálási szolgáltatásfiók jelszavának módosítása esetén a szinkronizálási szolgáltatás nem lesz képes kezdő megfelelően mindaddig, amíg a titkosítási kulcs hagyva, és az Azure AD Connect szinkronizálási szolgáltatásfiók jelszavának újrainicializálva. 
@@ -59,6 +59,8 @@ Az alábbi eljárásokkal kénytelen volt megszakítani ezt a titkosítási kulc
 
 Ha kénytelen volt megszakítani ezt a titkosítási kulcs van szüksége, az alábbi eljárásokkal ehhez.
 
+1. [A szinkronizálási szolgáltatás leállítása](#stop-the-synchronization-service)
+
 1. [A meglévő titkosítási kulcs Abandon](#abandon-the-existing-encryption-key)
 
 2. [Adja meg a jelszót az AD DS-fiók](#provide-the-password-of-the-ad-ds-account)
@@ -66,6 +68,13 @@ Ha kénytelen volt megszakítani ezt a titkosítási kulcs van szüksége, az al
 3. [Az Azure AD sync szolgáltatásfiók jelszavának újrainicializálása](#reinitialize-the-password-of-the-azure-ad-sync-account)
 
 4. [Indítsa el a Synchronization Service](#start-the-synchronization-service)
+
+#### <a name="stop-the-synchronization-service"></a>A szinkronizálási szolgáltatás leállítása
+Először is állítsa le a szolgáltatást a a Windows szolgáltatásvezérlő kezelőjétől.  Győződjön meg arról, hogy a szolgáltatás nem fut, leállítására tett kísérlet közben.  Ha igen, várjon, amíg befejeződik, majd állítsa le.
+
+
+1. Nyissa meg a Windows szolgáltatásvezérlőhöz (KEZDŐ → szolgáltatások).
+2. Válassza ki **a Microsoft Azure AD Sync** , és kattintson a Leállítás gombra.
 
 #### <a name="abandon-the-existing-encryption-key"></a>A meglévő titkosítási kulcs Abandon
 A meglévő titkosítási kulcs Abandon, így a új titkosítási kulcs hozható létre:

@@ -1,5 +1,5 @@
 ---
-title: Egyéb monitorozási szolgáltatások riasztásainak kezelése
+title: Riasztások kezelése az Azure monitorban más figyelési szolgáltatások
 description: Az Azure monitorban Nagios, Zabbix és SCOM riasztások kezelése
 author: anantr
 services: monitoring
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: d9d0cb326fb063e0a6bbfaab6a85961ab2b35416
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: bc597d42fe89c0e03c4af1db3a935031b9043a98
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389387"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748272"
 ---
 # <a name="manage-alerts-from-other-monitoring-services"></a>Egyéb monitorozási szolgáltatások riasztásainak kezelése
 
@@ -25,7 +25,7 @@ A Log Analytics-tárházban riasztás típusú rekordokat a a riasztások egysé
 1. A **System Center Operations Manager** riasztások [az Operations Manager felügyeleti csoport csatlakozni a Log Analytics-munkaterület](https://docs.microsoft.com/azure/log-analytics/log-analytics-om-agents). A System Center Operations Managerben létrehozott riasztásokat is importálja a Log Analytics.
 
 ## <a name="view-your-alert-instances"></a>A riasztási példányok megtekintése
-Miután konfigurálta a Log Analytics-ba való importálásuk, youd megkezdheti a ezeket a szolgáltatásokat a figyelési riasztás példányok megtekintése a [egységes riasztások kezelőfelület](https://aka.ms/azure-alerts-overview). Után azok szerepelnek a riasztások egységes felhasználói élményt, [felügyelhető a riasztási](https://aka.ms/managing-alert-instances), [intelligens, ezek a riasztások létrehozott csoportok kezelése](https://aka.ms/managing-smart-groups) és [módosítsa a riasztások állapotát, és intelligens csoportok](https://aka.ms/managing-alert-smart-group-states).
+Miután konfigurálta a Log Analytics-ba való importálásuk, ezeket a szolgáltatásokat a figyelési riasztás példányok megtekintése elindíthatja a [egységes riasztások kezelőfelület](https://aka.ms/azure-alerts-overview). Után azok szerepelnek a riasztások egységes felhasználói élményt, [felügyelhető a riasztási](https://aka.ms/managing-alert-instances), [intelligens, ezek a riasztások létrehozott csoportok kezelése](https://aka.ms/managing-smart-groups) és [módosítsa a riasztások állapotát, és intelligens csoportok](https://aka.ms/managing-alert-smart-group-states).
 
 > [!NOTE]
 >  Nagios-riasztások az egyesített riasztásainak nem állnak állapot-nyilvántartó – például a [feltétel figyelése](https://aka.ms/azure-alerts-overview) riasztás nem kerül majd "Fired" a "Megoldva". Ehelyett a "Fired" és "Megoldva" jelennek meg külön riasztás példány. 

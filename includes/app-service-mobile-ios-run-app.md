@@ -11,7 +11,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 10/25/2018
 ms.locfileid: "50133620"
 ---
-1. Látogasson el az [Azure Portal] Mac gépéről. Kattintson az **Összes szolgáltatás** > **Alkalmazásszolgáltatások** lehetőségre, majd az imént létrehozott háttérrendszerre. A mobilalkalmazás beállításaiban válassza ki a kívánt nyelvet:
+1. Látogasson el az [Azure Portalra] Mac gépéről. Kattintson az **Összes szolgáltatás** > **Alkalmazásszolgáltatások** lehetőségre, majd az imént létrehozott háttérrendszerre. A mobilalkalmazás beállításaiban válassza ki a kívánt nyelvet:
 
     - Objective-C&ndash; **Gyorsindítás** > **iOS (Objective-C)**
     - Swift&ndash; **Gyorsindítás** > **iOS (Swift)**
@@ -24,4 +24,4 @@ ms.locfileid: "50133620"
 
    ![iOS rendszeren futó gyorsindítási alkalmazás](./media/app-service-mobile-ios-quickstart/mobile-quickstart-startup-ios.png)
 
-[Azure Portal]: https://portal.azure.com/
+[Azure Portalra]: https://portal.azure.com/

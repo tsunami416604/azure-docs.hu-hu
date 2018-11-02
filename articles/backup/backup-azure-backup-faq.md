@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 42994a38aeab7f6da552f2f9073a806142511531
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 9fb955b6bce5b3d40def095180326fdc9aed33b1
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095528"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747898"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Az Azure Backup – gyakori kérdések
 Ez a cikk az Azure Backup szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
@@ -44,7 +44,7 @@ Nem. A tárolókban tárolt biztonsági mentési adatok nem helyezhető át egy 
 Nem. Recovery Services-tárolót is csak tárolási beállításainak módosítása előtt minden biztonsági eltárolta
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Használhatom-e egy elem szintű visszaállítása (ILR) a virtuális gépek biztonsági mentése Recovery Services-tárolóra?
-Nem, ILR nem támogatott. 
+Nem, ILR nem támogatott.
 
 
 ## <a name="azure-backup-agent"></a>Az Azure Backup ügynöke
@@ -99,7 +99,7 @@ Igen. De kell először állítsa be a DPM, és ezután telepítheti az Azure Ba
 ## <a name="general-backup"></a>Általános biztonsági mentés
 
 ### <a name="are-there-limits-on-backup-scheduling"></a>Korlátozva van, a biztonsági mentés ütemezését?
-Igen. 
+Igen.
 - Képes biztonsági másolatot készíteni a Windows Server vagy Windows legfeljebb napi háromszori gépek. Az ütemezési házirendben napi vagy heti ütemezéseket is beállíthatja.
 - Naponta legfeljebb kétszer is biztonsági másolatot készíteni a DPM. Az ütemezési házirendben és napi, heti, havi és éves megadható.
 - Ön az Azure virtuális gépek biztonsági mentése naponta egyszer.
@@ -110,12 +110,12 @@ Az Azure Backup biztonsági mentését a fájlok és mappák és az Azure Backup
 
 **OS**| **Termékváltozat** |**Részletek**
 --- | --- | ---
-Munkaállomás | | 
+Munkaállomás | |
 A Windows 10-es 64 bites | Enterprise, Pro, Home | Gépek a legújabb szolgáltatások csomagokat és frissítéseket kell futtatnia.
 Windows 8.1 64 bites | Enterprise, Pro | Gépek a legújabb szolgáltatások csomagokat és frissítéseket kell futtatnia.
 Windows 8 64 bites | Enterprise, Pro | Gépek a legújabb szolgáltatások csomagokat és frissítéseket kell futtatnia.
 Windows 7 64 bites | Ultimate, Enterprise, Professional, Home Premium, Home Basic, Starter | Gépek a legújabb szolgáltatások csomagokat és frissítéseket kell futtatnia.
-Kiszolgáló | | 
+Kiszolgáló | |
 A Windows Server 2016 64 bites | Standard, Datacenter, Essentials | Rogramtelepítés a legújabb szolgáltatási csomagokat és frissítéseket.
 A Windows Server 2012 R2 64 bites | Standard, Datacenter, Foundation | A legújabb szolgáltatási csomagokat és frissítésekkel.
 A Windows Server 2012 64 bites | Datacenter, Foundation, Standard | A legújabb szolgáltatási csomagokat és frissítésekkel.
@@ -133,20 +133,20 @@ Linux-alapú Azure virtuális gép biztonsági mentése, az Azure Backup támoga
 Méretek korlátok a következők:
 
 
-Az operációs rendszer/gép | Adatforrás maximális mérete 
---- | --- | --- 
-Windows 8 vagy újabb | 54 400 GB 
-Windows 7 |1700 GB 
-Windows Server 2012 vagy újabb | 54 400 GB 
-Windows Server 2008, Windows Server 2008 R2 | 1700 GB 
-Azure VM | 32 adatlemezek<br/><br/> Adatlemez legfeljebb 4095 GB-ig
+Az operációs rendszer/gép | Adatforrás maximális mérete
+--- | --- | ---
+Windows 8 vagy újabb | 54 400 GB
+Windows 7 |1700 GB
+Windows Server 2012 vagy újabb | 54 400 GB
+Windows Server 2008, Windows Server 2008 R2 | 1700 GB
+Azure VM | 16 adatlemez<br/><br/> Adatlemez legfeljebb 4095 GB-ig
 
 ## <a name="how-is-the-data-source-size-determined"></a>Hogyan történik az adatforrás mérete határozza meg?
 
 Az alábbi táblázat megmagyarázza, hogy az egyes adatforrásméretek hogyan lettek meghatározva.
 
 **Adatforrás** | **Részletek**
---- | --- 
+--- | ---
 Kötet |Adatok mennyisége egyetlen kötetéről biztonsági mentés alatt álló virtuális gép biztonsági mentése.
 SQL Server-adatbázis |Biztonsági mentés alatt álló egyetlen SQL adatbázis méretétől mérete.
 SharePoint | A SharePoint-farm biztonsági mentés alatt álló tartalmakat és konfigurációs adatbázisainak összegét.
@@ -158,7 +158,7 @@ BMR/rendszerállapot |A biztonsági mentés alatt álló gép BMR vagy rendszer�
 
 Készíthet biztonsági mentést egy Recovery Services-tároló használatával adatok mennyisége nincs korlátozva van.
 
-### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted"></a>Ha megszakítok egy már elindult biztonsági mentési feladatot, az átküldött adatok biztonsági másolata törlődik? 
+### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted"></a>Ha megszakítok egy már elindult biztonsági mentési feladatot, az átküldött adatok biztonsági másolata törlődik?
 Nem. A biztonsági mentési feladat megszakításának pillanata előtt a tárolóba már átvitt minden adat a tárolóban marad. Az Azure Backup egy ellenőrzőpont-alapú mechanizmust használ, így a biztonsági mentés közben esetenként ellenőrzőpontokat ad az adatok biztonsági másolatához. Mivel ellenőrzőpontok vannak az adatok biztonsági másolatában, a következő biztonsági mentési folyamat ellenőrizni tudja a fájlok épségét. A következő biztonsági mentési feladat a korábban már mentett adatokra épülő növekményes mentés lesz. A növekményes mentések csak az új vagy módosított adatok átvitelét jelentik, így a sávszélesség-használat optimalizálható.
 
 Ha megszakítja egy Azure virtuális gép valamely biztonsági mentését, a rendszer a már átvitt adatokat figyelmen kívül hagyja. A következő biztonsági mentési feladat az utolsó sikeres biztonsági mentéshez képest végzi el az adatok növekményes mentését.
@@ -186,7 +186,7 @@ Nem. A biztonsági mentési feladat előtt a tárolóba átvitt minden adat a t�
 ### <a name="are-the-retention-policies-for-dpm-and-windows-machines-without-dpm-the-same"></a>Megegyeznek az adatmegőrzési szabályokról a DPM és a Windows-gépek DPM nélkül?
 Igen, mindkettő rendelkezik napi, heti, havi és éves adatmegőrzési szabályoknál.
 
-### <a name="can-i-customize-retention-policies"></a>Adatmegőrzési házirendek testre? 
+### <a name="can-i-customize-retention-policies"></a>Adatmegőrzési házirendek testre?
 Igen, testre szabályzatokkal rendelkezik. Konfigurálhatja például hetente és naponta adatmegőrzési követelmények, de nem éves és havi.
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>Használható a különböző időpontokban készült biztonsági mentés ütemezését és adatmegőrzési szabályzatok?
@@ -208,7 +208,7 @@ Az Azure Backup tárolási architektúrája ezen két megoldás előnyeit ötvö
 
 ### <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-created"></a>A létrehozható helyreállítási pontok száma korlátozott?
 
-Védett példányonként 9999 helyreállítási pontot hozhat létre. A védett példány egy számítógép, kiszolgáló (fizikai vagy virtuális) vagy munkaterhelést futtatják, amelyről biztonsági másolatot készít az Azure-bA. 
+Védett példányonként 9999 helyreállítási pontot hozhat létre. A védett példány egy számítógép, kiszolgáló (fizikai vagy virtuális) vagy munkaterhelést futtatják, amelyről biztonsági másolatot készít az Azure-bA.
 
 - Tudjon meg többet [biztonsági mentés és megőrzés](./backup-introduction-to-azure-backup.md#backup-and-retention).
 - Ismerje meg [védett példányok](./backup-introduction-to-azure-backup.md#what-is-a-protected-instance)?
@@ -238,7 +238,7 @@ Igen. Az adatok, az Azure-ban a titkosított inaktív.
 - A helyi biztonságimásolat-készítési titkosítás, a visszaállítás biztosított Azure-ba való biztonsági mentéshez adjon meg a jelszót használja.
 - Az Azure virtuális gépek adatok el vannak titkosítva-a-visszaállítási Storage Service Encryption (SSE) használatával.
 
-A Microsoft soha nem fejt vissza adatokat. 
+A Microsoft soha nem fejt vissza adatokat.
 
 
 ### <a name="what-is-the-minimum-length-of-encryption-the-key-used-to-encrypt-backup-data"></a>Mi az, hogy a titkosítás az adatok biztonsági másolatának titkosításához használt kulcs minimális hossza?

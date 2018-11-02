@@ -13,14 +13,14 @@ ms.workload: web
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 06fe9f1fd65f70e41d528a513e44e61edb4a7e4f
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 00563b93a3601ba6299c479c49375fd252841f79
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39307908"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748119"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Alkalmazások teljesítményének – gyakori kérdések az Azure Web Apps esetében
 
@@ -34,11 +34,11 @@ Számos tényező lehet, hogy hozzájárul a teljesítmény az alkalmazás. Rés
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>Hogyan háríthatom el a magas CPU-használat a forgatókönyv?
 
-Az egyes magas CPU-használati forgatókönyvek az alkalmazás valóban szükség lehet több számítási erőforrást. Ebben az esetben érdemes lehet magasabb szolgáltatási szintre skálázást, így az alkalmazás megjeleníti az összes szükséges erőforrást. Más, magas CPU-használat oka lehet egy rossz hurkot, vagy egy kódolási gyakorlatot. Első kezdeményezi megnövekedett processzorhasználatot betekintést az egy kétlépéses folyamat. Először hozzon létre egy folyamatot memóriakép, és a folyamat memóriakép majd elemezni. További információkért lásd: [rögzítésével és elemzésével a magas CPU-használat, a Web Apps memóriaképfájl](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/).
+Az egyes magas CPU-használati forgatókönyvek az alkalmazás valóban szükség lehet több számítási erőforrást. Ebben az esetben érdemes lehet magasabb szolgáltatási szintre skálázást, így az alkalmazás megjeleníti az összes szükséges erőforrást. Más, magas CPU-használat oka lehet egy rossz hurkot, vagy egy kódolási gyakorlatot. Első kezdeményezi megnövekedett processzorhasználatot betekintést az egy kétlépéses folyamat. Először hozzon létre egy folyamatot memóriakép, és a folyamat memóriakép majd elemezni. További információkért lásd: [rögzítésével és elemzésével a magas CPU-használat, a Web Apps memóriaképfájl](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/).
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>Hogyan háríthatom el a magas memória-felhasználás forgatókönyv?
 
-Magas memória-felhasználás bizonyos esetekben az alkalmazás valóban szükség lehet több számítási erőforrást. Ebben az esetben érdemes lehet magasabb szolgáltatási szintre skálázást, így az alkalmazás megjeleníti az összes szükséges erőforrást. A többi időszakban a kódot tartalmaz hibát okozhat memóriavesztés. A kódolási gyakorlatot is növelheti a memóriát. Első kezdeményezi használat egy kétlépéses folyamat: magas memória betekintést. Először hozzon létre egy folyamatot memóriakép, és a folyamat memóriakép majd elemezni. Az Azure Site bővítmény katalógus összeomlási diagnosztikai hatékonyan is el tudja végezni mind ezeket a lépéseket. További információkért lásd: [rögzítésével és elemzésével az időszakos nagy memória memóriaképfájlt a Web Apps](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/).
+Magas memória-felhasználás bizonyos esetekben az alkalmazás valóban szükség lehet több számítási erőforrást. Ebben az esetben érdemes lehet magasabb szolgáltatási szintre skálázást, így az alkalmazás megjeleníti az összes szükséges erőforrást. A többi időszakban a kódot tartalmaz hibát okozhat memóriavesztés. A kódolási gyakorlatot is növelheti a memóriát. Első kezdeményezi használat egy kétlépéses folyamat: magas memória betekintést. Először hozzon létre egy folyamatot memóriakép, és a folyamat memóriakép majd elemezni. Az Azure Site bővítmény katalógus összeomlási diagnosztikai hatékonyan is el tudja végezni mind ezeket a lépéseket. További információkért lásd: [rögzítésével és elemzésével az időszakos nagy memória memóriaképfájlt a Web Apps](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/).
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>Hogyan automatizálható az App Service web apps PowerShell-lel?
 

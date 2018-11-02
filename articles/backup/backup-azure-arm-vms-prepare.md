@@ -9,16 +9,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 30b35d38c30d3ee9410a85824c53001ca95cf30b
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: dd11c50940dc35524b6d10c6043e906cc813498d
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025939"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748289"
 ---
 # <a name="prepare-to-back-up-azure-vms"></a>Felkészülés az Azure virtuális gépek biztonsági mentése
 
-Ez a cikk lépéseit a biztonsági mentése az Azure Resource Manager által telepített virtuális gép (VM) a környezet előkészítése. A lépéseket, látható az eljárásokat használhatja az Azure Portalt. A virtuális gépek biztonsági mentésekor, a biztonsági mentési adatokat vagy a helyreállítási pontok vannak tárolva egy Recovery Services biztonsági mentési tárolót. 
+Ez a cikk lépéseit a biztonsági mentése az Azure Resource Manager által telepített virtuális gép (VM) a környezet előkészítése. A lépéseket, látható az eljárásokat használhatja az Azure Portalt. A virtuális gépek biztonsági mentésekor, a biztonsági mentési adatokat vagy a helyreállítási pontok vannak tárolva egy Recovery Services biztonsági mentési tárolót.
 
 
 
@@ -45,7 +45,7 @@ Ha ezek a feltételek a környezetében már létezik, ugorjon a [a virtuális g
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Korlátozások a biztonsági mentése és visszaállítása egy virtuális gép esetén
 Mielőtt a környezet előkészítése, ügyeljen arra, hogy ezek a korlátozások ismertetése:
 
-* Több mint 32 adatlemezekkel rendelkező virtuális gépek biztonsági mentése nem támogatott.
+* Több mint 16 adatlemezekkel rendelkező virtuális gépek biztonsági mentése nem támogatott.
 * Linux egyesített kulcs beállítása (LUKS) titkosítással titkosított Linux rendszerű virtuális gépek biztonsági mentésének nem támogatott.
 * Nem ajánlott a fürt megosztott kötetei (CSV) vagy a Scale-Out File Server tartalmazó virtuális gépek biztonsági mentésének. Ha elkészült, a fürt megosztott kötetei szolgáltatás írók hiba várható. A fürt konfigurációját, a pillanatkép-feladat során szereplő összes virtuális gépet is érintő igényelnek. Az Azure Backup nem támogatja a több virtuális gépre kiterjedő konzisztencia.
 * Biztonsági mentési adatokat egy virtuális géphez csatlakoztatott hálózati meghajtók nem tartalmazza.
@@ -194,7 +194,7 @@ A Backup szolgáltatás telepíti a biztonsági mentési bővítményt, a virtu�
 ## <a name="establish-network-connectivity"></a>Hálózati kapcsolatok létrehozása
 A virtuális gép pillanatképek kezeléséhez, a biztonsági mentési bővítményt, kapcsolódnia kell az Azure nyilvános IP-címeket. A jobb oldali internetkapcsolat nélkül a virtuális gép HTTP-kérések időtúllépés, és a biztonsági mentés sikertelen lesz. Ha a központi telepítés rendelkezik hozzáférési korlátozásokat – keresztül egy hálózati biztonsági csoport (NSG), például – válasszon egyet az alábbi lehetőségek közül, világos és egyértelmű utat nyújt a biztonsági mentések forgalmától a következő címen:
 
-* [Engedélyezett az Azure-adatközpont IP-címtartományok](http://www.microsoft.com/en-us/download/details.aspx?id=41653).
+* [Engedélyezett az Azure-adatközpont IP-címtartományok](http://www.microsoft.com/download/details.aspx?id=41653).
 * A forgalom útválasztási HTTP-proxy kiszolgáló telepítése.
 
 Amikor a mérlegeli, a használandó módszer, kezelhetőségi, részletes ellenőrzésére és költség között kell lennie a kompromisszummal.
@@ -205,7 +205,7 @@ Amikor a mérlegeli, a használandó módszer, kezelhetőségi, részletes ellen
 | HTTP proxyk használatára |Szabályozható a proxy a tároló URL-címek használata engedélyezett.<br><br>Virtuális gépek internet egyetlen pont hozzáférés.<br><br>Nem vonatkozik Azure IP-cím változik. |Virtuális gép futtatása a proxy szoftverhez további költségekkel. |
 
 ### <a name="whitelist-the-azure-datacenter-ip-ranges"></a>Az Azure-adatközpont engedélyezett IP-címtartományok
-Az engedélyezési listára az Azure adatközpont IP-címtartományait, tekintse meg a [Azure-webhelyen](http://www.microsoft.com/en-us/download/details.aspx?id=41653) az IP-címtartományok és az utasításokat.
+Az engedélyezési listára az Azure adatközpont IP-címtartományait, tekintse meg a [Azure-webhelyen](http://www.microsoft.com/download/details.aspx?id=41653) az IP-címtartományok és az utasításokat.
 
 Segítségével engedélyezheti az adott régió storage kapcsolatokat [szolgáltatáscímkéket](../virtual-network/security-overview.md#service-tags). Győződjön meg arról, hogy a szabály, amely lehetővé teszi a hozzáférést a tárfiókhoz magasabb prioritású, mint a szabályt, amely blokkolja az internet-hozzáféréssel rendelkezik-e.
 

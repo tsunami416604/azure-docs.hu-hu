@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: d1fdec8e3a959aaeb68d4b63a1c71d6ef1ddd054
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b2e7cc46a844ff866ae2d325b610653cd3179d8d
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406321"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914566"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Az Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -30,7 +30,7 @@ Az Office 365 felügyeleti megoldás a Log Analytics az Office 365-környezete f
 - Konfigurációs módosítások vagy magas jogosultságú műveleteket nyomon követéséhez rendszergazdai tevékenységek figyelése.
 - Észlelése és vizsgálata a nem kívánt felhasználói viselkedés, amely a szervezet igényeinek megfelelően testre szabható.
 - Naplózási és megfelelőségi bemutatása. Figyelheti például fájl bizalmas fájlokat, amelyek segítségére lehet a naplózást és megfelelőségi folyamat a hozzáférési műveleteket.
-- Az operatív hibaelhárítás elvégzése érdekében [naplókereséseket](../log-analytics/log-analytics-log-search.md) a szervezet az Office 365 adatok felett.
+- Az operatív hibaelhárítás elvégzése érdekében [naplókereséseket](../log-analytics/log-analytics-queries.md) a szervezet az Office 365 adatok felett.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A következő kötelező végezniük a megoldás telepítve és konfigurálva.
@@ -518,7 +518,7 @@ A következő tulajdonságok megegyeznek az összes Office 365-rekord.
 | A szervezeti | A szervezet Office 365-bérlőhöz tartozó GUID azonosítója. Ez az érték mindig lesz azonos, a szervezete számára, függetlenül az Office 365 szolgáltatás, amelyben történik. |
 | RecordType | Végrehajtott művelet típusát. |
 | ResultStatus | Azt jelzi, hogy a (művelet tulajdonságban megadott) művelet sikeres volt-e vagy sem. Lehetséges értékek: Succeeded, PartiallySucceded vagy sikertelen. Az Exchange-rendszergazdai tevékenységhez, értéke pedig IGAZ vagy hamis. |
-| UserId | A rekordnaplózást eredményező naplózott; műveletet végrehajtó felhasználó egyszerű Felhasználóneve (egyszerű felhasználónév) Ha például my_name@my_domain_name. Vegye figyelembe, hogy a Rendszerfiókok (például a SHAREPOINT\system vagy NTAUTHORITY\SYSTEM) által végrehajtott tevékenységek rekordjai is szerepelnek. | 
+| Felhasználói azonosító | A rekordnaplózást eredményező naplózott; műveletet végrehajtó felhasználó egyszerű Felhasználóneve (egyszerű felhasználónév) Ha például my_name@my_domain_name. Vegye figyelembe, hogy a Rendszerfiókok (például a SHAREPOINT\system vagy NTAUTHORITY\SYSTEM) által végrehajtott tevékenységek rekordjai is szerepelnek. | 
 | UserKey | Egy alternatív Azonosítót a felhasználó a UserId tulajdonság azonosítja.  Például ez a tulajdonság megjelenik a passport egyedi azonosító (PUID), és az Exchange a SharePoint, a onedrive-on a felhasználók által végrehajtott eseményeket. Ez a tulajdonság is megadható ugyanazt az értéket a UserID tulajdonság számára a más szolgáltatások és a rendszer fiókok által végrehajtott eseményeket bekövetkező események|
 | UserType | A műveletet végrehajtó felhasználó típusa.<br><br>Adminisztratív körzet<br>Alkalmazás<br>DcAdmin<br>Rendszeres<br>Foglalt<br>ServicePrincipal<br>Rendszer |
 
@@ -709,6 +709,6 @@ A következő táblázat a megoldás által összegyűjtött frissítési rekord
 
 
 ## <a name="next-steps"></a>További lépések
-* A részletes frissítési adatokat a [Log Analytics](../log-analytics/log-analytics-log-searches.md) Naplókeresés funkciójával is megtekintheti.
+* A részletes frissítési adatokat a [Log Analytics](../log-analytics/log-analytics-log-search.md) Naplókeresés funkciójával is megtekintheti.
 * [Saját irányítópult létrehozásával](../log-analytics/log-analytics-dashboards.md) kedvenc Office 365 keresési lekérdezések megjelenítéséhez.
-* [Riasztások létrehozása](../log-analytics/log-analytics-alerts.md) proaktívan értesíti a fontos Office 365-tevékenységek.  
+* [Riasztások létrehozása](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) proaktívan értesíti a fontos Office 365-tevékenységek.  

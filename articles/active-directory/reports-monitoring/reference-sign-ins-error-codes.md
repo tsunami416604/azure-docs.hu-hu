@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 05/31/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 85df34445622a13488df590f5cb53bedb7b6ea93
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: ce06c72c9974b4887cc441344fd755bfd156a1ca
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42057531"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914719"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések hibakódjai az Azure Active Directory portálon
 
@@ -117,10 +117,10 @@ A következő szakasz az összes lehetséges hiba és a kapcsolódó leírások 
 |50135|A fiókkockázat miatt jelszómódosítás szükséges|
 |50136|Msa-munkamenet átirányítása az alkalmazáshoz – Egy MSA-munkamenet észlelve |
 |50140|Ez a hiba a „Bejelentkezve szeretnék maradni” megszakítás miatt lépett fel, miközben a felhasználó megpróbált bejelentkezni. [Küldjön támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a korrelációs azonosítóval, a kérelemazonosítóval és a hibakóddal a részletek megismeréséhez. |
-|50143|Munkamenet-eltérés – A munkamenet érvénytelen, mert a felhasználó bérlője nem egyezik meg a tartománymutatóval eltérő erőforrások miatt. [Küldjön támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a korrelációs azonosítóval, a kérelemazonosítóval és a hibakóddal a részletek megismeréséhez.|
+|50143|Munkamenet eltérő - munkamenet érvénytelen, mert felhasználói bérlő nem egyezik meg a tartomány mutató különböző erőforrás miatt.  [Hozzon létre egy támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) a korrelációs Azonosítót, a kérelem azonosítója és a hiba kódja további információért.|
 |50144|A felhasználó Active Directory jelszava lejárt. Hozzon létre új jelszót a felhasználó számára, vagy kérje meg a végfelhasználót az önkiszolgáló helyreállítási eszköz használatára|
 |50146|Ezt az alkalmazást egy alkalmazásspecifikus bejelentkezési kulccsal kell konfigurálni. Az alkalmazás nem ilyennel van konfigurálva, vagy a kulcs lejárt vagy még nem érvényes. Lépjen kapcsolatba az alkalmazás tulajdonosával|
-|50148|A code_verifier nem egyezik meg a PKCE hitelesítési kérésben megadott code_challenge értékkel. Lépjen kapcsolatba az alkalmazás fejlesztőjével. |
+|50148|A code_verifier nem egyezik meg a PKCE hitelesítési kérésben megadott code_challenge értékkel. Lépjen kapcsolatba az alkalmazás fejlesztőjével. |
 |50155|Az eszköz hitelesítése nem sikerült a felhasználó esetében|
 |50158|A külső biztonsági ellenőrzés nem teljesült|
 |50161|A külső szolgáltató által küldött jogcímek nem elegendőek, vagy hiányzó jogcím lett kérelmezve a külső szolgáltatótól|
@@ -128,7 +128,7 @@ A következő szakasz az összes lehetséges hiba és a kapcsolódó leírások 
 |50169|A tartomány nem az aktuális szolgáltatásnévtér konfigurált tartománya.|
 |50172|A külső jogcímszolgáltató nincs jóváhagyva. Lépjen kapcsolatba a bérlő rendszergazdájával|
 |50173|Friss hitelesítési jogkivonat szükséges. Kérje meg a felhasználót, hogy jelentkezzen be újra új hitelesítő adatokkal|
-|50177|A külső ellenőrzés nem támogatott az átmenő felhasználók esetében|
+|50177|Külső challenge csatlakoztatott felhasználók esetén nem támogatott|
 |50178|A munkamenet-vezérlés nem támogatott az átmenő felhasználók esetében|
 |50180|Integrált Windows-hitelesítés szükséges. Engedélyezze a Seamless SSO-t a bérlőn.|
 |51001|Nem található tartománymutató a helyszíni biztonsági azonosítóval – helyszíni UPN|
@@ -152,7 +152,7 @@ A következő szakasz az összes lehetséges hiba és a kapcsolódó leírások 
 |70007|Az alkalmazás a nem támogatott response_mode értéket adta vissza egy jogkivonat kérésekor. Lépjen kapcsolatba az alkalmazás tulajdonosával|
 |70008|A megadott engedélyezési kód vagy frissítési jogkivonat lejárt vagy vissza lett vonva. Kérje meg a felhasználót, hogy próbáljon meg újra bejelentkezni|
 |70011|Az alkalmazás által kért hatókör érvénytelen. Lépjen kapcsolatba az alkalmazás tulajdonosával|
-|70012|Kiszolgálóhiba történt az MSA-felhasználó (fogyasztó) hitelesítése során. Próbálkozzon újra. Ha a hiba továbbra is fennáll, [küldjön támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) |
+|70012|Kiszolgálóhiba történt az MSA-felhasználó (fogyasztó) hitelesítése során. Próbálkozzon újra. Ha továbbra sem sikerül, [hozzon létre egy támogatási jegyet](../fundamentals/active-directory-troubleshooting-support-howto.md) |
 |70018|Érvénytelen ellenőrzőkód: a felhasználó rossz felhasználói kódot írt be az eszközkód-folyamathoz. Az engedélyezés nincs jóváhagyva|
 |70019|Az ellenőrzőkód lejárt. Kérje meg a felhasználót, hogy próbáljon meg újra bejelentkezni|
 |70037|Helytelen válasz az ellenőrző kérdésre. Távoli hitelesítési munkamenet megtagadva.|
@@ -180,6 +180,7 @@ A következő szakasz az összes lehetséges hiba és a kapcsolódó leírások 
 |90014| Hiányzik egy kötelező mező protokoll üzenet, forduljon az alkalmazás tulajdonosa. Ha az alkalmazás tulajdonosa, győződjön meg arról, hogy rendelkezik-e a szükséges paramétereket, a bejelentkezési kérelem számára. |
 |90072| A fióknak rendelkeznie kell adni a bérlőn külső felhasználóként először. Kijelentkezés és bejelentkezés újra egy másik Azure AD-fiókot.|
 |90094| A támogatás rendszergazdai engedélyekkel kell rendelkeznie. Kérje meg a bérlői rendszergazda történő ehhez az alkalmazáshoz.|
+|500133| A helyességi feltétel nem esik az érvényes idő. Győződjön meg arról, hogy a hozzáférési jogkivonat nem járt le, a felhasználó helyességi feltétel használata előtt, vagy kérje meg egy új jogkivonatot.|
 
 ## <a name="next-steps"></a>További lépések
 

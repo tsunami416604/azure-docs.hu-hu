@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/16/2017
+ms.date: 11/01/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6b5cc1eff5c6d080854754ec5b3b62068f1cbb9c
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: d17e7abbb3b6e4f091e19b8ab6834461dedffc71
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264715"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914770"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Az Azure AD B2C: Gyakori kérdések (GYIK) 
 Ez az oldal az Azure Active Directory (Azure AD) B2C-vel kapcsolatos gyakori kérdésekre ad választ. Tartsa vissza a frissítések keresése.
@@ -72,7 +72,7 @@ E-mail aláírásának tartalmazza az Azure AD B2C-bérlő neve az Azure AD B2C-
 1. Nyissa meg a **Azure Active Directory** panelen.
 1. Kattintson a **tulajdonságok** fülre.
 1. Módosítsa a **neve** mező.
-1. Kattintson a **mentése** az oldal tetején.
+1. Kattintson az oldal tetején lévő **Mentés** elemre.
 
 Jelenleg nem lehet módosítani a "származó:" mezőjében az e-mailt. Szavazzon [feedback.azure.com](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/15334335-fully-customizable-verification-emails) Önt érdeklő testreszabása az ellenőrző e-mail törzse.
 
@@ -80,7 +80,7 @@ Jelenleg nem lehet módosítani a "származó:" mezőjében az e-mailt. Szavazzo
 Az Azure AD Graph API segítségével írhat az áttelepítési eszköz. Tekintse meg a [áttelepítési útmutatója](active-directory-b2c-user-migration.md) részleteiről.
 
 ### <a name="what-password-policy-is-used-for-local-accounts-in-azure-ad-b2c"></a>Milyen jelszóházirend szolgál a helyi felhasználói fiókok Azure AD B2C-ben?
-Helyi fiókok esetében az Azure AD B2C-vel jelszóházirend az Azure ad a szabályzat alapul. Az Azure AD B2C bejelentkezési, regisztrációs vagy bejelentkezési és a jelszó alaphelyzetbe állítása a házirendek használja "erős" jelszó erőssége és jelszavakat nem jár le. Olvassa el a [az Azure AD-jelszóházirendet](https://msdn.microsoft.com/library/azure/jj943764.aspx) további részletekért.
+Helyi fiókok esetében az Azure AD B2C-vel jelszóházirend az Azure ad a szabályzat alapul. Az Azure AD B2C bejelentkezési, regisztrációs vagy bejelentkezési és a jelszó alaphelyzetbe állítása a házirendek használja "erős" jelszó erőssége és jelszavakat nem jár le. Olvassa el a [az Azure AD-jelszóházirendet](https://msdn.microsoft.com/library/azure/jj943764.aspx) további részletekért. További információ a fiók zárolásának és jelszavak: [kezeli az erőforrások és adatok az Azure Active Directory B2C fenyegetések](active-directory-b2c-reference-threat-management.md).
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Az Azure AD Connect használatával a saját Azure AD B2C-vel a helyszíni Active Directory tárolt felhasználói identitások migrálása?
 Nem, az Azure AD Connect nem célja, hogy az Azure AD B2C-vel működik. Fontolja meg a [Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) felhasználói migrálásra.  Tekintse meg a [áttelepítési útmutatója](active-directory-b2c-user-migration.md) részleteiről.

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 11/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: c52c84a1311c30c19356bb8a1287b203faf476fc
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 89d64a28d2fe43464995e434c9f3807047b29492
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50743260"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913636"
 ---
 # <a name="preview--azure-ad-password-protection-agent-version-history"></a>Előzetes verzió: Azure AD jelszó védelmi ügynök korábbi verziók
 
@@ -23,6 +23,23 @@ ms.locfileid: "50743260"
 | --- |
 | Az Azure AD jelszóvédelem az Azure Active Directory nyilvános előzetes verziójú funkció. Előzetes verziók kapcsolatos további információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
+
+## <a name="12250"></a>1.2.25.0
+
+Kiadás dátuma: 2018/11/01 /.
+
+Javításokat tartalmaz:
+
+* DC-ügynök és a proxy szolgáltatás már nem kell sikertelen a tanúsítvány megbízhatósági hibák miatt.
+* DC-ügynök és a proxy szolgáltatás rendelkezik a FIPS előírásainak megfelelő gépek további javításokra.
+* Proxy szolgáltatás mostantól fog megfelelően működni a TLS 1.2-es csak hálózati környezetben.
+* Kisebb teljesítményt és háttértárat javításai
+* A továbbfejlesztett naplózás
+
+Változások:
+
+* A minimálisan szükséges operációs rendszer szintjén a Proxy szolgáltatás most már a Windows Server 2012 R2. A tartományvezérlő-ügynök szolgáltatás minimálisan szükséges operációs rendszer szintjén, a Windows Server 2012 marad.
+* A jelszó adatérvényesítési algoritmust egy kibontott karakter normalizálási táblát használja. Emiatt előfordulhat, hogy a korábbi verziók elfogadott el lettek utasítva, jelszavakat.
 
 ## <a name="12100"></a>1.2.10.0
 
@@ -45,8 +62,8 @@ Javításokat tartalmaz:
 > Helyben végzett frissítések DC ügynökszoftver követően újra kell indítani.
 
 * DC-ügynök és a proxy szolgáltatás mostantól támogatja a csak a FIPS előírásainak megfelelő algoritmusok használatára konfigurált kiszolgálón futó.
-* A továbbfejlesztett naplózás
 * Kisebb teljesítményt és háttértárat javításai
+* A továbbfejlesztett naplózás
 
 ## <a name="11103"></a>1.1.10.3
 

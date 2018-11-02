@@ -86,7 +86,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre, és rendelkezik a kapcsolati sztringekkel az alkalmazás regisztrálására értesítések fogadásához és leküldéses értesítések küldéséhez.
 
 ### <a name="create-a-new-chrome-app"></a>Új Chrome-alkalmazás létrehozása
-Az alábbi minta a [Chrome-alkalmazások GCM mintája] alapul, és a Chrome-alkalmazás javasolt létrehozási módját alkalmazza. Ez a szakasz kiemeli azon lépéseket, amelyek kifejezetten az Azure Notification Hubsra vonatkoznak. 
+Az alábbi minta a [Chrome-alkalmazások GCM-mintáján] alapul, és a Chrome-alkalmazás javasolt létrehozási módját alkalmazza. Ez a szakasz kiemeli azon lépéseket, amelyek kifejezetten az Azure Notification Hubsra vonatkoznak. 
 
 > [!NOTE]
 > Javasoljuk, hogy töltse le a jelen Chrome-alkalmazás forrását a következő helyről: [Chrome-alkalmazás – Notification Hub-minta]. 
@@ -465,7 +465,7 @@ Ebben az oktatóanyagban szórásos értesítéseket küldött a háttérrendsze
 [Chrome-alkalmazás – Notification Hub-minta]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToChromeApps
 [Notification Hubs Overview]: notification-hubs-push-notification-overview.md
 [Chrome-alkalmazások – áttekintés]: https://developer.chrome.com/apps/about_apps
-[Chrome-alkalmazások GCM mintája]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
+[Chrome-alkalmazások GCM-mintáján]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
 [Installable Web Apps]: https://developers.google.com/chrome/apps/docs/
 [Chrome-alkalmazások mobileszközökön]: https://developer.chrome.com/apps/chrome_apps_on_mobile
 [Regisztrációs NH REST API létrehozása]: http://msdn.microsoft.com/library/azure/dn223265.aspx
