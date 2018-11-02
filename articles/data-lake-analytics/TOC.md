@@ -64,6 +64,7 @@
 
 ## Folyamatos integráció és folyamatos üzembe helyezés
 ### [Áttekintés](data-lake-analytics-cicd-overview.md)
+### [Szerelvényregisztráció](data-lake-analytics-cicd-manage-assemblies.md)
 ### [Tesztek beállítása](data-lake-analytics-cicd-test.md)
 ### [U-SQL SDK](data-lake-analytics-u-sql-sdk.md)
 

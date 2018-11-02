@@ -1,0 +1,59 @@
+items:
+- name: Az Avere vFXT dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+  - name: Mi az Azure-hoz készült Avere vFXT?
+    href: avere-vfxt-overview.md
+- name: Alapelvek
+  items:
+  - name: Az Avere vFXT rendszer megtervezése
+    href: avere-vfxt-deploy-plan.md
+  - name: Az Avere vFXT üzembe helyezésének áttekintése
+    href: avere-vfxt-deploy-overview.md
+- name: Útmutatók
+  items:
+  - name: Felkészülés az Avere vFXT létrehozására
+    href: avere-vfxt-prereqs.md
+  - name: A vFXT-fürt üzembe helyezése
+    href: avere-vfxt-deploy.md
+  - name: A fürtkonfigurációs eszköz hozzáférése
+    href: avere-vfxt-cluster-gui.md
+  - name: Támogatási feltöltések engedélyezése
+    href: avere-vfxt-enable-support.md
+  - name: A tárolás konfigurálása
+    href: avere-vfxt-add-storage.md
+  - name: Az Avere vFXT-fürt csatlakoztatása
+    href: avere-vfxt-mount-clients.md
+  - name: Adatok áthelyezése az Avere vFXT-fürtbe
+    href: avere-vfxt-data-ingest.md
+  - name: Az Avere vFXT-fürt felügyelete
+    href: avere-vfxt-manage-cluster.md
+  - name: A fürtök finomhangolásának testreszabása
+    href: avere-vfxt-tuning.md
+- name: További források
+  items:
+  - name: Segítség a rendszerhez
+    href: avere-vfxt-open-ticket.md
+  - name: Bemutatóprojektek
+    href: avere-vfxt-demo-links.md
+  - name: Gyakori kérdések az Azure-hoz készült Avere vFXT-ről
+    href: avere-vfxt-faq.md
+  - name: További dokumentáció
+    items:
+    - name: Kiegészítő dokumentáció
+      href: avere-vfxt-additional-resources.md
+    - name: Portok engedélyezési listája
+      href: avere-vfxt-required-ports.md
+    - name: Fürtszerepkör létrehozása vezérlő nélkül
+      href: avere-vfxt-pre-role.md
+    - name: Avere-fürt DNS-konfigurációja
+      href: avere-vfxt-configure-dns.md
+    - name: Az Avere vFXT nem tulajdonosi üzembe helyezésének engedélyezése
+      href: avere-vfxt-non-owner.md
+ms.openlocfilehash: 6f99a33ffbf637e02d487a511d17bf8a365cb3ba
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50669132"

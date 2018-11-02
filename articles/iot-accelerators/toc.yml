@@ -19,16 +19,24 @@ items:
     href: quickstart-device-simulation-deploy.md
 - name: Oktatóanyagok
   items:
-  - name: IoT-eszközök monitorozása
-    href: iot-accelerators-remote-monitoring-monitor.md
-  - name: Eszközökkel kapcsolatos problémák észlelése
-    href: iot-accelerators-remote-monitoring-automate.md
-  - name: Eszközök konfigurálása és kezelése
-    href: iot-accelerators-remote-monitoring-manage.md
-  - name: Riasztás kiváltó okainak elemzése
-    href: iot-accelerators-remote-monitoring-root-cause-analysis.md
-  - name: Riasztások használata és eszközökkel kapcsolatos problémák megoldása
-    href: iot-accelerators-remote-monitoring-maintain.md
+  - name: Távoli monitorozás
+    items:
+    - name: IoT-eszközök monitorozása
+      href: iot-accelerators-remote-monitoring-monitor.md
+    - name: Eszközökkel kapcsolatos problémák észlelése
+      href: iot-accelerators-remote-monitoring-automate.md
+    - name: Eszközök konfigurálása és kezelése
+      href: iot-accelerators-remote-monitoring-manage.md
+    - name: Riasztás kiváltó okainak elemzése
+      href: iot-accelerators-remote-monitoring-root-cause-analysis.md
+    - name: Riasztások használata és eszközökkel kapcsolatos problémák megoldása
+      href: iot-accelerators-remote-monitoring-maintain.md
+  - name: Eszközszimuláció
+    items:
+    - name: Szimuláció létrehozása és futtatása
+      href: iot-accelerators-device-simulation-create-simulation.md
+    - name: Egyéni szimulált eszköz létrehozása
+      href: iot-accelerators-device-simulation-create-custom-device.md
 - name: Alapelvek
   items:
   - name: Távoli monitorozás
@@ -47,12 +55,6 @@ items:
     items:
     - name: Architektúra
       href: iot-accelerators-connected-factory-sample-walkthrough.md
-  - name: Eszközszimuláció
-    items:
-    - name: Eszközmodell sémája
-      href: iot-accelerators-device-simulation-device-schema.md
-    - name: Eszközmodell viselkedése
-      href: iot-accelerators-device-simulation-device-behavior.md
   - name: Engedélyek az azureiotsolutions.com webhelyen
     href: iot-accelerators-permissions.md
 - name: Útmutatók
@@ -124,14 +126,10 @@ items:
     items:
     - name: Meglévő IoT Hub használata
       href: iot-accelerators-device-simulation-choose-hub.md
-    - name: Egyéni eszközmodell használata
-      href: iot-accelerators-device-simulation-custom-model.md
+    - name: Speciális szimulált eszköz létrehozása
+      href: iot-accelerators-device-simulation-advanced-device.md
     - name: Telemetria vizualizációja a Time Series Insights használatával
       href: iot-accelerators-device-simulation-time-series-insights.md
-    - name: Szimulált eszköz létrehozása
-      href: iot-accelerators-device-simulation-create-simulated-device.md
-    - name: Szimulált eszköz üzembe helyezése
-      href: iot-accelerators-device-simulation-deploy-simulated-device.md
 - name: Referencia
   items:
   - name: Távoli monitorozás
@@ -212,9 +210,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: Az IoT-megoldásgyorsítók képzési terve
     href: https://azure.microsoft.com/documentation/learning-paths/iot-suite/
-ms.openlocfilehash: e28f7e30378291c3384ddbd90af6fe02d1aa365b
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: f9b92b06850668f0f92fa77a67ac640e4c245c37
+ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165335"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50754018"
