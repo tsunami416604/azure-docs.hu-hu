@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 11/02/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 6a61fdeaf1a751ab4001257335abdcbd6fac9cbf
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: e728162da8221046b8496cced8671695c7794164
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739464"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978383"
 ---
 # <a name="preview-azure-ad-password-protection-operational-procedures"></a>Előzetes verzió: Azure AD jelszó védelmi eljárások
 
@@ -67,7 +67,7 @@ Ez a beállítás általában alapértelmezett engedélyezve (Igen) állapotban 
 
 A `Get-AzureADPasswordProtectionSummaryReport` parancsmag is használható előállításához tevékenység összegzését. Egy példa a parancsmag kimenete a következőképpen történik:
 
-```
+```Powershell
 Get-AzureADPasswordProtectionSummaryReport -DomainController bplrootdc2
 DomainController                : bplrootdc2
 PasswordChangesValidated        : 6677
@@ -83,10 +83,26 @@ PasswordSetErrors               : 1
 A parancsmag reporting hatóköre egy befolyásolhatja a – erdő, - tartomány vagy -DomainController paraméterek. Nem a paraméterek megadása azt jelenti, – erdőben.
 
 > [!NOTE]
-> Ez a parancsmag minden olyan tartományvezérlőre, amely egy Powershell-munkamenet megnyitásával működik. Ahhoz, hogy sikeres, a Powershell távoli munkamenet-támogatás engedélyezni kell az egyes tartományvezérlőkön, és az ügyfél megfelelő jogosultságokkal kell rendelkeznie. Powershell távoli munkamenet követelményeiről további információkért futtassa a "Get-Help about_Remote_Troubleshooting" Powershell-ablakban.
+> Ez a parancsmag minden olyan tartományvezérlőre, amely egy Powershell-munkamenet megnyitásával működik. Annak érdekében, hogy sikeres legyen, Powershell távoli munkamenet-támogatás minden tartományvezérlőn engedélyezni kell, és az ügyfél megfelelő jogosultságokkal kell rendelkeznie. Powershell távoli munkamenet követelményeiről további információkért futtassa a "Get-Help about_Remote_Troubleshooting" Powershell-ablakban.
 
 > [!NOTE]
 > Ez a parancsmag minden tartományvezérlő ügynökszolgáltatás rendszergazdai Eseménynapló távolról lekérdezésével működik. Ha az eseménynaplókban események nagy számú, a parancsmag végrehajtásához hosszú időt vehet igénybe. Emellett tömeges hálózati lekérdezések célja nagyméretű adathalmazok hatással lehet a tartományvezérlő teljesítményét. Ezért ez a parancsmag használandó gondosan az éles környezetben.
+
+## <a name="dc-agent-discovery"></a>DC-ügynök felderítése
+
+A `Get-AzureADPasswordProtectionDCAgent` parancsmag is használható a különböző DC ügynökök futtatása a tartomány vagy erdő alapvető információit jeleníti meg. Ez az információ veszi át a serviceConnectionPoint objektumok a futó tartományvezérlő ügynök szolgáltatás(ok) által regisztrált. Egy példa a parancsmag kimenete a következőképpen történik:
+
+```Powershell
+Get-AzureADPasswordProtectionDCAgent
+ServerFQDN            : bplChildDC2.bplchild.bplRootDomain.com
+Domain                : bplchild.bplRootDomain.com
+Forest                : bplRootDomain.com
+Heartbeat             : 2/16/2018 8:35:01 AM
+```
+
+Minden egyes tartományvezérlő ügynökszolgáltatás hozzávetőleges számítónk különböző tulajdonságait frissíti. Az adatok a továbbra is az Active Directory replikáció késése.
+
+A parancsmag lekérdezés hatókörét használatával befolyásolhatja a – erdőben vagy -Domain paraméterek.
 
 ## <a name="next-steps"></a>További lépések
 

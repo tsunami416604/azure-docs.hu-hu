@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 3b1724853b4c874a1482a13c4de0ccb179f52f98
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 5247edc02a62f67755ce818645f66f616c5266ce
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041103"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962401"
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>A Log Analytics Syslog-adatforrások
 Syslog-esemény naplózása protokoll, amely Linux közös.  Alkalmazások küld üzeneteket, amelyek a helyi számítógépen tárolt vagy a Syslog-gyűjtő lett elküldve.  A Linuxhoz készült OMS-ügynök telepítve van, konfigurálja a továbbított üzenetek az ügynöknek a helyi Syslog démon.  Az ügynök ezután elküldi az üzenetet a Log Analytics, ahol a megfelelő rekord jön létre az OMS-adattárban.  
@@ -45,7 +45,7 @@ A Syslog beállítása a [adatok Log Analytics speciális beállítások menübe
 Alapértelmezés szerint az összes konfigurációs módosítást automatikusan leküld az összes ügynököt.  Ha azt szeretné, Syslog konfigurálása minden egyes Linux-ügynök manuálisan, törölje a jelet *alkalmaz az alábbi konfiguráció Linuxos gépeimre*.
 
 ### <a name="configure-syslog-on-linux-agent"></a>Syslog konfigurálása Linux-ügynök
-Ha a [OMS-ügynök telepítve van egy Linux-ügyfél](log-analytics-linux-agents.md), egy alapértelmezett syslog-konfigurációs fájl, amely meghatározza a létesítmény és az üzenetek gyűjtött súlyossági telepíti.  Ehhez a fájlhoz, a konfiguráció módosítása módosíthatja.  A konfigurációs fájl attól függően változik, a Syslog-démont, amely az ügyfél telepítve.
+Ha a [OMS-ügynök telepítve van egy Linux-ügyfél](log-analytics-quick-collect-linux-computer.md), egy alapértelmezett syslog-konfigurációs fájl, amely meghatározza a létesítmény és az üzenetek gyűjtött súlyossági telepíti.  Ehhez a fájlhoz, a konfiguráció módosítása módosíthatja.  A konfigurációs fájl attól függően változik, a Syslog-démont, amely az ügyfél telepítve.
 
 > [!NOTE]
 > Ha szerkeszti a syslog-konfiguráció, a syslog démon a módosítások érvénybe léptetéséhez újra kell indítani.
@@ -207,6 +207,6 @@ Az alábbi táblázat a rekordok Syslog lekérő lekérdezések log különböz�
 | Syslog &#124; summarize AggregatedValue = count() by létesítmény |Száma a Syslog-rekord létesítmény szerint. |
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [naplókereséseket](log-analytics-log-searches.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.
+* Ismerje meg [naplókereséseket](log-analytics-log-search.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.
 * Használat [egyéni mezők](log-analytics-custom-fields.md) syslog-rekord származó adatok elemzése az egyes mezőket.
-* [Linux-ügynökök konfigurálása](log-analytics-linux-agents.md) más típusú adatok gyűjtéséhez.
+* [Linux-ügynökök konfigurálása](log-analytics-quick-collect-linux-computer.md) más típusú adatok gyűjtéséhez.

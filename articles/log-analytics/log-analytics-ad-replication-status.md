@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 7c850eee67224d09ea2715a58c3cd8eca4ab07af
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: c248e126d99c7cb83895871ec24d41ffcfd84d29
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041900"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960684"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>A Log Analytics használatával az Active Directory-replikációs állapotának figyelése
 
@@ -34,7 +34,7 @@ Az AD Replication Status megoldáscsomag rendszeresen figyeli az Active Director
 A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat.
 
 * Ügynököket kell telepítenie a tartományvezérlőkön, amelyek ki kell értékelni a tartomány tagjai. Vagy tag kiszolgálón telepíti az ügynökök és az ügynökök AD replikációs adatokat küldeni a Log Analytics konfigurálnia kell. Windows-számítógépek csatlakoztatása a Log Analytics ismertetése: [a Log Analyticshez való csatlakozáshoz Windows számítógépek](log-analytics-windows-agent.md). Ha a tartományvezérlő már a Log Analyticshez való csatlakozáshoz, olvassa el a kívánt meglévő System Center Operations Manager környezet része [Operations Manager csatlakoztatása a Log Analytics](log-analytics-om-agents.md).
-* Az Active Directory replikációs állapota megoldás hozzáadása a Log Analytics-munkaterülethez ismertetett folyamatot [adja hozzá a Log Analytics solutions kövesse a megoldástárban](log-analytics-add-solutions.md).  Nincs szükség további konfigurációra.
+* Az Active Directory replikációs állapota megoldás hozzáadása a Log Analytics-munkaterülethez ismertetett folyamatot [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../monitoring/monitoring-solutions.md).  Nincs szükség további konfigurációra.
 
 ## <a name="ad-replication-status-data-collection-details"></a>AD replikációs állapot adatok gyűjtemény részletei
 Az alábbi táblázatban látható adatok gyűjtési módszerek és egyéb hogyan adatgyűjtés az AD Replication Status részleteit.
@@ -110,7 +110,7 @@ Ha egyik lista tetszőleges elemre kattint, láthatja naplóbeli keresés haszn�
 
 ![Replikációs állapothibák AD keresési eredmények](./media/log-analytics-ad-replication-status/oms-ad-replication-search-details.png)
 
-Itt további szűréséhez, módosítsa a keresési lekérdezést, és így tovább. A naplóbeli keresés használatával kapcsolatos további információkért lásd: [Naplókereséseket](log-analytics-log-searches.md).
+Itt további szűréséhez, módosítsa a keresési lekérdezést, és így tovább. A naplóbeli keresés használatával kapcsolatos további információkért lásd: [Naplókereséseket](log-analytics-log-search.md).
 
 A **HelpLink** mezőben látható URL-címét a TechNet-oldal, további részletekkel a meghatározott hiba. Másolja, és ez a hivatkozás illessze be a böngészőablakot, hibaelhárítási és a hiba kijavítása információinak megtekintéséhez.
 
@@ -154,4 +154,4 @@ Csatlakozás a tartományvezérlők egyik segítségre van szüksége, ha megtek
 Ha nem szeretne csatlakozni a tartományvezérlők bármelyikét közvetlenül a Log Analytics vagy a System Center Operations Manager, [ahhoz, hogy egy nem tartományvezérlő AD adatokat küldeni a Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
 
 ## <a name="next-steps"></a>További lépések
-* Használat [Log Analytics naplóbeli kereséseivel](log-analytics-log-searches.md) Active Directory-replikáció állapota részletes adatainak megtekintéséhez.
+* Használat [Log Analytics naplóbeli kereséseivel](log-analytics-log-search.md) Active Directory-replikáció állapota részletes adatainak megtekintéséhez.

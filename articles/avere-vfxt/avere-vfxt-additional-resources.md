@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: afba39d1af700650cfbf7226dff36729a76a0bda
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 65e764d843f9e87adee4cf94c1d22b02db80eda0
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634148"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958834"
 ---
 # <a name="additional-documentation"></a>További dokumentáció
 
@@ -33,4 +33,4 @@ További Avere fürt dokumentációjában találhatók a webhellyel <http://libr
 
 ## <a name="vfxt-creation-and-management-documentation"></a>vFXT létrehozásának és kezelésének dokumentációját
 
-A teljes útmutató vfxt.py, a felhő-fürt létrehozása és a felügyeleti segédprogram, a rendszer megadott <https://github.com/AvereSystems/vFXT.py/blob/master/docs/README.md>.  
+A teljes útmutató vfxt.py, a felhő-fürt létrehozása és a felügyeleti segédprogram, a github megadott: [vfxt.py a fürt Felhőfelügyelet](https://github.com/Azure/AvereSDK/blob/master/docs/README.md).  

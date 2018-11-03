@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: mbullwin
-ms.openlocfilehash: 91b050c4e1ca37c0af208d6df1ce4f8272235294
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: e88d38e6d95459cc1c41adecee6b7ece659eac99
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139771"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957242"
 ---
 # <a name="monitor-azure-web-app-performance"></a>Azure-webapp teljesítményének figyelése
 Az [Azure Portalon](https://portal.azure.com) beállíthat alkalmazásteljesítmény-figyelést [Azure-webappjaihoz](../app-service/app-service-web-overview.md). Az [Azure Application Insights](app-insights-overview.md) úgy alakítja ki az alkalmazást, hogy telemetriát küldjön tevékenységeiről az Application Insights szolgáltatásnak, amely tárolja és elemzi azokat. Itt metrikus diagramok és keresőeszközök segítségével diagnosztizálhat problémákat, javíthatja a teljesítményt, és felmérheti a használatot.
@@ -100,9 +100,9 @@ Ha telepít egy SDK-t alkalmazásába, az Application Insights részletesebb tel
 ## <a name="next-steps"></a>További lépések
 * [Futtassa a profilkészítőt a működő alkalmazásán.](app-insights-profiler.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) – az Azure Functions figyelése az Application Insights segítségével
-* [Engedélyezze az Azure Diagnostics](app-insights-azure-diagnostics.md) Application Insightsba való küldését.
-* [Figyelje a szolgáltatások állapotával kapcsolatos mérőszámokat](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md), így meggyőződhet róla, hogy szolgáltatása elérhető és válaszkész.
-* [Riasztási értesítéseket kaphat](../monitoring-and-diagnostics/insights-receive-alert-notifications.md), ha működési események történnek vagy a mérőszámok átlépnek egy küszöbértéket.
+* [Engedélyezze az Azure Diagnostics](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md) Application Insightsba való küldését.
+* [Figyelje a szolgáltatások állapotával kapcsolatos mérőszámokat](../monitoring/monitoring-data-collection.md), így meggyőződhet róla, hogy szolgáltatása elérhető és válaszkész.
+* [Riasztási értesítéseket kaphat](../monitoring-and-diagnostics/monitoring-overview-alerts.md), ha működési események történnek vagy a mérőszámok átlépnek egy küszöbértéket.
 * Az [Application Insights JavaScript-alkalmazásokhoz és weblapokhoz](app-insights-javascript.md) való használatával ügyféltelemetriát kaphat azoktól a böngészőktől, amelyek ellátogatnak egy weblapra.
 * [Állítson be rendelkezésre állási webes teszteket](app-insights-monitor-web-app-availability.md), így riasztást kaphat, ha webhelye nem működik.
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: be0a12bbb84db1e4016bd7126a38e750e6c0c3ad
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: caccd70e17d814fb58d5801ed12192e56f0e16ad
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412822"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959967"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Az Azure Key Vault Analytics megoldás a Log Analyticsben
 
@@ -38,7 +38,7 @@ A megoldás használatához meg kell az Azure Key Vault diagnosztikai naplózás
 ## <a name="install-and-configure-the-solution"></a>Telepítse és konfigurálja a megoldást
 Kövesse az alábbi utasításokat, telepítése és konfigurálása az Azure Key Vault megoldásról:
 
-1. Engedélyezze az Azure Key Vault megoldás a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) vagy leírt folyamatot követve [adja hozzá a Log Analytics solutions kövesse a megoldástárban](log-analytics-add-solutions.md).
+1. Engedélyezze az Azure Key Vault megoldás a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) vagy leírt folyamatot követve [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../monitoring/monitoring-solutions.md).
 2. Használatával a Key Vault erőforrások monitorozási, diagnosztikai célú naplózásának engedélyezése a [portál](#enable-key-vault-diagnostics-in-the-portal) vagy [PowerShell](#enable-key-vault-diagnostics-using-powershell)
 
 ### <a name="enable-key-vault-diagnostics-in-the-portal"></a>A Key Vault-diagnosztika használata a portálon
@@ -136,7 +136,7 @@ A 2017 január a naplók küldésére a Key Vaultból Log Analytics támogatott 
 A frissített megoldás használata:
 
 1. [A Key Vaultból közvetlenül a Log Analyticshez való küldésének diagnosztika konfigurálása](#enable-key-vault-diagnostics-in-the-portal)  
-2. Az Azure Key Vault megoldás engedélyezése leírt folyamatot követve [kövesse a megoldástárban adja hozzá a Log Analytics-megoldások](log-analytics-add-solutions.md)
+2. Az Azure Key Vault megoldás engedélyezése leírt folyamatot követve [kövesse a megoldástárban adja hozzá a Log Analytics-megoldások](../monitoring/monitoring-solutions.md)
 3. Bármely mentett lekérdezések, az irányítópultok vagy a riasztások az új adattípus használandó frissítése
   + Típus módosítása a: AzureDiagnostics való KeyVaults. Az erőforrástípus segítségével szűrheti a Key Vault-naplók.
   - Helyett: `KeyVaults`, használata `AzureDiagnostics | where ResourceType'=="VAULTS"`
@@ -153,4 +153,4 @@ A frissített megoldás használata:
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>További lépések
-* Használat [Log Analytics naplóbeli kereséseivel](log-analytics-log-searches.md) Azure Key Vault részletes adatainak megtekintéséhez.
+* Használat [Log Analytics naplóbeli kereséseivel](log-analytics-log-search.md) Azure Key Vault részletes adatainak megtekintéséhez.

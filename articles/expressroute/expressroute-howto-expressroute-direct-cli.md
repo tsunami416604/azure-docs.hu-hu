@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: 6356154bf30fcb2557e288305fa032989e5ddc9d
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 989e96aa00ae65d1206f961a10893e3331670553
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471841"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958304"
 ---
 # <a name="how-to-configure-expressroute-direct-using-cli-preview"></a>Az ExpressRoute közvetlen CLI (előzetes verzió) használatával konfigurálása
 
@@ -290,7 +290,7 @@ Kapcsolatcsoport létrehozása az ExpressRoute közvetlen erőforráson.
   az network express-route create --express-route-port "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct" -n "Contoso-Direct-ckt" -g "Contoso-Direct-rg" --sku-family MeteredData --sku-tier Standard --bandwidth 100 Gbps
   ```
 
-  Más sávszélességeket tartalmazza: 1.0-s, 2.0-s, 5.0, 10.0 és 40.0
+  Más sávszélességeket tartalmazza: 5 GB/s sebességű, 10 GB/s és 40 GB/s
 
   **Példa a kimenetre:**
 

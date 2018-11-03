@@ -13,25 +13,27 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 06/09/2017
+ms.date: 10/23/2018
 ms.author: cynthn
-ms.openlocfilehash: cca9adb40557cf7bf9e1d4129fc6bd61cbf0df4f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 373003eb8be0482ed96d7d11ecd879237f69b47a
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38618239"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957165"
 ---
-# <a name="how-to-set-up-endpoints-on-a-classic-windows-virtual-machine-in-azure"></a>Az Azure-beli klasszikus Windows virtuális gép végpontok beállítása
-Az Azure-ban a klasszikus üzemi modellel létrehozott virtuális gépek automatikusan képes az összes Windows magánhálózaton keresztül kommunikálnak a hálózati csatornát, az ugyanazon a felhőszolgáltatáson vagy virtuális hálózaton lévő más virtuális gépekkel. Azonban a számítógépek az interneten vagy más virtuális hálózatok végpontok a bejövő hálózati forgalmat a virtuális gép szükséges. Ez a cikk érhető el is [Linux rendszerű virtuális gépek](../../linux/classic/setup-endpoints.md).
+# <a name="set-up-endpoints-on-a-windows-virtual-machine-by-using-the-classic-deployment-model"></a>Windows virtuális gép végpontok beállítása a klasszikus üzemi modell használatával
+Windows virtuális gépek (VM) hoz létre az Azure-ban a klasszikus üzemi modell használatával automatikusan képes kommunikálni a többi virtuális gép ugyanazon a felhőszolgáltatáson vagy virtuális hálózati magánhálózati csatornán keresztül. Azonban a számítógépek az interneten vagy más virtuális hálózatokhoz szükséges végpontok a bejövő hálózati forgalmat egy virtuális Gépet. 
+
+Emellett beállíthat végpontok a [Linux rendszerű virtuális gépek](../../linux/classic/setup-endpoints.md).
 
 > [!IMPORTANT]
-> Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk ismerteti a klasszikus üzemi modell használatával. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.  
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
-Az a **Resource Manager** -alapú üzemi modellben végpontok használatával konfigurálhatók **hálózati biztonsági csoportok (NSG)**. További információkért lásd: [a virtuális gép az Azure Portallal való külső hozzáférés engedélyezése](../nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Az a **Resource Manager** -alapú üzemi modellben végpontok segítségével konfigurálhatók **hálózati biztonsági csoportok (NSG)**. További információkért lásd: [a virtuális gép külső hozzáférés engedélyezése az Azure portal használatával](../nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Ha egy Windows virtuális gép létrehozása az Azure Portalon, közös végpontok például a távoli asztal és a Windows PowerShell távoli eljáráshívás általában automatikusan létrehozza a Ön számára. További végpontokat a virtuális gép létrehozása során később szükség esetén, illetve konfigurálhatja.
+Windows virtuális gép létrehozásakor az Azure Portalon közös végpontot, a távoli asztal és a Windows PowerShell-távelérést, a végpontok például általában automatikusan létrehozza a Ön számára. Később igény szerint beállíthatja további végpontokat.
 
 [!INCLUDE [virtual-machines-common-classic-setup-endpoints](../../../../includes/virtual-machines-common-classic-setup-endpoints.md)]
 

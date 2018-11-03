@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 07/09/2018
+ms.date: 10/29/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: d32e05e99543b30ee92ea455ae2f800b09d83661
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 5db215a3bf87ac42ac832a59ce39f7e72c45527f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009293"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963353"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Egy CSP-hez hozzon létre, és az ügyfél nevében egy Azure IoT központi alkalmazás kezelése 
 
@@ -35,13 +35,13 @@ Az Azure IoT központi alkalmazás-kezelő lap megjelenni. Az Azure IoT Central 
 
 Az Azure IoT központi alkalmazás létrehozása, kattintson a **új alkalmazás** csempére. Ez az alkalmazás létrehozása oldal betöltődik. Kell ezen a lapon az összes mezőt, és válassza a **létrehozás**. További információ az egyes alábbi mezők találja.
 
-![Hozzon létre az alkalmazás oldalán a CSP-k](media\howto-create-application-asCSP\image4-1.png)
+![Hozzon létre az alkalmazás oldalán a CSP-k](media\howto-create-application-asCSP\image4.png)
 
-![Hozzon létre az alkalmazás oldalán a CSP-k](media\howto-create-application-asCSP\image4-2.png)
+![Hozzon létre az alkalmazás oldalán a CSP-k](media\howto-create-application-asCSP\image4-1.png)
 
 ## <a name="payment-plan"></a>Fizetési lehetőség
 
-Hozhat létre csak egy CSP-hez, a fizetős alkalmazások létrehozása. Az ügyfelek az Azure IoT Central bemutatására külön létrehozhat egy próbaverziós alkalmazás. A próbaverziós és fizetős alkalmazások tájékozódhat a [Azure IoT Central díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/iot-central/).
+Csak egy CSP-hez mint használatalapú fizetés alkalmazásokat hozhat létre. Az ügyfelek az Azure IoT Central bemutatására külön létrehozhat egy próbaverziós alkalmazás. A próbaverzió utólagosan, és alkalmazások tájékozódhat a [Azure IoT Central díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/iot-central/).
 
 ## <a name="application-name"></a>Alkalmazás neve
 

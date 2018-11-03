@@ -8,30 +8,31 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: adbac964e6654e16f6c405b9a5b8669326583f3e
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: c30c233fb1d413c6a55c7ec0af8c63ca60284b86
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50244156"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960276"
 ---
 # <a name="scaling-throughput-in-azure-cosmos-db"></a>Az Azure Cosmos DB méretezési átviteli sebesség
 
-Az Azure Cosmos DB kiosztott átviteli sebesség jelenik meg kérelem egység/másodperc (RU/s, plural: RUs). RUs a költségét olvasása is mérjük, és írási műveleteket végeznek az Cosmos-tároló.
+Az Azure Cosmos DB kiosztott átviteli sebesség jelenik meg kérelem egység/másodperc (RU/s, plural: RUs). Mindkét olvasási költsége mérjük, illetve írási műveleteket végeznek az Cosmos-tároló, a következő képen látható módon:
 
 ![Kérelemegység](./media/scale-throughput/figure1.png)
 
 Telepíthet egy Cosmos-tároló vagy egy Cosmos-adatbázis a RUs. Egy tároló kiosztott Kérelemegységek adott tárolón végrehajtott műveletek kizárólag érhető el. Az adatbázisok kiosztott Kérelemegységek (kivéve a kizárólag kiosztott Kérelemegységek tartalmazó összes tárolót) adatbázison belüli összes tárolók között vannak megosztva.
 
-A rugalmas méretezéssel átviteli sebesség, akkor növelheti vagy csökkentheti a kiosztott RU/s bármikor. További információkért lásd: útmutató kiépítése átviteli sebességet, és rugalmasan skálázhatja a Cosmos-tárolók és adatbázisok. Globálisan méretezéshez az átviteli sebesség, akkor is régiók hozzáadása vagy eltávolítása a Cosmos-fiókjában bármikor. További információkért lásd: Útmutató a Cosmos-fiókjába régiók hozzáadása vagy eltávolítása. Közel valós idejű eléréséhez helyzetekben fontos több régióban társít egy Cosmos-fiók és [magas rendelkezésre állású](high-availability.md) szerte a világon.
+Az átviteli sebesség rugalmasan méretezést, növelheti vagy csökkentheti a kiosztott RU/s bármikor. További információkért lásd: [útmutató kiépítése átviteli](set-throughput.md) és rugalmasan skálázható Cosmos-tárolók és adatbázisok. Globálisan méretezéshez az átviteli sebesség, akkor is régiók hozzáadása vagy eltávolítása a Cosmos-fiókjában bármikor. További információkért lásd: [útmutató régiók hozzáadása vagy eltávolítása a Cosmos-fiókjába](how-to-manage-database-account.md#addremove-regions-from-your-database-account). Közel valós idejű eléréséhez helyzetekben fontos több régióban társít egy Cosmos-fiók és [magas rendelkezésre állású](high-availability.md) szerte a világon.
 
-## <a name="throughput-scaling-details"></a>Átviteli sebesség méretezési részletei
+## <a name="how-throughput-scaling-works"></a>Átviteli sebesség skálázás működése
 
-Ha üzembe helyezi az R RUs Cosmos tároló (vagy adatbázis), Cosmos DB biztosítja, hogy az R fenntartott egységek érhetők el a *egyes* a Cosmos-fiókjához társított régiót. Minden alkalommal, amikor egy új régióban Cosmos-fiókjába, adja hozzá a Cosmos DB automatikusan látja a R-re növeli az újonnan hozzáadott régióban. A műveletek lettek elvégezve, mint a Cosmos-tároló garantáltan minden Cosmos-fiókjához társított régiókhoz R RUs beolvasása. Külön-külön nem rendelhető hozzá egy adott régióban kérelemegység - Cosmos-fiókjához társított minden régió esetében az, Cosmos-tároló (vagy adatbázis) számára kiosztott Kérelemegységek felhasznált.
+Ha üzembe helyezi az "R" RUs Cosmos tároló (vagy adatbázis), a Cosmos DB biztosítja, hogy "R" fenntartott egységek érhetők el a *egyes* Cosmos-fiókjához társított régió. Minden alkalommal, amikor egy új régióban adja hozzá a fiókjához, a Cosmos DB automatikusan látja a "R" RUs az újonnan hozzáadott régióban. A műveletek lettek elvégezve, mint a Cosmos-tároló garantáltan "R" RUs lekérése az egyes régiókban. Egy adott régióban külön-külön nem rendelhető hozzá RUs. Az, Cosmos-tároló (vagy adatbázis) számára kiosztott Kérelemegységek a Cosmos-fiókjához társított összes régióban vannak kiépítve.
 
-Feltételezve, hogy egy Cosmos-tároló meg van adva az R-re növeli, és nincsenek N régiók a Cosmos-fiókjához társított, majd:
+Feltételezve, hogy egy Cosmos-tároló meg van adva, az "R" fenntartott egységek, és nincsenek "n" régiók a Cosmos-fiókjához társított, majd:
 
 - Ha a Cosmos-fiók van konfigurálva a egyetlen írási régiót, a Kérelemegységek teljes rendelkezésre álló globálisan a tárolóra = R x n
+
 - Ha a Cosmos-fiók van konfigurálva több írási régióval, a tárolót a globálisan elérhető teljes RUs R = x (N + 1). A további R RUs automatikusan hozzáférést kapnak folyamat frissítési ütközések és a víruskereső vysokou forgalom a régiók között elosztva.
 
 A választott [konzisztenciájú modellt](consistency-levels.md) is hatással van az átviteli sebességet. Körülbelül 2 x olvasási teljesítménye a munkamenet, konzisztens előtag és végleges konzisztenciát korlátozott frissesség, vagy erős konzisztencia képest kérheti le.

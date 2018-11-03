@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 49607809d6bb8697cc6b7a4063a45d893b9e1eac
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f6f94f12fc0a639743f310638af0f0b6ac0d2932
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421084"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958151"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Naplóriasztások az Azure monitorban
 Ez a cikk ismerteti a riasztások részleteinek közé tartoznak a különböző típusú riasztások belül támogatott a [Azure Alerts](monitoring-overview-unified-alerts.md) és a felhasználó használhat az Azure elemzési platform alapjaként, mert így.
@@ -122,4 +122,4 @@ Naplóriasztásokra vonatkozó díjszabás érvényes van megadva a [Azure Monit
 * Megismerheti [naplóriasztások az Azure-ban a webhookok](monitor-alerts-unified-log-webhook.md).
 * Ismerje meg [Azure-riasztások](monitoring-overview-unified-alerts.md).
 * Tudjon meg többet [Application Insights](../application-insights/app-insights-analytics.md).
-* Tudjon meg többet [Log Analytics](../log-analytics/log-analytics-overview.md).    
+* Tudjon meg többet [Log Analytics](../log-analytics/log-analytics-queries.md).    

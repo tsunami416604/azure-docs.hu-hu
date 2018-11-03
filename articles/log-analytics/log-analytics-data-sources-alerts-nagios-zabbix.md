@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: eb129ebe6d63396934cbcda509d711cc63a5ee1b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9c2b5db4fe35227600e7ab8d94f2cc8701cf529b
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402940"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963768"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-log-analytics-agent-for-linux"></a>A Linuxhoz készült Log Analytics-ügynök Nagios-és Zabbix a Log Analytics-riasztások gyűjtése 
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
-[Nagios](https://www.nagios.org/) és [Zabbix](http://www.zabbix.com/) nyílt forrású eszközök figyelését. Meg tud gyűjteni riasztások ezekkel az eszközökkel a Log Analytics annak érdekében, hogy az elemzésük [más forrásból származó riasztások](log-analytics-alerts.md).  Ez a cikk ismerteti, hogyan konfigurálhatja a riasztások gyűjtésére ezekben a rendszerekben Linuxhoz készült Log Analytics-ügynököket.
+[Nagios](https://www.nagios.org/) és [Zabbix](http://www.zabbix.com/) nyílt forrású eszközök figyelését. Meg tud gyűjteni riasztások ezekkel az eszközökkel a Log Analytics annak érdekében, hogy az elemzésük [más forrásból származó riasztások](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md).  Ez a cikk ismerteti, hogyan konfigurálhatja a riasztások gyűjtésére ezekben a rendszerekben Linuxhoz készült Log Analytics-ügynököket.
  
 ## <a name="prerequisites"></a>Előfeltételek
 A Linuxhoz készült Log Analytics-ügynök verzióra Nagios gyűjtését riasztásai támogatja 4.2.x és Zabbix verzióra 2.x.
@@ -80,7 +80,7 @@ Riasztások gyűjtése a Nagios-kiszolgálón, hajtsa végre az alábbi lépése
 
 
 ## <a name="alert-records"></a>Riasztási rekordok
-Riasztási rekord lekérése Nagios- és Zabbix használatával [naplókereséseket](log-analytics-log-searches.md) a Log Analyticsben.
+Riasztási rekord lekérése Nagios- és Zabbix használatával [naplókereséseket](log-analytics-log-search.md) a Log Analyticsben.
 
 ### <a name="nagios-alert-records"></a>Nagios-riasztás rekordok
 
@@ -118,5 +118,5 @@ Riasztás Zabbix által összegyűjtött rekordokkal rendelkezik egy **típus** 
 
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [riasztások](log-analytics-alerts.md) a Log Analyticsben.
-* Ismerje meg [naplókereséseket](log-analytics-log-searches.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 
+* Ismerje meg [riasztások](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) a Log Analyticsben.
+* Ismerje meg [naplókereséseket](log-analytics-log-search.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 

@@ -1,6 +1,6 @@
 ---
-title: A klasszikus webszolgáltatás újratanítása |} Microsoft Docs
-description: Megtudhatja, hogyan programozott módon modell működik, és frissíti a az újonnan betanított modell használatára az Azure Machine Learning webszolgáltatás.
+title: Klasszikus webszolgáltatás újratanítása |} A Microsoft Docs
+description: Ismerje meg, hogyan programozott módon modellek szoftveres átképezése és frissíteni a webszolgáltatást a újonnan betanított modell használata az Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
@@ -15,66 +15,66 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 6fc03865185b97fb1f34028239f647f97d5bd315
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 3de17375670d7697a298023dc79ffc2418cb7e42
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836874"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963762"
 ---
 # <a name="retrain-a-classic-web-service"></a>Klasszikus webszolgáltatás újratanítása
-A prediktív telepített webes szolgáltatás az alapértelmezett érték scoring-végpontja. Alapértelmezett végpontok szinkronban vannak az eredeti képzési és kísérletek pontozási tárolják, és ezért a betanított modell alapértelmezett végpont nem cserélhető le. A webszolgáltatás működik, hozzá kell adnia egy új végpont a webszolgáltatással. 
+A prediktív webszolgáltatás üzembe helyezte az alapértelmezett érték pontozási végpontjához. Alapértelmezett végpontok szinkronban vannak az eredeti tanítási és pontozási kísérletek őrzi meg, és ezért a betanított modell esetében az alapértelmezett végpont nem lehet lecserélni. A webszolgáltatás újratanítása, hozzá kell adnia egy új végpont a webszolgáltatást. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Akkor be kell állítania egy tanítási kísérletet, és egy prediktív kísérletté látható módon [Machine Learning-modellek szoftveres](retrain-models-programmatically.md). 
+Akkor be kell állítania egy tanítási kísérletet, és a egy prediktív kísérletet, ahogyan [Retrain Machine Learning-modellek](retrain-models-programmatically.md). 
 
 > [!IMPORTANT]
-> A prediktív kísérletté kell telepíteni, mint a klasszikus machine learning-webszolgáltatás. 
+> A prediktív kísérletté klasszikus machine learning-webszolgáltatás, telepíteni kell. 
 > 
 > 
 
-A web Services további információkért lásd: [központi telepítése az Azure Machine Learning webszolgáltatás](publish-a-machine-learning-web-service.md).
+Webszolgáltatások üzembe helyezése a további információkért lásd: [egy Azure Machine Learning webszolgáltatás üzembe helyezése](publish-a-machine-learning-web-service.md).
 
 ## <a name="add-a-new-endpoint"></a>Új végpont hozzáadása
-A prediktív webszolgáltatás központilag telepített tartalmaz egy alapértelmezett scoring-végpontja, hogy szinkronban vannak az eredeti képzési és kísérletek betanított modell pontozása. A webszolgáltatás számára új betanított modell egy új pontozási végpontot kell létrehoznia. 
+A prediktív webszolgáltatás üzembe helyezett tartalmaz egy alapértelmezett pontozási végpontjához, amely az eredeti képzési szinkronban maradjon, és kísérletek betanított modell pontozása. Frissítse a web service-t egy új betanított modell, létre kell hoznia egy új pontozási végpont. 
 
-Egy új pontozási végpont létrehozásához a betanított modell frissíthető prediktív webszolgáltatás:
+Új pontozási végpont, az a prediktív webszolgáltatás, amely frissíthetők a betanított modell létrehozásához:
 
 > [!NOTE]
-> Győződjön meg arról, hogy a végpont a prediktív webszolgáltatás, nem a képzés webszolgáltatás kíván hozzáadni. Ha megfelelően telepítette, a képzési és a prediktív webszolgáltatás, megtekintheti az felsorolt két külön webszolgáltatások. A prediktív webszolgáltatás "[prediktív exp.]" kell végződnie.
+> Győződjön meg arról, hogy a végpont a prediktív webszolgáltatás, nem a betanítási webszolgáltatás ad hozzá. Ha megfelelően telepítette, egy tanítási és a egy prediktív webszolgáltatás, megtekintheti az felsorolt két külön webszolgáltatást. A prediktív webszolgáltatás "[prediktív exp.]" kell végződnie.
 > 
 > 
 
-Kétféleképpen, amelyben hozzáadhat egy új végpont egy webszolgáltatás-bővítmény:
+Két módja, amelyben hozzáadhat egy új végpontot egy webszolgáltatás:
 
 1. Programozott módon
-2. A Microsoft Azure Web Services portál
+2. A Microsoft Azure Web Services portál használata
 
 ### <a name="programmatically-add-an-endpoint"></a>Programozott módon a végpont hozzáadása
-Pontozó végpontjaitól jelen mintakód is hozzáadhat [github-tárházban](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs).
+Adhat hozzá azzal a mintakóddal ebben pontozási végpontok [github-adattár](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint).
 
-### <a name="use-the-microsoft-azure-web-services-portal-to-add-an-endpoint"></a>Végpont hozzáadása a Microsoft Azure Web Services portál használatával
-1. A Machine Learning Studio a bal oldali oszlopban kattintson a webszolgáltatásokat.
-2. A webes szolgáltatás irányítópultját alján kattintson **kezelése végpontok előzetes**.
+### <a name="use-the-microsoft-azure-web-services-portal-to-add-an-endpoint"></a>Végpont hozzáadása a Microsoft Azure Web Services portál használata
+1. Machine Learning Studio a bal oldali navigációs oszlopban kattintson a Web Services.
+2. A webszolgáltatás irányítópultján alján kattintson **kezelés végpontok előzetes**.
 3. Kattintson a **Hozzáadás** parancsra.
-4. Írja be nevét és leírását, az új végpont. Válassza ki a naplózási szint, és hogy engedélyezve van-e mintaadatokat. További információt a naplózást, [naplózását a Machine Learning webszolgáltatások](web-services-logging.md).
+4. Írjon be egy nevet és leírást az új végpont. Válassza ki a naplózási szint, és hogy engedélyezve van-e a mintaadatok. A naplózás további információkért lásd: [naplózás engedélyezése a Machine Learning-webszolgáltatások](web-services-logging.md).
 
 ## <a name="update-the-added-endpoints-trained-model"></a>A hozzáadott végpont betanított modell frissítése
 A megőrzési befejezéséhez, frissítenie kell a hozzáadott új végpont a betanított modell.
 
-Ha hozzáadta a végpont a mintakódot, ez magában foglalja a súgó által azonosított URL-cím helye a *HelpLocationURL* a kimeneti értéket.
+Ha a végpont, azzal a mintakóddal, ez magában foglalja a súgó által azonosított URL-cím helyét a *HelpLocationURL* a kimenetben szereplő érték.
 
-Az útvonal URL-cím beolvasása:
+Az elérési út URL-cím lekéréséhez:
 
-1. Másolja és illessze be az URL-CÍMÉT a böngésző címsorába.
-2. A frissítés erőforrás hivatkozásra.
-3. Másolja a PATCH kérés POST URL-CÍMÉT. Példa:
+1. Másolja és illessze be az URL-címet a böngészőben.
+2. Kattintson a frissítés erőforrás-hivatkozás.
+3. Másolja a POST URL-címét a PATCH-kérés. Példa:
    
-     JAVÍTÁS URL-CÍME: https://management.azureml.net/workspaces/00bf70534500b34rebfa1843d6/webservices/af3er32ad393852f9b30ac9a35b/endpoints/newendpoint2
+     JAVÍTÁSI URL-CÍME: https://management.azureml.net/workspaces/00bf70534500b34rebfa1843d6/webservices/af3er32ad393852f9b30ac9a35b/endpoints/newendpoint2
 
-Most már használhatja a betanított modell a korábban létrehozott pontozási végpont frissítéséhez.
+Mostantól használhatja a betanított modell a pontozási végpont korábban létrehozott frissítéséhez.
 
-Az alábbi mintakód bemutatja, hogyan használható a *BaseLocation*, *RelativeLocation*, *SasBlobToken*, és az URL-cím javítására, de a végpont frissítéséhez.
+Az alábbi mintakód bemutatja, hogyan használható a *BaseLocation*, *RelativeLocation*, *SasBlobToken*, és URL-cím JAVÍTANI a végpont frissítéséhez.
 
     private async Task OverwriteModel()
     {
@@ -114,27 +114,27 @@ Az alábbi mintakód bemutatja, hogyan használható a *BaseLocation*, *Relative
         }
     }
 
-A *apiKey* és a *végponti URL-cím* vonatkozó hívása végpont irányítópult lehet lekérni.
+A *apikey tulajdonsággal végzett tesztelése* és a *endpointUrl* az a hívás végpontja irányítópult szerezhető.
 
-Értékét a *neve* paraméterének *erőforrások* meg kell felelnie a prediktív kísérletté a mentett betanított modell erőforrás neve. Az erőforrásnév beolvasása:
+Értékét a *neve* paraméter *erőforrások* meg kell egyeznie a mentett, a prediktív kísérletet a betanított modell erőforrás nevét. Az erőforrásnév lekérése:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldali menüben kattintson **Machine Learning**.
-3. A név, kattintson a munkaterület majd **webszolgáltatások**.
-4. A név, kattintson a **nyilvántartásba modell [prediktív exp].** .
-5. Kattintson a hozzáadott új végpontot.
-6. A végpont irányítópultján kattintson **frissítés erőforrás**.
-7. A webszolgáltatás frissítés erőforrás API-JÁNAK dokumentációja lapon található a **erőforrásnév** alatt **frissíthető erőforrások**.
+2. A bal oldali menüben kattintson a **Machine Learning**.
+3. A név, kattintson a munkaterület, és kattintson a **webszolgáltatások**.
+4. A név, kattintson a **népszámlálási modell [prediktív exp.]** .
+5. Kattintson a hozzáadott új végpont.
+6. A végpont irányítópultján kattintson **erőforrás frissítése**.
+7. A web service erőforrás-frissítési API-dokumentáció lapon talál a **erőforrásnév** alatt **frissíthető erőforrások**.
 
-Ha befejezte a végpont frissítése a SAS-jogkivonat nem, el kell végeznie egy GET friss jogkivonat beszerzése feladatazonosítóval.
+Ha lejár az SAS-jogkivonatot, mielőtt áttelepítené a végpont frissítése, egy GET friss jogkivonatot beszereznie a feladatazonosító kell végrehajtania.
 
-Amikor a kód sikeresen lefutott, az új végpont kell kezdődnie, körülbelül 30 másodpercet retrained modellt használja.
+Ha a kódot már sikeresen futott, az új végpont el kell a retrained modell használatával körülbelül 30 másodperc múlva.
 
 ## <a name="summary"></a>Összegzés
-Az Átképezési API-kkal, frissítheti a betanított modell egy prediktív webszolgáltatás forgatókönyvek például engedélyezése:
+Az Átképezési API-k használatával, frissítheti a betanított modell egy prediktív webszolgáltatás például forgatókönyvek engedélyezése:
 
-* Az új adatokat átképezési rendszeres modell.
-* Terjesztési ügyfelek-modell, azzal a céllal, hogy működik a modell használatával saját adataikat.
+* Rendszeres modell új adatokkal átképezési.
+* A modell az ügyfelek számára a cél az, amely tájékoztatja őket a modell használatával saját adataik újratanítás terjesztési.
 
 ## <a name="next-steps"></a>További lépések
 [A klasszikus Azure Machine Learning webszolgáltatás átképezési hibaelhárítása](troubleshooting-retraining-models.md)

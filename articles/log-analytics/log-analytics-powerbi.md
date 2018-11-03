@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 7610fcfc144e4337f8556c8824dc7d104265bcc4
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: c3e0494d813f625a23f55171953d9145411a7024
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044552"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960296"
 ---
 # <a name="import-azure-log-analytics-data-into-power-bi"></a>Az Azure Log Analytics-adatok importálása a Power BI-bA
 
@@ -81,5 +81,5 @@ A Power BI-ban létrehozott adatkészlet ugyanazokat az adatokat a Power BI Desk
 
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [naplókereséseket](log-analytics-log-searches.md) építhetők fel lekérdezések a Power bi-ba exportált.
+* Ismerje meg [naplókereséseket](log-analytics-log-search.md) építhetők fel lekérdezések a Power bi-ba exportált.
 * Tudjon meg többet [Power BI](http://powerbi.microsoft.com) Log Analytics-exportálások vizualizációkat hozhat létre.

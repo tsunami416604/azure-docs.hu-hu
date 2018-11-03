@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: cfcdf13f8aa4dfab9b361ccbb82ea4b2c3e2ca0d
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 5550bbb95b24e12510c69bc3952c346250786994
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054483"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960004"
 ---
 # <a name="import-data-into-analytics"></a>Elemzési adatok importálása
 
@@ -120,10 +120,10 @@ JSON-formátumban
  
 Minden oszlop helye, neve és típusa alapján azonosítja.
 
-* Hely – Format tagolt fájl, akkor azt a leképezett érték. JSON-formátumban célszerű a jpath a leképezett kulcs.
+* Hely -, tagolt fájl Format,-e a leképezett értéket pozícióját. JSON-formátumban célszerű a jpath a leképezett kulcs.
 * Név – a oszlopban megjelenített nevét.
 * Írja be – ez az oszlop adattípusát.
- 
+
 > [!NOTE]
 > Abban az esetben példaadatok használta, és a fájl formátuma csak, sémadefiníciója kell minden oszlop leképezése és új oszlopok hozzáadása a végén.
 > 
@@ -137,7 +137,7 @@ Adatok importálása, töltse fel az Azure storage, hozzon létre egy hozzáfér
 
 Hajtsa végre a következő folyamat manuálisan, vagy állítsa be az automatikus rendszerek rendszeres időközönként tennie. Kövesse az alábbi lépéseket az importálni kívánt minden adatblokkja esetében van szüksége.
 
-1. Töltse fel az adatokat [az Azure blob storage-bA](../storage/blobs/storage-dotnet-how-to-use-blobs.md). 
+1. Töltse fel az adatokat [az Azure blob storage-bA](../storage/blobs/storage-quickstart-blobs-dotnet.md). 
 
  * Blobok lehet bármelyik mérete legfeljebb 1GB tömörítetlen. A teljesítmény szempontjából ideálisak a nagy méretű blobok több száz MB-ot.
  * A Gzip ideje és a lekérdezés elérhető legyen az adatok közel valós idejű tömöríthetők. Használja a `.gz` fájlnév-kiterjesztés.
@@ -369,5 +369,5 @@ Ez a kód használata minden egyes blob.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Ismerkedjen meg a Log Analytics lekérdezési nyelv](app-insights-analytics-tour.md)
+* [Ismerkedjen meg a Log Analytics lekérdezési nyelv](../log-analytics/query-language/get-started-analytics-portal.md)
 * Ha Logstash használja, használja a [adatokat küldeni az Application Insights a Logstash beépülő modul](https://github.com/Microsoft/logstash-output-application-insights)

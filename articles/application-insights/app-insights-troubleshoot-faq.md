@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4f063299a0bb454c8eaf3d38a0cb0a5fb20abcc8
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 60195f135b8b0e102a36c3573a341432f2e0c784
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094083"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959307"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Az Application Insights: Gyakori kérdések
 
@@ -27,7 +27,7 @@ ms.locfileid: "47094083"
 
 * [.NET-alkalmazás](app-insights-asp-net-troubleshoot-no-data.md)
 * [Egy már futó alkalmazás](app-insights-monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)
-* [Az Azure diagnostics](app-insights-azure-diagnostics.md)
+* [Az Azure diagnostics](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
 * [Java webalkalmazások](app-insights-java-troubleshoot.md)
 
 *Nincs adat jelenik meg a kiszolgálón lévő*
@@ -111,7 +111,7 @@ A kiszolgáló webes alkalmazásokból:
 
 A [ügyfél weblapok](app-insights-javascript.md):
 
-* [Oldalmegtekintések száma](app-insights-web-track-usage.md)
+* [Oldalmegtekintések száma](app-insights-usage-overview.md)
 * [AJAX-hívások](app-insights-asp-net-dependencies.md) kérések száma a parancsprogram futtatásához.
 * Lapbetöltési adatainak megtekintése
 * Felhasználók és munkamenetek száma
@@ -119,7 +119,7 @@ A [ügyfél weblapok](app-insights-javascript.md):
 
 Más forrásokból, ha konfigurálja őket:
 
-* [Az Azure diagnostics](app-insights-azure-diagnostics.md)
+* [Az Azure diagnostics](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
 * [A docker-tárolók](app-insights-docker.md)
 * [Az elemzési tábla importálása](app-insights-analytics-import.md)
 * [Log Analytics](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)

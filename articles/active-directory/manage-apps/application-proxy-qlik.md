@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 5f103e9fe410374a551eb43d456d5993bdd36627
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 55e262e1855eb6ab50c2d32e7e8cd4bb9175a593
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057084"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962554"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Az alkalmazásproxy és Qlik Sense 
 Az Azure Active Directory alkalmazásproxy és Qlik Sense platformtechnológiát együtt, ellenőrizze, hogy könnyen tud alkalmazásproxy használatával a Qlik Sense-telepítés a távelérés biztosítása.  
@@ -58,7 +58,11 @@ Kövesse a lépéseket, mint az alkalmazás 1, a következő kivételekkel:
 ## <a name="testing"></a>Tesztelés 
 Az alkalmazás teszteléséhez készen áll. A külső URL-cím, amellyel QlikSense közzététele az alkalmazás 1 és bejelentkezés egy felhasználó mindkét alkalmazáshoz rendelt eléréséhez.  
 
+## <a name="additional-references"></a>További referenciák
+Közzétételi Qlik Sense a proxyval kapcsolatos további információkért tekintse meg a Qlik közösségi cikket: [Azure AD-integrált Windows-hitelesítés a Kerberos által korlátozott delegálás használata a Qlik Sense](https://community.qlik.com/docs/DOC-20183).
+
 ## <a name="next-steps"></a>További lépések
 
 - [Az alkalmazásproxy-alkalmazások közzététele](application-proxy-publish-azure-portal.md)
-- [Az alkalmazásproxy-összekötők](application-proxy-connector-groups.md).
+- [Az alkalmazásproxy-összekötők](application-proxy-connector-groups.md)
+

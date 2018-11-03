@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: df5e55c2c03fec13ada258be91f0d98b7ce70d94
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 18f52c7b15bf22b363309cbdf1a060b3ab89d93d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406160"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958528"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Linux-alkalmazások a Log Analytics teljesítményszámlálók gyűjtése 
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
@@ -170,4 +170,4 @@ Miután konfigurálta a Log Analytics szolgáltatásnak a Linuxhoz készült Log
 
 ## <a name="next-steps"></a>További lépések
 * [Teljesítményszámlálók gyűjtése](log-analytics-data-sources-performance-counters.md) Linux-ügynököktől.
-* Ismerje meg [naplókereséseket](log-analytics-log-searches.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 
+* Ismerje meg [naplókereséseket](log-analytics-log-search.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 

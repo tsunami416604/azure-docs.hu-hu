@@ -1,6 +1,6 @@
 ---
-title: Riasztás létrehozása a klasszikus metrika az Azure Resource Manager sablonnal
-description: Útmutató Resource Manager sablon segítségével riasztás létrehozása a klasszikus metrika értesítéseket e-mailben vagy webhook.
+title: Az Azure-beli klasszikus metrikariasztás létrehozása Resource Manager-sablonnal
+description: Ismerje meg, e-mailben vagy webhook értesítést szeretne kapni a klasszikus metrikariasztás létrehozása Resource Manager-sablon használatával.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,31 +8,31 @@ ms.topic: conceptual
 ms.date: 4/27/2018
 ms.author: johnkem
 ms.component: metric
-ms.openlocfilehash: 67dac4f8d9b66f4b5f2654ffb16d9829387fc060
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 3cdf2371ccdaca5573c088c33527985f98ef2f90
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263296"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957108"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Klasszikus metrikariasztás létrehozása Resource Manager-sablonnal
-Ez a cikk bemutatja, hogyan használható egy [Azure Resource Manager sablon](../azure-resource-manager/resource-group-authoring-templates.md) Azure metrika riasztások konfigurálása. Ez lehetővé teszi, hogy automatikusan riasztásokat állíthat be az erőforrások annak érdekében, hogy helyesen legyen-e figyelve erőforrások létrehozásakor.
+Ez a cikk bemutatja, hogyan használhatja egy [Azure Resource Manager-sablon](../azure-resource-manager/resource-group-authoring-templates.md) Azure metrikákhoz kapcsolódó riasztások konfigurálása. Ez lehetővé teszi, hogy automatikusan riasztásokat állíthat be az erőforrások, annak érdekében, hogy megfelelően figyelt összes erőforrás létrehozásakor.
 
 > [!NOTE]
 > 
-> Ez a cikk ismerteti, hogy létrehozása **klasszikus metrika riasztások** Resource Manager-sablonok használatával. Ha a keresett létrehozása [újabb metrika riasztások](monitoring-near-real-time-metric-alerts.md) sablonokkal, [Ez a cikk](monitoring-create-metric-alerts-with-templates.md) részleteit.
+> Ez a cikk ismerteti, hogy létrehozása **klasszikus metrikariasztásokat** Resource Manager-sablonok használatával. Ha a keresett létrehozása [újabb metrikákhoz kapcsolódó riasztások](monitoring-near-real-time-metric-alerts.md) sablonokkal, [Ez a cikk](monitoring-create-metric-alerts-with-templates.md) részleteit.
 >
 
 
-Az alapvető lépések a következők:
+Az alapvető lépéseken az alábbiak szerint:
 
-1. Hozzon létre egy sablont, amely leírja a riasztás létrehozása, JSON-fájlként.
-2. [A sablon bármely olyan telepítési módszerrel telepítéséhez](../azure-resource-manager/resource-group-template-deploy.md).
+1. Hozzon létre egy JSON-fájlt, amely azt ismerteti, hogyan hozhat létre a riasztás egy sablont.
+2. [Helyezze üzembe a sablont, minden olyan telepítési módszerrel](../azure-resource-manager/resource-group-template-deploy.md).
 
-Az alábbiakban azt ismertetjük Resource Manager-sablonok létrehozásához először riasztás egyedül a riasztást egy másik erőforrás létrehozása közben.
+Az alábbiakban azt ismertetjük, hogy hogyan hozhat létre egy Resource Manager-sablon először egy riasztás önmagában, majd a riasztást egy másik erőforrás létrehozása során.
 
-## <a name="resource-manager-template-for-a-classic-metric-alert"></a>A klasszikus metrika riasztások Resource Manager-sablon
-Hozzon létre egy riasztást, a Resource Manager-sablonnal, hozzon létre egy típusú erőforrást `Microsoft.Insights/alertRules` , és töltse ki az összes kapcsolódó tulajdonságok. Az alábbiakban van a sablont, amely egy riasztási szabályt hoz létre.
+## <a name="resource-manager-template-for-a-classic-metric-alert"></a>Klasszikus metrikariasztás a Resource Manager-sablon
+Hozzon létre egy riasztást, Resource Manager-sablonnal, hozzon létre egy erőforrást típusú `Microsoft.Insights/alertRules` , és töltse ki az összes kapcsolódó tulajdonságok. Az alábbi, egy sablont, amely létrehoz egy riasztási szabályt.
 
 ```json
 {
@@ -179,10 +179,10 @@ Hozzon létre egy riasztást, a Resource Manager-sablonnal, hozzon létre egy t�
 }
 ```
 
-Riasztási szabály a séma és a Tulajdonságok magyarázatot [érhető el itt](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+A séma és a Tulajdonságok magyarázata a riasztási szabály [itt érhetők el](https://msdn.microsoft.com/library/azure/dn933805.aspx).
 
-## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>A klasszikus metrika riasztások erőforrás Resource Manager-sablon
-A Resource Manager-sablon riasztást általában akkor hasznos, ha létre riasztást erőforrás létrehozása közben. Például, érdemes lehet ahhoz, hogy a "CPU % > 80-as" szabály be van állítva, minden alkalommal, amikor a virtuális gép telepítése. Ehhez adja hozzá a riasztási szabály a erőforrás tömbben erőforrásként a Virtuálisgép-sablonhoz, és adja hozzá a függőség használatával a `dependsOn` tulajdonságot a VM erőforrás-azonosító. Ez egy teljes példa, amely egy Windows virtuális Gépet hoz létre, és hozzáadja egy riasztást, mely előfizetés rendszergazdái értesítése, ha a CPU-kihasználtsága a 80 % fölé megy.
+## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>Klasszikus metrikariasztás erőforrás Resource Manager-sablon
+A Resource Manager-sablonnal riasztást általában akkor hasznos, ha a riasztás létrehozása közben egy erőforrás létrehozását. Például érdemes annak érdekében, hogy a "Processzor % > 80-as" szabály be van állítva, minden alkalommal, amikor a virtuális gép telepítése. Ehhez a riasztási szabály hozzáadása az erőforrás-tömb erőforrásként a Virtuálisgép-sablonhoz, és adjon hozzá egy függőségi használatával a `dependsOn` tulajdonságot a virtuális gép erőforrás-azonosítója. Íme egy teljes példa, amely egy Windows virtuális Gépet hoz létre, és hozzáad egy riasztást, amely értesíti az előfizetés-adminisztrátorok, ha a CPU-kihasználtság túllépik a 80 %.
 
 ```json
 {
@@ -402,6 +402,6 @@ A Resource Manager-sablon riasztást általában akkor hasznos, ha létre riaszt
 ```
 
 ## <a name="next-steps"></a>További lépések
-* [Tudjon meg többet a riasztások](insights-receive-alert-notifications.md)
-* [Diagnosztikai beállítások hozzáadása](monitoring-enable-diagnostic-logs-using-template.md) a Resource Manager sablonhoz
+* [További információ a riasztásokkal kapcsolatban](monitoring-overview-alerts.md)
+* [Diagnosztikai beállítások hozzáadása](monitoring-enable-diagnostic-logs-using-template.md) , a Resource Manager-sablon
 

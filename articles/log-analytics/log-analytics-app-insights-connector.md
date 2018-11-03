@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 7c6d91da0634e7f847af01d1c057607ab095cdf6
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7f3a90bf0dad2d0e9c6d51e942d88fb933b8ed1f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408208"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961330"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights-összekötő felügyeleti megoldás (előzetes verzió)
 
@@ -44,8 +44,8 @@ Ellentétben a legtöbb más Log Analytics-megoldások adatok nem lesznek gyűjt
 
 | Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |
-| [Windows-ügynökök](log-analytics-windows-agent.md) | Nem | Windows-ügynököktől a megoldás nem gyűjt adatokat. |
-| [Linux-ügynökök](log-analytics-linux-agents.md) | Nem | A megoldás a Linux-ügynökök nem gyűjt adatokat. |
+| [Windows-ügynökök](log-analytics-agent-windows.md) | Nem | Windows-ügynököktől a megoldás nem gyűjt adatokat. |
+| [Linux-ügynökök](log-analytics-quick-collect-linux-computer.md) | Nem | A megoldás a Linux-ügynökök nem gyűjt adatokat. |
 | [Az SCOM felügyeleti csoport](log-analytics-om-agents.md) | Nem | A megoldás az ügynökök a csatlakoztatott SCOM felügyeleti csoport nem gyűjt adatokat. |
 | [Azure Storage-fiók](log-analytics-azure-storage.md) | Nem | A megoldás nem az Azure storage-ból nem gyűjteményadatokat. |
 
@@ -57,7 +57,7 @@ Ellentétben a legtöbb más Log Analytics-megoldások adatok nem lesznek gyűjt
 
 ## <a name="configuration"></a>Konfiguráció
 
-1. Engedélyezze az Azure Web Apps Analytics megoldás a a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview) vagy leírt folyamatot követve [adja hozzá a Log Analytics solutions kövesse a megoldástárban](log-analytics-add-solutions.md).
+1. Engedélyezze az Azure Web Apps Analytics megoldás a a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview) vagy leírt folyamatot követve [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../monitoring/monitoring-solutions.md).
 2. Keresse fel az [Azure Portalt](https://portal.azure.com). Válassza ki **minden szolgáltatás** Application Insights megnyitásához. Ezután keresse meg az Application Insights. 
 3. A **előfizetések**, válasszon ki egy előfizetést, amely rendelkezik az Application Insights-erőforrást, majd a **neve**, válassza ki egy vagy több alkalmazás.
 4. Kattintson a **Save** (Mentés) gombra.
@@ -267,4 +267,4 @@ Ez a megoldás nem rendelkezik az irányítópulton látható naplókeresési mi
 
 ## <a name="next-steps"></a>További lépések
 
-- Használat [naplóbeli keresés](log-analytics-log-searches.md) részletes információk az Application Insights-alkalmazások megtekintéséhez.
+- Használat [naplóbeli keresés](log-analytics-log-search.md) részletes információk az Application Insights-alkalmazások megtekintéséhez.

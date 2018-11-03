@@ -1,5 +1,5 @@
 ---
-title: Az Azure virtuális gépek soros konzolja |} A Microsoft Docs
+title: Az Azure virtuális gépek soros konzolja Linux rendszeren |} A Microsoft Docs
 description: Azure-beli virtuális gépek soros konzol és a kétirányú.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 22128f027f0a218756e413653aa92ee097064587
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: a3d59d0e7575721dbb719944f27fd673ba41f469
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741708"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963818"
 ---
 # <a name="virtual-machine-serial-console-for-linux"></a>Linuxos virtuális gépek soros konzolja
 
@@ -33,17 +33,17 @@ Windows virtuális gépek soros konzol dokumentációjáért lásd: [a Windows v
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-* A virtuális gép, amelyben a soros konzol éri el a resource management üzemi modellhez kell használnia. Klasszikus üzemi modellben nem támogatottak. 
+- A virtuális gép, amelyben a soros konzol éri el a resource management üzemi modellhez kell használnia. Klasszikus üzemi modellben nem támogatottak. 
 
-* Rendelkeznie kell a virtuális gép, amelyben a soros konzol elérő [rendszerindítási diagnosztika](boot-diagnostics.md) engedélyezve van. Válassza ki **rendszerindítási diagnosztika** származó a **támogatás + hibaelhárítás** szakaszban.
+- Rendelkeznie kell a virtuális gép, amelyben éri el a soros konzol [rendszerindítási diagnosztika](boot-diagnostics.md) engedélyezve van. 
 
     ![Rendszerindítási diagnosztikai beállításokat](./media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 
-A soros konzol használó fióknak rendelkeznie kell a [virtuális gépek Közreműködője szerepkör](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) a virtuális gép és a [rendszerindítási diagnosztika](boot-diagnostics.md) storage-fiók: 
+- A soros konzol használó fióknak rendelkeznie kell a [virtuális gépek Közreműködője szerepkör](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) a virtuális gép és a [rendszerindítási diagnosztika](boot-diagnostics.md) storage-fiók: 
 
-* A virtuális gép, amelyben a soros konzol ér el egy jelszóalapú fiókkal kell rendelkeznie. Létrehozhat egyet a [jelszó alaphelyzetbe állítása](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) a Virtuálisgép-hozzáférési bővítmény funkcióját. Válassza ki **jelszó alaphelyzetbe állítása** származó a **támogatás + hibaelhárítás** szakaszban. 
+    - A virtuális gép, amelyben éri el a soros konzol jelszóalapú fiókkal kell rendelkeznie. Létrehozhat egyet a [jelszó alaphelyzetbe állítása](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) a Virtuálisgép-hozzáférési bővítmény funkcióját. Válassza ki **jelszó alaphelyzetbe állítása** származó a **támogatás + hibaelhárítás** szakaszban. 
 
-* Linux-disztribúciók jellemző beállításait, lásd: [soros konzol Linux terjesztési rendelkezésre állási](#serial-console-linux-distribution-availability).
+    - Linux-disztribúciók jellemző beállításait, lásd: [soros konzol Linux terjesztési rendelkezésre állási](#serial-console-linux-distribution-availability).
 
 
 
@@ -51,12 +51,14 @@ A soros konzol használó fióknak rendelkeznie kell a [virtuális gépek Közre
 A soros konzol virtuális gépek csak az Azure Portalon keresztül érhető el:
 
   1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+
   1. A bal oldali menüben válassza ki a **virtuális gépek**.
+
   1. Válassza ki egy virtuális Gépet a listából. A virtuális gép megnyílik.
+
   1. Görgessen le a **támogatás + hibaelhárítás** szakaszt, és válassza **soros konzol**. A soros konzol segítségével egy új panel nyílik meg, és elindítja a kapcsolatot.
 
-   ![Soros konzol ablakából Linux](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
-
+     ![Soros konzol ablakából Linux](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
 
 
 > [!NOTE] 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 95cfc7e6d9515274aa7a3c5fde382244f3b33fab
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 8dc85c55dd67d8acd394d7922e947c91234ef23b
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42058752"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957136"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Az Azure Cosmos DB Azure Stream Analytics-kimenet  
 Stream Analytics célként [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) JSON-kimenet, az adatok archiválás és kis késleltetésű lekérdezéseket a strukturálatlan JSON-adatok engedélyezése. Ez a dokumentum áttekint néhány ajánlott eljárást a konfiguráció implementálása a.
@@ -37,6 +37,13 @@ Az alkalmazás követelményeinek megfelelően, az Azure Cosmos DB lehetővé te
 Stream Analytics-integráció az Azure Cosmos DB lehetővé teszi a Beszúrás, vagy frissíthet rekordokat a gyűjtemény adott dokumentumazonosító oszlop alapján. Ez is nevezik egy *Upsert*.
 
 Stream Analytics egy optimista upsert módszert használ, ahol frissítéseit csak végzett insert dokumentumazonosító ütközést tartalmazó meghibásodása esetén. A frissítés történik, így, amely lehetővé teszi a dokumentumban a részleges frissítési javítás, az új tulajdonságok vagy lecseréli a meglévő tulajdonságot Növekményesen történik. A tömb tulajdonságokat a JSON-dokumentum eredményt, a tömb első felülírja, teljes tömb a módosítások azonban nem részeként történik.
+
+Ha a bejövő JSON-dokumentum egy meglévő azonosító mezőben, hogy a mező automatikusan használja a dokumentumazonosító oszlop Cosmos DB-ben, és bármely érkező későbbi írások kezeli, így az ezekben a helyzetekben egyik vezető rendelkezik:
+- egyedi azonosítók érdeklődő beszúrása
+- ismétlődő azonosítók és "Dokumentumazonosító" értékre az "ID" vezet az upsert művelet
+- ismétlődő azonosítók és a "Dokumentumazonosító" nem hiba, az első dokumentum után vezet beállítása
+
+Ha menteni szeretné <i>összes</i> duplikált azonosítójú, azokat is beleértve dokumentumok nevezze át a mezőt a a lekérdezés (AS kulcsszóval), és lehetővé teszik a Cosmos DB létrehozása az azonosító mezőben, vagy egy másik oszlop értékét cserélje le a azonosítója (AS kulcsszó használatával vagy a "Dokumentumazonosító" beállítás használatával).
 
 ## <a name="data-partitioning-in-cosmos-db"></a>Adatparticionálás Cosmos DB-ben
 Az Azure Cosmos DB [korlátlan](../cosmos-db/partition-data.md) van az ajánlott módszer az adatok particionálása, az Azure Cosmos DB automatikusan méretezi a számítási feladatok alapján. Korlátlan tárolók írásakor Stream Analytics tetszőleges számú párhuzamos írók előző lekérdezési lépés vagy a particionálási séma bemeneti használ.

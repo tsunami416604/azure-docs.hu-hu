@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 8ffeac78b809ea19163360e85d1c841c55b2364a
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: eb60afc21b7f8e21c4573e46165696c3461d3613
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914618"
+ms.locfileid: "50963863"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Az Azure Monitor partnerintegrációk
 | Partnerek |  |  |
@@ -164,7 +164,7 @@ A Turbonomic hibrid felhőkhöz biztosítja a számítási feladatok automatizá
 
 
 ## <a name="next-steps"></a>További lépések
-* [További információ az Azure Monitor](monitoring-overview.md)
+* [További információ az Azure Monitor](../azure-monitor/overview.md)
 * [Hozzáférés metrikák REST API használatával](monitoring-rest-api-walkthrough.md)
 * [Egy nem Microsoft-szolgáltatás a tevékenységnapló Stream](monitoring-stream-activity-logs-event-hubs.md)
 * [Stream-diagnosztikai naplók egy nem Microsoft-szolgáltatáshoz](monitoring-stream-diagnostic-logs-to-event-hubs.md)

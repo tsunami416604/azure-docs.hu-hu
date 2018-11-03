@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 11/01/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 1ca305ab88e30c911bbded1e5ff97162e12f7652
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 1414fd7b559a1bf12cc26d218f4577bbdc986916
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429065"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964118"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 frissítése
 
@@ -157,6 +157,10 @@ Emellett tartalmazza a kockázatcsökkentési spekulatív végrehajtás kockáza
 - Bizonyos körülmények között, ha egy frissítéshez a figyelmet, a megfelelő riasztás lehetséges, hogy nem hozható létre. A pontos állapota továbbra is megjelennek a portálon, és nem változik.
 
 ### <a name="post-update-steps"></a>Frissítés utáni lépések
+
+> [!Important]  
+> Készüljön fel az Azure Stack üzemelő példányához bővítmény gazdagép számára. A rendszer a következő útmutató segítségével előkészítése [előkészítése az Azure stack-bővítmény gazdagép](azure-stack-extension-host-prepare.md).
+
 Ez a frissítés telepítése után bármely alkalmazandó gyorsjavítások telepítéséről. További információt a következő cikkeket, megtekintése, valamint a [karbantartási szabályzat](azure-stack-servicing-policy.md). 
 - [KB 4468920 – az Azure Stack gyorsjavítás az Azure Stack gyorsjavítás 1.1808.5.110](https://support.microsoft.com/help/4468920/)
 

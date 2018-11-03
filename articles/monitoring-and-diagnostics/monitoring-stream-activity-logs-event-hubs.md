@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 7a5372174fcc7cd9552c00c9d283772c9863b815
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: af8248bb68068c20d62a2d8cc1e86fd9997a740c
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257998"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962963"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Az Event hubs Azure tevékenységnapló Stream
 Streamelheti a [Azure-tevékenységnapló](monitoring-overview-activity-logs.md) közel valós időben által bármely alkalmazás:
@@ -101,5 +101,5 @@ A tevékenységnapló sémája érhető el a [figyelése az Azure-tevékenységn
 ## <a name="next-steps"></a>További lépések
 * [A tárfiókhoz a tevékenységnapló archiválása](monitoring-archive-activity-log.md)
 * [Olvassa el az Azure-tevékenységnapló áttekintése](monitoring-overview-activity-logs.md)
-* [Egy tevékenységnapló eseményéhez alapuló riasztás beállítása](insights-auditlog-to-webhook-email.md)
+* [Egy tevékenységnapló eseményéhez alapuló riasztás beállítása](monitor-alerts-unified-log-webhook.md)
 

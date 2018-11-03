@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: fc9ed37ef24e776336124bf097def2f6a00ee83e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 6f28a636f4df1343431762cf1eb8aec9b660f2e2
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419792"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962503"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>OMS-portálon való váltás az Azure portálon a Log Analytics felhasználók kapcsolatos gyakori kérdések
 A log Analytics kezdetben a saját Portalt használta az OMS-portál nevű felügyelje a konfigurációt, és elemezheti az összegyűjtött adatokat.  Ezen a portálon az összes funkció át lett helyezve az Azure Portalra, továbbra is ki kell alakítani.
@@ -82,7 +82,7 @@ A legtöbb csatlakoztatott adatforrás-beállítások kezelése a a a **speciál
 | Linux-kiszolgálók   | **Speciális beállítások** a munkaterület menüje. |
 | Azure Storage     | **Speciális beállítások** a munkaterület menüje. |
 | System Center     | **Speciális beállítások** a munkaterület menüje. |
-| Office 365        | Tekintse meg a [Office 365-kezelési megoldásra vonatkozó dokumentáció](../operations-management-suite/oms-solution-office-365.md) konfigurációját. |
+| Office 365        | Tekintse meg a [Office 365-kezelési megoldásra vonatkozó dokumentáció](../monitoring/monitoring-solution-office-365.md) konfigurációját. |
 | Windows-telemetria | A megoldás a beállítások menüben. Lásd: [Windows Analytics az Azure Portalon](/windows/deployment/update/windows-analytics-azure-portal) konfigurációját. |
 | ITSM-összekötő    | Lásd: [csatlakozás ITSM termékekkel/szolgáltatásokkal rendelkező informatikai szolgáltatásfelügyeleti összekötő](../log-analytics/log-analytics-itsmc-connections.md) vonatkozó utasításokat az ITSM-szolgáltatás csatlakoztatása a Log Analytics használatával. |
 

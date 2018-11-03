@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: bc2b93312ed005154aa7d2530fb5493278a15c67
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 2ba921a45619c74af230b282c23adff502ae5b6d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418602"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961449"
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>A Log Analytics megoldások monitorozása az Azure-hálózatok
 
@@ -86,7 +86,7 @@ A következő metrikákat az Application Gateway átjárók támogatottak: újra
 ### <a name="install-and-configure-the-solution"></a>Telepítse és konfigurálja a megoldást
 Az alábbi utasítások segítségével telepítheti és konfigurálhatja az Azure Application Gateway analytics megoldás:
 
-1. Engedélyezze az Azure Application Gateway analytics megoldás a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) vagy leírt folyamatot követve [adja hozzá a Log Analytics solutions kövesse a megoldástárban](log-analytics-add-solutions.md).
+1. Engedélyezze az Azure Application Gateway analytics megoldás a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) vagy leírt folyamatot követve [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../monitoring/monitoring-solutions.md).
 2. Naplózás a diagnosztika engedélyezése a [az Application Gateway átjárók](../application-gateway/application-gateway-diagnostics.md) figyelni szeretné.
 
 #### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>A portálon az Azure Application Gateway-diagnosztika engedélyezése
@@ -157,7 +157,7 @@ Hálózati biztonsági csoportok támogatottak a következő naplók kapcsolódn
 ### <a name="install-and-configure-the-solution"></a>Telepítse és konfigurálja a megoldást
 Az alábbi utasítások segítségével telepítheti és konfigurálhatja az Azure Networking Analytics megoldás:
 
-1. Engedélyezze az Azure-beli hálózati biztonsági csoport analytics megoldás a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) vagy leírt folyamatot követve [adja hozzá a Log Analytics solutions kövesse a megoldástárban](log-analytics-add-solutions.md).
+1. Engedélyezze az Azure-beli hálózati biztonsági csoport analytics megoldás a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) vagy leírt folyamatot követve [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../monitoring/monitoring-solutions.md).
 2. Naplózás a diagnosztika engedélyezése a [hálózati biztonsági csoport](../virtual-network/virtual-network-nsg-manage-log.md) figyelni kívánt erőforrásokat.
 
 ### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>Engedélyezze az Azure-beli hálózati biztonsági csoport diagnosztikai a portálon
@@ -215,7 +215,7 @@ A frissített megoldások használata:
 
 1. [Diagnosztika az Azure Application Gateway átjárókon közvetlenül a Log Analyticshez való küldésének konfigurálása](#enable-azure-application-gateway-diagnostics-in-the-portal)
 2. [Diagnosztika az Azure hálózati biztonsági csoportok közvetlenül a Log Analyticshez való küldésének konfigurálása](#enable-azure-network-security-group-diagnostics-in-the-portal)
-2. Engedélyezze a *Azure Application Gateway Analytics* és a *Azure hálózati biztonsági csoport Analytics* leírt folyamatot követve megoldás [adja hozzá a Log Analytics-megoldások a a Megoldástárából](log-analytics-add-solutions.md)
+2. Engedélyezze a *Azure Application Gateway Analytics* és a *Azure hálózati biztonsági csoport Analytics* leírt folyamatot követve megoldás [adja hozzá a Log Analytics-megoldások a a Megoldástárából](../monitoring/monitoring-solutions.md)
 3. Bármely mentett lekérdezések, az irányítópultok vagy a riasztások az új adattípus használandó frissítése
   + Típus: AzureDiagnostics való. Az erőforrástípus használhatja az Azure hálózati naplók szűrése.
 
@@ -236,4 +236,4 @@ A frissített megoldások használata:
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>További lépések
-* Használat [Log Analytics naplóbeli kereséseivel](log-analytics-log-searches.md) részletes Azure diagnostics-adatok megtekintéséhez.
+* Használat [Log Analytics naplóbeli kereséseivel](log-analytics-log-search.md) részletes Azure diagnostics-adatok megtekintéséhez.

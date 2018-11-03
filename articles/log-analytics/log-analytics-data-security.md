@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 97fa3e9cf043037bf2fe4b0ba198bbdf68de9fa4
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: d042033981cba4e9d56b48543a7c6016a38efb53
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044688"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958541"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics és adatbiztonság
 Ez a dokumentum információkat biztosít a Log Analyticsbe, amely egy Azure monitor, az információ kiegészítésére a szolgáltatás célja [Azure adatvédelmi központ](../security/security-microsoft-trust-center.md).  
@@ -158,7 +158,7 @@ Az Operations Manager felügyeleti csoport Operations Manager, hozza létre a ka
 
 Csatlakoztatott és a Log Analytics szolgáltatás közötti minden kommunikáció titkosított. A TLS (HTTPS) protokollt használják a titkosítást.  A Microsoft SDL-folyamat után következik, hogy a Log Analytics e naprakészen tartása a legújabb fejlesztések a titkosítási protokollok.
 
-Minden ügynök típusú Log Analytics gyűjti az adatokat. A gyűjtött adatok típus által használt megoldások függ. Láthatja, hogy az adatgyűjtést, összegzését [adja hozzá a Log Analytics solutions kövesse a megoldástárban](log-analytics-add-solutions.md). Ezenkívül részletesebb gyűjteményadatokat a legtöbb megoldás érhető el. A megoldás egy előre meghatározott nézeteket, a naplóbeli keresési lekérdezések, az adatok gyűjtési szabályok és a feldolgozási logika kötegelt. Csak rendszergazdák használhatják a Log Analytics megoldás importálása. A megoldás az importálása után Áthelyezés az Operations Manager felügyeleti kiszolgálókon (ha van), majd a kiválasztott összes ügynököt. Ezt követően az ügynök összegyűjti az adatokat.
+Minden ügynök típusú Log Analytics gyűjti az adatokat. A gyűjtött adatok típus által használt megoldások függ. Láthatja, hogy az adatgyűjtést, összegzését [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../monitoring/monitoring-solutions.md). Ezenkívül részletesebb gyűjteményadatokat a legtöbb megoldás érhető el. A megoldás egy előre meghatározott nézeteket, a naplóbeli keresési lekérdezések, az adatok gyűjtési szabályok és a feldolgozási logika kötegelt. Csak rendszergazdák használhatják a Log Analytics megoldás importálása. A megoldás az importálása után Áthelyezés az Operations Manager felügyeleti kiszolgálókon (ha van), majd a kiválasztott összes ügynököt. Ezt követően az ügynök összegyűjti az adatokat.
 
 ## <a name="2-send-data-from-agents"></a>2. Adatok küldése az ügynökök
 Minden ügynök esetében egy regisztrációs kulccsal regisztrálja, és a egy biztonságos kapcsolatot hoznak létre az ügynök és a Log Analytics szolgáltatás tanúsítványalapú hitelesítést és az SSL használata a 443-as porton. A log Analytics titkoskód-tárolót létrehozni, és tarthatja karban a kulcsokat használ. Titkos kulcsok vannak elforgatott a 90 naponta, és az Azure-ban vannak tárolva, és kezeli az Azure operations akik szigorú szabályozási és megfelelőségi gyakorlat szerint.

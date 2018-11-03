@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: f0a982e8a0cb358e29375e05c1752a33b15ec255
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: cedebbe1ba0dcf40af0f2f001f022ffaad175c70
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319710"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959630"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Adatokat küldeni a Log Analytics és a HTTP-adatgyűjtő API (nyilvános előzetes verzió)
 Ez a cikk bemutatja, hogyan adatokat küldeni a Log Analytics REST API-ügyfél-nak a HTTP-adatgyűjtő API használatával.  Ismerteti, hogyan formázza a parancsfájl vagy az alkalmazások által gyűjtött adatokat, foglalja bele egy kérelmet, és rendelkezik a Log Analytics által engedélyezett kérelmet.  A példák a PowerShell, a C# és Python.
@@ -98,7 +98,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 
 A következő szakaszokban a mintákat hozhat létre az engedélyeztetési fejléc mintakód rendelkezik.
 
-## <a name="request-body"></a>Kérelem törzse
+## <a name="request-body"></a>A kérés törzse
 Az üzenet törzse JSON formátumban kell lennie. A tulajdonság név-érték párok az egy vagy több rekord a következő formátumban kell tartalmaznia:
 
 ```json
@@ -140,7 +140,7 @@ A tulajdonság adattípusát azonosításához, a Log Analytics hozzáadja egy u
 
 | Tulajdonságadat típusa | Utótag |
 |:--- |:--- |
-| Sztring |z |
+| Karakterlánc |z |
 | Logikai |_b |
 | Dupla |_d |
 | Dátum és idő |_t |
@@ -167,7 +167,7 @@ A következő bejegyzést, majd a rekord típusa létrehozása előtt elküldve,
 
 ![4. példa rekord](media/log-analytics-data-collector-api/record-04.png)
 
-## <a name="data-limits"></a>A Data korlátai
+## <a name="data-limits"></a>Adatkorlátok
 Vannak bizonyos korlátozások az adatok elküldése az a Log Analytics-adatok gyűjtési API körül.
 
 * Közzététel a Log Analytics Data Collector API legfeljebb 30 MB-ot. Ez az egyedi közzétételek méretkorlátot. Ha az adatokat egyetlen közzététele, amely meghaladja a 30 MB-ot, a kell felosztani az adatokat, akár kisebb méretű adattömböket írnak és küldhet nekik egy időben.
@@ -201,7 +201,7 @@ Ez a táblázat felsorolja, amely a szolgáltatás előfordulhat, hogy vissza á
 A Log Analytics HTTP-adatgyűjtő API, a rekordok keresése által küldött adatokat lekérdezni **típus** , amely megegyezik a **LogType** meghatározott, értékkel kiegészítve **_CL**. Például, ha a használt **MyCustomLog**, akkor adna vissza, akkor az összes rekordot **típus = MyCustomLog_CL**.
 
 >[!NOTE]
-> Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](log-analytics-log-search-upgrade.md), akkor a fenti lekérdezés módosulnak az alábbiak.
+> Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](log-analytics-log-search.md), akkor a fenti lekérdezés módosulnak az alábbiak.
 
 > `MyCustomLog_CL`
 
@@ -470,6 +470,6 @@ post_data(customer_id, shared_key, body, log_type)
 ```
 
 ## <a name="next-steps"></a>További lépések
-- Használja a [Log Search API](log-analytics-log-search-api.md) adatokat lekérni a Log Analytics-adattárban.
+- Használja a [Log Search API](log-analytics-log-search.md) adatokat lekérni a Log Analytics-adattárban.
 
 - Tudjon meg többet [adatfolyamat létrehozása a Data Collector API-val](log-analytics-create-pipeline-datacollector-api.md) Logic Apps-munkafolyamatot a Log Analytics használatával.

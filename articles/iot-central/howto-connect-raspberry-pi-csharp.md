@@ -1,19 +1,19 @@
 ---
 title: Az Azure IoT Central alkalmazáshoz (C#) Raspberry Pi Connnect |} A Microsoft Docs
 description: Eszköz fejlesztőként Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz, C# használatával.
-author: dominicbetts
-ms.author: dobett
-ms.date: 01/22/2018
+author: viv-liu
+ms.author: viviali
+ms.date: 10/31/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: timlt
-ms.openlocfilehash: a9390ac9046ad1e0ec5a1689052ee99bf76ec6f4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+manager: peterpr
+ms.openlocfilehash: 489a644bd2d17e2be3232ec522b9ed7e37d246ad
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734235"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50956723"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz (C#)
 
@@ -23,10 +23,10 @@ Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők Raspberry Pi kapcsolódni 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
+A jelen cikkben ismertetett lépések végrehajtásához szüksége van a következő összetevők:
 
 * [.NET core 2](https://www.microsoft.com/net) a fejlesztői gépen telepítve van. Emellett rendelkeznie kell egy megfelelő Kódszerkesztő például [Visual Studio Code](https://code.visualstudio.com/).
-* A létrehozott Azure IoT Central alkalmazáshoz a **minta Devkits** alkalmazássablon. További információkért lásd: [az Azure IoT központi alkalmazás létrehozása](howto-create-application.md).
+* A létrehozott Azure IoT Central alkalmazáshoz a **minta Devkits** alkalmazássablon. További információkért lásd: a [hozzon létre egy alkalmazás rövid](quick-deploy-iot-central.md).
 * Raspberry Pi eszköz a Raspbian operációs rendszert.
 
 
@@ -34,10 +34,21 @@ A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
 A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz egy **Raspberry Pi** eszköz sablon a következő jellemzőkkel: 
 
-- Telemetriai adatokat, amely tartalmazza az eszköz a mérések **páratartalom**, **hőmérséklet**, **nyomás**, **Magnometer** (mért mentén X Y, tengely Z), **Accelorometer** (X, Y, mentén mért Z tengely) és **Giroszkóp** (X, Y, mentén mért Z tengely).
-- Beállítások megjelenítése **feszültség**, **aktuális**,**ventilátor sebesség** és a egy **integrációs modul** be-vagy kikapcsolása.
-- Eszköztulajdonság tartalmazó tulajdonságainak **die szám** és **hely** felhőbeli tulajdonság.
-
+- Telemetriai adatokat, amely tartalmazza az eszköz összegyűjti a következő mérési:
+    - Páratartalom
+    - Hőmérséklet
+    - Pressure
+    - Magnetométer (X, Y, a – Z)
+    - Érzékelőből (X, Y, a – Z)
+    - Giroszkóp (X, Y, a – Z)
+- Beállítások
+    - Feszültségérzékelő
+    - Aktuális
+    - Sebesség ventilátor
+    - Integrációs modul váltógombot.
+- Tulajdonságok
+    - Eszköz-tulajdonságot die
+    - Hely felhőalapú tulajdonság
 
 Tekintse meg a konfigurációs eszköz sablon kapcsolatos részletes [Raspberry PI eszköz sablon részletei](howto-connect-raspberry-pi-csharp.md#raspberry-pi-device-template-details)
 
@@ -346,7 +357,7 @@ A beállítások ki-/ bekapcsolása
 
 | Megjelenített név | Mező neve | A szöveg | Ki a szöveg | Kezdeti |
 | ------------ | ---------- | ------- | -------- | ------- |
-| INTEGRÁCIÓS MODUL           | activateIR | ON      | KI      | Ki     |
+| IR           | activateIR | ON      | KI      | Ki     |
 
 ### <a name="properties"></a>Tulajdonságok
 

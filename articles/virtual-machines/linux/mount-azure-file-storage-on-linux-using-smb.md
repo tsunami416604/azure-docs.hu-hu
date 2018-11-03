@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 7cd7f0f37f0d351d1d50d4c15e7132f072b5125d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fde8892f7a32d7b5405eef6661bbf29098325178
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982205"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958678"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Azure File storage csatlakoztatása az SMB-, Linux rendszerű virtuális gépeken
 
@@ -100,6 +100,7 @@ Csatlakoztassa az Azure-fájlmegosztás a helyi könyvtárba.
 sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFileShare -o vers=3.0,username=$STORAGEACCT,password=$STORAGEKEY,dir_mode=0777,file_mode=0777,serverino
 ```
 
+A fenti parancs használja a [csatlakoztatási](https://linux.die.net/man/8/mount) parancs segítségével csatlakoztassa az Azure-fájlmegosztást és a jellemző beállításokat [cifs](https://linux.die.net/man/8/mount.cifs). Pontosabban, a file_mode és dir_mode beállítások set-fájlok és könyvtárak engedélyt `0777`. A `0777` engedélyt biztosít olvasási, írási és végrehajtási engedélyek minden felhasználó számára. Ezek az engedélyek módosításához az értékeket cserélje le a más [chmod engedélyek](https://en.wikipedia.org/wiki/Chmod). Is használhatja más [cifs](https://linux.die.net/man/8/mount.cifs) beállítások, például a csoportazonosító vagy egyedi azonosítója. 
 
 
 ## <a name="persist-the-mount"></a>A csatlakoztatási megőrzése

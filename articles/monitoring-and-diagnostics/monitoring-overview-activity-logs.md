@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 7538951b1ac8290b574180779b83c6b8e79fcf1f
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 40d1f73f4aed3f3f35f3f5c9de951e9b9fd271bc
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094363"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963319"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Az Azure-tevékenységnapló-előfizetési tevékenység figyelése
 
@@ -33,7 +33,7 @@ A tevékenységnapló eltér [diagnosztikai naplók](monitoring-overview-of-diag
 A Tevékenységnaplót, az Azure portal, a parancssori felület, a PowerShell-parancsmagok használatával lehet lekérdezni események és az Azure Monitor REST API-t.
 
 > [!NOTE]
->  [Az újabb riasztások](monitoring-overview-unified-alerts.md) egy továbbfejlesztett felületet kínál, amikor létrehozása és kezelése a tevékenység naplózása a riasztási szabályok.  [További információk](monitoring-activity-log-alerts-new-experience.md).
+>  [Az újabb riasztások](monitoring-overview-unified-alerts.md) egy továbbfejlesztett felületet kínál, amikor létrehozása és kezelése a tevékenység naplózása a riasztási szabályok.  [További információk](alert-activity-log.md).
 
 A tevékenységnapló bemutatása a következő videó megtekintése.
 > [!VIDEO https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz/player]

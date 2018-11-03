@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c14013121517267445e89f43e228b03ba184f013
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 0ca9cf0ff75ea76cd2dc203fbdb37162ed1ace34
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415256"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962758"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Az adathasználat elemzése a Log Analyticsben
 
@@ -58,7 +58,7 @@ A **Log Analytics-használat** irányítópult az alábbi információkat jelen�
 3. A Log Analytics-munkaterületek listájában válasszon ki egy munkaterületet.
 4. A bal oldali panelen található listában válassza ki a **Használat és becsült költségek** elemet.
 5. A **Használat és becsült költségek** irányítópulton az **Idő: Elmúlt 24 óra** elemre kattintva módosíthatja az időintervallumot.<br><br> ![időintervallum](./media/log-analytics-usage/usage-time-filter-01.png)<br><br>
-6. Tekintse meg a kívánt területeket megjelenítő használatikategória-paneleket. Válasszon ki egy panelt, majd kattintson az egyik elemére további részletek megtekintéséhez a [naplókeresésben](log-analytics-log-searches.md).<br><br> ![példa adathasználati kpi-re](media/log-analytics-usage/data-volume-kpi-01.png)<br><br>
+6. Tekintse meg a kívánt területeket megjelenítő használatikategória-paneleket. Válasszon ki egy panelt, majd kattintson az egyik elemére további részletek megtekintéséhez a [naplókeresésben](log-analytics-log-search.md).<br><br> ![példa adathasználati kpi-re](media/log-analytics-usage/data-volume-kpi-01.png)<br><br>
 7. A Naplók keresése irányítópulton tekintse meg a keresés eredményeit.<br><br> ![példa használati panelre a naplókeresésben](./media/log-analytics-usage/usage-log-search-01.png)
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>Riasztás létrehozása, amikor az adatgyűjtés szintje a vártnál magasabb
@@ -78,7 +78,7 @@ A következő lekérdezés egy egyszerű képlettel előrejelzi, mikor fog a ren
 
 Ha más adatmennyiségre szeretne riasztást beállítani, módosítsa a lekérdezésekben a 100 értéket arra a GB mennyiségre, amely esetén riasztást szeretne kapni.
 
-Az [új naplózási riasztás létrehozásával kapcsolatos](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) szakaszban leírt lépéseket követve beállíthatja, hogy értesítést kapjon, ha az adatgyűjtés szintje a vártnál magasabb.
+Az [új naplózási riasztás létrehozásával kapcsolatos](../monitoring-and-diagnostics/alert-metric.md) szakaszban leírt lépéseket követve beállíthatja, hogy értesítést kapjon, ha az adatgyűjtés szintje a vártnál magasabb.
 
 Az első lekérdezéshez tartozó riasztás létrehozásakor – amikor több mint 100 GB adat lett összegyűjtve 24 órán belül, állítsa be a következőket:  
 
@@ -163,19 +163,19 @@ A következő lépésekkel csökkentheti a gyűjtött naplók mennyiségét:
 | Eseménynaplók                 | Módosítsa az [eseménynaplók konfigurációját](log-analytics-data-sources-windows-events.md): <br> – Csökkentse a gyűjtött eseménynaplók számát <br> – Csak a szükséges eseményszinteket gyűjtse. Ne gyűjtsön például *Tájékoztatás* szintű eseményeket |
 | Rendszernapló                     | Módosítsa a [rendszernapló konfigurációját](log-analytics-data-sources-syslog.md): <br> – Csökkentse a gyűjtésben részt vevő létesítmények számát <br> – Csak a szükséges eseményszinteket gyűjtse. Ne gyűjtsön például *Tájékoztatás* vagy *Hibakeresés* szintű eseményeket |
 | AzureDiagnostics           | Az erőforrásnapló-gyűjtés módosítása a következőre: <br> – Csökkentse a Log Analytics számára naplókat küldő erőforrások számát <br> – Csak a szükséges naplókat gyűjtse |
-| Megoldásadatok olyan számítógépekről, amelyeknek nincs szükségük a megoldásra | A [megoldáscélzási](../operations-management-suite/operations-management-suite-solution-targeting.md) funkcióval megadhatja, hogy csak a szükséges számítógépcsoportoktól gyűjtsön adatokat. |
+| Megoldásadatok olyan számítógépekről, amelyeknek nincs szükségük a megoldásra | A [megoldáscélzási](../monitoring/monitoring-solution-targeting.md) funkcióval megadhatja, hogy csak a szükséges számítógépcsoportoktól gyűjtsön adatokat. |
 
 ### <a name="check-if-there-are-more-nodes-than-expected"></a>Annak ellenőrzése, hogy a vártnál több csomópont küld-e adatokat
 Ha a *csomópontonként (Log Analytics)* tarifacsomagban van, akkor a csomópontok és megoldások száma alapján. A használat adatait megjelenítő irányítópult *Ajánlatok* szakaszában tekintheti meg, hogy az egyes ajánlatok csomópontjaiból mennyi van használatban.<br><br> ![használati irányítópult](./media/log-analytics-usage/log-analytics-usage-offerings.png)<br><br>
 
 Kattintson **Az összes megjelenítése...** lehetőségre a kiválasztott ajánlat adatait elküldő számítógépek teljes listájának megtekintéséhez.
 
-A [megoldáscélzási](../operations-management-suite/operations-management-suite-solution-targeting.md) funkcióval megadhatja, hogy csak a szükséges számítógépcsoportoktól gyűjtsön adatokat.
+A [megoldáscélzási](../monitoring/monitoring-solution-targeting.md) funkcióval megadhatja, hogy csak a szükséges számítógépcsoportoktól gyűjtsön adatokat.
 
 ## <a name="next-steps"></a>További lépések
-* A keresési nyelv használatával kapcsolatban tekintse meg a [Log Analytics naplókeresési funkciójával](log-analytics-log-searches.md) kapcsolatos cikket. A keresési lekérdezésekkel további elemzéseket végezhet a használati adatokon.
-* Az [új naplózási riasztás létrehozásával kapcsolatos](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) szakaszban leírt lépéseket követve beállíthatja, hogy értesítést kapjon, ha teljesül egy keresési feltétel.
-* A [megoldáscélzási](../operations-management-suite/operations-management-suite-solution-targeting.md) funkcióval megadhatja, hogy csak a szükséges számítógépcsoportoktól gyűjtsön adatokat.
+* A keresési nyelv használatával kapcsolatban tekintse meg a [Log Analytics naplókeresési funkciójával](log-analytics-log-search.md) kapcsolatos cikket. A keresési lekérdezésekkel további elemzéseket végezhet a használati adatokon.
+* Az [új naplózási riasztás létrehozásával kapcsolatos](../monitoring-and-diagnostics/alert-metric.md) szakaszban leírt lépéseket követve beállíthatja, hogy értesítést kapjon, ha teljesül egy keresési feltétel.
+* A [megoldáscélzási](../monitoring/monitoring-solution-targeting.md) funkcióval megadhatja, hogy csak a szükséges számítógépcsoportoktól gyűjtsön adatokat.
 * Hatékony biztonságiesemény-gyűjtési szabályzat konfigurálásához tekintse meg az [Azure Security Center szűrési szabályzataival](../security-center/security-center-enable-data-collection.md) foglalkozó cikket.
 * Módosítsa a [teljesítményszámlálók konfigurációját](log-analytics-data-sources-performance-counters.md).
 * Az eseménygyűjtési beállítások módosításához tekintse meg az [eseménynaplók konfigurációját](log-analytics-data-sources-windows-events.md) leíró szakaszt.

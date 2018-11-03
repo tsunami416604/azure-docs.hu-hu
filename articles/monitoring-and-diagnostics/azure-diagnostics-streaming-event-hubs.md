@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: c87a4acb8ca333af73643a38ae1338c9c8769d13
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 123005a32315ba3972ed4f1c1784d3ac9460b101
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341234"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958950"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>A gyakori elérésű útvonal az Azure Diagnostics-adatok streamelés az Event Hubs használatával
 Az Azure diagnosztikai metrikák és naplók gyűjtésére felhőalapú szolgáltatások virtuális gépeken (VM) és az eredmények átvitele az Azure Storage rugalmas megoldásokat kínál. A 2016. március (SDK 2.9) időkereten belül kezdődően Diagnostics küldése az vlastní zdroje dat és adatátvitel gyakori elérésű útvonal másodpercek használatával [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -42,7 +42,7 @@ Event Hubs receieving Azure Diagnostics adatait a Cloud Services, a virtuális g
 * Az Azure Diagnostics használatával egy alkalmazásban meglévő konfigurációk egy *.wadcfgx* fájl- és a következő módszerek egyikét:
   * A Visual Studio: [Konfiguruje se Diagnostika Pro az Azure Cloud Services és Virtual Machines](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
   * Windows PowerShell: [diagnosztika engedélyezése az Azure Cloud Services szolgáltatással a PowerShell használatával](../cloud-services/cloud-services-diagnostics-powershell.md)
-* Event Hubs-névtér kiosztása a cikkenként [Event Hubs használatának első lépései](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+* Event Hubs-névtér kiosztása a cikkenként [Event Hubs használatának első lépései](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Csatlakozzon az Event Hubs fogadó Azure Diagnostics
 Alapértelmezés szerint az Azure Diagnostics mindig küld naplókat és mérőszámokat egy Azure Storage-fiókot. Egy alkalmazás is továbbíthatja az adatokat az Event Hubs egy új hozzáadásával **fogadók** szakaszba a **PublicConfig** / **WadCfg** eleme a *. wadcfgx* fájlt. A Visual Studióban a *.wadcfgx* fájlt a következő elérési úton tárolja: **Felhőszolgáltatás-projekt** > **szerepkörök** > **() RoleName)** > **diagnostics.wadcfgx** fájlt.
@@ -220,7 +220,7 @@ Az alábbi ábrán az Event Hubs-irányítópult látható, kifogástalan állap
 ## <a name="view-hot-path-data"></a>Gyakori elérési út adatok megtekintése
 Korábban említett nincsenek figyelését, és az Event Hubs adatfeldolgozás számos alkalmazási.
 
-Egy egyszerű módja, hogy hozzon létre egy rövid tesztet konzolalkalmazást az event hubs figyelésére, és nyomtassa ki a kimeneti adatfolyamba. A következő kódra, amely részletes kifejtett elhelyezhet [Event Hubs használatának első lépései](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)), egy konzolalkalmazás.  
+Egy egyszerű módja, hogy hozzon létre egy rövid tesztet konzolalkalmazást az event hubs figyelésére, és nyomtassa ki a kimeneti adatfolyamba. A következő kódra, amely részletes kifejtett elhelyezhet [Event Hubs használatának első lépései](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)), egy konzolalkalmazás.  
 
 Vegye figyelembe, hogy a konzolalkalmazást tartalmaznia kell a [Event Processor Host NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/).  
 
@@ -508,7 +508,7 @@ Védett beállításai:
 ## <a name="next-steps"></a>További lépések
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
-* [Event Hubs – áttekintés](../event-hubs/event-hubs-what-is-event-hubs.md)
+* [Event Hubs – áttekintés](../event-hubs/event-hubs-about.md)
 * [Eseményközpont létrehozása](../event-hubs/event-hubs-create.md)
 * [Event Hubs – gyakori kérdések](../event-hubs/event-hubs-faq.md)
 

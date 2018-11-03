@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: ef1422db799db6d635ad9f03908e3a34f312e408
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 752a0262503550b9995ac76f648a132429203cce
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974238"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961432"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Mi az Azure Diagnostics bővítmény
-Az Azure Diagnostics bővítmény az ügynök, amely lehetővé teszi az üzembe helyezett alkalmazás diagnosztikai adatgyűjtés Azure-ban. A diagnosztikai bővítmény számos különféle forrásból származó is használhatja. Jelenleg csak Azure-Felhőszolgáltatás (klasszikus) webes és feldolgozói szerepkörök, virtuális gépek, a virtuálisgép-méretezési csoportok és a Service Fabric. Más Azure-szolgáltatásokkal rendelkezik diagnosztikai különböző módszereket. Lásd: [áttekintése az Azure-ban figyelési](monitoring-overview.md).
+Az Azure Diagnostics bővítmény az ügynök, amely lehetővé teszi az üzembe helyezett alkalmazás diagnosztikai adatgyűjtés Azure-ban. A diagnosztikai bővítmény számos különféle forrásból származó is használhatja. Jelenleg csak Azure-Felhőszolgáltatás (klasszikus) webes és feldolgozói szerepkörök, virtuális gépek, a virtuálisgép-méretezési csoportok és a Service Fabric. Más Azure-szolgáltatásokkal rendelkezik diagnosztikai különböző módszereket. Lásd: [áttekintése az Azure-ban figyelési](../azure-monitor/overview.md).
 
 ## <a name="linux-agent"></a>Linux-ügynök
-A [a bővítmény verziója Linux](../virtual-machines/linux/diagnostic-extension.md) Linux rendszerű virtuális gépek számára elérhető. A gyűjtött és viselkedés érdekében eltérhetnek a Windows-verziót.
+A [a bővítmény verziója Linux](../virtual-machines/extensions/diagnostics-linux.md) Linux rendszerű virtuális gépek számára elérhető. A gyűjtött és viselkedés érdekében eltérhetnek a Windows-verziót.
 
 ## <a name="data-you-can-collect"></a>Adatokat gyűjthet
 Az Azure Diagnostics bővítmény gyűjthet adatokat a következő típusú:
@@ -42,7 +42,7 @@ Az Azure Diagnostics bővítmény gyűjthet adatokat a következő típusú:
 ## <a name="data-storage"></a>Adattárolás
 A bővítmény tárolja az adatait egy [Azure Storage-fiók](azure-diagnostics-storage.md) megadott.
 
-Emellett elküldheti az, hogy [Application Insights](../application-insights/app-insights-cloudservices.md). Egy másik lehetőség, hogy adatfolyamként való [Eseményközpont](../event-hubs/event-hubs-what-is-event-hubs.md), amely azután lehetővé teszi, hogy küldje el a nem Azure-beli figyelés szolgáltatásokhoz.
+Emellett elküldheti az, hogy [Application Insights](../application-insights/app-insights-cloudservices.md). Egy másik lehetőség, hogy adatfolyamként való [Eseményközpont](../event-hubs/event-hubs-about.md), amely azután lehetővé teszi, hogy küldje el a nem Azure-beli figyelés szolgáltatásokhoz.
 
 ### <a name="azure-monitor"></a>Azure Monitor
 Is választhat, hogy az Azure Monitor az adatok küldésére. Jelenleg ez a fogadó csak akkor érvényes, a teljesítményszámlálók. Lehetővé teszi, hogy a virtuális Gépen, VMSS, gyűjtött teljesítményszámlálók küldése vagy a felhőalapú szolgáltatás az Azure monitornak egyéni mérőszámokként. Az Azure Monitor-fogadó támogatja:
@@ -53,7 +53,7 @@ Is választhat, hogy az Azure Monitor az adatok küldésére. Jelenleg ez a foga
 A fogadó konfigurálásáról további tudnivalókért tekintse meg a [az Azure diagnostics-séma dokumentációját.](azure-diagnostics-schema-1dot3-and-later.md)
 
 ## <a name="versioning-and-configuration-schema"></a>Verziókezelés és konfigurációs séma
-Lásd: [Azure Diagnostics-verzióelőzmények és séma](azure-diagnostics-versioning-history.md).
+Lásd: [Azure Diagnostics-verzióelőzmények és séma](azure-diagnostics-schema.md).
 
 
 ## <a name="next-steps"></a>További lépések
@@ -68,16 +68,16 @@ Az összetettebb témákra lásd:
 
 * [Az Azure Diagnostics használatával az Application insights segítségével a Cloud Services](../application-insights/app-insights-cloudservices.md)
 * [A folyamat egy Cloud Services-alkalmazás az Azure Diagnostics segítségével nyomon követése](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
-* [A Cloud Services diagnosztika beállítása a PowerShell használatával](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [A Cloud Services diagnosztika beállítása a PowerShell használatával](../virtual-machines/extensions/diagnostics-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="virtual-machines"></a>Virtuális gépek
 * Ha a Visual Studiót használja, lásd: [Visual Studio használata az Azure Virtual Machines nyomkövetési](../vs-azure-tools-debug-cloud-services-virtual-machines.md) a kezdéshez. Egyéb esetben lásd:
-* [Egy Azure virtuális gépen az Azure Diagnostics beállítása](../virtual-machines-dotnet-diagnostics.md)
+* [Egy Azure virtuális gépen az Azure Diagnostics beállítása](../virtual-machines/virtual-machines-dotnet-diagnostics.md)
 
 Az összetettebb témákra lásd:
 
-* [Diagnosztika az Azure Virtual Machinesben beállítása a PowerShell használatával](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Windows virtuális gép létrehozása figyelési és diagnosztikai funkciókkal, az Azure Resource Manager-sablon használatával](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Diagnosztika az Azure Virtual Machinesben beállítása a PowerShell használatával](../virtual-machines/extensions/diagnostics-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Windows virtuális gép létrehozása figyelési és diagnosztikai funkciókkal, az Azure Resource Manager-sablon használatával](../virtual-machines/extensions/diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="service-fabric"></a>Service Fabric
 Első lépések [Service Fabric-alkalmazás figyelése](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md). További Service Fabric diagnosztikai számos cikkek érhetők el a bal oldali navigációs fában után jelenik meg ebben a cikkben.
