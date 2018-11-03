@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 38537f3e2884160a99d333f1414d3f45755cd4f9
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9b0a9b8c976ce5ef9fb57a6f8bcfd076f370bb10
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404613"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963990"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>VMware Monitoring (előzetes verzió) megoldás a Log Analyticsben
 
@@ -42,7 +42,7 @@ A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi i
 a vSphere ESXi-gazdagép egy 5.5-ös, 6.0-s és 6.5-ös
 
 #### <a name="prepare-a-linux-server"></a>Egy Linux-kiszolgáló előkészítése
-Hozzon létre egy Linux operációs rendszert a virtuális gép az összes syslog-adatokat fogad az ESXi-gazdagépek. A [Log Analytics Linux-ügynök](log-analytics-linux-agents.md) minden ESXi-gazdagép rendszernaplóadatokat gyűjtemény pontja. Több ESXi-gazdagépek segítségével továbbítják a naplókat a egyetlen Linux rendszerű kiszolgálón, az alábbi példában látható módon.
+Hozzon létre egy Linux operációs rendszert a virtuális gép az összes syslog-adatokat fogad az ESXi-gazdagépek. A [Log Analytics Linux-ügynök](log-analytics-quick-collect-linux-computer.md) minden ESXi-gazdagép rendszernaplóadatokat gyűjtemény pontja. Több ESXi-gazdagépek segítségével továbbítják a naplókat a egyetlen Linux rendszerű kiszolgálón, az alábbi példában látható módon.
 
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]  
 
@@ -131,7 +131,7 @@ Az a **VMware** irányítópult-nézet, a többi panelen szerint vannak rendszer
 
 Kattintson a panelre, hogy a panel az adott részletes információkat jelenít meg a Log Analytics keresése panel megnyitásához.
 
-Itt szerkesztheti a keresési lekérdezés esetében valamilyen konkrét módosíthat. Naplókeresések létrehozásával kapcsolatos részletekért lásd: [adatokat naplókeresések a Log Analyticsben található](log-analytics-log-searches.md).
+Itt szerkesztheti a keresési lekérdezés esetében valamilyen konkrét módosíthat. Naplókeresések létrehozásával kapcsolatos részletekért lásd: [adatokat naplókeresések a Log Analyticsben található](log-analytics-log-search.md).
 
 #### <a name="find-esxi-host-events"></a>ESXi-gazdagép események
 Egyetlen ESXi-gazdagép több naplókat, a folyamatok alapján hoz létre. A VMware Monitoring megoldás központosítja azokat, és az események számát foglalja össze. Ez a nézet központi segítségével megismerheti, milyen ESXi-gazdagép rendelkezik nagy mennyiségű esemény, és milyen eseményeket fordulnak elő a leggyakrabban a környezetben.
@@ -165,7 +165,7 @@ Keresési lekérdezések mentése a Log Analytics alapvető szolgáltatás, és 
 ![DockerDashboardView](./media/log-analytics-vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Riasztások létrehozása a lekérdezések
-Miután létrehozta a lekérdezéseket, érdemes a lekérdezések használata az adott események bekövetkezése esetén riasztást küld. Lásd: [riasztások a Log Analyticsben](log-analytics-alerts.md) riasztások létrehozásával kapcsolatos információkat. Riasztási lekérdezések és egyéb példák a lekérdezésekre vonatkozó példákért lásd a [Log Analytics szolgáltatást figyelő VMware](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) blogbejegyzést.
+Miután létrehozta a lekérdezéseket, érdemes a lekérdezések használata az adott események bekövetkezése esetén riasztást küld. Lásd: [riasztások a Log Analyticsben](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) riasztások létrehozásával kapcsolatos információkat. Riasztási lekérdezések és egyéb példák a lekérdezésekre vonatkozó példákért lásd a [Log Analytics szolgáltatást figyelő VMware](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) blogbejegyzést.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Mit kell az ESXi a gazdagép beállítást? Milyen hatással legyen benne a jelenlegi környezetemet?
@@ -206,6 +206,6 @@ Több oka lehet:
     d. Ha a fájl nem létezik vagy nem megfelelő, a felhasználó és csoport beállításának intézkedéseket által [egy Linux-kiszolgáló előkészítése](#prepare-a-linux-server).
 
 ## <a name="next-steps"></a>További lépések
-* Használat [Naplókeresések](log-analytics-log-searches.md) adatokat tárolni a Log Analytics részletes VMware megtekintéséhez.
+* Használat [Naplókeresések](log-analytics-log-search.md) adatokat tárolni a Log Analytics részletes VMware megtekintéséhez.
 * [Saját irányítópult létrehozásával](log-analytics-dashboards.md) VMware gazdagép adatainak megjelenítése.
-* [Riasztások létrehozása](log-analytics-alerts.md) amikor adott VMware gazdagép események történnek.
+* [Riasztások létrehozása](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) amikor adott VMware gazdagép események történnek.

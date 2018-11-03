@@ -10,16 +10,16 @@ ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: dc394093e9e2db223defe61229832ce5448bdfaa
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 100d2a6163c6b2b7a7bf8a557e69e1082b48eaee
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748679"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979216"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Helyi üzleti keresési Bing-API 7-es referencia
 
-A helyi üzleti keresési API-t küld, beleértve az eredmények eléréséhez a Bing keresés lekérdezése például éttermekre, hotels vagy más helyi üzletek. A helyeket a lekérdezés is adja meg a helyi az üzleti és a egy kategóriát (például éttermek a közelben) nevét. Az entitástalálatok személyek, helyek vagy dolgok lehetnek. Ebben a környezetben helyen, üzleti entitásokat, állapotok, országban, stb.  
+A helyi üzleti Search API egy keresési lekérdezést küld a Bing éttermek, szállodákban, illetve más helyi üzletek lekéréséhez. A helyeket a lekérdezés is adja meg a helyi az üzleti és a egy kategóriát (például éttermek a közelben) nevét. Az entitástalálatok személyek, helyek vagy dolgok lehetnek. Ebben a környezetben helyen, üzleti entitásokat, állapotok, országban, stb.  
 
 Ez a szakasz a válaszobjektumok, és a lekérdezési paraméterek és a fejlécek, amelyek befolyásolják a keresési eredmények vonatkozó technikai részleteket ismertet. Példák azt mutatják be, hogyan kéréseit: [helyi üzleti keresési C# rövid](quickstarts/local-quickstart.md) vagy [helyi üzleti keresési Java a rövid útmutató](quickstarts/local-search-java-quickstart.md). 
   
@@ -37,7 +37,7 @@ Engedélyezett használatát és a megjelenített eredmények kapcsolatos inform
 Kérelem helyi üzleti eredményeit, küldjön egy GET kérelmet kell: 
 
 ``` 
-https://api.cognitive.microsoft.com/bing/localbusinesses/v7.0/search
+https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 
 ```
   

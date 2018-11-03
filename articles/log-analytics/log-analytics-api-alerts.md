@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 85cf55b4117208266e247316b1050e3988a2ce23
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 5effed58ea0fab9051470a44be30fbb3a7fd7feb
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409152"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962656"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Hozzon létre, és a Log Analytics REST API-val riasztási szabályok kezelése
 A Log Analytics Alert REST API lehetővé teszi, hogy hozhat létre, és a Log Analytics-riasztások kezelése.  Ez a cikk részletesen az API-val és néhány példa a különféle műveletek végezhetők.
@@ -28,7 +28,7 @@ A Log Analytics Alert REST API lehetővé teszi, hogy hozhat létre, és a Log A
 A Log Analytics Search REST API RESTful és az Azure Resource Manager REST API-n keresztül érhető el. Ebben a dokumentumban talál példákat, az API-t szeretné elérni, egy PowerShell parancssori használatával [ARMClient](https://github.com/projectkudu/ARMClient), egy nyílt forráskódú parancssori eszköz, amely leegyszerűsíti az Azure Resource Manager API meghívása. ARMClient és a PowerShell használata a Log Analytics Search API eléréséhez számos lehetőség. Ezekkel az eszközökkel a REST-alapú Azure Resource Manager API Log Analytics-munkaterületek hívásokat, és végezze el a keresési parancsok azokon belül használhat. Az API-t fog keresési eredményeket is JSON formátumban, lehetővé téve, hogy programozott módon használja a keresési eredmények között számos különböző módon.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Jelenleg riasztások csak hozhatja létre a Log Analytics mentett keresést.  Olvassa el a [Log Search REST API](log-analytics-log-search-api.md) további információt.
+Jelenleg riasztások csak hozhatja létre a Log Analytics mentett keresést.  Olvassa el a [Log Search REST API](log-analytics-log-search.md) további információt.
 
 ## <a name="schedules"></a>Ütemezések
 Mentett keresés egy vagy több ütemezés is rendelkezhet. Az ütemezés határozza meg, hogy milyen gyakran a keresés Futtatás és az az időintervallum, amelyen a feltétel azonosítja.
@@ -36,7 +36,7 @@ Mentett keresés egy vagy több ütemezés is rendelkezhet. Az ütemezés határ
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Időköz |Milyen gyakran fut a keresés. Mért percek alatt. |
+| Intervallum |Milyen gyakran fut a keresés. Mért percek alatt. |
 | QueryTimeSpan |Az időintervallum, amelyen a feltétel értékeli ki. Intervallum nagyobbnak vagy azzal egyenlőnek kell. Mért percek alatt. |
 | Verzió |A használt API-verzió.  Jelenleg ez mindig meg kell 1-re. |
 
@@ -451,8 +451,7 @@ Következő, hozzon létre egy új e-mail-értesítés egy teljes példát.  Ez 
     $scheduleJson = "{'properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Active':'true' }"
     armclient put /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/savedSearches/$searchId/schedules/$scheduleId/?api-version=2015-03-20 $scheduleJson
 
-    $emailJson = "{'properties': { 'Name': 'MyEmailAction', 'Version':'1', 'Severity':'Warning', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 }, 'EmailNotification': {'Recipients': ['recipient1@contoso.com', 'recipient2@contoso.com'], 'Subject':'This is the subject', 'Attachment':'None'} }"
-    armclient put /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/savedSearches/$searchId/schedules/$scheduleId/actions/$actionId/?api-version=2015-03-20 $emailJson
+    $emailJson = "{"properties": {"Name":"MyEmailAction","Verziójú":"1","súlyosság":"Figyelmeztetés","Type":"Figyelmeztetés","Küszöbértéket": {"Kezelő":"gt","Értéke": 10},"EmailNotification": {"Címzett": ["recipient1@contoso.com','recipient2@contoso.com"],"Tárgy":" Ez az, hogy a tárgy ","Mellékletek":"Nincs"}}" armclient put /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/savedSearches/$searchId/schedules/$scheduleId/ műveletek / $műveletazonosító /? api-version = 2015-03-20 $emailJson
 
 #### <a name="webhook-actions"></a>Webhook-műveletek
 Webhook-műveletek egy folyamat meghívása egy URL-címet és szükség esetén elküldendő hasznos megkezdéséhez.  Azok javítási műveletek hasonló azzal a különbséggel, nem tér ki rájuk, amelyek aktiválják előfordulhat, hogy az Azure Automation-runbookok eltérő folyamatok webhookok.  Ezenkívül tartalmaznak további lehetőséget kínál a hasznos kell továbbítani a távoli folyamat.
@@ -511,6 +510,6 @@ Egy webhook művelettel ütemezés módosításához használja a Put metódust 
 
 
 ## <a name="next-steps"></a>További lépések
-* Használja a [REST API-t, hajtsa végre a naplókeresések](log-analytics-log-search-api.md) a Log Analyticsben.
+* Használja a [REST API-t, hajtsa végre a naplókeresések](log-analytics-log-search.md) a Log Analyticsben.
 * Ismerje meg [naplóriasztások az azure-riasztások](../monitoring-and-diagnostics/monitor-alerts-unified-log.md)
 

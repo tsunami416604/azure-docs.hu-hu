@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 756417ee2f98549d648386c2471baa74889245a4
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 904387def0fd8842f196e80cfcf72d9dd1639458
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914022"
+ms.locfileid: "50957694"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Távoli asztali szolgáltatások-beli virtuális gépen nem indítása
 
@@ -58,6 +58,7 @@ A probléma oka, hogy a távoli asztali szolgáltatások nem fut a virtuális g�
 
 - A TermService szolgáltatás **letiltott**. 
 - A TermService szolgáltatás összeomlik, vagy a függő. 
+- A TermService miatt nem indul a helytelen konfiguráció.
 
 ## <a name="solution"></a>Megoldás
 
@@ -98,16 +99,17 @@ A soros konzol használatával a probléma elhárításához. Vagy [javítsa ki 
 
     |  Hiba |  Javaslat |
     |---|---|
-    |5 – HOZZÁFÉRÉS MEGTAGADVA |Lásd: [TermService szolgáltatás le van állítva, a hozzáférés megtagadva hiba miatt](#termService-service-is-stopped-because-of-an-access-denied-error). |
-    |1058 - ERROR_SERVICE_DISABLED  |Lásd: [TermService szolgáltatás le van tiltva](#termService-service-is-disabled).  |
+    |5 – HOZZÁFÉRÉS MEGTAGADVA |Lásd: [TermService szolgáltatás le van állítva, a hozzáférés megtagadva hiba miatt](#termService-service-is-stopped-because-of-an-access-denied-problem). |   |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |Lásd: [TermService szolgáltatás le van tiltva](#termService-service-is-disabled).  |  
+    |1058 - ERROR_SERVICE_DISABLED  |Lásd: [TermService szolgáltatás összeomlik vagy lefagy](#termService-service-crashes-or-hangs).  |
     |1059 - ERROR_CIRCULAR_DEPENDENCY |[Forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.|
+    |1067 - ERROR_PROCESS_ABORTED  |Lásd: [TermService szolgáltatás összeomlik vagy lefagy](#termService-service-crashes-or-hangs).  |
     |1068 - ERROR_SERVICE_DEPENDENCY_FAIL|[Forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.|
-    |1069 - ERROR_SERVICE_LOGON_FAILED  |[Forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.    |
-    |1070 - ERROR_SERVICE_START_HANG   | [Forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.  |
+    |1069 - ERROR_SERVICE_LOGON_FAILED  |Lásd: [TermService szolgáltatás bejelentkezési hiba miatt sikertelen](#termService-service-fails-because-of-logon-failure) |
+    |1070 - ERROR_SERVICE_START_HANG   | Lásd: [TermService szolgáltatás összeomlik vagy lefagy](#termService-service-crashes-or-hangs). |
     |1077 - ERROR_SERVICE_NEVER_STARTED   | Lásd: [TermService szolgáltatás le van tiltva](#termService-service-is-disabled).  |
     |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   |[Forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében. |
-    |1753   |[Forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.   |
-
+    |1753   |[Forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.   |   |5 – HOZZÁFÉRÉS MEGTAGADVA |Lásd: [TermService szolgáltatás le van állítva, a hozzáférés megtagadva hiba miatt](#termService-service-is-stopped-because-of-an-access-denied-error). |
+    
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>TermService szolgáltatás le van állítva, a hozzáférés megtagadva hiba miatt
 
 1. Csatlakozás [soros konzol](serial-console-windows.md#) , és nyissa meg egy PowerShell-példány.
@@ -139,7 +141,14 @@ A soros konzol használatával a probléma elhárításához. Vagy [javítsa ki 
    procmon /Terminate 
    ```
 
-5. A fájl begyűjtése **c:\temp\ProcMonTrace.PML**. Nyissa meg a használatával **procmon**. Majd szűrés **eredménye a hozzáférés MEGTAGADVA**, ahogy az alábbi képernyőfelvételen látható:
+5. A fájl begyűjtése **c:\temp\ProcMonTrace.PML**:
+
+    1. [Adatlemez csatolása a virtuális géphez](../windows/attach-managed-disk-portal.md
+).
+    2. A fájl átmásolása az új meghajtó soros konzol használata. Például: `copy C:\temp\ProcMonTrace.PML F:\`. Ebben a parancsban F a csatlakoztatott lemez meghajtóbetűjelét.
+    3. Az adatmeghajtó leválasztása, és mellékelje egy működő virtuális Gépet, amely a folyamat figyelője ubstakke telepítve van a.
+
+6. Nyissa meg **ProcMonTrace.PML** folyamat figyelője a működő virtuális gép használatával. Majd szűrés **eredménye a hozzáférés MEGTAGADVA**, ahogy az alábbi képernyőfelvételen látható:
 
     ![Szűrés eredménye a folyamat figyelője](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 
@@ -168,6 +177,27 @@ A soros konzol használatával a probléma elhárításához. Vagy [javítsa ki 
 
 4. Próbálja meg csatlakozni a virtuális Géphez a távoli asztal használatával.
 
+#### <a name="termservice-service-fails-because-of-logon-failure"></a>Bejelentkezési hiba miatt sikertelen TermService szolgáltatás
+
+1. Ez a probléma akkor fordul elő, ha a szolgáltatás indítófiókjának módosítása. Ezen vissza az alapértelmezett változott: 
+
+        sc config TermService obj= 'NT Authority\NetworkService'
+2. Indítsa el a szolgáltatást:
+
+        sc start TermService
+3. Próbálja meg csatlakozni a virtuális Géphez a távoli asztal használatával.
+
+#### <a name="termservice-service-crashes-or-hangs"></a>TermService szolgáltatás összeomlik vagy lefagy
+1. Ha a szolgáltatás állapotának Beragadt **kezdő** vagy **leállítása**, próbálja meg leállítani a szolgáltatást: 
+
+        sc stop TermService
+2. A szolgáltatás a saját "svchost" tároló elkülönítése:
+
+        sc config TermService type= own
+3. Indítsa el a szolgáltatást:
+
+        sc start TermService
+4. Ha a szolgáltatás továbbra is sikertelen elindításához [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="repair-the-vm-offline"></a>Javítsa ki a virtuális Gépet kapcsolat nélküli módban
 

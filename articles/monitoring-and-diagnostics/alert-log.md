@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: fd183b5776f30b12d577a94be147eabef05d258f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 43ff945747915edb76da8b593b232e86778374ce
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419367"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958508"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával riasztások  
 
@@ -57,7 +57,7 @@ Részletes tovább lépésenkénti útmutató, amellyel az Azure portal felület
 
    > [!NOTE]
 
-   > Lista importálhat analytics-lekérdezéshez, mivel jel típusa – riasztások **Log (mentett lekérdezés)**, a fenti ábrán látható módon. Így a felhasználók tökéletes a lekérdezést az Analyticsben és mentheti későbbi használatra, a riasztások – olvashat részletesebben használatával érhető el lekérdezés mentése [a log analytics naplóbeli keresés használatával](../log-analytics/log-analytics-log-searches.md) vagy [megosztott lekérdezést az application insights szolgáltatásban Analytics](../log-analytics/log-analytics-overview.md). 
+   > Lista importálhat analytics-lekérdezéshez, mivel jel típusa – riasztások **Log (mentett lekérdezés)**, a fenti ábrán látható módon. Így a felhasználók tökéletes a lekérdezést az Analyticsben és mentheti későbbi használatra, a riasztások – olvashat részletesebben használatával érhető el lekérdezés mentése [a log analytics naplóbeli keresés használatával](../log-analytics/log-analytics-log-searches.md) vagy [megosztott lekérdezést az application insights szolgáltatásban Analytics](../log-analytics/log-analytics-queries.md). 
 
 1.  *Naplóriasztások*: a kijelölt riasztási lekérdezés is fel kell tüntetni **keresési lekérdezés** mező; Ha a lekérdezés szintaxisa helytelen a mezőben az hiba vörös színnel jelenik meg. Ha a lekérdezés szintaxisa helyes - referenciaként előzményadatok a megadott lekérdezés látható gráfként kapcsolóval, hogy a Teljesítménybeállítások az időtartomány utolsó 6 óra múlt héten.
 
@@ -132,7 +132,7 @@ Ezért az alábbi szakasz részletekkel szolgálnak Naplóriasztásokra vonatkoz
 ### <a name="azure-resource-template-for-log-analytics"></a>A Log Analytics az Azure Resource-sablon
 Riasztások a Log Analytics, amely a rendszeres időközönkénti mentett keresést futtat riasztási szabályok hozzák létre. Ha a lekérdezés egyeztetés eredményei adott feltételeknek, létrejön egy riasztásbejegyzés, és a egy vagy több műveletek futnak. 
 
-Mentett keresés és a Log analytics-riasztásokkal Log Analytics Resource-sablon dokumentációja a Log Analytics szakaszában érhetők el. További tudnivalókért tekintse meg, [hozzáadása a Log Analytics mentett keresések és a riasztások](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md); mely szemléltető példák, valamint a séma részleteit tartalmazza.
+Mentett keresés és a Log analytics-riasztásokkal Log Analytics Resource-sablon dokumentációja a Log Analytics szakaszában érhetők el. További tudnivalókért tekintse meg, [hozzáadása a Log Analytics mentett keresések és a riasztások](../monitoring/monitoring-solutions-resources-searches-alerts.md); mely szemléltető példák, valamint a séma részleteit tartalmazza.
 
 ### <a name="azure-resource-template-for-application-insights"></a>Az Application Insights az Azure Resource-sablon
 Az Application Insights-erőforrások riasztás van valamilyen `Microsoft.Insights/scheduledQueryRules/`. Az erőforrástípus további információkért lásd: [Azure Monitor - ütemezett lekérdezési szabály API-referencia](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
@@ -246,5 +246,5 @@ Sikeres művelet esetén 201-es állapot új riasztási szabály létrehozása a
 * Ismerje meg [Naplóriasztások az Azure-riasztások](monitor-alerts-unified-log.md)
 * Megismerheti [naplóriasztásokra vonatkozó Webhook-műveletek](monitor-alerts-unified-log-webhook.md)
 * Tudjon meg többet [Application Insights](../application-insights/app-insights-analytics.md)
-* Tudjon meg többet [Log Analytics](../log-analytics/log-analytics-overview.md). 
+* Tudjon meg többet [Log Analytics](../log-analytics/log-analytics-queries.md). 
 

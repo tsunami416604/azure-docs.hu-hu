@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 81eacf464c90d56c4ebeae1d1cefbd6f2f0fdab8
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: bb95caf7f50b52d2c423de31d4fda701f4c16b40
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408540"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963764"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Számítógépcsoportok a Log Analytics naplóbeli kereséseivel
 
-A Log Analytics számítógépcsoportjaival lehetővé teszi a hatókör [naplókereséseket](log-analytics-log-search-new.md) a számítógépek egy adott készletét.  Minden csoport fel van töltve, vagy az Ön által meghatározott lekérdezés segítségével számítógépek vagy csoportok különböző forrásokból származó importálásával.  A csoport szerepel egy Naplókeresés, amikor az eredmények korlátozódnak, amelyek megfelelnek a számítógépek a csoportban lévő rekordok.
+A Log Analytics számítógépcsoportjaival lehetővé teszi a hatókör [naplókereséseket](log-analytics-log-search.md) a számítógépek egy adott készletét.  Minden csoport fel van töltve, vagy az Ön által meghatározott lekérdezés segítségével számítógépek vagy csoportok különböző forrásokból származó importálásával.  A csoport szerepel egy Naplókeresés, amikor az eredmények korlátozódnak, amelyek megfelelnek a számítógépek a csoportban lévő rekordok.
 
 ## <a name="creating-a-computer-group"></a>Számítógépcsoport létrehozása
 Létrehozhat egy számítógépcsoportot a Log Analytics az alábbi táblázatban a módszerek bármelyikével.  Részletek az egyes módszerek az alábbi szakaszokban találhatók. 
@@ -136,5 +136,5 @@ Egy rekord jön létre minden egyes létrehozott Active Directory vagy a WSUS sz
 | TimeGenerated |Dátum és időpont a számítógép (csoport) létrehozott vagy frissített. |
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [naplókereséseket](log-analytics-log-searches.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
+* Ismerje meg [naplókereséseket](log-analytics-log-search.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
 

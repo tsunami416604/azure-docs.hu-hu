@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 11/02/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: f82a01f3a2b88e66988717eb008a65c8f2aecf28
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 8f32e84e5381a548ada2c5ad393e16c65b17379e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900325"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957182"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Alkalmazás üzembe helyezése az Azure App Service-be FTP/S
 
@@ -45,7 +45,7 @@ Javasoljuk, hogy használja **alkalmazás hitelesítő adatok** , mivel minden a
 
 ## <a name="deploy-files-to-azure"></a>Az Azure files üzembe helyezése
 
-1. Az FTP-ügyfél (például [Visual Studio](https://www.visualstudio.com/vs/community/) vagy [Filezillát](https://filezilla-project.org/download.php?type=client)), az alkalmazás csatlakozni összegyűjtött kapcsolati információk.
+1. Az FTP-ügyfél (például [Visual Studio](https://www.visualstudio.com/vs/community/), [Cyberduck](https://cyberduck.io/), vagy [WinSCP](https://winscp.net/index.php)), az alkalmazás csatlakozni összegyűjtött kapcsolati információk.
 3. Másolja a fájlokat és a megfelelő könyvtárstruktúrát a [ **/site/wwwroot** directory](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) az Azure-ban (vagy a **/site/wwwroot/App_Data/feladatok/** könyvtárat a webjobs-feladatokat).
 4. Keresse meg az alkalmazás URL-címe, ellenőrizze az alkalmazás megfelelően fut-e. 
 

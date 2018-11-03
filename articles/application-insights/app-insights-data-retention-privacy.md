@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5ea026de228f3c93eed04770ad931d072387aa95
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 86b7b87c8cc11be5c4f2c8892905bb6e6800e729
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079072"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958874"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés, megőrzés és tárolás az Application Insights szolgáltatásban
 
@@ -173,7 +173,7 @@ TelemetryConfiguration.Active.TelemetryChannel = channel;
 
 Alapértelmezés szerint `ServerTelemetryChannel` használja az aktuális felhasználó helyi alkalmazás Adatmappa `%localAppData%\Microsoft\ApplicationInsights` vagy ideiglenes mappa `%TMP%`. (Lásd: [megvalósítási](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) itt.) A Linux-környezet helyi tároló le lesz tiltva, kivéve, ha egy tároló mappa van megadva.
 
-A következő kódrészlet azt mutatja be, hogyan állíthatja be `ServerTelemetryChannel.StorageFolder` a a `ConfigureServices()` módszere a `Startup.cs` osztály:
+A következő kódrészlet azt mutatja be, hogyan állíthatja be `ServerTelemetryChannel.StorageFolder` a a `ConfigureServices()`  módszere a `Startup.cs` osztály:
 
 ```
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
@@ -232,7 +232,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>Az Application insights szolgáltatásban tárolt személyes adatok
 
-A [Application Insights a személyes adatok cikk](app-insights-customer-data.md) a probléma részletes ismerteti.
+A [Application Insights a személyes adatok cikk](../log-analytics/log-analytics-personal-data-mgmt.md) a probléma részletes ismerteti.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>A felhasználók kikapcsolhatja az Application Insights?
 Közvetlenül nem. Nem biztosítunk egy kapcsoló, amely a felhasználók működhet a tiltsa le az Application Insights.

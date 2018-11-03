@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/01/2018
+ms.date: 11/02/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 50bd22559c3695ac4161932652eb191084e2b46e
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 338035014cb8e34caa7aea688028a96d039b028c
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017359"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50977668"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Oktatóanyag: Létrehozása és kezelése az Azure költségvetése
 
-A Cost Management költségvetése alapján tervezése és szervezeti elszámoltathatóság. A költségvetéshez is fiók az Azure-szolgáltatások felhasználásához, vagy iratkozzon fel egy adott időszakban. Ezek segítenek mások tájékoztatja a költségkeret-beállítási proaktív módon kezelheti a költségeket, és figyelheti a költségkeret-beállítási hogyan halad idővel. Hogyan költségkeret különböző fázisokon halad idővel megjelenik. Ha a létrehozott költségvetés küszöbérték túllépése esetén csak az értesítések aktiválódnak. Az erőforrások egyike sem érintett, és a használat nem leállt. Költségvetése segítségével nyomon követheti a Költekezési, a költségek elemzése és összehasonlítása.
+A Cost Management költségvetései segítenek a tervezésben és elősegítik a vállalaton belüli elszámolhatóságot. A költségvetések segítségével elszámolhat az egy adott időszak alatt használt vagy előfizetett Azure-szolgáltatásokkal. Ezek segítenek mások tájékoztatja a költségkeret-beállítási proaktív módon kezelheti a költségeket, és figyelheti a költségkeret-beállítási hogyan halad idővel. Hogyan költségkeret különböző fázisokon halad idővel megjelenik. Ha a létrehozott költségvetés küszöbérték túllépése esetén csak az értesítések aktiválódnak. Az erőforrások egyike sem érintett, és a használat nem leállt. Költségvetése segítségével nyomon követheti a Költekezési, a költségek elemzése és összehasonlítása.
 
 A költségvetéshez automatikusan átállítani (havonta, negyedévente vagy évente) időszak végén a költségvetés ugyanakkora a jövőbeli lejárati dátumot kiválasztásakor. A költségvetés akkora alaphelyzetbe állítása, mert kell létrehoznia a különálló költségvetéseket, ha a tervezett pénznem összegek különböznek a későbbi elszámolási időszakokra.
 
@@ -33,13 +33,13 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Költségvetése minden Azure nagyvállalati szerződéssel rendelkező ügyfelek számára érhetők el. Az Azure nagyvállalati szerződéses előfizetésében hozhat létre és kezelhet költségvetése olvasási hozzáférést kell rendelkeznie. Nagyvállalati szerződés számlázási fiókok nem támogatottak az költségvetése.
+Költségvetése minden Azure nagyvállalati szerződéssel rendelkező ügyfelek számára érhetők el. Költségvetések létrehozásához és kezeléséhez olvasási hozzáféréssel kell rendelkeznie egy Azure nagyvállalati szerződéssel rendelkező előfizetéshez. Az EA-előfizetések és -erőforráscsoportok egyes költségvetése hozhat létre. Azonban a nagyvállalati szerződéssel rendelkező fiókok számlázási költségvetése nem hozható létre.
 
-Költségvetés hozhatók létre, vagy az előfizetést, vagy az erőforráscsoport szintjén, külön-külön. A következő Azure-engedélyeket felhasználó és csoport által támogatott költségvetése előfizetésenként:
+A következő Azure-engedélyeket felhasználó és csoport által támogatott költségvetése előfizetésenként:
 
-- Tulajdonos – létrehozása, módosítása vagy egy előfizetés költségvetések törlése.
-- Közreműködő – létrehozása, módosítása vagy törlése a saját költségvetése. Módosíthatja a mások által létrehozott költségvetése költségvetési összege.
-- Olvasó – megtekintheti a kiadásoktól, amelyek engedéllyel rendelkeznek.
+- Tulajdonos – Költségvetéseket hozhat létre, módosíthat vagy törölhet az előfizetésben.
+- Közreműködő – Létrehozhatja, módosíthatja vagy törölheti a saját költségvetéseit. Módosíthatja a mások által létrehozott költségvetések költségvetési összegét.
+- Olvasó – Megtekintheti azokat a költségvetéseket, amelyekhez engedéllyel rendelkezik.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 

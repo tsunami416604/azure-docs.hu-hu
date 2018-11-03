@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 08ba5e7cbdc041a41f1d006d69980bf6efc00101
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 0f08e63d6cbf5be8667b1fd61556e3f33e31d06f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380290"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957658"
 ---
 # <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>Klasszikus metrikariasztás értesítése egy webhook használatával nem Azure-beli system rendelkezik
 Webhookok használatával irányíthatja a riasztási értesítés az Azure utólagos feldolgozási vagy egyéni műveleteket más rendszerekre. A riasztás egy webhook használatával átirányítása a szolgáltatások által küldött SMS-ezni, hibák, csevegési vagy az üzenetkezelési szolgáltatások révén, vagy a különböző műveleteknél csapat értesítése bejelentkezni. 
 
-Ez a cikk ismerteti, hogyan lehet beállítani a webhook a egy Azure metrikariasztás. Azt is bemutatja, hogy az a HTTP POST a webhook hasznos adatai néz ki. További információ a telepítő és a egy Azure-tevékenységi sémája (riasztás események), riasztás: [webhook meghívására az Azure tevékenységnapló-riasztás](insights-auditlog-to-webhook-email.md).
+Ez a cikk ismerteti, hogyan lehet beállítani a webhook a egy Azure metrikariasztás. Azt is bemutatja, hogy az a HTTP POST a webhook hasznos adatai néz ki. További információ a telepítő és a egy Azure-tevékenységi sémája (riasztás események), riasztás: [webhook meghívására az Azure tevékenységnapló-riasztás](monitor-alerts-unified-log-webhook.md).
 
 Azure-riasztások HTTP POST JSON formátumban küldendő riasztási tartalma egy webhook URI-t, adja meg a riasztás létrehozásakor használja. A sémát a cikk későbbi részében. Az URI érvényes HTTP vagy HTTPS-végpontot kell lennie. Azure kérelmenként egy bejegyzést tesz közzé, ha egy riasztás aktiválva van.
 

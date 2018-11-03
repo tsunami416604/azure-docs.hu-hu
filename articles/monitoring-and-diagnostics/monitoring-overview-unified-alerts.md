@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: mamit
 ms.component: alerts
-ms.openlocfilehash: c4c8279a1d4638a1c5d889b53e2d9e89e458cc37
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 30b2d60868702c6113612668b8e4cf9975aa2c40
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117615"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962197"
 ---
 # <a name="unified-alerts-in-azure-monitor"></a>Az Azure monitorban egységes riasztások
 
@@ -55,7 +55,7 @@ Egyesített riasztásainak használja a következő fogalmak riasztási szabály
 | Feltételek | Kombinációja _jel_ és _logikai_ egy cél-erőforrásra a alkalmazni.<br><br>Példák: Százalékos Processzorhasználat > 70 %-os, a kiszolgáló válaszideje > 4 ms, a napló eredményszámot lekérdezés > 100, és így tovább |
 | Logika | Felhasználó által definiált logikai annak ellenőrzéséhez, hogy a jel belül a tartományértékeknek várható. |
 | Műveletek | A riasztás akkor aktiválódik, amikor végrehajtandó művelet. Több művelet akkor fordulhat elő, riasztások aktiválódásakor. Ezek a riasztások Műveletcsoportok támogatja.<br><br>Példák: e-mailben való e-mail-cím, egy webhook URL-Címének meghívása |
-| Figyelési feltétel | Azt jelzi, hogy megoldódott-e a feltétellel, hogy metrikariasztás létrehozása. Metrikaalapú riasztási szabályok egy adott mérőszám minta rendszeres időközönként. Ha a riasztási szabályban megadott feltétele teljesül, akkor egy új riasztás jön létre olyan feltétellel, az "aktiválás".  A metrika feladata újra, ha a feltétel teljesülése továbbra is majd nem történik semmi.  Ha a feltételek nem teljesülnek, majd a riasztás módosul, amelyikben "megoldódott". A megadott feltétele teljesül, a következő futtatáskor egy másik riasztást hoz létre olyan feltétellel, az "aktiválás". |
+| Figyelőre érvényes feltétel | Azt jelzi, hogy megoldódott-e a feltétellel, hogy metrikariasztás létrehozása. Metrikaalapú riasztási szabályok egy adott mérőszám minta rendszeres időközönként. Ha a riasztási szabályban megadott feltétele teljesül, akkor egy új riasztás jön létre olyan feltétellel, az "aktiválás".  A metrika feladata újra, ha a feltétel teljesülése továbbra is majd nem történik semmi.  Ha a feltételek nem teljesülnek, majd a riasztás módosul, amelyikben "megoldódott". A megadott feltétele teljesül, a következő futtatáskor egy másik riasztást hoz létre olyan feltétellel, az "aktiválás". |
 
 
 ## <a name="alert-pages"></a>Riasztási oldalak
@@ -82,9 +82,9 @@ Akkor hozzon létre egy új riasztási szabály az alábbi három lépést:
  
 Ez a szerzői műveletekhez részben egyszerűsített folyamat többé nem kell, hogy tudja, hogy a monitorozási forrás vagy azt jelzi, hogy egy Azure-erőforrás kiválasztása előtt támogatottak. A rendelkezésre álló jelek automatikusan a szűrt lista a célként megadott erőforrás kiválasztott alapján, és ez végigvezeti Önt a riasztási szabály a logikai meghatározása.
 
-A riasztási szabályok létrehozásával kapcsolatos többet is megtudhat [, létrehozás, riasztások megtekintése és kezelése az Azure Monitor használatával](monitor-alerts-unified-usage.md).
+A riasztási szabályok létrehozásával kapcsolatos többet is megtudhat [, létrehozás, riasztások megtekintése és kezelése az Azure Monitor használatával](alert-metric.md).
 
-Riasztások számos Azure-szolgáltatások figyelésének érhetők el. Információ és mikor érdemes használni, az ilyen szolgáltatásokkal: [figyelése az Azure-alkalmazások és erőforrások](./monitoring-overview.md). A következő táblázat a riasztási szabályok Azure-ban rendelkezésre álló típusok listája. Azt is megjeleníti, mi a riasztási egységes felhasználói élményt az jelenleg támogatja.
+Riasztások számos Azure-szolgáltatások figyelésének érhetők el. Információ és mikor érdemes használni, az ilyen szolgáltatásokkal: [figyelése az Azure-alkalmazások és erőforrások](../azure-monitor/overview.md). A következő táblázat a riasztási szabályok Azure-ban rendelkezésre álló típusok listája. Azt is megjeleníti, mi a riasztási egységes felhasználói élményt az jelenleg támogatja.
 
 | **Forrás figyelése** | **Jel típusa**  | **Leírás** | 
 |-------------|----------------|-------------|
@@ -120,7 +120,7 @@ Az összes előfizetés, hogy regisztrált az új funkció engedélyezése eset�
 
 Az új riasztás használatát teszi lehetővé a Műveletcsoportok vagy -értesítések a riasztási szabályok konfigurációja nem érinti. Csak a módon, hogy megtekinthető és kezelhető a riasztások az Azure Portalon aktivált példányok változik.
 
-### <a name="smart-groups"></a>Az intelligens csoportok
+### <a name="smart-groups"></a>Intelligens csoportok
 Az intelligens csoportok zaj csökkentésére azáltal, hogy a kapcsolódó riasztások egyetlen egységként helyett, a riasztásokat egyenként kezelheti. Intelligens csoportok adatait tekintheti meg, és az állapot beállítása hasonlóan történik, hogyan zajlik a riasztások. Minden riasztás pontosan egy intelligens csoport tagja.
 
 Intelligens csoportok használatával a gépi tanulási úgy, hogy egyetlen problémára képviselő kapcsolódó riasztások automatikusan jönnek létre. Ha riasztás jön létre, az algoritmus hozzáad egy új intelligens csoportot vagy egy meglévő, például a korábbi minták, hasonló tulajdonságok és hasonló szerkezet információi alapján intelligens csoporthoz. 
@@ -170,8 +170,8 @@ Válassza ki a következő értékeket felső részén egy másik nyissa meg a r
 | Érték | Leírás |
 |:---|:---|
 | Riasztások összesen | A kiválasztott feltételeknek megfelelő riasztások teljes száma. Válassza ki ezt az értéket az összes riasztás megtekintése nyissa meg a szűrő sincs. |
-| Az intelligens csoportok | A kiválasztott feltételeknek a riasztások alapján létrehozott intelligens csoportok teljes száma. Válassza ki ezt az értéket az összes riasztás nézetben az intelligens csoportok listájának megnyitásához.
-| Riasztási szabályok száma | A kijelölt előfizetésben és erőforráscsoportban csoport riasztási szabályok teljes száma. Válassza ki ezt az értéket a szűrés alapjául a kijelölt előfizetésben és erőforráscsoportban szabályok nézet megnyitásához.
+| Intelligens csoportok | A kiválasztott feltételeknek a riasztások alapján létrehozott intelligens csoportok teljes száma. Válassza ki ezt az értéket az összes riasztás nézetben az intelligens csoportok listájának megnyitásához.
+| Riasztási szabályok összesen | A kijelölt előfizetésben és erőforráscsoportban csoport riasztási szabályok teljes száma. Válassza ki ezt az értéket a szűrés alapjául a kijelölt előfizetésben és erőforráscsoportban szabályok nézet megnyitásához.
 
 
 ### <a name="all-alerts-page"></a>Az összes riasztások oldal 
@@ -188,7 +188,7 @@ Válassza ki a következő értékeket a lap tetején lévő legördülő listá
 | Erőforrás típusa | Válassza ki egy vagy több erőforrás-típus. Csak azon riasztások t a kiválasztott típusú megtalálhatók a nézetet. Ez az oszlop csak akkor használható, miután lett megadva egy erőforráscsoportot. |
 | Erőforrás | Válasszon ki egy erőforrást. Csak azon riasztások t célként adott erőforrásra a nézet szerepelnek. Ez az oszlop csak akkor használható, miután egy erőforrás-típus lett megadva. |
 | Severity | Egy riasztás súlyosságának kiválasztása, vagy válasszon *összes* minden súlyossági szint esetében riasztásokat tartalmazza. |
-| Figyelési feltétel | Válasszon figyelőre érvényes feltételt, vagy válasszon *összes* feltételek riasztásokat tartalmazza. |
+| Figyelőre érvényes feltétel | Válasszon figyelőre érvényes feltételt, vagy válasszon *összes* feltételek riasztásokat tartalmazza. |
 | Riasztás állapota | Válasszon egy riasztási állapotot, vagy válasszon *összes* állapotok riasztásokat tartalmazza. |
 | Szolgáltatás monitorozása | Válasszon ki egy szolgáltatást, vagy válasszon *összes* tartalmazza az összes szolgáltatás. Csak a szolgáltatási cél használó szabályok által létrehozott riasztásokat is. |
 | Időtartomány | Csak az adott időtartamon belül aktivált riasztások nézetében megtalálhatók. Támogatott értékei a következők: az elmúlt egy órában, az elmúlt 24 órában, az elmúlt 7 napban és az elmúlt 30 napban. |
@@ -224,7 +224,7 @@ Az intelligens Részletek lapján az alábbi szakaszokat tartalmazza.
 | Előzmények | Felsorolja az egyes műveletet, amelyet az intelligens csoport és a hozzá végrehajtott módosításokat. Ez az állapot és riasztási tagsági változás jelenleg korlátozott. |
 
 ## <a name="next-steps"></a>További lépések
-- [Ismerje meg, hogyan használható a riasztások új kezelőfelülete létrehozása, megtekintése és riasztások kezelése](monitor-alerts-unified-usage.md)
+- [Ismerje meg, hogyan használható a riasztások új kezelőfelülete létrehozása, megtekintése és riasztások kezelése](alert-metric.md)
 - [További információ a riasztások felületen riasztások](monitor-alerts-unified-log.md)
 - [További információ a riasztások felületen metrikákhoz kapcsolódó riasztások](monitoring-near-real-time-metric-alerts.md)
-- [További információ a riasztások élményt a tevékenységnapló-riasztások](monitoring-activity-log-alerts-new-experience.md)
+- [További információ a riasztások élményt a tevékenységnapló-riasztások](alert-activity-log.md)

@@ -5,15 +5,15 @@ services: virtual-machines-windows
 author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 03/11/2018
+ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 89d35197567c4bd44c5867dbb120d07e9f99d1e9
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 73273447bcf534f6ffd4584673756c40e8509e21
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50746425"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50973831"
 ---
 Azure virtuális gép létrehozásakor létre kell hoznia egy [virtuális hálózatot](../articles/virtual-network/virtual-networks-overview.md) (VNet), vagy egy meglévő VNetet kell használnia. Arról is döntenie kell, hogy a virtuális gépek milyen módon legyenek elérhetők a VNeten. Mindenképpen [készítsen tervet az erőforrások létrehozása előtt](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md), továbbá győződjön meg arról, hogy tisztában van a [hálózati erőforrások korlátaival](../articles/azure-subscription-service-limits.md#networking-limits).
 
@@ -36,9 +36,7 @@ Ezen alapvető erőforrások mellett az alábbi választható erőforrások hasz
 
 A [hálózati adapter](../articles/virtual-network/virtual-network-network-interface.md) a virtuális gép és a virtuális hálózat (VNet) közötti kapcsolatot biztosítja. Egy virtuális gépnek legalább egy hálózati adapterrel kell rendelkeznie, de a létrehozott virtuális gép méretétől függően több ilyennel is rendelkezhet. Ismerje meg hány hálózati adaptert minden virtuális gép mérete támogatja a [Windows](../articles/virtual-machines/windows/sizes.md) vagy [Linux](../articles/virtual-machines/linux/sizes.md).
 
-Virtuális gép létrehozása több hálózati adapterrel, és adja hozzá, vagy távolítsa el a hálózati adapterek a virtuális gépek az életciklus során. Több hálózati adapterrel lehetővé teszik a különböző alhálózatokon csatlakozhat és fogadásra forgalmat a legmegfelelőbb felületen keresztül történik egy virtuális Gépet.
-
-Ha a virtuális gépet egy rendelkezésre állási csoporthoz adja hozzá, akkor a rendelkezésre állási csoporton belül minden virtuális gépnek egy vagy több hálózati adapterrel kell rendelkeznie. Az egynél több hálózati adapterrel rendelkező virtuális gépeknek nem kell azonos számú adapterrel rendelkezniük, de legalább kettővel igen.
+Virtuális gép létrehozása több hálózati adapterrel, és adja hozzá, vagy távolítsa el a hálózati adapterek a virtuális gépek az életciklus során. Több hálózati adapterrel lehetővé teszik a különböző alhálózatokon csatlakozhat és fogadásra forgalmat a legmegfelelőbb felületen keresztül történik egy virtuális Gépet. Tetszőleges számú hálózati adapterrel rendelkező virtuális gépek létrejöhet ugyanabban a rendelkezésre állási csoportban, akár a virtuális gép mérete által támogatott számra. 
 
 A virtuális géphez csatlakoztatott hálózati adaptereknek a virtuális géppel megegyező helyen és előfizetésen belül kell lenniük. Az egyes hálózati adaptereket csatlakoztatni kell egy olyan virtuális hálózathoz, amely a hálózati adapterekkel megegyező Azure-helyen és -előfizetésen belül található. Az alhálózat egy virtuális gép csatlakozik-e a létrehozást követően módosítható, de a virtuális hálózat nem módosítható. Minden virtuális géphez csatlakoztatott hálózati adapterhez egy MAC-cím van rendelve, amely a virtuális gép törléséig változatlan marad.
 

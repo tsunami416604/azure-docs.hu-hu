@@ -1,5 +1,5 @@
 ---
-title: A napló Analytcs riasztások kiterjesztése az Azure-bA
+title: Riasztások kiterjesztése a Log Analyticsből az Azure-ba
 description: Ez a cikk ismerteti az eszközök és az API, amellyel bővítheti riasztások a Log Analytics az Azure Alerts szolgáltatáshoz.
 author: msvijayn
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: ed6b2fafbb3329e20985b75f55d29b52dcc5da57
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a470299df86f6b8f7fd61279af0334d01ef94f8d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415701"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957421"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Riasztások kiterjesztése a Log Analytics az Azure-riasztások
 A riasztások szolgáltatása az Azure Log Analyticsben váltja fel az Azure-riasztások. Az átállás részeként a riasztásokat, amelyek eredetileg konfigurálták a Log Analytics kiterjesztik az Azure-bA. Ha nem szeretné automatikusan Azure-ba való áthelyezésének várja, is kezdeményezhet a folyamat:
@@ -470,7 +470,7 @@ Minden egyes hibához szervizelés lépései a következők:
 
 - **Hiba: A házirend jelen előfizetés/erőforráscsoport szintjén**: ![lapjának képernyőképe, az Operations Management Suite portál riasztási beállítások, kiemelve a házirend hibaüzenet](media/monitoring-alerts-extend-tool/ErrorPolicy.png)
 
-    Amikor [Azure Policy](../azure-policy/azure-policy-introduction.md) van érvényben, korlátozza a Log Analytics (az Operations Management Suite) munkaterületet tartalmazó előfizetés vagy az erőforrás csoportban bármilyen új erőforrást. A rendszer nem tudja riasztások kiterjesztése az Azure-ba, és a szükséges Műveletcsoportok létrehozása.
+    Amikor [Azure Policy](../governance/policy/overview.md) van érvényben, korlátozza a Log Analytics (az Operations Management Suite) munkaterületet tartalmazó előfizetés vagy az erőforrás csoportban bármilyen új erőforrást. A rendszer nem tudja riasztások kiterjesztése az Azure-ba, és a szükséges Műveletcsoportok létrehozása.
     
     Megoldásához módosítsa a házirendet, amely miatt a *[RequestDisallowedByPolicy](../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md)* hiba, amely megakadályozza az új erőforrások a vagy erőforráscsoportonként csoport, amely tartalmazza a munkaterület létrehozását. Ehhez az Azure portal, PowerShell, Azure CLI-vel vagy az API használatával. Keresse meg a megfelelő szabályzatot hibát okozó műveletek naplózhatók. További tudnivalókért lásd: [végzett műveletek naplózásához tevékenységi naplóinak megtekintése](../azure-resource-manager/resource-group-audit.md). 
     

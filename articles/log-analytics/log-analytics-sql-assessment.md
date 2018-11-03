@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 4f9882ce94827e490b676fdf421095eae40420d5
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: be2fd826ffa658ec04bd937036e37bf55cbf65a4
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407724"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964135"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optimalizálhatja a környezetet SQL az SQL Server állapotának ellenőrzése megoldás a Log Analyticsben
 
@@ -53,7 +53,7 @@ Miután hozzáadta a megoldást, és az értékelés befejeződött, összefogla
 
 Hajtsa végre az állapot-ellenőrzés az SQL Server-kiszolgálók ellen, szükségük van egy ügynök és a kapcsolat a Log Analytics a következő támogatott módszerek egyikének használatával:
 
-1. Telepítse a [a Microsoft Monitoring Agent (MMA)](log-analytics-windows-agent.md) , ha a kiszolgáló már nem áll a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2.
+1. Telepítse a [a Microsoft Monitoring Agent (MMA)](log-analytics-agent-windows.md) , ha a kiszolgáló már nem áll a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2.
 2. Ha figyelhető a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2 és a felügyeleti csoport nincs integrálva a Log Analytics szolgáltatással, a kiszolgáló is lehet, többhelyű az adatok gyűjtéséhez és a szolgáltatás továbbítja, és továbbra is a Log Analytics szolgáltatással az Operations Manager által figyelendő.  
 3. Ellenkező esetben az Operations Manager felügyeleti csoport integrálva van a szolgáltatást, ha hozzá kell a tartományvezérlők, az adatgyűjtés a szolgáltatás a következő szakasz lépéseit [adja hozzá az ügynök által felügyelt számítógépek](log-analytics-om-agents.md#connecting-operations-manager-to-log-analytics) engedélyezése után a megoldás a munkaterületén.  
 
@@ -184,7 +184,7 @@ Ha javaslatoknál, amelyeket figyelmen kívül kívánja, létrehozhat egy szöv
     ```
 
     >[!NOTE]
-    > Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](log-analytics-log-search-upgrade.md), akkor a fenti lekérdezés módosulnak az alábbiak.
+    > Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](log-analytics-log-search.md), akkor a fenti lekérdezés módosulnak az alábbiak.
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -209,7 +209,7 @@ Ha javaslatoknál, amelyeket figyelmen kívül kívánja, létrehozhat egy szöv
     ```
 
     >[!NOTE]
-    > Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](log-analytics-log-search-upgrade.md), akkor a fenti lekérdezés módosulnak az alábbiak.
+    > Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](log-analytics-log-search.md), akkor a fenti lekérdezés módosulnak az alábbiak.
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -265,4 +265,4 @@ Ha javaslatoknál, amelyeket figyelmen kívül kívánja, létrehozhat egy szöv
 * Igen, tekintse meg [figyelmen kívül hagyja a javaslatok](#ignore-recommendations) című fenti szakaszban.
 
 ## <a name="next-steps"></a>További lépések
-* [Naplók keresése](log-analytics-log-searches.md) megtudhatja, hogyan elemezhet SQL állapotának ellenőrzése a részletes adatok és javaslatok.
+* [Naplók keresése](log-analytics-log-search.md) megtudhatja, hogyan elemezhet SQL állapotának ellenőrzése a részletes adatok és javaslatok.

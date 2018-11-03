@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 28de0f8bdcaa730c5beea0c630d4e86e15642809
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 6013c0a1b404336ad7cca21edafb7adec5c7f7ca
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142453"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978842"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Engedélyezése és megtekintése az Application Insights Profiler kapcsolatos problémák elhárítása
 
@@ -46,16 +46,16 @@ A profiler ír nyomkövetési üzenetek és egyéni eseményeket az application 
 
 1. Ha a időszakban kérelmek a profiler futott, akkor győződjön meg arról, hogy a profiler engedélyezve van az alkalmazás részeként kéréseket kezeli. Néha alkalmazások több összetevőből áll, de a Profiler engedélyezve van csak bizonyos, nem az összes, az összetevőket. Az Application Insights Profiler konfigurálása lapján megtekintheti az összetevőket, amelyek már feltöltött nyomkövetéseket.
 
-### <a name="net-core-21-bug"></a>**.NET core 2.1-es hiba** 
+### <a name="net-core-21-bug"></a>.NET core 2.1-es hiba
 A profiler-ügynök, amely megakadályozza, hogy átveszi a futó ASP.NET Core 2.1-es alkalmazások nyomkövetések feltöltése programhiba van. Azt is dolgozunk a javítást, és fog rendelkezni, készen áll hamarosan. Ez a hiba javítása az október végétől telepíti.
 
-### <a name="other-things-to-check"></a>**Más ellenőrizze az alábbiakat:**
+### <a name="other-things-to-check"></a>Más ellenőrizze az alábbiakat:
 * Az alkalmazás fut, a .NET-keretrendszer 4.6.
 * Ha a webalkalmazás egy ASP.NET Core-alkalmazást, futnia kell, hogy legalább az ASP.NET Core 2.0.
 * Ha a megtekinteni kívánt adatok régebbi, mint egy pár hétig, próbálkozzon az Időszűrő korlátozása, és próbálkozzon újra. Nyomok hét nap után törlődnek.
 * Győződjön meg arról, hogy proxyk vagy a tűzfal nem letiltotta a hozzáférést https://gateway.azureserviceprofiler.net.
 
-### <a id="double-counting"></a>**A párhuzamos szálak számbavételi dupla**
+### <a id="double-counting"></a>A párhuzamos szálak számbavételi dupla
 
 Bizonyos esetekben a teljes időmetrika a stack megjelenítőben több, mint a kérelem időtartama.
 
@@ -63,11 +63,11 @@ Ez a helyzet akkor fordulhat elő, amikor két vagy több szál társítva egy k
 
 Amikor párhuzamos szálak látható a nyomkövetés, határozza meg, mely beszélgetések várnak, hogy meg tudja állapítani, hogy a kritikus fontosságú a kérelem elérési útját. A legtöbb esetben a gyors állapotba kerül szál egyszerűen a más szálak vár. A más szálak összpontosít, és figyelmen kívül hagyja a várakozó szál az az idő.
 
-### <a name="error-report-in-the-profiling-viewer"></a>**Hiba történt a jelentés a profilkészítési megjelenítőben**
+### <a name="error-report-in-the-profile-viewer"></a>Hiba történt a jelentés a profil-megjelenítőben
 A portál támogatási jegyet is küldhet. Győződjön meg arról, a korrelációs Azonosítót, a hibaüzenet tartalmazza.
 
 ## <a name="troubleshooting-profiler-on-app-services"></a>Profiler az App Services hibaelhárítása
-### <a name="for-the-profiler-to-work-properly"></a>**A Profilkészítő megfelelő működéséhez:**
+### <a name="for-the-profiler-to-work-properly"></a>A Profilkészítő megfelelő működéséhez:
 * A web app service-csomagot kell lennie az alapszintű csomag vagy újabb verziója.
 * A webes alkalmazás telepítve van az App Services (2.6.5) az Application Insights kiterjesztéssel kell rendelkeznie.
 * A webalkalmazás kell rendelkeznie a **állítani az APPINSIGHTS_INSTRUMENTATIONKEY** alkalmazásbeállítást az azonos kialakítási kulcsot, amelyet az Application Insights SDK konfigurálva.
@@ -82,7 +82,7 @@ A portál támogatási jegyet is küldhet. Győződjön meg arról, a korreláci
     
     ![a Profiler-webjob-log]
 
-### <a name="manual-installation"></a>**Manuális telepítés**
+### <a name="manual-installation"></a>Manuális telepítés
 
 Profiler konfigurálásakor a webalkalmazás-beállítások végrehajtott frissítéseket. Ha a környezet számára szükséges, manuálisan alkalmazhatja a frissítések. Például lehet, hogy az alkalmazás a Web Apps környezetben fut a powerapps szolgáltatásra.
 
@@ -97,9 +97,9 @@ Profiler konfigurálásakor a webalkalmazás-beállítások végrehajtott friss�
 1. Telepítés **az Application Insights** az Azure Web Apps katalógusából.
 1. Indítsa újra a webalkalmazást.
 
-### <a name="too-many-active-profiling-sessions"></a>**Túl sok aktív profilkészítési munkamenetek**
+### <a name="too-many-active-profiling-sessions"></a>Túl sok aktív profilkészítési munkamenetek
 
-Engedélyezheti a Profiler jelenleg legfeljebb négy Azure web apps és az azonos service-csomag futó üzembe helyezési pontok. A Profiler webjobs-feladat túl sok aktív profilkészítési munkamenetek jelent, ha néhány webes alkalmazás áthelyezése egy másik service-csomagot.
+Engedélyezheti a Profiler jelenleg legfeljebb négy Azure web apps és az azonos service-csomag futó üzembe helyezési pontok. További web Apps alkalmazások, mint egy app service-csomag futó rendelkezik, egy a profiler által okozott Microsoft.ServiceProfiler.Exceptions.TooManyETWSessionException jelenhet meg. A profiler minden webes alkalmazáshoz külön-külön fut, és próbálja meg elindítani a minden alkalmazás ETW-munkamenetet. De van néhány ETW olyan munkamenetek, amelyek egy időben lehet aktív. A Profiler webjobs-feladat túl sok aktív profilkészítési munkamenetek jelent, ha néhány webes alkalmazás áthelyezése egy másik service-csomagot.
 
 ### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>Központi telepítési hiba: nem üres könyvtár "D:\\otthoni\\hely\\wwwroot\\App_Data\\feladatok
 

@@ -5,15 +5,15 @@ author: rboucher
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 10/30/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: f044cf7e0b614d338ec9b294dfbf02c26c4351b1
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 9340c5a70ac652f1cf0a8b0cddce8488e0a62eee
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413860"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978869"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>A Microsoft Azure-ban riasztások áttekintése 
 
@@ -23,28 +23,36 @@ Ez a cikk azt ismerteti, milyen riasztásokat, azok előnyeit, és hogyan lehet 
 ## <a name="what-are-alerts-in-microsoft-azure"></a>Mik a figyelmeztetések a Microsoft Azure-ban?
 Proaktív módon kap értesítést, ha fontos feltételek a figyelési adatok találhatók. Lehetővé teszik, hogy azonosítsa és problémákat, mielőtt azokat a felhasználókat a rendszer figyelje meg. 
 
-Ez a cikk ismerteti az egyesített riasztási élmény az Azure monitorban, amely már tartalmazza a Log Analytics és az Application Insights. A [korábbi riasztási élmény](monitoring-overview-alerts.md) és riasztási típusok korábbi megnevezése **klasszikus riasztások**. Kattintva megtekintheti a régi felületet és a régebbi riasztástípus **klasszikus riasztások megtekintése** a riasztás oldalának tetején.
-
+Ez a cikk ismerteti az egyesített riasztási élmény az Azure monitorban, amely már tartalmazza a Log Analytics és az Application Insights. A [korábbi riasztási élmény](monitoring-overview-alerts.md) és riasztási típusok korábbi megnevezése **klasszikus riasztások**. Kattintva megtekintheti a régi felületet és a régebbi riasztástípus **klasszikus riasztások megtekintése** a riasztás oldalának tetején. 
 
 ## <a name="overview"></a>Áttekintés
 
-Az alábbi ábrán az általános feltételek és a flow a riasztások jelöli. 
+Az alábbi ábrán a folyamat a riasztások jelöli. 
 
 ![A riasztási folyamat](media/monitoring-overview-alerts/Azure-Monitor-Alerts.svg)
 
 Riasztási szabályok vannak elkülönítve, a riasztások és a riasztások aktiválódásakor elvégzett műveletet. 
 
-- **Riasztási szabály** – a riasztási szabályt kell-e a cél és a riasztási feltételeket. A riasztási szabály is lehet egy engedélyezett vagy letiltott állapotban. Riasztások csak akkor aktiválódjanak, ha engedélyezve van. Egy riasztási szabályok legfőbb attribútumai a következők:
-    - **Célerőforrásnál** -cél Azure-erőforrásokkal is lehet. Célerőforrás határozza meg, a hatókör és a riasztási elérhető jelek. Példa célok: a virtuális gép, tárfiók, egy virtuálisgép-méretezési csoportot, Log Analytics-munkaterület vagy Application Insights-erőforrás. Az egyes erőforrások (pl. virtuális gépek), megadhat több olyan erőforrást riasztási szabály céljaként.
-    - **Jel** – jelzi, hogy a célként megadott erőforrás által kibocsátott vannak, és számos különböző lehet. A metrika, tevékenység napló, az Application Insights és napló.
-    - **Feltételek** – feltételek kombinációja jel és logika egy cél-erőforrásra alkalmazni. Példák: 
-         - Százalékos Processzorhasználat > 70 %-os
-         - Kiszolgáló válaszideje > 4 ms 
-         - A napló lekérdezés > 100 eredmény száma
-- **Riasztás neve** – egy egyedi nevet a riasztási szabály a felhasználó által beállított
-- **Riasztás leírása** – a felhasználó által beállított a riasztási szabály leírása
-- **Súlyosság** – Ha a riasztási szabályban megadott feltétel teljesülése a riasztás súlyosságát. Súlyosság 0-tól 4 terjedhet.
-- **A művelet** – a riasztás akkor aktiválódik, amikor egy bizonyos művelet. További információkért lásd: Műveletcsoportok.
+**Riasztási szabály** – a riasztási szabályt kell-e a cél és a riasztási feltételeket. A riasztási szabály is lehet egy engedélyezett vagy letiltott állapotban. Riasztások csak akkor aktiválódjanak, ha engedélyezve van. 
+
+Riasztási szabályok legfőbb attribútumai a következők:
+
+**Célerőforrásnál** – a hatókör határozza meg, és jelzi a riasztás érhető el. A cél lehet Azure-erőforrásokkal. Példa célok: a virtuális gép, tárfiók, egy virtuálisgép-méretezési csoportot, Log Analytics-munkaterület vagy Application Insights-erőforrás. Az egyes erőforrások (például virtuális gépek), megadhat több olyan erőforrást a riasztási szabály céljaként.
+
+**Jel** – jelzi, hogy a célként megadott erőforrás által kibocsátott vannak, és számos különböző lehet. A metrika, tevékenység napló, az Application Insights és napló.
+
+**Feltételek** – feltételek kombinációja jel és logika egy cél-erőforrásra alkalmazni. Példák: 
+   - Százalékos Processzorhasználat > 70 %-os
+   - Kiszolgáló válaszideje > 4 ms 
+   - A napló lekérdezés > 100 eredmény száma
+
+**Riasztás neve** – egy egyedi nevet a riasztási szabály a felhasználó által beállított
+
+**Riasztás leírása** – a felhasználó által beállított a riasztási szabály leírása
+
+**Súlyosság** – Ha a riasztási szabályban megadott feltétel teljesülése a riasztás súlyosságát. Súlyosság 0-tól 4 terjedhet.
+
+**A művelet** – a riasztás akkor aktiválódik, amikor egy bizonyos művelet. További információkért lásd: [Műveletcsoportok](monitoring-action-groups.md).
 
 ## <a name="what-you-can-alert-on"></a>A is riasztás
 
@@ -54,8 +62,6 @@ Metrikákat és naplókat is riasztás leírtak szerint [adatforrások figyelés
 - Tevékenységnapló-események
 - A mögöttes Azure platform állapotát
 - A webhely rendelkezésre állási tesztek
-
-
 
 ## <a name="manage-alerts"></a>Riasztások kezelése
 Beállíthatja, hogy riasztást adjon meg, hol helyezkedik el a feloldási folyamat állapotát. A riasztási szabályban megadott megadott feltétele teljesül, ha riasztás jön létre, vagy aktivált, állapotba került, *új*. Miután nyugtázta a riasztást, és ha bezárja az állapot módosíthatja. Az összes állapotváltozások előzményeit, a riasztás vannak tárolva.
@@ -68,7 +74,7 @@ A következő riasztási állapotok támogatottak.
 | Visszaigazolva | A rendszergazda tekintse át a figyelmeztető és a munka megkezdése. |
 | Lezárva | A probléma megoldódott. Riasztás lezárása után nyissa meg újra egy másik állapotának módosításával. |
 
-A riasztás állapotát a figyelési feltétel eltér. Riasztás állapota a felhasználó állítja be, és független a figyelési feltétel. Ha törli a aktivált riasztás kiváltó feltételt, a riasztás a figyelési feltétel értéke megoldott. Bár a rendszer beállíthatók megoldani a figyelési feltétel, a riasztás állapota nem változik, amíg a felhasználó megváltoztatná. Ismerje meg, [módosítása a riasztások és az intelligens csoportok állapotát](https://aka.ms/managing-alert-smart-group-states).
+**Riasztás állapota** eltérő, és független a **feltétel figyelése**. Riasztás állapota a felhasználó állítja be. A figyelő az állapot a rendszer állítja be. Egy riasztás akkor aktiválódik, ha a riasztást figyelő feltétel értéke *aktivált*. Ha az alapul szolgáló a riasztást kiváltó törli üzenetszám, a figyelési feltétel értéke *megoldott*. A riasztás állapota nem változik meg, amíg a felhasználó megváltoztatná. Ismerje meg, [módosítása a riasztások és az intelligens csoportok állapotát](https://aka.ms/managing-alert-smart-group-states).
 
 ## <a name="smart-groups"></a>Intelligens csoportok 
 Az intelligens csoportok vannak előzetes verzióban érhető el. 
@@ -114,11 +120,11 @@ Akkor hozzon létre egy új riasztási szabály az alábbi három lépést:
 1. Válassza ki a _jel_ az a cél a rendelkezésre álló jelek.
 1. Adja meg a _logikai_ kinyert adatok alkalmazandó.
  
-Ez a szerzői műveletekhez részben egyszerűsített folyamat többé nem kell, hogy tudja, hogy a monitorozási forrás vagy azt jelzi, hogy egy Azure-erőforrás kiválasztása előtt támogatottak. A rendelkezésre álló jelek automatikusan a szűrt lista a célként megadott erőforrás kiválasztott alapján, és ez végigvezeti Önt a riasztási szabály a logikai meghatározása.
+Ez a szerzői műveletekhez részben egyszerűsített folyamat többé nem kell, hogy tudja, hogy a monitorozási forrás vagy azt jelzi, hogy egy Azure-erőforrás kiválasztása előtt támogatottak. Elérhető jelek automatikusan szűri a program a célként megadott erőforrás kiválasztott alapján. Is alapján, hogy a cél, végigvezeti a riasztási szabály a logikai automatikusan meghatározása.  
 
-A riasztási szabályok létrehozásával kapcsolatos többet is megtudhat [, létrehozás, riasztások megtekintése és kezelése az Azure Monitor használatával](monitor-alerts-unified-usage.md).
+A riasztási szabályok létrehozásával kapcsolatos többet is megtudhat [, létrehozás, riasztások megtekintése és kezelése az Azure Monitor használatával](alert-metric.md).
 
-Riasztások számos Azure-szolgáltatások figyelésének érhetők el. Információ és mikor érdemes használni, az ilyen szolgáltatásokkal: [figyelése az Azure-alkalmazások és erőforrások](./monitoring-overview.md). A következő táblázat a riasztási szabályok Azure-ban rendelkezésre álló típusok listája. Azt is megjeleníti, mi jelenleg támogatott a riasztási tapasztalatok alapján.
+Riasztások számos Azure-szolgáltatások figyelésének érhetők el. Információ és mikor érdemes használni, az ilyen szolgáltatásokkal: [figyelése az Azure-alkalmazások és erőforrások](../azure-monitor/overview.md). A következő táblázat a riasztási szabályok Azure-ban rendelkezésre álló típusok listája. Azt is megjeleníti, mi jelenleg támogatott a riasztási tapasztalatok alapján.
 
 Korábban az Azure Monitor, az Application Insights, a Log Analytics és a Service Health korábban külön riasztási képességek. Az Azure túlóra, továbbfejlesztett, és a felhasználói felület és a különböző módszerek riasztások kombinált. Ez az összevonás még folyamatban van. Ennek eredményeképpen továbbra is vannak bizonyos riasztási funkciók nem, de az új riasztások rendszerben.  
 
@@ -159,8 +165,8 @@ A riasztás részletei lap az alábbi szakaszokat tartalmazza.
 | Section | Leírás |
 |:---|:---|
 | Alapvető erőforrások | A tulajdonságok és más jelentős a riasztásra vonatkozó információk megjelenítése. |
-| Előzmények | Minden egyes a riasztás által végrehajtott műveletek és a riasztás végzett módosítások sorolja fel. Ez a jelenleg csak az állapotváltozásokat. |
-| Az intelligens csoport | Információk az intelligens csoport tartalmazza a riasztás. A *riasztások száma* hivatkozik, amely az intelligens csoportban levő értesítések száma. Ez magában foglalja a más riasztások az elmúlt 30 napban létrehozott ugyanabba az intelligens csoportba.  Ettől függetlenül az Időszűrő a riasztások lista lapon. Válasszon ki egy riasztást, a részletek megtekintéséhez. |
+| Előzmények | Minden egyes a riasztás által végrehajtott műveletek és a riasztás végzett módosítások sorolja fel. Egyelőre csak állapotváltozásokat. |
+| Az intelligens csoport | Információk az intelligens csoport tartalmazza a riasztás. A *riasztások száma* hivatkozik, amely az intelligens csoportban levő értesítések száma. Az azonos intelligens csoport, függetlenül az Időszűrő a riasztások lista lap az elmúlt 30 napban létrehozott egyéb riasztásokat tartalmazza. Válasszon ki egy riasztást, a részletek megtekintéséhez. |
 | További részletek | A további környezeti információkat a riasztás, a riasztást létrehozó adatforrás típusa általában jellemző megjelenítése. |
 
 
@@ -168,7 +174,7 @@ A riasztás részletei lap az alábbi szakaszokat tartalmazza.
 
 A riasztási funkció 2018 június előtt az Azure Monitor mérőszámok és Tevékenységnaplók log "Riasztások (klasszikus)" nevezzük. 
 
-További információ: [klasszikus riasztások](./monitoring-overview-alerts-classic.md)
+További információkért lásd: [klasszikus riasztások](./monitoring-overview-alerts-classic.md)
 
 
 ## <a name="next-steps"></a>További lépések

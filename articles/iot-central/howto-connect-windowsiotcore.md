@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 88285ea658b194daf69b12116649e2389374c349
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: d166d490c00a9805ec9cecae6509acc531d8d711
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025531"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959868"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>A Windows IoT Core-eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
 
@@ -23,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők, a Windows IoT Core-eszkö
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
-1. A létrehozott Azure IoT Central alkalmazáshoz a **minta Devkits** alkalmazássablon. További információkért lásd: [az Azure IoT központi alkalmazás létrehozása](howto-create-application.md).
+1. A létrehozott Azure IoT Central alkalmazáshoz a **minta Devkits** alkalmazássablon. További információkért lásd: a [hozzon létre egy alkalmazás rövid](quick-deploy-iot-central.md).
 2. A Windows 10 IoT Core operációs rendszert futtató eszköz. Ebben a bemutatóban a Raspberry Pi használjuk.
 
 

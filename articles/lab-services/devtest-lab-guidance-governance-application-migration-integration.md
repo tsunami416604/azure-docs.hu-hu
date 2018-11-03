@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 8653056c5c4b0e5b6831d3cc2b0006e89ac01bdd
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 8a661c94ecc660e0ebd0e9818acef81b8a7b819b
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251090"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978615"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Az Azure DevTest Labs-infrastruktúra - alkalmazás áttelepítését és integrálását cégirányítási
-A fejlesztési/tesztelési hálózati környezet létrehozása után kell gondolja át az alábbi kérdésekre: 
+A fejlesztési/tesztelési hálózati környezet létrehozása után kell gondolja át az alábbi kérdésekre:
 
-- Hogyan, kihasználhassák a környezet a projektcsapattal? 
+- Hogyan, kihasználhassák a környezet a projektcsapattal?
 - Hogyan gondoskodik, hogy hajtsa végre a szükséges szervezeti házirendeknek, és a rugalmasságot érték hozzáadása az alkalmazás karbantartása?
 
 ## <a name="azure-marketplace-images-vs-custom-images"></a>Egyéni rendszerképek és az Azure Marketplace-rendszerképek
@@ -60,10 +60,10 @@ Hogyan állítható be egy egyszerű, megismételhető folyamattal ahhoz, hogy s
 ### <a name="answer"></a>Válasz
 Lásd: [ezt a videót a Immage gyári minta](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/). Ebben a forgatókönyvben a speciális helyzetben, és a megadott szkriptek mintaszkriptek csak. Ha módosítások szükségesek, kezelésére és karbantartására a környezetében használt parancsfájlokra szüksége.
 
-DevTest Labs használatával hozhat létre egy egyéni rendszerkép folyamatot a Visual Studio Team Services (VSTS):
+DevTest Labs használatával hozhat létre egy egyéni rendszerkép folyamatot az Azure-folyamatok:
 
 - [Bevezetés: Felkészülés a virtuális gépek percek alatt beállításával egy kép factoryt az Azure DevTest Labs szolgáltatásban](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/)
-- [Kép gyári – 2. rész! Beállítása a vsts-ben és a gyári Lab hozhat létre virtuális gépeket](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
+- [Kép gyári – 2. rész! Hozhat létre virtuális gépeket Azure folyamatok és gyári tesztkörnyezet beállítása](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
 - [Kép gyári – 3. rész: Save egyéni rendszerképek használata és terjesztése a több Tesztkörnyezetekhez](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/)
 - [Videó: Egyéni rendszerkép Factory az Azure DevTest Labs használatával](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)
 
@@ -79,7 +79,7 @@ Igen. Két szempontot kell figyelembe venni – bejövő és kimenő forgalmat.
 
 **Kimenő forgalom** – Ha megakadályozzák a virtuális gépek közvetlenül a nyilvános interneten történik, és a vállalati tűzfalon, forgalom kényszerített majd irányíthatja a forgalmat a helyszíni express route-n keresztül, vagy VPN-, a kényszerített útválasztást.
 
-> [!NOTE] 
+> [!NOTE]
 > Ha rendelkezik egy proxykiszolgáló, amely blokkolja a forgalmat proxybeállítások nélkül, ne felejtse el kivételeket hozzáadni a lab artifact storage-fiók.
 
 Hálózati biztonsági csoportok a virtuális gépek és alhálózatok is használhat. Ezt a lépést hozzáadja egy további rétegét védelem engedélyezése / letiltása a forgalmat.
@@ -100,9 +100,9 @@ Ellenkező esetben minden egyes DevTest Labs-környezet lehet a saját virtuáli
 Mikor célszerű használni a magánhálózati IP-és nyilvános IP-cím és megosztott IP-cím?
 
 ### <a name="answer"></a>Válasz
-Ha egy helyek közötti VPN vagy Express Route használja, fontolja meg magánhálózati IP-címek, a gépek a belső hálózaton elérhetők, és nem érhető el legyenek a nyilvános interneten keresztül. 
+Ha egy helyek közötti VPN vagy Express Route használja, fontolja meg magánhálózati IP-címek, a gépek a belső hálózaton elérhetők, és nem érhető el legyenek a nyilvános interneten keresztül.
 
-> [!NOTE] 
+> [!NOTE]
 > Labortulajdonosok módosíthatja a alhálózat házirend annak érdekében, hogy senki véletlenül hozzon létre nyilvános IP-címek a virtuális gépek számára. Az előfizetés tulajdonosa hozzon létre egy előfizetési szabályzat meggátolja, hogy a nyilvános IP-címek létrehozása folyamatban.
 
 Megosztott nyilvános IP-címek használata esetén a virtuális gépek tesztkörnyezetben megosztása a nyilvános IP-cím. Ez a megközelítés akkor lehet hasznos, amikor szüksége van egy adott előfizetéshez tartozó nyilvános IP-címek korlátait megszegéséhez elkerülése érdekében.
@@ -125,7 +125,7 @@ Ha a mérlegeli felhasználónként vagy tesztlabor virtuális gépek számát, 
 Hogyan használhatok Resource Manager-sablonok a DevTest Labs Környezetemet?
 
 ### <a name="answer"></a>Válasz
-A Resource Manager-sablonokat a DevTest Labs-környezetben szereplő lépések segítségével telepítheti a [környezetek funkció DevTest labs szolgáltatásban létrehozott](devtest-lab-test-env.md) cikk. Alapvetően a Resource Manager-sablonok tekintsen meg egy Git-tárház (Visual Studio Team Services vagy GitHub), és adjon hozzá egy [a sablonok privát tárház](devtest-lab-test-env.md) a tesztkörnyezethez.
+A Resource Manager-sablonokat a DevTest Labs-környezetben szereplő lépések segítségével telepítheti a [környezetek funkció DevTest labs szolgáltatásban létrehozott](devtest-lab-test-env.md) cikk. Alapvetően a Resource Manager-sablonok tekintsen meg egy Git-tárház (az Azure-Adattárakkal vagy GitHub), és adjon hozzá egy [a sablonok privát tárház](devtest-lab-test-env.md) a tesztkörnyezethez.
 
 Ebben a forgatókönyvben nem lehet hasznos, ha a DevTest Labs fejlesztési gazdagépeken használ, de előfordulhat, hogy lehet hasznos, ha egy átmeneti környezet, amely jellemző az éles környezetben hoz létre.
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 845bc46ec56bfd6681c4fb318a57de19f66c0edf
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f1ca7abc867df25d37093cb777f35216b5ee5a30
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403871"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957981"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension"></a>A Log Analytics Virtuálisgép-bővítmény hibáinak elhárítása
 Ez a cikk ismerteti a hibaelhárítást hibákat tapasztalhat a Microsoft Azure platformon futó Windows és Linux rendszerű virtuális gépekhez a Log Analytics Virtuálisgép-bővítmény, és azok megoldását lehetséges megoldásokat javasol.
@@ -58,7 +58,7 @@ Ha a *Microsoft Monitoring Agent* Virtuálisgép-bővítmény telepítése nélk
 6. A Microsoft Monitoring Agent állapotának megtekintéséhez írja be a következőt egy emelt szintű PowerShell-ablakot a virtuális gépen `  (New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`
 7. Tekintse át a Microsoft Monitoring Agent telepítési naplófájlok `C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs`
 
-További információkért lásd: [Windows-bővítmények hibaelhárítása](../virtual-machines/windows/extensions-oms.md).
+További információkért lásd: [Windows-bővítmények hibaelhárítása](../virtual-machines/extensions/oms-windows.md).
 
 ## <a name="troubleshooting-linux-vm-extension"></a>Linux Virtuálisgép-bővítmény hibáinak elhárítása
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
@@ -70,7 +70,7 @@ Ha a *Linuxhoz készült Log Analytics-ügynök* Virtuálisgép-bővítmény tel
 2. Többi nem kifogástalan állapot, tekintse át a Log Analytics-ügynök Linux Virtuálisgép-bővítmény-fájlokat naplókat `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` és `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`
 3. Ha a bővítmény állapota kifogástalan állapotban, de nem feltöltött adatmennyiség tekintse át a Log Analytics-ügynököt a Linux-naplófájlok `/var/opt/microsoft/omsagent/log/omsagent.log`
 
-További információkért lásd: [Linux-bővítmények hibaelhárítása](../virtual-machines/linux/extensions-oms.md).
+További információkért lásd: [Linux-bővítmények hibaelhárítása](../virtual-machines/extensions/oms-linux.md).
 
 ## <a name="next-steps"></a>További lépések
 

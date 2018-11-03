@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1a46564c324edb1999a2e1b1d482817685df2893
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 3fa41f894e3228310bae6a9407cfcc426c27bfdc
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205986"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963718"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Adathiány hibaelhárítása – Application Insights .NET-hez
 ## <a name="some-of-my-telemetry-is-missing"></a>Láthatók a telemetriai adatok némelyike hiányzik
@@ -158,7 +158,7 @@ Az adatok a weboldalakon parancsfájlok származik.
 Lásd: [– függőségi telemetria](app-insights-asp-net-dependencies.md) és [kivételtelemetria](app-insights-asp-net-exceptions.md).
 
 ## <a name="no-performance-data"></a>Teljesítményadatok
-Teljesítményadatok (CPU, i/o-forgalom, és így tovább) érhető el [Java webes szolgáltatások](app-insights-java-collectd.md), [Windows asztali alkalmazások](app-insights-windows-desktop.md), [IIS webalkalmazások és szolgáltatások Ha telepítse az állapotfigyelőt](app-insights-monitor-performance-live-website-now.md), és [Az azure Cloud Services](app-insights-azure.md). a beállítások kiszolgálók találhat.
+Teljesítményadatok (CPU, i/o-forgalom, és így tovább) érhető el [Java webes szolgáltatások](app-insights-java-collectd.md), [Windows asztali alkalmazások](app-insights-windows-desktop.md), [IIS webalkalmazások és szolgáltatások Ha telepítse az állapotfigyelőt](app-insights-monitor-performance-live-website-now.md), és [Az azure Cloud Services](app-insights-overview.md). a beállítások kiszolgálók találhat.
 
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>Nincs (kiszolgáló) adat, mivel az alkalmazás közzétett kiszolgálóhoz
 * Ellenőrizze, hogy ténylegesen kimásolt minden Microsoft. A kiszolgálóval együtt Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll ApplicationInsights dll-EK

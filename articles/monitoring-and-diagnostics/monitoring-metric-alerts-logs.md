@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: bed0c15504323aba4ebf680273870720a8ff833a
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 62b5c8fd0a63e660cd4126755d94ea90cf4d412b
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388309"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961160"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Metrikákhoz kapcsolódó riasztások létrehozása az Azure Monitor-naplók  
 
@@ -22,8 +22,8 @@ Az Azure Monitor támogatja [metric riasztástípus](monitoring-near-real-time-m
 
 Metrikákhoz kapcsolódó riasztások használhatja a népszerű Log Analytics-naplók, metrikák, naplók, beleértve az erőforrásokat az Azure-ban vagy a helyi mérőszámainak részeként ki kell olvasni. A támogatott Log Analytics-megoldások az alábbiak:
 - [Teljesítményszámlálók](../log-analytics/log-analytics-data-sources-performance-counters.md) Windows és Linux rendszerű gépek
-- [Szívverés rekordok az ügynök állapota](../operations-management-suite/oms-solution-agenthealth.md)
-- [Frissítéskezelés](../operations-management-suite/oms-solution-update-management.md) rekordok
+- [Szívverés rekordok az ügynök állapota](../monitoring/monitoring-solution-agenthealth.md)
+- [Frissítéskezelés](../automation/automation-update-management.md) rekordok
 - [Eseményadatok](../log-analytics/log-analytics-data-sources-windows-events.md) naplók
  
 Nincsenek számos előnnyel jár a **metrika riasztások naplók** keresztül a lekérdezéshez [Naplóriasztások](alert-log.md) az Azure rendszerben; ezek közül az alábbiak:
@@ -47,7 +47,7 @@ A népszerű naplókból metrikaadatok van olyan parancsoknak, a Log Analytics, 
 A metrika a naplókhoz gyűjtött a Log Analytics data működéséről, mielőtt a következő kell állítani és elérhetők:
 1. **Aktív Log Analytics-munkaterület**: érvényes és aktív Log Analytics-munkaterület jelen kell lennie. További információkért lásd: [Log Analytics-munkaterület létrehozása az Azure Portalon](../log-analytics/log-analytics-quick-create-workspace.md).
 2. **Ügynök úgy van beállítva, a Log Analytics-munkaterület**: ügynök kell konfigurálni az Azure virtuális gépek (és/vagy) a helyszíni virtuális gépek is küldhet adatokat, a Log Analytics-munkaterületet a korábbi lépésben használt. További információkért lásd: [Log Analytics - ügynök – áttekintés](../monitoring/monitoring-overview-azure-agents.md).
-3. **Telepítve van a támogatott Log Analytics Solutions**: Log Analytics megoldás kell lennie állítva és küldő adatok Log Analytics-munkaterület - támogatott megoldások [teljesítményszámlálók a Windows és Linux-környezetekkel](../log-analytics/log-analytics-data-sources-performance-counters.md), [Szívverési rekordok Agent Health](../operations-management-suite/oms-solution-agenthealth.md), [Update management, és [eseményadatok](../log-analytics/log-analytics-data-sources-windows-events.md).
+3. **Telepítve van a támogatott Log Analytics Solutions**: Log Analytics megoldás kell lennie állítva és küldő adatok Log Analytics-munkaterület - támogatott megoldások [teljesítményszámlálók a Windows és Linux-környezetekkel](../log-analytics/log-analytics-data-sources-performance-counters.md), [Szívverési rekordok Agent Health](../monitoring/monitoring-solution-agenthealth.md), [Update management, és [eseményadatok](../log-analytics/log-analytics-data-sources-windows-events.md).
 4. **Log Analytics megoldások, amely naplókat küld**: Log Analytis megoldásnak rendelkeznie kell a szükséges naplók és adatok megfelelő [Log Analytics-munkaterületek a támogatott mérőszámok](monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces) engedélyezve van. Például *rendelkezésre álló memória %* kell konfigurálni, hogy a számláló [teljesítményszámlálók](../log-analytics/log-analytics-data-sources-performance-counters.md) megoldás első.
 
 ## <a name="configuring-metric-alert-for-logs"></a>Metrikariasztás naplók konfigurálása

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: 86c0343a3492bf91eedda9303e3c6ac9cf86c4c3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 498633d9f73c4a9b669ddd3469b62c01d2a19397
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46947319"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958712"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Az Application Insights beállítása az ASP.NET-webhelyhez
 
@@ -150,7 +150,7 @@ További témaköröket is elolvashat, ha a következők érdeklik:
 
 * **[Az Application Insights használata a Visual Studióban](app-insights-visual-studio.md)**<br/>A telemetriával végzett hibakereséssel, diagnosztikai kereséssel és a kódig való részletezés lefúrással kapcsolatos információkat tartalmaz.
 * **[Az Application Insights-portál használata](app-insights-dashboards.md)**<br/> Az irányítópultokkal, a hatékony diagnosztikai és elemzési eszközökkel, riasztásokkal, az alkalmazás élő függőségi térképével, valamint a telemetria exportálásával kapcsolatos információkat tartalmaz.
-* **[Elemzés](app-insights-analytics-tour.md)** – Erőteljes lekérdezési nyelv.
+* **[Elemzés](../log-analytics/query-language/get-started-analytics-portal.md)** – Erőteljes lekérdezési nyelv.
 
 ### <a name="alerts"></a>Riasztások
 

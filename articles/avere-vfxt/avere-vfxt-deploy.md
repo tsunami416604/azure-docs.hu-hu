@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 47773f9375927e4d8dfbfec922e4cf11e42ade04
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 359ada08f1d9df6b60fc27ca385f6003af498e17
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634200"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958601"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>A vFXT-fürt üzembe helyezése
 
@@ -30,7 +30,7 @@ Fürt telepítés lépéseit, valamint a tervezési kapcsolatos további inform�
 
 Ez a dokumentum utasításait követve, miután egy virtuális hálózat, alhálózat, egy tartományvezérlő és egy vFXT fürtöt az alábbi ábrán látható módon fog rendelkezni:
 
-![virtuális hálózat nem kötelező a blob storage és a egy három tartalmazó alhálózat tartalmazó bemutató ábra. Ez vFXT csomópontok/vFXT fürt és a egy virtuális gép címkével rendelkező fürt vezérlő címkével ellátott virtuális gépek vannak csoportosítva.](media/avere-vfxt-deployment-500px.png)
+![virtuális hálózat nem kötelező a blob storage és a egy három tartalmazó alhálózat tartalmazó bemutató ábra. Ez vFXT csomópontok/vFXT fürt és a egy virtuális gép címkével rendelkező fürt vezérlő címkével ellátott virtuális gépek vannak csoportosítva.](media/avere-vfxt-deployment.png)
 
 Mielőtt elkezdené, győződjön meg arról, hogy foglalkoztak az Előfeltételek:  
 
@@ -198,9 +198,7 @@ Is annak hiányzó navigáljon a tartományvezérlő virtuális gép informáci�
 
 Ezt az információt a Resource Manager sablon kimeneti megkereséséhez kövesse ezt az eljárást:
 
-1. Kattintson az értesítési ikonra a felső sávon az Azure Portal, **erőforráscsoport megnyitása**. Ez jelzi, hogy az új erőforráscsoportot, amely tartalmazza a tartományvezérlő és a virtuális hálózathoz.
-
-   ![Értesítések portál az "Sikeres üzembe helyezés" szakaszban üzenet, és "Erőforráscsoport megnyitása" és a "Rögzítés az irányítópulton" gomb](media/avere-vfxt-browse-to-rg.png)
+1. Nyissa meg az erőforráscsoport, a fürt vezérlő.
 
 1. A bal oldali menüjében kattintson **központi telepítések**, majd **Microsoft.Template**.
 

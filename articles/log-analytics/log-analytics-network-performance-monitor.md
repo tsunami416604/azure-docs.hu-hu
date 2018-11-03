@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: fc5ab802b39597d72f01f756c9bdb16597862e3c
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: d49360fe39b0df7fc1172c3927e8725af10f927d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638202"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963880"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
@@ -103,7 +103,7 @@ A Network Performance Monitor szintetikus tranzakciók használatával a forrás
 
 ### <a name="configure-the-solution"></a>A megoldás konfigurálása 
 
-1. A Network Performance Monitor megoldás hozzáadása a munkaterületet a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). A leírt folyamatot is használható [adja hozzá a Log Analytics solutions kövesse a megoldástárban](log-analytics-add-solutions.md). 
+1. A Network Performance Monitor megoldás hozzáadása a munkaterületet a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). A leírt folyamatot is használható [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../monitoring/monitoring-solutions.md). 
 2. Nyissa meg a Log Analytics-munkaterületet, és válassza ki a **áttekintése** csempére. 
 3. Válassza ki a **Network Performance Monitor** üzenettel csempe *megoldás további konfigurálást igényel*.
 
@@ -251,7 +251,7 @@ A topológia a gráfon látható 3. rétegbeli topológia, és nem tartalmazza 2
 
 ## <a name="log-analytics-search"></a>A log Analytics-keresés 
 
-Összes adat, amely grafikusan közzétett keretében a Network Performance Monitor-irányítópult és a részletezés oldal is érhető el natív módon [Log Analytics keresési](log-analytics-log-search-new.md). Az adatok interaktív elemzéseket végezhet a tárházban, és vesse össze a különböző forrásokból származó adatok. Emellett egyéni riasztások és nézetek létrehozása és az adatok exportálása az Excel, a Power bi-ban vagy a megosztható hivatkozás. A **gyakori lekérdezések** tartalmaz néhány hasznos lekérdezést, amely kiindulási pontként használhatja a saját lekérdezéseket és jelentéseket hozhat létre az irányítópulton. 
+Összes adat, amely grafikusan közzétett keretében a Network Performance Monitor-irányítópult és a részletezés oldal is érhető el natív módon [Log Analytics keresési](log-analytics-log-search.md). Az adatok interaktív elemzéseket végezhet a tárházban, és vesse össze a különböző forrásokból származó adatok. Emellett egyéni riasztások és nézetek létrehozása és az adatok exportálása az Excel, a Power bi-ban vagy a megosztható hivatkozás. A **gyakori lekérdezések** tartalmaz néhány hasznos lekérdezést, amely kiindulási pontként használhatja a saját lekérdezéseket és jelentéseket hozhat létre az irányítópulton. 
 
 ## <a name="alerts"></a>Riasztások
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4702b0eb53897f173311c40469c912cf41751f24
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 9d97b14d52a33d6879ee92b38993f4526823c4a0
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155150"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963989"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Az Azure IoT Central-alkalmazást (Node.js) egy általános ügyfél-alkalmazás csatlakoztatása
 
@@ -23,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők egy általános Node.js-al
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
-1. Azure IoT Central alkalmazáshoz. További információkért lásd: [az Azure IoT központi alkalmazás létrehozása](howto-create-application.md).
+1. Azure IoT Central alkalmazáshoz. További információkért lásd: a [hozzon létre egy alkalmazás rövid](quick-deploy-iot-central.md).
 1. A fejlesztői gépen való [Node.js](https://nodejs.org/) 4.0.0-s verzió vagy újabb verziója szükséges. Futtathat `node --version` a parancssorban a verzió ellenőrzéséhez. A Node.js az operációs rendszerek széles körében elérhető.
 
 ## <a name="create-a-device-template"></a>Egy eszköz-sablon létrehozása

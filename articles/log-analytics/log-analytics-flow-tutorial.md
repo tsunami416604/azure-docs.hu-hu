@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 6f09e523b70e541c724ea53d0bd47215ad44d623
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 224d5673b374b9b30237d25113e07aaf6dd4feaf
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041986"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960965"
 ---
 # <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Az összekötő a Log Analytics folyamatok automatizálása a Microsoft Flow
 [Microsoft Flow](https://ms.flow.microsoft.com) lehetővé teszi, hogy több száz műveletek használatával a különböző szolgáltatások, automatizált munkafolyamatokat hozhat létre. Egy művelet kimenete egy másik lehetővé teszi, hogy hozzon létre a különböző szolgáltatások közötti integráció bemeneteként használható.  Az Azure Log Analytics-összekötő a Microsoft Flow munkafolyamatok tartalmazó naplókeresések a Log Analytics által lekért adatok létrehozását teszik lehetővé.
@@ -79,7 +79,7 @@ Ebben a cikkben az oktatóanyag bemutatja, hogyan hozhat létre egy folyamatot, 
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudjon meg többet [Log Analytics naplóbeli kereséseivel](log-analytics-log-search-new.md).
+- Tudjon meg többet [Log Analytics naplóbeli kereséseivel](log-analytics-log-search.md).
 - Tudjon meg többet [Microsoft Flow](https://ms.flow.microsoft.com).
 
 

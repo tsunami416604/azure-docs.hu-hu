@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 30a23010f326189ffd5886407d70e357abb9c53e
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 81e41ce6818a6f56ba5e6e888480f8b25979fb81
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42055095"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979199"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services konfigurálása és felügyelete hibák: gyakran ismételt kérdések (GYIK)
 
@@ -142,7 +142,7 @@ További információkért tekintse meg a következő dokumentumokat:
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Hogyan engedélyezhetem WAD naplózás a Cloud Services?
 Engedélyezheti a Windows Azure Diagnostics (WAD) naplózás használatával a következő beállításokat:
-1. [A Visual Studióból engedélyezése](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+1. [A Visual Studióból engedélyezése](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 2. [.Net-kódon keresztül engedélyezése](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
 3. [Powershell-lel engedélyezése](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
 
@@ -248,7 +248,7 @@ A Cloud Services integrálása az Azure Diagnostics az Application Insights tov�
 
 További információ az Application Insights engedélyezése a Cloud Services szolgáltatáshoz, talál [Application Insights az Azure Cloud Services](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)
 
-Azure diagnosztikai naplózás engedélyezése a Cloud Services kapcsolatos további információkért lásd: [diagnosztika beállítása az Azure Cloud Services és virtual machines](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+Azure diagnosztikai naplózás engedélyezése a Cloud Services kapcsolatos további információkért lásd: [diagnosztika beállítása az Azure Cloud Services és virtual machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 
 ## <a name="generic"></a>Általános
 

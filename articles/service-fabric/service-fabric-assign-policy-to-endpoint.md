@@ -1,6 +1,6 @@
 ---
-title: Hozzáférési házirendek hozzárendelése az Azure Service Fabric Szolgáltatásvégpontok |} Microsoft Docs
-description: Megtudhatja, hogyan rendelje hozzá a biztonsági hozzáférési házirendeket HTTP vagy HTTPS végpontok a Service Fabric-szolgáltatás.
+title: Hozzáférési szabályzatok hozzárendelése az Azure Service Fabric szolgáltatási végpontjainak |} A Microsoft Docs
+description: Ismerje meg, hogyan rendelje hozzá a biztonsági hozzáférési szabályzatok a Service Fabric-szolgáltatást a HTTP vagy HTTPS-végpontokra irányuló.
 services: service-fabric
 documentationcenter: .net
 author: msfussell
@@ -14,44 +14,43 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: mfussell
-ms.openlocfilehash: 33d6d83d4dcd0ec9bebf8d4197684e0e52c48ac5
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 8d5017cbd2177d080e5cef3d99a9f6b62eae08d5
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34701318"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978961"
 ---
-# <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>Rendelje hozzá a biztonsági házirend HTTP és HTTPS-végpontok
-Ha egy futtató házirend alkalmazása, és a szolgáltatás jegyzékfájl deklarálja a HTTP-végpont erőforrást, meg kell adnia egy **SecurityAccessPolicy**.  **SecurityAccessPolicy** biztosítja, hogy ezeket a végpontokat rendelt portok megfelelően korlátozódik, amely a szolgáltatás fut, a felhasználói fiók. Ellenkező esetben **http.sys** nem rendelkezik hozzáféréssel a szolgáltatáshoz, és sikertelen hívások kapott az ügyféltől. A következő példa a Customer1 fiók vonatkozik nevű végpont **EndpointName**, amely azt teszi teljes körű hozzáférési jogosultságokat.
+# <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>A HTTP vagy HTTPS-végpontokat biztonsági hozzáférési szabályzat hozzárendelése
+Ha futtató szabályzat alkalmazásához, és a szolgáltatásjegyzék deklarálja a HTTP-végpont erőforrásokat, meg kell adnia egy **SecurityAccessPolicy**.  **SecurityAccessPolicy** biztosítja, hogy ezeket a végpontokat hozzárendelt portok megfelelően korlátozva vannak, amelyek a szolgáltatás fut, a felhasználói fiókhoz. Ellenkező esetben **http.sys** nem rendelkezik a szolgáltatáshoz való hozzáférést, és sikertelen hívások kap az ügyfélről. Az alábbi példa a Customer1 fiók érvényes nevű végpont **Végpontneve**, amely teljes körű hozzáférési jogosultságokat biztosít azt.
 
 ```xml
 <Policies>
-   <RunAsPolicy CodePackageRef="Code" UserRef="Customer1" />
-   <!--SecurityAccessPolicy is needed if RunAsPolicy is defined and the Endpoint is http -->
-   <SecurityAccessPolicy ResourceRef="EndpointName" PrincipalRef="Customer1" />
+  <RunAsPolicy CodePackageRef="Code" UserRef="Customer1" />
+  <!--SecurityAccessPolicy is needed if RunAsPolicy is defined and the Endpoint is http -->
+  <SecurityAccessPolicy ResourceRef="EndpointName" PrincipalRef="Customer1" />
 </Policies>
 ```
 
-Egy HTTPS-végpont is utalhat vissza az ügyfélnek a tanúsítvány neve. A tanúsítvány használatával hivatkozik **EndpointBindingPolicy**.  A tanúsítvány van definiálva a **tanúsítványok** szakasza az alkalmazás jegyzékében.
+HTTPS-végpont is utalhat térjen vissza az ügyfél a tanúsítvány nevét jelöli. A tanúsítvány használatával hivatkozik **EndpointBindingPolicy**.  A tanúsítvány van definiálva a **tanúsítványok** az alkalmazásjegyzékben szakaszában.
 
 ```xml
 <Policies>
-   <RunAsPolicy CodePackageRef="Code" UserRef="Customer1" />
+  <RunAsPolicy CodePackageRef="Code" UserRef="Customer1" />
   <!--SecurityAccessPolicy is needed if RunAsPolicy is defined and the Endpoint is http -->
-   <SecurityAccessPolicy ResourceRef="EndpointName" PrincipalRef="Customer1" />
+  <SecurityAccessPolicy ResourceRef="EndpointName" PrincipalRef="Customer1" />
   <!--EndpointBindingPolicy is needed if the EndpointName is secured with https -->
   <EndpointBindingPolicy EndpointRef="EndpointName" CertificateRef="Cert1" />
-</Policies
+</Policies>
 ```
 
 > [!WARNING] 
-> HTTPS használata esetén ne használja az azonos port és telepített ugyanahhoz a csomóponthoz tartozó különböző szolgáltatáspéldány (amely független az alkalmazás) tanúsítvány. Két különböző szolgáltatások ugyanazt a portot más alkalmazás példányát használja a frissítés frissítési hibát eredményez. További információkért lásd: [frissítés, a HTTPS-végpontnak több alkalmazások ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints).
+> HTTPS használata esetén ne használjon port és a különböző szolgáltatáspéldányok (amely független az alkalmazás) ugyanazon a csomóponton telepített tanúsítványt. Két különböző szolgáltatások, a különböző alkalmazáspéldányok ugyanazt a portot használja a frissítés frissítési hibát eredményez. További információkért lásd: [frissítése több alkalmazás, a HTTPS-végpontok ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints).
 > 
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-A következő lépésekkel olvassa el a következő cikkeket:
-* [Az alkalmazásmodell ismertetése](service-fabric-application-model.md)
-* [Adja meg a szolgáltatás jegyzék erőforrások](service-fabric-service-manifest-resources.md)
+<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged--> Következő lépések olvassa el a következő cikkeket:
+* [Az alkalmazásmodell megismerése](service-fabric-application-model.md)
+* [Erőforrások meghatározása szolgáltatásjegyzékben](service-fabric-service-manifest-resources.md)
 * [Alkalmazás üzembe helyezése](service-fabric-deploy-remove-applications.md)
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png

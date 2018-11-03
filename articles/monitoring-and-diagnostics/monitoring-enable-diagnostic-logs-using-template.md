@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: e8af84467c008f5c576142fa094b2757cfd30387
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 6e5bbdf0d43b642816a58419c2ce1c186fd44acb
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248078"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960752"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatikusan az diagnosztikai beállítások engedélyezése Resource Manager-sablonnal erőforrás létrehozásakor
 Ebben a cikkben bemutatjuk, hogyan használhatja egy [Azure Resource Manager-sablon](../azure-resource-manager/resource-group-authoring-templates.md) diagnosztikai beállításainak konfigurálása az erőforrás létrehozásakor. Ez lehetővé teszi, hogy automatikusan elindul, a diagnosztikai naplók és mérőszámok az Event Hubs archiválási őket a Storage-fiókban, vagy elküldheti a Log Analytics szolgáltatásba, amikor egy erőforrást hoznak létre streamelési.
@@ -263,9 +263,9 @@ Ahhoz, hogy a diagnosztikát a számítási erőforrás, például egy virtuáli
 > 
 > 
 
-A teljes folyamatot, beleértve a mintákat, leírt [ebben a dokumentumban](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+A teljes folyamatot, beleértve a mintákat, leírt [ebben a dokumentumban](../virtual-machines/extensions/diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="next-steps"></a>További lépések
-* [További információ az Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)
+* [További információk az Azure Diagnostics-naplókról](monitoring-overview-of-diagnostic-logs.md)
 * [Stream és az Event Hubs az Azure diagnosztikai naplók](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 

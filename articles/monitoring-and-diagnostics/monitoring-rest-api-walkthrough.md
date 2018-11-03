@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: mcollier
 ms.component: ''
-ms.openlocfilehash: 59e7ac5e2da733724c047f6842561ce87fb495bb
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 1d04c4335fcb2d7264d91e0b147c43828b3cff2e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955304"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958746"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Az Azure Monitoring REST API-forgatókönyv
 Ez a cikk bemutatja, hogyan végezhet hitelesítést, így a kód használatával is a [a Microsoft Azure Monitor REST API-referencia](https://msdn.microsoft.com/library/azure/dn931943.aspx).         
@@ -54,7 +54,7 @@ New-AzureRmRoleAssignment -RoleDefinitionName Reader `
 
 ```
 
-Az Azure Monitor API lekérdezéséhez, az ügyfélalkalmazás használ a korábban létrehozott szolgáltatásnevet hitelesítéshez. Az alábbi példa PowerShell-példaszkript bemutatja egy megközelítést használ a [Active Directory Authentication Library](../active-directory/active-directory-authentication-libraries.md) (ADAL) a JWT-hitelesítési token beszerzése. A JWT jogkivonat egy engedélyezési HTTP paraméter, a kérelmek részeként az Azure Monitor REST API kerülnek.
+Az Azure Monitor API lekérdezéséhez, az ügyfélalkalmazás használ a korábban létrehozott szolgáltatásnevet hitelesítéshez. Az alábbi példa PowerShell-példaszkript bemutatja egy megközelítést használ a [Active Directory Authentication Library](../active-directory/develop/active-directory-authentication-libraries.md) (ADAL) a JWT-hitelesítési token beszerzése. A JWT jogkivonat egy engedélyezési HTTP paraméter, a kérelmek részeként az Azure Monitor REST API kerülnek.
 
 ```PowerShell
 $azureAdApplication = Get-AzureRmADApplication -IdentifierUri "https://localhost/azure-monitor"
@@ -694,7 +694,7 @@ Invoke-RestMethod -Uri $request `
 ```
 
 ## <a name="next-steps"></a>További lépések
-* Tekintse át a [figyelőeszközök](monitoring-overview.md).
+* Tekintse át a [figyelőeszközök](../azure-monitor/overview.md).
 * Nézet a [az Azure monitorban támogatott mérőszámok](monitoring-supported-metrics.md).
 * Tekintse át a [Microsoft Azure REST API-referencia figyelése](https://msdn.microsoft.com/library/azure/dn931943.aspx).
 * Tekintse át a [Azure Management Library](https://msdn.microsoft.com/library/azure/mt417623.aspx).

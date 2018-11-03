@@ -3,18 +3,18 @@ title: Kimenő adatait az Azure Stream Analytics ismertetése
 description: Ez a cikk ismerteti az adatok kimeneti beállításai az Azure Stream Analytics, mint a Power BI elemzési eredmények érhető el.
 services: stream-analytics
 author: jasonwhowell
-ms.author: jasonh
+ms.author: mamccrea
 manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 396b843ecd17c15e9476bacb5e96545f963f0c4e
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: abf581430f7cf7020145b0217c387b8c2fc4f795
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747847"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979403"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 Ez a cikk bemutatja a kimenetek elérhető az Azure Stream Analytics-feladat különböző típusú. Kimenetek segítségével tárolhatja, és a Stream Analytics-feladat eredményének mentése. A kimeneti adatokat használja, végezhet további üzleti elemzés és az adattárház az adatokat. 
@@ -323,10 +323,11 @@ Az alábbi táblázat ismerteti azokat a kötegelés kimeneti szempontok:
 | Az Azure Service Bus-üzenetsorba   | Egy üzenet 256 KB</br> Lásd még: [korlátozza a Service Bus](../service-bus-messaging/service-bus-quotas.md) | Egy üzenet egyszeri esemény |
 | Az Azure Service Bus-témakörbe | Egy üzenet 256 KB</br> Lásd még: [korlátozza a Service Bus](../service-bus-messaging/service-bus-quotas.md) | Egy üzenet egyszeri esemény |
 | Azure Cosmos DB   | Lásd: [korlátozza az Azure Cosmos DB-hez](../azure-subscription-service-limits.md#azure-cosmos-db-limits) | Köteg mérete és az írási gyakorisága korrigált dinamikusan alapú cosmos DB-válaszok. </br> A Stream Analytics nincs előre meghatározott korlátozás. |
-| Azure Functions   | | Alapértelmezett köteg mérete 246 KB. </br> Alapértelmezett események száma kötegenkénti érték 100. </br> A Köteg mérete nem konfigurálható, és növelhető vagy csökkenthető, a Stream Analytics [kimeneti beállítások](#azure-functions). 
+| Azure Functions   | | Alapértelmezett köteg mérete 256 KB. </br> Alapértelmezett események száma kötegenkénti érték 100. </br> A Köteg mérete nem konfigurálható, és növelhető vagy csökkenthető, a Stream Analytics [kimeneti beállítások](#azure-functions). 
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
+
 > [Gyors útmutató: Stream Analytics-feladat létrehozása az Azure portal használatával](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->

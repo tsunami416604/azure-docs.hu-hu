@@ -4,17 +4,17 @@ description: Ez a cikk ismerteti a problémák elhárítása Azure Stream Analyt
 services: stream-analytics
 author: jasonwhowell
 manager: kfile
-ms.author: jasonh
+ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: d7784792cd7e1475028dc0a5e9664916f1d45a07
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 2fe180873f8f410d80b06d29d16881eb49f7fc2a
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699219"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978439"
 ---
 # <a name="common-issues-in-stream-analytics-and-steps-to-troubleshoot"></a>Gyakori problémák a Stream Analytics és a lépések hibaelhárítása
 

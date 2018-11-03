@@ -2,17 +2,17 @@
 title: Az Azure ExpressRoute közvetlen konfigurálása |} A Microsoft Docs
 description: Ezen a lapon hogyan állíthat be az ExpressRoute közvetlen (előzetes verzió)
 services: expressroute
-author: cherylmc
+author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/21/2018
-ms.author: cherylmc
-ms.openlocfilehash: e0009791263c45e0172abcb4836aaadde26f3ace
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.date: 11/02/2018
+ms.author: jaredro
+ms.openlocfilehash: 857602cf9c3c743e91ea6dace64e71e03cdd879b
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887189"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959668"
 ---
 # <a name="how-to-configure-expressroute-direct-preview"></a>Az ExpressRoute közvetlen (előzetes verzió) konfigurálása
 
@@ -23,7 +23,7 @@ Az ExpressRoute közvetlen lehetőséget nyújt a közvetlenül a Microsoft tár
 >
 > A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="resources"></a>1. Az erőforrás létrehozása
+## <a name="resources"></a>Az erőforrás létrehozása
 
 1. Jelentkezzen be az Azure-ba, és válassza ki az előfizetést. Az ExpressRoute közvetlen erőforrások és az ExpressRoute-Kapcsolatcsoportok ugyanabban az előfizetésben kell lennie.
 
@@ -154,10 +154,9 @@ Az ExpressRoute közvetlen lehetőséget nyújt a közvetlenül a Microsoft tár
   Circuits                   : []
   ```
 
-## <a name="state"></a>2. A hivatkozások felügyeleti állapot módosítása
+## <a name="state"></a>A hivatkozások felügyeleti állapot módosítása
 
-Ez a folyamat egy 1. rétegét tesztet, amely biztosítja, hogy minden egyes közötti kapcsolat megfelelően javított minden útválasztón elsődleges és másodlagos elvégzéséhez használható.
-
+  Ez a folyamat egy 1. rétegét tesztet, amely biztosítja, hogy minden egyes közötti kapcsolat megfelelően javított minden útválasztón elsődleges és másodlagos elvégzéséhez használható.
 1. Az ExpressRoute közvetlen beolvasása – részletek.
 
   ```powershell
@@ -223,9 +222,9 @@ Ez a folyamat egy 1. rétegét tesztet, amely biztosítja, hogy minden egyes kö
   Circuits                   : []
   ```
 
-Ugyanezzel az eljárással lehetséges az `AdminState = “Disabled”` kapcsolja le a portokat.
+  Ugyanezzel az eljárással lehetséges az `AdminState = “Disabled”` kapcsolja le a portokat.
 
-## <a name="circuit"></a>3. Kapcsolatcsoport létrehozása
+## <a name="circuit"></a>Kapcsolatcsoport létrehozása
 
 Alapértelmezés szerint az előfizetés, amelyben az ExpressRoute közvetlen erőforrás van a 10 Kapcsolatcsoportok hozhat létre. Ez a támogatás által növelhető. Ön felelős nyomon követheti kiépített és a felhasznált sávszélesség. Kiosztott sávszélességre sávszélesség az ExpressRoute közvetlen erőforrás minden kapcsolatcsoportra összegét, és a mögöttes fizikai adapterek fizikai használatát a magas kihasználtságú sávszélesség.
 
@@ -235,43 +234,43 @@ Standard vagy prémium szintű kapcsolatok hozhatók létre. Standard Kapcsolatc
 
 Kapcsolatcsoport létrehozása az ExpressRoute közvetlen erőforráson.
 
-```powershell
-New-AzureRmExpressRouteCircuit -Name $Name -ResourceGroupName $ResourceGroupName -ExpressRoutePort $ERDirect -BandwidthinGbps 1.0 | 2.0 | 5.0 | 10.0 | 40.0 | 100.0  -Location $AzureRegion -SkuTier Premium -SkuFamily MeteredData 
-```
+  ```powershell
+  New-AzureRmExpressRouteCircuit -Name $Name -ResourceGroupName $ResourceGroupName -ExpressRoutePort $ERDirect -BandwidthinGbps 100.0  -Location $AzureRegion -SkuTier Premium -SkuFamily MeteredData 
+  ```
 
-Más sávszélességeket tartalmazza: 1.0-s, 2.0-s, 5.0, 10.0 és 40.0
+  Más sávszélességeket tartalmazza: 5.0, 10.0 és 40.0
 
-**Példa a kimenetre:**
+  **Példa a kimenetre:**
 
-```powershell
-Name                             : ExpressRoute-Direct-ckt
-ResourceGroupName                : Contoso-Direct-rg
-Location                         : westcentralus
-Id                               : /subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Netwo
+  ```powershell
+  Name                             : ExpressRoute-Direct-ckt
+  ResourceGroupName                : Contoso-Direct-rg
+  Location                         : westcentralus
+  Id                               : /subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Netwo
                                    rk/expressRouteCircuits/ExpressRoute-Direct-ckt
-Etag                             : W/"<etagnumber>"
-ProvisioningState                : Succeeded
-Sku                              : {
+  Etag                             : W/"<etagnumber>"
+  ProvisioningState                : Succeeded
+  Sku                              : {
                                      "Name": "Premium_MeteredData",
                                      "Tier": "Premium",
                                      "Family": "MeteredData"
                                    }
-CircuitProvisioningState         : Enabled
-ServiceProviderProvisioningState : Provisioned
-ServiceProviderNotes             : 
-ServiceProviderProperties        : null
-ExpressRoutePort                 : {
+  CircuitProvisioningState         : Enabled
+  ServiceProviderProvisioningState : Provisioned
+  ServiceProviderNotes             : 
+    ServiceProviderProperties        : null
+  ExpressRoutePort                 : {
                                      "Id": "/subscriptions/<subscriptionID>n/resourceGroups/Contoso-Direct-rg/providers/Micros
                                    oft.Network/expressRoutePorts/Contoso-Direct"
                                    }
-BandwidthInGbps                  : 10
-Stag                             : 2
-ServiceKey                       : <number>
-Peerings                         : []
-Authorizations                   : []
-AllowClassicOperations           : False
-GatewayManagerEtag     
-```
+  BandwidthInGbps                  : 10
+  Stag                             : 2
+  ServiceKey                       : <number>
+  Peerings                         : []
+  Authorizations                   : []
+  AllowClassicOperations           : False
+  GatewayManagerEtag     
+  ```
 
 ## <a name="next-steps"></a>További lépések
 

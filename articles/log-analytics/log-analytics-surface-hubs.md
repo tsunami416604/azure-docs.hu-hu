@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: f7fe7cee39468558ce503c050d5574e4be15ebf5
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b33cbce582fde24e4cad6f0c208de3796a04f116
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407165"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963336"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>A Log Analyticsben, hogy azok állapotáról, a Surface hubok monitorozása
 
@@ -35,7 +35,7 @@ A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi i
 
 * A [Log Analytics-előfizetést](https://azure.microsoft.com/pricing/details/log-analytics/) szintet, amely támogatja a figyelni kívánt eszközök számát. Log Analytics díjszabása függ attól függően, hogy hány eszköz regisztrált, és mennyi adatot, folyamatokat. Érdemes figyelembe venni ezt, a Surface Hub bevezetésének megtervezésekor.
 
-Ezután fogja hozzáadni egy meglévő Log Analytics-munkaterületet vagy hozzon létre egy újat. Jelenleg mindkét módszer használatával történő szinkronizálásának részletes útmutatásáért [Ismerkedés a Log Analytics](log-analytics-get-started.md). Miután konfigurálta a Log Analytics-munkaterületet, két módja a Surface Hub-eszközök regisztrálásához:
+Ezután fogja hozzáadni egy meglévő Log Analytics-munkaterületet vagy hozzon létre egy újat. Jelenleg mindkét módszer használatával történő szinkronizálásának részletes útmutatásáért [Log Analytics-munkaterület létrehozása az Azure Portalon](log-analytics-quick-create-workspace.md). Miután konfigurálta a Log Analytics-munkaterületet, két módja a Surface Hub-eszközök regisztrálásához:
 
 * Automatikusan Intune-nal
 * Manuálisan keresztül **beállítások** a Surface Hub eszköz.
@@ -84,8 +84,8 @@ A Surface Hubokban figyelés a Log Analytics használata lényegében ugyanúgy 
 
    ![Surface Hub-irányítópulton](./media/log-analytics-surface-hubs/surface-hub-dashboard.png)
 
-Létrehozhat [riasztások](log-analytics-alerts.md) meglévő vagy egyéni naplókeresések alapján. Használja az adatok Log Analytics gyűjti össze a Surface Hubokban, kereshet problémákat és az eszközök meghatározó feltételeket meg a riasztás.
+Létrehozhat [riasztások](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) meglévő vagy egyéni naplókeresések alapján. Használja az adatok Log Analytics gyűjti össze a Surface Hubokban, kereshet problémákat és az eszközök meghatározó feltételeket meg a riasztás.
 
 ## <a name="next-steps"></a>További lépések
-* Használat [Log Analytics naplóbeli kereséseivel](log-analytics-log-searches.md) Surface Hub részletes adatainak megtekintéséhez.
-* Hozzon létre [riasztások](log-analytics-alerts.md) arra az esetre, ha a probléma lép fel a Surface Hubokban.
+* Használat [Log Analytics naplóbeli kereséseivel](log-analytics-log-search.md) Surface Hub részletes adatainak megtekintéséhez.
+* Hozzon létre [riasztások](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) arra az esetre, ha a probléma lép fel a Surface Hubokban.

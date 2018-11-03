@@ -4,19 +4,18 @@ titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
-author: ghogen
-ms.author: ghogen
+author: iainfoulds
+ms.author: iainfou
 ms.date: 09/11/2018
 ms.topic: article
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
-manager: douge
-ms.openlocfilehash: 3f30a62a2f351aecabc37206607c3e28ec5e3ab5
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: bca818cb4e13066f8a631111b75f50384e521ac1
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353358"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978893"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -231,6 +230,16 @@ Ez a hiba akkor fordul elő, ha a Helm-ügyfél már nem képes kommunikálni a 
 
 ### <a name="try"></a>Próbálja ki:
 Az ügynökcsomópontok általában a fürtben lévő újraindítás megszünteti a ezt a problémát.
+
+## <a name="azure-dev-spaces-proxy-can-interfere-with-other-pods-running-in-a-dev-space"></a>Az Azure fejlesztői, szóközök proxy zavaró más fejlesztői szóközzel futtató podok
+
+### <a name="reason"></a>Ok
+Az AKS-fürt az egy névtérhez engedélyezi fejlesztési szóközt, egy kiegészítő tároló hívják _mindaro-proxy_ telepítve van a podok névtéren belül futó minden. Ez a tároló elfogja a pod, amely integrált fejlesztési tárolóhelyek csapat a fejlesztési funkciók szolgáltatásban.
+
+Sajnos rendszertevékenységét bizonyos ezeket a podok futó szolgáltatásokat. Pontosabban hogy zavarja a podok futó Redis cache-re, a csatlakozási hibát okoz az elsődleges és tartalék kiszolgálók közötti kommunikáció.
+
+### <a name="try"></a>Próbálja ki:
+Egy névtér, amely a fürtön belül viheti át az érintett pod(s) _nem_ engedélyezve van, miközben továbbra is futtassa az alkalmazást egy fejlesztési szóközt engedélyezni névtéren belül a rest fejlesztési szóközt. Fejlesztői, szóközök nem telepíti a _mindaro-proxy_ tároló nem fejlesztési tárolóhelyek belül engedélyezett névterek.
 
 ## <a name="azure-dev-spaces-doesnt-seem-to-use-my-existing-dockerfile-to-build-a-container"></a>Az Azure fejlesztési szóközt nem a Microsoft saját meglévő docker-fájl használatával hozhat létre egy tárolót 
 

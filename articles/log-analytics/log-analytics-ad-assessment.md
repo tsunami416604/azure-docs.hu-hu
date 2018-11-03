@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c56a0239209f5c71130c9dd8173eed48f60a3b0a
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 92d456ae4db1b4016c1a3676b5adfd7cbc2e7867
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042070"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962775"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>Optimalizálhatja a Active Directory környezetet az Active Directory állapotának ellenőrzése megoldás a Log Analyticsben
 
@@ -53,7 +53,7 @@ Miután hozzáadta a megoldást, és egy ellenőrzés befejeződött, összefogl
 
 Hajtsa végre az állapot-ellenőrzés a tartományvezérlők, amelyek ki kell értékelni a tartomány tagjai, szükségük van egy ügynök és a következő támogatott módszerek egyikének használatával a Log Analyticshez való kapcsolatot:
 
-1. Telepítse a [a Microsoft Monitoring Agent (MMA)](log-analytics-windows-agent.md) , ha a tartományvezérlő már nem áll a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2.
+1. Telepítse a [a Microsoft Monitoring Agent (MMA)](log-analytics-agent-windows.md) , ha a tartományvezérlő már nem áll a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2.
 2. Ha figyelhető a System Center 2016 – Operations Manager vagy Operations Manager 2012 R2 és a felügyeleti csoport nincs integrálva a Log Analytics szolgáltatással, a tartományvezérlő is lehet, a Log Analytics adatokat gyűjtse és továbbítsa a többhelyű a szolgáltatást, és továbbra is az Operations Manager által figyelendő.  
 3. Ellenkező esetben az Operations Manager felügyeleti csoport integrálva van a szolgáltatást, ha hozzá kell a tartományvezérlők, az adatgyűjtés a szolgáltatás a következő szakasz lépéseit [adja hozzá az ügynök által felügyelt számítógépek](log-analytics-om-agents.md#connecting-operations-manager-to-log-analytics) engedélyezése után a megoldás a munkaterületén.  
 
@@ -186,4 +186,4 @@ A következő ütemezett egészségügyi ellenőrzés futtatásakor a szolgálta
 * Igen, tekintse meg [figyelmen kívül hagyja a javaslatok](#ignore-recommendations) című fenti szakaszban.
 
 ## <a name="next-steps"></a>További lépések
-* Használat [Log Analytics naplóbeli kereséseivel](log-analytics-log-searches.md) megtudhatja, hogyan elemezheti a részletes adatokat AD állapotának ellenőrzése és javaslatok.
+* Használat [Log Analytics naplóbeli kereséseivel](log-analytics-log-search.md) megtudhatja, hogyan elemezheti a részletes adatokat AD állapotának ellenőrzése és javaslatok.

@@ -15,19 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: b8c3a2cc67c47753957963fc04b52f934b10ddfc
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 776033bde46f170295900d154cbbb3c7df73ab11
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041713"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960259"
 ---
 # <a name="data-sources-in-log-analytics"></a>A Log Analytics adatforrások
 Log Analytics gyűjti az adatokat a csatlakoztatott források, és azt a Log Analytics-munkaterületen tárolja.  Az adatok az egyes gyűjtött határozza meg azokat az adatforrásokat, konfigurálhat.  A Log Analytics Data rekordkészletet van tárolva.  Minden adatforrás egy adott típusú rekordot hoz létre a saját tulajdonságkészlettel minden típus.
 
 ![Log Analytics-adatok gyűjtése](./media/log-analytics-data-sources/overview.png)
 
-Adatforrások eltérnek [felügyeleti megoldások](log-analytics-add-solutions.md), amely is csatlakoztatva forrásból gyűjthet adatokat, és a Log Analytics-rekordok létrehozása.  Adatgyűjtés, megoldások általában mellett közé tartozik a naplókereséseken és nézeteken, amelyek segítségével elemezheti az egy adott alkalmazás vagy szolgáltatás a műveletet.
+Adatforrások eltérnek [felügyeleti megoldások](../monitoring/monitoring-solutions.md), amely is csatlakoztatva forrásból gyűjthet adatokat, és a Log Analytics-rekordok létrehozása.  Adatgyűjtés, megoldások általában mellett közé tartozik a naplókereséseken és nézeteken, amelyek segítségével elemezheti az egy adott alkalmazás vagy szolgáltatás a műveletet.
 
 
 ## <a name="summary-of-data-sources"></a>Adatforrások áttekintése
@@ -68,5 +68,5 @@ Rekordokat a munkaterületet a Log Analytics által gyűjtött összes adat van 
 
 ## <a name="next-steps"></a>További lépések
 * Ismerje meg [megoldások](../monitoring/monitoring-solutions.md) , amelyek további funkciókkal bővítik a Log Analytics és a is gyűjthet adatokat a munkaterületre.
-* Ismerje meg [naplókereséseket](log-analytics-log-searches.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
-* Konfigurálása [riasztások](log-analytics-alerts.md) proaktívan értesíti az adatforrások és megoldások kritikus fontosságú adatok.
+* Ismerje meg [naplókereséseket](log-analytics-log-search.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
+* Konfigurálása [riasztások](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) proaktívan értesíti az adatforrások és megoldások kritikus fontosságú adatok.

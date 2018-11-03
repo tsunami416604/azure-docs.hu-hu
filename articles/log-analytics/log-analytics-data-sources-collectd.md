@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a1f28103f8faabae166f09185db3f3e1fee7a5ab
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b7c1a378b2bd653b1a4dae12b4240c41461902cf
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404596"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961011"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Összegyűjtött adatok gyűjtésére a Linux-ügynökök a Log Analyticsben
 [Összegyűjtött](https://collectd.org/) van egy nyílt forráskódú Linux-démon rendszeres időközönként által gyűjtött teljesítmény-mérőszámok az alkalmazások és a rendszer szintű adatait. Példa alkalmazások közé tartozik, a Java virtuális gép (JVM), a MySQL-kiszolgáló és az nginx-et. Ez a cikk teljesítményadatok gyűjtése a Log Analytics az összegyűjtött információkat biztosít.
@@ -124,6 +124,6 @@ Egy jól ismert modell között már a Linuxhoz készült Log Analytics-ügynök
 | értékek] | AVG |
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [naplókereséseket](log-analytics-log-searches.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 
+* Ismerje meg [naplókereséseket](log-analytics-log-search.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 
 * Használat [egyéni mezők](log-analytics-custom-fields.md) syslog-rekord származó adatok elemzése az egyes mezőket.
 

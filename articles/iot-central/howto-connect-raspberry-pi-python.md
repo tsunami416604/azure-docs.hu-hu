@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: b5632db57e902eef76860f85de6e76f85861090a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: c478c2c4af12ecaa02e6700ec7faffc5b9862a00
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45728963"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958185"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz (Python)
 
@@ -23,9 +23,9 @@ Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők a Raspberry Pi csatlakozta
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
+A jelen cikkben ismertetett lépések végrehajtásához szüksége van a következő összetevők:
 
-* A létrehozott Azure IoT Central alkalmazáshoz a **minta Devkits** alkalmazássablon. További információkért lásd: [az Azure IoT központi alkalmazás létrehozása](howto-create-application.md).
+* A létrehozott Azure IoT Central alkalmazáshoz a **minta Devkits** alkalmazássablon. További információkért lásd: a [hozzon létre egy alkalmazás rövid](quick-deploy-iot-central.md).
 * Raspberry Pi eszköz a Raspbian operációs rendszert. Egy figyelő, billentyűzetből és egérből a Raspberry Pi csatlakozik a grafikus felhasználói környezet elérésére van szüksége. A Raspberry Pi képesnek kell lennie [csatlakozni az internethez](https://www.raspberrypi.org/learning/software-guide/wifi/).
 * Szükség esetén egy [értelemben Hat](https://www.raspberrypi.org/products/sense-hat/) a Raspberry pi bővítmény tábla. Ez a tábla gyűjt telemetrikus adatokat küldeni az Azure IoT Central alkalmazáshoz különböző érzékelők. Ha nem rendelkezik egy **értelemben Hat** táblához, használhatja helyette az emulátor (elérhető Raspberry Pi-kép részeként).
 
@@ -33,17 +33,28 @@ A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
 A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz egy **Raspberry Pi** eszköz sablon a következő jellemzőkkel: 
 
-- Telemetriai adatokat, amely tartalmazza az eszköz a mérések **páratartalom**, **hőmérséklet**, **nyomás**, **Magnometer** (mért mentén X Y, tengely Z), **Accelorometer** (X, Y, mentén mért Z tengely), és **Giroszkóp** (X, Y, mentén mért Z tengely).
-- Beállítások megjelenítése **feszültség**, **aktuális**,**ventilátor sebesség** és a egy **integrációs modul** be-vagy kikapcsolása.
-- Eszköztulajdonság tartalmazó tulajdonságainak **die szám** és **hely** felhőbeli tulajdonság.
+- Telemetriai adatokat, amely tartalmazza az eszköz összegyűjti a következő mérési:
+    - Páratartalom
+    - Hőmérséklet
+    - Pressure
+    - Magnetométer (X, Y, a – Z)
+    - Érzékelőből (X, Y, a – Z)
+    - Giroszkóp (X, Y, a – Z)
+- Beállítások
+    - Feszültségérzékelő
+    - Aktuális
+    - Sebesség ventilátor
+    - Integrációs modul váltógombot.
+- Tulajdonságok
+    - Eszköz-tulajdonságot die
+    - Hely felhőalapú tulajdonság
 
-
-Tekintse meg a konfigurációs eszköz sablon kapcsolatos részletes [Raspberry PI eszköz sablon részletei](howto-connect-raspberry-pi-python.md#raspberry-pi-device-template-details)
+A konfigurációs eszköz-sablon teljes részletekért tekintse meg a [Raspberry PI eszköz sablon részletei](howto-connect-raspberry-pi-python.md#raspberry-pi-device-template-details)
     
 
 ## <a name="add-a-real-device"></a>Valós eszköz hozzáadása
 
-Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **Raspberry Pi** eszköz sablont, és jegyezze fel az eszköz kapcsolat részleteinek (**hatókör azonosítója, az eszköz azonosítója, az elsődleges kulcs**). További információkért lásd: [valós eszköz hozzáadása az Azure IoT Central alkalmazásnak](tutorial-add-device.md).
+Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **Raspberry Pi** eszköz sablont és nyomon az eszköz kapcsolat részleteinek (**hatókör azonosítója, az eszköz azonosítója, az elsődleges kulcs**). További információkért lásd: [valós eszköz hozzáadása az Azure IoT Central alkalmazásnak](tutorial-add-device.md).
 
 
 ### <a name="configure-the-raspberry-pi"></a>A Raspberry Pi konfigurálása
@@ -103,7 +114,7 @@ A beállítások ki-/ bekapcsolása
 
 | Megjelenített név | Mező neve | A szöveg | Ki a szöveg | Kezdeti |
 | ------------ | ---------- | ------- | -------- | ------- |
-| INTEGRÁCIÓS MODUL           | activateIR | ON      | KI      | Ki     |
+| IR           | activateIR | ON      | KI      | Ki     |
 
 ### <a name="properties"></a>Tulajdonságok
 

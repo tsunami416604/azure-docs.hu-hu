@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3b06ec3b10edc39d770e5a724125e70afd5e5477
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 46c05c7c6568a967aae8e50a5da9ae70779a6060
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783579"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959018"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights az Azure Cloud Servicesben
 Az [Application Insightsszal][start] az Application Insights SDK-iból származó adatok és a felhőszolgáltatások [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)-adatainak ötvözésével monitorozható a [Microsoft Azure felhőszolgáltatásbeli alkalmazások](https://azure.microsoft.com/services/cloud-services/) rendelkezésre állása, teljesítménye, hibái és használata. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
@@ -96,7 +96,7 @@ Ha úgy döntött, hogy külön Application Insights-erőforrást használ minde
 
 Ennek eredményeképp az Application Insights kialakítási kulcsai be lesznek szúrva a(z) `ServiceConfiguration.*.cscfg` nevű fájlokba. ([Mintakód](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg)).
 
-Ha meg szeretné változtatni az Application Insightsba küldött diagnosztikai információk szintjét, ezt [a `.cscfg` fájlok közvetlen szerkesztésével](app-insights-azure-diagnostics.md) teheti meg.
+Ha meg szeretné változtatni az Application Insightsba küldött diagnosztikai információk szintjét, ezt [a `.cscfg` fájlok közvetlen szerkesztésével](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md) teheti meg.
 
 ## <a name="sdk"></a>Az SDK telepítése az egyes projektekben
 Ezzel a beállítással megnyílik a lehetőség, hogy egyéni üzleti telemetriát vegyen fel bármely szerepkörbe az alkalmazás használatának és teljesítményének szorosabb elemzése céljából.
@@ -151,7 +151,7 @@ A teljesítményszámlálók és az eseményszámok megtekintéséhez nyissa meg
 
 ![Az Azure diagnosztikai adatai](./media/app-insights-cloudservices/23-wad.png)
 
-A [Keresés](app-insights-diagnostic-search.md) vagy egy [Analytics-lekérdezés](app-insights-analytics-tour.md) használatával kereshet az Azure Diagnostics által küldött különféle nyomkövetési naplókban. Például tételezzük fel, hogy egy nem kezelt kivétellel rendelkezik, amely egy szerepkör összeomlását és újrahasznosítását okozta. Ezek az információk a Windows eseménynaplójában, az Alkalmazás csatornában jelennek meg. A Keresés használatával megtekintheti a megfelelő hibabejegyzést a Windows eseménynaplójában, és lekérheti a kivétel teljes hívásláncát. Ez segít a probléma okának találja.
+A [Keresés](app-insights-diagnostic-search.md) vagy egy [Analytics-lekérdezés](../log-analytics/query-language/get-started-analytics-portal.md) használatával kereshet az Azure Diagnostics által küldött különféle nyomkövetési naplókban. Például tételezzük fel, hogy egy nem kezelt kivétellel rendelkezik, amely egy szerepkör összeomlását és újrahasznosítását okozta. Ezek az információk a Windows eseménynaplójában, az Alkalmazás csatornában jelennek meg. A Keresés használatával megtekintheti a megfelelő hibabejegyzést a Windows eseménynaplójában, és lekérheti a kivétel teljes hívásláncát. Ez segít a probléma okának találja.
 
 ![Azure Diagnostics-keresés](./media/app-insights-cloudservices/25-wad.png)
 
@@ -231,7 +231,7 @@ A .NET 4.6-os verziójára készítette el az alkalmazást? Az Azure Cloud Servi
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>További lépések
-* [Azure Diagnostics-diagnosztikák Application Insightsba való küldésének konfigurálása](app-insights-azure-diagnostics.md)
+* [Azure Diagnostics-diagnosztikák Application Insightsba való küldésének konfigurálása](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
 * [Application Insights-erőforrások létrehozásának automatizálása](app-insights-powershell.md)
 * [Az Azure Diagnostics-diagnosztikák automatizálása](app-insights-powershell-azure-diagnostics.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)

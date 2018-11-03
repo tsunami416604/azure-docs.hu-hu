@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 2c52baf47e0b1495a5abfa727ab8bc8d997a4283
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 8343c27693538480757a879e477ec77fba08de3d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418891"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958338"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>A Log Analytics és az adatmennyiség szabályozásával költségek kezelése
 
@@ -78,7 +78,7 @@ A következő lépések bemutatják, hogyan konfigurálása a Log Analytics lesz
 5. Napi korlát a következő **OFF** – alapértelmezés szerint kattintson **ON** az engedélyezéshez, és állítsa az mennyiségi korlát a GB/nap.<br><br> ![A log Analytics konfigurálása adatkorlát](media/log-analytics-manage-cost-storage/set-daily-volume-cap-01.png)
 
 ### <a name="alert-when-limit-reached"></a>Riasztás, ha elérte a korlátot
-Hogy jelen visual köteg az Azure Portalon, ha az adatok korlát küszöbértéket, amíg ez a viselkedés nem feltétlenül igazítás azonnali figyelmet igénylő működési problémák kezelése.  Az Azure Monitor riasztási értesítés fogadására, létrehozhat egy új riasztási szabály.  További tudnivalókért lásd: [létrehozása, megtekintése és kezelése a riasztások](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).      
+Hogy jelen visual köteg az Azure Portalon, ha az adatok korlát küszöbértéket, amíg ez a viselkedés nem feltétlenül igazítás azonnali figyelmet igénylő működési problémák kezelése.  Az Azure Monitor riasztási értesítés fogadására, létrehozhat egy új riasztási szabály.  További tudnivalókért lásd: [létrehozása, megtekintése és kezelése a riasztások](../monitoring-and-diagnostics/alert-metric.md).      
 
 Az első lépésekhez, az alábbiakban a riasztás az ajánlott beállításokat:
 

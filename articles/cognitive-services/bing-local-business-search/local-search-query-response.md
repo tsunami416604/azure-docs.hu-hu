@@ -10,12 +10,12 @@ ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh; v-gedod
-ms.openlocfilehash: ed671b135a9f2f26d459e327eac9b5041d2d213b
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: a86db516e76a91d6e4bec378c47baf6eec13d032
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748666"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959052"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Küldés és helyi üzleti keresési Bing-API-kérések és válaszok használatával
 
@@ -32,7 +32,7 @@ A kérelem teljes URL-cím szintaxisa alább látható. Tekintse meg a helyi vá
 A helyi keresési kategóriák információkért lásd: [kategóriákban keresse meg a helyi vállalati keresési Bing-API](local-categories.md).
 
 ```
-https://api.cognitive.microsoft.com/bing/localbusinesses/v7.0/search[?q][&localCategories][&cc][&mkt][&safesearch][&setlang][&count][&first][&localCircularView][&localMapView]
+https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search[?q][&localCategories][&cc][&mkt][&safesearch][&setlang][&count][&first][&localCircularView][&localMapView]
 ```
 
 ## <a name="using-responses"></a>Válaszok használatával

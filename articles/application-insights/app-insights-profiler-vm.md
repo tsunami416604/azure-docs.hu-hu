@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 10cd05bd40262815e3b27c861982debc18e5b4f3
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 152632c55fc21d2b49f6dfd8ae734833ea870898
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142424"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978366"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-virtual-machine-scale-set-with-application-insights-profiler"></a>Egy Azure virtuális gép vagy virtuálisgép-méretezési csoportot az Application Insights Profiler futó webalkalmazások profil
 Ezek a szolgáltatások az Application Insights profiler is telepítheti:
@@ -63,11 +63,8 @@ Ezen a lapon végigvezeti Önt a lépéseket szükség az Application Insights p
 
 1. Az alkalmazás üzembe helyezéséhez.
 
-## <a name="enable-profiler-on-on-premises-servers"></a>Profiler engedélyezése a helyszíni kiszolgálók
-
-Profiler engedélyezése egy helyszíni kiszolgálón is nevezik önálló módban futó Application Insights Profiler. Azure Diagnostics bővítmény módosításai nem kötődik.
-
-Profiler támogatást nyújthasson a helyszíni kiszolgálók terv van. Ha az Önt érdeklő kísérleteztek az ebben a forgatókönyvben, [támogatási kód letöltése](https://github.com/ramach-msft/AIProfiler-Standalone). Tudjuk *nem* fenntartása a kódot, vagy a problémákra és a funkciókérések a kód kapcsolódó válaszol felelős.
+## <a name="can-profiler-run-on-on-premises-servers"></a>A profiler futhatnak a helyszíni kiszolgálók?
+Nem tervezzük a helyszíni kiszolgálók általi támogatása hatóságuknál Insights Profiler van. 
 
 ## <a name="next-steps"></a>További lépések
 

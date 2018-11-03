@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 10/03/2018
-ms.openlocfilehash: c2248f185c5c1c5dd8c4e1d4a24e6145a82ec5cb
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.date: 11/01/2018
+ms.openlocfilehash: 0796ab0a0923d9a04e07542c576883c004c63263
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091555"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957731"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Figyelés az Azure Database for MySQL-hez
 A kiszolgálók adatainak segítségével hibaelhárítása és optimalizálhatja a számítási feladatok számára. Azure Database for MySQL-hez különböző mérőszámokat, amelyek a kiszolgáló viselkedését betekintést biztosít.
@@ -41,9 +41,10 @@ Ezek a metrikák érhetők el az Azure Database for MySQL-hez:
 |seconds_behind_master|Replikációs késés másodpercben|Darabszám|Az adatbázisreplika-kiszolgálót a fő kiszolgálón van elmaradt másodpercek számát.|
 |network_bytes_egress|Hálózat kimenő adatforgalma|Bájt|Kimenő hálózati forgalom az aktív kapcsolatok között.|
 |network_bytes_ingress|Hálózat bejövő adatforgalma|Bájt|Hálózati az aktív kapcsolatok között.|
+|backup_storage_used|Felhasznált biztonsági mentési tár|Bájt|A felhasznált biztonsági mentési tárterület mennyisége.|
 
 ## <a name="server-logs"></a>Kiszolgálói naplók
-Engedélyezheti a naplózást a kiszolgáló a lassú lekérdezések. Ezek a naplók is az Azure diagnosztikai naplók az OMS Log Analytics, az Event Hubs és a Storage-fiók keresztül érhetők el. Naplózásával kapcsolatos további tudnivalókért látogasson el a [kiszolgálónaplók](concepts-server-logs.md) lapot.
+Engedélyezheti a naplózást a kiszolgáló a lassú lekérdezések. Ezek a naplók is az Azure diagnosztikai naplók az OMS Log Analytics, az Event Hubs és a Storage-fiók keresztül érhetők el. Naplózásával kapcsolatos további tudnivalókért látogasson el a [kiszolgálónaplók](concepts-server-logs.md) lapot.
 
 ## <a name="next-steps"></a>További lépések
 - Lásd: [riasztások beállítása](howto-alert-on-metric.md) riasztás létrehozása a metrika az útmutatást.

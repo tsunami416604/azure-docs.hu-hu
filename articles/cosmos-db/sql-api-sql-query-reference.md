@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/19/2018
 ms.author: laviswa
-ms.openlocfilehash: 33614628926e53354db14886530d7ca44da61f0a
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 762997492d18e9b14525dc6a196f98815f27fbbb
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056393"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979505"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Az Azure Cosmos DB SQL-szintaxis referenciája
 
@@ -2656,20 +2656,30 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
   
 -   `num_expr`  
   
-     Ez bármilyen érvényes numerikus kifejezés.  
-  
+     A tömb kezdőpontját nulláról induló numerikus indexszel. Adjon meg a kezdő indexet az utolsó elem a tömbben – azaz a 1 hivatkozások viszonyítva az utolsó elem a tömbben negatív értékeket is használható.  
+
+-   `num_expr`  
+
+     Az eredményül kapott tömbben található elemek maximális számát.    
+
  **Návratové Typy**  
   
- Egy logikai értéket ad vissza.  
+ Egy tömböt megadó kifejezést ad vissza.  
   
  **Példák**  
   
- Az alábbi példa egy része egy tömb ARRAY_SLICE használatával beszerzése.  
+ Az alábbi példa bemutatja, hogyan ARRAY_SLICE használatával tömbje különböző szeletet.  
   
 ```  
 SELECT   
            ARRAY_SLICE(["apples", "strawberries", "bananas"], 1),  
-           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 1)  
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 1),
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], -2, 1),
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], -2, 2),
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 0),
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, 1000),
+           ARRAY_SLICE(["apples", "strawberries", "bananas"], 1, -100)      
+  
 ```  
   
  Íme az eredményhalmaz.  
@@ -2677,10 +2687,15 @@ SELECT
 ```  
 [{  
            "$1": ["strawberries", "bananas"],   
-           "$2": ["strawberries"]  
-       }]  
+           "$2": ["strawberries"],
+           "$3": ["strawberries"],  
+           "$4": ["strawberries", "bananas"], 
+           "$5": [],
+           "$6": ["strawberries", "bananas"],
+           "$7": [] 
+}]  
 ```  
-  
+ 
 ###  <a name="bk_spatial_functions"></a> Térbeli funkciók  
  A következő skaláris függvények végrehajtania egy műveletet a egy térbeli objektum bemeneti érték, és a egy numerikus vagy logikai értéket adja vissza.  
   

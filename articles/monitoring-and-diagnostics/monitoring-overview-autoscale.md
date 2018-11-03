@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: autoscale
-ms.openlocfilehash: fe63ce931da9fbe94b47d00805820affddfb1bc1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7a3083bd757a7aa5625799724d601f99fd7e2b14
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946986"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961296"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Az automatikus méretezés a Microsoft Azure Virtual Machines, Cloud Services és a Web Apps áttekintése
 Ez a cikk azt ismerteti, milyen a Microsoft Azure automatikus méretezési funkciójával, annak előnyeit, és hogyan kezdheti el használni.  
@@ -96,7 +96,7 @@ További információkért lásd: [vertikális skálázása az Azure virtuális 
 ## <a name="methods-of-access"></a>Hozzáférési módok
 Beállíthat automatikus skálázási keresztül
 
-* [Azure Portal](insights-how-to-scale.md)
+* [Azure Portal](monitoring-autoscale-get-started.md)
 * [PowerShell](insights-powershell-samples.md#create-and-manage-autoscale-settings)
 * [Platformfüggetlen parancssori felület (CLI)](insights-cli-samples.md#autoscale)
 * [Az Azure Monitor REST API-val](https://msdn.microsoft.com/library/azure/dn931953.aspx)
@@ -104,11 +104,11 @@ Beállíthat automatikus skálázási keresztül
 ## <a name="supported-services-for-autoscale"></a>Támogatott szolgáltatások, az automatikus méretezéshez
 | Szolgáltatás | Séma és a dokumentumok |
 | --- | --- |
-| Web Apps |[Webes alkalmazások skálázása](insights-how-to-scale.md) |
+| Web Apps |[Webes alkalmazások skálázása](monitoring-autoscale-get-started.md) |
 | Cloud Services |[Automatikus skálázási Felhőszolgáltatás](../cloud-services/cloud-services-how-to-scale-portal.md) |
 | Virtuális gépek: klasszikus |[Klasszikus virtuális gép rendelkezésre állási csoportok méretezése](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
-| Virtual Machines: Windows méretezési csoportok |[A Windows virtuálisgép-méretezési csoport skálázási beállítása](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) |
-| Virtuális gépek: Linux rendszerű méretezési csoportok |[A Linux virtuálisgép-méretezési csoport skálázási beállítása](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) |
+| Virtual Machines: Windows méretezési csoportok |[A Windows virtuálisgép-méretezési csoport skálázási beállítása](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-powershell.md) |
+| Virtuális gépek: Linux rendszerű méretezési csoportok |[A Linux virtuálisgép-méretezési csoport skálázási beállítása](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-cli.md) |
 | Virtual Machines: Windows-példa |[Resource Manager-sablonok használata Virtuálisgép-méretezési csoportok speciális automatikus skálázási konfiguráció](insights-advanced-autoscale-virtual-machine-scale-sets.md) |
 | API Management-szolgáltatás|[Automatikus skálázása az Azure API Management-példány](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9ac8d876e9c79e5aadfcf834e18e94f6ac8b3a30
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: a621cba2eda0156cbe191f330c805d2cca64b3ba
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408472"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960888"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Gyűjtsön információt a DNS-infrastruktúra, a DNS Analytics előzetes verziójának megoldással kapcsolatos
 
@@ -44,8 +44,8 @@ A következő táblázat ismerteti a megoldás által támogatott csatlakoztatot
 
 | **Csatlakoztatott forrás** | **Támogatás** | **Leírás** |
 | --- | --- | --- |
-| [Windows-ügynökök](log-analytics-windows-agent.md) | Igen | A megoldás a DNS-adatok Windows-ügynököktől gyűjti. |
-| [Linux-ügynökök](log-analytics-linux-agents.md) | Nem | A megoldás nem DNS-információkat gyűjtsön a közvetlen Linux-ügynökök. |
+| [Windows-ügynökök](log-analytics-agent-windows.md) | Igen | A megoldás a DNS-adatok Windows-ügynököktől gyűjti. |
+| [Linux-ügynökök](log-analytics-quick-collect-linux-computer.md) | Nem | A megoldás nem DNS-információkat gyűjtsön a közvetlen Linux-ügynökök. |
 | [System Center Operations Manager felügyeleti csoport](log-analytics-om-agents.md) | Igen | A megoldás a DNS-adatok egy csatlakoztatott az Operations Manager felügyeleti csoportban lévő ügynököktől gyűjti. Ehhez nem szükséges, hogy közvetlen kapcsolat legyen az Operations Manager-ügynök és a Log Analytics között. Adatok lesznek továbbítva a felügyeleti csoportból a Log Analytics-munkaterületet. |
 | [Azure Storage-fiók](log-analytics-azure-storage.md) | Nem | A megoldás az Azure storage nem használja. |
 
@@ -57,8 +57,8 @@ A megoldás gyűjti DNS-leltár- és DNS-esemény kapcsolatos adatokat a DNS-kis
 
 A megoldás konfigurálásához kövesse az alábbi adatokat:
 
-- Rendelkeznie kell egy [Windows](log-analytics-windows-agent.md) vagy [az Operations Manager](log-analytics-om-agents.md) ügynököt mindegyik figyelni kívánt DNS-kiszolgálón.
-- A DNS Analytics megoldás a Log Analytics-munkaterületet is hozzáadhat a [Azure Marketplace-en](https://aka.ms/dnsanalyticsazuremarketplace). Is használhatja a leírt folyamatot [adja hozzá a Log Analytics solutions kövesse a megoldástárban](log-analytics-add-solutions.md).
+- Rendelkeznie kell egy [Windows](log-analytics-agent-windows.md) vagy [az Operations Manager](log-analytics-om-agents.md) ügynököt mindegyik figyelni kívánt DNS-kiszolgálón.
+- A DNS Analytics megoldás a Log Analytics-munkaterületet is hozzáadhat a [Azure Marketplace-en](https://aka.ms/dnsanalyticsazuremarketplace). Is használhatja a leírt folyamatot [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../monitoring/monitoring-solutions.md).
 
 A megoldás elindult, nincs szükség további konfigurációs adatok gyűjtése. A következő konfiguráció használatával azonban adatgyűjtés testreszabása.
 
@@ -190,4 +190,4 @@ Kétféleképpen visszajelzést is:
 
 ## <a name="next-steps"></a>További lépések
 
-[Naplók keresése](log-analytics-log-searches.md) részletes DNS-rekordok naplózása megtekintéséhez.
+[Naplók keresése](log-analytics-log-search.md) részletes DNS-rekordok naplózása megtekintéséhez.

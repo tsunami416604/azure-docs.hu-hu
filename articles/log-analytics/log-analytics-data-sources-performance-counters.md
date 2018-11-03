@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5822d32906419e8b0615dd8686ec47de28deb38f
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: d03af1398f8fd714246c88308ba615ae17010b39
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182216"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962027"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>A Log Analytics Windows és Linux rendszerű teljesítmény adatforrások
 Teljesítményszámlálók a Windows és Linux cybercrime hardverösszetevők, operációs rendszerek és alkalmazások teljesítményét.  A log Analytics képes teljesítményszámlálók gyűjtése gyakori időközönként teljesítményadatoknak a hosszabb távú elemzésekhez és jelentéskészítési mellett közel valós idejű azokat elemzés céljából.
@@ -128,10 +128,10 @@ A következő táblázat felsorolja azokat az objektumokat és a számlálókat 
 | Fizikai lemez | Átl. Lemez mp/átvitel |
 | Fizikai lemez | Átl. Lemez mp/írás |
 | Fizikai lemez | Fizikai lemez bájt/mp |
-| Folyamat | A PCT kiemelt idő |
-| Folyamat | A PCT felhasználói idő |
-| Folyamat | Használt memória mérete kilobájtban |
-| Folyamat | A megosztott virtuális memória |
+| Feldolgozás | A PCT kiemelt idő |
+| Feldolgozás | A PCT felhasználói idő |
+| Feldolgozás | Használt memória mérete kilobájtban |
+| Feldolgozás | A megosztott virtuális memória |
 | Processzor | DPC idő % |
 | Processzor | Inaktivitási idő % |
 | Processzor | Megszakítási idő % |
@@ -227,5 +227,5 @@ Az alábbi táblázat példákat különböző naplókeresések teljesítményre
 
 ## <a name="next-steps"></a>További lépések
 * [Teljesítményszámlálók gyűjtése Linuxos alkalmazások](log-analytics-data-sources-linux-applications.md) többek között a MySQL és az Apache HTTP Server.
-* Ismerje meg [naplókereséseket](log-analytics-log-searches.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
+* Ismerje meg [naplókereséseket](log-analytics-log-search.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
 * Az összegyűjtött adatok exportálása [Power BI](log-analytics-powerbi.md) további Vizualizációk és elemző.

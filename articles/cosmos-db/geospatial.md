@@ -1,5 +1,5 @@
 ---
-title: Térinformatikai adatok az Azure Cosmos DB |} A Microsoft Docs
+title: Térinformatikai adatok az Azure Cosmos DB SQL API-fiók |} A Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre, index és az Azure Cosmos DB és az SQL API térbeli objektum lekérdezése.
 services: cosmos-db
 author: SnehaGunda
@@ -7,18 +7,18 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/20/2017
+ms.date: 11/01/2017
 ms.author: sngun
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b1dcd9ba428618e1b234d76d5ad459eab0662aa
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 6ad59f14a0ade305bc9b1f9f125c21e9bdc39c0d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417558"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961908"
 ---
-# <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Térinformatikai és GeoJSON helyre adatokat az Azure Cosmos DB-ben
-Ez a cikk a térinformatikai funkciókat bemutató [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Ez elolvasásával lesz a következő kérdések megválaszolásához:
+# <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Térinformatikai és GeoJSON helyadatok használata az Azure Cosmos DB SQL API-fiók
+
+Ez a cikk az Azure Cosmos DB a térinformatikai funkciókat bemutató. Csak a Cosmos DB SQL API-fiókok jelenleg tárolásához, és a földrajzi adatok eléréséhez támogatja. Ez a cikk elolvasása után fogja tudni a következő kérdések megválaszolásával:
 
 * Hogyan térbeli adatok tárolása az Azure Cosmos DB?
 * Hogyan lekérdezheti az Azure Cosmos DB az SQL és a LINQ térinformatikai adatok?
@@ -133,9 +133,6 @@ public class UserProfile
     [JsonProperty("location")]
     public Point Location { get; set; }
 
-    [JsonProperty("profiletype")]
-    public string ProfileType { get; set; }
-
     // More properties
 }
 
@@ -154,7 +151,7 @@ Ha nem rendelkezik a szélességi és hosszúsági adatokat, de a fizikai címek
 Most, hogy készített egy pillantást a földrajzi adatok beszúrása, vessünk egy pillantást az Azure Cosmos DB SQL és a LINQ használatával az adatok lekérdezésére.
 
 ### <a name="spatial-sql-built-in-functions"></a>Térbeli SQL beépített függvények
-Az Azure Cosmos DB a következő nyissa meg a földrajzi Consortium (OGC) beépített függvények támogatja a térinformatikai lekérdezéséhez. Az SQL-nyelv a beépített funkciók teljes körét a további részletekért lásd: [Azure Cosmos DB lekérdezése](sql-api-sql-query.md).
+Az Azure Cosmos DB a következő nyissa meg a földrajzi Consortium (OGC) beépített függvények támogatja a térinformatikai lekérdezéséhez. A beépített függvény az SQL-nyelv, minden további információkért lásd: [Azure Cosmos DB lekérdezése](sql-api-sql-query.md).
 
 <table>
 <tr>
@@ -197,7 +194,7 @@ Térbeli funkciók térbeli adatokon közelségi lekérdezések végrehajtásáh
       "id": "WakefieldFamily"
     }]
 
-Ha is kifejezéséhez az indexelési házirendet, majd "distance lekérdezések" fog hatékonyan kiszolgálható keresztül az index. Kifejezéséhez a további részletekért tekintse meg az alábbi szakaszt. Ha nem rendelkezik a megadott elérési utak a egy térbeli index, is továbbra is végezhet térinformatikai lekérdezéseket megadásával `x-ms-documentdb-query-enable-scan` kérelemfejlécet a beállított érték "true". A .NET-ben, ezt megteheti a választható átadásával **FeedOptions** lekérdezések argumentumának [EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) igaz értékre kell állítani. 
+Ha is kifejezéséhez az indexelési házirendet, majd "distance lekérdezések" fog hatékonyan kiszolgálható keresztül az index. Kifejezéséhez szóló további információkért lásd a lenti. Ha nem rendelkezik a megadott elérési utak a egy térbeli index, is továbbra is végezhet térinformatikai lekérdezéseket megadásával `x-ms-documentdb-query-enable-scan` kérelemfejlécet a beállított érték "true". A .NET-ben, ezt megteheti a választható átadásával **FeedOptions** lekérdezések argumentumának [EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) igaz értékre kell állítani. 
 
 Ellenőrizze, hogy ha egy pont esik-e a sokszög ST_WITHIN használható. Sokszög gyakran határokat, például az irányítószámok, állam határok vagy természetes kialakításokat képviselő szolgálnak. Újra Ha is kifejezéséhez az indexelési házirendet, majd "belül" lekérdezések fog hatékonyan kiszolgálható keresztül az index. 
 
@@ -279,7 +276,7 @@ Az SQL .NET SDK-t is a szolgáltatók helyettes módszerek `Distance()` és `Wit
 **Távolság a LINQ-lekérdezésekre**
 
     foreach (UserProfile user in client.CreateDocumentQuery<UserProfile>(UriFactory.CreateDocumentCollectionUri("db", "profiles"))
-        .Where(u => u.ProfileType == "Public" && u.Location.Distance(new Point(32.33, -4.66)) < 30000))
+        .Where(u => u.ProfileType == "Public" && a.Location.Distance(new Point(32.33, -4.66)) < 30000))
     {
         Console.WriteLine("\t" + user);
     }

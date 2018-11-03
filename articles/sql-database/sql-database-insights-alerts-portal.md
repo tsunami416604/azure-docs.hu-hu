@@ -11,13 +11,13 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 27f807c8f2f6b6a65ef95136047f5eed1b3aab02
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 11/02/2018
+ms.openlocfilehash: 11777013eca0ba3a759635ef99c2cfa04104e24b
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159312"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978995"
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Riasztások létrehozása az Azure SQL Database és a Data warehouse-bA az Azure portal használatával
 
@@ -44,19 +44,15 @@ Konfigurálhatja és riasztási szabályok használatával kapcsolatos informác
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Hozzon létre egy riasztási szabályt a metrika az Azure portal használatával
 1. Az a [portál](https://portal.azure.com/), keresse meg az erőforrást, amelyek figyelése érdekli, és válassza ki azt.
-2. Ez a lépés nem egyezik az SQL DB és a rugalmas készletek és az SQL DW: 
-
-   - **SQL-adatbázis és rugalmas készletek csak**: válasszon **riasztások** vagy **riasztási szabályok** a figyelés szakaszban. A szöveg és ikon kissé eltérhet a különböző erőforrásokat.  
+2. Válassza ki **riasztások (klasszikus)** a figyelés szakaszban. A szöveg és ikon kissé eltérhet a különböző erőforrásokat.  
    
-     ![Figyelés](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertRulesButton.png)
+     ![Figyelés](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertsClassicButton.JPG)
   
-   - **CSAK az SQL DW**: válasszon **figyelés** a GYAKORI feladatokat ismertető szakaszában. Kattintson a **DWU-felhasználás** grafikon.
+   - **CSAK az SQL DW**: kattintson a **DWU-felhasználás** grafikon. Válassza ki **klasszikus riasztások megtekintése**
 
-     ![GYAKORI FELADATOK](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertRulesButtonDW.png)
-
-3. Válassza ki a **riasztás hozzáadása** parancsot, majd töltse ki a mezőket.
+3. Válassza ki a **metrikariasztás hozzáadása (klasszikus)** gombra, és töltse ki a mezőket.
    
-    ![Riasztás beállítása](../monitoring-and-diagnostics/media/insights-alerts-portal/AddDBAlertPage.png)
+    ![Riasztás beállítása](../monitoring-and-diagnostics/media/insights-alerts-portal/AddDBAlertPageClassic.JPG)
 4. **Név** a riasztás szabályt, majd válassza ki a **leírása**, amely értesítő e-mailek is megjeleníti.
 5. Válassza ki a **metrika** figyelheti, majd kattintson a kívánt egy **feltétel** és **küszöbérték** a mérőszám értéke. Is kiválaszthatják a **időszak** , ameddig a metrikaszabály riasztási triggerek előtt teljesülniük kell. Így például, ha az időszak "PT5M" használja, és a riasztás 80 % fölötti keres CPU, a riasztás aktiválásakor mikor a **átlagos** CPU 80 % fölötti 5 perc volt. Akkor fordul elő, az első eseményindító, ha azt újra aktivál, ha az átlagos Processzorhasználat nem éri a 80 %-kal több mint 5 perc. A CPU-mérték 1 percenként történik. Tekintse át az alábbi táblázat a támogatott idő windows és az összesítés írja be, hogy minden egyes riasztás használ – nem minden riasztás átlagos értéket használja.   
 6. Ellenőrizze **E-mail-tulajdonosok...**  Ha azt szeretné, hogy elküldhetők e-mailben a riasztás akkor aktiválódik, amikor a rendszergazdák és a társadminisztrátorok.

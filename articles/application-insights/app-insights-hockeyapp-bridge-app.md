@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: ce8946e5a022eea9281898d1518cc3e8bfb50ee5
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 1951f001de1b9d0667e5d4430454b32b5a3c890e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092505"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957488"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Az Application Insights a HockeyApp-adatok feltárása
 
@@ -52,7 +52,7 @@ Vegye figyelembe, hogy az adatok eltarthat áramló elindításához.
 
 ![Várakozás az adatok Application Insights-erőforrás](./media/app-insights-hockeyapp-bridge-app/04.png)
 
-Készen is van. Ettől kezdve a HockeyApp-kialakítva alkalmazásban gyűjtött és egyéni nyomkövetési adatok jelenleg is az Application Insights Analytics és a folyamatos exportálás funkcióit érhető el.
+Ennyi az egész! Ettől kezdve a HockeyApp-kialakítva alkalmazásban gyűjtött és egyéni nyomkövetési adatok jelenleg is az Application Insights Analytics és a folyamatos exportálás funkcióit érhető el.
 
 Röviden vizsgáljuk meg ezeket a funkciókat elérhető.
 
@@ -61,7 +61,7 @@ Analytics az alkalmi lekérdezéseket, diagnosztizálása és a telemetria elemz
 
 ![Elemzés](./media/app-insights-hockeyapp-bridge-app/05.png)
 
-* [További információ Analytics szolgáltatásról](app-insights-analytics-tour.md)
+* [További információ Analytics szolgáltatásról](../log-analytics/query-language/get-started-analytics-portal.md)
 
 ## <a name="continuous-export"></a>Folyamatos exportálás
 A folyamatos exportálás lehetővé teszi az adatok exportálása az Azure Blob Storage-tárolókat. Ez nagyon hasznos, ha az adatok hosszabb a megőrzési időtartam, az Application Insights által jelenleg kínált van szüksége. Is megőrizni az adatokat blob storage-ban, SQL-adatbázis, vagy az előnyben részesített adattárház-megoldás feldolgozni azt.
@@ -69,5 +69,5 @@ A folyamatos exportálás lehetővé teszi az adatok exportálása az Azure Blob
 [További tudnivalók a folyamatos exportálás](app-insights-export-telemetry.md)
 
 ## <a name="next-steps"></a>További lépések
-* [Az adatok elemzési vonatkozik](app-insights-analytics-tour.md)
+* [Az adatok elemzési vonatkozik](../log-analytics/query-language/get-started-analytics-portal.md)
 

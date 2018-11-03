@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/3/2018
 ms.author: trinadhk
-ms.openlocfilehash: 9152733e189aec25a5c024de7f9a3582c29218a3
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 20c1606d4d6a1ddd43426731e5498d1bee47f2e3
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406534"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962536"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Azure virtuális gép biztonsági mentési vermének v2 verziójára frissítsen.
 
@@ -28,8 +28,8 @@ A Resource Manager üzemi modell a virtuális gép (VM) biztonsági másolat ver
 
 * Lehetővé teszi egy nem felügyelt virtuális gép eredeti tárfiókokban, visszaállításához használni. Ez a lehetőség létezik, akkor is, ha a virtuális gép lemezei tárfiókokban vannak elosztva. Ez felgyorsítja a visszaállítási műveletek számos különböző Virtuálisgép-konfigurációk esetében.
     > [!NOTE]
-    > Ez a lehetőség nem ugyanaz, mint a virtuális gép lemezének cseréje a helyreállítási pont adatait. 
-    
+    > Ez a lehetőség nem ugyanaz, mint a virtuális gép lemezének cseréje a helyreállítási pont adatait.
+
 
 ## <a name="whats-changing-in-the-new-stack"></a>Mi változik a új verem?
 A biztonsági mentési feladat jelenleg két fázisból áll:
@@ -55,7 +55,7 @@ Alapértelmezés szerint a pillanatképek őrzi meg a hét napja. Ez a funkció 
 * Prémium szintű tárfiókok esetén az azonnali helyreállítási pontok száma legfeljebb 10 TB-os felé készített pillanatképeket lefoglalt terület.
 
 > [!NOTE]
-> Frissítés az Azure virtuális gép biztonsági mentési vermének v2 verziójára kérhet támogatást az Azure Backup az a [SSD standard szintű Managed Disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/) és legfeljebb 32 adatlemezt a virtuális gépekkel.
+> Frissítés az Azure virtuális gép biztonsági mentési vermének v2 verziójára kérhet támogatást az Azure Backup az a [SSD standard szintű Managed Disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/).
 
 ## <a name="upgrade"></a>Frissítés
 ### <a name="the-azure-portal"></a>Az Azure Portal
@@ -119,4 +119,4 @@ Minden nap, egy új pillanatkép készítésének időpontjában. Hét egyes pil
 Nem felügyelt lemezek növekményes pillanatképek szolgálnak. Felügyelt lemezek visszaállítási pont gyűjteményt használ az Azure Backup által létrehozott blob-pillanatképekkel, és ezért növekményes.
 
 ### <a name="how-to-get-standard-ssd-managed-disk-support-for-a-virtual-machine"></a>Standard SSD beszerzése felügyelt virtuális gépek számára?
-Frissítés az Azure virtuális gép biztonsági mentési vermének v2 verziójára kérhet támogatást az Azure Backup az a [SSD standard szintű Managed Disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). Miután frissített, biztonsági mentési legfeljebb 32 adatlemezt a virtuális gépekkel.
+Frissítés az Azure virtuális gép biztonsági mentési vermének v2 verziójára kérhet támogatást az Azure Backup az a [SSD standard szintű Managed Disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/).

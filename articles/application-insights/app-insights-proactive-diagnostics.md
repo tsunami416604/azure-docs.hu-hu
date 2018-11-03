@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: fe1fe5d270dd8eb871301a8ec81375f35b2568da
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 0083c157eab489943f94ed1453c66a5c8d2f291a
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096582"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960302"
 ---
 # <a name="smart-detection-in-application-insights"></a>Az Application Insights intelligens detektálás
  Intelligens észlelés automatikusan figyelmezteti, az esetleges teljesítményproblémákat okozhat a webalkalmazásban. Proaktív elemzése a telemetriát, amely elküldi az alkalmazás végrehajt [Application Insights](app-insights-overview.md). Ha hirtelen megnövekedhet a hibaarányok, vagy a rendellenes mintákat ügyfél vagy kiszolgáló teljesítményét, riasztást kap. Ez a funkció nincs konfigurációs van szüksége. Ha az alkalmazása elég telemetriát küld működik.
@@ -57,7 +57,7 @@ Ezek a diagnosztikai eszközök segítséget nyújt az alkalmazásából szárma
 
 * [Metrika explorer](app-insights-metrics-explorer.md)
 * [A keresési ablak](app-insights-diagnostic-search.md)
-* [Analytics – erőteljes lekérdezési nyelv](app-insights-analytics-tour.md)
+* [Analytics – erőteljes lekérdezési nyelv](../log-analytics/query-language/get-started-analytics-portal.md)
 
 Az intelligens észlelés a teljesen automatikus. De esetleg szeretné néhány további riasztásokat állíthat be?
 

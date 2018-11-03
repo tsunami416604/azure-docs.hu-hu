@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: d2e4491f2ee21deedd674a5a8a64e4dd99149924
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 41e3f38817abbdd0cab9ab2c72d39cb6f3f69531
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079354"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978178"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Az Azure Container Instances szolgáltatásban gyakori problémáinak elhárítása
 
@@ -102,7 +102,7 @@ az container create -g MyResourceGroup --name myapp --image ubuntu --command-lin
 
 ```azurecli-interactive 
 ## Deploying a Windows container
-az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image windowsservercore:ltsc2016
+az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image microsoft/windowsservercore:ltsc2016
  --command-line "ping -t localhost"
 ```
 
@@ -187,7 +187,7 @@ Ahhoz, hogy a leggyorsabb Windows tároló indítási ideje, használja az egyik
 
 ### <a name="windows-containers-slow-network-readiness"></a>Windows-tárolók lassú hálózati készültségi
 
-Windows-tárolók felszámítunk nincs bejövő vagy kimenő kapcsolat első létrehozáskor akár 5 másodpercre. Kezdeti telepítés után a tárolóalapú hálózatkezelés az megfelelően kell folytatódik.
+Kezdeti létrehozás esetén Windows-tárolók lehetnek nincs bejövő vagy kimenő kapcsolat akár 30 másodpercig (vagy hosszabb, a ritka esetben). A tárolóalkalmazás internetkapcsolatra van szüksége, ha késleltetés hozzáadása és az újrapróbálkozási logika, hogy az internetes kapcsolat 30 másodperc. Kezdeti telepítés után a tárolóalapú hálózatkezelés az megfelelően kell folytatódik.
 
 ## <a name="resource-not-available-error"></a>Erőforrás nem érhető el hiba
 

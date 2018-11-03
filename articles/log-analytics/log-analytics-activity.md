@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: dd404bf8766082148a2c5a1ae55189f5f82f9021
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f5db8c4e8137d9758113210ad433278eb8f5a2ee
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404069"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962129"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Összegyűjtheti és elemezheti a Log Analytics az Azure-Tevékenységnaplók
 
@@ -54,8 +54,8 @@ Ellentétben a legtöbb más Log Analytics-megoldások nem az adatgyűjtés a Te
 
 | Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |
-| [Windows-ügynökök](log-analytics-windows-agent.md) | Nem | Windows-ügynököktől a megoldás nem gyűjt adatokat. |
-| [Linux-ügynökök](log-analytics-linux-agents.md) | Nem | A megoldás a Linux-ügynökök nem gyűjt adatokat. |
+| [Windows-ügynökök](log-analytics-agent-windows.md) | Nem | Windows-ügynököktől a megoldás nem gyűjt adatokat. |
+| [Linux-ügynökök](log-analytics-quick-collect-linux-computer.md) | Nem | A megoldás a Linux-ügynökök nem gyűjt adatokat. |
 | [Az SCOM felügyeleti csoport](log-analytics-om-agents.md) | Nem | A megoldás az ügynökök a csatlakoztatott SCOM felügyeleti csoport nem gyűjt adatokat. |
 | [Azure Storage-fiók](log-analytics-azure-storage.md) | Nem | A megoldás nem gyűjt adatokat az Azure storage-ból. |
 
@@ -67,7 +67,7 @@ Ellentétben a legtöbb más Log Analytics-megoldások nem az adatgyűjtés a Te
 
 A következő lépésekkel konfigurálja az Activity Log Analytics megoldást, a munkaterületek.
 
-1. Engedélyezze az Activity Log Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) felületéről vagy a [Log Analytics-megoldások hozzáadása a megoldástárból](log-analytics-add-solutions.md) című témakörben leírt eljárást követve.
+1. Engedélyezze az Activity Log Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) felületéről vagy a [Log Analytics-megoldások hozzáadása a megoldástárból](../monitoring/monitoring-solutions.md) című témakörben leírt eljárást követve.
 2. Tevékenységnaplók az Ugrás a Log Analytics-munkaterület konfigurálása.
     1. Az Azure Portalon válassza ki a munkaterületet, és kattintson a **Azure tevékenységnapló**.
     2. Az egyes előfizetésekhez kattintson az előfizetés nevét.  
@@ -89,7 +89,7 @@ Kattintson a **Azure-tevékenységnaplóinak** csempére kattintva nyissa meg a 
 
 Tevékenységnapló adatainak csak akkor jelenik meg *után* konfigurálta a vizsgálati naplók nyissa meg a megoldást, így még a határidő előtt nem tekintheti meg adatokat.
 
-| Blade | Leírás |
+| Panel | Leírás |
 | --- | --- |
 | Az Azure tevékenységnapló-bejegyzései | Bemutatja az Azure-tevékenységi naplóbejegyzés felső sávdiagram a kijelölt dátumtartományban rekord összegek és a felső 10 tevékenység hívók listáját jeleníti meg. Kattintson a sávdiagram egy Naplókeresés futtatásához a <code>AzureActivity</code>. Egy hívó elemre egy Naplókeresés futtatásához az összes tevékenységnapló-bejegyzései elem visszaadása. |
 | Tevékenységnaplók állapot szerint | Az Azure-tevékenységi napló állapotát a kijelölt dátumtartományban perecdiagrammá mutatja. Az első tíz állapot rekordok listáját is megjeleníti a egy listát. Kattintson a diagramra a Naplókeresés futtatásához <code>AzureActivity &#124; summarize AggregatedValue = count() by ActivityStatus</code>. Kattintson egy állapot elemre egy Naplókeresés futtatásához az összes tevékenységnapló-bejegyzései állapot rekord visszaadása. |
@@ -100,5 +100,5 @@ Tevékenységnapló adatainak csak akkor jelenik meg *után* konfigurálta a viz
 
 ## <a name="next-steps"></a>További lépések
 
-- Hozzon létre egy [riasztás](log-analytics-alerts-creating.md) mikor történik, egy adott tevékenységet.
-- Használat [naplóbeli keresés](log-analytics-log-searches.md) a tevékenységnaplókból részletes információk megtekintéséhez.
+- Hozzon létre egy [riasztás](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) mikor történik, egy adott tevékenységet.
+- Használat [naplóbeli keresés](log-analytics-log-search.md) a tevékenységnaplókból részletes információk megtekintéséhez.

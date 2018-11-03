@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 39e11f35870fa3a3573e5f1af467cfbd898a1563
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 5f5bfe6c730f569f0cc902b0e0a132bfca645a45
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182144"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961687"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizálhatja a környezetet a System Center Operations Manager állapotának ellenőrzése (előzetes verzió) megoldás
 
@@ -212,7 +212,7 @@ Minden javaslat, hogy miért fontos vonatkozó útmutatást tartalmaz. Ez az út
 
 ## <a name="use-health-check-focus-area-recommendations"></a>Használat állapotának ellenőrzése fókusz területre vonatkozó javaslatok
 
-A health ellenőrzési megoldás a Log Analytics használata előtt rendelkeznie kell a telepített megoldás. További megoldások telepítéséről lásd: [management megoldás telepítése](log-analytics-add-solutions.md). Azt követően, javaslatok összegzését a System Center Operations Manager állapotának ellenőrzése csempe használatával megtekintheti a **áttekintése** oldalán a munkaterület az Azure Portalon.
+A health ellenőrzési megoldás a Log Analytics használata előtt rendelkeznie kell a telepített megoldás. További megoldások telepítéséről lásd: [management megoldás telepítése](../monitoring/monitoring-solutions.md). Azt követően, javaslatok összegzését a System Center Operations Manager állapotának ellenőrzése csempe használatával megtekintheti a **áttekintése** oldalán a munkaterület az Azure Portalon.
 
 Az összesített megfelelőségi értékeléseket az infrastruktúrát, és a-feltárás javaslatok megtekintése.
 
@@ -238,7 +238,7 @@ Ha javaslatoknál, amelyeket figyelmen kívül szeretne, létrehozhat egy szöve
     ```
 
     >[!NOTE]
-    > Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](log-analytics-log-search-upgrade.md), akkor a fenti lekérdezés módosulnak az alábbiak.
+    > Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](log-analytics-log-search.md), akkor a fenti lekérdezés módosulnak az alábbiak.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -263,7 +263,7 @@ Ha javaslatoknál, amelyeket figyelmen kívül szeretne, létrehozhat egy szöve
     ```
 
     >[!NOTE]
-    > Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](log-analytics-log-search-upgrade.md), akkor a fenti lekérdezés módosulnak az alábbiak.
+    > Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](log-analytics-log-search.md), akkor a fenti lekérdezés módosulnak az alábbiak.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -304,4 +304,4 @@ Ha javaslatoknál, amelyeket figyelmen kívül szeretne, létrehozhat egy szöve
 
 ## <a name="next-steps"></a>További lépések
 
-- [Naplók keresése](log-analytics-log-searches.md) megtudhatja, hogyan elemezheti a System Center Operations Manager állapotának ellenőrzése a részletes adatok és javaslatok.
+- [Naplók keresése](log-analytics-log-search.md) megtudhatja, hogyan elemezheti a System Center Operations Manager állapotának ellenőrzése a részletes adatok és javaslatok.

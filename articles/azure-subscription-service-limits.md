@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: byvinyal
-ms.openlocfilehash: c22f3dbc06dd43a31bf43634437c7f377dac8813
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
-ms.translationtype: MT
+ms.openlocfilehash: 702783ce581ba59b64892035eca3fb28787eec0f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457306"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958967"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum felsorolja az egyes a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem vonatkozik Azure-szolgáltatásokhoz. Az idő múlásával a lista fog kibontható vagy frissítve, hogy biztosítsák a platform további.
@@ -145,6 +145,8 @@ Az alábbi táblázat ismerteti a funkciókat és korlátokat az alapszintű, St
 [!INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]
 
 #### <a name="application-gateway-limits"></a>Az Application Gateway-korlátozások
+
+Az alábbi táblázat v1, v2, Standard és a WAF termékváltozatban vonatkozik, ha másként nincs jelezve.
 [!INCLUDE [application-gateway-limits](../includes/application-gateway-limits.md)]
 
 #### <a name="network-watcher-limits"></a>A Network Watcher korlátozza.

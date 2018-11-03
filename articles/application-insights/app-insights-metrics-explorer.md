@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/08/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4c35f4366b2290164036316be8de730e20aa99bf
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 99ace7be05f186ac920aa9671946389e95e3a3a6
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092662"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958117"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Az Application Insightsban a metrikák felfedezése
 A metrikák [Application Insights] [ start] mért értékek és az eseményszámok az alkalmazásból küldött telemetriai adatokat a rendszer. Ezek segítenek teljesítménybeli problémák észlelése, és tekintse meg az alkalmazás használatának trendjei. Standard mérőszámok széles skáláját, és a saját egyéni metrikákkal és eseményekkel is létrehozhat.
@@ -194,14 +194,14 @@ Metrikadiagram, a közvetlenül az egyenértékű elemzési lekérdezés beolvas
 
     Ha azt szeretné, a különböző szűrőivel beállíthatja a különböző diagramok különböző paneljein hozzon létre őket, mentse azokat, külön Kedvencek. Ha azt szeretné, is rögzítheti őket az irányítópulton, hogy tekintheti meg őket egymással párhuzamosan.
 * Ha olyan tulajdonságot, amely nincs meghatározva a metrikát a diagram csoportosítás, majd kell semmi a diagramra. Törölje a "Csoportosítás", vagy válasszon egy különböző csoportosítási tulajdonságot.
-* Teljesítményadatok (CPU, i/o-forgalom, és így tovább) érhető el a Java-webszolgáltatásokhoz, Windows asztali alkalmazásokban, [IIS webalkalmazások és szolgáltatások Ha telepítse az állapotfigyelőt](app-insights-monitor-performance-live-website-now.md), és [Azure Cloud Services](app-insights-azure.md). Nem Azure-webhelyekhez érhető el.
+* Teljesítményadatok (CPU, i/o-forgalom, és így tovább) érhető el a Java-webszolgáltatásokhoz, Windows asztali alkalmazásokban, [IIS webalkalmazások és szolgáltatások Ha telepítse az állapotfigyelőt](app-insights-monitor-performance-live-website-now.md), és [Azure Cloud Services](app-insights-overview.md). Nem Azure-webhelyekhez érhető el.
 
 ## <a name="video"></a>Videó
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>További lépések
-* [Az Application Insights figyelési használat](app-insights-web-track-usage.md)
+* [Az Application Insights figyelési használat](app-insights-usage-overview.md)
 * [Diagnosztikai keresés használata](app-insights-diagnostic-search.md)
 
 <!--Link references-->

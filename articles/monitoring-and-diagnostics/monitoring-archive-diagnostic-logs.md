@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: caa8f1a10652c16e181c47fbbe4f9f0c815cfd67
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ab7689cb18dcd11926abc2e9806885b1072e3886
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983684"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960174"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Az Azure diagnosztikai naplóinak archiválása
 
@@ -26,7 +26,7 @@ Ebben a cikkben bemutatjuk a használatáról az Azure portal, PowerShell-paranc
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, kell [hozzon létre egy tárfiókot](../storage/storage-create-storage-account.md) , amelyhez a diagnosztikai naplókat archiválhatja. Kifejezetten ajánljuk, hogy nem használja egy meglévő tárfiókot, amely a benne tárolt, így jobban szabályozhatja a hozzáférést a figyelési adatok más, nem figyelési adatokat tartalmaz. Azonban ha is archiválni a tevékenységnapló és a egy tárfiókot a diagnosztikai metrikák, célszerű felhasználójának, hogy az összes monitorozási adat egy központi helyen, hogy a tárfiókot a diagnosztikai naplók használata.
+Mielőtt elkezdené, kell [hozzon létre egy tárfiókot](../storage/common/storage-create-storage-account.md) , amelyhez a diagnosztikai naplókat archiválhatja. Kifejezetten ajánljuk, hogy nem használja egy meglévő tárfiókot, amely a benne tárolt, így jobban szabályozhatja a hozzáférést a figyelési adatok más, nem figyelési adatokat tartalmaz. Azonban ha is archiválni a tevékenységnapló és a egy tárfiókot a diagnosztikai metrikák, célszerű felhasználójának, hogy az összes monitorozási adat egy központi helyen, hogy a tárfiókot a diagnosztikai naplók használata.
 
 > [!NOTE]
 >  Jelenleg nem archiválhatja adatokat egy Storage-fiók, amely mögött egy biztonságos virtuális hálózaton.
@@ -161,7 +161,7 @@ A PT1H.json fájlt belül minden egyes esemény tárolja a "rekord" tömb, a kö
 
 ## <a name="next-steps"></a>További lépések
 
-* [Tölthet le blobokat elemzéshez](../storage/storage-dotnet-how-to-use-blobs.md)
+* [Tölthet le blobokat elemzéshez](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 * [Stream-diagnosztikai naplók az Event Hubs-névtér](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [Az Azure Monitor szolgáltatással az Azure Active Directory naplóinak archiválása](../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 * [További információ a diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)

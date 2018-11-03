@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 94de5566db2395a3daf24c99a43cca6853e12cce
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: cca475f552495a42aabc60faf0bd57382f148120
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736971"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958568"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Az MXChip IoT DevKit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
 
@@ -23,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan eszköz a fejlesztők az MXChip IoT fejlesztői 
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
-1. A létrehozott Azure IoT Central alkalmazáshoz a **minta Devkits** alkalmazássablon. További információkért lásd: [az Azure IoT központi alkalmazás létrehozása](howto-create-application.md).
+1. A létrehozott Azure IoT Central alkalmazáshoz a **minta Devkits** alkalmazássablon. További információkért lásd: a [hozzon létre egy alkalmazás rövid](quick-deploy-iot-central.md).
 1. Egy fejlesztői készlet eszköz. DevKit eszköz vásárol, a Microsoft [MXChip IoT DevKit](http://mxchip.com/az3166).
 
 
@@ -54,7 +54,7 @@ Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **MXChip*
 
 1. Például beolvasni a kapcsolat adatait **hatókör azonosítója, az eszköz Azonosítóját és az elsődleges kulcs** kattintva az új eszköz **Connect** az eszköz oldalon.
  
-    ![Kapcsolat részletei](media\concepts-connectivity\device-connect.PNG)
+    ![Kapcsolat adatai](media\concepts-connectivity\device-connect.PNG)
 
 3. Ügyeljen arra, hogy ezek az adatok mentése során fog temporaritly lekérése kapcsolódik az internethez az DevKit eszköz előkészítése. 
 
@@ -226,7 +226,7 @@ A beállítások ki-/ bekapcsolása
 
 | Megjelenített név | Mező neve | A szöveg | Ki a szöveg | Kezdeti |
 | ------------ | ---------- | ------- | -------- | ------- |
-| INTEGRÁCIÓS MODUL           | activateIR | ON      | KI      | Ki     |
+| IR           | activateIR | ON      | KI      | Ki     |
 
 ### <a name="properties"></a>Tulajdonságok
 

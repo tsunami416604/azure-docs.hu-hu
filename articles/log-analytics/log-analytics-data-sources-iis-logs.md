@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: bwren
 ms.comopnent: ''
-ms.openlocfilehash: 7b44c0712c4d88ec0bbb7a94f574c2a12faf3550
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 6670b6648a0f38879b57b05cb3c6c6e15ca832b4
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48040676"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958219"
 ---
 # <a name="iis-logs-in-log-analytics"></a>A Log Analytics naplózza az IIS
 Az Internet Information Services (IIS) naplófájlok a Log Analytics által gyűjtött felhasználói tevékenység tárolja.  
@@ -80,5 +80,5 @@ Az alábbi táblázat az IIS-naplóbejegyzések lekérő lekérdezések log kül
 
 ## <a name="next-steps"></a>További lépések
 * Konfigurálja a gyűjtendő más Log Analytics [adatforrások](log-analytics-data-sources.md) elemzés céljából.
-* Ismerje meg [naplókereséseket](log-analytics-log-searches.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.
+* Ismerje meg [naplókereséseket](log-analytics-log-search.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.
 * Riasztások konfigurálása a Log Analytics segítségével proaktívan kaphat értesítést az IIS-naplókban található fontos feltételekről.

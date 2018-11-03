@@ -7,15 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 11/02/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 3dd3e3391cc2536f56a5e42610c09c85b4068234
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 6e15fee02fd001bddd25a19b8a9420eb899d4f85
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740553"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978672"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack-diagnosztikai eszközök
 
@@ -112,11 +112,11 @@ if($s)
 - Ha a **FromDate** és **ToDate** paraméter nincs megadva, a naplók alapértelmezés szerint az elmúlt 4 órán keresztül gyűjtött.
 - Használja a **FilterByNode** paraméter naplók szűrése a számítógép neve szerint. Példa:
 ```powershell
-Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred ` -FilterByNode azs-xrp01
+Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByNode azs-xrp01
 ```
 - Használja a **FilterByLogType** paraméter típusa szerint naplók szűrése. Ha szeretné, fájl, fájlmegosztás vagy WindowsEvent alapján. Példa:
 ```powershell
-Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred ` -FilterByLogType File
+Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByLogType File
 ```
 - Használhatja a **TimeOutInMinutes** paraméter segítségével állítsa be a naplógyűjtés időkorlátja. Időintervallumként 150 (2,5 óra) alapértelmezés szerint.
 - Az 1805 és újabb memóriakép-fájl naplógyűjtés alapértelmezés szerint le van tiltva. Annak engedélyezéséhez használja a **IncludeDumpFile** paraméter váltani. 
@@ -124,30 +124,25 @@ Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred ` -
 
  |   |   |   |    |
  | - | - | - | -  |   
- |ACS|Compute|InfraServiceController|QueryServiceCoordinator|
- |ACSBlob|CPI|Infrastruktúra|QueryServiceWorker|
- |ACSDownloadService|CRP|KeyVaultAdminResourceProvider|SeedRing|
- |ACSFabric|DatacenterIntegration|KeyVaultControlPlane|SeedRingServices|
- |ACSFrontEnd|DeploymentMachine|KeyVaultDataPlane|SLB|
- |ACSMetrics|DiskRP|KeyVaultInternalControlPlane|SlbVips|
- |ACSMigrationService|Domain|KeyVaultInternalDataPlane|SQL|
- |ACSMonitoringService|ECE|KeyVaultNamingService|SRP|
- |ACSSettingsService|EventAdminRP|MDM|Storage|
- |ACSTableMaster|EventRP|MetricsAdminRP|Tárfiókok|
- |ACSTableServer|ExternalDNS|MetricsRP|StorageController|
- |ACSWac|Fabric|MetricsServer|Bérlő|
- |ADFS|FabricRing|MetricsStoreService|TraceCollector|
- |ApplicationController|FabricRingServices|MonAdminRP|URP|
- |ASAppGateway|FirstTierAggregationService|MonitoringAgent|Használat|
- |AzureBridge|FRP|MonRP|UsageBridge|
- |AzureMonitor|Katalógus|HÁLÓZATI VEZÉRLŐ|virtuális gép|
- |AzureStackBitlocker|Átjáró|Network (Hálózat)|WAS|
- |BareMetal|HealthMonitoring|NonPrivilegedAppGateway|WASBootstrap|
- |BRP|HintingServiceV2|NRP|WASPUBLIC|
- |CA|HRP|OboService|WindowsDefender|
- |CacheService|IBC|OEM|     |
- |Felhő|Identitásszolgáltató|OnboardRP|     |   
- |Fürt|IDN formátumú tartománynevek|A PXE|     |
+ |ACS                   |CacheService                   |IBC                            |OEM|
+ |ACSDownloadService    |Compute                        |InfraServiceController         |OnboardRP|
+ |ACSFabric             |CPI                            |KeyVaultAdminResourceProvider  |A PXE|
+ |ACSFrontEnd           |CRP                            |KeyVaultControlPlane           |QueryServiceCoordinator|
+ |ACSMetrics            |DeploymentMachine              |KeyVaultDataPlane              |QueryServiceWorker|
+ |ACSMigrationService   |DiskRP                         |KeyVaultInternalControlPlane   |SeedRing|
+ |ACSMonitoringService  |Domain                         |KeyVaultInternalDataPlane      |SeedRingServices|
+ |ACSSettingsService    |ECE                            |KeyVaultNamingService          |SLB|
+ |ACSTableMaster        |EventAdminRP                   |MDM                            |SQL|
+ |ACSTableServer        |EventRP                        |MetricsAdminRP                 |SRP   |
+ |ACSWac                |ExternalDNS                    |MetricsRP                      |Storage|
+ |ADFS                  |FabricRing                     |MetricsServer                  |StorageController   |
+ |ApplicationController |FabricRingServices             |MetricsStoreService            |URP   |
+ |ASAppGateway          |FirstTierAggregationService    |MonAdminRP                     |UsageBridge|
+ |AzureBridge           |FRP                            |MonRP                          |virtuális gép   |
+ |AzureMonitor          |Átjáró                        |HÁLÓZATI VEZÉRLŐ                             |WAS|
+ |BareMetal             |HealthMonitoring               |NonPrivilegedAppGateway        |WASPUBLIC|
+ |BRP                   |HintingServiceV2               |NRP                            |   |
+ |CA                    |HRP                            |OboService                     |   |
  |   |   |   |    |
 
 ### <a name="additional-considerations"></a>Néhány fontos megjegyzés

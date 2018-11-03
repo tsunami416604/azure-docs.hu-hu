@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 86128abd82ee41459a84fc7d9169042179807793
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3231a956648b80d88059b7b0fc8f790e0e58be99
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034909"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962792"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Exportálhatja az adatokat az Azure IoT Central
 
@@ -26,10 +26,10 @@ Ez a cikk ismerteti a folyamatos exportálási szolgáltatás segítségével az
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Kiterjesztett 30 napos próba IoT Central alkalmazáshoz, vagy egy fizetős alkalmazásra.
-- Egy Azure-fiók Azure-előfizetések.
-- Ugyanazon Azure-fiók az IoT-központ alkalmazás egy rendszergazdája lesz.
-- Ugyanazon Azure-fiók hozzon létre egy tárfiókot, vagy egy meglévő tárfiókot az Azure-előfizetéshez hozzáférési engedélyekkel rendelkezik.
+- A használatalapú fizetés alkalmazás.
+- A rendszergazda az IoT-központ alkalmazásában rendelkezik:
+    - az Azure-előfizetést, az IoT-központ alkalmazás szerepel az Azure-fiók
+    - egy tároló létrehozásához szükséges engedélyek fiókkal vagy egy meglévő tárfiókot az Azure-előfizetés eléréséhez
 
 ## <a name="types-of-data-to-export"></a>Az exportálandó adattípusokat
 

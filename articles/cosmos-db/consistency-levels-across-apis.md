@@ -9,22 +9,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: mjbrown
-ms.openlocfilehash: ed08b90b9e216ee8713bfe445e98144bf2ba02d4
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 974531cd5907e4f69e7d064125d3e51fa4974949
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50244191"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50956383"
 ---
-# <a name="consistency-levels-and-cosmos-db-apis"></a>Konzisztenciaszintek és a Cosmos DB API-k
+# <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Konzisztenciaszintek és az Azure Cosmos DB API-k
 
-Az öt konzisztenciamodell által natívan támogatott az SQL API-t, amely az alapértelmezett API-t akkor, ha a Cosmos DB használatával. Mellett az SQL API-t, Cosmos DB is natív támogatást biztosít a vonalprotokollt kompatibilis API-k népszerű adatbázisok, például a MongoDB, Apache Cassandra, Gremlin és Azure-beli táblák. Ezek az adatbázisok ajánlat sem pontosan definiált konzisztenciamodelleket, sem a a konzisztenciaszint garantálja az SLA-alapú, és általában a Cosmos DB által öt konzisztenciamodell csak egy adott részét biztosítják. Az SQL API-t, a Gremlin API-t és a Table API az alapértelmezett konzisztenciaszintet Cosmos-fiók konfigurálva lesz használatban.
+Az Azure Cosmos DB által kínált öt konzisztenciamodell által natívan támogatott a Cosmos DB SQL API-t, amely az alapértelmezett API-t akkor, ha a Cosmos DB használatával. Mellett az SQL API-t, Cosmos DB is natív támogatást biztosít a vonalprotokollt kompatibilis API-k népszerű adatbázisok, például a MongoDB, Apache Cassandra, Gremlin és Azure-beli táblák. Ezeknek az adatbázisoknak sem ajánlat pontosan definiált konzisztenciamodelleket, sem az SLA-alapú garanciát a konzisztenciaszintek. Ezek az adatbázisok általában biztosítanak a Cosmos DB által kínált öt konzisztenciamodell csak egy részét. Az SQL API-t, a Gremlin API-t és a Table API az alapértelmezett konzisztenciaszintet Cosmos-fiók konfigurált használható.
 
-Az alábbi táblázatban láthatók az Apache Cassandra egy nyílt Forráskódú ügyfél-illesztőprogram által kért adatkonzisztencia közötti leképezést 4.x-es és a MongoDB 3.4 Cassandra API és a MongoDB API-t, illetve használata során, és a Cosmos DB megfelelő konzisztenciaszintek.
+A következő szakaszok bemutatják az Apache Cassandra egy nyílt Forráskódú ügyfél-illesztőprogram által kért adatkonzisztencia közötti leképezést 4.x-es és a MongoDB 3.4 Cassandra API és a MongoDB API-t, illetve használata során, és a Cosmos DB megfelelő konzisztenciaszintek.
 
-## <a id="cassandra-mapping"></a>Az Apache Cassandra és a Cosmos DB konzisztenciaszintjeinek leképezése
+## <a id="cassandra-mapping"></a>Az Apache Cassandra és a Cosmos DB konzisztenciaszintjeinek közötti megfeleltetés
 
-Az alábbi táblázat az Apache Cassandra 4.x-es ügyfél és a Cosmos DB "Alapértelmezett" konzisztenciaszint egy többrégiós és a egyetlen régióban üzembe között olvasás következetes hozzárendelését.
+Az alábbi táblázat a "következetes Olvasás" hozzárendelés között az Apache Cassandra 4.x-es ügyfél és az alapértelmezett konzisztenciaszintet Cosmos DB-ben mind a többrégiós, mind az egyrégiós telepítésekhez.
 
 | **Az Apache Cassandra 4.x** | **A cosmos DB (többrégiós)** | **A cosmos DB (egyetlen régióban)** |
 | - | - | - |
@@ -36,7 +36,7 @@ Az alábbi táblázat az Apache Cassandra 4.x-es ügyfél és a Cosmos DB "Alap�
 
 ## <a id="mongo-mapping"></a>A MongoDB 3.4-es és a Cosmos DB konzisztenciaszintjeinek közötti megfeleltetés
 
-Az alábbi táblázat a leképezés "olvasási aggályokat" MongoDB 3.4-es és a Cosmos DB "Alapértelmezett" konzisztenciaszint egy többrégiós és a egyetlen régióban üzembe.
+Az alábbi táblázat a "aggályokat olvasása" hozzárendelés között MongoDB 3.4-es és az alapértelmezett konzisztenciaszintet Cosmos DB-ben többrégiós mind az egyrégiós telepítésekhez.
 
 | **MongoDB 3.4** | **A cosmos DB (többrégiós)** | **A cosmos DB (egyetlen régióban)** |
 | - | - | - |

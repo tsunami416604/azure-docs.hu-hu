@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 75faceb641382df29a93c44803af48dcfed142d4
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 796e10053df79f8f7106d98dd9c9be6083d9f719
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421169"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964152"
 ---
 # <a name="manage-workspaces"></a>Munkaterületek kezelése
 
@@ -52,7 +52,7 @@ Felhasználás szempontjából javasoljuk, hogy a lehető legkevesebb munkaterü
 * Felügyelt szolgáltatást kínál, és az egyes felügyelt ügyfelek naplóelemzési adatait külön kell tárolnia a többi ügyfél adataitól.
 * Több ügyfelet is kezel, és azt szeretné, hogy minden ügyfél / szervezeti egység / üzleti csoportok lássák a saját adatok, de nem más tagjaitól származó adatokat.
 
-Ha az adatgyűjtéshez Windows-ügynököket használ, [konfigurálhatja úgy az egyes ügynököket, hogy egy vagy több munkaterületnek küldjenek jelentést](log-analytics-windows-agents.md).
+Ha az adatgyűjtéshez Windows-ügynököket használ, [konfigurálhatja úgy az egyes ügynököket, hogy egy vagy több munkaterületnek küldjenek jelentést](log-analytics-agent-windows.md).
 
 A System Center Operations Manager használata esetén az Operations Manager egyes felügyeleti csoportjai csak egy munkaterülethez csatlakoztathatók. Telepítheti a Microsoft Monitoring Agentet az Operations Manager által felügyelt számítógépekre, és beállíthatja az ügynököt úgy, hogy az Operations Managernek és egy másik Log Analytics-munkaterületnek is küldjön jelentést.
 
@@ -73,7 +73,7 @@ A munkaterületek adatait az Azure Portalon tekintheti meg.
     ![Munkaterület részletei](./media/log-analytics-manage-access/workspace-overview-page.png)  
 
 ## <a name="manage-accounts-and-users"></a>Fiókok és felhasználók kezelése
-Minden munkaterülethez társítva több fiókot lehet, és minden egyes fiók férhet hozzá több munkaterülettel. Access-n keresztül kezelt [Azure szerepköralapú hozzáférés-](../active-directory/role-based-access-control-configure.md). A hozzáférési jogosultságok vonatkozik, mind az Azure Portalon, és az API-hozzáférés.
+Minden munkaterülethez társítva több fiókot lehet, és minden egyes fiók férhet hozzá több munkaterülettel. Access-n keresztül kezelt [Azure szerepköralapú hozzáférés-](../role-based-access-control/role-assignments-portal.md). A hozzáférési jogosultságok vonatkozik, mind az Azure Portalon, és az API-hozzáférés.
 
 
 Az alábbi tevékenységek szintén Azure-engedélyeket igényelnek:
@@ -87,7 +87,7 @@ Az alábbi tevékenységek szintén Azure-engedélyeket igényelnek:
 
 
 ### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>A Log Analyticshez való hozzáférés szabályozása Azure-engedélyekkel
-Ha Azure-engedélyekkel kíván hozzáférést biztosítani a Log Analytics-munkaterülethez, kövesse [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepkör-hozzárendelésekkel](../active-directory/role-based-access-control-configure.md) című rész lépéseit.
+Ha Azure-engedélyekkel kíván hozzáférést biztosítani a Log Analytics-munkaterülethez, kövesse [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepkör-hozzárendelésekkel](../role-based-access-control/role-assignments-portal.md) című rész lépéseit.
 
 Az Azure két beépített felhasználói szerepkört biztosít a Log Analyticshez:
 - Log Analytics olvasó
@@ -146,7 +146,7 @@ Ezen szerepkörökkel különféle hatókörökben biztosíthat hozzáférést a
 - Erőforráscsoport – Hozzáférés az erőforráscsoportban lévő összes munkaterülethez
 - Erőforrás – Hozzáférés kizárólag az adott erőforráshoz
 
-Azt javasoljuk, hogy a pontos hozzáférés-vezérlés biztosítása érdekében az erőforrás szintjén (munkaterület) végezze el a hozzárendeléseket.  Az [egyéni szerepkörök](../active-directory/role-based-access-control-custom-roles.md) segítségével létrehozhat a szükséges egyedi engedélyekkel rendelkező szerepköröket.
+Azt javasoljuk, hogy a pontos hozzáférés-vezérlés biztosítása érdekében az erőforrás szintjén (munkaterület) végezze el a hozzárendeléseket.  Az [egyéni szerepkörök](../role-based-access-control/custom-roles.md) segítségével létrehozhat a szükséges egyedi engedélyekkel rendelkező szerepköröket.
 
 ## <a name="link-an-existing-workspace-to-an-azure-subscription"></a>Meglévő munkaterület csatolása Azure-előfizetéshez
 Minden 2016. szeptember 26. után létrehozott munkaterület a létrehozásukkor kell társítani egy Azure-előfizetéshez. Az ezen dátum előtt létrehozott munkaterületeket a bejelentkezéskor kell társítani egy munkaterülethez. Amikor az Azure Portalon hoz létre egy munkaterületet, vagy ha munkaterületét egy Azure-előfizetéshez társítja, az Azure Active Directory a szervezeti fiókjaként lesz társítva.
@@ -241,5 +241,5 @@ Az új adatforgalmi díjcsomag megjelenik az OMS-portál menüszalagján a webhe
 ## <a name="next-steps"></a>További lépések
 * Az adatközpontban vagy más felhőalapú környezetben lévő számítógépekről való adatgyűjtésről lásd: [Adatok gyűjtése a környezetben lévő számítógépekről a Log Analytics használatával](log-analytics-concept-hybrid.md).
 * Az adatgyűjtés Azure-beli virtuális gépekről való konfigurálásáról lásd: [Adatgyűjtés Azure-beli virtuális gépekről](log-analytics-quick-collect-azurevm.md).  
-* A funkciók hozzáadásával és az adatgyűjtéssel kapcsolatban lásd: [Add Log Analytics solutions from the Solutions Gallery](log-analytics-add-solutions.md) (Log Analytics-megoldások hozzáadása a megoldástárból).
+* A funkciók hozzáadásával és az adatgyűjtéssel kapcsolatban lásd: [Add Log Analytics solutions from the Solutions Gallery](../monitoring/monitoring-solutions.md) (Log Analytics-megoldások hozzáadása a megoldástárból).
 

@@ -4,17 +4,17 @@ description: Megtudhatja, hogyan hozhat létre az SCP.NET használatával. NET-a
 services: hdinsight
 ms.service: hdinsight
 author: jasonwhowell
-ms.author: jasonwhowell
+ms.author: jasonh
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: daf9efb2f9044ed1395b0f2aa3663c2471406e2f
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: fb7a8ed81794e3a5c1a772fd242f5ef85a800365
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045464"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959205"
 ---
 # <a name="scp-programming-guide"></a>Szolgáltatáskapcsolódási pont programozási útmutató
 Szolgáltatáskapcsolódási pont platformot hozhat létre valós idejű, megbízható és konzisztens, és nagy teljesítményű adatokat feldolgozó alkalmazást. Be van építve a [Apache Storm](http://storm.incubator.apache.org/) – egy streamfeldolgozó rendszer, a nyílt Forráskódú Közösségek által tervezték. A Storm Nathan Marz által készült, és a nyílt forráskódú lett a Twitteren. A modul [Apache ZooKeeper](http://zookeeper.apache.org/), magas megbízhatóságú engedélyezése egy másik Apache-projecttel elosztott koordinálása és állapot-kezelés. 

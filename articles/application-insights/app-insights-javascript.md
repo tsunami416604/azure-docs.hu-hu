@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 6d826702d8302246a225ebfcdf0a5987cf9d2045
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 46939e15100468eab0d5575546eb6bd58df4aacd
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167052"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961075"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 Megismerheti a weblap vagy alkalmazás teljesítményét és használatát. Ha a Visual Studio [Application Insightst](app-insights-overview.md) a lap szkriptjeihez adja, megkapja az oldalbetöltések és AJAX-hívások időzítését, a böngészőkivételek és az AJAX-hibák számát és részleteit, valamint a felhasználók és munkamenetek számát. Ezek mindegyike szegmentálható lap, ügyfél operációs rendszere és böngészőverziója, földrajzi hely és más dimenziók alapján. Beállíthat riasztásokat a hibaszámokról és a lassú lapbetöltésekről. Ha nyomkövetési hívásokat szúr be a JavaScript-kódba, nyomon követheti a webalkalmazás különböző szolgáltatásainak használati módját is.
@@ -230,7 +230,7 @@ A lap neve ugyanazokat a karaktereket tartalmazhatja, mint egy URL-cím, de a re
 ## <a name="usage-tracking"></a>Használatkövetés
 Meg szeretné tudni, hogyan használják a felhasználók az alkalmazását?
 
-* [Ismerje meg a felhasználói viselkedés elemzési eszközök](app-insights-web-track-usage.md)
+* [Ismerje meg a felhasználói viselkedés elemzési eszközök](app-insights-usage-overview.md)
 * [Információk az egyéni eseményekről és a mérőszám API-ról](app-insights-api-custom-events-metrics.md).
 
 ## <a name="video"></a>Videó
@@ -241,7 +241,7 @@ Meg szeretné tudni, hogyan használják a felhasználók az alkalmazását?
 
 
 ## <a name="next"></a> Következő lépések
-* [Használat követése](app-insights-web-track-usage.md)
+* [Használat követése](app-insights-usage-overview.md)
 * [Egyéni események és a mérőszámok](app-insights-api-custom-events-metrics.md)
-* [Összeállítás, mérés, tanulás](app-insights-web-track-usage.md)
+* [Összeállítás, mérés, tanulás](app-insights-usage-overview.md)
 

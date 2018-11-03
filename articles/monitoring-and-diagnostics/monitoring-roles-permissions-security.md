@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 1a42c13bc0b441074829b1753c1d3cab8fbfaccf
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 6a197cf5667e1668b2007a5f552b813cb8ed68d3
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407569"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957828"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései
 Számos csapat kell szigorúan szabályozzák a hozzáférést a figyelési adatok és beállítások. Például, ha kizárólag a figyelést (a támogatási szakértők, fejlesztő és üzemeltető mérnököknek) dolgozó csapat tagjai rendelkezik, vagy ha egy felügyelt szolgáltató használ, érdemes hozzáférést biztosít nekik a csak figyelési adatok korlátozásával hozhat létre, módosít, vagy erőforrások törlése. Ez a cikk bemutatja, hogyan gyors beépített figyelési RBAC szerepkör alkalmazásához a felhasználónak az Azure-ban, vagy egy felhasználóhoz, aki csak korlátozott felügyeleti engedélyekre van szüksége a saját egyéni szerepkör létrehozása. Majd az Azure Monitor-kapcsolódó erőforrások és a bennük adatokhoz való hozzáférés korlátozásáról vonatkozó biztonsági szempontokat ismerteti.
@@ -186,5 +186,5 @@ További információkért lásd: [hálózati, biztonsági és az Azure Storage]
 
 ## <a name="next-steps"></a>További lépések
 * [További információ az RBAC és engedélyek a Resource Managerben](../role-based-access-control/overview.md)
-* [Olvassa el az Azure-beli Figyelés áttekintése](monitoring-overview.md)
+* [Olvassa el az Azure-beli Figyelés áttekintése](../azure-monitor/overview.md)
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: e86b79cb57b9d4a590d69a98eca591679ee10334
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: febe5c58857aa9cee6f6cfd5855919075d10d58a
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042937"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958083"
 ---
 # <a name="custom-fields-in-log-analytics"></a>A Log Analytics egyéni mezők
 A **egyéni mezők** Log Analytics szolgáltatása lehetővé teszi, hogy a saját kereshető mezők hozzáadásával a Log Analytics meglévő rekordok.  Egyéni mezők automatikusan tölti be más tulajdonságokat ugyanazt a rekordot a kinyert adatokkal.
@@ -46,9 +46,9 @@ A következő szakaszok az eljárás az egyéni mezőt hoz létre.  Ez a cikk al
 > 
 
 ### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>1. lépés – azonosíthatja a bejegyzéseket, amelyek az egyéni mező
-Az első lépéseként azonosítani az egyéni mező lekéri a rekordokat.  Kezdjen egy [standard naplóbeli keresés](log-analytics-log-searches.md) , majd egy rekordot, hogy működjön, a Log Analytics tekintjük át, a modell.  Megadhatja, hogy fog adatokat nyerhet ki az egyéni mezők, amikor a **mező kinyerése varázsló** van megnyitva, ahol ellenőrzése és finomítsa a feltétel.
+Az első lépéseként azonosítani az egyéni mező lekéri a rekordokat.  Kezdjen egy [standard naplóbeli keresés](log-analytics-log-search.md) , majd egy rekordot, hogy működjön, a Log Analytics tekintjük át, a modell.  Megadhatja, hogy fog adatokat nyerhet ki az egyéni mezők, amikor a **mező kinyerése varázsló** van megnyitva, ahol ellenőrzése és finomítsa a feltétel.
 
-1. Lépjen a **naplóbeli keresés** , és egy [lekérdezése a rekordok](log-analytics-log-searches.md) , amely lesz az egyéni mező.
+1. Lépjen a **naplóbeli keresés** , és egy [lekérdezése a rekordok](log-analytics-log-search.md) , amely lesz az egyéni mező.
 2. Válassza ki egy rekordot, amely a Log Analytics segítségével egy modellt használ az adatok feltöltése az egyéni mező kinyerése fogja használni.  Az adatok kinyerése a rekord kívánt határozható meg, és a Log Analytics ezt az információt fogja használni, töltse ki az egyéni mező összes hasonló rekordok logikát meghatározni.
 3. A gombra kattintva bármely a text tulajdonság a rekordot, majd válassza a balra **mezők kinyerése a következőből**.
 4. A **mező a varázsló megnyitásakor**, és a kiválasztott rekord jelenik meg a **fő példa** oszlop.  Az egyéni mező azokat a rekordokat, ugyanazokat az értékeket a tulajdonságokat, amelyeket kiválasztott a meghatározva.  
@@ -140,6 +140,6 @@ Mi most már használhatja az egyéni mező, mint bármely más rekord tulajdons
 ![Lekérdezés csoportosítás](media/log-analytics-custom-fields/query-group.png)
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [naplókereséseket](log-analytics-log-searches.md) építhetők fel lekérdezések egyéni mezők feltétel használatával.
+* Ismerje meg [naplókereséseket](log-analytics-log-search.md) építhetők fel lekérdezések egyéni mezők feltétel használatával.
 * A figyelő [egyéni naplófájlok](log-analytics-data-sources-custom-logs.md) , amely elemezni a egyéni mezőkkel.
 

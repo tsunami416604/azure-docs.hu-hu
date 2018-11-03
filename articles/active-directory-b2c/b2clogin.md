@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 36025bf8460d690aab3b3617ad3341dfe7005e9e
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: f180b6b82613cdddf33a2128d25c49913b8fb128
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649275"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978485"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Set átirányítási URL-címek a b2clogin.com-on Azure Active Directory B2C-vel
 
@@ -62,7 +62,7 @@ Az Azure AD B2C-alkalmazást valószínűleg hivatkozik `login.microsoftonline.c
 
 Ha MSAL használ, állítsa be a **ValidateAuthority** való `false`. Az alábbi példa bemutatja, hogyan lehet, hogy a tulajdonság értéke:
 
-```
+```CSharp
 this.clientApplication = new UserAgentApplication(
   env.auth.clientId,
   env.auth.loginAuthority,

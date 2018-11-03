@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 28344ac7c50b48b472ba6f907b116b3b202de454
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: ebf5a23743d1fdd9553b391bb0518c2887ddb096
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238797"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959987"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>A hibrid Azure Active Directory join megvalósítás tervezése
 
@@ -49,6 +49,7 @@ A hibrid Azure AD-megvalósítás megtervezése, meg kell ismerkednie az:
 |---|---|
 |![Jelölőnégyzet][1]|Tekintse át a támogatott eszközök|
 |![Jelölőnégyzet][1]|Felülvizsgálat tudnivalók|
+|![Jelölőnégyzet][1]|Tekintse át a hibrid Azure AD join eszköz vezérlése|
 |![Jelölőnégyzet][1]|A forgatókönyv kiválasztása|
 
 
@@ -112,6 +113,11 @@ Ha a szervezet egy hitelesített kimenő proxy használatát írja elő az inter
 Hibrid Azure AD-csatlakozás egy olyan folyamat, automatikusan regisztrálja az Azure AD a helyi tartományhoz csatlakoztatott eszközök. Előfordulhatnak olyan esetek, amikor nem szeretné automatikusan regisztrálja az eszközök. Ha ez igaz az Ön számára, lásd: [eszközt, a hibrid Azure AD join vezérlése](hybrid-azuread-join-control.md).
 
 
+## <a name="review-how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>Tekintse át a hibrid Azure AD join eszköz vezérlése
+
+Hibrid Azure AD-csatlakozás egy olyan folyamat, automatikusan regisztrálja az Azure AD a helyi tartományhoz csatlakoztatott eszközök. Előfordulhatnak olyan esetek, amikor nem szeretné automatikusan regisztrálja az eszközök. Ez a példa true, ellenőrizze, hogy minden megfelelően működik-e a kezdeti bevezetés során.
+
+További információkért lásd: [eszközt, a hibrid Azure AD join szabályozása](hybrid-azuread-join-control.md)
 
 ## <a name="select-your-scenario"></a>A forgatókönyv kiválasztása
 

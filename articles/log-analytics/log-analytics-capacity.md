@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 0244673d50e22124e8a0678e202004f06b0bca00
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: e1f33551c02562bbd8b7cc6a4187f7135a06c60f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182620"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961942"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>A kapacitásra és teljesítményre megoldással (előzetes verzió) a Hyper-V virtuális gép kapacitásának megtervezése
 
@@ -50,8 +50,8 @@ Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott �
 
 | Összekapcsolt forrás | Támogatás | Leírás |
 |---|---|---|
-| [Windows-ügynökök](log-analytics-windows-agent.md) | Igen | A megoldás kapacitás és teljesítmény adatokkal kapcsolatos információk Windows-ügynököktől gyűjti. |
-| [Linux-ügynökök](log-analytics-linux-agents.md) | Nem    | A megoldás nem kapacitás és teljesítmény adatok adatainak gyűjtését a Linux-ügynökök közvetlen.|
+| [Windows-ügynökök](log-analytics-agent-windows.md) | Igen | A megoldás kapacitás és teljesítmény adatokkal kapcsolatos információk Windows-ügynököktől gyűjti. |
+| [Linux-ügynökök](log-analytics-quick-collect-linux-computer.md) | Nem    | A megoldás nem kapacitás és teljesítmény adatok adatainak gyűjtését a Linux-ügynökök közvetlen.|
 | [Az SCOM felügyeleti csoport](log-analytics-om-agents.md) | Igen |A megoldás egy csatlakoztatott SCOM felügyeleti csoportban lévő ügynököktől származó kapacitás és teljesítmény adatokat gyűjt. Az SCOM-ügynöktől a Log Analyticshez való közvetlen kapcsolat nem kötelező.|
 | [Azure Storage-fiók](log-analytics-azure-storage.md) | Nem | Az Azure storage nem tartalmaz a kapacitás-és teljesítményadatokat.|
 
@@ -64,7 +64,7 @@ Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott �
 
 Hajtsa végre a következő lépéseket a kapacitás és teljesítmény megoldás hozzáadása a munkaterülethez.
 
-- Adja hozzá a kapacitás és teljesítmény megoldás a Log Analytics-munkaterülethez ismertetett folyamatot [adja hozzá a Log Analytics solutions kövesse a megoldástárban](log-analytics-add-solutions.md).
+- Adja hozzá a kapacitás és teljesítmény megoldás a Log Analytics-munkaterülethez ismertetett folyamatot [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../monitoring/monitoring-solutions.md).
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
 
@@ -138,4 +138,4 @@ Az alábbi táblázat a kapacitás és teljesítmény adatokat gyűjteni, és a 
 
 
 ## <a name="next-steps"></a>További lépések
-* Használat [Log Analytics naplóbeli kereséseivel](log-analytics-log-search.md) részletes kapacitásra és teljesítményre vonatkozó adatok megtekintéséhez.
+* Használat [Log Analytics naplóbeli kereséseivel](log-analytics-queries.md) részletes kapacitásra és teljesítményre vonatkozó adatok megtekintéséhez.

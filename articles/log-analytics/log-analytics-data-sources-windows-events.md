@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/11/2017
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 4e21c011f54382466bf614dc01fb9d51b514d998
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 0285b9208247aa84f56d127e734e8a5e87048ac6
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044246"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961364"
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Windows Eseménynapló-adatforrások a Log Analyticsben
 Windows-eseménynaplók közé tartoznak a leggyakoribb [adatforrások](log-analytics-data-sources.md) Windows-ügynökök használata, mivel számos alkalmazásban a Windows eseménynaplójába írhatja az adatok gyűjtéséhez.  Események, például a rendszer- és standard szintű naplók is összegyűjtheti a bármely kell figyelnie alkalmazások által létrehozott egyéni naplók megadása mellett.
@@ -40,7 +40,7 @@ Az Eseménynapló neve beírása a Log Analytics Eseménynapló köznapi nevek v
 A log Analytics gyűjt minden eseményt az esemény létrehozása egy kiválasztott súlyossága a figyelt eseménynaplóban a megfelelő.  Az ügynök a helyére az összegyűjtő minden eseménynaplóban rögzíti.  Ha az ügynököt egy ideig offline állapotba kerül, majd a Log Analytics gyűjti össze események ahol utolsó abbamaradtak, akkor is, ha az események jöttek létre, miközben az ügynök offline állapotban volt.  Lehetőség van, nem lesznek összegyűjtve, ha az ügynök nélküli állapotában felülírásra elveszne eseményekkel rendelkező burkolja az Eseménynapló ezeket az eseményeket.
 
 >[!NOTE]
->A log Analytics nem gyűjt be a forrás SQL-kiszolgáló által létrehozott események naplózása *MSSQLSERVER* , amely tartalmazza a kulcsszavak - azonosítójú 18453 *klasszikus* vagy *naplózási sikeres* és kulcsszó *0xa0000000000000*.
+>A log Analytics nem gyűjt be a forrás SQL-kiszolgáló által létrehozott események naplózása *MSSQLSERVER* , amely tartalmazza a kulcsszavak - azonosítójú 18453 *klasszikus* vagy *naplózási sikeres* és kulcsszó *0xa0000000000000*.
 >
 
 ## <a name="windows-event-records-properties"></a>Windows-esemény rekordok tulajdonságai
@@ -76,6 +76,6 @@ Az alábbi táblázat példákat különböző naplókeresésekkel, amelyek lek�
 
 ## <a name="next-steps"></a>További lépések
 * Konfigurálja a gyűjtendő más Log Analytics [adatforrások](log-analytics-data-sources.md) elemzés céljából.
-* Ismerje meg [naplókereséseket](log-analytics-log-searches.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
+* Ismerje meg [naplókereséseket](log-analytics-log-search.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
 * Használat [egyéni mezők](log-analytics-custom-fields.md) az eseményrekordok elemezni az egyes mezőket.
 * Konfigurálása [teljesítményszámláló-gyűjtemény](log-analytics-data-sources-performance-counters.md) a Windows-ügynököktől.

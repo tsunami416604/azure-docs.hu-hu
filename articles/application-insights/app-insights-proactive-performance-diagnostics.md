@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: b0256e899d47e3b6f8141218c11e1a7a62ca8e1a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 099e597982172bcea39fedd0fd1445f466eb2bc1
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419724"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960820"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligens detektálás – teljesítménnyel kapcsolatos anomáliák
 
@@ -161,7 +161,7 @@ Figyelje meg, amely megadja, hogy:
 
 Az Application Insights megkeresése, amelyek csak érintik bizonyos része a felhasználók számára, vagy csak az egyes esetekben felhasználókat érintő teljesítménybeli problémák. Például oldalak terhelési értesítési egyfajta böngésző, mint a böngészők, más típusú lassabb lesz-e, vagy ha kérelmek egy adott kiszolgálóról lassabban fájlnévkiterjesztései. Azt is felfedezhetik tulajdonságok kombinációja kapcsolódó problémák, például a lassú oldal megfelelően töltődik be egy földrajzi területen adott operációs rendszert használó ügyfelek számára.  
 
-Az alábbiakhoz hasonló rendellenességek észlelése az adatok vizsgálatával csak nagyon nehéz, de gyakoribbak, mint gondolná. Gyakran azok csak surface, amikor az ügyfelek panaszok. Adott időpontig, s késő: az érintett felhasználók már vált át a versenytársak!
+Az alábbiakhoz hasonló rendellenességek észlelése az adatok vizsgálatával csak nagyon nehéz, de gyakoribbak, mint gondolná. Gyakran azok csak surface, amikor az ügyfelek panaszok. Adott időpontig késő: az érintett felhasználók már vált át a versenytársak!
 
 Jelenleg az algoritmusok lapbetöltési idők, a kérelem válaszidejének a kiszolgálón és a válaszidők függőségi meg.  
 
@@ -185,8 +185,8 @@ Ezek a diagnosztikai eszközök segítséget nyújt az alkalmazásából szárma
 
 * [Profilkészítő](app-insights-profiler.md) 
 * [Pillanatkép-hibakereső](app-insights-snapshot-debugger.md)
-* [Elemzés](app-insights-analytics-tour.md)
-* [Intelligens diagnosztika Analytics](app-insights-analytics-diagnostics.md)
+* [Elemzés](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Intelligens diagnosztika Analytics](app-insights-analytics.md)
 
 Az intelligens észlelés teljesen automatikus. De esetleg szeretné néhány további riasztásokat állíthat be?
 

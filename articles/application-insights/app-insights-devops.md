@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: e77389411e52853efb52252a17c8612f0480fa61
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: ae033b944e93fe90392af9b17de883d791d3e4dc
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298642"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958595"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Webalkalmazások és szolgáltatások részletes diagnosztikája az Application Insights szolgáltatással
 ## <a name="why-do-i-need-application-insights"></a>Miért kell Application Insights?
@@ -172,7 +172,7 @@ Riasztást hoz létre, amikor az Application Insights automatikusan létrehozhat
 ## <a name="next-steps"></a>További lépések
 Ismerkedés az Application Insights ördöngösség. A főbb lehetőségek közül választhat:
 
-* Alakítsa ki egy már futó webalkalmazás. Ez lehetővé teszi a beépített teljesítményfigyelő telemetriai adatokat. Érhető el [Java](app-insights-java-live.md) és [IIS-kiszolgálókkal](app-insights-monitor-performance-live-website-now.md), és emellett a [Azure web apps](app-insights-azure.md).
+* Alakítsa ki egy már futó webalkalmazás. Ez lehetővé teszi a beépített teljesítményfigyelő telemetriai adatokat. Érhető el [Java](app-insights-java-live.md) és [IIS-kiszolgálókkal](app-insights-monitor-performance-live-website-now.md), és emellett a [Azure web apps](app-insights-overview.md).
 * Alakítsa ki a projektet a fejlesztés során. Ehhez [ASP.NET](app-insights-asp-net.md) vagy [Java](app-insights-java-get-started.md) alkalmazások esetében, valamint [Node.js](app-insights-nodejs.md) és a egy sereg [más típusú](app-insights-platforms.md). 
 * Eszköz [bármilyen weblapon](app-insights-javascript.md) rövid kódtöredék hozzáadásával.
 

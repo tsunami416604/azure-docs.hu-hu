@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: dfa0a4b637153d6fa3cce5c9b402587950686341
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ad5721ff7304629ba786b1fed308ccb05b4a5211
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418075"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962724"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>A Configuration Manager csatlakoztatása a Log Analyticsbe
 A System Center Configuration Manager-környezet szinkronizálási eszköz gyűjtemény adatait az Azure Log Analyticshez csatlakozhat, és ezeket a gyűjteményeket, a Log Analytics és Azure Automation hivatkozhat.  
@@ -69,7 +69,7 @@ Annak érdekében, hogy a Log Analytics-kapcsolat hozzáadása, rendelkeznie kel
    
 2. Az a **általános** képernyőjén ellenőrizze, hogy elvégezte-e az alábbi műveleteket, és, hogy rendelkezik az egyes elemek részleteit, majd válassza ki, **tovább**.
 
-   1. Az Azure Portalon regisztrálta a Configuration Manager, egy webalkalmazás és/vagy webes API-alkalmazást, és hogy rendelkezik a [ügyfél-azonosító, a regisztráció](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
+   1. Az Azure Portalon regisztrálta a Configuration Manager, egy webalkalmazás és/vagy webes API-alkalmazást, és hogy rendelkezik a [ügyfél-azonosító, a regisztráció](../active-directory/develop/quickstart-v1-add-azure-ad-app.md).
    2. Az Azure Portalon létrehozott egy Azure Active Directoryban regisztrált alkalmazás titkos kulcsa.  
    3. Az Azure Portalon a regisztrált webalkalmazás elküldtük a hozzáféréssel a Log Analytics.  
       ![Kapcsolat a Log Analytics varázsló Általános lapja](./media/log-analytics-sccm/sccm-console-general01.png)
@@ -113,7 +113,7 @@ Miután a gyűjtemények importálása, láthatja, hány csoporttagsággal rende
 
 ![Számítógépcsoportok – SCCM lap](./media/log-analytics-sccm/sccm-computer-groups02.png)
 
-Ha egy gombra kattint, keresési jelenik meg, amelyen az importált csoportok összes vagy egyes csoporthoz tartozó összes számítógép. Használatával [naplóbeli keresés](log-analytics-log-searches.md), elkezdheti a Configuration Manager adatok részletes elemzését.
+Ha egy gombra kattint, keresési jelenik meg, amelyen az importált csoportok összes vagy egyes csoporthoz tartozó összes számítógép. Használatával [naplóbeli keresés](log-analytics-log-search.md), elkezdheti a Configuration Manager adatok részletes elemzését.
 
 ## <a name="next-steps"></a>További lépések
-* Használat [naplóbeli keresés](log-analytics-log-searches.md) részletes információkat a Configuration Manager adatainak megtekintéséhez.
+* Használat [naplóbeli keresés](log-analytics-log-search.md) részletes információkat a Configuration Manager adatainak megtekintéséhez.

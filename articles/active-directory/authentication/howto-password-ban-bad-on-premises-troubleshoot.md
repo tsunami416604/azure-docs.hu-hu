@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 11/02/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 6832f6f9d09cbbfea6ccaa69160ad93209c7ac8c
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 1e5782ce3421cc5f0d2e0e51484d4bbe6b9eb6ab
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741181"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978638"
 ---
 # <a name="preview-azure-ad-password-protection-monitoring-reporting-and-troubleshooting"></a>Előzetes verzió: Azure AD jelszó-védelem figyelési, jelentéseket és hibaelhárítás
 
@@ -24,13 +24,15 @@ ms.locfileid: "50741181"
 | Az Azure AD jelszóvédelem az Azure Active Directory nyilvános előzetes verziójú funkció. Előzetes verziók kapcsolatos további információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
-Az Azure AD jelszóvédelem telepítése után a figyelés és jelentéskészítés elvégzendő alapvető feladatok. Ez a cikk részletezik segítségével megismeri, ahol minden szolgáltatás információkat naplózza, és az Azure AD jelszóvédelem használatakor jelentése.
+Az Azure AD jelszóvédelem üzembe helyezés után a figyelés és jelentéskészítés elvégzendő alapvető feladatok. Ez a cikk részletezik segítségével megismeri, ahol minden szolgáltatás információkat naplózza, és az Azure AD jelszóvédelem használatakor jelentése.
 
 ## <a name="on-premises-logs-and-events"></a>A helyszíni naplók és események
 
-### <a name="dc-agent-service"></a>DC-ügynökszolgáltatás
+### <a name="dc-agent-admin-log"></a>Tartományvezérlő az ügynök felügyeleti napló
 
-Minden tartományvezérlőn, a tartományvezérlő szolgáltatás ügynökszoftver az eredményeket a jelszó-ellenőrzések (és más állapota) ír egy helyi Eseménynapló: \Applications és a szolgáltatások Logs\Microsoft\AzureADPasswordProtection\DCAgent\Admin
+Minden tartományvezérlőn a tartományvezérlő szolgáltatás ügynökszoftver a naplófájlba írja az eredményeket a jelszó-ellenőrzések (és más állapota) egy helyi esemény:
+
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Admin`
 
 A különböző DC agent-összetevők használatával a következő tartományokra által naplózott eseményeket:
 
@@ -62,105 +64,157 @@ A kulcs jelszó-érvényesítési-események a következők:
 > [!TIP]
 > Bejövő jelszavak ellenőrizni hasonlítja össze a Microsoft globális jelszót először; Ha ez nem sikerül, nincs további feldolgozás céljából történik. Ez a lehetőség viselkedést végrehajtott jelszómódosítások az Azure-ban.
 
-#### <a name="sample-event-log-message-for-event-id-10014-successful-password-set"></a>Minta eseménynapló-üzenet eseményazonosító 10014 sikeres jelszavának beállítása
+#### <a name="sample-event-log-message-for-event-id-10014-successful-password-set"></a>Minta eseménynapló-üzenet az eseményazonosító 10014 (sikeres jelszavának beállítása)
 
-A módosított jelszó a megadott felhasználó felel meg a jelenlegi Azure jelszóházirend lett érvényesítve.
+```
+The changed password for the specified user was validated as compliant with the current Azure password policy.
 
- Felhasználónév: BPL_02885102771 FullName:
+ UserName: BPL_02885102771
+ FullName:
+```
 
-#### <a name="sample-event-log-message-for-event-id-10017-and-30003-failed-password-set"></a>Minta eseménynapló-üzenet eseményazonosító 10017, és nem sikerült 30003 jelszavának beállítása
+#### <a name="sample-event-log-message-for-event-id-10017-and-30003-failed-password-set"></a>Minta eseménynapló-üzenet az eseményazonosító 10017 és 30003 (sikertelen jelszómegadási set)
 
 10017:
 
-A jelszó alaphelyzetbe állítása a megadott felhasználó el lett utasítva, mert nem felelt meg a jelenlegi Azure jelszóházirend. Tekintse át a további részletekért korrelált eseménynapló-üzenet.
+```
+The reset password for the specified user was rejected because it did not comply with the current Azure password policy. Please see the correlated event log message for more details.
 
- Felhasználónév: BPL_03283841185 FullName:
+ UserName: BPL_03283841185
+ FullName:
+```
 
 30003:
 
-A jelszó alaphelyzetbe állítása a megadott felhasználó el lett utasítva, mert a jelenlegi Azure jelszóházirend bérlőnkénti le van tiltva jelszó listájában a jogkivonatok legalább egy egyezést mutat.
+```
+The reset password for the specified user was rejected because it matched at least one of the tokens present in the per-tenant banned password list of the current Azure password policy.
 
- Felhasználónév: BPL_03283841185 FullName:
+ UserName: BPL_03283841185
+ FullName:
+```
 
-Néhány egyéb fő Eseménynapló-üzenetek érdemes figyelembe vennie vannak:
+#### <a name="sample-event-log-message-for-event-id-30001-password-accepted-due-to-no-policy-available"></a>Minta eseménynapló-üzenet az eseményazonosító 30001 (jelszó miatt nincs elérhető házirend elfogadja)
 
-#### <a name="sample-event-log-message-for-event-id-30001"></a>Eseményazonosító 30001 minta eseménynapló-üzenet
+```
+The password for the specified user was accepted because an Azure password policy is not available yet
 
-A megadott felhasználó jelszavát elfogadták, mert egy Azure jelszóházirend még nem érhető el
+UserName: SomeUser
+FullName: Some User
 
-Felhasználónév: SomeUser FullName: néhány felhasználó
+This condition may be caused by one or more of the following reasons:%n
 
-Ez a feltétel okozhatja egy vagy több, a következő okok miatt: % n
+1. The forest has not yet been registered with Azure.
 
-1. Az erdő tartalmaz még nem regisztrált az Azure-ral.
+   Resolution steps: an administrator must register the forest using the Register-AzureADPasswordProtectionForest cmdlet.
 
-   A megoldás lépései: a rendszergazda regisztrálnia kell az erdő, a Register-AzureADPasswordProtectionForest parancsmag használatával.
+2. An Azure AD password protection Proxy is not yet available on at least one machine in the current forest.
 
-2. Az Azure AD jelszóvédelem Proxy még nem áll rendelkezésre az adott erdőben található legalább egy számítógépen.
+   Resolution steps: an administrator must install and register a proxy using the Register-AzureADPasswordProtectionProxy cmdlet.
 
-   A megoldás lépései: a rendszergazda telepítse és regisztrálja a Register-AzureADPasswordProtectionProxy parancsmaggal proxy.
+3. This DC does not have network connectivity to any Azure AD password protection Proxy instances.
 
-3. A tartományvezérlő nincs hálózati kapcsolat és az Azure AD jelszó védelme Proxy példányok.
+   Resolution steps: ensure network connectivity exists to at least one Azure AD password protection Proxy instance.
 
-   A megoldás lépései: Győződjön meg arról, legalább egy Azure AD jelszó védelme Proxy példányra van hálózati kapcsolat.
+4. This DC does not have connectivity to other domain controllers in the domain.
 
-4. A tartományvezérlő nem rendelkezik a többi tartományvezérlő a tartományban.
+   Resolution steps: ensure network connectivity exists to the domain.
+```
 
-   A megoldás lépései: Győződjön meg arról, a tartományhoz van hálózati kapcsolat.
+#### <a name="sample-event-log-message-for-event-id-30006-new-policy-being-enforced"></a>Minta eseménynapló-üzenet az eseményazonosító 30006 (új szabályzat van érvényben)
 
-#### <a name="sample-event-log-message-for-event-id-30006"></a>Eseményazonosító 30006 minta eseménynapló-üzenet
+```
+The service is now enforcing the following Azure password policy.
 
-A szolgáltatás most már a következő Azure jelszóházirend kényszerít.
-
+ Enabled: 1
  AuditOnly: 1
+ Global policy date: ‎2018‎-‎05‎-‎15T00:00:00.000000000Z
+ Tenant policy date: ‎2018‎-‎06‎-‎10T20:15:24.432457600Z
+ Enforce tenant policy: 1
+```
 
- Globális szabályzat dátuma: 2018. 05-15T00:00:00.000000000Z
+#### <a name="dc-agent-operational-log"></a>Tartományvezérlő az ügynök műveleti napló
 
- A bérlői házirend dátuma: 2018-06-10T20:15:24.432457600Z
+A tartományvezérlő-ügynökszolgáltatás is naplózza az eseményeket üzemeltetési vonatkozású, a következő log:
 
- A bérlői szabályzat kényszerítése: 1
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Operational`
 
-#### <a name="dc-agent-log-locations"></a>DC-ügynök a naplók helye
+#### <a name="dc-agent-trace-log"></a>Tartományvezérlő ügynök nyomkövetési napló
 
-A tartományvezérlő-ügynökszolgáltatás is naplózza az eseményeket üzemeltetési vonatkozású, a következő naplófájl: \Applications és a szolgáltatások Logs\Microsoft\AzureADPasswordProtection\DCAgent\Operational
+A tartományvezérlő-ügynökszolgáltatás is jelentkezhetnek hibakeresési szintűre részletes nyomkövetési események a következő naplófájl:
 
-A tartományvezérlő-ügynökszolgáltatás is jelentkezhetnek hibakeresési szintűre részletes nyomkövetési események a következő naplófájl: \Applications és a szolgáltatások Logs\Microsoft\AzureADPasswordProtection\DCAgent\Trace
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\DCAgent\Trace`
+
+Nyomkövetési adatainak naplózása alapértelmezés szerint le van tiltva.
 
 > [!WARNING]
-> A nyomkövetési napló alapértelmezés szerint le van tiltva. Ha engedélyezve van, ez a napló nagy mennyiségű esemény fogadása, és hatással lehet a tartományvezérlő teljesítményét. Ezért a továbbfejlesztett napló kell csak akkor engedélyezhető, ha probléma mélyebb vizsgálatra van szükség, és akkor is csak egy minimális időtartamot.
+>  Ha engedélyezve van, a nyomkövetési napló nagy mennyiségű esemény kap, és hatással lehet a tartományvezérlő teljesítményét. Ezért a továbbfejlesztett napló kell csak akkor engedélyezhető, ha probléma mélyebb vizsgálatra van szükség, és akkor is csak egy minimális időtartamot.
+
+#### <a name="dc-agent-text-logging"></a>Tartományvezérlő ügynök szöveges naplózás
+
+A tartományvezérlő-ügynök szolgáltatás beállítható úgy, hogy egy szöveges napló írni, állítsa a következő beállításazonosítót:
+
+HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionDCAgent\Parameters! EnableTextLogging = 1 (REG_DWORD érték)
+
+Szöveges naplózás alapértelmezés szerint le van tiltva. A tartományvezérlő-ügynök szolgáltatás újraindításra szükség a módosítások érvénybe léptetéséhez ezt az értéket. Ha engedélyezve van a tartományvezérlő ügynökszolgáltatás fog kiírni, egy naplófájlba alatt található:
+
+`%ProgramFiles%\Azure AD Password Protection DC Agent\Logs`
+
+> [!TIP]
+> A szöveges napló kap a nyomkövetési naplónak naplózható hibakeresési szintűre bejegyzések, de általában egyszerűbb formátumban áttekintéséhez és elemzéséhez.
+
+> [!WARNING]
+> Ha engedélyezve van, ez a napló nagy mennyiségű esemény fogadása, és hatással lehet a tartományvezérlő teljesítményét. Ezért a továbbfejlesztett napló kell csak akkor engedélyezhető, ha probléma mélyebb vizsgálatra van szükség, és akkor is csak egy minimális időtartamot.
 
 ### <a name="azure-ad-password-protection-proxy-service"></a>Az Azure AD jelszó protection proxy szolgáltatás
 
-A jelszavas védelem Proxy szolgáltatás minimális események egy meghatározott készletének a következő eseménynaplóba bocsát ki: \Applications és a szolgáltatások Logs\Microsoft\AzureADPasswordProtection\ProxyService\Operational
+#### <a name="proxy-service-event-logs"></a>Proxy szolgáltatás eseménynaplók
 
-A jelszavas védelem Proxy szolgáltatást is jelentkezhetnek hibakeresési szintűre részletes nyomkövetési események a következő naplófájl: \Applications és a szolgáltatások Logs\Microsoft\AzureADPasswordProtection\ProxyService\Trace
+A Proxy szolgáltatást az alábbi eseménynaplókból események minimális számú bocsát ki:
+
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Admin`
+
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Operational`
+
+A Proxy szolgáltatást is jelentkezhetnek hibakeresési szintűre részletes nyomkövetési események a következő naplófájl:
+
+`\Applications and Services Logs\Microsoft\AzureADPasswordProtection\ProxyService\Trace`
+
+Nyomkövetési adatainak naplózása alapértelmezés szerint le van tiltva.
 
 > [!WARNING]
-> A nyomkövetési napló alapértelmezés szerint le van tiltva. Ha engedélyezve van, ez a napló fogadja-e nagy mennyiségű esemény, és hatással lehet a proxyállomás teljesítményét. Ezért ez a napló kell csak akkor engedélyezhető, ha a probléma mélyebb vizsgálatra van szükség, és akkor is csak egy minimális időtartamot.
+> Ha engedélyezve van, a nyomkövetési napló fogadja-e nagy mennyiségű esemény, és hatással lehet a proxyállomás teljesítményét. Ezért ez a napló kell csak akkor engedélyezhető, ha a probléma mélyebb vizsgálatra van szükség, és akkor is csak egy minimális időtartamot.
 
-### <a name="dc-agent-discovery"></a>DC-ügynök felderítése
+#### <a name="proxy-service-text-logging"></a>Proxy szolgáltatás szöveges naplózás
 
-A `Get-AzureADPasswordProtectionDCAgent` parancsmag is használható a különböző DC ügynökök futtatása a tartomány vagy erdő alapvető információit jeleníti meg. Ez az információ veszi át a serviceConnectionPoint objektumok a futó tartományvezérlő ügynök szolgáltatás(ok) által regisztrált. Egy példa a parancsmag kimenete a következőképpen történik:
+A Proxy szolgáltatás beállítható úgy, hogy egy szöveges napló írni, állítsa a következő beállításazonosítót:
 
-```
-PS C:\> Get-AzureADPasswordProtectionDCAgent
-ServerFQDN            : bplChildDC2.bplchild.bplRootDomain.com
-Domain                : bplchild.bplRootDomain.com
-Forest                : bplRootDomain.com
-Heartbeat             : 2/16/2018 8:35:01 AM
-```
+HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionProxy\Parameters! EnableTextLogging = 1 (REG_DWORD érték)
 
-Minden egyes tartományvezérlő ügynökszolgáltatás hozzávetőleges számítónk különböző tulajdonságait frissíti. Az adatok a továbbra is az Active Directory replikáció késése.
+Szöveges naplózás alapértelmezés szerint le van tiltva. A Proxy szolgáltatás újraindításra szükség a módosítások érvénybe léptetéséhez ezt az értéket. Ha a szolgáltatás alatt naplófájlt fogja írni a Proxy engedélyezve:
 
-A parancsmag lekérdezés hatókörét használatával befolyásolhatja a – erdőben vagy -Domain paraméterek.
+`%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
+
+> [!TIP]
+> A szöveges napló kap a nyomkövetési naplónak naplózható hibakeresési szintűre bejegyzések, de általában egyszerűbb formátumban áttekintéséhez és elemzéséhez.
+
+> [!WARNING]
+> Ha engedélyezve van, ez a napló nagy mennyiségű esemény fogadása, és hatással lehet a tartományvezérlő teljesítményét. Ezért a továbbfejlesztett napló kell csak akkor engedélyezhető, ha probléma mélyebb vizsgálatra van szükség, és akkor is csak egy minimális időtartamot.
+
+#### <a name="powershell-cmdlet-logging"></a>PowerShell-parancsmag naplózása
+
+Az Azure AD jelszóvédelem Powershell-parancsmagok a legtöbb fog írni egy szöveges napló alatt található:
+
+`%ProgramFiles%\Azure AD Password Protection Proxy\Logs`
+
+Ha egy parancsmag hiba lép fel, és a OK kijelöljön megoldás nem jól látható, a szöveges naplók is megtekinthetők.
 
 ### <a name="emergency-remediation"></a>Sürgős szervizelés
 
-Ha egy kellemetlen helyzet áll elő, ha a tartományvezérlő-ügynökszolgáltatás problémákat okoz, a tartományvezérlő-ügynökszolgáltatás előfordulhat, hogy azonnal leáll. A tartományvezérlő ügynök jelszó szűrő dll megpróbálja meghívni a nem futó szolgáltatás, és naplózza az figyelmeztetési eseményeket (10012, 10013), de ebben az időszakban minden bejövő jelszót fogad. A tartományvezérlő-ügynökszolgáltatás majd is konfigurálhatók keresztül a Windows szolgáltatásvezérlő indítási típusaként válassza a "Letiltott" igény szerint.
+Ha olyan helyzet akkor fordul elő, ha a tartományvezérlő-ügynökszolgáltatás problémákat okoz, a tartományvezérlő-ügynökszolgáltatás előfordulhat, hogy azonnal leáll. A tartományvezérlő ügynök jelszó szűrő dll továbbra is megpróbálja meghívni a nem futó szolgáltatás, és naplózza az figyelmeztetési eseményeket (10012, 10013), de ebben az időszakban minden bejövő jelszót fogad. A tartományvezérlő-ügynökszolgáltatás majd is konfigurálhatók keresztül a Windows szolgáltatásvezérlő indítási típusaként válassza a "Letiltott" igény szerint.
 
 ### <a name="performance-monitoring"></a>Teljesítményfigyelés
 
-A tartományvezérlő ügynök szolgáltatás szoftver telepítése a teljesítményszámláló objektum neve **az Azure AD jelszóvédelem**. Az alábbi teljesítményszámlálók jelenleg érhetők el:
+A tartományvezérlő ügynök szolgáltatás szoftver telepítése a teljesítményszámláló objektum neve **Azure AD jelszóvédelem**. Az alábbi teljesítményszámlálók jelenleg érhetők el:
 
 |Teljesítményoptimalizált számláló neve | Leírás|
 | --- | --- |
@@ -182,6 +236,7 @@ A tartományvezérlő a Címtárszolgáltatások helyreállító módjában rend
 ## <a name="domain-controller-demotion"></a>Tartományvezérlő lefokozása
 
 Továbbra is fut a tartományvezérlő ügynökszoftver tartományvezérlő lefokozása támogatott. A rendszergazdák figyelembe kell azonban, hogy a tartományvezérlő ügynök szoftver továbbra is működik, és továbbra is a jelenlegi jelszóházirend kényszerítése a lefokozási folyamat során. Az új helyi rendszergazdai fiók jelszava (a lefokozás művelet részeként megadott) érvényesítve lesz, mint bármely más jelszót. A Microsoft azt javasolja, hogy biztonságos jelszavakkal a helyi rendszergazdai fiókok választani egy tartományvezérlő lefokozási eljárást; részeként Új helyi rendszergazdai fiók jelszavának a tartományvezérlő ügynök szoftver érvényesítése azonban előre a lefokozás eljárások meglévő zavaró lehet.
+
 A lefokozás sikeres volt, és a tartományvezérlő újraindítását, és újra normál kiszolgáló fut, a tartományvezérlő ügynökszoftver visszatér a passzív üzemmódban futó. Előfordulhat, hogy ezután távolítható bármikor.
 
 ## <a name="removal"></a>Eltávolítás
@@ -189,35 +244,36 @@ A lefokozás sikeres volt, és a tartományvezérlő újraindítását, és újr
 Ha úgy döntenek, hogy távolítsa el a nyilvános előzetes verziójú szoftver és karbantartása minden kapcsolódó állapota a tartomány és erdő, ez a feladat végezhető el az alábbi lépéseket követve:
 
 > [!IMPORTANT]
-> Fontos sorrendben hajtsa végre ezeket a lépéseket. Ha a jelszavas védelem Proxy szolgáltatás minden példányát futtatni fogja rendszeres időközönként hozza létre újból a serviceConnectionPoint objektum, valamint rendszeres időközönként hozza létre újból a sysvol-állapot.
+> Fontos sorrendben hajtsa végre ezeket a lépéseket. Ha a Proxy szolgáltatás minden példányát futtató, rendszeresen újra létrehozza a serviceConnectionPoint objektum. Ha a tartományvezérlő-ügynökszolgáltatás bármelyik példányát futtató, rendszeresen újra létrehozza a serviceConnectionPoint objektum és a sysvol-állapot.
 
 1. Távolítsa el a jelszavas védelem Proxy szoftver összes gép. Ebben a lépésben does **nem** újraindítása szükséges.
 2. Távolítsa el a tartományvezérlő ügynökszoftver az összes tartományvezérlőről. Ebben a lépésben **igényel** újraindítás.
-3. Manuálisan távolítsa el a proxy összes szolgáltatáskapcsolati pontját, az egyes tartományi névhasználati környezeten. Ezek az objektumok helyét is felderítése a következő Active Directory Powershell-paranccsal:
-   ```
+3. Manuálisan távolítsa el a Proxy összes szolgáltatáskapcsolati pontját, az egyes tartományi névhasználati környezeten. Ezek az objektumok helyét is felderítése a következő Active Directory Powershell-paranccsal:
+
+   ```Powershell
    $scp = "serviceConnectionPoint"
-   $keywords = "{EBEFB703-6113-413D-9167-9F8DD4D24468}*"
+   $keywords = "{ebefb703-6113-413d-9167-9f8dd4d24468}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
    Nem hagyja ki a csillag ("*") a $keywords változó értékét a végén.
 
-   Az eredményül kapott objektumhoz keresztül található a `Get-ADObject` parancs majd átadható olyan parancsoknak `Remove-ADObject`, vagy manuálisan törölték. 
+   Az eredményül kapott objektumok található keresztül a `Get-ADObject` parancs majd átadható olyan parancsoknak `Remove-ADObject`, vagy manuálisan törölték. 
 
 4. Manuálisan távolítsa el az összes tartományvezérlő ügynök csatlakozási pontok minden tartományi névhasználati környezetében. Lehet, hogy egy ezeket az objektumokat az erdő, attól függően, hogyan széles körben a nyilvános előzetes verziójú szoftver telepítve lett a tartományvezérlőnkénti. Előfordulhat, hogy felderítése a helyét annak az objektumnak a következő Active Directory Powershell-paranccsal:
 
-   ```
+   ```Powershell
    $scp = "serviceConnectionPoint"
-   $keywords = "{B11BB10A-3E7D-4D37-A4C3-51DE9D0F77C9}*"
+   $keywords = "{2bac71e6-a293-4d5b-ba3b-50b995237946}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
-   Az eredményül kapott objektumhoz keresztül található a `Get-ADObject` parancs majd átadható olyan parancsoknak `Remove-ADObject`, vagy manuálisan törölték.
+   Az eredményül kapott objektumok található keresztül a `Get-ADObject` parancs majd átadható olyan parancsoknak `Remove-ADObject`, vagy manuálisan törölték.
 
 5. Manuálisan távolítsa el az erdő szintű konfigurációs állapotát. Az erdő konfigurációs állapotát egy tárolót az Active Directory konfigurációelnevezési környezetében a változatlan marad. Ez felderíthető és törölni az alábbiak szerint:
 
-   ```
-   $passwordProtectonConfigContainer = "CN=Azure AD password protection,CN=Services," + (Get-ADRootDSE).configurationNamingContext
+   ```Powershell
+   $passwordProtectonConfigContainer = "CN=Azure AD Password Protection,CN=Services," + (Get-ADRootDSE).configurationNamingContext
    Remove-ADObject $passwordProtectonConfigContainer
    ```
 

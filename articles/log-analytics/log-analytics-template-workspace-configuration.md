@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a715c300cc5490eef9dbe7971dabe1733fd47f49
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 833bb6838733395d83468be3d2960c7c237aa3fc
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402217"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957675"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>A Log Analytics használatával az Azure Resource Manager-sablonok felügyelete
 Használhat [Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-authoring-templates.md) létrehozása és konfigurálása a Log Analytics-munkaterületeket. A feladatokat hajthat végre a sablonok közé:
@@ -521,6 +521,6 @@ Azure rövid útmutató sablonkatalógusban Log Analytics, beleértve a több sa
 * [Adjon hozzá egy meglévő tárfiókot a Log Analyticsbe](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
 ## <a name="next-steps"></a>További lépések
-* [Windows-ügynök telepítése az Azure virtuális gépek a Resource Manager-sablon használatával](../virtual-machines/windows/extensions-oms.md).
-* [Linux-ügynök telepítése Azure virtuális gépek a Resource Manager-sablon használatával](../virtual-machines/linux/extensions-oms.md).
+* [Windows-ügynök telepítése az Azure virtuális gépek a Resource Manager-sablon használatával](../virtual-machines/extensions/oms-windows.md).
+* [Linux-ügynök telepítése Azure virtuális gépek a Resource Manager-sablon használatával](../virtual-machines/extensions/oms-linux.md).
 

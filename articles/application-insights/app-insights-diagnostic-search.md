@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1bf716d4e5a37739de2e820725449be2576054ea
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bf722756ed04349a06cbcb7b9686e6340e8d4b6c
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038770"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958406"
 ---
 # <a name="using-search-in-application-insights"></a>Az Application Insights keresés használata
 Keresés az egyik szolgáltatása [Application Insights](app-insights-overview.md) keresse meg és Fedezze fel a telemetriai elem, például a lapmegtekintések, kivételek, vagy webes kérelmek küldéséhez használt. És megtekintheti a nyomkövetési naplók és eseményeket, amelyek van kódolva.
 
-(Az adatok összetettebb lekérdezésekhez használja [Analytics](app-insights-analytics-tour.md).)
+(Az adatok összetettebb lekérdezésekhez használja [Analytics](../log-analytics/query-language/get-started-analytics-portal.md).)
 
 ## <a name="where-do-you-see-search"></a>Ahol látható keresési?
 
@@ -102,7 +102,7 @@ Keresse meg az azonos tulajdonság értéke az összes elemet:
 ## <a name="search-the-data"></a>Az adatok keresése
 
 > [!NOTE]
-> Összetettebb lekérdezéseket írni, nyissa meg a [ **Analytics** ](app-insights-analytics-tour.md) a keresés panel tetején.
+> Összetettebb lekérdezéseket írni, nyissa meg a [ **Analytics** ](../log-analytics/query-language/get-started-analytics-portal.md) a keresés panel tetején.
 > 
 
 A tulajdonságértékek bármelyikét feltételek kereshet. Ez különösen hasznos adatszolgáltatót [egyéni események](app-insights-api-custom-events-metrics.md) és a tulajdonságértékek. 
@@ -164,7 +164,7 @@ Automatikusan azt ne naplózza a POST data, de használhat [TrackTrace vagy a na
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="add"></a>Következő lépések
-* [Összetett lekérdezéseket írni az Analyticsben](app-insights-analytics-tour.md)
+* [Összetett lekérdezéseket írni az Analyticsben](../log-analytics/query-language/get-started-analytics-portal.md)
 * [Naplók és egyéni telemetriát küldjön az Application Insightsba](app-insights-asp-net-trace-logs.md)
 * [Állítsa be a rendelkezésre állás és a válaszképesség tesztek](app-insights-monitor-web-app-availability.md)
 * [hibaelhárítással](app-insights-troubleshoot-faq.md)

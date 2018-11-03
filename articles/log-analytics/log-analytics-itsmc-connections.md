@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 4faea38817a546dbab02064d22a0813362f77b3d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e504f8c4fb34084d613e7ab1e506187a856defef
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416460"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961840"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-termékekkel/szolgáltatásokkal csatlakozzon az IT Service Management-összekötő
 Ez a cikk ismerteti az ITSM-termék vagy szolgáltatás és az IT Service Management Connector (ITSMC) közötti kapcsolat konfigurálása a Log Analytics központilag kezelheti a munkaelemeket. ITSMC kapcsolatos további információkért lásd: [áttekintése](log-analytics-itsmc-overview.md).
@@ -293,7 +293,7 @@ Ellenőrizze, hogy az alábbi előfeltételek teljesülését:
 
 
 - ITSMC telepítve. További információ: [felvétele az IT Service Management Connector megoldás](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution).
-- Provance alkalmazást kell regisztrálni az Azure AD - és ügyfél-Azonosítóját szeretné elérhetővé tenni. Részletes információkért lásd: [active directory-hitelesítés konfigurálása](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md).
+- Provance alkalmazást kell regisztrálni az Azure AD - és ügyfél-Azonosítóját szeretné elérhetővé tenni. Részletes információkért lásd: [active directory-hitelesítés konfigurálása](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md).
 
 - Felhasználói szerepkör: rendszergazda.
 

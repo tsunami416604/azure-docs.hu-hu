@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: 449a6274b67f3eb72ea6d8bd19f555fc59158d7e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 60605e7bdeeef32889bc0ac104fa34bd66d4444d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299100"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962877"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Az összekötő Azure Application Insights folyamatok automatizálása a Microsoft Flow
 
@@ -47,7 +47,7 @@ Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre egy folyamatot, amely
 ### <a name="step-3-add-an-application-insights-action"></a>3. lépés: Az Application Insights művelet hozzáadása
 1. Kattintson a **új lépés**, és kattintson a **művelet hozzáadása**.
 1. Keresse meg **Azure Application Insights**.
-1. Kattintson a **Azure Application Insights – megjelenítheti Analytics lekérdezési előzetes**.
+1. Kattintson a **Azure Application Insights - elemzési megjelenítése lekérdezés előnézeti**.
 
     ![Elemzés lekérdezési ablakban futtassa](./media/app-insights-automate-with-flow/flow2.png)
 
@@ -125,7 +125,7 @@ A folyamat futtatásakor a címzettek e-mailek listájában megadott kap egy e-m
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a létrehozásával [elemzési lekérdezések](app-insights-analytics-using.md).
+- További információ a létrehozásával [elemzési lekérdezések](../log-analytics/query-language/get-started-queries.md).
 - Tudjon meg többet [Microsoft Flow](https://ms.flow.microsoft.com).
 
 

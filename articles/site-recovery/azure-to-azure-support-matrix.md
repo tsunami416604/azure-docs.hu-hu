@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: ad6bf2db44996684096deb2b351301e450d80249
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 5cce3005a0058604136e05d9c3bf9700d5296bf3
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747966"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964058"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Egy Azure-régióból a másikba történő replikálásához támogatási mátrix
 
@@ -204,7 +204,7 @@ Virtuális hálózatok az Azure Storage-tűzfalak  | Igen | Ha a tárfiókok van
 ## <a name="replicated-machines---networking"></a>A replikált gépek – hálózatkezelés
 **Konfigurálás** | **Támogatás** | **Részletek**
 --- | --- | ---
-Hálózati adapter | A ütemezésből az Azure virtuális gép méretét a támogatott maximális száma | Hálózati adapter a virtuális gép létrehozásakor feladatátvétel során jönnek létre.<br/><br/> A hálózati adapterek száma a feladatátvételi virtuális Gépen függ a forrásoldali virtuális gép hálózati adaptereinek száma, amikor a replikáció engedélyezése megtörtént. Adja hozzá, vagy távolítsa el a hálózati adapter a replikáció engedélyezése után, ha a feladatátvételt követően nem érinti a replikált virtuális gép hálózati adaptereinek száma.
+Hálózati adapter | Egy adott Azure-beli Virtuálisgép-méretet a támogatott maximális száma | Hálózati adapter a virtuális gép létrehozásakor feladatátvétel során jönnek létre.<br/><br/> A hálózati adapterek száma a feladatátvételi virtuális Gépen függ a forrásoldali virtuális gép hálózati adaptereinek száma, amikor a replikáció engedélyezése megtörtént. Adja hozzá, vagy távolítsa el a hálózati adapter a replikáció engedélyezése után, ha a feladatátvételt követően nem érinti a replikált virtuális gép hálózati adaptereinek száma.
 Internetes Load Balancer | Támogatott | Társítsa az előre konfigurált terheléselosztó egy Azure Automation-szkript használatával a helyreállítási terv.
 Belső Load balancer | Támogatott | Társítsa az előre konfigurált terheléselosztó egy Azure Automation-szkript használatával a helyreállítási terv.
 Nyilvános IP-cím | Támogatott | Egy meglévő nyilvános IP-címet társítani a hálózati adaptert. Vagy hozzon létre egy nyilvános IP-címet, és társíthatja azt egy Azure Automation-szkript használatával a helyreállítási tervben szereplő hálózati adapter.

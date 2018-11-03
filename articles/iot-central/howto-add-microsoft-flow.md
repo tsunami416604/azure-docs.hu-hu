@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: cc54a3a375fa2780e289a20b699df5d65aaf08cc
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: c06939ccb920954c08ef02f38e6d12471ac267db
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155575"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959290"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Hozzon létre munkafolyamatokat az IoT Central-összekötő a Microsoft Flow
 
@@ -21,8 +21,10 @@ ms.locfileid: "50155575"
 
 Munkafolyamatok automatizálása a számos alkalmazásokat és szolgáltatásokat, üzleti felhasználók által használt, a Microsoft Flow használatával. Az IoT Central-összekötő használatával a Microsoft Flow, beállíthat munkafolyamatokat IoT-központ a szabály aktiválásakor. Egy munkafolyamatban, IoT-központ vagy bármely más alkalmazás által aktivált a műveleteket használhatja az IoT Central-összekötő az eszköz létrehozásához, egy eszköz tulajdonságait és beállítások frissítése vagy eszköz törlése. Tekintse meg [a Microsoft Flow sablonok](https://aka.ms/iotcentralflowtemplates) IoT-központ más szolgáltatásokba, mint a mobil értesítések és a Microsoft Teams kapcsolódnak.
 
-> [!NOTE] 
-> Szüksége lesz egy Microsoft személyes és munkahelyi vagy iskolai fiókot a Microsoft Flow-ba való bejelentkezéshez. További tudnivalók a Microsoft Flow-tervek [Itt](https://aka.ms/microsoftflowplans).
+## <a name="prerequisites"></a>Előfeltételek
+
+- A használatalapú fizetés alkalmazások
+- Egy Microsoft személyes és munkahelyi vagy iskolai fiókot, Flow-ba való bejelentkezéshez ([tudjon meg többet a Microsoft Flow-tervek](https://aka.ms/microsoftflowplans))
 
 ## <a name="trigger-a-workflow-when-a-rule-is-triggered"></a>Amikor egy szabály akkor lesz kiváltva munkafolyamat elindítására
 

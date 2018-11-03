@@ -8,12 +8,12 @@ ms.author: tanmayb
 ms.date: 08/30/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: ff6978ddbf8718ad45a4265898109b7ac799d70c
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 2977c3d1656bacf8ba8d34080641ea6c5cdf5bbe
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46468717"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957109"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>IoT-központ kezelése az Azure Portalról 
 Létrehozása és kezelése – IoT Central-alkalmazást az IoT Central webhelye kívül is kezelheti IoT-központ az Azure Portalról. Ez a cikk a lehetőségeket, és megtudhatja, hogyan teheti vezeti végig.
@@ -35,14 +35,14 @@ Most kattintson a "Létrehozás" gombra a képernyő kitöltéséhez kell megtek
 
 ![Felügyeleti portál: IoT-központ erőforrás](media\howto-manage-iot-central-from-portal\image0c.png)
 
-Töltse ki az űrlap összes mezőjét. Az űrlap kell alkalmazásokat hozhat létre az IoT-központ webhelyről töltse ki ezt a kérdőívet hasonlít. Töltse ki az egyes mezők kapcsolatos további tudnivalókért olvassa el a [IoT központi alkalmazás létrehozása](https://docs.microsoft.com/ azure/iot-central/howto-create-application) dokumentumot. 
+Töltse ki az űrlap összes mezőjét. Az űrlap kell alkalmazásokat hozhat létre az IoT-központ webhelyről töltse ki ezt a kérdőívet hasonlít. Minden mező kitöltésére kapcsolatos további információkért tekintse meg a [IoT központi alkalmazás létrehozása](quick-deploy-iot-central.md) rövid. 
 
 ![Felügyeleti portál: IoT Central-erőforrás létrehozása](media\howto-manage-iot-central-from-portal\image1.png)  
 
 Összes mező kitöltése, után a "Létrehozás" gombra.
 
 ## <a name="manage-existing-iot-central-applications"></a>Meglévő IoT Central-alkalmazások kezelése
-Ha már rendelkezik egy Azure IoT Central alkalmazáshoz törölheti, áthelyezése egy másik előfizetést vagy az erőforrást csoporthoz az Azure Portalon. 7 napos próbaverziós alkalmazások az Azure Portalon nem látható, mivel nincs előfizetés biztonsági mentést készít, ezeket a kísérleteket.
+Ha már rendelkezik egy Azure IoT Central alkalmazáshoz törölheti, áthelyezése egy másik előfizetést vagy az erőforrást csoporthoz az Azure Portalon. Próbaverzió alkalmazások az Azure Portalon nem látható, mivel nincs előfizetés biztonsági mentést készít, ezeket a kísérleteket.
 
 A kezdéshez kattintson a "Minden erőforrás" a fő navigációs menüt a bal oldalon található. Használja a Keresés mezőbe írja be az alkalmazás nevét, és keresse meg azt az erőforrások listájában. Ezután kattintson az IoT-központ alkalmazás, amelyet kezelni szeretne.
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: b8caeab7f08ffeee81492b01750cbb255e172872
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: d2ff854d291f65848c7e87b88d8020a835b3bdaa
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144522"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958661"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>Virtuálisgép-ajánlat közzétételi útmutató
 
@@ -29,18 +29,18 @@ Ezek a tranzakció ajánlatok, amelyek üzembe helyezve, és a Marketplace-en ke
 
 ## <a name="free-trial"></a>Free Trial (Ingyenes próba) 
 
-Beállíthatja, hogy a felhasználók számára, hogy tesztelje az ajánlat korlátozott kifejezés szoftverlicencek elérésével, amikor a Bring Your saját licences (BYOL) blling modellel. Az alábbiakban a követelményeknek, ez az ajánlat üzembe helyezéséhez. 
+Beállíthatja, hogy a felhasználók számára, hogy tesztelje az ajánlat korlátozott kifejezés szoftverlicencek elérésével, a Bring Your saját licences (BYOL) számlázási modell használata esetén. Az alábbiakban a követelményeknek, ez az ajánlat üzembe helyezéséhez. 
 
 |Követelmények  |Részletek  |
 |---------|---------|
-|Ingyenes próbaidőszak és próbaverziója     |   Az ügyfelek ingyenes korlátozott ideig előfordulhat, hogy kipróbálják az alkalmazását. Az ügyfél nem szükséges licencek vagy előfizetések díjakat fizetni az ajánlatot. Az ügyfelek nem szükségesek az alapul szolgáló Microsoft belső termék vagy szolgáltatás díjat fizetni. Minden próbaverzió lehetőségeket vannak telepítve az Azure-előfizetéshez. A költségek optimalizálása és a felügyeleti kizárólagos hozzáférése van. Dönthet úgy, egy ingyenes próba- vagy interaktív bemutatót. Függetlenül attól, hogy milyen választja az ingyenes próbaverzió kell megadnia az ügyfél előre megadott, és próbálja meg az ajánlat, további költségek nélkül.|
+|Ingyenes próbaidőszak és próbaverziója     |   Az ügyfelek ingyenes korlátozott ideig előfordulhat, hogy kipróbálják az alkalmazását. A felhasználók számára szükséges licencek vagy előfizetések díjakat fizetni az ajánlat megjegyzés. Az ügyfelek nem szükségesek az alapul szolgáló Microsoft belső termék vagy szolgáltatás díjat fizetni. Minden próbaverzió lehetőségeket vannak telepítve az Azure-előfizetéshez. A költségek optimalizálása és a felügyeleti kizárólagos hozzáférése van. Dönthet úgy, egy ingyenes próba- vagy interaktív bemutatót. Függetlenül attól, hogy milyen választja az ingyenes próbaverzió kell biztosítania az ügyfeleknek egy előre megadott időtartamra szeretné kipróbálni az ajánlat, további költségek nélkül.|
 |Könnyen konfigurálható, használatra kész megoldás    |  Az alkalmazás könnyen és gyorsan konfigurálását, és állítsa be kell lennie.       |
 |Rendelkezésre állás / üzemidő    |    Az SaaS-alkalmazás vagy a platform legalább 99,9 %-os hasznos üzemidővel kell rendelkeznie.     |
 |Azure Active Directory     |    Az ajánlat engedélyeznie kell az Azure Active Directory (Azure AD) összevont egyszeri bejelentkezés (SSO) (Azure AD összevont egyszeri bejelentkezés) hozzájárult engedélyezve van.     |
 
-## <a name="test-drive"></a>Kipróbálás
+## <a name="test-drive"></a>Tesztverzió
 
-Egy vagy több virtuális gép infrastructure-as-a-service(IaaS) vagy SaaS-alkalmazások központi telepítése. Egyik előnye a test drive közzétételi lehetőség az automatikus üzembe helyezése egy virtuális gép vagy a teljes megoldás egy partner által szolgáltatott által vezetett, interaktív bemutatót. Próbálja ki az az ügyfél-értékelési további költségek nélkül biztosít. Az ügyfél nem kell lennie, ahol kapcsolatba léphet az próbaverziója meglévő Azure-ügyfeleket. 
+Egy vagy több virtuális gép infrastruktúra--szolgáltatásként (IaaS) vagy a szoftver--szolgáltatásként (SaaS) alkalmazások központi telepítése. Egyik előnye a test drive közzétételi lehetőség az automatikus üzembe helyezése egy virtuális gép vagy a teljes megoldás egy partner által szolgáltatott által vezetett, interaktív bemutatót. Próbálja ki az az ügyfél-értékelési további költségek nélkül biztosít. Az ügyfél nem kell lennie, ahol kapcsolatba léphet az próbaverziója meglévő Azure-ügyfeleket. 
 
 Írjon nekünk az [amp – testdrive](mailto:amp-testdrive@microsoft.com) a kezdéshez. 
 

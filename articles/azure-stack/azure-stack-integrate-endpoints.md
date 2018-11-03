@@ -10,12 +10,12 @@ ms.date: 09/13/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: ''
-ms.openlocfilehash: bc07d0e7aff2bf9263d89dffccc47ba806ff0fd1
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 721816d9b9da7ff5225e9c74ef7bb89207dd150a
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804208"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979182"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Az Azure Stack adatközpont integrációja – végpontok közzététele
 
@@ -78,7 +78,7 @@ Az Azure Stack csak transzparens proxy kiszolgálók támogatja. A központi tel
 |Windows Defender|. wdcp.microsoft.com<br>. wdcpalt.microsoft.com<br>*. updates.microsoft.com<br>*. jövőben a Microsoft<br>https://msdl.microsoft.com/download/symbols<br>http://www.microsoft.com/pkiops/crl<br>http://www.microsoft.com/pkiops/certs<br>http://crl.microsoft.com/pki/crl/products<br>http://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|
 |NTP|     |UDP|123|
 |DNS|     |TCP<br>UDP|53|
-|CRL-T|     |HTTPS|443|
+|CRL-T|     |HTTP|80|
 |     |     |     |     |
 
 > [!Note]  

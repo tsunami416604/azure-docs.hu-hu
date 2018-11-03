@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: bd7f8748dc5260ed6574a1b48632318e9399bca0
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 0dc0421baf1e5cb19be925072b5fffb989e23a3b
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042121"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979250"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Az Azure Active Directory integrálása az Azure Kubernetes Service
 
@@ -68,7 +68,9 @@ Az első Azure AD-alkalmazást az Azure AD-felhasználók csoport tagságának e
 
   ![Alkalmazás graph-engedélyek beállítása](media/aad-integration/delegated-permissions.png)
 
-7. Válassza ki **kész**, válassza a *Microsoft Graph* API-t, majd válassza ki a listáról **engedélyek megadása**. Ez a lépés sikertelen lesz, ha a jelenlegi fiókot nem Bérlői rendszergazda.
+  Válassza a **Done** (Kész) lehetőséget.
+
+7. Válasszon *Microsoft Graph* API-t, majd válassza ki a listáról **engedélyek megadása**. Ez a lépés sikertelen lesz, ha a jelenlegi fiókot nem Bérlői rendszergazda.
 
   ![Alkalmazás graph-engedélyek beállítása](media/aad-integration/grant-permissions.png)
 
@@ -98,7 +100,9 @@ A második Azure AD-alkalmazást használja történő bejelentkezéskor a Kuber
 
   ![Válassza ki az AKS AAD alkalmazás kiszolgálóvégpontok](media/aad-integration/select-server-app.png)
 
-4. Válassza ki **kész** és **engedélyek megadása** a lépés végrehajtásához.
+  Válassza ki **kész**
+
+4. Válassza ki a kiszolgáló API-t a listából, és válassza a **engedélyek megadása**:
 
   ![Engedélyek megadása](media/aad-integration/grant-permissions-client.png)
 

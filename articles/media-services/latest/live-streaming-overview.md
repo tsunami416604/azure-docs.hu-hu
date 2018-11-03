@@ -13,19 +13,19 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 533aa505c38d3cbfb46d70acecd43cc66614b13d
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: c8e4e84d7ae0defdb053108dc668956062c47ea5
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378136"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962384"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Élő Stream a az Azure Media Services v3
 
 Ha az Azure Media Services események élő adatfolyamainak továbbítása a következő összetevőket gyakran játszik szerepet:
 
 * Egy kamera, amely az eseményt közvetíti.
-* Egy élő videókódoló, amely átalakítja a jeleket a kamerához (vagy egy másik eszköz, például a hordozható számítógépen) a Lve Streamelési szolgáltatásnak küldött Streamek. A jeleket hirdetési SCTE – 35 és Ad-kötegek is tartalmazhat. 
+* Egy élő videókódoló, amely átalakítja a jeleket a kamerához (vagy egy másik eszköz, például a hordozható számítógépen) streameket, az élő Streamelési szolgáltatás küldött. A jeleket hirdetési SCTE – 35 és Ad-kötegek is tartalmazhat. 
 * A Media Services élő Streamelési szolgáltatás lehetővé teszi a betöltési, előzetes verzió, csomag, jegyezze fel, titkosítására, és a tartalom az ügyfelek részére, vagy egy CDN-re további terjesztés céljából.
 
 Ez a cikk részletes áttekintést nyújt, és fő összetevőit az élő adások online közvetítése a Media Services részt ábrákért tartalmazza.

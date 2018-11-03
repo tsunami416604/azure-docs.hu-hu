@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 08a85cea75d692573f9e9e6c4bcd8bb61e03867f
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 403ac2fd0ab497239350c8b4a68a6b6f53bb24b4
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041969"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963914"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics – gyakori kérdések
 A Microsoft FAQ a Microsoft Azure Log Analytics kapcsolatos gyakori kérdések listáját. Ha a Log Analytics szolgáltatásról további kérdése van, lépjen a [fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) és felteheti kérdéseit. Egy kérdést gyakran ismételt, amikor hozzáadjuk ehhez a cikkhez, hogy gyorsan és könnyen megtalálhatók.
@@ -88,7 +88,7 @@ V: Ebben a régióban jelenleg átmeneti kapacitásának határát. A korlát te
 
 ### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>K. A Log Analytics használata ugyanaz az ügynök, az Azure Security Center?
 
-V: a 2017 júniusának az Azure Security Center már a Microsoft Monitoring Agent használatával gyűjti össze és tárolja az adatokat. További tudnivalókért lásd: [Azure Security Center Platform áttelepítési – gyakori kérdések](../security-center/security-center-platform-migration-faq.md).
+V: a 2017 júniusának az Azure Security Center már a Microsoft Monitoring Agent használatával gyűjti össze és tárolja az adatokat. További tudnivalókért lásd: [Azure Security Center Platform áttelepítési – gyakori kérdések](../security-center/security-center-enable-data-collection.md).
 
 ### <a name="q-what-checks-are-performed-by-the-ad-and-sql-assessment-solutions"></a>K. Milyen ellenőrzéseket hajtja végre az AD és az SQL-értékeléssel megoldások?
 
@@ -135,7 +135,7 @@ A log Analytics UTC időt használ, és minden nap elindul éjfélkor (UTC). Ha 
 
 ### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>K. Hogyan kaphatok értesítést adatgyűjtés leállása esetén?
 
-V: használata leírt lépéseket követve [hozzon létre egy új riasztás](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) értesítést, ha leállítja az adatgyűjtést.
+V: használata leírt lépéseket követve [hozzon létre egy új riasztás](../monitoring-and-diagnostics/alert-metric.md) értesítést, ha leállítja az adatgyűjtést.
 
 Amikor az adatgyűjtés leáll a riasztás létrehozásakor állítsa be a:
 
@@ -231,4 +231,4 @@ Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent
 ```
 
 ## <a name="next-steps"></a>További lépések
-* [Ismerkedés a Log Analytics](log-analytics-get-started.md) további tudnivalók a Log Analytics és az első lépésekhez percek alatt.
+* [Ismerkedés a Log Analytics](../azure-monitor/overview.md) további tudnivalók a Log Analytics és az első lépésekhez percek alatt.

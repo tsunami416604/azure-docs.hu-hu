@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e872b7eaeb7743221b8cdf41dd0a24ea0c4287d0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c882321af38b21f4820345b8ce5448227cb121c6
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967489"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50977634"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Az Azure CLI-vel az Azure IoT Edge-modulok telepítése
 
@@ -112,7 +112,7 @@ Módosítsa a könyvtárakat a mappát, ahol a manifest nasazení van. Ha a VS C
 A következő parancsot használja a alkalmazni a konfigurációt egy IoT Edge-eszközön:
 
    ```cli
-   az iot hub apply-configuration --device-id [device id] --hub-name [hub name] --content [file path]
+   az iot edge set-modules --device-id [device id] --hub-name [hub name] --content [file path]
    ```
 
 Az eszköz azonosító paraméter értéke a kis-és nagybetűket. A tartalom paraméter mutat az üzembe helyezés manifest mentett fájlt. 

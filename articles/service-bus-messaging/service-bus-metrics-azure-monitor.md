@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: spelluru
-ms.openlocfilehash: 293cde00e53171e848263df8564ec85f273c1a40
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 7d4b4a98c38757eb33c3f8713f662ed52a686924
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166333"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978655"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Az Azure Service Bus-metrikák az Azure Monitor (előzetes verzió)
 
@@ -80,6 +80,8 @@ A következő két típusú hibák besorolt felhasználói hibáinak száma:
 | ------------------- | ----------------- |
 |Bejövő üzenetek (előzetes verzió)|Események vagy adott időszakon belül Service Busnak küldött üzenetek számát.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
 |Kimenő üzenetek (előzetes verzió)|Események vagy egy meghatározott időtartamon belül a Service Bus Beérkezett üzenetek száma.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName|
+| Üzenetek (előzetes verzió) | Az üzenetsor vagy témakör üzeneteinek száma. <br/><br/> Egység: száma <br/> Összesítés típusa: átlagos <br/> Dimenzió: EntityName |
+| ActiveMessages (előzetes verzió) | Az üzenetsor vagy témakör aktív üzeneteinek száma. <br/><br/> Egység: száma <br/> Összesítés típusa: átlagos <br/> Dimenzió: EntityName |
 
 ## <a name="connection-metrics"></a>Kapcsolati metrika
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 61ceea60962acc2e1ec032df49683e8a28381dd7
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7f2ced1d6e5a7368fbf136d31889a763b3306e37
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405361"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964046"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Wire Data 2.0 (előzetes verzió) megoldás a Log Analyticsben
 
@@ -33,7 +33,7 @@ Mellett a Log Analytics-ügynököket a Wire Data megoldást használja a Micros
 >[!NOTE]
 >Ha a Service Map már üzembe helyezte, vagy a Service Map használatát fontolgatja, vagy [-beli virtuális gépek az Azure Monitor](../monitoring/monitoring-vminsights-overview.md), van egy új kapcsolat metrikák adatkészlet összegyűjtése és a Log Analytics, amely hasonló információt szolgáltat az átviteli adatok tárolása.
 
-Alapértelmezés szerint a Log Analytics a processzor, a memória, a lemezek és a hálózat teljesítményadatait naplózza a Windows és Linux beépített számlálóival, valamint további, szabadon megadható teljesítményszámlálók segítségével. A hálózati és egyéb adatok gyűjtése valós időben történik az egyes ügynökökre vonatkozóan, beleértve a számítógép által használt alhálózatokat és alkalmazásszintű protokollokat.  A Wire Data a hálózati adatokat az alkalmazások szintjén kezeli, nem a TCP átviteli réteg szintjén.  A megoldás nem veszi figyelembe az önálló ACK-kat és SYN-eket.  Ha a kézfogás befejeződött, onnantól a kapcsolat élőnek számít és Csatlakoztatva jelölést kap. A kapcsolat addig marad élő, amíg mindkét oldal egyetért a szoftvercsatorna nyitva tartásában, és az adatok átvitele oda-vissza lehetséges.  Ha bármelyik oldal bezárja a kapcsolatot, a kapcsolat Leválasztva jelölést kap.  Ezért csak sikeresen elküldött csomagok által használt sávszélességet veszi számításba, az újraküldött vagy sikertelenül elküldött csomagok nem lesznek jelentve.
+Alapértelmezés szerint a Log Analytics a processzor, a memória, a lemezek és a hálózat teljesítményadatait naplózza a Windows és Linux beépített számlálóival, valamint további, szabadon megadható teljesítményszámlálók segítségével. A hálózati és egyéb adatok gyűjtése valós időben történik az egyes ügynökökre vonatkozóan, beleértve a számítógép által használt alhálózatokat és alkalmazásszintű protokollokat.  A Wire Data a hálózati adatokat az alkalmazások szintjén kezeli, nem a TCP átviteli réteg szintjén.  A megoldás nem veszi figyelembe az önálló ACK-kat és SYN-eket.  Ha a kézfogás befejeződött, onnantól a kapcsolat élőnek számít és Csatlakoztatva jelölést kap. A kapcsolat addig marad élő, amíg mindkét oldal egyetért a szoftvercsatorna nyitva tartásában, és az adatok átvitele oda-vissza lehetséges.  Ha bármelyik oldal bezárja a kapcsolatot, a kapcsolat Leválasztva jelölést kap.  Ezért csak sikeresen elküldött csomagok által használt sávszélességet veszi számításba, az újraküldött vagy sikertelenül elküldött csomagok nem lesznek jelentve.
 
 Ha már használta az [sFlow](http://www.sflow.org/)-t vagy valamilyen egyéb szoftvert a [Cisco NetFlow protokolljával](http://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html), akkor a Wire Data statisztikái és adatai már ismerősek lesznek.
 
@@ -60,7 +60,7 @@ A Wire Data a Microsoft függőségi ügynöktől kapja az adatokat. A függős�
 
 | **Csatlakoztatott forrás** | **Támogatott** | **Leírás** |
 | --- | --- | --- |
-| Windows-ügynökök | Igen | A Wire Data adatok elemez és gyűjt a Windows rendszerű ügynökszámítógépekről. <br><br> Mellett a [Log Analytics-ügynököket for Windows](log-analytics-windows-agent.md), Windows-ügynökök a Microsoft Dependency Agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](../monitoring/monitoring-service-map-configure.md#supported-windows-operating-systems) szakaszban. |
+| Windows-ügynökök | Igen | A Wire Data adatok elemez és gyűjt a Windows rendszerű ügynökszámítógépekről. <br><br> Mellett a [Log Analytics-ügynököket for Windows](log-analytics-agent-windows.md), Windows-ügynökök a Microsoft Dependency Agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](../monitoring/monitoring-service-map-configure.md#supported-windows-operating-systems) szakaszban. |
 | Linux-ügynökök | Igen | A Wire Data adatokat elemez és gyűjt a Linux rendszerű ügynökszámítógépekről.<br><br> Mellett a [Linuxhoz készült Log Analytics-ügynök](log-analytics-quick-collect-linux-computer.md), Linux-ügynökök a Microsoft Dependency Agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](../monitoring/monitoring-service-map-configure.md#supported-linux-operating-systems) szakaszban. |
 | System Center Operations Manage felügyeleti csoport | Igen | A Wire Data adatokat elemez és gyűjt az olyan Windows- és Linux-ügynököktől, amelyek egy csatlakoztatott [System Center Operations Manager felügyeleti csoporthoz](log-analytics-om-agents.md) tartoznak. <br><br> Ehhez közvetlen kapcsolat szükséges a System Center Operations Manager-ügynökszámítógép és a Log Analytics között. |
 | Azure Storage-fiók | Nem | A Wire Data ügynökszámítógépekről gyűjt adatokat, így az Azure Storage-ből nem tud adatokat gyűjteni. |
@@ -197,7 +197,7 @@ Az alábbi táblázat a függőségi ügynök által támogatott operációs ren
 
 A Wire Data megoldásnak a munkaterületekhez való konfigurálásához végezze el az alábbi lépéseket:
 
-1. Engedélyezze az Activity Log Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) felületéről vagy a [Log Analytics-megoldások hozzáadása a megoldástárból](log-analytics-add-solutions.md) című témakörben leírt eljárást követve.
+1. Engedélyezze az Activity Log Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) felületéről vagy a [Log Analytics-megoldások hozzáadása a megoldástárból](../monitoring/monitoring-solutions.md) című témakörben leírt eljárást követve.
 2. Telepítse a függőségi ügynököt az összes olyan számítógépen, amelyről adatokat kíván gyűjteni. A függőségi ügynök képesek a közvetlen szomszédaikkal való kapcsolatok monitorozására, így lehetséges, hogy nem kell minden egyes számítógépre ügynököt telepíteni.
 
 > [!NOTE]
@@ -211,7 +211,7 @@ A függőségi ügynök a Windows rendszerű számítógépekre az InstallDepend
 
 A függőségi ügynököt az alábbi lépésekkel telepítheti minden Windows rendszerű számítógépre:
 
-1. A Log Analytics-ügynököket leírt lépések végrehajtásával telepítse [adatok gyűjtése saját környezetben futtatott Windows-számítógépekről](log-analytics-windows-agent.md).
+1. A Log Analytics-ügynököket leírt lépések végrehajtásával telepítse [adatok gyűjtése saját környezetben futtatott Windows-számítógépekről](log-analytics-agent-windows.md).
 2. Töltse le a Windows függőségi ügynököt az előző szakaszban található hivatkozás használatával, majd futtassa a következő paranccsal: `InstallDependencyAgent-Windows.exe`
 3. Az ügynök telepítéséhez kövesse a varázslót.
 4. Ha a függőségi ügynök nem indul el, tekintse meg a naplókat a hibával kapcsolatos részletes információért. Windows-ügynökök esetén a naplózási könyvtár a következő: %Programfiles%\Microsoft Dependency Agent\logs.
@@ -373,7 +373,7 @@ A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi i
 
 - A Wire Data megoldás a Windows Server 2012 R2, Windows 8.1 és újabb operációs rendszert futtató számítógépekről gyűjt adatokat.
 - A Microsoft .NET-keretrendszer 4.0-s vagy újabb verziójával kell rendelkeznie azoknak a számítógépeknek, amelyekről átviteli adatokat szeretne gyűjteni.
-- A Log Analytics-munkaterülethez adja hozzá a Wire Data megoldást. Ehhez kövesse a [Log Analytics-megoldások hozzáadása a megoldástárból](log-analytics-add-solutions.md) című témakörben leírt eljárást. Nincs szükség további konfigurációra.
+- A Log Analytics-munkaterülethez adja hozzá a Wire Data megoldást. Ehhez kövesse a [Log Analytics-megoldások hozzáadása a megoldástárból](../monitoring/monitoring-solutions.md) című témakörben leírt eljárást. Nincs szükség további konfigurációra.
 - Egy adott megoldás átviteli adatainak megtekintéséhez már rendelkeznie kell a megoldással a munkaterületen.
 
 Miután telepítette az ügynököket és telepíti a megoldást, a munkaterületen megjelenik a Wire Data 2.0 csempéje.
@@ -451,4 +451,4 @@ A bemeneti adatok minden típusához létrejön egy _WireData_ típusú rekord. 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Keresés a naplókban](log-analytics-log-searches.md) az átviteli adatokhoz kapcsolódó részletes keresési rekordok megtekintéséhez.
+- [Keresés a naplókban](log-analytics-log-search.md) az átviteli adatokhoz kapcsolódó részletes keresési rekordok megtekintéséhez.

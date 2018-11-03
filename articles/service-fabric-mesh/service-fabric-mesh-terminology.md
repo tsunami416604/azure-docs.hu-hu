@@ -9,12 +9,12 @@ ms.date: 07/12/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 0047ed4f0a172451bd50af3f62e2fecb8e147bf2
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 925d97658a299bea983b16ae6b507159ef0e9e62
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944442"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979131"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Service Fabric-háló terminológiája
 
@@ -84,5 +84,6 @@ A következő táblázat ismerteti a különböző alkalmazás-modellek és azok
 
 ## <a name="next-steps"></a>További lépések
 
-Service Fabric-háló kapcsolatos további információkért olvassa el a áttekintése:
-- [Service Fabric-háló áttekintése](service-fabric-mesh-overview.md)
+A Service Fabric Meshsel kapcsolatos további információkért olvassa el a [Service Fabric Mesh áttekintésével](service-fabric-mesh-overview.md) foglalkozó cikket.
+
+Választ találhat [gyakori kérdésekre](service-fabric-mesh-faq.md).

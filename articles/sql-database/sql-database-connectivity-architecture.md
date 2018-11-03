@@ -7,17 +7,17 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
-ms.author: moslake
+author: srdan-bozovic-msft
+ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/24/2018
-ms.openlocfilehash: ca1ef9c402b370a8d1228e13d7fe3e13fd225f79
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.date: 11/02/2018
+ms.openlocfilehash: 11133a24f4446478dcc7f38ed50eb36de8843442
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986321"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978401"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Az Azure SQL Database kapcsolati architektúra
 
@@ -31,19 +31,30 @@ Az alábbi ábra az Azure SQL Database kapcsolati architektúra magas szintű á
 
 Az alábbi lépések bemutatják, hogyan létrejön a kapcsolat egy Azure SQL Database az Azure SQL Database software load balancer (SLB) és az Azure SQL Database-átjárón keresztül.
 
-- Azure-ban vagy Azure-on kívüli ügyfelek csatlakoznak a szoftveres Terheléselosztó, amely egy nyilvános IP-címmel rendelkezik, és a 1433-as portot figyeli.
-- A szoftveres Terheléselosztó irányítja a forgalmat az Azure SQL Database-átjáróra.
-- Az átjáró a megfelelő proxyt közbenső átirányítja a forgalmat.
-- A proxy közbenső átirányítja a forgalmat a megfelelő Azure SQL Database.
+- Ügyfelek csatlakoznak a szoftveres Terheléselosztó, amely egy nyilvános IP-címmel rendelkezik, és a 1433-as portot figyeli.
+- A szoftveres Terheléselosztó továbbítja a forgalmat az Azure SQL Database-átjáróra.
+- Az átjáró, attól függően, a hatékony kapcsolódási szabályzat, az átirányítások vagy a proxyk a forgalom a megfelelő proxyt közbenső szoftverek.
+- A proxy közbenső továbbítja a forgalmat a megfelelő Azure SQL Database-adatbázishoz.
 
 > [!IMPORTANT]
 > Ezek az összetevők mindegyike rendelkezik elosztott szolgáltatásmegtagadásos (DDoS-) szolgáltatás védelem beépített a hálózat és az app-réteget.
 
+## <a name="connection-policy"></a>Kapcsolat-házirend
+
+Az Azure SQL Database támogatja a kapcsolat egy SQL Database-kiszolgáló házirend-beállítás a következő három módon:
+
+- **Átirányítási (ajánlott):** ügyfelek közvetlenül az adatbázist futtató csomópontot kapcsolatokat hozhat létre. Ahhoz, hogy a kapcsolat, az ügyfelek engedélyeznie kell a kimenő tűzfalszabályokat, hogy az összes Azure IP-címek a régióban (próbálja ki a hálózati biztonsági csoportok (NSG) a használatával [szolgáltatáscímkéket](../virtual-network/security-overview.md#service-tags)), nem csak az Azure SQL Database átjáró IP-címek. Mivel a csomagok adatbázissal, teljesítmény és a késés teljesítményűek.
+- **Proxy:** ebben a módban az összes kapcsolat az Azure SQL Database-átjárókon keresztül webszolgáltatásokhoz használják. Ahhoz, hogy a kapcsolat, az ügyfél kimenő tűzfalszabályokat, amelyek lehetővé teszik a csak az Azure SQL Database átjáró IP-címek (általában két IP-címek régiónként) kell rendelkeznie. Ez a mód kiválasztása nagyobb késést és alacsonyabb átviteli sebességet a számítási feladatok természetétől függően eredményezhet. Erősen ajánlott az átirányítási kapcsolódási szabályzat keresztül a Proxy kapcsolódási szabályzat a legkisebb késés és a legnagyobb átviteli sebességet.
+- **Alapértelmezett:** Ez a kapcsolódási szabályzat érvényben az összes kiszolgáló létrehozása után hacsak nem változtatja meg a kapcsolódási szabályzat vagy a Proxy vagy átirányítási. A tényleges házirend attól függ, hogy kapcsolatok származik (átirányítási) Azure-ban, vagy (Proxy) Azure-on kívül.
+
 ## <a name="connectivity-from-within-azure"></a>Csatlakozás Azure-ban
 
-Csatlakozik Azure-ban, a kapcsolatok van-e, a kapcsolódási szabályzat **átirányítási** alapértelmezés szerint. Egy szabályzatot a **átirányítási** azt jelenti, hogy kapcsolatok az Azure SQL Database, a TCP-munkamenet az ügyfél-munkamenet létrehozása után a rendszer ezután átirányítja a proxy közbenső és a cél virtuális IP-címhez módosul, valamint az Azure Az SQL Database átjárója, amely a proxy közbenső szoftverek. Ezt követően minden további csomagokat folyamat közvetlenül keresztül, a proxy közbenső szoftverek, az Azure SQL Database átjárója kihagyásával. A következő ábra szemlélteti a forgalom áramlását.
+Csatlakozik Azure-ban egy kiszolgálón, November 10, 2018 után létrehozott kapcsolatok van-e, a kapcsolódási szabályzat **átirányítási** alapértelmezés szerint. Egy szabályzatot a **átirányítási** azt jelenti, hogy kapcsolatok az Azure SQL Database, a TCP-munkamenet az ügyfél-munkamenet létrehozása után a rendszer ezután átirányítja a proxy közbenső és a cél virtuális IP-címhez módosul, valamint az Azure Az SQL Database átjárója, amely a proxy közbenső szoftverek. Ezt követően minden további csomagokat folyamat közvetlenül keresztül, a proxy közbenső szoftverek, az Azure SQL Database átjárója kihagyásával. A következő ábra szemlélteti a forgalom áramlását.
 
 ![az architektúra áttekintése](./media/sql-database-connectivity-architecture/connectivity-from-within-azure.png)
+
+> [!IMPORTANT]
+> Ha a kapcsolódási szabályzat létrehozott SQL Database-kiszolgáló 2018. November 10. előtt volt beállítva az explicit módon **Proxy**. A Szolgáltatásvégpontok használatakor az erősen javasoljuk, hogy váltson a kapcsolódási szabályzat a **átirányítási** engedélyezéséhez a jobb teljesítmény érdekében. Ha módosítja a kapcsolódási szabályzat a **átirányítási**, nem lesz elegendő ahhoz, hogy engedélyezze a kimenő az alább felsorolt IP-címek az Azure SQL Database átjárója az NSG-t, engedélyeznie kell a kimenő célja: minden Azure SQL Database IP-címet. Ez az NSG-t (a hálózati biztonsági csoportok) Szolgáltatáscímkék segítségével valósítható meg. További információkért lásd: [Szolgáltatáscímkék](../virtual-network/security-overview.md#service-tags).
 
 ## <a name="connectivity-from-outside-of-azure"></a>Csatlakozás Azure-on kívül
 
@@ -51,19 +62,11 @@ Ha Azure-on kívülről csatlakozik, a kapcsolatok rendelkezik-e a kapcsolódás
 
 ![az architektúra áttekintése](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
-> [!IMPORTANT]
-> A Szolgáltatásvégpontok az Azure SQL Database használatakor a szabályzat van **Proxy** alapértelmezés szerint. Ahhoz, hogy a kapcsolat a virtuális hálózaton belül, engedélyeznie kell az alábbi listán megadott Azure SQL Database átjáró IP-címeket a kimenő kapcsolatokat.
-
-A Szolgáltatásvégpontok használatakor erősen javasoljuk, hogy váltson a kapcsolódási szabályzat a **átirányítási** engedélyezéséhez a jobb teljesítmény érdekében. Ha módosítja a kapcsolódási szabályzat a **átirányítási** nem lesz elegendő ahhoz, hogy engedélyezze a kimenő az alább felsorolt IP-címek az Azure SQL Database átjárója az NSG-t, engedélyeznie kell a kimenő célja: minden Azure SQL Database IP-címet. Ez az NSG-t (a hálózati biztonsági csoportok) Szolgáltatáscímkék segítségével valósítható meg. További információkért lásd: [Szolgáltatáscímkék](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
-
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Az Azure SQL Database átjárója IP-címek
 
 Csatlakozhat egy Azure SQL database a helyszíni erőforrásairól, szüksége, hogy a kimenő hálózati forgalom az Azure SQL Database-átjáróhoz, az az Azure-régióban. A kapcsolatokat csak nyissa meg az átjárón keresztül a Proxy módban, amely az alapértelmezett történő csatlakozás helyszíni erőforrásokhoz való csatlakozáskor.
 
 Az alábbi táblázat az elsődleges és másodlagos IP-címek, adatok minden régió esetében az Azure SQL Database-átjáró. Az egyes régiókban vannak két IP-címet. Ezekben a régiókban az elsődleges IP-cím az átjáró aktuális IP-címe pedig a második IP-cím feladatátvételi IP-címet. A feladatátvétel a címet, amelyre nem lehet áthelyezni, hogy a szolgáltatás magas rendelkezésre állását a kiszolgáló címe. Ezekben a régiókban javasoljuk, hogy engedélyezi a kimenő mindkét IP-címet. A második IP-cím a Microsoft tulajdonában van, és nem figyel a függő szolgáltatások mindaddig, amíg aktívvá válik, az Azure SQL Database-kapcsolatok fogadására által.
-
-> [!IMPORTANT]
-> Ha az Azure-ban kapcsolódik a kapcsolódási szabályzat lesz **átirányítási** (kivéve, ha használja a Szolgáltatásvégpontok) alapértelmezés szerint. Nem lesz elegendő ahhoz, hogy a következő IP-címek engedélyezése. Engedélyeznie kell az összes Azure SQL Database IP-címek. Ha a virtuális hálózaton belül csatlakozik, a Szolgáltatáscímkék NSG (hálózati biztonsági csoportok) segítségével lehet elvégezni. További információkért lásd: [Szolgáltatáscímkék](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 | Régió neve | Elsődleges IP-cím | Másodlagos IP-cím |
 | --- | --- |--- |

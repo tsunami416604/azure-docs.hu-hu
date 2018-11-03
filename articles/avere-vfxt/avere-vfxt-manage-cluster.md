@@ -6,14 +6,14 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: f5b91329f5287c1d8f76c98f27d9bc2fd464a11a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 9eba9eef315f1ec6eb25ea21c1d4747ab002d078
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634220"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958916"
 ---
-# <a name="manage-the-avere-vfxt-cluster"></a>A Avere vFXT fürt kezelése
+# <a name="manage-the-avere-vfxt-cluster"></a>Az Avere vFXT-fürt felügyelete
 
 A fürt létrehozása után szükség lehet a fürtcsomópontok hozzáadása vagy leállítani, vagy indítsa újra a fürtöt. És amikor befejeződött a projekt leállítása és a fürt eltávolításához véglegesen ismernie kell. 
 
@@ -83,7 +83,7 @@ Például Avere Vezérlőpulton vfxt.py operations próbálja meg ellenőrizze, 
 
 vfxt.PY előre telepítve van a virtuális gép fürt vezérlőn. <!-- (If you want to install it on another system, refer to http://github.com/Azure/AvereSDK) xxx change when this repo goes  public -->
 
-Egy teljes vfxt.py használati útmutató a Githubon érhető el: <https://github.com/AvereSystems/vFXT.py/blob/master/docs/README.md> 
+Egy teljes vfxt.py használati útmutató a Githubon érhető el: [vfxt.py a fürt Felhőfelügyelet](https://github.com/azure/averesdk/blob/master/docs/README.md)
 
 ### <a name="add-cluster-nodes-with-vfxtpy"></a>Vfxt.py a fürtcsomópontok hozzáadása
 
@@ -115,7 +115,7 @@ Ha nem használ a prototípust, kell hozhatnak létre a következő, beleértve 
    --log ~/vfxt.log
 ```
 
-További információkért olvassa el [csomópontok hozzáadása egy fürthöz](https://github.com/AvereSystems/vFXT.py/blob/master/docs/using_vfxt_py.md#add-nodes-to-a-cluster) a vfxt.py használati útmutatójában.
+További információkért olvassa el [csomópontok hozzáadása egy fürthöz](https://github.com/Azure/AvereSDK/blob/master/docs/using_vfxt_py.md#add-nodes-to-a-cluster) a vfxt.py használati útmutatójában.
 
 ### <a name="stop-a-cluster-with-vfxtpy"></a>Egy fürt vfxt.py leállítása
 
@@ -129,7 +129,7 @@ vfxt.py --cloud-type azure --from-environment --stop --resource-group GROUPNAME 
 vfxt.py --cloud-type azure --from-environment --start --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET --instances INSTANCE1_ID INSTANCE2_ID INSTANCE3_ID ...
 ```    
 
-A fürt le van állítva, mert akkor meg kell adnia a példány azonosítók, adja meg a fürt csomópontjai. Olvasási [megadásával módosíthatja azon fürt](https://github.com/AvereSystems/vFXT.py/blob/master/docs/using_vfxt_py.md#specifying-which-cluster-to-modify) a további vfxt.py használati útmutatóban.
+A fürt le van állítva, mert akkor meg kell adnia a példány azonosítók, adja meg a fürt csomópontjai. Olvasási [megadásával módosíthatja azon fürt](https://github.com/Azure/AvereSDK/blob/master/docs/using_vfxt_py.md#specifying-which-cluster-to-modify) a további vfxt.py használati útmutatóban.
 
 ### <a name="destroy-a-cluster-with-vfxtpy"></a>A vfxt.py egy fürt megszüntetése
 
@@ -139,8 +139,7 @@ vfxt.py --cloud-type azure --from-environment --destroy --resource-group GROUPNA
 
 A beállítás ``--quick-destroy`` is használható, ha nem szeretné, hogy a fürt gyorsítótárból módosított adatokat írni.
 
-Olvassa el a [vfxt.py – használati útmutató](<https://github.com/AvereSystems/vFXT.py/blob/master/docs/README.md>) további információt.  
-<!-- change to final location when available -->
+Olvassa el a [vfxt.py – használati útmutató](<https://github.com/Azure/AvereSDK/blob/master/docs/README.md>) további információt.  
 
 ## <a name="manage-cluster-vms-from-the-azure-portal"></a>Fürt virtuális gépek kezelése az Azure Portalról 
 

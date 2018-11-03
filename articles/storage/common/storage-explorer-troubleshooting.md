@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.component: common
-ms.openlocfilehash: ffb355b4471bd8455f67e657d9557c3f372c3f4e
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fa73062cc2fdfa3704088f37b2e4856e134a6dfe
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470320"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979029"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer – hibaelhárítási útmutató
 
@@ -143,6 +143,12 @@ Ha a proxybeállításai megfelelőek, lehet a proxy server rendszergazdához, �
 ## <a name="unable-to-retrieve-children-error-message"></a>"A gyermekek lekérése nem sikerült" hibaüzenet jelenik meg
 
 Ha proxyn keresztül csatlakoznak az Azure-ba, győződjön meg arról, hogy helyesek-e a WebProxy beállításait. Ha a fiók vagy előfizetés tulajdonosától is kapott hozzáférést egy erőforráshoz, győződjön meg arról, hogy rendelkezik-e olvasási vagy listában meghatározott engedélyek.
+
+## <a name="connection-string-does-not-have-complete-configuration-settings"></a>Kapcsolati karakterlánc nem rendelkezik teljes konfigurációs beállításai
+
+Ha ezt a hibaüzenetet kapja, akkor lehet, hogy nem kell a szükséges engedélyekkel a tárfiók kulcsainak lekéréséhez. Győződjön meg arról, ha ez a helyzet, lépjen a portálra, és keresse meg a Storage-fiókjában. A tárfiók a csomóponton kattintson jobb gombbal, majd kattintson a "Nyissa meg a portál" gyorsan teheti ezt. Ezt követően nyissa meg a "Hozzáférési kulcsok" panel. Ha nem rendelkezik engedéllyel a kulcsok megtekintéséhez majd megjelenik egy oldal a "Nem rendelkezik hozzáféréssel" üzenettel. Megkerülő megoldás a probléma, lehetősége van a fiókkulcs szerzi valaki más, majd csatolása nevére és kulcsára, vagy kérjen egy SAS a tárfiókra, és csatlakoztassa a Storage-fiók használatával.
+
+Ha a fiók kulcsok megtekintéséhez, majd nyújtson egy problémát a Githubon, így a segítségére a probléma megoldásához.
 
 ## <a name="issues-with-sas-url"></a>Problémák az SAS URL-címe
 Ha egy szolgáltatás SAS URL-címet használ, és ezt a hibát tapasztaló csatlakozik:

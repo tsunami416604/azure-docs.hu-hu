@@ -8,33 +8,32 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 21464ccfbd5712b18e46a271a93232dc3ba7d3c8
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 656742727b2bd85ac93211c74d82fe11d0bc0f46
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50244079"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963897"
 ---
-# <a name="global-distribution---under-the-hood"></a>Globális terjesztés – technikai részletek
+# <a name="azure-cosmos-db-global-distribution---under-the-hood"></a>Az Azure Cosmos DB globális terjesztésének – technikai részletek
 
-Az Azure Cosmos DB szolgáltatás eligazodást az Azure-ban, így az összes Azure-régiókban világszerte többek között a nyilvános, a független, a védelmi Minisztérium (DoD) és a kormányzati felhők között központilag telepítették. Egy adatközponton belül azt üzembe helyezése és kezelése az Azure Cosmos DB szolgáltatás nagy "stampek" gépek, a dedikált helyi tárterülettel rendelkező. Egy adatközponton belül az Azure Cosmos DB van üzembe helyezve között számos fürthöz egyes potenciálisan futó hardver generációja több. Fürtön belüli gépek általában 10 – 20 tartalék tartományokban vannak elosztva.
+Az Azure Cosmos DB szolgáltatás eligazodást az Azure-ban, így az összes Azure-régiókban világszerte többek között a nyilvános, a független, a védelmi Minisztérium (DoD) és a kormányzati felhők között központilag telepítették. Egy adatközponton belül azt üzembe helyezése és kezelése az Azure Cosmos DB nagy stampek gépek, az egyes dedikált helyi tárterülettel rendelkező. Egy adatközponton belül az Azure Cosmos DB van üzembe helyezve között számos fürthöz egyes potenciálisan futó hardver generációja több. Fürtön belüli gépek általában 10 – 20 tartalék tartományokban vannak elosztva. Az alábbi képen a Cosmos DB globális terjesztésének topológia látható:
 
 ![Topológia](./media/global-dist-under-the-hood/distributed-system-topology.png)
-**topológia**
 
-Az Azure Cosmos DB globális terjesztését az kulcsrakész: bármikor, néhány kattintással vagy programozott módon egyetlen API hívással ügyfél hozzáadhat és eltávolíthat a földrajzi régiók társított a Cosmos database. Cosmos-tárolók egy készletét ezután áll egy Cosmos-adatbázis. A Cosmos DB-tárolók szolgálhat terjesztési és méretezhetőséget biztosít a logikai tárolóegységeket. A gyűjtemények, táblák és létrehozhat a gráfok tárolói (belső) csak Cosmos. Tárolók rendszer teljesen sémafüggetlen, és adja meg a lekérdezés hatókörét. Cosmos-tárolóban lévő összes adat automatikusan indexelt Adatbetöltési esetén. Automatikus indexelés lehetővé teszi a felhasználóknak nem kell foglalkozni a séma vagy index kezelését, különösen egy globálisan elosztott környezetben, és az adatok lekérdezéséhez.  
-
-Ahogy az az alábbi képen is látható, a tárolóban lévő adatok terjesztése két dimenzió mentén:  
+**Az Azure Cosmos DB globális terjesztését az kulcsrakész:** bármikor, egyetlen API hívással, néhány kattintással vagy programozott módon hozzáadása vagy eltávolítása a földrajzi régiók társított a Cosmos database. Cosmos-tárolók egy készletét ezután áll egy Cosmos-adatbázis. A Cosmos DB-tárolók szolgálhat terjesztési és méretezhetőséget biztosít a logikai tárolóegységeket. A gyűjtemények, táblák és létrehozhat a gráfok tárolói (belső) csak Cosmos. Tárolók rendszer teljesen sémafüggetlen, és adja meg a lekérdezés hatókörét. Cosmos-tárolóban lévő adatok automatikusan indexelt Adatbetöltési esetén. Automatikus indexelés lehetővé teszi a felhasználóknak nem kell foglalkozni a séma vagy index kezelését, különösen egy globálisan elosztott környezetben, és az adatok lekérdezéséhez.  
 
 - Egy adott régióban tárolóban lévő adatok egy partíciós kulccsal, amely megadja, és átlátható módon kezeli az alapul szolgáló forráserőforrás-partíció (helyi elosztás) használatával vannak.  
+
 - Minden erőforrás-partícióból több földrajzi régióban készül másolat (globális elosztás). 
 
 Amikor egy alkalmazást rugalmasan Cosmos DB használatával méretezi az átviteli sebességet (vagy további tárhelyet használ) egy Cosmos-tárolón, Cosmos DB transzparens módon kezeli a műveleteket (split, klónozza, Törlés) minden olyan régióban. Független a méretezési csoport, terjesztési vagy hibák, Cosmos DB folyamatosan egyetlen rendszerképet a Data-tárolók, amely globálisan bármennyi régió között oszlanak meg.  
 
-![Erőforrás-partíciók](./media/global-dist-under-the-hood/distribution-of-resource-partitions.png)
-**erőforrás-partíciók eloszlása**
+Ahogy az az alábbi képen is látható, a tárolóban lévő adatok terjesztése két dimenzió mentén:  
 
-Fizikailag erőforrás-partíció replikákat, a replikakészlethez nevű csoportja által valósul meg. Egyes gépek az előző képen látható módon a rögzített folyamatok belül különböző erőforrás-partíciók megfelelő replikák több száz üzemelteti. Az erőforrás-partíciók megfelelő replikák dinamikusan kerülnek, és a terheléselosztáshoz a gépek belül egy adott régión belül egy fürt és adatközpontok között.  
+![Erőforrás-partíciók](./media/global-dist-under-the-hood/distribution-of-resource-partitions.png)
+
+Erőforrás-partíció replikákat, a replikakészlethez nevű csoportja által valósul meg. Egyes gépek, amelyek megfelelnek a rögzített folyamatok belül különböző erőforrás-partíciók az előző képen látható módon replikák több száz üzemelteti. Az erőforrás-partíciók megfelelő replikák dinamikusan kerülnek, és a terheléselosztáshoz a gépek belül egy adott régión belül egy fürt és adatközpontok között.  
 
 A replika egyedi az Azure Cosmos DB-bérlő tartozik. Minden egyes replikának a Cosmos DB példányát futtatja [adatbázismotor](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), amely kezeli az erőforrások, valamint a hozzá tartozó indexeket. A Cosmos DB adatbázismotorja az atom-rekord-szekvencia (ARS) alapuló típus rendszeren működik. A motor egy séma- és a rekordok szerkezetét és a példány értékek közötti határ felismerhetetlenné fogalma független. A cosmos DB automatikusan indexeli mindent után az Adatbetöltési és hatékonyan, amely lehetővé teszi a felhasználók számára, hogy sémákkal vagy indexkezeléssel kezelése nélkül kérdezheti le a globálisan elosztott adatokon a teljes séma agnosticism biztosít.
 
