@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: b3f71c4710bd9711a3209dd55f8e680f63627c1b
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b8d759c7b55608be780389991e6bb393f4f3fe9f
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50035351"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50981524"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>A portálon a karbantartásra ütemezett virtuális gépek megtekintése
 
@@ -49,17 +49,9 @@ Az Azure Portalon, és keresse meg a karbantartásra ütemezett virtuális gépe
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Értesítések és riasztások a portálon
 
-Az Azure tervezett karbantartási ütemezés egy e-mailt küld az előfizetés tulajdonosa és a társtulajdonosok csoport kommunikál. Adhat hozzá további címzettek és csatornák a kommunikáció Azure-tevékenységi riasztások létrehozásával. További információkért lásd: [figyelése az Azure-tevékenységnapló előfizetés](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+Az Azure tervezett karbantartási ütemezés egy e-mailt küld az előfizetés tulajdonosa és a társtulajdonosok csoport kommunikál. Adhat hozzá további címzettek és csatornák a kommunikáció Azure-tevékenységi riasztások létrehozásával. További információkért lásd: [tevékenységnapló-riasztások létrehozása a szolgáltatási értesítések](../articles/monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md).
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldali menüben válassza **figyelő**. 
-3. Az a **figyelő – riasztások (klasszikus)** ablaktáblán kattintson a **+ tevékenységnapló-riasztás hozzáadása**.
-5. Töltse a **tevékenységnapló-riasztás hozzáadása** lapon és ellenőrizze, hogy állítsa be a következő **feltételek**:
-   - **Eseménykategória**: szolgáltatásának állapota
-   - **Szolgáltatások**: Virtual Machine Scale Sets és a virtuális gépek
-   - **Típus**: tervezett karbantartás 
-    
-A tevékenységnapló-riasztások konfigurálásának további tudnivalókért lásd: [tevékenységnapló-riasztások létrehozása](../articles/monitoring-and-diagnostics/monitoring-activity-log-alerts.md).
+Mindenképpen állítsa be a **eseménytípus** , **tervezett karbantartás** és **szolgáltatások** , **Virtual Machine Scale Sets** és/vagy **Virtuális gépek**
     
     
 ## <a name="start-maintenance-on-your-vm-from-the-portal"></a>Karbantartás indítása a portálról a virtuális gépen

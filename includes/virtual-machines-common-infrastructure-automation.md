@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: bc273b8979b29057163e02dc9605e631aef173f1
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 28c943b2588270af823c0712d4e510a4f018da3e
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226417"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50981525"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Az Azure-beli virtuális gépek infrastruktúra automatizálási eszközök használata
 Hozzon létre, és kezeli az Azure-beli virtuális gépek (VM) egységes módon végrehajtott, ipari méretekben, valamilyen automatizált általában van szükség. Nincsenek számos eszközöket és megoldásokat, amelyek lehetővé teszik a teljes Azure-infrastruktúra üzembe helyezés és felügyelet életciklusának automatizálásához. Ez a cikk egy részét az infrastruktúra automatizálási eszközöket, amelyek is használhatja az Azure-ban mutatja be. Ezek az eszközök általában pontosan a következő módszerek egyikét:
@@ -129,9 +129,9 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 ## <a name="azure-devops-services"></a>Azure DevOps Services
 [Az Azure DevOps-szolgáltatásokkal](https://www.visualstudio.com/team-services/) olyan eszközöket tartalmazza, amelyek segítséget nyújtanak a megosztások és -kód, használja az automatizált buildekig és hozzon létre egy teljes folyamatos integrációs és fejlesztési (CI/CD) folyamatot nyomon követése. Az Azure DevOps-szolgáltatásokkal integrálja a Visual Studio és az egyéb szerkesztők használatának leegyszerűsítése érdekében. Az Azure DevOps-szolgáltatásokkal is létrehozhat és Azure virtuális gépek konfigurálása és őket, majd kód üzembe helyezése.
 
-Az alábbiak végrehajtásának módját ismerheti meg:
+További információk:
 
-- [Folyamatos integrációs folyamat létrehozása az Azure DevOps-szolgáltatásokkal](../articles/virtual-machines/windows/tutorial-vsts-iis-cicd.md).
+- [Az Azure DevOps-szolgáltatásokkal](https://docs.microsoft.com/azure/devops/user-guide/index?view=vsts).
 
 
 ## <a name="jenkins"></a>Jenkins
