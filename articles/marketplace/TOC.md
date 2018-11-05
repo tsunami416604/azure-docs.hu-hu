@@ -86,7 +86,18 @@
 ### [SaaS-értékesítés az Azure-on keresztül](./cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions.md)
 ### [SaaS API-k](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
 
-## [Containers](./cloud-partner-portal-orig/cloud-partner-portal-containers-guide.md)
+<!-- Legacy ## [Containers](./cloud-partner-portal-orig/cloud-partner-portal-containers-guide.md) -->
+
+## [Tárolók ajánlat](./cloud-partner-portal/containers/cpp-containers-offer.md)
+### [Előfeltételek](./cloud-partner-portal/containers/cpp-prerequisites.md)
+### [Tárolóajánlat létrehozása](./cloud-partner-portal/containers/cpp-create-offer.md)
+#### [Ajánlatbeállítási lap](./cloud-partner-portal/containers/cpp-offer-settings-tab.md)
+#### [Termékváltozatok lap](./cloud-partner-portal/containers/cpp-skus-tab.md)
+#### [Marketplace lap](./cloud-partner-portal/containers/cpp-marketplace-tab.md)
+#### [Támogatási lap](./cloud-partner-portal/containers/cpp-support-tab.md)
+### [Tárolók technikai eszközeinek létrehozása](./cloud-partner-portal/containers/cpp-create-technical-assets.md)
+### [Tárolóajánlat közzététele](./cloud-partner-portal/containers/cpp-publish-offer.md)
+### [Létező ajánlat frissítése](./cloud-partner-portal/containers/cpp-update-existing-offer.md)
 
 ## [IoT Edge-modulajánlat](./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md)
 ### [Előfeltételek](./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md)
