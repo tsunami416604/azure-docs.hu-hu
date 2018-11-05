@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f5f8ed885791a648f30790434be56d966bbf2e47
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8201e1569bd3030a205ab0ec5adb8a1f39a0ecc3
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989294"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960735"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhook-műveletek a riasztási szabály
 Ha egy [riasztás jön létre az Azure-ban](alert-log.md), lehetősége van a [konfigurálása a Műveletcsoportok használatával](monitoring-action-groups.md) egy vagy több művelet végrehajtásához.  Ez a cikk ismerteti a rendelkezésre álló különböző webhook-műveletek és a részletek az egyéni JSON-alapú webhook konfigurálásáról.
@@ -201,4 +201,4 @@ Következő egy hasznosadat-minta bármely riasztás egyéni webhook művelet.
 - Megismerheti [managaing naplóriasztások az Azure-ban](alert-log.md)
 - Létrehozásához és kezeléséhez [Műveletcsoportok az Azure-ban](monitoring-action-groups.md)
 - Tudjon meg többet [Application Insights](../application-insights/app-insights-analytics.md)
-- Tudjon meg többet [Log Analytics](../log-analytics/log-analytics-overview.md). 
+- Tudjon meg többet [Log Analytics](../log-analytics/log-analytics-queries.md). 

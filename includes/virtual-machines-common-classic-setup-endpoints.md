@@ -5,69 +5,80 @@ services: virtual-machines-windows
 author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 10/23/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: cfe675ca269a69c7c2bfa67638acd0afbcd1c8ea
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: e7dfd7d2a0363a95acb76a5dc214dbd4036de11d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34371286"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50973819"
 ---
-Minden egyes végpont rendelkezik egy *nyilvános port* és egy *magánhálózati port*:
+Mindegyik végpontra egy *nyilvános port* és a egy *magánhálózati port*:
 
-* A nyilvános portot használják az Azure load balancer figyelni a bejövő forgalmat a virtuális gép az internetről.
-* A magánhálózati port szolgál a virtuális gép által figyelni a bejövő adatforgalmat, általában egy alkalmazás vagy szolgáltatás fut a virtuális gépen.
+* A nyilvános port szolgál az Azure load balancer által figyelni a bejövő forgalmat a virtuális géphez az internetről.
+* A magánhálózati port figyelni a bejövő forgalmat, általában egy alkalmazás vagy szolgáltatás fut a virtuális gép felé irányuló a virtuális gép által használt.
 
-Az IP-protokoll és a jól ismert hálózati protokollok kapnak, ha az Azure-portálon végpontok létrehozásához TCP vagy UDP-portok alapértelmezett értékeit. Egyéni végpontok szüksége lesz a megfelelő IP-protokoll (TCP és UDP) és a nyilvános és magánhálózati portot adja meg. Véletlenszerűen szét több virtuális gép bejövő forgalmat, lesz szüksége több végpont már nem álló elosztott terhelésű készlet létrehozásához.
+Az IP protokoll és a jól ismert hálózati protokollok találhatók végpontok az Azure Portallal való létrehozásakor a TCP vagy UDP-portok alapértelmezett értékeit. Egyéni végpontok adja meg a megfelelő IP-protokollt (TCP vagy UDP) és a nyilvános és magánhálózati portokra. A bejövő forgalom elosztását véletlenszerűen több virtuális gép között, több végpontot, amely elosztott terhelésű készlet létrehozása.
 
-Miután létrehozta a végpont, hozzáférés-vezérlési listaként (ACL) segítségével szabályok meghatározásához, amelyek engedélyezhetnek vagy tagadhatnak meg a végpont a forrás IP-címe alapján a nyilvános portot a bejövő forgalmat. Azonban ha a virtuális gépet egy Azure virtuális hálózatban, használjon hálózati biztonsági csoportok helyette. További információkért lásd: [hálózati biztonsági csoportok](../articles/virtual-network/security-overview.md).
+Miután létrehozott egy végpontot, használhatja a hozzáférés-vezérlési lista (ACL) szabályok meghatározásához, amelyek vagy megtagadhatja a bejövő forgalmat a forrás IP-címe alapján a végpont nyilvános port. Azonban ha a virtuális gép Azure-beli virtuális hálózathoz, inkább a hálózati biztonsági csoportok. További információkért lásd: [hálózati biztonsági csoportokkal kapcsolatos](../articles/virtual-network/security-overview.md).
 
 > [!NOTE]
-> Az Azure virtuális gépek tűzfal-konfigurálása automatikusan történik, amely automatikusan beállítja Azure távoli kapcsolatot végpontok társított portok. A portok az összes többi végpont a megadott, nem-konfigurálása automatikusan történik a virtuális gép a tűzfalhoz. Amikor létrehoz egy végpontot a virtuális gép, szüksége lesz győződjön meg arról, hogy a tűzfal, a virtuális gép is lehetővé teszi, hogy a protokoll és magánhálózati portot a végpont-konfiguráció megfelelő a forgalmat. A tűzfal konfigurálásáról lásd: a dokumentációját, vagy az operációs rendszer a virtuális gépen futó online súgóját.
+> A tűzfal konfigurálása az Azure virtual machines a távoli kapcsolati végpontok, amelyek az Azure automatikusan beállít társított portokhoz automatikusan történik. A portok összes végponthoz megadott, nem konfigurálása automatikusan történik a virtuális gép a tűzfalhoz. Amikor létrehoz egy végpontot a virtuális gép, győződjön meg arról, hogy a tűzfal a virtuális gép is lehetővé teszi, hogy a forgalom a protokoll és a végpont-konfiguráció megfelelő magánhálózati port. A tűzfal konfigurálásáról lásd: a dokumentációban vagy a virtuális gépen futó operációs rendszer online súgó.
 >
 >
 
 ## <a name="create-an-endpoint"></a>Végpont létrehozása
-1. Ha még nem tette meg, jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Kattintson a **virtuális gépek**, majd kattintson a konfigurálni kívánt virtuális gép nevére.
-3. Kattintson a **végpontok** a a **beállítások** csoport. A **végpontok** lap felsorolja a virtuális gép az aktuális végpontjai. (Ez a példa egy Windows virtuális Gépet. A Linux virtuális gép alapértelmezés szerint megjelenik a végpont az SSH.)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+
+2. Válassza ki **virtuális gépek**, majd válassza ki a konfigurálni kívánt virtuális gépet.
+
+3. Válassza ki **végpontok** a a **beállítások** csoport. A **végpontok** lap, amely végpontjai az aktuális virtuális gép. (Az ebben a példában egy Windows virtuális gép számára. Egy Linux rendszerű virtuális gép alapértelmezés szerint jelennek meg a végpont az SSH-hoz.)
 
    <!-- ![Endpoints](./media/virtual-machines-common-classic-setup-endpoints/endpointswindows.png) -->
    ![Végpontok](./media/virtual-machines-common-classic-setup-endpoints/endpointsblade.png)
 
-4. A végpont bejegyzések fölött a parancssávon kattintson **Hozzáadás**.
-5. Az a **végpont hozzáadása** írja be a végpont nevét **neve**.
+
+4. A parancssorban a végpont-bejegyzések fölött, válassza ki a **Hozzáadás**. A **végpont hozzáadása** lap jelenik meg.
+
+5. A **neve**, adja meg a végpont nevét.
+
 6. A **protokoll**, válasszon **TCP** vagy **UDP**.
-7. A **nyilvános Port**, írja be a port számát, a bejövő forgalom az internetről. A **magánhálózati Port**, írja be a port számát, amelyet a virtuális gép figyel. Ezek a portszámok eltérő lehet. Győződjön meg arról, hogy a tűzfal, a virtuális gép konfigurációja engedélyezi a megfelelő protokollt (a 6. lépés) és magánhálózati portot forgalmat.
-10. Kattintson az **OK** gombra.
 
-Az új végpont jelenik meg a **végpontok** lap.
+7. A **nyilvános port**, adja meg a portszámot a bejövő forgalom az internetről. 
 
-![Végpont létrehozása sikeresen megtörtént](./media/virtual-machines-common-classic-setup-endpoints/endpointcreated.png)
+8. A **magánhálózati port**, adja meg a portszámot, amelyen a virtuális gép figyel. A nyilvános és privát portszámokat eltérő lehet. Győződjön meg arról, hogy beállítottak-e a virtuális gép tűzfala engedélyezi a forgalmat a protokoll és a magánhálózati port megfelelő.
 
-## <a name="manage-the-acl-on-an-endpoint"></a>A végpont ACL kezelése
-A számítógépek, amelyek képesek a forgalmat küldeni a kulcstulajdonságokat határozza meg, hogy a végpont ACL korlátozhatja forgalom forrás IP-címe alapján. A lépések végrehajtásával adja hozzá, módosíthatja vagy eltávolíthatja a végpont ACL.
+9. Kattintson az **OK** gombra.
+
+Az új végpont megjelenik a **végpontok** lapot.
+
+![Végpont létrehozása sikeres](./media/virtual-machines-common-classic-setup-endpoints/endpointcreated.png)
+
+## <a name="manage-the-acl-on-an-endpoint"></a>A végponti ACL kezelése
+A végponti ACL definiálásához az számítógépeket, amelyek képesek a forgalmat küldeni, korlátozhatja a forgalmat a forrás IP-cím alapján. Kövesse az alábbi lépéseket hozzáadása, módosítása vagy a végpont ACL eltávolítása.
 
 > [!NOTE]
-> Ha a végpont egy elosztott terhelésű készlet része, a végpont ACL végzett módosításokat a készlet összes végpontok is vonatkozik.
+> A végpont egy elosztott terhelésű készlet része, ha végrehajtott módosítások az ACL-végponton a csoportban lévő összes végpontok lépnek.
 >
 >
 
-Ha a virtuális gépet egy Azure virtuális hálózatban, ajánlott hálózati biztonsági csoportok hozzáférés-vezérlési listák helyett. További információkért lásd: [hálózati biztonsági csoportok](../articles/virtual-network/security-overview.md).
+Ha a virtuális gép Azure-beli virtuális hálózathoz, a hálózati biztonsági csoportok ACL-ek helyett. További információkért lásd: [hálózati biztonsági csoportokkal kapcsolatos](../articles/virtual-network/security-overview.md).
 
-1. Ha még nem tette meg, jelentkezzen be az Azure-portálon.
-2. Kattintson a **virtuális gépek**, majd kattintson a konfigurálni kívánt virtuális gép nevére.
-3. Kattintson a **Végpontok** elemre. A listában jelölje ki a megfelelő végpont. Az ACL lista van, az oldal alján.
+1. Jelentkezzen be az Azure portálra.
 
-   ![Adja meg a hozzáférés-vezérlési lista adatait](./media/virtual-machines-common-classic-setup-endpoints/aclpreentry.png)
+2. Válassza ki **virtuális gépek**, majd válassza ki a konfigurálni kívánt virtuális gép nevét.
 
-4. Használja a lista sorok hozzáadásához, törléséhez vagy az ACL szabályok szerkesztése, és módosíthatja azok sorrendjét. A **távoli alhálózati** értéke az IP-címtartományok, a bejövő forgalom az internetről, amely az Azure load balancer segítségével engedélyezheti vagy megtagadhatja a forgalmat a forrás IP-címe alapján. Ne adja meg az IP-címtartományt a CIDR-formátumban, más néven a cím előtag formátuma. Például: `10.1.0.0/8`.
+3. Válassza ki **végpontok**. A végpontok listából válassza ki a megfelelő végpontra. Az ACL lista van, az oldal alján.
+
+   ![ACL részleteinek megadása](./media/virtual-machines-common-classic-setup-endpoints/aclpreentry.png)
+
+4. Használja a lista sorok hozzáadásához, törléséhez vagy az ACL szabályok szerkesztése és sorrendbe. A **távoli ALHÁLÓZATI** értéke egy IP-címtartományt, amely engedélyezi vagy letiltja a forgalmat a forrás IP-címének alapján használja az Azure load balancer az internetről bejövő forgalmat. Mindenképpen adja meg az IP-címtartományt classless Inter-Domain útválasztási (CIDR formátumban), más néven a cím előtagja formátuma. Például: `10.1.0.0/8`.
 
  ![Új ACL-bejegyzéssel](./media/virtual-machines-common-classic-setup-endpoints/newaclentry.png)
 
 
-Használhatja a szabályokat, az adott számítógépekhez, a számítógépek az interneten lévő megfelelő csak forgalom engedélyezésére, vagy letilthatja a forgalmat a meghatározott, ismert címtartományokból.
+Szabályok is használhatja, vagy meghatározott, ismert címtartományok a forgalom megtagadásához szükséges megfelelő a számítógépek az interneten, a megadott számítógépekről érkező csak adatforgalom engedélyezéséhez.
 
-A szabályok kiértékelése sorrendben az első szabályhoz kezdési és befejezési az utolsó szabályhoz. Ez azt jelenti, hogy szabályokat kell kell rendelni a legkevésbé korlátozó szigorúbb. További információt és példákat lásd: [Mi az a hálózati hozzáférés-vezérlési lista](../articles/virtual-network/virtual-networks-acl.md).
+A szabályok kiértékelése sorrendben az első szabály a kezdő és záró az utolsó szabállyal. Ezért szabályokat kell kell rendelni a legkevésbé korlátozó leginkább korlátozó. További információkért lásd: [Mi az a hálózati hozzáférés-vezérlési lista](../articles/virtual-network/virtual-networks-acl.md).

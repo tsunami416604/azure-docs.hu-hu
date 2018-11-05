@@ -9,12 +9,12 @@ ms.date: 10/28/2018
 ms.author: moderakh
 ms.devlang: java
 ms.component: cosmosdb-sql
-ms.openlocfilehash: ef1d2d0751bf1b1a7ee88fbf37e44e6316dee8f8
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: efa2b60ccfc6af6cfb4a46e17b13a426d4e8c9fe
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249868"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958814"
 ---
 # <a name="troubleshooting-issues-when-using-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Java aszinkron SDK használatával az Azure Cosmos DB SQL API-fiókokkal kapcsolatos hibák elhárítása
 Ez a cikk ismerteti gyakori problémákat, megoldások, diagnosztikai lépések és eszközök használata esetén [Java aszinkron ADK](sql-api-sdk-async-java.md) az Azure Cosmos DB SQL API-fiókok.
@@ -48,7 +48,7 @@ A fájlok ("nofile") kell lennie (a legkevésbé dupla, a kapcsolatkészlet mér
 
 ##### <a name="snat"></a>Az Azure SNAT (PAT) portfogyás
 
-Ha az alkalmazás van üzembe helyezve az Azure virtuális gépen, alapértelmezés szerint [Azure SNAT portok](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) használatával hoz létre a kapcsolatot a virtuális Gépen kívüli bármely végpont. A virtuális gépről a Cosmos DB végpont engedélyezett kapcsolatainak számát korlátozza a [Azure SNAT konfigurációs](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports).
+Ha az alkalmazás telepíthető Azure virtuális gép nyilvános IP-cím nélkül, alapértelmezés szerint [Azure SNAT portok](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) használatával hoz létre a kapcsolatot a virtuális Gépen kívüli bármely végpont. A virtuális gépről a Cosmos DB végpont engedélyezett kapcsolatainak számát korlátozza a [Azure SNAT konfigurációs](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports).
 
 A rendszer az Azure SNAT portokat használja, csak akkor lehetséges, ha az Azure virtuális gép magánhálózati IP-címmel rendelkezik, és a virtuális gépről egy folyamatot próbál egy kapcsolatot egy nyilvános IP-címet. Tehát van két lehetséges megoldások Azure SNAT korlátozás elkerülése érdekében:
     * Az Azure Cosmos DB-szolgáltatásvégpont hozzáadása az Azure virtuális gép virtuális hálózat alhálózatának leírtak [szolgáltatásvégpont engedélyezése](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). Szolgáltatásvégpont engedélyezésekor a a már nem küld egy nyilvános IP-címet a cosmos DB inkább a virtuális hálózathoz, és a rendszer alhálózati identitást küldi el. Ez a változás tűzfal csepp eredményezhet, ha csak nyilvános IP-címek használata engedélyezett. Ha a tűzfal, amikor a szolgáltatásvégpont engedélyezése használ, a tűzfal használatával alhálózat hozzáadása [virtuális hálózati hozzáférés-vezérlési listák](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl).

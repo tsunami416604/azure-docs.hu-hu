@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: ''
-ms.openlocfilehash: 3c80007a8188fb239a13aaa0ccc9ef2237a2d8d1
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: f43db05cac03d090116d227536e343c4a7bb0df4
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025668"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958868"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Az Azure SQL Database megfigyelése az Azure SQL Analytics (előzetes verzió)
 
@@ -46,8 +46,8 @@ A megoldás nem használja az ügynökök a Log Analytics szolgáltatáshoz val�
 | --- | --- | --- |
 | **[Az Azure Diagnostics](log-analytics-azure-storage.md)** | **Igen** | Az Azure metrika- és naplózási adatok közvetlenül az Azure Log Analytics érkeznek. |
 | [Azure Storage-fiók](log-analytics-azure-storage.md) | Nem | A log Analytics egy storage-fiókból az adatok nem olvashatók. |
-| [Windows-ügynökök](log-analytics-windows-agent.md) | Nem | A megoldás a közvetlen Windows-ügynökök nem használja. |
-| [Linux-ügynökök](log-analytics-linux-agents.md) | Nem | A megoldás a közvetlen Linux-ügynökök nem használja. |
+| [Windows-ügynökök](log-analytics-agent-windows.md) | Nem | A megoldás a közvetlen Windows-ügynökök nem használja. |
+| [Linux-ügynökök](log-analytics-quick-collect-linux-computer.md) | Nem | A megoldás a közvetlen Linux-ügynökök nem használja. |
 | [Az SCOM felügyeleti csoport](log-analytics-om-agents.md) | Nem | A megoldás nem használja az SCOM-ügynöktől a Log Analyticshez való közvetlen kapcsolatot. |
 
 ## <a name="configuration"></a>Konfiguráció
@@ -122,9 +122,9 @@ Az alábbi táblázat ismerteti a perspektívák az irányítópulton, így az A
 | Insights | Hierarchikus Lehatolás biztosít intelligens elemzésekké teljesítményéről. | Igen | Igen |
 | Hibák | Hierarchikus Lehatolás biztosít, és ismételje meg az adatbázisok SQL hibákká. | Igen | Igen |
 | Időtúllépések | Hierarchikus Lehatolás biztosít az SQL-időtúllépések, az adatbázisok történt. | Igen | Nem |
-| Blockings | Hierarchikus Lehatolás biztosít, és ismételje meg az adatbázisok SQL blockings be. | Igen | Nem |
+| Letiltások | Hierarchikus Lehatolás biztosít, és ismételje meg az adatbázisok SQL blockings be. | Igen | Nem |
 | Adatbázis-várakozások | SQL várakozási statisztikák adatbázisszintű hierarchikus Lehatolás szolgál kapcsolatban. Teljes várakozási idő és a várakozási idő várakozási típusonként összegzéseket tartalmaz. |Igen | Igen |
-| Lekérdezések időtartama | Hierarchikus Lehatolás biztosít, például a lekérdezések időtartama, CPU-használat, adat IO kihasználtsága, naplózási IO kihasználtsága lekérdezés végrehajtási statisztikák. | Igen | Igen |
+| Lekérdezés időtartama | Hierarchikus Lehatolás biztosít, például a lekérdezések időtartama, CPU-használat, adat IO kihasználtsága, naplózási IO kihasználtsága lekérdezés végrehajtási statisztikák. | Igen | Igen |
 | Lekérdezési várakozások | Hierarchikus Lehatolás biztosít, a lekérdezés várakozási statisztikák várakozási kategória szerint. | Igen | Igen |
 
 ### <a name="intelligent-insights-report"></a>Intelligent Insights jelentés
@@ -192,7 +192,7 @@ A megoldás automatikus riasztások teljesül egy feltétel alapján riasztást 
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>Riasztások létrehozása az Azure SQL Database
 
-Könnyen [riasztásokat hozhat létre](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) az Azure SQL Database-erőforrásokat érkező adatokat. Íme néhány hasznos [naplóbeli keresés](log-analytics-log-searches.md) lekérdezéseket, amelyek egy riasztás használhatja:
+Könnyen [riasztásokat hozhat létre](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) az Azure SQL Database-erőforrásokat érkező adatokat. Íme néhány hasznos [naplóbeli keresés](log-analytics-log-search.md) lekérdezéseket, amelyek egy riasztás használhatja:
 
 *Az Azure SQL Database magas CPU*
 
@@ -289,6 +289,6 @@ Bár a megoldás használata ingyenes, vonatkozik-e az diagnostics telemetriai a
 
 ## <a name="next-steps"></a>További lépések
 
-- Használat [Naplókeresések](log-analytics-log-searches.md) a Log Analytics az Azure SQL részletes adatainak megtekintéséhez.
+- Használat [Naplókeresések](log-analytics-log-search.md) a Log Analytics az Azure SQL részletes adatainak megtekintéséhez.
 - [Saját irányítópult létrehozásával](log-analytics-dashboards.md) Azure SQL-adatainak megjelenítése.
-- [Riasztások létrehozása](log-analytics-alerts.md) amikor adott Azure SQL-események történnek.
+- [Riasztások létrehozása](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) amikor adott Azure SQL-események történnek.

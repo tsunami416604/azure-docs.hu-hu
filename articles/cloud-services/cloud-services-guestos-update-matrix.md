@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/16/2018
 ms.author: raiye
-ms.openlocfilehash: 5a9f8e332aae72d6fb0ce2f697a41391a51c44b6
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: c153e87224c596929440d814d30b94cc49d7ba76
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376669"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978740"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Az Azure vendég operációs rendszerek kiadásai és SDK-kompatibilitási mátrixot
 Itt, a legújabb Azure vendég operációs rendszer naprakész információkat és a Cloud Services-kiadások. Ez az információ segít a frissítési útvonal megtervezéséhez, mielőtt egy vendég operációs rendszer le van tiltva. Ha a szerepkörök használatára konfigurálja *automatikus* vendég operációs rendszer frissítése leírtak szerint [Azure vendég operációs rendszer frissítési beállítások][Azure Guest OS Update Settings], már nem létfontosságú, hogy elolvasta-e ezen a lapon.
@@ -66,7 +66,7 @@ Az április vendég operációs rendszer jelent meg.
 ## <a name="family-5-releases"></a>5. családba tartozó kiadások
 **Windows Server 2016**
 
-.NET-keretrendszer: 4.0-s, 4.5-ös, 4.5.1, 4.5.2-es, 4.6, 4.6.1, 4.6.2
+.NET-keretrendszer: 3.5, 4.6.2
 
 > [!NOTE]
 > Az operációsrendszer-család 5 RDP-jelszónak legalább 10 karakterből kell lennie.
@@ -84,7 +84,7 @@ Az április vendég operációs rendszer jelent meg.
 ## <a name="family-4-releases"></a>Család 4-kiadások
 **Windows Server 2012 R2**
 
-.NET-keretrendszer: 4.0-s, 4.5-ös, 4.5.1, 4.5.2.
+.NET-keretrendszer: 3.5, 4.5.1
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
 | --- | --- | --- |
@@ -98,7 +98,7 @@ Az április vendég operációs rendszer jelent meg.
 ## <a name="family-3-releases"></a>3-as család kiadások
 **Windows Server 2012**
 
-.NET-keretrendszer: 4.0-s, 4.5-ös, 4.5.1, 4.5.2.
+.NET-keretrendszer: 3.5, 4.5-ös verziója
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
 | --- | --- | --- |
@@ -112,7 +112,7 @@ Az április vendég operációs rendszer jelent meg.
 ## <a name="family-2-releases"></a>2 család kiadások
 **Windows Server 2008 R2 SP1**
 
-.NET-keretrendszer: 3.5, 4.0-s, 4.5-ös, 4.5.1, 4.5.2
+.NET-keretrendszer: 3.5 (tartalmazza a 2.0 és 3.0 verziót)
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
 | --- | --- | --- |

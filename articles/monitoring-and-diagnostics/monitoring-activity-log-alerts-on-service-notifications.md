@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
 ms.component: alerts
-ms.openlocfilehash: 221434a391f963a764ef36b9533cc8cfd0e16c01
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a86a7188c488a634de7b0ac71657bea0105381c7
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123448"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961891"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Tevékenységnapló-riasztások létrehozása szolgáltatási értesítésekhez
 ## <a name="overview"></a>Áttekintés
@@ -36,7 +36,7 @@ Is lehet konfigurálni kell a riasztást küldő:
 
 A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](monitoring-action-groups.md) szóló cikkben talál.
 
-Health értesítési szolgáltatásriasztások konfigurálása Azure Resource Manager-sablonok használatával kapcsolatos információkért lásd: [Resource Manager-sablonok](monitoring-create-activity-log-alerts-with-resource-manager-template.md).
+Health értesítési szolgáltatásriasztások konfigurálása Azure Resource Manager-sablonok használatával kapcsolatos információkért lásd: [Resource Manager-sablonok](alert-activity-log.md).
 
 ## <a name="create-an-alert-on-a-service-health-notification-for-a-new-action-group-by-using-the-azure-portal"></a>Az Azure portal segítségével hozzon létre egy riasztást a szolgáltatás állapotával kapcsolatos értesítés az új műveletcsoport
 1. Az a [portál](https://portal.azure.com)válassza **Service Health**.
@@ -70,7 +70,7 @@ Health értesítési szolgáltatásriasztások konfigurálása Azure Resource Ma
 
 1. Adja meg a fogadók listáját azáltal, hogy a fogadó:
 
-    a. **Név**: Adja meg a fogadó nevét, alias vagy azonosítója.
+    a. **Név**: Adja meg a fogadó s nevét, alias vagy azonosítója.
 
     b. **Művelet típusa**: válassza ki az SMS, e-mailt, webhookot, az Azure app és több.
 

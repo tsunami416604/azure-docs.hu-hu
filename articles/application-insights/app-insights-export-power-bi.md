@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: fc651b3bc28e59c5c5a195211d811e206eee3e42
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 71d5c26c8c41c470e188291dea4a4dab2811a67e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42055347"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963115"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Az Application Insights szolgáltatásból a Power BI hírcsatorna
 [Power bi-ban](http://www.powerbi.com/) üzleti eszközök együttese, amely segít az adatok elemzése és elemzéseket oszthat meg. Gazdag irányítópultok érhetők el a minden eszközön. Számos más forrásból, beleértve az elemzési lekérdezések az adatok is kombinálhatók [Azure Application Insights](app-insights-overview.md).
@@ -41,7 +41,7 @@ Az Application Insights-lekérdezés importálásához a Power BI asztali verzi�
 Telepítés [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
 ### <a name="export-an-analytics-query"></a>Analytics-lekérdezések exportálása
-1. [Nyissa meg a Analytics és a lekérdezés írása](app-insights-analytics-tour.md).
+1. [Nyissa meg a Analytics és a lekérdezés írása](../log-analytics/query-language/get-started-analytics-portal.md).
 2. Tesztelje, és pontosítsa a lekérdezést, mindaddig, amíg az eredmények elégedett. Győződjön meg arról, hogy a lekérdezés megfelelően fut az Analyticsben exportálás előtt.
 3. Az a **exportálása** menüben válassza a **Power bi-ban (M)**. Mentse a fájlt.
    
@@ -109,7 +109,7 @@ Ha az adatkészlethez megadott elemzési lekérdezésből származó csökkenté
    * Cserélje le  **https://management.azure.com/subscriptions/...**
    * **https://api.applicationinsights.io/beta/apps/...**
 3. Végül frissítse a hitelesítő adatok alapszintű, és az API-kulcsot használja.
-  
+ �
 
 **Meglévő parancsfájl**
  ```
@@ -155,5 +155,5 @@ Az első importálás után az irányítópult és a jelentések továbbra is na
 
 ## <a name="next-steps"></a>További lépések
 * [Power bi-ban – ismerje meg,](http://www.powerbi.com/learning/)
-* [Elemzések – oktatóanyag](app-insights-analytics-tour.md)
+* [Elemzések – oktatóanyag](../log-analytics/query-language/get-started-analytics-portal.md)
 

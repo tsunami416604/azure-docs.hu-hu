@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: bb1b1e2934de052479f39d40bfe143345e91bc26
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: e5915f18799386ae92019073fb50dac96da107ea
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094091"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960106"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Az Application Insights rendszerteljesítmény-számlálók
 Windows széles körének biztosít [teljesítményszámlálók](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters) például a Processzor foglaltsága, memória, lemez és hálózat használatának. Emellett megadhatja a saját. [Az Application Insights](app-insights-overview.md) megjelenítheti a teljesítményszámlálók az alkalmazás futásának IIS alatt egy helyi gazdagépen vagy virtuális gép, amely rendszergazdai hozzáféréssel rendelkezik. A diagramok jelzik az élő alkalmazás számára elérhető erőforrásokat, és segíthet azonosítani kiegyensúlyozatlan terhelés server-példányok között.
@@ -27,7 +27,7 @@ Teljesítményszámlálók a kiszolgálók panel, amely tartalmaz egy táblát a
 
 ![Az Application Insights által jelentett teljesítményszámlálókat](./media/app-insights-performance-counters/counters-by-server-instance.png)
 
-(A teljesítményszámlálók nem érhetők el az Azure Web Appshez. De [Azure Diagnostics küldése az Application Insights](app-insights-azure-diagnostics.md).)
+(A teljesítményszámlálók nem érhetők el az Azure Web Appshez. De [Azure Diagnostics küldése az Application Insights](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md).)
 
 ## <a name="view-counters"></a>Nézet számlálók
 A kiszolgálók panel teljesítményszámlálók alapértelmezett halmazát tartalmazza. 
@@ -96,7 +96,7 @@ Vagy megteheti ugyanezt teszi az létrehozott egyéni metrikák:
 ## <a name="performance-counters-in-analytics"></a>Teljesítményszámlálók az Analyticsben
 Itt megkeresheti, és a teljesítmény számláló jelentések megjelenítéséhez [Analytics](app-insights-analytics.md).
 
-A **performanceCounters** sémát tesz elérhetővé a `category`, `counter` nevét, és `instance` minden teljesítményszámláló neve.  A telemetria minden alkalmazáshoz csak az adott alkalmazáshoz számlálókat megjelenik. Például hogy milyen számlálók érhetők el: 
+A **performanceCounters** sémát tesz elérhetővé a `category`, `counter` nevét, és `instance` minden teljesítményszámláló neve.  A telemetria minden alkalmazáshoz akkor ll csak az adott alkalmazáshoz számlálókat látható. Például hogy milyen számlálók érhetők el: 
 
 ![Az Application Insights Analytics teljesítményszámlálók](./media/app-insights-performance-counters/analytics-performance-counters.png)
 

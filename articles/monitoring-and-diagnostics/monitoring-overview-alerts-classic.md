@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: 7046a0c6ac84ad5f156098a26dcef2b8accd50af
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c69a61f19b55cd325cd594173dbf3b5f2b4576b8
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987645"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962928"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Mik azok a Microsoft Azure klasszikus riasztások?
 
@@ -29,7 +29,7 @@ Az elmúlt Azure Monitor az Application Insights, a Log Analytics és a Service 
 
 Csak a klasszikus riasztások felhasználói képernyő az Azure Portalon a klasszikus riasztások is megtekintheti. Az ezen a képernyőn megjelenik a **klasszikus riasztások megtekintése** a riasztások képernyőn megjelenő gomb. 
 
- ![Riasztási lehetőségeket az Azure Portalon](./media/monitoring-overview-alerts-classic/monitor-alert-screen2.png) 
+ ![Riasztási lehetőségeket az Azure Portalon](./media/monitoring-overview-alerts-classic/monitor-alert-screen2.png)�
 
 Az új riasztások felhasználói felületet a klasszikus riasztások élmény felett az alábbi előnyökkel jár:
 -   **Értesítési rendszer jobb** – minden újabb riasztás nevesített csoportok vagy értesítési és műveleteket, amelyeket több riasztás felhasználható Műveletcsoportok használata. Ne használjon Műveletcsoportok klasszikus metrikariasztásokat és a korábbi Log Analytics-riasztásokkal.
@@ -82,21 +82,21 @@ Azonban a régebbi metrikákhoz kapcsolódó riasztások nem Műveletcsoportok h
 
 Webhookok lehetővé teszi, hogy automation és a szervizeléshez, például használatával:
     - Azure Automation-runbook
-    - Azure Function
+    - Azure-függvény
     - Az Azure Logic App
     - Egy külső szolgáltatás
 
 ## <a name="next-steps"></a>További lépések
 Riasztási szabályok, és konfigurálja őket az adatainak beolvasása:
 
-* Tudjon meg többet [metrikák](monitoring-overview-metrics.md)
-* Konfigurálása [klasszikus metrika riasztások az Azure Portalon keresztül](insights-alerts-portal.md)
-* Konfigurálása [metrika riasztások klasszikus PowerShell](insights-alerts-powershell.md)
-* Konfigurálása [klasszikus metrika riasztások parancssori felület (CLI)](insights-alerts-command-line-interface.md)
+* Tudjon meg többet [metrikák](../monitoring/monitoring-data-collection.md)
+* Konfigurálása [klasszikus metrika riasztások az Azure Portalon keresztül](alert-metric-classic.md)
+* Konfigurálása [metrika riasztások klasszikus PowerShell](alert-metric-classic.md)
+* Konfigurálása [klasszikus metrika riasztások parancssori felület (CLI)](alert-metric-classic.md)
 * Konfigurálása [klasszikus metrika riasztások az Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 * Tudjon meg többet [tevékenységnapló](monitoring-overview-activity-logs.md)
 * Konfigurálása [tevékenységnapló-riasztások Azure-portálon](monitoring-activity-log-alerts.md)
-* Konfigurálása [Resource Manageren keresztül tevékenységnapló-riasztások](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
+* Konfigurálása [Resource Manageren keresztül tevékenységnapló-riasztások](alert-activity-log.md)
 * Tekintse át a [tevékenység log riasztási webhook sémáról](monitoring-activity-log-alerts-webhook.md)
 * Tudjon meg többet [Műveletcsoportok](monitoring-action-groups.md)
-* Konfigurálása [újabb riasztások](monitor-alerts-unified-usage.md)
+* Konfigurálása [újabb riasztások](alert-metric.md)
