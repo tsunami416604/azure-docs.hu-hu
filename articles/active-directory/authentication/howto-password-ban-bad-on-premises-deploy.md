@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 6599d634ec1e13715bdd34b6e8ab6fbd9f4f3e61
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 02c2b7560a0a609f6d902af78877d5f0236615d3
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50743267"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011493"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>Előzetes verzió: Azure AD jelszóvédelem üzembe helyezése
 
@@ -53,6 +53,13 @@ A funkció elfogadható időn rendszervizsgálati módban futott, miután a kén
 * Minden olyan gép, amelyen telepítve vannak az Azure AD jelszó-védelem összetevői beleértve a tartományvezérlőket kell rendelkeznie a Universal C futásidejű telepítve.
 Ez lehetőleg azáltal, hogy teljes mértékben kijavítja a gép Windows Update-en keresztül történik. Ellenkező esetben lehet, egy megfelelő operációsrendszer-specifikus frissítési csomag telepítve – lásd: [Universal C-modul a Windows Update](https://support.microsoft.com/help/2999226/update-for-universal-c-runtime-in-windows)
 * Minden olyan tartományban legalább egy tartományvezérlő és az Azure AD jelszó védelme proxy szolgáltatást futtató legalább egy kiszolgáló között léteznie kell a hálózati kapcsolatot. A kapcsolat lehetővé teszi a tartományvezérlő hozzáférés RPC-végpont eseményleképező portja (135-ös) és a proxy szolgáltatást az RPC-kiszolgáló portja.  Az RPC-kiszolgáló portja alapértelmezés szerint dinamikus RPC-portot, de konfigurálható (lásd alább) a statikus port használatára.
+* Minden gép üzemeltetése az Azure AD jelszó védelme proxy szolgáltatás az alábbi végpontok hálózati hozzáféréssel kell rendelkeznie:
+
+    |Végpont |Rendeltetés|
+    | --- | --- |
+    |`https://login.microsoftonline.com`|Hitelesítési kérelmek|
+    |`https://enterpriseregistration.windows.net`|Az Azure AD jelszó-védelmi funkciók|
+
 * Egy globális rendszergazdai fiókkal az Azure AD jelszó protection proxy szolgáltatás és az erdő regisztrálhat az Azure ad-ben.
 * Az Active Directory tartományi rendszergazdai jogosultságokkal az erdő gyökértartományában, a Windows Server Active Directory-erdő regisztrálni az Azure AD-fiók.
 * Minden olyan Active Directory-tartományban, a Tartományvezérlőn futó ügynök szolgáltatás szoftvert kell használnia elosztott fájlrendszer replikációs szolgáltatása a sysvol replikáció.

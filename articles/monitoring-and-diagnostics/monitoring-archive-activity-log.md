@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 6743d03b623084675f5043a7e158fa99e8aa39d2
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: ea29d9052c2389b0c7d145223d3660364cbf2c74
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054005"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016318"
 ---
 # <a name="archive-the-azure-activity-log"></a>Az Azure tevékenységnapló archiválása
 Ebben a cikkben bemutatjuk a használatáról az Azure portal, PowerShell-parancsmagok vagy többplatformos parancssori felület archiválása a [ **Azure-tevékenységnapló** ](monitoring-overview-activity-logs.md) a storage-fiókban. Ez a beállítás akkor hasznos, ha szeretné megőrizni a naplózási, statikus elemzési és biztonsági mentés (, teljes körűen felügyelve az adatmegőrzési) 90 napnál hosszabb ideig Tevékenységnaplót. Ha csak szeretné megőrizni az események 90 napig, vagy kisebb, nem kell állítania archiválás tárfiókba, mivel a tevékenységnapló eseményei vannak az Azure platformon 90 napig őrizzük meg engedélyezése archiválás nélkül.
@@ -35,10 +35,10 @@ Az alábbi módszerek bármelyikével a tevékenységnapló archiválása, áll�
 ## <a name="archive-the-activity-log-using-the-portal"></a>A portál használatával a tevékenységnapló archiválása
 1. A portálon kattintson a **tevékenységnapló** a bal oldali navigációs menüben található hivatkozásra. Ha nem lát egy hivatkozást a tevékenységnapló, kattintson a **minden szolgáltatás** először hivatkozásra.
    
-    ![Navigáljon a tevékenységnapló panel](media/monitoring-archive-activity-log/act-log-portal-navigate.png)
-2. Kattintson a panel tetején **exportálása**.
+    ![Navigáljon a tevékenységnapló panel](media/monitoring-archive-activity-log/activity-logs-portal-navigate-v2.png)
+2. Kattintson a panel tetején **exportálás eseményközpontba**.
    
-    ![Kattintson az Exportálás gomb](media/monitoring-archive-activity-log/act-log-portal-export-button.png)
+    ![Kattintson az Exportálás gomb](media/monitoring-archive-activity-log/activity-logs-portal-export-v2.png)
 3. A megjelenő panelen jelölje be a **exportálás tárfiókba** és a egy tárfiók kiválasztását.
    
     ![Storage-fiók beállítása](media/monitoring-archive-activity-log/act-log-portal-export-blade.png)
@@ -65,9 +65,9 @@ Az alábbi módszerek bármelyikével a tevékenységnapló archiválása, áll�
 | Tulajdonság | Szükséges | Leírás |
 | --- | --- | --- |
 | StorageAccountId |Igen |Erőforrás-azonosító, amelyhez tevékenységeket tartalmazó naplók menteni a tárfiók. |
-| Hely |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő vesszővel tagolt listája. Megtekintheti összes régiók listáját az előfizetéshez a `(Get-AzureRmLocation).Location`. |
+| Földrajzi egységek |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő vesszővel tagolt listája. Megtekintheti összes régiók listáját az előfizetéshez a `(Get-AzureRmLocation).Location`. |
 | RetentionInDays |Nem |Mely eseményeket meg kell őrizni, 1 és 2147483647 között eltelt napok száma. A nulla érték határozatlan ideig tárolja a naplók (végtelen). |
-| Kategória |Nem |Eseménykategóriák kell gyűjteni, vesszővel tagolt listája. Lehetséges értékek: írási, törlési és művelet.  Ha nincs megadva, majd az összes lehetséges az alapértelmezett paraméterértékek |
+| Kategóriák |Nem |Eseménykategóriák kell gyűjteni, vesszővel tagolt listája. Lehetséges értékek: írási, törlési és művelet.  Ha nincs megadva, majd az összes lehetséges az alapértelmezett paraméterértékek |
 
 ## <a name="archive-the-activity-log-via-cli"></a>CLI-n keresztül a tevékenységnapló archiválása
 
@@ -160,7 +160,7 @@ A PT1H.json fájlt belül minden egyes esemény tárolja a "rekord" tömb, a kö
 
 | Elem neve | Leírás |
 | --- | --- |
-| time |Időbélyeg, ha az esemény jött létre az Azure-szolgáltatás a megfelelő esemény kérelem feldolgozása. |
+| idő- |Időbélyeg, ha az esemény jött létre az Azure-szolgáltatás a megfelelő esemény kérelem feldolgozása. |
 | resourceId |Erőforrás-azonosító az érintett erőforrás. |
 | operationName |A művelet neve. |
 | category |A művelet kategória működtek az adatbázisok. Írás, Olvasás, a műveletet. |
@@ -169,11 +169,11 @@ A PT1H.json fájlt belül minden egyes esemény tárolja a "rekord" tömb, a kö
 | durationMs |Ennyi ezredmásodpercig tart a művelet időtartama |
 | callerIpAddress |IP-cím a felhasználó hajtott végre a műveletet, egyszerű Felhasználónévi jogcím vagy egyszerű szolgáltatásnév jogcímet rendelkezésre állása alapján. |
 | correlationId |Általában egy GUID Azonosítót a karakterláncként. Ugyanaz a uber művelet eseményeket, amelyek megosztása a korrelációs azonosító tartozik. |
-| identity |Az engedélyezési és a jogcímek leíró JSON-blobját. |
+| identitáskezelés |Az engedélyezési és a jogcímek leíró JSON-blobját. |
 | Engedélyezési |Az esemény tulajdonságainak RBAC-blobját. Általában tartalmazza az "action", "szerepkör" és "hatókör" tulajdonság. |
 | szint |Az esemény szintjét. A következő értékek egyikét: "Kritikus", "Hiba", "Figyelmeztetés", "Tájékoztatási szintű" vagy "Részletes" |
-| location |Régió, a helyét történt (vagy globális). |
-| properties |Állítsa be a `<Key, Value>` párok (azaz szótár), az esemény részleteit leíró. |
+| hely |Régió, a helyét történt (vagy globális). |
+| tulajdonságok |Állítsa be a `<Key, Value>` párok (azaz szótár), az esemény részleteit leíró. |
 
 > [!NOTE]
 > A tulajdonságokat, és azokat a tulajdonságokat a használat függvényében az erőforrás.

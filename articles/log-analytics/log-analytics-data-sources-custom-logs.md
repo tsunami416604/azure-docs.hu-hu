@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 9a902aef0f4605c51e8dbbab49639997066be705
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c8ae6ab818fe88aa5fb79a8911c0242ea3a0ec3b
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961058"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012020"
 ---
 # <a name="custom-logs-in-log-analytics"></a>A Log Analytics egyéni naplók
 Az egyéni naplókat adatforrás a Log Analytics lehetővé teszi az események gyűjtésére a Windows és a Linux rendszerű számítógépek szöveges fájlok. Számos alkalmazás adatokat szöveges fájlok nem szabványos naplózási szolgáltatásokkal, például a Windows Eseménynapló vagy a Syslog naplófájlba.  Után minden egyes mezőket a bejelentkezés rekordja értelmezni tudja a [egyéni mezők](log-analytics-custom-fields.md) Log Analytics szolgáltatást.
@@ -80,7 +80,7 @@ Egy alkalmazás előfordulhat, hogy hozzon létre például egy naplófájlt min
 
 Az alábbi táblázat példákat érvényes minták adja meg a különböző naplófájlokat.
 
-| Leírás | Útvonal |
+| Leírás | Elérési út |
 |:--- |:--- |
 | Az összes fájl *C:\Logs* .txt kiterjesztésű Windows-ügynök |C:\Logs\\\*.txt |
 | Az összes fájl *C:\Logs* a nevével, a napló és a egy .txt kiterjesztése a Windows-ügynök indítása |C:\Logs\log\*.txt |
@@ -182,4 +182,4 @@ Egyéni mezők definiálásához használjuk a *EventTime*, *kód*, *állapot*, 
 
 ## <a name="next-steps"></a>További lépések
 * Használat [egyéni mezők](log-analytics-custom-fields.md) elemezni az egyéni jelentkezzen be az egyes mezők bejegyzést.
-* Ismerje meg [naplókereséseket](log-analytics-log-search.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.
+* Ismerje meg [naplókereséseket](log-analytics-queries.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.

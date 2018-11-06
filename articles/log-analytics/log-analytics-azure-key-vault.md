@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: caccd70e17d814fb58d5801ed12192e56f0e16ad
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: d8f2fd40712017cb7f44156b8735ee93e123fcd2
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959967"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016148"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Az Azure Key Vault Analytics megoldás a Log Analyticsben
 
@@ -105,7 +105,7 @@ Az Azure Key Vault megoldás elemzi a rekord, amelynek típusa a **KeyVaults** ,
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Típus |*AzureDiagnostics* |
+| Type (Típus) |*AzureDiagnostics* |
 | SourceSystem |*Azure* |
 | CallerIpAddress |A kérést leadó ügyfél IP-címe |
 | Kategória | *AuditEvent* |
@@ -118,13 +118,13 @@ Az Azure Key Vault megoldás elemzi a rekord, amelynek típusa a **KeyVaults** ,
 | operationVersion |Az ügyfél által kért REST API-verzió (például *2015-06-01*) |
 | requestUri_s |A kérelem URI azonosítója |
 | Erőforrás |A kulcstároló nevét |
-| ResourceGroup |A kulcstároló erőforráscsoport |
+| Erőforráscsoport |A kulcstároló erőforráscsoport |
 | ResourceId |Az Azure Resource Manager szerinti erőforrás-azonosító. A Key Vault naplóihoz Ez az a Key Vault erőforrás-azonosítója. |
 | ResourceProvider |*MICROSOFT.KEYVAULT* |
-| ResourceType | *VAULTS* |
+| Erőforrástípus | *VAULTS* |
 | ResultSignature |HTTP-állapot (például *OK*) |
 | ResultType |REST API-kérelem eredménye (például *sikeres*) |
-| SubscriptionId |A Key Vault tartalmazó előfizetés Azure-előfizetés azonosítója |
+| Előfizetés-azonosító |A Key Vault tartalmazó előfizetés Azure-előfizetés azonosítója |
 
 ## <a name="migrating-from-the-old-key-vault-solution"></a>Migrálás a régi Key Vault megoldásról
 A 2017 január a naplók küldésére a Key Vaultból Log Analytics támogatott módon módosítani. Ezek a módosítások a következő előnyöket biztosítják:
@@ -153,4 +153,4 @@ A frissített megoldás használata:
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>További lépések
-* Használat [Log Analytics naplóbeli kereséseivel](log-analytics-log-search.md) Azure Key Vault részletes adatainak megtekintéséhez.
+* Használat [Log Analytics naplóbeli kereséseivel](log-analytics-queries.md) Azure Key Vault részletes adatainak megtekintéséhez.

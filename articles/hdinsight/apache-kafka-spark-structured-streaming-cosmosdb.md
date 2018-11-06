@@ -2,23 +2,23 @@
 title: Az Apache Spark strukturált Streamelés a Kafkából az Azure Cosmos DB használatával – Azure HDInsight
 description: Ismerje meg, hogyan használható az Apache Spark strukturált Stream adatokat olvasni az Apache Kafka és az Azure Cosmos DB-be tárolja majd. Ebben a példában Jupyter notebookkal streamel adatokat a Spark on HDInsightból.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: jasonh
-ms.openlocfilehash: 8f0a16320091f8b2efa98ee96a63801e841c082e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: 8ecf336eea40891af8bd9f32c88268d336f3316a
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971314"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036734"
 ---
-# <a name="use-spark-structured-streaming-with-kafka-and-azure-cosmos-db"></a>Használja a Spark strukturált Stream Kafka és az Azure Cosmos DB-vel
+# <a name="use-apache-spark-structured-streaming-with-kafka-and-azure-cosmos-db"></a>Használja az Apache Spark strukturált Stream használata a Kafka és az Azure Cosmos DB
 
-Ismerje meg, hogyan használható a Spark strukturált Stream adatokat olvasni az Azure HDInsight alapú Apache Kafka, és ezután tárolja az adatokat az Azure Cosmos DB-be.
+Ismerje meg, az Apache Spark strukturált Stream használata az Azure HDInsight alapú Apache Kafka-adatok olvasását és majd tárolja az adatokat az Azure Cosmos DB-be.
 
 Az Azure Cosmos DB egy globálisan elosztott, többmodelles adatbázis. Ebben a példában egy SQL API adatbázis modellt használja. További információkért lásd: a [Üdvözli az Azure Cosmos DB](../cosmos-db/introduction.md) dokumentumot.
 

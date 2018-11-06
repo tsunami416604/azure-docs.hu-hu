@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/11/2017
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 0285b9208247aa84f56d127e734e8a5e87048ac6
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f2f6472fc485691b95305337dd608126d001aa27
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961364"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010708"
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Windows Eseménynapló-adatforrások a Log Analyticsben
 Windows-eseménynaplók közé tartoznak a leggyakoribb [adatforrások](log-analytics-data-sources.md) Windows-ügynökök használata, mivel számos alkalmazásban a Windows eseménynaplójába írhatja az adatok gyűjtéséhez.  Események, például a rendszer- és standard szintű naplók is összegyűjtheti a bármely kell figyelnie alkalmazások által létrehozott egyéni naplók megadása mellett.
@@ -48,7 +48,7 @@ Windows eseményrekordok rendelkezik olyan típusú **esemény** , és a tulajdo
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Computer |Az esemény gyűjtötte a program a számítógép nevét. |
+| Számítógép |Az esemény gyűjtötte a program a számítógép nevét. |
 | EventCategory |Az esemény kategóriája. |
 | EventData |Összes esemény adatai fájlt nyers formátumban. |
 | Eseményazonosító |Az esemény számát. |
@@ -76,6 +76,6 @@ Az alábbi táblázat példákat különböző naplókeresésekkel, amelyek lek�
 
 ## <a name="next-steps"></a>További lépések
 * Konfigurálja a gyűjtendő más Log Analytics [adatforrások](log-analytics-data-sources.md) elemzés céljából.
-* Ismerje meg [naplókereséseket](log-analytics-log-search.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
+* Ismerje meg [naplókereséseket](log-analytics-queries.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
 * Használat [egyéni mezők](log-analytics-custom-fields.md) az eseményrekordok elemezni az egyes mezőket.
 * Konfigurálása [teljesítményszámláló-gyűjtemény](log-analytics-data-sources-performance-counters.md) a Windows-ügynököktől.

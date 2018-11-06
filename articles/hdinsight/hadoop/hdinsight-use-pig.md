@@ -2,19 +2,19 @@
 title: A HDInsight Hadoop a Pig használata
 description: Ismerje meg, hogyan lehet a Pig használata a Hadooppal a HDInsight.
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: e97763adbe7998ed93e3ba8b87d89ffe8d8de6aa
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 921f4747dcaf9ad302c37930ca09903e345bfdb0
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045445"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016420"
 ---
 # <a name="use-pig-with-hadoop-on-hdinsight"></a>A Pig használata a HDInsight Hadoop-keretrendszerrel
 

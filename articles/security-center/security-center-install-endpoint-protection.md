@@ -3,7 +3,7 @@ title: Az Azure Security Center végpontvédelem kezeléséhez |} A Microsoft Do
 description: Ismerje meg, hogyan kezelheti a végpontvédelem az Azure Security Centerben.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 1599ad5f-d810-421d-aafc-892e831b403f
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/23/2017
-ms.author: terrylan
-ms.openlocfilehash: a3ac23f3874b85da9c0641264ca6f9c55a7b0515
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: 70e7e9415296a5c6e28818540ef59b5637b99f9c
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300003"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007705"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Az Azure Security Center végpontvédelmi problémák kezelése
 Az Azure Security Center figyeli a kártevőkkel szembeni védelem állapotát, és ezt jelzi az Endpoint protection problémák panel alatt. A Security Center problémákról, például az észlelt fenyegetések és a nem megfelelő védelemmel, amely sérülékennyé teheti a virtuális gépek (VM) és a számítógépek kártevőirtó fenyegetések emeli ki. Az információk használatával **végpontvédelem**, azonosíthatja a terv azonosított problémák elhárítása.

@@ -2,19 +2,19 @@
 title: Az Azure HDInsight-fürtök figyelése az Azure Log Analytics lekérdezési
 description: Ismerje meg, hogyan lekérdezéseket futtathat az Azure Log Analytics egy HDInsight-fürtön futó feladatok figyelésére.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: jasonh
-ms.openlocfilehash: 18ee51e54c1e44ba3affd6ca49bed5360211fa9c
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.author: hrasheed
+ms.openlocfilehash: 895ffdf2641cc1d8b61917d35b307b013da49eb6
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408172"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51013207"
 ---
 # <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>A HDInsight-fürtök figyelése az Azure Log Analytics lekérdezési
 

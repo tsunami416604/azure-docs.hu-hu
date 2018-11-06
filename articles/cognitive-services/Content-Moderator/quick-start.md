@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: f25434814a7fb3d0f49cab539b394970c9bcfb3b
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 0c67ee20ee73edb5eb6c6c806d7e5960f3719de6
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023440"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008776"
 ---
 # <a name="quickstart-get-familiar-with-content-moderator"></a>Gyors útmutató: Ismerkedjen meg a Content Moderator
 
@@ -48,7 +48,7 @@ Küldje el a tartalmat a moderálás. A felülvizsgálati eszköz belsőleg megh
 
 ## <a name="review-moderation-tags"></a>Tekintse át a moderálás címkék
 
-Tekintse át a moderálás alkalmazott címkéket. Láthatja, hogy mely címkéket alkalmazta a tartalomhoz, és mi az pontszám az egyes kategóriák volt.
+Tekintse át a moderálás alkalmazott címkéket. Láthatja, hogy mely címkéket alkalmazta a tartalomhoz, és mi az pontszám az egyes kategóriák volt. Tekintse meg a [kép](image-moderation-api.md), [szöveg](text-moderation-api.md), és [videó](video-moderation-api.md) moderálás témakörökben tájékozódhat a különböző tartalmak címkék jelzi.
 
 ![Eredmények áttekintése](images/reviewresults_text.png)
 
@@ -70,4 +70,4 @@ Vagy folytassa a következő lépésekkel a kódban a moderálási API-k haszná
 Ismerje meg, hogyan használható a moderálási API-k magukat az alkalmazásban.
 - Képmoderálás megvalósításához. Használja a [API-konzol](try-image-api.md) vagy a [ C# rövid](image-moderation-quickstart-dotnet.md) kiszűrhető, és észlelheti a potenciális felnőtt és szexuális tartalom címkék, megbízhatósági pontszámokat és egyéb használatával a kinyert információkat.
 - Szövegmoderálás megvalósításához. Használja a [API-konzol](try-text-api.md) vagy használja a [ C# rövid](text-moderation-quickstart-dotnet.md) tartalomszűrés, nem kívánatos szöveg gépi támogatású besorolás (előzetes verzió), a szöveges tartalom vizsgálata és a személyes azonosításra alkalmas adatokat (PII). 
-- Videomoderálás megvalósításához. Használja a [ C# rövid](video-moderation-api.md) videók vizsgálata, és észlelheti a potenciális felnőtt és szexuális tartalom. 
+- Videomoderálás megvalósításához. Kövesse a [videó moderálás útmutató útmutató a C# ](video-moderation-api.md) videók vizsgálata, és észlelheti a potenciális felnőtt és szexuális tartalom. 

@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: erhopf
-ms.openlocfilehash: 7f3daf71f4d94371af5f7d98c4e03761d7217a2a
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: be2f6c49a260477e907f1f8f29f64b9eb08e6926
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025837"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038603"
 ---
 # <a name="speech-service-rest-apis"></a>Beszédfelismerési szolgáltatás REST API-k
 
@@ -36,11 +36,11 @@ Az API-t csak rövid beszédet támogat. Kérelmek legfeljebb 10 másodpercet, h
 
 Az alábbi paramétereket a lekérdezési karakterláncban a REST-kérés szerepelhet.
 
-|Paraméter neve|Kötelező/választható|Jelentés|
+|Paraméternév|Kötelező/választható|Jelentés|
 |-|-|-|
 |`language`|Szükséges|A nyelvet, hogy a azonosítóját. Lásd: [támogatott nyelvek](language-support.md#speech-to-text).|
-|`format`|Optional<br>alapértelmezett érték: `simple`|Eredményformátum, `simple` vagy `detailed`. Egyszerű eredmények tartalmazzák a `RecognitionStatus`, `DisplayText`, `Offset`, és időtartama. Részletes eredmények tartalmazzák a több jelöltek megbízhatósági értékeket és a négy különböző értük felelősséget.|
-|`profanity`|Optional<br>alapértelmezett érték: `masked`|A felismerési eredményeket cenzúrázása kezelésének módját. Előfordulhat, hogy `masked` (cenzúrázása cseréli csillagok), `removed` (eltávolítja az összes cenzúrázása), vagy `raw` (tartalmazza a vulgáris).
+|`format`|Választható<br>alapértelmezett érték: `simple`|Eredményformátum, `simple` vagy `detailed`. Egyszerű eredmények tartalmazzák a `RecognitionStatus`, `DisplayText`, `Offset`, és időtartama. Részletes eredmények tartalmazzák a több jelöltek megbízhatósági értékeket és a négy különböző értük felelősséget.|
+|`profanity`|Választható<br>alapértelmezett érték: `masked`|A felismerési eredményeket cenzúrázása kezelésének módját. Előfordulhat, hogy `masked` (cenzúrázása cseréli csillagok), `removed` (eltávolítja az összes cenzúrázása), vagy `raw` (tartalmazza a vulgáris).
 
 ### <a name="request-headers"></a>Kérelemfejlécek
 
@@ -57,10 +57,12 @@ A következő mezőket a HTTP-kérés fejlécében érkeznek.
 
 ### <a name="audio-format"></a>Formát zvuku
 
-A törzs a HTTP küldése a hanganyag `POST` kérelmet. Azt a 16 bites WAV PCM egyetlen csatornát (mono) a következő formátumok/kódování 16 KHz formátumban kell lennie.
+Hang küldése a HTTP törzsében `POST` kérelmet. A jelen táblázatban lévő formátumok valamelyikében kell lennie:
 
-* WAV PCM kodek formátumban
-* OPUS kodekkel OGG formátum
+| Formátum | Kodek | Átviteli sebesség | Mintavételi frekvencia |
+|--------|-------|---------|-------------|
+| WAV | A PCM | 16-bit | 16 kHz, mono |
+| OGG | OPUS | 16-bit | 16 kHz, mono |
 
 >[!NOTE]
 >A fenti formátumok REST API-t és a WebSocket a Speech Service-ben támogatottak. A [beszéd SDK](/index.yml) jelenleg csak támogatja a WAV PCM kodekkel formázása.
@@ -104,7 +106,7 @@ Egy tipikus kérelem a következő:
 ```HTTP
 POST speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
 Accept: application/json;text/xml
-Content-Type: audio/wav; codec=audio/pcm; samplerate=16000
+Content-Type: audio/wav; codec="audio/pcm"; samplerate=16000
 Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 Host: westus.stt.speech.microsoft.com
 Transfer-Encoding: chunked
@@ -127,7 +129,7 @@ HTTP-kód|Jelentés|Lehetséges ok
 
 Eredmények a rendszer JSON formátumban adja vissza. A `simple` formátum csak a következő legfelső szintű mezőket tartalmazza.
 
-|Mező neve|Tartalom|
+|Mezőnév|Tartalom|
 |-|-|
 |`RecognitionStatus`|Állapot, mint például `Success` sikeres felismeréséhez. Lásd a következő táblázatot.|
 |`DisplayText`|A felismert szöveget után nagybetűk, írásjelek, más néven Inverz szöveg normalizálási (átalakítása a kimondott szöveg rövidebb űrlapok, például a 200-as "kétszáz" vagy "Dr. János""orvos Smith"), és a vulgáris maszkolási. Jelenleg csak a sikeres.|
@@ -150,7 +152,7 @@ A `RecognitionStatus` mező a következő értékeket tartalmazhat.
 
 A `detailed` formátum tartalmazza, ugyanazokat a mezőket a `simple` formájában, valamint az egy `NBest` mező. A `NBest` mező az alternatív értelmezéseket a azonos beszéd, ahol az a legvalószínűbb valószínűleg legalább listája. Az első bejegyzés ugyanaz, mint a fő felismerés eredményét. Mindegyik bejegyzés a következő mezőket tartalmazzák:
 
-|Mező neve|Tartalom|
+|Mezőnév|Tartalom|
 |-|-|
 |`Confidence`|A megbízhatósági pontszám a bejegyzés a 0,0 (nincs megbízhatóság) 1.0-s (teljes megbízhatósági)
 |`Lexical`|A felismert szöveget lexikai formájában: a tényleges szavak ismerhető fel.
@@ -197,7 +199,7 @@ Az alábbiakban található a tipikus választ `detailed` felismerése.
 }
 ```
 
-## <a name="text-to-speech"></a>Szövegfelolvasás
+## <a name="text-to-speech"></a>Szöveg-hang transzformáció
 
 Az alábbiakban a Speech service Text to Speech API a REST-végpontokat. A végpont, amely megfelel az előfizetés régiót használni.
 
@@ -237,7 +239,7 @@ A rendelkezésre álló hangkimeneti formátumok (`X-Microsoft-OutputFormat`) eg
 > [!NOTE]
 > Ha a kiválasztott hang- és kimeneti formátum különböző átviteli sebességet, a hanganyag szükség szerint módosítva a felbontása. Azonban nem támogatja a 24khz beszédhangot `audio-16khz-16kbps-mono-siren` és `riff-16khz-16kbps-mono-siren` kimeneti formátumot.
 
-### <a name="request-body"></a>A kérés törzse
+### <a name="request-body"></a>Kérelem törzse
 
 A szöveg beszéddé alakítandó legyen elküldve, a szervezet egy HTTP `POST` kérheti a vagy egyszerű szöveg (ASCII vagy UTF-8) vagy [Speech összefoglaló Markup Language](speech-synthesis-markup.md) (SSML) formátum (UTF-8). Egyszerű szöveges kérelmeket a szolgáltatás alapértelmezett beszédfelismerési és nyelvi használja. SSML, használjon egy másik küldése.
 

@@ -1,6 +1,6 @@
 ---
 title: Közzétett alkalmazás – Dataiku DDS – Azure HDInsight telepítése
-description: Telepítheti és használhatja a Dataiku DDS külső Hadoop-alkalmazásokat.
+description: Telepítheti és használhatja a Dataiku DDS külső Apache Hadoop-alkalmazásokat.
 services: hdinsight
 author: ashishthaps
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 64a6f393498ca90675712747afc8f9befc4b932f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: feb94f450621e999da01f77f0b5550258377d6c9
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105169"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038263"
 ---
 # <a name="install-published-application---dataiku-dds"></a>Közzétett alkalmazás – Dataiku DDS telepítése
 
-Ez a cikk bemutatja, hogyan telepítheti és futtathatja a [Dataiku DDS](https://www.dataiku.com/) közzé az Azure HDInsight Hadoop-alkalmazásokat. A HDInsight-alkalmazásplatform áttekintése és a egy listát az elérhető független szoftverszállító (ISV) közzétett alkalmazások létrehozásáról: [külső gyártótól származó Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md). A saját alkalmazások telepítéséről az [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) című cikk tartalmaz útmutatást.
+Ez a cikk bemutatja, hogyan telepítheti és futtathatja a [Dataiku DDS](https://www.dataiku.com/) közzé az Azure HDInsight az Apache Hadoop-alkalmazás. A HDInsight-alkalmazásplatform áttekintése és a egy listát az elérhető független szoftverszállító (ISV) közzétett alkalmazások létrehozásáról: [külső gyártótól származó Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md). A saját alkalmazások telepítéséről az [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) című cikk tartalmaz útmutatást.
 
 ## <a name="about-dataiku-dss"></a>A Dataiku DSS kapcsolatban
 

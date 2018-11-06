@@ -2,19 +2,19 @@
 title: Parancsfájlműveletekkel – Azure HDInsight-fürtök testre szabása
 description: Egyéni összetevők hozzáadása a Linux-alapú HDInsight-fürtök parancsfájlműveletekkel. A szkriptműveletek olyan Bash-szkriptek, amelyek segítségével a fürtkonfiguráció egyéni beállítását, vagy adjon hozzá további szolgáltatásokat és segédprogramok, mint például a Hue, Solr, vagy az R.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.author: jasonh
-ms.openlocfilehash: e9662a0a0def91fa2cace1eb47dceffed5ff1ae6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: 17273a572e61d2282e7930d4ea1f44bfaf29d734
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978029"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012979"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Szkriptműveletek használatával Linux-alapú HDInsight-fürtök testre szabása
 
@@ -152,7 +152,7 @@ Parancsprogram-művelet parancsfájlok keresztül az alábbi segédprogramokat h
 
 HDInsight parancsprogramokkal történő telepítését a következő összetevőket a HDInsight-fürtökön biztosítja:
 
-| Name (Név) | Szkript |
+| Name (Név) | Parancsprogramok használata |
 | --- | --- |
 | **Azure Storage-fiók hozzáadása** |https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh. Lásd: [további tárhely hozzáadása egy HDInsight-fürt](hdinsight-hadoop-add-storage.md). |
 | **A Hue telepítése** |https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh. Lásd: [telepítése és használata a Hue a HDInsight-fürtök](hdinsight-hadoop-hue-linux.md). |
@@ -182,7 +182,7 @@ Ez a szakasz példákat használhatja a Parancsfájlműveletek egy HDInsight-fü
 
     A következő táblázat ismerteti az elemeket az űrlapon:
 
-    | Tulajdonság | Érték |
+    | Tulajdonság | Value (Díj) |
     | --- | --- |
     | Szkript kiválasztása | A saját parancsfájl használatára, válassza ki a __egyéni__. Ellenkező esetben válassza a megadott szkriptek közül. |
     | Name (Név) |Adja meg a parancsfájlművelet nevét. |
@@ -261,7 +261,7 @@ Ebben a szakaszban megtudhatja, hogyan parancsfájl műveleteket alkalmazhat a f
 
     A következő táblázat ismerteti az elemeket az űrlapon:
 
-    | Tulajdonság | Érték |
+    | Tulajdonság | Value (Díj) |
     | --- | --- |
     | Szkript kiválasztása | A saját parancsfájl használatára, válassza ki a __egyéni__. Ellenkező esetben válassza ki a megadott parancsfájlt. |
     | Name (Név) |Adja meg a parancsfájlművelet nevét. |
