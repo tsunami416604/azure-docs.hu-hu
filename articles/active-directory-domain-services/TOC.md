@@ -2,6 +2,7 @@
 
 # Áttekintés
 ## [Az Azure AD tartományi szolgáltatások ismertetése](active-directory-ds-overview.md)
+## [Gyakori kérdések](active-directory-ds-faqs.md)
 ## Ez a megfelelő választás Önnek?
 ### [Összehasonlítás a Windows Server AD-vel](active-directory-ds-comparison.md)
 ### [Összehasonlítás az Azure AD Joinnal](active-directory-ds-compare-with-azure-ad-join.md)
@@ -55,7 +56,6 @@
 ## [A biztonságos LDAP hibaelhárítása](active-directory-ds-ldaps-troubleshoot.md)
 
 # Hibaelhárítás
-## [Gyakori kérdések](active-directory-ds-faqs.md)
 ## [Hibaelhárítási útmutató](active-directory-ds-troubleshooting.md)
 ## [Riasztások hibaelhárítása](active-directory-ds-troubleshoot-alerts.md)
 ### [Hálózati biztonsági csoportok hibás konfigurációinak javítása](active-directory-ds-troubleshoot-nsg.md)
