@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 8852fc75658298a2c6887d8fef154d5a0b59affd
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 482faaea7089e095da13a2bae5f5937e20d50616
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159907"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246752"
 ---
 # <a name="extended-events-in-sql-database"></a>Az SQL Database bővített események
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -32,15 +32,15 @@ Ez a témakör elmagyarázza, hogyan megvalósítása az Azure SQL Database bőv
 
 Az Azure SQL Database és a Microsoft SQL Server kiterjesztett eseményekkel kapcsolatos további információkat érhető el:
 
-- [Gyors üzembe helyezés: Az SQL Server a bővített események](http://msdn.microsoft.com/library/mt733217.aspx)
-- [Bővített események](http://msdn.microsoft.com/library/bb630282.aspx)
+- [Gyors üzembe helyezés: Az SQL Server a bővített események](https://msdn.microsoft.com/library/mt733217.aspx)
+- [Bővített események](https://msdn.microsoft.com/library/bb630282.aspx)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez a témakör feltételezi, hogy már rendelkezik néhány ismeretére:
 
 - [Az Azure SQL Database szolgáltatás](https://azure.microsoft.com/services/sql-database/).
-- [Bővített események](http://msdn.microsoft.com/library/bb630282.aspx) a Microsoft SQL Server.
+- [Bővített események](https://msdn.microsoft.com/library/bb630282.aspx) a Microsoft SQL Server.
 
 - A kiterjesztett eseményekkel kapcsolatos dokumentációnkat nagy az SQL Server és az SQL Database vonatkozik.
 
@@ -69,10 +69,10 @@ Kapcsolódó témakörök két Kódminták rendelkezésre bocsátása:
 ## <a name="transact-sql-differences"></a>A Transact-SQL eltérései
 
 
-- Végrehajtása közben a [munkamenet esemény létrehozása](http://msdn.microsoft.com/library/bb677289.aspx) parancsot SQL-kiszolgálón használja a **ON SERVER** záradékban. Azonban az SQL Database használata a **ON adatbázis** záradék helyett.
+- Végrehajtása közben a [munkamenet esemény létrehozása](https://msdn.microsoft.com/library/bb677289.aspx) parancsot SQL-kiszolgálón használja a **ON SERVER** záradékban. Azonban az SQL Database használata a **ON adatbázis** záradék helyett.
 
 
-- A **ON adatbázis** záradék is vonatkozik a [ALTER esemény munkamenet](http://msdn.microsoft.com/library/bb630368.aspx) és [DROP esemény munkamenet](http://msdn.microsoft.com/library/bb630257.aspx) Transact-SQL-parancsokat.
+- A **ON adatbázis** záradék is vonatkozik a [ALTER esemény munkamenet](https://msdn.microsoft.com/library/bb630368.aspx) és [DROP esemény munkamenet](https://msdn.microsoft.com/library/bb630257.aspx) Transact-SQL-parancsokat.
 
 
 - Ajánlott eljárás, hogy tartalmazzák az esemény-munkamenet lehetőség a **STARTUP_STATE = ON** a a **munkamenet esemény létrehozása** vagy **ALTER esemény munkamenet** utasításokat.
@@ -80,7 +80,7 @@ Kapcsolódó témakörök két Kódminták rendelkezésre bocsátása:
 
 ## <a name="new-catalog-views"></a>Új Rendszerkatalógus-nézetek
 
-A bővített események támogatja több [nézetek katalógus](http://msdn.microsoft.com/library/ms174365.aspx). Rendszerkatalógus-nézetek tájékoztatni a *metaadatok vagy definíciókat* a felhasználó által létrehozott esemény-munkamenetek az aktuális adatbázisban. A nézetek nem adott vissza aktív esemény-munkamenet példányaira vonatkozó információkat.
+A bővített események támogatja több [nézetek katalógus](https://msdn.microsoft.com/library/ms174365.aspx). Rendszerkatalógus-nézetek tájékoztatni a *metaadatok vagy definíciókat* a felhasználó által létrehozott esemény-munkamenetek az aktuális adatbázisban. A nézetek nem adott vissza aktív esemény-munkamenet példányaira vonatkozó információkat.
 
 | Neve<br/>Katalógus megtekintése | Leírás |
 |:--- |:--- |
@@ -92,9 +92,9 @@ A bővített események támogatja több [nézetek katalógus](http://msdn.micro
 
 A Microsoft SQL Server, hasonló katalógusnézetekre tartalmazó névvel rendelkeznek *.server\_*  helyett *.database\_*. A minta olyan, mintha **sys.server_event_%**.
 
-## <a name="new-dynamic-management-views-dmvshttpmsdnmicrosoftcomlibraryms188754aspx"></a>Új dinamikus felügyeleti nézetek [(DMV-kkel)](http://msdn.microsoft.com/library/ms188754.aspx)
+## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>Új dinamikus felügyeleti nézetek [(DMV-kkel)](https://msdn.microsoft.com/library/ms188754.aspx)
 
-Az Azure SQL Database rendelkezik [dinamikus felügyeleti nézetekkel (DMV-kkel)](http://msdn.microsoft.com/library/bb677293.aspx) , amely támogatja a bővített események. Dinamikus felügyeleti nézetek tájékoztatni a *aktív* esemény-munkamenet.
+Az Azure SQL Database rendelkezik [dinamikus felügyeleti nézetekkel (DMV-kkel)](https://msdn.microsoft.com/library/bb677293.aspx) , amely támogatja a bővített események. Dinamikus felügyeleti nézetek tájékoztatni a *aktív* esemény-munkamenet.
 
 | DMV neve | Leírás |
 |:--- |:--- |
@@ -149,11 +149,11 @@ SELECT
 
 Az alábbiakban rögzítheti az esemény-munkamenet az SQL Database eredményeinek tárolók:
 
-- [Gyűrűpuffer céljába](http://msdn.microsoft.com/library/ff878182.aspx) -rövid ideig tárolja az eseményadatokat a memóriában.
-- [Esemény számláló cél](http://msdn.microsoft.com/library/ff878025.aspx) – minden bővített események munkamenet során előforduló események száma.
-- [Eseményfájl céljába](http://msdn.microsoft.com/library/ff878115.aspx) – teljes pufferek ír egy Azure Storage-tárolóba.
+- [Gyűrűpuffer céljába](https://msdn.microsoft.com/library/ff878182.aspx) -rövid ideig tárolja az eseményadatokat a memóriában.
+- [Esemény számláló cél](https://msdn.microsoft.com/library/ff878025.aspx) – minden bővített események munkamenet során előforduló események száma.
+- [Eseményfájl céljába](https://msdn.microsoft.com/library/ff878115.aspx) – teljes pufferek ír egy Azure Storage-tárolóba.
 
-A [esemény-nyomkövetése Windows (ETW)](http://msdn.microsoft.com/library/ms751538.aspx) API nem érhető el az SQL Database bővített események.
+A [esemény-nyomkövetése Windows (ETW)](https://msdn.microsoft.com/library/ms751538.aspx) API nem érhető el az SQL Database bővített események.
 
 ## <a name="restrictions"></a>Korlátozások
 
@@ -195,8 +195,8 @@ A **Eseményfájl** cél tapasztalhat, hálózati késés vagy hibák során az 
 - [Az Azure Storage-parancsmagok](https://docs.microsoft.com/powershell/module/Azure.Storage)
 - [Azure PowerShell-lel az Azure Storage](../storage/common/storage-powershell-guide-full.md) -átfogó arról nyújt tájékoztatást, PowerShell és az Azure Storage szolgáltatást.
 - [A Blob storage a .NET használatával](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
-- [CREATE CREDENTIAL (Transact-SQL)](http://msdn.microsoft.com/library/ms189522.aspx)
-- [ESEMÉNY-munkamenet (Transact-SQL) létrehozása](http://msdn.microsoft.com/library/bb677289.aspx)
+- [CREATE CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/ms189522.aspx)
+- [ESEMÉNY-munkamenet (Transact-SQL) létrehozása](https://msdn.microsoft.com/library/bb677289.aspx)
 - [Jonathan Kehayias blogbejegyzések arról a Microsoft SQL Server bővített események](http://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 
 
@@ -209,6 +209,6 @@ Bővített események minta kódja témaköröket érhetők el az alábbi hivatk
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](https://msdn.microsoft.com/library/bb677357.aspx)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](https://msdn.microsoft.com/library/bb630355.aspx)
 -->

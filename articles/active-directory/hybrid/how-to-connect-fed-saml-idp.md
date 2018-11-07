@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a197b3c7aa423323f984a793851a458733391e33
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 08d9566c3ce8f486465f0ed7fb5aab4419e592d8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243112"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228589"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Egyszeri bejelentkezéshez a SAML 2.0 identitásszolgáltató (IdP) használata
 
@@ -167,7 +167,7 @@ Engedélyeznie kell a SAML 2.0 identitásszolgáltató és az Azure AD közötti
 ## <a name="install-windows-powershell-for-sign-on-with-saml-20-identity-provider"></a>Windows PowerShell telepítése bejelentkezéshez a SAML 2.0 identitásszolgáltató
 Az SAML 2.0 identitásszolgáltató használata az Azure AD bejelentkezés konfigurálása után a következő lépésre, töltse le és telepítse az Azure Active Directory modul a Windows PowerShell. A telepítést követően az Azure AD-tartományok konfigurálása összevont tartományok használandó ezeket a parancsmagokat.
 
-Az Azure Active Directory modul a Windows PowerShell az Azure AD a szervezetek adatkezelési letöltés. Ez a modul olyan parancsmagok készletét telepíti a Windows Powershellbe; azok a parancsmagok, egyszeri bejelentkezéses hozzáférést az Azure AD beállításához futtatja, és kapcsolja be az összes, a cloud Services az előfizetett. Töltse le és telepítse a parancsmagokkal kapcsolatos útmutatásért lásd: [http://technet.microsoft.com/library/jj151815.aspx](http://technet.microsoft.com/library/jj151815.aspx)
+Az Azure Active Directory modul a Windows PowerShell az Azure AD a szervezetek adatkezelési letöltés. Ez a modul olyan parancsmagok készletét telepíti a Windows Powershellbe; azok a parancsmagok, egyszeri bejelentkezéses hozzáférést az Azure AD beállításához futtatja, és kapcsolja be az összes, a cloud Services az előfizetett. Töltse le és telepítse a parancsmagokkal kapcsolatos útmutatásért lásd: [http://technet.microsoft.com/library/jj151815.aspx](https://technet.microsoft.com/library/jj151815.aspx)
 
 ## <a name="set-up-a-trust-between-your-saml-identity-provider-and-azure-ad"></a>Az identitásszolgáltató SAML és az Azure AD közötti megbízhatósági kapcsolat beállítása
 Összevonás konfigurálása az Azure AD-tartomány, mielőtt konfigurált egy egyéni tartományt kell rendelkeznie. A Microsoft által biztosított alapértelmezett tartomány nem vonható össze. Az alapértelmezett tartomány a Microsoft az "onmicrosoft.com" végződik.
@@ -190,12 +190,12 @@ Az alábbi eljárás végigvezeti egy meglévő standard szintű tartomány áta
 
     `<IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"> <KeyDescriptor use="signing"> <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#"> <X509Data> <X509Certificate>MIIC5jCCAc6gAwIBAgIQLnaxUPzay6ZJsC8HVv/QfTANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwHhcNMTMxMTA0MTgxMzMyWhcNMTQxMTA0MTgxMzMyWjAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCwMdVLTr5YTSRp+ccbSpuuFeXMfABD9mVCi2wtkRwC30TIyPdORz642MkurdxdPCWjwgJ0HW6TvXwcO9afH3OC5V//wEGDoNcI8PV4enCzTYFe/h//w51uqyv48Fbb3lEXs+aVl8155OAj2sO9IX64OJWKey82GQWK3g7LfhWWpp17j5bKpSd9DBH5pvrV+Q1ESU3mx71TEOvikHGCZYitEPywNeVMLRKrevdWI3FAhFjcCSO6nWDiMqCqiTDYOURXIcHVYTSof1YotkJ4tG6mP5Kpjzd4VQvnR7Pjb47nhIYG6iZ3mR1F85Ns9+hBWukQWNN2hcD/uGdPXhpdMVpBAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAK7h7jF7wPzhZ1dPl4e+XMAr8I7TNbhgEU3+oxKyW/IioQbvZVw1mYVCbGq9Rsw4KE06eSMybqHln3w5EeBbLS0MEkApqHY+p68iRpguqa+W7UHKXXQVgPMCpqxMFKonX6VlSQOR64FgpBme2uG+LJ8reTgypEKspQIN0WvtPWmiq4zAwBp08hAacgv868c0MM4WbOYU0rzMIR6Q+ceGVRImlCwZ5b7XKp4mJZ9hlaRjeuyVrDuzBkzROSurX1OXoci08yJvhbtiBJLf3uPOJHrhjKRwIt2TnzS9ElgFZlJiDIA26Athe73n43CT0af2IG6yC7e6sK4L3NEXJrwwUZk=</X509Certificate> </X509Data> </KeyInfo> </KeyDescriptor>` 
 
-A "Set-MsolDomainAuthentication" kapcsolatos további információkért lásd: [ http://technet.microsoft.com/library/dn194112.aspx ](http://technet.microsoft.com/library/dn194112.aspx).
+A "Set-MsolDomainAuthentication" kapcsolatos további információkért lásd: [ http://technet.microsoft.com/library/dn194112.aspx ](https://technet.microsoft.com/library/dn194112.aspx).
 
 >[!NOTE]
 >Használat kell futtatásakor "$ecpUrl ="https://WS2012R2-0.contoso.com/PAOS"" csak akkor, ha az identitásszolgáltató ECP bővítmény beállítása. Az Exchange Online ügyfelek, az Outlook Web Application (OWA), kivéve a POST-alapú aktív végpontot. Ha a SAML 2.0 STS valósít meg egy aktív végpontot egy aktív végpontot a Shibboleth ECP megvalósítása hasonló lehet az ezek olyan funkciógazdag ügyfeleket kommunikáljon az Exchange Online szolgáltatáshoz.
 
-Összevonás konfigurálása után válthat vissza a "nem összevont" (vagy "felügyelt"), azonban ez a módosítás végrehajtásához akár két órát vesz igénybe, és új véletlenszerű jelszót a felhőbeli bejelentkezéshez hozzárendelése minden felhasználóhoz van szükség. Váltás vissza a "felügyeltnek" fiókdíjat bizonyos esetekben hiba a beállítások alaphelyzetbe állítása. A tartomány átalakítás további információk:: [ http://msdn.microsoft.com/library/windowsazure/dn194122.aspx ](http://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
+Összevonás konfigurálása után válthat vissza a "nem összevont" (vagy "felügyelt"), azonban ez a módosítás végrehajtásához akár két órát vesz igénybe, és új véletlenszerű jelszót a felhőbeli bejelentkezéshez hozzárendelése minden felhasználóhoz van szükség. Váltás vissza a "felügyeltnek" fiókdíjat bizonyos esetekben hiba a beállítások alaphelyzetbe állítása. A tartomány átalakítás további információk:: [ http://msdn.microsoft.com/library/windowsazure/dn194122.aspx ](https://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
 
 ## <a name="provision-user-principals-to-azure-ad--office-365"></a>Az Azure AD egyszerű felhasználói névnek kiépítése / Office 365-höz
 Hitelesítheti a felhasználókat, hogy az Office 365-höz, mielőtt a felhasználó rendszerbiztonsági tagok, amelyek megfelelnek a helyességi feltétel, a SAML 2.0 jogcímek üzembe helyezése Azure ad-ben. Ha a felhasználó rendszerbiztonsági tagok nem ismertek előzetesen Azure ad-hez, majd azok nem használható az összevont bejelentkezés. Az Azure AD Connect vagy a Windows PowerShell egyszerű felhasználói névnek kiépítéséhez használható.
@@ -218,7 +218,7 @@ Ez az eljárás bemutatja, hogyan egyetlen felhasználó hozzáadása az Azure a
         -LicenseAssignment "samlp2test:ENTERPRISEPACK" 
         -UsageLocation "US" ` 
 
-További információ a "New-MsolUser" kivételt, [http://technet.microsoft.com/library/dn194096.aspx](http://technet.microsoft.com/library/dn194096.aspx)
+További információ a "New-MsolUser" kivételt, [http://technet.microsoft.com/library/dn194096.aspx](https://technet.microsoft.com/library/dn194096.aspx)
 
 >[!NOTE]
 >A "UserPrinciplName" értékét meg kell egyeznie az érték, amely az SAML 2.0 jogcímet a "IDPEmail" küld, és a "ImmutableID" értékét meg kell egyeznie az értéket küldi el a "NameID" helyességi feltétel.

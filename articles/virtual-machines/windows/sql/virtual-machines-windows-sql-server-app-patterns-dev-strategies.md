@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: ninarn
-ms.openlocfilehash: 18de5b3d71922effa72414a6a52b126a34076cf3
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9ccf7d85b52759a3f2cd64facc6ee8d7255f0fac
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722129"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253176"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-in-azure-virtual-machines"></a>Azure-beli virtuális gépeken futó SQL Server – alkalmazásminták és fejlesztési stratégiák
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
@@ -236,7 +236,7 @@ Az Azure-ban, használhatja az Active Directory egy önálló a felhőalapú cí
 
 Az n szintű hibrid alkalmazásmintát valósítható meg az alábbi munkafolyamat a megadott sorrendben:
 
-1. Szeretné áthelyezni a felhőbe enterprise adatbázis-alkalmazások azonosítása a [Microsoft Assessment és tervezés (Leképezés) eszközkészlet](http://microsoft.com/map). A MAP eszközkészlet leltár-és teljesítményadatokat gyűjt a számítógépek számára releváns, és javaslatokat tartalmaz a kapacitás és a tervezési értékelés.
+1. Szeretné áthelyezni a felhőbe enterprise adatbázis-alkalmazások azonosítása a [Microsoft Assessment és tervezés (Leképezés) eszközkészlet](https://microsoft.com/map). A MAP eszközkészlet leltár-és teljesítményadatokat gyűjt a számítógépek számára releváns, és javaslatokat tartalmaz a kapacitás és a tervezési értékelés.
 2. Tervezze meg az erőforrásokat és az Azure platformon, például a storage-fiókok és a virtuális gépek szükséges konfiguráció.
 3. Állítsa be a vállalati hálózaton helyszíni közötti hálózati kapcsolatot és [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md). A vállalati hálózathoz a helyszínen és az Azure-beli virtuális gép között a kapcsolat beállításához, használja az alábbi két módszer egyikét:
    

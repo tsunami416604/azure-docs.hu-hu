@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: cynthn
-ms.openlocfilehash: bbe8059b3a239570c2c9b25586dae9adbe25312d
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e91f75299dddf0ac173499a531ea959292082a9f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931378"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246548"
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm-created-using-the-classic-deployment-model"></a>A távoli asztali szolgáltatás vagy a bejelentkezési jelszót a klasszikus üzemi modellel létrehozott Windows virtuális gép visszaállítása
 > [!IMPORTANT]
@@ -59,7 +59,7 @@ $vm = Get-AzureVM -ServiceName "myCloudService" -Name "myVM"
 write-host $vm.VM.ProvisionGuestAgent
 ```
 
-Ha a **write-host** parancs megjeleníti **igaz**, a Virtuálisgép-ügynök telepítve van. Ha megjeleníti **hamis**, tekintse meg az utasításokat, és a a letöltésére mutató hivatkozást a [Virtuálisgép-ügynök és -bővítmények – 2. rész](http://go.microsoft.com/fwlink/p/?linkid=403947&clcid=0x409) Azure blog bejegyzésében.
+Ha a **write-host** parancs megjeleníti **igaz**, a Virtuálisgép-ügynök telepítve van. Ha megjeleníti **hamis**, tekintse meg az utasításokat, és a a letöltésére mutató hivatkozást a [Virtuálisgép-ügynök és -bővítmények – 2. rész](https://go.microsoft.com/fwlink/p/?linkid=403947&clcid=0x409) Azure blog bejegyzésében.
 
 A portál használatával létrehozta a virtuális géphez, ellenőrizze, hogy `$vm.GetInstance().ProvisionGuestAgent` adja vissza **igaz**. Ha nem, beállíthatja a következő paranccsal:
 
@@ -108,7 +108,7 @@ Ha az Azure-beli Virtuálisgép-hozzáférési bővítmény nem válaszol, és n
 
 [Az Azure Virtuálisgép-bővítmények és szolgáltatások](../extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-[Csatlakozhat egy Azure virtuális gépekhez RDP vagy SSH](http://msdn.microsoft.com/library/azure/dn535788.aspx)
+[Csatlakozhat egy Azure virtuális gépekhez RDP vagy SSH](https://msdn.microsoft.com/library/azure/dn535788.aspx)
 
 [Egy Windows-alapú Azure virtuális gép távoli asztali kapcsolatok hibaelhárítása](../troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: 3090dd9e0d9681dbf77f052e9d324f2add0a1910
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: ddbfdc9928122373b82d043fac0777576c5fe99e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215038"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227478"
 ---
 # <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Az Azure Site Recovery-ügynök hibáinak elhárítása
 
@@ -64,7 +64,7 @@ A Virtuálisgép-ügynök sérült, vagy a szolgáltatás előfordulhat, hogy le
 1. Határozza meg hogy a "Windows Azure Guest Agent szolgáltatás" fut a virtuális gép szolgáltatások között (services.msc). Próbálja meg újraindítani a "Windows Azure Guest Agent szolgáltatás".    
 2. Ha a Windows Azure Guest Agent szolgáltatás nem látható a szolgáltatások, a Vezérlőpulton **programok és szolgáltatások** meghatározni, hogy telepítve van-e a Windows Vendégügynöke szolgáltatást.
 4. Ha megjelenik a Windows Azure-Vendégügynök **programok és szolgáltatások**, távolítsa el a Windows Vendégügynöke.
-5. Töltse le és telepítse a [az ügynök MSI legfrissebb verzióját](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). A telepítés befejezéséhez rendszergazdai jogosultságokkal kell rendelkeznie.
+5. Töltse le és telepítse a [az ügynök MSI legfrissebb verzióját](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). A telepítés befejezéséhez rendszergazdai jogosultságokkal kell rendelkeznie.
 6. Ellenőrizze, hogy a Windows Azure-Vendégügynök services szolgáltatások megjelenik-e.
 7. Indítsa újra a feladatot.
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: a88a0d9105942502b634f3be7c3279167ea590c6
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: d5ea6f18fb288711bae67b6840ddb5b8bb9942c2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393252"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245443"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>A Microsoft Authenticator alkalmazás használatának első lépései
 
@@ -39,7 +39,7 @@ Nem Microsoft-fiókok a Microsoft Authenticator alkalmazást is használhatja. E
 
 ## <a name="install-the-app"></a>Az alkalmazás telepítése
 
-A Microsoft Authenticator alkalmazás [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) és [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071) rendszereken érhető el. A legoptimálisabb lekéréséhez, hagyja, az alkalmazás értesítéseket kaphat, amikor a rendszer arra kéri. 
+A Microsoft Authenticator alkalmazás [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) és [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071) rendszereken érhető el. A legoptimálisabb lekéréséhez, hagyja, az alkalmazás értesítéseket kaphat, amikor a rendszer arra kéri. 
 
 ## <a name="add-accounts-to-the-app"></a>Fiókok hozzáadása az alkalmazáshoz
 
@@ -51,7 +51,7 @@ Személyes Microsoft-fiók (egy, amellyel jelentkezzen be Outlook.com, Xbox, Sky
 
 ### <a name="add-a-work-or-school-account"></a>Munkahelyi vagy iskolai fiók beállítása
 
-1. Ha lehetséges, nyissa meg a [további biztonsági ellenőrzés](http://aka.ms/mfasetup) képernyőn egy másik számítógépen vagy eszközön. Erre a képernyőre beolvasásával kapcsolatos információkért lásd: [biztonsági beállítások módosítása](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page) , vagy forduljon a rendszergazdához.
+1. Ha lehetséges, nyissa meg a [további biztonsági ellenőrzés](https://aka.ms/mfasetup) képernyőn egy másik számítógépen vagy eszközön. Erre a képernyőre beolvasásával kapcsolatos információkért lásd: [biztonsági beállítások módosítása](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page) , vagy forduljon a rendszergazdához.
 
     >[!Note]
     >Ha a rendszergazda a biztonsági adatok előzetes felület van kapcsolva, az utasítások a [beállítása a biztonsági adatok használata egy hitelesítő alkalmazást](security-info-setup-auth-app.md) szakaszban.

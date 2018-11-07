@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 3e0e9a59d7f77355077fc1f7781eb3be4dbe0532
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: c245a844ae594f5d78b47a168ad5870f8aea10e9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296703"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227773"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Csapat adatelemzési folyamat szerepkörök és feladatok
 
@@ -66,7 +66,7 @@ Ez a séma- és az alábbi, részletes áttekintése, amelyek a TDSP az egyes sz
 > [!NOTE]
 > A következőkben megtudhatja lépéseket TDSP-környezet kialakítása, és végezze el az Azure DevOps más adatelemzési feladatokat. Azt adja meg, hogyan végezheti el ezeket a feladatokat az Azure DevOps, mivel az a mi használjuk a Microsoft TDSP megvalósításához. Az Azure DevOps integrálásával a felügyeleti feladatok nyomon követése, munkaelemekből álló csapatmunkát és a egy üzemeltetési szolgáltatás kódot, segédprogramok, megosztására használt verziók rendszerezheti, és adja meg a szerepkör alapú biztonsági. Ön választhat más platformokon, ha szeretné, a TDSP által ismertetett feladatok végrehajtásához. De a platformtól függően néhány szolgáltatás az Azure DevOps ki lehet, hogy nem érhető el. 
 >
->Itt leírt utasításokat is használhatja a [adatelemzési virtuális gépet (DSVM)](http://aka.ms/dsvm) az Azure-ban a felhő mint az elemzési asztal számos népszerű beépített adatelemzési eszközzel, előre konfigurált, és a különböző Microsoft-szoftverek és az Azure integrált szolgáltatások. A dsvm-hez vagy bármilyen más fejlesztési környezet használatával TDSP megvalósításához. 
+>Itt leírt utasításokat is használhatja a [adatelemzési virtuális gépet (DSVM)](https://aka.ms/dsvm) az Azure-ban a felhő mint az elemzési asztal számos népszerű beépített adatelemzési eszközzel, előre konfigurált, és a különböző Microsoft-szoftverek és az Azure integrált szolgáltatások. A dsvm-hez vagy bármilyen más fejlesztési környezet használatával TDSP megvalósításához. 
 
 
 ## <a name="group-manager-tasks"></a>Csoportkezelő feladatok

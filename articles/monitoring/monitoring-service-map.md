@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: ad696168674e0c04c457c06a81d4e723981eee47
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 0f3bc7302bc28a9bef288e5e5e0b9b891a08b8dd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914753"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252921"
 ---
 # <a name="using-service-map-solution-in-azure"></a>A Service Map megoldást használ az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. A Service Map, megtekintheti a kiszolgálók ahogyan Ön gondol rájuk: rendszerekként, amelyek kritikus fontosságú szolgáltatások biztosításához. A Service Map megmutatja a kiszolgálók, a folyamatok, a bejövő és kimenő kapcsolat késési kapcsolatokat, és portok között, bármely TCP-kapcsolattal összekötött architektúrában, semmilyen beállítást nem szükséges ügynököt telepíteni.
@@ -277,7 +277,7 @@ A **Machine-frissítések** ablaktábla a kijelölt kiszolgálón az Update Mana
 ![Gép Change Tracking panel](media/monitoring-service-map/machine-updates.png)
 
 ## <a name="log-analytics-records"></a>Log Analytics-rekordok
-A Service Map-számítógép és a folyamat leltáradatok érhető el [keresési](../log-analytics/log-analytics-log-search.md) a Log Analyticsben. Ezeket az adatokat, beleértve az áttelepítés megtervezése, kapacitáselemzési, felderítési és igény szerinti teljesítménnyel kapcsolatos hibaelhárítás forgatókönyveket is alkalmazhat.
+A Service Map-számítógép és a folyamat leltáradatok érhető el [keresési](../log-analytics/log-analytics-queries.md) a Log Analyticsben. Ezeket az adatokat, beleértve az áttelepítés megtervezése, kapacitáselemzési, felderítési és igény szerinti teljesítménnyel kapcsolatos hibaelhárítás forgatókönyveket is alkalmazhat.
 
 Egy rekord minden egyedi számítógép és a folyamat a rekordokat, amelyek akkor jönnek létre egy folyamatot, vagy a számítógép indításakor vagy bevezetve a Service Map mellett óránként jön létre. Ezek a rekordok tulajdonságait az alábbi táblázatban rendelkezik. A mezők és értékek a mezők a ServiceMap Azure Resource Manager API-ban a gép erőforrás ServiceMapComputer_CL események leképezés. A mezők és értékek a ServiceMapProcess_CL események leképezés a mezőket a folyamat erőforrás a ServiceMap Azure Resource Manager API-ban. A ResourceName_s mezője megegyezik a megfelelő Resource Manager-erőforrás neve mezőjében. 
 
@@ -504,7 +504,7 @@ Az adatok gyűjtésével és használatával kapcsolatos további információk�
 
 
 ## <a name="next-steps"></a>További lépések
-Tudjon meg többet [naplókereséseket](../log-analytics/log-analytics-log-search.md) a Log Analytics által a Service Map összegyűjtött adatok lekéréséhez.
+Tudjon meg többet [naplókereséseket](../log-analytics/log-analytics-queries.md) a Log Analytics által a Service Map összegyűjtött adatok lekéréséhez.
 
 
 ## <a name="troubleshooting"></a>Hibaelhárítás

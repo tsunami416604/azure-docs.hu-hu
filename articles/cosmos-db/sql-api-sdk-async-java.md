@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 09/05/2018
-ms.author: sngun
-ms.openlocfilehash: 57172927011532af9b14fa7ff09d6aad9bac1e92
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.date: 11/02/2018
+ms.author: moderakh
+ms.openlocfilehash: 80beeda607c83bc2a583c140779766952efcc568
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417599"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252870"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB aszinkron Java SDK SQL API-hoz: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -52,6 +52,15 @@ Az SQL API aszinkron Java SDK azáltal, hogy az aszinkron műveletek támogatás
 </table></br>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
+* Az írási újrapróbálkozási elérési út NPE hibája kijavítva.
+* A végpont-kezelés NPE hibája kijavítva.
+* Frissítve a sebezhető függőségek ([github #68](https://github.com/Azure/azure-cosmosdb-java/issues/68)).
+* Támogatás hozzáadva a hibaelhárítási Netty hálózati naplózás.
+
+### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+* Többrégiós írási támogatása.
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * Támogatás hozzáadva a Proxy.
@@ -110,6 +119,8 @@ Cosmos DB-hez a kivont SDK használatával bármilyen kérelmet a rendszer eluta
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.2.1](#2.1.0) |2018. november 2.|--- |
+| [2.2.0](#2.2.1) |2018. szeptember 22.|--- |
 | [2.1.0](#2.1.0) |2018. szeptember 5.|--- |
 | [2.0.1](#2.0.1) |2018. augusztus 16.|--- |
 | [2.0.0](#2.0.0) |2018. június 20.|--- |

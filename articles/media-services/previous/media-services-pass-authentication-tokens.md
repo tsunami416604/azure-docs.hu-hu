@@ -1,8 +1,8 @@
 ---
-title: A hitelesítési tokenek át Azure Media Services |} Microsoft Docs
-description: 'Útmutató: az ügyfél hitelesítési jogkivonatokat elküldje az Azure Media Services kulcs kézbesítési szolgáltatás'
+title: Hitelesítési jogkivonatok átadása az Azure Media Services |} A Microsoft Docs
+description: Ismerje meg, hogyan lehet elküldeni a hitelesítési tokenek az ügyfél az Azure Media Services kulcstovábbítást
 services: media-services
-keywords: a védett tartalom, DRM, tokent használó hitelesítés
+keywords: a Content protection, DRM, jogkivonat-hitelesítés
 documentationcenter: ''
 author: dbgeorge
 manager: jasonsue
@@ -15,25 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: dwgeo
-ms.openlocfilehash: b6aca2928465b73e35ac15f01bb776b1f69add0b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 204a2122f38306f2c883436fb13397b45fd91980
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788451"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254621"
 ---
-# <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Ismerje meg, hogyan ügyfelek átadása jogkivonatok az Azure Media Services kulcs kézbesítési szolgáltatás
-Az ügyfelek gyakran kérje meg, hogyan egy player képes továbbadni jogkivonatok az Azure Media Services kulcs kézbesítési szolgáltatás ellenőrzésre, a Windows Media player szerezheti be a kulcsot. Media Services támogatja a egyszerű webes jogkivonat (SWT), és JSON webes jogkivonat (JWT) formátumú. Jogkivonat hitelesítési kulcs, függetlenül attól, hogy használ-e általános titkosítás vagy a boríték titkosítás Advanced Encryption Standard (AES) a rendszer bármilyen típusú vonatkozik.
+# <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Ismerje meg, hogyan ügyfelek jogkivonatok átadása az Azure Media Services kulcskézbesítési szolgáltatásba
+Ügyfeleink gyakran kérdezik, hogyan játékos is jogkivonatok átadása ellenőrzése az Azure Media Services kulcskézbesítési szolgáltatáshoz, a Windows Media player szerezheti be a kulcsot. A Media Services a simple web Tokens (SWT) és a JSON webes jogkivonat (JWT) formátumokat támogatja. Jogkivonat-hitelesítés bármilyen típusú kulcsot, függetlenül attól, hogy használja vagy közös Advanced Encryption Standard (AES) boríték-titkosítást a rendszer alkalmazza a rendszer.
 
- Attól függően, hogy a player és célozhat meg platform a a következőképpen továbbíthatja a jogkivonat a lejátszóval:
+ Attól függően, a lejátszó és a megcélzott platform adhat át a jogkivonatot a lejátszóval a következő módon:
 
-- A HTTP-hitelesítési fejlécéhez.
+- – A HTTP-engedélyeztetési fejléc.
     > [!NOTE]
-    > A "Tulajdonos" előtag az OAuth 2.0 specifikációk / várt. A token konfiguráció egy minta player üzemelteti-e az Azure Media Player [bemutató oldal](http://ampdemo.azureedge.net/). A videoforrást beállításához válassza **(JWT jogkivonat) AES** vagy **(SWT Token) AES**. A jogkivonat hitelesítési fejlécéhez keresztül lett átadva.
+    > A "Tulajdonos" előtagot az OAuth 2.0-s specifikációt / várt. A token konfigurációval egy minta player üzemelteti az Azure Media Player [bemutató lapon](http://ampdemo.azureedge.net/). A videó forrása beállításához válassza **AES (JWT-jogkivonat)** vagy **AES (SWT-Token)**. A token via az engedélyezési fejléc lett átadva.
 
-- Egy URL-cím hozzáadása keresztül lekérdezési paraméter "lexikális elem = tokenvalue."  
+- Egy URL-cím hozzáadása keresztül lekérdezési paraméter "token = tokenvalue."  
     > [!NOTE]
-    > A "Tulajdonos" előtag nem várt. A token egy URL-cím keresztül küld el, mert szükség amelyeket védelmére a lexikális elem karakterlánca. Íme egy C# mintakód bemutatja, hogyan kell tenni:
+    > A "Tulajdonos" előtag nem várt. A jogkivonat URL-cím keresztül zajlik, mert a jogkivonat-karakterláncot identitásinformációi kell. Íme egy C# mintakód bemutatja, hogyan teheti meg:
 
     ```csharp
     string armoredAuthToken = System.Web.HttpUtility.UrlEncode(authToken);
@@ -41,8 +41,8 @@ Az ügyfelek gyakran kérje meg, hogyan egy player képes továbbadni jogkivonat
     Uri keyDeliveryUrlWithTokenParameter = new Uri(uriWithTokenParameter);
     ```
 
-- A CustomData mező.
-Ez a beállítás használható a PlayReady licenc beszerzési csak, a PlayReady licenc beszerzési kihívás az CustomData mezője révén. Ebben az esetben a token belül kell lennie az XML-dokumentum itt leírtak szerint:
+- Keresztül a CustomData mező.
+Ezt a beállítást csak, a PlayReady licenc beszerzése szolgál, a PlayReady-licenc beszerzési kihívás CustomData mezője révén. Ebben az esetben a token belül kell lennie az XML-dokumentum itt leírtak szerint:
 
     ```xml
     <?xml version="1.0"?>
@@ -50,9 +50,9 @@ Ez a beállítás használható a PlayReady licenc beszerzési csak, a PlayReady
         <Token></Token> 
     </CustomData>
     ```
-    Helyezze el a hitelesítési jogkivonat a Token elemet.
+    A hitelesítési jogkivonatot a jogkivonat elem helyezze el.
 
-- Keresztül egy másik HTTP Live Streaming (HLS) listát. Ha szeretné-e az AES + HLS tokent használó hitelesítés konfigurálása a lejátszás iOS/Safari böngészőben oly módon, közvetlenül elküldheti a jogkivonat nem létezik. Alternatív a lista a forgatókönyv engedélyezésének módjáról további információkért tekintse meg a [blogbejegyzés](http://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
+- Keresztül egy másik HTTP Live Streaming (HLS) listát. Ha a jogkivonat-hitelesítés az AES + HLS konfigurálnia kell a lejátszás iOS/Safari böngészőben oly módon, közvetlenül elküldheti a jogkivonat nem áll rendelkezésre. Alternatív a lista a forgatókönyv engedélyezésének módjáról további információkért lásd: Ez [blogbejegyzés](https://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 43f4a37ce0425503337cffa58570f3468fca6b29
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: f685b584b701d2772ec5b3915facb97f0d15658a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634252"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259173"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Példa: Való Automation konfigurációs és a chocolatey-t használó virtuális gépek folyamatos üzembe helyezés
 
@@ -87,7 +87,7 @@ Másik lehetőségként a manuális módszer van. A mappastruktúra a számító
 Ehhez egy kis finomhangolása az Ön részéről. De már nem rögzített, és csak azért alkalmazzuk csak egyszer erőforrásonként (hacsak nem szeretné frissíteni, a jövőben.) A PowerShell-integrációs modulok szerzői további információkért lásd: Ez a cikk: [integrációs modulok készítése az Azure Automation](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)
 
 - Telepítse a modul, amely a következőképpen kell a munkaállomáson:
-  - Telepítés [Windows Management Framework, 5-ös verziójának](http://aka.ms/wmf5latest) (Windows 10-es nem szükséges)
+  - Telepítés [Windows Management Framework, 5-ös verziójának](https://aka.ms/wmf5latest) (Windows 10-es nem szükséges)
   - `Install-Module –Name MODULE-NAME`    < – begyűjti a modul a PowerShell-galériából
 - Másolja a modul mappájában található `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` egy ideiglenes mappába
 - Minták és a dokumentáció a fő mappa törlése

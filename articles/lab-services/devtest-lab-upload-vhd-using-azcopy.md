@@ -1,6 +1,6 @@
 ---
-title: Töltse fel a VHD-fájlt a Azure DevTest Labs AzCopy használatával |} Microsoft Docs
-description: AzCopy segítségével tesztlabor a tárfiók VHD-fájl feltöltése
+title: VHD-fájl feltöltése AzCopy használatával az Azure DevTest Labs |} A Microsoft Docs
+description: VHD-fájl feltöltése AzCopy használatával tesztkörnyezet tárfiókba
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,66 +14,66 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: e35686e7ba7c2e88d62930082d39856673a661b6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 482bfe41ebfec7353466f7e243e9e767caee7828
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33787982"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228283"
 ---
-# <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>AzCopy segítségével tesztlabor a tárfiók VHD-fájl feltöltése
+# <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>VHD-fájl feltöltése AzCopy használatával tesztkörnyezet tárfiókba
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-Azure DevTest Labs szolgáltatásban, a VHD-fájlok segítségével hozzon létre egyéni képek, amelyek segítségével virtuális gépeket. A következő lépések végigvezetik a VHD-fájl feltöltése a tesztkörnyezet tárfiókja az AzCopy parancssori segédprogram segítségével. Miután a VHD-fájl feltöltött a [további lépések szakaszt](#next-steps) felsorolja az egyes cikkeket, amelyek bemutatják, hogyan lehet a feltöltött VHD-fájl létrehozása egyéni lemezkép. További információ a lemezek és a VHD-ken az Azure-ban: [lemezek és a virtuális merevlemezek a virtuális gépek](../virtual-machines/linux/about-disks-and-vhds.md)
+Az Azure DevTest Labs szolgáltatásban a VHD-fájlok létrehozása az egyéni lemezképek, amelyek segítségével a virtuális gépek üzembe helyezése használható. A következő lépések végigvezetik az AzCopy parancssori segédprogram használatával töltse fel a VHD-fájl egy tesztkörnyezet egy tárfiókba. Miután feltöltötte a VHD-fájl a [további lépések szakaszt](#next-steps) felsorolja az egyes cikkeket, amelyek bemutatják, hogyan hozhat létre egy egyéni rendszerképet a feltöltött VHD-fájlból. Lemezek és virtuális merevlemezek, az Azure-ban kapcsolatos további információkért lásd: [lemezek és virtuális gépek virtuális merevlemezeinek ismertetése](../virtual-machines/linux/about-disks-and-vhds.md)
 
 > [!NOTE] 
 >  
-> AzCopy csak Windows parancssori segédprogram.
+> Az AzCopy csak Windows parancssori segédprogram.
 
 ## <a name="step-by-step-instructions"></a>Részletes útmutató
 
-A következő lépések végigvezetik a VHD-fájl feltöltése a Azure DevTest Labs segítségével [AzCopy](http://aka.ms/downloadazcopy). 
+A következő lépések végigvezetik egy VHD-fájl feltöltése az Azure DevTest Labs használatával [AzCopy](https://aka.ms/downloadazcopy). 
 
-1. Töltse le az Azure portál használatával a tesztkörnyezet tárfiókja nevét:
+1. Kérje le a labor létrehozása az Azure portal használatával storage-fiók neve:
 
-1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
 
-1. Válassza ki a kívánt labor labs listájának megtekintéséhez.  
+1. Tesztkörnyezetek listájában jelölje ki a kívánt tesztkörnyezetben.  
 
-1. A labor paneljén válassza **konfigurációs**. 
+1. A labor paneljén válassza ki a **konfigurációs**. 
 
-1. A tesztlabor a **konfigurációs** panelen válassza **egyéni lemezképeket (VHD)**.
+1. A laborgyakorlat **konfigurációs** panelen válassza ki **egyéni lemezképeket (VHD)**.
 
 1. Az a **egyéni lemezképek** panelen válasszon ki **+ Hozzáadás**. 
 
-1. Az a **egyéni lemezkép** panelen válassza **VHD**.
+1. Az a **egyéni lemezkép** panelen válassza ki **VHD**.
 
-1. Az a **VHD** panelen válassza **a PowerShell használatával virtuális merevlemez feltöltéséhez**.
+1. Az a **VHD** panelen válassza ki **Nahrát VHD pomocí PowerShell**.
 
-    ![Töltse fel a virtuális merevlemez a PowerShell használatával](./media/devtest-lab-upload-vhd-using-azcopy/upload-image-using-psh.png)
+    ![Töltse fel a VHD pomocí Powershellu](./media/devtest-lab-upload-vhd-using-azcopy/upload-image-using-psh.png)
 
-1. A **PowerShell-lel lemezkép feltöltése a** csempe megjeleníti hívása a **Add-AzureVhd** parancsmag. Az első paraméter (*cél*) tartalmaz a blob-tároló URI-JÁNAK (*feltölt*) a következő formátumban:
+1. A **Nahrát image pomocí PowerShell** panel megjeleníti a hívást a **Add-AzureVhd** parancsmagot. Az első paraméterrel (*cél*) tartalmaz a blob-tároló URI azonosítója (*feltölti*) a következő formátumban:
 
     ```
     https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/...
     ``` 
 
-1. Jegyezze meg a teljes URI-címe, a későbbi lépésekben használatban van.
+1. Jegyezze fel a teljes URI-t, a későbbi lépésekben szolgál.
 
-1. Töltse fel az AzCopy VHD-fájlt:
+1. A virtuális merevlemez fájl feltöltése AzCopy használatával:
  
-1. [Töltse le és telepítse a legújabb verziót az AzCopy](http://aka.ms/downloadazcopy).
+1. [Töltse le és telepítse az AzCopy legújabb verzióját](https://aka.ms/downloadazcopy).
 
-1. Nyisson meg egy parancsablakot, és keresse meg az AzCopy telepítési könyvtárára. Másik lehetőségként az AzCopy telepítési helyet adhat hozzá a fájlrendszerbeli elérési. Alapértelmezés szerint a AzCopy telepítve van a következő könyvtárra:
+1. Nyisson meg egy parancsablakot, és keresse meg az AzCopy telepítési könyvtárára. Igény szerint is hozzáadhat az AzCopy telepítési hely a rendszerbeli elérési úton. Alapértelmezés szerint az AzCopy a következő könyvtárba van telepítve:
 
     ```command-line
     %ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy
     ```
 
-1. A fiók kulcs és a blob tároló URI használatával, a következő parancsot a parancssorba. A *vhdFileName* érték nem lehet idézőjelben. A folyamat egy VHD-fájl feltöltése megnőhet méretét a VHD-fájlt és a kapcsolat sebességétől függően.   
+1. A tárfiók kulcsát, és a blob tárolójának URI-t használ, futtassa a következő parancsot a parancssorba. A *vhdFileName* értéknek kell lennie az idézőjelek között. A VHD-fájlt, és az átviteli sebesség méretétől függően a folyamat egy VHD-fájl feltöltése megnőhet.   
 
     ```command-line
     AzCopy /Source:<sourceDirectory> /Dest:<blobContainerUri> /DestKey:<storageAccountKey> /Pattern:"<vhdFileName>" /BlobType:page
@@ -81,5 +81,5 @@ A következő lépések végigvezetik a VHD-fájl feltöltése a Azure DevTest L
 
 ## <a name="next-steps"></a>További lépések
 
-- [Létrehozhat egyéni rendszerképeket a VHD-fájl az Azure portál használata az Azure DevTest Labs szolgáltatásban](devtest-lab-create-template.md)
-- [Egyéni lemezkép létrehozása a PowerShell használatával VHD-fájl az Azure DevTest Labs szolgáltatásban](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
+- [Egy egyéni lemezkép készítése VHD-fájlból az Azure portal segítségével Azure DevTest Labs szolgáltatásban](devtest-lab-create-template.md)
+- [Egyéni rendszerkép létrehozása a PowerShell-lel VHD-fájlból az Azure DevTest Labs szolgáltatásban](devtest-lab-create-custom-image-from-vhd-using-powershell.md)

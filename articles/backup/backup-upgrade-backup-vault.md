@@ -1,6 +1,6 @@
 ---
-title: Az Azure biztonsági mentést a Recovery Services-tároló frissítési Backup-tárolóban "
-description: Az új szolgáltatások, mint az erőforrás-kezelő virtuális gépeken, a fokozott biztonság, a VMware virtuális gép biztonsági mentése és a rendszerállapot biztonsági mentése a Windows-kiszolgálók biztonsági mentését a beolvasandó Recovery Services-tároló frissítési mentési tárolóba
+title: 'Recovery Services-tárolót az Azure Backup szolgáltatás frissítési Backup-tárolóban:'
+description: Beolvasni az új funkciók, például a Resource manager-beli virtuális gépek fokozott biztonságot, a VMware virtuális gépek biztonsági mentését és a rendszerállapot biztonsági mentése a Windows-kiszolgálók biztonsági mentése Recovery Services-tároló frissítési Backup-tárolóban
 services: backup
 author: trinadhk
 manager: vijayts
@@ -8,93 +8,93 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/10/2017
 ms.author: trinadhk
-ms.openlocfilehash: 358c7b0e61d1c85e236007c2495941a31502431a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 01aacaecba8c5a4adf1dab5483a2f921df9314c0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606859"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252530"
 ---
-# <a name="backup-vault-upgraded-to-recovery-services-vault"></a>Recovery Services-tároló frissített mentési tároló
-Ez a cikk áttekintést nyújt milyen Recovery Services-tároló, a Recovery Services-tároló és a frissítés utáni lépések tároló létező biztonsági másolathoz történő frissítéssel kapcsolatos gyakran ismételt kérdések. Recovery Services-tároló megfelel az Azure Resource Manager egy biztonsági mentési tárolót, amely a biztonsági mentési adatokat. Az adatokat a program általában másolja az adatokat, vagy a konfigurációs adatokat a virtuális gépek (VM), a munkaterhelések, a kiszolgálók vagy a munkaállomások, hogy a helyszíni vagy az Azure-ban.
+# <a name="backup-vault-upgraded-to-recovery-services-vault"></a>Mentési tároló frissítése Recovery Services-tárolóba
+Ez a cikk milyen Recovery Services-tárolót biztosít áttekintést nyújt, és a Recovery Services-tárolót a frissítés utáni lépések tároló – gyakori kérdések a meglévő biztonsági másolat frissítése. Recovery Services-tárolót az Azure Resource Manager megegyezik a Backup-tároló, amely a biztonsági mentési adatok rá. Az adatokat a program általában másolja, vagy virtuális gépeken (VM), a számítási feladatok, a kiszolgálók vagy a munkaállomásokat, konfigurációs információkat e a helyszíni vagy Azure-ban.
 
 ## <a name="what-is-a-recovery-services-vault"></a>Mi az a Recovery Services-tároló?
-A Recovery Services-tároló olyan online tárolóentitás az Azure-ban, amely az adatok, például a biztonsági másolatok, a helyreállítási pontok és a biztonsági mentésre vonatkozó szabályzatok tárolására szolgál. Recovery Services-tárolók használatával a különböző Azure-szolgáltatásokra például IaaS virtuális gépeket (Linux- vagy Windows-) és az Azure SQL-adatbázisok biztonsági mentési adatok tárolására. Helyreállítási szolgáltatások tárolók támogatása a System Center DPM, a Windows Server, Azure Backup Server, és több. A Recovery Services-tárolók leegyszerűsítik a biztonsági mentési adatok szervezését, miközben minimálisra csökkentik a munkaterhelést.
+A Recovery Services-tároló olyan online tárolóentitás az Azure-ban, amely az adatok, például a biztonsági másolatok, a helyreállítási pontok és a biztonsági mentésre vonatkozó szabályzatok tárolására szolgál. Recovery Services-tárolók segítségével különböző Azure-szolgáltatások például az Azure SQL-adatbázisok és az IaaS virtuális gépek (Linux vagy Windows) a biztonsági mentési adatok tárolásához. Helyreállítási szolgáltatások tárolók támogatása a System Center DPM, a Windows Server, az Azure Backup Server és több. A Recovery Services-tárolók leegyszerűsítik a biztonsági mentési adatok szervezését, miközben minimálisra csökkentik a munkaterhelést.
 
-## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>Összehasonlító Recovery Services-tárolók és a mentési tárolókat
-Helyreállítási szolgáltatások tárolók Azure-ban Azure Resource Manager modelljét alapulnak, mivel az Azure Service Manager modell alapuló biztonsági mentési tárolóból. Amikor frissít egy biztonsági mentési tárolót Recovery Services-tároló, a biztonsági mentési adatok sértetlenek maradnak alatt és után a frissítési folyamat. Helyreállítási szolgáltatások tárolók funkciók nem érhető el a biztonsági mentési tárolóból, például a biztosítására:
+## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>Összehasonlító Recovery Services-tárolók és a Backup-tárolók
+Recovery Services-tárolók az Azure-ban, az Azure Resource Manager modellel alapulnak, mivel a Backup-tárolók az Azure Service Manager-modell alapulnak. Amikor frissít egy biztonsági mentési tárolót egy Recovery Services-tároló, a biztonsági mentési adatok sértetlenek maradnak alatt és a frissítési folyamat után. Recovery Services-tárolók adja meg a funkciók nem érhető el a Backup-tárolók, például:
 
-- **Bővített képességet biztonságos biztonsági mentési adatok segítségével**: A Recovery Services-tárolók, Azure biztonsági mentési képességeket biztosít a biztonsági felhőbeli biztonsági másolatok védelme érdekében. Biztonsági funkció ellenőrizze, hogy a biztonsági másolatok biztonságos, és biztonságosan tárolt adatok helyreállításához felhőbeli biztonsági mentések akkor is, ha az éles tárhely és a biztonsági mentés kiszolgálók kerülnek veszélybe. [További információ](backup-azure-security-feature.md)
+- **Bővített képességet a biztonsági mentési adatainak védelme**: Recovery Services-tárolók, Azure Backup biztonsági képességeket védelme érdekében a felhőbeli biztonsági mentést biztosít. Ezek a biztonsági szolgáltatások biztosítása érdekében, hogy biztonságossá teheti a biztonsági mentések, illetve biztonságosan helyreállítható adatok felhőbeli biztonsági mentések még akkor is, ha az éles és a biztonsági mentés integritása sérül. [További információ](backup-azure-security-feature.md)
 
-- **A hibrid informatikai környezetben központi figyelését**: A Recovery Services-tárolók, figyelheti nem csak a [Azure IaaS virtuális gépeket](backup-azure-manage-vms.md) , hanem a [a helyszíni eszközök](backup-azure-manage-windows-server.md#manage-backup-items) központi portálról. [További információ](http://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
+- **A hibrid informatikai környezet központi figyelését**: Recovery Services-tárolók, figyelheti nem csupán a [Azure IaaS virtuális gépek](backup-azure-manage-vms.md) , hanem a [a helyszíni eszközök](backup-azure-manage-windows-server.md#manage-backup-items) egy központi portálról. [További információ](https://azure.microsoft.com/blog/alerting-and-monitoring-for-azure-backup)
 
-- **Szerepköralapú hozzáférés-vezérlés (RBAC)**: RBAC biztosít a minden részletre kiterjedő felügyeleti hozzáférés az Azure-ban. [Azure biztosít a különféle beépített szerepkörök](../role-based-access-control/built-in-roles.md), és az Azure biztonsági mentés van három [beépített szerepkörök kezelése a helyreállítási pontok](backup-rbac-rs-vault.md). Helyreállítási szolgáltatások tárolók kompatibilisek-e az RBAC, amely korlátozza a biztonsági mentés, és állítsa vissza az elérését a felhasználói szerepkörök adott csoportján. [További információ](backup-rbac-rs-vault.md)
+- **Szerepköralapú hozzáférés-vezérlés (RBAC)**: RBAC biztosítja a hozzáférés részletes felügyeleti vezérlés az Azure-ban. [Az Azure különféle beépített szerepkört biztosít](../role-based-access-control/built-in-roles.md), és az Azure Backup három [beépített szerepkörök kezelése a helyreállítási pontok](backup-rbac-rs-vault.md). Recovery Services-tárolók kompatibilisek az RBAC, amely korlátozza a biztonsági mentés, és állítsa vissza a felhasználói szerepkörök meghatározott készletével való hozzáférést. [További információ](backup-rbac-rs-vault.md)
 
-- **Az összes konfiguráció Azure virtuális gépek védelme**: Recovery Services-tárolók a Resource Manager-alapú virtuális gépek többek között a Premium lemezek, a felügyelt lemezek és a titkosított virtuális gépek védelme. A biztonsági másolatok tárolóját frissítése a Recovery Services-tároló lehetőséget nyújt a Service Manager-alapú virtuális gépek frissítése a Resource Manager-alapú virtuális gépeket. A tároló a frissítés során a Service Manager-alapú virtuális gép helyreállítási pontok megőrzése, és konfigurálja a frissített (Resource Manager-kompatibilis) virtuális gépek védelmét. [További információ](http://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
+- **Az összes konfiguráció az Azure Virtual Machines védelme**: Recovery Services-tárolók Resource Manager-alapú virtuális gépet is, beleértve a felügyelt lemezek prémium szintű Managed Disks és titkosított virtuális gépek védelmét. Egy biztonsági mentési tároló frissítése Recovery Services-tároló lehetővé teszi, hogy a Service Manager-alapú virtuális gépek frissítése a Resource Manager-alapú virtuális gépeket. A tárolót a frissítés során a Service Manager-alapú virtuális gép helyreállítási pontjai, és a frissített (Resource Manager-kompatibilis) virtuális gépek védelme nem konfigurálható. [További információ](https://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
-- **Infrastruktúra-szolgáltatási virtuális gépek azonnali visszaállítási**: használatával Recovery Services-tárolók, állíthatja vissza fájlokat és mappákat az infrastruktúra-szolgáltatási virtuális gép helyreállítása a teljes virtuális gép, amely lehetővé teszi a gyorsabb visszaállítás nélkül. Infrastruktúra-szolgáltatási virtuális gépek azonnali visszaállítási Windows és Linux virtuális gépek érhető el. [További információ](http://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
+- **IaaS virtuális gépekhez azonnali helyreállítás**: használatával Recovery Services-tárolók, visszaállíthatja fájlokat és mappákat az IaaS virtuális gépek visszaállítása a teljes virtuális Gépet, amely lehetővé teszi a gyorsabb helyreállítás nélkül. Azonnali helyreállítás IaaS virtuális gépekhez Windows és Linux rendszerű virtuális gépeken érhető el. [További információ](https://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
 
 > [!NOTE]
-> Ha regisztrált egy mentési tárolóba rendszernél korábbi 2.0.9083.0, a MARS agent cikkekhez [töltse le a legfrissebb MARS agent]( http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe) verziójára a Recovery Services-tároló összes funkciójának előnyeit. 
+> Ha egy Backup-tárolóba a MARS-ügynök korábban regisztrált 2.0.9083.0, mint a cikkekhez [töltse le a legújabb MARS-ügynök]( http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe) verziójára a helyreállítási tár összes funkciójának előnyeit. 
 > 
 
 ## <a name="managing-your-recovery-services-vaults"></a>A Recovery Services-tárolók kezelése
-A következő képernyőkön megjelenítése egy új Recovery Services-tároló, a biztonsági mentési tárolóból, az Azure portálon frissítve. A frissített tároló "Alapértelmezett-RecoveryServices-erőforráscsoport-földrajzi" nevű alapértelmezett erőforráscsoport megtalálható lesz. Példa: Ha a Backup-tárolóban található lett USA nyugati régiója, azt fogja kell helyeznie egy alapértelmezett alapértelmezett-RecoveryServices-erőforráscsoport-westus nevű RG.
+Az alábbi képernyőn látható egy új Recovery Services-tároló, a Backup-tárolóban az Azure Portal-ről. A frissített tároló kerül be a "Alapértelmezett-RecoveryServices-ResourceGroup-földrajzi" nevű alapértelmezett erőforráscsoport. . Példa: Ha a Backup-tárolóban található volt USA nyugati RÉGIÓJA, azt kerülnek egy alapértelmezett nevű alapértelmezett-RecoveryServices-ResourceGroup-westus-RG.
 > [!NOTE]
-> A CPS Standard ügyfelek erőforráscsoport a tároló frissítés után nem változik, és változatlan marad, a frissítés előtt.
+> A CPS szabvány rendelkező ügyfelek esetén az erőforráscsoport nem változik a a tár verziófrissítése, és változatlan marad, a frissítés előtt.
 
-Az első képernyőn látható a tároló irányítópultot, amelyen a tároló kulcs entitásokat.
-![a biztonsági másolatok tárolóját verzióról frissített Recovery Services-tároló – példa](./media/backup-azure-upgrade-backup-to-recovery-services/upgraded-rs-vault-in-dashboard.png)
+Az első képernyőn látható, amely megjeleníti a tároló kulcsentitások tároló irányítópultján.
+![a Backup-tároló frissítése Recovery Services-tároló – példa](./media/backup-azure-upgrade-backup-to-recovery-services/upgraded-rs-vault-in-dashboard.png)
 
-A második képernyőn látható hivatkozások nyújtanak segítséget a Recovery Services-tároló használatának megkezdésében a Súgó.
+A második képernyőn látható a Súgó segíti a hivatkozások a Recovery Services-tároló használatának első lépései.
 
 ![az első lépések panelen található hivatkozások segítségével](./media/backup-azure-upgrade-backup-to-recovery-services/quick-start-w-help-links.png)
 
 ## <a name="post-upgrade-steps"></a>A frissítés utáni lépések
-Recovery Services-tároló megadását időzóna-információk támogatja a biztonsági mentési házirend. Tároló sikeres frissítése után nyissa meg a biztonsági mentési házirendek tároló-beállítások menüjében, és az időzóna-adatok a tárolóban lévő konfigurált házirendek frissítése. Ez a képernyő már jeleníti meg a helyi időzónát használják, amikor egy létrehozott házirend megadott biztonsági mentési ütemezést. 
+Recovery Services-tároló megadását időzóna-információk támogatja a biztonsági mentési szabályzat. Miután a tároló sikeresen frissítve van, nyissa meg a biztonsági mentési házirendek tároló beállítások menüjében, és minden a tároló konfigurált szabályzatok időzóna-információk frissítése. Ez a képernyő már mikor használják, helyi időzóna szerint létrehozott szabályzatot a megadott biztonsági mentési ütemezés időpontot jeleníti meg. 
 
 ## <a name="enhanced-security"></a>Fokozott biztonság
-A biztonsági másolatok tárolóját a Recovery Services-tároló történő frissítésekor a biztonsági bekapcsolja a beállításokat, hogy a tároló automatikusan. Ha a biztonsági beállítások, bizonyos műveletek, például törlés, biztonsági mentések, vagy módosítása egy hozzáférési kódot igényel egy [Azure multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md) PIN-kódot. A fokozott biztonsági további információkért lásd: a cikk [funkciókat a hibrid biztonsági másolatának](backup-azure-security-feature.md). A fokozott biztonságot be van kapcsolva, amikor adatok megőrződnek fel és 14 nap után a helyreállítási pont adatok törölve lett a tárolóból. Az ügyfelek számlázása a biztonsági adatok tárolására. Biztonsági adatok megőrzése érvényes helyreállítási pontot az Azure Backup ügynök, az Azure Backup Server és a System Center Data Protection Manager. 
+Backup-tároló frissítése Recovery Services-tárolóba, amikor a tár biztonsági beállításait a rendszer automatikusan bekapcsol. Ha a biztonsági beállításokat, bizonyos műveletek, például a biztonsági mentések törlésével, vagy módosítása egy hozzáférési kódot egy [Azure multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md) PIN-kódot. A fokozott biztonság további információkért tekintse meg a cikket [biztonsági szolgáltatások hibrid biztonsági mentésekhez védelméhez](backup-azure-security-feature.md). Során a fokozott biztonságot be van kapcsolva, adatokat a rendszer másolatot 14 nap a helyreállítási pont adatainak törlése a tárolóból után megőrzi. Az ügyfeleknek a biztonsági adatok használatáért. Helyreállítási pontok esetében az Azure Backup agent, az Azure Backup Server és System Center Data Protection Manager biztonsági adatok megőrzésére vonatkozik. 
 
-## <a name="gather-data-on-your-vault"></a>A tároló adatgyűjtés
-Egyszer, frissítse a Recovery Services-tároló, jelentések konfigurálása az Azure biztonsági mentés (az infrastruktúra-szolgáltatási virtuális gépek és a Microsoft Azure Recovery Services agent), és a jelentésekhez a Power BI használatával. Az adatgyűjtés további információkért lásd: a cikk [Azure Backup konfigurálása jelentések](backup-azure-configure-reports.md).
+## <a name="gather-data-on-your-vault"></a>Adatgyűjtés a tároló
+Egyszer, egy Recovery Services-tárolót a frissítés jelentések konfigurálása az Azure Backup (az IaaS virtuális gépek és a Microsoft Azure Recovery Services agent) és a jelentéseket a Power BI segítségével. Az adatgyűjtés további információkért lásd: a cikk [konfigurálása az Azure Backup-jelentések](backup-azure-configure-reports.md).
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-**A frissítési csomag befolyásolja a folyamatban levő biztonsági másolatok?**</br>
-Nem. A folyamatban levő biztonsági másolatok megszakításmentes folytatásához során, és a frissítés után.
+**A frissítési csomag befolyásolja a folyamatban lévő biztonsági másolatok?**</br>
+Nem. A folyamatban lévő biztonsági másolatok továbbra is megszakítás nélkül, során és a frissítés után.
 
-**A meglévő eszközt használunk erre a frissítési középértéket funkciója?**</br>
-A Resource Manager üzembe helyezési modellben annak érdekében, hogy az tovább működni a frissítés után frissítse a meglévő automatizációk vagy tooling. Tekintse meg a PowerShell-parancsmagok hivatkozásokat az a [Resource Manager üzembe helyezési modellben](backup-client-automation.md).
+**Mire frissítési jelent ez az meglévő eszközállományomra?**</br>
+A meglévő automatizálást vagy eszközöket a Resource Manager-alapú üzemi modellbe, győződjön meg arról, hogy továbbra is működni a frissítés után frissíteni kell. Tekintse meg a PowerShell parancsmagok referenciáit a [Resource Manager üzemi modell](backup-client-automation.md).
 
-**I vissza lehet vonni a frissítés után?**</br>
-Nem. Miután az erőforrások frissítése sikeresen befejeződött a rollback utasítás nem támogatott.
+**Visszafordíthatom a frissítés után?**</br>
+Nem. Visszaállítás nem támogatott, miután az erőforrások sikeresen frissítette.
 
-**Megtekintheti a post frissítési klasszikus tárolót?**</br>
-Nem. Nem tekinthetők meg és kezelheti a klasszikus tároló utólagos frissítése. Csak kell tudni használni az új Azure-portálon a tárolóban lévő összes felügyeleti műveletet.
+**Megtekintheti a saját utólagos frissítése klasszikus tárolóba?**</br>
+Nem. Nem tekinthetők meg és kezelheti a klasszikus tárolóba utólagos frissítése. Csak lesz az új Azure Portalon a tárolóban lévő összes felügyeleti műveletet használhatja.
 
-**Miért nem látom, hogy a frissített tárolóban MARS-ügynök által védett kiszolgálók?**</br>
-A legújabb a MARS agent megtekintéséhez a MARS agent a tárolóban lévő által védett összes kiszolgálójára telepíteni szeretné. Az ügynök a legújabb verzióját letöltheti [Itt]( http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe).
+**Miért nem látom a MARS-ügynök a frissített tároló által védett kiszolgálók?**</br>
+A legújabb MARS-ügynök a MARS-ügynök a tároló által védett összes kiszolgálójára megtekintéséhez telepítenie kell. Az ügynököt a legújabb verzióját letöltheti [Itt]( http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe).
 
-**A frissítés után a MARS agent által védett kiszolgálók biztonsági mentési házirend nem látható**</br>
-A biztonsági mentési házirend vault előfordulhat, hogy elavult, és ezért nem szinkronizálható, a frissített tárolóba. Frissítse a kezelő rendszergazdákkal annak biztosítására, továbbra is megjelenik a házirendek a frissített tárolóban.
-A házirend frissítése, navigáljon a MARS agent, és a beállított biztonsági mentési házirendjének frissítése.
+**Nem jelenik meg a frissítés után a MARS-ügynök által védett kiszolgálók biztonsági mentési szabályzat**</br>
+Tár biztonsági mentési szabályzat lehet, hogy elavult, és ezért nem szinkronizálható, a frissített tárolóba. Frissítse a házirendet, győződjön meg arról, továbbra is megjelenik a szabályzatok a frissített tárolóban.
+Szabályzat frissítésének, ugorjon a MARS-ügynök, és a beállított biztonsági mentési szabályzat frissítése.
 
-**Miért nem lehet frissíteni a frissítés után a biztonsági mentési házirend?**</br>
-Ez akkor fordul elő, amikor a régi biztonsági mentési ügynök, és válassza ki a minimális megőrzési időtartam az engedélyezett minimális értékének kisebbnek kell lennie. A biztonsági másolatok tárolóját a Recovery Services-tároló történő frissítésekor a biztonsági bekapcsolja a beállításokat, hogy a tároló automatikusan. Győződjön meg arról, hogy számos mindig érvényes helyreállítási pont érhető el, van néhány minimális megőrzési időtartam, amely szerint a biztonsági szolgáltatás fenntartásához szükséges. További részletekért lásd a [Itt](backup-azure-security-feature.md).
-Emellett szükség Azure biztonsági mentés ügynököket is frissítenie kell az Azure Backup szolgáltatás legújabb funkcióit előnyei legújabb verziójára.
+**Miért nem tudja frissíteni a frissítés után a biztonsági mentési szabályzatot?**</br>
+Ez történik, ha a régi biztonsági mentési ügynök, és válassza ki a minimális megőrzési időtartam az engedélyezett minimális értékének kisebbnek kell lennie. Backup-tároló frissítése Recovery Services-tárolóba, amikor a tár biztonsági beállításait a rendszer automatikusan bekapcsol. Győződjön meg róla, hogy nincsenek mindig egy érvényes helyreállítási pontok száma elérhető, van néhány minimális megőrzési időszak, amelyet fenn kell tartani a biztonsági szolgáltatás megfelelően. További részletekért tekintse meg [Itt](backup-azure-security-feature.md).
+Emellett szüksége az Azure Backup-ügynökök frissítése az Azure Backup szolgáltatás a legújabb funkciók előnyeinek legújabb verziójára.
 
-**Az ügynök frissítése befejeződött, de továbbra sem láthatók a frissítés után akár napokig szinkronizált objektumok**</br>
-Győződjön meg arról, ha több tárolóból az egyazon számítógépen regisztrált. Győződjön meg arról, hogy éppen megtekintett a azonos tárolót, amelyben a MARS Agent regisztrálva van-e. A MARS Agent regisztrálva van, mely tároló nyissa meg a Windows beállításjegyzéket, és ellenőrizze a HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config ServiceResourceName kulcs értékét a tárolóban regisztrált jelenik meg, hogy a MARS agent nincs. Ha a ServiceResourceName kulcs nem látható, a rendszer, kapcsolatba velünk a ResourceId és MachineId kulcsokat a HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config értékét, és segíteni fogunk megoldani a problémát.
+**Szeretnék saját ügynök frissítése, de továbbra sem láthatók a frissítés után akár napokig szinkronizált objektumok**</br>
+Ellenőrizze, ha több tárolóra ugyanarra a gépre már regisztrált. Győződjön meg arról, hogy éppen megtekintett ugyanahhoz a tárolóhoz, amely a MARS-ügynök regisztrálva van-e. A MARS-ügynök regisztrálva van, mely tároló nyissa meg a Windows beállításjegyzéket, és ellenőrizze a HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config ServiceResourceName kulcs értékét a tárolóban regisztrált jelenik meg, hogy MARS-ügynök nincs. Ha nem látható, a rendszer a ServiceResourceName kulcs, fel velünk a kapcsolatot a következő értékkel: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config az erőforrás-azonosító és Gépazonosító-kulcsokat, és segítünk Önnek a probléma megoldásához.
 
-**Miért nem olvashatom a feladatok információkat az erőforrások a frissítés után?**</br>
-(A MARS agent és IaaS) biztonsági mentés figyelése az új szolgáltatása, ha a Recovery Services-tároló frissítenie a mentési tárolóba. A figyelési adatokat a szolgáltatás-vel való szinkronizálásának 12 órát vesz igénybe.
+**Miért nem látom a feladatok információkat az erőforrásoknak a frissítés után?**</br>
+A biztonsági mentésekhez (MARS-ügynök és IaaS) figyelési funkciója új esetén a Backup-tároló frissítése Recovery Services-tárolóba. A monitorozási információkhoz szinkronizálását a szolgáltatással akár 12 órát vesz igénybe.
 
 **Hogyan jelenthetem a problémát?**</br>
-Ha nem sikerül bármely részét a tároló frissítési, vegye figyelembe a OperationID azonosítójú szerepel a hiba. A probléma megoldásához a Microsoft Support proaktív módon működnek. Támogatási érheti el, vagy e-mail-nekünk az rsvaultupgrade@service.microsoft.com az előfizetés-azonosító, a tároló neve és a OperationID azonosítójú. Megpróbáljuk a lehető leggyorsabban tegye a probléma megoldásához. Próbálja megismételni a műveletet nem kivéve, ha explicit módon kifejezetten kéri a Microsoft által.
+Ha bármely részének a tár frissítése nem sikerül, vegye figyelembe, az OperationId szerepel a hiba. Microsoft Support proaktív módon fog működni a probléma megoldásához. Forduljon támogatási szolgálatához, vagy küldjön e-mailben rsvaultupgrade@service.microsoft.com az előfizetés-azonosító, a tároló neve és OperationId. Megkíséreljük a lehető leggyorsabban a probléma megoldásához. Próbálja megismételni a műveletet nem, ha explicit módon utasította ehhez a Microsoft által.
 
 ## <a name="next-steps"></a>További lépések
-Használja a következő cikkeket:</br>
-[Készítsen biztonsági másolatot az infrastruktúra-szolgáltatási virtuális gép](backup-azure-arm-vms-prepare.md)</br>
+Használja az alábbi cikkeket:</br>
+[Készítsen biztonsági másolatot egy IaaS-beli virtuális Gépen](backup-azure-arm-vms-prepare.md)</br>
 [Készítsen biztonsági másolatot az Azure Backup Server](backup-azure-microsoft-azure-backup.md)</br>
-[Készítsen biztonsági másolatot a Windows Server](backup-configure-vault.md)
+[A Windows Server biztonsági mentése](backup-configure-vault.md)

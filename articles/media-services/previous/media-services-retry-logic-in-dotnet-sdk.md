@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2018
 ms.author: juliako
-ms.openlocfilehash: 0a4c9db8da046e901241bc383098013b2acc6bb2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: a5171484bb4377e0f9cd84dc0a517f4ea84123e7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242262"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228317"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Újrapróbálkozási logika, a Media Services SDK-ban a .NET-hez
 Az Microsoft Azure-szolgáltatások használatakor is fordulnak elő átmeneti hibák. Ha egy átmeneti hiba történik, a legtöbb esetben a művelet sikeres néhány újrapróbálkozás után. A Media Services SDK for .NET valósítja meg az újrapróbálkozási logika átmeneti hibák, kivételek és a webes kérések által okozott hibák kezeléséhez, a lekérdezések, a menti a módosításokat, és a tárolási műveletek végrehajtása.  Alapértelmezés szerint a .NET-keretrendszerhez készült Media Services SDK négy újrapróbálkozások ismételt kivétel az alkalmazásnak a kivétel előtt hajtja végre. Az alkalmazás kódja majd kezelni kell ehhez a kivételhez megfelelően.  
@@ -49,7 +49,7 @@ A következő táblázat ismerteti a kivételeket, amelyek a .NET-keretrendszerh
 | Ioexception kivétel |Nem |Igen |Nem |Nem |
 
 ### <a name="WebExceptionStatus"></a> WebException állapotkódok
-Az alábbi táblázat mutatja, melyik WebException hiba kódok az újrapróbálkozási logika van megvalósítva. A [WebExceptionStatus](http://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) enumerálás a állapotkódok határozza meg.  
+Az alábbi táblázat mutatja, melyik WebException hiba kódok az újrapróbálkozási logika van megvalósítva. A [WebExceptionStatus](https://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) enumerálás a állapotkódok határozza meg.  
 
 | status | Webes kérelem | Storage | Lekérdezés | Létrehozva |
 | --- | --- | --- | --- | --- |

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: adigan
-ms.openlocfilehash: a458a46f3775a593f369d5acb967fc90d61efde8
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 4f1e0c14d3a835b9f6d739511186bdcc19917a7a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628341"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230990"
 ---
 # <a name="install-azure-backup-server-v2"></a>Telepítse az Azure Backup Server v2
 
@@ -103,7 +103,7 @@ Kötet hozzáadása a felügyeleti konzol:
 
   Ha azt szeretné, adjon hozzá egy lemezt, a lemez egy védelmi csoportot, amely rendelkezik a régi típusú tárhely kell tartoznia. Használhatja ezeket a lemezeket csak a védelmi csoportokban. Ha a Backup Server nem rendelkezik a régi típusú védelemmel rendelkező források, a lemez nem szerepel a listán.
 
-  Lemezek hozzáadásával kapcsolatos további információkért lásd: [adjon hozzá lemezeket a régi típusú tárhely bővítése](http://docs.microsoft.com/system-center/dpm/upgrade-to-dpm-2016#adding-disks-to-increase-legacy-storage). Nem adhat egy lemezt egy rövid nevet.
+  Lemezek hozzáadásával kapcsolatos további információkért lásd: [adjon hozzá lemezeket a régi típusú tárhely bővítése](https://docs.microsoft.com/system-center/dpm/upgrade-to-dpm-2016#adding-disks-to-increase-legacy-storage). Nem adhat egy lemezt egy rövid nevet.
 
 
 ### <a name="assign-workloads-to-volumes"></a>Számítási feladatok rendelése a kötetekhez
@@ -160,7 +160,7 @@ Védelmi csoport létrehozása:
 
   ![Tekintse át a lemezterület-foglalás lap](./media/backup-mabs-upgrade-to-v2/create-a-protection-group-6.png)
 
-  Tárolóköteteket a számítási feladatok kötet foglalási (beállítása a PowerShell használatával) és a rendelkezésre álló tár alapulnak. A tárolóköteteket Ehhez válasszon más köteteket a legördülő menüben módosíthatja. Ha módosítja az értéket **cél tárterület**, értéke **elérhető lemezterület** dinamikusan változik, hogy a értékekhez **szabad terület** és ** Hely underprovisioned**.
+  Tárolóköteteket a számítási feladatok kötet foglalási (beállítása a PowerShell használatával) és a rendelkezésre álló tár alapulnak. A tárolóköteteket Ehhez válasszon más köteteket a legördülő menüben módosíthatja. Ha módosítja az értéket **cél tárterület**, értéke **elérhető lemezterület** dinamikusan változik, hogy a értékekhez **szabad terület** és  **Hely underprovisioned**.
 
   Ha a adatforrások terveknek megfelelően növekedhessenek, az érték a **Underprovisioned terület** oszlopa **elérhető lemezterület** tükrözi a további tárhely szükséges. Ez az érték a segítségével tervezze meg a szükséges tárhelyet a biztonsági mentések zökkenőmentes lefutását. Ha az érték nulla, nincsenek nem kell problémákra a storage belátható. Ha az érték nem nulla számnak, nincs lefoglalva elegendő tárhely (a védelmi házirend és a védett tagok adatainak mérete alapján).
 
@@ -175,13 +175,13 @@ Védelmi csoportok Modern Backup Storage használatára való frissítése nem k
 
 1. A System Center 2016 DPM felügyeleti konzol, válassza ki a **védelmi** funkció. Az a **védelmi csoport tagjához** listában kattintson a jobb gombbal a tagja, és válassza ki **tag védelmének kikapcsolása**.
 
-  ![Tag védelmének kikapcsolása](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
+  ![Tag védelmének kikapcsolása](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
 2. Az a **eltávolítása a csoportból** párbeszédpanelen tekintse át a felhasznált lemezterület és a rendelkezésre álló szabad területet a tárolókészlethez. Az alapértelmezett érték a helyreállítási pontok meghagyása a lemezen, és lehetővé teszik számukra megőrzési / hamarosan lejár. Kattintson az **OK** gombra.
 
   Ha szeretné azonnal a felhasznált lemezterület térjen vissza a szabad tárolókészletbe, válassza ki a **lemezen tárolt replika törlése** taghoz tartozó melletti jelölőnégyzetet, hogy törölje a biztonsági mentési adatok (és a helyreállítási pontok).
 
-  ![Távolítsa el a csoport párbeszédpanel](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
+  ![Távolítsa el a csoport párbeszédpanel](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
 3. Hozzon létre egy védelmi csoportot, amely a Modern Backup Storage használja. A nem védett adatforrásokat tartalmaznak.
 
@@ -194,7 +194,7 @@ Lemezterület növelése:
 
 1. Válassza ki a System Center 2016 DPM felügyeleti konzol **felügyeleti** > **Disk Storage** > **Hozzáadás**.
 
-  ![Adja hozzá a lemezes tárolás párbeszédpanel](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
+  ![Adja hozzá a lemezes tárolás párbeszédpanel](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
 2. Az a **lemezterület hozzáadása** párbeszédpanelen jelölje ki **lemezekkel Bővíthetem a gépemet**.
 

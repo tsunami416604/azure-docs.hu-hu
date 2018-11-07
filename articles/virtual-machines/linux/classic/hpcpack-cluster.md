@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
-ms.openlocfilehash: 2d4091d8ad6a778405ee6bb916c399e0b144f21d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4156071c36b06be586b05ee98e9eeb0a9138e4bb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441527"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246855"
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Az Azure-beli HPC Pack-fürtök linuxos számítási csomópontjaival kapcsolatos alapvető tudnivalók
 Állítsa be a [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029.aspx) fürt az Azure-ban, amely tartalmazza a fő csomópontot futtató Windows Server és több számítási csomóponton, támogatott Linux disztribúciót futtat. A lehetőségek többek között a Linux-csomópontok és a Windows a fürt fő csomópontjának adatok áthelyezéséhez. Ismerje meg, hogyan lehet a fürt Linux-alapú HPC-feladatok elküldése.
@@ -186,7 +186,7 @@ Számos választási lehetőség áll, többek között a Linux-csomópontok és
 ### <a name="azure-file-storage"></a>Az Azure File storage
 A [Azure File](https://azure.microsoft.com/services/storage/files/) szolgáltatás elérhetővé teszi a szabványos SMB 2.1 protokollt használó fájlmegosztások. Az Azure virtuális gépek és felhőszolgáltatások oszthatnak meg több csatlakoztatott megosztások révén, és a helyszíni alkalmazások férhetnek hozzá a fájltároló API révén fájladatokat oszthatnak meg. 
 
-Azure-fájlmegosztás létrehozásához, és csatlakoztassa azt a fő csomópontot részletes lépéseiért lásd: [a Windows Azure File storage használatának első lépései](../../../storage/files/storage-how-to-use-files-windows.md). Az Azure-fájlmegosztás csatlakoztatása a Linux-csomópontokon, lásd: [Azure File storage használata linuxszal](../../../storage/files/storage-how-to-use-files-linux.md). Persisting Connections-kapcsolatok beállításához, tekintse meg a [Persisting kapcsolatok a Microsoft Azure Files](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx).
+Azure-fájlmegosztás létrehozásához, és csatlakoztassa azt a fő csomópontot részletes lépéseiért lásd: [a Windows Azure File storage használatának első lépései](../../../storage/files/storage-how-to-use-files-windows.md). Az Azure-fájlmegosztás csatlakoztatása a Linux-csomópontokon, lásd: [Azure File storage használata linuxszal](../../../storage/files/storage-how-to-use-files-linux.md). Persisting Connections-kapcsolatok beállításához, tekintse meg a [Persisting kapcsolatok a Microsoft Azure Files](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx).
 
 A következő példában hozzon létre egy Azure-fájlmegosztást a storage-fiók. A megosztás csatlakoztatásához a központi csomóponton, nyisson meg egy parancssort, és írja be a következő parancsokat:
 
@@ -271,7 +271,7 @@ Többféleképpen is küldhetők be feladatok a HPC Pack-fürthöz:
 
 Feladat küldése a fürthöz az Azure-beli HPC Pack GUI-eszközöket és a HPC-webportál olyan ugyanaz, mint a Windows a számítási csomópontokon. Lásd: [HPC Pack Feladatkezelő](https://technet.microsoft.com/library/ff919691.aspx) és [hogyan küldhetők be feladatok egy a helyszíni ügyfélszámítógépről](../../windows/hpcpack-cluster-submit-jobs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Küldhetők be feladatok a REST API-n keresztül, tekintse meg [létrehozása és a feladatok elküldése a REST API használatával a Microsoft HPC Pack](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx). Feladatok beküldése az egy Linux-ügyfél, is tekintse meg a Python-mintához a [HPC Pack SDK](https://www.microsoft.com/download/details.aspx?id=47756).
+Küldhetők be feladatok a REST API-n keresztül, tekintse meg [létrehozása és a feladatok elküldése a REST API használatával a Microsoft HPC Pack](https://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx). Feladatok beküldése az egy Linux-ügyfél, is tekintse meg a Python-mintához a [HPC Pack SDK](https://www.microsoft.com/download/details.aspx?id=47756).
 
 ## <a name="clusrun-for-linux-nodes"></a>A Linuxos csomópontokhoz Clusrun
 A HPC Pack [clusrun](https://technet.microsoft.com/library/cc947685.aspx) hajtsa végre a parancsokat a Linux-csomópontok vagy az parancssor vagy a HPC Cluster Manager eszköz használható. Az alábbiakban néhány egyszerű példát.

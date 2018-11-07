@@ -3,18 +3,18 @@ title: Python UDF az Apache Hive és Pig-alapú – Azure HDInsight
 description: Ismerje meg a Python felhasználói definiált függvények (UDF) a Hive és a Pig használata a HDInsight, a Hadoop-technológiák az Azure-ban.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: c2c2a6686d5da25e5a300bc58e1cf37467737c80
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 6227b9517da3dacb18b4f9653a7012ef9ab5a4a7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646541"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232273"
 ---
 # <a name="use-python-user-defined-functions-udf-with-hive-and-pig-in-hdinsight"></a>Használható Python felhasználói függvények (UDF) a Hive és a Piggel a HDInsight
 
@@ -379,7 +379,7 @@ A hiba adatait (STDERR) és a feladat (STDOUT) eredménye is rögzíti a HDInsig
 
 ## <a name="next"></a>Következő lépések
 
-Ha alapértelmezés szerint nem biztosított Python-modulok betöltése van szüksége, tekintse meg [modul üzembe helyezése az Azure HDInsight](http://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx).
+Ha alapértelmezés szerint nem biztosított Python-modulok betöltése van szüksége, tekintse meg [modul üzembe helyezése az Azure HDInsight](https://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx).
 
 Más használati módjai a Pig-alapú, Hive, és a MapReduce használatával kapcsolatos további információkért lásd az alábbi dokumentumokat:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 2ae2ea14bc712563867f32b83eddbd9d4129ac1d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c7d8ab8beced055d10cebcecf36d957b155c63b7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409492"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256221"
 ---
 # <a name="azure-operational-security"></a>Az Azure működési biztonság
 ## <a name="introduction"></a>Bevezetés
@@ -74,7 +74,7 @@ A Log Analytics központi funkcióit az Azure-ban futó szolgáltatások biztos�
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) adatokat gyűjt a felügyelt erőforrások egy központi tárházba figyelési szolgáltatásokat biztosít. Ezek az adatok lehetnek események, teljesítményadatok vagy az API segítségével biztosított egyéni adatok. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz.
+[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics) adatokat gyűjt a felügyelt erőforrások egy központi tárházba figyelési szolgáltatásokat biztosít. Ezek az adatok lehetnek események, teljesítményadatok vagy az API segítségével biztosított egyéni adatok. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz.
 
 
 Ezzel a módszerrel konszolidálhatja a különféle forrásokból származó adatokat, így kombinálhatja az Azure-szolgáltatásokat a meglévő adatokat a helyszíni környezetben. Továbbá egyértelműen elkülöníti az adatok gyűjtését az adatokon végzett műveletektől, így az összes művelet végrehajtható a különféle adatokon.
@@ -92,7 +92,7 @@ A Log Analytics szolgáltatás a felhőbeli adatok biztonságosan kezeli a köve
 
 ### <a name="azure-backup"></a>Azure Backup
 
-[Az Azure Backup](http://azure.microsoft.com/documentation/services/backup) biztosít az adatok biztonsági mentését és helyreállítását végző szolgáltatásokat és a termékek és szolgáltatások a Log Analytics-csomag része.
+[Az Azure Backup](https://azure.microsoft.com/documentation/services/backup) biztosít az adatok biztonsági mentését és helyreállítását végző szolgáltatásokat és a termékek és szolgáltatások a Log Analytics-csomag része.
 Védelmet biztosít az alkalmazásadatok számára, valamint évekig megőrzi őket minden tőkebefektetés nélkül és minimális működési költségek mellett. A fizikai és virtuális Windows kiszolgálókról, valamint az alkalmazások és szolgáltatások, például az SQL Server és SharePoint biztonsági mentés adatokat. Azt is használhatja [System Center Data Protection Manager (DPM)](https://en.wikipedia.org/wiki/System_Center_Data_Protection_Manager) védett adatok replikálása az Azure-bA a redundancia és a hosszú távú tároláshoz.
 
 

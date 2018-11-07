@@ -2,19 +2,19 @@
 title: Parancsfájlműveletekkel – Azure HDInsight-fürtök testre szabása
 description: Ismerje meg, hogyan Szkriptműveletek használatával HDInsight-fürtök testre szabása.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/05/2016
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6c4652e65f0f320063d989f97a5428510913005b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 8923dcb4c35bbf90a6f68bd296bb9a862c5ff07d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105924"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230801"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Szkriptműveletek használatával Windows-alapú HDInsight-fürtök testre szabása
 **Parancsfájl-művelet** hívja használhatók [egyéni parancsfájlok](hdinsight-hadoop-script-actions.md) a további szoftverek telepítése egy fürtre a fürt létrehozása során.
@@ -279,7 +279,7 @@ A következő minta bemutatja, hogyan Spark telepítése Windows-alapú HDInsigh
 5. Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>A HDInsight-fürtökön használt nyílt forráskódú szoftverek támogatása
-A Microsoft Azure HDInsight szolgáltatást az rugalmas platform, amely lehetővé teszi a felhőbeli big-data alkalmazások kiépítését az ökoszisztéma formátumú körül Hadoop nyílt forráskódú technológiák használatával. Microsoft Azure nyílt forráskódú technológiák, egy általános szintű támogatást kínál a leírt módon a **-támogatás hatóköre** szakaszában a <a href="http://azure.microsoft.com/support/faq/" target="_blank">Azure támogatási gyakori Kérdéseinek webhelyre</a>. A HDInsight szolgáltatás egy további szintű egyes összetevői, támogatást biztosít, az alább ismertetett.
+A Microsoft Azure HDInsight szolgáltatást az rugalmas platform, amely lehetővé teszi a felhőbeli big-data alkalmazások kiépítését az ökoszisztéma formátumú körül Hadoop nyílt forráskódú technológiák használatával. Microsoft Azure nyílt forráskódú technológiák, egy általános szintű támogatást kínál a leírt módon a **-támogatás hatóköre** szakaszában a <a href="https://azure.microsoft.com/support/faq/" target="_blank">Azure támogatási gyakori Kérdéseinek webhelyre</a>. A HDInsight szolgáltatás egy további szintű egyes összetevői, támogatást biztosít, az alább ismertetett.
 
 A HDInsight szolgáltatásban elérhető nyílt forráskódú összetevőket két típusa van:
 

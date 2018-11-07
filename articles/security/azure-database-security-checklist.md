@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: f6e8ed1725b7ba2a0cba8523ae03c0306337aba0
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: db976fb61c5659fbdcb7ba30aa4f619d52d441c4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402507"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252394"
 ---
 # <a name="azure-database-security-checklist"></a>Azure database biztonsági ellenőrzőlista
 
@@ -34,7 +34,7 @@ Ezek a következők:
 -   Access management használata
 -   Adattitkosítás
 -   Az SQL Database naplózási funkciója
--   Az SQL Database fenyegetések észlelése
+-   SQL Database-fenyegetések észlelése
 
 ## <a name="introduction"></a>Bevezetés
 A felhőalapú számítástechnika új biztonsági paradigmákat, amely számos alkalmazás felhasználói számára, adatbázis-rendszergazdák és programozók ismeri igényel. Ennek eredményeképpen, amelyek végrehajtása egy felhő-infrastruktúra az észlelt biztonsági kockázatok miatt felügyeletéhez szívesen. Azonban nagy része a veszélyt elháríthatók, hogy a Microsoft Azure, Microsoft Azure SQL Database beépített biztonsági funkciók révén.
@@ -47,7 +47,7 @@ Azt javasoljuk, hogy elolvasta a [Azure adatbázis ajánlott biztonsági eljár�
 | ------------ | -------- |
 |**Adatok védelme**||
 | <br> Mozgásérzékelő/átvitel titkosítása| <ul><li>[Transport Layer Security](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol), adat-hálózatokhoz való áthelyezésekor az adattitkosítás.</li><li>Adatbázis alapján ügyfelekről érkező biztonságos kommunikációt igényel a [(táblázatos adatok Stream) TDS](https://msdn.microsoft.com/library/dd357628.aspx) keresztüli TLS (Transport Layer Security) protokoll.</li></ul> |
-|<br>Titkosítás inaktív állapotban| <ul><li>[Transzparens adattitkosítás](http://go.microsoft.com/fwlink/?LinkId=526242), amikor az inaktív adatok bármely digitális formában fizikailag tárolja.</li></ul>|
+|<br>Titkosítás inaktív állapotban| <ul><li>[Transzparens adattitkosítás](https://go.microsoft.com/fwlink/?LinkId=526242), amikor az inaktív adatok bármely digitális formában fizikailag tárolja.</li></ul>|
 |**Hozzáférés vezérlése**||  
 |<br> Adatbázis-hozzáférés | <ul><li>[Hitelesítési](https://docs.microsoft.com/azure/sql-database/sql-database-control-access) (az Azure Active Directory-hitelesítés) AD-hitelesítés az Azure Active Directory által felügyelt identitásokat használ.</li><li>[Engedélyezési](https://docs.microsoft.com/azure/sql-database/sql-database-control-access) biztosítson a felhasználó számára a minimálisan szükséges.</li></ul> |
 |<br>Alkalmazás-hozzáférés| <ul><li>[Biztonsági szint sor](https://msdn.microsoft.com/library/dn765131) (használatával biztonsági házirend, a felhasználó identitását, szerepkör vagy végrehajtási környezet alapján sorszintű hozzáférés korlátozása egy időben).</li><li>[A dinamikus Adatmaszkolás](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) (használatával engedély & házirend, korlátozza a bizalmas adatok adatmaszkolás segít Önnek nem kiemelt jogosultságú felhasználók által)</li></ul>|

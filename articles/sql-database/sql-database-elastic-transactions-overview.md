@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 3147061f527621ba98dee84f4d347a6e883d61c0
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 02cf72bf9fe06993ef859d1789983b7611c8472e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166469"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257469"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Elosztott tranzakciók több felhőalapú adatbázisban
 Rugalmas adatbázis-tranzakciók az Azure SQL Database (SQL-adatbázis) teszik lehetővé, amelyek több adatbázist az SQL DB tranzakciókat futtatni. Az SQL Database rugalmas adatbázis-tranzakciók forrásoszlopokat használó .NET-alkalmazások érhetők el, valamint integrálhatja a szolgáltatást a megszokott programozási felület használatával a [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) osztályokat. A szalagtár lekéréséhez lásd: [.NET-keretrendszer 4.6.1-es verziója (webes telepítő)](https://www.microsoft.com/download/details.aspx?id=49981).
@@ -143,7 +143,7 @@ Jelenleg a következő korlátozások vonatkoznak az SQL DB rugalmas adatbázis-
 * WCF-szolgáltatások közötti tranzakciók nem támogatottak. Például hogy egy WCF-szolgáltatás metódus, amely végrehajtja a tranzakciót. A hívás a tranzakció hatókörén belül befoglaló sikertelen lesz egy [System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception).
 
 ## <a name="next-steps"></a>További lépések
-Ha kérdése van, vegye fel velünk a kapcsolatot a a [SQL Database fórum](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) és a funkciókérések, adja hozzá őket a [SQL Database-visszajelzési fórumon](https://feedback.azure.com/forums/217321-sql-database/).
+Ha kérdése van, vegye fel velünk a kapcsolatot a a [SQL Database fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) és a funkciókérések, adja hozzá őket a [SQL Database-visszajelzési fórumon](https://feedback.azure.com/forums/217321-sql-database/).
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 212afbd605e3a16da7be2c04492ec41875ff5b75
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 378eb8c1f2070e8f4b28c221369938e2ff04e2f3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38666839"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255176"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet szabályzatainak kezelését
 
@@ -27,7 +27,7 @@ Az Azure DevTest Labs lehetővé teszi a költségek és a maximális hatékonys
 ## <a name="set-allowed-virtual-machine-sizes"></a>Engedélyezett a virtuális gép méretének beállítása
 A szabályzat beállításához az engedélyezett Virtuálisgép-méretek segít labor hatékonyság engedélyezésével adhatja meg, melyik Virtuálisgép-méretek használata engedélyezett a tesztkörnyezetben. Ez a szabályzat aktiválódik, ha csak Virtuálisgép-méretek ebből a listából virtuális gépek létrehozásához használható.
 
-1. Az a [az Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)válassza ki a labor, majd válassza ki **Konfigurace a zásady**.
+1. Az a [az Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)válassza ki a labor, majd válassza ki **Konfigurace a zásady**.
 
     ![A labor konfigurace a zásady eléréséhez](./media/devtest-lab-set-lab-policy/policies-menu.png)
 

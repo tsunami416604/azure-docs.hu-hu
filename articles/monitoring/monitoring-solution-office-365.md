@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: b2e7cc46a844ff866ae2d325b610653cd3179d8d
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 04211a00bcdce3baf8060e00a9ce81831a39acb9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914566"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257663"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Az Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -709,6 +709,6 @@ A következő táblázat a megoldás által összegyűjtött frissítési rekord
 
 
 ## <a name="next-steps"></a>További lépések
-* A részletes frissítési adatokat a [Log Analytics](../log-analytics/log-analytics-log-search.md) Naplókeresés funkciójával is megtekintheti.
+* A részletes frissítési adatokat a [Log Analytics](../log-analytics/log-analytics-queries.md) Naplókeresés funkciójával is megtekintheti.
 * [Saját irányítópult létrehozásával](../log-analytics/log-analytics-dashboards.md) kedvenc Office 365 keresési lekérdezések megjelenítéséhez.
 * [Riasztások létrehozása](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) proaktívan értesíti a fontos Office 365-tevékenységek.  

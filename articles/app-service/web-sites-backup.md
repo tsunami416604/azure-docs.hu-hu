@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 44b4da7c293da0643fb88cc2de21433c6ea72c5c
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 8035a704a76d8f6287addff9c5503eb93f8e04fc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886404"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227841"
 ---
 # <a name="back-up-your-app-in-azure"></a>Adatok biztonsági mentése az Azure-ban
 A biztonsági mentési és visszaállítási funkciójának [Azure App Service](app-service-web-overview.md) könnyedén hozhat létre alkalmazást biztonsági mentések manuális vagy ütemezett teszi lehetővé. Az alkalmazás írja felül a meglévő alkalmazás vagy egy másik alkalmazásba való visszaállítása visszaállíthatja egy korábbi állapotáról pillanatképet. 
@@ -155,7 +155,7 @@ Az azonos, ahogyan általában, biztonsági mentések futtatása [manuálisan](#
 ## <a name="how-backups-are-stored"></a>Biztonsági másolatok tárolási módját
 Az alkalmazás egy vagy több biztonsági mentések végrehajtása után a biztonsági mentések láthatók a a **tárolók** a tárfiók és az alkalmazás oldalán. A storage-fiókban lévő minden egyes biztonsági másolat áll egy`.zip` fájlt, amely tartalmazza a biztonsági mentési adatok és a egy `.xml` fájlt, amely tartalmazza a jegyzék a `.zip` fájl tartalma. Csomagolja ki, és keresse meg ezeket a fájlokat, ha azt szeretné, a biztonsági másolatok eléréséhez egy alkalmazás visszaállítás végrehajtása nélkül.
 
-Az adatbázis biztonsági mentése az alkalmazás a legfelső szintű .zip fájl tárolja. SQL-adatbázishoz Ez egy BACPAC-fájlt (fájlkiterjesztés nélkül), amely importálható. Az Exportálás BACPAC-alapú SQL-adatbázis létrehozásához lásd: [hozhat létre egy új felhasználói adatbázis BACPAC-fájl importálása](http://technet.microsoft.com/library/hh710052.aspx).
+Az adatbázis biztonsági mentése az alkalmazás a legfelső szintű .zip fájl tárolja. SQL-adatbázishoz Ez egy BACPAC-fájlt (fájlkiterjesztés nélkül), amely importálható. Az Exportálás BACPAC-alapú SQL-adatbázis létrehozásához lásd: [hozhat létre egy új felhasználói adatbázis BACPAC-fájl importálása](https://technet.microsoft.com/library/hh710052.aspx).
 
 > [!WARNING]
 > A fájlokat a módosítása a **websitebackups** tároló okozhat a biztonsági mentés érvénytelen, ezért nem visszaállítható válik.

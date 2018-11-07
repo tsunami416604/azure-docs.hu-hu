@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 01b8ccc9fe6b5469408131bce68a903f15382998
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 04ee2daaf7b06f8e7bdd8de144a039474551ea11
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222528"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227042"
 ---
 # <a name="azure-sdk-for-net-29-release-notes"></a>Az Azure SDK for .NET 2.9 kibocsátási megjegyzései
 
@@ -80,7 +80,7 @@ A frissítés a következőket tartalmazza:
 
 * **Az Azure Data Lake Tools** for Visual Studio mostantól egyesíti az Azure SDK for .NET-kiadásban. Az eszköz automatikusan települ az Azure SDK telepítésekor. 
   
-    Az eszköz milyen gyakran frissülnek, lépjen [Itt](http://aka.ms/datalaketool) le a frissítéseket.
+    Az eszköz milyen gyakran frissülnek, lépjen [Itt](https://aka.ms/datalaketool) le a frissítéseket.
 * **Server Explorer** most már lehetővé teszi, hogy az összes megtekintése és a egy U-SQL metaadat-entitások létrehozása. További információkért lásd: [ez](https://azure.microsoft.com/documentation/services/data-lake-analytics/) blog.
 
 ## <a name="hdinsight-tools"></a>HDInsight-eszközök

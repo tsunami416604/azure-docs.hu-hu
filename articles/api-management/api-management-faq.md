@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 7082edf43e53766d32bd967d0b894f6439eaa492
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 760feae2c9b58e162dae487e240dda72099ed91b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42054082"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227977"
 ---
 # <a name="azure-api-management-faqs"></a>Az Azure API Management – gyakori kérdések
 Válaszok a gyakori kérdésekre, minták és ajánlott eljárások az Azure API Management.
@@ -77,7 +77,7 @@ Ha szeretné másolni az API Management-példány új példányára számos lehe
 Igen, kezelheti az API Management programozott módon használatával:
 
 * A [az API Management REST API-val](https://msdn.microsoft.com/library/azure/dn776326.aspx).
-* A [a Microsoft Azure az ApiManagement Service Management Library SDK](http://aka.ms/apimsdk).
+* A [a Microsoft Azure az ApiManagement Service Management Library SDK](https://aka.ms/apimsdk).
 * A [szolgáltatás telepítését](https://docs.microsoft.com/powershell/module/wds) és [szolgáltatásfelügyelet](https://docs.microsoft.com/powershell/azure/servicemanagement/overview) PowerShell-parancsmagokat.
 
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Hogyan adhatok hozzá a felhasználó a rendszergazdák csoporthoz?
@@ -104,7 +104,7 @@ Ha a szabályzatot, amely a hozzáadni kívánt halványan jelenik meg, vagy a H
 * A gazdagép a különböző bérlők számára az API-kkal.
 
 ### <a name="can-i-use-soap-with-api-management"></a>Használhatom-e a SOAP API Management?
-[SOAP típusú továbbítás](http://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/) már elérhető támogatás. -Rendszergazdák importálni tudják a WSDL a SOAP-szolgáltatás, és az Azure API Management létrehoz egy SOAP-előtérrendszerhez. Fejlesztői portál dokumentációja, a tesztelési konzol, a házirendek és a analytics mind elérhetők a SOAP-szolgáltatások.
+[SOAP típusú továbbítás](https://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/) már elérhető támogatás. -Rendszergazdák importálni tudják a WSDL a SOAP-szolgáltatás, és az Azure API Management létrehoz egy SOAP-előtérrendszerhez. Fejlesztői portál dokumentációja, a tesztelési konzol, a házirendek és a analytics mind elérhetők a SOAP-szolgáltatások.
 
 ### <a name="is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules"></a>Az API Management gateway IP cím állandó? Is használhatók a tűzfalszabályok?
 Az API Management minden szinten a nyilvános IP-cím (VIP) az API Management-bérlőkulcs statikus a bérlő teljes élettartama néhány kivétellel. Az IP-cím módosításainak ilyen körülmények között:
@@ -126,7 +126,7 @@ Az OAuth 2.0 engedélyezési kiszolgáló konfigurálása az Active Directory ö
 Az API Management használja a [teljesítmény forgalom-útválasztási módszer](../traffic-manager/traffic-manager-routing-methods.md#performance) telepítések esetén, több földrajzi helyekre. A bejövő forgalmat irányítja a rendszer a legközelebbi API-átjáró. Ha egy régió elérhetetlenné válik, a bejövő forgalom automatikusan irányítja a rendszer a következő legközelebbi átjáró. További információ az útválasztási metódusok [Traffic Manager útválasztási módszerei](../traffic-manager/traffic-manager-routing-methods.md).
 
 ### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>Az Azure Resource Manager-sablonok segítségével az API Management szolgáltatáspéldány létrehozása?
-Igen. Tekintse meg a [Azure API Management szolgáltatás](http://aka.ms/apimtemplate) gyorsindítási sablonok.
+Igen. Tekintse meg a [Azure API Management szolgáltatás](https://aka.ms/apimtemplate) gyorsindítási sablonok.
 
 ### <a name="can-i-use-a-self-signed-ssl-certificate-for-a-back-end"></a>Használható a háttéralkalmazás az önaláírt SSL-tanúsítvány?
 Igen. Ez elvégezhető elküldésével közvetlenül az API-t vagy a Powershellen keresztül. Ez lesz a tanúsítványlánc érvényesítésének letiltása, és lehetővé teszi, hogy az önaláírt vagy privát módon által aláírt tanúsítványokat használ a háttérszolgáltatásoknak az API Management közötti kommunikáció során.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 2a3c317dc9abdb861a007be9aaed714089e9f453
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 6469ff9c59c87bc6735e795195866b0aaf211246
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388194"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262131"
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Útmutató a virtuálisgép-lemezkép létrehozása az Azure Marketplace-en
 Ez a cikk **2. lépés**, a virtuális merevlemezek (VHD), amely központilag telepíti az Azure Marketplace-en való előkészítésének módját mutatja. A virtuális merevlemezek az alapítvány termékváltozat. A folyamat eltér attól függően, hogy egy Linux-alapú vagy Windows-alapú Termékváltozatot. Ez a cikk mindkét forgatókönyvvel foglalkozunk. Ez a folyamat végrehajtható párhuzamosan [fióklétrehozás és a regisztrációs][link-acct-creation].
@@ -148,11 +148,11 @@ Töltse le a távoli asztali fájl a helyi számítógépre, használja a [Get-A
 
         Get‐AzureRemoteDesktopFile ‐ServiceName “baseimagevm‐6820cq00” ‐Name “BaseImageVM” –LocalPath “C:\Users\Administrator\Desktop\BaseImageVM.rdp”
 
-RDP további információt az MSDN webhelyen megtalálható a cikk [csatlakozhat az Azure virtuális Gépekhez RDP vagy SSH](http://msdn.microsoft.com/library/azure/dn535788.aspx).
+RDP további információt az MSDN webhelyen megtalálható a cikk [csatlakozhat az Azure virtuális Gépekhez RDP vagy SSH](https://msdn.microsoft.com/library/azure/dn535788.aspx).
 
 **Konfiguráljon egy virtuális Gépet, és saját Termékváltozat létrehozása**
 
-Az operációs rendszer VHD letöltése után használja a Hyper-v, és konfiguráljon egy virtuális Gépet a Termékváltozat létrehozásának megkezdéséhez. Részletes lépéseket tekinthet meg a következő TechNet-hivatkozás: [telepítése Hyper-v és a virtuális gép konfigurálása](http://technet.microsoft.com/library/hh846766.aspx).
+Az operációs rendszer VHD letöltése után használja a Hyper-v, és konfiguráljon egy virtuális Gépet a Termékváltozat létrehozásának megkezdéséhez. Részletes lépéseket tekinthet meg a következő TechNet-hivatkozás: [telepítése Hyper-v és a virtuális gép konfigurálása](https://technet.microsoft.com/library/hh846766.aspx).
 
 ### <a name="34-choose-the-correct-vhd-size"></a>3.4 virtuális merevlemez megfelelő méretének kiválasztása
 A Windows operációs rendszer virtuális Merevlemeze a Virtuálisgép-lemezkép egy 128 GB-os rögzített formátumú VHD-fájlként kell létrehoznia.  
@@ -433,7 +433,7 @@ Az SAS URL-cím létrehozása a klasszikus Azure CLI-vel lépései a következő
 
 [!INCLUDE [outdated-cli-content](../../includes/contains-classic-cli-content.md)]
 
-1.  Töltse le az Azure klasszikus parancssori felületét [Itt](https://azure.microsoft.com/documentation/articles/xplat-cli-install/). Különböző mutató hivatkozásokat is talál **[Windows](http://aka.ms/webpi-azure-cli)** és  **[MAC OS](http://aka.ms/mac-azure-cli)**.
+1.  Töltse le az Azure klasszikus parancssori felületét [Itt](https://azure.microsoft.com/documentation/articles/xplat-cli-install/). Különböző mutató hivatkozásokat is talál **[Windows](https://aka.ms/webpi-azure-cli)** és  **[MAC OS](https://aka.ms/mac-azure-cli)**.
 
 2.  Miután letöltötte, telepítse a
 

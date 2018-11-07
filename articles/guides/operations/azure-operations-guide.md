@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: c10e071100410f6d5d995d88657bdd85c08a9715
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 07faf5efd1c7eec3e209a5d971185655cc949bb9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423493"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250781"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Ismerkedés az Azure-operátorok
 
@@ -227,7 +227,7 @@ További információkért lásd: [betekintést nyerhet a Microsoft Azure erőfo
 
 ### <a name="forecast-cost-with-the-pricing-calculator"></a>A díjkalkulátor az előre jelzett költség
 
-Az Azure-ban minden egyes szolgáltatás díjszabása eltér. Sok Azure-szolgáltatás alapszintű, Standard és Premium szintet biztosítanak. Általában minden szint tartalmaz ára és teljesítménye szintekre. Használatával a [online díjkalkulátor](http://azure.microsoft.com/pricing/calculator), díjszabási becslések hozhat létre. A díjkalkulátorban feltüntetett tartalmaz egy erőforrás vagy erőforráscsoport költségek becsléséhez rugalmasságot.
+Az Azure-ban minden egyes szolgáltatás díjszabása eltér. Sok Azure-szolgáltatás alapszintű, Standard és Premium szintet biztosítanak. Általában minden szint tartalmaz ára és teljesítménye szintekre. Használatával a [online díjkalkulátor](https://azure.microsoft.com/pricing/calculator), díjszabási becslések hozhat létre. A díjkalkulátorban feltüntetett tartalmaz egy erőforrás vagy erőforráscsoport költségek becsléséhez rugalmasságot.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 
@@ -415,7 +415,7 @@ Storage-fiók üzembe helyezésének számos lehetőség van.
 
 #### <a name="portal"></a>Portál
 
-Storage-fiók az Azure Portallal való központi telepítéséhez szükséges csak egy aktív Azure-előfizetés és a egy webböngészőben való hozzáférést. Új tárfiók üzembe helyezhető egy új vagy meglévő erőforráscsoportot. Miután létrehozta a tárfiókot, létrehozhat egy blob tárolókhoz vagy fájlmegosztásokhoz a portál használatával. Tábla létrehozása, és a várólista-entitások programozott módon. További információkért lásd: [hozzon létre egy tárfiókot](../../storage/common/storage-quickstart-create-account.md).
+Storage-fiók az Azure Portallal való központi telepítéséhez szükséges csak egy aktív Azure-előfizetés és a egy webböngészőben való hozzáférést. Új tárfiók üzembe helyezhető egy új vagy meglévő erőforráscsoportot. Miután létrehozta a tárfiókot, létrehozhat egy blob tárolókhoz vagy fájlmegosztásokhoz a portál használatával. Tábla létrehozása, és a várólista-entitások programozott módon. További információ: [Tárfiók létrehozása](../../storage/common/storage-quickstart-create-account.md).
 
 Mellett egy storage-fiókot az Azure Portalról üzembe helyezése Azure Resource Manager-sablon a portálról is telepítheti. Ez telepítését és konfigurálását összes erőforrást, mert definiálva a sablonban, beleértve az összes tárfiókot. További információkért lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
 

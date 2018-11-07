@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 49ee6b7fabe78c2328a2a772347c612ad38cfe7a
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 8e4c97a710cc9e6d3af4ebdd7dc97bda9f8d02ed
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44091728"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228436"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Leküldéses értesítések küldése az Azure Notification Hubs és a node.js használatával
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -43,7 +43,7 @@ Az ismertetett forgatókönyvek között megtalálható, leküldéses értesít�
 Notification hubs használatával kapcsolatban lásd: a [lépések](#next) szakaszban.
 
 ## <a name="what-are-notification-hubs"></a>Mi a Notification Hubs szolgáltatás?
-Az Azure Notification Hubs egy egyszerűen használható, többplatformos, méretezhető infrastruktúrát biztosítanak leküldéses értesítések küldése mobileszközökre. A szolgáltatás-infrastruktúra részletes ismertetéséért lásd: a [Azure Notification Hubs](http://msdn.microsoft.com/library/windowsazure/jj927170.aspx) lapot.
+Az Azure Notification Hubs egy egyszerűen használható, többplatformos, méretezhető infrastruktúrát biztosítanak leküldéses értesítések küldése mobileszközökre. A szolgáltatás-infrastruktúra részletes ismertetéséért lásd: a [Azure Notification Hubs](https://msdn.microsoft.com/library/windowsazure/jj927170.aspx) lapot.
 
 ## <a name="create-a-nodejs-application"></a>Node.js-alkalmazás létrehozása
 Ebben az oktatóanyagban az első lépés egy új üres Node.js-alkalmazás létrehozása. Node.js-alkalmazás létrehozásával kapcsolatos útmutatóért lásd: [létrehozása és a Node.js-alkalmazás üzembe helyezése az Azure-webhely][nodejswebsite], [Node.js Felhőszolgáltatás] [ Node.js Cloud Service] Windows PowerShell használatával vagy [webhely webmatrixban][webmatrix].
@@ -141,11 +141,11 @@ A **MpnsService** objektum tartalmazza a **küldése** leküldéses értesítés
 * **A címkék** -címke azonosítója. Ha nincs címke van megadva, minden ügyfél elküldi az értesítést.
 * **Hasznos adat** – az üzenet XML-tartalma.
 * **TargetName**  -  `toast` bejelentési értesítéseket. `token` csempe az értesítésekhez.
-* **NotificationClass** – az értesítés prioritását. Tekintse meg a **HTTP-fejléc elemek** szakaszában a [leküldéses értesítések küldését egy kiszolgáló](http://msdn.microsoft.com/library/hh221551.aspx) dokumentum érvényes értékeket.
+* **NotificationClass** – az értesítés prioritását. Tekintse meg a **HTTP-fejléc elemek** szakaszában a [leküldéses értesítések küldését egy kiszolgáló](https://msdn.microsoft.com/library/hh221551.aspx) dokumentum érvényes értékeket.
 * **Beállítások** – nem kötelező kérésfejlécek.
 * **A visszahívás** – a visszahívási függvény.
 
-Érvényes listáját **TargetName**, **NotificationClass** és a beállítások fejléc, tekintse meg a [leküldéses értesítések küldését egy kiszolgáló](http://msdn.microsoft.com/library/hh221551.aspx) lapot.
+Érvényes listáját **TargetName**, **NotificationClass** és a beállítások fejléc, tekintse meg a [leküldéses értesítések küldését egy kiszolgáló](https://msdn.microsoft.com/library/hh221551.aspx) lapot.
 
 Az alábbi példa a kódot használja a **MpnsService** példány által elérhetővé tett a **NotificationHubService** bejelentési leküldéses értesítések küldéséhez:
 
@@ -165,7 +165,7 @@ A **WnsService** objektum tartalmazza a **küldése** metódushoz, amely a lekü
 * **Beállítások** – nem kötelező kérésfejlécek.
 * **A visszahívás** – a visszahívási függvény.
 
-Az érvényes típusok és kérésfejlécek listáját lásd: [leküldéses értesítési szolgáltatás-kérelmek és válaszfejlécek](http://msdn.microsoft.com/library/windows/apps/hh465435.aspx).
+Az érvényes típusok és kérésfejlécek listáját lásd: [leküldéses értesítési szolgáltatás-kérelmek és válaszfejlécek](https://msdn.microsoft.com/library/windows/apps/hh465435.aspx).
 
 A következő kódban a **WnsService** példány által elérhetővé tett a **NotificationHubService** egy bejelentési leküldéses értesítést küldhet egy UWP-alkalmazás:
 

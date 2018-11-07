@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2fd0fe55b975010a1eaafeb455d61a6cb3ebff77
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8e13ba0bcbd24dcc3cd08a0d2886f1da9d85de79
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970923"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249914"
 ---
 # <a name="structure-projects-with-the-team-data-science-process-template"></a>Projektek strukturálása a csoportos adatelemzési folyamat sablon
 
@@ -54,7 +54,7 @@ Az alábbi elemek áttekintésével *előtt* egy új projektet hoz létre:
 * (Nem a Mi már szerepel a "dokumentumok" mappában) tartalma 25 MB-nál kevesebb lehet szükséges. Tekintse meg az alábbi ebben a listában.
 * A minta\_Adatmappa van csak a kis méretű adatfájlokat (5 MB-nál kevesebb), amellyel tesztelheti a kódját vagy indítsa el a korai fejlesztési.
 * Fájlok, például a Word és PowerPoint-fájlokat tárolja, növelheti a "dokumentumok" mappában mérete közel teljes értékesítése miatt. Azt javasoljuk, hogy egy együttműködésen alapuló Wiki megtalálhatók [SharePoint](https://products.office.com/sharepoint/collaboration), vagy más együttműködésen alapuló erőforrás az ilyen fájlok tárolására.
-* Nagy méretű fájlok és a Machine Learning kimenetek kezelésének módját, olvassa el [módosítások megőrzése, és a nagy méretű fájlok foglalkozó](http://aka.ms/aml-largefiles).
+* Nagy méretű fájlok és a Machine Learning kimenetek kezelésének módját, olvassa el [módosítások megőrzése, és a nagy méretű fájlok foglalkozó](https://aka.ms/aml-largefiles).
 
 > [!NOTE]
 > Minden dokumentáció kapcsolatos tartalom (szöveg, markdowns, képek és egyéb fájlok), amely *nem* projekt végrehajtása során használt, más, mint a readme.md fájl kell lennie, a "docs" (csak kisbetűkkel) nevű mappát. A "dokumentumok" mappában, a Machine Learning végrehajtási figyelmen kívül hagyja, hogy ez a mappa tartalma nem másolódik feleslegesen számítási céljainak speciális mappába. Ebben a mappában lévő objektumok is nem beleszámítanak a 25 MB-ot kap a projekt méretét. A "dokumentumok" mappában, például az a hely, a dokumentáció a szükséges nagy méretű kép fájlok tárolására. Ezek a fájlok továbbra is a futtatási előzmények keresztül Git követi. 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: barclayn
-ms.openlocfilehash: 263c04fd15240f365f2325c69d5cb25aa1a539f0
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 86724ca49884f1072297ffcf4fc6498db5ae8ac3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465877"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254638"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Ajánlott eljárások Azure Adatbiztonság és titkosítás
 A felhőbeli adatok védelme érdekében szüksége fiók számára a lehetséges állapotok, amelyben az adatok akkor fordulhat elő, és milyen vezérlők érhetők el az állapotban. Ajánlott eljárások az Azure Adatbiztonság és titkosítás a következő adatok állapotok vonatkoznak:
@@ -132,7 +132,7 @@ Azt javasoljuk, hogy Ön:
 - A alkalmazni címkék, amelyek az üzleti követelményeinek megfelelően. Például: "szigorúan bizalmas" dokumentumai és e-mailek besorolására és védelmére ezeket az adatokat, top-secret adatokat tartalmazó nevű címkét. Csak a jogosult felhasználók is ezek az adatok az Ön által megadott megadott korlátozások nélkül is hozzáférhet.
 - Konfigurálása [az Azure RMS használatnaplózási](https://docs.microsoft.com/azure/information-protection/log-analyze-usage) , hogy figyelhesse a szervezet hogyan használja a védelmi szolgáltatást.
 
-Szervezetek számára, amelyek a gyenge [adatbesorolás](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) és lehet, hogy a fájlok védelmének érzékenyebb az adatszivárgás vagy adatok való visszaélés. A megfelelő fájlok védelmének elemezheti az adatfolyamok betekintést az üzleti, kockázatos viselkedés észlelésére és a javító intézkedések megtételére, dokumentum-hozzáférés nyomon követésére és így tovább.
+Szervezetek számára, amelyek a gyenge [adatbesorolás](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) és lehet, hogy a fájlok védelmének érzékenyebb az adatszivárgás vagy adatok való visszaélés. A megfelelő fájlok védelmének elemezheti az adatfolyamok betekintést az üzleti, kockázatos viselkedés észlelésére és a javító intézkedések megtételére, dokumentum-hozzáférés nyomon követésére és így tovább.
 
 ## <a name="next-steps"></a>További lépések
 Lásd: [Azure ajánlott biztonsági eljárások és minták](security-best-practices-and-patterns.md) további ajánlott biztonsági eljárások szeretne használni, amikor a tervezése, telepítése, és a felhőalapú megoldások kezelése az Azure használatával.

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: ef2b5fe6c9b70eaea5ab4db2d4a0ca59ff82dbb9
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 2c7e624344605b24e78962ac2b6d23278c06c0cc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391895"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255148"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Az Azure Data Lake Storage Gen1 használatának ajánlott eljárásai
 
@@ -27,7 +27,7 @@ Ebben a cikkben megismerkedhet ajánlott eljárásokat és az Azure Data Lake St
 
 Az Azure Data Lake Storage Gen1 ajánlatok POSIX hozzáférés-vezérlés, valamint a részletes naplózás az Azure Active Directory (Azure AD) felhasználók, csoportok és az egyszerű szolgáltatások. Ezek a hozzáférés-vezérlés állítható a már létező fájlokhoz és mappákhoz. A hozzáférés-vezérlés is használható hozhat létre az alapértelmezett érték, amely új fájlokat vagy mappákat is alkalmazható. Amikor meglévő mappákat és az gyermekobjektum értékre vannak beállítva, az engedélyeket kell terjesztését rekurzív módon minden egyes objektum. Nagy számú fájl esetén az engedélyek propagálása egy hosszú időbe telhet. Igénybe vett idő terjedhet a másodpercenként feldolgozott 30 – 50 objektumok között. Ezért tervezni a mappa szerkezete és felhasználói csoportok. Ellenkező esetben okozhat a nem várt késedelmeket és a problémák az adatok való munka során. 
 
-Tegyük fel, van egy mappája az gyermekobjektum 100 000. Ha az alsó határ értékének 30 másodpercenként feldolgozott-objektumok, az egész mappa engedélyeinek frissítése eltarthat egy óra. További részleteket a Data Lake Storage Gen1 ACL-ek esetén érhető el [hozzáférés-vezérlés az Azure Data Lake Storage Gen1](data-lake-store-access-control.md). Az ACL-ek rekurzív módon hozzárendelése jobb teljesítmény érdekében használhatja az Azure Data Lake parancssori eszközzel. Az eszköz létrehozza a szálak és a rekurzív navigációs logika gyorsan ACL-ek alkalmazása több millió fájl. Az eszköz érhető el a Linux és Windows, és a [dokumentáció](https://github.com/Azure/data-lake-adlstool) és [letölti](http://aka.ms/adlstool-download) ezt az eszközt a Githubon találja. Ezek azonos teljesítménnyel kapcsolatos fejlesztések a saját eszközök, a Data Lake Storage Gen1-készült engedélyezhető [.NET](data-lake-store-data-operations-net-sdk.md) és [Java](data-lake-store-get-started-java-sdk.md) SDK-k.
+Tegyük fel, van egy mappája az gyermekobjektum 100 000. Ha az alsó határ értékének 30 másodpercenként feldolgozott-objektumok, az egész mappa engedélyeinek frissítése eltarthat egy óra. További részleteket a Data Lake Storage Gen1 ACL-ek esetén érhető el [hozzáférés-vezérlés az Azure Data Lake Storage Gen1](data-lake-store-access-control.md). Az ACL-ek rekurzív módon hozzárendelése jobb teljesítmény érdekében használhatja az Azure Data Lake parancssori eszközzel. Az eszköz létrehozza a szálak és a rekurzív navigációs logika gyorsan ACL-ek alkalmazása több millió fájl. Az eszköz érhető el a Linux és Windows, és a [dokumentáció](https://github.com/Azure/data-lake-adlstool) és [letölti](https://aka.ms/adlstool-download) ezt az eszközt a Githubon találja. Ezek azonos teljesítménnyel kapcsolatos fejlesztések a saját eszközök, a Data Lake Storage Gen1-készült engedélyezhető [.NET](data-lake-store-data-operations-net-sdk.md) és [Java](data-lake-store-get-started-java-sdk.md) SDK-k.
 
 ### <a name="use-security-groups-versus-individual-users"></a>Egyéni felhasználók és biztonsági csoportok használata 
 

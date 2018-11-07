@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: genli
-ms.openlocfilehash: df48e0dbf5a6c010f659e1019e56b7670c264234
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: bd2b28a7f8d0a765e10ffa58b5a72b4bd5bc47b0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319693"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228181"
 ---
 # <a name="reserved-ip-addresses-classic-deployment"></a>Fenntartott IP-címek (klasszikus üzembe helyezési modell)
 
@@ -43,7 +43,7 @@ Az Azure-beli IP-címek kapcsolatos további információkért olvassa el a [IP-
 - Hány fenntartott IP-címek is használhatok?
     További információkért lásd: a [Azure korlátairól](../azure-subscription-service-limits.md#networking-limits) cikk.
 - Felszámolnak díjat a fenntartott IP-címek?
-    Egyes esetekben. A díjszabás részleteiért tekintse meg a [fenntartott IP cím-díjszabás –](http://go.microsoft.com/fwlink/?LinkID=398482) lapot.
+    Egyes esetekben. A díjszabás részleteiért tekintse meg a [fenntartott IP cím-díjszabás –](https://go.microsoft.com/fwlink/?LinkID=398482) lapot.
 - Hogyan foglaljon le egy IP-címet?
     Használhatja a PowerShell, a [Azure Management REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx), vagy a [az Azure portal](https://portal.azure.com) lefoglalása az IP-cím, egy Azure-régióban. Fenntartott IP-cím az előfizetés társítva.
 - Használható affinitáscsoport-alapú virtuális hálózatok fenntartott IP-cím?
@@ -83,7 +83,7 @@ Várt kimenet:
     OperationStatus      : Succeeded
 
 >[!NOTE]
->Ha egy fenntartott IP-cím létrehozása a PowerShell használatával, egy erőforráscsoportot, amelybe a fenntartott IP-cím létrehozása nem adható meg. Helyezzen egy erőforráscsoportban, nevű Azure helyek *alapértelmezett hálózati* automatikusan. Ha hoz létre a fenntartott IP-használatával a [az Azure portal](http://portal.azure.com), megadhatja, hogy bármely erőforráscsoport választja. Más, az erőforráscsoport létrehozásakor a fenntartott IP-cím *alapértelmezett hálózati* azonban minden alkalommal, amikor hivatkozik a foglalt IP-cím parancsok például `Get-AzureReservedIP` és `Remove-AzureReservedIP`, a nevet kell hivatkozni  *Csoport erőforráscsoportnevet szolgáltatás számára fenntartott ip-neve*.  Például, ha létrehoz egy fenntartott IP-cím nevű *myReservedIP* nevű erőforráscsoportból *myResourceGroup*, hivatkoznia kell a neve, a fenntartott IP-cím *myResourceGroup erőforráscsoport myReservedIP*.   
+>Ha egy fenntartott IP-cím létrehozása a PowerShell használatával, egy erőforráscsoportot, amelybe a fenntartott IP-cím létrehozása nem adható meg. Helyezzen egy erőforráscsoportban, nevű Azure helyek *alapértelmezett hálózati* automatikusan. Ha hoz létre a fenntartott IP-használatával a [az Azure portal](http://portal.azure.com), megadhatja, hogy bármely erőforráscsoport választja. Más, az erőforráscsoport létrehozásakor a fenntartott IP-cím *alapértelmezett hálózati* azonban minden alkalommal, amikor hivatkozik a foglalt IP-cím parancsok például `Get-AzureReservedIP` és `Remove-AzureReservedIP`, a nevet kell hivatkozni  *Csoport erőforráscsoportnevet szolgáltatás számára fenntartott ip-neve*.  Például, ha létrehoz egy fenntartott IP-cím nevű *myReservedIP* nevű erőforráscsoportból *myResourceGroup*, hivatkoznia kell a neve, a fenntartott IP-cím *myResourceGroup erőforráscsoport myReservedIP*.   
 
 
 Miután egy IP-cím van fenntartva, továbbra is az előfizetéshez társított amíg nem törli azokat. Törölje a következő fenntartott IP-cím:

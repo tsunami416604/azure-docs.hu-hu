@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: d93fc81241053418ea2ff0576d50cbaefa0df9fb
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: bba03d8e62c481e9eb5cce8468a6a84f5e492d2f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428555"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253992"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Az Azure virtuálisgép-ügynök – áttekintés
 A Microsoft Azure virtuálisgép-ügynök (VM-ügynök) egy olyan biztonságos, egyszerűsített folyamat, amely felügyeli a virtuális gép (VM) az Azure Fabric Controller-szal. A Virtuálisgép-ügynök engedélyezése és az Azure virtuálisgép-bővítmények végrehajtása az elsődleges szerepe van. A Virtuálisgép-bővítmények telepítése és beállítása a szoftver például a virtuális gép üzembe helyezés utáni konfigurációs engedélyezése. A Virtuálisgép-bővítmények rendszergazdai jelszavának visszaállítása egy virtuális gép helyreállítási funkciókat is engedélyezheti. Az Azure Virtuálisgép-ügynök nélkül nem lehet futtatni a Virtuálisgép-bővítmények.
@@ -60,7 +60,7 @@ Rendelkeznie kell a szolgáltatói cím a virtuális Gépre telepített virtuál
 Ha nem rendelkezik telepített ügynökkel, nem használhat bizonyos Azure-szolgáltatások, például az Azure Backup vagy az Azure Security. Ezek a szolgáltatások telepítendő bővítmény szükséges. Ha egy virtuális Gépet a WinGA nélkül telepítette, telepítheti később az ügynök legújabb verzióját.
 
 ### <a name="manual-installation"></a>Manuális telepítés
-A Windows Virtuálisgép-ügynök manuálisan is telepíthető a Windows installer-csomag. Manuális telepítés szükséges lehet az Azure-ban üzembe helyezett egyéni Virtuálisgép-rendszerkép létrehozásakor. A Windows Virtuálisgép-ügynök manuális telepítése [a Virtuálisgép-ügynök telepítőjének letöltéséhez](http://go.microsoft.com/fwlink/?LinkID=394789).
+A Windows Virtuálisgép-ügynök manuálisan is telepíthető a Windows installer-csomag. Manuális telepítés szükséges lehet az Azure-ban üzembe helyezett egyéni Virtuálisgép-rendszerkép létrehozásakor. A Windows Virtuálisgép-ügynök manuális telepítése [a Virtuálisgép-ügynök telepítőjének letöltéséhez](https://go.microsoft.com/fwlink/?LinkID=394789).
 
 A Virtuálisgép-ügynök a Windows installer-fájl duplán kattintva is telepíthető. A Virtuálisgép-ügynök automatikus vagy felügyelet nélküli telepítéséhez futtassa a következő parancsot:
 

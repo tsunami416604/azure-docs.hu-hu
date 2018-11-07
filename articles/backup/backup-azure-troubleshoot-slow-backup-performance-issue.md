@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: ab338964a67991c0e97bf218f8aa004e0e5dfe38
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f24a60ab9bdcf1231085de4edeeb89ce1edf4e80
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418245"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248469"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Az Azure Backup-fájlok és -mappák lassú biztonsági mentésének hibaelhárítása
 Ez a cikk segítségével diagnosztizálhatja a fájlok és mappák lassú biztonsági mentési teljesítmény okának, amikor az Azure Backup használata a hibaelhárítási útmutatót. Fájlok biztonsági mentése az Azure Backup-ügynök használatakor a biztonsági mentési folyamat a vártnál hosszabb vehet igénybe. Ez a késleltetés oka lehet egy vagy több, a következők:
@@ -23,7 +23,7 @@ Ez a cikk segítségével diagnosztizálhatja a fájlok és mappák lassú bizto
 * [A Backup szolgáltatás ügynökének futása egy Azure virtuális gépen (VM).](#cause3)  
 * [Biztonsági másolatot egy nagy mennyiségű (több millió) fájlt.](#cause4)
 
-Mielőtt elkezdené kapcsolatos hibák elhárítása, azt javasoljuk, hogy töltse le és telepítse a [legújabb Azure Backup szolgáltatás ügynökének](http://aka.ms/azurebackup_agent). Gyakori frissítések különböző kapcsolatos problémák megoldása, a szolgáltatások hozzáadása és a teljesítmény javítása a biztonsági mentési ügynök VÁLLALUNK.
+Mielőtt elkezdené kapcsolatos hibák elhárítása, azt javasoljuk, hogy töltse le és telepítse a [legújabb Azure Backup szolgáltatás ügynökének](https://aka.ms/azurebackup_agent). Gyakori frissítések különböző kapcsolatos problémák megoldása, a szolgáltatások hozzáadása és a teljesítmény javítása a biztonsági mentési ügynök VÁLLALUNK.
 
 Emellett javasoljuk, hogy tekintse át a [Azure Backup szolgáltatás – gyakori kérdések](backup-azure-backup-faq.md) , hogy nem oldják a gyakori konfigurációs hibáinak bármelyikét.
 

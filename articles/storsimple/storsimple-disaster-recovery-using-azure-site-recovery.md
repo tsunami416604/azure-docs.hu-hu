@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
-ms.openlocfilehash: d6b8341f16cca29fe5bedca34749f47053a14ebb
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: c88df7ba1a9a60ffcda9a5235197037088abca4e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666938"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249268"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatizált vész-helyreállítási megoldás StorSimple található fájlmegosztások az Azure Site Recovery használatával
 ## <a name="overview"></a>Áttekintés
@@ -43,7 +43,7 @@ Azure Site Recovery-fájlmegosztások a StorSimple-storage-ban üzemeltetett has
    - A StorSimple tárolóeszközt konfigurált fürtköteten fájlmegosztások
    - [Az Azure Site Recovery services-tároló](../site-recovery/site-recovery-vmm-to-vmm.md) egy adott Microsoft Azure-előfizetés létrehozása
 
-Ezenkívül, ha az Azure helyreállítási webhelyként, futtassa a [Azure Virtual Machine Readiness Assessment eszköz](http://azure.microsoft.com/downloads/vm-readiness-assessment/) szolgáltatások biztosításához, hogy kompatibilis az Azure virtuális gépek és az Azure Site Recovery-beli virtuális gépeken.
+Ezenkívül, ha az Azure helyreállítási webhelyként, futtassa a [Azure Virtual Machine Readiness Assessment eszköz](https://azure.microsoft.com/downloads/vm-readiness-assessment/) szolgáltatások biztosításához, hogy kompatibilis az Azure virtuális gépek és az Azure Site Recovery-beli virtuális gépeken.
 
 Késés (amely magasabb költségeket eredményezhet) problémák, győződjön meg arról, hogy hoz létre a StorSimple felhőalapú készülék, az automation-fiók és a storage elkerülése érdekében fiók(ok) ugyanabban a régióban.
 
@@ -81,7 +81,7 @@ Ebben a lépésben elő kell készíteni a helyszíni fájl-kiszolgálói körny
 
 1. Virtuálisgép-ügynök telepítése minden egyes, a fájlkiszolgáló virtuális gépeket. Ez azért szükséges, hogy az Azure automation parancsfájlok futtathatók a sikertelen a virtuális gépen.
    
-   1. [Töltse le az ügynököt](http://aka.ms/vmagentwin) való `C:\\Users\\<username>\\Downloads`.
+   1. [Töltse le az ügynököt](https://aka.ms/vmagentwin) való `C:\\Users\\<username>\\Downloads`.
    1. Nyissa meg a Windows Powershellt (Futtatás rendszergazdaként) rendszergazdai módban, és adja meg, keresse meg a letöltési helyre a következő parancsot:  
          `cd C:\\Users\\<username>\\Downloads\\WindowsAzureVmAgent.2.6.1198.718.rd\_art\_stable.150415-1739.fre.msi`
          
@@ -168,16 +168,16 @@ A helyreállítási terv hozhat létre fájlmegosztást a feladatátvételi foly
 1. Az automation-fiókban kattintson **változók** &gt; **változó hozzáadása** , és adja hozzá a következő változókat. Kiválaszthatja, hogy ezek az eszközök titkosításához. Ezeket a változókat a helyreállítási terv megadott. Ha a helyreállítási terv, amely a következő lépésben létrehozza név TestPlan, majd a változók kell TestPlan StorSimRegKey, TestPlan-AzureSubscriptionName, és így tovább.
 
    - **BaseUrl**: Resource Manager URL-címét az Azure-felhőben. Első használatával **Get-AzureRmEnvironment |} Select-Object Name, ResourceManagerUrl** parancsmagot.
-   - *RecoveryPlanName* **- ResourceGroupName**: Resource Manager-csoport, amely a StorSimple-erőforrás.
-   - *RecoveryPlanName* **- ManagerName**: A StorSimple-erőforrás, amely a StorSimple-eszköz rendelkezik.
-   - *RecoveryPlanName* **- eszköznév**: A StorSimple-eszköz feladatátvételt kell végrehajtani.
-   - *RecoveryPlanName* **- DeviceIpAddress**: az eszköz IP-cím (Ez található a **eszközök** lapon a StorSimple-Eszközkezelő szakasz &gt; **beállításai** &gt; **Hálózati** &gt; **DNS-beállítások** csoport).
-   - *RecoveryPlanName* **- VolumeContainers**: egy vesszővel tagolt karakterláncot kíván végrehajtani, több mint; például az eszköz kötettárolóinak: volcon1, volcon2, volcon3.
-   - *RecoveryPlanName* **- TargetDeviceName**: A StorSimple felhőalapú készülék, amelyre a tárolók vannak feladatátvételt kell végrehajtani.
-   - *RecoveryPlanName* **- TargetDeviceIpAddress**: az eszköznek az IP-címét (Ez található a **virtuális gép** szakasz &gt; **beállítások** csoport &gt; **hálózatkezelés** lap).
-   - *RecoveryPlanName* **- StorageAccountName**: A tárfiók nevét, amely a parancsfájl (melynek futtathatók a feladatátvételen átesett virtuális gép) tárolhatja. Ez lehet bármely storage-fiók, amely ideiglenesen tárolja a parancsfájl lemezterületet rendelkezik.
-   - *RecoveryPlanName* **- StorageAccountKey**: a fenti tárfiók hozzáférési kulcsára.
-   - *RecoveryPlanName* **- VMGUIDS**: esetén a virtuális gép védelmét, az Azure Site Recovery rendel minden virtuális gép egy egyedi azonosítója, amely részletezi a feladatátvételen átesett virtuális gép. A VMGUID beszerzéséhez válassza ki a **Recovery Services** fülre, és **védett elem** &gt; **védelmi csoportok** &gt;  **Gépek** &gt; **tulajdonságok**. Ha több virtuális gépet, majd a GUID hozzáadása vesszővel elválasztva karakterláncként.
+   - * RecoveryPlanName ***- ResourceGroupName**: Resource Manager-csoport, amely a StorSimple-erőforrás.
+   - * RecoveryPlanName ***- ManagerName**: A StorSimple-erőforrás, amely a StorSimple-eszköz rendelkezik.
+   - * RecoveryPlanName ***- eszköznév**: A StorSimple-eszköz feladatátvételt kell végrehajtani.
+   - * RecoveryPlanName ***- DeviceIpAddress**: az eszköz IP-cím (Ez található a **eszközök** lapon a StorSimple-Eszközkezelő szakasz &gt; **beállításai** &gt; **Hálózati** &gt; **DNS-beállítások** csoport).
+   - * RecoveryPlanName ***- VolumeContainers**: egy vesszővel tagolt karakterláncot kíván végrehajtani, több mint; például az eszköz kötettárolóinak: volcon1, volcon2, volcon3.
+   - * RecoveryPlanName ***- TargetDeviceName**: A StorSimple felhőalapú készülék, amelyre a tárolók vannak feladatátvételt kell végrehajtani.
+   - * RecoveryPlanName ***- TargetDeviceIpAddress**: az eszköznek az IP-címét (Ez található a **virtuális gép** szakasz &gt; **beállítások** csoport &gt; **hálózatkezelés** lap).
+   - * RecoveryPlanName ***- StorageAccountName**: A tárfiók nevét, amely a parancsfájl (melynek futtathatók a feladatátvételen átesett virtuális gép) tárolhatja. Ez lehet bármely storage-fiók, amely ideiglenesen tárolja a parancsfájl lemezterületet rendelkezik.
+   - * RecoveryPlanName ***- StorageAccountKey**: a fenti tárfiók hozzáférési kulcsára.
+   - * RecoveryPlanName ***- VMGUIDS**: esetén a virtuális gép védelmét, az Azure Site Recovery rendel minden virtuális gép egy egyedi azonosítója, amely részletezi a feladatátvételen átesett virtuális gép. A VMGUID beszerzéséhez válassza ki a **Recovery Services** fülre, és **védett elem** &gt; **védelmi csoportok** &gt;  **Gépek** &gt; **tulajdonságok**. Ha több virtuális gépet, majd a GUID hozzáadása vesszővel elválasztva karakterláncként.
 
     Például, ha a helyreállítási terv neve nem fileServerpredayRP majd a **változók**, **kapcsolatok** és **tanúsítványok** lapon meg kell jelennie a következő hozzáadása után az eszközök.
 
@@ -289,7 +289,7 @@ Tekintse meg a [Active Directory-DR-megoldásként](../site-recovery/site-recove
 
 #### <a name="to-perform-a-planned-failover"></a>Tervezett feladatátvétel végrehajtásához
 1. Az Azure Portalon válassza ki a **a Recovery services** tároló &gt; **helyreállítási tervek (Site Recovery)** &gt; **recoveryplan_name** létrehozott a a fájlkiszolgáló virtuális Gépet.
-1. A helyreállítási terv panelen kattintson a **további** &gt; **tervezett feladatátvételt**.  
+1. A helyreállítási terv panelen kattintson a **további** &gt; **tervezett feladatátvételt**.
 
    ![Helyreállítási terv](./media/storsimple-disaster-recovery-using-azure-site-recovery/image9.png)
 1. Az a **tervezett feladatátvétel megerősítése** panelen válassza ki a forrás és a célhelyek és cél kiválasztása hálózati, majd kattintson a pipa ikonra a feladatátvételi folyamat elindításához ✓.
@@ -301,7 +301,7 @@ Egy nem tervezett feladatátvétel során a StorSimple-köteteket a virtuális e
 
 #### <a name="to-perform-a-failover"></a>A feladatátvétel végrehajtásához
 1. Az Azure Portalon válassza ki a **a Recovery services** tároló &gt; **helyreállítási tervek (Site Recovery)** &gt; **recoveryplan_name** létrehozott a a fájlkiszolgáló virtuális Gépet.
-1. A helyreállítási terv panelen kattintson a **további** &gt; **feladatátvételi**.  
+1. A helyreállítási terv panelen kattintson a **további** &gt; **feladatátvételi**.
 1. Az a **feladatátvétel megerősítése** panelen válassza ki a forrás és cél helye.
 1. Válassza ki **virtuális gépek leállítása és a legfrissebb adatok szinkronizálása** megadásához, hogy a Site Recovery próbálja a védett virtuális gépet leállítja, majd szinkronizálja az adatokat, így az adatok a legújabb verzióra fog a feladatátvételt.
 1. A feladatátvétel után a virtuális gépek vannak függőben lévő állapotba. Kattintson a **véglegesítési** véglegesíti a feladatátvételt.
@@ -312,7 +312,7 @@ A feladat-visszavétel során a StorSimple-kötettároló feladatátvétel tört
 
 #### <a name="to-perform-a-failback"></a>A feladat-visszavétel végrehajtásához
 1. Az Azure Portalon válassza ki a **a Recovery services** tároló &gt; **helyreállítási tervek (Site Recovery)** &gt; **recoveryplan_name** létrehozott a a fájlkiszolgáló virtuális Gépet.
-1. A helyreállítási terv panelen kattintson a **további** &gt; **tervezett feladatátvétel**.  
+1. A helyreállítási terv panelen kattintson a **további** &gt; **tervezett feladatátvétel**.
 1. Válassza ki a forrás- és helyek, válassza ki a megfelelő adatszinkronizálási és a virtuális gép létrehozási lehetőségek.
 1. Kattintson a **OK** gombra kattintva indítsa el a feladat-visszavételi folyamat.
    
@@ -321,10 +321,10 @@ A feladat-visszavétel során a StorSimple-kötettároló feladatátvétel tört
 ## <a name="best-practices"></a>Ajánlott eljárások
 ### <a name="capacity-planning-and-readiness-assessment"></a>Kapacitás megtervezése és a készültségi értékelése
 #### <a name="hyper-v-site"></a>Hyper-V-hely
-Használja a [felhasználói Capacity planner eszközt](http://www.microsoft.com/download/details.aspx?id=39057) a kiszolgáló, tárolási és hálózati infrastruktúra, a Hyper-V replika környezetének megtervezéséhez.
+Használja a [felhasználói Capacity planner eszközt](https://www.microsoft.com/download/details.aspx?id=39057) a kiszolgáló, tárolási és hálózati infrastruktúra, a Hyper-V replika környezetének megtervezéséhez.
 
 #### <a name="azure"></a>Azure
-Futtathatja a [Azure Virtual Machine Readiness Assessment eszköz](http://azure.microsoft.com/downloads/vm-readiness-assessment/) annak érdekében, hogy azok kompatibilis az Azure virtuális gépek és az Azure Site Recovery Services-beli virtuális gépeken. A Readiness Assessment eszközt ellenőrzi a Virtuálisgép-konfigurációk, és figyelmezteti, ha a konfigurációk a következők nem kompatibilis az Azure-ral. Például kapcsolatos figyelmeztetés Ha a C: meghajtó 127 GB-nál nagyobb.
+Futtathatja a [Azure Virtual Machine Readiness Assessment eszköz](https://azure.microsoft.com/downloads/vm-readiness-assessment/) annak érdekében, hogy azok kompatibilis az Azure virtuális gépek és az Azure Site Recovery Services-beli virtuális gépeken. A Readiness Assessment eszközt ellenőrzi a Virtuálisgép-konfigurációk, és figyelmezteti, ha a konfigurációk a következők nem kompatibilis az Azure-ral. Például kapcsolatos figyelmeztetés Ha a C: meghajtó 127 GB-nál nagyobb.
 
 Kapacitástervezés épül fel, ha legalább két fontos folyamatok:
 

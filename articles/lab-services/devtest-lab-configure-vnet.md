@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 0141ea8a88c0322e6f56cbea56d3a43c923769af
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 8fb3b4ac748fcae2e3aad5b3bfb2a893340dc61a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38687788"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256136"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Virtuális hálózat konfigurálása az Azure DevTest Labs szolgáltatásban
 A cikkben leírtak szerint [virtuális gép hozzáadása egy laborhoz](devtest-lab-add-vm.md), amikor egy virtuális Gépet hoz létre a tesztkörnyezetben, megadhat egy konfigurált virtuális hálózatot. Szüksége lehet például a virtuális gépek a virtuális hálózat az ExpressRoute- vagy site-to-site VPN használatára konfigurált használata a vállalati hálózaton kívüli erőforrások eléréséhez.
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan adhat hozzá egy tesztkörnyezet egy virtuális hál
 ## <a name="configure-a-virtual-network-for-a-lab-using-the-azure-portal"></a>Az Azure portal használatával labor a virtuális hálózat konfigurálása
 A következő lépések végigvezetik hozzáadása egy meglévő virtuális hálózat (és alhálózati) laborba, hogy ugyanazt a lab-ben a virtuális gép létrehozásakor használható. 
 
-1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
 1. Tesztkörnyezetek listájában jelölje ki a kívánt tesztkörnyezetben. 
 1. Válassza ki a fő panelen a labor **Konfigurace a zásady**.

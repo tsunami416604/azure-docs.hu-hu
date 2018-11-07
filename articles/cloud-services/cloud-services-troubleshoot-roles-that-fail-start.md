@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 4b4669ecdae474c8926a346ed02f40913cf67265
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: a73559e233f647d5bf0812a5acdf5e19f05b0858
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093491"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255421"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>A nem induló Felhőszolgáltatási szerepkörök hibaelhárítása
 Az alábbiakban néhány gyakori problémát és az Azure Cloud servicesben kapcsolódó megoldások szerepköröket, amelyek nem indulnak el.
@@ -125,4 +125,4 @@ Miután ellenőrizte, hogy az összes hibák javítását, a szolgáltatás elle
 ## <a name="next-steps"></a>További lépések
 Továbbiak megtekintése [hibaelhárítási cikkek](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) a cloud services.
 
-Cloud service szerepkör kapcsolatos problémák elhárítása Azure PaaS számítógép-diagnosztikai adatok használatával kapcsolatban lásd: [Kevin Williamson blogsorozatot](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+Cloud service szerepkör kapcsolatos problémák elhárítása Azure PaaS számítógép-diagnosztikai adatok használatával kapcsolatban lásd: [Kevin Williamson blogsorozatot](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).

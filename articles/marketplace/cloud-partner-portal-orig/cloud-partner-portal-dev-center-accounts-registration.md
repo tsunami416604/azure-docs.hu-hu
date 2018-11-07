@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: bdcd1d0cc9f9979d898410180d364716b344d641
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 8bfd4ca6a9bdac999653fa9448bf7e754e9e6180
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809921"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254468"
 ---
 <a name="create-a-microsoft-developer-account"></a>A Microsoft Developer-fiók létrehozása
 ====================================
@@ -133,7 +133,7 @@ A Microsoft Developer Center egyszer a vállalati adatok regisztrálásához has
 
    ![Fizetési regisztráció](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_09.png)
 
-10. Tekintse át a fiók adatait, és győződjön meg arról, hogy minden rendben. Olvassa el és fogadja el a feltételeket és kikötéseket, a [a Microsoft Azure Marketplace kiadói szerződésében](http://go.microsoft.com/fwlink/?LinkID=699560). A jelölőnégyzet bejelölésével jelezze elolvasta és elfogadja ezeket a feltételeket.
+10. Tekintse át a fiók adatait, és győződjön meg arról, hogy minden rendben. Olvassa el és fogadja el a feltételeket és kikötéseket, a [a Microsoft Azure Marketplace kiadói szerződésében](https://go.microsoft.com/fwlink/?LinkID=699560). A jelölőnégyzet bejelölésével jelezze elolvasta és elfogadja ezeket a feltételeket.
 
 11. Válassza ki **Befejezés** a regisztráció megerősítéséhez. Egy megerősítő üzenetet küld az e-mail-címre.
 

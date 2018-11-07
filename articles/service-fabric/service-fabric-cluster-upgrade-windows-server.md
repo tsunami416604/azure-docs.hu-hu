@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 93b79b7adacdec18912d28bb9725e2dc77737d59
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 2190978b2583b2f5d8a1b10431c65fd24fe6842d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050763"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228147"
 ---
 # <a name="upgrade-your-standalone-azure-service-fabric-cluster-on-windows-server"></a>Frissítse az önálló Azure Service Fabric-fürt Windows Serveren 
 > [!div class="op_single_selector"]
@@ -43,9 +43,9 @@ A fürt válthat az új verzió csak akkor, ha használ egy éles stílusú csom
 Két különböző munkafolyamatok frissíthetők a fürt a legújabb vagy támogatott a Service Fabric verziója. Egy munkafolyamat olyan fürtök, amelyek a legújabb verzió letöltéséhez automatikusan csatlakozik. A többi munkafolyamat olyan fürtök, amelyek nem rendelkeznek a kapcsolatot a Service Fabric legújabb verzió letöltéséhez.
 
 ### <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>Töltse le a legújabb kódot és konfigurációs kapcsolati fürtök frissítése
-Kövesse az alábbi lépéseket egy támogatott verziójára frissítse a fürtöt, ha a fürtcsomópontok rendelkezik internetkapcsolattal a [Microsoft Download Center](http://download.microsoft.com).
+Kövesse az alábbi lépéseket egy támogatott verziójára frissítse a fürtöt, ha a fürtcsomópontok rendelkezik internetkapcsolattal a [Microsoft Download Center](https://download.microsoft.com).
 
-A fürtök, amely rendelkezik a [Microsoft Download Center](http://download.microsoft.com), a Microsoft rendszeresen új Service Fabric-verziók rendelkezésre állását ellenőrzi.
+A fürtök, amely rendelkezik a [Microsoft Download Center](https://download.microsoft.com), a Microsoft rendszeresen új Service Fabric-verziók rendelkezésre állását ellenőrzi.
 
 Ha egy új Service Fabric-verzió érhető el, a csomag helyileg töltött le a fürt és frissítés kiépítve. Emellett tájékoztatja az ügyfél az új verzió, a rendszer jelenít meg egy explicit fürt állapotfigyelési figyelmeztetése, amely a következőhöz hasonló:
 
@@ -106,7 +106,7 @@ Amikor megjelenik a fürt állapotfigyelési figyelmeztetése, tegye a következ
     Után a visszaállítás eredményezett problémák kijavításához kezdeményezni a frissítés újra korábban ismertetett ugyanazokat a lépéseket követve.
 
 ### <a name="upgrade-clusters-that-have-no-connectivity-to-download-the-latest-code-and-configuration"></a>Rendelkező fürtök frissítése *elérhetetlen* a legújabb kód és a konfiguráció letöltése
-Kövesse az alábbi lépéseket egy támogatott verziójára frissítse a fürtöt, ha a fürtcsomópontok nem rendelkezik internetkapcsolattal a [Microsoft Download Center](http://download.microsoft.com).
+Kövesse az alábbi lépéseket egy támogatott verziójára frissítse a fürtöt, ha a fürtcsomópontok nem rendelkezik internetkapcsolattal a [Microsoft Download Center](https://download.microsoft.com).
 
 > [!NOTE]
 > Ha egy fürtöt, amely nem csatlakozik az internethez rendszert használ, akkor új kiadásokkal megismerheti a Service Fabric-csapat blogjának figyelése. A rendszer nem jelenít meg a fürt állapota figyelmeztetés, hogy riasztást küldjön, új kiadásokat.  

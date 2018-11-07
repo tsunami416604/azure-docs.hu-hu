@@ -1,6 +1,6 @@
 ---
-title: Erőforrás biztonsági higiéniai az Azure Security Centerben |} A Microsoft Docs
-description: Ez a cikk segít az Azure Security Centerben, az erőforrás biztonsági higiéniai figyelés megkezdésében.
+title: Erősítse meg biztonsági állapotát az Azure Security Centerrel |} A Microsoft Docs
+description: Ez a cikk segít erősítse meg biztonsági állapotát az Azure Security Center az erőforrások monitorozásával.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -12,22 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/21/2018
+ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 361fc2c6931dcfaed062bd39b75be7bef059b467
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 23369ac9f6cef74bac045017e8f956470e9a1159
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122066"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248860"
 ---
-# <a name="monitoring-resource-security-hygiene-in-azure-security-center"></a>Az Azure Security Center figyelési erőforrás biztonsági higiéniai
-Ez a cikk segít az Azure Security Center figyelési funkcióknak használatához ellenőrizze, hogy az erőforrások biztonságának, szoros, lehetséges, és a figyelő szabályzatoknak való megfelelőségét.
+# <a name="strengthen-your-security-posture-with-azure-security-center"></a>Erősítse meg biztonsági állapotát az Azure Security Centerrel
+Ez a cikk segít erősítse meg biztonsági állapotát. Az Azure Security Center figyelési funkcióknak használatához ellenőrizze, hogy az erőforrások biztonságának, szoros, lehetséges, és a figyelő szabályzatoknak való megfelelőségét.
 
-## <a name="what-is-resource-security-hygiene"></a>Mi az erőforrás biztonsági higiéniai?
-Ha a „figyelés” szót halljuk, általában arra gondolunk, hogy elővigyázatosan várjuk, hogy egy adott esemény bekövetkezzen, hogy aztán reagálhassunk a szituációra. Erőforrás biztonsági higiéniai kellene proaktív stratégiát, amely naplózza az erőforrásokat az, hogy nem felel meg a vállalati szabványoknak vagy ajánlott eljárások melyik utal.
+## <a name="how-do-you-strengthen-your-security-posture"></a>Hogyan erősítse meg biztonsági állapotát?
+Ha a „figyelés” szót halljuk, általában arra gondolunk, hogy elővigyázatosan várjuk, hogy egy adott esemény bekövetkezzen, hogy aztán reagálhassunk a szituációra. Biztonsági helyzetét megerősítése arra utal, hogy a proaktív stratégiát, amely naplózza az erőforrásokat az azonosítani azokat a vállalati szabványoknak vagy ajánlott eljárások nem felel meg.
 
-## <a name="resource-security-hygiene"></a>Erőforrás biztonsági épsége
 Ha bekapcsolja az előfizetéshez tartozó erőforrásokra vonatkozó [biztonsági szabályzatokat](security-center-policies.md), a Security Center elvégzi az erőforrások biztonsági elemzését, és azonosítja a potenciális sebezhető pontokat. A hálózati konfigurációval kapcsolatos információk azonnal elérhetők. Azon virtuális gépek és számítógépek számától függően, amelyeken az ügynök telepítve van, a virtuális gépek és a számítógép konfigurációjára (például a biztonsági frissítések állapotára és az operációs rendszer beállításaira) vonatkozó információk összegyűjtésére körülbelül egy órát kell várni. Problémák és erősíti a hálózaton, és javíthatja a kockázat, hogy hogyan teljes listáját megtekintheti a **javaslatok** csempére.
 
 Az erőforrások és az esetleges problémákat, erőforrás-típusonként biztonsági állapotát tekintheti meg:
@@ -54,4 +53,4 @@ Ebben a cikkben megismerkedhetett az Azure Security Center figyelési funkcióin
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md): A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md): Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md): Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-* [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/): Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
+* [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/): Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
