@@ -8,14 +8,14 @@ tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 11/05/2018
 ms.author: byvinyal
-ms.openlocfilehash: 702783ce581ba59b64892035eca3fb28787eec0f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+ms.openlocfilehash: bd20ea58c7693b3be8f583810384aa26dde572d8
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958967"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219562"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum felsorolja az egyes a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem vonatkozik Azure-szolgáltatásokhoz. Az idő múlásával a lista fog kibontható vagy frissítve, hogy biztosítsák a platform további.
@@ -78,7 +78,6 @@ Az alábbi korlátok egy új táblát bővült, hogy minden korlátokat különb
 * [Log Analytics](#log-analytics-limits)
 * [Felügyelt identitás](#managed-identity-limits)
 * [Médiaszolgáltatások](#media-services-limits)
-* [Mobilmarketing](#mobile-engagement-limits)
 * [Mobile Services](#mobile-services-limits)
 * [Többtényezős hitelesítés](#multi-factor-authentication)
 * [Hálózat](#networking-limits)

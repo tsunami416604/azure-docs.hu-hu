@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: e24353013110bfa95f23b75bbd81fd6d1048b95a
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: d55f6097e3e1eed508580676edcf008b0739034c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830841"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230992"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok Desired State Configuration bővítmény
 
@@ -167,7 +167,7 @@ Használja a következő sémának a **beállítások** szakasz a Resource Manag
 | settings.configurationArguments |Gyűjtemény |Határozza meg, amely a DSC-konfiguráció átadni kívánt paramétereket. Ez a tulajdonság nincs titkosítva. |
 | settings.configurationData.url |sztring |Adja meg az URL-cím, ahonnan letölthető a konfigurációs adatfájl (.psd1) való használatra a DSC-konfiguráció bemenetként. Ha a megadott URL-cím egy SAS-tokent igényel hozzáférést, állítsa be a **protectedSettings.configurationDataUrlSasToken** tulajdonság értéke az SAS-jogkivonatot. |
 | settings.privacy.dataCollection |sztring |Engedélyezheti vagy letilthatja a telemetriai adatok gyűjtése. Ez a tulajdonság az egyetlen lehetséges értékei a következők **engedélyezése**, **letiltása**, **''**, vagy **$null**. És ez a tulajdonság üres vagy null értékű lehetővé teszi, hogy a telemetria. Az alapértelmezett érték **''**. További információkért lásd: [Azure DSC bővítmény adatgyűjtés](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/). |
-| settings.advancedOptions.downloadMappings |Gyűjtemény |Határozza meg a másodlagos helyeket, ahonnan letölthető a WMF. További információkért lásd: [Azure DSC bővítmény 2.8-as és a bővítmény függőségi letöltések leképezése a saját helyét](http://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx). |
+| settings.advancedOptions.downloadMappings |Gyűjtemény |Határozza meg a másodlagos helyeket, ahonnan letölthető a WMF. További információkért lásd: [Azure DSC bővítmény 2.8-as és a bővítmény függőségi letöltések leképezése a saját helyét](https://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx). |
 | protectedSettings.configurationArguments |Gyűjtemény |Határozza meg, amely a DSC-konfiguráció átadni kívánt paramétereket. Ez a tulajdonság titkosított. |
 | protectedSettings.configurationUrlSasToken |sztring |Adja meg a SAS-jogkivonat használatával a URL-címet, amely **settings.configuration.url** határozza meg. Ez a tulajdonság titkosított. |
 | protectedSettings.configurationDataUrlSasToken |sztring |Adja meg a SAS-jogkivonat használatával a URL-címet, amely **settings.configurationData.url** határozza meg. Ez a tulajdonság titkosított. |
@@ -340,7 +340,7 @@ Csak a lehetséges értékek a következők... "legújabb" és ".
 **Megoldás**: érvénytelen, hogy módosítja egy érvényes értéket.
 További információkért lásd a táblázatot Itt [részletek](#details).
 
-### <a name="invalid-url"></a>Érvénytelen URL
+### <a name="invalid-url"></a>Érvénytelen URL-cím
 
 "ConfigurationData.url van"{0}". Ez nem egy érvényes URL-cím"" DataBlobUri van "{0}". Ez nem egy érvényes URL-cím"" Configuration.url van "{0}". Ez nem egy érvényes URL-címe"
 

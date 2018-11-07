@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: 4bf9277598c3e56c0429dddcb2204cb1338a33be
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 0e8dbf47c40339c90a0e28c3ef497a8da963e481
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213253"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231019"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Fizikai kiszolgáló vészhelyreállításhoz használt konfigurációs kiszolgáló kezelése
 
@@ -42,7 +42,7 @@ A táblázat összefoglalja az előfeltételeket a helyszíni konfigurációs ki
 
 ## <a name="download-the-latest-installation-file"></a>Töltse le a legújabb telepítési fájlját
 
-A konfigurációs kiszolgáló telepítési fájl legújabb verzióját a Site Recovery portálon érhető el. Továbbá le is tölthetők közvetlenül a [Microsoft Download Center](http://aka.ms/unifiedsetup).
+A konfigurációs kiszolgáló telepítési fájl legújabb verzióját a Site Recovery portálon érhető el. Továbbá le is tölthetők közvetlenül a [Microsoft Download Center](https://aka.ms/unifiedsetup).
 
 1. Jelentkezzen be az Azure Portalon, és keresse meg a Recovery Services-tárolóba.
 2. Keresse meg a **Site Recovery-infrastruktúra** > **konfigurációs kiszolgálók** (a VMware és fizikai gépek számára).

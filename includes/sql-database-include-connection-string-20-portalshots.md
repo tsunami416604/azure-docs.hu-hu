@@ -10,12 +10,12 @@ ms.custom: develop apps
 ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
-ms.openlocfilehash: dab7623c86bea4e562313e618f238b9b33c0fdc5
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 6ead2e0ea326b5c3f2e76e7aa9cc4ab3c50d4154
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117290"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262794"
 ---
 ### <a name="obtain-the-connection-string-from-the-azure-portal"></a>A kapcsolati karakterlánc lekérését az Azure Portalról
 Használja a [az Azure portal](https://portal.azure.com/) beszerzése a kapcsolati karakterláncot, amely az ügyfélprogram és az Azure SQL Database használatához szükség van.
@@ -38,7 +38,7 @@ Használja a [az Azure portal](https://portal.azure.com/) beszerzése a kapcsola
 
 8. Az vagy egy másik formátumba illessze be a kapcsolati sztring adatait az Ügyfélkód program.
 
-További információkért lásd: [kapcsolati karakterláncok és a konfigurációs fájlok](http://msdn.microsoft.com/library/ms254494.aspx).
+További információkért lásd: [kapcsolati karakterláncok és a konfigurációs fájlok](https://msdn.microsoft.com/library/ms254494.aspx).
 
 <!-- Image references. -->
 

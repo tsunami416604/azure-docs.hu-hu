@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio
-ms.openlocfilehash: 82580fbab68eab28a2027cd277213f1fb2a76e07
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 3556384d71649391d094172a136b863ed26fd2ad
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716001"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227399"
 ---
 > [!NOTE]
 > Ez a dokumentáció már nem aktuális, és nem pontos. Ehelyett nyissa meg az Azure Marketplace-en [– eladói útmutató](https://docs.microsoft.com/azure/marketplace/seller-guide/cloud-partner-portal-seller-guide) útmutató az ajánlat közzététele az Azure Marketplace-en.
@@ -28,7 +28,7 @@ ms.locfileid: "39716001"
 Ez a cikk segítségével a fejlesztők létrehozása, üzembe helyezése és kezelése a más Azure-ügyfelek és partnerek vásárlása és használata az Azure piactéren szereplő megoldásaikat biztosítunk.
 
 ## <a name="marketplace-publishing"></a>Marketplace – közzététel
-Egy Azure közzétevőként terjesztése és értékesíthetik az innovatív megoldások vagy a szolgáltatás más fejlesztők, független szoftverszállítók, és informatikai szakemberek számára a Marketplace-en. A piactéren a felhasználóknak, akik gyorsan fejleszthetnek felhőalapú alkalmazásokat és a mobil megoldások elérheti. A megoldás célozza meg benne az üzleti felhasználók, előfordulhat, hogy szeretné-e, vegye figyelembe a [AppSource](http://appsource.microsoft.com) Marketplace-en.
+Egy Azure közzétevőként terjesztése és értékesíthetik az innovatív megoldások vagy a szolgáltatás más fejlesztők, független szoftverszállítók, és informatikai szakemberek számára a Marketplace-en. A piactéren a felhasználóknak, akik gyorsan fejleszthetnek felhőalapú alkalmazásokat és a mobil megoldások elérheti. A megoldás célozza meg benne az üzleti felhasználók, előfordulhat, hogy szeretné-e, vegye figyelembe a [AppSource](https://appsource.microsoft.com) Marketplace-en.
 
 
 ## <a name="supported-types-of-solutions"></a>Támogatott típusú megoldások
@@ -51,7 +51,7 @@ A virtuális gép közzététele [megoldás](https://createopportunity.azurewebs
 >[!NOTE]
 > Ha egy Partner Ügyfélmenedzserével vagy egy partneri DX Manager dolgozik, kérje meg, hogy jelöljön ki a megoldás az Azure Certified program. Azt is választhatja a [Microsoft Azure Certified](http://createopportunity.azurewebsites.net) weblap és az alkalmazás űrlap kitöltésekor. Adja meg az e-mailt, a Partner Ügyfélfelelőshöz vagy a Partner Manager DX a **forduljon a Microsoft támogató** mezőbe.
 
-Ha megfelel a jogosultsági feltételeket a [Azure piactér részvételi szabályzatának](http://go.microsoft.com/fwlink/?LinkID=526833) és az alkalmazás jóvá van hagyva, hogy való használatának megkezdéséhez, üzembe helyezni a megoldást a Marketplace-en.
+Ha megfelel a jogosultsági feltételeket a [Azure piactér részvételi szabályzatának](https://go.microsoft.com/fwlink/?LinkID=526833) és az alkalmazás jóvá van hagyva, hogy való használatának megkezdéséhez, üzembe helyezni a megoldást a Marketplace-en.
 
 ### <a name="register-your-account-as-a-microsoft-seller"></a>A fiók regisztrálásához a Microsoft értékesítői
 Microsoft-fiókja, regisztráljon egy [Microsoft Developer-fiók](marketplace-publishing-accounts-creation-registration.md).

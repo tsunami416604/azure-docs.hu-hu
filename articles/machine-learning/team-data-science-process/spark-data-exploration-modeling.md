@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath
-ms.openlocfilehash: e6115abbb2cd122dfd35710b5232a308b48dfd71
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: f6f0393fa3c7a1c0851c18ebd4e48f2ef426f893
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394923"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248486"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Adatáttekintés és modellezés a Spark segítségével
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
 
-Ez az útmutató a HDInsight Spark használja az adatok feltárása ehhez és bináris besorolási és regressziós tevékenységek modellezése a NYC mintában taxiköltség utazást és 2013 adatkészlet díjszabás.  Emellett végigvezeti a lépéseken, a [adatelemzési folyamat](http://aka.ms/datascienceprocess), a végpontok közötti, feldolgozási és az Azure-blobok esetében a HDInsight Spark-fürt használata az adatok és a modellek. A folyamatot ismerteti, és egy Azure Storage-blobból adatok elérhetővé, és ezután előkészíti az adatokat, prediktív modelleket hozhat létre. Ezek a modellek olyan bináris besorolási és regressziós modellezéshez feladatokat végezheti el a Spark MLlib eszközkészlet használatával hozhat létre.
+Ez az útmutató a HDInsight Spark használja az adatok feltárása ehhez és bináris besorolási és regressziós tevékenységek modellezése a NYC mintában taxiköltség utazást és 2013 adatkészlet díjszabás.  Emellett végigvezeti a lépéseken, a [adatelemzési folyamat](https://aka.ms/datascienceprocess), a végpontok közötti, feldolgozási és az Azure-blobok esetében a HDInsight Spark-fürt használata az adatok és a modellek. A folyamatot ismerteti, és egy Azure Storage-blobból adatok elérhetővé, és ezután előkészíti az adatokat, prediktív modelleket hozhat létre. Ezek a modellek olyan bináris besorolási és regressziós modellezéshez feladatokat végezheti el a Spark MLlib eszközkészlet használatával hozhat létre.
 
 * A **bináris osztályozási** tevékenység-e az utazás tipp fizetős előrejelzésére. 
 * A **regressziós** feladata előre jelezni a funkciókat a tip alapján tipp mennyisége. 

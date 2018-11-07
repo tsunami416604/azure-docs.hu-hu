@@ -1,6 +1,6 @@
 ---
-title: Az ügyfél számára a tartalom továbbítása |} Microsoft Docs
-description: Ez a témakör áttekintést mi részt vesz a szerinti tartalomtovábbítás az Azure Media Services.
+title: Az ügyfelek számára történő tartalomtovábbításhoz |} A Microsoft Docs
+description: Ez a témakör áttekintést a kézbesítse a tartalmakat az Azure Media Services vesz részt.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: juliako
-ms.openlocfilehash: 1d1506e26beec3cc48a904ddeb9bbb4e7656a08e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ae0ff36c7e83120a9571e0f87788c25193027616
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788892"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240137"
 ---
-# <a name="deliver-content-to-customers"></a>Továbbítanak tartalmat az ügyfél számára
-Ha az ügyfél számára rendelkezik a streaming vagy videotartalom tartalmat, célja, hogy a jó minőségű videó kézbesíthet különböző hálózati körülmények között különféle eszközök.
+# <a name="deliver-content-to-customers"></a>Továbbítja a tartalmat az ügyfelek számára
+Amikor, tartalom jusson el a streamelési vagy igény szerinti videó az ügyfelek számára, célja, hogy a magas színvonalú videó továbbítása különböző eszközökre, különböző hálózati körülmények között.
 
-E cél eléréséhez a következőket teheti:
+E cél elérése érdekében a következőket teheti:
 
-* Az adatfolyamot többféle bitrátájúvá (adaptív sávszélességűvé) video-adatfolyamot kódolása. Ez a minőségi és hálózati körülményekhez kezeli.
-* Használja a Microsoft Azure Media Services [dinamikus becsomagolás](media-services-dynamic-packaging-overview.md) dinamikusan őket csomagolni az adatfolyam különböző protokollokat. Ez az adatfolyam a különböző eszközökön kezeli. A Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: <br/>
-    * **HTTP Live Streaming** (HLS) - hozzáadása "(formátum = m3u8-aapl)" elérési út az URL-cím állapítható meg, hogy az adatfolyam-továbbítási eredeti kiszolgálóra visszaadandó hátsó HLS tartalom felhasználása "/ Manifest" részéhez **Apple iOS** (a részleteket, natív eszköz Lásd: [keresők](#locators) és [URL-címek](#URLs)),
-    * **MPEG-DASH** -hozzáadása "(formátum = mpd-idő-csf)" elérési út az URL-CÍMÉT, hogy az adatfolyam-továbbítási eredeti kiszolgálóra való visszatéréshez "/ Manifest" részéhez biztonsági MPEG-DASH (további információkért lásd: [keresők](#locators) és [URL-címek](#URLs)),
+* Kódolja többszörös sávszélességű (adaptív sávszélességűvé alakítják) video-adatfolyamot az adatfolyamot. Ez gondoskodik a minőségi és hálózati körülményekhez.
+* A Microsoft Azure Media Services használatával [dinamikus csomagolási](media-services-dynamic-packaging-overview.md) dinamikusan csomagolni a stream eltérő protokollok használatára. Ez gondoskodik a streamelési különböző eszközökön. Media Services a következő adaptív sávszélességű streamelési technológiákat támogatja: <br/>
+    * **HTTP Live Streaming** (HLS) – hozzáadása "(formátum = m3u8-aapl)" elérési útját az URL-címet adja meg a streamelési forráskiszolgáló, térjen vissza a felhasználásához HLS-tartalom a "/ jegyzékfájl" részének **Apple iOS** natív eszközök (a részleteket Lásd: [keresők](#locators) és [URL-címek](#URLs)),
+    * **MPEG-DASH** -hozzáadása "(formátum = mpd-time-csf)" elérési út, ossza meg a visszaadandó streamelési forráskiszolgáló URL-címe "/ jegyzékfájl" részéhez biztonsági MPEG-DASH (további információkért lásd: [keresők](#locators) és [URL-címek](#URLs)),
     * **Smooth Streaming**.
 
 >[!NOTE]
@@ -37,79 +37,79 @@ E cél eléréséhez a következőket teheti:
 
 Ez a cikk áttekintést fontos tartalomkézbesítési fogalmakat.
 
-Ismert problémák ellenőrzéséhez tekintse meg a [ismert problémák](media-services-deliver-content-overview.md#known-issues).
+Ismert problémák megtekintéséhez [ismert problémák](media-services-deliver-content-overview.md#known-issues).
 
 ## <a name="dynamic-packaging"></a>Dinamikus csomagolás
-A dinamikus csomagolás, hogy a Media Services nyújt, a Media Services (MPEG-DASH, HLS, Smooth Streaming) által támogatott streamformátumok adaptív sávszélességű MP4 vagy Smooth Streaming-kódolású tartalmak biztosíthat anélkül, hogy kellene őket csomagolni ezekbe a streamformátumokba. Azt javasoljuk, hogy a dinamikus becsomagolás révén a tartalmak továbbításával.
+A dinamikus csomagolás, hogy a Media Services biztosít, adaptív sávszélességű MP4 vagy Smooth Streaming formátumban kódolt tartalmait streamformátumok valamelyikében (MPEG-DASH, HLS, Smooth Streaming) a Media Services által támogatott juttathat el anélkül, hogy kellene csomagolni ezekbe adatfolyam-továbbítási formátumokba. Azt javasoljuk, hogy kézbesítse a tartalmakat a dinamikus csomagolás használatával.
 
-A dinamikus csomagolás előnyeinek kódolja a mezzanine (forrás) fájlt az adaptív sávszélességű MP4-fájlokká vagy Smooth Streaming-fájlsorozattá kell.
+A dinamikus csomagolás kihasználásához kódolja a mezzanine (forrás) fájlt egy adaptív sávszélességű MP4-fájlokat vagy adaptív sávszélességű Smooth Streaming-fájlsorozattá kell.
 
-A dinamikus csomagolás tárolja, és a fájlok egyetlen tárolási formátumban kell fizetnie. A Media Services elkészíti és kiszolgálja az a kérésnek megfelelő választ.
+A dinamikus csomagolás használatával tárolja, és a fájlokat egyetlen tárolási formátumban kell fizetnie. A Media Services elkészíti és kiszolgálja a kérelmeket a megfelelő választ.
 
-A dinamikus csomagolás standard és premium adatfolyam-végpontok érhető el. 
+A dinamikus csomagolás a standard és prémium szintű streamelési végpontok érhető el. 
 
-További információkért lásd: [dinamikus becsomagolás](media-services-dynamic-packaging-overview.md).
+További információkért lásd: [dinamikus csomagolási](media-services-dynamic-packaging-overview.md).
 
-## <a name="filters-and-dynamic-manifests"></a>Szűrők és dinamikus jegyzékfájlokban
-A Media Services eszközök szűrőket adhat meg. Ezek a szűrők és kiszolgálóoldali szabályok, amelyeket az ügyfelek számára, például egy adott részének videó lejátszása vagy a hang- és interpretációk, amelyet a felhasználói eszköz kezelni tud (az összes a interpretációk társított adategységet) helyett egy részét. A szűrés sorrendekben *dinamikus jegyzékfájlokban* , amely jönnek létre, ha az ügyfél alapján videó adatfolyam kér, vagy több megadott szűrőket.
+## <a name="filters-and-dynamic-manifests"></a>Szűrők és dinamikus jegyzékek
+Az eszközök a Media Services szűrőket definiálhat. Ezeket a szűrőket, amelyek segítségével az ügyfelek van például egy adott szakasz videók lejátszásához, vagy adjon meg egy részét, amely a felhasználói eszköz (és nem az összes a beállításkészletben az eszközhöz társított) képes kezelni, hang- és beállításkészletben kiszolgálóoldali-szabályok vonatkoznak. Ez a szűrés a gazdafájlon keresztül *a dinamikus jegyzékek* , amikor az ügyfél kéri, hogy egy videó alapján egy vagy több megadott szűrők jönnek létre.
 
-További információkért lásd: [szűrőket és dinamikus jegyzékfájlokban](media-services-dynamic-manifest-overview.md).
+További információkért lásd: [szűrők és dinamikus jegyzékek](media-services-dynamic-manifest-overview.md).
 
 ## <a name="a-idlocatorslocators"></a><a id="locators"/>Keresők
-Ahhoz, hogy a felhasználó továbbításához vagy a tartalom letöltésére használható URL-címet, először tegye közzé az adategységet egy kereső létrehozásával. Egy kereső biztosít egy belépési pont egy eszköz tárolt fájlok eléréséhez. A Media Services két lokátortípust támogat:
+Ahhoz, hogy a felhasználó a tartalmak streamelésére vagy letöltésére használható URL-címet, akkor először tegye közzé az adategységet egy kereső létrehozásával. Egy kereső eléréséhez az eszközintelligencia mappában található fájlokat belépési pontként szolgál. A Media Services két lokátortípust támogat:
 
-* OnDemandOrigin keresők. Ezek a médiaadatfolyam (például MPEG-DASH, HLS vagy Smooth Streaming) segítségével, vagy fokozatosan letölteni a fájlokat.
+* OnDemandOrigin keresők. Ezek a médiatartalmak (például MPEG-DASH, HLS vagy Smooth Streaming) segítségével, vagy fokozatosan letölteni a fájlokat.
 * Közös hozzáférésű jogosultságkód (SAS) URL-cím lokátorokat. Ezek használhatók a helyi számítógépen médiafájlok letöltéséhez.
 
-Egy *házirendhez* definiálja az engedélyek (például az olvasási, írási és lista) és az időtartamot, amelynek az ügyfél rendelkezik hozzáféréssel egy adott eszközre. Vegye figyelembe, hogy az a lista engedélyt (AccessPermissions.List) nem használható egy OrDemandOrigin kereső létrehozása.
+Egy *hozzáférési szabályzat* az engedélyek (például olvasási, írási és listája) meghatározására szolgál, és időtartama, amelyhez az ügyfél rendelkezik hozzáféréssel egy adott eszközre. Vegye figyelembe, hogy a lista engedéllyel (AccessPermissions.List) nem lehet létrehozni egy OrDemandOrigin lokátort.
 
-Keresők lejárati dátummal rendelkezik. Az Azure-portálon a jövőben 100 éves lejárati dátumot beállítja a lokátorokat.
-
-> [!NOTE]
-> Ha az Azure-portál használatával hoz létre keresőket 2015. márciusi előtt, ezeket a lokátorokat beállított két év után lejár.
-> 
-> 
-
-A lokátor lejárati idejének módosításához használjon [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) vagy [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API-t. Ne feledje, hogy a SAS-lokátor lejárati idejének módosításával az URL-cím is megváltozik.
-
-Keresők nem tervezték, hogy a felhasználói hozzáférés-vezérlés kezelése. Különböző hozzáférési jogosultsága ahhoz, hogy egyes felhasználók biztosíthat a digitális tartalomvédelmi (DRM) megoldásokat. További információkért lásd: [biztonságossá tétele Media](http://msdn.microsoft.com/library/azure/dn282272.aspx).
-
-Ha egy kereső létrehozása miatt szükséges tárolási és az Azure Storage propagálás folyamatok 30 másodperces késés előfordulhat.
-
-## <a name="adaptive-streaming"></a>Adaptív adatfolyam
-Adaptív sávszélességű technológiák lehetővé teszik a hálózati feltételek meghatározására, és válassza ki a több bitrates videólejátszó alkalmazások. Csökkenti a hálózati kommunikáció, amikor az ügyfél kiválaszthatja egy alacsonyabb sávszélességű így lejátszási alacsonyabb videominőséget folytatása. Javíthatja a hálózati feltételek mellett, mivel az ügyfél egy nagyobb átviteli sebesség a továbbfejlesztett videominőséget válthat. Az Azure Media Services a következő adaptív sávszélességű technológiákat támogatja: HTTP Live Streaming (HLS), Smooth Streaming vagy MPEG-DASH.
-
-Streamelési URL-címek biztosít a felhasználók, akkor először hozzon létre egy OnDemandOrigin lokátort. A lokátor létrehozása lehetővé teszi az alap elérési útja az eszközhöz, amely tartalmazza a tartalmat továbbítani kívánja. Azonban ahhoz, hogy adatfolyamként küldje el ezt a tartalmat, módosítania további az elérési út. A teljes URL-címet a folyamatos átviteli jegyzékfájl létrehozásához a lokátor elérési út érték és a jegyzékfájl (filename.ism) kell összefűzésére fájl nevét. Majd fűzze **/Manifest** és a lokátor elérési útja megfelelő formátumot (ha szükséges).
+Lokátorok lejárati dátummal rendelkezik. Az Azure Portalon a jövőben 100 éves lejárati dátummal keresők állítja be.
 
 > [!NOTE]
-> Is SSL-kapcsolaton keresztül adatfolyam formájában a tartalmat. Ehhez ellenőrizze, hogy a streamelési URL-címének HTTPS kezdődhet. Vegye figyelembe, hogy jelenleg AMS nem támogatja az SSL az egyéni tartomány.  
+> Ha az Azure Portalon 2015 márciusa előtt hozzon létre a lokátorokat, ezeket a lokátorokat beállított két év után lejár.
+> 
 > 
 
-Akkor is csak adatfolyam SSL-en keresztül Ha a streamvégpontján, amelyről a tartalmat továbbít a 2014. szeptember 10 után készült. Ha 2014. szeptember 10. után létrehozott streamvégpontok alapul a streamelési URL-címek URL-CÍMÉT tartalmazza-e a "streaming.mediaservices.windows.net." Adatfolyam-továbbítási URL-címek, amelyek tartalmazzák a "origin.mediaservices.windows.net" (a régi formátumot) nem támogatja az SSL. Ha a régi formátumban kell megadni az URL-címet, és képesek lesznek streamelni az SSL-en keresztül szeretné, hozzon létre egy új streamvégpontra. Az új streamvégpont alapján URL-címek használatával a adatfolyamként SSL-en keresztül.
+A lokátor lejárati idejének módosításához használjon [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) vagy [.NET](https://go.microsoft.com/fwlink/?LinkID=533259) API-t. Ne feledje, hogy a SAS-lokátor lejárati idejének módosításával az URL-cím is megváltozik.
 
-## <a name="a-idurlsstreaming-url-formats"></a><a id="URLs"/>Adatfolyam-továbbítási URL-formátumokra
+Lokátorok nem felhasználónkénti hozzáférés-vezérlés kezelésére tervezték. Az egyes felhasználóknak különböző hozzáférési jogosultságokat biztosíthat a digitális jogkezelési (DRM) megoldásokat. További információkért lásd: [média védelme](https://msdn.microsoft.com/library/azure/dn282272.aspx).
 
-### <a name="mpeg-dash-format"></a>MPEG-DASH-formátum
-{streaming endpoint név-media services fiók name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
+Amikor létrehoz egy keresőt, 30 másodperces késleltetést szükséges tárolási és az Azure Storage-propagálás folyamatok miatt lehet.
+
+## <a name="adaptive-streaming"></a>Az adaptív streamelés
+Az adaptív bitsebességű technológiák lehetővé teszik a hálózati körülmények meghatározásához, és válassza ki a több bitsebességre való átkódolása videólejátszó alkalmazások. Hálózati kommunikáció csökkenésekor az ügyfél választhat egy alacsonyabb sávszélességű, lejátszás továbbra is az alacsonyabb jó minőségű. Hálózati körülmények javításához, az ügyfél válthat egy magasabb átviteli sebesség, a továbbfejlesztett videó minősége. Az Azure Media Services a következő adaptív sávszélességű technológiákat támogatja: HTTP Live Streaming (HLS), Smooth Streaming és MPEG-DASH.
+
+Streamelési URL-címek biztosíthatja a felhasználók számára, hogy először hozzon létre egy OnDemandOrigin lokátort. A lokátor létrehozása biztosít az alapútvonal adatfolyam kívánt tartalmat tartalmazó objektumot. Azonban, hogy ezt a tartalmat streamelni, szüksége további az elérési út módosítása. A teljes URL-címe a streamelési jegyzékfájlt létrehozására, a lokátor elérési útjának értéke és a jegyzékfájlt (filename.ism) kell összefűzni fájl nevét. Majd fűzze **/jegyzékfájl** és a egy megfelelő formátumú (ha szükséges) a lokátor elérési utat.
+
+> [!NOTE]
+> SSL-kapcsolaton keresztül is streamelheti a tartalmat. Ehhez ellenőrizze, hogy a streamelési URL-címek indítsa el a HTTPS. Vegye figyelembe, hogy jelenleg AMS nem támogatja az SSL egyéni tartománnyal rendelkező.  
+> 
+
+Csak akkor streamelheti SSL-en keresztül, ha a streamvégpontra, amelyről a tartalomkézbesítés 2014. szeptember 10-után jött létre. Az URL-cím tartalmazza-e a streamelési URL-címek alapján a 2014. szeptember 10-én után létrehozott streamelési végpontok a "streaming.mediaservices.windows.net." Streamelési URL-címek, amelyek tartalmazzák a "origin.mediaservices.windows.net" (a régi formátumot) nem támogatja az SSL. Ha a régi formátumot az URL-címe van, és képesek lesznek streamelni az SSL-en keresztül szeretne, hozzon létre egy új streamvégpont. Az új streamvégpont alapján URL-címek segítségével a tartalmak streamelésére SSL-en keresztül.
+
+## <a name="a-idurlsstreaming-url-formats"></a><a id="URLs"/>Streamelési URL-formátumok
+
+### <a name="mpeg-dash-format"></a>MPEG-DASH formátumban
+{Stream végpont neve-media services fiók name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
 
 http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
 
-### <a name="apple-http-live-streaming-hls-v4-format"></a>Apple HTTP Live Streaming (HLS) V4 formátumban
-{streaming endpoint név-media services fiók name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
+### <a name="apple-http-live-streaming-hls-v4-format"></a>Az Apple HTTP Live Streaming (HLS) V4 formátumban
+{Stream végpont neve-media services fiók name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
 
 http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
 
-### <a name="apple-http-live-streaming-hls-v3-format"></a>Apple HTTP Live Streaming (HLS) V3 formátumban
-{streaming endpoint név-media services fiók name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl-v3)
+### <a name="apple-http-live-streaming-hls-v3-format"></a>Az Apple HTTP Live Streaming (HLS) V3 formátum
+{Stream végpont neve-media services fiók name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl-v3)
 
 http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
 
-### <a name="apple-http-live-streaming-hls-format-with-audio-only-filter"></a>Apple HTTP Live Streaming (HLS) formátum csak szűrővel
-Alapértelmezés szerint csak számok szerepelnek a HLS jegyzékben. Ez azért szükséges, az Apple Store tanúsításhoz cellás hálózatokhoz. Ebben az esetben ha egy ügyfél nem rendelkezik elegendő sávszélesség, vagy 2/g. kapcsolaton keresztül csatlakozik, a lejátszás vált csak. Ez elősegíti a pufferelés nélkül adatfolyamként, de nincs videó van. Bizonyos esetekben pufferelés player lehet előnyben részesített csak keresztül. Ha el szeretné távolítani a csak nyomon követése, vegye fel **csak = false** URL-címét.
+### <a name="apple-http-live-streaming-hls-format-with-audio-only-filter"></a>A csak hangfájlt tartalmazó szűrővel Apple HTTP Live Streaming (HLS) formátumban
+Alapértelmezés szerint csak számok szerepelnek a HLS jegyzékfájlt. Ez a kapcsolat mobilhálózati az Apple Store minősítésre szükséges. Ebben az esetben ha egy ügyfél nem rendelkezik elegendő sávszélesség, vagy 2G-kapcsolaton keresztül kapcsolódik, a lejátszás vált, amennyiben csak. Ez segít megőrizni a tartalomközvetítéshez pufferelés nélkül, de nincs videó van. Bizonyos esetekben pufferelés player lehet előnyben részesített csak keresztül. Ha el kívánja távolítani a csak hangfájlt tartalmazó nyomon követése, vegye fel **csak = false** az URL-címre.
 
 http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3csak = false)
 
-További információkért lásd: [dinamikus jegyzékfájl létrehozása támogatási és HLS kimeneti további funkciók](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
+További információkért lásd: [dinamikus Manifest összeállítás támogatási és HLS kimeneti további funkciók](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
 ### <a name="smooth-streaming-format"></a>Smooth Streaming formátumban
 {stream végpontjának neve-Media Services fiók neve}.streaming.mediaservices.windows.net/{kereső azonosítója}/{fájlnév}.ism/Manifest
@@ -118,44 +118,44 @@ Példa:
 
 http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
 
-### <a id="fmp4_v20"></a>Smooth Streaming 2.0 jegyzékfájl (örökölt jegyzékfájl)
-Alapértelmezés szerint a jegyzékfájl formátuma Smooth Streaming tartalmaz ismétlődő címke (r-kód). Néhány lejátszó azonban nem támogatja az r-kód. Ezeket az ügyfelek használhatják az r-tag letiltása formátuma:
+### <a id="fmp4_v20"></a>Smooth Streaming 2.0 jegyzékfájlt (örökölt jegyzékfájl)
+Alapértelmezés szerint a jegyzékfájl formátuma Smooth Streaming tartalmazza, ismételje meg a címke (az r-kód). Egyes lejátszók azonban nem támogatja az r-címkét. Ezek lejátszókkal ügyfelek használhatják a formátum, amely letiltja az r-kód:
 
-{streaming endpoint név-media services fiók name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=fmp4-v20)
+{Stream végpont neve-media services fiók name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=fmp4-v20)
 
     http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
 
 ## <a name="progressive-download"></a>Progresszív letöltés
-Progresszív letöltés el lehet indítani játszott media, mielőtt a teljes fájl be van töltve. Nem tudja fokozatosan .ism * (ismv, isma, ismt vagy ismc) fájlok letöltése.
+A progresszív letöltés megkezdése játszott adathordozó, mielőtt a teljes fájlt letöltötte. Ön nem tudja fokozatosan .ism * (ismv, isma, ismt vagy ismc) fájlok letöltése.
 
-Töltse le fokozatosan a tartalmat, használja a lokátor OnDemandOrigin típusú. A következő példa bemutatja a lokátor OnDemandOrigin típusú alapuló URL-címe:
+Fokozatosan letölteni a tartalmat, használja a kereső OnDemandOrigin típusát. Az alábbi példa bemutatja a lokátor OnDemandOrigin típusa alapján URL-címe:
 
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 
-Tárolási titkosított eszközök, az eredeti szolgáltatásból a progresszív letöltés adatfolyamként történő küldéséhez használni kívánt vissza kell fejtenie.
+Storage-titkosítású eszközök, adatfolyam-forrás a szolgáltatás progresszív letöltés kívánt vissza kell fejtenie.
 
 ## <a name="download"></a>Letöltés
-Töltse le a tartalmat egy ügyféleszközön, létre kell hoznia egy SAS-kereső. A SAS-kereső hozzáférést biztosít az Azure Storage-tároló amennyiben a fájl nem található. Hozhat létre a letöltési URL-címet, akkor a fájl nevét, a gazdagép és a SAS-aláírás közötti beágyazása.
+Töltse le a tartalmat egy ügyféleszközön, létre kell hoznia egy SAS-kereső. Az SAS-kereső hozzáférést biztosít az Azure Storage-tárolóba, ahol a fájl megtalálható-e. A letöltési URL-cím összeállítását, akkor a fájl nevét, a gazdagép és a SAS-aláírás közötti beágyazási.
 
-A következő példa bemutatja az URL-címet, amely a SAS-kereső alapul:
+Az alábbi példa bemutatja az URL-cím, amely a SAS-kereső alapul:
 
     https://test001.blob.core.windows.net/asset-ca7a4c3f-9eb5-4fd8-a898-459cb17761bd/BigBuckBunny.mp4?sv=2012-02-12&se=2014-05-03T01%3A23%3A50Z&sr=c&si=7c093e7c-7dab-45b4-beb4-2bfdff764bb5&sig=msEHP90c6JHXEOtTyIWqD7xio91GtVg0UIzjdpFscHk%3D
 
-A következők érvényesek:
+A következő szempontokat kell figyelembe venni:
 
-* Tárolási titkosított eszközök, az eredeti szolgáltatásból a progresszív letöltés adatfolyamként történő küldéséhez használni kívánt vissza kell fejtenie.
-* Egy letöltést, amely még nem fejeződött be 12 órában sikertelen lesz.
+* Storage-titkosítású eszközök, adatfolyam-forrás a szolgáltatás progresszív letöltés kívánt vissza kell fejtenie.
+* Még nem fejeződött be 12 órán belül letöltések sikertelen lesz.
 
 ## <a name="streaming-endpoints"></a>Streamvégpontok
 
-A streamvégpont egy adatfolyam-szolgáltatás által biztosított tartalom közvetlenül egy ügyfélalkalmazás player vagy későbbi terjesztés tartalomkézbesítési hálózat (CDN) jelöli. A kimenő adatfolyam adatfolyam-továbbítási végpont szolgáltatásból egy élő adatfolyam vagy a Media Services-fiók egy video-on-demand eszköz lehet. Adatfolyam-végpontok, két típusa van **szabványos** és **prémium**. További információk: [Streamvégpontok áttekintése](media-services-streaming-endpoints-overview.md).
+A streamvégpont jelöli a streamelési szolgáltatás, amely tartalmat továbbít közvetlenül az ügyfél lejátszóalkalmazásába, vagy a content delivery network (CDN) további terjesztés céljából. Az a végpont streamelési szolgáltatás kimenő adatfolyam élő stream és a egy video-on-demand eszközintelligencia, a Media Services-fiók is lehetnek. Streamvégpontok, két típusa van **standard** és **prémium**. További információk: [Streamvégpontok áttekintése](media-services-streaming-endpoints-overview.md).
 
 >[!NOTE]
 >Az AMS-fiók létrehozásakor a rendszer hozzáad egy **alapértelmezett** streamvégpontot a fiókhoz **Leállítva** állapotban. A tartalom streamelésének megkezdéséhez, valamint a dinamikus csomagolás és a dinamikus titkosítás kihasználásához a tartalomstreameléshez használt streamvégpontnak **Fut** állapotban kell lennie. 
 
 ## <a name="known-issues"></a>Ismert problémák
-### <a name="changes-to-smooth-streaming-manifest-version"></a>Smooth Streaming módosításai manifest verziója
-– 2016. július szolgáltatás kiadása előtt, amikor a Media Encoder Standard által előállított eszközök Media Encoder prémium munkafolyamat, vagy a korábbi Azure Media Encoder továbbítva lettek a dinamikus becsomagolás--a Smooth Streaming visszaadott jegyzékfájl 2.0-s verziójának volna felelnek meg. A 2.0-s verzióját töredék időtartamok ne használja az úgynevezett Ismétlés (r) címkék. Példa:
+### <a name="changes-to-smooth-streaming-manifest-version"></a>Smooth Streaming módosításai manifest verzió
+Előtt a 2016. júliusi kiadás – Ha a Media Encoder Standard által előállított eszközök Media Encoder Premium munkafolyamat, vagy a korábbi Azure Media Encoder is streamelt dinamikus csomagolási--a Smooth Streaming használatával visszaadott jegyzékfájl verzió volna felel meg 2.0-s. A 2.0-töredék időtartamok ne használja az úgynevezett Ismétlés (r) címkéket. Példa:
 
 <?xml version="1.0" encoding="UTF-8"?>
     <SmoothStreamingMedia MajorVersion="2" MinorVersion="0" Duration="8000" TimeScale="1000">
@@ -168,7 +168,7 @@ A streamvégpont egy adatfolyam-szolgáltatás által biztosított tartalom köz
         </StreamIndex>
     </SmoothStreamingMedia>
 
-2016. július szolgáltatás kiadása a Smooth Streaming létrehozott jegyzékre megfelel verzióra 2.2, töredék időtartamok ismétlődő címkék használatával. Példa:
+A 2016. július szolgáltatáskiadások a Smooth Streaming létrehozott jegyzékre megfelel, 2.2-es verzió töredék percentilisénél hosszabb időtartamú, ismételje meg a címkék használatával. Példa:
 
     <?xml version="1.0" encoding="UTF-8"?>
     <SmoothStreamingMedia MajorVersion="2" MinorVersion="2" Duration="8000" TimeScale="1000">
@@ -178,7 +178,7 @@ A streamvégpont egy adatfolyam-szolgáltatás által biztosított tartalom köz
         </StreamIndex>
     </SmoothStreamingMedia>
 
-A Smooth Streaming tanúsítványbeléptetési némelyike esetleg nem támogatja az ismétlődő címkék, és nem tölthető be a jegyzékfájl. A probléma orvoslása érdekében használhatja a hagyományos jegyzékfájl formátuma paraméter **(formátum = fmp4-v20)** vagy az ügyfél frissítése a legújabb verzióra, amely támogatja az ismétlődő címkék. További információkért lásd: [Smooth Streaming 2.0](media-services-deliver-content-overview.md#fmp4_v20).
+Néhány örökölt Smooth Streaming klienssel ismételje meg a címkék nem támogatja, és nem tölthető be a jegyzékfájlban. A probléma megoldásához használhatja az örökölt a jegyzékfájl formátuma paraméter **(formátum fmp4-v20 =)** vagy az ügyfél frissítése a legújabb verzióra, amely támogatja a címkék ismételje meg a műveletet. További információkért lásd: [Smooth Streaming 2.0](media-services-deliver-content-overview.md#fmp4_v20).
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -187,5 +187,5 @@ A Smooth Streaming tanúsítványbeléptetési némelyike esetleg nem támogatja
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök
-[A Media Services keresők frissítése után működés közbeni tárolási kulcsok](media-services-roll-storage-access-keys.md)
+[Lokátorok a Media Services frissítése tárelérési kulcsok váltása után](media-services-roll-storage-access-keys.md)
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.component: tables
-ms.openlocfilehash: b06f5a66566c250eef608ddccc551aaebe24ef74
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: d055ea9b30732e1cc0fc4ae5471bae26adc08b35
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522798"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238896"
 ---
 # <a name="table-design-patterns"></a>Táblatervezési minták
 Ez a cikk néhány tábla szolgáltatási megoldások használható mintákat ismerteti. Ezenkívül láthatja, miként, gyakorlatilag kezelheti néhány problémákat és egyéb tárolási tervezési cikkek tárgyalt feláldozását. Az alábbi ábrán a különböző minták között létesített kapcsolatait összegzi:  
@@ -48,7 +48,7 @@ Ha alkalmazott entitástartományának kérdezze le, megadhat egy alkalmazott az
 * Található összes alkalmazott a Sales nevű részleg és a egy alkalmazott azonosító a tartomány 000100 való 000199 használata: $filter = (PartitionKey eq "Értékesítés") és (RowKey ge "empid_000100") és a ("empid_000199" rowkey tulajdonságok esetén le)  
 * A Sales nevű részleg minden alkalmazott található kezdve a levél "a" használja e-mail-címmel: $filter = (PartitionKey eq "Értékesítés") és (RowKey ge "email_a") és (RowKey lt "email_b")  
   
-  Vegye figyelembe, hogy a fenti példákban használt szűrő szintaxisa a következő további információ: a Table service REST API-t a [Entitáslekérdezés](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+  Vegye figyelembe, hogy a fenti példákban használt szűrő szintaxisa a következő további információ: a Table service REST API-t a [Entitáslekérdezés](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 ### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
 A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
@@ -104,7 +104,7 @@ Ha alkalmazott entitástartományának kérdezze le, megadhat egy alkalmazott az
 * A tartomány alkalmazott azonosítójú a Sales nevű részleg minden alkalmazott található **000100** való **000199** alkalmazott azonosítója használatához rendezve: $filter = (PartitionKey eq ' empid_Sales") és (RowKey ge"000100") és a ("000199" rowkey tulajdonságok esetén le)  
 * E-mail-címmel, amely elindítja az "a" e-mail cím használatához rendezett a Sales nevű részleg minden alkalmazott kereséséhez: $filter = (PartitionKey eq ' email_Sales") és (RowKey ge"a") és (RowKey lt"b")  
 
-Vegye figyelembe, hogy a fenti példákban használt szűrő szintaxisa a következő további információ: a Table service REST API-t a [Entitáslekérdezés](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+Vegye figyelembe, hogy a fenti példákban használt szűrő szintaxisa a következő további információ: a Table service REST API-t a [Entitáslekérdezés](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 ### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
 A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
@@ -617,7 +617,7 @@ Az optimális lekérdezési egy egyedi entitás alapján ad vissza egy **Partiti
 
 Ilyen esetekben mindig teljes mértékben tesztelje az alkalmazás teljesítményét.  
 
-Egy lekérdezést a table service is visszaadhatnak maximum 1000 entitás egy időben, és előfordulhat, hogy öt másodpercenként legfeljebb végrehajtása. Ha az eredményhalmaz több mint 1000 olyan entitásokat tartalmaz, ha a lekérdezés nem számított öt másodpercen belül fejeződött be, vagy ha a lekérdezés a partíció határ átlép, a Table service az ügyfélalkalmazás a következő entitáshalmazt kérelem engedélyezéséhez egy folytatási tokent ad vissza. Hogyan a folytatási jogkivonatok munkahelyi kapcsolatos további információkért lásd: [lekérdezés időkorlátja és a tördelés](http://msdn.microsoft.com/library/azure/dd135718.aspx).  
+Egy lekérdezést a table service is visszaadhatnak maximum 1000 entitás egy időben, és előfordulhat, hogy öt másodpercenként legfeljebb végrehajtása. Ha az eredményhalmaz több mint 1000 olyan entitásokat tartalmaz, ha a lekérdezés nem számított öt másodpercen belül fejeződött be, vagy ha a lekérdezés a partíció határ átlép, a Table service az ügyfélalkalmazás a következő entitáshalmazt kérelem engedélyezéséhez egy folytatási tokent ad vissza. Hogyan a folytatási jogkivonatok munkahelyi kapcsolatos további információkért lásd: [lekérdezés időkorlátja és a tördelés](https://msdn.microsoft.com/library/azure/dd135718.aspx).  
 
 Ha használja a Storage ügyféloldali kódtár, automatikusan kezelheti folytatási token az Ön számára, hogy entitásokat ad vissza a Table szolgáltatásból. Az alábbi C# kódmintát a Storage ügyféloldali kódtár használatával automatikusan kezeli a folytatási token, ha a table service ad vissza, a válasz:  
 

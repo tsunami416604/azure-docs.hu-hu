@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 2fd6d556e908c47baf3c58c46172c0684b66cdd9
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 3d39e752e874b6b0c6fbdf678d6eddda0b0d9404
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394267"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226548"
 ---
 # <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>Az Pysparkkal és Scalával az Azure HDInsight Spark adatelemzési útmutatók
 
@@ -44,7 +44,7 @@ Lásd: [speciális adatáttekintés és modellezés a Spark segítségével](spa
 
 ## <a name="predict-taxi-tips-using-scala-on-azure-spark"></a>Azure Spark a Scala használatával taxi tippek előrejelzése
 
-A [használata Scala Spark az Azure-ban](scala-walkthrough.md) forgatókönyv New York-i taxikra adatait használja e tipp fizetős és fizetendő várt mennyiségű számos előre jelezni. Azt jeleníti meg a Scala használata felügyelt gépi tanulási feladatok és a Spark machine learning-kódtár (MLlib) és a könnyen használható csomagok az Azure HDInsight Spark-fürtön. Emellett végigvezeti a feladatok alkotó a [adatelemzési folyamat](http://aka.ms/datascienceprocess): adatbetöltés és feltárása, képi megjelenítés, funkciófejlesztési, modellezés és használatalapú modellt. A modellek tartalmazzák a logisztikai és lineáris regresszió, véletlenszerű erdők és gyorsított fa átmenetes.
+A [használata Scala Spark az Azure-ban](scala-walkthrough.md) forgatókönyv New York-i taxikra adatait használja e tipp fizetős és fizetendő várt mennyiségű számos előre jelezni. Azt jeleníti meg a Scala használata felügyelt gépi tanulási feladatok és a Spark machine learning-kódtár (MLlib) és a könnyen használható csomagok az Azure HDInsight Spark-fürtön. Emellett végigvezeti a feladatok alkotó a [adatelemzési folyamat](https://aka.ms/datascienceprocess): adatbetöltés és feltárása, képi megjelenítés, funkciófejlesztési, modellezés és használatalapú modellt. A modellek tartalmazzák a logisztikai és lineáris regresszió, véletlenszerű erdők és gyorsított fa átmenetes.
 
 
 ## <a name="next-steps"></a>További lépések

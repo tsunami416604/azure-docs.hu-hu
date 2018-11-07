@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 54daea1108b98b316e1ead3b9035c1b65745dd19
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 4845fdbbfa4dfabf53b1f7e747668cf7f5108eb7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114124"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232708"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms"></a>Contoso áttelepítési: egy a helyszíni Linux alkalmazás Újratárolása az Azure virtuális gépek
 
@@ -196,7 +196,7 @@ Az Azure-bA a feladatátvételt követően a Contoso biztosítani szeretné az A
 
 - Az Azure virtuális gépek hozzáférhet az interneten keresztül, lehetővé teszik a helyszíni linuxos virtuális gép SSH áttelepítés előtt.  Ubuntu rendszerre készült ez hajtható végre a következő parancsot: **Sudo apt-get ssh telepítése -y**.
 - Az áttelepítés (feladatátvétel) futtatása, miután azok ellenőrizheti **rendszerindítási diagnosztika** , a virtuális gép képernyőképének megtekintéséhez.
-- Ha ez sem működik, ellenőrizze, hogy a virtuális gép fut, és tekintse át a kell [hibaelhárítási tippek](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
+- Ha ez sem működik, ellenőrizze, hogy a virtuális gép fut, és tekintse át a kell [hibaelhárítási tippek](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 
 **További segítségre van szüksége?**
