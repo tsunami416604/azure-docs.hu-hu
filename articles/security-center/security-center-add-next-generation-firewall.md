@@ -3,7 +3,7 @@ title: Újgenerációs tűzfal hozzáadása az Azure Security Centerben |} A Mic
 description: Ez a dokumentum bemutatja, hogyan valósíthat meg az Azure Security Center javaslatainak **Újgenerációs tűzfal hozzáadása** és **útvonal traffice Újgenerációs tűzfalon keresztül csak**.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 48b99015-4db8-4ce8-85e4-b544c0fa203e
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/02/2017
-ms.author: terrylan
-ms.openlocfilehash: ff5c667318f961dddcab02cb1b2b679285d8c790
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: a0f472d32e878412532927327a36fe674d4cf6bb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44294017"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261672"
 ---
 # <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Újgenerációs tűzfal hozzáadása az Azure Security Centerben
 Az Azure Security Center javasolhatja egy új generációs tűzfal (NGFW) hozzáadása egy Microsoft-partner növelheti a védelmet. Ez a dokumentum végigvezeti erre egy példát.
@@ -68,7 +68,7 @@ A Security Centerrel kapcsolatos további információkért olvassa el a követk
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) – Megtudhatja, hogyan figyelheti a partnermegoldások biztonsági állapotát.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-* [Az Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi.
+* [Az Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi.
 
 <!--Image references-->
 [1]: ./media/security-center-add-next-gen-firewall/add-next-gen-firewall.png

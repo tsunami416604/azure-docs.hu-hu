@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 6eb1ee90b22b9e37dcae900cd80f80cb549090e9
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 173a64181c1e8c051c6856fa8353f484540917e7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213950"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249710"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Vészhelyreállítási próba végrehajtása az Azure-ba 
 
@@ -106,7 +106,7 @@ Ha azt szeretné, az Azure-beli virtuális gépek a feladatátvételt követően
 **Feladatátvétel** | **Hely** | **Műveletek**
 --- | --- | ---
 **Windows rendszerű Azure virtuális gép** | A helyi gépen a feladatátvétel előtt | Az Azure virtuális gép hozzáférhet az interneten keresztül, engedélyezze az RDP-, és győződjön meg arról, hogy a TCP és UDP-szabályokat a adják **nyilvános**, és az összes profil számára engedélyezett RDP **Windows tűzfal**  >  **Engedélyezett alkalmazások**.<br/><br/> Az Azure virtuális gép eléréséhez egy helyek közötti kapcsolaton keresztül, engedélyezze az RDP a gépen, és győződjön meg arról, hogy az RDP engedélyezve van-e a a **Windows tűzfal** -> **engedélyezett alkalmazások és szolgáltatások**, a **Tartomány és privát** hálózatok.<br/><br/>  Ellenőrizze, hogy az operációs rendszer TÁROLÓHÁLÓZATI szabályzata értéke **OnlineAll**. [További információk](https://support.microsoft.com/kb/3031135).<br/><br/> Győződjön meg arról, hogy nincsenek függőben lévő Windows frissítések a virtuális gépen, amikor feladatátvételt indít el. Windows update előfordulhat, hogy kezdődik, amikor feladatátvételt hajt végre, és nem tud bejelentkezni a virtuális Gépet, a frissítés befejeződéséig.
-**Windows rendszerű Azure virtuális gép** | Az Azure virtuális Géphez feladatátvétel után |  [Nyilvános IP-cím hozzáadása](https://aka.ms/addpublicip) a virtuális gép számára.<br/><br/> A hálózati biztonsági csoport szabályai a feladatait átadó virtuális gép (és az Azure-alhálózaton, amelyhez csatlakoztatva van) engedélyeznie kell az RDP-port bejövő kapcsolatait.<br/><br/> Ellenőrizze **rendszerindítási diagnosztika** egy Képernyőkép a virtuális gép ellenőrzése.<br/><br/> Ha nem sikerül, ellenőrizze, hogy a virtuális gép fut, és tekintse át a [hibaelhárítási tippek](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
+**Windows rendszerű Azure virtuális gép** | Az Azure virtuális Géphez feladatátvétel után |  [Nyilvános IP-cím hozzáadása](https://aka.ms/addpublicip) a virtuális gép számára.<br/><br/> A hálózati biztonsági csoport szabályai a feladatait átadó virtuális gép (és az Azure-alhálózaton, amelyhez csatlakoztatva van) engedélyeznie kell az RDP-port bejövő kapcsolatait.<br/><br/> Ellenőrizze **rendszerindítási diagnosztika** egy Képernyőkép a virtuális gép ellenőrzése.<br/><br/> Ha nem sikerül, ellenőrizze, hogy a virtuális gép fut, és tekintse át a [hibaelhárítási tippek](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 **Linux rendszerű Azure virtuális Gépen** | A helyi gépen a feladatátvétel előtt | Győződjön meg arról, hogy a virtuális gépen a Secure Shell szolgáltatás rendszerindításkor automatikusan elinduljon értéke.<br/><br/> Ellenőrizze, hogy a tűzfalszabályok engedélyezik-e az SSH-kapcsolatot.
 **Linux rendszerű Azure virtuális Gépen** | Az Azure virtuális Géphez feladatátvétel után | A hálózati biztonsági csoport szabályai a feladatait átadó virtuális gép (és az Azure-alhálózaton, amelyhez csatlakoztatva van) engedélyeznie kell az SSH-port bejövő kapcsolatait.<br/><br/> [Nyilvános IP-cím hozzáadása](https://aka.ms/addpublicip) a virtuális gép számára.<br/><br/> Ellenőrizze **rendszerindítási diagnosztika** egy Képernyőkép a virtuális gép számára.<br/><br/>
 

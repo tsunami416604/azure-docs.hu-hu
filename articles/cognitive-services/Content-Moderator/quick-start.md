@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: 0c67ee20ee73edb5eb6c6c806d7e5960f3719de6
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 79fe761bc6d8bb9561701fd11b06b010bf3454f6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008776"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260006"
 ---
 # <a name="quickstart-get-familiar-with-content-moderator"></a>Gyors útmutató: Ismerkedjen meg a Content Moderator
 
@@ -26,7 +26,7 @@ Ebben a rövid útmutatóban a használandó kód írása nélkül a Content Mod
 - Egy webes böngésző
 
 ## <a name="set-up-the-review-tool"></a>Állítsa be a felülvizsgálati eszköz
-A Content Moderator felülvizsgálati eszköz egy webalapú eszköz, amely lehetővé teszi, hogy az emberi teszik a felülvizsgálók számára a cognitive Services-szolgáltatás támogatási döntések meghozatalában. Ebben az útmutatóban mindenképpen haladjon végig a rövid folyamat beállítása után a vizsgálóeszközt, így láthatja a Content Moderator szolgáltatás működésével. Nyissa meg a [Content Moderator felülvizsgálati eszközben](http://contentmoderator.cognitive.microsoft.com/) webhelyről, és regisztráljon.
+A Content Moderator felülvizsgálati eszköz egy webalapú eszköz, amely lehetővé teszi, hogy az emberi teszik a felülvizsgálók számára a cognitive Services-szolgáltatás támogatási döntések meghozatalában. Ebben az útmutatóban mindenképpen haladjon végig a rövid folyamat beállítása után a vizsgálóeszközt, így láthatja a Content Moderator szolgáltatás működésével. Nyissa meg a [Content Moderator felülvizsgálati eszközben](https://contentmoderator.cognitive.microsoft.com/) webhelyről, és regisztráljon.
 
 ![Tartalom Moderator kezdőlapja](images/homepage.PNG)
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: ded952ac6418ae3d9916b3ae8b8dbacb0c9c5a84
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 5320b8d5ca7456a6f1b0fdd1372c9f39ac1edfb0
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809889"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219409"
 ---
 # <a name="publish-a-solution-template-to-azure-marketplace"></a>Egy megoldás-sablont tesz közzé az Azure Marketplace-en
 
@@ -91,7 +91,9 @@ A Termékváltozat a szülő ajánlat az Azure Marketplace-en alatt jelenik meg,
     - Ajánlat beállításai
     - Termékváltozatok
     - Piactér
-    - Támogatás minden egyes nézet tartalmazza a kérik a mezők halmaza alapján. Szükséges, piros csillag jelöl, mezők (\*)
+    - Támogatás
+
+Minden egyes nézet tartalmazza a kérik a mezők halmaza alapján. Szükséges, piros csillag jelöl, mezők (\*)
 
 ## <a name="to-configure-offer-settings"></a>Az ajánlat beállításainak konfigurálása
 

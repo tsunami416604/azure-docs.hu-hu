@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 844440d22bc0a524e9e61bde457ee9f43fd367b2
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 6cab6559cb38b7d6d1dc2105b694acbcac85108c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444612"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262046"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Támogatott fájlformátumok és az Azure Data Factoryban tömörítési kodek
 
@@ -434,7 +434,7 @@ Ha elemezni szeretné a ORC-fájlokat, vagy ORC formátumban szeretne adatokat �
 ```
 
 > [!IMPORTANT]
-> A példány által felhatalmazott helyi integrációs modul például a helyszíni és a felhő között adatokat tárolja, ha nem másol ORC-fájlokat **,-van**, az integrációs modul gépen a JRE (Java-futtatókörnyezet) 8 telepítenie kell. Egy 64 bites integrációs modul 64 bites JRE szükséges. Mindkét verziót megtalálja [itt](http://go.microsoft.com/fwlink/?LinkId=808605).
+> A példány által felhatalmazott helyi integrációs modul például a helyszíni és a felhő között adatokat tárolja, ha nem másol ORC-fájlokat **,-van**, az integrációs modul gépen a JRE (Java-futtatókörnyezet) 8 telepítenie kell. Egy 64 bites integrációs modul 64 bites JRE szükséges. Mindkét verziót megtalálja [itt](https://go.microsoft.com/fwlink/?LinkId=808605).
 >
 
 Vegye figyelembe a következő szempontokat:
@@ -454,16 +454,16 @@ Vegye figyelembe a következő szempontokat:
 | Int32 | Int |
 | UInt32 | Hosszú |
 | Int64 | Hosszú |
-| UInt64 | Sztring |
+| UInt64 | Karakterlánc |
 | Önálló | Lebegőpontos |
 | Dupla | Dupla |
 | tizedes tört | tizedes tört |
-| Sztring | Sztring |
+| Karakterlánc | Karakterlánc |
 | DateTime | Időbélyeg |
 | DateTimeOffset | Időbélyeg |
 | Időtartam | Időbélyeg |
 | ByteArray | Bináris |
-| GUID | Sztring |
+| GUID | Karakterlánc |
 | CHAR | Char(1) |
 
 ## <a name="parquet-format"></a>Parquet formátum
@@ -478,7 +478,7 @@ Ha elemezni szeretné a Parquet-fájlokat, vagy Parquet formátumban szeretne ad
 ```
 
 > [!IMPORTANT]
-> A példány által felhatalmazott helyi integrációs modul például a helyszíni és a felhő között adatokat tárolja, ha nem másol Parquet-fájlokat **,-van**, az integrációs modul gépen a JRE (Java-futtatókörnyezet) 8 telepítenie kell. Egy 64 bites integrációs modul 64 bites JRE szükséges. Mindkét verziót megtalálja [itt](http://go.microsoft.com/fwlink/?LinkId=808605).
+> A példány által felhatalmazott helyi integrációs modul például a helyszíni és a felhő között adatokat tárolja, ha nem másol Parquet-fájlokat **,-van**, az integrációs modul gépen a JRE (Java-futtatókörnyezet) 8 telepítenie kell. Egy 64 bites integrációs modul 64 bites JRE szükséges. Mindkét verziót megtalálja [itt](https://go.microsoft.com/fwlink/?LinkId=808605).
 >
 
 Vegye figyelembe a következő szempontokat:
@@ -502,7 +502,7 @@ Vegye figyelembe a következő szempontokat:
 | Önálló | Lebegőpontos | – | – |
 | Dupla | Dupla | – | – |
 | tizedes tört | Bináris | tizedes tört | tizedes tört |
-| Sztring | Bináris | Utf8 | Utf8 |
+| Karakterlánc | Bináris | Utf8 | Utf8 |
 | DateTime | Int96 | – | – |
 | Időtartam | Int96 | – | – |
 | DateTimeOffset | Int96 | – | – |

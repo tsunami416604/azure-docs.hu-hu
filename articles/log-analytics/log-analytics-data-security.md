@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: d042033981cba4e9d56b48543a7c6016a38efb53
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 2b04853e8d01ae559ce4ad982daba2928a6cd130
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958541"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244474"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics és adatbiztonság
 Ez a dokumentum információkat biztosít a Log Analyticsbe, amely egy Azure monitor, az információ kiegészítésére a szolgáltatás célja [Azure adatvédelmi központ](../security/security-microsoft-trust-center.md).  
@@ -36,7 +36,7 @@ A Log Analytics szolgáltatás a felhőbeli adatok biztonságosan kezeli a köve
 * Megfelelőség
 * biztonsági szabványok tanúsítványok
 
-Lépjen kapcsolatba velünk, olyan kérdéseket, a javaslatokat vagy a problémákkal kapcsolatban az alábbi információkat, beleértve a biztonsági házirendeket [Azure-támogatási lehetőségek](http://azure.microsoft.com/support/options/).
+Lépjen kapcsolatba velünk, olyan kérdéseket, a javaslatokat vagy a problémákkal kapcsolatban az alábbi információkat, beleértve a biztonsági házirendeket [Azure-támogatási lehetőségek](https://azure.microsoft.com/support/options/).
 
 ## <a name="sending-data-securely-using-tls-12"></a>A TLS 1.2-es biztonságos az adatok küldése 
 
@@ -86,7 +86,7 @@ Az alábbi táblázat az adattípusok példái láthatók:
 | Állapot |StateChangeEventId, StateId, NewHealthState, OldHealthState, környezet, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, monitorid attribútumként, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
 
 ## <a name="physical-security"></a>Fizikai biztonság
-A Log Analytics szolgáltatás kezeli a Microsoft ezért felelős munkatársai, és az összes tevékenység naplózása, és ellenőrizhető. A log Analytics egy Azure-szolgáltatásként működik, és megfelel-e az összes Azure-megfelelőségi és biztonsági követelményeknek. A 18 lapján tekintheti meg a fizikai biztonság az Azure-objektumok részleteit a [a Microsoft Azure biztonsági szolgáltatásainak áttekintése](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Fizikai hozzáférési jogosultsága ahhoz, hogy biztonságos területek bárki, aki már nem rendelkezik a Log Analytics szolgáltatással, beleértve az átvitel és a megszűnés felelősséget módosítja egy munkanapon belül. Itt olvashat a globális fizikai infrastruktúra használjuk, [Microsoft Datacenters](https://azure.microsoft.com/global-infrastructure/).
+A Log Analytics szolgáltatás kezeli a Microsoft ezért felelős munkatársai, és az összes tevékenység naplózása, és ellenőrizhető. A log Analytics egy Azure-szolgáltatásként működik, és megfelel-e az összes Azure-megfelelőségi és biztonsági követelményeknek. A 18 lapján tekintheti meg a fizikai biztonság az Azure-objektumok részleteit a [a Microsoft Azure biztonsági szolgáltatásainak áttekintése](https://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Fizikai hozzáférési jogosultsága ahhoz, hogy biztonságos területek bárki, aki már nem rendelkezik a Log Analytics szolgáltatással, beleértve az átvitel és a megszűnés felelősséget módosítja egy munkanapon belül. Itt olvashat a globális fizikai infrastruktúra használjuk, [Microsoft Datacenters](https://azure.microsoft.com/global-infrastructure/).
 
 ## <a name="incident-management"></a>incidenskezelés
 A log Analytics egy incidenskezelési folyamatának, amelyek az összes Microsoft-szolgáltatásokkal rendelkezik. Összefoglalva, hogy:

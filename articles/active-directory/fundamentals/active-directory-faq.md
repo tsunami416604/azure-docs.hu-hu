@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: lizross
-ms.openlocfilehash: 5ff9d1cf76188ff38f59e8b74d4bfd380c8c88e1
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: d58e5816c3b0e7c951c7d6bcfc6bfe4d0789f47a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408710"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233796"
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory – gyakori kérdések
 Az Azure Active Directory (Azure AD) egy átfogó szolgáltatott identitási (IDaaS) megoldás, amely az identitások, a hozzáférés-kezelés és a biztonság minden szempontját lefedi.
@@ -86,7 +86,7 @@ További információkért lásd: [Helyszíni identitások integrálása az Azur
 - - -
 **K: Az Azure AD-ben elérhető önkiszolgáló portál a szervezetemben lévő felhasználók számára?**
 
-**V:** Igen, az Azure AD az [Azure AD Hozzáférési panelén](http://myapps.microsoft.com) keresztül biztosítja a felhasználóknak az önkiszolgáló felületet és az alkalmazások elérését. Ha Ön Office 365-felhasználó, észreveheti, hogy számos képesség megegyezik az Office 365 portál képességeivel.
+**V:** Igen, az Azure AD az [Azure AD Hozzáférési panelén](https://myapps.microsoft.com) keresztül biztosítja a felhasználóknak az önkiszolgáló felületet és az alkalmazások elérését. Ha Ön Office 365-felhasználó, észreveheti, hogy számos képesség megegyezik az Office 365 portál képességeivel.
 
 További információkért lásd: [Bevezetés a Hozzáférési panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
 

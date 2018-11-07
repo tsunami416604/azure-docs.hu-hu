@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: roiyz
-ms.openlocfilehash: 134105ee2446f3c7bf0f19e2f9611597ee9bedfe
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: ddb999c252f0802ef57942de694340ae29f2d8ba
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451952"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240358"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>A Trend Micro Deep Security szolgáltatásként való telepítése és konfigurálása windowsos virtuális gépen
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
@@ -30,7 +30,7 @@ Az ügyfél biztonsági bővítményeként keresztül a Virtuálisgép-ügynök 
 
 Egy meglévő virtuális gép létrehozása az Azure portal, az Azure CLI vagy a PowerShell használatával lehet, hogy rendelkezik egy Virtuálisgép-ügynök. Meglévő virtuális gép, amelyen a Virtuálisgép-ügynök nincs telepítve letöltése és telepítése, először szüksége. Ez a cikk ismerteti mind helyzetekben.
 
-Ha egy helyszíni megoldás a Trend Micro érvényes előfizetéssel rendelkezik, használhatja az Azure-beli virtuális gépek védelme érdekében. Ha még nem vagyunk ügyfél, akkor regisztráljon egy próba-előfizetést. Ez a megoldás kapcsolatos további információkért lásd: a Trend Micro blogbejegyzést [a Microsoft Azure VM Agent bővítmény a Deep Security](http://go.microsoft.com/fwlink/p/?LinkId=403945).
+Ha egy helyszíni megoldás a Trend Micro érvényes előfizetéssel rendelkezik, használhatja az Azure-beli virtuális gépek védelme érdekében. Ha még nem vagyunk ügyfél, akkor regisztráljon egy próba-előfizetést. Ez a megoldás kapcsolatos további információkért lásd: a Trend Micro blogbejegyzést [a Microsoft Azure VM Agent bővítmény a Deep Security](https://go.microsoft.com/fwlink/p/?LinkId=403945).
 
 ## <a name="install-the-deep-security-agent-on-a-new-vm"></a>A Deep Security Agent telepítése egy új virtuális Gépre
 
@@ -67,7 +67,7 @@ Először is győződjön meg arról, hogy a Virtuálisgép-ügynök már telep�
 
 Ha nem ismeri a felhőszolgáltatás és a virtuális gép nevét, futtassa **Get-AzureVM** , hogy a virtuális gépek adatainak megjelenítése az aktuális előfizetésben.
 
-Ha a **write-host** értéket ad vissza a parancs **igaz**, a Virtuálisgép-ügynök telepítve van. Ha a visszaadott érték **false (hamis)**, tekintse meg az utasításokat, és az Azure ebben a blogbejegyzésben a letöltésére mutató hivatkozást [Virtuálisgép-ügynök és -bővítmények – 2. rész](http://go.microsoft.com/fwlink/p/?LinkId=403947).
+Ha a **write-host** értéket ad vissza a parancs **igaz**, a Virtuálisgép-ügynök telepítve van. Ha a visszaadott érték **false (hamis)**, tekintse meg az utasításokat, és az Azure ebben a blogbejegyzésben a letöltésére mutató hivatkozást [Virtuálisgép-ügynök és -bővítmények – 2. rész](https://go.microsoft.com/fwlink/p/?LinkId=403947).
 
 Ha a Virtuálisgép-ügynök van telepítve, futtassa a következő parancsokat.
 
@@ -78,9 +78,9 @@ Ha a Virtuálisgép-ügynök van telepítve, futtassa a következő parancsokat.
 ## <a name="next-steps"></a>További lépések
 Az ügynök indítsa el a telepítés néhány percet vesz igénybe. Ezt követően kell aktiválnia a virtuális gépen Deep Security, így azt a Deep Security Manager kezelhetők. További útmutatást a következő cikkekben talál:
 
-* Trend a cikk arról, hogy ez a megoldás [Instant-On Cloud Security for Microsoft Azure](http://go.microsoft.com/fwlink/?LinkId=404101)
-* A [Windows PowerShell-mintaparancsfájl](http://go.microsoft.com/fwlink/?LinkId=404100) a virtuális gép konfigurálása
-* [Utasítások](http://go.microsoft.com/fwlink/?LinkId=404099) a minta
+* Trend a cikk arról, hogy ez a megoldás [Instant-On Cloud Security for Microsoft Azure](https://go.microsoft.com/fwlink/?LinkId=404101)
+* A [Windows PowerShell-mintaparancsfájl](https://go.microsoft.com/fwlink/?LinkId=404100) a virtuális gép konfigurálása
+* [Utasítások](https://go.microsoft.com/fwlink/?LinkId=404099) a minta
 
 ## <a name="additional-resources"></a>További források
 [Hogyan lehet bejelentkezni a Windows Server rendszerű virtuális gép]

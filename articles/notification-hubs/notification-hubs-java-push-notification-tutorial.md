@@ -14,19 +14,19 @@ ms.devlang: java
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: fe20cf9c9137dc1ca41d3b8e2445bac079fb33fc
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: a7ced71f2d0a8c5d956bbdbcd8fcae485aee3fc6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42061376"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241572"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>A Notification Hubs javából használata
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
 Ez a témakör ismerteti az új teljes mértékben támogatott hivatalos Azure Notification Hub Java SDK fő funkcióira. Ez a projekt egy nyílt forráskódú projekt, és megtekintheti a teljes SDK kódot [Java SDK]. 
 
-Általánosságban elmondható, elérheti az összes Notification Hubs szolgáltatás háttérrendszerből egy Java/PHP vagy Python vagy Ruby használatával a Notification Hub REST-felület, az MSDN-témakörben leírtak szerint [Notification Hubs – REST API-k](http://msdn.microsoft.com/library/dn223264.aspx). A Java SDK-val dinamikusan burkolót biztosít a REST-felületeihez Java-környezetben keresztül. 
+Általánosságban elmondható, elérheti az összes Notification Hubs szolgáltatás háttérrendszerből egy Java/PHP vagy Python vagy Ruby használatával a Notification Hub REST-felület, az MSDN-témakörben leírtak szerint [Notification Hubs – REST API-k](https://msdn.microsoft.com/library/dn223264.aspx). A Java SDK-val dinamikusan burkolót biztosít a REST-felületeihez Java-környezetben keresztül. 
 
 Az SDK jelenleg támogatja:
 

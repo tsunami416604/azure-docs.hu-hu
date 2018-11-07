@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 2efaae7794cf5f12719d3d1420d9db6903592559
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: a0dc515bb6a4cbf0395dc1407ca65edd5d517d15
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913189"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261591"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Adatgyűjtés, a Log Analytics az Azure Automation-runbook
 Számos különféle forrásból például gyűjthet adatokat a Log Analytics jelentős mennyiségű [adatforrások](../log-analytics/log-analytics-data-sources.md) ügynökökön és is [adatokat gyűjteni az Azure-ból](../log-analytics/log-analytics-azure-storage.md).  Vannak olyan forgatókönyvek ellenére, hogy hol kell gyűjtenie az adatokat, amely nem érhető el standard források segítségével.  Ezekben az esetekben használhatja a [HTTP-adatgyűjtő API](../log-analytics/log-analytics-data-collector-api.md) használatával írhat adatokat a Log Analyticsbe bármely REST API-ügyfélből.  Egy általános módszer az adatgyűjtést az Azure Automation runbook használ.   
@@ -145,7 +145,7 @@ Az Azure Automation tartalmaz egy környezetet [tesztelheti a runbookját](../au
     ![POST-kimenet](media/monitoring-runbook-datacollect/post-output.png)
 
 ## <a name="5-verify-records-in-log-analytics"></a>5. A Log Analytics ellenőrzése
-Miután befejeződött a runbook tesztelése, és ellenőrizte, hogy a kimenet sikeresen megérkezett, ellenőrzéséhez, hogy a rekordok használatával létrehozott egy [a Log Analytics naplóbeli keresés](../log-analytics/log-analytics-log-search.md).
+Miután befejeződött a runbook tesztelése, és ellenőrizte, hogy a kimenet sikeresen megérkezett, ellenőrzéséhez, hogy a rekordok használatával létrehozott egy [a Log Analytics naplóbeli keresés](../log-analytics/log-analytics-queries.md).
 
 ![Napló kimenetét](media/monitoring-runbook-datacollect/log-output.png)
 

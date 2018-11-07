@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 1ae68e8eac3baca53cda603769a89bc6a84fd468
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 74e963abe5d2798f72bce8212c9f761f8f3297d1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405924"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256935"
 ---
 # <a name="the-azure-sql-database-service"></a>Az Azure SQL Database szolgáltatásban
 
@@ -101,7 +101,7 @@ Az SQL Database emellett [metrikák és diagnosztikai naplók kibocsátásával]
 
 ## <a name="availability-capabilities"></a>Rendelkezésre állás
 
-Az Azure szolgáltatói szerződésében [(SLA)](http://azure.microsoft.com/support/legal/sla/) az ágazatban élenjáró módon 99,99 százalékos elérhetőséget biztosítunk – a Microsoft által kezelt adatbázisok globális hálózata teszi lehetővé, hogy alkalmazása a hét mind a 7 napján, napi 24 órában fusson. Az Azure platform teljes mértékben felügyeli az összes Azure SQL Database-példányt, garantálva az adatvesztés kiküszöbölését és az adatok nagy arányú rendelkezésre állását. Az Azure automatikusan kezeli a javításokat, a biztonsági mentéseket, a replikációt, a hibaészlelést, a háttérben álló lehetséges hardver-, szoftver- vagy hálózati hibákat, a hibajavítások telepítését, a feladatátvételeket, adatbázis-frissítéseket és az egyéb karbantartási műveleteket. A standard szintű rendelkezésre állás a számítási és tárolási rétegek elkülönítését foglalja magában. Prémium szintű rendelkezésre állás integrálása a számítási és tárolási teljesítmény egyetlen csomóponton, és majd megvalósítása az Always On rendelkezésre állási csoportok valójában hasonló technológia érhető el. Teljes az Azure SQL Database magas rendelkezésre állású lehetőségeit, lásd: [SQL adatbázis-elérhetőségi](sql-database-high-availability.md). Az SQL Database ezen felül olyan beépített funkciókkal szolgálja [az üzletmenet folytonosságát és a globális méretezhetőséget](sql-database-business-continuity.md), mint például a következők:
+Az Azure szolgáltatói szerződésében [(SLA)](https://azure.microsoft.com/support/legal/sla/) az ágazatban élenjáró módon 99,99 százalékos elérhetőséget biztosítunk – a Microsoft által kezelt adatbázisok globális hálózata teszi lehetővé, hogy alkalmazása a hét mind a 7 napján, napi 24 órában fusson. Az Azure platform teljes mértékben felügyeli az összes Azure SQL Database-példányt, garantálva az adatvesztés kiküszöbölését és az adatok nagy arányú rendelkezésre állását. Az Azure automatikusan kezeli a javításokat, a biztonsági mentéseket, a replikációt, a hibaészlelést, a háttérben álló lehetséges hardver-, szoftver- vagy hálózati hibákat, a hibajavítások telepítését, a feladatátvételeket, adatbázis-frissítéseket és az egyéb karbantartási műveleteket. A standard szintű rendelkezésre állás a számítási és tárolási rétegek elkülönítését foglalja magában. Prémium szintű rendelkezésre állás integrálása a számítási és tárolási teljesítmény egyetlen csomóponton, és majd megvalósítása az Always On rendelkezésre állási csoportok valójában hasonló technológia érhető el. Teljes az Azure SQL Database magas rendelkezésre állású lehetőségeit, lásd: [SQL adatbázis-elérhetőségi](sql-database-high-availability.md). Az SQL Database ezen felül olyan beépített funkciókkal szolgálja [az üzletmenet folytonosságát és a globális méretezhetőséget](sql-database-business-continuity.md), mint például a következők:
 
 - **[Automatikus biztonsági mentések](sql-database-automated-backups.md)**:
 
@@ -200,7 +200,7 @@ Az SQL Database támogatja a Python, Java, Node.js, PHP, Ruby, és .NET alkalmaz
 - [DBA-veremcsere](https://dba.stackexchange.com/questions/tagged/sql-server): Kérdések az adatbázis rendszergazdájának
 - [Veremtúlcsordulás](http://stackoverflow.com/questions/tagged/sql-server): Kérdések a fejlesztőknek
 - [MSDN fórumok](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): Műszaki kérdések
-- [Visszajelzés](http://aka.ms/sqlfeedback): Hibák jelentése és funkciók kérése
+- [Visszajelzés](https://aka.ms/sqlfeedback): Hibák jelentése és funkciók kérése
 - [Reddit](https://www.reddit.com/r/SQLServer/): Az SQL Server megvitatása
 
 ## <a name="next-steps"></a>További lépések

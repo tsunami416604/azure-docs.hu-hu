@@ -10,12 +10,12 @@ ms.component: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 9/24/2018
-ms.openlocfilehash: f221d160685dd12fb18a611432911baa60ebc6f7
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 4d25e147044053aa76afe2da482b71c24efc2325
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888110"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242874"
 ---
 # <a name="development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet 
 
@@ -59,7 +59,7 @@ Javasoljuk, hogy [Visual Studio Code](https://code.visualstudio.com/), ahogy az 
 
 ## <a name="data-science-virtual-machine"></a>Adatelemzési virtuális gép
 
-Az adatelemzési virtuális gép (DSVM) az előző környezetek kombinációját. Az Azure platformon, amely rendelkezik a Jupyter Notebooks, Visual Studio Code és az Azure Machine Learning SDK előre telepített virtuális gép. A virtuális gép létrehozása a bonyolultabb, mint az Azure Notebookokat, de kevésbé összetett, mint az előzmények egy gép beállításához. Mivel a szükséges szoftver előre telepítve van a Virtuálisgép-lemezképben található, elkezdheti a kísérletezés az Azure Machine Learning gyorsan a virtuális gép létrehozása után.
+Az adatelemzési virtuális gép (DSVM) az előző környezetek kombinációját. Az Azure platformon, amely rendelkezik a Jupyter Notebooks, Visual Studio Code és az Azure Machine Learning SDK előre telepített virtuális gép. Mivel a szükséges szoftver előre telepítve van a Virtuálisgép-lemezképben található, elkezdheti a kísérletezés az Azure Machine Learning gyorsan a virtuális gép létrehozása után.
 
 A dsvm-hez van szüksége, mint például a Processzor, a grafikus Processzor és memória számítási erőforrások kiválasztását teszi lehetővé. Azt is előre telepítve van az egyéb szerkesztők, mint a PyCharm, valamint népszerű machine learning-szoftverek – például a TensorFlow, a Keras és a PyTorch. Ha a szükséges szoftver nincs telepítve, telepítheti saját magának.
 

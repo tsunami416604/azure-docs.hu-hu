@@ -9,16 +9,16 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: e4eea3cb4b16460c7e17bb6575c4e6cf8dda5a0a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7a4aae87cd704cf94c89c308c0c056ae5b9a8b4d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047254"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251002"
 ---
 # <a name="export-a-u-sql-database"></a>U-SQL-adatbázis exportálása
 
-Ebből a cikkből megtudhatja, hogyan használható [Azure Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs) U-SQL-adatbázisok exportálását egy U-SQL parancsfájl és a letöltött erőforrásokhoz. Importálhatja az exportált adatbázis egy helyi fiók ugyanabban a folyamatban.
+Ebből a cikkből megtudhatja, hogyan használható [Azure Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs) U-SQL-adatbázisok exportálását egy U-SQL parancsfájl és a letöltött erőforrásokhoz. Importálhatja az exportált adatbázis egy helyi fiók ugyanabban a folyamatban.
 
 Ügyfelek általában több fejlesztési, tesztelési és éles környezetek karbantartása. Ezekben a környezetekben egyaránt egy helyi fiók, egy fejlesztői helyi számítógépen, és a egy Azure Data Lake Analytics-fiókban, az Azure-ban üzemel. 
 
@@ -35,7 +35,7 @@ Minden Data Lake Analytics-fiók, amely rendelkezik engedélyekkel a Server Expl
    
     ![Server Explorer - adatbázis exportálása](./media/data-lake-analytics-data-lake-tools-export-database/export-database.png)
 
-     Ha a **exportálása** menüpont nem érhető el, újra kell [frissítse az eszközt a legfrissebb kiadás](http://aka.ms/adltoolsvs).
+     Ha a **exportálása** menüpont nem érhető el, újra kell [frissítse az eszközt a legfrissebb kiadás](https://aka.ms/adltoolsvs).
 
 ### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>2. lépés: Konfigurálja az exportálandó objektumokat
 

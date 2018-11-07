@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 32881f815a714e355adf05c07a3cf114933f3fe9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f865768e6ebfd9e01de1bd7e69c1224b66f2ea5e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39531550"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231788"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>A Microsoft Azure Storage teljesítmény- és méretezhetőségi ellenőrzőlistája
 ## <a name="overview"></a>Áttekintés
@@ -90,7 +90,7 @@ Az Azure Storage szolgáltatás mindegyike rendelkezik kapacitás (GB), a tranza
 * [Üzenetsorbeli üzenetek / másodperc](#subheading39)  
 
 #### <a name="sub1bandwidth"></a>A sávszélesség méretezhetőségi Célértékét szolgáltatásokhoz
-Írása idején a sávszélesség célokat, az Egyesült Államokban, a georedundáns tárolás (GRS) fiók 10 Gigabit / másodperc (Gbps) a bejövő (a storage-fiókjába küldött adatok) és a 20 GB/s kimenő (a storage-fiók által küldött adatokat). Helyileg redundáns tárolás (LRS) fiók esetén a korlátok a következők magasabb – 20 GB/s a bejövő és kimenő 30 GB/s.  Nemzetközi sávszélességkorlátok lehet alacsonyabb, és találhatók a [méretezhetőségi célok lap](http://msdn.microsoft.com/library/azure/dn249410.aspx).  A storage redundanciabeállításai további információkért tekintse meg a hivatkozásokat a [hasznos források](#sub1useful) alatt.  
+Írása idején a sávszélesség célokat, az Egyesült Államokban, a georedundáns tárolás (GRS) fiók 10 Gigabit / másodperc (Gbps) a bejövő (a storage-fiókjába küldött adatok) és a 20 GB/s kimenő (a storage-fiók által küldött adatokat). Helyileg redundáns tárolás (LRS) fiók esetén a korlátok a következők magasabb – 20 GB/s a bejövő és kimenő 30 GB/s.  Nemzetközi sávszélességkorlátok lehet alacsonyabb, és találhatók a [méretezhetőségi célok lap](https://msdn.microsoft.com/library/azure/dn249410.aspx).  A storage redundanciabeállításai további információkért tekintse meg a hivatkozásokat a [hasznos források](#sub1useful) alatt.  
 
 #### <a name="what-to-do-when-approaching-a-scalability-target"></a>Mi a teendő, ha hamarosan eléri a skálázhatósági célok
 Ha az alkalmazás már majdnem elérte az egy tárfiókban skálázási célértékei, vegye figyelembe, vezetnek be a következő módszerek egyikét:  
@@ -104,7 +104,7 @@ Ha az alkalmazás már majdnem elérte az egy tárfiókban skálázási célért
 Az alábbi hivatkozások további részleteket a skálázhatósági célokat adjon meg:
 
 * Lásd: [Azure Storage méretezhetőségi és Teljesítménycéljai](storage-scalability-targets.md) teljesítménycélokat kapcsolatos információkat.
-* Lásd: [Azure Storage replikáció](storage-redundancy.md) és a blogbejegyzést [Azure Storage Redundanciabeállításainál és olvasási-Access Geo Redundant Storage](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx) storage redundanciabeállításai kapcsolatos információkat.
+* Lásd: [Azure Storage replikáció](storage-redundancy.md) és a blogbejegyzést [Azure Storage Redundanciabeállításainál és olvasási-Access Geo Redundant Storage](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx) storage redundanciabeállításai kapcsolatos információkat.
 * Az Azure-szolgáltatásokhoz díjszabással kapcsolatos aktuális információkért lásd: [az Azure díjszabása](https://azure.microsoft.com/pricing/overview/).  
 
 ### <a name="subheading47"></a>Partícióelnevezési konvenciót
@@ -149,7 +149,7 @@ Mindkét technológiát segítségével elkerülhető a felesleges terhelést (�
 #### <a name="useful-resources"></a>Hasznos segédanyagok
 További információ a SAS: [közös hozzáférési aláírások, 1. rész: a SAS-modell ismertetése](../storage-dotnet-shared-access-signature-part-1.md).  
 
-A CORS kapcsolatos további információkért lásd: [eltérő eredetű erőforrások megosztása (CORS) támogatása az Azure Storage szolgáltatásainak](http://msdn.microsoft.com/library/azure/dn535601.aspx).  
+A CORS kapcsolatos további információkért lásd: [eltérő eredetű erőforrások megosztása (CORS) támogatása az Azure Storage szolgáltatásainak](https://msdn.microsoft.com/library/azure/dn535601.aspx).  
 
 ### <a name="caching"></a>Gyorsítótárazás
 #### <a name="subheading7"></a>Adatok beolvasása
@@ -159,7 +159,7 @@ Bizonyos esetekben előfordulhat, hogy úgy dönt, hogy az alkalmazás feltétel
 
 Konfigurációs, keresési és egyéb adatok mindig az alkalmazás által használt leginkább alkalmasak a gyorsítótárazáshoz.  
 
-A blob tulajdonságai felderíteni a .NET használatával utolsó módosítási dátumának lekérése egy példa: [beállítása és beolvasni a tulajdonságok és metaadatok](../blobs/storage-properties-metadata.md). Feltételes letöltések kapcsolatos további információkért lásd: [feltételesen frissítése egy Blob egy helyi példányát](http://msdn.microsoft.com/library/azure/dd179371.aspx).  
+A blob tulajdonságai felderíteni a .NET használatával utolsó módosítási dátumának lekérése egy példa: [beállítása és beolvasni a tulajdonságok és metaadatok](../blobs/storage-properties-metadata.md). Feltételes letöltések kapcsolatos további információkért lásd: [feltételesen frissítése egy Blob egy helyi példányát](https://msdn.microsoft.com/library/azure/dd179371.aspx).  
 
 #### <a name="subheading8"></a>Adatok kötegelt feltöltése
 Bizonyos esetekben az összesített adatok helyben, és majd rendszeres időközönként töltse fel egy kötegben minden adat feltöltése azonnal helyett. Például egy webalkalmazás előfordulhat, hogy tartsa a tevékenységek naplófájlt: az alkalmazás vagy feltölthet minden tevékenység részleteinek (amelyhez szükséges számos tárolási műveletek) tábla egységként történik, vagy egy helyi naplófájlba tevékenység részletei menthető, majd rendszeres időközönként tagolt fájl egy blobba, töltse fel minden tevékenység részletei. Ha minden naplóbejegyzés 1KB méretű, feltöltheti a több ezer egyetlen "Put Blob" tranzakció (akkor is feltölt egy blobot egy tranzakción belül mérete legfeljebb 64 MB). Természetesen Ha a helyi gépen a feltöltés előtt összeomlik, esetleg néhány log adatok elvesznek: az alkalmazás fejlesztőjének kell az ügyféleszközön lehetőségét tervezése vagy feltöltési hibák.  Ha az a tevékenység adatokat le kell tölteni a mérföldkövei (nem csak egyetlen tevékenység), majd blobok használata akkor javasolt táblák keresztül.
@@ -178,7 +178,7 @@ A kapcsolathoz megadott korlátot, minden olyan kapcsolat megnyitása előtt be 
 
 Más programozási nyelven dokumentációjában adott nyelvhez, hogyan lehet beállítani a kapcsolathoz megadott korlátot.  
 
-További információkért lásd: a következő blogbejegyzésben: [webszolgáltatások: az egyidejű kapcsolatok](http://blogs.msdn.com/b/darrenj/archive/2005/03/07/386655.aspx).  
+További információkért lásd: a következő blogbejegyzésben: [webszolgáltatások: az egyidejű kapcsolatok](https://blogs.msdn.com/b/darrenj/archive/2005/03/07/386655.aspx).  
 
 #### <a name="subheading10"></a>Növelje a szálkészlet minimális szálak, ha az aszinkron feladatokat szinkron kód használatával
 Ez a kód növeli a hozzászóláslánc készlet minimális szálak:  
@@ -187,12 +187,12 @@ Ez a kód növeli a hozzászóláslánc készlet minimális szálak:
 ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 ```
 
-További információkért lásd: [ThreadPool.SetMinThreads metódus](http://msdn.microsoft.com/library/system.threading.threadpool.setminthreads%28v=vs.110%29.aspx).  
+További információkért lásd: [ThreadPool.SetMinThreads metódus](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads%28v=vs.110%29.aspx).  
 
 #### <a name="subheading11"></a>Használja ki a .NET 4.5-ös szemétgyűjtés
 .NET 4.5-ös vagy újabb, az ügyfél alkalmazás segítségével kihasználhatja a kiszolgáló szemétgyűjtési teljesítménnyel kapcsolatos fejlesztések.
 
-További információkért tekintse meg a cikket [egy áttekintés a teljesítménnyel kapcsolatos fejlesztések a .NET 4.5 rendszerben](http://msdn.microsoft.com/magazine/hh882452.aspx).  
+További információkért tekintse meg a cikket [egy áttekintés a teljesítménnyel kapcsolatos fejlesztések a .NET 4.5 rendszerben](https://msdn.microsoft.com/magazine/hh882452.aspx).  
 
 ### <a name="subheading12"></a>Korlátlan streameken működő párhuzamosság
 Párhuzamosság kiváló teljesítmény lehetnek, legyen óvatos a korlátlan streameken működő párhuzamosság (nincsenek korlátozva a szálak és/vagy párhuzamos kérelmek száma) fel-vagy le adatot, feldolgozó több partíciót eléréséhez használt használatáról (tárolók, üzenetsorok, vagy táblapartíciók) ugyanazt a tárfiókot, vagy ugyanazon a partíción több elemek eléréséhez. Ha a párhuzamosság korlátlan streameken működő, az alkalmazás is lehet használni az ügyféleszköz-képességek, vagy a storage-fiók méretezhetőség eredményez a késés és sávszélesség-szabályozási célozza meg benne.  
@@ -210,7 +210,7 @@ Vegye figyelembe, hogy kapcsolódási hibák újra meg lehet próbálni azonnal,
 A klienskódtárak, mely hibák újrapróbálkozási képes, és nem ismeri el. Ha a saját kódját a storage REST API-t, ne feledje azonban, hogy nem kell próbálkoznia hibásak: például 400 (hibás kérés) válasz azt jelzi, hogy az ügyfélalkalmazás nem sikerült feldolgozni, mert nem volt kérés érkezett egy várt formátumban. A kérelem újraküldése eredményeként ugyanazt a választ minden alkalommal, így nincs újrapróbálkozás, a pont. Ha a storage REST API-t a saját kódot kell írnia, vegye figyelembe hibakódok jelenti azt, és a megfelelő módszer újra (vagy nem) mindegyikük számára.  
 
 #### <a name="useful-resources"></a>Hasznos segédanyagok
-Tárolási hibakódokkal kapcsolatban további információkért lásd: [állapota és hibakódok](http://msdn.microsoft.com/library/azure/dd179382.aspx) a Microsoft Azure-webhelyen.  
+Tárolási hibakódokkal kapcsolatban további információkért lásd: [állapota és hibakódok](https://msdn.microsoft.com/library/azure/dd179382.aspx) a Microsoft Azure-webhelyen.  
 
 ## <a name="blobs"></a>Blobok
 A bevált gyakorlatokat mellett [minden szolgáltatás](#allservices) korábban leírt, a következő bevált eljárások alkalmazni a blob szolgáltatáshoz.  
@@ -236,7 +236,7 @@ Egyik ilyen megfontolandó, azonban nem, hogy másolása tárfiókok között, h
 
 Vegye figyelembe, hogy az adott tárfiók magának másolatot általában befejeződött gyorsan.  
 
-További információkért lásd: [a Blob másolásához](http://msdn.microsoft.com/library/azure/dd894037.aspx).  
+További információkért lásd: [a Blob másolásához](https://msdn.microsoft.com/library/azure/dd894037.aspx).  
 
 #### <a name="subheading18"></a>Az AzCopy használata
 Az Azure Storage csapat kiadott "AzCopy" parancssori eszköz, amely a hivatott kiküszöbölni tömeges átvitele számú blobot, valamint a tárfiókok között.  Ezt az eszközt ebben a forgatókönyvben van optimalizálva, és magas átviteli sebességet érhet el.  Tömeges feltöltése, letöltése és másolási forgatókönyvek esetén a javasolt annak használatára. Tudjon meg többet, és töltheti le: [adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md).  
@@ -266,7 +266,7 @@ A blobfeltöltéshez számos gyorsan, a blobfeltöltéshez párhuzamosan. Ez a g
 ### <a name="subheading23"></a>A megfelelő típusú blob kiválasztása
 Az Azure Storage blob két típusát támogatja: *oldal* blobok és *blokk* blobok. Adott használati esethez blob típusa a kívánt teljesítményét és méretezhetőségét, hogy a megoldás hatással lesz. A blokkblobok megfelelőek, amikor nagy mennyiségű adat hatékonyan feltölteni kívánt: például egy ügyfélalkalmazás is kell fénykép vagy videó feltöltése a blob storage. A lapblobok megfelelőek, ha az alkalmazásnak kell adatmennyiségek véletlenszerű írását az adatokon végrehajtandó: például az Azure virtuális merevlemezeket lapblobként tárolt.  
 
-További információkért lásd: [Understanding Block Blobs, hozzáfűző blobokat és Lapblobokat](http://msdn.microsoft.com/library/azure/ee691964.aspx).  
+További információkért lásd: [Understanding Block Blobs, hozzáfűző blobokat és Lapblobokat](https://msdn.microsoft.com/library/azure/ee691964.aspx).  
 
 ## <a name="tables"></a>Táblák
 A bevált gyakorlatokat mellett [minden szolgáltatás](#allservices) korábban leírt, a következő bevált eljárások alkalmazni a kifejezetten a table service.  
@@ -286,12 +286,12 @@ Ez a szakasz felsorolja a több gyors konfigurációs beállítások segítség�
 #### <a name="subheading25"></a>Használjon JSON
 2013-08-15 storage szolgáltatás verzióval kezdve a table service támogatja a JSON az XML-alapú AtomPub formátum helyett tábla adatátvitelre. Ez hasznos adat mérete kevesebb mint 75 %-kal csökkentheti, és jelentősen javíthatja az alkalmazás teljesítményét.
 
-További információkért tekintse meg a bejegyzését [a Microsoft Azure-beli táblák: JSON ismertetésében](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) és [adattartalom formátuma a Table Service műveletek](http://msdn.microsoft.com/library/azure/dn535600.aspx).
+További információkért tekintse meg a bejegyzését [a Microsoft Azure-beli táblák: JSON ismertetésében](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) és [adattartalom formátuma a Table Service műveletek](https://msdn.microsoft.com/library/azure/dn535600.aspx).
 
 #### <a name="subheading26"></a>Nagle kikapcsolása
 A Nagle algoritmus széles körben van megvalósítva TCP/IP-hálózatokon keresztül való hálózati teljesítmény javításához. Azonban akkor sem optimális minden körülmények között (például az interaktív környezetekben). Az Azure Storage esetében Nagle a algoritmus negatív hatással van a tábla és üzenetsor szolgáltatásokra irányuló kérések teljesítményét, és tiltsa le, ha lehetséges.  
 
-További információkért lásd: a blogbejegyzést [Nagle az algoritmus a kis méretű kérések felé nem valódi](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx), amely azt ismerteti, miért Nagle a algoritmus tábla és üzenetsor kérések rosszul kommunikál, és bemutatja, hogyan tilthatja le a az ügyfélben az alkalmazás.  
+További információkért lásd: a blogbejegyzést [Nagle az algoritmus a kis méretű kérések felé nem valódi](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx), amely azt ismerteti, miért Nagle a algoritmus tábla és üzenetsor kérések rosszul kommunikál, és bemutatja, hogyan tilthatja le a az ügyfélben az alkalmazás.  
 
 ### <a name="schema"></a>Séma
 Hogyan felel meg, és lekérdezheti az adatokat az a legnagyobb egyetlen szolgáltatás, amely befolyásolja a teljesítményt, a table Service. Bár minden alkalmazás különböző, az ebben a szakaszban néhány általános kapcsolódó bevált eljárásokat ismerteti:  
@@ -320,7 +320,7 @@ A "Hozzáfűzése csak" a minta akkor egyet, ahol a forgalmat egy adott PK minde
 ##### <a name="subheading29"></a>Nagy forgalmú adatok
 Ha a particionálási sémát, amely csak az adatok, amelyekkel jobban, mint a többi partíción rendelkezik egy partíció eredményez, mint szabályozása, hogy a partíció megközelíti a skálázhatósági célok partícióinak is látni.  Győződjön meg arról, hogy a partícióséma eredményez nincs egyetlen partíció hamarosan eléri a skálázhatósági célokat, akkor célszerűbb.  
 
-#### <a name="querying"></a>Lekérdezése
+#### <a name="querying"></a>Lekérdezés
 Ez a szakasz ismerteti a lekérdezés a table service bevált eljárásokat.  
 
 ##### <a name="subheading30"></a>Lekérdezés hatókörébe

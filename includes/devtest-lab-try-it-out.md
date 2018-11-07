@@ -3,5 +3,5 @@ Most ismerkedik az Azure-ral? [Ingyenes Azure-fiók létrehozása](https://azure
 
 Már használja az Azure-t? Ismerkedés a DevTest Labs szolgáltatásban létrehozott első labor.
 
-[![Percek alatt elsajátíthatja az Azure DevTest Labs használatát](./media/devtest-lab-try-it-out/get-started.png)](http://go.microsoft.com/fwlink/?LinkID=627034&clcid=0x409)
+[![Percek alatt elsajátíthatja az Azure DevTest Labs használatát](./media/devtest-lab-try-it-out/get-started.png)](https://go.microsoft.com/fwlink/?LinkID=627034&clcid=0x409)
 

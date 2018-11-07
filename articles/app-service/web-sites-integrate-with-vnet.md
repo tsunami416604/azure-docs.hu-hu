@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: ccompy
-ms.openlocfilehash: 5eab09d5dffe16517e8c18eb0281716618ca0286
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 5e7a2150757afeecb6b0b100f3259f1628f42074
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166223"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262080"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása az Azure-beli virtuális hálózathoz
-Ez a dokumentum ismerteti az Azure App Service virtuális hálózat integrációja, és bemutatja, hogyan állíthatja be az Apps [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). Ha ismeri az Azure-beli virtuális hálózatok (Vnetek), akkor egy olyan funkció, amely lehetővé teszi számos, az Azure-erőforrások elérését Ön szabályozza a nem internet routeable hálózat helyezni. Ezek a hálózatok csatlakozhat a helyszíni hálózataihoz többféle VPN technológia használatával. További tudnivalók az Azure-beli virtuális hálózatok, az adatok itt kezdje: [Azure Virtual Network áttekintése][VNETOverview]. 
+Ez a dokumentum ismerteti az Azure App Service virtuális hálózat integrációja, és bemutatja, hogyan állíthatja be az Apps [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Ha ismeri az Azure-beli virtuális hálózatok (Vnetek), akkor egy olyan funkció, amely lehetővé teszi számos, az Azure-erőforrások elérését Ön szabályozza a nem internet routeable hálózat helyezni. Ezek a hálózatok csatlakozhat a helyszíni hálózataihoz többféle VPN technológia használatával. További tudnivalók az Azure-beli virtuális hálózatok, az adatok itt kezdje: [Azure Virtual Network áttekintése][VNETOverview]. 
 
 Az Azure App Service rendelkezik két formában. 
 

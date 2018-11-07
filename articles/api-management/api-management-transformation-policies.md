@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 29e918733cc72010aa6aa5c0f42d613331eec2a2
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 6796ecd272c7a1ed1d29c89fbe06c87dc2d4601b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044722"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242806"
 ---
 # <a name="api-management-transformation-policies"></a>Az API Management átalakítási szabályzatok
-Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](http://go.microsoft.com/fwlink/?LinkID=398186).
+Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](https://go.microsoft.com/fwlink/?LinkID=398186).
 
 ##  <a name="TransformationPolicies"></a> Átalakítási szabályzatok
 
@@ -83,7 +83,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |Parse-dátuma|Ha a beállítása `false` dátumértékeket egyszerűen másolja átalakítás során|Nem|true|
 
 ### <a name="usage"></a>Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **A házirend-szakaszok:** bejövő, kimenő, – hiba
 
@@ -127,7 +127,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |Fontolja meg – fogadja el-fejléc|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> átalakítás – igaz - alkalmazni, ha XML van szükség a kérelem Accept fejlécet.<br />-false - mindig érvényes átalakítás.|Nem|true|
 
 ### <a name="usage"></a>Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **A házirend-szakaszok:** bejövő, kimenő, – hiba
 
@@ -162,7 +162,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |erre:|A behelyettesítendő karakterlánc. Adja meg a nulla hosszúságú helyettesítő karakterláncok eltávolítása a keresési karakterláncot.|Igen|–|
 
 ### <a name="usage"></a>Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **A házirend-szakaszok:** bejövő, kimenő, háttér, – hiba
 
@@ -193,7 +193,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |redirect-content-urls|A gyökérelem.|Igen|
 
 ### <a name="usage"></a>Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **A házirend-szakaszok:** bejövő, kimenő
 
@@ -269,7 +269,7 @@ Ebben a példában a házirend továbbítja a kérést egy service fabric hátt�
 |sf-listener-name|Csak akkor alkalmazható, ha a háttérrendszer egy Service Fabric-szolgáltatás, és meghatározott backend-id használatával. Service Fabric Reliable Services lehetővé teszi, hogy hozzon létre több kérésfigyelőt egy szolgáltatásban. Ez az attribútum egy adott hallgató válassza, ha egy háttérszolgáltatás Reliable Services rendelkezik több figyelő szolgál. Ha ez az attribútum nincs megadva, az API Management megkísérli használja egy figyelő név nélkül. Egy figyelő név nélkül, amely csak egyetlen figyelője működik, a Reliable Services – jellemző. |Nem|–|
 
 ### <a name="usage"></a>Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **A házirend-szakaszok:** bejövő, háttér
 
@@ -308,12 +308,12 @@ Ebben a példában a házirend továbbítja a kérést egy service fabric hátt�
 
 ```xml
 <set-body>
-@{ 
-    string inBody = context.Request.Body.As<string>(preserveContent: true); 
-    if (inBody[0] =='c') { 
-        inBody[0] = 'm'; 
-    } 
-    return inBody; 
+@{ 
+    string inBody = context.Request.Body.As<string>(preserveContent: true); 
+    if (inBody[0] =='c') { 
+        inBody[0] = 'm'; 
+    } 
+    return inBody; 
 }
 </set-body>
 ```
@@ -321,14 +321,14 @@ Ebben a példában a házirend továbbítja a kérést egy service fabric hátt�
 #### <a name="example-accessing-the-body-as-a-jobject-note-that-since-we-are-not-reserving-the-original-request-body-accesing-it-later-in-the-pipeline-will-result-in-an-exception"></a>Példa a szervezettől a JObject eléréséhez. Vegye figyelembe, hogy mivel a Microsoft nem tart fenn az eredeti kérelemtörzsbe egypéldányú, a folyamat későbbi részében kivételt eredményez.
 
 ```xml
-<set-body> 
-@{ 
-    JObject inBody = context.Request.Body.As<JObject>(); 
-    if (inBody.attribute == <tag>) { 
-        inBody[0] = 'm'; 
-    } 
-    return inBody.ToString(); 
-} 
+<set-body> 
+@{ 
+    JObject inBody = context.Request.Body.As<JObject>(); 
+    if (inBody.attribute == <tag>) { 
+        inBody[0] = 'm'; 
+    } 
+    return inBody.ToString(); 
+} 
 </set-body>
 
 ```
@@ -439,7 +439,7 @@ OriginalUrl.
 
 
 ### <a name="usage"></a>Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **A házirend-szakaszok:** bejövő, kimenő háttérrendszer
 
@@ -510,7 +510,7 @@ OriginalUrl.
 |név|Kell beállítani a fejléc nevét adja meg.|Igen|–|
 
 ### <a name="usage"></a>Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **A házirend-szakaszok:** bejövő, kimenő, háttér, – hiba
 
@@ -570,7 +570,7 @@ OriginalUrl.
 |név|Itt adható meg kell beállítani a lekérdezési paraméter neve.|Igen|–|
 
 ### <a name="usage"></a>Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **A házirend-szakaszok:** bejövő, háttér
 
@@ -648,7 +648,7 @@ OriginalUrl.
 |Másolás páratlan paraméterei|Itt adhatja meg, e lekérdezés a bejövő kérelem nem található meg az eredeti URL-sablon a paramétereket az URL-címhez írja át a sablon által definiált|Nem|true|
 
 ### <a name="usage"></a>Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **A házirend-szakaszok:** bejövő
 
@@ -712,7 +712,7 @@ OriginalUrl.
 |XSL: stylesheet|Stíluslap gyökérelem. Minden elemek és attribútumok meghatározott hajtsa végre a standard [XSLT-specifikáció](http://www.w3.org/TR/xslt)|Igen|
 
 ### <a name="usage"></a>Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **A házirend-szakaszok:** bejövő, kimenő
 

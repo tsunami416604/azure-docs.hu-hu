@@ -7,24 +7,24 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/27/2017
-ms.author: maxluk
-ms.openlocfilehash: 434b3ecf65aaa5ecea81f5a9773f1bc6e8f6f2be
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/06/2018
+ms.author: arindamc
+ms.openlocfilehash: 727ecdb06f9a43bf3722f82fa10b7a3304cf4958
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43092327"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255302"
 ---
 # <a name="monitor-cluster-performance"></a>Fürtteljesítmény monitorozása
 
-Figyelési állapotát és teljesítményét egy HDInsight-fürt elengedhetetlen fenntartása a maximális teljesítmény- és erőforrás-használatot. Figyelés is segíthet cím lehetséges kódolási vagy a fürt konfigurációs hibái.
+Figyelési állapotát és teljesítményét egy HDInsight-fürt elengedhetetlen biztosítják az optimális teljesítmény és az erőforrás-használatot. Figyelés is segíthet észlelni és -fürt konfigurációs hibák és felhasználói hibákat.
 
-A következő szakaszok ismertetik, hogyan optimalizálható a fürt betöltése, a YARN várólista hatékonyság és a storage kisegítő lehetőségek.
+Az alábbi szakaszok azt ismertetik, hogyan figyelheti és optimalizálhatja a fürtökhöz, a YARN-üzenetsorok a terhelés, és tárolási sávszélesség-szabályozási hibák észlelése.
 
-## <a name="cluster-loading"></a>Fürt betöltése
+## <a name="monitor-cluster-load"></a>A figyelő fürt betöltése
 
-Hadoop-fürtök kell terheléselosztást végeznie betöltése a fürt csomópontjai között. A terheléselosztás megakadályozza, hogy feldolgozás feladatokat RAM memória, Processzor vagy lemez-erőforrásainak korlátozza.
+Hadoop-fürtök a legoptimálisabb teljesítményt biztosíthat, amikor a fürt a terhelés egyenletesen a csomópontokon. Ez lehetővé teszi a feldolgozási feladatok futtatását anélkül RAM memória, Processzor vagy az egyes csomópontokon lemezerőforrásokat korlátozza.
 
 A csomópontok a fürt és a betöltés áttekintése kapni, jelentkezzen be a [az Ambari webes felhasználói felület](hdinsight-hadoop-manage-ambari.md), majd válassza ki a **gazdagépek** fülre. A gazdagépek a teljes tartománynevek alapján vannak listázva. Minden gazdagép működési állapota színes állapotjelző szerint jelenik meg:
 
@@ -47,11 +47,11 @@ Lásd: [kezelése a HDInsight-fürtök az Ambari webes felhasználói felület h
 
 ## <a name="yarn-queue-configuration"></a>YARN üzenetek sorának konfigurációját
 
-Hadoop elosztott platformja futó különböző szolgáltatásokat tartalmaz. YARN (még egy másik Resource Negotiator) koordinálja a ezeket a szolgáltatásokat, fürt erőforrásokat foglal le, és kezeli a hozzáférést egy közös adatkészlet.
+Hadoop elosztott platformja futó különböző szolgáltatásokat tartalmaz. YARN (még egy másik Resource Negotiator) koordinálja a ezeket a szolgáltatásokat, és győződjön meg arról, hogy tetszőleges terhelés egyenletesen oszlik el a fürt a fürt erőforrásokat foglal le.
 
-YARN osztja fel a két felelősséget a JobTracker, az erőforrás-kezelést és a feladat ütemezése és figyelése, a két démonok: egy globális erőforrás-kezelő és a egy alkalmazásonkénti ApplicationMaster (kor).
+YARN osztja fel a két felelősséget a JobTracker, az erőforrás-kezelést és a feladat ütemezése és figyelése, a két démonok: globális erőforrás-kezelő és a egy alkalmazásonkénti ApplicationMaster (kor).
 
-Az erőforrás-kezelő rendszer egy *tiszta scheduler*, és minden versengő alkalmazások között elérhető erőforrások kizárólag arbitrates. Az erőforrás-kezelő biztosítja, hogy az összes erőforrás mindig a használatát, SLA-k, például különböző konstansok optimalizálása garantálja a kapacitás, és így tovább. A ApplicationMaster egyezteti az erőforrás-kezelő erőforrásokat, és működik együtt a NodeManager(s) végrehajtásához és a tárolók és az erőforrás-használat figyeléséhez.
+Az erőforrás-kezelő egy *tiszta scheduler*, és kizárólag arbitrates elérhető erőforrások összes versengő alkalmazások között. A Resource Manager biztosítja, hogy az összes erőforrás mindig a használatát, SLA-k, például különböző konstansok optimalizálása garantálja a kapacitás, és így tovább. A ApplicationMaster egyezteti a Resource Manager erőforrásokat, és működik együtt a NodeManager(s) végrehajtásához és a tárolók és az erőforrás-használat figyeléséhez.
 
 Ha több bérlő osztozik egy nagy fürt, nincs a fürt az erőforrásokért való. A CapacityScheduler moduláris ütemező, amely segíti a várólista által végrehajtott kérelmek által megosztás erőforrás. Emellett támogatja a CapacityScheduler *hierarchikus üzenetsorok* annak érdekében, hogy a szervezet, mielőtt más alkalmazások várólisták használata ingyenes erőforrások alárendelt várólisták megosztott erőforrások.
 
@@ -63,7 +63,7 @@ A YARN üzenetsor-kezelő lap az üzenetsorok listája látható, a bal oldalon,
 
 ![YARN üzenetsor-kezelő Részletek lap](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager-details.png)
 
-Válassza ki a várólisták, az Ambari irányítópultról részletesebb tekintse meg a **YARN** szolgáltatást, a bal oldali listából. Majd a **Gyorshivatkozások** legördülő menüjében válassza **ResourceManager felhasználói felülete** az aktív csomópont alá.
+Válassza ki a várólisták, az Ambari irányítópultról részletesebb tekintse meg a **YARN** szolgáltatást, a bal oldali listából. Majd a **Gyorshivatkozások** legördülő menüjében válassza **erőforrás-kezelő felhasználói felületén** az aktív csomópont alá.
 
 ![Erőforrás-kezelő felhasználói felületén menü-hivatkozás](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
 

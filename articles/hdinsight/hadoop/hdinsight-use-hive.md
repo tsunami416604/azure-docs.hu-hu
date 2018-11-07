@@ -3,19 +3,19 @@ title: Mi az Apache Hive és a HiveQL – Azure HDInsight
 description: Az Apache Hive-egy rendszer data warehouse hadoop. A Hive használata a HiveQL, tárolt adatok lekérdezheti, amely hasonló Transact-SQL. Ebből a dokumentumból megtudhatja, hogyan használata Azure HDInsight Hive és a HiveQL.
 keywords: hiveql, mi az a hive, a hadoop hiveql, hogyan használható a hive, ismerje meg a hive, mi az a hive
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 9f22766b0ecbaff027cf4b495624f892d4339d17
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 0401717da8c5548033bbbd7720bb1266646bbe48
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249345"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241106"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Mi az Apache Hive és az Azure HDInsight HiveQL?
 
@@ -70,7 +70,7 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
 STORED AS TEXTFILE LOCATION '/example/data/';
 ```
 
-Hive is támogatja az egyéni **szerializáló/deserializers (SerDe)** túl összetett vagy szabálytalan strukturált adatok számára. További információkért lásd: a [egy egyéni JSON-SerDe használata a HDInsight](http://blogs.msdn.com/b/bigdatasupport/archive/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight.aspx) dokumentumot.
+Hive is támogatja az egyéni **szerializáló/deserializers (SerDe)** túl összetett vagy szabálytalan strukturált adatok számára. További információkért lásd: a [egy egyéni JSON-SerDe használata a HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight.aspx) dokumentumot.
 
 A Hive által támogatott fájlformátumok további információkért lásd: a [nyelv manuális ()https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
 
@@ -106,7 +106,7 @@ Hive is kiterjeszthető keresztül **felhasználó által definiált függvénye
 
 * [C#-felhasználó által definiált függvény használata a Hive használatával](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [Egyéni Hive felhasználó által definiált függvény hozzáadása a HDInsight](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [Egyéni Hive felhasználó által definiált függvény hozzáadása a HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
 * [Egy példa a Hive felhasználó által definiált függvény a Dátum-/ időformátumok átalakítása a Hive-időbélyeg](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 

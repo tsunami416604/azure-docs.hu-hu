@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/08/2017
 ms.author: mbullwin
-ms.openlocfilehash: 99ace7be05f186ac920aa9671946389e95e3a3a6
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: cc9b3bd1d038bd8aa9c01e806e5448824011bc93
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958117"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240749"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Az Application Insightsban a metrikák felfedezése
 A metrikák [Application Insights] [ start] mért értékek és az eseményszámok az alkalmazásból küldött telemetriai adatokat a rendszer. Ezek segítenek teljesítménybeli problémák észlelése, és tekintse meg az alkalmazás használatának trendjei. Standard mérőszámok széles skáláját, és a saját egyéni metrikákkal és eseményekkel is létrehozhat.
@@ -180,7 +180,7 @@ Valamelyik metrika rendkívüli értékek az e-mailben értesítést kapjon, ria
 Ha azt szeretné, hogy külsőleg feldolgozása folyamatosan exportált adatok, érdemes [a folyamatos exportálás](app-insights-export-telemetry.md).
 
 ### <a name="power-bi"></a>Power BI
-Ha azt szeretné, hogy az adatok még mélyebb nézeteket, [exportálása a Power bi-bA](http://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx).
+Ha azt szeretné, hogy az adatok még mélyebb nézeteket, [exportálása a Power bi-bA](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx).
 
 ## <a name="analytics"></a>Elemzés
 [Analytics](app-insights-analytics.md) sokoldalúbb módja a hatékony lekérdezési nyelv a telemetria elemzését. Használnia, ha szeretné egyesítése vagy számítási mérőszámok eredményei, vagy hajtsa végre a közelebbről megismerheti a legújabb az alkalmazás teljesítményének. 

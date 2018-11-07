@@ -10,14 +10,14 @@ Pay attention to spacing and indents. They affect formatting.
 
 <!--replace this with Properties and Tags sections. These are required sections. See "article-metadata.md" in under the "contributor-guide" folder in your repo. Attributes in each section can be placed on separate lines to make them easier to read and check-->
 
-# <a name="use-azure-powershell-to-task"></a>Azure PowerShell használatával [feladat]
-Ez a cikk bemutatja, hogyan [feladat], az Azure és az Azure Resource Manager modul mind a parancsok használatával. Ennek célja, ismerje meg az új parancsokat, valamint az új parancsok telepíthet át meglévő parancsfájlok segítségével.
+# <a name="use-azure-powershell-to-task"></a>Az Azure PowerShell használatával [feladatütemezés]
+Ez a cikk bemutatja, hogyan [feladatütemezés], hogy az Azure-modul és az Azure Resource Manager modul-parancsok használatával. Ennek célja, ismerje meg az új parancsokat, valamint az új parancsokkal telepítheti át meglévő parancsfájlok segítségével.
 
 ## <a name="prerequisite-install-a-recent-version-of-azure-powershell"></a>Előfeltétel: Az Azure PowerShell legújabb verziójának telepítése
-Ha még nem tette meg, telepítse legalább a [verziószám] verzióját Azure PowerShell a helyi számítógépen. Ha egy korábbi verzióját használja, azt a jelen cikkben ismertetett Azure Resource Manager parancsmagok nem lesz. Részletes információ:
+Ha még nem tette meg, telepítse legalább a [verziószám] verzióját Azure PowerShell-lel a helyi számítógépen. Ha egy korábbi verzióját használja, azt nem kell az Azure Resource Manager-parancsmagok ebben a cikkben leírt. Részletes információ:
 
-* [Azure PowerShell telepítése és konfigurálása hogyan](install-configure-powershell.md) Azure PowerShell beállításával kapcsolatos utasításokat.
-* [A Windows PowerShell használatával a Resource Manager](powershell-azure-resource-manager.md) a alapjai az erőforrás-kezelő használatával.
+* [Azure PowerShell telepítése és konfigurálása annak](install-configure-powershell.md) beállításával az Azure PowerShell-lel kapcsolatos útmutatást.
+* [Windows PowerShell használatával a Resource Manager](powershell-azure-resource-manager.md) az alapvető fogalmat a Resource Manager használatával.
 
 > [!NOTE]
 > A legtöbb feladatokhoz szükséges, hogy egy rendszergazda szintű Azure PowerShell-parancssort.
@@ -34,7 +34,7 @@ Then, use the following syntax to add a reference to the image in your article:
 
 <!--if a command string uses variables, define the variables first, using the  following construction. In some cases the variable is straightforward and doesn't need much explanation. But parameters such as location and size can benefit from brief explanation or listing all accepted values:--> 
 
-A parancs példákat használja a következő változókat:
+Ezekben a példákban parancsot használja az alábbi változókat:
 
 $FriendlyName"<Describe value>"
 
@@ -46,20 +46,20 @@ $FriendlyName"<Describe value>"
 
 <!--if it makes more sense to present this one command block after the other instead of a table, use this. Otherwise, delete-->
 
-[A parancsról rövid bevezető mondatot. Nincs megadva, ha valójában nem végezhető el a mondja ki. Abban az esetben, ha ilyen megközelítések használ egy a feldolgozási sor azt ismertetik, amelyek]:
+[Rövid bevezető mondat a parancsról. Nincs megadva, ha valóban semmi sem kell kimondani. De ha az ilyen megközelítés egy a folyamat azt ismertetik, amelyek]:
 
     [command string]
 
-## <a name="script-examples"></a>Parancsfájl-példák
-Íme egy példa, [a parancsmag neve]) használó [feladat]. Ez magában foglalja a parancsok, amelyek:
+## <a name="script-examples"></a>Példaszkriptek
+Íme egy példa, által használt [parancsmagok neveivel)], [feladatütemezés]. Olyan parancsokat tartalmaz, amelyek:
 
-* [rövid műveletet, használja, rendelkezik, stb]
-* [a következő rövid művelet] 
+* [rövid igeként használja, rendelkezik, stb.]
+* [rövid művelet tovább] 
 
-<!--include this statement if it uses variables that weren't introduced earlier--> It includes the following variables:
+<!--include this statement if it uses variables that weren't introduced earlier--> Tartalmazza az alábbi változókat:
 
-* [változó 1]
-* [változó 2]
+* [1. változó]
+* [2 változó]
 
 <!--This shows you how a recent example was presented as well as how it was formatted. Preceding each line with one tab or four spaces to format in a code block-->
 
@@ -90,12 +90,12 @@ $FriendlyName"<Describe value>"
 ## <a name="additional-resources"></a>További források
 <!--At a minimum, include a link back to the migration task list article. Use the formats shown below. See create-links-markdown.md for more info -->
 <!--use this format for links to other articles, such as the migration task list. -->
-[Rendelkezésre állási kezelése](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[Rendelkezésre állás kezelése](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 <!--To link to an ACOM page outside the /documentation/ subdomain (such as a pricing page, SLA page or anything else that is not a documentation article), use an absolute URL, but omit the locale:
 
-    [link text](http://azure.microsoft.com/pricing/details/virtual-machines/)-->
+    [link text](https://azure.microsoft.com/pricing/details/virtual-machines/)-->
 
 <!--use this for URLs outside of ACOM. Be sure to locale, and if you're linking to the Azure library on MSDN, include the '/azure/' part of the URL-->
-[Virtual machines – dokumentáció](https://msdn.microsoft.com/library/azure/jj156003.aspx)
+[Virtuális gépek – dokumentáció](https://msdn.microsoft.com/library/azure/jj156003.aspx)
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: ganesr
-ms.openlocfilehash: cb48a9470a39cbe152f821333050e3dd5a28e1ca
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: MT
+ms.openlocfilehash: 9c9f216ee25cd74ac8bcb5521cad85d051422eb2
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230946"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219341"
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -138,7 +138,7 @@ Az alapértelmezett útvonalak használata csak az Azure privát társviszony-l�
 * Felhasználó által meghatározott útválasztást használ az internetkapcsolatot igénylő összes alhálózat internetkapcsolatának engedélyezéséhez.
 
 > [!NOTE]
-> Az alapértelmezett útvonalak meghirdetése megszakítja a Windows- és az egyéb virtuálisgép-licencek aktiválását. Megkerülő megoldás alkalmazásához kövesse az [itt](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx) található utasításokat.
+> Az alapértelmezett útvonalak meghirdetése megszakítja a Windows- és az egyéb virtuálisgép-licencek aktiválását. Megkerülő megoldás alkalmazásához kövesse az [itt](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx) található utasításokat.
 > 
 > 
 

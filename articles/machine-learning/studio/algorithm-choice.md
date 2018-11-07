@@ -12,12 +12,12 @@ ms.service: machine-learning
 ms.component: studio
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 92db2a86f5f698945cd2252476e951d658dc75ac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c3aa1bfe2cc1513d636452031de62da814af6cd7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959206"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262301"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Az Azure Machine Learning Studióban az algoritmusok kiválasztása
 
@@ -121,7 +121,7 @@ Néhány tanulási algoritmusok győződjön meg az adatok vagy a kívánt eredm
 | [döntési erdő](https://msdn.microsoft.com/library/azure/dn906008.aspx) |● |○ | |6 | |
 | [döntési Dzsungel](https://msdn.microsoft.com/library/azure/dn905976.aspx) |● |○ | |6 |Kevés a memória által elfoglalt tárterület |
 | [gyorsított döntési fa](https://msdn.microsoft.com/library/azure/dn906025.aspx) |● |○ | |6 |Nagy a memóriaigénye |
-| [Neurális hálózat](https://msdn.microsoft.com/library/azure/dn905947.aspx) |● | | |9 |[Lehetőség további testreszabási](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [Neurális hálózat](https://msdn.microsoft.com/library/azure/dn905947.aspx) |● | | |9 |[Lehetőség további testreszabási](https://go.microsoft.com/fwlink/?LinkId=402867) |
 | [átlagolt perceptron](https://msdn.microsoft.com/library/azure/dn906036.aspx) |○ |○ |● |4 | |
 | [tartóvektor-gép](https://msdn.microsoft.com/library/azure/dn905835.aspx) | |○ |● |5 |Megfelelő választás a nagyméretű szolgáltatások |
 | [helyileg részletes tartóvektor-gép](https://msdn.microsoft.com/library/azure/dn913070.aspx) |○ | | |8 |Megfelelő választás a nagyméretű szolgáltatások |
@@ -130,7 +130,7 @@ Néhány tanulási algoritmusok győződjön meg az adatok vagy a kívánt eredm
 | [Logisztikai regresszió](https://msdn.microsoft.com/library/azure/dn905853.aspx) | |● |● |5 | |
 | [döntési erdő](https://msdn.microsoft.com/library/azure/dn906015.aspx) |● |○ | |6 | |
 | [döntési Dzsungel ](https://msdn.microsoft.com/library/azure/dn905963.aspx) |● |○ | |6 |Kevés a memória által elfoglalt tárterület |
-| [Neurális hálózat](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[Lehetőség további testreszabási](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [Neurális hálózat](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[Lehetőség további testreszabási](https://go.microsoft.com/fwlink/?LinkId=402867) |
 | [one-v-all](https://msdn.microsoft.com/library/azure/dn905887.aspx) |- |- |- |- |Megtekintheti a tulajdonságait, a két osztályú módszer van kiválasztva |
 | **Regression** | | | | | |
 | [linear](https://msdn.microsoft.com/library/azure/dn905978.aspx) | |● |● |4 | |
@@ -138,7 +138,7 @@ Néhány tanulási algoritmusok győződjön meg az adatok vagy a kívánt eredm
 | [döntési erdő](https://msdn.microsoft.com/library/azure/dn905862.aspx) |● |○ | |6 | |
 | [gyorsított döntési fa](https://msdn.microsoft.com/library/azure/dn905801.aspx) |● |○ | |5 |Nagy a memóriaigénye |
 | [gyors erdő ki osztóérték](https://msdn.microsoft.com/library/azure/dn913093.aspx) |● |○ | |9 |Pont előrejelzéseket helyett disztribúciók |
-| [Neurális hálózat](https://msdn.microsoft.com/library/azure/dn905924.aspx) |● | | |9 |[Lehetőség további testreszabási](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [Neurális hálózat](https://msdn.microsoft.com/library/azure/dn905924.aspx) |● | | |9 |[Lehetőség további testreszabási](https://go.microsoft.com/fwlink/?LinkId=402867) |
 | [Poisson](https://msdn.microsoft.com/library/azure/dn905988.aspx) | | |● |5 |Technikailag log lineáris. A számok előrejelzésére |
 | [Sorszám](https://msdn.microsoft.com/library/azure/dn906029.aspx) | | | |0 |A rang rendezése |
 | **Anomáliadetektálás** | | | | | |
@@ -190,7 +190,7 @@ Gyorsított döntési fák algoritmus overfitting tovább lehet futtatásainak s
 Neurális hálózatok vannak agy ihlette tanulási algoritmus kiterjedő [osztályú](https://msdn.microsoft.com/library/azure/dn906030.aspx), [két osztályú](https://msdn.microsoft.com/library/azure/dn905947.aspx), és [regressziós](https://msdn.microsoft.com/library/azure/dn905924.aspx) problémákat. Egy végtelen számos különböző származnak, de a Neurális hálózatokat az Azure Machine Learning belüli összes irányított aciklikus diagramjait formájában. Ez azt jelenti, hogy bemeneti funkciói továbbítja a rendszer előre (soha nem visszafelé) rétegek sorozatát előtt be kimenetek kapcsolva. Minden egyes rétegben bemenetei között meg különböző kombinációival súlyozott, összegzi, és a következő réteg pedig továbbítva. Ez a kombinációja egyszerű számításokat Magic Quadrant által bővítése lezárulhat ismerje meg a kifinomult osztály határokat és az adatok trendeket, lehetővé teszi eredményez. Az ilyen jellegű, több rétegből hálózatok hajtsa végre a "deep learning", amely ad lendületet az ennél jóval tech jelentéskészítési és sci-fi irodalmat.
 
 A nagy teljesítményű nem adják ingyen, azonban. Neurális hálózatokkal betanítást, különösen a nagy méretű adatkészleteket a funkciók számos hosszú időt is igénybe vehet. Is rendelkeznek, mint a legtöbb algoritmusok, ami azt jelenti, hogy a paraméter kezdik jelentős bontja ki a betanítási idő további paramétereket.
-És ezeket overachievers szeretnének [adja meg a saját hálózati struktúra](http://go.microsoft.com/fwlink/?LinkId=402867), az lehetőségeket inexhaustible.
+És ezeket overachievers szeretnének [adja meg a saját hálózati struktúra](https://go.microsoft.com/fwlink/?LinkId=402867), az lehetőségeket inexhaustible.
 
 ![Határok megtanult a Neurális hálózatokat][6]
 ***Neurális hálózatok megtanult a határok összetett és szabálytalan lehet.***

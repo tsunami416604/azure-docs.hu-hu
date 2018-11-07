@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bryanla
-ms.openlocfilehash: 00a2c0d50a2476995dfb0d16d0cdbc5bd0ec313b
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: c5677dc07326fa16960e0d748f88e26f259c0485
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138996"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262273"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Tudnivalók a kulcsok, titkos kódok és tanúsítványok
 
@@ -398,7 +398,7 @@ Egy tanúsítvány kiállítója hozhat létre egy Key Vaultot, mielőtt a köve
 
     -   A konfiguráció a szolgáltató kibocsátó objektum létrehozása a key vaultban használt biztosít  
 
--Tanúsítványok portáljáról a kibocsátó objektumok létrehozásával kapcsolatos további információkért lásd: a [Key Vault Certificates blog](http://aka.ms/kvcertsblog)  
+-Tanúsítványok portáljáról a kibocsátó objektumok létrehozásával kapcsolatos további információkért lásd: a [Key Vault Certificates blog](https://aka.ms/kvcertsblog)  
 
 Key Vault lehetővé teszi, hogy a különböző kibocsátó szolgáltató konfigurációjának több kibocsátó objektumok létrehozásához. Kiállító objektum létrehozása után a név egy vagy több tanúsítvány-házirendek lehet hivatkozni. A kibocsátó objektumra hivatkozik arra utasítja a Key Vault használata a kibocsátó objektumban megadott konfiguráció, a x509 kérésekor tanúsítványt a CA-szolgáltató a tanúsítvány-létrehozási és -megújítás során.  
 

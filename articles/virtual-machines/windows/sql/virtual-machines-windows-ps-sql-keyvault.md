@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
-ms.openlocfilehash: 2b398f59aed1610825f495a6089990d393531305
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d80526768c59bbb746408a026915b3228747e18a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38597406"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251170"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Az SQL Server az Azure Key Vault-integráció konfigurálása Azure-beli virtuális gépeken (Resource Manager)
 
@@ -29,7 +29,7 @@ ms.locfileid: "38597406"
 > * [Klasszikus](../sqlclassic/virtual-machines-windows-classic-ps-sql-keyvault.md)
 
 ## <a name="overview"></a>Áttekintés
-Nincsenek több SQL Server titkosítási funkciók, például [transzparens adattitkosítás (TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [oszlop a blokkszintű titkosítás (CLE)](https://msdn.microsoft.com/library/ms173744.aspx), és [biztonsági mentés titkosítása](https://msdn.microsoft.com/library/dn449489.aspx). Ezek az űrlapok titkosítási kezelését és a titkosításhoz használt kriptográfiai kulcsok tárolásához szükséges. Az Azure Key Vault (AKV) szolgáltatás célja a biztonsági és a egy biztonságos és magas rendelkezésre állású helyen ezek a kulcsok kezelését. A [SQL Server-összekötő](http://www.microsoft.com/download/details.aspx?id=45344) lehetővé teszi, hogy ezek a kulcsok Azure Key vault használata az SQL Server.
+Nincsenek több SQL Server titkosítási funkciók, például [transzparens adattitkosítás (TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [oszlop a blokkszintű titkosítás (CLE)](https://msdn.microsoft.com/library/ms173744.aspx), és [biztonsági mentés titkosítása](https://msdn.microsoft.com/library/dn449489.aspx). Ezek az űrlapok titkosítási kezelését és a titkosításhoz használt kriptográfiai kulcsok tárolásához szükséges. Az Azure Key Vault (AKV) szolgáltatás célja a biztonsági és a egy biztonságos és magas rendelkezésre állású helyen ezek a kulcsok kezelését. A [SQL Server-összekötő](https://www.microsoft.com/download/details.aspx?id=45344) lehetővé teszi, hogy ezek a kulcsok Azure Key vault használata az SQL Server.
 
 A helyszíni gépek az SQL Server futtatja, van-e [lépések a helyszíni SQL Server-gép az Azure Key Vault elérése](https://msdn.microsoft.com/library/dn198405.aspx). Az SQL Server Azure virtuális gépeken, időt takaríthat használatával, de a *Azure Key Vault-integráció* funkció.
 

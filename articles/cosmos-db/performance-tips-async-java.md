@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
-ms.openlocfilehash: 48555dc8d1cc027cb771e0ba0678c6cb12d6785f
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 233296a825653938da158fc70952c7fe7931498c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697975"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261825"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Teljesítménnyel kapcsolatos tippek Async Javához pedig az Azure Cosmos DB
 
@@ -65,7 +65,7 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
 
 5. **Leállítási megvalósítása getRetryAfterInMilliseconds időközönként**
 
-    Teljesítmény tesztelése során terhelés mindaddig, amíg egy kis méretű kérések másodpercenkénti száma leszabályozza növelje meg. Ha szabályozott, az ügyfélalkalmazás kell leállítási a kiszolgáló által megadott újrapróbálkozási időköz. A leállítási tiszteletben biztosítja, hogy az újrapróbálkozások közötti várakozási idő mennyisége minimális idő. További információkért lásd: [több mint szolgáltatás számára fenntartott átviteli sebesség korlátok](request-units.md#RequestRateTooLarge) és DocumentClientException.getRetryAfterInMilliseconds.
+    Teljesítmény tesztelése során terhelés mindaddig, amíg egy kis méretű kérések másodpercenkénti száma leszabályozza növelje meg. Ha szabályozott, az ügyfélalkalmazás kell leállítási a kiszolgáló által megadott újrapróbálkozási időköz. A leállítási tiszteletben biztosítja, hogy az újrapróbálkozások közötti várakozási idő mennyisége minimális idő. 
 6. **Az ügyfél-alkalmazások és szolgáltatások méretezése**
 
     Ha nagy átviteli sebesség szinten teszteli (> 50 000 RU/s), az ügyfélalkalmazás miatt a gép kapacitástól meg a Processzor vagy a hálózati kihasználtság a szűk keresztmetszetté válhat. Ha eléri ezt a pontot, továbbra is küldje le az Azure Cosmos DB-fiókot további horizontális felskálázása az ügyfélalkalmazásokat, több kiszolgáló között.

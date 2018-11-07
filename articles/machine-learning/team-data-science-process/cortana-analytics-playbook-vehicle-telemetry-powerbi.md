@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: e6601093577eb9e3dfba4ed27e1e0510cad17de7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b703cb4d3ddd8b62895c9c40c7fa2fba728e884e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421049"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262276"
 ---
 # <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>Járműtelemetria Telemetriai Analytics megoldás sablon Power BI-irányítópult beállítási útmutatásai
 Ez a menü a fejezetek a forgatókönyv mutató hivatkozásokat tartalmaz: 
@@ -30,7 +30,7 @@ A jármű-Telemetria Analytics megoldás ezen adása hogyan autó autókeresked�
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Üzembe helyezése a [Járműtelemetria elemzése](https://gallery.cortanaintelligence.com/Solution/5bdb23f3abb448268b7402ab8907cc90) megoldás. 
-* [Power BI Desktop telepítése](http://www.microsoft.com/download/details.aspx?id=45331).
+* [Power BI Desktop telepítése](https://www.microsoft.com/download/details.aspx?id=45331).
 * Szerezzen be egy [Azure-előfizetés](https://azure.microsoft.com/pricing/free-trial/). Ha nem rendelkezik Azure-előfizetéssel, első lépések az ingyenes Azure-előfizetéssel.
 * Nyissa meg a Power BI-fiókkal.
 
@@ -68,7 +68,7 @@ Az üzembe helyezés befejezése után kövesse manuális műveletet.
 
    ![A Power BI bejelentkezési ablak](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/5-sign-into-powerbi.png)
    
-1. Válassza ki **fogadja el**. Az alkalmazás elindul.
+1. Válassza ki az **Elfogadás** lehetőséget. Az alkalmazás elindul.
 
    ![A Power BI-irányítópult engedélyek](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/6-powerbi-dashboard-permissions.png)
 
@@ -348,7 +348,7 @@ A valós idejű irányítópult létrehozása sikerült. Végrehajtási CarEvent
 
 ### <a name="configure-power-bi-reports"></a>A Power BI-jelentések konfigurálása
 
-1. Nyissa meg a Tervező fájlt **ConnectedCarsPbiReport.pbix** a Power BI Desktop használatával. Ha még nem rendelkezik azt, telepítse a Power BI Desktop a [Power BI Desktop telepítése](http://www.microsoft.com/download/details.aspx?id=45331) webhelyén.
+1. Nyissa meg a Tervező fájlt **ConnectedCarsPbiReport.pbix** a Power BI Desktop használatával. Ha még nem rendelkezik azt, telepítse a Power BI Desktop a [Power BI Desktop telepítése](https://www.microsoft.com/download/details.aspx?id=45331) webhelyén.
 
 1. Válassza ki **lekérdezések szerkesztése**.
 

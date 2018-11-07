@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 06169ff8e084882eb9a2dbe71c89c3b2a40b384b
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4dac0ed85500e4339f6389f05113dfd68b72c5ff
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214086"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244338"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Kiszolgálók eltávolítása és a védelem letiltása
 
@@ -34,7 +34,7 @@ Ha az Azure-bA replikált VMware virtuális gépek vagy fizikai Windows/Linux-ki
 3. Megjegyzés: a VMM-kiszolgáló Azonosítóját.
 4. A felhőket a VMM-kiszolgálóra el szeretné távolítani a replikációs házirend társításának megszüntetése.  A **Site Recovery-infrastruktúra** > **System Center VMM** >  **replikációs házirendek**, kattintson duplán a tartozó házirend. Kattintson a jobb gombbal a felhő > **Disassociate**.
 5. Törli a VMM-kiszolgáló vagy az aktív csomópontra. A **Site Recovery-infrastruktúra** > **System Center VMM** > **VMM-kiszolgálók**, kattintson a jobb gombbal a kiszolgáló > **törlése** .
-6. Ha a VMM-kiszolgálóról a leválasztott állapotban volt, majd töltse le és futtassa a [tisztítószkript](http://aka.ms/asr-cleanup-script-vmm) a VMM-kiszolgálón. Nyissa meg a PowerShell használata a **Futtatás rendszergazdaként** kapcsoló, a végrehajtási házirend az alapértelmezett (helyi gépen lévő) hatókör módosítására. A parancsfájl adja meg a VMM-kiszolgáló el kívánja távolítani a azonosítója. A parancsfájl eltávolítja a regisztráció és a felhőpárosítást adatait a kiszolgálóról.
+6. Ha a VMM-kiszolgálóról a leválasztott állapotban volt, majd töltse le és futtassa a [tisztítószkript](https://aka.ms/asr-cleanup-script-vmm) a VMM-kiszolgálón. Nyissa meg a PowerShell használata a **Futtatás rendszergazdaként** kapcsoló, a végrehajtási házirend az alapértelmezett (helyi gépen lévő) hatókör módosítására. A parancsfájl adja meg a VMM-kiszolgáló el kívánja távolítani a azonosítója. A parancsfájl eltávolítja a regisztráció és a felhőpárosítást adatait a kiszolgálóról.
 5. Futtassa a karbantartási parancsprogramot minden olyan másodlagos VMM-kiszolgálón.
 6. Futtassa a karbantartási parancsprogramot a bármely más passzív VMM fürtcsomópontokon van telepítve a szolgáltató.
 7. Távolítsa el manuálisan a VMM-kiszolgálón a szolgáltató. Ha rendelkezik fürttel, távolítsa el az összes csomópontot.

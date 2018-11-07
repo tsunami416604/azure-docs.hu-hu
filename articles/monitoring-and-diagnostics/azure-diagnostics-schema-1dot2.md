@@ -1,6 +1,6 @@
 ---
 title: Az Azure Diagnostics bővítmény 1.2-es konfigurációs séma
-description: CSAK akkor érvényes, ha Azure virtuális gépek, a virtuálisgép-méretezési csoportok, a Service Fabric vagy a Cloud Services Azure SDK 2.5 használ.
+description: CSAK akkor érvényes, ha az Azure Virtual Machines, Virtual Machine Scale Sets, Service Fabric és Cloud Services az Azure SDK 2.5-ös használja.
 services: azure-monitor
 author: rboucher
 ms.service: azure-monitor
@@ -9,33 +9,33 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 8c3980231404e5c8068dbd011d20759f207d7fff
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 322cd75fe9198bae459e7c22bed794f583d13363
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937954"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260295"
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Az Azure Diagnostics 1.2-es konfigurációs séma
 > [!NOTE]
-> Az Azure Diagnostics teljesítményszámlálók és más statisztika gyűjthet az Azure virtuális gépek, a virtuálisgép-méretezési csoportok, a Service Fabric és a Cloud Services összetevő.  Ezen a lapon csak fontos, ha ilyen szolgáltatást használ.
+> Az Azure Diagnostics az a komponens, teljesítményszámlálók és más statisztikák gyűjtését az Azure Virtual Machines, Virtual Machine Scale Sets, Service Fabric és Cloud Services segítségével.  Ez a lap csak akkor jelentősége, ha ezek a szolgáltatások valamelyikét használja.
 >
 
-Az Azure Diagnostics más Microsoft-diagnosztika termékekkel, például Azure figyelő, az Application Insights és Naplóelemzési szolgál.
+Egyéb Microsoft-diagnosztika termékek, mint az Azure Monitor az Application Insights és a Log Analytics az Azure Diagnostics használnak.
 
-A séma definiálja az a lehetséges értékek segítségével diagnosztikai konfigurációs beállítások inicializálása a diagnosztikai figyelő indításakor.  
+Ebben a sémában a lehetséges értékek inicializálása a diagnosztikai beállításokat a diagnosztikai figyelő indításakor segítségével határozza meg.  
 
 
- Töltse le a nyilvános konfigurációs fájl sémadefiníciót hajtja végre a következő PowerShell-parancsot:  
+ Töltse le a nyilvános bővítménykonfiguráció sémája fájldefiníciót a következő PowerShell-parancs végrehajtásával:  
 
 ```PowerShell  
 (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File –Encoding utf8 -FilePath 'C:\temp\WadConfig.xsd'  
 ```  
 
- Azure Diagnostics használatával kapcsolatos további információkért lásd: [Azure Cloud Services diagnosztika engedélyezésével](http://azure.microsoft.com/documentation/articles/cloud-services-dotnet-diagnostics/).  
+ Azure Diagnostics használatával kapcsolatos további információkért lásd: [Diagnosztikának az Azure Cloud Servicesben](https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-diagnostics/).  
 
 ## <a name="example-of-the-diagnostics-configuration-file"></a>A diagnosztika konfigurációs fájl példa  
- A következő példa bemutatja egy tipikus diagnosztika konfigurációs fájlt:  
+ Az alábbi példa bemutatja egy tipikus diagnosztikai konfigurációs fájlban:  
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -87,116 +87,116 @@ A séma definiálja az a lehetséges értékek segítségével diagnosztikai kon
 ```  
 
 ## <a name="diagnostics-configuration-namespace"></a>Diagnosztikai konfiguráció Namespace  
- A diagnosztika konfigurációs fájl XML-névtere van:  
+ A diagnosztika konfigurációs fájl XML-névtér van:  
 
 ```  
 http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration  
 ```  
 
 ## <a name="publicconfig-element"></a>PublicConfig elem  
- Legfelső szintű elem a diagnosztika konfigurációs fájl. A következő táblázat ismerteti az elemek a konfigurációs fájl.  
+ Legfelső szintű elem a diagnosztikai konfigurációs fájl. A következő táblázat ismerteti az elemek a konfigurációs fájl.  
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
-|**WadCfg**|Kötelező. Konfigurációs beállításait a telemetriai adatok összegyűjtésére.|  
-|**StorageAccount**|Az adatok tárolásához Azure Storage-fiók neve. Ez is adható meg paraméterként a Set-AzureServiceDiagnosticsExtension parancsmag végrehajtása közben.|  
-|**LocalResourceDirectory**|A könyvtár a figyelési ügynök eseményadatok tárolására használt virtuális gépen. Ha nem be van állítva, az alapértelmezett mappát használja:<br /><br /> A munkavégző vagy webes szerepkör: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> A virtuális gép: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Szükséges attribútumok pedig a következők:<br /><br /> -                      **elérési út** – a rendszer Azure Diagnostics által használandó könyvtárához.<br /><br /> -                      **expandEnvironment** -szabályozza, hogy az elérési útban környezeti változók bontva.|  
+|**WadCfg**|Kötelező. Konfigurációs beállításait a telemetriai adatokat gyűjteni.|  
+|**StorageAccount**|Az adatok tárolásához Azure Storage-fiók neve. Ez is megadható paramétert a Set-AzureServiceDiagnosticsExtension parancsmag végrehajtása közben.|  
+|**LocalResourceDirectory**|A könyvtár a virtuális gép által a Monitoring Agent eseményadatok tárolására használható. Ha nem, az alapértelmezett címtár használatos:<br /><br /> Feldolgozói/webes szerepkör: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Egy virtuális géphez: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Szükséges attribútumok a következők:<br /><br /> -                      **elérési út** – a rendszer az Azure Diagnostics által használandó könyvtárába.<br /><br /> -                      **expandEnvironment** – azt szabályozza, hogy környezeti változókat az elérési útban bontva.|  
 
 ## <a name="wadcfg-element"></a>WadCFG elem  
-A telemetriai adatok összegyűjtésére konfigurációs beállításokat határoz meg. A következő táblázat a gyermekelemek:  
+A telemetriai adatokat gyűjteni konfigurációs beállításait határozza meg. A következő táblázat ismerteti a gyermekelemek:  
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
-|**DiagnosticMonitorConfiguration**|Kötelező. Nem kötelező attribútumok pedig a következők:<br /><br /> -                     **overallQuotaInMB** -Azure Diagnostics által gyűjtött, amelyeket lehet használni a különböző típusú diagnosztikai adatok helyi lemezterület maximális mennyisége. Az alapértelmezett érték 5120MB.<br /><br /> -                     **useProxyServer** -Azure Diagnostics konfigurálja a proxykiszolgáló beállításait használni az Internet Explorer beállításainak megfelelően.|  
-|**CrashDumps**|Az összeomlási memóriaképek gyűjtésének engedélyezése. Nem kötelező attribútumok pedig a következők:<br /><br /> -                     **containerName** -a blob tároló összeomlási memóriaképek tárolására használható az Azure Storage-fiók nevét.<br /><br /> -                     **crashDumpType** -konfigurálja az Azure diagnosztikai gyűjtéséhez Mini vagy teljes összeomlási memóriaképek.<br /><br /> -                     **directoryQuotaPercentage**-százaléka konfigurálja **overallQuotaInMB** kell lefoglalni, az összeomlási memóriaképek a virtuális Gépen.|  
-|**DiagnosticInfrastructureLogs**|Az Azure diagnosztikai által létrehozott naplók gyűjtésének engedélyezése. A diagnosztikai infrastruktúra naplók hasznosak a diagnosztika rendszer magát a hibaelhárításhoz. Nem kötelező attribútumok pedig a következők:<br /><br /> -                     **scheduledTransferLogLevelFilter** -konfigurálja a minimális súlyossági szintet a gyűjtött naplók.<br /><br /> -                     **scheduledTransferPeriod** -tároló ütemezett átvitelek között felfelé kerekítve a legközelebbi perc. Az érték egy [XML "Duration adattípusú."](http://www.w3schools.com/xml/schema_dtypes_date.asp)|  
-|**Könyvtárak**|Lehetővé teszi, hogy egy könyvtárat, az IIS nem tudta belépési kérelem naplók és/vagy IIS-napló tartalmát gyűjteménye. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** -tároló ütemezett átvitelek között felfelé kerekítve a legközelebbi perc. Az érték egy [XML "Duration adattípusú."](http://www.w3schools.com/xml/schema_dtypes_date.asp)|  
-|**EtwProviders**|Konfigurálja az EventSource ETW-eseményeinek gyűjtése és/vagy a szolgáltatók ETW Manifest alapján.|  
-|**Metrikák**|Ez az elem lehetővé teszi a gyors lekérdezéseket optimalizált teljesítményt számláló tábla létrehozásához. Minden, a megadott teljesítményszámláló a **PerformanceCounters** elem a metrikák tábla mellett a teljesítményszámláló tábla tárolja. Kötelező attribútum:<br /><br /> **resourceId** -Ez az erőforrás-azonosítója, a virtuális gép Azure Diagnostics meg tudja telepít. Beolvasása a **resourceID** a a [Azure-portálon](https://portal.azure.com). Válassza ki **Tallózás** -> **erőforráscsoportok** -> **< név\>**. Kattintson a **tulajdonságok** csempére, majd másolja az értéket a **azonosító** mező.|  
-|**PerformanceCounters**|Lehetővé teszi, hogy a teljesítményszámlálók gyűjteményét. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** -tároló ütemezett átvitelek között felfelé kerekítve a legközelebbi perc. Az érték egy [XML "Duration adattípus".](http://www.w3schools.com/xml/schema_dtypes_date.asp)|  
-|**WindowsEventLog**|Lehetővé teszi a gyűjteményt, a Windows eseménynaplóiban keresse meg. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** -tároló ütemezett átvitelek között felfelé kerekítve a legközelebbi perc. Az érték egy [XML "Duration adattípus".](http://www.w3schools.com/xml/schema_dtypes_date.asp)|  
+|**DiagnosticMonitorConfiguration**|Kötelező. Nem kötelező attribútumok a következők:<br /><br /> -                     **overallQuotaInMB** – Azure Diagnostics által gyűjtött lehet használni a diagnosztikai adatok különböző típusú helyi lemezterület maximális mennyisége. Az alapértelmezett érték 5120MB.<br /><br /> -                     **useProxyServer** – a proxykiszolgáló beállításait használatára beállított, az Internet Explorer beállításainak konfigurálása az Azure Diagnostics.|  
+|**CrashDumps**|Összeomlási memóriaképek gyűjtésének engedélyezéséhez. Nem kötelező attribútumok a következők:<br /><br /> -                     **containerName** – az összeomlási memóriaképek tárolásához használt Azure Storage-fiókját a blobtároló nevét.<br /><br /> -                     **crashDumpType** – Azure Diagnostics konfigurálja a gyűjtendő Mini vagy teljes összeomlási memóriaképek.<br /><br /> -                     **directoryQuotaPercentage**– konfigurálja a százalékos arányát **overallQuotaInMB** kell lefoglalni, az összeomlási memóriaképek a virtuális gépen.|  
+|**DiagnosticInfrastructureLogs**|Azure Diagnostics által létrehozott naplók gyűjtésének engedélyezéséhez. A diagnosztikai infrastruktúra naplói hasznosak hibáinak elhárítása a diagnosztikai rendszer magát. Nem kötelező attribútumok a következők:<br /><br /> -                     **scheduledTransferLogLevelFilter** – konfigurálja a gyűjtött naplók minimális súlyossági szintje.<br /><br /> -                     **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML "Időtartam adattípus."](http://www.w3schools.com/xml/schema_dtypes_date.asp)|  
+|**Címtárak**|Lehetővé teszi a tartalmát egy könyvtárat, az IIS nem sikerült hozzáférést kérelmekről készült naplók és/vagy IIS-naplók gyűjtését. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML "Időtartam adattípus."](http://www.w3schools.com/xml/schema_dtypes_date.asp)|  
+|**EtwProviders**|Konfigurálja az ETW-események az eseményforrás gyűjteménye, illetve az ETW-jegyzékfájl-alapú szolgáltatók.|  
+|**Metrikák**|Ez az elem lehetővé teszi, hogy hozzon létre egy számláló teljesítménytáblája, amely gyors lekérdezéseket van optimalizálva. Minden egyes megadott teljesítményszámláló a **PerformanceCounters** elem a metrikák tábla mellett a teljesítményszámláló tábla tárolja. Kötelező attribútum:<br /><br /> **erőforrás-azonosító** – Ez az erőforrás-Azonosítóját a virtuális gép az Azure Diagnostics telepítésekor. Első a **resourceID** származó a [az Azure portal](https://portal.azure.com). Válassza ki **Tallózás** -> **erőforráscsoportok** -> **< név\>**. Kattintson a **tulajdonságok** csempére, és másolja az értéket a **azonosító** mező.|  
+|**PerformanceCounters**|Lehetővé teszi a teljesítményszámláló-gyűjtemény. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML "Időtartam adattípus".](http://www.w3schools.com/xml/schema_dtypes_date.asp)|  
+|**WindowsEventLog**|Lehetővé teszi, hogy a gyűjtemény Windows eseménynaplók. Nem kötelező attribútum:<br /><br /> **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML "Időtartam adattípus".](http://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 
 ## <a name="crashdumps-element"></a>CrashDumps elem  
- Lehetővé teszi, hogy összeomlási memóriaképek gyűjteménye. A következő táblázat a gyermekelemek:  
+ Lehetővé teszi az összeomlási memóriaképek gyűjteménye. A következő táblázat ismerteti a gyermekelemek:  
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
-|**CrashDumpConfiguration**|Kötelező. Kötelező attribútum:<br /><br /> **Folyamatnév** -nevét a folyamat kívánt Azure Diagnostics meg tudja gyűjteni az összeomlási memóriaképet.|  
-|**crashDumpType**|Konfigurálja az Azure Diagnostics mini vagy teljes összeomlási memóriaképek összegyűjtése.|  
-|**directoryQuotaPercentage**|Konfigurálja a százaléka **overallQuotaInMB** kell lefoglalni, az összeomlási memóriaképek a virtuális Gépen.|  
+|**CrashDumpConfiguration**|Kötelező. Kötelező attribútum:<br /><br /> **processName** – a nevét, a folyamat egy összeomlási memóriakép a gyűjtendő Azure Diagnostics szeretne.|  
+|**crashDumpType**|Konfigurálja az Azure Diagnostics mini vagy teljes összeomlás memóriaképek összegyűjtése.|  
+|**directoryQuotaPercentage**|Konfigurálja a százalékos arányát **overallQuotaInMB** kell lefoglalni, az összeomlási memóriaképek a virtuális gépen.|  
 
 ## <a name="directories-element"></a>Könyvtárak elem  
- Lehetővé teszi, hogy egy könyvtárat, az IIS nem tudta belépési kérelem naplók és/vagy IIS-napló tartalmát gyűjteménye. A következő táblázat a gyermekelemek:  
+ Lehetővé teszi a tartalmát egy könyvtárat, az IIS nem sikerült hozzáférést kérelmekről készült naplók és/vagy IIS-naplók gyűjtését. A következő táblázat ismerteti a gyermekelemek:  
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
 |**Adatforrások**|Figyelendő könyvtárainak listáját.|  
-|**FailedRequestLogs**|Többek között az elem a konfigurációban lehetővé teszi, hogy az IIS-webhelyet vagy alkalmazást a sikertelen kérelmek kapcsolatos információkat naplózza gyűjteménye. Engedélyeznie kell a nyomkövetést **rendszer. Webkiszolgáló** a **Web.config**.|  
-|**IISLogs**|Többek között az elem a konfigurációban lehetővé teszi, hogy az IIS-naplók a gyűjteményben:<br /><br /> **containerName** – az Azure Storage-fiók használható az IIS-napló tárolására a blob tároló nevét.|  
+|**FailedRequestLogs**|Például ez az elem a konfigurációban lehetővé teszi, hogy a sikertelen kérelmek egy IIS-webhely vagy alkalmazás naplókat gyűjteménye. Is engedélyeznie kell a nyomkövetést **rendszer. Webkiszolgáló** a **Web.config**.|  
+|**IISLogs**|Például ez az elem a konfigurációban lehetővé teszi az IIS-naplók gyűjtésére:<br /><br /> **containerName** -az IIS-naplók tárolására szolgáló Azure Storage-fiókját a blobtároló nevét.|  
 
 ## <a name="datasources-element"></a>Adatforrások elem  
- Figyelendő könyvtárainak listáját. A következő táblázat a gyermekelemek:  
+ Figyelendő könyvtárainak listáját. A következő táblázat ismerteti a gyermekelemek:  
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
-|**DirectoryConfiguration**|Kötelező. Kötelező attribútum:<br /><br /> **containerName** -a blob tároló a naplófájlok tárolására szolgáló használható az Azure Storage-fiók nevét.|  
+|**DirectoryConfiguration**|Kötelező. Kötelező attribútum:<br /><br /> **containerName** – az Azure Storage-fiókot a naplófájlok tárolásához használandó blobtároló neve.|  
 
 ## <a name="directoryconfiguration-element"></a>DirectoryConfiguration elem  
- **DirectoryConfiguration** vagy előfordulhat, hogy tartalmazza a **abszolút** vagy **LocalResource** elem, de soha sem egyszerre mindkettőre. A következő táblázat a gyermekelemek:  
+ **DirectoryConfiguration** tartalmazhat vagy a **abszolút** vagy **LocalResource** elemmel, de nem mindkettőt. A következő táblázat ismerteti a gyermekelemek:  
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
-|**Abszolút**|A figyelni kívánt könyvtár abszolút elérési útja A következő attribútumok szükségesek:<br /><br /> -                     **Elérési út** -a figyelni kívánt könyvtár abszolút elérési útja.<br /><br /> -                      **expandEnvironment** -konfigurálható, hogy az elérési út környezeti változókat levő figyelő kibontva látható.|  
-|**LocalResource**|Az elérési út a figyelheti a helyi erőforrás viszonyítva. Szükséges attribútumok pedig a következők:<br /><br /> -                     **Név** -a helyi erőforrást, amely tartalmazza a figyelni kívánt könyvtár<br /><br /> -                     **relativePath** – a relatív nevét, amely tartalmazza a figyelni kívánt könyvtár elérési útja|  
+|**Abszolút**|Figyelni kívánt könyvtár abszolút elérési útja. A következő attribútumok szükség:<br /><br /> -                     **Elérési út** -a figyelni kívánt könyvtár abszolút elérési útját.<br /><br /> -                      **expandEnvironment** -segítségével beállítható, hogy az elérési út környezeti változók vannak bontva.|  
+|**LocalResource**|Az elérési út képest helyi erőforrás monitorozásához. Szükséges attribútumok a következők:<br /><br /> -                     **Név** – a helyi erőforrás, amely tartalmazza a figyelni kívánt könyvtár<br /><br /> -                     **relativePath** -képest relatív nevét, amely tartalmazza a figyelni kívánt könyvtár elérési útja|  
 
 ## <a name="etwproviders-element"></a>EtwProviders elem  
- Konfigurálja az EventSource ETW-eseményeinek gyűjtése és/vagy a szolgáltatók ETW Manifest alapján. A következő táblázat a gyermekelemek:  
+ Konfigurálja az ETW-események az eseményforrás gyűjteménye, illetve az ETW-jegyzékfájl-alapú szolgáltatók. A következő táblázat ismerteti a gyermekelemek:  
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|Konfigurálja az előállított eseményeinek gyűjtése [EventSource osztály](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Kötelező attribútum:<br /><br /> **szolgáltató** -az EventSource esemény osztály neve.<br /><br /> Nem kötelező attribútumok pedig a következők:<br /><br /> -                     **scheduledTransferLogLevelFilter** – a minimális súlyossági szintet a tárfiók át.<br /><br /> -                     **scheduledTransferPeriod** -tároló ütemezett átvitelek között felfelé kerekítve a legközelebbi perc. Az érték egy [XML-időtartam adattípust](http://www.w3schools.com/xml/schema_dtypes_date.asp).|  
-|**EtwManifestProviderConfiguration**|Kötelező attribútum:<br /><br /> **szolgáltató** -esemény szolgáltatójának a GUID-azonosító<br /><br /> Nem kötelező attribútumok pedig a következők:<br /><br /> - **scheduledTransferLogLevelFilter** – a minimális súlyossági szintet a tárfiók át.<br /><br /> -                     **scheduledTransferPeriod** -tároló ütemezett átvitelek között felfelé kerekítve a legközelebbi perc. Az érték egy [XML-időtartam adattípust](http://www.w3schools.com/xml/schema_dtypes_date.asp).|  
+|**EtwEventSourceProviderConfiguration**|Konfigurálja a generált események gyűjtését [EventSource osztály](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Kötelező attribútum:<br /><br /> **szolgáltató** -az osztály nevét az EventSource esemény.<br /><br /> Nem kötelező attribútumok a következők:<br /><br /> -                     **scheduledTransferLogLevelFilter** – minimális súlyossági szintje a tárfiókhoz való átviteléhez.<br /><br /> -                     **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML-adattípus időtartama](http://www.w3schools.com/xml/schema_dtypes_date.asp).|  
+|**EtwManifestProviderConfiguration**|Kötelező attribútum:<br /><br /> **szolgáltató** -esemény szolgáltatójának a GUID-azonosító<br /><br /> Nem kötelező attribútumok a következők:<br /><br /> - **scheduledTransferLogLevelFilter** – minimális súlyossági szintje a tárfiókhoz való átviteléhez.<br /><br /> -                     **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML-adattípus időtartama](http://www.w3schools.com/xml/schema_dtypes_date.asp).|  
 
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration Element  
- Konfigurálja az előállított eseményeinek gyűjtése [EventSource osztály](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). A következő táblázat a gyermekelemek:  
+ Konfigurálja a generált események gyűjtését [EventSource osztály](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). A következő táblázat ismerteti a gyermekelemek:  
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
-|**DefaultEvents**|Nem kötelező attribútum:<br /><br /> **eventDestination** -tárolja az eseményeket az a táblázat neve|  
-|**Esemény**|Kötelező attribútum:<br /><br /> **azonosító** -esemény azonosítója.<br /><br /> Nem kötelező attribútum:<br /><br /> **eventDestination** -tárolja az eseményeket az a táblázat neve|  
+|**DefaultEvents**|Nem kötelező attribútum:<br /><br /> **eventDestination** -tárolja az eseményeket az a tábla neve|  
+|**Esemény**|Kötelező attribútum:<br /><br /> **ID** -esemény azonosítója.<br /><br /> Nem kötelező attribútum:<br /><br /> **eventDestination** -tárolja az eseményeket az a tábla neve|  
 
 ## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration Element  
- A következő táblázat a gyermekelemek:  
+ A következő táblázat ismerteti a gyermekelemek:  
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
-|**DefaultEvents**|Nem kötelező attribútum:<br /><br /> **eventDestination** -tárolja az eseményeket az a táblázat neve|  
-|**Esemény**|Kötelező attribútum:<br /><br /> **azonosító** -esemény azonosítója.<br /><br /> Nem kötelező attribútum:<br /><br /> **eventDestination** -tárolja az eseményeket az a táblázat neve|  
+|**DefaultEvents**|Nem kötelező attribútum:<br /><br /> **eventDestination** -tárolja az eseményeket az a tábla neve|  
+|**Esemény**|Kötelező attribútum:<br /><br /> **ID** -esemény azonosítója.<br /><br /> Nem kötelező attribútum:<br /><br /> **eventDestination** -tárolja az eseményeket az a tábla neve|  
 
 ## <a name="metrics-element"></a>Metrikák elem  
- Lehetővé teszi a gyors lekérdezéseket optimalizált teljesítményt számláló tábla létrehozásához. A következő táblázat a gyermekelemek:  
+ Lehetővé teszi, hogy hozzon létre egy számláló teljesítménytáblája, amely gyors lekérdezéseket van optimalizálva. A következő táblázat ismerteti a gyermekelemek:  
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
-|**MetricAggregation**|Kötelező attribútum:<br /><br /> **scheduledTransferPeriod** -tároló ütemezett átvitelek között felfelé kerekítve a legközelebbi perc. Az érték egy [XML-időtartam adattípust](http://www.w3schools.com/xml/schema_dtypes_date.asp).|  
+|**MetricAggregation**|Kötelező attribútum:<br /><br /> **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML-adattípus időtartama](http://www.w3schools.com/xml/schema_dtypes_date.asp).|  
 
 ## <a name="performancecounters-element"></a>PerformanceCounters elem  
- Lehetővé teszi, hogy a teljesítményszámlálók gyűjteményét. A következő táblázat a gyermekelemek:  
+ Lehetővé teszi a teljesítményszámláló-gyűjtemény. A következő táblázat ismerteti a gyermekelemek:  
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
-|**PerformanceCounterConfiguration**|A következő attribútumok szükségesek:<br /><br /> -                     **counterSpecifier** -teljesítményszámláló nevét. Például: `\Processor(_Total)\% Processor Time`. Teljesítmény listájának beolvasása a gazdagépen futó számlálók futtassa a parancsot `typeperf`.<br /><br /> -                     **sampleRate** -gyakoriságát. a számláló mintát venni.<br /><br /> Nem kötelező attribútum:<br /><br /> **egység** -számláló mértékegysége.|  
+|**PerformanceCounterConfiguration**|A következő attribútumok szükség:<br /><br /> -                     **counterSpecifier** – a teljesítményszámláló neve. Például: `\Processor(_Total)\% Processor Time`. Teljesítmény listája számlálókat a gazdagépen futó futtassa a parancsot `typeperf`.<br /><br /> -                     **sampleRate** -gyakoriságát. a számláló kell mintát venni.<br /><br /> Nem kötelező attribútum:<br /><br /> **egység** – a számláló mértékegysége.|  
 
 ## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration elem  
- A következő táblázat a gyermekelemek:  
+ A következő táblázat ismerteti a gyermekelemek:  
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
-|**annotation**|Kötelező attribútum:<br /><br /> **displayName** -számláló megjelenített neve<br /><br /> Nem kötelező attribútum:<br /><br /> **területi beállítás** -a területi beállítás jelenjen meg a számláló neve|  
+|**annotation**|Kötelező attribútum:<br /><br /> **displayName** – Ez a számláló megjelenített neve<br /><br /> Nem kötelező attribútum:<br /><br /> **területi beállítás** – a területi beállítása során használatos évformátum meghatározása a számláló neve|  
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog elem  
- A következő táblázat a gyermekelemek:  
+ A következő táblázat ismerteti a gyermekelemek:  
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
-|**Adatforrás**|A Windows eseménynaplóiban gyűjtéséhez. Kötelező attribútum:<br /><br /> **név** – a windows-eseményeket tudjon gyűjteni leíró XPath-lekérdezést. Példa:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> Minden eseményt gyűjt, adja meg a "*".|
+|**Adatforrás**|A Windows Eseménynapló bejegyzéseit, amelyek gyűjtése. Kötelező attribútum:<br /><br /> **név** – az XPath-lekérdezés, amely leírja a windows-eseményeket tudjon gyűjteni. Példa:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> Összes eseményének gyűjtéséhez, adja meg a "*".|

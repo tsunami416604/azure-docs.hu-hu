@@ -9,19 +9,19 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 911d62fc2baa50cce6d40f8b5bcc455f308d21d7
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 5910961ee54c953ea241baf9bce78b79b0dfeaea
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309655"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260091"
 ---
 # <a name="manage-credentials"></a>Hitelesítő adatok kezelése
 
 A Content Moderator hitelesítő adataival jönnek létre a következő helyeken:
 
 - [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator)
-- [A Content Moderator felülvizsgálati eszköz](http://contentmoderator.cognitive.microsoft.com/)
+- [A Content Moderator felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/)
 
 Ez a cikk ismerteti, hogy hol található őket, és hogyan kapcsolódnak egymáshoz.
 

@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: f94a9d71dab4320e561d2de00af0e2af77ab4c3f
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: c3e0bd338c38165d3a372f60e12ff5ddaa05d2a0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42060629"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248282"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Ismerkedés az Azure Queue storage és a Visual Studio csatlakoztatott szolgáltatásainak (webjobs-feladat projektek)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -468,7 +468,7 @@ Konzol módszer, amely a függvény hívása, vagy a kimenete a **Main()** metó
 
 Konzolkimenet egy adott metódus meghívásának nem csatolható, mert a konzol egyszálas, miközben számos feladat funkciók esetleg fut egyszerre. Ezért az SDK-t biztosít a saját egyedi napló az író objektum minden egyes függvény meghívási.
 
-Írhat [alkalmazás nyomkövetési naplók](../app-service/web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview), használja **Console.Out** (hoz létre a naplók adatai megjelölve) és **Console.Error** (a hiba megjelölve naplókat hoz létre). A másik lehetőség az használandó [nyomkövetési vagy TraceSource](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), részletes, figyelmeztetés, és a kritikus adatok és a hiba mellett szintjeit. Alkalmazás nyomkövetési naplók jelennek meg a webes alkalmazások naplófájljainak, Azure-táblák, illetve attól függően, hogy hogyan konfigurálhat az Azure-webalkalmazás Azure-blobok. Az összes konzolkimenet igaz, a legutóbbi 100 alkalmazásnaplókat is megjelennek az irányítópult-oldalon a webjobs-feladat, nem egy függvény meghívási lapját.
+Írhat [alkalmazás nyomkövetési naplók](../app-service/web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview), használja **Console.Out** (hoz létre a naplók adatai megjelölve) és **Console.Error** (a hiba megjelölve naplókat hoz létre). A másik lehetőség az használandó [nyomkövetési vagy TraceSource](https://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), részletes, figyelmeztetés, és a kritikus adatok és a hiba mellett szintjeit. Alkalmazás nyomkövetési naplók jelennek meg a webes alkalmazások naplófájljainak, Azure-táblák, illetve attól függően, hogy hogyan konfigurálhat az Azure-webalkalmazás Azure-blobok. Az összes konzolkimenet igaz, a legutóbbi 100 alkalmazásnaplókat is megjelennek az irányítópult-oldalon a webjobs-feladat, nem egy függvény meghívási lapját.
 
 Konzolkimenet jelenik meg, csak akkor, ha a program fut az Azure webjobs-feladat, nem, ha helyben fut a program az irányítópulton vagy más környezetben.
 
@@ -511,5 +511,5 @@ Az Azure-ban az alkalmazás naplókban ez blob: 2014-09-26T21:01:13,Information,
 ![Tábla hibanapló](./media/vs-storage-webjobs-getting-started-queues/tableerror.png)
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben nyújtott kódmintákkal, amelyek bemutatják, hogyan kezelje az Azure-üzenetsorok használata gyakori forgatókönyvei. Azure WebJobs és WebJobs SDK használatával kapcsolatos további információkért lásd: [Azure WebJobs-dokumentáció erőforrások](http://go.microsoft.com/fwlink/?linkid=390226).
+Ebben a cikkben nyújtott kódmintákkal, amelyek bemutatják, hogyan kezelje az Azure-üzenetsorok használata gyakori forgatókönyvei. Azure WebJobs és WebJobs SDK használatával kapcsolatos további információkért lásd: [Azure WebJobs-dokumentáció erőforrások](https://go.microsoft.com/fwlink/?linkid=390226).
 

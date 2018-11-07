@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: xpouyat;anilmur;juliako
-ms.openlocfilehash: 6196e2802f31fd5d06418cb722ae628dbf01c8c1
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 31bd3d54b085922de0ec822731eae79fe9a9943b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251005"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262097"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Több bemeneti fájlok és összetevő tulajdonságai párbeszédpanel használata a prémium szintű kódoló
 ## <a name="overview"></a>Áttekintés
@@ -330,7 +330,7 @@ A következő lépés, hogy adjon hozzá egy "a videó adatok típusa Updater" R
 
 ![videó adatok típusa Updater és konverter](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture12_formatconverter.png)
 
-*Videó adatok típusa Updater és konverter*
+*videó adatok típusa Updater és konverter*
 
 ![Elrendezés típus = Síkvetület konfigurálható](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture12_formatconverter2.png)
 
@@ -466,12 +466,12 @@ Kódolás, kövesse ezeket a lépéseket:
 * A kódolt objektumhoz több nyelv hangsáv fogja tartalmazni, és ezek nyomon követi az Azure Media Player választható kell lennie.
 
 ## <a name="see-also"></a>Lásd még
-* [Introducing Premium Encoding in Azure Media Services](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
-* [Az Azure Media Services prémium szintű Encoding használata](http://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
+* [Introducing Premium Encoding in Azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
+* [Az Azure Media Services prémium szintű Encoding használata](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 * [Az Azure Media Services az igény szerinti tartalomterjesztésről kódolás](media-services-encode-asset.md#media-encoder-premium-workflow)
 * [Media Encoder Premium munkafolyamat formátumai és kodekei](media-services-premium-workflow-encoder-formats.md)
 * [Minta munkafolyamat-fájlok](https://github.com/Azure/azure-media-services-samples)
-* [Az Azure Media Services Explorer eszköz](http://aka.ms/amse)
+* [Az Azure Media Services Explorer eszköz](https://aka.ms/amse)
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

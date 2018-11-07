@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c94fd0bb68a03c64935c20fef1fab7b68c9c2c9b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 83820440a6304886785a175b27614b45fdb98b13
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032988"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252224"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Egy Windows hibrid Runbook-feldolgozó üzembe helyezése
 
@@ -132,7 +132,7 @@ A telepítés részletes információt kap, használja a **-Verbose** felülette
 
 Runbookok a tevékenységeket és az Azure Automation környezetében telepített modulok meghatározott parancsmagok bármelyikét használhatja. Ezek a modulok nem automatikusan települnek az a helyszíni számítógépeken, ezért kell manuálisan telepítenie. A kivétel ez alól az Azure-modul, amely alapértelmezés szerint telepítve van, és az összes Azure-szolgáltatások és a tevékenységek parancsmagok hozzáférést biztosít az Azure Automation.
 
-Mivel az elsődleges célja, hogy a hibrid Runbook-feldolgozó szolgáltatás a helyi erőforrások kezelésére, nagy valószínűséggel telepítenie kell a modulokat, amelyek támogatják ezeket az erőforrásokat. Windows PowerShell-modul telepítéséről további információkért lásd: [modulok telepítése](http://msdn.microsoft.com/library/dd878350.aspx). 
+Mivel az elsődleges célja, hogy a hibrid Runbook-feldolgozó szolgáltatás a helyi erőforrások kezelésére, nagy valószínűséggel telepítenie kell a modulokat, amelyek támogatják ezeket az erőforrásokat. Windows PowerShell-modul telepítéséről további információkért lásd: [modulok telepítése](https://msdn.microsoft.com/library/dd878350.aspx). 
 
 Telepített modulok által hivatkozott helyen kell lennie a **PSModulePath** környezeti változót, hogy a hibrid feldolgozó automatikusan importálhatja őket. További információkért lásd: [módosítása a PSModulePath telepítési útvonal](https://msdn.microsoft.com/library/dd878326%28v=vs.85%29.aspx).
 

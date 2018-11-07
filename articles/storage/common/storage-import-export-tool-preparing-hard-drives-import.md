@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 0be0d6c9613b4160a6c4c5cc3b63336fcf67d5c2
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b16a476f1960c79c378cd3aa18eae789c289eb54
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025624"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244032"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Merevlemezek előkészítése importálási feladatokhoz
 
@@ -309,7 +309,7 @@ Az adatok mérete a lemez mérete nagyobb, ha a WAImportExport eszközt elosztja
 
 #### <a name="where-can-i-find-previous-version-of-waimportexport-tool"></a>Hol találhatok WAImportExport tool korábbi verziójával?
 
-WAImportExport az eszköz összes elavuló WAImportExport V1 eszközzel kellett rendelkezik. WAImportExport eszköz lehetővé teszi a felhasználók számára adja meg a több forrásból, és több meghajtó írni. Ezenkívül egy könnyedén felügyelheti a több forráshelyet, amelyről az adatokat egy CSV-fájl másolni kell. Azonban abban az esetben, ha SAS-támogatása vagy szeretne egyetlen forrás másolása egyetlen lemezre van szüksége, akkor is [WAImportExport V1 eszköz letöltése](http://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409) , és hivatkozzon [WAImportExport V1 referencia](storage-import-export-tool-how-to-v1.md) WAImportExport V1 használati segítség .
+WAImportExport az eszköz összes elavuló WAImportExport V1 eszközzel kellett rendelkezik. WAImportExport eszköz lehetővé teszi a felhasználók számára adja meg a több forrásból, és több meghajtó írni. Ezenkívül egy könnyedén felügyelheti a több forráshelyet, amelyről az adatokat egy CSV-fájl másolni kell. Azonban abban az esetben, ha SAS-támogatása vagy szeretne egyetlen forrás másolása egyetlen lemezre van szüksége, akkor is [WAImportExport V1 eszköz letöltése](https://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409) , és hivatkozzon [WAImportExport V1 referencia](storage-import-export-tool-how-to-v1.md) WAImportExport V1 használati segítség .
 
 #### <a name="what-is-a-session-id"></a>Mi az a munkamenet-azonosító?
 

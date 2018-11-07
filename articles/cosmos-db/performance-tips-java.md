@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: sngun
-ms.openlocfilehash: d8d05335b62d292bf61dbd3f3d565093b21f9253
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: c6c63b7b66114a8c35986b443bda78442b8edd7a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574844"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237740"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Az Azure Cosmos DB és a javát a teljesítménnyel kapcsolatos tippek
 
@@ -25,7 +25,7 @@ ms.locfileid: "45574844"
 > * [.NET](performance-tips.md)
 > 
 
-Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény és a késés garantált az zökkenőmentesen méretezhető. Nem rendelkezik architektúra jelentős módosításokat, vagy az adatbázis az Azure Cosmos DB méretezése összetett programkód írása. Felfelé és lefelé skálázás nem kell csak egyetlen API-hívás vagy [SDK metódushívás](set-throughput.md#set-throughput-java). Azonban mivel a Azure Cosmos DB a hálózati hívások segítségével érhető el vannak ügyféloldali optimalizálást is végezhet használata esetén a csúcsteljesítmény érhet el a [SQL Java SDK](documentdb-sdk-java.md).
+Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény és a késés garantált az zökkenőmentesen méretezhető. Nem rendelkezik architektúra jelentős módosításokat, vagy az adatbázis az Azure Cosmos DB méretezése összetett programkód írása. Felfelé és lefelé skálázás olyan egyszerű, mintha, így egyetlen API hívással. További tudnivalókért lásd: [hogyan építheti ki a tároló átviteli teljesítményének](how-to-provision-container-throughput.md) vagy [kiépítése az adatbázis átviteli](how-to-provision-database-throughput.md). Azonban mivel a Azure Cosmos DB a hálózati hívások segítségével érhető el vannak ügyféloldali optimalizálást is végezhet használata esetén a csúcsteljesítmény érhet el a [SQL Java SDK](documentdb-sdk-java.md).
 
 Így ha Ön kérő "Hogyan javíthatom adatbázis teljesítmény?" Vegye figyelembe a következő beállításokat:
 
@@ -93,7 +93,8 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
 
 5. **Leállítási megvalósítása getRetryAfterInMilliseconds időközönként**
 
-    Teljesítmény tesztelése során terhelés mindaddig, amíg egy kis méretű kérések másodpercenkénti száma leszabályozza növelje meg. Ha szabályozott, az ügyfélalkalmazás kell leállásait, szabályozása az a kiszolgáló által megadott újrapróbálkozási időköz. A leállítási tiszteletben biztosítja, hogy az újrapróbálkozások közötti várakozási idő mennyisége minimális idő. Újrapróbálkozási házirend támogatás is biztosított, a verzió 1.8.0-as és újabb, a [Java SDK](documentdb-sdk-java.md). További információkért lásd: [több mint szolgáltatás számára fenntartott átviteli sebesség korlátok](request-units.md#RequestRateTooLarge) és [getRetryAfterInMilliseconds](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client_exception.getretryafterinmilliseconds).
+    Teljesítmény tesztelése során terhelés mindaddig, amíg egy kis méretű kérések másodpercenkénti száma leszabályozza növelje meg. Ha szabályozott, az ügyfélalkalmazás kell leállásait, szabályozása az a kiszolgáló által megadott újrapróbálkozási időköz. A leállítási tiszteletben biztosítja, hogy az újrapróbálkozások közötti várakozási idő mennyisége minimális idő. Újrapróbálkozási házirend támogatás is biztosított, a verzió 1.8.0-as és újabb, a [Java SDK](documentdb-sdk-java.md). További információkért lásd: [getRetryAfterInMilliseconds](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client_exception.getretryafterinmilliseconds).
+
 6. **Az ügyfél-alkalmazások és szolgáltatások méretezése**
 
     Ha nagy átviteli sebesség szinten teszteli (> 50 000 RU/s), az ügyfélalkalmazás miatt a gép kapacitástól meg a Processzor vagy a hálózati kihasználtság a szűk keresztmetszetté válhat. Ha eléri ezt a pontot, továbbra is küldje le az Azure Cosmos DB-fiókot további horizontális felskálázása az ügyfélalkalmazásokat, több kiszolgáló között.

@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d9dbf816d4fd0d9f6044ebeea9a23a60adcc5bc8
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 1e9ca18d2075d40f6f55bc84723f79ae7e10850b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044603"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261213"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Kapcsolati objektumok az Azure Automationben
 
 Automation szolgáltatásbeli kapcsolódási eszköz runbookból vagy DSC-konfiguráció egy külső szolgáltatás vagy alkalmazás való kapcsolódáshoz szükséges információkat tartalmazza. Ide tartozhatnak például a felhasználónév és jelszó a kapcsolati adatokat, például egy URL-cím és port mellett a hitelesítéshez szükséges adatokat. Az érték egy kapcsolat tulajdonságai között található egy eszköz több változó létrehozása helyett egy adott alkalmazás csatlakozik az összes viselkedéssel. A felhasználó szerkesztheti az értékeket egy kapcsolat egy helyen, és a egy runbook vagy DSC-konfiguráció egyetlen paramétert a átadható egy kapcsolat nevét. A kapcsolat tulajdonságainak érhetők el a runbook vagy DSC-konfiguráció a **Get-AutomationConnection** tevékenység. 
 
-A kapcsolat létrehozásakor meg kell adnia egy *kapcsolattípus*. A kapcsolattípus tulajdonságait meghatározó sablon. A kapcsolat meghatározza a kapcsolattípus definiált tulajdonságok értékeit. Kapcsolattípusok integrációs modulok az Azure Automation hozzá vagy hoztak létre a [Azure Automation API](http://msdn.microsoft.com/library/azure/mt163818.aspx) , ha az integrációs modul olyan kapcsolat típust tartalmaz, és importálja az Automation-fiók. Ellenkező esetben szüksége lesz egy metaadatait tartalmazó fájl megadásához egy Automation kapcsolattípust létrehozása.  Ezzel kapcsolatos további információkért lásd: [integrációs modulok](automation-integration-modules.md).  
+A kapcsolat létrehozásakor meg kell adnia egy *kapcsolattípus*. A kapcsolattípus tulajdonságait meghatározó sablon. A kapcsolat meghatározza a kapcsolattípus definiált tulajdonságok értékeit. Kapcsolattípusok integrációs modulok az Azure Automation hozzá vagy hoztak létre a [Azure Automation API](https://msdn.microsoft.com/library/azure/mt163818.aspx) , ha az integrációs modul olyan kapcsolat típust tartalmaz, és importálja az Automation-fiók. Ellenkező esetben szüksége lesz egy metaadatait tartalmazó fájl megadásához egy Automation kapcsolattípust létrehozása.  Ezzel kapcsolatos további információkért lásd: [integrációs modulok](automation-integration-modules.md).  
 
 >[!NOTE]
 >Az Azure Automationben biztonságos eszközök tartalmazzák, hitelesítő adatok, tanúsítványok, kapcsolatok és a titkosított változókat. Ezek az eszközök titkosítottak és a létrehozott egyedi kulcs segítségével minden automation-fiókhoz tartozó Azure Automation tárolja. Ezt a kulcsot a Key Vaultban tárolt. A kulcs tárolása egy biztonságos objektumot, előtt betöltése a Key Vaultból és majd az eszköz titkosításához használt.
@@ -70,7 +70,7 @@ A függvény a következő táblázat a Python2-forgatókönyvem található kap
 
 ### <a name="to-create-a-new-connection-with-windows-powershell"></a>Új kapcsolat létrehozása a Windows PowerShell-lel
 
-Új kapcsolat létrehozása a Windows PowerShell a [New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection) parancsmagot. Ez a parancsmag paramétereinek nevű **Kivonattáblájának** vár, amely egy [kivonattábla](http://technet.microsoft.com/library/hh847780.aspx) értékek meghatározása az egyes határozzák meg a kapcsolattípus tulajdonságait.
+Új kapcsolat létrehozása a Windows PowerShell a [New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection) parancsmagot. Ez a parancsmag paramétereinek nevű **Kivonattáblájának** vár, amely egy [kivonattábla](https://technet.microsoft.com/library/hh847780.aspx) értékek meghatározása az egyes határozzák meg a kapcsolattípus tulajdonságait.
 
 Ha ismeri az Automation [Futtatás mint fiók](automation-sec-configure-azure-runas-account.md) az egyszerű szolgáltatás használatával forgatókönyvek hitelesítéséhez, a PowerShell-parancsfájlt, a futtató fiók létrehozása a portálról, alternatív megoldásként a megadott új kapcsolat létrehozása az eszköz az alábbi Példaparancsok használatával.  
 
@@ -84,7 +84,7 @@ A kapcsolódási eszköz létrehozása, mert az Automation-fiók létrehozásako
   
 ## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>Kapcsolat egy runbook vagy DSC-konfiguráció használata
 
-Egy kapcsolat egy runbookból vagy DSC-konfiguráció lekérése a **Get-AutomationConnection** parancsmagot.  Nem használhatja a [Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection) tevékenység.  Ez a tevékenység lekéri a kapcsolat különböző mezőinek értékét, és adja vissza őket egy [kivonattábla](http://go.microsoft.com/fwlink/?LinkID=324844) amelyek ezután felhasználhatók a runbook vagy DSC-konfiguráció megfelelő parancsaival.
+Egy kapcsolat egy runbookból vagy DSC-konfiguráció lekérése a **Get-AutomationConnection** parancsmagot.  Nem használhatja a [Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection) tevékenység.  Ez a tevékenység lekéri a kapcsolat különböző mezőinek értékét, és adja vissza őket egy [kivonattábla](https://go.microsoft.com/fwlink/?LinkID=324844) amelyek ezután felhasználhatók a runbook vagy DSC-konfiguráció megfelelő parancsaival.
 
 ### <a name="textual-runbook-sample"></a>Minta szöveges forgatókönyv
 

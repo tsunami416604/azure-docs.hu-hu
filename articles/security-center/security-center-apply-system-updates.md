@@ -3,7 +3,7 @@ title: Az Azure Security Center rendszer frissítéseinek alkalmazása |} A Micr
 description: Ez a dokumentum bemutatja, hogyan valósíthat meg az Azure Security Center javaslatainak **rendszerfrissítések alkalmazása** és **rendszerfrissítések utáni újraindítás**.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: e5bd7f55-38fd-4ebb-84ab-32bd60e9fa7a
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/11/2017
-ms.author: terrylan
-ms.openlocfilehash: 5f6747629139e85f1ae50364da807636937a464a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: 7b5f4415351ad5b51b874e5dc17349160f65e9ef
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301932"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240375"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Az Azure Security Center rendszerfrissítések alkalmazása
 Az Azure Security Center figyeli a napi Windows és Linux rendszerű virtuális gépeken (VM) és a hiányzó operációsrendszer-frissítések a számítógépeken. A Security Center lekéri az elérhető biztonsági és kritikus frissítések listáját a Windows Update webhelyről vagy a Windows Server Update Services (WSUS), függően szolgáltatás van konfigurálva, egy Windows-számítógépen. A Security Center is ellenőrzi a legújabb frissítéseket Linux rendszerekben. Ha a virtuális gép vagy a számítógép egy rendszer frissítés hiányzik, a Security Center javasolni fogja, hogy a rendszerfrissítések alkalmazása.
@@ -90,7 +90,7 @@ A Security Centerrel kapcsolatos további információkért olvassa el a követk
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – A biztonsági riasztások kezelése és az azokra való reagálás.
 * [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) – Megtudhatja, hogyan figyelheti a partnermegoldások biztonsági állapotát.
 * [Azure Security Center – gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-* [Az Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi.
+* [Az Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi.
 
 <!--Image references-->
 [1]: ./media/security-center-apply-system-updates/missing-system-updates.png

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: hascipio
-ms.openlocfilehash: 4f86d444a2f2b97fd8605d480db358813bc39fd3
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: ef19380372354b8f34343f9f94ebf6b384996f14
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714189"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261554"
 ---
 # <a name="general-prerequisites-for-creating-an-offer-for-the-azure-marketplace"></a>Ajánlat létrehozása az Azure piactér általános előfeltételei
 Általános, üzleti folyamat-központú szükséges előfeltételek megismerésében, melyek szükségesek ahhoz, hogy az ajánlat létrehozási folyamata folytatná.
@@ -70,7 +70,7 @@ Ez az az előfizetést, amely használatával a Virtuálisgép-rendszerképek l�
 
 ## <a name="sell-from-countries"></a>"Értékesítő" országokat
 > [!WARNING]
-> Annak érdekében, hogy a szolgáltatások az Azure piactéren értékesítheti, győződjön meg arról, hogy a regisztrált entitást a jóváhagyott "értékesítő" országokat közül. Ez a korlátozás küldenie jóváhagyásra cége kifizetési és adózási okból is. A Microsoft aktívan kíváncsi, bontsa ki a közeljövőben országok listája, úgyhogy érdemes figyelnie. A teljes listát lásd: 1.b. a szakasz a [Azure piactér részvételi szabályzatának](http://go.microsoft.com/fwlink/?LinkID=526833).
+> Annak érdekében, hogy a szolgáltatások az Azure piactéren értékesítheti, győződjön meg arról, hogy a regisztrált entitást a jóváhagyott "értékesítő" országokat közül. Ez a korlátozás küldenie jóváhagyásra cége kifizetési és adózási okból is. A Microsoft aktívan kíváncsi, bontsa ki a közeljövőben országok listája, úgyhogy érdemes figyelnie. A teljes listát lásd: 1.b. a szakasz a [Azure piactér részvételi szabályzatának](https://go.microsoft.com/fwlink/?LinkID=526833).
 > 
 > 
 

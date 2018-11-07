@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: terrylan
-ms.openlocfilehash: 35650eec65fa9181d035c52e6b466985b483500c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 98eee29dc6810d35ee1792c601e6d2f147602cae
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036507"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262182"
 ---
 # <a name="securing-paas-deployments"></a>PaaS üzemelő példányainak biztonságossá tétele
 
@@ -151,7 +151,7 @@ A webalkalmazások egyre inkább ki vannak téve rosszindulatú támadásoknak, 
 ## <a name="monitor-the-performance-of-your-applications"></a>Az alkalmazások teljesítményének figyelése
 Figyelés gyűjtése és elemzése a teljesítmény, egészségügyi és az alkalmazás rendelkezésre állásának meghatározása az adatokat. A hatékony monitorozási stratégia pontos információkat nyújt az alkalmazás összetevőinek működéséről. Ez segít növelni az üzemidőt értesítése a kritikus fontosságú problémákról, így fel lehet számolni őket, mielőtt azok veszélyeztetnék. Ez ráadásul segít jobban észlelje a rendellenességeket, amelyekre kapcsolatos biztonsági lehet.
 
-Használat [Azure Application Insights](http://azure.microsoft.com/documentation/services/application-insights) figyelése rendelkezésre állását, teljesítményét és használatát az alkalmazás, akár a felhőben vagy a helyszínen vannak tárolva. Application Insights segítségével gyorsan azonosíthatja és diagnosztizálhatja a hibákat az alkalmazásban egy felhasználó jelenti azokat várakozás nélkül. A gyűjtött információk alapján megalapozott döntéseket hozhat az alkalmazás karbantartásával és továbbfejlesztésével kapcsolatban.
+Használat [Azure Application Insights](https://azure.microsoft.com/documentation/services/application-insights) figyelése rendelkezésre állását, teljesítményét és használatát az alkalmazás, akár a felhőben vagy a helyszínen vannak tárolva. Application Insights segítségével gyorsan azonosíthatja és diagnosztizálhatja a hibákat az alkalmazásban egy felhasználó jelenti azokat várakozás nélkül. A gyűjtött információk alapján megalapozott döntéseket hozhat az alkalmazás karbantartásával és továbbfejlesztésével kapcsolatban.
 
 Az Application Insights kiterjedt eszközkészlettel rendelkezik az általa gyűjtött adatok feldolgozásához. Az Application Insights egy általános adattárban tárolja az adatait. Képes a különféle közös funkciók, például a riasztások, irányítópultok és részletes elemzés előnyeinek kihasználására a Log Analytics lekérdezési nyelvének használatával.
 

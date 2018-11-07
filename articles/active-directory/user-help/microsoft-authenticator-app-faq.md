@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: 8ac6bc3ee042fee9757577dfa0e7ddab0f261645
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 689eb2afb3ca10392b007b863a2900302aea2940
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498317"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259071"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>A Microsoft Authenticator alkalmazás – gyakori kérdések
 
 Ez a cikk a Microsoft Authenticator alkalmazással kapcsolatos gyakori kérdésekre ad választ. Ha nem látja a választ a kérdésére, lépjen a [Microsoft Authenticator alkalmazás fórum](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp).
 
-A Microsoft Authenticator alkalmazás helyett az Azure Authenticator alkalmazást, és az Azure multi-factor Authentication használata esetén ajánlott alkalmazás. A Microsoft Authenticator alkalmazás [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) és [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071) rendszereken érhető el.
+A Microsoft Authenticator alkalmazás helyett az Azure Authenticator alkalmazást, és az Azure multi-factor Authentication használata esetén ajánlott alkalmazás. A Microsoft Authenticator alkalmazás [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) és [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071) rendszereken érhető el.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 |Kérdés|Megoldás|

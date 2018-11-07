@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: tomsh
-ms.openlocfilehash: 50cfc2e8420d9f427b02c739f497d8546d880d7c
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: bceccbfd0efb54db3e599ec737fe5df0c2a87acd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747762"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261655"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure database ajánlott biztonsági eljárások
-Biztonsági adatbázis elsődleges szempont, és azt mindig az, hogy prioritást [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). Az adatbázisok szorosan leköthetőek súgó megfelel a legtöbb szabályozási és biztonsági követelmények, többek között a HIPAA, az ISO 27001/27002 és a PCI DSS Level 1. Biztonsági megfelelőségi tanúsítványok aktuális listáját érhető el: a [Microsoft Trust Center webhely](http://azure.microsoft.com/support/trust-center/services/). Is kiválaszthatja, hogy az adott Azure-adatközpontok a szabályozási követelményeknek megfelelően az adatbázisok helyezze.
+Biztonsági adatbázis elsődleges szempont, és azt mindig az, hogy prioritást [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). Az adatbázisok szorosan leköthetőek súgó megfelel a legtöbb szabályozási és biztonsági követelmények, többek között a HIPAA, az ISO 27001/27002 és a PCI DSS Level 1. Biztonsági megfelelőségi tanúsítványok aktuális listáját érhető el: a [Microsoft Trust Center webhely](https://azure.microsoft.com/support/trust-center/services/). Is kiválaszthatja, hogy az adott Azure-adatközpontok a szabályozási követelményeknek megfelelően az adatbázisok helyezze.
 
 Ebben a cikkben bemutatjuk, Azure database ajánlott biztonsági eljárások gyűjteménye. Ajánlott eljárások az Azure adatbázis biztonsági származnak az funkciót, és az ügyfelek a funkciókat, például saját magának.
 

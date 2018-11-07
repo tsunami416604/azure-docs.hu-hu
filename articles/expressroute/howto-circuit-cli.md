@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2017
 ms.author: anzaman;cherylmc
-ms.openlocfilehash: 21cd06692fe1c26cfa276d1f8ec7ace77b11d3c2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a53fe43365100c6d71fcc2b9e0944a221adf188d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979981"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249234"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>Létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport parancssori felület használatával
 
@@ -31,13 +31,13 @@ Ez a cikk ismerteti az Azure ExpressRoute-kapcsolatcsoport létrehozása a paran
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [Videó – Azure portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
+> * [Videó – Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klasszikus)](expressroute-howto-circuit-classic.md)
 > 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-* A folyamat elkezdése előtt telepítse a CLI-parancsok legújabb verzióit (2.0-s vagy újabb). A CLI-parancsok telepítéséről további információkért lásd: [az Azure CLI telepítése](/cli/azure/install-azure-cli) és [Azure CLI használatának első lépései](/cli/azure/get-started-with-azure-cli).
+* A folyamat elkezdése előtt telepítse a CLI-parancsok legújabb verzióit (2.0-s vagy újabb). Információk a CLI-parancsok telepítéséről: [Az Azure CLI telepítése](/cli/azure/install-azure-cli) és [Bevezetés az Azure CLI használatába](/cli/azure/get-started-with-azure-cli).
 * Tekintse át a [Előfeltételek](expressroute-prerequisites.md) és [munkafolyamatok](expressroute-workflows.md) konfigurálás megkezdése előtt.
 
 ## <a name="create"></a>Létrehozása és kiépítése az ExpressRoute-kapcsolatcsoport

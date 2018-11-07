@@ -1,6 +1,6 @@
 ---
-title: Támogatási lehetőségek és a használatból való kivonást házirend útmutató az Azure vendég operációs rendszer |} Microsoft Docs
-description: Mi a Microsoft támogatást tekintetében az Azure vendég operációs rendszeren felhőalapú szolgáltatás által használt információkat tartalmaz.
+title: Az Azure vendég operációs rendszer útmutató támogatási és kivezetési szabályzata |} A Microsoft Docs
+description: Mi a Microsoft támogatást az alábbiak tekintetében az Azure vendég operációs rendszerre a Cloud Services által használt információkat biztosít.
 services: cloud-services
 documentationcenter: na
 author: raiye
@@ -14,67 +14,67 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
-ms.openlocfilehash: dfa3bac95b9827789950b4931e3198237de4a1fd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6068f054a2ce695a889351b1f959319c64eb73fd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608562"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235598"
 ---
-# <a name="azure-guest-os-supportability-and-retirement-policy"></a>Az Azure vendég operációs rendszer támogatásának és a használatból való kivonást házirend
-Ezen a lapon található információkat az Azure vendég operációs rendszerre vonatkozik ([vendég operációs rendszer](cloud-services-guestos-update-matrix.md)) Felhőszolgáltatások munkavégző és a webes szerepkörök (PaaS). Virtuális gépek (IaaS) nem vonatkozik.
+# <a name="azure-guest-os-supportability-and-retirement-policy"></a>Az Azure vendég operációs rendszer támogatási és kivezetési szabályzat
+Az Azure vendég operációs rendszer ezen a lapon található információkat konfigurációelemmel kapcsolatos ([vendég operációs rendszer](cloud-services-guestos-update-matrix.md)) Cloud Services feldolgozói és a webes szerepkör (PaaS). Nem alkalmazható a virtuális gépeken (IaaS).
 
-A Microsoftnál egy közzétett [házirend támogatja a vendég operációs rendszer](http://support.microsoft.com/gp/azure-cloud-lifecycle-faq). A lap azért olvassák most ismerteti, hogyan van megvalósítva a házirendet.
+A Microsoft rendelkezik egy közzétett [a vendég operációs rendszer vonatkozó támogatási szabályzatban](https://support.microsoft.com/gp/azure-cloud-lifecycle-faq). Általában azért olvassák el a lapot most azt ismerteti, hogyan van megvalósítva a házirendet.
 
 A házirend
 
-1. A Microsoft támogatást **legalább a vendég operációs rendszer legújabb két családok**. Család kivonják, az ügyfelek 12 hónapon hivatalos használatból való kivonást egy újabb támogatott vendég operációsrendszer-család frissíteni kell.
-2. A Microsoft támogatást **legalább két legújabb verziójáról a támogatott vendég operációsrendszer-családok**.
-3. A Microsoft támogatást **legalább az Azure SDK legújabb két verziója**. Az SDK verziójának kivonták a rendszerből, ha az ügyfelek a hivatalos kivezetési dátum újabb verzióra való frissítése a 12 hónapon keresztül fog rendelkezni.
+1. A Microsoft támogatást **legalább a vendég operációs rendszer legújabb két családot**. Család kivonják a forgalomból, amikor a felhasználóknak kell frissíteni egy újabb támogatott vendég operációs rendszerek a hivatalos kivezetési dátuma 12 hónapig.
+2. A Microsoft támogatást **legalább a támogatott vendég operációsrendszer-családok két legújabb verziója**.
+3. A Microsoft támogatást **legalább az Azure SDK legújabb két verziója**. Amikor az SDK-verziója elavult, ügyfelek frissítése újabb verzióra a hivatalos kivezetési dátuma 12 hónapig fog rendelkezni.
 
-Esetenként, több mint két családok vagy kiadásokban lehet, hogy támogatja. Hivatalos vendég operációs rendszer támogatási információk jelennek meg a [Azure vendég operációs rendszereinek kiadásait és SDK-kompatibilitási mátrixát](cloud-services-guestos-update-matrix.md).
+Időnként több mint két családok vagy kiadásokban támogathatók. Hivatalos vendég operációs rendszer támogatási információk jelennek meg a [Azure Vendégoperációsrendszer-kiadásainak listáját és az SDK-kompatibilitási mátrixot](cloud-services-guestos-update-matrix.md).
 
 ## <a name="when-a-guest-os-version-is-retired"></a>Ha a vendég operációs rendszer verziója elavult
-Új vendég operációs rendszer **verziók** kapcsolatos átfogó MSRC legújabb frissítéseit minden hónapban bevezetett. A rendszeres havi frissítéseket, mert a vendég operációs rendszer verziója általában le van tiltva a kiadása után körülbelül 60 nap. Ez a tevékenység tartja az egyes használható legalább két Vendég operációsrendszer-verziók.
+Új vendég operációs rendszer **verziók** kapcsolatos a legújabb frissítéseket MSRC havonta jelennek meg. A rendszeres havi frissítések miatt a vendég operációs rendszer verziója általában le van tiltva a kiadása után körülbelül 60 napig. Ez a tevékenység biztosítja, hogy legalább két Vendég operációsrendszer-verziók egyes családokon használható.
 
-### <a name="process-during-a-guest-os-family-retirement"></a>A folyamat során a vendég operációs rendszer termékcsalád kivonása
-A használatból való kivonást elavulásának bejelentéséig, az ügyfelek után 12 hónap "átmenet" időszak előtt a régebbi termékcsalád hivatalosan eltávolítja a szolgáltatásból. A váltás ideje Microsoft belátása szerint is kiterjeszthető. A frissítések lesznek közzétéve a [Azure vendég operációs rendszereinek kiadásait és SDK-kompatibilitási mátrixát](cloud-services-guestos-update-matrix.md).
+### <a name="process-during-a-guest-os-family-retirement"></a>A folyamat során a vendég operációs rendszer család használatból való kivonást egyaránt
+A kivezetési bejelentéséig, ügyfelek után 12 hónapos "átmeneti" időszak előtt a régebbi termékcsalád hivatalosan eltávolítja a szolgáltatásból. A váltás ideje, a Microsoft saját belátása is kiterjeszthető. Frissítések közzéteszi a rendszer a a [Azure Vendégoperációsrendszer-kiadásainak listáját és az SDK-kompatibilitási mátrixot](cloud-services-guestos-update-matrix.md).
 
-A fokozatos használatból való kivonást folyamat megkezdődik az átállási időszak hónap elteltével hat (6). Ebben az időszakban:
+Fokozatos használatból való kivonást egyaránt folyamat hat (6) hónapos való átállási időszak lejárta megkezdődik. Ebben az időszakban:
 
-1. A Microsoft ügyfelei a használatból való kivonást értesítést küld.
+1. A Microsoft értesíti ügyfeleit a használatból való kivonást egyaránt.
 2. Az Azure SDK újabb verziója nem támogatja a kivont Vendég operációsrendszer-család.
-3. Új központi telepítéséhez és a Felhőszolgáltatások redeployments nem engedélyezett a kivont termékcsalád
+3. Új telepítések és felhőalapú szolgáltatások redeployments nem engedélyezett a kivont termékcsalád
 
-A Microsoft továbbra is bevezeti, az átállási időszak, a "lejárati dátum" néven ismert utolsó napjáig MSRC frissítéseket tartalmazó új vendég operációs rendszer verziója. A lejárati dátum még mindig fut, a Cloud Services lesz támogatott az Azure garantált szolgáltatási szintje alatt. A Microsoftnál frissítés kényszerítése, törölje vagy szolgáltatások leállítását követően tetszése szerint.
+A Microsoft továbbra is új Vendég operációsrendszer-verzió a legújabb MSRC-frissítések utolsó napjáig az átállási időszak, más néven "lejárati dátum" beépítése vezetnek be. A lejárati dátum továbbra is fut a Cloud Services lesz támogatott alatt az Azure SLA. A Microsoft rendelkezik a saját belátása szerint értékeli frissítés kényszerítéséhez, törölje vagy állítsa le ezeket a szolgáltatásokat ezt követően.
 
-### <a name="process-during-a-guest-os-version-retirement"></a>A folyamat során a vendég operációs rendszer verziója kivonása
-Ha az ügyfelek automatikus frissítése a vendég operációs rendszer, akkor soha nem kell foglalkoznia a Vendég operációsrendszer-verziók foglalkozik. Majd mindig a vendég operációs rendszer legújabb verzióját használ.
+### <a name="process-during-a-guest-os-version-retirement"></a>Folyamat során a vendég operációs rendszer verziója kivonása
+Ügyfelek automatikus frissítése a vendég operációs rendszer beállítása, ha soha nem rendelkeznek aggódnia a Vendég operációsrendszer-verziók többé vesződnie a sérült. Majd mindig a legújabb vendég operációs rendszer használ.
 
-Vendég operációsrendszer-verziók havonta kiadott. Rendszeres kiadásokban arányát, mert egyes verzióihoz rögzített élettartamot rendelkezik.
+Vendég operációsrendszer-verziók havonta jelennek meg. Rendszeres kiadások arányát, mert minden verzió rendelkezik egy rögzített időtartama van.
 
-Az élettartamot be 60 nap egy verziója "*le van tiltva*". "Letiltott" azt jelenti, hogy eltávolítja-e a verziót a portálról. A verzió már nem állítható be a szolgáltatáskonfigurációs SÉMA konfigurációs fájlból. Meglévő telepítések meghagyott futtatása. Azonban új központi telepítéséhez és a meglévő telepítések kód és a konfigurációs frissítésekről nem engedélyezett.
+60 napon belül be a gyűjteményszintű, egy verzió: "*le van tiltva*". "Letiltva" azt jelenti, hogy a verzióra a portálról törlődik. A verzió már nem állítható be a CSCFG-konfigurációs fájlt. Meglévő üzemelő példányok futó van hátra. Azonban nem engedélyezett új üzembe helyezésekhez és telepítéseit kód és a konfiguráció frissítéseit.
 
-Némi várakozás után válik "Letiltva", a vendég operációs rendszer verziója "*lejár*", és minden még fut az adott telepítéshez kényszerített frissíteni, és automatikusan frissíteni a jövőben a vendég operációs rendszer beállítása. Lejárati kötegekben történik, a megfelelő és a lejárati idő időtartama eltérőek lehetnek.
+Némi várakozás után váljon "Letiltva", a Vendég operációsrendszer-verzió "*lejár*", és továbbra is az adott verzióját futtató bármilyen telepítések kényszerített frissítve, és automatikusan frissül a jövőben a vendég operációs rendszer. Lejárati kötegekben történik, így a megfelelő és a lejárati idő időtartama eltérő lehet.
 
-Ezek az időszakok Microsoft megítélése megkönnyítése érdekében ügyfél átmenetek hosszabb tehető. A kommunikálja a módosításokat a [Azure vendég operációs rendszereinek kiadásait és SDK-kompatibilitási mátrixát](cloud-services-guestos-update-matrix.md).
+Ezeket az időszakokat ügyfél átmenetek megkönnyítése érdekében a Microsoft saját belátása szerint értékeli hosszabb lehet elvégezni. Módosítások kommunikálja a a [Azure Vendégoperációsrendszer-kiadásainak listáját és az SDK-kompatibilitási mátrixot](cloud-services-guestos-update-matrix.md).
 
-### <a name="notifications-during-retirement"></a>Értesítések során kivonása
-* **Családbiztonsági kivonása** <br>Microsoft blogbejegyzések és a portál értesítései fogja használni. Egy kivont Vendég operációsrendszer-család továbbra is használó ügyfelek hozzárendelt szolgáltatás-rendszergazdák közvetlen kommunikációt (e-mail, portál üzenetek, telefonhívás) keresztül értesítést fog kapni. Minden változást lesznek közzétéve a [Azure vendég operációs rendszereinek kiadásait és SDK-kompatibilitási mátrixát](cloud-services-guestos-update-matrix.md).
-* **Verzió kivonása** <br>Összes módosítás és az előfordulásuk időpontjában naplózhatja őket dátumok lesznek közzétéve a [Azure vendég operációs rendszereinek kiadásait és SDK-kompatibilitási mátrixát](cloud-services-guestos-update-matrix.md), beleértve a kiadásban, le van tiltva és lejárati. Szolgáltatás-rendszergazdák e-maileket kap, ha egy letiltott vendég operációs rendszer verziója vagy a családot futó központi telepítések. Az e-maileket ütemezése változhatnak. Ezek általában legalább előtt megfelelő, egy hónap, ha a időzítési nem hivatalos szolgáltatásiszint-szerződésben garantált.
+### <a name="notifications-during-retirement"></a>Kivonás során értesítések
+* **Család használatból való kivonást egyaránt** <br>A Microsoft olvashat a blogbejegyzésekben és a portál értesítései használja. Ügyfelek, akik továbbra is használja a kivont Vendég operációsrendszer-család keresztül közvetlen kommunikáció (e-mailt, portál üzeneteket, telefonhívás) a hozzárendelt szolgáltatás-rendszergazdák értesítést kap. Minden módosítás lesz közzétéve, az [Azure Vendégoperációsrendszer-kiadásainak listáját és az SDK-kompatibilitási mátrixot](cloud-services-guestos-update-matrix.md).
+* **Verzió kivonása** <br>Összes módosítás és a dátumok bekövetkezésük lesz közzétéve, az [Azure Vendégoperációsrendszer-kiadásainak listáját és az SDK-kompatibilitási mátrixot](cloud-services-guestos-update-matrix.md), beleértve a kiadási le van tiltva és lejárati. Rendszergazdái fog kapni e-mailek, ha egy letiltott Vendég operációsrendszer-verzió vagy termékcsalád üzemelő példányok rendelkeznek. E-mailek időzítése eltérőek lehetnek. Ezek általában legalább előtt megfelelő, havonta bár ez időzítési nem hivatalos szolgáltatásszint-szerződést.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
-**Hogyan csökkentheti az áttelepítés hatásai**
+**Hogyan csökkentheti a migrálás következményeinek?**
 
-Azt javasoljuk, hogy használja-e legújabb Vendég operációsrendszer-család a Felhőszolgáltatások tervezéséhez.
+Azt javasoljuk, hogy a legújabb Vendég operációsrendszer-család a Cloud Services szolgáltatások tervezéséhez használja.
 
-1. Indítsa el az áttelepítést egy újabb termékcsalád korai tervezési.
-2. A felhőalapú szolgáltatás, az új termékcsalád futó tesztelése beállítása ideiglenes próbatelepítést.
-3. A vendég operációs rendszer verzió **automatikus** (osVersion = * a a [.cscfg](cloud-services-model-and-package.md#cscfg) fájl), az áttelepítés új Vendég operációsrendszer-verziók automatikusan megtörténik.
+1. A migrálás korai egy újabb családba megtervezésére.
+2. Állítsa be ideiglenes tesztkörnyezetek tesztelése a Cloud Services, az új család futtat.
+3. A Vendég operációsrendszer-verzió beállítása **automatikus** (osVersion = * a a [.cscfg](cloud-services-model-and-package.md#cscfg) fájl), az áttelepítést az új Vendég operációsrendszer-verziók automatikusan történik.
 
-**Mi történik, ha a webalkalmazás számára szükséges az operációs rendszer szorosabb integrációt?**
+**Mi történik, ha a webalkalmazásom az operációs rendszer mélyebb integrációjuk szükséges?**
 
-Ha a webes alkalmazás felépítésére attól függ, hogy az operációs rendszer alapjául szolgáló funkciók, használjon támogatott platform képességei például [indítási feladatok](cloud-services-startup-tasks.md) vagy más bővítési mechanizmusokat. Másik megoldásként használhatja [Azure virtuális gépek](https://azure.microsoft.com/documentation/scenarios/virtual-machines/) (IaaS – infrastruktúra-szolgáltatás), ha az alapul szolgáló operációs rendszer felelős áll.
+Ha a webalkalmazás-architektúra attól függ, hogy az operációs rendszer alapjául szolgáló funkcióját, használjon támogatott platform képességei például [indítási feladatok](cloud-services-startup-tasks.md) vagy más bővítési mechanizmust. Másik lehetőségként használhatja [Azure Virtual Machines](https://azure.microsoft.com/documentation/scenarios/virtual-machines/) (IaaS – infrastruktúra-szolgáltatás), hol az alapul szolgáló operációs rendszer karbantartásáért felelős.
 
 ## <a name="next-steps"></a>További lépések
-Tekintse át a legutóbbi [feloldja a vendég operációs rendszer](cloud-services-guestos-update-matrix.md).
+Tekintse át a legújabb [vendég operációs rendszer kiadással](cloud-services-guestos-update-matrix.md).

@@ -12,15 +12,15 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 695da176d2bc86fd67608cc28d14cf15a7728980
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 58b109651408a51ca7505c92d3875de63aae2cc6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161488"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261927"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Rugalmas adatbázis-ügyfélkódtárnak az Entity Framework
-Ez a dokumentum az Entity Framework-alkalmazásba való integrálásához szükséges változásait jeleníti meg a [rugalmas adatbáziseszközöket](sql-database-elastic-scale-introduction.md). A fókusz a összeállítása van [szilánkleképezés-kezelés](sql-database-elastic-scale-shard-map-management.md) és [Adatfüggő útválasztásnak](sql-database-elastic-scale-data-dependent-routing.md) az Entity Framework- **Code First** megközelítést. A [kód először – új adatbázis](http://msdn.microsoft.com/data/jj193542.aspx) oktatóanyag az EF ebben a dokumentumban futó példaként szolgálja ki. A jelen dokumentum kísérő mintakódot is, a Visual Studio-Kódminták beállítása elastic database-eszközök részét képezi.
+Ez a dokumentum az Entity Framework-alkalmazásba való integrálásához szükséges változásait jeleníti meg a [rugalmas adatbáziseszközöket](sql-database-elastic-scale-introduction.md). A fókusz a összeállítása van [szilánkleképezés-kezelés](sql-database-elastic-scale-shard-map-management.md) és [Adatfüggő útválasztásnak](sql-database-elastic-scale-data-dependent-routing.md) az Entity Framework- **Code First** megközelítést. A [kód először – új adatbázis](https://msdn.microsoft.com/data/jj193542.aspx) oktatóanyag az EF ebben a dokumentumban futó példaként szolgálja ki. A jelen dokumentum kísérő mintakódot is, a Visual Studio-Kódminták beállítása elastic database-eszközök részét képezi.
 
 ## <a name="downloading-and-running-the-sample-code"></a>Letöltésével és futtatásával a mintakód
 Ebben a cikkben a kód letöltése:
@@ -169,9 +169,9 @@ A következő példakód azt szemlélteti, egy SQL újrapróbálkozási szabály
             } 
         }); 
 
-**SqlDatabaseUtils.SqlRetryPolicy** a fenti kód számít, ha egy **SqlDatabaseTransientErrorDetectionStrategy** újrapróbálkozás-számot 5 másodperc és 10 várjon az újrapróbálkozások között eltelt idő. Ez a megközelítés hasonlít az útmutató EF és a felhasználó által kezdeményezett tranzakció (lásd: [végrehajtási stratégiák újrapróbálkozásainak (EF6-től) korlátozások](http://msdn.microsoft.com/data/dn307226). Mindkét esetben szükséges, hogy az alkalmazás szabályozza a hatókör, amelyhez a átmeneti kivételt adja vissza: Nyissa meg újra a tranzakciót, vagy (amint) hozza létre újra a környezetet, a megfelelő konstruktor, amely használja az elastic database ügyfélkódtár.
+**SqlDatabaseUtils.SqlRetryPolicy** a fenti kód számít, ha egy **SqlDatabaseTransientErrorDetectionStrategy** újrapróbálkozás-számot 5 másodperc és 10 várjon az újrapróbálkozások között eltelt idő. Ez a megközelítés hasonlít az útmutató EF és a felhasználó által kezdeményezett tranzakció (lásd: [végrehajtási stratégiák újrapróbálkozásainak (EF6-től) korlátozások](https://msdn.microsoft.com/data/dn307226). Mindkét esetben szükséges, hogy az alkalmazás szabályozza a hatókör, amelyhez a átmeneti kivételt adja vissza: Nyissa meg újra a tranzakciót, vagy (amint) hozza létre újra a környezetet, a megfelelő konstruktor, amely használja az elastic database ügyfélkódtár.
 
-Szabályozhatja, ahol átmeneti kivételek is velünk vissza hatókörében kell is kizárja a beépített használatát **SqlAzureExecutionStrategy** EF, amely tartalmaz. **SqlAzureExecutionStrategy** lenne nyissa meg újra a kapcsolat, de nem használ **OpenConnectionForKey** részeként végrehajtott összes ellenőrző ezért megkerülve a **OpenConnectionForKey**hívja. Ehelyett a kódminta használ-e a beépített **DefaultExecutionStrategy** , amely EF is tartalmaz. Nem pedig **SqlAzureExecutionStrategy**, és az átmeneti hibák kezelésével az újrapróbálkozási szabályzat együttes alkalmazásával megfelelően működik. A végrehajtási házirend értéke a **ElasticScaleDbConfiguration** osztály. Vegye figyelembe, hogy döntöttünk, hogy nem használja az **DefaultSqlExecutionStrategy** használatát javasolja, mivel **SqlAzureExecutionStrategy** átmeneti kivételek esetén – amelyek vezetne nem megfelelő viselkedésének írtaknak. Az eltérő újrapróbálkozási szabályzatok és az EF további információkért lásd: [kapcsolat rugalmassága az EF](http://msdn.microsoft.com/data/dn456835.aspx).     
+Szabályozhatja, ahol átmeneti kivételek is velünk vissza hatókörében kell is kizárja a beépített használatát **SqlAzureExecutionStrategy** EF, amely tartalmaz. **SqlAzureExecutionStrategy** lenne nyissa meg újra a kapcsolat, de nem használ **OpenConnectionForKey** részeként végrehajtott összes ellenőrző ezért megkerülve a **OpenConnectionForKey**hívja. Ehelyett a kódminta használ-e a beépített **DefaultExecutionStrategy** , amely EF is tartalmaz. Nem pedig **SqlAzureExecutionStrategy**, és az átmeneti hibák kezelésével az újrapróbálkozási szabályzat együttes alkalmazásával megfelelően működik. A végrehajtási házirend értéke a **ElasticScaleDbConfiguration** osztály. Vegye figyelembe, hogy döntöttünk, hogy nem használja az **DefaultSqlExecutionStrategy** használatát javasolja, mivel **SqlAzureExecutionStrategy** átmeneti kivételek esetén – amelyek vezetne nem megfelelő viselkedésének írtaknak. Az eltérő újrapróbálkozási szabályzatok és az EF további információkért lásd: [kapcsolat rugalmassága az EF](https://msdn.microsoft.com/data/dn456835.aspx).     
 
 #### <a name="constructor-rewrites"></a>Konstruktor újraírások
 A fenti hitelesítésikód-példák bemutatják, hogy az alapértelmezett konstruktor újra ír az Entity Framework Adatfüggő útválasztás használatához az alkalmazás számára szükséges. Az alábbi táblázat általánosítja a többi konstruktorok megközelítést. 

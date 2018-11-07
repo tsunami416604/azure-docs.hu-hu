@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f50be01d067032b1143a80e56ccb5d49d899d4d6
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: c1f48e3273ac0a237c72565acf25049b763dba8a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415967"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246667"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Azure virtuális Géphez tartozó rendszer-újraindítás ismertetése
 
@@ -108,7 +108,7 @@ A leállítási időtartama mindössze öt perc is lehet, de sokkal hosszabb leh
 
 **IO meghaladó korlátozza.**
 
-Előfordulhat, hogy ideiglenesen leállítása virtuális gépeket, ha az i/o-kérések következetesen szabályozva, mivel az i/o-műveletek száma másodpercenként (IOPS) mennyisége meghaladja a a lemez i/o-korlátok között. (A standard szintű lemezes tárolás az legfeljebb 500 IOPS.) A probléma megoldásához használja a lemez szétosztottsága befolyásolhatja, vagy konfigurálja a Vendég virtuális gép, a terheléstől függően a ténylegesen felhasznált tárterület. További információkért lásd: [Azure virtuális gép konfigurálása optimális tároló-teljesítményre](http://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx).
+Előfordulhat, hogy ideiglenesen leállítása virtuális gépeket, ha az i/o-kérések következetesen szabályozva, mivel az i/o-műveletek száma másodpercenként (IOPS) mennyisége meghaladja a a lemez i/o-korlátok között. (A standard szintű lemezes tárolás az legfeljebb 500 IOPS.) A probléma megoldásához használja a lemez szétosztottsága befolyásolhatja, vagy konfigurálja a Vendég virtuális gép, a terheléstől függően a ténylegesen felhasznált tárterület. További információkért lásd: [Azure virtuális gép konfigurálása optimális tároló-teljesítményre](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx).
 
 Magasabb IOPS-korlátok Azure Premium Storage akár 80 000 iops-n keresztül érhetők el. További információkért lásd: [nagy teljesítményű Premium Storage](../windows/premium-storage.md).
 

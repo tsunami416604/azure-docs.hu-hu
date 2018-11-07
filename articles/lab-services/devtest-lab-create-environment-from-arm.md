@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 4dc61258df2311c4e7ccd4c05ebe077b3e2343eb
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f2bf811bfb0856b7ceb2fca2fd84c0d9830fb65d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222284"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255626"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Több virtuális gépes környezet és PaaS-erőforrások létrehozása Azure Resource Manager-sablonokkal
 
-A [az Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) lehetővé teszi, hogy könnyen [egyszerre egy virtuális gép hozzáadása egy laborhoz](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-add-vm). Azonban ha a környezet több virtuális gépet tartalmaz, minden virtuális gép külön-külön léteznie kell. Például egy többrétegű webalkalmazást vagy a SharePoint-farm forgatókönyvek esetén olyan mechanizmus szükséges ahhoz, hogy egyetlen lépésben több virtuális gép létrehozásához. Az Azure Resource Manager-sablonok használatával ezután határozza meg az infrastruktúra és az Azure-megoldás konfigurációját, és ismételten üzembe több virtuális gépet egy konzisztens állapotba. Ez a funkció az alábbi előnyöket nyújtja:
+A [az Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) lehetővé teszi, hogy könnyen [egyszerre egy virtuális gép hozzáadása egy laborhoz](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-add-vm). Azonban ha a környezet több virtuális gépet tartalmaz, minden virtuális gép külön-külön léteznie kell. Például egy többrétegű webalkalmazást vagy a SharePoint-farm forgatókönyvek esetén olyan mechanizmus szükséges ahhoz, hogy egyetlen lépésben több virtuális gép létrehozásához. Az Azure Resource Manager-sablonok használatával ezután határozza meg az infrastruktúra és az Azure-megoldás konfigurációját, és ismételten üzembe több virtuális gépet egy konzisztens állapotba. Ez a funkció az alábbi előnyöket nyújtja:
 
 - Az Azure Resource Manager-sablonok töltődnek be közvetlenül a (a GitHub vagy az Azure fejlesztési és üzemeltetési szolgáltatás Git) a verziókövetési tárházzal.
 - Miután konfigurálta a felhasználók létrehozna egy környezetet az Azure Portalon egy Azure Resource Manager-sablon kiválasztásával, mint a más típusú [Virtuálisgép-adatbázisok](./devtest-lab-comparing-vm-base-image-types.md).
@@ -64,7 +64,7 @@ Van néhány a szabályok egy adattárból az Azure Resource Manager-sablonok re
 
 A következő lépések végigvezetik egy tárház hozzáadása a labor, az Azure portal használatával. 
 
-1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
 1. Tesztkörnyezetek listájában jelölje ki a kívánt tesztkörnyezetben.   
 1. A laborgyakorlat **áttekintése** ablaktáblán válassza előbb **Konfigurace a zásady**.
@@ -94,7 +94,7 @@ Ez a szakasz végigvezeti környezetek létrehozása az Azure Resource Manager-s
 
 Ha a labor létrehozása az Azure Resource Manager-sablon tárház lett konfigurálva, a labor felhasználók létrehozna egy környezetet, az alábbi lépéseket követve az Azure portal használatával:
 
-1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
 1. Tesztkörnyezetek listájában jelölje ki a kívánt tesztkörnyezetben.   
 1. A labor ablaktábláján válassza ki a **Add +**.

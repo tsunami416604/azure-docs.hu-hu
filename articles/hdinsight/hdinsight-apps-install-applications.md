@@ -1,24 +1,24 @@
 ---
-title: Külső gyártótól származó Hadoop-alkalmazások telepítése az Azure HDInsighton
+title: Harmadik féltől származó alkalmazások telepítése Azure HDInsight
 description: Megismerheti, hogyan telepíthet külső gyártótól származó Hadoop-alkalmazásokat az Azure HDInsighton.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: c50bd7c314c88c0950478cc3068d9a5873b65263
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 71c371594a0ee2b2b8e976fffb7641ccb6b72c0a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996963"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261791"
 ---
-# <a name="install-third-party-hadoop-applications-on-azure-hdinsight"></a>Külső gyártótól származó Hadoop-alkalmazások telepítése az Azure HDInsighton
+# <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Az Azure HDInsight külső Apache Hadoop-alkalmazások telepítése
 
-Ismerje meg, hogyan telepítheti egy külső Hadoop-alkalmazásokat Azure HDInsight. A saját alkalmazások telepítéséről az [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) című cikk tartalmaz útmutatást.
+Ismerje meg, hogyan telepítheti egy külső Apache Hadoop-alkalmazásokat Azure HDInsight. A saját alkalmazások telepítéséről az [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) című cikk tartalmaz útmutatást.
 
 Egy HDInsight-alkalmazás olyan alkalmazás, amely a felhasználók telepíthetik az HDInsight-fürtön. Ezek az alkalmazások lehetnek a Microsoft, független szoftvergyártók (ISV-k) vagy a felhasználók fejlesztései.  
 
@@ -27,13 +27,18 @@ Az alábbi listában a közzétett alkalmazást mutatja be:
 * **AtScale adatelemzési Platform** bekapcsolja a HDInsight-fürt horizontális felskálázás OLAP-kiszolgálón. Az alkalmazás lehetővé teszi interaktív használatával a BI-eszközök a Microsoft Excel, a Power BI, a Tableau Software, a QlikView adatsor milliárd lekérdezéséhez.
 * **A cask CDAP for HDInsight** nyújt az első egységes integrációs platform big Data-80 %-kal kivágása idejét és data Lake tárolók éles környezetben. Ez az alkalmazás kizárólag a Standard HBase 3.4-fürtöket támogatja.
 * **A HDInsight DATAIKU DDS** lehetővé teszi az adatok szakemberek prototípusként, felépíthet és telepíthet rendkívül specifikus szolgáltatások, amelyek átalakítják a nyers adatokat hatékony üzleti előrejelzésekké.
+* **Datameer** önkiszolgáló méretezhető platformra való előkészítéséhez, feltárása, és gyorsítja vonatkozó az adatok elemzési információkká értékes üzleti használatra kész, gyorsabb és okosabb elemzések kézbesítése összetett többforrású adatokat bekapcsolása egy a nagyvállalati szintű.
 * **A HDInsight (béta) a H2O mesterséges intelligencia** H2O Sparkling Water a következő elosztott algoritmusokat támogatja: GLM, Naiv Bayes, elosztott, véletlenszerű erdő, átmenetes kiemelési gép, Neurális hálózatokat, Deep learning, a K-közép, PEM, Alacsony rangsorolják modellek, rendellenességek észlelése és Autoencoders általánosítva.
-* **Kyligence Analytics Platform** Kyligence Analytics Platform (másolatot KAP) egy nagyvállalati használatra kész Apache Kylin és Apache Hadoop technológián adatraktár; a másodperc törtrésze biztosít nagy méretű adatkészlet késés lekérdezése és egyszerűbbé teszi az adatelemzés az üzleti felhasználók és az elemzők. 
+* **Kyligence Analytics Platform** Kyligence Analytics Platform (másolatot KAP) egy nagyvállalati használatra kész Apache Kylin és Apache Hadoop technológián adatraktár; a subsecond biztosít nagy méretű adatkészlet késés lekérdezése és egyszerűbbé teszi az adatelemzés az üzleti felhasználók és az elemzők. 
 * **Adat-előkészítési Paxata önkiszolgáló**
 * **Spark-feladatkiszolgálót KNIME Spark-végrehajtó** Spark-feladatkiszolgálót KNIME Spark-végrehajtó HDInsight-fürtök csatlakoztatásához az KNIME elemzési Platform szolgál.
+* **A Presto buborék** Presto van a gyors, skálázható elosztott SQL lekérdezési motorja. Tárolási és számítási szétválasztása lett tervezve, Presto tökéletes megoldás az adatok az Azure Data Lake Storage, Azure Blob Storage, SQL és NoSQL-adatbázisok és más adatforrásokhoz.
 * A **Streamsets Data Collector for HDInsight** olyan, átfogó funkciókat kínáló integrált fejlesztőkörnyezetet (IDE) biztosít, amelyben bármely irányú, stream- és batch-adatokat összefűző feldolgozási folyamatok tervezése, tesztelése, üzembe helyezése és felügyelete lehetséges, továbbá különféle streamen belüli transzformációkat is tartalmaz, és mindehhez nincs szükség egyedi kód írására. 
-* **[Trifacta](http://www.trifacta.com/)**  lehetővé teszi, az adatmérnökök és az elemzők hatékonyabb vizsgálata, és már ma a különféle adatok előkészítése felügyelniük gépi tanulási átütő felhasználói élmény, a munkafolyamat és architektúra kell megadnia.
+* **Striim** (ejtsd a "stream") van egy teljes körű streamelési adatok integrálását és üzletiintelligencia-platform, folyamatos adatfeldolgozást, feldolgozási és elemzési különálló adatfolyamok engedélyezése.
+* **[Trifacta](http://www.trifacta.com/)**  lehetővé teszi, az adatmérnökök és az elemzők hatékonyabban vizsgálata, és már ma a különféle adatok előkészítése gépi tanulással biztosít egy átütő felhasználói élmény, a munkafolyamat és architektúra használatával történt.
+* **Unifi Adatplatform** zökkenőmentesen integrált csomagja, önkiszolgáló eszközöket a kiszolgálókon adatkezelési kihívást, hogy a meghajtó növekményes bevétel, csökkentheti a költségeket és az üzemeltetés bonyolult üzleti felhasználó ellátására készült. 
 * **A WANdisco Fusion HDI alkalmazás** lehetővé teszi, hogy egységes kapcsolat adatait, ha azok módosulnak, ahol nem található. Is tartalmaz a hozzáférést az adataihoz bármikor és bárhol az állásidő nélkül és megszakítás nélkül.
+* **Vízvonallal** katalógusokban, rendezi, és automatikus címkézés adatok az üzleti feltételeinek AI használata az adatok szabályozza. Üzleti literate katalógus vízvonallal a része a kritikus fontosságú, sikeres önkiszolgáló elemzési, megfelelőségi és szabályozási és informatikai kezdeményezések előrehaladását.
 
 A cikkben szereplő utasítások az Azure Portalon alapulnak. Az Azure Resource Manager-sablonok exportálása a portálról vagy a Resource Manager-sablon másolatának beszerzése szállítóktól származó, és a sablon üzembe helyezése az Azure PowerShell és a klasszikus Azure CLI használatával.  Lásd: [Hadoop-fürtök létrehozása a Resource Manager-sablonok használatával HDInsight](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 

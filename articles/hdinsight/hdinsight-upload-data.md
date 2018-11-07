@@ -1,25 +1,25 @@
 ---
-title: Hadoop-feladatok adatainak feltöltése a HDInsightba
-description: Ismerje meg, hogyan töltse fel, és a hozzáférési adatokat a klasszikus Azure CLI, Azure Storage Explorer, az Azure PowerShell, a Hadoop parancssor vagy Sqoop használatával HDInsight Hadoop-feladatok.
+title: A HDInsight Apache Hadoop-feladatok adatok feltöltése
+description: Ismerje meg, hogyan tölthet fel és Apache Hadoop-feladatok a HDInsight a klasszikus Azure CLI, Azure Storage Explorer, az Azure PowerShell, a Hadoop parancssor vagy Sqoop használatával érheti el adatait.
 keywords: etl hadoop, hadoop, hadoop-adatok betöltése az adatok beolvasása
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
-ms.author: jasonh
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.openlocfilehash: 44aaccee436011bd7d27bec87515fde0e898732e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.openlocfilehash: 50e9162da5fda98d73ccfeea0776dc89ddd25dac
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985979"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256918"
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>Hadoop-feladatok adatainak feltöltése a HDInsightba
 
-Az Azure HDInsight egy teljes körű Hadoop elosztott fájlrendszer (HDFS) keresztül az Azure Storage és az Azure Data Lake Store biztosítja. Az Azure Storage és Data lake Store célja HDFS bővítményeként zökkenőmentes felhasználói élményt nyújtson az ügyfeleknek. A Hadoop-ökoszisztéma közvetlenül gazdagépvezérlő által kezelt adatok összetevők teljes készlete lehetővé teszik. Az Azure Storage és Data Lake Store olyan különálló fájlrendszereket, amely az adatok és a számítások az adatok tárolására vannak optimalizálva. Az előnyök, az Azure Storage információ: [az Azure Storage a HDInsight] [ hdinsight-storage] és [használata Data Lake Store a HDInsight](hdinsight-hadoop-use-data-lake-store.md).
+Az Azure HDInsight egy teljes körű Hadoop elosztott fájlrendszer (HDFS) Azure Storage és az Azure Data Lake Storage (Gen1 és Gen2) biztosít. Az Azure Storage és Data lake Storage Gen1 és Gen2 célja HDFS bővítményként zökkenőmentes felhasználói élményt nyújtson az ügyfeleknek. A Hadoop-ökoszisztéma közvetlenül gazdagépvezérlő által kezelt adatok összetevők teljes készlete lehetővé teszik. Az Azure Storage, Data Lake Storage Gen1 és Gen2 olyan különálló fájlrendszereket, amely az adatok és a számítások az adatok tárolására vannak optimalizálva. Az előnyök, az Azure Storage információ: [az Azure Storage a HDInsight][hdinsight-storage], [használata Data Lake Storage Gen1 HDInsight](hdinsight-hadoop-use-data-lake-store.md) és [ Data Lake Storage Gen2 használata a HDInsight](../storage/data-lake-storage/use-hdi-cluster.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,7 +29,8 @@ Mielőtt elkezdené, vegye figyelembe az alábbi követelményeknek:
 * A következő két cikkek Tudásbázis:
 
     - [Az Azure Storage használata a HDInsight][hdinsight-storage]
-    - [Használata Data Lake Store a HDInsight](hdinsight-hadoop-use-data-lake-store.md)
+    - [HDInsight Data Lake Storage Gen1 használata](hdinsight-hadoop-use-data-lake-store.md)
+    - [HDInsight Data Lake Storage Gen2 használata](../storage/data-lake-storage/use-hdi-cluster.md)   
 
 ## <a name="upload-data-to-azure-storage"></a>Az Azure Storage-adatok feltöltése
 
@@ -213,7 +214,7 @@ Az eszköz használata előtt ismernie kell az Azure storage-fiók tárfióknév
     Után a fájl befejezte a feltöltést, használhatja a feladatok a HDInsight-fürtön.
 
 ### <a name="mount-azure-storage-as-local-drive"></a>Az Azure Storage csatlakoztatása helyi meghajtóként
-Lásd: [az Azure Storage csatlakoztatása helyi meghajtóként](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx).
+Lásd: [az Azure Storage csatlakoztatása helyi meghajtóként](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx).
 
 ### <a name="upload-using-services"></a>Töltse fel a szolgáltatások használata
 #### <a name="azure-data-factory"></a>Azure Data Factory
@@ -304,6 +305,8 @@ Most, hogy megismerte, hogyan olvashatja be őket a HDInsight, olvassa el a tov�
 [hdinsight-use-sqoop]:hadoop/hdinsight-use-sqoop.md
 
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
+[hdinsight-adls-gen1]: hdinsight-hadoop-use-data-lake-store.md
+[hdinsight-adls-gen2]: ../storage/data-lake-storage/use-hdi-cluster.md
 [hdinsight-submit-jobs]:hadoop/submit-apache-hadoop-jobs-programmatically.md
 [hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
 

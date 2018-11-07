@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: a99375ae961e9239e5e8ea86db8b1b9b002b10c8
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 0f237b4d742c0c7de1e836e2b9d83502cfe1a30d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526963"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231011"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -169,7 +169,7 @@ A következő műveleteket végzi a Storage Analytics számlázhatók:
 Ha az adatmegőrzési házirend van beállítva, nem díjkötelesek törlési tranzakció során a Storage Analytics törli a régi naplózás és mérőszámok adatait. Azonban a törlési tranzakció egy ügyfél olyan számlázható. Adatmegőrzési házirendek kapcsolatos további információkért lásd: [Storage Analytics adatmegőrzési házirend beállítása](https://msdn.microsoft.com/library/azure/hh343263.aspx).
 
 ### <a name="understanding-billable-requests"></a>Számlázható kérelmének ismertetése
-Minden fiók storage szolgáltatás felé irányuló kérések, a számlázható, vagy a nem számlázható. A Storage Analytics naplók egy szolgáltatáshoz, köztük egy állapotüzenetet, amely azt jelzi, hogy a kérelem kezelése történt meg minden egyes kérelem. Ehhez hasonlóan a Storage Analytics tárolja a metrikákat egy szolgáltatás és a szolgáltatáshoz, beleértve a százalékok és bizonyos állapotüzenetek száma az API műveleteit. Együtt ezek a funkciók segítségével elemezheti a számlázható kérések, az alkalmazás továbbfejlesztése és diagnosztizálhatja problémáit a szolgáltatásokra irányuló kérések. Számlázással kapcsolatos további információkért lásd: [ismertetése az Azure Storage Billing – sávszélesség, tranzakciók és a kapacitás](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx).
+Minden fiók storage szolgáltatás felé irányuló kérések, a számlázható, vagy a nem számlázható. A Storage Analytics naplók egy szolgáltatáshoz, köztük egy állapotüzenetet, amely azt jelzi, hogy a kérelem kezelése történt meg minden egyes kérelem. Ehhez hasonlóan a Storage Analytics tárolja a metrikákat egy szolgáltatás és a szolgáltatáshoz, beleértve a százalékok és bizonyos állapotüzenetek száma az API műveleteit. Együtt ezek a funkciók segítségével elemezheti a számlázható kérések, az alkalmazás továbbfejlesztése és diagnosztizálhatja problémáit a szolgáltatásokra irányuló kérések. Számlázással kapcsolatos további információkért lásd: [ismertetése az Azure Storage Billing – sávszélesség, tranzakciók és a kapacitás](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx).
 
 Ha megnézzük a Storage Analytics-adatait, használhatja a táblák a [Storage Analytics naplózott műveletek és az állapotüzenetek](https://msdn.microsoft.com/library/azure/hh343260.aspx) témakör annak meghatározására, hogy mely kérelmek számlázható. Ezután összehasonlíthatja a naplókat és az állapotüzenetek megtekintéséhez, ha meg lett díj felszámítva az egy adott kérés. Használhatja a táblák az előző témakörben tárolási szolgáltatás vagy egyéni API-művelet rendelkezésre állási vizsgálatára.
 

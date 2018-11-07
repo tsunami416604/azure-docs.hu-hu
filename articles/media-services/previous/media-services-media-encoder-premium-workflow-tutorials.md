@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: 79b2aa22307e4742d00d9422535d52c80485e2db
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 0a20f7629fbc102ae05c51c7388bbfd6915d6204
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249034"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257381"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Media Encoder Premium munkafolyamat speciális oktatóanyagok
 ## <a name="overview"></a>Áttekintés
@@ -939,9 +939,9 @@ Az az alábbi egyszerű guard záradék esetében lehet ellenőrizze, hogy a tis
 ```
 
 ## <a name="also-see"></a>Lásd még:
-[Introducing Premium Encoding in Azure Media Services](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
+[Introducing Premium Encoding in Azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
 
-[Prémium szintű kódolás az Azure Media Services használatával](http://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
+[Prémium szintű kódolás az Azure Media Services használatával](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 
 [Az Azure Media Services az igény szerinti Tartalomterjesztésről kódolás](media-services-encode-asset.md#media-encoder-premium-workflow)
 
@@ -949,7 +949,7 @@ Az az alábbi egyszerű guard záradék esetében lehet ellenőrizze, hogy a tis
 
 [Minta munkafolyamat-fájlok](http://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)
 
-[Az Azure Media Services Explorer eszköz](http://aka.ms/amse)
+[Az Azure Media Services Explorer eszköz](https://aka.ms/amse)
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

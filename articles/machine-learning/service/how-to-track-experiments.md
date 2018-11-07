@@ -9,19 +9,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 054cd54827dc11e57f249a270542ff81ff670912
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: da92f59c4e25ec012cd9ad389c9afac410ba28e1
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649992"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219307"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Kísérletek és az Azure Machine Learning betanítási metrikák követése
 
 Az Azure Machine Learning szolgáltatásban a kísérletek nyomon, és figyelheti a mérőszámokat javíthatják a modell létrehozását. Ebből a cikkből megtanulhatja, naplózás hozzáadása a tanítási szkriptet különféle módjai hogyan lehet elküldeni a kísérlet **start_logging** és **ScriptRunConfig**, hogyan ellenőrizheti az előrehaladását egy futó feladat, és a egy Futtatás eredményeinek megtekintése. 
 
 >[!NOTE]
-> Ebben a cikkben kód teszteltük az Azure Machine Learning SDK verziója 0.168 
+> Ebben a cikkben kód teszteltük az Azure Machine Learning SDK verziója 0.1.74 
 
 ## <a name="list-of-training-metrics"></a>Képzési mérőszámok listája 
 
@@ -67,7 +67,6 @@ Mielőtt hozzáadná a naplózás és a egy kísérlet elküldése, be kell áll
 
   # make up an arbitrary name
   experiment_name = 'train-in-notebook'
-  exp = Experiment(workspace_object = ws, name = experiment_name)
   ```
   
 ## <a name="option-1-use-startlogging"></a>1. lehetőség: Start_logging használata
@@ -103,7 +102,8 @@ Az alábbi példában egy egyszerű sklearn Ridge modell helyileg a helyi Jupyte
 2. Adjon hozzá kísérlet nyomon követése az Azure Machine Learning szolgáltatás SDK használatával, és a egy megőrzött modell feltöltése rekord futtassa a kísérletet. Az alábbi kód felveszi a címkéket, naplók, a, és feltölti egy modellfájl futtassa a kísérletet.
 
   ```python
-  run = Run.start_logging(experiment = exp)
+  experiment = Experiment(workspace = ws, name = experiment_name)
+  run = experiment.start_logging()
   run.tag("Description","My first run!")
   run.log('alpha', 0.03)
   reg = Ridge(alpha = 0.03)
@@ -209,8 +209,8 @@ Ebben a példában a fent sklearn Ridge alapmodell tartalmazó gyűjteménnyel b
   ```python
   from azureml.core import ScriptRunConfig
 
-  src = ScriptRunConfig(source_directory = script_folder, script = 'train.py', run_config = run_config_user_managed)
-  run = exp.submit(src)
+  src = ScriptRunConfig(source_directory = './', script = 'train.py', run_config = run_config_user_managed)
+  run = experiment.submit(src)
   ```
   
 ## <a name="view-run-details"></a>Futtatás részletei nézet
@@ -248,11 +248,22 @@ A hivatkozás a Futtatás méretezhetőséget kínál, közvetlenül a futtatás
   ![Képernyőkép a futtatási részletek az Azure Portalon](./media/how-to-track-experiments/run-details-page-web.PNG)
 
 Bármely kimenetek vagy a naplók a Futtatás megtekintéséhez, vagy töltse le a kísérlet, így a kísérlet mappa másokkal is megoszthat küldte el a pillanatkép is.
+### <a name="viewing-charts-in-run-details"></a>Diagramok részleteinek megtekintése
+
+Különféle módon használhatja a naplózási metrikák rekord különböző típusú API-kat a futtatás során, és megtekintheti őket, mint a diagramok az Azure Portalon. 
+
+|A naplózott érték|Példakód| A portál megtekintése|
+|----|----|----|
+|Napló numerikus értékek tömbje| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|Single-variable vonaldiagram|
+|Az azonos nevű metrika ismételten használt egyetlen numerikus érték naplózása (hasonló belül egy "for" ciklus)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Single-variable vonaldiagram|
+|Jelentkezzen egy sor 2 numerikus oszlopok ismételten|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Kétváltozós vonaldiagram|
+|A numerikus oszlopok 2 naplótábláját|`run.log_table(name='Sine Wave', value=sines)`|Kétváltozós vonaldiagram|
 
 ## <a name="example-notebooks"></a>Példa notebookok
 A következő notebookok a jelen cikk fogalmait bemutatása:
 * [01.Getting-Started/01.train-within-notebook/01.train-within-notebook.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/01.train-within-notebook)
 * [01.Getting-Started/02.train-on-Local/02.train-on-local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local)
+* [01.Getting-Started/06.Logging-API/06.Logging-API.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/06.logging-api/06.logging-api.ipynb)
 
 Ezeket a notebookokat lekérése: [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

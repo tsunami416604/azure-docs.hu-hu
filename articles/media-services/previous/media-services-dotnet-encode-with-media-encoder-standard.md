@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: 7b0de5e149b8b64252f90a01f66642c15fb25ddc
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 426ebb90a0d7716b14664f874db259a0cca2aa7e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247792"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241089"
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Adategység kódolása a Media Encoder Standard .NET használatával 
 A kódolási feladat a Media Services egyik leggyakrabban használt művelete. A kódolási feladat a médiafájlokat alakítja át egy meghatározott kódolásból egy másikra. Kódolás, ha a Media Services beépített Media Encoder is használhatja. Egy Media Services; partner által biztosított kódoló is használhatja külső kódolókkal az Azure Marketplace-en keresztül érhetők el. 
 
-Ez a cikk bemutatja, hogyan a kódolásához, a Media Encoder Standard (MES) állnak a .NET használatával. Media Encoder Standard használatával lett konfigurálva a kódolók készletek egyikét leírt [Itt](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
+Ez a cikk bemutatja, hogyan a kódolásához, a Media Encoder Standard (MES) állnak a .NET használatával. Media Encoder Standard használatával lett konfigurálva a kódolók készletek egyikét leírt [Itt](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
 
 Javasoljuk, hogy a forrásfájlok mindig kódolandó egy adaptív sávszélességű MP4-készletet, és alakítsa át a készlet a kívánt formátumban történő a [dinamikus csomagolási](media-services-dynamic-packaging-overview.md). 
 
@@ -39,7 +39,7 @@ Ha a kimeneti objektum tárolása titkosítva, konfigurálnia kell a állít be 
 [Formátumai és kodekei](media-services-media-encoder-standard-formats.md)
 
 ### <a name="mes-presets"></a>MES-beállításkészletek
-Media Encoder Standard használatával lett konfigurálva a kódolók készletek egyikét leírt [Itt](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
+Media Encoder Standard használatával lett konfigurálva a kódolók készletek egyikét leírt [Itt](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
 
 ### <a name="input-and-output-metadata"></a>Bemeneti és kimeneti metaadatok
 Amikor, kódolás MES használatával egy bemeneti eszköz (vagy eszközök), a kimeneti adategység kap, a sikeres befejezését, amely kódolási feladat. A kimeneti objektum tartalmazza a videó, hang, a miniatűrök, jegyzékfájl, stb. alapján a kódolási előbeállítás használja.

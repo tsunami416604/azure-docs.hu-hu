@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 0b96325b2d29abd230e4c389b176e97542a70282
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: e1a80de1e6d0deebaff81207717886a4a8bbcc63
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648244"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259479"
 ---
 # <a name="how-to-use-the-dynamic-dictionary-feature-of-the-translator-text-api"></a>A dinamikus szótár funkciója a Translator Text API használata
 
@@ -33,4 +33,4 @@ Kimeneti cél: Das Wort "wordomatic" Izraeli normál idő szerint ein Wörterbuc
 
 Ez a funkció rendelkező és anélküli HTML mód ugyanúgy működik.
 
-A szolgáltatás takarékosan. A megfelelő, és sokkal jobb megoldás a fordítás testreszabása módja egyéni Translator használatával. Egyéni a fordítót lehetővé teszi a környezetet és statisztikai valószínűségek teljes használatát. Ha van, vagy hozhat létre a betanítási adatok, amely megjeleníti a munkahelyi vagy az a kifejezés a környezetben, sokkal jobb eredményeket kap. További információ az egyéni Translator, annak [ http://aka.ms/CustomTranslator ](http://aka.ms/CustomTranslator).
+A szolgáltatás takarékosan. A megfelelő, és sokkal jobb megoldás a fordítás testreszabása módja egyéni Translator használatával. Egyéni a fordítót lehetővé teszi a környezetet és statisztikai valószínűségek teljes használatát. Ha van, vagy hozhat létre a betanítási adatok, amely megjeleníti a munkahelyi vagy az a kifejezés a környezetben, sokkal jobb eredményeket kap. További információ az egyéni Translator, annak [ http://aka.ms/CustomTranslator ](https://aka.ms/CustomTranslator).

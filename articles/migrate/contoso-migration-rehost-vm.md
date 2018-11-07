@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 004ce399437ef581b319980c83f00cb1427b934b
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 0d9f4d14d9f6cbeedb667d9d8debd6bfebf8cbd6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115838"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239119"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms"></a>Contoso áttelepítési: egy a helyszíni alkalmazás Újratárolása az Azure virtuális gépek
 
@@ -234,7 +234,7 @@ A feladatátvételt követően a Contoso biztosítani szeretné az Azure virtuá
 Emellett a feladatátvétel futtatásakor szükségük ellenőrizze az alábbiakat:
 
 - Lehetnek nincsenek függőben lévő Windows-frissítések a virtuális gép feladatátvétel indítása során. Ha vannak, be tud jelentkezni a virtuális Gépet a frissítés befejeződéséig nem.
-- A feladatátvételt követően ellenőrizheti **rendszerindítási diagnosztika** , a virtuális gép képernyőképének megtekintéséhez. Ha ez sem működik, akkor ellenőrizze, hogy a virtuális gép fut, és tekintse át a [hibaelhárítási tippek](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
+- A feladatátvételt követően ellenőrizheti **rendszerindítási diagnosztika** , a virtuális gép képernyőképének megtekintéséhez. Ha ez sem működik, akkor ellenőrizze, hogy a virtuális gép fut, és tekintse át a [hibaelhárítási tippek](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 
 **További segítségre van szüksége?**

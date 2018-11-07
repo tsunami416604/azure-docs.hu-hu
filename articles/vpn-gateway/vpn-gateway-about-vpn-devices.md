@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/05/2018
 ms.author: yushwang
-ms.openlocfilehash: 7153b4054c1efc6e8e320cee61bc36674061b7d3
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: cbbba60f42c2e0ef7a6e53c34e883e2fdf6f8781
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815817"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229169"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Információk a helyek közötti VPN Gateway-kapcsolatok VPN-eszközeinek IPsec/IKE-paramétereiről
 
@@ -61,7 +61,7 @@ A VPN-eszköz konfigurálásához kövesse a megfelelő eszközcsaládhoz tartoz
 | Juniper |J sorozat |Házirendalapú: JunOS 10.4r9<br>Útvonalalapú: JunOS 11.4 |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/JSeries) |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/JSeries) |
 | Juniper |ISG |ScreenOS 6.3 |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) |
 | Juniper |SSG |ScreenOS 6.2 |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |[Konfigurációs minták](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |
-| Microsoft |Útválasztás és távelérés szolgáltatás |Windows Server 2012 |Nem kompatibilis |[Konfigurációs minták](http://go.microsoft.com/fwlink/p/?LinkId=717761) |
+| Microsoft |Útválasztás és távelérés szolgáltatás |Windows Server 2012 |Nem kompatibilis |[Konfigurációs minták](https://go.microsoft.com/fwlink/p/?LinkId=717761) |
 | Open Systems AG |Mission Control biztonsági átjáró |– |[Konfigurációs útmutató](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |Nem kompatibilis |
 | Palo Alto Networks |Az összes PAN-OS rendszert futtató eszköz |PAN-OS<br>Házirendalapú: 6.1.5 vagy újabb<br>Útvonalalapú: 7.1.4 |[Konfigurációs útmutató](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[Konfigurációs útmutató](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
 | ShareTech | Következő generációs UTM (NU sorozat) | 9.0.1.3 | Nem kompatibilis | [Konfigurációs útmutató](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |

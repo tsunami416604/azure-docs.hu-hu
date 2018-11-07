@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 18a6234eb56902625fdcc8f150a41b7551d229cc
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 199095c3cffc8df7f9755f1f2c4bb5a1acba3748
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318537"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260380"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse naplózása
 
@@ -150,7 +150,7 @@ Többféleképpen naplófájlokat blob megtekintéséhez használhatja:
 ### <a name="database-level-policy-audit-logs"></a>Adatbázisszintű csoportházirend-auditnaplók
 A gyűjteményét, Store az adatbázisszintű auditnaplók összesítjük egy **SQLDBAuditLogs** előtag telepítés közben választott Azure storage-fiókban. Megtekintheti a naplófájlok, például egy eszközzel [Azure Storage Explorer](http://azurestorageexplorer.codeplex.com).
 
-Egy előre konfigurált irányítópult jelentéssablon érhető el, mint egy [letölthető Excel-számolótáblában](http://go.microsoft.com/fwlink/?LinkId=403540) segít gyorsan elemezheti a naplófájlok adatait. A naplókat a sablon használatához szükséges Excel 2013-as vagy újabb verzió és a Power Query, amelyet [innen tölthet le](http://www.microsoft.com/download/details.aspx?id=39379).
+Egy előre konfigurált irányítópult jelentéssablon érhető el, mint egy [letölthető Excel-számolótáblában](https://go.microsoft.com/fwlink/?LinkId=403540) segít gyorsan elemezheti a naplófájlok adatait. A naplókat a sablon használatához szükséges Excel 2013-as vagy újabb verzió és a Power Query, amelyet [innen tölthet le](https://www.microsoft.com/download/details.aspx?id=39379).
 
 A sablon képzeletbeli mintaadatokat tartalmaz, és beállíthatja a Power Query naplóban közvetlenül importálása az Azure storage-fiók.
 

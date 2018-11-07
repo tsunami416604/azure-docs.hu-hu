@@ -1,8 +1,8 @@
-## <a name="setting-up-powershell-for-resource-manager-templates"></a>A Resource Manager sablonokhoz PowerShell beállítása
-A Resource Manager használhatja az Azure PowerShell, szüksége lesz a Windows PowerShell jobb és Azure PowerShell-verzió.
+## <a name="setting-up-powershell-for-resource-manager-templates"></a>PowerShell beállítása a Resource Manager-sablonok
+Azure PowerShell Resource Managerrel használható, mielőtt szüksége lesz a jobb Windows PowerShell és az Azure PowerShell-verziókat.
 
-### <a name="verify-powershell-versions"></a>Ellenőrizze a PowerShell-verzió
-Ellenőrizze, hogy rendelkezik-e a Windows PowerShell 3.0 vagy 4.0-s verziója. A Windows PowerShell verziója található, írja be ezt a parancsot egy Windows PowerShell parancssorába.
+### <a name="verify-powershell-versions"></a>PowerShell-verzió ellenőrzése
+Ellenőrizze, hogy rendelkezik-e Windows PowerShell 3.0 vagy 4.0-s verziója. A Windows PowerShell-verzió megkereséséhez írja be ezt a parancsot egy Windows PowerShell parancssorába.
 
     $PSVersionTable
 
@@ -19,16 +19,16 @@ A következő információtípust kapja:
     PSRemotingProtocolVersion      2.2
 
 
-Ellenőrizze, hogy értékének **PSVersion** 3.0 vagy 4.0-s verzióját. Ha nem, lásd: [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) vagy [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855).
+Ellenőrizze, hogy értékét **PSVersion** 3.0 vagy 4.0-s verzióját. Ha nincs engedélyezve, [Windows Management Framework 3.0](https://www.microsoft.com/download/details.aspx?id=34595) vagy [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855).
 
 ### <a name="set-your-azure-account-and-subscription"></a>Az Azure-fiók és -előfizetés beállítása
-Ha még nem rendelkezik Azure-előfizetéssel, aktiválhatja a [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) vagy regisztráljon egy [ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/).
+Ha még nem rendelkezik Azure-előfizetése, aktiválhatja a [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) vagy regisztrálhat egy [az ingyenes próbaidőszak](https://azure.microsoft.com/pricing/free-trial/).
 
-Nyisson meg egy Azure PowerShell-parancssort, és jelentkezzen be Azure ezzel a paranccsal.
+Nyisson meg egy Azure PowerShell-parancssort, és jelentkezzen be az Azure-bA az alábbi paranccsal.
 
     Connect-AzureRmAccount
 
-Ha több Azure-előfizetéssel rendelkezik, az Azure-előfizetések ezzel a paranccsal jeleníthet meg.
+Ha több Azure-előfizetéssel rendelkezik, az Azure-előfizetést a következő paranccsal listázhatja.
 
     Get-AzureRmSubscription
 
@@ -45,10 +45,10 @@ A következő információtípust kapja:
     CurrentStorageAccountName :
     TenantId                  : 32fa88b4-86f1-419f-93ab-2d7ce016dba7
 
-Beállíthatja a jelenlegi Azure-előfizetés az Azure PowerShell-parancssorba ezek a parancsok futtatásával. Cserélje le a mindent, ami az ajánlatokat, beleértve a < és > karakter, a megfelelő név.
+Az aktuális Azure-előfizetést is megadhat a parancsok futtatása az Azure PowerShell-parancssorba. Cserélje le a mindent, ami az ajánlatokat, többek között a < és > karakter, helyes nevét.
 
     $subscr="<SubscriptionName from the display of Get-AzureRmSubscription>"
     Select-AzureRmSubscription -SubscriptionName $subscr -Current
 
-További információ az Azure-előfizetések és a fiókok: [hogyan: Csatlakozás az előfizetéshez](/powershell/azureps-cmdlets-docs#step-3-connect).
+További információ az Azure-előfizetések és fiókok: [módjáról: Csatlakozás az előfizetéshez](/powershell/azureps-cmdlets-docs#step-3-connect).
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: b45328425cff978377d5e05de487d42e786c063b
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1e18db960b9e07ae412d0c41c4544ef6bb35977c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345107"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261160"
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Azure Cosmos DB kezelése az Azure Storage Explorerben
 
@@ -130,7 +130,7 @@ Ha a jobb gombbal kattint egy előfizetésre az Explorer panelen, gyorsan végre
 
 2. Válassza a **Korlátlan** lehetőséget, hogy megadhassa a partíciókulcsot, majd kattintson az **OK** gombra.
 
-    Ha partíciókulcsot használt a gyűjtemény létrehozásakor, akkor a létrehozást követően a partíciókulcs értéke nem módosítható a gyűjteményben. A partíciókulcs beállításaival kapcsolatos további információk: [Particionálásra való tervezés](partition-data.md#designing-for-partitioning).
+    Ha partíciókulcsot használt a gyűjtemény létrehozásakor, akkor a létrehozást követően a partíciókulcs értéke nem módosítható a gyűjteményben.
 
     ![Partíciókulcs](./media/storage-explorer/partitionkey.png)
 

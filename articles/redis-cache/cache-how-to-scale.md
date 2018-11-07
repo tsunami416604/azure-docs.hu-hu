@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: wesmc
-ms.openlocfilehash: 885258379e71ea945e41c4b43c34b35b16dd4a7a
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 91a2b112000e970b73420abaa26efc7de1caa626
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054895"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261454"
 ---
 # <a name="how-to-scale-azure-redis-cache"></a>Az Azure Redis Cache méretezése
 Az Azure Redis Cache rendelkezik másik Cache gyorsítótárazási szolgáltatások, ami rugalmasságot biztosít a gyorsítótár méretét és a szolgáltatások a kiválasztott biztosítanak. Gyorsítótár létrehozása után skálázhatja mérete és a gyorsítótár a tarifacsomagot, ha az alkalmazás a követelmények változnak. Ez a cikk bemutatja, hogyan méretezzünk át a gyorsítótár az Azure portal és az eszközök, például az Azure PowerShell-lel és az Azure CLI használatával.
@@ -81,7 +81,7 @@ Az Azure CLI-vel az Azure Redis Cache-példány horizontális, hívja meg a `azu
 Az Azure CLI-vel méretezéssel kapcsolatos további információkért lásd: [egy meglévő Redis gyorsítótár beállításainak módosítása](cache-manage-cli.md#scale).
 
 ### <a name="scale-using-maml"></a>Méretezési csoport MAML használatával
-Méretezése az Azure Redis Cache-példányok használatával a [a Microsoft Azure kezelési kódtárak (MAML)](http://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/), hívja a `IRedisOperations.CreateOrUpdate` metódust, és adja meg az új mérete a `RedisProperties.SKU.Capacity`.
+Méretezése az Azure Redis Cache-példányok használatával a [a Microsoft Azure kezelési kódtárak (MAML)](https://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/), hívja a `IRedisOperations.CreateOrUpdate` metódust, és adja meg az új mérete a `RedisProperties.SKU.Capacity`.
 
     static void Main(string[] args)
     {

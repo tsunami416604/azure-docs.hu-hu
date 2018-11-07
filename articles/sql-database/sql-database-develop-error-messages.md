@@ -13,12 +13,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/31/2018
-ms.openlocfilehash: 233e6e9bccd8729cd61514f2855799cf3d22d72b
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 71a23e982f1e4ae5609d4f9a160cd1861e043ea1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914668"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251815"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Az SQL Database-ügyfélalkalmazások SQL-hibakódok: adatbázis-csatlakozási hibák és egyéb problémák
 
@@ -45,7 +45,7 @@ Erősen ajánlott, hogy az ügyfélprogram rendelkezik-e a újrapróbálkozási 
 * [Adatkapcsolattárak az SQL Database és SQL Server](sql-database-libraries.md) 
 * [Az SQL Database-csatlakozási hibák és átmeneti hibák elhárításához műveletek](sql-database-connectivity-issues.md)
 
-Ismerteti azokat a a *blokkolási időtartam* ADO.NET használó ügyfelek számára érhető el [SQL Server készletezési (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx).
+Ismerteti azokat a a *blokkolási időtartam* ADO.NET használó ügyfelek számára érhető el [SQL Server készletezési (ADO.NET)](https://msdn.microsoft.com/library/8xx3tyca.aspx).
 
 ### <a name="transient-fault-error-codes"></a>Átmeneti hibák hibakódok
 A következő hibák átmenetiek, és az alkalmazáslogikának meg kell ismételni: 
@@ -94,8 +94,8 @@ Kapcsolódó témakörök:
 
 | Hibakód | Severity | Leírás |
 | ---:| ---:|:--- |
-| 10928 |20 |Erőforrás-azonosító: %d. Az adatbázis %s maximális %d, és elérte az. Tovább információ: [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637).<br/><br/>Az erőforrás-azonosító azt jelzi, hogy az erőforrást, amely elérte a határértéket. A munkaszálak, az erőforrás-azonosítója = 1. A munkamenetek, az erőforrás-azonosítója = 2.<br/><br/>Ez a hiba, és a megoldásának módjával kapcsolatos további információkért lásd:<br/>• [Azure SQL Database erőforrás-korlátozások](sql-database-service-tiers-dtu.md). |
-| 10929 |20 |Erőforrás-azonosító: %d. A %s minimális biztonsági: %d, maximális érték: %d, és az adatbázishoz a jelenlegi felhasználás: %d. Azonban az a kiszolgáló jelenleg túlzottan elfoglalt, a nagyobb, mint %d kérelmek támogatásához ehhez az adatbázishoz. Tovább információ: [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637). Ellenkező esetben próbálkozzon újra később.<br/><br/>Az erőforrás-azonosító azt jelzi, hogy az erőforrást, amely elérte a határértéket. A munkaszálak, az erőforrás-azonosítója = 1. A munkamenetek, az erőforrás-azonosítója = 2.<br/><br/>Ez a hiba, és a megoldásának módjával kapcsolatos további információkért lásd:<br/>• [Azure SQL Database erőforrás-korlátozások](sql-database-service-tiers-dtu.md). |
+| 10928 |20 |Erőforrás-azonosító: %d. Az adatbázis %s maximális %d, és elérte az. Tovább információ: [http://go.microsoft.com/fwlink/?LinkId=267637](https://go.microsoft.com/fwlink/?LinkId=267637).<br/><br/>Az erőforrás-azonosító azt jelzi, hogy az erőforrást, amely elérte a határértéket. A munkaszálak, az erőforrás-azonosítója = 1. A munkamenetek, az erőforrás-azonosítója = 2.<br/><br/>Ez a hiba, és a megoldásának módjával kapcsolatos további információkért lásd:<br/>• [Azure SQL Database erőforrás-korlátozások](sql-database-service-tiers-dtu.md). |
+| 10929 |20 |Erőforrás-azonosító: %d. A %s minimális biztonsági: %d, maximális érték: %d, és az adatbázishoz a jelenlegi felhasználás: %d. Azonban az a kiszolgáló jelenleg túlzottan elfoglalt, a nagyobb, mint %d kérelmek támogatásához ehhez az adatbázishoz. Tovább információ: [http://go.microsoft.com/fwlink/?LinkId=267637](https://go.microsoft.com/fwlink/?LinkId=267637). Ellenkező esetben próbálkozzon újra később.<br/><br/>Az erőforrás-azonosító azt jelzi, hogy az erőforrást, amely elérte a határértéket. A munkaszálak, az erőforrás-azonosítója = 1. A munkamenetek, az erőforrás-azonosítója = 2.<br/><br/>Ez a hiba, és a megoldásának módjával kapcsolatos további információkért lásd:<br/>• [Azure SQL Database erőforrás-korlátozások](sql-database-service-tiers-dtu.md). |
 | 40544 |20 |Az adatbázis elérte a kvótáját méretét. Particionálhat vagy törölhet adatokat, dobjon el indexeket, vagy tekintse át a dokumentációt a lehetséges megoldások megismeréséhez. |
 | 40549 |16 |Munkamenet meg lett szakítva, mert egy hosszú ideig futó tranzakció rendelkezik. Próbálja lerövidíteni a tranzakciót. |
 | 40550 |16 |A munkamenet megszakadt, mert túl sok zárolást szerzett meg. Próbálja meg olvasó vagy egy tranzakción belül kevesebb sort módosítani. |
@@ -109,7 +109,7 @@ Létrehozásáról és használatáról a rugalmas készletek kapcsolatos hibák
 | Hibakód | Severity | Leírás | Javítási műveletek |
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |A rugalmas készlet elérte a tárolási kapacitását. A rugalmas készlet tárolási felhasználásának nem haladhatja meg a (%d) MB. Próbál adatokat írni egy adatbázist, amikor a rugalmas készlet tárolási korlátot elérte. |Érdemes megfontolni a dtu-k száma és/vagy a rugalmas készletet, ha lehetséges tárolási kapacitását, emeléséhez hozzáadása storage csökkentése a rugalmas készleten belüli egyes adatbázisok által használt tárterület, vagy eltávolíthat adatbázisokat a rugalmas készlet. |
-| 10929 | 16 |A %s minimális biztonsági: %d, maximális érték: %d, és az adatbázishoz a jelenlegi felhasználás: %d. Azonban az a kiszolgáló jelenleg túlzottan elfoglalt, a nagyobb, mint %d kérelmek támogatásához ehhez az adatbázishoz. Lásd: [ http://go.microsoft.com/fwlink/?LinkId=267637 ](http://go.microsoft.com/fwlink/?LinkId=267637) segítségért. Ellenkező esetben próbálkozzon újra később. Dtu-k / vcore magok adatbázisonkénti minimális száma; adatbázis Dtu-k / virtuális mag adatbázisonkénti maximális értéke. Egyidejű feldolgozók (kérelmek) között a rugalmas készletben található összes adatbázis teljes száma túllépi a készlet kapacitása történt kísérlet. |Érdemes megfontolni a Dtu- kkal lehetőség a rugalmas készlet virtuális magot annak érdekében, hogy a munkavégző korlátjának növelését, vagy eltávolíthat adatbázisokat a rugalmas készlet. |
+| 10929 | 16 |A %s minimális biztonsági: %d, maximális érték: %d, és az adatbázishoz a jelenlegi felhasználás: %d. Azonban az a kiszolgáló jelenleg túlzottan elfoglalt, a nagyobb, mint %d kérelmek támogatásához ehhez az adatbázishoz. Lásd: [ http://go.microsoft.com/fwlink/?LinkId=267637 ](https://go.microsoft.com/fwlink/?LinkId=267637) segítségért. Ellenkező esetben próbálkozzon újra később. Dtu-k / vcore magok adatbázisonkénti minimális száma; adatbázis Dtu-k / virtuális mag adatbázisonkénti maximális értéke. Egyidejű feldolgozók (kérelmek) között a rugalmas készletben található összes adatbázis teljes száma túllépi a készlet kapacitása történt kísérlet. |Érdemes megfontolni a Dtu- kkal lehetőség a rugalmas készlet virtuális magot annak érdekében, hogy a munkavégző korlátjának növelését, vagy eltávolíthat adatbázisokat a rugalmas készlet. |
 | 40844 | 16 |Adatbázis "%ls" kiszolgáló "%ls" egy "%ls" kiadású adatbázis egy rugalmas készletben, és nem folyamatos másolás kapcsolat áll fenn.  |– |
 | 40857 | 16 |A kiszolgáló nem található rugalmas készlet: "%ls", a rugalmas készlet neve: "%ls". Megadott rugalmas készlet nem létezik a megadott kiszolgálón. | Adja meg egy érvényes a rugalmas készlet nevét. |
 | 40858 | 16 |A(z) "%ls" rugalmas készlet már létezik a kiszolgálón: "%ls". Megadott rugalmas készlet már létezik a megadott logikai kiszolgálón. | Új rugalmas készlet nevét adja meg. |

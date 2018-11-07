@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3b046022990e95e65ed02880bd3fefbd78bcad28
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: d77dad52e75253de02fd079d791861356c4c5e1f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387360"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247075"
 ---
 # <a name="publish-a-virtual-machine-to-azure-marketplace"></a>Virtuális gép közzététele az Azure piactéren
 
@@ -37,7 +37,7 @@ A következő műszaki és nem technikai jellegű Előfeltételek vonatkoznak k�
 
 -   [& Tesztelje egy rendszerképből egy Linux rendszerű virtuális gép létrehozása](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-upload-vhd)
 
--   [A Windows VHD létrehozása és feltöltése ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
+-   [A Windows VHD létrehozása és feltöltése ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
 
 -   [& Tesztelje egy rendszerképből egy Windows virtuális gép létrehozása](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-create-vm-generalized-managed?toc=/azure/virtual-machines/windows/toc.json)
 
@@ -60,7 +60,7 @@ A következő műszaki és nem technikai jellegű Előfeltételek vonatkoznak k�
 
 -   Ön vállalja, hogy az Azure piactér részvételi szabályzatának és a kiadói szerződés feltételeit.
 
--   Ahhoz, hogy elfogadja a [használati](https://azure.microsoft.com/support/legal/website-terms-of-use/) , [Microsoft adatvédelmi nyilatkozatát](http://www.microsoft.com/privacystatement/default.aspx), és [a Microsoft Azure Certified Program szerződését](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
+-   Ahhoz, hogy elfogadja a [használati](https://azure.microsoft.com/support/legal/website-terms-of-use/) , [Microsoft adatvédelmi nyilatkozatát](https://www.microsoft.com/privacystatement/default.aspx), és [a Microsoft Azure Certified Program szerződését](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -211,7 +211,7 @@ A díjszabási Excelből a különböző régiók árai helyi pénznemben szám�
 
 >[!IMPORTANT]
 >-   Árak nem módosítható, miután egy ajánlatot élesíti. Azonban előfordulhat, hogy továbbra is kell támogatott régiók hozzáadása vagy eltávolítása.
->-   A fizetendő díj mellett a felhasználó díját [Azure\'s virtuális gépek díjszabását](http://aka.ms/vmpricingdetails).
+>-   A fizetendő díj mellett a felhasználó díját [Azure\'s virtuális gépek díjszabását](https://aka.ms/vmpricingdetails).
 >-   Árak a helyi pénznemben árak beállítás idején a rendelkezésre álló pénznem díjszabás használatával vannak beállítva minden régió esetében.
 >-   Állítsa be, vagy külön-külön mindegyik régióhoz ár megtekintése, exportálja a díjszabási táblázatot, és importálja az egyéni díjszabás.
 
@@ -225,7 +225,7 @@ Hajtsa végre a következő szakaszban lesz a Virtuálisgép-rendszerképek szak
 
 -   [& Tesztelje egy rendszerképből egy Linux rendszerű virtuális gép létrehozása](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-upload-vhd)
 
--   [Létrehozása és egy Windows VHD feltöltése ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
+-   [Létrehozása és egy Windows VHD feltöltése ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-prepare-for-upload-vhd-image?toc=/azure/virtual-machines/windows/toc.json)
 
 -   [& Tesztelje egy rendszerképből egy Windows virtuális gép létrehozása](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-create-vm-generalized-managed?toc=/azure/virtual-machines/windows/toc.json)
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f8b7d2620b5b972c9476332f2b662a891a0b3765
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 9edbb9d916840f348a7df589c6e7cb2110419cb3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430340"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262403"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Az Azure virtuális gépek tervezése és megvalósítása SAP NetWeaver
 
@@ -1259,7 +1259,7 @@ Az SAP üzemelő példányok az előző két éven át élmény színesített ve
 >
 > * [Szoftveres RAID linuxon konfigurálása][virtual-machines-linux-configure-raid]
 > * [LVM konfigurálása az Azure-beli Linuxos virtuális gépre][virtual-machines-linux-configure-lvm]
-> * [Az Azure Storage titkos kulcsok és a Linux-i/o-optimalizálást](http://blogs.msdn.com/b/igorpag/archive/2014/10/23/azure-storage-secrets-and-linux-i-o-optimizations.aspx)
+> * [Az Azure Storage titkos kulcsok és a Linux-i/o-optimalizálást](https://blogs.msdn.com/b/igorpag/archive/2014/10/23/azure-storage-secrets-and-linux-i-o-optimizations.aspx)
 >
 >
 
@@ -1316,7 +1316,7 @@ Georeplikáció az Azure virtuális gép egyes VHD-n helyben működik, és nem 
 > Annak érdekében, hogy a automount beállítása, a dokumentációban, itt a parancssori végrehajtható diskpart.exe:
 >
 > * [A DiskPart parancssori kapcsolók](https://technet.microsoft.com/library/bb490893.aspx)
-> * [Automount](http://technet.microsoft.com/library/cc753703.aspx)
+> * [Automount](https://technet.microsoft.com/library/cc753703.aspx)
 >
 > A Windows-parancssori ablakot rendszergazdaként kell megnyitni.
 >
