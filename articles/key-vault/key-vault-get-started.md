@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: barclayn
-ms.openlocfilehash: d0be0cbd9ff16acc1ecb209997a0c87cd4e43b36
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: a28bf1dc23d678c710d7bd6b13f067427e76ef41
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955099"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238399"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Bevezetés az Azure Key Vault használatába
 Ez a cikk útmutatást nyújt az Azure Key Vault PowerShell segítségével történő használatának a megismerésében, és az alábbi tevékenységeken vezeti végig:
@@ -36,7 +36,7 @@ A folytatás előtt győződjön meg arról, hogy:
 
 - **Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/free/).
 - Az **Azure PowerShell** legalább **1.1.0-s verziója**. Az Azure PowerShell telepítésérről és az Azure-előfizetéssel való társításáról további információt [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című cikkben találhat. Ha már telepítette az Azure PowerShellt, de nem tudja, melyik verziót, írja be az Azure PowerShell-konzolon az alábbi parancsot: `(Get-Module azure -ListAvailable).Version`. Ha az Azure PowerShell 0.9.1-től 0.9.8-ig terjedő verziói közül rendelkezik valamelyikkel, néhány apró eltéréstől függetlenül Önre is vonatkozik az útmutató. Például a `Switch-AzureMode AzureResourceManager` parancsot kell használnia, valamint bizonyos Azure Key Vault parancsok módosultak. A 0.9.1 és 0.9.8 közötti verziók Key Vault parancsmagjainak listája az alábbi témakörben található: [Azure Key Vault Cmdlets](/powershell/module/azurerm.keyvault/#key_vault) (Az Azure Key Vault parancsmagjai).
-- **A Key Vault használatára konfigurálható alkalmazás**. Egy mintaalkalmazás elérhető a [Microsoft letöltőközpontból](http://www.microsoft.com/download/details.aspx?id=45343). Útmutatásért tekintse meg a kísérő **információs fájlt**.
+- **A Key Vault használatára konfigurálható alkalmazás**. Egy mintaalkalmazás elérhető a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=45343). Útmutatásért tekintse meg a kísérő **információs fájlt**.
 
 >[!NOTE]
 A cikk feltételezi, hogy rendelkezik a PowerShell és az Azure használatára vonatkozó alapvető ismeretekkel. További információk a PowerShell-ről: [Ismerkedés a Windows PowerShell-lel](https://technet.microsoft.com/library/hh857337.aspx).

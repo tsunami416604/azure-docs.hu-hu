@@ -3,19 +3,19 @@ title: SQL Data Warehouse-ajánlatok – fogalmak |} A Microsoft Docs
 description: Ismerje meg az SQL Data Warehouse javaslatok, és hogyan generáljon
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg
+manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 07/27/2018
+ms.date: 11/05/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 57bce631a570f549d46a9b0beefcb5adce4decfc
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 712eed36f3a68ee02668849207835e3c8bdb8238
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380114"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232154"
 ---
 # <a name="sql-data-warehouse-recommendations"></a>Az SQL Data Warehouse javaslatok
 
@@ -39,4 +39,28 @@ Optimálisnál rosszabb statisztikáit súlyosan hatással lehet a lekérdezési
 
 - [Tábla statisztikák létrehozása és frissítése](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)
 
-Ezekkel az ajánlásokkal által érintett táblák listájának megtekintéséhez futtassa a következő [T-SQL parancsfájl](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables). Az advisor folyamatosan futó ugyanezt a T-SQL szkriptet létrehozni ezeket a javaslatokat.
+Ezekkel az ajánlásokkal által érintett táblák listájának megtekintéséhez futtassa a következő [T-SQL parancsfájl](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables). Az Advisor folyamatosan futó ugyanezt a T-SQL szkriptet létrehozni ezeket a javaslatokat.
+
+## <a name="replicate-tables"></a>Táblák replikálása
+
+Az Advisor replikált tábla javaslatok, észleli a tábla jelöltek a következő fizikai jellemzők alapján:
+
+- Replikált tábla mérete
+- Oszlopok száma
+- Tábla terjesztési típusa
+- A partíciók száma
+
+Az Advisor folyamatosan kihasználja az heurisztika terhelésen alapuló tábla hozzáférés gyakorisága, például a visszaadott sorok átlagosan és küszöbértékek adatok adatraktár-méretét és magas színvonalú javaslatok jönnek létre, hogy a tevékenység. 
+
+A következő előfordulhat, hogy az Azure Portalon minden replikált tábla ajánlási terhelésen alapuló heurisztika ismerteti:
+
+- Átlagos – a átlagos százalékos aránya az elmúlt hét napban a tábla minden egyes tábla hozzáférés visszaadott sorok beolvasása
+- Gyakori Olvasás, frissítés nélkül – azt jelzi, hogy a tábla nem lett frissítve az elmúlt hét napban hozzáférési tevékenység megjelenítése közben a
+- Olvasási és frissítési arány – hogyan gyakori a tábla fértek hozzá mikor frissül az elmúlt hét napban viszonyított aránya
+- Tevékenység – a használati hozzáférési tevékenység alapján méri. A tábla hozzáférési tevékenység az átlagos tábla-hozzáférési tevékenységet képest ez összehasonlítja az adatraktár között az elmúlt hét napban. 
+
+Jelenleg az Advisor csak akkor jelenik meg, legfeljebb négy replikált tábla jelöltek egyszerre fontossági sorrend a legnagyobb tevékenység fürtözött oszlopcentrikus indexekkel rendelkező.
+
+> [!IMPORTANT]
+> A replikált tábla javaslat nem teljes koncepció, és nem veszik figyelembe az adatátviteli műveletek. Ez egy heurisztika hozzáadása folyamatban van, de addig is kell mindig ellenőrizze, hogy a számítási feladatok a javaslat alkalmazása után. Vegye fel a kapcsolatot sqldwadvisor@service.microsoft.com Ha a tudomására jut, amelynek hatására a számítási feladatok, amelyikre a replikált tábla javaslatok. Replikált táblák kapcsolatos további információkért látogasson el a következő [dokumentáció](https://docs.microsoft.com/azure/sql-data-warehouse/design-guidance-for-replicated-tables#what-is-a-replicated-table).
+>

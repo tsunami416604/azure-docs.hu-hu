@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: 32be46fb0c41909ce8a8014b13843970555d366f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 32be473ab93231805cdae097e3e984a2e74da973
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42058133"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233082"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Natív üzemmódú jelentéskészítő kiszolgálót futtató Azure-beli virtuális gép létrehozása a PowerShell-lel
 > [!IMPORTANT] 
@@ -81,7 +81,7 @@ Ez a témakör azt ismerteti, és végigvezeti a telepítési és a egy SQL Serv
      * **HTTPS**: az alapértelmezett nyilvános és magánhálózati port **443-as**. Biztonsági szempontból ajánlott, hogy módosítsa a magánhálózati portot, és konfigurálja a tűzfalat, és a jelentéskészítő kiszolgáló a magánhálózati port használatára. A végpontok további információkért lásd: [hogyan állítsa be kommunikációt egy virtuális géppel](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Vegye figyelembe, hogy ha nem a 443-as portot használja a paraméter módosítani **$HTTPsport = 443-as** a HTTPS-szkriptben.
    * Kattintson a Tovább gombra. ![tovább](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 8. A varázsló utolsó oldalán, tartsa meg az alapértelmezett **Virtuálisgép-ügynök telepítése** kiválasztott. Ebben a témakörben leírt lépéseket nem használja a Virtuálisgép-ügynök, de ha azt tervezi, hogy a virtuális Gépet, a Virtuálisgép-ügynök és a kiterjesztések lehetővé teszi CM javíthatja azt.  A Virtuálisgép-ügynök további információkért lásd: [Virtuálisgép-ügynök és -bővítmények – 1. rész](https://azure.microsoft.com/blog/2014/04/11/vm-agent-and-extensions-part-1/). Az alapértelmezett telepített kiterjesztéseket ad futó egyik, a "BGINFO" bővítményt, amely a virtuális gép asztalához, például a belső IP-cím és a szabad lemezterület a rendszer-információkat jeleníti meg.
-9. Kattintson a Kész gombra. ![oké](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
+9. Kattintson a Kész gombra. ![OK](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
 10. A **állapot** megjeleníti a virtuális gép **indítása (kiépítés)** jelenik majd meg, és kiépítése folyamat során **futó** kiépített és készen áll a használatra a virtuális gép esetén.
 
 ## <a name="step-2-create-a-server-certificate"></a>2. lépés: Hozzon létre egy kiszolgálói tanúsítvány
@@ -90,7 +90,7 @@ Ez a témakör azt ismerteti, és végigvezeti a telepítési és a egy SQL Serv
 
 Annak érdekében, hogy a virtuális gépen a HTTPS protokoll használatához egy megbízható SSL-tanúsítvány szükséges. A forgatókönyvtől függően az alábbi két módszer egyikét használhatja:
 
-* Érvényes SSL-tanúsítvány kibocsátása a hitelesítésszolgáltató (CA), és a Microsoft által megbízhatónak tartott. A Microsoft Root Certificate programon keresztül kell elosztani a legfelső szintű Hitelesítésszolgáltatói tanúsítványok szükségesek. Ez a program kapcsolatos további információkért lásd: [Windows és Windows Phone 8 SSL Root Certificate Program (tag CAs)](http://social.technet.microsoft.com/wiki/contents/articles/14215.windows-and-windows-phone-8-ssl-root-certificate-program-member-cas.aspx) és [bemutatása a Microsoft Root Certificate Program](http://social.technet.microsoft.com/wiki/contents/articles/3281.introduction-to-the-microsoft-root-certificate-program.aspx).
+* Érvényes SSL-tanúsítvány kibocsátása a hitelesítésszolgáltató (CA), és a Microsoft által megbízhatónak tartott. A Microsoft Root Certificate programon keresztül kell elosztani a legfelső szintű Hitelesítésszolgáltatói tanúsítványok szükségesek. Ez a program kapcsolatos további információkért lásd: [Windows és Windows Phone 8 SSL Root Certificate Program (tag CAs)](https://social.technet.microsoft.com/wiki/contents/articles/14215.windows-and-windows-phone-8-ssl-root-certificate-program-member-cas.aspx) és [bemutatása a Microsoft Root Certificate Program](https://social.technet.microsoft.com/wiki/contents/articles/3281.introduction-to-the-microsoft-root-certificate-program.aspx).
 * Egy önaláírt tanúsítványt. Önaláírt tanúsítványok használata nem ajánlott éles környezetben.
 
 ### <a name="to-use-a-certificate-created-by-a-trusted-certificate-authority-ca"></a>A létrehozott szerint egy megbízható hitelesítésszolgáltató (CA) tanúsítvány használata

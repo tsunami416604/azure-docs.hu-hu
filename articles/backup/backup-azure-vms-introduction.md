@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/29/2018
 ms.author: markgal
-ms.openlocfilehash: 9e2ef16cffb044409b6f7f8e7785010097bcda87
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: ae02a1bcbf00a022cfd884b02141ce084f1fffa8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286652"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232460"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Virtuális gép biztonsági infrastruktúrájának megtervezése az Azure-ban
 A cikk ismerteti a teljesítmény- és erőforrás-javaslatok segítséget nyújt a virtuális gép biztonsági infrastruktúrájának megtervezése. Azt is meghatározza a biztonsági mentési szolgáltatás; fő szempontok Ezeket a szempontokat architektúra, amely meghatározza, hogy kritikus fontosságú lehet kapacitástervezés és ütemezését. Ha [a környezet előkészítése](backup-azure-arm-vms-prepare.md), tervezési a következő lépés megkezdése előtt [a virtuális gépek biztonsági mentése](backup-azure-arm-vms.md). Ha további információt az Azure virtual machines van szüksége, tekintse meg a [Virtual Machines dokumentációja](https://azure.microsoft.com/documentation/services/virtual-machines/). 
@@ -146,7 +146,7 @@ A számlázás az első sikeres biztonsági mentés befejezéséig nem indul el.
 Számlázási megadott virtuális gép leáll, csak akkor, ha a védelem ki van kapcsolva, és az összes biztonsági mentési adatok törlődnek. Amikor a védelem leáll, és nincsenek aktív biztonsági mentési feladatok, a legutóbbi sikeres virtuális gép biztonsági mentésének mérete a védett példány mérete, a havi számla használt válik.
 
 ## <a name="questions"></a>Kérdései vannak?
-Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne, [küldjön visszajelzést](http://aka.ms/azurebackup_feedback).
+Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne, [küldjön visszajelzést](https://aka.ms/azurebackup_feedback).
 
 ## <a name="next-steps"></a>További lépések
 * [Virtuális gépek biztonsági mentése](backup-azure-arm-vms.md)

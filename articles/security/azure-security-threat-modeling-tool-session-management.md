@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 97953779f1132d89c7ad07abdb4e08c0f476f4b9
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 182a0232b5317b1a375a20bdd4c6467578dc775b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841813"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232742"
 ---
 # <a name="security-frame-session-management"></a>Biztonsági keret: Munkamenet-kezelés
 | Termék vagy szolgáltatás | Cikk |
@@ -82,7 +82,7 @@ Azt kell is megsemmisíteni a felhasználói munkamenet Session.Abandon() metód
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Azure Document DB | 
+| **Összetevő**               | Az Azure Document DB-ről | 
 | **SDL fázis**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
@@ -157,7 +157,7 @@ Azt kell is megsemmisíteni a felhasználói munkamenet Session.Abandon() metód
 | **SDL fázis**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | EnvironmentType - rendszert |
-| **Hivatkozások**              | [Elem (schéma nastavení Technologie) httpCookies](http://msdn.microsoft.com/library/ms228262(v=vs.100).aspx), [HttpCookie.Secure tulajdonság](http://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
+| **Hivatkozások**              | [Elem (schéma nastavení Technologie) httpCookies](https://msdn.microsoft.com/library/ms228262(v=vs.100).aspx), [HttpCookie.Secure tulajdonság](https://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
 | **Lépések** | A cookie-k általában csak a tartományhoz, amelynek hatóköre is elérhető. "Tartomány" definíciójának sajnos nem tartalmazza a protokollt így cookie-k jönnek létre HTTPS-kapcsolaton keresztül, HTTP-n keresztül hozzáférhetők. A "biztonságos" attribútum azt jelöli, a böngészőnek, hogy a cookie-k csak elérhetővé kell tenni HTTPS-kapcsolaton keresztül. Győződjön meg arról, hogy az összes cookie-k beállítása HTTPS használatát a **biztonságos** attribútum. A követelmény a alapú attribútum igaz értékre állításával kényszeríthető ki a web.config fájlban. A legmegfelelőbb módszer nem kényszeríti, mert a **biztonságos** anélkül, hogy további kódot kellene az összes jelenlegi és jövőbeli cookie attribútuma.|
 
 ### <a name="example"></a>Példa

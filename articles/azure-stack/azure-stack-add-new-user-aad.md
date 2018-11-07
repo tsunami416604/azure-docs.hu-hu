@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: 9a4d7200a2bc2445fcdfefc0332d67a045b5a2e1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: fa8c8da34a687edd1bd92c1d516183ee5d3e1bd0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038017"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240120"
 ---
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>Adjon hozzá egy új Azure Stack-bérlői fiókkal az Azure Active Directoryban
 
@@ -65,7 +65,7 @@ Ha nem rendelkezik Azure-előfizetéssel, az Azure Portalon adjon hozzá egy bé
 > 
 
 1. Telepítse a [Microsoft Online Services bejelentkezési segéd az informatikusok RTW](https://www.microsoft.com/en-us/download/details.aspx?id=41950).
-2. Telepítse a [Azure Active Directory modul a Windows PowerShell (64 bites verzió)](http://go.microsoft.com/fwlink/p/?linkid=236297) , és nyissa meg azt.
+2. Telepítse a [Azure Active Directory modul a Windows PowerShell (64 bites verzió)](https://go.microsoft.com/fwlink/p/?linkid=236297) , és nyissa meg azt.
 3. A következő parancsmagok futtatásához:
 
     ```powershell

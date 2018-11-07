@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 6430bf524ac81af242bf7afb4c2c8196309806ab
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: fc70089517bbc1aa90f95f1e0231f2c67f930090
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391676"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242194"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-azure-data-lake-storage-gen1"></a>Az Azure Data Lake Storage Gen1 adatok offline másolásához az Azure Import/Export szolgáltatás használata
 Ebből a cikkből elsajátíthatja a hatalmas adatkészletek másolása (> 200 GB-os) az Azure Data Lake Storage Gen1 módszerrel offline másolásához, például a [Azure Import/Export szolgáltatás](../storage/common/storage-import-export-service.md). Pontosabban a fájl, használjuk példaként ebben a cikkben nem 339,420,860,416 bájt vagy a lemezen körülbelül 319 GB. Adjuk a fájl 319GB.tsv.
@@ -52,7 +52,7 @@ Kövesse a [az Azure Import/Export szolgáltatás használatával](../storage/co
 
 1. Be kell szereznie egy merevlemezt, amely megfelel a követelmény az Azure Import/Export szolgáltatás használható.
 2. Azonosítsa az Azure storage-fiók, amelyben az adatok másolandó után el az Azure-adatközpontba.
-3. Használja a [Azure Import/Export eszköz](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409), parancssori segédprogramot. Íme egy példa kódrészletet, amely bemutatja, hogyan használhatja az eszközt.
+3. Használja a [Azure Import/Export eszköz](https://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409), parancssori segédprogramot. Íme egy példa kódrészletet, amely bemutatja, hogyan használhatja az eszközt.
 
     ````
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
