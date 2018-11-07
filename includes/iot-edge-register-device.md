@@ -9,11 +9,11 @@ ms.date: 06/25/2018
 ms.author: kgremban
 ms.custom: include file
 ms.openlocfilehash: bacafdc8f7fd8e206335f3be0a086df1c54f1081
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38746709"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51263616"
 ---
 Hozzon létre egy eszközidentitást a szimulált eszközhöz, hogy az kommunikálhasson az IoT Hubbal. Mivel az IoT Edge-eszközök másként viselkednek, mint a hagyományos IoT-eszközök, és kezelésük is másként történik, ezért IoT Edge-eszközként kell deklarálni a kezdetektől fogva. 
 

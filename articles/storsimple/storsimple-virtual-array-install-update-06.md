@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
-ms.openlocfilehash: 111976cd684561f5bc63b92f09a20470fe3036d7
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 89ca7a5fa13696856bed108e4cbf7462b536b4bb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38606646"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246616"
 ---
 # <a name="install-update-06-on-your-storsimple-virtual-array"></a>A StorSimple virtuális tömb a 0.6-os frissítés telepítése
 
@@ -27,7 +27,7 @@ ms.locfileid: "38606646"
 
 Ez a cikk a StorSimple virtuális tömb a 0.6-os frissítés telepítése a helyi webes felhasználói felületen és az Azure Portalon keresztül szükséges lépéseket ismerteti. A szoftverfrissítések vagy gyorsjavítások naprakészen tartani a StorSimple Virtual Array alkalmaz.
 
-Mielőtt alkalmazná a frissítést, javasoljuk, hogy tegye meg a kötetek vagy megosztások kapcsolat nélküli módban a gazdagépen első és az eszköz majd. Így minimálisra csökkenthető az adatsérülés lehetőségét. Miután a kötetek vagy megosztások offline állapotban, akkor kell is manuális biztonsági mentést az eszköz.
+Mielőtt alkalmazná a frissítést, javasoljuk, hogy tegye meg a kötetek vagy megosztások kapcsolat nélküli módban a gazdagépen első és az eszköz majd. Ezzel a lehető legkisebbre csökkenti az adatsérülés esélyét. Miután a kötetek vagy megosztások offline állapotban, akkor kell is manuális biztonsági mentést az eszköz.
 
 > [!IMPORTANT]
 > - 0.6-os frissítés megfelel **10.0.10293.0** szoftververzió az eszközön. Ez a frissítés újdonsága az információk, [kibocsátási megjegyzések a 0.6-os frissítés](storsimple-virtual-array-update-06-release-notes.md).
@@ -57,7 +57,7 @@ Hajtsa végre a következő lépéseket a szoftverfrissítés a Microsoft Update
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>A frissítés vagy gyorsjavítás letöltése
 
-1. Indítsa el az Internet Explorert és keresse meg [ http://catalog.update.microsoft.com ](http://catalog.update.microsoft.com).
+1. Indítsa el az Internet Explorert és keresse meg [ http://catalog.update.microsoft.com ](https://catalog.update.microsoft.com).
 
 2. Ha a Microsoft Update katalógust ezen a számítógépen először használ, kattintson a **telepítése** , amikor a Microsoft Update katalógus beépülő moduljának telepítésére kéri.
 
@@ -74,7 +74,7 @@ Hajtsa végre a következő lépéseket a szoftverfrissítés a Microsoft Update
 6. Nyissa meg a fájlokat tartalmazó mappát.
     ![A csomagban lévő fájlok](./media/storsimple-virtual-array-install-update-06/update06folder.png)
 
-    Lásd:
+    A következőt fogja látni:
     -  A Microsoft Update önálló csomagfájl `WindowsTH-KB3011067-x64`. Ez a fájl frissítése az eszközhöz használatos.
     - Geneva Monitoring Agent csomagfájl `GenevaMonitoringAgentPackageInstaller`. Ez a fájl a Monitorozási és diagnosztikai szolgáltatás (MDS) ügynök frissítése szolgál. Kattintson duplán a cab-fájl. A _.msi_ jelenik meg. Válassza ki a fájlt, kattintson a jobb gombbal, majd **kinyerése** a fájlt. Használja a _.msi_ fájlt az ügynök frissítése.
 

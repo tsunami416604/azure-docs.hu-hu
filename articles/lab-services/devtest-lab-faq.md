@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 370700f8d146dd626e6e13deceb09dcaea34a9f3
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: b5ad6321a41c84928cbc6f8c51c4f5fe3567410f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983950"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262029"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs GYIK
 Az Azure DevTest Labs kapcsolatos leggyakoribb kérdésekre adott válaszok.
@@ -100,7 +100,7 @@ Az alábbi blogbejegyzések ajánlat útmutató és az Azure DevOps-szolgáltat�
 * [Az Azure DevOps-szolgáltatások egy meglévő DevTest Labs labor egy új virtuális gép üzembe helyezése](http://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
 * [Az Azure DevOps Services kiadáskezelés használatával DevTest Labs folyamatos központi telepítésére](http://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
-Egyéb folyamatos integrációs (CI) / folyamatos készregyártás (CD) fordíthatók, akkor érhető el, ugyanezeket a forgatókönyveket a telepítése [Azure Resource Manager-sablonok](https://aka.ms/dtlquickstarttemplate) használatával [Azure PowerShell-parancsmagok](../azure-resource-manager/resource-group-template-deploy.md) és [.NET SDK-k](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/). Használhatja még [REST API-k a DevTest Labs](http://aka.ms/dtlrestapis) az eszközlánc integrálását.  
+Egyéb folyamatos integrációs (CI) / folyamatos készregyártás (CD) fordíthatók, akkor érhető el, ugyanezeket a forgatókönyveket a telepítése [Azure Resource Manager-sablonok](https://aka.ms/dtlquickstarttemplate) használatával [Azure PowerShell-parancsmagok](../azure-resource-manager/resource-group-template-deploy.md) és [.NET SDK-k](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/). Használhatja még [REST API-k a DevTest Labs](https://aka.ms/dtlrestapis) az eszközlánc integrálását.  
 
 
 **Virtuális gépek**
@@ -141,7 +141,7 @@ Automatizálás létrehozása egyéni rendszerképek VHD fájlokat tölthet fel,
 
 A cél tárfiók a labor társított megkeresése:
 
-1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. A bal oldali menüben válassza ki a **erőforráscsoportok**.
 3. Keresse meg és válassza ki az erőforráscsoportot, amely a labor van társítva.
 4. A **áttekintése**, válasszon ki egy tárfiókot.

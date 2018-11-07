@@ -2,19 +2,19 @@
 title: Az Event Hubsból az Azure HDInsight a Storm - események feldolgozása
 description: Ismerje meg, a Visual Studio létrehozta a HDInsight tools for Visual Studio használatával C# Storm-topológia az Azure Event Hubsból származó adatok feldolgozása.
 services: hdinsight,notification hubs
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: cda21c5b0d06335b13ba1aff0e9113544ca11c80
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 0eb283eda04d4123e0c05d2c48663a5aca88ebc4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414199"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249557"
 ---
 # <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-c"></a>Események feldolgozása az Azure Event Hubsból a Storm on HDInsight (C#)
 
@@ -115,7 +115,7 @@ A projekt ebben az oktatóanyagban létrehozott egy teljes körű verziója let�
 
 * Egy [az Azure event hub](../../event-hubs/event-hubs-create.md).
 
-* A [Azure .NET SDK-val](http://azure.microsoft.com/downloads/).
+* A [Azure .NET SDK-val](https://azure.microsoft.com/downloads/).
 
 * A [HDInsight tools for Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 

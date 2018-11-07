@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: 554718f0bb465ca757fc4dcf6c22d3b0dd80f2fb
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3f0bf2c6c58afbbf9a1256fa5901591e535fe20c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251090"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250764"
 ---
 # <a name="azure-cosmos-db-faq"></a>Az Azure Cosmos DB – gyakori kérdések
 ## <a name="azure-cosmos-db-fundamentals"></a>Az Azure Cosmos DB – alapok
@@ -36,7 +36,7 @@ Azure Cosmos DB a megfelelő választás az olyan új webes, mobil-, játék-, �
 ### <a name="how-does-azure-cosmos-db-offer-predictable-performance"></a>Hogyan kínál a Azure Cosmos DB kiszámítható teljesítményt?
 A [kérelemegység](request-units.md) (RU) az Azure Cosmos DB-ben a teljesítmény mértékegysége. Egy 1 – RU átviteli sebesség az átviteli sebesség egy 1 KB-os dokumentum Get felel meg. Olvasási, írási, SQL-lekérdezések és a tárolt eljárás-végrehajtás, beleértve az Azure Cosmos DB-ben minden művelet értéke determinisztikus RU a művelet végrehajtásához szükséges teljesítmény alapján. Szem előtt tartva CPU, IO, és a memória és azok minden adatátviteli teljesítmény, helyett alkalmazásteljesítményre RU egyetlen mérték.
 
-Egyes Azure Cosmos DB-tárolók a kiosztott átviteli sebesség szempontjából másodpercenkénti kérelemegység tartható fenn. Bármilyen méret esetén az alkalmazások benchmark egyes kérelmeket Kérelemegység-értékük, és kezelje az összes kérelem összes kérelemegységének tároló üzembe helyezése. Vertikális felskálázás is, vagy a tároló átviteli sebességet az alkalmazás változásával igényeinek megfelelően méretezhető. További információ a kérelemegységekről és a meghatározásához a tároló alkalmazástípusokról [átviteli sebesség becslése](request-units.md#estimating-throughput-needs) , és próbálkozzon a [átviteli Számológép](https://www.documentdb.com/capacityplanner). Az előfizetési időszak *tároló* itt egy SQL API-gyűjtemény, a Gremlin API-grafikon, a MongoDB API-gyűjtemény és a Table API-tábla hivatkozik. 
+Egyes Azure Cosmos DB-tárolók a kiosztott átviteli sebesség szempontjából másodpercenkénti kérelemegység tartható fenn. Bármilyen méret esetén az alkalmazások benchmark egyes kérelmeket Kérelemegység-értékük, és kezelje az összes kérelem összes kérelemegységének tároló üzembe helyezése. Vertikális felskálázás is, vagy a tároló átviteli sebességet az alkalmazás változásával igényeinek megfelelően méretezhető. További információ a kérelemegységekről és a meghatározásához a tároló van szüksége, próbálkozzon a [átviteli Számológép](https://www.documentdb.com/capacityplanner). Az előfizetési időszak *tároló* itt egy SQL API-gyűjtemény, a Gremlin API-grafikon, a MongoDB API-gyűjtemény és a Table API-tábla hivatkozik. 
 
 ### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Hogyan támogatja az Azure Cosmos DB különböző adatmodelleket, például a kulcs/érték, Oszlopalapú, dokumentum és graph?
 
@@ -462,7 +462,7 @@ A Kérelemegység díj alapja az bejárási munkakészletének adatokat, és nem
 
 ### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Mi az a maximális skála, amelyeken egy gráfadatbázist az Azure Cosmos DB Gremlin API-hoz? 
 
-Az Azure Cosmos DB teszi [horizontális particionálást](partition-data.md) tárolási és átviteli követelményei automatikusan cím növekedéséhez. Egy adott gyűjteményhez társított partíciók száma egy számítási feladat maximális adatátviteli és tárolási kapacitása határozza meg. Azonban a Gremlin API-gyűjtemény van egy meghatározott készletének a szabályokat, hogy a megfelelő teljesítmény biztosítása érdekében, ipari méretekben. További információ és ajánlott eljárások: [ajánlott particionálási eljárások](partition-data.md#best-practices-when-choosing-a-partition-key) dokumentumot. 
+Az Azure Cosmos DB teszi [horizontális particionálást](partition-data.md) tárolási és átviteli követelményei automatikusan cím növekedéséhez. Egy adott gyűjteményhez társított partíciók száma egy számítási feladat maximális adatátviteli és tárolási kapacitása határozza meg. Azonban a Gremlin API-gyűjtemény van egy meghatározott készletének a szabályokat, hogy a megfelelő teljesítmény biztosítása érdekében, ipari méretekben. További információ a particionálás és ajánlott eljárások: [az Azure Cosmos DB particionálási](partition-data.md) cikk. 
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Hogyan tudja megvédeni Gremlin-illesztőprogramokkal injektálási támadások ellen? 
 

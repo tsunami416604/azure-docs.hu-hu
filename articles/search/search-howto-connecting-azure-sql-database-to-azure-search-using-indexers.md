@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: 1c498bb857b717682f943af96b222d9712b5d389
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: ba2ce12fcfad14b0910144b1a95efd44be54811f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409220"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245647"
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Csatlakozás az Azure SQL Database az Azure Search indexelők használatával
 
@@ -140,7 +140,7 @@ A válasz a következőhöz hasonlóan kell kinéznie:
     }
 
 Végrehajtási előzmények legfeljebb 50, a nemrégiben befejezett végrehajtások, amelyeket a rendszer rendezi a fordított időrendben (úgy, hogy a legújabb végrehajtása a válaszban hamarabb elérik) tartalmazza.
-További információt a válaszban található [indexelő állapotának beolvasása](http://go.microsoft.com/fwlink/p/?LinkId=528198)
+További információt a válaszban található [indexelő állapotának beolvasása](https://go.microsoft.com/fwlink/p/?LinkId=528198)
 
 ## <a name="run-indexers-on-a-schedule"></a>Az indexelők futtatása történhet ütemezés szerint
 Az indexelő futtatása rendszeres ütemezés szerint is rendezheti. Ehhez adja hozzá a **ütemezés** létrehozásakor vagy frissítésekor az indexelő tulajdonság. Az alábbi példában látható egy PUT kérelmet az indexelő frissítése:

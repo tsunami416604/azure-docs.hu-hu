@@ -12,12 +12,12 @@ ms.author: jodebrui
 ms.reviewer: ''
 manager: craigg
 ms.date: 07/16/2018
-ms.openlocfilehash: 8fd430aa710c7e36133b40c7079b9d727774c68f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: d850aff8ddb2a8b6cdd68620ae823d582c527581
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166928"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229090"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Teljesítmény optimalizálása, memóriabeli technológiákat az SQL Database használatával
 
@@ -57,11 +57,11 @@ További információ a következő forrásanyagokban talál.
 A technológiák részletes információit:
 
 - [A memóriában tárolt OLTP-k áttekintése és a használati forgatókönyvek](https://msdn.microsoft.com/library/mt774593.aspx) (hivatkozások ügyféleset-tanulmányok és a kezdéshez információkat tartalmazza)
-- [Memóriabeli OLTP dokumentációja](http://msdn.microsoft.com/library/dn133186.aspx)
+- [Memóriabeli OLTP dokumentációja](https://msdn.microsoft.com/library/dn133186.aspx)
 - [Oszlopcentrikus indexek áttekintésével](https://msdn.microsoft.com/library/gg492088.aspx)
 - Hibrid tranzakciós/analitikus feldolgozás (HTAP), más néven [valós idejű működési elemzések](https://msdn.microsoft.com/library/dn817827.aspx)
 
-Az In-Memory OLTP gyors alapozó: [Quick Start 1: In-Memory OLTP technológiák gyorsabb a T-SQL-teljesítmény](http://msdn.microsoft.com/library/mt694156.aspx) (egy másik cikkben segítséget első lépések)
+Az In-Memory OLTP gyors alapozó: [Quick Start 1: In-Memory OLTP technológiák gyorsabb a T-SQL-teljesítmény](https://msdn.microsoft.com/library/mt694156.aspx) (egy másik cikkben segítséget első lépések)
 
 A technológiák részletes szolgáltatásról:
 
@@ -158,7 +158,7 @@ Egy több egyszerűsített, de több tetszetős teljesítmény bemutató In-Memo
 
 1. Az a [az Azure portal](https://portal.azure.com/), a prémium és üzletileg kritikus fontosságú adatbázis létrehozása a kiszolgálón. Állítsa be a **forrás** az AdventureWorksLT mintaadatbázist. Részletes útmutatásért lásd: [hozzon létre az első Azure SQL database](sql-database-get-started-portal.md).
 
-2. Csatlakozzon az adatbázishoz az SQL Server Management Studióval [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx).
+2. Csatlakozzon az adatbázishoz az SQL Server Management Studióval [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx).
 
 3. Másolás a [In-Memory OLTP Transact-SQL parancsfájl](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql) a vágólapra. A T-SQL parancsfájlt a szükséges memórián belüli objektumok az AdventureWorksLT mintaadatbázis az 1. lépésben létrehozott hoz létre.
 
@@ -291,9 +291,9 @@ Ideális esetben szeretné futtatni tervezett ostress.exe-beli virtuális gépen
 A virtuális gép vagy a gazdagép bármilyen, válassza ki, telepítse a visszajátszás Markup Language (RML) segédeszközöket. A segédprogramok ostress.exe tartalmazza.
 
 További információkért lásd:
-- A hozzászólás ostress.exe [In-Memory OLTP adatbázist](http://msdn.microsoft.com/library/mt465764.aspx).
-- [Az In-Memory OLTP adatbázis minta](http://msdn.microsoft.com/library/mt465764.aspx).
-- A [blog ostress.exe telepítéséhez](http://blogs.msdn.com/b/psssql/archive/2013/10/29/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx).
+- A hozzászólás ostress.exe [In-Memory OLTP adatbázist](https://msdn.microsoft.com/library/mt465764.aspx).
+- [Az In-Memory OLTP adatbázis minta](https://msdn.microsoft.com/library/mt465764.aspx).
+- A [blog ostress.exe telepítéséhez](https://blogs.msdn.com/b/psssql/archive/2013/10/29/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx).
 
 
 
@@ -379,7 +379,7 @@ Memóriabeli tesztek kimutatták, hogy a javítja a teljesítményt **kilenc alk
 Ebben a szakaszban összehasonlítjuk az i/o- és statisztikai eredményeket és a egy hagyományos b-fa indexet oszlopcentrikus index használatakor.
 
 
-Az OLTP-munkaterhelés valós idejű elemzését célszerű gyakran egy fürtözetlen oszlopcentrikus indexet használni. További információkért lásd: [Oszlopcentrikus indexek leírt](http://msdn.microsoft.com/library/gg492088.aspx).
+Az OLTP-munkaterhelés valós idejű elemzését célszerű gyakran egy fürtözetlen oszlopcentrikus indexet használni. További információkért lásd: [Oszlopcentrikus indexek leírt](https://msdn.microsoft.com/library/gg492088.aspx).
 
 
 
@@ -493,7 +493,7 @@ A P2 tarifacsomag adatbázist, a várható nagyjából kilenc alkalommal a telje
 
 ## <a name="next-steps"></a>További lépések
 
-- [Gyors üzembe helyezési 1: In-Memory OLTP technológiák gyorsabb a T-SQL-teljesítmény](http://msdn.microsoft.com/library/mt694156.aspx)
+- [Gyors üzembe helyezési 1: In-Memory OLTP technológiák gyorsabb a T-SQL-teljesítmény](https://msdn.microsoft.com/library/mt694156.aspx)
 
 - [Egy meglévő Azure SQL-alkalmazásban használható In-Memory OLTP](sql-database-in-memory-oltp-migration.md)
 
@@ -508,17 +508,17 @@ A P2 tarifacsomag adatbázist, a várható nagyjából kilenc alkalommal a telje
 
 - [Ebben a blogbejegyzésben az Azure SQL Database in-Memory OLTP](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
-- [További információ a memóriában tárolt OLTP-k](http://msdn.microsoft.com/library/dn133186.aspx)
+- [További információ a memóriában tárolt OLTP-k](https://msdn.microsoft.com/library/dn133186.aspx)
 
 - [Ismerje meg az oszlopcentrikus indexek](https://msdn.microsoft.com/library/gg492088.aspx)
 
-- [Ismerje meg a valós idejű működési elemzések](http://msdn.microsoft.com/library/dn817827.aspx)
+- [Ismerje meg a valós idejű működési elemzések](https://msdn.microsoft.com/library/dn817827.aspx)
 
-- Lásd: [közös munkaterhelési mintákat és az áttelepítés szempontjai](http://msdn.microsoft.com/library/dn673538.aspx) (amely azt ismerteti, ahol In-Memory OLTP gyakran biztosít jelentős teljesítménynövekedést munkaterhelési mintákat)
+- Lásd: [közös munkaterhelési mintákat és az áttelepítés szempontjai](https://msdn.microsoft.com/library/dn673538.aspx) (amely azt ismerteti, ahol In-Memory OLTP gyakran biztosít jelentős teljesítménynövekedést munkaterhelési mintákat)
 
 #### <a name="application-design"></a>Alkalmazás-tervezés
 
-- [Memóriában tárolt OLTP-k (memóriabeli optimalizálás)](http://msdn.microsoft.com/library/dn133186.aspx)
+- [Memóriában tárolt OLTP-k (memóriabeli optimalizálás)](https://msdn.microsoft.com/library/dn133186.aspx)
 
 - [Egy meglévő Azure SQL-alkalmazásban használható In-Memory OLTP](sql-database-in-memory-oltp-migration.md)
 
@@ -528,4 +528,4 @@ A P2 tarifacsomag adatbázist, a várható nagyjából kilenc alkalommal a telje
 
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 
-- [SQL Server Data Tools (SSDT)](http://msdn.microsoft.com/library/mt204009.aspx)
+- [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)

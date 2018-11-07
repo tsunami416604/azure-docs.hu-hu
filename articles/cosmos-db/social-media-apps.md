@@ -10,23 +10,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: maquaran
-ms.openlocfilehash: 3c97c89bde40357981d82dce8dd53febff25c8f3
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: bc31c7ebec7c1f7a02be65b15805fb48b1ef275d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239882"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260312"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Közösségi tartalom az Azure Cosmos DB használatával
 Egy nagy mértékben összekapcsolt társadalom élő azt jelenti, hogy életre valamely pontján, részévé válik a **közösségi hálózati**. Használhat közösségi hálózatokkal, hogy barátai, munkatársai, termékcsalád vagy más néven közös érdeklődési rendelkező személyek a szenvedélyét megosztani.
 
 Szakemberek vagy fejlesztők számára, akkor előfordulhat, hogy rendelkezik testreszabásakor nem tudta hogyan lehet ezeket a hálózatokat tárolja és ezek az adatok, vagy előfordulhat, hogy rendelkezik is lett kiadta létrehozásához vagy egy adott jelentethet piacra új közösségi hálózat yourselves tervezhet. Ha ez a jelentős kérdése merül fel: ezek az adatok tárolási módját?
 
-Tegyük fel, hogy hoz létre egy új és fényes közösségi hálózat, ahol a felhasználók kapcsolódó adathordozók, például képek, videók vagy zene akár cikkeket is közzé. A felhasználók bejegyzések fűzni és pontokat biztosíthat az értékelésekhez. Bejegyzések, amelyet a felhasználók hírcsatornában lesz és fogják tudni használni a fő webhely kezdőlapján. Ez nem összetett hang-(elsőre), de az egyszerűség kedvéért most állítja le van (jobban is elmélyedne kapcsolatok által érintett egyéni felhasználói hírcsatornák, de ez meghaladja a cél a cikk).
+Tegyük fel, hogy hoz létre egy új és fényes közösségi hálózat, ahol a felhasználók kapcsolódó adathordozók, például képek, videók vagy zene akár cikkeket is közzé. A felhasználók bejegyzések fűzni és pontokat biztosíthat az értékelésekhez. Bejegyzések, amelyet a felhasználók hírcsatornában lesz és fogják tudni használni a fő webhely kezdőlapján. Ez a módszer nem összetett hang-(elsőre), de az egyszerűség kedvéért most állítja le van (jobban is elmélyedne kapcsolatok által érintett egyéni felhasználói hírcsatornák, de ez meghaladja a cél a cikk).
 
 Tehát hogyan tegye tárolja ez, és ahol?
 
-A legtöbb felhasználó lehet, hogy rendelkezik tapasztalattal az SQL-adatbázisokon vagy fogalma legalább [relációs adatok modellezése](https://en.wikipedia.org/wiki/Relational_model) és lehetséges, hogy gyermekeiről indítsa el a rajzot a következőhöz hasonlóan:
+Előfordulhat, hogy rendelkezik tapasztalattal az SQL-adatbázisokon vagy egy fogalma [relációs adatok modellezése](https://en.wikipedia.org/wiki/Relational_model) és kezdheti rajzolási valamit a következő:
 
 ![Relatív relációs modell ábrázoló diagram](./media/social-media-apps/social-media-apps-sql.png) 
 
@@ -34,9 +34,9 @@ Tökéletesen normalizált és szép adatstruktúra... amely nem méretezhető.
 
 Nem kap meg helytelen dolgoztam az SQL Database-adatbázisok összes életem, nagyszerű azok, de minden mintát, a gyakorlatban és a szoftverek platformhoz, például nem tökéletes mindegyik forgatókönyv esetében.
 
-Miért nem SQL ebben a forgatókönyvben a legjobb választás? Vegyünk egy egyetlen bejegyzés szerkezete Ha szerettem volna a lekérdezésére van egy webhelyet vagy alkalmazást, a bejegyzés véleményezésével megjelenítése... Nyolc összeillesztett táblákra (!) csak egy egyedi közzétételek, most fel dinamikusan betölteni, és megjelenik a képernyőn, és a stream jelenhet meg, hol fogom kép megjelenítéséhez.
+Miért nem SQL ebben a forgatókönyvben a legjobb választás? Vegyünk egy egyetlen bejegyzés szerkezete Ha szerettem volna a lekérdezésére van egy webhelyet vagy alkalmazást, a bejegyzés véleményezésével megjelenítése... csak, egy egyetlen bejegyzés megjelenítése nyolc tables(!) csatlakoztatásával, kép, amelyekre dinamikusan betölteni, és megjelenik a képernyőn, és egy adatfolyam jelenhet meg hol fogom.
 
-Sikerült, természetesen hatalmas mennyiségű SQL-példányt használ az elegendő power megoldásához ezer lekérdezést ezeket az illesztések kiszolgálására a tartalmat, de valóban, miért érdemes lenne, ha létezik egy egyszerűbb megoldást?
+Hatalmas mennyiségű SQL-példány ezer lekérdezést az illesztések kiszolgálására a tartalmat, de valóban, miért érdemes lenne, ha létezik egy egyszerűbb megoldást megoldásához elég power kreditért igénybe?
 
 ## <a name="the-nosql-road"></a>A nosql-alapú közúti
 Ez a cikk végigvezeti az Azure NoSQL-adatbázis a közösségi platform adatok modellezését, [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) a költséghatékony más az Azure Cosmos DB költséghatékonyhatékonyságából kínál, mint például a [Gremlin API](../cosmos-db/graph-introduction.md). Használatával egy [nosql-alapú](https://en.wikipedia.org/wiki/NoSQL) megközelítés, adattárolás, a JSON-formátumban, és alkalmazása [denormalizáció](https://en.wikipedia.org/wiki/Denormalization), a korábban bonyolult bejegyzés egy átalakíthatók [dokumentum](https://en.wikipedia.org/wiki/Document-oriented_database):
@@ -59,7 +59,7 @@ Ez a cikk végigvezeti az Azure NoSQL-adatbázis a közösségi platform adatok 
         ]
     }
 
-És egyetlen lekérdezést, és az illesztések nem szerezhető be. Ez egy sokkal több egyszerű és könnyen érthető megjegyzésblokkok írására, és budget-wise, legjobb eredmény elérése érdekében kevesebb erőforrást igényel.
+És egyetlen lekérdezést, és az illesztések nem szerezhető be. Ez a lekérdezés sokkal egyszerű és könnyen érthető megjegyzésblokkok írására, és, budget-wise, legjobb eredmény elérése érdekében kevesebb erőforrást igényel.
 
 Az Azure Cosmos DB gondoskodik róla, hogy az összes tulajdonság indexelt annak automatikus indexelést, az is lehet, amely [testre szabott](indexing-policies.md). A séma nélküli megközelítés lehetővé teszi, hogy velünk a kapcsolatot a másik, a dinamikus struktúrák, talán holnap azt szeretné, hogy van egy listája azokról a kategóriák és a hozzájuk társított hashtageket hozzászólások dokumentumok tárolására, a Cosmos DB az új dokumentumok nincsenek további munkát a hozzáadott attribútumokat fogja kezelni. szükség szerint velünk a kapcsolatot.
 
@@ -165,7 +165,7 @@ A legkisebb lépést nevezzük regisztrációnak egy UserChunk, a minimális ada
 
 A középső lépés neve a felhasználónak, hogy a teljes adatokat a Cosmos DB, a leggyakrabban elért és a kritikus fontosságú a legtöbb teljesítmény-függő lekérdezéseket kell használni. Egy UserChunk által képviselt információkat tartalmazza.
 
-A legnagyobb az a kiterjesztett felhasználó. Tartalmazza az összes kritikus felhasználói adatokat és más adatok nem igénylő nagyon gyorsan kell olvasni, vagy annak használati végleges (például a bejelentkezési folyamat). Ezeket az adatokat a Cosmos DB, az Azure SQL Database vagy Azure Storage-táblák kívül tárolható.
+A legnagyobb az a kiterjesztett felhasználó. Az összes kritikus felhasználói információkat tartalmaz, és más adatok nem igénylő nagyon gyorsan kell olvasni, vagy a használatát a végleges (például a bejelentkezési folyamat). Ezeket az adatokat a Cosmos DB, az Azure SQL Database vagy Azure Storage-táblák kívül tárolható.
 
 Miért volna, a felhasználó felosztása és akár különböző helyeken tárolja? Mivel a teljesítmény szempontjából, annál nagyobb a dokumentumokat, a costlier a lekérdezéseket. Dokumentumok slim, hajtsa végre az összes a teljesítmény-függő lekérdezések a közösségi hálózat végleges szituációkra, mint, teljes profil módosítások bejelentkezések más extra információk tárolására, és data szintű adatbányászatra használati elemzés és big Data típusú adatok is a megfelelő információkkal megtartása kezdeményezések. Valóban nem fontos, ha az adatgyűjtési data szintű adatbányászatra lassabb lesz, mivel az Azure SQL Database futtat, akkor rendelkezik a következőkre azonban, hogy a felhasználók rendelkeznek-e egy gyors és slim élmény. A felhasználó, a Cosmos dB-ben tárolt következő lenne:
 
@@ -216,12 +216,12 @@ Most, hogy szükségem van csatlakoztatva, valószínűleg gondolja lesz szüks�
 
 A Machine Learning esetekben eléréséhez használható [az Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) képes feldolgozni a különböző forrásokból származó adatokat, és [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) feldolgozni az információkat, és hozzon létre, amelyeket a kimenet az Azure Machine Learning feldolgozni.
 
-Egy másik elérhető lehetőség [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services) elemezheti a felhasználók számára tartalom; csak nem is megismeri őket jobban (keresztül elemzése, mi írnak a [Text Analytics API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api)), azonban is képes nemkívánatos vagy érett megfeleltetésével, és azoknak megfelelő cselekvést a [Computer Vision API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api). A cognitive Services számos out-az-megoldások, amelyek nem igényelnek a Machine Learning-ismeretek használata bármilyen típusú tartalmazza.
+Egy másik elérhető lehetőség [Azure Cognitive Services](https://www.microsoft.com/cognitive-services) elemezheti a felhasználók számára tartalom; csak nem is megismeri őket jobban (keresztül elemzése, mi írnak a [Text Analytics API](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api)), de sikerült is nemkívánatos vagy érett tartalom észlelése és az azoknak megfelelő cselekvést a [Computer Vision API](https://www.microsoft.com/cognitive-services/en-us/computer-vision-api). A cognitive Services számos out-az-megoldások, amelyek nem igényelnek a Machine Learning-ismeretek használata bármilyen típusú tartalmazza.
 
 ## <a name="a-planet-scale-social-experience"></a>Egy globális közösségi élmény
 Egy utolsó, de nem utolsósorban fontos cikk kell címezni: **méretezhetőség**. Rendkívül fontos, hogy az egyes összetevők méretezhetők saját maga, vagy mert szüksége lesz a további adatokat feldolgozni az architektúra tervezése során, vagy mert szeretne biztosítani egy nagyobb földrajzi lefedettségével (vagy mindkét!). Szerencsére jövedelmezőbb munkát tesznek lehetővé az összetett feladat van egy **kulcsrakész megoldást** a Cosmos DB használatával.
 
-A cosmos DB támogatja a [dinamikus particionálás](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/) -a-beépített alapján automatikusan létrehoz egy adott **partíciókulcs** (egy, a dokumentumok az attribútumok meghatározott). Definiálása a tervezési időben a megfelelő partíciókulcs kell elvégezni, és szem előtt tartja a [ajánlott eljárások](../cosmos-db/partition-data.md#designing-for-partitioning) érhető el; egy közösségi élmény esetén a particionálási stratégia igazodnia kell a módja (olvasás az előfizetésen belül lekérdezheti, partíció is kívánatos) és írása ("hotspotok" elkerülheti a írási művelet több partíciót terjedhetnek). Egyes lehetőségeket vannak: a tartalom kategória, a földrajzi régióban, a felhasználó; historikus kulcs (nap/hó/hét) alapján az összes valóban attól függ, hogyan fog kérdezni az adatokat, és jelenítse meg azt a közösségi felhasználói élmény. 
+A cosmos DB támogatja a [dinamikus particionálás](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/) -a-beépített alapján automatikusan létrehoz egy adott **partíciókulcs** (egy, a dokumentumok az attribútumok meghatározott). A megfelelő partíciókulcs meghatározása kell elvégezni, már a tervezés során, további tudnivalókért lásd: [válassza ki a megfelelő partíciókulcs](partitioning-overview.md#choose-partitionkey) cikk. Egy közösségi élmény esetén a particionálási stratégia kell igazítani a módon lekérdezheti, ha az (ugyanazon a partíción belül olvasási is kívánatos) és írása ("hotspotok" elkerülheti a írási művelet több partíciót terjedhetnek). Egyes lehetőségeket vannak: a tartalom kategória, a földrajzi régióban, a felhasználó; historikus kulcs (nap/hó/hét) alapján az összes valóban attól függ, hogyan fog kérdezni az adatokat, és jelenítse meg azt a közösségi felhasználói élmény. 
 
 Egyik érdekes pont érdemes megemlíteni, hogy a Cosmos DB futtatja-e a lekérdezések (beleértve a [összesítések](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)) a partíciókon transzparens módon, nem kell minden olyan logikai hozzáadása az adatmennyiség növekedésével.
 

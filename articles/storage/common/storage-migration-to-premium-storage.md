@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.component: common
-ms.openlocfilehash: c6256fc209a4ffa5308dc3b24794f8295c57f4ef
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 4ec0d4058c512ce420cd6e1bdc393b8043dbf1b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521778"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232555"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>(Nem felügyelt lemezek) az Azure Premium Storage-ba való migrálás
 
@@ -54,10 +54,10 @@ Az Azure virtuális gép mérete előírások felsorolt [virtuális gépek mére
 #### <a name="disk-sizes"></a>Lemezméretek
 A virtuális gép használható lemezek öt típusa van, mindegyik adott IOPs és átviteli sebesség korlátok. Figyelembe ezeket a korlátokat kiválasztása a lemez típusát a virtuális gép kapacitását, teljesítmény, méretezhetőség tekintetében az alkalmazás igényeinek megfelelően, és csúcs tölti be.
 
-| Prémium szintű lemezek típusa  | P10   | P20   | P30            | P40            | P50            | 
+| Prémium szintű lemezek típusa  | P10   | P20   | P30            | P40            | P50            | 
 |:-------------------:|:-----:|:-----:|:--------------:|:--------------:|:--------------:|
-| Lemezméret           | 128 GB| 512 GB| 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
-| IOPS-érték lemezenként       | 500   | 2300  | 5000           | 7500           | 7500           | 
+| Lemezméret           | 128 GB| 512 GB| 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
+| IOPS-érték lemezenként       | 500   | 2300  | 5000           | 7500           | 7500           | 
 | Adattovábbítás lemezenként | 100 MB / s | 150 MB / s | 200 MB / s | 250 MB / s | 250 MB / s |
 
 Attól függően, a számítási feladatok határozza meg, ha további adatlemezek szükségesek a virtuális gép. Több állandó adatlemezeket csatlakoztathat a virtuális gép. Szükség esetén meg is stripe-kapacitás és a kötet teljesítménye növelése érdekében a lemezek között. (Megtudhatja, mit tartogat a lemezt csíkozást [Itt](../../virtual-machines/windows/premium-storage-performance.md#disk-striping).) Ha a stripe-e a Premium Storage adatlemezek használata [tárolóhelyek][4], minden egyes használt lemezek egy oszlopot kell konfigurálnia. Ellenkező esetben a csíkozott kötet általános teljesítménye lehet alacsonyabb, mint a várt forgalom eloszlása egyenletlen miatt a lemezeket. Linux rendszerű virtuális gépekhez is használhatja a *mdadm* ugyanennek segédprogramot. A cikkben [szoftver RAID konfigurálása linuxon](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) részleteiről.
@@ -94,14 +94,14 @@ A következő szakaszban talál útmutatást előkészítése virtuális merevle
 
 * Azure-előfizetéssel, egy tárfiókot és egy tárolót a storage-fiókot, amelyhez a VHD-t is másolhatja az. Vegye figyelembe, hogy a cél tárfiók is igényektől függően Standard vagy prémium szintű Storage-fiókot.
 * A virtuális merevlemez általánosítani, ha azt tervezi, hogy hozzon létre több Virtuálisgép-példányok, az eszköz. Például a Windows-vagy ubuntu rendszerre készült virt-sysprep sysprep.
-* Egy eszköz a VHD-fájl feltöltése a Storage-fiókba. Lásd: [adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md) vagy használjon egy [az Azure storage explorer](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx). Ez az útmutató ismerteti, másolja a VHD-t az AzCopy eszközzel.
+* Egy eszköz a VHD-fájl feltöltése a Storage-fiókba. Lásd: [adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md) vagy használjon egy [az Azure storage explorer](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx). Ez az útmutató ismerteti, másolja a VHD-t az AzCopy eszközzel.
 
 > [!NOTE]
 > Ha úgy dönt, hogy szinkron másolatot beállítást az AzCopy, az optimális teljesítmény érdekében másolja a VHD-t az eszközöket és a cél tárfiók ugyanabban a régióban lévő Azure virtuális Gépeken való futtatásával. Virtuális merevlemez másolása egy másik régióban lévő Azure virtuális gépből, akkor a teljesítmény lassabb lehet.
 >
 > A sávszélesség korlátozott keresztül másolja a nagy mennyiségű adatot, érdemes lehet [az Azure Import/Export szolgáltatás használata az adatok átviteléhez a Blob Storage](../storage-import-export-service.md); Ez lehetővé teszi, hogy az adatátvitel merevlemezes meghajtók egy Azure-adatközpontban való szállításával. Az Azure Import/Export szolgáltatás használatával másolja az adatokat a csak a standard szintű tárfiókot. Amint az adatok a standard szintű tárfiókja, használhatja a [másolás Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx) vagy az adatok átvitelét a prémium szintű storage-fiókba az AzCopy.
 >
-> Vegye figyelembe, hogy csak a Microsoft Azure támogatja a rögzített méretű VHD-fájlokat. A VHDX-fájlok vagy a dinamikus VHD-k nem támogatottak. Ha egy dinamikus VHD-t, akkor átalakíthatja a rögzített méretű használatával a [Convert-VHD](http://technet.microsoft.com/library/hh848454.aspx) parancsmagot.
+> Vegye figyelembe, hogy csak a Microsoft Azure támogatja a rögzített méretű VHD-fájlokat. A VHDX-fájlok vagy a dinamikus VHD-k nem támogatottak. Ha egy dinamikus VHD-t, akkor átalakíthatja a rögzített méretű használatával a [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) parancsmagot.
 >
 >
 
@@ -123,7 +123,7 @@ Az alábbiakban azt végig a virtuális merevlemez előkészítésére vonatkoz�
 Több általános Azure-beli Virtuálisgép-példányok létrehozásához használt virtuális Merevlemezt tölt fel, ha először meg kell generalize virtuális Merevlemezt a sysprep segédprogrammal. Ez vonatkozik a virtuális merevlemez, amely a helyszínen vagy a felhőben. A Sysprep minden olyan információk távolít el a VHD-t.
 
 > [!IMPORTANT]
-> Pillanatkép készítése vagy biztonsági másolatot készíteni a virtuális gép általánosítása azt megelőzően. A sysprep futtatása leáll, és a Virtuálisgép-példány felszabadítása. Kövesse az alábbi lépéseket a sysprep a Windows rendszert tartalmazó virtuális Merevlemezt. Vegye figyelembe, hogy a Sysprep parancs futtatása van szükség, hogy állítsa le a virtuális gépet. A Sysprep kapcsolatos további információkért lásd: [Sysprep áttekintése](http://technet.microsoft.com/library/hh825209.aspx) vagy [technikai útmutató a Sysprep](http://technet.microsoft.com/library/cc766049.aspx).
+> Pillanatkép készítése vagy biztonsági másolatot készíteni a virtuális gép általánosítása azt megelőzően. A sysprep futtatása leáll, és a Virtuálisgép-példány felszabadítása. Kövesse az alábbi lépéseket a sysprep a Windows rendszert tartalmazó virtuális Merevlemezt. Vegye figyelembe, hogy a Sysprep parancs futtatása van szükség, hogy állítsa le a virtuális gépet. A Sysprep kapcsolatos további információkért lásd: [Sysprep áttekintése](https://technet.microsoft.com/library/hh825209.aspx) vagy [technikai útmutató a Sysprep](https://technet.microsoft.com/library/cc766049.aspx).
 >
 >
 
@@ -163,7 +163,7 @@ Meg kell keresnie feldolgozni a két lehetőség közül választhat a tároló 
 ##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>1. lehetőség: Az Azcopyval (aszinkron példány) virtuális merevlemez másolása
 AzCopy használatával könnyedén tölthet fel a VHD-t az interneten keresztül. A VHD méretétől függően ez időt vehet igénybe. Fontos, hogy ellenőrizze a tárfiókok bejövő/kimenő forgalom korlátai, ez a beállítás használatakor. Lásd: [Azure Storage méretezhetőségi és Teljesítménycéljai](storage-scalability-targets.md) részleteiről.
 
-1. Töltse le és telepítse az AzCopy innen: [az AzCopy legújabb verzióját](http://aka.ms/downloadazcopy)
+1. Töltse le és telepítse az AzCopy innen: [az AzCopy legújabb verzióját](https://aka.ms/downloadazcopy)
 2. Nyissa meg az Azure PowerShell-lel, és nyissa meg a mappát, ahol telepítve van-e az AzCopy.
 3. A következő parancs használatával másolja a VHD-fájlt a "Forrás", "Cél".
 
@@ -257,7 +257,7 @@ Példa <Uri> lehet ***"https://storagesample.blob.core.windows.net/mycontainer/b
 ##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>2. lehetőség: A .vhd-fájl feltöltése AzCopy használatával
 AzCopy használatával könnyedén tölthet fel a VHD-t az interneten keresztül. A VHD méretétől függően ez időt vehet igénybe. Fontos, hogy ellenőrizze a tárfiókok bejövő/kimenő forgalom korlátai, ez a beállítás használatakor. Lásd: [Azure Storage méretezhetőségi és Teljesítménycéljai](storage-scalability-targets.md) részleteiről.
 
-1. Töltse le és telepítse az AzCopy innen: [az AzCopy legújabb verzióját](http://aka.ms/downloadazcopy)
+1. Töltse le és telepítse az AzCopy innen: [az AzCopy legújabb verzióját](https://aka.ms/downloadazcopy)
 2. Nyissa meg az Azure PowerShell-lel, és nyissa meg a mappát, ahol telepítve van-e az AzCopy.
 3. A következő parancs használatával másolja a VHD-fájlt a "Forrás", "Cél".
 

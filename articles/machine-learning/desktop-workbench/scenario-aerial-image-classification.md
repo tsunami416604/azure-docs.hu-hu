@@ -12,12 +12,12 @@ services: machine-learning
 ms.workload: data-services
 ms.date: 12/13/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5ca47c8234239b56a2d829903828dda8220d53cb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e71de2d543c8f29b7195e74d574855bcbe739162
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967608"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260550"
 ---
 # <a name="aerial-image-classification"></a>Légifelvételek besorolása
 
@@ -154,7 +154,7 @@ Most létrehozunk, hogy a gazdagépek projekt, amely szerint a HDInsight Spark �
     az storage share create --account-name %STORAGE_ACCOUNT_NAME% --account-key %STORAGE_ACCOUNT_KEY% --name baitshare
     ```
 1. A kedvenc szövegszerkesztőjével, betöltése a `settings.cfg` fájlt a "Code" alkönyvtárat az Azure Machine Learning Workbench-projektet, és helyezze be a tárfiók nevét és a kulcs jelöli. Mentse és zárja be a `settings.cfg` fájlt.
-1. Ha még nem tette, töltse le és telepítse a [AzCopy](http://aka.ms/downloadazcopy) segédprogramot. Győződjön meg arról, hogy az AzCopy végrehajtható fájl elérési úton van a rendszer beírja a "AzCopy", és lenyomja az Enter billentyűt a hozzá tartozó dokumentáció megjelenítése.
+1. Ha még nem tette, töltse le és telepítse a [AzCopy](https://aka.ms/downloadazcopy) segédprogramot. Győződjön meg arról, hogy az AzCopy végrehajtható fájl elérési úton van a rendszer beírja a "AzCopy", és lenyomja az Enter billentyűt a hozzá tartozó dokumentáció megjelenítése.
 1. Adja ki a megfelelő helyekre a tárfiókban lévő összes a mintaadatokat, imagenet modelleket és modell betanítási szkriptekhez átmásolása a következő parancsokat:
 
     ```
@@ -255,7 +255,7 @@ A Batch AI-fürtöt a betanítási adatok, egy hálózati fájlkiszolgálón fé
 
 Igény szerint, hogy az adatátvitel járt-e a fájlkiszolgáló a kedvenc SSH-eszközzel bejelentkezni, és ellenőrzi a tervek szerint ellenőrizheti a `/mnt/data` könyvtár tartalmát. Két mappa training_images és validation_images keresse meg, akkor minden egyes tartalmazó föld alapján elnevezett almappákban a kategóriák használja.  A képzés és érvényesítési csoportok tartalmaznia kell a ~ 44 k és a ~ 11-k lemezképek jelölik.
 
-#### <a name="create-a-batch-ai-cluster"></a>Hozzon létre egy Batch AI-fürtön
+#### <a name="create-a-batch-ai-cluster"></a>Batch AI-fürt létrehozása
 
 1. A fürt létrehozása a következő parancsot:
 

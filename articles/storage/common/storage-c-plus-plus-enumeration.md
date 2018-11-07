@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dineshm
 ms.component: common
-ms.openlocfilehash: 0a105122eccdfa671c806389908762941f23200c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 6384af5368fe722d6c9307d56d8a071ebcd17bf0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525307"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226974"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>A C++ Azure Storage-erőforrások listázása
 Listaelem műveletekre az Azure Storage számos fejlesztési forgatókönyvek kulcs. Ez a cikk ismerteti a leghatékonyabban számbavétele az objektumok az Azure Storage-ban a listaelem API-k a Microsoft Azure Storage ügyféloldali kódtára a c++ programnyelvhez.
@@ -195,6 +195,6 @@ További információ Azure Storage- és ügyféloldali kódtára a C++ a követ
 * [Hogyan használható a Table Storage, a c++ segítségével](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [A c++ segítségével a Queue Storage használata](../storage-c-plus-plus-how-to-use-queues.md)
 * [Az Azure Storage ügyféloldali kódtára a C++ API-dokumentáció esetén.](http://azure.github.io/azure-storage-cpp/)
-* [Az Azure Storage csapat blogja](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Az Azure Storage csapat blogja](https://blogs.msdn.com/b/windowsazurestorage/)
 * [Az Azure Storage dokumentációja](https://azure.microsoft.com/documentation/services/storage/)
 

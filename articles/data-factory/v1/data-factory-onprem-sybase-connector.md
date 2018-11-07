@@ -1,5 +1,5 @@
 ---
-title: Adatok áthelyezése az Azure Data Factory használatával Sybase |} Microsoft Docs
+title: Adatok áthelyezése az Azure Data Factory használatával Sybase |} A Microsoft Docs
 description: Tudnivalók az adatok áthelyezése az Azure Data Factory használatával Sybase-adatbázisból.
 services: data-factory
 documentationcenter: ''
@@ -14,105 +14,105 @@ ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 75fbfe1e682f0022385bb5c406d772bb217180fd
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 0832d5a3f5b529a815046bb6f12755ad733ff03c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045269"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260567"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával Sybase
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1-es verziójával](data-factory-onprem-sybase-connector.md)
-> * [(Az aktuális verzió) 2-es verzió](../connector-sybase.md)
+> * [1-es verzió](data-factory-onprem-sybase-connector.md)
+> * [2-es verzió (aktuális verzió)](../connector-sybase.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [Sybase-összekötőt, a V2](../connector-sybase.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [Sybase-összekötő a v2-ben](../connector-sybase.md).
 
-Ez a cikk ismerteti, hogyan a másolási tevékenység során az Azure Data Factoryben az adatok mozgatása egy helyszíni Sybase-adatbázishoz. Buildekről nyújtanak a [adatok mozgása tevékenységek](data-factory-data-movement-activities.md) cikk, amelynek során adatátvitel a másolási tevékenység az általános áttekintést.
+Ez a cikk bemutatja, hogyan használható a másolási tevékenység az Azure Data Factoryban adatok áthelyezése egy helyszíni Sybase-adatbázisból. Épül a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikket, amely megadja az adatok áthelyezését a másolási tevékenységgel rendelkező általános áttekintése.
 
-Egy helyszíni Sybase adattároló adatok bármely támogatott fogadó adattárolóhoz másolhatja. A másolási tevékenység által támogatott mosdók adattárolókhoz listájáért lásd: a [adattárolókhoz támogatott](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tábla. Adat-előállító jelenleg mozgási adatok kizárólag egy Sybase adattárból egyéb adattárakhoz, de nem az egyéb adattárakhoz adatok áthelyezése a Sybase-tárolóban. 
+A helyszíni Sybase adattárolókból adatokat másolhatja bármely támogatott fogadó adattárba. A másolási tevékenység által fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tábla. A Data factory jelenleg csak helyez át adatokat egy Sybase-adattár pedig más adattárakban, de más adattárakból származó adatok áthelyezése a Sybase adattár esetében nem támogatja. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Data Factory szolgáltatásnak a helyszíni Sybase adatforrások az adatkezelési átjáró használatával történő csatlakozást támogatja. Lásd: [adatokat a helyszíni helyek és a felhő közötti áthelyezése](data-factory-move-data-between-onprem-and-cloud.md) cikkben tájékozódhat az adatkezelési átjáró és az átjáró beállításával kapcsolatos részletes útmutatás.
+A Data Factory szolgáltatás támogatja a csatlakozást egy helyszíni Sybase-forrásra az adatkezelési átjáró segítségével. Lásd: [adatok áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) cikk további információt talál az adatkezelési átjáró-lépésenként az átjáró beállítása.
 
-Átjáróra szükség, akkor is, ha a Sybase-adatbázishoz egy Azure IaaS virtuális gép található. Telepítheti az átjáró adattárként ugyanazon infrastruktúra-szolgáltatási virtuális gép vagy egy másik virtuális gép mindaddig, amíg az átjáró képes kapcsolódni az adatbázishoz.
+Átjáróra szükség, akkor is, ha a Sybase-adatbázishoz az Azure IaaS virtuális gép üzemel. Telepítheti az átjáró adattárként azonos IaaS virtuális Gépen vagy egy másik virtuális gép mindaddig, amíg az átjáró képes kapcsolódni az adatbázishoz.
 
 > [!NOTE]
-> Lásd: [átjáró elhárítása](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) kapcsolati/átjáró hibaelhárítási tippek a kapcsolódó problémákat.
+> Lásd: [gateway hibáinak elhárítása](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) kapcsolódási/átjáró hibaelhárítási tippek a kapcsolatos problémákat.
 
 ## <a name="supported-versions-and-installation"></a>Támogatott verziók és telepítés
-Az adatkezelési átjáró a Sybase-adatbázishoz való kapcsolódáshoz, telepítenie kell a [Sybase iAnywhere.Data.SQLAnywhere adatszolgáltatója](http://go.microsoft.com/fwlink/?linkid=324846) 16 vagy a fenti az adatkezelési átjáró ugyanazon a rendszeren. 
+Az adatkezelési átjárót a Sybase-adatbázishoz csatlakozni, telepítenie kell a [data provider Pro Sybase iAnywhere.Data.SQLAnywhere](https://go.microsoft.com/fwlink/?linkid=324846) 16 vagy újabb az adatkezelési átjárót ugyanazon a rendszeren. 
 
-SAP Sybase SQL tetszőleges helyre (ASA) verzió 16, és a fent támogatja; IQ és ASE nem támogatottak.
+Sybase SQL bárhol (ASA) verzió 16 SAP és a fenti támogatott; Sweetiq és az ASE nem támogatottak.
 
 ## <a name="getting-started"></a>Első lépések
-A másolási tevékenység, mely az adatok egy helyszíni Cassandra adattároló különböző eszközök/API-k használatával létrehozhat egy folyamatot. 
+Egy folyamatot egy másolási tevékenységgel az adatok áthelyezéséhez a helyszíni Cassandra adattárolókból más eszközök/API-k használatával is létrehozhat. 
 
-- Hozzon létre egy folyamatot a legegyszerűbb módja használatára a **másolása varázsló**. Lásd: [oktatóanyag: hozzon létre egy folyamatot, másolása varázslóval](data-factory-copy-data-wizard-tutorial.md) létrehozásával egy folyamatot, az adatok másolása varázsló segítségével gyorsan útmutatást. 
-- Az alábbi eszközöket használhatja a folyamatokat létrehozni: **Azure-portálon**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-sablon** , **.NET API**, és **REST API-t**. Lásd: [másolási tevékenység oktatóanyag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját. 
+- A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: folyamat létrehozása a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával. 
+- -Folyamatok létrehozására is használhatja az alábbi eszközöket: **az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon** , **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
 
-Akár az eszközök vagy API-k, hajtsa végre a következő lépésekkel hozza létre egy folyamatot, amely mozgatja az adatokat a forrás-tárolóban a fogadó tárolóban:
+Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
 
-1. Hozzon létre **összekapcsolt szolgáltatások** bemeneti és kimeneti adatok csatolásához tárolja a a data factory.
-2. Hozzon létre **adatkészletek** a másolási művelet bemeneti és kimeneti adatok. 
-3. Hozzon létre egy **csővezeték** , amely fogad egy bemeneti adatkészlet és egy kimeneti adatkészletet másolási tevékenységgel. 
+1. Hozzon létre **társított szolgáltatásokat** mutató hivatkozást a bemeneti és kimeneti adatokat tárolja a data factoryjához.
+2. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli. 
+3. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként. 
 
-A varázsló használatakor a Data Factory entitások (összekapcsolt szolgáltatások adatkészletek és a feldolgozási sor) JSON-definíciók automatikusan létrejönnek. Eszközök/API-k (kivéve a .NET API-t) használata esetén adja meg a Data Factory entitások a JSON formátum használatával.  Adatok másolása egy helyszíni Sybase adattároló használt adat-előállító entitások JSON-definíciók minta, lásd: [JSON-példa: adatok másolása az Sybase az Azure Blob](#json-example-copy-data-from-sybase-to-azure-blob) című szakaszát. 
+A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  A Data Factory-entitások, amely adatokat másol egy helyszíni Sybase-adattár használt JSON-definíciói egy minta: [példa JSON: adatok másolása az Sybase az Azure Blob](#json-example-copy-data-from-sybase-to-azure-blob) című szakaszát. 
 
-A következő szakaszok részletesen bemutatják a Sybase-tárolóban való adat-előállító tartozó entitások meghatározásához használt JSON tulajdonságokat:
+Az alábbi szakaszok nyújtanak egy Sybase-adattárba adott Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért:
 
-## <a name="linked-service-properties"></a>A kapcsolódószolgáltatás-tulajdonságok
-A következő táblázat a JSON-elemek szerepelnek Sybase kapcsolódó szolgáltatásra vonatkozó leírást.
+## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
+A következő táblázat jellemző a Sybase-beli társított szolgáltatás JSON-elemek leírását.
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| type |A type tulajdonságot kell beállítani: **OnPremisesSybase** |Igen |
+| type |A type tulajdonság értékre kell állítani: **OnPremisesSybase** |Igen |
 | kiszolgáló |A Sybase-kiszolgáló neve. |Igen |
-| adatbázis |Neve a Sybase-adatbázishoz. |Igen |
-| Séma |Az adatbázisban séma neve. |Nem |
+| adatbázis |A Sybase-adatbázis neve. |Igen |
+| séma |A séma az adatbázis neve. |Nem |
 | authenticationType |A Sybase-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. Lehetséges értékek a következők: névtelen, alapszintű és a Windows. |Igen |
-| felhasználónév |Adja meg a felhasználónevet Basic vagy Windows-hitelesítés használata. |Nem |
+| felhasználónév |Ha alapszintű vagy Windows-hitelesítést használ, adja meg a felhasználónevet. |Nem |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
-| gatewayName |Az átjáró, amely használatával a Data Factory szolgáltatásnak csatlakoznia a helyszíni Sybase-adatbázishoz való kapcsolódáshoz neve. |Igen |
+| átjáró neve |Az átjáró által a Data Factory szolgáltatás a helyszíni Sybase-adatbázishoz való kapcsolódáshoz használandó neve. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
-Szakaszok & meghatározása adatkészletek esetében elérhető tulajdonságok teljes listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Például struktúra, a rendelkezésre állás és a házirend a DataSet adatkészlet JSON hasonlítanak minden adatkészlet esetében (Azure SQL, az Azure blob, Azure-tábla, stb.).
+Szakaszok & adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Például a szerkezetet, rendelkezésre állást és szabályzatát adatkészlet JSON szakaszok hasonlóak az összes adatkészlet esetében (az Azure SQL, az Azure blob-, az Azure table-, stb.).
 
-A typeProperties szakasz más adatkészlet egyes típusai és információkat nyújt azokról az adattárban adatok helyét. A **typeProperties** típusú adatkészlet szakasz **RelationalTable** (amely tartalmazza a Sybase dataset) tulajdonságai a következők:
+A typeProperties szakasz eltérő az egyes adatkészlet, és az adattárban lévő adatok helyére vonatkozó információkat. A **typeProperties** típusú adatkészlet szakasz **RelationalTable** (amely tartalmazza a Sybase-adatkészlet) a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| tableName |A tábla a Sybase-adatbázishoz példány, amelyre a társított szolgáltatás neve hivatkozik. |Nem (Ha **lekérdezés** a **RelationalSource** van megadva) |
+| tableName |A tábla a Sybase-adatbázis példányában, amelyre a társított szolgáltatás neve hivatkozik. |Nem (Ha **lekérdezés** , **RelationalSource** van megadva) |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
-Szakaszok & rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: [létrehozása folyamatok](data-factory-create-pipelines.md) cikk. Például a nevét, leírását, valamint bemeneti és kimeneti táblák és házirend tulajdonságai minden típusú tevékenységek érhetők el.
+Szakaszok & definiálását tevékenységek tulajdonságainak teljes listáját lásd: [folyamatok létrehozása](data-factory-create-pipelines.md) cikk. Tulajdonságok, mint például a nevét, leírását, bemeneti és kimeneti táblák és a házirend az összes típusú tevékenységek érhetők el.
 
-Mivel a tevékenység typeProperties szakaszában elérhető tulajdonságok tevékenységek minden típusának függenek. A másolási tevékenység során két érték források és mosdók típusától függően.
+Mivel a tevékenység a typeProperties szakasz tulajdonságai tevékenységek minden típusának számától függ. A másolási tevékenységhez azok változhat a forrásként és fogadóként típusú is.
 
-Ha a forrás típusa nem **RelationalSource** (amely tartalmazza a Sybase), a következő tulajdonságok érhetők el **typeProperties** szakasz:
+Ha a forrása típusa **RelationalSource** (amely tartalmazza a Sybase), a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés segítségével adatokat olvasni. |SQL-lekérdezési karakterlánc. Például: Válasszon * from tábla. |Nem (Ha **tableName** a **dataset** van megadva) |
+| lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-lekérdezési karakterláncot. Például: válassza ki * from tábla. |Nem (Ha **tableName** , **adatkészlet** van megadva) |
 
 
-## <a name="json-example-copy-data-from-sybase-to-azure-blob"></a>JSON-példa: adatok másolása az Sybase az Azure-Blobba
-Az alábbi példa minta JSON-definíciókat tartalmazzon, segítségével hozzon létre egy folyamatot biztosít [Azure-portálon](data-factory-copy-activity-tutorial-using-azure-portal.md) vagy [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Adatok másolása Sybase-adatbázisból az Azure Blob Storage mutatnak. Azonban adatok átmásolhatók a megadott mosdók bármelyikét [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenység során az Azure Data Factory használatával.   
+## <a name="json-example-copy-data-from-sybase-to-azure-blob"></a>JSON-példa: adatok másolása az Sybase az Azure Blob
+Az alábbi példa mintául szolgáló JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával tartalmaz [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) vagy [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Adatok másolása a Sybase-adatbázisból az Azure Blob Storage mutatnak. Azonban adatok átmásolhatók a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.   
 
-A minta a következő data factory entitások rendelkezik:
+A minta az alábbi data factory-entitások rendelkezik:
 
 1. A társított szolgáltatás típusa [OnPremisesSybase](data-factory-onprem-sybase-connector.md#linked-service-properties).
-2. A következő típusú liked szolgáltatást [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Bemeneti [dataset](data-factory-create-datasets.md) típusú [RelationalTable](data-factory-onprem-sybase-connector.md#dataset-properties).
-4. Egy kimeneti [dataset](data-factory-create-datasets.md) típusú [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-5. A [csővezeték](data-factory-create-pipelines.md) a másolási tevékenység által használt [RelationalSource](data-factory-onprem-sybase-connector.md#copy-activity-properties) és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+2. Típusú liked szolgáltatást [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
+3. Egy bemeneti [adatkészlet](data-factory-create-datasets.md) típusú [RelationalTable](data-factory-onprem-sybase-connector.md#dataset-properties).
+4. Kimenet [adatkészlet](data-factory-create-datasets.md) típusú [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+5. A [folyamat](data-factory-create-pipelines.md) másolási tevékenységgel, amely használja [RelationalSource](data-factory-onprem-sybase-connector.md#copy-activity-properties) és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-A minta másol adatokat egy lekérdezés eredményét a Sybase-adatbázishoz egy blob minden órában. A mintákat a következő szakaszok ismertetik ezeket a mintákat használt JSON-tulajdonságok.
+A minta adatokat másol egy Sybase-adatbázishoz a lekérdezés eredménye egy blobba óránként. Ezek a minták a használt JSON-tulajdonságokat a minták a következő szakaszok ismertetik.
 
-Első lépésként a telepítő az adatkezelési átjáró. Az utasítások szerepelnek a [adatokat a helyszíni helyek és a felhő közötti áthelyezése](data-factory-move-data-between-onprem-and-cloud.md) cikk.
+Első lépésként a telepítő az adatkezelési átjárót. A rendszer az utasításokat a [adatok áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) cikk.
 
-**Sybase társított szolgáltatáshoz:**
+**Sybase-beli társított szolgáltatást:**
 
 ```JSON
 {
@@ -132,7 +132,7 @@ Első lépésként a telepítő az adatkezelési átjáró. Az utasítások szer
 }
 ```
 
-**Az Azure Blob storage társított szolgáltatásnak:**
+**Az Azure Blob storage-beli társított szolgáltatást:**
 
 ```JSON
 {
@@ -148,9 +148,9 @@ Első lépésként a telepítő az adatkezelési átjáró. Az utasítások szer
 
 **Sybase bemeneti adatkészlet:**
 
-A példa azt feltételezi, hogy létrehozott egy tábla "MyTable" Sybase és egy "időbélyeg" nevű adatsorozat időadatok oszlopot tartalmaz.
+A minta azt feltételezi, létrehozott egy táblát "MyTable" Sybase, és a egy idősorozat-adatok a "timestamp" nevű oszlopot tartalmaz.
 
-"External" beállítása: igaz, hogy ehhez az adatkészlethez az adat-előállítóban külső, és egy tevékenység adat-előállító nem hozzák arról tájékoztatja a Data Factory szolgáltatásnak. Figyelje meg, hogy a **típus** társított szolgáltatás beállítása: **RelationalTable**.
+"External" beállítása: igaz, hogy ez az adatkészlet a data factory a külső, és nem egy adat-előállító tevékenység által előállított arról tájékoztatja a Data Factory szolgáltatásban. Figyelje meg, hogy a **típus** társított szolgáltatás értékre van állítva: **RelationalTable**.
 
 ```JSON
 {
@@ -175,9 +175,9 @@ A példa azt feltételezi, hogy létrehozott egy tábla "MyTable" Sybase és egy
 }
 ```
 
-**Az Azure Blob kimeneti adatkészlet:**
+**Azure blobkimeneti adatkészlet:**
 
-Adatot ír egy új blob minden órában (gyakoriság: óra, időköz: 1). A mappa elérési útját a BLOB a szelet által feldolgozott kezdési ideje alapján dinamikusan történik. A mappa elérési útját használja, év, hónap, nap és a kezdési idő órában részeit.
+Adatok írása egy új blob minden órában (frequency: óra, az interval: 1). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
 
 ```JSON
 {
@@ -235,9 +235,9 @@ Adatot ír egy új blob minden órában (gyakoriság: óra, időköz: 1). A mapp
 }
 ```
 
-**A másolási tevékenység során a következő feldolgozási sorban:**
+**Másolási tevékenységgel rendelkező folyamat:**
 
-A feldolgozási sor tartalmazza a másolási tevékenység, amely a bemeneti és kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. Az adatcsatorna JSON-definícióból a **forrás** típusúra **RelationalSource** és **fogadó** típusúra **BlobSink**. A megadott SQL-lekérdezést a **lekérdezés** tulajdonság a DBA kiválasztja azokat az adatokat. Rendelések tábla az adatbázisban.
+A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkészleteket használatára van konfigurálva, és a tervek szerint óránkénti tartalmazza. A folyamat JSON-definíciót a **forrás** típusa **RelationalSource** és **fogadó** típusa **BlobSink**. A megadott SQL-lekérdezést a **lekérdezés** tulajdonság a DBA kiválasztja az adatokat. Rendelési táblát az adatbázisban.
 
 ```JSON
 {
@@ -283,19 +283,19 @@ A feldolgozási sor tartalmazza a másolási tevékenység, amely a bemeneti és
 }
 ```
 
-## <a name="type-mapping-for-sybase"></a>Típusleképezés a Sybase rendszerhez
-Ahogyan az a [adatok mozgása tevékenységek](data-factory-data-movement-activities.md) cikk, a másolási tevékenység során hajtja végre a módszert használja a következő 2. lépés típusok gyűjtése eseményforrás-típusnak automatikus típuskonverziók:
+## <a name="type-mapping-for-sybase"></a>Sybase-leképezés típusa
+Említetteknek megfelelően az [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) a cikkben a másolási tevékenység végzi az automatikus típuskonverziók a fogadó-típusokat az alábbi 2. lépés – a módszert használja a forrás típusa:
 
-1. A natív eseményforrás-típusnak átalakítása .NET-típusa
-2. .NET-típus konvertálása natív a fogadó típusa
+1. A natív forrástípusok átalakítása typ .NET
+2. A .NET-típusból átalakítása natív fogadó típusa
 
-Sybase T-SQL és a T-SQL-típusokat támogatja. Leképezési tábla sql-típus a .NET-típusa, lásd: [Azure SQL-összekötő](data-factory-azure-sql-connector.md) cikk.
+Sybase T-SQL és a T-SQL-típusokat támogatja. Egy leképezési tábla az sql-típusok közül .NET típusra, lásd: [Azure SQL-összekötő](data-factory-azure-sql-connector.md) cikk.
 
-## <a name="map-source-to-sink-columns"></a>Térkép forrás oszlopok gyűjtése
-A forrás oszlop szerepel a fogadó dataset adatkészlet leképezési oszlopok, lásd: [Azure Data Factory dataset oszlopai leképezési](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>A fogadó-oszlopok térkép forrása
+Fogadó-adatkészlet oszlopaihoz forrásadatkészlet leképezés oszlopai kapcsolatos további információkért lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).
 
-## <a name="repeatable-read-from-relational-sources"></a>A relációs források ismételhető Olvasás
-Ha az adatok másolását a relációs adatokat tárol, ismételhetőség tartsa szem előtt, nem kívánt eredmények elkerülése érdekében. Az Azure Data Factoryben futtathatja a szelet manuálisan. Beállíthatja úgy is egy adatkészlet újrapróbálkozási házirendje, hogy a szelet akkor fut újra, ha hiba történik. A szelet akkor fut újra, vagy módon, ha győződjön meg arról, hogy ugyanazokat az adatokat olvasható függetlenül attól, hogy a szelet futtatása hány alkalommal kell. Lásd: [relációs források olvasni Repeatable](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-read-from-relational-sources"></a>A relációs források megismételhető olvasása
+Amikor adatmásolásra, relációs adatokat tárol, ismételhetőség tartsa szem előtt, nem kívánt eredmények elkerülése érdekében. Az Azure Data Factoryben futtathatja a szelet manuálisan. Beállíthatja az újrapróbálkozási szabályzat egy adatkészlethez, úgy, hogy a szelet akkor fut újra, ha hiba történik. Ha a szelet akkor fut újra, vagy módon, győződjön meg arról, hogy ugyanazokat az adatokat olvasható függetlenül attól, hogy hány alkalommal fut egy szeletet, kell. Lásd: [olvasni a relációs források Repeatable](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
-## <a name="performance-and-tuning"></a>Teljesítmény- és hangolása
-Lásd: [másolási tevékenység teljesítmény- és hangolása útmutató](data-factory-copy-activity-performance.md) tájékozódhat az kulcsfontosságú szerepet játszik adatátvitelt jelölik a (másolási tevékenység során) az Azure Data Factory és különböző módokon optimalizálhatja azt, hogy hatás teljesítményét.
+## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
+Lásd: [másolási tevékenységek teljesítményéhez és teljesítményhangolási útmutatóból](data-factory-copy-activity-performance.md) megismerheti a kulcsfontosságú szerepet játszik az adatáthelyezés (másolási tevékenység) az Azure Data Factory és a különféle módokon optimalizálhatja azt, hogy hatással lehet a teljesítményre.

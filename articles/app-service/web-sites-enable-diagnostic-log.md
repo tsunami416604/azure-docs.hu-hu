@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 5cd56abd02c55dbf72c92ed070f9988fae2b6762
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 7ab12c86e01a34e4ba2a9673364c0e1104f6cdba
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365254"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231623"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Az Azure App Service web Apps-alkalmazások diagnosztikai célú naplózásának engedélyezése
 ## <a name="overview"></a>Áttekintés
-Az Azure biztosít beépített diagnosztikai funkciókkal, amelyek segítik a hibakeresést egy [App Service-webalkalmazás](http://go.microsoft.com/fwlink/?LinkId=529714). Ebből a cikkből megtudhatja, hogyan diagnosztikai naplózás engedélyezése és az üzemállapot-alkalmazását, valamint hogyan lehet hozzáférni azokhoz az információkhoz, amelyeket az Azure naplóz.
+Az Azure biztosít beépített diagnosztikai funkciókkal, amelyek segítik a hibakeresést egy [App Service-webalkalmazás](https://go.microsoft.com/fwlink/?LinkId=529714). Ebből a cikkből megtudhatja, hogyan diagnosztikai naplózás engedélyezése és az üzemállapot-alkalmazását, valamint hogyan lehet hozzáférni azokhoz az információkhoz, amelyeket az Azure naplóz.
 
 Ez a cikk a [az Azure portal](https://portal.azure.com), Azure PowerShell-lel, és az Azure parancssori felület (Azure CLI) használata a diagnosztikai naplók. Diagnosztikai naplók a Visual Studio használatával való munka információkért lásd: [Azure hibaelhárítása a Visual Studióban](web-sites-dotnet-troubleshoot-visual-studio.md).
 
@@ -37,10 +37,10 @@ Engedélyezheti vagy letilthatja a naplók a következő típusú:
 
 * **Részletes hibanaplózás** – részletes (állapotkód: 400 vagy nagyobb) hibát jelző HTTP-állapotkódok hiba adatait. Tartalmazhat, amelyek segíthetnek meghatározni, miért érdemes a kiszolgáló a következő hibakódot adta vissza információt.
 * **Sikertelen kérelmek nyomkövetésére vonatkozó** – részletes információk a sikertelen kérelmek, beleértve a nyomkövetés feldolgozni a kérelmet, és az egyes összetevőkben ideje használja az IIS-összetevőt. Ez akkor hasznos, ha próbált webhely teljesítményének növelése vagy elkülönítése, mi kell visszaadni egy adott HTTP hiba okozza.
-* **Webalkalmazás-kiszolgáló naplózási** – HTTP-tranzakciót használatával kapcsolatos információkat a [W3C bővített naplófájlformátum](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Ez hasznos, teljes webhelymetrikák például kezelt kérések, vagy hogy hány kérésnek egy adott IP-címről számának meghatározásakor.
+* **Webalkalmazás-kiszolgáló naplózási** – HTTP-tranzakciót használatával kapcsolatos információkat a [W3C bővített naplófájlformátum](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Ez hasznos, teljes webhelymetrikák például kezelt kérések, vagy hogy hány kérésnek egy adott IP-címről számának meghatározásakor.
 
 ### <a name="application-diagnostics"></a>Alkalmazásdiagnosztika
-Az Application diagnostics lehetővé teszi egy webalkalmazás által létrehozott adatok rögzítését. ASP.NET-alkalmazások használhatják a [System.Diagnostics.Trace](http://msdn.microsoft.com/library/36hhw2t6.aspx) osztályt az alkalmazásnaplóba diagnosztikai információk naplózása. Példa:
+Az Application diagnostics lehetővé teszi egy webalkalmazás által létrehozott adatok rögzítését. ASP.NET-alkalmazások használhatják a [System.Diagnostics.Trace](https://msdn.microsoft.com/library/36hhw2t6.aspx) osztályt az alkalmazásnaplóba diagnosztikai információk naplózása. Példa:
 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
@@ -97,7 +97,7 @@ A könyvtárstruktúra, a naplók vannak tárolva a következőképpen történi
 * **Protokoly aplikací** -/LogFiles/alkalmazás /. Ez a mappa tartalmaz egy vagy több, az alkalmazásadatok naplózása által előállított adatokat tartalmazó szöveges fájlok.
 * **Sikertelen kérelmek nyomkövetési** -/ LogFiles/W3SVC ### /. Ez a mappa tartalmaz egy XSL-fájl és a egy vagy több XML-fájlt. Győződjön meg arról, le kell tölteni a XSL-fájl ugyanabban a könyvtárban való, az XML-fájl fájl, mert a XSL-fájl formázására és az Internet Explorer megtekintve XML fájl(ok) tartalmát szűrés funkciót biztosít.
 * **Részletes hibanaplókat** -/LogFiles/DetailedErrors /. Ez a mappa tartalmaz egy vagy több HTTP-hibaüzeneteket előfordult széleskörű információkat biztosító .htm fájlt.
-* **Webalkalmazás-naplók** -/LogFiles/http/RawLogs. Ez a mappa tartalmaz egy vagy több szöveges fájlok formázva a [W3C bővített naplófájlformátum](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx).
+* **Webalkalmazás-naplók** -/LogFiles/http/RawLogs. Ez a mappa tartalmaz egy vagy több szöveges fájlok formázva a [W3C bővített naplófájlformátum](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx).
 * **Telepítési naplók** -/ LogFiles/Git. Ez a mappa tartalmazza az Azure web Apps alkalmazások által használt belső üzembe helyezési folyamat által létrehozott naplók, valamint-naplókban a Git-telepítéseket. Telepítési naplók D:\home\site\deployments alapján is megtalálhatja.
 
 ### <a name="ftp"></a>FTP
@@ -171,7 +171,7 @@ Szűrés konkrét naplófájlokból típusok, például a HTTP, használja a **-
 Rendelkezésre álló elérési utak listájának megtekintéséhez használja a - ListPath paramétert.
 
 > [!NOTE]
-> Ha nem telepítette az Azure PowerShell-lel, vagy nincs konfigurálva, hogy az Azure-előfizetéssel, lásd: [hogyan használja az Azure PowerShell](http://azure.microsoft.com/develop/nodejs/how-to-guides/powershell-cmdlets/).
+> Ha nem telepítette az Azure PowerShell-lel, vagy nincs konfigurálva, hogy az Azure-előfizetéssel, lásd: [hogyan használja az Azure PowerShell](https://azure.microsoft.com/develop/nodejs/how-to-guides/powershell-cmdlets/).
 >
 >
 
@@ -264,7 +264,7 @@ Sikertelen kérelmek nyomkövetési nevű XML-fájlokban van tárolva **fr ### .
 Részletes hibanaplókat olyan HTML-dokumentumok, amelyek előfordult HTTP-hibák részletes információkat biztosítanak. Egyszerűen csak a HTML-dokumentumok, mivel azok tekinthet meg webböngészővel.
 
 ### <a name="web-server-logs"></a>Webkiszolgáló naplói
-A webkiszolgáló-naplók használatával formázott a [W3C bővített naplófájlformátum](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Ez az információ egy szövegszerkesztő használatával olvashatja, vagy segédprogramok használatával például elemzett [naplóelemző](http://go.microsoft.com/fwlink/?LinkId=246619).
+A webkiszolgáló-naplók használatával formázott a [W3C bővített naplófájlformátum](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Ez az információ egy szövegszerkesztő használatával olvashatja, vagy segédprogramok használatával például elemzett [naplóelemző](https://go.microsoft.com/fwlink/?LinkId=246619).
 
 > [!NOTE]
 > Az Azure-webalkalmazások által előállított naplók nem támogatják a **s-computername**, **s-ip**, vagy **cs-version** mezőket.
@@ -274,7 +274,7 @@ A webkiszolgáló-naplók használatával formázott a [W3C bővített naplófá
 ## <a name="nextsteps"></a> Következő lépések
 * [Web Apps alkalmazások figyelése](web-sites-monitor.md)
 * [Hibaelhárítás Azure-webalkalmazások Visual studióban](web-sites-dotnet-troubleshoot-visual-studio.md)
-* [Elemzése a HDInsight webalkalmazás-naplók](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
+* [Elemzése a HDInsight webalkalmazás-naplók](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
 
 > [!NOTE]
 > Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az Azure App Service kipróbálása](https://azure.microsoft.com/try/app-service/) oldalra. Itt azonnal létrehozhat egy ideiglenes, kezdő szintű webalkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
-ms.openlocfilehash: 9b4c87bd0889718fcb8938a9e3bb9207b8fe727a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 7cf7078353de27c35a607fa8ef1921d6ed4b54b4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420456"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247347"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Az Azure App Service-ben az operációs rendszer funkcionalitása
-Ez a cikk ismerteti a gyakori alapkonfiguráció operációs rendszer funkcionalitása futó összes Windows-alkalmazások számára elérhető [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). Ez a funkció tartalmazza a fájl, hálózati, és az adatbázis eléréséhez, és a diagnosztikai naplók és események. 
+Ez a cikk ismerteti a gyakori alapkonfiguráció operációs rendszer funkcionalitása futó összes Windows-alkalmazások számára elérhető [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Ez a funkció tartalmazza a fájl, hálózati, és az adatbázis eléréséhez, és a diagnosztikai naplók és események. 
 
 > [!NOTE] 
 > [A Linux-alkalmazások](containers/app-service-linux-intro.md) saját futtathatők App Service-ben. A gazdagép operációs rendszere nincs hozzáférése engedélyezett, rendelkezik legfelső szintű hozzáféréssel a tárolóhoz. Hasonlóképpen, a [Windows-tárolókban futó alkalmazások](app-service-web-get-started-windows-container.md), rendelkezik rendszergazdai hozzáféréssel a tárolóhoz, de a gazdagép operációs rendszeréhez sem fér hozzá. 

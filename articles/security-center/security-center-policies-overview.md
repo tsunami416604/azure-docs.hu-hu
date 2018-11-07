@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: ab8a289ea0de263871b76788514052c09a6bf4da
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 3d2687f56b69174fde783060d994e3c01763ec94
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295737"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256629"
 ---
 # <a name="security-policy-settings"></a>Biztonsági szabályzat beállításai
 Ez a cikk áttekintést biztonsági házirendjének beállításai a Security Center.
@@ -56,4 +56,4 @@ Ebben a cikkben megismerkedett az Azure Security Centerben a biztonsági szabál
 * [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md): Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
 - [Az Azure Security Center által nyújtott adatbiztonság](security-center-data-security.md): Útmutató a Security Center felügyeli, és gondoskodik az adatok.
 * [Azure Security Center – gyakori kérdések](security-center-faq.md): Választ találhat a szolgáltatás használatával kapcsolatos gyakori kérdésekre.
-* [Az Azure Security blog](http://blogs.msdn.com/b/azuresecurity/): az Azure security legújabb híreket és információkat.
+* [Az Azure Security blog](https://blogs.msdn.com/b/azuresecurity/): az Azure security legújabb híreket és információkat.

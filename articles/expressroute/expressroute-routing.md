@@ -5,14 +5,14 @@ services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 11/05/2018
 ms.author: ganesr
-ms.openlocfilehash: 35644912da2b75009ba2b16f4a188011ba1f813e
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9c9f216ee25cd74ac8bcb5521cad85d051422eb2
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650128"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219341"
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -100,7 +100,7 @@ Amennyiben a rendszer nem rendeli Önhöz az előtagokat és az AS-számot az el
 A saját AS-számok Microsoft társviszony-létesítés esetében engedélyezettek, de ebben az esetben is szükség van manuális érvényesítésre. Ezenkívül eltávolítjuk az AS PATH értékében lévő privát AS-számokat a fogadott előtagok esetében. Ennek eredményeképpen nem fűzhet privát AS-számokat az AS PATH értékéhez [a Microsoft társviszony-létesítés útválasztásának befolyásolásához](expressroute-optimize-routing.md). 
 
 > [!IMPORTANT]
-> A Microsoft számára ExpressRoute-on hirdetett nyilvános IP-címek nem hirdethetők meg az interneten. Ez megszakíthatja a más Microsoft-szolgáltatások kapcsolatait. Azonban azok a nyilvános IP-címek, amelyeket a hálózatban található kiszolgálók használnak, amelyek O365-végpontokkal kommunikálnak a Microsofton belül, meg lehetnek hirdetve az ExpressRoute-on. 
+> Ne hirdesse meg az azonos nyilvános IP-útvonal az internethez csatlakozik, és expressroute-on keresztül. Javasoljuk, hogy egy pontosabban meghatározott útvonal, meghirdetni ExpressRoute és a egy általános útvonal az internethez [NAT](expressroute-nat.md). A NAT nyilvános útvonalat, mellett is meghirdethetők expressroute-on keresztül a nyilvános IP-cím a Microsoft Office 365-végponttal rendelkező kommunikáló kiszolgálókat a helyszíni hálózat által használt címek. 
 > 
 > 
 

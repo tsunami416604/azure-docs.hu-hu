@@ -3,18 +3,18 @@ title: HDInsight – az Azure Machine Learning szolgáltatások a fürt kezelés
 description: Ismerje meg, hogyan kezelheti egy Machine Learning-szolgáltatások-fürtöt az Azure HDInsight.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/27/2018
-ms.openlocfilehash: 38a8366a586b032c3b11cbef8ee5f01ad2b822a5
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 11/06/2018
+ms.openlocfilehash: 35b80223552181e44beac011f5fb541158466acc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702401"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255404"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Machine Learning-szolgáltatások az Azure HDInsight-fürt kezelése
 
@@ -80,7 +80,7 @@ Figyelje meg azt is, hogy az újonnan felvett felhasználók nem rendelkeznek gy
 
 ## <a name="connect-remotely-to-microsoft-ml-services"></a>Távoli csatlakozás a Microsoft Machine Learning-szolgáltatások
 
-Állíthat be hozzáférési a HDInsight Hadoop Spark számítási környezetet a Machine Learning-ügyfél egy távoli példányát futtató asztali számítógépeken. Ehhez meg kell adnia a beállításokat (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches és sshProfileScript) Ha az rxspark számítási környezetet az asztalon: például:
+Állíthat be hozzáférési a HDInsight Spark számítási környezetet a Machine Learning-ügyfél egy távoli példányát futtató asztali számítógépeken. Ehhez meg kell adnia a beállításokat (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches és sshProfileScript) Ha az rxspark számítási környezetet az asztalon: például:
 
     myNameNode <- "default"
     myPort <- 0
@@ -226,16 +226,13 @@ A számítási környezetekkel vezérelheti, hogy a számítás helyben történ
         summary(modelSpark)
 
 
-   > [!NOTE]
-   > A MapReduce eszközzel is eloszthatja a számítást a fürtcsomópontok között. Számítási környezet további információkért lásd: [számítási környezeti beállítások a Machine Learning-szolgáltatásokhoz a HDInsight-fürt](r-server-compute-contexts.md).
-
 ## <a name="distribute-r-code-to-multiple-nodes"></a>R-kód elosztása több csomópontra
 
 HDInsight ML szolgáltatásokkal, meglévő R-kódokat és futtatása a fürtben több csomóponton használatával `rxExec`. Ez a függvény akkor hasznos, amikor paraméteres frissítést vagy szimulációkat végez. A következő kód az `rxExec` használatának példája:
 
     rxExec( function() {Sys.info()["nodename"]}, timesToRun = 4 )
 
-Ha továbbra is a Spark vagy a MapReduce környezetet használja, ez visszaadja azon munkavégző csomópontok csomópontnév értékét, amelyen a `(Sys.info()["nodename"])` kódot futtatta. Ha például egy négy csomópontból álló fürtön várhatóan az alábbi kódrészlethez hasonló kimenetet kaphat:
+Ha a Spark környezet továbbra is használja, ez a parancs visszaadja azon munkavégző csomópontok csomópontnév értékét, amely a kód `(Sys.info()["nodename"])` futtatta. Ha például egy négy csomópontból álló fürtön várhatóan az alábbi kódrészlethez hasonló kimenetet kaphat:
 
     $rxElem1
         nodename

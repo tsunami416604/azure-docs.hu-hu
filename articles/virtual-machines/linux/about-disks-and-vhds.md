@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
 ms.component: disks
-ms.openlocfilehash: feb3e60ee1b43ec85c81912fbce086858bb33742
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: eec7b64836819f840702bb715f4fcc0573a94b00
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715930"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251849"
 ---
 # <a name="about-disks-storage-for-azure-linux-vms"></a>Az Azure Linux virtuális gépek disks storage-ról
 Minden olyan számítógépre, mint az Azure-beli virtuális gépek lemezeket használnak egy olyan hely operációs rendszert, alkalmazásokat és adatokat szeretne tárolni. Az összes Azure-beli virtuális gépek legalább két lemezt – egy Linux operációsrendszer-lemez és a egy ideiglenes lemezzel rendelkezik. Az operációsrendszer-lemez jön létre egy rendszerképből, és az operációsrendszer-lemez és a kép is tárolt virtuális merevlemezek (VHD) egy Azure storage-fiókban. Virtuális gépek is rendelkezhet egy vagy több adatlemezt, is tárolt VHD-ként.
@@ -37,8 +37,6 @@ Minden virtuális gép egy ideiglenes lemezt tartalmaz. Az ideiglenes lemez röv
 
 A Linux rendszerű virtuális gépek, a lemez általában **/dev/sdb** és formátumú, és csatlakoztatva **/mnt** által az Azure Linux-ügynök. Az ideiglenes lemez méretének a függvénye a virtuális gép méretét. További információkért lásd: [Linux rendszerű virtuális gépek méretei](../windows/sizes.md).
 
-Az Azure általi az ideiglenes lemez további információkért lásd: [az ideiglenes meghajtó a Microsoft Azure Virtual Machines ismertetése](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
-
 ## <a name="data-disk"></a>Adatlemez
 
 Adatlemez egy alkalmazás vagy egyéb adatok továbbra is szeretné tárolni a virtuális géphez csatolt virtuális merevlemez. Adatlemezek SCSI-meghajtók, regisztrálva van, és betűvel, Ön által választott vannak ellátva. Az egyes adatlemezek kapacitása maximum 4095 GB-ot. A virtuális gép mérete határozza meg, hány adatlemez csatolható, és a tárolás típusát használhatja a lemezek.
@@ -52,11 +50,13 @@ Adhat hozzá adatlemezeket a virtuális gépek bármikor, az **csatolása** a le
 
 [!INCLUDE [storage-about-vhds-and-disks-windows-and-linux](../../../includes/storage-about-vhds-and-disks-windows-and-linux.md)]
 
+Az előzetes verzió méreteket lásd: a [– gyakori kérdések](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) megtudhatja, milyen régiók érhetők el.
+
 ## <a name="troubleshooting"></a>Hibaelhárítás
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
 ## <a name="next-steps"></a>További lépések
+
 * [Lemez csatolása](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , adjon hozzá további tárterületet a virtuális géphez.
 * [Pillanatkép létrehozása](snapshot-copy-managed-disk.md).
 * [Konvertálás felügyelt lemezekké](convert-unmanaged-to-managed-disks.md).
-

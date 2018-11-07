@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d7f9dfee447cddc771e0e88ca5be04018b51dba2
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: a4117b41700446770e10ef799967ae4a43db342d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49431172"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227756"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>Az IoT Edge-modul technikai eszközök előkészítése
 
@@ -45,7 +45,7 @@ Az IoT Edge-modul támogatnia kell a platform alábbi lehetőségek közül.
 Támogatja az IoT Edge által támogatott összes 1. rétegbeli rendszerek (feljegyzett [Azure IoT Edge-támogatás](https://docs.microsoft.com/azure/iot-edge/support)). Ez a beállítás azt javasoljuk, mert a felhasználói élményt biztosít. Ezen feltételeknek megfelelő modulok felhőkompetenciáit kell lesz. Egy modul ezt a platform lehetőséget kell:
 
 - Adjon meg egy `latest` címke és a egy verzió címkéje (például `1.0.1`), amelyek a GitHub beépített jegyzékfájl címkék [jegyzékfájl-eszköz](https://github.com/estesp/manifest-tool).
-- Használja a [a Marketplace-en lapon](./cpp-marketplace-tab.md) mutató hivatkozás hozzáadása [hitelesített eszközöket kompatibilis IoT Edge](http://aka.ms/iot-edge-certified). Ez a hivatkozás mutat `http://aka.ms/iot-edge-certified`, egy webhely, ahol az ügyfelek tallózása vagy keresése hitelesített eszközöket. Ezen a webhelyen van, más néven a [Azure IoT Edge Certified](https://catalog.azureiotsolutions.com/) eszközkatalógus.
+- Használja a [a Marketplace-en lapon](./cpp-marketplace-tab.md) mutató hivatkozás hozzáadása [hitelesített eszközöket kompatibilis IoT Edge](https://aka.ms/iot-edge-certified). Ez a hivatkozás mutat `http://aka.ms/iot-edge-certified`, egy webhely, ahol az ügyfelek tallózása vagy keresése hitelesített eszközöket. Ezen a webhelyen van, más néven a [Azure IoT Edge Certified](https://catalog.azureiotsolutions.com/) eszközkatalógus.
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>Egy IoT Edge által támogatott 1. rétegbeli rendszerek részét
   

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 86b7b87c8cc11be5c4f2c8892905bb6e6800e729
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 1994c714f691177b526b44e277fea705d18b4335
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958874"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245698"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés, megőrzés és tárolás az Application Insights szolgáltatásban
 
@@ -108,9 +108,9 @@ A Microsoft adatokat használja, csak annak érdekében, hogy a szolgáltatás �
 * Nem. Az alkalmazás bárhol futhat, a felhőben vagy a saját helyszíni gazdagépekre.
 
 ## <a name="how-secure-is-my-data"></a>Mennyire vannak biztonságban vannak az adataim?
-Az Application Insights egy olyan Azure-szolgáltatás. Biztonsági szabályzatok ismertetett a [Azure biztonsági, adatvédelmi és megfelelőségi tanulmány](http://go.microsoft.com/fwlink/?linkid=392408).
+Az Application Insights egy olyan Azure-szolgáltatás. Biztonsági szabályzatok ismertetett a [Azure biztonsági, adatvédelmi és megfelelőségi tanulmány](https://go.microsoft.com/fwlink/?linkid=392408).
 
-A Microsoft Azure-kiszolgálók tárolja az adatokat. Fiókok az Azure Portalon, fiók-korlátozásokat ismerteti a [Azure biztonsági, adatvédelmi és megfelelőségi dokumentum](http://go.microsoft.com/fwlink/?linkid=392408).
+A Microsoft Azure-kiszolgálók tárolja az adatokat. Fiókok az Azure Portalon, fiók-korlátozásokat ismerteti a [Azure biztonsági, adatvédelmi és megfelelőségi dokumentum](https://go.microsoft.com/fwlink/?linkid=392408).
 
 A Microsoft ezért felelős munkatársai adatokhoz való hozzáférés korlátozva. Az adatok csak az Ön engedélyével el, és ha szükség az Application Insights használatát támogatja. 
 

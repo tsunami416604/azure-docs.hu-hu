@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: a8c7df4ba1cd919a23fc45ee165584cd9a85afed
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: ff560715f9c6aff8f50d3b20db1f3e79f3527113
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211315"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257299"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Az Azure Site Recovery: gyakori kérdések (GYIK)
 Ez a cikk az Azure Site Recovery – gyakori kérdések tartalmazza. Ha kérdése van a cikk elolvasása után, el őket az a [Azure Recovery Services fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
@@ -99,7 +99,7 @@ Igen, [ExpressRoute is használható](concepts-expressroute-with-site-recovery.m
 Az Azure felhasználói fióknak rendelkeznie kell bizonyos [engedélyek](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) engedélyezni a replikációt egy új virtuális gép az Azure-bA.
 
 ### <a name="can-i-replicate-hyper-v-generation-2-virtual-machines-to-azure"></a>Replikálható Hyper-V 2. generációs virtuális gép az Azure-ba?
-Igen. A Site Recovery a 2. generációs konvertálja az 1. a feladatátvétel során. Feladat-visszavételt, a gép vissza a 2. generációs alakítja át. [További információ](http://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).
+Igen. A Site Recovery a 2. generációs konvertálja az 1. a feladatátvétel során. Feladat-visszavételt, a gép vissza a 2. generációs alakítja át. [További információ](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).
 
 ### <a name="if-i-replicate-to-azure-how-do-i-pay-for-azure-vms"></a>Ha Azure-ba replikálok, hogyan kell fizetni az Azure virtuális gépekért?
 Szokásos replikáció esetén rendszer replikálja az adatokat georedundáns Azure storage-ba, és, nem kell díjat fizetnie Azure IaaS virtuális gép díjakat nyújtó egyik jelentős előnye. Amikor feladatátvételt indít az Azure-ba, a Site Recovery automatikusan létrehoz virtuális gépeket az Azure IaaS-ben, ezt követően pedig az Azure-ban felhasznált számítási erőforrások díját fogjuk számlázni.

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: abf581430f7cf7020145b0217c387b8c2fc4f795
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 2ef599fe704b184e82de2d704753e3fb4a274a2a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979403"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257799"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 Ez a cikk bemutatja a kimenetek elérhető az Azure Stream Analytics-feladat különböző típusú. Kimenetek segítségével tárolhatja, és a Stream Analytics-feladat eredményének mentése. A kimeneti adatokat használja, végezhet további üzleti elemzés és az adattárház az adatokat. 
@@ -297,7 +297,7 @@ A következő táblázat összefoglalja a partíció-támogatás és a kimeneti 
 | Kimenet típusa | Particionálási támogatása | Partíciókulcs  | Kimeneti írók száma | 
 | --- | --- | --- | --- |
 | Azure Data Lake Store | Igen | Használja {a date} és {time} az elérési út előtagmintája tokeneket. Válassza ki a dátum formátuma éééé/hh/nn például, nn/hh/éééé-hh-nn-éééé. Az időformátum ÓÓ használható. | A bemeneti particionálási követi [teljes párhuzamosítható lekérdezések](stream-analytics-scale-jobs.md). | 
-| Azure SQL Database | Igen | A PARTITION BY záradék a lekérdezés alapján | A bemeneti particionálási követi [teljes párhuzamosítható lekérdezések](stream-analytics-scale-jobs.md). | 
+| Azure SQL Database | Igen | A PARTITION BY záradék a lekérdezés alapján | A bemeneti particionálási követi [teljes párhuzamosítható lekérdezések](stream-analytics-scale-jobs.md). További információ eléréséhez jobban írni átviteli teljesítmény tölt be adatokat az SQL Azure Database-be tudnivalókért látogasson el [az Azure SQL Database az Azure Stream Analytics-kimenetet](stream-analytics-sql-output-perf.md). | 
 | Azure Blob Storage | Igen | Használja {a date} és {time} token az esemény mezőiből az elérésiút-minta. Válassza ki a dátum formátuma éééé/hh/nn például, nn/hh/éééé-hh-nn-éééé. Az időformátum ÓÓ használható. Részeként a [előzetes](https://aka.ms/ASApreview1), blob kimeneti lehet particionálni egy egyéni esemény egyetlen attribútum {fieldname} vagy {dátum és idő:\<specifikátor >}. | A bemeneti particionálási követi [teljes párhuzamosítható lekérdezések](stream-analytics-scale-jobs.md). | 
 | Azure-eseményközpont | Igen | Igen | Partíció igazítás függően változik.</br> Ha a kimeneti partíciós kulccsal egyaránt igazodik a felsőbb rétegbeli (korábbi) lekérdezési lépésre, írók száma az Eseményközpont megegyezik a számát kimeneti Event Hubs-partíciók. Minden egyes író használja az EventHub [EventHubSender osztály](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) eseményeket küldhet az adott partíció. </br> Ha a partíciókulcs felsőbb rétegbeli (korábbi) lekérdezési lépésre, írók száma nem igazodik az Eseményközpont kimenete ugyanaz, mint a korábbi lépésben partíciók száma. Minden egyes író használ EventHubClient [SendBatchAsync osztály](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) az események küldése az összes kimeneti partíciót. |
 | Power BI | Nem | None | Nem alkalmazható. | 
@@ -306,6 +306,8 @@ A következő táblázat összefoglalja a partíció-támogatás és a kimeneti 
 | Az Azure Service Bus-üzenetsorba | Igen | Automatikusan kiválasztja. A partíciók száma alapján a [Service Bus-Termékváltozat és a méret](../service-bus-messaging/service-bus-partitioning.md). Partíciókulcs egyedi egész szám érték minden egyes partícióhoz.| Ugyanaz, mint a kimeneti várólistában lévő partíciók száma. |
 | Azure Cosmos DB | Igen | A gyűjteménynévminta {partition} token használható. {partition} értéket a PARTITION BY záradék a lekérdezés alapul. | A bemeneti particionálási követi [teljes mértékben a lekérdezések párhuzamosíthatók](stream-analytics-scale-jobs.md). |
 | Azure Functions | Nem | None | Nem alkalmazható. | 
+
+A konzolkimeneti adapter nincs particionálva, ha az egyik bemeneti partíciók adatainak hiánya miatt késői érkezési mennyi ideig akár késést.  Ezekben az esetekben a kimenet a szűk keresztmetszeteket okozhat a folyamatban, amely egyetlen író részeként történik. Késedelmes érkezési házirenddel kapcsolatos további tudnivalókért látogasson el a [Azure Stream Analytics esemény rendelés szempontok](stream-analytics-out-of-order-and-late-events.md).
 
 ## <a name="output-batch-size"></a>Kimeneti kötegmérete
 Az Azure Stream Analytics használ a változó méretű kötegekben kimenetek írása és dolgozza fel. A Stream Analytics-motor általában egyszerre nem írni egy üzenet, és kötegekben használja hatékonyságát. Ha a bejövő, mind a kimenő események sebessége nagy, nagyobb méretű kötegekben használ. Ha a kilépő üzenetek gyakorisága alacsony, kisebb kötegekben használ tartani alacsony késést. 

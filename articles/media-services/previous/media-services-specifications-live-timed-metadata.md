@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Services - jelzés metaadat az élő adatfolyam-továbbítás időtúllépés miatt megszakadt. |} Microsoft Docs
-description: Ez az előírás jelzésátviteli rendszeres metaadat belül élő adatfolyam-Media Services által támogatott két módot ismerteti. Ez magában foglalja az általános rendszeres metaadat jelek, valamint SCTE-35 jelzés ad splice beszúrásához támogatása.
+title: Az Azure Media Services - jelzés időzített metaadatok jelzése az élő Streamelés |} A Microsoft Docs
+description: Ez az meghatározás Media Services élő streamelési belül jelképző időzített metaadatok által támogatott kétféle vázolja fel. Ez az általános időzített metaadatok jelek, valamint SCTE – 35 splice beillesztését számára jelzés támogatását tartalmazza.
 services: media-services
 documentationcenter: ''
 author: cenkdin
@@ -14,173 +14,173 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2018
 ms.author: johndeu;
-ms.openlocfilehash: 2e736872dc3e471af7c5b3f758516910a02067fe
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 827153300b9cab4ea805689b1e103bea1b334ec9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790523"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249574"
 ---
-# <a name="signaling-timed-metadata-in-live-streaming"></a>Jelzés túllépte az időkorlátot metaadat az élő adatfolyam-továbbítás
+# <a name="signaling-timed-metadata-in-live-streaming"></a>Jelzés időzített metaadatok jelzése az élő Streamelés
 
 
 ## <a name="1-introduction"></a>1. bevezetés 
-A beszúrási hirdetéseket vagy egyéni események ügyféllejátszó, gyakran műsorszolgáltatók ellenőrizze elősegítése érdekében időzített metaadatok felhasználása a videó ágyazott. Ahhoz, hogy ezek a forgatókönyvek, a Media Services támogatást nyújt az átvitel mellett az adathordozót, a feldolgozást, a ponttól, az ügyfélalkalmazás az élő adatfolyam-továbbítási csatorna időzített metaadatok.
-A meghatározás vázol fel két mód belül rendszeres metaadat Media Services által támogatott élő adatfolyam-továbbítási jelek:
+A hirdetményeket vagy egyéni események ügyfél lejátszón, gyakran műsorszolgáltatók beszúrási márka elősegítése érdekében időzített metaadatok felhasználása a videó beágyazva. Ahhoz, hogy ezeket a forgatókönyveket, a Media Services támogatást nyújt az adathordozót, a betöltés pontról az ügyfélalkalmazásnak az élő adatfolyam-továbbítási csatorna együtt időzített metaadatok átvitelét.
+Ez specifikáció körvonalak kétféle időzített metaadatok belül a Media Services által támogatott élő streamelési jelek:
 
-1. [SCTE-35], amely az ajánlott eljárásokat, amelyet [SCTE-67] heeds jelzés
+1. [SCTE – 35], [SCTE-67-es] által leírt ajánlott eljárásokat heeds jelzés
 
-2. Egy általános metaadatok módot, az üzenetek nem jelzés [SCTE-35] túllépte az időkorlátot
+2. Egy általános időzített metaadatok mód, které nejsou jelzés [SCTE – 35]
 
 ### <a name="12-conformance-notation"></a>1.2 megfelelési jelöléssel
-A kulcs szavak "kell", "Nem", "REQUIRED", "SHALL", "Nem kell", "SHOULD", "Nem kell", "Ajánlott", "Is" és "OPTIONAL" Ebben a dokumentumban vannak kell értelmezni az RFC 2119 leírtak szerint
+A kulcs szavak "kell", "Nem", "Kötelező", "SHALL", "NOT kell", "SHOULD", "NOT kell", "Ajánlott", "MAY" és "nem" kötelező ebben a dokumentumban vannak RFC 2119 leírtak szerint kell értelmezni
 
 ### <a name="13-terms-used"></a>1.3 használt kifejezések
 
 | Időtartam              | Meghatározás                                                                                                                                                                                                                       |
 |-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Bemutató idő | Az esemény nem jelenik meg a megjelenítő időpontja. Az idő az adathordozó idősoron, hogy a megjelenítő jelenik meg az esemény jelenleg jelöli. Például a bemutató SCTE-35 splice_info() parancs üzenet ideje a splice_time(). |
-| Érkezésének ideje      | Egy üzenet érkezik időpontja. Az idő az általában különálló, a bemutató óta az esemény, mivel esemény üzenetek küldése történik az esemény bemutató időben.                                     |
-| Ritka nyomon követése      | Media nyomon, hogy nincs folyamatos, és az idő szinkronizálva van egy szülő- vagy nyomon követése.                                                                                                                                    |
+| Bemutató idő | Az esemény megjelenik egy megjelenítőt időpontja. Az idő a pillanatban, hogy egy megjelenítőt jelennének meg az esemény az adathordozó idősoron jelöli. Ha például a bemutató SCTE – 35 splice_info() parancs üzenet ideje a splice_time(). |
+| Érkezés időpontja      | Az az idő, egy üzenet érkezik. Az idő az általában azonos a bemutató az esemény időpontjában, mivel esemény üzeneteket küld az előre a bemutatót az esemény.                                     |
+| Ritka nyomon követése      | adathordozó, amely nem folyamatos nyomon követheti, és időt szinkronizálva van egy szülő- vagy nyomon követése.                                                                                                                                    |
 | Forrás            | Az Azure Media adatfolyam-szolgáltatás                                                                                                                                                                                                |
-| Csatornagyűjtő      | Az Azure Media élő adatfolyam-szolgáltatás                                                                                                                                                                                           |
+| Csatorna fogadó      | Az Azure Media élő adatfolyam-szolgáltatást                                                                                                                                                                                           |
 | HLS               | Apple HTTP Live Streaming protokoll                                                                                                                                                                                               |
-| KÖTŐJEL              | Dinamikus adaptív adatfolyam-HTTP-kapcsolaton keresztül                                                                                                                                                                                             |
+| KÖTŐJEL              | Dinamikus adaptív Streamelés HTTP-n keresztül                                                                                                                                                                                             |
 | Zökkenőmentes            | Zökkenőmentes Streamelési protokoll                                                                                                                                                                                                        |
-| MPEG2 – TS          | MPEG-2 Transport adatfolyamok                                                                                                                                                                                                         |
+| MPEG2-TS          | MPEG-2 Transport Streams                                                                                                                                                                                                         |
 | RTMP              | Valós idejű multimédiás protokoll                                                                                                                                                                                                    |
-| uimsbf            | Előjel nélküli egész számokat, legjelentősebb először bit.                                                                                                                                                                                    |
+| uimsbf            | Előjel nélküli egész számokat legjelentősebb először bit.                                                                                                                                                                                    |
 
 -----------------------
 
-## <a name="2-timed-metadata-ingest"></a>2 rendszeres metaadat-feldolgozó
+## <a name="2-timed-metadata-ingest"></a>2 időzített metaadatok betöltése
 ## <a name="21-rtmp-ingest"></a>2.1 RTMP betöltési
-RTMP rendszeres metaadat jelek AMF köteg üzenet ágyazva a RTMP adatfolyam támogatja. A köteg üzeneteket küldhet a tényleges esemény előtt egy ideig, vagy ad splice beszúrási kell megtörténnie. Ez a forgatókönyv támogatása érdekében a tényleges idő splice vagy szegmens belül a kezelési üzenetet küldött. További információ: [AMF0].
+RTMP időzített metaadatok jelek AMF köteg üzenet beágyazva az RTMP-stream támogatja. Előfordulhat, hogy a köteg üzeneteket küldött egy kicsit, mielőtt a tényleges esemény, vagy splice beillesztését kell megtörténnie. Ez a forgatókönyv támogatása érdekében a a tényleges idő a splice vagy szegmens található találjuk zajlik. További információkért lásd: [AMF0].
 
-A következő táblázat ismerteti, amely a Media Services rendszer betöltési AMF üzenetadatokat formátuma.
+A következő táblázat ismerteti a Media Services rendszer betöltési AMF üzenet hasznos adattartalmából formátumát.
 
-A név az AMF üzenet különbséget tenni több, azonos típusú eseményfolyamokat használható.  [SCTE-35] üzenetek a AMF üzenet nevét kell "onAdCue" [SCTE-67] szereplő ajánlás szerint.  A listában nem szereplő mezőket kell figyelmen kívül lesz hagyva, így ez a kialakítás innováció nem gátolt a jövőben.
+A AMF üzenet neve azonos típusú több esemény-adatfolyam megkülönböztetéséhez használható.  [SCTE – 35]-üzenetek a AMF üzenet kell megadni "onAdCue" [SCTE-67-es] javasolt módon.  A listában nem szereplő mezőket figyelmen kívül kell hagyni, úgy, hogy ez a kialakítás innováció nem gátolt a jövőben.
 
 ### <a name="signal-syntax"></a>Jel szintaxis
-Media Services RTMP egyszerű mód, támogatja a "onAdCue" a következő formátumú nevű egyetlen AMF köteg üzenet:
+Media Services RTMP egyszerű módban, egy AMF köteg üzenet a következő formátumú "onAdCue" nevű támogatja:
 
-### <a name="simple-mode"></a>Egyszerű mód
+### <a name="simple-mode"></a>Egyszerű módban
 
-| Mező neve | Mező típusa | Kötelező? | Leírások                                                                                                             |
+| Mezőnév | Mező típusa | Kötelező? | Leírások                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
-| Köteg        | Karakterlánc     | Szükséges | Az esemény üzenet.  Kell kell jelölnie egy egyszerű módot "SpliceOut" splice.                                              |
+| Köteg        | Karakterlánc     | Szükséges | Az eseményüzenet.  Kell lennie egy egyszerű módot kijelölése "SpliceOut" splice.                                              |
 | id         | Karakterlánc     | Szükséges | A splice vagy szegmens leíró egyedi azonosítója. Ez az üzenet példányát azonosítja.                            |
-| Időtartam   | Szám     | Szükséges | A splice időtartama. Egységek törtrész másodperc alatt.                                                                |
-| elapsed    | Szám     | Optional | A jel alatt ismételt támogatása érdekében hangolására, ebben a mezőben kell lennie a bemutató, hogy mennyi ideig a splice kezdete óta eltelt. Egységek törtrész másodperc alatt. Ha egyszerű módot, ez az érték nem haladhatja meg a splice eredeti időtartama.                                                  |
-| time       | Szám     | Szükséges | A splice bemutató időben idején kell lennie. Egységek törtrész másodperc alatt.                                     |
+| időtartam   | Szám     | Szükséges | A splice időtartama. Egységek törtmásodpercek.                                                                |
+| elapsed    | Szám     | Optional | A jel támogatása érdekében folyamatban ismételt hallgassa meg, ezt a mezőt a bemutatót, hogy mennyi ideig a splice kezdete óta eltelt kell lennie. Egységek törtmásodpercek. Egyszerű mód használatakor ez az érték nem haladhatja meg a splice eredeti időtartamára.                                                  |
+| time       | Szám     | Szükséges | A splice idején bemutató időben kell lennie. Egységek törtmásodpercek.                                     |
 
 ---------------------------
 
-### <a name="scte-35-mode"></a>SCTE-35 mód
+### <a name="scte-35-mode"></a>SCTE – 35 mód
 
-| Mező neve | Mező típusa | Kötelező? | Leírások                                                                                                             |
+| Mezőnév | Mező típusa | Kötelező? | Leírások                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
-| Köteg        | Karakterlánc     | Szükséges | Az esemény üzenet.  [SCTE-35] üzenetek a base64 kell lennie (IETF RFC 4648) bináris kódolású splice_info_section() ahhoz, hogy az [SCTE-67] HLS, Smooth és kötőjel ügyfelek küldendő üzenetek.                                              |
-| type       | Karakterlánc     | Szükséges | Egy URN vagy URL-cím azonosítására az üzenet séma; például "urn: Példa: jelzés: 1.0".  [SCTE-35] üzenetek esetén "urn: scte:scte35:2013a:bin" ahhoz, hogy az [SCTE-67] HLS, Smooth és kötőjel ügyfelek küldendő üzenetek kell.  |
-| id         | Karakterlánc     | Szükséges | A splice vagy szegmens leíró egyedi azonosítója. Ez az üzenet példányát azonosítja.  Egyenértékű szemantika-üzenetek rendelkezik ugyanazt az értéket.|
-| Időtartam   | Szám     | Szükséges | Az esemény vagy ad splice-szegmens, ha ismert időtartama. Ismeretlen, ha az érték 0 kell lennie.                                                                 |
-| elapsed    | Szám     | Optional | A [SCTE-35] ad jel ahhoz, hogy hangolására alatt ismételt, ez a mező a bemutató, hogy mennyi ideig a splice kezdete óta eltelt kell lennie. Egységek törtrész másodperc alatt. [SCTE-35] módban Ez az érték haladhatja meg a splice vagy szegmens eredeti megadott időtartama.                                                  |
-| time       | Szám     | Szükséges | Az esemény vagy ad splice bemutató idején.  A bemutató időpontja és időtartama kell igazítania az adatfolyam hozzáférési pontok (SAP) 1 vagy 2, típus i. [ISO-14496-12] melléklet. A HLS kilépő időpontja és időtartama kell igazodni szegmens határokat. A bemutató idejét és a különböző eseményüzeneteket belül azonos időtartamát eseményfelhasználó nem lehet átfedésben. Egységek törtrész másodperc alatt.
+| Köteg        | Karakterlánc     | Szükséges | Az eseményüzenet.  [SCTE – 35]-üzenetek a Base64-kódolású kell lennie (IETF RFC 4648) bináris kódolású splice_info_section() ahhoz, hogy megfelelnek-e [SCTE-67-es] Dash, HLS és Smooth ügyfeleknek küldött üzeneteket.                                              |
+| type       | Karakterlánc     | Szükséges | Egy URN vagy URL-cím az üzenet séma; azonosítása például "urn: Példa: jelzés: 1.0-s".  [SCTE – 35]-üzenetek "urn: scte:scte35:2013a:bin" ahhoz, hogy megfelelnek-e [SCTE-67-es] Dash, HLS és Smooth ügyfeleknek küldött üzeneteket kell lennie.  |
+| id         | Karakterlánc     | Szükséges | A splice vagy szegmens leíró egyedi azonosítója. Ez az üzenet példányát azonosítja.  Egyenértékű sémantikou üzenetek ugyanazzal az értékkel rendelkezik.|
+| időtartam   | Szám     | Szükséges | Az esemény vagy ad splice-szegmens, ha ismert időtartama. Ismeretlen, ha az érték lehet 0.                                                                 |
+| elapsed    | Szám     | Optional | A [SCTE – 35] hirdetési jel esetén ismételt alatt annak érdekében, hogy hallgassa meg, ezt a mezőt kell bemutató a splice kezdete óta eltelt idő mennyisége. Egységek törtmásodpercek. [SCTE – 35] módban Ez az érték haladhatja meg az eredeti megadott időtartam a splice vagy szegmens.                                                  |
+| time       | Szám     | Szükséges | Az esemény vagy ad splice bemutató idején.  A bemutató időpontja és időtartama kell igazítani a Stream hozzáférési pontok (SAP) 1 vagy 2, típus meghatározott i. [ISO-14496 – 12]. Kimenő HLS időpontja és időtartama szegmens határokkal kell igazítani. A bemutató idő és az előfizetésen belül különböző eseményüzenetek időtartamát eseménystream nem LEHETNEK egymással átfedésben. Egységek törtmásodpercek.
 
 ---------------------------
 
-#### <a name="211-cancelation-and-updates"></a>2.1.1 gyermektevékenysége és frissítések
+#### <a name="211-cancelation-and-updates"></a>2.1.1 kerettúllépést és frissítések
 
-Üzenetek megszakítva, vagy frissítette több üzenetküldésre azonos bemutató dátumával és azonosítóját. A bemutató idő és azonosító egyedi módon azonosítja az eseményt, és az utolsó üzenet érkezett, amely megfelel a előtti összegző megkötések meghatározott megjelenítési ideje, hogy van-e bírálni. A frissített esemény felülírja a korábban fogadott üzenetek. A előtti összegző pedig az négy másodperc. A bemutató időpont előtti legalább négy másodpercenként fogadott üzenetek reakciót lesz.
+Üzenetek megszakadt, vagy frissítette a több üzenetküldésre ilyen bemutató idő és azonosítóját. A bemutató idő és az azonosító egyedi azonosításához az eseményt, és az utolsó üzenet érkezett, amely megfelel az üzem előtti összegző megkötések meghatározott megjelenítési ideje, hogy van-e bírálni az üzenetet. A frissített esemény váltja fel a korábban fogadott üzeneteket. Az üzem előtti összegző pedig az négy másodperc. Legalább négy másodpercig bemutató időpontja előtt Beérkezett üzenetek intézkedni lesz.
 
-## <a name="22-fragmented-mp4-ingest-smooth-streaming"></a>2.2 töredezett MP4 betöltési) (Smooth Streaming)
-További részletek [LIVE-FMP4] tartozó betöltési élő adatfolyam vonatkozó követelmények. A következő szakaszokban időzített bemutató metaadatok bemeneti kapcsolatos részleteket.  Időzített bemutató metaadatok keresztül van a szervezetbe, a ritka nyomon követése, amelyet mindkét élő kiszolgáló Manifest mezőbe (lásd az MS-SSTR) és a Movie be ("moov").  Minden egyes ritka töredék áll egy Movie töredék (moof) és Media adatok be ("mdat"), ahol a "mdat" be-e a bináris üzenet.
+## <a name="22-fragmented-mp4-ingest-smooth-streaming"></a>2.2-es darabolt MP4 feldolgozása (Smooth Streaming)
+A követelmények az élő stream betöltési tekintse meg [LIVE-FMP4]. A következő szakaszok a bemutató időzített metaadatok betöltés részletei.  Időzített bemutató metaadatok eseménystreamként ritka nyomon követése, amelyet a mind az élő kiszolgáló Manifest mezőbe (lásd az MS-SSTR) és a film be (moov).  Minden egyes ritka töredék áll egy filmet töredék mezőbe (moof) és a Media Data Box ("mdat"), ahol a "mdat" be-e az üzenet bináris.
 
-#### <a name="221-live-server-manifest-box"></a>2.2.1-en élő kiszolgáló jegyzék mezőbe
-A ritka követése deklarálni kell a kiszolgáló Manifest élő mezőt a \<textstream\> bejegyzést, és állítsa be a következő attribútumokkal kell rendelkeznie:
+#### <a name="221-live-server-manifest-box"></a>2.2.1-es élő kiszolgáló jegyzékfájl mező
+A ritka fájlok nyomon követése deklarálni kell a kiszolgáló Manifest élő mezőt egy \<textstream\> bejegyzést, és állítsa be a következő attribútumokkal kell rendelkeznie:
 
-| **Attribútum neve** | **Mező típusa** | **Kötelező megadni?** | **Leírás**                                                                                                                                                                                                                                                 |
+| **Attribútum neve** | **Mező típusa** | **Kötelező?** | **Leírás**                                                                                                                                                                                                                                                 |
 |--------------------|----------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| systemBitrate      | Szám         | Szükséges      | "0", amely jelzi, az ismeretlen, változó sávszélességű nyomon kell lennie.                                                                                                                                                                                                 |
-| parentTrackName    | Karakterlánc         | Szükséges      | A szülő track, amelyhez a ritka követése idő kódok igazítva időskálára nevének kell lennie. A szülő nyomon követése nem lehet ritka nyomon.                                                                                                                    |
-| manifestOutput     | Logikai        | Szükséges      | "True", annak jelzésére, hogy a ritka követése beágyazza a zökkenőmentes ügyfél jegyzékfájl kell lennie.                                                                                                                                                               |
-| Altípus            | Karakterlánc         | Szükséges      | KELL lennie a következő négy karaktert code "DATA".                                                                                                                                                                                                                         |
-| séma             | Karakterlánc         | Szükséges      | Csak URN vagy URL-cím azonosítására az üzenet séma; például "urn: Példa: jelzés: 1.0". [SCTE-35] üzenetek esetén "urn: scte:scte35:2013a:bin" ahhoz, hogy az [SCTE-67] HLS, Smooth és kötőjel ügyfelek küldendő üzenetek kell. |
-| TrackName          | Karakterlánc         | Szükséges      | A ritka track nevének kell lennie. A trackName segítségével az ugyanazon séma több eseményfolyamokat megkülönböztetéséhez. Minden egyedi eseményfelhasználó követése egyedi névvel kell rendelkeznie.                                                                           |
-| időskálára          | Szám         | Optional      | A szülő track időskálára kell lennie.                                                                                                                                                                                                                      |
+| systemBitrate      | Szám         | Szükséges      | "0", jelezve az ismeretlen, változó bitsebességű nyomon kell lennie.                                                                                                                                                                                                 |
+| parentTrackName    | Karakterlánc         | Szükséges      | A szülő pálya, amelyhez a ritka fájlok nyomon követése időkódját igazítva időskálára nevének kell lennie. A szülő nyomon követése nem lehet egy ritka nyomon követése.                                                                                                                    |
+| manifestOutput     | Logikai        | Szükséges      | "True", annak jelzésére, hogy a ritka fájlok nyomon követése ágyazva a zökkenőmentes ügyfél jegyzékfájl kell lennie.                                                                                                                                                               |
+| Altípus            | Karakterlánc         | Szükséges      | KELL lennie a négy karaktert code "Adatok".                                                                                                                                                                                                                         |
+| Séma             | Karakterlánc         | Szükséges      | KELL lennie egy URN vagy URL-cím az üzenet séma; azonosítása például "urn: Példa: jelzés: 1.0-s". [SCTE – 35]-üzenetek "urn: scte:scte35:2013a:bin" ahhoz, hogy megfelelnek-e [SCTE-67-es] Dash, HLS és Smooth ügyfeleknek küldött üzeneteket kell lennie. |
+| TrackName          | Karakterlánc         | Szükséges      | A ritka fájlok nyomon követése a nevének kell lennie. A trackName ugyanazt a sémát használja több esemény-adatfolyamok megkülönböztetéséhez használható. Minden egyedi esemény-adatfolyam követése egyedi névvel kell rendelkeznie.                                                                           |
+| időskálára          | Szám         | Optional      | Csökkentse a szülő követése kell lennie.                                                                                                                                                                                                                      |
 
 -------------------------------------
 
-### <a name="222-movie-box"></a>2.2.2 movie mezőbe
+### <a name="222-movie-box"></a>2.2.2 ennél rosszabb filmet mezőbe
 
-A Movie jelölőnégyzetet (moov) a következő élő kiszolgáló Manifest mezőbe a ritka nyomon az adatfolyam fejlécének részeként.
+A film mezőbe (moov) a következő élő kiszolgáló Manifest mezőbe egy ritka nyomon követése a stream fejlécének részeként.
 
-A "moov" mezőben tartalmaznia kell egy **TrackHeaderBox (tkhd)** mezőben meghatározott [ISO-14496-12] ezekkel a korlátozásokkal:
+A "moov" mezőben tartalmaznia kell egy **TrackHeaderBox (tkhd)** mezőben definiált [ISO-14496 – 12] a következő korlátozásokkal:
 
-| **Mező neve** | **Mező típusa**          | **Kötelező megadni?** | **Leírás**                                                                                                |
+| **Mező neve** | **Mező típusa**          | **Kötelező?** | **Leírás**                                                                                                |
 |----------------|-------------------------|---------------|----------------------------------------------------------------------------------------------------------------|
-| Időtartam       | 64 bites előjel nélküli egészként. | Szükséges      | 0, kell lennie, mert a statisztikák nyomon követésének nulla minták van, és a minták a szám mezőbe a teljes időtartam 0. |
+| időtartam       | 64 bites, előjel nélküli egész | Szükséges      | 0, kell lennie, mivel a nyomon követése be nulla mintákat, és a minták a nyomon követése a boxban teljes időtartamát 0. |
 -------------------------------------
 
-A "moov" mezőben tartalmaznia kell egy **HandlerBox (hdlr)** ezekkel a korlátozásokkal [ISO-14496-12] meghatározottak szerint:
+A "moov" mezőben tartalmaznia kell egy **HandlerBox (hdlr)** [ISO-14496 – 12] a következő korlátozások meghatározottak szerint:
 
-| **Mező neve** | **Mező típusa**          | **Kötelező megadni?** | **Leírás**   |
+| **Mező neve** | **Mező típusa**          | **Kötelező?** | **Leírás**   |
 |----------------|-------------------------|---------------|-------------------|
-| handler_type   | 32 bites előjel nélküli egészként. | Szükséges      | "Meta" kell lennie. |
+| handler_type   | 32 bites, előjel nélküli egész | Szükséges      | 'Meta' kell lennie. |
 -------------------------------------
 
-A "stsd" mezőben a [ISO-14496-12] tartalmaznia kell egy kódolási név MetaDataSampleEntry található.  Például SCTE-35 üzenetek a kódolási név legyen "scte".
+A "stsd" mezőben tartalmaznia kell egy MetaDataSampleEntry kódolási név mezőt, a [ISO-14496 – 12].  SCTE – 35 üzenetek például a kódolási név legyen "scte".
 
-### <a name="223-movie-fragment-box-and-media-data-box"></a>2.2.3 movie töredéket és Media adatok be
+### <a name="223-movie-fragment-box-and-media-data-box"></a>2.2.3 ennél rosszabb filmet töredék és Media Data be
 
-Ritka követése töredék egy Movie töredék (moof) és egy adathordozó adatok be (mdat) áll.
+Ritka követése töredék egy filmet töredék mező (moof) és a egy Media Data Box (mdat) állnak.
 
-A MovieFragmentBox (moof) tartalmaznia kell egy **TrackFragmentExtendedHeaderBox (uuid)** mezőben a következő mezőket az [MS-SSTR] meghatározottak szerint:
+A MovieFragmentBox (moof) tartalmaznia kell egy **TrackFragmentExtendedHeaderBox (uuid)** mezőbe, ahogyan az az [MS-SSTR] a következő mezőket:
 
-| **Mező neve**         | **Mező típusa**          | **Kötelező megadni?** | **Leírás**                                                                               |
+| **Mező neve**         | **Mező típusa**          | **Kötelező?** | **Leírás**                                                                               |
 |------------------------|-------------------------|---------------|-----------------------------------------------------------------------------------------------|
-| fragment_absolute_time | 64 bites előjel nélküli egészként. | Szükséges      | Az esemény a érkezésének ideje kell lennie. Ez az érték igazítja a szülő nyomon követése az üzenetet.   |
-| fragment_duration      | 64 bites előjel nélküli egészként. | Szükséges      | Az esemény időtartama kell lennie. Az időtartam azt jelzi, hogy a duration ismeretlen nulla is lehet. |
+| fragment_absolute_time | 64 bites, előjel nélküli egész | Szükséges      | Az esemény érkezési ideje kell lennie. Ezt az értéket a szülő nyomon követése az üzenet igazítja.   |
+| fragment_duration      | 64 bites, előjel nélküli egész | Szükséges      | Az esemény időtartama kell lennie. Az időtartam azt jelzi, hogy az időtartam ismeretlen nulla lehet. |
 
 ------------------------------------
 
 
 A MediaDataBox (mdat) mezőben a következő formátumban kell rendelkeznie:
 
-| **Mező neve**          | **Mező típusa**                   | **Kötelező megadni?** | **Leírás**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| **Mező neve**          | **Mező típusa**                   | **Kötelező?** | **Leírás**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |-------------------------|----------------------------------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| verzió:                 | 32 bites, előjel nélküli egész (uimsbf) | Szükséges      | Meghatározza, hogy a "mdat" mező tartalmát formátuma. Ismeretlen verziójú a rendszer figyelmen kívül hagyja. Jelenleg az egyetlen támogatott verzió: 1.                                                                                                                                                                                                                                                                                                                                                      |
-| id                      | 32 bites, előjel nélküli egész (uimsbf) | Szükséges      | Ez az üzenet példányát azonosítja. Egyenértékű szemantika-üzenetek van ugyanarra az értékre; Ez azt jelenti, hogy bármely események üzenetablak ugyanezzel az azonosítóval rendelkező feldolgozása is használhatók.                                                                                                                                                                                                                                                                                                            |
-| presentation_time_delta | 32 bites, előjel nélküli egész (uimsbf) | Szükséges      | A fragment_absolute_time a TrackFragmentExtendedHeaderBox és a presentation_time_delta megadott összege kell lennie a bemutató esemény időpontja. A bemutató időpontja és időtartama kell igazítania az adatfolyam hozzáférési pontok (SAP) 1 vagy 2, típus i. [ISO-14496-12] melléklet. A HLS kilépő időpontja és időtartama kell igazodni szegmens határokat. A bemutató idejét és a különböző eseményüzeneteket belül azonos időtartamát eseményfelhasználó nem lehet átfedésben. |
-| message                 | bájttömbben.                       | Szükséges      | Az esemény üzenet. [SCTE-35] üzenetek az üzenet a bináris splice_info_section(), bár [SCTE-67] azt javasolja, hogy valami mással. [SCTE-35] üzenetek kell ahhoz, hogy az [SCTE-67] HLS, Smooth és kötőjel ügyfelek küldendő üzenetek splice_info_section(). [SCTE-35] üzenetek a bináris splice_info_section() "mdat" mezőben a tartalom, pedig nem base64-kódolású.                                                            |
+| version                 | 32 bites, előjel nélküli egész (uimsbf) | Szükséges      | Meghatározza, hogy a "mdat" mező tartalmát formátumát. Ismeretlen verziók figyelmen kívül lesz hagyva. Jelenleg az egyetlen támogatott verzió: 1.                                                                                                                                                                                                                                                                                                                                                      |
+| id                      | 32 bites, előjel nélküli egész (uimsbf) | Szükséges      | Ez az üzenet példányát azonosítja. Üzenetek egyenértékű sémantikou ugyanazt az értéket; kell rendelkeznie. hogy a feldolgozási bármilyen egy esemény üzenetablak ugyanazzal az azonosítóval elegendő.                                                                                                                                                                                                                                                                                                            |
+| presentation_time_delta | 32 bites, előjel nélküli egész (uimsbf) | Szükséges      | A fragment_absolute_time a TrackFragmentExtendedHeaderBox és a presentation_time_delta megadott összege kell lennie a bemutatót az esemény időpontja. A bemutató időpontja és időtartama kell igazítani a Stream hozzáférési pontok (SAP) 1 vagy 2, típus meghatározott i. [ISO-14496 – 12]. Kimenő HLS időpontja és időtartama szegmens határokkal kell igazítani. A bemutató idő és az előfizetésen belül különböző eseményüzenetek időtartamát eseménystream nem LEHETNEK egymással átfedésben. |
+| message                 | bájttömb                       | Szükséges      | Az eseményüzenet. [SCTE – 35] üzeneteket az üzenet a bináris splice_info_section() nincs, bár [SCTE-67-es] más javasolja. [SCTE – 35]-üzenetek a splice_info_section() ahhoz, hogy megfelelnek-e [SCTE-67-es] Dash, HLS és Smooth ügyfeleknek küldött üzeneteket kell lennie. [SCTE – 35] üzeneteket a bináris splice_info_section() hasznos a "mdat" mezőbe, és már nem base64-kódolású.                                                            |
 
 ------------------------------
 
 
-### <a name="224-cancelation-and-updates"></a>2.2.4 gyermektevékenysége és frissítések
-Üzenetek megszakítva, vagy frissítette több üzenetküldésre azonos bemutató dátumával és azonosítóját.  A bemutató ideje és az azonosító az esemény egyedi azonosítására. Az utolsó üzenet érkezett egy meghatározott megjelenítési elindításakor, amely megfelel a előtti összegző megkötések, az, hogy van-e bírálni. A frissített üzenet a felváltja a korábban fogadott üzenetek.  A előtti összegző pedig az négy másodperc. A bemutató időpont előtti legalább négy másodpercenként fogadott üzenetek reakciót lesz. 
+### <a name="224-cancelation-and-updates"></a>2.2.4 kerettúllépést és frissítések
+Üzenetek megszakadt, vagy frissítette a több üzenetküldésre ilyen bemutató idő és azonosítóját.  A bemutató idő és az azonosító az esemény egyedi azonosítására. Az utolsó üzenet érkezett, amely megfelel az üzem előtti összegző megkötések, adott bemutató ideig, hogy van-e bírálni az üzenetet. A frissített üzenetet minden korábban fogadott üzenetek váltja fel.  Az üzem előtti összegző pedig az négy másodperc. Legalább négy másodpercig bemutató időpontja előtt Beérkezett üzenetek intézkedni lesz. 
 
 
-## <a name="3-timed-metadata-delivery"></a>3 metaadatok kézbesítési túllépte az időkorlátot
+## <a name="3-timed-metadata-delivery"></a>3 időzített metaadatok kézbesítés
 
-Az adatfolyam eseményadat fedett, a Media Services. A Media Services három adatra csupán továbbítja a bemeneti végpont és az ügyfél végpont között. A következő tulajdonságok az ügyfél megfelelősége [SCTE-67] érkeznek, és/vagy az ügyfél a folyamatos átviteli protokoll:
+Eseményadatok stream nem átlátszó, a Media Services. A Media Services három információt csupán továbbítja a betöltés végpont és az ügyfél végpontja között. A következő tulajdonságokat is továbbítja az ügyfélnek, [SCTE-67-es] megfelelnek-e, és/vagy az ügyfél a streamelési protokoll:
 
-1.  Séma – a URN vagy URL-cím az üzenet a rendszer azonosítása.
+1.  Séma – a URN vagy URL-cím azonosítása a rendszer az üzenet.
 
-2.  Bemutató idő – a bemutató az adathordozó idősoron esemény időpontja.
+2.  Bemutató idő – az esemény az adathordozó idővonalon a bemutató időpontja.
 
-3.  Időtartam – az esemény időtartamát.
+3.  Időtartama – az esemény időtartamát.
 
-4.  Azonosító – a esemény választható egyedi azonosítója.
+4.  Azonosító – egy nem kötelező az esemény egyedi azonosítója.
 
-5.  Üzenet – az eseményadatok.
+5.  Message – az eseményadatokat.
 
 
 ## <a name="31-smooth-streaming-delivery"></a>3.1 zökkenőmentes adatfolyamként történő továbbítását
 
-Tekintse meg a ritka követése kezelése az [MS-SSTR] részletei.
+Tekintse meg az [MS-SSTR] alfolyamatot ritka nyomon követése.
 
-#### <a name="smooth-client-manifest-example"></a>Zökkenőmentes ügyfél jegyzék – példa
+#### <a name="smooth-client-manifest-example"></a>Zökkenőmentes ügyfél jegyzékfájl példa
 ~~~ xml
 <?xml version=”1.0” encoding=”utf-8”?>
 <SmoothStreamingMedia MajorVersion=”2” MinorVersion=”0” TimeScale=”10000000” IsLive=”true” Duration=”0”
@@ -220,22 +220,22 @@ Tekintse meg a ritka követése kezelése az [MS-SSTR] részletei.
 </SmoothStreamingMedia> 
 ~~~ 
 
-## <a name="32--apple-hls-delivery"></a>3.2 Apple HLS Delivery
-A Szegmens lista egy egyéni M3U címkében rendszeres metaadat az Apple HTTP Live Streaming (HLS) ágyazhatók be.  Az alkalmazási rétegre a M3U lista elemzése és M3U címkék feldolgozására alkalmas. Az Azure Media Services időzített metaadatok beágyazása a [HLS] definiált EXT-X-KÖTEG címke.  A EXT-X-KÖTEG címke jelenleg ADI3 típusú üzenetek DynaMux használják.  SCTE-35 és nem SCTE-35 üzenetek támogatásához a fájlattribútumok EXT-X-KÖTEG címke alatt meghatározott:
+## <a name="32--apple-hls-delivery"></a>3.2-es Apple HLS-kézbesítés
+A Szegmens-lista egy egyéni M3U címkében időzített metaadatok az Apple HTTP Live Streaming (HLS) ágyazhatók be.  Az alkalmazási rétegre elemezni a M3U lista és M3U címkék feldolgozására alkalmas. Az Azure Media Services [HLS] meghatározott EXT-X-KÖTEG címkében időzített metaadatok ágyazhat be.  EXT-X-KÖTEG címke jelenleg ADI3 típusú üzenetek DynaMux használják.  SCTE – 35 üzenetek SCTE – 35 és a nem támogatja, állítsa be a EXT-X-KÖTEG címke attribútumait alábbiakban meghatározottak szerint:
 
-| **Attribútum neve** | **Típus**                      | **Kötelező megadni?**                             | **Leírás**                                                                                                                                                                                                                                                                      |
+| **Attribútum neve** | **Típus**                      | **Kötelező?**                             | **Leírás**                                                                                                                                                                                                                                                                      |
 |--------------------|-------------------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| KÖTEG                | idézőjelek közé zárt karakterlánc                 | Szükséges                                  | Az üzenet kódolt Base64 kódolású karakterlánc leírtak [IETF RFC 4648](http://tools.ietf.org/html/rfc4648). [SCTE-35] üzenetek ez pedig a base64-kódolású splice_info_section().                                                                                                |
-| TÍPUS               | idézőjelek közé zárt karakterlánc                 | Szükséges                                  | Egy URN vagy URL-cím azonosítására az üzenet séma; például "urn: Példa: jelzés: 1.0". [SCTE-35] üzenetek típusa "scte35" különleges értéket veszi fel.                                                                                                                                |
-| ID (Azonosító)                 | idézőjelek közé zárt karakterlánc                 | Szükséges                                  | Az esemény egyedi azonosítója. Ha nincs megadva a azonosító, ha az üzenet van okozhatnak, Azure Media Services egyedi azonosítót hoz létre.                                                                                                                                          |
-| IDŐTARTAM           | decimális lebegőpontos szám | Szükséges                                  | Az esemény időtartamát. Ismeretlen, ha az érték 0 kell lennie. Egységek factional másodperc alatt.                                                                                                                                                                                           |
-| ELTELT IDŐ            | decimális lebegőpontos szám | Nem kötelező, de szükséges késleltetett ablak | A jel bemutató csúszóablak támogatásához alatt ismételt, írjon be az esemény kezdete óta eltelt idő bemutató mennyisége. Egységek törtrész másodperc alatt. Ez az érték haladhatja meg a splice vagy szegmens eredeti megadott időtartama. |
-| IDŐ               | decimális lebegőpontos szám | Szükséges                                  | A bemutató esemény időpontja. Egységek törtrész másodperc alatt.                                                                                                                                                                                                                    |
+| KÖTEG                | Idézett karakterlánc                 | Szükséges                                  | Az ismertetett módon Base64 kódolású karakterláncként kódolt üzenet [IETF RFC 4648](http://tools.ietf.org/html/rfc4648). [SCTE – 35] üzeneteket ez nem a base64-kódolású splice_info_section().                                                                                                |
+| TÍPUS               | Idézett karakterlánc                 | Szükséges                                  | Egy URN vagy URL-cím az üzenet séma; azonosítása például "urn: Példa: jelzés: 1.0-s". [SCTE – 35] üzenetek esetében a típus a speciális értéket "scte35" vesz fel.                                                                                                                                |
+| ID (Azonosító)                 | Idézett karakterlánc                 | Szükséges                                  | Az esemény egyedi azonosítója. Ha azonosítója nincs megadva, ha az üzenet betöltött, az Azure Media Services egyedi azonosítót hoz létre.                                                                                                                                          |
+| IDŐTARTAM           | decimális lebegőpontos szám | Szükséges                                  | Az esemény időtartamát. Ismeretlen, ha az érték lehet 0. Egységek factional másodpercek alatt.                                                                                                                                                                                           |
+| ELTELT IDŐ            | decimális lebegőpontos szám | Nem kötelező, de szükség szerint eltoltan | A jel ismételt folyamatban van egy bemutató csúszóablakban támogatásához, ezt a mezőt a bemutatót, hogy mennyi ideig az esemény kezdete óta eltelt kell lennie. Egységek törtmásodpercek. Ez az érték haladhatja meg az eredeti megadott időtartam a splice vagy szegmens. |
+| TIME               | decimális lebegőpontos szám | Szükséges                                  | A bemutató az esemény időpontja. Egységek törtmásodpercek.                                                                                                                                                                                                                    |
 
 
-A HLS player alkalmazásréteg típus használatával azonosítására az üzenet formátuma, az üzenet dekódolása, alkalmazza a szükséges idő átalakítások és feldolgozni az eseményt.  Az események az esemény időbélyegzője megfelelően szinkronizálásakor a Szegmens lista szülő track.  Beillesztés előtt a legközelebbi szegmens (#EXTINF címke).
+A HLS-lejátszó alkalmazásréteg a típus használatával azonosítására az üzenet formátumát, a-üzenet dekódolása, a alkalmazni a szükséges idő átalakítások és feldolgozni az eseményt.  Az események időt szinkronizálva a szegmens listát, amely a szülő nyomon követése az esemény időbélyegzője megfelelően.  Beillesztés előtt a legközelebbi szegmens (#EXTINF címke).
 
-#### <a name="hls-segment-playlist-example"></a>HLS szegmens lista példa
+#### <a name="hls-segment-playlist-example"></a>HLS-szegmens lista példa
 ~~~
 #EXTM3U
 #EXT-X-VERSION:4
@@ -266,48 +266,48 @@ Fragments(video=480000000,format=m3u8-aapl)
 …
 ~~~
 
-#### <a name="hls-message-handling"></a>HLS üzenet kezelése
+#### <a name="hls-message-handling"></a>HLS-üzenet kezelése
 
-Események a Szegmens lista minden video- és track felé a jelzésküldés. A pozíció EXT-X-KÖTEG címke mindig kell vagy azonnal, mielőtt az első HLS szegmenseket (kimenő splice vagy szegmens kezdési) vagy közvetlenül az után utolsó HLS szegmenseket (a splice vagy szegmens célból) időpontja és időtartama attribútumainak utal, kérelmének [ HLS].
+Események jelzésküldés szegmens a listán. az egyes video- és nyomon követése. A pozíció a EXT-X-KÖTEG címke mindig kell lehet azonnal, mielőtt az első HLS szegmens (az splice ki vagy szegmens start), vagy az utolsó HLS szegmens (az a splice vagy a szegmens záró) időpontja és időtartama attribútumainak hivatkozni után azonnal, ahogyan azt az [ HLS].
 
-Ha egy bemutató csúszóablak engedélyezve van, a EXT-X-KÖTEG címke meg kell ismételni elég gyakran, hogy a splice vagy szegmens mindig részletesen a szegmens listát, és az ELTELT attribútumot kell használni, időt jelzi a splice vagy szegmens Nincs aktív [HLS] követelményei szerint.
+Ha egy bemutató csúszóablakban engedélyezve van, a EXT-X-KÖTEG címke meg kell ismételni, elég gyakran, hogy a splice vagy szegmens nem mindig részletesen a szegmens listát, és mennyi ideig a splice jelzi a ELTELT attribútumot kell használni, vagy szegmens már aktív, [HLS] igényeinek megfelelően.
 
-Bemutató csúszóablak engedélyezésekor a rendszer a EXT-X-KÖTEG címkék a szegmens listából törlődnek, amikor a media idő, amelyre vonatkoznak átfordították bemutató csúszóablak kívül.
+Ha engedélyezve van egy bemutató csúszóablakban, EXT-X-KÖTEG címkék a szegmens listából törlődnek, amikor, tekintse meg az adathordozó idő bemutató csúszóablakban ki lett állítva.
 
-## <a name="33--dash-delivery"></a>3.3 DASH kézbesítés
+## <a name="33--dash-delivery"></a>3.3-as DASH-kézbesítés
 [DASH] jel események három módot biztosít:
 
 1.  Az a MPD jelzést események
-2.  Események jelzést sávon a ábrázolás (esemény üzenetablak (emsg) használatával
-3.  1 és a 2. régiója
+2.  Események jelzést sávon (esemény üzenet mezőjében (emsg) használatával a Reprezentációban szereplő
+3.  1. és 2 egyaránt kombinációja
 
-VOD streaming, mert az összes esemény, azonnal, amikor a MPD ügyfelek hozzáférjenek a MPD a jelzést események hasznosak. A sávon megoldás élő adatfolyam, mert az ügyfelek nem kell újra letölteni a MPD. Időalapú Szegmentálás esetén az ügyfél a következő szegmens az URL-cím a telepítések időtartamát és a jelenlegi szegmens időbélyegzője hozzáadásával határozza meg. Amely igénylése sikertelen, ha az ügyfél azt feltételezi, hogy a kihagyást és letölti a MPD, de egyébként továbbra is fennáll, a MPD letöltése nélkül streaming.
+VOD streaming, mert az ügyfelek hozzáférjenek összes eseményt, azonnal, amikor a MPD jelzést a MPD az események hasznosak. A sávon kívüli a megoldás akkor hasznos, az élő streameléshez, mert az ügyfelek nem kell újra letölteni a MPD. Időalapú szegmentálását az ügyfél határozza meg a következő szegmens az URL-cím az időtartam és a Küldés időbélyegzője legyen az aktuális szegmens hozzáadásával. Amely a kérelem meghiúsul, ha az ügyfél kihagyást feltételezi és letölti a MPD, de egyébként továbbra is fennáll, hogy nem tölti le a MPD streamelési.
 
-Azure Media Services mindkét jelzés a MPD a tegye és sávon jelzés a esemény üzenetablak használatával.
+Az Azure Media Services fog ne mindkét jelzés a a MPD és sávon jelzés a használatával az esemény üzenet mezőbe.
 
 #### <a name="mpd-signaling"></a>MPD jelzés
 
-Események fogja jelezni a használatával a EventStream elemet, amely akkor jelenik meg, a Period elemen belül MPD.
+Események az EventStream-elemmel, amely akkor jelenik meg, az időszak elemben található MPD a fogja jelezni.
 
-A EventStream elem a következő attribútumokkal rendelkezik:
+Az EventStream elem a következő tulajdonságokkal rendelkezzen:
 
-| **Attribútum neve** | **Típus**                | **Kötelező megadni?** | **Leírás**                                                                                                                                                                                                                                                                                   |
+| **Attribútum neve** | **Típus**                | **Kötelező?** | **Leírás**                                                                                                                                                                                                                                                                                   |
 |--------------------|-------------------------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| scheme_id_uri      | karakterlánc                  | Szükséges      | Az üzenet a rendszer azonosítja. A rendszer a kiszolgáló Manifest élő mezőbe értéke a rendszer attribútum értéke. Az értéknek egy URN vagy URL-cím az üzenet séma; azonosító kell esnie. például "urn: Példa: jelzés: 1.0".                                                                |
-| érték              | karakterlánc                  | Optional      | Egy további karakterlánc-érték a szemantikáját, az üzenet testreszabásához tulajdonosai a rendszer által használt. Ugyanazon séma több eseményfolyamokat megkülönböztetéséhez, az értéket meg kell az eseménystream (betöltési Smooth trackName vagy AMF üzenet nevét RTMP betöltési) nevét. |
-| időskálára          | 32 bites előjel nélküli egészként. | Szükséges      | A időskálára a ticks / másodperc, a "emsg" mezőben időtartam mezők és a alkalommal.                                                                                                                                                                                                       |
+| scheme_id_uri      | sztring                  | Szükséges      | A rendszer az üzenet azonosítja. A rendszer a kiszolgáló Manifest élő írja a rendszer attribútum értéke. Az érték lehet egy URN vagy URL-cím az üzenet séma; azonosítása például "urn: Példa: jelzés: 1.0-s".                                                                |
+| érték              | sztring                  | Optional      | Az üzenet szemantikáját testreszabása a tulajdonosok között, a rendszer által használt egy további karakterláncértéket. Annak érdekében, hogy megkülönböztethető több esemény-adatfolyamok ugyanazt a sémát használja, az értéket kell beállítani az eseménystream (betöltési Smooth trackName vagy AMF üzenet neve az RTMP betöltési) nevére. |
+| Időskála          | 32 bites, előjel nélküli egész | Szükséges      | A időskálára órajel során végbemenő másodpercenként hányszor és időtartam mezők a "emsg" mezőben található.                                                                                                                                                                                                       |
 
 
-Nulla vagy több esemény elemek EventStream elemen belül találhatók, és a következő attribútumokkal rendelkeznek:
+Nulla vagy több esemény elemek találhatók meg az EventStream elemben található, és a következő attribútumokkal rendelkeznek:
 
-| **Attribútum neve**  | **Típus**                | **Kötelező megadni?** | **Leírás**                                                                                                                                                                                                             |
+| **Attribútum neve**  | **Típus**                | **Kötelező?** | **Leírás**                                                                                                                                                                                                             |
 |---------------------|-------------------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| presentation_time   | 64 bites előjel nélküli egészként. | Optional      | A media kell lennie az időszak kezdete viszonyítva esemény bemutató időpontja. A bemutató időpontja és időtartama kell igazítania az adatfolyam hozzáférési pontok (SAP) 1 vagy 2, típus i. [ISO-14496-12] melléklet. |
-| Időtartam            | 32 bites előjel nélküli egészként. | Optional      | Az esemény időtartamát. Ez az időtartam ismeretlen esetén kell hagyni.                                                                                                                                                 |
-| id                  | 32 bites előjel nélküli egészként. | Optional      | Ez az üzenet példányát azonosítja. Egyenértékű szemantika-üzenetek rendelkezik ugyanazt az értéket. Ha nincs megadva a azonosító, ha az üzenet van okozhatnak, Azure Media Services egyedi azonosítót hoz létre.             |
-| Esemény elem értéke | karakterlánc                  | Szükséges      | A Base64 kódolású karakterlánc az eseményüzenet [IETF RFC 4648](http://tools.ietf.org/html/rfc4648).                                                                                                                   |
+| presentation_time   | 64 bites, előjel nélküli egész | Optional      | Időnek kell lennie az adathordozó bemutató képest az időszak kezdete esemény. A bemutató időpontja és időtartama kell igazítani a Stream hozzáférési pontok (SAP) 1 vagy 2, típus meghatározott i. [ISO-14496 – 12]. |
+| időtartam            | 32 bites, előjel nélküli egész | Optional      | Az esemény időtartamát. Ez az időtartam ismeretlen esetén kell hagyni.                                                                                                                                                 |
+| id                  | 32 bites, előjel nélküli egész | Optional      | Ez az üzenet példányát azonosítja. Egyenértékű sémantikou üzenetek ugyanazzal az értékkel rendelkezik. Ha azonosítója nincs megadva, ha az üzenet betöltött, az Azure Media Services egyedi azonosítót hoz létre.             |
+| Esemény elemének értéke | sztring                  | Szükséges      | Az eseményüzenet Base64 kódolású karakterláncként leírtak szerint [IETF RFC 4648](http://tools.ietf.org/html/rfc4648).                                                                                                                   |
 
-#### <a name="xml-syntax-and-example-for-dash-manifest-mpd-signaling"></a>XML-szintaxis és a kötőjel példa manifest (MPD) Signaling
+#### <a name="xml-syntax-and-example-for-dash-manifest-mpd-signaling"></a>XML-szintaxist és példát a DASH (MPD) Signaling manifest
 
 ~~~ xml
 <!-- XML Syntax -->
@@ -343,12 +343,12 @@ Nulla vagy több esemény elemek EventStream elemen belül találhatók, és a k
 ~~~
 
 >[!NOTE]
->Vegye figyelembe, hogy presentationTime a bemutató esemény időpontja, nem az üzenet érkezésének ideje.
+>Vegye figyelembe, hogy presentationTime a bemutatót az esemény időpontja, nem az üzenet érkezésének ideje.
 >
 
 ### <a name="431-in-band-event-message-box-signaling"></a>4.3.1 sávon esemény üzenet mezőbe jelzés
-Egy sávon eseményfelhasználó InbandEventStream elemet a szint kiigazítása beállítása, hogy MPD igényel.  Ez az elem egy kötelező schemeIdUri attribútummal és választható időskálára attribútum is szerepel az esemény üzenetablak (emsg) rendelkezik.  Esemény üzenet mezők nem definiált a MPD séma-azonosítók nem lehetnek jelen. DASH-ügyfél, amely nincs definiálva a MPD a rendszert egy esemény üzenetablak észleli, ha az ügyfél várhatóan figyelmen kívül hagyja.
-Az esemény üzenetablak (emsg) biztosít a bemutató amikor kapcsolatos általános események jelzés. Ha van ilyen, bármely "emsg" mezőben a "moof" mező előtt kell elhelyezni.
+Egy sávon eseménystream a MPD InbandEventStream elem hogy a betanítás beállítása szintjén van szükség.  Ez az elem egy kötelező schemeIdUri attribútum és választható időskálára attribútum, amely is szerepel az esemény üzenet mezőjében (emsg) rendelkezik.  Esemény üzenet mezők, amelyek nincsenek meghatározva a MPD a séma-azonosítók nem szabad megadni. DASH ügyfél, amely nincs definiálva a MPD a rendszert egy esemény üzenetablak észleli, ha az ügyfél várhatóan figyelmen kívül hagyhatja azt.
+Az esemény üzenet mezőbe (emsg) biztosít az adathordozó bemutató idő kapcsolatos általános események jelzés. Ha van ilyen, bármely "emsg" mezőben előtt bármely "moof" mezőben kell elhelyezni.
 
 ### <a name="dash-event-message-box-emsg"></a>VONAL-esemény üzenetablak "emsg"
 ~~~
@@ -371,53 +371,53 @@ aligned(8) class DASHEventMessageBox extends FullBox(‘emsg’, version = 0, fl
 }
 ~~~
 
-A DASHEventMessageBox mezőket az alábbiakban:
+A mezők a DASHEventMessageBox az alábbi vannak meghatározva:
 
-| **Mező neve**          | **Mező típusa**          | **Kötelező megadni?** | **Leírás**                                                                                                                                                                                                                                                                                                                                                    |
+| **Mező neve**          | **Mező típusa**          | **Kötelező?** | **Leírás**                                                                                                                                                                                                                                                                                                                                                    |
 |-------------------------|-------------------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| scheme_id_uri           | karakterlánc                  | Szükséges      | Az üzenet a rendszer azonosítja. A rendszer a kiszolgáló Manifest élő mezőbe értéke a rendszer attribútum értéke. Az értéknek egy URN vagy URL-cím az üzenet séma; azonosító kell esnie. például "urn: Példa: jelzés: 1.0". [SCTE-35] üzenetek, ez a különleges értéket vesz "urn: scte:scte35:2013a:bin", bár [SCTE-67] azt javasolja, hogy valami mással. |
-| Érték                   | karakterlánc                  | Szükséges      | Egy további karakterlánc-érték a szemantikáját, az üzenet testreszabásához tulajdonosai a rendszer által használt. Ugyanazon séma több eseményfolyamokat megkülönböztetéséhez, az értéket állítja be az eseménystream (betöltési Smooth trackName vagy AMF üzenet nevét RTMP betöltési) nevét.                                                                  |
-| időskálára               | 32 bites előjel nélküli egészként. | Szükséges      | A időskálára a ticks / másodperc, a "emsg" mezőben időtartam mezők és a alkalommal.                                                                                                                                                                                                                                                                        |
-| Presentation_time_delta | 32 bites előjel nélküli egészként. | Szükséges      | A media bemutató eltelt idő a bemutató az esemény vagy a legkorábbi bemutató idő ebbe a szegmensbe. A bemutató időpontja és időtartama kell igazítania az adatfolyam hozzáférési pontok (SAP) 1 vagy 2, típus i. [ISO-14496-12] melléklet.                                                                                            |
-| event_duration          | 32 bites előjel nélküli egészként. | Szükséges      | Az esemény vagy egy ismeretlen időtartamot jelzi 0xFFFFFFFF időtartama.                                                                                                                                                                                                                                                                                          |
-| Azonosító                      | 32 bites előjel nélküli egészként. | Szükséges      | Ez az üzenet példányát azonosítja. Egyenértékű szemantika-üzenetek rendelkezik ugyanazt az értéket. Ha nincs megadva a azonosító, ha az üzenet van okozhatnak, Azure Media Services egyedi azonosítót hoz létre.                                                                                                                                                    |
-| Message_data            | bájttömbben.              | Szükséges      | Az esemény üzenet. [SCTE-35] üzenetek az üzenet adataihoz a bináris splice_info_section(), bár [SCTE-67] azt javasolja, hogy valami mással.                                                                                                                                                                                                                                 |
+| scheme_id_uri           | sztring                  | Szükséges      | A rendszer az üzenet azonosítja. A rendszer a kiszolgáló Manifest élő írja a rendszer attribútum értéke. Az érték lehet egy URN vagy URL-cím az üzenet séma; azonosítása például "urn: Példa: jelzés: 1.0-s". [SCTE – 35] üzenetek esetében ez értéket vesz fel a speciális "urn: scte:scte35:2013a:bin", bár [SCTE-67-es] más javasolja. |
+| Érték                   | sztring                  | Szükséges      | Az üzenet szemantikáját testreszabása a tulajdonosok között, a rendszer által használt egy további karakterláncértéket. Annak érdekében, hogy megkülönböztethető több esemény-adatfolyamok ugyanazt a sémát használja, az értéke lesz az eseménystream (betöltési Smooth trackName vagy AMF üzenet neve az RTMP betöltési) nevére.                                                                  |
+| Időskála               | 32 bites, előjel nélküli egész | Szükséges      | A időskálára órajel során végbemenő másodpercenként hányszor és időtartam mezők a "emsg" mezőben található.                                                                                                                                                                                                                                                                        |
+| Presentation_time_delta | 32 bites, előjel nélküli egész | Szükséges      | A media bemutató eltelt időtartam a bemutatót az esemény időpontja és a legkorábbi bemutató idő a szegmensben. A bemutató időpontja és időtartama kell igazítani a Stream hozzáférési pontok (SAP) 1 vagy 2, típus meghatározott i. [ISO-14496 – 12].                                                                                            |
+| event_duration          | 32 bites, előjel nélküli egész | Szükséges      | Az esemény vagy egy ismeretlen időtartamot jelzi 0xFFFFFFFF időtartama.                                                                                                                                                                                                                                                                                          |
+| Azonosító                      | 32 bites, előjel nélküli egész | Szükséges      | Ez az üzenet példányát azonosítja. Egyenértékű sémantikou üzenetek ugyanazzal az értékkel rendelkezik. Ha azonosítója nincs megadva, ha az üzenet betöltött, az Azure Media Services egyedi azonosítót hoz létre.                                                                                                                                                    |
+| Message_data            | bájttömb              | Szükséges      | Az eseményüzenet. [SCTE – 35]-üzenetek az állapotüzenet-adatokat a bináris splice_info_section() nincs, bár [SCTE-67-es] más javasolja.                                                                                                                                                                                                                                 |
 
-### <a name="332-dash-message-handling"></a>3.3.2 vonal-üzenetek kezelésének
+### <a name="332-dash-message-handling"></a>3.3.2 vonal-üzenetkezelés
 
-Események felé a jelzésküldés sávon, belül, mind video- és nyomon követi a "emsg" jelölőnégyzet.  A jelzés akkor fordul elő, az összes szegmentálni kérelmeket, amelynek a presentation_time_delta 15 másodperc vagy annál kisebb. Ha egy bemutató csúszóablak engedélyezve van, eseményüzenetei törlődnek a MPD esetén az összegük az idő és az esemény üzenetének időtartama időnél az adathordozó-adatok a jegyzékfájlban.  Ez azt jelenti az eseményüzeneteket törlődnek a jegyzékfájlból, amelyre vonatkoznak media idő átfordították bemutató csúszóablak kívül.
+Események jelzésküldés sávon, a "emsg" mezőben, a videó- és audio nyomon követi.  A jelzés akkor fordul elő, az összes szegmentálhatja a kérelmek, amelyek a presentation_time_delta esetében 15 másodperc vagy annál kisebb. Ha engedélyezve van egy bemutató csúszóablakban, eseményüzenetek törlődnek a MPD amikor idő összege és időtartama az eseményüzenet kisebb, mint a ideje az adathordozó-adatok a jegyzékfájlban.  Más szóval az eseményt üzenetek törlődnek a jegyzékfájl amikor bemutató csúszóablakban ki lett állítva, az adathordozó idő, amelyre vonatkoznak.
 
-## <a name="4-scte-35-ingest"></a>4 SCTE-35 betöltési
+## <a name="4-scte-35-ingest"></a>4 SCTE – 35 betöltési
 
-A séma bináris formátumú üzenetek [SCTE-35] keresztül a szervezetbe **"urn: scte:scte35:2013a:bin"** Smooth betöltési és a típus **"scte35"** RTMP betöltési. [SCTE-35] időzítési, MPEG-2 transport stream bemutató időbélyegeket (pont), PT közötti leképezést alapuló átalakítása megkönnyítésére (pts_time + a splice_time()) és az adathordozó ütemterv pts_adjustment biztosítja az esemény bemutató idő ( a Smooth fragment_absolute_time mezője betöltési, és az mező az RTMP betöltési). A leképezés szükség, mert a 33 bites PT érték körülbelül 26.5 óránként mutatnak.
+[SCTE – 35] üzenetek a séma bináris formátumban vannak betöltött **"urn: scte:scte35:2013a:bin"** Smooth fogadása és a típus **"scte35"** RTMP betöltési. [SCTE – 35] időzítési, MPEG-2 transport stream bemutató időbélyegeket (pont), PT közötti leképezést alapuló átalakítása megkönnyítése érdekében (pts_time + a splice_time()) és az adathordozó ütemterv pts_adjustment által biztosított az esemény bemutató idő () Zökkenőmentes fragment_absolute_time mezőjére fogadni, és az idő mezője RTMP betöltési). A leképezés szükség, mert a 33 bites PT értéket mutatnak körülbelül 26.5 óránként.
 
-Smooth Streaming-betöltési megköveteli, hogy az adathordozó adatok (mdat) tartalmaznia kell a **splice_info_section()** a 8 – 1. táblázat [SCTE-35] definiálva. RTMP betöltési, a AMF üzenet köteg attribútumának értéke a base64encoded **splice_info_section()**. Az üzenetek formátuma a fent leírt, akkor küld, HLS, Smooth és kötőjel [SCTE-67] az ügyfeleknek.
+Smooth Streaming betöltési megköveteli, hogy a Media Data Box (mdat) kell tartalmaznia a **splice_info_section()** definiálva a 8 – 1. táblázat [SCTE – 35]. Az RTMP betöltési, AMF üzenet a köteg attribútum értéke a base64encoded **splice_info_section()**. Az üzenetek a fent ismertetett formátumban van, amikor azok érkeznek Dash, HLS és Smooth ügyfelek [SCTE-67-es] megfelelnek-e.
 
 
-## <a name="5-references"></a>5 hivatkozások
+## <a name="5-references"></a>5 referenciák
 
-**[SCTE-35]**  ANSI/SCTE 35 2013a – digitális Program beszúrási Cueing üzenet kábel, 2013a
+**[SCTE – 35]**  ANSI/SCTE 35 2013a – csatlakoztassa, 2013a digitális Program beszúrási Cueing üzenet
 
-**[SCTE-67]**  ANSI/SCTE 67 2014 – ajánlott eljárás a SCTE 35: digitális Program beszúrási Cueing üzenet kábel
+**[SCTE-67-ES]**  ANSI/SCTE 67-es 2014 – ajánlott eljárás, SCTE 35: digitális Program beszúrási Cueing üzenet kábel
 
-**[DASH]**  ISO/IEC 23009-1 – informatika – 2014 dinamikus adaptív adatfolyam-keresztül HTTP (DASH) – 1. rész: Media bemutató leírását és a szegmens formátumok, 2. kiadás
+**[DASH]**  ISO/IEC 23009-1 2014 – információtechnológiai – dinamikus adaptív streamelés keresztül HTTP (DASH) – 1. rész: Media bemutató leírását és a szegmens formátumát, a 2. kiadás
 
-**[HLS]**  ["HTTP Live Streaming", draft-pantos-http-live-streaming-14, 2014. október 14.,](http://tools.ietf.org/html/draft-pantos-http-live-streaming-14)
+**[HLS]**  ["HTTP Live Streaming", draft-pantos-http-live-streaming-14, 2014. október 14-én](http://tools.ietf.org/html/draft-pantos-http-live-streaming-14)
 
-**[MS-SSTR]**  ["Microsoft Smooth Streaming protokoll", 2014. május 15.](http://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/%5bMS-SSTR%5d.pdf)
+**[MS-SSTR]**  ["A Microsoft Smooth Streaming protokoll", 2014. május 15.](https://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/%5bMS-SSTR%5d.pdf)
 
 **[AMF0]**  ["Művelet üzenet formátuma AMF0"](http://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)
 
-**[LIVE-FMP4]**  [Töredezett MP4 élő azure Media Services betöltési meghatározása](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)
+**[LIVE-FMP4]**  [Specifikáció: darabolt MP4 élő azure Media Services feldolgozása](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)
 
-**[ISO-14496-12]**  ISO/IEC 14496-12: rész 12 ISO alap media fájlformátum – Edition 2012-07-15 negyedik.
+**[ISO-14496 – 12]**  ISO/IEC 14496 – 12: rész 12 ISO alap médiafájl formátum, a negyedik kiadása 2012-07-15.
 
-**[RTMP]**  ["Adobe valós idejű üzenetküldési protokoll" December 21, 2012](https://www.adobe.com/devnet/rtmp.html) 
+**[RTMP]**  ["Adobe valós idejű üzenetkezelő protokoll", 2012. December 21.](https://www.adobe.com/devnet/rtmp.html) 
 
 ------------------------------------------
 
 ## <a name="next-steps"></a>További lépések
-Nézet Media Services tanulási útvonalai.
+Nézet Media Services képzési terveket.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

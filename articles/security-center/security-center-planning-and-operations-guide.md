@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/02/2018
 ms.author: yurid
-ms.openlocfilehash: b180acfb74f503447212044f0b6be5589e2dd452
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 454cfc97aa203d5de7b00f47e1f87fd0aed0d28a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158789"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255949"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Útmutató az Azure Security Center tervezéséhez és működtetéséhez
 Ez az útmutató olyan informatikusok, megoldástervezők, adatbiztonsági elemzők és felhőszolgáltatás-rendszergazdák számára készült, akik az Azure Security Center egész vállalatra kiterjedő bevezetését tervezik.
@@ -126,7 +126,7 @@ A biztonsági szabályzat határozza meg a számítási feladatokhoz tartozó k�
 
 A Security Center-szabályzatok a következő összetevőkből állnak:
 - [Adatgyűjtés](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection): ügynökkiépítési és adatgyűjtési beállítások.
-- [Biztonsági házirend](https://docs.microsoft.com/azure/security-center/security-center-policies): egy [Azure Policy](http://docs.microsoft.com/azure/azure-policy/azure-policy-introduction) , amely meghatározza, hogy mely vezérlőket monitorozza és ajánlott a Security Center, vagy használja az Azure Policy használatával létrehozhat új meghatározásokat, meghatározhat további szabályzatokat, és szabályzatokat rendelhet hozzájuk felügyeleti csoportokhoz.
+- [Biztonsági házirend](https://docs.microsoft.com/azure/security-center/security-center-policies): egy [Azure Policy](https://docs.microsoft.com/azure/azure-policy/azure-policy-introduction) , amely meghatározza, hogy mely vezérlőket monitorozza és ajánlott a Security Center, vagy használja az Azure Policy használatával létrehozhat új meghatározásokat, meghatározhat további szabályzatokat, és szabályzatokat rendelhet hozzájuk felügyeleti csoportokhoz.
 - [E-mail-értesítések](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details): biztonsági felelősök kapcsolati adatai és értesítési beállításai.
 - [Tarifacsomag](https://docs.microsoft.com/azure/security-center/security-center-pricing): ingyenes vagy standard díjszabás kiválasztása, amely meghatározza, hogy a Security Center mely szolgáltatásai érhetők el a hatókörbe eső erőforrásokhoz (beállítható előfizetésekhez, erőforráscsoportokhoz és munkaterületekhez).
 
@@ -262,5 +262,5 @@ Ebben a dokumentumban megismerkedhetett a Security Center bevezetésével. A Sec
 * [Biztonsági állapotmonitorozás az Azure Security Centerben](security-center-monitoring.md) – Útmutató az Azure-erőforrások állapotának monitorozásához.
 * [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md) – Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
 * [Azure Security Center FAQ](security-center-faq.md) (Azure Security Center: Gyakran ismételt kérdések) – Válaszok a szolgáltatás használatára vonatkozó gyakori kérdésekre.
-* [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
+* [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 

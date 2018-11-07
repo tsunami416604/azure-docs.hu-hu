@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: 4438cff0dcf5e896f39729d9871d4deb3207b4b8
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c3bdad6f1c199dda867370126eb7dcf5c296a12d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107995"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230427"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight-fürtök kapacitástervezése
 
@@ -38,7 +38,7 @@ HDInsight számos Azure-régióban érhető el. Keresse meg a legközelebbi rég
 
 ### <a name="location-of-default-storage"></a>Alapértelmezett tároló helye
 
-Az alapértelmezett tároló, egy Azure Storage-fiókot vagy egy Azure Data Lake Store a fürt ugyanazon a helyen kell lennie. Az Azure Storage minden helyeken érhető el. Bizonyos régiókban érhető el Data Lake Store – tekintse meg a jelenlegi Data Lake Store rendelkezésre állási csoportban *tárolási* a [Azure termékek rendelkezésre álló régiók szerint](https://azure.microsoft.com/regions/services/).
+Az alapértelmezett tároló, egy Azure Storage-fiókot vagy egy Azure Data Lake Store a fürt ugyanazon a helyen kell lennie. Az Azure Storage minden helyeken érhető el. Data Lake Store Gen1 érhető el egyes régiókban – tekintse meg a jelenlegi Data Lake Store rendelkezésre állási csoportban *tárolási* a [Azure termékek rendelkezésre álló régiók szerint](https://azure.microsoft.com/regions/services/).
 
 ### <a name="location-of-existing-data"></a>A meglévő adatok helye
 
@@ -48,7 +48,7 @@ Ha már rendelkezik, a storage-fiók vagy a Data Lake Store az Ön adatait tarta
 
 Miután egy üzembe helyezett HDInsight-fürtöt, további Azure Storage-fiókokat csatlakoztathat vagy egyéb Data Lake Store eléréséhez. A storage-fiókok a fürt ugyanazon a helyen kell lennie. Bár ez vezethet be bizonyos adatok olvasási/írási késés egy Data Lake Store egy másik helyre is lehet.
 
-Az Azure Storage rendelkezik néhány [kapacitáskorlátait](../azure-subscription-service-limits.md#storage-limits), míg a Data Lake Store gyakorlatilag korlátlan.
+Az Azure Storage rendelkezik néhány [kapacitáskorlátait](../azure-subscription-service-limits.md#storage-limits), míg a Data Lake Store Gen1 gyakorlatilag korlátlan.
 
 A fürt különböző tárfiókokban kombinációját férhetnek hozzá. Tipikus példák:
 

@@ -12,12 +12,12 @@ ms.author: daleche
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: a34745c5586fa90d3e167bb3be22e93dfa83b7af
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 99c7e73bb133349ef1c14295a49f278d64a15226
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041730"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257959"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Az Azure SQL Database-kapcsolatok problémáinak hibaelhárítása
 Az Azure SQL Database-adatbázishoz létesített kapcsolat megszakad, amikor [hibaüzenetek](sql-database-develop-error-messages.md). Ez a cikk a program központi, amely segítséget nyújt az Azure SQL Database kapcsolati problémák elhárításához. Azt mutatja be [gyakori okok](#cause) kapcsolódási problémák, akkor javasolja [hibaelhárítási eszköz](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) , amely segít identitás a problémát, és megoldásuk megoldásához [átmeneti hibák](#troubleshoot-transient-errors) és [állandó és nem átmeneti hibák](#troubleshoot-persistent-errors). 
@@ -79,8 +79,8 @@ Ha az alkalmazás nem állandó csatlakozás az Azure SQL Database, azt általá
 4. Ellenőrizze a szolgáltatás állapotát az irányítópulton. Ha úgy gondolja, hogy van egy regionális kimaradás, [helyreállítás szolgáltatáskimaradás](sql-database-disaster-recovery.md) a lépéseket egy új régióban helyreállításához.
 
 ## <a name="next-steps"></a>További lépések
-* [Keresés a dokumentációban a Microsoft Azure](http://azure.microsoft.com/search/documentation/)
-* [Az Azure SQL Database szolgáltatás legújabb frissítéseinek megtekintése](http://azure.microsoft.com/updates/?service=sql-database)
+* [Keresés a dokumentációban a Microsoft Azure](https://azure.microsoft.com/search/documentation/)
+* [Az Azure SQL Database szolgáltatás legújabb frissítéseinek megtekintése](https://azure.microsoft.com/updates/?service=sql-database)
 
 ## <a name="additional-resources"></a>További források
 * [Az SQL Database fejlesztési áttekintése](sql-database-develop-overview.md)

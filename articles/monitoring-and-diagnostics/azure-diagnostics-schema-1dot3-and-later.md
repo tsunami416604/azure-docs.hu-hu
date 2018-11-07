@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: a1f6aae69580f2afe5aceabd70cfe8e6fd3151b8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5e74a845fbf263791e3e07006e79e4332646dfd5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977944"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256306"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Az Azure Diagnostics 1.3 és újabb konfigurációs séma
 > [!NOTE]
@@ -138,8 +138,8 @@ Azure Diagnostics használatával kapcsolatos további információkért lásd: 
 
   </WadCfg>  
 
-  <StorageAccount>diagstorageaccount</StorageAccount>
-  <StorageType>TableAndBlob</StorageType> <!-- Added in 1.8 -->  
+  <StorageAccount>diagstorageaccount</StorageAccount>
+  <StorageType>TableAndBlob</StorageType> <!-- Added in 1.8 -->  
   </PublicConfig>  
 
   <PrivateConfig>  <!-- Added in 1.3 -->  
@@ -532,7 +532,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Gyermekelemek|Leírás|  
 |--------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|Konfigurálja a generált események gyűjtését [EventSource osztály](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Kötelező attribútum:<br /><br /> **szolgáltató** -az osztály nevét az EventSource esemény.<br /><br /> Nem kötelező attribútumok a következők:<br /><br /> - **scheduledTransferLogLevelFilter** – minimális súlyossági szintje a tárfiókhoz való átviteléhez.<br /><br /> - **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML "Időtartam adattípus."](http://www.w3schools.com/xml/schema_dtypes_date.asp) |  
+|**EtwEventSourceProviderConfiguration**|Konfigurálja a generált események gyűjtését [EventSource osztály](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Kötelező attribútum:<br /><br /> **szolgáltató** -az osztály nevét az EventSource esemény.<br /><br /> Nem kötelező attribútumok a következők:<br /><br /> - **scheduledTransferLogLevelFilter** – minimális súlyossági szintje a tárfiókhoz való átviteléhez.<br /><br /> - **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML "Időtartam adattípus."](http://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 |**EtwManifestProviderConfiguration**|Kötelező attribútum:<br /><br /> **szolgáltató** -esemény szolgáltatójának a GUID-azonosító<br /><br /> Nem kötelező attribútumok a következők:<br /><br /> - **scheduledTransferLogLevelFilter** – minimális súlyossági szintje a tárfiókhoz való átviteléhez.<br /><br /> - **scheduledTransferPeriod** – Storage ütemezett átvitel közötti időtartam kerekítve a legközelebbi egész percre. Az érték egy [XML "Időtartam adattípus."](http://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 
 
@@ -540,7 +540,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration Element  
  *Fa: Root – - - WadCFG - PublicConfig DiagnosticMonitorConfiguration - DiagnosticsConfiguration EtwProviders - EtwEventSourceProviderConfiguration*
 
- Konfigurálja a generált események gyűjtését [EventSource osztály](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx).  
+ Konfigurálja a generált események gyűjtését [EventSource osztály](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx).  
 
 |Gyermekelemek|Leírás|  
 |--------------------|-----------------|  

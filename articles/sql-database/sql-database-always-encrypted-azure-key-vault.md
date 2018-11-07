@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: e0971b6b9b8460447d383d238843d4bdddc912f7
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 5499193ba96d5a32ac6d3b310eee531c68fd52fb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958976"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255922"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Bizalmas adatok védelme és tárolni a titkosítási kulcsokat az Azure Key Vaultban
 
@@ -635,5 +635,5 @@ Miután létrehozott egy adatbázist, amely használja az Always Encrypted, érd
 * [Transzparens adattitkosítás](https://msdn.microsoft.com/library/bb934049.aspx)
 * [SQL Server encryption](https://msdn.microsoft.com/library/bb510663.aspx)
 * [Always Encrypted varázsló](https://msdn.microsoft.com/library/mt459280.aspx)
-* [Mindig titkosított blog](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
+* [Mindig titkosított blog](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
 

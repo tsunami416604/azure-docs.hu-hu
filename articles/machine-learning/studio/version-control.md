@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2016
-ms.openlocfilehash: ff30afdcfebe51d914d2f7504ab3bf530309c222
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: d201d8848891038355fad01f610070259ad1e42a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054892"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259190"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Alkalmazáséletciklus-kezelés az Azure Machine Learning Studióban
 Az Azure Machine Learning Studio egy olyan eszköz, amely a rendszer üzembe helyezte azt az Azure-felhőplatformon a machine learning-kísérletek fejlesztéséhez. Például a Visual Studio IDE, és a méretezhető felhőalapú szolgáltatás Egyesítés egyetlen platformban. Beépítheti a verziókezelés standard Application Lifecycle Management (ALM) eljárásait különböző eszközök automatikus végrehajtás és üzembe helyezés, Azure Machine Learning studióba. Ez a cikk ismerteti az egyes beállítások és módszerek.
@@ -43,7 +43,7 @@ Megnyitás után mentse a pillanatkép kísérlet egy új kísérlet, és módos
 Ha törli a kísérletet, a rendszer törli a kísérlet összes pillanatképet.
 
 ### <a name="exportimport-experiment-in-json-format"></a>Exportálás/importálás kísérlet JSON formátumban
-A futtatási előzményeket pillanatképeknek a kísérlet egy nem módosítható verzióját minden alkalommal, amikor azt elküldve a futtatása az Azure Machine Learning Studio ne. Is mentheti a kísérlet egy helyi példányát, és ellenőrizze a kedvenc forráskódú verziókezelő rendszer, például a Team Foundation Server, és később hozza létre újból a helyi fájl kísérlet. Használhatja a [Azure Machine Learning PowerShell](http://aka.ms/amlps) parancsmagok [ *Export-AmlExperimentGraph* ](https://github.com/hning86/azuremlps#export-amlexperimentgraph) és [  *Import-AmlExperimentGraph* ](https://github.com/hning86/azuremlps#import-amlexperimentgraph) hajthatja végre, hogy.
+A futtatási előzményeket pillanatképeknek a kísérlet egy nem módosítható verzióját minden alkalommal, amikor azt elküldve a futtatása az Azure Machine Learning Studio ne. Is mentheti a kísérlet egy helyi példányát, és ellenőrizze a kedvenc forráskódú verziókezelő rendszer, például a Team Foundation Server, és később hozza létre újból a helyi fájl kísérlet. Használhatja a [Azure Machine Learning PowerShell](https://aka.ms/amlps) parancsmagok [ *Export-AmlExperimentGraph* ](https://github.com/hning86/azuremlps#export-amlexperimentgraph) és [  *Import-AmlExperimentGraph* ](https://github.com/hning86/azuremlps#import-amlexperimentgraph) hajthatja végre, hogy.
 
 A JSON-fájlt a kísérlet diagram, többek között előfordulhat, hogy eszközökhöz való hivatkozást a munkaterületen, például egy adatkészletet és betanított modell képviselő szöveges alakot. A szerializált verzió az eszköz nem tartalmaz. Kísérel meg importálni a JSON-dokumentum vissza a munkaterületre, ha a hivatkozott eszközök már léteznie kell az adott objektum azonosítóját, amely a kísérletben hivatkozott. Ellenkező esetben nem férhet hozzá az importált kísérletet.
 
@@ -85,7 +85,7 @@ Ha létrehoz egy új Azure Resource Manager-alapú webes szolgáltatás, a végp
 Miután az exportált WSD-fájlt, és szabályozhatja azt a verziót, is telepítheti a WSD új webszolgáltatásként egy másik web service-csomag egy másik Azure-régióban. Csak ellenőrizze, hogy a megfelelő storage-fiók konfigurációját, valamint az új webes szolgáltatási csomag. Adjon meg Javítása a különböző iLearner-fájlt, módosítsa a WSD-fájlt, és a hely hivatkozás a betanított modell frissítése, és új webszolgáltatásként üzembe helyezni.
 
 ## <a name="automate-experiment-execution-and-deployment"></a>Kísérlet-végrehajtás és üzembe helyezésének automatizálása
-Fontos szempont a ALM, hogy tudni végrehajtási és az alkalmazás központi telepítési folyamat automatizálása. Az Azure Machine Learning, ennek segítségével végezheti a [PowerShell-modul](http://aka.ms/amlps). Íme egy példa, amely a standard szintű alkalmazások teljes körű lépések automatikus végrehajtás és üzembe helyezési folyamat használatával a [Azure Machine Learning Studio PowerShell modul](http://aka.ms/amlps). Az egyes lépések, amelyek segítségével a lépés elvégzéséhez legalább egy PowerShell-parancsmagok van csatolva.
+Fontos szempont a ALM, hogy tudni végrehajtási és az alkalmazás központi telepítési folyamat automatizálása. Az Azure Machine Learning, ennek segítségével végezheti a [PowerShell-modul](https://aka.ms/amlps). Íme egy példa, amely a standard szintű alkalmazások teljes körű lépések automatikus végrehajtás és üzembe helyezési folyamat használatával a [Azure Machine Learning Studio PowerShell modul](https://aka.ms/amlps). Az egyes lépések, amelyek segítségével a lépés elvégzéséhez legalább egy PowerShell-parancsmagok van csatolva.
 
 1. [Töltse fel az adatkészlet](https://github.com/hning86/azuremlps#upload-amldataset).
 2. Betanítási kísérlet másolja be a munkaterületet egy [munkaterület](https://github.com/hning86/azuremlps#copy-amlexperiment) vagy [katalógus](https://github.com/hning86/azuremlps#copy-amlexperimentfromgallery), vagy [importálása](https://github.com/hning86/azuremlps#import-amlexperimentgraph) egy [exportált](https://github.com/hning86/azuremlps#export-amlexperimentgraph) helyi kísérlet a lemez.
@@ -99,6 +99,6 @@ Fontos szempont a ALM, hogy tudni végrehajtási és az alkalmazás központi te
 10. A webszolgáltatás teszteléséhez [RRS](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) vagy [BES](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint) végpont.
 
 ## <a name="next-steps"></a>További lépések
-* Töltse le a [Azure Machine Learning Studio PowerShell](http://aka.ms/amlps) modul és a kezdési a ALM feladatok automatizálására.
+* Töltse le a [Azure Machine Learning Studio PowerShell](https://aka.ms/amlps) modul és a kezdési a ALM feladatok automatizálására.
 * Ismerje meg, hogyan [létrehozása és kezelése a nagy számú gépi Tanulási modellek csak egyetlen kísérletben használatával](create-models-and-endpoints-with-powershell.md) PowerShell és az átképezési API segítségével.
 * Tudjon meg többet [Azure Machine Learning-webszolgáltatások üzembe helyezéséhez](publish-a-machine-learning-web-service.md).

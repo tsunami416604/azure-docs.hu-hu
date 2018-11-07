@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 29faba8947e189072317f1e85ba6fe71e7805462
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 99b915f14aaa7d306d1bceb5bd4f6bb23abdb929
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957845"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245375"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Távoli asztali szolgáltatások vagy a rendszergazdai jelszót egy Windows virtuális gép visszaállítása
 Ha nem tud csatlakozni egy Windows virtuális gép (VM), új helyi rendszergazdai jelszót, vagy alaphelyzetbe állítása a távoli asztali szolgáltatások-konfiguráció (Windows rendszerű tartományvezérlőkön nem támogatott). A jelszó alaphelyzetbe állítása, használja az Azure PowerShell vagy az Azure Portalon, vagy a Virtuálisgép-hozzáférési bővítmény. Miután a virtuális géphez már bejelentkezett, a jelszó alaphelyzetbe, hogy helyi rendszergazda.  
@@ -93,7 +93,7 @@ Győződjön meg róla, hogy rendelkezik-e a [legújabb PowerShell-modul telepí
 
 - [További tudnivalók az Azure-beli Virtuálisgép-bővítmények és szolgáltatások](../extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-- [Csatlakozhat egy Azure virtuális gépekhez RDP vagy SSH](http://msdn.microsoft.com/library/azure/dn535788.aspx).
+- [Csatlakozhat egy Azure virtuális gépekhez RDP vagy SSH](https://msdn.microsoft.com/library/azure/dn535788.aspx).
 
 - [Egy Windows-alapú Azure virtuális gép távoli asztali kapcsolatok hibaelhárítása](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

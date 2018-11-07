@@ -1,6 +1,6 @@
 ---
-title: Az Azure App Service egy felhőalapú mappából a szinkronizálási tartalom
-description: Megtudhatja, hogyan telepítse az alkalmazást az Azure App Service tartalom szinkronizálási keresztül egy felhőalapú mappából.
+title: Az Azure App Service egy felhőbeli mappa szinkronizálási tartalom
+description: Megtudhatja, hogyan helyezze üzembe az alkalmazást az Azure App Service segítségével a tartalmak szinkronizálása egy felhőbeli mappa.
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -13,55 +13,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: 3781010c74daa51c92813db85ee03eaa4c02a4cf
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 3796f5c8956b633a4789baaf31a439746dc96b96
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233587"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233762"
 ---
-# <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Az Azure App Service egy felhőalapú mappából a szinkronizálási tartalom
-Ez a cikk bemutatja, hogyan tartalom szinkronizálása [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) a Dropbox és a onedrive-on. 
+# <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Az Azure App Service egy felhőbeli mappa szinkronizálási tartalom
+Ez a cikk bemutatja, hogyan szinkronizálja a tartalmat [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) a Dropbox és a onedrive vállalati verzió. 
 
-Az igény szerinti tartalom sync telepítési van-e kapcsolva az App Service által [Kudu telepítési motor](https://github.com/projectkudu/kudu/wiki). A mintaalkalmazás kódját és a tartalom a kijelölt felhő mappában, és beállíthatja, majd szinkronizálja az App Service egy kattintással. Tartalom szinkronizálása a Kudu build kiszolgálót használja. 
+Az igény szerinti tartalom szinkronizálás üzembe helyezése az App Service-ben működteti [Kudu telepítési motor](https://github.com/projectkudu/kudu/wiki). A kód és a egy kijelölt felhőbeli mappa tartalmát is, és szinkronizálhatja az App Service egy gombra kattintva elküldjön. Tartalmak szinkronizálása a Kudu-buildelési kiszolgáló használ. 
 
-## <a name="enable-content-sync-deployment"></a>Tartalom szinkronizálási központi telepítés engedélyezése
+## <a name="enable-content-sync-deployment"></a>Tartalmak szinkronizálása üzembe helyezés engedélyezése
 
-Ahhoz, hogy a tartalom szinkronizálása, az App Service alkalmazás oldalra léphet a [Azure-portálon](https://portal.azure.com).
+Tartalmak szinkronizálása engedélyezéséhez nyissa meg az App Service-oldalra a [az Azure portal](https://portal.azure.com).
 
-A bal oldali menüben kattintson **Telepítőközpontot** > **OneDrive** vagy **Dropbox** > **engedélyezés**. Az engedélyezési útmutatást követve. 
+A bal oldali menüben kattintson a **üzembe helyezési központ** > **onedrive vállalati verzió** vagy **Dropbox** > **engedélyezés**. Kövesse az engedélyezési utasításokat. 
 
 ![](media/app-service-deploy-content-sync/choose-source.png)
 
-Csak kell ahhoz, hogy a OneDrive vagy a Dropbox egyszer. Ha a felhasználó már jogosult, kattintson **Folytatás**. A meghatalmazott OneDrive vagy a Dropbox-fiók kattintva módosíthat **fiók módosítása**.
+Ön csak engedélyezés szükséges a onedrive vállalati verzió vagy Dropbox egyszer. Ha a felhasználó már jogosult, egyszerűen kattintson **Folytatás**. Kattintva módosíthatja az arra jogosult onedrive vállalati verzió vagy Dropbox-fiókjában **fiók módosítása**.
 
 ![](media/app-service-deploy-content-sync/continue.png)
 
-Az a **konfigurálása** lapon, válassza ki a szinkronizálni kívánt mappát. A mappa létrehozása a következő kijelölt tartalom elérési úton található a onedrive-on vagy a dropbox-bA. 
+Az a **konfigurálása** lapon, válassza ki a szinkronizálni kívánt mappát. Ez a mappa alatt a következő kijelölt tartalom elérési útvonalát a onedrive vállalati verzió vagy Dropbox jön létre. 
    
 * **Onedrive vállalati verzió**: `Apps\Azure Web Apps`
 * **Dropbox**: `Apps\Azure`
 
 Ha befejezte, kattintson a **Folytatás**.
 
-Az a **összegzés** lapon ellenőrizze a beállításokat, majd kattintson **Befejezés**.
+Az a **összefoglalás** oldalon ellenőrizze a beállításokat, kattintson a **Befejezés**.
 
 ## <a name="synchronize-content"></a>Tartalom szinkronizálása
 
-Ha meg szeretné szinkronizálni a felhő mappa tartalma az App Service, lépjen vissza a **Telepítőközpontot** lapot, és kattintson **szinkronizálási**.
+Ha meg szeretné szinkronizálni a felhőbeli mappa tartalmát az App Service szolgáltatással, lépjen vissza a **üzembe helyezési központ** lapot, és kattintson **szinkronizálási**.
 
 ![](media/app-service-deploy-content-sync/synchronize.png)
    
    > [!NOTE]
-   > Az API-k, a mögöttes különbségek miatt **onedrive vállalati verzió** jelenleg nem támogatott. 
+   > Az API-k, a mögöttes különbségek miatt **OneDrive vállalati verzióba** jelenleg nem támogatott. 
    > 
    > 
 
-## <a name="disable-content-sync-deployment"></a>Tartalom sync telepítési letiltása
+## <a name="disable-content-sync-deployment"></a>Tartalmak szinkronizálása üzembe helyezés letiltása
 
-A tartalom-szinkronizálás letiltása, az App Service alkalmazás oldalra navigáljon a [Azure-portálon](https://portal.azure.com).
+Tartalmak szinkronizálása letiltásához nyissa meg az App Service-oldalra a [az Azure portal](https://portal.azure.com).
 
-A bal oldali menüben kattintson **Telepítőközpontot** > **OneDrive** vagy **Dropbox** > **Disconnect**.
+A bal oldali menüben kattintson a **üzembe helyezési központ** > **onedrive vállalati verzió** vagy **Dropbox** > **Disconnect**.
 
 ![](media/app-service-deploy-content-sync/disable.png)
 
@@ -70,4 +70,4 @@ A bal oldali menüben kattintson **Telepítőközpontot** > **OneDrive** vagy **
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A helyi Git-tárház telepítése](app-service-deploy-local-git.md)
+> [Üzembe helyezés a helyi Git-adattár](app-service-deploy-local-git.md)

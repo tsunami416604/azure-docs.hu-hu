@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 18e4adb47ecf8e6d44edea873a4b3cc73492b273
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 5e34aae62f871cba2a27a292242cff8e90c67934
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301483"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228980"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Az Azure Portalon a függvényalkalmazás kezelése 
 
@@ -50,7 +50,7 @@ Előfordulhat, hogy az erőforrások megtalálása nehezebb a [Azure Portal]. Ho
 
 A **beállítások** lapon látható, amelyen frissítheti a függvényalkalmazás által használt funkciók futtatókörnyezet verziójának. Emellett akkor is, a gazdagép kulcsokat használt HTTP-hozzáférés korlátozása a függvények által az függvényalkalmazás üzemeltetett kezelheti.
 
-Functions támogatja az üzemeltető Használatalapú és App Service-futtatási csomag. További információkért lásd: [válassza ki a megfelelő service-csomag az Azure Functions](functions-scale.md). A Használatalapú csomag jobb kiszámíthatóbbá funkciók lehetővé teszi, hogy GB-másodpercben a napi használati kvóta beállításával korlátozhatja a platform használatát. A napi használati kvóta elérésekor a rendszer leállítja a függvényalkalmazást. Lehet, hogy újra engedélyezni az ugyanabban a környezetben, mint a napi költségkvóta létrehozó egy függvényalkalmazást a költségkeret kvóta elérése miatt leállt. Tekintse meg a [Azure Functions díjszabását ismertető lapon](http://azure.microsoft.com/pricing/details/functions/) számlázással kapcsolatos részletekért.   
+Functions támogatja az üzemeltető Használatalapú és App Service-futtatási csomag. További információkért lásd: [válassza ki a megfelelő service-csomag az Azure Functions](functions-scale.md). A Használatalapú csomag jobb kiszámíthatóbbá funkciók lehetővé teszi, hogy GB-másodpercben a napi használati kvóta beállításával korlátozhatja a platform használatát. A napi használati kvóta elérésekor a rendszer leállítja a függvényalkalmazást. Lehet, hogy újra engedélyezni az ugyanabban a környezetben, mint a napi költségkvóta létrehozó egy függvényalkalmazást a költségkeret kvóta elérése miatt leállt. Tekintse meg a [Azure Functions díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/functions/) számlázással kapcsolatos részletekért.   
 
 ## <a name="platform-features-tab"></a>Platform szolgáltatásai lapon
 

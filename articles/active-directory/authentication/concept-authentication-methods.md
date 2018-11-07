@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 67f99e68bc4091d076e27aee06c2851bc77e6fc7
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: d8d7850e7d5253cfec4431fed3e09f4007995494
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378924"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249693"
 ---
 # <a name="what-are-authentication-methods"></a>Mik a hitelesítési módszerek?
 
@@ -122,7 +122,7 @@ A Microsoft azt javasolja, hogy egy e-mail-fiókot, amely nincs szüksége a fel
 
 A Microsoft Authenticator alkalmazás egy további, az Azure ad-ben munkahelyi vagy iskolai Microsoft-fiókja biztonsági szintet biztosít.
 
-A Microsoft Authenticator alkalmazás [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) és [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071) rendszereken érhető el.
+A Microsoft Authenticator alkalmazás [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) és [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071) rendszereken érhető el.
 
 > [!NOTE]
 > Felhasználó nem fog regisztrálni az mobilalkalmazás regisztráció önkiszolgáló jelszó-visszaállítás során. Ehelyett a felhasználók regisztrálhatják saját mobilalkalmazást található [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup) vagy a biztonsági adatok regisztrálása verzió díjának [ https://aka.ms/setupsecurityinfo ](https://aka.ms/setupsecurityinfo).

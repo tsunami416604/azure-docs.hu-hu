@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 12dd93edce365509488631e4ca27462256abfca8
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 43e2101f413985974b964f2261d852692bcac61d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452666"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251440"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referencia – IoT Hub-végpontok
 
@@ -57,7 +57,7 @@ Az alábbi lista ismerteti a végpontok:
 
 * **Szolgáltatásvégpontokat**. Minden IoT-központ megjelenít egy végpontokat a megoldás háttérrendszerének, és az eszközök közötti kommunikációt. Egy kivétellel ezeket a végpontokat csak akkor érhetők el használatával a [AMQP](https://www.amqp.org/) protokollt. A metódus meghívása végpont a HTTPS protokoll használatával van közzétéve.
   
-  * *Eszköz – felhő üzeneteket fogadni*. Ez a végpont kompatibilis [Azure Event Hubs](http://azure.microsoft.com/documentation/services/event-hubs/). A háttérszolgáltatás segítségével, olvassa el a [eszköz – felhő üzeneteket](iot-hub-devguide-messages-d2c.md) az eszközök által küldött. Az egyedi végpontok is létrehozhat az IoT hub mellett a beépített végpont.
+  * *Eszköz – felhő üzeneteket fogadni*. Ez a végpont kompatibilis [Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/). A háttérszolgáltatás segítségével, olvassa el a [eszköz – felhő üzeneteket](iot-hub-devguide-messages-d2c.md) az eszközök által küldött. Az egyedi végpontok is létrehozhat az IoT hub mellett a beépített végpont.
   
   * *Felhőből az eszközre irányuló üzenetek küldése és fogadása kézbesítési visszaigazolások*. A végpontok engedélyezése a megoldás háttérrendszerén küldése megbízható [felhőből az eszközre irányuló üzenetek](iot-hub-devguide-messages-c2d.md), és a megfelelő kézbesítési vagy lejárati nyugták fogadásához.
   

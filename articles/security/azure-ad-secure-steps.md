@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 94d96cab28f738984b3d05d5eee0754e8c5e75b6
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: d52431b50e37101b0272e3ce4bbf91011a477775
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341577"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252087"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépést a személyazonosság-infrastruktúra védelme
 
@@ -182,4 +182,4 @@ Sok szempontot, biztonságos identitás-infrastruktúrát, de az 5. lépés – 
 Nagyra értékeljük, hogyan súlyosan Identitásbiztonság igénybe vehet, és Reméljük, ez a dokumentum egy hasznos ütemterv egy biztonságosabb rendszer kialakításához, a szervezet számára.
 
 ## <a name="next-steps"></a>További lépések
-Ha tervezéséhez és üzembe helyezése a javaslatok segítségre van szüksége, tekintse meg a [Azure ad-ben a projekt központi telepítési csomagok](http://aka.ms/deploymentplans) segítséget.
+Ha tervezéséhez és üzembe helyezése a javaslatok segítségre van szüksége, tekintse meg a [Azure ad-ben a projekt központi telepítési csomagok](https://aka.ms/deploymentplans) segítséget.

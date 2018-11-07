@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 8c236b995d71cd067546cea5eeaaebe6d5dc4fab
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: de8a61b315ad433bef638368a30130b677e0a005
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300647"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229014"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Incidensek és riasztások vizsgálata az Azure Security Centerben (előzetes verzió)
 Ez a dokumentum segítséget nyújt a biztonsági incidensek és riasztások vizsgálatához az Azure Security Center vizsgálati funkciójának használatával.
@@ -118,4 +118,4 @@ Ebben a dokumentumban megismerkedhetett a Security Center vizsgálati funkcióin
 * [Az Azure Security Center biztonsági riasztásainak megismerése](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). A különböző típusú biztonsági riasztásokat ismertető útmutató.
 * [Azure Security Center – Hibaelhárítási útmutató](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). A Security Center gyakori problémáinak elhárítását ismereti.
 * [Azure Security Center – gyakori kérdések](security-center-faq.md) Gyakori kérdések a szolgáltatás használatával kapcsolatban.
-* [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
+* [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.

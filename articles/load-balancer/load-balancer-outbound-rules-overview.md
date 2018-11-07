@@ -4,8 +4,6 @@ description: Kimenő szabályok használatával határozza meg a kimenő hálóz
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jpconnock
-tags: azure-resource-manager
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: 0ba7ed902c6ecb7a328aa6db3d3855b88bed2813
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: ab09eb939d760a0f06be758fdf83591565aaf7d0
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637562"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219375"
 ---
 # <a name="load-balancer-outbound-rules"></a>A terheléselosztó kimenő szabályok
 
@@ -69,9 +67,9 @@ API-verzió "2018-07-01" lehetővé teszi egy kimenő szabály definícióját s
 
 Kimenő szabály csak egyetlen nyilvános IP-cím is használható, amíg kimenő szabályok terhei konfigurációs kimenő NAT méretezése Több IP-cím használatával nagy méretű forgatókönyvek tervezése és a kimenő szabályok használatával beállíthatja csökkentése [SNAT Erőforrásfogyás](load-balancer-outbound-connections.md#snatexhaust) rejtő mintákat.  
 
-Minden további IP-cím, egy előtérbeli által biztosított 64 000 elmúló port SNAT portokat használja, hogy a terheléselosztó számára biztosít. Míg a terheléselosztás és a bejövő NAT-szabályokat egyetlen előtér, a kimenő szabály kibővíti az előtér-formátumban, és lehetővé teszi, hogy több előtérrendszer ugyanabban a szabályban.  Több előtérrendszer szabályonként meg kell szorozni a mennyiséget, a rendelkezésre álló SNAT portok minden egyes nyilvános IP-címmel, és nagyon nagy méretű forgatókönyveket támogatja.
+Minden további IP-cím, egy előtérbeli által biztosított 64 000 elmúló port SNAT portokat használja, hogy a terheléselosztó számára biztosít. Míg a terheléselosztás és a bejövő NAT-szabályokat egyetlen előtér, a kimenő szabály kibővíti az előtér-formátumban, és lehetővé teszi, hogy több előtérrendszer ugyanabban a szabályban.  Több előtérrendszer szabályonként meg kell szorozni a mennyiséget, a rendelkezésre álló SNAT portok minden egyes nyilvános IP-címmel, és nagy forgatókönyveket támogatja.
 
-Ezenkívül használhatja a [nyilvános IP-előtag](https://aka.ms/lbpublicipprefix) közvetlenül a kimenő szabály.  Így könnyebben méretezéssel és a forgalom származik az Azure-alapú az egyszerűsített engedélyezési lehetővé teszi. Előtérbeli IP-konfiguráció a terheléselosztó erőforrás közvetlenül hivatkozni egy nyilvános IP-címelőtag belül is beállíthatja.  Ez lehetővé teszi, hogy a terheléselosztó a nyilvános IP-előtag kizárólagos felett, és a kimenő szabály automatikusan fogja használni az összes nyilvános IP-címeire a nyilvános IP-előtag a kimenő kapcsolatok számára.  Minden egyes nyilvános IP-előtag a tartományon belüli IP-címet adjon meg 64 000 elmúló port az SNAT portokat használja, hogy a terheléselosztó IP-címenként.   
+Ezenkívül használhatja a [nyilvános IP-előtag](https://aka.ms/lbpublicipprefix) közvetlenül a kimenő szabály.  Előtag egyszerűbb méretezést és egyszerűsített engedélyezési lista forgalom származik az az Azure-alapú nyilvános IP-cím használatával biztosít. Előtérbeli IP-konfiguráció a terheléselosztó erőforrás közvetlenül hivatkozni egy nyilvános IP-címelőtag belül is beállíthatja.  Ez lehetővé teszi, hogy a terheléselosztó a nyilvános IP-előtag kizárólagos felett, és a kimenő szabály automatikusan fogja használni az összes nyilvános IP-címeire a nyilvános IP-előtag a kimenő kapcsolatok számára.  Minden egyes nyilvános IP-előtag a tartományon belüli IP-címet adjon meg 64 000 elmúló port az SNAT portokat használja, hogy a terheléselosztó IP-címenként.   
 
 Nem lehet egyedi nyilvános IP-cím erőforrások a nyilvános IP-előtag alapján létrehozott, ez a beállítás használatakor, mert az kimenő szabályt a nyilvános IP-előtag teljes vezérlési jogosultsággal kell rendelkeznie.  További részletes finomhangolás van szüksége, ha az egyes nyilvános IP-cím erőforrás létrehozása a nyilvános IP-előtag, és több nyilvános IP-címek külön-külön hozzárendelése az előtér egy kimenő szabály.
 

@@ -1,6 +1,6 @@
 ---
-title: Google hitelesítési alkalmazásszolgáltatások alkalmazás konfigurálása
-description: Tudnivalók az App Service szolgáltatások alkalmazás Google-hitelesítés konfigurálása.
+title: Az App Services-alkalmazás Google-hitelesítés konfigurálása
+description: Ismerje meg, hogyan konfigurálja az App Services-alkalmazás hitelesítés Google-fiókkal.
 services: app-service
 documentationcenter: ''
 author: mattchenderson
@@ -14,47 +14,47 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: f89ff3a030f1da75bca538eefaf2496e9be8e97b
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 6af0dfb00ff791b8a73ebf1ad14b35d99f67a483
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233819"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227416"
 ---
-# <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>Az App Service alkalmazás használhatja a Google-bejelentkezés konfigurálása
+# <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>Google-bejelentkezés használatához App Service-alkalmazás konfigurálása
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-Ez a témakör bemutatja, hogyan konfigurálhatja az Azure App Service egy hitelesítésszolgáltatót Google használandó.
+Ez a témakör bemutatja, hogyan konfigurálhatja az Azure App Service, Google adatokként egy hitelesítési szolgáltatót.
 
-Ebben a témakörben az eljárás végrehajtásához egy hitelesített e-mail-címmel rendelkező Google fiókkal kell rendelkeznie. Új Google-fiók létrehozásához látogassa meg az [accounts.google.com](http://go.microsoft.com/fwlink/p/?LinkId=268302) webhelyet.
+Ebben a témakörben az eljárás végrehajtásához egy hitelesített e-mail-címmel rendelkező Google-fiókkal kell rendelkeznie. Új Google-fiók létrehozásához látogassa meg az [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302) webhelyet.
 
-## <a name="register"> </a>Az alkalmazás regisztrálása a Google
-1. Jelentkezzen be a [Azure Portal], és keresse meg az alkalmazás. Másolás a **URL-cím**, amely később a Google alkalmazás konfigurálása.
-2. Keresse meg a [Google API-k](http://go.microsoft.com/fwlink/p/?LinkId=268303) webhelyét, jelentkezzen be Google fiók hitelesítő adatait, kattintson **projekt létrehozása**, adjon meg egy **projekt neve**, majd kattintson a  **Hozzon létre**.
-3. A projekt létrehozása után válassza ki azt. A projekt irányítópultján kattintson **Ugrás az áttekintéshez API-k**.
+## <a name="register"> </a>Regisztrálja az alkalmazást a Google-lel
+1. Jelentkezzen be a [Azure Portal], és keresse meg az alkalmazást. Másolás a **URL-cím**, amely, amelyet később az Google-alkalmazás konfigurálása.
+2. Keresse meg a [Google API-k](https://go.microsoft.com/fwlink/p/?LinkId=268303) webhelyét, jelentkezzen be a Google hitelesítő adatait, kattintson a **projekt létrehozása**, adja meg egy **projektnév**, majd kattintson  **Hozzon létre**.
+3. A projekt létrehozása után kattintson rá. A projekt irányítópultján kattintson **nyissa meg az API-k áttekintése**.
 4. Válassza ki **API-k engedélyezése és a szolgáltatások**. Keresse meg **Google + API**, és válassza ki azt. Kattintson a **engedélyezése**.
-5. A bal oldali navigációs **hitelesítő adatok** > **OAuth-hozzájárulás képernyő**, majd jelölje be a **E-mail cím**, adjon meg egy **termékneve**, és kattintson a **mentése**.
+5. A bal oldali navigációs **hitelesítő adatok** > **OAuth-hozzájárulási képernyő**, majd válassza ki a **E-mail-cím**, adjon meg egy **terméknév**, és kattintson a **mentése**.
 6. Az a **hitelesítő adatok** lapra, majd **hitelesítő adatok létrehozása** > **OAuth-Ügyfélazonosító**.
 7. Az "Ügyfél-azonosító létrehozása" képernyőn válassza ki a **webes alkalmazás**.
-8. Illessze be az App Service **URL-cím** másolt korábban be **jogosult JavaScript-források**, majd illessze be az átirányítási az URI **jogosult átirányítási URI-**. Az átirányítási URI megadása az alkalmazás fűzhető hozzá az elérési út az URL-cím */.auth/login/google/callback*. Például: `https://contoso.azurewebsites.net/.auth/login/google/callback`. Győződjön meg arról, hogy a HTTPS protokollt használ. Ezt követően kattintson a **Create** (Létrehozás) gombra.
-9. A következő képernyőn jegyezze fel az ügyfél-azonosító és a titkos ügyfélkódot értékeit.
+8. Illessze be az App Service **URL-cím** be korábban másolt **JavaScript engedélyezett eredetek**, majd illessze be az átirányítási URI-t az **jogosult átirányítási URI-t**. Az átirányítási URI-ja URL-címét az elérési utat, kiegészítve az alkalmazás */.auth/login/google/callback*. Például: `https://contoso.azurewebsites.net/.auth/login/google/callback`. Győződjön meg arról, hogy használja a HTTPS-sémát. Ezt követően kattintson a **Create** (Létrehozás) gombra.
+9. A következő képernyőn jegyezze fel az ügyfél-Azonosítóját és ügyfélkulcsát értékeit.
 
     > [!IMPORTANT]
-    > A titkos ügyfélkulcs egy fontos biztonsági hitelesítő adatok. Ne ossza meg senkivel ezt a titkos kulcsot, és eloszthatják azt egy ügyfél-alkalmazással.
+    > Az ügyfél titkos kulcsát egy fontos biztonsági hitelesítő adat. Ne a titkos kulcs bárkivel megoszthatja, és egy ügyfélalkalmazás belül terjeszthet.
 
 
-## <a name="secrets"> </a>Google-adatokat hozzáadni az alkalmazáshoz
-1. Vissza a [Azure Portal], keresse meg az alkalmazás. Kattintson a **beállítások**, majd **hitelesítési / engedélyezési**.
-2. Ha a hitelesítési / engedélyezési funkció nincs engedélyezve, kapcsolja be a kapcsoló **a**.
-3. Kattintson a **Google**. Illessze be az alkalmazás Azonosítóját és az alkalmazás titkos kulcs értékek, amelyek korábban beszerzett, és opcionálisan engedélyezése az alkalmazás által igényelt összes hatókörök. Ezután kattintson az **OK** gombra.
+## <a name="secrets"> </a>Google-információk hozzáadása az alkalmazáshoz
+1. Térjen vissza a [Azure Portal], keresse meg az alkalmazást. Kattintson a **beállítások**, majd **hitelesítési / engedélyezési**.
+2. Ha a hitelesítés / engedélyezés funkció nincs engedélyezve, kapcsolja be a kapcsolót **a**.
+3. Kattintson a **Google**. Illessze be az Alkalmazásazonosítót és titkos Alkalmazáskulcs értékeket, amelyek korábban beszerzett, és szükség esetén engedélyezze a bármely az alkalmazás által kért hatókörök. Ezután kattintson az **OK** gombra.
    
    ![][1]
    
-   Alapértelmezés szerint az App Service hitelesítést nyújt, de nem engedélyezett hozzáférés korlátozása a tartalom és API-k. Kell engedélyeznie a felhasználók az alkalmazás kódját.
-4. (Választható) Csak a Google által hitelesített felhasználók a helyhez való hozzáférésének korlátozásához, állítsa be **hitelesítetlen kérés esetén elvégzendő művelet** való **Google**. Ehhez szükséges összes kérelmet hitelesíteni, és minden nem hitelesített kérelmek Google hitelesítésre van átirányítva.
+   Alapértelmezés szerint az App Service-ben hitelesítést biztosít, de a webhely tartalmát és API-k nem korlátozza a hitelesített hozzáférést. Felhasználók engedélyeznie kell az alkalmazás kódjában.
+4. (Nem kötelező) A hozzáférés korlátozása csak a Google által hitelesített felhasználók a helyet, állítsa be **elvégzendő művelet, ha a kérés nincs hitelesítve** való **Google**. Ehhez az szükséges, hogy minden kérelmet hitelesíteni, és az összes nem hitelesített kérelmek a rendszer átirányítja a Google-hitelesítéshez.
 5. Kattintson a **Save** (Mentés) gombra.
 
-Most már készen áll a Google az alkalmazáson belüli hitelesítéshez használandó.
+Most már készen áll a Google használnak a hitelesítéshez saját alkalmazásokban.
 
 ## <a name="related-content"> </a>Kapcsolódó tartalom
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]

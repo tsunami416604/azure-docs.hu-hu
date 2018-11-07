@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 81c88c90ff24cb5e0ab143237fb08678067ea993
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f830a27e9caf032443c2b27bdd2f95fa8069bcf2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311709"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247279"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Oktatóanyag: A Jelszókivonat-szinkronizálás (nál) használatával egyetlen AD-erdővel integrálása
 
@@ -189,7 +189,7 @@ Most meg kell, hogy azt is szinkronizálhatja a felhőbe felhasználóink Azure 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>Hozzon létre egy globális rendszergazda az Azure ad-ben
 Most, hogy az Azure AD-bérlő, hozunk létre egy globális rendszergazdai fiókkal.  Ezt a fiókot az Azure AD-összekötő fiók létrehozása az Azure AD Connect telepítése során használatos.  Az Azure AD-összekötő fiók segítségével adatokat írni az Azure ad-ben.   Hozzon létre globális rendszergazdai fiók tegye a következőket.
 
-1.  A **kezelés**válassza **felhasználók**.</br>
+1.  A **Kezelés** alatt válassza a **Felhasználókat**.</br>
 ![Létrehozás](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  Válassza ki **minden felhasználó** majd **+ új felhasználó**.
 3.  Adjon meg egy nevet és egy felhasználónevet ehhez a felhasználóhoz. Ez a bérlő globális rendszergazdája lesz. Is érdemes módosítani a **címtárbeli szerepkör** való **globális rendszergazdája.** Az ideiglenes jelszót is megjelenítheti. Amikor elkészült, válassza ki a **létrehozás**.</br>
@@ -218,13 +218,13 @@ Most ellenőrizzük, hogy a felhasználók a helyszíni címtárban szolgáltat�
 
 1. Keresse meg a [az Azure portal](https://portal.azure.com) és a egy Azure-előfizetéssel rendelkező fiókkal jelentkezzen be.
 2. A bal oldalon válassza ki a **Azure Active Directory**
-3. A **kezelés**válassza **felhasználók**.
+3. A **Kezelés** alatt válassza a **Felhasználókat**.
 4. Győződjön meg arról, hogy megjelenik-e az új felhasználókat a bérlőben</br>
 ![Szinkronizálási](media/tutorial-password-hash-sync/synch1.png)</br>
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Hogy a felhasználók bejelentkezés tesztelése
 
-1.  Keresse meg a [http://myapps.microsoft.com](http://myapps.microsoft.com)
+1.  Keresse meg a [http://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Jelentkezzen be az új bérlő létrehozott felhasználói fiókkal.  Kell jelentkezzen be a következő formátumban: (user@domain.onmicrosoft.com). A felhasználó által használt a bejelentkezéshez ugyanazt a jelszót a helyszínen.</br>
 ![Ellenőrizze](media/tutorial-password-hash-sync/verify1.png)</br>
 
@@ -233,6 +233,6 @@ Most már sikeresen befejeződött a telepítő egy hibrid identitás környezet
 ## <a name="next-steps"></a>További lépések
 
 
-- [Hardverkövetelmények és Előfeltételek](how-to-connect-install-prerequisites.md) 
+- [Hardver és előfeltételek](how-to-connect-install-prerequisites.md) 
 - [Gyorsbeállítások](how-to-connect-install-express.md)
-- [A Jelszókivonat-szinkronizálás](how-to-connect-password-hash-synchronization.md)|
+- [Jelszókivonat szinkronizálása](how-to-connect-password-hash-synchronization.md)|

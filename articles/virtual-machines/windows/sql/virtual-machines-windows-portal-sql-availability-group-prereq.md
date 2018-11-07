@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: d75bb780a17653aaacbc74413fb4240a8052a983
-ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
+ms.openlocfilehash: 2d8a98e6ab38f4156b6e2f5bda81b44e1789a6ed
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43371485"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253074"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Teljesítse az előfeltételeket az Always On rendelkezésre állási csoportok létrehozása az Azure-beli virtuális gépeken
 
@@ -35,7 +35,7 @@ Az alábbi ábra az oktatóanyag során létre.
 
 ## <a name="review-availability-group-documentation"></a>Tekintse át a rendelkezésre állási csoport dokumentációja
 
-Ez az oktatóanyag feltételezi, hogy rendelkezik-e az SQL Server Always On rendelkezésre állási csoportok alapvető ismeretekkel. Ha még nem ismeri a technológia segítségével, tekintse meg [mindig a rendelkezésre állási csoportok áttekintése (SQL Server)](http://msdn.microsoft.com/library/ff877884.aspx).
+Ez az oktatóanyag feltételezi, hogy rendelkezik-e az SQL Server Always On rendelkezésre állási csoportok alapvető ismeretekkel. Ha még nem ismeri a technológia segítségével, tekintse meg [mindig a rendelkezésre állási csoportok áttekintése (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx).
 
 
 ## <a name="create-an-azure-account"></a>Azure-fiók létrehozása
@@ -184,7 +184,7 @@ Az alábbi táblázat ezek két gép beállításait:
 | **Erőforráscsoport** |SQL-HA-RG |
 | **Hely** |*A hely* |
 | **Méret** |DS1_V2 |
-| **Storage** | **Felügyelt lemezek használata** - **Igen** |
+| **Tárolás** | **Felügyelt lemezek használata** - **Igen** |
 | **Virtuális hálózat** |autoHAVNET |
 | **Alhálózat** |rendszergazda |
 | **Nyilvános IP-cím** |*Neve megegyezik a virtuális gép* |
@@ -349,7 +349,7 @@ Most, hogy végzett Active Directory és a felhasználói objektumok, hozzon lé
 
 ## <a name="create-sql-server-vms"></a>SQL Server virtuális gépek létrehozása
 
-Hozzon létre három további virtuális gépeket. A megoldás két virtuális gép az SQL Server-példányokat igényel. A harmadik virtuális gépek egy tanúsító fognak működni. A Windows Server 2016-ban használható egy [felhőbeli tanúsító](http://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness), azonban a korábbi operációs rendszerekhez való Ez a dokumentum egy tanúsító használ egy virtuális gépet.  
+Hozzon létre három további virtuális gépeket. A megoldás két virtuális gép az SQL Server-példányokat igényel. A harmadik virtuális gépek egy tanúsító fognak működni. A Windows Server 2016-ban használható egy [felhőbeli tanúsító](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness), azonban a korábbi operációs rendszerekhez való Ez a dokumentum egy tanúsító használ egy virtuális gépet.  
 
 Folytatás előtt fontolja meg az alábbi tervezési döntéseket hozhat.
 
@@ -483,7 +483,7 @@ A portok megnyitása módszer attól függ, hogy a tűzfal-megoldásnak megfelel
 1. Az első SQL-kiszolgálón **Start** indítása jobb **fokozott biztonságú Windows tűzfal**.
 2. A bal oldali panelen válassza ki a **bejövő szabályok**. Kattintson a jobb oldali **új szabály**.
 3. A **szabálytípus**, válassza a **Port**.
-4. Adja meg a portot, **TCP** , és írja be a megfelelő portok számát. Tekintse meg a következő példát:
+4. Adja meg a portot, **TCP** , és írja be a megfelelő portok számát. Lásd a következő példát:
 
    ![SQL-tűzfal](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/35-tcpports.png)
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
 ms.component: queues
-ms.openlocfilehash: 8779b067c33ce76cd60b020e2952bcbccf0dd944
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 1e52f199847b9e03eb31da71f1f0577df92d2b51
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42054290"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230410"
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>How to use Queue storage from Python (A Queue Storage használata Pythonnal)
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -128,7 +128,7 @@ queue_service.delete_queue('taskqueue')
 Most, hogy megismerte a Queue storage alapjait, kövesse az alábbi hivatkozások további.
 
 * [Python fejlesztői központ](https://azure.microsoft.com/develop/python/)
-* [Az Azure Storage-szolgáltatások REST API-ja](http://msdn.microsoft.com/library/azure/dd179355)
+* [Az Azure Storage-szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355)
 * [Az Azure Storage csapat blogja]
 * [A Microsoft Azure Storage-hoz készült Python SDK]
 

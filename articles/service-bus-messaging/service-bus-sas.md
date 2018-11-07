@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
 ms.author: spelluru
-ms.openlocfilehash: adc9d64c4756e055b3ff9b772feebd80902d2c9f
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: ef1b8b2dd96a89a553239168d412d84e63a29f2a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857873"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254587"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>A Service Bus hozzáférés-vezérlés közös hozzáférésű jogosultságkódokkal
 
@@ -57,7 +57,7 @@ Service Bus-névteret hoz létre, amikor egy szabály nevű **RootManageSharedAc
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>Közös hozzáférésű Jogosultságkód-hitelesítés konfigurálása
 
-Konfigurálhatja a [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) szabály a Service Bus-névterekhez, üzenetsorokat vagy témaköröket. Konfigurálása egy [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) egy Service Bus az előfizetés jelenleg nem támogatott, de a névtér vagy témakör konfigurált szabályok segítségével biztonságos hozzáférés az előfizetések. Működik a minta azt mutatja be ezt az eljárást, lásd: a [használata közös hozzáférésű Jogosultságkód (SAS) hitelesítés a Service Bus-előfizetések](http://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) minta.
+Konfigurálhatja a [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) szabály a Service Bus-névterekhez, üzenetsorokat vagy témaköröket. Konfigurálása egy [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) egy Service Bus az előfizetés jelenleg nem támogatott, de a névtér vagy témakör konfigurált szabályok segítségével biztonságos hozzáférés az előfizetések. Működik a minta azt mutatja be ezt az eljárást, lásd: a [használata közös hozzáférésű Jogosultságkód (SAS) hitelesítés a Service Bus-előfizetések](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c) minta.
 
 ![SAS](./media/service-bus-sas/service-bus-namespace.png)
 
@@ -102,7 +102,7 @@ Ha ismeri vagy feltételezhető, hogy a kulcs biztonsága sérült, és a kulcso
 
 Leírása a következő forgatókönyvek között megtalálható az engedélyezési szabályok konfigurálása, valamint SAS-tokeneket, és az ügyfél engedélyezési generációja.
 
-Egy teljes tekintse meg a Service Bus-alkalmazás, amely bemutatja a konfiguráció és a használt SAS engedélyezési, működő minta [közös hozzáférésű Jogosultságkód hitelesítés a Service Bus](http://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8). Egy kapcsolódó minta, amely a SAS-engedélyezési szabályok konfigurálva a névterek vagy témaköröket biztonságossá tételéhez a Service Bus-előfizetések használatát illusztrálja érhető el itt: [használata közös hozzáférésű Jogosultságkód (SAS) hitelesítés a Service Bus-előfizetések](http://code.msdn.microsoft.com/Using-Shared-Access-e605b37c).
+Egy teljes tekintse meg a Service Bus-alkalmazás, amely bemutatja a konfiguráció és a használt SAS engedélyezési, működő minta [közös hozzáférésű Jogosultságkód hitelesítés a Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8). Egy kapcsolódó minta, amely a SAS-engedélyezési szabályok konfigurálva a névterek vagy témaköröket biztonságossá tételéhez a Service Bus-előfizetések használatát illusztrálja érhető el itt: [használata közös hozzáférésű Jogosultságkód (SAS) hitelesítés a Service Bus-előfizetések](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c).
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>Hozzáférés a megosztott hozzáférés-engedélyezési szabályok entitás
 

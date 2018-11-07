@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: dfbefd2ff4c2e99268c1e7e84154e93d58f542bb
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: c3f1cb7499be57be94cc387eb40d37c1710f2f75
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163630"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230529"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Ismerkedés az Azure SQL Database-ben JSON-funkciókkal
 Az Azure SQL Database lehetővé teszi a elemzése és kérdezhet le adatokat a JavaScript Object Notation jelölt [(JSON)](http://www.json.org/) formázhatja és exportálni a relációs adatok JSON-szövegben.
@@ -201,5 +201,5 @@ Ismerje meg, hogyan JSON beágyazása az alkalmazásba, tekintse meg ezeket az e
 * [MSDN-dokumentáció](https://msdn.microsoft.com/library/dn921897.aspx)
 * [Channel 9-videóban](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
 
-A JSON integrálása az alkalmazásba különféle forgatókönyvekkel kapcsolatos tudnivalókért lásd: Ez a bemutatókat [Channel 9-videók](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) vagy nem található egy forgatókönyvet, amely megfelel a használati eset az [JSON-blogbejegyzések](http://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/).
+A JSON integrálása az alkalmazásba különféle forgatókönyvekkel kapcsolatos tudnivalókért lásd: Ez a bemutatókat [Channel 9-videók](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) vagy nem található egy forgatókönyvet, amely megfelel a használati eset az [JSON-blogbejegyzések](https://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/).
 

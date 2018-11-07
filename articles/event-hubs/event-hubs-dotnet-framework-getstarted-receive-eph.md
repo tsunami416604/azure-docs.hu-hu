@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: 9e94357216690438446a738400c979d12f387df6
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: cb1d26082fe4fbbd14b2b77f54d1bc7697b3538d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471084"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227960"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-the-net-framework"></a>Események fogadása az Azure Event Hubsból a .NET-keretrendszer használatával
 
 ## <a name="introduction"></a>Introduction (Bevezetés)
 
-Az Event Hubs szolgáltatás a csatlakoztatott eszközökről és alkalmazásokból származó nagy mennyiségű eseményadatot dolgoz fel (telemetria). Miután összegyűjtötte az adatokat az Event Hubsban, az adatok egy tárolási fürt használatával tárolhatja, vagy átalakíthatja egy valós idejű elemzési szolgáltató segítségével. Ez az átfogó eseménygyűjtési és -feldolgozási képesség kulcsfontosságú alkotóeleme a modern alkalmazásarchitektúráknak, beleértve az eszközök internetes hálózatát (IoT). Az Event hubs részletes ismertetőt talál [Event Hubs – áttekintés](event-hubs-about.md) és [Event Hubs-szolgáltatások](event-hubs-features.md).
+Az Event Hubs szolgáltatás a csatlakoztatott eszközökről és alkalmazásokból származó nagy mennyiségű eseményadatot dolgoz fel (telemetria). Miután összegyűjtötte az adatokat az Event Hubsban, az adatok egy tárolási fürt használatával tárolhatja, vagy átalakíthatja egy valós idejű elemzési szolgáltató segítségével. Ez az átfogó eseménygyűjtési és -feldolgozási képesség kulcsfontosságú alkotóeleme a modern alkalmazásarchitektúráknak, beleértve az eszközök internetes hálózatát (IoT). Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
 
-Ez az oktatóanyag bemutatja, hogyan Konzolalkalmazás létrehozása .NET-keretrendszer, amely egy event hub használatával üzeneteket fogad a [Event Processor Host](event-hubs-event-processor-host.md). A [Event Processor Host](event-hubs-event-processor-host.md) egy .NET-osztály, amely leegyszerűsíti az események fogadását az event hubsból, mivel kezeli az állandó ellenőrzőpontokat és a párhuzamos fogadásokat az adott event hubs eseményközpontokból. Az Event Processor Host használatával, akkor is feloszthatja az eseményeket több fogadóra, még akkor is, ha ezek különböző csomópontokon üzemelnek. Ez a példa bemutatja, hogyan használható az Event Processor Host egyetlen fogadóhoz. A [horizontálisan felskálázott Eseményfeldolgozási] [ Scale out Event Processing with Event Hubs] minta bemutatja, hogyan használhatja az Event Processor Host több fogadóval.
+Ez az oktatóanyag bemutatja, hogyan Konzolalkalmazás létrehozása .NET-keretrendszer, amely egy event hub használatával üzeneteket fogad a [Event Processor Host](event-hubs-event-processor-host.md). Az [Event Processor Host](event-hubs-event-processor-host.md) egy .NET-osztály, amely leegyszerűsíti az események fogadását az Event Hubsból, mivel kezeli az állandó ellenőrzőpontokat és a párhuzamos fogadásokat az adott Event Hubs-eseményközpontokból. Az Event Processor Host használatával több fogadó között oszthatja el az eseményeket, még akkor is, ha ezek különböző csomópontokon üzemelnek. Ez a példa bemutatja, hogyan használható az Event Processor Host egyetlen fogadóhoz. A [horizontálisan felskálázott Eseményfeldolgozási] [ Scale out Event Processing with Event Hubs] minta bemutatja, hogyan használhatja az Event Processor Host több fogadóval.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
 
-* [A Microsoft Visual Studio 2017-es vagy újabb](http://visualstudio.com).
+* [A Microsoft Visual Studio 2017-es vagy újabb](https://visualstudio.com).
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs-névtér és eseményközpont létrehozása
-Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és eseményközpont létrehozásához hajtsa végre az eljárást a [Ez a cikk](event-hubs-create.md), majd folytassa a következő lépéseket ebben az oktatóanyagban.
+Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és az eseményközpont létrehozásához kövesse az [ebben a cikkben](event-hubs-create.md) olvasható eljárást, majd folytassa a jelen oktatóanyag további lépéseivel.
 
 [!INCLUDE [event-hubs-create-storage](../../includes/event-hubs-create-storage.md)]
 
@@ -113,7 +113,7 @@ Hozzon létre egy új Visual C# asztalialkalmazás-projektet a **Console Applica
     
       Az **EventProcessorHost** ezt az osztályt hívja meg az eseményközpontból fogadott események feldolgozásához. A `SimpleEventProcessor` osztály stoppert használ az ellenőrzőpont-metódus **EventProcessorHost** környezetben való rendszeres időközönkénti hívásához. Ez az eljárás biztosítja, hogy ha a fogadó újraindul, ne vesszen el öt percnél több feldolgozási munka.
 
-## <a name="update-the-main-method-to-use-simpleeventprocessor"></a>Frissítés a Main metódushoz SimpleEventProcessor használata
+## <a name="update-the-main-method-to-use-simpleeventprocessor"></a>A fő metódus frissítése a SimpleEventProcessor használatára
 
 1. A **Program** osztályban adja hozzá a következő `using` utasítást a fájl elejéhez:
     
@@ -151,7 +151,7 @@ Gratulálunk! Sikeresen fogadott üzeneteket egy eseményközpontból az Event P
 
 
 > [!NOTE]
-> Ez az oktatóprogram az [EventProcessorHost](event-hubs-event-processor-host.md) egyetlen példányát használja. Átviteli sebesség növelése érdekében azt javasoljuk, hogy több példányának futtatása [EventProcessorHost](event-hubs-event-processor-host.md), ahogyan az a [horizontálisan felskálázott Eseményfeldolgozási](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3) minta. Ezekben az esetekben a több példányok automatikusan koordinálnak egymással terheléselosztás a fogadott események. 
+> Ez az oktatóprogram az [EventProcessorHost](event-hubs-event-processor-host.md) egyetlen példányát használja. Az átviteli sebesség növelése érdekében javasoljuk az [EventProcessorHost](event-hubs-event-processor-host.md) több példányának futtatását, amelyre a [horizontálisan felskálázott eseményfeldolgozási](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3) mintában láthat példát. Ilyen esetekben a példányok automatikusan koordinálnak egymással a fogadott események terhelésének kiegyenlítéséhez. 
 
 ## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban létrehozott .NET-keretrendszer alkalmazás, amely a fogadott üzeneteket egy eseményközpontból. Ismerje meg, hogyan küldhet eseményeket egy eseményközpontba, .NET-keretrendszer használatával, lásd: [események küldése az event hubs – .NET-keretrendszer](event-hubs-dotnet-framework-getstarted-send.md).

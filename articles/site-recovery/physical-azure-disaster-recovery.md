@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 13ce074f8ec22bc80ee5c56f2127b3a5b4d788bf
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4f4a61ad0c1b1fcab4773dcc16c5e22053c4158d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215395"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230886"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Vészhelyreállítás az Azure-bA a helyszíni fizikai kiszolgálók beállítása
 
@@ -51,7 +51,7 @@ Mielőtt hozzálátna, vegye figyelembe, hogy:
 
 ### <a name="set-up-an-azure-account"></a>Az Azure-fiók beállítása
 
-A Microsoft első [Azure-fiók](http://azure.microsoft.com/).
+A Microsoft első [Azure-fiók](https://azure.microsoft.com/).
 
 - Kezdésként használhatja az [ingyenes próbaverziót](https://azure.microsoft.com/pricing/free-trial/) is.
 - Ismerje meg [Site Recovery díjszabásáról](site-recovery-faq.md#pricing), és [díjszabás](https://azure.microsoft.com/pricing/details/site-recovery/).

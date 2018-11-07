@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 24ab8e5171ebb33a5f3be5c6bf08e361fff4e4cc
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 275eb5f32def94fa974f0cb180b9de9dcedf1a00
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959545"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230920"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Webalkalmazások futásidejű kialakítása az Application Insights használatával
 
@@ -78,7 +78,7 @@ Ezzel elhelyezte minden weblapon az Application Insights JavaScript SDK-t.
 Ha az alkalmazás egy IIS-kiszolgálón fut, engedélyezze az Application Insightst az Állapotfigyelő használatával.
 
 1. Az IIS-webkiszolgálón jelentkezzen be rendszergazdai hitelesítő adatokkal.
-2. Ha az Application Insights Állapotfigyelő még nincs telepítve, töltse le és futtassa az [Állapotfigyelő telepítőjét](http://go.microsoft.com/fwlink/?LinkId=506648) (vagy futtassa a [Webplatform-telepítőt](https://www.microsoft.com/web/downloads/platform.aspx), és keresse meg benne az Application Insights Állapotfigyelőt).
+2. Ha az Application Insights Állapotfigyelő még nincs telepítve, töltse le és futtassa az [Állapotfigyelő telepítőjét](https://go.microsoft.com/fwlink/?LinkId=506648) (vagy futtassa a [Webplatform-telepítőt](https://www.microsoft.com/web/downloads/platform.aspx), és keresse meg benne az Application Insights Állapotfigyelőt).
 3. Az Állapotfigyelőben válassza ki a megfigyelni kívánt telepített webappot vagy webhelyet. Jelentkezzen be az Azure-beli hitelesítő adataival.
 
     Konfigurálja az erőforrást, amelyben az eredményeket látni szeretné az Application Insights portálon. (Általában az a legjobb megoldás, ha létrehoz egy új erőforrást. Meglévő erőforrást akkor válasszon, ha már rendelkezik [webes tesztekkel][availability] vagy [ügyfélfigyeléssel][client] az alkalmazáshoz.) 

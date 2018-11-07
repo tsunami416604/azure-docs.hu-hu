@@ -14,17 +14,17 @@ ms.devlang: php
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: b0aa61c86b08a4fe2eddb5eb1fb5b33c4cb901a0
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 68754f85347fe6bc075af513580697d1e7a83c18
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386587"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247415"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>A Notification Hubs a Python használata
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Egy Java/PHP vagy Python vagy Ruby-háttérrendszert a Notification Hub REST-felület használatával, az MSDN-cikkben leírtak szerint a keresztül elérhető összes Notification Hubs szolgáltatás [Notification Hubs – REST API-k](http://msdn.microsoft.com/library/dn223264.aspx).
+Egy Java/PHP vagy Python vagy Ruby-háttérrendszert a Notification Hub REST-felület használatával, az MSDN-cikkben leírtak szerint a keresztül elérhető összes Notification Hubs szolgáltatás [Notification Hubs – REST API-k](https://msdn.microsoft.com/library/dn223264.aspx).
 
 > [!NOTE]
 > Ez egy minta referenciaimplementációt megvalósításához a értesítést küld a Python és nem a hivatalosan támogatott értesítések Hub Python SDK-t.
@@ -47,7 +47,7 @@ Kövesse a [első lépéseket ismertető oktatóanyag](notification-hubs-windows
 > 
 
 ## <a name="client-interface"></a>Ügyféloldali felület
-A fő ügyféloldali felület is adja meg ugyanazokat a módszereket érhetők el a [.NET Notification Hubs SDK](http://msdn.microsoft.com/library/jj933431.aspx). Ez az interfész lehetővé teszi, hogy közvetlenül fordítása minden az oktatóanyagaink és példáink segítségével érhető el ezen a helyen, és az interneten a Közösség által biztosított.
+A fő ügyféloldali felület is adja meg ugyanazokat a módszereket érhetők el a [.NET Notification Hubs SDK](https://msdn.microsoft.com/library/jj933431.aspx). Ez az interfész lehetővé teszi, hogy közvetlenül fordítása minden az oktatóanyagaink és példáink segítségével érhető el ezen a helyen, és az interneten a Közösség által biztosított.
 
 Az összes elérhető kódját megtalálja a [Python REST burkoló minta].
 
@@ -64,7 +64,7 @@ Windows bejelentési értesítés küldése:
 ## <a name="implementation"></a>Megvalósítás
 Ha még nem tette meg, kövesse a [első lépéseket ismertető oktatóanyag] az utolsó szakaszban, hogy a háttér-beállítása.
 
-A részletekről a teljes REST-burkoló megvalósításához találhatók [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). Ez a szakasz ismerteti a fő lépések Notification hubs szolgáltatás REST-végpontok elérése és értesítések küldéséhez szükséges Python megvalósítása
+A részletekről a teljes REST-burkoló megvalósításához találhatók [MSDN](https://msdn.microsoft.com/library/dn530746.aspx). Ez a szakasz ismerteti a fő lépések Notification hubs szolgáltatás REST-végpontok elérése és értesítések küldéséhez szükséges Python megvalósítása
 
 1. Kapcsolati sztring elemzése
 2. Az engedélyezési jogkivonat létrehozása
@@ -96,7 +96,7 @@ A következő megvalósítása az ügyfelet, amelynek konstruktor elemzi a kapcs
 
 
 ### <a name="create-security-token"></a>Biztonsági jogkivonat létrehozása
-A részletekért lásd a biztonsági token létrehozása az [Itt](http://msdn.microsoft.com/library/dn495627.aspx).
+A részletekért lásd a biztonsági token létrehozása az [Itt](https://msdn.microsoft.com/library/dn495627.aspx).
 Adja hozzá az alábbi módszerek a **Értesítésiközpont** osztállyal hoz létre a token URI-ját az aktuális kérelem és a hitelesítő adatokat a kapcsolati karakterlánc kinyert alapján.
 
     @staticmethod
@@ -148,7 +148,7 @@ Először is, hogy használja egy értesítést képviselő osztályt határozza
 
 Ez az osztály egy olyan tároló, a natív értesítési törzséhez vagy egy sablon értesítés formátuma (natív platform vagy sablon) és az egyes platformokra vonatkozó tulajdonságokat (például Apple lejárati tulajdonságot és a WNS-fejlécek) tartalmazó fejlécek, készletét tulajdonságait.
 
-Tekintse meg a [Notification Hubs – REST API-k dokumentációjában](http://msdn.microsoft.com/library/dn495827.aspx) és az adott értesítési platformok formázza az összes rendelkezésre álló lehetőségeket.
+Tekintse meg a [Notification Hubs – REST API-k dokumentációjában](https://msdn.microsoft.com/library/dn495827.aspx) és az adott értesítési platformok formázza az összes rendelkezésre álló lehetőségeket.
 
 Most már ez az osztály az írási küldése értesítési módszerek belül a **Értesítésiközpont** osztály.
 

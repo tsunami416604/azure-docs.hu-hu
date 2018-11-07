@@ -8,12 +8,12 @@ ms.assetid: 5c7e209a-458c-4bb4-96bb-7ed178f9528a
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 9aaba38b7dc0cd2bf659c9d91c9d7660bd17a6dd
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: f08825c17c1ba61fc09edc1d8f2c226af8d4266f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409184"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231464"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Az Azure Data Catalog – gyakori kérdések
 Ez a cikk az Azure Data Catalog szolgáltatással kapcsolatos gyakori kérdésekre adott válaszokat ismerteti.
@@ -99,7 +99,7 @@ Az objektum kiválasztása a portálon, majd kattintson a Data Catalog egy objek
 Szakértő egy megalapozott perspektíva vonatkozó olyan adatobjektumot rendelkező személy. Az objektum rendelkezhet több szakértői. Szakértői kell lennie a "tulajdonos" objektumhoz, de egyszerűen személy, aki tudja, hogyan is az adatokat, és használható.
 
 ## <a name="how-do-i-share-information-with-the-data-catalog-team-if-i-encounter-problems"></a>Hogyan oszthatom meg az adatokat a Data Catalog csapat Ha jutok a problémák?
-Problémák jelentése, megoszthatják az információkat, és tegyen fel kérdéseket, nyissa meg a [Azure Data Catalog fórumon](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409).
+Problémák jelentése, megoszthatják az információkat, és tegyen fel kérdéseket, nyissa meg a [Azure Data Catalog fórumon](https://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409).
 
 ## <a name="does-the-catalog-work-with-another-data-source-that-im-interested-in"></a>A katalógus, amely a következők érdekelnek más adatforrással működik?
 Aktívan dolgozunk további adatforrások hozzáadása a Data Catalog szolgáltatásba. Ha szeretne egy adott adatforrás támogatott lásd, javasolja azt (vagy a támogatási hangtípus, ha már javasolt) nyissa meg a [az Azure visszajelzés – fórumok a Data Catalog](https://feedback.azure.com/forums/906052-data-catalog).
@@ -127,4 +127,4 @@ Válassza ki a Data Catalog az adategységeket, és kattintson a **saját tulajd
 Már a katalógusban regisztrált adategységek a metaadatok frissítéséhez egyszerűen regisztrálja újra az adatforrás, amely tartalmazza az eszközöket. Az adatforrás módosításainak oszlopok hozzáadása vagy eltávolítása táblák / nézetek, mint például frissülnek a katalógusban, de minden olyan felhasználó által megadott jegyzetek megmaradnak.
 
 ## <a name="my-question-isnt-answered-here-where-can-i-go-for-answers"></a>A nem választ a kérdésére itt. Hol tudhatok meg a válaszokat?
-Nyissa meg a [Azure Data Catalog fórumon](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409). Hiba gyakori kérdéseket talál itt eljutnak.
+Nyissa meg a [Azure Data Catalog fórumon](https://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409). Hiba gyakori kérdéseket talál itt eljutnak.

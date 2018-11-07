@@ -8,12 +8,12 @@ services: devops
 custom: jenkins
 ms.date: 07/31/2018
 ms.component: common
-ms.openlocfilehash: b7ac5c277b45ae5c005a284d5c38e55099c11e33
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 040f7ef8d9b50998ac2b84ed9d4e3712f4ed5835
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735562"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246871"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Az Azure Storage használata Jenkins folyamatos integrációs megoldással
 
@@ -129,7 +129,7 @@ Ez a szakasz a Blob szolgáltatás-összetevők áttekintést nyújt.
 
 * **Storage-fiók**: Minden Azure Storage-hozzáférés tárfiókon keresztül valósítható meg. Blobok elérése a névteret a legmagasabb szintű. Egy fiók korlátlan számú tárolók, tartalmazhat, mindaddig, amíg azok teljes mérete 100 TB-os alatt.
 * **Tároló**: tároló blobokat áll csoportosítását biztosítja. Az összes blobnak tárolóban kell lennie. Egy fiók korlátlan számú tárolót tartalmazhat. Egy tároló korlátlan számú blob tárolására használható.
-* **BLOB**: bármilyen típusú és méretű fájl. A blobok Azure Storage-ban tárolt két típusa van: blokkblobok és lapblobok. Fájlok a legtöbb esetben blokkblobok. Egyetlen blokkblob akár 200 GB méretű lehet. Ebben az oktatóanyagban a blokkblobok használatát támogatják. Lapblobok és a egy másik blob típusú tárfiók, akár 1 TB-ig a mérete, és kiváló hatékonyabb lehet, ha egy fájlban bájtos címtartományok gyakran módosítják. Blobok kapcsolatos további információkért lásd: [Understanding Block Blobs, hozzáfűző blobokat és Lapblobokat](http://msdn.microsoft.com/library/azure/ee691964.aspx).
+* **BLOB**: bármilyen típusú és méretű fájl. A blobok Azure Storage-ban tárolt két típusa van: blokkblobok és lapblobok. Fájlok a legtöbb esetben blokkblobok. Egyetlen blokkblob akár 200 GB méretű lehet. Ebben az oktatóanyagban a blokkblobok használatát támogatják. Lapblobok és a egy másik blob típusú tárfiók, akár 1 TB-ig a mérete, és kiváló hatékonyabb lehet, ha egy fájlban bájtos címtartományok gyakran módosítják. Blobok kapcsolatos további információkért lásd: [Understanding Block Blobs, hozzáfűző blobokat és Lapblobokat](https://msdn.microsoft.com/library/azure/ee691964.aspx).
 * **URL-formátum**: Blobok legyenek a következő URL-formátummal:
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
@@ -149,6 +149,6 @@ Ha a Jenkins beépülő modulok használata során bármilyen hibát tapasztal, 
 * [Az Azure Storage-hoz készült Java SDK](https://github.com/azure/azure-storage-java)
 * [Azure Storage ügyféloldali SDK-referencia](http://dl.windowsazure.com/storage/javadoc/)
 * [Az Azure Storage-szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Az Azure Storage csapat blogja](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Az Azure Storage csapat blogja](https://blogs.msdn.com/b/windowsazurestorage/)
 
 További információ: [Azure Java-fejlesztőknek](/java/azure).

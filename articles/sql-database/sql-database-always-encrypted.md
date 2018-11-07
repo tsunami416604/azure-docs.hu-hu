@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviwer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 343782448d4b508e678108ece268f2ce57b6ac1d
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 13e87ef0150924380c18c66c0362974ef599d4bf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868139"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231719"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: Bizalmas adatok védelme és a titkosítási kulcsok tárolása a Windows-tanúsítványtároló
 
@@ -56,7 +56,7 @@ Az oktatóanyag későbbi részében szüksége lesz a kapcsolati karakterlánco
 1. Kattintson a **SQL-adatbázisok** > **Clinic** > **adatbázis kapcsolati karakterláncainak megjelenítése**.
 2. Másolja a kapcsolati karakterláncot a **ADO.NET**.
    
-    ![Másolja a kapcsolati karakterláncot](./media/sql-database-always-encrypted/connection-strings.png)
+    ![A kapcsolati sztring másolása](./media/sql-database-always-encrypted/connection-strings.png)
 
 ## <a name="connect-to-the-database-with-ssms"></a>Kapcsolódás az adatbázishoz SSMS segítségével
 Nyissa meg az ssms-ben, és csatlakozzon a Clinic adatbázist tartalmazó kiszolgálón.
@@ -64,7 +64,7 @@ Nyissa meg az ssms-ben, és csatlakozzon a Clinic adatbázist tartalmazó kiszol
 1. Nyissa meg az SSMS-t. (Kattintson **Connect** > **adatbázismotor** megnyitásához a **kapcsolódás a kiszolgálóhoz** ablakot, ha nem látható).
 2. Adja meg a kiszolgáló nevét és hitelesítő adatokat. Az SQL-adatbázis panelen található a kiszolgáló nevét, és a kapcsolati karakterláncban korábban vágólapra másolt. Írja be a teljes kiszolgáló neve például *database.windows.net*.
    
-    ![Másolja a kapcsolati karakterláncot](./media/sql-database-always-encrypted/ssms-connect.png)
+    ![A kapcsolati sztring másolása](./media/sql-database-always-encrypted/ssms-connect.png)
 
 Ha a **Új tűzfalszabály** ablak megnyílik, jelentkezzen be Azure-ban, és lehetővé teszik az ssms-ben hozzon létre egy új tűzfalszabályt az Ön számára.
 
@@ -514,5 +514,5 @@ Miután létrehozott egy adatbázist, amely használja az Always Encrypted, érd
 * [Transzparens adattitkosítás](https://msdn.microsoft.com/library/bb934049.aspx)
 * [SQL Server Encryption](https://msdn.microsoft.com/library/bb510663.aspx)
 * [Always Encrypted varázsló](https://msdn.microsoft.com/library/mt459280.aspx)
-* [Mindig titkosított Blog](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
+* [Mindig titkosított Blog](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
 

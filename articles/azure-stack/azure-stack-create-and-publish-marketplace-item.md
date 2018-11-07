@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 10/03/2018
 ms.author: sethm
 ms.reviewer: avishwan
-ms.openlocfilehash: 40ecb474b4faa4031cb364dfc1151c6fe6f09dd6
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c07e1282a755962b6fe6bc980207a510bd3287a4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856447"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253771"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Piactéri termék létrehozása és közzététele
 
 *A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 ## <a name="create-a-marketplace-item"></a>Piactéri elem létrehozása
-1. [Töltse le](http://www.aka.ms/azurestackmarketplaceitem) az Azure katalógusában Packager eszköz és a minta az Azure Stack piactéren elemet.
+1. [Töltse le](https://www.aka.ms/azurestackmarketplaceitem) az Azure katalógusában Packager eszköz és a minta az Azure Stack piactéren elemet.
 2. Nyissa meg a minta Piactéri elemet, és nevezze át a **SimpleVMTemplate** mappát. (Például használja ugyanazt a nevet, a Piactéri elem – **Contoso.TodoList**.) Ez a mappa tartalmaz:
    
    ```shell
@@ -128,18 +128,18 @@ ms.locfileid: "48856447"
 ### <a name="identity-information"></a>Azonosító adatok
 | Name (Név) | Szükséges | Típus | Korlátozások | Leírás |
 | --- | --- | --- | --- | --- |
-| Name (Név) |X |Sztring |[A-Za-z0-9]+ | |
-| Közzétevő |X |Sztring |[A-Za-z0-9]+ | |
-| Verzió |X |Sztring |[SemVer v2](http://semver.org/) | |
+| Name (Név) |X |Karakterlánc |[A-Za-z0-9]+ | |
+| Közzétevő |X |Karakterlánc |[A-Za-z0-9]+ | |
+| Verzió |X |Karakterlánc |[SemVer v2](http://semver.org/) | |
 
 ### <a name="metadata"></a>Metaadatok
 | Name (Név) | Szükséges | Típus | Korlátozások | Leírás |
 | --- | --- | --- | --- | --- |
-| Megjelenítendő név |X |Sztring |Az ajánlás 80 karakter |A portál nem jelenítik meg a konfigurációelem nevét szabályosan Ha hosszabb 80 karakternél. |
-| PublisherDisplayName |X |Sztring |Az ajánlás 30 karakter |A portál nem jelenítik meg a közzétevő neve szabályosan ha 30 karakternél hosszabb. |
-| PublisherLegalName |X |Sztring |Legfeljebb 256 karakter hosszú lehet | |
-| Összegzés |X |Sztring |60 és 100 karakter | |
-| LongSummary |X |Sztring |140 és 256 karakter |Még alkalmazhatók az Azure Stackben. |
+| Megjelenítendő név |X |Karakterlánc |Az ajánlás 80 karakter |A portál nem jelenítik meg a konfigurációelem nevét szabályosan Ha hosszabb 80 karakternél. |
+| PublisherDisplayName |X |Karakterlánc |Az ajánlás 30 karakter |A portál nem jelenítik meg a közzétevő neve szabályosan ha 30 karakternél hosszabb. |
+| PublisherLegalName |X |Karakterlánc |Legfeljebb 256 karakter hosszú lehet | |
+| Összegzés |X |Karakterlánc |60 és 100 karakter | |
+| LongSummary |X |Karakterlánc |140 és 256 karakter |Még alkalmazhatók az Azure Stackben. |
 | Leírás |X |[HTML](https://auxdocs.azurewebsites.net/en-us/documentation/articles/gallery-metadata#html-sanitization) |500-as és 5000 karakternél | |
 
 ### <a name="images"></a>Képek
@@ -161,7 +161,7 @@ Minden Marketplace-elem lehetnek különböző további tartalmakra is hivatkozi
 
 | Name (Név) | Szükséges | Típus | Korlátozások | Leírás |
 | --- | --- | --- | --- | --- |
-| Megjelenítendő név |X |Sztring |Legfeljebb 64 karakter hosszú lehet | |
+| Megjelenítendő név |X |Karakterlánc |Legfeljebb 64 karakter hosszú lehet | |
 | URI |X |URI | | |
 
 ### <a name="additional-properties"></a>További tulajdonságok
@@ -169,8 +169,8 @@ Mellett az előző metaadatok Marketplace szerzők megadhat egyéni kulcs/érté
 
 | Name (Név) | Szükséges | Típus | Korlátozások | Leírás |
 | --- | --- | --- | --- | --- |
-| Megjelenítendő név |X |Sztring |Legfeljebb 25 karakterből álló | |
-| Érték |X |Sztring |Legfeljebb 30 karakter hosszú lehet | |
+| Megjelenítendő név |X |Karakterlánc |Legfeljebb 25 karakterből álló | |
+| Érték |X |Karakterlánc |Legfeljebb 30 karakter hosszú lehet | |
 
 ### <a name="html-sanitization"></a>HTML-tisztító
 Bármely mező, amely lehetővé teszi, hogy a HTML a következő elemek és attribútumok használata engedélyezett:

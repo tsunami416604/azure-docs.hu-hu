@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 693fd7b80d69c20971315d8636f27daeb0cacaee
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 28be219c35d382cbd141bb050b35893da02ab775
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240885"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256449"
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence-versenyek – GYIK
 **Mi a Cortana Intelligence-versenyek?**
 
-A Microsoft Cortana Intelligence-versenyek álló globális Közösséget adatokkal foglalkozó szakemberek által együttesen néhány, a világ legösszetettebb data science problémák megoldására több egység. Cortana Intelligence-versenyek adatokkal foglalkozó szakemberek a versenyben, és nagyon pontos és intelligens adatelemző modelleket hozhat létre a világ átvitelét teszi lehetővé. Ezek üzemeltetett versenyek egyedi adatkészleteihez tett érhető el nyilvánosan először alapulnak. Résztvevők jutalmakat win vagy felismerés keresztül a felső 10 nyilvános ranglista első is. Hozzáférhet a versenyek kezdőlapot [aka.ms/CIComp](http://aka.ms/CIComp).
+A Microsoft Cortana Intelligence-versenyek álló globális Közösséget adatokkal foglalkozó szakemberek által együttesen néhány, a világ legösszetettebb data science problémák megoldására több egység. Cortana Intelligence-versenyek adatokkal foglalkozó szakemberek a versenyben, és nagyon pontos és intelligens adatelemző modelleket hozhat létre a világ átvitelét teszi lehetővé. Ezek üzemeltetett versenyek egyedi adatkészleteihez tett érhető el nyilvánosan először alapulnak. Résztvevők jutalmakat win vagy felismerés keresztül a felső 10 nyilvános ranglista első is. Hozzáférhet a versenyek kezdőlapot [aka.ms/CIComp](https://aka.ms/CIComp).
 
 **Milyen gyakran közzéteszik a Microsoft új versenyek?**
 
@@ -37,7 +37,7 @@ Az általános kérdése van, használhatja a [Microsoft Azure Machine Learning 
 
 **Hogyan nevezhetek versenyt?**
 
-Hozzáférés a [versenyek](https://gallery.cortanaintelligence.com/competitions) kezdőlapja a [Azure AI-katalógusban](https://gallery.cortanaintelligence.com/), vagy az [ http://aka.ms/CIComp ](http://aka.ms/CIComp). A kezdőlapon jelenleg futó minden verseny. Minden verseny rendelkezik részletes utasításokat és részvételi szabályok, különböző díjakért és időtartama a regisztrációs oldalon található.
+Hozzáférés a [versenyek](https://gallery.cortanaintelligence.com/competitions) kezdőlapja a [Azure AI-katalógusban](https://gallery.cortanaintelligence.com/), vagy az [ http://aka.ms/CIComp ](https://aka.ms/CIComp). A kezdőlapon jelenleg futó minden verseny. Minden verseny rendelkezik részletes utasításokat és részvételi szabályok, különböző díjakért és időtartama a regisztrációs oldalon található.
 
 1. Keresse meg a verseny, amelyet szeretne részt vesznek, olvassa el az utasításokat az összes, és tekintse meg a videót. Kattintson a **adja meg a verseny** gombra, és a Starter kísérlet másolja be a meglévő Azure Machine Learning-munkaterületet. Ha már nincs hozzáférése a munkaterületet, akkor hozzon létre egyet előre. Alapszintű lefuttathatja a, a teljesítmény-mérőszám figyelje meg, majd kreativitását használatával növelheti a modell teljesítményét. A legtöbb fel ebben a lépésben töltött valószínűleg lesz.   
 
@@ -98,7 +98,7 @@ A Microsoft ellenőrzi, hogy a titkos ranglista eredményeit, és majd jelentkez
 
 **Hogyan fogja elérni a nyereményt pénzt Ha szeretnék win versenyt?**
 
-Ha a verseny nyertes, szüksége lesz jogosult-e, a licenc és a kiadásra nyilatkozat aláírására. Az űrlap ismételten kifejezi, hogy a verseny szabályainak. Győztesei USA adó űrlap kitöltése W-9, illetve egy W-8BEN űrlap ha azok nem Egyesült Államokbeli adófizetők kell. Tájékoztatjuk összes győztesei a felhőtechnológia kifizetési folyamat részeként a regisztrációs e-mail használatával. Tekintse meg a [feltételek és kikötések](http://aka.ms/comptermsandconditions) további részleteket.
+Ha a verseny nyertes, szüksége lesz jogosult-e, a licenc és a kiadásra nyilatkozat aláírására. Az űrlap ismételten kifejezi, hogy a verseny szabályainak. Győztesei USA adó űrlap kitöltése W-9, illetve egy W-8BEN űrlap ha azok nem Egyesült Államokbeli adófizetők kell. Tájékoztatjuk összes győztesei a felhőtechnológia kifizetési folyamat részeként a regisztrációs e-mail használatával. Tekintse meg a [feltételek és kikötések](https://aka.ms/comptermsandconditions) további részleteket.
 
 **Mi történik, ha egynél több bejegyzés kap az azonos pontszám?**
 
@@ -114,5 +114,5 @@ Jelenleg a verseny platform csak támogatja a munkaterületről küldött bejegy
 
 **Tegye nálunk a felhasználók versenyek megoldások és -bejegyzések?**
 
-Felhasználói bejegyzések csak tesztelési célra használja, a győztes megoldások azonosításához jelennek meg. Tekintse meg a [feltételek és kikötések](http://aka.ms/comptermsandconditions) bírálattal.
+Felhasználói bejegyzések csak tesztelési célra használja, a győztes megoldások azonosításához jelennek meg. Tekintse meg a [feltételek és kikötések](https://aka.ms/comptermsandconditions) bírálattal.
 

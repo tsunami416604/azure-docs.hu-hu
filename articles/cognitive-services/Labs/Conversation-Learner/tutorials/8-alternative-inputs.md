@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 8d3b3f419ceacbb9a6fe2b19cf68ea6873de536f
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 3b38cc265b4adfb301dc1165e02b17a8aa7c9589
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171017"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252547"
 ---
 # <a name="how-to-use-alternative-inputs"></a>Alternatív bemenetek használata
 
@@ -23,7 +23,7 @@ Ez az oktatóanyag bemutatja, hogyan használhatja a "alternatív bemenetek" mez
 
 ## <a name="video"></a>Videó
 
-[![Az oktatóanyag 8 előzetes verzió](http://aka.ms/cl-tutorial-08-preview)](http://aka.ms/blis-tutorial-08)
+[![Az oktatóanyag 8 előzetes verzió](https://aka.ms/cl-tutorial-08-preview)](https://aka.ms/blis-tutorial-08)
 
 ## <a name="requirements"></a>Követelmények
 Ehhez az oktatóanyaghoz, hogy fut-e az általános oktatóanyag robotot
@@ -134,7 +134,7 @@ Vegyünk fel más bemeneti adatokat az első párbeszédpanel:
 2. Kattintson a bal oldali panelen válassza a "Mi is az időjárás":
     1. Hozzáadás alternatív beviteli adja meg az időjárás-előrejelzés.
     2. Adja meg a "lesz, eső?"
-    3. Kattintson a Submit módosításokat.
+    3. Módosítások elküldése gombra.
 4. Kattintson a bal oldali panelen válassza a "denver":
     1. Hozzáadás alternatív beviteli adja meg "denver".
     2. Adja meg a "austin előrejelzésének".

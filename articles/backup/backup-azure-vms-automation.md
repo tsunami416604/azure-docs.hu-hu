@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: markgal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c29a91a40df34ecd9270d5805209d361cf990754
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 855a046425f051739f61c74b551d4ffea7b9120a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638035"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252360"
 ---
 # <a name="use-powershell-to-back-up-and-restore-virtual-machines"></a>Készítsen biztonsági másolatot, és virtuális gépek visszaállítása a PowerShell használatával
 
@@ -62,7 +62,7 @@ A kezdéshez:
     Select-AzureRmSubscription -SubscriptionName $SubscriptionName
     ```
 
-5. Az Azure Backup használatakor az első alkalommal kell használnia a **[Register-AzureRmResourceProvider](http://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)** parancsmagot, hogy regisztrálja az Azure Recovery Services-szolgáltatót az előfizetésében.
+5. Az Azure Backup használatakor az első alkalommal kell használnia a **[Register-AzureRmResourceProvider](https://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)** parancsmagot, hogy regisztrálja az Azure Recovery Services-szolgáltatót az előfizetésében.
 
     ```powershell
     Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
@@ -72,7 +72,7 @@ A kezdéshez:
     ```powershell
     Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ``` 
-    A parancs kimenetében a **RegistrationState** kell módosítani a **regisztrált**. Ha nem, egyszerűen csak futtatnia kell a **[Register-AzureRmResourceProvider](http://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)** újra a parancsmagot.
+    A parancs kimenetében a **RegistrationState** kell módosítani a **regisztrált**. Ha nem, egyszerűen csak futtatnia kell a **[Register-AzureRmResourceProvider](https://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)** újra a parancsmagot.
 
 A PowerShell használatával automatizálható a következő feladatokat:
 

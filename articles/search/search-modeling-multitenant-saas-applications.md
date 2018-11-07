@@ -9,18 +9,18 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: ashmaka
-ms.openlocfilehash: 54646a7d4962c5dfe255d28bdb91d272062530dd
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: b7befb46da8674e0bec7d3f73ad33a12529ffc3a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364274"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232378"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Tervezési minták több-bérlős SaaS-alkalmazások és az Azure Search az
 Egy több-bérlős alkalmazás, amelyik azonos szolgáltatásokat és képességeket biztosít a bérlők számára, akik nem látható, vagy ossza meg az adatokat semmilyen más bérlővel, tetszőleges számú. Ez a dokumentum ismerteti a bérlő elkülönítési stratégiák az Azure Search-alapú több-bérlős alkalmazásokhoz.
 
 ## <a name="azure-search-concepts"></a>Az Azure Search-fogalmak
-Azure Search keresési--szolgáltatásként megoldás, lehetővé teszi a segítségével a fejlesztők sokoldalú keresési funkciókkal bővíthetik az alkalmazások bármely-infrastruktúra kezelésére, és láthatja az információk kiolvasásához nélkül. Adatok feltöltődtek a szolgáltatásra és a felhőben tárolja. Egyszerű kérelmek Azure Search API használata esetén az adatok ezután módosíthatók és keres. A szolgáltatás áttekintése található [Ez a cikk](http://aka.ms/whatisazsearch). Tervezési minták ismertetése, előtt fontos fontos tudni, hogy néhány olyan fogalmat, az Azure Search szolgáltatásban.
+Azure Search keresési--szolgáltatásként megoldás, lehetővé teszi a segítségével a fejlesztők sokoldalú keresési funkciókkal bővíthetik az alkalmazások bármely-infrastruktúra kezelésére, és láthatja az információk kiolvasásához nélkül. Adatok feltöltődtek a szolgáltatásra és a felhőben tárolja. Egyszerű kérelmek Azure Search API használata esetén az adatok ezután módosíthatók és keres. A szolgáltatás áttekintése található [Ez a cikk](https://aka.ms/whatisazsearch). Tervezési minták ismertetése, előtt fontos fontos tudni, hogy néhány olyan fogalmat, az Azure Search szolgáltatásban.
 
 ### <a name="search-services-indexes-fields-and-documents"></a>Szolgáltatások, indexek, mezők és dokumentumok keresése
 Azure Search használata esetén az egyik feliratkozik egy *keresési szolgáltatás*. Adatfeltöltés az Azure Search, kerülnek a egy *index* a keresési szolgáltatásban. Indexek egyetlen szolgáltatáson belül számos lehet. A jól ismert fogalmakat,-adatbázisok használatához a közben az indexek a szolgáltatáson belül is lehet likened adatbázisban lévő táblák adatbázishoz a keresési szolgáltatás is likened.
@@ -126,7 +126,7 @@ Ezzel a módszerrel külön felhasználói fiókok, külön jogosultsági szinte
 > 
 
 ## <a name="next-steps"></a>További lépések
-Az Azure Search számos alkalmazás, meggyőző döntés, [találhat további információt a szolgáltatási hatékony képesség](http://aka.ms/whatisazsearch). A különböző kialakítási minták a több-bérlős alkalmazások kiértékelését, vegye figyelembe a [különböző tarifacsomagok](https://azure.microsoft.com/pricing/details/search/) és a megfelelő [szolgáltatási korlátozásaival](search-limits-quotas-capacity.md) leginkább megfelelő Azure Search-alkalmazás igazítás számítási feladatok és architektúrákat, bármilyen méretűek.
+Az Azure Search számos alkalmazás, meggyőző döntés, [találhat további információt a szolgáltatási hatékony képesség](https://aka.ms/whatisazsearch). A különböző kialakítási minták a több-bérlős alkalmazások kiértékelését, vegye figyelembe a [különböző tarifacsomagok](https://azure.microsoft.com/pricing/details/search/) és a megfelelő [szolgáltatási korlátozásaival](search-limits-quotas-capacity.md) leginkább megfelelő Azure Search-alkalmazás igazítás számítási feladatok és architektúrákat, bármilyen méretűek.
 
 Minden olyan kérdések az Azure Search és a több-bérlős helyzetekben lehet irányítani azuresearch_contact@microsoft.com.
 

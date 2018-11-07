@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/23/2018
 ms.author: juliako
-ms.openlocfilehash: 90aa3551bb9e2d903fb0f66e3a9b464b0f4be928
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: a087c1a069e340c01f2eda657a3d0ecce768168c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987613"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228130"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Video- és hangfájlok elemzése
 
@@ -25,20 +25,29 @@ Azure Media Services v3 lehetővé teszi, hogy adatokat nyerhet ki a video- és 
 Tartalom a Media Services v3 készletek elemzéséhez, hozzon létre egy **átalakítása** , és küldje el a **feladat** , hogy ezen készletek egyikét használja: **AudioAnalyzerPreset** vagy **VideoAnalyzerPreset**. A következő cikk azt ismerteti, hogyan használhatja **VideoAnalyzerPreset**: [oktatóanyag: az Azure Media Services videók elemzése](analyze-videos-tutorial-with-api.md).
 
 > [!NOTE]
-> Egy videó vagy hang Analyzer készletek használata esetén az Azure portal használatával állítsa be a fiókot szeretné, hogy 10 S3 szintű Media szolgáltatás számára fenntartott egységet. További információkért lásd: [médiafeldolgozás méretezését](../previous/media-services-scale-media-processing-overview.md).
+> Előzetes Video vagy Audio Analyzer-beállítások használata esetén állítsa be a fiókját 10 S3-as Media szolgáltatás számára fenntartott egységre az Azure Portalon. További információkért olvassa el a [médiafeldolgozás méretezését](../previous/media-services-scale-media-processing-overview.md) ismertető cikket.
 
-## <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
+## <a name="built-in-presets"></a>Beépített készletek
 
-**AudioAnalyzerPreset** lehetővé teszi, hogy egy hang- vagy fájlból származó több hang információk kinyerése. A kimenet egy JSON-fájlt (az összes az insights) és a hang átiratok VTT fájlt tartalmazza. Ezt a beállítást olyan tulajdonságot, amely meghatározza a bemeneti fájl nyelvét formájában fogad el egy [BCP47](https://tools.ietf.org/html/bcp47) karakterlánc. A hang insights tartalmazza:
+A Media Services a következő beépített analyzer készletek jelenleg támogatja:  
+
+|**Készlet neve**|**Forgatókönyv**|**Részletek**|
+|---|---|---|
+|**AudioAnalyzerPreset**|Hang elemzése|A készlet egy előre meghatározott készletével AI-alapú elemzési műveleteket, köztük a lejegyzés vonatkozik. A készlet jelenleg egyetlen hangsávra tartalom feldolgozását támogatja.<br/>A hang hasznos nyelvét a bemeneti adatok a "nyelvi címke-régió" BCP-47 formátumban is megadhat (például "hu-hu"). Támogatott nyelvek listáját is, "en-US", "en-GB", "es-ES", "es-MX", "fr-FR", it-IT, ja-JP, pt-BR, zh-CN.|
+|**VideoAnalyzerPreset**|Audio- és elemzése|Insights (bőséges metaadatok) kigyűjti a hang- és video, és kiírja egy JSON-formátumú fájlt. Megadhatja, hogy csak szeretné hang információk kinyerése érdekében videofájl feldolgozásakor. További információkért lásd: [elemzés videó](analyze-videos-tutorial-with-api.md).|
+
+### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
+
+A készlet lehetővé teszi, hogy egy hang- vagy fájlból származó több hang információk kinyerése. A kimenet egy JSON-fájlt (az összes az insights) és a hang átiratok VTT fájlt tartalmazza. Ezt a beállítást olyan tulajdonságot, amely meghatározza a bemeneti fájl nyelvét formájában fogad el egy [BCP47](https://tools.ietf.org/html/bcp47) karakterlánc. A hang insights tartalmazza:
 
 * Hanganyag átírása – egy szöveges időbélyegzőnél kimondott szó. Több nyelvet támogat
 * Hangszóró indexelő – előadó és a megfelelő szövegrészeket és szavakat leképezése
 * Beszéd hangulatelemzés – hangulatelemzést végzett a hanganyag átírása kimenete
 * Kulcsszavak – a hanganyag átírása kinyert kulcsszavakat.
 
-## <a name="videoanalyzerpreset"></a>VideoAnalyzerPreset
+### <a name="videoanalyzerpreset"></a>VideoAnalyzerPreset
 
-**VideoAnalyzerPreset** lehetővé teszi elemzési adatokat nyerhet több audio- és video-fájlból. A kimenet egy JSON-fájlt (az összes az insights), a videóátiratot, és a egy gyűjtemény miniatűrök VTT fájlt tartalmazza. Ezt a beállítást is fogad egy [BCP47](https://tools.ietf.org/html/bcp47) tulajdonságként (a videó nyelvének képviselő) karakterláncot. A videó insights az összes fent említett hang insights és az alábbi elemeket tartalmazza:
+A készlet lehetővé teszi elemzési adatokat nyerhet több audio- és video-fájlból. A kimenet egy JSON-fájlt (az összes az insights), a videóátiratot, és a egy gyűjtemény miniatűrök VTT fájlt tartalmazza. Ezt a beállítást is fogad egy [BCP47](https://tools.ietf.org/html/bcp47) tulajdonságként (a videó nyelvének képviselő) karakterláncot. A videó insights az összes fent említett hang insights és az alábbi elemeket tartalmazza:
 
 * Face követési – az idő, mely során arcok jelen a videóban. Minden rendelkezik, a face id és a egy megfelelő gyűjtemény miniatűrök
 * Vizuális szöveg – a szöveg, optikai karakterfelismerés keresztül észlelt. A szöveg megjelölve, és segítségével kulcsszavakkal (mellett az audio átiratot) is
