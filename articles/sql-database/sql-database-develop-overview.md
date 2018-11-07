@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: genemi
 manager: craigg
 ms.date: 06/20/2018
-ms.openlocfilehash: 58f902edcd417809d1bb47a231cb1c2ac2f579d1
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 707e10f77bf00ed12f09a23e490105f52ceed4ab
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063591"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241599"
 ---
 # <a name="sql-database-application-development-overview"></a>Az SQL Database-alapú alkalmazásfejlesztés – áttekintés
 Ez a cikk ismerteti az alapvető szempontokat, amelyeket a fejlesztőknek érdemes figyelembe venniük az Azure SQL Database-hez való csatlakozáshoz használt kód írásakor.
@@ -61,7 +61,7 @@ Ha átmeneti hiba történik az SQL Database-hez való kapcsolódáskor, akkor a
 
 ## <a name="managing-connections"></a>Kapcsolatok kezelése
 * Az ügyfél csatlakozási logikájában írja felül az alapértelmezett időtúllépési értéket 30 másodpercre.  A 15 másodperces időtúllépési érték túl rövid az internetkapcsolattól függő kapcsolatok számára.
-* Ha [kapcsolatkészletet](http://msdn.microsoft.com/library/8xx3tyca.aspx) használ, azonnal bontsa a kapcsolatot, ha a program már nem használja aktívan, és nem is tervezi az ismételt használatát.
+* Ha [kapcsolatkészletet](https://msdn.microsoft.com/library/8xx3tyca.aspx) használ, azonnal bontsa a kapcsolatot, ha a program már nem használja aktívan, és nem is tervezi az ismételt használatát.
 
 ## <a name="network-considerations"></a>A hálózatokkal kapcsolatos szempontok
 * Győződjön meg róla, hogy az ügyfélprogramot futtató számítógép tűzfala engedélyezi a kimenő TCP-kommunikációt az 1433-as porton.  További információ: [konfigurálása az Azure SQL Database-tűzfalak](sql-database-configure-firewall-settings.md).

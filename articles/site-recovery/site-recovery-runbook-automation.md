@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: ruturajd@microsoft.com
-ms.openlocfilehash: 5da623d07c34114d82c2b818a7c06420ffb9c886
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 1853d8d23aeb96cda3148c6c9e7668b9c2c28924
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211111"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244015"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Azure Automation-runbookok hozzáadása helyreállítási tervekhez
 Ebben a cikkben ismertetünk, hogyan integrálható az Azure Site Recovery Azure Automation segítségével kiterjesztheti a helyreállítási tervek. Helyreállítási tervek vezényelhető helyreállítási védett virtuális gépek Site recoveryvel. Helyreállítási tervek működik replikálása egy másodlagos felhőbe, és az Azure-bA. Helyreállítási tervek is érdekében, a helyreállítás **következetesen pontos**, **megismételhető**, és **automatizált**. Ha átadja a feladatokat a virtuális gépek az Azure-ba, az Azure Automation integrációs kiterjeszti a helyreállítási terv. Runbookok, amelyek kínál hatékony automatizálási feladatok végrehajtásához használható.
@@ -252,8 +252,8 @@ Egy másik példa tekintse meg az alábbi videó. Ebben bemutatjuk, helyreállí
 
 ## <a name="additional-resources"></a>További források
 * [Az Azure Automation szolgáltatást futtató fiók](../automation/automation-create-runas-account.md)
-* [Az Azure Automation áttekintése](http://msdn.microsoft.com/library/azure/dn643629.aspx "Azure Automation áttekintése")
-* [Az Azure Automation-mintaszkriptek](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=User&f\[0\].Value=SC%20Automation%20Product%20Team&f\[0\].Text=SC%20Automation%20Product%20Team "Azure Automation-mintaszkriptek")
+* [Az Azure Automation áttekintése](https://msdn.microsoft.com/library/azure/dn643629.aspx "Azure Automation áttekintése")
+* [Az Azure Automation-mintaszkriptek](https://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=User&f\[0\].Value=SC%20Automation%20Product%20Team&f\[0\].Text=SC%20Automation%20Product%20Team "Azure Automation-mintaszkriptek")
 
 ## <a name="next-steps"></a>További lépések
 [További](site-recovery-failover.md) feladatátvétel futtatásával kapcsolatos.

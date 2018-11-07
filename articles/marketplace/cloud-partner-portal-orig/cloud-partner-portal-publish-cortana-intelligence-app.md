@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: f12a15a0d739ae6e98be3871fa8bb4104f49565c
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 74cde720af012b3355b813cf6da2b2bdf10b9b8e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810953"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257207"
 ---
 # <a name="publish-a-cortana-intelligence-offer-using-the-cloud-partner-portal"></a>Használatával a Cloud Partner portálra a Cortana Intelligence-ajánlat közzététele
 
@@ -29,7 +29,7 @@ Ez a cikk ismerteti, hogyan teheti közzé a Cortana Intelligence-ajánlat haszn
 
 A Cloud Partner portálra támogatja a szerepköralapú hozzáférés a portált, amely lehetővé teszi, hogy a munkatársai közösen dolgozzon a ajánlat közzététele. További információkért lásd: [felhőalapú portál Felhasználók kezelése](./cloud-partner-portal-manage-users.md).
 
-Mielőtt ajánlat nevében a közzétevő tehetők közzé fiókra, egyéni felhasználók számára az egyik \"tulajdonosa\" szerepkör szükséges ahhoz, hogy elfogadja a [használati feltételek](https://azure.microsoft.com/support/legal/website-terms-of-use/), [Microsoft adatvédelmi nyilatkozatát](http://www.microsoft.com/privacystatement/default.aspx), és [Microsoft Azure Certified Program szerződése](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
+Mielőtt ajánlat nevében a közzétevő tehetők közzé fiókra, egyéni felhasználók számára az egyik \"tulajdonosa\" szerepkör szükséges ahhoz, hogy elfogadja a [használati feltételek](https://azure.microsoft.com/support/legal/website-terms-of-use/), [Microsoft adatvédelmi nyilatkozatát](https://www.microsoft.com/privacystatement/default.aspx), és [Microsoft Azure Certified Program szerződése](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
 
 ## <a name="to-start-creating-a-cortana-inteligence-offer"></a>A Cortana Inteligence ajánlat létrehozásának megkezdéséhez
 
@@ -208,7 +208,7 @@ Partnerek kétféle típusú próbaverziós élményt biztosíthat az appsource-
         - [AFS POP kiskereskedelmi végrehajtása](https://appsource.microsoft.com/product/web-apps/afs.fa9fc926-3bc3-43dd-becd-3ef41b52c10b?tab=Overview)
         - [AvePoint közszolgáltatásokat](https://appsource.microsoft.com/product/web-apps/avepoint.7738ac97-fd40-4ed3-aaab-327c3e0fe0b3?tab=Overview). (Ez az alkalmazás élményt nyújt a válogatott egyértelmű elérési úttal felhasználói személyekre szabott egy kiválasztott készletét.)
 
-     - Kipróbálás
+     - Tesztverzió
         - A (vagy a partner) megoldást, és a egy részhalmazát csomagolható példányosítható appsource-ban Azure Resource Manager-sablonok használatával és. Appsource-ban kezelheti az alkalmazás egy adott partner előfizetés idő boxing és karbantartásával forró/hideg készletét, példány stb.
         - Sablonok és a segítséget, ha ezt a lehetőséget a mintakód is biztosítunk.
 
@@ -216,7 +216,7 @@ Partnerek kétféle típusú próbaverziós élményt biztosíthat az appsource-
 
         - [Neal Analytics Készletoptimalizálás](https://appsource.microsoft.com/product/web-apps/neal_analytics.8066ad01-1e61-40cd-bd33-9b86c65fa73a?tab=Overview&tag=CISHome)
 
-- A **a próbaverzió iránti kérelme** (**Partner vezetett kísérletek /. LBI**) beállítás azt igényli az ügyfelek számára adja meg a partner követési kapcsolattartási adatok űrlapot. A partner következik, és a egy bemutató- vagy az alkalmazás próbaverzióját biztosít. További információkért lásd: [AppSource próbaverziója forgatókönyv](http://aka.ms/trialexperienceforwebapps) videó összefoglaló jellegű áttekintést.
+- A **a próbaverzió iránti kérelme** (**Partner vezetett kísérletek /. LBI**) beállítás azt igényli az ügyfelek számára adja meg a partner követési kapcsolattartási adatok űrlapot. A partner következik, és a egy bemutató- vagy az alkalmazás próbaverzióját biztosít. További információkért lásd: [AppSource próbaverziója forgatókönyv](https://aka.ms/trialexperienceforwebapps) videó összefoglaló jellegű áttekintést.
 
 >[!Note]
 >Az adat tartalmazza, amelyek **ügyfél vezetett kísérletek** rendelkezik, mint a lehetséges egy magasabb érdeklődők vonzását **Partner vezetett kísérletek**.

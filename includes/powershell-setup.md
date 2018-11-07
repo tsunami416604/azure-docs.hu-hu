@@ -12,22 +12,22 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/12/2015
 ms.author: rasquill
-ms.openlocfilehash: be5089b825a873006696eb074ed4355f415e680b
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: b96e8e6e31817f6d261f41dbf3b3047dd49c29ba
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319523"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258243"
 ---
 ## <a name="setting-up-powershell"></a>PowerShell beállítása
 Azure PowerShell használata előtt kövesse az alábbi lépéseket.
 
-### <a name="verify-powershell-versions"></a>Ellenőrizze a PowerShell-verzió
-A Windows PowerShell használata előtt rendelkeznie kell a Windows PowerShell, Version 3.0 vagy 4.0-s verzióját. A Windows PowerShell verziója található, írja be ezt a parancsot egy Windows PowerShell parancssorába.
+### <a name="verify-powershell-versions"></a>PowerShell-verzió ellenőrzése
+Windows PowerShell használata előtt a Windows PowerShell, Version 3.0 vagy 4.0-s verzióját kell rendelkeznie. A Windows PowerShell-verzió megkereséséhez írja be ezt a parancsot egy Windows PowerShell parancssorába.
 
     $PSVersionTable
 
-Megtekintheti az alábbihoz hasonló.
+Megtekintheti az ehhez hasonló.
 
     Name                           Value
     ----                           -----
@@ -39,28 +39,28 @@ Megtekintheti az alábbihoz hasonló.
     PSCompatibleVersions           {1.0, 2.0, 3.0}
     PSRemotingProtocolVersion      2.2
 
-Ellenőrizze, hogy értékének **PSVersion** 3.0 vagy 4.0-s verzióját. Telepítsen egy kompatibilis verziót, lásd: [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) vagy [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855).
+Ellenőrizze, hogy értékét **PSVersion** 3.0 vagy 4.0-s verzióját. Telepítenie egy kompatibilis verziót, tekintse meg a [Windows Management Framework 3.0](https://www.microsoft.com/download/details.aspx?id=34595) vagy [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855).
 
-Be kell Azure PowerShell 0.8.0 verzió vagy újabb. Ellenőrizheti az Azure PowerShell ezzel a paranccsal, az Azure PowerShell-parancssorba telepített verzióját.
+Továbbá ismernie kell az Azure PowerShell 0.8.0 verzió vagy újabb. Ellenőrizheti az Azure PowerShell, amelyen telepítve van a következő paranccsal, az Azure PowerShell-parancssorba verzióját.
 
     Get-Module azure | format-table version
 
-Megtekintheti az alábbihoz hasonló.
+Megtekintheti az ehhez hasonló.
 
     Version
     -------
     0.8.16.1
 
-Útmutatás és egy hivatkozást a legújabb verzióra: [telepítése és konfigurálása az Azure PowerShell](/powershell/azureps-cmdlets-docs).
+Útmutatás és a egy hivatkozást a legújabb verzióra: [telepítése és konfigurálása az Azure PowerShell](/powershell/azureps-cmdlets-docs).
 
 ### <a name="set-your-azure-account-and-subscription"></a>Az Azure-fiók és -előfizetés beállítása
-Ha még nem rendelkezik Azure-előfizetéssel, aktiválhatja a [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) vagy regisztráljon egy [ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/).
+Ha még nem rendelkezik Azure-előfizetése, aktiválhatja a [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) vagy regisztrálhat egy [az ingyenes próbaidőszak](https://azure.microsoft.com/pricing/free-trial/).
 
-Nyisson meg egy Azure PowerShell-parancssort, és jelentkezzen be Azure ezzel a paranccsal.
+Nyisson meg egy Azure PowerShell-parancssort, és jelentkezzen be az Azure-bA az alábbi paranccsal.
 
     Add-AzureAccount
 
-Ha több Azure-előfizetéssel rendelkezik, az Azure-előfizetések ezzel a paranccsal jeleníthet meg.
+Ha több Azure-előfizetéssel rendelkezik, az Azure-előfizetést a következő paranccsal listázhatja.
 
     Get-AzureSubscription
 
@@ -77,10 +77,10 @@ A következő információtípust kapja:
     CurrentStorageAccountName : 
     TenantId                  : 32fa88b4-86f1-419f-93ab-2d7ce016dba7
 
-Beállíthatja a jelenlegi Azure-előfizetés az Azure PowerShell-parancssorba ezek a parancsok futtatásával. Cserélje le a mindent, ami az ajánlatokat, beleértve a < és > karakter, a megfelelő név.
+Az aktuális Azure-előfizetést is megadhat a parancsok futtatása az Azure PowerShell-parancssorba. Cserélje le a mindent, ami az ajánlatokat, többek között a < és > karakter, helyes nevét.
 
     $subscr="<SubscriptionName from the display of Get-AzureSubscription>"
     Select-AzureSubscription -SubscriptionName $subscr -Current    
 
-További információ az Azure-előfizetések és a fiókok: [hogyan: Csatlakozás az előfizetéshez](/powershell/azureps-cmdlets-docs#Connect).
+További információ az Azure-előfizetések és fiókok: [módjáról: Csatlakozás az előfizetéshez](/powershell/azureps-cmdlets-docs#Connect).
 

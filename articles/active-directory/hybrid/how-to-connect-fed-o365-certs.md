@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0205552c073bf03c40da4d108256fa09e71fbbe3
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 311c16ba0c6b3378fd743b77e263a5d91f8b6a37
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314754"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237095"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>-Office 365 és az Azure Active Directory összevonási tanúsítványainak megújítása
 ## <a name="overview"></a>Áttekintés
@@ -51,9 +51,9 @@ Az Azure AD megpróbálja az összevonási metaadatok monitorozása, és a jogki
 > [!IMPORTANT]
 > Ha az AD FS-ben az üzletmenet folytonosságának biztosítása használ, győződjön meg arról, hogy a kiszolgáló rendelkezik-e az alábbi frissítések, így nem fordulhat elő, az ismert problémák hitelesítési hibák. Ez csökkenti az ismert AD FS proxy server kapcsolatos problémát a megújítási és a jövőbeli megújítási időszak:
 >
-> Server 2012 R2 - [Windows Server 2014. május összegzése](http://support.microsoft.com/kb/2955164)
+> Server 2012 R2 - [Windows Server 2014. május összegzése](https://support.microsoft.com/kb/2955164)
 >
-> Server 2008 R2 és 2012 - [proxyn keresztül történő hitelesítés nem sikerül, a Windows Server 2012 vagy Windows 2008 R2 SP1](http://support.microsoft.com/kb/3094446)
+> Server 2008 R2 és 2012 - [proxyn keresztül történő hitelesítés nem sikerül, a Windows Server 2012 vagy Windows 2008 R2 SP1](https://support.microsoft.com/kb/3094446)
 >
 >
 

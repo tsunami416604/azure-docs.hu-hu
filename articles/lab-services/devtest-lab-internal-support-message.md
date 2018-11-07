@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 2d12ca26fb2aa5abddcf44b2e634b2f08b1fb01b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: deb98c2c633200ab4be1d763a94fd2a04979a3b1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38696250"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235700"
 ---
 # <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>Egy belső támogató utasítás hozzáadása Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet
 
@@ -31,7 +31,7 @@ Könnyedén letilthatja vagy támogatási nyilatkozattal szerkesztése után má
 
 ## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>Egy meglévő laborhoz támogatási nyilatkozattal hozzáadásának lépéseit
 
-1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Ha szükséges, válassza ki a **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából. (Előfordulhat, hogy a tesztkörnyezet már látható az irányítópult alatt **összes erőforrás**).
 1. Tesztkörnyezetek listájában jelölje ki a labor létrehozása, amelyben a támogatási nyilatkozattal hozzáadni kívánt.  
 1. A laborgyakorlat **áttekintése** területen válassza **Konfigurace a zásady**.  
@@ -55,7 +55,7 @@ Ha már nem szeretné a támogatási üzenet megjelenítése a labor felhasznál
 
 ## <a name="steps-for-users-to-view-the-support-message"></a>A felhasználók számára a támogatási megtekintésére lépések
 
-1. Az a [az Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040), válassza ki a labor.
+1. Az a [az Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040), válassza ki a labor.
 
 1. A laborgyakorlat **áttekintése** területen válassza **belső támogató**.  
 

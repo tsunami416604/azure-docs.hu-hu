@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 8f9504458b1f332193e8457bcc9cf41e85fd6aca
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 558df3fa70989aaf9ba182df3a918994c7dc9db6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38573400"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243709"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Tulajdonosok és felhasználók hozzáadása az Azure DevTest Labs szolgáltatásban
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -64,7 +64,7 @@ Az alábbi táblázat mutatja be, hogy ezek a szerepkörök minden egyes felhasz
 Tulajdonosok és a felhasználók az Azure Portalon a labor szintjén adhatók meg. A felhasználó lehet egy külső felhasználót érvényes [Microsoft-fiókkal (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account).
 A következő lépések végigvezetik a tulajdonosnak vagy felhasználó hozzáadása Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet folyamatán:
 
-1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
 3. Tesztkörnyezetek listájában jelölje ki a kívánt tesztkörnyezetben.
 4. A labor paneljén válassza ki a **Konfigurace a zásady**. 
@@ -116,11 +116,11 @@ Lekérheti a `subscriptionId`, `labResourceGroup`, és `labName` értékeket a l
 ## <a name="add-an-owner-or-user-at-the-subscription-level"></a>Adjon hozzá egy tulajdonosi vagy a felhasználó az előfizetés szintjén
 Azure-engedélyeket, az Azure-ban a gyermek hatókörben vannak propagálni szülőhatókörben. Ezért az Azure-előfizetéssel, amely tartalmazza a labs tulajdonosai a program automatikusan ezeket labs tulajdonosai. Emellett a virtuális gépek és egyéb erőforrások a labor létrehozása felhasználók és az Azure DevTest Labs szolgáltatás által létrehozott saját. 
 
-A labor létrehozása panelen keresztül labor is hozzáadhat további tulajdonosok a [az Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040). Azonban az új tulajdonos felügyeleti hatóköre sokkal szűkebb, mint az előfizetés tulajdonosa hatókör. Például a hozzáadva tulajdonosok nem rendelkezik teljes hozzáféréssel néhány, az előfizetésben a DevTest Labs szolgáltatás által létrehozott erőforrást. 
+A labor létrehozása panelen keresztül labor is hozzáadhat további tulajdonosok a [az Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040). Azonban az új tulajdonos felügyeleti hatóköre sokkal szűkebb, mint az előfizetés tulajdonosa hatókör. Például a hozzáadva tulajdonosok nem rendelkezik teljes hozzáféréssel néhány, az előfizetésben a DevTest Labs szolgáltatás által létrehozott erőforrást. 
 
 Tulajdonos hozzáadása egy Azure-előfizetést, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Válassza ki **minden szolgáltatás**, majd válassza ki **előfizetések** a listából.
 3. Válassza ki a kívánt előfizetés azonosítóértékét.
 4. Válassza ki **hozzáférés** ikonra. 

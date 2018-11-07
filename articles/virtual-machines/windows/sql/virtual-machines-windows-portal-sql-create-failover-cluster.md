@@ -16,16 +16,16 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 8e107c1721d5623239a694eba39b32e8a2a6089d
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 382027782044a5a1011976560b7460047544f521
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056154"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237964"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure virtuális gépeken futó SQL Server feladatátvevő Fürtpéldányának konfigurálása
 
-Ez a cikk bemutatja, hogyan hozhat létre egy SQL Server feladatátvevő fürtbeli példány (FCI) az Azure virtuális gépeken a Resource Manager-modellben. Ez a megoldás használ [a közvetlen tárolóhelyek a Windows Server 2016 Datacenter edition \(S2D\) ](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview) egy szoftveralapú virtuális TÁROLÓHÁLÓZAT, amely a tároló (adatlemezek) szinkronizálja a csomópontok között (az Azure VM-EK), egy Windows-fürt. S2D-t a Windows Server 2016 rendszerben jelent meg.
+Ez a cikk bemutatja, hogyan hozhat létre egy SQL Server feladatátvevő fürtbeli példány (FCI) az Azure virtuális gépeken a Resource Manager-modellben. Ez a megoldás használ [a közvetlen tárolóhelyek a Windows Server 2016 Datacenter edition \(S2D\) ](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview) egy szoftveralapú virtuális TÁROLÓHÁLÓZAT, amely a tároló (adatlemezek) szinkronizálja a csomópontok között (az Azure VM-EK), egy Windows-fürt. S2D-t a Windows Server 2016 rendszerben jelent meg.
 
 Az alábbi ábrán a kész megoldás Azure-beli virtuális gépeken:
 
@@ -44,7 +44,7 @@ Az előző ábrán látható:
    >[!NOTE]
    >A diagram az összes Azure-erőforrások találhatók ugyanabban az erőforráscsoportban vannak.
 
-Az S2D kapcsolatos részletekért lásd: [a közvetlen tárolóhelyek a Windows Server 2016 Datacenter edition \(S2D\)](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview).
+Az S2D kapcsolatos részletekért lásd: [a közvetlen tárolóhelyek a Windows Server 2016 Datacenter edition \(S2D\)](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview).
 
 Az S2D architektúrák - konvergens és hiperkonvergens két típusát támogatja. Ebben a dokumentumban az architektúra a hiperkonvergens. Egy hiperkonvergens infrastruktúrával ugyanazokat a kiszolgálókat, amelyek a fürtözött alkalmazást helyez el a storage. Ebben az architektúrában a storage szolgáltatás, minden egyes SQL Server FCI-csomóponton.
 
@@ -52,13 +52,13 @@ Az S2D architektúrák - konvergens és hiperkonvergens két típusát támogatj
 
 Az Azure Virtual machines szolgáltatásban használatalapú fizetés (Használatalapú) használatával az SQL Server licencelése, de a saját licenc használata (BYOL) Virtuálisgép-lemezképeket. A lemezkép választja típusa határozza meg, hogyan számlázzuk.
 
-A Használatalapú licencelés, a Feladatátvevőfürt-példány (FCI) az SQL Server Azure virtuális gépeken terhel az FCI-t, beleértve a passzív csomópontokat az összes csomópont. További információkért lásd: [SQL Server Enterprise Virtual Machines díjszabása](http://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/). 
+A Használatalapú licencelés, a Feladatátvevőfürt-példány (FCI) az SQL Server Azure virtuális gépeken terhel az FCI-t, beleértve a passzív csomópontokat az összes csomópont. További információkért lásd: [SQL Server Enterprise Virtual Machines díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/). 
 
-Frissítési garanciával rendelkező nagyvállalati szerződéssel rendelkező ügyfelek minden aktív csomópont egy ingyenes passzív FCI csomópont használandó áll. Kihasználhatja az értékelem az Azure-ban, BYOL VM-rendszerképek használatához, majd a azonos licenc mindkét csomópontján az aktív és passzív az FCI-t. További információkért lásd: [nagyvállalati szerződés](http://www.microsoft.com/en-us/Licensing/licensing-programs/enterprise.aspx).
+Frissítési garanciával rendelkező nagyvállalati szerződéssel rendelkező ügyfelek minden aktív csomópont egy ingyenes passzív FCI csomópont használandó áll. Kihasználhatja az értékelem az Azure-ban, BYOL VM-rendszerképek használatához, majd a azonos licenc mindkét csomópontján az aktív és passzív az FCI-t. További információkért lásd: [nagyvállalati szerződés](https://www.microsoft.com/en-us/Licensing/licensing-programs/enterprise.aspx).
 
 Hasonlítsa össze a Használatalapú és BYOL Azure virtuális gépeken futó SQL Server-példányok licencelésének lásd [SQL virtuális gépek – első lépések](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms).
 
-Tudnivalók az licencelési SQL Server teljes körű információkért lásd: [díjszabási](http://www.microsoft.com/sql-server/sql-server-2017-pricing).
+Tudnivalók az licencelési SQL Server teljes körű információkért lásd: [díjszabási](https://www.microsoft.com/sql-server/sql-server-2017-pricing).
 
 ### <a name="example-azure-template"></a>A példában az Azure-sablon
 
@@ -71,12 +71,12 @@ Nincsenek néhány dolgot tudnia kell, és néhány dolgot, hogy a szükséges h
 ### <a name="what-to-know"></a>Tudnivalók a
 Rendelkeznie kell a következő technológiákat működési megismerése:
 
-- [Windows-fürttechnológiák](http://technet.microsoft.com/library/hh831579.aspx)
-- [SQL Server feladatátvevő fürt példányok](http://msdn.microsoft.com/library/ms189134.aspx).
+- [Windows-fürttechnológiák](https://technet.microsoft.com/library/hh831579.aspx)
+- [SQL Server feladatátvevő fürt példányok](https://msdn.microsoft.com/library/ms189134.aspx).
 
 Emellett rendelkeznie kell a következő technológiákat egy általános ismertetése:
 
-- [A Windows Server 2016 közvetlen tárolóhelyeket használó hiperkonvergens megoldás](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
+- [A Windows Server 2016 közvetlen tárolóhelyeket használó hiperkonvergens megoldás](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
 - [Azure-erőforráscsoportok](../../../azure-resource-manager/resource-group-portal.md)
 
 > [!IMPORTANT]
@@ -225,11 +225,11 @@ A következő lépés, hogy a feladatátvevő fürt konfigurálása az S2D-t. Eb
    Invoke-Command  $nodes {Install-WindowsFeature Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools}
    ```
 
-Referenciaként a következő lépésekhez kövesse a 3. lépését [a Windows Server 2016 közvetlen tárolóhelyeket használó hiperkonvergens megoldás](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-3-configure-storage-spaces-direct).
+Referenciaként a következő lépésekhez kövesse a 3. lépését [a Windows Server 2016 közvetlen tárolóhelyeket használó hiperkonvergens megoldás](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-3-configure-storage-spaces-direct).
 
 ### <a name="validate-the-cluster"></a>A fürt ellenőrzése
 
-Ez az útmutató utasításokat alatt hivatkozik [fürt ellenőrzése](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-31-run-cluster-validation).
+Ez az útmutató utasításokat alatt hivatkozik [fürt ellenőrzése](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-31-run-cluster-validation).
 
 Ellenőrizze a fürtöt, a felhasználói felületen vagy a PowerShell használatával.
 
@@ -259,7 +259,7 @@ Miután a fürt érvényesítésének, a feladatátvevő fürt létrehozásához
 
 ### <a name="create-the-failover-cluster"></a>A feladatátvevő fürt létrehozása
 
-Ez az útmutató hivatkozik [a feladatátvevő fürt létrehozása](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-32-create-a-cluster).
+Ez az útmutató hivatkozik [a feladatátvevő fürt létrehozása](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-32-create-a-cluster).
 
 A feladatátvevő fürt létrehozásához az alábbiak szükségesek:
 - A virtuális gépek, amelyek a fürtcsomópontok nevei.
@@ -276,19 +276,19 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 Felhőbeli tanúsító a fürt kvórum tanúsítójának tárolva az Azure Storage Blob egy új típusú. Ez kiküszöböli a tanúsító fájlmegosztás üzemeltetése különálló virtuális gépek.
 
-1. [Felhőbeli tanúsító a feladatátvevő fürt létrehozása](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness).
+1. [Felhőbeli tanúsító a feladatátvevő fürt létrehozása](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness).
 
 1. Hozzon létre egy blobtárolót.
 
 1. Mentse a hozzáférési kulcsokat és a tároló URL-címe.
 
-1. A feladatátvevő fürt kvórum tanúsító konfigurálása. Látható, [a kvórum tanúsító konfigurálása a felhasználói felületen](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness) a felhasználói felületen.
+1. A feladatátvevő fürt kvórum tanúsító konfigurálása. Látható, [a kvórum tanúsító konfigurálása a felhasználói felületen](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness) a felhasználói felületen.
 
 ### <a name="add-storage"></a>Tároló hozzáadása
 
-A lemezek az S2D-t kell üres és nem tartalmazhatnak partíciókat vagy más adatokat. Lemezek kövesse tiszta [a jelen útmutató lépéseit](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-34-clean-disks).
+A lemezek az S2D-t kell üres és nem tartalmazhatnak partíciókat vagy más adatokat. Lemezek kövesse tiszta [a jelen útmutató lépéseit](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-34-clean-disks).
 
-1. [Közvetlen tárolóhelyek engedélyezése Store \(S2D\)](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-35-enable-storage-spaces-direct).
+1. [Közvetlen tárolóhelyek engedélyezése Store \(S2D\)](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-35-enable-storage-spaces-direct).
 
    A következő PowerShell lehetővé teszi a közvetlen tárolóhelyek.  
 
@@ -298,7 +298,7 @@ A lemezek az S2D-t kell üres és nem tartalmazhatnak partíciókat vagy más ad
 
    A **Feladatátvevőfürt-kezelőben**, most már megtekintheti a tárolókészlethez.
 
-1. [Hozzon létre egy kötetet](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-36-create-volumes).
+1. [Hozzon létre egy kötetet](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-36-create-volumes).
 
    Az S2D-t a szolgáltatások egyike, hogy automatikusan létrehoz egy tárolókészletet Ha engedélyezi azt. Most már készen áll a kötet létrehozásához. A PowerShell-parancsmag segítségével `New-Volume` automatizálja a kötet létrehozását, beleértve a formázást, felvétele a fürtbe, és egy fürt megosztott kötete (CSV) létrehozása. A következő példában létrehozunk egy 800 gigabájt (GB), fürt megosztott kötetei szolgáltatás.
 
@@ -343,7 +343,7 @@ Miután konfigurálta a feladatátvevő fürt és a fürt-összetevők, beleért
 1. Kattintson a **csomópont hozzáadása az SQL Server feladatátvevő fürtre történő**. Az SQL server telepítése, és adja a kiszolgálót az FCI-t a varázsló utasításait követve.
 
    >[!NOTE]
-   >Ha az Azure Marketplace-en image z galerie használt SQL Server, SQL Server-eszközök szerepeltek a lemezképpel. Ha nem használja ezt a képet, az SQL Server-eszközök külön kell telepítenie. Lásd: [töltse le az SQL Server Management Studio (SSMS)](http://msdn.microsoft.com/library/mt238290.aspx).
+   >Ha az Azure Marketplace-en image z galerie használt SQL Server, SQL Server-eszközök szerepeltek a lemezképpel. Ha nem használja ezt a képet, az SQL Server-eszközök külön kell telepítenie. Lásd: [töltse le az SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
 
 ## <a name="step-5-create-azure-load-balancer"></a>5. lépés: Az Azure load balancer létrehozása
 
@@ -478,7 +478,7 @@ Az FCI ellenőrzése a fürt funkció feladatátvételi tesztje. Kövesse az al�
 A kapcsolat tesztelése, jelentkezzen be egy másik virtuális géphez ugyanazon a virtuális hálózaton. Nyissa meg **SQL Server Management Studio** , és kapcsolódhat az SQL Server FCI nevét.
 
 >[!NOTE]
->Ha szükséges, akkor az [töltse le az SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx).
+>Ha szükséges, akkor az [töltse le az SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -491,10 +491,10 @@ Azure-beli virtuális gépeken az MSDTC nem támogatott a Windows Server 2016-os
 
 ## <a name="see-also"></a>Lásd még:
 
-[A telepítő az S2D a távoli asztal (Azure)](http://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-storage-spaces-direct-deployment)
+[A telepítő az S2D a távoli asztal (Azure)](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-storage-spaces-direct-deployment)
 
-[A közvetlen tárolóhelyek hiperkonvergens megoldás](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct).
+[A közvetlen tárolóhelyek hiperkonvergens megoldás](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct).
 
-[A közvetlen tárolóhelyek áttekintése](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview)
+[A közvetlen tárolóhelyek áttekintése](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview)
 
 [S2D-t az SQL Server támogatása](https://blogs.technet.microsoft.com/dataplatforminsider/2016/09/27/sql-server-2016-now-supports-windows-server-2016-storage-spaces-direct/)

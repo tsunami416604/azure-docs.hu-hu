@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: ad77f1f0a99fbdb355163e1bc83461c8c4eb75fa
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 7b2dd4e97d23f37c8261e51f3f65e78436493ddc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157700"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238733"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Eszköz csatlakoztatása az Azure IoT Central
 
@@ -150,7 +150,7 @@ Csatlakoztatni az eszközöket az IoT-X509 használatával központi tanúsítv�
     
     Az alábbiakban néhány parancssori segédeszközök készítése a CA-tanúsítványok és az eszköz-tanúsítványok használatával.
 
-    * Az MxChip itt használ-e egy [parancssori eszköz](http://aka.ms/iotcentral-docs-dicetool) létrehozni a CA tanúsítványok adja hozzá az IoT Central-alkalmazást, és a tanúsítványok ellenőrzése. 
+    * Az MxChip itt használ-e egy [parancssori eszköz](https://aka.ms/iotcentral-docs-dicetool) létrehozni a CA tanúsítványok adja hozzá az IoT Central-alkalmazást, és a tanúsítványok ellenőrzése. 
 
     *   Ezzel [parancssori eszköz](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md ) ,
         * Hozza létre a tanúsítványlánc (2. lépés. kövesse a GitHub-dokumentumokhoz). 
@@ -165,7 +165,7 @@ Csatlakoztatni az eszközöket az IoT-X509 használatával központi tanúsítv�
     A program az eszközt a kiépítési szolgáltatás információkat lehetővé teszi a lekérése a kapcsolat adatait, és az IoT-központ alkalmazás-hozzárendelés, ha be van kapcsolva.    
 
     **További referene** 
-    *   A minta megvalósítása [RaspberryPi.](http://aka.ms/iotcentral-docs-Raspi-releases)  
+    *   A minta megvalósítása [RaspberryPi.](https://aka.ms/iotcentral-docs-Raspi-releases)  
 
     *   [Eszközügyfél minta c-hez](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)
 

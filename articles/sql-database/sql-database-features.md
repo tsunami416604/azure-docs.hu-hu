@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: b68e65bdcefcabb2804b259cff45e0a8719f7ab7
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: d650e0d8b76af8d6bdef5aeadf821e3d8f6d1c79
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870516"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241871"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Szolgáltatások összehasonlítása: Azure SQL Database, és az SQL Server összehasonlítása 
 
@@ -26,7 +26,7 @@ Az Azure SQL Database egy általános kódbázis közös SQL Server. Az Azure SQ
 A Microsoft továbbra is biztosítja a funkciók az Azure SQL Database. Látogasson el a szolgáltatásfrissítések weblap az Azure-hoz a legújabb frissítések ezekkel a szűrőkkel:
 
 * Szűrjön [SQL Database szolgáltatásra](https://azure.microsoft.com/updates/?service=sql-database).
-* Szűrjön az általános elérhetőséggel kapcsolatos [bejelentésekre](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) az SQL Database funkcióira vonatkozóan.
+* Szűrjön az általános elérhetőséggel kapcsolatos [bejelentésekre](https://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) az SQL Database funkcióira vonatkozóan.
 
 ## <a name="sql-server-feature-support-in-azure-sql-database"></a>Az Azure SQL Database az SQL Server-funkciók támogatása
 
@@ -118,7 +118,7 @@ A következő táblázat az SQL Server legfontosabb funkcióit, és a szolgálta
 | [Kiszolgáló konfigurációs beállításai](https://docs.microsoft.com/sql/database-engine/configure-windows/server-configuration-options-sql-server) | Nem | Igen – lásd: [a T-SQL eltérései](sql-database-managed-instance-transact-sql-information.md) |
 | [Utasítások megadása](https://docs.microsoft.com/sql/t-sql/statements/set-statements-transact-sql) | A legtöbb – tekintse meg az egyes utasításokat | Igen – lásd: [a T-SQL eltérései](sql-database-managed-instance-transact-sql-information.md)|
 | [SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | Igen | Igen |
-| [Térbeli](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) | Igen | Igen |
+| [Spatial](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) | Igen | Igen |
 | [SQL Data Sync](sql-database-get-started-sql-data-sync.md) | Igen | Nem |
 | [SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | Nem – lásd: [rugalmas feladatok](sql-database-elastic-jobs-getting-started.md) | Igen – lásd: [különbségek az SQL Server Agent](sql-database-managed-instance-transact-sql-information.md#sql-server-agent) |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Nem – lásd: [az Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) | Nem – lásd: [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) |
@@ -128,7 +128,7 @@ A következő táblázat az SQL Server legfontosabb funkcióit, és a szolgálta
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Igen | Igen |
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Igen | Igen |
 | [Az SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Nem – lásd: [bővített események](sql-database-xevent-db-diff-from-svr.md) | Igen |
-| [SQL Server-replikáció](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [Kizárólag tranzakciós és pillanatkép-replikációs előfizetők](sql-database-cloud-migrate.md) | Igen – [replikáció az SQL Database felügyelt példányain – nyilvános előzetes verzió](http://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance) |
+| [SQL Server-replikáció](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [Kizárólag tranzakciós és pillanatkép-replikációs előfizetők](sql-database-cloud-migrate.md) | Igen – [replikáció az SQL Database felügyelt példányain – nyilvános előzetes verzió](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance) |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Nem - [tekintse meg a Power BI](https://docs.microsoft.com/power-bi/) | Nem - [tekintse meg a Power BI](https://docs.microsoft.com/power-bi/) |
 | [Tárolt eljárások](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) | Igen | Igen |
 | [A rendszer tárolt függvényei](https://docs.microsoft.com/sql/relational-databases/system-functions/system-functions-for-transact-sql) | Most – tekintse meg az egyes függvények | Igen – lásd: [tárolt eljárások, függvények, eseményindítók különbségek](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |

@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 3b6b505be4a0084059d8c37a21099a784cacbed1
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: af36f033dbca6c9f594b3568bfe7567a959e2d2f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414123"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237152"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Windows virtuális gépek az Azure-ban a távoli asztali kapcsolatok problémáinak részletes hibaelhárítási lépései
 Ez a cikk diagnosztizálhatja és megoldhatja az Azure-beli virtuális gépek Windows-alapú összetett távoli asztal-hibák részletes hibaelhárítási lépéseket.
@@ -130,7 +130,7 @@ Próbálja meg újra a kapcsolatot a számítógépéről. Ha Ön még mindig ne
 * Windows tűzfal vagy egy másik helyi tűzfal rendelkezik az kimenő szabályt, amely megakadályozza, hogy a távoli asztali forgalmat.
 * Behatolásészlelés vagy hálózatfigyelési az Azure virtuális gépen futó szoftver nem engedélyezi, távoli asztali kapcsolatok.
 
-A klasszikus üzemi modellel létrehozott virtuális gép esetében használhatja az Azure virtuális gépen egy távoli Azure PowerShell-munkamenetet. Először telepítenie kell egy tanúsítványt a virtuális gépet üzemeltető felhőszolgáltatás számára. Lépjen a [biztonságos távoli PowerShell elérésének konfigurálása az Azure Virtual Machines](http://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) , és töltse le a **InstallWinRMCertAzureVM.ps1** parancsfájlt a helyi számítógépen.
+A klasszikus üzemi modellel létrehozott virtuális gép esetében használhatja az Azure virtuális gépen egy távoli Azure PowerShell-munkamenetet. Először telepítenie kell egy tanúsítványt a virtuális gépet üzemeltető felhőszolgáltatás számára. Lépjen a [biztonságos távoli PowerShell elérésének konfigurálása az Azure Virtual Machines](https://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe) , és töltse le a **InstallWinRMCertAzureVM.ps1** parancsfájlt a helyi számítógépen.
 
 Ezután telepítse az Azure PowerShell-lel, ha még nem tette. Lásd: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
 

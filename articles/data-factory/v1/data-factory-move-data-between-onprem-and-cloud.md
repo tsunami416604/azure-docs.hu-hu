@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b221697b7450ad1c6dac87b7a08c7db8b11810bf
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 1bf915bf702cdf9492cce1f32886c0049fbf9867
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240460"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242840"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Adatok áthelyezése egy helyszíni forrásra, és a felhő között az adatkezelési átjáróval
 > [!NOTE]
@@ -47,7 +47,7 @@ Ez az útmutató hajtsa végre a következő lépéseket:
 ## <a name="prerequisites-for-the-tutorial"></a>Az oktatóanyag előfeltételei
 Mielőtt elkezdené a forgatókönyv, a következő előfeltételeknek kell rendelkeznie:
 
-* **Azure-előfizetés**.  Ha nem rendelkezik előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes próbafiókot. Tekintse meg a [ingyenes próbaverzió](http://azure.microsoft.com/pricing/free-trial/) részleteivel.
+* **Azure-előfizetés**.  Ha nem rendelkezik előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes próbafiókot. Tekintse meg a [ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/) részleteivel.
 * **Az Azure Storage-fiók**. A blob storage-ot használ egy **cél/fogadó** ebben az oktatóanyagban. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../../storage/common/storage-quickstart-create-account.md) ismertető cikket.
 * **Egy SQL Server**. Ebben az oktatóanyagban egy helyszíni SQL Server-adatbázist használunk **forrásadattárként**. 
 

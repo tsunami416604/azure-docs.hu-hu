@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 5710ebc1c52737e27aafa88eef5e9ae402f8e53f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: a56d595ca88541779f5213c6b0ec88fc87913b6a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579845"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239049"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Elkülönítés az Azure nyilvános felhő
 ##  <a name="introduction"></a>Bevezetés
@@ -111,7 +111,7 @@ Azure Active Directory egyéb funkciói a következők:
 - [Az Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) magas rendelkezésre állású globális identity management-szolgáltatás felé néző alkalmazások esetén, amely több százmillió identitás kezelésére méretezhető. Mobil- és webes platformokba is integrálható. A felhasználók jelentkezhetnek be minden a testreszabható felületeken, meglévő közösségi hálózati fiókjaikkal vagy hitelesítő adatok létrehozásával.
 
 ### <a name="isolation-from-microsoft-administrators--data-deletion"></a>Elkülönítés a Microsoft a rendszergazdák & adatok törlése
-A Microsoft védi adatait az illetéktelen hozzáférés, vagy illetéktelen személyek általi használata erős mértékek vesz igénybe. Ezek üzemeltetési folyamatokat és élvezik a [Online szolgáltatások használati feltételeit](http://aka.ms/Online-Services-Terms), amely szerződéses kötelezettségvállalás ad az adatok elérését szabályozó kínálnak.
+A Microsoft védi adatait az illetéktelen hozzáférés, vagy illetéktelen személyek általi használata erős mértékek vesz igénybe. Ezek üzemeltetési folyamatokat és élvezik a [Online szolgáltatások használati feltételeit](https://aka.ms/Online-Services-Terms), amely szerződéses kötelezettségvállalás ad az adatok elérését szabályozó kínálnak.
 
 -   A Microsoft szakemberei nem rendelkezik alapértelmezett hozzáférést az adataihoz a felhőben. Ehelyett kaptak hozzáférést, a felügyeleti felügyeletet, csak szükség esetén. A hozzáférés alaposan ellenőrzött és naplózott, és visszavonja, amikor már nincs rá szükség.
 
@@ -119,7 +119,7 @@ A Microsoft védi adatait az illetéktelen hozzáférés, vagy illetéktelen sze
 
 Például az ISO/IEC 27001 rendszervizsgálati módban levő minősítések az üzleti szolgáltatás rendszeresen ellenőrzi a Microsoft és akkreditált auditáló cégekkel, amely auditorai emellett mintavételi auditokkal, hogy a hozzáférés csak jogszerű üzleti célokra. Saját ügyféladataihoz bármikor és bármilyen okból mindig elérheti.
 
-Ha törli az adatokat, a Microsoft Azure törli az adatokat, beleértve a gyorsítótárazott vagy a biztonsági másolatok. A releváns szolgáltatások esetében, amelyek törlése a megőrzési időszak vége után 90 napon belül történik. (A releváns szolgáltatások adatfeldolgozási feltételek szakaszában meghatározott a [Online szolgáltatások használati feltételeit](http://aka.ms/Online-Services-Terms).)
+Ha törli az adatokat, a Microsoft Azure törli az adatokat, beleértve a gyorsítótárazott vagy a biztonsági másolatok. A releváns szolgáltatások esetében, amelyek törlése a megőrzési időszak vége után 90 napon belül történik. (A releváns szolgáltatások adatfeldolgozási feltételek szakaszában meghatározott a [Online szolgáltatások használati feltételeit](https://aka.ms/Online-Services-Terms).)
 
 Ha a meghajtó tárolására használt romlik egy hardverhiba, biztonságosan van-e [törölve lesz, vagy megsemmisül](https://microsoft.com/en-us/trustcenter/privacy/you-own-your-data) Microsoft visszaadja a gyártó cseréje vagy javítása előtt. A meghajtón található adatokat a rendszer felülírja annak érdekében, hogy az adatok semmilyen módon nem lehet helyreállítani.
 

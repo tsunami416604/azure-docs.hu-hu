@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 70b8f25bd699cbdb069892d65bf766ef3953f59d
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 271141f24ff729fc99210af67ad769a5ef83a65c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170871"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242721"
 ---
 # <a name="how-to-create-a-hello-world-model-with-conversation-learner"></a>Hogyan hozhat létre egy "Hello World" modellt Beszélgetéstanuló
 
@@ -23,7 +23,7 @@ Ez az oktatóanyag bemutatja, hogyan Beszélgetéstanuló, a létrehozás művel
 
 ## <a name="video"></a>Videó
 
-[![1. oktatóanyag előzetes verzió](http://aka.ms/cl-tutorial-01-preview)](http://aka.ms/blis-tutorial-01)
+[![1. oktatóanyag előzetes verzió](https://aka.ms/cl-tutorial-01-preview)](https://aka.ms/blis-tutorial-01)
 
 
 ## <a name="requirements"></a>Követelmények

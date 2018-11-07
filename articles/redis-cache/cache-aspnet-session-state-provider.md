@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 05/01/2017
 ms.author: wesmc
-ms.openlocfilehash: 047d23184ccf640dd6510faca9f508eef0dc50cb
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: e007b23b6e4a55e2a939994e8f95d01fc24cc529
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050813"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241573"
 ---
 # <a name="aspnet-session-state-provider-for-azure-redis-cache"></a>Az Azure Redis Cache ASP.NET munkamenetállapot-szolgáltatója
 Az Azure Redis Cache biztosít egy munkamenetállapot-szolgáltatóját, amelyek segítségével tárolja a munkamenet állapota memórián belüli a Redis Cache az SQL Server-adatbázis helyett. A gyorsítótárazási munkamenetállapot-szolgáltató használatához először konfigurálja a gyorsítótár, és konfigurálja az ASP.NET alkalmazás Cache a Redis Cache munkamenet állapota NuGet-csomag használatával.
@@ -94,11 +94,11 @@ Az attribútumok konfigurálása a Microsoft Azure Portalon a gyorsítótár pan
 * **retryTimeoutInMilliseconds** – műveletek megismétlődnek erre az időszakra, ezredmásodpercben megadva. Az első újrapróbálkozás után 20 ezredmásodperc történik, és az újrapróbálkozások kerül sor, amíg le nem jár a retryTimeoutInMilliseconds időköz másodpercenként. Ez az időtartam után azonnal a művelet végső egyszer rendszer. Ha a művelet továbbra is sikertelen, a kivétel történt vissza a hívónak a throwOnError beállítás függően. Az alapértelmezett értéke 0, ami azt jelenti, hogy nincs újrapróbálkozás.
 * **adatbázis-azonosítóhoz** – Itt adhatja meg a kimeneti adatok gyorsítótárazása használandó adatbázis. Ha nincs megadva, az alapértelmezett érték a 0 használatos.
 * **applicationName** – kulcsok vannak tárolva, a redis `{<Application Name>_<Session ID>}_Data`. Az elnevezési sémája lehetővé teszi több alkalmazás megosztása a Redis-példányt. Ez a paraméter nem kötelező, és ha nem rendelkeznek egy alapértelmezett értéket használja.
-* **connectionTimeoutInMilliseconds** – Ez a beállítás lehetővé teszi, hogy a StackExchange.Redis ügyfél connectTimeout-beállításának felülbírálása. Ha nincs megadva, az alapértelmezett connectTimeout beállítás 5000-es szolgál. További információkért lásd: [StackExchange.Redis konfigurációs modell](http://go.microsoft.com/fwlink/?LinkId=398705).
-* **operationTimeoutInMilliseconds** – Ez a beállítás lehetővé teszi, hogy a StackExchange.Redis ügyfél syncTimeout-beállításának felülbírálása. Ha nincs megadva, az alapértelmezett syncTimeout beállítás 1000 szolgál. További információkért lásd: [StackExchange.Redis konfigurációs modell](http://go.microsoft.com/fwlink/?LinkId=398705).
+* **connectionTimeoutInMilliseconds** – Ez a beállítás lehetővé teszi, hogy a StackExchange.Redis ügyfél connectTimeout-beállításának felülbírálása. Ha nincs megadva, az alapértelmezett connectTimeout beállítás 5000-es szolgál. További információkért lásd: [StackExchange.Redis konfigurációs modell](https://go.microsoft.com/fwlink/?LinkId=398705).
+* **operationTimeoutInMilliseconds** – Ez a beállítás lehetővé teszi, hogy a StackExchange.Redis ügyfél syncTimeout-beállításának felülbírálása. Ha nincs megadva, az alapértelmezett syncTimeout beállítás 1000 szolgál. További információkért lásd: [StackExchange.Redis konfigurációs modell](https://go.microsoft.com/fwlink/?LinkId=398705).
 * **redisSerializerType** – ezzel a beállítással adhatja meg az egyéni szerializálás a Redis küldött munkamenet-tartalom. A megadott típus musí implementovat `Microsoft.Web.Redis.ISerializer` és deklarálni kell a nyilvános paraméter nélküli konstruktor. Alapértelmezés szerint `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` szolgál.
 
-Ezek a Tulajdonságok kapcsolatos további információkért lásd: az eredeti blogbejegyzés-közleményben, [bejelentése ASP.NET munkamenetállapot-szolgáltatóját a Redis](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx).
+Ezek a Tulajdonságok kapcsolatos további információkért lásd: az eredeti blogbejegyzés-közleményben, [bejelentése ASP.NET munkamenetállapot-szolgáltatóját a Redis](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx).
 
 Ne felejtse el a szabványos InProc munkamenet állapota szolgáltató szakasz a web.config fájlban tegye megjegyzésbe.
 

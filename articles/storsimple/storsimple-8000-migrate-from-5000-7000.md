@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 23fde5fab8f223ff1d958a8fac6a31818f1fdd7c
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: a638487fb0a622f899095989ca5341013299e181
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818916"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234408"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Telepítse át az adatokat a StorSimple 5000-7000-es sorozat 8000-es sorozatú eszköz
 
@@ -57,7 +57,7 @@ A gazdagép-oldali áttelepítés lehetővé teszi a 8000-es sorozat egymástól
 | 3.   | A sikeres áttelepítéshez a következő minden az adatok a helyi, a készüléken. Nincsenek nem az késleltetések az adatok elérése közben. | Azure-tárhelyhasználat növeli az 5000 és 7000-es eszköz az adatok törléséig.                                                                                                        |
 | 4.   |                                                                                                                           | Ha a 7000-es/5000-es sorozatú eszköz nagy mennyiségű adatot, migrálás során ezeket az adatokat kell le kell tölteni, ami váltása esetében felmerülő költségek és az késleltetések kapcsolatos adatokat tölti le, az Azure-ból azure-ból |
 
-Ez a cikk csak a migrálási szolgáltatás 5000/7000 8000 sorozatú eszköz összpontosít. Gazdagép-oldali áttelepítés további információért látogasson el [egyéb tárolóeszközökből áttelepítési](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating%20Data%20to%20StorSimple%20Volumes_09-02-15.pdf).
+Ez a cikk csak a migrálási szolgáltatás 5000/7000 8000 sorozatú eszköz összpontosít. Gazdagép-oldali áttelepítés további információért látogasson el [egyéb tárolóeszközökből áttelepítési](https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating%20Data%20to%20StorSimple%20Volumes_09-02-15.pdf).
 
 ## <a name="migration-prerequisites"></a>Áttelepítési Előfeltételek
 

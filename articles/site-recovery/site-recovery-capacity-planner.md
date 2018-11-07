@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: f600471e8a3602628a5040051f382e6e020f29d5
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: d53e8fe6588b7e1b068431a4cd530d0a80a603e6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211417"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261876"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Kapacitás megtervezése a Hyper-V-beli virtuális gépek vészhelyreállításához 
 
@@ -43,7 +43,7 @@ Az eszköz két üzemmódban futtatható:
 
 
 ## <a name="run-the-quick-planner"></a>A gyors Planner futtatása
-1. Töltse le és nyissa meg a [Site Recovery Capacity Planner](http://aka.ms/asr-capacity-planner-excel). Makrók futtatni szeretné. Amikor a rendszer kéri, adja meg a beállításokat a Szerkesztés engedélyezése és tartalmát.
+1. Töltse le és nyissa meg a [Site Recovery Capacity Planner](https://aka.ms/asr-capacity-planner-excel). Makrók futtatni szeretné. Amikor a rendszer kéri, adja meg a beállításokat a Szerkesztés engedélyezése és tartalmát.
 
 2. Az a **planner típusának kiválasztása** válassza ki a lista **gyors Planner**.
 
@@ -81,7 +81,7 @@ Az eszköz két üzemmódban futtatható:
 
 ## <a name="run-the-detailed-planner"></a>A részletes Planner futtatása
 
-1. Töltse le és nyissa meg a [Site Recovery Capacity Planner](http://aka.ms/asr-capacity-planner-excel). Makrók futtatni szeretné. Amikor a rendszer kéri, adja meg a beállításokat a Szerkesztés engedélyezése és tartalmát.
+1. Töltse le és nyissa meg a [Site Recovery Capacity Planner](https://aka.ms/asr-capacity-planner-excel). Makrók futtatni szeretné. Amikor a rendszer kéri, adja meg a beállításokat a Szerkesztés engedélyezése és tartalmát.
 
 2. A **egy planner-típus kiválasztása**válassza **részletes Planner** a legördülő listából.
 

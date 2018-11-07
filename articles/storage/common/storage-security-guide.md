@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: cd7b475dc2bd4dade822a82f285c2e96c8d532d2
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 3d9da96e5bf6c88f76089dea930b02248cfa1d24
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138188"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243794"
 ---
 # <a name="azure-storage-security-guide"></a>Az Azure Storage biztonsági útmutatóját
 
@@ -479,7 +479,7 @@ Cors-t és engedélyezését a kapcsolatos további információkért tekintse m
 * [Eltérő eredetű erőforrások megosztása (CORS) támogatása az Azure Storage-szolgáltatások, az MSDN-en](https://msdn.microsoft.com/library/azure/dn535601.aspx)
 
   Ez az a CORS-támogatás az Azure Storage Services dokumentációja. Ez cikkek alkalmazása minden egyes storage szolgáltatásra mutató hivatkozások szerepelnek és a egy példát mutat be, és ismerteti az egyes elemei a CORS-fájlban.
-* [A Microsoft Azure Storage: A CORS bemutatása](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
+* [A Microsoft Azure Storage: A CORS bemutatása](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
 
   Ez a CORS bejelentése, és hogyan használható a bemutató a kezdeti blog cikkre mutató hivatkozás.
 
@@ -490,7 +490,7 @@ Cors-t és engedélyezését a kapcsolatos további információkért tekintse m
 
    Ha a HTTPS, amely lehetővé teszi a biztonság, akkor az MD5-ellenőrzést használata redundáns és szükségtelen is használhatja.
 
-   További információkért tekintse meg a [Azure Blob MD5 áttekintése](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx).
+   További információkért tekintse meg a [Azure Blob MD5 áttekintése](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx).
 2. **Mi a helyzet a FIPS-megfelelőségét az Egyesült Államok Government?**
 
    Az Egyesült Államok Szövetségi információk feldolgozása Standard (FIPS) határozza meg az USA által jóváhagyott titkosítási algoritmusokat Szövetségi kormányzati számítógépes rendszereihez, bizalmas adatok védelme. A FIPS engedélyezése mód a Windows server vagy az asztal arra utasítja az operációs rendszer, hogy csak a FIPS szabványú titkosítási algoritmusok kell használni. Ha egy alkalmazás nem megfelelő algoritmusokat használ, az alkalmazások megszakadnak. With.NET keretrendszer-verziókat 4.5.2-es vagy újabb verziója szükséges, az alkalmazás automatikusan átvált a titkosítási algoritmusok használatát FIPS előírásainak megfelelő algoritmusok használata, ha a számítógép FIPS-módban.

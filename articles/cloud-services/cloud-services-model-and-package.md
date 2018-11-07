@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 90d810916599db50249a3e2ec677046c5af42a09
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 7e43a32a415e58925bda5195b3943afca315f9be
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005849"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238182"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Mi a Cloud Service-modell, és hogyan tegye Becsomagolhatja azt?
 Egy felhőalapú szolgáltatás létrehozása az három összetevőt, a szolgáltatás definíciós *(.csdef)*, a szolgáltatás konfigurációs *(.cscfg)*, és a egy szolgáltatáscsomag *(.cspkg)*. Mindkét a **ServiceDefinition.csdef** és **ServiceConfig.cscfg** fájlok XML-alapú, és ismertetik a felhőalapú szolgáltatás, és hogyan van konfigurálva; szerkezete együttesen: a modell. A **ServicePackage.cspkg** egy zip-fájl, amely jön létre a **ServiceDefinition.csdef** , és többek között tartalmazza a szükséges bináris alapú függőségeket. Az Azure egy felhőalapú szolgáltatás létrehozása is a **ServicePackage.cspkg** és a **ServiceConfig.cscfg**.
@@ -144,7 +144,7 @@ A szolgáltatás konfigurációs fájlja nem az alkalmazás együtt van csomagol
 Olvassa el a [szolgáltatás konfigurációs sémáját](https://msdn.microsoft.com/library/azure/ee758710.aspx) jobb megértéséhez, az itt használt XML-séma, azonban itt van egy rövid magyarázatot elemek:
 
 **példányok**  
-Konfigurálja a futó a szerepkör példányainak számát. Megakadályozni a felhőszolgáltatás frissítések során esetleg elérhetetlenné válik, javasoljuk, hogy telepít-e a webalkalmazás felé néző szerepkörök több példánya. Több példány telepítésével tartja vannak az irányelveket a [Azure számítási szolgáltatás szolgáltatói szerződés (SLA)](http://azure.microsoft.com/support/legal/sla/), amely garantálja, hogy a 99,95 %-os külső kapcsolatokat az Internet felé néző szerepkörök, amikor két vagy több szerepkör példányai üzembe helyezett szolgáltatáshoz.
+Konfigurálja a futó a szerepkör példányainak számát. Megakadályozni a felhőszolgáltatás frissítések során esetleg elérhetetlenné válik, javasoljuk, hogy telepít-e a webalkalmazás felé néző szerepkörök több példánya. Több példány telepítésével tartja vannak az irányelveket a [Azure számítási szolgáltatás szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/), amely garantálja, hogy a 99,95 %-os külső kapcsolatokat az Internet felé néző szerepkörök, amikor két vagy több szerepkör példányai üzembe helyezett szolgáltatáshoz.
 
 **ConfigurationSettings**  
 A futó példányát tekintve szerepkör beállításait konfigurálja. Neve a `<Setting>` elemet meg kell egyeznie a beállítás definíciókat a szolgáltatásdefiníciós fájlban.

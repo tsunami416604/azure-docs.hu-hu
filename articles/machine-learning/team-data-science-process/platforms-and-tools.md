@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 0c5cfaad096b5702f321eead1f3da0d9225f4b53
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 5cfe86414473f352673f39850a34f8ef265c91f5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302860"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258901"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformok és eszközök a adatelemzési projektek
 
@@ -152,4 +152,4 @@ A következő paranccsal bash Git telepítéséhez (CentOS) Linuxos gépeken:
 
 Teljes, végpontok közötti forgatókönyvek, amelyek bemutatják, a folyamat összes lépését **meghatározott forgatókönyvek** is rendelkezésre állnak. Felsorolt, és a miniatűr leírásokat tartalmazó társított a [példa forgatókönyvek](walkthroughs.md) témakör. Ezek bemutatják, hogyan kombinálhatja a felhőbeli, helyszíni eszközöket és szolgáltatásokat, munkafolyamat vagy folyamat, intelligens alkalmazások létrehozására. 
 
-Példák a csoportos adatelemzési folyamat a lépések végrehajtása, amelyek használják az Azure Machine Learning Studióban az [az Azure ML](http://aka.ms/datascienceprocess) képzési terv.
+Példák a csoportos adatelemzési folyamat a lépések végrehajtása, amelyek használják az Azure Machine Learning Studióban az [az Azure ML](https://aka.ms/datascienceprocess) képzési terv.

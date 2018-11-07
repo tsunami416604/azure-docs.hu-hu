@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: szark
-ms.openlocfilehash: 67796cc3cbb925bb18a917d17b8abb7c085de370
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 3aa2803550c445e0b30ff998cf3adb779515e487
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638201"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235972"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Információk a által támogatott Disztribúciók
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -76,7 +76,7 @@ Azure-beli virtuális Merevlemezek lemezképeihez rendelkeznie kell egy virtuál
 
 * A virtuális merevlemez http://<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd rendelkezik egy nem támogatott virtuális méret 21475270656 bájt. A mérete (a MB-ban) egész számnak kell lennie.
 
-Ebben az esetben méretezze át a virtuális gép vagy a Hyper-V Manager konzol használatával, vagy a [átméretezése-VHD](http://technet.microsoft.com/library/hh848535.aspx) PowerShell-parancsmagot.  Ha nem Windows-környezetben, azt javasoljuk, `qemu-img` átalakítása (ha szükséges), és méretezze át a VHD-t.
+Ebben az esetben méretezze át a virtuális gép vagy a Hyper-V Manager konzol használatával, vagy a [átméretezése-VHD](https://technet.microsoft.com/library/hh848535.aspx) PowerShell-parancsmagot.  Ha nem Windows-környezetben, azt javasoljuk, `qemu-img` átalakítása (ha szükséges), és méretezze át a VHD-t.
 
 > [!NOTE]
 > Van egy [ismert hiba az qemu-img](https://bugs.launchpad.net/qemu/+bug/1490611) verzió > = 2.2.1-es, amely egy helytelenül formázott virtuális merevlemez eredményez. A hiba elhárítása QEMU 2.6. Javasoljuk `qemu-img` 2.2.0 vagy alacsonyabb, vagy 2.6-os vagy újabb.
@@ -125,7 +125,7 @@ Ebben az esetben méretezze át a virtuális gép vagy a Hyper-V Manager konzol 
 
 A Linux Integration Services (LIS) illesztőprogramokat, a Hyper-V és az Azure közvetlenül a felsőbb szintű Linux-kernel van hozzájárult. Terjesztések, amelyek tartalmazzák a legutóbbi Linux-Kernelverzió (például 3.x) már elérhető ezeket az illesztőprogramokat, vagy ellenkező esetben biztosítson backported verziói ezeket az illesztőprogramokat a kernelt.  Ezeket az illesztőprogramokat folyamatosan változik a felsőbb rétegbeli kernel, az új javításokat és szolgáltatásokat, ezért javasoljuk, ha lehetséges fut egy [által támogatott terjesztési](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , amely tartalmazza ezeket a javításokat és frissítéseket.
 
-Ha egy Red Hat Enterprise Linux verziók 6.0-6.3-változatot futtatja, akkor telepítenie kell a [Hyper-V LIS legújabb illesztőprogramjait](http://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409). 6.4 + RHEL (és származékai) kezdve a LIS illesztőprogramokat a kernel már megtalálhatók, és ezért semmilyen további telepítési csomagok szükségesek.
+Ha egy Red Hat Enterprise Linux verziók 6.0-6.3-változatot futtatja, akkor telepítenie kell a [Hyper-V LIS legújabb illesztőprogramjait](https://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409). 6.4 + RHEL (és származékai) kezdve a LIS illesztőprogramokat a kernel már megtalálhatók, és ezért semmilyen további telepítési csomagok szükségesek.
 
 Ha egy egyéni kernel szükség, azt javasoljuk egy újabb rendszermag-verzió (például a 3.8-as +). Disztribúciók vagy szállítók, akik a saját rendszermag fenntartása meg kell rendszeresen backport LIS illesztőprogramokat a felsőbb rétegbeli kernel, az egyéni kernel.  Akkor is, ha egy viszonylag új kernel verziója már használ, erősen ajánlott szerinti nyomon követést bármely felső javítja a LIS illesztőprogramok és backport őket igény szerint. A helyek LIS illesztőprogram forrásfájljainak vannak megadva a [MAINTAINERS](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/MAINTAINERS) fájlt a Linux kernel forrás fa:
 ```

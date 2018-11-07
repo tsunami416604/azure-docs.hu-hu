@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 3aca6e29f7701a09fa54e778da180a0ead55deb2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 253a50f50e94888a5d764e51a4ff49cc0c1424c6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240732"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253533"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Szilánkokra osztott adatbázisok közötti felosztási-egyesítési szolgáltatás üzembe helyezése
 
@@ -63,7 +63,7 @@ A szolgáltatás biztonságának konfigurálása részletes utasításokért tek
 Ebben az oktatóanyagban egy egyszerű tesztelési üzembe helyezés az alkalmazásában a konfigurációs lépéseket a legszükségesebb történik, a szolgáltatás használatának és futó lesz. Ezeket a lépéseket csak az egyik machine/fiók engedélyezése végrehajtása őket a szolgáltatással való kommunikációra.
 
 ### <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
-Hozzon létre egy új könyvtárat, és ebből a könyvtárból, hajtsa végre a következő parancs használatával egy [for Visual Studio Developer-parancssorból](http://msdn.microsoft.com/library/ms229859.aspx) ablakban:
+Hozzon létre egy új könyvtárat, és ebből a könyvtárból, hajtsa végre a következő parancs használatával egy [for Visual Studio Developer-parancssorból](https://msdn.microsoft.com/library/ms229859.aspx) ablakban:
 
    ```
     makecert ^

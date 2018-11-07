@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: f8ef92a335dd6faee076356dbffc873b08afbdc0
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 1c7454aead07c728d55ff2c309cca83a792aac88
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394274"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238349"
 ---
 # <a name="content-protection-overview"></a>A Content protection áttekintése
 
@@ -59,7 +59,7 @@ Fejezze be a "content protection" rendszer vagy alkalmazás-tervezés, teljes is
 
     A tesztelési AES vagy CENC (Widevine és/vagy a PlayReady) titkosított tartalmat használhatja [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html). Győződjön meg arról, kattintson a "Speciális beállítások", és ellenőrizze a titkosítási beállításokat.
 
-    Ha titkosított FairPlay teszttartalmat szeretne, használja a [ezen teszt player](http://aka.ms/amtest). A Windows Media player támogatja, a PlayReady, Widevine és FairPlay DRMs, valamint az AES-128 titkosítatlan kulcs titkosítás. Meg kell adnia a megfelelő böngésző különböző DRMs teszteléséhez: Chrome/Opera/Firefox Widevine, MS Edge/IE11 a PlayReady, a Safari a fairplay rendszerhez macOS rendszeren.
+    Ha titkosított FairPlay teszttartalmat szeretne, használja a [ezen teszt player](https://aka.ms/amtest). A Windows Media player támogatja, a PlayReady, Widevine és FairPlay DRMs, valamint az AES-128 titkosítatlan kulcs titkosítás. Meg kell adnia a megfelelő böngésző különböző DRMs teszteléséhez: Chrome/Opera/Firefox Widevine, MS Edge/IE11 a PlayReady, a Safari a fairplay rendszerhez macOS rendszeren.
 
 3. A biztonságos jogkivonat-szolgáltatás (STS), amely JSON webes jogkivonat (JWT), a hozzáférési jogkivonatot az háttérbeli erőforrások eléréséhez. Az AMS licenctovábbítási szolgáltatások a háttérerőforrásra is használhatja. Az STS szolgáltatással rendelkezik, az alábbiak megadásához:
 
@@ -149,7 +149,7 @@ A példa bemutatja, hogyan:
 
 2. Hozzon létre egy StreamingLocator adatfolyam egy titkosított eszköz van konfigurálva. 
 
-  Beállíthatja például, a StreamingLocator.StreamingPolicyName "Predefined_MultiDrmCencStreaming" szabályzat. Ez a szabályzat jelzi, hogy két tartalomkulcsot (envelope és CENC) szeretne létrehozni és beállítani a lokátoron. Így az envelope, a PlayReady és a Widevine titkosítások lesznek alkalmazva (a kulcsot a konfigurált DRM-licencek alapján továbbítja a rendszer a lejátszást végző ügyfelének). Ha azt szeretné a stream-CBCS (FairPlay) titkosítása is, használja a "Predefined_MultiDrmStreaming".
+  Beállíthatja például, a StreamingLocator.StreamingPolicyName "Predefined_MultiDrmCencStreaming" szabályzat. Ez a szabályzat jelzi, hogy két tartalomkulcsot (envelope és CENC) szeretne létrehozni és beállítani a lokátoron. Így az envelope, a PlayReady és a Widevine titkosítások lesznek alkalmazva (a kulcsot a konfigurált DRM-licencek alapján továbbítja a rendszer a lejátszást végző ügyfelének). Ha CBCS (FairPlay) licenccel is titkosítani szeretné a streamet, használja a következőt: „Predefined_MultiDrmStreaming”.
 
 3. A test-token létrehozásához.
 
@@ -168,8 +168,8 @@ Hogyan és hol érdemes a JWT jogkivonat beszerzése és a kérés licenc- vagy 
 1. Éles környezetben szüksége lesz egy Secure Token szolgáltatások (STS) (webszolgáltatás) amely JWT jogkivonatot egy HTTPS-kérés esetén. Tesztelési, használhatja a kód látható **GetTokenAsync** meghatározott metódus [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
 2. Indítson egy, az STS-re, például egy jogkivonatot a felhasználó hitelesítése után, és rendelje hozzá a token értékeként Player kell. Használhatja a [az Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/).
 
-* Példa STS, futtatása vagy szimmetrikus vagy aszimmetrikus kulccsal, tekintse meg [ http://aka.ms/jwt ](http://aka.ms/jwt). 
-* Egy ilyen JWT-jogkivonat használatával az Azure Media Player-alapú Media Player egy példa: [ http://aka.ms/amtest ](http://aka.ms/amtest) (bontsa ki a "player_settings" hivatkozásra kattintva megtekintheti a token bemeneti).
+* Példa STS, futtatása vagy szimmetrikus vagy aszimmetrikus kulccsal, tekintse meg [ http://aka.ms/jwt ](https://aka.ms/jwt). 
+* Egy ilyen JWT-jogkivonat használatával az Azure Media Player-alapú Media Player egy példa: [ http://aka.ms/amtest ](https://aka.ms/amtest) (bontsa ki a "player_settings" hivatkozásra kattintva megtekintheti a token bemeneti).
 
 ### <a name="question"></a>Kérdés
 

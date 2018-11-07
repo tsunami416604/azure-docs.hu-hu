@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 08/09/2018
 ms.topic: article
-ms.openlocfilehash: 1b8c1ba80b4c69f36e8304cbe978452a359ac911
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 1f19d5918d81acb76936edf8989a556335a3c0df
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698077"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261264"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Az Ansible segítségével az Azure dinamikus leltárak kezelése
 Az Ansible segítségével Hardverleltár-információk lekérése a különböző forrásokból (például az Azure felhőalapú forrásokból is beleértve) egy *dinamikus készlet*. Ebben a cikkben fogja használni a [Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md) konfigurálása az Ansible az Azure dinamikus készlet két virtuális gépet hoz létre, ezeket a virtuális gépeket egyik címkét, és az Nginx telepítése a címkézett virtuális gépen.
@@ -26,7 +26,7 @@ Az Ansible segítségével Hardverleltár-információk lekérése a különböz
 
 ## <a name="create-the-test-virtual-machines"></a>A tesztelési célú virtuális gépek létrehozása
 
-1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Nyissa meg a [Cloud Shellt](https://docs.microsoft.com/azure/cloud-shell/overview).
 

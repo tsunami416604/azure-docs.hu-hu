@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 279818e6b43e53206deb9e33591f75ef381a8962
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: f4bc90b2d1a80125ae88b4b5c4c11e42a34a985a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319982"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240426"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformok és az Azure Security Center által támogatott funkciók
 
@@ -80,16 +80,16 @@ Egy cloud service-ben futó virtuális gépek is támogatottak. Csak a felhőszo
 |Biztonsági konfigurációk|✔|✔|✔|✔|
 |Kártevőirtó|✔|✔|X|X|
 |Virtuális gépek igény szerinti elérése|✔|X|✔|X|
-|Adaptív alkalmazásvezérlők|✔ (csak Azure)|X|X|X|
+|Adaptív alkalmazásvezérlők|✔|X|X|X|
 |FIM|✔|✔|✔|✔|
 |Disk encryption (Lemeztitkosítás)|✔|X|✔|X|
 |Harmadik féltől származó központi telepítési|✔|X|✔|X|
 |NSG-k|✔|X|✔|X|
-|Filess V1|✔|✔|X|X|
+|Filess fenyegetések észlelése|✔|✔|X|X|
 |Hálózati térkép létrehozásához|✔|X|✔|X|
-|Az adaptív hálózati biztonságának megerősítése|✔|X|✔|X|
+|Az adaptív hálózati vezérlők|✔|X|✔|X|
 
-* Nyilvános előzetes verziója jelenleg támogatja ezeket a szolgáltatásokat.
+\* Nyilvános előzetes verziója jelenleg támogatja ezeket a szolgáltatásokat.
 
 
 ## <a name="supported-paas-features"></a>Támogatott PaaS-szolgáltatások
@@ -103,26 +103,17 @@ Egy cloud service-ben futó virtuális gépek is támogatottak. Csak a felhőszo
 |A BLOB storage fiókok *|✔| ✔|
 |App Services|✔| ✔|
 |Felhőszolgáltatások|✔| X|
-|Redis Cache|✔| X|
-|A Service fabric|✔| X|
-|Azure Automation|✔| X|
-|Data Lake |✔| X|
-|Key Vault|✔| X|
-|A Service bus|✔| X|
-|Stream analytics|✔| X|
-|Batch|✔| X|
-|Logikai alkalmazások|✔| X|
 |Virtuális hálózatok|✔| NA|
 |Alhálózatok|✔| NA|
 |Hálózati adapterek (NIC-k)|✔| ✔|
 |NSG-k|✔| NA|
 |Előfizetés|✔| ✔|
 
-* Nyilvános előzetes verziója jelenleg támogatja ezeket a szolgáltatásokat.
+\* Nyilvános előzetes verziója jelenleg támogatja ezeket a szolgáltatásokat.
 
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure Security Center tervezéséhez és működtetéséhez](security-center-planning-and-operations-guide.md) – ismerje meg, hogyan tervezheti meg és a tervezési szempontokat az Azure Security Center elfogadása
 - [Biztonsági riasztások típus szerint az Azure Security Center](security-center-alerts-type.md#virtual-machine-behavioral-analysis) – további tudnivalók a virtuális gép működésének elemzése és az összeomlási memóriakép memória elemzése a Security Centerben
 - [Azure Security Center FAQ](security-center-faq.md) (Azure Security Center – gyakran ismételt kérdések) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
-- [Az Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi
+- [Az Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – blogbejegyzések az Azure biztonsági és megfelelőségi

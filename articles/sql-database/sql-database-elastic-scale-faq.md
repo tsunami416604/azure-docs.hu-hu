@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 31501cb0cc66c9d8db646e3cf0c75cc3d8daf7e0
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 52f507d8040f6ad628f7427253ce040ac69978ef
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242534"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250968"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Elastic database-eszközök – gyakori kérdések (GYIK)
 
@@ -39,7 +39,7 @@ Ne használja a hitelesítő adatok formájában "felhasználói azonosító =us
 
 #### <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Van a Szilánkleképezés-kezelő létre és tölthet fel a szegmensek, minden indításakor alkalmazásaimat?
 
-Nem – létrehozása a Szilánkleképezés-kezelővel (például  **[ShardMapManagerFactory.CreateSqlShardMapManager](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)**) egy egyszeri művelet.  Az alkalmazás használ a hívás **[ShardMapManagerFactory.TryGetSqlShardMapManager()](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)** indítási időpontban.  Nem kell application tartományonként csak egy ilyen hívást.
+Nem – létrehozása a Szilánkleképezés-kezelővel (például  **[ShardMapManagerFactory.CreateSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)**) egy egyszeri művelet.  Az alkalmazás használ a hívás **[ShardMapManagerFactory.TryGetSqlShardMapManager()](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)** indítási időpontban.  Nem kell application tartományonként csak egy ilyen hívást.
 
 #### <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>Elastic database-eszközök használatával kapcsolatos kérdése van, hogyan érhetők el válaszok?
 

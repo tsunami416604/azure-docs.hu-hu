@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: cwatson
-ms.openlocfilehash: 6b497fd9f4280c36adcbeb4d94e469525c9dad6e
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 3e7af4039ca5cd8aaadc36d3f87900e2127af7ab
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423000"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255659"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Az Azure-elszámolással és költségkezeléssel váratlan költségek megelőzése
 
@@ -142,7 +142,7 @@ Kérdezze meg a ügyfélfelelőshöz vagy a Azure-partnerrel, a kezdéshez.
 | Cloud Solution Provider (Felhőszolgáltató) | A szolgáltató beszélgetés |
 | Azure-szponzorálás | [Szponzorálás portálon](https://www.microsoftazuresponsorships.com/) |
 
-Ha a felügyeli informatikai egy nagy szervezet, javasoljuk, hogy olvassa [Azure enterprise scaffold](/azure/architecture/cloud-adoption-guide/subscription-governance) és a [vállalati informatikai tanulmány](http://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (.pdf letöltés, csak angol nyelven).
+Ha a felügyeli informatikai egy nagy szervezet, javasoljuk, hogy olvassa [Azure enterprise scaffold](/azure/architecture/cloud-adoption-guide/subscription-governance) és a [vállalati informatikai tanulmány](https://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (.pdf letöltés, csak angol nyelven).
 
 #### <a name="EA"></a> Előzetes verzió nagyvállalati szerződés Azure Portalon nézetek költség 
 

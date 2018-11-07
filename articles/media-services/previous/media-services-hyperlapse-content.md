@@ -1,6 +1,6 @@
 ---
-title: Médiafájlok feldolgozása az Azure Media hyperlapse használatával |} Microsoft Docs
-description: Az Azure Media Hyperlapse zökkenőmentes idő letelt videók első, aki vagy művelet – kamera tartalmat hoz létre. Ez a témakör bemutatja, hogyan Media Indexer használatára.
+title: Médiafájlok feldolgozása az Azure Media Hyperlapse |} A Microsoft Docs
+description: Az Azure Media Hyperlapse zökkenőmentes idő lejárt videók első, aki vagy művelet – kamera tartalmat hoz létre. Ez a témakör bemutatja, hogyan használja a Media Indexer.
 services: media-services
 documentationcenter: ''
 author: asolanki
@@ -14,36 +14,36 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2018
 ms.author: adsolank
-ms.openlocfilehash: ed64a616538ed4699abc03225a2dcf27d164521f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 268e679bb052bce4c972c940333147edc5c7d721
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788486"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242585"
 ---
 # <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Médiafájlok feldolgozása az Azure Media hyperlapse használatával
-Az Azure Media Hyperlapse egy Media processzor (MP), amely zökkenőmentes idő letelt videók hoz első, aki vagy művelet – kamera tartalomról.  A felhő alapú testvérének [Microsoft Research asztali Hyperlapse Pro és Hyperlapse Mobile phone-alapú](http://aka.ms/hyperlapse), az Azure Media Services Microsoft Hyperlapse használja az Azure Media Services Media feldolgozása a jelentős mértékű vízszintes skálázása és parallelize platform tömeges Hyperlapse feldolgozása.
+Az Azure Media Hyperlapse egy adathordozó processzor (pont), amely zökkenőmentes idő lejárt videók létrehozza az első, aki vagy művelet – kamera tartalmak.  A felhő alapú testvérének [a Microsoft Research asztali Hyperlapse Pro és a Hyperlapse Mobile phone-alapú](https://aka.ms/hyperlapse), a Microsoft Hyperlapse for Azure Media Services már használja az Azure Media Services Media feldolgozási hatalmas mennyiségű horizontális skálázása és párhuzamosíthatja platform tömeges feldolgozása hyperlapse használatával.
 
 > [!IMPORTANT]
-> Microsoft Hyperlapse legmegfelelőbb első, aki a tartalomhoz a mozgóátlag fényképezőgép célja. Bár továbbra is-kamerák felvételei is működik, a teljesítmény és az Azure Media Hyperlapse Media processzor-minőségi nem garantálható tartalmat más típusú.
+> A Microsoft Hyperlapse működnek a legjobban az első, aki tartalmat egy mozgó kamera célja. Bár továbbra is – kamerák felvételei továbbra is működik, a teljesítmény- és minőségteszteléseket, az Azure Media Hyperlapse Médiafeldolgozót nem lehet garantálni a más típusú tartalom.
 > 
 > 
 
-Egy Azure Media Hyperlapse feladat végrehajtásához szükséges, adjon meg egy MP4, MOV vagy WMV objektumfájlt együtt, amely meghatározza, melyik keretek videó idő letelt konfigurációs fájlt, és milyen sebességgel (pl. első 10 000 keretet 2 x).  Az eredménye egy stabil és az idő letelt verzióinak a bemeneti videó.
+Az Azure Media Hyperlapse feladat alatt, adjon meg egy MP4, MOV vagy WMV objektumfájl együtt egy konfigurációs fájl, amely meghatározza a videó mely keretek legyen ideje lejárt, és milyen sebessége (pl. első 10 000 keretet, 2 x).  A bemeneti videó egy stabil és idő lejárt megjelenítés kimenete.
 
-## <a name="hyperlapse-an-asset"></a>Hyperlapse egy eszköz
-Először szüksége lesz Azure Media Services töltse fel a kívánt bemeneti fájl.  Adminisztrációjával kapcsolatos feltöltését és kielégíteni tartalomkezelési fogalmak kapcsolatos további tudnivalókért olvassa el a [tartalomkezelési cikk](media-services-portal-vod-get-started.md).
+## <a name="hyperlapse-an-asset"></a>Egy eszköz hyperlapse használatával
+Először kell a kívánt bemeneti fájl feltöltése az Azure Media Services.  A feltölteni és tartalomkezelési fogalmak kapcsolatos további információkért olvassa el a [tartalomkezelési cikk](media-services-portal-vod-get-started.md).
 
-### <a id="configuration"></a>Hyperlapse konfigurációs beállításkészlet
-Ha a tartalom a Media Services-fiókját, szüksége lesz a konfigurációs készlet létrehozásához.  Az alábbi táblázat ismerteti a felhasználó által megadott mezőket:
+### <a id="configuration"></a>A Hyperlapse konfigurációs készlet
+Ha tartalmait a Media Services-fiókban, szüksége lesz a konfigurációs készlet létrehozásához.  Az alábbi táblázat azt ismerteti, hogy a felhasználó által megadott mezőket:
 
 | Mező | Leírás |
 | --- | --- |
-| StartFrame |A keret, amelyre a Microsoft Hyperlapse feldolgozási el kell kezdődnie. |
-| NumFrames |Keretek feldolgozni száma |
-| Gyorsaság |A tényező, amellyel a bemeneti videó felgyorsítása érdekében. |
+| StartFrame |A keret, amelyre a Microsoft Hyperlapse feldolgozást kell kezdődnie. |
+| NumFrames |A feldolgozása keretek számát |
+| Sebesség |A szolgáltatás, amellyel a bemeneti videó felgyorsítása érdekében. |
 
-A következő egy példa egy szabványos konfigurációs fájl XML- és a JSON:
+Az alábbiakban látható egy példa egy megfelelő konfigurációs fájl XML és JSON:
 
 **XML-készletet:**
 ```xml
@@ -75,14 +75,14 @@ A következő egy példa egy szabványos konfigurációs fájl XML- és a JSON:
     }
 ```
 
-### <a id="sample_code"></a> Microsoft Hyperlapse az AMS .NET SDK-val
-A következő metódus feltölt egy médiafájlt eszközként, és létrehoz egy feladatot az Azure Media Hyperlapse Media processzorral rendelkező.
+### <a id="sample_code"></a> A Microsoft Hyperlapse az AMS .NET SDK-val
+A következő metódust feltölt egy médiafájlt eszközként, és létrehoz egy feladatot az Azure Media Hyperlapse médiaprocesszorral.
 
 > [!NOTE]
-> Egy CloudMediaContext már rendelkezik a neve "context" a kód működéséhez a hatókörben.  Ezzel kapcsolatos további tudnivalókért olvassa el a [tartalomkezelési cikk](media-services-dotnet-get-started.md).
+> Már egy CloudMediaContext a hatóköre, a neve "környezet" működik ez a kód számára.  Ezzel kapcsolatos további információkért olvassa el a [tartalomkezelési cikk](media-services-dotnet-get-started.md).
 > 
 > [!NOTE]
-> A karakterlánc-argumentum "hyperConfig" kellene lennie a szabványos konfigurációs készlet JSON vagy XML fent leírt módon.
+> A karakterlánc-argumentum "hyperConfig" kellene lennie a megfelelő konfiguráció előbeállítást JSON vagy XML a fent leírtak szerint.
 > 
 > 
 
@@ -213,7 +213,7 @@ A következő metódus feltölt egy médiafájlt eszközként, és létrehoz egy
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
-[Azure Media Services elemző áttekintése](media-services-analytics-overview.md)
+[Az Azure Media Services analitikai funkcióinak áttekintése](media-services-analytics-overview.md)
 
 [Az Azure Médiaelemzés bemutatók](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

@@ -1,24 +1,24 @@
 ---
-title: A HDInsight az Azure Portalon Windows-alapú Hadoop-fürtök kezelése
-description: Útmutató a HDInsight szolgáltatás felügyeletéhez. Hozzon létre egy HDInsight-fürtöt, nyissa meg az interaktív JavaScript-konzolt, és nyissa meg a Hadoop parancssori konzolt.
+title: A HDInsight az Azure Portalon Windows-alapú Apache Hadoop-fürtök kezelése
+description: Útmutató a HDInsight szolgáltatás felügyeletéhez. Hozzon létre egy HDInsight-fürtöt, nyissa meg az interaktív JavaScript-konzolt, és nyissa meg az Apache Hadoop parancssori konzolt.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 130f684b69a9cfa1936c2a9aa5175f3d5a7631ac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 67138b9e98818f5d106c73cef027d0eb2515e9a8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970277"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233915"
 ---
-# <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>A HDInsight Windows-alapú Hadoop-fürtök kezelése az Azure portal használatával
+# <a name="manage-windows-based-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>A HDInsight Windows-alapú Apache Hadoop-fürtök kezelése az Azure portal használatával
 
-Használatával a [az Azure portal][azure-portal], Windows-alapú Hadoop-fürtök létrehozása az Azure HDInsight, Hadoop-felhasználó jelszavának módosítására, és távoli asztal protokoll (RDP) engedélyezése, hogy hozzáférhessen a Hadoop-parancs a konzol a fürtön.
+Használatával a [az Azure portal][azure-portal], Windows-alapú Apache Hadoop-fürtök létrehozása az Azure HDInsight, Hadoop-felhasználó jelszavának módosítására, és engedélyezze a távoli asztal protokoll (RDP), hogy hozzáférhessen a Hadoop a parancs a konzol a fürtön.
 
 Ebben a cikkben található információk csak a Windows-alapú HDInsight-fürtök vonatkozik. Linux-alapú fürtök kezelésével kapcsolatos információkért lásd: [kezelése Hadoop-fürtök a HDInsight az Azure portal használatával](hdinsight-administer-use-portal-linux.md).
 
@@ -34,7 +34,7 @@ A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
 * **Az Azure Storage-fiók** – egy HDInsight-fürt az Azure Blob storage-tárolót használja, mint az alapértelmezett fájlrendszer. Hogyan nyújt az Azure Blob storage a zökkenőmentes élményt a HDInsight-fürtökkel kapcsolatos további információkért lásd: [az Azure Blob Storage a HDInsight](hdinsight-hadoop-use-blob-storage.md). Azure Storage-fiók létrehozásával kapcsolatos részletekért lásd: [Storage-fiók létrehozása](../storage/common/storage-create-storage-account.md).
 
 ## <a name="open-the-portal"></a>Nyissa meg a portálon
-1. Jelentkezzen be a [ https://portal.azure.com ](https://portal.azure.com).
+1. Jelentkezzen be itt: [https://portal.azure.com](https://portal.azure.com).
 2. Miután megnyitotta a portálon, teszi lehetővé:
 
    * Kattintson a **erőforrás létrehozása** hozzon létre egy új fürtöt, a bal oldali menüből:
@@ -67,7 +67,7 @@ HDInsight együttműködik egy széles számos Hadoop-összetevők. Az ellenőrz
 A fürtön a távoli asztal kapcsolat használatával egyéni szoftverek telepítése nem támogatott. Kerülje a fő csomópont, a meghajtók lévő fájlok tárolására, ezek elvesznek, újból létre kell hozni a fürtök. Azt javasoljuk, hogy az Azure Blob storage-fájlok tárolására. A BLOB storage szolgáltatás állandó.
 
 ## <a name="list-and-show-clusters"></a>Fürtök listázása és megjelenítése
-1. Jelentkezzen be a [ https://portal.azure.com ](https://portal.azure.com).
+1. Jelentkezzen be itt: [https://portal.azure.com](https://portal.azure.com).
 2. Kattintson a **HDInsight-fürtök** a bal oldali menüből.
 3. Kattintson a fürt nevére. Ha a fürt lista hosszú, az oldal tetején a szűrő is használhatja.
 4. Kattintson duplán a fürtöt, a listában a részleteinek megjelenítéséhez.
@@ -328,7 +328,7 @@ A fürt létrehozásakor a megadott hitelesítő adatai hozzáférést a szolgá
     Az alapértelmezett értékeit lejár a hetente.
 
    > [!NOTE]
-   > A HDInsight .NET SDK használatával a távoli asztal engedélyezése egy fürtön. Használja a **EnableRdp** metódus a HDInsight-ügyfél objektum a következő módon: **ügyfél. EnableRdp (fürtnév, hely, a "rdpuser", "rdppassword" DateTime.Now.AddDays(6))**. Hasonlóképpen, a távoli asztal letiltása a fürtön, használhatja **ügyfél. (Clustername, tartózkodási hely) DisableRdp**. E módszerekkel kapcsolatos további információkért lásd: [HDInsight .NET SDK dokumentációja](http://go.microsoft.com/fwlink/?LinkId=529017). Ez akkor csak a HDInsight-fürtök a Windows rendszerű.
+   > A HDInsight .NET SDK használatával a távoli asztal engedélyezése egy fürtön. Használja a **EnableRdp** metódus a HDInsight-ügyfél objektum a következő módon: **ügyfél. EnableRdp (fürtnév, hely, a "rdpuser", "rdppassword" DateTime.Now.AddDays(6))**. Hasonlóképpen, a távoli asztal letiltása a fürtön, használhatja **ügyfél. (Clustername, tartózkodási hely) DisableRdp**. E módszerekkel kapcsolatos további információkért lásd: [HDInsight .NET SDK dokumentációja](https://go.microsoft.com/fwlink/?LinkId=529017). Ez akkor csak a HDInsight-fürtök a Windows rendszerű.
    >
    >
 

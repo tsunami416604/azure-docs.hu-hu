@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 89802722e9e848b5cd5ede952287d5c934c142c3
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 594d181a5452317267157415bdaf68f572f0f0af
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351319"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260023"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Az ADO.NET 4.5 szoftverrel 1433-ason túli
 Ez a témakör ismerteti az Azure SQL Database-kapcsolatok viselkedését az ADO.NET 4.5 vagy újabb verzióját használó ügyfelek számára. 
@@ -48,7 +48,7 @@ Győződjön meg arról, hogy a port 11000-11999 és az Azure-ügyfél gépen 14
 * A tartomány portokat, ingyenes, bármely más kimenő blockers kell megadni.
 * Az Azure virtuális gépen a **fokozott biztonságú Windows tűzfal** szabályozza a portbeállításokat.
   
-  * Használhatja a [tűzfal a felhasználói felület](http://msdn.microsoft.com/library/cc646023.aspx) hozzáadása egy szabályt, amelynek meg a **TCP** protokoll egy porttartományt szintaxissal együtt, például **11000-11999**.
+  * Használhatja a [tűzfal a felhasználói felület](https://msdn.microsoft.com/library/cc646023.aspx) hozzáadása egy szabályt, amelynek meg a **TCP** protokoll egy porttartományt szintaxissal együtt, például **11000-11999**.
 
 ## <a name="version-clarifications"></a>Verzió magyarázata
 Ez a szakasz a termékváltozatokra hivatkozó monikerek értelmezi. Emellett egyes párok termékek közötti verziójú sorolja fel.
@@ -65,9 +65,9 @@ Ez a szakasz a termékváltozatokra hivatkozó monikerek értelmezi. Emellett eg
 
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
-* Az ADO.NET 4.6 fel lett oldva, 2015. július 20. Érhető el a bejelentést a blogon a .NET-csapattól [Itt](http://blogs.msdn.com/b/dotnet/archive/2015/07/20/announcing-net-framework-4-6.aspx).
-* Az ADO.NET 4.5-ös verziója a 2012. augusztus 15 jelent meg. Érhető el a bejelentést a blogon a .NET-csapattól [Itt](http://blogs.msdn.com/b/dotnet/archive/2012/08/15/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx). 
-  * Érhető el egy ADO.NET 4.5.1 szóló blogbejegyzést [Itt](http://blogs.msdn.com/b/dotnet/archive/2013/06/26/announcing-the-net-framework-4-5-1-preview.aspx).
+* Az ADO.NET 4.6 fel lett oldva, 2015. július 20. Érhető el a bejelentést a blogon a .NET-csapattól [Itt](https://blogs.msdn.com/b/dotnet/archive/2015/07/20/announcing-net-framework-4-6.aspx).
+* Az ADO.NET 4.5-ös verziója a 2012. augusztus 15 jelent meg. Érhető el a bejelentést a blogon a .NET-csapattól [Itt](https://blogs.msdn.com/b/dotnet/archive/2012/08/15/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx). 
+  * Érhető el egy ADO.NET 4.5.1 szóló blogbejegyzést [Itt](https://blogs.msdn.com/b/dotnet/archive/2013/06/26/announcing-the-net-framework-4-5-1-preview.aspx).
 
 * Microsoft® ODBC illesztőprogram 17 SQL Server® – Windows, Linux és macOS https://www.microsoft.com/download/details.aspx?id=56567
 

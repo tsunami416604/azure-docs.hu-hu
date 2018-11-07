@@ -9,19 +9,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/6/2018
 ms.author: saurse;trinadhk
-ms.openlocfilehash: 177e44bce7d8f159892d78c7003945ba55ef4b84
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: cf27848b6ca63f06c7d452ac67908cb85dbafd47
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577881"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239839"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Kérdések az Azure Backup-ügynökkel kapcsolatban
 A cikk gyakori kérdésekre adott válaszokat tartalmazó szakaszaiban gyorsan áttekinthető az Azure Backup-ügynök összetevőinek működése. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
 
 ## <a name="configure-backup"></a>Biztonsági mentés konfigurálása
 ### <a name="where-can-i-download-the-latest-azure-backup-agent-br"></a>Honnan tölthetem le a legújabb Azure Backup ügynököt? <br/>
-[Innen](http://aka.ms/azurebackup_agent) töltheti le a legújabb ügynököt a Windows Server, System Center DPM vagy Windows-ügyfél biztonsági mentése számára. Ha egy virtuális gépről szeretne biztonsági mentést készíteni, használja a virtuálisgép-ügynököt (amely automatikusan telepíti a megfelelő bővítményt). Az Azure katalógusból létrehozott virtuális gépeken a virtuálisgép-ügynök már jelen van.
+[Innen](https://aka.ms/azurebackup_agent) töltheti le a legújabb ügynököt a Windows Server, System Center DPM vagy Windows-ügyfél biztonsági mentése számára. Ha egy virtuális gépről szeretne biztonsági mentést készíteni, használja a virtuálisgép-ügynököt (amely automatikusan telepíti a megfelelő bővítményt). Az Azure katalógusból létrehozott virtuális gépeken a virtuálisgép-ügynök már jelen van.
 
 ### <a name="when-configuring-the-azure-backup-agent-i-am-prompted-to-enter-the-vault-credentials-do-vault-credentials-expire"></a>Az Azure Backup ügynök telepítése közben a rendszer a tároló hitelesítő adatainak megadását kéri. A tároló hitelesítő adatai lejárnak?
 Igen, a tároló hitelesítő adatai 48 óra után lejárnak. Ha a fájl lejár, jelentkezzen be az Azure Portalon, és töltse le a tároló hitelesítő adatfájljait a tárolóból.

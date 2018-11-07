@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: c478c2c4af12ecaa02e6700ec7faffc5b9862a00
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 90837092390cd2550805658471ff7aa884773371
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958185"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239593"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz (Python)
 
@@ -64,11 +64,11 @@ Az alábbi lépéseket ismertetik letöltése és konfigurálása a Python-minta
 * Azure IoT Central telemetriai és tulajdonságértékeket küld.
 * Beállítás Azure IoT Central-ben végrehajtott változtatások válaszol.
 
-Az eszköz konfigurálása [részletes utasítások a Githubon.](http://aka.ms/iotcentral-docs-Raspi-releases)
+Az eszköz konfigurálása [részletes utasítások a Githubon.](https://aka.ms/iotcentral-docs-Raspi-releases)
 
 
 > [!NOTE]
-> A Raspberry Pi Python-mintához kapcsolatos további információkért lásd: a [információs](http://aka.ms/iotcentral-docs-Raspi-releases) fájlt a Githubon.
+> A Raspberry Pi Python-mintához kapcsolatos további információkért lásd: a [információs](https://aka.ms/iotcentral-docs-Raspi-releases) fájlt a Githubon.
 
 
 1. Miután konfigurálta az eszközt, az eszköz el kell adatokat küldeni az Azure IoT Central rövid ideig.

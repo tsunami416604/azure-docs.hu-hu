@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: 27bec2b7fa53e7564841e6f89be7e4d81a9b9f1a
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: a0d543ebe435b616306690bfb5e3de63ecc1ff6c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913036"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259122"
 ---
 # <a name="views-in-management-solutions-preview"></a>Nézetek az eszközkezelési megoldások (előzetes verzió)
 > [!NOTE]
@@ -90,7 +90,7 @@ Vegye figyelembe, hogy a teljes nézet erőforrás sikerült másolja az export�
 * Változók kell definiálva a megoldásban, és használja a megfelelő tulajdonságokat.
 
 ### <a name="log-analytics-api-version"></a>Log Analytics API-verzió
-Egy Resource Manager-sablonban definiált összes Log Analytics erőforrás rendelkezik egy tulajdonság **apiVersion** , amely meghatározza, hogy használja az erőforrás API-verzió.  Ez a verzió nem egyezik a nézetek lekérdezésekkel, amelyek használják a [örökölt és a frissített lekérdezési nyelv](../log-analytics/log-analytics-log-search.md).  
+Egy Resource Manager-sablonban definiált összes Log Analytics erőforrás rendelkezik egy tulajdonság **apiVersion** , amely meghatározza, hogy használja az erőforrás API-verzió.  Ez a verzió nem egyezik a nézetek lekérdezésekkel, amelyek használják a [örökölt és a frissített lekérdezési nyelv](../log-analytics/log-analytics-queries.md).  
 
  Az alábbi táblázat felsorolja a nézetek a Log Analytics API-verziók a régebbi és a frissített munkaterületeken: 
 

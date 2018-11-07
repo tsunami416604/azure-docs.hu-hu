@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 02b4ad8aea3904ba0e99a5ea4d4d035f970e171a
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 5ad106d45c8bae2d41e0bde74b27f80f4d8ab79b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810838"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241276"
 ---
 <a name="delete-an-offersku-from-azure-marketplace"></a>Egy ajánlat/SKU törlése az Azure Marketplace-ről 
 ==========================================
 
 Előfordulhat, hogy valamilyen ok miatt ajánlatát el szeretné távolítani a Piactérről. Új ügyfeleket már nem megvásárlása és üzembe helyezni az ajánlatot, de a meglévő ügyfeleket nem érinti.
-Az ajánlat megszüntetése a szolgáltatás és/vagy az Ön és ügyfelei közötti licencszerződés megszüntetését jelenti. Útmutatás és ajánlatok eltávolítását és megszüntetését házirendek vonatkoznak rájuk [a Microsoft Marketplace kiadói szerződésében](http://go.microsoft.com/fwlink/?LinkID=699560) (lásd a szakasz
+Az ajánlat megszüntetése a szolgáltatás és/vagy az Ön és ügyfelei közötti licencszerződés megszüntetését jelenti. Útmutatás és ajánlatok eltávolítását és megszüntetését házirendek vonatkoznak rájuk [a Microsoft Marketplace kiadói szerződésében](https://go.microsoft.com/fwlink/?LinkID=699560) (lásd a szakasz
 7) és a [részvételi szabályzatában](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) (lásd a szakasz 6.2). A különböző támogatott forgatókönyvek törölje, és a lépéseket ismertetik.
 
 <a name="delete-a-live-sku-from-azure-marketplace"></a>Egy élő Termékváltozat törlése az Azure Marketplace-ről 

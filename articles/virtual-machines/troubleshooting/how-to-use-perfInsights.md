@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 75d630b91a1380102fd285edfb11effa22f47859
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 29af7ad8b582682189320185c460597af53cf6d8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413220"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243913"
 ---
 # <a name="how-to-use-perfinsights"></a>A PerfInsights használata
 
-[A PerfInsights](http://aka.ms/perfinsightsdownload) önsegítő diagnosztikai eszköz, amely összegyűjti és elemzi a diagnosztikai adatokat, és jelentést készít az Azure-beli Windows virtuális gép teljesítmény kapcsolatos problémák elhárítása érdekében. Virtuális gépeken is futtatható a PerfInsights önálló eszközként, a portál segítségével közvetlenül a [teljesítménybeli problémák diagnosztizálása az Azure-beli virtuális gépek](performance-diagnostics.md), vagy ha [Azure teljesítménydiagnosztikai Virtuálisgép-bővítmény ](performance-diagnostics-vm-extension.md).
+[A PerfInsights](https://aka.ms/perfinsightsdownload) önsegítő diagnosztikai eszköz, amely összegyűjti és elemzi a diagnosztikai adatokat, és jelentést készít az Azure-beli Windows virtuális gép teljesítmény kapcsolatos problémák elhárítása érdekében. Virtuális gépeken is futtatható a PerfInsights önálló eszközként, a portál segítségével közvetlenül a [teljesítménybeli problémák diagnosztizálása az Azure-beli virtuális gépek](performance-diagnostics.md), vagy ha [Azure teljesítménydiagnosztikai Virtuálisgép-bővítmény ](performance-diagnostics-vm-extension.md).
 
 Ha teljesítményproblémákat okozhat a virtuális gépeket, mielőtt kapcsolatba lépne a támogatási tapasztalja, futtassa ezt az eszközt.
 
@@ -190,7 +190,7 @@ Ezzel a beállítással kapcsolatos további információkért lásd: [telepít�
 A PerfInsights eszköz futtatásához kövesse az alábbi lépéseket:
 
 
-1. Töltse le [PerfInsights.zip](http://aka.ms/perfinsightsdownload).
+1. Töltse le [PerfInsights.zip](https://aka.ms/perfinsightsdownload).
 
 2. A PerfInsights.zip fájl tiltásának feloldásához. Ehhez kattintson a jobb gombbal a PerfInsights.zip fájlt, és válassza ki **tulajdonságok**. Az a **általános** lapon jelölje be **feloldása**, majd válassza ki **OK**. Ez biztosítja, hogy az eszköz fut-e minden olyan további biztonsági kéri nélkül.  
 

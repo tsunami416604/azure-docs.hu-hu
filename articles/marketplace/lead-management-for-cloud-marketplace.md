@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 9d2745f1211aa6f818f89d9597867e1b3b2de03f
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 4e89664bf980717dbfd7994d6469fc4a412307a0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362653"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258544"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>A felhőbeli piactér felügyeleti vezethet
 
@@ -97,7 +97,7 @@ Után állítsa be a műszaki van beállítva, az érdeklődők válaszaránya m
 
 **Mi az érdeklődők és miért fontosak, nekem közzétevőként Marketplace-en?** 
 
-Érdeklődők olyan ügyfelek, akik a termékekre a Marketplace-ről végzi. -E a termék szerepel-e a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/en-us) vagy [AppSource](http://appsource.microsoft.com/), érdeklődők van szüksége a termékről, ha az érdeklődő cél az ajánlatot az ügyfelek kapnak lesz.  
+Érdeklődők olyan ügyfelek, akik a termékekre a Marketplace-ről végzi. -E a termék szerepel-e a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/en-us) vagy [AppSource](https://appsource.microsoft.com/), érdeklődők van szüksége a termékről, ha az érdeklődő cél az ajánlatot az ügyfelek kapnak lesz.  
 
 
 **Honnan szerezhetem be az érdeklődő cél beállításához segítséget?** 

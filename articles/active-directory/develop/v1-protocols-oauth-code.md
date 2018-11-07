@@ -16,12 +16,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e896392404c23e88d697d45146f802576d6045d3
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: b7b8ccf7e84239db4eef0914346c453a2f205f91
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870825"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237893"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Az OAuth 2.0 kód engedélyezési folyamatával használatával az Azure Active Directory webes alkalmazásokhoz való hozzáférés engedélyezése
 
@@ -183,7 +183,7 @@ A sikeres válasz nézhet ki:
 | refresh_token |Az OAuth 2.0-s frissítési jogkivonatot. Az alkalmazás a jogkivonat használatával szerzi be a további hozzáférési jogkivonatokat a jelenlegi hozzáférési jogkivonat lejárata után. Frissítési jogkivonatok hosszú élettartamú, és az erőforrásokhoz való hozzáférés megőrzése hosszabb ideig is használható. |
 | id_token |Az előjel nélküli JSON webes jogkivonat (JWT) jelölő egy [azonosító jogkivonat](id-tokens.md). Az alkalmazás is base64Url dekódolni a szegmensek a token a bejelentkezett felhasználóval kapcsolatos információkat. Az alkalmazás gyorsítótárazzák az értékeket, és megjelenítheti őket, de azt nem igazolható azokat bármilyen engedélyezési és biztonsági határokat. |
 
-JSON webes jogkivonatainak kapcsolatos további információkért lásd: a [JWT IETF draft specifikáció](http://go.microsoft.com/fwlink/?LinkId=392344).   Tudjon meg többet a `id_tokens`, tekintse meg a [folyamat OpenID Connect 1.0-s verziójú](v1-protocols-openid-connect-code.md).
+JSON webes jogkivonatainak kapcsolatos további információkért lásd: a [JWT IETF draft specifikáció](https://go.microsoft.com/fwlink/?LinkId=392344).   Tudjon meg többet a `id_tokens`, tekintse meg a [folyamat OpenID Connect 1.0-s verziójú](v1-protocols-openid-connect-code.md).
 
 ### <a name="error-response"></a>Hiba történt a válasz
 Kiállítási végpont olyan HTTP-hibakódok, mert az ügyfél közvetlenül a kiállítási végpont hívja. A HTTP-állapotkódot mellett az Azure AD-kiállítási végpont is objektumok, amelyek a hiba a JSON-dokumentumok adja vissza.

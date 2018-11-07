@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 02/14/2017
 ms.author: wesmc
-ms.openlocfilehash: a6c3314a981b46aa6f1cbca1f34392d1e1ae6c9a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 6ea237c406a9d09b500a12755cd1fa99bb7d41cb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431644"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234425"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-redis-cache"></a>A Redis Cache ASP.NET kimenetigyorsítótár-szolgáltatója az Azure-hoz
 A redis Cache kimeneti gyorsítótár-szolgáltatóját egy folyamaton tárolási mechanizmus kimeneti gyorsítótár adatainak. Ezeket az adatokat a kifejezetten a teljes HTTP-válaszok (kimeneti gyorsítótár oldalon). A szolgáltató rendkívüli az új kimeneti gyorsítótár szolgáltató indításkiterjesztési pont az ASP.NET 4 verzióban jelent meg.
@@ -89,8 +89,8 @@ Az attribútumok konfigurálása a Microsoft Azure Portalon a gyorsítótár pan
   * A nem SSL port az új gyorsítótárakhoz alapértelmezés szerint le van tiltva. Adja meg az igaz értékre állítja ezt a beállítást, az SSL-port használatára. A nem SSL port engedélyezésével kapcsolatos további információkért lásd: a [hozzáférési portok](cache-configure.md#access-ports) című rész a [gyorsítótár konfigurálása](cache-configure.md) témakör.
 * **adatbázis-azonosítóhoz** – megadott gyorsítótár használandó adatbázis kimeneti adatokat. Ha nincs megadva, az alapértelmezett érték a 0 használatos.
 * **applicationName** – kulcsok vannak tárolva, a redis `<AppName>_<SessionId>_Data`. Az elnevezési sémája lehetővé teszi több alkalmazás ugyanazt a kulcsot használják. Ez a paraméter nem kötelező, és ha nem rendelkeznek egy alapértelmezett értéket használja.
-* **connectionTimeoutInMilliseconds** – Ez a beállítás lehetővé teszi, hogy a StackExchange.Redis ügyfél connectTimeout-beállításának felülbírálása. Ha nincs megadva, az alapértelmezett connectTimeout beállítás 5000-es szolgál. További információkért lásd: [StackExchange.Redis konfigurációs modell](http://go.microsoft.com/fwlink/?LinkId=398705).
-* **operationTimeoutInMilliseconds** – Ez a beállítás lehetővé teszi, hogy a StackExchange.Redis ügyfél syncTimeout-beállításának felülbírálása. Ha nincs megadva, az alapértelmezett syncTimeout beállítás 1000 szolgál. További információkért lásd: [StackExchange.Redis konfigurációs modell](http://go.microsoft.com/fwlink/?LinkId=398705).
+* **connectionTimeoutInMilliseconds** – Ez a beállítás lehetővé teszi, hogy a StackExchange.Redis ügyfél connectTimeout-beállításának felülbírálása. Ha nincs megadva, az alapértelmezett connectTimeout beállítás 5000-es szolgál. További információkért lásd: [StackExchange.Redis konfigurációs modell](https://go.microsoft.com/fwlink/?LinkId=398705).
+* **operationTimeoutInMilliseconds** – Ez a beállítás lehetővé teszi, hogy a StackExchange.Redis ügyfél syncTimeout-beállításának felülbírálása. Ha nincs megadva, az alapértelmezett syncTimeout beállítás 1000 szolgál. További információkért lásd: [StackExchange.Redis konfigurációs modell](https://go.microsoft.com/fwlink/?LinkId=398705).
 
 Adjon hozzá egy OutputCache irányelv minden olyan oldalhoz, amelyhez szeretné, a kimeneti gyorsítótárban.
 
@@ -98,7 +98,7 @@ Adjon hozzá egy OutputCache irányelv minden olyan oldalhoz, amelyhez szeretné
 <%@ OutputCache Duration="60" VaryByParam="*" %>
 ```
 
-Az előző példában az oldal gyorsítótárazott adatokat a gyorsítótárban marad 60 másodpercig, és a egy másik verziót az oldal az egyes paraméterkombináció van gyorsítótárazva. Direktiva OutputCache kapcsolatos további információkért lásd: [ @OutputCache ](http://go.microsoft.com/fwlink/?linkid=320837).
+Az előző példában az oldal gyorsítótárazott adatokat a gyorsítótárban marad 60 másodpercig, és a egy másik verziót az oldal az egyes paraméterkombináció van gyorsítótárazva. Direktiva OutputCache kapcsolatos további információkért lásd: [ @OutputCache ](https://go.microsoft.com/fwlink/?linkid=320837).
 
 Ezek a lépések elvégzése után az alkalmazás a redis Cache kimeneti gyorsítótár-szolgáltató használatára van konfigurálva.
 

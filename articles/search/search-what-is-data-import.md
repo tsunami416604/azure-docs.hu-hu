@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: heidist
-ms.openlocfilehash: b518d86d5cb08f85beecd4afe30efc9e4f70e1f7
-ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
+ms.openlocfilehash: ab26adb330e69f71d94aa296ede558b44e47a187
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43371468"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249778"
 ---
 # <a name="indexing-in-azure-search"></a>Indexelés az Azure Search szolgáltatásban
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ A lekéréses modell feltérképezi a támogatott adatforrást, majd automatikus
 
 + [Blob Storage](search-howto-indexing-azure-blob-storage.md)
 + [Table Storage](search-howto-indexing-azure-tables.md)
-+ [Azure Cosmos DB](http://aka.ms/documentdb-search-indexer)
++ [Azure Cosmos DB](https://aka.ms/documentdb-search-indexer)
 + [Azure SQL Database és az Azure virtuális gépeken futó SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
 Az indexelők indexeket csatlakoztatnak az adatforrásokhoz (általában táblákhoz, nézetekhez vagy ezekkel egyenértékű struktúrákhoz), és leképezik a forrásmezőket a megfelelő mezőkre az indexben. A végrehajtás során a sorkészlet automatikusan át lesz alakítva JSON formátumba, és be lesz töltve a meghatározott indexbe. Minden indexelő támogatja az ütemezést, így meghatározhatja, hogy az adatok milyen gyakran legyenek frissítve. A legtöbb indexelő biztosít változáskövetési funkciókat, ha az adatforrás támogatja azokat. Az új dokumentumok felismerésén kívül az indexelők a meglévő dokumentumok módosításainak és a törléseinek nyomon követésével küszöbölik ki az aktív adatkezelés szükségességét az indexben. 

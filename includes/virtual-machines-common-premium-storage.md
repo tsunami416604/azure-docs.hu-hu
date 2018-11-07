@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 97e4e670d5db646cea28cb30e9ca95633cea2a8a
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7fa7e6126c415a0a33b77b78975e8f4a533c4675
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49437125"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51263287"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Nagy teljesítményű Premium Storage és a felügyelt lemezek virtuális gépekhez
 
@@ -97,7 +97,7 @@ További információt az Azure windowsos virtuálisgép-típusairól és -mére
     Az azonos Premium Storage virtuális gépek premium és standard szintű lemezek használhatja. A Premium Storage virtuális gép létrehozása, és több állandó adatlemezeket csatlakoztathat a virtuális Gépet. Ha szükséges, a kapacitás és a kötet teljesítményének növelése érdekében azt is stripe-a lemezek között.
 
     > [!NOTE]
-    > Ha a stripe-e adatokat prémium szintű tárolólemezeket [tárolóhelyek](http://technet.microsoft.com/library/hh831739.aspx), állítsa be a tárolóhelyek 1 oszlop az egyes lemezek, amelyet használhat. Ellenkező esetben a csíkozott kötet általános teljesítményét alacsonyabb, mint a lemezek között miatt a forgalom eloszlása egyenletlen várt lehet. A Kiszolgálókezelőben alapértelmezés szerint állíthat be legfeljebb 8 lemezek oszlopokat. Ha több mint 8 lemez, a PowerShell használatával létrehozni a kötetet. Adja meg manuálisan az oszlopok számát. Ellenkező esetben a Server Manager felhasználói felületén továbbra is használja 8 oszlopokat, ha már rendelkezik további lemezeket. Például ha 32 lemezek egy egyetlen stripe-készlet, adja meg az oszlopok 32. Adja meg a virtuális lemezt használ, az oszlopok számát, a [New-VirtualDisk](http://technet.microsoft.com/library/hh848643.aspx) PowerShell-parancsmagot használja a *NumberOfColumns* paraméter. További információkért lásd: [tárolóhelyek – áttekintés](http://technet.microsoft.com/library/hh831739.aspx) és [Storage Spaces – gyakori kérdések](http://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx).
+    > Ha a stripe-e adatokat prémium szintű tárolólemezeket [tárolóhelyek](https://technet.microsoft.com/library/hh831739.aspx), állítsa be a tárolóhelyek 1 oszlop az egyes lemezek, amelyet használhat. Ellenkező esetben a csíkozott kötet általános teljesítményét alacsonyabb, mint a lemezek között miatt a forgalom eloszlása egyenletlen várt lehet. A Kiszolgálókezelőben alapértelmezés szerint állíthat be legfeljebb 8 lemezek oszlopokat. Ha több mint 8 lemez, a PowerShell használatával létrehozni a kötetet. Adja meg manuálisan az oszlopok számát. Ellenkező esetben a Server Manager felhasználói felületén továbbra is használja 8 oszlopokat, ha már rendelkezik további lemezeket. Például ha 32 lemezek egy egyetlen stripe-készlet, adja meg az oszlopok 32. Adja meg a virtuális lemezt használ, az oszlopok számát, a [New-VirtualDisk](https://technet.microsoft.com/library/hh848643.aspx) PowerShell-parancsmagot használja a *NumberOfColumns* paraméter. További információkért lásd: [tárolóhelyek – áttekintés](https://technet.microsoft.com/library/hh831739.aspx) és [Storage Spaces – gyakori kérdések](https://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx).
     >
     > 
 
@@ -151,7 +151,9 @@ Ha a premium storage-fiókok nem felügyelt lemezeket használ, és az alkalmaz�
 ### <a name="premium-storage-disk-limits"></a>Prémium szintű Storage korlátok
 Egy prémium szintű tárolólemez üzembe helyezésekor, a lemez mérete határozza meg, a maximális IOPS és átviteli sebesség (sávszélesség). Prémium szintű tárolólemezek típusai nyolc általánosan elérhető az Azure kínál: P4 (Managed Disks csak) P6 (Managed Disks csak) P10, p15-ös (Managed Disks csak), P20, P30, P40 vagy P50. Valamint három lemezméretek előzetes: a P60 P70 és P80. Minden egyes prémium szintű tárolólemez-típusba IOPS és átviteli sebesség bizonyos korlátozások vonatkoznak. Az alábbi táblázat ismerteti a lemeztípusok korlátai:
 
-| Prémium szintű lemezek típusa  | P4    | P6    | P10    | P15    | P20    | P30              | P40             | P50             | P60             | P70                | P80                |
+Csillaggal szintben méretek jelenleg előzetes verzióban érhető el.
+
+| Prémium szintű lemezek típusa  | P4    | P6    | P10    | P15    | P20    | P30              | P40             | P50             | A P60 *            | P70 *               | P80 *               |
 |---------------------|-------|-------|--------|--------|--------|------------------|-----------------|-----------------|-----------------|--------------------|--------------------|
 | Lemezméret           | 32 GiB| 64 GiB| 128 GiB| 256 GiB| 512 GiB| 1024 GiB (1 TiB) | 2048 giB (2 Tib-ra)| 4095 GiB (4 TiB)| 8192 giB (8 TiB)| 16384 giB (16 TiB)| 32 767 giB (32 TiB)|
 | IOPS-érték lemezenként       | 120   | 240   | 500    | 1100   | 2300   | 5000             | 7500            | 7500            | 12 500          | 15 000             | 20,000             |
@@ -237,7 +239,7 @@ Az alábbi korlátozások érvényesek a prémium szintű storage blob-pillanatf
 
 A pillanatképek georedundáns másolatait másolhatja a pillanatképek a premium storage-fiók georedundáns standard storage-fiókba az AzCopy és a Blob másolásához. További információkért lásd: [adatátvitel az AzCopy parancssori segédprogram](../articles/storage/common/storage-use-azcopy.md) és [a Blob másolásához](/rest/api/storageservices/Copy-Blob).
 
-A premium storage-fiók ellen a lapblobok REST-műveleteinek végrehajtásáról részletes információkért lásd: [az Azure Premium Storage szolgáltatás Blobműveletei](http://go.microsoft.com/fwlink/?LinkId=521969).
+A premium storage-fiók ellen a lapblobok REST-műveleteinek végrehajtásáról részletes információkért lásd: [az Azure Premium Storage szolgáltatás Blobműveletei](https://go.microsoft.com/fwlink/?LinkId=521969).
 
 ### <a name="managed-disks"></a>Felügyelt lemezek
 
@@ -267,12 +269,12 @@ Az Azure Premium Storage a következő Linux-disztribúciók ellenőrzése. A jo
 | SUSE | SLES 12| 3.12.36-38.1+| suse-sles-12-priority-v20150213 <br> SUSE-sles-12-v20150213 |
 | SUSE | SLES 11 SP4 | 3.0.101-0.63.1+ | &nbsp; |
 | CoreOS | 584.0.0+| 3.18.4+ | CoreOS 584.0.0 |
-| CentOS | 6.5, 6.6, 6.7, 7.0 | &nbsp; | [Szükséges LIS4](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Vegye figyelembe a következő szakaszban talál.* |
-| CentOS | 7.1+ | 3.10.0-229.1.2.el7+ | [Ajánlott LIS4](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Vegye figyelembe a következő szakaszban talál.* |
+| CentOS | 6.5, 6.6, 6.7, 7.0 | &nbsp; | [Szükséges LIS4](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Vegye figyelembe a következő szakaszban talál.* |
+| CentOS | 7.1+ | 3.10.0-229.1.2.el7+ | [Ajánlott LIS4](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Vegye figyelembe a következő szakaszban talál.* |
 | Red Hat Enterprise Linux (RHEL) | 6.8+, 7.2+ | &nbsp; | &nbsp; |
 | Oracle | 6.0+, 7.2+ | &nbsp; | UEK4 vagy RHCK |
-| Oracle | 7.0-7.1 | &nbsp; | UEK4 vagy RHCK használatával[4.1 + LIS](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
-| Oracle | 6.4-6.7 | &nbsp; | UEK4 vagy RHCK használatával[4.1 + LIS](http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 7.0-7.1 | &nbsp; | UEK4 vagy RHCK használatával[4.1 + LIS](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 6.4-6.7 | &nbsp; | UEK4 vagy RHCK használatával[4.1 + LIS](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
 
 
 ### <a name="lis-drivers-for-openlogic-centos"></a>OpenLogic CentOS típusú LIS illesztőprogramok

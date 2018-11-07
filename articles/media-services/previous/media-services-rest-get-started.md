@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: fbfb52b758089acf65f89c62f716d46d62b0f289
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 794c2cf6c52ead465d35d3d551cfe76e87c06787
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233820"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237604"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Tartalmak továbbítása igény szerint REST használatával
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
@@ -460,7 +460,7 @@ A következő kódot kér a kódoló azonosítója.
 ### <a name="create-a-job"></a>Feladat létrehozása
 Minden egyes feladat elvégezni kívánt feldolgozási típusától függően egy vagy több feladat is rendelkezhet. A REST API-n keresztül hozhat létre feladatokat és azok kapcsolódó feladatok két módszer egyikével: feladatok lehetnek a tevékenységek navigációs tulajdonság entitások feladat vagy OData kötegelt feldolgozás révén definiálva van soron belül. A Media Services SDK-t használ a kötegelt feldolgozás. Az ebben a cikkben szereplő példák az olvashatóság érdekében, azonban a feladatok is definiálva van soron belül. Kötegelt feldolgozás kapcsolatos tudnivalókat lásd: [Open Data (OData) protokollnak kötegelt feldolgozási](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
-Az alábbi példa bemutatja, hogyan hozhat létre, és a egy feladatot egy feladat beállítása egy adott feloldási és minőségi videó kódolásához közzététele. A következő dokumentáció tartalmazza az összes a [készletek feladat](http://msdn.microsoft.com/library/mt269960) a Media Encoder Standard-feldolgozó által támogatott.  
+Az alábbi példa bemutatja, hogyan hozhat létre, és a egy feladatot egy feladat beállítása egy adott feloldási és minőségi videó kódolásához közzététele. A következő dokumentáció tartalmazza az összes a [készletek feladat](https://msdn.microsoft.com/library/mt269960) a Media Encoder Standard-feldolgozó által támogatott.  
 
 **HTTP-kérelem**
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: johnkem
 ms.component: alerts
-ms.openlocfilehash: e989406c852b7c87123681dd875f9cd8229524c1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 147e67efa901c834afef8f0da2acf6f5b523f6ad
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971926"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254196"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhookok az Azure tevékenységnapló-riasztások
 Műveletcsoport definíciójának részeként a webhook végpontok tevékenység log riasztási értesítések fogadása is beállíthatja. A webhookok ezek az értesítések is átirányítása utófeldolgozási vagy egyéni műveleteket más rendszerekre. Ez a cikk bemutatja, hogy az a HTTP POST a webhook hasznos adatai néz ki.
@@ -197,7 +197,7 @@ Az összes többi tevékenységnapló-riasztások adott séma részletekért lá
 
 ## <a name="next-steps"></a>További lépések
 * [További információ a tevékenységnapló](monitoring-overview-activity-logs.md).
-* [Az Azure automation-szkriptek (Runbookok) végrehajtása az Azure-riasztások](http://go.microsoft.com/fwlink/?LinkId=627081).
+* [Az Azure automation-szkriptek (Runbookok) végrehajtása az Azure-riasztások](https://go.microsoft.com/fwlink/?LinkId=627081).
 * [Logikai alkalmazás használatával a Twilio segítségével SMS küldése Azure riasztásból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Ebben a példában a metrikákhoz kapcsolódó riasztások, de módosítható egy tevékenységnapló-riasztás dolgozhat.
 * [Logikai alkalmazás használatával egy Slack-üzenet küldése egy Azure-riasztásokból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Ebben a példában a metrikákhoz kapcsolódó riasztások, de módosítható egy tevékenységnapló-riasztás dolgozhat.
 * [Üzenet küldése az Azure-üzenetsort származó Azure Logic Apps-alkalmazás használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app). Ebben a példában a metrikákhoz kapcsolódó riasztások, de módosítható egy tevékenységnapló-riasztás dolgozhat.

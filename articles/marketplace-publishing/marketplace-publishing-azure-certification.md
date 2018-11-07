@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: hascipio
-ms.openlocfilehash: aadc695b1f07d04f1fcc7f2f2e3ff90fb7f54849
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 300b94aea0c06092a5fb6bdecd49771ef1cd517d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714002"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234187"
 ---
 # <a name="get-pre-approved-via-the-microsoft-azure-certified-program"></a>A Microsoft Azure Certified program előre elfogadott
 Ez a cikk útmutatás hogyan válhat a Microsoft Azure Certified, hogy tegye közzé a megoldását az Azure piactéren, és jogosultsághoz a gazdasági előnyeit. Részletes áttekintést nyújt a Microsoft Azure Certified program és az általa nyújtott előnyöket, látogasson el [ http://azure.com/certified ](http://azure.com/certified).
@@ -34,7 +34,7 @@ Ez a cikk útmutatás hogyan válhat a Microsoft Azure Certified, hogy tegye kö
 3. Ha egy Partner Ügyfélmenedzserével vagy egy partneri DX Manager dolgozik, kérje meg őket, hogy jelöljön ki a megoldás az Azure Certified program, vagy keresse fel a [Microsoft Azure Certified](http://createopportunity.azurewebsites.net) weblapon, töltse ki az alkalmazás űrlapot, és adja meg e-mail-címe a Partner Ügyfélfelelőshöz vagy a szponzor forduljon Microsoft mezőben DX Partner Manager.
 
 > [!IMPORTANT]
-> **"Értékesítő" országokat** – annak érdekében, hogy értékesítése a Microsoft Azure Marketplace-en a regisztrált entitást kell lennie a jóváhagyott "értékesítő" országokat egyik szolgáltatásait. Ez a korlátozás küldenie jóváhagyásra cége kifizetési és adózási okból is. A Microsoft aktívan kíváncsi, bontsa ki a közeljövőben országok listája, úgyhogy érdemes figyelnie. A teljes listát lásd: 1.b. a szakasz a [Azure piactér részvételi szabályzatának](http://go.microsoft.com/fwlink/?LinkID=526833).
+> **"Értékesítő" országokat** – annak érdekében, hogy értékesítése a Microsoft Azure Marketplace-en a regisztrált entitást kell lennie a jóváhagyott "értékesítő" országokat egyik szolgáltatásait. Ez a korlátozás küldenie jóváhagyásra cége kifizetési és adózási okból is. A Microsoft aktívan kíváncsi, bontsa ki a közeljövőben országok listája, úgyhogy érdemes figyelnie. A teljes listát lásd: 1.b. a szakasz a [Azure piactér részvételi szabályzatának](https://go.microsoft.com/fwlink/?LinkID=526833).
 
 
 ## <a name="next-step"></a>Következő lépés

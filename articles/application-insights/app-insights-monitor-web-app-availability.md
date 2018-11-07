@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 3869b47c4e435443bb569ae7b90df7fba9687ba7
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 14ff253b0c6524f1006c108e46f8e5d9a9bb1604
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421254"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257918"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése
 Miután telepítette a webappot vagy a webhelyet bármely kiszolgálóra, webes teszteket állíthat be az alkalmazás rendelkezésre állásának és válaszkészségének megfigyeléséhez. Az [Azure Application Insights](app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást jelenít meg, ha az alkalmazás nem válaszol, vagy lassan válaszol.
@@ -76,7 +76,7 @@ Nyissa meg a Rendelkezésre állás panelt, és adjon hozzá egy tesztet.
 Olyan forgatókönyveket is figyelhet, amelyek egy URL-címek sorozatából állnak. Ha például egy értékesítési webhelyet figyel, tesztelheti, hogy megfelelően működik-e a termékek kosárba helyezése.
 
 > [!NOTE]
-> A többlépéses webes tesztek díjkötelesek. [Díjszabási séma](http://azure.microsoft.com/pricing/details/application-insights/)
+> A többlépéses webes tesztek díjkötelesek. [Díjszabási séma](https://azure.microsoft.com/pricing/details/application-insights/)
 > 
 
 Többlépéses teszt létrehozásához rögzíteni kell a forgatókönyvet a Visual Studio Enterprise segítségével, majd fel kell tölteni a felvételt az Application Insights-ba. Az Application Insights időközönként visszajátssza a forgatókönyvet, és ellenőrzi a válaszokat.

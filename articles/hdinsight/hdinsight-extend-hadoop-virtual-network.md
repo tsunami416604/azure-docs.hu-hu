@@ -2,18 +2,18 @@
 title: A Virtual Network – Azure HDInsight kiterjesztése
 description: Ismerje meg, hogyan csatlakozhat Azure Virtual Network HDInsight egyéb felhőalapú erőforrások, vagy az adatközpontban található erőforrások
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/08/2018
-ms.openlocfilehash: 5ee249aee5d95f22f2e1f52d6356f09ea41ccd68
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.date: 11/06/2018
+ms.openlocfilehash: 62502e946922928b8b4179d38ce9f9ae55f9930d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945756"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238981"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
 
@@ -25,7 +25,7 @@ Ismerje meg, hogyan használható a HDInsight- [Azure Virtual Network](../virtua
 
 * HDInsight-adatokhoz való csatlakozásról tárolja egy Azure-beli virtuális hálózathoz.
 
-* Közvetlen hozzáférés nem érhető el nyilvánosan az interneten keresztül, Hadoop-szolgáltatásokhoz. Ha például Kafka API-k vagy a HBase Java API-t.
+* Az Apache Hadoop-szolgáltatásokhoz, amelyek nem érhető el nyilvánosan az interneten keresztül közvetlenül hozzáfér. Ha például Kafka API-k vagy a HBase Java API-t.
 
 > [!WARNING]
 > A jelen dokumentumban lévő információk a TCP/IP-hálózati ismeretét igényli. Ha nem ismeri a TCP/IP-hálózat, meg kell partneri valakivel, aki a módosításokat éles hálózati környezetben a végrehajtása előtt.
@@ -64,7 +64,7 @@ Kövesse a lépéseket ebben a szakaszban egy új HDInsight hozzáadása egy meg
 
     Miután csatlakozott, a Resource Manager-hálózaton telepített HDInsight kezelheti a klasszikus hálózati erőforrásokhoz.
 
-2. Használják-e a kényszerített bújtatást? Kényszerített bújtatás az alhálózat-beállítással, amely kényszeríti a kimenő internetes forgalmat egy eszközön, az ellenőrzés és naplózás. HDInsight nem támogatja a kényszerített bújtatás. Távolítsa el a kényszerített bújtatás egyik alhálózatában HDInsight telepítése előtt, vagy hozzon létre egy új alhálózatot a HDInsight.
+2. Használják-e a kényszerített bújtatást? Kényszerített bújtatás az alhálózat-beállítással, amely kényszeríti a kimenő internetes forgalmat egy eszközön, az ellenőrzés és naplózás. HDInsight nem támogatja a kényszerített bújtatás. Távolítsa el a kényszerített bújtatás HDInsight egy meglévő alhálózat egy környezetbe való üzembe helyezés előtt, vagy hozzon létre egy új alhálózatot a HDInsight nem kényszerített bújtatással.
 
 3. Használják a hálózati biztonsági csoportok, a felhasználó által megadott útvonalakat vagy a virtuális hálózati berendezések irányuló forgalom korlátozásához, vagy onnan máshová a virtuális hálózaton?
 
@@ -121,7 +121,7 @@ A legnagyobb kihívás több hálózati konfigurációval rendelkező névfelold
 
 Az Azure névfeloldás kínál Azure-szolgáltatások telepítve vannak a virtuális hálózat. A beépített névfeloldás lehetővé teszi, hogy a HDInsight egy teljesen minősített tartománynevét (FQDN) használatával a következő erőforrások eléréséhez:
 
-* Bármilyen erőforrás, amely az interneten érhető el. Például a Microsoft.com webhelyre mutat, google.com.
+* Bármilyen erőforrás, amely az interneten érhető el. Például a Microsoft.com webhelyre mutat, windowsupdate.com.
 
 * Bármilyen erőforrás, amely az azonos Azure Virtual Network használatával a __belső DNS-név__ az erőforrás. Például az alapértelmezett névfeloldás használata esetén a következők példa HDInsight munkavégző csomópontokhoz rendelt belső DNS-nevek:
 
@@ -173,7 +173,7 @@ További információkért lásd: a [virtuális gépek és Szerepkörpéldányok
 
 ## <a name="directly-connect-to-hadoop-services"></a>Közvetlenül csatlakozhat a Hadoop-szolgáltatásokhoz
 
-Csatlakozhat a fürthöz https://CLUSTERNAME.azurehdinsight.net. A cím egy nyilvános IP-címet használja, ami nem feltétlenül érhető el, ha használta az NSG-k vagy udr-EK az internetről bejövő forgalom korlátozására. Emellett a fürt egy virtuális hálózaton üzembe hozzá tud férni a privát végpont használatával https://CLUSTERNAME-int.azurehdinsight.net. Ez a végpont a fürt hozzáférés a virtuális hálózaton belül egy privát IP-cím mutat.
+Csatlakozhat a fürthöz https://CLUSTERNAME.azurehdinsight.net. A cím egy nyilvános IP-címet használja, ami nem feltétlenül érhető el, ha az NSG-k segítségével az internetről bejövő forgalom korlátozása. Emellett a fürt egy virtuális hálózaton üzembe hozzá tud férni a privát végpont használatával https://CLUSTERNAME-int.azurehdinsight.net. Ez a végpont a fürt hozzáférés a virtuális hálózaton belül egy privát IP-cím mutat.
 
 Az Ambari és a más weblapok, a virtuális hálózaton keresztül csatlakozni, használja az alábbi lépéseket:
 
@@ -213,13 +213,13 @@ Egy Azure-beli virtuális hálózatok hálózati forgalmához szabályozhatja a 
 * **Hálózati biztonsági csoportok** (NSG) lehetővé teszi a hálózati bejövő és kimenő forgalom szűrését. További információkért lásd: a [hálózati biztonsági csoportokkal a hálózati forgalom szűrése](../virtual-network/security-overview.md) dokumentumot.
 
     > [!WARNING]
-    > HDInsight nem támogatja a kimenő forgalom korlátozása.
+    > HDInsight nem támogatja a kimenő forgalom korlátozása. Az összes kimenő forgalmat engedélyezni kell.
 
 * **Felhasználó által megadott útvonalak** (UDR) definiálhatja a forgalom adatfolyamait a hálózaton lévő erőforrások között. További információkért lásd: a [felhasználó által megadott útvonalak és IP-továbbítás](../virtual-network/virtual-networks-udr-overview.md) dokumentumot.
 
 * **Hálózati virtuális berendezések** replikálni, például a tűzfalak és az útválasztók eszközök működésével. További információkért lásd: a [hálózati berendezések](https://azure.microsoft.com/solutions/network-appliances) dokumentumot.
 
-Felügyelt szolgáltatásként HDInsight az Azure-felhőben Azure-állapot és a felügyeleti szolgáltatások nem korlátozott hozzáférésre van szüksége. Az NSG-k és az udr-EK használata esetén győződjön meg róla, hogy HDInsight ezeket a szolgáltatásokat továbbra is kommunikál HDInsight.
+Felügyelt szolgáltatásként HDInsight a HDinsight állapota nem korlátozott hozzáférésre van szüksége, és felügyeleti szolgáltatásokat, mind a bejövő és kimenő forgalmat a virtuális hálózatról. Az NSG-k és az udr-EK használata esetén győződjön meg róla, hogy ezek a szolgáltatások továbbra is kommunikál HDInsight-fürt.
 
 HDInsight szolgáltatásokat több portra tesz elérhetővé. Virtuális berendezés tűzfalat használ, amikor engedélyeznie kell a forgalom a portokon ezeket a szolgáltatásokat használni. További információkért tekintse meg a [szükséges portok] szakaszt.
 
@@ -233,8 +233,8 @@ Ha azt tervezi, hogy használatával **hálózati biztonsági csoportok** vagy *
 
 3. Hozzon létre vagy módosítsa a hálózati biztonsági csoportok vagy a felhasználó által megadott útvonalakat az alhálózatot, amelyet a HDInsight azokat telepíteni szeretné a.
 
-    * __Hálózati biztonsági csoportok__: engedélyezése __bejövő__ port forgalmát __443-as__ IP-címek.
-    * __Felhasználó által megadott útvonalak__: hozzon létre egy útvonalat, minden IP-címre, és állítsa be a __következő ugrás típusa__ való __Internet__.
+    * __Hálózati biztonsági csoportok__: engedélyezése __bejövő__ port forgalmát __443-as__ IP-címek. Ez biztosítja, hogy HDI-felügyeleti szolgáltatásokat a fürt elérje a külső virtuális hálózaton.
+    * __Felhasználó által megadott útvonalak__: Ha azt tervezi, használja az udr-EK, hozzon létre egy útvonalat, minden IP-címhez, és állítsa be a __következő ugrás típusa__ való __Internet__. Minden kimenő forgalmat is engedélyezni a virtuális hálózatról korlátozás nélkül. Például az összes többi forgalom átirányítása az Azure tűfzal vagy a hálózati virtuális berendezés (az Azure-ban üzemeltetett) figyelési célból, de nem lesznek letiltva a kimenő forgalmat.
 
 További információ a hálózati biztonsági csoportok vagy felhasználó által megadott útvonalakat a következő dokumentációban tekintheti meg:
 
@@ -242,9 +242,9 @@ További információ a hálózati biztonsági csoportok vagy felhasználó ált
 
 * [Felhasználó által megadott útvonalak](../virtual-network/virtual-networks-udr-overview.md)
 
-#### <a name="forced-tunneling"></a>Alagúthasználat kényszerítése
+#### <a name="forced-tunneling-to-on-premise"></a>Kényszerített bújtatás helyszíni
 
-Kényszerített bújtatás egy felhasználó által meghatározott útválasztási konfigurációja ahol alhálózatból származó összes forgalom kényszerített egy adott hálózaton vagy a helyen, például a helyszíni hálózathoz. HDInsight does __nem__ támogatási kényszerített bújtatás.
+Kényszerített bújtatás egy felhasználó által meghatározott útválasztási konfigurációja ahol alhálózatból származó összes forgalom kényszerített egy adott hálózaton vagy a helyen, például a helyszíni hálózathoz. HDInsight does __nem__ támogatási kényszerített bújtatás a helyszíni hálózatokhoz. Azure tűzfal- vagy Azure-ban üzemeltetett létesítésével virtuális berendezés használatakor udr-EK segítségével átirányítja a forgalmat, hogy a figyelési célból, és lehetővé teszi minden kimenő forgalmat.
 
 ## <a id="hdinsight-ip"></a> Szükséges IP-címek
 

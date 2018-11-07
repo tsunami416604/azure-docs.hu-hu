@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/30/2018
+ms.date: 11/06/2018
 ms.author: genli
-ms.openlocfilehash: 8d1415e996f65f0791b3e449a61fb30053add523
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 937d0be2e86adf00ac2707d5fd57eb905dcea3fb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240205"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238320"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Hibaelhárítása: Az Azure pont – hely kapcsolati problémák
 
@@ -221,7 +221,7 @@ A probléma megoldásához, telepítse újra az összes ügyfél a hely csomag p
 
 ## <a name="too-many-vpn-clients-connected-at-once"></a>Túl sok a VPN-ügyfelek egyszerre csatlakoztatott
 
-Minden egyes VPN Gateway az engedélyezett kapcsolatok maximális száma 128. Láthatja, hogy az Azure Portalon csatlakoztatott ügyfelek teljes száma.
+Elérte az engedélyezett kapcsolatok maximális számát. Láthatja, hogy az Azure Portalon csatlakoztatott ügyfelek teljes száma.
 
 ## <a name="point-to-site-vpn-incorrectly-adds-a-route-for-100008-to-the-route-table"></a>Pont – hely VPN 10.0.0.0/8 útvonal helytelen az útvonaltábla hozzáadása
 
@@ -282,7 +282,7 @@ A probléma megoldásához, törölje a régi VPN-ügyfél konfigurációs fájl
 
 ### <a name="symptom"></a>Jelenség
 
-Amikor az ügyfél Azure pont – hely VPN-kapcsolat használatával kapcsolódik, nem oldható fel a FQND az erőforrások a helyi tartományban.
+Amikor az ügyfél Azure pont – hely VPN-kapcsolat használatával kapcsolódik, nem oldható fel az erőforrásokat a helyi tartomány teljes Tartománynevét.
 
 ### <a name="cause"></a>Ok
 

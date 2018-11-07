@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/24/2018
 ms.author: saurse
-ms.openlocfilehash: f69975fc30dfdfbcdd801bcdb552e8b4be948607
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 154d4fbb265a6abb57bc25b4e364983ffe7e399b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38584340"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237757"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése Windows Server vagy Windows-ügyfél rendszereken a PowerShell-lel
 Ez a cikk bemutatja, hogyan használható a PowerShell beállítása az Azure Backup a Windows Server vagy a Windows ügyfél és a biztonsági mentés és helyreállítás felügyelete.
@@ -81,7 +81,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
 ## <a name="installing-the-azure-backup-agent"></a>Az Azure Backup ügynök telepítése
-Az Azure Backup ügynök telepítése előtt kell a telepítő letöltött és a jelen van a Windows Server rendszeren. Kérheti, hogy a telepítőt a legújabb verzióját a [Microsoft Download Center](http://aka.ms/azurebackup_agent) vagy a Recovery Services-tároló irányítópult-oldalon. A telepítő például könnyen elérhető helyre mentse * C:\Downloads\*.
+Az Azure Backup ügynök telepítése előtt kell a telepítő letöltött és a jelen van a Windows Server rendszeren. Kérheti, hogy a telepítőt a legújabb verzióját a [Microsoft Download Center](https://aka.ms/azurebackup_agent) vagy a Recovery Services-tároló irányítópult-oldalon. A telepítő például könnyen elérhető helyre mentse * C:\Downloads\*.
 
 Másik megoldásként a PowerShell használatával a letöltési segédprogramja lekérése:
  

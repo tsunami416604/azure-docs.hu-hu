@@ -1,6 +1,6 @@
 ---
-title: Ismerteti, hogyan lehet vehicle állapotát, és ki irányítja az előrejelzése részletes bemutatója a szokásokat - Azure |} Microsoft Docs
-description: A Cortana Intelligence szolgáltatásai segítségével a vehicle állapotát, és ki irányítja a valós idejű és prediktív dcu szokásokat.
+title: Részletes bemutató ismerteti, hogyan lehet előrejelezheti állapotát és a vezetési szokásokat – Azure |} A Microsoft Docs
+description: A Cortana Intelligence képességeit használatával valós idejű és prediktív elemzéseket az állapotát és a vezetési szokásokat.
 services: machine-learning
 documentationcenter: ''
 author: deguhath
@@ -15,67 +15,67 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: 991e4b86a1d3e75c02e5ed8fe97727c625f174a4
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: fc4b2d0beef1c91cd937ba901974796441657441
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37059091"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234765"
 ---
-# <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>Vehicle Telemetriai elemzési megoldások forgatókönyv: mély alaposabban tanulmányozhatja a megoldás
-Ez a forgatókönyv szakaszait menü hivatkozásokat: 
+# <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>Járműtelemetria-Telemetria elemzési megoldás forgatókönyve: részletes ismerje meg, a megoldás
+Ez a forgatókönyv szakaszait menü mutat: 
 
 [!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
-Ez a dokumentum részletezi az a megoldásarchitektúra írja le szakaszok azokat. Útmutatás és testreszabási mutatók tartoznak. 
+Ez a dokumentum részletezi a megoldásarchitektúra fejezet fázisokhoz be. Útmutatás és testreszabási mutatók is. 
 
 ## <a name="data-sources"></a>Adatforrások
-A megoldás két különböző adatforrásból használ:
+A megoldás két különböző adatforrásból használja:
 
-* Szimulált vehicle jelek és diagnosztikai adatkészlet
-* Vehicle katalógus
+* Szimulált jármű jelek és diagnosztikai adatok beállítása
+* Járműtelemetria-katalógus
 
-A vehicle telematika szimulátor Ez a megoldás részét, az alábbi képernyőfelvételen látható módon. Általa kibocsátott diagnosztikai adatokat, és azt jelzi, hogy felel meg a vehicle állapotát, és a vezetői típusnak egy időben.  A vehicle katalógus, amely leképezhető vehicle azonosítószámok (VINs) modellek hivatkozás adatkészlet tartalmazza. Megjegyzés: A Vehicle telematika szimulátor Visual Studio megoldás adatkészlet már nem érhető el. 
+Jármű-telematika szimulátort Ez a megoldás része, az alábbi képernyőképen látható módon. Ez bocsát ki a diagnosztikai adatokat, és azt jelzi, hogy felel meg a jármű állapotát, és a vezetési szokásokkal adott időpontban.  A járműtelemetria katalógus tartalmazza a referencia-adatkészlet, amely leképezi a vehicle azonosítószámokat (VINs) modellek. Megjegyzés: A Vehicle telematika szimulátor Visual Studio-megoldás adatkészlet már nem érhető el. 
 
-![Vehicle telematika szimulátor](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig1-vehicle-telematics-simulator.png)
+![Jármű-telematika szimulátor](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig1-vehicle-telematics-simulator.png)
 
 
 A JSON-formátumú adatkészlet a következő sémát tartalmaz.
 
 | Oszlop | Leírás | Értékek |
 | --- | --- | --- |
-| VIN |Véletlenszerűen létrehozott VIN |10 000 véletlenszerűen létrehozott VINs fő listájának nyert |
-| Külső hőmérséklet |A külső hőmérséklet, ahol a vehicle befolyásoló tényezők |0 és 100 véletlenszerűen létrehozott szám |
-| Motor |A vehicle motor hőmérséklete |0 és 500 véletlenszerűen létrehozott szám |
-| Gyorsaság |A motor sebesség, amellyel a vehicle befolyásoló tényezők |0 és 100 véletlenszerűen létrehozott szám |
-| Üzemanyag |A vehicle üzemanyag szintje |Véletlenszerűen létrehozott szám 0 és 100 (üzemanyag százalékos értéke jelzi) |
-| EngineOil |A vehicle motor olaj szintje |Véletlenszerűen létrehozott szám 0 és 100 (motor olaj százalékos értéke jelzi) |
-| Kulcsszava nyomás |A vehicle kulcsszava nyomás |Véletlenszerűen létrehozott szám 0 és 50 (kulcsszava nyomás százalékos értéke jelzi) |
-| Kilométer |A vehicle kilométer olvasása |0 és 200 000 véletlenszerűen létrehozott szám |
-| Accelerator_pedal_position |A vehicle gyorsító tartásához lehetőleg keveset pozíciója |Véletlenszerűen létrehozott szám 0 és 100 (gyorsító százalékos értéke jelzi) |
-| Parking_brake_status |Azt jelzi, hogy a vehicle kell itt tartózkodnia vagy sem |IGAZ vagy hamis |
-| Headlamp_status |Azt jelzi, hogy a fényszóró meg vagy nem |IGAZ vagy hamis |
-| Brake_pedal_status |Azt jelzi, hogy a fékpedál nélkül, vagy sem |IGAZ vagy hamis |
-| Transmission_gear_position |A vehicle átviteli fogaskerék pozíciója |Állapotok: először, a második, harmadik, negyedik, ötödik, hatodik, hetedik, nyolcadik |
-| Ignition_status |Azt jelzi, hogy a vehicle fut vagy leállt |IGAZ vagy hamis |
-| Windshield_wiper_status |Azt jelzi, hogy a szélvédőkeret ablaktörlő be van kapcsolva vagy nem |IGAZ vagy hamis |
-| ABS |Azt jelzi, hogy ABS részt vevő vagy sem |IGAZ vagy hamis |
-| Időbélyeg |Az adatpont létrehozásakor időbélyege |Dátum |
-| Város |A vehicle helye |Ebben a megoldásban négy városokat: Bellevue, Redmond, Sammamish, Seattle |
+| VIN |Véletlenszerűen létrehozott VIN |10 000 véletlenszerűen generált VINs fő listáját nyert |
+| Külső hőmérséklet |Ahol a jármű okoznának külső hőmérséklet |0 – 100 véletlenszerűen előállított szám |
+| Motor hőmérséklet |A motor hőmérséklet a jármű méretét |0 – 500 véletlenszerűen előállított szám |
+| Sebesség |A motor fordulatszámát, amelyen a jármű okoznának |0 – 100 véletlenszerűen előállított szám |
+| Ösztönzésének |A járműtelemetria ösztönzésének szintje |Véletlenszerűen előállított szám 0 és 100 (ösztönzésének százalékos értéke jelzi) |
+| EngineOil |A motor olaj szint a jármű méretét |Véletlenszerűen előállított szám 0 és 100 (a motor olaj százalékos értéke jelzi) |
+| Kulcsszava nyomás |A kulcsszava nyomás a jármű méretét |Véletlenszerűen előállított szám 0-tól 50-re (kulcsszava nyomás százalékos értéke jelzi) |
+| Kilométer |A jármű méretét a kilométer olvasása |0 – 200 000 véletlenszerűen előállított szám |
+| Accelerator_pedal_position |A járműtelemetria gyorsító kerékpárok pozíciója |Véletlenszerűen előállított szám 0 és 100 (gyorsító százalékos értéke jelzi) |
+| Parking_brake_status |Azt jelzi, hogy a jármű kell itt tartózkodnia vagy nem |TRUE vagy FALSE (hamis) |
+| Headlamp_status |Azt jelzi, hogy a fényszóró van-e szó vagy sem |TRUE vagy FALSE (hamis) |
+| Brake_pedal_status |Azt jelzi, hogy a fékpedál megnyomják, vagy nem |TRUE vagy FALSE (hamis) |
+| Transmission_gear_position |A járműtelemetria átviteli fogaskerék pozíciója |Állapotok: először, a második, harmadik, negyedik ötödik, hatodik, hetedik, nyolcadik |
+| Ignition_status |Azt jelzi, hogy a jármű fut vagy leállítva |TRUE vagy FALSE (hamis) |
+| Windshield_wiper_status |Azt jelzi, hogy a szélvédőkeret ablaktörlő be van kapcsolva vagy nem |TRUE vagy FALSE (hamis) |
+| ABS |Azt jelzi, hogy ABS bevonhat vagy sem |TRUE vagy FALSE (hamis) |
+| Időbélyeg |Az időbélyeg, ha az adatpont jön létre |Dátum |
+| Város |A járműtelemetria helye |Ez a megoldás négy városok: Bellevue, Redmond, Sammamish, Seattle |
 
-A vehicle modell hivatkozás adatkészlet VINs modellek rendeli hozzá. 
+A járműtelemetria modell referencia-adatkészlet VINs modellek rendeli hozzá. 
 
 | VIN | Modell |
 | --- | --- |
 | FHL3O1SA4IEHB4WU1 |Sedan |
 | 8J0U8XCPRGW4Z3NQE |Hibrid |
-| WORG68Z2PLTNZDBI7 |Családbiztonsági limuzin |
+| WORG68Z2PLTNZDBI7 |Családi limuzin |
 | JTHMYHQTEPP4WBMRN |Sedan |
 | W9FTHG27LZN1YWO0Y |Hibrid |
-| MHTP9N792PHK08WJM |Családbiztonsági limuzin |
+| MHTP9N792PHK08WJM |Családi limuzin |
 | EI4QXI2AXVQQING4I |Sedan |
 | 5KKR2VB4WHQH97PF8 |Hibrid |
-| W9NSZ423XZHAONYXB |Családbiztonsági limuzin |
+| W9NSZ423XZHAONYXB |Családi limuzin |
 | 26WJSGHX4MA5ROHNL |Váltható |
 | GHLUB6ONKMOSI7E77 |Állomás kocsi |
 | 9C2RHVRVLMEJDBXLP |Kompakt autó |
@@ -88,80 +88,80 @@ A vehicle modell hivatkozás adatkészlet VINs modellek rendeli hozzá.
 | DF6OX2WSRA6511BVG |Coupe |
 | Z2EOZWZBXAEW3E60T |Sedan |
 | M4TV6IEALD5QDS3IR |Hibrid |
-| VHRA1Y2TGTA84F00H |Családbiztonsági limuzin |
+| VHRA1Y2TGTA84F00H |Családi limuzin |
 | R0JAUHT1L1R3BIKI0 |Sedan |
 | 9230C202Z60XX84AU |Hibrid |
-| T8DNDN5UDCWL7M72H |Családbiztonsági limuzin |
+| T8DNDN5UDCWL7M72H |Családi limuzin |
 | 4WPYRUZII5YV7YA42 |Sedan |
 | D1ZVY26UV2BFGHZNO |Hibrid |
-| XUF99EW9OIQOMV7Q7 |Családbiztonsági limuzin |
+| XUF99EW9OIQOMV7Q7 |Családi limuzin |
 | 8OMCL3LGI7XNCC21U |Váltható |
 | ……. | |
 
-## <a name="ingestion"></a>Adatfeldolgozást
-Azure Event Hubs, az Azure Stream Analytics és az Azure Data Factory kombinációi használt tölti be a vehicle jeleket, a diagnosztikai események és valós idejű és kötegelt elemzés. Ezek az összetevők létrehozni és konfigurálni a megoldás központi telepítésének részeként. 
+## <a name="ingestion"></a>Adatbetöltési
+Az Azure Event Hubs, az Azure Stream Analytics és az Azure Data Factory kombinációit használt betöltését járműtelemetria jelek, a diagnosztikai események, és valós idejű és kötegelt elemzés. Ezek az összetevők létrehozni és konfigurálni a megoldás központi telepítésének részeként. 
 
-### <a name="real-time-analysis"></a>Valós idejű elemzés
-Az event hubs SDK használatával a vehicle telematika szimulátor által előállított eseményeket az eseményközpontba lettek közzétéve.  
+### <a name="real-time-analysis"></a>Valós idejű elemzése
+Az event hubs SDK használatával a jármű-telematika szimulátor által létrehozott eseményeket az eseményközpontba lettek közzétéve.  
 
-![Event hub irányítópult](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig4-vehicle-telematics-event-hub-dashboard.png) 
+![Event hub-irányítópult](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig4-vehicle-telematics-event-hub-dashboard.png) 
 
-A Stream Analytics-feladat ingests ezeket az eseményeket az eseményközpontból, és feldolgozza a valós idejű elemzése a vehicle egészségügyi adatokat.
+A Stream Analytics-feladat feltölti ezeket az eseményeket az eseményközpontból, és feldolgozza az adatokat valós időben elemezheti az állapotát.
 
-![A Stream Analytics-feladat adatainak feldolgozása](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig5-vehicle-telematics-stream-analytics-job-processing-data.png) 
+![Stream Analytics-feladat adatainak feldolgozása](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig5-vehicle-telematics-stream-analytics-job-processing-data.png) 
 
 
 A Stream Analytics-feladatot:
 
-* Az event hubs adatait ingests.
-* A vehicle VIN hozzárendelése a megfelelő modell referenciaadatokkal illesztést hajt végre. 
-* Az Azure Blob-tároló gazdag kötegelt elemzés fenntartása őket. 
+* Betölti az adatokat az eseményközpontból.
+* Egy összekapcsolás a jármű VIN leképezése a megfelelő modellt a referenciaadatok hajt végre. 
+* Gazdag kötegelt elemzésre az Azure Blob storage-bA fenntartása őket. 
 
-A következő Stream Analytics-lekérdezés segítségével az adatok megőrzéséhez a Blob-tároló: 
+A következő Stream Analytics-lekérdezés szolgál a szeretné megtartani az adatokat Blob storage-bA: 
 
-![Stream Analytics feladat lekérdezés adatfeldolgozást](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig6-vehicle-telematics-stream-analytics-job-query-for-data-ingestion.png) 
-
-
-### <a name="batch-analysis"></a>Kötegelt elemzés
-Gazdagabb kötegelt elemzés is létrejön egy új kötetet szimulált vehicle jelek és diagnosztikai adatokat. A további kötet annak érdekében szükség egy jó reprezentatív adatmennyiség kötegelt feldolgozásra. Erre a célra PrepareSampleDataPipeline használatos a Data Factory-munkafolyamat egy év alatt érkezett szimulált vehicle jelek és diagnosztikai adatkészlet létrehozásához. Töltse le a Data Factory egyéni .NET tevékenység igényei szerint testre szabott elem Visual Studio-megoldást, keresse fel a [adat-előállító egyéni tevékenység](http://go.microsoft.com/fwlink/?LinkId=717077) weblap. 
-
-Ez a munkafolyamat bemutatja a mintaadatok készített kötegelt feldolgozásra.
-
-![A mintaadatok előkészítve a kötegelt feldolgozásra munkafolyamat](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig7-vehicle-telematics-prepare-sample-data-for-batch-processing.png) 
+![Stream Analytics-Feladatlekérdezés adatbetöltés](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig6-vehicle-telematics-stream-analytics-job-query-for-data-ingestion.png) 
 
 
-A folyamat egy egyéni Data Factory .NET tevékenység áll.
+### <a name="batch-analysis"></a>Batch-elemzés
+Egy szimulált jármű jelek és diagnosztikai adatok további kötet is létrejön a részletesebb kötegelt feldolgozáshoz. Ehhez a kötethez szükség a kötegelt feldolgozáshoz jó reprezentatív adatmennyiség biztosítása érdekében. Erre a célra PrepareSampleDataPipeline szolgál a Data Factory-munkafolyamat egy év alatt az szimulált jármű jelek és diagnosztikai adatkészlet létrehozásához. Töltse le a Data Factory egyéni .NET-tevékenységet a testreszabások igényei alapján a Visual Studio-megoldást, keresse fel a [Data Factory egyéni tevékenység](https://go.microsoft.com/fwlink/?LinkId=717077) weblapon. 
+
+Ez a munkafolyamat bemutatja a kötegelt feldolgozáshoz előkészített mintaadatok.
+
+![A mintaadatok előkészítve a kötegelt feldolgozási munkafolyamat](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig7-vehicle-telematics-prepare-sample-data-for-batch-processing.png) 
+
+
+A folyamatot a Data Factory .NET egyéni tevékenység áll.
 
 ![PrepareSampleDataPipeline tevékenység](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig8-vehicle-telematics-prepare-sample-data-pipeline.png) 
 
-Miután a feldolgozási sor végrehajtása sikeres, és a RawCarEventsTable adatkészlet "Kész" van megjelölve, egy év alatt érkezett szimulált vehicle jelek és diagnosztikai adatainak előállítása. A következő mappához és fájlhoz a tárfiók a connectedcar tárolóban létrehozott jelenik meg:
+Miután a folyamat végrehajtása sikeresen megtörtént, és a RawCarEventsTable data set "Kész" van megjelölve, egy teljes év alatt az szimulált jármű jelek és diagnosztikai adatainak előállítása. A következő mappa és fájl létrehozásakor a storage-fiókban az connectedcar tároló alatt jelenik meg:
 
-![PrepareSampleDataPipeline kimeneti](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig9-vehicle-telematics-prepare-sample-data-pipeline-output.png) 
+![PrepareSampleDataPipeline kimenet](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig9-vehicle-telematics-prepare-sample-data-pipeline-output.png) 
 
 ## <a name="partition-the-data-set"></a>Az adatkészlet partíció
-Az előkészítési lépést a nyers félig strukturált vehicle jelek és diagnosztikai adatkészlet olyan év/hónap formátumra particionálva. A particionálás elősegíthető hatékonyabb kérdez le, és a méretezhető, hosszú távú tárolás tartalék átvevő engedélyezésével. Például, az első blob fiók megtelik, az hibákat keresztül a következő fiókhoz. 
+Az adat-előkészítési lépésként a nyers félig strukturált jármű jelek és diagnosztikai adatkészlet egy év és hónap formátumra particionálva. Ezt a particionálása elősegíti a hatékonyabb lekérdezés és a méretezhető, hosszú távú tárolás tartalék feladatátvételi engedélyezésével. Például az első blob fiók megtelik, ahogy azt hibákat keresztül a következő fiókhoz. 
 
 >[!NOTE] 
->Ez a lépés a megoldás csak kötegfeldolgozási vonatkozik.
+>Ebben a lépésben a megoldás csak a kötegelt feldolgozás vonatkozik.
 
 Bemeneti és kimeneti adatok kezelése:
 
-* **A kimeneti adatok** (címkézett PartitionedCarEventsTable), az ügyfél data Lake data eligazodást / "rawest" formájában hosszú időn maradnak. 
-* **Adja meg adatokat** a folyamat van általában elvetve, mert a kimeneti adatok rendelkezik a bemeneti teljes visszaadása. Tárolja (particionált) jobban későbbi használatra.
+* **Kimeneti adatok** (címkézett PartitionedCarEventsTable) egy hosszú ideig tartott a data lake a vásárlói adatok eligazodást / "rawest" képernyő. 
+* **Bemeneti adatok** Ez a folyamat a rendszer általában vetve, mert a kimeneti adatokat rendelkezik teljes visszaadása a bemeneti. Tárolt (particionált) jobban későbbi használatra.
 
-A partíció car események munkafolyamat.
+A partíció autó események munkafolyamat.
 
-![Partíció car események munkafolyamat](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig10-vehicle-telematics-partition-car-events-workflow.png)
+![Partíció autó események munkafolyamat](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig10-vehicle-telematics-partition-car-events-workflow.png)
 
 
-A nyers adatok particionálása PartitionCarEventsPipeline, egy Hive Azure HDInsight tevékenység segítségével az alábbi képernyőfelvételen látható módon. A mintaadatok az adatok előkészítési lépés év előállított év/hónap szerint van particionálva. A partíciók az év havonta (összesen 12 partíciók) a vehicle jelek és diagnosztikai adatok létrehozásához használt. 
+A nyers adatok PartitionCarEventsPipeline, egy Azure HDInsight Hive-tevékenység használatával van particionálva, az alábbi képernyőképen látható módon. A mintaadatokat, egy egymást követő évben az adat-előkészítési lépésként a generált particionálva van, év és hónap szerint. A partíciók az egyes hónapok (összesen 12 partícióra) év jármű jelek és diagnosztikai adatok létrehozásához használt. 
 
 ![PartitionCarEventsPipeline tevékenység](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig11-vehicle-telematics-partition-car-events-pipeline.png)
 
 
 **PartitionConnectedCarEvents Hive-parancsfájl**
 
-A Hive parancsfájl partitioncarevents.hql particionálás szolgál. A letöltött zip-fájl, a \demo\src\connectedcar\scripts mappában található. 
+A Hive-parancsfájl partitioncarevents.hql particionálására szolgál. A letöltött zip-fájlban \demo\src\connectedcar\scripts mappában található. 
     
     SET hive.exec.dynamic.partition=true;
     SET hive.exec.dynamic.partition.mode = nonstrict;
@@ -298,117 +298,117 @@ A Hive parancsfájl partitioncarevents.hql particionálás szolgál. A letöltö
         MonthNo
     FROM Stage_RawCarEvents WHERE YearNo = ${hiveconf:Year} AND MonthNo = ${hiveconf:Month};
 
-Miután a folyamat sikeres végrehajtása során, lásd: a tárfiók a connectedcar tárolóban hozott létre a következő partíciókat:
+A folyamat sikeres végrehajtása után a következő partíciókhoz létrehozott storage-fiókjában az connectedcar tároló alatt jelenik meg:
 
-![A particionált kimeneti](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig12-vehicle-telematics-partitioned-output.png)
+![A particionált kimenet](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig12-vehicle-telematics-partitioned-output.png)
 
-Az adatok mostantól optimalizálása, könnyebben kezelhető, és készen állnak a gazdag kötegelt dcu további feldolgozásra. 
+Az adatok most már optimalizálva, könnyebben kezelhető, és készen áll a batch részletes információkhoz juthat a további feldolgozás céljából. 
 
 ## <a name="data-analysis"></a>Adatelemzés
-Ebben a szakaszban látható egyesítése a Stream Analytics, az Azure Machine Learning, a Data Factory és a HDInsight a gazdag, sokoldalú analitikai vehicle egészségügyi, és ki irányítja a szokásokat.
+Ebben a szakaszban bemutatjuk, hogyan kombinálhatja a Stream Analytics, az Azure Machine Learning, a Data Factory és a HDInsight a gazdag bővített analitikához állapotát, és a vezetési szokásokat.
 
 ### <a name="machine-learning"></a>Gépi tanulás
-A cél a karbantartás vagy bizonyos heath statisztika, a következő feltételek alapján alapján visszaírási igénylő járművekről gyűjtött előrejelzése céljából:
+A cél, hogy a karbantartás, illetve bizonyos heath statisztikák, a következő Előfeltevések alapján alapján visszaírási igénylő járművek előrejelzése:
 
-* Ha valamelyik az alábbi három feltétel teljesül, a járművekről gyűjtött igényelnek, karbantartási karbantartás:
+* A következő három feltétel valamelyike teljesül, a járművek van szükség a karbantartáshoz karbantartási:
   
   * A kulcsszava nyomás értéke alacsony.
-  * A motor olaj szintje alacsony.
-  * A motor hőmérséklet túl magas.
+  * A motor olaj szint értéke alacsony.
+  * A motor hőmérséklete túl magas.
 
-* Ha a következő feltételek valamelyike teljesül, a járművekről gyűjtött előfordulhat, hogy rendelkezik egy biztonsági kérdés és visszaírási megkövetelése:
+* Ha a következő feltételek valamelyike teljesül, a járművek előfordulhat, hogy rendelkezik egy biztonsági kérdés és visszaírási megkövetelése:
   
-  * A motor hőmérséklet magas, de a külső hőmérséklet alacsony.
-  * A motor hőmérséklet alacsony, de a külső hőmérséklet magas.
+  * A motor hőmérséklete túl magas, de a külső hőmérséklet alacsony.
+  * A motor hőmérséklet alacsony, de a külső hőmérséklet túl magas.
 
-Az előző követelmények alapján, két külön modellek rendellenességek észlelését. Egy modellt a vehicle karbantartási észleléséhez, pedig egy modellt a vehicle visszaírási észleléséhez. A beépített egyszerű összetevő elemzés (PEM) algoritmus mindkét modellt használják a anomáliadetektálás. 
+Az előző követelmények alapján, két külön modell észlelje a rendellenességeket. Jármű karbantartási észlelési van egy modellt, és egy modell jármű visszaírási észleléséhez. Mindkét modellben a beépített egyszerű összetevő elemzés (PEM) algoritmus rendellenesség-észlelést szolgál. 
 
-#### <a name="maintenance-detection-model"></a>**Karbantartási modell**
+#### <a name="maintenance-detection-model"></a>**Modell karbantartása**
 
-Ha egy három mutatók--kulcsszava nyomás, motor olaj vagy motor hőmérséklet--eleget tesz a megfelelő feltétel, a karbantartási modell egy anomáliabiztonsági jelentéseket. Ennek eredményeképpen csak három változókhoz kell kell figyelembe kell venni a modell létrehozása. A kísérletben a machine learning szolgáltatásban a **Select Columns in Dataset** a modul kibontása három változókhoz szolgál. Ezután a PCA alapú feltételészlelési modul segítségével hozhatók létre az anomáliadetektálási modell. 
+Ha egy három mutatók--kulcsszava nyomás, motor olaj vagy motor hőmérséklet--eleget tesz a megfelelő feltétel, a karbantartási modell egy rendellenességet jelenti. Ennek eredményeképpen csak ezeket a három változókat kell figyelembe kell venni a modellkészítés kell. A kísérletben a machine learning a **Select Columns in Dataset** modul segítségével csomagolja ki ezeket a változókat. Ezután a PCA-alapú feltételészlelési modul szolgál a modell létrehozásához a rendellenességek észlelését. 
 
-PEM a egy meghatározott technika, a machine learning szolgáltatás kiválasztása, a besorolást és a anomáliadetektálás alkalmazható. PEM esetekben az értékek nevükön összetevők egyszerű esetlegesen kapcsolódó változók tartalmazó készlete alakítja át. PEM-alapú modellezési kulcs lényege, projekt adatokhoz egy alacsonyabb dimenziós területére könnyebben azonosíthatja a szolgáltatások és rendellenességeket.
+PEM a egy meghatározott technika, a machine learning szolgáltatás kiválasztása, a besorolást és a rendellenességek észlelése alkalmazható. PEM esetekben valószínűleg korrelált változók be egy értékhalmazt nevű fő összetevőit tartalmazó készletét alakítja át. Modellezési PCA-alapú kulcs lényege, projekt adatokhoz egy alacsonyabb dimenziós területére könnyebben azonosíthatja a funkciók és a rendellenességeket.
 
-Minden egyes új bemeneti az észlelési modellre az anomáliadetektálási érzékelő először kiszámítja a leképezés a eigenvectors a. Ezután a normalizált újjáépítése hiba számítja ki. Ez a normalizált hiba a anomáliadetektálási pontszám: minél nagyobb a hiba, a több rendellenes a példányt. 
+Minden egyes új bevitel, a modell esetén az anomáliadetektálási detector használatával először kiszámítja a leképezés a eigenvectors a. Majd kiszámítja a normalizált reconstruction hiba. Ez a normalizált hiba az anomáliadetektálási pontszám: minél nagyobb a hiba, a több rendellenes a példányt. 
 
-A karbantartási észlelési probléma rekordokban tekinthető kulcsszava nyomás motor olaj és motor által definiált egy pontot háromdimenziós terület koordinátái. Rögzítheti a rendellenességek észlelését, az eredeti adatok a háromdimenziós területen található projektbe kétdimenziós területére PEM szolgál ki. Ebből kifolyólag a paraméterrel összetevők PEM-ban történő használatáról értékre van állítva két. Ez a paraméter a PEM-alapú anomáliadetektálás alkalmazása fontos szerepet játszik. PEM projektadatokat használja, ezek rendellenességeket könnyebben azonosítják.
+A karbantartási észlelési probléma minden rekord kulcsszava nyomás motor olaj és motor által meghatározott egy pont háromdimenziós szóközzel koordináták számít. Rögzítheti a rendellenességeket, PEM szolgál az háromdimenziós helyre az eredeti adatok projekt egy kétdimenziós területére. Összetevők PEM paraméter számát, a két értékre van állítva. Ez a paraméter a PCA-alapú anomáliadetektálás alkalmazása fontos szerepet játszik. Miután PEM projektadatokat, ezeket a rendellenességek azonosítása könnyebben.
 
-#### <a name="recall-anomaly-detection-model"></a>**Az anomáliadetektálási modell visszahívása**
+#### <a name="recall-anomaly-detection-model"></a>**Idézze anomáliadetektálási modell**
 
-A visszaírási anomáliadetektálási észlelési modellben a **Select Columns in Dataset** és hasonló módon PCA alapú észlelési modulok használják. Pontosabban, a három változók--motor hőmérséklete, külső először használatával kibontása hőmérséklet és a sebességét – a **Select Columns in Dataset** modul. A sebesség változó is megtalálható, mert a motor hőmérséklet általában gyorsasága ad eredményül. Ezután a PCA alapú feltételészlelési modul szolgál az adatok a háromdimenziós területről projekt kétdimenziós területére. A visszaírási feltételek teljesülnek. A vehicle visszaírási szükséges, ha a motor és a külső hőmérséklet magas negatívan közötti kapcsolatot. PEM hajtja végre, a PCA alapú észlelési algoritmus segítségével rögzítheti a rendellenességeket. 
+A visszaírási rendellenességek észlelése modellben a **Select Columns in Dataset** és hasonló módon PCA-alapú rendellenességek észlelése modulok használják. Pontosabban, a három változók – motor hőmérséklete, kívül először használatával vonjuk hőmérséklet és sebesség--a **Select Columns in Dataset** modul. Sebesség változó a csomagban foglalt, mert a motor hőmérséklet általában ad eredményül, amelyek a sebesség. Ezután a PCA-alapú feltételészlelési modul szolgál az adatok a térbeli területről projekt egy kétdimenziós területére. A visszaírási feltételek teljesülnek. A vehicle visszaírási szükséges, ha a rendkívül negatív korrelált a motor hőmérséklet és külső hőmérséklet. PEM hajtja végre, miután a PCA alapú anomáliaészlelő létrehozására használható a rendellenességeket. 
 
-Vagy a modell betanításakor megszokott adatforgalmi szolgál a bemeneti adatokként a PCA alapú modell betanításához. (Normál adatok nem igényel karbantartás vagy visszahívás.) A pontozási kísérletben a betanított anomáliadetektálási modell annak észlelésére használnak, a vehicle szükség van-e karbantartás vagy visszahívás. 
+Mindkét modell betanításakor normális adatokká szolgál a bemeneti adatokat a PCA-alapú modell betanításához. (Normál adatok nem igényel karbantartást vagy visszahívás.) A pontozó kísérletben az anomáliadetektálási betanított modell annak észlelésére használnak, a vehicle szükség van-e karbantartási vagy visszahívás. 
 
-### <a name="real-time-analysis"></a>Valós idejű elemzés
-A következő Stream Analytics SQL-lekérdezés segítségével átlagának kiszámítása a fontos vehicle paraméterek beolvasása. Ezek a paraméterek például a vehicle sebességét, üzemanyag szint, motor, kilométer olvasási, kulcsszava nyomás, motor olaj szint és mások. A átlagok rendellenességek észlelését, riasztások ki, illetve egy adott régióban üzemeltetett járművekről gyűjtött általános állapotának feltételeinek meghatározása szolgálnak. A átlagok majd a demográfiai adatoknak megfelelő elérési közötti kapcsolatot. 
+### <a name="real-time-analysis"></a>Valós idejű elemzése
+A következő Stream Analytics SQL-lekérdezés beolvasni az összes fontos jármű paramétert átlaga szolgál. Ezeket a paramétereket például jármű sebességét, ösztönzésének szint, motor hőmérséklet, kilométer olvasó, kulcsszava nyomás, motor olaj szintje és mások. Az átlagokat észlelje a rendellenességeket, adja ki a riasztások és egy adott régióban lévő üzemeltetett járművek általános állapotának feltételek meghatározására szolgálnak. A átlagok, demográfiai majd közötti kapcsolatot. 
 
-![A valós idejű feldolgozással Stream Analytics-lekérdezés](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig13-vehicle-telematics-stream-analytics-query-for-real-time-processing.png)
+![Stream Analytics-lekérdezés valós idejű feldolgozás](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig13-vehicle-telematics-stream-analytics-query-for-real-time-processing.png)
 
-A átlagok kiszámítása a három másodperces átfedésmentes ablak keresztül. Egy átfedésmentes ablak használata mozaikként, átfedés nélkül és összefüggő időközök szükség. 
+Az összes átlagokat keresztül egy három másodperces átfedésmentes ablak számítjuk ki. Átfedésmentes ablak szolgál, mert nem fedő és összefüggő időintervallumok szükség. 
 
-A Stream Analytics Ablakozó képességeivel kapcsolatos további tudnivalókért lásd: [Ablakozó (Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835019.aspx).
+A Stream Analytics ablakkezelési képességeivel kapcsolatos további tudnivalókért lásd: [Ablakkezelési (az Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835019.aspx).
 
-#### <a name="real-time-prediction"></a>**Valós idejű előrejelzés**
+#### <a name="real-time-prediction"></a>**Valós idejű előrejelzése**
 
-Egy alkalmazás tartalmazzák a megoldás a valós idejű gépi tanulási modell azok a rendszer. Az alkalmazás RealTimeDashboardApp létrehozásáról és a megoldás központi telepítésének részeként. Az alkalmazás:
+Egy alkalmazás a valós idejű gépi tanulási modell üzembe helyezése a megoldás része. Az alkalmazás RealTimeDashboardApp létrehozta és konfigurálta a megoldás központi telepítésének részeként. Az alkalmazás:
 
-* Egy esemény hub-példányon, ahol Stream Analytics közzéteszi az eseményeket a mintában folyamatosan figyeli.
+* Az event hubs-példánnyal, ahol Stream Analytics közzéteszi az események a mintázat folyamatosan figyeli.
 
-    ![Az adatok közzétételére vonatkozó Stream Analytics-lekérdezés](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig14-vehicle-telematics-stream-analytics-query-for-publishing.png) 
+    ![Az adatok közzététele a Stream Analytics-lekérdezés](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig14-vehicle-telematics-stream-analytics-query-for-publishing.png) 
 
-* Események fogadása. Minden eseményhez, amely megkapja ezt az alkalmazást: 
+* Fogadja az eseményeket. Minden eseményhez, amely megkapja ezt az alkalmazást: 
    
-   * Az adatok feldolgozása a machine learning-kérés-válasz pontozási (RR-EKET) végpont. Az RRS-végpontot automatikusan bekerül a telepítés részeként.
-   * A Power BI adatkészletet az RRS kimeneti a leküldéses API-k használatával van közzétéve.
+   * Az adatok feldolgozása a machine learning-kérés-válasz pontozási (RRS) végponthoz. Az RRS-végpontot automatikusan a telepítés részeként van közzétéve.
+   * A Power BI-adatkészlet az RRS kimeneti a push API-k használatával van közzétéve.
 
-Ezt a mintát, amely szintén alkalmazható helyzetekben, amelyben a sor üzleti alkalmazás integrálható a valós idejű elemzési folyamat szeretné. Ilyen például, riasztások, értesítések és üzenetkezelés.
+Ez a minta akkor is, amelyben egy sor üzleti alkalmazás a valós idejű elemzési folyamatával integrálni kívánt alkalmazási helyzeteket alkalmazható. Ezek a forgatókönyvek közé tartozik a riasztások, értesítések és üzenetkezelés.
 
-Megjegyzés: a RealtimeDashboardApp Visual Studio megoldás az adatok már nem áll rendelkezésre.
+Megjegyzés:, hogy a RealtimeDashboardApp Visual Studio-megoldás az adatok már nem érhető el.
 
-#### <a name="execute-the-real-time-dashboard-application"></a>**A valós idejű irányítópulton alkalmazás végrehajtása**
+#### <a name="execute-the-real-time-dashboard-application"></a>**A valós idejű irányítópult alkalmazás végrehajtása**
 1. Bontsa ki a RealtimeDashboardApp, és mentse helyileg.
 
     ![RealTimeDashboardApp folder](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig16-vehicle-telematics-realtimedashboardapp-folder.png) 
 
-2. Az alkalmazás RealtimeDashboardApp.exe végrehajtása.
+2. Hajtsa végre az alkalmazás RealtimeDashboardApp.exe.
 
-3. Érvényes Power BI hitelesítő adatait, és válassza ki **bejelentkezés**.  
+3. Adja meg a Power BI érvényes hitelesítő adatait, és válassza ki **jelentkezzen be a**.  
 
-    ![Valós idejű irányítópulton app bejelentkezési ablak](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17a-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) 
+    ![Valós idejű irányítópult app bejelentkezési ablak](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17a-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) 
     
-4. Válassza ki **elfogadása**.
+4. Válassza ki az **Elfogadás** lehetőséget.
 
-    ![Valós idejű irányítópulton app végső bejelentkezési ablak](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17b-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) 
+    ![Valós idejű irányítópult app bejelentkezési ablaka](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17b-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) 
 
 >[!NOTE] 
->Ha azt szeretné, a Power BI adatkészlet kiüríteni, hajtható végre a "flushdata" paraméterrel RealtimeDashboardApp. 
+>Ha azt szeretné, a Power BI adatkészletében kiüríteni, hajtsa végre a RealtimeDashboardApp "flushdata" paraméterrel. 
 
     RealtimeDashboardApp.exe -flushdata
 
 
-### <a name="batch-analysis"></a>Kötegelt elemzés
-Itt az célja, hogy hogyan Contoso motorok használja az Azure számítási képességekre hasznosítására big Data típusú adatok megjelenítése. Ezek az adatok tárja fel a vezetői minták, a használati viselkedését és a vehicle egészségügyi részletes információkat. Ezek az információk lehetővé teszi:
+### <a name="batch-analysis"></a>Batch-elemzés
+Itt az célja, hogy hogyan Contoso Motors már használja az Azure-beli számítási funkcióit használja ki a big Data típusú adatok megjelenítése. Ezek az adatok tárja fel a részletes információk a környezetbarát minták, viselkedésébe és állapotát. Ez az információ lehetővé teszi:
 
-* A felhasználói élmény javításához, és teszi olcsóbb szokásait és tíz vezetői viselkedések vezetői szóló insights megadásával.
-* Ügyfelek, valamint a vezetői környezeteken üzleti döntéseket tartását és a legjobb minőségű termékek és szolgáltatások további proaktív módon.
+* A felhasználói élmény javítása érdekében, és adja meg olcsóbb és a vezetési szokásokat és tíz a környezetbarát viselkedés alapján.
+* Ismerje meg proaktív módon ügyfelek és a vezetési környezeteken szabályozzák az üzleti döntéseket hozhat, és adja meg a legjobb minőségű termékeket és szolgáltatásokat.
 
-Ebben a megoldásban a következő mérőszámokat célozzák meg:
+Ebben a megoldásban a következő metrikák célozzák meg:
 
-* **Agresszív viselkedését befolyásoló tényezők**: a modellek, helyek, vezetői feltételek és agresszív vezetői minták a dcu év idő trendjét azonosítja. Contoso motorok használhatja ezeket insights marketingkampányok új személyre szabott szolgáltatások és a használat alapú biztosítási.
-* **Tíz vezetői viselkedés**: azonosítja a trend a modellek, helyek, vezetői feltételeket, és idő év dcu tíz vezetői mintáról olvashat. Contoso motor ezeket a marketingkampányok insights segítségével bevezetni új funkciókat és költséghatékony és egyszerűsített-környezet vezetői szokásait illesztőprogramjait proaktív jelentése.
-* **Modellek visszahívása**: által végrehajtott az anomáliadetektálási észlelési gépi tanulási kísérlet visszahívások igénylő modelljeit azonosítja.
+* **Agresszív viselkedés vezetési**: azonosítja a trendjét a modelleket, helyek, vezetői feltételek és idő év következtetések levonásához agresszív környezetbarát mintáknak megfelelően. Contoso Motors ezek insights segítségével a marketingkampányok új személyre szabott szolgáltatások és a használat alapú biztosítási.
+* **Tíz a környezetbarát viselkedés**: azonosítja a modelleket, helyek, vezetői feltételek és idő év tíz a környezetbarát minták elemzése trendjét. Contoso Motors ezeket a marketingkampányokban insights segítségével vezeti be új szolgáltatásokat és a proaktív jelentő illesztőprogramjait költséghatékony és a környezetbarát vezetési szokásokat.
+* **Modellek visszahívása**: visszaírás által a rendellenességek észlelése a machine learning-kísérlet modellezést igénylő modelleken azonosítja.
 
-Vizsgáljuk meg a fenti metrikák részleteit.
+Vizsgáljuk meg ezeket a metrikákat részleteit.
 
-#### <a name="aggressive-driving-behavior-patterns"></a>**Agresszív vezetői viselkedés minták**
+#### <a name="aggressive-driving-behavior-patterns"></a>**Agresszív környezetbarát viselkedési mintáinak**
 
-A particionált vehicle jelek és diagnosztikai adatokat AggresiveDrivingPatternPipeline, ahogy az az alábbi munkafolyamat dolgoznak. Hive a modelleket, hely, vehicle, üzemi és más paramétereket, amelyeket agresszív vezetői minták meghatározására szolgál.
+A particionált jármű jelek és diagnosztikai adatok feldolgozása történik AggresiveDrivingPatternPipeline, ahogyan az az alábbi munkafolyamat. Hive a modellek, hely, jármű, üzemi és más paramétereket, amelyeket agresszív környezetbarát minták meghatározására szolgál.
 
-![Agresszív vezetői minta munkafolyamat](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig18-vehicle-telematics-aggressive-driving-pattern.png) 
+![Agresszív környezetbarát minta munkafolyamat](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig18-vehicle-telematics-aggressive-driving-pattern.png) 
 
-***Agresszív vezetői minta Hive-lekérdezések***
+***Agresszív környezetbarát minta Hive-lekérdezés***
 
-A Hive parancsfájl aggresivedriving.hql agresszív vezetői feltétel minták elemzésére használatos. A letöltött zip-fájl, a \demo\src\connectedcar\scripts mappában található. 
+A Hive-parancsfájl aggresivedriving.hql agresszív környezetbarát feltétel mintáinak elemzése szolgál. A letöltött zip-fájlban \demo\src\connectedcar\scripts mappában található. 
 
     DROP TABLE IF EXISTS PartitionedCarEvents; 
     CREATE EXTERNAL TABLE PartitionedCarEvents
@@ -468,22 +468,22 @@ A Hive parancsfájl aggresivedriving.hql agresszív vezetői feltétel minták e
     where transmission_gear_position IN ('fourth', 'fifth', 'sixth', 'seventh', 'eight') AND brake_pedal_status = '1' AND speed >= '50'
 
 
-A parancsfájl fékezés nagy sebességű minták alapján reckless/agresszív vezetői viselkedés a vehicle átviteli fogaskerék pozícióját, berendezés tartásához lehetőleg keveset állapotát és sebesség kombinációját használja. 
+A szkript egy jármű átviteli fogaskerék pozícióját, berendezés kerékpárok állapotát és sebesség kombinációja alapján nagy sebességű minták fékezés reckless/agresszív környezetbarát viselkedés észlelését. 
 
-Miután a folyamat sikeres végrehajtása során, lásd: a tárfiók a connectedcar tárolóban hozott létre a következő partíciókat:
+A folyamat sikeres végrehajtása után a következő partíciókhoz létrehozott storage-fiókjában az connectedcar tároló alatt jelenik meg:
 
-![AggressiveDrivingPatternPipeline kimeneti](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig19-vehicle-telematics-aggressive-driving-pattern-output.png) 
+![AggressiveDrivingPatternPipeline kimenet](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig19-vehicle-telematics-aggressive-driving-pattern-output.png) 
 
 
-#### <a name="fuel-efficient-driving-behavior-patterns"></a>**Tíz vezetői viselkedés minták**
+#### <a name="fuel-efficient-driving-behavior-patterns"></a>**Tíz a környezetbarát viselkedési mintáinak**
 
-A particionált vehicle jelek és diagnosztikai adatokat FuelEfficientDrivingPatternPipeline, ahogy az az alábbi munkafolyamat dolgoznak. Hive a modellek, a helyet, a vehicle, a üzemi és a más tulajdonságokat, amelyeket tíz vezetői minták meghatározására szolgál.
+A particionált jármű jelek és diagnosztikai adatok feldolgozása történik FuelEfficientDrivingPatternPipeline, ahogyan az az alábbi munkafolyamat. Hive a modellek, hely, jármű, üzemi és egyéb tulajdonságok, amelyeket tíz a környezetbarát minták meghatározására szolgál.
 
-![Tíz vezetői minták](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig19-vehicle-telematics-fuel-efficient-driving-pattern.png) 
+![Tíz a környezetbarát minták](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig19-vehicle-telematics-fuel-efficient-driving-pattern.png) 
 
-***Tíz vezetői minta Hive-lekérdezések***
+***Tíz környezetbarát minta Hive-lekérdezés***
 
-A Hive parancsfájl fuelefficientdriving.hql tíz vezetői feltétel minták elemzésére használatos. A letöltött zip-fájl, a \demo\src\connectedcar\scripts mappában található. 
+Tíz a környezetbarát feltétel mintáinak elemzése a Hive-parancsfájl fuelefficientdriving.hql szolgál. A letöltött zip-fájlban \demo\src\connectedcar\scripts mappában található. 
 
     DROP TABLE IF EXISTS PartitionedCarEvents; 
     CREATE EXTERNAL TABLE PartitionedCarEvents
@@ -543,29 +543,29 @@ A Hive parancsfájl fuelefficientdriving.hql tíz vezetői feltétel minták ele
     where transmission_gear_position IN ('fourth', 'fifth', 'sixth', 'seventh', 'eight') AND parking_brake_status = '0' AND brake_pedal_status = '0' AND speed <= '60' AND accelerator_pedal_position >= '50'
 
 
-A parancsfájl a vehicle átviteli fogaskerék pozíció kombinációját használja, berendezés tartásához lehetőleg keveset állapot, a sebesség és a gyorsító pedál fékezés, a gyorsítás tíz vezetői viselkedését észlelésére és minták sebessége. 
+A parancsfájl egy jármű átviteli fogaskerék pozíció kombinációját használja, a berendezés kerékpárok állapot, a sebesség és a gyorsító pedál pozíció alapján gyorsítás, fékezés, tíz környezetbarát viselkedés észlelését, és gyorsan mintákat. 
 
-Miután a folyamat sikeres végrehajtása során, lásd: a tárfiók a connectedcar tárolóban hozott létre a következő partíciókat:
+A folyamat sikeres végrehajtása után a következő partíciókhoz létrehozott storage-fiókjában az connectedcar tároló alatt jelenik meg:
 
-![FuelEfficientDrivingPatternPipeline kimeneti](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig20-vehicle-telematics-fuel-efficient-driving-pattern-output.png) 
+![FuelEfficientDrivingPatternPipeline kimenet](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig20-vehicle-telematics-fuel-efficient-driving-pattern-output.png) 
 
-**Modell előrejelzéseket visszahívása**
+**Modell-előrejelzéseket visszahívása**
 
-A gépi tanulási kísérlet kiosztásakor és a megoldás központi telepítésének részeként webszolgáltatásként közzé. A kötegelt pontozás végpont szolgál a munkafolyamatban. A data factory kapcsolt szolgáltatásként regisztrálva van, a data factory kötegelt pontozási tevékenység segítségével operationalized.
+A machine learning-kísérlet kiépített és közzététele webszolgáltatásként, amely a megoldás központi telepítésének részeként. A kötegelt pontozási végpontjához használatban van ebben a munkafolyamatban. A data factoryhoz társított szolgáltatásként regisztrált, és üzembe helyezte azt a data factory a kötegelt pontozási tevékenység használatával.
 
 ![Machine learning-végpont](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig21-vehicle-telematics-machine-learning-endpoint.png) 
 
-A regisztrált kapcsolódó szolgáltatás DetectAnomalyPipeline szerepel az anomáliadetektálási észlelési modell segítségével az adatok pontozása céljából. 
+A regisztrált kapcsolódó szolgáltatáshoz a rendellenességek észlelése modell segítségével az adatok pontozásához DetectAnomalyPipeline szerepel. 
 
-![Machine learning kötegelt pontozási tevékenység adat](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig22-vehicle-telematics-aml-batch-scoring.png)  
+![Machine learning kötegelt pontozási tevékenységek a data factoryban](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig22-vehicle-telematics-aml-batch-scoring.png)  
 
-Néhány lépést, hogy a kötegelt pontozás webszolgáltatás is operationalized történik az adatok előkészítése az adatcsatorna. 
+Néhány lépést, hogy azt is kell üzembe helyezte azt a kötegelt pontozási webszolgáltatás ebben az adatcsatornában az adat-előkészítési történik. 
 
-![DetectAnomalyPipeline visszaírási előrejelzés](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig23-vehicle-telematics-pipeline-predicting-recalls.png)  
+![A visszaírási előrejelzési DetectAnomalyPipeline](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig23-vehicle-telematics-pipeline-predicting-recalls.png)  
 
-***Az anomáliadetektálási észlelési Hive-lekérdezések***
+***Rendellenességek észlelése Hive-lekérdezés***
 
-A pontozási befejezése után egy HDInsight tevékenység feldolgozza és összesíti az adatokat, amelyek a modell kategóriába sorolt rendellenességek észlelését. A modell 0.60 vagy magasabb valószínűségét jelző pontszámot használ.
+Ha a pontozás befejeződött, egy HDInsight-tevékenység feldolgozza, és összesíti az adatokat, amelyek a modell kategorizált megtalálható rendellenességek formájában. A modell egy valószínűségi pontszámának 0.60 vagy magasabb használ.
 
     DROP TABLE IF EXISTS CarEventsAnomaly; 
     CREATE EXTERNAL TABLE CarEventsAnomaly 
@@ -625,53 +625,53 @@ A pontozási befejezése után egy HDInsight tevékenység feldolgozza és össz
     where RecallLabel = '1' AND RecallProbability >= '0.60'
 
 
-Miután a folyamat sikeres végrehajtása során, lásd: a tárfiók a connectedcar tárolóban hozott létre a következő partíciókat:
+A folyamat sikeres végrehajtása után a következő partíciókhoz létrehozott storage-fiókjában az connectedcar tároló alatt jelenik meg:
 
-![DetectAnomalyPipeline kimeneti](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig24-vehicle-telematics-detect-anamoly-pipeline-output.png) 
+![DetectAnomalyPipeline kimenet](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig24-vehicle-telematics-detect-anamoly-pipeline-output.png) 
 
 ## <a name="publish"></a>Közzététel
 
-### <a name="real-time-analysis"></a>Valós idejű elemzés
-Egy kimeneti esemény hub-példány egy Stream Analytics-feladat lekérdezése közzéteszi az eseményeket. 
+### <a name="real-time-analysis"></a>Valós idejű elemzése
+A lekérdezések a Stream Analytics-feladat az egyik tesz közzé az eseményeket egy kimeneti event hubs-példánnyal. 
 
-![A Stream Analytics-feladat közzétett egy kimeneti esemény hub-példány](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig25-vehicle-telematics-stream-analytics-job-publishes-output-event-hub.png)
+![Stream Analytics-feladat közzétett egy kimeneti event hubs-példánnyal](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig25-vehicle-telematics-stream-analytics-job-publishes-output-event-hub.png)
 
-A következő Stream Analytics-lekérdezés a kimeneti event hub példányhoz közzétételére szolgál:
+A következő Stream Analytics-lekérdezés a kimeneti event hubs-példánnyal közzétételére szolgál:
 
-![Stream Analytics lekérdezési közzétételére a kimeneti esemény hub-példány](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig26-vehicle-telematics-stream-analytics-query-publish-output-event-hub.png)
+![Stream Analytics-lekérdezés a kimeneti event hubs-példánnyal közzététele](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig26-vehicle-telematics-stream-analytics-query-publish-output-event-hub.png)
 
-Ez az események streamjét a RealTimeDashboardApp, amely megtalálható a megoldás által felhasznált. Ez az alkalmazás gépi tanulási kérés-válasz webes szolgáltatás valós idejű pontozó használja. Az eredményül kapott adatokat a Power BI adatkészletben felhasználásra teszi közzé. 
+Az események a stream a RealTimeDashboardApp a megoldás részét képező használja fel. Ez az alkalmazás a machine learning-webszolgáltatást kérés-válasz valós idejű pontozási használ. Az így kapott adatok a Power BI-adatkészletbe felhasználásra tesz közzé. 
 
-### <a name="batch-analysis"></a>Kötegelt elemzés
-A kötegelt és a valós idejű feldolgozással eredményeit a rendszer közzéteszi az Azure SQL Database táblák felhasználásra. Az SQL server, az adatbázis és a táblázatok jönnek létre automatikusan a telepítési parancsfájl részeként. 
+### <a name="batch-analysis"></a>Batch-elemzés
+A kötegelt és valós idejű feldolgozás eredményét az Azure SQL Database-táblák felhasználásra kerülnek közzétételre. Az SQL server, az adatbázis és a táblázatok jönnek létre automatikusan a telepítési parancsfájl részeként. 
 
-A kötegelt feldolgozásra eredmények az adatok adatközpont munkafolyamat lesz másolva.
+A kötegelt feldolgozási eredmények az Adatközpont munkafolyamat lesz másolva.
 
-![Kötegfeldolgozási adatok adatközpont munkafolyamat másolva eredmények](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig27-vehicle-telematics-batch-processing-results-copy-to-data-mart.png)
+![Kötegelt feldolgozás az Adatközpont munkafolyamat másolt eredmények](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig27-vehicle-telematics-batch-processing-results-copy-to-data-mart.png)
 
-A Stream Analytics-feladat az adatközponthoz van közzétéve.
+A Stream Analytics-feladat az adatpiac van közzétéve.
 
-![A Stream Analytics-feladat közzéteszi az Adatközpont](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig28-vehicle-telematics-stream-analytics-job-publishes-to-data-mart.png)
+![Stream Analytics-feladat közzétett adatpiac](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig28-vehicle-telematics-stream-analytics-job-publishes-to-data-mart.png)
 
-Az adatok adatközpont beállítás a Stream Analytics-feladat van.
+Az adatok adatközpont érték a Stream Analytics-feladatban.
 
 ![A Stream Analytics-feladatban Data adatközpont beállítása](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig29-vehicle-telematics-data-mart-setting-in-stream-analytics-job.png)
 
 ## <a name="consume"></a>Felhasználás
-A Power BI ad a megoldás részletes irányítópult valós idejű adatok és a prediktív elemzés képi megjelenítések. 
+A Power BI egy informatív irányítópulton biztosít a megoldás a valós idejű adatok és prediktív elemzési vizualizációt. 
 
-A végső irányítópult ebben a példában néz ki:
+Az utolsó irányítópult példához hasonlóan néz ki:
 
-![A Power BI-irányítópulton](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig30-vehicle-telematics-powerbi-dashboard.png)
+![Power BI-irányítópult](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig30-vehicle-telematics-powerbi-dashboard.png)
 
 ## <a name="summary"></a>Összegzés
-Ez a dokumentum a Vehicle Telemetriai Analytics megoldás részletes Lehatolás tartalmaz. A lambda architektúra mintát használja a valós idejű és kötegelt elemzés előrejelzéseket és műveletek. Ebben a mintában azokat a használati esetek gyakran használt adatok elérési útja (valós időben) igénylő vonatkozik és az elemzések cold elérési útja (kötegelt). 
+Ez a dokumentum tartalmazza a Vehicle Telemetriai Analytics megoldás részletes részletezése. A lambda architektúra a minta használható valós idejű és kötegelt analytics, az előrejelzéseket és műveleteket. Gyakori elérésű útvonal (valós idejű) igénylő alkalmazási helyzetek széles skáláját vonatkozik ez a minta és a ritka elérésű útvonal (kötegelt) analytics. 
 
 ### <a name="references"></a>Referencia
 
 * [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 * [Azure Data Factory](https://azure.microsoft.com/documentation/learning-paths/data-factory/)
-* [Az Azure Event Hubs SDK a streameket](../../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
-* [A mozgás képességek az Azure Data Factory adatok](../../data-factory/copy-activity-overview.md)
-* [Az Azure Data Factory .NET tevékenység](../../data-factory/transform-data-using-dotnet-custom-activity.md)
-* [Az Azure Data Factory .NET tevékenység használt mintaadatok létrehozása a Visual Studio megoldás](http://go.microsoft.com/fwlink/?LinkId=717077) 
+* [Streamek feldolgozása az Azure Event Hubs SDK](../../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+* [Az Azure Data Factory adat adatátviteli szolgáltatás](../../data-factory/copy-activity-overview.md)
+* [Az Azure Data Factory .NET-tevékenység](../../data-factory/transform-data-using-dotnet-custom-activity.md)
+* [Azure Data Factory .NET-tevékenység a Visual Studio megoldásnak a mintaadatok létrehozása](https://go.microsoft.com/fwlink/?LinkId=717077) 
