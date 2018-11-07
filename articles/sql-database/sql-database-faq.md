@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 7bb692735cb3541fb05b2c39dd7325fa74a00034
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: c9b343bba59776ca735fa5c2cbddf03ec5c92b47
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232205"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242823"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>Az SQL Database – gyakori kérdések (GYIK)
 
@@ -27,7 +27,7 @@ A jelenlegi verzió az SQL Database V12-es. Verzió V11 visszavontuk.
 
 ## <a name="what-is-the-sla-for-sql-database"></a>Mit jelent az SLA-t az SQL Database
 
-Garantáljuk, hogy az idő legalább 99,99 %, a, hogy rendelkezik a Microsoft Azure SQL Database és az internetes átjárónkhoz között a szolgáltatási szintben függetlenül. 0,01 % javítások, frissítések és feladatátvétel van fenntartva. További információkért lásd: [SLA](http://azure.microsoft.com/support/legal/sla/). Azure SQL Database a rendelkezésre állási architektúrával kapcsolatos információk: [magas rendelkezésre állást és az Azure SQL Database](sql-database-high-availability.md).
+Garantáljuk, hogy az idő legalább 99,99 %, a, hogy rendelkezik a Microsoft Azure SQL Database és az internetes átjárónkhoz között a szolgáltatási szintben függetlenül. 0,01 % javítások, frissítések és feladatátvétel van fenntartva. További információkért lásd: [SLA](https://azure.microsoft.com/support/legal/sla/). Azure SQL Database a rendelkezésre állási architektúrával kapcsolatos információk: [magas rendelkezésre állást és az Azure SQL Database](sql-database-high-availability.md).
 
 ## <a name="can-i-control-when-patching-downtime-occurs"></a>Szabályozhatom javítás leállás esetén
 

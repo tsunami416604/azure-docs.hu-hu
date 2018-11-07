@@ -7,18 +7,18 @@ ms.date: 6/13/2018
 ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 7456785815dbefb2436713814965d90ba0e789ee
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 1be05ac7216a65922927b94d1cc4ba2a893433b2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39037269"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250985"
 ---
 # <a name="resource-manager-vcpu-quota-increase-requests"></a>Erőforrás-kezelő vCPU-kvóta növelésére irányuló kérelmekről
 
 Erőforrás-kezelő vCPU-kvóták a rendszer érvényesíti a régió szintjén, és a termékcsalád Termékváltozat-szint.
-Tudjon meg többet a módját a kvóták érvényesítése történik meg a [Azure-előfizetés- és Szolgáltatáskorlátok](http://aka.ms/quotalimits) lapot.
-Termékváltozat-családokra tájékozódhat, előfordulhat, hogy összehasonlítja költség- és a a [Virtual Machines díjszabása](http://aka.ms/pricingcompute) lapot.
+Tudjon meg többet a módját a kvóták érvényesítése történik meg a [Azure-előfizetés- és Szolgáltatáskorlátok](https://aka.ms/quotalimits) lapot.
+Termékváltozat-családokra tájékozódhat, előfordulhat, hogy összehasonlítja költség- és a a [Virtual Machines díjszabása](https://aka.ms/pricingcompute) lapot.
 
 Ha szeretné növelni, alatt látható részletes utasítások segítségével hozzon létre egy támogatási kérést az Azure "használati + kvóta" keresztül az Azure portálon elérhető panelje. 
 
@@ -28,7 +28,7 @@ Ha szeretné növelni, alatt látható részletes utasítások segítségével h
 
    ![Előfizetések](./media/resource-manager-core-quotas-request/subscriptions.png)
 
-2. Válassza ki az előfizetést, amelyhez megemelt kvótához kell.
+2. Válassza ki az előfizetést, amelynek a kvótáját emelni szeretné.
 
    ![Előfizetés kiválasztása](./media/resource-manager-core-quotas-request/select-subscription.png)
 

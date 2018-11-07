@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/21/2018
 ms.author: michaelhauss
 ms.component: blobs
-ms.openlocfilehash: 35cfa36aba8042bcc753c1005c8fd8dbcdb70e79
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 43e9acb79b363e8f2cb00f6a4676d450c097bf3e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397672"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261995"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Az IOS-es Blob storage használata
 
@@ -382,8 +382,8 @@ Most, hogy megismerte a Blob Storage használata az iOS, az alábbi hivatkozáso
 * [IOS-hez készült Azure Storage ügyféloldali kódtára](https://github.com/azure/azure-storage-ios)
 * [Az Azure Storage iOS dokumentációja](http://azure.github.io/azure-storage-ios/)
 * [Az Azure Storage-szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Az Azure Storage csapat blogja](http://blogs.msdn.com/b/windowsazurestorage)
+* [Az Azure Storage csapat blogja](https://blogs.msdn.com/b/windowsazurestorage)
 
-Ha ez a kódtár kapcsolatban kérdése van, nyugodtan közzététele a [MSDN Azure-fórum](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) vagy [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files).
+Ha ez a kódtár kapcsolatban kérdése van, nyugodtan közzététele a [MSDN Azure-fórum](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) vagy [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files).
 Ha az Azure Storage szolgáltatási javaslataikat, helyezzen el bejegyzést [Azure Storage visszajelzési](https://feedback.azure.com/forums/217298-storage/).
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: e6e2c0b82f306e399454c1672c56e2933e3f1158
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: eed970d46c8a895001ce0a6d7d7f37acf6c02a55
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43040865"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249200"
 ---
 # <a name="power-bi-workspace-collections-faq"></a>A Power BI munkaterületi gyűjtemények – gyakori kérdések
 
@@ -61,7 +61,7 @@ Tekintse meg szolgáltatás részleteiről a a Power BI munkaterületi gyűjtem�
 Igen. A meglévő Azure-előfizetés használatával üzembe helyezhető és a Microsoft Power BI munkaterületi gyűjtemények szolgáltatás használata.
 
 ## <a name="does-my-application-end-user-need-a-power-bi-license"></a>Nem a saját alkalmazás végfelhasználói Power BI-licencre van szüksége?
-Nem. Az alkalmazás végfelhasználók számára nem szükséges, vételi vagy a Power BI-előfizetés külön-külön az alkalmazáson belüli adatvizualizációkat eléréséhez. A Power BI-Munkaterületcsoportok modellben, az alkalmazás szolgáltatója történik a szolgáltatás révén az Azure-használati díjában. Tekintse meg a [díjszabási és licencelési lap](http://go.microsoft.com/fwlink/?LinkId=760527).
+Nem. Az alkalmazás végfelhasználók számára nem szükséges, vételi vagy a Power BI-előfizetés külön-külön az alkalmazáson belüli adatvizualizációkat eléréséhez. A Power BI-Munkaterületcsoportok modellben, az alkalmazás szolgáltatója történik a szolgáltatás révén az Azure-használati díjában. Tekintse meg a [díjszabási és licencelési lap](https://go.microsoft.com/fwlink/?LinkId=760527).
 
 ## <a name="how-does-user-authentication-work-with-power-bi-workspace-collections"></a>Hogyan működik a felhasználói hitelesítés a Power BI munkaterületi gyűjtemények?
 A Power BI munkaterületi gyűjtemények szolgáltatás alkalmazási jogkivonatok használ a hitelesítéshez és engedélyezéshez explicit végfelhasználói hitelesítés helyett. Az alkalmazás-Jogkivonatára modellben az alkalmazás kezeli a hitelesítési és engedélyezési a végfelhasználók számára. Majd ha szükséges, az alkalmazás létrehozása
@@ -80,7 +80,7 @@ A fejlesztők/alkalmazottak dolgozik, vagy az alkalmazása létrehozásához ren
 Keresse fel a [Power BI-Munkaterületcsoportok dokumentációs oldalon](get-started.md). Akkor is naprakész információk a szolgáltatásról funkcionáló a [Power BI-blog](https://powerbi.microsoft.com/blog/) vagy a Power BI fejlesztői központ következő dev.powerbi.com. Kérdéseket is feltehet [Stackoverflow](http://stackoverflow.com/questions/tagged/powerbi).
 
 ## <a name="how-do-i-get-started"></a>Hogyan kezdhetek hozzá?
-Ismerkedhet meg most ingyenesen! Ha rendelkezik Azure-előfizetéssel, mostantól telepíthet a Power BI-Munkaterületcsoportok az Azure Portalról közvetlenül. Is létrehozhat a [ingyenes Azure-fiók](https://azure.microsoft.com/free/). Miután a Power BI munkaterületi gyűjtemények szolgáltatás már kiépített, egyszerűen közvetlenül a Power BI REST API-k használata, vagy használja a fejlesztő SDK elérhető [GitHub](http://go.microsoft.com/fwlink/?LinkID=746472). Minták biztosítják, hogy miként lehet hasznosítani a fejlesztő SDK-t a.
+Ismerkedhet meg most ingyenesen! Ha rendelkezik Azure-előfizetéssel, mostantól telepíthet a Power BI-Munkaterületcsoportok az Azure Portalról közvetlenül. Is létrehozhat a [ingyenes Azure-fiók](https://azure.microsoft.com/free/). Miután a Power BI munkaterületi gyűjtemények szolgáltatás már kiépített, egyszerűen közvetlenül a Power BI REST API-k használata, vagy használja a fejlesztő SDK elérhető [GitHub](https://go.microsoft.com/fwlink/?LinkID=746472). Minták biztosítják, hogy miként lehet hasznosítani a fejlesztő SDK-t a.
 
 ## <a name="see-also"></a>Lásd még
 

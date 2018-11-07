@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: ccompy
-ms.openlocfilehash: 5f2dd31488ae61bec061a81986a208bd328bf39b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ce0123528b3fb2454d8b83d59b5916363ae0e944
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093620"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251576"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service-környezet sémákra
 
@@ -28,7 +28,7 @@ Nincsenek több bejövő függőséggel, amely az ASE rendelkezik. A bejövő ke
 
 A kimenő ASE-függőségek szinte teljesen teljes tartományneveket, amely nem rendelkezik statikus címeket mögöttük van definiálva. A statikus címek hiánya, az azt jelenti, hogy a hálózati biztonsági csoportok (NSG) való zárolását, így a kimenő forgalmat az ASE nem használható. A címeket, hogy egy nem szabályok alapján a jelenlegi felbontás beállítása és NSG-k létrehozásához használja, amely elég gyakran módosítása. 
 
-A megoldás a kimenő címek védelme érdekében adott tűzfal eszköz, amely a kimenő forgalmat a tartománynevek alapján szabályozhatja a rejlik. Az Azure-hálózatot is csapata új hálózati berendezések az Azure-tűzfal nevű előzetes állapotúra állította. Az Azure-tűzfal csoportkezelést kimenő forgalom a HTTP és HTTPS-forgalmat a cél DNS-neve alapján alkalmas állapotban.  
+A megoldás a kimenő címek védelme érdekében adott tűzfal eszköz, amely a kimenő forgalmat a tartománynevek alapján szabályozhatja a rejlik. Az Azure tűzfal korlátozhatja a kimenő HTTP és HTTPS-forgalom alapján a célkiszolgáló teljes Tartománynevét.  
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>Az ASE Azure tűzfal konfigurálása 
 
@@ -36,11 +36,11 @@ Az ASE az Azure-tűzfalon a kimenő forgalom zárolni a lépések a következők
 
 1. Hozzon létre egy Azure-tűzfal a virtuális hálózathoz, ha az ASE-t, vagy lesz. [Az Azure tűzfal eszközplatformokon](https://docs.microsoft.com/azure/firewall/)
 2. Az Azure tűzfal felhasználói felületén válassza ki az App Service teljes Tartományneve Környezetcímke
-3. Hozzon létre egy útválasztási táblázatot, a kezelési címek [App Service Environment-környezet kezelési címeit]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) a következő ugrási típusú internettel. Az útvonal táblabejegyzéseket aszimmetrikus útválasztási problémák elkerülése érdekében van szükség. 
-4. Adja hozzá a következő ugrási típusú internettel IP cím lekérdezésfüggőségek az alábbiak IP-cím függőségeinek útvonalakat. 
-5. Adjon hozzá egy útvonalat a 0.0.0.0/0 útvonalat táblázat tartalmazza a következő Ugrás az Azure hálózati készüléken folyamatban
-6. Szolgáltatásvégpontok Azure SQL és az Azure Storage az ASE alhálózat létrehozása
-7. Az útválasztási táblázatot az ASE-alhálózattal létrehozott hozzárendelése  
+3. Hozzon létre egy útválasztási táblázatot, a kezelési címek [App Service Environment-környezet kezelési címeit]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) a következő ugrási típusú internettel. Az útvonal táblabejegyzéseket aszimmetrikus útválasztási problémák elkerülése érdekében van szükség.
+4. Adja hozzá a következő ugrási típusú internettel IP cím lekérdezésfüggőségek az alábbiak IP-cím függőségeinek útvonalakat.
+5. Adjon hozzá egy útvonalat a 0.0.0.0/0 útvonaltáblája a következő Ugrás az Azure-tűzfal folyamatban van.
+6. Hozzon létre Szolgáltatásvégpontok Azure SQL és az Azure Storage, az ASE-alhálózattal.
+7. Rendelje hozzá az útvonaltáblát az ASE-alhálózattal létrehozott.
 
 ## <a name="application-traffic"></a>Alkalmazás-forgalom 
 

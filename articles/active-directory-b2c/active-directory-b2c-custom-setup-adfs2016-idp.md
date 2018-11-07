@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/20/2018
+ms.date: 11/05/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6f7fced5163476dc1de866474484f98d546d1901
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 1def5686933a971b1192ec58bc72d64cbc5e8931
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945722"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219324"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>AD FS egyéni szabályzatok használatával az Azure Active Directory B2C egy SAML-identitásszolgáltató hozzáadása
 
@@ -64,6 +64,7 @@ Definiálhat egy AD FS-fiókot, egy jogcímszolgáltatótól hozzáadásával, h
           <Metadata>
             <Item Key="WantsEncryptedAssertions">false</Item>
             <Item Key="PartnerEntity">https://your-ADFS-domain/federationmetadata/2007-06/federationmetadata.xml</Item>
+            <Item Key=" XmlSignatureAlgorithm">Sha256</Item>
           </Metadata>
           <CryptographicKeys>
             <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_ADFSSamlCert"/>
@@ -165,6 +166,15 @@ Nyisson meg egy böngészőt, és keresse meg az URL-címet. Győződjön meg r�
 9. Válassza ki **szabály hozzáadása**.  
 10. A **Jogcímszabály-sablon**válassza **LDAP attribútumok küldése jogcímekként**.
 11. Adjon meg egy **Jogcímszabály neve**. Az a **attribútumtár**válassza **válassza ki az Active Directory**, adja hozzá a következő jogcímeket, majd kattintson a **Befejezés** és **OK**.
+
+    | LDAP attrubute | A kimenő jogcím típusa |
+    | -------------- | ------------------- |
+    | Egyszerű-felhasználónév | userPricipalName |
+    | vezetéknév; | family_name |
+    | A megadott név | given_name |
+    | -Cím | e-mail |
+    | Megjelenítendő neve | név |
+    
 12.  A tanúsítvány típusa alapján, szükség lehet a KIVONATOLÓ algoritmus beállítása. A függő entitás megbízhatósági (B2C bemutató) tulajdonságai ablakban válassza ki a **speciális** lapon, és módosítsa a **biztonságos kivonatoló algoritmus** való `SHA-1` vagy `SHA-256`, és kattintson a **Ok**.  
 13. A Kiszolgálókezelőben válasza **eszközök**, majd válassza ki **AD FS felügyeleti**.
 14. Válassza ki a függő entitás megbízhatóságához hozott létre, jelölje be **összevonási metaadatokat frissítés**, és kattintson a **frissítés**. 

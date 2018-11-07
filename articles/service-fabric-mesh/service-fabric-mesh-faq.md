@@ -9,12 +9,12 @@ ms.date: 06/25/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: d0ae7fbb22f6d98662f83968158182d447a75394
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: b32af29a123ce4d070e1bb68b5a43ba6d0d2c5e1
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39501967"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218474"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Gyakori kérdések Service Fabric-háló
 Az Azure Service Fabric Mesh egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a fejlesztők számára a mikroszolgáltatás-alkalmazások üzembe helyezését a virtuális gépek, a tárolók és a hálózat kezelése nélkül. Ez a cikk gyakori kérdésekre adott válaszokat tartalmaz.
@@ -27,24 +27,50 @@ Kérdések, válaszok a Microsoft mérnökei és a problémák jelentése a [ser
 
 **Az előzetes verzióra való részvételnek mennyibe kerül?**
 
-Nem számítunk fel díjat a háló előzetes alkalmazások vagy a tárolók üzembe helyezése. Azonban értékekeit törli az erőforrások üzembe helyezése, és nem hagyhatja őket fut, kivéve, ha aktív tesztelés.
+Nem számítunk fel díjat üzembe alkalmazások vagy a háló előzetes tárolók jelenleg. Azonban javasoljuk, hogy törli az erőforrások üzembe helyezése, és nem hagyhatja őket fut, kivéve, ha folyamatosan tesztelt őket.
 
 **A magok és a RAM-MAL számát kvóta korlátozva van?**
 
-Igen, a kvóták minden egyes előfizetés esetében:
+Igen, minden egyes előfizetés esetén a kvóták módon vannak beállítva:
 
 - Alkalmazások – 5 száma 
-- Alkalmazás – 12 magok száma 
+- Magok száma az alkalmazás – 12 
 - Alkalmazásonkénti - 48 GB memória teljes Méretét 
-- A hálózati bejövő és kimenő végpontok – 5 száma  
-- Azure kötetek számát is csatlakoztatható - 10-es 
+- A hálózati bejövő és kimenő végpontok – 5  
+- Az Azure-köteteket tartalmazza csatolhat a szolgáltatáskéréshez - 10-es 
 - Szolgáltatás replikák – 3 száma 
-- 4 mag, 16 GB RAM a legnagyobb tárolót telepíthet korlátozódik.
+- 4 mag, 16GB RAM a legnagyobb tárolót telepíthet korlátozódik.
 - 0,5 mag, legfeljebb 6 magok lépésekben a tárolókat a részleges magok foglalhat.
 
-**Hagyhatja éjjelente fut az alkalmazásom?**
+**Mennyi ideig hagyhatja üzembe helyezve az alkalmazásom?**
 
-Igen, akkor is, azonban, törölje az erőforrások üzembe helyezése, és nem hagyhatja őket arra biztatjuk fut, kivéve, ha aktív tesztelés. Ez a szabályzat a későbbiekben változhat, és ha vannak veszteségként törlődhetnek az erőforrásai.
+Mi jelenleg csak korlátozott két nap az alkalmazás teljes élettartama. Ez az az ingyenes, az előzetes lefoglalt Processzormagok használata maximalizálása érdekében. Ennek eredményeképpen csak engedélyezett futtatni egy adott üzemelő példánya folyamatosan 48 óra, amely törli a rendszer által ezen idő leteltével. Jelenik meg ez akkor fordulhat elő, ha ellenőrizheti, hogy a rendszer állítsa le a futó egy `az mesh app show` adja vissza, ha az Azure CLI-vel és ellenőrzése paranccsal `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
+
+Példa: 
+
+```cli
+chackdan@Azure:~$ az mesh app show --resource-group myResourceGroup --name helloWorldApp
+{
+  "debugParams": null,
+  "description": "Service Fabric Mesh HelloWorld Application!",
+  "diagnostics": null,
+  "healthState": "Ok",
+  "id": "/subscriptions/1134234-b756-4979-84re-09d671c0c345/resourcegroups/myResourceGroup/providers/Microsoft.ServiceFabricMesh/applications/helloWorldApp",
+  "location": "eastus",
+  "name": "helloWorldApp",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "myResourceGroup",
+  "serviceNames": [
+    "helloWorldService"
+  ],
+  "services": null,
+  "status": "Failed",
+  "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue.",
+  "tags": {},
+  "type": "Microsoft.ServiceFabricMesh/applications",
+  "unhealthyEvaluation": null
+}
+```
 
 ## <a name="supported-container-os-images"></a>Támogatott operációs rendszer tárolórendszerképek
 A következő operációs rendszer tárolórendszerképeket is használható, amikor a szolgáltatások üzembe helyezése.

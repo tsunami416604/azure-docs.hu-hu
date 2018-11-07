@@ -2,16 +2,16 @@
 title: Az Azure Application Gateway webalkalmazási tűzfal (WAF) bemutatása
 description: Ez a cikk a webalkalmazási tűzfal (WAF) áttekintést nyújt az Application Gateway számára
 services: application-gateway
-author: amsriva
+author: vhorne
 ms.service: application-gateway
-ms.date: 10/11/2018
+ms.date: 11/7/2018
 ms.author: amsriva
-ms.openlocfilehash: 10a67eab142287cf9303e54005b6b167e9890df0
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4b03065c59eed8f0d72e2724e60b6d8908518727
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068451"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219528"
 ---
 # <a name="web-application-firewall-waf"></a>Webalkalmazási tűzfal (WAF)
 
@@ -39,7 +39,7 @@ Az alábbiak az Application Gateway és a webalkalmazási tűzfal használatána
 
 * Valós idejű WAF-naplók segítségével követheti nyomon a webalkalmazást fenyegető támadásokat. A WAF-riasztások és -naplók nyomon követése, illetve a tendenciák kimutatása érdekében ezek a naplók integrálva vannak az [Azure Monitorral](../monitoring-and-diagnostics/monitoring-overview.md).
 
-* A WAF hamarosan az Azure Security Centerrel is integrálva lesz. Az Azure Security Center egyetlen központi helyen jeleníti meg minden Azure-erőforrás biztonsági állapotát.
+* WAF integrálva van az Azure Security Center. Az Azure Security Center egyetlen központi helyen jeleníti meg minden Azure-erőforrás biztonsági állapotát.
 
 ### <a name="customization"></a>Testreszabás
 
@@ -48,10 +48,10 @@ Az alábbiak az Application Gateway és a webalkalmazási tűzfal használatána
 ## <a name="features"></a>Szolgáltatások
 
 - SQL-injektálás elleni védelem
-- Webhelyek közötti, parancsprogramot alkalmazó támadások elleni védelem
-- Gyakori webes támadások (például parancsinjektálás, HTTP-kéréscsempészet, HTTP-válaszfelosztás és távolifájl-beszúrásos támadás) elleni védelem
+- Adatbázisközi hely webhelyközi védelme
+- Például parancsinjektálás, HTTP-kéréscsempészet, HTTP-válaszfelosztás és távolifájl-beszúrásos támadás gyakori webes támadások védelem
 - HTTP protokoll megsértése elleni védelem
-- HTTP protokollanomáliák (például hiányzó gazdagép-felhasználói ügynök és Accept (Elfogadás) fejlécek) elleni védelem
+- Elleni HTTP protokollanomáliák például hiányzó gazdagép-felhasználói ügynök, és fogadja el a fejlécek
 - Robotprogramok, webbejárók és képolvasók elleni védelem
 - Gyakori alkalmazások konfigurációs hibáinak észlelése (vagyis Apache, IIS stb.)
 
@@ -75,12 +75,12 @@ Az Application Gateway a következő két szabálykészletet támogatja: CRS 3.0
 A webalkalmazási tűzfal alapértelmezés szerint a CRS 3.0-s verziójával van előre konfigurálva, de a 2.2.9-es verzió használata mellett is dönthet. A CRS 3.0-s verziója esetén kevesebb hibás riasztással kell számolnia, mint a 2.2.9-es verziónál. A [szabályok igény szerinti testreszabására](application-gateway-customize-waf-rules-portal.md) is lehetősége van. A webalkalmazási tűzfal többek között a következő gyakori internetes biztonsági rések ellen nyújt védelmet:
 
 - SQL-injektálás elleni védelem
-- Webhelyek közötti, parancsprogramot alkalmazó támadások elleni védelem
-- Gyakori webes támadások (például parancsinjektálás, HTTP-kéréscsempészet, HTTP-válaszfelosztás és távolifájl-beszúrásos támadás) elleni védelem
+- Adatbázisközi hely webhelyközi védelme
+- Például parancsinjektálás, HTTP-kéréscsempészet, HTTP-válaszfelosztás és távolifájl-beszúrásos támadás gyakori webes támadások védelem
 - HTTP protokoll megsértése elleni védelem
-- HTTP protokollanomáliák (például hiányzó gazdagép-felhasználói ügynök és Accept (Elfogadás) fejlécek) elleni védelem
+- Elleni HTTP protokollanomáliák például hiányzó gazdagép-felhasználói ügynök, és fogadja el a fejlécek
 - Robotprogramok, webbejárók és képolvasók elleni védelem
-- Alkalmazások (vagyis Apache, IIS stb.) gyakori konfigurációs hibáinak észlelése
+- Gyakori alkalmazások konfigurációs hibáinak észlelése (vagyis Apache, IIS stb.)
 
 Szabályok és a hozzájuk tartozó védelmi megoldások részletesebb listáját lásd: [alapvető szabálykészletek](#core-rule-sets).
 

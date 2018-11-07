@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/25/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: fa7d0f98f8119ad34e0764423e99af4564f20387
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 8d351e41eac3c820b9295b3b5cf314428bebc746
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311926"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242993"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Az Azure AD Connect szinkronizálási szolgáltatás funkciók
 Az Azure AD Connect szinkronizálási szolgáltatás két összetevőből áll:
@@ -30,7 +30,7 @@ Az Azure AD Connect szinkronizálási szolgáltatás két összetevőből áll:
 
 Ez a témakör ismerteti a következő funkciói a **az Azure AD Connect szinkronizálási szolgáltatás** munka, és hogy hogyan konfigurálhat Windows PowerShell-lel.
 
-Ezek a beállítások szerint úgy vannak konfigurálva a [Azure Active Directory modul Windows Powershellhez készült](https://aka.ms/aadposh). Töltse le és telepítse külön-külön az Azure AD Connect. Ebben a témakörben a parancsmagokat a jelentek meg a [2016. márciusi kiadásban (build 9031.1)](http://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Ha nem rendelkezik a parancsmagok ebben a témakörben leírt, vagy azok nem tudott ugyanazt az eredményt, majd győződjön meg arról, a legújabb verziót futtatja.
+Ezek a beállítások szerint úgy vannak konfigurálva a [Azure Active Directory modul Windows Powershellhez készült](https://aka.ms/aadposh). Töltse le és telepítse külön-külön az Azure AD Connect. Ebben a témakörben a parancsmagokat a jelentek meg a [2016. márciusi kiadásban (build 9031.1)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Ha nem rendelkezik a parancsmagok ebben a témakörben leírt, vagy azok nem tudott ugyanazt az eredményt, majd győződjön meg arról, a legújabb verziót futtatja.
 
 Az Azure AD-címtár konfiguráció megtekintéséhez futtassa `Get-MsolDirSyncFeatures`.  
 ![Get-MsolDirSyncFeatures eredménye](./media/how-to-connect-syncservice-features/getmsoldirsyncfeatures.png)
@@ -59,7 +59,7 @@ A következő beállításokat az Azure AD Connect által konfigurált, és nem 
 | DirectoryExtensions |[Az Azure AD Connect szinkronizálása: címtárbővítmények](how-to-connect-sync-feature-directory-extensions.md) |
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Lehetővé teszi egy attribútumot karanténba kerül, ha az üzenet egy másolat egy másik objektum helyett a teljes objektumot meghiúsul az exportálás során. |
 | Jelszókivonat szinkronizálása |[A Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás megvalósítása](how-to-connect-password-hash-synchronization.md) |
-|Átmenő hitelesítés|[Felhasználó jelentkezzen be az Azure Active Directory átmenő hitelesítése](how-to-connect-pta.md)|
+|Átmenő hitelesítés|[Felhasználói bejelentkezés az Azure Active Directory átmenő hitelesítésével](how-to-connect-pta.md)|
 | UnifiedGroupWriteback |[Előzetes verzió: Csoportvisszaírás](how-to-connect-preview.md#group-writeback) |
 | UserWriteback |Jelenleg nem támogatott. |
 

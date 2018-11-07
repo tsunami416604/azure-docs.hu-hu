@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/26/2018
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: 1aff2ecdec83886d40d12b76e64a14a81451e89e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 79aa9cd3e634238702419d01650c7ef29c4dbb95
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386688"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242025"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Adatok áthelyezése az Azcopyval Linux rendszeren
 
@@ -357,7 +357,7 @@ azcopy \
     --dest-key <key>
 ```
 
-Amikor--szinkronizálási másolási beállítás nélkül blobot másol egy [kiszolgálóoldali másolási](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) műveletet hajtja végre.
+Amikor--szinkronizálási másolási beállítás nélkül blobot másol egy [kiszolgálóoldali másolási](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) műveletet hajtja végre.
 
 ### <a name="copy-single-blob-across-storage-accounts"></a>Egyetlen blob másolása tárfiókok között
 
@@ -369,7 +369,7 @@ azcopy \
     --dest-key <key2>
 ```
 
-Amikor--szinkronizálási másolási beállítás nélkül blobot másol egy [kiszolgálóoldali másolási](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) műveletet hajtja végre.
+Amikor--szinkronizálási másolási beállítás nélkül blobot másol egy [kiszolgálóoldali másolási](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) műveletet hajtja végre.
 
 ### <a name="copy-single-blob-from-secondary-region-to-primary-region"></a>Egyetlen blob másolása másodlagos régióból az elsődleges régióba
 
@@ -488,7 +488,7 @@ azcopy \
     --dest-key <key2> \
     --recursive
 ```
-Amikor a fájlmegosztások, között másolhat egy fájlt egy [kiszolgálóoldali másolási](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) műveletet hajtja végre.
+Amikor a fájlmegosztások, között másolhat egy fájlt egy [kiszolgálóoldali másolási](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) műveletet hajtja végre.
 
 ### <a name="copy-from-file-share-to-blob"></a>A blob-fájlmegosztás másolása
 
@@ -500,7 +500,7 @@ azcopy \
     --dest-key <key2> \
     --recursive
 ```
-Amikor másolhat egy fájlt a blobba, fájlmegosztásról egy [kiszolgálóoldali másolási](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) műveletet hajtja végre.
+Amikor másolhat egy fájlt a blobba, fájlmegosztásról egy [kiszolgálóoldali másolási](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) műveletet hajtja végre.
 
 ### <a name="copy-from-blob-to-file-share"></a>Fájlmegosztás blob másolása
 
@@ -512,7 +512,7 @@ azcopy \
     --dest-key <key2> \
     --recursive
 ```
-Másolhat egy fájlt a blobból a fájlmegosztáshoz, amikor egy [kiszolgálóoldali másolási](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) műveletet hajtja végre.
+Másolhat egy fájlt a blobból a fájlmegosztáshoz, amikor egy [kiszolgálóoldali másolási](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx) műveletet hajtja végre.
 
 ### <a name="synchronously-copy-files"></a>Szinkron módon történik a fájlok másolása
 Megadhatja a `--sync-copy` beállítás adatokat másol a File Storage File Storage, File Storage a Blob Storage és a Blob Storage, File Storage szinkron módon történik. AzCopy az adatok letöltése a helyi memória, és majd feltölteni a cél futtathatja ezt a műveletet. Ebben az esetben a standard szintű kimenő forgalmi költségek vonatkozik.
@@ -715,10 +715,10 @@ További, az Azure Storage szolgáltatással és az AzCopyval kapcsolatos adatok
 ### <a name="azure-storage-blog-posts"></a>Az Azure Storage-blogbejegyzések:
 * [Az AzCopy a Linuxos előzetes bejelentése](https://azure.microsoft.com/blog/announcing-azcopy-on-linux-preview/)
 * [Introducing Azure Storage adatátviteli könyvtár Adatelőnézet](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)
-* [Az AzCopy: Bemutatkozik a szinkron másolása és testre szabott tartalom típusa](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
-* [Az AzCopy: Általános rendelkezésre állás az AzCopy 3.0 és az előzetes kiadásban az AzCopy 4.0 támogatásával, tábla és fájl bejelentése](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
-* [AzCopy: Nagyméretű példány esetekre optimalizált](http://go.microsoft.com/fwlink/?LinkId=507682)
-* [AzCopy: Írásvédett georedundáns tárolás támogatása](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
-* [Az AzCopy: Adatátvitel újraindítható üzemmódban és SAS-jogkivonat](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
-* [Az AzCopy: Kereszt-fiók másolás Blob használatával](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
-* [Az AzCopy: Azure-Blobok feltöltése/letöltése fájlok](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
+* [Az AzCopy: Bemutatkozik a szinkron másolása és testre szabott tartalom típusa](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
+* [Az AzCopy: Általános rendelkezésre állás az AzCopy 3.0 és az előzetes kiadásban az AzCopy 4.0 támogatásával, tábla és fájl bejelentése](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
+* [AzCopy: Nagyméretű példány esetekre optimalizált](https://go.microsoft.com/fwlink/?LinkId=507682)
+* [AzCopy: Írásvédett georedundáns tárolás támogatása](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
+* [Az AzCopy: Adatátvitel újraindítható üzemmódban és SAS-jogkivonat](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
+* [Az AzCopy: Kereszt-fiók másolás Blob használatával](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
+* [Az AzCopy: Azure-Blobok feltöltése/letöltése fájlok](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)

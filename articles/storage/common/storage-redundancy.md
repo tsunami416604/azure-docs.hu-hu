@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 3d6d3184c2a17e397e5bbba9fff6cf9c3de9b73e
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.openlocfilehash: 7afbdaba46674b69aa601355e80160e7c72ff373
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218491"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240970"
 ---
 # <a name="azure-storage-replication"></a>Azure Storage replication (Azure Storage replikáció)
 
@@ -68,5 +68,5 @@ Ha módosítjuk GRS az LRS, nem kell további költenie, de a másodlagos helyr�
 - [Georedundáns tárolás (GRS): az Azure Storage-régiók közti replikáció](storage-redundancy-grs.md)
 - [Az Azure Storage méretezhetőségi és teljesítménycéljai](storage-scalability-targets.md)
 - [RA-GRS tároló használatával magas rendelkezésre állású alkalmazások tervezése](../storage-designing-ha-apps-with-ragrs.md)
-- [A Microsoft Azure Storage redundancia lehetőségeket és olvasási hozzáférés georedundáns tárolás ](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
-- [SOSP tanulmány – Azure Storage: Magas rendelkezésre állású felhőbeli tárolószolgáltatásba erős konzisztencia](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+- [A Microsoft Azure Storage redundancia lehetőségeket és olvasási hozzáférés georedundáns tárolás ](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
+- [SOSP tanulmány – Azure Storage: Magas rendelkezésre állású felhőbeli tárolószolgáltatásba erős konzisztencia](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)

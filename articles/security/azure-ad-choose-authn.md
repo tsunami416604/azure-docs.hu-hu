@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: a322edbc6825261dde0fd926a362ca037739e06e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: f1fd60774f5790a514e540984812fc1aaf6e38e0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388058"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238913"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Válassza ki a megfelelő hitelesítési módszert az Azure Active Directory hibrid identitáskezelési megoldás 
 
@@ -68,6 +68,18 @@ Az alábbi szakasz segít eldönteni, melyik hitelesítési módszert az Önnek 
 ## <a name="decision-tree"></a>Döntési fa
 
 ![Az Azure AD hitelesítési döntési fa](media/azure-ad/azure-ad-authn-image1.png)
+
+Döntési kérdések adatai:
+
+1. Az Azure AD ellenőrizze a jelszavakat a helyszíni összetevők igénylése nélkül képes kezelni jelentkezzen be a felhasználók számára.
+2. Azure ad-ben is kiosztják felhasználói bejelentkezés, egy megbízható hitelesítésszolgáltató, például a Microsoft Active Directory összevonási szolgáltatások.
+3. Felhasználói szintű Active Directory biztonsági házirendeket alkalmazhatnak, mint például a fiók lejárt van szüksége, ha le van tiltva a fiók jelszava lejárt, a fiók zárolt, és a felhasználói bejelentkezési óra jelentkezzen be, az Azure AD igényel néhány helyi összetevőt.
+4. Bejelentkezési módok nem támogatja natív módon az Azure ad-ben:
+   * Jelentkezzen be az intelligens kártyákkal, illetve tanúsítványokkal.
+   * Jelentkezzen be a helyszíni MFA-kiszolgáló használatával.
+   * Jelentkezzen be 3. fél hitelesítési megoldás használatával.
+   * Többhelyes kapcsolat a helyszíni hitelesítési megoldás.
+5. Az Azure AD Identity Protection függetlenül attól, milyen bejelentkezési módszert választja, adja meg a "Kiszivárogtatott hitelesítő adatokkal rendelkező felhasználók" jelentést a Jelszókivonat-szinkronizálás szükséges. Szervezetek számára történő Jelszókivonat-szinkronizálás feladatátvételt is, ha az elsődleges bejelentkezési módszer nem jár sikerrel, és a hiba esemény előtt konfigurálva volt.
 
 ## <a name="detailed-considerations"></a>Részletes szempontok
 
@@ -207,4 +219,4 @@ A mai világ a fenyegetések jelen a nap 24 órájában, és mindenhol származn
 
 [Első lépések](https://docs.microsoft.com/azure/active-directory/get-started-azure-ad) az Azure ad-vel és a szervezet számára a megfelelő hitelesítési megoldás üzembe helyezéséhez.
 
-Ha szeretne áttérni a rendszerről történő áttelepítésről összevont hitelesítési cloud, tudjon meg többet [a bejelentkezési mód módosítása](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#changing-the-user-sign-in-method). Akkor megtervezheti és megvalósíthatja az áttelepítés érdekében használjon [ezeket a központi telepítési csomagok projekt](http://aka.ms/deploymentplans).
+Ha szeretne áttérni a rendszerről történő áttelepítésről összevont hitelesítési cloud, tudjon meg többet [a bejelentkezési mód módosítása](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#changing-the-user-sign-in-method). Akkor megtervezheti és megvalósíthatja az áttelepítés érdekében használjon [ezeket a központi telepítési csomagok projekt](https://aka.ms/deploymentplans).

@@ -17,12 +17,12 @@ ms.date: 04/18/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
-ms.openlocfilehash: fb2bfc89322d81833b1961bfb866a773c5d1d475
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 8e806fc334faf85864ea9158d4f2ed6d107327ae
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577230"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241497"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Hogyan és miért érdemes az Azure AD-alkalmazások felvétele
 
@@ -69,7 +69,7 @@ Alkalmazás objektumok, például az egyszerű szolgáltatások is több útvona
 
 * Az Azure AD-vel integrált amikor bejelentkeznek egy külső alkalmazás
   * Során bejelentkezéskor a rendszer kéri a felhasználóktól engedélyt az alkalmazás hozzáférését, hogy a profil, és más engedélyt adni. Az első, aki adja meg beleegyezését, amely jelöli az alkalmazást a könyvtárhoz hozzáadandó szolgáltatásnév okoz.
-* Amikor a felhasználók bejelentkeznek a Microsoft online szolgáltatásaihoz, például [Office 365-höz](http://products.office.com/)
+* Amikor a felhasználók bejelentkeznek a Microsoft online szolgáltatásaihoz, például [Office 365-höz](https://products.office.com/)
   * Amikor az Office 365 szolgáltatásra vagy egy próba megkezdéséhez, egy vagy több szolgáltatásnevek jönnek létre a címtárban, a különböző szolgáltatások, amelyek az összes Office 365-höz tartozó funkciók biztosításához jelölő.
   * Egyes Office 365-szolgáltatásokhoz, például a SharePoint-összetevők többek között a munkafolyamatok közötti biztonságos kommunikációhoz töltheti egyszerű szolgáltatások létrehozása.
 * Amikor egy rendszergazda ad hozzá egy alkalmazás (ezzel is létrehoz egy alapul szolgáló alkalmazás objektum) alkalmazás-galériából

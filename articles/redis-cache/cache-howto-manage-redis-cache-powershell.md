@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 11b399bdbbbe92d1e1544f4cbae0824140ce52c1
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: dabf3c7f98957a4b8ef0c59bdd80ca773f403912
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364506"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255983"
 ---
 # <a name="manage-azure-redis-cache-with-azure-powershell"></a>Az Azure PowerShell-lel az Azure Redis Cache kezelése
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ Válassza ki az előfizetést, futtassa a következő parancsot. A következő p
 
 Használatához Windows PowerShell az Azure Resource Manager, a következők szükségesek:
 
-* Windows PowerShell 3.0 vagy 4.0-s verzióját. A Windows PowerShell-verzió megkereséséhez írja be a következőt:`$PSVersionTable` , és ellenőrizze a értékét `PSVersion` 3.0 vagy 4.0-s verzióját. Telepítenie egy kompatibilis verziót, tekintse meg a [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) vagy [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855).
+* Windows PowerShell 3.0 vagy 4.0-s verzióját. A Windows PowerShell-verzió megkereséséhez írja be a következőt:`$PSVersionTable` , és ellenőrizze a értékét `PSVersion` 3.0 vagy 4.0-s verzióját. Telepítenie egy kompatibilis verziót, tekintse meg a [Windows Management Framework 3.0](https://www.microsoft.com/download/details.aspx?id=34595) vagy [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855).
 
 Ebben az oktatóanyagban látja parancsmagokhoz részletes segítséget kérhet, használja a Get-Help parancsmagot.
 
@@ -781,9 +781,9 @@ A következő parancsot a megadott gyorsítótár mindkét csomópont újraindul
 A Windows PowerShell-lel az Azure-ral kapcsolatos további információkért lásd a következőket:
 
 * [Az MSDN-en az Azure Redis Cache parancsmag dokumentációja](https://docs.microsoft.com/powershell/module/azurerm.rediscache/?view=azurermps-6.6.0)
-* [Az Azure Resource Manager parancsmagjainak](http://go.microsoft.com/fwlink/?LinkID=394765): ismerje meg, a parancsmagok használatához az Azure Resource Manager modulban.
+* [Az Azure Resource Manager parancsmagjainak](https://go.microsoft.com/fwlink/?LinkID=394765): ismerje meg, a parancsmagok használatához az Azure Resource Manager modulban.
 * [Erőforráscsoportok használata az Azure-erőforrások kezelése](../azure-resource-manager/resource-group-template-deploy-portal.md): ismerje meg, hogyan hozhat létre és kezelheti az erőforráscsoportok az Azure Portalon.
 * [Azure-blogban](https://azure.microsoft.com/blog/): az Azure-ban új szolgáltatásainak megismerése.
-* [Windows PowerShell-blog](http://blogs.msdn.com/powershell): a Windows PowerShell új szolgáltatásainak megismerése.
+* [Windows PowerShell-blog](https://blogs.msdn.com/powershell): a Windows PowerShell új szolgáltatásainak megismerése.
 * ["Hey, Scripting Guy!" Blog](http://blogs.technet.com/b/heyscriptingguy/): valós tippeket és trükköket lekérése a Windows PowerShell-Közösségtől.
 

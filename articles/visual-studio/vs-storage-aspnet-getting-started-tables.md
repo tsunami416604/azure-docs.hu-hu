@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
-ms.openlocfilehash: c9d9cd9616b263ca002e6fe7ad6c875cce10289b
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 518e14b991aa110a6ed55f984a66cd386a618f0f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42060975"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228963"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Ismerkedés az Azure table storage és a Visual Studio csatlakoztatott szolgáltatások (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -173,7 +173,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy táblát:
   
     ![Tábla létrehozása](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
 
-    Ahogy korábban említettük a **CloudTable.CreateIfNotExists** metódus visszatért **igaz** csak a tábla nem létezik a és jön létre. Ezért ha futtassa az alkalmazást, ha a tábla létezik, a metódus visszaadja **hamis**. Futtassa az alkalmazást többször, törölnie kell a táblában az alkalmazás újbóli futtatása előtt. A tábla törlése keresztül lehetséges az **CloudTable.Delete** metódust. A táblát a is törölheti a [az Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) vagy a [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
+    Ahogy korábban említettük a **CloudTable.CreateIfNotExists** metódus visszatért **igaz** csak a tábla nem létezik a és jön létre. Ezért ha futtassa az alkalmazást, ha a tábla létezik, a metódus visszaadja **hamis**. Futtassa az alkalmazást többször, törölnie kell a táblában az alkalmazás újbóli futtatása előtt. A tábla törlése keresztül lehetséges az **CloudTable.Delete** metódust. A táblát a is törölheti a [az Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) vagy a [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).  
 
 ## <a name="add-an-entity-to-a-table"></a>Entitás hozzáadása a táblához
 

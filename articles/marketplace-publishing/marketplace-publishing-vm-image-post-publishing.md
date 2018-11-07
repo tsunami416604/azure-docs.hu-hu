@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/03/2016
 ms.author: hascipio;
-ms.openlocfilehash: e1f90650e71345957c2d353774cb8bef62c1868b
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: d4c7dce1876e9838fe986aebb7e38a09e8a82baf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715015"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252972"
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>Az Azure piactéren virtuálisgép-ajánlat utáni üzemi útmutató
 Ez a cikk bemutatja, hogyan frissíthet egy élő virtuálisgép-ajánlat az Azure piactéren. Végigvezeti egy vagy több új termékváltozatok ad egy meglévő ajánlatra. Azt is végigvezeti a folyamat egy élő virtuálisgép-ajánlat vagy Termékváltozat eltávolításával a piactérről.
@@ -30,7 +30,7 @@ Miután egy ajánlat/SKU elő van készítve a a [az Azure portal](http://portal
 * **Termékváltozat azonosítója**: az a közzétételi portálon lépjen a **virtuális gépek** , és válassza ki az ajánlatot. Kattintson a **Termékváltozatok** > **adjon hozzá egy Termékváltozatot**.
 * **Közzétevő Namespace**: az a közzétételi portálon lépjen a **virtuális gépek** > **forgatókönyv** > **ossza meg velünk a kapcsolatot kapcsolatban a vállalati**("Lépés 2 regisztrálni a vállalat" alatt található) > **közzétevő Namespace** > **Namespace**.
 
-Az ajánlat/SKU szerepel-e után a [Marketplace](http://azure.microsoft.com/marketplace), nem módosítható a következő szövegmezők:
+Az ajánlat/SKU szerepel-e után a [Marketplace](https://azure.microsoft.com/marketplace), nem módosítható a következő szövegmezők:
 
 * **Ajánlat azonosítója**: az a közzétételi portálon lépjen a **virtuális gépek** , és válassza ki az ajánlatot. Kattintson a **Virtuálisgép-rendszerképek** > **ajánlat azonosítója**.
 * **Termékváltozat azonosítója**: az a közzétételi portálon lépjen a **virtuális gépek** , és válassza ki az ajánlatot. Kattintson a **Termékváltozatok** > **adjon hozzá egy Termékváltozatot**.
@@ -48,7 +48,7 @@ Az ajánlat/SKU szerepel-e után a [Marketplace](http://azure.microsoft.com/mark
 2. Nyissa meg a **virtuális gépek** lapra, és válassza az ajánlatot.
 3. A bal oldali menüben kattintson a **Virtuálisgép-rendszerképek** fülre.
 4. Az a **termékváltozatok** területén keresse meg a frissíteni kívánt Termékváltozatot.
-5. Adjon hozzá egy új verziószámot a termékváltozathoz, majd kattintson a ** + ** gombra. Az új verzió-X.Y.Z formátumban, ahol X, Y és Z egész számoknak kell lennie. Megváltozik a verzió csak növekményes kell lennie.
+5. Adjon hozzá egy új verziószámot a termékváltozathoz, majd kattintson a **+** gombra. Az új verzió-X.Y.Z formátumban, ahol X, Y és Z egész számoknak kell lennie. Megváltozik a verzió csak növekményes kell lennie.
 6. Az a **OS VHD URL-cím** mezőbe írja be a közös hozzáférésű jogosultságkód URI-t az operációs rendszer virtuális merevlemez létrehozása és a módosítások mentéséhez.
 
    > [!IMPORTANT]
@@ -208,7 +208,7 @@ Adjon hozzá egy új Termékváltozatot az élő ajánlatban, kövesse az alább
 1. Jelentkezzen be a [közzétételi portál](https://publish.windowsazure.com).
 2. Nyissa meg a **virtuális gépek** lapra, és válassza az ajánlatot.
 3. A bal oldali menüben kattintson a **Termékváltozatok** fülre. Kattintson a **adjon hozzá egy Termékváltozatot**. 
-4. A párbeszédpanelen adja meg egy **Termékváltozat azonosítója** kisbetűs. Válassza ki a **használata a saját licencét (BYOL) számlázási modell** jelölőnégyzetet, ha szeretne közzétenni egy BYOL számlázási modellt az új Termékváltozat. Ellenkező esetben törölje a jelölőnégyzet jelölését. Kattintson az osztásjel hozhat létre egy új Termékváltozatban. Ha nem választja ki a BYOL számlázási modell, a számlázási modell értéke automatikusan óránként történik. Ha a 30 napos ingyenes próbaverzió óránkénti számlázási modell, jelölje be **egy hónap** a **érhető el egy ingyenes próbaverzióra?** Ellenkező esetben válassza **nem próbaverzió**. (**Érhető el egy ingyenes próbaverzióra? ** csak akkor, ha az új Termékváltozat létrehozása közben kiválasztott BYOL még nem jelenik meg.)
+4. A párbeszédpanelen adja meg egy **Termékváltozat azonosítója** kisbetűs. Válassza ki a **használata a saját licencét (BYOL) számlázási modell** jelölőnégyzetet, ha szeretne közzétenni egy BYOL számlázási modellt az új Termékváltozat. Ellenkező esetben törölje a jelölőnégyzet jelölését. Kattintson az osztásjel hozhat létre egy új Termékváltozatban. Ha nem választja ki a BYOL számlázási modell, a számlázási modell értéke automatikusan óránként történik. Ha a 30 napos ingyenes próbaverzió óránkénti számlázási modell, jelölje be **egy hónap** a **érhető el egy ingyenes próbaverzióra?** Ellenkező esetben válassza **nem próbaverzió**. (**Érhető el egy ingyenes próbaverzióra?**  csak akkor, ha az új Termékváltozat létrehozása közben kiválasztott BYOL még nem jelenik meg.)
 
    > [!IMPORTANT]
    > **Ez a Termékváltozat a Marketplace-ről elrejtése, mert azt kell mindig vásárolható keresztül megoldássablon** kell **Igen** *csak* Ha megoldássablon közzétételéhez használt jóvá. Ellenkező esetben ez a beállítás mindig kell **nem**.

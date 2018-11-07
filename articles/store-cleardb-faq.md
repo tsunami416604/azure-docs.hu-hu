@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: f145e879dab4484d647cf8ea21582958df0f0cd4
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: cce6555c71829110781a6dd13757078b105dbb41
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665722"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230631"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>ClearDB MySQL-adatbázisok használata az Azure App Service szolgáltatásban – gyakori kérdések
 Ez a GYIK használatával, és az Azure Web Appshez az adatbázisok a ClearDB MySQL vásárlásával kapcsolatos gyakori kérdésekre ad választ.
@@ -106,7 +106,7 @@ Közvetett nagyvállalati szerződéssel rendelkező ügyfelek az Azure piactér
 Harmadik féltől származó szolgáltatásokkal az Azure Marketplace-en való hozzáférést az EA Azure regisztrációs rendszergazdák által kezelhető. Letilthatja, vagy újra engedélyezze a hozzáférést a 3. külső vásárlásokra a fiókok kezelése és az előfizetések a Store a fiókok szakaszában, a vállalati portálon.
 
 ## <a name="who-do-i-contact-for-questions-about-my-bill-for-cleardb-services-in-my-ea-subscription"></a>Kihez fordulhatok kérdései vannak a ClearDB-services-számlámon kapcsolatos az EA-előfizetésemben?
-Kapcsolattartó [vállalati ügyfél-támogatási](http://aka.ms/AzureEntSupport) tartományállapot számlázás mellett az EA-regisztrációhoz. Az EA Portalon ügyfélszolgálathoz fog ad választ kérdésére, vagy a probléma megoldása érdekében.
+Kapcsolattartó [vállalati ügyfél-támogatási](https://aka.ms/AzureEntSupport) tartományállapot számlázás mellett az EA-regisztrációhoz. Az EA Portalon ügyfélszolgálathoz fog ad választ kérdésére, vagy a probléma megoldása érdekében.
 
 ## <a name="more-information"></a>További információ
 [Az Azure piactér – gyakori kérdések](https://azure.microsoft.com/marketplace/faq/)

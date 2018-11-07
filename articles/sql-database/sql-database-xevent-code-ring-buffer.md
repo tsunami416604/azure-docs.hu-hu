@@ -12,18 +12,18 @@ ms.author: genemi
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: c9c3383719ed8001167a6dce42d2df3e58b6ca74
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 0da4626943a7223b24baac80121b5da0062c0d73
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161964"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237077"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Gyűrűpuffer célkódja az SQL Database bővített események
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
-Egy teszt során egy kiterjesztett esemény rögzítése és a jelentés információk gyors legegyszerűbb szeretne egy teljes körű kódmintát. A legegyszerűbb cél bővítettesemény-adatok a [kör céljába](http://msdn.microsoft.com/library/ff878182.aspx).
+Egy teszt során egy kiterjesztett esemény rögzítése és a jelentés információk gyors legegyszerűbb szeretne egy teljes körű kódmintát. A legegyszerűbb cél bővítettesemény-adatok a [kör céljába](https://msdn.microsoft.com/library/ff878182.aspx).
 
 Ez a témakör egy kódmintát a Transact-SQL, amely:
 
@@ -50,8 +50,8 @@ Ez a témakör egy kódmintát a Transact-SQL, amely:
 * Az SQL Server Management Studio (ssms.exe), ideális legújabb havi frissítése verzióját. 
   Letöltheti a legújabb ssms.exe származó:
   
-  * Című témakör [SQL Server Management Studio letöltését](http://msdn.microsoft.com/library/mt238290.aspx).
-  * [A letöltésére mutató közvetlen hivatkozást.](http://go.microsoft.com/fwlink/?linkid=616025)
+  * Című témakör [SQL Server Management Studio letöltését](https://msdn.microsoft.com/library/mt238290.aspx).
+  * [A letöltésére mutató közvetlen hivatkozást.](https://go.microsoft.com/fwlink/?linkid=616025)
 
 ## <a name="code-sample"></a>Kódminta
 
@@ -353,6 +353,6 @@ Bővített események minta kódja témaköröket érhetők el az alábbi hivatk
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](https://msdn.microsoft.com/library/bb677357.aspx)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](https://msdn.microsoft.com/library/bb630355.aspx)
 -->

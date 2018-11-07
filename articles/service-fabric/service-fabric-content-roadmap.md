@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: c55e67e24c8f5ff6e243c67b614592874b2cc459
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 6cf2aa31e8a7207b041b9789ddde23b616f47150
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870655"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258444"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Így biztosan ismerje meg a Service Fabric?
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését.  A Service Fabric rendelkezik egy nagy támadási azonban és sok további.  Ez a cikk egy szinopszist, Service fabric biztosítja, és ismerteti az alapfogalmakat, programozási modelleket, alkalmazás-életciklus során, tesztelés, fürtök és az állapotmonitorozást. Olvassa el a [áttekintése](service-fabric-overview.md) és [Mik azok a mikroszolgáltatások?](service-fabric-overview-microservices.md) bevezetést, és hogyan a Service Fabric mikroszolgáltatások létrehozására használható. Ez a cikk egy átfogó tartalmak listája nem tartalmaz, de a hivatkozások áttekintése és első lépéseket bemutató cikkekben a Service Fabric minden területéhez. 
@@ -218,7 +218,7 @@ Több termék is elérhető, amelyek vonatkoznak ezek a területek, és szabadon
 * Ismerje meg, hogyan [szolgáltatások monitorozása és diagnosztizálása](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md). 
 * Ismerje meg, hogyan [tesztelheti az alkalmazások és szolgáltatások](service-fabric-testability-overview.md).
 * Ismerje meg, hogyan [kezelésére és vezénylésére fürterőforrások](service-fabric-cluster-resource-manager-introduction.md).
-* Nézze át a [Service Fabric-minták](http://aka.ms/servicefabricsamples).
+* Nézze át a [Service Fabric-minták](https://aka.ms/servicefabricsamples).
 * Ismerje meg [Service Fabric támogatási lehetőségeinek](service-fabric-support.md).
 * Olvassa el a [csapat blogján](https://blogs.msdn.microsoft.com/azureservicefabric/) cikkeket és közleményeket.
 

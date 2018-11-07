@@ -1,6 +1,6 @@
 ---
-title: Vendég operációsrendszer-család 1 használatból való kivonást figyelje meg |} Microsoft Docs
-description: Ha az Azure vendég operációs rendszer családja 1 használatból való kivonást történt és annak megállapítása, hogy hatással nyújt információkat
+title: Vendég operációsrendszer-család 1 kivezetéséről szóló értesítés |} A Microsoft Docs
+description: Ismerteti, mikor történt a az Azure Vendég operációsrendszer-család 1 használatból való kivonást egyaránt, és miként állapítható meg, ha Ön érintett
 services: cloud-services
 documentationcenter: na
 author: raiye
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: 3178a09dab1cb972a3460d54dc9908fb95cce68b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d6429766b6aac547fd99279659acb1067298e77c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23843132"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244678"
 ---
-# <a name="guest-os-family-1-retirement-notice"></a>Vendég operációsrendszer-család 1 használatból való kivonást értesítés
-Az operációsrendszer-család 1 kivonása 2013. június 1 bejelentése volt.
+# <a name="guest-os-family-1-retirement-notice"></a>Vendég operációsrendszer-család 1 használatból való kivonást egyaránt értesítés
+Operációsrendszer-család 1 funkciókészletét először a 2013. június 1-én mutattuk be.
 
-**2014. szeptember 2** az Azure vendég operációs rendszer (a vendég operációs rendszer) termékcsalád 1.x, amely a Windows Server 2008 operációs rendszeren alapul, hivatalosan lett visszavonva. Az új szolgáltatásokat telepíti, vagy frissítse a meglévő szolgáltatások termékcsalád 1 használatával bármilyen kísérlet sikertelen lesz, és hibaüzenetet tájékoztatja arról, hogy a vendég operációs rendszer családja 1 eltávolították.
+**2014 Szeptembertől 2** az Azure vendég operációs rendszerek (Guest OS) család 1.x, amely a Windows Server 2008 operációs rendszeren alapul, a rendszer hivatalosan elavult. Új szolgáltatások telepítését, vagy frissítse a meglévő szolgáltatások használatával család 1 kísérleteit sikertelen lesz, és a egy hibaüzenet tájékoztatja, hogy a vendég operációs rendszer termékcsalád 1 kivonásra került.
 
-**2014. novemberi 3** kibővített támogatása vendég operációs rendszer családja 1 befejeződik, és a teljes kivonják. Minden szolgáltatás továbbra is a családja 1 csökkenhet. Bármikor előfordulhat, hogy ezek a szolgáltatások leállítása. Nincs a szolgáltatások tovább fut, ha manuálisan frissíti őket saját kezűleg garancia.
+**2014. novemberi 3** Vendég operációsrendszer-család 1 kiterjesztett technikai támogatása véget ért, és teljes mértékben kivonták. Minden szolgáltatás továbbra is a család 1 érinti. Ezek a szolgáltatások bármikor leállíthatja azt. Nincs garancia arra, a szolgáltatások továbbra is futtassa, ha manuálisan frissíti őket saját maga.
 
-Ha további kérdésekre, keresse fel a [Cloud Services fórumban](http://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc) vagy [kérje az Azure támogatási](https://azure.microsoft.com/support/options/).
+Ha további kérdése van, keresse fel a [Cloud Services-fórumok](https://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc) vagy [lépjen kapcsolatba az Azure-támogatás](https://azure.microsoft.com/support/options/).
 
 ## <a name="are-you-affected"></a>Érintettek?
-A Cloud Services érintett közül legalább az alábbi esetekben alkalmazza:
+A Cloud Services érintettek, ha a következők bármelyike vonatkozik:
 
-1. Az érték "osFamily ="1"explicit módon megadott a ServiceConfiguration.cscfg fájlban a felhőalapú szolgáltatáshoz.
-2. Nincs a felhőszolgáltatás explicit módon a ServiceConfiguration.cscfg fájlban megadott osFamily értékét. Jelenleg a rendszer használja az alapértelmezett érték "1" Ebben az esetben.
-3. Az Azure-portálon, a "Windows Server 2008" sorolja fel a Vendég operációsrendszer-családba tartozó értéket.
+1. Az érték "operációsrendszer-család ="1"a felhőszolgáltatás a ServiceConfiguration.cscfg fájlban explicit módon megadott.
+2. A felhőszolgáltatás a ServiceConfiguration.cscfg fájlban explicit módon megadott osFamily érték nem rendelkezik. Jelenleg a rendszer használja az alapértelmezett érték "1" Ebben az esetben.
+3. Az Azure Portalon "A Windows Server 2008" a vendég operációs rendszer család érték listája.
 
-Kereséséhez, amelyek a felhőalapú szolgáltatások futnak melyik operációsrendszer-család, futtathatja a következő parancsfájl az Azure PowerShell, bár kell [beállítása az Azure PowerShell](/powershell/azureps-cmdlets-docs) első. A parancsfájl további információkért lásd: [Azure vendég operációs rendszer termékcsalád 1 vége az élettartam: 2014. június](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx).
+Keresse meg, amely a cloud services futnak, hogy melyik operációsrendszer-család, futtathatja a következő szkriptet az Azure PowerShell, azonban meg kell [beállítása az Azure PowerShell-lel](/powershell/azureps-cmdlets-docs) első. A szkript további információkért lásd: [Azure vendég operációs rendszer termékcsalád 1 záró az élettartam: 2014. június](https://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx).
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {
@@ -49,28 +49,28 @@ foreach($subscription in Get-AzureSubscription) {
 }
 ```
 
-A felhőszolgáltatások által érintett operációsrendszer-család 1 kivonása, ha az osFamily a parancsfájl kimenetében üres vagy tartalmaz egy "1".
+A cloud services érinti, operációsrendszer-család 1 használatból való kivonást egyaránt, ha a parancsfájl kimenetében az osFamily oszlop üres, vagy tartalmaz egy "1".
 
 ## <a name="recommendations-if-you-are-affected"></a>Ha érinti javaslatok
-Azt javasoljuk, hogy a Felhőszolgáltatási szerepkörök áttelepítéséhez a támogatott vendég operációsrendszer-családok egyikét:
+Javasoljuk, hogy a Cloud Service szerepkörök áttelepítéséhez a támogatott vendég operációsrendszer-családok egyikét:
 
-**Vendég operációs rendszer termékcsalád 4.x** – Windows Server 2012 R2 *(ajánlott)*
+**A vendég operációs rendszer családi 4.x** – Windows Server 2012 R2 *(ajánlott)*
 
-1. Győződjön meg arról, hogy az alkalmazás SDK 2.1-es vagy újabb használ a .NET-keretrendszer 4.0-s, 4.5-ös és 4.5.1-es verzióját.
-2. Az osFamily attribútum "4" értékre a ServiceConfiguration.cscfg fájlban, és telepítse újra a felhőalapú szolgáltatás.
+1. Győződjön meg arról, hogy az alkalmazás SDK 2.1-es vagy újabb verzióját használja a .NET-keretrendszer 4.0-s, 4.5-ös és 4.5.1-es verzióját.
+2. Állítsa be az osFamily attribútum "4"-re a ServiceConfiguration.cscfg fájlban, és ismételt üzembe helyezése a cloud Services.
 
-**Vendég operációs rendszer termékcsalád 3.x** – Windows Server 2012-ben
+**A vendég operációs rendszer családi 3.x** – Windows Server 2012
 
-1. Győződjön meg arról, hogy az alkalmazás SDK 1,8 vagy újabb használ a .NET-keretrendszer 4.0 vagy 4.5.
-2. Az osFamily attribútum "3" értékre a ServiceConfiguration.cscfg fájlban, és telepítse újra a felhőalapú szolgáltatás.
+1. Győződjön meg arról, hogy az alkalmazás a .NET-keretrendszer 4.0 vagy 4.5-ös használ SDK 1.8-as vagy újabb verziója.
+2. Az osFamily attribútum "3" állítsa a ServiceConfiguration.cscfg fájlban, és ismételt üzembe helyezése a cloud Services.
 
-**Vendég operációs rendszer termékcsalád 2.x** – Windows Server 2008 R2
+**A vendég operációs rendszer családi 2.x** – Windows Server 2008 R2
 
-1. Győződjön meg arról, hogy az alkalmazás SDK 1.3 használ, és a fenti .NET-keretrendszer 3.5-ös vagy 4.0-s verziójával.
-2. Az osFamily attribútum "2" értékre a ServiceConfiguration.cscfg fájlban, és telepítse újra a felhőalapú szolgáltatás.
+1. Győződjön meg arról, hogy az alkalmazás használ SDK 1.3-as vagy újabb verzió a .NET-keretrendszer 3.5-ös vagy 4.0-s verzióját.
+2. Az osFamily attribútum "2" állítsa a ServiceConfiguration.cscfg fájlban, és ismételt üzembe helyezése a cloud Services.
 
-## <a name="extended-support-for-guest-os-family-1-ended-nov-3-2014"></a>Kiterjesztett terméktámogatás a Vendég operációsrendszer-család 1 rendszerhez 2014. november 3.
-A Vendég operációsrendszer-család 1 felhőszolgáltatások támogatása megszűnt. Áttelepítés kikapcsolása termékcsalád 1 szolgáltatás megszűnésének megelőzése érdekében a lehető leghamarabb.  
+## <a name="extended-support-for-guest-os-family-1-ended-nov-3-2014"></a>Vendég operációsrendszer-család 1 meghosszabbított támogatása véget ért, 2014. november 3.
+1. Vendég operációsrendszer-család a cloud services már nem támogatottak. Áttelepítés kikapcsolása a szolgáltatáskimaradás elkerülése érdekében a lehető leghamarabb 1. termékcsaládját.  
 
-## <a name="next-steps"></a>Következő lépések
-Tekintse át a legutóbbi [feloldja a vendég operációs rendszer](cloud-services-guestos-update-matrix.md).
+## <a name="next-steps"></a>További lépések
+Tekintse át a legújabb [vendég operációs rendszer kiadással](cloud-services-guestos-update-matrix.md).

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 10/26/2018
+ms.date: 11/05/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 13d6ed9feab4654d3574a5aced72efa0345365a6
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 53c50ba75a16c58d7936a6f06de87218f67f5951
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215327"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219596"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Az Azure Active Directory a dinamikus tagsági szabályok
 
@@ -358,6 +358,7 @@ Egy szabály, amely eszközobjektumok tagsági kiválaszt egy csoportot is létr
  organizationalUnit | bármilyen karakterlánc típusú értéket megfelelő által egy helyszíni Active Directory a szervezeti egység neve | (device.organizationalUnit - eq "USA számítógépek")
  deviceId | egy érvényes Azure AD-Eszközazonosító | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  objectId | érvényes Azure AD-objektumazonosító |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
+ systemLabels | bármilyen karakterlánc megfelelő az Intune eszköz tulajdonságot a Modern munkahely eszközök címkézése | (device.systemLabels-tartalmaz "M365Managed")
 
 ## <a name="next-steps"></a>További lépések
 

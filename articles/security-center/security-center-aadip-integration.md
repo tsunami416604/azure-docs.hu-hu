@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2017
+ms.date: 10/13/2018
 ms.author: yurid
-ms.openlocfilehash: 6ab3611d47b32eddd41736df69a3e7382c2b220d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 9c13bd671efee5bc07885320cbaa0bd090cc1390
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298761"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226360"
 ---
 # <a name="connecting-azure-active-directory-identity-protection-to-azure-security-center"></a>Az Azure Active Directory Identity Protection csatlakoztatása az Azure Security Centerben
 Ez a dokumentum segít az Azure Active Directory (AD) Identity Protection és az Azure Security Center közötti integráció beállítása.
@@ -55,6 +55,6 @@ Ebben a dokumentumban megismerkedhetett az Azure AD Identity Protection csatlako
 * [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md) – Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
 - [Az Azure Security Center által nyújtott adatbiztonság](security-center-data-security.md) – ismerje meg, hogy az adatokat, és hogyan gondoskodik a védelmükről a Security Centerben.
 * [Azure Security Center FAQ](security-center-faq.md) (Azure Security Center: Gyakran ismételt kérdések) – Válaszok a szolgáltatás használatára vonatkozó gyakori kérdésekre.
-* [Az Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) – a legújabb Azure biztonsági hírek és információ.
+* [Az Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – a legújabb Azure biztonsági hírek és információ.
 
 

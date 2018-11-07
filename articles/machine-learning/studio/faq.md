@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/02/2017
-ms.openlocfilehash: 87695e6e7e1f1abce7204ebbbbed2b492297f177
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 77ae05c240dbb099528d7224a936d90416366816
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393298"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247772"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Az Azure Machine Learning szolgáltatásra vonatkozó gyakori kérdések (GYIK): Számlázás, képességek, korlátozások és támogatás
 Az alábbiakban néhány gyakori kérdést (GYIK) és azok válaszait olvashatja az Azure Machine Learning szolgáltatással kapcsolatban, amely egy, a webszolgáltatásokon keresztül végrehajtott prediktív modellezést és a megoldások üzembe helyezését célzó felhőalapú szolgáltatás. Ezek a gyakori kérdések a szolgáltatás használatával kapcsolatos kérdéseket fedik le, beleértve a számlázási modell, a képességek, a korlátozások és a támogatás témaköreit.
 
 **Kérdése van, és nem találja meg itt?**
 
-Az Azure Machine Learning egy közösségi fórummal is rendelkezik az MSDN-en, az adatelemzési közösség tagjai kérdéseket tehetnek fel az Azure Machine Learninggel kapcsolatban. A fórumot az Azure Machine Learning fejlesztőcsapata figyeli. Lépjen az [Azure Machine Learning fórumra](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning), és keresse meg a kívánt válaszokat, vagy tegyen fel egy új kérdést.
+Az Azure Machine Learning egy közösségi fórummal is rendelkezik az MSDN-en, az adatelemzési közösség tagjai kérdéseket tehetnek fel az Azure Machine Learninggel kapcsolatban. A fórumot az Azure Machine Learning fejlesztőcsapata figyeli. Lépjen az [Azure Machine Learning fórumra](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning), és keresse meg a kívánt válaszokat, vagy tegyen fel egy új kérdést.
 
 ## <a name="general-questions"></a>Általános kérdések
 **Mi az Azure Machine Learning?**
@@ -123,7 +123,7 @@ A képbeviteli képességről a [Képek importálása][image-reader] útmutatób
 ### <a name="modules"></a>Modulok
 **Az általam keresett algoritmus, adatforrás, adatformátum vagy adat-átalakítási művelet nem található az Azure Machine Learning Studióban. Milyen lehetőségeim vannak?**
 
-Az általunk követett funkciókéréseket a [felhasználó-visszajelzési fórumot](http://go.microsoft.com/fwlink/?LinkId=404231) meglátogatva tekintheti meg. Amennyiben a keresett képességet már kérelmezték, adja hozzá szavazatát a már meglévő kérelemhez. Ha a keresett képesség még nem létezik, hozzon létre egy új kérelmet. Kérelmének állapotát is ezen a fórumon tekintheti meg. A listát folyamatosan követjük, és rendszeresen frissítjük a funkciók rendelkezésre állásának állapotát. Továbbá, a beépített R- és Python-támogatással szükség esetén egyénre szabott átalakításokat is létrehozhat.
+Az általunk követett funkciókéréseket a [felhasználó-visszajelzési fórumot](https://go.microsoft.com/fwlink/?LinkId=404231) meglátogatva tekintheti meg. Amennyiben a keresett képességet már kérelmezték, adja hozzá szavazatát a már meglévő kérelemhez. Ha a keresett képesség még nem létezik, hozzon létre egy új kérelmet. Kérelmének állapotát is ezen a fórumon tekintheti meg. A listát folyamatosan követjük, és rendszeresen frissítjük a funkciók rendelkezésre állásának állapotát. Továbbá, a beépített R- és Python-támogatással szükség esetén egyénre szabott átalakításokat is létrehozhat.
 
 **Hozzáadhatom a már létező kódomat a Machine Learning Studióhoz?**
 
@@ -182,7 +182,7 @@ Jelenleg csak az R nyelvet használhatja új egyéni modulok létrehozásához.
 ### <a name="r-module"></a>R modul
 **Milyen R csomagok érhetők el a Machine Learning Studióban?**
 
-A Machine Learning Studio jelenleg több mint 400 CRAN R-csomagot támogat. Itt megtalálja az összes elérhető csomag [aktuális listáját](http://az754797.vo.msecnd.net/docs/RPackages.xlsx). A lista önálló lekérését az [Extend your experiment with R](extend-your-experiment-with-r.md) (Kísérlet kiterjesztése az R nyelv használatával) című cikkből sajátíthatja el. Ha nem találja a listában a szükséges csomagot, adja meg a csomag nevét a [felhasználó-visszajelzési fórumon](http://go.microsoft.com/fwlink/?LinkId=404231).
+A Machine Learning Studio jelenleg több mint 400 CRAN R-csomagot támogat. Itt megtalálja az összes elérhető csomag [aktuális listáját](http://az754797.vo.msecnd.net/docs/RPackages.xlsx). A lista önálló lekérését az [Extend your experiment with R](extend-your-experiment-with-r.md) (Kísérlet kiterjesztése az R nyelv használatával) című cikkből sajátíthatja el. Ha nem találja a listában a szükséges csomagot, adja meg a csomag nevét a [felhasználó-visszajelzési fórumon](https://go.microsoft.com/fwlink/?LinkId=404231).
 
 **Létre lehet hozni egy egyéni R modult?**
 
@@ -312,7 +312,7 @@ A [Microsoft Virtual Academy](http://www.microsoftvirtualacademy.com/training-co
 
 Az Azure Machine Learninghez való műszaki támogatásért lépjen az [Azure-támogatás](https://azure.microsoft.com/support/options/) oldalára, és válassza a **Machine Learning** opciót.
 
-Az Azure Machine Learning egy közösségi fórummal is rendelkezik az MSDN-en, ahol az Azure Machine Learninggel kapcsolatos kérdéseit teheti fel. A fórumot az Azure Machine Learning fejlesztőcsapata figyeli. Tekintse meg az [Azure-fórumokat](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning).
+Az Azure Machine Learning egy közösségi fórummal is rendelkezik az MSDN-en, ahol az Azure Machine Learninggel kapcsolatos kérdéseit teheti fel. A fórumot az Azure Machine Learning fejlesztőcsapata figyeli. Tekintse meg az [Azure-fórumokat](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning).
 
 ## <a name="billing-questions"></a>Számlázással kapcsolatos kérdések
 **Milyen díjszámítási módszer vonatkozik a Machine Learning szolgáltatásra?**

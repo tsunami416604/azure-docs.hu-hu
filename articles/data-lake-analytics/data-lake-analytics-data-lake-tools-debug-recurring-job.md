@@ -9,16 +9,16 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 05/20/2018
-ms.openlocfilehash: 33c3b91e7bf9fa64e3ba3f98a9396045753d0c2a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 5a2935d559a967151c5bdc01c4b0806fe52179b4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045694"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260040"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>Rendellenes ismétlődő feladat hibaelhárítása
 
-Ez a cikk bemutatja, hogyan [Azure Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs) ismétlődő feladatok kapcsolatos problémák megoldásához. További információ a folyamatok és az ismétlődő feladatok a [az Azure Data Lake és Azure HDInsight blog](https://blogs.msdn.microsoft.com/azuredatalake/2017/09/19/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy/).
+Ez a cikk bemutatja, hogyan [Azure Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs) ismétlődő feladatok kapcsolatos problémák megoldásához. További információ a folyamatok és az ismétlődő feladatok a [az Azure Data Lake és Azure HDInsight blog](https://blogs.msdn.microsoft.com/azuredatalake/2017/09/19/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy/).
 
 Ismétlődő feladatok ugyanazon lekérdezés logikája és a hasonló bemeneti adatokat általában megosztott. Képzeljünk el például, hogy rendelkezik-e ismétlődő feladat fut minden hétfő reggel 8 órakor a múlt héten heti aktív felhasználók száma. Ezeket a feladatokat a parancsfájlok megosztani egy parancsfájl-sablont, amely tartalmazza a lekérdezés logikáját. Ezek a feladatok bemenetei a használati adatok az elmúlt hét vonatkoznak. A lekérdezés ugyanazt a logikát, és a hasonló bemeneti megosztása általában azt jelenti, hogy ezek a feladatok teljesítményét, hasonló és stabil. Ha az ismétlődő feladatok egyik hirtelen végez rendellenesen, sikertelen, vagy sok lelassul, előfordulhat, hogy szeretné:
 
@@ -39,7 +39,7 @@ Keresztül **eszközök** > **Data Lake** > **Feladatnézetben**, beillesztheti 
  
 ### <a name="case-2-you-have-the-pipeline-for-the-recurring-job-but-not-the-url"></a>2. eset: A folyamat az az ismétlődő feladat, de nem az URL-cím van
 
-A Visual Studio Server Explorer eszközével folyamat böngészőben megnyithatja > az Azure Data Lake Analytics-fiók > **folyamatok**. (Ha ez a csomópont nem találja a Server Explorerben [töltse le a legújabb beépülő modul](http://aka.ms/adltoolsvs).) 
+A Visual Studio Server Explorer eszközével folyamat böngészőben megnyithatja > az Azure Data Lake Analytics-fiók > **folyamatok**. (Ha ez a csomópont nem találja a Server Explorerben [töltse le a legújabb beépülő modul](https://aka.ms/adltoolsvs).) 
 
 ![A folyamatok csomópont kiválasztása](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/pipeline-browser.png)
 

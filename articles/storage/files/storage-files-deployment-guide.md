@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/22/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: d2e09c837597dfd15e6258cbd0100762b098eedf
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: b9a98cea8ee19846afc30b322c3fdacb21f2bf44
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523485"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242455"
 ---
 # <a name="how-to-deploy-azure-files"></a>Az Azure Files üzembe helyezése
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabvány SMB protokollon keresztül érhető el a felhőben. Ebből a cikkből megtudhatja, hogyan gyakorlatilag Azure Files üzembe helyezése a szervezeten belül.
@@ -108,7 +108,7 @@ A Robocopy egy olyan jól ismert másolás eszköz, Windows és Windows Server r
 ### <a name="azcopy"></a>AzCopy
 Az AzCopy egy parancssori segédprogram, és az Azure Files, valamint az Azure Blob storage, az adatok másolása szolgál az optimális teljesítmény érdekében egyszerű parancs használatával. Az AzCopy használata egyszerű:
 
-1. Töltse le a [Windows az AzCopy legújabb verzióját](http://aka.ms/downloadazcopy) vagy [Linux](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#download-and-install-azcopy).
+1. Töltse le a [Windows az AzCopy legújabb verzióját](https://aka.ms/downloadazcopy) vagy [Linux](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#download-and-install-azcopy).
 2. Használat `azcopy` adatok áthelyezése az Azure-fájlmegosztás a parancssorból. A Windows a szintaxisa a következő: 
 
     ```

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: f68dadab96e27cc7b90f44681d87ffa7cce8126b
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: e5571a0933284a52d5567db0505ecaced6c6c336
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390057"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253499"
 ---
 # <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>Egy a helyszíni virtuális gép rendszerképének fejlesztése az Azure Marketplace-en
 Javasoljuk, hogy az Azure virtuális merevlemezeket (VHD) közvetlenül a felhőben fejleszteni az RDP protokoll. Azonban meg kell, hogy lehetővé teszi a virtuális merevlemez letöltése és fejleszthetők a helyszíni infrastruktúra használatával.  
@@ -71,7 +71,7 @@ Ha már tudja, hogy a blob URL-címe, a virtuális merevlemez használatával le
    ![rajz](media/marketplace-publishing-vm-image-creation-on-premise/img07.png)
 
 ### <a name="download-a-vhd-by-using-powershell"></a>VHD letöltése a PowerShell használatával
-Az Azure portal használata mellett is használhatja a [Save-AzureVhd](http://msdn.microsoft.com/library/dn495297.aspx) parancsmaggal letöltheti az operációs rendszer VHD-t.
+Az Azure portal használata mellett is használhatja a [Save-AzureVhd](https://msdn.microsoft.com/library/dn495297.aspx) parancsmaggal letöltheti az operációs rendszer VHD-t.
 
         Save-AzureVhd –Source <storageURIOfVhd> `
         -LocalFilePath <diskLocationOnWorkstation> `
@@ -139,7 +139,7 @@ Hozzon létre egy tárolót a következőképpen.
 A tárfiók és tároló létrehozása után feltöltheti az előkészített virtuális merevlemezeket. Használhatja a PowerShell, a Linux parancssori eszközzel vagy más Azure Storage felügyeleti eszközök.
 
 ### <a name="upload-a-vhd-via-powershell"></a>PowerShell-lel VHD feltöltése
-Használja a [Add-AzureVhd](http://msdn.microsoft.com/library/dn495173.aspx) parancsmagot.
+Használja a [Add-AzureVhd](https://msdn.microsoft.com/library/dn495173.aspx) parancsmagot.
 
         Add-AzureVhd –Destination “http://mystorageaccount.blob.core.windows.net/containername/vmsku.vhd” -LocalFilePath “C:\Users\Administrator\Desktop\vmsku.vhd”
 

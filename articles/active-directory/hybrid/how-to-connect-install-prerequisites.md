@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4dd3253b1d7ee159914f2d1fd6a8644bbc69c1f0
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 5205d7797e7d45266a4f54b842ad56f353abc6d6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092791"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252989"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a témakör ismerteti az előfeltételeket és az Azure AD Connect hardverkövetelményeit.
@@ -41,7 +41,7 @@ Előtt az Azure AD Connectet telepíti, akkor kell néhány dolgot.
 
 ### <a name="on-premises-active-directory"></a>Helyszíni Active Directory
 * Az AD séma verziója és az erdő működési szintje Windows Server 2003 vagy újabb verzióját kell lennie. A tartományvezérlőkön futtatható bármely verziója mindaddig, amíg a séma és az erdő szintű követelmények teljesülnek-e.
-* Ha azt tervezi, hogy a funkció használatához **jelszóvisszaíró**, akkor a tartományvezérlőket kell lennie (a legújabb SP) a Windows Server 2008 vagy újabb. Ha a tartományvezérlők 2008 (R2 előtti), akkor is telepítenie kell [gyorsjavítás KB2386717](http://support.microsoft.com/kb/2386717).
+* Ha azt tervezi, hogy a funkció használatához **jelszóvisszaíró**, akkor a tartományvezérlőket kell lennie (a legújabb SP) a Windows Server 2008 vagy újabb. Ha a tartományvezérlők 2008 (R2 előtti), akkor is telepítenie kell [gyorsjavítás KB2386717](https://support.microsoft.com/kb/2386717).
 * Az Azure AD által használt tartományvezérlő írhatónak kell lennie. Ez **nem támogatott** használata egy írásvédett tartományvezérlő (csak olvasható tartományvezérlő) és az Azure AD Connect nem minden írási átirányítások követése.
 * Ez **nem támogatott** használata a helyszíni erdők/tartományok használatával "pontozott" (nevében pont szerepel ".") NetBios-nevét.
 * Javasoljuk, hogy [az Active Directory Lomtár engedélyezése](how-to-connect-sync-recycle-bin.md).
@@ -123,11 +123,11 @@ Az Azure AD Connect a Microsoft PowerShell és a .NET-keretrendszer 4.5.1-es fü
   * A Microsoft PowerShell alapértelmezés szerint telepítve van. Semmit nem kell.
   * .NET-keretrendszer 4.5.1-es vagy újabb Windows Update szolgáltatáson keresztül érhető el. Győződjön meg arról, hogy telepítette a legújabb frissítéseket a Windows Server, a Vezérlőpulton.
 * A Windows Server 2008R2 és a Windows Server 2012
-  * A Microsoft PowerShell legújabb verziója érhető el a **Windows Management Framework 4.0**, elérhető [Microsoft Download Center](http://www.microsoft.com/downloads).
-  * .NET-keretrendszer 4.5.1-es vagy újabb érhetők el a [Microsoft Download Center](http://www.microsoft.com/downloads).
+  * A Microsoft PowerShell legújabb verziója érhető el a **Windows Management Framework 4.0**, elérhető [Microsoft Download Center](https://www.microsoft.com/downloads).
+  * .NET-keretrendszer 4.5.1-es vagy újabb érhetők el a [Microsoft Download Center](https://www.microsoft.com/downloads).
 * Windows Server 2008
-  * A PowerShell legújabb támogatott verziót érhető el a **Windows Management Framework 3.0**, elérhető [Microsoft Download Center](http://www.microsoft.com/downloads).
-  * .NET-keretrendszer 4.5.1-es vagy újabb érhetők el a [Microsoft Download Center](http://www.microsoft.com/downloads).
+  * A PowerShell legújabb támogatott verziót érhető el a **Windows Management Framework 3.0**, elérhető [Microsoft Download Center](https://www.microsoft.com/downloads).
+  * .NET-keretrendszer 4.5.1-es vagy újabb érhetők el a [Microsoft Download Center](https://www.microsoft.com/downloads).
 
 ### <a name="enable-tls-12-for-azure-ad-connect"></a>Engedélyezze a TLS 1.2-es, az Azure AD Connect
 1.1.614.0 verziónál régebbi az Azure AD Connect alapértelmezés szerint a szinkronizálási motor kiszolgáló és az Azure AD közötti kommunikáció titkosításához használja a TLS 1.0-s. TLS 1.2 használatára a kiszolgálón alapértelmezés szerint a .net-alkalmazások konfigurálásával módosíthatja. További információ a TLS 1.2 található [Microsoft biztonsági tanácsadó 2960358](https://technet.microsoft.com/security/advisory/2960358).

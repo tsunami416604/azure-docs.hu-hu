@@ -2,19 +2,19 @@
 title: Ambari-nézetek használható a Hive a HDInsight (Hadoop) – Azure
 description: Ismerje meg, hogyan használható a Hive-nézet a webböngészőből Hive-lekérdezések elküldéséhez. A Hive-nézet az Ambari webes felhasználói Felületet kapott a Linux-alapú HDInsight-fürt része.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jasonh
-ms.openlocfilehash: 43b82070ced57c0654d646fbea5a12aeab7c2a31
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: c481889eda53ff46a8899676da2529fe4165dfd5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048521"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233156"
 ---
 # <a name="use-ambari-hive-view-with-hadoop-in-hdinsight"></a>Az Ambari Hive-nézet használata a HDInsight Hadoop-keretrendszerrel
 
@@ -166,7 +166,7 @@ Ezután használhatja az UDF-ben a lekérdezésben. Például: `SELECT myawesome
 Az UDF-EK használata a HDInsight Hive-val további információkért tekintse meg a következő cikkeket:
 
 * [A Python használata a Hive és a Piggel a HDInsight](python-udf-hdinsight.md)
-* [Egyéni Hive UDF HDInsight hozzáadása](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [Egyéni Hive UDF HDInsight hozzáadása](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
 ## <a name="hive-settings"></a>Hive-beállítások
 

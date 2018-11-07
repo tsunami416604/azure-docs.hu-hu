@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a3e5ae61fcefcb65d08288a2ddc2dd239e68b211
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 60d4501257bf79d1846e62010bf7b336c1b18f19
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312255"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250866"
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás a kezelési követelmények meghatározása
 A vállalkozása számára a kezelési követelmények ismertetése közvetlen hatással lehet a döntést a melyik hibrid identitáskezelési megoldás használata. Több eszköz és a saját eszközeiket használják a felhasználók képességét elterjedése ([BYOD](https://aka.ms/byodcg)), a vállalat a saját adatok kell védelme, de azt is kell érintetlenül felhasználók adatait. Általában akkor, amikor egy felhasználó a saját eszköz rendelkezik, azok is szükség lehet, hogy a rendszer a szerint az alkalmazás által használt váltakozó több hitelesítő adatok. Fontos különbséget tenni a tartalmat a saját hitelesítő adataival, és a vállalati hitelesítő adatok használatával létrehozottakra használatával hoztak. Az identitáskezelési megoldás tudnia kell interakcióba felhőalapú szolgáltatások zökkenőmentes élményt biztosít a végfelhasználók számára, miközben adataikhoz biztosítására, és növelje az adatszivárgás elleni védelem. 
@@ -38,7 +38,7 @@ Az identitáskezelési megoldás lesz adatbáziscsoportok különböző technika
 * Adatok kiszivárgását védelem: biztonsági ellenőrzéseket az adatok kiszivárgásának elkerülésére védelmének felelős a rendszer a felhasználó identitásának érvényesítése interakcióba kell. Ez fontos is ellenőrzési célú naplózásának.
 
 > [!NOTE]
-> Olvasási [adatbesorolás a felhőre való előkészületként](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) további információ az ajánlott eljárások és útmutató az adatok besorolása érdekében.
+> Olvasási [adatbesorolás a felhőre való előkészületként](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) további információ az ajánlott eljárások és útmutató az adatok besorolása érdekében.
 > 
 > 
 

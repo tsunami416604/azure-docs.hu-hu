@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 578fb3f8bfe68ccd9bbade0ad04f3a811a249c08
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: fb8c3fe9dd5ca207e4ae37faf9a5a1c4edfffc63
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37908342"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233813"
 ---
 # <a name="storsimple-security-and-data-protection"></a>A StorSimple biztonsági és adatvédelmi
 
@@ -35,7 +35,7 @@ A Microsoft Azure StorSimple megoldás egymással kommunikáló négy fő össze
 * **StorSimple-Eszközkezelő szolgáltatás a Microsoft Azure-ban üzemeltetett** – a felügyeleti szolgáltatás, amellyel konfigurálhatja és a StorSimple-eszköz kiépítése.
 * **StorSimple-eszköz** – a helyi adatközpontban telepített fizikai eszközt. Összes gazdagép és az ügyfelek adatokat generáló kapcsolódni a StorSimple-eszköz, és az eszköz kezeli az adatokat, és áthelyezi az Azure-felhő megfelelő módon.
 * **Az eszközhöz csatlakoztatott ügyfelek /-gazdagépekre** – az ügyfelek az infrastruktúra, amely a StorSimple-eszköz csatlakozik, és a védendő adatok létrehozására.
-* **Felhőalapú tárolás** – az Azure-felhőben tárolódnak az adatok helyét.
+* **Felhőalapú tároló** – a hely az Azure-felhőben, ahol az adatok tárolása történik.
 
 A következő szakaszok ismertetik a StorSimple biztonsági funkciók, amelyek az egyes összetevők és a rajtuk tárolt adatok védelme érdekében. Az esetleges Microsoft Azure StorSimple biztonsági és a hozzájuk tartozó válaszok kapcsolatos kérdések listáját is tartalmazza.
 
@@ -43,9 +43,9 @@ A következő szakaszok ismertetik a StorSimple biztonsági funkciók, amelyek a
 
 A StorSimple-Eszközkezelő szolgáltatásban a felügyeleti szolgáltatás a Microsoft Azure-ban üzemeltetett, és minden a StorSimple-eszköz, amely a szervezet közvetített kezelhetők. A StorSimple-Eszközkezelő szolgáltatás hozzáférhet a szervezeti hitelesítő adataival bejelentkezni az Azure Portalon egy webböngészőn keresztül.
 
-A StorSimple-Eszközkezelő szolgáltatáshoz való hozzáférés szükséges, hogy a szervezet rendelkezik-e az Azure-előfizetéssel, amely magában foglalja a StorSimple. Az előfizetés az a funkciók az Azure Portalon keresztül elérhető szabályozza. Ha a szervezet nem rendelkezik Azure-előfizetéssel, és ha szeretne további információkat olvashat, lásd: [Azure-előfizetésre regisztrál](../active-directory/fundamentals/sign-up-organization.md).
+A StorSimple-Eszközkezelő szolgáltatáshoz való hozzáférés szükséges, hogy a szervezet rendelkezik-e az Azure-előfizetéssel, amely magában foglalja a StorSimple. Az előfizetés szabályozza, hogy az Azure Portal mely szolgáltatásai érhetők el. Ha a szervezet nem rendelkezik Azure-előfizetéssel, és ha szeretne további információkat olvashat, lásd: [Azure-előfizetésre regisztrál](../active-directory/fundamentals/sign-up-organization.md).
 
-A StorSimple-Eszközkezelő szolgáltatás az Azure-ban üzemel, mert védi az Azure biztonsági szolgáltatásait. A Microsoft Azure által biztosított biztonsági funkciókkal kapcsolatos további információkért látogasson el a [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/security/).
+A StorSimple-Eszközkezelő szolgáltatás az Azure-ban üzemel, mert védi az Azure biztonsági szolgáltatásait. A Microsoft Azure által biztosított biztonsági funkciókról a [Microsoft Azure biztonsági és adatkezelési központban](https://azure.microsoft.com/support/trust-center/security/) talál további információt.
 
 ## <a name="storsimple-device-protection"></a>A StorSimple eszköz védelme
 
@@ -121,7 +121,7 @@ A StorSimple Snapshot Managerrel kapcsolatos további információkért lépjen 
 Javasoljuk, hogy érdekében győződjön meg arról, hogy a StorSimple-jelszavak erős és a magas szintű védelmet használja az alábbi irányelveket:
 
 * A jelszavak háromhavonta módosítása A jelszavak módosítása a évente kényszerítve.
-* Használjon erős jelszavakat. További információért ugorjon [erősebb jelszót létrehozni, és azok védelme](http://blogs.microsoft.com/cybertrust/2014/08/25/create-stronger-passwords-and-protect-them/).
+* Használjon erős jelszavakat. További információért ugorjon [erősebb jelszót létrehozni, és azok védelme](https://blogs.microsoft.com/cybertrust/2014/08/25/create-stronger-passwords-and-protect-them/).
 * Mindig használjon különböző jelszót eltérő hozzáférési mechanizmusok; a megadott jelszavak mindegyike egyedinek kell lennie.
 * Ne ossza meg jelszót bárki, aki nem jogosult a StorSimple eszköz elérésére.
 * Ne előadásokat elé mások jelszó és jelszó formátumát a mutatót.
@@ -166,7 +166,7 @@ A szolgáltatásadat-titkosítási kulcsot, és az adatok titkosítási tanúsí
 
 A StorSimple-eszköz helyileg és a felhőben, attól függően, a használat gyakorisága, tárolja őket szinten kezeli az adatokat. Az összes olyan gazdagépeken, amelyek az eszköz csatlakozik az eszköz, amely adatokat helyez át a felhőbe, szükség szerint történő adatküldéshez. Az átvitt adatok az eszközről a felhőbe biztonságos az interneten keresztül. Minden eszközhöz tartozik egy iSCSI-tároló, amely elérhetővé teszi az összes megosztott kötetek ezen az eszközön. Összes adat titkosítva van a felhőbeli tárhelyén való továbbítás előtt. 
 
-![Felhőalapú tárolás titkosítási kulcsa](./media/storsimple-security/CloudStorageEncryption.png)
+![felhőalapú tárolás titkosítási kulcsa](./media/storsimple-security/CloudStorageEncryption.png)
 
 Biztonsági és a felhőben áthelyezett adatok integritásának biztosítása érdekében a StorSimple lehetővé teszi felhőalapú tárolás titkosítási kulcsok megadása a következő:
 
@@ -215,7 +215,7 @@ A fizikai és virtuális Series StorSimple-Eszközkezelő gyűjt személyes adat
 - Felhasználók, akik férhet hozzá az adatokhoz, a megosztások elhelyezkedhet. Felhasználók férhetnek hozzá a megosztás adataihoz listája jelenik meg, és tekinthetnek meg. Ez a lista is törlődik. a megosztások törlésekor. Ez csak StorSimple Virtual Arrayt vonatkozik.
  * Felhasználó, aki férhetnek hozzá, vagy törli a megosztást, kövesse a listájának megtekintéséhez [kezelése a StorSimple Virtual Array-megosztások](storsimple-virtual-array-manage-shares.md)
 
-További információkért tekintse át a Microsoft Privacy szabályzatokban [biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter).
+További információkért lásd a Microsoft szabályzatát a [biztonsági és adatkezelési központban](https://www.microsoft.com/trustcenter).
 
 ## <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 

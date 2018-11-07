@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: a61f3572037b1c62ea5ed4e0ac4496b057e2b96d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 7ead955be3835f4ce3e602fe27a06c00d014195c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249051"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262199"
 ---
 # <a name="azure-database-security-overview"></a>Azure database biztonságának áttekintése
 
@@ -35,7 +35,7 @@ További lehetőségek a vállalati adatok titkosítása a Microsoft biztosítja
 
 Az Azure SQL Database naplózási lehetővé teszi a vállalatok számára, hogy a rekord a naplózási események naplózása az Azure Storage-ban. Az SQL Database naplózási szolgáltatása a Microsoft Power BI-ba is integrálható, hogy elősegítse a részletes jelentéskészítést és elemzést.
 
-Az Azure SQL Database is szorosan biztosítani, hogy megfelel a legtöbb szabályozási és biztonsági követelmények, többek között a HIPAA, az ISO 27001/27002 és a PCI DSS Level 1. Biztonsági megfelelőségi tanúsítványok aktuális listáját érhető el: a [Microsoft Azure Trust Center webhely](http://azure.microsoft.com/support/trust-center/services/).
+Az Azure SQL Database is szorosan biztosítani, hogy megfelel a legtöbb szabályozási és biztonsági követelmények, többek között a HIPAA, az ISO 27001/27002 és a PCI DSS Level 1. Biztonsági megfelelőségi tanúsítványok aktuális listáját érhető el: a [Microsoft Azure Trust Center webhely](https://azure.microsoft.com/support/trust-center/services/).
 
 Ez a cikk végigvezeti a strukturált, a táblázatos és a relációs adatok a Microsoft Azure SQL-adatbázisok védelme alapjait. A cikk ismerteti az adatok védelméhez, a hozzáférés szabályozásához és a proaktív figyeléshez szükséges erőforrások az első lépéseit is.
 
@@ -44,7 +44,7 @@ Ez a cikk végigvezeti a strukturált, a táblázatos és a relációs adatok a 
 Az SQL Database segíti az adatok védelme titkosítás megadásával:
 
 - Keresztül mozgásban lévő adatok [Transport Layer Security (TLS)](https://support.microsoft.com/kb/3135244).
-- Keresztül inaktív adatok [transzparens adattitkosítás](http://go.microsoft.com/fwlink/?LinkId=526242).
+- Keresztül inaktív adatok [transzparens adattitkosítás](https://go.microsoft.com/fwlink/?LinkId=526242).
 - Adatok használatra [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx).
 
 Az adatok titkosításának egyéb módjaira vonatkozóan fontolja meg az alábbiakat:

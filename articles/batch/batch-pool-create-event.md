@@ -1,6 +1,6 @@
 ---
-title: Azure Batch-készlet esemény létrehozása |} Microsoft Docs
-description: Útmutató a Batch-készlet esemény létrehozása.
+title: Az Azure Batch-készlet létrehozása esemény |} A Microsoft Docs
+description: Referencia a Batch-készlet létrehozása esemény.
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: danlep
-ms.openlocfilehash: bf7dfc2600c3d94faeb8d03561f6f2b30a0ee2d2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f8c0adf96d027f58a35dbe570f1b19c311cd84b9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30316987"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246514"
 ---
 # <a name="pool-create-event"></a>Készlet létrehozása esemény
 
- Ez az esemény kibocsátott készlet létrehozása után. A napló tartalmának megmutatják a készlet kapcsolatos általános információkat. Vegye figyelembe, hogy ha a cél a készlet mérete nagyobb, mint 0 számítási csomópontok, a készlet átméretezési start esemény követi ezt az eseményt után azonnal.
+ Ez az esemény bocsásson ki egy készlet létrehozása után. A napló tartalmát a készlet kapcsolatos általános adatok mellett ki. Vegye figyelembe, hogy ha a cél a készlet mérete nagyobb, mint 0, számítási csomópontok, a készlet átméretezésének indítása esemény követi az esemény után azonnal.
 
- A következő példa bemutatja, hogy a szervezet egy készlet a CloudServiceConfiguration tulajdonság használatával létrehozott készlet esemény létrehozása.
+ Az alábbi példa bemutatja, hogy a szervezet egy készlet a CloudServiceConfiguration tulajdonság használatával létrehozott készlet esemény létrehozása.
 
 ```
 {
@@ -49,52 +49,52 @@ ms.locfileid: "30316987"
 
 |Elem|Típus|Megjegyzések|
 |-------------|----------|-----------|
-|id|Karakterlánc|A készlet azonosítóját.|
-|displayName|Karakterlánc|A készlet megjelenítendő nevét.|
-|vmSize|Karakterlánc|A virtuális gépek a készlet mérete. A készlet összes virtuális gép méretének. <br/><br/> További információ elérhető méretek a virtuális gépek Felhőszolgáltatásai számára (készletek cloudServiceConfiguration létre), készletek: [Felhőszolgáltatások mérete](http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/). Kötegelt támogatja kivételével az összes felhőalapú szolgáltatások Virtuálisgép-méretek `ExtraSmall`.<br/><br/> Rendelkezésre álló virtuális gép információ lemezképek használatával a virtuális gépek piactérről (virtualMachineConfiguration létrehozott készleteket) készletek mérete: [virtuális gépek méretei](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (Linux) vagy [virtuális mérete Gépek](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) (Windows). A Batch a `STANDARD_A0`, illetve a Premium Storage típusú méretek (`STANDARD_GS`, `STANDARD_DS` és `STANDARD_DSV2` sorozat) kivételével az összes Azure virtuálisgép-méretet támogatja.|
-|[cloudServiceConfiguration](#bk_csconf)|Összetett típus|A felhőalapú szolgáltatás konfigurációja, a készlet.|
-|[virtualMachineConfiguration](#bk_vmconf)|Összetett típus|A virtuális gép a készlet konfigurációjában.|
-|[networkConfiguration](#bk_netconf)|Összetett típus|A készlet hálózati konfigurációjában.|
-|resizeTimeout|Time|A számítási csomópontok a készlethez, az utolsó átméretezési művelet a készlet a megadott foglalási időkorlátját.  (A kezdeti méretezése a készlet létrehozásakor számít a átméretezési.)|
-|targetDedicated|Int32|A kért a készlet számítási csomópontok száma.|
-|enableAutoScale|Logikai|Meghatározza, hogy a készlet mérete automatikusan igazodni adott idő alatt.|
-|enableInterNodeCommunication|Logikai|Meghatározza, hogy a készlet be van állítva a közvetlen kommunikációt a csomópontok között.|
-|isAutoPool|Logikai|Speficies hogy a készlet egy feladat AutoPool mechanizmus révén készült.|
-|maxTasksPerNode|Int32|A készlet egyes számítási csomóponton egyidejűleg futtatható tevékenységek maximális száma.|
-|vmFillType|Karakterlánc|Itt adhatja meg, hogy a Batch szolgáltatás miként ossza el a tevékenységeket a készlet számítási csomópontjai között. Érvényes értékek van elosztva, vagy a csomag.|
+|id|Karakterlánc|A készlet azonosítója.|
+|displayName|Karakterlánc|A készlet megjelenítendő neve.|
+|vmSize|Karakterlánc|A készlet virtuális gépeinek mérete. Egy készletben található összes virtuális gép csak azonos méretű. <br/><br/> További információ elérhető méretek a virtuális gépek a Cloud Services (cloudServiceConfiguration létrehozott készletek), készletek: [méretű felhőszolgáltatások](https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/). A Batch kivételével az összes Cloud Services Virtuálisgép-méretet támogatja `ExtraSmall`.<br/><br/> Rendelkezésre álló virtuális gép információ lemezképek használatával a Virtual Machines-piactér (virtualMachineConfiguration létrehozott készletek) a készletek méretek: [virtuális gépek méretei](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (Linux) vagy [virtuális méretei Gépek](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) (Windows). A Batch a `STANDARD_A0`, illetve a Premium Storage típusú méretek (`STANDARD_GS`, `STANDARD_DS` és `STANDARD_DSV2` sorozat) kivételével az összes Azure virtuálisgép-méretet támogatja.|
+|[cloudServiceConfiguration](#bk_csconf)|Komplex típus|A felhőszolgáltatás-konfigurációt a készlet.|
+|[virtualMachineConfiguration](#bk_vmconf)|Komplex típus|A virtuális gép konfigurációja a készlet.|
+|[networkConfiguration](#bk_netconf)|Komplex típus|A készlet hálózati konfigurációja.|
+|resizeTimeout|Time|A lefoglalt számítási csomópontok a készlet átméretezése az utolsó műveletet a megadott készlet időkorlátja.  (A kezdeti méretezése a készlet létrehozásakor számít egy átméretezést.)|
+|targetDedicated|Int32|Számítási csomópontok a készlet kért száma.|
+|enableAutoScale|Logikai|Itt adhatja meg, hogy a készlet mérete automatikusan alkalmazkodik a kijelző idővel.|
+|enableInterNodeCommunication|Logikai|Itt adhatja meg, hogy a készlet be van állítva a közvetlen kommunikáció a csomópontok között.|
+|isAutoPool|Logikai|Speficies e a készlet létrehozása egy feladat AutoPool mechanizmus révén.|
+|maxTasksPerNode|Int32|A készlet egyetlen számítási csomóponton egyidejűleg futtatható tevékenységek maximális számát.|
+|vmFillType|Karakterlánc|Itt adhatja meg, hogy a Batch szolgáltatás miként ossza el a tevékenységeket a készlet számítási csomópontjai között. Érvényes értékek vannak elosztva, vagy a csomag.|
 
 ###  <a name="bk_csconf"></a> cloudServiceConfiguration
 
 |Elem neve|Típus|Megjegyzések|
 |------------------|----------|-----------|
-|Család|Karakterlánc|Az Azure Vendég operációsrendszer-család kell telepíteni a virtuális gépek a készletben.<br /><br /> Lehetséges értékek:<br /><br /> **2** – operációs rendszer családja 2, Windows Server 2008 R2 SP1 egyenértékű.<br /><br /> **3** – operációs rendszer termékcsalád 3, a Windows Server 2012-ben egyenértékű.<br /><br /> **4** – operációs rendszer termékcsalád 4, Windows Server 2012 R2 egyenértékű.<br /><br /> További információkért lásd: [Azure vendég operációs rendszereinek kiadásait](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
-|targetOSVersion|Karakterlánc|Az Azure vendég operációs rendszer verzióját kell telepíteni a virtuális gépek a készletben.<br /><br /> Az alapértelmezett érték **\*** amely adja meg a megadott termékcsalád operációs rendszer legújabb.<br /><br /> Más engedélyezett értékeket, lásd: [Azure vendég operációs rendszereinek kiadásait](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
+|operációsrendszer-család|Karakterlánc|Az Azure vendég operációs rendszerek kell telepíteni a virtuális gépek a készletben.<br /><br /> Lehetséges értékek:<br /><br /> **2** – operációs rendszer termékcsalád 2, Windows Server 2008 R2 SP1 egyenértékű.<br /><br /> **3** – operációs rendszer termékcsalád 3, egyenértékű a Windows Server 2012-re.<br /><br /> **4** – operációs rendszer termékcsalád 4, Windows Server 2012 R2 egyenértékű.<br /><br /> További információkért lásd: [Azure Vendégoperációsrendszer-kiadásainak listáját](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
+|targetOSVersion|Karakterlánc|A kell telepíteni a virtuális gépek, a készlet Azure vendég operációs rendszer verziója.<br /><br /> Az alapértelmezett érték **\*** amely megadja, hogy a megadott termékcsalád legújabb operációs rendszerre.<br /><br /> További egyéb engedélyezett értékek: [Azure Vendégoperációsrendszer-kiadásainak listáját](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
 
 ###  <a name="bk_vmconf"></a> virtualMachineConfiguration
 
 |Elem neve|Típus|Megjegyzések|
 |------------------|----------|-----------|
-|[imageReference](#bk_imgref)|Összetett típus|Megadja a platform vagy Piactéri lemezképhez használandó információkat.|
-|nodeAgentSKUId|Karakterlánc|A kötegelt csomópont ügynök, a számítási csomópont lett kiépítve a Termékváltozat.|
-|[windowsConfiguration](#bk_winconf)|Összetett típus|Határozza meg a virtuális gépet a Windows operációs rendszer beállításait. Ez a tulajdonság nem lehet megadva, ha az imageReference egy Linux operációsrendszer-lemezképek hivatkozik.|
+|[imageReference](#bk_imgref)|Komplex típus|Adja meg a platform vagy a Piactéri rendszerkép használatára.|
+|nodeAgentSKUId|Karakterlánc|Az a kiépítése a számítási csomóponton a Batch-csomóponti ügynök SKU.|
+|[windowsConfiguration](#bk_winconf)|Komplex típus|A virtuális gépen adja meg a Windows operációs rendszer beállításait. Ez a tulajdonság nem lehet megadva, ha az imageReference a Linux operációs rendszer lemezképe hivatkozik.|
 
 ###  <a name="bk_imgref"></a> imageReference
 
 |Elem neve|Típus|Megjegyzések|
 |------------------|----------|-----------|
 |publisher|Karakterlánc|A lemezkép kiadója.|
-|ajánlat|Karakterlánc|Az ajánlat kép.|
-|sku|Karakterlánc|A kép a Termékváltozat.|
-|verzió:|Karakterlánc|A lemezkép verziószámát.|
+|az ajánlat|Karakterlánc|Az ajánlatot a lemezkép.|
+|sku|Karakterlánc|A lemezkép Termékváltozata.|
+|version|Karakterlánc|A lemezkép verziószámát.|
 
 ###  <a name="bk_winconf"></a> windowsConfiguration
 
 |Elem neve|Típus|Megjegyzések|
 |------------------|----------|-----------|
-|enableAutomaticUpdates|Logikai|Azt jelzi, hogy engedélyezve van-e a virtuális gép az automatikus frissítések. Ha ez a tulajdonság nincs megadva, alapértelmezett értéke true.|
+|enableAutomaticUpdates|Logikai|Azt jelzi, hogy a virtuális gépen engedélyezve van-e az automatikus frissítések. Ha ez a tulajdonság nincs megadva, alapértelmezett értéke true.|
 
-###  <a name="bk_netconf"></a> Készlet
+###  <a name="bk_netconf"></a> networkConfiguration
 
 |Elem neve|Típus|Megjegyzések|
 |------------------|--------------|----------|
-|subnetId|Karakterlánc|Adja meg az erőforrás-azonosító az alhálózat, amelyben a készlet számítási csomópontok jönnek létre.|
+|subnetId|Karakterlánc|Itt adhatja meg az alhálózatot, amelyben a készlet számítási csomópontjainak létrehozása erőforrás-azonosítója.|

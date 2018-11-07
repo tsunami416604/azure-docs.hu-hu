@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 6d09d12d25c2319e2dcfd8f65a8e5ac8ba86eeb9
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 9adc285ecdc7a88d03aef9abf0132c51f60b445a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914277"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247432"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Adatok gyűjtése részletei felügyeleti megoldások az Azure-ban
 Ez a cikk tartalma [felügyeleti megoldások](monitoring-solutions.md) elérhető a Microsoft mutató hivatkozásokat tartalmaz a részletes dokumentációt.  A módszer és a Log analyticsbe adatok gyűjtésének gyakorisága információkat is biztosít.  Használhatja az információkat ebben a cikkben, azonosíthatja a különféle elérhető megoldások és más felügyeleti megoldásokkal data flow és a kapcsolat követelményeinek megismeréséhez. 
@@ -79,4 +79,4 @@ Magyarázat az oszlopok a következők:
 
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg, hogyan [lekérdezések létrehozása](../log-analytics/log-analytics-log-search.md) felügyeleti megoldások által gyűjtött adatok elemzéséhez.
+* Ismerje meg, hogyan [lekérdezések létrehozása](../log-analytics/log-analytics-queries.md) felügyeleti megoldások által gyűjtött adatok elemzéséhez.

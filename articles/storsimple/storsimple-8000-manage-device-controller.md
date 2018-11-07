@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 9a5be85b917682afeaecd67a4176edb7040d5b4b
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 5e461f340e1c58f64c6d645a1e47cfd811bc4de5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215429"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261706"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>A StorSimple eszköz tartományvezérlők kezelése
 
@@ -117,7 +117,7 @@ Hajtsa végre az alábbi lépéseket a Microsoft Azure StorSimple-eszköz vissza
    
     `Reset-HcsFactoryDefault`
    
-    Helyette alaphelyzetbe egy adatkezelő, használja a [alaphelyzetbe állítása – HcsFactoryDefault](http://technet.microsoft.com/library/dn688132.aspx) parancsmagot a `-scope` paraméter.)
+    Helyette alaphelyzetbe egy adatkezelő, használja a [alaphelyzetbe állítása – HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) parancsmagot a `-scope` paraméter.)
    
     A rendszer többször újraindul. Értesíteni fogjuk, ha az alaphelyzetbe állítás sikeresen befejeződött. A rendszer modelltől függően 45-60 perc-8100-as eszköz és a egy 8600-as, a folyamat befejezéséhez 60 – 90 percet is igénybe vehet.
    

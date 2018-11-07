@@ -17,12 +17,12 @@ ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5a36c239e296d6f393c49932f1a369d8aae80b83
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a9a7848069300d5f52d16585a55313643e02bc72
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311107"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244457"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Kezelés és testreszabás Active Directory összevonási szolgáltatások az Azure AD Connect használatával
 Ez a cikk bemutatja, hogyan kezelheti, és testre szabhatja az Active Directory összevonási szolgáltatások (AD FS) Azure Active Directory (Azure AD) Connect használatával. Más általános az AD FS-feladatokat, amelyeket az AD FS-farm teljes konfiguráció megtenni, előfordulhat, hogy is tartalmaz.
@@ -81,7 +81,7 @@ Alternatív bejelentkezési azonosító konfigurálása az AD FS-hez két fő l�
 
     ![Hiányzó KB-os 2012R2 kapcsolatos figyelmeztetés](./media/how-to-connect-fed-management/kbwarning.png)
 
-    A konfiguráció esetén a hiányzó KB válhat, telepítse a szükséges [KB2919355](http://go.microsoft.com/fwlink/?LinkID=396590) , majd javítsa a bizalmi kapcsolat használatával [AAD javítása és az AD FS-megbízhatóság](#repairthetrust).
+    A konfiguráció esetén a hiányzó KB válhat, telepítse a szükséges [KB2919355](https://go.microsoft.com/fwlink/?LinkID=396590) , majd javítsa a bizalmi kapcsolat használatával [AAD javítása és az AD FS-megbízhatóság](#repairthetrust).
 
 > [!NOTE]
 > A alternateID és manuális konfigurálásához szükséges lépésekről további információért olvassa el [másik bejelentkezési azonosító konfigurálása](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id)
@@ -171,7 +171,7 @@ Az Azure AD Connect használatával összevonni az Azure AD-tartomány hozzáad�
 
 4. A következő oldalon a varázsló akkor is összevonható a helyszíni címtár az Azure AD-tartomány listáját tartalmazza. Válassza ki a tartományt a listából.
 
-   ![Azure AD domain](./media/how-to-connect-fed-management/AdditionalDomain4.PNG)
+   ![Azure AD-tartomány](./media/how-to-connect-fed-management/AdditionalDomain4.PNG)
 
     Miután kiválasztotta a tartományhoz, a varázsló biztosít további a varázsló által elvégzendő műveleteket és a konfiguráció hatásának megfelelő információt. Bizonyos esetekben egy tartományhoz, amely még nem ellenőrizte az Azure ad-ben, ha a varázsló nyújt segítséget a tartomány ellenőrzéséhez. Lásd: [az egyéni tartománynév hozzáadása az Azure Active Directory](../active-directory-domains-add-azure-portal.md) további részletekért.
 

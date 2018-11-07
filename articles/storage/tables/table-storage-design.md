@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.component: tables
-ms.openlocfilehash: 783522997a752c4eac575316983bc6ef853c3f43
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: c5b18bce9d0cf78569d0c2fa02ad14c96ad09bd1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526912"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237774"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Méretezhető és nagy teljesítményű táblák tervezése
 
@@ -121,7 +121,7 @@ Az alábbi példa bemutatja egy egyszerű táblázat megtervezése és az alkalm
 </table>
 
 
-Ezeket az adatokat az eddigi megjelenik egy relációs adatbázisban lévő táblából hasonló a fő különbségeket, a kötelező oszlopokat, és nem tárolhat több entitástípusok ugyanabban a táblában. Minden, a felhasználó által definiált tulajdonságok, mint például az **FirstName** vagy **életkor** adattípusú, például az egész számnak vagy karakterláncnak, egyszerűen, például egy oszlop egy relációs adatbázisban. Bár a ellentétben egy relációs adatbázisban, a Table service séma nélküli jellege azt jelenti, hogy egy tulajdonság nem kell minden entitáshoz ugyanolyan adattípusúak. Összetett adattípusok tárolni egyetlen tulajdonságát, például JSON vagy XML formátumú szerializált kell használnia. A table service, például a támogatott adattípusok, támogatott dátumtartományokat, elnevezési szabályok és méret megkötések kapcsolatos további információkért lásd: [a Table szolgáltatás adatmodelljének ismertetése](http://msdn.microsoft.com/library/azure/dd179338.aspx).
+Ezeket az adatokat az eddigi megjelenik egy relációs adatbázisban lévő táblából hasonló a fő különbségeket, a kötelező oszlopokat, és nem tárolhat több entitástípusok ugyanabban a táblában. Minden, a felhasználó által definiált tulajdonságok, mint például az **FirstName** vagy **életkor** adattípusú, például az egész számnak vagy karakterláncnak, egyszerűen, például egy oszlop egy relációs adatbázisban. Bár a ellentétben egy relációs adatbázisban, a Table service séma nélküli jellege azt jelenti, hogy egy tulajdonság nem kell minden entitáshoz ugyanolyan adattípusúak. Összetett adattípusok tárolni egyetlen tulajdonságát, például JSON vagy XML formátumú szerializált kell használnia. A table service, például a támogatott adattípusok, támogatott dátumtartományokat, elnevezési szabályok és méret megkötések kapcsolatos további információkért lásd: [a Table szolgáltatás adatmodelljének ismertetése](https://msdn.microsoft.com/library/azure/dd179338.aspx).
 
 A választott **PartitionKey** és **RowKey** jó Táblatervezés alapvető fontosságú. A táblákban tárolt minden entitás egyedi kombinációját kell **PartitionKey** és **RowKey**. Csakúgy, mint a kulcsokat egy relációs adatbázis-táblában a **PartitionKey** és **RowKey** gyors look-ups engedélyezése egy fürtözött index indexelt értékek. Azonban a Table service nem hoz létre minden olyan másodlagos indexeket, így **PartitionKey** és **RowKey** azokat a csak indexelt tulajdonságokat. Az ismertetett mintáit [Table tervezési minták](table-storage-design-patterns.md) bemutatják, hogyan használhatja a nyilvánvaló korlátozás.  
 
@@ -132,7 +132,7 @@ A fiók neve, a táblázat neve, és **PartitionKey** együttesen azonosítja a 
 
 A Table service szolgáltatásban az egyes csomópontok services egy vagy több fejezze be a partíciók és a szolgáltatás skálázható dinamikus terheléselosztás partíciók csomópontok között. Ha egy csomópont terhelés alatt van, a table service is *felosztása* partíciók számos különböző csomópontokon alakzatot a csomópont által kiszolgált; enyhül a forgalmat, ha a szolgáltatás is *egyesítési* csendes csomópontjáról partíció tartományok vissza az alakzatot egyetlen csomópont.  
 
-További információ a belső részleteket a Table Service, és különösen a szolgáltatás kezeli a partíciók, hogyan: a tanulmány [a Microsoft Azure Storage: A magas rendelkezésre álló felhős Társzolgáltatás erős konzisztencia](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
+További információ a belső részleteket a Table Service, és különösen a szolgáltatás kezeli a partíciók, hogyan: a tanulmány [a Microsoft Azure Storage: A magas rendelkezésre álló felhős Társzolgáltatás erős konzisztencia](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
 
 ## <a name="entity-group-transactions"></a>Tranzakciók
 A Table service szolgáltatásban (EGTs) tranzakciók atomi frissítések végrehajtásához több entitásban a kizárólag beépített mechanizmus. EGTs néha is nevezzük *batch-tranzakciók*. EGTs csak működhet ugyanazon a partíción tárolt entitások (azaz megosztása ugyanazt a partíciókulcsot az adott táblában). Így több entitásban atomi tranzakciós viselkedés van szüksége, bármikor biztosítania kell, hogy ezeket az entitásokat is ugyanazon a partíción találhatók. Ez a gyakran több entitástípusok tárolja az ugyanabban a táblában (és a partíció), és nem használja több tábla különböző entitástípusok okát. Egyetlen EGT működhet, a legfeljebb 100 entitást.  Több egyidejű EGTs feldolgozásra elküldött, esetén fontos, hogy ezek EGTs nem fog működni az entitásokat, által közösen EGTs; Ellenkező esetben a feldolgozási késleltethető.
@@ -152,7 +152,7 @@ A következő táblázat ismerteti az egyes érdemes figyelembe vennie, amikor t
 | Méretét a **rowkey tulajdonságok esetén** |A karakterlánc-legfeljebb 1 KB méretű |
 | Egy Entitáscsoportot tranzakció mérete |Egy tranzakció legfeljebb 100 entitást tartalmazhat, és a hasznos 4 MB-nál kisebbnek kell lennie. Miután egy EGT csak is frissítheti egy entitás. |
 
-További információt a [Table Service adatmodelljét ismertető](http://msdn.microsoft.com/library/azure/dd179338.aspx) témakörben talál.  
+További információt a [Table Service adatmodelljét ismertető](https://msdn.microsoft.com/library/azure/dd179338.aspx) témakörben talál.  
 
 ## <a name="cost-considerations"></a>Költségekkel kapcsolatos szempontok
 A TABLE storage viszonylag alacsonyak, de a kiértékelés a Table service megoldásoktól részeként kell vennie a költségbecslések a kapacitás használati és a tranzakciók mennyiségét. Azonban sok esetben ahhoz, hogy a teljesítmény vagy a megoldás méretezhetőségét denormalizált vagy duplikált adatok tárolására egy érvényes megközelítés. Díjszabással kapcsolatos további információkért lásd: [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/).  

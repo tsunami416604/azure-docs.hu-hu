@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 69818fdb8124b9afa176ccd4dfd74cf0f2f4b346
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: ad711fe998a3c250775c5d4f4d76305ffb7cf860
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233803"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244593"
 ---
 # <a name="azure-network-security-overview"></a>Azure-hálózat biztonsági áttekintése
 
@@ -144,7 +144,7 @@ További információ:
 
 ## <a name="secure-remote-access-and-cross-premises-connectivity"></a>Biztonságos távoli hozzáférést és a létesítmények közötti kapcsolat
 
-A telepítő, konfigurációs és felügyeleti feladatot távolról kell elvégezni az Azure-erőforrások igényeihez. Emellett érdemes telepíteni [hibrid informatikai](http://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) a megoldásokat, amelyek összetevőit a helyszínen és az Azure nyilvános felhő. Ezek a forgatókönyvek biztonságos távoli hozzáférést igényelnek.
+A telepítő, konfigurációs és felügyeleti feladatot távolról kell elvégezni az Azure-erőforrások igényeihez. Emellett érdemes telepíteni [hibrid informatikai](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) a megoldásokat, amelyek összetevőit a helyszínen és az Azure nyilvános felhő. Ezek a forgatókönyvek biztonságos távoli hozzáférést igényelnek.
 
 Az Azure-hálózatok a következő biztonságos távoli hozzáférést forgatókönyveket támogatja:
 
@@ -313,7 +313,7 @@ További információ:
 
 ## <a name="azure-ddos-protection"></a>Azure DDoS Protection
 
-Az elosztott szolgáltatásmegtagadási (DDoS-) támadásokat néhány a legnagyobb rendelkezésre állással és biztonsággal kapcsolatos aggályokat rendelkező ügyfelek számára a saját alkalmazásait a felhőbe áthelyezni. A DDoS-támadások próbál lefoglalhat egy alkalmazás-erőforrások, így az alkalmazás nem érhető el a jogosult felhasználók számára. DDoS-támadások célozhatják bármely, amely az interneten keresztül nyilvánosan elérhető végponton.
+Az elosztott szolgáltatásmegtagadásos (DDoS-) támadások az egyik legnagyobb rendelkezésreállási és biztonsági kockázatot jelentik az olyan felhasználók számára, akik alkalmazásaikat a felhőbe helyezik át. A DDoS-támadások megpróbálják kimeríteni az alkalmazás erőforrásait, elérhetetlenné téve az alkalmazást a jogosult felhasználók számára. A DDoS-támadások bármilyen, az interneten keresztül nyilvánosan elérhető végpontot megcélozhatnak.
 A Microsoft biztosítja a DDoS protection néven **alapszintű** az Azure Platform részeként. Ez díjmentesen érhető el, és mindig tartalmazza a figyelési és valós idejű csökkenti a közös hálózati szintű támadásoktól. Mellett a védelmet, a DDoS protection részét képező **alapszintű** engedélyezheti a **Standard** lehetőséget. A DDoS Protection Standard funkciók:
 
 * **Natív platformintegráció:** natív módon integrált Azure-bA. Az Azure Portalon keresztül konfigurációit is beleértve. A DDoS Protection Standard tisztában van azzal erőforrásait és erőforrás-konfigurációhoz.

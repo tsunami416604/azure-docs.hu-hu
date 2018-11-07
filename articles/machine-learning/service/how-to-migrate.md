@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: haining
 author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: 9778d348cf49d4066f034931dc350a1f4a608ad2
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e2b3545c020f41f25f19843eab158cfb1b419164
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48236584"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253448"
 ---
 # <a name="migrate-to-the-latest-version-of-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatás legújabb verziójára való áttérést 
 
@@ -38,7 +38,7 @@ A következő táblázat és a cikk elmagyarázza, mit tehet a meglévő eszköz
 |Regisztrált képek|Nem|Hozza létre újra a központi telepítés Docker-rendszerkép alapján egy új munkaterületet.|
 |Üzembe helyezett webszolgáltatások|Nem|Nincs. Fogja is működnek, mint-akkor <br/>vagy [üzembe helyezhetik azokat újra legújabb verzió](#services).|
 |Kísérletezési és <br/>Modellkezelési fiókok|Nem|[Hozzon létre egy munkaterületet](#resources) helyette.|
-|A Machine learning CLI & SDK|Nem|Az új [CLI](reference-azure-machine-learning-cli.md) és [SDK](http://aka.ms/aml-sdk) az új feladatok.|
+|A Machine learning CLI & SDK|Nem|Az új [CLI](reference-azure-machine-learning-cli.md) és [SDK](https://aka.ms/aml-sdk) az új feladatok.|
 
 
 Tudjon meg többet [mi változott, ebben a kiadásban](overview-what-happened-to-workbench.md)?
@@ -52,7 +52,7 @@ Tudjon meg többet [mi változott, ebben a kiadásban](overview-what-happened-to
 
 Erőforrások, például a kísérletezés-fiókokat, a modellkezelési fiókok és a machine learning számítási környezetek nem át az Azure Machine Learning szolgáltatás legújabb verziójára. Tekintse meg a [ütemterv](overview-what-happened-to-workbench.md#timeline) a mennyi az eszközök továbbra is működni fog.
 
-Hozzon létre egy Azure Machine Learning szolgáltatás munkaterületén az első lépések a legújabb verzióra a [az Azure portal](quickstart-get-started.md). Munkaterület irányítópultján a portálon csak Edge, Chrome és a Firefox böngésző esetében támogatott.
+Hozzon létre egy Azure Machine Learning szolgáltatás munkaterületén az első lépések a legújabb verzióra a [az Azure portal](quickstart-get-started.md). A portál munkaterület irányítópultjának használata csak Edge, Chrome és Firefox böngészőkkel támogatott.
 
 Ehhez az új munkaterülethez a legfelső szintű szolgáltatás-erőforrás, és lehetővé teszi, hogy az összes az Azure Machine Learning szolgáltatás legújabb funkcióit használja. További tudnivalók ezzel [munkaterületet és architektúra](concept-azure-machine-learning-architecture.md).
 
@@ -62,7 +62,7 @@ Ehhez az új munkaterülethez a legfelső szintű szolgáltatás-erőforrás, é
 
 A projektek nem a felhőben munkaterülete, projektek immár könyvtárak legújabb kiadásának a helyi gépen. Tekintse meg a diagram a [legújabb architektúra](concept-azure-machine-learning-architecture.md). 
 
-A helyi könyvtárban, amely tartalmazza a fájlok és parancsfájlok használatával. a folytatáshoz adja meg a könyvtár neve a a ["experiment.submit"](http://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python-parancsot, vagy a parancssori felület az ml-projekt csatlakoztatása parancsot.
+A helyi könyvtárban, amely tartalmazza a fájlok és parancsfájlok használatával. a folytatáshoz adja meg a könyvtár neve a a ["experiment.submit"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python-parancsot, vagy a parancssori felület az ml-projekt csatlakoztatása parancsot.
 
 Példa:
 ```python

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/5/2018
 ms.author: markgal
-ms.openlocfilehash: fd988e2209d8a6547ec30edb4ee62fc8ff2c803d
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 8107af53a78960d29f506c77f8ba9697c7a49d1c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39619955"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252904"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Windows-kiszolgálóról vagy -ügyfél biztonsági mentése az Azure-ba a Resource Manager-alapú üzemi modell használatával
 Ez a cikk azt ismerteti, hogyan készíthet biztonsági másolatot a Windows Server (vagy a Windows-ügyfél) fájljairól és mappáiról az Azure az Azure Backuppal a Resource Manager üzemi modell használatával.
@@ -250,7 +250,7 @@ A kezdeti biztonsági mentés befejezése után a **Feladat befejezve** állapot
 ![IR befejezve](./media/backup-configure-vault/ircomplete.png)
 
 ## <a name="questions"></a>Kérdései vannak?
-Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne, [küldjön visszajelzést](http://aka.ms/azurebackup_feedback).
+Ha kérdései vannak, vagy van olyan szolgáltatás, amelyről hallani szeretne, [küldjön visszajelzést](https://aka.ms/azurebackup_feedback).
 
 ## <a name="next-steps"></a>További lépések
 Virtuális gépek vagy más számítási feladatok biztonsági mentésével kapcsolatos további információkért lásd:

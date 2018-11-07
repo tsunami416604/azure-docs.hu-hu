@@ -3,19 +3,19 @@ title: Egy kevés a memória az Azure HDInsight Hive javítása
 description: Javítsa ki a kevés a memória, a HDInsight Hive. A forgatókönyv a lekérdezés számos nagy táblák esetében.
 keywords: Hiba történt, OOM, Hive memóriabeállítások kívül
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 1ef4d8fa85a983c736fad73b652d8614c9a96ae5
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: 90bf59dd7733864c345bbbb59b6236ae7b9a9c36
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109851"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248307"
 ---
 # <a name="fix-a-hive-out-of-memory-error-in-azure-hdinsight"></a>Egy kevés a memória az Azure HDInsight Hive javítása
 
@@ -99,7 +99,7 @@ A **hive.auto.convert.join.noconditionaltask** a hive-site.xml fájl állított�
         </description>
       </property>
 
-Valószínűleg térképen való csatlakozás lett okát a halommemória a Java terület, a memória hiba. A blogbejegyzésben leírtaknak megfelelően [HDInsight a Hadoop Yarn memória beállításainak](http://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx), a Tez végrehajtómotor van használt halommemória felhasznált lemezterület ténylegesen a Tez-tároló tartozik. Az alábbi képen a Tez tároló memória ismertető témakörben talál.
+Valószínűleg térképen való csatlakozás lett okát a halommemória a Java terület, a memória hiba. A blogbejegyzésben leírtaknak megfelelően [HDInsight a Hadoop Yarn memória beállításainak](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx), a Tez végrehajtómotor van használt halommemória felhasznált lemezterület ténylegesen a Tez-tároló tartozik. Az alábbi képen a Tez tároló memória ismertető témakörben talál.
 
 ![Tez tároló memória diagramja: kevés a memória Hive](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 

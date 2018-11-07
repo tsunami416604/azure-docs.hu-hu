@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: jroth
-ms.openlocfilehash: 0119c6642d68db6a90af07395882e620b1af08c6
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 395994e2ac017bcdadaca4defad4ec0f910cea17
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394951"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258129"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Teljesítmény-irányelvek az SQL Server Azure Virtual Machines szolgáltatásban
 
@@ -40,7 +40,7 @@ A következő lista egy gyors ellenőrzés az optimális teljesítmény érdeké
 | Terület | Optimalizálási lehetőségek |
 | --- | --- |
 | [Virtuális gép mérete](#vm-size-guidance) |[DS3_v2](../sizes-general.md) vagy újabb verziója az SQL Enterprise Edition.<br/><br/>[DS2_v2](../sizes-general.md) vagy újabb SQL Standard és Web kiadások. |
-| [Storage](#storage-guidance) |Használat [prémium szintű Storage](../premium-storage.md). Fejlesztési-tesztelési csak standard szintű storage ajánlott.<br/><br/>Tartsa a [tárfiók](../../../storage/common/storage-create-storage-account.md) és az SQL Server rendszerű virtuális gép ugyanabban a régióban.<br/><br/>Tiltsa le az Azure [georedundáns tárolás](../../../storage/common/storage-redundancy.md) (georeplikáció) a tárfiókban. |
+| [Tárolás](#storage-guidance) |Használat [prémium szintű Storage](../premium-storage.md). Fejlesztési-tesztelési csak standard szintű storage ajánlott.<br/><br/>Tartsa a [tárfiók](../../../storage/common/storage-create-storage-account.md) és az SQL Server rendszerű virtuális gép ugyanabban a régióban.<br/><br/>Tiltsa le az Azure [georedundáns tárolás](../../../storage/common/storage-redundancy.md) (georeplikáció) a tárfiókban. |
 | [Lemezek](#disks-guidance) |Használjon legalább 2 [P30 lemez](../premium-storage.md#scalability-and-performance-targets) (1. a naplófájlok és 1-adatfájlok többek között a TempDB).<br/><br/>Ne használja az operációs rendszer vagy az ideiglenes lemezek adatbázistár vagy a naplózás.<br/><br/>Engedélyezze az olvasási gyorsítótárazást az üzemeltető, az adatok és a TempDB-adatfájlok (eke) t.<br/><br/>Ne engedélyezze a gyorsítótárazás üzemeltetési a naplófájl (eke) t.<br/><br/>Fontos: Állítsa le az SQL Server szolgáltatás egy Azure-beli Virtuálisgép-lemez gyorsítótár beállításainak módosításakor.<br/><br/>STRIPE-több Azure-adatlemezek a jobb i/o-átviteli sebesség lekérdezése.<br/><br/>Dokumentált foglalási méretű formátumban. |
 | [I/O](#io-guidance) |Adatbázis oldal tömörítésének engedélyezéséhez.<br/><br/>Engedélyezze az adatfájlok azonnali fájl inicializálása.<br/><br/>Az adatbázis növelnie korlátozza.<br/><br/>Tiltsa le a többletterheléshez az adatbázison.<br/><br/>Minden adatbázis áthelyezése az adatlemezeket, beleértve a rendszeradatbázisokban.<br/><br/>Helyezze át az SQL Server hiba napló- és nyomkövetési fájl könyvtárak adatlemezeket.<br/><br/>A telepítő alapértelmezett biztonsági mentés és adatbázis-fájlok helye.<br/><br/>Zárolt lapok engedélyezése.<br/><br/>A alkalmazni az SQL Server teljesítményének javításait. |
 | [A szolgáltatás-specifikus](#feature-specific-guidance) |Készítsen biztonsági másolatot a közvetlenül a blob storage-bA. |
@@ -166,7 +166,7 @@ A virtuális gépek, amelyek támogatják a Premium Storage (DS-sorozat, dsv2 é
     ![Az SQL Data napló- és biztonsági mentési fájlok](./media/virtual-machines-windows-sql-performance/sql_server_default_data_log_backup_locations.png)
 * Zárolt lapok csökkenteni az i/o- és lapozási tevékenységeket engedélyezése. További információkért lásd: [engedélyezése a memórialapok zárolása a memória beállítás (Windows)](https://msdn.microsoft.com/library/ms190730.aspx).
 
-* Ha futtatja az SQL Server 2012, telepítse a Service Pack 1 összegző frissítés 10. A frissítés tartalmazza a javítást, i/o gyenge teljesítményt, válassza ki az ideiglenes tábla utasítás SQL Server 2012-ben való futtatásakor. Információ: Ez [Tudásbázis](http://support.microsoft.com/kb/2958012).
+* Ha futtatja az SQL Server 2012, telepítse a Service Pack 1 összegző frissítés 10. A frissítés tartalmazza a javítást, i/o gyenge teljesítményt, válassza ki az ideiglenes tábla utasítás SQL Server 2012-ben való futtatásakor. Információ: Ez [Tudásbázis](https://support.microsoft.com/kb/2958012).
 
 * Vegye figyelembe, hogy minden adat fájlok tömörítése a bejövő és kimenő átviteléhez az Azure.
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: 3af2b2a1b35a290746007d7f486473162a055b99
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8cde172207717aca2af5dfa706f7d9c6d290c36e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211366"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239202"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -76,7 +76,7 @@ Az ExpressRoute támogatja [három útválasztási tartományt](expressroute-cir
 
 ### <a name="microsoft-peering"></a>Microsoft társviszony-létesítés
 
-* [Office 365](http://aka.ms/ExpressRouteOffice365)
+* [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Dynamics 365 
 * Power BI
 * Azure Active Directory
@@ -199,11 +199,7 @@ Igen. A virtuális hálózatok ugyanahhoz az ExpressRoute-kapcsolatcsoporthoz cs
 
 ### <a name="can-i-use-site-to-site-connectivity-for-virtual-networks-in-conjunction-with-expressroute"></a>Használható az expressroute-tal együtt virtuális hálózatokhoz helyek közötti kapcsolat?
 
-Igen. Az ExpressRoute egyszerre is használható, a site-to-site VPN-eket.
-
-### <a name="can-i-move-a-virtual-network-from-site-to-site--point-to-site-configuration-to-use-expressroute"></a>Helyezhetem át egy virtuális hálózat site-to-site / a pont – hely konfiguráció az expressroute-ot használni?
-
-Igen. Hozzon létre egy ExpressRoute-átjárót a virtuális hálózaton belül kell. Van egy kis állásidő a folyamat társított.
+Igen. Az ExpressRoute egyszerre is használható, a site-to-site VPN-eket. Lásd: [konfigurálása ExpressRoute- és helyek közötti egyidejű kapcsolatok](expressroute-howto-coexist-resource-manager.md).
 
 ### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>Miért van a virtuális hálózat az ExpressRoute-átjárót társított nyilvános IP-cím?
 
@@ -287,7 +283,7 @@ Igen. Az ExpressRoute prémium szintű díjak vonatkoznak, és az ExpressRoute k
 
 1. Tekintse át a [ExpressRoute előfeltételeit ismertető lap](expressroute-prerequisites.md) , hogy megfeleljen a követelményeknek.
 2. Győződjön meg arról, hogy teljesülnek-e a kapcsolódási igényei, tekintse át a szolgáltatók és a helyek listáját a [ExpressRoute-partnerek és helyek](expressroute-locations.md) cikk.
-3. A kapacitás-követelmények tervezése áttekintésével [hálózattervezés és teljesítményhangolás az Office 365](http://aka.ms/tune/).
+3. A kapacitás-követelmények tervezése áttekintésével [hálózattervezés és teljesítményhangolás az Office 365](https://aka.ms/tune/).
 4. A következő lépésekkel a kapcsolat beállításához a munkafolyamatokban [Kapcsolatcsoportok kiépítésével és állapotával kapcsolatos az ExpressRoute-munkafolyamatokat](expressroute-workflows.md).
 
 > [!IMPORTANT]
@@ -297,11 +293,11 @@ Igen. Az ExpressRoute prémium szintű díjak vonatkoznak, és az ExpressRoute k
 
 ### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services-and-dynamics-365"></a>A meglévő ExpressRoute-Kapcsolatcsoportok támogathatja a csatlakozást az Office 365-szolgáltatások és a Dynamics 365?
 
-Igen. A meglévő ExpressRoute-kapcsolatcsoport beállítható úgy, hogy támogatja az Office 365-szolgáltatásokhoz való kapcsolódás. Győződjön meg arról, hogy rendelkezik-e elegendő kapacitással az Office 365-szolgáltatásokhoz és, hogy engedélyezte a premium bővítményt. [Hálózattervezés és teljesítményhangolás az Office 365](http://aka.ms/tune/) kell azt tervezi, hogy a kapcsolat segítségével. Lásd még [létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport](expressroute-howto-circuit-classic.md).
+Igen. A meglévő ExpressRoute-kapcsolatcsoport beállítható úgy, hogy támogatja az Office 365-szolgáltatásokhoz való kapcsolódás. Győződjön meg arról, hogy rendelkezik-e elegendő kapacitással az Office 365-szolgáltatásokhoz és, hogy engedélyezte a premium bővítményt. [Hálózattervezés és teljesítményhangolás az Office 365](https://aka.ms/tune/) kell azt tervezi, hogy a kapcsolat segítségével. Lásd még [létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport](expressroute-howto-circuit-classic.md).
 
 ### <a name="what-office-365-services-can-be-accessed-over-an-expressroute-connection"></a>Mely Office 365 ExpressRoute-kapcsolaton keresztül elérhető szolgáltatások?
 
-Tekintse meg [Office 365 URL-címei és IP-címtartományok](http://aka.ms/o365endpoints) oldal expressroute-on keresztül támogatott szolgáltatások naprakész listáját.
+Tekintse meg [Office 365 URL-címei és IP-címtartományok](https://aka.ms/o365endpoints) oldal expressroute-on keresztül támogatott szolgáltatások naprakész listáját.
 
 ### <a name="how-much-does-expressroute-for-office-365-services-cost"></a>Mennyibe kerül az ExpressRoute az Office 365-szolgáltatások költség?
 

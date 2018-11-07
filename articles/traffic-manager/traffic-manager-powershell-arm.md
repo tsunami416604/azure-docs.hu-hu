@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 8dcd89415bdd48b2d8d5c8e1e699159e9d1129e5
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 8696f4780db8b98457b56dd7f1162553697023d4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139475"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237927"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Traffic Manager kezelése a PowerShell segítségével
 
@@ -178,7 +178,7 @@ Minden egyes Traffic Manager-profil megadja egy forgalom-útválasztási módsze
 Beágyazott végpontokat vannak beállítva, a szülő profil egy adott típusú végpont, "NestedEndpoints". Beágyazott végpontokat megadásakor:
 
 * A végpont a "targetresourceid azonosítója" paraméter használatával kell megadni
-* Ha a "Teljesítmény" forgalom-útválasztási módszert használja, a "EndpointLocation" szükség. Ellenkező esetben ez nem kötelező. Az értéknek kell lennie egy [érvényes Azure-régió neve](http://azure.microsoft.com/regions/).
+* Ha a "Teljesítmény" forgalom-útválasztási módszert használja, a "EndpointLocation" szükség. Ellenkező esetben ez nem kötelező. Az értéknek kell lennie egy [érvényes Azure-régió neve](https://azure.microsoft.com/regions/).
 * A "Weight" és "Priority" megadása nem kötelező, mint az Azure-beli.
 * A minchildendpoints "tulajdonság" paramétert nem kötelező megadni. Az alapértelmezett értéke "1". Elérhető végpontok száma a küszöbérték alá csökken, ha a szülő profilt úgy ítéli meg, a gyermek profil "csökkentett teljesítményű", és a szülő-profilban a többi végpontokra érkező forgalom hozunk.
 

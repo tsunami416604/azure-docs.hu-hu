@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/17/2017
 ms.author: jroth
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 203b3f79e5cca93557b3aa69c5774570c9e57022
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e5e156166ec9e085cf7a3c2dcb72aa9e87bbadf1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38719535"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244940"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>Az SQL Server az Azure Key Vault-integráció konfigurálása Azure-beli virtuális gépeken (klasszikus)
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "38719535"
 > 
 
 ## <a name="overview"></a>Áttekintés
-Nincsenek több SQL Server titkosítási funkciók, például [transzparens adattitkosítás (TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [oszlop a blokkszintű titkosítás (CLE)](https://msdn.microsoft.com/library/ms173744.aspx), és [biztonsági mentés titkosítása](https://msdn.microsoft.com/library/dn449489.aspx). Ezek az űrlapok titkosítási kezelését és a titkosításhoz használt kriptográfiai kulcsok tárolásához szükséges. Az Azure Key Vault (AKV) szolgáltatás célja a biztonsági és a egy biztonságos és magas rendelkezésre állású helyen ezek a kulcsok kezelését. A [SQL Server-összekötő](http://www.microsoft.com/download/details.aspx?id=45344) lehetővé teszi, hogy ezek a kulcsok Azure Key vault használata az SQL Server.
+Nincsenek több SQL Server titkosítási funkciók, például [transzparens adattitkosítás (TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [oszlop a blokkszintű titkosítás (CLE)](https://msdn.microsoft.com/library/ms173744.aspx), és [biztonsági mentés titkosítása](https://msdn.microsoft.com/library/dn449489.aspx). Ezek az űrlapok titkosítási kezelését és a titkosításhoz használt kriptográfiai kulcsok tárolásához szükséges. Az Azure Key Vault (AKV) szolgáltatás célja a biztonsági és a egy biztonságos és magas rendelkezésre állású helyen ezek a kulcsok kezelését. A [SQL Server-összekötő](https://www.microsoft.com/download/details.aspx?id=45344) lehetővé teszi, hogy ezek a kulcsok Azure Key vault használata az SQL Server.
 
 > [!IMPORTANT] 
 > Az Azure az erőforrások létrehozásához és használatához két különböző üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti a klasszikus üzemi modell használatával. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.

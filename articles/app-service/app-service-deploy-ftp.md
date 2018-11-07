@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: 8f32e84e5381a548ada2c5ad393e16c65b17379e
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f68bf05ef9749794c78898e4464489e7cfb358ff
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957182"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231381"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Alkalmazás üzembe helyezése az Azure App Service-be FTP/S
 
-Ez a cikk bemutatja, hogyan a web Apps, mobil-háttéralkalmazás vagy API-alkalmazás üzembe helyezése FTP- vagy FTPS használatával [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714).
+Ez a cikk bemutatja, hogyan a web Apps, mobil-háttéralkalmazás vagy API-alkalmazás üzembe helyezése FTP- vagy FTPS használatával [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714).
 
 Az alkalmazás FTP/S végpontja már aktív. Semmilyen beállítást nem kell FTP/S üzembe helyezési engedélyezéséhez szükségesek.
 

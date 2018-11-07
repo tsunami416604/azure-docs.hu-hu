@@ -1,6 +1,6 @@
 ---
-title: A hagyományos vállalati Azure Application Insights terv díjszabása |} Microsoft Docs
-description: Telemetria kötetek kezelése, és figyelje az Application Insightsban költségeket.
+title: Örökölt nagyvállalati csomag díjszabásáról az Azure Application Insights |} A Microsoft Docs
+description: Telemetria kötetek kezelése és figyelése az Application Insights költségeit.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -13,49 +13,49 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 65307eab0bf1b5f502f11c14c369826cd12e0966
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: b2a93c7d3b512a34ab5d2e4fd020415739466c2e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309833"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235292"
 ---
 # <a name="enterprise-plan-details"></a>Nagyvállalati csomag részletei
 
-Az Azure Application Insights van két árképzési tervek: Basic és Enterprise. A [alapvető](app-insights-pricing.md) terv árképzési az alapértelmezett terv. Ez magában foglalja az összes vállalati terv funkciót, minden további költség nélkül. Az alapszintű csomag váltók elsősorban okozhatnak az adatokat a köteten. 
+Az Azure Application Insights két díjcsomagok rendelkezik: alapszintű és vállalati. A [alapszintű](app-insights-pricing.md) tarifacsomagjának található alapértelmezett csomagjában. Tartalmazza az összes vállalati csomag szolgáltatásai, további költségek nélkül. A Basic csomag számlák elsősorban a, betöltött adatok mennyiségét. 
 
-A vállalati tervben szereplő csomópontonként járnak, és minden csomópont kap egy napi adatok támogatás. A vállalat díjszabási csomaggal van szó, a fent a belefoglalt támogatás okozhatnak adatokat. Ha az Operations Management Suite használ, a vállalati terv kell kiválasztani. 
+A vállalati csomag csomópontonkénti használati díj tartozik, és minden csomópont kap egy napi adatkeret. A vállalati díjszabási, díjkötelesek a csomagban foglalt adatkeret felett betöltött adatokért. Ha az Operations Management Suite használ, a vállalati csomagot kell választania. 
 
-Lásd: az a régió és aktuális árak [Application Insights árképzési](http://azure.microsoft.com/pricing/details/application-insights/).
+Jelenlegi díjak a pénznem és a régiót, lásd: [Application Insights díjszabásával](https://azure.microsoft.com/pricing/details/application-insights/).
 
 > [!NOTE]
-> A április 2018 azt [bevezetett](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) Azure figyelési új árképzési modellt. Ez a modell egy egyszerű "használatalapú" modell a teljes kaphat a szolgáltatások figyelése fogad el. További információ a [új árképzési modellt](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), hogy a [ebben a modellben való áthelyezése hatásának értékelése](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) a használati minták alapján és [hogyan programba az új modell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model)
+> A 2018 április hogy [bevezetett](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) egy új díjszabási modellben az Azure monitoring. Ez a modell között a szolgáltatások teljes portfólióját fogad el egy egyszerű "használatalapú" modellt. Tudjon meg többet a [új díjszabási modell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), hogy a [ebben a modellben való áttérés a következmények felmérésében](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) a használati minták alapján és [hogyan választható, az új modell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model)
 
-## <a name="how-the-enterprise-plan-works"></a>A vállalati terv működése
+## <a name="how-the-enterprise-plan-works"></a>A vállalati csomag működése
 
-* Az egyes csomópontok által küldött telemetriai alkalmazások a vállalati tervben kell fizetnie.
- * A *csomópont* egy fizikai vagy virtuális gép vagy egy platform,--szolgáltatás szerepkör-példányhoz, amelyen az alkalmazást.
- * Fejlesztési gépek, az ügyfélböngészők és a mobileszközök nem számítanak csomópontokként megjelölve.
- * Ha az alkalmazás által küldött telemetriai adatok, például egy webszolgáltatás-bővítmény és a háttér-feldolgozók több összetevőt az összetevőket külön bájtjai számítanak.
- * [Élő Stream metrikák](app-insights-live-stream.md) adatok díjszabási célra nem számítanak. Az előfizetés a költségek csomópontonként, nem alkalmazásonkénti vannak. Ha rendelkezik, amely 12 vonatkozó telemetriai adatokat küldhet az öt csomóponttal alkalmazások, az elsők között csak az öt csomóponttal.
-* Bár a havi díjak korlátozott akkor van szó, csak a minden órában, amelyben egy csomópont telemetriai adatokat küld az alkalmazásokból. Az óránkénti kell fizetni osztva a 744 (a 31 napos hónap órák száma) idézőjelekbe foglalt havi kell fizetni.
-* Az egyes csomópontok (az óránkénti részletességű) észlelt a adatok kötet foglalási, 200 MB naponkénti kap. Nem használt adatok foglalási nem átkerülnek egy nap után a Tovább gombra.
- * Ha árképzés terv a vállalat úgy dönt, minden egyes előfizetés lekérdezi a napi támogatás telemetriai adatokat küldhet az Application Insights-erőforrások, az adott előfizetés csomópontok száma alapján. Tehát ha által küldött adatokat minden nap az öt csomóponttal rendelkezik, akkor kell egy készletezett támogatás az adott előfizetés összes Application Insights-erőforrások alkalmazott 1 GB. Nem számít, ha az egyes csomópontok más csomópontok-nál több adatot küldjön, mivel a befoglalt adatok meg vannak osztva az összes csomópont között. Ha egy adott napon az Application Insights-erőforrások jelenik meg több adat ehhez az előfizetéshez a napi adatok-foglalás szerepel, a / GB-os keretét adatok díjak vonatkoznak. 
- * A napi adatok támogatás számítása a napra (UTC) órák száma, hogy minden csomópont küld-e a telemetriai adatok és a 200 MB 24 osztva. Igen, ha négy csomópont telemetriai 15 nap 24 óra során küldött, az adott napon adatát lenne ((4 &#215; 15) / 24) &#215; 200 MB = 500 MB. Adatok túlhasználati 2.30-as USD / GB ár az elsők között lenne 1,15 USD Ha a csomópontok küldött 1 GB adatot adott napon.
- * A vállalati terv napi támogatás az alkalmazásokkal, amelynek választotta az alapszintű csomag nincs megosztva. Használaton kívüli támogatás nem átvitt napi. 
+* Minden egyes csomópont, amely az alkalmazások telemetriai adatokat küld a nagyvállalati csomaghoz kell fizetnie.
+ * A *csomópont* egy fizikai vagy virtuális gép vagy a platform--szolgáltatásként szerepkörpéldány, amelyen az alkalmazást.
+ * Fejlesztői gépek, az ügyfelek böngészőin és a mobileszközök nem számítanak csomópontnak is.
+ * Ha az alkalmazás által küldött telemetriai adatok, például egy webszolgáltatás és a egy háttérbeli feldolgozó több összetevőt az összetevőket külön-külön számoljuk.
+ * [Élő metrikák Stream](app-insights-live-stream.md) adatok célokra díjszabás után nem kell fizetnie. Az előfizetéshez a költségek csomópontonként, nem az egyes alkalmazások vannak. Ha 12 a telemetriai adatokat küldő öt csomóponttal rendelkezik alkalmazások, a díj az öt csomópont van.
+* Bár a havi díjak korlátozott kell fizetnie, csak az adott órán belül, ahol egy csomópont telemetriai adatokat küld egy alkalmazásból. A óradíjat számítunk fel a határolójeles havi díj 744 (31 napos hónap órák száma) elosztva.
+* Egy kötet adatelosztás 200 MB / nap van megadva, az egyes csomópontok (az óránkénti részletességgel) észlelt. Nem használt adatok foglalási nem veszi át egy napot a következő.
+ * Ha a vállalati díjszabási, az egyes előfizetésekhez beolvasása egy napi adatkeret meg, hogy telemetriát küldjön az Application Insights-erőforrások, az adott előfizetésben csomópontok száma alapján. Tehát ha öt csomópont által küldött adatokat minden nap, fog összevont kerete 1 GB-os alkalmazandó az összes Application Insights-erőforrások, az adott előfizetésben. Nem számít, hogy egyes csomópontok más csomópontoknál több adatot küldeni, mert a szolgáltatási keretbe foglalt adatmennyiség megoszlik az összes csomópont. Ha az adott napon, az Application Insights-erőforrások kapja meg több adatot tartalmaz a napi szintű adatelosztás ehhez az előfizetéshez, a kereten túli GB-onkénti díjak érvényesek. 
+ * A napi adatkeretet számítjuk ki, hogy a nap (UTC használatával) órák száma, hogy egyes csomópontok 200 MB-TAL megszorozza 24 osztva telemetriát küld-e. Tehát ha négy csomóponton, a nap 24 órás 15 telemetriai adatokat küldő, a szolgáltatási keretbe foglalt adatmennyiség az adott napra lenne ((4 &#215; 15) / 24) &#215; 200 MB = 500 MB. Az adatok keretet GB-onként 2.30-as USD díj ellenében a díjat, ha a csomópontok 1 GB adat küldése adott napon lenne 1,15 USD-t.
+ * A vállalati csomag napi adatkeret ne oszthassák meg olyan alkalmazások, amelynek az alapszintű csomagot választotta. A fel nem használt juttatás nem vihetők el egymástól. 
 
-## <a name="examples-of-how-to-determine-distinct-node-count"></a>Példák különböző csomópont számának meghatározása
+## <a name="examples-of-how-to-determine-distinct-node-count"></a>Példák a különálló csomópontok száma meghatározása
 
-| Forgatókönyv                               | Teljes napi száma |
+| Forgatókönyv                               | Teljes napi csomópontok száma |
 |:---------------------------------------|:----------------:|
-| 1 alkalmazás 3 Azure App Service-példány és az 1 virtuális kiszolgáló használatával | 4 |
-| 3, 2 virtuális gép; futó alkalmazások az Application Insights-erőforrások, az alkalmazás: ugyanazt az előfizetést, és a vállalati tervben | 2 | 
-| 4 alkalmazások, amelyek alkalmazások Insights-erőforrások vannak ugyanahhoz az előfizetéshez; minden alkalmazást 16 csúcsidőn 2 példányok és 4 példányok 8 csúcsidőben | 13.33 | 
-| Az 1 feldolgozói szerepkör és 1 webes szerepkör, minden futó 2 példányait cloud services csomag | 4 | 
-| Azure Service Fabric-fürt 5-csomópont futtató 50 mikroszolgáltatások; minden egyes mikroszolgáltatási 3 példánya fut | 5|
+| 1 alkalmazás 3 Azure App Service-példányt és 1 virtuális kiszolgáló használatával | 4 |
+| 2 virtuális gépen; 3 alkalmazásokról ezekhez az alkalmazásokhoz az Application Insights-erőforrások a következők ugyanahhoz az előfizetéshez, és a nagyvállalati csomaghoz | 2 | 
+| 4 alkalmazások, amelyek Applications Insights-erőforrások ugyanabban az előfizetésben; vannak minden egyes 16 csúcsidőn 2 példány, és 8 csúcsidőben 4 példányok futó alkalmazás | 13.33 | 
+| 1 feldolgozói szerepkör és 1 webes szerepkör, minden egyes 2 példánya fut a cloud services | 4 | 
+| Az Azure Service Fabric-fürt 5 csomópontos 50 mikroszolgáltatások; fut Mindegyik mikroszolgáltatás 3 példánya fut | 5|
 
-* A pontos csomópont számbavételi függ, mely Application Insights SDK az alkalmazás használatával. 
-  * Az SDK 2.2 és újabb verziók, mind az Application Insights [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) és a [webes SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) minden alkalmazásgazda csomópontként jelentést. Többek között a számítógép fizikai kiszolgáló és a Virtuálisgép-gazdák vagy a példány nevét felhőszolgáltatásai számára.  Az egyetlen kivétel ez alól csak használó alkalmazások a [.NET Core](https://dotnet.github.io/) és az Application Insights Core SDK. Ebben az esetben csak egy csomópont esetén jelentést kap minden gazdagép, mert az állomás neve nem érhető el. 
-  * Az SDK korábbi verzióiban a [webes SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) SDK újabb verziók, viselkedik, de a [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) csak egy csomópont függetlenül alkalmazásgazdája számát jelenti. 
-  * Ha az alkalmazás az SDK-t beállítani **roleInstance** egyéni értékre, alapértelmezés szerint ugyanezt az értéket azt határozza meg, csomópontok száma. 
-  * Egy új SDK-verzió az ügyfélgépek és a mobileszközök futtatott alkalmazáshoz használata, a csomópontok száma egy számot, amely túl nagy (az ügyfél gépek vagy a mobil eszközök nagy számú) miatt előfordulhat, hogy vissza. 
+* A pontos csomópontok számában attól függ, mely az Application Insights SDK az alkalmazás használatával. 
+  * Az SDK 2.2 és újabb verziók, az Application Insights [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) és a [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) jelentés minden egyes csomópontot gazda. Például a fizikai kiszolgáló és a Virtuálisgép-gazdagépek a számítógép nevét vagy a példány nevét, a cloud services.  Az egyetlen kivétel, csak használó alkalmazás a [.NET Core](https://dotnet.github.io/) és az Application Insights Core SDK-t. Ebben az esetben csak egy csomópont jelentett minden gazdagép esetén, mert az állomás neve nem érhető el. 
+  * Az SDK korábbi verziói a [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) viselkedik az SDK újabb verziók, de a [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) jelentések csak egy csomópont, alkalmazás-gazdagépekkel számától függetlenül. 
+  * Ha az alkalmazás az SDK-t beállítani **roleInstance** egyéni értékké, alapértelmezés szerint, hogy ugyanazt az értéket meghatározására szolgál csomópontok száma. 
+  * Ha egy új SDK-verziót használja, hogy fut az ügyfélgépek és a mobileszközök, a csomópontok száma egy számot, amely nagyon nagy (miatt az ügyfélgépek és a mobileszközök nagy számú) előfordulhat, hogy vissza. 

@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: 3e26e40c26a27fdab1ec565dd4112b40acdd17d2
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: ae212bebf5a34e9a80f49a750735137d7a8814be
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213367"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232664"
 ---
-# <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Vészhelyreállítás beállítása az Azure virtuális gépek Azure-ban migrálás után 
+# <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Az Azure-beli virtuális gépek vészhelyreállításának beállítása Azure-ba történő migrálás után 
 
 
 Ez a cikk használja, miután [a helyszíni gépek áttelepítése az Azure virtuális gépeire](tutorial-migrate-on-premises-to-azure.md) használatával a [Site Recovery](site-recovery-overview.md) szolgáltatás. Ez a cikk segít az Azure virtuális gépek előkészítése állít be vészhelyreállítást egy másodlagos Azure régióra, Site Recovery használatával.
@@ -32,7 +32,7 @@ Vészhelyreállítás beállítása előtt győződjön meg arról, hogy a várt
 Az Azure [Virtuálisgép-ügynök](../virtual-machines/extensions/agent-windows.md) telepítve kell lennie a virtuális Gépet úgy, hogy a Site Recovery segítségével replikálhatja azt.
 
 
-1. Virtuálisgép-ügynök telepítése Windows rendszerű virtuális gépeken, töltse le és futtassa a [ügynököt telepítő](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). A virtuális gépen a telepítés befejezéséhez rendszergazdai jogosultságok szükségesek.
+1. Virtuálisgép-ügynök telepítése Windows rendszerű virtuális gépeken, töltse le és futtassa a [ügynököt telepítő](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). A virtuális gépen a telepítés befejezéséhez rendszergazdai jogosultságok szükségesek.
 2. A Virtuálisgép-ügynök Linux rendszerű virtuális gépeken, telepítse a legújabb [Linux-ügynök](../virtual-machines/extensions/agent-linux.md). A telepítés befejezéséhez rendszergazdai jogosultságok szükségesek. Javasoljuk, hogy telepítse a terjesztésipont-adattárból. Nem ajánlott közvetlenül a githubból a Linux rendszerű Virtuálisgép-ügynök telepítése. 
 
 

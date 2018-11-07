@@ -1,6 +1,6 @@
 ---
-title: Engedélyezett állapotot váltani vagy a BizTalk szolgáltatások állapotok feladatok |} Microsoft Docs
-description: 'A különböző MABS állapotú engedélyezett műveletek/műveletek: állítsa le, indítsa el, indítsa újra, felfüggesztése, folytatása, törlése, méretezhető, frissítheti a konfigurációs és biztonsági mentése'
+title: Engedélyezett állapotot, vagy a BizTalk szolgáltatások állapota a feladatok |} A Microsoft Docs
+description: 'A műveletek/műveletek különböző MABS állapot engedélyezett: állítsa le, indítsa el, indítsa újra, felfüggesztése, folytatása, törlése, méretezhető, frissítse a konfigurációs és biztonsági mentése'
 services: biztalk-services
 documentationcenter: ''
 author: MandiOhlinger
@@ -14,34 +14,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2016
 ms.author: mandia
-ms.openlocfilehash: 05470e75fc7b46603c8fce3a98c66ac6a24758a8
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: bbe1288a42db307001ac778394ac410206f1df21
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "24102742"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228198"
 ---
-# <a name="what-you-can-and-cant-do-using-the-biztalk-service-state"></a>Lehet, illetve mit nem használja a BizTalk szolgáltatás állapota
+# <a name="what-you-can-and-cant-do-using-the-biztalk-service-state"></a>Hogy és mit nem hajtható végre, használja a BizTalk-szolgáltatás állapota
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-Attól függően, hogy a BizTalk szolgáltatás aktuális állapotát, és a BizTalk szolgáltatás nem hajtható végre műveletek vannak.
+A BizTalk-szolgáltatás aktuális állapotát, attól függően számos műveleteket, lehet, és a BizTalk-szolgáltatás nem hajtható végre.
 
-Például egy új BizTalk szolgáltatás kiépítése. Amikor befejeződik, a BizTalk szolgáltatás van `active` állapotát. Az aktív állapotú leállítása, felfüggesztése és a BizTalk szolgáltatás törléséhez. Ha a BizTalk szolgáltatás leállítása és leállítása sikertelen lesz, majd a BizTalk szolgáltatás a egy `StopFailed` állapotát. Az a `StopFailed` állapotba kerül, a BizTalk szolgáltatásokat. A következő hiba akkor fordul elő, ha egy művelet nem engedélyezett, folytatása, például:
+Ha például üzembe helyezi egy új BizTalk szolgáltatást. Ha sikeresen befejeződik, a BizTalk-szolgáltatás van `active` állapota. Aktív állapotban állítsa le, felfüggesztése és a BizTalk-szolgáltatás törlése. A BizTalk szolgáltatás leállítása és a Leállítás meghiúsul, akkor kerül a BizTalk-szolgáltatás egy `StopFailed` állapota. Az a `StopFailed` állapotba, újraindíthatja a BizTalk szolgáltatást. Ha egy művelet nem engedélyezett, folytatása, például a következő hiba jelenik meg:
 
 `Operation not allowed`
 
 ## <a name="view-the-possible-states"></a>A lehetséges állapotok megtekintése
 
-A következő táblázat a műveletek vagy a műveletek is létrehozhatók, ha a BizTalk szolgáltatás egy adott állapotban. Egy ✔ azt jelenti, hogy a művelet engedélyezett az adott állapotban. Egy üres bejegyzést azt jelenti, hogy a művelet nem hajtható végre az adott állapotban.
+Az alábbi táblázatok tartalmazzák a műveletek vagy műveleteket, amelyeket végezhető, ha a BizTalk-szolgáltatás egy meghatározott állapotban van. Egy ✔ azt jelenti, hogy a művelet adott állapotban engedélyezett. Egy üres bejegyzés azt jelenti, hogy a művelet nem hajtható végre, az adott állapotot.
 
-| Szolgáltatás állapota | Indítás | Leállítás | Újraindítás | Felfüggesztése | Folytatás | Törlés | Méretezés | Frissítés <br/> Konfiguráció | Biztonsági mentés |
+| Szolgáltatás állapota | Indítás | Leállítás | Újraindítás | Felfüggesztés | Folytatás | Törlés | Méretezés | Frissítés <br/> Konfiguráció | Backup |
 | --- | --- | --- | --- | --- | --- | --- |--- | --- | --- |
 | Aktív |  | ✔ | ✔ | ✔ |  | ✔ |✔ |✔ |✔ |
 | Letiltva |  |  |  |  |  | ✔ | |  |  | 
 | Felfüggesztve |  |  |  |  | ✔ | ✔ | |  | ✔ |
 | Leállítva | ✔ |  | ✔ |  |  | ✔ | |  | ✔ |
-| Szolgáltatás frissítése sikertelen |  |  |  |  |  | ✔ | |  |  | 
+| Szolgáltatás frissítése nem sikerült |  |  |  |  |  | ✔ | |  |  | 
 | DisableFailed |  |  |  |  |  | ✔ | |  |  | 
 | EnableFailed |  |  |  |  |  | ✔ | |  |  | 
 | StartFailed <br/> StopFailed <br/> RestartFailed | ✔ | ✔ | ✔ |  |  | ✔ | | ✔ | |
@@ -53,10 +53,10 @@ A következő táblázat a műveletek vagy a műveletek is létrehozhatók, ha a
 
 
 ## <a name="see-also"></a>Lásd még:
-* [Teendők, az irányítópult, a figyelő és a skála lapon a BizTalk szolgáltatások](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
-* [BizTalk szolgáltatások fejlesztői, Basic, Standard és prémium verzióval beolvasása](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-* [Készítsen biztonsági másolatot, és a BizTalk szolgáltatás visszaállítása](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
-* [Sávszélesség-szabályozás, tekintse meg a BizTalk szolgáltatások](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
-* [A Service Bus- és hozzáférés-vezérlés kibocsátó neve és a kiállító értékek beolvasása a BizTalk szolgáltatás](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
-* [Hogyan kezdhetem el az Azure BizTalk Services SDK használatát](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+* [Mit tehet a BizTalk Services az irányítópult, figyelés és méret lapok](https://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+* [A BizTalk Services fejlesztői, alapszintű, Standard és prémium szintű kiadás beolvasása](https://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+* [Készítsen biztonsági másolatot, és a BizTalk-szolgáltatás visszaállítása](https://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
+* [Szabályozás a BizTalk Services ismertetése](https://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
+* [A Service Bus- és hozzáférés-vezérlés kiállító neve és kiállító kulcsérték lekéréséhez a BizTalk szolgáltatás](https://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
+* [Hogyan kezdhetem el az Azure BizTalk Services SDK használatát](https://go.microsoft.com/fwlink/p/?LinkID=302335)
 

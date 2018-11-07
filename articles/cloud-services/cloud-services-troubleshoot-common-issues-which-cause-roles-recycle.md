@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 20b98fa9656c9c66a81ff98a70fcdbfb29d4dad6
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 2a9214b918883e493ebe5c93fc7f56e7ce9c77ec
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093180"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234494"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Gyakori hibák, melyek a szerepkörök újrahasznosítását okozzák
 Ez a cikk ismerteti az egyes alkalmazástelepítéssel kapcsolatos problémák leggyakoribb okait és hibaelhárítási tippekkel szolgál az ilyen problémák megoldásához. Azt jelzi, hogy probléma van egy alkalmazás akkor, ha a szerepkörpéldány nem indul el, vagy azt a inicializálása során, foglalt és leállítása állapotok közötti ciklusok.
@@ -64,7 +64,7 @@ Az SSL a webes szerepkör futtatásához, gondoskodnia kell arról, hogy a expor
 ## <a name="next-steps"></a>További lépések
 Továbbiak megtekintése [hibaelhárítási cikkek](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) a cloud services.
 
-További szerepkör-újrahasznosítás: forgatókönyvek megtekintése [Kevin Williamson blogsorozatot](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+További szerepkör-újrahasznosítás: forgatókönyvek megtekintése [Kevin Williamson blogsorozatot](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
 
 [RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
 [ONSTART érvényesség]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx

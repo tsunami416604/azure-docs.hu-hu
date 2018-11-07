@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7e8afc02c738a2bba445b1d84b7cb899dfbb93a0
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: bc724f57a25e2ca12d334192d2171899345e72de
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301554"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247381"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Biztonsági keret: Kommunikációs biztonság |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |
@@ -113,7 +113,7 @@ ms.locfileid: "43301554"
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | EnvironmentType – Azure |
 | **Hivatkozások**              | [Az Azure App Service HTTPS kényszerítése](../app-service/app-service-web-tutorial-custom-ssl.md#enforce-https) |
-| **Lépések** | <p>Bár az Azure már lehetővé teszi, hogy HTTPS az Azure app services helyettesítő tanúsítványt a tartomány *. azurewebsites.NET webhelyet, nem tesszük kötelezővé a HTTPS. Látogatók továbbra is hozzáférhetnek a HTTP-n keresztül veszélyeztethetik a az alkalmazás biztonsági alkalmazás, és ezért a HTTPS explicit módon léptethetők rendelkezik. ASP.NET MVC-alkalmazások használhatják a [RequireHttps szűrő](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) , amely előírja, hogy újra küldésének HTTPS-kapcsolaton keresztül nem titkosított HTTP-kérelem.</p><p>Másik lehetőségként az URL-újraíró modult, amely tartalmazza az Azure App Service segítségével HTTPS kényszerítése. URL-újraíró modult lehetővé teszi a fejlesztők előtt be kell adni a kérelmeket az alkalmazás bejövő kérelmek alkalmazott szabályok meghatározásához. Az URL Rewrite-szabályok határozzák meg a web.config fájlban tárolja az alkalmazás</p>|
+| **Lépések** | <p>Bár az Azure már lehetővé teszi, hogy HTTPS az Azure app services helyettesítő tanúsítványt a tartomány *. azurewebsites.NET webhelyet, nem tesszük kötelezővé a HTTPS. Látogatók továbbra is hozzáférhetnek a HTTP-n keresztül veszélyeztethetik a az alkalmazás biztonsági alkalmazás, és ezért a HTTPS explicit módon léptethetők rendelkezik. ASP.NET MVC-alkalmazások használhatják a [RequireHttps szűrő](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) , amely előírja, hogy újra küldésének HTTPS-kapcsolaton keresztül nem titkosított HTTP-kérelem.</p><p>Másik lehetőségként az URL-újraíró modult, amely tartalmazza az Azure App Service segítségével HTTPS kényszerítése. URL-újraíró modult lehetővé teszi a fejlesztők előtt be kell adni a kérelmeket az alkalmazás bejövő kérelmek alkalmazott szabályok meghatározásához. Az URL Rewrite-szabályok határozzák meg a web.config fájlban tárolja az alkalmazás</p>|
 
 ### <a name="example"></a>Példa
 Az alábbi példa tartalmazza az URL-újraíró egy egyszerű szabályt, amely arra kényszeríti a teljes bejövő forgalom HTTPS használatára
@@ -156,7 +156,7 @@ Ez a szabály működik visszaadó HTTP-állapotkód 301 (Állandó átirányít
 | **SDL fázis**               | Felépítés |  
 | **Megfelelő technológiák** | SQL Azure  |
 | **Attribútumok**              | SQL-verzió - 12-es verzió |
-| **Hivatkozások**              | [Ajánlott eljárásokat az írásos biztonságos kapcsolati karakterláncok SQL Database-hez](http://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
+| **Hivatkozások**              | [Ajánlott eljárásokat az írásos biztonságos kapcsolati karakterláncok SQL Database-hez](https://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
 | **Lépések** | <p>Az SQL Database és az ügyfélalkalmazások közötti minden kommunikáció mindig Secure Sockets Layer (SSL) segítségével titkosítja. Az SQL Database nem támogatja a nem titkosított kapcsolatokat. Tanúsítványok alkalmazáskódban vagy eszközök ellenőrzéséhez, explicit módon titkosított kapcsolatot kérjen, és nem megbízható kiszolgálói tanúsítványok. Ha az alkalmazás kódja vagy eszközök egy titkosított kapcsolatot kér, továbbra is kapja titkosított kapcsolatokat</p><p>Azonban nem lehet érvényesíteni a kiszolgálói tanúsítványok, és ezért lesz téve a "közbeékelődéses" támadások. Az ADO.NET alkalmazáskóddal tanúsítványok érvényesítésére, állítsa be `Encrypt=True` és `TrustServerCertificate=False` az adatbázis-kapcsolati karakterláncot. Tanúsítványokat bocsát ki az SQL Server Management Studio ellenőrzéséhez nyissa meg a Csatlakozás kiszolgálóhoz párbeszédpanel. Kapcsolat titkosítása a kapcsolat tulajdonságai lapon kattintson a</p>|
 
 ## <a id="encrypted-sqlserver"></a>Az SQL server titkosított kommunikáció kényszerítése

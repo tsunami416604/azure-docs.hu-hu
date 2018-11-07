@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: cca475f552495a42aabc60faf0bd57382f148120
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 1bfa52d07ddc4eaf86bce17c0ad7c63493a8b5fd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958568"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255727"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Az MXChip IoT DevKit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
 
@@ -69,7 +69,7 @@ Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **MXChip*
 #### <a name="to-prepare-the-devkit-device"></a>Az DevKit eszköz előkészítése:
 
 
-1. Az MXChip a a legújabb előregyártott Azure IoT Central belső vezérlőprogram letöltése a [kiadások](http://aka.ms/iotcentral-docs-MXChip-releases) lapját a githubon.
+1. Az MXChip a a legújabb előregyártott Azure IoT Central belső vezérlőprogram letöltése a [kiadások](https://aka.ms/iotcentral-docs-MXChip-releases) lapját a githubon.
 1. A fejlesztői készlet eszköz csatlakoztatása a fejlesztői gépén, USB-kábel segítségével. Windows, a fájl explorer megnyílik egy ablak a tárolót a fejlesztői készlet eszközön leképezve meghajtón. Ha például a meghajtó neve lehet **AZ3166 (D:)**.
 1. Húzza a **iotCentral.bin** fájlt arra a meghajtóra ablakot. A másolás befejeződése után az eszköz újraindul, új belső vezérlőprogramját.
 

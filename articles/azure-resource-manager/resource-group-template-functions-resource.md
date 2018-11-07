@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4e454030f77a22236da18c8d8a5215667784f7c5
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 6da2f7792df564ea3a41df37ab9b00574a205e5b
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301440"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219545"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Erőforrás-funkciók az Azure Resource Manager-sablonok
 
@@ -118,11 +118,10 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
             "type": "string",
             "defaultValue": "southcentralus"
         },
-        "requestContent": {
+        "accountSasProperties": {
             "type": "object",
             "defaultValue": {
                 "signedServices": "b",
-                "signedResourceType": "c",
                 "signedPermission": "r",
                 "signedExpiry": "2018-08-20T11:00:00Z",
                 "signedResourceTypes": "s"
@@ -164,7 +163,7 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
         },
         "accountSAS": {
             "type": "object",
-            "value": "[listAccountSas(parameters('storagename'), '2018-02-01', parameters('requestContent'))]"
+            "value": "[listAccountSas(parameters('storagename'), '2018-02-01', parameters('accountSasProperties'))]"
         }
     }
 }
@@ -694,10 +693,10 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| sameRGOutput | Sztring | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentRGOutput | Sztring | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentSubOutput | Sztring | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| nestedResourceOutput | Sztring | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
+| sameRGOutput | Karakterlánc | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentRGOutput | Karakterlánc | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentSubOutput | Karakterlánc | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| nestedResourceOutput | Karakterlánc | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 

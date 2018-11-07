@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
-ms.openlocfilehash: e10bd04f37951f93db8af083692b7a2fe25ac9b7
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 9d1229084410b6fe7c500a22f8e1e1aed1b8107d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348451"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227348"
 ---
 # <a name="install-update-11-on-your-storsimple-virtual-array"></a>A StorSimple Virtual Array 1.1-es frissítés telepítése
 
@@ -27,7 +27,7 @@ ms.locfileid: "39348451"
 
 Ez a cikk azt ismerteti, hogyan 1.1-es frissítés telepítése a StorSimple virtuális tömb helyi webes felületén keresztül, és az Azure Portalon keresztül.
 
-A szoftverfrissítések vagy gyorsjavítások naprakészen tartani a StorSimple Virtual Array alkalmaz. Mielőtt alkalmazná a frissítést, javasoljuk, hogy tegye meg a kötetek vagy megosztások kapcsolat nélküli módban a gazdagépen első és az eszköz majd. Így minimálisra csökkenthető az adatsérülés lehetőségét. Miután a kötetek vagy megosztások offline állapotban, akkor kell is manuális biztonsági mentést az eszköz.
+A szoftverfrissítések vagy gyorsjavítások naprakészen tartani a StorSimple Virtual Array alkalmaz. Mielőtt alkalmazná a frissítést, javasoljuk, hogy tegye meg a kötetek vagy megosztások kapcsolat nélküli módban a gazdagépen első és az eszköz majd. Ezzel a lehető legkisebbre csökkenti az adatsérülés esélyét. Miután a kötetek vagy megosztások offline állapotban, akkor kell is manuális biztonsági mentést az eszköz.
 
 > [!IMPORTANT]
 > - 1.1-es frissítés megfelel **10.0.10307.0** szoftververzió az eszközön. Ez a frissítés újdonsága az információk, [kibocsátási megjegyzései 1.1-es frissítés](storsimple-virtual-array-update-11-release-notes.md).
@@ -66,7 +66,7 @@ A következő lépésekkel 1.1-es frissítés letöltése a Microsoft Update kat
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>A frissítés vagy gyorsjavítás letöltése
 
-1. Indítsa el az Internet Explorert és keresse meg [ http://catalog.update.microsoft.com ](http://catalog.update.microsoft.com).
+1. Indítsa el az Internet Explorert és keresse meg [ http://catalog.update.microsoft.com ](https://catalog.update.microsoft.com).
 
 2. Ha a Microsoft Update katalógust ezen a számítógépen először használ, kattintson a **telepítése** , amikor a Microsoft Update katalógus beépülő moduljának telepítésére kéri.
 

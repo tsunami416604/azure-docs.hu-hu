@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: faabdb4c2d2e434863a6bed0b2cd85a05c94eab1
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: df9edfee9d8a6a0736a040924bac736cfcb3633c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395729"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250917"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tíz dolog, amire alkalmas a Windows Data Science virtuális gépen
 
@@ -64,9 +64,9 @@ Itt látható, hogy az egyéni környezet beállítása néz ki a Visual Studió
 
 ![Projektek készítése PTVS-telepítő](./media/vm-do-ten-things/PTVSSetup.png)
 
-Tekintse meg a [PVTS dokumentációban](http://aka.ms/ptvsdocs) további részleteket a Python-környezetek létrehozása.
+Tekintse meg a [PVTS dokumentációban](https://aka.ms/ptvsdocs) további részleteket a Python-környezetek létrehozása.
 
-Most hozzon létre egy új Python-projektet állíthatók be. Navigáljon a **fájl** -> **új** -> **projekt** -> **Python** és típusának kiválasztása Python-alkalmazást hoz létre. A kívánt verziót (Python 2.7-es és 3.6) az aktuális projekt Python-környezetet a jobb gombbal kattintva állíthatja a **Python-környezetek**lehetőségre kattint **hozzáadása/eltávolítása Python-környezetek**, majd kiválasztotta a kívánt környezetre. A termék-projektek készítése PTVS használatáról további információkat talál [dokumentáció](http://aka.ms/ptvsdocs).
+Most hozzon létre egy új Python-projektet állíthatók be. Navigáljon a **fájl** -> **új** -> **projekt** -> **Python** és típusának kiválasztása Python-alkalmazást hoz létre. A kívánt verziót (Python 2.7-es és 3.6) az aktuális projekt Python-környezetet a jobb gombbal kattintva állíthatja a **Python-környezetek**lehetőségre kattint **hozzáadása/eltávolítása Python-környezetek**, majd kiválasztotta a kívánt környezetre. A termék-projektek készítése PTVS használatáról további információkat talál [dokumentáció](https://aka.ms/ptvsdocs).
 
 ## <a name="2-using-a-jupyter-notebook-to-explore-and-model-your-data-with-python-or-r"></a>2. Ismerje meg, és modellezheti az adatokat, a Python vagy R Jupyter Notebook használata
 A Jupyter Notebook egy hatékony környezetet biztosít, a böngésző alapú "IDE" adatáttekintés és modellezés a rendszer. A Jupyter Notebook Python 2, a Python 3 vagy az R (nyílt forráskódú és a Microsoft R Server) használhatja.
@@ -806,7 +806,7 @@ Az alábbi lépések az Előfeltételek – Azure Cosmos DB érhetnek el a dsvm-
 
 1. Az Azure Cosmos DB Python SDK-t a dsvm-hez már telepítve van (Futtatás ```pip install pydocumentdb --upgrade``` frissítése a parancssor használatával)
 2. Az Azure Cosmos DB-fiók és a egy adatbázis létrehozása [Azure Portalon](https://portal.azure.com)
-3. "Az Azure Cosmos DB áttelepítési eszköz" letöltését [Itt](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) és a egy szabadon választott könyvtárba való kinyeréséhez
+3. "Az Azure Cosmos DB áttelepítési eszköz" letöltését [Itt](https://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) és a egy szabadon választott könyvtárba való kinyeréséhez
 4. A tárolt JSON-adatok (mexikói adatok) importálása egy [nyilvános blob](https://cahandson.blob.core.windows.net/samples/volcano.json) az a következő parancs paraméterei, az áttelepítési eszköz (a Cosmos DB áttelepítési eszköz telepítési könyvtárából dtui.exe) Cosmos DB-be. Adja meg a forrás és cél helyét ezekkel a paraméterekkel:
    
     `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`

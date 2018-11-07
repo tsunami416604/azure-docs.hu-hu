@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: e22a2431ecae68278276b069bc199cfea60cd413
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 5d2edd3b4d8655133ef2835f0d0e579280123ae7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347358"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249421"
 ---
 # <a name="azure-service-fabric-support-options"></a>Az Azure Service Fabric támogatási lehetőségei
 
@@ -27,7 +27,7 @@ Hogy megfelelő támogatást biztosít a Service Fabric-fürtök, amelyek az alk
 
 ## <a name="report-production-issues-or-request-paid-support-for-azure"></a>Éles problémák jelentése és az Azure-ban fizetős támogatási kérelem
 
-A Service Fabric-fürtben üzembe helyezett Azure-beli problémák jelentési, nyisson meg egy támogatási jegyet [az Azure Portalon](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) vagy [a Microsoft támogatási portálján](http://support.microsoft.com/oas/default.aspx?prid=16146).
+A Service Fabric-fürtben üzembe helyezett Azure-beli problémák jelentési, nyisson meg egy támogatási jegyet [az Azure Portalon](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) vagy [a Microsoft támogatási portálján](https://support.microsoft.com/oas/default.aspx?prid=16146).
 
 További információk:
  
@@ -38,7 +38,7 @@ További információk:
 
 ## <a name="report-production-issues-or-request-paid-support-for-standalone-service-fabric-clusters"></a>Éles problémák jelentése és az önálló Service Fabric-fürtök fizetős támogatási kérelem
 
-Jelentéskészítési problémákat a Service Fabric-fürtben üzembe helyezett helyszíni vagy más felhőkben, nyisson meg egy professzionális támogatási jegyet a [a Microsoft támogatási portálján](http://support.microsoft.com/oas/default.aspx?prid=16146).
+Jelentéskészítési problémákat a Service Fabric-fürtben üzembe helyezett helyszíni vagy más felhőkben, nyisson meg egy professzionális támogatási jegyet a [a Microsoft támogatási portálján](https://support.microsoft.com/oas/default.aspx?prid=16146).
 
 További információk:
 

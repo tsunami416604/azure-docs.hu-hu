@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 1cbb46f5238c2019225ab724abaf49e878d19598
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 6dff1b2fe40acdef1fde95444d70f0bcfc120a64
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353866"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230036"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligent Insights az Azure SQL Database teljesítménnyel kapcsolatos problémáinak elhárítása
 
@@ -167,7 +167,7 @@ Mivel a pagelatch egy belső ellenőrzési mechanizmust, az SQL Database, automa
 
 Egy zárolás versengés kezelésére, hogy cserélje le a soros Indexkulcs egyenletes elosztását beszúrásokat egy index tartomány hálója kulccsal. Általában egy vezető oszlop az index osztja el a munkaterhelés arányosan. Egy másik módszert érdemes figyelembe venni, a táblaparticionálást. Túl sok zárolás a versengés csökkentése általánosan használt megközelítés létrehozása a particionálási séma egy számított oszlop egy particionált táblához kivonatot. Esetén pagelatch i/o-versengés indexek bemutatása segít mérsékelni ezen teljesítményprobléma. 
 
-További információkért lásd: [diagnosztizálása és megoldása zárolni az SQL Server-kiszolgálón a versengés](http://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf) (letölthető PDF-fájl).
+További információkért lásd: [diagnosztizálása és megoldása zárolni az SQL Server-kiszolgálón a versengés](https://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf) (letölthető PDF-fájl).
 
 ## <a name="missing-index"></a>Hiányzó Index
 

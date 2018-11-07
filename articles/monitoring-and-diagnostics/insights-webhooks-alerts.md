@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 0f08e63d6cbf5be8667b1fd61556e3f33e31d06f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f2f96faf6bd8132422aeb3484547e4b6a1195a7f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957658"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255540"
 ---
 # <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>Klasszikus metrikariasztás értesítése egy webhook használatával nem Azure-beli system rendelkezik
 Webhookok használatával irányíthatja a riasztási értesítés az Azure utólagos feldolgozási vagy egyéni műveleteket más rendszerekre. A riasztás egy webhook használatával átirányítása a szolgáltatások által küldött SMS-ezni, hibák, csevegési vagy az üzenetkezelési szolgáltatások révén, vagy a különböző műveleteknél csapat értesítése bejelentkezni. 
@@ -101,8 +101,8 @@ A POST művelet a következő JSON-adattartalom és az összes mérőszám-alap�
 >
 
 ## <a name="next-steps"></a>További lépések
-* További információ az Azure-riasztások és a webhookok a videóban [a pagerduty segítségével integrálhatja Azure alerts](http://go.microsoft.com/fwlink/?LinkId=627080).
-* Ismerje meg, hogyan [Azure Automation-szkriptek (runbookok) végrehajtása az Azure-riasztások](http://go.microsoft.com/fwlink/?LinkId=627081).
+* További információ az Azure-riasztások és a webhookok a videóban [a pagerduty segítségével integrálhatja Azure alerts](https://go.microsoft.com/fwlink/?LinkId=627080).
+* Ismerje meg, hogyan [Azure Automation-szkriptek (runbookok) végrehajtása az Azure-riasztások](https://go.microsoft.com/fwlink/?LinkId=627081).
 * Ismerje meg, hogyan [Logic Apps-alkalmazás használatával küldjön SMS-t, Twilio-n keresztül az Azure riasztásból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app).
 * Ismerje meg, hogyan [Logic Apps-alkalmazás használatával egy Slack-üzenet küldése egy Azure-riasztásokból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app).
 * Ismerje meg, hogyan [üzenet küldése az Azure-üzenetsort származó Azure Logic Apps-alkalmazás használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app).

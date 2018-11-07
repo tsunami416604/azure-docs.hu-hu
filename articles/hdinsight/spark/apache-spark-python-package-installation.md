@@ -2,19 +2,19 @@
 title: Parancsfájlművelet - jupyterrel, Cellafunkciók az Azure HDInsight telepítse a Python-csomagok
 description: Lépésenkénti útmutató konfigurálása elérhető Jupyter notebookok a HDInsight Spark-fürtök használatával külső python-csomagok használata.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/09/2018
-ms.author: jasonh
-ms.openlocfilehash: c8d0b172682654c858a97b4ca2df99ec5079adaa
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: af25dcff2302827f2291d50972f09b8b5fda6cd3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041149"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255438"
 ---
 # <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Parancsfájlművelet használata a HDInsight Apache Spark-fürtök Jupyter notebookokhoz külső Python-csomagok telepítése
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ Szkriptműveletek használata a HDInsight (Linux), külső, a Közösség által
 
 Kereshet a [csomagindexet](https://pypi.python.org/pypi) a teljes listát az elérhető csomagokat. Elérhető csomagok listáját a más forrásokból is beszerezheti. Például telepíthet keresztül elérhető csomagok [Anaconda](https://docs.continuum.io/anaconda/pkg-docs) vagy [conda-forge](https://conda-forge.org/feedstocks/).
 
-Ebben a cikkben megismerheti, hogyan telepítheti a [TensorFlow](https://www.tensorflow.org/) csomag szkriptműveletekkel a fürtön, és ezzel a Jupyter notebook használatával.
+Ebben a cikkben megismerheti, hogyan telepítheti a [TensorFlow](https://www.tensorflow.org/) csomag szkriptműveletekkel a fürtön, és ezzel példaként a Jupyter notebook használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az alábbiakkal kell rendelkeznie:
@@ -44,12 +44,27 @@ Az alábbiakkal kell rendelkeznie:
    > Ha Ön még nem rendelkezik a HDInsight linuxon futó Spark-fürt, szkriptműveletek futtathatja a fürt létrehozása során. Keresse meg a dokumentációt a [egyéni parancsfájl-műveletek használata](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
    > 
    > 
+   
+   ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>A HDInsight-fürtökön használt nyílt forráskódú szoftverek támogatása
+
+A Microsoft Azure HDInsight szolgáltatást használ az ökoszisztéma formátumú körül Hadoop nyílt forráskódú technológiák. A Microsoft Azure nyílt forráskódú technológiák egy általános szintű támogatást biztosít. További információkért lásd: a **támogatás hatóköre** szakaszában a [Azure támogatás – gyakori kérdések webhely](https://azure.microsoft.com/support/faq/). A HDInsight szolgáltatás egy további szintű támogatást biztosít a beépített összetevők.
+
+A HDInsight szolgáltatásban elérhető nyílt forráskódú összetevőket két típusa van:
+
+* **Beépített összetevők** – ezek az összetevők a HDInsight-fürtök előre telepítve vannak, és adja meg a fürt fő funkciói. Ha például YARN ResourceManager, a Hive-lekérdezés nyelv (HiveQL) és a Mahout kódtár tartoznak ebbe a kategóriába. Kiszolgálófürt-összetevők teljes listája megtalálható [a HDInsight által biztosított Hadoop-fürtverziók újdonságai](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-component-versioning).
+* **Egyéni összetevők** -, a fürt felhasználói telepítése vagy használata az alkalmazások és szolgáltatások valamelyik összetevő a Közösségben elérhető vagy Ön által létrehozott.
+
+> [!WARNING]
+> A HDInsight-fürthöz megadott összetevők teljes mértékben támogatottak. Support segít elkülöníteni, és ezeket az összetevőket kapcsolatos problémák megoldásához.
+>
+> Egyéni összetevők annak érdekében, hogy a probléma további hibaelhárításához üzletileg ésszerű támogatást kapnak. Lehet, hogy a probléma megoldásához a Microsoft ügyfélszolgálatához, vagy előfordulhat, hogy megadását is végezhetnek elérhető csatornák a nyílt forráskódú technológiák, ahol található részletes szakértelmét, hogy a technológiát. Számos, használható, például közösségi helyek vannak, például: [HDInsight az MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Is Apache projektek rendelkeznek projekt helyek [ http://apache.org ](http://apache.org), például: [Hadoop](http://hadoop.apache.org/).
+
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Külső csomagok használata Jupyter notebookokkal
 
 1. Az [Azure portál](https://portal.azure.com/) kezdőpultján kattintson a Spark-fürthöz tartozó csempére (ha rögzítette azt a kezdőpulton). A fürtöt a következő helyről is megkeresheti: **Browse All (Összes tallózása)** > **HDInsight Clusters** (HDInsight-fürtök).   
 
-2. A Spark-fürt panelén kattintson **Parancsfájlműveletek** a bal oldali ablaktáblán. Futtassa az egyéni művelet, amely tensorflow-hoz telepíti az átjárócsomópontokhoz és a feldolgozó csomópontok. A bash-szkript a lehet hivatkozni: https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh látogasson el a dokumentációt a [egyéni parancsfájl-műveletek használata](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+2. A Spark-fürt panelén kattintson **Parancsfájlműveletek** a bal oldali ablaktáblán. A parancsprogram típusát "Egyéni" használja, és adjon egy rövid nevet a parancsprogram-művelet. Futtassa a parancsprogramot a **a fő- és munkavégző csomópontok** és a paraméterek mezőt hagyja üresen. A bash-szkript a lehet hivatkozni: https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh látogasson el a dokumentációt a [egyéni parancsfájl-műveletek használata](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
 
    > [!NOTE]
    > Nincsenek két python-telepítés esetén a fürt a. A Spark fogja használni a Anaconda python-telepítés található `/usr/bin/anaconda/bin`. A telepítést, az az egyéni műveletek keresztül hivatkozhat `/usr/bin/anaconda/bin/pip` és `/usr/bin/anaconda/bin/conda`.

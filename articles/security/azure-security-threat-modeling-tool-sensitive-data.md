@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: bcd2b2199628a7f717a7ce1d8eba032f5778379b
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 7f1bb400650a223a9f0b4249c33f7c480a1bc009
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301461"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262369"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Biztonsági keret: Bizalmas adatok |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |
@@ -28,7 +28,7 @@ ms.locfileid: "43301461"
 | **Webalkalmazás** | <ul><li>[Győződjön meg arról, hogy bizalmas tartalom nem tárolja a böngészőben](#cache-browser)</li><li>[Webes alkalmazás a konfigurációs fájlok bizalmas adatokat tartalmazó szakaszok titkosítása](#encrypt-data)</li><li>[Explicit módon letiltja az automatikus kiegészítés bizalmas űrlapokban és a bemenetek HTML-attribútum](#autocomplete-input)</li><li>[Győződjön meg arról, hogy a felhasználói képernyőn a bizalmas adatok maszkolva van](#data-mask)</li></ul> | 
 | **Adatbázis** | <ul><li>[Dinamikus adatmaszkolás korlátozhatja a bizalmas adatok nem rendszerjogosultságú kitettség felhasználók megvalósítása](#dynamic-users)</li><li>[Győződjön meg arról, hogy a jelszavak tárolása sózott ujjlenyomat formátuma](#salted-hash)</li><li>[ Győződjön meg arról, hogy az adatbázis-oszlopokban bizalmas adatok titkosítva van](#db-encrypted)</li><li>[Győződjön meg arról, hogy adatbázis-szintű titkosítást (TDE) engedélyezve van](#tde-enabled)</li><li>[Győződjön meg arról, hogy titkosított adatbázis biztonsági mentése](#backup)</li></ul> | 
 | **Webes API** | <ul><li>[Győződjön meg arról, hogy a bizalmas adatokat a webes API-t nem tárolja böngésző storage-ban](#api-browser)</li></ul> | 
-| Azure Document DB | <ul><li>[Az Azure Cosmos DB-ben tárolt bizalmas adatok titkosítása](#encrypt-docdb)</li></ul> | 
+| Az Azure Document DB-ről | <ul><li>[Az Azure Cosmos DB-ben tárolt bizalmas adatok titkosítása](#encrypt-docdb)</li></ul> | 
 | **Az Azure IaaS virtuális gép megbízhatósági kapcsolat határán** | <ul><li>[Az Azure Disk Encryption használatával virtuális gépek által használt lemezek titkosítása](#disk-vm)</li></ul> | 
 | **Service Fabric megbízhatósági kapcsolat határán** | <ul><li>[Titkosítani a titkos kulcsokat a Service Fabric-alkalmazások](#fabric-apps)</li></ul> | 
 | **Dynamics CRM** | <ul><li>[Biztonsági modellezési az üzleti egység/csapatok használható, és ahol szükséges](#modeling-teams)</li><li>[Megosztott szolgáltatás kritikus entitások minimalizálása](#entities)</li><li>[A Dynamics CRM-megosztási szolgáltatás és az ajánlott biztonsági eljárások a kockázatokat a felhasználók betanítása](#good-practices)</li><li>[Kivételek kezelése konfigurációs részleteket megjelenítő proscribing fejlesztési szabványok szabály belefoglalása](#exception-mgmt)</li></ul> | 
@@ -141,7 +141,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL fázis**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [MSDN: az automatikus kiegészítés attribútum](http://msdn.microsoft.com/library/ms533486(VS.85).aspx), [automatikus kiegészítési funkciójának használatával HTML](http://msdn.microsoft.com/library/ms533032.aspx), [HTML-tisztító biztonsági](http://technet.microsoft.com/security/bulletin/MS10-071), [automatikus kiegészítés., újra?](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
+| **Hivatkozások**              | [MSDN: az automatikus kiegészítés attribútum](https://msdn.microsoft.com/library/ms533486(VS.85).aspx), [automatikus kiegészítési funkciójának használatával HTML](https://msdn.microsoft.com/library/ms533032.aspx), [HTML-tisztító biztonsági](https://technet.microsoft.com/security/bulletin/MS10-071), [automatikus kiegészítés., újra?](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
 | **Lépések** | Az automatikus kiegészítés attribútum megadja e űrlap automatikus kiegészítés kell rendelkeznie, és ki. Az automatikus kiegészítés esetén a böngésző automatikus elvégzéséhez, mielőtt a felhasználó megadott értékek alapján értékeket. Például ha egy új nevet és jelszót szerepel egy űrlapot, és az űrlap elküldésekor, a böngésző kéri Ha a jelszó mentéséhez. Ezt követően amikor a képernyő jelenik meg, a név és jelszó automatikusan kitölti, vagy végezhető el, ahogy a neve van megadva. Helyi hozzáféréssel rendelkező támadó a tiszta szöveges jelszó a böngésző gyorsítótárából szerezze be. Alapértelmezés szerint engedélyezve van az automatikus kiegészítés, és explicit módon le lesz tiltva. |
 
 ### <a name="example"></a>Példa
@@ -246,7 +246,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | Beosztás                   | Részletek      |
 | ----------------------- | ------------ |
-| **Összetevő**               | Azure Document DB | 
+| **Összetevő**               | Az Azure Document DB-ről | 
 | **SDL fázis**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |

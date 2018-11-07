@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: 26899ea62b8caa872b6c99b94976c87f84ba7176
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: b74f40c093ca4cc62330de321ea2b53315b903db
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091123"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247364"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Hibaelhárítás, kérdések és válaszok: Application Insights Java-hoz
 Kérdések és problémák [Azure Application Insights Java nyelven][java]? Íme néhány tipp.
@@ -43,7 +43,7 @@ Kérdések és problémák [Azure Application Insights Java nyelven][java]? Íme
 * Ellenőrizze, hogy bármely verziójú ütközés problémák elkerülése érdekében ugyanazt a verzióját az Application Insights alapvető, webes, az ügynök és appenders naplózás használatával.
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>Használt adatokat, de leállt
-* Ellenőrizze a [állapot blog](http://blogs.msdn.com/b/applicationinsights-status/).
+* Ellenőrizze a [állapot blog](https://blogs.msdn.com/b/applicationinsights-status/).
 * Elérte a havi kvóta adatpontok? Nyissa meg a beállítások/kvóta és díjszabás a. Ha igen, váltson magasabb szintű csomagra, vagy további kapacitást kell fizetnie. Tekintse meg a [díjszabási séma](https://azure.microsoft.com/pricing/details/application-insights/).
 * Ön nemrég frissítette az SDK-t? Győződjön meg arról, hogy a projekt könyvtárában található telepítve-e csak egyedi SDK JAR-fájlok kivételével. Nem lehet jelen SDK két különböző verzióit.
 * Információra van szüksége, a megfelelő AI-erőforrás? Adjon meg kell egyeznie a Rendszerállapotkulcsot az alkalmazás az erőforráshoz, ahol sebességhez telemetriai adatokat. Ezek egyeznie kell.

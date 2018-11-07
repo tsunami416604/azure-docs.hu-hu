@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: afc1ec8e171bc602f2698b4a36f249bc454cbed9
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a4cd2cec56a15660a03ac111b1b8962d531479ad
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054688"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233677"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafikus létrehozás az Azure Automationben
 
@@ -48,7 +48,7 @@ A könyvtár vezérlőben, ahol ki kell választania [tevékenységek](#activiti
 |:--- |:--- |
 | Parancsmagok |A runbook felhasználható összes parancsmagot tartalmazza. Parancsmagok modul szerint vannak rendszerezve. A modulokat az automation-fiókban telepített összes érhetők el. |
 | Runbookok |Tartalmazza a forgatókönyvek az automation-fiók. Ezek a runbookok gyermek runbookként használható vásznon lehet hozzáadni. Csak az azonos core típusú, a runbook szerkesztett forgatókönyvek jelennek meg; a grafikus runbookok csak PowerShell-alapú forgatókönyvek jelennek meg, amíg a grafikus PowerShell-munkafolyamati runbookok csak PowerShell-munkafolyamat-alapú forgatókönyvek jelennek meg. |
-| Objektumok |Magában foglalja a [automation-adategységeket](http://msdn.microsoft.com/library/dn939988.aspx) az automation-fiókban a runbookban használható. Egy objektumot ad hozzá egy runbookot, amikor hozzáadja a munkafolyamat-tevékenység, amely lekérdezi a kiválasztott eszköz. Változó adategységek esetén azt is kiválaszthatja, hogy egy tevékenység, a változó vagy állítsa be a változó hozzáadása. |
+| Objektumok |Magában foglalja a [automation-adategységeket](https://msdn.microsoft.com/library/dn939988.aspx) az automation-fiókban a runbookban használható. Egy objektumot ad hozzá egy runbookot, amikor hozzáadja a munkafolyamat-tevékenység, amely lekérdezi a kiválasztott eszköz. Változó adategységek esetén azt is kiválaszthatja, hogy egy tevékenység, a változó vagy állítsa be a változó hozzáadása. |
 | Runbook-vezérlés |Használható a runbook-vezérlési tevékenységek az aktuális runbookot tartalmazza. A *csatlakozási* több bemenet tart, és megvárja, amíg az összes munkafolyamat folytatása előtt befejeződött. A *kód* tevékenység fut egy vagy több sort a PowerShell vagy a PowerShell-munkafolyamati kód a grafikus forgatókönyv típusától függően. Ezt a tevékenységet is használhatja, egyéni kódot, vagy más tevékenységekkel elérése a funkciókat. |
 
 ### <a name="configuration-control"></a>Konfiguráció-ellenőrzés
@@ -336,7 +336,7 @@ Nem rendelkezik egy kimenő kapcsolatot tevékenység által létrehozott adatok
 
 ## <a name="powershell-expressions"></a>PowerShell-kifejezés
 
-Az egyik előnye, a grafikus létrehozásról biztosít, lehetővé teszi az alapos ismeretére PowerShell runbookok készítéséhez. Jelenleg ellenére, hogy az egyes feltöltése a PowerShell egy kis ismernie kell [paraméterértékek](#activities) és beállítás [hivatkozási feltételek](#links-and-workflow). Ez a szakasz röviden bemutatja a PowerShell kifejezésekre azoknak a felhasználóknak arról, hogy nem ismeri azt tartalmazza. Részletes információk a PowerShell esetén érhető el [parancsfájlkezelés a Windows PowerShell](http://technet.microsoft.com/library/bb978526.aspx).
+Az egyik előnye, a grafikus létrehozásról biztosít, lehetővé teszi az alapos ismeretére PowerShell runbookok készítéséhez. Jelenleg ellenére, hogy az egyes feltöltése a PowerShell egy kis ismernie kell [paraméterértékek](#activities) és beállítás [hivatkozási feltételek](#links-and-workflow). Ez a szakasz röviden bemutatja a PowerShell kifejezésekre azoknak a felhasználóknak arról, hogy nem ismeri azt tartalmazza. Részletes információk a PowerShell esetén érhető el [parancsfájlkezelés a Windows PowerShell](https://technet.microsoft.com/library/bb978526.aspx).
 
 ### <a name="powershell-expression-data-source"></a>PowerShell-kifejezés adatforrása
 Használhatja a PowerShell-kifejezés adatforrásként való feltöltéséhez értékét egy [tevékenység-paraméter](#activities) PowerShell kód eredményét. Ez lehet egyetlen sornyi kódot, amely néhány egyszerű függvényt vagy több sor néhány összetett logikát végrehajtó hajt végre. Bármely olyan kimenete egy parancsot, amely nincs hozzárendelve egy változót egy paraméter értékét a kimenet.
@@ -414,7 +414,7 @@ Használatával több feltételt is összekapcsolhat egy [logikai operátor](htt
 
 ### <a name="hashtables"></a>Kivonattáblák
 
-[Kivonattáblák](http://technet.microsoft.com/library/hh847780.aspx) név/érték párok, melyek egy értékhalmazt visszaadó vannak. Az egyes tevékenységek tulajdonságok előfordulhat, hogy várhatóan egy kivonattáblát egy egyszerű érték helyett. Mint egy szótárt néven kivonattábla is megjelenhetnek.
+[Kivonattáblák](https://technet.microsoft.com/library/hh847780.aspx) név/érték párok, melyek egy értékhalmazt visszaadó vannak. Az egyes tevékenységek tulajdonságok előfordulhat, hogy várhatóan egy kivonattáblát egy egyszerű érték helyett. Mint egy szótárt néven kivonattábla is megjelenhetnek.
 
 A következő szintaxissal létrehozni egy kivonattáblát. Egy kivonattáblát tetszőleges számú bejegyzést tartalmazhat, de egyes határozza meg egy nevet és egy értéket.
 

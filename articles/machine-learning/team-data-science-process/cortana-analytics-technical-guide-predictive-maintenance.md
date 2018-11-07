@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
-ms.openlocfilehash: 04e0a694d3e8d978a21417e728feabf32f85299f
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 28900c39e658a2a8c66b2ded6f2d70b50bf17e80
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394595"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231521"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Technikai útmutató a prediktív karbantartás a légi közlekedésben és más vállalatok számára a Cortana Intelligence Megoldássablon
 
@@ -39,7 +39,7 @@ Ez a cikk célja a következők:
 - A megoldássablon módosítása megjelenítése.  
 
 > [!TIP]
-> Töltse le, és nyomtassa ki a [PDF-verzió, ez a cikk](http://download.microsoft.com/download/F/4/D/F4D7D208-D080-42ED-8813-6030D23329E9/cortana-analytics-technical-guide-predictive-maintenance.pdf).
+> Töltse le, és nyomtassa ki a [PDF-verzió, ez a cikk](https://download.microsoft.com/download/F/4/D/F4D7D208-D080-42ED-8813-6030D23329E9/cortana-analytics-technical-guide-predictive-maintenance.pdf).
 > 
 > 
 
@@ -47,7 +47,7 @@ Ez a cikk célja a következők:
 ![Prediktív karbantartás architektúra](./media/cortana-analytics-technical-guide-predictive-maintenance/predictive-maintenance-architecture.png)
 
 A megoldás üzembe helyezésekor, aktiválja az Azure-szolgáltatásokhoz (beleértve az Event Hub, a Stream Analytics, a HDInsight, a Data Factory és a Machine Learning), a Cortana Analytics csomag belül. Architektúradiagram bemutatja, hogyan a karbantartás a légi és Űrközlekedés Megoldássablon jön létre. Ezek a szolgáltatások az Azure Portalon létrehozott (kivéve a HDInsight, amely igény szerint van kiépítve, ha a kapcsolódó folyamat tevékenységek futtatásához szükséges, és a megoldás üzembe helyezése sablon megoldásdiagramon kattintva megvizsgálhatja törli ezt követően).
-Töltse le a [a diagram teljes méretű változatát](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png).
+Töltse le a [a diagram teljes méretű változatát](https://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png).
 
 A következő szakaszok ismertetik a megoldás részei.
 
@@ -67,7 +67,7 @@ A [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) szolgálta
 Használat [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) érkező bemeneti Stream közel valós idejű, a [Azure Event Hub](#azure-event-hub) szolgáltatás. Ezután közzéteheti az eredményeket a egy [Power BI](https://powerbi.microsoft.com) irányítópultot, valamint archív tárolási szint minden nyers bejövő eseményeket, hogy a [Azure Storage](https://azure.microsoft.com/services/storage/) későbbi feldolgozásra, amelyet a szolgáltatás a [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)szolgáltatás.
 
 ### <a name="hdinsight-custom-aggregation"></a>HDInsight egyéni összesítés
-Futtassa [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) (Azure Data Factory által előkészített) parancsfájlok használata a HDInsight használata az Azure Stream Analytics szolgáltatás archivált nyers események összesítését.
+Futtassa [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) (Azure Data Factory által előkészített) parancsfájlok használata a HDInsight használata az Azure Stream Analytics szolgáltatás archivált nyers események összesítését.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 A fennmaradó hasznos élettartamát (RUL) egy adott repülőgépmotor használatával a kapott bemeneti adatok az előrejelzéseket [Azure Machine Learning szolgáltatás](https://azure.microsoft.com/services/machine-learning/) (Azure Data Factory által előkészített). 
@@ -122,22 +122,22 @@ Ez a szakasz ismerteti a szükséges [folyamatok és tevékenységek](../../data
 
 ![Azure Data Factory](./media/cortana-analytics-technical-guide-predictive-maintenance/azure-data-factory.png)
 
-Az e-előállító folyamatok két tartalmaz [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) particionálja, és az adatok összesítéséhez használt parancsfájlokat. Nincs feltüntetve, ha a parancsfájlok a találhatók-e a [Azure Storage](https://azure.microsoft.com/services/storage/) telepítés során létrehozott fiókot. A hely a következő: maintenancesascript\\\\parancsfájl\\\\hive\\ \\ (vagy https://[Your megoldás name].blob.core.windows.net/maintenancesascript).
+Az e-előállító folyamatok két tartalmaz [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) particionálja, és az adatok összesítéséhez használt parancsfájlokat. Nincs feltüntetve, ha a parancsfájlok a találhatók-e a [Azure Storage](https://azure.microsoft.com/services/storage/) telepítés során létrehozott fiókot. A hely a következő: maintenancesascript\\\\parancsfájl\\\\hive\\ \\ (vagy https://[Your megoldás name].blob.core.windows.net/maintenancesascript).
 
-Hasonló [Azure Stream Analytics](#azure-stream-analytics-1) lekérdezéseket, a [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájlok beállításszolgáltató jellegéből fakadóan ismeri a bejövő adatok formátumának rendelkezik, és módosítani kell az adatok formátum alapján.
+Hasonló [Azure Stream Analytics](#azure-stream-analytics-1) lekérdezéseket, a [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájlok beállításszolgáltató jellegéből fakadóan ismeri a bejövő adatok formátumának rendelkezik, és módosítani kell az adatok formátum alapján.
 
 #### <a name="aggregateflightinfopipeline"></a>*AggregateFlightInfoPipeline*
-Ez [folyamat](../../data-factory/concepts-pipelines-activities.md) tartalmaz egyetlen tevékenység – egy [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) tevékenység használatával egy [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) futtat egy [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) az adatok particionálásához parancsfájlt helyezze [Azure Storage](https://azure.microsoft.com/services/storage/) során a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) feladat.
+Ez [folyamat](../../data-factory/concepts-pipelines-activities.md) tartalmaz egyetlen tevékenység – egy [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) tevékenység használatával egy [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) futtat egy [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) az adatok particionálásához parancsfájlt helyezze [Azure Storage](https://azure.microsoft.com/services/storage/) során a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) feladat.
 
-A [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájl esetében ez a particionálási feladat ***AggregateFlightInfo.hql***
+A [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájl esetében ez a particionálási feladat ***AggregateFlightInfo.hql***
 
 #### <a name="mlscoringpipeline"></a>*MLScoringPipeline*
 Ez [folyamat](../../data-factory/concepts-pipelines-activities.md) tartalmazza, amelynek végeredmény a pontozott előrejelzéseket több tevékenységet, a [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) Ez a megoldássablon társított kísérlet.
 
 Foglalt tevékenységek a következők:
 
-* [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) tevékenység használatával egy [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) futtat egy [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) összesítést végez, és a szükséges jellemzőkiemelés parancsfájl a [Azure Machine Tanulási](https://azure.microsoft.com/services/machine-learning/) kísérletezhet.
-  A [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájl esetében ez a particionálási feladat ***PrepareMLInput.hql***.
+* [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) tevékenység használatával egy [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) futtat egy [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) összesítést végez, és a szükséges jellemzőkiemelés parancsfájl a [Azure Machine Tanulási](https://azure.microsoft.com/services/machine-learning/) kísérletezhet.
+  A [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájl esetében ez a particionálási feladat ***PrepareMLInput.hql***.
 * [Másolás](https://msdn.microsoft.com/library/azure/dn835035.aspx) helyezi át az eredményeket a tevékenység a [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) egyetlen tevékenység [Azure Storage](https://azure.microsoft.com/services/storage/) blob által elért a [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) tevékenység.
 * [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) tevékenység hívások a [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) kísérletezzen velük, az eredmények egy put [Azure Storage](https://azure.microsoft.com/services/storage/) blob.
 
@@ -241,5 +241,5 @@ Győződjön meg arról, hogy leállítsa az adatgenerálást amikor nem haszná
 A következő két eszközök segítségével jobban megismerheti az a teljes költség a prediktív karbantartás a légi és Űrközlekedés Megoldássablon előfizetésében futó részt érhetők el:
 
 * [A Microsoft Azure Cost Estimator eszközt (online)](https://azure.microsoft.com/pricing/calculator/)
-* [A Microsoft Azure Cost Estimator eszközt (asztali verzió)](http://www.microsoft.com/download/details.aspx?id=43376)
+* [A Microsoft Azure Cost Estimator eszközt (asztali verzió)](https://www.microsoft.com/download/details.aspx?id=43376)
 

@@ -14,12 +14,12 @@ ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: db008953b9aa596a64aceccacc0e4632ebfff596
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 72665ed4c25d2719ac5030bce59157a3ccd9dec7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720123"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236006"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?
 Egyszeri bejelentkezés azt jelenti, nem tudnak hozzáférni az összes alkalmazásokat és erőforrásokat kell tennie az üzleti, csak egyszer, egyetlen felhasználói fiókkal jelentkezzen be. Miután bejelentkezett, elérheti összes alkalmazás hitelesítéséhez szükséges nélkül (például adjon meg egy jelszót) egy második alkalommal.
@@ -102,7 +102,7 @@ A [Azure Active Directory Alkalmazáskatalógusában](https://azure.microsoft.co
 Íme néhány tipp az alkalmazások által az általuk támogatott funkciókról kereséséhez:
 
 * Az Azure AD automatikus üzembe helyezést és megszüntetést, szereplő összes "Kiemelt" alkalmazás támogatja a [Azure Active Directory Alkalmazáskatalógusában](https://azure.microsoft.com/marketplace/active-directory/all/).
-* Kifejezetten támogató összevont alkalmazások listájának összevont egyszeri bejelentkezéshez a SAML, WS-Federation, például a protokoll használatával, vagy OpenID Connect található [Itt](http://social.technet.microsoft.com/wiki/contents/articles/20235.azure-active-directory-application-gallery-federated-saas-apps.aspx).
+* Kifejezetten támogató összevont alkalmazások listájának összevont egyszeri bejelentkezéshez a SAML, WS-Federation, például a protokoll használatával, vagy OpenID Connect található [Itt](https://social.technet.microsoft.com/wiki/contents/articles/20235.azure-active-directory-application-gallery-federated-saas-apps.aspx).
 
 Miután az alkalmazás talált, részletes utasításokat követve az alkalmazáskatalógusban, és az Azure Portalon való egyszeri bejelentkezés engedélyezése megkezdheti.
 

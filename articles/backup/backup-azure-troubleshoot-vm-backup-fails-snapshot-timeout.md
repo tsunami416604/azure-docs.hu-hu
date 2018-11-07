@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 25c9cbcaf852aa07bcbe4f71bf69de366d4dbb87
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
+ms.openlocfilehash: 9511e4f90348d58c7b5f6e85d9a5eb74af276461
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50754035"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51260499"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibaelhárítása: az ügynök vagy a bővítmény kapcsolatos problémák
 
@@ -153,7 +153,7 @@ A Virtuálisgép-ügynök sérült, vagy a szolgáltatás előfordulhat, hogy le
 1. Határozza meg, hogy a Windows Vendégügynöke szolgáltatás fut-e a virtuális gép szolgáltatások (services.msc). Próbálja meg újraindítani a Windows Vendégügynöke szolgáltatást, és indítsa el a biztonsági mentést.    
 2. Ha a Windows Vendégügynöke szolgáltatást nem látható a szolgáltatások, a Vezérlőpulton **programok és szolgáltatások** meghatározni, hogy telepítve van-e a Windows Vendégügynöke szolgáltatást.
 4. Ha megjelenik a Windows Vendégügynöke **programok és szolgáltatások**, távolítsa el a Windows Vendégügynöke.
-5. Töltse le és telepítse a [az ügynök MSI legfrissebb verzióját](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). A telepítés befejezéséhez rendszergazdai jogosultságokkal kell rendelkeznie.
+5. Töltse le és telepítse a [az ügynök MSI legfrissebb verzióját](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). A telepítés befejezéséhez rendszergazdai jogosultságokkal kell rendelkeznie.
 6. Győződjön meg arról, hogy a Windows Vendégügynöke szolgáltatás szolgáltatások jelennek meg.
 7. Egy igény szerinti biztonsági mentés futtatása:
     * Válassza a portál **biztonsági mentés**.

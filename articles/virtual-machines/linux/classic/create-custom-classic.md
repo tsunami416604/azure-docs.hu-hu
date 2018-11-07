@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 507d9e12a37d7bf187a3e56b04cb47ac0104773d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d8e469289f72fe892ea7c3da99972e6326c75eb9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982041"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242536"
 ---
 # <a name="how-to-create-a-classic-linux-vm-with-the-azure-classic-cli"></a>Klasszikus Linuxos virtuális gép létrehozása a klasszikus Azure CLI-vel
 > [!IMPORTANT] 
@@ -35,7 +35,7 @@ Ez a témakör ismerteti a Linux rendszerű virtuális gép (VM) létrehozása a
 * A virtuális gép hozzáadása egy rendelkezésre állási csoport vagy a hely
 
 > [!IMPORTANT]
-> Ha azt szeretné, hogy a virtuális gép egy virtuális hálózatot használ, így is kapcsolódhat hozzá közvetlenül az állomásnév vagy állítsa be a létesítmények közötti kapcsolatokat, győződjön meg arról, a virtuális gép létrehozásakor adja meg a virtuális hálózatot. Virtuális gép beállítható úgy, hogy csatlakozzon a virtuális hálózat csak a virtuális gép létrehozásakor. További információ a virtuális hálózatok: [Azure Virtual Network áttekintése](http://go.microsoft.com/fwlink/p/?LinkID=294063).
+> Ha azt szeretné, hogy a virtuális gép egy virtuális hálózatot használ, így is kapcsolódhat hozzá közvetlenül az állomásnév vagy állítsa be a létesítmények közötti kapcsolatokat, győződjön meg arról, a virtuális gép létrehozásakor adja meg a virtuális hálózatot. Virtuális gép beállítható úgy, hogy csatlakozzon a virtuális hálózat csak a virtuális gép létrehozásakor. További információ a virtuális hálózatok: [Azure Virtual Network áttekintése](https://go.microsoft.com/fwlink/p/?LinkID=294063).
 > 
 > 
 

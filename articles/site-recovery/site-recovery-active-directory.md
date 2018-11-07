@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 51d435d9edea5e341127cac89bc96a71c7bc8bb4
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: f96ed8659fc2f49b89199a813f9fab9d5f4af5a1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211893"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232171"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Vészhelyreállítás beállítása az Active Directory és DNS
 
@@ -44,7 +44,7 @@ A Site Recovery segítségével megvédheti a virtuális gép, amelyen a tartom�
 A Site Recovery használatával replikált tartományvezérlő használt [feladatátvételi teszt](#test-failover-considerations). Győződjön meg arról, hogy megfelel-e a következő követelményeknek:
 
 1. A tartományvezérlő globáliskatalógus-kiszolgáló.
-2. A tartományvezérlő feladatátvételi teszt során szükséges szerepkörök a műveleti Főkiszolgálói szerepkör tulajdonosa kell lennie. Ellenkező esetben ezek a szerepkörök kell lennie [lefoglalt](http://aka.ms/ad_seize_fsmo) a feladatátvétel után.
+2. A tartományvezérlő feladatátvételi teszt során szükséges szerepkörök a műveleti Főkiszolgálói szerepkör tulajdonosa kell lennie. Ellenkező esetben ezek a szerepkörök kell lennie [lefoglalt](https://aka.ms/ad_seize_fsmo) a feladatátvétel után.
 
 ### <a name="configure-vm-network-settings"></a>Virtuális gép hálózati beállításainak konfigurálása
 A virtuális gép, amelyen a tartományvezérlő vagy a DNS, a Site Recoveryben, a hálózati beállítások konfigurálása a **számítás és hálózat** a replikált virtuális gép beállításait. Ez biztosítja, hogy a virtuális gép a feladatátvételt követően a megfelelő hálózathoz csatlakozik.
@@ -93,7 +93,7 @@ A legtöbb alkalmazás tartományvezérlőként vagy DNS-kiszolgáló meglétén
 
 
 ### <a name="remove-references-to-other-domain-controllers"></a>Más tartományvezérlők mutató hivatkozások eltávolítása
-Feladatátvételi teszt után, a tartományvezérlők ne tartalmazza a tesztelési célú hálózat. Más tartományvezérlők létező mutató hivatkozások eltávolításához az éles környezetben szüksége lehet [Active Directory műveleti Főkiszolgálói szerepkörök](http://aka.ms/ad_seize_fsmo) és [metaadattörlést](https://technet.microsoft.com/library/cc816907.aspx) a hiányzó tartományvezérlők .
+Feladatátvételi teszt után, a tartományvezérlők ne tartalmazza a tesztelési célú hálózat. Más tartományvezérlők létező mutató hivatkozások eltávolításához az éles környezetben szüksége lehet [Active Directory műveleti Főkiszolgálói szerepkörök](https://aka.ms/ad_seize_fsmo) és [metaadattörlést](https://technet.microsoft.com/library/cc816907.aspx) a hiányzó tartományvezérlők .
 
 
 ### <a name="issues-caused-by-virtualization-safeguards"></a>A virtualizációvédelmi által okozott problémák
@@ -180,7 +180,7 @@ Ha az előző feltételek teljesülnek, akkor valószínű, hogy a tartományvez
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures`
 
-    További információkért lásd: [tiltsa le a követelmény, hogy elérhetők-e egy globáliskatalógus-kiszolgáló felhasználói bejelentkezések ellenőrzése](http://support.microsoft.com/kb/241789).
+    További információkért lásd: [tiltsa le a követelmény, hogy elérhetők-e egy globáliskatalógus-kiszolgáló felhasználói bejelentkezések ellenőrzése](https://support.microsoft.com/kb/241789).
 
 ### <a name="dns-and-domain-controller-on-different-machines"></a>DNS és a tartományvezérlő különböző gépeken
 

@@ -1,6 +1,6 @@
 ---
-title: Iratkozzon fel a tartalom moderátor |} Microsoft Docs
-description: A tartalom moderátor regisztrációs oldalon található iratkozzon fel a Microsoft-fiókkal, vagy hozzon létre egy fiókot a tartalom moderátor webhelyen.
+title: Iratkozzon fel a Content Moderator |} A Microsoft Docs
+description: A Content Moderator regisztrációs oldalon található Microsoft-fiókkal regisztrál, vagy hozzon létre egy fiókot a Content Moderator webhelyen.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,19 +9,19 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: sajagtap
-ms.openlocfilehash: c7d1c1e01dfc31383bfd25c2f577a271cbe5d02b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: cd477a630178754e84fe67bbf3225b6b7e450ba5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346870"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237944"
 ---
-# <a name="sign-up-for-content-moderator"></a>Regisztrálás a tartalom moderátor #
-Keresse meg a [tartalom moderátor regisztráljon](http://contentmoderator.cognitive.microsoft.com/Account/Signup) lap. Jelentkezzen Microsoft-fiókjával, vagy hozzon létre egy fiókot a tartalom moderátor webhelyen.
+# <a name="sign-up-for-content-moderator"></a>A Content Moderator számára – regisztráció #
+Keresse meg a [Regisztráljon a Content Moderator](https://contentmoderator.cognitive.microsoft.com/Account/Signup) lapot. Iratkozzon fel a Microsoft-fiókjához, vagy hozzon létre egy fiókot a Content Moderator webhelyen.
 
 ![Regisztráció](images/0-signup-1.PNG)
 
 ## <a name="name-your-team"></a>A csoport neve ##
-Adja meg a felülvizsgálati csoport nevét. Szükség esetén hívhat meg csatlakozni a csapat munkatársaival.
+Adjon meg egy nevet a csapatától. Igény szerint is meghívhatja kollégáit a csapathoz.
 
-![Csoport létrehozása](images/1-Team-Name.PNG)
+![Csapat létrehozása](images/1-Team-Name.PNG)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: d9008956d3a5542d71438ee13050a3951230e101
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: cf5a15a55cf3f0d33edeec9440e745c9dce996c1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338807"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244865"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Az adatelemző virtuális gép kiépítése Linux (Ubuntu)
 
@@ -91,7 +91,7 @@ Az alábbiakban a Linux-példány, az adatelemző virtuális gép létrehozásá
    * **Virtuális merevlemez típusa**: válasszon **prémium szintű SSD** Ha inkább olyan tartós állapotú meghajtót (SSD). Ellenkező esetben válasszon **Standard HDD**. 
    * **Felhasználónév**: első fiók bejelentkezési azonosítója.
    * **Jelszó**: első fiók jelszavát (használhat nyilvános SSH-kulcs jelszava helyett).
-   * **Előfizetés**: Ha több előfizetéssel rendelkezik, válassza ki az egyik, amelyen a gép létrehozása és a számlázás. Ez az előfizetés erőforrás létrehozásához szükséges jogosultsággal kell rendelkeznie.
+   * **Előfizetés**: Ha több előfizetéssel rendelkezik, válassza ki az egyik, amelyen a gép létrehozása és a számlázás. Ehhez az előfizetéshez erőforrás-létrehozási jogosultságokkal kell rendelkeznie.
    * **Erőforráscsoport**: létrehozhat egy új vagy egy meglévő csoportot.
    * **Hely**: válassza a leginkább megfelelő adatközpontot. Általában az adatközpont, amely tartalmazza a legtöbb az adatokat, vagy a leggyorsabb hálózati hozzáféréshez a fizikai helyéhez legközelebbi.
    
@@ -118,7 +118,7 @@ Az Ubuntu DSVM három módszerrel érhető el:
 
 ### <a name="ssh"></a>SSH
 
-Ha a virtuális gép létrejött, bejelentkezhet hozzá SSH használatával. A fiók hitelesítő adataival, amelyet a **alapjai** szakasz 3. lépésben a szöveg shell felületén. A Windows, töltse le egy SSH-ügyfél eszköz, például [Putty](http://www.putty.org). Ha inkább egy grafikus desktop (X Windows rendszer), használhatja a Putty-továbbítás X11 vagy X2Go ügyfél telepítése.
+Ha a virtuális gép létrejött, bejelentkezhet hozzá SSH használatával. A fiók hitelesítő adataival, amelyet a **alapjai** szakasz 3. lépésben a szöveg shell felületén. Windows rendszeren letölthet egy SSH-ügyféleszközt (például a [Puttyt](http://www.putty.org)). Ha inkább egy grafikus desktop (X Windows rendszer), használhatja a Putty-továbbítás X11 vagy X2Go ügyfél telepítése.
 
 > [!NOTE]
 > A X2Go ügyfél jobban teljesített, mint továbbítási tesztelés X11. Azt javasoljuk, hogy az asztali grafikus felület X2Go ügyfél használatával.
@@ -429,6 +429,6 @@ Itt látható, hogyan a tanulási és feltárásra továbbra is:
 
 * A [a az adatelemző virtuális gép Linux Data science](linux-dsvm-walkthrough.md) a bemutató ismerteti, hogyan hajthat végre számos gyakori adatelemzési feladatok és a Linux rendszerű adatelemző virtuális gép kiépítése itt. 
 * Próbálja ki az ebben a cikkben leírt eszközök vizsgálja meg az adatelemző virtuális gép a különféle beépített adatelemzési eszközzel. Is futtathat *dsvm-információ – info* a a rendszerhéj belül a virtuális gép alapszintű bevezetést és további információ a virtuális gépen telepített eszközök mutatókat tartalmaznak.  
-* Megtudhatja, hogyan teljes körű elemzési megoldásokat rendszeresen használatával hozhat létre a [csoportos adatelemzési folyamat](http://aka.ms/tdsp).
+* Megtudhatja, hogyan teljes körű elemzési megoldásokat rendszeresen használatával hozhat létre a [csoportos adatelemzési folyamat](https://aka.ms/tdsp).
 * Látogasson el a [Azure AI-katalógusban](https://gallery.azure.ai/) machine learning és a data analytics minták, amelyek használják az Azure AI-szolgáltatások.
 

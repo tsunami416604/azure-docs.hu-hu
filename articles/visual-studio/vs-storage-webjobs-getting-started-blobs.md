@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 798073d5510e50ead35ed118b03e981d133cd32a
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 5a7c16e6ac565d1660fee02cb7df178344b195e7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055123"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254400"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Ismerkedés az Azure Blob storage és a Visual Studio csatlakoztatott szolgáltatásainak (webjobs-feladat projektek)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
@@ -217,5 +217,5 @@ Ebben a cikkben szereplő kapcsolódó témakörök a következők:
 * Naplók írása
 
 ## <a name="next-steps"></a>További lépések
-Ez a cikk kódmintákkal, amelyek bemutatják, hogyan kezelje a gyakori forgatókönyvek az Azure-beli blobokhoz munkához biztosított. Azure WebJobs és WebJobs SDK használatával kapcsolatos további információkért lásd: [Azure WebJobs-dokumentáció erőforrások](http://go.microsoft.com/fwlink/?linkid=390226).
+Ez a cikk kódmintákkal, amelyek bemutatják, hogyan kezelje a gyakori forgatókönyvek az Azure-beli blobokhoz munkához biztosított. Azure WebJobs és WebJobs SDK használatával kapcsolatos további információkért lásd: [Azure WebJobs-dokumentáció erőforrások](https://go.microsoft.com/fwlink/?linkid=390226).
 

@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 302607df2292fe7a67a8b6860dab19eef7f391a9
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 8577b6a1d0f57820cbdd4096b0e8412096ff3af3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160366"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232076"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Eseményfájl célkódja az SQL Database bővített események
 
@@ -25,7 +25,7 @@ ms.locfileid: "47160366"
 
 Szeretne egy hatékony módja egy kiterjesztett esemény kapcsolatos rögzítése és a jelentés egy teljes körű kódmintát.
 
-A Microsoft SQL Server a [Eseményfájl cél](http://msdn.microsoft.com/library/ff878115.aspx) esemény a kimeneteket a helyi merevlemezre fájl tárolására szolgál. Azonban az ilyen fájlok nem érhetők el az Azure SQL Database. Az Azure Storage szolgáltatáshoz inkább az eseményfájl cél használható használjuk.
+A Microsoft SQL Server a [Eseményfájl cél](https://msdn.microsoft.com/library/ff878115.aspx) esemény a kimeneteket a helyi merevlemezre fájl tárolására szolgál. Azonban az ilyen fájlok nem érhetők el az Azure SQL Database. Az Azure Storage szolgáltatáshoz inkább az eseményfájl cél használható használjuk.
 
 Ez a témakör egy kétfázisú kódmintát mutat be:
 
@@ -44,9 +44,9 @@ Ez a témakör egy kétfázisú kódmintát mutat be:
 * Az SQL Server Management Studio (ssms.exe), ideális legújabb havi frissítése verzióját. 
   Letöltheti a legújabb ssms.exe származó:
   
-  * Című témakör [SQL Server Management Studio letöltését](http://msdn.microsoft.com/library/mt238290.aspx).
-  * [A letöltésére mutató közvetlen hivatkozást.](http://go.microsoft.com/fwlink/?linkid=616025)
-* Rendelkeznie kell a [Azure PowerShell-modulok](http://go.microsoft.com/?linkid=9811175) telepítve.
+  * Című témakör [SQL Server Management Studio letöltését](https://msdn.microsoft.com/library/mt238290.aspx).
+  * [A letöltésére mutató közvetlen hivatkozást.](https://go.microsoft.com/fwlink/?linkid=616025)
+* Rendelkeznie kell a [Azure PowerShell-modulok](https://go.microsoft.com/?linkid=9811175) telepítve.
   
   * A modulok parancsai például - tartalmaznak **New-AzureStorageAccount**.
 
@@ -506,11 +506,11 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 Az előző Transact-SQL-szkript a következő rendszer függvényt használta a event_file olvasása:
 
-* [sys.fn_xe_file_target_read_file (Transact-SQL)](http://msdn.microsoft.com/library/cc280743.aspx)
+* [sys.fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
 
 Bővített események adatainak megtekintését a Speciális beállítások magyarázatát érhető el:
 
-* [Speciális a bővített események cél adatainak megtekintése](http://msdn.microsoft.com/library/mt752502.aspx)
+* [Speciális a bővített események cél adatainak megtekintése](https://msdn.microsoft.com/library/mt752502.aspx)
 
 
 ## <a name="converting-the-code-sample-to-run-on-sql-server"></a>Az SQL Server-kiszolgálón futtassa a kódminta alakítása
@@ -528,10 +528,10 @@ Tegyük fel, hogy az előző Transact-SQL-minta futtatása a Microsoft SQL Serve
 További információ a fiókok és a tárolók az Azure Storage szolgáltatásban lásd:
 
 * [A Blob storage a .NET használatával](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
-* [Tárolók, blobok és metaadatok elnevezése és hivatkozása](http://msdn.microsoft.com/library/azure/dd135715.aspx)
-* [A legfelső szintű tároló használata](http://msdn.microsoft.com/library/azure/ee395424.aspx)
-* [1. lecke: Egy tárolt hozzáférési szabályzat és a egy közös hozzáférésű jogosultságkód létrehozása egy Azure container a](http://msdn.microsoft.com/library/dn466430.aspx)
-  * [2. lecke: Az SQL Server hitelesítő adatok használatával egy közös hozzáférésű jogosultságkód létrehozása](http://msdn.microsoft.com/library/dn466435.aspx)
+* [Tárolók, blobok és metaadatok elnevezése és hivatkozása](https://msdn.microsoft.com/library/azure/dd135715.aspx)
+* [A legfelső szintű tároló használata](https://msdn.microsoft.com/library/azure/ee395424.aspx)
+* [1. lecke: Egy tárolt hozzáférési szabályzat és a egy közös hozzáférésű jogosultságkód létrehozása egy Azure container a](https://msdn.microsoft.com/library/dn466430.aspx)
+  * [2. lecke: Az SQL Server hitelesítő adatok használatával egy közös hozzáférésű jogosultságkód létrehozása](https://msdn.microsoft.com/library/dn466435.aspx)
 * [A Microsoft SQL Server bővített események](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
 
 <!--

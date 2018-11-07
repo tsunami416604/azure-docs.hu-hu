@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: e791ddd3ade2ff486f1c3ec123695ecc155353d6
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: aa0d209cf3da65bb3d50a6458ecc33cfcd85eecb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541904"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240596"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric-fürtök biztonsági forgatókönyveit
 Azure Service Fabric-fürt saját erőforrás. A feladata biztonságossá tétele a-fürtök segítségével megakadályozhatja a jogosulatlan felhasználókat csatlakozik hozzájuk. Biztonságos fürt különösen fontos, ha a fürtön futtatnak éles számítási feladatokat. Bár lehetséges hozhat létre nem biztonságos fürtöt, ha a fürt elérhetővé teszi a nyilvános internetre felügyeleti végpontok, névtelen felhasználók csatlakozhatnak hozzá. Nem biztonságos fürtökhöz nem támogatottak a termelési számítási feladatokhoz. 
@@ -85,7 +85,7 @@ A rendszergazda szerepkörrel felruházott felhasználók teljes hozzáférése 
 Klient rendszergazdai és felhasználói szerepkörök beállítása a fürt létrehozásakor. Szerepkörök hozzárendelése azáltal, hogy különálló (például úgy, hogy a tanúsítványok vagy Azure AD) minden egyes szerepkör-típushoz. Alapértelmezett hozzáférés-vezérlési beállításokkal és alapértelmezett beállítások módosításával kapcsolatos további információkért lásd: [szerepköralapú hozzáférés-vezérlés a Service Fabric-ügyfelek](service-fabric-cluster-security-roles.md).
 
 ## <a name="x509-certificates-and-service-fabric"></a>X.509-tanúsítványokat és a Service Fabric
-X.509 digitális tanúsítványok gyakran használják az ügyfelek és kiszolgálók hitelesítéséhez. Is használhatók titkosítására és digitális aláírására. Service Fabric-fürt biztonságossá tétele és adja meg az alkalmazás biztonsági funkciók X.509-tanúsítványokat használ. X.509 digitális tanúsítványokkal kapcsolatos további információkért lásd: [-tanúsítványok használata](http://msdn.microsoft.com/library/ms731899.aspx). Használhat [Key Vault](../key-vault/key-vault-get-started.md) kattintva kezelheti az Azure Service Fabric-fürtök tanúsítványait.
+X.509 digitális tanúsítványok gyakran használják az ügyfelek és kiszolgálók hitelesítéséhez. Is használhatók titkosítására és digitális aláírására. Service Fabric-fürt biztonságossá tétele és adja meg az alkalmazás biztonsági funkciók X.509-tanúsítványokat használ. X.509 digitális tanúsítványokkal kapcsolatos további információkért lásd: [-tanúsítványok használata](https://msdn.microsoft.com/library/ms731899.aspx). Használhat [Key Vault](../key-vault/key-vault-get-started.md) kattintva kezelheti az Azure Service Fabric-fürtök tanúsítványait.
 
 Fontos szempontokat kell figyelembe venni:
 
@@ -109,7 +109,7 @@ Más szempontokat kell figyelembe venni:
 
 * A **tulajdonos** mezőben több érték is rendelkezhet. Az egyes értékek előtaggal van egy inicializálási jelzi az érték típusa. Általában a inicializálásának **CN** (a *köznapi név*); például **CN = www.contoso.com**. 
 * A **tulajdonos** mező üres is lehet. 
-* Ha az opcionális **tulajdonos alternatív neve** mező fel van töltve, mind a köznapi név a tanúsítvány és a egy tételt SAN kell rendelkeznie. Ezek vannak megadva: **DNS-név** értékeket. Megtudhatja, hogyan hozhat létre tanúsítványokat, amelyek San-okkal, lásd: [hozzáadása a secure LDAP-tanúsítványt a tulajdonos alternatív neve](http://support.microsoft.com/kb/931351).
+* Ha az opcionális **tulajdonos alternatív neve** mező fel van töltve, mind a köznapi név a tanúsítvány és a egy tételt SAN kell rendelkeznie. Ezek vannak megadva: **DNS-név** értékeket. Megtudhatja, hogyan hozhat létre tanúsítványokat, amelyek San-okkal, lásd: [hozzáadása a secure LDAP-tanúsítványt a tulajdonos alternatív neve](https://support.microsoft.com/kb/931351).
 * Értékét a **kívánt célok** mezőé tartalmaznia kell egy megfelelő értéket, például **kiszolgálóhitelesítés** vagy **ügyfél-hitelesítés**.
 
 ### <a name="application-certificates-optional"></a>Tanúsítványok (nem kötelező)

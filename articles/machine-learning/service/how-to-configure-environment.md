@@ -9,13 +9,13 @@ ms.component: core
 ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
-ms.date: 10/24/2018
-ms.openlocfilehash: 6c2d5a776f603161ef730028168b91844c120aec
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: MT
+ms.date: 11/6/2018
+ms.openlocfilehash: b95b62ab2c51fec93870e3f5593d53a599f3dad2
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158992"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218950"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
@@ -84,14 +84,32 @@ Az Azure Machine Learning SDK a munkaterület konfigurációs fájl használatá
 
 Az Azure notebookok és az Azure Data Science virtuális gépek (Dsvm) származnak konfigurálva az Azure Machine Learning szolgáltatással. Ezekben a környezetekben szükséges összetevők, például az Azure Machine Learning SDK tartalmazza.
 
+### <a name="azure-notebooks"></a>Azure Notebooks
+
 - Az Azure notebookok Jupyter Notebook szolgáltatás az Azure-felhőben.
-- Az adatelemző virtuális gép egy egyéni virtuális gépet (VM) lemezképet data science munkahelyi feladatokra tervezve. Ezek a következők:
-  - Népszerű eszközök
-  - Integrált fejlesztői környezeteket (ide)
-  - Csomagokat, például a Jupyter Notebooks, a PyCharm és a tensorflow-hoz
 - A munkaterület konfigurációs fájl használata ezekben a környezetekben továbbra is szüksége lesz.
 
 Az Azure Machine Learning szolgáltatással Azure notebookok használatának példájáért lásd: [Ismerkedés az Azure Machine Learning szolgáltatás](quickstart-get-started.md).
+
+### <a name="data-science-virtual-machines"></a>Adatelemző virtuális gépek
+
+- Az adatelemző virtuális gép egy egyéni virtuális gépet (VM) lemezképet data science munkahelyi feladatokra tervezve. Ezek a következők:
+  - Népszerű beépített adatelemzési eszközzel
+  - Integrált fejlesztői környezeteket (ide-ket), például a PyCharm és az RStudio
+  - Csomagok Jupyter-notebookok és Tensorflow például
+
+A DSVM tartalmaz több Anaconda-környezet már telepítve van. Használja az Azure Machine Learning Python SDK bármilyen csomag telepítése nélkül, nyisson meg egy parancssori ablakot, és aktiválja a következő környezet.
+
+```shell
+conda activate AzureML
+```
+
+Egyszer ebben a környezetben azonnal importálhatja az Azure Machine Learning SDK-t a buildelőeszköze a választott a csomag telepítése nélkül.
+
+```python
+import azureml.core
+print(azureml.core.VERSION)
+```
 
 További információ a Data Science virtuális gépeken: [adatelemző virtuális gépek](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 

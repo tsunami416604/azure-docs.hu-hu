@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: ecfaf24d1122b711a93e1335b79acbbc4235bdae
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: eedab085098c34cdac3c49a3892f7cb0d5824f1b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049949"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259921"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Egy közlemény egy laborhoz közzététele az Azure DevTest Labs szolgáltatásban
 
@@ -35,7 +35,7 @@ A közlemény funkció hivatott ideiglenes értesítésekhez használható.  Kö
 
 ## <a name="steps-to-post-an-announcement-in-an-existing-lab"></a>Lépéseket egy meglévő tesztlabor egy közlemény közzététele
 
-1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Ha szükséges, válassza ki a **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából. (Előfordulhat, hogy a tesztkörnyezet már látható az irányítópult alatt **összes erőforrás**).
 1. Tesztkörnyezetek listájában jelölje ki a labor, amelyekben egy közleményt használni kívánt.  
 1. A laborgyakorlat **áttekintése** területen válassza **Konfigurace a zásady**.  
@@ -70,7 +70,7 @@ Ha már nem szeretné ezt a hirdetményt megjelenítése a labor felhasználóna
 
 ## <a name="steps-for-users-to-view-an-announcement"></a>A lépések a felhasználók számára a bejelentés megtekintése
 
-1. Az a [az Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040), válassza ki a labor.
+1. Az a [az Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040), válassza ki a labor.
 
 1. Ha a labor létrehozása egy közlemény tesznek közzé a hozzá tartozó, egy tájékoztató a labor létrehozása – áttekintés lap tetején látható. Ez a tájékoztató a közlemény létrehozásakor megadott název oznámení.
 

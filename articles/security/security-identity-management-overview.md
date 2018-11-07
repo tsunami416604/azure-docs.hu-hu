@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As a IT Pro or decision maker I am trying to learn about identity mangement capabilities in Azure
-ms.openlocfilehash: f15846f3de7162c61edce8aaf5c493bb1444df36
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 84ab35c269af66f58f3886a5dd0606ce69a11be9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498555"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255881"
 ---
 # <a name="azure-identity-management-security-overview"></a>Az Azure identity management biztonsági áttekintése
 
@@ -169,7 +169,7 @@ További információ:
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>Hibrid identity management vagy az Azure AD connect
 
-A Microsoft identitáskezelési megoldásai kiterjednek a helyszíni és felhőalapú képességekre is, így egyetlen felhasználói identitás jön létre hitelesítés és engedélyezés céljából az összes erőforráshoz, helytől függetlenül. Ezt hibrid identitásnak nevezzük. Az Azure AD Connect a Microsoft eszköz felel meg, és hibrid identitás céljai elvégzéséhez. Így közös identitást biztosíthat a felhasználóinak az Azure AD-vel integrált Office 365-, Azure- és SaaS-alkalmazásokhoz. Ez a tevékenység a következő jellemzőkkel bír:
+A Microsoft identitáskezelési megoldásai kiterjednek a helyszíni és felhőalapú képességekre is, így egyetlen felhasználói identitás jön létre hitelesítés és engedélyezés céljából az összes erőforráshoz, helytől függetlenül. Ezt hibrid identitásnak nevezzük. A Microsoft Azure AD Connect eszköze segítségével teljesítheti a hibrid identitáskezelési célokat. Így közös identitást biztosíthat a felhasználóinak az Azure AD-vel integrált Office 365-, Azure- és SaaS-alkalmazásokhoz. Ez a tevékenység a következő jellemzőkkel bír:
 
 * Szinkronizálás
 * AD FS és összevonás-integráció
@@ -178,7 +178,7 @@ A Microsoft identitáskezelési megoldásai kiterjednek a helyszíni és felhőa
 
 További információ:
 
-* [Hibrid identitás (tanulmány)](http://download.microsoft.com/download/D/B/A/DBA9E313-B833-48EE-998A-240AA799A8AB/Hybrid_Identity_White_Paper.pdf)
+* [Hibrid identitás (tanulmány)](https://download.microsoft.com/download/D/B/A/DBA9E313-B833-48EE-998A-240AA799A8AB/Hybrid_Identity_White_Paper.pdf)
 * [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)
 * [Az Azure AD-csapat blogja](https://blogs.technet.microsoft.com/ad/)
 

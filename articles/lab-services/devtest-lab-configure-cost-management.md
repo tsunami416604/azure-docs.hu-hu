@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 13535dae82ef2c8896dad7d6221553d15e4e6a95
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e616df772bf11d1247f96c78bea2392252f5e5d0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38573811"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259751"
 ---
 # <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>A havi becsült labor költség trend megtekintése az Azure DevTest Labs szolgáltatásban
 A Cost Management szolgáltatás a DevTest Labs segítségével nyomon követheti a labor költségét. Ez a cikk bemutatja, hogyan használhatja a **havi becsült költség Trend** diagram a jelenlegi naptári hónap becsült költség dátumig és a hónap teljes költségről megtekintése az aktuális hónap. Ez a cikk emellett bemutatja, hogyan kontrollja tesztlabor beállításával költségkeret célokhoz és küszöbértékekhez, elérésekor, eseményindító DevTest Labs-jelentik az eredményeket.
@@ -27,7 +27,7 @@ A Cost Management szolgáltatás a DevTest Labs segítségével nyomon követhet
 ## <a name="viewing-the-monthly-estimated-cost-trend-chart"></a>A havi becsült költség Trend diagram megtekintése
 A havi becsült költség Trend diagram megtekintéséhez kövesse az alábbi lépéseket: 
 
-1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Ha szükséges, válassza ki a **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából. (Előfordulhat, hogy a tesztkörnyezet már látható az irányítópult alatt **összes erőforrás**).
 1. Tesztkörnyezetek listájában jelölje ki a kívánt tesztkörnyezetben.  
 1. A laborgyakorlat **áttekintése** területen válassza **Konfigurace a zásady**.   

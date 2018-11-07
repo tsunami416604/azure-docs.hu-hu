@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 0e4576ad4f7eece543ef572073919bcf3ca3a4e9
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: ae719e6daa3c07ffe298cfefcc5a0a2846a49032
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116142"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231821"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Contoso áttelepítési: egy Azure virtuális gép és az SQL Database felügyelt példánya a helyszíni alkalmazások Újratárolása
 
@@ -366,7 +366,7 @@ Az Azure-bA a feladatátvételt követően a Contoso biztosítani szeretné az A
 Contoso-rendszergazdák is ellenőriznie kell ezeket az elemeket, a feladatátvétel futtatásakor:
 
 - Lehetnek nincsenek függőben lévő Windows-frissítések a virtuális gépen a feladatátvétel elindításakor. Ha Windows-frissítések függőben lévő, felhasználók Contoso nem jelentkezhet be a virtuális géphez, amíg a frissítés nem fejeződött.
-- A feladatátvételt követően ellenőrizze a rendszergazdák **rendszerindítási diagnosztika** , a virtuális gép képernyőképének megtekintéséhez. Ha nem tudja megtekinteni a rendszerindítási diagnosztika, akkor ellenőrizze, hogy a virtuális gép fut, és tekintse át a [hibaelhárítási tippek](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
+- A feladatátvételt követően ellenőrizze a rendszergazdák **rendszerindítási diagnosztika** , a virtuális gép képernyőképének megtekintéséhez. Ha nem tudja megtekinteni a rendszerindítási diagnosztika, akkor ellenőrizze, hogy a virtuális gép fut, és tekintse át a [hibaelhárítási tippek](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 ## <a name="step-5-replicate-the-on-premises-vms-to-azure"></a>5. lépés: A helyszíni virtuális gépek replikálása az Azure-bA
 

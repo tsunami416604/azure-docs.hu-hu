@@ -3,18 +3,18 @@ title: Adatok elemzése az Azure Data Lake Store az Apache Spark használatával
 description: Az Azure Data Lake Store-ban tárolt adatok elemzése a Spark-feladatok futtatása
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: aae63b06999c0b8eafa0d42608d32a4d467a900c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 9fe4b3e49f8e3270f58929a5708a83ab02e2486c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041061"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255250"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-store"></a>Data Lake Store az adatok elemzése a HDInsight Spark-fürt használatával
 
@@ -34,7 +34,7 @@ Ebben az oktatóanyagban használja elérhető Jupyter notebookot HDInsight Spar
 >
 >
 
-Ha során létrehozott egy HDInsight-fürt a Data Lake Store további tárterületet, és az alapértelmezett tároló Azure Storage-Blobból, meg kell először másolja át néhány adatot a Data Lake Store-fiókba. A minta az Azure Storage-Blobokból származó adatokat a HDInsight-fürthöz társított is használhatja. Használhatja a [ADLCopy eszköz](http://aka.ms/downloadadlcopy) ennek a végrehajtására. Töltse le és telepítse az eszközt a hivatkozásból.
+Ha során létrehozott egy HDInsight-fürt a Data Lake Store további tárterületet, és az alapértelmezett tároló Azure Storage-Blobból, meg kell először másolja át néhány adatot a Data Lake Store-fiókba. A minta az Azure Storage-Blobokból származó adatokat a HDInsight-fürthöz társított is használhatja. Használhatja a [ADLCopy eszköz](https://aka.ms/downloadadlcopy) ennek a végrehajtására. Töltse le és telepítse az eszközt a hivatkozásból.
 
 1. Nyisson meg egy parancssort, és navigáljon ahhoz a könyvtárhoz, ahol az AdlCopy telepítve van, általában `%HOMEPATH%\Documents\adlcopy`.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: af3e2ad623d8d7bfafe676411f9ae3fbee78aab8
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 79fb9869b37e82df3f41a50e4425e7c0cd08c841
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714332"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255268"
 ---
 # <a name="technical-prerequisites-for-creating-a-virtual-machine-image-for-the-azure-marketplace"></a>Virtuálisgép-lemezkép létrehozása az Azure Marketplace a műszaki előfeltételei
 A folyamat megkezdése előtt figyelmesen olvassa el, és megismerheti, hogy hol és miért érdemes minden egyes lépést. Amennyire csak lehetséges, meg kell a vállalati adatok és egyéb adatok előkészítése, töltse le a szükséges eszközök, illetve műszaki összetevőket hozhat létre a ajánlat létrehozásának megkezdése előtt. Ezeket az elemeket, ez a cikk áttekintésével egyértelműen meg kell határozni.  
@@ -30,7 +30,7 @@ Készen áll a megkezdése előtt a következőkkel kell rendelkeznie:
 * Operációs rendszerétől függően céloz meg, telepítse a [Azure PowerShell-parancsmagok](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/WindowsAzurePowershellGet.3f.3f.3fnew.appids) vagy [Linux parancssori felületi eszközének](https://go.microsoft.com/fwlink/?LinkId=253472&clcid=0x409) származó a [Azure letöltések](https://azure.microsoft.com/downloads/) lapot.
 * Telepítse az Azure Storage Explorert a Codeplex Tárházportálról.
 * Töltse le, és a minősítési vizsgálati eszköz telepítése az Azure Certified:
-  * [http://go.microsoft.com/fwlink/?LinkID=526913](http://go.microsoft.com/fwlink/?LinkID=526913). A minősítőeszköz futtatását Windows-alapú számítógépre van szüksége. Ha nem rendelkezik elérhető Windows-alapú számítógép, futtathatja az eszközt a Windows-alapú virtuális gép az Azure-ban.
+  * [http://go.microsoft.com/fwlink/?LinkID=526913](https://go.microsoft.com/fwlink/?LinkID=526913). A minősítőeszköz futtatását Windows-alapú számítógépre van szüksége. Ha nem rendelkezik elérhető Windows-alapú számítógép, futtathatja az eszközt a Windows-alapú virtuális gép az Azure-ban.
 
 ## <a name="platforms-supported"></a>Támogatott platformok
 Az Azure-alapú virtuális gépek Windows vagy Linux rendszeren is fejleszthet. Bizonyos elemek a közzétételi folyamat – például létrehozhat egy Azure-kompatibilis virtuális merevlemezről (VHD) – használja a különböző eszközök és operációs rendszerétől függően használja lépéseket:  

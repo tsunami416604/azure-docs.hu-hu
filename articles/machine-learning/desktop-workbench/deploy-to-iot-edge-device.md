@@ -11,18 +11,18 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/24/2018
-ms.openlocfilehash: 24d3cf0c4b1a1283e7a6a7f61f0bb23dae7143d5
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 7322b07740d5dec85b6217e122fb262647527c96
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43112986"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258408"
 ---
 # <a name="deploy-an-azure-machine-learning-model-to-an-azure-iot-edge-device"></a>Az Azure IoT Edge-eszköz üzembe helyezése az Azure Machine Learning-modell
 
 Az Azure Machine Learning-modellek webszolgáltatásként Docker-alapú tárolóba is lehet. Az Azure IoT Edge lehetővé teszi a távoli eszközök alakzatot a tárolók üzembe helyezése. Ezek a szolgáltatások együtt használni a modellek futtatása a peremhálózaton, gyorsabb válaszidőt és adatátvitel kevesebb. 
 
-További szkripteket és útmutatást találhat a [-hez készült Azure IoT Edge AI eszközkészlet](http://aka.ms/AI-toolkit).
+További szkripteket és útmutatást találhat a [-hez készült Azure IoT Edge AI eszközkészlet](https://aka.ms/AI-toolkit).
 
 ## <a name="operationalize-the-model"></a>A modell üzembe helyezése
 

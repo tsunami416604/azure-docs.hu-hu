@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 1e74a0c915471fecb3b8e0662559eb5bfe189b3d
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 85c5ff33fbf5979dd07ab27ccf5993149151b38a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423017"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252411"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Üzembe helyezése és megismerése az Azure SQL-adatbázist használó önálló egybérlős alkalmazás
 
@@ -44,11 +44,11 @@ További oktatóanyagok elérhető lesz. Ezek lehetővé teszi, hogy ismerje meg
 Az alkalmazás üzembe helyezése a három megadott bérlők esetén:
 
 1. Kattintson az egyes kék **üzembe helyezés az Azure** gombra kattintva nyissa meg a központi telepítési sablont a [az Azure portal](https://portal.azure.com). Mindegyik sablon szükséges paraméter két értéket; egy új erőforráscsoport nevét, és a egy felhasználónevet, amely megkülönbözteti ezt az alkalmazás más központi telepítését. A következő lépésben részletesen állítja ezeket az értékeket.<br><br>
-    <a href="http://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Contoso Concert Hall**
+    <a href="https://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Contoso Concert Hall**
 <br><br>
-    <a href="http://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Somfát Dojo**
+    <a href="https://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Somfát Dojo**
 <br><br>
-    <a href="http://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **A Fabrikam Jazz Club**
+    <a href="https://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **A Fabrikam Jazz Club**
 
 2. Adja meg a szükséges paraméterértékeket minden egyes üzemelő példányhoz.
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 403ac2fd0ab497239350c8b4a68a6b6f53bb24b4
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c79a44422944fd2049c47a6729a86d063dbcd15e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963914"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232341"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics – gyakori kérdések
 A Microsoft FAQ a Microsoft Azure Log Analytics kapcsolatos gyakori kérdések listáját. Ha a Log Analytics szolgáltatásról további kérdése van, lépjen a [fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) és felteheti kérdéseit. Egy kérdést gyakran ismételt, amikor hozzáadjuk ehhez a cikkhez, hogy gyorsan és könnyen megtalálhatók.
@@ -158,7 +158,7 @@ A. Nem, akkor nem alkalmas jelenleg tetszőleges táblákat vagy az Azure BLOB s
 
 ### <a name="q-what-ip-addresses-does-the-log-analytics-service-use-how-do-i-ensure-that-my-firewall-only-allows-traffic-to-the-log-analytics-service"></a>K. IP-címek nem a Log Analytics szolgáltatás használata? Hogyan biztosítja, hogy a tűzfal csak lehetővé teszi a Log Analytics szolgáltatás forgalom?
 
-A. A Log Analytics szolgáltatás Azure épül. Log Analytics IP-címek szerepelnek a [a Microsoft Azure adatközpont IP-címtartományok](http://www.microsoft.com/download/details.aspx?id=41653).
+A. A Log Analytics szolgáltatás Azure épül. Log Analytics IP-címek szerepelnek a [a Microsoft Azure adatközpont IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653).
 
 Szolgáltatás központi telepítések később, a tényleges IP-címek a Log Analytics szolgáltatás módosítani. A DNS-nevek engedélyezése a tűzfalon keresztül vannak dokumentálva [hálózati követelmények](log-analytics-concept-hybrid.md#network-firewall-requirements).
 
@@ -170,7 +170,7 @@ A Log Analytics-forgalom nyilvános társviszony-létesítési ExpressRoute-kapc
 
 ### <a name="q-is-there-a-simple-and-easy-way-to-move-an-existing-log-analytics-workspace-to-another-log-analytics-workspaceazure-subscription"></a>K. Van egy meglévő Log Analytics-munkaterület áthelyezése egy másik Log Analytics munkaterület vagy az Azure-előfizetés egyszerű és könnyen mód?
 
-A. A `Move-AzureRmResource` parancsmag lehetővé teszi a Log Analytics-munkaterülettel, valamint az Automation-fiók áthelyezése egy Azure-előfizetésből egy másikba. További információkért lásd: [Move-AzureRmResource](http://msdn.microsoft.com/library/mt652516.aspx).
+A. A `Move-AzureRmResource` parancsmag lehetővé teszi a Log Analytics-munkaterülettel, valamint az Automation-fiók áthelyezése egy Azure-előfizetésből egy másikba. További információkért lásd: [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx).
 
 Ez a változás is módosíthatók az Azure Portalon.
 

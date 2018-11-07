@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/5/2018
 ms.author: terrylan
-ms.openlocfilehash: 3c198ea44953c0b2e72a544cd0e83b6592d9a81f
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 0b38c6895421b43d6f80e0c34cc23b379a673559
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032076"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261944"
 ---
 # <a name="setting-security-policies-in-security-center-or-in-azure-policy"></a>Biztonsági szabályzatok beállítása a Security Center vagy az Azure Policy
 
@@ -125,6 +125,6 @@ Ebből a cikkből megismerhette a Security Center biztonsági szabályzatainak k
 * [Partneri megoldások monitorozása az Azure Security Centerrel](security-center-partner-solutions.md): Útmutató a partneri megoldások biztonsági állapotának monitorozásához.
 * [Bérlőszintű láthatóság az Azure Security Centerben](security-center-management-groups.md): Megismerheti a felügyeleti csoportok beállításának módját az Azure Security Centerben. 
 * [Azure Security Center – gyakori kérdések](security-center-faq.md): Választ találhat a szolgáltatás használatával kapcsolatos gyakori kérdésekre.
-* [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/): Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
+* [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/): Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 
 További információk az Azure Policyról: [Mi az az Azure Policy?](../azure-policy/azure-policy-introduction.md)

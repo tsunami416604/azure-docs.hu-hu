@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: sngun
-ms.openlocfilehash: 2af93d149948071f78d0c684b812e84fa68db341
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 6ac0895ac31a815f00ca6c5fa1dfd325be2e3963
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251124"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245817"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Az Azure Storage Table tervezési útmutatója: Tervezése méretezhető és Nagytejesítményű táblákat
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -122,7 +122,7 @@ Az alábbi példa bemutatja egy egyszerű táblázat megtervezése és az alkalm
 </table>
 
 
-Eddig ez a kialakítás hasonlóan néz ki egy relációs adatbázisban lévő táblából az a legfontosabb különbségek a kötelező oszlopokat, és nem tárolhat több entitástípusok ugyanabban a táblában. Emellett a felhasználó által definiált tulajdonságok, például egyes **FirstName** vagy **életkor** adattípusú, például az egész számnak vagy karakterláncnak, egyszerűen, például egy oszlop egy relációs adatbázisban. Bár a ellentétben egy relációs adatbázisban, a Table service séma nélküli jellege azt jelenti, hogy egy tulajdonság nem kell minden entitáshoz ugyanolyan adattípusúak. Összetett adattípusok tárolni egyetlen tulajdonságát, például JSON vagy XML formátumú szerializált kell használnia. A table service, például a támogatott adattípusok, támogatott dátumtartományokat, elnevezési szabályok és méret megkötések kapcsolatos további információkért lásd: [a Table szolgáltatás adatmodelljének ismertetése](http://msdn.microsoft.com/library/azure/dd179338.aspx).
+Eddig ez a kialakítás hasonlóan néz ki egy relációs adatbázisban lévő táblából az a legfontosabb különbségek a kötelező oszlopokat, és nem tárolhat több entitástípusok ugyanabban a táblában. Emellett a felhasználó által definiált tulajdonságok, például egyes **FirstName** vagy **életkor** adattípusú, például az egész számnak vagy karakterláncnak, egyszerűen, például egy oszlop egy relációs adatbázisban. Bár a ellentétben egy relációs adatbázisban, a Table service séma nélküli jellege azt jelenti, hogy egy tulajdonság nem kell minden entitáshoz ugyanolyan adattípusúak. Összetett adattípusok tárolni egyetlen tulajdonságát, például JSON vagy XML formátumú szerializált kell használnia. A table service, például a támogatott adattípusok, támogatott dátumtartományokat, elnevezési szabályok és méret megkötések kapcsolatos további információkért lásd: [a Table szolgáltatás adatmodelljének ismertetése](https://msdn.microsoft.com/library/azure/dd179338.aspx).
 
 Mivel látni fogja, a választott **PartitionKey** és **rowkey tulajdonságok esetén** jó Táblatervezés alapvető fontosságú. A táblákban tárolt minden entitás egyedi kombinációját kell **PartitionKey** és **RowKey**. Csakúgy, mint a kulcsokat egy relációs adatbázis-táblában a **PartitionKey** és **rowkey tulajdonságok esetén** egy fürtözött index, amely lehetővé teszi a gyors look-ups indexelt értékek; azonban a Table service nem hoz létre minden másodlagos indexeket, így ezek a csak két indexelt tulajdonságok (később ismertetett mintáit megjelenítése hogyan használhatja a nyilvánvaló korlátozás).  
 
@@ -133,7 +133,7 @@ A fiók neve, a táblázat neve, és **PartitionKey** együttesen azonosítja a 
 
 A Table service szolgáltatásban az egyes csomópontok services egy vagy több fejezze be a partíciók és a szolgáltatás skálázható dinamikus terheléselosztás partíciók csomópontok között. Ha egy csomópont terhelés alatt van, a table service is *felosztása* partíciók számos különböző csomópontokon alakzatot a csomópont által kiszolgált; enyhül a forgalmat, ha a szolgáltatás is *egyesítési* csendes csomópontjáról partíció tartományok vissza az alakzatot egyetlen csomópont.  
 
-További információ a belső részleteket a Table Service, és különösen a szolgáltatás kezeli a partíciók, hogyan: a tanulmány [a Microsoft Azure Storage: A magas rendelkezésre álló felhős Társzolgáltatás erős konzisztencia](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
+További információ a belső részleteket a Table Service, és különösen a szolgáltatás kezeli a partíciók, hogyan: a tanulmány [a Microsoft Azure Storage: A magas rendelkezésre álló felhős Társzolgáltatás erős konzisztencia](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
 
 ### <a name="entity-group-transactions"></a>Tranzakciók
 A Table service szolgáltatásban (EGTs) tranzakciók atomi frissítések végrehajtásához több entitásban a kizárólag beépített mechanizmus. EGTs is nevezzük *batch-tranzakciók* bizonyos dokumentációkban. EGTs csak működhet a (ugyanazzal a partíciókulccsal adott táblában található megosztás), ugyanazon a partíción tárolt entitások így bármikor atomi tranzakciós viselkedés van szüksége arról, hogy ezeket az entitásokat is ugyanazon a partíción kell több entitás. Ez a gyakran több entitástípusok tárolja az ugyanabban a táblában (és a partíció), és nem használja több tábla különböző entitástípusok okát. Egyetlen EGT működhet, a legfeljebb 100 entitást.  Több egyidejű EGTs feldolgozásra elküldött, esetén fontos, hogy ezek EGTs nem fog működni az entitások, amelyek közösek EGTs között, ellenkező esetben feldolgozása késhet.
@@ -153,7 +153,7 @@ A következő táblázat néhány érdemes figyelembe vennie, amikor tervezések
 | Méretét a **rowkey tulajdonságok esetén** |A karakterlánc-legfeljebb 1 KB méretű |
 | Egy Entitáscsoportot tranzakció mérete |Egy tranzakció legfeljebb 100 entitást tartalmazhat, és a hasznos 4 MB-nál kisebbnek kell lennie. Miután egy EGT csak is frissítheti egy entitás. |
 
-További információt a [Table Service adatmodelljét ismertető](http://msdn.microsoft.com/library/azure/dd179338.aspx) témakörben talál.  
+További információt a [Table Service adatmodelljét ismertető](https://msdn.microsoft.com/library/azure/dd179338.aspx) témakörben talál.  
 
 ### <a name="cost-considerations"></a>Költségekkel kapcsolatos szempontok
 A TABLE storage viszonylag alacsonyak, de a kiértékelés a Table Service szolgáltatást használó megoldások részeként kell vennie a költségbecslések a kapacitás használati és a tranzakciók mennyiségét. Azonban sokféle helyzetben denormalizált vagy duplikált adatok tárolásához javítása érdekében a teljesítmény vagy a méretezhetőség, a megoldás nem egy érvényes megközelítés hogy. Díjszabással kapcsolatos további információkért lásd: [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/).  
@@ -208,7 +208,7 @@ Az alábbi példák azt feltételezik, hogy a table service az alábbi struktúr
 | **Kor** |Egész szám |
 | **E-mail cím** |Karakterlánc |
 
-A korábbi szakaszban [Azure Table service áttekintése](#overview) néhány, az Azure Table service legfontosabb funkcióit, hogy közvetlenül befolyásolják a lekérdezés tervezéséhez. Ezek a következő általános irányelveket a Table service Lekérdezéstervezés eredményez. A szűrési szintaxist, az alábbi példákban használt van, a Table service REST API-t, további információért lásd: [Entitáslekérdezés](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+A korábbi szakaszban [Azure Table service áttekintése](#overview) néhány, az Azure Table service legfontosabb funkcióit, hogy közvetlenül befolyásolják a lekérdezés tervezéséhez. Ezek a következő általános irányelveket a Table service Lekérdezéstervezés eredményez. A szűrési szintaxist, az alábbi példákban használt van, a Table service REST API-t, további információért lásd: [Entitáslekérdezés](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 * A ***pont lekérdezés*** használandó leghatékonyabb keresési és javasoljuk, hogy nagy mennyiségű kereséseket és legkisebb késés igénylő keresések használható. Ilyen lekérdezések használhatja az indexeket egy egyéni entitás hatékonyan mindkét megadásával keresse meg a **PartitionKey** és **RowKey** értékeket. Például: $filter = (PartitionKey eq "Értékesítés") és (RowKey eq '2')  
 * A második legjobb van egy ***Sortartomány-lekérdezés*** , amely használja a **PartitionKey** és a szűrők számos **rowkey tulajdonságok esetén** több entitást visszaadandó értékek. A **PartitionKey** érték azonosítja az adott partíciók és a **RowKey** az értékek azonosítják az adott partíció az entitásokat egy részét. Például: $filter = PartitionKey eq "Értékesítések és a rowkey tulajdonságok esetén a ge" és a rowkey tulajdonságok esetén lt sikerült "  
@@ -437,7 +437,7 @@ Ha alkalmazott entitástartományának kérdezze le, megadhat egy alkalmazott az
 * A tartomány 000100 való 000199 használja egy alkalmazott azonosítójú a Sales nevű részleg minden alkalmazott kereséséhez: $filter = (PartitionKey eq "Értékesítés") és (RowKey ge "empid_000100") és a ("empid_000199" rowkey tulajdonságok esetén le)  
 * A Sales nevű részleg minden alkalmazott található kezdve a levél "a" használja e-mail-címmel: $filter = (PartitionKey eq "Értékesítés") és (RowKey ge "email_a") és (RowKey lt "email_b")  
   
-  A szűrési szintaxist a fenti példákban használt van, a Table service REST API-t, további információért lásd: [Entitáslekérdezés](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+  A szűrési szintaxist a fenti példákban használt van, a Table service REST API-t, további információért lásd: [Entitáslekérdezés](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 #### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
 A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
@@ -491,7 +491,7 @@ Ha alkalmazott entitástartományának kérdezze le, megadhat egy alkalmazott az
 * A tartomány alkalmazott azonosítójú a Sales nevű részleg minden alkalmazott található **000100** való **000199** alkalmazott azonosítója használatához rendezve: $filter = (PartitionKey eq ' empid_Sales") és (RowKey ge"000100") és a ("000199" rowkey tulajdonságok esetén le)  
 * E-mail-címmel, amely elindítja az "a" e-mail cím használatához rendezett a Sales nevű részleg minden alkalmazott kereséséhez: $filter = (PartitionKey eq ' email_Sales") és (RowKey ge"a") és (RowKey lt"b")  
 
-Vegye figyelembe, hogy a szűrő szintaxisa a fenti példákban használt van, a Table service REST API-t, további információért lásd: [Entitáslekérdezés](http://msdn.microsoft.com/library/azure/dd179421.aspx).  
+Vegye figyelembe, hogy a szűrő szintaxisa a fenti példákban használt van, a Table service REST API-t, további információért lásd: [Entitáslekérdezés](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 #### <a name="issues-and-considerations"></a>Problémák és megfontolandó szempontok
 A minta megvalósítása során az alábbi pontokat vegye figyelembe:  
@@ -1002,7 +1002,7 @@ Az optimális lekérdezési egy egyedi entitás alapján ad vissza egy **Partiti
 
 Ilyen esetekben mindig teljes mértékben tesztelje az alkalmazás teljesítményét.  
 
-Egy lekérdezést a table service is visszaadhatnak maximum 1000 entitás egy időben, és előfordulhat, hogy öt másodpercenként legfeljebb végrehajtása. Ha az eredményhalmaz több mint 1000 olyan entitásokat tartalmaz, ha a lekérdezés nem számított öt másodpercen belül fejeződött be, vagy ha a lekérdezés a partíció határ átlép, a Table service az ügyfélalkalmazás a következő entitáshalmazt kérelem engedélyezéséhez egy folytatási tokent ad vissza. Hogyan a folytatási jogkivonatok munkahelyi kapcsolatos további információkért lásd: [lekérdezés időkorlátja és a tördelés](http://msdn.microsoft.com/library/azure/dd135718.aspx).  
+Egy lekérdezést a table service is visszaadhatnak maximum 1000 entitás egy időben, és előfordulhat, hogy öt másodpercenként legfeljebb végrehajtása. Ha az eredményhalmaz több mint 1000 olyan entitásokat tartalmaz, ha a lekérdezés nem számított öt másodpercen belül fejeződött be, vagy ha a lekérdezés a partíció határ átlép, a Table service az ügyfélalkalmazás a következő entitáshalmazt kérelem engedélyezéséhez egy folytatási tokent ad vissza. Hogyan a folytatási jogkivonatok munkahelyi kapcsolatos további információkért lásd: [lekérdezés időkorlátja és a tördelés](https://msdn.microsoft.com/library/azure/dd135718.aspx).  
 
 Ha használja a Storage ügyféloldali kódtár, automatikusan kezelheti folytatási token az Ön számára, hogy entitásokat ad vissza a Table szolgáltatásból. Az alábbi C# kódmintát a Storage ügyféloldali kódtár használatával automatikusan kezeli a folytatási token, ha a table service ad vissza, a válasz:  
 

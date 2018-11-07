@@ -9,12 +9,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/26/2018
-ms.openlocfilehash: 052afbe185f9c66af3759775b38b6bf0f2c2e6b2
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: a2b209dc0204c390b16039ed1cf58b47f29629f1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783321"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252105"
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Az Oozie használata a Hadooppal és a Linux-alapú Azure HDInsight munkafolyamat futtatása
 
@@ -30,12 +30,12 @@ Ismerje meg, hogyan lehet Apache Oozie használata az Azure HDInsight Hadoop-ker
 Az Oozie használatával a rendszer, például Java programok vagy héjparancsfájlok ütemezésére adott feladatok ütemezéséhez.
 
 > [!NOTE]
-> HDInsight munkafolyamatok meghatározásához egy másik lehetőség, hogy az Azure Data Factory használata. A Data Factory kapcsolatos további információkért lásd: [Hive és a Data Factory és a Pig használata a][azure-data-factory-pig-hive].
+> HDInsight munkafolyamatok meghatározásához egy másik lehetőség, hogy az Azure Data Factory használata. A Data Factory kapcsolatos további információkért lásd: [Hive és a Data Factory és a Pig használata a][azure-data-factory-pig-hive]. Használja a vállalati biztonsági csomaggal fürtökön Oozie lásd [Apache Oozie futtatása HDInsight Hadoop-fürt a vállalati biztonsági csomag](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md).
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Egy HDInsight-fürt**: lásd: [HDInsight Linux első lépések](hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* **Egy normál HDInsight-fürt**: lásd: [HDInsight Linux első lépések](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 
 > [!IMPORTANT]
 > A dokumentum lépéseinek elvégzéséhez egy Linux-alapú HDInsight-fürt szükséges. Linux az egyetlen operációs rendszer használt a HDInsight 3.4-es vagy újabb verzió. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -599,7 +599,7 @@ A koordinátor segítségével adja meg egy kezdő, a vége és a feladatok elő
     nano job.xml
     ```
 
-    A következő módosításokat:
+    Hajtsa végre a következő módosításokat:
 
    * Utasíthatja az Oozie-koordinátor fájl helyett a munkafolyamat futtatásához, módosítsa `<name>oozie.wf.application.path</name>` való `<name>oozie.coord.application.path</name>`.
 

@@ -9,16 +9,53 @@ author: hning86
 ms.author: haining
 ms.reviewer: j-martens
 ms.date: 10/24/2018
-ms.openlocfilehash: 0927ae14d232ec2ce3a46bb66ed535deabbe0138
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 5ceb47f437f736829d0be10a856fe787fab944b0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158686"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261582"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
 Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások. 
+
+## <a name="2018-11-05"></a>2018-11-05
+
+### <a name="azure-portal"></a>Azure Portal 
+Az Azure Portalon az Azure Machine Learning szolgáltatás rendelkezik a következő frissítéseket:
+  * Egy új **folyamatok** lapján közzétett folyamatokhoz.
+  * Támogatás hozzáadva a csatolása egy meglévő HDInsight-fürt egy számítási célnak.
+
+### <a name="azure-machine-learning-sdk-for-python-v0174"></a>Az Azure Machine Learning SDK for Python v0.1.74
+
++ **Használhatatlanná tévő változásai** 
+  * *Workspace.compute_targets, adattárolók, kísérletek, képek, modellek* és *problémák megoldásához segítséget* tulajdonságok módszer helyett. Helyettesítse be például *Workspace.compute_targets()* a *Workspace.compute_targets*.
+  * *Run.get_context* helyteleníti *Run.get_submitted_run*. Az utóbbi módszer a következő kiadásokban törlődni fog.
+  * *PipelineData* osztály most vár egy adattár-objektumot datastore_name egy paraméter helyett. Ehhez hasonlóan *folyamat* default_datastore_name helyett default_datastore fogad el.
+
++ **Új funkciók**
+  * Az Azure Machine Learning-folyamatokat [minta notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/pipeline-mpi-batch-prediction.ipynb) MPI lépéseket használja.
+  * A Jupyter-notebookokhoz RunDetails widget megjelenítéséhez a vizualizációt, a folyamat frissül.
+
+### <a name="azure-machine-learning-data-prep-sdk-v040"></a>Az Azure Machine Learning adat-előkészítési SDK v0.4.0 
+ 
++ **Új funkciók**
+  * Adatprofil hozzáadott száma 
+  * Értékek száma és a hisztogram már elérhető
+  * További. percentilisei az Adatprofil
+  * A középérték érhető el összegzés
+  * Mostantól támogatott Python 3.7.
+  * Amikor menti egy adatfolyam, amely tartalmazza az adattárolók Adatelőkészítés csomaghoz, az adattár-információk maradnak az Adatelőkészítés-csomag részeként
+  * Mostantól támogatott az adattárhoz való írás 
+        
++ **Hiba kijavítva**
+  * 64 bites, előjel nélküli egész számokat túlcsordul most kezeli megfelelően Linux rendszeren
+  * Egyszerű szöveges fájlok smart_read rögzített helytelen felirat
+  * Karakterlánc oszloptípus most már megjelenik-e metrikák megtekintése
+  * Száma már rögzített egyesével helyett egyetlen FieldType leképezve ValueKinds megjelenítése
+  * Write_to_csv már nem sikertelen lesz, amikor az elérési út egy karakterláncként van megadva.
+  * Cserélje le használatakor "keresése" üresen hagyja már nem meghiúsul 
 
 ## <a name="2018-10-12"></a>2018-10-12
 
@@ -26,9 +63,6 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
 
 + **Új funkciók**
   * Több bérlős támogatással új munkaterület létrehozása során.
-
-+ **Használhatatlanná tévő változásai**
-  * **A következő kiadásban közelgő** *Workspace.compute_targets, adattárolók, kísérletek, képek, a modellek* és *problémák megoldásához segítséget* módszer helyett tulajdonságai válnak. Helyettesítse be például *Workspace.compute_targets()* a *Workspace.compute_targets*.
 
 + **Javított hibák**
   * A pynacl könyvtár verzió már nem rögzíthetők a webszolgáltatáshoz való telepítésekor.
@@ -217,7 +251,7 @@ Emellett van két fontos frissítések:
 **Jelentős új funkciók**
 - [Az SQL Server és az Azure SQL DB adatforrásként támogatása](../desktop-workbench/data-prep-appendix2-supported-data-sources.md#types) 
 - [A Spark használatával MMLSpark GPU-támogatással rendelkező deep Learning](https://github.com/Azure/mmlspark/blob/master/docs/gpu-setup.md)
-- [Az összes AML-tároló kompatibilisek az Azure IoT Edge-eszközök (nincs szükség további lépésekre) telepítésekor](http://aka.ms/aml-iot-edge-blog)
+- [Az összes AML-tároló kompatibilisek az Azure IoT Edge-eszközök (nincs szükség további lépésekre) telepítésekor](https://aka.ms/aml-iot-edge-blog)
 - Regisztrált modell-lista és a részletek tekint érhető el az Azure Portalon
 - Elérése SSH-kulcs alapú felül felhasználónév/jelszó-alapú hitelesítést használ a számítási célokhoz. 
 - Az adatok új minta gyakorisága vizsgáló előkészítési felhasználói élményt. 
@@ -282,7 +316,7 @@ Számítási célnak létrehozásával kapcsolatos további információkért l�
 - Hozzáadott `az ml datasource create` parancs engedélyezi a adatforrásfájl létrehozása a parancssorból
 
 #### <a name="model-management-and-operationalization"></a>Modellkezelési és Operacionalizálás
-- [Az összes AML-tároló kompatibilisek az Azure IoT Edge-eszközökön, ha üzembe helyezte azt (nincs szükség további lépésekre)](http://aka.ms/aml-iot-edge-blog) 
+- [Az összes AML-tároló kompatibilisek az Azure IoT Edge-eszközökön, ha üzembe helyezte azt (nincs szükség további lépésekre)](https://aka.ms/aml-iot-edge-blog) 
 - A o16n parancssori felületen hibaüzenetek fejlesztései
 - A modell felügyeleti portál UX hibajavítások  
 - Konzisztens betűvel kis-és a részletek lapon modell felügyeleti attribútumok

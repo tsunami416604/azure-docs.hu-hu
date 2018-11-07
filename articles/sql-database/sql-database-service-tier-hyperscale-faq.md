@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/17/2018
-ms.openlocfilehash: 31f61a1d6dee19ada60a1024a235f6329d7d5ca0
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 661fd36b4451238f488bff1db60a901a8dabd5aa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377814"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242160"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Az Azure SQL nagy kapacitású adatbázisokkal kapcsolatos gyakori kérdések
 
@@ -253,7 +253,7 @@ Igen. Különböző adatforrásokból származó hamarosan más, az SQL Server l
 
 ### <a name="what-slas-are-provided-for-a-hyperscale-database"></a>Milyen SZOLGÁLTATÁSSZINTEKET egy nagy kapacitású adatbázis-okat
 
-Általában az SLA nem áll rendelkezésre a nyilvános előzetes verzióban. Azonban a nagy kapacitású biztosít magas rendelkezésre állás az aktuális SQL DB-ajánlatok azonos szintű. Lásd: [SLA](http://azure.microsoft.com/support/legal/sla/).
+Általában az SLA nem áll rendelkezésre a nyilvános előzetes verzióban. Azonban a nagy kapacitású biztosít magas rendelkezésre állás az aktuális SQL DB-ajánlatok azonos szintű. Lásd: [SLA](https://azure.microsoft.com/support/legal/sla/).
 
 ### <a name="are-the-database-backups-managed-for-me-by-the-azure-sql-database-service"></a>Az adatbázis biztonsági mentéséhez felügyelt velem az Azure SQL Database szolgáltatás
 

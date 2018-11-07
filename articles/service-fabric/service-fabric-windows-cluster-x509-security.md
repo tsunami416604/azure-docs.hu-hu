@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 8383d6afa4b6029aca3978c53eec1865d1d8c8ea
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: b23b2c46098fb53a3a08ff86c46cc6b6c9b936bb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721840"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228572"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Windows különálló fürt védelme X.509-tanúsítványok használatával
 Ez a cikk ismerteti a különböző csomópontokhoz, a különálló Windows-fürt közötti kommunikáció biztonságossá tételére. Emellett bemutatja, hogyan lehet X.509 tanúsítványok segítségével csatlakozzon a fürt azon ügyfelek hitelesítéséhez. Hitelesítés biztosítja, hogy csak a jogosult felhasználók a fürt és a központilag telepített alkalmazások elérésére, és végrehajthat felügyeleti feladatokat. Tanúsítvány biztonsági szabad engedélyezni a fürtön, a fürt létrehozásakor.  
@@ -257,7 +257,7 @@ Ha kibocsátó tárolók, nincs konfiguráció frissítése szükséges végreha
 ## <a name="acquire-the-x509-certificates"></a>Az X.509-tanúsítványok beszerzése
 A fürtön belüli kommunikáció védelméhez, először a fürtcsomópontok X.509-tanúsítványokat szerezzenek be. Emellett korlátozni a jogosult felhasználók vagy gépek a fürthöz való csatlakozás, szüksége beszerzése és telepítése a tanúsítványokat az ügyfélgépekre.
 
-Az éles számítási feladatokat futtató fürtök esetén használja a [hitelesítésszolgáltatói (CA)](https://en.wikipedia.org/wiki/Certificate_authority)-aláírva, a fürt védelme X.509-tanúsítvány. Ezek a tanúsítványok beszerzésével kapcsolatban további információkért lásd: [tanúsítvány beszerzése](http://msdn.microsoft.com/library/aa702761.aspx).
+Az éles számítási feladatokat futtató fürtök esetén használja a [hitelesítésszolgáltatói (CA)](https://en.wikipedia.org/wiki/Certificate_authority)-aláírva, a fürt védelme X.509-tanúsítvány. Ezek a tanúsítványok beszerzésével kapcsolatban további információkért lásd: [tanúsítvány beszerzése](https://msdn.microsoft.com/library/aa702761.aspx).
 
 Tesztelési célokra használó fürtök választhat egy önaláírt tanúsítványt szeretne használni.
 

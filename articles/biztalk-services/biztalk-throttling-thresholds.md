@@ -1,6 +1,6 @@
 ---
-title: BizTalk szolgáltatások szabályozását megismerése |} Microsoft Docs
-description: Ismerje meg a sávszélesség-szabályozás küszöbértékeit, és az amiatt végbemenő futtatási viselkedés BizTalk szolgáltatások. Sávszélesség-szabályozás a memóriahasználat és üzenetek száma alapul. MABS, WABS
+title: További információ a BizTalk Services szabályozás |} A Microsoft Docs
+description: Ismerje meg a szabályozási küszöbeivel, és az amiatt végbemenő futásidejű viselkedéseket a BizTalk Services. Szabályozás a memóriahasználat és az üzenetek száma alapul. MABS, WABS
 services: biztalk-services
 documentationcenter: ''
 author: MandiOhlinger
@@ -14,58 +14,58 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 39fc5ef36bb581c3a81c9948fda048f6cb75eb7e
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: daab61a0ea9321b0fb918c60688215c80088e0bc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "24102086"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243351"
 ---
 # <a name="biztalk-services-throttling"></a>BizTalk Services: Szabályozás
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-Az Azure BizTalk szolgáltatások megvalósítja szolgáltatás sávszélesség-szabályozás két feltételek alapján: a memóriahasználat és feldolgozási egyidejű üzenetek száma. Ez a témakör a szabályozási küszöbértékek, és működését ismerteti, ha sávszélesség-szabályozási állapot akkor fordul elő.
+Az Azure BizTalk Services megvalósítja a társzolgáltatás szabályozása két feltételek alapján: memóriahasználat és az egyidejű-üzenetek feldolgozási száma. Ez a témakör a szabályozási határértékek és ismerteti a működését, ha sávszélesség-szabályozási állapot akkor fordul elő.
 
-## <a name="throttling-thresholds"></a>Sávszélesség-szabályozási küszöbértékek
-Az alábbi táblázat a sávszélesség-szabályozási forrás- és a küszöbértékek:
+## <a name="throttling-thresholds"></a>Szabályozási Küszöbeivel
+Az alábbi táblázat a sávszélesség-szabályozási forrás és a küszöbértékek:
 
 |  | Leírás | Alsó küszöbérték | Magas küszöbértéket |
 | --- | --- | --- | --- |
-| Memory (Memória) |%-a teljes rendszer memória rendelkezésre álló/PageFileBytes. <p><p>Teljes rendelkezésre álló PageFileBytes körülbelül 2 alkalommal a RAM Memóriát a rendszer. |60% |70% |
-| Üzenet feldolgozása |Feldolgozott üzenetek száma |40 * magok száma |100 * magok száma |
+| Memory (Memória) |%-a teljes rendszer memória rendelkezésre álló/PageFileBytes. <p><p>Teljes rendelkezésre álló PageFileBytes körülbelül 2 alkalommal a memória, a rendszer. |60% |70% |
+| Üzenetfeldolgozás |Feldolgozott üzenetek száma |40 * magok száma |100 * magok száma |
 
-A magas küszöbérték elérésekor Azure BizTalk szolgáltatások szabályozása kezdődik. Sávszélesség-szabályozás leállítja az alsó küszöbérték elérésekor. A szolgáltatás használata esetén például 65 % rendszermemória. Ebben a helyzetben a szolgáltatás nem szabályozás. A szolgáltatás elindul, a rendszer memória 70 %. Ebben a helyzetben a szolgáltatást azelőtt gyorsítja fel, és továbbra is fennáll, addig, amíg a szolgáltatás pedig 60 % (alsó küszöbérték) rendszermemória szabályozása.
+Magas küszöbérték elérése esetén az Azure BizTalk Services elindítja szabályozását. Szabályozás leáll, az alsó küszöbérték elérésekor. A szolgáltatás használata esetén például 65 %-os rendszer memóriáját. Ebben a helyzetben a szolgáltatás nincs szabályozás. A szolgáltatás elindul a 70 %-os rendszer memória használata. Ebben a helyzetben a szolgáltatás szabályozza, és továbbra is fennáll, addig, amíg a szolgáltatás 60 %-os (alsó küszöbérték) rendszermemória használ szabályozását.
 
-Azure BizTalk szolgáltatások nyomon követi a sávszélesség-szabályozási állapota (normál állapotban, és a szabályozottan halmozott állapot) és a sávszélesség-szabályozási időtartama.
+Az Azure BizTalk Services nyomon követi a sávszélesség-szabályozási állapot (normál állapotban vagy szabályozott állapotban) és a sávszélesség-szabályozási időtartama.
 
-## <a name="runtime-behavior"></a>Futtatási viselkedés
-BizTalk szolgáltatások Azure szabályozási állapotba kerül, amikor az alábbiak történnek:
+## <a name="runtime-behavior"></a>Működését
+Amikor az Azure BizTalk Services szabályozási állapotba kerül, az alábbiak történnek:
 
-* Sávszélesség-szabályozás egy szerepkör-példány van. Példa:<br/>
-  A szabályozás RoleInstanceA. RoleInstanceB nem a szabályozás. Ebben a helyzetben a RoleInstanceB üzenetek feldolgozása várt módon. RoleInstanceA üzeneteket a rendszer törli, és a következő hiba miatt sikertelen:<br/><br/>
-  **Kiszolgáló túlterhelt. Próbálkozzon újra.**<br/><br/>
-* Egyetlen lekéréses forrás ne kérdezze le, és töltse le az üzenetet. Példa:<br/>
-  Egy folyamat üzenetek FTP külső forrásból kéri le. A szerepkörpéldányt, ennek során a lekéréses szabályozási állapotának beolvasása. Ebben a helyzetben a folyamat leállítása letöltése a további üzeneteket, amíg a szerepkörpéldányt leállítja a sávszélesség-szabályozás.
-* Választ küldött az ügyfélnek, így az ügyfél is újra elküldeni az üzenetet.
-* Meg kell várnia, amíg a sávszélesség-szabályozás nem oldódik. Pontosabban meg kell várnia az alsó küszöbérték elérésekor.
+* Egy szerepkör-példány ilyen szabályozás van. Példa:<br/>
+  RoleInstanceA szabályozza. RoleInstanceB nem szabályozza. Ebben a helyzetben a RoleInstanceB üzenetek feldolgozása elvárt módon. Üzenetek RoleInstanceA elvesznek, és a következő hiba miatt sikertelen:<br/><br/>
+  **A kiszolgáló elfoglalt. Próbálkozzon újra.**<br/><br/>
+* Egyetlen lekéréses forrás ne lekérdezni, és töltse le az üzenetet. Példa:<br/>
+  Egy folyamatot egy külső forrásból FTP lekéri az üzeneteket. A szerepkörpéldány ennek során a lekéréses szabályozási állapotának beolvasása. Ebben a helyzetben a folyamat leáll, letölti a további üzeneteket, mindaddig, amíg a szerepkörpéldány leállítja a szabályozás.
+* A válasz elküldhetők az ügyfélprogramnak, így az ügyfél az üzenet újból elküldheti.
+* Meg kell várnia, amíg az fel lett oldva. Pontosabban meg kell várnia az alsó küszöbérték elérésekor.
 
 ## <a name="important-notes"></a>Fontos megjegyzések
-* Sávszélesség-szabályozás nem tiltható le.
-* Sávszélesség-szabályozás küszöbértékek nem módosíthatók.
-* Sávszélesség-szabályozás rendszerszintű valósul meg.
-* Az Azure SQL adatbázis-kiszolgáló is rendelkezik beépített szabályozás.
+* Nem lehet letiltani a szabályozás.
+* Nem lehet módosítani a szabályozási küszöbeivel.
+* Szabályozás a rendszerre van megvalósítva.
+* Az Azure SQL Database-kiszolgáló is rendelkezik beépített szabályozás.
 
-## <a name="additional-azure-biztalk-services-topics"></a>További Azure BizTalk szolgáltatások kapcsolatos témakörök
-* [Az Azure BizTalk szolgáltatások SDK telepítése](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
-* [Oktatóanyag: Azure BizTalk szolgáltatások](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
-* [Hogyan kezdhetem el az Azure BizTalk Services SDK használatát](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
-* [Az Azure BizTalk szolgáltatások](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
+## <a name="additional-azure-biztalk-services-topics"></a>További Azure BizTalk Services kapcsolatos témakörök
+* [Az Azure BizTalk Services SDK telepítése](https://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
+* [Az oktatóanyagok: Az Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
+* [Hogyan kezdhetem el az Azure BizTalk Services SDK használatát](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [Az Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
 
 ## <a name="see-also"></a>Lásd még:
-* [BizTalk szolgáltatások: Fejlesztői, Basic, Standard és prémium kiadás diagram](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-* [BizTalk Services: Kiépítési állapot diagramja](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
-* [BizTalk Services: Irányítópult, Figyelés és Méret lapok](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
-* [BizTalk Services: Biztonsági mentés és visszaállítás](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
-* [BizTalk Services: Kiállító neve és kiállító kulcsa](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
+* [A BizTalk Services: Fejlesztői, alapszintű, Standard és prémium kiadások diagramja](https://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+* [BizTalk Services: Kiépítési állapot diagramja](https://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
+* [BizTalk Services: Irányítópult, Figyelés és Méret lapok](https://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+* [BizTalk Services: Biztonsági mentés és visszaállítás](https://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
+* [BizTalk Services: Kiállító neve és kiállító kulcsa](https://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
 

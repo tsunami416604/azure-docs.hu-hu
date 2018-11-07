@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: 88c152872ef8b571b8bc3e3f06ce486943e724b1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c6ff386913ed66cf4f74cb577bb8ca58e6932ada
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443528"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228878"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Specifikáció: darabolt MP4 élő az Azure Media Services feldolgozása
 Ez az meghatározás protokoll és formátum: darabolt MP4-alapú élő streamelési támogatunk az Azure Media Services ismerteti. Media Services élő streamelési szolgáltatás, amellyel az ügyfelek által az Azure-t a felhőplatform az élő események streamelése és valós időben tartalom biztosít. Ez a dokumentum is ismerteti, ajánlott eljárásokat, amellyel hatékonyan redundáns és robusztus élő betöltési mechanizmusokat.
@@ -38,7 +38,7 @@ Az alábbi ábrán látható, az élő adatfolyam-szolgáltatást a magas szint�
 ![a betöltési folyamat][image1]
 
 ## <a name="3-bitstream-format--iso-14496-12-fragmented-mp4"></a>3. Bitstream formátumban – ISO 14496 – 12 töredékes MP4
-A formátumot az élő streaming betöltési tárgyalt [ISO-14496 – 12] Ez a dokumentum alapján. Lásd: a darabolt MP4 formátumban és bővítmények egyaránt részletes ismertetése a rögzített fájlok és élő adatfolyam-feldolgozó, [[MS-SSTR]](http://msdn.microsoft.com/library/ff469518.aspx).
+A formátumot az élő streaming betöltési tárgyalt [ISO-14496 – 12] Ez a dokumentum alapján. Lásd: a darabolt MP4 formátumban és bővítmények egyaránt részletes ismertetése a rögzített fájlok és élő adatfolyam-feldolgozó, [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).
 
 ### <a name="live-ingest-format-definitions"></a>Élő betöltés fájlformátum-definíciók
 Az alábbi lista ismerteti, amely a alkalmazni élő definíciók tölti be az Azure Media Services speciális formátuma:
@@ -68,7 +68,7 @@ Az alábbiakban a részletes követelményeket:
 1. A kódoló nem használja a `Events()` főnév, a Media Services élő támogatunk 9.2 az [1] leírtak szerint.
 1. Ha a HTTP POST-kérés leáll, vagy túllépi az időkorlátot TCP hibával leáll a stream lejárta előtt, a kódoló kell egy új POST kérés kiadása egy új kapcsolat használatával, és kövesse a fenti követelményeknek. Ezenkívül a kódoló kell küldje el újra az előző két MP4 töredékei a Stream minden egyes nyomon követése és obnovení práce bEz bemutatása a média ütemterv kihagyást. Minden egyes nyomon követése az utolsó két MP4 naplóhasználatra újraküldése biztosítja, hogy nincs adatvesztés nélkül. Más szóval egy streamet tartalmaz az audio- és a egy videó nyomon követése, és a jelenlegi POST-kérés sikertelen lesz, ha a kódoló kell újra és küldje el újból az utolsó két naplóhasználatra hangsáv, ami korábban már sikeresen küldött, és az utolsó két töredék a videó nyomon követheti, amely korábban már sikeresen küldtek, annak biztosítására, hogy ne legyen adatvesztés nélkül. A kódoló media töredékek száma, az újracsatlakozáskor újraküldi "előre" puffert kell fenntartani.
 
-## <a name="5-timescale"></a>5. időskálára
+## <a name="5-timescale"></a>5. Időskála
 [[MS-SSTR] ](https://msdn.microsoft.com/library/ff469518.aspx) teljesítési használatát ismerteti **SmoothStreamingMedia** (2.2.2.1. szakasz), **StreamElement** (2.2.2.3. szakasz), **StreamFragmentElement** () 2.2.2.6 szakaszban), és **LiveSMIL** (2.2.7.3.1 szakaszt). Ha a időskálára értéke nem található, a használt alapértelmezett érték 10,000,000 (10 MHz). Bár a Smooth Streaming formátumban specifikációnak nem tiltja a többi időskálára érték használatát, a legtöbb encoder-megvalósításokban ez az alapértelmezett érték (10 MHz) létrehozásához, Smooth Streaming betöltési adatok. Oka az, hogy a [Azure Media a dinamikus csomagolás](media-services-dynamic-packaging-overview.md) funkciót, azt javasoljuk, hogy Ön egy 90-KHz időskálára a video-adatfolyamokat és 44,1 KHz vagy 48.1 KHz audiostreamek lejátszásával. Ha különböző Streamek különböző időskálára értékeket használják, az adatfolyam-szintű időskálán kell küldeni. További információkért lásd: [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).     
 
 ## <a name="6-definition-of-stream"></a>6. "Stream" meghatározása
@@ -123,7 +123,7 @@ Ebben a szakaszban bemutatjuk a szolgáltatás feladatátvételi forgatókönyve
 ## <a name="8-encoder-failover"></a>8. Kódoló feladatátvétel
 Kódoló feladatátvételi a második típusú feladatátvételi forgatókönyv, amely el nem látott végpontok közötti élő adások közvetítése esetében. Ebben a forgatókönyvben a hibajelzést kiváltó körülmény a kódoló oldalon történik. 
 
-![kódoló feladatátvétel][image5]
+![Kódoló feladatátvétel][image5]
 
 Kódoló feladatátvétel történik, ha az élő betöltési végpontjához alkalmazza az alábbi követelményeinek:
 
@@ -137,7 +137,7 @@ Kódoló feladatátvétel történik, ha az élő betöltési végpontjához alk
 ## <a name="9-encoder-redundancy"></a>9. Kódoló redundancia
 Bizonyos kritikus fontosságú az élő események, hogy igény szerint még magasabb rendelkezésre állást és minőséget, azt javasoljuk, hogy aktív-aktív redundáns kódolókat az adatvesztés nélküli, zökkenőmentes feladatátvétel érdekében használjon.
 
-![kódoló redundancia][image6]
+![Kódoló redundancia][image6]
 
 Az alábbi ábrán látható módon kódolók két csoportját leküldése minden stream két példányát egyszerre az élő szolgáltatás. Ezt a beállítást, mert a Media Services adatfolyam-azonosító és töredék időbélyegző alapján ismétlődő töredék kiszűrheti használata támogatott. Az eredményül kapott az élő stream és az archív egy példányát minden adatfolyamok, amely a legjobb lehetséges összesítés a két forrásból. Például egy elméleti szélsőséges esetben van (nem kell lennie a) egy kódoló is az egyes adatfolyamok idő lekérdezhet fut, a szolgáltatásból az eredményül kapott élő streamet folyamatos adatvesztés nélkül. 
 
@@ -146,7 +146,7 @@ A forgatókönyv követelményei majdnem megegyezik a "Kódoló feladatátvétel
 ## <a name="10-service-redundancy"></a>10. Szolgáltatás redundanciájára
 Magas redundáns globális terjesztés néha rendelkeznie kell régiók közötti biztonsági mentés regionális katasztrófa kezelésére. A "Kódoló redundancia" topológia kibővítve, ügyfelek kiválaszthatják a redundáns szolgáltatások üzembe helyezéséhez rendelkeznie egy másik régióban, amely a második kódolókészlet van csatlakoztatva. Ügyfelek is képes együttműködni a Content Delivery Network szolgáltató üzembe helyezése egy globális Traffic Manager elé a két szolgáltatási telepítéseket zökkenőmentesen továbbítani az ügyfél forgalmát. A kódolók vonatkozó követelmények ugyanazok, mint a "Kódoló redundancia" eset. Az egyetlen kivétel, hogy a második csoporton kódolók kell lennie egy másik élő mutatott betöltési végpont. Az alábbi ábrán látható, a telepítő:
 
-![szolgáltatás redundanciájára][image7]
+![Szolgáltatás redundanciájára][image7]
 
 ## <a name="11-special-types-of-ingestion-formats"></a>11. Speciális típusú adatfeldolgozást formátumok
 Ez a szakasz ismerteti a meghatározott helyzetek kezelésére kifejlesztett élő betöltési formátumok speciális típusú.

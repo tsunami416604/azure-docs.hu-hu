@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/21/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: afcda23faf4e9f0999442fa91d3c016e446c04db
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 718a8fb82c3d85baf94e2e9c316f40b964749912
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524542"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231363"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>RA-GRS használatával magas rendelkezésre álló alkalmazások tervezése
 
@@ -149,7 +149,7 @@ Egy másik szempont, hogyan legyen kezelve az alkalmazás több példánya, és 
 
 Három fő lehetősége a gyakoriságát, az elsődleges régióban újrapróbálkozások figyelése annak érdekében, hogy mikor váltson át a másodlagos régióba, és módosítsa az alkalmazás futtatásához csak olvasható módban van.
 
-*   Adjon hozzá egy kezelő-a [ **újrapróbálkozás** ](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.retrying.aspx) -es azonosítójú esemény a [ **OperationContext** ](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.aspx) objektumot adja át a Storage-kérelmek – Ez a mód Ez a cikk jelenik meg, és a hozzájuk tartozó mintában használt. Ezek az események aktiválódik, amikor az ügyfél újrapróbálkozik a kéréseket, így nyomon követheti, hogy milyen gyakran az ügyfél egy elsődleges végponton Újrapróbálkozást lehetővé tevő hibát észlel-e.
+*   Adjon hozzá egy kezelő-a [ **újrapróbálkozás** ](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.retrying.aspx) -es azonosítójú esemény a [ **OperationContext** ](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.operationcontext.aspx) objektumot adja át a Storage-kérelmek – Ez a mód Ez a cikk jelenik meg, és a hozzájuk tartozó mintában használt. Ezek az események aktiválódik, amikor az ügyfél újrapróbálkozik a kéréseket, így nyomon követheti, hogy milyen gyakran az ügyfél egy elsődleges végponton Újrapróbálkozást lehetővé tevő hibát észlel-e.
 
     ```csharp 
     operationContext.Retrying += (sender, arguments) =>
@@ -160,7 +160,7 @@ Három fő lehetősége a gyakoriságát, az elsődleges régióban újrapróbá
     };
     ```
 
-*   Az a [ **Evaluate** ](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.retrypolicies.iextendedretrypolicy.evaluate.aspx) metódus az egyéni újrapróbálkozási szabályzatot, futtathatja egyéni kódot, amikor egy újrapróbálkozási kerül sor. Amikor egy újrapróbálkozási rögzítése mellett történik, ez is lehetővé teszi, hogy az újrapróbálkozási viselkedés módosításához.
+*   Az a [ **Evaluate** ](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.retrypolicies.iextendedretrypolicy.evaluate.aspx) metódus az egyéni újrapróbálkozási szabályzatot, futtathatja egyéni kódot, amikor egy újrapróbálkozási kerül sor. Amikor egy újrapróbálkozási rögzítése mellett történik, ez is lehetővé teszi, hogy az újrapróbálkozási viselkedés módosításához.
 
     ```csharp 
     public RetryInfo Evaluate(RetryContext retryContext,

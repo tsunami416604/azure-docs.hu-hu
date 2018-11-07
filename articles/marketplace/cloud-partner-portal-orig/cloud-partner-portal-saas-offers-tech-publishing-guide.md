@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9d73040f11549741643d96913c42df49594b8d41
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 7430e57ceaec8a280c17f1276d503919a9703182
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809720"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228895"
 ---
 <a name="saas-application-technical-publishing-guide"></a>SaaS-alkalmazás műszaki közzétételi útmutató
 ===========================================
@@ -34,7 +34,7 @@ Más Marketplace-ajánlatok áttekintéséhez tekintse meg a [Marketplace közz�
 
 Közzétételi portál a portálon, amely lehetővé teszi több személy közösen dolgozzon fel az ajánlat közzétételi szerepköralapú hozzáférést biztosít. További információkért lásd: [felhasználók kezelése](./cloud-partner-portal-manage-users.md). 
 
-Mielőtt egy ajánlatot a kiadó nevében tehetők közzé fiókra, egyéni felhasználók számára az egyik *tulajdonosa* szerepkör szükséges ahhoz, hogy elfogadja a [használati feltételek](https://azure.microsoft.com/support/legal/website-terms-of-use/), [Microsoft PrivacyStatement](http://www.microsoft.com/privacystatement/default.aspx), és [a Microsoft Azure Certified ProgramAgreement](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
+Mielőtt egy ajánlatot a kiadó nevében tehetők közzé fiókra, egyéni felhasználók számára az egyik *tulajdonosa* szerepkör szükséges ahhoz, hogy elfogadja a [használati feltételek](https://azure.microsoft.com/support/legal/website-terms-of-use/), [Microsoft PrivacyStatement](https://www.microsoft.com/privacystatement/default.aspx), és [a Microsoft Azure Certified ProgramAgreement](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
 
 
 <a name="creating-an-offer"></a>Ajánlat létrehozása
@@ -50,7 +50,7 @@ Az SaaS-alkalmazás az ajánlat az alábbi táblázatban ismertetett öt szakasz
 |--------------------|-------------------------------------------------------------------------------------------------------------------------------|
 | Ajánlat beállításai     | Adja meg egy egyedi nevét és Azonosítóját a SaaS-alkalmazás segítségével                                                                         |
 | Technikai információ     | Konfigurálja a Szolgáltatottszoftver-megoldás típust, és adja meg a kapcsolat adatait az alkalmazás segítségével                            |
-| Kipróbálás         | Az opcionális szakasz, amely lehetővé teszi, hogy egy szolgáltatás, amely lehetővé teszi az ügyfeleknek tesztelje ajánlatát, mielőtt azok a vásárláskor definiálja. |
+| Tesztverzió         | Az opcionális szakasz, amely lehetővé teszi, hogy egy szolgáltatás, amely lehetővé teszi az ügyfeleknek tesztelje ajánlatát, mielőtt azok a vásárláskor definiálja. |
 | Storefront részletei | A marketing, a jogi, a lead felügyelet és a listaelem szakaszokat tartalmazza:   <br/> – A Marketing szakaszban adja meg a leírását és emblémák megfelelően jelenik meg a Marketplace-en felhasználói portálon vonatkozó ajánlatot szükséges teszi lehetővé.  <br/> – A Lead felügyelet lehetővé teszi, hogy meghatározza a hely hol átirányítása a felhasználó új potenciális ügyfeleket az Azure Marketplace-en teljes felhasználói portálon.  <br/> -A jogi szakaszban adja meg az adatvédelmi szabályzat és a használati időszak jogi dokumentáció teszi lehetővé.  |
 | Kapcsolattartó            | Lehetővé teszi, hogy adja meg az ajánlat támogatási kapcsolattartási adatokat.                                                                  |
 |  |  |
@@ -94,7 +94,7 @@ Ha Ön egy SaaS-alkalmazás, amely az Azure Marketplace-en, és szeretné enged�
 Az SaaS-alkalmazás csatlakoztatása kapcsolatos további információkért lásd: [SaaS - értékesítheti Azure-on keresztül](./cloud-partner-portal-saas-offer-subscriptions.md).
 
 
-### <a name="test-drive"></a>Kipróbálás
+### <a name="test-drive"></a>Tesztverzió
 
 Egy próbaverziós megoldást vezet be az ügyfelek számára az ajánlott eljárás az, győződjön meg, hogy az általuk is megvásárolható magabiztosan. Próbaverziós lehetőségekről Test Drive az Érdeklődők generálása kiváló minőségű, a leghatékonyabb, és ezek nagyobb átalakítás vezet.
 

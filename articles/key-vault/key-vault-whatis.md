@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: barclayn
-ms.openlocfilehash: d1a6da5d599296a11678ee58cadc42d61296e8e7
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: d7de20e1de91e37b2437091e6d7503e2cb2a4590
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230301"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246531"
 ---
 # <a name="what-is-azure-key-vault"></a>Mi az Azure Key Vault?
 
@@ -75,18 +75,11 @@ Azure-előfizetés birtokában bárki létrehozhat és használhat kulcstároló
 
 A rendszergazda ezután a fejlesztők számára olyan URI-kat biztosíthat, amelyeket meghívhatnak saját alkalmazásaikból, a biztonsági rendszergazda számára pedig kulcshasználati naplózási információkkal szolgálhat. 
 
-![Az Azure Key Vault áttekintése][1]
+! [Az Azure Key Vault áttekintése] [1]
 
 A fejlesztők közvetlenül is kezelhetik a kulcsokat API-k használatával. További információkért tekintse meg a [Key Vault fejlesztői útmutatóját](key-vault-developers-guide.md).
 
 ## <a name="next-steps"></a>További lépések
 
-A rendszergazdáknak szóló bevezető oktatóanyagért tekintse meg a [Bevezetés az Azure Key Vault használatába](key-vault-get-started.md) című cikket.
-
-A kulcstartó használatának naplózásával kapcsolatos további információkért tekintse meg [Az Azure Key Vault naplózása](key-vault-logging.md) című cikket.
-
-A kulcsoknak és titkos kulcsoknak az Azure Key Vaulttal való használatával kapcsolatos további információkért tekintse meg [A kulcsok, titkos kódok és tanúsítványok ismertetése](https://msdn.microsoft.com/library/azure/dn903623\(v=azure.1\).aspx) című cikket.
-
-<!--Image references-->
-[1]: ./media/key-vault-whatis/AzureKeyVault_overview.png
-Az Azure Key Vault a legtöbb régióban elérhető. További információ: [A Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/).
+Ismerje meg, hogyan [a tároló biztonságos](key-vault-secure-your-key-vault.md) 
+ <!--Image references--> [1]: a legtöbb régióban az Azure Key Vault./media/key-vault-whatis/AzureKeyVault_overview.png érhető el. További információ: [A Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/).
