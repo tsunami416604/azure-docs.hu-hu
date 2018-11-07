@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 668882b8b39052c3c8e7d7b72c881a64c5c05a10
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 044a3bae75cb385e7a3542b920e0cb3b5bcedcd0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321798"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233626"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Az önkiszolgáló jelszó-visszaállítás hibaelhárítása
 
@@ -99,7 +99,7 @@ A jelszóvisszaíró használata a problémák elhárításakor ajánlott eljár
 | Kód | Név vagy üzenet | Leírás |
 | --- | --- | --- |
 | 6329 | FEDEZETE: MMS(4924) 0x80230619: "korlátozás megakadályozza, hogy a jelszó a következőre változik: a megadott jelenlegivel." | Ezt az eseményt akkor fordul elő, ha a jelszóvisszaíró szolgáltatás próbál állítson be jelszót a helyi címtárban, amely nem felel meg a jelszó kora, előzmények, bonyolultsága vagy a tartomány szűrési követelményeinek. <br> <br> Ha a jelszó minimális kora és nemrég módosította a jelszó az, hogy eltelt időszakot, Ön nem tudja módosítani a jelszót újra, addig a megadott kora a tartományban. Tesztelési célokra, a minimális korú 0-ra kell állítani. <br> <br> Ha jelszó előzményekre vonatkozó követelményeknek engedélyezve van, akkor ki kell választania egy jelszót, amelyet nem használtak az elmúlt *N* időpontok, hol *N* a jelszó-előzmények beállítása. Ha kiválaszt egy jelszót, amely használatban van az utolsó *N* időkorlátja, majd, egy hibaüzenet jelenik meg ebben az esetben. Tesztelési célokra, a jelszóelőzmények 0-ra kell állítani. <br> <br> Ha jelszó-összetettségi követelményeknek, ezek mindegyike kényszerítettek, amikor a felhasználó megpróbál módosítása vagy a jelszó alaphelyzetbe állítása. <br> <br> Ha a jelszószűrők engedélyezve van, és a felhasználó kiválaszt egy jelszót, amely nem felel meg a szűrési feltételeket, majd az alaphelyzetbe állítás vagy módosítási művelet meghiúsul. |
-| 6329 | MMS(3040): admaexport.cpp(2837): A kiszolgáló nem tartalmaz az LDAP-jelszó házirend vezérlő. | Ez a probléma akkor fordul elő, ha LDAP_SERVER_POLICY_HINTS_OID vezérlő (1.2.840.113556.1.4.2066) nincs engedélyezve a tartományvezérlők a. A jelszó a jelszóvisszaíró szolgáltatás használatához engedélyeznie kell a vezérlőt. Ehhez a tartományvezérlők a Windows Server 2008 (a legújabb SP), vagy később kell lennie. Ha a tartományvezérlők 2008 (R2 előtti), akkor is gyorsjavítást kell alkalmaznia [KB2386717](http://support.microsoft.com/kb/2386717). |
+| 6329 | MMS(3040): admaexport.cpp(2837): A kiszolgáló nem tartalmaz az LDAP-jelszó házirend vezérlő. | Ez a probléma akkor fordul elő, ha LDAP_SERVER_POLICY_HINTS_OID vezérlő (1.2.840.113556.1.4.2066) nincs engedélyezve a tartományvezérlők a. A jelszó a jelszóvisszaíró szolgáltatás használatához engedélyeznie kell a vezérlőt. Ehhez a tartományvezérlők a Windows Server 2008 (a legújabb SP), vagy később kell lennie. Ha a tartományvezérlők 2008 (R2 előtti), akkor is gyorsjavítást kell alkalmaznia [KB2386717](https://support.microsoft.com/kb/2386717). |
 | HR 8023042 | Szinkronizáló vezérlő visszaadott-hibakód: hr = 80230402, message = tett kísérlet sikertelen volt, mert nincsenek ismétlődő bejegyzéseket a azonos jegyzetobjektum objektum lekérése. | Ez a hiba akkor fordul elő, ha ugyanazt a felhasználói azonosító engedélyezve van több tartományban. Ilyen például, ha a fiók- és erőforrás-erdők szinkronizál, és ugyanazt a felhasználói azonosító jelen, és engedélyezve van minden olyan erdőben. <br> <br> Ez a hiba akkor is előfordulhat, ha egy nem egyedi a forráshorgony attribútuma, mint egy aliast vagy egyszerű felhasználónév, és két felhasználót, hogy ugyanazt a forráshorgony attribútuma fájlmegosztások. <br> <br> A probléma megoldásához, győződjön meg arról, hogy nem rendelkezik ismétlődő felhasználókat a tartományokon belül, és használjon egy egyedi a forráshorgony attribútuma minden felhasználó számára. |
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>Ha a forrás az esemény PasswordResetService
@@ -215,7 +215,7 @@ Azt javasoljuk, hogy ez a lépés végrehajtása csak azután kísérli meg a ko
 > Ha testre szabott-a-beépített szinkronizálási szabályok *biztonsági Mentésükhöz frissítés folytatása előtt, és ezt követően manuálisan telepítse újra azokat után végzett.*
 >
 
-1. Az Azure AD Connect legújabb verzióját töltse le a [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=615771).
+1. Az Azure AD Connect legújabb verzióját töltse le a [Microsoft Download Center](https://go.microsoft.com/fwlink/?LinkId=615771).
 1. Már telepítette az Azure AD Connect, mert helyben frissíthet az Azure AD Connect telepítés frissítése a legújabb verzióra van szükség.
 1. A letöltött csomagot, és kövesse a képernyőn megjelenő utasításokat az Azure AD Connect gép frissíteni.
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: sutalasi
-ms.openlocfilehash: f8f690a4f94ee56cfaa5532fa090fada1a33bddf
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4b008cc119951e50567218e332818585fb017e5a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214783"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229407"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Az Azure-bA vészhelyreállítás beállítása a Hyper-V virtuális gépekhez a PowerShell és Azure Resource Manager használatával
 
@@ -24,7 +24,7 @@ Ez a cikk ismerteti a Hyper-V virtuális gépek replikálása az Azure-ban a Win
 
 Az Azure PowerShell kezelése az Azure-ban a Windows PowerShell-parancsmagokat kínál. Site Recovery PowerShell parancsmagokat, elérhető az Azure PowerShell-lel az Azure Resource Manager segítségével védhető és helyreállítható a kiszolgálók az Azure-ban.
 
-Nem kell lennie egy PowerShell-lel szakértői ebből a cikkből, de az alapvető fogalmakkal, mint a modulok, a parancsmagok és a munkamenetek tisztában kell. Olvasási [első lépések a Windows PowerShell-lel](http://technet.microsoft.com/library/hh857337.aspx), és [az Azure PowerShell az Azure Resource Manager](../powershell-azure-resource-manager.md).
+Nem kell lennie egy PowerShell-lel szakértői ebből a cikkből, de az alapvető fogalmakkal, mint a modulok, a parancsmagok és a munkamenetek tisztában kell. Olvasási [első lépések a Windows PowerShell-lel](https://technet.microsoft.com/library/hh857337.aspx), és [az Azure PowerShell az Azure Resource Manager](../powershell-azure-resource-manager.md).
 
 > [!NOTE]
 > A Cloud Solution Provider (CSP) program Microsoft-partnerek konfigurálható és kezelhető a megfelelő CSP-előfizetésekben (bérlői előfizetések) ügyfél-kiszolgálók védelmének.

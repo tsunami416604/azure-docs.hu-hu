@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: b6f1185a94f865578d9a6514fb6841f8811b2230
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 58992c80344902674b2b21a71b07925c752911a4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42054501"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230944"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication – gyakran ismételt kérdések
 
@@ -145,7 +145,7 @@ Ha a szervezet nem rendelkezik a hagyományos, nem kell engedélyezné a felhasz
 
 Szöveges üzenetek kézbesítésének és a kétirányú SMS válaszok átvételét nem garantált, mert ellenőrizhetetlen tényező, amelyek hatással lehetnek a szolgáltatás megbízhatóságát. Ezek a tényezők közé tartozik a cél ország, a mobilszolgáltatók és a jel erőssége.
 
-Ha a felhasználók gyakran megbízhatóan a szöveges üzenetek fogadása problémáit, mondja el neki, inkább a mobil alkalmazás vagy a telefonhívásos módszer használata. A mobilalkalmazás fogadhat értesítéseket, mind a mobil- és Wi-Fi-kapcsolatok felett. Emellett a mobilalkalmazást hozhat létre ellenőrző kódok kezelésére, akkor is, ha az eszköz rendelkezik egyáltalán nincs jel. A Microsoft Authenticator alkalmazás érhető el az [Android](http://go.microsoft.com/fwlink/?Linkid=825072), [IOS](http://go.microsoft.com/fwlink/?Linkid=825073), és [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071).
+Ha a felhasználók gyakran megbízhatóan a szöveges üzenetek fogadása problémáit, mondja el neki, inkább a mobil alkalmazás vagy a telefonhívásos módszer használata. A mobilalkalmazás fogadhat értesítéseket, mind a mobil- és Wi-Fi-kapcsolatok felett. Emellett a mobilalkalmazást hozhat létre ellenőrző kódok kezelésére, akkor is, ha az eszköz rendelkezik egyáltalán nincs jel. A Microsoft Authenticator alkalmazás érhető el az [Android](https://go.microsoft.com/fwlink/?Linkid=825072), [IOS](https://go.microsoft.com/fwlink/?Linkid=825073), és [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071).
 
 Ha SMS-eket kell használnia, amikor csak lehetséges kétirányú SMS helyett az egyirányú SMS használatát javasoljuk. Egyirányú SMS megbízhatóbb, és megakadályozza, hogy felhasználói költséggel globális SMS szöveges üzenetben küldött, egy másik országból megválaszolása.
 

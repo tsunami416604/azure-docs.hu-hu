@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 05/14/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: fe5bcce06ef02bae75bf9fdaf5702a99f485885c
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: e4aa4a87bec8f737405c90bb42bdb5fc60cb379a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42056647"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232997"
 ---
 # <a name="azure-active-directory-risk-events"></a>Az Azure Active Directory kockázati eseményei
 
@@ -75,7 +75,7 @@ A kockázati esemény típusa két bejelentkezések földrajzilag távoli helyek
 
 Az algoritmus figyelmen kívül hagyja a nyilvánvaló "vakriasztásokat" a lehetetlen utazás feltételek, például a VPN-EK és a szervezet más felhasználói által rendszeresen használt helyek hozzájárul. A rendszer egy mely során egy új felhasználói bejelentkezési viselkedés megtanulja 14 napos betanulási időszakra van. 
 
-### <a name="sign-in-from-unfamiliar-locations"></a>Bejelentkezés szokatlan helyekről
+### <a name="sign-in-from-unfamiliar-locations"></a>Bejelentkezés ismeretlen helyekről
 
 A kockázati esemény típusa figyelembe veszi a korábbi bejelentkezési helyek (IP, szélesség / hosszúság és az ASN) új / ismeretlen helyek meghatározásához. A rendszer korábbi, felhasználó által használt helyek adatait tárolja, és figyelembe veszi az "ismerős" helyek. A kockázati esemény akkor aktiválódik, ha a bejelentkezés történik, amely még nem ismert helyeihez helyről. A rendszer egy 30 napos, amely során azt nem jelöli meg rendellenesként ismeretlen helyről, új helyekről betanulási időszakra van. A rendszer is figyelmen kívül hagyja a jól ismert eszközöket és helyeket, amelyek földrajzilag közel egy ismert helyre történő bejelentkezések. 
 
@@ -145,7 +145,7 @@ Lehetetlen utazás az általában jól jelzi, hogy egy támadó sikeresen jelent
 > [!TIP]
 > A kockázati esemény típusa jelentett vakriasztások mennyisége csökkenthető konfigurálása [nevesített helyek](../active-directory-named-locations.md). 
 
-### <a name="sign-in-from-unfamiliar-locations"></a>Bejelentkezés szokatlan helyekről
+### <a name="sign-in-from-unfamiliar-locations"></a>Bejelentkezés ismeretlen helyekről
 
 Ismeretlen helyről biztosíthatja, hogy egy támadó az ellopott identitás használatára képes jelzi. Vakriasztások akkor fordulhat elő, ha egy felhasználó utazik, próbálja ki az új eszközt, vagy egy új VPN használ. Ezek vakriasztások eredményeként kockázati esemény típus szintje **Közepes**.
 
@@ -155,7 +155,7 @@ A kockázati esemény IP-címek, nem a felhasználói eszközök azonosítja. Ha
 
 Azt javasoljuk, hogy kapcsolattartás a felhasználókkal, és a felhasználói eszközök vizsgálata. Lehetőség arra is, hogy a felhasználó személyes eszközén fertőzött, vagy ahogy korábban említettük, hogy valaki más használta az ugyanazon az IP-címről egy fertőzött eszköz felhasználóként. Fertőzött eszközökről gyakran fertőzöttek kártevőkkel, víruskereső szoftver még nem azonosított, és azt is jelezheti, hogy az eszköz megfertőző okozott felhasználó rossz szokások.
 
-Cím kártevőszoftver-fertőzések kapcsolatos további információkért lásd: a [Kártevőkezelési központ](http://go.microsoft.com/fwlink/?linkid=335773&clcid=0x409).
+Cím kártevőszoftver-fertőzések kapcsolatos további információkért lásd: a [Kártevőkezelési központ](https://go.microsoft.com/fwlink/?linkid=335773&clcid=0x409).
 
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Bejelentkezések gyanús tevékenységeket mutató IP-címekkel

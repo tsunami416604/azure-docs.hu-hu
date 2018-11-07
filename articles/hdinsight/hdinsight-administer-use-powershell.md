@@ -1,25 +1,25 @@
 ---
-title: A PowerShell-lel – Azure HDInsight Hadoop-fürtök kezelése
-description: Ismerje meg, hogyan hajthat végre felügyeleti feladatokat az Azure PowerShell használatával HDInsight a Hadoop-fürtök.
+title: A PowerShell-lel – Azure HDInsight az Apache Hadoop-fürtök kezelése
+description: Ismerje meg, hogyan hajthat végre felügyeleti feladatokat az Azure PowerShell használatával HDInsight az Apache Hadoop-fürtök.
 services: hdinsight
-ms.reviewer: jasonh
-author: jasonwhowell
+ms.reviewer: tyfox
+author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 7abd75347d7bd2673a9e6040ee15def6638de440
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/6/2018
+ms.author: tylerfox
+ms.openlocfilehash: 4bf46501a75b9dd5be7ae1b446a0db90c20be559
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43096582"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235258"
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>A HDInsight Hadoop-fürtök kezelése az Azure PowerShell használatával
+# <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>A HDInsight Apache Hadoop-fürtök kezelése az Azure PowerShell használatával
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Az Azure PowerShell segítségével szabályozhatja és automatizálhatja az üzembe helyezéséhez és felügyeletéhez a számítási feladatokat az Azure-ban. Ebből a cikkből elsajátíthatja az Azure HDInsight Hadoop-fürtök kezelése az Azure PowerShell használatával. A HDInsight PowerShell-parancsmagok listáját lásd: [HDInsight parancsmag-referencia](https://msdn.microsoft.com/library/azure/dn479228.aspx).
+Az Azure PowerShell segítségével szabályozhatja és automatizálhatja az üzembe helyezéséhez és felügyeletéhez a számítási feladatokat az Azure-ban. Ebből a cikkből elsajátíthatja az Azure HDInsight az Apache Hadoop-fürtök kezelése az Azure PowerShell használatával. A HDInsight PowerShell-parancsmagok listáját lásd: [HDInsight parancsmag-referencia](https://msdn.microsoft.com/library/azure/dn479228.aspx).
 
 **Előfeltételek**
 
@@ -209,7 +209,7 @@ $resourceGroupName = $cluster.ResourceGroup
 ## <a name="submit-jobs"></a>Feladatok elküldése
 **A MapReduce-feladatok elküldése**
 
-Lásd: [futtassa a Hadoop MapReduce-minták a Windows-alapú HDInsight](hdinsight-run-samples.md).
+Lásd: [futtassa a szerepel a HDInsight MapReduce-példák](hadoop/apache-hadoop-run-samples-linux.md).
 
 **A Hive-feladatok**
 

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 160172b25f4bcdb04ac9f9649bca6b08e0be1b0d
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 1706364ca0281240b5b887bea219620c7b4add5e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269072"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246837"
 ---
 # <a name="api-management-caching-policies"></a>Az API Management gyorsítótárazási házirendek
-Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](http://go.microsoft.com/fwlink/?LinkID=398186).  
+Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](https://go.microsoft.com/fwlink/?LinkID=398186).  
   
 ##  <a name="CachingPolicies"></a> Gyorsítótárazási házirendek  
   
@@ -121,7 +121,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |változó-által-developer-csoportok|Állítsa be `true` a gyorsítótár-válaszok száma felhasználói szerepkörhöz.|Igen||  
   
 ### <a name="usage"></a>Használat  
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **A házirend-szakaszok:** bejövő  
 -   **A házirend-hatókörök:** API, a művelet, a termék  
@@ -193,7 +193,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |időtartam|Time-to-live a gyorsítótárazott bejegyzések, másodpercben megadva.|Igen|–|  
   
 ### <a name="usage"></a>Használat  
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **A házirend-szakaszok:** kimenő    
 -   **A házirend-hatókörök:** API, a művelet, a termék  
@@ -237,7 +237,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |a változó neve|Neve a [környezeti változó](api-management-policy-expressions.md#ContextVariables) looked mentése értékét rendeli hozzá, ha a keresés sikeres. Keresési tévesztés eredményez, ha a változó fog megegyezni értékét a `default-value` attribútum vagy `null`, ha a `default-value` attribútum hiányzik.|Igen|–|  
   
 ### <a name="usage"></a>Használat  
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **A házirend-szakaszok:** bejövő, kimenő, háttér, – hiba  
 -   **A házirend-hatókörök:** globális, API, a művelet, a termék  
@@ -279,7 +279,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |érték|A gyorsítótárazható érték.|Igen|–|  
   
 ### <a name="usage"></a>Használat  
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **A házirend-szakaszok:** bejövő, kimenő, háttér, – hiba  
 -   **A házirend-hatókörök:** globális, API, a művelet, a termék  
@@ -316,7 +316,7 @@ A `cache-remove-value` töröl egy gyorsítótárazott elem, a kulcs azonosítja
 |kulcs|A korábban gyorsítótárazott értéket el kell távolítani a gyorsítótárból kulcsa.|Igen|–|  
   
 #### <a name="usage"></a>Használat  
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .  
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .  
   
 -   **A házirend-szakaszok:** bejövő, kimenő, háttér, – hiba  
 -   **A házirend-hatókörök:** globális, API, a művelet, a termék  

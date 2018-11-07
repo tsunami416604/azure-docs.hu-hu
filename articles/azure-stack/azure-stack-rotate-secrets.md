@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 418b23f0783341ff7e5aaf7e2bbb2e869eb7dc45
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 5d2f4fc77d5849dc2be80ada9610098c9a381f92
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466154"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244100"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Azure Stack titkos kulcsainak rotálása
 
@@ -92,7 +92,7 @@ Az alábbi utasításokat követve titkos Elforgatás futó fog kijavítani ezek
 5.  A biztonsági mentés rotációs biztonsági mentési biztonságos helyen használt tanúsítványok Store. Az elforgatás fut, és akkor sikertelen lesz, ha cserélje le a tanúsítványokat a fájlmegosztásban a biztonsági másolatokat előtt, futtassa újra a elforgatási. Vegye figyelembe, a biztonsági másolatok megőrzése a biztonsági mentési biztonságos helyen.
 6.  Hozzon létre egy fájlmegosztást a ERCS virtuális gépeken érhető el. A fájlmegosztás olvasható és írható a kell lennie. a **CloudAdmin** identitás.
 7.  Nyisson meg egy PowerShell ISE-ben konzolt egy olyan számítógépről, ahol hozzáférhet a fájlmegosztáson. Keresse meg a fájlmegosztás. 
-8.  Futtatás **[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)** a szükséges könyvtárak a külső tanúsítványok létrehozásához.
+8.  Futtatás **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)** a szükséges könyvtárak a külső tanúsítványok létrehozásához.
 
 ## <a name="rotating-external-and-internal-secrets"></a>Belső és külső titkos kódok elforgatása
 
@@ -167,7 +167,7 @@ A Start-SecretRotation parancsmag elforgatása az infrastruktúra titkos kulcsok
 
 | Paraméter | Típus | Szükséges | Pozíció | Alapértelmezett | Leírás |
 | -- | -- | -- | -- | -- | -- |
-| PfxFilesPath | Sztring  | False (Hamis)  | nevű  | None  | A fájlmegosztás elérési útját a **\Certificates** könyvtárra, amelyben minden külső hálózati végpont tanúsítványokat. Csak akkor szükséges, ha külső titkos kódok és az összes titkos elforgatása. Záró könyvtárnak kell lennie **\Certificates**. |
+| PfxFilesPath | Karakterlánc  | False (Hamis)  | nevű  | None  | A fájlmegosztás elérési útját a **\Certificates** könyvtárra, amelyben minden külső hálózati végpont tanúsítványokat. Csak akkor szükséges, ha külső titkos kódok és az összes titkos elforgatása. Záró könyvtárnak kell lennie **\Certificates**. |
 | CertificatePassword | SecureString | False (Hamis)  | nevű  | None  | A jelszó - PfXFilesPath megadott összes tanúsítvány esetében. Kötelező érték, ha PfxFilesPath biztosított belső és külső titkos kódok vannak-e forgatni. |
 | PathAccessCredential | PSCredential | False (Hamis)  | nevű  | None  | A fájlmegosztáson az PowerShell hitelesítő adatait a **\Certificates** könyvtárra, amelyben minden külső hálózati végpont tanúsítványokat. Csak akkor szükséges, ha külső titkos kódok és az összes titkos elforgatása.  |
 | Újrafuttatás | SwitchParameter | False (Hamis)  | nevű  | None  | Futtassa újra a titkos rotáció újbóli kísérlete sikertelen próbálkozások után bármikor kell használni. |

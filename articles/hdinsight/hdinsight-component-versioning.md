@@ -1,6 +1,6 @@
 ---
-title: Hadoop-összetevők és verziók – Azure HDInsight
-description: Ismerje meg, a Hadoop összetevői és verziói a HDInsight és a felhőalapú terjesztési Hortonworks Data platform elérhető a szolgáltatási szintek.
+title: Az Apache Hadoop-összetevők és verziók – Azure HDInsight
+description: Ismerje meg, az Apache Hadoop-összetevők és verziók a HDInsight és a felhőalapú terjesztési Hortonworks Data platform elérhető a szolgáltatási szintek.
 keywords: hadoop-verziók, hadoop-ökoszisztéma összetevők, hadoop-összetevők, hogyan ellenőrizheti a hadoop-verzió
 services: hdinsight
 ms.reviewer: jasonh
@@ -10,20 +10,20 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: 0e14ca31d51887626f773fb05b02b41c4325fef3
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: fca83090e6713e4360bd19d49c7fd6b9147fd6ea
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914787"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219732"
 ---
-# <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok a Hadoop-összetevők és a HDInsight-verziók?
+# <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok az Apache Hadoop-összetevők és verziók a HDInsight?
 
 További tudnivalók az Apache Hadoop-ökoszisztéma összetevők és verziók a Microsoft Azure HDInsight, valamint a vállalati biztonsági csomag. Emellett ismerje meg a HDInsight Hadoop-összetevők verziók ellenőrzéséhez. 
 
 Minden egyes HDInsight felhőalapú terjesztése egy verziójának megfelelő Hortonworks Data Platform (HDP) verziószáma.
 
-## <a name="hadoop-components-available-with-different-hdinsight-versions"></a>Hadoop-összetevők a különböző HDInsight-verziók
+## <a name="apache-hadoop-components-available-with-different-hdinsight-versions"></a>A különböző HDInsight-verziók az Apache Hadoop-összetevők
 Az Azure HDInsight Hadoop fürt több verzió telepítését követően bármikor támogatja. Minden verzió tetszőleges meghatározott verziójához a HDP telepítési és összetevők, hogy a terjesztés belüli lemezképcsomagban hoz létre. 2017. április 4, az Azure HDInsight által használt alapértelmezett fürtverzió 3.6-os és a HDP 2.6 alapul.
 
 A HDInsight-fürt verziók-összetevő verzió az alábbi táblázatban láthatók: 
@@ -247,7 +247,7 @@ Az alábbi táblázatok sorolják fel a HDInsight-fürtök esetében az alapért
   | Edge: Virtuálisgép-méretet ajánlott | | | | | |Windows: D12 v2, D13 v2 és D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
 * Dél-Brazíliát és Nyugat-Japánban csak (nincs v2 méretű):
 
-  | Fürttípus | Hadoop | HBase | Interaktív lekérdezés |Storm | Spark | Machine Learning szolgáltatás |
+  | Fürttípus | Hadoop | HBase | Interaktív lekérdezés |Storm | Spark | ML-szolgáltatások |
   | --- | --- | --- | --- | --- | --- | --- |
   | A fő: virtuális gépek alapértelmezett mérete |D3 |D3  | D13, D14 |A3 |D12 |D12 |
   | A fő: javasolt Virtuálisgép-méretek |D4, D3, D12 CSOMAG |D4, D3, D12 CSOMAG  | D13, D14 |A3, A4, A5 CSOMAG |D12, D13, D14 |D12, D13, D14 |

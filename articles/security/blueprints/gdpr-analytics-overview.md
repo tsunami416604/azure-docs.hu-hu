@@ -8,19 +8,19 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: f744a1126e12766980727e31d5c50ce4aa17934c
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 3d15e747c129d2591f4cc70030d1cf858bcee49e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408778"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237654"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-gdpr"></a>Azure biztonsági és megfelelőségi terv: GDPR Analytics
 
 ## <a name="overview"></a>Áttekintés
 Az általános adatvédelmi rendelet (GDPR) tartalmazza az információk gyűjtése, tárolása és személyes adatokat, beleértve a hogyan szervezetek azonosítása és a személyes adatok védelme, átláthatóság követelmények kezelésére, észlelése és jelentés segítségével számos követelmények személyes adatok illetéktelen behatolásokat, és train adatvédelmi személyzet és a többi alkalmazott. Az általános adatvédelmi rendelet biztosít az egyének személyes adataik nagyobb mértékben vezérelheti, és számos új kötelezettségeket szervezeteknek, amelyek gyűjtése, kezelni vagy személyes adatok elemzése ró. Az általános adatvédelmi rendelet új szabályokat áruk kínáló szervezetek számára ír elő, és személyek az Európai Unió (EU), vagy ha a szolgáltatás adatokat gyűjthet és elemezhet EU-polgárokkal kapcsolatos vannak kötve. Az általános adatvédelmi rendelet vonatkozik, függetlenül attól, ahol a szervezet megtalálható.
 
-A Microsoft Azure tervezett az iparágvezető biztonsági és adatvédelmi módszerek kidolgozásában adataihoz a felhőben, beleértve a kategóriákat, az általános adatvédelmi rendelet által azonosított a személyes adatok védelme érdekében. A Microsoft [szerződési feltételek](http://aka.ms/Online-Services-Terms) Microsoft véglegesítenie kell a processzorok követelményeinek.
+A Microsoft Azure tervezett az iparágvezető biztonsági és adatvédelmi módszerek kidolgozásában adataihoz a felhőben, beleértve a kategóriákat, az általános adatvédelmi rendelet által azonosított a személyes adatok védelme érdekében. A Microsoft [szerződési feltételek](https://aka.ms/Online-Services-Terms) Microsoft véglegesítenie kell a processzorok követelményeinek.
 
 Az Azure biztonsági és megfelelőségi terv útmutatással egy data analytics architektúra az Azure-ban, amely segítséget nyújt az általános adatvédelmi rendelet követelményeinek történő üzembe helyezéséhez. Ebben a megoldásban, amelyben ügyfeleink megfelel bizonyos biztonsági és megfelelőségi követelmények módszereket mutatja be, és az ügyfelek számára hozhat létre és konfigurálja a saját adatok elemzési megoldásokat az Azure-ban alapjaként szolgál. Ügyfelek Ez a referenciaarchitektúra használatához, és kövesse a Microsoft [négy lépésből álló folyamat](https://aka.ms/gdprebook) az adatvédelmi rendeletnek való megfelelőség útjuk:
 1. Észlelés: Azonosítsa, mely személyes adatok állnak rendelkezésre, és helyét.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: eeecf37a6cc7a0f86662f002b6f0efab5ef8c35c
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 80799eb716e77a4dec02a2daf028c35589c75da0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417463"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235275"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows virtuális gép aktiválással kapcsolatos problémák elhárítása
 
@@ -45,9 +45,9 @@ Ha megpróbálja aktiválni az Azure Windows virtuális Gépekhez, akkor megjele
 ## <a name="solution"></a>Megoldás
 
 >[!NOTE]
->Ha a site-to-site VPN használja, és a kényszerített bújtatás, lásd: [az Azure egyéni útvonalakat a KMS-aktiválás engedélyezése kényszerített bújtatás](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx). 
+>Ha a site-to-site VPN használja, és a kényszerített bújtatás, lásd: [az Azure egyéni útvonalakat a KMS-aktiválás engedélyezése kényszerített bújtatás](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx). 
 >
->Ha az ExpressRoute használ, és rendelkezik az alapértelmezett útvonal közzétett, lásd: [Azure virtuális gép esetleg nem expressroute-on keresztül aktiválhatja](http://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx).
+>Ha az ExpressRoute használ, és rendelkezik az alapértelmezett útvonal közzétett, lásd: [Azure virtuális gép esetleg nem expressroute-on keresztül aktiválhatja](https://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx).
 
 ### <a name="step-1-configure-the-appropriate-kms-client-setup-key-for-windows-server-2016-and-windows-server-2012-r2"></a>1. lépés a megfelelő KMS-ügyfél telepítési kulcsának konfigurálása (a Windows Server 2016 és Windows Server 2012 R2)
 
@@ -125,7 +125,7 @@ Igen.
  
 ### <a name="what-happens-if-windows-activation-period-expires"></a>Mi történik, ha a Windows aktiválási időszak lejár? 
  
-Amikor a türelmi időszak lejárt, és a Windows még nincs aktiválva, Windows Server 2008 R2 és a Windows újabb verziói jelennek meg aktiválásával kapcsolatos további értesítések. Az asztali háttérkép fekete marad, és a Windows Update biztonsági és kritikus frissítések csak, de nem választható frissítések telepíti. Tekintse meg az értesítések szakasz alján a [licencelési feltételek](http://technet.microsoft.com/library/ff793403.aspx) lapot.   
+Amikor a türelmi időszak lejárt, és a Windows még nincs aktiválva, Windows Server 2008 R2 és a Windows újabb verziói jelennek meg aktiválásával kapcsolatos további értesítések. Az asztali háttérkép fekete marad, és a Windows Update biztonsági és kritikus frissítések csak, de nem választható frissítések telepíti. Tekintse meg az értesítések szakasz alján a [licencelési feltételek](https://technet.microsoft.com/library/ff793403.aspx) lapot.   
 
 ## <a name="need-help-contact-support"></a>Segítség Forduljon az ügyfélszolgálathoz.
 Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.

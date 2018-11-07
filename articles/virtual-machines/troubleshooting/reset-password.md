@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 37b02b657278782ea82f3eb129335793a0b5c98d
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: d96d75f4f2623476f7af4e6eea930c1f2c503e3a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414035"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226913"
 ---
 # <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Az Azure virtuális gépek helyi Linux-jelszó alaphelyzetbe állítása
 
@@ -104,6 +104,6 @@ Nem tud bejelentkezni a virtuális Gépet, és megjelenik az üzenet, amely azt 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Hibaelhárítás Azure virtuális Gépen egy másik Azure virtuális gép operációsrendszer-lemez csatolása](http://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
+* [Hibaelhárítás Azure virtuális Gépen egy másik Azure virtuális gép operációsrendszer-lemez csatolása](https://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
 
 * [Az Azure CLI: Hogyan lehet törölni, és helyezze újra üzembe a virtuális gép VHD-ből](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)

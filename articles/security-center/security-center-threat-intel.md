@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: d82d52e05d85fbd5197f84f032a55dd9c74f9d1f
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: c41cb48e61b4c2bd1dc81e508c8218fad688bbaf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714428"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241719"
 ---
-# <a name="security-alerts-map-and-threat-intelligence"></a>Biztonsági riasztások térkép és threat intelligence
+# <a name="security-alerts-map-and-threat-intelligence"></a>Biztonsági riasztások térképe és fenyegetések felderítése
 Ez a cikk segít az Azure Security Center biztonsági riasztások térkép és biztonsági eseményalapú fenyegetésészlelési térkép biztonsággal kapcsolatos problémák elhárításához.
 
 ## <a name="how-the-security-alerts-map-works"></a>Működik, hogy a biztonsági riasztások leképezése
@@ -106,4 +106,4 @@ Ebben a cikkben megismerkedett a fenyegetésfelderítés a Security Centerben a 
 * [Az Azure Security Center biztonsági riasztásainak megismerése](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). A különböző típusú biztonsági riasztásokat ismertető útmutató.
 * [Az Azure Security Center hibaelhárítási útmutatója](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). A Security Center gyakori problémáinak elhárítását ismereti.
 * [Azure Security Center – gyakori kérdések](security-center-faq.md) Választ találhat a szolgáltatás használatával kapcsolatos gyakori kérdésekre.
-* [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/). Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
+* [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/). Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: szark
-ms.openlocfilehash: 43253423e3a27a61000c3f93868dd8b42809b7ae
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 81327c083b9517974780ac73284259b4408c2890
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650162"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262216"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Red Hat-alapú virtuális gép előkészítése Azure-beli használatra
 Ebből a cikkből megtudhatja, Red Hat Enterprise Linux (RHEL) virtuális gép előkészítése Azure-beli használatra. Ebben a cikkben ismertetett RHEL-verziók a következők: 6.7 + és 7.1 +. Előkészítésekor a hipervizorok, amelyekre ez a cikk a Hyper-V, a kernel-alapú virtuális gép (KVM), és a VMware rendszer. Red Hat Cloud Access programban való részvételre vonatkozó jogosultság követelményeivel kapcsolatos további információkért lásd: [Red Hat Cloud Access webhely](http://www.redhat.com/en/technologies/cloud-computing/cloud-access) és [az Azure-ban futó RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure).
@@ -28,7 +28,7 @@ Ebből a cikkből megtudhatja, Red Hat Enterprise Linux (RHEL) virtuális gép e
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>A Hyper-V Manager Red Hat-alapú virtuális gép előkészítése
 
 ### <a name="prerequisites"></a>Előfeltételek
-Ez a szakasz azt feltételezi, hogy már egy ISO-fájlt kapott a Red Hat-webhelyről, és az RHEL-lemezkép telepítése virtuális merevlemezre (VHD). Operációs rendszer lemezképének telepítése Hyper-V kezelőjének használatával kapcsolatos további részletekért lásd: [a Hyper-V szerepkör telepítése és konfigurálása a virtuális gép](http://technet.microsoft.com/library/hh846766.aspx).
+Ez a szakasz azt feltételezi, hogy már egy ISO-fájlt kapott a Red Hat-webhelyről, és az RHEL-lemezkép telepítése virtuális merevlemezre (VHD). Operációs rendszer lemezképének telepítése Hyper-V kezelőjének használatával kapcsolatos további részletekért lásd: [a Hyper-V szerepkör telepítése és konfigurálása a virtuális gép](https://technet.microsoft.com/library/hh846766.aspx).
 
 **RHEL telepítési jegyzetek**
 

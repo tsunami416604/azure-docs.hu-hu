@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: cc327695a91a39c4d910a4f2421b22cc3b100627
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 803fa89145d3a38b2df34666754fe8949a74eb53
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747881"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262335"
 ---
 # <a name="api-management-advanced-policies"></a>Az API Management speciális szabályzatok
-Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](http://go.microsoft.com/fwlink/?LinkID=398186).
+Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](https://go.microsoft.com/fwlink/?LinkID=398186).
 
 ##  <a name="AdvancedPolicies"></a> Speciális szabályzatok
 
@@ -136,7 +136,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |feltétel = "logikai kifejezés &#124; logikai állandó"|A logikai kifejezés vagy állandó értékeli ki, mikor a tartalmazó `when` házirendutasítás értékeli ki.|Igen|
 
 ###  <a name="ChooseUsage"></a> Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **A házirend-szakaszok:** bejövő, kimenő, háttér, – hiba
 
@@ -247,7 +247,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |follow-redirects="true &#124; false"|Itt adhatja meg, hogy a háttérszolgáltatásból átirányítja az átjáró követ vagy vissza a hívónak.|Nem|false|
 
 ### <a name="usage"></a>Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **A házirend-szakaszok:** háttérrendszer
 -   **A házirend-hatókörök:** minden hatókör
@@ -294,7 +294,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |maximális darabszám|Egész szám. Adja meg a szabályzat engedélyezett kérelmek maximális száma határozza meg.|Igen|–|
 
 ### <a name="usage"></a>Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **A házirend-szakaszok:** bejövő, kimenő, háttér, – hiba
 
@@ -345,7 +345,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |partíciós kulccsal|Meghatározza azt az értéket partíció-hozzárendelést a küldött üzeneteket.|Választható. Ez az attribútum nem használható, ha `partition-id` szolgál.|
 
 ### <a name="usage"></a>Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **A házirend-szakaszok:** bejövő, kimenő, háttér, – hiba
 
@@ -387,7 +387,7 @@ status code and media type. If no example or schema found, the content is empty.
 |a Content-type|Itt adható meg `Content-Type` válasz fejléc értéke, és válassza ki a megfelelő példa vagy séma szolgál.|Nem|None|
 
 ### <a name="usage"></a>Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **A házirend-szakaszok:** bejövő, kimenő, – hiba
 
@@ -452,7 +452,7 @@ status code and media type. If no example or schema found, the content is empty.
 > Ha a `interval`, `max-interval` és `delta` meg van adva, **exponenciális** időköz újrapróbálkozási algoritmust alkalmazza, ahol a várakozási idő a próbálkozások közötti exponenciálisan értékét a `interval` , az érték `max-interval` megfelelően a következő forumula - `min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`.
 
 ### <a name="usage"></a>Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) . Vegye figyelembe, hogy gyermek házirend használattal kapcsolatos korlátozások örökli ezt a házirendet.
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) . Vegye figyelembe, hogy gyermek házirend használattal kapcsolatos korlátozások örökli ezt a házirendet.
 
 -   **A házirend-szakaszok:** bejövő, kimenő, háttér, – hiba
 
@@ -500,7 +500,7 @@ status code and media type. If no example or schema found, the content is empty.
 |válasz-változóhoz-name|A környezeti változó nevére hivatkozik, például egy felsőbb szintű [küldési-kérelmek](api-management-advanced-policies.md#SendRequest) házirend- és tartalmazó egy `Response` objektum|Választható.|
 
 ### <a name="usage"></a>Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **A házirend-szakaszok:** bejövő, kimenő, háttér, – hiba
 
@@ -572,7 +572,7 @@ status code and media type. If no example or schema found, the content is empty.
 |létezik-művelet|Itt adható meg, milyen műveleteket, ha a fejléc már meg van adva. Ez az attribútum a következő értékek egyikét kell rendelkeznie.<br /><br /> -felülbírálás - lecseréli a meglévő fejléc értékét.<br />-skip – nem helyettesíti a meglévő fejléc értéke.<br />-hozzáfűzése - az érték hozzáfűzi a meglévő fejléc értéke.<br />a kérelem - delete - eltávolítja a fejléc.<br /><br /> Ha a beállítása `override` felvétel ugyanazzal a névvel több bejegyzést eredményez az összes bejegyzés (amely lesz látható többször) megfelelően beállítása fejléc; csak a felsorolt értékek jelennek meg az eredményt.|Nem|felülbírálás|
 
 ### <a name="usage"></a>Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **A házirend-szakaszok:** bejövő, kimenő, háttér, – hiba
 
@@ -656,7 +656,7 @@ status code and media type. If no example or schema found, the content is empty.
 |létezik-művelet|Itt adható meg, milyen műveleteket, ha a fejléc már meg van adva. Ez az attribútum a következő értékek egyikét kell rendelkeznie.<br /><br /> -felülbírálás - lecseréli a meglévő fejléc értékét.<br />-skip – nem helyettesíti a meglévő fejléc értéke.<br />-hozzáfűzése - az érték hozzáfűzi a meglévő fejléc értéke.<br />a kérelem - delete - eltávolítja a fejléc.<br /><br /> Ha a beállítása `override` felvétel ugyanazzal a névvel több bejegyzést eredményez az összes bejegyzés (amely lesz látható többször) megfelelően beállítása fejléc; csak a felsorolt értékek jelennek meg az eredményt.|Nem|felülbírálás|
 
 ### <a name="usage"></a>Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **A házirend-szakaszok:** bejövő, kimenő, háttér, – hiba
 
@@ -695,7 +695,7 @@ Figyeljük meg [tulajdonságok](api-management-howto-properties.md) értékekké
 |jelszó = "string"|A proxy-hitelesítéshez használandó jelszó.|Nem|–|
 
 ### <a name="usage"></a>Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **A házirend-szakaszok:** bejövő
 
@@ -747,7 +747,7 @@ Figyeljük meg [tulajdonságok](api-management-howto-properties.md) értékekké
 |Set-metódus|A gyökérelem. Az elem értékét adja meg a HTTP-metódus.|Igen|
 
 ### <a name="usage"></a>Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **A házirend-szakaszok:** bejövő, – hiba
 
@@ -794,7 +794,7 @@ Figyeljük meg [tulajdonságok](api-management-howto-properties.md) értékekké
 |OK = "string"|Az az oka az állapotkódot visszaadó leírása.|Igen|–|
 
 ### <a name="usage"></a>Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **A házirend-szakaszok:** kimenő, háttér, – hiba
 -   **A házirend-hatókörök:** minden hatókör
@@ -829,7 +829,7 @@ Figyeljük meg [tulajdonságok](api-management-howto-properties.md) értékekké
 |érték|A változó értékét. Ez lehet konstans érték vagy egy kifejezés.|Igen|
 
 ### <a name="usage"></a>Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **A házirend-szakaszok:** bejövő, kimenő, háttér, – hiba
 -   **A házirend-hatókörök:** minden hatókör
@@ -895,7 +895,7 @@ Figyeljük meg [tulajdonságok](api-management-howto-properties.md) értékekké
 |source|A karakterlánc-literál jelentéssel bíró a trace viewer, és adja meg az üzenet forrása.|Igen|–|
 
 ### <a name="usage"></a>Használat
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .
 
 -   **A házirend-szakaszok:** bejövő, kimenő, háttér, – hiba
 
@@ -963,7 +963,7 @@ Figyeljük meg [tulajdonságok](api-management-howto-properties.md) értékekké
 
 ### <a name="usage"></a>Használat
 
-Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
+Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 -   **A házirend-szakaszok:** bejövő, kimenő háttérrendszer
 -   **A házirend-hatókörök:** minden hatókör

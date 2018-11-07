@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 51e96065f726fadd528323157609034b5bb3f151
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 8cf5f262a758efe08ad73e2d8066ad4b736e76d1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387888"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247721"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Hogyan szeretné visszaállítani az X.509 tanúsítványok
 
 Az IoT-megoldás élettartama során kell visszaállítani a tanúsítványokat. Két fő oka a működés közbeni tanúsítványok lenne a biztonsági incidensek és a tanúsítvány lejárhat. 
 
-Biztonsági szempontból ajánlott a rendszer biztonságának megsértése esetén a működés közbeni tanúsítványok. Részeként [tegyük fel, illetéktelen behatolás módszertan](http://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf), Microsoft szakemberekkel, reaktív jellegű biztonsági folyamatok kellene helyen költségének kiszámítására együtt van szükség. A működés közbeni az eszköztanúsítványok biztonsági folyamat része lehet. A vállalati biztonsági igényeket, hogy a megoldás a gyakoriságot, amelyben a tanúsítvány forgassa függ. Szigorúan bizalmas adatokhoz is érintő megoldások rendelkező ügyfelek bevezetése tanúsítvány naponta, míg mások állítja a tanúsítványok minden néhány évben.
+Biztonsági szempontból ajánlott a rendszer biztonságának megsértése esetén a működés közbeni tanúsítványok. Részeként [tegyük fel, illetéktelen behatolás módszertan](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf), Microsoft szakemberekkel, reaktív jellegű biztonsági folyamatok kellene helyen költségének kiszámítására együtt van szükség. A működés közbeni az eszköztanúsítványok biztonsági folyamat része lehet. A vállalati biztonsági igényeket, hogy a megoldás a gyakoriságot, amelyben a tanúsítvány forgassa függ. Szigorúan bizalmas adatokhoz is érintő megoldások rendelkező ügyfelek bevezetése tanúsítvány naponta, míg mások állítja a tanúsítványok minden néhány évben.
 
 A működés közbeni eszköztanúsítványok magában foglalja az eszközön, és az IoT hubon tárolt tanúsítvány frissítése. Ezt követően az eszköz segítségével építse ki újra a magát az IoT hub használata szokásos [automatikus kiépítés](concepts-auto-provisioning.md) a Device Provisioning Service szolgáltatással.
 

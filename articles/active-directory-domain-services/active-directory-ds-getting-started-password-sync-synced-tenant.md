@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: ergreenl
-ms.openlocfilehash: 751c9df8dc3826b54baab6166cd63a0dd8cff4f5
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 813d1d17f2d9b80c2e96f771fc346e553c59e95b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155949"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234204"
 ---
 # <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>Jelszavak szinkronizálásának engedélyezése az Azure Active Directory Domain Services tartományi szolgáltatásokra
 Az előző feladatokban engedélyezte az Active Directory Domain Servicest az Azure Active Directory (Azure AD) bérlő számára. A következő feladat az NT LAN Manager (NTLM) és Kerberos hitelesítésiadat-kivonatok Azure AD tartományi szolgáltatásokkal való szinkronizálásának engedélyezése. A bejelentkezési adatok szinkronizálásának beállítását követően a felhasználók a vállalati hitelesítői adataikkal jelentkezhetnek be a felügyelt tartományba.
@@ -50,7 +50,7 @@ A szinkronizált Azure AD-bérlő a szervezet helyi címtárával való szinkron
 ### <a name="install-or-update-azure-ad-connect"></a>Azure AD Connect telepítése vagy frissítése
 Telepítse az Azure AD Connect legújabb ajánlott kiadását egy tartományhoz csatlakoztatott számítógépre. Ha az Azure AD Connect egy példánya már telepítve van, frissítse az Azure AD Connect legújabb verziójára. A már ismert és esetleg már javított problémák/hibák elkerülése érdekében mindig az Azure AD Connect legújabb verzióját használja.
 
-**[Az Azure AD Connect letöltése](http://www.microsoft.com/download/details.aspx?id=47594)**
+**[Az Azure AD Connect letöltése](https://www.microsoft.com/download/details.aspx?id=47594)**
 
 Ajánlott verzió: **1.1.614.0** – közzététel dátuma: 2017. szeptember 5.
 

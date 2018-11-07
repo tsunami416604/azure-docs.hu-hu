@@ -10,18 +10,18 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: dcf31bd6b128115962e30dd6653364c4cd65047d
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: b4a816c887d1cca78ff845858dce29049946b09f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242513"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235989"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Az Azure Blockchain Workbench integrációs üzenetkezelés
 
 Amellett, hogy a REST API-val, az Azure Blockchain Workbench is messaging-alapú integrációt biztosít. Workbench Főkönyv-központú események Azure Event Griddel, alsóbb rétegbeli fogyasztói gyűjthet adatokat, vagy be ezen események alapján keresztül teszi közzé. Ezek az ügyfelek megbízható üzenetküldést igénylő, az Azure Blockchain Workbench használatával továbbítja az üzeneteket, valamint egy Azure Service Bus-végponttal.
 
-A fejlesztők is érdeklődést a külső rendszerek kommunikációhoz felhasználók létrehozása, szerződések létrehozása és frissítése a Főkönyv szerződések kezdeményezési tranzakciók vannak. Ez a funkció jelenleg nem érintkező nyilvános előzetes verzióban érhető el, amíg egy mintát, amely ezt a képességet biztosít fürtpéldány [ http://aka.ms/blockchain-workbench-integration-sample ](http://aka.ms/blockchain-workbench-integration-sample).
+A fejlesztők is érdeklődést a külső rendszerek kommunikációhoz felhasználók létrehozása, szerződések létrehozása és frissítése a Főkönyv szerződések kezdeményezési tranzakciók vannak. Ez a funkció jelenleg nem érintkező nyilvános előzetes verzióban érhető el, amíg egy mintát, amely ezt a képességet biztosít fürtpéldány [ http://aka.ms/blockchain-workbench-integration-sample ](https://aka.ms/blockchain-workbench-integration-sample).
 
 ## <a name="event-notifications"></a>Eseményértesítések
 

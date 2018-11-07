@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure BizTalk szolgáltatásokkal EDIFACT számlák feldolgozásához |} Microsoft Docs'
-description: Létrehozása és konfigurálja az mezőben összekötő vagy az API-alkalmazást, és használhatja a logikai alkalmazást az Azure App Service
+title: 'Oktatóanyag: Az Azure BizTalk Services segítségével EDIFACT számlák feldolgozása |} A Microsoft Docs'
+description: Hogyan hozhat létre, és a Box-összekötő vagy az API-alkalmazás konfigurálása és használhatja az Azure App Service logikai alkalmazás
 services: biztalk-services
 documentationcenter: .net,nodejs,java
 author: msftman
@@ -14,147 +14,147 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/31/2016
 ms.author: deonhe
-ms.openlocfilehash: 2ebd6a8cb70f218c3b56bc78c9b853dbf51ab468
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bb07e3ab8043aab24d6d8c3e3db3f3674b28c6f3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26633866"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244491"
 ---
-# <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>Oktatóanyag: Folyamat EDIFACT számlák Azure BizTalk szolgáltatás használata
+# <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>Oktatóanyag: Folyamat EDIFACT számlák Azure BizTalk Services használatával
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-A BizTalk szolgáltatások portál segítségével konfigurálhatja és telepítheti a X12 és EDIFACT-egyezmények. Ebben az oktatóanyagban úgy tekintünk létrehozása az üzleti partnerek között számlák cseréjét EDIFACT szerződést is. Ez az oktatóanyag egy végpont megoldás használata esetén két kereskedelmi partnereknek, EDIFACT üzeneteket Northwind és Contoso körül írása.  
+A BizTalk Services portáljának használatával konfigurálhatja és telepítheti a X12 és EDIFACT-egyezmények. Ebben az oktatóanyagban áttekintjük, hogyan hozhat létre egy EDIFACT-egyezmény a kereskedelmi partnerek közötti számlák cseréjét. Ebben az oktatóanyagban egy teljes körű üzleti megoldás használata esetén, amelyek exchange-EDIFACT-üzenetek Northwind és Contoso két kereskedelmi partnerek körül van megírva.  
 
 ## <a name="sample-based-on-this-tutorial"></a>Ez az oktatóanyag alapján minta
-Ez az oktatóanyag egy minta körül írása **küldése EDIFACT számlák BizTalk szolgáltatások használatával**, elérhető töltheti le a [MSDN Kódgalériából](http://go.microsoft.com/fwlink/?LinkId=401005). Nem sikerült a mintát használja, és az oktatóanyag lépéseinek megértése, hogyan készült el a mintát. Vagy használhat ez az oktatóanyag a saját megoldás ground up létrehozásához. Ez az oktatóanyag a második megközelítés cél, hogy megismerte a hogyan készült el ebben a megoldásban. Is amennyire csak lehet, az oktatóanyag konzisztensek legyenek a minta és az összetevők (például sémákat, átalakítások) azonos nevét használja, mint a mintában használt.  
+Ebben az oktatóanyagban egy mintául szolgáló körül írt **EDIFACT számlák használatával a BizTalk Services küldése**, letölthető vagyis a [MSDN Kódgalériából](https://go.microsoft.com/fwlink/?LinkId=401005). Sikerült a mintát használja, és megérteni, hogyan lett létrehozva a minta az oktatóanyag. Másik lehetőségként ebben az oktatóanyagban használhatja saját megoldás földön másolatot létrehozni. Ebben az oktatóanyagban a második megközelítéssel cél, hogy megismerte, hogyan lett létrehozva az ebben a megoldásban. Ezenkívül, amennyire csak lehetséges, az oktatóanyag konzisztensek legyenek a minta és -összetevők (például a sémák, a átalakítások) ugyanazokat a neveket használja, mint a mintában használt.  
 
 > [!NOTE]
-> Mivel ezen megoldás keretein egy EAI-Összekötők híd üzenetet küld egy EDI híd, akkor a rendszer újból felhasználja a [BizTalk szolgáltatások híd minta láncolás](http://code.msdn.microsoft.com/BizTalk-Bridge-chaining-2246b104) minta.  
+> Mivel ezen megoldás keretein belül üzenet küldése egy EAI-hidat, EDI-híd, használja a [BizTalk Services híd minta láncolási](https://code.msdn.microsoft.com/BizTalk-Bridge-chaining-2246b104) minta.  
 > 
 > 
 
-## <a name="what-does-the-solution-do"></a>Mit jelent a megoldást?
-Ebben a megoldásban a Northwind EDIFACT számlák megkapja a Contoso. A következő számlák nincsenek szabványos EDI-formátumú. Ezért mielőtt elküldi a számla Northwind, azt kell alakul EDIFACT (más néven INVOIC) számla dokumentumhoz. Fogadását, a Northwind kell feldolgozni a EDIFACT számla, és térjen vissza a vezérlő üzenet (más néven CONTRL) Contoso.
+## <a name="what-does-the-solution-do"></a>Mit jelent a megoldás?
+Ebben a megoldásban a Northwind kap a Contoso EDIFACT számlák. A következő számlák nem szabványos EDI formátumban vannak. Így a számlát küld a Northwind, mielőtt azt kell átalakítva EDIFACT számlák (más néven INVOIC) dokumentumhoz. Kézhezvétele után Northwind kell az EDIFACT számlák feldolgozása, és térjen vissza egy ellenőrző üzenet (más néven CONTRL) Contoso.
 
 ![][1]  
 
-Az üzleti terület eléréséhez a Contoso használ a Microsoft Azure BizTalk szolgáltatások által nyújtott szolgáltatásokat.
+Az üzleti forgatókönyv eléréséhez a Contoso Microsoft Azure BizTalk Services által nyújtott szolgáltatásokat használ.
 
-* A Contoso EAI-Összekötők hidak átalakítására használja az eredeti számlát EDIFACT INVOIC használ.
-* A EAI-Összekötők híd majd a üzenetet küld egy EDI küldési híd konfigurálva a BizTalk szolgáltatások portálon szerződés részeként.
-* A EDI-küldési híd dolgozza fel a EDIFACT INVOIC, és továbbítja a Northwind.
-* A számla beérkezése után Northwind visszaadja egy CONTRL üzenet a EDI kapják meg a szerződés részeként híd.  
+* Contoso EAI-hidak használja az eredeti számlát EDIFACT INVOIC átalakítására.
+* A EAI-hidat ezután elküldi az üzenetet egy EDI küldési híd a BizTalk Services portálon konfigurált szerződés részeként.
+* Az EDI-küldési híd az EDIFACT INVOIC feldolgozza, és továbbítja azt a Northwind.
+* A számla megjelenését követően a Northwind visszaadja egy CONTRL üzenetet az EDI a szerződés részeként üzembe helyezett híd kapnak.  
 
 > [!NOTE]
-> Szükség esetén ez a megoldás is bemutatja, hogyan használja a kötegelés kötegekben, minden egyes számla külön küldése helyett a számlák küldhet.  
+> Szükség esetén ez a megoldás is bemutatja, hogyan kötegelés használata helyett minden számlán külön-külön kötegekben a számlák küldése.  
 > 
 > 
 
-A forgatókönyv végrehajtásához a Service Bus-üzenetsorok a Contoso számla Northwind küldeni / nyugtázási fogadását Northwind használjuk. Ezek a várólisták hozhatók létre egy ügyfélalkalmazást, amely letölthető, és a rendelkezésre álló minta csomagban található ebben az oktatóanyagban részeként.  
+A forgatókönyv végrehajtásához a Service Bus-üzenetsorok a számla a Contoso Northwind küldeni vagy fogadni a nyugtázás a Northwind használjuk. Ezek a várólisták hozható létre egy ügyfélalkalmazást, amely letölthető, és tartalmazza a minta csomagban elérhető ez az oktatóanyag részeként.  
 
 ## <a name="prerequisites"></a>Előfeltételek
-* A Service Bus-névtér kell rendelkeznie. Egy névtér létrehozása vonatkozó utasításokért lásd: [Útmutató: létrehozhat vagy módosíthat egy Service Bus szolgáltatás Namespace](https://msdn.microsoft.com/library/azure/hh674478.aspx). Tételezzük fel, hogy már rendelkezik kiépített, Service Bus-névtér neve **edifactbts**.
-* A BizTalk szolgáltatások előfizetéssel kell rendelkeznie. Ebben az oktatóanyagban Tételezzük nevű BizTalk szolgáltatások előfizetéssel rendelkezik **contosowabs**.
-* BizTalk szolgáltatások előfizetését a BizTalk szolgáltatások portál regisztrálni. Útmutatásért lásd: [egy BizTalk szolgáltatás telepítését a BizTalk szolgáltatások portál regisztrálása](https://msdn.microsoft.com/library/hh689837.aspx)
-* Visual Studio telepítve kell rendelkeznie.
-* BizTalk szolgáltatások SDK telepítve kell rendelkeznie. Letöltheti az SDK [http://go.microsoft.com/fwlink/?LinkId=235057](http://go.microsoft.com/fwlink/?LinkId=235057)  
+* Service Bus-névtér kell rendelkeznie. Egy névtér létrehozásával kapcsolatos útmutatóért lásd: [Útmutató: létrehozása vagy módosítása egy Service Bus szolgáltatás Namespace](https://msdn.microsoft.com/library/azure/hh674478.aspx). Tegyük fel, hogy már rendelkezik kiépített, a Service Bus-névtér nevű **edifactbts**.
+* A BizTalk Services-előfizetéssel kell rendelkeznie. Ebben az oktatóanyagban Tételezzük nevű BizTalk Services-előfizetéssel rendelkezik **contosowabs**.
+* A BizTalk Services portálon a BizTalk Services-előfizetés regisztrálása. Útmutatásért lásd: [BizTalk szolgáltatások üzembe helyezéséhez a BizTalk Services portálon regisztrálása](https://msdn.microsoft.com/library/hh689837.aspx)
+* A Visual Studio telepítve kell rendelkeznie.
+* A BizTalk Services SDK-t kell rendelkeznie. Letöltheti az SDK-t a [http://go.microsoft.com/fwlink/?LinkId=235057](https://go.microsoft.com/fwlink/?LinkId=235057)  
 
-## <a name="step-1-create-the-service-bus-queues"></a>1. lépés: A Service Bus-üzenetsorok létrehozása
-A megoldás az Service Bus-üzenetsorok üzenetek üzleti partnerek között. A Contoso és a Northwind üzenetek küldése a várólistákat a, ahol a EAI-Összekötők és/vagy EDI hidak felhasználni azokat. Ez a megoldás három Service Bus-üzenetsorok szükséges:
+## <a name="step-1-create-the-service-bus-queues"></a>1. lépés: Hozzon létre a Service Bus-üzenetsorok
+Ez a megoldás Service Bus-üzenetsorok használatával kereskedelmi partnerek közötti üzeneteket. A Contoso és a Northwind küldhet üzeneteket az üzenetsorok, ahol az EAI-t és/vagy EDI hidak felhasználni azokat. Ez a megoldás három Service Bus-üzenetsorok szüksége lesz:
 
-* **northwindreceive** – Northwind fogad a számla Contoso keresztül ebből a várólistából.
-* **contosoreceive** – Contoso fogad a nyugtázási Northwind keresztül ebből a várólistából.
-* **Felfüggesztve** – az összes felfüggesztett üzenet a várólistában legyenek átirányítva. Üzenetek fel vannak függesztve, ha azt elmulasztják feldolgozása során.
+* **northwindreceive** – Northwind fogad a számla a Contoso ennek az üzenetsornak.
+* **contosoreceive** – Contoso fogad a nyugtázás a Northwind ennek az üzenetsornak.
+* **felfüggesztett** – az összes felfüggesztett üzeneteket ennek az üzenetsornak legyenek irányítva. Üzenetek fel vannak függesztve, ha feldolgozása során.
 
-A Service Bus-üzenetsorok hozhat létre egy ügyfélalkalmazást, a minta csomag használatával.  
+A Service Bus-üzenetsorok a minta-csomagban található ügyfélalkalmazás használatával hozhat létre.  
 
-1. Nyissa meg a helyről, amelybe letöltötte a minta **oktatóanyag küldése számlák használatával BizTalk szolgáltatások EDI Bridges.sln**.
-2. Nyomja le az **F5** építsenek, és indítsa el a **oktatóanyag ügyfél** alkalmazás.
-3. A képernyőn adja meg a Service Bus ACS névteret, a kibocsátó neve és a kibocsátó kulcsa.
+1. A hely, ahová letöltötte a minta, nyissa meg a **oktatóanyag küldése számlákat használatával a BizTalk Services EDI Bridges.sln**.
+2. Nyomja meg **F5** hozhat létre, és indítsa el a **oktatóanyag ügyfél** alkalmazás.
+3. A képernyőn adja meg a Service Bus-ACS-névtér, kiállító neve és kiállító kulcsa.
    
    ![][2]  
-4. Egy üzenetablak megadását kéri, hogy a Service Bus-névtér három várólisták létrejön. Kattintson az **OK** gombra.
-5. Hagyja meg az oktatóanyag futtató ügyfélen. Nyissa meg a lehetőségre **Service Bus** > ***a Service Bus-névtér*** > **várólisták**, és győződjön meg arról, hogy a három várólisták jöttek létre.  
+4. Egy üzenetpanel kérni fogja, hogy három üzenetsorok jön létre a Service Bus-névtérben. Kattintson az **OK** gombra.
+5. Hagyja meg az oktatóanyag futtató ügyfélen. Nyissa meg kattintson **a Service Bus** > ***a Service Bus-névtér*** > **üzenetsorok**, és győződjön meg arról, hogy a három várólisták jöttek létre.  
 
-## <a name="step-2-create-and-deploy-trading-partner-agreement"></a>2. lépés: Hozzon létre, és kereskedelmipartner-egyezmény telepítése
-A Contoso és a Northwind közötti kereskedelmipartner-egyezmény létrehozása. Kereskedelmipartner-egyezmény definiál egy kereskedelmi szerződés között a két üzleti partnerek, például milyen üzenet használandó sémát, melyik üzenetküldési protokoll stb. Kereskedelmipartner-egyezmény tartalmaz egy kereskedelmi partnerek üzeneteket küldhet két EDI hidak (hívása a **EDI küldése híd**) és egy kereskedelmi partnerek üzenetek fogadása (hívása a **EDI-fogadási híd**).
+## <a name="step-2-create-and-deploy-trading-partner-agreement"></a>2. lépés: Hozzon létre, és üzembe helyezése a kereskedelmi partneri szerződés
+Hozzon létre kereskedelmipartner-egyezmény a Contoso és a Northwind között. Kereskedelmipartner-egyezmény határozza meg, hogy a kereskedelmi szerződés, a két üzleti partnerek között, például a melyik üzenet-sémát használja, mely üzenetkezelő protokoll, stb. Kereskedelmipartner-egyezmény két EDI hidak, egy kereskedelmi partnerekkel való üzenetküldéshez tartalmaz (nevű a **EDI küldése híd**), a másik az üzeneteket fogadhat a kereskedelmi partnerekkel (nevű a **EDI kap híd**).
 
-Ebben a megoldásban a környezetében a EDI-küldési híd felel meg a szerződés küldési-oldalon, és a Contoso küldendő a EDIFACT számla Northwind használható. Ehhez hasonlóan a EDI fogadó hídon felel meg a szerződés fogadóoldali, és fogadási nyugtázása a Northwind szolgál.  
+Ez a megoldás kontextusában a EDI küldési híd felel meg a szerződés küldési-oldalon, és a Contoso küldendő az EDIFACT számlák Northwind használja. Ehhez hasonlóan a EDI receive híd felel meg annak a szerződésnek a fogadóoldali, és a Northwind receive nyugtázás szolgál.  
 
-### <a name="create-the-trading-partners"></a>A kereskedelmi partnereknek létrehozása
-Kereskedelmi partnereknek a Contoso és a Northwind kezdődnie, hozzon létre.  
+### <a name="create-the-trading-partners"></a>A kereskedelmi partnerek létrehozása
+Első lépésként hozzon létre a Contoso és a Northwind kereskedelmi partnerek.  
 
-1. A BizTalk szolgáltatások portálon a a **partnerek** lapra, majd **Hozzáadás**.
-2. Adja meg az új partner lap **Contoso** lehetőséget egy partner neve, majd kattintson **mentése**.
-3. Ismételje meg a második partner létrehozásához **Northwind**.  
+1. A BizTalk Services Portáljára a a **partnerek** lapra, majd **Hozzáadás**.
+2. Adja meg az új partner lapon **Contoso** partner neve, és kattintson **mentése**.
+3. Ismételje meg a második partner létrehozása **Northwind**.  
 
-### <a name="create-the-agreement"></a>A szerződés létrehozása
-Kereskedelmipartner-egyezmények üzleti profilok kereskedelmi partnerek között jönnek létre. Ez a megoldás jönnek létre automatikusan a partnerek létrehozott alapértelmezett partner portprofilokat használ.  
+### <a name="create-the-agreement"></a>A megállapodás létrehozása
+Kereskedelmipartner-egyezmények profilok kereskedelmi partnerek között jönnek létre. Ez a megoldás a partnerek létrehozásakor automatikusan létrehozott alapértelmezett partner profilok használ.  
 
-1. BizTalk szolgáltatások portálon kattintson **megállapodások** > **Hozzáadás**.
-2. Az új szerződés a **általános beállítások** lapon adja meg az értékeket, az alábbi ábrán látható módon, és kattintson a **Folytatás**.
+1. A BizTalk Services portáljának kattintson **szerződések** > **Hozzáadás**.
+2. Az új szerződés **általános beállítások** lapon adja meg az értékeket az alábbi képen látható módon, és kattintson a **Folytatás**.
    
    ![][3]  
    
    Miután rákattintott **Folytatás**, két lap található, **fogadási beállítások** és **küldési beállítások** elérhetővé válnak.
-3. Hozzon létre a Contoso és a Northwind küldési megállapodást. Ez a szerződés szabályozza, hogyan Contoso küld a EDIFACT számla Northwind.
+3. Hozzon létre a Contoso és a Northwind küldési megállapodást. A jelen szerződés szabályozza, hogy hogyan Contoso Northwind EDIFACT számlát küld.
    
-   1. Kattintson a **küldési beállításainak**.
-   2. Tartsa meg az alapértelmezett értékeket a a **bejövő URL**, **átalakítási**, és **Batching** lapokon.
-   3. Az a **protokoll** lap a **sémák** részen töltse fel a **EFACT_D93A_INVOIC.xsd** séma. Ebben a sémában a minta csomaggal érhető el.
+   1. Kattintson a **küldési beállítások**.
+   2. Megtartja az alapértelmezett értékeket a a **URL-cím bejövő**, **átalakítása**, és **kötegelés** lapokon.
+   3. Az a **protokoll** lap a **sémák** szakaszt, és töltse fel a **EFACT_D93A_INVOIC.xsd** séma. Ebben a sémában a minta csomag érhető el.
       
       ![][4]  
-   4. Az a **átviteli** lapra, adja meg a Service Bus-üzenetsorok adatait. A küldő-oldalon szerződés használjuk a **northwindreceive** várólista a EDIFACT számla küldendő Northwind, és a **felfüggesztve** várólista irányítja az üzenetek, sikertelen feldolgozása során, és fel vannak függesztve. Ezek a várólisták a létrehozott **1. lépés: a Service Bus-üzenetsorok létrehozása** (szakaszát).
+   4. Az a **átviteli** lapra, adja meg a Service Bus-üzenetsorok adatait. A küldési-oldalon szerződés használjuk a **northwindreceive** az EDIFACT számlák küldendő Northwind, üzenetsor és a **felfüggesztve** várólista irányíthatja a feldolgozás során nem sikerül, és fel vannak függesztve üzeneteket. Ezek a várólisták a létrehozott **1. lépés: hozzon létre a Service Bus-üzenetsorok** (az ebben a témakörben).
       
       ![][5]  
       
-      A **átviteli beállításai > átviteli típus** és **felfüggesztéséről az Üzenetbeállítások > átviteli típus**, válassza ki az Azure Service Bus, és adja meg az értékeket, az ábrán látható módon.
-4. Hozzon létre a Contoso és a Northwind receive megállapodást. Ez a szerződés szabályozza, hogyan Contoso fogadja a nyugtázási Northwind.
+      A **átviteli beállításai > típus átviteli** és **üzenetek felfüggesztése beállításai > típus átviteli**, válassza ki az Azure Service Bus, és adja meg az értékeket, az ábrán látható módon.
+4. Hozzon létre a Contoso és a Northwind receive megállapodást. A jelen szerződés szabályozza, hogy hogyan Contoso fogadja a nyugtázás Northwind.
    
-   1. Kattintson a **beállítások**.
-   2. Tartsa meg az alapértelmezett értékeket a a **átviteli** és **átalakítási** lapokon.
-   3. Az a **protokoll** lap a **sémák** részen töltse fel a **EFACT_4.1_CONTRL.xsd** séma. Ebben a sémában a minta csomaggal érhető el.
-   4. Az a **útvonal** lapra, létrehozhat egy szűrőt, győződjön meg arról, hogy csak a Northwind nyugták Contoso legyenek átirányítva. A **útvonal beállítások**, kattintson a **Hozzáadás** a útválasztási szűrő létrehozásához.
+   1. Kattintson a **kapják meg a beállításokat**.
+   2. Megtartja az alapértelmezett értékeket a a **átviteli** és **átalakítása** lapokon.
+   3. Az a **protokoll** lap a **sémák** szakaszt, és töltse fel a **EFACT_4.1_CONTRL.xsd** séma. Ebben a sémában a minta csomag érhető el.
+   4. Az a **útvonal** fülre, hozzon létre egy szűrőt annak biztosítására, hogy csak a nyugtázás a Northwind Contoso legyenek irányítva. A **útvonal beállítások**, kattintson a **Hozzáadás** az útválasztási szűrő létrehozásához.
       
       ![][6]  
       
-      1. Adjon meg értékeket a **szabálynév**, **útvonal szabály**, és **útvonal cél** az ábrán látható módon.
+      1. Adja meg az értékeket **szabálynév**, **útválasztási szabály**, és **útvonal cél** a képen látható módon.
       2. Kattintson a **Save** (Mentés) gombra.
-   5. Az a **útvonal** újra lapra, adja meg, ahol felfüggesztett nyugták (a nyugtázás a feldolgozás során eleget nem tevő) legyenek átirányítva. Állítsa be az átvitelt típusát Azure Service Bus, a céltípus irányításához **várólista**, hitelesítési típus **közös hozzáférésű Jogosultságkód** (SAS), adja meg a Service Bus-névtér az SAS-kapcsolati karakterlánc, és adja meg a várólista neve, ahogyan **felfüggesztve**.
-5. Végezetül kattintson **telepítés** központi telepítése a szerződést. Vegye figyelembe a végpontok ahol a küldési és fogadási megállapodások telepítve.
+   5. Az a **útvonal** újra lap, adja meg, ahol felfüggesztett nyugtázás (a nyugtázás a feldolgozás során sikertelen) legyenek irányítva. Állítsa be az átviteli típust, az Azure Service Bus, irányíthatja a cél típusát a **várólista**, hitelesítés típusa **közös hozzáférésű Jogosultságkód** (SAS), adja meg a SAS-kapcsolati karakterláncot a Service Bus-névtér majd adja meg az üzenetsor neve, mint **felfüggesztve**.
+5. Végül kattintson **telepítés** üzembe helyezéséhez a szerződést. Vegye figyelembe a végpontok, küldése és fogadása szerződések üzembe lesznek helyezve.
    
-   * Az a **küldési beállítások** lap **bejövő URL**, vegye figyelembe a végpont. Üzenet küldése a Contoso a EDI-küldési bridge segítségével Northwind, el kell küldenie egy üzenet ehhez a végponthoz.
-   * Az a **fogadási beállítások** lap **átviteli**, vegye figyelembe a végpont. Üzenet küldése a Northwind Contoso a EDI használatával kap híd, el kell küldenie egy üzenet ehhez a végponthoz.  
+   * Az a **küldési beállítások** lap **URL-cím bejövő**, vegye figyelembe a végpontot. Üzenet küldése a Contoso az EDI-küldési híd használata Northwind, ezt a végpontot kell küldenie egy üzenetet.
+   * Az a **fogadási beállítások** lap **átviteli**, vegye figyelembe a végpontot. Üzenet küldése a Northwind contoso használatával az EDI kap híd, egy üzenet küldéséhez kell ezt a végpontot.  
 
-## <a name="step-3-create-and-deploy-the-biztalk-services-project"></a>3. lépés: Hozzon létre, és a BizTalk szolgáltatások projekt telepítése
-Az előző lépésben a EDI küldési telepített, és feldolgozni EDIFACT számlákat és a nyugtázás a megállapodások fogadására. Ezek a szerződések csak megfeleljen a szabványos EDIFACT üzenet sémának folyamat üzeneteket is. Azonban az ebben a megoldásban a forgatókönyvben egy Contoso küld számla Northwind belső fejlesztésű jogvédett sémában. Igen az üzenet elküldése a EDI-küldési híd, azt kell alakul a belső fejlesztésű séma a szabványos EDIFACT számla sémának. A BizTalk EAI-szolgáltatások Projekt funkciója, amely.
+## <a name="step-3-create-and-deploy-the-biztalk-services-project"></a>3. lépés: Hozzon létre, és a BizTalk Services-projekt üzembe helyezése
+Az előző lépésben üzembe helyezett EDI küldése és feldolgozni EDIFACT számlák és a nyugtázás a szerződések kap. Ezek a szerződések csak megfeleljen a standard szintű EDIFACT-üzenet sémának folyamat üzeneteket is. Azonban a forgatókönyvben a megoldás egy Contoso küld számla Northwind házon védett sémában. Tehát az üzenetet küld az EDI-küldési híd, mielőtt azt kell lesz átalakítva a belső fejlesztésű séma a standard EDIFACT számlák sémához. A BizTalk Services EAI-projekt végzi, amely.
 
-BizTalk szolgáltatások projekt **InvoiceProcessingBridge**, hogy átalakítások az üzenet is része a letöltött minta részeként. A projekt a következő összetevőket tartalmazza:
+A BizTalk Services projekt **InvoiceProcessingBridge**, hogy átalakítások az üzenet is tartalmaz a letöltött minta részeként. A projektet a következő összetevőket tartalmazza:
 
-* **INHOUSEINVOICE. XSD** – a belső fejlesztésű számla Northwind küldött séma.
-* **EFACT_D93A_INVOIC. XSD** – szabványos EDIFACT számla séma.
-* **EFACT_4.1_CONTRL. XSD** – a Northwind által a Contoso EDIFACT nyugtázási sémája.
-* **INHOUSEINVOICE_to_D93AINVOIC. TRFM** – az átalakító, amely a belső fejlesztésű számla séma van leképezve a szabványos EDIFACT számla séma.  
+* **INHOUSEINVOICE. XSD** – a belső fejlesztésű számla Northwind küldött sémájával.
+* **EFACT_D93A_INVOIC. XSD** – a standard szintű EDIFACT számlák sémájával.
+* **EFACT_4.1_CONTRL. XSD** – az EDIFACT-átvételi, amely Northwind küld a Contoso séma.
+* **INHOUSEINVOICE_to_D93AINVOIC. TRFM** – az átalakítás, amely a belső fejlesztésű számla séma a standard szintű EDIFACT számlák séma van leképezve.  
 
-### <a name="create-the-biztalk-services-project"></a>A BizTalk szolgáltatások projekt létrehozása
+### <a name="create-the-biztalk-services-project"></a>A BizTalk Services-projekt létrehozása
 1. A Visual Studio-megoldásban, bontsa ki a InvoiceProcessingBridge projektet, és nyissa meg a **MessageFlowItinerary.bcs** fájlt.
-2. Kattintson bárhová a vásznon, és állítsa be a **BizTalk szolgáltatás URL-címe** tulajdonság mezőben írja be a BizTalk szolgáltatások előfizetés nevét. Például: `https://contosowabs.biztalk.windows.net`.
+2. Kattintson bárhová a vásznon, és állítsa be a **BizTalk-szolgáltatás URL-címe** a tulajdonság mezőbe, írja be a BizTalk Services-előfizetés nevét. Például: `https://contosowabs.biztalk.windows.net`.
    
    ![][7]  
-3. Az Eszközkészlet palettáról, húzzon egy **Xml One-Way híd** a vászonra. Állítsa be a **egyednév** és **relatív címet** a híd tulajdonságainak **ProcessInvoiceBridge**. Kattintson duplán a **ProcessInvoiceBridge** a híd konfigurációs felület megnyitásához.
-4. Belül a **üzenettípusok** párbeszédpanelen kattintson a plusz (**+**) gombra kattintva adja meg a séma, a bejövő üzenet. Mivel a EAI-Összekötők híd a bejövő üzenet mindig a belső fejlesztésű számla, állítsa ezt a beállítást **INHOUSEINVOICE**.
+3. A eszközkészletből, húzza át egy **Xml One-Way híd** a vászonra. Állítsa be a **entitásnév** és **Relativní Adresa** a híd tulajdonságainak **ProcessInvoiceBridge**. Kattintson duplán a **ProcessInvoiceBridge** a híd konfigurációs felület megnyitásához.
+4. Belül a **üzenettípusok** párbeszédpanelen kattintson a plusz (**+**) gombra kattintva adja meg a bejövő üzenet sémája. Mivel a bejövő üzenetben az EAI-hidat az mindig a belső fejlesztésű számlát, állítsa ezt a beállítást **INHOUSEINVOICE**.
    
    ![][8]  
-5. Kattintson a **XML-átalakító** alakzat, és a tulajdonság mezőben az a **Maps** tulajdonság, kattintson a három pont (**...** ) gombra. Az a **Maps kijelölés** párbeszédpanelen jelölje ki a **INHOUSEINVOICE_to_D93AINVOIC** fájl átalakítása, és kattintson a **OK**.
+5. Kattintson a **Xml-átalakításhoz** alakzat, és a tulajdonság mezőben az a **Maps** tulajdonság, kattintson a három pont (**...** ) gombra. Az a **Maps kijelölés** párbeszédpanelen válassza ki a **INHOUSEINVOICE_to_D93AINVOIC** átalakíthatja fájlt, és kattintson a **OK**.
    
    ![][9]  
-6. Lépjen vissza a **MessageFlowItinerary.bcs**, és az Eszközkészlet palettáról, húzza a **kétirányú külső végpont** jobb oldalán a **ProcessInvoiceBridge**. Állítsa be a **egyednév** tulajdonságot **EDIBridge**.
-7. A Megoldáskezelőben bontsa ki a **MessageFlowItinerary.bcs** , és kattintson duplán a **EDIBridge.config** fájlt. Tartalom felülírja a **EDIBridge.config** a következőre.
+6. Lépjen vissza **MessageFlowItinerary.bcs**, és húzza a eszközkészletből a **kétirányú külső szolgáltatásvégpontot** jobb oldalán a **ProcessInvoiceBridge**. Állítsa be a **entitásnév** tulajdonságot **EDIBridge**.
+7. A megoldáskezelőben bontsa ki a **MessageFlowItinerary.bcs** , és kattintson duplán a **EDIBridge.config** fájlt. Cserélje le a tartalmát a **EDIBridge.config** az alábbira.
    
    > [!NOTE]
-   > Miért szükséges a .config fájl szerkesztése? A külső végpontot, amelyhez a híd tervezői vászonra hozzáadott a korábbi helyezett EDI hidak jelöli. EDI hidak kétirányú hidak, a Küldés és a fogadási oldalon. A EAI-Összekötők bridge, amelyek a híd Designer hozzáadott azonban egy egyirányú híd. Igen a két hidak másik üzenet exchange mintáinak kezelésére, használjuk egy egyéni híd viselkedés konfigurációjában belefoglalja a .config fájl. Emellett egyéni működését is a EDI küldési híd végpont a hitelesítési kezeli. Ez a viselkedés egyéni áll rendelkezésre, mert egy külön mintát [BizTalk szolgáltatások híd minta - EAI-Összekötők a EDI-láncolás](http://code.msdn.microsoft.com/BizTalk-Bridge-chaining-2246b104). Ez a megoldás a rendszer újból felhasználja a minta.  
+   > Miért kell a .config fájl szerkesztésével? A külső szolgáltatásvégpontot, amely a híd tervezői vászonra felvettük a korábban üzembe helyezett EDI hidak jelöli. EDI-hidak kétirányú hidak, a Küldés és a fogadó oldali. Azonban az EAI-hidat, amely felvettük a híd-Tervező, egy egyirányú híd. Így különböző üzenet exchange mintázatait, a két hidak kezelése érdekében használjuk egy egyéni híd működés fel annak konfigurációját a .config fájlban. Emellett egyéni működését is az való bejelentkezések hitelesítését kezelik az EDI küldési híd végpont. Ez a viselkedés egyéni érhető el, külön mintaként [BizTalk Services híd minta – EDI, EAI-láncolás](https://code.msdn.microsoft.com/BizTalk-Bridge-chaining-2246b104). Ez a megoldás a mintát használja.  
    > 
    > 
    
@@ -203,64 +203,64 @@ BizTalk szolgáltatások projekt **InvoiceProcessingBridge**, hogy átalakítás
    </configuration>
    
    ```
-8. Frissítés a EDIBridge.config fájlt a konfiguráció részletei
+8. A konfigurációs részleteivel EDIBridge.config fájl frissítése
    
-   * A  *<behaviors>* , adja meg az ACS-névteret és a BizTalk szolgáltatás-előfizetéshez társított kulcs.
-   * A  *<client>* , adja meg a végpont a EDI-küldési szerződés telepítési helyét.
+   * A *<behaviors>*, adja meg az ACS-névtér és a BizTalk Services-előfizetéséhez társított kulcs.
+   * A *<client>*, adja meg a végpontot, ahol a küldési EDI-szerződéshez üzemel.
    
    Mentse a módosításokat, és zárja be a konfigurációs fájlt.
-9. Az Eszközkészlet palettáról, kattintson a **összekötő** , és csatlakozzon a **ProcessInvoiceBridge** és **EDIBridge** összetevőket. Válassza ki az összekötőt, és a Tulajdonságok párbeszédpanelen **szűrési feltételt** való **egyezés minden**. Ez biztosítja, hogy a EAI-Összekötők híd által feldolgozott összes üzenetet a EDI híd legyenek átirányítva.
+9. Az eszköztáron kattintson a **összekötő** , és csatlakozzon a **ProcessInvoiceBridge** és **EDIBridge** összetevőket. Válassza ki az összekötőt, és a Tulajdonságok párbeszédpanelen állítsa be **szűrési feltételt** való **egyezés minden**. Ez biztosítja, hogy a EAI-hidat által feldolgozott összes üzenetet a EDI híd legyenek irányítva.
    
    ![][10]  
-10. Módosítások mentése a megoldáshoz.  
+10. A megoldás módosításainak mentése.  
 
 ### <a name="deploy-the-project"></a>A projekt telepítése
-1. A számítógép, amelyen létrehozta a BizTalk szolgáltatások projekt töltse le és telepítse az SSL-tanúsítványt BizTalk szolgáltatás előfizetését. A, a BizTalk szolgáltatások területen kattintson **irányítópult**, és kattintson a **SSL-tanúsítvány letöltése**. Kattintson duplán a tanúsítványra, és a telepítés befejezéséhez a felszólítást követve. Győződjön meg arról, hogy a tanúsítvány telepítése **megbízható legfelső szintű hitelesítésszolgáltatók** tanúsítványtárolójába.
-2. A Visual Studio Solution Explorerben kattintson a jobb gombbal a **InvoiceProcessingBridge** projektre, és kattintson a **telepítés**.
-3. Az ábrán látható módon adja meg az értékeket, és kattintson a **telepítés**. Kaphat az ACS-hitelesítő adatok BizTalk szolgáltatások kattintva **kapcsolatadatok** a BizTalk szolgáltatások irányítópulton.
+1. A számítógépen, ahol létrehozta a BizTalk Services-projekt letöltése és a BizTalk Services-előfizetéséhez tartozó SSL-tanúsítvány telepítése. FROM, a BizTalk Services-csoportban **irányítópult**, és kattintson a **SSL-tanúsítvány letöltése**. Kattintson duplán a tanúsítványra, és kövesse a telepítés befejezéséhez a rendszer kéri. Ellenőrizze, hogy telepítette a tanúsítványt a **megbízható legfelső szintű hitelesítésszolgáltatók** tanúsítványtárolójába.
+2. A Visual Studio Megoldáskezelőben kattintson a jobb gombbal a **InvoiceProcessingBridge** projektre, és kattintson a **telepítés**.
+3. Az ábrán látható módon adja meg az értékeket, és kattintson a **telepítés**. Megtekintheti az ACS-hitelesítő adatok a BizTalk Services kattintva **kapcsolatadatok** a BizTalk Services irányítópultról.
    
    ![][11]  
    
-   Másolja a végpont, ahol a EAI-Összekötők híd telepíti, például a kimeneti ablaktábla `https://contosowabs.biztalk.windows.net/default/ProcessInvoiceBridge`. Később szüksége lesz a végponti URL-cím.  
+   A kimeneti ablakban másolja a végpont, ahol a EAI-hidat üzemel, például `https://contosowabs.biztalk.windows.net/default/ProcessInvoiceBridge`. Később szüksége lesz a végpont URL-címe.  
 
-## <a name="step-4-test-the-solution"></a>4. lépés: A megoldás tesztelése
-Ebben a témakörben úgy tekintünk, a megoldás használatával tesztelése a **oktatóanyag ügyfél** alkalmazás a minta részeként.  
+## <a name="step-4-test-the-solution"></a>4. lépés: A megoldás teszteléséhez.
+Ebben a témakörben áttekintjük a megoldás tesztelése használatával a **oktatóanyag ügyfél** a minta részeként megadott alkalmazást.  
 
-1. A Visual Studio, nyomja le az F5 elindítani a **oktatóanyag ügyfél**.
-2. A képernyőn a különböző értéknek kell lennie az lépésben előre feltöltve ahol a Service Bus-üzenetsorok létrehozott. Kattintson a **Tovább** gombra.
-3. A következő ablakban adja meg az ACS BizTalk szolgáltatások előfizetés hitelesítő adatait, és a végpontok ahol EAI- és EDI (kap) hidak vannak telepítve.
+1. A Visual Studióban lenyomja az F5 billentyűt, indítsa el a **oktatóanyag ügyfél**.
+2. A képernyő rendelkeznie kell a a lépéseket az előre megadott értékeket, a Service Bus-üzenetsorok létrehoztunk. Kattintson a **Tovább** gombra.
+3. A következő ablakban adja meg az ACS a BizTalk Services-előfizetés hitelesítő adatait, és a végpontok ahol EAI és EDI-t (fogadás) hidak vannak telepítve.
    
-   Az előző lépésben másolt volna a EAI-Összekötők híd végpont. EDI küld híd a végponthoz, a BizTalk szolgáltatások portálon, írja be a szerződés > fogadási beállítások > átviteli > végpont.
+   Az előző lépésben kimásolt kellett az EAI-hidat végpont. EDI kapnak híd végpont, a BizTalk Services portálon, nyissa meg a szerződést > fogadási beállítások > átviteli > végpont.
    
    ![][12]  
-4. A Contoso, a következő ablakban kattintson a **belső fejlesztésű számla küldése** gombra. A fájl párbeszédpanel megnyitásához, nyissa meg a INHOUSEINVOICE.txt fájlt. Vizsgálja meg a fájl tartalmát, és kattintson a **OK** a számla küldeni.
+4. Kattintson a következő ablakban, a Contoso, a **házon belüli számla küldése** gombra. A fájl párbeszédpanel megnyitásához, nyissa meg a INHOUSEINVOICE.txt fájlt. Vizsgálja meg a fájl tartalmát, és kattintson a **OK** a számla küldése.
    
    ![][13]  
-5. Néhány másodpercen belül a számla Northwind fogadja. Kattintson a **nézet üzenet** hivatkozásra kattintva megtekintheti a Northwind által kapott számlán. Figyelje meg, hogyan a Northwind által kapott számlán van szabványos EDIFACT séma közben Contoso által küldött olyan belső fejlesztésű séma.
+5. Néhány másodpercen belül Northwind megkapta a számlán. Kattintson a **Zobrazit Zprávu** hivatkozásra kattintva megtekintheti a számla Northwind által fogadott. Figyelje meg, hogyan a Northwind által kapott számlán szerepel standard EDIFACT-séma egy belső fejlesztésű séma közben a Contoso által küldött.
    
    ![][14]  
-6. Válassza ki a számla, és kattintson a **küldése nyugtázási**. Előugró párbeszédpanelen láthatja, hogy a csomópont-Azonosítót a kapott számlán és a küldött nyugtázási azonos. Kattintson az OK gombra a **küldése nyugtázási** párbeszédpanel megnyitásához.
+6. Válassza ki a számlát, és kattintson a **küldése nyugtázási**. A felugró párbeszédpanel láthatja, hogy az adatcsere-azonosító ugyanazt a kapott számlán és elismervényt küld a rendszer. Kattintson az OK gombra a **küldése nyugtázási** párbeszédpanel bezárásához.
    
    ![][15]  
-7. Néhány másodpercen belül a nyugtázási sikeresen Contoso fogadja.
+7. A nyugtázási pár másodpercen belül sikeresen kézbesítve Contoso.
    
    ![][16]  
 
-## <a name="step-5-optional-send-edifact-invoice-in-batches"></a>(Választható) 5. lépés: küldése EDIFACT számla kötegek
-BizTalk szolgáltatások EDI hidak is támogatja a kimenő üzenetek kötegelés. Ez a szolgáltatás akkor hasznos, inkább az üzenetkötegek (bizonyos feltételeknek megfelelő) helyett az egyes üzeneteket fogadhat-partnerek fogadására.
+## <a name="step-5-optional-send-edifact-invoice-in-batches"></a>(Nem kötelező) 5. lépés: kötegekben küldése EDIFACT számlák
+A BizTalk Services EDI hidak is támogatja a kimenő üzenetek kötegelése. Ez a funkció akkor hasznos, partnerek, amelyek jobban szeretik az üzenetkötegek (bizonyos feltételeknek megfelelő) helyett az egyes üzenetek fogadására.
 
-A legfontosabb szempont az kötegek használatakor nem a tényleges a köteg, más néven a kiadási feltételek. A kiadási feltételek is alapulhat, hogyan szeretne rendelni a fogadó partner üzeneteket fogadni. Ha kötegelés engedélyezve van, a EDI híd nem küld a kimenő üzenet fogadó partnernek mindaddig, amíg a kiadási feltétel teljesül. Például egy kötegelési feltételek alapján üzenet mérete kivételkezelési egy kötegben csak akkor, ha "n" üzenetek kötegelni vannak. A kötegelt feltételeket is időalapú, úgy, hogy az adott időpontban naponta egy kötegelt zajlik. Ebben a megoldásban a üzenetméret alapú feltételek próbálja azt.
+A legfontosabb szempont az kötegek használatakor a tényleges kiadása a batch, a kiadási feltételekben néven is ismert. A kiadási feltételekben alapulhat hogyan a fogadó partner üzeneteket kapni szeretne. Kötegelés engedélyezett, ha az EDI-híd nem küld a kimenő üzenetet, a fogadó partner a kiadási feltételekben teljesítéséig. Például a kötegelés feltételek alapján üzenet mérete kiszállítására kötegelt csak akkor, ha n üzenetek kötegelt vannak. A batch feltételeket is időalapú, úgy, hogy a batch minden nap rögzített egyszerre zajlik. Ebben a megoldásban megpróbáljuk a üzenetméret alapú feltételeknek.
 
-1. BizTalk szolgáltatások portálon kattintson a korábban létrehozott. Kattintson a Küldés beállítások > kötegelés > kötegelt hozzáadása.
-2. Kötegelt neveként, írja be a **InvoiceBatch**, adjon meg egy leírást, és kattintson a **következő**.
-3. Adjon meg egy kötegelt feltételeket, amely meghatározza, hogy mely üzenetek kötegelni kell lennie. Ebben a megoldásban kötegelt azt minden üzenetet. Igen, jelölje be a speciális definíciók beállítás használata, és írja be **1 = 1**. Ez egy feltételt, amely mindig lesz igaz értékű, és ezért minden üzenetet fog lehet kötegelni. Kattintson a **Tovább** gombra.
+1. A BizTalk Services Portáljára kattintson a korábban létrehozott szerződést. Kattintson a Küldés beállítások > kötegelés > kötegelt hozzáadása.
+2. A batch neveként adja meg **InvoiceBatch**, és adjon meg egy leírást, majd kattintson a **tovább**.
+3. Adjon meg egy kötegelt feltételeket, amely meghatározza, mely üzeneteket mely kell kötegelni. Ebben a megoldásban azt a köteg összes üzenet. Tehát, válassza ki a speciális definíciók beállítás használatát, és adja meg **1 = 1**. Ez egy feltételt, amely mindig igaz lesz, és ezért minden üzenetet fog kötegelni. Kattintson a **Tovább** gombra.
    
    ![][17]  
-4. Adjon meg egy kötegelt kiadási feltételeket. A legördülő listából válassza ki a **MessageCountBased**, és a **száma**, adja meg **3**. Ez azt jelenti, hogy az három üzenetkötegek Northwind kapnak. Kattintson a **Tovább** gombra.
+4. Adjon meg egy kötegelt kiadási feltételek. A legördülő listából válassza ki a **MessageCountBased**, és a **száma**, adja meg **3**. Ez azt jelenti, hogy három üzenetkötegek Northwind küld. Kattintson a **Tovább** gombra.
    
    ![][18]  
-5. Tekintse át az összefoglalást, és kattintson a **mentése**. Kattintson a **telepítés** újratelepíteni a szerződést.
-6. Lépjen vissza a **oktatóanyag ügyfél**, kattintson a **belső fejlesztésű számla küldése**, és kövesse az utasításokat a számla küldése. Megfigyelheti, hogy számla nem érkezik a Northwind, mert a Köteg mérete nem teljesül. Ismételje meg ezt a lépést még kétszer, így kell három számla Northwind küldött üzeneteket. Ez megfelel, 3 üzenet kötegelt kiadási feltételeinek, és meg kell jelennie a Northwind számla.
+5. Tekintse át az összefoglalást, és kattintson a **mentése**. Kattintson a **telepítés** újbóli üzembe helyezéséhez a szerződést.
+6. Lépjen vissza a **oktatóanyag ügyfél**, kattintson a **házon belüli számla küldése**, és kövesse az utasításokat a számla küldése. Megfigyelheti, hogy számla nem kapott a Northwind, mert a Köteg mérete nem teljesül. Ismételje meg ezt még két alkalommal, hogy három számla üzeneteket küldeni a Northwind rendelkezik. Ez megfelel a kötegelt kiadási feltételek, 3 üzenet, és meg kell jelennie a Northwind számlát.
 
 <!--Image references-->
 [1]: ./media/biztalk-process-edifact-invoice/process-edifact-invoices-with-auzure-bts-1.PNG  

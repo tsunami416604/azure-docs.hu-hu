@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 4a836e0f5e47d6ef91e11fd1a0076859b54ed8e6
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: afd5361774af3379dc0d4054509e318e8263dcc5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243027"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250186"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>Megtekintése és módosítása az állomásnevek
 Ahhoz, hogy a szerepkörpéldány állomásnév szerint lehet hivatkozni, állítsa az értékét az állomásnév a szolgáltatáskonfigurációs fájlban az egyes szerepkörökhöz. Ezt teheti, hogy adja hozzá a kívánt állomás nevét a **vmName** attribútuma a **szerepkör** elemet. Értékét a **vmName** attribútuma minden egyes szerepkör-példány állomásneve szolgál alapul. Például ha **vmName** van *webrole* , de az adott szerepkör három példányban, a gazdagép-nevek a példányok lesznek *webrole0*, *webrole1*, és *webrole2*. Nem kell megadnia egy virtuálisgép-nevet a konfigurációs fájlban, mert a virtuális gép az állomásnév a virtuális gép neve alapján van feltöltve. Microsoft Azure-szolgáltatás konfigurálásával kapcsolatos további információkért lásd: [Azure szolgáltatás konfigurációs sémáját (.cscfg fájl)](https://msdn.microsoft.com/library/azure/ee758710.aspx)
@@ -58,7 +58,7 @@ Módosíthatja a virtuális gépek vagy szerepkörpéldányok bármelyikéhez az
 
 [Az Azure szolgáltatás konfigurációs sémáját (.cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710.aspx)
 
-[Az Azure Virtual Network konfigurációs séma](http://go.microsoft.com/fwlink/?LinkId=248093)
+[Az Azure Virtual Network konfigurációs séma](https://go.microsoft.com/fwlink/?LinkId=248093)
 
 [Hálózati konfigurációs fájlok használatával DNS-beállítások megadása](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)
 

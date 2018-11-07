@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 2301c2eee2853617251053713b50f9915962027b
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: d34671d4197735ea2c30aafc8fd01a5893427ff3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356643"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226845"
 ---
 # <a name="how-to-assign-users-to-applications"></a>Felhasználók hozzárendelése alkalmazások
 
@@ -51,9 +51,9 @@ Egy felhasználó egy alkalmazáshoz akkor először kell rendelni, valamilyen m
 
 6.  Lehetővé teszi a rendszergazda [önkiszolgáló csoportkezelés](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) , hogy a felhasználó, hogy egy alkalmazás hozzá van rendelve, de csak egy csoporthoz való csatlakoztatáshoz **közül, kijelölt munkahelyi jóváhagyónak előzetes jóváhagyással**
 
-7.  A rendszergazda rendel a licencet a felhasználó közvetlenül az első gyártótól származó alkalmazás, például [a Microsoft Office 365-höz](http://products.office.com/)
+7.  A rendszergazda rendel a licencet a felhasználó közvetlenül az első gyártótól származó alkalmazás, például [a Microsoft Office 365-höz](https://products.office.com/)
 
-8.  A rendszergazda rendel egy licencet egy csoportot, hogy a felhasználó tagja első gyártótól származó alkalmazás, például [a Microsoft Office 365-höz](http://products.office.com/)
+8.  A rendszergazda rendel egy licencet egy csoportot, hogy a felhasználó tagja első gyártótól származó alkalmazás, például [a Microsoft Office 365-höz](https://products.office.com/)
 
 9.  Egy [rendszergazda jóváhagy egy alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent) minden felhasználó és a felhasználó által használandó jelentkezik be az alkalmazáshoz
 

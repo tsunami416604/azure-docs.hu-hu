@@ -12,12 +12,12 @@ ms.author: jodebrui
 ms.reviewer: MightyPen
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 8c683e86cd78f4c4ebe7a537c469c875b8ca07fe
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 4455e0c0f31c9026526820b50214efb83720da0d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159839"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228045"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>Az SQL Database az alkalmazás teljesítményének javításához használja In-Memory OLTP
 [In-Memory OLTP](sql-database-in-memory.md) is használható a tranzakció-feldolgozás, adatbetöltés és átmeneti adatforgatókönyvek teljesítményének javítása érdekében [prémium és üzletileg kritikus szintű](sql-database-service-tiers-vcore.md) adatbázisok a tarifacsomag növelése nélkül. 
@@ -47,7 +47,7 @@ Az ssms-ben, a jelentés létrehozásához:
 * Az a **Object Explorer**, kattintson a jobb gombbal az adatbázis-csomópont.
 * Kattintson a **jelentések** > **szabványos jelentések** > **tranzakciós teljesítmény Hibaelemzés áttekintése**.
 
-További információkért lásd: [táblázat vagy tárolt eljárás kell használatát. A memóriában tárolt OLTP-k meghatározása](http://msdn.microsoft.com/library/dn205133.aspx).
+További információkért lásd: [táblázat vagy tárolt eljárás kell használatát. A memóriában tárolt OLTP-k meghatározása](https://msdn.microsoft.com/library/dn205133.aspx).
 
 ## <a name="step-3-create-a-comparable-test-database"></a>3. lépés: Hozzon létre egy hasonló teszt adatbázist
 Tegyük fel, hogy a jelentés azt jelzi, hogy az adatbázis rendelkezik, melyekhez hasznos lenne alakít át egy memóriaoptimalizált tábla. Azt javasoljuk, hogy először tesztelje a jelzés tesztelésével megerősítéséhez.
@@ -80,9 +80,9 @@ A migrálási beállítás használata:
    * A **tábla memória optimalizáló Advisor** varázsló jelenik meg.
 3. A varázslóban kattintson **Migrálásának ellenőrzése** (vagy a **tovább** gomb) hogy a tábla rendelkezik-e bármilyen nem támogatott szolgáltatások által nem támogatott memóriaoptimalizált táblákkal. További információkért lásd:
    
-   * A *memória optimalizálás ellenőrzőlista* a [memória optimalizálási Advisor](http://msdn.microsoft.com/library/dn284308.aspx).
-   * [A Transact-SQL-szerkezetek nem támogatja a memóriabeli OLTP](http://msdn.microsoft.com/library/dn246937.aspx).
-   * [Memóriabeli OLTP-ba való migrálás](http://msdn.microsoft.com/library/dn247639.aspx).
+   * A *memória optimalizálás ellenőrzőlista* a [memória optimalizálási Advisor](https://msdn.microsoft.com/library/dn284308.aspx).
+   * [A Transact-SQL-szerkezetek nem támogatja a memóriabeli OLTP](https://msdn.microsoft.com/library/dn246937.aspx).
+   * [Memóriabeli OLTP-ba való migrálás](https://msdn.microsoft.com/library/dn247639.aspx).
 4. Ha a tábla nem támogatott szolgáltatások, az advisor hajthat végre a tényleges séma és adatok áttelepítése az Ön számára.
 
 #### <a name="manual-t-sql"></a>Manuális a T-SQL
@@ -114,7 +114,7 @@ Natív módon lefordított tárolt eljárásban kell rendelkeznie a T-SQL-zárad
 * NATIVE_COMPILATION
 * SCHEMABINDING: azaz a táblákat, hogy a tárolt eljárás esetében nem módosított semmilyen módon, amely hatással lenne a tárolt eljárás csak akkor dobható el a tárolt eljárás oszlop definícióikat.
 
-Egy natív modult kell használni a big Data típusú [ATOMI blokkokban](http://msdn.microsoft.com/library/dn452281.aspx) tranzakció kezelésére. Explicit BEGIN TRANSACTION vagy a ROLLBACK TRANSACTION Role szerepkör nincs. Ha a kódot egy üzleti szabály megsértése észlel, azt leállíthatja a atomic blokk-a [THROW](http://msdn.microsoft.com/library/ee677615.aspx) utasítást.
+Egy natív modult kell használni a big Data típusú [ATOMI blokkokban](https://msdn.microsoft.com/library/dn452281.aspx) tranzakció kezelésére. Explicit BEGIN TRANSACTION vagy a ROLLBACK TRANSACTION Role szerepkör nincs. Ha a kódot egy üzleti szabály megsértése észlel, azt leállíthatja a atomic blokk-a [THROW](https://msdn.microsoft.com/library/ee677615.aspx) utasítást.
 
 ### <a name="typical-create-procedure-for-natively-compiled"></a>A tipikus CREATE PROCEDURE natív módon lefordított.
 A T-SQL-natív módon lefordított tárolt eljárás létrehozása általában hasonlít az alábbi sablont:
@@ -145,7 +145,7 @@ A migrálási lépések a következők:
 2. Írja át az előző sablon megfelelően a fejlécben.
 3. Annak megállapítása, hogy a tárolt eljárás a T-SQL-kódot használja-e a szolgáltatásokat, amelyek natív módon lefordított tárolt eljárások nem támogatottak. Megkerülő megoldások megvalósításához, ha szükséges.
    
-   * További részletekért lásd: [áttelepítési problémák tárolt eljárások natív módon lefordított](http://msdn.microsoft.com/library/dn296678.aspx).
+   * További részletekért lásd: [áttelepítési problémák tárolt eljárások natív módon lefordított](https://msdn.microsoft.com/library/dn296678.aspx).
 4. Nevezze át a régi tárolt eljárás sp_rename szintaxis használatával. Vagy egyszerűen dobja el azt.
 5. A szerkesztett hozzon létre ELJÁRÁST a T-SQL-szkript futtatásához.
 
@@ -168,7 +168,7 @@ Vegye figyelembe, hogy az éles környezetben a memórián belüli megvalósít�
 * [Az Azure SQL Database felügyelete dinamikus felügyeleti nézetek használatával](sql-database-monitoring-with-dmvs.md)
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
-* [Memóriában tárolt OLTP-k (memóriabeli optimalizálás)](http://msdn.microsoft.com/library/dn133186.aspx)
-* [Bevezetés a natív módon lefordított tárolt eljárások](http://msdn.microsoft.com/library/dn133184.aspx)
-* [Optimalizálás az Advisor memória](http://msdn.microsoft.com/library/dn284308.aspx)
+* [Memóriában tárolt OLTP-k (memóriabeli optimalizálás)](https://msdn.microsoft.com/library/dn133186.aspx)
+* [Bevezetés a natív módon lefordított tárolt eljárások](https://msdn.microsoft.com/library/dn133184.aspx)
+* [Optimalizálás az Advisor memória](https://msdn.microsoft.com/library/dn284308.aspx)
 

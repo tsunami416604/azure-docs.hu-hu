@@ -9,18 +9,18 @@ ms.reviewer: jasonwhowell
 ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 1fd1ce54dea672b19baea84bbf3a40b4365093b8
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 11587d5a0520d42d554c13a525c3b57db82326aa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046218"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229475"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Felhasználó által definiált C#-kód hibaelhárítása U-SQL-feladatok sikertelen
 
 U-SQL C# használatával bővíthetőségi modell biztosít. A U-SQL-parancsfájlok könnyebbé vált a C#-függvényeket, és végezze el az analitikai függvények, amely nem támogatja a deklaratív SQL-szerű nyelven. A U-SQL-bővítést további tudnivalókért lásd: [U-SQL programozhatósági útmutató](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf). 
 
-A gyakorlatban kód szükség lehet a hibakeresés, de nehéz a felhő egyéni kóddal elosztott feladat korlátozott naplófájlokat a hibakereséshez. [Azure Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs) nevű szolgáltatást nyújt **csúcspont Debug sikertelen**, amely segít, könnyebben hibakeresést a bekövetkező hibák az egyéni kódot. U-SQL-feladat meghiúsul, ha a szolgáltatás tartja a sikertelen állapota, és az eszköz segítségével, hogy töltse le a felhőkörnyezet hiba a helyi gépen a hibakereséshez. A helyi letöltése a teljes felhőalapú környezetben, beleértve a bemeneti adatokat és a felhasználói kód rögzíti.
+A gyakorlatban kód szükség lehet a hibakeresés, de nehéz a felhő egyéni kóddal elosztott feladat korlátozott naplófájlokat a hibakereséshez. [Azure Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs) nevű szolgáltatást nyújt **csúcspont Debug sikertelen**, amely segít, könnyebben hibakeresést a bekövetkező hibák az egyéni kódot. U-SQL-feladat meghiúsul, ha a szolgáltatás tartja a sikertelen állapota, és az eszköz segítségével, hogy töltse le a felhőkörnyezet hiba a helyi gépen a hibakereséshez. A helyi letöltése a teljes felhőalapú környezetben, beleértve a bemeneti adatokat és a felhasználói kód rögzíti.
 
 A következő videó bemutatja a csúcspont Debug nem sikerült az Azure Data Lake Tools for Visual Studio.
 
@@ -64,7 +64,7 @@ Van, hogy a C#-forráskódot rögzített két esetet:
 
 A forráskód importálva lett-e a megoldás, ha a Visual Studio hibakereső eszközöket (tekintse meg, változókat, stb.) a probléma elhárításához is használhatja:
 
-1. Nyomja meg **F5** hibakeresésének elkezdéséhez. A kód lefut, amíg egy kivétel által le van állítva.
+1. Nyomja le az **F5** billentyűt a hibakeresés megkezdéséhez. A kód lefut, amíg egy kivétel által le van állítva.
 
 2. Nyissa meg a forráskód fájlja, és állítson be töréspontokat, majd nyomja le az **F5** hibakeresése a kód lépésről lépésre.
 

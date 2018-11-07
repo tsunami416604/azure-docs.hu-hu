@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: spelluru
-ms.openlocfilehash: 12902fef0a27aa0af5995d2fd6ab87d951413d1d
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 9c76e535fe0585ec6ff08a0c9dcab700d8eb5424
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857975"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51262012"
 ---
 # <a name="azure-wcf-relay-tutorial"></a>Az Azure WCF Relay-oktatóanyag
 
@@ -35,7 +35,7 @@ Az utolsó három lépés azt írja le, hogy hogyan hozhat létre egy ügyfélal
 
 Az oktatóanyag teljesítéséhez az alábbiakra lesz szüksége:
 
-* [Microsoft Visual Studio 2015 vagy újabb](http://visualstudio.com). Ez az oktatóanyag a Visual Studio 2017-et használja.
+* [Microsoft Visual Studio 2015 vagy újabb](https://visualstudio.com). Ez az oktatóanyag a Visual Studio 2017-et használja.
 * Aktív Azure-fiók. Ha még nincs fiókja, néhány perc alatt létrehozhat egy ingyenes fiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-service-namespace"></a>Szolgáltatásnévtér létrehozása
@@ -55,7 +55,7 @@ A szolgáltatási szerződés Megadja, milyen műveleteket (webszolgáltatás-te
 
 3. Telepítse a Service Bus NuGet-csomagot. Ez a csomag automatikusan hivatkozásokat ad a Service Bus-könyvtárakhoz, valamint a WCF **System.ServiceModel** névtérhez. A [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) az a névtér, amely lehetővé teszi a programozott hozzáférést a WCF alapszintű szolgáltatásaihoz. A Service Bus számos WCF-objektumot és -attribútumot használ a szolgáltatási szerződések meghatározására.
 
-    A Megoldáskezelőben kattintson a jobb gombbal a projektre, és kattintson **NuGet-csomagok kezelése...** . Kattintson a **Browse** (Tallózás) lapra, és keressen rá a következőre: **WindowsAzure.ServiceBus**. Ügyeljen arra, hogy a projekt neve ki legyen jelölve a **Version(s)** (Verzió(k)) mezőben. Kattintson az **Install** (Telepítés) gombra, és fogadja el a használati feltételeket.
+    A Megoldáskezelőben kattintson a jobb gombbal a projektre, és kattintson **NuGet-csomagok kezelése...** . Kattintson a Browse (Tallózás) lapra, és keressen rá a következőre: **WindowsAzure.ServiceBus**. Ügyeljen arra, hogy a projekt neve ki legyen jelölve a **Version(s)** (Verzió(k)) mezőben. Kattintson az **Install** (Telepítés) gombra, és fogadja el a használati feltételeket.
 
     ![][3]
 4. A Solution Explorerben (Megoldáskezelőben) kattintson duplán a Program.cs fájlra a szerkesztőben való megnyitásához, ha még nincs megnyitva.
@@ -81,7 +81,7 @@ A szolgáltatási szerződés Megadja, milyen műveleteket (webszolgáltatás-te
     ```
 
    > [!NOTE]
-   > A szolgáltatási szerződés névtere általában tartalmaz egy elnevezési sémát, amely tartalmazza a verzióinformációkat. Ha a verzióinformációk szerepelnek a szolgáltatási szerződés névterében, a szolgáltatások képesek elkülöníteni a nagyobb módosításokat egy új szolgáltatási szerződés új névtérrel való meghatározása, valamint egy új végponton való megjelenítése révén. Ily módon az ügyfelek továbbra is használhatja a régi szolgáltatási szerződést anélkül, hogy frissíteniük kellene. A verzióinformációk dátumot vagy buildszámot tartalmazhatnak. További információ: [Service Versioning](http://go.microsoft.com/fwlink/?LinkID=180498) (Szolgáltatás verziószámozása). A jelen oktatóanyag esetén a szolgáltatási szerződés elnevezési sémája nem tartalmazza a verzióinformációkat.
+   > A szolgáltatási szerződés névtere általában tartalmaz egy elnevezési sémát, amely tartalmazza a verzióinformációkat. Ha a verzióinformációk szerepelnek a szolgáltatási szerződés névterében, a szolgáltatások képesek elkülöníteni a nagyobb módosításokat egy új szolgáltatási szerződés új névtérrel való meghatározása, valamint egy új végponton való megjelenítése révén. Ily módon az ügyfelek továbbra is használhatja a régi szolgáltatási szerződést anélkül, hogy frissíteniük kellene. A verzióinformációk dátumot vagy buildszámot tartalmazhatnak. További információ: [Service Versioning](https://go.microsoft.com/fwlink/?LinkID=180498) (Szolgáltatás verziószámozása). A jelen oktatóanyag esetén a szolgáltatási szerződés elnevezési sémája nem tartalmazza a verzióinformációkat.
    >
    >
 8. Belül a `IEchoContract` csatoló, deklaráljon egy metódust az egyetlen műveletben a `IEchoContract` szerződés által a felületen közzétett és a alkalmazni a `OperationContractAttribute` attribútumot a következőképpen a WCF-továbbító szerződés részeként közzétenni kívánt metódus:

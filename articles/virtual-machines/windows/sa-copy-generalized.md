@@ -1,6 +1,6 @@
 ---
-title: Nem felügyelt lemezkép egy általánosított virtuális gép létrehozása az Azure-ban |} Microsoft Docs
-description: Hozzon létre egy általános windowsos virtuális gép több másolatot a virtuális gépek létrehozása az Azure-ban unmanged képe.
+title: Nem felügyelt rendszerkép egy általánosított virtuális gép létrehozása az Azure-ban |} A Microsoft Docs
+description: Hozzon létre egy virtuális gép több példányának létrehozása az Azure-ban használandó általános Windows virtuális gép unmanged képe.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -16,87 +16,87 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: b416acd9a2a3b03502b7eca11eade9dbd56f3afe
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 63fdf9cf24c7e412533f15ff0701bc8fb481602a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072049"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240613"
 ---
-# <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Egy nem felügyelt Virtuálisgép-lemezkép az Azure virtuális gép létrehozása
+# <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Egy nem felügyelt Virtuálisgép-rendszerkép létrehozása Azure virtuális gépből
 
-Ez a cikk ismerteti a storage-fiókok használatával. Javasoljuk, hogy használjon felügyelt lemezek és a felügyelt képek helyett egy tárfiókot. További információkért lásd: [egy általánosított virtuális Gépet az Azure-ban a felügyelt lemezképének](capture-image-resource.md).
+Ez a cikk ismerteti a storage-fiókot használni. Azt javasoljuk, hogy használt felügyelt lemezek és felügyelt lemezképek helyett egy storage-fiókot. További információkért lásd: [az Azure-beli általánosított virtuális gép felügyelt rendszerképének rögzítése](capture-image-resource.md).
 
-Ez a cikk bemutatja, hogyan egy általánosított Azure VM-lemezkép létrehozása az Azure PowerShell használatával történő tárfiókot használ. A lemezkép segítségével majd hozzon létre egy másik virtuális Gépet. A lemezkép az operációs rendszer lemezének és az adatlemezek a virtuális géphez csatolt tartalmaz. A kép nem tartalmaz virtuális hálózati erőforrások, úgy kell beállítani ezeket az erőforrásokat, ha az új virtuális gép létrehozása. 
+Ez a cikk bemutatja, hogyan általánosított Azure VM-lemezkép létrehozása az Azure PowerShell használatával egy storage-fiók használatával. Ezután használhatja a kép egy másik virtuális gép létrehozásához. A rendszerkép tartalmazza az operációsrendszer-lemez és a virtuális géphez csatolt adatlemezek. A kép nem tartalmazza a virtuális hálózati erőforrásokat, úgy kell beállítani ezeket az erőforrásokat, ha az új virtuális Gépet hoz létre. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Szüksége van az Azure PowerShell-verzió 1.0.x vagy újabb verzióját telepítették. Ha még nem telepítette a PowerShell, olvassa el [telepítése és konfigurálása az Azure PowerShell](/powershell/azure/overview) telepítési lépéseit.
+Szüksége lesz az Azure PowerShell-verzió 1.0.x verziót vagy újabb verzióját telepítették. Ha még nem telepítette a PowerShell, olvassa el a [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview) a telepítési lépéseket.
 
-## <a name="generalize-the-vm"></a>A virtuális gép generalize 
-Ez a szakasz bemutatja, hogyan általánosítja a Windows rendszerű virtuális gép képként használatra. A virtuális gépek normalizálása eltávolítja a személyes adatok, többek között, és előkészíti a számítógépet, hogy képként használni. A Sysprep kapcsolatos részletekért lásd: [hogyan használja a Sysprep: Bevezetés](http://technet.microsoft.com/library/bb457073.aspx).
+## <a name="generalize-the-vm"></a>A virtuális gép általánosítása 
+Ez a szakasz bemutatja, hogyan általánossá tétele a Windows virtuális gép lemezképként való használatra. Virtuális gép általánosítása eltávolít minden személyes fiókadatot, többek között, és előkészíti a számítógépet, hogy képként használni. További információ a Sysprepről: [A Sysprep használata: Bevezetés](https://technet.microsoft.com/library/bb457073.aspx).
 
-Győződjön meg arról, hogy a Sysprep által a gépen futó kiszolgálói szerepkörök támogatottak. További információkért lásd: [Sysprep támogatási kiszolgálói szerepköre tekintetében](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+Ellenőrizze, hogy a Sysprep a gépen futó kiszolgálói szerepkörök támogatottak. További információkért lásd: [Sysprep támogatási kiszolgálói szerepköre tekintetében](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
 > [!IMPORTANT]
-> Ha a VHD-t az Azure-bA először, győződjön meg arról, hogy [a virtuális gép előkészített](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a Sysprep futtatása előtt. 
+> Ha tölt fel a VHD-t az Azure-ban először, ellenőrizze, hogy [készíteni a virtuális gép](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a Sysprep futtatása előtt. 
 > 
 > 
 
-Linux virtuális gépet is általánosítása `sudo waagent -deprovision+user` és a PowerShell segítségével a virtuális gép rögzítése. A virtuális gép rögzítése a parancssori felület használatával kapcsolatos információkért lásd: [generalize és az Azure parancssori felület használatával Linux virtuális gép rögzítése ](../linux/capture-image.md).
+Linux virtuális gép is általánosítása `sudo waagent -deprovision+user` és a PowerShell segítségével a virtuális gép rögzítése. További információ a parancssori felület használatával a virtuális gép rögzítésére: [generalize és az Azure parancssori felületével Linux rendszerű virtuális gép rögzítése ](../linux/capture-image.md).
 
 
-1. Jelentkezzen be a Windows rendszerű virtuális gép.
-2. Nyissa meg a parancssort rendszergazdaként. Lépjen be **%windir%\system32\sysprep**, majd futtassa a `sysprep.exe`.
-3. Az a **rendszer-előkészítő eszköz** párbeszédpanelen jelölje ki **adja meg a rendszer Out-of-Box élmény (OOBE)**, és győződjön meg arról, hogy a **Generalize** jelölőnégyzet be van jelölve.
-4. A **leállítási beállítások**, jelölje be **leállítási**.
+1. Jelentkezzen be a Windows virtuális gép.
+2. Nyissa meg a parancsablakot rendszergazdaként. Módosítsa a könyvtárat a **%windir%\system32\sysprep**, majd futtassa a `sysprep.exe`.
+3. A **Rendszer-előkészítő eszköz** párbeszédpanelen válassza **A kezdőélmény indítása** lehetőséget, és győződjön meg róla, hogy be van-e jelölve az **Általánosítás** jelölőnégyzet.
+4. A **leállítási beállítások**válassza **leállítási**.
 5. Kattintson az **OK** gombra.
    
     ![Indítsa el a Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
-6. A Sysprep befejezését követően a virtuális gép leáll. 
+6. A Sysprep a feladat befejezése után leállítja a virtuális gépet. 
 
 > [!IMPORTANT]
-> Ne indítsa újra a virtuális gép, amíg elkészült, a virtuális merevlemez feltöltése az Azure-bA vagy lemezkép létrehozása a virtuális gépről. Ha a virtuális gép véletlenül lekérdezi újra, futtassa a Sysprep általánosítja azt újra.
+> Ne indítsa újra a virtuális gép mindaddig, amíg a virtuális merevlemez feltöltése az Azure-ba, vagy létrehozná a lemezképet a virtuális gépről végzett. Ha a virtuális gép véletlenül lekérdezi újraindul, futtassa a Sysprep eszközt, azt újra általánosítására.
 > 
 > 
 
 ## <a name="log-in-to-azure-powershell"></a>Bejelentkezés az Azure PowerShellbe
-1. Nyissa meg az Azure PowerShell, és jelentkezzen be az Azure-fiókjával.
+1. Nyissa meg az Azure PowerShell-lel, és jelentkezzen be az Azure-fiókjával.
    
     ```powershell
     Connect-AzureRmAccount
     ```
    
-    Egy előugró ablak nyílik meg Azure-fiók hitelesítő adatait.
-2. Az előfizetési azonosítók az elérhető előfizetések beolvasása.
+    Egy előugró ablak nyílik meg, hogy adja meg az Azure-fiók hitelesítő adatait.
+2. Az előfizetés azonosítókat az elérhető előfizetések beolvasása.
    
     ```powershell
     Get-AzureRmSubscription
     ```
-3. Állítsa be a megfelelő előfizetés az előfizetés-azonosítójával.
+3. Állítsa be a megfelelő előfizetés használatával az előfizetés azonosítóját.
    
     ```powershell
     Select-AzureRmSubscription -SubscriptionId "<subscriptionID>"
     ```
 
-## <a name="deallocate-the-vm-and-set-the-state-to-generalized"></a>A virtuális gép felszabadítása és általános állapotának beállítása
+## <a name="deallocate-the-vm-and-set-the-state-to-generalized"></a>Szabadítsa fel a virtuális Gépet, és az általános állapotának beállítása
 
 > [!IMPORTANT] 
-> Nem hozzáadása, szerkesztése, illetve címkék eltávolítása a virtuális gépek után van megjelölve általánosítva van. Ha szeretne egy címke hozzáadása a virtuális Gépet, győződjön meg arról, általánosítva való megjelölése előtt adja hozzá a címkéket.
+> Nem adja hozzá, szerkessze vagy távolítsa el az címkéket a virtuális gép után általánosként van megjelölve. Ha azt szeretné, egy címke hozzáadása a virtuális Gépen, győződjön meg arról, általánosként való megjelölése előtt adja hozzá a címkéket.
 > 
 
-1. A Virtuálisgép-erőforrások felszabadítani.
+1. Szabadítsa fel a virtuális gép erőforrásait.
    
     ```powershell
     Stop-AzureRmVM -ResourceGroupName <resourceGroup> -Name <vmName>
     ```
    
-    A *állapot* a virtuális gép az Azure portálon módosítja **leállítva** való **leállítva (felszabadítva)**.
-2. A virtuális gép állapotának beállítása **Generalized**. 
+    A *állapot* a virtuális gép az Azure Portalon a változik **leállítva** való **leállítva (felszabadítva)**.
+2. A virtuális gép állapotának beállítása **Általánosítottra**. 
    
     ```powershell
     Set-AzureRmVm -ResourceGroupName <resourceGroup> -Name <vmName> -Generalized
     ```
-3. A virtuális gép állapotának ellenőrzése. A **OSState/általánosítva** szakaszban, a virtuális gép kell rendelkeznie a **DisplayStatus** beállítása **virtuális gép általánosítva**.  
+3. A virtuális gép állapotának ellenőrzéséhez. A **OSState/általánosítva** szakaszban látható a virtuális Gépet kell rendelkeznie a **DisplayStatus** beállítása **virtuális gép általánosítva**.  
    
     ```powershell
     $vm = Get-AzureRmVM -ResourceGroupName <resourceGroup> -Name <vmName> -Status
@@ -105,7 +105,7 @@ Linux virtuális gépet is általánosítása `sudo waagent -deprovision+user` �
 
 ## <a name="create-the-image"></a>A rendszerkép létrehozása
 
-Hozzon létre egy nem felügyelt virtuálisgép-lemezkép a cél tárolót használja a következő parancsot. A kép ugyanazt a tárfiókot az eredeti virtuális gépként jön létre. A `-Path` paraméter a forrás virtuális gép a JSON-sablon másolatának mentése a helyi számítógépen. A `-DestinationContainerName` paraméter megadása a tároló, a lemezképek tárolásához használni kívánt nevét. Ha a tároló nem létezik, az Ön létrejön.
+A cél tároló, a következő paranccsal hozzon létre egy nem felügyelt virtuálisgép-lemezkép. A kép ugyanazt a tárfiókot, az eredeti virtuális gép jön létre. A `-Path` paramétert a JSON-sablon a forrás virtuális gép másolatának mentése a helyi számítógépen. A `-DestinationContainerName` paraméter, amely a szeretné megtartani a képek a tároló neve. Ha a tároló nem létezik, akkor jön létre az Ön számára.
    
 ```powershell
 Save-AzureRmVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
@@ -113,17 +113,17 @@ Save-AzureRmVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
     -Path <C:\local\Filepath\Filename.json>
 ```
    
-A JSON-fájl sablon lekérheti a kép URL-CÍMÉT. Lépjen a **erőforrások** > **storageProfile** > **osDisk** > **kép** > **uri** a lemezkép szakasza a teljes elérési útja. A kép URL-címe a következőhöz hasonló: `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`.
+A JSON-fájl sablonból beszerezheti a kép URL-CÍMÉT. Nyissa meg a **erőforrások** > **storageProfile** > **osDisk** > **kép**  >  **uri** szakaszban található a rendszerkép teljes elérési útja. Az URL-címét a képen láthatóhoz hasonló: `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`.
    
-Azt is ellenőrizheti, hogy az URI a portálon. A kép másolódik nevű tárolót **rendszer** tárfiókba. 
+Az URI-t a portálon is ellenőrizheti. A kép másolódik nevű tárolóban **rendszer** a storage-fiókban. 
 
-## <a name="create-a-vm-from-the-image"></a>Hozzon létre egy virtuális Gépet a lemezképből
+## <a name="create-a-vm-from-the-image"></a>Virtuális gép létrehozása a rendszerképből
 
-Most egy vagy több virtuális gépek is létrehozhat a nem felügyelt lemezképből.
+Most egy vagy több virtuális gépeket hozhat létre a nem felügyelt rendszerképből.
 
-### <a name="set-the-uri-of-the-vhd"></a>A virtuális merevlemez URI beállítása
+### <a name="set-the-uri-of-the-vhd"></a>Állítsa be a virtuális merevlemez URI azonosítója
 
-URI-JÁNAK a VHD-fájlt használjon a formátumban kell megadni: https://**mystorageaccount**.blob.core.windows.net/**mycontainer**/**MyVhdName**.vhd. Ebben a példában a virtuális merevlemez nevű **myVHD** szerepel a tárfiók **mystorageaccount** tárolóban **mycontainer**.
+A virtuális merevlemez használata az URI-ja a következő formátumban: https://**mystorageaccount**.blob.core.windows.net/**mycontainer**/**MyVhdName**.vhd. Ebben a példában a virtuális merevlemez nevű **myVHD** a storage-fiókban található **mystorageaccount** tároló **mycontainer**.
 
 ```powershell
 $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vhd"
@@ -131,16 +131,16 @@ $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vh
 
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
-Hozza létre a virtuális hálózat és az alhálózati a [virtuális hálózati](../../virtual-network/virtual-networks-overview.md).
+Hozza létre a virtuális hálózat és alhálózat, a [virtuális hálózat](../../virtual-network/virtual-networks-overview.md).
 
-1. Hozza létre az alhálózatot. Az alábbi minta létrehoz egy nevű alhálózat **mySubnet** erőforráscsoportban **myResourceGroup** a címelőtagot rendelkező **10.0.0.0/24**.  
+1. Hozza létre az alhálózatot. Az alábbi minta létrehoz egy nevű alhálózatot **mySubnet** erőforráscsoportban **myResourceGroup** a cím előtagja **10.0.0.0/24**.  
    
     ```powershell
     $rgName = "myResourceGroup"
     $subnetName = "mySubnet"
     $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
     ```
-2. Hozza létre a virtuális hálózatot. Az alábbi minta létrehoz egy virtuális hálózati nevű **myVnet** a a **USA nyugati régiója** hellyel, amely a címelőtagot **10.0.0.0/16**.  
+2. Hozza létre a virtuális hálózatot. Az alábbi minta létrehoz egy virtuális hálózatot nevű **myVnet** a a **USA nyugati RÉGIÓJA** helyét a címelőtagot **10.0.0.0/16**.  
    
     ```powershell
     $location = "West US"
@@ -152,14 +152,14 @@ Hozza létre a virtuális hálózat és az alhálózati a [virtuális hálózati
 ### <a name="create-a-public-ip-address-and-network-interface"></a>Hozzon létre egy nyilvános IP-cím és a hálózati kapcsolat
 A virtuális hálózaton a virtuális géppel való kommunikáció biztosításához egy [nyilvános IP-cím](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) és egy hálózati adapter szükséges.
 
-1. Hozzon létre egy nyilvános IP-címet. Ez a példa létrehoz egy nyilvános IP-cím nevű **myPip**. 
+1. Hozzon létre egy nyilvános IP-címet. Ez a példa létrehoz egy nyilvános IP-címet **myPip**. 
    
     ```powershell
     $ipName = "myPip"
     $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
         -AllocationMethod Dynamic
     ```       
-2. Hozzon létre a hálózati adaptert. Ez a példa létrehoz egy hálózati adapter nevű **myNic**. 
+2. Hozzon létre a hálózati adaptert. Ez a példa létrehoz egy hálózati Adaptert **myNic**. 
    
     ```powershell
     $nicName = "myNic"
@@ -167,10 +167,10 @@ A virtuális hálózaton a virtuális géppel való kommunikáció biztosítás�
         -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
     ```
 
-### <a name="create-the-network-security-group-and-an-rdp-rule"></a>A hálózati biztonsági csoport és egy RDP-szabály létrehozása
-Nem fogja tudni jelentkezzen be a virtuális gép RDP Funkciót használnak, olyan biztonsági szabályt, amely lehetővé teszi a hozzáférést RDP a 3389-es porton kell. 
+### <a name="create-the-network-security-group-and-an-rdp-rule"></a>A hálózati biztonsági csoport és a egy RDP-szabály létrehozása
+Az, hogy jelentkezzen be a virtuális gép RDP-vel, szüksége lesz egy biztonsági szabályt, amely lehetővé teszi a 3389-es RDP-hozzáférést. 
 
-Ez a példa létrehoz egy NSG nevű **myNsg** nevű szabályt tartalmaz, amelyek **myRdpRule** RDP-forgalmát, amely engedélyezi a 3389-es porton keresztül. Az NSG-k kapcsolatos további információkért lásd: [az Azure PowerShell használatával egy virtuális gép portok megnyitása](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ez a példa létrehoz egy NSG-t nevű **myNsg** nevű szabályt tartalmazó **myRdpRule** , amely lehetővé teszi RDP-forgalmat a 3389-es porton keresztül. NSG-kkel kapcsolatos további információkért lásd: [egy virtuális gép portjainak megnyitása az Azure PowerShell-lel](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ```powershell
 $nsgName = "myNsg"
@@ -185,15 +185,15 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $rgName -Location $loc
 ```
 
 
-### <a name="create-a-variable-for-the-virtual-network"></a>A virtuális hálózat változó létrehozása
-Hozzon létre egy változót, a befejezett virtuális hálózat. 
+### <a name="create-a-variable-for-the-virtual-network"></a>Hozzon létre egy változót, a virtuális hálózat
+Hozzon létre egy változót a befejezett virtuális hálózatot. 
 
 ```powershell
 $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
 ### <a name="create-the-vm"></a>Virtuális gép létrehozása
-A következő PowerShell befejeződött a virtuális gépek konfigurációit, és nem felügyelt lemezképet használja forrásként az új telepítés.
+Az alábbi PowerShell-lel a virtuális gép konfigurációja befejeződött, és nem felügyelt rendszerkép használja forrásként az új telepítéshez.
 
 </br>
 
@@ -250,8 +250,8 @@ A következő PowerShell befejeződött a virtuális gépek konfigurációit, é
     New-AzureRmVM -ResourceGroupName $rgName -Location $location -VM $vm
 ```
 
-### <a name="verify-that-the-vm-was-created"></a>Győződjön meg arról, hogy létrejött-e a virtuális gép
-Amikor végzett, megjelenik az újonnan létrehozott virtuális gép a [Azure-portálon](https://portal.azure.com) alatt **Tallózás** > **virtuális gépek**, vagy a következő PowerShell-parancsok használatával:
+### <a name="verify-that-the-vm-was-created"></a>Győződjön meg arról, hogy a virtuális gép létrejött-e.
+Amikor végzett, megjelenik az újonnan létrehozott virtuális gép a [az Azure portal](https://portal.azure.com) alatt **Tallózás** > **virtuális gépek**, vagy a következő PowerShell-lel parancsok:
 
 ```powershell
     $vmList = Get-AzureRmVM -ResourceGroupName $rgName
@@ -259,6 +259,6 @@ Amikor végzett, megjelenik az újonnan létrehozott virtuális gép a [Azure-po
 ```
 
 ## <a name="next-steps"></a>További lépések
-Az új virtuális gépet az Azure PowerShell kezeléséhez, tekintse meg a [kezelése az Azure Resource Manager és a PowerShell használatával virtuális gépek](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Az új virtuális gépet az Azure PowerShell-lel kezelhető, lásd: [virtuális gépek kezelése az Azure Resource Managerrel és Powershellel](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 

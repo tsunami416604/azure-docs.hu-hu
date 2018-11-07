@@ -14,15 +14,15 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b60e4f3547e049dc35c08ce115bdfcbbf6ebb18a
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 5345ca3a9c2f35b45669a3a54ecb42ca627cde32
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42055348"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259819"
 ---
 # <a name="use-case---customer-profiling"></a>Használati eset – Ügyfélprofil-készítés
-Az Azure Data Factory a Cortana Intelligence Suite-megoldásgyorsítók megvalósításához használt számos szolgáltatás egyike.  Cortana Intelligence kapcsolatos további információkért látogasson el [Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics). Ez a dokumentum egyszerű használati esetek segítenek megérteni, hogyan tudja oldani az Azure Data Factory analytics kapcsolatos gyakori problémák a ismertetünk.
+Az Azure Data Factory a Cortana Intelligence Suite-megoldásgyorsítók megvalósításához használt számos szolgáltatás egyike.  Cortana Intelligence kapcsolatos további információkért látogasson el [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics). Ez a dokumentum egyszerű használati esetek segítenek megérteni, hogyan tudja oldani az Azure Data Factory analytics kapcsolatos gyakori problémák a ismertetünk.
 
 ## <a name="scenario"></a>Forgatókönyv
 Contoso egy játékokkal foglalkozó vállalatot, amely létrehozza a játékok, több platformon: játékok konzolok, az aktuális birtokolt eszközök és személyes számítógépek. Lejátszók ezek játékokat, mivel nagy mennyiségű napló jön létre, amely nyomon követi a használati mintákat, játék stílusának és a felhasználói beállítások.  Demográfiai, regionális, kombinálva és termékadatokat, Contoso játékos élmény fokozásával kapcsolatos nyújt számukra az analitikai hajthat végre, és azokat, frissítéseket és a játékbeli cél vásárol. 

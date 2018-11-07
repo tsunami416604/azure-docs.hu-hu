@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3a62440b9fe44dfed14cfd9887d4d3cc2e4dbb92
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6a0c4158b85a6bc6c9276eff19466fb742c6f442
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430238"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235923"
 ---
 # <a name="supplemental-lesson---dynamic-security"></a>Kiegészítő lecke – Dinamikus biztonság
 
@@ -21,7 +21,7 @@ Ebben a kiegészítő leckében további, dinamikus biztonságot megvalósító 
   
 A dinamikus biztonság megvalósítása érdekében hozzáadhat egy táblázatot az azon felhasználók felhasználóneveit tartalmazó modellhez, akik csatlakozhatnak a modellhez, és kereshetnek a modell objektumai és adatai között. Az ezen oktatóanyag segítségével létrehozott modell az Adventure Works környezetében található; azonban a lecke elvégzéséhez a saját tartományából származó felhasználókat tartalmazó táblázatot kell hozzáadnia. Nincs szükség a hozzáadott felhasználónevekhez tartozó jelszavakra. EmployeeSecurity tábla létrehozásához, amely a saját tartományából tartalmaz néhány felhasználót példaként, használhatja a Beillesztés funkciót, amellyel alkalmazotti adatokat illeszthet be egy Excel-táblázatból. A valós forgatókönyvekben a felhasználóneveket tartalmazó táblázat általában egy adatforrásként szolgáló valódi adatbázisból származna, például egy valódi DimEmployee táblából.  
   
-A dinamikus biztonság beállításához két DAX-függvényt használhat: [USERNAME függvény (DAX)](http://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) és [LOOKUPVALUE függvény (DAX)](http://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab). Ezek a függvények a sorszűrő képletben alkalmazva egy új szerepkörben vannak meghatározva. A LOOKUPVALUE függvény használatával a képlet az EmployeeSecurity táblából ad meg egy értéket. Ezután a képlet továbbadja az értéket a USERNAME függvénynek, amely megadja az ehhez a szerepkörhöz tartozó, bejelentkezett felhasználó felhasználónevét. A felhasználó ezután csak a szerepkör sorszűrői által megadott adatokat böngészheti. Ebben a forgatókönyvben megadhatja, hogy az értékesítési alkalmazottak csak olyan értékesítési területek internetes értékesítési adatai között kereshetnek, amelyben tagok.  
+A dinamikus biztonság beállításához két DAX-függvényt használhat: [USERNAME függvény (DAX)](https://msdn.microsoft.com/22dddc4b-1648-4c89-8c93-f1151162b93f) és [LOOKUPVALUE függvény (DAX)](https://msdn.microsoft.com/73a51c4d-131c-4c33-a139-b1342d10caab). Ezek a függvények a sorszűrő képletben alkalmazva egy új szerepkörben vannak meghatározva. A LOOKUPVALUE függvény használatával a képlet az EmployeeSecurity táblából ad meg egy értéket. Ezután a képlet továbbadja az értéket a USERNAME függvénynek, amely megadja az ehhez a szerepkörhöz tartozó, bejelentkezett felhasználó felhasználónevét. A felhasználó ezután csak a szerepkör sorszűrői által megadott adatokat böngészheti. Ebben a forgatókönyvben megadhatja, hogy az értékesítési alkalmazottak csak olyan értékesítési területek internetes értékesítési adatai között kereshetnek, amelyben tagok.  
   
 Azok a feladatok, amelyek erre az Adventure Work táblázatos modellezési forgatókönyvre jellemzők, de nem feltétlenül vonatkoznak egy valós forgatókönyvre, ilyenként meg vannak jelölve. Mindegyik feladat a feladat célját leíró, kiegészítő információkat is tartalmaz.  
   

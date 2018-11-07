@@ -1,157 +1,65 @@
 ---
-title: Azure Cosmos DB-ben egyedi kulcsaival |} A Microsoft Docs
-description: Ismerje meg az Azure Cosmos DB adatbázis egyedi kulcsok használata.
-services: cosmos-db
-keywords: egyedi key megkötést, egyedi kulcsmegkötés megsértése
-author: rafats
-manager: kfile
-editor: monicar
+title: Azure Cosmos DB-ben egyedi kulcsaival
+description: Az Azure Cosmos DB adatbázis egyedi kulcsok használata
+author: aliuy
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/08/2018
-ms.author: rafats
-ms.openlocfilehash: ff432de59e5a5fdfeaad4c3a5361554ee32e21b0
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.date: 10/30/2018
+ms.author: andrl
+ms.openlocfilehash: 36b57fd98de206641422d80bf3ea3d2a3853f578
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740008"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252564"
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Azure Cosmos DB-ben egyedi kulcsaival
 
-Egyedi kulcsok nyújtanak a fejlesztők számára lehetővé teszi, hogy adatintegritási réteget egy saját adatbázisba. Egyedi hoz létre, amikor egy tároló jön létre, egy vagy több értéket kiszolgálónként egyediségének biztosítása [partíciókulcs](partition-data.md). Miután a tároló egyedi létre lett hozva, ez megakadályozza, hogy az ismétlődő értékek az egyedi kulcsmegkötés által megadott értéket tartalmazó új vagy frissített elemek létrehozását.   
+Egyedi kulcsok lehetővé teszi, hogy egy Cosmos-tárolóhoz egy adatintegritási réteget biztosít. Egyedi hoz létre, amikor egy Cosmos-tároló létrehozása. Egyedi kulccsal rendelkező logikai partíción belül egy vagy több értéket egyediségének biztosítása (kiszolgálónként egyedisége garantálhatja [partíciókulcs](partition-data.md)). Miután létrehozott egy tároló egyedi, ez megakadályozza, hogy egy logikai partíciót, azokat az egyedi megkötés belül bármely új (vagy frissített) ismétlődő elemeket hozza létre. A partíciókulcs a hatókörön belüli elem a tároló egyedi kulcs garanciák egyediségének együtt.
 
-> [!NOTE]
-> A legújabb verziói által támogatott egyedi kulcsok a [.NET](sql-api-sdk-dotnet.md) és [.NET Core](sql-api-sdk-dotnet-core.md) SQL SDK-k és a [MongoDB API-val](mongodb-feature-support.md#unique-indexes). A Table API és a Gremlin API támogatja jelenleg egyedi kulcsok. 
-> 
->
+Vegyük példaként egy Cosmos-tároló egyedi megkötés, e-mail-címmel és `CompanyID` partíciókulcsként. Konfigurálása a felhasználó e-mail-cím egy egyedi kulcsot, biztosíthatja, hogy minden elem belül egyedi e-mail-címmel rendelkezik egy adott `CompanyID`. A két elem nem hozható létre, duplikált e-mail-címek és az egyazon partíciókulcs-értékkel.  
 
-## <a name="use-case"></a>Használati eset
+Ha szeretne biztosítani a felhasználók létrehozása több elem is ugyanazt az e-mail címet, de nem az azonos Utónév, az utolsó és az e-mail-címét, hozzáadhat további elérési utak a egyedi kulcs szabályzathoz. Az e-mail cím alapján egyedi kulcs létrehozása helyett is létrehozhat egy egyedi kulcsot kombinációjával az Utónév, Vezetéknév és az e-mail cím (összetett egyedi kulccsal). Ebben az esetben minden egyéni kombinációja a három értékek belül egy adott `CompanyID` engedélyezett. Például a tároló elemek, a következő értékeket, ahol minden egyes cikk weboldalak alapján a egyedi korlátozást is tartalmazhat.
 
-Példaként nézzük, hogyan egy felhasználói adatbázishoz társított egy [közösségi alkalmazás](use-cases.md#web-and-mobile-applications) hasznát venném egyedi kellene az e-mail-címeket. Azáltal, hogy a felhasználó e-mail-cím egy egyedi kulcsot, akkor győződjön meg arról, minden egyes rekord egyedi e-mail-címmel rendelkezik, és nincs új rekord hozható létre duplikált e-mail-címmel rendelkező. 
+|CompanyID|Utónév|Vezetéknév|E-mail-cím|
+|---|---|---|---|
+|Contoso|Gaby|Duperre|gaby@contoso.com |
+|Contoso|Gaby|Duperre|gaby@fabrikam.com|
+|A Fabrikam|Gaby|Duperre|gaby@fabrikam.com|
+|A Fabrikam|Ivan|Duperre|gaby@fabrikam.com|
+|Fabrkam|   |Duperre|gaby@fabraikam.com|
+|Fabrkam|   |   |gaby@fabraikam.com|
 
-Ha azt szeretné, hogy létre tudja hozni a felhasználók adott több rekord ugyanazt az e-mail címét, de nem az azonos Utónév, Vezetéknév és az e-mail cím, hozzáadhat további elérési utak a egyedi kulcs szabályzathoz. Ezért egy e-mail-cím alapján egyedi kulcs létrehozása helyett létrehozhat egy egyedi kulcs, amely az utónevét, vezetéknevét és e-mail kombinációja. Ebben az esetben három módjának minden egyéni kombinációja engedélyezve van, ezért az adatbázis elemek, amelyekhez a következő elérési út értékeket tartalmazhat. Az egyedi kulcs házirend egyes ezeket a rekordokat kellene átadnia.  
+Ha egy másik elem beszúrása a fenti táblázatban felsorolt-kombinációkkal, kapni fog egy hibaüzenet, hogy az egyedi megkötés nem teljesült. Kapni fog vagy "erőforrás a megadott azonosító vagy név már létezik" vagy "Erőforrás a megadott azonosító, név vagy egyedi index már létezik" visszatérési üzenetnek számít.  
 
-**Megengedett értékek az Utónév, Vezetéknév és e-mailek egyedi kulcs**
+## <a name="defining-a-unique-key"></a>Egy egyedi kulcsot meghatározása
 
-|Utónév|Vezetéknév|E-mail-cím|
-|---|---|---|
-|Gaby|Duperre|gaby@contoso.com |
-|Gaby|Duperre|gaby@fabrikam.com|
-|Ivan|Duperre|gaby@fabrikam.com|
-|    |Duperre|gaby@fabrikam.com|
-|    |       |gaby@fabraikam.com|
+Egyedi kulcsok csak egy Cosmos-tároló létrehozásakor definiálhat. Egy egyedi kulcsot hatókörét a logikai partíció. Az előző példában ha a tároló az irányítószám alapján particionálja, megszűnik be kellene az egyes logikai partíciók elemek ismétlődik. Egyedi kulcsok létrehozásakor, vegye figyelembe a következő tulajdonságokkal:
 
-Egy másik rekord beillesztése a fenti táblázatban szereplő kombinációk bármelyikével kísérelt meg, ha meg szeretné megjelenik egy hibaüzenet, hogy az egyedi megkötés nem teljesült. Azure Cosmos DB által visszaadott hiba a "Erőforrás a megadott azonosító vagy név már létezik." vagy az "Erőforrás a megadott azonosító, név vagy egyedi index már létezik." 
+* Meglévő tároló használata egy másik egyedi kulcs nem frissíthető. Más szóval az egyedi tároló létrehozása után a házirendet nem lehet módosítani.
 
-## <a name="using-unique-keys"></a>Egyedi kulcsok használata
+* Ha azt szeretné, egyedi kulcs beállítása egy már meglévő tárolóhoz, akkor hozzon létre egy új tárolót a egyedi korlátozást, és a megfelelő adatok áttelepítési eszköz használata az adatok áthelyezése az új tároló meglévő tárolót. SQL-tárolók, használja a [adatáttelepítési eszköz](import-data.md) adatok áthelyezéséhez. Használja a MongoDB-tárolók, [mongoimport.exe vagy mongorestore.exe](mongodb-migrate.md) adatok áthelyezéséhez.
 
-Egyedi kulcsok kell meghatározni, ha a tároló jön létre, és a partíciókulcs hatókörét egyedi kulcsa. A korábbi példában létrehozásához, ha particionálja alapján zip-kód, az egyes partíciók duplikált tábla rekordjai lehet.
+* Egyedi legfeljebb 16 elérési út értékek (például: /firstName, /lastName, / cím/irányítószám). Minden egyedi kulcs szabályzat legfeljebb 10 egyedi kulcsra vonatkozó megkötések, vagy kombinációk és az egyes egyedi index megkötés összevont elérési útjait nem lehet hosszabb 60 bájt. Az előző példában utónevét, vezetéknevét és e-mail-címre együtt egyetlen megkötés, és három a 16 lehetséges útvonalakat használ.
 
-Meglévő tároló egyedi kulcsok használata nem frissíthető.
+* Ha egy tároló tartozik egy egyedi kulcs házirendet, a kérelem egység (RU) költségek szeretne létrehozni, update és delete elem valamivel nagyobb.
 
-Egyedi-tároló létrehozása után a szabályzat nem módosítható, kivéve, ha a tároló hozza létre újra. Ha rendelkezik meglévő egyedi kulcsok megvalósítani kívánt adatokat, az új tároló létrehozása, és a megfelelő adatáttelepítési eszköz segítségével az adatok áthelyezése az új tárolóhoz. SQL-tárolók, használja a [adatáttelepítési eszköz](import-data.md). Használja a MongoDB-tárolók, [mongoimport.exe vagy mongorestore.exe](mongodb-migrate.md).
+* Ritka egyedi kulcsok nem támogatottak. Ha néhány egyedi elérési útja érték hiányzik, azok null az értéke, amely részt vesz az egyediségre vonatkozó feltételnek kell kezelni. Ezért csak lehet egy elem null értékű kielégíteni ezt a korlátozást.
 
-Minden egyedi kulcs legfeljebb 16 elérési útja értéket (például /firstName, /lastName, /address/zipCode, stb.) is szerepelnek. 
+* A kulcsnevek egyedi nagybetűk között. Például vegyünk egy tárolót a egyedi key megkötés /address/zipcode beállítása. Ha az adatok mezőnév irányítószám, Cosmos DB beszúrása "null", az egyedi kulcs, mert "Irányítószám" nem ugyanaz, mint a "Irányítószám". A kis-és nagybetűk, mert irányítószám az összes többi rekordot nem lehet beszúrni, mert az ismétlődő "null" megsérti az egyedi megkötés.
 
-Minden egyedi kulcs szabályzat legfeljebb 10 egyedi kulcsra vonatkozó megkötések, vagy kombinációk és az összes egyedi index tulajdonságok kombinált elérési útjait nem lehet hosszabb 60 karakternél. Így a korábbi példában használó Utónév, Vezetéknév, e-mail-cím csak egyetlen megkötés, és három elérhető 16 lehetséges elérési utakat használ. 
+## <a name="supported-apis-and-sdks"></a>Támogatott API-k és SDK-k
 
-Kérelem egység díjat létrehozása, frissítése, és a egy elem törlése lesz valamivel nagyobb, ha a tároló egyedi. 
+Az egyedi kulcsok a szolgáltatás a következő Cosmos DB API-kat és az ügyfél SDK-k az jelenleg támogatja: 
 
-Ritka egyedi kulcsok nem támogatottak. Ha az egyes egyedi elérési utak érték hiányzik, ezeket külön null értékként, amely szerepel az egyediségre vonatkozó feltételnek kell kezelni.
-
-## <a name="sql-api-sample"></a>Az SQL API-minta
-
-Az alábbi példakód bemutatja, hogyan hozzon létre egy új SQL-tároló két egyedi kulcsokra vonatkozó korlátozások. Az első akadálya, az Utónév, Vezetéknév, e-mail-korlátozást a korábbi példában bemutatott módon. A második pedig a felhasználók cím/irányítószám. Egy példa JSON-fájlt, amely az elérési utakat használ a egyedi kulcs házirend követi a példakód. 
-
-```csharp
-// Create a collection with two separate UniqueKeys, one compound key for /firstName, /lastName,
-// and /email, and another for /address/zipCode.
-private static async Task CreateCollectionIfNotExistsAsync(string dataBase, string collection)
-{
-    try
-    {
-        await client.ReadDocumentCollectionAsync(UriFactory.CreateDocumentCollectionUri(dataBase, collection));
-    }
-    catch (DocumentClientException e)
-    {
-        if (e.StatusCode == System.Net.HttpStatusCode.NotFound)
-        {
-            DocumentCollection myCollection = new DocumentCollection();
-            myCollection.Id = collection;
-            myCollection.PartitionKey.Paths.Add("/pk");
-            myCollection.UniqueKeyPolicy = new UniqueKeyPolicy
-            {
-                UniqueKeys =
-                new Collection<UniqueKey>
-                {
-                    new UniqueKey { Paths = new Collection<string> { "/firstName" , "/lastName" , "/email" }}
-                    new UniqueKey { Paths = new Collection<string> { "/address/zipcode" } },
-          }
-            };
-            await client.CreateDocumentCollectionAsync(
-                UriFactory.CreateDatabaseUri(dataBase),
-                myCollection,
-                new RequestOptions { OfferThroughput = 2500 });
-        }
-        else
-        {
-            throw;
-        }
-    }
-```
-
-Példa JSON-dokumentumok.
-
-```json
-{
-    "id": "1",
-    "pk": "1234",
-    "firstName": "Gaby",
-    "lastName": "Duperre",
-    "email": "gaby@contoso.com",
-    "address": 
-        {            
-            "line1": "100 Some Street",
-            "line2": "Unit 1",
-            "city": "Seattle",
-            "state": "WA",
-            "zipcode": 98012
-        }
-    
-}
-```
-> [!NOTE]
-> Adjon a megjegyzés egyedi nevet, kis-és nagybetűket. A fenti példában látható, egyedi nevet /address/zipcode van beállítva. Ha az adatok irányítószám, majd azt szúrja be "null" egyedi kulcs irányítószám nem egyenlő irányítószám szerint. És a kis-és nagybetűk miatt irányítószám az összes többi rekordot nem fogja tudni lehet beszúrni, mert ismétlődő "null" megsérti az egyedi megkötés.
-
-## <a name="mongodb-api-sample"></a>MongoDB API-minta
-
-Az alábbi parancs minta bemutatja, hogyan hozzon létre egy egyedi indexet a firstName, lastName és e-mailek mezőket a felhasználóknak gyűjtemény a MongoDB API-hoz. Ez biztosítja az egyedi-e az összes három mezőt kombinációja a gyűjteményben lévő összes dokumentum. MongoDB API-gyűjtemény az egyedi index jön létre a gyűjtemény létrehozása után, de a gyűjtemény feltöltése előtt.
-
-> [!NOTE]
-> A MongoDB API-fiókok egyedi kulcs formátuma eltér a az SQL API-fiókok, ahol, nem kell megadnia a perjellel (/) karaktert a mező neve előtt. 
-
-```
-db.users.createIndex( { firstName: 1, lastName: 1, email: 1 }, { unique: true } )
-```
-## <a name="configure-unique-keys-by-using-azure-portal"></a>Egyedi kulcsok konfigurálása az Azure Portal használatával
-
-A fenti szakaszokban található Kódminták bemutatjuk, hogyan adhatja meg egyedi kulcsra vonatkozó megkötések, amikor a rendszer létrehoz egy gyűjteményt az SQL API-t vagy a MongoDB API használatával. De azt is egyedi kulcsok határozhatók meg, ha az Azure Portalon létrehozhat egy gyűjteményt a webes felhasználói felületen. 
-
-- Keresse meg a **adatkezelő** a Cosmos DB-fiókban
-- Kattintson a **új gyűjtemény**
-- A szakasz egyedi kulcsok ** gombra kattintva adhat hozzá a kívánt egyedi kulcsra vonatkozó megkötések **egyedi kulcs hozzáadása**
-
-![Egyedi kulcsok definiálása az adatkezelőben](./media/unique-keys/unique-keys-azure-portal.png)
-
-- Ha meg szeretne létrehozni egy egyedi kulcsmegkötés lastName elérési úton, hozzáadhat `/lastName`.
-- Ha meg szeretne létrehozni egy egyedi kulcsmegkötés a lastName firstName kombináció, hozzáadása `/lastName,/firstName`
-
-Ezzel a módszerrel kattintson **OK** a gyűjtemény létrehozásához.
+|Ügyfél-illesztőprogramok|SQL API|Cassandra API|MongoDB API|Gremlin API|Tábla API|
+|---|---|---|---|---|---|
+|.NET|Igen|Nem|Igen|Nem|Nem|
+|Java|Igen|Nem|Igen|Nem|Nem|
+|Python|Igen|Nem|Igen|Nem|Nem|
+|Csomópont/js rendszerekhez|Igen|Nem|Igen|Nem|Nem|
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan hozzon létre egyedi kulcsok elemek egy adatbázisban. Ha első alkalommal hoz létre egy tárolót, tekintse át [adatokat az Azure Cosmos DB particionálási](partition-data.md) , egyedi kulcsok és a partíciókulcsok támaszkodnak egymással. 
-
-
+* Tudjon meg többet [logikai partíció](partition-data.md)

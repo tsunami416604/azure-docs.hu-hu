@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: d7dbb808205c78b53277c6d916f5166a41c7e93d
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 227ef61ee4809d376c6ac5e8e8c1a7f9c364b7fc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638426"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255762"
 ---
 # <a name="azure-storage-account-overview"></a>Az Azure storage-fiókok áttekintése
 
@@ -107,7 +107,7 @@ Az Azure Storage eléréséhez a blokkblobok adataival használati mintái alapj
 A rendelkezésre álló hozzáférési szintek a következők:
 
 > [!NOTE]
-> A [prémium szintű hozzáférési szint](../blobs/storage-blob-storage-tiers.md#premium-access-tier) egy helyileg redundáns tárolás (LRS) fiókot az Észak-Európa, USA 2. keleti régiója, USA középső régiója és USA nyugati régiójában régiókban korlátozott előzetes verzióban érhető el. Ismerje meg, hogyan kell regisztrálni az előzetes verzióra, lásd: [Azure prémium szintű Blob Storage bemutatása](http://aka.ms/premiumblob).
+> A [prémium szintű hozzáférési szint](../blobs/storage-blob-storage-tiers.md#premium-access-tier) egy helyileg redundáns tárolás (LRS) fiókot az Észak-Európa, USA 2. keleti régiója, USA középső régiója és USA nyugati régiójában régiókban korlátozott előzetes verzióban érhető el. Ismerje meg, hogyan kell regisztrálni az előzetes verzióra, lásd: [Azure prémium szintű Blob Storage bemutatása](https://aka.ms/premiumblob).
 
 * A **interaktív** hozzáférési szint, amely a gyakori hozzáférés a tárfiókban tárolt objektumok számára van optimalizálva. A gyakori elérésű szint adatok elérése a leginkább költséghatékony, amíg némileg magasabb tárolási költségek. Új storage-fiókok jönnek létre a gyakran használt adatok alapértelmezés szerint szint.
 * A **ritkán használt adatok** hozzáférési szint, amely nagy mennyiségű, ritkán elért és legalább 30 nappal a tárolt adatok tárolására van optimalizálva. Adatok tárolása a lassú elérési szint költséghatékonyabban, de valamelyest drágábbak, mint a gyakori elérésű szint adatok elérése, hogy az adatok elérése lehet.

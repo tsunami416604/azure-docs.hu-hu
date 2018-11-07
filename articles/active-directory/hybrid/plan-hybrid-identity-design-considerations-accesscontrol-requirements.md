@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 8a40acda189507c1589373a48166ed1668e30650
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a92d3237300fcd29fecf49d78b2866f8bd7e6a6b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313662"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247704"
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás hozzáférés-vezérlési követelményeinek meghatározása
 Amikor a szervezetek saját hibrid identitáskezelési megoldás tervez, ezt a lehetőséget is használhatják tekintse át az erőforrásokat, hogy tervezi, hogy a felhasználók számára elérhetővé tenni a hozzáférési követelmények. Az adatelérési közötti összes négy területei legyenek elérhetők az identitás, amelyek:
@@ -34,7 +34,7 @@ Amikor a szervezetek saját hibrid identitáskezelési megoldás tervez, ezt a l
 Ez a rész azzal foglalkozik, hitelesítés és engedélyezés az adminisztrációs, további részletekért és a naplózás a hibrid identitás-életciklus részét képezik. Olvasási [határozza meg a hibrid identitáskezelési feladatokat](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) információ ezekről a funkciókról további információt.
 
 > [!NOTE]
-> Olvasási [a négy területei legyenek elérhetők az identitás - Identitáskezelés az életkor hibrid informatikai](http://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx) ezeket alappillérét mindegyike további információt.
+> Olvasási [a négy területei legyenek elérhetők az identitás - Identitáskezelés az életkor hibrid informatikai](https://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx) ezeket alappillérét mindegyike további információt.
 > 
 > 
 

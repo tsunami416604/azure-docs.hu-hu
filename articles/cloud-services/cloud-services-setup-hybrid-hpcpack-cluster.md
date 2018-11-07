@@ -1,6 +1,6 @@
 ---
-title: Az Azure-ban hibrid HPC Pack fürt beállítása |} Microsoft Docs
-description: Megtudhatja, hogyan használja a Microsoft HPC Pack és az Azure kis, hibrid nagy teljesítményű számítástechnikai (HPC) fürt beállítása
+title: Az Azure-ban hibrid HPC Pack-fürt telepítése |} A Microsoft Docs
+description: Útmutató a kisméretű, hibrid nagy teljesítményű feldolgozási (HPC-) fürt beállítása Microsoft HPC Pack és az Azure használatával
 services: cloud-services
 documentationcenter: ''
 author: dlepow
@@ -15,58 +15,58 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: danlep
-ms.openlocfilehash: ad5c13723eef352148a40e3e7f4f2ff616867296
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 55dfd7e5ea93ae941d73612cc70ed82d48db725a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2017
-ms.locfileid: "23985306"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236738"
 ---
-# <a name="set-up-a-hybrid-high-performance-computing-hpc-cluster-with-microsoft-hpc-pack-and-on-demand-azure-compute-nodes"></a>A hibrid nagy teljesítményű számítástechnikai igény Azure számítási csomópontok és a Microsoft HPC Pack (HPC) fürt beállítása
-A Microsoft HPC Pack 2012 R2 és az Azure használatával állítson be egy kisméretű, hibrid nagyteljesítményű számítástechnikai (HPC) fürt. A fürt látható az ebben a cikkben egy helyszíni HPC Pack átjárócsomópont tartalmaz, és néhány számítási csomópont telepítése egy Azure-ban igény a felhőalapú szolgáltatás. Ezt követően futtathatja a számítási feladatok, a hibrid fürtön.
+# <a name="set-up-a-hybrid-high-performance-computing-hpc-cluster-with-microsoft-hpc-pack-and-on-demand-azure-compute-nodes"></a>Nagy teljesítményű feldolgozási (HPC-) fürt beállítása a Microsoft HPC Pack és igény szerinti Azure-beli számítási csomópontok használatával
+A Microsoft HPC Pack 2012 R2 és az Azure segítségével egy kisméretű, hibrid nagy teljesítményű (HPC-) fürt beállítása. A jelen cikkben ismertetett fürt tartalmaz egy helyszíni HPC Pack átjárócsomóponthoz, és egyes számítási csomópontok üzembe az Azure-ban igény a felhőalapú szolgáltatás. Futtathatja a számítási feladatok a hibrid fürtön.
 
 ![Hibrid HPC-fürt][Overview] 
 
-Ez az oktatóanyag egy módszert használja, más néven a fürt "kapacitásnövelés a felhőbe, a" számítási igényű alkalmazások futtatásához méretezhető, igény szerinti Azure-erőforrások használatára.
+Ez az oktatóanyag bemutatja egy módszert használja, más néven "adatlöket a felhőbe," fürt számításigényes alkalmazásokat futtathat a skálázható, igény szerinti Azure-erőforrások használatával.
 
-Ez az oktatóanyag azt feltételezi, hogy a számítási fürtök vagy HPC Pack nincs korábbi tapasztalata kapcsolatban. Az csak segítségével rendelheti hozzá egy hibrid számítási fürt gyors bemutatási célokra szolgál. Szempontjait és lépéseit, nagyobb léptékű termelési környezetben hibrid HPC Pack fürt központi telepítése, vagy HPC Pack 2016 használ, tekintse meg a [részletes útmutatást](http://go.microsoft.com/fwlink/p/?LinkID=200493). HPC Pack egyéb forgatókönyvek, beleértve a fürtöt tartalmazó környezetben az Azure virtuális gépeken automatikus című [HPC-fürt beállítások Microsoft HPC Pack az Azure-ban](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ez az oktatóanyag feltételezi, hogy nincs korábbi tapasztalata az számítási fürtök és a HPC Pack. Célja, hogy csak, amelyek segítenek a gyors bemutató célokra hibrid számítási fürt üzembe helyezése. Megfontolandó szempontok és a nagyobb léptékű termelési környezetben hibrid HPC Pack-fürt üzembe helyezése, vagy használja a HPC Pack 2016 lépéseket lásd: a [részletes útmutatót](https://go.microsoft.com/fwlink/p/?LinkID=200493). Más esetekben a HPC Pack segítségével, beleértve a automatikus fürt üzembe helyezése Azure virtual machines szolgáltatásban, lásd: [a Microsoft HPC Packkal Azure-beli HPC fürtbeállítások](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Azure-előfizetés** – Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) néhány percig.
-* **Egy Windows Server 2012 R2 vagy Windows Server 2012 rendszert futtató helyszíni számítógép** -ezt a számítógépet használja, a HPC-fürt átjárócsomópontjához. Ha már nem futtat Windows Server, töltse le és telepítse az [próbaverzió](https://www.microsoft.com/evalcenter/evaluate-windows-server-2012-r2).
+* **Azure-előfizetés** – Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) mindössze néhány perc alatt.
+* **Egy Windows Server 2012 R2 vagy Windows Server 2012 rendszert futtató helyszíni számítógép** – ezen a számítógépen használja a HPC-fürt főcsomópontjához. Ha már nem fut a Windows Server, töltse le és telepítse egy [próbaverzió](https://www.microsoft.com/evalcenter/evaluate-windows-server-2012-r2).
   
-  * A számítógép Active Directory-tartományhoz kell csatlakoztatni. Tesztelési célokra konfigurálhatja az átjárócsomópont számítógép tartományvezérlőként működik. Vegye fel az Active Directory tartományi szolgáltatások szerepkört, és léptesse elő tartományvezérlővé a átjárócsomópont számítógépet, a Windows Server dokumentációjában találhat.
-  * HPC Pack támogatásához az operációs rendszer telepítenie kell az ezeken a nyelveken egyik: angol, japán vagy kínai (egyszerűsített).
-  * Győződjön meg arról, hogy a fontos és kritikus frissítések telepítve vannak-e.
-* **HPC Pack 2012 R2** - [letöltése](http://go.microsoft.com/fwlink/p/?linkid=328024) a telepítési csomag ingyenesen elérhető legfrissebb, és másolja a fájlokat a head csomópont-számítógépén. Válassza ki a telepítési fájlok a Windows Server telepítési nyelvével azonos nyelven.
+  * A számítógép Active Directory-tartományhoz kell csatlakoznia. Tesztelési célokra beállíthatja a fő csomópont-számítógépén tartományvezérlőként. Az Active Directory tartományi szolgáltatások kiszolgálói szerepkör hozzáadása, és léptesse elő a fő csomópontot számítógépet tartományvezérlőként, a Windows Server dokumentációjában talál.
+  * HPC Pack támogatásához az operációs rendszer telepítenie kell az ezeken a nyelveken egyik: angol, japán és kínai (egyszerűsített).
+  * Győződjön meg arról, hogy a kritikus frissítések telepítve vannak-e.
+* **HPC Pack 2012 R2** - [letöltése](https://go.microsoft.com/fwlink/p/?linkid=328024) a telepítési csomag legújabb verziójának díjmentes, és másolja a fájlokat a fő csomópont-számítógépén. Válassza ki ugyanazt a nyelvet, mint a telepített Windows Server telepítési fájljait.
 
     >[!NOTE]
-    > Ha szeretné használni a HPC Pack 2016 helyett HPC Pack 2012 R2, további konfigurációra van szükség. Tekintse meg a [részletes útmutatást](http://go.microsoft.com/fwlink/p/?LinkID=200493).
+    > Ha szeretné használni a HPC Pack 2016 helyett a HPC Pack 2012 R2, a további konfigurációs van szükség. Tekintse meg a [részletes útmutatót](https://go.microsoft.com/fwlink/p/?LinkID=200493).
     > 
-* **Tartományi fiók** -ennek a fióknak helyi rendszergazdai engedélyekkel rendelkező átjárócsomópontjához HPC csomag telepítéséhez be kell állítani.
-* **TCP-kapcsolatot a 443-as porton** Azure központi csomópontjából.
+* **Tartományi fiók** – ennek a fióknak helyi rendszergazdai engedélyekkel az átjárócsomópont telepítése a HPC Pack kell konfigurálni.
+* **A 443-as TCP-kapcsolat** az Azure-bA a fő csomópontot.
 
-## <a name="install-hpc-pack-on-the-head-node"></a>HPC Pack telepítését az átjárócsomópont
-Először telepítenie kell a Microsoft HPC Pack a helyszíni Windows Server rendszert futtató számítógépen. Ez a számítógép elérhetővé válik a fürt átjárócsomópontjához.
+## <a name="install-hpc-pack-on-the-head-node"></a>HPC Pack telepíthető az átjárócsomóponthoz
+Először telepítenie kell a Microsoft HPC Pack a Windows Servert futtató helyszíni számítógép. Ez a számítógép lesz a fürt fő csomópontjának.
 
-1. Jelentkezzen be az átjárócsomóponthoz, amely helyi rendszergazdai engedélyekkel rendelkezik tartományi fiókkal.
+1. Jelentkezzen be egy tartományi fiókkal, amely helyi rendszergazdai engedélyekkel rendelkezik a fő csomópontot.
 
-2. A HPC Pack telepítési varázsló elindításához futtassa a Setup.exe a HPC Pack fájlokból.
+2. A HPC-csomag telepítése varázsló elindításához futtassa a Setup.exe a HPC Pack telepítési fájlokból.
 
-3. Az a **HPC Pack 2012 R2 telepítő** kattintson **új telepítés vagy az új szolgáltatások hozzáadása egy meglévő telepítéshez**.
+3. Az a **HPC Pack 2012 R2 telepítő** kattintson **új telepítést vagy új szolgáltatások hozzáadása egy meglévő telepítéshez**.
 
     ![HPC Pack 2012 telepítése][install_hpc1]
 
-4. Az a **Microsoft szoftver felhasználói oldal**, kattintson a **következő**.
+4. Az a **Microsoft szoftver felhasználói vonatkozó megállapodás lapján**, kattintson a **tovább**.
 
-5. Az a **telepítés típusának kiválasztása** kattintson **hozzon létre egy új HPC-fürtöt hozzon létre egy átjárócsomóponttal**, és kattintson a **következő**.
+5. Az a **telepítés típusának kiválasztása** kattintson **hozzon létre egy új HPC-fürt fő csomópontjának létrehozása**, és kattintson a **tovább**.
 
-6. A varázsló futtat több telepítés előtti vizsgálat. Kattintson a **következő** a a **telepítési szabályokat** lapon, ha az összes teszt sikeresen lezajlott. Ellenkező esetben tekintse át a megadott adatokat, és a szükséges módosításokat a környezetben. Majd futtassa újból a vizsgálatot, vagy szükség esetén a telepítési varázsló ismételt futtatása.
-7. Az a **HPC DB konfigurációs** lapon, győződjön meg arról, hogy **Átjárócsomópont** van kiválasztva a HPC-adatbázisok, és kattintson **következő**. 
+6. A varázsló a futtatása több telepítés előtti vizsgálat. Kattintson a **tovább** a a **telepítési szabályok** lapon, ha minden teszt sikeresen lezajlott. Ellenkező esetben tekintse át a megadott adatokat, és végezze el a szükséges módosításokat a környezetben. Majd futtassa újból a vizsgálatot, vagy szükség esetén a telepítési varázsló elindításához ismét.
+7. A a **HPC DB konfigurációs** lapon, győződjön meg arról, hogy **Átjárócsomópont** van kiválasztva a HPC-adatbázisok, és kattintson **tovább**. 
 
-    ![Adatbázis-konfiguráció][install_hpc4]
+    ![DB-konfigurációja][install_hpc4]
 
-8. Fogadja el az alapértelmezett beállításokat a varázsló többi lapja. Az a **szükséges összetevők telepítése** kattintson **telepítése**.
+8. Fogadja el a varázsló további lapjain az alapértelmezett beállításokat. Az a **szükséges összetevők telepítése** kattintson **telepítése**.
    
     ![Telepítés][install_hpc6]
 
@@ -74,202 +74,202 @@ Először telepítenie kell a Microsoft HPC Pack a helyszíni Windows Server ren
    
     ![Befejezés][install_hpc7]
 
-## <a name="prepare-the-azure-subscription"></a>Az Azure-előfizetés előkészítése
-Hajtsa végre a következő lépéseket a [Azure-portálon](https://portal.azure.com) Azure-előfizetéséhez. A lépések elvégzése után telepíthet a helyszíni átjárócsomópont az Azure csomópontokat. 
+## <a name="prepare-the-azure-subscription"></a>Készítse elő az Azure-előfizetés
+Hajtsa végre a következő lépéseket a [az Azure portal](https://portal.azure.com) az Azure-előfizetésében. Ezek a lépések elvégzése után telepítheti az Azure-csomópontok a helyszíni fő csomópontból. 
   
   > [!NOTE]
-  > Továbbá jegyezze fel a Azure-előfizetése Azonosítóját, ami később szüksége. Keresse meg a Azonosítóját **előfizetések** a portálon.
+  > Továbbá jegyezze fel az Azure-előfizetés azonosítója, amelyre később szüksége lesz. Az azonosító a található **előfizetések** a portálon.
   > 
 
 ### <a name="upload-the-default-management-certificate"></a>Az alapértelmezett felügyeleti tanúsítvány feltöltése
-HPC Pack egy önaláírt tanúsítványt telepít az átjárócsomóponthoz, az alapértelmezett Microsoft HPC Azure felügyeleti tanúsítványt feltöltheti az Azure felügyeleti tanúsítvány neve. Ez a tanúsítvány előírt tesztelési és a koncepció igazolása központi telepítésére, az átjárócsomópont és az Azure közötti kapcsolat biztonságos.
+HPC Pack egy önaláírt tanúsítványt az átjárócsomóponthoz, az alapértelmezett Microsoft HPC az Azure felügyeleti tanúsítványt, mint az Azure felügyeleti tanúsítványt is feltölthet nevű telepíti. Ez a tanúsítvány lett megadva tesztelési és proof-of-concept-központitelepítése biztonságossá tenni a kapcsolatot a fő csomópontot és az Azure között.
 
-1. Az átjárócsomópont a számítógépről, jelentkezzen be a [Azure-portálon](https://portal.azure.com).
+1. Az átjárócsomópont számítógépről, jelentkezzen be a [az Azure portal](https://portal.azure.com).
 
 2. Kattintson a **előfizetések** > *your_subscription_name*.
 
 3. Kattintson a **felügyeleti tanúsítványok** > **feltöltése**.
 
-4. Keresse meg a fájl C:\Program Files\Microsoft HPC Pack 2012\Bin\hpccert.cer a head csomóponton. Kattintson a **feltöltése**.
+4. Keresse meg a fájl C:\Program Files\Microsoft HPC Pack 2012\Bin\hpccert.cer a központi csomóponton. Kattintson a **feltöltése**.
 
    
-A **alapértelmezett HPC Azure felügyeleti** tanúsítvány megjelenik a felügyeleti tanúsítványok listájában.
+A **HPC Azure Management alapértelmezett** tanúsítvány megjelenik a felügyeleti tanúsítványok listája.
 
 ### <a name="create-an-azure-cloud-service"></a>Azure-felhőszolgáltatás létrehozása
 > [!NOTE]
-> A legjobb teljesítmény érdekében hozzon létre a felhőalapú szolgáltatáshoz és a storage-fiók (egy későbbi lépésben) ugyanabban a földrajzi régióban.
+> A legjobb teljesítmény érdekében hozzon létre a felhőszolgáltatás és a storage-fiók (a későbbiekben) ugyanabban a földrajzi régióban.
 > 
 > 
 
-1. Kattintson a portál **Felhőszolgáltatásokhoz (klasszikus)** > **+ Hozzáadás**.
+1. Kattintson a portál **Cloud services (klasszikus)** > **+ Hozzáadás**.
 
-2.  A szolgáltatás DNS-nevet, válasszon egy erőforráscsoportot és egy helyet, és kattintson **létrehozása**.
+2.  A szolgáltatás DNS-nevet, válassza ki az erőforráscsoportot és a egy olyan helyre, és kattintson **létrehozás**.
 
 
 ### <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
 1. Kattintson a portál **tárfiókok (klasszikus)** > **+ Hozzáadás**.
 
-2. Írja be a fiók nevét, majd válassza ki a **klasszikus** üzembe helyezési modellben.
+2. Adjon meg egy nevet a fiókhoz, és válassza ki a **klasszikus** üzemi modellt.
 
-3. Válasszon egy erőforráscsoportot és egy helyet, és egyéb beállításokat hagyja alapértelmezett értékeket. Ezt követően kattintson a **Create** (Létrehozás) gombra.
+3. Válasszon egy erőforráscsoportot és a egy olyan helyre, és az egyéb beállításokat hagyja alapértelmezett értéken. Ezt követően kattintson a **Create** (Létrehozás) gombra.
 
 ## <a name="configure-the-head-node"></a>Az átjárócsomópont konfigurálása
-Telepítse az Azure csomópontokat és feladatok elküldéséhez a HPC Cluster Manager, először hajtsa végre néhány szükséges konfigurációs lépéseket.
+Azure-csomópontok üzembe helyezéséhez és küldhetők be feladatok a HPC Cluster Manager használatához hajtsa végre néhány szükséges konfigurációs lépéseket.
 
-1. A head csomóponton indítsa el a HPC Cluster Manager. Ha a **Head csomópont kiválasztása** párbeszédpanel, kattintson a **helyi számítógép**. A **telepítési feladatlista** jelenik meg.
+1. A központi csomóponton indítsa el a HPC Cluster Manager. Ha a **válassza ki a fő csomópont** párbeszédpanel megjelenik, kattintson a **helyi számítógép**. A **telepítési feladatlista** jelenik meg.
 
 2. A **szükséges telepítési feladatok**, kattintson a **a hálózat konfigurálásához**.
    
     ![Hálózat konfigurálása][config_hpc2]
 
-3. Válassza ki a hálózat beállítása varázsló **minden csomópont csak a vállalati hálózaton** (topológia 5). A hálózati konfigurációt a legegyszerűbb bemutatási célokra.
+3. Válassza ki a hálózati konfigurációs varázslójában **csak egy vállalati hálózaton lévő összes csomópont** (topológia 5). A hálózati konfigurációt a legegyszerűbb bemutatási célokra.
    
-    ![5 topológia][config_hpc3]
+    ![Topológia 5][config_hpc3]
    
-4. Kattintson a **tovább** a varázsló fennmaradó oldalain alapértelmezett értékek elfogadásához. Ezt követően a **felülvizsgálati** lapra, majd **konfigurálása** a hálózati konfiguráció befejezéséhez.
+4. Kattintson a **tovább** gombra a varázsló további lapjain az alapértelmezett értékek elfogadásához. Ezután a a **felülvizsgálati** lapra, majd **konfigurálása** a hálózati konfiguráció befejezéséhez.
 
 5. Az a **telepítési feladatlista**, kattintson a **telepítési hitelesítő adatok**.
 
-6. Az a **telepítés hitelesítő adatainál** párbeszédpanelen írja be a HPC csomag telepítéséhez használt tartományi fiók hitelesítő adatait. Ezután kattintson az **OK** gombra. 
+6. Az a **telepítési hitelesítő adatok** párbeszédpanelen írja be a HPC Pack telepítéséhez használt tartományi fiók hitelesítő adatait. Ezután kattintson az **OK** gombra. 
    
     ![Telepítési hitelesítő adatok][config_hpc6]
    
 7. Az a **telepítési feladatlista**, kattintson a **konfigurálása az új csomópontok elnevezési**.
 
-8. Az a **csomópont adja meg az adatsorozat elnevezési** párbeszédpanel mezőben fogadja el az alapértelmezett névhasználati adatsorozat, és kattintson **OK**. E lépés elvégzése után, annak ellenére, hogy ebben az oktatóanyagban hozzá Azure-csomópontok automatikusan néven szerepelnek.
+8. A a **csomópont adja meg az adatsorozat elnevezési** párbeszédpanelen fogadja el az alapértelmezett névhasználati sorozat, és kattintson **OK**. E lépés elvégzése után, annak ellenére adja hozzá a ebben az oktatóanyagban az Azure-csomópontok automatikusan elnevezett.
    
     ![Csomópont elnevezése][config_hpc8]
    
-9. Az a **telepítési feladatlista**, kattintson a **csomópont-sablon létrehozása**. Az oktatóanyag későbbi részében, a csomópont sablon segítségével Azure-csomópontok hozzáadása a fürthöz.
+9. Az a **telepítési feladatlista**, kattintson a **egy csomópont-sablon létrehozása**. Az oktatóanyag későbbi részében, a csomópont sablon használatával Azure-csomópontok hozzáadása a fürthöz.
 
-10. A csomópont-sablon létrehozása varázsló tegye a következőket:
+10. A csomópont-sablon létrehozása varázslóban tegye a következőket:
     
-    a. Az a **csomópont-sablon típusának kiválasztása** kattintson **csomópontsablonhoz a Windows Azure**, és kattintson a **következő**.
+    a. Az a **csomópont sablon típusának kiválasztása** kattintson **Windows Azure-csomópont sablon**, és kattintson a **tovább**.
     
-    ![Csomópont sablon][config_hpc10]
+    ![Csomópont-sablon][config_hpc10]
     
-    b. Kattintson a **következő** fogadja el az alapértelmezett sablont.
+    b. Kattintson a **tovább** fogadja el az alapértelmezett sablont.
     
-    c. Az a **előfizetés adatainak megadása** lapján adja meg az Azure előfizetés-Azonosítóval (az Azure-fiók adatainak érhető el). Ezt követően a **felügyeleti tanúsítvány**, tallózással keresse meg **alapértelmezett Microsoft HPC Azure Management.** Ezután kattintson a **Next** (Tovább) gombra.
+    c. Az a **adja meg az előfizetési adatok** lap, adja meg az Azure-előfizetése Azonosítóját (az Azure-fiókjának adatait érhető el). Ezt követően a **felügyeleti tanúsítvány**, keresse meg **alapértelmezett Microsoft HPC Azure Management.** Ezután kattintson a **Next** (Tovább) gombra.
     
-    ![Csomópont sablon][config_hpc12]
+    ![Csomópont-sablon][config_hpc12]
     
-    d. Az a **szolgáltatás adatainak megadása** lapon, válassza ki a felhőszolgáltatás és a storage-fiók, amelyet az előző lépésben hozott létre. Ezután kattintson a **Next** (Tovább) gombra.
+    d. Az a **szolgáltatás adatainak megadása** lapra, jelölje be a felhőszolgáltatás és a storage-fiók, amely az előző lépésben létrehozott. Ezután kattintson a **Next** (Tovább) gombra.
     
-    ![Csomópont sablon][config_hpc13]
+    ![Csomópont-sablon][config_hpc13]
     
-    e. Kattintson a **tovább** a varázsló fennmaradó oldalain alapértelmezett értékek elfogadásához. Ezt követően a **felülvizsgálati** lapra, majd **létrehozása** csomópont-sablon létrehozásához.
+    e. Kattintson a **tovább** gombra a varázsló további lapjain az alapértelmezett értékek elfogadásához. Ezután a a **felülvizsgálati** lapra, majd **létrehozás** a csomópont-sablon létrehozásához.
     
     > [!NOTE]
-    > Alapértelmezés szerint az Azure csomópont sablon beállításait tartalmazza (kiépíteni) elindításához, és állítsa le manuálisan, a csomópontok HPC Cluster Manager használatával. Ütemezés szerint elindíthassák és az Azure-csomópontok automatikusan konfigurálhatja.
+    > Alapértelmezés szerint az Azure-csomópont sablon tartalmazza a beállításait, hogy indítsa el a (kiépíteni), és állítsa le manuálisan, a csomópontok HPC Cluster Manager segítségével. Igény szerint konfigurálható kezdődik és az Azure-csomópontok automatikusan, ütemezés szerint.
     > 
     > 
 
 ## <a name="add-azure-nodes-to-the-cluster"></a>Azure-csomópontok hozzáadása a fürthöz
-A csomópont sablon segítségével Azure-csomópontok hozzáadása a fürthöz. A csomópontok hozzáadása a fürt tárolja a konfigurációs adatokat, így (kiépíteni) megkezdheti a felhőalapú szolgáltatás bármikor őket. Az előfizetés csak lekérdezi többletfizetésre volna szükség Azure-csomópontok után a példányok futnak a felhőalapú szolgáltatáshoz.
+Most már a csomópont-sablon használatával Azure-csomópontok hozzáadása a fürthöz. A csomópontok felvétele a fürtbe tárolja a konfigurációs adatokat, így (kiépíteni) elindíthatja azokat a felhőben lévő tetszőleges időpontban. Az előfizetés csak lekérdezi alapján számítjuk fel az Azure-csomópontok után a példányokon futnak, a cloud service-ben.
 
-Kövesse az alábbi lépéseket, ha két kis fürtcsomópontokat szeretne hozzáadni.
+Kövesse az alábbi lépéseket két kis csomópontokat.
 
-1. A HPC-kezelőben kattintson **csomópont-felügyelet** (nevű **erőforrás-kezelés** HPC Pack aktuális verziói) > **csomópont hozzáadása**.
+1. Kattintson a HPC Cluster Manager **csomópont-felügyelet** (nevű **erőforrás-kezelés** HPC Pack aktuális verziója) > **csomópont hozzáadása**.
    
     ![Csomópont hozzáadása][add_node1]
 
-2. Csomópont hozzáadása varázsló a a **módszer kiválasztása** kattintson **hozzáadása Windows Azure-csomópontokra**, és kattintson a **következő**.
+2. Csomópont hozzáadása varázsló a a **üzembe helyezési módszer kiválasztása** kattintson **hozzáadása Windows Azure-csomópontok**, és kattintson a **tovább**.
    
-    ![Az Azure csomópont hozzáadása][add_node1_1]
+    ![Azure-csomópont hozzáadása][add_node1_1]
 
-3. Az a **adja meg az új csomópontok** lapon, válassza ki a korábban létrehozott Azure csomópont sablont (alapértelmezés szerint nevű **alapértelmezett AzureNode sablon**). Adja meg **2** méretű csomópontok **kis**, és kattintson a **következő**.
+3. Az a **adja meg az új csomópontok** lapon, válassza ki a korábban létrehozott Azure-csomópont sablon (alapértelmezés szerint nevű **alapértelmezett AzureNode sablon**). Adja meg **2** méretű csomópontok **kis**, és kattintson a **tovább**.
    
     ![Adja meg a csomópontok][add_node2]
    
 4. Az a **csomópont hozzáadása varázsló-Befejezés** kattintson **Befejezés**.
     
-     Két Azure-csomópontok, nevű **AzureCN-0001** és **AzureCN-0002**, mostantól a HPC Cluster Manager jelenik meg. A mindkettő a **nem telepített** állapotát.
+     Két Azure-csomópontok, nevű **AzureCN-0001** és **AzureCN-0002**, most már a HPC Cluster Manager jelennek meg. A mindkettő a **nem telepített** állapota.
    
-    ![Felvett csomópontjain][add_node3]
+    ![Hozzáadott csomópontokon][add_node3]
 
 ## <a name="start-the-azure-nodes"></a>Indítsa el az Azure-csomópontok
-Ha azt szeretné, a fürt erőforrásainak használatához az Azure-ban, használja a HPC Cluster Manager start (kiépíteni) az Azure-csomópontok és online állapotba kerüljön.
+Ha meg szeretné használni a fürt erőforrásainak az Azure-ban, használja a HPC Cluster Manager indítása (kiépíteni) az Azure-csomópontok és online állapotba helyezés.
 
-1. A HPC-kezelőben kattintson **csomópont-felügyelet** (nevű **erőforrás-kezelés** HPC Pack aktuális verziói), és válassza ki az Azure-csomópontok.
+1. A HPC-kezelőben kattintson **csomópont-felügyelet** (nevű **erőforrás-kezelés** HPC Pack jelenlegi verzióiban), és válassza ki az Azure-csomópontok.
 
 2. Kattintson a **Start**, és kattintson a **OK**.
    
-   ![Kiinduló csomópont][add_node4]
+   ![Indítsa el a csomópontok][add_node4]
    
-    Áttérés a csomópontok a **kiépítési** állapotát. Megtekintheti a telepítési naplót a kiépítési folyamat előrehaladását.
+    Áttérés a csomópontok a **kiépítési** állapota. Az üzembe helyezési folyamat nyomon kiépítési napló megtekintéséhez.
    
-    ![Kiépítés csomópontok][add_node6]
+    ![Csomópontok üzembe helyezése][add_node6]
 
-3. Néhány perc elteltével az Azure-csomópontok üzembe helyezése, és a **Offline** állapotát. Ebben az állapotban lévő szerepkör-példányok futnak, de még nem a fürt feladatok fogadására.
+3. Néhány perc elteltével az Azure-csomópontok üzembe helyezése és a rendszer a **Offline** állapota. Ebben az állapotban a szerepkör példányai futnak, de még nem tudja elfogadni a fürt feladatok.
 
-4. Győződjön meg arról, hogy a szerepkörpéldányok futnak, az Azure portálon kattintson a **Felhőszolgáltatások (klasszikus)** > *your_cloud_service_name*.
+4. Győződjön meg arról, hogy a szerepkör példányai futnak, az Azure Portalon kattintson a **Felhőszolgáltatások (klasszikus)** > *your_cloud_service_name*.
    
-   Két kell megjelennie **HpcWorkerRole** a szolgáltatásban futó példányok (csomópontok). HPC Pack is automatikusan telepíti a két **HpcProxy** példányok (közepes méretű), az átjárócsomópont és az Azure közötti kommunikáció kezelésére.
+   Két kell megjelennie **HpcWorkerRole** példányai (csomópontok) a szolgáltatásban. HPC Pack is automatikusan telepíti a két **HpcProxy** kezeli a fő csomópontot és Azure közötti kommunikáció-példányok (közepes méretű).
 
    ![Futó példányát tekintve][view_instances1]
 
-5. Ahhoz, hogy az Azure-csomópontok online fürtben feladatok futtatásához, válassza ki a csomópontot, kattintson a jobb gombbal, és végül **online állapotba hozás**.
+5. Ahhoz, hogy a fürt-feladatok futtatása az Azure-csomópontok online, válassza a csomópontot, kattintson a jobb gombbal, és kattintson **online állapotba hozás**.
    
-    ![Kapcsolat nélküli csomópontok][add_node7]
+    ![A kapcsolat nélküli csomópont][add_node7]
    
-    HPC Fürtkezelő azt jelzi, hogy a csomópontok a a **Online** állapotát.
+    HPC Cluster Manager, az azt jelzi, hogy a csomópontok vannak a **Online** állapota.
 
 ## <a name="run-a-command-across-the-cluster"></a>Futtassa a parancsot a fürtön
-A telepítés ellenőrzéséhez használja a HPC Pack **clusrun** parancsot kell futtatni egy parancsot vagy az alkalmazás egy vagy több fürtcsomóponton. Egyszerű példaként használható **clusrun** beolvasni az Azure-csomópontok IP-konfigurációja.
+A telepítés ellenőrzéséhez használja a HPC Pack **clusrun** parancs futtatása egy parancs vagy az alkalmazás egy vagy több fürtcsomóponton. Egyszerű példaként, használhatja **clusrun** IP-konfigurációja, az Azure-csomópontok eléréséhez.
 
-1. A head csomóponton nyisson meg egy parancssort rendszergazdaként.
+1. A fő csomópontot nyissa meg egy parancssort rendszergazdaként.
 
 2. Írja be a következő parancsot:
    
     `clusrun /nodes:azurecn* ipconfig`
 
-3. Ha a rendszer kéri, adja meg a fürt rendszergazdai jelszót. Meg kell jelennie a következőhöz hasonló parancs kimenetét.
+3. Ha a rendszer kéri, adja meg a fürt rendszergazdai jelszót. Parancs kimenete az alábbihoz hasonlóan kell megjelennie.
    
     ![Clusrun][clusrun1]
 
-## <a name="run-a-test-job"></a>Egy tesztelési feladat futtatása
-Most már a hibrid fürtön futó teszt feladat elküldése. Ebben a példában egy egyszerű paraméteres ismétlés feladat (belsőleg párhuzamos számítási típusú). Ebben a példában résztevékenység, vegyen fel egy egész számot maga segítségével futtatja a **/a beállítása** parancsot. A fürt összes csomópontjának hozzájárul az egész számok résztevékenység befejezési 1 és 100.
+## <a name="run-a-test-job"></a>Vizsgálati feladat futtatása
+Most küldje el egy teszt futó feladatot, a hibrid fürtön. Ebben a példában egy egyszerű paraméteres feladatot (a belsőleg párhuzamos számítási típus). Ebben a példában, amelyeket egy egész szám hozzáadása a saját maga segítségével futtatja a **/a beállítása** parancsot. A fürt összes csomópontja járul hozzá az egész számok altevékenységhez befejezése 1 és 100.
 
-1. A HPC-kezelőben kattintson **feladatkezelés** > **új paraméteres Sweep feladat**.
+1. Kattintson a HPC Cluster Manager **feladatkezelés** > **új paraméteres Szögtartomány feladat**.
    
     ![Új feladat][test_job1]
 
-2. Az a **új paraméteres Sweep feladat** párbeszédpanel **parancssori**, típus `set /a *+*` (felülírja az alapértelmezett parancssor, amely akkor jelenik meg). Hagyja meg a többi beállítást tartozó alapértelmezett értékeket, és kattintson **Submit** elküldeni a feladatot.
+2. Az a **új paraméteres Szögtartomány feladat** párbeszédpanel **parancssori**, típus `set /a *+*` (felülírják az alapértelmezett parancssor, amely akkor jelenik meg). Hagyja bejelölve az alapértelmezett értékeket a többi beállításnál, és kattintson **küldés** a feladat elküldéséhez.
    
     ![Paraméteres ismétlés][param_sweep1]
 
-3. Ha a feladat befejeződött, kattintson duplán a **saját Sweep feladat** feladat.
+3. Ha a feladat elkészült, kattintson duplán a **saját Szögtartomány feladat** feladat.
 
-4. Kattintson a **nézet feladatai**, majd kattintson egy részfeladatnál annak regisztrálása adott részfeladatnál annak regisztrálása számított eredményének megtekintéséhez.
+4. Kattintson a **nézet feladatai**, majd kattintson az egy adott alfeladat számított eredményének megtekintéséhez alfeladat.
    
-    ![A feladat eredménye][view_job361]
+    ![Feladat eredményei][view_job361]
 
-5. Melyik csomópontján elvégzi a számítást, hogy részfeladatnál annak regisztrálása megtekintéséhez kattintson **lefoglalt csomópontok**. (A fürt előfordulhat, hogy megjelenítése egy másik csomópont neve).
+5. Tekintse meg, hogy melyik csomópont adott alfeladat hajtottak végre a számítást, kattintson a **lefoglalt csomópontok**. (A fürt előfordulhat, hogy megjelenítése egy másik csomópont nevét).
    
-    ![A feladat eredménye][view_job362]
+    ![Feladat eredményei][view_job362]
 
 ## <a name="stop-the-azure-nodes"></a>Állítsa le az Azure-csomópontok
-Próbálja ki a fürtöt, az Azure-fiókjába felesleges költségek elkerülése érdekében csomópontok le. Ez a lépés leállítja a felhőszolgáltatást, és eltávolítja a Azure szerepkörpéldányokat.
+Próbálja ki a fürtöt, miután állítsa le a fiókjához a felesleges költségek elkerülése érdekében az Azure-csomópontok. Ebben a lépésben leállítja a felhőszolgáltatást, és eltávolítja az Azure szerepkör példányai.
 
 1. A HPC Cluster Manager, a **csomópont-felügyelet** (nevű **erőforrás-kezelés** HPC Pack korábbi verzióiban), válassza ki mindkét Azure-csomópontok. Kattintson a **leállítása**.
    
     ![Csomópont leállítása][stop_node1]
 
-2. Az a **állítsa le a Windows Azure-csomópontokra** párbeszédpanel, kattintson a **leállítása**. 
+2. Az a **állítsa le a Windows Azure-csomópontok** párbeszédpanelen kattintson a **leállítása**. 
    
-3. Áttérés a csomópontok a **leállítása** állapotát. Néhány perc elteltével HPC Cluster Manager azt mutatja, hogy a csomópontok **nem telepített**.
+3. Áttérés a csomópontok a **leállítása** állapota. Néhány perc múlva HPC Cluster Manager azt mutatja, hogy a csomópontok **nem telepített**.
    
     ![Nem telepített csomópontok][stop_node4]
 
-4. Győződjön meg róla, hogy a szerepkörpéldányok már nem fut, az Azure-ban az Azure portálon kattintson a **Felhőszolgáltatásokhoz (klasszikus)** > *your_cloud_service_name*. Nincs példány az éles környezetben vannak telepítve. 
+4. Győződjön meg róla, hogy a szerepkörpéldányok már nem fut az Azure-ban, az Azure Portalon kattintson a **Cloud services (klasszikus)** > *your_cloud_service_name*. Az éles környezetben telepített példány sem. 
    
     Ezzel befejezte az oktatóanyag.
 
-## <a name="next-steps"></a>Következő lépések
-* Megismerkedhet a dokumentációja [HPC Pack](https://technet.microsoft.com/library/cc514029).
-* HPC Pack fürttelepítés nagyobb léptékű hibrid beállításához tekintse meg a [Azure feldolgozói szerepkör példányokhoz Microsoft HPC Pack kapacitásnövelés](http://go.microsoft.com/fwlink/p/?LinkID=200493).
-* Egyéb módon hozhat létre a HPC Pack-fürtöt az Azure-ban, beleértve az Azure Resource Manager-sablonokkal, lásd: [HPC-fürt beállítások Microsoft HPC Pack az Azure-ban](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+## <a name="next-steps"></a>További lépések
+* Fedezze fel a dokumentációban [HPC Pack](https://technet.microsoft.com/library/cc514029).
+* Hibrid HPC Pack fürtök üzembe helyezése nagyobb léptékű beállításával kapcsolatban lásd: [a csúcsterhelések átirányítása az Azure feldolgozói szerepkör példányai a Microsoft HPC Packkel](https://go.microsoft.com/fwlink/p/?LinkID=200493).
+* HPC Pack-fürt létrehozása az Azure egyéb módjai, beleértve az Azure Resource Manager-sablonok használatával lásd: [a Microsoft HPC Packkal Azure-beli HPC fürtbeállítások](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 
 [Overview]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/hybrid_cluster_overview.png

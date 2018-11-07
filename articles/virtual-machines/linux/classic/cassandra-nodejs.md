@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 3066da9a492fc12dd8b333a089b8aabbbb647414
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 3f7b216be79be1307a5668d6686fd73a27ae5574
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421356"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237859"
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Cassandra-fürt futtatásához az Azure-ban Node.js linuxon
 
@@ -49,7 +49,7 @@ Cassandra telepíthető egy adott Azure-régióban, vagy több régióban a szá
 ### <a name="single-region-deployment"></a>Egyetlen régióban történő üzembe helyezés
 Most egy egyetlen régióban történő üzembe helyezés kezdődhet, és gyűjtsön a tapasztalatainkat többrégiós modell létrehozásához. Az Azure virtuális hálózatok segítségével elkülönített alhálózatok létrehozására, hogy a fent említett hálózati biztonsági követelmények is kielégíthetők.  Az egyetlen régióban történő üzembe helyezés létrehozása ismertetett folyamatot Ubuntu 14.04 LTS és a Cassandra 2.08 használja. Azonban a folyamat is könnyen elfogadni Linux variantní hodnoty. Az alábbiakban néhány szisztematikus módszert, az egyetlen régióban történő üzembe helyezés.  
 
-**Magas rendelkezésre állás:** a Cassandra-csomópontokat az 1. ábráján látható két rendelkezésre állási csoportot telepített, hogy a csomópontokon futó magas rendelkezésre állás érdekében több tartalék tartomány között. Az egyes rendelkezésre állási feliratozva virtuális gépek 2 hibatűrési tartományt van leképezve. Az Azure a tartalék tartomány fogalmát kezelheti a nem tervezett leállás (például a hardver- vagy hibák) használja. A frissítési tartomány (például gazdagép vagy vendég operációs rendszer javítási/frissítése, alkalmazásfrissítések) fogalmát ütemezett üzemszünet kezelésére szolgál. Lásd: [vészhelyreállítás és magas rendelkezésre állás az Azure-alkalmazások](http://msdn.microsoft.com/library/dn251004.aspx) a szerepkör a hibatűrési és frissítési tartományok magas rendelkezésre állás eléréséhez.
+**Magas rendelkezésre állás:** a Cassandra-csomópontokat az 1. ábráján látható két rendelkezésre állási csoportot telepített, hogy a csomópontokon futó magas rendelkezésre állás érdekében több tartalék tartomány között. Az egyes rendelkezésre állási feliratozva virtuális gépek 2 hibatűrési tartományt van leképezve. Az Azure a tartalék tartomány fogalmát kezelheti a nem tervezett leállás (például a hardver- vagy hibák) használja. A frissítési tartomány (például gazdagép vagy vendég operációs rendszer javítási/frissítése, alkalmazásfrissítések) fogalmát ütemezett üzemszünet kezelésére szolgál. Lásd: [vészhelyreállítás és magas rendelkezésre állás az Azure-alkalmazások](https://msdn.microsoft.com/library/dn251004.aspx) a szerepkör a hibatűrési és frissítési tartományok magas rendelkezésre állás eléréséhez.
 
 ![Egyetlen régióban történő üzembe helyezés](./media/cassandra-nodejs/cassandra-linux1.png)
 

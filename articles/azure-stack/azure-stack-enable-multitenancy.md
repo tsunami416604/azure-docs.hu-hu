@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 11/6/2018
 ms.author: patricka
-ms.openlocfilehash: a1c516ebbeb33d2aa92f6a0e3031a2b2d9fb4e9c
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.reviewer: bryanr
+ms.openlocfilehash: fbf62e53ffe3fc3540086137955417bec56e7825
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026160"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240171"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Több-bérlős az Azure Stackben
 
@@ -26,9 +27,9 @@ ms.locfileid: "50026160"
 
 Konfigurálhatja az Azure Stack-szolgáltatások használatára az Azure Stackben több Azure Active Directory (Azure AD) bérlő felhasználók támogatására. Vegyük példaként az alábbi forgatókönyvet:
 
- - A szolgáltatás-rendszergazda contoso.onmicrosoft.com, Ön, amelyen telepítve van-e az Azure Stack.
- - Mary a címtár rendszergazdájának fabrikam.onmicrosoft.com, hol találhatók vendégfelhasználók. 
- - Mária vállalati IaaS és PaaS-szolgáltatások fogadja a cégtől, és van szüksége, hogy a felhasználók a Vendég könyvtárból (fabrikam.onmicrosoft.com) jelentkezik be, és a contoso.onmicrosoft.com Azure Stack-erőforrások használata.
+- Most már a szolgáltatás-rendszergazda contoso.onmicrosoft.com, amelyen telepítve van-e az Azure Stack.
+- Mary a címtár rendszergazdájának fabrikam.onmicrosoft.com, hol találhatók vendégfelhasználók.
+- Mária vállalati IaaS és PaaS-szolgáltatások fogadja a cégtől, és van szüksége, hogy a felhasználók a Vendég könyvtárból (fabrikam.onmicrosoft.com) jelentkezik be, és a contoso.onmicrosoft.com Azure Stack-erőforrások használata.
 
 Ez az Útmutató lépéseit, ebben az esetben a környezetében történő konfigurálásához szükséges több-bérlős az Azure Stackben. Ebben a forgatókönyvben, és Mary kell befejezéséhez jelentkezzen be, és az Azure Stack üzembe helyezés a Contoso szolgáltatásait igénybe a Fabrikam felhasználók engedélyezésének lépései.  
 
@@ -50,6 +51,8 @@ Van néhány előfeltételeket, hogy figyelembe vegye az Azure Stackben több-b�
 Ebben a szakaszban az Azure Stack bejelentkezések engedélyezéséhez a Fabrikam az Azure Active directory-bérlők fog konfigurálni.
 
 Előkészítése az Azure Stackhez az Azure Resource Manager egyszerű szolgáltatások a Vendég directory-bérlőhöz, és fogadja el a felhasználók konfigurálásával vendég Címtárbérlőben (Fabrikam).
+
+A contoso.onmicrosoft.com szolgáltatás-rendszergazda futtatja a következő parancsokat.
 
 ````PowerShell  
 ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
@@ -76,11 +79,11 @@ Register-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint
 
 ### <a name="configure-guest-directory"></a>Vendég címtár konfigurálása
 
-Miután végrehajtotta a lépéseket az Azure Stack a címtárban, Mary kell hozzájárulási biztosíthat az Azure Stack fér hozzá a vendégcímtár és regisztrálja az Azure Stack a vendégcímtár. 
+Egyszer az Azure Stack rendszergazdai / operátor engedélyezte a Fabrikam könyvtár használható az Azure Stack, Mary regisztrálnia kell az Azure Stack, a Fabrikam repülőmotorjai directory bérlővel.
 
 #### <a name="registering-azure-stack-with-the-guest-directory"></a>Azure Stack Regisztrálás a Vendég-könyvtár
 
-Miután a Vendég directory rendszergazda adta az Azure Stack a Fabrikam repülőmotorjai könyvtár, Mary Azure Stack kell regisztrálja a Fabrikam repülőmotorjai directory-bérlő.
+Mary Fabrikam Directory rendszergazdájának az alábbi parancsokat a Vendég directory fabrikam.onmicrosoft.com futtatható.
 
 ````PowerShell
 ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.
@@ -99,14 +102,14 @@ Register-AzSWithMyDirectoryTenant `
 > Ha az Azure Stack rendszergazdai a jövőben telepít új szolgáltatások vagy frissítések, szükség lehet futtassa ismét ezt a szkriptet.
 >
 > Ez a szkript futtatása újra bármikor ellenőrizheti az állapotot az Azure Stack-alkalmazások a címtárban.
-> 
+>
 > Ha új virtuális gépek létrehozása a Managed Disks (a 1808 frissítés jelent meg), a problémák megfigyelte **lemez erőforrás-szolgáltató** lett hozzáadva, igénylő futtassa újra ezt a szkriptet.
 
 ### <a name="direct-users-to-sign-in"></a>Jelentkezzen be a közvetlen felhasználók
 
 Most, hogy Ön és Mary végrehajtotta a előkészítése Mary könyvtárba, Mary irányíthatók a Fabrikam felhasználók jelentkezhetnek be.  Fabrikam felhasználók (vagyis a fabrikam.onmicrosoft.com utótagjával rendelkező felhasználók) jelentkezzen be funkcionáló https://portal.local.azurestack.external.  
 
-Mary átirányítja bármely [külső rendszerbiztonsági tag](../role-based-access-control/rbac-and-directory-admin-roles.md) a Fabrikam könyvtárban (azt jelenti, anélkül, hogy a fabrikam.onmicrosoft.com utótagja a Fabrikam címtárban felhasználó), jelentkezzen be a https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.  Ha nem használják az URL-cím, az alapértelmezett könyvtára (Fabrikam) küldött, és egy hibaüzenetet, amely szerint a rendszergazda nem egyezett bele.
+Mary átirányítja bármely [külső rendszerbiztonsági tag](../role-based-access-control/rbac-and-directory-admin-roles.md) a Fabrikam könyvtárban (azt jelenti, anélkül, hogy a fabrikam.onmicrosoft.com utótagja a Fabrikam címtárban felhasználó), jelentkezzen be a https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.  Ha az URL-cím nem használnak, a rendszer az alapértelmezett könyvtára (Fabrikam), és egy hibaüzenetet, amely szerint a rendszergazda nem egyezett bele.
 
 ## <a name="disable-multi-tenancy"></a>Több-bérlős letiltása
 

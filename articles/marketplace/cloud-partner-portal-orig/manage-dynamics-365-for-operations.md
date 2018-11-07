@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: f2e0c7b335b09a0d2b8b8399e807a354ec8e4282
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 41f3fd55be02364b4028642db9db1d3f47043afa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809794"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245086"
 ---
 # <a name="how-to-create-dynamics-365-for-operations-offer-via-cloud-partner-portal"></a>Létrehozása a Dynamics 365 for Operations ajánlat Cloud Partner Portalon keresztül
 
 Közzétételi portál a portálon, így több személyek számára, hogy azokra az ajánlat közzétételi dolgozhatnak együtt szerepköralapú hozzáférést biztosít. Lásd: [felhőalapú portál Felhasználók kezelése](./cloud-partner-portal-manage-users.md) további információ.
 
-Mielőtt ajánlat nevében a közzétevő tehetők közzé fiókra, egyéni felhasználók számára az egyik \"tulajdonosa\" szerepkör szükséges ahhoz, hogy elfogadja a [használati feltételek](https://azure.microsoft.com/support/legal/website-terms-of-use/), [Microsoft adatvédelmi nyilatkozatát](http://www.microsoft.com/privacystatement/default.aspx), és [Microsoft Azure Certified Program szerződése](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
+Mielőtt ajánlat nevében a közzétevő tehetők közzé fiókra, egyéni felhasználók számára az egyik \"tulajdonosa\" szerepkör szükséges ahhoz, hogy elfogadja a [használati feltételek](https://azure.microsoft.com/support/legal/website-terms-of-use/), [Microsoft adatvédelmi nyilatkozatát](https://www.microsoft.com/privacystatement/default.aspx), és [Microsoft Azure Certified Program szerződése](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
 
 ## <a name="how-to-create-a-new-dynamics-365-for-operations-offer"></a>Hogyan hozhat létre egy új Dynamics 365 for Operations ajánlat
 
@@ -108,7 +108,7 @@ Először is az ajánlat részletei.
 
 ### <a name="listing-details"></a>Lista részletei
 
-![Storefront részletek képernyő](./media/publish_d365_new_offer/storefront_details.png)
+![kirakat részletek képernyő](./media/publish_d365_new_offer/storefront_details.png)
 
 1. **Iparág** – ellenőrizze a megadott lehetőségek közül két iparágak legfeljebb.
 2. **Kategóriák** – ellenőrizze a maximális száma az adott közül három kategóriába.

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 554c575f338ebaa415ed21be8dc8b27eb79c3c0c
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: fea0a0dfd2e138fa4f33f4f489be74f5038b4ca6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634404"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244525"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Gépek előkészítése kezelésre, az Azure Automation állapot konfigurációja
 
@@ -150,9 +150,9 @@ Könnyen előkészítheti az Amazon Web Services a virtuális gépeket konfigur�
 
 A helyi Windows-számítógépek és Windows-gépek az-Azure felhőket (például az Amazon Web Services) is lehet előkészítve az Azure Automation-konfiguráló szolgáltatása, mindaddig, amíg az interneten keresztül néhány egyszerű lépéssel kimenő hozzáféréssel rendelkeznek:
 
-1. Ellenőrizze, hogy a legújabb [a WMF 5](http://aka.ms/wmf5latest) telepítve van az Azure Automation Állapotkonfiguráció a bevezetni kívánt számítógépeken.
+1. Ellenőrizze, hogy a legújabb [a WMF 5](https://aka.ms/wmf5latest) telepítve van az Azure Automation Állapotkonfiguráció a bevezetni kívánt számítógépeken.
 1. Kövesse az alábbi szakasz utasításait [ **létrehozása DSC metaconfigurations** ](#generating-dsc-metaconfigurations) egy mappát, amely tartalmazza a szükséges DSC metaconfigurations létrehozásához.
-1. A PowerShell DSC metaconfiguration távolról vonatkoznak az előkészíteni kívánt számítógépeken. **Ez a parancs fut a gépen rendelkeznie kell a legújabb [a WMF 5](http://aka.ms/wmf5latest) telepített**:
+1. A PowerShell DSC metaconfiguration távolról vonatkoznak az előkészíteni kívánt számítógépeken. **Ez a parancs fut a gépen rendelkeznie kell a legújabb [a WMF 5](https://aka.ms/wmf5latest) telepített**:
 
    ```powershell
    Set-DscLocalConfigurationManager -Path C:\Users\joe\Desktop\DscMetaConfigs -ComputerName MyServer1, MyServer2
@@ -190,7 +190,7 @@ Helyszíni Linuxos gépek, Linux rendszerű gépek az Azure-ban, és nem Azure-f
     Set-DscLocalConfigurationManager -CimSession $Session -Path C:\Users\joe\Desktop\DscMetaConfigs
     ```
 
-Ez a parancs fut a gépen rendelkeznie kell a legújabb [a WMF 5](http://aka.ms/wmf5latest) telepítve.
+Ez a parancs fut a gépen rendelkeznie kell a legújabb [a WMF 5](https://aka.ms/wmf5latest) telepítve.
 
 1. Ha a PowerShell DSC metaconfigurations távolról, nem vonatkozik minden egyes Linux rendszerű gép felvétele, másolja az 5. lépésében a Linux-gép az alakzatot a mappából, hogy a gép megfelelő metaconfiguration. Ezután hívja meg `SetDscLocalConfigurationManager.py` helyileg az összes olyan Linux-számítógépen a bevezetni kívánt az Azure Automation Állapotkonfiguráció:
 
@@ -207,7 +207,7 @@ Hogy általános védelemmel lát bármelyik a gép az Azure Automation-konfigur
 
 ### <a name="using-a-dsc-configuration"></a>A DSC-konfiguráció használata
 
-1. Nyissa meg a VSCode (vagy a kedvenc szerkesztőjében) a helyi környezetben gépen rendszergazdaként. A gép rendelkeznie kell a legújabb [a WMF 5](http://aka.ms/wmf5latest) telepítve.
+1. Nyissa meg a VSCode (vagy a kedvenc szerkesztőjében) a helyi környezetben gépen rendszergazdaként. A gép rendelkeznie kell a legújabb [a WMF 5](https://aka.ms/wmf5latest) telepítve.
 1. Másolja a következő szkriptet helyileg. Ez a szkript tartalmazza a PowerShell DSC konfigurációs metaconfigurations és a egy parancsot a metaconfiguration létrehozása indíthat létrehozásakor.
 
 > [!NOTE]

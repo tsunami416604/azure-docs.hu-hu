@@ -8,12 +8,12 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
-ms.openlocfilehash: ae5334dcb93e34569131ab51dca99c310831082d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6a73ef058a76152678099eca3f1bd15590b0b03d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43052087"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238794"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Futtatása és tesztelése a U-SQL az Azure Data Lake U-SQL SDK-val
 
@@ -36,7 +36,7 @@ A Data Lake U-SQL SDK-t igényel a következő függőségeket:
 
     ![A Data Lake Tools for Visual Studio helyi futtatású Windows 10 SDK](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
-    - Telepítés [Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs). Az előre összeállított Visual C++ és a Windows SDK-fájlok: C:\Program Files (x86) \Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK találja. Ebben az esetben a U-SQL helyi fordító nem található a függőségek automatikusan. Adja meg a hozzá tartozó CppSDK elérési kell. A fájlok másolása egy másik helyre, vagy használja a jelenlegi állapotában.
+    - Telepítés [Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs). Az előre összeállított Visual C++ és a Windows SDK-fájlok: C:\Program Files (x86) \Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK találja. Ebben az esetben a U-SQL helyi fordító nem található a függőségek automatikusan. Adja meg a hozzá tartozó CppSDK elérési kell. A fájlok másolása egy másik helyre, vagy használja a jelenlegi állapotában.
 
 ## <a name="understand-basic-concepts"></a>Alapvető fogalmak megismerése
 

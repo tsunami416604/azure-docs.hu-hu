@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: c5a18a2e8d58553e49797da418f76fc3f251e003
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 21b5050996428328bfda314b2f2242ed2a766e74
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026041"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239763"
 ---
 # <a name="azure-redis-cache-faq"></a>Azure Redis Cache – Gyakori kérdések
 Ismerje meg a válaszok a gyakori kérdésekre, minták és ajánlott eljárások az Azure Redis Cache-gyorsítótárhoz.
@@ -250,7 +250,7 @@ A webhelyen felsorolt parancsok bármelyikét használhatja [Redis parancsok](ht
 * `redis-cli -h <redis cache name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> A Redis parancssori eszközök sem működik együtt az SSL-port, de egy segédprogramot használhatja például `stunnel` való biztonságos csatlakozáshoz az eszközök az SSL-port utasításait követve a [bejelentése ASP.NET munkamenetállapot-szolgáltatóját Redis előzetes verzió Kiadási](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) blogbejegyzést.
+> A Redis parancssori eszközök sem működik együtt az SSL-port, de egy segédprogramot használhatja például `stunnel` való biztonságos csatlakozáshoz az eszközök az SSL-port utasításait követve a [bejelentése ASP.NET munkamenetállapot-szolgáltatóját Redis előzetes verzió Kiadási](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) blogbejegyzést.
 >
 >
 
@@ -295,7 +295,7 @@ Redis Cache kiszolgáló nem támogatja natív módon az SSL, de az Azure Redis 
 >
 >
 
-Eszközök például a redis `redis-cli` sem működik együtt az SSL-port, de egy segédprogramot használhatja például `stunnel` való biztonságos csatlakozáshoz az eszközök az SSL-port utasításait követve a [bejelentése ASP.NET munkamenetállapot-szolgáltatóját a Redis Előzetes verziójának](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) blogbejegyzést.
+Eszközök például a redis `redis-cli` sem működik együtt az SSL-port, de egy segédprogramot használhatja például `stunnel` való biztonságos csatlakozáshoz az eszközök az SSL-port utasításait követve a [bejelentése ASP.NET munkamenetállapot-szolgáltatóját a Redis Előzetes verziójának](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) blogbejegyzést.
 
 A Redis-eszközök letöltésével kapcsolatos utasításokért lásd: a [hogyan futtathatok Redis parancsok?](#cache-commands) szakaszban.
 

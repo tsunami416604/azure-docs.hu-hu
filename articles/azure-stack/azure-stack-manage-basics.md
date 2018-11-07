@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 37b8eff2d4ed89c90f1fa6f128673ed5bacaaa90
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 5d3073c3ed499ecdb20243e6db2b217aec3e1448
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339950"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254519"
 ---
 # <a name="azure-stack-administration-basics"></a>Az Azure Stack az Adminisztráció alapjai
 Több szempontot, ha most ismerkedik az Azure Stack felügyeleti ismernie kell. Ez az útmutató az Azure Stack operátorait szerint a szerepkör áttekintése és kell, hogy a felhasználók a számukra a gyors elindulásban biztosít.
@@ -81,7 +81,7 @@ Van néhány fiókokkal kapcsolatos megfontolások érdemes figyelembe vennie, a
  
 Használhatja a [adminisztrátori portál](azure-stack-manage-portals.md) vagy a PowerShell használatával kezelheti az Azure Stack. Ismerje meg, az alapvető fogalmait a legegyszerűbben a portálon keresztül van. Ha azt szeretné, ha a PowerShell segítségével, nincsenek előkészítési lépéseket. Meg kell [telepítése](azure-stack-powershell-install.md) PowerShell [letöltése](azure-stack-powershell-download.md) további modulok és [konfigurálása](azure-stack-powershell-configure-admin.md) PowerShell.
 
-Az Azure Stack Azure Resource Managert használja az alapul szolgáló telepítés, a felügyeleti és a szervezet mechanizmusként. Megkönnyíti a felhasználók támogatása az Azure Stack kezelését és fog, ha azt a Resource Manager kell ismerteti. Tekintse meg a [első lépései az Azure Resource Manager](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf) tanulmány.
+Az Azure Stack Azure Resource Managert használja az alapul szolgáló telepítés, a felügyeleti és a szervezet mechanizmusként. Megkönnyíti a felhasználók támogatása az Azure Stack kezelését és fog, ha azt a Resource Manager kell ismerteti. Tekintse meg a [első lépései az Azure Resource Manager](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf) tanulmány.
 
 ## <a name="your-typical-responsibilities"></a>A tipikus feladatkörei
 

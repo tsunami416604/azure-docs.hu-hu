@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
 ms.component: common
-ms.openlocfilehash: 91eb9c12a8913c0a96ee7c3133dc5f982c42cad7
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 25de4f28d7516f5c7830b24e4c999ceb855a7759
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025304"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242976"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>A párhuzamosság kezelése a Microsoft Azure Storage szolgáltatásban
 ## <a name="overview"></a>Áttekintés
@@ -45,7 +45,7 @@ Ez a folyamat röviden ismerteti a következőképpen történik:
 4. Ha a jelenlegi ETag-érték a BLOB nem található ETag címkével eltérő verzióval a **If-Match** feltételes fejléc a kérelemben, a szolgáltatás egy 412 hibát ad vissza az ügyfélnek. Ez azt jelzi, hogy az ügyfél számára, hogy egy másik folyamat frissítette a blob, mivel az ügyfél a lekérdezés.
 5. Ha a jelenlegi ETag-érték a BLOB nem található ETag címkével verzióval azonos verziójúnak a **If-Match** feltételes fejléc a kérelemben, a szolgáltatás elvégzi a kért műveletet, és frissíti az aktuális, megjelenítéséhez a rendszer létrehozta a BLOB ETag-érték egy új verziója.  
 
-Az alábbi C# (a Storage Ügyfélkódtár használatával 4.2.0) látható egy egyszerű példa bemutatja, hogyan hozhat létre egy **If-Match AccessCondition** , amely egy blobot, amely korábban vagy tulajdonságait szeretné elérni, az ETag-érték alapján beolvasott vagy beszúrni. Ezután a **AccessCondition** objektumot, amikor frissíti a blob: a **AccessCondition** objektumot ad hozzá a **If-Match** fejlécet a kérelemhez. Egy másik folyamat frissítette a blobot, ha a blobszolgáltatás egy HTTP 412 (előfeltétel nem teljesült) állapotüzenetet adja vissza. Letöltheti a teljes minta: [az Azure Storage felügyelete egyidejűségi](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).  
+Az alábbi C# (a Storage Ügyfélkódtár használatával 4.2.0) látható egy egyszerű példa bemutatja, hogyan hozhat létre egy **If-Match AccessCondition** , amely egy blobot, amely korábban vagy tulajdonságait szeretné elérni, az ETag-érték alapján beolvasott vagy beszúrni. Ezután a **AccessCondition** objektumot, amikor frissíti a blob: a **AccessCondition** objektumot ad hozzá a **If-Match** fejlécet a kérelemhez. Egy másik folyamat frissítette a blobot, ha a blobszolgáltatás egy HTTP 412 (előfeltétel nem teljesült) állapotüzenetet adja vissza. Letöltheti a teljes minta: [az Azure Storage felügyelete egyidejűségi](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).  
 
 ```csharp
 // Retrieve the ETag from the newly created blob
@@ -80,7 +80,7 @@ catch (StorageException ex)
 }  
 ```
 
-A Storage szolgáltatás támogatását is magában foglalja a feltételes további fejlécek például **If-módosítás-óta**, **If-társítandó-óta** és **If-None-Match** , valamint ezek kombinációi. További információkért lásd: [feltételes fejlécek megadásával a Blob szolgáltatási műveletek](http://msdn.microsoft.com/library/azure/dd179371.aspx) az MSDN Webhelyén.  
+A Storage szolgáltatás támogatását is magában foglalja a feltételes további fejlécek például **If-módosítás-óta**, **If-társítandó-óta** és **If-None-Match** , valamint ezek kombinációi. További információkért lásd: [feltételes fejlécek megadásával a Blob szolgáltatási műveletek](https://msdn.microsoft.com/library/azure/dd179371.aspx) az MSDN Webhelyén.  
 
 A következő táblázat összefoglalja a tárolóművelet, mint például a feltételes fejlécek elfogadó **If-Match** a kérelmet, amely a válaszban ETag értéket adnak vissza.  
 
@@ -122,11 +122,11 @@ A következő táblázat összefoglalja a blob-műveletek, például feltételes
 (*) Címbérleti Blobhoz nem módosítja az ETag egy BLOB.  
 
 ### <a name="pessimistic-concurrency-for-blobs"></a>A pesszimista egyidejűségi blobok
-Kizárólagos használatra blob zárolásához, szerezzen be egy [bérleti](http://msdn.microsoft.com/library/azure/ee691972.aspx) rajta. Amikor bérletet, megadhatja, hogy mennyi ideig kell a bérletet: Ez lehet 15 – 60 másodpercet vagy végtelen, amely kizárólagos zárolást szolgál. Megújítható a kiterjesztéshez véges bérletét, és semmilyen címbérlet fel lehet szabadítani, ha végzett vele. A blob szolgáltatás automatikusan felszabadítja véges bérletek a lejárat után.  
+Kizárólagos használatra blob zárolásához, szerezzen be egy [bérleti](https://msdn.microsoft.com/library/azure/ee691972.aspx) rajta. Amikor bérletet, megadhatja, hogy mennyi ideig kell a bérletet: Ez lehet 15 – 60 másodpercet vagy végtelen, amely kizárólagos zárolást szolgál. Megújítható a kiterjesztéshez véges bérletét, és semmilyen címbérlet fel lehet szabadítani, ha végzett vele. A blob szolgáltatás automatikusan felszabadítja véges bérletek a lejárat után.  
 
 A bérletek engedélyezése különböző szinkronizálási stratégiák is támogatja, beleértve az exkluzív írási / olvasási, exkluzív írási megosztott / kizárólagos olvasási és írási megosztott / kizárólagos olvasási. Ahol a bérlet létezik a storage szolgáltatás érvényesíti exkluzív írási műveletek (put, beállítása és törlési műveletek) azonban biztosító kizárólagosságot az olvasási műveletek igényel a fejlesztő győződjön meg arról, hogy minden ügyfél alkalmazást használja a bérlet Azonosítóját, és egyszerre csak egy ügyfél rendelkezik egy érvényes a bérlet azonosítóját. Olvassa el, ne foglalja bele a bérlet azonosítója eredmény megosztott olvasási műveleteket.  
 
-Az alábbi C#-kódrészlet egy kizárólagos bérlet beszerzése egy BLOB 30 másodpercig, a blob tartalmának frissítése és majd a bérlet feloldása egy példát mutat be. Már van egy érvényes bérletet a blob új bérletet meg, ha a blobszolgáltatás egy "HTTP (409) ütközés" állapot eredményt adja vissza. A következő kódrészlet egy **AccessCondition** objektum magába foglalja a címbérleti információkat, amikor azt egy kérelmet a blob, a storage szolgáltatás frissítéséhez.  Letöltheti a teljes minta: [az Azure Storage felügyelete egyidejűségi](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
+Az alábbi C#-kódrészlet egy kizárólagos bérlet beszerzése egy BLOB 30 másodpercig, a blob tartalmának frissítése és majd a bérlet feloldása egy példát mutat be. Már van egy érvényes bérletet a blob új bérletet meg, ha a blobszolgáltatás egy "HTTP (409) ütközés" állapot eredményt adja vissza. A következő kódrészlet egy **AccessCondition** objektum magába foglalja a címbérleti információkat, amikor azt egy kérelmet a blob, a storage szolgáltatás frissítéséhez.  Letöltheti a teljes minta: [az Azure Storage felügyelete egyidejűségi](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
 ```csharp
 // Acquire lease for 15 seconds
@@ -155,7 +155,7 @@ catch (StorageException ex)
 }  
 ```
 
-A bérelt blob írási művelet a bérlet Azonosítóját át nem kísérli meg, ha a kérelem sikertelen, és a 412. Vegye figyelembe, hogy ha a bérlet meghívása előtt lejár a **UploadText** módszer, de továbbra is át a bérlet Azonosítóját, a kérelem is sikertelen, az egy **412** hiba. Címbérlet lejárati idő és a bérlet azonosítóját kezelésével kapcsolatos további információkért lásd: a [címbérleti Blobhoz](http://msdn.microsoft.com/library/azure/ee691972.aspx) REST-dokumentációnkhoz.  
+A bérelt blob írási művelet a bérlet Azonosítóját át nem kísérli meg, ha a kérelem sikertelen, és a 412. Vegye figyelembe, hogy ha a bérlet meghívása előtt lejár a **UploadText** módszer, de továbbra is át a bérlet Azonosítóját, a kérelem is sikertelen, az egy **412** hiba. Címbérlet lejárati idő és a bérlet azonosítóját kezelésével kapcsolatos további információkért lásd: a [címbérleti Blobhoz](https://msdn.microsoft.com/library/azure/ee691972.aspx) REST-dokumentációnkhoz.  
 
 A következő blob műveletek bérletek használatával pesszimista egyidejűség kezelése:  
 
@@ -191,9 +191,9 @@ A következő tárolóművelet bérletek használatával pesszimista egyidejűs�
 
 További információkért lásd:  
 
-* [Blob szolgáltatás műveletek által használt feltételes fejlécek megadása](http://msdn.microsoft.com/library/azure/dd179371.aspx)
-* [Címbérlet-tárolók](http://msdn.microsoft.com/library/azure/jj159103.aspx)
-* [Címbérleti Blobhoz ](http://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [Blob szolgáltatás műveletek által használt feltételes fejlécek megadása](https://msdn.microsoft.com/library/azure/dd179371.aspx)
+* [Címbérlet-tárolók](https://msdn.microsoft.com/library/azure/jj159103.aspx)
+* [Címbérleti Blobhoz ](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
 ## <a name="managing-concurrency-in-the-table-service"></a>A Table Service szolgáltatásban az egyidejűség kezelése
 A table service használja az optimista egyidejűség ellenőrzi az alapértelmezett viselkedésként entitásokkal, a blob szolgáltatás, explicit módon választania kell az optimista egyidejűséget ellenőrzéséhez eltérően működik. A tábla- és blobtárolókat szolgáltatások közötti különbség az, hogy csak kezelheti az entitások egyidejűségi viselkedését, mivel a blob szolgáltatással kezelheti az egyidejűséget, tárolók és blobok.  
@@ -208,7 +208,7 @@ Használjon optimista egyidejűséget, és ellenőrizze, hogy egy másik folyama
 
 Vegye figyelembe, hogy a blob szolgáltatás eltérően a table service igényel tartalmazza az ügyfél egy **If-Match** fejléc a következő frissítési kérelmet. Azonban lehetséges kényszerítése egy feltétel (legutolsó író wins stratégia) frissíti, és az egyidejűség-ellenőrzés megkerülését, ha beállítja az ügyfél a **If-Match** fejlécet a helyettesítő karakter (*) a kérésben.  
 
-Az alábbi C# látható egy ügyfélentitást vagy korábban létrehozott vagy frissített e-mail-címükkel kellene beolvasni. A kezdeti beszúrása vagy művelet tárolja az ügyfél objektum ETag-érték lekéréséhez, és a mintát használja ugyanazt az objektumpéldányt, a Csere műveletet végrehajtása során, mert azt automatikusan elküldi az ETag-érték vissza a table service, a szolgáltatás engedélyezése Ellenőrizze, hogy egyidejűségi megsértése. Ha egy másik folyamat frissítette az entitást a táblatárolóba, a szolgáltatás egy HTTP 412 (előfeltétel nem teljesült) állapotüzenetet adja vissza.  Letöltheti a teljes minta: [az Azure Storage felügyelete egyidejűségi](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
+Az alábbi C# látható egy ügyfélentitást vagy korábban létrehozott vagy frissített e-mail-címükkel kellene beolvasni. A kezdeti beszúrása vagy művelet tárolja az ügyfél objektum ETag-érték lekéréséhez, és a mintát használja ugyanazt az objektumpéldányt, a Csere műveletet végrehajtása során, mert azt automatikusan elküldi az ETag-érték vissza a table service, a szolgáltatás engedélyezése Ellenőrizze, hogy egyidejűségi megsértése. Ha egy másik folyamat frissítette az entitást a táblatárolóba, a szolgáltatás egy HTTP 412 (előfeltétel nem teljesült) állapotüzenetet adja vissza.  Letöltheti a teljes minta: [az Azure Storage felügyelete egyidejűségi](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
 ```csharp
 try
@@ -251,7 +251,7 @@ Vegye figyelembe, hogy a **entitás cseréje vagy beszúrása** és **vagy egyes
 
 További információkért lásd:  
 
-* [Műveleti entitások](http://msdn.microsoft.com/library/azure/dd179375.aspx)  
+* [Műveleti entitások](https://msdn.microsoft.com/library/azure/dd179375.aspx)  
 
 ## <a name="managing-concurrency-in-the-queue-service"></a>A Queue szolgáltatás az egyidejűség kezelése
 Milyen egyidejűségi a fontos az üzenetsor-szolgáltatás egy forgatókönyv, ahol több ügyfél hívnak le üzeneteket az üzenetsorból. Egy üzenetet az üzenetsorból beolvasásakor a válasz tartalmazza, az üzenet és a egy pop beérkezési értéket, amely az üzenet törléséhez. Az üzenet nem törlődnek automatikusan, az üzenetsorból, de rendelkezik lekérve, után már nem látható más ügyfelek számára a a visibilitytimeout paraméter által megadott időtartam alatt. Az ügyfél, amely lekéri az üzenet az üzenet törlése után a feldolgozásukat és a TimeNextVisible által megadott idő előtti elem, amelynek kiszámítása a válasz alapján a visibilitytimeout paraméter várt. Az idő, amikor a lekért TimeNextVisible értékének meghatározása visibilitytimeout értéke kerül.  
@@ -260,8 +260,8 @@ A queue szolgáltatás nem rendelkezik az optimista vagy pesszimista egyidejűs�
 
 További információkért lásd:  
 
-* [Queue szolgáltatás REST API-val](http://msdn.microsoft.com/library/azure/dd179363.aspx)
-* [Üzenetek beolvasása](http://msdn.microsoft.com/library/azure/dd179474.aspx)  
+* [Queue szolgáltatás REST API-val](https://msdn.microsoft.com/library/azure/dd179363.aspx)
+* [Üzenetek beolvasása](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
 
 ## <a name="managing-concurrency-in-the-file-service"></a>A szolgáltatás az egyidejűség kezelése
 A szolgáltatás két különböző protokollvégpontokat – a SMB és a REST használatával is elérhetők. A REST-szolgáltatás nem rendelkezik optimista vagy pesszimista zárolással támogatása, és minden frissítés egy utolsó író wins stratégiát követi. Fájlmegosztásokat csatlakoztatni az SMB-ügyfelek használhatják a file system mechanizmusok megosztott fájlok – például hajthatnak végre pesszimista zárolással való hozzáférés kezelése. Ha egy SMB-ügyfél megnyit egy fájlt, adja meg a fájl hozzáférés- és a megosztáshoz mód. Fájlhozzáférés "Write" vagy "Olvasási/írási" és a egy fájlmegosztás mód "None" beállítás azt eredményezi, hogy a fájl egy SMB-ügyfél által a fájl bezárásáig zárolva. Ha a REST-művelet egy fájlt, amelyben egy SMB-ügyfél rendelkezik-e a fájl zárolva próbálta meg végrehajtani a REST-szolgáltatás SharingViolation. Hibakód: 409 (Ütközés) állapotkódot ad vissza.  
@@ -270,19 +270,19 @@ Ha egy SMB-ügyfél megnyit egy fájlt a delete, azt jelöli meg a fájlt, amíg
 
 További információkért lásd:  
 
-* [Zárolja fájl kezelése](http://msdn.microsoft.com/library/azure/dn194265.aspx)  
+* [Zárolja fájl kezelése](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
 
 ## <a name="summary-and-next-steps"></a>Összegzés és további lépések
 A Microsoft Azure Storage szolgáltatás úgy lett kialakítva igényeinek a legösszetettebb online alkalmazások veszélyezteti, vagy például egyidejűség és adatkonzisztencia által akkor végrehajtandó fő tervezési feltételezések újragondolja a fejlesztők kényszerítése nélkül nyújtani.  
 
 A blog hivatkozott teljes mintaalkalmazás:  
 
-* [Az Azure Storage - mintaalkalmazás használata az egyidejűség kezelése](http://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)  
+* [Az Azure Storage - mintaalkalmazás használata az egyidejűség kezelése](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)  
 
 További információ az Azure Storage lásd:  
 
 * [A Microsoft Azure Storage kezdőlapja](https://azure.microsoft.com/services/storage/)
 * [A Microsoft Azure Storage bemutatása](storage-introduction.md)
 * Bevezetés a Storage [Blob](../blobs/storage-dotnet-how-to-use-blobs.md), [tábla](../../cosmos-db/table-storage-how-to-use-dotnet.md), [üzenetsorok](../storage-dotnet-how-to-use-queues.md), és [fájlok](../storage-dotnet-how-to-use-files.md)
-* Tároló-architektúra – [az Azure Storage: egy magas rendelkezésre állású felhőalapú tárolási szolgáltatás az erős konzisztencia](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+* Tároló-architektúra – [az Azure Storage: egy magas rendelkezésre állású felhőalapú tárolási szolgáltatás az erős konzisztencia](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 

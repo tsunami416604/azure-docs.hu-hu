@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 031c609ee5dcd04fc461af74b7f49973fbd290c3
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: dab1547ca17acaeda3cb168d78b342661ebe4615
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157619"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230478"
 ---
 # <a name="administer-an-azure-active-directory-domain-services-managed-domain"></a>Az Azure Active Directory tartományi szolgáltatások által felügyelt tartományok adminisztrációja
 Ez a cikk bemutatja, hogyan felügyelheti az Azure Active Directory (AD) tartományi szolgáltatásokkal felügyelt tartományban.
@@ -63,7 +63,7 @@ Az első lépés, hogy a Windows Server virtuális gép, amely a felügyelt tart
 ### <a name="remotely-administer-the-managed-domain-from-a-client-computer-for-example-windows-10"></a>Távoli felügyeletéhez a felügyelt tartomány számítógépről (például a Windows 10)
 A felügyelt tartomány felügyeletéhez az AAD-DS-ben Ez a cikk egy Windows Servert futtató virtuális gép használati utasításait. Azonban azt is beállíthatja ehhez a Windows ügyfél (például Windows 10-es) virtuális gép használatával.
 
-Is [távoli kiszolgálófelügyelet eszközei (RSAT) telepítése](http://social.technet.microsoft.com/wiki/contents/articles/2202.remote-server-administration-tools-rsat-for-windows-client-and-windows-server-dsforum2wiki.aspx) utasításait követve, TechNeten Windows ügyfél virtuális gépen.
+Is [távoli kiszolgálófelügyelet eszközei (RSAT) telepítése](https://social.technet.microsoft.com/wiki/contents/articles/2202.remote-server-administration-tools-rsat-for-windows-client-and-windows-server-dsforum2wiki.aspx) utasításait követve, TechNeten Windows ügyfél virtuális gépen.
 
 ## <a name="task-2---install-active-directory-administration-tools-on-the-virtual-machine"></a>2. feladat – telepítés Active Directory felügyeleti eszközök a virtuális gépen
 A következő lépéseket az Active Directory-felügyeleti eszközök telepítése a tartományhoz csatlakoztatott virtuális gépen. Tekintse meg a Technet további [telepítéséről és a Távoli kiszolgálófelügyelet eszközei használatával](https://technet.microsoft.com/library/hh831501.aspx).

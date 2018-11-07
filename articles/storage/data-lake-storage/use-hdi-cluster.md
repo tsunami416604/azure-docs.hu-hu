@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 3869d83ada1cbe0b234694b6acae88b6f68fc2dd
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 04e2e32de90283da2563395f8b24dbb4b1dab888
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782277"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241759"
 ---
 # <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Az Azure Data Lake Storage Gen2 előzetes verzió használata Azure HDInsight-fürtök
 
@@ -49,13 +49,13 @@ Azure Storage-fiók és a HDInsight-fürtök együttes használatakor az alábbi
 * **A storage-fiókok fürthöz nem csatlakozó nyilvános fájlokat** tegye elérhetővé a csak olvasási engedéllyel a fájlokat a fájlrendszerben.
   
   > [!NOTE]
-  > Nyilvános rendszerek lehetővé teszik, hogy minden fájl a fájlrendszerben elérhető listáját, és hozzáfér. Nyilvános rendszerek lehetővé teszik, hogy a fájlok elérése csak akkor, ha ismeri a pontos URL-címe. További információkért lásd: [tárolókhoz és blobokhoz való hozzáférés korlátozása](http://msdn.microsoft.com/library/windowsazure/dd179354.aspx) (tárolók és blobok szabályok működnek az azonos előterének fájlok és a fájlrendszerben).
+  > Nyilvános rendszerek lehetővé teszik, hogy minden fájl a fájlrendszerben elérhető listáját, és hozzáfér. Nyilvános rendszerek lehetővé teszik, hogy a fájlok elérése csak akkor, ha ismeri a pontos URL-címe. További információkért lásd: [tárolókhoz és blobokhoz való hozzáférés korlátozása](https://msdn.microsoft.com/library/windowsazure/dd179354.aspx) (tárolók és blobok szabályok működnek az azonos előterének fájlok és a fájlrendszerben).
  
 * **A storage-fiókok fürthöz nem csatlakozó személyes fájlrendszerek** nem teszik lehetővé az access-fájlok a fájlrendszer, kivéve, ha a WebHCat-feladatok elküldésekor határozza meg a tárfiókot. Ez a korlátozás oka magyarázatát a cikk későbbi részében.
 
 A storage-fiókok a létrehozási folyamat és a kulcsaik meghatározott tárolt *%HADOOP_HOME%/conf/core-site.xml* a fürtcsomópontokon. A HDInsight alapértelmezett viselkedését, hogy a meghatározott tárfiókok használata a *core-site.xml* fájlt. A beállítást az [Ambari](../../hdinsight/hdinsight-hadoop-manage-ambari.md) használatával módosíthatja
 
-Több WebHCat-feladat (beleértve a Hive, MapReduce, Hadoop-stream és Pig-feladatokat) is tartalmazhatja a tárfiókok és a metaadatok leírását. (Ez a megközelítés jelenleg működik a Pig és a storage-fiókok, de a metaadatok nem.) További információkért lásd: [Using an HDInsight Cluster with Alternate Storage Accounts and Metastores](http://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx) (HDInsight-fürtök használata alternatív tárfiókokkal és metaadattárakkal).
+Több WebHCat-feladat (beleértve a Hive, MapReduce, Hadoop-stream és Pig-feladatokat) is tartalmazhatja a tárfiókok és a metaadatok leírását. (Ez a megközelítés jelenleg működik a Pig és a storage-fiókok, de a metaadatok nem.) További információkért lásd: [Using an HDInsight Cluster with Alternate Storage Accounts and Metastores](https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx) (HDInsight-fürtök használata alternatív tárfiókokkal és metaadattárakkal).
 
 ## <a id="benefits"></a>Az Azure Storage előnyei
 

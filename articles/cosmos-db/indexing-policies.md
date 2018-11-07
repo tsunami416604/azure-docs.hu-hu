@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: fea3455b31ff2ea7119fa4146aa84f855a3b6e35
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: cd3b5f49788282b535f07c6f84bf7e4002132ab9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054672"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237587"
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Hogyan történik az adatok az Azure Cosmos DB indexelése?
 
@@ -323,7 +323,7 @@ Kiválaszthatja, hogy kívánja-e a gyűjtemény összes dokumentum automatikusa
 
 Az Automatikus indexelés ki van kapcsolva, az index csak bizonyos dokumentumokhoz szelektív továbbra is hozzáadhat. Ezzel szemben az automatikus indexelést a hagyhatja, és szelektív ki szeretne zárni bizonyos dokumentumokhoz. Be-és kikapcsolása konfigurációk az indexelés akkor hasznos, ha csak egy részhalmazát, amelyet le kell kérdezni dokumentumok rendelkezik.
 
-A következő minta bemutatja, hogyan tartalmazzák a dokumentum kifejezetten a [SQL API .NET SDK-val](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet) és a [RequestOptions.IndexingDirective](http://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx) tulajdonság.
+A következő minta bemutatja, hogyan tartalmazzák a dokumentum kifejezetten a [SQL API .NET SDK-val](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet) és a [RequestOptions.IndexingDirective](https://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx) tulajdonság.
 
     // If you want to override the default collection behavior to either
     // exclude (or include) a document in indexing,
@@ -413,7 +413,7 @@ Ha szeretné módosít indexelési szabályzat az Azure Cosmos DB-gyűjtemények
 ## <a name="performance-tuning"></a>Teljesítmény-finomhangolás
 Az SQL API-k teljesítmény-mérőszámokat, például a használt index tárterület és átviteli sebesség költsége (a kérelemegység) minden művelet adatainak megadása. Ezen információk használatával különféle indexelési szabályzatok, összehasonlítása és a teljesítmény finomhangolásának.
 
-A tárolási kvótát és a egy gyűjtemény használati ellenőrzéséhez futtassa a **fő** vagy **első** kérelmet a gyűjtemény-erőforráshoz. Ezt követően vizsgálja meg a **x-ms-kérelem-quota** és a **x-ms-kérelem-használat** fejlécek. A .NET SDK-ban a [DocumentSizeQuota](http://msdn.microsoft.com/library/dn850325.aspx) és [DocumentSizeUsage](http://msdn.microsoft.com/library/azure/dn850324.aspx) tulajdonságok [ResourceResponse < T\> ](http://msdn.microsoft.com/library/dn799209.aspx) ezek megfelelő értékeket tartalmaznak.
+A tárolási kvótát és a egy gyűjtemény használati ellenőrzéséhez futtassa a **fő** vagy **első** kérelmet a gyűjtemény-erőforráshoz. Ezt követően vizsgálja meg a **x-ms-kérelem-quota** és a **x-ms-kérelem-használat** fejlécek. A .NET SDK-ban a [DocumentSizeQuota](https://msdn.microsoft.com/library/dn850325.aspx) és [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) tulajdonságok [ResourceResponse < T\> ](https://msdn.microsoft.com/library/dn799209.aspx) ezek megfelelő értékeket tartalmaznak.
 
      // Measure the document size usage (which includes the index size) against   
      // different policies.
@@ -421,7 +421,7 @@ A tárolási kvótát és a egy gyűjtemény használati ellenőrzéséhez futta
      Console.WriteLine("Document size quota: {0}, usage: {1}", collectionInfo.DocumentQuota, collectionInfo.DocumentUsage);
 
 
-Minden egyes írási műveletnél az indexelő járó többletterhelést mérésére (létrehozása, frissítése vagy törlése), vizsgálja meg a **x-ms-kérelem-díj** fejléc (vagy az azzal egyenértékű [RequestCharge](http://msdn.microsoft.com/library/dn799099.aspx) tulajdonság [ ResourceResponse < T\> ](http://msdn.microsoft.com/library/dn799209.aspx) a .NET SDK-ban), ezek a műveletek által felhasznált kérelemegységek számát.
+Minden egyes írási műveletnél az indexelő járó többletterhelést mérésére (létrehozása, frissítése vagy törlése), vizsgálja meg a **x-ms-kérelem-díj** fejléc (vagy az azzal egyenértékű [RequestCharge](https://msdn.microsoft.com/library/dn799099.aspx) tulajdonság [ ResourceResponse < T\> ](https://msdn.microsoft.com/library/dn799209.aspx) a .NET SDK-ban), ezek a műveletek által felhasznált kérelemegységek számát.
 
      // Measure the performance (request units) of writes.     
      ResourceResponse<Document> response = await client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri("db", "coll"), myDocument);              

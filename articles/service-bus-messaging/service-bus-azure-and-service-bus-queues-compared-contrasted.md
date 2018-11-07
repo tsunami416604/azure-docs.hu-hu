@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: f48e9a5600dca1e13d6ee94a675d5bc824915118
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 0254762de49f37c591a7847fe9b40b3ecbabe1bd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393961"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261060"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Tároló-üzenetsorok és Service Bus-üzenetsorok összehasonlítása
 Ez a cikk elemzi a közötti különbségeket és hasonlóságokat a Microsoft Azure jelenleg elérhető két típusú: tároló-üzenetsorok és Service Bus-üzenetsorok. Ezekre az információkra alapozva összehasonlíthatók az egyes technológiák, és megfontoltabb döntéseket lehet hozni arról, hogy melyik megoldás felel meg leginkább az igényeknek.
@@ -70,7 +70,7 @@ Ez a szakasz az alapvető üzenetsor-kezelési funkciói biztosítják a tárol�
 | Garantált rendezése |**Nem** <br/><br>További információkért tekintse meg az első a "További információ" részben.</br> |**Igen – első-First Out (FIFO)**<br/><br>(ügyféladatoknak munkamenetek üzenetküldése) |
 | Kézbesítési garanciával |**A legalább egyszeri** |**A legalább egyszeri**<br/><br/>**A legtöbb – egyszeri** |
 | Atomi műveletnek támogatása |**Nem** |**Igen**<br/><br/> |
-| Viselkedés fogadása |**Nem kizáró**<br/><br/>(befejezése azonnal Ha új üzenet nem található) |**Időtúllépés rendelkező/nem blokkolja-e**<br/><br/>(kínál hosszú lekérdezések vagy az ["Comet technikával"](http://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Nem kizáró**<br/><br/>(használatával .NET API-t csak kezelt) |
+| Viselkedés fogadása |**Nem kizáró**<br/><br/>(befejezése azonnal Ha új üzenet nem található) |**Időtúllépés rendelkező/nem blokkolja-e**<br/><br/>(kínál hosszú lekérdezések vagy az ["Comet technikával"](https://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Nem kizáró**<br/><br/>(használatával .NET API-t csak kezelt) |
 | Leküldéses stílusú API |**Nem** |**Igen**<br/><br/>[OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) és **OnMessage** munkamenetek .NET API-t. |
 | Fogadás módban |**Betekintés és lízing** |**Belepillantás & zárolása**<br/><br/>**Kap & törlése** |
 | Exkluzív hozzáférési mód |**Címbérlet-alapú** |**Lock-alapú** |

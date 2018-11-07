@@ -9,12 +9,12 @@ ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: 96b449e372417298ee3517d6a45c245d440a01c2
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: fc732065f328f653082286508db74cc29107854e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047391"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232008"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>Az Azure Data Lake Analytics egy .NET-alkalmazás kezelése
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -24,7 +24,7 @@ Ez a cikk ismerteti, hogyan kezelheti az Azure Data Lake Analytics fiókok, adat
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Visual Studio 2015, Visual Studio 2013 4. frissítéssel vagy Visual Studio 2012 és telepített Visual C++**.
-* **Microsoft Azure SDK for .NET 2.5-ös vagy újabb verzió**.  Telepítse a [Webplatform-telepítővel](http://www.microsoft.com/web/downloads/platform.aspx).
+* **Microsoft Azure SDK for .NET 2.5-ös vagy újabb verzió**.  Telepítse a [Webplatform-telepítővel](https://www.microsoft.com/web/downloads/platform.aspx).
 * **Szükséges NuGet-csomagok**
 
 ### <a name="install-nuget-packages"></a>NuGet-csomagok telepítése
@@ -218,7 +218,7 @@ if (adlaClient.Account.Exists(rg, adla))
 A Data Lake Analytics jelenleg a következő adatforrások használatát támogatja:
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
-* [Az Azure Storage-fiók](../storage/common/storage-introduction.md)
+* [Azure Storage-tárfiók](../storage/common/storage-introduction.md)
 
 ### <a name="link-to-an-azure-storage-account"></a>Azure Storage-fiók összekapcsolása
 

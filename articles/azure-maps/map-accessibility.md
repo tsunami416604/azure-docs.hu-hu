@@ -11,12 +11,12 @@ ms.service: azure-maps
 documentationcenter: ''
 manager: timlt
 ms.devlang: na
-ms.openlocfilehash: 59e4226d7abb1d2692c531f146685feb203ab423
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: ef948b4dca3d3800a81ac52f3a73beee2558d21c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129437"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247228"
 ---
 # <a name="building-an-accessible-application"></a>Elérhető alkalmazások készítése
 
@@ -42,4 +42,4 @@ További tudnivalók a helyi menü osztály és az ebben a cikkben használt mó
 Tekintse meg a további Kódminták:
 
 > [!div class="nextstepaction"]
-> [Znaková stránka-minta](http://aka.ms/AzureMapsSamples)
+> [Znaková stránka-minta](https://aka.ms/AzureMapsSamples)
