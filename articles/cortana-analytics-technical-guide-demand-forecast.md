@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/16/2016
 ms.author: garye
-ms.openlocfilehash: 8ff5c52b324c95bb48de0f9bbb1011ede737efb0
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: e18e1fb3e97dd9f846ee71be4f0fbb66aeca3d88
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387667"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238862"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>Technikai útmutató a Cortana Intelligence Megoldássablon igény szerint az energiaellátás előrejelzése
 ## <a name="overview"></a>**Áttekintés**
@@ -47,7 +47,7 @@ A [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) szolgálta
 A [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) érkező bemeneti Stream közel valós idejű szolgáltatást használja a [Azure Event Hub](#azure-event-hub) szolgáltatást, és tegye közzé az eredményeket a egy [Power BI](https://powerbi.microsoft.com)irányítópultot, valamint a nyers bejövő eseményeket, az archiválás a [Azure Storage](https://azure.microsoft.com/services/storage/) szolgáltatás később feldolgozásra, amelyet a [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) szolgáltatás.
 
 ### <a name="hdinsight-custom-aggregation"></a>HDInsight egyéni összesítés
-Az Azure HDInsight szolgáltatás futtatásához használt [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájlok (Azure Data Factory által előkészített) az Azure Stream Analytics szolgáltatással archivált nyers események összesítését.
+Az Azure HDInsight szolgáltatás futtatásához használt [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájlok (Azure Data Factory által előkészített) az Azure Stream Analytics szolgáltatással archivált nyers események összesítését.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 A [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) szolgáltatás használható-e (az Azure Data Factory által előkészített) alapján előrejelzi egy adott régió kapott bemeneti adatok jövőbeli fogyasztást.
@@ -102,14 +102,14 @@ Ez a szakasz ismerteti a szükséges [folyamatok](data-factory/concepts-pipeline
 
 ![](media/cortana-analytics-technical-guide-demand-forecast/ADF2.png)
 
-Az öt az e-előállító folyamatok tartalmazhat [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) particionálja, és az adatok összesítéséhez használt parancsfájlok. Nincs feltüntetve, ha a parancsfájlok a találhatók-e a [Azure Storage](https://azure.microsoft.com/services/storage/) telepítés során létrehozott fiókot. A hely a következő: demandforecasting\\\\parancsfájl\\\\hive\\ \\ (vagy https://[Your megoldás name].blob.core.windows.net/demandforecasting).
+Az öt az e-előállító folyamatok tartalmazhat [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) particionálja, és az adatok összesítéséhez használt parancsfájlok. Nincs feltüntetve, ha a parancsfájlok a találhatók-e a [Azure Storage](https://azure.microsoft.com/services/storage/) telepítés során létrehozott fiókot. A hely a következő: demandforecasting\\\\parancsfájl\\\\hive\\ \\ (vagy https://[Your megoldás name].blob.core.windows.net/demandforecasting).
 
-Hasonló a [Azure Stream Analytics](#azure-stream-analytics-1) lekérdezéseket, a [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájlok beállításszolgáltató jellegéből fakadóan ismeri a bejövő adatok formátumának, ezeket a lekérdezéseket lenne kell úgy kell módosítani az adatok formázása és alapján[jellemzőkiemelés](machine-learning/team-data-science-process/create-features.md) követelményeinek.
+Hasonló a [Azure Stream Analytics](#azure-stream-analytics-1) lekérdezéseket, a [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájlok beállításszolgáltató jellegéből fakadóan ismeri a bejövő adatok formátumának, ezeket a lekérdezéseket lenne kell úgy kell módosítani az adatok formázása és alapján[jellemzőkiemelés](machine-learning/team-data-science-process/create-features.md) követelményeinek.
 
 #### <a name="aggregatedemanddatato1hrpipeline"></a>*AggregateDemandDataTo1HrPipeline*
-Ez [folyamat](data-factory/concepts-pipelines-activities.md) tartalmaz egyetlen tevékenység – egy [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) tevékenység használatával egy [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) futtat egy [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) összesített adatfolyamként továbbított az igény szerinti adatok szkriptet 10 másodpercenként állomás szint óránként régió szintre, és helyezze [Azure Storage](https://azure.microsoft.com/services/storage/) keresztül az Azure Stream Analytics-feladatot.
+Ez [folyamat](data-factory/concepts-pipelines-activities.md) tartalmaz egyetlen tevékenység – egy [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) tevékenység használatával egy [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) futtat egy [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) összesített adatfolyamként továbbított az igény szerinti adatok szkriptet 10 másodpercenként állomás szint óránként régió szintre, és helyezze [Azure Storage](https://azure.microsoft.com/services/storage/) keresztül az Azure Stream Analytics-feladatot.
 
-A [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájl esetében ez a particionálási feladat ***AggregateDemandRegion1Hr.hql***
+A [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájl esetében ez a particionálási feladat ***AggregateDemandRegion1Hr.hql***
 
 #### <a name="loadhistorydemanddatapipeline"></a>*LoadHistoryDemandDataPipeline*
 Ez [folyamat](data-factory/concepts-pipelines-activities.md) két tevékenységet tartalmaz:
@@ -117,7 +117,7 @@ Ez [folyamat](data-factory/concepts-pipelines-activities.md) két tevékenysége
 * [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) tevékenység használatával egy [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) állomás szinten óránként régió szintre óránkénti előzmények igény szerint adatokat tudnak összesíteni, és az Azure Storage alatt az Azure Stream egy Hive-szkriptet futtat Analytics-feladat
 * [Másolás](https://msdn.microsoft.com/library/azure/dn835035.aspx) tevékenységgel, amely helyezi át az összesített adatokat az Azure Storage-blobból az Azure SQL Database, amely a megoldás sablon telepítésének részeként lett üzembe helyezve.
 
-A [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájl esetében ez a feladat ***AggregateDemandHistoryRegion.hql***.
+A [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájl esetében ez a feladat ***AggregateDemandHistoryRegion.hql***.
 
 #### <a name="mlscoringregionxpipeline"></a>*MLScoringRegionXPipeline*
 Ezek [folyamatok](data-factory/concepts-pipelines-activities.md) több tevékenységet tartalmaz, és amelynek a végeredmény a pontozott előrejelzéseket, ez a megoldássablon társított Azure Machine Learning-kísérletből. Azok majdnem teljesen megegyezik azzal a különbséggel azok csak a másik régióban, amely minden olyan régió esetében az ADF folyamat és a hive-parancsfájlnak átadott különböző RegionID végzett kezeli.  
@@ -231,7 +231,7 @@ Győződjön meg arról, hogy leállítsa az adatgenerálást amikor nem haszná
 A következő két eszközök segítségével jobban megismerheti az a teljes költség a kereslet-előrejelzés energia Megoldássablon az előfizetésében futó részt érhetők el:
 
 * [A Microsoft Azure Cost Estimator eszközt (online)](https://azure.microsoft.com/pricing/calculator/)
-* [A Microsoft Azure Cost Estimator eszközt (asztali verzió)](http://www.microsoft.com/download/details.aspx?id=43376)
+* [A Microsoft Azure Cost Estimator eszközt (asztali verzió)](https://www.microsoft.com/download/details.aspx?id=43376)
 
 ## <a name="acknowledgements"></a>**Nyugtázás**
 Ez a cikk adattudós JI Chen és Szoftvermérnök Qiu perc, a Microsoft hozta létre.

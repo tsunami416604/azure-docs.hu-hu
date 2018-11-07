@@ -12,12 +12,12 @@ ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: e0cc8759de6e204ec419053a70d263e21ca0dcf6
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 75108853929ea514a6b8660388d71736e74013e0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868632"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234731"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurálhatja és kezelheti az Azure Active Directory-hitelesítés az SQL
 
@@ -202,7 +202,7 @@ CLI-parancsokkal kapcsolatos további információkért lásd: [SQL - az sql](ht
 Az összes ügyfél gépen, amelyen az alkalmazások vagy felhasználók csatlakozhat Azure SQL Database vagy Azure SQL Data Warehouse használatával az Azure AD-identitások, a következő szoftvereket kell telepítenie:
 
 - .NET-keretrendszer 4.6-os vagy újabb verzióját az [ https://msdn.microsoft.com/library/5a4x27ek.aspx ](https://msdn.microsoft.com/library/5a4x27ek.aspx).
-- Az Azure Active Directory hitelesítési tár SQL Serverhez (**ADALSQL. DLL**) több nyelven is elérhető (x86 és amd64) a letöltőközpontján [Microsoft Active Directory Authentication Library for Microsoft SQL Server](http://www.microsoft.com/download/details.aspx?id=48742).
+- Az Azure Active Directory hitelesítési tár SQL Serverhez (**ADALSQL. DLL**) több nyelven is elérhető (x86 és amd64) a letöltőközpontján [Microsoft Active Directory Authentication Library for Microsoft SQL Server](https://www.microsoft.com/download/details.aspx?id=48742).
 
 Ezek a követelmények szerint teljesítheti:
 
@@ -249,14 +249,14 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 > [!TIP]
 > Az Azure Active Directoryból az Azure Active Directory, az Azure-előfizetéséhez társított eltérő közvetlenül a felhasználó nem hozható létre. Azonban más aktív könyvtárak, amelyek a társított Active Directory (más néven a külső felhasználók) az importált felhasználók tagjai lehet hozzáadni egy Active Directory-csoportot az Active Directory-bérlőben. Egy adatbázis-felhasználót, hogy az AD-csoport létrehozásával a felhasználók a külső Active Directoryból hozzáférhet az SQL Database.
 
-További információ található adatbázis-felhasználók az Azure Active Directory-identitások alapján című témakörben talál [CREATE USER (Transact-SQL)](http://msdn.microsoft.com/library/ms173463.aspx).
+További információ található adatbázis-felhasználók az Azure Active Directory-identitások alapján című témakörben talál [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx).
 
 > [!NOTE]
 > Az Azure Active Directory-rendszergazda az Azure SQL server eltávolítása megakadályozza, hogy Azure AD-hitelesítés felhasználók kapcsolódni a kiszolgálóhoz. Ha szükséges, használhatatlan Azure AD-felhasználók manuálisan az SQL-adatbázis-rendszergazda által törölhetők.
 > [!NOTE]
 > Ha megjelenik egy **kapcsolat időkorlátja lejárt**, szükség lehet beállítani a `TransparentNetworkIPResolution` paraméter false értékre a kapcsolati karakterlánc. További információkért lásd: [kapcsolat időtúllépési problémát a .NET-keretrendszer 4.6.1-es - TransparentNetworkIPResolution](https://blogs.msdn.microsoft.com/dataaccesstechnologies/2016/05/07/connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution/).
 
-Adatbázis-felhasználó létrehozásakor, hogy a felhasználó megkapja a **CONNECT** engedély tagjaként csatlakozhat az adatbázishoz, és a **nyilvános** szerepkör. Kezdetben az elérhetővé válik a felhasználó csak engedélyek-e bármely adott engedélyek a **nyilvános** szerepkör, illetve bármely engedélyeken minden olyan Azure AD-csoportokat, hogy azok a tagja. Miután üzembe helyezi az Azure AD-alapú tartalmazott adatbázis-felhasználó, megadhatja az engedélyeket a felhasználó további, ugyanúgy, engedélyezi a felhasználók bármilyen más típusú. Általában az adatbázis-szerepkörök, engedélyek, és felhasználók hozzáadása szerepkörökhöz. További információkért lásd: [Database Engine engedély alapjai](http://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx). Speciális SQL adatbázis-szerepkörökkel kapcsolatos további információkért lásd: [adatbázisok és bejelentkezések Azure SQL Database-ben kezelésével](sql-database-manage-logins.md).
+Adatbázis-felhasználó létrehozásakor, hogy a felhasználó megkapja a **CONNECT** engedély tagjaként csatlakozhat az adatbázishoz, és a **nyilvános** szerepkör. Kezdetben az elérhetővé válik a felhasználó csak engedélyek-e bármely adott engedélyek a **nyilvános** szerepkör, illetve bármely engedélyeken minden olyan Azure AD-csoportokat, hogy azok a tagja. Miután üzembe helyezi az Azure AD-alapú tartalmazott adatbázis-felhasználó, megadhatja az engedélyeket a felhasználó további, ugyanúgy, engedélyezi a felhasználók bármilyen más típusú. Általában az adatbázis-szerepkörök, engedélyek, és felhasználók hozzáadása szerepkörökhöz. További információkért lásd: [Database Engine engedély alapjai](https://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx). Speciális SQL adatbázis-szerepkörökkel kapcsolatos további információkért lásd: [adatbázisok és bejelentkezések Azure SQL Database-ben kezelésével](sql-database-manage-logins.md).
 Összevont tartományi felhasználói fiókot, amelyet importáltak a felügyelt tartomány külső felhasználóként, a felügyelt tartomány identitást kell használnia.
 
 > [!NOTE]
@@ -354,7 +354,7 @@ További információkért lásd: [SQL Server Security Blog](https://blogs.msdn.
 
 ### <a name="sqlcmd"></a>sqlcmd
 
-Az alábbi utasításokat, csatlakozzon az Sqlcmd-t, amely elérhető a 13.1 verzióját használja a [letöltőközpontból](http://go.microsoft.com/fwlink/?LinkID=825643).
+Az alábbi utasításokat, csatlakozzon az Sqlcmd-t, amely elérhető a 13.1 verzióját használja a [letöltőközpontból](https://go.microsoft.com/fwlink/?LinkID=825643).
 
 ```cmd
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G  

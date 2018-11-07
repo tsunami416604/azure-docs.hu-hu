@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/20/2018
 ms.author: terrylan
-ms.openlocfilehash: 3174f2d6562030702b14ef1fa3708a1a4e8e373b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 103e0e353efeaf493fb1d72f03eb6ce6469cd683
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301949"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235666"
 ---
 # <a name="managing-connected-partner-solutions-with-azure-security-center"></a>Az Azure Security Centerrel összekapcsolt partneri megoldások kezelése
 Ez a cikk végigvezeti hogyan kezelheti és figyelheti a csatlakoztatott biztonsági megoldások az Azure Security Centerben.
@@ -65,7 +65,7 @@ Ebben a cikkben megtanulta, hogyan kezelhet és figyelhet csatlakoztatott bizton
 * [Partner-és megoldásintegráció](security-center-partner-integration.md) -más biztonsági megoldások integrálása áttekintése.
 * [Kezelése és válaszadás a biztonsági riasztások](security-center-managing-and-responding-alerts.md) – ismerje meg, hogyan kezelése és válaszadás a biztonsági riasztásokra.
 * [Azure Security Center FAQ](security-center-faq.md) (Azure Security Center: Gyakran ismételt kérdések) – Válaszok a szolgáltatás használatára vonatkozó gyakori kérdésekre.
-* [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
+* [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.
 
 <!--Image references-->
 [1]: ./media/security-center-partner-solutions/partner-solutions-tile.png

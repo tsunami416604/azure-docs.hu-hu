@@ -1,6 +1,6 @@
 ---
-title: Központi telepítési fázis a csapat az tudományos folyamata életciklus - Azure |} Microsoft Docs
-description: A célok, feladatok és a telepítési fázis a adattudomány projektek a termékek esetében
+title: Üzembe helyezési fázis, a csoportos adatelemzési folyamat életciklusa – Azure |} A Microsoft Docs
+description: A célok, feladatok és a központi telepítési szakaszra a data-adatelemzési projektek le
 services: machine-learning
 documentationcenter: ''
 author: deguhath
@@ -15,38 +15,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 9c54e93eca181331117f2f7faad3e7d07274412d
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: af53b876eff401c7ee3bb0fa52e3fc30ff721afc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837031"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232819"
 ---
 # <a name="deployment"></a>Környezet
 
-Ez a cikk ismerteti a célokat, feladatok és a központi telepítés a csapat adatok tudományos folyamat (TDSP) társított termékek esetében. Ez a folyamat egy ajánlott életciklussal, amely segítségével a adattudomány projektek struktúra biztosítja. Az életciklus, projektek általában hajtható végre, gyakran ismételt fő szakaszait vázolja fel:
+Ez a cikk ismerteti a célokat, feladatok és az üzembe helyezés, a csoportos adatelemzési folyamat (TDSP) társított le. Ez a folyamat egy ajánlott életciklussal, amely használatával a data-adatelemzési projektek strukturálása biztosít. Az életciklus a fő szakaszai, projektek általában végrehajtható, iteratív gyakran ismerteti:
 
-   1. **Üzleti ismertetése**
-   2. **Adatok megszerzését és ismertetése**
-   3. **Modellezési**
+   1. **Az üzleti igények felmérése**
+   2. **Adatgyűjtés és adatértelmezés**
+   3. **Modellezés**
    4. **Üzembe helyezés**
-   5. **Ügyfelek**
+   5. **Felhasználói elfogadás**
 
-A TDSP életciklus vizuális ábrázolását itt található: 
+A TDSP életciklus ábrázolása a következő: 
 
-![TDSP életciklusa](./media/lifecycle/tdsp-lifecycle2.png) 
+![TDSP-életciklus](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
 ## <a name="goal"></a>Cél
-Adatok adatcsatorna modellek telepítése egy éles vagy a végső felhasználói elfogadás hasonló környezetet. 
+Egy adatfolyamat a modellek üzembe helyezése éles, akár a végső felhasználói elfogadás éles-szerű környezete. 
 
-## <a name="how-to-do-it"></a>Menete
+## <a name="how-to-do-it"></a>Megtudhatja, hogyan teheti
 Ebben a szakaszban tárgyalt fő feladat:
 
-**Azok a modell**: a modell és a kimenetátirányítási telepítése egy éles vagy hasonló környezet alkalmazás felhasználásra.
+**A modell üzembe helyezése**: a modell és a folyamat üzembe egy éles, akár az alkalmazás használati éles-szerű környezete.
 
 ### <a name="operationalize-a-model"></a>Modell üzembe helyezése
-Miután egy modellt a hatékony készletét, üzembe azokat más alkalmazások felhasználását. Attól függően, hogy az üzleti igények előrejelzéseket valós időben vagy kötegelt alapon történik. Modellek telepíteni, akkor tegye őket elérhetővé egy megnyitott API felületen. A felület lehetővé teszi, hogy a modell könnyen használható a különböző alkalmazások, például:
+Miután egy jól teljesítő modell készletét, működésbe hozhat őket a más alkalmazások általi felhasználáshoz. Az üzleti követelményeitől függően előrejelzéseket valós időben vagy kötegelt alapon történik. Modellek üzembe helyezéséhez elérhetővé teszi azokat az open API felületet. A felület lehetővé teszi, hogy a modell egyszerűen fogják a különböző alkalmazások, például:
 
    * Online webhelyek
    * Számolótáblák 
@@ -54,25 +54,25 @@ Miután egy modellt a hatékony készletét, üzembe azokat más alkalmazások f
    * Az üzletági alkalmazások 
    * Háttér-alkalmazások 
 
-Az Azure Machine Learning webszolgáltatás a modell operationalization példákért lásd [központi telepítése az Azure Machine Learning webszolgáltatás](../studio/publish-a-machine-learning-web-service.md). Akkor célszerű hozhat létre telemetriai adatok és az üzemi modell és a központilag telepített adatok feldolgozási folyamat figyelést. Ez az eljárás segítségével a jelentések és hibaelhárítás későbbi rendszer állapotú.  
+Az Azure Machine Learning webszolgáltatás-modell operacionalizálás példákért lásd [egy Azure Machine Learning webszolgáltatás üzembe helyezése](../studio/publish-a-machine-learning-web-service.md). Ajánlott eljárás a telemetriai adatok és a figyelést az üzemi modell és az adatfolyamatok úgy, hogy legyen. Ez az eljárás későbbi rendszer állapota jelentéskészítési és hibaelhárítási segítséget.  
 
 ## <a name="artifacts"></a>Összetevők
 
-* A rendszer állapotának és a kulcs metrikák megjelenítő állapota irányítópult
-* A végső modellezési központi telepítésének részletei jelentés
+* Egy állapotjelző irányítópult, amely megjeleníti a rendszer állapotának és a kulcs metrikák
+* Üzembe helyezési adatok végleges modellezési jelentés
 * A végső megoldás architektúrája dokumentum
 
 
 ## <a name="next-steps"></a>További lépések
 
-Az alábbiakban a TDSP életciklusát lépésre mutató hivatkozásokat:
+Az alábbiakban a TDSP életciklusának minden lépése mutató hivatkozásokat:
 
-   1. [Üzleti ismertetése](lifecycle-business-understanding.md)
-   2. [Adatok megszerzését és ismertetése](lifecycle-data.md)
-   3. [Modellezési](lifecycle-modeling.md)
+   1. [Az üzleti igények felmérése](lifecycle-business-understanding.md)
+   2. [Adatgyűjtés és adatértelmezés](lifecycle-data.md)
+   3. [Modellezés](lifecycle-modeling.md)
    4. [Üzembe helyezés](lifecycle-deployment.md)
-   5. [Ügyfelek](lifecycle-acceptance.md)
+   5. [Felhasználói elfogadás](lifecycle-acceptance.md)
 
-Teljes-végpontok forgatókönyvek, amelyek azt mutatják, meghatározott forgatókönyvek esetén a folyamat lépései a Microsoft biztosítja. A [példa forgatókönyvek](walkthroughs.md) a cikk ismerteti a miniatűr leírások és hivatkozások forgatókönyvek listája. A forgatókönyvek bemutatják, hogyan lehet a felhő, a helyszíni eszközök és szolgáltatások egyesítése munkafolyamat vagy csővezeték intelligens alkalmazás létrehozása. 
+Azt adja meg a teljes, végpontok közötti forgatókönyvek, amelyek bemutatják, bizonyos forgatókönyvek esetén a folyamat összes lépését. A [példa forgatókönyvek](walkthroughs.md) a cikk a forgatókönyvek miniatűr leírások és hivatkozások listáját tartalmazza. A forgatókönyvek bemutatják, hogyan kombinálhatja a felhőbeli, helyszíni eszközöket és szolgáltatásokat, munkafolyamat vagy folyamat, intelligens alkalmazások létrehozására. 
 
-Hogyan hajthat végre a lépéseket az Azure Machine Learning Studio használó TDSPs példákért lásd [a TDSP használja az Azure Machine Learning segítségével](http://aka.ms/datascienceprocess).
+Hogyan hajtható végre a lépéseket az Azure Machine Learning Studio használó TDSPs példákért lásd [a TSDP használata az Azure Machine Learning](https://aka.ms/datascienceprocess).
