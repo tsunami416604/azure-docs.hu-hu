@@ -10,27 +10,28 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/18/2018
+ms.date: 10/30/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a3fc3e0cc30b379c84ac0ba12f733d2db4e41587
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 79572a364c2346ffd567cab7d3633ae398715210
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945790"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239950"
 ---
-# <a name="tutorial-create-an-azure-resource-manager-template-for-deploying-an-encrypted-storage-account"></a>Oktatóanyag: Titkosított tárfiók üzembe helyezésére szolgáló Azure Resource Manager-sablon létrehozása
+# <a name="tutorial-deploy-an-encrypted-azure-storage-account-with-resource-manager-template"></a>Oktatóanyag: Titkosított Azure Storage-fiók üzembe helyezése Resource Manager-sablonnal
 
-Ismerje meg, hogyan keresheti meg az Azure Resource Manager-sablon befejezéséhez szükséges adatokat.
+Megtudhatja, hogyan keresheti meg a sablonséma-információkat és használhatja fel őket Azure Resource Manager-sablonok létrehozására.
 
-Ebben az oktatóanyagban az Azure-beli gyorsindítási sablonok egyik alapszintű sablonját fogja használni egy Azure Storage-fiók létrehozásához.  Titkosított tárfiók létrehozásához a sablon referenciadokumentációjának használatával szabhatja testre az alapszintű sablont.
+Ebben az oktatóanyagban egy alapszintű sablont fog használni az Azure-gyorssablonok közül. A sablon referenciadokumentációjával testreszabja a sablont egy titkosított tárfiók létrehozásához.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
 > * Gyorsindítási sablon megnyitása
 > * A sablon ismertetése
+> * A sablonreferencia megkeresése
 > * A sablon szerkesztése
 > * A sablon üzembe helyezése
 
@@ -44,7 +45,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 ## <a name="open-a-quickstart-template"></a>Gyorsindítási sablon megnyitása
 
-Az ebben a rövid útmutatóban használt sablon [standard szintű tárfiók létrehozása](https://azure.microsoft.com/resources/templates/101-storage-account-create/) néven található meg. A sablon egy Azure Storage-fiókhoz tartozó erőforrást határoz meg.
+Az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/) a Resource Manager-sablonok adattáraként szolgálnak. Teljesen új sablon létrehozása helyett kereshet egy mintasablont, és testre szabhatja azt. Az ebben a rövid útmutatóban használt sablon [standard szintű tárfiók létrehozása](https://azure.microsoft.com/resources/templates/101-storage-account-create/) néven található meg. A sablon egy Azure Storage-fiókhoz tartozó erőforrást határoz meg.
 
 1. A Visual Studio Code-ban válassza a **File** (Fájl) > **Open File** (Fájl megnyitása) elemet.
 2. A **File name** (Fájlnév) mezőbe illessze be a következő URL-címet:
@@ -57,58 +58,22 @@ Az ebben a rövid útmutatóban használt sablon [standard szintű tárfiók lé
 
 ## <a name="understand-the-schema"></a>A séma bemutatása
 
-A VS Code-ban csukja össze a sablont a gyökérszintig. Az ekkor előálló legegyszerűbb struktúra a következő elemeket tartalmazza:
+1. A VS Code-ban csukja össze a sablont a gyökérszintig. Az ekkor előálló legegyszerűbb struktúra a következő elemeket tartalmazza:
 
-![Resource Manager-sablon – Legegyszerűbb struktúra](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-simplest-structure.png)
+    ![Resource Manager-sablon – Legegyszerűbb struktúra](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-simplest-structure.png)
 
-* **$schema**: adja meg a sablon nyelvének verziószámát tartalmazó JSON-sémafájl helyét.
-* **contentVersion**: adjon meg egy tetszőleges értéket ehhez az elemhez a sablon lényeges módosításainak dokumentálásához.
-* **parameters**: adja meg az üzembe helyezéskor beállított értékeket az erőforrás üzembe helyezésének testreszabásához.
-* **variables**: adja meg a sablonban JSON-töredékekként használt értékeket a sablonnyelvi kifejezések leegyszerűsítéséhez.
-* **resources**: adja meg az erőforráscsoportban üzembe helyezett vagy frissített erőforrástípusokat.
-* **outputs**: adja meg az üzembe helyezés után visszaadott értékeket.
+    * **$schema**: adja meg a sablon nyelvének verziószámát tartalmazó JSON-sémafájl helyét.
+    * **contentVersion**: adjon meg egy tetszőleges értéket ehhez az elemhez a sablon lényeges módosításainak dokumentálásához.
+    * **parameters**: adja meg az üzembe helyezéskor beállított értékeket az erőforrás üzembe helyezésének testreszabásához.
+    * **variables**: adja meg a sablonban JSON-töredékekként használt értékeket a sablonnyelvi kifejezések leegyszerűsítéséhez.
+    * **resources**: adja meg az erőforráscsoportban üzembe helyezett vagy frissített erőforrástípusokat.
+    * **outputs**: adja meg az üzembe helyezés után visszaadott értékeket.
 
-## <a name="use-parameters"></a>Paraméterek használata
+2. Bontsa ki a **resources** elemet. Itt `Microsoft.Storage/storageAccounts` nevű erőforrás van meghatározva. A sablon egy nem titkosított tárfiókot hoz létre.
 
-Paraméterek megadásával testreszabhatja az üzemelő példányt úgy, hogy az adott környezetnek megfelelő értékeket ad meg. A tárfiókhoz tartozó értékek beállításakor a sablonban meghatározott paramétereket fogja használni.
+    ![Resource Manager-sablon, tárfiók-definíció](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resource.png)
 
-![Resource Manager-sablon – Paraméterek](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-parameters.png)
-
-Ebben a sablonban két paraméter van meghatározva. Figyelje meg a location.defaultValue paraméterben használt sablonfüggvényt:
-
-```json
-"defaultValue": "[resourceGroup().location]",
-```
-
-A resourceGroup() függvény az aktuális erőforráscsoportot jelölő objektumot adja vissza. A sablonfüggvények listájáért lásd az [Azure Resource Manager-sablonfüggvényeket](./resource-group-template-functions.md).
-
-A sablonban meghatározott paraméterek használata:
-
-```json
-"location": "[parameters('location')]",
-"name": "[parameters('storageAccountType')]"
-```
-
-## <a name="use-variables"></a>Változók használata
-
-A változók segítségével a sablonban használható értékeket állíthat össze. A változók segítségével leegyszerűsíthetők a sablonok.
-
-![Resource Manager-sablon – Változók](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-variables.png)
-
-Ez a sablon egy változót (*storageAccountName*) határoz meg. A definícióban a következő két sablonfüggvény használjuk:
-
-- **concat()**: sztringek összefűzésére. További információkért lásd a [concat](./resource-group-template-functions-string.md#concat) ismertetését.
-- **uniqueString()**: determinisztikus kivonatsztring a paraméterekként megadott értékek alapján történő létrehozásához. Minden Azure-tárfióknak – az Azure egészét figyelembe véve – egyedi névvel kell rendelkeznie. Ez a függvény egy egyedi sztringet állít elő. További sztringfüggvényekért lásd a [sztringfüggvények](./resource-group-template-functions-string.md) ismertetését.
-
-A sablonban meghatározott változó használata:
-
-```json
-"name": "[variables('storageAccountName')]"
-```
-
-## <a name="edit-the-template"></a>A sablon szerkesztése
-
-Az oktatóanyag célja, hogy meghatározza a titkosított tárfiók létrehozásához szükséges sablont.  A mintasablon csak egy alapszintű, titkosítatlan tárfiókot hoz létre. A titkosítással kapcsolatos konfiguráció megkereséséhez az Azure Storage-fiók sablonreferenciáját fogja használni.
+## <a name="find-the-template-reference"></a>A sablonreferencia megkeresése
 
 1. Tallózással keresse meg az [Azure Templates](https://docs.microsoft.com/azure/templates/) (Azure-sablonok) elemet.
 2. A **Szűrés cím szerint** területen adja meg a **tárfiókokat**.
@@ -120,17 +85,52 @@ Az oktatóanyag célja, hogy meghatározza a titkosított tárfiók létrehozás
 
     ```json
     "encryption": {
-        "keySource": "Microsoft.Storage",
+      "services": {
+        "blob": {
+          "enabled": boolean
+        },
+        "file": {
+          "enabled": boolean
+        }
+      },
+      "keySource": "string",
+      "keyvaultproperties": {
+        "keyname": "string",
+        "keyversion": "string",
+        "keyvaulturi": "string"
+      }
+    },
+    ```
+
+    Ugyanezen a webhelyen az alábbi leírás megerősíti, hogy az `encryption` objektum használatával történik a tárfiók létrehozása.
+
+    ![Resource Manager-sablonreferencia, tárfiók titkosítása](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts-encryption.png)
+
+    A titkosítási kulcs kétféleképpen kezelhető. Használhat a Microsoft által felügyelt titkosítási kulcsokat a Storage Service Encryptionnel, vagy használhatja a saját titkosítási kulcsait. Az oktatóanyag egyszerűsége kedvéért válassza a `Microsoft.Storage` lehetőséget, hogy ne kelljen létrehoznia egy Azure Key Vaultot.
+
+    ![Resource Manager-sablonreferencia, tárfiók-titkosítási objektum](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts-encryption-object.png)
+
+    A titkosítási objektumnak a következőképpen kell kinéznie:
+
+    ```json
+    "encryption": {
         "services": {
             "blob": {
                 "enabled": true
+            },
+            "file": {
+              "enabled": true
             }
-        }
+        },
+        "keySource": "Microsoft.Storage"
     }
     ```
-5. A Visual Studio Code-ban módosítsa úgy a sablont, hogy a végső erőforráselem a következőképpen nézzen ki:
-    
-    ![Resource Manager-sablon – Titkosított tárfiók – Erőforrások](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
+
+## <a name="edit-the-template"></a>A sablon szerkesztése
+
+A Visual Studio Code-ban módosítsa úgy a sablont, hogy a resources elem a következőképpen nézzen ki:
+
+![Resource Manager-sablon – Titkosított tárfiók – Erőforrások](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 

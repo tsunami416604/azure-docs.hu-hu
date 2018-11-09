@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 7f71e92513aedb1eb9c394c1e8f547173cfb4dbe
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 4f7955c013ce7f45ebe6db8bb23eeec92303876e
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604178"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230931"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>Rövid útmutató: Titkos kulcs beállítása és lekérése az Azure Key Vaultból .NET-webalkalmazások használatával
 
@@ -25,7 +25,7 @@ Ebben a rövid útmutatóban azokat a lépéseket ismerheti meg, amelyekkel Azur
 > * Titkos kulcs tárolása a kulcstartóban.
 > * Titkos kulcs lekérése a kulcstartóból.
 > * Azure-webalkalmazás létrehozása.
-> * [Felügyelt identitás](../active-directory/managed-identities-azure-resources/overview.md) engedélyezése a webalkalmazáshoz.
+> * [Felügyeltszolgáltatás-identitás](../active-directory/managed-identities-azure-resources/overview.md) engedélyezése a webalkalmazáshoz.
 > * A szükséges engedélyek megadása a webalkalmazás számára az adatoknak a kulcstartóból való olvasásához.
 
 A folytatás előtt tekintse át az [alapvető fogalmakat](key-vault-whatis.md#basic-concepts).
@@ -33,7 +33,7 @@ A folytatás előtt tekintse át az [alapvető fogalmakat](key-vault-whatis.md#b
 >[!NOTE]
 >A Key Vault egy központi adattár a titkos kulcsok programozott módon való tárolásához. A használatához azonban az alkalmazásoknak és a felhasználóknak először hitelesíteniük kell magukat a Key Vaultban, azaz be kell mutatniuk egy titkos kulcsot. Az ajánlott biztonsági eljárások betartása érdekében ezt az első titkos kulcsot rendszeres időközönként le kell váltani. 
 >
->Az Azure-ban futó [felügyelt identitások Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md)-alkalmazásokhoz jár egy, az Azure által automatikusan felügyelt identitás. Ez segít megoldani a *titkos kulcsok bemutatásának problémáját*, így a felhasználók és az alkalmazások az ajánlott eljárásokat követhetik, és nem kell aggódniuk az első titkos kulcs leváltása miatt.
+>Az [Azures-erőforrásokhoz való felügyeltszolgáltatás-identitások](../active-directory/managed-identities-azure-resources/overview.md) esetén az Azure-ban futó alkalmazásokhoz jár egy, az Azure által automatikusan felügyelt identitás. Ez segít megoldani a *titkos kulcsok bemutatásának problémáját*, így a felhasználók és az alkalmazások az ajánlott eljárásokat követhetik, és nem kell aggódniuk az első titkos kulcs leváltása miatt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -12,12 +12,12 @@ ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 9d4ede9aee5261903a814cc2f29c788a2ba377f3
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 86e60f339af3d6d467b68d5d3b27d77a9861add1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869769"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244075"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>SQL-hitelesítéshez használandó Azure Active Directory-hitelesítéssel
 
@@ -35,7 +35,7 @@ Az Azure AD-hitelesítés az identitások, az adatbázis-felhasználók és más
 - Integrált Windows-hitelesítés és egyéb Azure Active Directory által támogatott hitelesítési engedélyezésével jelszavak tárolását, nyilvánvaló.
 - Azure AD-hitelesítés használja a tartalmazott adatbázis felhasználóit az adatbázis szintjén identitások hitelesítésére.
 - Az Azure AD hitelesítési jogkivonat-alapú támogatja az alkalmazások SQL Database csatlakoztatásához.
-- Az Azure AD-hitelesítés egy helyi Azure Active Directory tartományi szinkronizálás nélkül támogatja az ADFS (tartomány-összevonási) vagy a natív felhasználó/jelszó-hitelesítést.  
+- Az Azure AD-hitelesítés egy helyi Azure Active Directory tartományi szinkronizálás nélkül támogatja az ADFS (tartomány-összevonási) vagy a natív felhasználó/jelszó-hitelesítést.  
 - Az Azure AD-példányokhoz SQL Server Management Studio által használt Active Directory univerzális hitelesítéssel, amely tartalmazza a multi-factor Authentication (MFA).  MFA magában foglalja a több egyszerű ellenőrzési lehetőség erős hitelesítés – telefonhívás, szöveges üzenet, intelligens kártyák PIN-kód vagy mobilalkalmazásbeli értesítés. További információkért lásd: [SSMS-támogatás az Azure AD MFA és az SQL Database és az SQL Data Warehouse](sql-database-ssms-mfa-authentication.md).  
 
 > [!NOTE]  
@@ -118,10 +118,10 @@ Az Azure Active Directory-hitelesítés használata az Azure AD-identitások-ada
 - Azt javasoljuk, hogy a kapcsolat időtúllépése beállítás 30 másodperc.   
 - SQL Server 2016 Management Studio és az SQL Server Data Tools for Visual Studio 2015 (2016-os vagy újabb verzió 14.0.60311.1April) támogatja az Azure Active Directory-hitelesítés. (Azure AD-hitelesítést támogatja a **.NET Framework Data Provider Pro SqlServer**; legalább .NET Framework 4.6-os verzió). Ezért a legújabb verzióra a következő eszközök és -adatrétegbeli alkalmazások (DAC és. BACPAC) használhatja az Azure AD-hitelesítés.   
 - [ODBC 13.1 verzióját](https://www.microsoft.com/download/details.aspx?id=53339) azonban támogatja az Azure Active Directory-hitelesítés `bcp.exe` nem tud csatlakozni az Azure Active Directory-hitelesítés használatát, mert azt egy régebbi ODBC-szolgáltatóját használja.   
-- `sqlcmd` Azure Active Directory hitelesítési kiadásától kezdve elérhető 13.1 verzióját támogatja a [letöltőközpontból](http://go.microsoft.com/fwlink/?LinkID=825643).
-- Az SQL Server Data Tools for Visual Studio 2015 vagy újabb a Data Tools (verzió 14.0.60311.1) 2016. április verziója szükséges. Jelenleg az Azure AD-felhasználók nem jelennek meg az SSDT Object Explorerben. Áthidaló megoldásként a felhasználók megtekintéséhez [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx).   
+- `sqlcmd` Azure Active Directory hitelesítési kiadásától kezdve elérhető 13.1 verzióját támogatja a [letöltőközpontból](https://go.microsoft.com/fwlink/?LinkID=825643).
+- Az SQL Server Data Tools for Visual Studio 2015 vagy újabb a Data Tools (verzió 14.0.60311.1) 2016. április verziója szükséges. Jelenleg az Azure AD-felhasználók nem jelennek meg az SSDT Object Explorerben. Áthidaló megoldásként a felhasználók megtekintéséhez [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx).   
 - [Microsoft JDBC-illesztőprogram 6.0 az SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) támogatja az Azure AD-hitelesítés. Lásd még [beállítást a kapcsolat tulajdonságai](https://msdn.microsoft.com/library/ms378988.aspx).   
-- A PolyBase nem tudja hitelesíteni az Azure AD-hitelesítés használatával.   
+- A PolyBase nem tudja hitelesíteni az Azure AD-hitelesítés használatával.   
 - Azure AD-hitelesítés az Azure portál által támogatott az SQL Database- **adatbázis importálása** és **adatbázis exportálása** paneljein. Importálása és exportálása az Azure AD-hitelesítés használata is támogatott, a PowerShell-parancsot.   
 - Az Azure AD-hitelesítés az SQL Database felügyelt példány és az SQL Data Warehouse támogatott parancssori felület használatával. További információkért lásd: [konfigurálása és kezelése az Azure Active Directory-hitelesítés az SQL Database vagy az SQL Data Warehouse](sql-database-aad-authentication-configure.md) és [SQL Server - az sql server](https://docs.microsoft.com/cli/azure/sql/server).
 

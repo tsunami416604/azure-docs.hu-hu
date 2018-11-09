@@ -14,12 +14,12 @@ ms.tgt-pltfrm: multiple
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: danlep
-ms.openlocfilehash: a1e472d237977d1948c69828d8ec391522896774
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 01281c0328fab85814ff93c73f9ea25e0d4c1b08
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44058166"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232800"
 ---
 # <a name="cli-example-create-a-batch-ai-cluster-using-a-cluster-configuration-file"></a>CLI-példa: Batch AI-fürt létrehozása fürtkonfigurációs fájllal
 
@@ -27,7 +27,7 @@ Ez a példaszkript bemutatja, hogyan adhatja meg egy Batch AI-fürt beállítás
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.38-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). 
+Ha a CLI helyi telepítését és használatát választja, akkor ehhez az útmutatóhoz az Azure CLI 2.0.38-as vagy újabb verziójára lesz szükség. Futtassa az `az --version` parancsot a verzió meghatározásához. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). 
 
 ## <a name="example-script"></a>Példaszkript
 

@@ -16,12 +16,12 @@ ms.date: 10/25/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: c10aa28dc83d96a99da40b7d95d8e7051108d4c0
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 916d34a0af1490404cb9f7851b3117f1967c54d0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988864"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240902"
 ---
 # <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform-preview"></a>Rövid útmutató: A Microsoft identitásplatformján regisztrált alkalmazások eltávolítása (előzetes verzió)
 
@@ -58,7 +58,7 @@ A saját maga vagy a szervezete által regisztrált alkalmazásokat egy alkalmaz
 
 Ha az **alkalmazásregisztrációkat** egy bérlő kontextusában tekinti meg, a **Minden alkalmazás** lapon szereplő alkalmazások egy része más bérlőről származik, és a hozzájárulási folyamat során lettek regisztrálva a bérlőjében. Pontosabban ezeket az alkalmazásokat csak egy szolgáltatásnév-objektum jelöli a bérlőben, és nem tartozik hozzájuk alkalmazásobjektum. Az alkalmazás- és szolgáltatásnév-objektumok különbségeivel kapcsolatos további információért tekintse meg [az Azure AD-ben használt alkalmazás- és szolgáltatásnév-objektumokkal](active-directory-application-objects.md) foglalkozó cikket.
 
-Egy alkalmazás az Ön könyvtárához való hozzáférésének eltávolításához (a hozzájárulás megadása után) a vállalati rendszergazdának el kell távolítania az alkalmazás szolgáltatásnevét. A rendszergazdának globális rendszergazdai hozzáféréssel kell rendelkeznie, és az Azure Portalon keresztül távolíthatja el az alkalmazást, vagy az [Azure AD PowerShell-parancsmagok](http://go.microsoft.com/fwlink/?LinkId=294151) használatával törölheti a hozzáférést.
+Egy alkalmazás az Ön könyvtárához való hozzáférésének eltávolításához (a hozzájárulás megadása után) a vállalati rendszergazdának el kell távolítania az alkalmazás szolgáltatásnevét. A rendszergazdának globális rendszergazdai hozzáféréssel kell rendelkeznie, és az Azure Portalon keresztül távolíthatja el az alkalmazást, vagy az [Azure AD PowerShell-parancsmagok](https://go.microsoft.com/fwlink/?LinkId=294151) használatával törölheti a hozzáférést.
 
 ## <a name="next-steps"></a>További lépések
 

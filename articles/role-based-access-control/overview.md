@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 37498394bc163852d397337cf5728b4941ae45a7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d264160fb3f1c14db3379a314e60efdadb6905b5
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956506"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210414"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>Mi az a szerepköralapú hozzáférés-vezérlés (RBAC)?
 
@@ -54,7 +54,7 @@ A *rendszerbiztonsági tag* egy olyan objektum, amely egy, az Azure-erőforráso
 
 ![Szerepkör-hozzárendelések rendszerbiztonsági tagjai](./media/overview/rbac-security-principal.png)
 
-- Felhasználó – Egy Azure Active Directory-profillal rendelkező személy. Más bérlőkön lévő felhasználókhoz is hozzárendelhet szerepköröket. A más vállalatok felhasználóira vonatkozó információkért lásd: [Azure Active Directory B2B](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+- Felhasználó – Egy Azure Active Directory-profillal rendelkező személy. Más bérlőkön lévő felhasználókhoz is hozzárendelhet szerepköröket. A más vállalatok felhasználóira vonatkozó információkért lásd: [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md).
 - Csoport – Felhasználók az Azure Active Directoryban létrehozott csoportja. Ha egy csoporthoz rendel hozzá egy szerepkört, a csoportban lévő összes felhasználó rendelkezik majd az adott szerepkörrel. 
 - Szolgáltatásnév – Alkalmazások vagy szolgáltatások által adott Azure-erőforrások elérésére használt biztonsági identitás. Úgy képzelhető el, mint egy alkalmazás *felhasználói identitása* (felhasználóneve és jelszava vagy tanúsítványa).
 
@@ -130,3 +130,4 @@ Az RBAC a következő főbb lépésekkel határozza meg, hogy Ön hozzáféréss
 - [Rövid útmutató: Hozzáférés biztosítása egy felhasználó számára az RBAC és az Azure Portal használatával](quickstart-assign-role-user-portal.md)
 - [Hozzáférés kezelése az RBAC és az Azure Portal használatával](role-assignments-portal.md)
 - [A különböző Azure-beli szerepkörök ismertetése](rbac-and-directory-admin-roles.md)
+- [A nagyvállalati felhőmegoldások bevezetése: Erőforráshozzáférés-kezelés az Azure-ban](/azure/architecture/cloud-adoption/getting-started/azure-resource-access)

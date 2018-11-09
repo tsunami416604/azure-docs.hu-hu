@@ -1,22 +1,22 @@
 ---
-title: A sablonok – Azure HDInsight Hadoop-fürtök létrehozása
+title: Az Apache Hadoop-fürtök létrehozása – Azure HDInsight-sablonok használatával
 description: Útmutató a HDInsight-fürtök létrehozásának Resource Manager-sablonok használatával
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 4cf516550e9f9852ec50981932c2df8f236d0358
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 4e5561c4846889f53723ed8df82d7c6268aee180
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961314"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241616"
 ---
-# <a name="create-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>A HDInsight Hadoop-fürtök létrehozása Resource Manager-sablonok használatával
+# <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>HDInsight az Apache Hadoop-fürtök létrehozása Resource Manager-sablonok használatával
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
 Ebből a cikkből megtudhatja, többféle módon hozhat létre az Azure HDInsight-fürtöket az Azure Resource Manager-sablonok használatával. További információkért lásd: [alkalmazás üzembe helyezése Azure Resource Manager-sablonnal](../azure-resource-manager/resource-group-template-deploy.md). Más eszközök a fürt létrehozása és a szolgáltatások kapcsolatos további információkért kattintson ezen az oldalon lévő lapválasztót, vagy tekintse meg [Fürtlétrehozási módszerekhez](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods).

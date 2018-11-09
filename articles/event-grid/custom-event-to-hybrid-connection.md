@@ -5,23 +5,25 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 10/02/2018
+ms.date: 10/30/2018
 ms.topic: tutorial
 ms.service: event-grid
-ms.openlocfilehash: d56a07bf6fcb368f50e081a1f56b7cfb022c05ca
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 788e0c8cf799922c425424fe4733e1e6618215e4
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042240"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421016"
 ---
 # <a name="route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Egyéni események átvitele hibrid Azure Relay-kapcsolatokon keresztül az Azure CLI és az Event Grid segítségével
 
-Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. A hibrid Azure Relay-kapcsolat az egyik támogatott eseménykezelő. A hibrid kapcsolatok eseménykezelőként való használatára akkor lehet szükség, ha olyan alkalmazásokból kell eseményeket kezelnie, amelyek nem rendelkeznek nyilvános végponttal. A vállalati hálózaton belül is lehetnek ilyen alkalmazások. Ebben a cikkben létrehozunk egy egyéni témakört az Azure CLI-vel, feliratkozunk az adott témakörre, majd elindítjuk az eseményt az eredmény megtekintéséhez. Az eseményeket hibrid kapcsolatokba küldjük.
+Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. A hibrid Azure Relay-kapcsolat az egyik támogatott eseménykezelő. A hibrid kapcsolatok eseménykezelőként való használatára akkor lehet szükség, ha olyan alkalmazásokból kell eseményeket kezelnie, amelyek nem rendelkeznek nyilvános végponttal. A vállalati hálózaton belül is lehetnek ilyen alkalmazások. Ebben a cikkben létrehozunk egy egyéni témakört az Azure CLI-vel, feliratkozunk az egyéni témakörre, majd elindítjuk az eseményt az eredmény megtekintéséhez. Az eseményeket hibrid kapcsolatokba küldjük.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez a cikk feltételezi, hogy már rendelkezik egy hibrid kapcsolattal és egy figyelőalkalmazással. A hibrid kapcsolatok használatbavételéhez tekintse át a [Bevezetés a hibrid Relay-kapcsolatok használatába – .NET](../service-bus-relay/relay-hybrid-connections-dotnet-get-started.md) vagy a [Bevezetés a hibrid Relay-kapcsolatok használatába – Node](../service-bus-relay/relay-hybrid-connections-node-get-started.md) című témakört.
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
@@ -64,14 +66,17 @@ hybridname=<hybrid-name>
 
 relayid=$(az resource show --name $relayname --resource-group $relayrg --resource-type Microsoft.Relay/namespaces --query id --output tsv)
 hybridid="$relayid/hybridConnections/$hybridname"
+topicid=$(az eventgrid topic show --name <topic_name> -g gridResourceGroup --query id --output tsv)
 
 az eventgrid event-subscription create \
-  --topic-name <topic_name> \
-  -g gridResourceGroup \
+  --source-resource-id $topicid \
   --name <event_subscription_name> \
   --endpoint-type hybridconnection \
-  --endpoint $hybridid
+  --endpoint $hybridid \
+  --expiration-date "2018-11-30"
 ```
+
+Vegye figyelembe, hogy az előfizetéshez lejárati dátum tartozik. Az esemény-előfizetés a megadott dátumot követően automatikusan lejár. Olyan esemény-előfizetésekhez állítson be lejárati dátumot, amelyekre csak korlátozott ideig lesz szükség.
 
 ## <a name="create-application-to-process-events"></a>Alkalmazás létrehozása események feldolgozásához
 

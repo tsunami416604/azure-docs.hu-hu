@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: efaf551d134d339205d40966cb84f41b408559bd
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 3350c222cced036af6319cee166c53da0b14f2a9
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394178"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210448"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Rövid útmutató: Adatok betöltése az Event Hubsból az Azure Data Explorerbe
 
@@ -27,7 +27,7 @@ A rövid útmutató elvégzéséhez az Azure-előfizetés mellett szüksége les
 
 * [Egy tesztfürt és -adatbázis](create-cluster-database-portal.md)
 
-* [Egy mintaalkalmazás](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) az adatok előállításához
+* [Egy mintaalkalmazás](https://github.com/Azure-Samples/event-hubs-dotnet-ingest), amely adatokat állít elő, és elküldi azokat egy eseményközpontnak
 
 * A [Visual Studio 2017 szoftver 15.3.2-es vagy újabb verziója](https://www.visualstudio.com/vs/) a mintaalkalmazás futtatásához
 
@@ -37,9 +37,9 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
-A rövid útmutatóban mintaadatokat állítunk elő, és elküldjük azokat egy eseményközpontnak. Első lépésként létre kell hoznia egy eseményközpontot. Ezt egy Azure Resource Manager- (ARM-) sablon használatával teheti meg az Azure Portalon.
+A rövid útmutatóban mintaadatokat állítunk elő, és elküldjük azokat egy eseményközpontnak. Első lépésként létre kell hoznia egy eseményközpontot. Ezt egy Azure Resource Manager-sablon használatával teheti meg az Azure Portalon.
 
-1. Az üzembe helyezés indításához kattintson a következő gombra.
+1. Az üzembe helyezés indításához kattintson a következő gombra. Javasoljuk, hogy a hivatkozást egy új lapon vagy ablakban nyissa meg, hogy könnyebben követhesse a cikk további lépéseit.
 
     [![Üzembe helyezés az Azure-ban](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
@@ -69,13 +69,15 @@ A rövid útmutatóban mintaadatokat állítunk elő, és elküldjük azokat egy
 
 1. Válassza a **Vásárlás** lehetőséget, amivel megerősíti, hogy erőforrásokat kíván létrehozni az előfizetésben.
 
-1. Az eszköztáron válassza az **Értesítések** elemet (a harang ikont) az üzembehelyezési folyamat nyomon követéséhez. A sikeres üzembe helyezés igénybe vehet néhány percet, azonban addig is folytathatja a következő lépéssel.
+1. Az eszköztáron válassza az **Értesítések** elemet az üzembehelyezési folyamat nyomon követéséhez. A sikeres üzembe helyezés igénybe vehet néhány percet, azonban addig is folytathatja a következő lépéssel.
+
+    ![Értesítések](media/ingest-data-event-hub/notifications.png)
 
 ## <a name="create-a-target-table-in-azure-data-explorer"></a>Céltábla létrehozása az Azure Data Explorerben
 
 Most létrehozunk egy táblát az Azure Data Explorerben, amelyre az Event Hubs az adatokat továbbítja majd. A táblát az **Előfeltételek** szakaszban lefoglalt fürtön és adatbázisban hozzuk létre.
 
-1. Az Azure Portalon, a fürt alatt válassza a **Lekérdezés** lehetőséget.
+1. Az Azure Portalon keresse meg a fürtöt, majd válassza a **Lekérdezés** elemet.
 
     ![Alkalmazáshivatkozás lekérdezése](media/ingest-data-event-hub/query-explorer-link.png)
 
@@ -92,11 +94,11 @@ Most létrehozunk egy táblát az Azure Data Explorerben, amelyre az Event Hubs 
     ```Kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'
     ```
-    A parancs a bejövő JSON-adatokat leképezi a tábla létrehozásakor használt oszlopnevekre és adattípusokra.
+    A parancs a bejövő JSON-adatokat leképezi a táblában (TestTable) szereplő oszlopnevekre és adattípusokra.
 
 ## <a name="connect-to-the-event-hub"></a>Csatlakozás az eseményközponthoz
 
-Most csatlakozzon az eseményközponthoz az Azure Data Explorerből, hogy az eseményközpontba áramló adatok a teszttáblába történő streamelése megkezdődjön.
+Most csatlakozzon az eseményközponthoz az Azure Data Explorerből. Ha ez a kapcsolat létrejött, az eseményközpontba érkező adatok a cikk korábbi részében létrehozott teszttáblába kerülnek.
 
 1. Az eszközsáv **Értesítések** elemének kiválasztásával győződjön meg arról, hogy az eseményközpont üzembe helyezése sikeresen megtörtént.
 
@@ -118,27 +120,27 @@ Most csatlakozzon az eseményközponthoz az Azure Data Explorerből, hogy az ese
     | Eseményközpont-névtér | A névtér egyedi neve | A korábban a névtér azonosításához választott név. |
     | Eseményközpont | *test-hub* | A létrehozott eseményközpont. |
     | Fogyasztói csoport | *test-group* | A létrehozott eseményközponton definiált fogyasztói csoport. |
+    | Céltábla | Hagyja **A saját adatok útválasztási információt tartalmaznak** lehetőséget bejelöletlenül. | Az útvonalválasztás esetében két lehetőség érhető el: a *statikus* és a *dinamikus*. Ebben a rövid útmutatóban statikus útválasztást alkalmazunk (ez az alapértelmezett), amelyben megadjuk a táblanevet, a fájlformátumot és a leképezést. Dinamikus útválasztás is alkalmazható, ha a saját adatok tartalmazzák a szükséges útválasztási információkat. |
     | Tábla | *TestTable* | A **TestDatabase** adatbázisban létrehozott tábla. |
     | Adatformátum | *JSON* | A JSON és a CSV formátum támogatott. |
-    | Oszlopleképezés | *TestMapping* | A **TestDatabase** adatbázisban létrehozott leképezés. |
-
-    Ebben a rövid útmutatóban *statikus útválasztást* alkalmazunk az eseményközponttól, amelyben megadjuk a táblanevet, a fájlformátumot és a leképezést. Dinamikus útválasztás is alkalmazható, amelynek során ezeket a tulajdonságokat az alkalmazás adja meg.
+    | Oszlopleképezés | *TestMapping* | A **TestDatabase** adatbázisban létrehozott leképezés, amely a bejövő JSON-adatokat leképezi a **TestTable** tábla esetében használt oszlopnevekre és adattípusokra.|
+    | | |
 
 ## <a name="copy-the-connection-string"></a>A kapcsolati sztring másolása
 
-Amikor az alkalmazás futtatásával előállítja a mintaadatokat, szüksége lesz az eseményközpont névterének kapcsolati sztringjére.
+Amikor elindítja az Előfeltételek között szereplő [mintaalkalmazást](https://github.com/Azure-Samples/event-hubs-dotnet-ingest), szüksége lesz az eseményközpont névterének kapcsolati sztringjére.
 
 1. A létrehozott eseményközpont-névtér alatt válassza a **Megosztott elérési szabályzatok**, majd a **RootManageSharedAccessKey** lehetőséget.
 
     ![Megosztott elérési házirendek](media/ingest-data-event-hub/shared-access-policies.png)
 
-1. Másolja ki a **kapcsolati sztring elsődleges kulcsát**.
+1. Másolja ki a **kapcsolati sztring elsődleges kulcsát**. A következő szakaszban kell beillesztenie.
 
     ![Kapcsolati sztring](media/ingest-data-event-hub/connection-string.png)
 
 ## <a name="generate-sample-data"></a>Mintaadatok létrehozása
 
-Most, hogy az Azure Data Explorer és az eseményközpont között létrejött a kapcsolat, a letöltött mintaalkalmazással előállíthatja az adatokat.
+Most, hogy az Azure Data Explorer és az eseményközpont között létrejött a kapcsolat, a letöltött [mintaalkalmazással](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) előállíthatja az adatokat.
 
 1. Nyissa meg a mintaalkalmazást a Visual Studióban.
 
@@ -156,11 +158,13 @@ Most, hogy az Azure Data Explorer és az eseményközpont között létrejött a
 
 ## <a name="review-the-data-flow"></a>Az adatfolyam áttekintése
 
+Most, hogy az alkalmazás adatokat állít elő, láthatja, ahogy ezek az adatok az eseményközpontból a fürtön található táblába áramlanak.
+
 1. Az Azure Portalon az eseményközpont alatt megfigyelheti a tevékenységcsúcsot, amíg az alkalmazás fut.
 
     ![Eseményközpont diagramja](media/ingest-data-event-hub/event-hub-graph.png)
 
-1. Lépjen vissza az alkalmazáshoz, és állítsa le, amint az üzenetek száma eléri a 99-et.
+1. Lépjen vissza a mintaalkalmazáshoz, és állítsa le, amint az üzenetek száma eléri a 99-et.
 
 1. A következő lekérdezés a tesztadatbázison való futtatásával ellenőrizze, hogy hány üzenet került át eddig a pillanatig az adatbázisba.
 
@@ -169,7 +173,7 @@ Most, hogy az Azure Data Explorer és az eseményközpont között létrejött a
     | count
     ```
 
-1. Futtassa az alábbi lekérdezést az üzenetek tartalmának megtekintéséhez.
+1. Az üzenetek tartalmának megtekintéséhez futtassa az alábbi lekérdezést.
 
     ```Kusto
     TestTable

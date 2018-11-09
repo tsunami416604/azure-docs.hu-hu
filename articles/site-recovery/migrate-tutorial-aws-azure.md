@@ -1,20 +1,20 @@
 ---
-title: Virtuális gépek áttelepítése az AWS-ből az Azure-ba az Azure Site Recoveryvel | Microsoft Docs
+title: Amazon Web Services-beli (AWS) virtuális gépek migrálása az Azure-ba az Azure Site Recovery szolgáltatással | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan migrálhatók az Amazon Web Servicesben (AWS-ben) futó Windows rendszerű virtuális gépek az Azure-ba az Azure Site Recovery használatával.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 04e7506562d29e37abb65b7a760fbc9bd707e2c6
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: b09cfe106eefe9f6ab76cd1bfea91a0b6ff13b7c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078936"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214528"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek áttelepítése az Azure-ba
 

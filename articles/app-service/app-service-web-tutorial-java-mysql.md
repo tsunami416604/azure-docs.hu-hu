@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: db1005bbce25b0fa3fec76e6f9428a4cdd6fa4aa
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: ec942d97e7671c0477d8d723afacb06b73565c1c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024375"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414557"
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>Oktatóanyag: Java- és MySQL-webalkalmazás létrehozása az Azure-ban
 
@@ -47,7 +47,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="prerequisites"></a>Előfeltételek
 
 1. [A git letöltése és telepítése](https://git-scm.com/)
-1. [A Java 7 JDK vagy egy újabb verzió letöltése és telepítése](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+1. [A Java JDK letöltése és telepítése](https://aka.ms/azure-jdks)
 1. [A MySQL letöltése, telepítése és elindítása](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
 
 ## <a name="prepare-local-mysql"></a>A helyi MySQL előkészítése 
@@ -272,7 +272,7 @@ A webalkalmazás-definíció megadása után az Azure CLI az alábbi példához 
 
 A Cloud Shellben az [`az webapp config set`](/cli/azure/webapp/config#az-webapp-config-set) paranccsal állítsa be a Java-futtatókörnyezet az alkalmazás által igényelt konfigurációját.
 
-Az alábbi parancs a webalkalmazást arra konfigurálja, hogy az újabb Java 8 JDK-n és az [Apache Tomcat](http://tomcat.apache.org/) 8.0-s verzióján fusson.
+Az alábbi parancs a webalkalmazást arra konfigurálja, hogy az újabb [Java 8 JDK](https://aka.ms/azure-jdks)-n és az [Apache Tomcat](http://tomcat.apache.org/) 8.0-s verzióján fusson.
 
 ```azurecli-interactive
 az webapp config set --name <app_name> --resource-group myResourceGroup --java-version 1.8 --java-container Tomcat --java-container-version 8.0

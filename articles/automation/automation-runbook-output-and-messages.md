@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 751175e46e13d6046cd6f459e1405a876fdce39a
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: aff3ce4bc290f6e4ad2fb11a586372862d0c1462
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42056671"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240732"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Runbook-kimenet és üzenetek az Azure Automationben
 A legtöbb Azure Automation-runbookok rendelkezik valamilyen kimenetet, például egy hibaüzenet a felhasználó számára, vagy egy összetett objektumot egy másik munkafolyamat számára készült. Windows PowerShell biztosít [több adatfolyam](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) , elküldheti a kimenetet egy parancsfájl vagy a munkafolyamat. Az egyes ezekbe az adatfolyamokba eltérően működik az Azure Automation, és a követendő ajánlott eljárások használata minden egyes runbook létrehozásakor.
@@ -33,7 +33,7 @@ A következő táblázat nyújt rövid leírását tartalmazza minden egyes a St
 ## <a name="output-stream"></a>Kimeneti adatfolyam
 A kimeneti adatfolyam a megfelelően egy parancsfájl vagy a munkafolyamat által létrehozott objektumok kimenetéhez használható szól. Az Azure Automationben, ez az adatfolyam elsősorban a rendszer által felhasznált objektumok esetében [runbookokat, amelyek az aktuális runbookot hívja meg a szülő](automation-child-runbooks.md). Ha Ön [egy beágyazott runbookot hívja](automation-child-runbooks.md#invoking-a-child-runbook-using-inline-execution) a szülő runbook, adatokat ad vissza a kimeneti adatfolyamból származó a szülő. A kimeneti adatfolyamba, a felhasználó számára általános információkat továbbítson, ha a runbook másik runbookból soha nem hívja meg tudja csak használjon. Ajánlott eljárásként, azonban általában használjon a [részletes Stream](#verbose-stream) , a felhasználó általános információkat továbbítson.
 
-Adatokat írni a kimeneti adatfolyamhoz a [Write-Output](http://technet.microsoft.com/library/hh849921.aspx) vagy az objektum saját sort a runbook helyezésével.
+Adatokat írni a kimeneti adatfolyamhoz a [Write-Output](https://technet.microsoft.com/library/hh849921.aspx) vagy az objektum saját sort a runbook helyezésével.
 
 ```PowerShell
 #The following lines both write an object to the output stream.
@@ -75,7 +75,7 @@ A runbook feladatának részletes adatfolyama a következő lesz:
 A runbook közzétételt követően, és mielőtt elkezdené, is engedélyezni kell a részletes eredményének részletes adatfolyam a runbook beállításaiban naplózást.
 
 ### <a name="declaring-output-data-type"></a>Jelentést készítő kimeneti adatok típusát
-Egy munkafolyamat adhatja meg a kimenethez használt adattípus a [OutputType attribútummal](http://technet.microsoft.com/library/hh847785.aspx). Ez az attribútum nem lesz hatása futásidőben, de befolyásol a runbook szerzője a runbooknak milyen kimenetet a runbook a tervezés során. A runbookok eszközkészlete folyamatosan fejlődnek, fontosság növekszik a tervezés során kimeneti adattípus deklaráló fontosságát. Ennek eredményeképpen Ez a nyilatkozat felvenni az Ön által létrehozott runbookok ajánlott eljárás.
+Egy munkafolyamat adhatja meg a kimenethez használt adattípus a [OutputType attribútummal](https://technet.microsoft.com/library/hh847785.aspx). Ez az attribútum nem lesz hatása futásidőben, de befolyásol a runbook szerzője a runbooknak milyen kimenetet a runbook a tervezés során. A runbookok eszközkészlete folyamatosan fejlődnek, fontosság növekszik a tervezés során kimeneti adattípus deklaráló fontosságát. Ennek eredményeképpen Ez a nyilatkozat felvenni az Ön által létrehozott runbookok ajánlott eljárás.
 
 A következő példa listáját kimeneti típusokat:
 
@@ -120,7 +120,7 @@ A kimeneti adatfolyamokkal ellentétben a üzenet-adatfolyamok kifejezetten a fe
 ### <a name="warning-and-error-streams"></a>Figyelmeztető és hibastreamek
 A figyelmeztetési és hibaadatfolyamok a runbookban előforduló problémákat naplózzák. Írás a feladatelőzményekben, ha egy runbook végrehajtásakor, és az Azure Portalon Tesztkimenet ablaktábláján szerepelnek, amikor tesztelnek egy runbookot. Alapértelmezés szerint a runbook szakítják figyelmeztetés vagy hiba. Megadhatja, hogy a runbook kell futtatása fel legyen függesztve figyelmeztető vagy hibaüzenet beállításával egy [preferenciaváltozó](#preference-variables) a runbookban az üzenet létrehozása előtt. Például, hogy egy runbook felfüggesztése hiba, mintha a kivétel, állítsa **$ErrorActionPreference** állítja.
 
-Hozzon létre egy figyelmeztető vagy hibaüzeneteket a [Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) vagy [Write-Error](http://technet.microsoft.com/library/hh849962.aspx) parancsmagot. A tevékenységek is írhatnak adatokat ezekbe az adatfolyamokba.
+Hozzon létre egy figyelmeztető vagy hibaüzeneteket a [Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) vagy [Write-Error](https://technet.microsoft.com/library/hh849962.aspx) parancsmagot. A tevékenységek is írhatnak adatokat ezekbe az adatfolyamokba.
 
 ```PowerShell
 #The following lines create a warning message and then an error message that will suspend the runbook.
@@ -135,7 +135,7 @@ A részletes üzenet-adatfolyam a runbook-művelettel kapcsolatos általános in
 
 Amikor [runbook tesztelése](automation-testing-runbook.md), részletes üzenetek nem jelennek meg, akkor is, ha a runbook a részletes rekordok naplózására van beállítva. Miközben részletes üzenetek megjelenítése [runbook tesztelése](automation-testing-runbook.md), először be kell állítania a $VerbosePreference változó tovább. A változó beállítása részletes üzenetek megjelennek a Tesztkimenet ablaktáblán az Azure Portal.
 
-Részletes üzenetet létrehozni a [Write-Verbose](http://technet.microsoft.com/library/hh849951.aspx) parancsmagot.
+Részletes üzenetet létrehozni a [Write-Verbose](https://technet.microsoft.com/library/hh849951.aspx) parancsmagot.
 
 ```PowerShell
 #The following line creates a verbose message.
@@ -149,10 +149,10 @@ A hibakeresési adatfolyam interaktív felhasználóknak szól, és nem használ
 ## <a name="progress-records"></a>Haladási rekordok
 Ha folyamatban van a bejelentkezni egy runbook rögzíti (a az Azure Portalon a runbook konfigurálása lapon), majd egy rekord lesz írva a feladatelőzményekbe előtt és után a tevékenység futtatása. A legtöbb esetben érdemes megtartani az alapértelmezett beállítás a nem naplózza a runbook teljesítmény maximalizálása érdekében. Kapcsolja be ezt a beállítást csak hibakeresési egy runbook vagy hibák elhárítása. A runbook tesztelésekor folyamatüzeneteket nem jelennek meg, akkor is, ha a runbook az állapotrekordok naplózására van van beállítva.
 
-A [Write-Progress](http://technet.microsoft.com/library/hh849902.aspx) parancsmag érvénytelen, nem a runbookokban, mivel használata interaktív felhasználót feltételez.
+A [Write-Progress](https://technet.microsoft.com/library/hh849902.aspx) parancsmag érvénytelen, nem a runbookokban, mivel használata interaktív felhasználót feltételez.
 
 ## <a name="preference-variables"></a>Preferenciaváltozók
-Használja a Windows PowerShell [preferenciaváltozók](http://technet.microsoft.com/library/hh847796.aspx) határozni, hogy miként reagál a különböző kimeneti adatfolyamokba küldött adatokra. Ezek a változók egy runbook vezérelheti, hogyan reagáljon a különböző adatfolyamokba küldött adatok állíthatja be.
+Használja a Windows PowerShell [preferenciaváltozók](https://technet.microsoft.com/library/hh847796.aspx) határozni, hogy miként reagál a különböző kimeneti adatfolyamokba küldött adatokra. Ezek a változók egy runbook vezérelheti, hogyan reagáljon a különböző adatfolyamokba küldött adatok állíthatja be.
 
 Az alábbi táblázat a preferenciaváltozók használható a runbookok, valamint azok érvényes és alapértelmezett értékeit. Ez a táblázat csak a runbookokban érvényes értékeket tartalmazza. Az Azure Automation-en kívül a Windows PowerShell használatakor a preferenciaváltozók más érvényes értéket is.
 

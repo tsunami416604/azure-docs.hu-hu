@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 8fa183c22b9b6830c57b0a16b7f5d20ca38e3ef3
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 126e081bae08d220b0e3921cdfec7d7f58eacea8
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166520"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138293"
 ---
 # <a name="tutorial-8-extract-key-phrases-of-utterance"></a>8. oktatóanyag: Kimondott szövegek kulcsszavainak kinyerése
 Ebben az oktatóanyagban az előre összeállított keyPhrase entitást használhatja kulcstémák a kimondott szövegekből történő kinyeréséhez. A kimondott szövegeket nem szükséges megcímkézni előre összeállított entitásokkal. Az entitást a rendszer automatikusan észleli.
@@ -60,7 +60,7 @@ A kimondott szöveg témájának kinyeréséhez adja hozzá az előre összeáll
 
 2. Válassza az **Entities** (Entitások) elemet a bal oldali menüben.
 
-3. Válassza a **Manage prebuilt entities** (Előre összeállított entitások kezelése) lehetőséget.
+3. Válassza az **Add prebuilt entity** (Előre összeállított entitás hozzáadása) lehetőséget.
 
 4. Az előugró párbeszédpanelen válassza ki a **keyPhrase** elemet, majd a **Done** (Kész) lehetőséget. 
 

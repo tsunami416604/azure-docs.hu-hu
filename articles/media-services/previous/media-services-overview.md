@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: cc6cb768e9403a09ea09309e0ffd85ce9012cb41
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: c3d9b0660ab7803fc0c2696ded7bbffa90e07a5a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352086"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211604"
 ---
 # <a name="azure-media-services-overview"></a>Az Azure Media Services áttekintése 
 
 > [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
-> * [2. verzió – Általánosan elérhető](media-services-overview.md)
-> * [3. verzió – Előzetes verzió](../latest/media-services-overview.md)
+> * [2-es verzió](media-services-overview.md)
+> * [3-as verzió](../latest/media-services-overview.md)
 
 Microsoft Azure Media Services (AMS) egy bővíthető, felhőalapú platform, amely lehetővé teszi a fejlesztők számára méretezhető médiafelügyeleti és -továbbítási alkalmazások létrehozását. A Media Services alapjai a REST API-k, amelyek lehetővé teszik különböző videó- és audiotartalmak feltöltését, tárolását, kódolását és becsomagolását, majd igény szerinti és élő adatfolyamként történő továbbítását különböző ügyfelek részére (például tévékészülékekre, számítógépekre és mobileszközökre).
 

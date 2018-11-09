@@ -10,20 +10,20 @@ ms.component: bing-autosuggest
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 6f79416c28631a47209558fd0c415ae79cff93bc
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: c19fa95bd5529f18a65ad466e9c6352b1be80657
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831398"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421118"
 ---
 # <a name="quickstart-for-bing-autosuggest-api-with-java"></a>Rövid útmutató a Bing Autosuggest API és a Java használatához
 
-Ez a cikk bemutatja, hogyan használhatja a [Bing Autosuggest API-t](https://azure.microsoft.com/services/cognitive-services/autosuggest/) a Javával. A Bing Autosuggest API visszaadja a javasolt lekérdezések egy listáját a felhasználó által a keresőmezőben megadott részleges lekérdezési sztring alapján. Általában ezt az API-t hívja meg minden alkalommal, amikor egy felhasználó beír egy új karaktert a keresőmezőbe, majd megjelenít javaslatokat a keresőmező legördülő listájában. Ez a cikk azt mutatja be, hogyan küldhet olyan kérést, amely a *sail* (vitorlázás) kifejezésre visszaadja a javasolt lekérdezési sztringeket.
+Ez a cikk bemutatja, hogyan használhatja a [Bing Autosuggest API-t](https://azure.microsoft.com/services/cognitive-services/autosuggest/) a Javával. A Bing Autosuggest API visszaadja a javasolt lekérdezések egy listáját a felhasználó által a keresőmezőben megadott részleges lekérdezési sztring alapján. Általában ezt az API-t hívja meg minden alkalommal, amikor egy felhasználó beír egy új karaktert a keresőmezőbe, majd megjelenít javaslatokat a keresőmező legördülő listájában. Ez a cikk azt mutatja be, hogyan küldhet olyan kérést, amely a *sail* (vitorlázás) kifejezésre visszaadja a javasolt lekérdezési sztringeket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kód lefordításához és futtatásához a [JDK 7 vagy 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) telepítése szükséges. Ha van kedvence, használhat Java IDE-t vagy egy szövegszerkesztőt is.
+A kód lefordításához és futtatásához a [JDK 7 vagy 8](https://aka.ms/azure-jdks) telepítése szükséges. Ha van kedvence, használhat Java IDE-t vagy egy szövegszerkesztőt is.
 
 Rendelkeznie kell egy, a **Bing Autosuggest API 7-es verzióját** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/#search) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, vagy beszerezhet egy fizetős előfizetői azonosítót az Azure-irányítópultról.
 

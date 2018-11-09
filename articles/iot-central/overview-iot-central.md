@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 8c369ab05059e57f2e2a98339052c27292ac7c0d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8240cf5beb50ef16aa2bd03415e6bbff9a2f4250
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628776"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158142"
 ---
 <!---
 Purpose of an Overview article: 
@@ -25,7 +25,7 @@ Purpose of an Overview article:
 
 # <a name="what-is-azure-iot-central"></a>Mi az az Azure IoT Central?
 
-A Microsoft Azure IoT Central egy teljes körűen felügyelt IoT szoftverszolgáltatási megoldás, amely megkönnyíti a fizikai és a digitális világok között kapcsolatot teremtő termékek létrehozását. A csatlakoztatott termékre vonatkozó elképzelését a következőképpen valósíthatja meg:
+Az Azure IoT Central egy teljes körűen felügyelt IoT szoftverszolgáltatási megoldás, amely megkönnyíti a fizikai és a digitális világok között kapcsolatot teremtő termékek létrehozását. A csatlakoztatott termékre vonatkozó elképzelését a következőképpen valósíthatja meg:
 
 - Új megállapítások kinyerése a csatlakoztatott eszközökről, hogy az ügyfelek jobb termékekhez és élményekhez juthassanak.
 - Új üzleti lehetőségek teremtése a cég számára.
@@ -65,7 +65,7 @@ Szerkesztőként az Azure IoT Central használatával egyéni, a felhőben üzem
 - Egy felhőalapú alkalmazás, amely telemetriai adatokat fogad az eszközökről és lehetővé teszi az eszközök felügyeletét.
 - Több eszköz, amelyek egyéni kódokat futtatnak és a felhőalapú alkalmazáshoz csatlakoznak.
 
-Gyorsan létrehozhat egy új Azure IoT Central-alkalmazást, majd közvetlenül a böngészőben testreszabhatja saját egyéni igényei szerint. Azure IoT Central-szerkesztőként a webes eszközökkel létrehozhat egy _eszközsablont_ az alkalmazáshoz csatlakozó eszközök számára. Az eszközsablon adja annak az eszközmodellnek az alapját, amely az eszközsablonból létrehozott összes eszközre jellemző lesz. Az eszközsablon egy adott eszköztípus olyan jellemzőit és viselkedéstípusait határozza meg, mint:
+Gyorsan létrehozhat egy új Azure IoT Central-alkalmazást, majd közvetlenül a böngészőben testreszabhatja saját egyéni igényei szerint. Azure IoT Central-szerkesztőként a webes eszközökkel létrehozhat egy _eszközsablont_ az alkalmazáshoz csatlakozó eszközök számára. Az eszközsablon adja az eszközmodellek alapját. Az ugyanabból az eszközsablonból létrehozott összes eszköznek közös a sablonja. Az eszközsablon egy adott eszköztípus olyan jellemzőit és viselkedéstípusait határozza meg, mint:
 
 - Az eszköz által küldött telemetriai adatok.
 - Az operátor által módosítható üzleti tulajdonságok.

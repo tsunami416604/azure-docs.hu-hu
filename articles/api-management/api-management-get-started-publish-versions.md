@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: a7e5051248a579b0943fa69620215b060bd1e235
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: f9b63beeb6979d7dec5fc2cf2d91a3327ba7c43c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092693"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415236"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>Az API több verziójának közzététele 
 
@@ -37,8 +37,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
-* Végezze el a következő oktatóanyagot is: [Az első API importálása és közzététele](import-and-publish.md).
++ Az [Azure API Management terminológiájának](api-management-terminology.md) ismerete.
++ Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
++ Végezze el a következő oktatóanyagot is: [Az első API importálása és közzététele](import-and-publish.md).
 
 ## <a name="add-a-new-version"></a>Új verzió hozzáadása
 
@@ -48,8 +49,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 2. Válassza a mellette lévő helyi menüt (**...**).
 3. Válassza a **+ Verzió hozzáadása** lehetőséget.
 
-    > [!TIP]
-    > A verziók az új API-k létrehozásakor is engedélyezhetők – válassza az **Új verziót készít az API-ról?** lehetőséget az **API hozzáadása** képernyőn.
+> [!TIP]
+> A verziók az új API-k létrehozásakor is engedélyezhetők – válassza az **Új verziót készít az API-ról?** lehetőséget az **API hozzáadása** képernyőn.
 
 ## <a name="choose-a-versioning-scheme"></a>Verziókezelési séma kiválasztása
 
@@ -77,15 +78,14 @@ Az Azure API Management segítségével meghatározhatja, hogy a hívók hogyan 
 
 Ahhoz, hogy a hívók láthassák az új verziót, hozzá kell adni azt egy **termékhez**.
 
+![API Management-termékek](media/api-management-getstarted-publish-versions/08-AddMultipleVersions-03-AddVersionToProduct.png)
+
 1. Válassza a **Termékek** lehetőséget a klasszikus üzemi modell oldalán.
-
-    ![API Management-termékek](media/api-management-getstarted-publish-versions/Products.png)
-
 2. Válassza a **Korlátlan** lehetőséget.
 3. Válassza az **API-k** lehetőséget.
 4. Válassza a **Hozzáadás** lehetőséget.
 5. Válassza a **Demo Conference API, v1 verzió** elemet.
-6. Lépjen a szolgáltatásfelügyeleti oldalra, és válassza az **API-k** elemet.
+6. Kattintson a **Kiválasztás** gombra.
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>A fejlesztői portál tallózása a verzió megtekintéséhez
 

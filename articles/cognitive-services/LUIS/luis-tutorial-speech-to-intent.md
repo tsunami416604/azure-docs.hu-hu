@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: f98d640f032fed5f91df8e9d4fb55d3f20550339
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: c2581abc782558ca114cc3a5d4f6224d132bce5d
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883924"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139091"
 ---
 # <a name="integrate-speech-service"></a>A Speech Service integrálása
 A [Speech Service-szel](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) egyetlen kérésben kérhet le hanganyagokat, és adathat vissza LUIS-előrejelzési JSON-objektumokat. A cikkben egy C#-projektet fog letölteni és felhasználni a Visual Studióban arra, hogy mikrofonnal rögzítsen egy kimondott szöveget, és LUIS-előrejelzési adatokhoz jusson. A projekt a Speech [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/)-csomagot használja, amelyet referenciaként már tartalmaz. 
@@ -39,7 +39,7 @@ Ez az alkalmazás az emberi erőforrások (Human Resources, HR) tárgykörébe t
 
 
 ## <a name="add-keyphrase-prebuilt-entity"></a>Előre összeállított KeyPhrase entitás hozzáadása
-Az alkalmazás importálását követően válassza az **Entities** (Entitások), majd a **Manage prebuilt entities** (Előre összeállított entitások kezelése) lehetőséget. Adja hozzá a **KeyPhrase** entitást. A KeyPhrase entitás kinyeri a kulcstémákat a kimondott szövegekből.
+Az alkalmazás importálását követően válassza az **Entities** (Entitások), majd az **Add prebuilt entity** (Előre összeállított entitás hozzáadása) lehetőséget. Adja hozzá a **KeyPhrase** entitást. A KeyPhrase entitás kinyeri a kulcstémákat a kimondott szövegekből.
 
 ## <a name="train-and-publish-the-app"></a>Az alkalmazás betanítása és közzététele
 1. A LUIS-alkalmazás betanításához a jobb felső navigációs sávban kattintson a **Train** (Betanítás) gombra.

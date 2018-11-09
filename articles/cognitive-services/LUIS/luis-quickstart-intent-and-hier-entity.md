@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: a469bc600715b2e276d6654596da50d75659aadb
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: d3adb6c27d3550777f0a5b34b3e7e329f42432ab
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831024"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138463"
 ---
 # <a name="tutorial-5-extract-contextually-related-data"></a>5. oktatóanyag: Szövegkörnyezet szerint kapcsolódó adatok kinyerése
 Ebben az oktatóanyagban kapcsolódó adatrészleteket keresünk szövegkörnyezet alapján. Kapcsolódó lehet például az indulási hely és a cél egy épületből és irodából egy másik épületbe és irodába történő fizikai mozgás során. Munkarendelés létrehozásához mindkét adatrészletre szükség lehet, és az adatrészletek kapcsolódnak egymáshoz.  
@@ -119,7 +119,7 @@ Adja hozzá ismét az előre összeállított szám entitást az alkalmazáshoz.
 
 1. Válassza az **Entities** (Entitások) elemet a bal oldali navigációs menüben.
 
-2. Válassza a **Manage prebuilt entities** (Előre összeállított entitások kezelése) gombot.
+2. Válassza az **Add prebuilt entity** (Előre összeállított entitás hozzáadása) gombot.
 
 3. Az előre összeállított entitások listájából válassza a **number** (szám) entitást, majd kattintson a **Done** (Kész) gombra.
 
@@ -248,6 +248,10 @@ Az ebben a példában lévő helyek, például az `a-1234`, egy adott formátumo
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+
+## <a name="hierarchical-entities-versus-roles"></a>A hierarchikus entitások és a szerepkörök
+
+További információt a [szerepköröket és a hierarchikus entitásokat](luis-concept-roles.md#roles-versus-hierarchical-entities) ismertető cikkben talál.
 
 ## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag létrehozott egy új szándékot, és kimondott példaszövegeket adott hozzá az indulási és célhelyek környezetfüggő tanult adataihoz. Amint megtörtént az alkalmazás betanítása és közzététele, az ügyfélalkalmazások felhasználhatják az adott információt a megfelelő információt tartalmazó mozgatási jegy létrehozásához.

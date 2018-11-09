@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 575c8a5bec4c7763c75154835830ba350f009e93
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cf8c82f597cd659911cd66b0b7db8139e8d9d1a5
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946936"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416885"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>Oktatóanyag: Üzenetek útválasztásának konfigurálása az IoT Hub használatával
 
@@ -268,7 +268,9 @@ Az üzeneteket különböző forrásokhoz fogja irányítani azon tulajdonságok
 
 ### <a name="routing-to-a-storage-account"></a>Irányítás egy tárfiókba 
 
-Most beállíthatja az útválasztást a tárfiókhoz. Lépjen az Üzenetirányítás panelre, majd adjon hozzá egy útvonalat. Az útvonal hozzáadásakor definiáljon egy új végpontot az útvonalhoz. Ezután azokat az üzeneteket, amelyeknél a **level** tulajdonság **storage** értékre van állítva, automatikusan egy tárfiókba írja a rendszer.
+Most beállíthatja az útválasztást a tárfiókhoz. Lépjen az Üzenetirányítás panelre, majd adjon hozzá egy útvonalat. Az útvonal hozzáadásakor definiáljon egy új végpontot az útvonalhoz. Ezután azokat az üzeneteket, amelyeknél a **level** tulajdonság **storage** értékre van állítva, automatikusan egy tárfiókba írja a rendszer. 
+
+Az adatokat a rendszer Avro formátumban írja a Blob Storage-ba.
 
 1. Az [Azure Portalon](https://portal.azure.com) kattintson az **Erőforráscsoportok** elemre, majd válassza ki az erőforráscsoportot. Ez az oktatóanyag a **ContosoResources** erőforráscsoportot használja. 
 
@@ -286,9 +288,19 @@ Most beállíthatja az útválasztást a tárfiókhoz. Lépjen az Üzenetirány�
 
 6. Kattintson a **Tároló kiválasztása** lehetőségre. Ekkor megjelenik a saját tárfiókok listája. Válassza ki azt, amelyiket az előkészítő lépések során állított be. Ez az oktatóanyag a **contosostorage** tárfiókot használja. Ebben az ehhez a tárfiókhoz tartozó tárolókat láthatja. Válassza ki azt, amelyiket az előkészítő lépések során állított be. Ez az oktatóanyag a **contosoresults** tárolót használja. Kattintson a **Kiválasztás** gombra. Ekkor visszakerül a **Végpont hozzáadása** panelre. 
 
-7. A többi mezőnél használja az alapértelmezett beállításokat. A tárolási végpont létrehozásához és az útvonalhoz való hozzáadásához kattintson a **Létrehozás** lehetőségre. Ekkor visszakerül az **Útvonal hozzáadása** panelre.
+7. Ebben az oktatóanyagban a többi mező esetében az alapértelmezett értékeket fogja használni. 
 
-8.  Töltse ki az útválasztási lekérdezés hiányzó adatait. Ez a lekérdezés megszabja az üzenetek az imént végpontként hozzáadott tárolóhoz való irányításának feltételeit. Töltse ki a képernyőn látható mezőket. 
+   > [!NOTE]
+   > A blob nevének formátumát a **Blob fájlnévformátuma** mezőben adhatja meg. A mező alapértelmezett értéke: `{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}`. A formátumnak tetszőleges sorrendben tartalmaznia kell a következőket: {iothub}, {partition}, {YYYY}, {MM}, {DD}, {HH} és {mm}. 
+   > 
+   > Ha például az alapértelmezett blobfájlnév-formátumot használja egy ContosoTestHub nevű központ esetében, és a dátum/idő érték 2018. október 30., 10:56, akkor a blob neve a következő lesz: `ContosoTestHub/0/2018/10/30/10/56`.
+   > 
+   > A blobok írása Avro formátumban történik.
+   >
+
+8. A tárolási végpont létrehozásához és az útvonalhoz való hozzáadásához kattintson a **Létrehozás** lehetőségre. Ekkor visszakerül az **Útvonal hozzáadása** panelre.
+
+9. Töltse ki az útválasztási lekérdezés hiányzó adatait. Ez a lekérdezés megszabja az üzenetek az imént végpontként hozzáadott tárolóhoz való irányításának feltételeit. Töltse ki a képernyőn látható mezőket. 
 
    **Név**: Adja meg az útválasztási lekérdezés nevét. Ez az oktatóanyag a **StorageRoute** nevet használja.
 
@@ -368,17 +380,17 @@ A Service Bus-üzenetsor a kritikusként megjelölt üzenetek fogadására haszn
 
    Kattintson a **Create** (Létrehozás) gombra.
 
-1. Lépjen a logikai alkalmazáshoz. A logikai alkalmazás legegyszerűbb beszerzéséhez kattintson az **Erőforráscsoportok** elemre, válassza ki a saját erőforráscsoportját (ez az oktatóanyag a **ContosoResources** erőforráscsoportot használja), majd válassza ki a logikai alkalmazást az erőforrások listájából. Megjelenik a Logic Apps Designer lap (előfordulhat, hogy jobbra kell görgetnie, hogy megjelenjen a teljes lap). Ezután a Logic Apps Designer oldalon görgessen lefelé, amíg meg nem jelenik az **Üres logikai alkalmazás +** csempe, majd kattintson rá. 
+2. Lépjen a logikai alkalmazáshoz. A logikai alkalmazás legegyszerűbb beszerzéséhez kattintson az **Erőforráscsoportok** elemre, válassza ki a saját erőforráscsoportját (ez az oktatóanyag a **ContosoResources** erőforráscsoportot használja), majd válassza ki a logikai alkalmazást az erőforrások listájából. Megjelenik a Logic Apps Designer lap (előfordulhat, hogy jobbra kell görgetnie, hogy megjelenjen a teljes lap). Ezután a Logic Apps Designer oldalon görgessen lefelé, amíg meg nem jelenik az **Üres logikai alkalmazás +** csempe, majd kattintson rá. 
 
-1. Megjelenik az összekötők listája. Válassza a **Service Bus** lehetőséget. 
+3. Megjelenik az összekötők listája. Válassza a **Service Bus** lehetőséget. 
 
    ![Képernyőkép az összekötők listájáról.](./media/tutorial-routing/logic-app-connectors.png)
 
-1. Megjelenik az eseményindítók listája. Válassza a **Service Bus – Üzenet üzenetsorba érkezésekor (feldolgozottnak minősítés automatikusan)** lehetőséget. 
+4. Megjelenik az eseményindítók listája. Válassza a **Service Bus – Üzenet üzenetsorba érkezésekor (feldolgozottnak minősítés automatikusan)** lehetőséget. 
 
    ![Képernyőkép a Service Bus-triggerek listájáról.](./media/tutorial-routing/logic-app-triggers.png)
 
-1. A következő képernyőn töltse ki a Kapcsolat neve mezőt. Ez az oktatóanyag a **ContosoConnection** nevet használja. 
+5. A következő képernyőn töltse ki a Kapcsolat neve mezőt. Ez az oktatóanyag a **ContosoConnection** nevet használja. 
 
    ![A Service Bus-üzenetsor kapcsolatának beállítását bemutató képernyőkép.](./media/tutorial-routing/logic-app-define-connection.png)
 
@@ -386,21 +398,21 @@ A Service Bus-üzenetsor a kritikusként megjelölt üzenetek fogadására haszn
    
    ![A kapcsolat beállításának befejezését bemutató képernyőkép.](./media/tutorial-routing/logic-app-finish-connection.png)
 
-1. A következő képernyőn a legördülő listából válassza ki az üzenetsor nevét (ebben az oktatóanyagban ez **contososbqueue**). A többi mező esetében használhatja az alapértelmezett értékeket. 
+6. A következő képernyőn a legördülő listából válassza ki az üzenetsor nevét (ebben az oktatóanyagban ez **contososbqueue**). A többi mező esetében használhatja az alapértelmezett értékeket. 
 
    ![Képernyőkép az üzenetsor beállításairól.](./media/tutorial-routing/logic-app-queue-options.png)
 
-1. Állítsa be a műveletet, hogy e-mailt küldjön, amikor egy üzenet érkezik az üzenetsorba. A Logic Apps Designerben egy lépés hozzáadásához kattintson az **+ Új lépés** elemre, majd a **Művelet hozzáadása** gombra. A **Művelet kiválasztása** panelen keresse meg az **Office 365 Outlook** elemet, és kattintson rá. A triggerek képernyőjén válassza az **Office 365 Outlook – e-mail küldése** lehetőséget.  
+7. Állítsa be a műveletet, hogy e-mailt küldjön, amikor egy üzenet érkezik az üzenetsorba. A Logic Apps Designerben egy lépés hozzáadásához kattintson az **+ Új lépés** elemre, majd a **Művelet hozzáadása** gombra. A **Művelet kiválasztása** panelen keresse meg az **Office 365 Outlook** elemet, és kattintson rá. A triggerek képernyőjén válassza az **Office 365 Outlook – e-mail küldése** lehetőséget.  
 
    ![Képernyőkép az Office 365 beállításairól.](./media/tutorial-routing/logic-app-select-outlook.png)
 
-1. Ezután jelentkezzen be az Office 365-fiókjába a kapcsolat beállításához. Adja meg az e-mailek címzettjeinek e-mail-címeit. Adja meg a tárgyat is, és írja be a szövegtörzsben megjeleníteni kívánt üzenetet. Teszteléshez adja meg a saját e-mail-címét címzettként.
+8. Ezután jelentkezzen be az Office 365-fiókjába a kapcsolat beállításához. Adja meg az e-mailek címzettjeinek e-mail-címeit. Adja meg a tárgyat is, és írja be a szövegtörzsben megjeleníteni kívánt üzenetet. Teszteléshez adja meg a saját e-mail-címét címzettként.
 
    Kattintson a **Dinamikus tartalom hozzáadása** elemre a belefoglalható üzenettartalom megjelenítéséhez. Válassza a **Tartalom** lehetőséget, amellyel belefoglalhatja az üzenetet az e-mailbe. 
 
    ![Képernyőkép a logikai alkalmazás e-mail-beállításairól.](./media/tutorial-routing/logic-app-send-email.png)
 
-1. Kattintson a **Save** (Mentés) gombra. Ezután zárja be a Logic App Designert.
+9. Kattintson a **Save** (Mentés) gombra. Ezután zárja be a Logic App Designert.
 
 ## <a name="set-up-azure-stream-analytics"></a>Az Azure Stream Analytics beállítása
 
@@ -410,7 +422,7 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
 1. Az [Azure Portalon](https://portal.azure.com) kattintson az **Erőforrás létrehozása** > **Eszközök internetes hálózata** > **Stream Analytics-feladat** elemre.
 
-1. Adja meg a feladat alábbi adatait.
+2. Adja meg a feladat alábbi adatait.
 
    **Feladat neve**: A feladat neve. A névnek globálisan egyedinek kell lennie. Ez az oktatóanyag a **contosoJob** nevet használja.
 
@@ -420,13 +432,13 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
    ![A Stream Analytics-feladat létrehozását bemutató képernyőkép.](./media/tutorial-routing/stream-analytics-create-job.png)
 
-1. A feladat létrehozásához kattintson a **Létrehozás** elemre. A feladathoz való visszatéréshez kattintson az **Erőforráscsoportok** elemre. Ez az oktatóanyag a **ContosoResources** erőforráscsoportot használja. Válassza ki az erőforráscsoportot, majd kattintson a Stream Analytics-feladatra az erőforrások listájában. 
+3. A feladat létrehozásához kattintson a **Létrehozás** elemre. A feladathoz való visszatéréshez kattintson az **Erőforráscsoportok** elemre. Ez az oktatóanyag a **ContosoResources** erőforráscsoportot használja. Válassza ki az erőforráscsoportot, majd kattintson a Stream Analytics-feladatra az erőforrások listájában. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Bemenet hozzáadása a Stream Analytics-feladathoz
 
-1. A **Feladattopológia** területen kattintson a **Bemenetek** elemre.
+4. A **Feladattopológia** területen kattintson a **Bemenetek** elemre.
 
-1. A **Bemenetek** panelen kattintson a **Streambemenet hozzáadása** elemre, és válassza az IoT Hubot. A megjelenő képernyőn töltse ki az alábbi mezőket:
+5. A **Bemenetek** panelen kattintson a **Streambemenet hozzáadása** elemre, és válassza az IoT Hubot. A megjelenő képernyőn töltse ki az alábbi mezőket:
 
    **Bemeneti áljel**: Ez az oktatóanyag a **contosoinputs** áljelet használja.
 
@@ -444,13 +456,13 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
    ![A Stream Analytics-feladat bemeneteinek beállítását bemutató képernyőkép.](./media/tutorial-routing/stream-analytics-job-inputs.png)
 
-1. Kattintson a **Save** (Mentés) gombra.
+6. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Kimenet hozzáadása a Stream Analytics-feladathoz
 
 1. A **Feladattopológia** területen kattintson a **Kimenetek** elemre.
 
-1. A **Kimenetek** panelen kattintson a **Hozzáadás**, majd a **Power BI** elemre. A megjelenő képernyőn töltse ki az alábbi mezőket:
+2. A **Kimenetek** panelen kattintson a **Hozzáadás**, majd a **Power BI** elemre. A megjelenő képernyőn töltse ki az alábbi mezőket:
 
    **Kimeneti áljel**: A kimenet egyedi áljele. Ez az oktatóanyag a **contosooutputs** áljelet használja. 
 
@@ -460,25 +472,25 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
    A többi mezőnél fogadja el az alapértelmezett beállításokat.
 
-1. Kattintson az **Engedélyezés** elemre, és jelentkezzen be a Power BI-fiókjába.
+3. Kattintson az **Engedélyezés** elemre, és jelentkezzen be a Power BI-fiókjába.
 
    ![A Stream Analytics-feladat kimeneteinek beállítását bemutató képernyőkép.](./media/tutorial-routing/stream-analytics-job-outputs.png)
 
-1. Kattintson a **Save** (Mentés) gombra.
+4. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>A Stream Analytics-feladat lekérdezésének konfigurálása
 
 1. A **Feladattopológia** területen kattintson a **Lekérdezés** elemre.
 
-1. A `[YourInputAlias]` elemet cserélje le a feladat bemeneti áljelére. Ez az oktatóanyag a **contosoinputs** bemeneti áljelet használja.
+2. A `[YourInputAlias]` elemet cserélje le a feladat bemeneti áljelére. Ez az oktatóanyag a **contosoinputs** bemeneti áljelet használja.
 
-1. A `[YourOutputAlias]` elemet cserélje le a feladat kimeneti áljelére. Ez az oktatóanyag a **contosooutputs** áljelet használja.
+3. A `[YourOutputAlias]` elemet cserélje le a feladat kimeneti áljelére. Ez az oktatóanyag a **contosooutputs** áljelet használja.
 
    ![A Stream Analytics-feladat lekérdezésének beállítását bemutató képernyőkép.](./media/tutorial-routing/stream-analytics-job-query.png)
 
-1. Kattintson a **Save** (Mentés) gombra.
+4. Kattintson a **Save** (Mentés) gombra.
 
-1. Zárja be a Lekérdezés panelt. Ezzel visszatér az erőforrások nézetére az Erőforráscsoportban. Kattintson a Stream Analytics-feladatra. Ebben az oktatóanyagban a neve: **contosoJob**.
+5. Zárja be a Lekérdezés panelt. Ezzel visszatér az erőforrások nézetére az Erőforráscsoportban. Kattintson a Stream Analytics-feladatra. Ebben az oktatóanyagban a neve: **contosoJob**.
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics-feladat futtatása
 
@@ -520,7 +532,7 @@ Ha minden helyesen lett beállítva, a következő eredményeket fogja látni:
    * Az üzenetet a Service Bus-üzenetsorból lekérő logikai alkalmazás megfelelően működik.
    * A logikai alkalmazás Outlook-összekötője megfelelően működik. 
 
-1. Az [Azure Portalon](https://portal.azure.com) kattintson az **Erőforráscsoportok** elemre, és válassza ki az erőforráscsoportot. Ez az oktatóanyag a **ContosoResources** erőforráscsoportot használja. Válassza ki a tárfiókot, kattintson a **Blobok** elemre, majd válassza a Tároló lehetőséget. Ez az oktatóanyag a **contosoresults** tárolót használja. Megjelenik egy mappa, amelyben lefúrhat a könyvtárakba, amíg egy vagy több fájlt nem lát. Nyissa meg az egyik fájlt. A fájlok a tárfiókhoz irányított bejegyzéseket tartalmazzák. 
+2. Az [Azure Portalon](https://portal.azure.com) kattintson az **Erőforráscsoportok** elemre, és válassza ki az erőforráscsoportot. Ez az oktatóanyag a **ContosoResources** erőforráscsoportot használja. Válassza ki a tárfiókot, kattintson a **Blobok** elemre, majd válassza a Tároló lehetőséget. Ez az oktatóanyag a **contosoresults** tárolót használja. Megjelenik egy mappa, amelyben lefúrhat a könyvtárakba, amíg egy vagy több fájlt nem lát. Nyissa meg az egyik fájlt. A fájlok a tárfiókhoz irányított bejegyzéseket tartalmazzák. 
 
    ![A tároló eredményfájljait bemutató képernyőkép.](./media/tutorial-routing/results-in-storage.png)
 
@@ -534,35 +546,35 @@ Most, hogy az alkalmazás fut, állítsa be a Power BI-vizualizációt az alapé
 
 1. Jelentkezzen be a [Power BI](https://powerbi.microsoft.com/)-fiókjába.
 
-1. Lépjen a **Munkaterületek** részhez, és válassza ki azt a munkaterületet, amelyet a Stream Analytics-feladat kimenetének létrehozásakor állított be. Ez az oktatóanyag a **My Workspace** nevű munkaterületet használja. 
+2. Lépjen a **Munkaterületek** részhez, és válassza ki azt a munkaterületet, amelyet a Stream Analytics-feladat kimenetének létrehozásakor állított be. Ez az oktatóanyag a **My Workspace** nevű munkaterületet használja. 
 
-1. Kattintson az **Adatkészletek** elemre.
+3. Kattintson az **Adatkészletek** elemre.
 
    Megjelenik az adatkészlet, amelyet a Stream Analytics-feladat kimenetének létrehozásakor adott meg. Ez az oktatóanyag a **contosodataset** nevet használja. (Akár 5-10 percet is igénybe vehet, mire az adatkészlet először megjelenik.)
 
-1. A **MŰVELETEK** területen kattintson az első ikonra egy jelentés létrehozásához.
+4. A **MŰVELETEK** területen kattintson az első ikonra egy jelentés létrehozásához.
 
    ![Képernyőkép a Power BI-munkaterületről; a Műveletek és a jelentés ikon ki van emelve.](./media/tutorial-routing/power-bi-actions.png)
 
-1. Hozzon létre egy vonaldiagramot, amely a valós időben jeleníti meg a hőmérséklet változását.
+5. Hozzon létre egy vonaldiagramot, amely a valós időben jeleníti meg a hőmérséklet változását.
 
-   a. A jelentéslétrehozási lapon vegyen fel egy vonaldiagramot a vonaldiagram ikonra kattintva.
+   * A jelentéslétrehozási lapon vegyen fel egy vonaldiagramot a vonaldiagram ikonra kattintva.
 
    ![Képernyőkép a vizualizációkról és mezőkről.](./media/tutorial-routing/power-bi-visualizations-and-fields.png)
 
-   b. A **Mezők** panelen bontsa ki Stream Analytics-feladat kimenetének létrehozásakor megadott táblát. Ez az oktatóanyag a **contosotable** nevet használja.
+   * A **Mezők** panelen bontsa ki Stream Analytics-feladat kimenetének létrehozásakor megadott táblát. Ez az oktatóanyag a **contosotable** nevet használja.
 
-   c. Az **EventEnqueuedUtcTime** elemet húzza a **Vizualizációk** panel **Tengely** részére.
+   * Az **EventEnqueuedUtcTime** elemet húzza a **Vizualizációk** panel **Tengely** részére.
 
-   d. Húzza a **hőmérséklet** elemet az **Értékek** helyre.
+   * Húzza a **hőmérséklet** elemet az **Értékek** helyre.
 
    Létrejön a vonaldiagram. Az X tengely az UTC időzóna szerinti dátumot is időt mutatja. Az Y tengelyen az érzékelőből származó hőmérsékleti adatok láthatók.
 
-1. Hozzon létre egy másik vonaldiagramot, amely a valós időben jeleníti meg a páratartalom változását. Második diagram beállításához kövesse a fenti lépéseket, és az **EventEnqueuedUtcTime** elemet helyezze az X tengelyre, a **páratartalom** értéket pedig az Y tengelyre.
+6. Hozzon létre egy másik vonaldiagramot, amely a valós időben jeleníti meg a páratartalom változását. Második diagram beállításához kövesse a fenti lépéseket, és az **EventEnqueuedUtcTime** elemet helyezze az X tengelyre, a **páratartalom** értéket pedig az Y tengelyre.
 
    ![Képernyőkép a végleges, két diagramot tartalmazó Power BI-jelentésről.](./media/tutorial-routing/power-bi-report.png)
 
-1. Kattintson a **Mentés** elemre a jelentés mentéséhez.
+7. Kattintson a **Mentés** elemre a jelentés mentéséhez.
 
 Az adatoknak mindkét diagramon meg kell jelenniük. Ez a következőt jelenti:
 
@@ -595,7 +607,6 @@ Az erőforráscsoport a [Remove-AzureRmResourceGroup](https://docs.microsoft.com
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan használhatja az üzenetek útvonalválasztását IoT Hub üzenetek különböző célokhoz történő irányítására az alábbi feladatok elvégzésével.  
@@ -615,5 +626,3 @@ A következő oktatóanyag az IoT-eszközök állapotának kezelését mutatja b
 
 > [!div class="nextstepaction"]
 [Eszközök konfigurálása háttérszolgáltatásból](tutorial-device-twins.md)
-
- <!--  [Manage the state of a device](./tutorial-manage-state.md) -->

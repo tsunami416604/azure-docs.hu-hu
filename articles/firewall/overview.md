@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 9/26/2018
 ms.author: victorh
-ms.openlocfilehash: 1527ed9c0a83577da9a231cb91a93ad7f182061c
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 868c20e6f0244794299678214902adf3e6e95f14
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392694"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241412"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -65,7 +65,7 @@ Az Azure Firewall az alábbi ismert hibákkal rendelkezik:
 |Probléma  |Leírás  |Kezelés  |
 |---------|---------|---------|
 |Ütközés az Azure Security Center (ASC) igény szerinti (JIT) szolgáltatásával|Ha a virtuális gépet a JIT használatával éri el, és az egy olyan alhálózaton található, amelynek a felhasználó által megadott útvonala alapértelmezett átjáróként az Azure Firewallra mutat, az ASC JIT szolgáltatása nem működik. Ez az aszimmetrikus útválasztás eredménye – a csomag a virtuális gép nyilvános IP-címen keresztül érkezik be (a JIT nyitotta meg a hozzáférést), a visszatérési útvonal azonban a tűzfalon keresztül vezet, amely eldobja a csomagot, mivel a tűzfalon nem lett munkamenet létrehozva.|A probléma megkerüléséhez helyezze a JIT használatával elért virtuális gépeket egy olyan külön alhálózatra, amelyen nincs felhasználó által megadott, a tűzfalra mutató útvonal.|
-|A globális társviszony-létesítéssel rendelkező küllős topológia nem működik|A küllős modell, amelyben a központ és a tűzfal az egyik Azure-régióban van telepítve, a küllők pedig egy másikban, és ezek a központhoz virtuális társhálózatok közötti globális tárviszony-létesítés útján kapcsolódnak, nem támogatott.|További információt a [virtuális hálózatok társviszony-létesítésének létrehozását, módosítását és törlését](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints) ismertető cikkben talál.|
+|A globális társviszony-létesítéssel rendelkező küllős topológia nem támogatott|A küllős modell használata, amelyben a központ és a tűzfal az egyik Azure-régióban van üzembe helyezve, a küllők pedig egy másik Azure-régióban. A központhoz globális virtuális társhálózatokkal történő csatlakozás nem támogatott.|Ez az elvárt működés. További információkért tekintse meg [az Azure-előfizetések és -szolgáltatások korlátozásait, kvótáit és megkötéseit](../azure-subscription-service-limits.md#azure-firewall-limits) ismertető témakört.|
 A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési szabályok nem működnek az internetre irányuló forgalom esetében|A nem TCP/UDP-protokollokra vonatkozó hálózati szűrési szabályok nem működnek a nyilvános IP-címre vonatkozó forráshálózati címfordítással. A nem TCP/UDP-protokollok a küllők alhálózatai és a virtuális hálózatok között támogatottak.|Az Azure Firewall a Standard Load Balancert használja, [amely jelenleg nem támogatja a forráshálózati címfordítást az IP-protokollokon](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#limitations). Jelenleg vizsgáljuk a lehetőségeket, hogy ezt a forgatókönyvet valamelyik későbbi kiadás támogathassa majd.|
 |A DNAT nem működik a 80-as és 22-es port esetén.|A NAT-szabálygyűjtemény Destination Port (Célport) mezője nem tartalmazhatja a 80-as vagy a 22-es portot.|Dolgozunk a probléma mielőbbi megoldásán. Addig is használjon egy másik portot a NAT-szabályok célportjaként. A 80-as vagy a 22-es port továbbra is használható a lefordított portként (például leképezheti a nyilvános ip:81-et a magánhálózati ip:80-ra).|
 |A PowerShell és a CLI nem támogatja az ICMP-t|Az Azure PowerShell és a CLI nem támogatja az ICMP-t érvényes protokollként a hálózati szabályok között.|Az ICMP továbbra is használható protokollként a portálon vagy a REST API-n keresztül. Dolgozunk azon, hogy hamarosan a PowerShellben és a CLI-ben is elérhető legyen az ICMP.|

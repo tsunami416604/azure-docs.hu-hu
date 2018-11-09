@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: f87bc1d8140bea9ebb09e45d42b27e201b474026
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
-ms.translationtype: MT
+ms.openlocfilehash: dfb36cfba312d54d469b371f02820fd01da6dc7f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214342"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243420"
 ---
 # <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>Párhuzamos tömeges adatimportálás SQL partíciós táblák használatával
 Ez a dokumentum ismerteti, hogyan hozhat létre gyors párhuzamos tömeges importálása az SQL Server-adatbázis az adatokat a particionált táblákat. Big Data típusú adatok betöltése és átvitele egy SQL Database, az adatok importálása az SQL DB és a lekérdezések a javítása érdekében a *particionált táblák és nézetek*. 
@@ -102,7 +102,7 @@ További információkért lásd: [létrehozása particionált táblák és inde
 * [Az adatbázis](https://msdn.microsoft.com/library/bb522682.aspx) tömegesen_naplózott minimalizálása érdekében a terhelés, naplózás, például tranzakciós naplózási sémát módosítani:
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* Gyorsíthatja fel az adatok betöltése, nyissa meg a tömeges importálási műveletek párhuzamosan. Gyorsabb kiváltó okokat kereső tömeges tippek big Data típusú adatok importálása az SQL Server-adatbázisok, lásd: [kevesebb mint 1 óra 1 TB adat betöltése](http://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx).
+* Gyorsíthatja fel az adatok betöltése, nyissa meg a tömeges importálási műveletek párhuzamosan. Gyorsabb kiváltó okokat kereső tömeges tippek big Data típusú adatok importálása az SQL Server-adatbázisok, lásd: [kevesebb mint 1 óra 1 TB adat betöltése](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx).
 
 A következő PowerShell-parancsfájlt, amelyek párhuzamosan adatok betöltése a BCP használatával.
 

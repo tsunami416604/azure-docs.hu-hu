@@ -1,6 +1,6 @@
 ---
-title: Azure Policy-minta – Engedélyezett társviszony-létesítési helyek Express Route-útvonalakhoz
-description: Ez a szabályzat megköveteli a megadott társviszony-létesítési helyek használatát az Express Route-útvonalakon.
+title: Azure Policy-minta – Engedélyezett társviszony-létesítési helyek az ExpressRoute-hoz
+description: Ez a szabályzat megköveteli, hogy az ExpressRoute adott társviszony-létesítési helyeket használjon.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -9,22 +9,22 @@ ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 00982d07662cd08c4cf3c74c7316a7f6c3361f46
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9c96810db0a3d89006d1b1613cf1489882f3c7e1
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946918"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249068"
 ---
-# <a name="allowed-peering-location-for-express-route"></a>Engedélyezett társviszony-létesítési helyek Express Route-útvonalakhoz
+# <a name="allowed-peering-location-for-expressroute"></a>Engedélyezett társviszony-létesítési helyek az ExpressRoute-hoz
 
-Ez a szabályzat megköveteli a megadott társviszony-létesítési helyek használatát az Express Route-útvonalakon. Meg kell adnia egy engedélyezett társviszony-létesítési helyeket tartalmazó tömböt.
+Ez a szabályzat megköveteli, hogy az ExpressRoute adott társviszony-létesítési helyeket használjon. Meg kell adnia egy engedélyezett társviszony-létesítési helyeket tartalmazó tömböt.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="sample-template"></a>Példasablon
 
-[!code-json[main](../../../../policy-templates/samples/Network/express-route-peeringLocation/azurepolicy.json "Allowed Peering Location for Express Route")]
+[!code-json[main](../../../../policy-templates/samples/Network/express-route-peeringLocation/azurepolicy.json "Allowed Peering Location for ExpressRoute")]
 
 A sablon az [Azure Portal](#deploy-with-the-portal), a [PowerShell](#deploy-with-powershell) vagy az [Azure CLI](#deploy-with-azure-cli) használatával helyezhető üzembe.
 
@@ -37,7 +37,7 @@ A sablon az [Azure Portal](#deploy-with-the-portal), a [PowerShell](#deploy-with
 [!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh.md)]
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition -Name "express-route-peeringLocation" -DisplayName "Allowed Peering Location for Express Route" -description "This policy enables you to specify a set of allowed peering location for express route" -Policy 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/express-route-peeringLocation/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/express-route-peeringLocation/azurepolicy.parameters.json' -Mode All
+$definition = New-AzureRmPolicyDefinition -Name "express-route-peeringLocation" -DisplayName "Allowed Peering Location for ExpressRoute" -description "This policy enables you to specify a set of allowed peering location for ExpressRoute" -Policy 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/express-route-peeringLocation/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/express-route-peeringLocation/azurepolicy.parameters.json' -Mode All
 $definition
 $assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope>  -listOfLocations <Allowed Peering Locations> -PolicyDefinition $definition
 $assignment
@@ -56,7 +56,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
 ```azurecli-interactive
-az policy definition create --name 'express-route-peeringLocation' --display-name 'Allowed Peering Location for Express Route' --description 'This policy enables you to specify a set of allowed peering location for express route' --rules 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/express-route-peeringLocation/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/express-route-peeringLocation/azurepolicy.parameters.json' --mode All
+az policy definition create --name 'express-route-peeringLocation' --display-name 'Allowed Peering Location for ExpressRoute' --description 'This policy enables you to specify a set of allowed peering location for ExpressRoute' --rules 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/express-route-peeringLocation/azurepolicy.rules.json' --params 'https://raw.githubusercontent.com/Azure/azure-policy/master/samples/Network/express-route-peeringLocation/azurepolicy.parameters.json' --mode All
 
 az policy assignment create --name <assignmentname> --scope <scope> --policy "express-route-peeringLocation"
 ```
@@ -71,4 +71,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>További lépések
 
-- További minták [Az Azure Policy mintái](index.md) oldalon
+- További példákat [Az Azure Policy-minták](index.md) oldalon talál.

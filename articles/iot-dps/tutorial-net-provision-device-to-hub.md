@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 84072c7e5f7aa37e89fc1b93c1585167dd6d9f4b
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 8602f020481249282756a952a46b32bd9e768372
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41920756"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241319"
 ---
 # <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Az eszköz regisztrálása IoT Hubra az Azure IoT Hub Provisioning Service ügyfél (.NET) használatával
 
@@ -230,7 +230,7 @@ Indítsa el az eszközt, hogy az ügyfélalkalmazás elindíthassa a Device Prov
 
 ## <a name="verify-the-device-is-registered"></a>Az eszköz sikeres regisztrálásának ellenőrzése
 
-Az eszköz indítása után a következő műveleteket kell elvégezni. További részletekért tekintse meg a TPM-szimulátor [dps_client_sample](https://github.com/Azure/azure-iot-device-auth/blob/master/dps_client/samples/dps_client_sample/dps_client_sample.c) mintaalkalmazását. 
+Az eszköz indítása után a következő műveleteket kell elvégezni. További részletekért tekintse meg az [eszközregisztrációs ügyfélmintát](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device). 
 
 1. Az eszköz regisztrációs kérést küld a Device Provisioning Service-nek.
 2. TPM-eszközök esetén a Device Provisioning Service visszaküld egy regisztrációs kihívást, amelyre az eszköz válaszol. 

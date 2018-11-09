@@ -10,18 +10,20 @@ ms.component: qna-maker
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: tulasim
-ms.openlocfilehash: 742c18815445b038e85c33a96743790491976945
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: bd859183a13e0f8a21cdd2eabb464b718e949464
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901107"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212216"
 ---
 # <a name="what-is-qna-maker"></a>Mi a QnA Maker?
 
-A QnA Maker egy kérdéseken és válaszokon alapuló tudásbázis- (KB-) szolgáltatás, amely egyéni gépi tanulási intelligenciát alkalmaz a felhasználó természetes nyelvi kérdéseinek lehető legjobb megválaszolására.
+A QnA Maker egy olyan felhőalapú API-szolgáltatás, amely egy beszélgetésre szánt, kérdés és válasz típusú réteget hoz létre az adatok alapján. 
 
-A QnA Maker lehetővé teszi egy felhőalapú szolgáltatás működtetését olyan félig strukturált tartalmakból, mint a Gyakori kérdések (GYIK) dokumentumok, az URL-alapú tartalmak, a termékútmutatók és az egyéni kérdések és válaszok. A könnyen kezelhető [webes portálon](https://qnamaker.ai) létrehozhat, felügyelhet, betaníthat és közzétehet szolgáltatásokat fejlesztői tapasztalat nélkül is. Miután közzétett egy szolgáltatást egy végponton, ügyfélalkalmazások, például csevegőrobotok beszélgethetnek a felhasználókkal, hogy megválaszolják a kérdéseiket. 
+A QnA Maker lehetővé teszi egy tudásbázis létrehozását az olyan, félig strukturált tartalmakból, mint a Gyakori kérdések (GYIK) URL-címei, a termékútmutatók, a támogatási dokumentumok, illetve az egyéni kérdések és válaszok. A QnA Maker szolgáltatás egyezteti a felhasználók természetes nyelvi kérdéseit a Tudásbázisban szereplő kérdésekkel és válaszokkal, majd a lehető legjobban megfelelő választ adja vissza.
+
+A könnyen kezelhető [webes portálon](https://qnamaker.ai) létrehozhat, felügyelhet, betaníthat és közzétehet szolgáltatásokat fejlesztői tapasztalat nélkül is. Miután közzétett egy szolgáltatást egy végponton, ügyfélalkalmazások, például csevegőrobotok beszélgethetnek a felhasználókkal, hogy megválaszolják a kérdéseiket. 
 
 ![Áttekintés](../media/qnamaker-overview-learnabout/overview.png)
 
@@ -29,7 +31,7 @@ A QnA Maker lehetővé teszi egy felhőalapú szolgáltatás működtetését ol
 
 A QnA Maker két fő szolgáltatást biztosít az adatokhoz:
 
-* **Kinyerés**: strukturált kérdés-válasz adatokat nyerhet ki olyan félig strukturált [adatforrásokból](../Concepts/data-sources-supported.md), mint egy GYIK-dokumentum vagy egy termékútmutató. Ez a kinyerés végrehajtható a tudásbázis [létrehozásának](https://aka.ms/qnamaker-docs-createkb) részeként vagy azt követően, a szerkesztési folyamat részeként.
+* **Kinyerés**: strukturált kérdés-válasz adatokat nyerhet ki olyan strukturált és félig strukturált [adatforrásokból](../Concepts/data-sources-supported.md), mint egy GYIK-dokumentum vagy egy termékútmutató. Ez a kinyerés végrehajtható a tudásbázis [létrehozásának](https://aka.ms/qnamaker-docs-createkb) részeként vagy azt követően, a szerkesztési folyamat részeként.
 
 * **Megfeleltetés**: Ha kész a tudásbázisa, és [elvégezte a betanítást és a tesztelést is](https://aka.ms/qnamaker-docs-trainkb), [közzéteheti](https://aka.ms/qnamaker-docs-publishkb) a tudásbázist. Ez engedélyez egy végpontot a QnA Maker-tudásbázishoz, amely azután használható lesz a robotban vagy az ügyfélalkalmazásban. Ez a végpont fogadja a felhasználói kérdéseket, és válaszol a tudásbázisban található legjobb válasszal, mellékelve a találat megbízhatósági pontszámát is.
 
@@ -53,11 +55,11 @@ A QnA Maker két fő szolgáltatást biztosít az adatokhoz:
 
 ## <a name="qna-maker-architecture"></a>QnA Maker-architektúra
 
-A QnA Maker a következő API-szolgáltatásokat tartalmazza:
+A QnA Maker-architektúra a következő két összetevőből áll:
 
 1. **QnA Maker felügyeleti szolgáltatások**: A QnA Maker-tudásbázis kezelhetősége, amely tartalmazza a kezdeti létrehozást, a frissítést, a betanítást és a közzétételt. Ezek a tevékenységek a [portálon](https://qnamaker.ai) vagy a [kezelési API-kon](https://aka.ms/qnamaker-v4-apis) keresztül végezhetők el. 
 
-2. **QnA Maker előrejelzési szolgáltatás**: Ez a megadott régióban lévő Azure-előfizetésében lesz üzembe helyezve. Az ügyféltudásbázisok tartalmát a rendszer az [Azure Search](https://azure.microsoft.com/services/search/) szolgáltatásban tárolja, és a végpontot [App Services-szolgáltatásként](https://azure.microsoft.com/services/app-service/) helyezi üzembe. Választhatja azt a lehetőséget is, hogy üzembe helyez egy [Application Insights](https://azure.microsoft.com/services/application-insights/)-erőforrást elemzési célból.
+2. **QnA Maker-adatok és -futtatókörnyezet**: Ez a megadott régióban lévő Azure-előfizetésében lesz üzembe helyezve. Tudásbázisainak tartalmát a rendszer az [Azure Search](https://azure.microsoft.com/services/search/) szolgáltatásban tárolja, és a végpontot [App Services-szolgáltatásként](https://azure.microsoft.com/services/app-service/) helyezi üzembe. Választhatja azt a lehetőséget is, hogy üzembe helyez egy [Application Insights](https://azure.microsoft.com/services/application-insights/)-erőforrást elemzési célból.
 
 ![Architektúra](../media/qnamaker-overview-learnabout/architecture.png)
 

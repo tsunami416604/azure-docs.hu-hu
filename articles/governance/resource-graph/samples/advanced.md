@@ -4,21 +4,21 @@ description: Az Azure Resource Graph használatával speciális lekérdezéseket
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 934dff93b9a7f5d6755f55ad1073e01e586b1ca7
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: fbbdc4a67cd6f2e7d74031f7acc584bf0004bea4
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647833"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085376"
 ---
 # <a name="advanced-resource-graph-queries"></a>Speciális Resource Graph-lekérdezések
 
-Az Azure Resource Graph-fal végzett lekérdezések megértéséhez először a [lekérdezés nyelvét](../concepts/query-language.md) kell alapszinten megismernie. Ha még nem ismeri az [Azure Data Explorert](../../../data-explorer/data-explorer-overview.md), javasoljuk, hogy a keresett erőforrásokra vonatkozó kérések összeállításának megértéséhez tekintse át az alapokat.
+Az Azure Resource Graph-fal végzett lekérdezések megértéséhez először a [lekérdezés nyelvét](../concepts/query-language.md) kell alapszinten megismernie. Ha még nem ismeri az [Azure Data Explorert](../../../data-explorer/data-explorer-overview.md), javasoljuk, hogy tekintse át az alapokat a keresett erőforrásokra vonatkozó kérések összeállításának megértéséhez.
 
 A következő speciális lekérdezéseken vezetjük végig:
 
@@ -33,9 +33,9 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Az Azure Resource Graph-ot az Azure CLI (bővítményen keresztül) és az Azure PowerShell (modulon keresztül) támogatja. Mielőtt a következő lekérdezések bármelyikét végrehajtaná, ellenőrizze, hogy a környezet készen áll-e. A kiválasztott parancshéj környezet telepítéséhez és ellenőrzéséhez lásd: [Azure CLI](../first-query-azurecli.md#add-the-resource-graph-extension) és [Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module).
 
-## <a name="vmss-capacity"></a>VMSS kapacitásának és méretének lekérése
+## <a name="vmss-capacity"></a>Virtuálisgép-méretezési csoport kapacitásának és méretének lekérése
 
-Ez a lekérdezés virtuálisgép-méretezési csoportok (VMSS-ek) erőforrásait keresi meg, és különböző adatokat kér le, többet között a méretezési csoport virtuálisgép-méretét és kapacitását. Ez az információ a `toint()` függvénnyel képezi le a kapacitást egy számmá, amely így rendezhető lesz. Ez egyúttal át is nevezi a visszaadott értékeket egyéni nevű tulajdonságokká.
+Ez a lekérdezés a virtuálisgép-méretezési csoportok erőforrásait keresi meg, és különböző adatokat kér le, többet között a méretezési csoport virtuálisgép-méretét és kapacitását. Ez a lekérdezés a `toint()` függvénnyel képezi le a kapacitást egy számmá, amely így rendezhető lesz. Végül a rendszer egyéni elnevezett tulajdonságokká nevezi át az oszlopokat.
 
 ```Query
 where type=~ 'microsoft.compute/virtualmachinescalesets'
@@ -75,8 +75,8 @@ Ez a lekérdezés olyan virtuális gépeket keres, amelyek egyeznek egy [regulá
 A **matches regex @** kifejezéssel tudjuk definiálni a reguláris kifejezést, amely esetünkben a következő: **^Contoso(.*)[0-9]+$**. A reguláris kifejezés definíciójának magyarázata:
 
 - `^` – Az egyezésnek a sztring elején kell kezdődnie.
-- `Contoso` – Az egyeztetni kívánt sztring (megkülönbözteti a kis- és nagybetűket).
-- `(.*)` – Beágyazott kifejezés:
+- `Contoso` – A kis- és nagybetűket megkülönböztető sztring.
+- `(.*)` – Egy alkifejezés egyezése:
   - `.` – Egyezik bármely egyetlen karakterrel (az új sor kivételével).
   - `*` – Az előző elemmel nullaszor vagy többször egyezik.
 - `[0-9]` – Karaktercsoport-egyezés a 0 és 9 közötti számokhoz.

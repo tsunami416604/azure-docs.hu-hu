@@ -1,20 +1,19 @@
 ---
-title: Az Azure-ba replikált VMware virtuális gépek és fizikai kiszolgálók feladatátvétele és feladat-visszavétele a Site Recoveryvel | Microsoft Docs
-description: Tekintse meg, hogy a VMware virtuális gépek és fizikai kiszolgálók feladatait hogyan veheti át az Azure-ban, hogyan veheti vissza a feladatokat a helyszíni kiszolgálókra az Azure Site Recoveryvel
-services: site-recovery
+title: VMware virtuális gépek és fizikai kiszolgálók feladatátvétele és feladat-visszavétele a Site Recoveryvel az Azure-ba végzett vészhelyreállítás során | Microsoft Docs
+description: Megtudhatja, hogy végezheti el VMware virtuális gépek és fizikai kiszolgálók feladatátvételét az Azure-ba, illetve a feladatok visszavételét a helyszíni kiszolgálókra az Azure Site Recoveryvel végzett, Azure-ba történő vészhelyreállítás során
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/11/2018
+ms.date: 10/29/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7e586e7e3ec8c16dcd215dbc11251d1b9fe928e1
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: a574c28cae449526ddc8fe0fbb9323fb14b7b6f1
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457064"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215344"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Az Azure-ba replikált VMware virtuális gépek és fizikai kiszolgálók feladatátvétele és feladat-visszavétele
 

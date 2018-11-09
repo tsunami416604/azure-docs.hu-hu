@@ -14,12 +14,12 @@ ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: c680de254c55adaad8cedde6cf4748efd0c2c858
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d8ece15e7e8fa3b74fbefc78aea65683229712ca
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38700900"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246769"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Ismerkedés a Notification Hubs Baiduval való használatával
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -31,7 +31,7 @@ Mivel a Google Play és az FCM (Firebase Cloud Messaging) nem érhető el Kíná
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyaghoz a következőkre lesz szükség:
 
-* Android SDK (feltételezzük, hogy Android Studiót használ), amelyet az <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android webhelyéről</a> tölthet le
+* Android SDK (feltételezzük, hogy Android Studiót használ), amelyet az <a href="https://go.microsoft.com/fwlink/?LinkId=389797">Android webhelyéről</a> tölthet le
 * [Baidu Push Android SDK]
 
 > [!NOTE]
@@ -475,7 +475,7 @@ A leküldéses értesítések küldése általában olyan háttérszolgáltatás
 Az egyszerűség kedvéért ez az oktatóanyag konzolalkalmazással mutatja be, hogyan küldhet értesítéseket a .NET SDK-val. Az értesítéseknek ASP.NET-háttérrendszerből történő küldéséhez azonban következő lépésként [A Notification Hubs használata leküldéses értesítések küldéséhez felhasználók számára](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) oktatóanyagot ajánljuk. 
 
 Íme néhány megközelítés az értesítések küldéséhez:
-* **REST-felület**: A [REST-felület](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx) használatával bármilyen háttérplatformon támogathatja az értesítéseket.
+* **REST-felület**: A [REST-felület](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx) használatával bármilyen háttérplatformon támogathatja az értesítéseket.
 * **Microsoft Azure Notification Hubs .NET SDK**: A Visual Studio NuGet-csomagkezelőjében futtassa a következő parancsot: [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 * **Node.js**: [A Notification Hubs használata a Node.js-ből](notification-hubs-nodejs-push-notification-tutorial.md).
 * **Mobile Apps**: A [Leküldéses értesítések hozzáadása Mobile Apps-alkalmazáshoz](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md) témakörben találhat példát arra, hogy hogyan küldhetők értesítések a Notification Hubs szolgáltatással integrált Azure App Service Mobile Apps háttéralkalmazásból.

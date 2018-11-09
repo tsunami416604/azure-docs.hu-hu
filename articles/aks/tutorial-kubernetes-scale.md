@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/14/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 5ffe7b4c7830500e5eeeeb61c57730d9a0d9df47
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 4e2ba61ada16c922dc89d9d6c9aa6a0fce8b0941
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41918950"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414180"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások skálázása az Azure Kubernetes Service-ben (AKS)
 
@@ -71,7 +71,13 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>Podok automatikus méretezése
 
-A Kubernetes támogatja a [podok horizontális felskálázását][kubernetes-hpa] a környezetekben a podok számának a processzorhasználat vagy egyéb megadott metrikák alapján való módosítása érdekében. A [Metrics Server][metrics-server] erőforrás-használatot biztosít a Kubernetes számára. A Metrics Server üzeme helyezéséhez klónozza a(z) `metrics-server` GitHub-adattárat, és telepítse az erőforrás-definíciók példáit. Ezeknek a YAML-definícióknak a tartalmát a [Metrics Server for Kuberenetes 1.8+][metrics-server-github] cikkben találja.
+A Kubernetes támogatja a [podok horizontális felskálázását][kubernetes-hpa] a környezetekben a podok számának a processzorhasználat vagy egyéb megadott metrikák alapján való módosítása érdekében. A [Metrics Server][metrics-server] erőforrás-használatot biztosít a Kubernetes számára, üzembe helyezése pedig automatikusan megtörténik az 1.10-es vagy újabb verziójú AKS-fürtökön. Az AKS-fürt verziószámának megtekintéséhez használja az [az aks show][az-aks-show] parancsot az alábbi példában látható módon:
+
+```azurecli
+az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion
+```
+
+Ha az AKS-fürt verziószáma *1.10*-esnél régebbi, telepítse a Metrics Servert, máskülönben hagyja ki ezt a lépést. Klónozza a `metrics-server` GitHub-adattárat, és telepítse az erőforrás-definíciók példáit. Ezeknek a YAML-definícióknak a tartalmát a [Metrics Server for Kuberenetes 1.8+][metrics-server-github] cikkben találja.
 
 ```console
 git clone https://github.com/kubernetes-incubator/metrics-server.git
@@ -112,7 +118,7 @@ Ha a Kubernetes-fürtöt az előző oktatóanyagban szereplő parancsokkal hozta
 A következő példában háromra növeljük a csomópontok számát a *myAKSCluster* nevű Kubernetes-fürtben. A parancs végrehajtása eltarthat néhány percig.
 
 ```azurecli
-az aks scale --resource-group=myResourceGroup --name=myAKSCluster --node-count 3
+az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 ```
 
 Az eredmény az alábbihoz hasonlóan fog kinézni:
@@ -160,3 +166,4 @@ A következő oktatóanyag azt mutatja be, hogyan frissítheti az alkalmazásoka
 [aks-tutorial-update-app]: ./tutorial-kubernetes-app-update.md
 [az-aks-scale]: /cli/azure/aks#az-aks-scale
 [azure-cli-install]: /cli/azure/install-azure-cli
+[az-aks-show]: /cli/azure/aks#az-aks-show

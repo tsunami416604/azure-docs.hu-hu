@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 6aff31c662a845028a02cecd7a99837f92bc87e5
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 4b4230397da7d97b613b546f33a0cbb764675720
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394221"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214817"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Rövid útmutató: Azure Data Explorer-fürt és -adatbázis létrehozása
 
@@ -31,11 +31,11 @@ Egy Azure Data Explorer-fürtöt hozunk létre egy Azure-erőforráscsoportban, 
 
 1. A portál bal felső sarkában válassza az **Erőforrás létrehozása** (+) gombot.
 
-1. Keressen az *Azure Data Explorer* kifejezésre, majd válassza az **Azure Data Explorer** lehetőséget.
+1. Keressen az *Azure Data Explorer* kifejezésre.
 
    ![Erőforrások keresése](media/create-cluster-database-portal/search-resources.png)
 
-1. A bal alsó sarokban válassza a **Létrehozás** lehetőséget.
+1. Az **Azure Data Explorer** területen, a képernyő alján válassza a **Létrehozás** elemet.
 
 1. Adja meg a fürt egyedi nevét, válassza ki az előfizetést, és hozzon létre egy erőforráscsoportot *test-resource-group* néven.
 
@@ -51,10 +51,12 @@ Egy Azure Data Explorer-fürtöt hozunk létre egy Azure-erőforráscsoportban, 
     | Előfizetés | Az Ön előfizetése | Válassza ki a fürthöz használni kívánt Azure-előfizetést.|
     | Erőforráscsoport | *test-resource-group* | Hozzon létre egy új erőforráscsoportot. |
     | Hely | *USA nyugati régiója* | Ebben a rövid útmutatóban válassza az *USA nyugati régióját*. Éles üzemben az igényeinek leginkább megfelelő régiót válassza.
-    | Számítási specifikáció | *D13_v2* | Ehhez az útmutatóhoz válassza a legalacsonyabb díjszabást. Éles üzemben az igényeinek leginkább megfelelő díjszabást válassza.
+    | Számítási specifikációk | *D13_v2* | Ehhez az útmutatóhoz válassza a legalacsonyabb díjszabást. Éles üzemben az igényeinek leginkább megfelelő díjszabást válassza.
     | | |
 
-1. A fürt üzembe helyezéséhez válassza a **Létrehozás** lehetőséget. Az üzembe helyezés általában nagyjából tíz percet vesz igénybe. Az eszköztáron válassza az **Értesítések** elemet (a harang ikont) az üzembehelyezési folyamat nyomon követéséhez.
+1. A fürt üzembe helyezéséhez válassza a **Létrehozás** lehetőséget. Az üzembe helyezés általában nagyjából tíz percet vesz igénybe. Az eszköztáron válassza az **Értesítések** elemet az üzembehelyezési folyamat nyomon követéséhez.
+
+    ![Értesítések](media/create-cluster-database-portal/notifications.png)
 
 1. Amikor a folyamat befejeződött, válassza az **Értesítések**, majd az **Erőforrás megnyitása** lehetőséget.
 

@@ -8,20 +8,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: tutorial
-ms.date: 09/23/2018
+ms.date: 10/28/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: e2e1dfa91ffd5a2a1ae3b4d85e1c52881bdb7876
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: ed14dc45af3f47032e54c946486c4de70aeae11a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388483"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214953"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Az Azure SSIS integrációs modul üzembe helyezése az Azure Data Factoryban
-Ez az oktatóanyag azt ismerteti, hogyan lehet üzembe helyezni egy Azure-SSIS integrációs modul (Integration Runtime, IR) modult az Azure Data Factoryban az Azure Portal felületén. Ezután az SQL Server Data Tools vagy az SQL Server Management Studio (SSMS) használatával SQL Server Integration Services-csomagokat helyezhet üzembe és futtathat ebben az Azure-beli modulban. Elméleti információk az Azure-SSIS integrációs modulokról: [Azure-SSIS integrációs modul](concepts-integration-runtime.md#azure-ssis-integration-runtime).
+Ez az oktatóanyag azt ismerteti, hogyan lehet üzembe helyezni egy Azure-SSIS integrációs modul (Integration Runtime, IR) modult az Azure Data Factoryban az Azure Portal felületén. Ezután az SQL Server Data Tools (SSDT) vagy az SQL Server Management Studio (SSMS) használatával SQL Server Integration Services- (SSIS-) csomagokat helyezhet üzembe és futtathat ebben az Azure-beli modulban. Elméleti információk az Azure-SSIS integrációs modulokról: [Azure-SSIS integrációs modul](concepts-integration-runtime.md#azure-ssis-integration-runtime).
 
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
@@ -35,12 +35,11 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 - A kiválasztott adatbázis-kiszolgáló alapján az SSISDB létrehozható az Ön nevében önálló adatbázisként, egy rugalmas készlet részeként vagy egy felügyelt példányban, és elérhető nyilvános hálózatban vagy egy virtuális hálózathoz csatlakozva. Ha az Azure SQL Database-t virtuális hálózati szolgáltatásvégpontokkal/ felügyelt példánnyal használja az SSISDB üzemeltetésére, vagy a helyszíni adatokhoz való hozzáférésre van szüksége, az Azure SSIS integrációs modulját csatlakoztatnia kell egy virtuális hálózathoz; lásd: [Azure SSIS integrációs modul létrehozása virtuális hálózatban](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). 
 - Győződjön meg arról, hogy az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítás engedélyezve van az adatbázis-kiszolgálón. Ez nem érvényes akkor, amikor az Azure SQL Database-t virtuális hálózati szolgáltatásvégpontokkal/felügyelt példánnyal használja az SSISDB üzemeltetésére. További információkért lásd: [Az Azure SQL-adatbázis védelme](../sql-database/sql-database-security-tutorial.md#create-a-server-level-firewall-rule-in-the-azure-portal). A beállítás engedélyezése PowerShell használatával: [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule?view=azurermps-4.4.1). 
 - Vegye fel az ügyfélszámítógép IP-címét vagy az ügyfélszámítógép IP-címét tartalmazó IP-címtartományt az ügyfél IP-címeinek listájára az adatbázis-kiszolgáló tűzfalbeállításainál. További információkért lásd: [Kiszolgáló- és adatbázisszintű Azure SQL Database-tűzfalszabályok](../sql-database/sql-database-firewall-configure.md). 
-- Az adatbázis-kiszolgálóhoz SQL-hitelesítéssel, a kiszolgálói rendszergazdai hitelesítő adataival vagy Azure Active Directory- (AAD-) hitelesítéssel, az Azure Data Factory (ADF) Azure-erőforrásokhoz készült felügyelt identitásával csatlakozhat.  Az utóbbi esetében hozzá kell adnia az ADF MSI-t egy AAD-csoporthoz, amely rendelkezik engedélyekkel az adatbázis-kiszolgálóhoz, lásd: [Azure SSIS integrációs modul létrehozása AAD-hitelesítéssel](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). 
+- Az adatbázis-kiszolgálóhoz SQL-hitelesítéssel, a kiszolgálói rendszergazdai hitelesítő adataival vagy Azure Active Directory- (AAD-) hitelesítéssel, az Azure Data Factory (ADF) felügyelt identitásával csatlakozhat.  Az utóbbi esetében hozzá kell adnia az ADF felügyelt identitását egy AAD-csoporthoz, amely rendelkezik engedélyekkel az adatbázis-kiszolgálóhoz, lásd: [Azure SSIS integrációs modul létrehozása AAD-hitelesítéssel](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). 
 - Győződjön meg arról, hogy az Azure SQL Database-kiszolgálóján nincs SSIS-katalógus (SSISDB-adatbázis). Az Azure-SSIS IR üzembe helyezése nem támogatja a meglévő SSIS-katalógusok használatát. 
 
 > [!NOTE]
-> - Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. 
-> - Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető az Azure-SSIS integrációs modul, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg az **SSIS integrációs modul**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. 
+> - Ha kíváncsi azon Azure-régiók listájára, amelyekben a Data Factory és az Azure-SSIS integrációs modul jelenleg elérhető, tekintse meg az [ADF és az SSIS integrációs modul régió szerinti elérhetőségét](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all). 
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
@@ -115,7 +114,7 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
    c. A **Katalógus adatbázis-kiszolgáló végpontja** mezőben válassza az SSISDB-t üzemeltető adatbázis-kiszolgáló végpontját. A kiválasztott adatbázis-kiszolgáló alapján, az SSISDB létrehozható az Ön nevében önálló adatbázisként, egy rugalmas készlet részeként vagy egy felügyelt példányban, és elérhető nyilvános hálózatban vagy egy virtuális hálózathoz csatlakozva. Az SSISDB-t futtató adatbázis-kiszolgáló típusának kiválasztásával kapcsolatos útmutatásért lásd: [Az SQL Database logikai kiszolgálójának és a felügyelt példány összehasonlítása](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance). Ha az Azure SQL Database-t virtuális hálózati szolgáltatásvégpontokkal/felügyelt példánnyal választja az SSISDB üzemeltetésére, vagy a helyszíni adatokhoz való hozzáférésre van szüksége, az Azure SSIS integrációs modulját csatlakoztatnia kell egy virtuális hálózathoz. További információ: [Azure SSIS integrációs modul létrehozása virtuális hálózatban](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). 
 
-   d. Az **AAD-hitelesítés használata...** jelölőnégyzetnél válassza az SSISDB-t üzemeltető adatbázis-kiszolgálóhoz használt hitelesítési módszert: SQL vagy Azure Active Directory (AAD) az Azure Data Factory (ADF) Azure-erőforrásokhoz készült felügyelt identitásával. Ha bejelöli, hozzá kell adnia az ADF MSI-t egy AAD-csoporthoz, amely rendelkezik engedélyekkel az adatbázis-kiszolgálóhoz, lásd: [Azure SSIS integrációs modul létrehozása AAD-hitelesítéssel](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). 
+   d. Az **AAD-hitelesítés használata...** jelölőnégyzetnél válassza az SSISDB-t üzemeltető adatbázis-kiszolgálóhoz használt hitelesítési módszert: SQL vagy Azure Active Directory (AAD) az Azure Data Factory (ADF) Azure-erőforrásokhoz készült felügyelt identitásával. Ha bejelöli, hozzá kell adnia az ADF felügyelt identitását egy AAD-csoporthoz, amely rendelkezik engedélyekkel az adatbázis-kiszolgálóhoz, lásd: [Azure SSIS integrációs modul létrehozása AAD-hitelesítéssel](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). 
 
    e. A **Rendszergazdai felhasználónév** értékeként adja meg az SSISDB-t üzemeltető adatbázis-kiszolgálóhoz tartozó SQL-hitelesítési felhasználónevet. 
 
@@ -185,7 +184,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Adat-előállító létrehozása
 > * Azure SSIS integrációs modul üzembe helyezése.
 
-Az adatok helyszíni rendszerből a felhőre való másolásának megismeréséhez folytassa a következő oktatóanyaggal: 
+Ha többet szeretne megtudni az Azure-SSIS integrációs modul testreszabásáról, folytassa a következő cikkel: 
 
 > [!div class="nextstepaction"]
-> [Adatok másolása a felhőbe](tutorial-copy-data-portal.md)
+> [Az Azure-SSIS integrációs modul testreszabása](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)

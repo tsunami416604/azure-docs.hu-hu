@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: gokuma
-ms.openlocfilehash: 37a30055e567b27f4e215dac162642d4447a8e49
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1b293ee8f0f83d727cd647cdcdcc424b4db7e5d3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298205"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240885"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>A Windows Data Science virtuális gép Azure-beli üzembe helyezése
 A Microsoft Data Science virtuális gépet (DSVM) egy Windows Azure virtuális gép (VM) rendszerkép. Előtelepített és konfigurált adatelemzési és machine learning használt számos eszközzel. A következő eszközök foglalja magában:
@@ -186,7 +186,7 @@ Több Azure-eszközök telepítve vannak a virtuális gépen:
 * **A Microsoft Azure PowerShell** olyan eszköz, amely a PowerShell szkriptelési nyelv az Azure-erőforrások felügyeletére szolgál. Azt is telepítve van a virtuális Gépen. 
 
 ### <a name="power-bi"></a>Power BI
-A **Power BI Desktop** irányítópultokat és vizualizációkat hozhat létre segítségével telepítve van. Az eszköz használható az adatok különböző forrásokból származó az irányítópultokat és jelentéseket készíthet, és közzéteheti őket a felhőbe. További információkért lásd: a [Power BI](http://powerbi.microsoft.com) hely. A Power BI desktop megtalálhatja a **Start** menü. 
+A **Power BI Desktop** irányítópultokat és vizualizációkat hozhat létre segítségével telepítve van. Az eszköz használható az adatok különböző forrásokból származó az irányítópultokat és jelentéseket készíthet, és közzéteheti őket a felhőbe. További információkért lásd: a [Power BI](https://powerbi.microsoft.com) hely. A Power BI desktop megtalálhatja a **Start** menü. 
 
 > [!NOTE]
 > Egy Power BI eléréséhez a Microsoft Office 365-fiók szükséges. 
@@ -228,7 +228,7 @@ A [Microsoft Webplatform-telepítő](https://www.microsoft.com/web/downloads/pla
 * Fedezze fel az eszközök az adatelemző virtuális gép kiválasztásával a **Start** menü.
 * Ismerje meg a termék ellátogat az Azure Machine Learning-szolgáltatások és a Workbench [rövid és oktatóanyagok lap](../service/index.yml). 
 * Navigáljon a **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts** , amely a RevoScaleR kódtára, amely támogatja az adatelemzés, a nagyvállalati szintű R a minták.  
-* A cikk a [tíz dolog, amire alkalmas az adatelemző virtuális gép](http://aka.ms/dsvmtenthings).
+* A cikk a [tíz dolog, amire alkalmas az adatelemző virtuális gép](https://aka.ms/dsvmtenthings).
 * Megtudhatja, hogyan teljes körű elemzési megoldásokat rendszeresen használatával hozhat létre a [csoportos adatelemzési folyamat](../team-data-science-process/index.yml).
 * Látogasson el a [Azure AI-katalógusban](http://gallery.cortanaintelligence.com) machine learning és a data analytics minták az Azure Machine Learning és a kapcsolódó adatokat használó szolgáltatások az Azure-ban. Is biztosítunk egy ikont a tárban lévő a **Start** menüjében és asztalán a virtuális gép.
 

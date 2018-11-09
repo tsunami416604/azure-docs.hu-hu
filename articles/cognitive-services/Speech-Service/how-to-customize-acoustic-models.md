@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: 81449889ae9218f2b59ea48f10c676dcee9aa8b1
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 70fc9c34599f27eb5d67b79ef823f8037ae55ba9
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466086"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215242"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>Oktatóanyag: Egyéni akusztikai modell létrehozása
 
@@ -53,7 +53,7 @@ Az akusztikai modell testreszabásához készült akusztikai adatkészlet két r
 * Az adatkészlet összes hangfájlját WAV (RIFF) hangformátumban kell tárolni.
 * A hanganyag mintavételi frekvenciájának 8 vagy 16 kilohertz (kHz) értékűnek kell lennie, a mintaértékeket pedig tömörítetlen, 16 bites PCM (impulzuskód-moduláció) előjeles egész számokként (rövid jelek) kell tárolni.
 * Csak az egycsatornás (mono) hangfájlok támogatottak.
-* A hangfájlok hosszának 100 mikroszekundum és 1 perc között kell lennie. A hangfájloknak ideális esetben legalább 100 mikroszekundum csenddel kell kezdődniük és végződniük – az 500 mikroszekundum és 1 másodperc közötti érték az általános.
+* A hangfájlok hosszának 100 mikroszekundum és 1 perc között kell lennie, bár ideális esetben 10–12 másodperc hosszúak. A hangfájloknak ideális esetben legalább 100 mikroszekundum csenddel kell kezdődniük és végződniük – az 500 mikroszekundum és 1 másodperc közötti érték az általános.
 * Ha háttérzaj van az adatokban, javasoljuk, hogy hosszabb – például a beszédtartalom előtt és/vagy után néhány másodpercnyi – csendes szakaszokat tartalmazó minták is legyenek a példák között.
 * Mindegyik hangfájlnak egyetlen kimondott szövegből kell állnia, például egyetlen mondatból vagy diktálásból, egy kérdésből, vagy egy párbeszéd egyetlen fordulójából.
 * Az adatkészlet mindegyik hangfájljának egyedi fájlnévvel és a .wav kiterjesztéssel kell rendelkeznie.
@@ -69,7 +69,7 @@ Az akusztikai modell testreszabásához készült akusztikai adatkészlet két r
 | Mintavételezési frekvencia | 8000 vagy 16 000 Hz (hertz) |
 | Csatornák | 1 (mono) |
 | Minták formátuma | PCM, 16 bites egész számok |
-| Fájlok időtartama | 0,1 másodperc és 60 másodperc között |
+| Fájlok időtartama | 0,1 másodperc és 12 másodperc között | 
 | Csend időtartama | >0,1 másodperc |
 | Archívum formátuma | .zip |
 | Archívum maximális mérete | 2 GB |

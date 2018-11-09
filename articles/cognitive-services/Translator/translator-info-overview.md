@@ -10,26 +10,28 @@ ms.component: translator-text
 ms.topic: overview
 ms.date: 05/10/2018
 ms.author: erhopf
-ms.openlocfilehash: 6c89ff41531b130843eb288b98ffe7def1d8915e
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 6d47c4dc2ec3f58eca336211486112b9cdf993aa
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645041"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156357"
 ---
 # <a name="what-is-translator-text-api"></a>Mi a Translator Text API?
 
-A Translator Text API zökkenőmentesen integrálható az alkalmazásaiba, webhelyeire, eszközeibe és egyéb megoldásaiba, és [több mint 60 nyelven](languages.md) képes többnyelvű felhasználói felületeket létrehozni. Bármely hardverplatformon és bármely operációs rendszerrel használható szöveg-szöveg vektorú nyelvi fordítások végrehajtásához.
+A Translator Text API könnyedén integrálható az alkalmazásaiba, webhelyeire, eszközeibe és megoldásaiba. Lehetővé teszi többnyelvű felhasználói felületek hozzáadását [több mint 60 nyelven](languages.md), és bármely hardverplatformon és bármely operációs rendszerrel használható szöveg-szöveg vektorú nyelvi fordítások végrehajtásához.
 
-A Translator Text API a felhőalapú gépi tanulási és mesterséges intelligenciára épülő algoritmusokat biztosító, a fejlesztési projektekben készen használható [Azure Cognitive Services API](https://docs.microsoft.com/azure/#pivot=products&panel=ai)-gyűjtemény részét képezi.
+A Translator Text API a felhőalapú gépi tanulási és mesterséges intelligenciára épülő algoritmusokat biztosító, a fejlesztési projektekben készen használható Azure [Cognitive Services API](https://docs.microsoft.com/azure/#pivot=products&panel=ai)-gyűjtemény részét képezi.
 
 ## <a name="about-microsoft-translator"></a>A Microsoft Translator ismertetése
 
-A Microsoft Translator egy felhőalapú gépi fordítási szolgáltatás. A szolgáltatás magját a Translator Text API és a [Translator Speech API](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-translation) adja, amelyek a Microsoft különféle termékeit és szolgáltatásait szolgálják ki, és amelyeket világszerte vállalkozások ezrei használnak alkalmazásaikban és munkafolyamataikban, hogy tartalmaikat a globális közönség elé tárják.
+A Microsoft Translator egy felhőalapú gépi fordítási szolgáltatás. A fő szolgáltatás a Translator Text API, amely a Microsoft számos termékét és szolgáltatását szolgálja ki, és amelyeket világszerte vállalkozások ezrei használnak alkalmazásaikban és munkafolyamataikban, hogy tartalmaikat a globális közönség elé tárják.
 
-A beszédfordítás is elérhető a [Cognitive Services Speech előzetes verziójával](https://docs.microsoft.com/azure/cognitive-services/speech-service/), amely a meglévő Translator Speech és Bing Speech API-t és a Custom Speech Service előzetes verzióját egyesíti egy egységes és teljesen testre szabható szolgáltatásban.  
+A Translator Text API által kiszolgált beszédfordítás a [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/) szolgáltatáson keresztül is elérhető. A Translator Speech API, a Bing Speech API és a Custom Speech Service (előzetes verzió) funkcióit egyesíti egy egységes és teljesen testre szabható szolgáltatásban. A Speech Service leváltja a Translator Speech API-t, amely 2019. október 15-től kezdve visszavonunk.
 
-Itt tudhat meg többet a [Microsoft Translator szolgáltatásról](https://www.microsoft.com/en-us/translator/home.aspx).
+## <a name="language-support"></a>Nyelvi támogatás
+
+A Microsoft Translator többnyelvű támogatást nyújt a fordításhoz, az átíráshoz, a nyelvfelismeréshez és a szótárakhoz. A teljes listát a [nyelvi támogatást](language-support.md) ismertető szakaszban, vagy programozott módon a [REST API-t](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-languages) megnyitva találja.  
 
 ## <a name="language-customization"></a>Nyelvi testreszabás
 

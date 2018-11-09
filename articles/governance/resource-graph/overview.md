@@ -4,34 +4,34 @@ description: Az Azure Resource Graph egy olyan Azure-szolgáltatás, amely lehet
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: d68183f4d0a928ac72f3f73ea5225ad174820cb7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: e78b525e1e08a05b8de6071f9ddba0dfb29ff672
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162100"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087276"
 ---
 # <a name="what-is-azure-resource-graph"></a>Mi az Azure Resource Graph
 
-Az Azure Resource Graph egy szolgáltatás az Azure-ban, amelynek rendeltetése az Azure-erőforrások felügyeletének kiterjesztése. Ennek érdekében hatékony és nagy teljesítményű erőforrás-kezelést kínál, az összes előfizetésre és felügyeleti csoportra kiterjedő, nagyméretű lekérdezések lehetőségével, hogy Ön hatékonyan szabályozhassa környezetét. Ezek a lekérdezések a következő képességeket kínálják:
+Az Azure Resource Graph egy szolgáltatás az Azure-ban, amelynek rendeltetése az Azure-erőforrások felügyeletének kiterjesztése. Ennek érdekében hatékony és nagy teljesítményű erőforrás-kezelést kínál, az összes előfizetésre és felügyeleti csoportra kiterjedő, nagyméretű lekérdezések lehetőségével, hogy Ön hatékonyan szabályozhassa környezetét. Ezek a lekérdezések a következő funkciókat biztosítják:
 
 - Erőforrások lekérdezése az erőforrás-tulajdonságok alapján végzett összetett szűréssel, csoportosítással és rendezéssel.
 - Erőforrások lépésenkénti kezelése a szabályozási követelmények alapján, és az így előálló kifejezés szabályzatdefinícióvá konvertálása.
 - Szabályzatok alkalmazásából adódó következmények felmérése kiterjedt felhőkörnyezetben.
 
-Ez a dokumentáció mindegyik képességet részletesen tárgyalja.
+Ez a dokumentáció mindegyik funkciót részletesen tárgyalja.
 
 > [!NOTE]
 > Az Azure Resource Graphot használja az Azure Portal új, „Minden erőforrás” tallózására szolgáló felülete. Olyan ügyfelek támogatására tervezték, akiknek nagyméretű környezeteket kell felügyelniük.
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Hogyan egészíti ki a Resource Graph az Azure Resource Managert
 
-Az Azure Resource Manager jelenleg egy korlátozott erőforrás-gyorsítótárba küld adatokat, amely elérhetővé tesz számos erőforrás-mezőt, így az Erőforrásnév, az Azonosító, a Típus, az Erőforráscsoport, az Előfizetések és a Hely mezőt is. Jelenleg ha több erőforrás-tulajdonsággal szeretne dolgozni, minden erőforrás-szolgáltatót külön kellene hívnia, hogy lekérje az egyes erőforrások tulajdonságainak adatait.
+Az Azure Resource Manager jelenleg egy korlátozott erőforrás-gyorsítótárba küld adatokat, amely elérhetővé tesz számos erőforrás-mezőt, így az Erőforrásnév, az Azonosító, a Típus, az Erőforráscsoport, az Előfizetések és a Hely mezőt is. Korábban különböző erőforrás-tulajdonságok használata esetén minden egyes erőforrás-szolgáltatót meg kellett hívni, és minden erőforrás tulajdonságrészleteit le kellett kérni.
 
 Az Azure Resource Graph segítségével az erőforrás-szolgáltatók egyenkénti hívása nélkül is hozzáférhet az általuk visszaadott tulajdonságokhoz.
 
@@ -45,12 +45,11 @@ Első lépésként olvassa el az Azure Resource Graphfal használható művelete
 
 ## <a name="permissions-in-azure-resource-graph"></a>Engedélyek az Azure Resource Graphban
 
-A Resource Graph használatához [szerepköralapú hozzáférés-vezérléssel](../../role-based-access-control/overview.md) (RBAC) kell hitelesítenie magát, és legalább olvasási jogosultsággal kell rendelkeznie a lekérdezni kívánt erőforrásokon. Ha nem rendelkezik a `read` jogosultsággal a felügyeleti csoporton, előfizetésen, erőforráscsoporton vagy egyéni erőforráson, akkor a Resource Graph-lekérdezés nem adja vissza azt.
+A Resource Graph használatához megfelelő jogosultságokkal kell rendelkeznie a [szerepköralapú hozzáférés-vezérlésben](../../role-based-access-control/overview.md) (RBAC), és legalább olvasási jogosultsággal kell rendelkeznie a lekérdezni kívánt erőforrásokon. Ha nem rendelkezik legalább `read` engedélyekkel az Azure-objektumhoz vagy -objektumcsoporthoz, a rendszer nem ad vissza eredményeket.
 
 ## <a name="running-your-first-query"></a>Az első lekérdezés futtatása
 
-A Resource Graph az Azure CLI és az Azure PowerShell használatát is támogatja. A lekérdezési összetevő szerkezete a használt nyelvtől függetlenül mindig ugyanolyan. Az Azure Resource Graph támogatása alapértelmezés szerint egyelőre egy SDK-ban sem érhető el, ezért a szükséges parancsokat csak egy betöltött kiterjesztés vagy modul nyújthatja.
-Útmutató a Resource Graph engedélyezéséhez az [Azure CLI-ben](first-query-azurecli.md#add-the-resource-graph-extension) és az [Azure PowerShellben](first-query-powershell.md#add-the-resource-graph-module).
+A Resource Graph az Azure CLI és az Azure PowerShell használatát is támogatja. A lekérdezés mindkét nyelv esetében ugyanolyan struktúrájú. Útmutató a Resource Graph engedélyezéséhez az [Azure CLI-ben](first-query-azurecli.md#add-the-resource-graph-extension) és az [Azure PowerShellben](first-query-powershell.md#add-the-resource-graph-module).
 
 ## <a name="next-steps"></a>További lépések
 

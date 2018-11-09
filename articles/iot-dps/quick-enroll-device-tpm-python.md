@@ -1,6 +1,6 @@
 ---
 title: TPM-eszköz regisztrálása az Azure Device Provisioning Service-be a Python használatával | Microsoft Docs
-description: Azure rövid útmutató – TPM-eszköz regisztrálása az Azure IoT Hub Device Provisioning Service-be a Python regisztrációs szolgáltatási SDK-val
+description: Azure rövid útmutató – TPM-eszköz regisztrálása az Azure IoT Hub Device Provisioning Service-be a Python regisztrációs szolgáltatási SDK-val. Ez a rövid útmutató egyéni regisztrációkat használ.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 01/26/2018
@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: ff6200abd88144a530a243b508fd4878126fdb4b
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: ea758c377293ae698bdf06638d5b4600b95015e4
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234027"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50154964"
 ---
 # <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>TPM-eszköz regisztrálása az IoT Hub Device Provisioning Service-be a Python regisztrációs szolgáltatási SDK-val
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
@@ -54,7 +54,7 @@ Ez a szakasz bemutatja, hogyan adhatja hozzá a TPM-eszköz kiépítési adatait
 
 1. Egy szövegszerkesztővel hozzon létre egy új **TpmEnrollment.py** fájlt.
 
-1. Adja meg a következő `import` utasításokat és változókat a **TpmEnrollment.py** fájl elején. Ezután cserélje le a `dpsConnectionString` elemet a kapcsolati sztringre, amely az **Azure Portal****Device Provisioning Service** panelén, a **Megosztott elérési szabályzatok** alatt található. Cserélje le az `endorsementKey` elemet [A környezet előkészítése](quick-enroll-device-tpm-python.md#prepareenvironment) szakaszban feljegyzett értékre. Végezetül hozzon létre egy egyedi `registrationid` azonosítót, de ne feledje, hogy az kizárólag kisbetűs alfanumerikus karaktereket és kötőjeleket tartalmazhat.  
+1. Adja meg a következő `import` utasításokat és változókat a **TpmEnrollment.py** fájl elején. Ezután cserélje le a `dpsConnectionString` elemet a kapcsolati sztringre, amely az **Azure Portal** **Device Provisioning Service** panelén, a **Megosztott elérési szabályzatok** alatt található. Cserélje le az `endorsementKey` elemet [A környezet előkészítése](quick-enroll-device-tpm-python.md#prepareenvironment) szakaszban feljegyzett értékre. Végezetül hozzon létre egy egyedi `registrationid` azonosítót, de ne feledje, hogy az kizárólag kisbetűs alfanumerikus karaktereket és kötőjeleket tartalmazhat.  
    
     ```python
     from provisioningserviceclient import ProvisioningServiceClient
@@ -109,7 +109,7 @@ Ha azt tervezi, hogy részletesebben is áttekinti a Java-szolgáltatásmintát,
 
 1. Zárja be a Python-minta kimeneti ablakát a gépen.
 1. Ha létrehozott egy szimulált TPM-eszközt, zárja be a TPM-szimulátor ablakát.
-1. Lépjen az eszközkiépítési szolgáltatásra az Azure Portalon, kattintson a **Regisztrációk kezelése** lehetőségre, majd válassza az **Egyéni regisztrációk** lapot. Válassza ki a rövid útmutató segítségével létrehozott regisztrációs bejegyzés *Regisztrációs azonosítóját*, majd kattintson a panel tetején lévő **Törlés** gombra.  
+1. Lépjen a Device Provisioning Service-re az Azure Portalon, kattintson a **Regisztrációk kezelése** lehetőségre, majd válassza az **Egyéni regisztrációk** lapot. Válassza ki a rövid útmutató segítségével létrehozott regisztrációs bejegyzés *Regisztrációs azonosítóját*, majd kattintson a panel tetején lévő **Törlés** gombra.  
 
 
 ## <a name="next-steps"></a>További lépések

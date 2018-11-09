@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: f2b1c394f561b87baf2be261728a1ac39b1f7835
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: ff1f03bddbd653cf686fe36b7815d6bb9a7c0e72
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116052"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155643"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules-preview"></a>Oktatóanyag: Azure-függvény üzembe helyezése IoT Edge-modulként (előzetes verzió)
 
-Az Azure Functions használatával olyan kódot helyezhet üzembe, amely közvetlenül az Azure IoT Edge-eszközökön valósítja meg az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő Azure-függvény létrehozásának és a szimulált IoT Edge-eszközön való üzembe helyezésének lépésein. Az Azure IoT Edge üzembe helyezése szimulált eszközön [Windows][lnk-tutorial1-win] vagy [Linux][lnk-tutorial1-lin] rendszeren című rövid útmutatóban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:     
+Az Azure Functions használatával olyan kódot helyezhet üzembe, amely közvetlenül az Azure IoT Edge-eszközökön valósítja meg az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő Azure-függvény létrehozásának és a szimulált IoT Edge-eszközön való üzembe helyezésének lépésein. Az Azure IoT Edge üzembe helyezése szimulált eszközön [Windows](quickstart.md) vagy [Linux](quickstart-linux.md) rendszeren című rövid útmutatóban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:     
 
 > [!div class="checklist"]
 > * Azure-függvény létrehozása a Visual Studio Code használatával.
@@ -256,6 +256,3 @@ Továbbléphet a következő oktatóanyagokra, és megtudhatja, milyen más mód
 > [!div class="nextstepaction"]
 > [Átlagértékek keresése lebegő Azure Stream Analytics-ablakban](tutorial-deploy-stream-analytics.md)
 
-<!--Links-->
-[lnk-tutorial1-win]: quickstart.md
-[lnk-tutorial1-lin]: quickstart-linux.md

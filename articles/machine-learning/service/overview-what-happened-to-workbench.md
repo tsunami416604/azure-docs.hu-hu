@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 88e7dad15a7080c4132a6983d949f9451ad5ce69
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: d90f1791a05d575caedfdd5c696bb1e6d6c29376
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239260"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091916"
 ---
 # <a name="what-is-happening-to-workbench-in-azure-machine-learning-preview"></a>Mi történik a Workbench alkalmazással az Azure Machine Learning (előzetes verzió) szolgáltatásban?
 
@@ -46,9 +46,8 @@ Kísérletezési és modellkezelési fiókjait, valamint a Workbench alkalmazás
 
 |Fázis|Korábbi funkciók támogatásának részletezése|
 |:---:|----------------|
-|1|_Azure Machine Learning-kísérletezési_ és _modellkezelési fiók_ létrehozásának lehetősége az Azure Portalon és a CLI-ből. A Machine Learning Compute-környezetek CLI-ből való létrehozásának lehetősége is megszűnik. Meglévő fiók esetén a CLI és az asztali Workbench ebben a fázisban továbbra is működni fog.|
-|2|A régi munkaterületek és projektek asztali Workbenchben és a CLI-vel való létrehozásához szükséges mögöttes API-k megszűnnek. Ebben a fázisban a meglévő projekteket továbbra is megnyithatja, adhat hozzájuk további szkripteket, futtathat bennük szkripteket, és üzembe helyezhet webszolgáltatásokat meglévő Machine Learning Compute-környezetekben.|
-|3|Ebben a fázisban minden más, így a fennmaradó API-k és az asztali Workbench támogatása megszűnik.|
+|1|Megszűnik az _Azure Machine Learning-kísérletezési fiók_ és _modellkezelési fiók_ Azure Portalon és a CLI-ből való létrehozásának lehetősége. A Machine Learning Compute-környezetek CLI-ből való létrehozásának lehetősége is megszűnik. Meglévő fiók esetén a CLI és az asztali Workbench ebben a fázisban továbbra is működni fog.|
+|2|Ebben a fázisban minden más, így a fennmaradó API-k és az asztali Workbench támogatása megszűnik.|
 
 [Kezdje meg a migrálást](how-to-migrate.md) még ma. A legújabb funkciók mindegyike elérhető az új <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a>, [CLI](reference-azure-machine-learning-cli.md) és [portál](quickstart-get-started.md) használatával.
 

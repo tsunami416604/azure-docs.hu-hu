@@ -1,29 +1,29 @@
 ---
-title: Az Azure-ba replikált Hyper-V virtuális gépek feladatátvétele és feladat-visszavétele a Site Recoveryvel | Microsoft Docs
-description: Megtudhatja, hogy a Hyper-V virtuális gépek feladatait hogyan veheti át az Azure-ba, és hogyan veheti vissza a feladatokat a helyszíni kiszolgálókra az Azure Site Recoveryvel
+title: Hyper-V virtuális gépek feladatátvétele és feladat-visszavétele az Azure-ba irányuló vészhelyreállítás során az Azure Site Recoveryvel | Microsoft Docs
+description: Ismerje meg, hogyan végezhet feladatátvételt és feladat-visszavételt az Azure-ba irányuló vészhelyreállítás során az Azure Site Recovery szolgáltatással.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 31de654e6746cecf5aedabbfe481ab99b2aa3510
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 6dde345e360dc304578b626ee2678dd51fe56dc6
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49076983"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210516"
 ---
-# <a name="failover-and-failback-hyper-v-vms-replicated-to-azure"></a>Az Azure-ba replikált Hyper-V virtuális gépek feladatátvétele és feladat-visszavétele
+# <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Az Azure-ba replikált Hyper-V virtuális gépek feladatátvétele és feladat-visszavétele
 
 Ez az oktatóanyag leírja, hogyan vehetők át a Hyper-V virtuális gépek feladatai az Azure-ba. A feladatátvétel után visszaadja a feladatokat a helyszíni helyre, amint az elérhetővé válik. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * A Hyper-V virtuális gép tulajdonságainak ellenőrzése abból a szempontból, hogy az megfelel-e az Azure-követelményeknek
 > * Feladatátvétel futtatása az Azure-ban
-> * Feladat-visszavétel az Azure-ból helyszíni rendszerbe
+> * Feladat-visszavétel az Azure-ból a helyszíni gépre
 > * A helyszíni virtuális gépek visszirányú replikálása az Azure-ba való replikálás ismételt megkezdéséhez
 
 Ez az oktatóanyag egy sorozat ötödik része. Ez az oktatóanyag feltételezi, hogy elvégezte az előző oktatóanyagok feladatait.    

@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/12/2018
+ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 649ce7bcd2d2e4ceb2fc397643f4dd0d3ef89c1e
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 8cb604aee39f651770cb708f8dd92b6fbc0921f5
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144513"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139012"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Rövid útmutató: Az ipari IoT-eszközök felügyeletére szolgáló felhőalapú megoldás kipróbálása
 
@@ -32,13 +32,13 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Amikor üzembe helyezi a megoldásgyorsítót az Azure-előfizetéshez, néhány konfigurációs beállítást meg kell adnia.
 
-Jelentkezzen be az [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) webhelyen az Azure-fiók hitelesítő adataival.
+Navigáljon a [Microsoft Azure IoT-megoldásgyorsítókhoz](https://www.azureiotsolutions.com), és jelentkezzen be az Azure-fiók hitelesítő adataival.
 
-Kattintson a **Kipróbálom most** elemre a **Csatlakoztatott gyár** csempén.
+Kattintson a **Csatlakoztatott gyár** csempére. A **Csatlakoztatott gyár** oldalon kattintson a **Kipróbálom most** elemre:
 
-![Csatlakoztatott gyár kiválasztása](./media/quickstart-connected-factory-deploy/connectedfactory.png)
+![Kipróbálom most](./media/quickstart-connected-factory-deploy/connectedfactory.png)
 
-A **Create Connected Factory solution** (Csatlakoztatottgyár-megoldás létrehozása) oldalon adjon meg egy egyedi **Megoldásnevet** a csatlakoztatott gyár megoldásgyorsítójához. Ez a név az Azure-erőforráscsoport neve, amely tartalmazza a megoldásgyorsító összes erőforrását. Ebben a rövid útmutatóban a **MyDemoConnectedFactory** nevet használjuk.
+A **Create Connected Factory solution** (Csatlakoztatottgyár-megoldás létrehozása) oldalon adjon meg egy egyedi **Megoldásnevet** a csatlakoztatott gyár megoldásgyorsítójához. Ez a név az Azure-erőforráscsoport neve, amely tartalmazza a megoldásgyorsító összes erőforrását. Ez a rövid útmutató a **MyDemoConnectedFactory** nevet használja.
 
 Válassza ki a megoldásgyorsító üzembe helyezéséhez használni kívánt **Előfizetést** és **Régiót**. Általában az Önhöz legközelebbi régiót érdemes választani. Ebben a rövid útmutatóban a **Visual Studio Enterprise** és az **USA keleti régiója** értékeket választjuk. Mindehhez [globális rendszergazdának vagy felhasználónak](iot-accelerators-permissions.md) kell lennie az előfizetésben.
 
@@ -122,7 +122,7 @@ Ha előfizetésével hozzá tud férni a [Bing Térképek API](iot-accelerators-
 
 ### <a name="alarms"></a>Riasztások
 
-A **Riasztások** panel olyan riasztásokat jelenít meg, amelyek arra figyelmeztetnek, ha egy jelentett érték vagy egy kiszámított OEE/KPI meghaladja a hozzá beállított határértéket. A panel a hierarchia összes szintjére vonatkozó riasztásokat megjeleníti, az állomásszinttől egészen a vállalati szintig. Az összes riasztás tartalmazza a riasztás leírását, dátumát, időpontját, helyszínét és az előfordulásainak számát:
+A **Riasztások** panel olyan riasztásokat jelenít meg, amelyek arra figyelmeztetnek, ha egy jelentett érték vagy egy kiszámított OEE/KPI meghalad egy küszöbértéket. A panel a hierarchia összes szintjére vonatkozó riasztásokat megjeleníti, az állomásszinttől egészen a vállalati szintig. Az összes riasztás tartalmazza a riasztás leírását, dátumát, időpontját, helyszínét és az előfordulásainak számát:
 
 [![Riasztások](./media/quickstart-connected-factory-deploy/alarms-inline.png)](./media/quickstart-connected-factory-deploy/alarms-expanded.png#lightbox)
 
@@ -137,7 +137,7 @@ Kattintson az egyik riasztásra, majd a **Művelet kiválasztása** legördülő
 
 A riasztás adatainak további elemzéséhez kattintson a diagramra a riasztások panelén.
 
-Ezek a riasztások a megoldásgyorsító egy konfigurációs fájljában megadott szabályok alapján jönnek létre. Ezek a szabályok riasztásokat hoznak létre, ha az OEE- vagy KPI-értékek, vagy az OPC UA-csomópont értékei meghaladják a beállított küszöbértékeket.
+Ezek a riasztások a megoldásgyorsító egy konfigurációs fájljában megadott szabályok alapján jönnek létre. Ezek a szabályok riasztásokat hoznak létre, ha az OEE- vagy KPI-értékek, vagy az OPC UA-csomópont értékei meghaladnak egy küszöbértéket. Beállíthatja ezt a küszöbértéket.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

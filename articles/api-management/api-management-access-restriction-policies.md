@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 4f00268fcf3797697812f3aa8b221817a2794691
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 4dd54a4a4985a33bc14022d7f722bdf83224c4aa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092541"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240851"
 ---
 # <a name="api-management-access-restriction-policies"></a>Az API Management hozzáférés-korlátozási szabályzatok
-Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](http://go.microsoft.com/fwlink/?LinkID=398186).  
+Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](https://go.microsoft.com/fwlink/?LinkID=398186).  
   
 ##  <a name="AccessRestrictionPolicies"></a> Hozzáférés-korlátozási szabályzatok  
   
@@ -71,7 +71,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |hagyja figyelmen kívül eset|Akkor állítható a True vagy FALSE (hamis). Ha esetben igaz értékre kell állítani a rendszer figyelmen kívül hagyja, a fejléc értéke ellenében elfogadható értékek képest.|Igen|–|  
   
 ### <a name="usage"></a>Használat  
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **A házirend-szakaszok:** bejövő, kimenő  
   
@@ -126,7 +126,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |megújítási időszak|Másodperc elteltével a kvóta alaphelyzetbe állítja az adott időszakban.|Igen|–|  
   
 ### <a name="usage"></a>Használat  
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **A házirend-szakaszok:** bejövő  
   
@@ -181,7 +181,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |megújítási időszak|Másodperc elteltével a kvóta alaphelyzetbe állítja az adott időszakban.|Igen|–|  
   
 ### <a name="usage"></a>Használat  
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **A házirend-szakaszok:** bejövő  
   
@@ -224,7 +224,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |IP-szűrési művelet = "engedélyezése &#124; megtiltsa"|Megadja a hívások engedélyezni kell-e, vagy a megadott IP-címek és tartományok esetében nem.|Igen|–|  
   
 ### <a name="usage"></a>Használat  
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **A házirend-szakaszok:** bejövő  
 -   **A házirend-hatókörök:** globális, termék, API-művelet  
@@ -279,7 +279,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |megújítási időszak|Másodperc elteltével a kvóta alaphelyzetbe állítja az adott időszakban.|Igen|–|  
   
 ### <a name="usage"></a>Használat  
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **A házirend-szakaszok:** bejövő  
 -   **A házirend-hatókörök:** termék  
@@ -336,7 +336,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |megújítási időszak|Másodperc elteltével a kvóta alaphelyzetbe állítja az adott időszakban.|Igen|–|  
   
 ### <a name="usage"></a>Használat  
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **A házirend-szakaszok:** bejövő  
 -   **A házirend-hatókörök:** globális, termék, API-művelet  
@@ -506,7 +506,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |url|Nyissa meg az azonosító konfigurációs végpont URL-címe, amennyiben szerezhető be Open ID konfigurációs metaadatok. A válaszban meg kell felelnie a vonatkozó műszaki adatok, meghatározott URL-címen:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`.  Az Azure Active Directory a következő URL-cím használata: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` és helyettesítse be a directory-bérlő neve, pl. `contoso.onmicrosoft.com`.|Igen|–|  
   
 ### <a name="usage"></a>Használat  
- Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **A házirend-szakaszok:** bejövő  
 -   **A házirend-hatókörök:** globális, termék, API-művelet  

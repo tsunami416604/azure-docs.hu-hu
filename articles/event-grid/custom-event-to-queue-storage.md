@@ -5,21 +5,23 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 10/09/2018
+ms.date: 10/30/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 7ca8311c97faed980555c46d977a5df85c20353d
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: eb814447705112758b70d0a467489e5973c9c80a
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067456"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418143"
 ---
 # <a name="route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Egyéni események átirányítása az Azure Queue Storage-ba az Azure CLI-vel és az Event Griddel
 
-Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Az Azure Queue Storage az egyik támogatott eseménykezelő. Ebben a cikkben létrehoz egy egyéni témakört az Azure CLI-vel, feliratkozik az egyéni témakörre, majd elindítja az eseményt az eredmény megtekintéséhez. Az eseményeket elküldi a Queue Storage-ba.
+Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Az Azure Queue Storage az egyik támogatott eseménykezelő. Ebben a cikkben létrehozunk egy egyéni témakört az Azure CLI-vel, feliratkozunk az egyéni témakörre, majd elindítjuk az eseményt az eredmény megtekintéséhez. Az eseményeket elküldi a Queue Storage-ba.
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
@@ -39,7 +41,7 @@ az group create --name gridResourceGroup --location westus2
 
 ## <a name="create-a-custom-topic"></a>Egyéni témakör létrehozása
 
-Az Event Grid-témakörök egy felhasználó által meghatározott végpontot biztosítanak, amelyben közzéteheti az eseményeket. Az alábbi példa az erőforráscsoportban létrehozza az egyéni témakört. A `<topic_name>` elemet cserélje le a témakör egyedi nevére. Az Event Grid-témakör nevének egyedinek kell lennie, mert a nevet egy DNS-bejegyzés képviseli.
+Az Event Grid-témakörök egy felhasználó által meghatározott végpontot biztosítanak, amelyben közzéteheti az eseményeket. Az alábbi példa az erőforráscsoportban létrehozza az egyéni témakört. A `<topic_name>` elemet cserélje le az egyéni témakör egyedi nevére. Az Event Grid-témakör nevének egyedinek kell lennie, mert a nevet egy DNS-bejegyzés jelöli.
 
 ```azurecli-interactive
 # if you have not already installed the extension, do it now.
@@ -72,16 +74,17 @@ Az alábbi szkript lekéri az üzenetsor tárfiókjának erőforrás-azonosító
 ```azurecli-interactive
 storageid=$(az storage account show --name $storagename --resource-group gridResourceGroup --query id --output tsv)
 queueid="$storageid/queueservices/default/queues/$queuename"
+topicid=$(az eventgrid topic show --name <topic_name> -g gridResourceGroup --query id --output tsv)
 
 az eventgrid event-subscription create \
-  --topic-name <topic_name> \
-  -g gridResourceGroup \
+  --source-resource-id $topicid \
   --name <event_subscription_name> \
   --endpoint-type storagequeue \
-  --endpoint $queueid
+  --endpoint $queueid \
+  --expiration-date "2018-11-30"
 ```
 
-Az esemény-előfizetést létrehozó fióknak írási hozzáféréssel kell rendelkeznie a Queue Storage-tárolóhoz.
+Az esemény-előfizetést létrehozó fióknak írási hozzáféréssel kell rendelkeznie a Queue Storage-tárolóhoz. Vegye figyelembe, hogy az előfizetéshez lejárati dátum tartozik. Az esemény-előfizetés a megadott dátumot követően automatikusan lejár. Olyan esemény-előfizetésekhez állítson be lejárati dátumot, amelyekre csak korlátozott ideig lesz szükség.
 
 Ha a REST API használatával hozza létre az előfizetést, a tárfiók azonosítóját és az üzenetsor nevét külön paraméterként kell megadnia.
 
@@ -104,7 +107,7 @@ endpoint=$(az eventgrid topic show --name <topic_name> -g gridResourceGroup --qu
 key=$(az eventgrid topic key list --name <topic_name> -g gridResourceGroup --query "key1" --output tsv)
 ```
 
-A folyamat leegyszerűsítése érdekében használjon mintául szolgáló eseményadatokat, amelyeket elküldhet az egyéni témakörbe. Egy alkalmazás vagy Azure-szolgáltatás általában eseményadatokat küld el. A CURL egy olyan segédprogram, amely HTTP-kéréseket küld. Ebben a cikkben a CURL használatával küldi az eseményt az egyéni témakörbe.  Az alábbi példa három eseményt küld el az Event Grid-témakörnek:
+A folyamat leegyszerűsítése érdekében használjon mintául szolgáló eseményadatokat, amelyeket elküldhet az egyéni témakörbe. Egy alkalmazás vagy Azure-szolgáltatás általában eseményadatokat küld el. A CURL egy olyan segédprogram, amely HTTP-kéréseket küld. Ebben a cikkben a CURL használatával küldjük el az eseményt az egyéni témakörbe.  Az alábbi példa három eseményt küld el az Event Grid-témakörnek:
 
 ```azurecli-interactive
 for i in 1 2 3

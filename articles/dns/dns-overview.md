@@ -7,41 +7,41 @@ ms.service: dns
 ms.topic: overview
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: f68281f71ed525798410fb80b0d0175d38050c40
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 9535ad73300406408a94a6f38f001e45ba7409a2
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829919"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093095"
 ---
 # <a name="what-is-azure-dns"></a>Mi az Azure DNS?
 
 Az Azure DNS egy üzemeltetési szolgáltatás, amely a Microsoft Azure infrastruktúráját használja a DNS-tartományok névfeloldásához. Ha tartományait az Azure-ban üzemelteti, DNS-rekordjait a többi Azure-szolgáltatáshoz is használt hitelesítő adatokkal, API-kkal, eszközökkel és számlázási információkkal kezelheti.
 
-Az Azure DNS-t nem használhatja tartománynév vásárlására. Az [Azure Web Apps](https://docs.microsoft.com/azure/app-service/custom-dns-web-site-buydomains-web-app#buy-the-domain) vagy egy külső tartományregisztráló használatával vásárolhat tartománynevet éves díj ellenében. A tartományokat ezután üzemeltetheti az Azure DNS-ben rekordok kezeléséhez. További információkért tekintse meg a [tartományok az Azure DNS-be való delegálását](dns-domain-delegation.md) ismertető cikket.
+Az Azure DNS-t nem használhatja tartománynév vásárlására. Az [Azure Web Apps](https://docs.microsoft.com/azure/app-service/custom-dns-web-site-buydomains-web-app#buy-the-domain) vagy egy külső tartományregisztráló használatával vásárolhat tartománynevet éves díj ellenében. A tartományokat ezután üzemeltetheti az Azure DNS-ben rekordok kezeléséhez. További információ: [Delegate a domain to Azure DNS](dns-domain-delegation.md) (Tartomány delegálása az Azure DNS-be).
 
-Az Azure DNS a következő funkciókat tartalmazza:
+Az Azure DNS a következő funkciókat tartalmazza.
 
 ## <a name="reliability-and-performance"></a>Megbízhatóság és teljesítmény
 
-Az Azure DNS-beli DNS-tartományok az Azure globális DNS-névkiszolgálói hálózatán üzemelnek. Az Azure DNS csomópontválasztásos (anycast) hálózatot használ, hogy minden DNS-lekérdezést a legközelebbi elérhető DNS-kiszolgáló tudja megválaszolni, ami biztosítja a tartomány gyorsaságát és magas rendelkezésre állását.
+Az Azure DNS-beli DNS-tartományok az Azure globális DNS-névkiszolgálói hálózatán üzemelnek. Az Azure DNS anycast hálózatkezelést használ. A tartomány gyors teljesítménye és magas rendelkezésre állása érdekében minden DNS-lekérdezésre a legközelebbi elérhető DNS-kiszolgáló válaszol.
 
 ## <a name="security"></a>Biztonság
 
-Az Azure DNS szolgáltatás az Azure Resource Managerre épül, és többek között az alábbi funkciókat tartalmazza:
+ Az Azure DNS az Azure Resource Managerre épül, amely többek között a következő szolgáltatásokat nyújtja:
 
-* [szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control) – szabályozhatja, hogy ki rendelkezzen hozzáféréssel egy adott művelethez a vállalatban.
+* [Szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control) – szabályozhatja, hogy ki rendelkezzen hozzáféréssel egy adott művelethez a vállalatban.
 
-* [tevékenységnaplók](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#activity-logs) – nyomon követheti, hogy a vállalat felhasználói hogyan módosították az erőforrásokat, vagy megkeresheti a hibákat a hibaelhárításkor.
+* [Tevékenységnaplók](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#activity-logs) – nyomon követheti, hogy a vállalat felhasználói hogyan módosították az erőforrásokat, vagy megkeresheti a hibákat a hibaelhárításkor.
 
-* [erőforrás-zárolás](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources) – zárolhat egy előfizetést, erőforráscsoportot vagy erőforrást, hogy a szervezet többi felhasználója ne tudja véletlenül törölni vagy módosítani a kritikus fontosságú erőforrásokat.
+* [Erőforrás-zárolás](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources) – zárolhat egy előfizetést, erőforráscsoportot vagy erőforrást. A zárolás megakadályozza, hogy a cég vagy intézmény felhasználói véletlenül töröljék vagy módosítsák a kritikus erőforrásokat.
 
 További információkat a [DNS-zónák és -rekordok védelmével](dns-protect-zones-recordsets.md) kapcsolatos témakörben olvashat. 
 
 
 ## <a name="ease-of-use"></a>Könnyű használat
 
-Az Azure DNS szolgáltatás képes kezelni az Azure-szolgáltatások DNS-rekordjait, és DNS-t biztosít a külső erőforrásoknak. Az Azure DNS integrálva van az Azure Portallal, és ugyanazokat a hitelesítő adatokat, számlázási információkat és támogatási szerződést használja, mint a többi Azure-szolgáltatás. 
+ Az Azure DNS képes kezelni az Azure-szolgáltatások DNS-rekordjait, és DNS-t biztosít a külső erőforrásoknak. Az Azure DNS integrálva van az Azure Portallal, és ugyanazokat a hitelesítő adatokat, számlázási információkat és támogatási szerződést használja, mint a többi Azure-szolgáltatás. 
 
 Az Azure DNS díjszabása az Azure-ban üzemeltetett DNS-zónák és a fogadott DNS-lekérdezések számán alapul. A díjszabással kapcsolatos további információkért tekintse meg [az Azure DNS díjszabásával](https://azure.microsoft.com/pricing/details/dns/) kapcsolatos cikket.
 
@@ -49,15 +49,15 @@ A tartományok és a rekordok az Azure Portal, az Azure PowerShell-parancsmagok 
 
 ## <a name="customizable-virtual-networks-with-private-domains"></a>Saját tartományokkal rendelkező, testreszabható virtuális hálózatok
 
-Az Azure DNS a privát DNS-tartományok használatát is támogatja, amelyek mostantól nyilvános előzetes verzióban érhetők el. Ez lehetővé teszi, hogy a jelenleg elérhető, Azure által biztosított nevek helyett egyéni tartományneveket használjon a virtuális magánhálózatokon.
+Az Azure DNS a privát DNS-tartományok használatát is támogatja egy mostantól nyilvános előzetes verzióban elérhető szolgáltatással. Ez a szolgáltatás lehetővé teszi, hogy a jelenleg elérhető, Azure által biztosított nevek helyett egyéni tartományneveket használjon a virtuális magánhálózatokon.
 
 További információkat az [Azure DNS privát tartományokhoz való használatát](private-dns-overview.md) ismertető cikkben olvashat.
 
 ## <a name="alias-records"></a>Aliasrekordok
 
-Az Azure DNS az aliasrekord-készletek használatát is támogatja. Aliasrekord-készletekkel Azure-erőforrásra is hivatkozhat, például nyilvános Azure IP-címre vagy Traffic Manager-profilra. Ha a mögöttes erőforrás IP-címe módosul, az aliasrekord-készlet a DNS feloldása során zökkenőmentesen frissíti magát. Az aliasrekord-készlet a szolgáltatáspéldányra mutat, a szolgáltatáspéldány pedig egy IP-címmel van társítva. 
+Az Azure DNS az aliasrekord-készletek használatát is támogatja. Aliasrekord-készletekkel Azure-erőforrásra is hivatkozhat, például nyilvános Azure IP-címre vagy Azure Traffic Manager-profilra. Ha a mögöttes erőforrás IP-címe módosul, az aliasrekord-készlet a DNS feloldása során zökkenőmentesen frissíti magát. Az aliasrekord-készlet a szolgáltatáspéldányra mutat, a szolgáltatáspéldány pedig egy IP-címmel van társítva. 
 
-Ezenkívül mostantól a legfelső vagy csupasz tartományt (például contoso.com) egy Traffic Manager-profilra irányíthatja egy aliasrekorddal.
+Ezenkívül mostantól a legfelső vagy csupasz tartományt egy Traffic Manager-profilra irányíthatja egy aliasrekorddal. Például: contoso.com.
 
 További információért lásd: [Az Azure DNS-aliasrekordok áttekintése](dns-alias.md).
 
@@ -66,7 +66,7 @@ További információért lásd: [Az Azure DNS-aliasrekordok áttekintése](dns-
 
 * További tudnivalókat a DNS-zónákról és -rekordokról [a DNS-zónák és -rekordok áttekintésében](dns-zones-records.md) olvashat.
 
-* Megismerheti, hogyan hozhat létre zónákat az Azure DNS-ben a [DNS-zónák létrehozását](./dns-getstarted-create-dnszone-portal.md) ismertető témakörből.
+* Az Azure DNS-ben a zónák létrehozásáról a [DNS-zónák létrehozását](./dns-getstarted-create-dnszone-portal.md) ismertető témakörben olvashat.
 
 * Az Azure DNS-sel kapcsolatos gyakori kérdésekért lásd az [Azure DNS gyakori kérdéseket](dns-faq.md).
 

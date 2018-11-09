@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Szöveg fordítása a Python használatával – Translator Text API'
+title: 'Rövid útmutató: Szöveg lefordítása, Python – Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban szöveget fordíthat le egy nyelvről egy másikra a Translator Text API és a Python használatával, kevesebb mint 10 perc alatt.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/17/2018
 ms.author: erhopf
-ms.openlocfilehash: a9f848098f377a79ded07d3bbe41f212cb4a7e74
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 3ba8064a6d13cfe9d2a2ae2ac496cfa8302989cd
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945349"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085986"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>Rövid útmutató: Sztring lefordítása a Translator Text API és a Python használatával
 
@@ -69,7 +69,7 @@ Jelenleg egy végpont érhető el a Translator Text szolgáltatáshoz, és ez va
 A `params` tulajdonsággal állíthatók be a kimeneti nyelvek. Ebben a mintában angolról olaszra és németre fordítunk: `it` és `de`.
 
 >[!NOTE]
-> A végpontokkal, az útvonalakkal és a kérelemparaméterekkel kapcsolatos további információért lásd: [Translator Text API 3.0: Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate).
+> A végpontokkal, az útvonalakkal és a kérelem-paraméterekkel kapcsolatos további információért lásd: [Translator Text API 3.0: Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate).
 
 ```python
 base_url = 'https://api.cognitive.microsofttranslator.com'
@@ -102,7 +102,7 @@ body = [{
 }]
 ```
 
-Következő lépésként létrehozunk egy küldési kérelmet a `requests` modullal. Ez három argumentumot fogad: az összefűzött URL-címet, a kérelemfejléceket és a kérelem törzsét:
+A következő lépésben egy POST-kérelmet hozunk létre a `requests` modullal. Ez három argumentumot fogad: az összefűzött URL-címet, a kérelemfejléceket és a kérelem törzsét:
 
 ```python
 request = requests.post(constructed_url, headers=headers, json=body)
@@ -114,7 +114,7 @@ response = request.json()
 Az utolsó lépés az eredmények kiírása. Ez a kódrészlet szebbé teszi az eredményeket a kulcsok rendezésével, a behúzás beállításával és az elem- és kulcselválasztók meghatározásával.
 
 ```python
-print(json.dumps(response, sort_keys=True, indent=4, separators=(',', ': ')))
+print(json.dumps(response, sort_keys=True, indent=4, ensure_ascii=False, separators=(',', ': ')))
 ```
 
 ## <a name="put-it-all-together"></a>Az alkalmazás összeállítása

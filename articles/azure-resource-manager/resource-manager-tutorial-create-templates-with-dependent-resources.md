@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/19/2018
+ms.date: 10/30/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5e198310dd18cc8574b5510b9318ff4badaffca3
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 2b8cc34e5ace5e252acae94a16858a69edc63a1c
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646309"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240239"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Oktatóanyag: Függő erőforrásokkal ellátott Azure Resource Manager-sablonok létrehozása
 
@@ -29,10 +29,8 @@ Az oktatóanyag során egy tárfiókot, egy virtuális gépet, egy virtuális h�
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
-> * Biztonságos környezet beállítása
 > * Gyorsindítási sablon megnyitása
 > * A sablon vizsgálata
-> * A paraméterfájl szerkesztése
 > * A sablon üzembe helyezése
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
@@ -42,7 +40,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 * [Visual Studio Code](https://code.visualstudio.com/) a Resource Manager Tools bővítménnyel.  Lásd [a bővítmény telepítését](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites) ismertető részt.
-* A szórásos jelszófeltöréses támadások megelőzése érdekében automatikusan hozzon létre jelszót a virtuális gép rendszergazdai fiókjához. Íme egy példa:
+* A nagyobb biztonság érdekében használjon automatikusan létrehozott jelszót a virtuális gép rendszergazdai fiókjához. Íme egy példa jelszó automatikus létrehozására:
 
     ```azurecli-interactive
     openssl rand -base64 32
@@ -66,37 +64,45 @@ Az Azure-beli gyorsindítási sablonok a Resource Manager-sablonok adattárakén
 
 Amikor ebben a szakaszban a sablont vizsgálja, próbálja megválaszolni a következő kérdéseket:
 
-- Hány Azure-erőforrás van meghatározva ebben a sablonban?
-- Az egyik erőforrás egy Azure-tárfiók.  A definíció hasonlít a legutóbbi oktatóanyagban használtra?
-- Hogyan tudja megkeresni a sablonban meghatározott erőforrásokhoz a sablonreferenciákat?
-- Hogyan tudja megkeresni az erőforrások függőségeit?
+* Hány Azure-erőforrás van meghatározva ebben a sablonban?
+* Az egyik erőforrás egy Azure-tárfiók.  A definíció hasonlít a legutóbbi oktatóanyagban használtra?
+* Hogyan tudja megkeresni a sablonban meghatározott erőforrásokhoz a sablonreferenciákat?
+* Hogyan tudja megkeresni az erőforrások függőségeit?
 
 1. A Visual Studio Code-ban csukja össze az elemeket mindaddig, amíg csak az első szintű és a **resources** (erőforrások) alatt lévő második szintű elemek lesznek láthatók:
 
     ![Visual Studio Code – Azure Resource Manager-sablonok](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
-    A sablon öt erőforrást határoz meg.
-2. Bontsa ki az első erőforrást. Ez egy tárfiók. A definíciónak az előző oktatóanyag elején használttal azonosnak kell lennie.
+    A sablon öt erőforrást határoz meg:
+
+    * `Microsoft.Storage/storageAccounts`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
+    * `Microsoft.Network/publicIPAddresses`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
+    * `Microsoft.Network/virtualNetworks`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
+    * `Microsoft.Network/networkInterfaces`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
+    * `Microsoft.Compute/virtualMachines`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+
+    Érdemes megismerkedni a sablon alapvető működésével, mielőtt megkezdi annak testreszabását.
+
+2. Bontsa ki az első erőforrást. Ez egy tárfiók. Hasonlítsa össze az erőforrás-definíciót a [sablonreferenciával](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
 
     ![Visual Studio Code – Azure Resource Manager-sablonok, tárfiók-definíciók](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
 
-3. Bontsa ki a második erőforrást. Az erőforrástípus **Microsoft.Network/publicIPAddresses**. A sablonreferencia megkereséséhez lépjen a [sablonreferenciához](https://docs.microsoft.com/azure/templates/), majd a **Filter by title (Szűrés cím alapján)** mezőben adja meg a **nyilvános IP-címet** vagy a **nyilvános IP-címeket**. Hasonlítsa össze az erőforrás-definíciót a sablonreferenciával.
+3. Bontsa ki a második erőforrást. Az erőforrástípus `Microsoft.Network/publicIPAddresses`. Hasonlítsa össze az erőforrás-definíciót a [sablonreferenciával](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
 
     ![Visual Studio Code – Azure Resource Manager-sablonok, nyilvános IP-cím definíciója](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
-4. A sablonban meghatározott további erőforrások sablonreferenciáinak megkereséséhez ismételje meg az utolsó lépést.  Hasonlítsa össze az erőforrás-definíciókat a referenciákkal.
-5. Bontsa ki a negyedik erőforrást:
+4. Bontsa ki a negyedik erőforrást. Az erőforrástípus `Microsoft.Network/networkInterfaces`:  
 
     ![Visual Studio Code – Azure Resource Manager-sablonok – dependsOn](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
 
-    A dependsOn elem lehetővé teszi, hogy egy adott erőforrást egy vagy több erőforrástól függőként lehessen meghatározni. Ebben a példában ez az erőforrás a networkInterface.  Ez az erőforrás a következő két másik erőforrástól függ:
+    A dependsOn elem lehetővé teszi, hogy egy adott erőforrást egy vagy több erőforrástól függőként lehessen meghatározni. Az erőforrás két másik erőforrástól függ:
 
-    * publicIPAddress
-    * virtualNetwork
+    * `Microsoft.Network/publicIPAddresses`
+    * `Microsoft.Network/virtualNetworks`
 
-6. Bontsa ki az ötödik erőforrást. Ez az erőforrás egy virtuális gép. Ez az erőforrás a következő két másik erőforrástól függ:
+5. Bontsa ki az ötödik erőforrást. Ez az erőforrás egy virtuális gép. Ez az erőforrás a következő két másik erőforrástól függ:
 
-    * storageAccount
-    * networkInterface
+    * `Microsoft.Storage/storageAccounts`
+    * `Microsoft.Network/networkInterfaces`
 
 A következő ábrán az erőforrások és az ehhez a sablonhoz tartozó függőségi adatok láthatók:
 
@@ -129,22 +135,23 @@ A sablonok üzembe helyezésének számos módszere létezik.  Ebben az oktatóa
     ```bash
     cat azuredeploy.json
     ```
-7. Futtassa az alábbi PowerShell-parancsokat a Cloud Shellben. A biztonság növelése érdekében automatikusan létrehozott jelszót használjon a virtuális gép rendszergazdai fiókjához. Lásd: [Előfeltételek](#prerequisites).
+7. Futtassa az alábbi PowerShell-parancsokat a Cloud Shellben. A nagyobb biztonság érdekében használjon automatikusan létrehozott jelszót a virtuális gép rendszergazdai fiókjához. Lásd: [Előfeltételek](#prerequisites).
 
     ```azurepowershell
     $deploymentName = Read-Host -Prompt "Enter the name for this deployment"
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
     $adminUsername = Read-Host -Prompt "Enter the virtual machine admin username"
-    $adminPassword = Read-Host -Prompt "Enter the admin password"
-    $dnsLablePrefix = Read-Host -Prompt "Enter the DNS label prefix"
+    $adminPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
+    $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS label prefix"
 
     New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
     New-AzureRmResourceGroupDeployment -Name $deploymentName `
         -ResourceGroupName $resourceGroupName `
-        -adminUsername = $adminUsername `
-        -adminPassword = $adminPassword `
-        -dnsLabelPrefix = $dnsLabelPrefix `
-        -TemplateFile azuredeploy.json 
+        -adminUsername $adminUsername `
+        -adminPassword $adminPassword `
+        -dnsLabelPrefix $dnsLabelPrefix `
+        -TemplateFile azuredeploy.json
     ```
 8. Az alábbi PowerShell-parancs futtatásával megjelenítheti az újonnan létrehozott virtuális gépet:
 
@@ -155,7 +162,7 @@ A sablonok üzembe helyezésének számos módszere létezik.  Ebben az oktatóa
 
     A sablonban szereplő virtuálisgépnév (**SimpleWinVM**) nem módosítható.
 
-9. Jelentkezzen be a virtuális gépre a rendszergazdai hitelesítő adatok teszteléséhez. 
+9. RDP-kapcsolattal csatlakozzon a virtuális géphez, hogy ellenőrizze, sikeresen létrejött-e a virtuális gép.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -168,9 +175,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 ## <a name="next-steps"></a>További lépések
 
-A jelen oktatóanyagban létrehoz és üzembe helyez egy virtuális gép, egy virtuális hálózat és a függő erőforrások létrehozására szolgáló sablont. Az Azure-erőforrások feltételek alapján való üzembe helyezésével kapcsolatban lásd:
-
+Ebben az oktatóanyagban létrehozott és üzembe helyezett egy virtuális gép, egy virtuális hálózat és a függő erőforrások létrehozására szolgáló sablont. Az Azure-erőforrások feltételek alapján való üzembe helyezésével kapcsolatban lásd:
 
 > [!div class="nextstepaction"]
 > [Feltételek használata](./resource-manager-tutorial-use-conditions.md)
-

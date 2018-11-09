@@ -9,16 +9,16 @@ ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: defdebec158f763003e90957687f4565176cb76a
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: be0c3e7e09e61230332b1275289fd93e59c7c0b2
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166848"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156986"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-to-your-simulated-device"></a>Oktatóanyag: Node.js-alapú IoT Edge-modul fejlesztése és üzembe helyezése egy szimulált eszközön
 
-Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. Az Azure IoT Edge üzembe helyezése szimulált eszközön [Windows][lnk-tutorial1-win] vagy [Linux][lnk-tutorial1-lin] rendszeren című oktatóanyagban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:    
+Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. A rövid útmutatókban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:    
 
 > [!div class="checklist"]
 > * IoT Edge Node.js-modul létrehozása a Visual Studio Code-dal
@@ -250,12 +250,3 @@ Ebben az oktatóanyagban olyan kódot tartalmazó IoT Edge-modult hozott létre,
 > [Az Azure Function üzembe helyezése modulként](tutorial-deploy-function.md)
 > [Az Azure Stream Analytics üzembe helyezése modulként](tutorial-deploy-stream-analytics.md)
 
-
-<!-- Links -->
-[lnk-tutorial1-win]: quickstart.md
-[lnk-tutorial1-lin]: quickstart-linux.md
-
-<!-- Images -->
-[1]: ./media/tutorial-csharp-module/programcs.png
-[2]: ./media/tutorial-csharp-module/build-module.png
-[3]: ./media/tutorial-csharp-module/docker-os.png

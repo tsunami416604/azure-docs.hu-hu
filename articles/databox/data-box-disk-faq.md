@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 09/28/2018
+ms.date: 10/30/2018
 ms.author: alkohli
-ms.openlocfilehash: 8acb808e4b60926fbe6b3faa3fa6a7174a190884
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: fff1684efda0e7e7b857c668eaa28dc79b7534d7
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094241"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416375"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Mi az az Azure Data Box Disk-lemez? (Előzetes verzió)
 
@@ -44,7 +44,7 @@ A lemezek a Microsoft BitLocker meghajtótitkosítással vannak titkosítva, ame
 A. Ha 40 TB-nyi (vagy kevesebb) adata van, amelyet szeretne átvinni az Azure-ba, akkor hasznos lehet a Data Box Disk-lemezek használata.
 
 ### <a name="q-what-is-the-price-of-data-box-disks"></a>K. Mennyibe kerülnek a Data Box Disk-lemezek?
-A. Az előzetes verzió ideje alatt a Data Box Disk-lemezek díjmentesen érhetők el. A szállítás is ingyenes, az Azure-tárhely azonban költségekkel jár.
+A. A Data Box Disk-lemezek árképzéséről az [előzetes verzió díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/storage/databox/disk/) tájékozódhat.
 
 ### <a name="q-how-do-i-get-data-box-disks"></a>K. Hogyan kaphatok Data Box Disk-lemezeket? 
 A.  Ahhoz, hogy Azure Data Box Disk-lemezeket kaphasson, előbb regisztráljon a [Data Box Disk előzetes verziójára](http://aka.ms/AzureDataBox). Ezt követően jelentkezzen be az Azure Portalon, majd hozzon létre egy Data Box-lemezekre vonatkozó megrendelést. Adja meg a kapcsolattartási és értesítési adatait. A megrendelés elküldése után a rendelkezésre állás függvényében 10 napon belül szállítjuk Önnek a lemezeket.   
@@ -72,7 +72,7 @@ A.  Nyissa meg az Azure Portalon a Data Box Disk-megrendelését, majd az **Eszk
 A részletes útmutatót a [Lemez feloldása Windows-ügyfélen](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client) vagy a [Lemez feloldása Linux-ügyfélen](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client) című szakaszban talál.
 
 ### <a name="q-can-i-use-a-linux-host-computer-to-connect-and-copy-the-data-on-to-the-data-box-disks"></a>K. Használhatok linuxos gazdaszámítógépet a Data Box Disk-lemezek csatlakoztatásához és az adatok másolásához?
-A.  Igen. Linux- és a Windows-ügyfél is használható a Data Box Disk-lemezek csatlakoztatásához és az adatok másolásához. További információkért tekintse meg a gazdaszámítógépre vonatkozó [Támogatott operációs rendszerek](data-box-disk-system-requirements.md) listáját.
+A.  Igen. Linux- és a Windows-ügyfelek is használhatók a Data Box Disk-lemezek csatlakoztatásához és az adatok másolásához. További információkért tekintse meg a gazdaszámítógépre vonatkozó [Támogatott operációs rendszerek](data-box-disk-system-requirements.md) listáját.
 
 ### <a name="q-my-disks-are-dispatched-but-now-i-want-to-cancel-this-order-why-is-the-cancel-button-not-available"></a>K. Már feladták a lemezeket, de szeretném lemondani a megrendelést. Miért nincs Mégse gomb?
 A.  A megrendelést csak a lemezek megrendelése után, de még a szállítás megkezdése előtt mondhatja le. Ha feladtuk a lemezeket, már nem mondhatja le a megrendelést. Az előzetes verzió időszakában költségmentesen visszaküldheti a lemezeket, azonban ez valószínűleg változni fog, ha a megoldás már általánosan elérhető lesz. 

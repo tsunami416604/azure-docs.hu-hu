@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 10/18/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: e8ca232f3c5664f69db800648b46abaf0822d6f1
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 092b6f2c3267a2c2cd2cc6304133134825bb7261
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458139"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230147"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Rövid útmutató: Azure Resource Manager-sablonok létrehozása a Visual Studio Code használatával
 
@@ -81,7 +81,7 @@ Ha meg szeretne ismerkedni a Visual Studio Code-dal történő sablonszerkeszté
     }
     ```
 
-    Ha másolta és beillesztette a kódot a Visual Studio Code-ban, a **value** elem újbóli beírásával tapasztalhatja meg a Resource Manager Tools bővítmény IntelliSense képességét.
+    Ha másolta és beillesztette a kódot a Visual Studio Code-ban, a **value** elem újbóli beírásával próbálhatja ki a Resource Manager Tools bővítmény IntelliSense képességét.
 
     ![IntelliSense a Visual Studio Code-ban egy Resource Manager-sablon használatakor](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
 
@@ -89,7 +89,7 @@ Ha meg szeretne ismerkedni a Visual Studio Code-dal történő sablonszerkeszté
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-A sablonok üzembe helyezésének számos módszere létezik.  Ebben a rövid útmutatóban az Azure Portal Azure Cloud Shellt fogja használni. A Cloud Shell az Azure CLI és az Azure PowerShell használatát is támogatja. 
+A sablonok üzembe helyezésének számos módszere létezik.  Ebben a rövid útmutatóban az Azure Portal Azure Cloud Shellt fogja használni. A Cloud Shell az Azure CLI és az Azure PowerShell használatát is támogatja.
 
 1. Jelentkezzen be az [Azure Cloud Shellbe](https://shell.azure.com).
 

@@ -4,23 +4,23 @@ description: Ez a cikk végigvezeti az Azure CLI-hez szükséges Resource Graph 
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: quickstart
 ms.service: resource-graph
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: df01a57cda063e301efbc4d99f3bac8dbb4b2e66
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: a252dd6698a5e4f724fcbbf821b01f63ab4f529b
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054166"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086811"
 ---
 # <a name="run-your-first-resource-graph-query-using-azure-cli"></a>Az első Resource Graph-lekérdezés futtatása az Azure CLI használatával
 
 Az Azure Resource Graph használatához először is meg kell győződnie arról, hogy az [Azure CLI-hez](/cli/azure/) szükséges bővítmény telepítve van. E rövid útmutató segítségével hozzáadhatja a bővítményt a telepített Azure CLI-hez. A bővítményt helyileg telepített Azure CLI-vel vagy az [Azure Cloud Shellen](https://shell.azure.com) keresztül is használhatja.
 
-E folyamat végén a bővítmény hozzá lesz adva a kiválasztott Azure CLI-telepítéshez, és máris futtathatja az első Resource Graph-lekérdezését.
+A folyamat végére a bővítmény hozzá lesz adva a kiválasztott Azure CLI-telepítéshez, és máris futtathatja az első Resource Graph-lekérdezését.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -28,7 +28,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 Ahhoz, hogy az Azure CLI lekérdezhesse az Azure Resource Graph-ot, el kell végezni a bővítmény hozzáadását. Ez a bővítmény mindenhol működik, ahol az Azure CLI használható, beleértve a [Basht Windows 10-en](/windows/wsl/install-win10), a [Cloud Shellt](https://shell.azure.com) (különállón és portálon belülin egyaránt), az [Azure CLI Docker-rendszerképet](https://hub.docker.com/r/microsoft/azure-cli/), vagy akár helyileg telepítve is.
 
-1. Győződjön meg arról, hogy a legfrissebb Azure CLI van telepítve (legalább a **2.0.45-ös** verzió). Ha még nem telepítette, kövesse [ezeket az utasításokat](/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
+1. Győződjön meg arról, hogy a legfrissebb Azure CLI van telepítve (legalább a **2.0.45-ös** verzió). Ha még nincs telepítve, kövesse [ezeket az utasításokat](/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
 
 1. A választott Azure CLI környezetben importálja a bővítményt a következő paranccsal:
 
@@ -49,7 +49,7 @@ Ahhoz, hogy az Azure CLI lekérdezhesse az Azure Resource Graph-ot, el kell vég
 
 ## <a name="run-your-first-resource-graph-query"></a>Az első Resource Graph-lekérdezés futtatása
 
-Most, hogy az Azure CLI bővítményt hozzáadta a választott környezethez, már meg is próbálhat futtatni egy egyszerű Resource Graph-lekérdezést. A lekérdezés az első öt Azure-erőforrást fogja visszaadni az egyes erőforrások **nevével** és **erőforrástípusával**.
+Miután az Azure CLI-bővítmény hozzá lett adva a választott környezethez, ideje futtatni egy egyszerű Resource Graph-lekérdezést. A lekérdezés az első öt Azure-erőforrást fogja visszaadni az egyes erőforrások **nevével** és **erőforrástípusával**.
 
 1. Futtassa az első Azure Resource Graph-lekérdezését a `graph` bővítmény és a `query` parancs használatával:
 
@@ -73,14 +73,14 @@ Most, hogy az Azure CLI bővítményt hozzáadta a választott környezethez, m�
   > [!NOTE]
   > Csakúgy, mint az első lekérdezésnél, e lekérdezés többszöri futtatása esetén is valószínűleg minden kéréssel eltérő erőforráslistát fog kapni. Fontos a lekérdezési parancsok sorrendje. Ebben a példában az `order by` a `limit` után következik. Így először korlátozza a lekérdezés eredményeit, majd rendezi őket.
 
-1. Frissítse a lekérdezést először úgy, hogy az `order by` a **Name** tulajdonság legyen, majd korlátozza (`limit`) a top 5 eredményre:
+1. Először frissítse a lekérdezést, hogy a **Name** tulajdonság szerint legyen rendezve (`order by`), majd korlátozza (`limit`) az első öt találatra:
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
    az graph query -q 'project name, type | order by name asc | limit 5'
    ```
 
-Ha az utolsó lekérdezés többször is lefutott, és feltéve, hogy a környezetben semmi sem változik, a visszaadott eredmények konzisztensek és a vártnak megfelelőek lesznek – a **Name** tulajdonság szerint rendezve, de csak a top 5 eredményt megjelenítve.
+Miután a végső lekérdezés többször is futott, és feltéve, hogy a környezetben semmi sem változik, a visszaadott találatok konzisztensek és a vártnak megfelelőek lesznek – a **Name** tulajdonság szerint lesznek rendezve, és csak az első öt eredmény jelenik meg.
 
 ## <a name="cleanup"></a>Felesleges tartalmak törlése
 
@@ -92,11 +92,11 @@ az extension remove -n resource-graph
 ```
 
 > [!NOTE]
-> Ezzel nem törli a korábban letöltött bővítményfájlt, csak eltávolítja azt a futó Azure CLI környezetből.
+> Ezzel nem törli a korábban letöltött bővítményfájlt, csak eltávolítja a futó Azure CLI-környezetből.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információk a [lekérdezés nyelvéről](./concepts/query-language.md)
+- További információ a [lekérdezés nyelvéről](./concepts/query-language.md)
 - Információk az [erőforrások felfedezéséről](./concepts/explore-resources.md)
 - Az első lekérdezés futtatása az [Azure PowerShell-lel](first-query-powershell.md)
 - Az [Alapszintű lekérdezések](./samples/starter.md) példáinak megtekintése

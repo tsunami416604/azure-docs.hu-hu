@@ -7,20 +7,20 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/12/2018
+ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 50005e38214bf22aa664c2d2b0cc4f86da412818
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 365c6e41db865edf8384ca1f82210d9471808f94
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144494"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140857"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Rövid útmutató: Távoli felhőalapú monitorozási megoldás kipróbálása
 
-Ez a rövid útmutató bemutatja az Azure IoT távoli monitorozási megoldásgyorsító üzembe helyezését felhőalapú távoli monitorozási szimulációk futtatásához. A megoldásgyorsító telepítését követően a megoldás **Dashboard** (Irányítópult) lapjának segítségével jelenítheti meg a szimulált eszközöket egy térképen, és a **Maintenance** (Karbantartás) lapon válaszolhat a szimulált hűtőeszköz nyomással kapcsolatos riasztásaira. A megoldásgyorsítót saját megvalósítása kiindulópontjaként vagy képzési eszközként is használhatja.
+Ez a rövid útmutató bemutatja az Azure IoT távoli monitorozási megoldásgyorsító üzembe helyezését. Ebben a felhőalapú megoldásban a **Dashboard** (Irányítópult) lap segítségével jelenítheti meg a szimulált eszközöket egy térképen, és a **Maintenance** (Karbantartás) lapon válaszolhat a szimulált hűtőeszköz nyomással kapcsolatos riasztásaira. A megoldásgyorsítót saját megvalósítása kiindulópontjaként vagy képzési eszközként is használhatja.
 
-A kezdeti üzembe helyezés a Contoso nevű vállalat számára konfigurálja a távoli monitorozási megoldásgyorsítót. A Contoso különféle fizikai környezetekben található, különböző típusú eszközöket (például hűtőeszközöket) felügyel. A hűtőeszköz a hőmérsékletre, a páratartalomra és a nyomásra vonatkozó telemetriai adatokat küld a távoli monitorozási megoldásgyorsítónak.
+A kezdeti üzembe helyezés a Contoso nevű vállalat számára konfigurálja a megoldásgyorsítót. A Contoso operátoraként különféle fizikai környezetekben található, különböző típusú eszközöket (például hűtőeszközöket) felügyel. A hűtőeszköz a hőmérsékletre, a páratartalomra és a nyomásra vonatkozó telemetriai adatokat küld a távoli monitorozási megoldásgyorsítónak.
 
 A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre.
 
@@ -68,15 +68,15 @@ Kattintson az **Elfogadás** gombra az engedélykérések elfogadásához. Ekkor
 
 A megoldás irányítópultja a következő információkat jeleníti meg a Contoso szimulált eszközeiről:
 
-* Az **eszközök statisztikái** a riasztások összegző információit és az eszközök teljes számát mutatják. Az alapértelmezett üzemelő példányban a Contoso 10, különböző típusú szimulált eszközzel rendelkezik.
+* Az **Eszközstatisztika** panel a riasztások összegző információit és az eszközök teljes számát jeleníti meg. Az alapértelmezett üzemelő példányban a Contoso 10, különböző típusú szimulált eszközzel rendelkezik.
 
-* Az **eszközök helyénél** az eszközök fizikai helyét lehet ellenőrizni. A gombostű színe jelzi, ha egy eszköz riasztást váltott ki.
+* Az **Eszközhelyek** panel az eszközök fizikai helyét jeleníti meg. A gombostű színe jelzi, ha egy eszköz riasztást váltott ki.
 
-* A **riasztások** panelje az eszközöktől érkező riasztások részleteit tartalmazza.
+* A **Riasztások** panel az eszközöktől érkező riasztások részleteit tartalmazza.
 
-* A **telemetria** panelje az eszközök telemetriai adatait jeleníti meg. A különböző telemetriastreameket a fent található telemetriatípusokra kattintva tekintheti meg.
+* A **Telemetria** panel az eszközök telemetriai adatait jeleníti meg. A különböző telemetriastreameket a fent található telemetriatípusokra kattintva tekintheti meg.
 
-* Az **elemzések** panelje az eszközöktől érkező riasztásokra vonatkozó egyesített információkat tartalmaz.
+* Az **Elemzések** panel az eszközöktől érkező riasztásokra vonatkozó egyesített információkat tartalmaz.
 
 ## <a name="respond-to-an-alert"></a>Válasz egy riasztásra
 

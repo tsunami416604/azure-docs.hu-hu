@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: c7e7b100242d6ceb35172b872f2fb6ff7f4b402b
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 3274c25227637d3b23ccd7fd21df01dc05400c11
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886160"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086437"
 ---
 # <a name="tutorial-4-extract-contextually-related-patterns"></a>4. oktatóanyag: Szövegkörnyezet szerint kapcsolódó minták kinyerése
 
@@ -380,6 +380,8 @@ Ebben az oktatóanyagban az Emberi erőforrások alkalmazás észleli azokat a k
 |--|--|--|
 |[Hierarchikus (nincsenek szerepkörök)](luis-quickstart-intent-and-hier-entity.md)|Jill Jones áthelyezése innen: **a-2349**, ide: **b-1298**|a-2349, b-1298|
 |Ez az oktatóanyag (szerepkörökkel)|Billy Patterson áthelyezése **Yumából** **Denverbe**.|Yuma, Denver|
+
+További információt a [szerepköröket és a hierarchikus entitásokat](luis-concept-roles.md#roles-versus-hierarchical-entities) ismertető cikkben talál.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

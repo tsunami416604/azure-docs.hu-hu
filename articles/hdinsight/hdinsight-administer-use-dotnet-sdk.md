@@ -1,22 +1,22 @@
 ---
-title: A .NET SDK használatával – Azure HDInsight Hadoop-fürtök kezelése
-description: Ismerje meg, hogyan hajthat végre felügyeleti feladatokat a HDInsight .NET SDK-val a HDInsight Hadoop-fürtök számára.
+title: A .NET SDK használatával – Azure HDInsight az Apache Hadoop-fürtök kezelése
+description: Ismerje meg, hogyan hajthat végre felügyeleti feladatokat a HDInsight .NET SDK-val a HDInsight az Apache Hadoop-fürtök.
 services: hdinsight
 ms.reviewer: jasonh
-author: jasonwhowell
+author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 0d8238d5f1dca15aaba0f8f5a6580df97164006a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: a7c06d53e3823bd81707608f566f581fa44638fc
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43110799"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037756"
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>A HDInsight Hadoop-fürtök kezelése a .NET SDK-val
+# <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>A HDInsight Apache Hadoop-fürtök kezelése a .NET SDK-val
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
 Útmutató a HDInsight-fürtök használata kezelheti [HDInsight.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight).
@@ -142,12 +142,12 @@ A fürtméretezés egy funkció lehetővé teszi, hogy a fürt újbóli létreho
 
 A fürt a HDInsight által támogatott különböző típusú adatok csomópontok számának módosításával hatásai:
 
-* Hadoop
+* Apache Hadoop
   
     Zökkenőmentesen lehet növelni egy Hadoop-fürtöt, amely a folyamatban lévő vagy futó feladatok befolyásolása nélkül fut-e a munkavégző csomópontok számát. Új feladatok is lehet beküldeni, amíg a művelet folyamatban van. A skálázási művelet hibák szabályosan kezeli, úgy, hogy a fürt minden esetben működőképes állapotban marad.
   
     Ha egy Hadoop-fürtöt az adatcsomópontok száma csökkentésével vertikálisan leskálázni, a fürtben a szolgáltatások újra lesz indítva. Ennek hatására a összes futó és a függőben lévő feladatok meghiúsulhatnak, a skálázási művelet befejezése után. A feladatok újból elküldheti, azonban a művelet befejeződése után.
-* HBase
+* Apache HBase
   
     Zökkenőmentesen adja hozzá vagy távolíthat el csomópontokat a HBase-fürt futás közben. Regionális kiszolgáló automatikusan kiegyensúlyozott vannak a skálázási művelet befejezése néhány percen belül. Azonban, manuálisan is eloszthatja a regionális kiszolgálók jelentkezik be a fürt átjárócsomópontjával, és a egy parancssori ablakot a következő parancsokat futtatni:
   
@@ -156,7 +156,7 @@ A fürt a HDInsight által támogatott különböző típusú adatok csomóponto
     >hbase shell
     >balancer
     ```
-* Storm
+* Apache Storm
   
     Zökkenőmentesen adja hozzá vagy távolít el a Storm-fürt adatcsomópontok futás közben. Azonban a topológia újraegyensúlyozására kell a skálázási művelet a sikeres telepítést követően.
   
@@ -192,9 +192,9 @@ HDInsight-fürtök a következő HTTP webes szolgáltatások (ezen szolgáltatá
 
 * ODBC
 * JDBC
-* Ambari
-* Oozie
-* Templeton eszközön keresztül végzett
+* Az Apache Ambari
+* Az Apache Oozie
+* Az Apache templeton eszközön keresztül végzett
 
 Alapértelmezés szerint ezek a szolgáltatások hozzáférés kapnak. Akkor is visszavonása/biztosítása a hozzáférést. Visszavonásához:
 
@@ -246,19 +246,19 @@ foreach (var key in results.Configuration.Keys)
 
 Lásd: [futtassa a Hadoop MapReduce-minták a HDInsight](hadoop/apache-hadoop-run-samples-linux.md).
 
-**A Hive-feladatok** 
+**Az Apache Hive-feladatok elküldése** 
 
 Lásd: [futtatása Hive-lekérdezések a .NET SDK használatával](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
 
-**A Pig-feladatok elküldése**
+**Az Apache Pig-feladatok elküldése**
 
 Lásd: [.NET SDK használatával futtassa a Pig-feladatok](hadoop/apache-hadoop-use-pig-dotnet-sdk.md).
 
-**A Sqoop-feladatok elküldése**
+**Az Apache Sqoop-feladatok elküldése**
 
 Lásd: [Sqoop használata a HDInsight](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md).
 
-**Az Oozie-feladatok elküldése**
+**Az Apache Oozie-feladatok elküldése**
 
 Lásd: [megadásához és a munkafolyamat futtatása a HDInsight Hadoop-keretrendszerrel használható Oozie](hdinsight-use-oozie-linux-mac.md).
 

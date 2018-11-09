@@ -8,51 +8,56 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: overview
-ms.date: 10/05/2018
+ms.date: 10/22/2018
 ms.author: sajagtap
-ms.openlocfilehash: 5756e8fb451b073c68271359848ab27373ad85ed
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 076948e7434802af7f0ad47f279335009817d40e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309552"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209589"
 ---
-# <a name="what-is-content-moderator"></a>Mi a Content Moderator?
+# <a name="what-is-azure-content-moderator"></a>Mi az az Azure Content Moderator?
 
-A tartalommoderálás az esetlegesen sértő, nem kívánt vagy kockázatos anyagokat tartalmazó szövegek, képek vagy videók monitorozási folyamata. A megjelölt tartalmak elrejthetők vagy más módon kezelhetők, így betarthatja az előírásokat és fenntarthatja a felhasználók számára kívánt környezetet.
+Az Azure Content Moderator API egy olyan Cognitive Services-szolgáltatás, amely esetlegesen sértő, kockázatos vagy egyéb nem kívánt anyagokat keres a szövegekben, képeken és videókban. Ha ilyen anyagot talál, a szolgáltatás megfelelő címkéket (jelölőket) alkalmaz a tartalomra. Az alkalmazás ezután kezelheti a megjelölt tartalmakat, így betarthatja az előírásokat, és fenntarthatja a felhasználók számára kívánt környezetet. A különböző tartalomjelölők jelentéséről további információt a [Content Moderator API-kat](#content-moderator-apis) ismertető szakaszban talál.
 
 ## <a name="where-it-is-used"></a>Hol használjuk?
 
-Az alábbi lista felsorol néhány példaforgatókönyvet a Content Moderator használatára:
+A szoftverfejlesztőknek vagy a csapatoknak például a következő néhány alkalmazási helyzetben érdemes használniuk a Content Moderatort:
 
-- Online piacterek, amelyek moderálják a termékkatalógusokat és a felhasználók által létrehozott tartalmakat
+- Online piacterek, amelyek moderálják a termékkatalógusokat és más, a felhasználók által létrehozott tartalmakat
 - Játékcégek, amelyek moderálják a felhasználók által létrehozott játékösszetevőket és a csevegőszobákat
 - Közösségi üzenetkezelési platformok, amelyek moderálják a felhasználók által hozzáadott képeket, szövegeket és videókat
-- Médianagyvállalatok, amelyek központosított tartalommoderálást alkalmaznak
-- Általános és középiskolai oktatási megoldások szolgáltatói, amelyek a diákok és oktatók számára kiszűrik a helytelen és sértő tartalmakat
+- Médianagyvállalatok, amelyek központosított moderálást alkalmaznak a tartalmakon
+- Általános és középiskolai oktatási megoldások szolgáltatói, amelyek a diákok és oktatók számára szűrik ki a helytelen tartalmakat
 
 ## <a name="what-it-includes"></a>Mit tartalmaz?
 
-A Content Moderator számos webszolgáltatás API-t tartalmaz, valamint egy emberi beavatkozást igénylő beépített ellenőrzőeszközt, amely segít a képek, szövegek és videók moderálásában.
+A Content Moderator szolgáltatás számos webszolgáltatás API-t tartalmaz, amelyek REST-hívásokkal és .NET SDK-val is elérhetőek. Ezek között az emberi felülvizsgálati eszköz is szerepel, amely lehetővé teszi, hogy emberi felülvizsgálók segítsék a szolgáltatást és végezzenek finomhangolást a moderálási funkción.
 
-![A Content Moderator blokkdiagramja](images/content-moderator-block-diagram.png)
+![a Content Moderator blokkdiagramja, amelyen a moderálási API-k, az ellenőrző API-k és az emberi felülvizsgálati eszköz látható](images/content-moderator-block-diagram.png)
 
-### <a name="apis"></a>API-k
+### <a name="content-moderator-apis"></a>Content Moderator API-k
 
-A Content Moderator szolgáltatás az alábbi API-kat tartalmazza:
-  - [**Szövegmoderálási API**](text-moderation-api.md): Az API használatával észlelhetők a szövegekben az esetlegesen profán, explicit, kétértelmű, sértő és személyes azonosításra alkalmas adatokat tartalmazó (PII) részek.
-  - [**Egyéni kifejezéslista API**](try-terms-list-api.md): Az API segítségével a szövegek a beépített kifejezések mellett egyéni kifejezéslistákkal is összevethetők. Ezek a listák segítik a tartalmak tiltását vagy engedélyezését a tartalomházirendeknek megfelelően.  
-  - [**Képmoderálási API**](image-moderation-api.md): Az API használatával kiszűrhetők a felnőtteknek szóló és kényes tartalmakat ábrázoló képek, észlelhetők a képeken található szövegek az optikai karakterfelismerés (OCR) segítségével, valamint felismerhetők az arcok.
-  - [**Egyéni képlista API**](try-image-list-api.md): Az API használatával a képek összevethetők egyéni képlistákkal, amelyek olyan, előre meghatározott tartalmakat tartalmaznak, melyeket nem szükséges újra besorolni.
-  - [**Videomoderálási API**](video-moderation-api.md): Az API használatával kiszűrhetők a felnőtteknek szóló és kényes tartalmakat ábrázoló videók.
-  - [**Ellenőrző API-k**](try-review-api-job.md): A [Feladatok](try-review-api-job.md), [Felülvizsgálatok](try-review-api-review.md) és [Munkafolyamat](try-review-api-workflow.md) műveletek segítségével automatizálhatók az emberi beavatkozást igénylő munkafolyamatok a felülvizsgálati eszközön belül.
+A Content Moderator szolgáltatás az alábbi alkalmazási helyzetekhez tartalmaz API-kat.
+
+| Műveletek | Leírás |
+| ------ | ----------- |
+|[**Szövegmoderálás**](text-moderation-api.md)| Sértő tartalmat, szexuálisan explicit vagy szexuális utalásokat tartalmazó, profanitást és személyazonosításra alkalmas adatokat (IIP) tartalmazó szövegeket keres.|
+|[**Egyéni kifejezéslista**](try-terms-list-api.md)| A beépített kifejezések mellett egyéni kifejezéslisták alapján is keres a szövegekben. Az egyéni listákkal a saját tartalomházirendjének megfelelően tilthatja le vagy engedélyezheti a tartalmakat.|  
+|[**Képmoderálás**](image-moderation-api.md)| Kiszűri a felnőtteknek szóló és kényes tartalmakat ábrázoló képeket, észleli a képeken található szövegeket az optikai karakterfelismerés (OCR) segítségével, valamint arcokat ismer fel.|
+|[**Egyéni képlisták**](try-image-list-api.md)| Egyéni képlista alapján szűri a képeket. Egyéni képlistákkal szűrheti ki az olyan gyakran ismétlődő tartalmakat, amelyeket nem szeretne ismét besorolni.|
+|[**Videomoderálás**](video-moderation-api.md)| Felnőtteknek szóló és kényes tartalmakat keres a videókban, és az ilyen tartalmakhoz időjelölőket ad vissza.|
+|[**Felülvizsgálatok**](try-review-api-job.md)| A [Feladatok](try-review-api-job.md), [Felülvizsgálatok](try-review-api-review.md) és [Munkafolyamat](try-review-api-workflow.md) műveletek segítségével hozhatók létre és automatizálhatók az emberi beavatkozást igénylő munkafolyamatok az emberi felülvizsgálati eszközzel. A munkafolyamat API még nem érhető el a .NET SDK-n keresztül.|
 
 ### <a name="human-review-tool"></a>Emberi felülvizsgálati eszköz
 
-A Content Moderator előfizetésnek része a beépített [emberi felülvizsgálati eszköz](Review-Tool-User-Guide/human-in-the-loop.md). A korábban említett felülvizsgálati API értékeléseket hoz létre a szövegekről, képekről és videókról, amelyek alapján az emberi moderátorok meghozhatják a végleges döntéseket.
+A Content Moderator szolgáltatás webalapú [emberi felülvizsgálati eszközt](Review-Tool-User-Guide/human-in-the-loop.md) is tartalmaz. 
 
-![A Content Moderator videovizsgálati eszköze](images/video-review-default-view.png)
+![A Content Moderator emberi felülvizsgálati eszköz kezdőlapja](images/homepage.PNG)
+
+A felülvizsgálati API-k segítségével állíthatja be a szövegek, képek és videótartalmak csapat általi felülvizsgálatát a megadott szűrők alapján. Ezt követően az emberi moderátorok hozhatják meg a végső moderátori döntéseket. Az emberi bevitel nem tanítja be a szolgáltatást, de a szolgáltatás és az emberi felülvizsgáló csapatok együttes munkája lehetővé teszi, hogy a fejlesztők megfelelő egyensúlyt érjenek el a hatékonyság és a pontosság között.
 
 ## <a name="next-steps"></a>További lépések
 
-[Rövid útmutató](quick-start.md) a Content Moderator használatának első lépéseiről.
+Kövesse a Content Moderator használatának első lépéseiről szóló [rövid útmutatót](quick-start.md).

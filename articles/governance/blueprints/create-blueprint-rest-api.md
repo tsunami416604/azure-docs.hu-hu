@@ -4,21 +4,21 @@ description: Összetevők létrehozása, definiálása és üzembe helyezése az
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/25/2018
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: b873ee869b2044977ebefcfd65331567c24e7ec8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 814274f8c858d832debaaa7fdae1a7793bd458f2
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974204"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50094386"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Azure Blueprints-tervek definiálása és hozzárendelése a REST API használatával
 
-A tervek Azure-beli létrehozásának és hozzárendelésének elsajátításával a szervezet közös konzisztenciamintákat definiálhat, valamint újrahasználható és gyorsan üzembe helyezhető konfigurációkat dolgozhat ki Resource Manager-sablonok, szabályzatok, biztonsági és egyéb szempontok alapján. Ez az oktatóanyag bemutatja, hogyan hajthatja végre az Azure Blueprints használatával a tervek a szervezeten belüli létrehozásával, közzétételével és hozzárendelésével kapcsolatos olyan általános feladatokat, mint az alábbiak:
+A tervek létrehozásának és hozzárendelésének elsajátítása lehetővé teszi a közös minták definiálását, hogy újrahasználható és gyorsan üzembe helyezhető konfigurációkat dolgozhasson ki Resource Manager-sablonok, szabályzatok, biztonsági és egyéb szempontok alapján. Ez az oktatóanyag bemutatja, hogyan hajthatja végre az Azure Blueprints használatával a tervek a szervezeten belüli létrehozásával, közzétételével és hozzárendelésével kapcsolatos olyan általános feladatokat, mint az alábbiak:
 
 > [!div class="checklist"]
 > - Új terv létrehozása és különféle támogatott összetevők hozzáadása
@@ -59,7 +59,7 @@ A **$restUri** változóban a `{subscriptionId}` helyére írja be a saját elő
 
 ## <a name="create-a-blueprint"></a>Terv létrehozása
 
-A megfelelőségi szabványminták definiálásának első lépése, hogy összeállítunk egy tervet az elérhető erőforrásokból. A példában létrehozzuk a „MyBlueprint” nevű tervet az előfizetés szerepkör- és szabályzat-hozzárendeléseinek konfigurálására, hozzáadunk egy erőforráscsoportot, és létrehozunk egy Resource Manager-sablont és szerepkör-hozzárendelést az erőforráscsoporton.
+A megfelelőségi szabványminták definiálásának első lépése, hogy összeállítunk egy tervet az elérhető erőforrásokból. Létrehozzuk a „MyBlueprint” nevű tervet az előfizetés szerepkör- és szabályzat-hozzárendeléseinek konfigurálására. Ezután hozzáadunk egy erőforráscsoportot, egy Resource Manager-sablont és egy szerepkör-hozzárendelést az erőforráscsoporton.
 
 > [!NOTE]
 > A REST API használata esetén a _terv_ objektumot hozzuk először létre. Mindegyik hozzáadott, paraméterekkel rendelkező _összetevő_ esetében a paramétereket előre definiálni kell a kezdeti _terven_.
@@ -69,7 +69,7 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
 - `{YourMG}` – Cserélje le a felügyeleti csoport nevére
 - `{subscriptionId}` – Cserélje le az előfizetése azonosítójára
 
-1. Hozza létre a kezdeti _terv_ objektumot. A **kérelemtörzs** a tervvel, az esetleg létrehozandó erőforráscsoportokkal, valamint a hozzárendelés során megadott és a későbbi lépésekben hozzáadott összetevők által használt tervszintű paramétereket tartalmazza.
+1. Hozza létre a kezdeti _terv_ objektumot. A **kérelemtörzs** a terv, az esetleg létrehozandó erőforráscsoportok, valamint az összes tervszintű paraméter tulajdonságait tartalmazza. A paraméterek a hozzárendelés során vannak megadva, és a későbbi lépésekben hozzáadott összetevők használják azokat.
 
    - REST API URI
 
@@ -176,7 +176,7 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
      }
      ```
 
-1. Egy másik szabályzat-hozzárendelés hozzáadása egy Storage-címke számára (a _storageAccountType_ paraméter ismételt felhasználásával) az előfizetésen. Ez az újabb szabályzat-hozzárendelési összetevő bemutatja, hogy a terveken definiált paramétereket több összetevő is használhatja. A példában a **storageAccountType** használatával beállítunk egy címkét az erőforráscsoporton, amely a következő lépésben létrehozott tárfiókkal kapcsolatos információkat szolgáltat.
+1. Egy másik szabályzat-hozzárendelés hozzáadása egy Storage-címke számára (a _storageAccountType_ paraméter ismételt felhasználásával) az előfizetésen. Ez az újabb szabályzat-hozzárendelési összetevő bemutatja, hogy a terveken definiált paramétereket több összetevő is használhatja. A példában a **storageAccountType** használatával beállítunk egy címkét az erőforráscsoporton. Ez az érték a következő lépésben létrehozott tárfiókkal kapcsolatos információkat szolgáltat.
 
    - REST API URI
 
@@ -204,7 +204,7 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
      }
      ```
 
-1. Sablon hozzáadása az erőforráscsoport alatt. A Resource Manager-sablon **kérelemtörzse** tartalmazza a sablon normál JSON-összetevőjét, a **properties.resourceGroup** használatával meghatározza a cél erőforráscsoportot, és újra felhasználja a **storageAccountType**, a **tagName** és a **tagValue** tervparamétert, mivel továbbadja azokat a sablonnak. A tervparaméterek a **properties.parameters** definiálásával válnak elérhetővé a sablon számára, és a sablon JSON-fájljában az érték beszúrása ezzel a kulcs/érték párral történik. A terv- és a sablonparaméterek neve egyezhet, itt most azonban megkülönböztettük őket, hogy bemutassuk, hogyan lesznek átadva a tervből a sablonösszetevőbe.
+1. Sablon hozzáadása az erőforráscsoport alatt. A Resource Manager-sablon **kérelemtörzse** tartalmazza a sablon normál JSON-összetevőjét, és a **properties.resourceGroup** használatával meghatározza a cél erőforráscsoportot. A sablon újra felhasználja a **storageAccountType**, a **tagName** és a **tagValue** tervparamétert is, mivel továbbadja azokat a sablonnak. A tervparaméterek a **properties.parameters** definiálásával válnak elérhetővé a sablon számára, és a sablon JSON-fájljában az érték beszúrása ezzel a kulcs–érték párral történik. A terv- és a sablonparaméterek neve egyezhet, itt most azonban megkülönböztettük őket, hogy bemutassuk, hogyan lesznek átadva a tervből a sablonösszetevőbe.
 
    - REST API URI
 
@@ -388,7 +388,7 @@ Miután a REST API használatával közzétett egy tervet, az hozzárendelhető 
 
 ## <a name="unassign-a-blueprint"></a>Terv hozzárendelésének megszüntetése
 
-A tervek törölhetők az előfizetésből, ha már nincs rájuk szükség, vagy le lettek cserélve frissített mintákat, szabályzatokat és kialakításokat tartalmazó újabb tervekkel. Az egyes tervek eltávolításakor az adott tervek keretében hozzárendelt összetevők megmaradnak. A tervhozzárendelések törléséhez használja a következő REST API-műveletet:
+Eltávolíthatja a terveket az előfizetésekből. Az eltávolítás gyakori művelet az összetevők már szükségtelen erőforrásai esetén. Az egyes tervek eltávolításakor az adott tervek keretében hozzárendelt összetevők megmaradnak. A tervhozzárendelések törléséhez használja a következő REST API-műveletet:
 
 - REST API URI
 

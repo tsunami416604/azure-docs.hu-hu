@@ -5,23 +5,23 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/15/2018
+ms.date: 10/29/2018
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: f4de10c29364ab96f54e5d07e9c416a2beb038f6
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 8e764bfc4481343a1e1fb710df7d09f7a38f4f78
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380182"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420355"
 ---
 # <a name="start-monitoring-your-website"></a>A webhely monitorozásának megkezdése
 
 Az Azure Monitor Application Insights segítségével egyszerűen monitorozhatja webhelye rendelkezésre állását, teljesítményét és használatát. Emellett egyszerűen azonosíthatja és diagnosztizálhatja az alkalmazás hibáit anélkül, hogy meg kellene várnia, amíg egy felhasználó jelenti azokat. Az Application Insights kiszolgálóoldali és ügyfél-/böngészőoldali monitorozási képességeket is biztosít.
 
-Ez a rövid útmutató ismerteti, hogyan adhatja hozzá a [nyílt forrású Application Insights JavaScript SDK-t](https://github.com/Microsoft/ApplicationInsights-JS), amellyel segítségével felmérheti a webhely látogatóinak ügyfél-/böngészőoldali élményét.
+Ez a rövid útmutató ismerteti, hogyan adhatja hozzá a [nyílt forráskódú Application Insights JavaScript SDK-t](https://github.com/Microsoft/ApplicationInsights-JS), amellyel felmérheti a webhely látogatóinak ügyfél-/böngészőoldali élményét.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -74,7 +74,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
 1. Válassza az **Áttekintés** > **Alapvető erőforrások** elemet, és másolja ki az alkalmazás **Kialakítási kulcsát**.
 
-   ![Új App Insights-erőforrás űrlap](./media/app-insights-nodejs-quick-start/instrumentation-key-001.png)
+   ![Új App Insights-erőforrás űrlap](media/app-insights-website-monitoring/instrumentation-key-001.png)
 
 2. Adja hozzá az alábbi szkriptet a ``hello_world.html`` fájlhoz a záró ``</head>`` címke előtt:
 
@@ -98,7 +98,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
 1. Most megnyithatja ismét az Application Insights **Áttekintés** lapját az Azure Portalon (ahol a kialakítási kulcsot is megjelenítette) a jelenleg futó alkalmazás részleteinek megtekintéséhez. Az áttekintő oldal négy alapértelmezett diagramjának hatóköre a kiszolgálóoldali alkalmazásadatokra van beállítva. Mivel az ügyfél-/böngészőoldali interakció kialakítását végezzük a JavaScript SDK-val, ez az adott nézet most nem releváns, hacsak nincs egy kiszolgálóoldali SDK is telepítve.
 
-2. Kattintson az ![Alkalmazástérkép ikon](./media/app-insights-nodejs-quick-start/006.png) **Analytics** elemre.  Megnyílik az **Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Az ügyféloldali böngészőkérésekkel kapcsolatos adatok megtekintéséhez futtassa az alábbi lekérdezést:
+2. Kattintson az ![Alkalmazástérkép ikon](media/app-insights-website-monitoring/006.png) **Analytics** elemre.  Megnyílik az **Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Az ügyféloldali böngészőkérésekkel kapcsolatos adatok megtekintéséhez futtassa az alábbi lekérdezést:
 
     ```kusto
     // average pageView duration by name

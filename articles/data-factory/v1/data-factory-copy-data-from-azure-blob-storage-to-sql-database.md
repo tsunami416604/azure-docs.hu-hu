@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a9f76b38139cccedb97c6026f0e0efa14d0dbc8c
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 596a9e4e3e1d24bdcab561a7238548d418ac0581
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056410"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243573"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Oktatóanyag: Adatok másolása Blob Storage-ból az SQL Database Data Factory használatával
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ A másolási tevékenység végzi az adatok továbbítását az Azure Data Facto
 ## <a name="prerequisites-for-the-tutorial"></a>Az oktatóanyag előfeltételei
 Ez az oktatóanyag elkezdéséhez az alábbi előfeltételekkel kell rendelkeznie:
 
-* **Azure-előfizetés**.  Ha nem rendelkezik előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes próbafiókot. Tekintse meg a [ingyenes próbaverzió](http://azure.microsoft.com/pricing/free-trial/) részleteivel.
+* **Azure-előfizetés**.  Ha nem rendelkezik előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes próbafiókot. Tekintse meg a [ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/) részleteivel.
 * **Az Azure Storage-fiók**. A blob storage-ot használ egy **forrás** ebben az oktatóanyagban. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../../storage/common/storage-quickstart-create-account.md) ismertető cikket.
 * **Azure SQL Database** Egy Azure SQL database-t használja egy **cél** ebben az oktatóanyagban. Ha nem rendelkezik Azure SQL-adatbázis, amelyet használhat az oktatóanyagban, lásd: [létrehozása és konfigurálása az Azure SQL Database](../../sql-database/sql-database-get-started.md) hozhat létre egyet.
 * **Az SQL Server 2012 vagy 2014 vagy a Visual Studio 2013**. Használja az SQL Server Management Studio vagy a Visual Studio, és hozzon létre egy mintaadatbázist, és az eredmény adatok megtekintése az adatbázisban.  

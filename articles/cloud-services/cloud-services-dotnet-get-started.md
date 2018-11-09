@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 819a2f81ca5403a3656bf713cf0ee3ae58050a4b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 04c68308739f641e892a335832725ba87e36f7af
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003113"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242126"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel
 
 ## <a name="overview"></a>Áttekintés
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre többrétegű .NET-alkalmazást ASP.NET MVC kezelőfelülettel, illetve hogyan telepítheti azt egy [Azure-felhőszolgáltatásban](cloud-services-choose-me.md). Az alkalmazás az [Azure SQL Database](http://msdn.microsoft.com/library/azure/ee336279) szolgáltatást, az [Azure Blob szolgáltatást](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) és az [Azure Queue szolgáltatást](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) használja. A [Visual Studio projekt letölthető](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) az MSDN kódgalériából.
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre többrétegű .NET-alkalmazást ASP.NET MVC kezelőfelülettel, illetve hogyan telepítheti azt egy [Azure-felhőszolgáltatásban](cloud-services-choose-me.md). Az alkalmazás az [Azure SQL Database](https://msdn.microsoft.com/library/azure/ee336279) szolgáltatást, az [Azure Blob szolgáltatást](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) és az [Azure Queue szolgáltatást](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) használja. A [Visual Studio projekt letölthető](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) az MSDN kódgalériából.
 
 Ebből az oktatóanyagból megtudhatja, hogyan állíthatja össze és futtathatja az alkalmazást helyileg, hogyan telepítheti az Azure-ban, hogyan futtathatja a felhőben, valamint hogyan építheti fel az alapoktól kezdve. Ha szeretné, kezdheti az alapoktól a felépítést, majd később elvégezheti a tesztelés és a telepítés lépéseit.
 
@@ -36,7 +36,7 @@ Ez az alkalmazás egy hirdetőtábla. A felhasználók szöveg megadásával és
 Az alkalmazás [üzenetsor-központú munkasémát](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) használ, hogy áthelyezze a miniatűrök létrehozásának processzorigényes feladatát egy háttérfolyamatra.
 
 ## <a name="alternative-architecture-web-apps-and-webjobs"></a>Alternatív architektúra: Web Apps és WebJobs
-Ebből az oktatóanyagból megtudhatja, hogyan futtathat előtér- és háttéralkalmazásokat egyaránt az Azure felhőszolgáltatásban. Alternatív megoldásként az előtér-alkalmazást futtathatja egy [Azure Web Apps](/azure/app-service/)-webalkalmazásban, a háttéralkalmazás esetében pedig használhatja a [WebJobs](http://go.microsoft.com/fwlink/?LinkId=390226) szolgáltatást. A WebJobs szolgáltatást alkalmazó oktatóanyagot a [Get Started with the Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) (Ismerkedés az Azure WebJobs SDK-val) című részben találja. A forgatókönyvéhez leginkább illő szolgáltatások kiválasztásával kapcsolatos információkért lásd: [Az Azure Websites, a Cloud Services és a Virtual Machines összevetése](../app-service/choose-web-site-cloud-service-vm.md).
+Ebből az oktatóanyagból megtudhatja, hogyan futtathat előtér- és háttéralkalmazásokat egyaránt az Azure felhőszolgáltatásban. Alternatív megoldásként az előtér-alkalmazást futtathatja egy [Azure Web Apps](/azure/app-service/)-webalkalmazásban, a háttéralkalmazás esetében pedig használhatja a [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) szolgáltatást. A WebJobs szolgáltatást alkalmazó oktatóanyagot a [Get Started with the Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) (Ismerkedés az Azure WebJobs SDK-val) című részben találja. A forgatókönyvéhez leginkább illő szolgáltatások kiválasztásával kapcsolatos információkért lásd: [Az Azure Websites, a Cloud Services és a Virtual Machines összevetése](../app-service/choose-web-site-cloud-service-vm.md).
 
 ## <a name="what-youll-learn"></a>Ismertetett témák
 * A gép alkalmassá tétele az Azure-alapú fejlesztésre az Azure SDK telepítésével.
@@ -71,7 +71,7 @@ Amikor egy felhasználó feltölt egy képet, a webes szerepkörrel rendelkező 
 [!INCLUDE [install-sdk](../../includes/install-sdk-2017-2015-2013.md)]
 
 ## <a name="download-and-run-the-completed-solution"></a>A kész megoldás letöltése és futtatása
-1. Töltse le és csomagolja ki a [kész megoldást](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4).
+1. Töltse le és csomagolja ki a [kész megoldást](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4).
 2. Indítsa el a Visual Studiót.
 3. Válassza a **Fájl** menü **Projekt megnyitása** elemét, keresse meg a letöltött megoldást, majd nyissa meg a megoldásfájlt.
 4. Nyomja le a Ctrl+Shift+B billentyűkombinációt a megoldás felépítéséhez.
@@ -81,7 +81,7 @@ Amikor egy felhasználó feltölt egy képet, a webes szerepkörrel rendelkező 
 6. Ha a Visual Studio 2015-öt használja, módosítsa az SQL Server kapcsolati sztringjét az alkalmazás *Web.config* fájljában a ContosoAdsWeb projekt esetében, illetve a *ServiceConfiguration.Local.cscfg* fájlt a ContosoAdsCloudService projekt esetében. Mindkét esetben módosítsa a „(localdb)\v11.0” elemet a következőre: „(localdb)\MSSQLLocalDB”.
 7. Az alkalmazás futtatásához nyomja le a Ctrl+F5 billentyűkombinációt.
 
-    Amikor helyileg futtat egy felhőszolgáltatás-projektet, a Visual Studio automatikusan meghívja az Azure *Compute Emulator* és az Azure *Storage Emulator* eszközöket. A Compute Emulator a számítógép erőforrásait felhasználva szimulálja a webes és a feldolgozói szerepkörök környezeteit. A Storage Emulator egy [SQL Server Express LocalDB](http://msdn.microsoft.com/library/hh510202.aspx) adatbázis használatával szimulálja az Azure felhőalapú tárolást.
+    Amikor helyileg futtat egy felhőszolgáltatás-projektet, a Visual Studio automatikusan meghívja az Azure *Compute Emulator* és az Azure *Storage Emulator* eszközöket. A Compute Emulator a számítógép erőforrásait felhasználva szimulálja a webes és a feldolgozói szerepkörök környezeteit. A Storage Emulator egy [SQL Server Express LocalDB](https://msdn.microsoft.com/library/hh510202.aspx) adatbázis használatával szimulálja az Azure felhőalapú tárolást.
 
     Egy felhőszolgáltatás-projekt első futtatásakor nagyjából egy percet vesz igénybe az emulátorok elindítása. Az emulátorok elindulását követően az alapértelmezett böngésző megnyitja az alkalmazás kezdőlapját.
 
@@ -232,7 +232,7 @@ Az Azure-tárfiók kapcsolati sztringjeinek tárolása a webes- és a feldolgoz�
 1. A **Megoldáskezelőben** a **ContosoAdsCloudService** projekt **Szerepkörök** területén kattintson a jobb gombbal a **ContosoAdsWeb** elemre, majd kattintson a **Tulajdonságok** lehetőségre.
 
     ![Szerepkör tulajdonságai](./media/cloud-services-dotnet-get-started/roleproperties.png)
-2. Kattintson a **Beállítások** fülre. A **Szolgáltatás konfigurációja** legördülő mezőben válassza a **Felhő** elemet.
+2. Kattintson a **Beállítások** fülre. A Szolgáltatás konfigurációja legördülő mezőben válassza a **Felhő** elemet.
 
     ![Felhő konfigurálása](./media/cloud-services-dotnet-get-started/sccloud.png)
 3. Jelölje ki a **StorageConnectionString** bejegyzést, és megjelenik egy három pontot (**...**) ábrázoló gomb a sor jobb oldali végén. Kattintson a három pontot ábrázoló gombra a **Create Storage Account Connection String** (Tárfiók kapcsolati sztringjének létrehozása) párbeszédpanel megnyitásához.
@@ -311,7 +311,7 @@ Az `<Instances>` beállítás megadja azon virtuális gépek számát, amelyeken
 >
 
 ## <a name="create-the-application-from-scratch"></a>Teljesen új alkalmazás létrehozása
-Ha még nem töltötte le a [kész alkalmazást](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4), most tegye meg. Fájlokat fog átmásolni a letöltött projektből az új projektbe.
+Ha még nem töltötte le a [kész alkalmazást](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4), most tegye meg. Fájlokat fog átmásolni a letöltött projektből az új projektbe.
 
 A Contoso Ads alkalmazás létrehozása az alábbi lépésekből áll:
 
@@ -549,7 +549,7 @@ queueClient.DefaultRequestOptions.RetryPolicy = new LinearRetry(TimeSpan.FromSec
 imagesQueue = queueClient.GetQueueReference("images");
 ```
 
-A vezérlőkód nagy része jellemzően egy DbContext osztályt használó Entity Framework-adatmodellel történő használatra való. Kivétel ez alól a HttpPost `Create` metódus, amely feltölti és blobtárolóba menti a fájlokat. A modellkötő [HttpPostedFileBase](http://msdn.microsoft.com/library/system.web.httppostedfilebase.aspx) objektumot biztosít a metódus számára.
+A vezérlőkód nagy része jellemzően egy DbContext osztályt használó Entity Framework-adatmodellel történő használatra való. Kivétel ez alól a HttpPost `Create` metódus, amely feltölti és blobtárolóba menti a fájlokat. A modellkötő [HttpPostedFileBase](https://msdn.microsoft.com/library/system.web.httppostedfilebase.aspx) objektumot biztosít a metódus számára.
 
 ```csharp
 [HttpPost]
@@ -766,8 +766,8 @@ A Contoso Ads alkalmazás kialakítása szándékosan egyszerű az első lépés
 
 Az alábbiakban példákat talál felhőszolgáltatás-alkalmazásokra, amelyek több valós kódolási gyakorlatot mutatnak be az egyszerűbbektől az összetettebbekig:
 
-* [PhluffyFotos](http://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31). Az elve hasonló a Contoso Ads elvéhez, de több funkciót és valós kódolási gyakorlatot alkalmaz.
-* [Azure Cloud Service Multi-Tier Application with Tables, Queues, and Blobs](http://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36) (Többrétegű Azure-felhőszolgáltatás táblákkal, üzenetsorokkal és blobokkal). Ismerteti az Azure Storage-táblákat, valamint a blobokat és üzenetsorokat. Az Azure SDK for .NET egy korábbi verzióján alapul. Az aktuális verzióval való használathoz néhány módosítást kell végrehajtani.
+* [PhluffyFotos](https://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31). Az elve hasonló a Contoso Ads elvéhez, de több funkciót és valós kódolási gyakorlatot alkalmaz.
+* [Azure Cloud Service Multi-Tier Application with Tables, Queues, and Blobs](https://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36) (Többrétegű Azure-felhőszolgáltatás táblákkal, üzenetsorokkal és blobokkal). Ismerteti az Azure Storage-táblákat, valamint a blobokat és üzenetsorokat. Az Azure SDK for .NET egy korábbi verzióján alapul. Az aktuális verzióval való használathoz néhány módosítást kell végrehajtani.
 
 Általános információk a felhőalapú fejlesztésről: [Building Real-World Cloud Apps with Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction) (Valódi felhőalapú alkalmazások létrehozása az Azure használatával).
 

@@ -5,17 +5,16 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 10/2/2018
+ms.date: 10/27/2018
 ms.author: victorh
-ms.openlocfilehash: 27221ac4b23f52dd6976a959e6e5529eb0cc89fa
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 3c225e6fbfb13c04d650b8e6b72ee18d23139a8e
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856071"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158958"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása hibrid hálózatban az Azure PowerShell használatával
-
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -49,6 +48,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
 ## <a name="declare-the-variables"></a>Változók deklarálása
+
 Az alábbi példa az oktatóanyaghoz használt értékekkel deklarálja a változókat. A legtöbb esetben ezeket az értékeket a saját értékeire kell lecserélnie. Ezeket a változókat akkor használhatja, ha azért hajtja végre a lépéseket, hogy megismerje ezt a konfigurációtípust. Ha szükséges, módosítsa a változókat, majd másolja és illessze be őket a PowerShell-konzolra.
 
 ```azurepowershell
@@ -91,6 +91,7 @@ $SNnameGW = "GatewaySubnet"
 ```
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+
 Hozzon létre egy erőforráscsoportot az oktatóanyaghoz szükséges erőforrások tárolására:
 
 ```azurepowershell
@@ -112,12 +113,14 @@ Most hozza létre a tűzfal központi virtuális hálózatát:
 $VNetHub = New-AzureRmVirtualNetwork -Name $VNetnameHub -ResourceGroupName $RG1 `
 -Location $Location1 -AddressPrefix $VNetHubPrefix -Subnet $FWsub,$GWsub
 ```
+
 Kérje egy nyilvános IP-cím kiosztását a virtuális hálózat számára létrehozni kívánt VPN-átjáróhoz. Látható, hogy az *AllocationMethod* értéke **Dynamic**. A használni kívánt IP-címet nem adhatja meg. Ennek kiosztása a VPN-átjáró számára dinamikusan történik. 
 
   ```azurepowershell
   $gwpip1 = New-AzureRmPublicIpAddress -Name $GWHubpipName -ResourceGroupName $RG1 `
   -Location $Location1 -AllocationMethod Dynamic
 ```
+
 ## <a name="create-and-configure-the-spoke-vnet"></a>A küllő virtuális hálózat létrehozása és konfigurálása
 
 Határozza meg a küllő virtuális hálózat részét képező alhálózatokat:
@@ -149,6 +152,7 @@ Most hozza létre a helyszíni virtuális hálózatot:
 $VNetOnprem = New-AzureRmVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName $RG1 `
 -Location $Location1 -AddressPrefix $VNetOnpremPrefix -Subnet $Onpremsub,$GWOnpremsub
 ```
+
 Kérje egy nyilvános IP-cím kiosztását a virtuális hálózat számára létrehozni kívánt átjáróhoz. Látható, hogy az *AllocationMethod* értéke **Dynamic**. A használni kívánt IP-címet nem adhatja meg. Ennek kiosztása az átjáró számára dinamikusan történik. 
 
   ```azurepowershell
@@ -176,32 +180,20 @@ $AzfwPrivateIP
 
 ### <a name="configure-network-rules"></a>Hálózati szabályok konfigurálása
 
-<!--- $Rule2 = New-AzureRmFirewallNetworkRule -Name "AllowPing" -Protocol ICMP -SourceAddress $SNOnpremPrefix `
+<!--- $Rule3 = New-AzureRmFirewallNetworkRule -Name "AllowPing" -Protocol ICMP -SourceAddress $SNOnpremPrefix `
    -DestinationAddress $VNetSpokePrefix -DestinationPort *--->
 
 ```azurepowershell
 $Rule1 = New-AzureRmFirewallNetworkRule -Name "AllowWeb" -Protocol TCP -SourceAddress $SNOnpremPrefix `
    -DestinationAddress $VNetSpokePrefix -DestinationPort 80
 
-$Rule3 = New-AzureRmFirewallNetworkRule -Name "AllowRDP" -Protocol TCP -SourceAddress $SNOnpremPrefix `
+$Rule2 = New-AzureRmFirewallNetworkRule -Name "AllowRDP" -Protocol TCP -SourceAddress $SNOnpremPrefix `
    -DestinationAddress $VNetSpokePrefix -DestinationPort 3389
 
 $NetRuleCollection = New-AzureRmFirewallNetworkRuleCollection -Name RCNet01 -Priority 100 `
-   -Rule $Rule1,$Rule2,$Rule3 -ActionType "Allow"
+   -Rule $Rule1,$Rule2 -ActionType "Allow"
 $Azfw.NetworkRuleCollections = $NetRuleCollection
 Set-AzureRmFirewall -AzureFirewall $Azfw
-```
-### <a name="configure-an-application-rule"></a>Alkalmazásszabály konfigurálása
-
-```azurepowershell
-$Rule4 = New-AzureRmFirewallApplicationRule -Name "AllowBing" -Protocol "Http:80","Https:443" `
-   -SourceAddress $SNOnpremPrefix -TargetFqdn "bing.com"
-
-$AppRuleCollection = New-AzureRmFirewallApplicationRuleCollection -Name RCApp01 -Priority 100 `
-   -Rule $Rule4 -ActionType "Allow"
-$Azfw.ApplicationRuleCollections = $AppRuleCollection
-Set-AzureRmFirewall -AzureFirewall $Azfw
-
 ```
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>A VPN-átjárók létrehozása és csatlakoztatása
@@ -245,10 +237,13 @@ New-AzureRmVirtualNetworkGateway -Name $GWOnpremName -ResourceGroupName $RG1 `
 -Location $Location1 -IpConfigurations $gwipconf2 -GatewayType Vpn `
 -VpnType RouteBased -GatewaySku basic
 ```
+
 ### <a name="create-the-vpn-connections"></a>A VPN-kapcsolatok létrehozása
+
 Most létrehozhatja a VPN-kapcsolatokat a központi és a helyszíni átjárók között.
 
 #### <a name="get-the-vpn-gateways"></a>A VPN-átjárók lekérése
+
 ```azurepowershell
 $vnetHubgw = Get-AzureRmVirtualNetworkGateway -Name $GWHubName -ResourceGroupName $RG1
 $vnetOnpremgw = Get-AzureRmVirtualNetworkGateway -Name $GWOnpremName -ResourceGroupName $RG1
@@ -270,8 +265,9 @@ Hozza létre a helyszíni hálózat felől a központi virtuális hálózatra ir
   -VirtualNetworkGateway1 $vnetOnpremgw -VirtualNetworkGateway2 $vnetHubgw -Location $Location1 `
   -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
   ```
+
 #### <a name="verify-the-connection"></a>A kapcsolat ellenőrzése
- 
+
 A sikeres kapcsolat ellenőrzéséhez használja a *Get-AzureRmVirtualNetworkGatewayConnection* parancsmagot a *-Debug* argumentummal vagy anélkül. A következő parancsmag-példával az értékeket a sajátjaival megegyezően konfigurálhatja. Ha a rendszer arra kéri, válassza az **A** lehetőséget az összes (**All**) futtatásához. A példában a *-Name* a tesztelni kívánt kapcsolat nevére utal.
 
 ```azurepowershell
@@ -286,8 +282,6 @@ A parancsmag futtatása után tekintse meg az értékeket. Az alábbi példában
 "egressBytesTransferred": 4142431
 ```
 
-
-
 ## <a name="peer-the-hub-and-spoke-vnets"></a>Társviszony létesítése a központi és a küllő virtuális hálózatok között
 
 Létesítsen társviszonyt a központi és a küllő virtuális hálózatok között.
@@ -299,9 +293,11 @@ Add-AzureRmVirtualNetworkPeering -Name HubtoSpoke -VirtualNetwork $VNetHub -Remo
 # Peer spoke to hub
 Add-AzureRmVirtualNetworkPeering -Name SpoketoHub -VirtualNetwork $VNetSpoke -RemoteVirtualNetworkId $VNetHub.Id -AllowForwardedTraffic -UseRemoteGateways
 ```
+
 ## <a name="create-routes"></a>Útvonalak létrehozása
 
-Ezután hozzon létre néhány útvonalat: 
+Ezután hozzon létre néhány útvonalat:
+
 - Egy útvonalat a központi átjáró alhálózatától a küllő alhálózatához a tűzfal IP-címén keresztül
 - Egy alapértelmezett útvonalat a küllő alhálózattól a tűzfal IP-címén keresztül
 
@@ -364,16 +360,18 @@ Set-AzureRmVirtualNetworkSubnetConfig `
   -RouteTable $routeTableSpokeDG | `
 Set-AzureRmVirtualNetwork
 ```
+
 ## <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
 Most hozza létre a küllő számítási feladatát futtató és a helyszíni virtuális gépeket, és helyezze el őket a megfelelő alhálózatokon.
 
 ### <a name="create-the-workload-virtual-machine"></a>A számítási feladatot futtató virtuális gép létrehozása
+
 Hozzon létre egy virtuális gépet a küllő virtuális hálózaton, amely IIS-t futtat, nem rendelkezik nyilvános IP-címmel, és engedélyezi a bepingeléseket.
 Amikor a rendszer kéri, adjon meg egy felhasználónevet és jelszót a virtuális gép számára.
 
 ```azurepowershell
-# Create an inbound network security group rule for port 3389
+# Create an inbound network security group rule for ports 3389 and 80
 $nsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name Allow-RDP  -Protocol Tcp `
   -Direction Inbound -Priority 200 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix $SNSpokePrefix -DestinationPortRange 3389 -Access Allow
 $nsgRuleWeb = New-AzureRmNetworkSecurityRuleConfig -Name Allow-web  -Protocol Tcp `
@@ -417,9 +415,10 @@ Set-AzureRmVMExtension `
     -SettingString '{"commandToExecute":"powershell New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4"}' `
     -Location $Location1--->
 
-
 ### <a name="create-the-onprem-virtual-machine"></a>A helyszíni virtuális gép létrehozása
+
 Ez egy egyszerű virtuális gép, amelyhez a távoli asztal használatával csatlakozhat a nyilvános IP-címmel. Innen pedig a tűzfalon keresztül csatlakozhat a helyszíni kiszolgálóhoz. Amikor a rendszer kéri, adjon meg egy felhasználónevet és jelszót a virtuális gép számára.
+
 ```azurepowershell
 New-AzureRmVm `
     -ResourceGroupName $RG1 `
@@ -432,6 +431,7 @@ New-AzureRmVm `
 ```
 
 ## <a name="test-the-firewall"></a>A tűzfal tesztelése
+
 Először jegyezze fel a **VM-spoke-01** virtuális gép magánhálózati IP-címét.
 
 ```azurepowershell
@@ -462,17 +462,14 @@ Ezután módosítsa a tűzfal hálózati szabálygyűjteményének műveletét *
 $rcNet = $azfw.GetNetworkRuleCollectionByName("RCNet01")
 $rcNet.action.type = "Deny"
 
-$rcApp = $azfw.GetApplicationRuleCollectionByName("RCApp01")
-$rcApp.action.type = "Deny"
-
 Set-AzureRmFirewall -AzureFirewall $azfw
 ```
+
 Most futtassa újra az ellenőrzéseket. Ezúttal mindegyiknek sikertelennek kell lennie. A módosított szabályok ellenőrzése előtt zárja be a meglévő távoli asztalokat.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is használhatja, vagy ha már nincs rájuk szükség, törölje az **FW-Hybrid-Test** erőforráscsoportot, és vele együtt a tűzfalhoz kapcsolódó összes erőforrást.
-
 
 ## <a name="next-steps"></a>További lépések
 

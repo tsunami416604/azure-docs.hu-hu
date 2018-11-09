@@ -9,16 +9,16 @@ ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1316dcaf32b709dbc7c07f7d82388082d8d6e6a9
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: ab09a46c70006d1ca7996767e38d99a9208efcb5
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319642"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157870"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>Oktatóanyag: Python-alapú IoT Edge-modul fejlesztése és üzembe helyezése szimulált eszközön
 
-Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. Az Azure IoT Edge üzembe helyezése szimulált eszközön [Windows][lnk-quickstart-win] vagy [Linux][lnk-quickstart-lin] rendszeren című rövid útmutatóban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:    
+Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. A rövid útmutatókban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:    
 
 > [!div class="checklist"]
 > * IoT Edge Python-modul létrehozása a Visual Studio Code-dal.
@@ -299,13 +299,3 @@ Ebben az oktatóanyagban IoT Edge-modult hozott létre olyan kóddal, amely szű
 > [!div class="nextstepaction"]
 > [Az Azure Functions üzembe helyezése modulként](tutorial-deploy-function.md)
 > [Az Azure Stream Analytics üzembe helyezése modulként](tutorial-deploy-stream-analytics.md)
-
-
-<!-- Links -->
-[lnk-quickstart-win]: quickstart.md
-[lnk-quickstart-lin]: quickstart-linux.md
-
-<!-- Images -->
-[1]: ./media/tutorial-csharp-module/programcs.png
-[2]: ./media/tutorial-csharp-module/build-module.png
-[3]: ./media/tutorial-csharp-module/docker-os.png

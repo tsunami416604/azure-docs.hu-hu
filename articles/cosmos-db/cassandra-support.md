@@ -9,12 +9,12 @@ ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: e3de78bdf38a326498b984dc2a9f8eaa42233d22
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 5a12a65e03e7ac104eb7b09b116f7c463bbb5b98
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091283"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240715"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Az Azure Cosmos DB Cassandra API-ja által támogatott Apache Cassandra-funkciók 
 
@@ -159,7 +159,7 @@ Az Azure Cosmos DB Cassandra API konzisztenciaválasztási lehetőséget kínál
 
 ## <a name="permission-and-role-management"></a>Engedély- és szerepkörkezelés
 
-Az Azure Cosmos DB támogatja a szerepköralapú hozzáférés-vezérlést (RBAC), illetve az írható-olvasható és a csak olvasható jelszavakat/kulcsokat, amelyeket az [Azure Portalon](https://portal.azure.com lehet beszerezni. Az Azure Cosmos DB az adatsík-tevékenységek esetében még nem támogatja a felhasználókat és a szerepköröket. 
+Az Azure Cosmos DB támogatja a szerepköralapú hozzáférés-vezérlést (RBAC), illetve az írható-olvasható és a csak olvasható jelszavakat/kulcsokat, amelyeket az [Azure Portalon](https://portal.azure.com) lehet beszerezni. Az Azure Cosmos DB az adatsík-tevékenységek esetében még nem támogatja a felhasználókat és a szerepköröket. 
 
 ## <a name="planned-support"></a>Tervezett támogatás 
 * Az időbélyeg és a TTL együttes használata  

@@ -13,12 +13,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: c221093caebca66f6d0b79951cb1a45b8933c5e9
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 4fd7d47313b67a0014919b14546926f5d78972a0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954420"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240324"
 ---
 # <a name="create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Azure-beli adat-előállító és folyamat létrehozása a REST API használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -33,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, létrehozhat egy [ingyenes próbafiókot](http://azure.microsoft.com/pricing/free-trial/).
+* **Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, létrehozhat egy [ingyenes próbafiókot](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure Storage-fiók** A blobtároló **forrás-** és **fogadó**adattárként lesz használatban. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../storage/common/storage-quickstart-create-account.md) ismertető cikket.
 * Hozzon létre egy **blobtárolót** a Blob Storage alatt, majd hozzon létre egy bemeneti **mappát** a tárolóban, és töltsön fel néhány fájlt a mappába. Az [Azure Storage Explorerrel](https://azure.microsoft.com/features/storage-explorer/) és hozzá hasonló eszközökkel csatlakozhat az Azure Blob Storage-hoz, blobtárolókat hozhat létre, bemeneti fájlokat tölthet fel, és ellenőrizheti a kimeneti fájlokat.
 * Telepítse az **Azure PowerShellt**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-azurerm-ps) ismertető cikkben szereplő utasításokat. Ez a rövid útmutató a PowerShellt használja REST API-hívások indítására.
@@ -78,7 +78,7 @@ Az Azure Active Directory (AAD) segítségével végzett hitelesítéshez futtas
 $AuthContext = [Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext]"https://login.microsoftonline.com/${tenantId}"
 $cred = New-Object -TypeName Microsoft.IdentityModel.Clients.ActiveDirectory.ClientCredential -ArgumentList ($appId, $authKey)
 $result = $AuthContext.AcquireToken("https://management.core.windows.net/", $cred)
-$authHeader = @{
+$authHeader = @{
 'Content-Type'='application/json'
 'Accept'='application/json'
 'Authorization'=$result.CreateAuthorizationHeader()

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: jasonh
 ms.reviewer: jasonh
-ms.openlocfilehash: 50ea4dafe7edfdeb851ad6d9cc42a7bca262e970
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: f58d72fe2a14b24272c9f03bbba6a33ed0f18ae7
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985811"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413757"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Az Azure Functions futtatása Azure Stream Analytics-feladatokból 
 
@@ -196,6 +196,13 @@ A feladat megvalósításához az alábbi lépéseket kell végrehajtani:
    Ennek a parancsnak a megadott kulcshoz tartozó értéket kell kiírnia:
 
    ![Az Azure Redis Cache-kimenet képernyőképe](./media/stream-analytics-with-azure-functions/image5.png)
+   
+## <a name="error-handling-and-retries"></a>Hibakezelés és újrapróbálkozások
+Ha hiba történik az események Azure Functionsbe való küldése során, a Stream Analytics újra megpróbálja végrehajtani a műveletet. Bizonyos hibák előfordulása esetén a rendszer nem próbálkozik újra. Ezek a következők:
+
+ 1. HttpRequestExceptions
+ 2. A kérelemegység túl nagy (413-as HTTP-hibakód)
+ 3. ApplicationExceptions
 
 ## <a name="known-issues"></a>Ismert problémák
 

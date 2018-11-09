@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dastanfo
 ms.custom: mvc
-ms.openlocfilehash: 36d65abb26435581f3e6c9c4a9fc46bb3dd538ce
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: b740aa205982bc0c1104b59e3ea89e2d5980d461
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39362776"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240341"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Oktatóanyag: Service Fabric-fürt telepítése és létrehozása
 
@@ -37,7 +37,7 @@ A sorozat második részében az alábbiakkal fog megismerkedni:
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>A Windows Serverhez készült Service Fabric-csomag letöltése
 
-A Service Fabric egy telepítőcsomagot biztosít az önálló Service Fabric-fürtök telepítéséhez.  [Töltse le a telepítőcsomagot](http://go.microsoft.com/fwlink/?LinkId=730690) a helyi számítógépre.  Miután sikeresen letöltötte, az RDP-kapcsolaton keresztül másolja át az EC2-példányra, és illessze be az asztalra.
+A Service Fabric egy telepítőcsomagot biztosít az önálló Service Fabric-fürtök telepítéséhez.  [Töltse le a telepítőcsomagot](https://go.microsoft.com/fwlink/?LinkId=730690) a helyi számítógépre.  Miután sikeresen letöltötte, az RDP-kapcsolaton keresztül másolja át az EC2-példányra, és illessze be az asztalra.
 
 Jelölje ki a ZIP-fájlt, nyissa meg a helyi menüt, ás válassza az **Összes kibontása** > **Kibontás** lehetőséget.  A fájlok kibontásakor létrejön egy mappa az asztalon, amelynek neve megegyezik a ZIP-fájl nevével.
 

@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 11e8f34bf409d6c158e84d6f92baaf59ad4a1e94
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: f2b0cd404c0c5ee94b669f366abc79353096a5a1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42210801"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241412"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Rövid útmutató: .NET Reliable Services-alkalmazás üzembe helyezése a Service Fabricben
 
@@ -46,7 +46,7 @@ A gyorsútmutató elvégzéséhez:
 
 1. [Telepítse a Visual Studio 2017-et](https://www.visualstudio.com/) az **Azure-fejlesztési**, valamint az **ASP.NET- és webfejlesztési** számítási feladatokkal.
 2. [A Git telepítése](https://git-scm.com/)
-3. [Telepítse a Microsoft Azure Service Fabric SDK-t](http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK)
+3. [Telepítse a Microsoft Azure Service Fabric SDK-t](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK)
 4. Futtassa a következő parancsot, amellyel engedélyezheti a Visual Studio üzembe helyezését a helyi Service Fabric-fürtön:
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
@@ -140,7 +140,7 @@ Ha az alkalmazást üzembe szeretné helyezni az Azure-ban, szüksége lesz egy 
 
 A nyilvános fürtök ingyenes, korlátozott időtartamú Azure Service Fabric-fürtök, amelyek futtatását a Service Fabric csapata végzi, és amelyeken bárki üzembe helyezhet alkalmazásokat, és megismerkedhet a platform használatával. A fürt egy önaláírt tanúsítványt használ a csomópontok közötti, valamint a kliens és a csomópont közötti biztonsághoz.
 
-Jelentkezzen be, és [csatlakozzon egy Windows-fürthöz](http://aka.ms/tryservicefabric). A **PFX** hivatkozásra kattintva töltse le a PFX-tanúsítványt a számítógépre. Kattintson a **Csatlakozás biztonságos fél fürtjéhez** nevű hivatkozásra, és másolja a tanúsítvány jelszavát. A tanúsítványra, a tanúsítvány jelszavára és a **Kapcsolati végpont** értékére a következő lépésekben szükség lesz.
+Jelentkezzen be, és [csatlakozzon egy Windows-fürthöz](https://aka.ms/tryservicefabric). A **PFX** hivatkozásra kattintva töltse le a PFX-tanúsítványt a számítógépre. Kattintson a **Csatlakozás biztonságos fél fürtjéhez** nevű hivatkozásra, és másolja a tanúsítvány jelszavát. A tanúsítványra, a tanúsítvány jelszavára és a **Kapcsolati végpont** értékére a következő lépésekben szükség lesz.
 
 ![PFX és kapcsolati végpont](./media/service-fabric-quickstart-dotnet/party-cluster-cert.png)
 

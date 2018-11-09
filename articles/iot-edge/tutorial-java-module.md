@@ -9,16 +9,16 @@ ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: e3216674fc5952e06a50c18c4624ea6706952d67
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: ed0605fbab4be0e0eb960b3b840e72f5fba2e8c8
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167018"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413774"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-and-deploy-to-your-simulated-device"></a>Oktatóanyag: Java-alapú IoT Edge-modul fejlesztése és üzembe helyezése szimulált eszközön
 
-Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. Az Azure IoT Edge üzembe helyezése szimulált eszközön [Windows][lnk-tutorial1-win] vagy [Linux][lnk-tutorial1-lin] rendszeren című rövid útmutatóban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:    
+Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. Az Azure IoT Edge üzembe helyezése szimulált eszközön [Windows](quickstart.md) vagy [Linux](quickstart-linux.md) rendszeren című rövid útmutatóban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:    
 
 > [!div class="checklist"]
 > * IoT Edge Java-modul létrehozása a Visual Studio Code-dal az Azure IoT Edge Maven-sabloncsomag és az Azure IoT Java eszközoldali SDK alapján.
@@ -48,7 +48,7 @@ Fejlesztési erőforrások:
 * [Visual Studio Code](https://code.visualstudio.com/). 
 * A Visual Studio Code-hoz készült [Java-bővítménycsomag](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack).
 * [Azure IoT Edge-bővítmény](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) a Visual Studio Code-hoz. 
-* A [Java SE Development Kit 10](http://www.oracle.com/technetwork/java/javase/downloads/index.html), valamint úgy [állítsa be a `JAVA_HOME` környezeti változót](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/), hogy a JDK-telepítésre mutasson.
+* A [Java SE Development Kit 10](https://aka.ms/azure-jdks), valamint úgy [állítsa be a `JAVA_HOME` környezeti változót](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/), hogy a JDK-telepítésre mutasson.
 * [Maven 3](https://maven.apache.org/)
 * [Docker CE](https://docs.docker.com/install/).
    * Ha Windows-eszközön végzi a fejlesztést, ellenőrizze, hogy a Docker [konfigurálva van-e Linux-tárolók használatára](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers). 
@@ -75,9 +75,7 @@ Létrehozhat egy Java-megoldást, amelyet a saját kódjával testreszabhat.
 
 1. A Visual Studio Code-ban a VS Code parancskatalógusának megnyitásához válassza a **View (Nézet)** > **Command Palette (Parancskatalógus)** elemet. 
 
-2. A parancskatalógusban írja be és futtassa az **Azure: Sign in** parancsot, és az utasításokat követve jelentkezzen be az Azure-fiókjába. Ha már be van jelentkezve, ezt a lépést kihagyhatja.
-
-3. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához: 
+2. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához: 
 
    1. Válassza ki azt a mappát, ahol a megoldást létre szeretné hozni. 
    2. Adja meg a megoldás nevét, vagy fogadja el az alapértelmezett **EdgeSolution** nevet.
@@ -242,19 +240,21 @@ A VS Code integrált termináljában láthatja a teljes tárolórendszerképet c
 
 Az IoT Edge-eszköz beállításához használt rövid útmutatóban egy modult helyezett üzembe az Azure Portal segítségével. A Visual Studio Code Azure IoT-eszközkészlet bővítményével is üzembe helyezhet modulokat. Már elő van készítve egy üzembehelyezési jegyzék a forgatókönyvhöz, a **deployment.json** fájl. Most csak ki kell választania az üzemelő példányt fogadó eszközt.
 
-1. A VS Code parancskatalógusában futtassa az **Azure IoT Hub: Select IoT Hub** (Azure IoT Hub: IoT Hub kiválasztása) parancsot. 
+1. A VS Code parancskatalógusában futtassa az **Azure: Sign in** (Azure: bejelentkezés) parancsot, és az utasításokat követve jelentkezzen be Azure-fiókjába. Ha már be van jelentkezve, ezt a lépést kihagyhatja.
 
-2. Válassza ki a konfigurálni kívánt IoT Edge-eszközt tartalmazó előfizetést és IoT Hubot. 
+2. A VS Code parancskatalógusában futtassa az **Azure IoT Hub: Select IoT Hub** (Azure IoT Hub: IoT Hub kiválasztása) parancsot. 
 
-3. A VS Code Explorerben bontsa ki az **Azure IoT Hub Devices** (Azure IoT Hub-eszközök) szakaszt. 
+3. Válassza ki a konfigurálni kívánt IoT Edge-eszközt tartalmazó előfizetést és IoT Hubot. 
 
-4. Kattintson a jobb gombbal az IoT Edge-eszköz nevére, majd válassza a **Create Deployment for Single Device** (Üzembe helyezés létrehozása egyetlen eszközhöz) parancsot. 
+4. A VS Code Explorerben bontsa ki az **Azure IoT Hub Devices** (Azure IoT Hub-eszközök) szakaszt. 
+
+5. Kattintson a jobb gombbal az IoT Edge-eszköz nevére, majd válassza a **Create Deployment for Single Device** (Üzembe helyezés létrehozása egyetlen eszközhöz) parancsot. 
 
    ![Üzemelő példány létrehozása egyetlen eszközhöz](./media/tutorial-java-module/create-deployment.png)
 
-5. Válassza ki a **deployment.json** fájlt a **config** mappában, majd kattintson a **Select Edge Deployment Manifest** (Edge üzembehelyezési jegyzék kiválasztása) elemre. Ne használja a deployment.template.json fájlt. 
+6. Válassza ki a **deployment.json** fájlt a **config** mappában, majd kattintson a **Select Edge Deployment Manifest** (Edge üzembehelyezési jegyzék kiválasztása) elemre. Ne használja a deployment.template.json fájlt. 
 
-6. Kattintson a frissítés gombra. Látható, hogy az új **JavaModule** fut a **TempSensor** modul, valamint az **$edgeAgent** és az **$edgeHub** mellett.  
+7. Kattintson a frissítés gombra. Látható, hogy az új **JavaModule** fut a **TempSensor** modul, valamint az **$edgeAgent** és az **$edgeHub** mellett.  
 
 ## <a name="view-generated-data"></a>A létrejött adatok megtekintése
 
@@ -292,11 +292,3 @@ Ebben az oktatóanyagban IoT Edge-modult hozott létre olyan kóddal, amely szű
 > [!div class="nextstepaction"]
 > [Adatok tárolása a peremhálózaton SQL Server-adatbázisokkal](tutorial-store-data-sql-server.md)
 
-<!-- Links -->
-[lnk-tutorial1-win]: quickstart.md
-[lnk-tutorial1-lin]: quickstart-linux.md
-
-<!-- Images -->
-[1]: ./media/tutorial-csharp-module/programcs.png
-[2]: ./media/tutorial-csharp-module/build-module.png
-[3]: ./media/tutorial-csharp-module/docker-os.png

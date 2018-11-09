@@ -1,19 +1,19 @@
 ---
-title: Azure-beli virtuális gépek migrálása Azure-régiók között az Azure Site Recoveryvel | Microsoft Docs
+title: Azure-beli IaaS virtuális gépek migrálása egy másik Azure-régióba az Azure Site Recovery szolgáltatással | Microsoft Docs
 description: Az Azure Site Recoveryvel Azure IaaS-virtuálisgépeket migrálhat egy Azure-régióból egy másikba.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 9bd5c1b2bad475dbb2c8ce216ed7d3f57ace0696
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 9ad994ad3dc1fc350a9a41c23574acfa2bae9629
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067614"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212284"
 ---
 # <a name="migrate-azure-vms-to-another-region"></a>Azure-beli virtuális gépek migrálása másik régióba
 

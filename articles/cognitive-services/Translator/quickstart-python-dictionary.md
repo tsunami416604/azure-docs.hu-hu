@@ -1,239 +1,176 @@
 ---
-title: 'Rövid útmutató: Alternatív fordítások keresése, Python – Translator Text API'
+title: 'Rövid útmutató: Alternatív fordítások lekérése, Python – Translator Text API'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban a kifejezések alternatív fordításait és példáit keresi meg a szövegkörnyezetben a Translator Text API segítségével és a Python használatával.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan kereshet alternatív fordításokat és használati példákat egy adott szöveghez a Python és a Translator Text REST API használatával.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
-ms.date: 06/21/2018
+ms.date: 10/21/2018
 ms.author: erhopf
-ms.openlocfilehash: cb8f6addd9fa68cd5a4683f52621b05dcd25e7b4
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 6e75ceb388b3111ea9ec31ba6bffded4077a019b
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646412"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248668"
 ---
-# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-python"></a>Rövid útmutató: Alternatív fordítások keresése a Translator Text REST API használatával (Python)
+# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-python"></a>Rövid útmutató: A Translator Text API használata alternatív fordítások lekérésére a Pythonnal
 
-Ebben a rövid útmutatóban a kifejezések lehetséges alternatív fordításaival kapcsolatos részleteket, valamint az alternatív fordítások használatának példáit keresi meg a Translator Text API segítségével.
+Ebből a rövid útmutatóból megtudhatja, hogyan kereshet alternatív fordításokat és használati példákat egy adott szöveghez a Python és a Translator Text REST API használatával.
+
+Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmaz egy Translator Text-erőforrást. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kód futtatásához [Python 3.x](https://www.python.org/downloads/) szükséges.
+Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
-A Translator Text API használatához szüksége van egy előfizetési kulcsra is. Lásd [a Translator Text API regisztrációját](translator-text-how-to-signup.md).
+* Python 2.7.x vagy 3.x
+* Egy Azure-előfizetői azonosító a Translator Text szolgáltatáshoz
 
-## <a name="dictionary-lookup-request"></a>Dictionary Lookup kérés
+## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
 
-A következő egy szó alternatív fordításait kéri le a [Dictionary Lookup](./reference/v3-0-dictionary-lookup.md) metódussal.
-
-1. Hozzon létre egy új Python-projektet a kedvenc kódszerkesztőjében.
-2. Adja hozzá az alábbi kódot.
-3. A `subscriptionKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
-4. Futtassa a programot.
+Hozzon létre egy új Python-projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ezután másolja a következő kódrészletet egy `dictionary-lookup.py` nevű fájlba a projektjében.
 
 ```python
 # -*- coding: utf-8 -*-
+import os, requests, uuid, json
+```
 
-import http.client, urllib.parse, uuid, json
+> [!NOTE]
+> Ha még nem használta ezeket a modulokat, a program futtatása előtt telepítenie kell őket. A csomagok telepítéséhez futtassa a következő parancsot: `pip install requests uuid`.
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+Az első megjegyzés arra utasítja a Python-értelmezőt, hogy UTF-8 kódolást használjon. A rendszer importálja azokat a modulokat, amelyek az előfizetői azonosító egy környezeti változóból való beolvasásához, a HTTP-kérelem felépítéséhez, egy egyedi azonosító létrehozásához, illetve a Translator Text API által visszaadott JSON-válasz kezeléséhez szükségesek.
 
-# Replace the subscriptionKey string value with your valid subscription key.
-subscriptionKey = 'ENTER KEY HERE'
+## <a name="set-the-subscription-key-base-url-and-path"></a>Az előfizetői azonosító, az alap URL-cím és az elérési út beállítása
 
-host = 'api.cognitive.microsofttranslator.com'
+Ez a minta megpróbálja beolvasni a Translator Text-előfizetői azonosítót a `TRANSLATOR_TEXT_KEY` környezeti változóból. Ha még nem ismeri a környezeti változókat, beállíthatja a `subscriptionKey` sztringet, és megjegyzéssé teheti a feltételes utasítást.
+
+Másolja a projektbe a következő kódot:
+
+```python
+# Checks to see if the Translator Text subscription key is available
+# as an environment variable. If you are setting your subscription key as a
+# string, then comment these lines out.
+if 'TRANSLATOR_TEXT_KEY' in os.environ:
+    subscriptionKey = os.environ['TRANSLATOR_TEXT_KEY']
+else:
+    print('Environment variable for TRANSLATOR_TEXT_KEY is not set.')
+    exit()
+# If you want to set your subscription key as a string, uncomment the line
+# below and add your subscription key.
+#subscriptionKey = 'put_your_key_here'
+```
+
+Jelenleg egy végpont érhető el a Translator Text szolgáltatáshoz, és ez van beállítva `base_url` tulajdonságként. A `path` tulajdonság a `dictionary/lookup` útvonalat állítja be, és meghatározza, hogy a 3-as API-verziót szeretnénk használni.
+
+A paraméterekkel (`params`) állítható be a forrás- és a célnyelv. Ebben a példában az angol és a spanyol nyelvet használjuk: `en` és `es`.
+
+>[!NOTE]
+> A végpontokkal, az útvonalakkal és a kérelem-paraméterekkel kapcsolatos további információkért lásd a [Translator Text API 3.0 keresési funkcióját](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup) ismertető témakört.
+
+```python
+base_url = 'https://api.cognitive.microsofttranslator.com'
 path = '/dictionary/lookup?api-version=3.0'
-
-params = '&from=en&to=fr';
-
-text = 'great'
-
-def lookup (content):
-
-    headers = {
-        'Ocp-Apim-Subscription-Key': subscriptionKey,
-        'Content-type': 'application/json',
-        'X-ClientTraceId': str(uuid.uuid4())
-    }
-
-    conn = http.client.HTTPSConnection(host)
-    conn.request ("POST", path + params, content, headers)
-    response = conn.getresponse ()
-    return response.read ()
-
-requestBody = [{
-    'Text' : text,
-}]
-content = json.dumps(requestBody, ensure_ascii=False).encode('utf-8')
-result = lookup (content)
-
-# Note: We convert result, which is JSON, to and from an object so we can pretty-print it.
-# We want to avoid escaping any Unicode characters that result contains. See:
-# https://stackoverflow.com/questions/18337407/saving-utf-8-texts-in-json-dumps-as-utf8-not-as-u-escape-sequence
-output = json.dumps(json.loads(result), indent=4, ensure_ascii=False)
-
-print (output)
+params = '&from=en&to=es';
+constructed_url = base_url + path + params
 ```
 
-## <a name="dictionary-lookup-response"></a>Dictionary Lookup válasz
+## <a name="add-headers"></a>Fejlécek hozzáadása
 
-A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
+A kérelmek hitelesítésének legegyszerűbb módja az, hogy átadja az előfizetői azonosítót `Ocp-Apim-Subscription-Key` fejlécként, amit ebben a példában alkalmazunk. Alternatív megoldásként hozzáférési jogkivonatra cserélheti az előfizetői azonosítóját, és átadhatja a hozzáférési jogkivonatot is `Authorization` fejlécként a kérelem ellenőrzése céljából. További információért lásd: [Hitelesítés](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
-```json
-[
-  {
-    "normalizedSource": "great",
-    "displaySource": "great",
-    "translations": [
-      {
-        "normalizedTarget": "grand",
-        "displayTarget": "grand",
-        "posTag": "ADJ",
-        "confidence": 0.2783,
-        "prefixWord": "",
-        "backTranslations": [
-          {
-            "normalizedText": "great",
-            "displayText": "great",
-            "numExamples": 15,
-            "frequencyCount": 34358
-          },
-          {
-            "normalizedText": "big",
-            "displayText": "big",
-            "numExamples": 15,
-            "frequencyCount": 21770
-          },
-...
-        ]
-      },
-      {
-        "normalizedTarget": "super",
-        "displayTarget": "super",
-        "posTag": "ADJ",
-        "confidence": 0.1514,
-        "prefixWord": "",
-        "backTranslations": [
-          {
-            "normalizedText": "super",
-            "displayText": "super",
-            "numExamples": 15,
-            "frequencyCount": 12023
-          },
-          {
-            "normalizedText": "great",
-            "displayText": "great",
-            "numExamples": 15,
-            "frequencyCount": 10931
-          },
-...
-        ]
-      },
-...
-    ]
-  }
-]
-```
-
-## <a name="dictionary-examples-request"></a>Dictionary Examples kérés
-
-A következő a szótárban lévő kifejezések használatának szövegkörnyezetbe foglalt példáit kéri le a [Dictionary Examples](./reference/v3-0-dictionary-examples.md) metódussal.
-
-1. Hozzon létre egy új Python-projektet a kedvenc kódszerkesztőjében.
-2. Adja hozzá az alábbi kódot.
-3. A `subscriptionKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
-4. Futtassa a programot.
+Másolja a projektbe a következő kódrészletet:
 
 ```python
-# -*- coding: utf-8 -*-
-
-import http.client, urllib.parse, uuid, json
-
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
-
-# Replace the subscriptionKey string value with your valid subscription key.
-subscriptionKey = 'ENTER KEY HERE'
-
-host = 'api.cognitive.microsofttranslator.com'
-path = '/dictionary/examples?api-version=3.0'
-
-params = '&from=en&to=fr';
-
-text = 'great'
-translation = 'formidable'
-
-def examples (content):
-
-    headers = {
-        'Ocp-Apim-Subscription-Key': subscriptionKey,
-        'Content-type': 'application/json',
-        'X-ClientTraceId': str(uuid.uuid4())
-    }
-
-    conn = http.client.HTTPSConnection(host)
-    conn.request ("POST", path + params, content, headers)
-    response = conn.getresponse ()
-    return response.read ()
-
-requestBody = [{
-    'Text' : text,
-    'Translation' : translation,
-}]
-content = json.dumps(requestBody, ensure_ascii=False).encode('utf-8')
-result = examples (content)
-
-# Note: We convert result, which is JSON, to and from an object so we can pretty-print it.
-# We want to avoid escaping any Unicode characters that result contains. See:
-# https://stackoverflow.com/questions/18337407/saving-utf-8-texts-in-json-dumps-as-utf8-not-as-u-escape-sequence
-output = json.dumps(json.loads(result), indent=4, ensure_ascii=False)
-
-print (output)
+headers = {
+    'Ocp-Apim-Subscription-Key': subscriptionKey,
+    'Content-type': 'application/json',
+    'X-ClientTraceId': str(uuid.uuid4())
+}
 ```
 
-## <a name="dictionary-examples-response"></a>Dictionary Examples válasz
+## <a name="create-a-request-to-find-alternate-translations"></a>Kérelem létrehozása alternatív fordítások kereséséhez
 
-A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
+Határozza meg a sztring(ek)et, amely(ek)nek érdekli a fordítása:
+
+```python
+# You can pass more than one object in body.
+body = [{
+    'text': 'Elephants'
+}]
+```
+
+A következő lépésben egy POST-kérelmet hozunk létre a `requests` modullal. Ez három argumentumot fogad: az összefűzött URL-címet, a kérelemfejléceket és a kérelem törzsét:
+
+```python
+request = requests.post(constructed_url, headers=headers, json=body)
+response = request.json()
+```
+
+## <a name="print-the-response"></a>A válasz megjelenítése
+
+Az utolsó lépés az eredmények kiírása. Ez a kódrészlet szebbé teszi az eredményeket a kulcsok rendezésével, a behúzás beállításával és az elem- és kulcselválasztók meghatározásával.
+
+```python
+print(json.dumps(response, sort_keys=True, indent=4, ensure_ascii=False, separators=(',', ': ')))
+```
+
+## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
+
+Ezzel összeállított egy egyszerű programot, amely meghívja a Translator Text API-t, és visszaad egy JSON-választ. Most itt az ideje, hogy futtassa a programot:
+
+```console
+python dictionary-lookup.py
+```
+
+Ha szeretné összevetni a saját kódját a miénkkel, a teljes mintakódot megtekintheti a [GitHubon](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python).
+
+## <a name="sample-response"></a>Mintaválasz
 
 ```json
 [
-  {
-    "normalizedSource": "great",
-    "normalizedTarget": "formidable",
-    "examples": [
-      {
-        "sourcePrefix": "You have a ",
-        "sourceTerm": "great",
-        "sourceSuffix": " expression there.",
-        "targetPrefix": "Vous avez une expression ",
-        "targetTerm": "formidable",
-        "targetSuffix": "."
-      },
-      {
-        "sourcePrefix": "You played a ",
-        "sourceTerm": "great",
-        "sourceSuffix": " game today.",
-        "targetPrefix": "Vous avez été ",
-        "targetTerm": "formidable",
-        "targetSuffix": "."
-      },
-...
-    ]
-  }
+    {
+        "displaySource": "elephants",
+        "normalizedSource": "elephants",
+        "translations": [
+            {
+                "backTranslations": [
+                    {
+                        "displayText": "elephants",
+                        "frequencyCount": 1207,
+                        "normalizedText": "elephants",
+                        "numExamples": 5
+                    }
+                ],
+                "confidence": 1.0,
+                "displayTarget": "elefantes",
+                "normalizedTarget": "elefantes",
+                "posTag": "NOUN",
+                "prefixWord": ""
+            }
+        ]
+    }
 ]
 ```
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha nem változtatható módon adta meg az előfizetői azonosítót a programban, a rövid útmutató befejezése után mindenképpen távolítsa el az előfizetői azonosítót.
 
 ## <a name="next-steps"></a>További lépések
 
-A GitHubon megismerheti a rövid útmutató és egyebek mintakódját, beleértve a fordítást és az átírást is, valamint más Translator Text-projekteket.
-
 > [!div class="nextstepaction"]
-> [A Python-példák megismerése a GitHubon](https://aka.ms/TranslatorGitHub?type=&language=python)
+> [A Python-példák megismerése a GitHubon](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python)
+
+## <a name="see-also"></a>Lásd még
+
+Megtudhatja, hogyan használhatja a Translator Text API-t a szövegátíráson kívül a következőkhöz:
+
+* [Szöveg lefordítása](quickstart-python-translate.md)
+* [Szöveg átírása](quickstart-python-transliterate.md)
+* [A beviteli nyelv azonosítása](quickstart-python-detect.md)
+* [A támogatott nyelvek listájának beolvasása](quickstart-python-languages.md)
+* [Bemenet mondatai hosszának meghatározása](quickstart-python-sentences.md)

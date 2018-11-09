@@ -1,8 +1,21 @@
+---
+author: ggailey777
+ms.service: azure-functions
+ms.topic: include
+ms.date: 09/04/2018
+ms.author: glenga
+ms.openlocfilehash: cf8c6f07eb38487dd29624b15be3637536be92fc
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50134308"
+---
 ## <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
 
-Funkciók egy általános célú fiókot használja az Azure Storage állapot-és egyéb adatait a funkciók. Hozzon létre egy általános célú tárfiókot az Ön által létrehozott erőforráscsoport a [az storage-fiók létrehozása](/cli/azure/storage/account#create) parancsot.
+A Functions szolgáltatás egy általános célú Azure Storage-fiókot használ a függvények állapotának és egyéb adatainak kezeléséhez. Az [az storage account create](/cli/azure/storage/account#create) paranccsal hozzon létre egy általános célú tárfiókot a létrehozott erőforráscsoportban.
 
-Az alábbi parancs helyettesítse a globálisan egyedi tárfiók neve válaszoknál láthatja a `<storage_name>` helyőrző. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat.
+A következő parancsban a `<storage_name>` helyőrző helyett írjon be egy globálisan egyedi tárfióknevét. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat.
 
 ```azurecli-interactive
 az storage account create --name <storage_name> --location westeurope --resource-group myResourceGroup --sku Standard_LRS

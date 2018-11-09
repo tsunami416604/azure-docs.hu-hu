@@ -4,9 +4,6 @@ description: Ismerje meg a hálózati és alkalmazásbiztonsági csoportokat A b
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: jdial
-ms.openlocfilehash: 79ea839a5b57a2b64b80feba8324764a23c05697
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e9a4aa1606e99057565891dc10d17ba9abf15d9c
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987016"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50159077"
 ---
 # <a name="security-groups"></a>Biztonsági csoportok
 <a name="network-security-groups"></a>
@@ -60,9 +57,9 @@ A kibővített biztonsági szabályok megkönnyítik a virtuális hálózatok bi
  A következő szolgáltatáscímkék érhetőek el biztonsági szabályok meghatározásához. A neveik az egyes [Azure üzembehelyezési modellekben](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) némiképp eltérőek.
 
 * **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** klasszikus üzemi modell esetén): Ez a címke tartalmazza a virtuális hálózat címterét (a virtuális hálózathoz meghatározott minden CIDR-tartományt), valamint az összes csatlakoztatott helyszíni címteret és a [virtuális hálózati átjárókhoz](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) csatlakoztatott virtuális hálózatokat vagy [társviszonyban álló](virtual-network-peering-overview.md) virtuális hálózatokat.
-* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** klasszikus telepítéshez): Ez a címke az Azure infrastruktúra-terheléselosztóját jelöli. A címkét a rendszer lefordítja arra az [Azure-adatközponti IP-címre](https://www.microsoft.com/download/details.aspx?id=41653), ahonnan az Azure állapot-mintavételei származnak. Ha nem az Azure Load Balancert használja, ezt a szabályt felül lehet bírálni.
+* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** klasszikus telepítéshez): Ez a címke az Azure infrastruktúra-terheléselosztóját jelöli. A címkét a rendszer lefordítja a [gazdagép azon virtuális IP-címére](security-overview.md##azure-platform-considerations) (168.63.129.16), ahonnan az Azure állapot-mintavételei származnak. Ha nem az Azure Load Balancert használja, ezt a szabályt felül lehet bírálni.
 * **Internet** (Resource Manager) (**INTERNET** klasszikus telepítéshez): Ez a címke azt az IP-címteret jelöli, amely a virtuális hálózaton kívül esik, és a nyilvános interneten érhető el. A címtartományba beletartozik az [Azure tulajdonában lévő nyilvános IP-címtér](https://www.microsoft.com/download/details.aspx?id=41653) is.
-* **AzureCloud** (csak Resource Manager): Ez a címke az Azure IP-címterét, többek között valamennyi adatközpont nyilvános IP-címét jelöli. Ha az *AzureCloud* értéket adja meg, a nyilvános Azure IP-címekre irányuló forgalom engedélyezhető vagy letiltható. Ha csak egy adott [régióban](https://azure.microsoft.com/regions) szeretné engedélyezni a hozzáférést az AzureCloud szolgáltatáshoz, megadhat egy régiót. Ha például csak az USA keleti régiójában szeretné engedélyezni a hozzáférést az Azure AzureCloud szolgáltatáshoz, megadhatja az *AzureCloud.EastUS* szolgáltatáscímkét. 
+* **AzureCloud** (csak Resource Manager): Ez a címke az Azure IP-címterét, többek között valamennyi [adatközpont nyilvános IP-címét](https://www.microsoft.com/download/details.aspx?id=41653) jelöli. Ha az *AzureCloud* értéket adja meg, a nyilvános Azure IP-címekre irányuló forgalom engedélyezhető vagy letiltható. Ha csak egy adott [régióban](https://azure.microsoft.com/regions) szeretné engedélyezni a hozzáférést az AzureCloud szolgáltatáshoz, megadhat egy régiót. Ha például csak az USA keleti régiójában szeretné engedélyezni a hozzáférést az Azure AzureCloud szolgáltatáshoz, megadhatja az *AzureCloud.EastUS* szolgáltatáscímkét. 
 * **AzureTrafficManager** (csak Resource Manager esetében): Ez a címke az Azure Traffic Manager mintavételezési IP-címeinek IP-címterét jelöli. További információk a Traffic Manager mintavételezési IP-címeiről: [Azure Traffic Manager – Gyakori kérdések](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). 
 * **Storage** (csak Resource Manager esetében): Ez a címke az Azure Storage szolgáltatás IP-címterét jelöli. Ha a *Storage* értéket adja meg, a Storage szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható. Ha csak egy adott [régióban](https://azure.microsoft.com/regions) szeretné engedélyezni a hozzáférést a Storage szolgáltatáshoz, megadhat egy régiót. Ha például csak az USA keleti régiójában szeretné engedélyezni a hozzáférést az Azure Storage szolgáltatáshoz, megadhatja a *Storage.EastUS* szolgáltatáscímkét. A címke a szolgáltatást jelöli, annak adott példányait azonban nem. Például a címke az Azure Storage szolgáltatást jelöli, de nem egy adott Azure Storage-fiókot. A címke által jelölt címelőtagokat az **Internet** címke is jelöli. 
 * **Sql** (csak Resource Manager esetében): Ez a címke az Azure SQL Database és az Azure SQL Data Warehouse szolgáltatás címelőtagjait jelöli. Ha az *SQL* értéket adja meg, az SQL szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható. Ha csak egy adott [régióban](https://azure.microsoft.com/regions) szeretné engedélyezni a hozzáférést az SQL szolgáltatáshoz, megadhat egy régiót. Ha például csak az USA keleti régiójában szeretné engedélyezni a hozzáférést az Azure SQL Database-hez, megadhatja az *Sql.EastUS* szolgáltatáscímkét. A címke a szolgáltatást jelöli, annak adott példányait azonban nem. Például a címke az Azure SQL Database szolgáltatást jelöli, de nem egy adott SQL-adatbázist vagy -kiszolgálót. A címke által jelölt címelőtagokat az **Internet** címke is jelöli. 
@@ -79,7 +76,6 @@ A kibővített biztonsági szabályok megkönnyítik a virtuális hálózatok bi
 * **GatewayManager** (csak Resource Manager esetében): Ez a címke az Azure Gateway Manager szolgáltatás címelőtagjait jelöli. Ha a *GatewayManager* értéket adja meg, a GatewayManager szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható. Ha csak egy adott [régióban](https://azure.microsoft.com/regions) szeretné engedélyezni a hozzáférést a GatewayManager szolgáltatáshoz, a régiót a GatewayManager.[régió neve] formátumban adhatja meg. 
 * **AzureDataLake** (csak Resource Manager esetében): Ez a címke az Azure Data Lake szolgáltatás címelőtagjait jelöli. Ha az *AzureDataLake* értéket adja meg, az AzureDataLake szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható. 
 * **AzureActiveDirectory** (csak Resource Manager esetében): Ez a címke az AzureActiveDirectory szolgáltatás címelőtagjait jelöli. Ha az *AzureActiveDirectory* értéket adja meg, az AzureActiveDirectory szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható.  
-* **CorpNetSAW** (csak Resource Manager esetében): Ez a címke az Azure-ban üzemeltetett [CorpNetSAW-eszközök](../security/azure-security-iaas.md) címelőtagjait jelöli. Néhány esetben az Azure-szolgáltatások ennek a szolgáltatáscímkének a segítségével hozzáférést kérhetnek az ügyfél által felügyelt példányokhoz a támogathatóság növelése érdekében. Ha a *CorpNetSAW* értéket adja meg, a CorpNetSAW szolgáltatás felé irányuló forgalom engedélyezhető vagy letiltható. 
 
 > [!NOTE]
 > Az Azure-szolgáltatások szolgáltatáscímkéi az adott használt felhő címelőtagjait jelölik. A regionális szolgáltatáscímkék a nemzeti felhők esetén nem támogatottak, csak a globális formátum esetén. Például *Storage* és *Sql*.

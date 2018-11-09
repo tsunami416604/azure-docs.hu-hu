@@ -9,16 +9,16 @@ ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 61bcb01f549b6a47f3c4899975d4b1b23fbd9e3b
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: ec8cd52d8a91c76033d52f9b49ee84dde98eada2
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957020"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156765"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Oktatóanyag: C#-alapú IoT Edge-modul fejlesztése és üzembe helyezése szimulált eszközön
 
-Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. Az Azure IoT Edge üzembe helyezése szimulált eszközön [Windows][lnk-tutorial1-win] vagy [Linux][lnk-tutorial1-lin] rendszeren című rövid útmutatóban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:    
+Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. Az Azure IoT Edge üzembe helyezése szimulált eszközön [Windows](quickstart.md) vagy [Linux](quickstart-linux.md) rendszeren című rövid útmutatóban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:    
 
 > [!div class="checklist"]
 > * A .NET core 2.0 SDK-n alapuló IoT Edge-modul létrehozása a Visual Studio Code-dal.
@@ -141,7 +141,7 @@ A környezeti fájl tárolja a tárolóregisztrációs adatbázis hitelesítő a
 
     ```csharp
     // Register a callback for messages that are received by the module.
-    // await ioTHubModuleClient.SetImputMessageHandlerAsync("input1", PipeMessage, iotHubModuleClient);
+    // await ioTHubModuleClient.SetInputMessageHandlerAsync("input1", PipeMessage, iotHubModuleClient);
 
     // Read the TemperatureThreshold value from the module twin's desired properties
     var moduleTwin = await ioTHubModuleClient.GetTwinAsync();
@@ -336,12 +336,3 @@ Ebben az oktatóanyagban IoT Edge-modult hozott létre olyan kóddal, amely szű
 
 > [!div class="nextstepaction"]
 > [Adatok tárolása a peremhálózaton SQL Server-adatbázisokkal](tutorial-store-data-sql-server.md)
-
-<!-- Links -->
-[lnk-tutorial1-win]: quickstart.md
-[lnk-tutorial1-lin]: quickstart-linux.md
-
-<!-- Images -->
-[1]: ./media/tutorial-csharp-module/programcs.png
-[2]: ./media/tutorial-csharp-module/build-module.png
-[3]: ./media/tutorial-csharp-module/docker-os.png

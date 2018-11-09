@@ -1,20 +1,20 @@
 ---
-title: Másodlagos Azure-régióba replikált Azure-beli virtuális gépek feladatátvétele és feladat-visszavétele az Azure Site Recoveryvel
-description: Megtudhatja, hogyan végezhet feladatátvételt és feladat-visszavételt az Azure-beli virtuális gépeken másodlagos Azure-régióra az Azure Site Recoveryvel
+title: Vészhelyreállításhoz másodlagos Azure-régióba replikált Azure-beli IaaS virtuális gépek feladatátvétele és feladat-visszavétele az Azure Site Recovery szolgáltatással.
+description: Megtudhatja, hogyan végezhet feladatátvételt és feladat-visszavételt az Azure-beli virtuális gépeken vészhelyreállításhoz másodlagos Azure-régióba az Azure Site Recovery szolgáltatással.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f7d6594910f3c703c2381515c3b93eb56ff4f675
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 9917656a3bc8fd8cfe7d71786dc39d296a2449c1
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456507"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239287"
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>Azure-beli virtuális gépek feladatátvétele és feladat-visszavétele Azure-régiók között
 
@@ -34,7 +34,7 @@ Ez az oktatóanyag leírja, hogyan végezhet feladatátvételt egyetlen Azure-be
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Mindenképp végezzen [vészhelyreállítási próbát](azure-to-azure-tutorial-dr-drill.md) annak ellenőrzésére, hogy minden a várt módon működik-e.
-- Ellenőrizze a virtuális gép tulajdonságait a feladatátvételi teszt futtatása előtt. A virtuális gépnek meg kell felelnie az [Azure-követelményeknek](azure-to-azure-support-matrix.md#support-for-replicated-machine-os-versions).
+- Ellenőrizze a virtuális gép tulajdonságait a feladatátvételi teszt futtatása előtt. A virtuális gépnek meg kell felelnie az [Azure-követelményeknek](azure-to-azure-support-matrix.md#replicated-machine-operating-systems).
 
 ## <a name="run-a-failover-to-the-secondary-region"></a>Feladatátvétel futtatása a másodlagos régióba
 

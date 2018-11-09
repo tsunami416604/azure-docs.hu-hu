@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 35c15613192ac12a7d4c64cbe28f62200724d311
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: af7500d6bf12ef34e6919aa255185a87525310b3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452275"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240715"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Az Azure Stack tárfiókok kezelése
 Ismerje meg, hogyan kezelheti a tárfiókok az Azure Stack keresése, helyreállítás és üzleti igényeinek megfelelően tárolási kapacitás visszaigényléséhez.
@@ -136,8 +136,8 @@ Explicit módon a megőrzési időszak felülbírálására PowerShell is haszn�
 **Kapacitás visszaigényléséhez PowerShell-lel:**   
 
 1. Győződjön meg arról, hogy az Azure PowerShell telepítését és konfigurálását. Ha nem, kövesse az alábbi utasításokat: 
-   * Telepítse a legújabb Azure PowerShell-verziót, és társíthatja azt az Azure-előfizetéséhez, tekintse meg a [telepítése és konfigurálása az Azure PowerShell-lel](http://azure.microsoft.com/documentation/articles/powershell-install-configure/).
-   Azure Resource Manager-parancsmagokkal kapcsolatos további információkért lásd: [az Azure PowerShell az Azure Resource Managerrel](http://go.microsoft.com/fwlink/?LinkId=394767)
+   * Telepítse a legújabb Azure PowerShell-verziót, és társíthatja azt az Azure-előfizetéséhez, tekintse meg a [telepítése és konfigurálása az Azure PowerShell-lel](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
+   Azure Resource Manager-parancsmagokkal kapcsolatos további információkért lásd: [az Azure PowerShell az Azure Resource Managerrel](https://go.microsoft.com/fwlink/?LinkId=394767)
 2. A következő parancsmagok futtatásához:
 
 > [!NOTE]  

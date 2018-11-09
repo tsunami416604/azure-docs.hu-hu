@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/24/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: cabc4f2212e18d774066efad70d9654bb70020d5
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 997aa1a85068c403f1b6fa209c97413a881b1cb9
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831500"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156306"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Rövid útmutató: Microsoft-bejelentkezés hozzáadása egy ASP.NET-webalkalmazáshoz
 
@@ -31,17 +31,29 @@ Ebben a rövid útmutatóban megtudhatja, hogyan használhatók egy ASP.NET-weba
 ![A rövid útmutató által létrehozott mintaalkalmazás működése](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.png)
 
 > [!div renderon="docs"]
-> ## <a name="register-your-application-and-download-your-quickstart-app"></a>Az alkalmazás regisztrálása és a rövid útmutató mintaalkalmazásának letöltése
+> ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése
+> A rövid útmutató mintaalkalmazását kétféleképpen indíthatja el:
+> * [Expressz] [1. lehetőség: Az alkalmazás regisztrálása és automatikus konfigurálása, majd a kódminta letöltése](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [Kézi] [2. lehetőség: Az alkalmazás és a kódminta regisztrálása és kézi konfigurálása](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> ### <a name="register-and-configure-your-application-and-code-sample"></a>Az alkalmazás és a kódminta regisztrálása és konfigurálása
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. lehetőség: Az alkalmazás regisztrálása és automatikus konfigurálása, majd a kódminta letöltése
+>
+> 1. Nyissa meg az [Azure Portal – Alkalmazásregisztráció (előzetes verzió)](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) szakaszt.
+> 1. Adja meg az alkalmazás nevét, és kattintson a **Regisztráció** elemre.
+> 1. Kövesse az új alkalmazás egy kattintással való letöltésére és automatikus konfigurálására vonatkozó utasításokat.
+>
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2. lehetőség: Az alkalmazás és a kódminta regisztrálása és kézi konfigurálása
+>
 > #### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
-> 
-> 1. Lépjen a [Microsoft alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/portal/register-app).
-> 1. Írja be az alkalmazás nevét. Ügyeljen arra, hogy az **Irányított beállítás** jelölőnégyzet ne legyen bejelölve, majd válassza a **Létrehozás** lehetőséget.
-> 1. Kattintson a(z) `Add Platform`, majd a(z) `Web` elemre.
-> 1. Ügyeljen arra, hogy az **Implicit forgalom engedélyezése** jelölőnégyzet *be legyen jelölve*.
-> 1. Az **Átirányítási URL-címek** beállításnál írja be a következőt: `https://localhost:44368/`.
-> 1. Görgessen le a lap aljára, és kattintson a **Mentés** gombra.
+> Az alkalmazás regisztrálásához és az alkalmazás regisztrációs információinak a megoldáshoz való kézi hozzáadásához kövesse az alábbi lépéseket:
+>
+> 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+> 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
+> 1. A bal oldali navigációs panelen válassza az **Azure Active Directory** szolgáltatást, majd válassza az **Alkalmazásregisztrációk (előzetes verzió)** > **Új regisztráció** lehetőséget.
+> 1. Amikor megjelenik az **Alkalmazás regisztrálása lap**, adja meg az alkalmazás regisztrációs adatait:
+>      - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `ASPNET-Quickstart`).
+>      - Adja hozzá a `https://localhost:44368/` címet a **Válasz URL-cím** mezőben, és kattintson a **Regisztráció** elemre.
+Válassza a **Hitelesítés** menüt, állítsa be az **Azonosító jogkivonatok** értékét az **Implicit engedélyezés** területen, majd válassza a **Mentés** elemet.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. lépés: Az alkalmazás konfigurálása az Azure Portalon
@@ -60,15 +72,23 @@ Ebben a rövid útmutatóban megtudhatja, hogyan használhatók egy ASP.NET-weba
 
 1. Csomagolja ki a zip-fájlt egy helyi mappába a gyökérmappa közelében (például: **C:\Azure-Samples**)
 1. Nyissa meg a megoldást (AppModelv2-WebApp-OpenIDConnect-DotNet.sln) a Visual Studióban.
-1. Szerkessze a **Web.config** fájlt, és cserélje le az `Enter_the_Application_Id_here` részt a most regisztrált alkalmazás alkalmazásazonosítójára:
+1. Szerkessze a **Web.config** fájlt, és cserélje le a `ClientId` és `Tenant` paramétereket az alábbiakkal:
 
     ```xml
     <add key="ClientId" value="Enter_the_Application_Id_here" />
+    <add key="Tenant" value="TenantId" />
     ```
-    
-> [!div class="sxs-lookup" renderon="portal"]
-> [!IMPORTANT]
-> Ha az alkalmazás egy *egybérlős alkalmazás* (csak ebben a címtárban található fiókokat céloz), akkor a **Web.config** fájlban keresse meg a `Tenant` értékét, és cserélje le a `common` részt a saját **bérlőazonosítójára** vagy **bérlőnevére** (például contoso.microsoft.com). A bérlőnevet az **Áttekintés** lapon találja meg.
+
+> [!div renderon="docs"]
+> Az elemek magyarázata:
+> - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazás alkalmazásazonosítója.
+> - `TenantId` – ez az alábbi lehetőségek egyike:
+>   - Ha az alkalmazás **csak a saját szervezetet** támogatja, ezt az értéket a **Bérlőazonosítóra** vagy a **Bérlő nevére** cserélje le (például contoso.microsoft.com)
+>   - Ha az alkalmazás **bármely szervezeti címtárban lévő fiókot** támogat, ezt az értéket az `organizations` értékre cserélje le
+>   - Ha az alkalmazás **minden Microsoft-fiókfelhasználót** támogat, ezt az értéket a `common` értékre cserélje le
+>
+> > [!TIP]
+> > Az *alkalmazásazonosító*, a *címtár (bérlő) azonosítója* és a *támogatott fióktípusok* értékét az **Áttekintés** oldalon találja
 
 ## <a name="more-information"></a>További információ
 

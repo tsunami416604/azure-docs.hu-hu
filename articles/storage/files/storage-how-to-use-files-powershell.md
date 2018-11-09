@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: quickstart
-ms.date: 10/18/2018
+ms.date: 10/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 16f557d48f8056d438d55fdd066395e7e36ed8a5
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 119853df5b5234b65bdade890df1fecb72c326b7
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945484"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157377"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Rövid útmutató: Azure-fájlmegosztások létrehozása és felügyelete az Azure PowerShell-lel 
 Ez az útmutató az [Azure-fájlmegosztások](storage-files-introduction.md) PowerShell-lel való használatának alapvető lépéseit mutatja be. Az Azure-fájlmegosztások nem különböznek más fájlmegosztásoktól, a tárolásuk azonban a felhőben történik, és az Azure platform nyújt számukra támogatást. Az Azure-fájlmegosztások támogatják az iparági szabvány SMB protokollt, és lehetővé teszik a több gép, alkalmazás és példány közötti fájlmegosztást. 
@@ -165,6 +165,57 @@ Get-AzureStorageFile -Context $storageAcct.Context -ShareName "myshare2" -Path "
 ```
 
 Bár a `Start-AzureStorageFileCopy` parancsmag kényelmes megoldás az Azure-fájlmegosztások és az Azure Blob Storage-tárolók közötti alkalmi fájlmozgatásokhoz, a nagyobb léptékű áthelyezésekhez (az áthelyezett fájlok száma és mérete tekintetében) az AzCopy használata ajánlott. További információ: [AzCopy segédprogram Windows rendszeren](../common/storage-use-azcopy.md) és [AzCopy segédprogram Linux rendszeren](../common/storage-use-azcopy-linux.md). Az AzCopy parancsmagnak helyileg kell telepítve lennie – a Cloud Shellen nem érhető el. 
+
+## <a name="create-and-manage-share-snapshots"></a>Megosztási pillanatképek létrehozása és felügyelete
+Az Azure-fájlmegosztással végezhető egyik további hasznos feladat a megosztási pillanatképek létrehozása. A pillanatképek megőrzik az Azure-fájlmegosztások adott időpontban látható állapotát. A megosztási pillanatképek hasonlóak az esetleg már ismert operációsrendszer-technológiákhoz, például a következőkhöz:
+- [Kötet árnyékmásolata szolgáltatás (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) Windows fájlrendszerekhez (például NTFS és ReFS)
+- [Logikaikötet-kezelő (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) pillanatképek Linux rendszerekhez
+- [Apple fájlrendszer (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) pillanatképek macOS rendszerhez. 
+ A fájlmegosztások PowerShell-objektumán a `Snapshot` metódussal hozhatja létre a megosztás pillanatképét, amely a [Get-AzureStorageShare](/powershell/module/azure.storage/get-azurestorageshare) parancsmaggal kérhető le. 
+
+```azurepowershell-interactive
+$share = Get-AzureStorageShare -Context $storageAcct.Context -Name "myshare"
+$snapshot = $share.Snapshot()
+```
+
+### <a name="browse-share-snapshots"></a>Böngészés a megosztási pillanatképekben
+A pillanatkép referenciáját (`$snapshot`) a `Get-AzureStorageFile` parancsmag `-Share` paraméterébe illesztve böngészhet a megosztási pillanatkép tartalmában.
+
+```azurepowershell-interactive
+Get-AzureStorageFile -Share $snapshot
+```
+
+### <a name="list-share-snapshots"></a>Megosztási pillanatképek felsorolása
+A következő paranccsal tekintheti meg a megosztáshoz készített pillanatképek listáját.
+
+```azurepowershell-interactive
+Get-AzureStorageShare -Context $storageAcct.Context | Where-Object { $_.Name -eq "myshare" -and $_.IsSnapshot -eq $true }
+```
+
+### <a name="restore-from-a-share-snapshot"></a>Visszaállítás megosztási pillanatképből
+A fájlokat a korábban már használt `Start-AzureStorageFileCopy` paranccsal állíthatja vissza. A rövid útmutató során először töröljük a korábban feltöltött `SampleUpload.txt` fájlt, hogy visszaállíthassuk a pillanatképből.
+
+```azurepowershell-interactive
+# Delete SampleUpload.txt
+Remove-AzureStorageFile `
+    -Context $storageAcct.Context `
+    -ShareName "myshare" `
+    -Path "myDirectory\SampleUpload.txt"
+ # Restore SampleUpload.txt from the share snapshot
+Start-AzureStorageFileCopy `
+    -SrcShare $snapshot `
+    -SrcFilePath "myDirectory\SampleUpload.txt" `
+    -DestContext $storageAcct.Context `
+    -DestShareName "myshare" `
+    -DestFilePath "myDirectory\SampleUpload.txt"
+```
+
+### <a name="delete-a-share-snapshot"></a>Megosztási pillanatkép törlése
+A megosztási pillanatképek törléséhez a [Remove-AzureStorageShare](/powershell/module/azure.storage/remove-azurestorageshare) parancsmagot használhatja a `-Share` paraméter `$snapshot` referenciáját tartalmazó változóval.
+
+```azurepowershell-interactive
+Remove-AzureStorageShare -Share $snapshot
+```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Amikor végzett, a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal távolíthatja el az erőforráscsoportot és az összes kapcsolódó erőforrást. 

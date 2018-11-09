@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2018
 ms.author: kgremban
-ms.openlocfilehash: 43b317cd9d1c9384a58e9d525fdd15d18eb63968
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: c91dad17016cd9619d2d42a3fcee04a7d14b5eab
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43246636"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242519"
 ---
 # <a name="send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Azure IoT Hub-eseményekkel kapcsolatos e-mail-értesítések küldése a Logic Apps használatával
 
@@ -28,7 +28,7 @@ A cikk végigvezeti egy, az IoT Hubot és az Event Gridet használó mintakonfig
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Az Azure Logic Apps által támogatott bármely e-mail-szolgáltató (például Office 365 Outlook, Outlook.com vagy Gmail) által üzemeltetett e-mail-fiók. Ez az e-mail-fiók küldi majd az eseményértesítéseket. A támogatott Logic Apps-összekötők teljes listáját az [összekötők áttekintésében](https://docs.microsoft.com/connectors/) találja.
-* Aktív Azure-fiók. Ha még nincs fiókja, [hozzon létre egy ingyenes fiókot](http://azure.microsoft.com/pricing/free-trial/).
+* Aktív Azure-fiók. Ha még nincs fiókja, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 * Egy IoT Hub az Azure-ban. Ha még nem hozott létre központot, [az IoT Hub első lépéseit](../iot-hub/iot-hub-csharp-csharp-getstarted.md) ismertető cikkben talál útmutatást. 
 
 ## <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása

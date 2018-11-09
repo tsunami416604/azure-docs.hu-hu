@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 1a8f04f39568816252175fc9e0893f1ab3e2cdc6
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 5dd05a5bbf52fe7fa68a621cc762378024951487
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224817"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249279"
 ---
 # <a name="tutorial-configure-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Oktatóanyag: Kafka-házirendek konfigurálása a HDInsightban az Enterprise Security Package csomaggal (Előzetes verzió)
 
@@ -33,7 +33,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 * Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-* Hozzon létre egy [HDInsight Kafka-fürtöt az Enterprise Security Package csomaggal](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-run-hive).
+* Hozzon létre egy [HDInsight Kafka-fürtöt az Enterprise Security Package csomaggal](apache-domain-joined-configure-using-azure-adds.md).
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Csatlakozás az Apache Ranger felügyeleti felhasználói felületéhez
 
@@ -117,15 +117,18 @@ Hozzon létre két témakört **salesevents** és **marketingspend** néven:
 
    ```bash
    export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`; \
-   
    export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
    ```
+> [!Note]
+> Mielőtt továbblépne, konfigurálnia kell a fejlesztési környezetet, ha még nem tette volna meg. A következő összetevőkre lesz szüksége: Java JDK, Apache Maven, valamint egy SSH-ügyfél SCP-vel. További információkért lásd ezeket [a beállítási utasításokat](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
+1. Töltse le az [Apache Kafka tartományhoz csatlakoztatott előállítói és fogyasztói példákat](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
 
-4. Futtassa az alábbi parancsot: 
+1. Kövesse [az Apache Kafka Producer és Consumer API-k használatát bemutató oktatóanyag](https://docs.microsoft.com/en-us/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example) **a példák létrehozását és üzembe helyezését** ismertető szakaszának 2. és 3. lépését.
+
+1. Futtassa az alábbi parancsot:
 
    ```bash
    java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create salesevents $KAFKABROKERS
-   
    java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
    ```
 

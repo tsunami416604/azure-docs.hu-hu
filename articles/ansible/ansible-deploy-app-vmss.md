@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/11/2018
-ms.openlocfilehash: 3512cb7eda9f9e5a6e18dc83f6523029b17a9de2
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: c1e38064e8abe53c96a70fb189b3d9e4cc4bc4e4
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391470"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413995"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Alkalmazások üzembe helyezése virtuálisgép-méretezési csoportokban az Azure-ban az Ansible használatával
 Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Az Ansible használatával üzembe helyezheti alkalmazásait az Azure-ban. Ez a cikk bemutatja, hogyan helyezhet gyorsan üzembe Java-alkalmazást egy Azure-beli virtuálisgép-méretezési csoportban (VMSS).  
@@ -23,7 +23,7 @@ Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfi
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 - **Virtuálisgép-méretezési csoport** – Ha még nem rendelkezik virtuálisgép-méretezési csoporttal, akkor [létrehozhat egyet az Ansible használatával](ansible-create-configure-vmss.md). 
 - **git** - A [git](https://git-scm.com) segítségével letölthető az ebben az oktatóanyagban használt Java-minta.
-- **Java SE Development Kit (JDK)** – A JDK a Java-mintaprojekt létrehozásához szükséges.
+- **Java SE Development Kit (JDK)** – A [JDK](https://aka.ms/azure-jdks) a Java-mintaprojekt létrehozásához szükséges.
 - **Apache Maven összeállítási eszközök** – Az [Apache Maven összeállítási eszközök](https://maven.apache.org/download.cgi) a Java-mintaprojekt létrehozásához szükségesek.
 
 > [!Note]

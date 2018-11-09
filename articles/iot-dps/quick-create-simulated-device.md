@@ -1,6 +1,6 @@
 ---
 title: Szimulált TPM-eszköz kiépítése Azure IoT Hubra C használatával | Microsoft Docs
-description: Ebben a rövid útmutatóban egy szimulált TPM-eszközt hoz létre és épít ki az Azure IoT Hub Device Provisioning Service-hez készült C eszközoldali SDK-val.
+description: Ez a rövid útmutató egyéni regisztrációkat használ. Ebben a rövid útmutatóban egy szimulált TPM-eszközt hoz létre és épít ki az Azure IoT Hub Device Provisioning Service-hez készült C eszközoldali SDK-val.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 07/13/2018
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3f88da7e70ca62e14444fa742013c982daec3cc6
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: c2f5ff778b49ffb544c53b41cf515e820d646249
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633272"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157853"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>Rövid útmutató: Szimulált TPM-eszköz kiépítése az Azure IoT C SDK-val
 
@@ -23,6 +23,12 @@ ms.locfileid: "45633272"
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és futtathat platformmegbízhatósági modul (TPM) alapú eszközszimulátort Windows rendszerű fejlesztői gépeken. A szimulált eszközt egy IoT Hubhoz csatlakoztatja egy Device Provisioning Service-példánnyal. Az eszköz egy Device Provisioning Service-példánnyal való regisztrálásához és az eszköz rendszerindításának szimulálásához az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) egy mintakódját használjuk majd.
 
 Amennyiben nem ismeri az automatikus kiépítés folyamatát, olvassa el [az automatikus kiépítés alapfogalmait](concepts-auto-provisioning.md) ismertető cikket. A rövid útmutató folytatása előtt mindenképpen végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) szakasz lépéseit. 
+
+Az Azure IoT Device Provisioning Service kétféle típusú regisztrációt támogat:
+- [Regisztrációs csoportok](concepts-service.md#enrollment-group): Több kapcsolódó eszköz regisztrálásához.
+- [Egyéni regisztrációk](concepts-service.md#individual-enrollment): Egyetlen eszköz regisztrálásához.
+
+Ez a cikk az egyéni regisztrációkat ismerteti.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

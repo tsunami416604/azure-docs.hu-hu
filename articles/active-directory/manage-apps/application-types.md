@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 754a06cc8bb9cc6e660e2ac5f01ef2c40176eb05
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: f483be5866715ddf253daefb197ae3dd87e02d99
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357133"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249098"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>Nem várt alkalmazás alkalmazáslistában
 
@@ -59,13 +59,13 @@ Ha a szűrt **minden alkalmazás**, a **minden alkalmazás** **lista** jeleníti
 
 2.  Ha regisztrál a, vagy egy 3-ra bejelentkezés<sup>távoli asztali</sup> gyártótól származó alkalmazás az Azure Active Directoryval integrált. Ez egy [Smartsheet](https://app.smartsheet.com/b/home) vagy [DocuSign](https://www.docusign.net/member/MemberLogin.aspx).
 
-3.  Amikor a regisztrációt, vagy licencet ad hozzá egy felhasználó vagy csoport első gyártótól származó alkalmazás, például [a Microsoft Office 365-höz](http://products.office.com/)
+3.  Amikor a regisztrációt, vagy licencet ad hozzá egy felhasználó vagy csoport első gyártótól származó alkalmazás, például [a Microsoft Office 365-höz](https://products.office.com/)
 
 4.  Ha egy egyénileg fejlesztett alkalmazásba használatával létrehoz egy új alkalmazás regisztrálása hozzáadása a [alkalmazás beállításjegyzékében](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)
 
 5.  Ha egy egyénileg fejlesztett alkalmazásba használatával létrehoz egy új alkalmazás regisztrálása hozzáadása a [V2.0 az alkalmazásregisztrációs portálon](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration#visit-the-microsoft-app-registration-portal)
 
-6.  Amikor hozzáad egy alkalmazást fejleszt, a Visual Studio használatával [ASP.net hitelesítési módszerek](http://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) vagy [csatlakoztatott szolgáltatás](http://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
+6.  Amikor hozzáad egy alkalmazást fejleszt, a Visual Studio használatával [ASP.net hitelesítési módszerek](http://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) vagy [csatlakoztatott szolgáltatás](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
 
 7.  Amikor hoz létre egy szolgáltatás rendszerbiztonsági tag típusú objektumot használ a [Azure AD PowerShell-modul](/powershell/azure/install-adv2?view=azureadps-2.0)
 

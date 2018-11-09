@@ -10,12 +10,12 @@ ms.component: bing-spell-check
 ms.topic: overview
 ms.date: 05/03/2018
 ms.author: nolachar
-ms.openlocfilehash: 4caa05ffa96dbc15922fed85edfdefdb68ead68b
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 48d9dee014d0759bd339c79811bb7b2fddecfe0b
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361711"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214936"
 ---
 # <a name="what-is-bing-spell-check-api"></a>Mi a Bing Spell Check API?
 
@@ -42,7 +42,7 @@ Az alapértelmezett mód a `Proof`. A `Proof` helyesírási mód biztosítja a l
 <br /><br/>**MEGJEGYZÉS:** Ha a lekérdezés szövegének hossza meghaladja a 4096 karaktert, feldolgozás előtt 4096 karakterre lesz csonkolva. 
 ### <a name="spell----for-web-searchesqueries-scenario"></a>Spell – a webes keresésekhez/lekérdezésekhez
 A `Spell` agresszívabb, hogy jobb keresési eredményeket adhasson. A `Spell` mód megtalálja a legtöbb helyesírási hibát, de nem talál meg néhány olyan nyelvtani hibát, például a nagybetűket és a szóismétlést, amelyeket a `Proof` észlel.
-<br /></br>**MEGJEGYZÉS:** A lekérdezések maximális támogatott hossza az alábbiak szerint alakul. Ha a lekérdezés meghaladja a határértéket, az az eredmény jelenik meg, hogy a lekérdezés nem módosult.
+<br /></br>**MEGJEGYZÉS:** A lekérdezések maximális támogatott hossza az alábbiak szerint alakul. Ha a lekérdezés túllépi a maximális hosszt, sem a lekérdezés, sem az eredmények nem változnak meg.
 <ul><li>130 karakter az en, de, es, fr, pl, pt, sv, ru, nl, nb, tr-tr, it, zh, ko nyelvkódokhoz. </li>
 <li>65 karakter a többi nyelvkódhoz</li></ul>
 

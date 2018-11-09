@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 2d22e995f489a6379a2f134b461b8bb17160919e
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: b85fe520bf29d10bb3dac1246349abbdadaf6df3
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113835"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158737"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>Oktatóanyag: Az Azure Stream Analytics üzembe helyezése IoT Edge-modulként (előzetes verzió)
 
-Számos IoT-megoldás alkalmaz elemzési szolgáltatásokat az IoT-eszközökről a felhőbe érkező adatok beható elemzéséhez. Az Azure IoT Edge segítségével az [Azure Stream Analytics][azure-stream]-logikát kihelyezheti magára az eszközre is. A telemetriastreamek peremeszközökön végzett feldolgozásával csökkenthető a feltöltött adatok mennyisége, valamint a gyakorlatban is használható elemzésekre való reagáláshoz szükséges idő.
+Számos IoT-megoldás alkalmaz elemzési szolgáltatásokat az IoT-eszközökről a felhőbe érkező adatok beható elemzéséhez. Az Azure IoT Edge segítségével az [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/)-logikát kihelyezheti magára az eszközre is. A telemetriastreamek peremeszközökön végzett feldolgozásával csökkenthető a feltöltött adatok mennyisége, valamint a gyakorlatban is használható elemzésekre való reagáláshoz szükséges idő.
 
 Az Azure IoT Edge és az Azure Stream Analytics integrációja révén az Azure Portalon létrehozhat Azure Stream Analytics-feladatokat, majd további kód írása nélkül üzembe helyezheti azokat az IoT Edge-modulokon.  
 
@@ -207,7 +207,7 @@ Ebben az oktatóanyagban két modult helyezhet üzembe. Az első a **tempSensor*
 
     Látható, hogy az új Stream Analytics-modul az IoT Edge-ügynökmodullal és az IoT Edge-központtal együtt fut.
 
-    ![A modul kimenete][7]
+    ![A modul kimenete](./media/tutorial-deploy-stream-analytics/module_output2.png)
 
 ## <a name="view-data"></a>Adatok megtekintése
 
@@ -219,7 +219,7 @@ Most az IoT Edge-eszközre lépve ellenőrizze az Azure Stream Analytics-modul �
    iotedge list  
    ```
 <!--
-   ![Docker output][8]
+   ![Docker output](./media/tutorial-deploy-stream-analytics/docker_output.png)
 -->
 1. Tekintse át az összes rendszernaplót és metrikaadatot. Használja a Stream Analytics-modul nevét:
 
@@ -229,7 +229,7 @@ Most az IoT Edge-eszközre lépve ellenőrizze az Azure Stream Analytics-modul �
 
 Látnia kell, ahogy a géphőmérséklete folyamatosan emelkedik, amíg valamelyik 30 másodperces ablakban eléri a 70 fokot. A Stream Analytics-modul ekkor kiváltja a rendszer alaphelyzetbe állítását, és a géphőmérséklet visszaáll 21 fokra. 
 
-   ![Docker-napló][9]
+   ![Docker-napló](./media/tutorial-deploy-stream-analytics/docker_log.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 
@@ -247,29 +247,4 @@ Ellenkező esetben a díjak elkerülése érdekében törölheti a jelen cikkben
 Ebben az oktatóanyagban egy Azure Stream Analytics-feladatot hozott létre az IoT Edge-eszközből származó adatok elemzéséhez. Ezután letöltötte az Azure Stream Analytics-modult az IoT Edge-eszközre, hogy helyileg lehessen feldolgozni és megválaszolni a hőmérséklet-növekedési adatokat, valamint az összesített adatstreamet a felhőbe feltölteni. A többi oktatóanyagra tovább lépve megtudhatja, hogyan lehet az Azure IoT Edge használatával egyéb üzleti megoldásokat létrehozni.
 
 > [!div class="nextstepaction"] 
-> [Azure Machine Learning-modell üzembe helyezése modulként][lnk-ml-tutorial]
-
-<!-- Images. -->
-[4]: ./media/tutorial-deploy-stream-analytics/add_device.png
-[5]: ./media/tutorial-deploy-stream-analytics/asa_job.png
-[6]: ./media/tutorial-deploy-stream-analytics/set_module.png
-[7]: ./media/tutorial-deploy-stream-analytics/module_output2.png
-[8]: ./media/tutorial-deploy-stream-analytics/docker_output.png
-[9]: ./media/tutorial-deploy-stream-analytics/docker_log.png
-[10]: ./media/tutorial-deploy-stream-analytics/storage_settings.png
-[11]: ./media/tutorial-deploy-stream-analytics/temp_module.png
-
-
-<!-- Links -->
-[lnk-what-is-iot-edge]: what-is-iot-edge.md
-[lnk-module-dev]: module-development.md
-[iot-hub-get-started-create-hub]: ../../includes/iot-hub-get-started-create-hub.md
-[azure-iot]: https://docs.microsoft.com/azure/iot-hub/
-[azure-storage]: https://docs.microsoft.com/azure/storage/
-[azure-stream]: https://docs.microsoft.com/azure/stream-analytics/
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-quickstart-win]: quickstart.md
-[lnk-quickstart-lin]: quickstart-linux.md
-[lnk-module-tutorial]: tutorial-csharp-module.md
-[lnk-ml-tutorial]: tutorial-deploy-machine-learning.md
-
+> [Azure Machine Learning-modell üzembe helyezése modulként](tutorial-deploy-machine-learning.md)

@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: quickstart
-ms.date: 10/18/2018
+ms.date: 10/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: aab248ac7c9adf7d996406ec35e0317594ce0b68
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: cc94e309db3fd0e97e06b5be5884a0b6e7337cea
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945018"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158975"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Rövid útmutató: Azure-fájlmegosztások létrehozása és felügyelete az Azure CLI-vel
 Ez az útmutató az [Azure-fájlmegosztások](storage-files-introduction.md) Azure CLI-vel történő használatának alapvető lépéseit mutatja be. Az Azure-fájlmegosztások nem különböznek más fájlmegosztásoktól, a tárolásuk azonban a felhőben történik, és az Azure platform nyújt számukra támogatást. Az Azure-fájlmegosztások támogatják az iparági szabvány SMB protokollt, és lehetővé teszik a több gép, alkalmazás és példány közötti fájlmegosztást. 
@@ -185,6 +185,80 @@ az storage file list \
 ```
 
 Bár az `az storage file copy start` parancs kényelmes megoldás a fájlok Azure-fájlmegosztások és Azure Blob Storage-tárolók közötti áthelyezéséhez, a nagyobb léptékű áthelyezésekhez az AzCopy használata ajánlott. (A nagyobb lépték alatt itt az áthelyezett fájlok nagyobb méretét és számát értjük.) További információ: [AzCopy segédprogram Linux rendszeren](../common/storage-use-azcopy-linux.md) és [AzCopy segédprogram Windows rendszeren](../common/storage-use-azcopy.md). Az AzCopyt helyileg kell telepíteni. Az AzCopy nem érhető el a Cloud Shellben. 
+
+## <a name="create-and-manage-share-snapshots"></a>Megosztási pillanatképek létrehozása és felügyelete
+Az Azure-fájlmegosztással végezhető egyik további hasznos feladat a megosztási pillanatképek létrehozása. A pillanatképek megőrzik az Azure-fájlmegosztások adott időpontban látható másolatát. A megosztási pillanatképek hasonlók néhány, esetleg már ismert operációsrendszer-technológiához:
+
+- [Logikaikötet-kezelő (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) pillanatképek Linux rendszerekhez
+- [Apple fájlrendszer (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) pillanatképek macOS rendszerhez
+- [Kötet árnyékmásolata szolgáltatás (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) Windows-fájlrendszerekhez (például NTFS és ReFS) A megosztási pillanatképek az [`az storage share snapshot`](/cli/azure/storage/share#az_storage_share_snapshot) paranccsal hozhatók létre:
+
+```azurecli-interactive
+SNAPSHOT=$(az storage share snapshot \
+    --account-name $STORAGEACCT \
+    --account-key $STORAGEKEY \
+    --name "myshare" \
+    --query "snapshot" | tr -d '"')
+```
+
+### <a name="browse-share-snapshot-contents"></a>Böngészés a megosztási pillanatképek tartalmában
+A megosztási pillanatképek tartalmában való böngészéshez illessze a rögzített megosztási pillanatkép időbélyegét az `az storage file list` parancs `$SNAPSHOT` változójába:
+
+```azurecli-interactive
+az storage file list \
+    --account-name $STORAGEACCT \
+    --account-key $STORAGEKEY \
+    --share-name "myshare" \
+    --snapshot $SNAPSHOT \
+    --output table
+```
+
+### <a name="list-share-snapshots"></a>Megosztási pillanatképek felsorolása
+A következő paranccsal tekintheti meg a megosztásról készített pillanatképek listáját:
+
+```azurecli-interactive
+az storage share list \
+    --account-name $STORAGEACCT \
+    --account-key $STORAGEKEY \
+    --include-snapshot \
+    --query "[? name=='myshare' && snapshot!=null]" | tr -d '"'
+```
+
+### <a name="restore-from-a-share-snapshot"></a>Visszaállítás megosztási pillanatképből
+A fájlokat a korábban már használt `az storage file copy start` paranccsal állíthatja vissza. Először törölje a feltöltött SampleUpload.txt fájlt, hogy visszaállíthassa a pillanatképből:
+
+```azurecli-interactive
+# Delete SampleUpload.txt
+az storage file delete \
+    --account-name $STORAGEACCT \
+    --account-key $STORAGEKEY \
+    --share-name "myshare" \
+    --path "myDirectory/SampleUpload.txt"
+ # Build the source URI for a snapshot restore
+URI=$(az storage account show \
+    --resource-group "myResourceGroup" \
+    --name $STORAGEACCT \
+    --query "primaryEndpoints.file" | tr -d '"')
+ URI=$URI"myshare/myDirectory/SampleUpload.txt?sharesnapshot="$SNAPSHOT
+ # Restore SampleUpload.txt from the share snapshot
+az storage file copy start \
+    --account-name $STORAGEACCT \
+    --account-key $STORAGEKEY \
+    --source-uri $URI \
+    --destination-share "myshare" \
+    --destination-path "myDirectory/SampleUpload.txt"
+```
+
+### <a name="delete-a-share-snapshot"></a>Megosztási pillanatkép törlése
+A megosztási pillanatképek az [`az storage share delete`](/cli/azure/storage/share#az_storage_share_delete) paranccsal törölhetők. Használja a `--snapshot` paraméterre mutató `$SNAPSHOT` hivatkozást tartalmazó változót:
+
+```azurecli-interactive
+az storage share delete \
+    --account-name $STORAGEACCT \
+    --account-key $STORAGEKEY \
+    --name "myshare" \
+    --snapshot $SNAPSHOT
+```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Amikor végzett, az [`az group delete`](/cli/azure/group#delete) paranccsal távolítsa el az erőforráscsoportot és az összes kapcsolódó erőforrást: 

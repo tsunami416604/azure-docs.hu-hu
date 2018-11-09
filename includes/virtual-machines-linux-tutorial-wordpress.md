@@ -1,12 +1,25 @@
-## <a name="install-wordpress"></a>WordPress telepítése
+---
+author: cynthn
+ms.service: virtual-machines-linux
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 5df1f7ff44a1603dd03d1d803ae9960dc124781e
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226810"
+---
+## <a name="install-wordpress"></a>A WordPress telepítése
 
-Ha ki szeretné próbálni a Jegyzettömböt, a minta-alkalmazások telepítése. Tegyük fel, a következő lépéseket a nyílt forráskódú telepítése [WordPress](https://wordpress.org/) platform webhelyek és blogok létrehozásához. Más munkaterhelésekhez, próbálja meg a következők [Drupal](http://www.drupal.org) és [Moodle](https://moodle.org/). 
+Ha ki szeretné próbálni a vermet, telepítsen egy mintaalkalmazást. Például a következő lépésekkel telepíthető a nyílt forráskódú [WordPress](https://wordpress.org/) platform, amellyel webhelyeket és blogokat hozhat létre. Emellett más számítási feladatokat (például [Drupal](http://www.drupal.org) és [Moodle](https://moodle.org/)) is kipróbálhat. 
 
-A WordPress-telepítő csak a koncepció igazolása szolgál. A legújabb WordPress telepítése éles ajánlott biztonsági beállításokkal, tekintse meg a [WordPress dokumentáció](https://codex.wordpress.org/Main_Page). 
+Ez a WordPress-telepítés csak a működés ellenőrzésére szolgál. A WordPress legfrissebb verziójának az ajánlott biztonsági beállításokkal való telepítéséhez tekintse meg [a WordPress dokumentációját](https://codex.wordpress.org/Main_Page). 
 
 
 
-### <a name="install-the-wordpress-package"></a>A WordPress telepítéséhez
+### <a name="install-the-wordpress-package"></a>A WordPress-csomag telepítése
 
 Futtassa az alábbi parancsot:
 
@@ -16,15 +29,15 @@ sudo apt install wordpress
 
 ### <a name="configure-wordpress"></a>A WordPress konfigurálása
 
-WordPress MySQL és a PHP használatára konfigurálja.
+A WordPress konfigurálása a MySQL és a PHP használatához.
 
-Egy munkakönyvtárba, hozzon létre egy szövegfájlt `wordpress.sql` WordPress a MySQL-adatbázis konfigurálása: 
+Egy munkakönyvtárban hozzon létre egy `wordpress.sql` szövegfájlt a MySQL-adatbázis konfigurálásához a WordPresshez: 
 
 ```bash
 sudo sensible-editor wordpress.sql
 ```
 
-Adja hozzá a következő parancsokat, és az Ön által választott, az adatbázis jelszó *yourPassword* (hagyja változatlanul más értékek). Ha korábban állít be egy MySQL-biztonsági házirend ellenőrzése a jelszó erőssége, győződjön meg arról, hogy a jelszó erőssége megfelel. Mentse a fájlt.
+Adja hozzá az alábbi parancsokat, és cserélje le a *yourPassword* kifejezést a választott adatbázisjelszóra (a többi értéket hagyja változatlanul). Ha előzőleg beállított egy MySQL biztonsági szabályzatot a jelszó erősségének ellenőrzésére, győződjön meg róla, hogy a jelszó megfelel a jelszóerősségi követelményeknek. Mentse a fájlt.
 
 ```sql
 CREATE DATABASE wordpress;
@@ -35,24 +48,24 @@ IDENTIFIED BY 'yourPassword';
 FLUSH PRIVILEGES;
 ```
 
-A következő parancsot az adatbázis létrehozásához:
+Futtassa az alábbi parancsot az adatbázis létrehozásához:
 
 ```bash
 cat wordpress.sql | sudo mysql --defaults-extra-file=/etc/mysql/debian.cnf
 ```
 
-Mivel a fájl `wordpress.sql` tartalmazza az adatbázis hitelesítő adatai, a törlés után használja:
+Mivel a `wordpress.sql` fájl tartalmazza az adatbázis hitelesítő adatait, a használat után érdemes törölnie:
 
 ```bash
 sudo rm wordpress.sql
 ```
 
-A PHP konfigurálásához futtassa a következő parancsot, nyisson meg egy szövegszerkesztőt, az Ön által választott, és a fájl létrehozásához `/etc/wordpress/config-localhost.php`:
+A PHP konfigurálásához futtassa az alábbi parancsot, amellyel megnyitja a tetszés szerinti szövegszerkesztőt, és létrehozza az `/etc/wordpress/config-localhost.php` fájlt:
 
 ```bash
 sudo sensible-editor /etc/wordpress/config-localhost.php
 ```
-Másolja a következő sorokat a fájlt, és a WordPress adatbázis jelszó *yourPassword* (hagyja változatlanul más értékek). Ezután mentse a fájlt.
+Adja hozzá az alábbi sorokat a fájlhoz, és cserélje le a *yourPassword* kifejezést a saját WordPress-adatbázisa jelszavára (a többi értéket hagyja változatlanul). Ezután mentse a fájlt.
 
 ```php
 <?php
@@ -65,7 +78,7 @@ define('WP_CONTENT_DIR', '/usr/share/wordpress/wp-content');
 ```
 
 
-Helyezze át a WordPress telepítése a web server dokumentumgyökér:
+Helyezze át a WordPress-telepítést a webkiszolgáló dokumentum gyökérmappájába:
 
 ```bash
 sudo ln -s /usr/share/wordpress /var/www/html/wordpress
@@ -73,6 +86,6 @@ sudo ln -s /usr/share/wordpress /var/www/html/wordpress
 sudo mv /etc/wordpress/config-localhost.php /etc/wordpress/config-default.php
 ```
 
-Most már a WordPress beállításának befejezése és közzététele a platformon. Nyisson meg egy böngészőt, és navigáljon `http://yourPublicIPAddress/wordpress`. Helyettesítse be a virtuális gép nyilvános IP-címét. Ez a rendszerkép hasonlóan kell kinéznie.
+Most végezze el a WordPress beállítását, és tegye közzé a platformon. Nyissa meg a böngészőt, és lépjen a `http://yourPublicIPAddress/wordpress` webhelyre. Helyettesítse be a virtuális gép nyilvános IP-címét. Ennek a képen láthatóhoz hasonlóan kell kinéznie.
 
-![WordPress telepítése oldal](./media/virtual-machines-linux-tutorial-wordpress/wordpressstartpage.png)
+![A WordPress telepítési oldala](./media/virtual-machines-linux-tutorial-wordpress/wordpressstartpage.png)

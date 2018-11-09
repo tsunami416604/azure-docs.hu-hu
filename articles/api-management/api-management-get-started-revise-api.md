@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: c1c884e05d357db7e23574dbd31f206d6c3fe23c
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 757c710ddca72ec6a1383b51a8b536d196e6cb8c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "41920036"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414469"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Változatok használata a nem kompatibilitástörő változások biztonságos elvégzéséhez
 Amikor az API készen áll, és a fejlesztők elkezdik a használatát, előbb-utóbb módosításokat kell végeznie az API-n, miközben nem akadályozza az API hívóit. Emellett az is hasznos, ha a fejlesztők értesülnek az elvégzett módosításokról. Az Azure API Managementben ez a **változatok** használatával valósítható meg. További információ: [Verziók és változatok](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) és [API-k verziókezelése az Azure API Managementtel](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/).
@@ -36,10 +36,13 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
++ Az [Azure API Management terminológiájának](api-management-terminology.md) ismerete.
 + Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
 + Végezze el a következő oktatóanyagot is: [Az első API importálása és közzététele](import-and-publish.md).
 
 ## <a name="add-a-new-revision"></a>Új változat hozzáadása
+
+![API-változat hozzáadása](media/api-management-getstarted-revise-api/07-AddRevisions-01-AddNewRevision.png)
 
 1. Kattintson az **API-k** fülre.
 2. Válassza a **Demo Conference API** lehetőséget az API-k listájából (vagy bármely egyéb API-t, amelyhez változatokat kíván hozzáadni).
@@ -48,8 +51,6 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
     > [!TIP]
     > Az API helyi menüjében (**...**) található **Változat hozzáadása** lehetőséget is választhatja.
-    
-    ![A képernyő felső részén található Változatok menü](media/api-management-getstarted-revise-api/TopMenu.PNG)
 
 5. Adja meg az új változat leírását, amely alapján emlékezni fog a változat funkciójára.
 6. Kattintson a **Létrehozás** elemre.
@@ -59,6 +60,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     > Az eredeti API az **1. változatban** marad. A felhasználók ezt a változatot hívják egészen addig, amíg Ön nem tesz aktuálissá egy másik változatot.
 
 ## <a name="make-non-breaking-changes-to-your-revision"></a>Nem kompatibilitástörő változások végrehajtása a változaton
+
+![Változat módosítása](media/api-management-getstarted-revise-api/07-AddRevisions-02-MakeChanges.png)
 
 1. Válassza a **Demo Conference API** lehetőséget az API-k listájából.
 2. Kattintson a képernyő felső részén található **Tervezés** fülre.
@@ -78,6 +81,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 1. Kattintson a **Változatok** fülre az oldal felső részén található menüben.
 
     ![A változatok képernyőn található változatok menü.](media/api-management-getstarted-revise-api/RevisionsMenu.PNG)
+
 2. Nyissa meg a **2. változat** helyi menüjét (**...**).
 3. Kattintson a **Legyen ez az aktuális** elemre.
 4. Jelölje be a **Közzététel az API nyilvános módosításnaplójában** beállítást, ha megjegyzéseket kíván közzétenni erről a módosításról. Adja meg a módosítás leírását a fejlesztőknek, például **Változatok tesztelése. Új „test” művelet hozzáadva.**

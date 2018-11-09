@@ -4,21 +4,21 @@ description: Az Azure Resource Graph-fal bizonyos alapszintű lekérdezéseket f
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/22/2018
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: ba3df8f0f7fa0443e64972647b6f146f756e62d6
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: d5b2bb719bcd5c2145740a02bc408385953ff739
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646628"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50084530"
 ---
 # <a name="starter-resource-graph-queries"></a>Alapszintű Resource Graph-lekérdezések
 
-Az Azure Resource Graph-fal végzett lekérdezések megértéséhez először a [lekérdezés nyelvét](../concepts/query-language.md) kell alapszinten megismernie. Ha még nem ismeri az [Azure Data Explorert](../../../data-explorer/data-explorer-overview.md), javasoljuk, hogy a keresett erőforrásokra vonatkozó kérések összeállításának megértéséhez tekintse át az alapokat.
+Az Azure Resource Graph-fal végzett lekérdezések megértéséhez először a [lekérdezés nyelvét](../concepts/query-language.md) kell alapszinten megismernie. Ha még nem ismeri az [Azure Data Explorert](../../../data-explorer/data-explorer-overview.md), javasoljuk, hogy tekintse át az alapokat a keresett erőforrásokra vonatkozó kérések összeállításának megértéséhez.
 
 A következő alapszintű lekérdezéseken vezetjük végig:
 
@@ -42,7 +42,7 @@ Az Azure Resource Graph-ot az Azure CLI (bővítményen keresztül) és az Azure
 
 ## <a name="count-resources"></a>Az Azure-erőforrások száma
 
-Ez a lekérdezés az Ön által elérhető előfizetésekben lévő Azure-erőforrások számát adja vissza. Ez a lekérdezés emellett annak ellenőrzésére is jól használható, hogy a kiválasztott parancshéj rendelkezik-e a megfelelő, működő sorrendben telepített Azure Resource Graph-összetevőkkel.
+Ez a lekérdezés az Ön által elérhető előfizetésekben lévő Azure-erőforrások számát adja vissza. Ez a lekérdezés emellett annak ellenőrzésére is jól használható, hogy a kiválasztott parancshéj rendelkezik-e a megfelelő, telepített és működőképes Azure Resource Graph-összetevőkkel.
 
 ```Query
 summarize count()
@@ -58,7 +58,7 @@ Search-AzureRmGraph -Query "summarize count()"
 
 ## <a name="list-resources"></a>Az erőforrások listája név szerint rendezve
 
-Ez a lekérdezés bármely erőforrástípusra vagy adott egyező tulajdonságra való korlátozás nélkül csak az Azure-erőforrások **nevét**, **típusát** és **helyét** adja vissza, de használhatja az `order by` paramétert a **név** tulajdonság szerinti növekvő (`asc`) sorrendű rendezésükhöz.
+Ez a lekérdezés bármilyen típusú erőforrást vissza tud adni, de csak a **név**, **típus** és **hely** tulajdonságokkal. Az `order by` paranccsal rendezi a tulajdonságokat a **név** tulajdonság alapján növekvő (`asc`) sorrendben.
 
 ```Query
 project name, type, location
@@ -75,8 +75,7 @@ Search-AzureRmGraph -Query "project name, type, location | order by name asc"
 
 ## <a name="show-vms"></a>Az összes virtuális gép megjelenítése név szerint rendezve, csökkenő sorrendben
 
-Ha az összes Azure-erőforrás listája helyett csak a virtuális gépek listáját szeretnénk megkapni (amelyek típusa `Microsoft.Compute/virtualMachines`), a **típus** tulajdonság egyezését is megadhatjuk az eredményekhez.
-Az előző lekérdezéshez hasonlóan a `desc` paraméter az `order by` paramétert csökkenő sorrendre módosítja. A típusegyezésben megadott `=~` esetén a Resource Graph megkülönbözteti a kis- és a nagybetűt.
+Ha csak a (`Microsoft.Compute/virtualMachines` típusú) virtuális gépeket kívánja listázni, megfeleltetheti a **típus** tulajdonságot az eredmények között. Az előző lekérdezéshez hasonlóan a `desc` paraméter az `order by` paramétert csökkenő sorrendre módosítja. A típusegyezésben megadott `=~` esetén a Resource Graph megkülönbözteti a kis- és a nagybetűt.
 
 ```Query
 project name, location, type
@@ -165,7 +164,8 @@ Search-AzureRmGraph -Query "where type contains 'storage' | distinct type"
 
 ## <a name="list-publicip"></a>Az összes nyilvános IP-cím listázása
 
-Az előző lekérdezéshez hasonlóan minden olyan elemet megtalál, amelynek a típusa tartalmazza a **publicIPAddresses** szót. Ez a lekérdezés úgy bővül ki, hogy kizárja azokat az eredményeket, amelyeknél a **properties.ipAddress** értéke null, hogy csak a **properties.ipAddress** értékkel rendelkezőket adja vissza, és az eredményeket az első 100-ra korlátozza (`limit`). A kiválasztott parancshéjtól függően szükség lehet az idézőjelek escape-elésére.
+Az előző lekérdezéshez hasonlóan minden olyan elemet megtalál, amelynek a típusa tartalmazza a **publicIPAddresses** sztringet.
+Ez a lekérdezés úgy bővül ki, hogy kizárja azokat az eredményeket, amelyeknél a **properties.ipAddress** értéke null, hogy csak a **properties.ipAddress** értékkel rendelkezőket adja vissza, és az eredményeket az első 100-ra korlátozza (`limit`). A kiválasztott parancshéjtól függően szükség lehet az idézőjelek escape-elésére.
 
 ```Query
 where type contains 'publicIPAddresses' and properties.ipAddress != ''
@@ -215,7 +215,7 @@ az graph query -q "where tags.environment=~'internal' | project name"
 Search-AzureRmGraph -Query "where tags.environment=~'internal' | project name"
 ```
 
-Ha annak megadására is szükség volt, hogy az erőforrás milyen címkékkel rendelkezik, és melyek ezek értékei, ez a példa kibővíthető úgy, hogy hozzáadjuk a **tags** tulajdonságot a `project` kulcsszóhoz.
+Az erőforrás címkéinek és a hozzájuk tartozó értékek megadásához adja hozzá a **tags** tulajdonságot a `project` kulcsszóhoz.
 
 ```Query
 where tags.environment=~'internal'
@@ -232,7 +232,7 @@ Search-AzureRmGraph -Query "where tags.environment=~'internal' | project name, t
 
 ## <a name="list-specific-tag"></a>Az adott címkeértékkel rendelkező összes tárfiók listázása
 
-Ha az előző példában szereplő szűrési lehetőséget kombináljuk az Azure-erőforrás típusa szerinti szűréssel a **type** tulajdonság használatával, a keresést adott címkenévvel és értékkel rendelkező, adott típusú Azure-erőforrásokra korlátozhatjuk.
+Kombinálhatja az előző példa szűrőfunkcióját, és **type** tulajdonság alapján szűrheti az Azure-erőforrásokat. Ez a lekérdezés az Azure-erőforrások adott típusainak keresését is adott címkenévre és -értékre korlátozza.
 
 ```Query
 where type =~ 'Microsoft.Storage/storageAccounts'

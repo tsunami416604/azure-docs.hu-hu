@@ -63,7 +63,7 @@ A Standard Load Balancer csak a szabványos nyilvános IP-címeket támogatja. H
 
 ## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
 
-Ebben a szakaszban egy új virtuális hálózatot hozhat létre. Két, ugyanebben zónában (azaz az 1. zónában) lévő virtuális gépet is létrehoz hata régió számára, hogy hozzáadja a terheléselosztója háttérkészletéhez. Ezután a virtuális gépeken telepítheti az IIS-t a zóna redundáns terheléselosztó teszteléséhez. Ha az egyik virtuális gép meghiúsul, az azonos zónában lévő virtuális gép állapot-ellenőrzése is meghiúsul. A forgalmat továbbra is a zónában található más virtuális gépek szolgáltatják.
+Ebben a szakaszban egy új virtuális hálózatot hozhat létre. Két, ugyanebben zónában (azaz az 1. zónában) lévő virtuális gépet is létrehoz hata régió számára, hogy hozzáadja a terheléselosztója háttérkészletéhez. Ezután a virtuális gépeken telepítheti az IIS-t a zónaredundáns terheléselosztó teszteléséhez. Ha az egyik virtuális gép meghiúsul, az azonos zónában lévő virtuális gép állapot-ellenőrzése is meghiúsul. A forgalmat továbbra is a zónában található más virtuális gépek szolgáltatják.
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 1. A képernyő bal felső sarkában kattintson az **Erőforrás létrehozása** > **Hálózat** > **virtuális hálózat** elemre.  Adja meg a következő értékeket a virtuális hálózat számára:

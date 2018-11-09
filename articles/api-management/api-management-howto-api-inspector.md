@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: cf9c56fa2ba75dc5b5ad4af59d111a0124f1a9df
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ff3dde8ac95b678866ba6f5216ba23357b067765
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39057327"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415882"
 ---
 # <a name="debug-your-apis-using-request-tracing"></a>API-k hibakeresése kérelmek nyomkövetésének használatával
 
@@ -34,18 +34,19 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
++ Az [Azure API Management terminológiájának](api-management-terminology.md) ismerete.
 + Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
 + Végezze el a következő oktatóanyagot is: [Az első API importálása és közzététele](import-and-publish.md).
 
 ## <a name="trace-a-call"></a>Hívás nyomon követése
 
+![API-nyomkövetés](media/api-management-howto-api-inspector/06-DebugYourAPIs-01-TraceCall.png)
+
 1. Válassza az **API-k** lehetőséget.
 2. Kattintson a **Demo Conference API** elemre az API-k listájában.
-3. Válassza a **GetSpeakers** műveletet.
-4. Váltson a **Teszt** lapra.
+3. Váltson a **Teszt** lapra.
+4. Válassza a **GetSpeakers** műveletet.
 5. Győződjön meg róla, hogy egy **Ocp-Apim-Trace** elnevezésű HTTP-fejlécet is belefoglal, amely a **true** (igaz) értékre van állítva.
-
-    ![API nyomkövetési fejléc](media/api-management-howto-api-inspector/api-management-tracing-header.png)
 
     > [!NOTE]
     > Ha az Ocp-Apim-Subscription-Key nincs automatikusan kitöltve, akkor a fejlesztői portálon, a profiloldalon a kulcsok felfedésével szerezheti be.
@@ -57,9 +58,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     A **bejövő** szakaszban láthatja az API Management által a hívótól fogadott eredeti kérést, valamint a kérésre alkalmazott összes szabályzatot, beleértve a 2. lépésben hozzáadott sebességkorlát- és fejlécbeállítás-szabályzatot.
 
     A **háttér** szakaszban az API Management által az API háttérmodulnak küldött kérések és a kapott válaszok láthatók.
-    
+
     A **kimenő** szakaszban a válaszra annak a hívónak való visszaküldését megelőzően alkalmazott szabályzatok láthatók.
- 
+
     > [!TIP]
     > Az egyes lépések a hívás az API Management által való fogadása óta eltelt időt is mutatják.
 

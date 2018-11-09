@@ -10,21 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/18/2018
+ms.date: 10/30/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 552b39c520396942fa81f963c0cfa1c8c7b47db4
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 325071be56935ca02adccf69f99fa1718e3f7b91
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456966"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239423"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Oktatóanyag: Feltételek használata az Azure Resource Manager-sablonokban
 
-Megtudhatja, hogyan helyezhet üzembe Azure-erőforrásokat feltételek alapján. 
+Megtudhatja, hogyan helyezhet üzembe Azure-erőforrásokat feltételek alapján.
 
-Az ebben az oktatóanyagban használt forgatókönyv a [függő erőforrásokkal ellátott Azure Resource Manager-sablonok létrehozását ismertető oktatóanyagban](./resource-manager-tutorial-create-templates-with-dependent-resources.md) szereplőhöz hasonló. Az oktatóanyagban található utasításokkal egy virtuális gépet, egy virtuális hálózatot és egyéb függő erőforrásokat, köztük egy tárfiókot fog létrehozni. Ahelyett, hogy minden alkalommal egy új tárfiókot kellene létrehozni, megengedheti a felhasználóknak, hogy maguk döntsék el, új tárfiókot hoznak létre vagy egy meglévőt használnak. Ehhez egy további paramétert kell meghatároznia. Ha a paraméter értéke „új”, akkor a rendszer új tárfiókot hoz létre.
+Az [erőforrások üzembehelyezési sorrendjének beállítását](./resource-manager-tutorial-create-templates-with-dependent-resources.md) ismertető oktatóanyagban egy virtuális gépet, egy virtuális hálózatot és egyéb függő erőforrásokat fog létrehozni, például egy tárfiókot. Ahelyett, hogy minden alkalommal egy új tárfiókot kellene létrehozni, megengedheti a felhasználóknak, hogy maguk döntsék el, új tárfiókot hoznak létre vagy egy meglévőt használnak. Ehhez egy további paramétert kell meghatároznia. Ha a paraméter értéke „új”, akkor a rendszer új tárfiókot hoz létre.
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -40,7 +40,13 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
-* [Visual Studio Code](https://code.visualstudio.com/) [Resource Manager Tools bővítménnyel](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)
+* [Visual Studio Code](https://code.visualstudio.com/) [Resource Manager Tools bővítménnyel](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+* A nagyobb biztonság érdekében használjon automatikusan létrehozott jelszót a virtuális gép rendszergazdai fiókjához. Íme egy példa jelszó automatikus létrehozására:
+
+    ```azurecli-interactive
+    openssl rand -base64 32
+    ```
+    Az Azure Key Vault funkciója a titkosítási kulcsok és egyéb titkos kulcsok biztonságos megőrzése. További információkért lásd [Oktatóanyag: Az Azure Key Vault integrálása a Resource Manager-sablon üzembehelyezési folyamatába](./resource-manager-tutorial-use-key-vault.md). Javasoljuk továbbá, hogy a jelszót három havonta frissítse.
 
 ## <a name="open-a-quickstart-template"></a>Gyorsindítási sablon megnyitása
 
@@ -53,7 +59,16 @@ Az Azure-beli gyorsindítási sablonok a Resource Manager-sablonok adattárakén
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 3. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt.
-4. A **File** (Fájl) > **Save As** (Mentés másként) kiválasztásával mentheti a fájl egy másolati példányát a helyi számítógépre, **azuredeploy.json** néven.
+4. A sablon öt erőforrást határoz meg:
+
+    * `Microsoft.Storage/storageAccounts`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
+    * `Microsoft.Network/publicIPAddresses`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
+    * `Microsoft.Network/virtualNetworks`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
+    * `Microsoft.Network/networkInterfaces`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
+    * `Microsoft.Compute/virtualMachines`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+
+    Érdemes megismerkedni a sablon alapvető működésével, mielőtt megkezdi annak testreszabását.
+5. A **File** (Fájl) > **Save As** (Mentés másként) kiválasztásával mentheti a fájl egy másolati példányát a helyi számítógépre, **azuredeploy.json** néven.
 
 ## <a name="modify-the-template"></a>A sablon módosítása
 
@@ -61,6 +76,8 @@ A meglévő sablont két helyen kell módosítania:
 
 * Adjon hozzá egy tárfióknév paramétert. A felhasználók megadhatnak egy új tárfióknevet vagy egy meglévő tárfiók nevét is.
 * Adjon hozzá egy új, **newOrExisting** nevű paramétert. Az üzemelő példány e paraméter alapján határozza meg, hogy mikor hozzon létre új tárfiókot, és mikor használjon egy meglévőt.
+
+A következő eljárással hajthatja végre a módosításokat:
 
 1. Nyissa meg az **azuredeploy.json** fájlt a Visual Studio Code-ban.
 2. Cserélje le a **variables('storageAccountName')** kifejezést a **parameters('storageAccountName')** kifejezésre a teljes sablonban.  A **variables('storageAccountName')** kifejezés három helyen szerepel.
@@ -74,7 +91,7 @@ A meglévő sablont két helyen kell módosítania:
     ```json
     "storageAccountName": {
       "type": "string"
-    },    
+    },
     "newOrExisting": {
       "type": "string", 
       "allowedValues": [
@@ -112,22 +129,26 @@ A meglévő sablont két helyen kell módosítania:
 
 Kövesse [a sablon üzembe helyezését](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) ismertető témakörben található utasításokat a sablon üzembe helyezéséhez.
 
-A sablon Azure PowerShell használatával történő üzembe helyezésekor egy további paramétert kell megadnia:
+A sablon Azure PowerShell használatával történő üzembe helyezésekor egy további paramétert kell megadnia. A nagyobb biztonság érdekében használjon automatikusan létrehozott jelszót a virtuális gép rendszergazdai fiókjához. Lásd: [Előfeltételek](#prerequisites).
 
 ```azurepowershell
+$deploymentName = Read-Host -Prompt "Enter the name for this deployment"
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
 $storageAccountName = Read-Host -Prompt "Enter the storage account name"
 $newOrExisting = Read-Host -Prompt "Create new or use existing (Enter new or existing)"
 $location = Read-Host -Prompt "Enter the Azure location (i.e. centralus)"
 $vmAdmin = Read-Host -Prompt "Enter the admin username"
-$vmPassword = Read-Host -Prompt "Enter the admin password"
+$vmPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
 $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS Label prefix"
 
 New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-$vmPW = ConvertTo-SecureString -String $vmPassword -AsPlainText -Force
-New-AzureRmResourceGroupDeployment -Name mydeployment1018 -ResourceGroupName $resourceGroupName `
-    -adminUsername $vmAdmin -adminPassword $vmPW `
-    -dnsLabelPrefix $dnsLabelPrefix -storageAccountName $storageAccountName -newOrExisting $newOrExisting `
+New-AzureRmResourceGroupDeployment -Name $deploymentName `
+    -ResourceGroupName $resourceGroupName `
+    -adminUsername $vmAdmin `
+    -adminPassword $vmPassword `
+    -dnsLabelPrefix $dnsLabelPrefix `
+    -storageAccountName $storageAccountName `
+    -newOrExisting $newOrExisting `
     -TemplateFile azuredeploy.json
 ```
 
@@ -147,7 +168,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy olyan sablont fog összeállítani, amellyel a felhasználók maguk dönthetik el, hogy új tárfiókot hoznak létre, vagy egy meglévőt használnak. A jelen oktatóanyagban létrehozott virtuális gép használatához rendszergazdai felhasználónév és jelszó megadása szükséges. Ahelyett, hogy a jelszót az üzembe helyezés közben adná át, az Azure Key Vault segítségével előzetesen is tárolhatja, így az üzembe helyezéskor csak le kell kérnie azt. Ha szeretné megtudni, hogyan kérheti le az Azure Key Vaultban tárolt titkos kódokat, és hogyan használhatja azokat sablonok üzembe helyezésekor, tekintse meg a következőt:
+Ebben az oktatóanyagban egy olyan sablont állított össze, amellyel a felhasználók maguk dönthetik el, hogy új tárfiókot hoznak létre, vagy egy meglévőt használnak. Ha szeretné megtudni, hogyan kérheti le az Azure Key Vaultban tárolt titkos kódokat, és hogyan használhatja azokat jelszóként sablonok üzembe helyezésekor, tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
 > [A Key Vault integrálása a sablonok üzembe helyezésekor](./resource-manager-tutorial-use-key-vault.md)

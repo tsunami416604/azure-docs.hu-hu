@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/27/2018
+ms.date: 10/25/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 9b13b8ae0b64dc84e476f5fc5da59ea30702fd8d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0c865b8bc129f4f2809f2dbb09a836efe4cee3d9
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639027"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093040"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Oktatóanyag: Két virtuális gép közötti hálózati kommunikáció monitorozása az Azure Portal használatával
 
@@ -30,6 +30,7 @@ A virtuális gépek és a végpontok (pl. egy másik virtuális gép) közötti 
 > [!div class="checklist"]
 > * Két virtuális gép létrehozása
 > * Virtuális gépek közötti kommunikáció monitorozása a Network Watcher kapcsolatfigyelő funkciójával
+> * Riasztások létrehozása a kapcsolatfigyelő metrikáin
 > * Virtuális gépek közötti kommunikációs probléma diagnosztizálása és a megoldás megismerése
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
@@ -120,6 +121,19 @@ Hozzon létre egy kapcsolatfigyelőt a *myVm1* és a *myVm2* virtuális gép kö
     | ÁTL. ADATVÁLTÁS          | A kapcsolat adatváltási idejét jelzi ezredmásodpercben. A kapcsolatfigyelő 60 másodpercenként teszteli a kapcsolatot, így a késést az idő függvényében is monitorozhatja.                                         |
     | Ugrások                     | A kapcsolatfigyelő jelzi a két végpont közötti ugrásokat. Eben a példában a kapcsolat két, azonos virtuális hálózaton található virtuális gép között jött létre, ezért csak egy ugrásra van szükség a 10.0.0.5 IP-címre. Ha bármilyen meglévő rendszer vagy egyéni útvonal átirányítja a forgalmat a virtuális gépek között egy VPN-átjárón vagy egy hálózati virtuális berendezésen keresztül, további ugrásokra lesz szükség.                                                                                                                         |
     | ÁLLAPOT                   | A végpontok melletti zöld pipák jelzik, hogy a végpontok kifogástalan állapotúak.    ||
+
+## <a name="generate-alerts"></a>Riasztások létrehozása
+
+A riasztásokat riasztási szabályok hozzák létre az Azure Monitorban, és rendszeres időközönként automatikusan mentett lekérdezéseket vagy egyéni naplókereséseket futtathatnak. A létrehozott riasztások automatikusan futtathatnak egy vagy több műveletet, például értesíthetnek valakit, vagy elindíthatnak egy másik folyamatot. Riasztási szabály beállításakor a megcélzott erőforrás határozza meg a riasztások létrehozásához használható elérhető metrikák listáját.
+
+1. Az Azure Portalon válassza a **Monitor** szolgáltatást, majd válassza a **Riasztások** > **Új riasztási szabály** elemet.
+2. Kattintson a **Cél kiválasztása** elemre, majd válassza ki a megcélozni kívánt erőforrásokat. Válassza ki az **előfizetést**, majd adja meg az **erőforrás típusát** a használni kívánt Kapcsolatfigyelő kiszűréséhez.
+
+    ![riasztási képernyő a kiválasztott céllal](./media/connection-monitor/set-alert-rule.png)
+1. A megcélozni kívánt erőforrás kiválasztása után válassza a **Feltételek hozzáadása** elemet. A Network Watcher olyan [metrikákkal rendelkezik, amelyeken riasztásokat hozhat létre](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts#metrics-and-dimensions-supported). Állítsa be az **elérhető jeleket** a ProbesFailedPercent és az AverageRoundtripMs metrikáin:
+
+    ![riasztás oldal kiválasztott jelekkel](./media/connection-monitor/set-alert-signals.png)
+1. Adja meg a riasztás részleteit, például a riasztási szabály nevét, a leírását és a súlyosságát. Egy műveletcsoportot is hozzáadhat a riasztáshoz a riasztás válaszának automatizálása és testreszabása érdekében.
 
 ## <a name="view-a-problem"></a>Probléma megtekintése
 

@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: Carlrab
 manager: craigg
 ms.date: 09/23/2018
-ms.openlocfilehash: c0c249ffe426e86049024122d9cbf786bb677220
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ebdb78a762aa212566395734804b9c021e84e6cd
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160638"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140874"
 ---
 # <a name="create-an-azure-sql-database-managed-instance"></a>Felügyelt Azure SQL Database-példány létrehozása
 
@@ -89,3 +89,4 @@ Az üzembe helyezés sikeres befejezése után tekintse át a létrehozott erőf
   - Rövid útmutató arról, hogyan csatlakozhat felügyelt példányokhoz Azure-beli virtuális gépről: [Azure-beli virtuálisgép-kapcsolat konfigurálása](sql-database-managed-instance-configure-vm.md).
   - Rövid útmutató arról, hogyan csatlakozhat felügyelt példányokhoz helyi ügyfélszámítógépről pont-hely típusú kapcsolattal: [Pont-hely típusú kapcsolat konfigurálása](sql-database-managed-instance-configure-p2s.md).
 - Ha vissza kíván állítani egy meglévő SQL-adatbázist egy felügyelt példányra, használhatja az [Azure Database Migration Services (DMS) migrálásához](../dms/tutorial-sql-server-to-managed-instance.md) szolgáltatást, amellyel a visszaállítás egy adatbázis biztonságimásolat-fájljából történik, vagy a [T-SQL RESTORE parancsot](sql-database-managed-instance-get-started-restore.md), amellyel egy adatbázis biztonságimásolat-fájljából végezhet visszaállítást.
+- A felügyelt példány adatbázisa teljesítményének beépített intelligenciával való speciális monitorozásáról további információkat az [Azure SQL Database Azure SQL Analytics használatával való monitorozásáról](../log-analytics/log-analytics-azure-sql.md) szóló cikkben talál

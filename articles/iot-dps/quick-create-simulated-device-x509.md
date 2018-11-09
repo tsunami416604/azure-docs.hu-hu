@@ -1,6 +1,6 @@
 ---
 title: Ez a rövid útmutató egy szimulált X.509-eszköz kiépítését mutatja be az Azure IoT Hubra C használatával | Microsoft Docs
-description: Ebben a rövid útmutatóban egy szimulált X.509-eszközt hoz létre és épít ki az Azure IoT Hub Device Provisioning Service-hez készült C eszközoldali SDK-val.
+description: Ez a rövid útmutató egyéni regisztrációkat használ. Ebben a rövid útmutatóban egy szimulált X.509-eszközt hoz létre és épít ki az Azure IoT Hub Device Provisioning Service-hez készült C eszközoldali SDK-val.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 07/16/2018
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9eb80b085f979208999b6764d6e4014cdbcfd2a0
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 8b7848392ebd8ec44dcf646b13911aaafe905ae3
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159125"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158915"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>Rövid útmutató: Szimulált X.509-eszköz kiépítése az Azure IoT C SDK-val
 
@@ -23,6 +23,12 @@ ms.locfileid: "47159125"
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és futtathat X.509 eszközszimulátort Windows rendszerű fejlesztői gépeken. A szimulált eszközt arra konfiguráljuk, hogy hozzárendeljük egy IoT-központhoz egy regisztráció használatával egy Device Provisioning Service-példányban. Az eszköz rendszerindításának szimulálásához az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) egy mintakódját használjuk majd. A rendszer a regisztrációs szolgáltatásban való regisztrációja alapján ismeri fel és társítja az eszközt az IoT-központhoz.
 
 Amennyiben nem ismeri az automatikus kiépítés folyamatát, olvassa el [az automatikus kiépítés alapfogalmait](concepts-auto-provisioning.md) ismertető cikket. A rövid útmutató folytatása előtt mindenképpen végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) szakasz lépéseit. 
+
+Az Azure IoT Device Provisioning Service kétféle típusú regisztrációt támogat:
+- [Regisztrációs csoportok](concepts-service.md#enrollment-group): Több kapcsolódó eszköz regisztrálásához.
+- [Egyéni regisztrációk](concepts-service.md#individual-enrollment): Egyetlen eszköz regisztrálásához.
+
+Ez a cikk az egyéni regisztrációkat ismerteti.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/12/2018
+ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 10ff6565ed8997a5cb87394aa0d743a0d94b67e0
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: c56bdb5968b5f5ada902aa9212282c3cfebe2eaf
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144312"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139839"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Rövid útmutató: Felhőalapú megoldás kipróbálása prediktív karbantartási elemzés saját csatlakoztatott eszközökön való futtatásához
 
@@ -22,7 +22,7 @@ Ez a rövid útmutató bemutatja az Azure IoT-prediktív karbantartási megoldá
 
 A szimulációban a Fabrikam egy regionális légitársaság, amely a nagyszerű ügyfélélményre összpontosít versenyképes árakon. A járatok késésének egyik okai a karbantartási problémák, és a repülőmotorok karbantartása különösen nagy kihívást jelent. A Fabrikamnak minden áron el kell kerülnie a repülés közbeni motorhibákat, így rendszeresen megvizsgálja a motorokat, és tervszerűen ütemezi a karbantartást. A repülőgépek motorja azonban nem mindig ugyanolyan ütemben használódik el. Időnként feleslegesen végeznek karbantartást a motorokon. Még fontosabb, hogy olyan problémák merülnek fel, amelyek miatt a repülőgép nem szállhat fel a karbantartás elvégzéséig. Ezek a problémák különösen költségesek lehetnek, ha egy repülőgép olyan helyen van, ahol nincsenek megfelelő szerelők vagy pótalkatrészek.
 
-A Fabrikam repülőmotorjai olyan érzékelőkkel vannak felszerelve, amelyek monitorozzák a motor állapotát repülés közben. A motor működési és meghibásodási adatainak többéves begyűjtése után a Fabrikam adatszakértői olyan modellt fejlesztettek, amely előrejelzi a repülőmotor fennmaradó hasznos élettartamát (RUL). A modell a négy motorérzékelőből érkező adatok és a meghibásodáshoz vezető motorkopás közötti összefüggést alkalmazza. A Fabrikam továbbra is rendszeres vizsgálatokat végez a biztonság érdekében, azonban mostantól a modellek használatával kiszámíthatja mindegyik motor RUL-értékét minden egyes repülőút után. A Fabrikam már képes előre megmondani a várható meghibásodási pontokat, ez alapján tervezni a karbantartást, így képes minimálisra csökkenteni a repülőgép földön töltött idejét és csökkenteni a működési költségeket, miközben az utasok és a személyzet biztonságát is garantálja.
+A Fabrikam repülőmotorjai olyan érzékelőkkel vannak felszerelve, amelyek monitorozzák a motor állapotát repülés közben. A Fabrikam több évig gyűjtötte a motor működési és meghibásodási adatait ezekből az érzékelőkből. A Fabrikam adatszakértői ezekkel az adatokkal olyan modellt fejlesztettek, amely előrejelzi a repülőmotor fennmaradó hasznos élettartamát (RUL). A modell a négy motorérzékelőből érkező adatok és a meghibásodáshoz vezető motorkopás közötti összefüggést alkalmazza. A Fabrikam továbbra is rendszeres vizsgálatokat végez a biztonság érdekében, azonban mostantól a modellek használatával kiszámíthatja mindegyik motor RUL-értékét minden egyes repülőút után. A Fabrikam már képes előre megmondani a várható meghibásodási pontokat, ez alapján tervezni a karbantartást, így képes minimálisra csökkenteni a repülőgép földön töltött idejét. Ez a folyamat csökkenti a működési költségeket, miközben az utasok és a személyzet biztonságát is garantálja.
 
 A rövid útmutató elvégzéséhez szüksége lesz egy Azure-előfizetésre.
 
@@ -32,11 +32,11 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Amikor üzembe helyezi a megoldásgyorsítót az Azure-előfizetéshez, néhány konfigurációs beállítást meg kell adnia.
 
-Jelentkezzen be az [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) webhelyen az Azure-fiók hitelesítő adataival.
+Navigáljon a [Microsoft Azure IoT-megoldásgyorsítókhoz](https://www.azureiotsolutions.com), és jelentkezzen be az Azure-fiók hitelesítő adataival.
 
-Kattintson a **Kipróbálom most** elemre a **Prediktív karbantartás** csempén.
+Kattintson a **Prediktív karbantartás** csempére. Kattintson a **Kipróbálom most** elemre a **Prediktív karbantartás** oldalon:
 
-![Prediktív karbantartás kiválasztása](./media/quickstart-predictive-maintenance-deploy/predictivemaintenance.png)
+![Kipróbálom most](./media/quickstart-predictive-maintenance-deploy/predictivemaintenance.png)
 
 A **Prediktív karbantartási megoldás létrehozása** oldalon adjon meg egy **Megoldásnevet** a prediktív karbantartási megoldásgyorsítóhoz. Ebben a rövid útmutatóban a **MyPredictiveMaintenance** nevet használjuk.
 

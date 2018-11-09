@@ -9,16 +9,16 @@ ms.reviewer: sgilley
 author: rastala
 ms.author: roastala
 ms.date: 09/24/2018
-ms.openlocfilehash: b81e40298eae0f0b44f37e7f8f16beaddad999a5
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 624564d61a7031cee910ab98e1b327b6f0205e28
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456813"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50159009"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Rövid útmutató: Ismerkedés az Azure Machine Learning szolgáltatással az Azure Portalon
 
-Ebben a rövid útmutatóban egy Azure Machine Learning-munkaterületet fog létrehozni az Azure Portalon. A Machine Learning használata során ez a munkaterület szolgál a gépi tanulási modellekkel való kísérletezés, valamint a betanításuk és üzembe helyezésük alapjául a felhőben. 
+Ebben a rövid útmutatóban egy Azure Machine Learning-munkaterületet fog létrehozni az Azure Portalon. A Machine Learning használata során ez a munkaterület szolgál a gépi tanulási modellekkel való kísérletezés, valamint a betanításuk és üzembe helyezésük alapjául a felhőben. Ez a rövid útmutató felhőerőforrásokat használ, és nem igényel telepítést. Ha ehelyett saját Jupyter-notebookkiszolgálót szeretne konfigurálni, tekintse meg az [Azure Machine Learning Pythonnal való használatának első lépéseit bemutató rövid útmutatót](quickstart-create-workspace-with-python.md).
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
 
@@ -78,32 +78,9 @@ Két notebook mellett egy `config.json` fájlt is látni fog. Ez a konfiguráci�
 
 Egy notebook megnyitásához válassza a `01.run-experiment.ipynb` elemet.
 
-A cellákat egyenként is futtathatja a `Shift`+`Enter` billentyűkombinációval. A teljes notebook futtatásához válassza a `Cells` > `Run All` menüpontot. A cellák mellett megjelenő csillag [*] azt jelzi, hogy a cella fut. A cella kódjának lezárulása után megjelenik egy szám.
+A cellákat egyenként is futtathatja a `Shift`+`Enter` billentyűkombinációval. A teljes notebook futtatásához válassza a `Cells` > `Run All` menüpontot. A cellák mellett megjelenő csillag [*] azt jelzi, hogy a cella fut. A cella kódjának lezárulása után megjelenik egy szám. 
 
-Előfordulhat, hogy a rendszer felszólítja, hogy jelentkezzen be. Másolja ki az üzenetben szereplő kódot. Ezután kattintson a hivatkozásra, és illessze a kódot az új ablakba. Ügyeljen rá, hogy ne másolja a kód előtt vagy után lévő szóközt. Jelentkezzen be ugyanazzal a fiókkal, amelyet az Azure Portalon használt.
-
- ![Bejelentkezés](./media/quickstart-get-started/login.png)
-
-A notebookban a rendszer beolvassa a `config.json` fájlból a második cellát, hogy csatlakozzon a munkaterülethez.
-```
-ws = Workspace.from_config()
-```
-
-A kód harmadik cellája elkezdi a „my-first-experiment” nevű kísérletet. Ezt a nevet használhatja a futtatással kapcsolatos információk megkereséséhez a munkaterületen.
-
-```
-experiment = Experiment(workspace_object=ws, name = "my-first-experiment")
-```
-
-A notebook utolsó cellájában figyelje meg a naplófájlba írt értékeket.
-
-```
-# Log final results
-run.log("Final estimate: ",pi_estimate)
-run.log("Final error: ",math.pi-pi_estimate)
-```
-
-Ezeket az értékeket a kód futtatása után tekintheti meg a munkaterületen.
+A notebookban lévő összes cella futtatásának befejezése után megtekintheti a naplózott értékeket a munkaterületen.
 
 ## <a name="view-logged-values"></a>Naplózott értékek megtekintése
 
@@ -121,11 +98,11 @@ Tekintse meg az imént elvégzett futtatás információit. Görgessen le az old
 
  ![Futtatási előzmények hivatkozása](./media/quickstart-get-started/report.png)
 
-Láthatja a naplózott értékekhez automatikusan létrehozott grafikonokat.  
+Láthatja a naplózott értékekhez automatikusan létrehozott grafikonokat. Mindig automatikusan létrejön egy diagram, amikor több értéket naplóz ugyanazzal a névparaméterrel.
 
    ![Előzmények megtekintése](./media/quickstart-get-started/plots.png)
 
-Mivel a pí hozzávetőleges értékének meghatározására szolgáló kód véletlenszerű értékeket használ, a grafikonokon eltérő értékek jelennek meg.
+Mivel a pí hozzávetőleges értékének meghatározására szolgáló kód véletlenszerű értékeket használ, a grafikonokon eltérő értékek jelennek meg.  
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 
