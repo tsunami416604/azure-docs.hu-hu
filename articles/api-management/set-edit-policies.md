@@ -1,9 +1,9 @@
 ---
-title: Beállíthatja vagy szerkesztheti az Azure API-felügyeleti házirendek hogyan |} Microsoft Docs
-description: Ez a témakör bemutatja, hogyan beállíthatja vagy szerkesztheti az Azure API-felügyeleti házirendek.
+title: Útmutató az Azure API Management házirendek beállítása vagy szerkesztése |} A Microsoft Docs
+description: Ez a témakör bemutatja az Azure API Management házirendek beállítása vagy szerkesztése.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: cflower
 editor: ''
 ms.service: api-management
@@ -11,37 +11,36 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 11/01/2018
 ms.author: apimpm
-ms.openlocfilehash: aaf86a440328e27c8c47b809536951eeaf2104b9
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 3d1847b6001ef8e32f00a4e1cd9728d5ca0662f8
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936697"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008266"
 ---
-# <a name="how-to-set-or-edit-azure-api-management-policies"></a>Hogyan állítsa be, vagy az Azure API-felügyeleti házirendek szerkesztése
+# <a name="how-to-set-or-edit-azure-api-management-policies"></a>Útmutató az Azure API Management házirendek beállítása vagy szerkesztése
 
-A házirend-definíció egy XML-dokumentum, amely leírja a bejövő és kimenő utasítás sorozata. Az XML-fájl közvetlenül a definíció ablakban szerkeszthető. Igény szerint kiválaszthatja egy előre definiált szabályzattal, amely biztosítja a listából a házirend ablak jobb. Az aktuális hatókör vonatkozó utasítások engedélyezve van, és a kijelölt. A kurzor a definíció nézetben kattintson egy engedélyezett utasítás ad hozzá a megfelelő XML. 
+A szabályzat-definíció egy XML-dokumentum, amely leírja a bejövő és kimenő utasítások sorozata. Az XML-fájl a definíció ablakban közvetlenül szerkesztheti. A házirend-ablak jobb oldalán, a listában megadott közül is választhat egy előre definiált szabályzattal. Az aktuális hatókörben érvényes utasításokat engedélyezve van és vannak kiemelve. A megfelelő XML egy engedélyezett utasítás kattintva hozzáadja a kurzor a definíció nézetben a helyen. 
 
-Részletes információ a házirendek: [házirendek az Azure API Management](api-management-howto-policies.md).
+Szabályzatokkal kapcsolatos részletes információkért lásd: [az Azure API Management házirendek](api-management-howto-policies.md).
 
-## <a name="set-or-edit-a-policy"></a>Beállíthatja vagy szerkesztheti a házirendet
+## <a name="set-or-edit-a-policy"></a>Állítsa be, vagy egy szabályzat szerkesztése
 
-Beállíthatja vagy szerkesztheti a házirend, hajtsa végre a következő lépéseket:
+Állítsa be, vagy a szabályzatot, kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 2. Tallózzon az APIM-példányra.
-3. Kattintson a **API-k** fülre.
-4. Válasszon egyet a korábban importált API-k.
-5. Válassza ki a **tervezési** fülre.
-6. Válassza ki, amelyhez a házirendet alkalmazni kívánt műveletet. Ha a házirend alkalmazása az összes művelethez, jelölje be **összes művelet**.
-7. Kattintson a Tovább gombra a háromszög a **bejövő** vagy **kimenő** Ceruza.
-8. Válassza ki a **kód szerkesztése** elemet.
+3. Kattintson az **API-k** lapfülre.
 
-    ![A szabályzat szerkesztése](./media/set-edit-policies/set-edit-policies01.png)
+    ![Házirend szerkesztése](./media/set-edit-policies/code-editor.png)
 
-9. A kívánt házirend kód illessze be a megfelelő blokkok egyikét.
+4. Válassza ki az egyik korábban importált API-t.
+5. Válassza ki a **Tervezés** fület.
+6. Válassza ki egy műveletet, amelyhez a szabályzatot alkalmazni szeretné. Ha meg szeretné alkalmazni a szabályzatot minden művelet, válassza ki a **minden művelet**.
+7. Válassza ki a **</>** (kód szerkesztése) ikonra a **bejövő feldolgozás** vagy **kimenő feldolgozás** szakaszban.
+8. Illessze be a kívánt szabályzat kódja a megfelelő blokkok egyikét.
          
         <policies>
              <inbound>
@@ -60,80 +59,80 @@ Beállíthatja vagy szerkesztheti a házirend, hajtsa végre a következő lép�
  
 ## <a name="configure-scope"></a>Hatókör konfigurálása
 
-Házirendek globálisan vagy egy termék, az API-t vagy a művelet a hatókörnél konfigurálhatók. Egy házirend konfigurálásának megkezdéséhez, ki kell választania a hatókör, ahol a házirendet alkalmazni kell.
+Házirendek is konfigurálhatók, globálisan vagy egy termék, API vagy művelet a hatókörben. A szabályzat konfigurálásának megkezdéséhez, ki kell választania, amikor legyen érvényes a szabályzat hatóköre.
 
-Házirend hatókörök kiértékelése a következő sorrendben:
+A házirend-hatókörök a következő sorrendben értékeli ki:
 
 1. Globális hatókörű
 2. A termék hatókör
 3. API-hatókör
 4. Műveleti hatókör
 
-A házirendek utasítási elhelyezésének kiértékelése a `base` elem, ha telepítve. Általános házirend nem szülője házirend és a használatával a `<base>` az elem nincs hatása.
+Házirendek utasítási elhelyezését szerint értékeli ki a `base` elem, ha jelen. Globális szabályzat rendelkezik szülővel házirend és a használatával a `<base>` , az elem nem lesz hatása.
 
-A házirendek a Helyicsoportházirend-szerkesztő a jelenlegi hatókörben megtekintéséhez kattintson **számítsa ki újra a kijelölt hatókör hatékony házirend**.
+A házirendeket a házirendszerkesztőben az aktuális hatókör megtekintéséhez kattintson **számítsa ki újra a kijelölt hatókörre érvényes szabályzat**.
 
 ### <a name="global-scope"></a>Globális hatókörű
 
-Globális hatókörrel van konfigurálva **minden API-k** APIM példányában.
+Globális hatókör konfigurálva van a **minden API-k** található az APIM-példányra.
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com/) , és keresse meg a APIM példányát.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) , és keresse meg az APIM-példányra.
 2. Kattintson a **minden API-k**.
 
     ![Globális hatókörű](./media/api-management-howto-policies/global-scope.png)
 
-3. Kattintson a háromszög ikonra.
+3. Kattintson a háromszögre ikonra.
 4. Válassza a **Kódszerkesztő** lehetőséget.
-5. Házirend hozzáadása vagy szerkesztése.
-6. Nyomja le az **mentése**. 
+5. Adjon hozzá vagy szerkesztheti a szabályzatokat.
+6. Kattintson a **Mentés** gombra. 
 
-    A módosítások azonnal továbbítja az API Management Gateway.
+    A módosítások azonnal az API Management-átjáró propagálva.
 
 ### <a name="product-scope"></a>A termék hatókör
 
-A kijelölt termék termék hatókörben van konfigurálva.
+Termék hatókör konfigurálva van a kijelölt terméket.
 
 1. Kattintson a **termékek**.
 
     ![A termék hatókör](./media/api-management-howto-policies/product-scope.png)
 
-2. Jelölje ki a kívánt házirendek alkalmazása a terméket.
+2. Válassza ki a termék kívánt a alkalmazni a házirendeket.
 3. Kattintson a **házirendek**.
-4. Házirend hozzáadása vagy szerkesztése.
-5. Nyomja le az **mentése**. 
+4. Adjon hozzá vagy szerkesztheti a szabályzatokat.
+5. Kattintson a **Mentés** gombra. 
 
 ### <a name="api-scope"></a>API-hatókör
 
-API-hatókör konfigurálva lett a **összes művelet** a kijelölt API.
+API-hatókör konfigurálva van a **minden művelet** a kijelölt API.
 
-1. Válassza ki a **API** szeretne alkalmazni a házirendeket.
+1. Válassza ki a **API** szabályzatokat alkalmazni szeretné.
 
     ![API-hatókör](./media/api-management-howto-policies/api-scope.png)
 
-2. Válassza ki **összes művelet**
-3. Kattintson a háromszög ikonra.
+2. Válassza ki a **Minden művelet** lehetőséget.
+3. Kattintson a háromszögre ikonra.
 4. Válassza a **Kódszerkesztő** lehetőséget.
-5. Házirend hozzáadása vagy szerkesztése.
-6. Nyomja le az **mentése**. 
+5. Adjon hozzá vagy szerkesztheti a szabályzatokat.
+6. Kattintson a **Mentés** gombra. 
 
 ### <a name="operation-scope"></a>Műveleti hatókör 
 
-A kiválasztott művelet műveleti hatókör van konfigurálva.
+Műveleti hatókör konfigurálva van a kiválasztott művelet.
 
 1. Válasszon egy **API**.
-2. Válassza ki a házirendeket alkalmazni kívánt műveletet.
+2. Válassza ki a házirendek a alkalmazni kívánt műveletet.
 
     ![Műveleti hatókör](./media/api-management-howto-policies/operation-scope.png)
 
-3. Kattintson a háromszög ikonra.
+3. Kattintson a háromszögre ikonra.
 4. Válassza a **Kódszerkesztő** lehetőséget.
-5. Házirend hozzáadása vagy szerkesztése.
-6. Nyomja le az **mentése**. 
+5. Adjon hozzá vagy szerkesztheti a szabályzatokat.
+6. Kattintson a **Mentés** gombra. 
 
 ## <a name="next-steps"></a>További lépések
 
-Kapcsolódó témakörök hivatkozásra a következő:
+Az alábbi kapcsolódó témakörök:
 
-+ [Átalakítás API-k](transform-api.md)
-+ [Házirend-hivatkozás](api-management-policy-reference.md) házirend-utasításoknál és a beállítások teljes listáját
-+ [Házirend-minták](policy-samples.md)
++ [API-k átalakítása](transform-api.md)
++ [Házirend-referencia](api-management-policy-reference.md) házirend-utasítások és a beállítások teljes listáját
++ [A házirend-minták](policy-samples.md)

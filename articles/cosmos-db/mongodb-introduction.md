@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/12/2018
 ms.author: sclyon
-ms.openlocfilehash: b0fba3cee298e55702629815da4649d9af315b25
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 1f21065414fec6bbe943014e954ecb45af2bb6b9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43283026"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227875"
 ---
 # <a name="introduction-to-azure-cosmos-db-mongodb-api"></a>Alapvető ismeretek az Azure Cosmos DB MongoDB API-ról
 
@@ -66,5 +66,4 @@ Az Azure Cosmos DB MongoDB API-val kapcsolatos információk az Azure Cosmos DB 
 * Kövesse [A Studio 3T (MongoChef) használata Azure Cosmos DB-vel](mongodb-mongochef.md) című oktatóanyag lépéseit, amelyből megtudhatja, hogyan hozhat létre kapcsolatot az Azure Cosmos DB-adatbázis és a MongoDB-alkalmazás között a Studio 3T-ben.
 * Kövesse az [Adatok migrálása a MongoDB számára protokolltámogatást biztosító Azure Cosmos DB-be](mongodb-migrate.md) című oktatóanyag lépéseit az adatok a MongoDB-adatbázis egyik API-jába való importálásához.
 * Csatlakozzon a MongoDB-fiók egyik API-jához a [Robomongo](mongodb-robomongo.md) használatával.
-* Ismerje meg, hogy mennyi kérelemegységet használnak a műveletei a [GetLastRequestStatistics paranccsal és az Azure Portal metrikáival](set-throughput.md#GetLastRequestStatistics).
 * Ismerje meg, hogyan [konfigurálhat olvasási beállításokat a globálisan elosztott alkalmazásokhoz](../cosmos-db/tutorial-global-distribution-mongodb.md).

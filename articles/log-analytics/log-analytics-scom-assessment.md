@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5f5bfe6c730f569f0cc902b0e0a132bfca645a45
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c17c14b015531bf3f978ac30b013c80ad5be779e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961687"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006515"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizálhatja a környezetet a System Center Operations Manager állapotának ellenőrzése (előzetes verzió) megoldás
 
@@ -238,7 +238,7 @@ Ha javaslatoknál, amelyeket figyelmen kívül szeretne, létrehozhat egy szöve
     ```
 
     >[!NOTE]
-    > Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](log-analytics-log-search.md), akkor a fenti lekérdezés módosulnak az alábbiak.
+    > Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](log-analytics-queries.md), akkor a fenti lekérdezés módosulnak az alábbiak.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -263,7 +263,7 @@ Ha javaslatoknál, amelyeket figyelmen kívül szeretne, létrehozhat egy szöve
     ```
 
     >[!NOTE]
-    > Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](log-analytics-log-search.md), akkor a fenti lekérdezés módosulnak az alábbiak.
+    > Ha a munkaterülete frissítve lett a [Log Analytics új lekérdezési nyelvre](log-analytics-queries.md), akkor a fenti lekérdezés módosulnak az alábbiak.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -304,4 +304,4 @@ Ha javaslatoknál, amelyeket figyelmen kívül szeretne, létrehozhat egy szöve
 
 ## <a name="next-steps"></a>További lépések
 
-- [Naplók keresése](log-analytics-log-search.md) megtudhatja, hogyan elemezheti a System Center Operations Manager állapotának ellenőrzése a részletes adatok és javaslatok.
+- [Naplók keresése](log-analytics-queries.md) megtudhatja, hogyan elemezheti a System Center Operations Manager állapotának ellenőrzése a részletes adatok és javaslatok.

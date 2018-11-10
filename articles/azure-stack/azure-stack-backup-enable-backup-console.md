@@ -12,14 +12,15 @@ ms.workload: naS
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 11/05/2018
 ms.author: jeffgilb
-ms.openlocfilehash: fdcc4f51f49e8eb133deeeecd070c55511cda464
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.reviewer: hectorl
+ms.openlocfilehash: d7d47b61c926c6704a06dacc55f00d77a1266988
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985796"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038365"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Biztonsági mentés engedélyezése az Azure Stack a felügyeleti portálról
 Engedélyezze az infrastruktúra Backup szolgáltatás a felügyeleti portálon keresztül, úgy, hogy az Azure Stack biztonsági mentéseket hozhat létre. Ezeket a biztonsági másolatokat segítségével helyreállíthatja az-környezet a felhőbeli helyreállítási [végzetes hiba](.\azure-stack-backup-recover-data.md). A felhőbeli helyreállítási célja, hogy győződjön meg arról, hogy az operátorok és a felhasználók is jelentkezzen be újra a portál recovery befejeződése után. Felhasználók lesz visszaállítva, beleértve a szerepköralapú hozzáférési engedélyek és szerepkörök, eredeti csomagok, ajánlatok, és korábban meghatározott számítási, tárolási és hálózati kvóták megszűnni.

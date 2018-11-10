@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 11/05/2018
 ms.author: juliako
-ms.openlocfilehash: dccbc6e57e970ec7089f81fccb33b741b9c00e74
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 26661a213b5df5424bf9ab9ad799345ae35620ea
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376720"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036767"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Az Azure Media Services v3 – gyakori kérdések
 
@@ -28,7 +28,7 @@ még nem. A támogatott SDK-k egyikét használhatja. Oktatóanyagaink és péld
 
 ## <a name="is-there-an-api-for-configuring-media-reserved-units"></a>Van egy API-t a Media szolgáltatás számára fenntartott egységek konfigurálásához?
 
-A Media Services-csapat RUs távolítsa el a v3-as van. Azonban a szükséges szolgáltatást munkahelyi még nem fejeződött be. Addig a felhasználóknak kell az Azure portal vagy az AMS v2 API-k használatával állítsa be a kérelemegység (leírtak szerint [médiafeldolgozás skálázás](../previous/media-services-scale-media-processing-overview.md). 
+Jelenleg rendelkezik konfigurálása a media szolgáltatás számára fenntartott egységek AMS v2 API-k segítségével (leírtak szerint [médiafeldolgozás skálázás](../previous/media-services-scale-media-processing-overview.md). 
 
 Használata esetén **VideoAnalyzerPreset** és/vagy **AudioAnalyzerPreset**, a Media Services-fiók beállítása 10 S3 szintű Media szolgáltatás számára fenntartott egységet.
 

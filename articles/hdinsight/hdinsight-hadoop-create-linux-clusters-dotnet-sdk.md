@@ -1,6 +1,6 @@
 ---
-title: Használatával a .NET-keretrendszerhez – Azure HDInsight Hadoop-fürtök létrehozása
-description: Ismerje meg, Hadoop, HBase, Storm vagy Spark-fürtök létrehozása Linux rendszeren a HDInsight a HDInsight .NET SDK használatával.
+title: Használatával a .NET-keretrendszerhez – Azure HDInsight az Apache Hadoop-fürtök létrehozása
+description: Ismerje meg, az Apache Hadoop, az Apache HBase, Apache Storm vagy az Apache Spark-fürtök létrehozása Linux rendszeren a HDInsight a HDInsight .NET SDK használatával.
 services: hdinsight
 author: mamccrea
 ms.reviewer: jasonh
@@ -9,19 +9,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: mamccrea
-ms.openlocfilehash: ea5c0d3b9f444601607ebcda8d139797eb8dd2ec
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 943d5aeccf949c1dd494dc8ec8fda0d782527749
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093911"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035680"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>Linux-alapú fürtök létrehozása a HDInsight .NET SDK használatával
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
 
-Ismerje meg a Hadoop-fürt létrehozása az Azure HDInsight-fürt .NET SDK használatával.
+Ismerje meg, az Apache Hadoop-fürt létrehozása az Azure HDInsight-fürt .NET SDK használatával.
 
 > [!IMPORTANT]
 > A jelen dokumentumban leírt lépések egy munkavégző csomópont-fürt létrehozása. Ha azt tervezi, hogy több mint 32 feldolgozó csomópontokat, a fürt létrehozáskor vagy a fürt skálázást a létrehozás után kell válassza ki a fő csomópont méretének legalább 8 maggal és 14GB ram.
@@ -38,7 +38,7 @@ Ismerje meg a Hadoop-fürt létrehozása az Azure HDInsight-fürt .NET SDK haszn
 
 ## <a name="create-clusters"></a>Fürtök létrehozása
 
-1. Nyissa meg a Visual Studio 2017-ben.
+1. Nyissa meg a Visual Studio 2017-et.
 2. Hozzon létre egy új Visual C# konzolalkalmazást.
 3. Az a **eszközök** menüben kattintson a **NuGet-Csomagkezelő**, és kattintson a **Package Manager Console**.
 4. A konzolon a csomagok telepítéséhez futtassa a következő parancsot:

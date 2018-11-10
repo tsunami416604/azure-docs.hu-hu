@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: ed89468d65f35d0a8cda90da365e8625f46e3f92
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: bd72abd4f8f23414ea1003c74d2f90cde3b51d34
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42059131"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034337"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>Végzetes adatvesztés utáni helyreállítás
 
@@ -32,7 +32,7 @@ Az adatvesztés kiváltó okának függően szükség lehet egy egyetlen infrast
 
 A forgatókönyv címek helyreállítása a teljes telepítési hiba esetén a berendezés és az újbóli üzembe helyezés a magánfelhő.
 
-| Forgatókönyv                                                           | Adatvesztés                            | Megfontolandó szempontok                                                             |
+| Alkalmazási helyzet                                                           | Adatvesztés                            | Megfontolandó szempontok                                                             |
 |--------------------------------------------------------------------|--------------------------------------|----------------------------------------------------------------------------|
 | Vészhelyreállítási vagy a termékverzió hiba miatt végzetes adatvesztés utáni helyreállítás | Az összes infrastruktúrát és a felhasználó és az alkalmazás adatokat | Felhasználó alkalmazás- és védett külön-külön infrastruktúra-adatokból |
 
@@ -73,4 +73,4 @@ A felhasználó infrastruktúra-szolgáltatás (IaaS) vagy a Platform, a Platfor
 
 ## <a name="next-steps"></a>További lépések
 
- - További információ az ajánlott eljárások [az infrastruktúra biztonsági másolat szolgáltatással](azure-stack-backup-best-practices.md).
+További információ az ajánlott eljárások [az infrastruktúra biztonsági másolat szolgáltatással](azure-stack-backup-best-practices.md).

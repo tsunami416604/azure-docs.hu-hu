@@ -2,23 +2,25 @@
 title: Presto telepítése Linux-alapú Azure HDInsight-fürtökön
 description: Megtudhatja, hogyan Presto és Airpal telepítése Linux-alapú HDInsight Hadoop-fürtökön parancsfájlműveletekkel.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/21/2018
-ms.author: jasonh
-ms.openlocfilehash: b9ac9c49e633906e47244eedcb18a4cda4a6228d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: ea806a1004cf268fb7da75fa45013bdbaf882d86
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978953"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227501"
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>Telepítheti és használhatja Presto HDInsight Hadoop-fürtök
 
 Ebből a dokumentumból megismerheti, hogyan Presto telepítése HDInsight Hadoop-fürtökön Parancsfájlműveletekkel használatával. Azt is megtudhatja, hogyan Airpal telepítése egy meglévő Presto HDInsight-fürtön.
+
+HDInsight az Apache Hadoop-fürtök buborék Presto kérelem is kínál. További információkért lásd: [harmadik féltől származó alkalmazások telepítése Azure HDInsight](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apps-install-applications)
 
 > [!IMPORTANT]
 > A jelen dokumentumban leírt lépések szükséges egy **HDInsight 3.5-ös Hadoop-fürt** , Linux rendszert használ. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight-verziók](hdinsight-component-versioning.md).
@@ -42,17 +44,17 @@ Ez a szakasz útmutatást a minta parancsfájl használatával, amikor egy új f
 
     * Hadoop-fürt a HDInsight 3.6-os verzióját kell lennie.
 
-    * Azure Storage azt kell használnia, mint az adattárban. Presto egy fürtön, amely a beállítást használja az Azure Data Lake Store használata még nem támogatott. 
+    * Azure Storage azt kell használnia, mint az adattárban. Presto egy fürtön, amely a beállítást használja az Azure Data Lake Store használata nem még egy lehetőség.
 
     ![HDInsight-fürt létrehozása egyéni beállítások használatával](./media/hdinsight-hadoop-install-presto/hdinsight-install-custom.png)
 
-2. Az a **speciális beállítások** területen válassza **Parancsfájlműveletek**, és adja meg az alábbi adatokat:
+2. Az a **speciális beállítások** területen válassza **Parancsfájlműveletek**, és adja meg az alábbi információkat. Azt is beállíthatja a "Presto telepítése" beállítást a parancsprogram típusát.
    
    * **NÉV**: Adjon egy rövid nevet a parancsprogram-művelet.
    * **Bash-szkript URI azonosítója**: `https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`
    * **A fő**: ezt a beállítást választva
    * **FELDOLGOZÓ**: ezt a beállítást választva
-   * **ZOOKEEPER**: törölje a jelet a jelölőnégyzetből.
+   * **ZOOKEEPER**: hagyja üresen ezt a jelölőnégyzetet
    * **PARAMÉTEREK**: hagyja üresen a mezőt
 
 

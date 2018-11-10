@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3fa41f894e3228310bae6a9407cfcc426c27bfdc
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 47cf32a57fc4a2d0e20a9f2c242db1f3dec96fe5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963718"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228538"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Adathiány hibaelhárítása – Application Insights .NET-hez
 ## <a name="some-of-my-telemetry-is-missing"></a>Láthatók a telemetriai adatok némelyike hiányzik
@@ -141,7 +141,7 @@ Javítás:
     
     ![](./media/app-insights-asp-net-troubleshoot-no-data/ikey-check.png)
 * Az a [Microsoft Azure irányítópult](https://portal.azure.com), tekintse meg a Service Health-leképezés. Ha egyes riasztási jelzések, várjon, amíg azok OK vissza majd zárja be és nyissa meg ismét az Application Insights-alkalmazás paneljén.
-* Ellenőrizze azt is [állapot blogunkat](http://blogs.msdn.com/b/applicationinsights-status/).
+* Ellenőrizze azt is [állapot blogunkat](https://blogs.msdn.com/b/applicationinsights-status/).
 * Felelt meg a kód írása a [kiszolgálóoldali SDK](app-insights-api-custom-events-metrics.md) , előfordulhat, hogy módosítsa a kialakítási kulcsot az `TelemetryClient` példányok vagy a `TelemetryContext`? Adta meg írni vagy egy [szűrő vagy mintavételi konfiguráció](app-insights-api-filtering-sampling.md) előfordulhat, hogy szűrése, amely túl sok ki?
 * Ha szerkesztette az applicationinsights.config fájlt, gondosan ellenőrizze konfigurációját [TelemetryInitializers és TelemetryProcessors](app-insights-api-filtering-sampling.md). Egy nem megfelelően nevű típus vagy paraméter okozhat adatot nem küld az SDK-t.
 
@@ -167,7 +167,7 @@ Teljesítményadatok (CPU, i/o-forgalom, és így tovább) érhető el [Java web
 * A Windows Server 2008: Ellenőrizze, hogy telepítette a következő frissítéseket: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://support.microsoft.com/kb/2600217).
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>Használt adatokat, de leállt
-* Ellenőrizze a [állapot blog](http://blogs.msdn.com/b/applicationinsights-status/).
+* Ellenőrizze a [állapot blog](https://blogs.msdn.com/b/applicationinsights-status/).
 * Elérte a havi kvóta adatpontok? Nyissa meg a beállítások/kvóta és díjszabás megtudhatja. Ha igen, váltson magasabb szintű csomagra, vagy további kapacitást kell fizetnie. Tekintse meg a [díjszabási séma](https://azure.microsoft.com/pricing/details/application-insights/).
 
 ## <a name="i-dont-see-all-the-data-im-expecting"></a>Felfedezhetem minden adat nem látható

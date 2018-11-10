@@ -12,27 +12,29 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: 5bb1aeadeb31728dcc2d9ac5fa0aeade31857169
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: e9a1b7951d111606d84e235864e3649a742e874e
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41917572"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741504"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-5-use-mongoose-to-connect-to-azure-cosmos-db"></a>MongoDB-alkalmazás létrehozása az Angular és az Azure Cosmos DB használatával – 5. rész: A Mongoose használata az Azure Cosmos DB-hez való csatlakozáshoz
 
-Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre egy Node.js-ben írt új [MongoDB API](mongodb-introduction.md)-alkalmazást az Express, az Angular és az Azure Cosmos DB-adatbázis használatával.
+Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre egy Node.js-alkalmazást az Express és az Angular használatával, majd hogyan kapcsolhatja össze azt az [Azure Cosmos DB MongoDB API](mongodb-introduction.md)-fiókkal.
 
 Az oktatóanyag 5. része a [4. részre](tutorial-develop-mongodb-nodejs-part4.md) épül, és az alábbi feladatokat ismerteti:
 
 > [!div class="checklist"]
 > * A Mongoose használata az Azure Cosmos DB-hez való csatlakozáshoz
-> * Kapcsolati sztringek adatainak lekérése az Azure Cosmos DB-ből
+> * A Cosmos DB kapcsolatisztring-adatainak lekérése
 > * A főképmodell létrehozása
 > * A főképszolgáltatás létrehozása főképadatok lekéréséhez
 > * Az alkalmazás futtatása helyben
 
 ## <a name="video-walkthrough"></a>Bemutató videó
+
+Az alábbi videóból gyorsan megismerheti a dokumentumban leírt lépéseket: 
 
 > [!VIDEO https://www.youtube.com/embed/sI5hw6KPPXI]
 
@@ -46,19 +48,24 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [4
 
 ## <a name="use-mongoose-to-connect-to-azure-cosmos-db"></a>A Mongoose használata az Azure Cosmos DB-hez való csatlakozáshoz
 
-1. Telepítse a mongoose npm modult, amely egy általában a MongoDB-vel való kommunikációhoz használt API.
+1. Telepítse a mongoose npm modult, amely egy, a MongoDB-vel való kommunikációhoz használt API.
 
     ```bash
     npm i mongoose --save
     ```
 
-2. Most hozzon létre egy új fájlt a **server** mappában **mongo.js** néven. Ebbe a fájlba felveszi majd az Azure Cosmos DB adatbázis összes kapcsolati adatát.
+2. Most hozzon létre egy új fájlt a **server** mappában **mongo.js** néven. Adja hozzá a fájlhoz a Cosmos DB-fiók kapcsolati adatait.
 
 3. Másolja az alábbi kódot a **mongo.js** fájlba. Ez a kód:
+
     * A Mongoose használatát igényli.
-    * Felülbírálja a Mongo-ígéretet és az ES6/ES2015 és az azt követő verziókba épített alap ígéretet használja.
-    * Meghív egy env fájlt, amelyben elvégezhet bizonyos beállításokat annak függvényében, hogy előkészítési, termelési vagy fejlesztői környezetet használ-e. Ezt a fájlt nemsokára létrehozzuk.
-    * Tartalmazza a MongoDB kapcsolati sztringünket, amelyet az env fájlban állítunk majd be.
+
+    * Felülbírálja a Mongo-ígéretet, és az ES6/ES2015 és az azt követő verziókba épített alap ígéretet használja.
+
+    * Meghív egy env fájlt, amelyben elvégezhet bizonyos beállításokat annak függvényében, hogy előkészítési, termelési vagy fejlesztői környezetet használ-e. Azt a fájlt a következő szakaszban fogja létrehozni.
+
+    * Adja hozzá az env fájlban beállított MongoDB kapcsolati sztringet.
+
     * Létrehoz egy connect függvényt, amely meghívja a Mongoose-t.
 
     ```javascript
@@ -123,9 +130,10 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [4
 
 ## <a name="create-a-hero-model"></a>Főképmodell létrehozása
 
-1.  Az Explorer panelen hozza létre a **hero.model.js** fájlt a **server** mappában.
+1. Az Explorer panelen hozza létre a **hero.model.js** fájlt a **server** mappában.
 
-2. Másolja az alábbi kódot a **hero.model.js** fájlba. Ez a kód:
+2. Másolja az alábbi kódot a **hero.model.js** fájlba. Ez a kód a következő funkciókat nyújtja:
+
    * A Mongoose használatát igényli.
    * Egy új sémát hoz létre egy azonosítóval, egy névvel és egy üzenettel.
    * Létrehoz egy modellt a séma használatával.
@@ -155,9 +163,10 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [4
 
 ## <a name="create-a-hero-service"></a>Főképszolgáltatás létrehozása
 
-1.  Az Explorer panelen hozza létre a **hero.service.js** fájlt a **server** mappában.
+1. Az Explorer panelen hozza létre a **hero.service.js** fájlt a **server** mappában.
 
 2. Másolja az alábbi kódot a **hero.service.js** fájlba. Ez a kód:
+
    * Lekéri az imént létrehozott modellt.
    * Csatlakozik az adatbázishoz.
    * Létrehoz egy docquery változót, amely a hero.find metódus használatával meghatároz egy lekérdezést, amely visszaadja az összes fő képet.
@@ -213,13 +222,13 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [4
     function getHeroes(req, res) {
     ```
 
-    Szánjunk néhány percet az itt leírt híváslánc áttekintésére és végigkövetésére. Nézzük először a csomópont-kiszolgálót létrehozó `index.js` fájlt, és láthatjuk, hogy ez állítja be és határozza meg az útvonalainkat. A routes.js fájl ezután a főképszolgáltatással kommunikál, és utasítja, hogy kérje le a függvényeinket (például a getHeroes függvényt), illetve továbbítsa a kérést és a választ. A hero.service.js most fogja a modellt, és csatlakozik a Mongóhoz, majd végrehajtja a getHeroes függvényt, amikor meghívjuk, és visszaadja a 200-as választ. Aztán ismét végiggyűrűzik a láncon. 
+    Szánjunk néhány percet az itt leírt híváslánc áttekintésére és végigkövetésére. Nézzük először a csomópont-kiszolgálót létrehozó `index.js` fájlt, és láthatjuk, hogy ez állítja be és határozza meg az útvonalakat. A routes.js fájl ezután a főképszolgáltatással kommunikál, és utasítja, hogy kérje le a függvényeket (például a getHeroes függvényt), illetve továbbítsa a kérést és a választ. A hero.service.js most fogja a modellt, és csatlakozik a Mongóhoz, majd végrehajtja a getHeroes függvényt, amikor meghívjuk, és visszaadja a 200-as választ. Aztán ismét végiggyűrűzik a láncon. 
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
 1. Most futtassuk újra az alkalmazást. A Visual Studio Code-ban mentse az összes módosítást, kattintson a **Hibakeresés**  gombra ![Hibakeresés ikon a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png) a bal oldalon, majd a **Hibakeresés indítása** gombra ![Hibakeresés ikon a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png).
 
-3. Most váltson vissza a böngészőre, nyissa meg a Fejlesztői eszközöket és a Hálózat lapot, majd lépjen a http://localhost:3000 helyre, ahol megtalálja az alkalmazást.
+3. Most váltson a böngészőre, nyissa meg a Fejlesztői eszközöket és a Hálózat lapot, majd lépjen a http://localhost:3000 helyre, ahol megtalálja az alkalmazást.
 
     ![Új Azure Cosmos DB-fiók az Azure Portalon](./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png)
 
@@ -227,7 +236,7 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [4
 
 ## <a name="next-steps"></a>További lépések
 
-Az oktatóanyagnak ebben a részében a következőket hajtotta végre:
+Az oktatóanyagnak ebben a részében a következő feladatokat végezte el:
 
 > [!div class="checklist"]
 > * A Mongoose API-k használatával csatlakoztatta főképalkalmazását az Azure Cosmos DB-hez 

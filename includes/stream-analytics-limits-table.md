@@ -7,5 +7,5 @@
 | A függvények maximális száma feladatonként |60 |A függvények rögzített korlátja Stream Analytics-feladatonként 60. |
 | Streamelési egységek maximális száma feladatonként |120 |Nincs rögzített korlátja Stream Analytics-feladatonként 120 folyamatos átviteli egységek. |
 | A feladatok maximális száma régiónként |1500 |Az egyes előfizetésekhez legfeljebb 1500 feladat tartozhat földrajzi régiónként. |
-| Referenciaadatok Blob MB-ban megadott mérete | 100 | A referenciaadat Blobok nem lehetnek nagyobbak egyenként 100 MB-nál. |
+| Referenciaadatok Blob MB-ban megadott mérete | 300 | A referenciaadat blobok nem lehet nagyobb, mint 300 MB. |
 

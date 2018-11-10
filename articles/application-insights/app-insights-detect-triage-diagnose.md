@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 799593758bf24924d91d38bd6a626b945247183b
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 41c8fd0092af035153b3161c4a6c3eb5c5ef3f1d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050238"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958899"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Az Application Insights áttekintése fejlesztők és üzemeltetők számára
 
@@ -231,6 +231,6 @@ Az alkalmazása tulajdonságaitól függően több módon is hozzáláthat. Vál
 * [ASP.NET-es webalkalmazás](app-insights-asp-net.md)
 * [Java-webalkalmazás](app-insights-java-get-started.md)
 * [Node.js-webalkalmazás](app-insights-nodejs.md)
-* Már üzembe helyezett, az [IIS](app-insights-monitor-web-app-availability.md)-ben, [J2EE](app-insights-java-live.md)-ben vagy [Azure](app-insights-azure.md)-ban működő alkalmazások.
+* Már üzembe helyezett, az [IIS](app-insights-monitor-web-app-availability.md)-ben, [J2EE](app-insights-java-live.md)-ben vagy [Azure](app-insights-overview.md)-ban működő alkalmazások.
 * [Weblapok](app-insights-javascript.md) – Egylapos alkalmazás vagy átlagos weblap – önmagában vagy bármelyik kiszolgálói lehetőséggel együtt is használható.
 * [Rendelkezésre állási tesztek](app-insights-monitor-web-app-availability.md) az alkalmazás nyilvános internetről való teszteléséhez.

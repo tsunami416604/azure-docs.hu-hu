@@ -2,19 +2,19 @@
 title: Gépi tanulás – áttekintés – Azure HDInsight
 description: A gépi tanulási lehetőségek HDInsight ismerteti.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.author: jasonh
-ms.openlocfilehash: 10d4056ea9d78bd56710b7b5d67297b90232cf0b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: 2ac108d65b42221189e50987238ad3d7edad1e30
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107731"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005334"
 ---
 # <a name="machine-learning-on-hdinsight"></a>A Machine learning, a HDInsight
 
@@ -26,7 +26,7 @@ HDInsight lehetővé teszi, hogy a gépi tanulás big Data jellegű adatokat, é
 
 A Microsoft Machine Learning library for Apache Spark van [MMLSpark](https://github.com/Azure/mmlspark). Ez a kódtár úgy tervezték, adja meg az adatszakértők hatékonyabbá a Spark, a Kísérletezési aránya növelése, és kihasználhatja a legmodernebb gépi tanulási technikák, beleértve a mély tanulás, nagy méretű adatkészleteken. MMLSpark biztosít egy könnyen használható az alacsony szintű API-k a felső szintű rétege létrehozását, skálázható gépi Tanulási modelleket, például az indexelő karakterláncok adatok coercing gép tanulási algoritmusok és összeállításával készíthet átjárókat funkció vektorok által várt elrendezés be. Az MMLSpark könyvtár egyszerűbbé teszi ezeket és más gyakori feladatok a PySpark modellek készítéséhez.
 
-## <a name="r"></a>R
+## <a name="r"></a>G
 
 [R](https://www.r-project.org/) jelenleg a világ legnépszerűbb statisztikai programozási nyelvet. A több mint 2,5 millió felhasználók és az egyre növekvő közösségi egy nyílt forráskódú adatvizualizációs eszköz. Az Alap az élénk felhasználóhoz, és több mint 8000 befizetett csomagok az R a számos vállalat, akiknek szükség van a gépi tanulás nagy valószínűséggel választást. Létrehozhat egy HDInsight-fürt készen áll a használatra, a nagyméretű adatkészleteket és a modellek gépi Tanulási szolgáltatásokkal. Ez a képesség nyújt az adatszakértők és a egy jól ismert R felületen lehet skálázni Statisztikusok igény szerinti HDInsight, keresztül a fürt beállítása és fenntartását anélkül.
 
@@ -52,7 +52,7 @@ Annak érdekében, hogy azt mutatja be a saját munkahelyi a deep learning, a Mi
 
 ## <a name="see-also"></a>Lásd még
 
-### <a name="scenarios"></a>Forgatókönyvek
+### <a name="scenarios"></a>Alkalmazási helyzetek
 
 * [Spark és Machine Learning: A Spark on HDInsight használata az épület-hőmérséklet elemzésére HVAC-adatok alapján](spark/apache-spark-ipython-notebook-machine-learning.md)
 * [Spark és Machine Learning: A Spark on HDInsight használata az élelmiszervizsgálati eredmények előrejelzésére](spark/apache-spark-machine-learning-mllib-ipython.md)
