@@ -3,21 +3,21 @@ title: Hozzon létre, és az Azure IoT Central alkalmazáshoz a telemetriai adat
 description: Az Azure IoT-központ-telemetria szabályok lehetővé teszik az eszközök, közel valós időben figyelheti és automatikusan követve indíthatók el műveletek, például egy e-mailt küldhet a szabály aktiválásakor.
 author: ankitgupta
 ms.author: ankitgup
-ms.date: 08/14/2018
+ms.date: 11/02/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1b82ac3bf67370a2c39e85bf5691da38539edb74
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: d085777e347e1e892c3a49f4f37aa1d8130ef18c
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729323"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005733"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Telemetria szabály létrehozása és az Azure IoT központi alkalmazás-értesítések beállítása
 
-*Ez a cikk az operátorok, a kapcsolat építői és a rendszergazdák vonatkozik.*
+*Ez a cikk operátorokra, fejlesztőkre és rendszergazdákra vonatkozik.*
 
 Azure IoT Central használatával távolról figyeli a csatlakoztatott eszközök. Az Azure IoT Central szabályok lehetővé teszik az eszközök, közel valós időben figyelheti és automatikusan hajthatók végre műveletek, például e-mail küldése vagy Microsoft Flow-trigger. Mindössze pár kattintással megadhatja a feltételt, amelynek az adatok figyelésére, és konfigurálja a megfelelő műveletet. Ez a cikk bemutatja, hogyan hozhat létre szabályokat figyelése az eszköz által küldött telemetriát.
 
@@ -61,7 +61,7 @@ A feltétel a feltételeknek, a szabály által figyelt határozza meg.
 
 1. Válassza ki a figyelni kívánt telemetriát a **mérési** legördülő listából.
 
-   ![Állapot](media\howto-create-telemetry-rules\Aggregate_Condition_Filled_Out.png)
+   ![Feltétel](media\howto-create-telemetry-rules\Aggregate_Condition_Filled_Out.png)
 
 1. Következő lépésként válassza ki **összesítési**, **operátor**, és adjon meg egy **küszöbérték** érték.
     - Összesítés nem kötelező. Nélkül összesítés, a szabály aktiválásakor telemetriai adatpontok, amely megfelel a feltételnek. Például, ha a szabály úgy van konfigurálva, az indítási feltétel hőmérséklete meghaladja a 80-as, akkor a szabály aktivál, szinte instantly mikor jelentett hőmérséklet > 80-as.
@@ -87,9 +87,9 @@ Ez a szakasz bemutatja, hogyan állíthatja be a műveleteket, ha a szabály les
 
    ![Művelet konfigurálása](media\howto-create-telemetry-rules\Configure_Action.png)
 
-1. A szabály mentéséhez válasszon **mentése**. A szabály élesíti néhány percen belül, és elindítja a telemetriát küld az alkalmazás figyelését. Megegyezik a feltételt a szabályban megadott, a szabály eseményindítók a beállított e-mail-művelet.
+1. A szabály mentéséhez válasszon **mentése**. A szabály élesíti néhány percen belül, és elindítja a telemetriát küld az alkalmazás figyelését. Ha a feltételt a szabályban megadott feltétele teljesül, a szabály elindítja a beállított e-mail-művelet.
 
-1. Válasszon **kész** való kilépéshez a **sablon szerkesztése** mód.
+1. Válassza a **Kész** lehetőséget a **Sablon szerkesztése** módból való kilépéshez.
 
 A szabály például a Microsoft Flow és a webhookok más műveleteket is hozzáadhat. Szabályonként legfeljebb 5 műveleteket is hozzáadhat.
 

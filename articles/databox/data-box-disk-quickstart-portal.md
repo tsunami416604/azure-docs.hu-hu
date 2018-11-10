@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: ca0fb177c8b6a16cf624fd4533c9c9040e6d9dee
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: eb5cf5c6eb210e8bd26c7c074ef6f499e5d4c83d
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365234"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740748"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>Rövid útmutató: Az Azure Data Box Disk üzembe helyezése az Azure Portal használatával (előzetes verzió)
 
@@ -70,11 +70,11 @@ Ez a lépés nagyjából 5 percet vesz igénybe.
     3. Futtassa a Data Box Disk lemezzárolás-feloldó eszközt és adja meg a hozzáférési kulcsot. Új lemezek behelyezésekor futtassa újra a zárolást feloldó eszközt, és adja meg a hozzáférési kulcsot. **Ne használja a BitLocker párbeszédpanelt vagy a BitLocker kulcsot a lemez zárolásának feloldására.** További információt a lemezek feloldásával kapcsolatban a [Lemez feloldása Windows-ügyfélen]() vagy a [Lemez feloldása Linux-ügyfélen]() című szakaszban talál.
     4. A meghajtóhoz rendelt betűjelet az eszköz mutatja. Jegyezze fel az egyes meghajtók betűjelét. Ezt majd a következő lépésekben fogjuk felhasználni.
 
-## <a name="copy-data-and-verify"></a>Adatok másolása és ellenőrzése
+## <a name="copy-data-and-validate"></a>Adatok másolása és ellenőrzés
 
 A művelet végrehajtásának időtartama az adatok mennyiségétől függ. 
 
-1. A meghajtó a *PageBlob*, *a BlockBlob* és az *AzureImportExport* mappát tartalmazza. A blokkblobokként importálandó adatokat húzással másolja a *BlockBlob* mappába. Hasonlóképpen húzza a VHD/VHDX és hasonló típusú adatokat a *PageBlob* mappába.
+1. A meghajtó a *PageBlob*, a *BlockBlob* és a *DataBoxDiskImport* mappát tartalmazza. A blokkblobokként importálandó adatokat húzással másolja a *BlockBlob* mappába. Hasonlóképpen húzza a VHD/VHDX és hasonló típusú adatokat a *PageBlob* mappába.
 
     A rendszer a *BlockBlob* és a *PageBlob* mappa alatt található minden almappához létrehoz egy tárolót az Azure-tárfiókban. A *BlockBlob* és a *PageBlob* mappa alatt található összes fájl az Azure Storage-fiók alatti alapértelmezett `$root` tárolóba lesz átmásolva.
 
@@ -82,7 +82,7 @@ A művelet végrehajtásának időtartama az adatok mennyiségétől függ.
     > - Minden tároló és blob nevének követnie kell az [Azure elnevezési konvencióit](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions). Ha a szabályok nem teljesülnek, az adatok az Azure-ba való feltöltése meghiúsul.
     > - Győződjön meg róla, hogy a fájlok mérete blokkblobok esetén nem haladja meg a ~4,75 TiB, lapblobok esetén a ~8 TiB méretet.
 
-2. (Nem kötelező) Javasoljuk, hogy a másolás után az *AzureImportExport* mappában elérhető `DataBoxDiskValidation.cmd` futtatásával hozzon létre ellenőrzőösszegeket az ellenőrzéshez. Az adatok mennyiségétől függően ez a lépés némi időt vehet igénybe. 
+2. (Nem kötelező) Javasoljuk, hogy a másolás után a *DataBoxDiskImport* mappában elérhető `DataBoxDiskValidation.cmd` futtatásával hozzon létre ellenőrzőösszegeket az ellenőrzéshez. Az adatok mennyiségétől függően ez a lépés némi időt vehet igénybe. 
 3. Válassza le a meghajtót. 
 
 

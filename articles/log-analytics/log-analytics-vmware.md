@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9b0a9b8c976ce5ef9fb57a6f8bcfd076f370bb10
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: fe2407f67e2ef7a2eb14105db0fef10917f34ba9
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963990"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005223"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>VMware Monitoring (előzetes verzió) megoldás a Log Analyticsben
 
@@ -75,7 +75,7 @@ Hozzon létre egy Linux operációs rendszert a virtuális gép az összes syslo
 
 1. Az Azure Portalon, hajtsa végre a Naplókeresés `VMware_CL`. A Log Analytics a syslog-adatot gyűjt, ha megtartja a syslog formátumba. A portálon az egyes területeken rögzítve lesznek például *állomásnév* és *ProcessName*.  
 
-    ![type](./media/log-analytics-vmware/type.png)  
+    ![típus](./media/log-analytics-vmware/type.png)  
 
     Ha a napló keresési eredmények megtekintése a fenti képen láthatóhoz hasonló, beállíthat már használja a VMware Monitoring megoldás irányítópultján.  
 
@@ -105,8 +105,8 @@ Az alábbi táblázatban példák a VMware Monitoring megoldás által összegy�
 | SCSIStatus_s |VMware-SCSI-állapot |
 | SyslogMessage_s |Syslog-adat |
 | UserName_s |felhasználó, aki létrehozott vagy virtuális gép törlése |
-| VMName_s |a virtuális gép neve |
-| Computer |gazdaszámítógép |
+| VMName_s |Virtuális gép neve |
+| Számítógép |gazdaszámítógép |
 | TimeGenerated |idő az adatok jött létre. |
 | DataCenter_s |VMware-datacenter |
 | StorageLatency_s |tárolási késés (ms) |
@@ -131,7 +131,7 @@ Az a **VMware** irányítópult-nézet, a többi panelen szerint vannak rendszer
 
 Kattintson a panelre, hogy a panel az adott részletes információkat jelenít meg a Log Analytics keresése panel megnyitásához.
 
-Itt szerkesztheti a keresési lekérdezés esetében valamilyen konkrét módosíthat. Naplókeresések létrehozásával kapcsolatos részletekért lásd: [adatokat naplókeresések a Log Analyticsben található](log-analytics-log-search.md).
+Itt szerkesztheti a keresési lekérdezés esetében valamilyen konkrét módosíthat. Naplókeresések létrehozásával kapcsolatos részletekért lásd: [adatokat naplókeresések a Log Analyticsben található](log-analytics-queries.md).
 
 #### <a name="find-esxi-host-events"></a>ESXi-gazdagép események
 Egyetlen ESXi-gazdagép több naplókat, a folyamatok alapján hoz létre. A VMware Monitoring megoldás központosítja azokat, és az események számát foglalja össze. Ez a nézet központi segítségével megismerheti, milyen ESXi-gazdagép rendelkezik nagy mennyiségű esemény, és milyen eseményeket fordulnak elő a leggyakrabban a környezetben.
@@ -206,6 +206,6 @@ Több oka lehet:
     d. Ha a fájl nem létezik vagy nem megfelelő, a felhasználó és csoport beállításának intézkedéseket által [egy Linux-kiszolgáló előkészítése](#prepare-a-linux-server).
 
 ## <a name="next-steps"></a>További lépések
-* Használat [Naplókeresések](log-analytics-log-search.md) adatokat tárolni a Log Analytics részletes VMware megtekintéséhez.
+* Használat [Naplókeresések](log-analytics-queries.md) adatokat tárolni a Log Analytics részletes VMware megtekintéséhez.
 * [Saját irányítópult létrehozásával](log-analytics-dashboards.md) VMware gazdagép adatainak megjelenítése.
 * [Riasztások létrehozása](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) amikor adott VMware gazdagép események történnek.

@@ -3,19 +3,19 @@ title: Csatlakoztathatja az Excelt a Hive ODBC-illesztő – Azure HDInsight had
 description: Ismerje meg, hogyan beállítása és használata a Microsoft Hive ODBC-illesztő az Excel használatával adatokat lekérdezni a HDInsight-fürtök a Microsoft Excel-fájlból.
 keywords: hadoop excel-, hive-excel-, hive odbc
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jasonh
-ms.openlocfilehash: b21863d7a91c14f9795d72a13575e33485ba7d2b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: ecdde9b5ac4c6c303edf553af3eb33986d4fb199
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041824"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005087"
 ---
 # <a name="connect-excel-to-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Excel csatlakoztatása az Azure HDInsight Hadoop-a Microsoft Hive ODBC-illesztő
 
@@ -57,7 +57,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy Hive ODBC-adatforr
    |  Gazdagép |Írja be a következő kifejezést: &lt;HDInsightClusterName>.azurehdinsight.net. Például: sajatHDICluster.azurehdinsight.net |
    |  Port |Használja a <strong>443</strong> számú portot. (Ez a port megváltozott a 563-ról 443-ra.) |
    |  Adatbázis |Használja az <strong>Alapértelmezett</strong> adatbázist. |
-   |  Mechanizmus |Válassza ki az <strong>Azure HDInsight szolgáltatást</strong> |
+   |  Eljárás |Válassza ki az <strong>Azure HDInsight szolgáltatást</strong> |
    |  Felhasználónév |Adja meg a HDInsight fürt HTTP-felhasználó felhasználóneve. Az alapértelmezett felhasználónév az <strong>admin</strong>. |
    |  Jelszó |Adja meg a HDInsight-fürt felhasználói jelszót. |
    

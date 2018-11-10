@@ -40,6 +40,8 @@ items:
     href: security-center-onboarding.md
   - name: Kiszolgálóvédelem a Windows Defender ATP-vel
     href: security-center-wdatp.md
+  - name: Az App Service védelme
+    href: security-center-app-services.md
   - name: Biztonsági házirendek beállítása
     href: security-center-azure-policy.md
   - name: Az Information Protection-szabályzat testreszabása
@@ -61,43 +63,35 @@ items:
       href: security-center-management-groups.md
   - name: Biztonsági javaslatok megvalósítása
     href: security-center-recommendations.md
-  - name: A biztonsági állapot figyelése
-    href: security-center-monitoring.md
     items:
-    - name: Számítási és alkalmazásbiztonság
+    - name: Biztonsági helyzet megerősítése
+      href: security-center-monitoring.md
+    - name: Gépek és alkalmazások védelme
       href: security-center-virtual-machine-protection.md
       items:
-      - name: Javaslatok virtuális gépekhez és számítógépekhez
-        href: security-center-virtual-machine-recommendations.md
-        items:
-        - name: Lemeztitkosítás alkalmazása
-          href: security-center-apply-disk-encryption.md
-        - name: Rendszerfrissítések alkalmazása
-          href: security-center-apply-system-updates.md
-        - name: Titkosítás engedélyezése tárfiókokon
-          href: security-center-enable-encryption-for-storage-account.md
-        - name: Virtuálisgép-ügynök engedélyezése
-          href: security-center-enable-vm-agent.md
-        - name: Endpoint Protection telepítése
-          href: security-center-install-endpoint-protection.md
-        - name: Rendszerfrissítések utáni újraindítás
-          href: security-center-apply-system-updates.md#reboot-after-system-updates
-        - name: Biztonsági konfigurációk javítása
-          href: security-center-remediate-os-vulnerabilities.md
-        - name: Operációs rendszer verziójának frissítése
-          href: security-center-update-os-version.md
-        - name: A sebezhetőségi felmérés nincs telepítve
-          href: security-center-vulnerability-assessment-recommendations.md
-      - name: Alkalmazásjavaslatok
+      - name: Lemeztitkosítás alkalmazása
+        href: security-center-apply-disk-encryption.md
+      - name: Rendszerfrissítések alkalmazása
+        href: security-center-apply-system-updates.md
+      - name: Titkosítás engedélyezése tárfiókokon
+        href: security-center-enable-encryption-for-storage-account.md
+      - name: Virtuálisgép-ügynök engedélyezése
+        href: security-center-enable-vm-agent.md
+      - name: Endpoint Protection telepítése
+        href: security-center-install-endpoint-protection.md
+      - name: Rendszerfrissítések utáni újraindítás
+        href: security-center-apply-system-updates.md#reboot-after-system-updates
+      - name: Biztonsági konfigurációk javítása
+        href: security-center-remediate-os-vulnerabilities.md
+      - name: Operációs rendszer verziójának frissítése
+        href: security-center-update-os-version.md
+      - name: A sebezhetőségi felmérés nincs telepítve
+        href: security-center-vulnerability-assessment-recommendations.md
+      - name: Webalkalmazási tűzfal hozzáadása
         href: security-center-add-web-application-firewall.md
-        items:
-        - name: Webalkalmazási tűzfal hozzáadása
-          href: security-center-add-web-application-firewall.md
-        - name: Alkalmazásvédelem véglegesítése
-          href: security-center-add-web-application-firewall.md#finalize-application-protection
-      - name: Tárolójavaslatok
-        href: security-center-container-recommendations.md
-    - name: Hálózati biztonság
+      - name: Alkalmazásvédelem véglegesítése
+        href: security-center-add-web-application-firewall.md#finalize-application-protection
+    - name: Hálózati erőforrások védelme
       href: security-center-network-recommendations.md
       items:
       - name: Új generációs tűzfal hozzáadása
@@ -108,7 +102,7 @@ items:
         href: security-center-restrict-access-through-internet-facing-endpoints.md
       - name: Csak az újgenerációs tűzfalon keresztül haladjon a forgalom
         href: security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only
-    - name: Adatok és tárolóbiztonság
+    - name: Az SQL-szolgáltatás és -adatok védelme
       href: security-center-sql-service-recommendations.md
       items:
       - name: Naplózás és fenyegetésészlelés engedélyezése az SQL-adatbázisokon
@@ -225,9 +219,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=security-center
   - name: Régiónkénti rendelkezésre állás
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 60bb35519dec1dc08dd9ed82633c594c56fdd893
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 09d1086de03ddab3cf2aca54f201c86632ab4c83
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318078"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219443"

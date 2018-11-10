@@ -14,17 +14,17 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
-ms.openlocfilehash: 0a05b4fadf2cd7e794680907d39f355882a4330c
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: fa2f957c862ca94bc102b38b8bb1deb0bc07be8a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42058089"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226847"
 ---
 # <a name="use-an-azure-powershell-command-to-create-an-empty-cloud-service-container"></a>Üres felhőszolgáltatás-tároló létrehozása az Azure PowerShell-parancs használatával
 Ez a cikk azt ismerteti, hogyan hozhat létre gyorsan egy Cloud Services-tárolót az Azure PowerShell-parancsmagok használatával. Kövesse az alábbi lépéseket:
 
-1. Telepítse a Microsoft Azure PowerShell-parancsmag a [letölti az Azure PowerShell](http://aka.ms/webpi-azps) lapot.
+1. Telepítse a Microsoft Azure PowerShell-parancsmag a [letölti az Azure PowerShell](https://aka.ms/webpi-azps) lapot.
 2. Nyissa meg a PowerShell-parancssort.
 3. Használja a [Add-AzureAccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-4.0.0) való bejelentkezéshez.
 

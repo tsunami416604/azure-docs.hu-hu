@@ -9,14 +9,14 @@ ms.author: govindk
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.reviewer: sngun
-ms.openlocfilehash: f73a201a25bb2f975e8a261a6c21aa7b066c3a7c
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 56fc07c6d775ee8015ce244acb7782607bda802a
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247850"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739787"
 ---
-# <a name="migrate-your-data-to-azure-cosmos-db-cassandra-api-account"></a>Adatok migrálása az Azure Cosmos DB Cassandra API-fiókba
+# <a name="tutorial-migrate-your-data-to-azure-cosmos-db-cassandra-api-account"></a>Oktatóanyag: Adatok migrálása az Azure Cosmos DB Cassandra API-fiókba
 
 Ez az oktatóanyag bemutatja, hogyan migrálhat Apache Cassandra-adatokat az Azure Cosmos DB Cassandra API-ba. 
 

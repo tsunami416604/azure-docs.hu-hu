@@ -10,14 +10,14 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: affa302c7fd2a0cb05a6d599050e72c75ef74479
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 219ec7138cb839ec7d0eebb613931a85c752f3c2
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969059"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741215"
 ---
-# <a name="nodejs-tutorial-create-a-nodejs-console-application-with-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Node.js-oktatóanyag: Node.js-konzolalkalmazás létrehozása JavaScript SDK-val az Azure Cosmos DB SQL API adatainak kezeléséhez
+# <a name="tutorial-build-a-nodejs-console-app-with-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Oktatóanyag: Node.js-konzolalkalmazás létrehozása a JavaScript SDK-val az Azure Cosmos DB SQL API-adatok kezeléséhez
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -27,30 +27,23 @@ ms.locfileid: "46969059"
 > * [Node.js](sql-api-nodejs-get-started.md)
 > 
 
+Ez az oktatóanyag bemutatja, hogyan hozhat létre egy Node.js-konzolalkalmazást Azure Cosmos DB-erőforrások létrehozásához és lekérdezéséhez.
 
-Üdvözöljük az Azure Cosmos DB JavaScript SDK-hoz készült Node.js-oktatóanyagban! Az oktatóanyag lépéseinek követésével egy olyan konzolalkalmazást készít, amely Azure Cosmos DB-erőforrásokat hoz létre és kérdez le.
+Ez az oktatóanyag a következő feladatokat mutatja be:
 
-Az oktatóanyag a következőket ismerteti:
+> [!div class="checklist"]
+> * Azure Cosmos DB-fiók létrehozása és csatlakoztatása
+> * Az alkalmazás beállítása
+> * Adatbázis létrehozása
+> * Tároló létrehozása
+> * Elemek hozzáadása a tárolóhoz
+> * CRUD-műveletek végrehajtása az elemeken, a tárolón és az adatbázison
 
-* Azure Cosmos DB-fiók létrehozása és csatlakoztatása
-* Az alkalmazás beállítása
-* Adatbázis létrehozása
-* Tároló létrehozása
-* JSON-elemek hozzáadása a tárolóhoz
-* A tároló lekérdezése
-* Elemek cseréje
-* Elemek törlése
-* Adatbázis törlése
+Nincs ideje az alkalmazás létrehozására? Ne aggódjon! A teljes megoldás elérhető a [GitHubon](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started ). Gyors útmutatásért tekintse meg a cikkben [A teljes megoldás beszerzése](#GetSolution) című szakaszt.
 
-Nincs elég ideje? Ne aggódjon! A teljes megoldás elérhető a [GitHubon](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started ). Gyors útmutatásért tekintse meg [A teljes megoldás beszerzése](#GetSolution) című szakaszt.
+## <a name="prerequisites"></a>Előfeltételek 
 
-A Node.js-oktatóanyag befejezése után a lap tetején vagy alján található szavazógomb használatával küldhet visszajelzést. Ha szeretne közvetlenül kapcsolatba lépni velünk, a hozzászólásaiban tüntesse fel az e-mail-címét.
-
-Most pedig lássunk neki!
-
-## <a name="prerequisites-for-the-nodejs-tutorial"></a>A Node.js-oktatóanyag előfeltételei
-
-Győződjön meg róla, hogy rendelkezik az alábbiakkal:
+Győződjön meg róla, hogy rendelkezik az alábbi erőforrásokkal:
 
 * Aktív Azure-fiók. Ha még nincs fiókja, regisztrálhat az [Azure ingyenes próbaverziójára](https://azure.microsoft.com/pricing/free-trial/). 
 
@@ -69,54 +62,55 @@ Hozzunk létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik egy használni k
 1. Nyissa meg kedvenc terminálját.
 2. Keresse meg azt a mappát vagy könyvtárat, ahova a Node.js-alkalmazást menteni szeretné.
 3. Hozzon létre két üres JavaScript-fájlt az alábbi parancsokkal:
+
    * Windows:
      * ```fsutil file createnew app.js 0```
      * ```fsutil file createnew config.js 0```
+
    * Linux/OS X:
      * ```touch app.js```
      * ```touch config.js```
+
 4. Telepítse az @azure/cosmos modult az npm segítségével. Használja az alábbi parancsot:
    * ```npm install @azure/cosmos --save```
 
-Remek! A beállítás befejeztével nekiláthat a kód írásának.
-
 ## <a id="Config"></a>3. lépés: Az alkalmazás konfigurációnak megadása
 
-Nyissa meg a ```config.js``` fájlt egy tetszőleges szövegszerkesztőben.
+1. Nyissa meg a ```config.js``` fájlt egy tetszőleges szövegszerkesztőben.
 
-Ezután másolja és illessze be az alábbi kódrészletet, majd állítsa be a ```config.endpoint``` és ```config.primaryKey``` tulajdonságot a saját Azure Cosmos DB-végpontjának URI és elsődleges kulcs értékeire. Mindkettő konfiguráció megtalálható az [Azure Portalon](https://portal.azure.com).
+1. Másolja és illessze be az alábbi kódrészletet, majd állítsa be a ```config.endpoint``` és ```config.primaryKey``` tulajdonságot a saját Azure Cosmos DB-végpontjának URI- és elsődleges kulcs értékeire. Mindkettő konfiguráció megtalálható az [Azure Portalon](https://portal.azure.com).
 
-![Node.js-oktatóanyag – Képernyőfelvétel az Azure Portalról, amely egy Azure Cosmos DB-fiókot jelenít meg az ACTIVE (AKTÍV) központ, az Azure Cosmos DB-fiók panelén lévő KEYS (KULCSOK) gomb, valamint a Kulcsok panelen lévő URI, PRIMARY KEY (ELSŐDLEGES KULCS) és SECONDARY KEY (MÁSODLAGOS KULCS) értékek kiemelésével – Node-adatbázis][keys]
+   ![Kulcsok lekérése az Azure Portalról képernyőkép][keys]
 
-```nodejs
-// ADD THIS PART TO YOUR CODE
-var config = {}
+   ```nodejs
+   // ADD THIS PART TO YOUR CODE
+   var config = {}
 
-config.endpoint = "~your Azure Cosmos DB endpoint uri here~";
-config.primaryKey = "~your primary key here~";
-``` 
+   config.endpoint = "~your Azure Cosmos DB endpoint uri here~";
+   config.primaryKey = "~your primary key here~";
+   ``` 
 
-Másolja és illessze be a ```database```, ```container``` és ```items``` adatokat az alábbi ```config```-objektumba oda, ahol megadta a ```config.endpoint``` és ```config.primaryKey``` tulajdonságot. Ha van olyan adat, amelyet szeretne az adatbázisban tárolni, használhatja az Azure Cosmos DB [adatmigrálási eszközét](import-data.md) is ahelyett, hogy itt definiálná az adatokat.
+1. Másolja és illessze be a ```database```, ```container``` és ```items``` adatokat az alábbi ```config```-objektumba oda, ahol megadta a ```config.endpoint``` és ```config.primaryKey``` tulajdonságot. Ha van olyan adat, amelyet szeretne az adatbázisban tárolni, használhatja az Azure Cosmos DB [adatmigrálási eszközét](import-data.md) is ahelyett, hogy itt definiálná az adatokat.
 
-```nodejs
-var config = {}
+   ```nodejs
+   var config = {}
 
-config.endpoint = "~your Azure Cosmos DB account endpoint uri here~";
-config.primaryKey = "~your primary key here~";
+   config.endpoint = "~your Azure Cosmos DB account endpoint uri here~";
+   config.primaryKey = "~your primary key here~";
 
-config.database = {
-    "id": "FamilyDatabase"
-};
+   config.database = {
+      "id": "FamilyDatabase"
+   };
 
-config.container = {
-    "id": "FamilyContainer"
-};
+   config.container = {
+     "id": "FamilyContainer"
+   };
 
-config.items = {
-    "Andersen": {
-        "id": "Anderson.1",
-        "lastName": "Andersen",
-        "parents": [{
+   config.items = {
+      "Andersen": {
+          "id": "Anderson.1",
+          "lastName": "Andersen",
+          "parents": [{
             "firstName": "Thomas"
         }, {
                 "firstName": "Mary Kay"
@@ -166,161 +160,166 @@ config.items = {
             "city": "NY"
         },
         "isRegistered": false
-    }
-};
-```
-Megjegyzés: Ha már ismeri a JavaScript SDK korábbi verzióját, ismerősek lehetnek a „gyűjtemény” és a „dokumentum” kifejezések. Mivel az Azure Cosmos DB [több API-modellt](https://docs.microsoft.com/azure/cosmos-db/introduction#key-capabilities) támogat, a JavaScript SDK 2.0-s vagy újabb verziói az általános „tároló” és „elem” kifejezéseket használják. A tároló lehet egy gyűjtemény, gráf vagy tábla. Az elem lehet egy dokumentum, él/csúcspont vagy sor, és ez jelöli a tárolóban lévő tartalmakat. 
+      }
+   };
+   ```
 
-Végül exportálja a ```config```-objektumot, hogy hivatkozhasson rá az ```app.js``` fájlban.
-```nodejs
+   Megjegyzés: Ha már ismeri a JavaScript SDK korábbi verzióját, ismerősek lehetnek a „gyűjtemény” és a „dokumentum” kifejezések. Mivel az Azure Cosmos DB [több API-modellt](https://docs.microsoft.com/azure/cosmos-db/introduction#key-capabilities) támogat, a JavaScript SDK 2.0-s vagy újabb verziói az általános „tároló” és „elem” kifejezéseket használják. A tároló lehet egy gyűjtemény, gráf vagy tábla. Az elem lehet egy dokumentum, él/csúcspont vagy sor, és ez jelöli a tárolóban lévő tartalmakat. 
+
+1. Végül exportálja a ```config```-objektumot, hogy hivatkozhasson rá az ```app.js``` fájlban.
+
+   ```nodejs
         },
         "isRegistered": false
-    }
-};
+       }
+   };
 
-// ADD THIS PART TO YOUR CODE
-module.exports = config;
-```
+   // ADD THIS PART TO YOUR CODE
+   module.exports = config;
+   ```
+
 ## <a id="Connect"></a> 4. lépés: Csatlakozás Azure Cosmos DB-fiókhoz
 
-Nyissa meg az üres ```app.js``` fájlt a szövegszerkesztőben. Másolja és illessze be az alábbi kódot a ```@azure/cosmos```, valamint az újonnan létrehozott ```config``` modul importálásához.
+1. Nyissa meg az üres ```app.js``` fájlt a szövegszerkesztőben. Másolja és illessze be az alábbi kódot a ```@azure/cosmos```, valamint az újonnan létrehozott ```config``` modul importálásához.
 
-```nodejs
-// ADD THIS PART TO YOUR CODE
-const CosmosClient = require('@azure/cosmos').CosmosClient;
+   ```nodejs
+   // ADD THIS PART TO YOUR CODE
+   const CosmosClient = require('@azure/cosmos').CosmosClient;
 
-const config = require('./config');
-const url = require('url');
-```
+   const config = require('./config');
+   const url = require('url');
+   ```
 
-Másolja és illessze be a kódot, ha az előzőleg mentett ```config.endpoint``` és ```config.primaryKey``` használatával szeretne létrehozni egy új CosmosClient-ügyfelet.
+1. Másolja és illessze be a kódot, ha az előzőleg mentett ```config.endpoint``` és ```config.primaryKey``` használatával szeretne létrehozni egy új CosmosClient-ügyfelet.
 
-```nodejs
-const url = require('url');
+   ```nodejs
+   const url = require('url');
 
-// ADD THIS PART TO YOUR CODE
-const endpoint = config.endpoint;
-const masterKey = config.primaryKey;
+   // ADD THIS PART TO YOUR CODE
+   const endpoint = config.endpoint;
+   const masterKey = config.primaryKey;
 
-const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
-```
+   const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
+   ```
 
 Most, hogy rendelkezik az Azure Cosmos DB-ügyfél elindításához szükséges kóddal, vessünk egy pillantást az Azure Cosmos DB-erőforrások használatára.
 
 ## <a name="step-5-create-a-database"></a>5. lépés: Adatbázis létrehozása
 
-Másolja és illessze be az alábbi kódot a Not Found (Nem található) HTTP-állapot, az adatbázis azonosítója, valamint a tároló azonosítója megadásához. Az Azure Cosmos DB-ügyfél ezen azonosítók alapján találja meg a megfelelő adatbázist és tárolót.
+1. Másolja és illessze be az alábbi kódot az adatbázis-azonosító és a tárolóazonosító megadásához. Az Azure Cosmos DB-ügyfél ezen azonosítók alapján találja meg a megfelelő adatbázist és tárolót.
 
-```nodejs
-const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
+   ```nodejs
+   const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
 
-// ADD THIS PART TO YOUR CODE
-const HttpStatusCodes = { NOTFOUND: 404 };
+   // ADD THIS PART TO YOUR CODE
+   const HttpStatusCodes = { NOTFOUND: 404 };
 
-const databaseId = config.database.id;
-const containerId = config.container.id;
-```
+   const databaseId = config.database.id;
+   const containerId = config.container.id;
+   ```
 
-Az [adatbázis](sql-api-resources.md#databases) a **Databases** osztály [createIfNotExists](/javascript/api/%40azure/cosmos/databases) vagy [create](/javascript/api/%40azure/cosmos/databases) függvényének használatával hozható létre. Az adatbázis a tárolók között particionált elemek logikai tárolója. 
+   Az [adatbázis](sql-api-resources.md#databases) a **Databases** osztály [createIfNotExists](/javascript/api/%40azure/cosmos/databases) vagy [create](/javascript/api/%40azure/cosmos/databases) függvényének használatával hozható létre. Az adatbázis a tárolók között particionált elemek logikai tárolója. 
 
-Másolja és illessze be a **createDatabase** és a **readDatabase** függvényeket a ```databaseId``` és a ```containerId``` definíciója alá az app.js fájlban. Ha még nem létezne, a **createDatabase** függvény létrehoz egy új adatbázist a ```FamilyDatabase``` azonosítóval, amelyet a ```config``` objektum határoz meg. A **readDatabase** függvény beolvassa az adatbázis definícióját, hogy ellenőrizze, hogy az adatbázis létezik-e.
+2. Másolja és illessze be a **createDatabase** és a **readDatabase** metódusokat a ```databaseId``` és a ```containerId``` definíciója alá az app.js fájlban. Ha még nem létezne, a **createDatabase** függvény létrehoz egy új adatbázist a ```FamilyDatabase``` azonosítóval, amelyet a ```config``` objektum határoz meg. A **readDatabase** függvény beolvassa az adatbázis definícióját, hogy ellenőrizze, hogy az adatbázis létezik-e.
 
-```nodejs
-/**
- * Create the database if it does not exist
- */
-async function createDatabase() {
-    const { database } = await client.databases.createIfNotExists({ id: databaseId });
-    console.log(`Created database:\n${database.id}\n`);
-}
+   ```nodejs
+   /**
+    * Create the database if it does not exist
+    */
+   async function createDatabase() {
+       const { database } = await client.databases.createIfNotExists({ id: databaseId });
+       console.log(`Created database:\n${database.id}\n`);
+   }
 
-/**
- * Read the database definition
- */
-async function readDatabase() {
-    const { body: databaseDefinition } = await client.database(databaseId).read();
+   /**
+   * Read the database definition
+   */
+   async function readDatabase() {
+      const { body: databaseDefinition } = await client.database(databaseId).read();
+      console.log(`Reading database:\n${databaseDefinition.id}\n`);
+   }
+   ```
+
+3. Másolja és illessze be az alábbi kódot oda, ahol megadta a **createDatabase** és **readDatabase** függvényeket. Ezzel hozzáadhatja az **exit** (kilépés) segédfüggvényt, amely megjeleníti a kilépési üzenetet. 
+
+   ```nodejs
+   // ADD THIS PART TO YOUR CODE
+   function exit(message) {
+      console.log(message);
+      console.log('Press any key to exit');
+      process.stdin.setRawMode(true);
+      process.stdin.resume();
+      process.stdin.on('data', process.exit.bind(process, 0));
+   };
+   ```
+
+4. Másolja és illessze be az alábbi kódot oda, ahol megadta az **exit** függvényt a **createDatabase** és a **readDatabase** függvények meghívására.
+
+   ```nodejs
+   createDatabase()
+     .then(() => readDatabase())
+     .then(() => { exit(`Completed successfully`); })
+     .catch((error) => { exit(`Completed with error \${JSON.stringify(error)}`) });
+   ```
+
+   Ekkor az ```app.js``` fájlban a kódnak úgy kell kinéznie, mint az alábbi kód:
+
+   ```nodejs
+   const CosmosClient = require('@azure/cosmos').CosmosClient;
+
+   const config = require('./config');
+   const url = require('url');
+
+   const endpoint = config.endpoint;
+   const masterKey = config.primaryKey;
+
+   const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
+
+   const HttpStatusCodes = { NOTFOUND: 404 };
+
+   const databaseId = config.database.id;
+   const containerId = config.container.id;
+
+
+   /**
+    * Create the database if it does not exist
+    */
+   async function createDatabase() {
+     const { database } = await client.databases.createIfNotExists({ id: databaseId });
+     console.log(`Created database:\n${database.id}\n`);
+   }
+
+   /**
+   * Read the database definition
+   */
+   async function readDatabase() {
+     const { body: databaseDefinition } = await client.database(databaseId).read();
     console.log(`Reading database:\n${databaseDefinition.id}\n`);
-}
-```
+   }
 
-Másolja és illessze be az alábbi kódot oda, ahol megadta a **createDatabase** és **readDatabase** függvényeket. Ezzel hozzáadhatja az **exit** (kilépés) segédfüggvényt, amely megjeleníti a kilépési üzenetet. 
+   /**
+   * Exit the app with a prompt
+   * @param {message} message - The message to display
+   */
+   function exit(message) {
+     console.log(message);
+     console.log('Press any key to exit');
+     process.stdin.setRawMode(true);
+     process.stdin.resume();
+     process.stdin.on('data', process.exit.bind(process, 0));
+   }
 
-```nodejs
-// ADD THIS PART TO YOUR CODE
-function exit(message) {
-    console.log(message);
-    console.log('Press any key to exit');
-    process.stdin.setRawMode(true);
-    process.stdin.resume();
-    process.stdin.on('data', process.exit.bind(process, 0));
-};
-```
-Másolja és illessze be az alábbi kódot oda, ahol megadta az **exit** függvényt a **createDatabase** és a **readDatabase** függvények meghívására.
+   createDatabase()
+     .then(() => readDatabase())
+     .then(() => { exit(`Completed successfully`); })
+     .catch((error) => { exit(`Completed with error ${JSON.stringify(error) }`) });
+   ```
 
-```nodejs
-createDatabase()
-    .then(() => readDatabase())
-    .then(() => { exit(`Completed successfully`); })
-    .catch((error) => { exit(`Completed with error \${JSON.stringify(error)}`) });
-```
+5. A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi parancsot: 
 
-Ekkor az ```app.js``` fájlban a kódnak így kell kinéznie:
-
-```nodejs
-const CosmosClient = require('@azure/cosmos').CosmosClient;
-
-const config = require('./config');
-const url = require('url');
-
-const endpoint = config.endpoint;
-const masterKey = config.primaryKey;
-
-const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
-
-const HttpStatusCodes = { NOTFOUND: 404 };
-
-const databaseId = config.database.id;
-const containerId = config.container.id;
-
-
-/**
- * Create the database if it does not exist
- */
-async function createDatabase() {
-    const { database } = await client.databases.createIfNotExists({ id: databaseId });
-    console.log(`Created database:\n${database.id}\n`);
-}
-
-/**
- * Read the database definition
- */
-async function readDatabase() {
-    const { body: databaseDefinition } = await client.database(databaseId).read();
-    console.log(`Reading database:\n${databaseDefinition.id}\n`);
-}
-
-/**
- * Exit the app with a prompt
- * @param {message} message - The message to display
- */
-function exit(message) {
-    console.log(message);
-    console.log('Press any key to exit');
-    process.stdin.setRawMode(true);
-    process.stdin.resume();
-    process.stdin.on('data', process.exit.bind(process, 0));
-}
-
-createDatabase()
-    .then(() => readDatabase())
-    .then(() => { exit(`Completed successfully`); })
-    .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
-```
-
-A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi parancsot: 
-```bash 
-node app.js
-```
+   ```bash 
+   node app.js
+   ```
 
 Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-adatbázist.
 
@@ -329,119 +328,118 @@ Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-adatbázist.
 > [!WARNING]
 > A **createContainer** függvény meghívása létrehoz egy új tárolót, amely költségeket von maga után. További részletekért látogasson el az [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
-A tároló a **Containers** osztály [createIfNotExists](/javascript/api/%40azure/cosmos/containers) vagy [create](/javascript/api/%40azure/cosmos/containers) függvényének használatával hozható létre. 
+A tároló a **Containers** osztály [createIfNotExists](/javascript/api/%40azure/cosmos/containers) vagy [create](/javascript/api/%40azure/cosmos/containers) függvényének használatával hozható létre.  A tároló elemeket (az SQL API esetében JSON-dokumentumokat) tartalmaz, valamint a kapcsolódó JavaScript-alkalmazáslogikát.
 
-A tároló elemeket (az SQL API esetében JSON-dokumentumokat) tartalmaz, valamint a kapcsolódó JavaScript-alkalmazáslogikát.
+1. Másolja és illessze be a **createContainer** és a **readContainer** függvényt a **readDatabase** függvény alá az app.js fájlban. Ha még nem létezne, a **createContainer** függvény létrehoz egy új tárolót a ```containerId``` azonosítóval, amelyet a ```config``` objektum határoz meg. A **readContainer** függvény beolvassa a tároló definícióját, hogy ellenőrizze, hogy a tároló létezik-e.
 
-Másolja és illessze be a **createContainer** és a **readContainer** függvényt a **readDatabase** függvény alá az app.js fájlban. Ha még nem létezne, a **createContainer** függvény létrehoz egy új tárolót a ```containerId``` azonosítóval, amelyet a ```config``` objektum határoz meg. A **readContainer** függvény beolvassa a tároló definícióját, hogy ellenőrizze, hogy a tároló létezik-e.
-
-```nodejs
-/**
- * Create the container if it does not exist
- */
-async function createContainer() {
+   ```nodejs
+   /**
+   * Create the container if it does not exist
+   */
+   async function createContainer() {
     const { container } = await client.database(databaseId).containers.createIfNotExists({ id: containerId });
     console.log(`Created container:\n${config.container.id}\n`);
-}
+   }
 
-/**
- * Read the container definition
- */
-async function readContainer() {
-    const { body: containerDefinition } = await client.database(databaseId).container(containerId).read();
-    console.log(`Reading container:\n${containerDefinition.id}\n`);
-}
-```
+   /**
+   * Read the container definition
+   */
+   async function readContainer() {
+     const { body: containerDefinition } = await client.database(databaseId).container(containerId).read();
+     console.log(`Reading container:\n${containerDefinition.id}\n`);
+   }
+   ```
 
-Másolja és illessze be az alábbi kódot a **readDatabase** alá a **createContainer** és a **readContainer** függvény végrehajtásához.
-```nodejs
-createDatabase()
-    .then(() => readDatabase())
+1. Másolja és illessze be az alábbi kódot a **readDatabase** alá a **createContainer** és a **readContainer** függvény végrehajtásához.
 
-    // ADD THIS PART TO YOUR CODE
-    .then(() => createContainer())
-    .then(() => readContainer())
-    // ENDS HERE
+   ```nodejs
+   createDatabase()
+     .then(() => readDatabase())
 
-    .then(() => { exit(`Completed successfully`); })
-    .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
-```
+     // ADD THIS PART TO YOUR CODE
+     .then(() => createContainer())
+     .then(() => readContainer())
+     // ENDS HERE
 
-Ekkor az ```app.js``` fájlban a kódnak így kell kinéznie:
+     .then(() => { exit(`Completed successfully`); })
+     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
+   ```
 
-```nodejs
-const CosmosClient = require('@azure/cosmos').CosmosClient;
+   Ekkor az ```app.js``` fájlban a kódnak így kell kinéznie:
 
-const config = require('./config');
-const url = require('url');
+   ```nodejs
+   const CosmosClient = require('@azure/cosmos').CosmosClient;
 
-const endpoint = config.endpoint;
-const masterKey = config.primaryKey;
+   const config = require('./config');
+   const url = require('url');
 
-const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
+   const endpoint = config.endpoint;
+   const masterKey = config.primaryKey;
 
-const HttpStatusCodes = { NOTFOUND: 404 };
+   const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
 
-const databaseId = config.database.id;
-const containerId = config.container.id;
+   const HttpStatusCodes = { NOTFOUND: 404 };
 
-/**
- * Create the database if it does not exist
- */
-async function createDatabase() {
-    const { database } = await client.databases.createIfNotExists({ id: databaseId });
-    console.log(`Created database:\n${database.id}\n`);
-}
+   const databaseId = config.database.id;
+   const containerId = config.container.id;
 
-/**
- * Read the database definition
- */
-async function readDatabase() {
-    const { body: databaseDefinition } = await client.database(databaseId).read();
-    console.log(`Reading database:\n${databaseDefinition.id}\n`);
-}
+   /**
+   * Create the database if it does not exist
+   */
+   async function createDatabase() {
+     const { database } = await client.databases.createIfNotExists({ id: databaseId });
+     console.log(`Created database:\n${database.id}\n`);
+   }
 
-/**
- * Create the container if it does not exist
- */
-async function createContainer() {
-    const { container } = await client.database(databaseId).containers.createIfNotExists({ id: containerId });
-    console.log(`Created container:\n${config.container.id}\n`);
-}
+   /**
+   * Read the database definition
+   */
+   async function readDatabase() {
+     const { body: databaseDefinition } = await client.database(databaseId).read();
+     console.log(`Reading database:\n${databaseDefinition.id}\n`);
+   }
 
-/**
- * Read the container definition
- */
-async function readContainer() {
-    const { body: containerDefinition } = await client.database(databaseId).container(containerId).read();
-    console.log(`Reading container:\n${containerDefinition.id}\n`);
-}
+   /**
+   * Create the container if it does not exist
+   */
+   async function createContainer() {
+     const { container } = await client.database(databaseId).containers.createIfNotExists({ id: containerId });
+     console.log(`Created container:\n${config.container.id}\n`);
+   }
 
-/**
- * Exit the app with a prompt
- * @param {message} message - The message to display
- */
-function exit(message) {
-    console.log(message);
-    console.log('Press any key to exit');
-    process.stdin.setRawMode(true);
-    process.stdin.resume();
-    process.stdin.on('data', process.exit.bind(process, 0));
-}
+   /**
+   * Read the container definition
+   */
+   async function readContainer() {
+     const { body: containerDefinition } = await client.database(databaseId).container(containerId).read();
+     console.log(`Reading container:\n${containerDefinition.id}\n`);
+   }
 
-createDatabase()
-    .then(() => readDatabase())
-    .then(() => createContainer())
-    .then(() => readContainer())
-    .then(() => { exit(`Completed successfully`); })
-    .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
-```
+   /**
+   * Exit the app with a prompt
+   * @param {message} message - The message to display
+   */
+   function exit(message) {
+     console.log(message);
+     console.log('Press any key to exit');
+     process.stdin.setRawMode(true);
+     process.stdin.resume();
+     process.stdin.on('data', process.exit.bind(process, 0));
+   }
 
-A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi parancsot: 
+   createDatabase()
+     .then(() => readDatabase())
+     .then(() => createContainer())
+     .then(() => readContainer())
+     .then(() => { exit(`Completed successfully`); })
+     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
+   ```
 
-```bash 
-node app.js
-```
+1. A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi parancsot: 
+
+   ```bash 
+   node app.js
+   ```
 
 Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-tárolót.
 
@@ -449,19 +447,19 @@ Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-tárolót.
 
 Elemet az **Items** osztály [create](/javascript/api/%40azure/cosmos/items) függvényével hozhat létre. Az SQL API használatával az elemek dokumentumokként vannak kivetítve, amelyek felhasználói (tetszőleges) JSON-tartalmak. Most már beszúrhat egy elemet az Azure Cosmos DB-be.
 
-Másolja és illessze be a **createFamilyItem** függvényt a **readContainer** függvény alá. A **createFamilyItem** függvény hozza létre a ```config``` objektumban mentett JSON-adatokat tartalmazó elemeket. Az egyes elemek létrehozása előtt a rendszer ellenőrzi, hogy létezik-e már elem ugyanazzal az azonosítóval.
+1. Másolja és illessze be a **createFamilyItem** függvényt a **readContainer** függvény alá. A **createFamilyItem** függvény hozza létre a ```config``` objektumban mentett JSON-adatokat tartalmazó elemeket. Az egyes elemek létrehozása előtt a rendszer ellenőrzi, hogy létezik-e már elem ugyanazzal az azonosítóval.
 
-```nodejs
-/**
- * Create family item if it does not exist
- */
-async function createFamilyItem(itemBody) {
-    try {
-        // read the item to see if it exists
-        const { item } = await client.database(databaseId).container(containerId).item(itemBody.id).read();
-        console.log(`Item with family id ${itemBody.id} already exists\n`);
-    }
-    catch (error) {
+   ```nodejs
+   /**
+   * Create family item if it does not exist
+   */
+  async function createFamilyItem(itemBody) {
+     try {
+         // read the item to see if it exists
+         const { item } = await client.database(databaseId).container(containerId).item(itemBody.id).read();
+         console.log(`Item with family id ${itemBody.id} already exists\n`);
+     }
+     catch (error) {
         // create the family item if it does not exist
         if (error.code === HttpStatusCodes.NOTFOUND) {
             const { item } = await client.database(databaseId).container(containerId).items.create(itemBody);
@@ -469,31 +467,32 @@ async function createFamilyItem(itemBody) {
         } else {
             throw error;
         }
-    }
-};
-```
+     }
+   };
+   ```
 
-Másolja és illessze be az alábbi kódot a **readContainer** függvény meghívása alá a **createFamilyItem** függvény végrehajtásához.
-```nodejs
-createDatabase()
-    .then(() => readDatabase())
-    .then(() => createContainer())
-    .then(() => readContainer())
+1. Másolja és illessze be az alábbi kódot a **readContainer** függvény meghívása alá a **createFamilyItem** függvény végrehajtásához.
 
-    // ADD THIS PART TO YOUR CODE
-    .then(() => createFamilyItem(config.items.Andersen))
-    .then(() => createFamilyItem(config.items.Wakefield))
-    // ENDS HERE
+   ```nodejs
+   createDatabase()
+     .then(() => readDatabase())
+     .then(() => createContainer())
+     .then(() => readContainer())
 
-    .then(() => { exit(`Completed successfully`); })
-    .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
-```
+     // ADD THIS PART TO YOUR CODE
+     .then(() => createFamilyItem(config.items.Andersen))
+     .then(() => createFamilyItem(config.items.Wakefield))
+     // ENDS HERE
 
-A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi parancsot: 
+     .then(() => { exit(`Completed successfully`); })
+     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
+   ```
 
-```bash 
-node app.js
-```
+1. A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi parancsot: 
+
+   ```bash 
+   node app.js
+   ```
 
 Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-elemet.
 
@@ -501,17 +500,17 @@ Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-elemet.
 ## <a id="Query"></a>8. lépés: Az Azure Cosmos DB-erőforrások lekérdezése
 Az Azure Cosmos DB támogatja az egyes tárolókban tárolt JSON-dokumentumokon végzett [részletes lekérdezéseket](sql-api-sql-query.md). Az alábbi mintakód egy olyan lekérdezést mutat be, amelyet a tárolóban található dokumentumokra vonatkozóan futtathat le.
 
-Másolja és illessze be a **queryContainer** függvényt a **createFamilyItem** függvény alá az app.js fájlban. Az Azure Cosmos DB támogatja az SQL-szerű lekérdezéseket, ahogyan azt az alábbi példa is mutatja. A bonyolult lekérdezések felépítésével kapcsolatos további információkért tekintse meg a [Query Playground](https://www.documentdb.com/sql/demo) (Tesztlekérdezések) szakaszt, valamint a [lekérdezésekre vonatkozó dokumentációt](sql-api-sql-query.md).
+1. Másolja és illessze be a **queryContainer** függvényt a **createFamilyItem** függvény alá az app.js fájlban. Az Azure Cosmos DB támogatja az SQL-szerű lekérdezéseket, ahogyan azt az alábbi példa is mutatja. A bonyolult lekérdezések felépítésével kapcsolatos további információkért tekintse meg a [Query Playground](https://www.documentdb.com/sql/demo) (Tesztlekérdezések) szakaszt, valamint a [lekérdezésekre vonatkozó dokumentációt](sql-api-sql-query.md).
 
-```nodejs
-/**
- * Query the container using SQL
- */
-async function queryContainer() {
-    console.log(`Querying container:\n${config.container.id}`);
+   ```nodejs
+   /**
+   * Query the container using SQL
+    */
+   async function queryContainer() {
+     console.log(`Querying container:\n${config.container.id}`);
 
-    // query to return all children in a family
-    const querySpec = {
+     // query to return all children in a family
+     const querySpec = {
         query: "SELECT VALUE r.children FROM root r WHERE r.lastName = @lastName",
         parameters: [
             {
@@ -526,76 +525,78 @@ async function queryContainer() {
         let resultString = JSON.stringify(queryResult);
         console.log(`\tQuery returned ${resultString}\n`);
     }
-};
-```
+   };
+   ```
 
-Másolja és illessze be az alábbi kódot a **createFamilyItem** függvény meghívásai alá a **queryContainer** függvény végrehajtásához.
+1. Másolja és illessze be az alábbi kódot a **createFamilyItem** függvény meghívásai alá a **queryContainer** függvény végrehajtásához.
 
-```nodejs
-createDatabase()
-    .then(() => readDatabase())
-    .then(() => createContainer())
-    .then(() => readContainer())
-    .then(() => createFamilyItem(config.items.Andersen))
-    .then(() => createFamilyItem(config.items.Wakefield))
+   ```nodejs
+   createDatabase()
+     .then(() => readDatabase())
+     .then(() => createContainer())
+     .then(() => readContainer())
+     .then(() => createFamilyItem(config.items.Andersen))
+     .then(() => createFamilyItem(config.items.Wakefield))
 
-    // ADD THIS PART TO YOUR CODE
-    .then(() => queryContainer())
-    // ENDS HERE
+     // ADD THIS PART TO YOUR CODE
+     .then(() => queryContainer())
+     // ENDS HERE
 
-    .then(() => { exit(`Completed successfully`); })
-    .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
-```
+     .then(() => { exit(`Completed successfully`); })
+     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
+   ```
 
-A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi parancsot:
+1. A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi parancsot:
 
-```bash 
-node app.js
-```
+   ```bash 
+   node app.js
+   ```
 
 Gratulálunk! Sikeresen lekérdezte az Azure Cosmos DB-elemeket.
 
 ## <a id="ReplaceItem"></a>9. lépés: Elemek cseréje
 Az Azure Cosmos DB támogatja az elemek tartalmának cseréjét.
 
-Másolja és illessze be a **replaceFamilyItem** függvényt a **queryContainer** függvény alá az app.js fájlban. Vegye figyelembe, hogy a gyermekek „szint” tulajdonságát 6-os értékre módosítottuk a korábbi 5-ös értékről.
+1. Másolja és illessze be a **replaceFamilyItem** függvényt a **queryContainer** függvény alá az app.js fájlban. Vegye figyelembe, hogy a gyermekek „szint” tulajdonságát 6-os értékre módosítottuk a korábbi 5-ös értékről.
 
-```nodejs
-// ADD THIS PART TO YOUR CODE
-/**
- * Replace the item by ID.
- */
-async function replaceFamilyItem(itemBody) {
-    console.log(`Replacing item:\n${itemBody.id}\n`);
-    // Change property 'grade'
-    itemBody.children[0].grade = 6;
-    const { item } = await client.database(databaseId).container(containerId).item(itemBody.id).replace(itemBody);
-};
-```
-Másolja és illessze be az alábbi kódot a **queryContainer** függvény meghívása alá a **replaceFamilyItem** függvény végrehajtásához. Továbbá adja hozzá a **queryContainer** függvényt meghívó kódot annak megerősítése érdekében, hogy az elem módosítása sikeres volt.
+   ```nodejs
+   // ADD THIS PART TO YOUR CODE
+   /**
+   * Replace the item by ID.
+   */
+   async function replaceFamilyItem(itemBody) {
+      console.log(`Replacing item:\n${itemBody.id}\n`);
+      // Change property 'grade'
+      itemBody.children[0].grade = 6;
+      const { item } = await client.database(databaseId).container(containerId).item(itemBody.id).replace(itemBody);
+   };
+   ```
 
-```nodejs
-createDatabase()
-    .then(() => readDatabase())
-    .then(() => createContainer())
-    .then(() => readContainer())
-    .then(() => createFamilyItem(config.items.Andersen))
-    .then(() => createFamilyItem(config.items.Wakefield))
-    .then(() => queryContainer())
+1. Másolja és illessze be az alábbi kódot a **queryContainer** függvény meghívása alá a **replaceFamilyItem** függvény végrehajtásához. Továbbá adja hozzá a **queryContainer** függvényt meghívó kódot annak megerősítése érdekében, hogy az elem módosítása sikeres volt.
 
-    // ADD THIS PART TO YOUR CODE
-    .then(() => replaceFamilyItem(config.items.Andersen))
-    .then(() => queryContainer())
-    // ENDS HERE
+   ```nodejs
+   createDatabase()
+     .then(() => readDatabase())
+     .then(() => createContainer())
+     .then(() => readContainer())
+     .then(() => createFamilyItem(config.items.Andersen))
+     .then(() => createFamilyItem(config.items.Wakefield))
+     .then(() => queryContainer())
 
-    .then(() => { exit(`Completed successfully`); })
-    .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
-```
-A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi parancsot:
+     // ADD THIS PART TO YOUR CODE
+     .then(() => replaceFamilyItem(config.items.Andersen))
+     .then(() => queryContainer())
+     // ENDS HERE
 
-```bash 
-node app.js
-```
+     .then(() => { exit(`Completed successfully`); })
+     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
+   ```
+
+1. A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi parancsot:
+
+   ```bash 
+   node app.js
+   ```
 
 Gratulálunk! Sikeresen lecserélt egy Azure Cosmos DB-elemet.
 
@@ -603,45 +604,45 @@ Gratulálunk! Sikeresen lecserélt egy Azure Cosmos DB-elemet.
 
 Az Azure Cosmos DB támogatja a JSON-elemek törlését.
 
-Másolja és illessze be a **deleteFamilyItem** függvényt a **replaceFamilyItem** függvény alá.
+1. Másolja és illessze be a **deleteFamilyItem** függvényt a **replaceFamilyItem** függvény alá.
 
-```nodejs
-/**
- * Delete the item by ID.
- */
-async function deleteFamilyItem(itemBody) {
-    await client.database(databaseId).container(containerId).item(itemBody.id).delete(itemBody);
-    console.log(`Deleted item:\n${itemBody.id}\n`);
-};
-```
+   ```nodejs
+  /**
+  * Delete the item by ID.
+  */
+   async function deleteFamilyItem(itemBody) {
+      await client.database(databaseId).container(containerId).item(itemBody.id).delete(itemBody);
+      console.log(`Deleted item:\n${itemBody.id}\n`);
+   };
+   ```
 
-Másolja és illessze be az alábbi kódot a második **queryContainer** függvény meghívása alá a **deleteFamilyItem** függvény végrehajtásához.
+1. Másolja és illessze be az alábbi kódot a második **queryContainer** függvény meghívása alá a **deleteFamilyItem** függvény végrehajtásához.
 
-```nodejs
-createDatabase()
-    .then(() => readDatabase())
-    .then(() => createContainer())
-    .then(() => readContainer())
-    .then(() => createFamilyItem(config.items.Andersen))
-    .then(() => createFamilyItem(config.items.Wakefield))
-    .then(() => queryContainer
-    ())
-    .then(() => replaceFamilyItem(config.items.Andersen))
-    .then(() => queryContainer())
+   ```nodejs
+   createDatabase()
+      .then(() => readDatabase())
+      .then(() => createContainer())
+      .then(() => readContainer())
+      .then(() => createFamilyItem(config.items.Andersen))
+      .then(() => createFamilyItem(config.items.Wakefield))
+      .then(() => queryContainer
+      ())
+      .then(() => replaceFamilyItem(config.items.Andersen))
+      .then(() => queryContainer())
 
     // ADD THIS PART TO YOUR CODE
-    .then(() => deleteFamilyItem(config.items.Andersen))
+      .then(() => deleteFamilyItem(config.items.Andersen))
     // ENDS HERE
 
     .then(() => { exit(`Completed successfully`); })
     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
-```
+   ```
 
-A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi parancsot: 
+1. A terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi parancsot: 
 
-```bash 
-node app.js
-```
+   ```bash 
+   node app.js
+   ```
 
 Gratulálunk! Sikeresen törölt egy Azure Cosmos DB-elemet.
 
@@ -649,42 +650,43 @@ Gratulálunk! Sikeresen törölt egy Azure Cosmos DB-elemet.
 
 A létrehozott adatbázis törlésével az adatbázis és az összes gyermekerőforrás (tárolók, elemek stb.) is törlődik.
 
-Másolja és illessze be a **cleanup** függvényt a **deleteFamilyItem** függvény alá az adatbázis, valamint annak minden gyermekerőforrása törléséhez.
+1. Másolja és illessze be a **cleanup** függvényt a **deleteFamilyItem** függvény alá az adatbázis, valamint annak minden gyermekerőforrása törléséhez.
 
-```nodejs
-/**
- * Cleanup the database and container on completion
- */
-async function cleanup() {
-    await client.database(databaseId).delete();
-}
-```
+   ```nodejs
+   /**
+   * Cleanup the database and container on completion
+   */
+   async function cleanup() {
+     await client.database(databaseId).delete();
+   }
+   ```
 
-Másolja és illessze be az alábbi kódot a **deleteFamilyItem** függvény meghívása alá a **cleanup** függvény végrehajtásához.
+1. Másolja és illessze be az alábbi kódot a **deleteFamilyItem** függvény meghívása alá a **cleanup** függvény végrehajtásához.
 
-```nodejs
-createDatabase()
-    .then(() => readDatabase())
-    .then(() => createContainer())
-    .then(() => readContainer())
-    .then(() => createFamilyItem(config.items.Andersen))
-    .then(() => createFamilyItem(config.items.Wakefield))
-    .then(() => queryContainer())
-    .then(() => replaceFamilyItem(config.items.Andersen))
-    .then(() => queryContainer())
-    .then(() => deleteFamilyItem(config.items.Andersen))
+   ```nodejs
+   createDatabase()
+      .then(() => readDatabase())
+      .then(() => createContainer())
+      .then(() => readContainer())
+      .then(() => createFamilyItem(config.items.Andersen))
+      .then(() => createFamilyItem(config.items.Wakefield))
+      .then(() => queryContainer())
+      .then(() => replaceFamilyItem(config.items.Andersen))
+      .then(() => queryContainer())
+      .then(() => deleteFamilyItem(config.items.Andersen))
 
-    // ADD THIS PART TO YOUR CODE
-    .then(() => cleanup())
-    // ENDS HERE
+      // ADD THIS PART TO YOUR CODE
+      .then(() => cleanup())
+      // ENDS HERE
 
-    .then(() => { exit(`Completed successfully`); })
-    .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
-```
+      .then(() => { exit(`Completed successfully`); })
+      .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
+   ```
 
 ## <a id="Run"></a>12. lépés: A teljes Node.js-alkalmazás futtatása
 
 Összességében a kódnak így kell kinéznie:
+
 ```nodejs
 const CosmosClient = require('@azure/cosmos').CosmosClient;
 
@@ -837,6 +839,7 @@ node app.js
 
 Meg kell jelennie az első lépések alkalmazás kimenetének. A kimenetnek meg kell egyeznie az alábbi példaszöveggel.
 
+   ```
     Created database:
     FamilyDatabase
 
@@ -871,6 +874,7 @@ Meg kell jelennie az első lépések alkalmazás kimenetének. A kimenetnek meg 
 
     Completed successfully
     Press any key to exit
+   ```
 
 Gratulálunk! Ezzel befejezte a Node.js-oktatóanyagot, és létrehozta első saját Azure Cosmos DB-konzolalkalmazását!
 
@@ -878,7 +882,7 @@ Gratulálunk! Ezzel befejezte a Node.js-oktatóanyagot, és létrehozta első sa
 
 Ha nincs ideje az oktatóanyag lépéseinek végrehajtására, vagy csak szeretné letölteni a kódot, a [GitHubon](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started ) beszerezheti azt.
 
-A cikkben szereplő teljes kódot tartalmazó kezdő megoldás futtatásához az alábbiakra lesz szüksége:
+A cikkben szereplő teljes kódot tartalmazó kezdő megoldás futtatásához az alábbi lépéseket kell végrehajtania:
 
 * Egy [Azure Cosmos DB-fiók][create-account].
 * A GitHubon elérhető [Kezdeti lépések](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started) megoldás.
@@ -898,6 +902,7 @@ node app.js
 Ennyi az egész, és máris jó úton jár! 
 
 ## <a name="next-steps"></a>További lépések
+
 * Összetettebb Node.js-mintát szeretne használni? Lásd: [Node.js-webalkalmazás létrehozása az Azure Cosmos DB használatával](sql-api-nodejs-application.md).
 * Ismerje meg, hogyan [figyelhet egy Azure Cosmos DB-fiókot](monitor-accounts.md).
 * Futtasson lekérdezéseket a minta-adatkészleteken a [Query Playground](https://www.documentdb.com/sql/demo) (Tesztlekérdezések) használatával.

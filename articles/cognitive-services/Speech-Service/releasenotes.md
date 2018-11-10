@@ -8,16 +8,47 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 10/12/2018
+ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: b5e4d239121b2449a45dfce826c99765f1c3f4be
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e2c676932541866df081f6db54fa0b1ec4da7088
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471137"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218593"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
+
+## <a name="speech-service-sdk-110"></a>Beszédszolgáltatás 1.1.0-s SDK
+
+**Új funkciók**
+
+* Android x86/x64 támogatása.
+* Proxy-támogatás: A SpeechConfig objektumban, most meghívhat egy függvényt a proxyadatokat (állomásnév, port, felhasználónév és jelszó) beállítása. Ez a funkció még nem áll rendelkezésre álló IOS-eszközökön.
+* Továbbfejlesztett hibakód és üzenetek. Elismerés hibát adott vissza, ha ez már adta-e meg `Reason` (a törölt esemény) vagy `CancellationDetails` (a felismerés eredményét) való `Error`. A törölt esemény mostantól tartalmaz két további tagok, `ErrorCode` és `ErrorDetails`. A kiszolgáló további információ a hibáról az a jelzett hibát adott vissza, ha most lesz elérhető az új tagjait.
+
+**Fejlesztései**
+
+* További ellenőrzés hozzáadva a felismerő konfigurációs és további hozzáadott hibaüzenet jelenik meg.
+* Hangfájl közepén régóta csend jobb kezelése.
+* NuGet-csomagot: .NET-keretrendszer projektek használhatja a AnyCPU konfigurációs megakadályozása.
+
+**Hibajavítások**
+
+* Rögzített felismerő található kivételek. Ezenkívül kivételek lépett fel, és visszavonva esemény konvertálva.
+* A tulajdonság felügyeleti memóriavesztés ki.
+* Kijavítva a hiba, amelyben a bemeneti hangfájl összeomlási sikerült a felismerő.
+* Kijavítva a hiba, ahol események tudta fogadott munkamenet leállítási esemény után.
+* Rögzített threading néhány versenyhelyzet feltételeket.
+* Rögzített egy IOS-es kompatibilitási probléma, amely egy összeomlási eredményezhet.
+* Jobb stabilitás Android mikrofon támogatás.
+* Kijavítva a hiba, ahol a JavaScript-felismerő lenne figyelmen kívül hagyja a beszédfelismerési nyelv.
+* Kijavítva a hiba megakadályozza a EndpointId beállítása (bizonyos esetekben) a JavaScript.
+* A JavaScript és a hozzáadott hiányzó AddIntent JavaScript-aláírás AddIntent sorrendi módosított paraméter.
+
+**Példák**
+
+* C++ minta hozzáadott a lehívásos és a leküldéses adatfolyam használata a [mintaadattár](https://aka.ms/csspeech/samples).
 
 ## <a name="speech-service-sdk-101"></a>Beszédszolgáltatás 1.0.1 SDK
 

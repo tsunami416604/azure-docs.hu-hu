@@ -10,12 +10,12 @@ ms.component: design
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 1fa31b23aa8df73b13e73da80096596bf1ce2db3
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 92e16104edb46298d6e503b7546449ed71041047
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093300"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005750"
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Az Azure SQL Data Warehouse - nagymértékben párhuzamos feldolgozási (MPP) architektúra
 Ismerje meg, hogyan kombinálja az Azure SQL Data Warehouse a nagymértékben párhuzamos feldolgozási (MPP) és az Azure storage nagy teljesítménye és skálázhatósága eléréséhez. 
@@ -23,7 +23,7 @@ Ismerje meg, hogyan kombinálja az Azure SQL Data Warehouse a nagymértékben p�
 > [!VIDEO https://www.youtube.com/embed/PlyQ8yOb8kc]
 
 ## <a name="mpp-architecture-components"></a>Az MPP architektúra összetevői
-Az SQL Data Warehouse egy horizontális felskálázási architektúra szét a számítási feldolgozás az adatok több csomópont használja. A skálázási egység egy számítási teljesítményt, amely egy adattárházegység néven absztrakciós. Az SQL Data Warehouse elkülöníti a számítási tárolóból, mely lehetővé teszi, hogy skálázható számítási függetlenül az adatok a rendszerben.
+Az SQL Data Warehouse egy horizontális felskálázási architektúra szét a számítási feldolgozás az adatok több csomópont használja. A skálázási egység a számítási teljesítményt, az úgynevezett absztrakciós egy [adattárházegység](what-is-a-data-warehouse-unit-dwu-cdwu.md). Az SQL Data Warehouse elkülöníti a számítási tárolóból, mely lehetővé teszi, hogy skálázható számítási függetlenül az adatok a rendszerben.
 
 ![Az SQL Data Warehouse architektúrája](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
@@ -36,11 +36,11 @@ Az SQL Data Warehouse a tárterület és a számítási műveletek elkülönít�
 * A számítási kapacitás az adatok érintetlenül hagyásával, így csak fizetnie storage.
 * A működési időn belül folytatni tudja a számítási kapacitást.
 
-### <a name="azure-storage"></a>Azure Storage tárterület
+### <a name="azure-storage"></a>Azure Storage
 Az SQL Data warehouse-bA az Azure storage segítségével a felhasználói adatok biztonsága.  Mivel az adatok tárolásának és kezeli az Azure storage, SQL Data Warehouse külön-külön tárhelyet díjat. Az adat, szilánkokra osztott **disztribúciók** a rendszer a teljesítmény optimalizálása érdekében. Kiválaszthatja, melyik horizontális skálázási minta használatával ossza el az adatokat, ha a tábla meghatározása. Az SQL Data Warehouse a horizontális skálázási mintát támogat:
 
 * Kivonat
-* Ciklikus időszeletelés
+* Ciklikus multiplexelés
 * Replikálás
 
 ### <a name="control-node"></a>Vezérlő csomópont

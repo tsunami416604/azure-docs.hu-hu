@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 04/04/2017
-ms.openlocfilehash: 240be0e7dc199a84130739244743d245b780b608
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 2f3d96908cbcb68ff01a6e43696a119bf21d02ce
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902076"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226565"
 ---
 # <a name="overview-diagram-of-azure-machine-learning-studio-capabilities"></a>Az Azure Machine Learning Studio képességeit áttekintő diagram
 A **Microsoft Azure Machine Learning Studio képességeinek áttekintése** diagram átfogó képet nyújt a Machine Learning Studio prediktív elemzési kísérletek kifejlesztéséhez, és azok Azure felhőben történő üzembe helyezéséhez való használatáról.
@@ -39,7 +39,7 @@ Ez a diagram bemutatja, hogyan illeszkednek egymáshoz az egyes elemek.
 ## <a name="download-the-machine-learning-studio-overview-diagram"></a>Töltse le a Machine Learning Studio áttekintési diagramját
 Töltse le a **Microsoft Azure Machine Learning Studio képességeinek áttekintése** diagramot, hogy egy átfogó képet kapjon a Machine Learning Studio képességeiről. Hogy mindig kéznél legyen, kinyomtathatja a diagramot tabloid méretben (11 x 17-es méret).
 
-**Töltse le a diagramot innen: [Microsoft Azure Machine Learning Studio képességeinek áttekintése](http://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
+**Töltse le a diagramot innen: [Microsoft Azure Machine Learning Studio képességeinek áttekintése](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
 
 ![Microsoft Azure Machine Learning Studio képességek áttekintése][studio-overview]
 

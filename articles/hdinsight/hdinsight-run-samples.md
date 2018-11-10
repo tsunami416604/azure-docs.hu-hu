@@ -2,19 +2,19 @@
 title: A HDInsight - Azure Hadoop-minták futtatása
 description: Ismerkedjen meg a megadott minták az Azure HDInsight szolgáltatással. MapReduce-programok data-fürtökön futó PowerShell-parancsfájlokat használja.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 84c28eebc2bcf1bfdfcb0995f1caa05ed19629e2
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: d1da4d10b6346d774c657b0263c9da6278116b61
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250835"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006413"
 ---
 # <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Hadoop MapReduce-minták futtatása a Windows-alapú HDInsight
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
@@ -35,7 +35,7 @@ A Hadoop-kapcsolódó technológiák, például a Java-alapú MapReduce programo
 * [Hadoop-feladatok elküldése a HDInsightban](hadoop/submit-apache-hadoop-jobs-programmatically.md)
 * [Az Azure HDInsight bemutatása][hdinsight-introduction]
 
-Napjainkban sok ember válassza a Hive és Pig MapReduce keresztül.  További információkért lásd:
+Napjainkban sok ember válassza a Hive és Pig MapReduce keresztül.  További információ eléréséhez lásd:
 
 * [Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
 * [A Pig használata a HDInsight](hadoop/hdinsight-use-pig.md)

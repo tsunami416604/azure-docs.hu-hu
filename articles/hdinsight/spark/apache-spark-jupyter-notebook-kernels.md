@@ -3,19 +3,19 @@ title: -Kernelek Jupyter notebook az Azure HDInsight Spark-fürtökön
 description: További információ a PySpark PySpark3 és Spark kernelek Jupyter notebookokhoz elérhető az Azure HDInsight Spark-fürtökkel.
 keywords: a spark, jupyter spark a jupyter notebook
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.author: jasonh
-ms.openlocfilehash: 98c9f260b4be1e335e22b5c68a76e9ffb7316236
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.author: hrasheed
+ms.openlocfilehash: d3694d49256b9844f6e3a76ce83f53be4b42ca48
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697866"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006090"
 ---
 # <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>-Kernelek Jupyter notebook az Azure HDInsight Spark-fürtökön 
 
@@ -82,7 +82,7 @@ Az alábbiakban néhány előnyei az új kernelekkel a Jupyter notebookot HDInsi
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |Futtatják a Hive-lekérdezést a kontext sqlContext ellen. Ha a `-o` paramétert, a lekérdezés eredménye a rendszer megőrzi a %% helyi Python-környezetben egy [Pandas](http://pandas.pydata.org/) dataframe. |
    | helyi |`%%local`<br>`a=1` |A következő sorokban minden kód helyileg hajtja végre. Kód akár a kernelt használja függetlenül érvényes Python2-kódot kell lennie. Igen, akkor is, ha a kiválasztott **PySpark3** vagy **Spark** kernelekkel létrehozásakor a notebook használatakor a `%%local` magic egy cellába, a cella csak rendelkeznie kell érvényes Python2-kód... |
    | naplók |`%%logs` |Az aktuális Livy-munkamenet jelenít meg a naplókat. |
-   | delete |`%%delete -f -s <session number>` |A jelenlegi Livy-végpont egy adott munkamenet törlése. Maga a kernel kezdeményezett munkamenet nem törölhető. |
+   | törlés |`%%delete -f -s <session number>` |A jelenlegi Livy-végpont egy adott munkamenet törlése. Maga a kernel kezdeményezett munkamenet nem törölhető. |
    | tisztítás |`%%cleanup -f` |Törli a jelenlegi Livy-végpont gazdanevét a jegyzetfüzet-munkamenet az összes előadáshoz. A kényszerített jelző -f megadása kötelező. |
 
    > [!NOTE]
@@ -153,7 +153,7 @@ Az új kernelekkel fázis fejlődő és idővel részletes lesz. Ez is jelenthet
 ## <a name="seealso"></a>Lásd még:
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
-### <a name="scenarios"></a>Forgatókönyvek
+### <a name="scenarios"></a>Alkalmazási helyzetek
 * [Spark és BI: Interaktív adatelemzés végrehajtása a Spark on HDInsight használatával, BI-eszközökkel](apache-spark-use-bi-tools.md)
 * [Spark és Machine Learning: A Spark on HDInsight használata az épület-hőmérséklet elemzésére HVAC-adatok alapján](apache-spark-ipython-notebook-machine-learning.md)
 * [Spark és Machine Learning: A Spark on HDInsight használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)

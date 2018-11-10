@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 988f77dd0f8f31f6e31e5371ed263d4c4195c105
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: ca19ce2cca314950adc40bbf065dec80e7fa3e1f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984873"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227926"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure Automation forgatókönyv- és katalógusok
 Ahelyett, hogy a saját forgatókönyveit és moduljait létrehozása az Azure Automationben, számos forgatókönyv esetében, amely már a Microsoft és a Közösség által készített érheti el.  Ezekben a forgatókönyvekben, módosítás nélkül használhatja, vagy kiindulási pontként használhatja őket, és az adott igények szerint szerkesztheti őket.
@@ -22,7 +22,7 @@ Ahelyett, hogy a saját forgatókönyveit és moduljait létrehozása az Azure A
 Megjelenik a runbookot a [forgatókönyv-katalógusában](#runbooks-in-runbook-gallery) és a modulok a [PowerShell-galériából](#modules-in-powerShell-gallery).  Is hozzájárulhat a Közösség által megosztási forgatókönyveket, amelyek fejleszt, lásd: [runbook felvétele a katalógusban](automation-runbook-gallery.md#adding-a-runbook-to-the-runbook-gallery)
 
 ## <a name="runbooks-in-runbook-gallery"></a>Runbookok a Runbook-katalógus
-A [forgatókönyv-katalógusában](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation) runbookok különféle biztosít a Microsoft és a Közösség, amelyet importálhat az Azure Automationbe. Letöltheti a runbook a katalógusból, amelyet üzemeltet a [TechNet Script Center](https://gallery.technet.microsoft.com/scriptcenter/site/upload), vagy a runbookok a katalógusból az Azure Portalon közvetlenül importálhatók.
+A [forgatókönyv-katalógusában](https://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation) runbookok különféle biztosít a Microsoft és a Közösség, amelyet importálhat az Azure Automationbe. Letöltheti a runbook a katalógusból, amelyet üzemeltet a [TechNet Script Center](https://gallery.technet.microsoft.com/scriptcenter/site/upload), vagy a runbookok a katalógusból az Azure Portalon közvetlenül importálhatók.
 
 Csak importálhatja közvetlenül a forgatókönyv-katalógus az Azure portal használatával. Ez a Windows PowerShell-lel függvény nem hajtható végre.
 
@@ -37,7 +37,7 @@ Csak importálhatja közvetlenül a forgatókönyv-katalógus az Azure portal ha
 3. Keresse meg a gyűjteményelem szeretne, és válassza ki azt a részletek megtekintéséhez. A bal oldali további keresési paraméterek megadása a közzétevő és típusát.
    
     ![Tallózás a katalógusban](media/automation-runbook-gallery/browse-gallery.png)
-5. Kattintson a **forrásprojekt megtekintése** elem megtekintéséhez a [TechNet Script Center](http://gallery.technet.microsoft.com/).
+5. Kattintson a **forrásprojekt megtekintése** elem megtekintéséhez a [TechNet Script Center](https://gallery.technet.microsoft.com/).
 6. Egy elem importálásához kattintson a részletek megtekintéséhez, majd kattintson rá a **importálása** gombra.
    
     ![Importálás gomb](media/automation-runbook-gallery/gallery-item-detail.png)
@@ -45,7 +45,7 @@ Csak importálhatja közvetlenül a forgatókönyv-katalógus az Azure portal ha
 8. A runbook megjelenik-e a **Runbookok** az Automation-fiókhoz tartozó lapon.
 
 ### <a name="adding-a-runbook-to-the-runbook-gallery"></a>Egy runbook a runbook-katalógus hozzáadása
-A Microsoft javasolja, hogy a runbookok a Runbook-katalógus, amely úgy gondolja, hogy más felhasználók számára hasznos lehet.  Hozzáadhat egy runbook által [feltölteni a Parancsfájlközpontban a](http://gallery.technet.microsoft.com/site/upload) figyelembe véve a következő részleteket.
+A Microsoft javasolja, hogy a runbookok a Runbook-katalógus, amely úgy gondolja, hogy más felhasználók számára hasznos lehet.  Hozzáadhat egy runbook által [feltölteni a Parancsfájlközpontban a](https://gallery.technet.microsoft.com/site/upload) figyelembe véve a következő részleteket.
 
 * Meg kell adnia *Windows Azure* számára a **kategória** és *Automation* számára a **alkategória** megjeleníteni a runbook a a varázsló.  
 * A feltöltés egyetlen .ps1 vagy .graphrunbook fájlnak kell lennie.  Ha a runbook igényel minden olyan modulok, a gyermek runbookok vagy az eszközök, majd sorolja fel azokat a Küldés leírását és a runbook a Megjegyzések szakaszban.  Ha ez a forgatókönyv több runbook igénylő, töltse fel az egyes külön-külön, és az felsorolja a kapcsolódó runbookok minden ezek leírását. Győződjön meg arról, hogy ugyanazt a címkét használja, így azok megjelennek a kategóriába. Felhasználó fog rendelkezni, olvassa el a leírást, hogy tudja, hogy más runbookokat szükségesek a forgatókönyv működjön.
@@ -100,7 +100,7 @@ PowerShell-modulok a runbookokban használható parancsmagokat tartalmaznak, és
 Python-Runbookok érhetők el a [Script Center-galéria](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=). A Script Center-galéria Python runbookok közreműködhet. Ha Ön, győződjön meg arról, hogy a címke hozzáadása **Python** főágra feltöltésekor.
 
 ## <a name="requesting-a-runbook-or-module"></a>Egy runbook vagy a modul kérése
-Kérelmek küldése [User Voice](https://feedback.azure.com/forums/246290-azure-automation/).  Súgó írása egy runbook van szüksége, vagy PowerShell kérdése van, ha új kérdést tenne fel, hogy [fórum](http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc).
+Kérelmek küldése [User Voice](https://feedback.azure.com/forums/246290-azure-automation/).  Súgó írása egy runbook van szüksége, vagy PowerShell kérdése van, ha új kérdést tenne fel, hogy [fórum](https://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc).
 
 ## <a name="next-steps"></a>További lépések
 * Forgatókönyvekkel való ismerkedéshez tekintse meg [létrehozása vagy importálása az Azure Automation-runbook](automation-creating-importing-runbook.md)

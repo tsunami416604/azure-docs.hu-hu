@@ -1,8 +1,8 @@
 ---
-title: Media Services PlayReady licenc sablon – áttekintés
-description: Ez a témakör áttekintést nyújt a PlayReady licenc sablonból, amely a PlayReady-licencek konfigurálására szolgál.
+title: A Media Services PlayReady licencsablon áttekintése
+description: Ez a témakör áttekintést a PlayReady-licencsablon, amellyel konfigurálhatja a PlayReady-licenc.
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,36 +12,36 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 11/05/2018
 ms.author: juliako
-ms.openlocfilehash: 74a2eb579f38cfc885234fac7fd3ad4be1747ad7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 780fa37351ec590beff6fd2d9e80ec8f22afa84d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788829"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228504"
 ---
-# <a name="media-services-playready-license-template-overview"></a>Media Services PlayReady licenc sablon – áttekintés
-Az Azure Media Services a mostantól egy szolgáltatás, amelynek a PlayReady-licencek segítségével. Amikor a Windows Media player (például Silverlight) számára, hogy a PlayReady-védelemmel ellátott tartalomhoz, a licenc beszerzésével kérelmet küldött a licenctovábbítási szolgáltatásra. Ha a szolgáltatás a kérelem jóváhagyása, a licenc, amely az ügyfélnek küldött és a megadott tartalom lejátszása és visszafejtésére használt ad ki.
+# <a name="media-services-playready-license-template-overview"></a>A Media Services PlayReady licencsablon áttekintése
+Az Azure Media Services PlayReady-licencek továbbításának szolgáltatást most biztosít. Amikor PlayReady-védelemmel ellátott tartalom lejátszása a Media player (például Silverlight) próbál, egy kérelem érkezik a szolgáltatásra vonatkozó licencet beszereznie. Ha a szolgáltatás jóváhagyja a kérést, a licenc van elküldhetők az ügyfélprogramnak, és a megadott tartalom lejátszása és visszafejtésére szolgál kapcsolatos problémák.
 
-A Media Services Ezenfelül API-k, amelyek segítségével konfigurálhatja a PlayReady-licencek. Licencek tartalmazzák a jogokat és korlátozásokat, amelyeket a PlayReady digitális tartalomvédelmi (DRM) felügyeleti runtime, ha a felhasználó megpróbálja lejátszani kényszeríteni szeretné a védett tartalmak.
-Íme néhány példa a PlayReady licenckorlátozások megadása:
+Media Services Ezenfelül API-k, amelyek segítségével konfigurálhatja a PlayReady-licenceket. Licencek tartalmazzák a jogokat és korlátozásokat, amelyeket szeretne a PlayReady digitális jogkezelési runtime kikényszerítésére, hogy egy felhasználó megpróbál játssza le a védett tartalmak.
+Íme néhány példa az Ön által megadott PlayReady-licenc korlátozások:
 
-* A dátumot és időpontot, amelyből a licenc érvényes.
-* A DateTime típusú érték, ha a licenc lejárati. 
-* Az állandó tároló menteni az ügyfélen a licenc. Állandó licencek engedélyezése a tartalom lejátszását offline általában használhatók.
-* A minimális biztonsági szintet, hogy az egy player számára, hogy a tartalmat. 
+* A dátum és idő, amelyből a licenc érvénytelen.
+* A DateTime érték, ha a licenc lejár. 
+* Az állandó tárolóban az ügyfélen menteni licenc. Állandó licencek általában használhatók, hogy a tartalom lejátszása offline állapotban van.
+* A minimális biztonsági szintet, amely egy rendelkeznie kell a tartalmak lejátszásához. 
 * A kimeneti védelmi szint a kimeneti vezérlők audio\video tartalom. 
-* További információkért lásd: a "Kimeneti vezérlők" szakasz (3.5) az a [PlayReady megfelelőségi szabályok](https://www.microsoft.com/playready/licensing/compliance/) dokumentum.
+* További információkért lásd: a "Kimeneti Controls" szakaszban (3.5) az a [PlayReady megfelelőségi szabályok](https://www.microsoft.com/playready/licensing/compliance/) dokumentumot.
 
 > [!NOTE]
-> Jelenleg csak konfigurálhatja a PlayReady-licenc PlayRight. Ez a jogosultság megadása kötelező. A PlayRight lehetőséget ad az ügyfél részére a tartalmat. Is használhatja a PlayRight lejátszás vonatkozó korlátozások konfigurálása. További információkért lásd: [PlayReadyPlayRight](media-services-playready-license-template-overview.md#PlayReadyPlayRight).
+> Jelenleg csak konfigurálhatja a PlayReady-licenc az PlayRight. Ez a jogosultság megadása kötelező. A PlayRight lehetővé teszi az ügyfél a tartalmat. Emellett használhatja a PlayRight lejátszási vonatkozó korlátozások konfigurálása. További információkért lásd: [PlayReadyPlayRight](media-services-playready-license-template-overview.md#PlayReadyPlayRight).
 > 
 > 
 
-A Media Services használatával konfigurálhatja a PlayReady-licencek, konfigurálnia kell a Media Services PlayReady licenc sablonja. A sablon az XML-Fájlban van meghatározva.
+A Media Services használatával konfigurálhatja a PlayReady-licenc, konfigurálnia kell a Media Services PlayReady licencsablon. A sablon XML van meghatározva.
 
-A következő példa bemutatja a legegyszerűbb (és általános) sablont, amely egy adatfolyam-továbbítási alaplicenc konfigurálja. A licenccel rendelkező az ügyfelek is lejátszani a PlayReady-védelemmel ellátott tartalomhoz.
+Az alábbi példa bemutatja a legegyszerűbb (és a leggyakoribb) sablont, amely egy streamelési alaplicenc konfigurálja. A jelen licenc az ügyfelek le tudja játszani a PlayReady-védelemmel ellátott tartalmakat.
 
     <?xml version="1.0" encoding="utf-8"?>
     <PlayReadyLicenseResponseTemplate xmlns:i="http://www.w3.org/2001/XMLSchema-instance" 
@@ -54,34 +54,34 @@ A következő példa bemutatja a legegyszerűbb (és általános) sablont, amely
       </LicenseTemplates>
     </PlayReadyLicenseResponseTemplate>
 
-Az XML-kód megfelel-e a PlayReady licenc sablon XML-séma "PlayReady licenc sablon XML-séma" szakaszában.
+Az XML-fájl a PlayReady licenc sablon XML-séma az "A PlayReady-licenc sablon XML-séma" szakaszban megadott megfelel-e.
 
-A Media Services is meghatároz egy .NET-osztályok szerializálása és deszerializálása irányuló és onnan az XML-fájl használható. A fő osztályok, olvassa el a [Media Services .NET-osztályok](media-services-playready-license-template-overview.md#classes) licenc sablonok konfigurálásához használt.
+A Media Services is meghatároz egy .NET-osztályok szerializálható és deszerializálható, illetve onnan az XML-fájl használható. A fő osztályok, olvassa el a [Media Services .NET-osztályok](media-services-playready-license-template-overview.md#classes) licenc sablonok konfigurálásához használt.
 
-Végpontok közötti például, hogy a .NET-osztályokat használja a PlayReady licencsablon konfigurálása, [a dinamikus titkosítás használata PlayReady és a kézbesítési szolgáltatás](media-services-protect-with-playready-widevine.md).
+Konfigurálhatja a PlayReady-licencsablon .NET-osztályokat használja egy teljes körű példa: [a dinamikus titkosítás használata a PlayReady és a szolgáltatásra vonatkozó](media-services-protect-with-playready-widevine.md).
 
-## <a id="classes"></a>Media Services .NET-osztályok használandó licenc sablonok konfigurálása
-A következő osztályokat a fő .NET-osztályok, amely a Media Services PlayReady licenc sablonok konfigurálására szolgálnak. Ezeket az osztályokat a megadott típus beolvasása leképezése [PlayReady licenc sablon XML-séma](media-services-playready-license-template-overview.md#schema).
+## <a id="classes"></a>Licenc sablonok konfigurálásához használt Media Services .NET-osztályok
+A következő osztályok a Media Services PlayReady-licenc sablonok konfigurálására használt fő .NET-osztályok. Ezeket az osztályokat a megadott leképezése [PlayReady licenc sablon XML-séma](media-services-playready-license-template-overview.md#schema).
 
-A [MediaServicesLicenseTemplateSerializer](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.mediaserviceslicensetemplateserializer.aspx) osztály szerializálása és deszerializálása irányuló és onnan a Media Services licencsablon XML szolgál.
+A [MediaServicesLicenseTemplateSerializer](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.mediaserviceslicensetemplateserializer.aspx) osztály szerializálható és deszerializálható irányuló és onnan a Media Services-licencsablon XML szolgál.
 
 ### <a name="playreadylicenseresponsetemplate"></a>PlayReadyLicenseResponseTemplate
-[PlayReadyLicenseResponseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicenseresponsetemplate.aspx): Ez az osztály a sablon küld vissza a felhasználót a válaszhoz jelenti. Egy egyéni karakterláncot kell megadnia a licenckiszolgáló és az alkalmazás (amelyek hasznosak lehetnek a egyéni alkalmazás logika) között egy mezőt tartalmaz. Egy vagy több licenc sablonok listájának is tartalmaz.
+[PlayReadyLicenseResponseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicenseresponsetemplate.aspx): Ez az osztály a sablon esetében a felhasználónak küldött választ jelenti. A licenckiszolgáló és az alkalmazás (amely lehet hasznos, ha egyéni alkalmazáslogika) között egy egyéni karakterláncot tartalmazó mezőt tartalmaz. Egy vagy több licenc sablonok listáját is tartalmaz.
 
-A "legfelső szintű" osztályt a sablon hierarchiában, mint a válasz sablon tartalmazza a licenc sablonok listáját. A licenc-sablonjai tartalmazzák a (közvetlenül vagy közvetetten) más osztályokat a sablon adatokat alkotó szerializálandó.
+A "legfelső szintű" osztályt, a sablon hierarchia, mint a válasz sablon tartalmazza a licenc sablonok listáját. A licenc-sablonok tartalmaznak (közvetlenül vagy közvetetten) más osztályokat, amelyek elérhetőbbé teszik a sablon adatok szerializálni kell.
 
 ### <a name="playreadylicensetemplate"></a>PlayReadyLicenseTemplate
-[PlayReadyLicenseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicensetemplate.aspx): Ez az osztály a PlayReady-licencek, a felhasználók számára a visszaadandó létrehozásához használt licencsablon jelenti. A tartalomkulcsot a licenc az adatokat tartalmazza. Bármely jogokat vagy korlátozásokat, amely a PlayReady DRM futásidejű ki kell kényszerítenie a tartalomkulcs használata esetén is tartalmaz.
+[PlayReadyLicenseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicensetemplate.aspx): Ez az osztály a PlayReady-licenc visszaadandó felhasználók létrehozásához használt licencsablon jelenti. A tartalomkulcsot a licenc az adatokat tartalmazza. Bármely jogokat vagy korlátozásokat, hogy a PlayReady DRM-futtatókörnyezet ki kell kényszerítenie a tartalomkulcs használatakor is tartalmaz.
 
 ### <a id="PlayReadyPlayRight"></a>PlayReadyPlayRight
-[PlayReadyPlayRight](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright.aspx): Ez az osztály a PlayReady-licenc PlayRight jelenti. Ez a felhasználó számára lehetőséget ad a tartalmat, a licenc, valamint magának a PlayRight (a lejátszás vonatkozó házirend) konfigurált korlátozással. Nagy részét a házirendet a egy PlayRight vonatkozik, amelyet a tartalom még keresztül vezérelheti kimeneti korlátozások miatt. Is kell lennie érvénybe, ha a megadott kimeneti használt korlátozások. Például ha DigitalVideoOnlyContentRestriction engedélyezve van, a DRM futásidejű csak lehetővé teszi, hogy digitális kimenetek felett megjelenő videó. (Analóg videó kimenetek továbbítani a tartalmat nem engedélyezett.)
+[PlayReadyPlayRight](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright.aspx): Ez az osztály a PlayReady-licenc a PlayRight jelenti. A felhasználó ad vissza bármely korlátozások, a licenc, valamint magára a PlayRight (a lejátszás-specifikus szabályzatokat) konfigurálva a tartalom lejátszását. Nagy része a szabályzatot egy PlayRight vonatkozik, amelyek vezérlik a kimenetek, amelyek a tartalom lejátszhatók keresztül típusú kimeneti korlátozások. Is tartalmaz, amelyek kell lennie érvénybe, ha egy adott kimenete szolgál korlátozások. Például ha DigitalVideoOnlyContentRestriction engedélyezve van, a DRM-futtatókörnyezet csak lehetővé teszi, hogy a videó, digitális kimenetek felett megjelenő. (Analóg videó kimenetek nem engedélyezett a tartalom átadni.)
 
 > [!IMPORTANT]
-> Lehet, hogy ezek a típusok korlátozások hatékony, de ezek is hatással lehetnek a felhasználói élmény. Ha a kimeneti védelmet túl szigorú, a tartalom lehet az egyes ügyfelek játsszák le. További információkért lásd: a [PlayReady megfelelőségi szabályok](https://www.microsoft.com/playready/licensing/compliance/).
+> Lehet, hogy az ilyen típusú korlátozások hatékony, de ezek is hatással lehetnek a felhasználói élményt. Ha a kimeneti védelmet túl korlátozó, lehet, hogy a tartalmat az egyes ügyfelek játsszák le. További információkért lásd: a [PlayReady megfelelőségi szabályok](https://www.microsoft.com/playready/licensing/compliance/).
 > 
 > 
 
-Példa a védelmi szintek, hogy támogatja a Silverlight, a következő témakörben: [kimeneti védelmet Silverlight támogatása](http://go.microsoft.com/fwlink/?LinkId=617318).
+Egy példa a védelmi szintek, a Silverlight által támogatott, lásd: [kimeneti védelmet a Silverlight támogatását](https://go.microsoft.com/fwlink/?LinkId=617318).
 
 ## <a id="schema"></a>PlayReady licenc sablon XML-séma
     <?xml version="1.0" encoding="utf-8"?>

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: rkarlin
-ms.openlocfilehash: 5638b71147592ae71c741ca86da68ddfec668af5
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: acb010b0169fd876bf540f7a4115dbabfeda923a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299066"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227195"
 ---
 # <a name="connecting-microsoft-azure-application-gateway-to-azure-security-center"></a>Csatlakozás a Microsoft Azure Application Gateway az Azure Security centerhez
 Ebből a dokumentumból megismerheti, hogy az Application Gateway webalkalmazási tűzfal (WAF) és a Security Centerben való integráció konfigurálásához.
@@ -61,4 +61,4 @@ Ebben a cikkben megtanulta, hogyan integrálható a Security Center az Applicati
 * [Biztonsági állapot monitorozása a Security Centerben](security-center-monitoring.md).
 * [Partnermegoldások monitorozása a Security Centerrel](security-center-partner-solutions.md).
 * [Azure Security Center – gyakori kérdések](security-center-faq.md)
-* [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/).
+* [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/).

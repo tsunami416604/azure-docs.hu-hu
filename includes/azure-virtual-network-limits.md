@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 673faff51c3d06e50941a6982a9f654c28598d86
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: MT
+ms.openlocfilehash: d1c5c9a8709467c9f9ca87c841cffcf77a5b5f0b
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47006511"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219891"
 ---
 <a name="virtual-networking-limits-classic"></a>Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvényesek, amelyek kezelése előfizetésenként, a klasszikus üzemi modellel történik. Ismerje meg, hogyan [megtekintheti az aktuális erőforrás-használat elleni az előfizetési korlátok](../articles/networking/check-usage-against-limits.md).
 
@@ -21,7 +21,7 @@ ms.locfileid: "47006511"
 | --- | --- | --- |
 | Virtuális hálózatok |50 |100 |
 | Helyi hálózati helyek |20 |kapcsolatfelvétel az ügyfélszolgálattal |
-| DNS-kiszolgálók száma virtuális hálózatonként |20 |100 |
+| DNS-kiszolgálók száma virtuális hálózatonként |20 |20 |
 | Magánhálózati IP-címek száma virtuális hálózatonként |4096 |4096 |
 | Egyidejű TCP vagy UDP-folyamatok egy virtuális gép vagy szerepkörpéldány adapterenként |500 000 |500 000 |
 | Hálózati biztonsági csoportok (NSG) |100 |200 |

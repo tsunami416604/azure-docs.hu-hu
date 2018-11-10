@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 425aa26c07675d57de6892adb5792eb5573f94b1
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: c84d015da907c8792f09d1d60e6bc8eddb7e2957
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747983"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005598"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>A beágyazott virtualizálás az Azure-ban az Azure virtuális gép hiba elhárítása
 
@@ -101,7 +101,7 @@ Csatlakoztatja a hibás virtuális Gépnek, a mentési virtuális Gépet a köve
 
 11. Válassza ki **egy virtuális merevlemez csatlakoztatása később**.
 
-    ![a csatolás egy újabb virtuális merevlemez lehetőséget bemutató kép](/media/troubleshoot-vm-by-use-nested-virtualization/attach-disk-later.png)
+    ![a csatolás egy újabb virtuális merevlemez lehetőséget bemutató kép](media/troubleshoot-vm-by-use-nested-virtualization/attach-disk-later.png)
 
 12. Válassza ki **Befejezés** a virtuális gép létrehozásakor.
 
@@ -109,11 +109,11 @@ Csatlakoztatja a hibás virtuális Gépnek, a mentési virtuális Gépet a köve
 
 14. Válassza ki **IDE-vezérlő 0**válassza **merevlemez**, és kattintson a **Hozzáadás**.
 
-    ![új rögzített meghajtót ad hozzá a bemutató kép](/media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
+    ![új rögzített meghajtót ad hozzá a bemutató kép](media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
 
 15. A **fizikai merevlemez**, jelölje ki a lemezt a virtuális Gépet, amely az Azure virtuális géphez csatolt probléma. Ha nem látja az összes felsorolt lemezt, ellenőrizze, ha a lemez értéke offline Lemezkezelés használatával.
 
-    ![a csatlakoztatja a lemezt bemutató kép](/media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
+    ![a csatlakoztatja a lemezt bemutató kép](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
 
 
 17. Válassza az **Apply** (Alkalmaz) lehetőséget, majd kattintson az **OK** gombra.
@@ -130,11 +130,11 @@ Csatlakoztatja a hibás virtuális Gépnek, a mentési virtuális Gépet a köve
 
 3.  Lépjen a **összes erőforrás**, keresse meg a lemez neve, és válassza ki a lemezt.
 
-     ![bemutató kép megkeresi a lemezen](/media/troubleshoot-vm-by-use-nested-virtualization/search-disk.png)     
+     ![bemutató kép megkeresi a lemezen](media/troubleshoot-vm-by-use-nested-virtualization/search-disk.png)     
 
 4. Kattintson a **virtuális gép létrehozása**.
 
-     ![bemutató kép virtuális gépet hoz létre a lemezről](./media/troubleshoot-vm-by-use-nested-virtualization/create-vm-from-vhd.png) 
+     ![bemutató kép virtuális gépet hoz létre a lemezről](media/troubleshoot-vm-by-use-nested-virtualization/create-vm-from-vhd.png) 
 
 Azure PowerShell használatával a virtuális gép létrehozása a lemezről. További információkért lásd: [az új virtuális gép létrehozása egy meglévő lemezről a PowerShell használatával](../windows/create-vm-specialized.md#create-the-new-vm). 
 

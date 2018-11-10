@@ -6,12 +6,12 @@ description: Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmaz
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 65430c4bb1f03816bad25bf93f5dba3c95cb9f0c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 1cb70c75dfb2d738227cc2052ba653288cac1fb3
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389094"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219800"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -1105,6 +1105,12 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                             <a href="/azure/databox-family/">
                                                 <img src="media/index/Service-icon.png" alt="" />
                                                 <p>Data Box</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/avere-vfxt/">
+                                                <img src="media/index/avere.svg" alt="" />
+                                                <p>Avere vFXT</p>
                                             </a>
                                         </li>
                                         <li>
@@ -2500,6 +2506,25 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                                 <div class="cardText">
                                                     <h3>Data Box termékcsalád</h3>
                                                     <p>Tárolóeszköz-család, amely lehetővé teszi az offline és a hálózatalapú adatátvitelt</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/en-us/azure/avere-vfxt/" data-linktype="absolute-path">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img alt="" src="media/index/avere.svg" data-linktype="relative-path">
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Avere vFXT</h3>
+                                                    <p>Nagy teljesítményű, fájlalapú számítási feladatok futtatása az Azure-ban</p>
                                                 </div>
                                             </div>
                                         </div>

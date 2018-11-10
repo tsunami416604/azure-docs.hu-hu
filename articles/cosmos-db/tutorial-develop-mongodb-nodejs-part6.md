@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 06/17/2018
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: a1705913e1656901d0a87a3cebb2eb69a6c7ad63
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 667c1fbce398e06f9f2a6edca21935ae1062a737
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698587"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740570"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-6-add-post-put-and-delete-functions-to-the-app"></a>MongoDB-alkalmazás létrehozása az Angular és az Azure Cosmos DB használatával – 6. rész: Post, Put és Delete függvények hozzáadása az alkalmazáshoz
 
@@ -88,13 +88,13 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [5
     });
     ```
 
-5. Az alkalmazást futtatva ellenőrizze, hogy minden működik-e. A Visual Studio Code-ban mentse az összes módosítást, kattintson a **Debug** (Hibakeresés) gombra ![Hibakeresés ikon a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png) a bal oldalon, majd a **Start Debugging** (Hibakeresés indítása) gombra ![Hibakeresés indítása ikon a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png).
+5. Az alkalmazást futtatva ellenőrizze, hogy minden működik-e. A Visual Studio Code-ban mentse az összes módosítást, válassza a **Debug** (Hibakeresés) gombot ![Hibakeresés ikon a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png) a bal oldalon, majd a **Start Debugging** (Hibakeresés indítása) gombot ![Hibakeresés indítása ikon a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png).
 
 6. Most lépjen vissza a webböngészőjére, és nyissa meg a Fejlesztői eszközök Hálózat lapját – ehhez a legtöbb gépen az F12 billentyűt kell lenyomni. Lépjen a [http://localhost:3000](http://localhost:3000) helyre, és tekintse meg a hálózaton keresztül végzett hívásokat.
 
     ![Hálózat lap a Chrome böngészőben a hálózati tevékenységgel](./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png)
 
-7. Adjon hozzá egy új fő képet az **Add New Hero** (Új fő kép hozzáadása) gombra kattintva. Adja meg a „999” azonosítót, a „Fred” nevet és a „Hello” üzenetet, majd kattintson a **Save** (Mentés) gombra. A Hálózat lapon látható, hogy POST-kérést küldött egy új fő képre vonatkozóan. 
+7. Adjon hozzá egy új fő képet az **Add New Hero** (Új fő kép hozzáadása) gomb választásával. Adja meg a „999” azonosítót, a „Fred” nevet és a „Hello” üzenetet, majd válassza a **Save** (Mentés) gombot. A Hálózat lapon látható, hogy POST-kérést küldött egy új fő képre vonatkozóan. 
 
     ![Hálózat lap a Chrome böngészőben a Get és Post függvények hálózati tevékenységével](./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png)
 
@@ -173,17 +173,17 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [5
     };
     ```
 
-4. Most, hogy frissítettük a kódot, kattintson az **Restart** (Újraindítás) gombra ![Újraindítás gomb a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png) a Visual Studio Code-ban.
+4. Most, hogy frissítettük a kódot, válassza a **Restart** (Újraindítás) gombot ![Újraindítás gomb a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png) a Visual Studio Code-ban.
 
-5. Frissítse az oldalt a webböngészőben, és kattintson az **Add New Hero** (Új fő kép hozzáadása) gombra. Adjon hozzá egy új fő képet a „9” azonosítóval, a „Starlord” névvel és a „Hi” üzenettel. Az új fő kép mentéséhez kattintson a **Save** (Mentés) gombra.
+5. Frissítse az oldalt a webböngészőben, és válassza az **Add New Hero** (Új fő kép hozzáadása) gombot. Adjon hozzá egy új fő képet a „9” azonosítóval, a „Starlord” névvel és a „Hi” üzenettel. Az új fő kép mentéséhez válassza a **Save** (Mentés) gombot.
 
-6. Most jelölje ki a **Starlord** fő képet, és a „Hi” üzenet helyett adja meg a „Bye” üzenetet, majd kattintson a **Save** (Mentés) gombra. 
+6. Most jelölje ki a **Starlord** fő képet, és a „Hi” üzenet helyett adja meg a „Bye” üzenetet, majd válassza a **Save** (Mentés) gombot. 
 
     Most a Hálózat lapon az azonosítót kiválasztva megtekintheti a csomag hasznos adatait. A hasznos adatokban láthatja, hogy az üzenet most már a „Bye”.
 
     ![Fő képek alkalmazás és a Hálózat lap a hasznos adatokkal](./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png) 
 
-    A felhasználói felületen törölheti is az egyik fő képet, és láthatja, hogy a törlési műveletek végrehajtása mennyi ideig tart. Ennek kipróbálásához kattintson a „Delete” (Törlés) gombra a „Fred” nevű fő képnél.
+    A felhasználói felületen törölheti is az egyik fő képet, és láthatja, hogy a törlési műveletek végrehajtása mennyi ideig tart. Ennek kipróbálásához válassza a „Delete” (Törlés) gombot a „Fred” nevű fő képnél.
 
     ![Főképalkalmazás és a Hálózat lap a függvények végrehajtásához szükséges időkkel](./media/tutorial-develop-mongodb-nodejs-part6/times.png) 
 

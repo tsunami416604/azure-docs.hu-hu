@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 662d4b8812ca4b92c1130b9c2c38771e7ec30a06
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: e116dbf1d49fed1a47b830f9a57cd77a33b7ea9c
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393995"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740720"
 ---
-# <a name="load-sample-data-into-an-azure-cosmos-db-cassandra-api-table"></a>Mintaadatok betöltése egy Azure Cosmos DB Cassandra API-táblába
+# <a name="tutorial-load-sample-data-into-an-azure-cosmos-db-cassandra-api-table"></a>Oktatóanyag: Mintaadatok betöltése egy Azure Cosmos DB Cassandra API-táblába
 
 Ez az oktatóanyag azt mutatja be, hogyan tölthet be mintául kapott felhasználói adatokat egy táblába az Azure Cosmos DB Cassandra API-fiókban egy Java-alkalmazással. A Java-alkalmazás a [Java-illesztőt](https://github.com/datastax/java-driver) használja, és betölti a felhasználói adatokat, például a felhasználói azonosítót, a felhasználónevet és a felhasználó városát. 
 
@@ -32,43 +32,45 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 ## <a name="load-data-into-the-table"></a>Adatok betöltése a táblába
 
-Nyissa meg a „UserRepository.java” fájlt az „src\main\java\com\azure\cosmosdb\cassandra” mappában, és adja hozzá a kódot, amely beilleszti a user_id, user_name és user_bcity mezőket a táblába:
+Az adatok Cassandra API-táblába történő betöltéséhez hajtsa végre a következő lépéseket:
 
-```java
-/**
-* Insert a row into user table
-*
-* @param id   user_id
-* @param name user_name
-* @param city user_bcity
-*/
-public void insertUser(PreparedStatement statement, int id, String name, String city) {
+1. Nyissa meg a „UserRepository.java” fájlt az „src\main\java\com\azure\cosmosdb\cassandra” mappában, és adja hozzá a kódot, amely beilleszti a user_id, user_name és user_bcity mezőket a táblába:
+
+   ```java
+   /**
+   * Insert a row into user table
+   *
+   * @param id   user_id
+   * @param name user_name
+   * @param city user_bcity
+   */
+   public void insertUser(PreparedStatement statement, int id, String name, String city) {
         BoundStatement boundStatement = new BoundStatement(statement);
         session.execute(boundStatement.bind(id, name, city));
-}
+   }
 
-/**
-* Create a PrepareStatement to insert a row to user table
-*
-* @return PreparedStatement
-*/
-public PreparedStatement prepareInsertStatement() {
-    final String insertStatement = "INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (?,?,?)";
-    return session.prepare(insertStatement);
-}
-```
+   /**
+   * Create a PrepareStatement to insert a row to user table
+   *
+   * @return PreparedStatement
+   */
+   public PreparedStatement prepareInsertStatement() {
+      final String insertStatement = "INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (?,?,?)";
+   return session.prepare(insertStatement);
+   }
+   ```
  
-Nyissa meg a „UserProfile.java” fájlt az „src\main\java\com\azure\cosmosdb\cassandra” mappában. Ez az osztály tartalmazza a fő metódust, amely meghívja a korábban definiált createKeyspace és createTable metódusokat. Ezután fűzze hozzá a következő kódot, amely mintaadatokat illeszt a Cassandra API-táblába.
+2. Nyissa meg a „UserProfile.java” fájlt az „src\main\java\com\azure\cosmosdb\cassandra” mappában. Ez az osztály tartalmazza a fő metódust, amely meghívja a korábban definiált createKeyspace és createTable metódusokat. Ezután fűzze hozzá a következő kódot, amely mintaadatokat illeszt a Cassandra API-táblába.
 
-```java
-//Insert rows into user table
-PreparedStatement preparedStatement = repository.prepareInsertStatement();
-    repository.insertUser(preparedStatement, 1, "JohnH", "Seattle");
-    repository.insertUser(preparedStatement, 2, "EricK", "Spokane");
-    repository.insertUser(preparedStatement, 3, "MatthewP", "Tacoma");
-    repository.insertUser(preparedStatement, 4, "DavidA", "Renton");
-    repository.insertUser(preparedStatement, 5, "PeterS", "Everett");
-```
+   ```java
+   //Insert rows into user table
+   PreparedStatement preparedStatement = repository.prepareInsertStatement();
+     repository.insertUser(preparedStatement, 1, "JohnH", "Seattle");
+     repository.insertUser(preparedStatement, 2, "EricK", "Spokane");
+     repository.insertUser(preparedStatement, 3, "MatthewP", "Tacoma");
+     repository.insertUser(preparedStatement, 4, "DavidA", "Renton");
+     repository.insertUser(preparedStatement, 5, "PeterS", "Everett");
+   ```
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 

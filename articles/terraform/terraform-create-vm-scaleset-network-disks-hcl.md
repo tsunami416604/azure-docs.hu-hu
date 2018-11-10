@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2018
-ms.openlocfilehash: 5fe85d74b247e890790ec577d813d42f15290cde
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 5bf3e6d8839c3ec08bae03772d9a7ab011c67857
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140908"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228402"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Azure-beli virtuálisgép-méretezési csoport létrehozása a Terraformmal
 
@@ -569,6 +569,6 @@ Az eltávolítási folyamat több percig is eltarthat.
 Ebben a cikkben megismerte az Azure virtuálisgép-méretezési csoport Terraformmal történő létrehozását. Íme néhány további segédlet, amelyek segítségével többet tudhat meg a Terraform az Azure-on történő használatáról: 
 
  [Terraform Hub a Microsoft.com webhelyen](https://docs.microsoft.com/azure/terraform/)  
- [Terraform: Azure szolgáltatói dokumentáció](http://aka.ms/terraform)  
- [Terraform: Azure-szolgáltatói forrás](http://aka.ms/tfgit)  
- [Terraform: Azure-modulok](http://aka.ms/tfmodules)
+ [Terraform: Azure szolgáltatói dokumentáció](https://aka.ms/terraform)  
+ [Terraform: Azure-szolgáltatói forrás](https://aka.ms/tfgit)  
+ [Terraform: Azure-modulok](https://aka.ms/tfmodules)

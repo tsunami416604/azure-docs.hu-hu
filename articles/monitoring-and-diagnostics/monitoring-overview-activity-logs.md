@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 40d1f73f4aed3f3f35f3f5c9de951e9b9fd271bc
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 538481088d6355729486c1d9fbaaa6af16a1b841
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963319"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006022"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Az Azure-tevékenységnapló-előfizetési tevékenység figyelése
 
@@ -34,9 +34,6 @@ A Tevékenységnaplót, az Azure portal, a parancssori felület, a PowerShell-pa
 
 > [!NOTE]
 >  [Az újabb riasztások](monitoring-overview-unified-alerts.md) egy továbbfejlesztett felületet kínál, amikor létrehozása és kezelése a tevékenység naplózása a riasztási szabályok.  [További információk](alert-activity-log.md).
-
-A tevékenységnapló bemutatása a következő videó megtekintése.
-> [!VIDEO https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz/player]
 
 
 ## <a name="categories-in-the-activity-log"></a>Kategóriák a tevékenységnaplóban
@@ -70,7 +67,7 @@ Az alábbiakban néhány, a tevékenységnapló megteheti:
 Az Azure Portalon a tevékenységnapló több helyen is megtekintheti:
 * A **tevékenységnapló** , így hozzáférhet a tevékenységnaplóban a Keresés **minden szolgáltatás** a bal oldali navigációs ablaktáblán.
 * **A figyelő** a bal oldali navigációs ablaktáblán alapértelmezés szerint megjelenik. A tevékenységnapló Azure Monitor egy szakaszában.
-* Minden erőforrás **erőforrás**, például a virtuális gép konfigurációs panel. A tevékenységnapló az szakaszokban ezeket erőforráspanelek többsége a, és kattintással automatikusan szűri az eseményeket csak az adott erőforráshoz kapcsolódó.
+* A legtöbb **erőforrások**, például a virtuális gép konfigurációs panel. A tevékenységnaplóban a legtöbb erőforráspanelek egy szakaszt, és kattintással automatikusan szűri az eseményeket csak az adott erőforráshoz kapcsolódó.
 
 Az Azure Portalon a Tevékenységnaplót, ezek a mezők szerint szűrheti:
 * Időtartomány - események kezdő és befejező időpontját.
@@ -84,11 +81,9 @@ Az Azure Portalon a Tevékenységnaplót, ezek a mezők szerint szűrheti:
 * Esemény kezdeményezője – a "hívó" vagy a műveletet végrehajtó felhasználó.
 * Keresés megnyitása – Ez az egy megnyitott szövegkeresési mező, amelyek között az összes esemény található összes mezőhöz adott karakterláncot keres.
 
-Miután beállított szűrők csoportja, mentheti, egy lekérdezést, amely a rendszer megőrzi munkamenetek között, ha a jövőben újra alkalmazza ezeket a szűrőket az ugyanabból a lekérdezés végrehajtásához átállítására lenne szükség. Lekérdezés mindig kövesse figyelemmel az adott események az Azure-irányítópultra is rögzítheti.
+Miután beállított szűrők csoportja, mindig kövesse figyelemmel az adott események az Azure-irányítópulton való lekérdezés is rögzíthet.
 
-Kattintson az "Alkalmazás" a lekérdezés fut, és minden egyező események megjelenítése. Kattintson egy eseményre a listában a jeleníti meg az esemény összegzése, valamint a teljes nyers JSON az adott esemény.
-
-Még hatékonyabbá elemre a **naplóbeli keresés** ikont, mely megjeleníti a tevékenységnapló adatait a [Log Analytics Activity Log Analytics megoldás](../log-analytics/log-analytics-activity.md). A tevékenységnapló panel kínál egy alapszintű szűrő/tallózási élménynek a naplók, de a Log Analytics lehetővé teszi, hogy forgáspont, lekérdezése és hatékonyabb módon jelenítheti meg az adatok.
+Még hatékonyabbá elemre a **naplók** ikont, mely megjeleníti a tevékenységnapló adatait a [Log Analytics Activity Log Analytics megoldás](../log-analytics/log-analytics-activity.md). A tevékenységnapló panel kínál egy alapszintű szűrő/tallózási élménynek a naplók, de a Log Analytics lehetővé teszi, hogy forgáspont, lekérdezése és hatékonyabb módon jelenítheti meg az adatok.
 
 ## <a name="export-the-activity-log-with-a-log-profile"></a>A napló profillal tevékenységnapló exportálása
 A **Naplóprofil** a tevékenységnapló exportálása hogyan szabályozza. Napló profilt használ, konfigurálhatja:
@@ -114,14 +109,14 @@ Egy tároló vagy egy eseményközpontba eseményközpont-névtér, amely nem ug
 Ezek a beállítások az "Export" lehetőséget a tevékenységnapló panel a portálon keresztül konfigurálható. Akkor is konfigurálható programozott módon [az Azure Monitor REST API használatával](https://msdn.microsoft.com/library/azure/dn931927.aspx), PowerShell-parancsmagok vagy a parancssori felület. Egy előfizetéshez csak egy naplóprofil rendelkezhet.
 
 ### <a name="configure-log-profiles-using-the-azure-portal"></a>Az Azure portal használatával naplóprofilok konfigurálása
-A tevékenységnapló streamelése az Eseményközpontba, vagy az "Export" lehetőség az Azure Portal használatával egy tárfiókban tárolja őket.
+A tevékenységnapló streamelése az Eseményközpontba, vagy a "Exportálás az Event Hubs" lehetőség az Azure Portal használatával egy tárfiókban tárolja őket.
 
 1. Navigáljon a **tevékenységnapló** menüjének használatával, a portál bal oldalán.
 
-    ![Tevékenységnapló navigáljon a portálon](./media/monitoring-overview-activity-logs/activity-logs-portal-navigate.png)
-2. Kattintson a **exportálása** gombra a panel tetején.
+    ![Tevékenységnapló navigáljon a portálon](./media/monitoring-overview-activity-logs/activity-logs-portal-navigate-v2.png)
+2. Kattintson a **exportálás eseményközpontba** gombra a panel tetején.
 
-    ![A portál Exportálás gomb](./media/monitoring-overview-activity-logs/activity-logs-portal-export.png)
+    ![A portál Exportálás gomb](./media/monitoring-overview-activity-logs/activity-logs-portal-export-v2.png)
 3. A megjelenő panelen választhatja:  
   * régiók, amelynek szeretné exportálni az események
   * a Storage-fiókot, amelyhez szeretné menteni az események
@@ -150,7 +145,7 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 | Name (Név) |Igen |A napló-profil neve. |
 | StorageAccountId |Nem |Erőforrás-azonosító, amelyhez a tevékenységnapló menteni a tárfiók. |
 | serviceBusRuleId |Nem |Service Bus Szabályazonosító a Service Bus-névtér szeretné, hogy a létrehozott event hubs. Egy karakterlánc, a következő formátumban: `{service bus resource ID}/authorizationrules/{key name}`. |
-| Hely |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő vesszővel tagolt listája. |
+| Földrajzi egység |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő vesszővel tagolt listája. |
 | RetentionInDays |Igen |Mely eseményeket meg kell őrizni, 1 és 2147483647 között eltelt napok száma. A nulla érték határozatlan ideig tárolja a naplók (végtelen). |
 | Kategória |Nem |Eseménykategóriák kell gyűjteni, vesszővel tagolt listája. Lehetséges értékek: írási, törlési és művelet. |
 

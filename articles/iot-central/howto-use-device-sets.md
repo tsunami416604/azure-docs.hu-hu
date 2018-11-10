@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 28706ad77f48ae826b621ebdd920d26f3b87178a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a5dd018197ff78ff0563349fd941308c3684a456
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731980"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51004119"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Eszköz használata az Azure IoT központi alkalmazás beállítása
 
-Ez a cikk bemutatja, hogyan kezelőként eszközével állít be a Microsoft Azure IoT Central alkalmazáshoz.
+Ez a cikk bemutatja, hogyan kezelőként eszközével állít be az Azure IoT Central alkalmazáshoz.
 
-Egy eszköz csoportot az eszközöket, amelyek vannak csoportosítva, mivel bizonyos megadott feltételeknek megfelelő összes listája. Eszközök kezelése, megjelenítését és elemzését a nagy mennyiségű eszközt eszközök kisebb, logikai csoportokba csoportosításával súgó állítja be. Az összes légkondicionálóját eszközök listáját például Budapesten található összes eszközt, amelynek ő feladata a Seattle technikus engedélyezéséhez létrehozása. Ez a cikk bemutatja, hogyan hozhat létre, és az eszköz csoportjainak konfigurálása.
+Egy eszköz csoportot az eszközöket, amelyek vannak csoportosítva, mivel bizonyos megadott feltételeknek megfelelő összes listája. Eszközök kezelése, megjelenítését és elemzését a nagy mennyiségű eszközt eszközök kisebb, logikai csoportokba csoportosításával súgó állítja be. Az összes légkondicionálóját eszközök listáját például Budapesten található összes eszközt, amelynek a technikus feladata a Seattle technikus engedélyezéséhez létrehozása. Ez a cikk bemutatja, hogyan hozhat létre, és az eszköz csoportjainak konfigurálása.
 
 ## <a name="create-a-device-set"></a>Hozzon létre egy eszköz csoportot
 
@@ -73,7 +73,7 @@ Miután létrehozta az eszköz beállítása, konfigurálhatja a **irányítópu
         ![Válassza ki a rács](media/howto-use-device-sets/image8.png)
 
     1. A rács adjon egy **cím**.
-    1. Válassza ki az oszlopok jelennek meg a beállítások gomb kiválasztásával. A felugró panelen válassza ki a jelenjenek, és válassza a jobbra mutató nyílra, válassza ki azt az oszlopban.
+    1. Válassza ki az oszlopok kiválasztásával megjelenítendő **hozzáadása/eltávolítása**. A felugró panelen válassza ki a jelenjenek, és válassza a jobbra mutató nyílra, válassza ki azt az oszlopban.
     1. Kattintson az **OK** gombra.
     1. Válassza a **Mentés** elemet.
 
@@ -101,9 +101,10 @@ Annak érdekében, hogy adjon hozzá egy eszközhöz, helyek térképe irányít
 
 2. Adjon címet, és válassza ki a helyet jelölő tulajdonsághoz korábban konfigurálta a Eszköztulajdonság részeként.
 3. Mentés, és megjelenik a csempén, az eszköz beállítása az eszközök helyét megjelenítése térképen.
-4. Most, ha az operátor megtekinti a csoportok irányítópultját, láthatja, hogy az összes csempe konfigurált megjelenítése egyetlen pillantással eszközök helyét a térképen helyét! 
+4. Most egy operátor nézetek, az eszköz állítja be az irányítópultot, az üzemeltető konfigurálta az összes csempe látható, ha például a helye térkép megjelenítése egyetlen pillantással eszközök helyét! 
     
-[!NOTE] Méretezze át a térkép a megfelelő méretre lehet. Kattintson a PIN-kódot a térképen az eszközinformációkat, nevét és helyét jeleníti meg. Az eszköz tulajdonságok oldalán lépjen az előugró kattinthat.  
+> [!NOTE] 
+> Méretezze át a térkép a megfelelő méretre lehet. Kattintson a PIN-kódot a térképen az eszközinformációkat, nevét és helyét jeleníti meg. Az eszköz tulajdonságok oldalán lépjen az előugró kattinthat.  
 
 
 ## <a name="configure-the-list-for-your-device-set"></a>A lista az eszköz készlet konfigurálása

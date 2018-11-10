@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5247edc02a62f67755ce818645f66f616c5266ce
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 132935371a1b4f52892ae2fb956407079906e79a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962401"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51004902"
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>A Log Analytics Syslog-adatforrások
 Syslog-esemény naplózása protokoll, amely Linux közös.  Alkalmazások küld üzeneteket, amelyek a helyi számítógépen tárolt vagy a Syslog-gyűjtő lett elküldve.  A Linuxhoz készült OMS-ügynök telepítve van, konfigurálja a továbbított üzenetek az ügynöknek a helyi Syslog démon.  Az ügynök ezután elküldi az üzenetet a Log Analytics, ahol a megfelelő rekord jön létre az OMS-adattárban.  
@@ -187,7 +187,7 @@ Syslog-rekord rendelkezik olyan típusú **Syslog** , és a tulajdonságait az a
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Computer |Az esemény gyűjtötte a program a számítógép. |
+| Számítógép |Az esemény gyűjtötte a program a számítógép. |
 | Létesítmény |A rendszer által generált üzenet részeként határozza meg. |
 | HostIP |A rendszer az üzenetet küldő IP-címe. |
 | Állomásnév |A rendszer az üzenetet küldő neve. |
@@ -201,12 +201,12 @@ Az alábbi táblázat a rekordok Syslog lekérő lekérdezések log különböz�
 
 | Lekérdezés | Leírás |
 |:--- |:--- |
-| Rendszernapló |Minden Syslog. |
+| Syslog |Minden Syslog. |
 | Syslog &#124; , err == "error" |Minden Syslog-rekord a hiba súlyossága |
 | Syslog &#124; summarize AggregatedValue = count() összegzése számítógép szerint |A Syslog-Rekordok számlálása számítógép szerint. |
 | Syslog &#124; summarize AggregatedValue = count() by létesítmény |Száma a Syslog-rekord létesítmény szerint. |
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [naplókereséseket](log-analytics-log-search.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.
+* Ismerje meg [naplókereséseket](log-analytics-queries.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.
 * Használat [egyéni mezők](log-analytics-custom-fields.md) syslog-rekord származó adatok elemzése az egyes mezőket.
 * [Linux-ügynökök konfigurálása](log-analytics-quick-collect-linux-computer.md) más típusú adatok gyűjtéséhez.

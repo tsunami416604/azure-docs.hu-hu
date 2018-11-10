@@ -9,14 +9,14 @@ ms.reviewer: sngun
 ms.component: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: c1fb4c27f897e3c0952ed6419e167613ac8204f7
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: a06e7e6159953bfeffa966759d29b91bbcbafd37
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223491"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739209"
 ---
-# <a name="query-data-from-an-azure-cosmos-db-cassandra-api-account"></a>Adatok lekérdezése Azure Cosmos DB Cassandra API-fiókból
+# <a name="tutorial-query-data-from-an-azure-cosmos-db-cassandra-api-account"></a>Oktatóanyag: Adatok lekérdezése Azure Cosmos DB Cassandra API-fiókból
 
 Ez az oktatóanyag azt mutatja be, hogyan lehet felhasználói adatokat lekérni az Azure Cosmos DB Cassandra API-fiókból egy Java-alkalmazással. A Java-alkalmazás a [Java illesztőprogramot](https://github.com/datastax/java-driver) használja, és olyan felhasználói adatokat kérdez le, mint például a felhasználói azonosító, a felhasználónév és a felhasználó városa. 
 
@@ -28,59 +28,65 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ez a cikk egy többrészes oktatóanyag része. Mielőtt hozzáfogna, győződjön meg arról, hogy elvégezte az előzőekben ismertetett lépéseket, vagyis [a Cassandra API-fiók, -kulcstér és -tábla létrehozását](create-cassandra-api-account-java.md), valamint [a mintaadatok betöltését a táblába](cassandra-api-load-data.md). 
+* Ez a cikk egy többrészes oktatóanyag része. Mielőtt hozzáfogna, győződjön meg arról, hogy elvégezte az előzőekben ismertetett lépéseket, vagyis a Cassandra API-fiók, -kulcstér és -tábla létrehozását, valamint [a mintaadatok betöltését a táblába](cassandra-api-load-data.md). 
 
 ## <a name="query-data"></a>Adatok lekérdezése
 
-Nyissa meg az`src\main\java\com\azure\cosmosdb\cassandra` mappában lévő `UserRepository.java` fájlt. Fűzze hozzá a fájlhoz a következő kódblokkot. Ez a kód három függvényt biztosít: egyet az adatbázis összes felhasználójának lekérdezéséhez, egyet egy felhasználói azonosító alapján szűrt konkrét felhasználó lekérdezéséhez és egyet táblák törléséhez. 
+Az alábbi lépéseket követve kérdezze le a Cassandra API-fiók adatait:
 
-```java
-/**
-* Select all rows from user table
-*/
-public void selectAllUsers() {
+1. Nyissa meg az`src\main\java\com\azure\cosmosdb\cassandra` mappában lévő `UserRepository.java` fájlt. Fűzze hozzá a fájlhoz a következő kódblokkot. Ez a kód a következő három metódust biztosítja: 
 
-    final String query = "SELECT * FROM uprofile.user";
-    List<Row> rows = session.execute(query).all();
+   * Az adatbázis összes felhasználójának lekérdezése
+   * Felhasználói azonosító alapján szűrt konkrét felhasználó lekérdezése
+   * Tábla törlése.
 
-    for (Row row : rows) {
-       LOGGER.info("Obtained row: {} | {} | {} ", row.getInt("user_id"), row.getString("user_name"), row.getString("user_bcity"));
-    }
-}
+   ```java
+   /**
+   * Select all rows from user table
+   */
+   public void selectAllUsers() {
 
-/**
-* Select a row from user table
-*
-* @param id user_id
-*/
-public void selectUser(int id) {
-    final String query = "SELECT * FROM uprofile.user where user_id = 3";
-    Row row = session.execute(query).one();
+     final String query = "SELECT * FROM uprofile.user";
+     List<Row> rows = session.execute(query).all();
 
-    LOGGER.info("Obtained row: {} | {} | {} ", row.getInt("user_id"), row.getString("user_name"), row.getString("user_bcity"));
-}
+     for (Row row : rows) {
+        LOGGER.info("Obtained row: {} | {} | {} ", row.getInt("user_id"), row.getString("user_name"), row.getString("user_bcity"));
+     }
+   }
 
-/**
-* Delete user table.
-*/
-public void deleteTable() {
-   final String query = "DROP TABLE IF EXISTS uprofile.user";
-   session.execute(query);
-}
-```
+   /**
+   * Select a row from user table
+   *
+   * @param id user_id
+   */
+   public void selectUser(int id) {
+      final String query = "SELECT * FROM uprofile.user where user_id = 3";
+      Row row = session.execute(query).one();
 
-Nyissa meg az`src\main\java\com\azure\cosmosdb\cassandra` mappában lévő `UserProfile.java` fájlt. Ez az osztály tartalmazza a createKeyspace és a createTable parancsokat meghívó fő metódust. Szúrja be a korábban meghatározott adatmetódusokat. Most fűzze hozzá a következő kódot, amely lekérdezi az összes felhasználót vagy egy adott felhasználót:
+      LOGGER.info("Obtained row: {} | {} | {} ", row.getInt("user_id"), row.getString("user_name"), row.getString("user_bcity"));
+   }
 
-```java
-LOGGER.info("Select all users");
-repository.selectAllUsers();
+   /**
+   * Delete user table.
+   */
+   public void deleteTable() {
+     final String query = "DROP TABLE IF EXISTS uprofile.user";
+     session.execute(query);
+   }
+   ```
 
-LOGGER.info("Select a user by id (3)");
-repository.selectUser(3);
+2. Nyissa meg az`src\main\java\com\azure\cosmosdb\cassandra` mappában lévő `UserProfile.java` fájlt. Ez az osztály tartalmazza a createKeyspace és a createTable parancsokat meghívó fő metódust. Szúrja be a korábban meghatározott adatmetódusokat. Most fűzze hozzá a következő kódot, amely lekérdezi az összes felhasználót vagy egy adott felhasználót:
 
-LOGGER.info("Delete the users profile table");
-repository.deleteTable();
-```
+   ```java
+   LOGGER.info("Select all users");
+   repository.selectAllUsers();
+
+   LOGGER.info("Select a user by id (3)");
+   repository.selectUser(3);
+
+   LOGGER.info("Delete the users profile table");
+   repository.deleteTable();
+   ```
 
 ## <a name="run-the-java-app"></a>A Java-alkalmazás futtatása
 1. Nyisson meg egy parancssort vagy terminálablakot. Illessze be az alábbi kódblokkot. 

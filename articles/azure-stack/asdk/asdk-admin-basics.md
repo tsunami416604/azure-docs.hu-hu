@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 555bf95367ab0d3e6c4afe09edb6777899400dd8
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 66a2871e0c4b36959ccd8f08df5b6b7edd09f624
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344668"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227824"
 ---
 # <a name="asdk-administration-basics"></a>ASDK Adminisztráció alapjai 
 Több szempontot, ha most ismerkedik az Azure Stack Development Kit (ASDK) felügyeleti ismernie kell. Ez az útmutató a szerepkör, a kiértékelési környezet az Azure Stack operátorait áttekintést nyújt, és hogyan biztosítson a tesztfelhasználók gyorsan hatékony válhat.
@@ -43,7 +43,7 @@ Van néhány fiókokkal kapcsolatos megfontolások érdemes figyelembe vennie, a
 ## <a name="what-tools-do-i-use-to-manage"></a>Milyen eszközöket használhatok kezeléséhez?
 Használhatja a [Azure Stack rendszergazdai portál](https://adminportal.local.azurestack.external) vagy a PowerShell használatával kezelheti az Azure Stack. Ismerje meg, az alapvető fogalmait a legegyszerűbben a portálon keresztül van. Ha azt szeretné, ha a PowerShell segítségével, telepítenie kell [az Azure Stack PowerShell](asdk-post-deploy.md#install-azure-stack-powershell) és [az Azure Stack-eszközök letöltése a githubról](asdk-post-deploy.md#download-the-azure-stack-tools).
 
-Az Azure Stack Azure Resource Managert használja az alapul szolgáló telepítés, a felügyeleti és a szervezet mechanizmusként. Megkönnyíti a felhasználók támogatása az Azure Stack kezelését és fog, ha Azure Resource Managerről kell bemutatja. További olvassa el a [Ismerkedés az Azure Resource Manager-tanulmány](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf).
+Az Azure Stack Azure Resource Managert használja az alapul szolgáló telepítés, a felügyeleti és a szervezet mechanizmusként. Megkönnyíti a felhasználók támogatása az Azure Stack kezelését és fog, ha Azure Resource Managerről kell bemutatja. További olvassa el a [Ismerkedés az Azure Resource Manager-tanulmány](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf).
 
 ## <a name="your-typical-responsibilities"></a>A tipikus feladatkörei
 A felhasználók érdemes szolgáltatásokat használni. A saját szempontjából a fő szerepkör, hogy ezek a szolgáltatások számára elérhető. Használja a ASDK, megtudhatja, hogy mely szolgáltatásokat kínálnak, valamint hogyan javíthatja azokat, szolgáltatásokhoz által elérhető [csomagok, ajánlatok és kvóták létrehozása](asdk-offer-services.md). Emellett szüksége elemek hozzáadása a Marketplace-en, például a virtuálisgép-lemezképeket. A legegyszerűbb módja az, hogy [Piactéri termékek letöltése](asdk-marketplace-item.md) az Azure Stack az Azure-ból.
