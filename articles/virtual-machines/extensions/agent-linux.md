@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 73e5e54e40223f7cd972e2bd2752add9ca82ff2b
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 0c19d32f6c6f491a91ba6c2219be9fd016b5ec34
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452343"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243879"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Megismeréséhez és használatához az Azure Linux-ügynök
 
@@ -73,7 +73,7 @@ Az ügynök a platformról információáramlás két csatornákon keresztül t�
 A következő rendszerek teszteltük, és ismert, hogy az Azure Linux-ügynök használata:
 
 > [!NOTE]
-> Ez a lista eltérhet a Microsoft Azure platformon támogatott rendszerek hivatalos listáját itt leírtak szerint: [http://support.microsoft.com/kb/2805216](http://support.microsoft.com/kb/2805216)
+> Ez a lista eltérhet a Microsoft Azure platformon támogatott rendszerek hivatalos listáját itt leírtak szerint: [http://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
 > 
 > 
 
@@ -344,6 +344,6 @@ Ubuntu felhő-rendszerképek használatához [a cloud-init](https://launchpad.ne
 
 * További információkért tekintse meg az erőforrás-lemez csatlakoztatási pont konfigurálása és üzembe helyezés során a felhő-rendszerképek Ubuntu lapozófájl az alábbi forrásanyagokat:
   
-  * [Ubuntu Wiki: A lapozófájl-kapacitás-partíciók konfigurálása](http://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
+  * [Ubuntu Wiki: A lapozófájl-kapacitás-partíciók konfigurálása](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
   * [Egyéni adatok betöltése az Azure virtuális gépként](../windows/classic/inject-custom-data.md)
 

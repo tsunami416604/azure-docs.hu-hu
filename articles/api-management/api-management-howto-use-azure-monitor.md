@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: b4c885758f572851f058edb6e7851d650faed9f9
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 683b77e47857e4efbe2c24425953e9a3d83177f9
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972998"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418843"
 ---
 # <a name="monitor-published-apis"></a>A közzétett API-k monitorozása
 
@@ -36,11 +36,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 A következő videó bemutatja, hogyan monitorozhatja az API Managementet az Azure Monitor használatával. 
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Monitor-API-Management-with-Azure-Monitor/player]
->
->
 
 ## <a name="prerequisites"></a>Előfeltételek
 
++ Az [Azure API Management terminológiájának](api-management-terminology.md) ismerete.
 + Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
 + Végezze el a következő oktatóanyagot is: [Az első API importálása és közzététele](import-and-publish.md).
 
@@ -55,17 +54,16 @@ Az API Management percenként biztosít mérőszámokat, így közel valós idej
 * Jogosulatlan átjárókérések: a 401-es, 403-as és 429-es HTTP-válaszkódot kapott API-kérések száma.
 * Egyéb átjárókérések: az előző kategóriákba nem tartozó (például 418-as) HTTP-válaszkódot kapott API-kérések száma.
 
+![metrikadiagram](./media/api-management-azure-monitor/apim-monitor-metrics.png)
+
 A mérőszámok elérése:
 
 1. Válassza a lap alján lévő menü **Metrika** elemét.
 
     ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-2. A legördülő listából válassza ki a megtekinteni kívánt mérőszámokat (több mérőszámot is hozzáadhat).  
-    Például válassza az **Összes átjárókérés** és a **Sikertelen átjárókérések** mérőszámot az elérhető mérőszámok listájából.
-3. A diagram az API-hívások teljes számát mutatja, és a sikertelen API-hívások számát is megjeleníti.
-
-    ![metrikadiagram](./media/api-management-azure-monitor/apim-monitor-metrics.png)
+2. A legördülő listából válassza ki a megtekinteni kívánt mérőszámokat. Például: **Sikeres átjárókérések**. További mérőszámokat is hozzáadhat a diagramhoz.
+3. A diagram a sikeres API-hívások teljes számát mutatja.
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>Riasztási szabály beállítása jogosulatlan hívások esetére
 
@@ -102,6 +100,8 @@ A tevékenységnaplók betekintést engednek az API Management-szolgáltatásokb
 
 A tevékenységnaplók az API Management szolgáltatásban, az összes Azure-erőforrás naplói pedig az Azure Monitorban érhetők el. 
 
+![tevékenységnaplók](./media/api-management-azure-monitor/apim-monitor-activity-logs.png)
+
 A tevékenységnaplók megtekintése:
 
 1. Válassza ki az APIM-szolgáltatáspéldányt.
@@ -111,8 +111,6 @@ A tevékenységnaplók megtekintése:
 
 3. Válassza ki a kívánt szűrési hatókört, és kattintson az **Alkalmaz** elemre.
 
-    ![tevékenységnaplók](./media/api-management-azure-monitor/apim-monitor-activity-logs.png)
-
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
 A diagnosztikai naplók rengeteg információt tartalmaznak a műveletekkel és a hibákkal kapcsolatban, amelyek felülvizsgálati és hibaelhárítási célból egyaránt fontosak lehetnek. A diagnosztikai naplók különböznek a tevékenységnaplóktól. A tevékenységnaplók az Azure-erőforrásokon végrehajtott műveletekkel kapcsolatos információkat tartalmaznak. A diagnosztikai naplókban az erőforrás által végrehajtott műveletekkel kapcsolatos információk találhatók meg.
@@ -120,7 +118,7 @@ A diagnosztikai naplók rengeteg információt tartalmaznak a műveletekkel és 
 Diagnosztikai naplók konfigurálása:
 
 1. Válassza ki az APIM-szolgáltatáspéldányt.
-2. Kattintson a **Diagnosztikai naplók** elemre.
+2. Kattintson a **Diagnosztikai beállítások** elemre.
 
     ![diagnosztikai naplók](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
 

@@ -1,6 +1,6 @@
 ---
 title: TPM-eszköz regisztrációja az Azure Device Provisioning Service-be a Java használatával | Microsoft Docs
-description: Azure rövid útmutató – TPM-eszköz regisztrációja az Azure IoT Hub Device Provisioning Service-be a Java szolgáltatásoldali SDK-val
+description: Azure rövid útmutató – TPM-eszköz regisztrációja az Azure IoT Hub Device Provisioning Service-be a Java szolgáltatásoldali SDK-val. Ez a rövid útmutató egyéni regisztrációkat használ.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 12/20/2017
@@ -10,19 +10,19 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 68f8125ddc0691346813bb31124fa3abd4976296
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 6b0068bc912de13590cd9bc7418ea6fcdb01189f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234046"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420489"
 ---
 # <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>TPM-eszköz regisztrációja az IoT Hub Device Provisioning Service-be a Java szolgáltatásoldali SDK-val
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
 
-Ezek a lépések bemutatják, hogyan regisztrálhat szimulált TPM-eszközöket programozott módon az Azure IoT Hub Device Provisioning Service-be a [Java szolgáltatásoldali SDK](https://azure.github.io/azure-iot-sdk-java/service/) és egy Java-mintaalkalmazás segítségével. Bár a Java szolgáltatásoldali SDK Windows és Linux rendszerű gépeken is működik, ez a cikk egy Windows rendszerű fejlesztési számítógépet használ a regisztrációs folyamat bemutatására.
+Ezek a lépések bemutatják, hogyan hozhat létre egyéni regisztrációt szimulált TPM-eszközhöz programozott módon az Azure IoT Hub Device Provisioning Service-ben a [Java szolgáltatásoldali SDK](https://azure.github.io/azure-iot-sdk-java/service/), valamint egy Java-mintaalkalmazás használatával. Bár a Java szolgáltatásoldali SDK Windows és Linux rendszerű gépeken is működik, ez a cikk egy Windows rendszerű fejlesztési számítógépet használ a regisztrációs folyamat bemutatására.
 
 A folytatás előtt [állítsa be az IoT Hub Device Provisioning Service-t az Azure Portallal](./quick-setup-auto-provision.md), valamint [szimulálja a TPM-eszközt](quick-create-simulated-device.md#simulatetpm).
 
@@ -30,9 +30,9 @@ A folytatás előtt [állítsa be az IoT Hub Device Provisioning Service-t az Az
 
 ## <a name="prepare-the-development-environment"></a>A fejlesztési környezet előkészítése 
 
-1. Győződjön meg arról, hogy a [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) telepítve van a gépén. 
+1. Győződjön meg arról, hogy a [Java SE Development Kit 8](https://aka.ms/azure-jdks) telepítve van a gépén. 
 
-2. Állítson be környezeti változókat a Java-telepítéshez. A `PATH` változónak tartalmaznia kell a *jdk1.8.x\bin* könyvtár teljes elérési útját. Ha ez az első Java-telepítés a számítógépen, hozzon létre egy új, `JAVA_HOME` nevű környezeti változót, amely a *jdk1.8.x* könyvtár teljes elérési útjára mutat. Windows rendszerű gépeken ez a könyvtár általában a *C:\\Program Files\\Java\\* mappában található. Környezeti változók létrehozásához és szerkesztéséhez keressen rá a **Rendszerkörnyezeti változók szerkesztése** kifejezésre a Windows rendszerű gép **Vezérlőpultján**. 
+2. Állítson be környezeti változókat a Java-telepítéshez. A `PATH` változónak tartalmaznia kell a *jdk1.8.x\bin* könyvtár teljes elérési útját. Ha ez az első Java-telepítés a számítógépen, hozzon létre egy új, `JAVA_HOME` nevű környezeti változót, amely a *jdk1.8.x* könyvtár teljes elérési útjára mutat. Windows rendszerű gépeken ez a könyvtár a *C:\\Program Files\\Java\\* mappában található. Környezeti változók létrehozásához és szerkesztéséhez keressen rá **A rendszer környezeti változóinak módosítása** kifejezésre a Windows rendszerű gép **Vezérlőpultján**. 
 
   Az alábbi parancs parancsablakban való futtatásával ellenőrizheti, hogy sikerült-e beállítani a Javát a számítógépen:
 
@@ -103,7 +103,7 @@ Ez a szakasz bemutatja, hogyan adhatja hozzá a TPM-eszköz kiépítési adatait
             individualEnrollment.setProvisioningStatus(PROVISIONING_STATUS);
             ```
 
-    4. Tanulmányozza a mintakódot, amely egy egyéni TPM-eszközregisztrációt hoz létre, frissít, kérdez le és töröl. Ha ellenőrizni szeretné a regisztráció sikerességét a portálon, ideiglenesen tegye megjegyzésbe a _ServiceEnrollmentSample.java_ fájl végén található alábbi kódsorokat:
+    4. Tanulmányozza a mintakódot. Ez a kód egyéni TPM-eszközregisztrációt hoz létre, frissít, kérdez le és töröl. Ha ellenőrizni szeretné a regisztráció sikerességét a portálon, ideiglenesen tegye megjegyzésbe a _ServiceEnrollmentSample.java_ fájl végén található alábbi kódsorokat:
     
         ```Java
         // *********************************** Delete info of individualEnrollment ************************************
@@ -145,7 +145,7 @@ Ha azt tervezi, hogy részletesebben is áttekinti a Java-szolgáltatásmintát,
 
 1. Zárja be a Java-minta kimeneti ablakát a gépen.
 1. Zárja be a TPM-szimulátor ablakát, amely a TPM-eszköz szimulálásához jött létre.
-1. Lépjen az eszközkiépítési szolgáltatásra az Azure Portalon, kattintson a **Regisztrációk kezelése** lehetőségre, majd válassza az **Egyéni regisztrációk** lapot. Válassza ki a rövid útmutató segítségével regisztrált eszköz *Regisztrációs azonosítóját*, majd kattintson a panel tetején lévő **Törlés** gombra. 
+1. Lépjen a Device Provisioning Service-re az Azure Portalon, kattintson a **Regisztrációk kezelése** lehetőségre, majd válassza az **Egyéni regisztrációk** lapot. Válassza ki a rövid útmutató segítségével regisztrált eszköz *Regisztrációs azonosítóját*, majd kattintson a panel tetején lévő **Törlés** gombra. 
 
 ## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban regisztrált egy szimulált TPM-eszközt az eszközkiépítési szolgáltatásba. Ha mélyebben szeretné megismerni az eszközkiépítést, folytassa az Azure Portalon az eszközkiépítési szolgáltatás beállításának oktatóanyagával. 

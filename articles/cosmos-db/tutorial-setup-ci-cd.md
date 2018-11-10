@@ -1,6 +1,6 @@
 ---
 title: CI-/CD-folyamat beállítása az Azure Cosmos DB Emulator buildelési feladatával
-description: Oktatóanyag a buildelési és kiadási munkafolyamatok Visual Studio Team Servicesben (VSTS) való beállításáról a Cosmos DB Emulator összeállítási feladatával
+description: Oktatóanyag a buildelési és kiadási munkafolyamatok Azure DevOpsban a Cosmos DB Emulator buildelési feladatával való beállításáról
 services: cosmos-db
 keywords: Azure Cosmos DB Emulator
 author: deborahc
@@ -8,41 +8,41 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 8/28/2018
+ms.date: 08/28/2018
 ms.author: dech
-ms.openlocfilehash: 37bb43435c34f14145b3642aa12c5cb0f16d780c
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 4f4cc18bb8423a20358476142488c94361d6b72d
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783773"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419214"
 ---
-# <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-visual-studio-team-services"></a>CI-/CD-folyamat beállítása az Azure Cosmos DB Emulator buildelési feladatával
+# <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>CI-/CD-folyamat beállítása az Azure Cosmos DB Emulator buildelési feladatával az Azure DevOpsban
 
 Az Azure Cosmos DB Emulator helyi környezetet biztosít, amely az Azure Cosmos DB szolgáltatást emulálja a fejlesztéshez. Az emulátor használatával helyben fejlesztheti és tesztelheti alkalmazását, anélkül, hogy ehhez regisztrálnia kellene egy Azure-előfizetést, vagy fizetnie kellene a szolgáltatásért. 
 
-Az Azure Cosmos DB Emulator Visual Studio Team Serviceshez (VSTS) készült buildelési feladata lehetővé teszi ugyanezt CI-környezetben. A buildelési feladat segítségével összeállítási és kiadási munkafolyamatai részeként futtathat teszteket az emulátorban. A feladat elindít egy Docker-tárolót, amelyben már fut az emulátor, és végpontot biztosít a builddefiníció további része számára. Tetszőleges számú emulátorpéldányt hozhat létre és indíthat el, amelyek mind külön tárolóban futnak. 
+Az Azure Cosmos DB Emulator Azure DevOpshoz készült buildelési feladata lehetővé teszi ugyanezt CI-környezetben. A buildelési feladat segítségével összeállítási és kiadási munkafolyamatai részeként futtathat teszteket az emulátorban. A feladat elindít egy Docker-tárolót, amelyben már fut az emulátor, és végpontot biztosít a builddefiníció további része számára. Tetszőleges számú emulátorpéldányt hozhat létre és indíthat el, amelyek mind külön tárolóban futnak. 
 
-Ez a cikk bemutatja, hogyan állíthat be CI-folyamatot a VSTS-ben egy ASP.NET-alkalmazás számára, amely a Cosmos DB Emulator buildelési feladatával futtat teszteket. 
+Ez a cikk bemutatja, hogyan állíthat be CI-folyamatot az Azure DevOpsban egy ASP.NET-alkalmazás számára, amely a Cosmos DB Emulator buildelési feladatával futtat teszteket. 
 
 ## <a name="install-the-emulator-build-task"></a>Az emulátor buildelési feladatának telepítése
 
-A buildelési feladatot használat előtt telepítenie kell a VSTS-szervezetben. Keresse meg az **Azure Cosmos DB Emulator** bővítményt a [Marketplace-en](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview), és kattintson a **Get it free** (Ingyenes beszerzés) elemre.
+A buildelési feladatot használat előtt telepítenie kell az Azure DevOps-szervezetben. Keresse meg az **Azure Cosmos DB Emulator** bővítményt a [Marketplace-en](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview), és kattintson a **Get it free** (Ingyenes beszerzés) elemre.
 
-![Az Azure Cosmos DB Emulator buildelési feladatának megkeresése és telepítése a VSTS Marketplace-ről](./media/tutorial-setup-ci-cd/addExtension_1.png)
+![Az Azure Cosmos DB Emulator buildelési feladatának megkeresése és telepítése az Azure DevOps Marketplace-ről](./media/tutorial-setup-ci-cd/addExtension_1.png)
 
 Ezután válassza ki a szervezetet, amelyben telepíteni kívánja a bővítményt. 
 
 > [!NOTE]
-> Egy bővítmény VSTS-szervezetben való telepítéséhez fióktulajdonosnak vagy a projektgyűjtemény adminisztrátorának kell lennie. Ha nem rendelkezik engedélyekkel, de a fiók tagja, ehelyett kérheti a bővítményt. [Részletek](https://docs.microsoft.com/vsts/marketplace/faq-extensions?view=vsts#install-request-assign-and-access-extensions) 
+> Egy bővítmény Azure DevOps-szervezetben való telepítéséhez fióktulajdonosnak vagy a projektgyűjtemény adminisztrátorának kell lennie. Ha nem rendelkezik engedélyekkel, de a fiók tagja, ehelyett kérheti a bővítményt. [Részletek](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts#install-request-assign-and-access-extensions)
 
-![A szervezet kiválasztása, amelyben telepíteni kívánja a bővítményt](./media/tutorial-setup-ci-cd/addExtension_2.png)
+![Azon Azure DevOps-szervezet kiválasztása, amelyben telepíteni kívánja a bővítményt](./media/tutorial-setup-ci-cd/addExtension_2.png)
 
 ## <a name="create-a-build-definition"></a>Builddefiníció létrehozása
 
-Miután telepítette, hozzá kell adnia a bővítményt egy [builddefinícióhoz](https://docs.microsoft.com/vsts/pipelines/get-started-designer?view=vsts&tabs=new-nav). Használhat egy meglévő builddefiníciót, vagy létrehozhat egy újat. Ha már rendelkezik builddefinícióval, folytassa [az Emulator buildelési feladatának hozzáadása egy builddefinicióhoz](#addEmulatorBuildTaskToBuildDefinition) résszel.
+Miután telepítette, hozzá kell adnia a bővítményt egy [builddefinícióhoz](https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav). Használhat egy meglévő builddefiníciót, vagy létrehozhat egy újat. Ha már rendelkezik builddefinícióval, folytassa [az Emulator buildelési feladatának hozzáadása egy builddefinicióhoz](#addEmulatorBuildTaskToBuildDefinition) résszel.
 
-Új builddefiníció létrehozásához lépjen a VSTS **Build and Release** (Buildelés és kiadás) lapjára. Válassza a **+New** (+Új) lehetőséget.
+Új builddefiníció létrehozásához lépjen Azure DevOps **Build and Release** (Buildelés és kiadás) lapjára. Válassza a **+New** (+Új) lehetőséget.
 
 ![Új builddefiníció létrehozása](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png) Válassza ki a kívánt csapatprojektet, adattárat és ágat a buildek engedélyezéséhez. 
 
@@ -68,7 +68,7 @@ A kész builddefiníció most így néz ki:
 ## <a name="configure-tests-to-use-the-emulator"></a>Tesztek konfigurálása az emulátor használatához
 Most konfigurálni fogjuk a tesztjeinket az emulátor használatához. Az emulátor buildelési feladata exportál egy környezeti változót (CosmosDbEmulator.Endpoint), amelyre a buildfolyamat összes további feladata küldhet kéréseket. 
 
-Ebben az oktatóanyagban a [Visual Studio tesztelési feladatával](https://github.com/Microsoft/vsts-tasks/blob/master/Tasks/VsTestV2/README.md) futtatunk olyan egységteszteket, amelyek **.runsettings** fájllal lettek konfigurálva. Az egységtesztek beállításáról a [dokumentációban](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017) talál további információt.
+Ebben az oktatóanyagban a [Visual Studio tesztelési feladatával](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) futtatunk olyan egységteszteket, amelyek **.runsettings** fájllal lettek konfigurálva. Az egységtesztek beállításáról a [dokumentációban](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017) talál további információt.
 
 Az alábbiakban mutatunk egy példát a **.runsettings** fájlra, amely definiálja egy alkalmazás egységtesztjeibe továbbítandó paramétereket. Figyelje meg, hogy a használt `authKey` változó az emulátor [jól ismert kulcsa](https://docs.microsoft.com/azure/cosmos-db/local-emulator#authenticating-requests). Az `authKey` az emulátor buildelési feladatának várt kulcsa, és definiálva kell lennie a **.runsettings** fájlban.
 
@@ -82,7 +82,8 @@ Az alábbiakban mutatunk egy példát a **.runsettings** fájlra, amely definiá
   </TestRunParameters>
 </RunSettings>
 ```
-Ezekre a paraméterekre (`TestRunParameters`) az alkalmazás tesztelési projektjei egy `TestContext` tulajdonsággal hivatkoznak. Íme egy példa a Cosmos DB-ben futó tesztre. 
+
+Ezekre a paraméterekre (`TestRunParameters`) az alkalmazás tesztelési projektjei egy `TestContext` tulajdonsággal hivatkoznak. Íme egy példa a Cosmos DB-ben futó tesztre.
 
 ```csharp
 namespace todo.Tests

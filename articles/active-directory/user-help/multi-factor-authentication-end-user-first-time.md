@@ -13,12 +13,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
-ms.openlocfilehash: b6d548183cfa548f9ad35f06922752c929e318ac
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 9f602b08e94071a335d0c88377912ea9b53f37b2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041955"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244440"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>A kétlépéses ellenőrzéshez a fiók beállítása
 A kétlépéses ellenőrzés egy kiegészítő biztonsági lépés, amely megnehezíti mások feltörhessék fiókja védelme érdekében. Ha ez a cikk olvasása közben, valószínűleg kapott e-mailt a munkahelyi vagy iskolai rendszergazda multi-factor Authentication hitelesítéssel kapcsolatban. Vagy esetleg próbált meg bejelentkezni, és itt van egy üzenet, hogy további biztonsági ellenőrzés beállítása. Ebben az esetben, ha **nem tud bejelentkezni, amíg el nem végezte az automatikus regisztrációs folyamatot**.
@@ -41,12 +41,12 @@ A regisztrációs folyamat az első kérdést a kívánt kapcsolatba lépni vel�
 
 | Kapcsolatfelvétel módja | Leírás |
 | --- | --- |
-| [Mobilalkalmazás](#use-a-mobile-app-as-the-contact-method) |- **Értesítések küldése az ellenőrzéshez.** Ez a beállítás leküldéses értesítést az authenticator alkalmazás a okostelefonján vagy táblagépén lévő. Tekintse meg az értesítést, és ha az megbízható, válassza az **hitelesítés** az alkalmazásban. A munkahelyi vagy iskolai szükség lehet PIN-kód megadását, mielőtt Önt a hitelesítéshez.<br>- **Ellenőrzőkód használata.** Ebben a módban az authenticator alkalmazás egy ellenőrző kódot, amely frissíti a 30 másodpercenként hoz létre. A bejelentkezési felületen írja be az aktuális ellenőrzőkódot.<br>A Microsoft Authenticator alkalmazás [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) és [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071) rendszereken érhető el. |
+| [Mobilalkalmazás](#use-a-mobile-app-as-the-contact-method) |- **Értesítések küldése az ellenőrzéshez.** Ez a beállítás leküldéses értesítést az authenticator alkalmazás a okostelefonján vagy táblagépén lévő. Tekintse meg az értesítést, és ha az megbízható, válassza az **hitelesítés** az alkalmazásban. A munkahelyi vagy iskolai szükség lehet PIN-kód megadását, mielőtt Önt a hitelesítéshez.<br>- **Ellenőrzőkód használata.** Ebben a módban az authenticator alkalmazás egy ellenőrző kódot, amely frissíti a 30 másodpercenként hoz létre. A bejelentkezési felületen írja be az aktuális ellenőrzőkódot.<br>A Microsoft Authenticator alkalmazás [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) és [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071) rendszereken érhető el. |
 | [Mobiltelefon hívás vagy szöveges üzenet](#use-your-mobile-phone-as-the-contact-method) |- **Telefonhívás** helyezi el az Ön telefonszám automatikus hanghívást indít. A hívás, és nyomja le a hitelesítéshez lenyomja a telefon billentyűzetén a #.<br>- **Szöveges üzenet** egy ellenőrző kódot tartalmazó szöveges üzenetet ér véget. A rendszer a szövegben, a következő válaszoljon az üzenetre, vagy adja meg a bejelentkezési felületen megadott ellenőrző kód. |
 | [Irodai telefon hívása](#use-your-office-phone-as-the-contact-method) |Automatikus hanghívást indít az Ön telefonszám helyezi. A hívás és a hitelesítéshez lenyomja a telefon billentyűzetén a # gombot. |
 
 ## <a name="use-a-mobile-app-as-the-contact-method"></a>A mobilalkalmazás használata kapcsolattartási módszerként
-Ez a módszer használatához, hogy egy hitelesítő alkalmazást telepítenie a telefonját vagy táblagépét. A jelen cikkben ismertetett lépések a Microsoft Authenticator alkalmazást, amely alapuló [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), és [iOS](http://go.microsoft.com/fwlink/?Linkid=825073).
+Ez a módszer használatához, hogy egy hitelesítő alkalmazást telepítenie a telefonját vagy táblagépét. A jelen cikkben ismertetett lépések a Microsoft Authenticator alkalmazást, amely alapuló [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071), [Android](https://go.microsoft.com/fwlink/?Linkid=825072), és [iOS](https://go.microsoft.com/fwlink/?Linkid=825073).
 
 >[!NOTE]
 >Nem kell használni a Microsoft Authenticator alkalmazást. Ha már használja egy másik hitelesítő alkalmazás, továbbra is használhatja.

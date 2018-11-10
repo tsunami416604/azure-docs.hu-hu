@@ -10,12 +10,12 @@ ms.component: video-indexer
 ms.topic: overview
 ms.date: 10/10/2018
 ms.author: nolachar
-ms.openlocfilehash: cf761342bb434100920c3888f2f441b9f8c8de08
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 9936cd301cc8dad88ce1a2431f9253a15ab2da7f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077917"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251254"
 ---
 # <a name="what-is-video-indexer"></a>Mi az a Video Indexer?
 
@@ -65,7 +65,7 @@ Az alábbiakban bemutatunk néhány olyan forgatókönyvet, amelyek során a Vid
 
 - Felhasználói érdeklődés – A videóelemzésekkel növelhető a felhasználói érdeklődés oly módon, hogy feltüntetjük a felhasználók számára a videók releváns pillanatait. Például tegyük fel, hogy egy oktatóvideó első 30 perce a gömböket, a következő 30 perce pedig a gúlákat ismerteti. Egy diáknak, aki a gúlákról olvas, hasznosabb, ha a videó a 30. perctől kezdve indul el.
 
-További információt [ebben a blogban](http://aka.ms/videoindexerblog) talál.
+További információt [ebben a blogban](https://aka.ms/videoindexerblog) talál.
 
 ## <a name="next-steps"></a>További lépések
 

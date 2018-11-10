@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 2cd77ee6df52940a800733209b7e384d72d98103
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ddc04d32f76515cb93d2cde3fe4eccaab7e4c291
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962130"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245358"
 ---
 # <a name="quickstart-remove-an-application-from-azure-active-directory"></a>Rövid útmutató: Alkalmazás eltávolítása az Azure Active Directoryból
 
@@ -69,7 +69,7 @@ A bérlő **Alkalmazásregisztrációk** főoldalán az **Összes alkalmazás** 
 
 Technikai szempontból ezek a több-bérlős alkalmazások más bérlőtől származnak, és a hozzájárulási folyamat során lettek regisztrálva a bérlőjében. Pontosabban ezeket az alkalmazásokat csak egy szolgáltatásnév-objektum jelöli a bérlőben, és nem tartozik hozzájuk alkalmazásobjektum. Az alkalmazás- és szolgáltatásnév-objektumok különbségeivel kapcsolatos további információt az [Alkalmazás- és szolgáltatásnév-objektumok az Azure AD-ben](app-objects-and-service-principals.md) című szakaszban találhat.
 
-Egy több-bérlős alkalmazás az Ön könyvtárához való hozzáférésének eltávolításához (a hozzájárulás megadása után) a vállalati rendszergazdának el kell távolítania az alkalmazás szolgáltatásnevét. A rendszergazdának globális rendszergazdai hozzáféréssel kell rendelkeznie, és az Azure Portalon keresztül vagy az [Azure AD PowerShell-parancsmagok](http://go.microsoft.com/fwlink/?LinkId=294151) használatával végezheti el az eltávolítási műveletet.
+Egy több-bérlős alkalmazás az Ön könyvtárához való hozzáférésének eltávolításához (a hozzájárulás megadása után) a vállalati rendszergazdának el kell távolítania az alkalmazás szolgáltatásnevét. A rendszergazdának globális rendszergazdai hozzáféréssel kell rendelkeznie, és az Azure Portalon keresztül vagy az [Azure AD PowerShell-parancsmagok](https://go.microsoft.com/fwlink/?LinkId=294151) használatával végezheti el az eltávolítási műveletet.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,6 +1,6 @@
 ---
-title: Licencelési Microsoft® zökkenőmentes adatfolyam ügyfél Kit eljárás
-description: További tudnivalók a Microsoft® Smooth Streaming ügyfél eljárás Kit licencelésre.
+title: Licencelési Microsoft® Smooth Streaming Ügyfélportolási készlet
+description: További tudnivalók a Microsoft® Smooth Streaming Client portolása Kit licencelésre.
 services: media-services
 documentationcenter: ''
 author: xpouyat
@@ -14,146 +14,146 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: xpouyat
-ms.openlocfilehash: b4472f522571e0056ce6b28d67a69b0dcabba8a6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 71cb4ff7c5948067dfb039caf69241cfa9e22408
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790341"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243896"
 ---
-# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licencelési Microsoft® zökkenőmentes adatfolyam ügyfél Kit eljárás
+# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licencelési Microsoft® Smooth Streaming Ügyfélportolási készlet
 ## <a name="overview"></a>Áttekintés
-Microsoft Smooth Streaming ügyfél eljárás Kit (**SSPK** röviden) a Smooth Streaming ügyfél megvalósítása érdekében a beágyazott eszközgyártók, a kábel és a mobil operátorok, a tartalom szolgáltatók, a kézibeszélő optimalizált gyártók, független szoftvergyártók (ISV-k) és megoldásszállítók termékei és szolgáltatásai az Smooth Streaming formátumban adaptív tartalom adatfolyamként történő létrehozásához. SSPK egy eszköz és platformfüggetlen végrehajtásának Smooth Streaming ügyfél, amely a licencbe bármely eszköz és a platform által használatát is. 
+A Microsoft Smooth Streaming Client portolása Kit (**SSPK** röviden) Smooth Streaming client megvalósítása érdekében a beágyazott eszközgyártók, kábelek és mobilszolgáltatók, tartalom szolgáltatók, kézibeszélő optimalizált gyártó, független szoftverszállítók (ISV-k) és szolgáltatást nyújtó vállalkozásoknak hozhat létre, termékeket és szolgáltatásokat a Smooth Streaming formátumban adaptív tartalmak online lejátszásához. SSPK egy eszköz és a Smooth Streaming-ügyfél, amely a hasznosító minden eszköz és platform szerint is tartalomfájlokat platformfüggetlen megvalósítását. 
 
-Alábbi egy magas szintű architektúra és IIS Smooth Streaming eljárás Kit Smooth Streaming ügyfél megvalósítása a Microsoft által biztosított és Smooth Streaming tartalom lejátszását az alapvető logikát tartalmaz. Ezt a tartalmat egy adott eszköz vagy a platform partnerek majd legelterjedtebb a megfelelő adapterek alkalmazásával. 
+Alábbi egy magas szintű architektúra és az IIS Smooth Streaming portolása Kit box Smooth Streaming Client megvalósítása a Microsoft által biztosított és Smooth Streaming-tartalom lejátszását az alapvető logikát tartalmaz. Ez a tartalom egy adott eszköz vagy platform partnerek majd ültették át a megfelelő adapterek alkalmazásával. 
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
 ## <a name="description"></a>Leírás
-SSPK licencelt által biztosított érték kiváló üzleti igényei szerint. SSPK licencet biztosít az iparági:
+A feltételek, amelyek kiváló üzleti értéket kínál SSPK rendelkezik licenccel. SSPK licencet biztosít az iparág:
 
-* A c++ Smooth Streaming eljárás Kit forrás 
-  * megvalósítja a Smooth Streaming ügyfélfunkciókat
-  * hozzáadja a formátum elemzése, heurisztikus pufferelés logika stb.
+* A C++ Smooth Streaming portolása Kit forrás 
+  * megvalósítja a Smooth Streaming Client funkció
+  * hozzáadja a formátum elemzése, a heurisztika pufferelés logikát, és így tovább.
 * Lejátszóalkalmazás API-k 
-  * az alkalmazásprogramozási felületek és egy media player alkalmazás közötti interakció
+  * az alkalmazásprogramozási felületek egy médialejátszó alkalmazásba való interakció
 * Platform absztrakciós réteg (PAL) kapcsolat 
-  * az alkalmazásprogramozási felületek (szálak, sockets) az operációs rendszerrel folytatott kommunikációjuktól
+  * az alkalmazásprogramozási felületek (szálak, sockets) az operációs rendszer-szal
 * Hardver absztrakciós réteg (HAL) kapcsolat 
-  * programozási felületek kölcsönhatások a hardver A / V dekóderek (dekódolás, megjelenítése)
-* Digitális tartalomvédelmi (DRM) felügyeleti felület 
-  * alkalmazásprogramozási felületek DRM keresztül DRM absztrakciós réteg (DAL) kezelése
-  * Microsoft PlayReady eljárás Kit külön érhető el, de integrálja a felületen keresztül. Microsoft PlayReady Device engedélyezéséről további információért kattintson [Itt](http://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl).
-* Megvalósítása – minták 
-  * a minta PAL implementációja Linux
-  * a minta HAL implementációja GStreamer
+  * alkalmazásprogramozási felület A hardver való együttműködéshez szükséges / V dekóderek (dekódolás, megjelenítése)
+* Digitális jogkezelési (technológia DRM) felügyeleti felület 
+  * az alkalmazásprogramozási felületek DRM révén a DRM absztrakciós réteg (DAL) kezelése
+  * A Microsoft PlayReady portolása Kit mobilplatform külön-külön, de ezen a kapcsolaton keresztül integrálható. A Microsoft PlayReady Device licenc további részletekért kattintson [Itt](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl).
+* Megvalósítás minták 
+  * a mintavétel PAL végrehajtása linuxhoz
+  * hardverabsztrakciós RÉTEG minta megvalósítása GStreamer
 
 ## <a name="licensing-options"></a>Licencelési lehetőségek
-Microsoft Smooth Streaming ügyfél eljárás Kit teszi elérhetővé licenctulajdonosok esetében a két különböző licencszerződések: egy a Smooth Streaming ügyfél ideiglenes termékek és egy másikat a Smooth Streaming ügyfél végső termékek terjesztése a végfelhasználók számára.
+A Microsoft Smooth Streaming Client portolása Kit tett elérhetővé licenctulajdonosok esetében két különböző szoftverlicenc-szerződések alatt: egy a Smooth Streaming Client ideiglenes termékek és a egy másik a Smooth Streaming Client végső termékek terjesztése a végfelhasználók számára.
 
-* Lapkakészlet gyártók, rendszerintegrátorok vagy független keresve szüksége van a forrás-kód ideiglenes termékek, a Microsoft Smooth Streaming ügyfél eljárás Kit fejlesztésére furatok kit **ideiglenes terméklicenc** végre kell hajtani.
-* Az eszközgyártók vagy Smooth Streaming ügyfél végső termékek a végfelhasználók számára, a Microsoft Smooth Streaming ügyfél eljárás csomag terjesztési jogok kérése ISV-k **végső terméklicenc** végre kell hajtani.
+* Lapkakészlet gyártók, rendszerintegrátorok vagy független-beszállítót (ISV-k) szükséges egy forrás ideiglenes termékek, egy Microsoft Smooth Streaming Client portolása Kit fejlesztésének portolási kit code **ideiglenes terméklicenc** kell végrehajtani.
+* Eszközgyártók vagy Smooth Streaming Client végső termékek terjesztési jogokkal a végfelhasználók számára, a Microsoft Smooth Streaming Client portolása Kit szükséges ISV-k **végső terméklicenc** kell végrehajtani.
 
-### <a name="microsoft-smooth-streaming-client-porting-kit-interim-product-license"></a>Microsoft Smooth Streaming Kit ideiglenes terméklicenc eljárás ügyfél
-Ezt a licencet, a Microsoft biztosít az egy Smooth Streaming ügyfél eljárás Kit és a szükséges szellemi tulajdonjogok fejlesztésére és egyéb Smooth Streaming ügyfél eljárás Kit eszköz licenctulajdonosok esetében osztja el a Smooth Streaming ügyfél végső termékek Smooth Streaming ügyfél ideiglenes termékek terjesztéséhez.
-
-#### <a name="fee-structure"></a>Díjszabása
-USA $ 50 000 egyszeri licenc anélkül biztosít hozzáférést a Smooth Streaming ügyfél eljárás Kit. 
-
-### <a name="microsoft-smooth-streaming-client-porting-kit-final-product-license"></a>Microsoft Smooth Streaming Kit végleges terméklicenc eljárás ügyfél
-A Microsoft alatt ez a licenc biztosít az összes szükséges szellemi tulajdonra vonatkozó jog Smooth Streaming ügyfél ideiglenes termékek fogadása más Smooth Streaming ügyfél eljárás Kit licenctulajdonosok esetében, és a vállalat védjegyét Smooth Streaming ügyfél végső termékek, a felhasználók terjesztéséhez.
+### <a name="microsoft-smooth-streaming-client-porting-kit-interim-product-license"></a>A Microsoft Smooth Streaming Ügyfélportolási készlet ideiglenes terméklicenc-hozzárendelésről
+A jelen licenc, a Microsoft kínál egy Smooth Streaming Client portolása Kit és a szükséges szellemi tulajdonra vonatkozó jogokat elkészíthetnék és Smooth Streaming Client ideiglenes termékek az egyéb Smooth Streaming Client portolása Kit eszköz licenctulajdonosok esetében, amelyek Smooth Streaming Client végső termékek terjesztése.
 
 #### <a name="fee-structure"></a>Díjszabása
-A Smooth Streaming ügyfél végső termék alatt, a kiemelt modellben kínálják:
+Egyesült Államok $ 50 000 egyszeri licencdíját hozzáférést biztosít a Smooth Streaming Client portolása csomaghoz. 
 
-* $0.10 / rendszerrel szállított eszköz végrehajtása
-* A kiemelt tárfiókonként maximum 50 000 $ minden évben
-* Nincsenek kiemelt első 10 000 eszköz-megvalósítások esetében minden évben 
+### <a name="microsoft-smooth-streaming-client-porting-kit-final-product-license"></a>A Microsoft Smooth Streaming Ügyfélportolási készlet utolsó terméklicenc
+A jelen licenc Microsoft Smooth Streaming Client ideiglenes termékek fogadjon más Smooth Streaming Client portolása Kit licenctulajdonosok esetében, és a vállalati márkanevű Smooth Streaming Client végső terjeszteni az összes szükséges szellemi tulajdonjogok kínál Termékek, a végfelhasználók számára.
 
-## <a name="licensing-procedure-and-sspk-access"></a>Licencelési eljárás és SSPK hozzáférés
-E-mailek [ sspkinfo@microsoft.com ](mailto:sspkinfo@microsoft.com) összes licencelési lekérdezések.
+#### <a name="fee-structure"></a>Díjszabása
+A Smooth Streaming Client végtermékben alatt, a kiemelt modellben érhető el:
 
-A [SSPK terjesztési portal](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/) regisztrált ideiglenes licenctulajdonosok esetében érhető el.
+* tartalmazza a szükséges $ 0.10-ás kiszolgálónként megvalósítás az eszközökön
+* A kiemelt maximumon $ 50 000 minden évben
+* Nincsenek kiemelt az első 10 000 eszköz megvalósításokhoz minden évben 
 
-Ideiglenes és végső SSPK licenctulajdonosok esetében is elküldhetik technikai kérdések [ smoothpk@microsoft.com ](mailto:smoothpk@microsoft.com).
+## <a name="licensing-procedure-and-sspk-access"></a>Engedélyezési eljárás és SSPK hozzáférés
+E-mailek [ sspkinfo@microsoft.com ](mailto:sspkinfo@microsoft.com) összes licencelése a lekérdezéseket.
 
-## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Microsoft Smooth Streaming ügyfél ideiglenes termék megállapodás licenctulajdonosok esetében
+A [SSPK terjesztési portál](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/) regisztrált ideiglenes licenctulajdonosok esetében érhető el.
+
+Ideiglenes és végső SSPK licenctulajdonosok esetében technikai kérdéseket küldhet [ smoothpk@microsoft.com ](mailto:smoothpk@microsoft.com).
+
+## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>A Microsoft Smooth Streaming Client ideiglenes termék szerződés licenctulajdonosok esetében
 * Adroit üzleti megoldások, Inc
-* Speciális digitális szórás rendszergazdai (SA)
-* AirTies Kablosuz Iletism Sanayive hagyása Ticaret A.S.
-* Albis technológiák Ltd
+* Fejlett digitális adás SA
+* AirTies Kablosuz Iletism Sanayive lemez Ticaret A.S.
+* Albis technológiák Kft.
 * Alticast Corporation
 * Amazon digitális szolgáltatások, Inc.
 * Arion technológia, Inc.
-* AVC multimédia szoftver Co., Ltd
+* AVC multimédiás szoftver Co., Ltd.
 * Cavium, Inc.
-* EchoStar megvásárlásáról Corporation
+* EchoStar megvásárlásával Corporation
 * Enseo, Inc.
-* Dél Fluendo
-* HANDAN BroadInfoCom Co., Ltd
+* Dél-amerikai Fluendo
+* HANDAN BroadInfoCom Co., Ltd.
 * Infomir GMBH
 * Irdeto USA Inc.
-* Dél iWEDIA 
+* Dél-amerikai iWEDIA 
 * Liberty globális szolgáltatások BV
 * MediaTek Inc.
-* MStar Co, Ltd
-* Nintendo Co., Ltd
+* MStar Co, Ltd.
+* Nintendo Co., Ltd.
 * OpenTV, Inc.
 * Sáfrány digitális korlátozott
-* Szecsuan Changhong elektromos Co., Ltd
+* Szecsuan Changhong Electric Co., Ltd.
 * SoftAtHome
 * Sony Corporation
 * Tatung technológia Inc.
-* TCL technológia Electronics (Huizhou) Co., Ltd
-* Felső győzelem beruházások értékét, Ltd
-* Ticaret A.S. Vestel Elektronik Sanayi megtörtént
+* TCL technológia (Huizhou) Electronics Co., Ltd.
+* Felső győzelem beruházások, Ltd.
+* Vestel Elektronik Sanayi ve Ticaret A.S.
 * VisualOn, Inc.
 * ZTE Corporation
 
-## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Microsoft Smooth Streaming ügyfél végső termék megállapodás licenctulajdonosok esetében
-* Speciális digitális szórás rendszergazdai (SA)
-* AirTies Kablosuz Iletism Sanayive hagyása Ticaret A.S.
-* Albis technológiák Ltd
+## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>A Microsoft Smooth Streaming Client végtermékben szerződés licenctulajdonosok esetében
+* Fejlett digitális adás SA
+* AirTies Kablosuz Iletism Sanayive lemez Ticaret A.S.
+* Albis technológiák Kft.
 * Amazon digitális szolgáltatások, Inc.
-* AmTRAN technológia Co., Ltd
-* Arcadyan technológia Corporation
+* AmTRAN technológia Co., Ltd.
+* Arcadyan technológiai vállalat
 * Arion technológia, Inc.
-* ATMACA ELEKTRONİK SAN. TİC MEGTÖRTÉNT. A.Ş
-* Brit égbolt szórásos korlátozott
-* CastPal technológia Inc. Shenzhen
+* ATMACA ELEKTRONİK SAN. VE TİC. A.Ş
+* Brit Sky szórásos korlátozott
+* Technológiai CastPal, Inc. Shenzhen
 * Compal Electronics, Inc.
-* Dongguan digitális AV technológia Corp., Ltd
-* EchoStar megvásárlásáról Corporation
+* Dongguan digitális AV technológiai vállalat esetében, Ltd.
+* EchoStar megvásárlásával Corporation
 * Enseo, Inc.
 * Filmflex filmek korlátozott
-* Dél Fluendo
-* Gibson Innovációinak korlátozott
+* Dél-amerikai Fluendo
+* Gibson Innovációkat korlátozott
 * Haier információk Applicantion S.R.L
-* HANDAN BroadInfoCom Co., Ltd
-* Nemzetközi Hisense, Reinhard 
-* Homecast Co., Ltd
-* HON Hai pontosság iparági Co., Ltd
+* HANDAN BroadInfoCom Co., Ltd.
+* Hisense nemzetközi Co., Ltd. 
+* Homecast Co., Ltd.
+* HON Hai pontosság Industry Co., Ltd.
 * Infomir GMBH
-* Kaonmedia Co., Ltd
+* Kaonmedia Co., Ltd.
 * KDDI Corporation
-* Nintendo Co., Ltd
-* Narancssárga rendszergazdai (SA)
+* Nintendo Co., Ltd.
+* Narancssárga SA
 * Sáfrány digitális korlátozott
 * Sagemcom szélessávú SAS
-* Shenzhen Coship Electronics CO., LTD
-* Shenzhen Jiuzhou elektromos Co., Ltd
-* Shenzhen Skyworth digitális technológia Co., Ltd
-* Szecsuan Changhong elektromos Co., Ltd
-* Skardin ipari vállalat esetében.
-* Égbolt Deutschland Fernsehen GmbH & Co. KG
-* Dél SmarDTV
+* Shenzhen Coship Electronics CO., Ltd.
+* Shenzhen Jiuzhou Electric Co., Ltd.
+* Shenzhen Skyworth digitális technológia Co., Ltd.
+* Szecsuan Changhong Electric Co., Ltd.
+* Skardin ipari Corp.
+* Sky Deutschland Fernsehen GmbH & Co. KG
+* Dél-amerikai SmarDTV
 * SoftAtHome
 * Sony Corporation
-* Korlátozott TCL tengerentúli Marketing (tengeri Makaó kereskedelmi)
+* Korlátozott TCL tengerentúli Marketing (tengeri a kereskedelmi Makaó KKT)
 * Technicolor szállítási technológiák, SAS
-* Tongfang globális Ltd
-* Felső győzelem beruházások értékét, Ltd
-* Toshiba Lifestyle termékek és szolgáltatások Corporation
+* Tongfang globális Ltd.
+* Felső győzelem beruházások, Ltd.
+* A Toshiba Lifestyle termékek és szolgáltatások Corporation
 * Univerzális Media Corporation /Slovakia/ s.r.o.
 * VIZIO, Inc.
 * Wistron Corporation
