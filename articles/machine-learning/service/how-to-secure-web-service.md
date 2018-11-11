@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2018
-ms.openlocfilehash: 885d867d0733ef923d327d8d6a36fc1588fd4961
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: ec7b956f080837b297bac56e6237ac0672601ce7
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801012"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344484"
 ---
 # <a name="secure-azure-machine-learning-web-services-with-ssl"></a>Biztonságos SSL-lel az Azure Machine Learning-webszolgáltatások
 
@@ -53,9 +53,8 @@ A tanúsítvány igénylésekor meg kell adni a teljesen minősített tartomány
 > [!TIP]
 > Ha a hitelesítésszolgáltató nem adja meg a tanúsítvány és kulcs-fájlok PEM-kódolású formájában, a segédprogram használható például [OpenSSL](https://www.openssl.org/) használatával módosíthatja.
 
-> [!IMPORTANT]
-> Önaláírt tanúsítványok használandó csakis fejlesztési célokra. Ezek nem használandó éles környezetben. Ha egy önaláírt tanúsítványt használ, tekintse meg a [önaláírt tanúsítványok webszolgáltatások felhasználása](#self-signed) adott című fejezetet.
-
+> [!WARNING]
+> Önaláírt tanúsítványok használandó csakis fejlesztési célokra. Ezek nem használandó éles környezetben. Önaláírt tanúsítványok problémákat okozhat az ügyfél az alkalmazásokat. További információkért lásd: az ügyfélalkalmazásban található használt hálózati könyvtárat dokumentációját.
 
 ## <a name="enable-ssl-and-deploy"></a>SSL engedélyezése és üzembe helyezése
 
@@ -119,91 +118,8 @@ Ezt követően frissítenie kell a DNS, a web Service mutasson.
 
   Frissítse a DNS, a "Beállítások" lapon a "nyilvános IP-címe" az AKS-fürtöt a képen látható módon. A nyilvános IP-címet az erőforráscsoportban, amely tartalmazza az AKS-ügynök csomópontok és más hálózati erőforrások létrehozása az erőforrástípusok egyikét találja.
 
-  ![Az Azure Machine Learning szolgáltatás: webszolgáltatások SSL használatával biztonságossá tétele](./media/how-to-secure-web-service/aks-public-ip-address.png)
+  ![Az Azure Machine Learning szolgáltatás: webszolgáltatások SSL használatával biztonságossá tétele](./media/how-to-secure-web-service/aks-public-ip-address.png)Önkiszolgáló-
 
-## <a name="consume-authenticated-services"></a>Hitelesített szolgáltatásainak használata
+## <a name="next-steps"></a>További lépések
 
-### <a name="how-to-consume"></a>Hogyan lehet az 
-+ **Az ACI és az AKS**: 
-
-  ACI és az AKS webszolgáltatások megtudhatja, hogyan ezekben a cikkekben webszolgáltatások felhasználása:
-  + [Az aci Szolgáltatásban üzembe helyezése](how-to-deploy-to-aci.md)
-
-  + [Az aks üzembe helyezése](how-to-deploy-to-aks.md)
-
-+ **A FPGA**:  
-
-  Az alábbi példák bemutatják, hogyan lehet egy hitelesített FPGA-szolgáltatás a Python és a C# használata.
-  Cserélje le `authkey` az elsődleges vagy másodlagos kulcsot, a szolgáltatás telepítésekor visszaadott együtt.
-
-  Python-példát:
-    ```python
-    from amlrealtimeai import PredictionClient
-    client = PredictionClient(service.ipAddress, service.port, use_ssl=True, access_token="authKey")
-    image_file = R'C:\path_to_file\image.jpg'
-    results = client.score_image(image_file)
-    ```
-
-  C#-példa:
-    ```csharp
-    var client = new ScoringClient(host, 50051, useSSL, "authKey");
-    float[,] result;
-    using (var content = File.OpenRead(image))
-        {
-            IScoringRequest request = new ImageRequest(content);
-            result = client.Score<float[,]>(request);
-        }
-    ```
-
-### <a name="set-the-authorization-header"></a>Állítsa be az engedélyeztetési fejléc
-Más gRPC ügyfelek hitelesítése történhet kérelem engedélyeztetési fejléc beállítása. Az általános megközelítés az, hogy hozzon létre egy `ChannelCredentials` objektum, amely egyesíti az `SslCredentials` a `CallCredentials`. Ez hozzáadódik a kérés hitelesítési fejlécéhez. További információk a végrehajtása támogatja a megadott fejlécek,: [ https://grpc.io/docs/guides/auth.html ](https://grpc.io/docs/guides/auth.html).
-
-Az alábbi példák bemutatják, hogyan lehet a C# és nyissa meg a fejléc beállítása:
-
-+ C# segítségével állítsa be a fejléc:
-    ```csharp
-    creds = ChannelCredentials.Create(baseCreds, CallCredentials.FromInterceptor(
-                          async (context, metadata) =>
-                          {
-                              metadata.Add(new Metadata.Entry("authorization", "authKey"));
-                              await Task.CompletedTask;
-                          }));
-    
-    ```
-
-+ Nyissa meg a fejléc beállításához használja:
-    ```go
-    conn, err := grpc.Dial(serverAddr, 
-        grpc.WithTransportCredentials(credentials.NewClientTLSFromCert(nil, "")),
-        grpc.WithPerRPCCredentials(&authCreds{
-        Key: "authKey"}))
-    
-    type authCreds struct {
-        Key string
-    }
-    
-    func (c *authCreds) GetRequestMetadata(context.Context, uri ...string) (map[string]string, error) {
-        return map[string]string{
-            "authorization": c.Key,
-        }, nil
-    }
-    
-    func (c *authCreds) RequireTransportSecurity() bool {
-        return true
-    }
-    ```
-
-<a id="self-signed"></a>
-
-## <a name="consume-services-with-self-signed-certificates"></a>Önaláírt tanúsítványok szolgáltatásainak használata
-
-Az ügyfél hitelesítése egy önaláírt tanúsítvánnyal védett kiszolgálóra két módja van:
-
-* Az ügyfélen, állítsa be a `GRPC_DEFAULT_SSL_ROOTS_FILE_PATH` környezeti változót, mutasson a tanúsítványfájlt az ügyfélrendszeren.
-
-* Hozhat létre, amikor egy `SslCredentials` objektumazonosító, illesztheti be a tanúsítvány fájl tartalmát a konstruktor.
-
-Mindkét módszerrel rendelkezik, a tanúsítványt használja, a legfelső szintű tanúsítvány gRPC.
-
-> [!IMPORTANT]
-> gRPC nem fogadja el a nem megbízható tanúsítványok. A nem megbízható tanúsítvánnyal meghiúsul egy `Unavailable` állapotkódot. A hiba részleteit tartalmazza `Connection Failed`.
+Ismerje meg, hogyan [felhasználás a gépi Tanulási modellek webszolgáltatásként üzembe helyezett](how-to-consume-web-service.md).

@@ -15,19 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: 79d40617ae4f9cd83d04cad213e5d8fd76b03876
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 84bc7ee08c6c98e76c3814f8a59dfa300db9d22d
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42057590"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344576"
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>A Hive-táblákban tárolt adatok megismerése Hive-lekérdezésekkel
-A dokumentum minta Hive-szkriptek, amelyekkel a Hive-táblákban egy HDInsight Hadoop-fürtön az adatok feltárására szolgál.
 
-A következő **menü** mutató hivatkozásokat talál, amelyek bemutatják, hogyan eszközök segítségével feltárhatja az adatait a különböző tárolási környezetekbe.
+Ez a cikk ismerteti a minta Hive-szkriptek, amelyekkel a Hive-táblákban egy HDInsight Hadoop-fürtön az adatok feltárására.
 
-[!INCLUDE [cap-explore-data-selector](../../../includes/cap-explore-data-selector.md)]
+Ez a feladat Ez a lépés a [csoportos adatelemzési folyamat](overview.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk feltételezi, hogy rendelkezik:

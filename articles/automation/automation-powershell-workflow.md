@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4b48400920176055e7eb166c7502c06e67b29185
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 00f6f84a2065a67e999149e4b0f9e28f18e5e297
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436361"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239423"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Automatizálási runbookok Windows PowerShell-munkafolyamat alapfogalmak tanulási
 
@@ -22,7 +22,7 @@ Az Azure Automation Runbookjai Windows PowerShell-munkafolyamatként vannak megv
 
 Egy munkafolyamat olyan programozott, összekapcsolódó lépések, amelyek hosszú ideig futó feladatok elvégzéséhez, vagy több eszközön vagy felügyelt csomóponton keresztül több lépést igénylik. Egy munkafolyamat képest előnyei a következők: a hogy képesek egyidejűleg elvégezni egy műveletet több eszközön, és lehetővé teszi, hogy automatikusan helyreálljon a hibák. Egy Windows PowerShell-munkafolyamat egy Windows PowerShell-parancsprogram, amely használja a Windows Workflow Foundation. A munkafolyamat Windows PowerShell-szintaxis-készült, és a Windows PowerShell használatával kell elindítani, amíg a munkafolyamat feldolgozását a Windows Workflow Foundation.
 
-Ebben a cikkben a témakörök a részleteket lásd: [– első lépések a Windows PowerShell-munkafolyamat](http://technet.microsoft.com/library/jj134242.aspx).
+Ebben a cikkben a témakörök a részleteket lásd: [– első lépések a Windows PowerShell-munkafolyamat](https://technet.microsoft.com/library/jj134242.aspx).
 
 ## <a name="basic-structure-of-a-workflow"></a>A munkafolyamat alapvető szerkezete
 
@@ -45,9 +45,9 @@ PowerShell-munkafolyamati kód megjelenését majdnem teljesen megegyezik a Powe
 
 ### <a name="activities"></a>Tevékenységek
 
-Egy tevékenység egy adott feladat egy munkafolyamatot belül. A parancsfájl áll egy vagy több, mint a munkafolyamat egy vagy több, sorrendben végrehajtott tevékenységek tevődik össze. Windows PowerShell-munkafolyamat automatikusan átalakítja a Windows PowerShell-parancsmagok számos tevékenységek egy munkafolyamat futtatásakor. Amikor megad e parancsmagok egyikét a runbookban, a megfelelő tevékenység Windows Workflow Foundation futtatja. Azok a parancsmagok nem tartozik megfelelő tevékenység, a Windows PowerShell-munkafolyamat automatikusan futtatja a parancsmagot belül egy [InlineScript](#inlinescript) tevékenység. Nincs parancsmagok, amelyek ki vannak zárva, és nem használható munkafolyamatban, kivéve, ha tünteti fel az InlineScript blokkon belüli egy készletét. Ezekről a fogalmakról további részletek: [tevékenységek használata parancsfájl-munkafolyamatok](http://technet.microsoft.com/library/jj574194.aspx).
+Egy tevékenység egy adott feladat egy munkafolyamatot belül. A parancsfájl áll egy vagy több, mint a munkafolyamat egy vagy több, sorrendben végrehajtott tevékenységek tevődik össze. Windows PowerShell-munkafolyamat automatikusan átalakítja a Windows PowerShell-parancsmagok számos tevékenységek egy munkafolyamat futtatásakor. Amikor megad e parancsmagok egyikét a runbookban, a megfelelő tevékenység Windows Workflow Foundation futtatja. Azok a parancsmagok nem tartozik megfelelő tevékenység, a Windows PowerShell-munkafolyamat automatikusan futtatja a parancsmagot belül egy [InlineScript](#inlinescript) tevékenység. Nincs parancsmagok, amelyek ki vannak zárva, és nem használható munkafolyamatban, kivéve, ha tünteti fel az InlineScript blokkon belüli egy készletét. Ezekről a fogalmakról további részletek: [tevékenységek használata parancsfájl-munkafolyamatok](https://technet.microsoft.com/library/jj574194.aspx).
 
-Munkafolyamat-tevékenységek jellemzőkkel általános paraméterek konfigurálása a működésüket. Általános munkafolyamat-paraméterekkel kapcsolatos részletekért lásd: [about_WorkflowCommonParameters](http://technet.microsoft.com/library/jj129719.aspx).
+Munkafolyamat-tevékenységek jellemzőkkel általános paraméterek konfigurálása a működésüket. Általános munkafolyamat-paraméterekkel kapcsolatos részletekért lásd: [about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx).
 
 ### <a name="positional-parameters"></a>Pozícióparaméterek
 
@@ -152,7 +152,7 @@ Bár a InlineScript tevékenységet bizonyos munkafolyamatok kritikus fontosság
 * Nem használhat [párhuzamos végrehajtása](#parallel-processing) egy InlineScriptBlock belül.
 * InlineScript méretezhetőségi, a munkafolyamat hatással van, mert magánál tartja a Windows PowerShell-munkamenet az InlineScript blokk teljes hosszán.
 
-InlineScript használatával kapcsolatos további információkért lásd: [Windows PowerShell-parancsok futtatása munkafolyamatban](http://technet.microsoft.com/library/jj574197.aspx) és [about_InlineScript](http://technet.microsoft.com/library/jj649082.aspx).
+InlineScript használatával kapcsolatos további információkért lásd: [Windows PowerShell-parancsok futtatása munkafolyamatban](https://technet.microsoft.com/library/jj574197.aspx) és [about_InlineScript](https://technet.microsoft.com/library/jj649082.aspx).
 
 ## <a name="parallel-processing"></a>Párhuzamos feldolgozás
 
@@ -291,7 +291,7 @@ workflow CreateTestVms
 
 Ez azonban nem kötelező, ha egy egyszerű szolgáltatással konfigurált futtató fiók használatával hitelesít.
 
-Az ellenőrzőpontok kapcsolatos további információkért lásd: [ellenőrzőpontok felvétele Parancsprogramos munkafolyamatba](http://technet.microsoft.com/library/jj574114.aspx).
+Az ellenőrzőpontok kapcsolatos további információkért lásd: [ellenőrzőpontok felvétele Parancsprogramos munkafolyamatba](https://technet.microsoft.com/library/jj574114.aspx).
 
 ## <a name="next-steps"></a>További lépések
 

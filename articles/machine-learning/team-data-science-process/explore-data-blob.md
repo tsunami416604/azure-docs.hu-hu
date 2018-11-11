@@ -15,19 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: b80fcecf28eaaf05e7fc199a9c318fd4148b9212
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: b617ae1a1df0ed220d03e0124aa9dafd9fc2388c
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497858"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345997"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Az adatok Azure blob storage-pandas megismerése
-Ez a dokumentum bemutatja, hogyan fedezheti fel az Azure blob-tároló használatával tárolt adatok [pandas](http://pandas.pydata.org/) Python-csomag.
 
-A következő **menü** mutató hivatkozásokat talál, amelyek bemutatják, hogyan eszközök segítségével feltárhatja az adatait a különböző tárolási környezetekbe. Ez a feladat Ez a lépés a [adatelemzési folyamat](overview.md).
+Ez a cikk bemutatja, hogyan fedezheti fel az Azure blob-tároló használatával tárolt adatok [pandas](http://pandas.pydata.org/) Python-csomag.
 
-[!INCLUDE [cap-explore-data-selector](../../../includes/cap-explore-data-selector.md)]
+Ez a feladat Ez a lépés a [csoportos adatelemzési folyamat](overview.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk feltételezi, hogy rendelkezik:

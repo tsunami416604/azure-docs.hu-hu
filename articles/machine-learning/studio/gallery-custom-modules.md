@@ -1,6 +1,6 @@
 ---
-title: Az Azure AI gyűjtemény egyéni modulok |} Microsoft Docs
-description: Egyéni gépi tanulási modulok Azure Eszközintelligencia-katalógus felderítése.
+title: Az Azure AI-katalógusban egyéni modulok |} A Microsoft Docs
+description: Fedezze fel az egyéni machine learning-modulok az Azure AI-katalógusban.
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
@@ -15,85 +15,83 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
-ms.openlocfilehash: c53bab2e838425dfdd124e64c3d7d3114fa30429
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: fe58b335a029e558ce29871483589908f17c03cd
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834430"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345691"
 ---
-# <a name="discover-custom-machine-learning-modules-in-azure-ai-gallery"></a>Egyéni gépi tanulási modulok Azure Eszközintelligencia-katalógus felderítése
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
+# <a name="discover-custom-machine-learning-modules-in-azure-ai-gallery"></a>Az Azure AI-katalógusban egyéni machine learning-modulok felderítése
 
-## <a name="custom-modules-for-machine-learning-studio"></a>A Machine Learning Studióban az egyéni modulok
-AI Azure katalógusában számos kínál [az egyéni modulok](https://gallery.cortanaintelligence.com/customModules) , bontsa ki az Azure Machine Learning Studio képességeit. Importálhatja a modulokat használ a kísérletekben, így még akkor is speciális prediktív elemzési megoldások fejleszthet.
+[Az Azure AI-katalógusban](http://gallery.cortanaintelligence.com) fájlközzétételi [egyéni modulok](https://gallery.cortanaintelligence.com/customModules) , bontsa ki az Azure Machine Learning Studio képességeit. A modulok, így még több speciális prediktív elemzési megoldásokat fejleszthet a kísérletek használandó importálhatja.
 
-Jelenleg a gyűjtemény kínál a modulok *time series analytics*, *társítási szabályok*, *algoritmusok Fürtszolgáltatás* (túl a k-közép), és  *képi megjelenítések*, és más workhorse segédprogram modulok.
+Jelenleg a katalógust kínál a modulok *time series analytics*, *társítási szabályok*, *algoritmusok Fürtszolgáltatás* (kívül a k-közép), és  *Vizualizációk*, és más workhorse segédprogram modulok.
 
 
 ## <a name="discover"></a>Ismertetők
-Az egyéni modulok tallózással [a katalógusban](http://gallery.cortanaintelligence.com)a **további**, jelölje be **az egyéni modulok**.
+Egyéni modulok tallózással [a katalógusban](http://gallery.cortanaintelligence.com)alatt **további**válassza **egyéni modulok**.
 
-![Válassza ki az egyéni modulok gyűjtemény kezdőlapján](./media/gallery-custom-modules/select-custom-modules-in-gallery.png)
+![Válassza ki az egyéni modulok a tár kezdőlapján](./media/gallery-custom-modules/select-custom-modules-in-gallery.png)
 
-A **[egyéni modulok](https://gallery.cortanaintelligence.com/customModules)** lap megjeleníti a legutóbb hozzáadott és népszerű modulokat. Minden egyéni modul megtekintéséhez jelölje ki a **láthatja az összes** gombra. Egy adott egyéni modult keres, válassza ki a **láthatja az összes**, és jelölje ki a szűrési feltételeket. Kifejezést is írhatja a **keresési** a gyűjtemény lap felső részén.
+A **[egyéni modulok](https://gallery.cortanaintelligence.com/customModules)** lap nemrégiben hozzáadott és népszerű modulok listáját jeleníti meg. Minden egyéni modulok megtekintéséhez jelölje ki a **összes** gombra. Egy adott egyéni modult keres, válassza ki a **összes**, és majd szűrőfeltételeket. A keresési kifejezéseket is megadhatja a **keresési** a katalógus lap tetején.
 
-![Jelölje be "Lásd: minden" összes egyéni modulok tallózással](./media/gallery-custom-modules/click-see-all-for-all-custom-modules.png)
+![Válassza "tekintse meg az összes", keresse meg az összes egyéni modulok](./media/gallery-custom-modules/click-see-all-for-all-custom-modules.png)
 
 ### <a name="understand"></a>Ismertetése
 
-A közzétett egyéni modul működésének jelölje ki az egyéni modult a modul részletek lap megnyitásához. A Részletek lap egy egységes és informatív tanulási élményt nyújt. Például a Részletek lap emel ki, a modul célját, és várt bemenetek, kimenetek és paraméterek sorolja fel. A Részletek lap egy hivatkozást az alapul szolgáló adatforrás kód, amely megvizsgálja, és testre is rendelkezik.
+Egy közzétett egyéni modul működésének megismerése, jelölje ki az egyéni modult a modul részletei lap megnyitásához. A Részletek lap egy egységes és informatív tanulási élményt tesz lehetővé. Például a Részletek lap kiemeli a modul célját, és a várt bemenetek, kimenetek és paramétereket sorolja fel. A Részletek lap az alapul szolgáló forrás kód, amely megvizsgálja, és testre szabhatja mutató hivatkozást is tartalmaz.
 
-### <a name="comment-and-share"></a>Megjegyzés és megosztása
-A Részletek lap egyéni modulon a **megjegyzések** szakaszban lehet megjegyzést, visszajelzést vagy kérdése van a modul. A modul ismerősök vagy a Twitteren vagy LinkedIn munkatársak is megoszthatja. A meghívott más felhasználóknak a lapnak a megtekintésére a modul részleteit megjelenítő oldalra mutató hivatkozást is képes e-mail.
+### <a name="comment-and-share"></a>Megjegyzés és megosztás
+A Részletek lap egy egyéni modult a **megjegyzések** szakaszban el megjegyzés, visszajelzés, vagy a modul kapcsolatos kérdések feltevése. A modul barátainak vagy Twitter- vagy LinkedIn munkatársaival is megoszthatja. A modul részleteit megjelenítő oldalra, más felhasználók számára a lap megtekintéséhez meghívni egy hivatkozást is biztonságosan e.
 
-![Ez az elem megosztása ismerősök](./media/gallery-how-to-use-contribute-publish/share-links.png)
+![Ez az elem megoszthatja ismerősök felvételének engedélyezése](./media/gallery-how-to-use-contribute-publish/share-links.png)
 
-![Adja hozzá a saját megjegyzéseit](./media/gallery-how-to-use-contribute-publish/comments.png)
+![A saját Megjegyzések hozzáadása](./media/gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="import"></a>Importálás
-A saját kísérletek importálhatja bármely egyéni modul a gyűjteményből.
+Egyéni modulok, a saját kísérletek importálhatja a katalógusból.
 
-AI Azure katalógusában kétféleképpen egy példányát a modul importálásához:
+Az Azure AI-katalógusban importálhat egy másolatot a modul két lehetőséget kínál:
 
-* **A gyűjteményből**. Egyéni modul importálása a katalógusból, ha egy minta kísérletet, amely lehetővé teszi az példa bemutatja, hogyan modulját is kap.
-* **A számítógép-Learning Studio**. A Machine Learning Studióban használata közben bármely egyéni modul importálható (ebben az esetben nem kap a mintakísérletet).
+* **A katalógusból**. Amikor egy egyéni modult a katalógusból, érhet el egy mintakísérlet, amelyen a modul használata egy példát.
+* **A Machine Learning Studióba**. Egyéni modulok importálhatja a Machine Learning Studióban használata közben (ebben az esetben nem kap a mintakísérlet).
 
-### <a name="from-the-gallery"></a>A gyűjteményből
+### <a name="from-the-gallery"></a>A katalógusból
 
-1. Nyissa meg a modul részleteit megjelenítő oldalon a gyűjteményben. 
+1. A katalógusban a modul részletei lap megnyitásához. 
 2. Válassza ki **Megnyitás a Studióban**.
    
-    ![Nyissa meg egyéni modul a gyűjteményből](./media/gallery-custom-modules/open-custom-module-from-gallery.png)
+    ![Nyissa meg egyéni modult a katalógusból](./media/gallery-custom-modules/open-custom-module-from-gallery.png)
    
-Minden egyéni modul egy minta kísérletet, amely bemutatja, hogyan használja a modult tartalmaz. Ha bejelöli **Megnyitás a Studióban**, a Machine Learning Studio munkaterületen megnyílik a mintakísérletet. (Ha még nincs bejelentkezett Studio, kéri első bejelentkezés a Microsoft-fiókjával.)
+Minden egyéni modul, amely bemutatja, hogyan használható a modul egy mintakísérlet tartalmazza. Ha bejelöli **Megnyitás a Studióban**, mintakísérlet megnyílik a Machine Learning Studio munkaterületét. (Ha még nem jelentkezett Studióban, kéri az első bejelentkezéskor a Microsoft-fiókjával.)
 
-A mintakísérletet mellett az egyéni modul másolja a munkaterületen. Az összes a beépített vagy egyéni Machine Learning Studio moduljai, a modulpalettán is bekerül. Most már használhatja a saját kísérletekben, mint bármely más modul a munkaterületen.
+Az egyéni modult mintakísérlet mellett a munkaterület másolja. A modulpaletta, minden a beépített vagy egyéni Machine Learning Studio modul is helyezi. Most már használhatja a saját kísérletek, mint bármely egyéb modult a munkaterületén.
 
-### <a name="from-within-machine-learning-studio"></a>A számítógép-Learning Studio
+### <a name="from-within-machine-learning-studio"></a>A Machine Learning Studióba
 
 1. A Machine Learning Studióban, válassza ki a **új**.
-2. Válassza ki **modul**. Gyűjteményelem modulokat lehetőségek közül választhat, vagy egy adott modult megkeresni a **keresési** mezőbe.
-3. Az egér pont egy modult, majd válassza ki **importálási modul**. (Válassza ki ahhoz, hogy a modul információt, **-katalógus megtekintése**. Ezzel megnyitná a modul részleteit megjelenítő oldalon a katalógusban.)
+2. Válassza ki **modul**. Galéria moduljai listájából válassza ki, vagy keresse meg az adott modulok használatával a **keresési** mezőbe.
+3. Mutasson az egérmutatóval egy moduljába, és válassza ki **modul importálása**. (Információt szeretne kapni a modult, válassza ki a **megjelenítése katalógusban**. Ekkor megjelenik a katalógusban a modul részleteit megjelenítő oldalra.)
    
-    ![A Machine Learning Studióhoz egyéni modul importálása](./media/gallery-custom-modules/add-custom-module-in-studio.png)
+    ![Egyéni modul importálása a Machine Learning studióba](./media/gallery-custom-modules/add-custom-module-in-studio.png)
 
-Az egyéni modul másolja a munkaterületet, és a beépített vagy egyéni Machine Learning Studio moduljai, a modulpalettán helyezett. Most már használhatja a saját kísérletekben, mint bármely más modul a munkaterületen.
+Az egyéni modult a workspace másolja és a beépített vagy egyéni Machine Learning Studio-modulok a modulpaletta helyezi el. Most már használhatja a saját kísérletek, mint bármely egyéb modult a munkaterületén.
 
 ## <a name="use"></a>Használat
 
-Függetlenül attól, milyen módszert szeretne importálni egy egyéni modult, amikor importálja a modult, a modul kerül a Machine Learning Studióban a modulpalettán. A modul palettáról is használhatja az egyéni modul a kísérletben a munkaterületen, csakúgy, mint bármely más modul.
+Függetlenül attól, milyen módszert szeretne importálni egy egyéni modult, amikor importálja a modult, a modul kerül a modulpaletta a Machine Learning Studióban. A modul palettáról az egyéni modult használhatja bármely kísérletben a munkaterületen, csakúgy, mint bármely egyéb modult.
 
 Az importált modul használata:
 
 1. A kísérlet létrehozásának, vagy egy meglévő kísérlet megnyitásához.
-2. Bontsa ki az egyéni modulok a munkaterületen, a modulpalettán listájában válassza ki **egyéni**. A modulpalettán a kísérletvászonra balra van.
+2. Bontsa ki a munkaterületen, a modulpaletta az egyéni modulok listájában válassza ki a **egyéni**. A modulpaletta, hogy a bal oldalon, a kísérletvászonra.
    
-    ![Egyéni Modullista Studio palettán](./media/gallery-custom-modules/custom-module-in-studio-palette.png)
-3. Válassza ki azt a modult importált, és húzza a kísérletvászonra.
+    ![A modul egyéni lista Studio palettán](./media/gallery-custom-modules/custom-module-in-studio-palette.png)
+3. Válassza ki az importált modul, és húzza a kísérletvászonra.
 
 
-**[Ugrás a katalógusban](http://gallery.cortanaintelligence.com)**
+**[A katalógus megnyitása](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 

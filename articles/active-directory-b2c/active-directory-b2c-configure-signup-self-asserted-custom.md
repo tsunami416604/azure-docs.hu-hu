@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/29/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 37492e22b5615ae0b266bc8b2bb6d8f039fdaabe
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 6b2a6d84fffecbe30bd2a47c795ee6143458ee2b
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336855"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345000"
 ---
 # <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Az Azure Active Directory B2C: Bejelentkezés módosítása be új jogcímeket adhatnak hozzá és felhasználó által megadott adatok konfigurálása.
 
@@ -277,8 +277,8 @@ Ellenőrzött e-mail alapértelmezés szerint engedélyezve van a `<TechnicalPro
 
 ## <a name="next-steps"></a>További lépések
 
-Adja hozzá az új jogcímet a flow közösségi fiók bejelentkezések az alább felsorolt TechnicalProfiles módosításával. Ezek írása és olvasása a felhasználói adatokat a alternativeSecurityId használja, mint a lokátor fiók társadalombiztosítási/összevont bejelentkezéseket használják.
-```xml
-<TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
-<TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
-```
+Ha a szabályzat támogatja a közösségi fiókok, az alábbi technikai profilok módosításával adja hozzá az új jogcímet a flow közösségi fiók bejelentkezéseket. Ezeket a jogcímeket közösségi fiók bejelentkezések gyűjtése és a felhasználó írhat adatokat használják.
+
+1. Keresse meg a technikai profil **SelfAsserted-közösségi** , és adja hozzá a kimeneti jogcímek. A jogcímeket sorrendje **OutputClaims** szabályozza, hogy az Azure AD B2C-vel rendereli a jogcímeket a képernyőn sorrendjét. Például: `<OutputClaim ClaimTypeReferenceId="city" />`.
+2. Keresse meg a technikai profil **AAD-UserWriteUsingAlternativeSecurityId** , és adja hozzá a megőrzése jogcímet. Például: `<PersistedClaim ClaimTypeReferenceId="city" />`.
+3. Keresse meg a technikai profil **AAD-UserReadUsingAlternativeSecurityId** , és adja hozzá a kimeneti jogcímek. Például: `<OutputClaim ClaimTypeReferenceId="city" />`.

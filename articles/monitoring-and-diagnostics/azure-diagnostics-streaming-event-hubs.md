@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 123005a32315ba3972ed4f1c1784d3ac9460b101
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: MT
+ms.openlocfilehash: 32cebecbb9185250d7d295eab3074a76dcd6a8b9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958950"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240494"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>A gyakori elérésű útvonal az Azure Diagnostics-adatok streamelés az Event Hubs használatával
 Az Azure diagnosztikai metrikák és naplók gyűjtésére felhőalapú szolgáltatások virtuális gépeken (VM) és az eredmények átvitele az Azure Storage rugalmas megoldásokat kínál. A 2016. március (SDK 2.9) időkereten belül kezdődően Diagnostics küldése az vlastní zdroje dat és adatátvitel gyakori elérésű útvonal másodpercek használatával [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -70,7 +70,7 @@ Alapértelmezés szerint az Azure Diagnostics mindig küld naplókat és mérős
 
 Ebben a példában az event hub URL-cím van beállítva, a teljes az event hubs-névtérhez: Event Hubs-névtér + "/" + eseményközpont neve.  
 
-Az event hubs URL-cím jelenik meg a [az Azure portal](http://go.microsoft.com/fwlink/?LinkID=213885) az Event Hubs-irányítópulton.  
+Az event hubs URL-cím jelenik meg a [az Azure portal](https://go.microsoft.com/fwlink/?LinkID=213885) az Event Hubs-irányítópulton.  
 
 A **fogadó** neve bármilyen érvényes karakterlánc beállítható, mindaddig, amíg ugyanazt az értéket használja következetesen a konfigurációs fájlban.
 

@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: 1ec6228993c516ce2974c64bfa5b6dcdf63e7f91
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: a162d0c19bef28e6e4566d39c2dc3b82a87a4aa9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343826"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242092"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Egy Azure Marketplace-rendszerképpel egy Terraformot használó linuxos virtuális gépet hozhat létre az Azure-erőforrások felügyelt identitásaival
 
@@ -97,9 +97,9 @@ Az előző szkript az [AZ CLI 2.0 interaktív bejelentkezési](https://docs.micr
 Ebben a cikkben megismerte, hogyan állíthat be Terraformot használó linuxos virtuális gépet az Azure-ban. Íme néhány további segédlet, amelyek segítségével többet tudhat meg a Terraform az Azure-on történő használatáról: 
 
  [Terraform Hub a Microsoft.com webhelyen](https://docs.microsoft.com/azure/terraform/)  
- [Terraform: Azure szolgáltatói dokumentáció](http://aka.ms/terraform)  
- [Terraform: Azure-szolgáltatói forrás](http://aka.ms/tfgit)  
- [Terraform: Azure-modulok](http://aka.ms/tfmodules)
+ [Terraform: Azure szolgáltatói dokumentáció](https://aka.ms/terraform)  
+ [Terraform: Azure-szolgáltatói forrás](https://aka.ms/tfgit)  
+ [Terraform: Azure-modulok](https://aka.ms/tfmodules)
  
 
 

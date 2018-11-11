@@ -1,6 +1,6 @@
 ---
-title: Az adatok tudományos folyamatban adatokba |} Microsoft Docs
-description: Hogyan adatokba különböző környezettel.
+title: A csoportos adatelemzési folyamat az adatok megismerése |} A Microsoft Docs
+description: Hogyan lehet különféle tárolási környezet adatok feltárására.
 services: machine-learning,storage
 documentationcenter: ''
 author: deguhath
@@ -13,24 +13,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 11/08/2018
 ms.author: deguhath
-ms.openlocfilehash: 168d2852d8905735b450850c8bb32a1ae07a620d
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 55d92fedbb67d21d34464b792b3600eb6964840b
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837293"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345521"
 ---
 # <a name="explore-data-in-the-team-data-science-process"></a>Az adatok megismerése a csoportos adatelemzési folyamattal
-Ez a dokumentum bemutatja, hogyan adhat adatokba négy különböző környezettel, amelyeket többnyire az tudományos folyamat:
 
-* **Az Azure blob-tároló** adatok van felfedezte használatával a [Pandas](http://pandas.pydata.org/) Python-csomag.
-* **SQL Server** adatok van felfedezte SQL használatával, és a Python hasonló programozási nyelv használatával.
-* **Hive tábla** adatok felfedezte van a Hive-lekérdezések használatával.
-* **Az Azure Machine Learning (AML) Studio** adatok van felfedezte AML modulok használata.
+Adatok feltárása Ez a lépés a [csoportos adatelemzési folyamat](overview.md).
 
-A következő **menü** az eszközök segítségével áttekintheti az különböző tárolási környezetekben adatokat leíró témakörök hivatkozásait. 
+Az alábbi cikkek ismertetik, hogyan fedezheti fel az adatok három különböző tároló környezetekben, amelyek jellemzően a adatelemzési folyamat:
 
-[!INCLUDE [cap-explore-data-selector](../../../includes/cap-explore-data-selector.md)]
+* Ismerkedés a [az Azure blob-tároló](explore-data-blob.md) adatokat a [Pandas](http://pandas.pydata.org/) Python-csomag.
+* Ismerkedés a [SQL Server](explore-data-sql-server.md) hasonló Python adatokat SQL használatával, és programozási nyelv használatával.
+* Ismerkedés a [Hive-tábla](explore-data-hive-tables.md) Hive-lekérdezések használata az adatok.
 
+Ezen kívül a videó [adatok előfeldolgozása az Azure Machine Learning Studióban](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/), törlését és az Azure Machine Learning Studióban az adatok átalakítása a gyakran használt modulok ismerteti.

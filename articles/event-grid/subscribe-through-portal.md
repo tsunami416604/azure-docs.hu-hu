@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/17/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 72eaa17e78086a4e5338bb3198ef7471c44b785f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: eb48e40007a25992a9a399176b6a4f93be89efc8
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234948"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344084"
 ---
 # <a name="subscribe-to-events-through-portal"></a>Fizessen elő az eseményekre a portálon keresztül
 
@@ -45,6 +45,16 @@ Bármelyik támogatott az Event Grid-előfizetés létrehozása [eseményforrás
 1. Az esemény-előfizetés, például az események és a egy előfizetésnevet végpontját további részleteket nyújtanak.
 
    ![Adja meg az előfizetés részletei](./media/subscribe-through-portal/provide-subscription-details.png)
+
+1. Kézbesíthetetlen levelek közé helyezésének engedélyezése és testre szabhatja az újrapróbálkozási szabályzatok **további funkciók**.
+
+   ![Válassza ki a további funkciók](./media/subscribe-through-portal/select-additional-features.png)
+
+1. Válassza ki egy tárolót, amely nem szállított események tárolásához, majd állítsa be, hogyan lesznek visszaküldve az újrapróbálkozásokat.
+
+   ![Engedélyezze a kézbesíthetetlen levelek közé helyezésének, majd próbálkozzon újra](./media/subscribe-through-portal/set-deadletter-retry.png)
+
+1. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-subscription-on-resource"></a>Előfizetés létrehozása az erőforráson
 

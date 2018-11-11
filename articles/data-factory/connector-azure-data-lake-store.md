@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 11/05/2018
 ms.author: jingwang
-ms.openlocfilehash: d8bbc3a5e4ac14ed60fcd6e5f19bdf1df03455a6
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 3b1abe60fc81ae0316e2d0552a1750129171ff5f
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817024"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345453"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Data Lake Storage Gen1 Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,9 +44,6 @@ Pontosabban az Azure Data Lake Store-összekötő támogatja:
 > Az Azure Data Lake Store-összekötő használatával, olvassa [adatok betöltése az Azure Data Lake Store](load-azure-data-lake-store.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
-
->[!NOTE]
->Copy Data eszköz használatával hozhat létre másolási folyamat, vagy hajtsa végre a tesztelési kapcsolat/Navigálás mappák létrehozása alatt ADF felhasználói felület használata, ha az egyszerű szolgáltatás vagy a gyökér szintű megkapják MSI engedélye van szükség. Másolási tevékenység-végrehajtási ideje, együttműködhet mindaddig, amíg a engedélyt kell másolni az adatokat. A szerzői műveletek, kihagyhatja, ha az engedély szükséges korlátozza.
 
 Az alábbi szakaszok nyújtanak, amelyek meghatározzák az adott Data Factory-entitások Azure Data lake Store-tulajdonságokkal kapcsolatos részletekért.
 
@@ -79,6 +76,9 @@ Egyszerű szolgáltatásnév hitelesítése alkalmazás entitás regisztrálása
 > Győződjön meg arról, hogy engedélyeket a szolgáltatás egyszerű megfelelő az Azure Data Lake Store:
 >- **Forrásként**, az adatkezelőben -> hozzáférés, adjon meg legalább **Olvasás + végrehajtás** listában, és másolja a fájlokat a mappát vagy almappát, vagy **olvasási** ; egyetlen fájl másolása, és válassza ki a Adja hozzá a **ezt a mappát, és az összes gyermekre** a rekurzív adja hozzá, mint **egy hozzáférési és alapértelmezett engedély bejegyzés**. Nem követelmény, a fiók fájlszintű hozzáférés-vezérlés (IAM).
 >- **Fogadóként**, az adatkezelőben -> hozzáférés, adjon meg legalább **írás + végrehajtás** gyermekelemek létrehozásához a mappában, és válassza hozzá jogosultsága **ezt a mappát, és az összes gyermekre** a rekurzív és Adja hozzá **egy hozzáférési és alapértelmezett engedély bejegyzés**. Ha Azure integrációs modul használatával másolása (forrás- és fogadóadattárként is vannak a felhőben), a hozzáférés-vezérlés (IAM), adja meg legalább **olvasó** szerepkör annak érdekében, hogy a Data Lake Store régió észlelése, a Data Factory. Ha szeretné-e elkerülése érdekében explicit módon a IAM szerepkör [hozzon létre egy Azure integrációs modul](create-azure-integration-runtime.md#create-azure-ir) helyét, a Data Lake Store és a Data Lake Store a társítás-beli társított szolgáltatást a következő példa.
+
+>[!NOTE]
+>Használata esetén **Copy Data eszköz** hozhat létre másolási folyamat, vagy használjon **ADF felhasználói felület** végre tesztelési kapcsolat/Navigálás mappák létrehozása alatt, az egyszerű szolgáltatás engedélymegadásaaengedélyrevanszüksége**gyökér szintű "Execute" engedéllyel rendelkező** sorrendben, kezdve a legfelső szintű mappák listázása. Másolási tevékenység-végrehajtási ideje, együttműködhet mindaddig, amíg a engedélyt kell másolni az adatokat. A szerzői műveletek, kihagyhatja, ha az engedély szükséges korlátozza.
 
 A következő tulajdonságok támogatottak:
 
@@ -128,6 +128,9 @@ Azure-erőforrások hitelesítéshez használandó felügyelt identitások:
 >- **Forrásként**, az adatkezelőben -> hozzáférés, adjon meg legalább **Olvasás + végrehajtás** listában, és másolja a fájlokat a mappát vagy almappát, vagy **olvasási** ; egyetlen fájl másolása, és válassza ki a Adja hozzá a **ezt a mappát, és az összes gyermekre** a rekurzív adja hozzá, mint **egy hozzáférési és alapértelmezett engedély bejegyzés**. Nem követelmény, a fiók fájlszintű hozzáférés-vezérlés (IAM).
 >- **Fogadóként**, az adatkezelőben -> hozzáférés, adjon meg legalább **írás + végrehajtás** gyermekelemek létrehozásához a mappában, és válassza hozzá jogosultsága **ezt a mappát, és az összes gyermekre** a rekurzív és Adja hozzá **egy hozzáférési és alapértelmezett engedély bejegyzés**. Ha Azure integrációs modul használatával másolása (forrás- és fogadóadattárként is vannak a felhőben), a hozzáférés-vezérlés (IAM), adja meg legalább **olvasó** szerepkör annak érdekében, hogy a Data Lake Store régió észlelése, a Data Factory. Ha szeretné-e elkerülése érdekében explicit módon a IAM szerepkör [hozzon létre egy Azure integrációs modul](create-azure-integration-runtime.md#create-azure-ir) helyét, a Data Lake Store és a Data Lake Store a társítás-beli társított szolgáltatást a következő példa.
 
+>[!NOTE]
+>Használata esetén **Copy Data eszköz** hozhat létre másolási folyamat, vagy használjon **ADF felhasználói felület** végre tesztelési kapcsolat/Navigálás mappák létrehozása alatt, az engedély megadása engedélyre van szüksége **gyökérkönyvtárában "az Execute" engedéllyel rendelkező szintű** sorrendben, kezdve a legfelső szintű mappák listázása. Másolási tevékenység-végrehajtási ideje, együttműködhet mindaddig, amíg a engedélyt kell másolni az adatokat. A szerzői műveletek, kihagyhatja, ha az engedély szükséges korlátozza.
+
 Az Azure Data Factoryben nem kell meghatároznia semmilyen tulajdonságot a Data Lake Store általános információk mellett társított szolgáltatást.
 
 **Példa**
@@ -159,7 +162,7 @@ Adatok másolása és- tárolókról az Azure Data Lake Store, állítsa be a ty
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot az adatkészlet értékre kell állítani: **AzureDataLakeStoreFile** |Igen |
-| folderPath | A Data Lake Store az a mappa elérési útját. Helyettesítő karaktert tartalmazó szűrő nem támogatott. Példa: a gyökérmappa/almappa / |Igen |
+| folderPath | A Data Lake Store az a mappa elérési útját. Helyettesítő karaktert tartalmazó szűrő nem támogatott. Ha nincs megadva, a legfelső szintű mutat. Példa: a gyökérmappa/almappa / |Nem |
 | fileName | **Név vagy helyettesítő karaktert tartalmazó szűrő** az fájl(ok) a megadott "folderPath" alatt. Ez a tulajdonság értékét nem adja meg, ha az adatkészlet mutat a mappában lévő összes fájlt. <br/><br/>Szűrő esetén engedélyezett a helyettesítő karaktereket: `*` (nulla vagy több olyan karakterre illeszkedik) és `?` (megegyezik a nulla vagy önálló karakter).<br/>-1. példa: `"fileName": "*.csv"`<br/>– 2. példa: `"fileName": "???20180427.txt"`<br/>Használat `^` elkerülésére, ha a fájl tényleges nevét helyettesítő elemet vagy a escape karaktere belül.<br/><br/>Ha nincs megadva fájlnév egy kimeneti adatkészletet és **preserveHierarchy** nincs megadva a tevékenység fogadó, a másolási tevékenység létrehozza a fájl neve a következő formátumban: "*adatokat. [ tevékenység-végrehajtásonként azonosító GUID]. [GUID Ha FlattenHierarchy]. [Ha a konfigurált formátum]. [Ha konfigurálta a tömörítés]* ". Ilyen például, "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz". |Nem |
 | Formátum | Ha azt szeretné, hogy **, a fájlok másolása a-rendszer** közötti fájlalapú tárolók (bináris másolat), hagyja ki a format szakaszban mindkét bemeneti és kimeneti adatkészlet-definíciókban.<br/><br/>Ha szeretné elemezni, vagy hozzon létre egy adott formátumú fájlok, formátuma a következő fájltípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság alatt formátumot az alábbi értékek egyikére. További információkért lásd: [szövegformátum](supported-file-formats-and-compression-codecs.md#text-format), [Json formátumban](supported-file-formats-and-compression-codecs.md#json-format), [Avro formátum](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátum](supported-file-formats-and-compression-codecs.md#orc-format), és [Parquetformátum](supported-file-formats-and-compression-codecs.md#parquet-format) szakaszokat. |Nem (csak a bináris másolás esetén) |
 | A tömörítés | Adja meg a típus és az adatok tömörítési szintje. További információkért lásd: [támogatott fájlformátumok és tömörítési kodek](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Támogatott típusok a következők: **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**.<br/>Támogatott szintek a következők: **Optimal** és **leggyorsabb**. |Nem |

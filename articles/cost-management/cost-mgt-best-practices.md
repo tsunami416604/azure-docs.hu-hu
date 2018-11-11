@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/10/2018
+ms.date: 01/09/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: f52a849fee4005628fb6a8ad567d89f5046d4765
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 43a682568708ab0286328cf3e483ddc3d5cf9dd8
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968069"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515352"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Az Azure Cost Managementbe a felhőbe való befektetéséből optimalizálása
 
@@ -186,10 +186,6 @@ További információkért lásd: [Mik az Azure-foglalásokat?](../billing/billi
 Ha már rendelkezik Windows Server vagy SQL Server-licenceivel a helyszíni központi telepítések, használhatja az Azure Hybrid Benefit program mentése az Azure-ban. A Windows Server az értékelemmel minden egyes licenc fedezi az operációs rendszer (akár két virtuális gép) költségeit, és számítási csak kell fizetnie. Meglévő SQL Server-licencek használatával akár megtakarítást 55 a Virtuálismag-alapú SQL Database beállításai. az Azure Virtual Machines és az SQL Server Integration Services a lehetőségek között az SQL Server.
 
 További információkért lásd: [Azure Hybrid Benefit – megtakarítási kalkulátor](https://azure.microsoft.com/pricing/hybrid-benefit/).
-
-#### <a name="monetary-commitment"></a>Pénzügyi kötelezettségvállalás
-
-Ügyfelek, akik nagyvállalati szerződést kötnek hozhat létre a Microsoft egy előzetes pénzügyi kötelezettségvállalás. Együtt lefoglalni a felhőalapú erőforrásokhoz költségvetése egyszerű lehetőséget biztosít, a pénzügyi kötelezettségvállalással lehetővé teszi alacsonyabb díjak az Azure-ban. Sebesség csökkentése a szervezet számára jelentős költségmegtakarítást eredményezhet.
 
 ### <a name="other-resources"></a>Egyéb erőforrások
 

@@ -1,6 +1,6 @@
 ---
-title: Tartalomkulcs létrehozása többi |} Microsoft Docs
-description: Ismerje meg, amelyek biztonságos hozzáférést biztosítanak az eszközök tartalomkulcs létrehozása.
+title: Tartalomkulcs létrehozása a REST-tel |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre, amelyek biztonságos hozzáférést biztosítanak az eszközök tartalomkulcs.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,40 +14,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: 83ba02aedebe69e15736975fbd73c7c7f221634f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9fb28d618a9375dec19e75d04ef0a6bc5de334b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790334"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242636"
 ---
-# <a name="create-content-keys-with-rest"></a>A többi tartalom kulcsok létrehozása
+# <a name="create-content-keys-with-rest"></a>Tartalomkulcs létrehozása a REST segítségével
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-create-contentkey.md)
 > * [.NET](media-services-dotnet-create-contentkey.md)
 > 
 > 
 
-A Media Services lehetővé teszi, hogy a titkosított eszközökre. A **ContentKey** biztonságos hozzáférést biztosít a **eszköz**s. 
+Media Services lehetővé teszi, hogy a titkosított eszközökre. A **ContentKey** biztonságos hozzáférést biztosít a **eszköz**s. 
 
-Amikor létrehoz egy új eszközt (például előtt [fájlok feltöltése](media-services-rest-upload-files.md)), a következő titkosítási beállításokat adhat meg: **StorageEncrypted**, **CommonEncryptionProtected**, vagy **EnvelopeEncryptionProtected**. 
+Amikor létrehoz egy új eszköz (például előtt [fájlok feltöltése](media-services-rest-upload-files.md)), a következő titkosítási beállításokat is megadhat: **StorageEncrypted**, **CommonEncryptionProtected**, vagy **EnvelopeEncryptionProtected**. 
 
-Eszközök kézbesítése az ügyfelek számára, amikor is [dinamikusan legyen titkosítva eszközök konfigurálása](media-services-rest-configure-asset-delivery-policy.md) valamelyik, a következő két titkosítások használatára: **DynamicEnvelopeEncryption** vagy **DynamicCommonEncryption**.
+Ha az ügyfelek számára teszi elérhetővé az eszközök, [dinamikusan legyen titkosítva eszközök konfigurálása](media-services-rest-configure-asset-delivery-policy.md) valamelyik a következő két titkosítások használatára: **DynamicEnvelopeEncryption** vagy  **DynamicCommonEncryption**.
 
-Titkosított eszközöknek kell társítani **ContentKey**s. A cikkből megtudhatja, hogyan hozzon létre egy tartalomkulcsot.
+A titkosított eszközökre kell társítani **ContentKey**s. Ez a cikk ismerteti, hogyan hozhat létre egy tartalomkulcsot.
 
-Az alábbi lépések általános a titkosítani kívánt eszközök társítani tartalom kulcs létrehozásakor. 
+A következőkben általános lépéseket: az eszközök csak titkosítás kívánt társító tartalomkulcs létrehozása. 
 
-1. Véletlenszerű előállításához a 16 bájtos AES kulcs (a közös és boríték titkosítás) vagy egy 32 bájtos AES kulcs (tárolás titkosítása). 
+1. Véletlenszerű előállításához a 16 bájtos AES-kulcsot (a gyakori és a boríték-titkosítást) vagy egy 32 bájtos AES-kulcsot (a tárolás titkosítása). 
    
-    Ez az a tartalomkulcsot az adategységhez, ami azt jelenti, hogy ugyanazt a tartalom kulcsot használhatja a visszafejtés során szükséges társított összes fájlt. 
-2. Hívja a [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) és [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) módszerek megszerezni a helyes X.509-tanúsítvány használatával titkosítja a tartalomkulcsot.
+    Ez az a tartalomkulcsot az adategységhez, ami azt jelenti, hogy az eszközintelligencia szükség használja ugyanazt a tartalom kulcsot visszafejtés közben az hozzárendelt összes fájl esetében. 
+2. Hívja a [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) és [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) megszerezni a helyes X.509-tanúsítvány a tartalomkulcs titkosítására használandó módszert.
 3. A tartalomkulcs X.509-tanúsítvány nyilvános kulcsával titkosítja. 
    
-   Media Services .NET SDK RSA-t használ a OAEP típusú végrehajtásakor a titkosítást.  A példa látható a [EncryptSymmetricKeyData függvény](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
-4. Hozzon létre egy ellenőrzőösszeget (a PlayReady AES-kulcs ellenőrzőösszeg algoritmus alapján) a kulcsazonosító és tartalomkulcsot számítja. További információkért lásd: a PlayReady fejléc objektum-dokumentum található "PlayReady AES ellenőrzőösszeg kulcsalgoritmus" szakasza [Itt](http://www.microsoft.com/playready/documents/).
+   A Media Services .NET SDK-t használ az RSA OAEP esetén a titkosítást.  Egy példa látható a [EncryptSymmetricKeyData függvény](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
+4. Hozzon létre egy ellenőrzőösszeg-érték (a PlayReady AES-kulcsok ellenőrzőösszeg algoritmus alapján) számítja ki a kulcsazonosító és a tartalomkulcsot. További információkért lásd: a "PlayReady AES kulcs ellenőrzőösszeg algoritmus" szakaszban található PlayReady fejléc objektum dokumentum [Itt](https://www.microsoft.com/playready/documents/).
    
-   A következő .NET típusú példát a GUID része a kulcsazonosító és egyértelműen tartalomkulcsot ellenőrzőösszeg számítja ki.
+   Ez a példa .NET az ellenőrzőösszeg használatával a kulcs azonosítóját és a törlés tartalomkulcsot a GUID részét számítja ki.
    
         public static string CalculateChecksum(byte[] contentKey, Guid keyId)
          {
@@ -66,23 +66,23 @@ Az alábbi lépések általános a titkosítani kívánt eszközök társítani 
              Array.Copy(array, array2, 8);
              return Convert.ToBase64String(array2);
          }
-5. Hozzon létre a tartalomkulcsot a a **EncryptedContentKey** (karakterlánccá base64-kódolású), **ProtectionKeyId**, **ProtectionKeyType**, **ContentKeyType**, és **ellenőrzőösszeg** értékeket az előző lépésben kapott.
-6. Társítsa a **ContentKey** entitás a **eszköz** entitás keresztül a $links műveletet.
+5. Hozzon létre a tartalomkulcsot a a **EncryptedContentKey** (base64-kódolású karakterlánc konvertálva), **ProtectionKeyId**, **ProtectionKeyType**,  **ContentKeyType**, és **ellenőrzőösszeg** értékeket az előző lépésben kapott.
+6. Társítsa a **ContentKey** az entitás a **eszköz** entitás keresztül a $links műveletet.
 
-Ez a cikk nem szerepelnek az AES-kulcs létrehozása, a kulcs titkosításához és ellenőrzőösszeg számítása. 
+Ez a cikk nem jeleníti meg az AES-kulcs létrehozásához, a kulcs titkosítására és az ellenőrzőösszeg kiszámítása. 
 
 >[!NOTE]
 
->A Media Services entitások elérésekor be kell meghatározott fejlécmezők és értékek a HTTP-kérelmekre. További információkért lásd: [a Media Services REST API fejlesztési telepítő](media-services-rest-how-to-use.md).
+>A Media Services entitások elérésekor a be kell állítani a HTTP-kérelmekre a meghatározott fejlécmezők és értékek. További információkért lásd: [beállítása a Media Services REST API-k fejlesztését](media-services-rest-how-to-use.md).
 
 ## <a name="connect-to-media-services"></a>Kapcsolódás a Media Services szolgáltatáshoz
 
-Az AMS API-hoz kapcsolódáshoz információkért lásd: [elérni az Azure Media Services API-t az Azure AD-alapú hitelesítés](media-services-use-aad-auth-to-access-ams-api.md). 
+Az AMS API-t kapcsolódás információkért lásd: [eléréséhez az Azure Media Services API Azure AD-hitelesítés](media-services-use-aad-auth-to-access-ams-api.md). 
 
 ## <a name="retrieve-the-protectionkeyid"></a>A ProtectionKeyId beolvasása
-A következő példa bemutatja, hogyan beolvasni a ProtectionKeyId, egy tanúsítvány-ujjlenyomat, a tanúsítványt a tartalomkulcsot titkosításakor kell használnia. Hajtsa végre ezt a lépést, győződjön meg arról, hogy már rendelkezik a megfelelő tanúsítvány a gépen.
+Az alábbi példa bemutatja, hogyan kérheti le a ProtectionKeyId, egy tanúsítvány ujjlenyomata a tanúsítvány a tartalomkulcs titkosításakor kell használnia. Ehhez a lépéshez, győződjön meg arról, hogy már rendelkezik a megfelelő tanúsítvány a gépen.
 
-A kérelem:
+Kérés:
 
     GET https://media.windows.net/api/GetProtectionKeyId?contentKeyType=0 HTTP/1.1
     MaxDataServiceVersion: 3.0;NetFx
@@ -111,10 +111,10 @@ Válasz:
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Edm.String","value":"7D9BB04D9D0A4A24800CADBFEF232689E048F69C"}
 
-## <a name="retrieve-the-protectionkey-for-the-protectionkeyid"></a>A ProtectionKey lekérdezni a ProtectionKeyId
-A következő példa bemutatja, hogyan lehet lekérni az X.509-tanúsítvány a ProtectionKeyId az előző lépésben kapott.
+## <a name="retrieve-the-protectionkey-for-the-protectionkeyid"></a>A ProtectionKey lekérheti a ProtectionKeyId
+Az alábbi példa bemutatja, hogyan kérheti le az X.509-tanúsítvány a ProtectionKeyId az előző lépésben kapott.
 
-A kérelem:
+Kérés:
 
     GET https://media.windows.net/api/GetProtectionKey?ProtectionKeyId='7D9BB04D9D0A4A24800CADBFEF232689E048F69C' HTTP/1.1
     MaxDataServiceVersion: 3.0;NetFx
@@ -148,9 +148,9 @@ Válasz:
     "value":"MIIDSTCCAjGgAwIBAgIQqf92wku/HLJGCbMAU8GEnDANBgkqhkiG9w0BAQQFADAuMSwwKgYDVQQDEyN3YW1zYmx1cmVnMDAxZW5jcnlwdGFsbHNlY3JldHMtY2VydDAeFw0xMjA1MjkwNzAwMDBaFw0zMjA1MjkwNzAwMDBaMC4xLDAqBgNVBAMTI3dhbXNibHVyZWcwMDFlbmNyeXB0YWxsc2VjcmV0cy1jZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzR0SEbXefvUjb9wCUfkEiKtGQ5Gc328qFPrhMjSo+YHe0AVviZ9YaxPPb0m1AaaRV4dqWpST2+JtDhLOmGpWmmA60tbATJDdmRzKi2eYAyhhE76MgJgL3myCQLP42jDusWXWSMabui3/tMDQs+zfi1sJ4Ch/lm5EvksYsu6o8sCv29VRwxfDLJPBy2NlbV4GbWz5Qxp2tAmHoROnfaRhwp6WIbquk69tEtu2U50CpPN2goLAqx2PpXAqA+prxCZYGTHqfmFJEKtZHhizVBTFPGS3ncfnQC9QIEwFbPw6E5PO5yNaB68radWsp5uvDg33G1i8IT39GstMW6zaaG7cNQIDAQABo2MwYTBfBgNVHQEEWDBWgBCOGT2hPhsvQioZimw8M+jOoTAwLjEsMCoGA1UEAxMjd2Ftc2JsdXJlZzAwMWVuY3J5cHRhbGxzZWNyZXRzLWNlcnSCEKn/dsJLvxyyRgmzAFPBhJwwDQYJKoZIhvcNAQEEBQADggEBABcrQPma2ekNS3Wc5wGXL/aHyQaQRwFGymnUJ+VR8jVUZaC/U/f6lR98eTlwycjVwRL7D15BfClGEHw66QdHejaViJCjbEIJJ3p2c9fzBKhjLhzB3VVNiLIaH6RSI1bMPd2eddSCqhDIn3VBN605GcYXMzhYp+YA6g9+YMNeS1b+LxX3fqixMQIxSHOLFZ1G/H2xfNawv0VikH3djNui3EKT1w/8aRkUv/AAV0b3rYkP/jA1I0CPn0XFk7STYoiJ3gJoKq9EMXhit+Iwfz0sMkfhWG12/XO+TAWqsK1ZxEjuC9OzrY7pFnNxs4Mu4S8iinehduSpY+9mDd3dHynNwT4="}
 
 ## <a name="create-the-contentkey"></a>A ContentKey létrehozása
-Az X.509 tanúsítvány lekérése és a tartalom kulcs titkosításához használt nyilvános kulcsát, akkor létre kell hoznia egy **ContentKey** entitás és a tulajdonság értékek ennek megfelelően beállítva.
+Miután X.509-tanúsítvány lekérése és a tartalom kulcs titkosításához használt nyilvános kulcsát, hozzon létre egy **ContentKey** entitás, és ennek megfelelően érték a tulajdonság beállítása.
 
-A tartalom létrehozása a értékeket, hogy kell-e állítva mikor kulcs egy típus. A következő értékek közül választhat:
+Az, hogy kell-e beállítva mikor értékek egyike a tartalom létrehozása kulcs típusa. A következő értékek közül választhat:
 
     public enum ContentKeyType
     {
@@ -177,7 +177,7 @@ A tartalom létrehozása a értékeket, hogy kell-e állítva mikor kulcs egy t�
     }
 
 
-A következő példa bemutatja, hogyan hozhat létre egy **ContentKey** rendelkező egy **ContentKeyType** tárolás titkosítása ("1") beállítása és a **ProtectionKeyType** , jelezve, hogy a "0" értékre a védelmi kulcs azonosítója: az X.509 tanúsítvány ujjlenyomata.  
+Az alábbi példa bemutatja, hogyan hozhat létre egy **ContentKey** együtt egy **ContentKeyType** tárolás titkosítása ("1") beállítása és a **ProtectionKeyType** "0" értékre van állítva, jelezve, hogy a védelmi kulcs csomagazonosítója az X.509-tanúsítvány ujjlenyomata.  
 
 Kérés
 
@@ -228,9 +228,9 @@ Válasz:
     "Checksum":"calculated checksum"}
 
 ## <a name="associate-the-contentkey-with-an-asset"></a>Egy eszköz a ContentKey társítása
-Miután létrehozta a ContentKey, rendelje hozzá azt az objektumot az $links művelet használatával a következő példában látható módon:
+Miután létrehozta a ContentKey, társíthatja azt az objektumot a $links művelettel, az alábbi példában látható módon:
 
-A kérelem:
+Kérés:
 
     POST https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3Afbd7ce05-1087-401b-aaae-29f16383c801')/$links/ContentKeys HTTP/1.1
     DataServiceVersion: 1.0;NetFx

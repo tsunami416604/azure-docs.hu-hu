@@ -9,22 +9,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4d1b27c9b1694f987ea7461c16899f3e5ecb84d2
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: c4347254df59c62085b2bfb195496bf479cf7b35
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140993"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344582"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Az Azure Resource Manager üzembe helyezési mód
+
 Az erőforrások üzembe helyezésekor, megadhatja, hogy az üzemelő példány-e a növekményes frissítés vagy a frissítés befejezéséhez.  A legfontosabb különbség a két módról, hogyan kezeli a Resource Manager a meglévő erőforrások az erőforráscsoportban, amelyek nem szerepelnek a sablonban. Az alapértelmezett mód növekményes.
 
 ## <a name="incremental-and-complete-deployments"></a>A növekményes és teljes körű központi telepítések
+
 Erőforrások üzembe helyezésekor:
 
-* Resource Manager a teljes módban **törli** erőforráscsoportban létezik, de nem a sablonban megadott erőforrások. 
+* Resource Manager a teljes módban **törli** erőforráscsoportban létezik, de nem a sablonban megadott erőforrások.
 * Erőforrás-kezelő a növekményes módban **hagyja változatlanul** erőforráscsoportban létezik, de nem a sablonban megadott erőforrások.
 
 Mindkét mód esetében az erőforrás-kezelő megpróbálja létrehozni a sablonban megadott összes erőforrást. Ha az erőforrás már létezik az erőforráscsoportban, és a beállítások nem változnak, a művelet eredményeként nem változik. Ha módosítja egy erőforráshoz tartozó tulajdonságértékek, ezeket az új értékeket az erőforrás frissül. Próbálja meg frissíteni a hely vagy egy meglévő erőforrás típusa, ha a központi telepítés egy hibaüzenettel meghiúsul. Ehelyett üzembe helyezése egy új erőforrás helyét, vagy adjon meg, hogy nincs szüksége.
@@ -64,12 +66,12 @@ Ha telepítve **teljes** módban erőforrás C törlődik. Az erőforráscsoport
 
 A PowerShell-lel üzembe helyezésekor az üzembe helyezési mód beállításához használja a `Mode` paraméter.
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment `
   -Mode Complete `
   -Name ExampleDeployment `
   -ResourceGroupName ExampleResourceGroup `
-  -TemplateFile c:\MyTemplates\storage.json 
+  -TemplateFile c:\MyTemplates\storage.json
 ```
 
 Az Azure CLI-vel való telepítésekor, állítsa be az üzembe helyezési mód, használja a `mode` paraméter.
@@ -100,7 +102,7 @@ Használata esetén egy [társított vagy beágyazott sablon](resource-group-lin
 ```
 
 ## <a name="next-steps"></a>További lépések
+
 * Resource Manager-sablonok létrehozásával kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
 * Erőforrások üzembe helyezése kapcsolatos további információkért lásd: [alkalmazás üzembe helyezése Azure Resource Manager-sablonnal](resource-group-template-deploy.md).
 * A műveletek esetében egy erőforrás-szolgáltató megtekintése: [Azure REST API](/rest/api/).
-

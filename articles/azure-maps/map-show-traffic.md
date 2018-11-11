@@ -3,18 +3,18 @@ title: Az Azure Maps forgalom megjelenítése |} A Microsoft Docs
 description: Forgalmi adatok megjelenítését a Javascript térképen
 author: jingjing-z
 ms.author: jinzh
-ms.date: 09/14/2018
+ms.date: 11/10/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 532001a0cda22903d0bdf807ee868aef211336e0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 45f7913c5cc69f99b01ba1a911910273673856d3
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240086"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51513764"
 ---
 # <a name="show-traffic-on-the-map"></a>Forgalom megjelenítése a térképen
 
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan forgalom és események információk megjelenítés
 
 A fenti kód az első kódblokkot egy térkép-objektumot hoz létre. Látható [térkép létrehozásához](map-create.md) útmutatást.
 
-A második kódblokkot használ [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#settraffic) függvény a térkép osztály megjelenítése a forgalom adatfolyamait és incidensek a térképen.
+A második kódblokkot használ [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#settraffic) belül a térkép [eseményfigyelő](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) függvényt, hogy a forgalom adatfolyamait és incidensek a térképen jelennek meg.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -15,15 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: dfb36cfba312d54d469b371f02820fd01da6dc7f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: ecdc6ae6c7e0c8a89d97611f41146d168bc74741
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243420"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344110"
 ---
 # <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>Párhuzamos tömeges adatimportálás SQL partíciós táblák használatával
-Ez a dokumentum ismerteti, hogyan hozhat létre gyors párhuzamos tömeges importálása az SQL Server-adatbázis az adatokat a particionált táblákat. Big Data típusú adatok betöltése és átvitele egy SQL Database, az adatok importálása az SQL DB és a lekérdezések a javítása érdekében a *particionált táblák és nézetek*. 
+
+Ez a cikk ismerteti, hogyan hozhat létre gyors párhuzamos tömeges importálása az SQL Server-adatbázis az adatokat a particionált táblákat. Big Data típusú adatok betöltése és átvitele egy SQL Database, az adatok importálása az SQL DB és a lekérdezések a javítása érdekében a *particionált táblák és nézetek*. 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>Hozzon létre egy új adatbázist és a fájlcsoportok
 * [Hozzon létre egy új adatbázist](https://technet.microsoft.com/library/ms176061.aspx), ha már nem létezik.

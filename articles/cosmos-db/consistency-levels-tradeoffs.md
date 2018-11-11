@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: mjbrown
-ms.openlocfilehash: 8f36026c7e5802994b8cf22d60c6ecea052e6382
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0e4105d6f56a8eb45a83e970c85319cf25041781
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963047"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514774"
 ---
 # <a name="availability-and-performance-tradeoffs-for-various-consistency-levels-in-azure-cosmos-db"></a>Kompromisszumot kínál a különböző konzisztenciaszintet az Azure Cosmos DB rendelkezésre állás és teljesítmény
 
@@ -33,20 +33,6 @@ Elosztott adatbázisok hagyatkoznia a magas rendelkezésre állás, alacsony ké
 - Kérelemegység azonos számú a munkamenet, konzisztens előtag és végleges konzisztencia szintek adja meg körülbelül 2 X olvasási teljesítménye az erős és a korlátozott frissesség képest.
 
 - Írási művelet, például az insert, replace, upsert, törlés, stb. egy adott típusú a lemezírás teljesítménye, a kérelemegységek megegyezik az összes konzisztenciaszintek.
-
-## <a name="consistency-levels-and-durability"></a>Konzisztenciaszintek és tartóssága
-
-Írási művelet arra vonatkozik, az ügyfél számára, mielőtt az adatok tartósan véglegesítve lettek szerint a kvórum replikával, amely az írási műveletek a régión belül. Továbbá ha a tároló az egységes indexelési szabályzat van konfigurálva, az index is szinkron módon frissíti, replikálja, és tartósan véglegesítve lettek a kvórum replikák által az ügyfélnek az írási művelet nyugtázása elküldése előtt.
-
-A következő táblázat összefoglalja a potenciális adatvesztési időszak regionális katasztrófa a Cosmos-fiókok, amelyek számos régióban.
-
-| **Konzisztenciaszint** | **A lehetséges regionális katasztrófa adatvesztési időszak** |
-| - | - |
-| Erős | Nulla |
-| Kötött elavulás | A Cosmos-fiók konfigurálása a "frissesség ablakban" korlátozódik. |
-| Munkamenet | Legfeljebb 5 másodperc |
-| Konzisztens előtag | Legfeljebb 5 másodperc |
-| Végleges | Legfeljebb 5 másodperc |
 
 ## <a name="next-steps"></a>További lépések
 

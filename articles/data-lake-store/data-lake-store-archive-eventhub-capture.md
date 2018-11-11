@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 0bb870b54099fce9f7f6cfd1666be1b6393c5d07
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: a921a717445df93c83518c89970050e63a51ddf3
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391436"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345201"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Használja az Azure Data Lake Storage Gen1 Eseményközpontokból származó adatok
 
@@ -58,7 +58,7 @@ Ebben a szakaszban hozzon létre egy mappát a fiókon belül, ahol szeretné r�
     c. A **engedélyek hozzárendelése**, kattintson a **engedélyek kiválasztása**. Állítsa be **engedélyek** való **végrehajtása**. Állítsa be **hozzá** való **ezt a mappát, és az összes gyermekre**. Állítsa be **hozzáadása** való **hozzáférési engedély bejegyzés és alapértelmezett engedély bejegyzés**.
 
     > [!IMPORTANT]
-    > Az Azure Event Hubs által fogadott adatok rögzítésére egy új mappahierarchiában létrehozásakor ez egyszerű módja elérhetőségét a rendeltetési mappára.  Azonban hozzáadása engedélyek összes gyermekre a legfelső szintű mappa számos gyermek fájlok és mappák is igénybe vehet egy hosszú ideig.  Ha a gyökérmappában található fájlok és mappák nagy számú tartalmaz, valószínűleg gyorsabb hozzáadása **Execute** engedélyeinek `Microsoft.EventHubs` külön-külön az egyes mappák elérési útját a végső rendeltetési mappára. 
+    > Amikor egy új mappát hierarchia létrehozása az Azure Event Hubs által fogadott adatok rögzítésére, ez egyszerű módja elérhetőségét a rendeltetési mappára.  Azonban hozzáadása engedélyek összes gyermekre a legfelső szintű mappa számos gyermek fájlok és mappák is igénybe vehet egy hosszú ideig.  Ha a gyökérmappában található fájlok és mappák nagy számú tartalmaz, valószínűleg gyorsabb hozzáadása **Execute** engedélyeinek `Microsoft.EventHubs` külön-külön az egyes mappák elérési útját a végső rendeltetési mappára. 
 
     ![A Data Lake Storage Gen1 legfelső szintű engedélyeket](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "a Data Lake Storage Gen1 legfelső szintű engedélyek hozzárendelése")
 

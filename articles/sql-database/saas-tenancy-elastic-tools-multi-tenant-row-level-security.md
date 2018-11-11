@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: d669e7beb2d0e41ff26408d4f71c3e1648c41e3a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 6d701878886cb1d5cc20a57614a474537f06a728
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242568"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242908"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Az elastic database-eszközökkel és a sorszintű biztonság több-bérlős alkalmazások
 
@@ -41,7 +41,7 @@ A cél az, hogy a rugalmas adatbázis ügyfélkönyvtárának [Adatfüggő útv�
 
 - Használja a Visual Studio (2012 vagy újabb)
 - Három Azure SQL-adatbázisok létrehozása
-- Töltse le a mintaprojektet: [Elastic DB eszközök az Azure SQL - több-Bérlős szilánkok](http://go.microsoft.com/?linkid=9888163)
+- Töltse le a mintaprojektet: [Elastic DB eszközök az Azure SQL - több-Bérlős szilánkok](https://go.microsoft.com/?linkid=9888163)
   - Adja meg az adatokat az adatbázisok elején **Program.cs** 
 
 Ez a projekt kibővíti a leírt egy [Elastic DB eszközök az Azure SQL - Entity Framework-integráció](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) támogatásával a több-bérlős bontott adatbázissal. A projekt egy egyszerű, blogok és hozzászólások létrehozására szolgáló konzolalkalmazást épít fel. A projekt négy bérlővel, valamint két több-bérlős bontott adatbázisokat tartalmazza. Ez a konfiguráció a fenti ábrán látható. 
@@ -254,7 +254,7 @@ GO
 ```
 
 > [!TIP]
-> Szüksége lehet a predikátum hozzáadása a táblák több száz összetett projekt, amely lehet fárasztó feladat. Nincs segítő tárolt eljárást, amely automatikusan létrehoz egy biztonsági szabályzatot, és hozzáadja a predikátum egy sémát az összes táblához. További információkért tekintse meg a következő blogbejegyzésben található: [sorszintű biztonság alkalmazása az összes táblához - segítő parancsfájl (blog)](http://blogs.msdn.com/b/sqlsecurity/archive/2015/03/31/apply-row-level-security-to-all-tables-helper-script).
+> Szüksége lehet a predikátum hozzáadása a táblák több száz összetett projekt, amely lehet fárasztó feladat. Nincs segítő tárolt eljárást, amely automatikusan létrehoz egy biztonsági szabályzatot, és hozzáadja a predikátum egy sémát az összes táblához. További információkért tekintse meg a következő blogbejegyzésben található: [sorszintű biztonság alkalmazása az összes táblához - segítő parancsfájl (blog)](https://blogs.msdn.com/b/sqlsecurity/archive/2015/03/31/apply-row-level-security-to-all-tables-helper-script).
 
 Most ismét a mintaalkalmazás futtatásakor, a bérlők meg csak a hozzájuk tartozó sorokat. Ezenkívül az alkalmazás nem szúrható be más, mint a jelenleg kapcsolódik a szegmenstérkép-adatbázis bérlőkhöz tartozó sorokat. Az alkalmazás emellett azokat a sorokat, láthatja a TenantId nem lehet frissíteni. Ha az alkalmazás megpróbálja teheti, egy DbUpdateException jelenik meg.
 
@@ -342,7 +342,7 @@ GO
 ### <a name="maintenance"></a>Karbantartás
 
 - **Hozzáadás, új szegmensekre**: hajtsa végre a T-SQL parancsfájlt engedélyezése bármely új szegmensekre az rls-t, ellenkező esetben ezekben a szegmensekben lévő lekérdezések nem vannak szűrve.
-- **Új táblázatok hozzáadása**: ad hozzá egy SZŰRŐT, és letiltja a predikátum a biztonsági házirendet minden szegmensben, amikor létrejön egy új tábla. Ellenkező esetben az új tábla-lekérdezéseket is nem lesznek szűrve. A Hozzáadás automatizálható a DDL-triggerek használatával leírtak szerint [sorszintű biztonság alkalmazása automatikusan az újonnan létrehozott táblák (blog)](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx).
+- **Új táblázatok hozzáadása**: ad hozzá egy SZŰRŐT, és letiltja a predikátum a biztonsági házirendet minden szegmensben, amikor létrejön egy új tábla. Ellenkező esetben az új tábla-lekérdezéseket is nem lesznek szűrve. A Hozzáadás automatizálható a DDL-triggerek használatával leírtak szerint [sorszintű biztonság alkalmazása automatikusan az újonnan létrehozott táblák (blog)](https://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx).
 
 ## <a name="summary"></a>Összegzés
 
@@ -358,7 +358,7 @@ Elastic database-eszközökkel és a sorszintű biztonság együtt használandó
 
 ## <a name="questions-and-feature-requests"></a>Kérdések és a Funkciókérések
 
-Ha kérdése van, lépjen kapcsolatba velünk az a [SQL Database fórum](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted). És bármely szolgáltatással kapcsolatos kéréseit, adja hozzá a [SQL Database-visszajelzési fórumon](https://feedback.azure.com/forums/217321-sql-database/).
+Ha kérdése van, lépjen kapcsolatba velünk az a [SQL Database fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted). És bármely szolgáltatással kapcsolatos kéréseit, adja hozzá a [SQL Database-visszajelzési fórumon](https://feedback.azure.com/forums/217321-sql-database/).
 
 
 <!--Image references-->

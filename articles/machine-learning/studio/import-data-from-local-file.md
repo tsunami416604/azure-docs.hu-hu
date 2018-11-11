@@ -1,7 +1,7 @@
 ---
-title: Adatokat importálhat egy fájlt Azure Machine Learning Studio |} Microsoft Docs
-description: 'Útmutató: Azure Machine Learning Studio a merevlemez-meghajtóról adatok képzési fájl feltöltéséhez. Ez létrehoz egy olyan adatkészlet modult a munkaterületen.'
-keywords: adatok, adatformátum, adattípusok, adatforrások, betanítási adatok importálása
+title: Adatok importálása egy fájlból az Azure Machine Learning studióhoz |} A Microsoft Docs
+description: Útmutató a betanítási adatok fájlok feltöltéséhez a merevlemez-meghajtóról az Azure Machine Learning Studióban. Ez létrehoz egy adatkészlet-modul a munkaterületen.
+keywords: adatok, az adatok formátuma, adattípusok, adatforrások, betanítási adatok importálása
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
@@ -16,32 +16,31 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 0365492b2814d686dd0bfa099e94717137b51725
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 70e159e7b7b2b5934cc584e9eb2e511d2b0ce0db
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834770"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346210"
 ---
-# <a name="import-training-data-from-a-file-on-your-hard-drive-into-machine-learning-studio"></a>Tanítási adatokat importálhat egy fájlt a merevlemezen a Machine Learning Studióhoz
-[!INCLUDE [import-data-into-aml-studio-selector](../../../includes/machine-learning-import-data-into-aml-studio.md)]
+# <a name="import-training-data-from-a-file-on-your-hard-drive-into-machine-learning-studio"></a>Betanítási adatok importálása egy fájlból a merevlemezen, Machine Learning studióba
 
-Ismerje meg, hogyan tölthet fel a merevlemez-meghajtóról kívánja használni, mint az Azure Machine Learning Studióban betanítási adatok adatfájlt. Importálja az adatfájlban, rendelkezik egy adatkészlet modul használatra kész a munkaterület.
+Ismerje meg, hogyan tölthet fel egy adatfájlt a merevlemez-meghajtóról a betanítási adatok az Azure Machine Learning Studióban adatokként. Importálja a fájlt, van egy használatra kész adatkészlet modul munkaterületét.
 
-## <a name="steps-to-import-data-from-a-local-file"></a>Adatokat importálhat egy helyi fájl lépései
-Adatokat importálhat egy helyi merevlemezen, tegye a következőket:
+## <a name="steps-to-import-data-from-a-local-file"></a>Adatokat importálhat egy helyi fájlból lépései
+Adatokat importálhat a helyi merevlemezen, tegye a következőket:
 
 1. Kattintson a **+ új** a Machine Learning Studio ablakának alján.
-2. Válassza ki **DATASET** és **helyi FÁJLBÓL**.
-3. Az a **töltse fel az új adatkészlet** párbeszédpanelen keresse meg a feltölteni kívánt fájl
-4. Adjon meg egy nevet, és azonosíthatja a adattípus ismertetésének. Olyan leírást ajánlott - lehetővé teszi bármely jellemzőinek, amelyet a későbbiekben az adatok használatakor vegye figyelembe az adatok rögzítéséhez.
-5. A jelölőnégyzet **egyik meglévő adatkészletét új verziója** lehetővé teszi egy meglévő adatkészlet frissítése az új adatokat. Ezt a jelölőnégyzetet, és írja be egy meglévő adatkészlet nevét.
+2. Válassza ki **ADATKÉSZLET** és **helyi FÁJLBÓL**.
+3. Az a **töltse fel egy új adatkészlet** párbeszédpanelen tallózással keresse meg a feltölteni kívánt fájlt
+4. Adjon meg egy nevet, az adattípus azonosításához, és igény szerint adjon meg egy leírást. Leírását javasolt – lehetővé teszi bármely jellemzőinek a jövőben az adatok használatakor vegye figyelembe az adatok rögzítéséhez.
+5. A jelölőnégyzet **az új verziója, amelyet egy meglévő adatkészlet** lehetővé teszi, hogy egy meglévő adatkészlet új adatokkal frissülnek. Kattintson a jelölőnégyzetre, és írja be egy meglévő adatkészlet nevét.
 
-![Töltse fel az új adatkészlet](./media/import-data-from-local-file/upload-dataset.png)
+![Töltse fel egy új adatkészlet](./media/import-data-from-local-file/upload-dataset.png)
 
-Feltöltés közben megjelenik egy üzenet, hogy a fájl feltöltése van folyamatban. Töltse fel idő az adatok méretétől és a szolgáltatásnak a kapcsolat sebességétől függ. Ha tudja, hogy a fájl hosszú időt vesz igénybe, megteheti a Machine Learning Studio belül egyebek, várakozás közben. Azonban a böngésző bezárásával hatására az adatok feltöltése sikertelen.
+Feltöltésekor megjelenik egy üzenet, hogy a fájl feltöltése folyamatban van. Feltöltés ideje az adatok méretétől és a szolgáltatás a kapcsolat sebességétől függ. Ha tudja, hogy a fájl egy hosszú időt vesz igénybe, további tevékenység következik, Machine Learning Studio belül megteheti, várakozás közben. Azonban a böngésző bezárásával hatására az adatok feltöltése sikertelen.
 
-## <a name="dataset-module-is-ready-for-use"></a>A DataSet modul az használatra kész
-Az adatok a feltöltést követően egy adatkészlet modulban tárolja, és bármilyen kísérlet a munkaterület érhető el.
+## <a name="dataset-module-is-ready-for-use"></a>Adatkészlet modul készen áll a használatra
+Az adatok feltöltését követően egy adatkészlet modulban tárolja, és bármely a kísérletvászonra a munkaterületén érhető el.
 
-A kísérlet szerkesztésekor a létrehozott adathalmazok található a **saját adatkészletek** listában az a **mentett adatkészletek** a modulpalettán lista. Húzza, és dobja el az adatkészletet a kísérlet vászonra, ha meg szeretné használni a dataset további elemzés és a gépi tanulás.
+Kísérlet szerkesztésekor találja a korábban létrehozott adatkészletek a **saját adatkészletek** alatt a **mentett adatkészletek** a modulpaletta listájában. Húzza át, és dobja el az adatkészletet a kísérlet vászonra, ha meg szeretné használni az adatkészlet további elemzés és gépi tanulás.

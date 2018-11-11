@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2018
+ms.date: 11/09/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 51c76c552ef3a79f48637598a12f7a7be1823996
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f3a83352e5aa7591d3f7b325adb542ba89e57fe5
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961126"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515828"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Az Azure Stack PKI-tanúsítványok ellenőrzése
 
@@ -244,6 +244,22 @@ Segítségével ezeket a lépéseket előkészítése, és ellenőrizze a platfo
         Key Usage: OK
         Key Size: OK
     ```
+
+## <a name="certificates"></a>Tanúsítványok
+
+| Címtár | Tanúsítvány |
+| ---    | ----        |
+| acsBlob | wildcard_blob_\< régió >\< externalFQDN > |
+| ACSQueue  |  wildcard_queue\< régió >\< externalFQDN > |
+| ACSTable  |  wildcard_table\< régió >\< externalFQDN > |
+| Rendszergazdai kiterjesztés gazdagép  |  wildcard_adminhosting\< régió >\< externalFQDN > |
+| Felügyeleti portál  |  adminportal\< régió >\< externalFQDN > |
+| ARM-rendszergazda  |  adminmanagement\< régió >\< externalFQDN > |
+| ARM-nyilvános  |  felügyeleti\< régió >\< externalFQDN > |
+| KeyVault  |  wildcard_vault\< régió >\< externalFQDN > |
+| KeyVaultInternal  |  wildcard_adminvault\< régió >\< externalFQDN > |
+| A bővítmény nyilvános állomás  |  wildcard_hosting\< régió >\< externalFQDN > |
+| Nyilvános portálra  |  portál\< régió > _\< externalFQDN > |
 
 ## <a name="using-validated-certificates"></a>Ellenőrzött tanúsítványok használatával
 

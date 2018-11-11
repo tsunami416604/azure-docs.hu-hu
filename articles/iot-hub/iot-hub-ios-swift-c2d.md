@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
-ms.openlocfilehash: 550c3d7a2294158120ddd42ba56715d1321de04c
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: cccffb2f63fe0c929f88d172070ede1c12bcec5b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339865"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239457"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>Az IoT Hub (iOS) a felhőből az eszközre irányuló üzenetek küldése
 
@@ -41,7 +41,7 @@ Ez a cikk végén található iOS-projektek két Swift, futtassa:
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-- Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](http://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.)
+- Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.)
 
 - Az aktív IoT hubra az Azure-ban. 
 

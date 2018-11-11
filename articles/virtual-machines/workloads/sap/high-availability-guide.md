@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 12/07/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b2f6df1e5688bf9bc47056c7b05cf6ac16026c6
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: c6dddbdbc781869ef6a3c1a0a707eeb83941b92a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634863"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239321"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Magas rendelkezésre állás az SAP NetWeaver az Azure virtuális gépekhez
 
@@ -504,7 +504,7 @@ Az Azure Resource Managerben, nem kell egy Azure-erőforráscsoportot az Azure L
 
 Az Azure Resource Managerben, több példányt is telepíthet SAP rendszer azonosítója (SID) ASCS/SCS egy fürtben. Több SID-vel példányok miatt egyes Azure belső terheléselosztó több IP-címek támogatása is lehetséges.
 
-A klasszikus Azure üzemi modellt használja, kövesse az ismertetett eljárások [SAP NetWeaver az Azure-ban: a Windows Server feladatátvételi fürtszolgáltatás használatával az Azure-ban az SIOS DataKeeper SAP ASCS/SCS fürtszolgáltatási példányok](http://go.microsoft.com/fwlink/?LinkId=613056).
+A klasszikus Azure üzemi modellt használja, kövesse az ismertetett eljárások [SAP NetWeaver az Azure-ban: a Windows Server feladatátvételi fürtszolgáltatás használatával az Azure-ban az SIOS DataKeeper SAP ASCS/SCS fürtszolgáltatási példányok](https://go.microsoft.com/fwlink/?LinkId=613056).
 
 > [!IMPORTANT]
 > Javasoljuk, hogy az SAP-telepítések az Azure Resource Manager üzemi modell használata. Ez lehetővé teszi számos előnnyel jár, amelyek nem érhetők el a klasszikus üzemi modellben. További tudnivalók az Azure [üzembe helyezési modellek][virtual-machines-azure-resource-manager-architecture-benefits-arm].   

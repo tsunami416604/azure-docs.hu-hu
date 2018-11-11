@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/17/2018
 ms.author: barclayn
-ms.openlocfilehash: b1002d046014abd15452489e343ecf7c30b00d73
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 64d940552f2790c08e8087f279990d0a6c595bac
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311337"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245727"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure identitáskezelési és hozzáférés-vezérlés ajánlott biztonsági eljárások
 
-Számos fontolja meg az új határ réteg a biztonság érdekében hagyományos hálózati-központú szempontjából a szerepkör át kell identitás. A biztonsági intézkedést és a beruházások származnak, hogy a hálózati régebben egyre elválasztó váltak, és a külső védelem nem lehet hatékonysága, egyszer felbontására előtt is az elsődleges pivot a rendszergazdánál veszi kezdetét [BYOD ](http://aka.ms/byodcg) eszközök és a felhőbeli alkalmazásokhoz.
+Számos fontolja meg az új határ réteg a biztonság érdekében hagyományos hálózati-központú szempontjából a szerepkör át kell identitás. A biztonsági intézkedést és a beruházások származnak, hogy a hálózati régebben egyre elválasztó váltak, és a külső védelem nem lehet hatékonysága, egyszer felbontására előtt is az elsődleges pivot a rendszergazdánál veszi kezdetét [BYOD ](https://aka.ms/byodcg) eszközök és a felhőbeli alkalmazásokhoz.
 
 Ebben a cikkben bemutatjuk, Azure-Identitáskezelés és hozzáférés vezérlés ajánlott biztonsági eljárások gyűjteménye. Ajánlott eljárások vannak származtatva tapasztalatainkon [Azure ad-ben](../active-directory/fundamentals/active-directory-whatis.md) és az ügyfelek a funkciókat, például saját magának.
 
@@ -51,7 +51,7 @@ Azure-identitás és hozzáférés vezérlés ajánlott biztonsági eljárások 
 
 ## <a name="treat-identity-as-the-primary-security-perimeter"></a>Identitás tekinti az elsődleges biztonsági határ
 
-Számos fontolja meg kell az elsődleges szegélyhálózat-alapú biztonsági identitás. Ez az a shift a hálózati biztonság hagyományos koncentrálhat. Régebben a hálózat több elválasztó továbbra is megkapja, és a külső védelem nem lehet a felbontására előtti hatásos [BYOD](http://aka.ms/byodcg) eszközök és a felhőbeli alkalmazásokhoz.
+Számos fontolja meg kell az elsődleges szegélyhálózat-alapú biztonsági identitás. Ez az a shift a hálózati biztonság hagyományos koncentrálhat. Régebben a hálózat több elválasztó továbbra is megkapja, és a külső védelem nem lehet a felbontására előtti hatásos [BYOD](https://aka.ms/byodcg) eszközök és a felhőbeli alkalmazásokhoz.
 [Az Azure Active Directory (Azure AD)](../active-directory/active-directory-whatis.md) identitás és hozzáférés-kezelés az Azure-megoldás. Az Azure AD szolgáltatás több-bérlős felhőalapú címtár és Identitáskezelés felügyeleti szolgáltatás a Microsoft. Amely ötvözi az alapvető címtárszolgáltatásokat, a alkalmazáshozzáférés-felügyeletet és az identity protection egyetlen megoldás.
 
 Az alábbi szakaszok az Azure AD identitás- és hozzáférés biztonsági védelmének bevált gyakorlata listája.

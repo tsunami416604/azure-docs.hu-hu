@@ -5,15 +5,15 @@ services: virtual-machines-linux
 author: dlepow
 ms.service: virtual-machines-linux
 ms.topic: include
-ms.date: 09/24/2018
+ms.date: 11/08/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: dc03f49a684bfeb43ffd8bac9f551a67f034a04f
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: c829b8d6fedaabfb9b43c6352c8188128cf36701
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042877"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51333761"
 ---
 ## <a name="supported-distributions-and-drivers"></a>Támogatott disztribúciók és illesztőprogramok
 
@@ -30,13 +30,11 @@ NVIDIA CUDA-illesztőprogramok a hálózati vezérlő, NCv2, az NCv3 és ND soro
 
 ### <a name="nvidia-grid-drivers"></a>Az NVIDIA GRID illesztőprogramok
 
-A Microsoft újraterjeszti az NVIDIA GRID illesztőprogramok telepítők NV és virtuális munkaállomásait használt NVv2 sorozatú virtuális gépek vagy a virtuális alkalmazásokhoz. Csak GRID illesztőprogramok telepítése Azure virtuális gépeken NV, csak a szerepel a következő táblázat a disztribúciók. Ezeket az illesztőprogramokat tartalmazza a licencelési rács virtuális GPU szoftverek az Azure-ban.
+A Microsoft újraterjeszti az NVIDIA GRID illesztőprogramok telepítők NV és virtuális munkaállomásait használt NVv2 sorozatú virtuális gépek vagy a virtuális alkalmazásokhoz. Csak GRID illesztőprogramok telepítése Azure virtuális gépeken NV, csak az alábbi táblázatban felsorolt operációs rendszerek a. Ezeket az illesztőprogramokat tartalmazza a licencelési rács virtuális GPU szoftverek az Azure-ban. Nem kell NVIDIA vGPU software license kiszolgáló beállítása.
 
 | Disztribúció | Illesztőprogram |
 | --- | -- |
 | Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.4 vagy a 7.3<br/><br/>CentOS-alapú 7.3 vagy 7.4 | Az NVIDIA GRID 6.2, illesztőprogram-ág R390|
-
-
 
 > [!WARNING] 
 > A külső gyártótól származó szoftverek Red Hat termékekre történő telepítése befolyásolhatja a Red Hat támogatási feltételeit. Tekintse meg a vonatkozó [cikket a Red Hat tudásbázisában](https://access.redhat.com/articles/1067).

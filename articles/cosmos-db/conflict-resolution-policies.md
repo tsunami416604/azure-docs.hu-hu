@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: mjbrown
-ms.openlocfilehash: c682b61a39224f2c80db8fe5fa153ea5e5d82922
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 1b2a122cc8a04d4f0044ecb0fe0341357bc29c0f
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958554"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514825"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>Ütközés típusa és a névfeloldási házirend
 
 Ütközések és a szabályzatok alkalmazandók, ha Cosmos-fiókja van konfigurálva több ütközésfeloldás írási régió.
 
-Cosmos DB-konfigurálva több írási régióval rendelkező fiókok esetében a frissítések ütközésének előfordulhatnak, ha több írók egyszerre több régióban található azonos elem frissítése. A következő három típusú frissítések ütközésének sorolhatók:
+Cosmos-konfigurálva több írási régióval rendelkező fiókok esetében a frissítések ütközésének előfordulhatnak, ha több írók egyszerre több régióban található azonos elem frissítése. A következő három típusú frissítések ütközésének sorolhatók:
 
 1. **Ütközések beszúrása:** ütközéseket akkor fordulhat elő, ha egy alkalmazás egyidejűleg szúr be két vagy több elemet a azonos (például az ID tulajdonság) egyedi indexszel rendelkező két vagy több régió közül. Ebben az esetben az összes írási művelet sikerülhet, kezdetben a megfelelő helyi régióban, de úgy dönt, az ütközésfeloldási házirend alapján, csak egy elemet az eredeti azonosítójú elkötelezett végül.
 

@@ -1,6 +1,6 @@
 ---
-title: Adatok áthelyezése Azure Blob Storage szolgáltatásba vagy onnan |} A Microsoft Docs
-description: Adatok áthelyezése Azure Blob Storage-tárolóba vagy onnan máshová
+title: Adatok áthelyezése Azure Blob storage szolgáltatásba vagy onnan |} A Microsoft Docs
+description: Adatok áthelyezése Azure Blob storage szolgáltatásba vagy onnan
 services: machine-learning,storage
 documentationcenter: ''
 author: deguhath
@@ -15,19 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 717fdd2053cae28234458e197f8211ef25cf7f9d
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 7d0111b22df45577fccc3f4491f375ddd2e8b40f
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394391"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344467"
 ---
-# <a name="move-data-to-and-from-azure-blob-storage"></a>Adatok importálására és az Azure Blob Storage-ból
-[!INCLUDE [cap-ingest-data-selector](../../../includes/cap-ingest-data-selector.md)]
+# <a name="move-data-to-and-from-azure-blob-storage"></a>Adatok áthelyezése Azure Blob storage szolgáltatásba vagy onnan
 
-<!-- just in case, adding this to separate these two include references -->
+A csoportos adatelemzési folyamat szükséges adatok betöltött vagy betölti a dolgozhatók fel és elemzi a legmegfelelőbb módon, a folyamat minden egyes szakaszhoz különböző tárolási környezetben.
+Az alábbi cikkek ismertetik az adatok áthelyezése a különböző technológiák használatával Azure Blob storage szolgáltatásba vagy onnan.
 
-[!INCLUDE [blob-storage-tool-selector](../../../includes/machine-learning-blob-storage-tool-selector.md)]
+* [Az Azure Storage Explorer](move-data-to-azure-blob-using-azure-storage-explorer.md)
+* [AzCopy](move-data-to-azure-blob-using-azcopy.md)
+* [Python](move-data-to-azure-blob-using-python.md)
+* [SSIS](move-data-to-azure-blob-using-ssis.md)
 
 A forgatókönyvtől függ, hogy melyik módszer a legjobb az Ön számára. A [az Azure Machine Learning speciális elemzési forgatókönyvek](plan-sample-scenarios.md) a cikknek a segítségével meghatározhatja, hogy a fejlett analitikai folyamat során használt adatok adatelemzési munkafolyamatainak különböző a szükséges erőforrásokat.
 

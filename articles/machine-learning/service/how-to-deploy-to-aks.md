@@ -10,12 +10,12 @@ author: raymondlaghaeian
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 3ab32388e0a35f4abf3866aa0a84ee0628b0570c
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: efaaa196220213877283040120d6c2eeed86dbf3
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318197"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346320"
 ---
 # <a name="how-to-deploy-models-from-azure-machine-learning-service-to-azure-kubernetes-service"></a>Az Azure Kubernetes Service az Azure Machine Learning szolgáltatásból származó modellek üzembe helyezése
 
@@ -63,6 +63,9 @@ Az Azure Kubernetes Service a Docker-rendszerképek használ. A rendszerkép lé
 1. Adja meg a kép, létre kell hoznia egy pontozó szkript és a környezet fájlt. Példaként a parancsprogram és a környezet fájl létrehozása tekintse meg a következő szakaszok a lemezkép besorolási példa:
 
     * [Hozzon létre egy pontozó szkriptre (score.py)](tutorial-deploy-models-with-aml.md#create-scoring-script)
+
+        > [!IMPORTANT]
+        > A pontozó szkript az ügyfeleknek elküldött adatokat fogad, és átadja a modell pontozása. A dokumentum a adatszerkezet, amely a parancsfájlt és a modell várható. Ez a dokumentáció kellene, azzal megkönnyítheti létrehozását, hogy az ügyfél használata a web service.
 
     * [Hozzon létre egy környezetben fájlt (myenv.yml)](tutorial-deploy-models-with-aml.md#create-environment-file) 
 
@@ -190,3 +193,7 @@ aks_service.delete()
 image.delete()
 model.delete()
 ```
+
+## <a name="next-steps"></a>További lépések
+
+Ismerje meg, hogyan [felhasználás a gépi Tanulási modellek webszolgáltatásként üzembe helyezett](how-to-consume-web-service.md).

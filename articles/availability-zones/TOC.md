@@ -1,6 +1,6 @@
 
 # Azure Resiliency
-## [Az Azure Resiliency szolgáltatáslapja](http://azure.microsoft.com/features/resiliency)
+## [Az Azure Resiliency szolgáltatáslapja](https://azure.microsoft.com/features/resiliency)
 ## [Rugalmas alkalmazások tervezése az Azure-hoz](https://docs.microsoft.com/azure/architecture/resiliency/)
 
 # Magas rendelkezésre állás

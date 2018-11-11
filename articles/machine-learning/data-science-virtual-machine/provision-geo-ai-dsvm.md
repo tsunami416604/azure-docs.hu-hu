@@ -1,7 +1,7 @@
 ---
-title: Egy földrajzi mesterséges Eszközintelligencia virtuális gépet az Azure - kiépítése Azure |} Microsoft Docs
-description: Megtudhatja, hogyan lehet kiépíteni egy földrajzi AI virtuális gépet az Azure.
-keywords: a mélyhivatkozással tanulási, AI adatok tudományos eszközök, az adatok tudományos virtuális gépet, a földrajzi elemzés
+title: Az Azure-ban – földrajzi mesterséges intelligenciát használó virtuális gép kiépítése az Azure |} A Microsoft Docs
+description: Hogyan építheti ki a virtuális gép földrajzi mesterséges Intelligencia az Azure-ban.
+keywords: deep learning, AI, beépített adatelemzési eszközzel, az adatelemzési virtuális gépet, a térinformatikai elemzés
 services: machine-learning
 documentationcenter: ''
 author: gopitk
@@ -15,83 +15,83 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 93dfe6594aeaf45a6905fe8cb55c98dd37cc9599
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bdcf2662f2a81b145868cff92ecb7a2cb4d53046
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31408608"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239797"
 ---
-# <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Egy földrajzi mesterséges Eszközintelligencia virtuális gépet az Azure telepítéséhez 
+# <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Az Azure-ban földrajzi mesterséges intelligenciát használó virtuális gép kiépítése 
 
-A földrajzi AI adatok tudományos virtuális gép (földrajzi-DSVM) a népszerű kiterjesztése [Azure adatok tudományos virtuális gép](http://aka.ms/dsvm) egyesítése AI és földrajzi analytics kifejezetten konfigurált. A virtuális gép a földrajzi analytics szerint vannak kapcsolva [ArcGIS Pro](https://www.arcgis.com/features/index.html). Az adatok tudományos VM lehetővé teszi, hogy a gyors képzését machine learning modellek, és még a mély tanulási modellek, földrajzi információk van növelést-adatokat. Támogatott a használata Windows 2016 DSVM csak. 
+A földrajzi mesterséges Intelligencia adatelemző virtuális gép (Geo-DSVM) az kiterjesztése, a népszerű [Azure adatelemzési virtuális gép](https://aka.ms/dsvm) úgy, hogy a földrajzi mesterséges Intelligencia és a analytics speciálisan konfigurált. A térinformatikai elemzés, a virtuális gép működteti [ArcGIS Pro](https://www.arcgis.com/features/index.html). Az adatelemző virtuális gép lehetővé teszi, hogy a machine learning-modellek, és még akkor is, a mély tanulási modelleket, földrajzi információk renderelésre van adatok gyors képzése. Támogatott a Windows 2016 DSVM csak. 
 
-A földrajzi DSVM AI beleértve eszközöket tartalmazza:
+A Geo-DSVM több eszközt tartalmaz, beleértve a mesterséges Intelligencia tartalmazza:
 
-- Részletes tanulási népszerű keretrendszerekre GPU-kiadások, például Microsoft kognitív eszközkészlet, TensorFlow, Keras, Caffe2, Chainer; 
-- eszközök beszerzése és előre folyamatok kép, szöveges adatok 
-- adatbázisok fejlesztési tevékenységek, például Microsoft R Server Developer Edition, Anaconda Python, Python a Jupyter notebookokból és R, Python és R, SQL IDEs eszközei
-- ESRI tartozó ArcGIS Pro asztali szoftver, amely használható a földrajzi adatok, az Eszközintelligencia alkalmazásaiból Python és R adapterrel együtt. 
-
-
-## <a name="create-your-geo-ai-data-science-vm"></a>A földrajzi AI Adattudomány virtuális gép létrehozása
-
-A folyamat során a földrajzi AI adatok tudományos VM példány létrehozásához a rendszer: 
+- Számos népszerű deep learning keretrendszerek GPU kiadása, például a Microsoft Cognitive Toolkit, TensorFlow, Keras, Caffe2, Chainer; 
+- eszközök beszerzésére és előfeldolgozási lemezképet, a szöveges adat 
+- fejlesztési tevékenységek, például a Microsoft R Server Developer Edition, Anaconda Python, a Jupyter notebooks, a Python és az R, Python és az R, SQL ide-eszközök adatbázisok
+- Az ESRI ArcGIS Pro asztali szoftverek Python- és R-felületek, amely az AI-alkalmazások, a térinformatikai adatok használható együtt. 
 
 
-1. Keresse meg a virtuális gépet, a listaelem [Azure-portálon](https://ms.portal.azure.com/#create/microsoft-ads.geodsvmwindows).
-2. Válassza ki a **létrehozása** gombra a varázsló veendő alján.
+## <a name="create-your-geo-ai-data-science-vm"></a>A földrajzi mesterséges intelligenciát Használó adatelemzési virtuális gép létrehozása
+
+A következő egy példányát a földrajzi mesterséges Intelligencia adatelemző virtuális gép létrehozására szolgáló eljárás: 
+
+
+1. Keresse meg a virtuális gépet, az ajánlati [az Azure portal](https://ms.portal.azure.com/#create/microsoft-ads.geodsvmwindows).
+2. Válassza ki a **létrehozás** gombra az alsó kell figyelembe venni a varázslót.
 ![create-geo-ai-dsvm](./media/provision-geo-ai-dsvm/Create-Geo-AI.png)
-3. A varázsló a földrajzi DSVM létrehozásához használt szükséges **bemenetek** az egyes a **négy lépésben** a jobb oldali ábra számba. Az alábbiakban az egyes lépéseket konfigurálásához szükséges adatokat:
+3. A varázslóval való létrehozását a Geo-dsvm-hez szükséges **bemenetek** minden a **négy lépést** jobb oldalán Ez az ábra enumerálása. Az alábbiakban a bemeneti adatok konfigurálása az egyes lépéseket:
 
 
 
    - **Alapvető beállítások**
 
-      1. **Név**: az létrehozásakor tudományos-kiszolgáló nevét.
+      1. **Név**: hoz létre az adatelemzési kiszolgáló nevére.
 
-      2. **Felhasználónév**: rendszergazdai fiók bejelentkezési azonosító.
+      2. **Felhasználónév**: rendszergazdai fiók bejelentkezési azonosítója.
 
-      3. **Jelszó**: rendszergazdai fiók jelszavát.
+      3. **Jelszó**: rendszergazdai fiók jelszava.
 
-      4. **Előfizetés**: Ha több előfizetéssel rendelkezik, válassza ki a amelyiken a gép létrehozását és számlázva van.
+      4. **Előfizetés**: Ha több előfizetéssel rendelkezik, válassza ki az egyik, amelyen a gép létrehozása és a számlázás.
 
-      5. **Erőforráscsoport**: hozhat létre egy új, vagy használjon egy **üres** meglévő Azure erőforráscsoport, az előfizetésben.
+      5. **Erőforráscsoport**: létrehozhat egy újat, vagy használjon egy **üres** meglévő Azure-erőforráscsoport az előfizetésben.
 
-      6. **Hely**: válassza ki a legjobban megfelelő adatközpont. Általában az adatközpont, amely az adatok, vagy a helynév leggyorsabb hálózati hozzáférési legközelebb. Ha kell tennie a GPU mély tanulási, választania kell a helyek, amely a hálózati vezérlő által-sorozat GPU Virtuálisgép-példányok rendelkezik Azure-ban. A helyeket az GPU virtuális gépeket jelenleg: **USA keleti régiója, északi középső Régiójában, déli középső Régiójában, USA nyugati régiója 2. régiója, Észak-Európában, Nyugat-Európában**. A legújabb listája, tekintse meg a [Azure termékek régió lap](https://azure.microsoft.com/regions/services/) , és keressen **NC-sorozat** alatt **számítási**. 
+      6. **Hely**: válassza a leginkább megfelelő adatközpontot. Általában az adatközpont, amely tartalmazza a legtöbb az adatokat, vagy a leggyorsabb hálózati hozzáféréshez a fizikai helyéhez legközelebbi. Ha kell tennie a deep learning gpu-alapú, választania kell a helyen az Azure-ban, amely rendelkezik a NC sorozatú GPU VM-példányokon. A helyek, amelyeken a GPU-beli virtuális gépek jelenleg: **USA keleti RÉGIÓJA, USA északi középső Régiója, USA déli középső Régiója, USA nyugati RÉGIÓJA 2, Észak-Európa, Nyugat-Európa**. Ellenőrizze a teljes lista a [régió lap által az Azure-termékekkel](https://azure.microsoft.com/regions/services/) , és keressen **NC sorozat** alatt **számítási**. 
 
 
-   - **Beállítások**: Válasszon egyet a NC-sorozat GPU virtuálisgép-méret, ha azt tervezi, mély tanulási futtathatnak a földrajzi DSVM a GPU. Ellenkező esetben dönthet úgy, egyet a CPU-alapú példány.  Hozzon létre egy tárfiókot a virtuális gép számára. 
+   - **Beállítások**: válassza ki az egyik NC sorozatú GPU virtuálisgép-méret, ha azt tervezi, hogy futtassa a deep learning gpu-alapú, az a földrajzi dsvm-hez. Ellenkező esetben választhat egyet a CPU-alapú példány.  Hozzon létre egy tárfiókot a virtuális géphez. 
    
-   - **Összefoglalás**: Győződjön meg arról, hogy az összes megadott adatok helyesek.
+   - **Összefoglalás**: Győződjön meg arról, hogy minden, a megadott adatok helyesek.
 
-   - **Vásároljon**: kattintson a **megvásárlása** kiépítési elindításához. Hivatkozás a szolgáltatás feltételeit valósul meg. A virtuális gép nem rendelkezik a kiválasztott kiszolgáló méretéhez számítási túl további díjakat a **mérete** lépés. 
+   - **Vásároljon**: kattintson a **vásárlása** a kiépítésének megkezdéséhez. Egy hivatkozást a szolgáltatás feltételeit. A virtuális gép nem rendelkezik a kiválasztott kiszolgáló méretét a számítási túl további díjakat a **mérete** . lépés. 
 
 >[!NOTE]
-> A kiépítése körülbelül 20-30 percet kell végrehajtani. A kiépítési állapotát az Azure portálon jelenik meg.
+> A kiépítés körülbelül 20-30 percet vesz igénybe. A kiépítési állapota jelenik meg az Azure Portalon.
 
 
-## <a name="how-to-access-the-geo-ai-data-science-virtual-machine"></a>Hogyan érhetők el a földrajzi AI adatok tudományos virtuális gép
+## <a name="how-to-access-the-geo-ai-data-science-virtual-machine"></a>A földrajzi mesterséges Intelligencia adatelemző virtuális gép elérése
 
-A virtuális gép létrehozása után készen áll a telepített és előre konfigurált eszközök használatának. Start menü csempék és számos eszközt az asztali ikonok vannak. A rendszergazdai fiók hitelesítő adatait az előző konfigurált használatával történő távoli asztal is **alapjai** szakasz. 
+A virtuális gép létrehozása után készen áll az eszközöket, amelyek telepítve és konfigurálva van indíthatja a rajta. Start menü csempék és számos olyan eszközzel asztali ikonok vannak. A távoli asztal is be a rendszergazdai fiók hitelesítő adatait, amely az előző konfigurálta a **alapjai** szakaszban. 
 
 
-## <a name="using-arcgis-pro-installed-in-the-vm"></a>A virtuális gépen telepített ArcGIS Pro használata
+## <a name="using-arcgis-pro-installed-in-the-vm"></a>ArcGIS Pro segítségével telepítve a virtuális gépen
 
-A földrajzi DSVM már előre telepített ArcGIS Pro asztali és a környezet előre konfigurálva van a DSVM az összes eszközökről. ArcGIS indításakor megkérdezi a bejelentkezési ArcGIS fiókjába. Ha már rendelkezik ArcGIS fiókkal, és a szoftver licenccel rendelkezik, használhatja a meglévő hitelesítő adatait.  
+A Geo-dsvm-hez már előre telepítve van az ArcGIS Pro asztali és a környezet előre konfigurálva a DSVM minden olyan eszközt. Amikor hozzákezd a ArcGIS kéri egy jelentkezzen be az ArcGIS-fiókjába. Ha már rendelkezik az ArcGIS-fiókkal, és rendelkezik a szoftver licencét, használhatja a meglévő hitelesítő adatait.  
 
 ![Arc-GIS-Logon](./media/provision-geo-ai-dsvm/ArcGISLogon.png)
 
-Ellenkező esetben iratkozzon fel új ArcGIS fiók és a licencek vagy futtasson egy [ingyenes próbaverzió](https://www.arcgis.com/features/free-trial.html). 
+Ellenkező esetben regisztráljon új ArcGIS-fiók és licenc vagy beolvasása egy [az ingyenes próbaidőszak](https://www.arcgis.com/features/free-trial.html). 
 
-![ArcGIS ingyenes](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
+![Az ArcGIS-Free-Trial](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
 
-Miután előfizetési egy bármelyik fizetett vagy egy ingyenes próbafiók ArcGIS, engedélyezheti ArcGIS Pro fiókja utasításait követve a [ArcGIS Pro dokumentáció első lépések](http://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf). 
+Miután előfizetési tartozó egy vagy egy fizetős vagy egy ingyenes próbafiókot ArcGIS, engedélyezheti az ArcGIS Pro-fiókja utasításait követve a [ArcGIS Pro dokumentációja – első lépések](http://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf). 
 
-Miután bejelentkezik ArcGIS Pro asztali ArcGIS fiókjához, készen áll az adatok tudományos eszközöket, amelyek telepítése és konfigurálása történik meg a földrajzi elemzés és a gépi tanulási projektek a virtuális Gépen.
+Bejelentkezés után az ArcGIS Pro asztali az ArcGIS-fiókját, készen áll a beépített adatelemzési eszközzel, amelyek telepítése és konfigurálása a virtuális gépen, a térinformatikai elemzés és a machine learning-projektek használatának megkezdéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-A földrajzi AI adatok tudományos virtuális Gépet útmutatással a következő témakörök a használatának megkezdése:
+A földrajzi mesterséges Intelligencia adatelemző virtuális gép-használatának az az alábbi témakörök útmutatást:
 
-* [A földrajzi AI Adattudomány VM használata](use-geo-ai-dsvm.md)
+* [A földrajzi mesterséges Intelligencia adatelemzési virtuális gép használata](use-geo-ai-dsvm.md)

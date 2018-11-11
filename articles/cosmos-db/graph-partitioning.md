@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.author: lbosq
-ms.openlocfilehash: bf91ec77f8d7248c6fa2047636f295c187f626c8
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 7e9de68866b5e5849d0e48ad5073fc7b89fbb1ca
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078222"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51239304"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Az Azure Cosmos DB egy particionált graph használatával
 
-Az Azure Cosmos DB Gremlin API-legfontosabb funkcióit egyik képes kezelni a nagyméretű gráfok horizontális skálázhatóság révén. Ez a folyamat a gazdafájlon keresztül, a [képességek az Azure Cosmos DB particionálási](partition-data.md#how-does-partitioning-work), amely győződjön meg arról, használja a tárolók, amelyek egymástól függetlenül méretezhetők a tárolás és átviteli sebesség tekintetében. Az Azure Cosmos DB támogatja a következő típusú tárolókat minden API-k között:
+Az Azure Cosmos DB Gremlin API-legfontosabb funkcióit egyik képes kezelni a nagyméretű gráfok horizontális skálázhatóság révén. Ez a folyamat a gazdafájlon keresztül, a [képességek az Azure Cosmos DB particionálási](partition-data.md), amely győződjön meg arról, használja a tárolók, amelyek egymástól függetlenül méretezhetők a tárolás és átviteli sebesség tekintetében. Az Azure Cosmos DB támogatja a következő típusú tárolókat minden API-k között:
 
 - **Rögzített tárolót**: ezek a tárolók tárolhatja egy graph legfeljebb 10 GB-nál, legfeljebb 10 000 kérelemegység / másodperc számára lefoglalt adatbázis. Rögzített tároló létrehozásához meg kell határozni egy partíció kulcstulajdonság az adatok nem.
 

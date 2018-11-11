@@ -15,19 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 7ed861a58b82435f9f50a5798ff821fcd6020096
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: c1cbd523b8c74bf1221dc47b832c35e9119493a9
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394133"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346286"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive táblák létrehozása és az adatok betöltése az Azure Blob Storage-ból
-Ez a témakör bemutatja az általános Hive-lekérdezések, amelyek Hive táblákat hozhat létre, és az adatok betöltése az Azure blob storage-ból. Hive Táblák particionálása és az optimalizált sor Oszlopalapú (ORC) lekérdezési teljesítmény javításához formázás használatával útmutatást is tartalmaz.
 
-Ez **menü** mutató hivatkozásokat talál, amelyek bemutatják, hogyan gyűjthet adatokat a cél környezetekben, ahol az adatok tárolásának és feldolgozása során a csoportos adatelemzési folyamat (TDSP).
-
-[!INCLUDE [cap-ingest-data-selector](../../../includes/cap-ingest-data-selector.md)]
+Ez a cikk bemutatja az általános Hive-lekérdezések, amelyek Hive táblákat hozhat létre, és az adatok betöltése az Azure blob storage-ból. Hive Táblák particionálása és az optimalizált sor Oszlopalapú (ORC) lekérdezési teljesítmény javításához formázás használatával útmutatást is tartalmaz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk feltételezi, hogy rendelkezik:

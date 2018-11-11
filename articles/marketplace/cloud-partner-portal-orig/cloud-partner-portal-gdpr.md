@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7470416ab5e5d71cc569db19e47d34c5a29bc063
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 1cd9e99d9f530abb34ff072a740d89bc511c64ed
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809869"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241514"
 ---
 <a name="cloud-partner-portal-gdpr-compliance"></a>Cloud Partner Portal GDPR-megfelelőség
 ====================================
@@ -48,6 +48,6 @@ Jóváhagyás Cloud Partner portálra az kezeléséhez, mindig először jelenik
 
 -   [Hol és hogyan lehet a Microsoft küld-e az ügyfelek\' adatok, beleértve a földrajzi helyek](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
 -   [Ügyfelek hozzáféréssel rendelkező alvállalkozók\' adatok](https://aka.ms/Online_Serv_Subcontractor_List)
--   [A Microsoft által felügyelt Azure biztonsági intézkedések részletei](http://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
+-   [A Microsoft által felügyelt Azure biztonsági intézkedések részletei](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
 -   [A Microsoft részletei\'adatvédelmi felülvizsgálati folyamat folytatott minden termék, beleértve az Azure-szolgáltatásokhoz](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards)
 -   [Milyen adatok Microsoft által gyűjtött és folyamatai a vevő rendszerek és a végfelhasználók számára](https://www.microsoft.com/trustcenter/privacy/you-own-your-data)

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: aa63a31f7f84502a29aad6b38f454ea1080127e0
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 8a5a71fada190939abf638cd1b681adff7e80970
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530939"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244542"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Fejlesztés az Azure Files javával
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -231,6 +231,6 @@ Ha szeretné, ha többet szeretne megtudni a más az Azure storage API-k, az al�
 * [Az Azure Storage SDK for Android](https://github.com/azure/azure-storage-android)
 * [Azure Storage ügyféloldali SDK-referencia](http://dl.windowsazure.com/storage/javadoc/)
 * [Az Azure Storage-szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Az Azure Storage csapat blogja](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Az Azure Storage csapat blogja](https://blogs.msdn.com/b/windowsazurestorage/)
 * [Adatátvitel az AzCopy parancssori segédprogrammal](../common/storage-use-azcopy.md)
 * [Azure Files-problémák hibaelhárítása – Windows](storage-troubleshoot-windows-file-connection-problems.md)

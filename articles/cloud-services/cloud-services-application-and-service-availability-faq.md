@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 617a6f4873c49877cbef48a7df3f2ab2c625445e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 68f3fe0dbd16d3d71dc66af05de6f90156d67dfa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412516"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246361"
 ---
 # <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Alkalmazás és szolgáltatás rendelkezésre állási problémák az Azure Cloud Services: gyakran ismételt kérdések (GYIK)
 
@@ -33,7 +33,7 @@ Nagyjából egyszer egy hónapban, Microsoft által kiadott egy új Vendég oper
 
 Legutóbbi vendég operációs rendszer frissítéseivel kapcsolatos részleteket lásd: [Azure vendég operációs rendszer kiadásai és SDK-kompatibilitási mátrixot](cloud-services-guestos-update-matrix.md).
 
-Az újraindítások és a Vendég és gazdagép operációs rendszerének frissítések technikai részleteket mutató hivatkozások hasznos információ a blogbejegyzésből MSDN [szerepkör példány újraindítása miatt operációs rendszer Verziófrissítései](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx).
+Az újraindítások és a Vendég és gazdagép operációs rendszerének frissítések technikai részleteket mutató hivatkozások hasznos információ a blogbejegyzésből MSDN [szerepkör példány újraindítása miatt operációs rendszer Verziófrissítései](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx).
 
 ## <a name="why-does-the-first-request-to-my-cloud-service-after-the-service-has-been-idle-for-some-time-take-longer-than-usual"></a>Miért nem a saját felhőszolgáltatás után a szolgáltatás egy ideig inaktív volt az első kérelem szokásosnál?
 Amikor a webalkalmazás-kiszolgáló az első kérést kap, először újrafordítja a kódot, és ezután feldolgozza a kérést. Ezért az első kérelem hosszabb időt vesz igénybe, mint a többi. Alapértelmezés szerint az alkalmazáskészlet felhasználói inaktivitás esetekben lekérdezi leállítása. Az alkalmazáskészlet 1,740 percenként (29 óra) is alapértelmezés szerint fog újrahasznosítása.

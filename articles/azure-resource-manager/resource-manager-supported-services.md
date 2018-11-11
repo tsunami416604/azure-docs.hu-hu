@@ -1,6 +1,6 @@
 ---
-title: Az Azure erőforrás-szolgáltatók és erőforrástípusok |} Microsoft Docs
-description: Az erőforrás-szolgáltató, amely támogatja az erőforrás-kezelő, hogy a sémáikat és elérhető API-verzió és az erőforrásokat is üzemeltető régiók ismerteti.
+title: Az Azure erőforrás-szolgáltatók és erőforrástípusok |} A Microsoft Docs
+description: Az erőforrás-szolgáltatók, amelyek támogatják az erőforrás-kezelő, sémáikat és elérhető API-verzió és a régiók, amelyek az erőforrásokat is ismerteti.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,33 +12,33 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 811bb40816339dbe7097e429722625a3ae5c95c0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fafc16bdf00f947d4ba8ffe56d7cf2ae3e0bc489
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358200"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344943"
 ---
-# <a name="resource-providers-and-types"></a>Erőforrás-szolgáltatók és típusát
+# <a name="resource-providers-and-types"></a>Erőforrás-szolgáltatók és típusaik
 
-Erőforrások való telepítésekor, gyakran kell az erőforrás-szolgáltatók és típusok vonatkozó információk lekéréséhez. Ebből a cikkből megismerheti, hogy:
+Erőforrások üzembe helyezésekor, gyakran kell az erőforrás-szolgáltatókat és típusaikat vonatkozó információk lekéréséhez. Ebből a cikkből megtudhatja, hogy:
 
-* Megtekintheti az összes erőforrás-szolgáltató az Azure-ban
-* Egy erőforrás-szolgáltató regisztrációs állapotának ellenőrzése
+* Az összes erőforrás-szolgáltatók megtekintése az Azure-ban
+* Erőforrás-szolgáltató regisztrációs állapotának ellenőrzése
 * Egy erőforrás-szolgáltató regisztrálása
-* Egy erőforrás-szolgáltató típusú erőforrások megtekintése
-* Egy erőforrástípus érvényes helyek megtekintése
-* Az erőforrástípus érvénytelen API-verziók megtekintése
+* Erőforrás-szolgáltató erőforrás nézettípusok
+* Az erőforrástípushoz érvényes helyek megtekintése
+* Megtekintheti az erőforrástípushoz érvényes API-verziók
 
-Ezeket a lépéseket a portálon, PowerShell vagy az Azure parancssori felület használatával végezheti el.
+Ezen lépéseket a portálon, a PowerShell vagy az Azure CLI használatával végezheti el.
 
 ## <a name="powershell"></a>PowerShell
 
-Azure-ban, és a regisztrációs állapotot az előfizetéshez tartozó összes erőforrás-szolgáltató megjelenítéséhez használja:
+Az Azure és a regisztrációs állapot az előfizetéshez tartozó összes erőforrás-szolgáltatót használja:
 
-```powershell
+```azurepowershell-interactive
 Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
 ```
 
@@ -54,9 +54,9 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-Az erőforrás-szolgáltató dolgozni az előfizetés egy erőforrás-szolgáltató regisztrálása konfigurálja. A regisztrálási hatóköre mindig az előfizetést. Alapértelmezés szerint sok erőforrás-szolgáltató automatikusan regisztrálva van. Szükség lehet, hogy manuálisan kell regisztrálni egy erőforrás-szolgáltató. Egy erőforrás-szolgáltató regisztrálása, engedéllyel kell rendelkeznie a `/register/action` műveletet az erőforrás-szolgáltató. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják.
+Az előfizetés használata az erőforrás-szolgáltató erőforrás-szolgáltató regisztrálása konfigurálja. Regisztráció a hatókör, mindig az előfizetést. Sok erőforrás-szolgáltató alapértelmezés szerint automatikusan regisztrálva. Azonban szükség lehet néhány erőforrás-szolgáltatókat manuálisan regisztrálni. Erőforrás-szolgáltató regisztrálásához végrehajtásához engedéllyel kell rendelkeznie a `/register/action` műveletet az erőforrás-szolgáltató számára. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják.
 
-```powershell
+```azurepowershell-interactive
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
 ```
 
@@ -69,11 +69,11 @@ ResourceTypes     : {batchAccounts, operations, locations, locations/quotas}
 Locations         : {West Europe, East US, East US 2, West US...}
 ```
 
-Egy erőforrás-szolgáltató nem törölhető, ha az előfizetés erőforrástípusok adott erőforrás-szolgáltató továbbra is fennáll.
+Erőforrás-szolgáltató regisztrációja nem törölhető, ha továbbra is rendelkezik az adott erőforrás-szolgáltató erőforrástípusok az előfizetésében.
 
-Egy adott erőforrás-szolgáltató adatainak megjelenítéséhez használja:
+Egy adott erőforrás-szolgáltató adatait használja:
 
-```powershell
+```azurepowershell-interactive
 Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
 ```
 
@@ -88,13 +88,13 @@ Locations         : {West Europe, East US, East US 2, West US...}
 ...
 ```
 
-Erőforrás-szolgáltató az erőforrástípusok megjelenítéséhez használja:
+Az erőforrás-szolgáltató erőforrástípusainak megtekintéséhez, használja:
 
-```powershell
+```azurepowershell-interactive
 (Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes.ResourceTypeName
 ```
 
-Amely adja vissza:
+Amely értéket ad vissza:
 
 ```powershell
 batchAccounts
@@ -103,15 +103,15 @@ locations
 locations/quotas
 ```
 
-Az API-verzió felel meg a REST API-műveleteket az erőforrás-szolgáltató által kiadott verzióját. Egy erőforrás-szolgáltató lehetővé teszi, hogy az új funkciók, mivel feloldja a REST API egy új verziója. 
+Az API-verzió megfelel egy REST API-műveleteket az erőforrás-szolgáltató által kiadott verzióját. Erőforrás-szolgáltató új funkciókat tesz elérhetővé, mivel felszabadítja a REST API új verziója.
 
-Az elérhető API-verzió az erőforrástípus használatához:
+Az elérhető API-verziók az erőforrástípushoz használja:
 
-```powershell
+```azurepowershell-interactive
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes | Where-Object ResourceTypeName -eq batchAccounts).ApiVersions
 ```
 
-Amely adja vissza:
+Amely értéket ad vissza:
 
 ```powershell
 2017-05-01
@@ -121,15 +121,15 @@ Amely adja vissza:
 2015-07-01
 ```
 
-Erőforrás-kezelő minden régióban támogatott, de előfordulhat, hogy minden régióban nem támogatott az erőforrások telepítése. Ezenkívül előfordulhat, az előfizetés, amelyek meggátolják, hogy az erőforrás-t támogató egyes régiókban használatával korlátozásait. 
+Resource Manager az összes régióban támogatott, de előfordulhat, hogy az erőforrások telepítése nem támogatott az összes régióban. Emellett előfordulhat olyan korlátozások az előfizetéséhez, amelyek meggátolják, hogy bizonyos régiókban, amely támogatja az erőforrás használatával.
 
-A támogatott helyek az erőforrástípus használatához.
+A támogatott helyek, az erőforrástípushoz használja.
 
-```powershell
+```azurepowershell-interactive
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes | Where-Object ResourceTypeName -eq batchAccounts).Locations
 ```
 
-Amely adja vissza:
+Amely értéket ad vissza:
 
 ```powershell
 West Europe
@@ -140,7 +140,8 @@ West US
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
-Azure-ban, és a regisztrációs állapotot az előfizetéshez tartozó összes erőforrás-szolgáltató megjelenítéséhez használja:
+
+Az Azure és a regisztrációs állapot az előfizetéshez tartozó összes erőforrás-szolgáltatót használja:
 
 ```azurecli
 az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
@@ -158,17 +159,17 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-Az erőforrás-szolgáltató dolgozni az előfizetés egy erőforrás-szolgáltató regisztrálása konfigurálja. A regisztrálási hatóköre mindig az előfizetést. Alapértelmezés szerint sok erőforrás-szolgáltató automatikusan regisztrálva van. Szükség lehet, hogy manuálisan kell regisztrálni egy erőforrás-szolgáltató. Egy erőforrás-szolgáltató regisztrálása, engedéllyel kell rendelkeznie a `/register/action` műveletet az erőforrás-szolgáltató. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják.
+Az előfizetés használata az erőforrás-szolgáltató erőforrás-szolgáltató regisztrálása konfigurálja. Regisztráció a hatókör, mindig az előfizetést. Sok erőforrás-szolgáltató alapértelmezés szerint automatikusan regisztrálva. Azonban szükség lehet néhány erőforrás-szolgáltatókat manuálisan regisztrálni. Erőforrás-szolgáltató regisztrálásához végrehajtásához engedéllyel kell rendelkeznie a `/register/action` műveletet az erőforrás-szolgáltató számára. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják.
 
 ```azurecli
 az provider register --namespace Microsoft.Batch
 ```
 
-Egy üzenet, hogy a regisztrációs visszaadó folyamatban.
+Amely egy üzenetet ad vissza a regisztrációs folyamatban.
 
-Egy erőforrás-szolgáltató nem törölhető, ha az előfizetés erőforrástípusok adott erőforrás-szolgáltató továbbra is fennáll.
+Erőforrás-szolgáltató regisztrációja nem törölhető, ha továbbra is rendelkezik az adott erőforrás-szolgáltató erőforrástípusok az előfizetésében.
 
-Egy adott erőforrás-szolgáltató adatainak megjelenítéséhez használja:
+Egy adott erőforrás-szolgáltató adatait használja:
 
 ```azurecli
 az provider show --namespace Microsoft.Batch
@@ -187,13 +188,13 @@ Amely hasonló eredményeket ad vissza:
 }
 ```
 
-Erőforrás-szolgáltató az erőforrástípusok megjelenítéséhez használja:
+Az erőforrás-szolgáltató erőforrástípusainak megtekintéséhez, használja:
 
 ```azurecli
 az provider show --namespace Microsoft.Batch --query "resourceTypes[*].resourceType" --out table
 ```
 
-Amely adja vissza:
+Amely értéket ad vissza:
 
 ```azurecli
 Result
@@ -204,15 +205,15 @@ locations
 locations/quotas
 ```
 
-Az API-verzió felel meg a REST API-műveleteket az erőforrás-szolgáltató által kiadott verzióját. Egy erőforrás-szolgáltató lehetővé teszi, hogy az új funkciók, mivel feloldja a REST API egy új verziója. 
+Az API-verzió megfelel egy REST API-műveleteket az erőforrás-szolgáltató által kiadott verzióját. Erőforrás-szolgáltató új funkciókat tesz elérhetővé, mivel felszabadítja a REST API új verziója.
 
-Az elérhető API-verzió az erőforrástípus használatához:
+Az elérhető API-verziók az erőforrástípushoz használja:
 
 ```azurecli
 az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceType=='batchAccounts'].apiVersions | [0]" --out table
 ```
 
-Amely adja vissza:
+Amely értéket ad vissza:
 
 ```azurecli
 Result
@@ -224,15 +225,15 @@ Result
 2015-07-01
 ```
 
-Erőforrás-kezelő minden régióban támogatott, de előfordulhat, hogy minden régióban nem támogatott az erőforrások telepítése. Ezenkívül előfordulhat, az előfizetés, amelyek meggátolják, hogy az erőforrás-t támogató egyes régiókban használatával korlátozásait. 
+Resource Manager az összes régióban támogatott, de előfordulhat, hogy az erőforrások telepítése nem támogatott az összes régióban. Emellett előfordulhat olyan korlátozások az előfizetéséhez, amelyek meggátolják, hogy bizonyos régiókban, amely támogatja az erőforrás használatával.
 
-A támogatott helyek az erőforrástípus használatához.
+A támogatott helyek, az erőforrástípushoz használja.
 
 ```azurecli
 az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceType=='batchAccounts'].locations | [0]" --out table
 ```
 
-Amely adja vissza:
+Amely értéket ad vissza:
 
 ```azurecli
 Result
@@ -246,25 +247,25 @@ West US
 
 ## <a name="portal"></a>Portál
 
-Azure-ban, és a regisztrációs állapotot az előfizetéshez tartozó összes erőforrás-szolgáltató megtekintéséhez válasszon **előfizetések**.
+Az Azure és a regisztrációs állapot az előfizetéshez tartozó összes erőforrás-szolgáltató megtekintéséhez válasszon **előfizetések**.
 
-![az előfizetések kiválasztása](./media/resource-manager-supported-services/select-subscriptions.png)
+![előfizetések kiválasztása](./media/resource-manager-supported-services/select-subscriptions.png)
 
 Válassza ki az előfizetés megtekintéséhez.
 
-![Adja meg az előfizetést](./media/resource-manager-supported-services/subscription.png)
+![Adja meg az előfizetés](./media/resource-manager-supported-services/subscription.png)
 
-Válassza ki **erőforrás-szolgáltató** és megtekintheti az elérhető erőforrás-szolgáltatók listáját.
+Válassza ki **erőforrás-szolgáltatók** és elérhető erőforrás-szolgáltatók listájának megtekintéséhez.
 
-![erőforrás-szolgáltatók megjelenítése](./media/resource-manager-supported-services/show-resource-providers.png)
+![Erőforrás-szolgáltatók megjelenítése](./media/resource-manager-supported-services/show-resource-providers.png)
 
-Az erőforrás-szolgáltató dolgozni az előfizetés egy erőforrás-szolgáltató regisztrálása konfigurálja. A regisztrálási hatóköre mindig az előfizetést. Alapértelmezés szerint sok erőforrás-szolgáltató automatikusan regisztrálva van. Szükség lehet, hogy manuálisan kell regisztrálni egy erőforrás-szolgáltató. Egy erőforrás-szolgáltató regisztrálása, engedéllyel kell rendelkeznie a `/register/action` műveletet az erőforrás-szolgáltató. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják. Válasszon egy erőforrás-szolgáltató regisztrálásához **regisztrálása**.
+Az előfizetés használata az erőforrás-szolgáltató erőforrás-szolgáltató regisztrálása konfigurálja. Regisztráció a hatókör, mindig az előfizetést. Sok erőforrás-szolgáltató alapértelmezés szerint automatikusan regisztrálva. Azonban szükség lehet néhány erőforrás-szolgáltatókat manuálisan regisztrálni. Erőforrás-szolgáltató regisztrálásához végrehajtásához engedéllyel kell rendelkeznie a `/register/action` műveletet az erőforrás-szolgáltató számára. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják. Erőforrás-szolgáltató regisztrálásához válassza **regisztrálása**.
 
-![erőforrás-szolgáltató regisztrálása](./media/resource-manager-supported-services/register-provider.png)
+![Erőforrás-szolgáltató regisztrálása](./media/resource-manager-supported-services/register-provider.png)
 
-Egy erőforrás-szolgáltató nem törölhető, ha az előfizetés erőforrástípusok adott erőforrás-szolgáltató továbbra is fennáll.
+Erőforrás-szolgáltató regisztrációja nem törölhető, ha továbbra is rendelkezik az adott erőforrás-szolgáltató erőforrástípusok az előfizetésében.
 
-Megtekintéséhez válasszon egy adott erőforrás-szolgáltató adatait **minden szolgáltatás**.
+Egy adott erőforrás-szolgáltató adatainak megtekintéséhez válasszon **minden szolgáltatás**.
 
 ![Válassza ki az összes szolgáltatás](./media/resource-manager-supported-services/more-services.png)
 
@@ -276,20 +277,20 @@ Válassza a **Szolgáltatók** elemet.
 
 ![Szolgáltatók kiválasztása](./media/resource-manager-supported-services/select-providers.png)
 
-Válassza ki az erőforrás-szolgáltató és a megtekinteni kívánt erőforrástípust.
+Válassza ki az erőforrás-szolgáltató és az erőforrás típusa, amely meg szeretné jeleníteni.
 
-![Válassza ki az erőforrás típusa](./media/resource-manager-supported-services/select-resource-type.png)
+![Erőforrás típusának kiválasztása](./media/resource-manager-supported-services/select-resource-type.png)
 
-Erőforrás-kezelő minden régióban támogatott, de előfordulhat, hogy minden régióban nem támogatott az erőforrások telepítése. Ezenkívül előfordulhat, az előfizetés, amelyek meggátolják, hogy az erőforrás-t támogató egyes régiókban használatával korlátozásait. Az erőforrás-kezelő az erőforrástípushoz érvényes helyek jeleníti meg.
+Resource Manager az összes régióban támogatott, de előfordulhat, hogy az erőforrások telepítése nem támogatott az összes régióban. Emellett előfordulhat olyan korlátozások az előfizetéséhez, amelyek meggátolják, hogy bizonyos régiókban, amely támogatja az erőforrás használatával. Az erőforrás-kezelő az erőforrástípushoz érvényes helyeit jeleníti meg.
 
 ![Hely megjelenítése](./media/resource-manager-supported-services/show-locations.png)
 
-Az API-verzió felel meg a REST API-műveleteket az erőforrás-szolgáltató által kiadott verzióját. Egy erőforrás-szolgáltató lehetővé teszi, hogy az új funkciók, mivel feloldja a REST API egy új verziója. Az erőforrás-kezelő jeleníti meg az erőforrástípus érvénytelen API-verziók.
+Az API-verzió megfelel egy REST API-műveleteket az erőforrás-szolgáltató által kiadott verzióját. Erőforrás-szolgáltató új funkciókat tesz elérhetővé, mivel felszabadítja a REST API új verziója. Az erőforrás-kezelő érvényes API-verziók az erőforrástípushoz jeleníti meg.
 
-![API-verziók megjelenítése](./media/resource-manager-supported-services/show-api-versions.png)
+![API-verzió megjelenítése](./media/resource-manager-supported-services/show-api-versions.png)
 
 ## <a name="next-steps"></a>További lépések
-* Resource Manager-sablonok létrehozásával kapcsolatos további tudnivalókért lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
-* Erőforrások telepítésével kapcsolatos további tudnivalókért lásd: [Azure Resource Manager-sablon az alkalmazás központi telepítését](resource-group-template-deploy.md).
-* Az erőforrás-szolgáltató műveletek megtekintése: [Azure REST API](/rest/api/).
 
+* Resource Manager-sablonok létrehozásával kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
+* Erőforrások üzembe helyezése kapcsolatos további információkért lásd: [alkalmazás üzembe helyezése Azure Resource Manager-sablonnal](resource-group-template-deploy.md).
+* A műveletek esetében egy erőforrás-szolgáltató megtekintése: [Azure REST API](/rest/api/).

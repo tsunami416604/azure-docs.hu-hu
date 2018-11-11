@@ -15,21 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: a87d02732196af7471636346fa802f9a58869c95
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: a71ee9246ae21ad76be66c022dac9fe3f00ecbb5
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393573"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345232"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Adatok áthelyezés SQL Server-kiszolgálóra Azure-beli virtuális gépeken
-Ez a témakör ismerteti a lehetőség egyszerű fájlok (CSV- vagy TSV formátumokat) vagy egy helyszíni SQL Serverről az SQL Server-beli virtuális gépen. Adatok áthelyezése a felhőbe ezeket a feladatokat a csoportos adatelemzési folyamat részét képezik.
+
+Ez a cikk ismerteti a lehetőség egyszerű fájlok (CSV- vagy TSV formátumok) vagy egy helyszíni SQL Serverről az SQL Server-beli virtuális gépen. Adatok áthelyezése a felhőbe ezeket a feladatokat a csoportos adatelemzési folyamat részét képezik.
 
 Ez a témakör ismerteti az adatok áthelyezése az Azure SQL Database, Machine Learning a beállításokat, lásd: [adatok áthelyezése az Azure SQL Database az Azure Machine Learning](move-sql-azure.md).
-
-A **menü** mutató hivatkozásokat talál, amelyek bemutatják, hogyan lehet betölteni az adatokat az egyéb cél környezetekben, ahol az adatok tárolásának és feldolgozása során a csoportos adatelemzési folyamat (TDSP) alatt.
-
-[!INCLUDE [cap-ingest-data-selector](../../../includes/cap-ingest-data-selector.md)]
 
 A következő táblázat összefoglalja a lehetőség az SQL Server-beli virtuális gépen.
 

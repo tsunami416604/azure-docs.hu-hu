@@ -16,31 +16,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: a5750555802489b41b007831164767beb953ebc4
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 575e17f214561bde06b70bf87c4895ae379659f2
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34837463"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344722"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>A betanítási adatok importálása az Azure Machine Learning Studióba különböző adatforrásokból
-A Machine Learning Studio a saját adatok használatával fejlesztése és betanítunk egy prediktív elemzési megoldás, a következőket teheti: 
 
-* az adatok feltöltése egy **helyi fájl** előre a merevlemezen a munkaterületen lévő adatkészlet modul létrehozása
-* érheti el adatait több egyik **online adatforrás** kísérletét használatával futása közben a [adatok importálása] [ import-data] modul 
-* adatok forrása egy másik Azure Machine learning **kísérletezhet** adatkészletként mentve
-* adatok forrása egy helyszíni **SQL Server-adatbázis**
+A Machine Learning Studio a saját adatok használatával fejlesztése és betanítunk egy prediktív elemzési megoldás, használhatja az adatokat: 
 
-Ezek a beállítások leírását a témakörök egyikében az alábbi menü. Ezek a témakörök bemutatják, hogyan importálhat adatokat a különböző adatforrásokból származó adatokat a Machine Learning Studio használatához. 
-
-[!INCLUDE [import-data-into-aml-studio-selector](../../../includes/machine-learning-import-data-into-aml-studio.md)]
+* A [ **helyi fájl** ](import-data-from-local-file.md) -időben helyi adatok betöltése a merevlemezen a munkaterületen lévő adatkészlet modul létrehozása
+* [**Online adatforrásokból** ](import-data-from-online-sources.md) -használatát a [adatok importálása] [ import-data] kísérletét futása közben számos online forrásokból származó adatokhoz való hozzáférésének modul
+* [**A Machine Learning Studióban végrehajtott kísérletekhez** ](import-data-from-an-experiment.md) – a Machine Learning Studióban adatkészletként mentett adatok használata
+* [**A helyszíni SQL Server-adatbázis** ](use-data-from-an-on-premises-sql-server.md) – nem kell manuálisan másolja az adatokat egy helyszíni SQL Server-adatbázisból származó adatok használata
 
 > [!NOTE]
 > Nincsenek mintaadatkészletek számos Machine Learning studióban, amely a betanítási adatok is használhat. Ezek a további információkért lásd: [az Azure Machine Learning Studio mintaadatkészleteinek használata](use-sample-datasets.md)).
 > 
 > 
 
-Ez a témakör bevezető is ismerteti, hogyan olvashat be adatokat használatra kész a Machine Learning Studióban, és ismerteti, hogy mely adatformátumok a célnyelven és adattípusok használata támogatott. 
+Ez a bevezető cikk is ismerteti, hogyan olvashat be adatokat használatra kész a Machine Learning Studióban, és ismerteti, hogy mely adatformátumok a célnyelven és adattípusok használata támogatott.
 
 > [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 > 
@@ -79,7 +76,7 @@ Explicit módon adja meg vagy módosítsa a fejlécek és adattípusok használa
 
 A következő **adattípusok** felismeri a Machine Learning Studio:
 
-* Sztring
+* Karakterlánc
 * Egész szám
 * Dupla
 * Logikai

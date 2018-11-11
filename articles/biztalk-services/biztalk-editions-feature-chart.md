@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 718b57a801a9ba62a0154ae42da2ac0c0741f203
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8e25f98f1189f71943ece4a7877a86e29698689a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22706648"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240511"
 ---
 # <a name="biztalk-services-editions-chart"></a>BizTalk Services: Kiadások diagramja
 
@@ -63,7 +63,7 @@ Az alábbi táblázat tartalmazza a különbségeket.
 
 <tr>
 <td><strong>Kezdő ár</strong></td>
-<td colspan="5"><a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011"> Az Azure BizTalk Services árképzése</a> <br/><br/> <a HREF="http://azure.microsoft.com/pricing/calculator/?scenario=full">Azure díjkalkulátor</a></td>
+<td colspan="5"><a HREF="https://go.microsoft.com/fwlink/p/?LinkID=304011"> Az Azure BizTalk Services árképzése</a> <br/><br/> <a HREF="https://azure.microsoft.com/pricing/calculator/?scenario=full">Azure díjkalkulátor</a></td>
 </tr>
 <tr>
 <td><strong>Alapértelmezett minimális konfiguráció</strong></td>
@@ -153,7 +153,7 @@ TPM-egyezményeket tartalmaz</td>
 <tr>
 <td><strong>Magas rendelkezésre állás</strong>
 <br/><br/>
-A szolgáltatói szerződést (SLA) lásd: <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=304011">Az Azure BizTalk Services árképzése</a>.
+A szolgáltatói szerződést (SLA) lásd: <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=304011">Az Azure BizTalk Services árképzése</a>.
 </td>
 <td>Nem tartalmazza</td>
 <td>Nem tartalmazza</td>
@@ -242,10 +242,10 @@ Az ingyenes kiadás nem telepíthető át vagy skálázható fel másik szintre,
 A többi kiadás esetén biztonsági mentéssel és visszaállítással telepítheti át az összetevőket az egyik rétegről a másikra. Készítsen biztonsági másolatot például az összetevőkről a Standard rétegen, majd állítsa vissza azokat a Prémium rétegen. A [BizTalk Services: Backup and Restore](biztalk-backup-restore.md) (BizTalk Services: Biztonsági mentés és visszaállítás) című témakör ismerteti a támogatott áttelepítési útvonalakat, és felsorolja, mely összetevőkről készül biztonsági másolat. Vegye figyelembe, hogy a hibrid kapcsolatokról nem készül biztonsági másolat. Az új szintre készített biztonsági mentés és visszaállítás után újra létre kell hoznia a hibrid kapcsolatokat.  
 
 #### <a name="is-the-biztalk-adapter-service-included-in-the-service-how-do-i-receive-the-software"></a>A BizTalk Adapter Service szerepel a szolgáltatásban? Hogyan kapom meg a szoftvert?
-Igen, a BizTalk Adapter Service és a BizTalk Adapter Pack szerepel a Azure BizTalk Services SDK [letöltésben](http://www.microsoft.com/download/details.aspx?id=39087).
+Igen, a BizTalk Adapter Service és a BizTalk Adapter Pack szerepel a Azure BizTalk Services SDK [letöltésben](https://www.microsoft.com/download/details.aspx?id=39087).
 
-## <a name="next-steps"></a>Következő lépések
-Ha az Azure BizTalk Servicest az Azure Portalon szeretné létrehozni, ugorjon a [BizTalk Services: Provisioning using the Azure portal](biztalk-provision-services.md) (BizTalk Services: Kiépítés az Azure Portallal) című témakörre. Az alkalmazások létrehozásának megkezdéséhez ugorjon az [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197) című témakörre.
+## <a name="next-steps"></a>További lépések
+Ha az Azure BizTalk Servicest az Azure Portalon szeretné létrehozni, ugorjon a [BizTalk Services: Provisioning using the Azure portal](biztalk-provision-services.md) (BizTalk Services: Kiépítés az Azure Portallal) című témakörre. Az alkalmazások létrehozásának megkezdéséhez ugorjon az [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197) című témakörre.
 
 ## <a name="additional-resources"></a>További források
 * [BizTalk Services: Kiépítés az Azure Portallal](biztalk-provision-services.md)<br/>
@@ -254,5 +254,5 @@ Ha az Azure BizTalk Servicest az Azure Portalon szeretné létrehozni, ugorjon a
 * [BizTalk Services: Biztonsági mentés és visszaállítás](biztalk-backup-restore.md)<br/>
 * [BizTalk Services: Szabályozás](biztalk-throttling-thresholds.md)<br/>
 * [BizTalk Services: Kiállító neve és kiállító kulcsa](biztalk-issuer-name-issuer-key.md)<br/>
-* [Hogyan kezdhetem el az Azure BizTalk Services SDK használatát](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [Hogyan kezdhetem el az Azure BizTalk Services SDK használatát](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 

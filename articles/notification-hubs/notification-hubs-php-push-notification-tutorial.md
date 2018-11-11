@@ -14,17 +14,17 @@ ms.devlang: php
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: b812d60363ffebf1f4374b6fd44dff5e67497e08
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: cf7dd8b111683a3b5b2f0a9f371c08ffb788fe58
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42059472"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241072"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>Php-ből a Notification Hubs használatával
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Összes Notification Hubs szolgáltatás egy Java/PHP vagy Ruby-háttérrendszert a Notification Hub REST-felület használatával, az MSDN-témakörben ismertetett módon érheti el [Notification Hubs – REST API-k](http://msdn.microsoft.com/library/dn223264.aspx).
+Összes Notification Hubs szolgáltatás egy Java/PHP vagy Ruby-háttérrendszert a Notification Hub REST-felület használatával, az MSDN-témakörben ismertetett módon érheti el [Notification Hubs – REST API-k](https://msdn.microsoft.com/library/dn223264.aspx).
 
 Ebben a témakörben bemutatjuk, hogyan lehet:
 
@@ -32,7 +32,7 @@ Ebben a témakörben bemutatjuk, hogyan lehet:
 * Kövesse a [első lépéseket ismertető oktatóanyag](notification-hubs-ios-apple-push-notification-apns-get-started.md) mobil a választott platformnak, megvalósítása a háttér-részét a PHP.
 
 ## <a name="client-interface"></a>Ügyféloldali felület
-A fő ügyféloldali felület is adja meg ugyanazokat a módszereket érhetők el a [.NET Notification Hubs SDK](http://msdn.microsoft.com/library/jj933431.aspx), amely lehetővé teszi, hogy közvetlenül fordítása minden az oktatóanyagaink és példáink segítségével érhető el ezen a helyen, és százalékaránya a közösségi az interneten.
+A fő ügyféloldali felület is adja meg ugyanazokat a módszereket érhetők el a [.NET Notification Hubs SDK](https://msdn.microsoft.com/library/jj933431.aspx), amely lehetővé teszi, hogy közvetlenül fordítása minden az oktatóanyagaink és példáink segítségével érhető el ezen a helyen, és százalékaránya a közösségi az interneten.
 
 Az összes elérhető kódját megtalálja a [A PHP REST burkoló minta].
 
@@ -49,7 +49,7 @@ Natív értesítés küldéséhez egy IOS-es:
 Ha még nem tette meg, kövesse a [első lépéseket ismertető oktatóanyag] az utolsó szakaszban, hogy a háttér-beállítása.
 Is, ha azt szeretné, használhatja a kódot az a [A PHP REST burkoló minta] , és lépjen közvetlenül a [az oktatóanyag elvégzéséhez](#complete-tutorial) szakaszban.
 
-A részletekről a teljes REST-burkoló megvalósításához találhatók [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). Ebben a szakaszban ismertetünk, a Notification Hubs REST-végpontokat eléréséhez szükséges fő lépések PHP végrehajtása:
+A részletekről a teljes REST-burkoló megvalósításához találhatók [MSDN](https://msdn.microsoft.com/library/dn530746.aspx). Ebben a szakaszban ismertetünk, a Notification Hubs REST-végpontokat eléréséhez szükséges fő lépések PHP végrehajtása:
 
 1. Kapcsolati sztring elemzése
 2. Az engedélyezési jogkivonat létrehozása
@@ -92,7 +92,7 @@ A következő megvalósítása az ügyfelet, amelynek konstruktort, amely elemzi
 
 
 ### <a name="create-security-token"></a>Biztonsági jogkivonat létrehozása
-A részletekért lásd a biztonsági token létrehozása az [Itt](http://msdn.microsoft.com/library/dn495627.aspx).
+A részletekért lásd a biztonsági token létrehozása az [Itt](https://msdn.microsoft.com/library/dn495627.aspx).
 A következő metódust még hozzá kell adni a **Értesítésiközpont** osztállyal hoz létre a token URI-ját az aktuális kérelem és a hitelesítő adatokat a kapcsolati karakterlánc kinyert alapján.
 
     private function generateSasToken($uri) {
@@ -135,7 +135,7 @@ Első ossza meg velünk adjon meg egy értesítést képviselő osztályt.
 
 Ez az osztály egy olyan tároló, egy natív értesítés szövegét, vagy a kis-és a egy sablon értesítés tulajdonságait, és beállított egy fejlécek, formátumban (natív platform vagy sablon) és az egyes platformokra vonatkozó tulajdonságokat (például Apple lejárati tulajdonságot, és a WNS tartalmazó fejlécek).
 
-Tekintse meg a [Notification Hubs – REST API-k dokumentációjában](http://msdn.microsoft.com/library/dn495827.aspx) és az adott értesítési platformok formázza az összes rendelkezésre álló lehetőségeket.
+Tekintse meg a [Notification Hubs – REST API-k dokumentációjában](https://msdn.microsoft.com/library/dn495827.aspx) és az adott értesítési platformok formázza az összes rendelkezésre álló lehetőségeket.
 
 Ez az osztály képességekkel, is most írunk küldése értesítési módszerek belül a **Értesítésiközpont** osztály.
 

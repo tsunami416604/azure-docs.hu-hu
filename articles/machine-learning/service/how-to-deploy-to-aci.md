@@ -9,12 +9,12 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 8a736516a598eee051b416834d2b737211e66b96
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: b004abb3959bbfe36fc200bf762114f88f3d2ead
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429461"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345046"
 ---
 # <a name="deploy-web-services-to-azure-container-instances"></a>Webszolgáltatások üzembe helyezése az Azure Container Instances szolgáltatásban 
 
@@ -48,9 +48,12 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="configure-an-image"></a>Kép beállítása
 
 Állítsa be a Docker-rendszerképet, amely a modell-fájlok tárolására szolgál.
-1. Hozzon létre egy pontozó szkriptre (score.py) [ezen utasításokat követve](tutorial-deploy-models-with-aml.md#create-scoring-script)
+1. Hozzon létre egy pontozó szkriptre (score.py) [ezen utasításokat követve](tutorial-deploy-models-with-aml.md#create-scoring-script).
 
-1. Hozzon létre egy környezetben fájlt (myenv.yml) [ezen utasításokat követve](tutorial-deploy-models-with-aml.md#create-environment-file) 
+    > [!IMPORTANT]
+    > A pontozó szkript az ügyfeleknek elküldött adatokat fogad, és átadja a modell pontozása. A dokumentum a adatszerkezet, amely a parancsfájlt és a modell várható. Ez a dokumentáció kellene, azzal megkönnyítheti létrehozását, hogy az ügyfél használata a web service.
+
+1. Hozzon létre egy környezetben fájlt (myenv.yml) [ezen utasításokat követve](tutorial-deploy-models-with-aml.md#create-environment-file).
 
 1. Két fájlt használja a Docker-rendszerképet konfigurálhatja a Python SDK használatával a következőképpen:
 
@@ -217,8 +220,7 @@ Ez a módszer létrehozásához és az összetevők a központi telepítésben l
 
 Most tesztelheti a webszolgáltatást.
 
-<a name='test-web-service'/>
-## <a name="test-the-web-service"></a>A webszolgáltatás teszteléséhez
+## <a name="a-nametest-web-servicetest-the-web-service"></a><a name='test-web-service'/>A webszolgáltatás teszteléséhez
 
 A webes szolgáltatás nem ugyanaz, függetlenül attól, amely módszerrel történt.  Előrejelzés lekéréséhez használja a `run` metódus a szolgáltatás.  
 
@@ -261,4 +263,5 @@ service.delete()
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan [telepítése az Azure Kubernetes Service](how-to-deploy-to-aks.md) nagyobb méretezési csoport üzembe helyezéséhez. 
+* Ismerje meg, hogyan [felhasználás a gépi Tanulási modellek webszolgáltatásként üzembe helyezett](how-to-consume-web-service.md).
+* Ismerje meg, hogyan [telepítése az Azure Kubernetes Service](how-to-deploy-to-aks.md) nagyobb méretezési csoport üzembe helyezéséhez. 

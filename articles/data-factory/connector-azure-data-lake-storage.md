@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 65495209714c37e5e166545ed7ed029e36c258c0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 2fad3ad8bc6e1c0ca87038af6c461d863065fc95
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42059462"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345963"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-preview-using-azure-data-factory-preview"></a>Másolja az adatokat, vagy az Azure Data Lake Storage Gen2 előzetes verzió használata az Azure Data Factory (előzetes verzió)
 
@@ -34,6 +34,9 @@ Pontosabban az összekötő támogatja:
 
 >[!TIP]
 >Ha engedélyezi a hierarchikus névtér, jelenleg nincs műveletek Blob és ADLS Gen2 API-k közötti együttműködés. Abban az esetben, ha eléri a hibát az "ErrorCode = FilesystemNotFound", részletes üzenet az "a megadott fájlrendszer nem létezik.", a megadott fogadó okozza fájlrendszer máshol létrehozása helyett ADLS Gen2 API Blob API-n keresztül. A probléma elhárításához adjon meg egy új fájlrendszer, amelynek neve nem létezik a blobtároló nevét, és ADF automatikusan létrehozza a fájlrendszer adatmásolás során.
+
+>[!NOTE]
+>Ha Ön engedélyezi _"Allow megbízható Microsoft-szolgáltatások a tárfiók"_ Azure Storage Azure integrációs modul használatával szeretne csatlakozni a Data Lake Storage Gen2 tűzfalbeállítások kapcsolót sikertelen lesz, és a tiltott hibaüzenet, mint az ADF megbízható Microsoft-szolgáltatás nem kezeli. Használjon helyi Integration Runtime,-n keresztül csatlakozik.
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -84,7 +87,7 @@ Szakaszok és adatkészletek definiálását tulajdonságainak teljes listáját
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot az adatkészlet értékre kell állítani **AzureBlobFSFile**. |Igen |
-| folderPath | A Data Lake Storage Gen2 az a mappa elérési útját. Helyettesítő karaktert tartalmazó szűrő nem támogatott. Példa: a gyökérmappa/almappa /. |Igen |
+| folderPath | A Data Lake Storage Gen2 az a mappa elérési útját. Helyettesítő karaktert tartalmazó szűrő nem támogatott. Ha nincs megadva, a legfelső szintű mutat. Példa: a gyökérmappa/almappa /. |Nem |
 | fileName | **Név vagy helyettesítő karaktert tartalmazó szűrő** az fájl(ok) a megadott "folderPath" alatt. Ez a tulajdonság értékét nem adja meg, ha az adatkészlet mutat a mappában lévő összes fájlt. <br/><br/>Szűrő esetén engedélyezett a helyettesítő karaktereket: `*` (nulla vagy több olyan karakterre illeszkedik) és `?` (megegyezik a nulla vagy önálló karakter).<br/>-1. példa: `"fileName": "*.csv"`<br/>– 2. példa: `"fileName": "???20180427.txt"`<br/>Használat `^` elkerülésére, ha a fájl tényleges nevét helyettesítő elemet vagy a escape karaktere belül.<br/><br/>Ha nincs megadva fájlnév egy kimeneti adatkészletet és **preserveHierarchy** nincs megadva a tevékenység fogadó, a másolási tevékenység létrehozza a fájl neve a következő mintának: "*adatokat. [ tevékenység-végrehajtásonként azonosító GUID]. [GUID Ha FlattenHierarchy]. [Ha a konfigurált formátum]. [Ha konfigurálta a tömörítés]* ". Ilyen például, "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz". |Nem |
 | Formátum | Ha szeretné másolni a fájlokat, a fájlalapú tárolók (bináris másolat) közötti, hagyja ki a format szakaszban, mind a bemeneti és kimeneti adatkészlet-definíciókban.<br/><br/>Ha szeretné elemezni, vagy hozzon létre egy adott formátumú fájlok, formátuma a következő fájltípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, és **ParquetFormat**. Állítsa be a **típus** tulajdonság alatt **formátum** az alábbi értékek egyikére. További információkért lásd: a [szövegformátum](supported-file-formats-and-compression-codecs.md#text-format), [JSON formátumban](supported-file-formats-and-compression-codecs.md#json-format), [Avro formátum](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátum](supported-file-formats-and-compression-codecs.md#orc-format), és [Parquet formátum ](supported-file-formats-and-compression-codecs.md#parquet-format) szakaszokat. |Nem (csak a bináris másolás esetén) |
 | A tömörítés | Adja meg a típus és az adatok tömörítési szintje. További információkért lásd: [támogatott fájlformátumok és tömörítési kodek](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Támogatott típusok a következők **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**.<br/>Támogatott szintek a következők **Optimal** és **leggyorsabb**. |Nem |
