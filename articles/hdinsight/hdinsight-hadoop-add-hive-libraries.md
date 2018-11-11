@@ -1,26 +1,26 @@
 ---
-title: Hive-kódtárak hozzáadása során a HDInsight-fürt létrehozása – Azure
-description: Ismerje meg, hogyan adja hozzá a Hive-kódtárak (jar fájlok) HDInsight-fürthöz a fürt létrehozásakor.
+title: Az Apache Hive-kódtárak hozzáadása során a HDInsight-fürt létrehozása – Azure
+description: Ismerje meg, hogyan (jar fájlok) az Apache Hive-kódtárak hozzáadása egy HDInsight-fürthöz a fürt létrehozásakor.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: jasonh
+ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 40650c813efc8fe7389b0445c72007dbd97e3ce8
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f9788c82e74b47d4550640a1069f6d97487eecc6
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108686"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035305"
 ---
-# <a name="add-custom-hive-libraries-when-creating-your-hdinsight-cluster"></a>A HDInsight-fürt létrehozásakor egyéni Hive-kódtárak hozzáadása
+# <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>Egyéni Apache Hive-kódtárak hozzáadása a HDInsight-fürt létrehozásakor
 
-Útmutató a HDInsight Hive-kódtárak előzetes betöltése. Ez a dokumentum információkat tartalmaz az szkriptműveletekkel előre a fürt létrehozásakor a függvénykönyvtárak betöltésére. Kódtárakkal kiegészítve, ez a dokumentum lépéseivel globálisan elérhető a Hive - használatához nem kell [hozzáadása JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) betölteni azokat.
+Útmutató a HDInsight Apache Hive-kódtárak előzetes betöltése. Ez a dokumentum információkat tartalmaz az szkriptműveletekkel előre a fürt létrehozásakor a függvénykönyvtárak betöltésére. Kódtárakkal kiegészítve, ez a dokumentum lépéseivel globálisan elérhető a Hive - használatához nem kell [hozzáadása JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) betölteni azokat.
 
-## <a name="how-it-works"></a>Működés
+## <a name="how-it-works"></a>Működési elv
 
 A fürt létrehozásakor Szkriptműveletet segítségével módosíthatja a fürtcsomópontok azok létrehozásakor. Ebben a dokumentumban a szkript egyetlen paramétert, és a szalagtárak helye fogad el. Ezen a helyen kell lennie az Azure Storage-fiókban, és a szalagtárak jar-fájlként kell tárolni.
 

@@ -10,12 +10,12 @@ ms.date: 09/11/2018
 ms.topic: article
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
-ms.openlocfilehash: bca818cb4e13066f8a631111b75f50384e521ac1
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: a1c68f7e1d0a24be173137d3a7c920876cc8ba66
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978893"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515743"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -64,9 +64,9 @@ A parancssorban:
 
 Használata esetén _azds.exe_, használja a--részletes parancssori beállítást, és használja az--output parancssori kapcsoló adja meg a kimeneti formátum.
  
-    ```cmd
-    azds up --verbose --output json
-    ```
+```cmd
+azds up --verbose --output json
+```
 
 A Visual Studióban:
 

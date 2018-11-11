@@ -2,25 +2,25 @@
 title: Hadoop YARN-alkalmazásnaplók elérése programozott módon – Azure
 description: Alkalmazásnaplók elérése programozott módon a HDInsight Hadoop-fürtön.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: e92f9f7bb49b0b7cc33c73a9c5eb2d0ca7532592
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: b7b93ca9c8638451d23a27edeed823e593a95b23
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094401"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035645"
 ---
-# <a name="access-yarn-application-logs-on-windows-based-hdinsight"></a>YARN-alkalmazásnaplók elérése a Windows-alapú HDInsight
-Ez a dokumentum ismerteti a YARN-alkalmazások az Azure HDInsight Windows-alapú Hadoop-fürtön végzett a naplók elérése
+# <a name="access-apache-yarn-application-logs-on-windows-based-hdinsight"></a>Az Apache YARN-alkalmazásnaplók elérése a Windows-alapú HDInsight
+Ez a dokumentum azt ismerteti, hogyan befejezte egy Windows-alapú Hadoop-fürtöt az Azure HDInsight az Apache YARN-alkalmazások számára a naplók elérése
 
 > [!IMPORTANT]
-> Ebben a dokumentumban található információk csak a Windows-alapú HDInsight-fürtök vonatkozik. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement). A Linux-alapú HDInsight-fürtökön eléréséről a YARN naplókat: [hozzáférés YARN-alkalmazásnaplók a Linux-based Hadoop on HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+> Ebben a dokumentumban található információk csak a Windows-alapú HDInsight-fürtök vonatkozik. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További tudnivalókért lásd: [A HDInsight elavulása Windows rendszeren](hdinsight-component-versioning.md#hdinsight-windows-retirement). A Linux-alapú HDInsight-fürtökön eléréséről a YARN naplókat: [hozzáférés az Apache YARN-alkalmazásnaplók a Linux-based Hadoop on HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 >
 
 

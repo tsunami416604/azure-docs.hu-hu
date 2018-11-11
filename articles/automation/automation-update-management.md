@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 11/05/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 90a5be07b6939df1850bb1574c71254bb896f004
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 6d981d9dc7433d957819d0beb6aa6265882f1890
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093828"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037396"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -35,7 +35,7 @@ Az alábbi ábrán látható egy koncepcióvázlaton jelenítik működését é
 
 ![Frissítéskezelési folyamatdiagramja](media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Az Update Management segítségével natív módon előkészítheti a gépeket ugyanabban a bérlőben több előfizetésben található. Egy másik bérlőben található gépek kezeléséhez, be kell vezetnie őket, mint [nem Azure-gépek](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine).
+Az Update Management segítségével natív módon előkészítheti a gépeket ugyanabban a bérlőben több előfizetésben található.
 
 Ha egy CVE kiadás, a javítás jelenik meg a Linux rendszerű gépek értékelés 2 – 3 órát vesz igénybe.  Windows-gépek Miután megtörtént az értékeléshez jelenik meg a javítás 12 – 15 órát vesz igénybe.
 
@@ -245,7 +245,7 @@ Az alábbi táblázatok sorolják fel a frissítési besorolások az Update Mana
 |Kumulatív frissítések     | Az egyszerű telepítés együtt csomagolt gyorsjavítások összesített csoportja.        |
 |Funkciócsomagok     | Termékkiadáson kívül terjesztett új termékfunkciók.        |
 |Szervizcsomagok     | Gyorsjavítások alkalmazáshoz összesített csoportja.        |
-|Definíciófrissítések     | Vírus vagy egyéb definíciós fájlok frissítése.        |
+|A definíciók frissítései     | Vírus vagy egyéb definíciós fájlok frissítése.        |
 |Eszközök     | Segédprogramok vagy funkciók teljes egy vagy több feladatot.        |
 |Frissítések     | Egy alkalmazás vagy a jelenleg telepített fájl frissítése.        |
 
@@ -526,7 +526,7 @@ Az Update Management lehetővé teszi egy Azure virtuális gépek dinamikus eszk
 
 * Előfizetés
 * Erőforráscsoportok
-* Helyek
+* Földrajzi egységek
 * Címkék
 
 ![Csoportok kiválasztása](./media/automation-update-management/select-groups.png)

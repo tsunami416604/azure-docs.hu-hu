@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 4097fab5610bf4bee6c14c65d3b45e0de818a0cc
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 58bb3ae39ecd5631508ca1d09bf1d9d8f4d75063
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160909"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036665"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication az NPS-bővítményének hibaüzenetek feloldása
 
@@ -30,6 +30,7 @@ Ha az Azure multi-factor Authentication NPS-bővítményéhez hibákat észlel, 
 | **ESTS_TOKEN_ERROR** | Kövesse a [hibáinak elhárítása az MFA NPS-bővítményének](howto-mfa-nps-extension.md#troubleshooting) ügyféltanúsítvány, és az adal-t vizsgálhatja a jogkivonat-problémák. |
 | **HTTPS_COMMUNICATION_ERROR** | A hálózati házirend-kiszolgáló nem tudja az Azure MFA válaszokat kaphatnak. Ellenőrizze, hogy a tűzfal nyitva kétirányúan a forgalmat a https://adnotifications.windowsazure.com |
 | **HTTP_CONNECT_ERROR** | Az NPS-bővítményt futtató kiszolgáló, ellenőrizze, hogy elérheti https://adnotifications.windowsazure.com és https://login.microsoftonline.com/. Ha ezeket a helyeket nem töltődik be, az adott kiszolgálón-kapcsolatának hibaelhárítása. |
+| **Az Azure MFA NPS-bővítményének:** <br> Az Azure MFA NPS-bővítményének másodlagos hitelesítés csak a Radius-kéréseket AccessAccept állapotban hajtja végre. A kérelem érkezett a következő válasz állapota AccessReject, figyelmen kívül hagyja a kérelem felhasználó felhasználóneve. | Ez a hiba általában tükrözi hitelesítési hiba történt az ad-ben, vagy a hálózati házirend-kiszolgáló nem tud válaszokat kaphatnak az Azure ad-ből. Ellenőrizze, hogy a tűzfal nyitva kétirányúan a forgalmat a https://adnotifications.windowsazure.com és https://login.microsoftonline.com 80-as és 443-as portot használja. Fontos továbbá ellenőrizze, hogy a hálózati hozzáférési engedélyek DIAL-IN lapján, a beállítás értéke "szabályozhatja a hálózati házirend-kiszolgáló elérés". |
 | **REGISTRY_CONFIG_ERROR** | A kulcs nincs megadva a beállításjegyzékben, az alkalmazás, amely lehet az oka az [PowerShell-parancsprogram](howto-mfa-nps-extension.md#install-the-nps-extension) nem volt a telepítés után futtassa. A hibaüzenet tartalmaznia kell a hiányzó kulcs. Győződjön meg arról, hogy a kulcs alatt HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa. |
 | **REQUEST_FORMAT_ERROR** <br> RADIUS-kérést Radius userName\Identifier kötelező attribútum hiányzik. Győződjön meg arról, hogy a hálózati házirend-kiszolgáló RADIUS-kéréseket fogad | Ez a hiba általában a telepítési probléma tükrözi. Az NPS-bővítményt telepíteni kell a RADIUS-kérelmeket fogadhat hálózati házirend-kiszolgálókat. Telepíti a függőségeket RDG és RRAS például hálózati házirend-kiszolgálókat nem kapja meg radius-kéréseket. NPS-bővítményének nem működik, ha ilyen telepítések és a hibák meg telepíteni, mert a nem tud olvasni a hitelesítési kérelem részleteit. |
 | **REQUEST_MISSING_CODE** | Győződjön meg arról, hogy a titkosítási protokollt a hálózati házirend- és NAS-kiszolgálók közötti támogatja-e a másodlagos hitelesítési módszert használ. **A PAP** a felhőben, az Azure MFA hitelesítési módszereket támogatja: telefonhívás, egyirányú SMS, mobilalkalmazásbeli értesítés és mobilalkalmazásbeli ellenőrző kód. **CHAPv2** és **EAP** telefonhívás- és mobilalkalmazás-értesítés támogatja. |
@@ -68,7 +69,7 @@ Ha az Azure multi-factor Authentication NPS-bővítményéhez hibákat észlel, 
 
 Egyes esetekben a felhasználók lehet, hogy üzenetek beolvasása a multi-factor Authentication használatát, mert a hitelesítési kérelem sikertelen volt. Ezek a hibák a konfiguráció a termék nem, de a szándékos figyelmeztetések vannak elmagyarázza, hogy miért a hitelesítési kérelem megtagadva.
 
-| Hibakód | Hibaüzenet | Javasolt lépések | 
+| Hibakód | Hibaüzenet | Ajánlott lépések | 
 | ---------- | ------------- | ----------------- |
 | **OathCodeIncorrect** | Hibás kódot entered\OATH kód helytelen | Nem hiba, a felhasználó sikeres megadott kód helytelen. | Az a felhasználó hibás kódot adott meg. Rendelkezik, azokat újra egy új kódot kér, vagy jelentkezzen be újra. | 
 | **SMSAuthFailedMaxAllowedCodeRetryReached** | Elérte a maximális megengedett kódot újrapróbálkozási | A felhasználó az ellenőrző kérdés túl sokszor sikertelen volt. A beállítások attól függően, előfordulhat, hogy szükségük lehet a rendszergazdája mostantól feloldva.  |
