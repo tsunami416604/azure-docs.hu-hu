@@ -10,32 +10,32 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: e560aeffecf63f63966a49053e0f79d012b4a0a3
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 8fe39a2876d37e4897c03a5654e500e2e2d3cb9f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038272"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51276950"
 ---
 # <a name="quickstart-get-intent-using-python"></a>Rövid útmutató: Szándék lekérése Python használatával
 Ebben a rövid útmutatóban átadhat kimondott szövegeket egy LUIS-végpontnak, majd visszakaphatja a szándékot és az entitásokat.
 
-[!include[Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
+[!INCLUDE[Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Python 3.6](https://www.python.org/downloads/) vagy újabb.
 * [Visual Studio Code](https://code.visualstudio.com/)
 
-[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
+[!INCLUDE[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
 
 ## <a name="get-luis-key"></a>LUIS-kulcs lekérése
 
-[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
+[!INCLUDE[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
 
 ## <a name="get-intent-with-browser"></a>Szándék lekérése böngészővel
 
-[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
+[!INCLUDE[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
 
 ## <a name="get-intent--programmatically"></a>Szándék lekérése programozott módon
 
@@ -55,7 +55,7 @@ A Pythonnal hozzáférhet ugyanazokhoz az eredményekhez, amelyeket a böngész�
 
 ## <a name="luis-keys"></a>LUIS-kulcsok
 
-[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
+[!INCLUDE[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Törölje a Python-fájlt. 

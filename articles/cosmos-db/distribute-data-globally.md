@@ -9,18 +9,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: mjbrown
-ms.openlocfilehash: 7f2c242d7040413598864222efdf06843eddc7d9
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 4aa5e4ff46eeaa4e8d8c723f626dd1f1193fd12a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959494"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281608"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db"></a>Az Azure Cosmos DB globális terjesztési
 
 Globális skálázhatóság georeplikációval a napjaink alkalmazásai számos futtatni. Ezek az alkalmazások mindig, on, és világszerte több felhasználó számára hozzáférhető. A globális terjesztés, miközben nagy teljesítményű és magas rendelkezésre állást biztosít az alkalmazások által használt adatok kezelése rögzített probléma. Az Azure Cosmos DB egy globálisan elosztott adatbázis-szolgáltatás, amely a nagy teljesítményű és magas rendelkezésre állást biztosít a. Ebből kifolyólag miatt Azure Cosmos DB az alábbi valós idejű alkalmazások számára a leginkább megfelelő.
 
-A cosmos DB egy alapvető Azure-szolgáltatás, amely az összes elérhető [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/) alapértelmezés szerint. A Microsoft Azure-adatközpontokban világszerte több mint 50 régióban működik, és tovább bővíti az ügyfelek növekvő igényeknek. Amikor létrehoz egy Cosmos DB-fiókot, döntse el szeretné helyezni a vásárlásom. A Microsoft üzemelteti a Cosmos DB szolgáltatás 24/7, így Ön az alkalmazásokra koncentrálhat.
+A cosmos DB egy alapvető Azure-szolgáltatás, amely az összes elérhető [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/) alapértelmezés szerint. A Microsoft Azure-beli adatközpontok a világ különböző pontjain régiókban 54 + működik, és tovább bővíti az ügyfelek növekvő igényeknek. Amikor létrehoz egy Cosmos DB-fiókot, döntse el szeretné helyezni a vásárlásom. A Microsoft üzemelteti a Cosmos DB szolgáltatás 24/7, így Ön az alkalmazásokra koncentrálhat.
 
 Beállíthatja, hogy az adatbázisok, globálisan elosztott, és elérhető legyen, a több mint 50 Azure-régiók egyikében. Csökkentheti a késést, helyezze az adatok közelebbi helyen tárolhatók a felhasználói helyére. A szükséges régiók kiválasztása attól függ, hogy a globális jelenlétét, az alkalmazás- és hol találhatók a felhasználók számára. A cosmos DB transzparensen replikálja az adatokat a fiókon belül minden konfigurált régióban. A Cosmos-adatbázis és a tárolók, amelyekkel az alkalmazás olvashat és írhat helyileg egyetlen rendszerképet biztosít. A Cosmos DB használatával adja hozzá, vagy távolítsa el a bármikor a fiókjához társított régiók. Az alkalmazás nem kell szüneteltetve vagy újratelepítése hozzáadni vagy eltávolítani egy régiót. Továbbra is magas rendelkezésre állású folyamatosan miatt, amely a szolgáltatás biztosít a többkiszolgálós képességekkel.
 
@@ -48,5 +48,5 @@ További információ a globális terjesztés, az alábbi cikkeket:
 
 * [Globális terjesztés – technikai részletek](global-dist-under-the-hood.md)
 * [A többkiszolgálós ügyfelek konfigurálása](how-to-manage-database-account.md#configure-clients-for-multi-homing)
-* [Hogyan régiók hozzáadása/eltávolítása az adatbázisból](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+* [Hogyan régiók hozzáadása/eltávolítása Cosmos-fiókjából](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [Egy egyéni ütközésfeloldási házirend SQL API-fiókok létrehozása](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

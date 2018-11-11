@@ -3,7 +3,7 @@ title: Az Azure AD Connect Health használata az AD FS szolgáltatással | Micro
 description: Ez az Azure AD Connect Health oldal bemutatja, hogyan figyelheti helyszíni AD FS infrastruktúráját.
 services: active-directory
 documentationcenter: ''
-author: zhiweiw
+author: zhiweiwangmsft
 manager: mtillman
 editor: curtand
 ms.assetid: dc0e53d8-403e-462a-9543-164eaa7dd8b3
@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 04/26/2018
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 66dd3edefb44a0394216eeff58c6cccb5828c98b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 7d93207e6a5f0acabcf348981e799e801c39f48b
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46302057"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278837"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Az AD FS monitorozása az Azure AD Connect Health használatával
 Az alábbi dokumentáció az AD FS infrastruktúra Azure AD Connect Health használatával végzett figyelésére vonatkozik. Az Azure AD Connect (szinkronizálási szolgáltatás) az Azure AD Connect Health használatával történő megfigyelésével kapcsolatos információkat [Az Azure AD Connect Health szinkronizálási szolgáltatás használata](how-to-connect-health-sync.md) című témakörben tekintheti meg. Az Active Directory tartományi szolgáltatások az Azure AD Connect Health használatával történő megfigyelésével kapcsolatos információkat pedig a [Using Azure AD Connect Health with AD DS](how-to-connect-health-adds.md) (Az Azure AD Connect Health használata az AD DS szolgáltatással) című témakörben találja.
@@ -128,7 +128,7 @@ Ezenkívül előfordulhat, hogy egy IP-címről többször próbálnak bejelentk
 
 > [!NOTE]
 > A jelentés használatához győződjön meg róla, hogy az AD FS-naplózás engedélyezve van. További információkért tekintse meg az [AD FS-naplózás engedélyezését](how-to-connect-health-agent-install.md#enable-auditing-for-ad-fs). <br />
-> Az előzetes verzió eléréséhez globális rendszergazda vagy [biztonsági olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader) szerepkörű felhasználói engedély szükséges.  
+> Az előzetes verzió eléréséhez globális rendszergazda vagy [biztonsági olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader) szerepkörű felhasználói engedély szükséges.  
 > 
 
 ### <a name="what-is-in-the-report"></a>A jelentés tartalma

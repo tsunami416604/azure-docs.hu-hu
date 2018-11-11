@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: a810de5c3c70322560bb45bcc2aee5cf0798cea9
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 8aa79d66801ff30fedc725913696d5cfa3c9626f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248710"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282827"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Az Azure Monitor által gyűjtött adatok figyelése
 [Az Azure Monitor](../azure-monitor/overview.md) egy szolgáltatás, amellyel figyelheti az alkalmazások és az erőforrások támaszkodnak. Figyelt erőforrások központi az alábbi függvényre van telemetriai és egyéb adatok tárolására. A cikk ismerteti, hogyan az adatok tárolásának és az Azure Monitor által használt teljes leírását.
@@ -98,7 +98,7 @@ Nincsenek Azure-figyelése által gyűjtött metrikák három alapvető forrása
 Metrikákkal elvégezhető feladatok a következők:
 
 - Használat [metrikaböngésző](../monitoring-and-diagnostics/monitoring-metric-charts.md) elemezheti az összegyűjtött metrikák és a egy diagramon jeleníti meg őket. Egy erőforrás (például egy virtuális Gépet, a webhely vagy a logikai alkalmazás) teljesítményének nyomon követésével diagramok rögzítésével egy [Azure irányítópultján](../azure-portal/azure-portal-dashboards.md).
-- Konfigurálja egy [a metrikaalapú riasztási szabály](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) , amely elküld egy értesítést vagy veszi [művelet automatikus](../monitoring-and-diagnostics/monitoring-action-groups.md) mikor a metrika átlép egy küszöbértéket.
+- Konfigurálja egy [a metrikaalapú riasztási szabály](../monitoring-and-diagnostics/alert-metric.md) , amely elküld egy értesítést vagy veszi [művelet automatikus](../monitoring-and-diagnostics/monitoring-action-groups.md) mikor a metrika átlép egy küszöbértéket.
 - Használat [automatikus skálázási](../monitoring-and-diagnostics/monitoring-overview-autoscale.md) növelése vagy csökkentése érdekében a küszöbérték átlépését metrika alapján erőforrásokat.
 - Metrikák irányíthatja a Log Analytics metrikai adatok és naplóadatok elemzéséhez és metrikaértékek 93 napnál hosszabb ideig tárolja. 
 - Metrikák Stream- [Eseményközpont](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md) irányíthatja őket [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) vagy a külső rendszerekkel.
@@ -138,7 +138,7 @@ Az Azure Monitor által gyűjtött naplók vannak tárolva a Log Analytics szolg
 A log Analytics adatokat gyűjthet, különböző forrásokból is Azure-ban és a helyszíni erőforrásokhoz. A Log Analytics szolgáltatásba írt adatok forrásai az alábbiak:
 
 - [Tevékenységnaplók](../log-analytics/log-analytics-activity.md) az Azure-erőforrások, amelyek tartalmazzák az információkat a konfigurációjukról és egészségügyi és [diagnosztikai naplók](../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) termék működésével kapcsolatos információkat tartalmaznak, amelyek.
-- Az ügynökök [Windows](../log-analytics/log-analytics-windows-agent.md) és [Linux](../log-analytics/log-analytics-linux-agents.md) virtuális gépeket, amelyek a vendég operációs rendszer és alkalmazások a következők szerint a Log Analytics számára küldött telemetriai adatokra [adatforrások](../log-analytics/log-analytics-data-sources.md) , konfigurálja.
+- Az ügynökök [Windows](../log-analytics/log-analytics-windows-agent.md) és [Linux](../log-analytics/log-analytics-quick-collect-linux-computer.md) virtuális gépeket, amelyek a vendég operációs rendszer és alkalmazások a következők szerint a Log Analytics számára küldött telemetriai adatokra [adatforrások](../log-analytics/log-analytics-data-sources.md) , konfigurálja.
 - Alkalmazásadatok által gyűjtött [Application Insights](https://docs.microsoft.com/azure/application-insights/).
 - Az adatok egy adott alkalmazás vagy szolgáltatás betekintést nyújtó [figyelési megoldások](../monitoring/monitoring-solutions.md) vagy szolgáltatások, például a Container Insights, a virtuális gép Insights vagy a csoport Insights erőforrás.
 - Biztonsági adatok által gyűjtött [az Azure Security Center](https://docs.microsoft.com/azure/security-center/).

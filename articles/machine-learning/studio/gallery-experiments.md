@@ -1,6 +1,6 @@
 ---
-title: AI Azure katalógusában kísérleteket |} Microsoft Docs
-description: Fedezze fel, és megoszthatja a kísérletek Azure Eszközintelligencia-katalógus.
+title: Az Azure AI-katalógusban kísérleteket |} A Microsoft Docs
+description: Fedezze fel, és megoszthatja a kísérleteket az Azure AI-katalógusban.
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
@@ -15,124 +15,122 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
-ms.openlocfilehash: d57e780fbf5187f2481d40bde28b113181c15b4a
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 22432a98a7ac5ecba46201d0166940e069f6031b
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834658"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346439"
 ---
-# <a name="discover-experiments-in-azure-ai-gallery"></a>Azure Eszközintelligencia-katalógus kísérletek felderítése
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
+# <a name="discover-experiments-in-azure-ai-gallery"></a>Fedezze fel az Azure AI-katalógusban kísérletek
 
-## <a name="experiments-for-machine-learning-studio"></a>A Machine Learning Studio kísérletek
-A gyűjtemény még számos [kísérletek](https://gallery.cortanaintelligence.com/experiments) a fejlett [Azure Machine Learning Studio](https://studio.azureml.net). Gyors a koncepció igazolása kísérleteket, amelyek bemutatják, egy adott gépi tanulási technika, az összetett machine learning problémák fejlett megoldások kísérletek közé.
+[Az Azure AI-katalógusban](http://gallery.cortanaintelligence.com) széles körének rendelkezik [kísérletek](https://gallery.cortanaintelligence.com/experiments) a fejlesztett [Azure Machine Learning Studio](https://studio.azureml.net). A gyors proof-of-concept kísérletek, amelyek bemutatják a machine learning-technika, az összetett gépi tanulási problémák teljes mértékben saját fejlesztésű megoldások adott tartomány kísérletek.
 
 > [!NOTE]
-> Egy ***kísérletezhet*** van a vásznon, a Machine Learning Studióban, melyekkel egy prediktív elemzési modell összeállításához. A modell hoz létre a különböző elemzési modulok összekötő adatok. Próbálkozzon másik ötleteket, hajtsa végre a próbaverziót futtat, és végül a modell rendszerbe állítása, az Azure-ban webszolgáltatásként. Példa bemutatja, hogyan hozzon létre egy egyszerű kísérletet,: [Machine learning oktatóanyag: az első kísérlet létrehozása az Azure Machine Learning Studióban](create-experiment.md). Az egy prediktív elemzési megoldás létrehozása egy átfogóbb bemutatása, lásd: [forgatókönyv: a hitelkockázat értékelésére az Azure Machine Learning a prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md).
+> Egy ***kísérletezhet*** van a vásznon, a Machine Learning Studio prediktív elemzési modellek létrehozására használhatja. A modell különböző elemzési modulok csatlakoztatásával adatokat hoz létre. Próbálja ki a különböző ötleteket, próbafuttatások tegye, és végül helyezi üzembe a modellt webszolgáltatásként, amely az Azure-ban. Egy egyszerű kísérlet létrehozása példa: [Machine learning-oktatóanyag: az első kísérlet létrehozása az Azure Machine Learning Studióban](create-experiment.md). Prediktív elemzési megoldások létrehozása egy átfogóbb leírását lásd: [forgatókönyv: a hitelkockázat értékelése az Azure Machine Learning a prediktív elemzési megoldás fejlesztése](walkthrough-develop-predictive-solution.md).
 >
 >
 
 ## <a name="discover"></a>Ismertetők
-Tallózásához [a katalógusban](http://gallery.cortanaintelligence.com), válassza ki a gyűjtemény kezdőlap tetején **kísérletek**.
+Kísérletek böngészéséhez [a katalógusban](http://gallery.cortanaintelligence.com), válassza ki a katalógus kezdőlap tetején **kísérletek**.
 
-A **[kísérletek](https://gallery.cortanaintelligence.com/experiments)** lap megjeleníti a legutóbb hozzáadott és népszerű kísérletek. Összes kísérlet megtekintéséhez válassza ki a **láthatja az összes** gombra. Egy adott kísérletben keresése, válassza ki a **láthatja az összes**, és jelölje ki a szűrési feltételeket. Kifejezést is írhatja a **keresési** a gyűjtemény lap felső részén.
+A **[kísérletek](https://gallery.cortanaintelligence.com/experiments)** lap nemrégiben hozzáadott és népszerű kísérletek listáját jeleníti meg. Az összes kísérletek megtekintéséhez válassza ki a **összes** gombra. Egy adott kísérletet keres, válassza ki a **összes**, és majd szűrőfeltételeket. A keresési kifejezéseket is megadhatja a **keresési** a katalógus lap tetején.
 
-További információ a kísérlet kísérlet részleteit megjelenítő oldalon kaphat. Egy kísérletben Részletek lap megnyitásához válassza ki a kísérletet. Kísérlet a Részletek lap a **megjegyzések** szakaszban lehet megjegyzést, visszajelzést vagy kérdése van a kísérlet. A kísérlet ismerősök vagy a Twitteren vagy LinkedIn munkatársak is megoszthatja. A meghívott más felhasználóknak a lapnak a megtekintésére a kísérletben részleteit megjelenítő oldalra mutató hivatkozást is képes e-mail.
+Kaphat kísérletet a kísérlet ismertető lapon tájékozódhat. Egy kísérlet Részletek lap megnyitásához, jelölje ki a kísérletet. Kísérlet a Részletek lap a **megjegyzések** szakaszban el megjegyzés, visszajelzés, vagy a kísérlet kapcsolatos kérdések feltevése. A kísérlet barátainak vagy Twitter- vagy LinkedIn munkatársaival is megoszthatja. A kísérlet részleteit megjelenítő oldalra, más felhasználók számára a lap megtekintéséhez meghívni egy hivatkozást is képes mail.
 
-![Ez az elem megosztása ismerősök](./media/gallery-how-to-use-contribute-publish/share-links.png)
+![Ez az elem megoszthatja ismerősök felvételének engedélyezése](./media/gallery-how-to-use-contribute-publish/share-links.png)
 
-![Adja hozzá a saját megjegyzéseit](./media/gallery-how-to-use-contribute-publish/comments.png)
+![A saját Megjegyzések hozzáadása](./media/gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="download"></a>Letöltés
-A Machine Learning Studio munkaterület letöltheti a katalógusban kísérletek másolatát. Módosíthatja majd, a Másolás a saját megoldások létrehozásához.
+Letöltheti a katalógusban található összes kísérlet egy példányát a Machine Learning Studio-munkaterülethez. Ezt követően módosíthatja a saját megoldásokat hozhat létre másolási.
 
-AI Azure katalógusában kétféleképpen importálásához a kísérlet egy példányát:
+Az Azure AI-katalógusban importálhat egy másolatot egy kísérlet két lehetőséget kínál:
 
-* **A gyűjteményből**. Ha a kísérlet, amely az oldalon van lehetősége, töltse le, és nyissa meg a Machine Learning Studio munkaterületén.
-* **A számítógép-Learning Studio**. A Machine Learning Studióban segítségével bármilyen kísérlet a dokumentumtárban sablonként új kísérlet létrehozása.
+* **A katalógusból**. Ha azt tapasztalja, egy kísérlet, amelynek a katalógusban, töltse le, és nyissa meg a Machine Learning Studio munkaterületét.
+* **A Machine Learning Studióba**. A Machine Learning Studióban használhatja bármilyen kísérlet a katalógusban sablont egy új kísérlet létrehozásához.
 
-### <a name="from-the-gallery"></a>A gyűjteményből
+### <a name="from-the-gallery"></a>A katalógusból
 
-1. A gyűjteményben nyissa meg a kísérletben részleteit megjelenítő oldalra.
+1. A katalógusban nyissa meg a kísérlet részletei lapon.
 2. Válassza ki **Megnyitás a Studióban**.
 
-    ![Nyissa meg kísérlet a gyűjteményből](./media/gallery-experiments/open-experiment-from-gallery.png)
+    ![Nyissa meg kísérlet a katalógusból](./media/gallery-experiments/open-experiment-from-gallery.png)
 
-Ha bejelöli **Megnyitás a Studióban**, a kísérletben a Machine Learning Studio munkaterületen megnyílik. (Ha még nincs bejelentkezett Machine Learning Studio, kéri első bejelentkezés a Microsoft-fiókjával.)
+Ha bejelöli **Megnyitás a Studióban**, a kísérletben a Machine Learning Studio munkaterületét nyílik meg. (Ha még nem jelentkezett Machine Learning Studióban, kéri az első bejelentkezéskor a Microsoft-fiókjával.)
 
-### <a name="from-within-machine-learning-studio"></a>A számítógép-Learning Studio
+### <a name="from-within-machine-learning-studio"></a>A Machine Learning Studióba
 
 1. A Machine Learning Studióban, válassza ki a **új**.
-2. Válassza ki **kísérlet**. A gyűjtemény kísérletek listájából választva, vagy egy adott kísérletben keresése segítségével a **keresési** mezőbe.
-3. Kísérlet az egér mutat, és válassza ki **Megnyitás a Studióban**. (A kísérlet kapcsolatos információk megtekintéséhez válasszon **-katalógus megtekintése**. Ezzel megnyitná a kísérletben részleteit megjelenítő oldalon a katalógusban.)
+2. Válassza ki **kísérlet**. A katalógus kísérletek listájából válassza ki, vagy keresse meg egy egyedi kísérletet használatával a **keresési** mezőbe.
+3. Mutasson az egérmutatóval a kísérletet, és válassza ki **Megnyitás a Studióban**. (A kísérlet kapcsolatos információk megtekintéséhez válasszon **megjelenítése katalógusban**. Ekkor megjelenik a katalógusban a kísérlet részleteit megjelenítő oldalra.)
 
-    ![Nyissa meg a gyűjtemény kísérletezhet a Machine Learning Studio belül](./media/gallery-experiments/open-experiment-from-studio.png)
+    ![Nyissa meg a katalógus kísérletezhet a Machine Learning Studio belül](./media/gallery-experiments/open-experiment-from-studio.png)
 
-Testre szabhatja, többször és központi telepítése egy letöltött kísérletet, mint bármilyen más kísérlet a Machine Learning Studióban létrehozott.
+Testre szabhatja, ismételt futtatásával, és üzembe helyezése egy letöltött kísérletet, mint bármilyen más kísérlet a Machine Learning Studióban létrehozott.
 
 ![Kísérlet a Studio megnyitása](./media/gallery-experiments/experiment-open-in-studio.png)
 
-## <a name="contribute"></a>Közreműködési lehetőségek
-Amikor bejelentkezik a gyűjteményébe, Közösség tagja lesz. A Közösség tagjaként vehet részt a saját kísérletek, ezért más felhasználók is, hogy megismerte a partnermegoldások.
+## <a name="contribute"></a>Közreműködés
+Amikor bejelentkezik a katalógusban, a katalógus Közösség egy tagja lesz. A Közösség tagjaként működhet közre a saját kísérletek, így más felhasználók is kihasználhatják a korábban felderített megoldások.
 
-### <a name="publish-your-experiment-to-the-gallery"></a>A kísérlet során a gyűjteményelem közzététele
+### <a name="publish-your-experiment-to-the-gallery"></a>A kísérlet katalógusbeli közzététele
 
-1. Jelentkezzen be a Machine Learning Studio a Microsoft-fiókjával.
+1. Jelentkezzen be a Microsoft-fiók használatával Machine Learning Studióban.
 2. A kísérlet létrehozása, és futtassa azt.
-3. Amikor készen áll a kísérletbe közzé a katalógusban, a műveletek a kísérletvászon alatt listájában válassza ki a **gyűjteményébe közzététel**.
+3. Ha készen áll a kísérlethez közzététele a katalógusban a műveleteknek a listája, a kísérletvászon alatt válassza ki a **közzététel a katalógus**.
 
-    ![Válassza a "Gyűjteményelem közzététele"](./media/gallery-experiments/publish-experiment-to-gallery.png)
-4. Az a **kísérlet leírás** lapján adjon meg egy címet és címkék. Ellenőrizze a címet és a címkék leíró. Jelölje ki a technológiák a valós problémamegoldó. A leíró kísérlet cím például "bináris osztályozási: véleményeket elemzés Twitter."
+    ![Válassza a "Gyűjtemény közzététele"](./media/gallery-experiments/publish-experiment-to-gallery.png)
+4. Az a **kísérlet leírás** lap, adja meg egy címet és címkék. Ellenőrizze a címet és a címkék leíró. Jelölje ki a használt technikák, vagy a való életből vett probléma megoldására. Egy leíró kísérlet címe például "bináris osztályozás: Twitter-Hangulatelemzés."
 
-    ![Adja meg a cím és címkék közzététele](./media/gallery-experiments/experiment-description.png)
-5. Az a **összefoglaló** mezőbe írja be a kísérletben összegzését. Röviden ismertesse a kísérlet megoldja a problémát, és hogyan során.
-6. Az a **részletes LEÍRÁST** mezőbe a lépéseket, a minden egyes részben kísérletbe ismertetik. Néhány hasznos témakörök közé tartoznak a következők:
-   * Kísérlet graph képernyőképe
-   * Az adatforrások és magyarázata
+    ![Adja meg a címet és a címkék a közzétételre](./media/gallery-experiments/experiment-description.png)
+5. Az a **összefoglaló** mezőbe írja be a kísérlethez összegzését. Röviden ismertesse a kísérlet megoldja a problémát, és hogyan válaszadásra.
+6. Az a **részletes LEÍRÁST** mezőben írja le a lépéseket, az egyes részek a kísérlet. Néhány hasznos témakörök tartalmazzák a következők:
+   * Kísérlet diagram képernyőképe
+   * Az adatforrások és magyarázat
    * Adatfeldolgozás
    * Jellemzőkiemelés
    * Modell leírása
-   * Eredmények és modell teljesítmény értékelése
+   * Eredmények és modellek teljesítményének kiértékelése
 
-   Markdown segítségével formázza a leírását. Hogyan fog kinézni a bejegyzéseket a kísérletben leírását tartalmazó lapon, a kísérlet meg van nyitva, jelölje ki a **előzetes**.
+   A leírás formázása a markdown használatával is. Hogyan fog kinézni a bejegyzéseket a kísérlet leírás oldalon, a kísérlet közzétételekor megtekintéséhez válasszon **előzetes**.
 
-   ![Válassza ki a "Előzetes verziójú" hogyan fog megjelenni a szöveg megjelenítéséhez](./media/gallery-experiments/preview-markdown-text.png)
+   ![Válassza az "Előnézet" megtekintheti az szöveg fog kinézni](./media/gallery-experiments/preview-markdown-text.png)
 
    > [!TIP]
-   > A megadott markdown szerkesztése és preview kicsik szövegmezőket. Azt javasoljuk, hogy a kísérletben dokumentációjában írása a markdown-szerkesztő, másolja, és illessze be a kész dokumentációjának a szövegmezőben a gyűjteményben. Miutá közzéteszi a kísérletet, tehet el a javításokat szabványos web-alapú eszközök segítségével, hogy a szerkesztési és az előkép használata markdown.
+   > A megadott markdown-szerkesztő és az előzetes verzió kis szövegmezők. Azt javasoljuk, hogy írja be a kísérlet dokumentációjában egy markdown-szerkesztő, másolja, és illessze be a szövegmezőbe a katalógusban a befejezett dokumentációját. Után is futtathatja a kísérletet tesz közzé, amelyet Ön is olyanokkal standard web-alapú eszközök segítségével szerkesztése és előnézete számára, hogy használja markdown.
 
-7. Az a **lemezképet** lapon, válassza ki a miniatűr képére, a kísérleti fázisú funkciókat. A miniatűr képére kísérlet részleteit megjelenítő oldalon és a kísérlet csempén tetején jelenik meg. Más felhasználók látni fogják a miniatűr képére, a Gallery böngészése közben. Lemezkép feltöltése a számítógépről, vagy megvásárolható kép kiválasztása a katalógusból.
+7. Az a **a kijelölési** lapon a asztalnak a miniatűrjére, a kísérlethez. Az asztalnak a miniatűrjére a kísérlet részletei lap, és a kísérlet csempén legfelül jelenik meg. Más felhasználók látni fogják az asztalnak a miniatűrjére, a gyűjtemény böngészése közben. Töltsön fel egy képet a számítógépről, vagy megvásárolható kép kiválasztása a katalógusból.
     </br>
-    ![Töltse fel, vagy jelöljön ki egy képet a gyűjteményhez](./media/gallery-experiments/select-gallery-image.png)
-8. A a **beállítások** lap **látható**, válassza ki, hogy a tartalom közzétételére nyilvánosan (**nyilvános**), vagy azok számára, akik rendelkeznek a lapra mutató hivatkozás (**Unlisted**).
+    ![Töltse fel, vagy válasszon ki egy képet a katalógus](./media/gallery-experiments/select-gallery-image.png)
+8. A a **beállítások** lap **láthatósági**, döntse el, hogy a tartalom nyilvánosan közzé (**nyilvános**) vagy az, hogy csak a személyeket, akik rendelkeznek a lap (mutató hivatkozás számára elérhető **Fel nem sorolt**).
 
-    ![Válassza ki, hogy nyilvánosan, vagy fel nem sorolt közzététele](./media/gallery-experiments/choose-public-or-unlisted.png)
+    ![Döntse el, hogy nyilvánosan, illetve fel nem sorolt közzététele](./media/gallery-experiments/choose-public-or-unlisted.png)
 
     <!-- -->
 
    > [!TIP]
-   > Ha azt szeretné, hogy győződjön meg arról, hogy helyes-e a dokumentációjában keres nyilvánosan engedélyezés előtt, közzéteheti a kísérletet, először **Unlisted**. Később, módosíthatja a láthatósági való **nyilvános** kísérlet részleteit megjelenítő oldalon.
+   > Ha azt szeretné, hogy a dokumentáció helyesnek tűnik nyilvánosan kiadása előtti, közzéteheti a kísérletet, először **Unlisted**. Később, módosíthatja a láthatósági való **nyilvános** kísérlet részleteit megjelenítő oldalon.
    >
    >
-9. A kísérlet közzétételére a katalógusban, válassza ki a **OK** pipára.
+9. A kísérlet közzététele a katalógusban, jelölje be a **OK** pipa jelre.
 
-    ![Válassza az OK pipára a kísérlet közzététele](./media/gallery-experiments/ok-checkmark.png)
+    ![Válassza ki az OK pipára a kísérlet közzététele](./media/gallery-experiments/ok-checkmark.png)
 
-Tippek az közzététele egy kiváló minőségű gyűjtemény kísérletet, lásd: [dokumentálásáért és a közzétételi kísérletbe tippek](#tips-for-documenting-and-publishing-your-experiment).
+Hogyan tehet közzé egy kiváló minőségű katalógus kísérletet a tippek: [dokumentálásáért és közzététele a kísérlethez tippek](#tips-for-documenting-and-publishing-your-experiment).
 
 Ennyi – az összes elkészült.
 
-Mostantól a kísérlet megtekintéséhez a katalógusban, és a hivatkozás megosztása másokkal. A kísérletben használatával közzétételekor a **nyilvános** beállítás módosításához a kísérlet megjelenik a katalógusban tallózással keresse meg és a keresési eredmények látható. A kísérletben dokumentációjában kísérlet részleteit megjelenítő oldalon a gyűjteményébe jelentkezett bármikor módosíthatja.
+Most már megtekintheti a kísérlet során a katalógusban, és hivatkozás megosztása másokkal. Ha közzé használatával is futtathatja a kísérletet a **nyilvános** láthatóságának beállítását, a katalógusban tallózással keresse meg és a keresési eredmények megjelennek a kísérletet. A kísérlet dokumentációs kísérlet részleteit megjelenítő oldalon jelentkezett be a katalógus bármikor szerkesztheti.
 
-A hozzájárulásokat listájának megtekintéséhez válassza ki a lemezkép bármely gyűjtemény oldal jobb felső sarkában. Ezután válassza ki a nevét, a fiók lap megnyitásához.
+Hozzájárulások listájának megtekintéséhez válassza ki a lemezképet bármely katalógus oldal jobb felső sarkában. Válassza ki a nevét, a fiók lap megnyitásához.
 
 ![Válassza ki a fiók nevét](./media/gallery-experiments/click-account-name.png)
 
-### <a name="update-your-experiment"></a>A kísérletben frissítése
-Ha szeretné, módosíthatja a munkafolyamat egy kísérletben a katalógusban közzétett (modulok, paraméterek és így tovább). A Machine Learning Studióban ellenőrizze a kísérletvászonra, és tegye közzé újra szeretné módosítani. A közzétett kísérlet frissíti a módosításokat.
+### <a name="update-your-experiment"></a>A kísérlet frissítése
+Ha szeretné, módosíthatja a munkafolyamatnak a kísérletet, amelyek a katalógusban közzétett (modulok, paraméterek és így tovább). A Machine Learning Studióban ne módosítsa, győződjön meg arról, a kísérletvászonra, és tegye közzé újra szeretné. A közzétett kísérletek frissülni fog a módosításokat.
 
-A kísérleti fázisú funkciókat közvetlenül az oldalon módosíthatja a következő információkat:
+Közvetlenül a katalógusban a kísérlethez módosíthatja a következő információkat:
 
 * Kísérlet neve
 * Összefoglalás vagy leírása
@@ -140,54 +138,54 @@ A kísérleti fázisú funkciókat közvetlenül az oldalon módosíthatja a kö
 * Kép
 * Láthatósági (**nyilvános** vagy **Unlisted**)
 
-Is törölheti a kísérlet a gyűjteményből.
+A kísérlet a katalógusból is törli.
 
-Ezeket a módosításokat, vagy törölje a kísérlet, a kísérlet részleteit megjelenítő oldalra, illetve a profilszerkesztési lap a gyűjteményben.
+Ezeket a módosításokat, vagy törölni a kísérletet a kísérlet részleteit megjelenítő oldalon vagy a profiloldalán a katalógusban.
 
 
-#### <a name="from-the-experiment-details-page"></a>A kísérletben részleteit megjelenítő oldalon
-Kísérlet részleteit megjelenítő oldalon a kísérleti fázisú funkciókat részleteinek módosításához válasszon **szerkesztése**.
+#### <a name="from-the-experiment-details-page"></a>A kísérlet részleteit megjelenítő oldalon
+A kísérlet ismertető lapon módosításához a részletek a kísérlethez válassza **szerkesztése**.
 
-![Válassza a Szerkesztés kísérletbe szerkesztése](./media/gallery-experiments/edit-button.png)
+![Válassza ki a szerkesztési kísérletét szerkesztése](./media/gallery-experiments/edit-button.png)
 
-A Részletek lap szerkesztési módba kerül. A módosításokat, válassza ki a **szerkesztése** mellett a kísérletben nevét, összegzése és címkék. Amikor végzett módosításokat, válassza ki a **végzett**.
+A Részletek lap szerkesztési módba kerül. A módosításokat, válassza ki a **szerkesztése** mellett a kísérlet neve, Összegzés és címkék. Amikor végzett módosításokat, válassza ki a **kész**.
 
-![Válassza a "Szerkesztés" részleteinek szerkesztéséhez, és válassza a "Kész" befejezése](./media/gallery-experiments/edit-details-page.png)
+![Válassza a "Szerkesztés" adatok szerkesztéséhez, és válassza a "Kész" befejezése](./media/gallery-experiments/edit-details-page.png)
 
-A láthatóság módosítása a kísérleti fázisú funkciókat (**nyilvános** vagy **Unlisted**), vagy a kísérlet a gyűjteményből törléséhez válassza ki a **beállítások** ikonra.
+Módosíthatja a profilláthatósági beállításokról a kísérlet (**nyilvános** vagy **Unlisted**), vagy a katalógusból a kísérlet törléséhez válassza ki a **beállítások** ikonra.
 
-![Válassza ki a "Beállítások" láthatósági módosítása vagy törlése a kísérlet](./media/gallery-experiments/settings-button.png)
+![Válassza ki a "Beállítások" látható-e módosítani vagy törölni a kísérlet](./media/gallery-experiments/settings-button.png)
 
-#### <a name="from-your-profile-page"></a>A profil lapról
-A profil lapon válassza ki a kísérleti fázisú funkciókat a lefelé mutató nyílra, majd a **szerkesztése**. Ezzel megnyitná a részleteit megjelenítő oldalon a kísérleti fázisú funkciókat, szerkesztési módban. Amikor végzett módosításokat, válassza ki a **végzett**.
+#### <a name="from-your-profile-page"></a>A profiloldalán
+A profil lapon jelölje ki a lefelé mutató nyílra a kísérlethez, és válassza **szerkesztése**. Ekkor megjelenik a kísérletbe és szerkesztési módban részleteit megjelenítő oldalon. Amikor végzett módosításokat, válassza ki a **kész**.
 
-A kísérlet a gyűjteményből törléséhez válassza ki **törlése**.
+A kísérlet törölni a katalógusból, válassza ki a **törlése**.
 
 ![Válassza ki a "Szerkesztés" vagy "Delete"](./media/gallery-experiments/edit-delete-buttons.png)
 
-### <a name="tips-for-documenting-and-publishing-your-experiment"></a>Tippek az dokumentálásáért és kísérletbe közzététele
-* Feltételezzük, hogy az olvasó rendelkezik előzetes adattudomány tapasztalhat, de hasznos egyszerű nyelv használatával. Dolog, amikor csak lehetséges részletesen ismertetik.
-* A Cortana Intelligence Suite egy viszonylag új. Nem minden olvasók jártas való használatát. Adjon meg elegendő információk és részletes magyarázatokat való keresse meg a kísérlet során.
-* Látványelemek segítheti a pillanatképolvasó értelmezi, és megfelelően használata a kísérletben dokumentációjában. Látványelemek közé tartozik a kísérleti diagramok esetében és az adatok példaként bemutató képernyőképeket láthat. A kísérletben dokumentációjában képeket is kapcsolatos további információk: a [közzétételi útmutatást és példákat gyűjtemény](https://gallery.cortanaintelligence.com/Collection/Publishing-Guidelines-and-Examples-1).
-* Ha egy adatkészlet adja meg a kísérlet során (Ez azt jelenti, hogy nem importál a dataset keresztül az adatok importálása modul), az adatkészlet része a kísérletet, és a katalógusban közzétett. Győződjön meg arról, hogy az adatkészlet közzététele licencelési időszakonként, amelyek lehetővé teszik a megosztás és bárki letöltése. Gyűjteményelem hozzájárulások az Azure alá [használati](https://azure.microsoft.com/support/legal/website-terms-of-use/).
+### <a name="tips-for-documenting-and-publishing-your-experiment"></a>Dokumentálja a és a közzététele a kísérlethez tippek
+* Akkor feltételezheti, hogy az olvasó rendelkezik a korábbi élmény adatelemzéshez, de a egyszerű nyelv hasznos lehet. Dolog, amikor csak lehetséges részletesen ismertetik.
+* Cortana Intelligence Suite viszonylag új. Nem minden olvasók hogyan használható a tapasztalatokkal. Adjon meg elegendő információk és részletes magyarázatokat, keresse meg a kísérlethez olvasók könnyebben.
+* Vizualizációk az olvasók számára értelmezi és megfelelően használja a kísérlet dokumentációjában hasznos lehet. Vizualizációk a kísérleti diagramok, képernyőfelvételekkel mutatja be, az adatok közé tartozik. A kísérlet dokumentációjában képeket is kapcsolatos további információkért tekintse meg a [a közzététellel kapcsolatos irányelvek és a példákat gyűjtemény](https://gallery.cortanaintelligence.com/Collection/Publishing-Guidelines-and-Examples-1).
+* Ha egy adatkészlet adja meg a kísérlet során (azaz nem importál az adatkészlet keresztül az adatok importálása modullal), a készlet része is futtathatja a kísérletet, és a katalógusban közzétett. Győződjön meg arról, hogy az adatkészlet közzététele licencelési feltételeit, amelyek lehetővé teszik a megosztási és bárki letöltése. Az Azure galériához vonatkozik [használati](https://azure.microsoft.com/support/legal/website-terms-of-use/).
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
-**Mik a követelményei elküldése megnövelni, vagy egy kép kísérletemben?**
+**Mik a követelmények elküldése, és a egy kép kísérletemben szerkesztési?**
 
-A kísérlet az elküldött képek egy kísérlet csempe a hozzájárulás létrehozásához használt. Azt javasoljuk, hogy képeket lehet kisebb, mint 500 KB-os, egy aspect ratio 3:2 és 960 felbontása &#215; 640.
+Elküldött is futtathatja a kísérletet a képek az hozzájárulásra egy kísérlet csempe létrehozásához használt. Azt javasoljuk, hogy képeket lehet kisebb, mint 500 KB-aspect ratio 3:2 és 960 felbontása &#215; 640.
 
-**Mi történik, az adatkészletben, a kísérletben használt? Az adatkészlet is közzéteszi a katalógusban?**
+**Mi történik, az adatkészlet, a kísérletben használt? Az adatkészlet is közzéteszi a katalógusban?**
 
-Ha az adatkészlet része a kísérletet, és keresztül az adatok importálása a modul nem importált, az adatkészlet kísérletbe részeként gyűjteménye van közzétéve. Győződjön meg arról, hogy rendelkezik-e a megfelelő licencfeltételek tesz közzé a kísérlet az adatkészlettel. A licencfeltételek kell bárki lehet megosztani, és töltse le az adatokat.
+Ha az adatkészlethez része is futtathatja a kísérletet, és keresztül az adatok importálása modullal nem importálása folyamatban van, az adatkészlet a katalógusban az kísérlet részeként van közzétéve. Győződjön meg arról, hogy az adatkészlet, amely közzéteszi a kísérlet során a megfelelő licencelési feltételeit. A licencelési feltételeket kell, hogy bárki megosztani, és töltse le az adatokat.
 
-**A kísérlet, amely az adatok importálása modul segítségével szerez adatokat az Azure HDInsight vagy SQL Server van. Az adatok lekéréséhez használja a hitelesítő adataimat. Kísérlet az ilyen is közzéteheti? Hogyan tudom biztos lehet abban, hogy a hitelesítő adataimat nem osztható meg?**
+**Van egy kísérletet, amely az adatok Azure HDInsight vagy az SQL Server-adatok importálása modullal használatával. A hitelesítő adataimat használ az adatok lekéréséhez. Közzéteheti a kísérlet az ilyen típusú? Hogyan tudok biztos lehet abban, hogy nem osztható meg a hitelesítő adataimat?**
 
-Jelenleg nem lehet közzétenni a kísérlet, amely a megadott hitelesítő adatokat használja a gyűjteményben.
+Jelenleg nem lehet közzétenni kísérletet, amelyek a hitelesítő adatokat használ a katalógusban.
 
-**Hogyan adjon meg több címke?**
+**Hogyan nevezhetek több címke?**
 
-Miután megadta a címkét, adjon meg egy másik kódot, nyomja meg a Tab billentyűt.
+Miután megadta a címkét, adjon meg egy másik címke, nyomja le a Tab billentyűt.
 
-**[Ugrás a katalógusban](http://gallery.cortanaintelligence.com)**
+**[A katalógus megnyitása](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]

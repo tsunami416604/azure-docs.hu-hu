@@ -2,19 +2,19 @@
 title: Az Apache Spark használata olvasása és írása az adatok Azure SQL Database-adatbázishoz
 description: Ismerje meg, hogyan állítható be egy HDInsight Spark-fürt és az adatok olvasása, írása, és az adatfolyam adatok egy SQL database-be egy Azure SQL database közötti kapcsolat
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 2aec894da6b4e5ffd59fee12bc8476b25955c991
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: b8494150a060e02145eab3674bdd2dd62cdda225
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045796"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277290"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>HDInsight Spark-fürt használatával olvasása és írása az adatok Azure SQL Database-adatbázishoz
 
@@ -234,7 +234,7 @@ Ebben a szakaszban azt streamelése adattárházba a **hvactable** , hogy már l
         
          var streamingQuery = WriteToSQLQuery.start()
 
-1. Győződjön meg arról, hogy az adatok folyamatos be a **hvactable** az SQL Server Management Studio (SSMS) a következő lekérdezés futtatásával. Amikor valaki futtassa a lekérdezést, azt a sorok számát jeleníti meg a tábla növekvő.
+1. Győződjön meg arról, hogy az adatok folyamatos be a **hvactable** az SQL Server Management Studio (SSMS) a következő lekérdezés futtatásával. A lekérdezés minden futtatásakor a tábla növekvő mutatja a sorok száma.
 
         SELECT COUNT(*) FROM hvactable
 

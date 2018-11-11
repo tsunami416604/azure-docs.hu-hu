@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: 71e5ae2a6b486873df147e7c2c0518e1c47b09c7
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 11/07/2018
+ms.openlocfilehash: 0a248ec5137a6de43910b1d11184dfeda18601f5
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914005"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280347"
 ---
 # <a name="tutorial-set-up-sql-data-sync-to-sync-data-between-azure-sql-database-and-sql-server-on-premises"></a>Oktatóanyag: Azure SQL Database és a helyszíni SQL Server közötti adatokat beállítása az SQL Data Sync szolgáltatással
 
@@ -129,7 +129,7 @@ Az a **konfigurálása a helyszíni** lapon, tegye a következőket:
 
     Ha úgy döntött **hozzon létre egy új ügynök**, tegye a következőket:
 
-   1. A megadott hivatkozás szinkronizálási ügynök ügyfélszoftver letöltése, és telepítse a számítógépen, ahol az SQL Server is található.
+   1. A megadott hivatkozás szinkronizálási ügynök ügyfélszoftver letöltése, és telepítse a számítógépen, ahol az SQL Server is található. Az adatok közvetlenül a sync-ügynök letölthető [SQL Azure Data Sync-ügynök](https://www.microsoft.com/download/details.aspx?id=27693).
 
         > [!IMPORTANT]
         > Nyissa meg a kimenő 1433-as TCP-port a tűzfalon, hogy az ügyfél-ügynök kommunikálni a kiszolgálóval rendelkezik.
@@ -253,35 +253,7 @@ Egy adatbázis-exportálását követően egy `.bacpac` fájlt, és importálja 
 
 ## <a name="faq-about-the-client-agent"></a>Az ügyfélügynök – gyakori kérdések
 
-### <a name="why-do-i-need-a-client-agent"></a>Miért kell egy ügyfélügynök
-
-Az SQL Data Sync szolgáltatás SQL Server-adatbázisok az ügyfélügynök-n keresztül kommunikál. Ez a biztonsági funkció megakadályozza, hogy a tűzfal mögött található adatbázisokkal való közvetlen kommunikáció. Ha az SQL Data Sync szolgáltatás kommunikál az ügynök használatával hajtja végre titkosított kapcsolatokat és a egy egyedi token vagy *ügynökkulcs*. Az SQL Server-adatbázisok az ügynök, a kapcsolati karakterláncot, és az ügynök kulccsal hitelesítheti. Ez a kialakítás biztosít magas szintű az adatok biztonságát.
-
-### <a name="how-many-instances-of-the-local-agent-ui-can-be-run"></a>A helyi ügynök hány példánya felhasználói felületén futtathatók
-
-A felhasználói felület csak egy példányban futtatható.
-
-### <a name="how-can-i-change-my-service-account"></a>Hogyan módosíthatom a szolgáltatás fiók
-
-Miután telepít egy ügyfélügynök, szolgáltatásfiók módosítása csak úgy, távolítsa el a bővítményt, és a egy új ügyfél-ügynök telepítése az új szolgáltatásfiók a.
-
-### <a name="how-do-i-change-my-agent-key"></a>Hogyan változtatható a saját ügynökkulcs
-
-Egy ügynök kulcs csak egyszer használhatók fel az ügynökök által. Ha eltávolítja, majd telepítse újra az új ügynök, és nem használható több ügynök is lehet, nem használható újra. Hozzon létre egy új kulcsot egy meglévő ügynöknek kell, ha arról, hogy az ügyfél-ügynökkel és az SQL Data Sync szolgáltatással rögzített ugyanazzal a kulccsal kell lennie.
-
-### <a name="how-do-i-retire-a-client-agent"></a>Hogyan vonja ki egy ügyfélügynök
-
-Azonnal érvénytelenné kivonása vagy az ügynök, újragenerálja a kulcsot a portálon, de nem küldenek, az ügynök felhasználói felületén. A kulcs újragenerálása érvényteleníti a korábbi kulcs függetlenül, ha a megfelelő ügynök online vagy offline állapotú.
-
-### <a name="how-do-i-move-a-client-agent-to-another-computer"></a>Hogyan helyezhetek át egy ügyfélügynök egy másik számítógépre
-
-Ha azt szeretné, a szolgáltatás jelenleg egy másik számítógépről futnak, a helyi ügynök, tegye a következőket:
-
-1. Telepítse az ügynököt a kívánt számítógépen.
-2. Jelentkezzen be az SQL Data Sync portálra, és a egy ügynököt az új ügynök újragenerálása.
-3. Az új ügynök felhasználói felület használatával küldje el az új ügynök kulcsot.
-4. Várjon, amíg az ügyfélügynök letölti a helyszíni adatbázisok korábban regisztrált listáját.
-5. Adja meg az adatbázis hitelesítő adatait az összes adatbázis megjelenítő szerint nem érhető el. Ezeket az adatbázisokat az új számítógép, amelyen az ügynök telepítve van a elérhetőnek kell lennie.
+Az ügyfélügynök – gyakori kérdések, lásd: [ügynök – gyakori kérdések](sql-database-data-sync-agent.md#agent-faq).
 
 ## <a name="next-steps"></a>További lépések
 

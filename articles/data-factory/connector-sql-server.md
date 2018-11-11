@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: b0e9f72bad685d569b4a09baecec8cebc33fefde
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: b528507d0f12cda72855db19aa28c7b06a4e26c1
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717896"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345215"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Adatok másolása, és az SQL Serverről az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -119,7 +119,7 @@ Adatok másolása Azure blobból vagy az SQL Server-adatbázist, állítsa be a 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot az adatkészlet értékre kell állítani: **SqlServerTable** | Igen |
-| tableName |A tábla vagy nézet az adatbázis SQL Server-példány, amelyre a társított szolgáltatás neve hivatkozik. | Igen |
+| tableName |A tábla vagy nézet az adatbázis SQL Server-példány, amelyre a társított szolgáltatás neve hivatkozik. | Nincs forrás, a fogadó Igen |
 
 **Példa**
 
@@ -159,7 +159,6 @@ Adatok másolása az SQL Server, állítsa be a forrás típusaként a másolás
 
 - Ha a **sqlReaderQuery** van megadva a SqlSource, a másolási tevékenység a lekérdezés fut az SQL Server adatforrás az adatok beolvasásához. Másik lehetőségként megadhat egy tárolt eljárást megadásával a **sqlReaderStoredProcedureName** és **storedProcedureParameters** (Ha a tárolt eljárás paraméter szükséges).
 - Ha nem ad meg "sqlReaderQuery" vagy "sqlReaderStoredProcedureName", a az adatkészlet JSON "struktúra" szakaszban megadott oszlopok segítségével lekérdezést (`select column1, column2 from mytable`) az SQL Server futtatásához. Ha az adatkészlet definíciója nem rendelkezik a "szerkezet", az összes oszlop ki van jelölve, a táblából.
-- Ha használ **sqlReaderStoredProcedureName**, továbbra is meg kell adnia egy helyőrző **tableName** tulajdonságot az adatkészlet JSON.
 
 **Példa: SQL-lekérdezés használatával**
 
@@ -518,7 +517,7 @@ Példatípust az adatok, vagy az SQL Server, a következő hozzárendeléseket h
 | varchar |Karakterlánc, Char] |
 | xml |Xml |
 
-## <a name="troubleshooting-connection-issues"></a>Kapcsolati problémák elhárítása
+## <a name="troubleshooting-connection-issues"></a>Kapcsolati problémák hibaelhárítása
 
 1. Konfigurálja az SQL Server távoli kapcsolatokat fogadjon. Indítsa el a **SQL Server Management Studio**, kattintson a jobb gombbal **kiszolgáló**, és kattintson a **tulajdonságok**. Válassza ki **kapcsolatok** csoportot a listából, és ellenőrzés **a kiszolgáló távoli kapcsolatok engedélyezése**.
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/09/2018
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: d9b6f5c08eed5efceafc71feaf654ad8f4fcafa0
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: eb14a3bc76fef37cdff4ed49cdbb6a99eac40928
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341123"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280163"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Az Application Insights telemetriai korreláció
 
@@ -66,7 +66,7 @@ Mostantól Ha a hívás `GET /api/stock/value` érdemes figyelembe venni, hogy a
 
 ## <a name="correlation-headers"></a>Korrelációs fejlécek
 
-RFC javaslatot is dolgozunk a [korrelációs HTTP-protokoll](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v1.md). Ez a javaslat két fejlécek határozza meg:
+RFC javaslatot is dolgozunk a [korrelációs HTTP-protokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). Ez a javaslat két fejlécek határozza meg:
 
 - `Request-Id` a globálisan egyedi azonosító a hívás végrehajtása
 - `Correlation-Context` – a végrehajtott műveletek közül sokat elosztott nyomkövetési tulajdonságainak neve érték párok gyűjteménye
@@ -77,7 +77,7 @@ Az Application Insights határozza meg a [bővítmény](https://github.com/lmolk
 
 ### <a name="w3c-distributed-tracing"></a>W3C elosztott nyomkövetést
 
-Azt is való (W3C elosztott nyomkövetést formátumú) [https://w3c.github.io/distributed-tracing/report-trace-context.html]. Azt határozza meg:
+Hogy való [W3C elosztott nyomkövetést formátum](https://w3c.github.io/trace-context/). Azt határozza meg:
 - `traceparent` – globálisan egyedi művelet azonosítója és a hívás egyedi azonosítója
 - `tracestate` -nyomkövetési rendszer adott környezetben végzi.
 
@@ -156,7 +156,7 @@ public class CloudRoleNameInitializer extends WebTelemetryInitializerBase {
     }
   }
 ```
--N keresztül a [eszköz adatbáziskörnyezet osztályának](https://docs.microsoft.com/et-ee/java/api/com.microsoft.applicationinsights.extensibility.context._device_context) (csak a telemetriai elem címkézett)
+-N keresztül a [eszköz adatbáziskörnyezet osztályának](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context._device_context) (csak a telemetriai elem címkézett)
 ```Java
 telemetry.getContext().getDevice().setRoleName("My Component Name");
 ```

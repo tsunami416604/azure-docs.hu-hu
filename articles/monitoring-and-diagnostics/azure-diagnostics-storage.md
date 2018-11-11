@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 08/01/2016
 ms.author: jeconnoc
 ms.component: diagnostic-extension
-ms.openlocfilehash: 733c84ef9e6cee1a8ea488f0007ade1e72f39737
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f9ae9e2edea1daf2fda825053c777521f042413d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033249"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278922"
 ---
-# <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Az Azure Storage-diagnosztikai adatok Store és megtekintése
+# <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban
 Diagnosztikai adatok nem tartósan tárolja, ha azt át a Microsoft Azure storage emulator vagy az Azure storage. Egyszer a storage szolgáltatással, azt is megtekinthetők a számos elérhető eszközök egyikét.
 
 ## <a name="specify-a-storage-account"></a>A storage-fiók megadása
@@ -73,7 +73,7 @@ Naplóadatok tárolja a Blob vagy Table storage a következő nevekkel:
 ## <a name="tools-to-view-diagnostic-data"></a>Eszközök diagnosztikai adatainak megtekintése
 Storage követően az adatok megtekintéséhez számos eszközök érhetők el. Példa:
 
-* Server Explorerben a Visual Studio - Ha telepítette az Azure-eszközöket a Microsoft Visual Studio segítségével az Azure Storage-csomópont a Server Explorerben csak olvasható blobok és táblák adatainak megtekintése az Azure storage-fiókok. Helyi emulátor tárfiókban lévő adatokat megjelenítheti és is a storage-fiókok számára létrehozott Azure. További információkért lásd: [böngészés és tárolási erőforrások kezelése a Server Explorer](../vs-azure-tools-storage-resources-server-explorer-browse-manage.md).
+* Server Explorerben a Visual Studio - Ha telepítette az Azure-eszközöket a Microsoft Visual Studio segítségével az Azure Storage-csomópont a Server Explorerben csak olvasható blobok és táblák adatainak megtekintése az Azure storage-fiókok. Helyi emulátor tárfiókban lévő adatokat megjelenítheti és is a storage-fiókok számára létrehozott Azure. További információkért lásd: [böngészés és tárolási erőforrások kezelése a Server Explorer](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage).
 * [A Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy önálló alkalmazás, amelynek segítségével egyszerűen dolgozhat Azure Storage-adatokkal Windows, os x és Linux rendszereken.
 * [Az Azure Management Studio](http://www.cerebrata.com/products/azure-management-studio/introduction) magában foglalja az Azure Diagnostics Managert, amely lehetővé teszi, hogy a megtekintése, letöltése és kezelése az Azure-ban futó alkalmazások által gyűjtött diagnosztikai adatok.
 

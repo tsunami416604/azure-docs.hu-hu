@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 348186bcb29b272b7e6512ce42221d54d6b388d9
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 3f34167cfe689734ec5d5954a1c24a09a1e8d3bd
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161815"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515012"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry Pi csatlakoztatása Azure IoT hubhoz (Node.js)
 
@@ -42,7 +42,7 @@ Még nem rendelkezik egy csomagot? Próbálja ki [Raspberry Pi online szimuláto
 
 ## <a name="what-you-need"></a>Mi szükséges
 
-![Mi szükséges](media/iot-hub-raspberry-pi-kit-node-get-started/0_starter_kit.jpg)
+![Mi szükséges](./media/iot-hub-raspberry-pi-kit-node-get-started/0_starter_kit.jpg)
 
 * Raspberry Pi 2 vagy a Raspberry Pi 3 kártya.
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
@@ -63,7 +63,17 @@ A következő elemek nem kötelező:
 > [!NOTE] 
 > Ha a választható elemek nincs, szimulált érzékelői adatokat is használhatja.
 
-[!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
+## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
+
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+
+### <a name="retrieve-connection-string-for-iot-hub"></a>Az IoT hub kapcsolati karakterlánc
+
+[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
+
+## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hubban
+
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="set-up-raspberry-pi"></a>Raspberry Pi beállítása
 
@@ -102,11 +112,11 @@ Készítse elő a Raspbian lemezkép telepítésének microSD-kártyán.
 
 3. A Raspberry ikonra > **beállítások** > **Raspberry Pi konfigurációs**.
 
-   ![A Raspbian beállítások menü](media/iot-hub-raspberry-pi-kit-node-get-started/1_raspbian-preferences-menu.png)
+   ![A Raspbian beállítások menü](./media/iot-hub-raspberry-pi-kit-node-get-started/1_raspbian-preferences-menu.png)
 
 4. Az a **felületek** lapra, és állítsa **I2C** és **SSH** való **engedélyezése**, és kattintson a **OK**. Ha nem rendelkezik fizikai érzékelők, és szeretné használni a szimulált érzékelői adatokat, ez a lépés nem kötelező.
 
-   ![I2C és a Raspberry Pi-on SSH engedélyezése](media/iot-hub-raspberry-pi-kit-node-get-started/2_enable-i2c-ssh-on-raspberry-pi.png)
+   ![I2C és a Raspberry Pi-on SSH engedélyezése](./media/iot-hub-raspberry-pi-kit-node-get-started/2_enable-i2c-ssh-on-raspberry-pi.png)
 
 > [!NOTE] 
 > Az SSH és I2C engedélyezéséhez találhat további segédanyagok [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) és [Adafruit.com](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c).
@@ -115,7 +125,7 @@ Készítse elő a Raspbian lemezkép telepítésének microSD-kártyán.
 
 Csatlakozhat a breadboard és átkötés fenyegetéseknek LED és a egy BME280 Pi módon. Ha nem rendelkezik az érzékelő [kihagyhatja ezt a szakaszt](#connect-pi-to-the-network).
 
-![A Raspberry Pi és érzékelő kapcsolat](media/iot-hub-raspberry-pi-kit-node-get-started/3_raspberry-pi-sensor-connection.png)
+![A Raspberry Pi és érzékelő kapcsolat](./media/iot-hub-raspberry-pi-kit-node-get-started/3_raspberry-pi-sensor-connection.png)
 
 A BME280 érzékelő hőmérséklettel és páratartalommal kapcsolatos adatokat gyűjthet. A LED v milisekundách, amikor az eszköz egy üzenetet küld a felhőbe. 
 
@@ -134,13 +144,13 @@ Kattintson ide a megtekintéshez [Raspberry Pi-2 és 3 PIN-kód-leképezések](h
 
 Miután sikeresen csatlakozott a Raspberry Pi BME280, kell tenni, például a kép alatt.
 
-![Csatlakoztatott Pi és BME280](media/iot-hub-raspberry-pi-kit-node-get-started/4_connected-pi.jpg)
+![Csatlakoztatott Pi és BME280](./media/iot-hub-raspberry-pi-kit-node-get-started/4_connected-pi.jpg)
 
 ### <a name="connect-pi-to-the-network"></a>A Pi csatlakoztatása a hálózathoz
 
 A Pi kapcsolja be a micro USB-kábelen keresztül és a tápegység. Az Ethernet-kábel használatával Pi csatlakoztatása a vezetékes hálózathoz, vagy kövesse a [utasításait a Raspberry Pi Foundation](https://www.raspberrypi.org/learning/software-guide/wifi/) Pi a vezeték nélküli hálózathoz való kapcsolódáshoz. Miután a Pi sikeresen csatlakozott a hálózathoz, jegyezze fel az kell a [IP-címét a Pi](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address).
 
-![Vezetékes hálózathoz csatlakozik](media/iot-hub-raspberry-pi-kit-node-get-started/5_power-on-pi.jpg)
+![Vezetékes hálózathoz csatlakozik](./media/iot-hub-raspberry-pi-kit-node-get-started/5_power-on-pi.jpg)
 
 > [!NOTE]
 > Győződjön meg arról, hogy a Pi csatlakozik-e a számítógép ugyanazon a hálózaton. Például ha a számítógép vezeték nélküli hálózathoz csatlakoztatva van, a Pi vezetékes hálózathoz van csatlakoztatva, Ön nem láthatja a devdisco kimenetben szereplő IP-cím.
@@ -157,7 +167,7 @@ A Pi kapcsolja be a micro USB-kábelen keresztül és a tápegység. Az Ethernet
 
    b. Másolja ki a gazdagép nevét (vagy IP-cím), a Pi szakasz IP-címét, és válassza ki az SSH a kapcsolat típusaként.
    
-   ![Putty-kapcsolaton keresztül](media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
+   ![Putty-kapcsolaton keresztül](./media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
    
    **Mac- és Ubuntu-felhasználók**
    
@@ -204,7 +214,7 @@ A Pi kapcsolja be a micro USB-kábelen keresztül és a tápegység. Az Ethernet
    nano config.json
    ```
 
-   ![Konfigurációs fájl](media/iot-hub-raspberry-pi-kit-node-get-started/6_config-file.png)
+   ![Konfigurációs fájl](./media/iot-hub-raspberry-pi-kit-node-get-started/6_config-file.png)
 
    Nincsenek a két elem konfigurálhatja ezt a fájlt. Az első egy `interval`, amely megadja, hogy az időtartam alatt a felhőbe küldött üzenetek között (ezredmásodpercben). A második az egyik `simulatedData`, azaz az e használni a szimulált érzékelői adatokat, vagy nem logikai érték.
 
@@ -226,7 +236,7 @@ A mintaalkalmazás futtatása a következő parancs futtatásával:
 
 Amely az érzékelőktől kapott adatok és az IoT hubnak küldött üzeneteket jeleníti meg a következő kimenetnek kell megjelennie.
 
-![Kimenet – Raspberry Pi az IoT hubnak küldött érzékelőktől kapott adatok](media/iot-hub-raspberry-pi-kit-node-get-started/8_run-output.png)
+![Kimenet – Raspberry Pi az IoT hubnak küldött érzékelőktől kapott adatok](./media/iot-hub-raspberry-pi-kit-node-get-started/8_run-output.png)
 
 ## <a name="next-steps"></a>További lépések
 

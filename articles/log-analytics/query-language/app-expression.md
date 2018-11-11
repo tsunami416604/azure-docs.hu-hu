@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: d91e148320c4c59bb888975499aa1de16ffbf134
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dda137ecba91e3ac59be635eed22d18e5bcadcce
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955061"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277307"
 ---
 # <a name="app-expression-in-log-analytics-query"></a>a Log Analytics-lekérdezés App() kifejezés
 
@@ -80,4 +80,4 @@ union
 ## <a name="next-steps"></a>További lépések
 
 - Tekintse meg a [munkaterület kifejezés](workspace-expression.md) lehet hivatkozni a Log Analytics-munkaterületet.
-- Megtudhatja, hogyan lehet [Log Analytics-adatok](../../log-analytics/log-analytics-log-search.md) tárolja.
+- Megtudhatja, hogyan lehet [Log Analytics-adatok](../../log-analytics/log-analytics-queries.md) tárolja.

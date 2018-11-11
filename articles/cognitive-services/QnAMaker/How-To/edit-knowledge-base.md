@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 11/06/2018
 ms.author: tulasim
-ms.openlocfilehash: f927e5b7ff65b82aef9d4224d22296e0fa48ad59
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: adcefe8fed927aca2533ea811bac56f0b92288de
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451884"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279761"
 ---
 # <a name="edit-a-knowledge-base"></a>Tudásbázis szerkesztése
 
@@ -54,7 +54,7 @@ Frissítése az cikkének függ **felügyeleti tarifacsomag** QnA Maker szolgál
     >[!NOTE]
     A Mentés előtt kattintson az oldal elhagyása és train nem menti a módosításokat.
 
-## <a name="add-a-qna-pair"></a>A QnA pár hozzáadása
+## <a name="add-a-qna-pair"></a>Kérdés-válasz pár hozzáadása
 
 Válassza ki **hozzáadása kérdés-válasz párt** hozzáadása egy új sort a Tudásbázis tábla.
 
@@ -89,6 +89,12 @@ A szűrő ikon kiválasztásával metaadatok pár hozzáadása
 3. **Tördelés** lehetővé teszi, hogy nagy tudásbázisok kezelése
 
     ![Keresés, oldalakra bontása csoport](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+
+## <a name="delete-knowledge-bases"></a>Tudásbázisok törlése
+
+(KB) Tudásbázis törlése nem visszavonható művelet. Nem lehet visszavonni. Mielőtt törölné a Tudásbázis, exportálnia kell a Tudásbázis következő, a **beállítások** a QnA Maker portal oldalán. 
+
+Ha a KB, a megosztott [közreműködők](collaborate-knowledge-base.md) törölje azt, mindenki elveszítette a hozzáférését a KB. 
 
 ## <a name="next-steps"></a>További lépések
 

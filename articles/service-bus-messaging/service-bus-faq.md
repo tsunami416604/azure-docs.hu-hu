@@ -6,14 +6,14 @@ author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 11/05/2018
 ms.author: spelluru
-ms.openlocfilehash: b8102c4f98c2627f85946b71a69e88eb02f92bc4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a000c599ecf8287af57aec2f6e9d550bbe61f280
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257782"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279881"
 ---
 # <a name="service-bus-faq"></a>Service Bus – GYIK
 
@@ -21,7 +21,7 @@ Ez a cikk ismerteti a néhány gyakori kérdés a Microsoft Azure Service Bus sz
 
 ## <a name="general-questions-about-azure-service-bus"></a>Azure Service Bus általános kérdések
 ### <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
-[Az Azure Service Bus](service-bus-messaging-overview.md) egy aszinkron üzenetkezelési felhőalapú platform, amely lehetővé teszi, hogy adatokat a leválasztott rendszerek között. A Microsoft szolgáltatás, ami azt jelenti, hogy nem kell futtatni a saját hardver használata Ez a szolgáltatás kínál.
+[Az Azure Service Bus](service-bus-messaging-overview.md) egy aszinkron üzenetkezelési felhőalapú platform, amely lehetővé teszi, hogy adatokat a leválasztott rendszerek között. A Microsoft szolgáltatás, ami azt jelenti, hogy nem kell üzemeltetésére használhatja azt a saját hardver ezt a szolgáltatást kínál.
 
 ### <a name="what-is-a-service-bus-namespace"></a>Mi a Service Bus-névtér?
 A [névtér](service-bus-create-namespace-portal.md) egy hatókörkezelési tárolót biztosít a Service Bus erőforrásainak címzéséhez az alkalmazáson belül. Hozzon létre egy névteret kell a Service Bus és az első lépéseket ismertető az első lépéseket.
@@ -77,6 +77,9 @@ Alapértelmezés szerint bármilyen felhőhöz szolgáltatás a Microsoft állí
 A Microsoft fenntartja a jogot arra, hogy túllépte a használati kvóták az adott hónapban felhasználói fiók letiltása, amíg e-mail értesítések kiküldése, és tett kísérletet tett forduljon az ügyfél előtt műveleteknél véve. Ügyfelek kvóta túllépése esetén a kvóták túllépéséből eredő díjakat továbbra is felelős.
 
 Más szolgáltatások az Azure-ban, a Service Bus adott kvótakészlet annak érdekében, hogy nincs-e az erőforrások valós használati érvénybe lépteti. További információt a kvóta annak a [Service Bus-kvóták áttekintése][Quotas overview].
+
+### <a name="how-to-handle-messages-of-size--1-mb"></a>Hogyan kezeléséhez az üzenetek > 1 MB méretű?
+A Service Bus üzenetkezelési szolgáltatások (az üzenetsorok és üzenettémák, előfizetések) teszik lehetővé az alkalmazás méretű üzenetek küldése akár 256 KB-os (standard szintű) vagy 1 MB (prémium szintű). Ha 1 MB-nál nagyobb méretű üzenetek kezelése, használja a jogcím minta ismertetett [ebben a blogbejegyzésben](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Mik az Azure Service Bus API-k és a javasolt lépések által előállított kivételeket?

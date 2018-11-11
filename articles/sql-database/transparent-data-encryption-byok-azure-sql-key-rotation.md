@@ -1,24 +1,7 @@
 ---
-title: PowerShell - rotálása TDE-védőhöz – Azure SQL Database |} A Microsoft Docs
-description: Ismerje meg, hogyan elforgatása a transzparens adattitkosítás (TDE) védő egy Azure SQL Serverhez.
-services: sql-database
-ms.service: sql-database
-ms.subservice: security
-ms.custom: ''
-ms.devlang: ''
-ms.topic: conceptual
-author: aliceku
-ms.author: aliceku
-ms.reviewer: vanto
-manager: jhubbard
-ms.date: 08/07/2017
-ms.openlocfilehash: fc8660b6fa6d9778a4eac9ce939181aa24d5097d
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309638"
----
+title: "PowerShell - elforgatása a TDE-védőhöz – Azure SQL Database |} A Microsoft Docs description: ismerje meg, hogyan elforgatása a transzparens adattitkosítás (TDE) védő egy Azure SQL Serverhez.
+szolgáltatások: az sql-adatbázis ms.service: sql-adatbázis ms.subservice: biztonsági ms.custom: ms.devlang: ms.topic: fogalmi Szerző: aliceku ms.author: aliceku ms.reviewer: vanto manager: jhubbard ms.date: 08/07/2017
+--- 
 # <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>A PowerShell-lel transzparens adattitkosítási (TDE) védő elforgatása 
 
 Ez a cikk bemutatja egy Azure SQL Server használata az Azure Key vault a TDE-védőhöz kulcsrotálás. Elforgatás egy Azure SQL server TDE védőt eszközökkel vált egy új aszimmetrikus kulcs, amely védelmet nyújt a kiszolgálón lévő adatbázisokhoz. Kulcsrotálás egy online művelet, és néhány másodperc alatt befejezni, mert ez csak visszafejti, majd újból titkosítja az adatbázis szolgáltatásadat-titkosítási kulcs, nem a teljes adatbázist csak vesz igénybe.

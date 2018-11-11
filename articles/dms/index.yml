@@ -1,0 +1,75 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: a314401883d0325029ce50502f85c335458e3959
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51285050"
+documentType: LandingData
+title: Az Azure Database Migration Service dokumentációja
+metadata:
+  document_id: 83ceabb5-fb4f-a709-3fd2-37d024409f31
+  title: Az Azure Database Migration Service dokumentációja – oktatóanyagok | Microsoft Docs
+  meta.description: Learn how to enable seamless migrations from multiple database sources to Azure Data platforms with minimal downtime by using Azure Database Migration Service.
+  services: functions
+  author: pochiraju
+  manager: craigg
+  ms.service: dms
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 10/30/2018
+  ms.author: rajpo
+abstract:
+  description: Az Azure Database Migration Service az Azure Data-platformokra irányuló, több adatbázisforrásból való zökkenőmentes migrálást tesz lehetővé minimális állásidővel. A szolgáltatás a Data Migration Assistant használatával felmérési jelentéseket biztosít, amelyek a migrálás előtt szükséges módosításokra vonatkozó ajánlásokat tartalmaznak. Ha készen áll a migrálási folyamat megkezdésére, az Azure Database Migration Service végrehajtja az összes szükséges lépést.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: media/video-thumb-intro2dms.png
+      width: 250
+    title: Az Azure DMS bemutatása (1:30)
+    href: https://www.microsoft.com/en-us/videoplayer/embed/RE2IqVu
+    width: 250
+sections:
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: 'Megismerheti a helyszíni SQL Server az Azure SQL Database-be a Database Migration Service használatával való migrálásának módját:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/media/common/i_portal.svg
+      text: Azure Portal
+      href: /azure/dms/quickstart-create-data-migration-service-portal
+- title: Részletes útmutatók
+  items:
+  - type: paragraph
+    text: 'Információk az adatbázisok a Database Migration Service használatával való migrálásáról:'
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/dms/tutorial-sql-server-to-azure-sql">SQL Server migrálása felügyelt Azure SQL Database-példányra kapcsolat nélküli üzemmódban, a DMS használatával</a>
+    - html: <a href="/azure/dms/tutorial-sql-server-azure-sql-online">SQL Server online migrálása az Azure SQL Database-be a DMS használatával</a>
+    - html: <a href="/azure/dms/tutorial-sql-server-to-managed-instance">SQL Server migrálása felügyelt offline Azure SQL Database-példányra a DMS használatával</a>
+    - html: <a href="/azure/dms/tutorial-sql-server-managed-instance-online">SQL Server online migrálása felügyelt Azure SQL Database-példányra a DMS használatával</a>
+    - html: <a href="/azure/dms/tutorial-mysql-azure-mysql-online">MySQL online migrálása az Azure Database for MySQL-be a DMS használatával</a>
+    - html: <a href="/azure/dms/tutorial-postgresql-azure-postgresql-online">PostgreSQL online migrálása az Azure Database for PostgreSQL-be DMS használatával</a>
+- title: Példák
+  items:
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/dms/howto-sql-server-to-azure-sql-powershell">Helyszíni SQL Server migrálása az Azure SQL DB-be az Azure PowerShell használatával</a>
+    - html: <a href="/azure/dms/howto-sql-server-to-azure-sql-mi-powershell">Helyszíni SQL Server migrálása felügyelt Azure SQL DB-példányokra az Azure PowerShell használatával</a>
+- title: Referencia
+  items:
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/dms/pre-reqs">Az Azure Database Migration Service használatára vonatkozó előfeltételek áttekintése</a>
+    - html: <a href="/azure/dms/faq">Az Azure Database Migration Service használatára vonatkozó gyakori kérdések</a>
+    - html: <a href="/azure/dms/known-issues-azure-sql-online">Ismert problémák/migrálási korlátok az Azure SQL DB-be irányuló online migrálások során</a>

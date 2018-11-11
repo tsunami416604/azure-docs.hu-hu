@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
-ms.openlocfilehash: 190b7fff24c9d6b3dee86471b56ad68c962e51ce
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 97350c90ab4ce9c3623a293c3a6637edc65ced08
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116878"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345470"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX és az Azure Machine Learning: hozzon létre és együttműködésre AI-modellek üzembe helyezése
 
@@ -192,13 +192,13 @@ A teljes körű API-referencia, lásd: a [ONNX-futtatókörnyezet referenciadoku
 ## <a name="examples"></a>Példák
  
 A következő notebookok ONNX-modellek létrehozása és üzembe helyezhetik azokat az Azure Machine Learning bemutatása: 
-+ `/onnx/onnx-modelzoo-aml-deploy-resnet50.ipynb` 
-+ `/onnx/onnx-convert-aml-deploy-tinyyolo.ipynb`
-+ `/onnx/onnx-train-pytorch-aml-deploy-mnist.ipynb`
++ [onnx/onnx-modelzoo-aml-üzembe helyezése – resnet50.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-modelzoo-aml-deploy-resnet50.ipynb)
++ [onnx/onnx-convert-aml-üzembe helyezése – tinyyolo.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-convert-aml-deploy-tinyyolo.ipynb)
++ [onnx/onnx-train-pytorch-AML-Deploy-mnist.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-train-pytorch-aml-deploy-mnist.ipynb)
 
 A következő notebookok bemutatják, hogyan lehet az Azure Machine Learning meglévő ONNX-modellek üzembe helyezése: 
-+ [onnx/onnx-következtetésekhez-mnist.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-mnist.ipynb) 
-+ [onnx/onnx-következtetésekhez – emotion-recognition.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-emotion-recognition.ipynb)
++ [onnx/onnx-következtetésekhez-mnist-deploy.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-mnist-deploy.ipynb) 
++ [onnx/onnx-inference-facial-Expression-Recognition-Deploy.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-facial-expression-recognition-deploy.ipynb)
  
 Ezeket a notebookokat lekérése:
  

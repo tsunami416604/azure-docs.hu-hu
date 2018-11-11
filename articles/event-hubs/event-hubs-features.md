@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: shvija
-ms.openlocfilehash: c4a9a3189f3de101528871e4dba95bf7a76b9846
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: a3f7245d8a648249a4e7179cc02982eae8561037
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746914"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280577"
 ---
 # <a name="event-hubs-features-overview"></a>Event Hubs-szolgáltatások – áttekintés
 
@@ -28,13 +28,21 @@ Ebben a cikkben található információk épül a [áttekintő cikkben](event-h
 ## <a name="namespace"></a>Névtér
 Event Hubs-névtér által hivatkozott egyedi hatókörkezelési tárolót biztosít a [teljesen minősített tartománynevét](https://en.wikipedia.org/wiki/Fully_qualified_domain_name), amely létrehoz egy vagy több event hubs vagy Kafka-témaköröket a. 
 
+## <a name="event-hubs-for-apache-kafka"></a>Az Apache Kafkához készült Event Hubs
+
+[Ez a funkció](event-hubs-for-kafka-ecosystem-overview.md) biztosít egy végpontot, amely lehetővé teszi az ügyfeleknek az Event Hubsba a Kafka-protokoll használatával kommunikáljon. Ez az integráció Kafka végpontot biztosít az ügyfeleknek. Ez lehetővé teszi az ügyfelek számára, hogy konfigurálja a meglévő Kafka alkalmazásaik felvenni a kapcsolatot az Event hubs szolgáltatásba, így a saját Kafka-fürtök futtatása helyett használhatók. Az Event Hubs-beli Apache kafka támogatja a Kafka-protokoll 1.0-s és újabb verziók. 
+
+Ez az integráció nem kell futtathat a Kafka-fürtöket, vagy Zookeeper felügyelheti azokat. Ez lehetővé teszi, hogy az Event Hubs, az automatikus feltöltési és a Geo-disaster Recovery rögzítése a legnagyobb erőforrás-igényű funkcióit.
+
+Ez az integráció is lehetővé teszi alkalmazások, mint a tükör Maker vagy keretrendszert, például Kafka csatlakozás működéséhez clusterless csak konfigurációs módosítások. 
+
 ## <a name="event-publishers"></a>Esemény-közzétevők
 
-Minden entitás, amely adatokat küld egy eseményközpontnak egy esemény-előállítót, vagy *esemény-közzétevő*. Az esemény-közzétevők a HTTPS vagy az AMQP 1.0 használatával tehetik közzé az eseményeket. Az esemény-közzétevők egy közös hozzáférésű jogosultságkód- (SAS-) token használatával azonosítják magukat az eseményközpontok felé, és rendelkezhetnek egyedi azonosítóval vagy közös SAS-tokennel is.
+Minden entitás, amely adatokat küld egy eseményközpontnak egy esemény-előállítót, vagy *esemény-közzétevő*. Az esemény-közzétevők tehetik közzé az eseményeket, a HTTPS vagy AMQP 1.0-s vagy Kafka 1.0-s és újabb verziók. Az esemény-közzétevők egy közös hozzáférésű jogosultságkód- (SAS-) token használatával azonosítják magukat az eseményközpontok felé, és rendelkezhetnek egyedi azonosítóval vagy közös SAS-tokennel is.
 
 ### <a name="publishing-an-event"></a>Esemény közzététele
 
-Az eseményeket az AMQP 1.0 vagy HTTPS használatával teheti közzé. Event hubs szolgáltatás [klienskódtárak és -osztályok](event-hubs-dotnet-framework-api-overview.md) számára események közzétételét egy eseményközpontba .NET-ügyfelekről. Egyéb futtatókörnyezetek és platformok esetén használhatja bármelyik AMQP 1.0-ügyfelet, ilyen például az [Apache Qpid](http://qpid.apache.org/). Az eseményeket közzéteheti egyenként vagy kötegelve is. Az egyes közzétételekre (eseményadat-példány) 256 KB-os korlát érvényes, függetlenül attól, hogy önálló vagy kötegelt közzétételről van-e szó. Nagyobb, mint a küszöbérték eredmények események közzététele hibát. Az ajánlott eljárás, hogy a közzétevők ne tudjanak a partíciókról az eseményközpontban, és csupán egy *partíciókulcsot* (ismertetése a következő szakaszban), vagy az azonosságukat kelljen megadniuk a SAS-token használatával.
+Egy esemény az AMQP 1.0-t, a Kafka 1.0-ás (és újabb) vagy a HTTPS használatával teheti közzé. Event hubs szolgáltatás [klienskódtárak és -osztályok](event-hubs-dotnet-framework-api-overview.md) számára események közzétételét egy eseményközpontba .NET-ügyfelekről. Egyéb futtatókörnyezetek és platformok esetén használhatja bármelyik AMQP 1.0-ügyfelet, ilyen például az [Apache Qpid](http://qpid.apache.org/). Az eseményeket közzéteheti egyenként vagy kötegelve is. Egyes közzétételekre (eseményadat-példány) a korlát 1 MB-ot, függetlenül attól, hogy-e egy önálló vagy kötegelt rendelkezik. Nagyobb, mint a küszöbérték eredmények események közzététele hibát. Az ajánlott eljárás, hogy a közzétevők ne tudjanak a partíciókról az eseményközpontban, és csupán egy *partíciókulcsot* (ismertetése a következő szakaszban), vagy az azonosságukat kelljen megadniuk a SAS-token használatával.
 
 Az AMQP vagy HTTPS használata a használati forgatókönyvtől függ. Az AMQP használatához ki kell alakítani egy állandó kétirányú szoftvercsatornát az TLS vagy SSL/TLS mellett. Az AMQP használata a munkamenet inicializálásakor nagyobb hálózati költséggel jár, a HTTPS azonban minden egyes kérés esetében további SSL-többletterhelést igényel. Gyakori közzététel esetén az AMQP nagyobb teljesítményt biztosít.
 

@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 17273a572e61d2282e7930d4ea1f44bfaf29d734
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 24fecd73876228b3665cde21ae312963ec979df6
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012979"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279722"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Szkriptműveletek használatával Linux-alapú HDInsight-fürtök testre szabása
 
@@ -67,7 +67,7 @@ Szkriptműveletet egy HDInsight-fürt csomópontjain futó Bash-szkript. Az alá
         Például az URI-k, tekintse meg a [parancsfájl művelet parancsfájlpéldákat](#example-script-action-scripts) szakaszban.
 
         > [!WARNING]
-        > Csak a HDInsight támogatja __általános célú__ Azure Storage-fiókokat. Jelenleg nem támogatja a __a Blob storage-__ fiók típusa.
+        > HDInsight standard teljesítményszint az Azure Storage-fiókokat Blob csak támogatja. 
 
 * Korlátozható **futtatása az egyes csomóponttípusok**, például átjárócsomópontokhoz vagy a munkavégző csomópontok.
 
@@ -152,7 +152,7 @@ Parancsprogram-művelet parancsfájlok keresztül az alábbi segédprogramokat h
 
 HDInsight parancsprogramokkal történő telepítését a következő összetevőket a HDInsight-fürtökön biztosítja:
 
-| Name (Név) | Parancsprogramok használata |
+| Name (Név) | Szkript |
 | --- | --- |
 | **Azure Storage-fiók hozzáadása** |https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh. Lásd: [további tárhely hozzáadása egy HDInsight-fürt](hdinsight-hadoop-add-storage.md). |
 | **A Hue telepítése** |https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh. Lásd: [telepítése és használata a Hue a HDInsight-fürtök](hdinsight-hadoop-hue-linux.md). |
@@ -182,7 +182,7 @@ Ez a szakasz példákat használhatja a Parancsfájlműveletek egy HDInsight-fü
 
     A következő táblázat ismerteti az elemeket az űrlapon:
 
-    | Tulajdonság | Value (Díj) |
+    | Tulajdonság | Érték |
     | --- | --- |
     | Szkript kiválasztása | A saját parancsfájl használatára, válassza ki a __egyéni__. Ellenkező esetben válassza a megadott szkriptek közül. |
     | Name (Név) |Adja meg a parancsfájlművelet nevét. |
@@ -261,7 +261,7 @@ Ebben a szakaszban megtudhatja, hogyan parancsfájl műveleteket alkalmazhat a f
 
     A következő táblázat ismerteti az elemeket az űrlapon:
 
-    | Tulajdonság | Value (Díj) |
+    | Tulajdonság | Érték |
     | --- | --- |
     | Szkript kiválasztása | A saját parancsfájl használatára, válassza ki a __egyéni__. Ellenkező esetben válassza ki a megadott parancsfájlt. |
     | Name (Név) |Adja meg a parancsfájlművelet nevét. |

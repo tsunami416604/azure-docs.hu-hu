@@ -14,12 +14,12 @@ ms.date: 10/10/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: eeaf46a9ce523ecd11689d0aa430fcc522732f70
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 968c5fb093f3ebdb6ce7eb239f79573f19b89e0f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139856"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278633"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Használatelemzés az Application Insights szolgáltatással
 
@@ -29,7 +29,7 @@ A webes vagy mobilalkalmazásának szolgáltatásaitól legnépszerűbb? Tegye a
 
 A legjobb élményt az Application Insights telepítésével az alkalmazáskód kiszolgáló, mind a weblapok kapjuk meg. Az alkalmazás ügyfél- és összetevői telemetriát küldjön az Azure Portalon elemzés céljából.
 
-1. **Kiszolgálói kód:** az megfelelő moduljának telepítése a [ASP.NET](app-insights-asp-net.md), [Azure](app-insights-azure.md), [Java](app-insights-java-get-started.md), [Node.js](app-insights-nodejs.md), vagy [más](app-insights-platforms.md) alkalmazást.
+1. **Kiszolgálói kód:** az megfelelő moduljának telepítése a [ASP.NET](app-insights-asp-net.md), [Azure](app-insights-overview.md), [Java](app-insights-java-get-started.md), [Node.js](app-insights-nodejs.md), vagy [más](app-insights-platforms.md) alkalmazást.
 
     * *Nem szeretné telepíteni a kiszolgálói kód? Csak [hozzon létre egy Azure Application Insights-erőforrást](app-insights-create-new-resource.md).*
 

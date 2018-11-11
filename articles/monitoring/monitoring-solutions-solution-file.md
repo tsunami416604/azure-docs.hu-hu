@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 13da68f826f7077acec9a64d1aa0ea18c66be6ff
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 21e280740d5d7f467ee70952febf858e0dc0b89d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914243"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278208"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Hozzon létre egy felügyeleti megoldás fájlt az Azure-ban (előzetes verzió)
 > [!NOTE]
 > Ez a felügyeleti megoldások létrehozásához az Azure-ban, jelenleg előzetes verzióban érhető el előzetes dokumentációjában talál. Semmilyen sémát, az alábbiakban a változhat.  
 
-Felügyeleti megoldások az Azure-ban megvalósított [Resource Manager-sablonok](../azure-resource-manager/resource-manager-template-walkthrough.md).  Megtudhatja, hogyan hozhat létre megoldásokat a fő feladat a tanulási útmutató [sablon készítése](../azure-resource-manager/resource-group-authoring-templates.md).  Ebben a cikkben használt megoldások és a tipikus megoldásokkal kapcsolatos forrásanyagok konfigurálása sablonok egyedi részleteit.
+Felügyeleti megoldások az Azure-ban megvalósított [Resource Manager-sablonok](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md).  Megtudhatja, hogyan hozhat létre megoldásokat a fő feladat a tanulási útmutató [sablon készítése](../azure-resource-manager/resource-group-authoring-templates.md).  Ebben a cikkben használt megoldások és a tipikus megoldásokkal kapcsolatos forrásanyagok konfigurálása sablonok egyedi részleteit.
 
 
 ## <a name="tools"></a>Eszközök

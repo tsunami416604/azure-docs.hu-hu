@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 96c518bee85b0b3dce9421e4cd9a1f2ada357bf0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7cf4613f2fdceca3e869473ed3ec7f47fb417fcb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259972"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277648"
 ---
 # <a name="import-azure-log-analytics-data-into-power-bi"></a>Az Azure Log Analytics-adatok importálása a Power BI-bA
 
@@ -33,7 +33,7 @@ Adatokat importálhat egy Log Analytics-munkaterületet a Power BI-ba, hozzon l�
 ![A log Analytics, a Power bi-bA](media/log-analytics-powerbi/overview.png)
 
 ## <a name="export-query"></a>Lekérdezés exportálása
-Először hozzon létre egy [naplóbeli keresés](log-analytics-log-search-new.md) , amely visszaadja az adatokat a Log Analytics, hogy szeretné-e a Power BI-adatkészletekbe feltöltéséhez.  Ez a lekérdezés, majd exportálja [Power Query (M) nyelvi](https://msdn.microsoft.com/library/mt807488.aspx) Power BI Desktop által használható.
+Először hozzon létre egy [naplóbeli keresés](log-analytics-queries.md) , amely visszaadja az adatokat a Log Analytics, hogy szeretné-e a Power BI-adatkészletekbe feltöltéséhez.  Ez a lekérdezés, majd exportálja [Power Query (M) nyelvi](https://msdn.microsoft.com/library/mt807488.aspx) Power BI Desktop által használható.
 
 1. Hozzon létre naplóbeli keresés a Log Analytics az adatokat az adatkészlet számára.
 2. Ha a naplókeresési portál használata esetén kattintson a **Power BI**.  Ha az Analytics-portál használata esetén válassza **exportálása** > **Power BI lekérdezés (M)**.  Mindkét lehetőség a lekérdezés exportálása nevű szövegfájlba **PowerBIQuery.txt**. 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 32a887d54a239db0c1e40458e1b304d899befff5
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 0f53d71cca70f9340689d3d01fb9c67090f917c5
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870553"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277546"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Az Azure AD B2C: Az Azure AD Graph API használata
 
@@ -66,8 +66,8 @@ Most már olyan alkalmazás, amely jogosult arra, hogy létrehozása, olvasása 
 > 
 > 
 
-## <a name="configure-delete-permissions-for-your-application"></a>Az alkalmazás delete-engedélyek konfigurálása
-Jelenleg a *címtáradatok olvasása és írása* engedély does **nem** ízelítő a szolgáltatás ehhez bármely ilyen például a felhasználó törlése. Ha lehetővé teszik az alkalmazás a felhasználók törölni szeretné, elvégezheti ezeket a PowerShell érintő további lépéseket kell, akkor kihagyhatja, ellenkező esetben a következő szakaszra.
+## <a name="configure-delete-or-update-password-permissions-for-your-application"></a>Törlés konfigurálása vagy jelszó engedélyek az alkalmazás frissítése
+Jelenleg a *címtáradatok olvasása és írása* engedély does **nem** ízelítő a felhasználó törölheti vagy frissítheti a felhasználói jelszavakat. Ha szeretné lehetővé teszik az alkalmazás törlése felhasználók vagy a jelszavak a frissítés, elvégezheti ezeket a PowerShell érintő további lépéseket kell, ellenkező esetben továbbléphet a következő szakaszra.
 
 Először, ha már nincs telepítve, telepítse a [Azure AD PowerShell v1-modul (MSOnline)](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0):
 
@@ -84,7 +84,7 @@ Miután telepítette a PowerShell-modult az Azure AD B2C-bérlő csatlakozni.
 Connect-MsolService
 ```
 
-Most használjuk a **Alkalmazásazonosító** rendelje hozzá az alkalmazás a felhasználói fiók rendszergazdai szerepkör, amely lehetővé teszi, hogy a felhasználók törlése az alábbi szkriptben. Ezek a szerepkörök rendelkezik a jól ismert azonosítók, így az összes kell tennie a bemeneti a **Alkalmazásazonosító** az alábbi parancsprogram.
+Most használjuk a **Alkalmazásazonosító** az alkalmazás a felhasználói fiók rendszergazdai szerepkör hozzárendelése az alábbi szkriptben. Ezek a szerepkörök rendelkezik a jól ismert azonosítók, így az összes kell tennie a bemeneti a **Alkalmazásazonosító** az alábbi parancsprogram.
 
 ```powershell
 $applicationId = "<YOUR_APPLICATION_ID>"
@@ -92,7 +92,7 @@ $sp = Get-MsolServicePrincipal -AppPrincipalId $applicationId
 Add-MsolRoleMember -RoleObjectId fe930be7-5e62-47db-91af-98c3a49a38b1 -RoleMemberObjectId $sp.ObjectId -RoleMemberType servicePrincipal
 ```
 
-Az alkalmazás most is jogosult felhasználók a B2C-bérlő törlése.
+Az alkalmazás most is a felhasználó törölheti vagy frissítheti a B2C-bérlő a jelszavak engedélyekkel rendelkezik.
 
 ## <a name="download-configure-and-build-the-sample-code"></a>Töltse le, konfigurálja és hozza létre a mintakódot
 Először töltse le a mintakódot, és lekérése is működjön. Ezután azt vesz igénybe, közelebbről.  Is [letöltötte a mintakódot a .zip-fájlként](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip). Akkor is klónozhatja tetszőleges könyvtárba:

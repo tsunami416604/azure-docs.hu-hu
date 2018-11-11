@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 10/01/2018
-ms.openlocfilehash: fa425a5ecd8cf8f4c7b3516534b4c4f0f4257850
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 962090340cad6bcd95245cffe16c25f08a98226b
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085342"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300761"
 ---
 # <a name="monitor-your-azure-machine-learning-models-in-production-with-application-insights"></a>Az Azure Machine Learning-modellek éles környezetben az Application Insights figyelése
 
@@ -109,8 +109,11 @@ Az Application Insights letiltásához használja a következő kódot:
 ## <a name="evaluate-data"></a>Adatok kiértékelése
 A szolgáltatás adatainak az Application Insights-fiók, az Azure Machine Learning szolgáltatás ugyanabban az erőforráscsoportban találhatók.
 A megtekintéséhez:
-1. Nyissa meg az erőforráscsoportot a [az Azure portal](https://portal.azure.com) , és keresse meg az Application Insights-erőforrást. 
-2. A **áttekintése** a lapon megjelenik a szolgáltatás metrikák alapszintű készlete.
+1. Nyissa meg a Machine Learning szolgáltatás munkaterületén a [az Azure portal](https://portal.azure.com) és Application Insights hivatkozásra kattintva.
+
+    [![AppInsightsLoc](media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
+
+1. Válassza ki a **áttekintése** lapján megtekintheti a metrikákat a szolgáltatás egy alapvető házirendcsoport.
 
    [![– Áttekintés](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
@@ -130,3 +133,7 @@ A [00. első Started/13.enable-app-insights-in-production-service.ipynb](https:/
 
 ## <a name="next-steps"></a>További lépések
 A modellek éles a is gyűjthet adatokat. A cikk a [modellek éles adatokat gyűjthessen](how-to-enable-data-collection.md). 
+
+
+## <a name="other-references"></a>Egyéb segédanyagok
+* [Az Azure Monitor for containers szolgáltatásban](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json)

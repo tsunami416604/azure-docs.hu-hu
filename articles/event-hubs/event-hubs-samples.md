@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2018
 ms.author: shvija
-ms.openlocfilehash: ed337689360428d66657e5391ee52bb0ae39dc14
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 3db77a31dfe92e16d2ec145cc0be595082d0d927
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365645"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279381"
 ---
 # <a name="event-hubs-samples"></a>Event Hubs-minták 
 Az Event Hubs-minták találhat [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples). Ezek a minták bemutatják a legfontosabb jellemzők [Azure Event Hubs](/azure/event-hubs/). Ez a cikk kategorizálja, és ismerteti a rendelkezésre álló, hivatkozásokkal az egyes minták.
@@ -60,7 +60,8 @@ Azure CLI-minták az Azure Event Hubs megtalálja a [azure-event-hubs](https://g
 ## <a name="azure-powershell-samples"></a>Azure PowerShell-minták
 Azure PowerShell-minták az Azure Event Hubs megtalálja a [azure-event-hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/PowerShell) GitHub-adattárban.
  
-
+## <a name="apache-kafka-samples"></a>Az Apache Kafka-minták
+Minták az Event Hubs, az Apache Kafka szolgáltatás megtalálja a [azure-event-hubs-az-kafka](https://github.com/Azure/azure-event-hubs-for-kafka) GitHub-adattárban.
 
 ## <a name="next-steps"></a>További lépések
 További információ az Event Hubs az alábbi cikkeket:

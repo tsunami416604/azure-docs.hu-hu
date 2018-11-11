@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: dae75d118ec46c5023f0bb347fe5fbefafb84c4a
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 15ecbcafd3397b425b669a48f19bee6073b71149
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961506"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279789"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Metrikákhoz kapcsolódó riasztások az Azure monitorban támogatott erőforrások
 
-Az Azure Monitor most már támogatja az egy új metrika riasztástípus, amely jelentős előnyökkel jár a korábbi keresztül [klasszikus metrikariasztásokat](insights-alerts-portal.md). Metrikák érhetők el a [az Azure-szolgáltatások nagy lista](monitoring-supported-metrics.md). Az újabb riasztások az erőforrástípus (növekvő) részét támogatja. Ez a cikk adott részére sorolja fel.
+Az Azure Monitor most már támogatja az egy új metrika riasztástípus, amely jelentős előnyökkel jár a korábbi keresztül [klasszikus metrikariasztásokat](alert-metric-classic.md). Metrikák érhetők el a [az Azure-szolgáltatások nagy lista](monitoring-supported-metrics.md). Az újabb riasztások az erőforrástípus (növekvő) részét támogatja. Ez a cikk adott részére sorolja fel.
 
 Használhatja a újabb metrikákhoz kapcsolódó riasztások a népszerű Log Analytics naplók, metrikák, ki kell olvasni. További információkért tekintse meg [metrika riasztások naplók](monitoring-metric-alerts-logs.md).
 

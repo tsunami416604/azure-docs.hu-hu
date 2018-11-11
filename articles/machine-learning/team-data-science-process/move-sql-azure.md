@@ -15,21 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2018
 ms.author: deguhath
-ms.openlocfilehash: 99141b7542cc9adadadda6ada670b644d3aba5f3
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 5fa86387861ca87f9280a4c900d9dd83db5f1a39
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393643"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344535"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Adatok áthelyezése egy Azure SQL-adatbázisba az Azure Machine Learning számára
-Ez a témakör ismerteti a lehetőség egybesimított fájlok (CSV- vagy TSV formátumokat) vagy egy helyszíni SQL Server egy Azure SQL Database-ban tárolt adatokkal. Adatok áthelyezése a felhőbe ezeket a feladatokat a csoportos adatelemzési folyamat részét képezik.
+
+Ez a cikk ismerteti a lehetőség (CSV- vagy TSV formátumok) egybesimított fájlok vagy egy helyszíni SQL Server egy Azure SQL Database-ban tárolt adatokkal. Adatok áthelyezése a felhőbe ezeket a feladatokat a csoportos adatelemzési folyamat részét képezik.
 
 Ez a témakör ismerteti az adatok áthelyezése egy helyszíni SQL Server Machine Learning a beállításokat, lásd: [adatok áthelyezése SQL Server-beli virtuális gépen](move-sql-server-virtual-machine.md).
-
-A következő **menü** mutató hivatkozásokat talál, amelyek bemutatják, hogyan gyűjthet adatokat a cél környezetekben, ahol az adatok tárolásának és feldolgozása során a csoportos adatelemzési folyamat (TDSP).
-
-[!INCLUDE [cap-ingest-data-selector](../../../includes/cap-ingest-data-selector.md)]
 
 A következő táblázat összefoglalja az adatok áthelyezése az Azure SQL Database, a beállításokat.
 

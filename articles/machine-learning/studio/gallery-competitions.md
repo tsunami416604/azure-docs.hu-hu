@@ -15,18 +15,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 08434007c7ef66349cae2a368d3be94ee522bab1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bfc2f40231b5e28ffa3721eef70311da8dcb6da9
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242348"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51343668"
 ---
 # <a name="discover-competitions-in-the-azure-ai-gallery"></a>Fedezze fel az Azure AI katalógusban versenyek
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="cortana-intelligence-competitions"></a>Cortana Intelligence-versenyek
-**[Versenyek](https://gallery.cortanaintelligence.com/competitions)**  adja meg a Cortana Intelligence Suite segítségével összetett problémákat adattudományos Közösséggel versenyeznek izgalmas lehetőséget.
+**[Versenyek](https://gallery.cortanaintelligence.com/competitions)**  a [Azure AI-katalógusban](http://gallery.cortanaintelligence.com) adja meg a Cortana Intelligence Suite segítségével összetett problémákat adattudományos Közösséggel versenyeznek izgalmas lehetőséget.
 
 Versenyek – gyakori kérdésekre adott válaszok, lásd: [Microsoft Cortana Intelligence versenyek – gyakori kérdések](competition-faq.md).
 

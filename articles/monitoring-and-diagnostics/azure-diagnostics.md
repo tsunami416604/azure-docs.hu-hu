@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 752a0262503550b9995ac76f648a132429203cce
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: a40917ec24ede1107f7d8ae7f5fb2f0f03d1094c
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961432"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278327"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Mi az Azure Diagnostics bővítmény
 Az Azure Diagnostics bővítmény az ügynök, amely lehetővé teszi az üzembe helyezett alkalmazás diagnosztikai adatgyűjtés Azure-ban. A diagnosztikai bővítmény számos különféle forrásból származó is használhatja. Jelenleg csak Azure-Felhőszolgáltatás (klasszikus) webes és feldolgozói szerepkörök, virtuális gépek, a virtuálisgép-méretezési csoportok és a Service Fabric. Más Azure-szolgáltatásokkal rendelkezik diagnosztikai különböző módszereket. Lásd: [áttekintése az Azure-ban figyelési](../azure-monitor/overview.md).
@@ -60,7 +60,7 @@ Lásd: [Azure Diagnostics-verzióelőzmények és séma](azure-diagnostics-schem
 Válassza ki, melyik szolgáltatás próbált meg a diagnosztikai adatok gyűjtéséhez és a következő cikkek az első lépésekhez. Általános Azure diagnostics hivatkozásokkal az egyes feladatok referenciaként.
 
 ## <a name="cloud-services-using-azure-diagnostics"></a>A cloud Services, Azure Diagnostics használatával
-* Ha a Visual Studiót használja, lásd: [nyomon követése a Cloud Services-alkalmazás használatát a Visual Studio](../vs-azure-tools-debug-cloud-services-virtual-machines.md) a kezdéshez. Egyéb esetben lásd:
+* Ha a Visual Studiót használja, lásd: [nyomon követése a Cloud Services-alkalmazás használatát a Visual Studio](/visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines) a kezdéshez. Egyéb esetben lásd:
 * [Azure Diagnostics-felhőszolgáltatások figyelése](../cloud-services/cloud-services-how-to-monitor.md)
 * [A Cloud Services-alkalmazás az Azure Diagnostics beállítása](../cloud-services/cloud-services-dotnet-diagnostics.md)
 
@@ -71,8 +71,8 @@ Az összetettebb témákra lásd:
 * [A Cloud Services diagnosztika beállítása a PowerShell használatával](../virtual-machines/extensions/diagnostics-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="virtual-machines"></a>Virtuális gépek
-* Ha a Visual Studiót használja, lásd: [Visual Studio használata az Azure Virtual Machines nyomkövetési](../vs-azure-tools-debug-cloud-services-virtual-machines.md) a kezdéshez. Egyéb esetben lásd:
-* [Egy Azure virtuális gépen az Azure Diagnostics beállítása](../virtual-machines/virtual-machines-dotnet-diagnostics.md)
+* Ha a Visual Studiót használja, lásd: [Visual Studio használata az Azure Virtual Machines nyomkövetési](/visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines) a kezdéshez. Egyéb esetben lásd:
+* [Egy Azure virtuális gépen az Azure Diagnostics beállítása](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
 
 Az összetettebb témákra lásd:
 

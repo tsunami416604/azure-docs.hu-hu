@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre a Machine Learning Studio munkaterületének |} Microsoft Docs
+title: A Machine Learning Studio-munkaterület létrehozása |} A Microsoft Docs
 description: Egy munkaterület létrehozása az Azure Machine Learning Studióban
 services: machine-learning
 author: heatherbshapiro
@@ -12,67 +12,64 @@ ms.component: studio
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: 94502cbb0946ad1568cf33716480406b17fd57ac
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 19cbb27221bfb95a0900eb7a604e540cb066037e
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833954"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345555"
 ---
 # <a name="create-and-share-an-azure-machine-learning-workspace"></a>Azure Machine Learning-munkaterület létrehozása és megosztása
-Ez a menüben a témakörök, amelyek bemutatják, hogyan állíthatja be a különböző adatok tudományos környezetekben a Cortana Analytics folyamat (nagybetűs) által használt mutató hivatkozásokat tartalmaz.
 
-[!INCLUDE [data-science-environment-setup](../../../includes/cap-setup-environments.md)]
-
-Azure Machine Learning Studio használatához meg kell rendelkeznie a Machine Learning munkaterülettel. Ez a munkaterület tartalmazza a kísérletek létrehozásához, kezeléséhez és közzétételéhez szükséges eszközöket.
+Azure Machine Learning Studio használatához kell rendelkeznie egy Machine Learning Studio-munkaterület. Ez a munkaterület tartalmazza a kísérletek létrehozásához, kezeléséhez és közzétételéhez szükséges eszközöket.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ### <a name="to-create-a-workspace"></a>Munkaterület létrehozása
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
 
     > [!NOTE]
-    > Jelentkezzen be, és hozzon létre egy munkaterület, kell lennie az Azure-előfizetési rendszergazda. 
+    > Jelentkezzen be, és hozzon létre egy munkaterületet, szüksége lehet az Azure-előfizetési rendszergazda. 
     >
     > 
 
 2. Kattintson a **+ új**
 
-3. Írja be a keresőmezőbe, **Machine Learning Studio munkaterületének** , és válassza ki a megfelelő elemet. Ezután kattintson a kijelölés **létrehozása** az oldal alján.
+3. A Keresés mezőbe írja be a **Machine Learning Studio-munkaterület** , és válassza ki a megfelelő elemet. Ezután kattintson a kijelölés **létrehozás** az oldal alján.
 
-4. Adja meg a munkaterület adatokat:
+4. Adja meg a munkaterület-információk:
 
-    - A *munkaterületnevet* nem adható meg a befejezési legfeljebb 260 karakter lehet. A neve nem tartalmazhatja a következő karaktereket: `< > * % & : \ ? + /`
-    - A *web service-csomag* akkor válasszon (vagy hozzon létre), valamint a társított *tarifacsomag* válassza ki, akkor használatos, ha a munkaterület webszolgáltatások telepítése.
+    - A *munkaterületnév* lehet, legfeljebb 260 karakternél, nem záró szóközzel. A neve nem tartalmazhatja a következő karaktereket: `< > * % & : \ ? + /`
+    - A *webszolgáltatási csomag* , válasszon (vagy hozzon létre), valamint a társított *tarifacsomag* , válassza ki, akkor használatos, ha telepít webszolgáltatások erről a munkaterületről.
 
     ![Új munkaterület létrehozása](./media/create-workspace/create-new-workspace.png)
 
 5. Kattintson a **Create** (Létrehozás) gombra.
 
-Ha a munkaterületet van telepítve, a Machine Learning Studióban indíthatja el.
+A munkaterület üzembe helyezését követően nyissa meg azt a Machine Learning Studióban.
 
-1. Tallózás a Machine Learning Studióba [ https://studio.azureml.net/ ](https://studio.azureml.net/).
+1. Tallózással keresse meg a Machine Learning Studióba [ https://studio.azureml.net/ ](https://studio.azureml.net/).
 
-2. A munkaterület kiválasztása a felső – jobb sarkában található.
+2. Válassza ki a munkaterületet a felső – jobb-oldali sarokban.
 
     ![Munkaterület kiválasztása](./media/create-workspace/open-workspace.png)
 
-3. Kattintson a **saját kísérletek opcióra**.
+3. Kattintson a **kísérleteim**.
 
-    ![Nyissa meg benne](./media/create-workspace/my-experiments.png)
+    ![Nyissa meg kísérletek](./media/create-workspace/my-experiments.png)
 
 A munkaterület kezelésével kapcsolatos információkért lásd: [kezelése az Azure Machine Learning-munkaterület](manage-workspace.md).
-Ha a munkaterület létrehozását probléma adódik, tekintse meg [hibaelhárítási útmutatója: hozzon létre, és kapcsolódjon a Machine Learning-munkaterület](troubleshooting-creating-ml-workspace.md).
+Ha a munkaterület létrehozása során hibát tapasztal, tekintse meg [hibaelhárítási útmutatója: létrehozása és csatlakozás egy Machine Learning-munkaterületet](troubleshooting-creating-ml-workspace.md).
 
 
-## <a name="sharing-an-azure-machine-learning-workspace"></a>Egy Azure Machine Learning munkaterülettel megosztása
-Egyszer a Machine Learning munkaterület jön létre, felajánlhatja a felhasználóknak a munkaterülethez való fájlmegosztás elérését a munkaterület és minden a kísérletek adatkészletek, jegyzetfüzeteket, stb. Hozzáadhat felhasználókat két szerepkör egyikében:
+## <a name="sharing-an-azure-machine-learning-workspace"></a>Az Azure Machine Learning-munkaterület megosztása
+Miután egy Machine Learning munkaterület létrehozása, felajánlhatja a felhasználóknak a munkaterületéhez megosztani a hozzáférést a munkaterület, és minden a kísérletek, adatkészletek, jegyzetfüzeteket stb. Hozzáadhat felhasználókat két szerepkör egyikében:
 
-* **Felhasználói** -munkaterület felhasználó létrehozása, megnyithat, módosíthatja, és kísérleteket, adatkészleteket, stb. a munkaterület törlése.
-* **Tulajdonos** - kérhetnek fel egy olyan tulajdonost, és távolítsa el a munkaterületen milyen felhasználói mellett végezhető műveletek.
+* **Felhasználói** -munkaterület felhasználó is létrehozni, nyissa meg a, módosításához és törléséhez kísérletek, adatkészletek, stb. a munkaterületen.
+* **Tulajdonos** – meghívhatja a tulajdonosa, és felhasználók eltávolítása a felhasználó milyen mellett a munkaterületen teheti meg.
 
 > [!NOTE]
-> A rendszergazdai fiók, amely létrehozza a munkaterület tulajdonos munkaterületként automatikusan hozzáadódik a munkaterületen. Azonban más rendszergazdák vagy a felhasználók az adott előfizetés nem automatikusan hozzáférést kapnak a munkaterület - kell explicit módon hívhat meg.
+> A rendszergazdai fiók, amely a munkaterületet hoz létre a munkaterületet automatikusan hozzáadja a munkaterület tulajdonosa szerint. Azonban más rendszergazdák vagy a felhasználók, az adott előfizetésben vannak nem automatikusan biztosít hozzáférést a munkaterület - felkínáljuk számukra az explicit módon kell.
 > 
 > 
 
@@ -80,24 +77,24 @@ Egyszer a Machine Learning munkaterület jön létre, felajánlhatja a felhaszn�
 
 1. Jelentkezzen be a Machine Learning Studióba [https://studio.azureml.net/Home](https://studio.azureml.net/Home)
 
-2. A bal oldali panelen kattintson a **beállítások**
+2. Kattintson a bal oldali panel **beállításai**
 
 3. Kattintson a **felhasználók** lap
 
-4. Kattintson a **több felhasználók MEGHÍVÁSA** a lap alján
+4. Kattintson a **több felhasználó MEGHÍVÁSA** a lap alján
 
-    ![Studio beállításai](./media/create-workspace/settings.png)
+    ![Studio-beállítások](./media/create-workspace/settings.png)
 
-5. Adjon meg egy vagy több e-mail címet. A felhasználók egy érvényes Microsoft-fiókkal vagy (az Azure Active Directory) szervezeti fiók szükséges.
+5. Adjon meg egy vagy több e-mail címet. A felhasználók kell egy érvényes Microsoft-fiókjával vagy szervezeti fiókkal (az Azure Active Directory).
 
-6. Válassza ki, hogy a felhasználók hozzáadása a tulajdonos vagy a felhasználó.
+6. Válassza ki, hogy a felhasználók hozzáadása tulajdonosa vagy a felhasználó.
 
 7. Kattintson a **OK** pipa gombra.
 
-Minden felhasználóhoz hozzá jelentkezzen be a megosztott munkaterület kapcsolatos utasításokat tartalmazó e-mailt fog kapni.
+Minden felhasználó hozzáadhat való jelentkezzen be a megosztott munkaterület-mailt fog kapni.
 
 > [!NOTE]
-> A felhasználók tudnak telepíteni, vagy a munkaterület webszolgáltatások kezelése fel kell egy közreműködő vagy az Azure-előfizetés rendszergazdája. 
+> Felhasználók tudják, telepítenie és felügyelnie a munkaterület webszolgáltatások hogy kell közreműködőjének vagy rendszergazdájának az Azure-előfizetésében. 
 
 
 

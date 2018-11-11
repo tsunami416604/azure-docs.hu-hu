@@ -2,19 +2,19 @@
 title: Használata Data Lake Store az Azure HDInsight a Hadoop-keretrendszerrel
 description: Megtudhatja, hogyan kérdezhet le adatokat az Azure Data Lake Store-ból, és hogyan tárolhatja az elemzésének eredményeit.
 services: hdinsight,storage
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 07/23/2018
-ms.openlocfilehash: d205a46c672523e029816b573742d991de79b2ae
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.date: 11/06/2018
+ms.openlocfilehash: 0859e480df0111e26d5b64bf835f94b3852b3414
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956731"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277358"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>A Data Lake Store és az Azure HDInsight-fürtök együttes használata
 
@@ -40,16 +40,17 @@ Jelen pillanatban csak bizonyos típusú, illetve verziójú HDInsight-fürtök 
 
 | A HDInsight-fürt típusa | A Data Lake Store az alapértelmezett tároló | A Data Lake Store kiegészítő tároló| Megjegyzések |
 |------------------------|------------------------------------|---------------------------------------|------|
-| A HDInsight 3.6-os verziója | Igen | Igen | |
+| A HDInsight 3.6-os verziója | Igen | Igen | A HBase kivételével|
 | A HDInsight 3.5-ös verziója | Igen | Igen | A HBase kivételével|
 | A HDInsight 3.4-es verziója | Nem | Igen | |
 | A HDInsight 3.3-as verziója | Nem | Nem | |
 | A HDInsight 3.2-es verziója | Nem | Igen | |
 | Storm | | |A Data Lake Store használható Storm-topológiából származó adatok írására. A Data Lake Store-ban tárolhatók referenciaadatok is, amelyek olvashatók lesznek egy Storm-topológiából.|
 
+[!WARNING]
+> HDInsight HBase nem támogatott az Azure Data Lake Storage általános 1
+
 Ha a Data Lake Store-t kiegészítő tárfiókként használja, az nem befolyásolja a fürtből az Azure-tárba történő írás, illetve olvasás lehetőségét vagy hatékonyságát.
-
-
 ## <a name="use-data-lake-store-as-default-storage"></a>A Data Lake Store használata az alapértelmezett tárolóként
 
 Ha a HDInsight alapértelmezett tárolójaként a Data Lake Store van beállítva, a fürttel kapcsolatos fájlok a Data Lake Store-ban a következő helyen találhatók:

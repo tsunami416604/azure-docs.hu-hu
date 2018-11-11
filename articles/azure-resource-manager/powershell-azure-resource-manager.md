@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/20/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7cda2a406c6c49e9252bfd5840e8f943e5b7043f
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 0ecb497e9b07119f6c32149a875f27ee7c338d74
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205799"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344637"
 ---
 # <a name="manage-resources-with-azure-powershell"></a>Az Azure PowerShell-erőforrások kezelése
 
@@ -56,7 +56,7 @@ Ebben a cikkben üzembe helyezi a virtuális gépek és a kapcsolódó virtuáli
 * [Hálózati közreműködő](../role-based-access-control/built-in-roles.md#network-contributor)
 * [Tárfiók-közreműködő](../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Ahelyett, hogy szerepköröket rendelne az egyéni felhasználókhoz, gyakran célszerűbb [létrehozni egy Azure Active Directory-csoportot](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) azoknak a felhasználóknak, akiknek hasonló műveleteket kell elvégezniük. Ezután rendelje hozzá a csoportot a megfelelő szerepkörhöz. Ebben a cikkben az egyszerűség kedvéért egy tagok nélküli Azure Active Directory-csoportot fog létrehozni. A csoportot így is hozzárendelheti egy szerepkörhöz, hogy legyen hatóköre. 
+Ahelyett, hogy szerepköröket rendelne az egyéni felhasználókhoz, gyakran célszerűbb [létrehozni egy Azure Active Directory-csoportot](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) azoknak a felhasználóknak, akiknek hasonló műveleteket kell elvégezniük. Ezután rendelje hozzá a csoportot a megfelelő szerepkörhöz. Ebben a cikkben az egyszerűség kedvéért egy tagok nélküli Azure Active Directory-csoportot fog létrehozni. A csoportot így is hozzárendelheti egy szerepkörhöz, hogy legyen hatóköre.
 
 Az alábbi példa létrehoz egy csoportot, és hozzárendeli azt az erőforráscsoportot a virtuális gép közreműködő szerepkört. Futtatásához a `New-AzureAdGroup` parancsot, meg kell, vagy használja a [Azure Cloud Shell](/azure/cloud-shell/overview) vagy [töltse le az Azure AD PowerShell modul](https://www.powershellgallery.com/packages/AzureAD/).
 
@@ -74,7 +74,7 @@ A folyamatot általában a **Hálózati közreműködő** és a **Tárfiók-köz
 
 ## <a name="azure-policy"></a>Azure Policy
 
-[Az Azure Policy](../azure-policy/azure-policy-introduction.md) , ellenőrizze, hogy minden erőforrás-előfizetés segít a vállalati követelményeknek. Az előfizetése már számos szabályzatdefinícióval rendelkezik. Elérhető szabályzatdefiníciók használja:
+Az [Azure Policy](../azure-policy/azure-policy-introduction.md) segítségével ellenőrizheti, hogy az előfizetés összes erőforrása megfelel-e a vállalati szabványoknak. Az előfizetése már számos szabályzatdefinícióval rendelkezik. Elérhető szabályzatdefiníciók használja:
 
 ```azurepowershell-interactive
 (Get-AzureRmPolicyDefinition).Properties | Format-Table displayName, policyType
@@ -211,11 +211,12 @@ Remove-AzureRmResourceLock -LockName LockNSG `
 
 Ha már nincs rá szükség, a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
-```powershell
+```azurepowershell-interactive
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>További lépések
+
 * A virtuális gépek monitorozásával kapcsolatos tudnivalókért lásd: [figyelésére és frissítésére az Azure PowerShell használatával Windows virtuális gép](../virtual-machines/windows/tutorial-monitoring.md).
 * További információ az Azure Security Center megvalósításához ajánlott biztonsági eljárásokat, [virtuális gép biztonságának monitorozása az Azure Security Center használatával](../virtual-machines/windows/tutorial-azure-security.md).
 * Meglévő erőforrásokat áthelyezheti egy új erőforráscsoportot. Példák: [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](resource-group-move-resources.md).

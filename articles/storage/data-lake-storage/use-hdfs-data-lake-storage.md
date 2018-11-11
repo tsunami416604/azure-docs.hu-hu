@@ -8,23 +8,23 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: artek
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: c59331c772e140fccfefb89eef086a35837171e1
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: c5f11cbb12b727f5f308d7a71c51706fa8ec373f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576975"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277086"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>A HDFS parancssori felület használatával a Data Lake Storage Gen2
 
-Az Azure Data Lake Storage Gen2 előzetes verzió lehetővé teszi, hogy a kezelése és az adatok eléréséhez, ugyanúgy, mint az egy [Hadoop elosztott fájlrendszer (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Hogy van-e csatlakoztatva, vagy egy Azure Databricks használatával az Azure Data Lake Storage Gen2-ban tárolt adatokkal kapcsolatos elemzés végrehajtásához az Apache Spark-feladat futtatása egy HDInsight-fürtöt parancssori felület (CLI) segítségével lekérése és módosítására a betöltött adatokra. A cikk ismerteti, hogy miközben a beállításokat a [Azure Storage csapata dolgozik az Azure Storage Explorerrel és az Azure portal-támogatás hozzáadása a](https://azure.microsoft.com/roadmap/).
+Az Azure Data Lake Storage Gen2 előzetes verzió lehetővé teszi, hogy a kezelése és az adatok eléréséhez, ugyanúgy, mint az egy [Hadoop elosztott fájlrendszer (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). E van csatlakoztatva, vagy egy Azure Databricks használatával egy Azure Storage-fiókban tárolt adatokon végrehajtandó analytics Apache Spark-feladatok futtatása egy HDInsight-fürt, parancssori felület (CLI) segítségével lekérése és módosítására a betöltött adatokra.
 
 ## <a name="hdfs-cli-with-hdinsight"></a>HDFS CLI-t a HDInsight
 
 A HDInsight hozzáférést nyújt a helyileg a számítási csomópontokhoz csatlakozó elosztott fájlrendszerhez. Ez a fájlrendszer elérhető lesz a rendszerhéj, amely közvetlenül kommunikál a HDFS-és más fájlrendszereket, amely támogatja a Hadoop használatával. Az alábbiakban a gyakran használt parancsok és a hasznos forrásokra mutató hivatkozásokat.
 
 >[!IMPORTANT]
->A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt törlésekor fejeződik be. Számlázása időarányosan történik percenként, ezért mindig érdemes törölni a fürtöt, ha már nincs használatban van (megtudhatja, hogyan [fürt törlése](../../hdinsight/hdinsight-delete-cluster.md)). Azonban az Azure Data Lake Storage Gen2-ban tárolt adatok is fennáll, egy HDInsight-fürt törlése után is.
+>HDInsight-fürt számlázása elindul, amikor egy fürt jön létre, és leállítja a fürt törlésekor. A számlázás percalapú, ezért mindig érdemes törölni a fürtöt, ha az már nincs használatban. Ismerje meg, hogyan törölheti a fürtöt, tekintse meg a [foglalkozó témakör](../../hdinsight/hdinsight-delete-cluster.md). Azonban a Data Lake Storage Gen2 engedélyezve van a storage-fiókban tárolt adatok fenntartása, még akkor is egy HDInsight-fürt törlése után.
 
 Fájlok vagy könyvtárak listájának lekérése:
 

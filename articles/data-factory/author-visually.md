@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 11/7/2018
 ms.author: shlo
-ms.openlocfilehash: 3db32dfe2d7b65535f7d30f76241b33ecca96c15
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7a0d72ac67b329cb6d25be955205a2bbcef38e81
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957955"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281693"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Az Azure Data Factoryban vizuális szerzői
 Az Azure Data Factory felhasználói felületen felület (UX) lehetővé teszi, hogy vizuálisan hozhat létre és helyezheti üzembe az erőforrásokat a data Factory kód írása nélkül. Húzza a tevékenységeket a folyamatvásznon, végre, iteratív hibakeresést és üzembe helyezése és a folyamat futásának monitorozása. Kétféleképpen felhasználói a vizuális szerzői műveletek végrehajtásához:
@@ -142,7 +142,9 @@ Rendelkezik sikeresen összevonta a együttműködési ág módosításai után 
 
 ## <a name="author-with-github-integration"></a>Felügyeleti csomagok készítése a GitHub-integráció
 
-GitHub-integráció történő vizuális tartalomkészítésről támogatja a forráskezelés és az együttműködést az adat-előállító folyamatok munka. Adat-előállító egy GitHub-fiók tárházat a verziókövetés, együttműködési, versioning is társíthat. Egy GitHub-fiók több tárházak rendelkezhet, de egy GitHub-adattár társítható csak egy adat-előállító. Ha nem rendelkezik egy GitHub-fiók vagy egy tárház, hajtsa végre a [ezek az utasítások](https://github.com/join) az erőforrások létrehozásához. A GitHub-integráció, a Data Factory támogatja mind nyilvános GitHub és a GitHub Enterprise-zal.
+GitHub-integráció történő vizuális tartalomkészítésről támogatja a forráskezelés és az együttműködést az adat-előállító folyamatok munka. Adat-előállító egy GitHub-fiók tárházat a verziókövetés, együttműködési, versioning is társíthat. Egy GitHub-fiók több tárházak rendelkezhet, de egy GitHub-adattár társítható csak egy adat-előállító. Ha nem rendelkezik egy GitHub-fiók vagy egy tárház, hajtsa végre a [ezek az utasítások](https://github.com/join) az erőforrások létrehozásához.
+
+A GitHub-integráció, a Data Factory támogatja mind a nyilvános GitHub (azaz [ https://github.com ](https://github.com)) és a GitHub Enterprise-zal. A Data Factory nyilvános és privát GitHub-adattárak használhatja, mennyi ideig rendelkezik-e olvasási és írási engedélye a GitHub-tárház.
 
 Egy GitHub-adattár konfigurálásához rendelkeznie kell Azure-előfizetést használ, rendszergazdai jogosultságokkal.
 
@@ -164,11 +166,11 @@ Az adat-előállító két módszer segítségével konfigurálhatja egy GitHub-
 
 **1 (nyilvános tárházban) a konfigurálási módszerhez: első lépések lap**
 
-Az Azure Data Factoryben, nyissa meg a **első lépések** lapot. Válassza ki **kódtár konfigurálása**:
+Az Azure Data Factoryben, nyissa meg a **első lépések** lapot. Válassza ki **kódtár konfigurálása**:
 
 ![Adat-előállító első lépések lap](media/author-visually/github-integration-image1.png)
 
-A **adattár beállításai** konfigurációs panelen jelenik meg:
+A **adattár beállításai** konfigurációs panelen jelenik meg:
 
 ![GitHub-adattár beállításai](media/author-visually/github-integration-image2.png)
 
@@ -181,14 +183,14 @@ A panelen látható a következő Azure-Adattárakkal kód adattár beállítás
 | **RepositoryName**                                       | A GitHub code-adattár neve. GitHub-fiókjukban, kezelheti a forráskód Git-tárházak tartalmaznak. Hozzon létre egy új adattár, vagy használjon egy meglévő adattárhoz, amely már a fiókjához.                                                                                                                                                                                                                              |                    |
 | **Együttműködés ág**                                 | A GitHub együttműködési ág közzététel szolgálja ki. Alapértelmezés szerint a főadatbázis. Ezen beállítás módosításához, abban az esetben, ha szeretne közzétenni egy másik ágban származó erőforrásokat.                                                                                                                                                                                                                                                               |                    |
 | **Gyökérmappa**                                          | A legfelső szintű mappát a GitHub együttműködési ágban.                                                                                                                                                                                                                                                                                                                                                                             |                    |
-| **Meglévő Data Factory-erőforrások importálása az adattárba** | Megadja, hogy a meglévő data factory-erőforrások importálása a UX **szerzői vászon** egy GitHub-tárházba. Jelölje be a data factory-erőforrások importálása a társított Git-tárház JSON formátumban. Ez a művelet exportálja az egyes erőforrások külön-külön (azaz a társított szolgáltatásokat és adatkészleteket exportálása külön JSONs be). Ha a jelölőnégyzet nincs bejelölve, a meglévő erőforrások nem importálja. | Kiválasztott (alapértelmezett) |
+| **Meglévő Data Factory-erőforrások importálása az adattárba** | Megadja, hogy a meglévő data factory-erőforrások importálása a UX **szerzői vászon** egy GitHub-tárházba. Jelölje be a data factory-erőforrások importálása a társított Git-tárház JSON formátumban. Ez a művelet exportálja az egyes erőforrások külön-külön (azaz a társított szolgáltatásokat és adatkészleteket exportálása külön JSONs be). Ha a jelölőnégyzet nincs bejelölve, a meglévő erőforrások nem importálja. | Kiválasztott (alapértelmezett) |
 | **Az erőforrás importálásához ág**                       | Itt adhatja meg, mely a főágban (a folyamatok, adatkészletek, a társított szolgáltatások stb.) a data factory-erőforrások importálása. Erőforrások importálhatja a következő fiókok közül: egy. Együttműködés b. Hozzon létre új c. Meglévő használata                                                                                                                                                                                                     |                    |
 
 #### <a name="configuration-method-2-public-repo-ux-authoring-canvas"></a>2 (nyilvános tárházban) a konfigurálási módszerhez: UX szerzői vászon
 
-Az Azure Data Factory felhasználói **szerzői vászon**, keresse meg az adat-előállítóhoz. Válassza ki a **adat-előállító** legördülő menüből, és válassza ki **kódtár konfigurálása**.
+Az Azure Data Factory felhasználói **szerzői vászon**, keresse meg az adat-előállítóhoz. Válassza ki a **adat-előállító** legördülő menüből, és válassza ki **kódtár konfigurálása**.
 
-A konfiguráció panelen jelenik meg. A konfigurációs beállításaival kapcsolatos információkért lásd: található leírások *konfigurációs módszer 1* felett.
+A konfiguráció panelen jelenik meg. A konfigurációs beállításaival kapcsolatos információkért lásd: található leírások *konfigurációs módszer 1* felett.
 
 ### <a name="configure-a-github-enterprise-repository-with-azure-data-factory"></a>A GitHub Enterprise-zal adattár konfigurálása az Azure Data Factoryvel
 
@@ -196,11 +198,11 @@ Az adat-előállító két módszer segítségével konfigurálhatja a GitHub En
 
  #### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>1 (Enterprise tárházban) a konfigurálási módszerhez: első lépések lap
 
-Az Azure Data Factoryben, nyissa meg a **első lépések** lapot. Válassza ki **kódtár konfigurálása**:
+Az Azure Data Factoryben, nyissa meg a **első lépések** lapot. Válassza ki **kódtár konfigurálása**:
 
 ![Adat-előállító első lépések lap](media/author-visually/github-integration-image1.png)
 
-A **adattár beállításai** konfigurációs panelen jelenik meg:
+A **adattár beállításai** konfigurációs panelen jelenik meg:
 
 ![GitHub-adattár beállításai](media/author-visually/github-integration-image3.png)
 
@@ -215,14 +217,14 @@ A panelen látható a következő Azure-Adattárakkal kód adattár beállítás
 | **RepositoryName**                                       | A GitHub code-adattár neve. GitHub-fiókjukban, kezelheti a forráskód Git-tárházak tartalmaznak. Hozzon létre egy új adattár, vagy használjon egy meglévő adattárhoz, amely már a fiókjához.                                                                                                                                                                                                                              |                    |
 | **Együttműködés ág**                                 | A GitHub együttműködési ág közzététel szolgálja ki. Alapértelmezés szerint a főadatbázis. Ezen beállítás módosításához, abban az esetben, ha szeretne közzétenni egy másik ágban származó erőforrásokat.                                                                                                                                                                                                                                                               |                    |
 | **Gyökérmappa**                                          | A legfelső szintű mappát a GitHub együttműködési ágban.                                                                                                                                                                                                                                                                                                                                                                             |                    |
-| **Meglévő Data Factory-erőforrások importálása az adattárba** | Megadja, hogy a meglévő data factory-erőforrások importálása a UX **szerzői vászon** egy GitHub-tárházba. Jelölje be a data factory-erőforrások importálása a társított Git-tárház JSON formátumban. Ez a művelet exportálja az egyes erőforrások külön-külön (azaz a társított szolgáltatásokat és adatkészleteket exportálása külön JSONs be). Ha a jelölőnégyzet nincs bejelölve, a meglévő erőforrások nem importálja. | Kiválasztott (alapértelmezett) |
+| **Meglévő Data Factory-erőforrások importálása az adattárba** | Megadja, hogy a meglévő data factory-erőforrások importálása a UX **szerzői vászon** egy GitHub-tárházba. Jelölje be a data factory-erőforrások importálása a társított Git-tárház JSON formátumban. Ez a művelet exportálja az egyes erőforrások külön-külön (azaz a társított szolgáltatásokat és adatkészleteket exportálása külön JSONs be). Ha a jelölőnégyzet nincs bejelölve, a meglévő erőforrások nem importálja. | Kiválasztott (alapértelmezett) |
 | **Az erőforrás importálásához ág**                       | Itt adhatja meg, mely a főágban (a folyamatok, adatkészletek, a társított szolgáltatások stb.) a data factory-erőforrások importálása. Erőforrások importálhatja a következő fiókok közül: egy. Együttműködés b. Hozzon létre új c. Meglévő használata                                                                                                                                                                                                     |                    |
 
 #### <a name="configuration-method-2-enterprise-repo-ux-authoring-canvas"></a>2 (Enterprise tárházban) a konfigurálási módszerhez: UX szerzői vászon
 
-Az Azure Data Factory felhasználói **szerzői vászon**, keresse meg az adat-előállítóhoz. Válassza ki a **adat-előállító** legördülő menüből, és válassza ki **kódtár konfigurálása**.
+Az Azure Data Factory felhasználói **szerzői vászon**, keresse meg az adat-előállítóhoz. Válassza ki a **adat-előállító** legördülő menüből, és válassza ki **kódtár konfigurálása**.
 
-A konfiguráció panelen jelenik meg. A konfigurációs beállításaival kapcsolatos információkért lásd: található leírások *konfigurációs módszer 1* felett.
+A konfiguráció panelen jelenik meg. A konfigurációs beállításaival kapcsolatos információkért lásd: található leírások *konfigurációs módszer 1* felett.
 
 ## <a name="use-the-expression-language"></a>Kifejezés nyelve
 Az Azure Data Factory által támogatott kifejezés nyelv használatával megadhatja a tulajdonságértékek a kifejezéseket.

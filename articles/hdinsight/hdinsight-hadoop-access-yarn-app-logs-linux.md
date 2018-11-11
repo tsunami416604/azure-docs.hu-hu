@@ -1,36 +1,33 @@
 ---
-title: Hadoop YARN-alkalmazásnaplók elérése a Linux-alapú HDInsight – Azure
-description: Ismerje meg a parancssori és a egy webes böngésző használatával egy Linux-alapú HDInsight (Hadoop) fürtön YARN-alkalmazásnaplók elérése.
+title: Az Apache Hadoop YARN-alkalmazásnaplók elérése a Linux-alapú HDInsight – Azure
+description: Ismerje meg a parancssori és a egy webes böngésző használatával egy Linux-alapú HDInsight (az Apache Hadoop) fürtön YARN-alkalmazásnaplók elérése.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.author: jasonh
-ms.openlocfilehash: 179349d059fd75e2da01eb908a786e2e7ac91307
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: 302f2f96a7f17699411ab9fdbdb6ab1f9de149c8
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43092260"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277599"
 ---
-# <a name="access-yarn-application-logs-on-linux-based-hdinsight"></a>YARN-alkalmazásnaplók elérése Linux-alapú HDInsight a
+# <a name="access-apache-yarn-application-logs-on-linux-based-hdinsight"></a>Az Apache YARN-alkalmazásnaplók elérése Linux-alapú HDInsight a
 
-Megtudhatja, hogyan (még egy másik Resource Negotiator) YARN-alkalmazások az Azure HDInsight Hadoop-fürtön a naplók eléréséhez.
+Megtudhatja, hogyan (még egy másik Resource Negotiator) az Apache YARN-alkalmazások az Azure HDInsight az Apache Hadoop-fürtön a naplók eléréséhez.
 
 > [!IMPORTANT]
-> A dokumentum lépéseinek elvégzéséhez egy Linux-alapú HDInsight-fürt szükséges. A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight összetevők verziószámozása](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> A dokumentum lépéseinek elvégzéséhez egy Linux-alapú HDInsight-fürt szükséges. Linux az egyetlen operációs rendszer használt a HDInsight 3.6-os vagy újabb verzió. További információkért lásd: [HDInsight összetevők verziószámozása](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="YARNTimelineServer"></a>YARN idővonal-kiszolgáló
 
-A [YARN idővonal-kiszolgáló](http://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) általános információkat tartalmaz a befejezett alkalmazásokkal és keretrendszer-specifikus alkalmazás adatokat két különböző felületek segítségével. Konkrétan:
+A [az Apache YARN idővonal-kiszolgáló](http://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) általános információkat nyújt a befejezett alkalmazásokkal
 
-* Tárolásához és lekéréséhez általános alkalmazással kapcsolatos információk a HDInsight-fürtökön lett engedélyezve 3.1.1.374 verziójával vagy újabb.
-* A keretrendszer-specifikus alkalmazás információk összetevője az idővonal-kiszolgáló jelenleg nem áll rendelkezésre a HDInsight-fürtökön.
-
-Az alkalmazások általános információkat a következő típusú adatokat tartalmazza:
+YARN idővonal-kiszolgáló a következő típusú adatokat tartalmazza:
 
 * Az Alkalmazásazonosító, az alkalmazás egyedi azonosítója
 * A felhasználó az alkalmazást

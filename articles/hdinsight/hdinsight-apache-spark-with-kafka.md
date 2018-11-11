@@ -1,25 +1,25 @@
 ---
-title: Az Apache Spark-streamelés a Kafkával – Azure HDInsight
-description: 'Útmutató: Spark Apache Spark használatával adatok streamelése vagy onnan máshová az Apache Kafka DStreams használatával. Ebben a példában Jupyter notebookkal streamel adatokat a Spark on HDInsightból.'
+title: Az Apache Spark az Apache kafka platformmal – Azure HDInsight streaming
+description: Ismerje meg, hogyan használható az Apache Spark adatok, vagy onnan máshová az Apache Kafka használatával DStreams. Ebben a példában Jupyter notebookkal streamel adatokat a Spark on HDInsightból.
 keywords: a kafka-például kafka zookeeper, spark-streamelés a kafka, a spark Stream kafka példa
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/23/2018
-ms.author: jasonh
-ms.openlocfilehash: d06e9d26051fbfafc4d717ec180e8760157aefd9
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: b103300c7d4b72c0605b8355b03fac5201ab6d68
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094166"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279160"
 ---
-# <a name="apache-spark-streaming-dstream-example-with-kafka-on-hdinsight"></a>Apache Spark Stream (DStream) Példa a HDInsight alatt futó Kafka
+# <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Apache Spark Stream (DStream) például az Apache Kafka on HDInsight
 
-Útmutató: Spark Apache Spark használatával adatok streamelése vagy onnan máshová az Apache Kafka on HDInsight használatával DStreams. Ez a példa, amely a Spark-fürtön fut egy Jupyter notebookot használja.
+Ismerje meg, hogyan használhatja az Apache Spark adatok streamelése vagy onnan máshová az Apache Kafka on HDInsight használatával DStreams. Ez a példa, amely a Spark-fürtön fut egy Jupyter notebookot használja.
 
 > [!NOTE]
 > A dokumentum lépései olyan Azure-erőforráscsoportot hoznak létre, amely Spark on HDInsight- és Kafka on HDInsight-fürtöt is tartalmaz. Mindkét fürt Azure virtuális hálózatban található, így a Spark-fürt közvetlenül kommunikálhat a Kafka-fürttel.
@@ -59,7 +59,7 @@ Bár létrehozhat egy Azure virtuális hálózatra, a Kafka, és a Spark-fürtö
 
     * **Hely**: válasszon, földrajzilag közeli helyet.
 
-    * **Fürt neve alapján**: ezt az értéket használja, a Spark alapnevét, és a Kafka-fürtök. Ha például **hdi** nevű egy Spark-fürtöt hoz létre __spark-hdi__ és a egy nevű Kafka-fürt **kafka-hdi**.
+    * **Fürt neve alapján**: ezt az értéket használja, a Spark alapnevét, és a Kafka-fürtök. Ha például **hdistreaming** nevű egy Spark-fürtöt hoz létre __spark-hdistreaming__ és a egy nevű Kafka-fürt **kafka-hdistreaming**.
 
     * **A fürt bejelentkezési név**: a Spark és Kafka-fürtök rendszergazdai felhasználóneve.
 
@@ -71,7 +71,7 @@ Bár létrehozhat egy Azure virtuális hálózatra, a Kafka, és a Spark-fürtö
 
 3. Olvassa át a **használati feltételeket**, majd válassza az **Elfogadom a fenti feltételeket és kikötéseket** lehetőséget.
 
-4. Végül jelölje be a **Rögzítés az irányítópulton** elemet, majd válassza a **Vásárlás** lehetőséget. Körülbelül 20 perc alatt létrehozni a fürtöket vesz igénybe.
+4. Végül válassza **beszerzési**. Körülbelül 20 perc alatt létrehozni a fürtöket vesz igénybe.
 
 Az erőforrások létrehozása után megjelenik egy összegző lapja.
 

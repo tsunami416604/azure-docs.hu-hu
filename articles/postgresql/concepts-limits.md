@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/30/2018
-ms.openlocfilehash: 0bd894e99fd575fca734a101a1cde0f0a2979682
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: f24f15134bf189097f20f75ff0b23b72a3e48363
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983758"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299606"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Azure Database for postgresql-hez korlátozásai
 A következő szakaszok ismertetik a kapacitás és a működési korlátai az adatbázis-szolgáltatás.
@@ -31,10 +31,10 @@ Tarifacsomag és virtuális magok száma kapcsolatok maximális száma a követk
 |Általános rendeltetés| 8| 480|
 |Általános rendeltetés| 16| 950|
 |Általános rendeltetés| 32| 1500|
-|Memóriára optimalizált| 2| 150|
-|Memóriára optimalizált| 4| 250|
-|Memóriára optimalizált| 8| 480|
-|Memóriára optimalizált| 16| 950|
+|Memóriára optimalizált| 2| 300|
+|Memóriára optimalizált| 4| 500|
+|Memóriára optimalizált| 8| 960|
+|Memóriára optimalizált| 16| 1900|
 
 Amikor kapcsolatokat meghaladják a korlátot, a következő hiba jelenhet meg:
 > VÉGZETES: sajnos már túl sok ügyfél

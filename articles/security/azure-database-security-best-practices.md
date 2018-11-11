@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: tomsh
-ms.openlocfilehash: bceccbfd0efb54db3e599ec737fe5df0c2a87acd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: cceea9fa613d2a2428427bfe73eb50550db6c69a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261655"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281625"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure database ajánlott biztonsági eljárások
 Biztonsági adatbázis elsődleges szempont, és azt mindig az, hogy prioritást [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). Az adatbázisok szorosan leköthetőek súgó megfelel a legtöbb szabályozási és biztonsági követelmények, többek között a HIPAA, az ISO 27001/27002 és a PCI DSS Level 1. Biztonsági megfelelőségi tanúsítványok aktuális listáját érhető el: a [Microsoft Trust Center webhely](https://azure.microsoft.com/support/trust-center/services/). Is kiválaszthatja, hogy az adott Azure-adatközpontok a szabályozási követelményeknek megfelelően az adatbázisok helyezze.
@@ -122,7 +122,7 @@ Egy jogosult felhasználó, például a biztonsági rendszergazda vagy egy adatb
 - Győződjön meg arról, hogy felhasználók és alkalmazások használjon különálló fiókok hitelesítésére. Ezzel a módszerrel korlátozhatja a felhasználók és alkalmazások rendelt engedélyeket, és csökkentheti a kártékony tevékenységek kockázatát.
 - Adatbázis-biztonság (például db_datareader vagy db_datawriter) rögzített adatbázis-szerepkörök használatával valósítja meg. Vagy létrehozhat egyéni szerepköröket, hogy az alkalmazás a kiválasztott adatbázis-objektumok explicit engedélyeket.
 
-Az adatok titkosításának egyéb módjaira vonatkozóan fontolja meg az alábbiakat:
+Egyéb módjaival védi az adatait vegye figyelembe:
 
 - A [cellaszintű titkosítás](/sql/relational-databases/security/encryption/encrypt-a-column-of-data) használatával az egyes oszlopokat, vagy akár a cellákat is külön titkosítási kulccsal titkosíthatja.
 - [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine), amely lehetővé teszi az ügyfelek számára a bizalmas adatok ügyfélalkalmazásokon belüli titkosítását, és soha ne adja meg a titkosítási kulcsokat az adatbázismotorhoz (SQL Database vagy SQL Server). Ennek eredményeképpen azoknak, akik a saját adatok (és annak megtekintéséhez) elkülönülését Always Encrypted funkciója, és azok számára, akik kezelése az adatok (de nem rendelkezhetnek).

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2018
+ms.date: 11/8/2018
 ms.author: tomfitz
-ms.openlocfilehash: 81638136589fc474d5183341d2fe0f9f896d6b41
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 660764183cdee911c49dedf74893f3d368cd9492
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434466"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346626"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok tömb- és objektumfüggvények 
 
@@ -119,7 +119,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/array.json
 ```
 
@@ -193,7 +193,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| stringOutput | Sztring | alapértelmezett |
+| stringOutput | Karakterlánc | alapértelmezett |
 | intOutput | Int | 1 |
 | objectOutput | Objektum | {"first": "alapértelmezett"} |
 | arrayOutput | Tömb | [1] |
@@ -207,7 +207,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/coalesce.json
 ```
 
@@ -281,7 +281,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
 ```
 
@@ -311,7 +311,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| concatOutput | Sztring | előtag-5yj4yjf5mbg72 |
+| concatOutput | Karakterlánc | előtag-5yj4yjf5mbg72 |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -321,7 +321,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
 ```
 
@@ -415,7 +415,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
 ```
 
@@ -495,7 +495,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/createarray.json
 ```
 
@@ -574,7 +574,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
 ```
 
@@ -628,8 +628,8 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| arrayOutput | Sztring | egy |
-| stringOutput | Sztring | O |
+| arrayOutput | Karakterlánc | egy |
+| stringOutput | Karakterlánc | O |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -639,7 +639,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
 ```
 
@@ -718,7 +718,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/intersection.json
 ```
 
@@ -791,7 +791,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/json.json
 ```
 
@@ -845,8 +845,8 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| arrayOutput | Sztring | három |
-| stringOutput | Sztring | e |
+| arrayOutput | Karakterlánc | három |
+| stringOutput | Karakterlánc | e |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -856,7 +856,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
 ```
 
@@ -928,7 +928,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
 ```
 
@@ -1003,7 +1003,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
 ```
 
@@ -1067,7 +1067,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
 ```
 
@@ -1131,7 +1131,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/range.json
 ```
 
@@ -1202,7 +1202,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayOutput | Tömb | ["három"] |
-| stringOutput | Sztring | két három |
+| stringOutput | Karakterlánc | két három |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -1212,7 +1212,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
 ```
 
@@ -1283,7 +1283,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayOutput | Tömb | ["egy", "két"] |
-| stringOutput | Sztring | be |
+| stringOutput | Karakterlánc | be |
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -1293,7 +1293,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
 ```
 
@@ -1372,7 +1372,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 
 Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/union.json
 ```
 

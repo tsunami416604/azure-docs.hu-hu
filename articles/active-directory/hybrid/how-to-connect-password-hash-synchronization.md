@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2d289dee6770b0fc70edb0ed5fecf8a39402c6fa
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 3579a17ab28bd39ddad5008e1d0f8f7834237807
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311989"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281999"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás megvalósítása
 A cikk ismerteti, hogy az egy felhőalapú Azure Active Directory (Azure AD) példány egy helyszíni Active Directory-példányból származó felhasználói jelszavakat szinkronizálja szükséges információkat.
@@ -136,7 +136,7 @@ A jelszó szinkronizálása nem befolyásolja a az Azure-felhasználó, aki be v
 ## <a name="enable-password-hash-synchronization"></a>Jelszókivonat-szinkronizálás engedélyezése
 
 >[!IMPORTANT]
->A Jelszókivonat-szinkronizálást az AD FS (vagy más összevonási technológiákkal) telepít át, ha kifejezetten ajánljuk, hogy kövesse a részletes üzembe helyezési útmutató, közzétett [Itt](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Password%20Hash%20Synchronization.docx).
+>A Jelszókivonat-szinkronizálást az AD FS (vagy más összevonási technológiákkal) telepít át, ha kifejezetten ajánljuk, hogy kövesse a részletes üzembe helyezési útmutató, közzétett [Itt](https://aka.ms/adfstophsdpdownload).
 
 Amikor telepíti az Azure AD Connect használatával a **Gyorsbeállítások** , a Jelszókivonat-szinkronizálás automatikusan engedélyezve van. További részletekért lásd: [Ismerkedés az Azure AD Connecttel a gyorsbeállítások használatával](how-to-connect-install-express.md).
 

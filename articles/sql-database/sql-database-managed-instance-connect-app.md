@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 0221965c51f2287cb6042c33b9ab3402e104abc3
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: fe73d5a2aa63cf127f5df835484cfcc75ef702aa
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870478"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514961"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Csatlakoztassa az alkalmazását az Azure SQL Database felügyelt példányához
 
@@ -60,7 +60,7 @@ Sikeresen létrehozta az Azure-kapcsolat helyszíni, és nem létesít kapcsolat
 A felügyelt példánynak keresztül érhetők el csak magánhálózati IP-cím így a fejlesztői boxból eléréséhez, először létre kell a fejlesztői box és a felügyelt példány virtuális hálózatok közötti kapcsolat létrehozása. Ehhez a virtuális hálózathoz az Azure natív tanúsítványalapú hitelesítésének használatával pont – hely kapcsolat konfigurálása. További információkért lásd: [csatlakozni egy Azure SQL Database felügyelt példánya a helyi számítógépről egy pont – hely kapcsolat konfigurálása](sql-database-managed-instance-configure-p2s.md).
 
 ## <a name="connect-from-on-premises-with-vnet-peering"></a>Csatlakozás a másodlagos adatbázisoké pedig a virtuális hálózatok közötti társviszony
-Ügyfelek által megvalósított egy másik helyzet lehet, ahol a VPN-átjáró telepítve van a különálló virtuális hálózat és a egy üzemeltetési felügyelt példányhoz az előfizetés. A két virtuális etworks majd társviszonyban állnak. A mintául szolgáló alábbi Architektúradiagram bemutatja, hogyan ez alkalmazásokon és szolgáltatásokon futtatható.
+Ügyfelek által megvalósított egy másik helyzet lehet, ahol a VPN-átjáró telepítve van a különálló virtuális hálózat és a egy üzemeltetési felügyelt példányhoz az előfizetés. Ezután a két virtuális hálózat társviszonyba. A mintául szolgáló alábbi Architektúradiagram bemutatja, hogyan ez alkalmazásokon és szolgáltatásokon futtatható.
 
 ![Társviszony létesítése virtuális hálózatok között](./media/sql-database-managed-instance-connect-app/vnet-peering.png)
 
@@ -83,6 +83,10 @@ Csatlakozás az Azure App Service-ben egy felügyelt példányra egy különlege
 Ebben a forgatókönyvben a következő ábra mutatja be:
 
 ![integrált alkalmazás társviszony-létesítés](./media/sql-database-managed-instance/integrated-app-peering.png)
+
+>[!NOTE]
+>A VNet-integráció funkciót és a egy ExpressRoute-átjáróval rendelkező virtuális hálózat nem integrálható egy alkalmazást. Akkor is, ha az ExpressRoute-átjárót együttműködés üzemmódban lett konfigurálva a virtuális hálózat integrációja nem működik. Ha szeretne hozzáférni az erőforrásokhoz az ExpressRoute-kapcsolaton keresztül, majd használhatja az App Service Environment, amely a virtuális hálózatban fut.
+>
  
 ## <a name="troubleshooting-connectivity-issues"></a>Csatlakozási problémák elhárítása
 

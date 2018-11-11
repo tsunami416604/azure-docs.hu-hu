@@ -10,12 +10,12 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 83373f5d6e4a2227bcafdbc4b25b686b0b8d651d
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: a315394ab394e7f4dfe528cf765c9ac5a65c80c4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867187"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277001"
 ---
 # <a name="prepare-data-for-modeling-with-azure-machine-learning"></a>Adatok előkészítése az Azure Machine Learning modellezés
  
@@ -34,4 +34,4 @@ A fő adat-előkészítési lépéseket a következők:
 ![Adatok előkészítési folyamatának](./media/concept-data-preparation/data-prep-process.png)
 
 ## <a name="next-steps"></a>További lépések
-Tekintse át az [példa notebook](https://github.com/Microsoft/MSDataPrepDocs/blob/master/Scenarios/GettingStarted/getting-started.ipynb) az adat-előkészítés az Azure Machine Learning Data Prep SDK használatával.
+Tekintse át az [példa notebook](https://github.com/Microsoft/AMLDataPrepDocs/tree/master/tutorials/getting-started/getting-started.ipynb) az adat-előkészítés az Azure Machine Learning Data Prep SDK használatával.

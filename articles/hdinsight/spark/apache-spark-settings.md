@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/26/2018
-ms.openlocfilehash: 926ce58872b06b41a0c7942b7090dcb4d5c8df03
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 11/06/2018
+ms.openlocfilehash: 9533992b939983ceda37a7c98d0bc2426168a0ac
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956489"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279354"
 ---
 # <a name="configure-spark-settings"></a>A Spark beállításainak konfigurálása
 
@@ -30,11 +30,8 @@ A virtuális gépek számát, és a Virtuálisgép-méretek esetében a HDInsigh
 
 A legjobb Spark-verziót használja a fürt számára.  A HDInsight szolgáltatás tartalmazza a Spark és a HDInsight magát különböző verzióiban.  Minden Spark verziója alapértelmezett fürtbeállítások készletét tartalmazza.  
 
-Amikor létrehoz egy új fürtöt, az alábbiakban az aktuális Spark-verziók közül választhat:
+Amikor létrehoz egy új fürtöt, nincsenek több Spark-verziók közül választhat. A teljes lista megtekintéséhez [HDInsight-összetevők és verziók](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-component-versioning)
 
-![Spark-verzió](./media/apache-spark-settings/spark-version.png)
-
-A Spark 2.x sokkal jobb, mint a Spark-1.x futtathatja. A Spark 2.x számos teljesítményoptimalizálás segíti, például a volfrám, katalizáló optimalizálás és más.  
 
 > [!NOTE]
 > Az alapértelmezett verzió Apache sparkot a HDInsight szolgáltatásban értesítés nélkül változhatnak. Ha egy függőségi, a Microsoft azt javasolja, adjon meg, hogy adott verziót fürtök használata a .NET SDK-val, az Azure PowerShell és az Azure klasszikus parancssori felület létrehozásakor.

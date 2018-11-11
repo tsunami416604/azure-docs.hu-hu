@@ -1,32 +1,32 @@
 ---
-title: Az Azure HDInsight Hive-lekérdezések futtatása a Zeppelin használata
-description: Útmutató a Hive-lekérdezések futtatása a Zeppelin használatával.
+title: Az Apache a Zeppelin használata Azure HDInsight az Apache Hive-lekérdezések futtatásához
+description: Megtudhatja, hogyan futtathat Apache Hive-lekérdezések a Apache Zeppelin használatával.
 keywords: hdinsight, hadoop, hive, LLAP interaktív lekérdezés
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: 3064c9cd141458307891f666bd5af9aa738cc021
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/05/2018
+ms.author: hrasheed
+ms.openlocfilehash: 75ec0e17e9866d2cd3420ff6ecf648bf22a8ae8e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093168"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277953"
 ---
-# <a name="use-zeppelin-to-run-hive-queries-in-azure-hdinsight"></a>Az Azure HDInsight Hive-lekérdezések futtatása a Zeppelin használata 
+# <a name="use-apache-zeppelin-to-run-apache-hive-queries-in-azure-hdinsight"></a>Az Apache a Zeppelin használata Azure HDInsight az Apache Hive-lekérdezések futtatásához 
 
-HDInsight interaktív lekérdezési fürtökhöz interaktív Hive-lekérdezések futtatásához használhatja Zeppelin-jegyzetfüzetek tartalmazza. Ebből a cikkből elsajátíthatja az Azure HDInsight Hive-lekérdezések futtatása a Zeppelin használatával. 
+HDInsight interaktív lekérdezési fürtökhöz Apache Zeppelin notebookok, interaktív Hive-lekérdezések futtatásához használhatja például. Ez a cikk, útmutató Apache a Zeppelin használata Azure HDInsight az Apache Hive-lekérdezések futtatásához. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Mielőtt végrehajtaná ezt a cikket, a következőkkel kell rendelkeznie:
 
 * **HDInsight interaktív lekérdezési fürt**. Lásd: [fürt létrehozása](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster) egy HDInsight-fürt létrehozásához.  Ellenőrizze, hogy válassza ki az interaktív lekérdezés. 
 
-## <a name="create-a-zeppelin-note"></a>A Zeppelin Megjegyzés létrehozása
+## <a name="create-a-apache-zeppelin-note"></a>Az Apache Zeppelin Megjegyzés létrehozása
 
 1. Keresse meg a következő URL-címe:
 

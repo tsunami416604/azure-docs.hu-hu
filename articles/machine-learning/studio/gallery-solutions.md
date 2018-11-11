@@ -1,6 +1,6 @@
 ---
-title: Azure AI gyűjtemény megoldások |} Microsoft Docs
-description: Fedezze fel az Azure Eszközintelligencia-katalógus megoldások.
+title: Az Azure AI katalógus megoldások |} A Microsoft Docs
+description: Fedezze fel a megoldások az Azure AI-katalógusban.
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
@@ -15,39 +15,37 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 19861955dcf82d0ffae674400552ca1f0c439a81
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: cb02ed61ea050c17bc7e6dc0ebc724f29f885dd7
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834885"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344335"
 ---
-# <a name="discover-solutions-in-the-azure-ai-gallery"></a>Az Azure Eszközintelligencia-katalógus megoldások felderítése
-[!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
+# <a name="discover-solutions-in-the-azure-ai-gallery"></a>Fedezze fel a megoldások az Azure AI-katalógusban
 
-## <a name="solutions"></a>Megoldások
-A **[megoldás](https://gallery.cortanaintelligence.com/solutions)** gyorsan elkészítse előkonfigurált megoldásokat referencia architektúra és kialakítási minta a Cortana Intelligence megoldásokat ismertető biztosít a gyűjteményben.
-Akkor tegye őket a saját, a belefoglalt utasításokat tartalmaz, vagy a kiemelt partnerrel.  
+A **[megoldás](https://gallery.cortanaintelligence.com/solutions)** a [Azure AI-katalógusban](http://gallery.cortanaintelligence.com) biztosít egy segítségével gyorsan beindíthatja IOT előre konfigurált megoldások a Cortana Intelligence-megoldások készítése, referenciaarchitektúrákat, és tervezési minták.
+Győződjön meg azok a saját, a mellékelt útmutató, vagy egy kiemelt partner segítségével.  
 
 ## <a name="discover"></a>Ismertetők
-  Tallózás a gyűjteményben megoldások, nyissa meg a [gyűjtemény](http://gallery.cortanaintelligence.com) kattintson **megoldások** a gyűjtemény kezdőlap tetején.
+  Tallózás a katalógusban megoldások, nyissa meg a [katalógus](http://gallery.cortanaintelligence.com) kattintson **megoldások** a katalógus kezdőlap tetején.
 
- A **[megoldások](https://gallery.cortanaintelligence.com/solutions)** lap megjeleníti a legutóbb hozzáadott megoldások listáját.
-Kattintson a **láthatja az összes** minden megoldás megtekintéséhez.
-Ezen a lapon keresse meg a gyűjteményben lévő összes megoldás. Is kereshet; ehhez válassza a bal felső belépés keresési feltételek és a szűrési feltételeket.
+ A **[megoldások](https://gallery.cortanaintelligence.com/solutions)** lap a közelmúltban hozzáadott megoldások listáját jeleníti meg.
+Kattintson a **összes** összes megoldások megtekintéséhez.
+Ezen a lapon tallózhat a megoldásokat a katalógusban. Is kereshet és felső belépés keresőkifejezéseket a bal oldalon a szűrési feltételeket kiválasztásával.
 
- Kattintson a bármely, a Részletek lap megnyitásához, és további információt a megoldás. Ezen az oldalon megjegyzést, visszajelzést, vagy kérdései vannak a Megjegyzések szakasz keresztül. Barátok vagy a megosztás képességeivel LinkedIn-vagy Twitter munkatársak is megoszthatja azt. A megoldás a más felhasználók számára a weblap megtekintéséhez a meghívott elküldeni egy hivatkozást is.
+ Kattintson a megoldással a Részletek lap megnyitásához, és további információ. Ezen az oldalon megjegyzés, visszajelzés, vagy tegyen fel kérdéseket a megjegyzések szakaszának keresztül. Akkor is megoszthatja azt vagy munkatársai a megosztás képességeivel Linkedinen vagy Twitteren barátaival. Más felhasználók számára a lap megtekintéséhez meghívni a megoldás is egy hivatkozást is e-mail.
 
-![Ez az elem megosztása ismerősök](./media/gallery-how-to-use-contribute-publish/share-links.png)
+![Ez az elem megoszthatja ismerősök felvételének engedélyezése](./media/gallery-how-to-use-contribute-publish/share-links.png)
 
-![Adja hozzá a saját megjegyzéseit](./media/gallery-how-to-use-contribute-publish/comments.png)
+![A saját Megjegyzések hozzáadása](./media/gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="deploy"></a>Üzembe helyezés
-Ha azt szeretné, megoldást kíván használni, kattintson a **telepítés**. Konfigurálhatja és telepítheti a megoldás a munkaterületen megjelenő lépéseket követve.
+Ha azt szeretné, megoldást kíván használni, kattintson a **telepítés**. Kövesse a lépéseket, konfigurálhatja és telepítheti a megoldás a munkaterületén jelennek meg.
 
-![Egy gyűjtemény megoldás üzembe helyezéséhez](./media/gallery-solutions/deploy-solution.png)
+![Katalógus-megoldás üzembe helyezése](./media/gallery-solutions/deploy-solution.png)
 
-**[UGRÁS A A GYŰJTEMÉNY &GT;&GT;](http://gallery.cortanaintelligence.com)**
+**[UGRÁS A KATALÓGUSBAN AZ &GT;&GT;](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 

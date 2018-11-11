@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/08/2018
 ms.author: juliako
-ms.openlocfilehash: c8e4e84d7ae0defdb053108dc668956062c47ea5
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: a4569505cb9a42f6682391a8b06725dea5e539dc
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962384"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344977"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Élő Stream a az Azure Media Services v3
 
@@ -44,11 +44,11 @@ Igény szerint is alkalmazhat **dinamikus szűrés**, amely nyomon követi, form
 
 A következő új fejlesztéseket elkészült, a legújabb kiadásban.
 
-- Az új közel valós idejű módban élő (10 másodperc – végpontok).
+- Új közel valós idejű módban. További információkért lásd: [késés](#latency).
 - Továbbfejlesztett RMTP-támogatása (fokozott stabilitás és további forráskód kódoló).
 - Biztonságos RTMPS betöltését.
 
-    Amikor létrehoz egy mostantól videókhoz 4 betöltési URL-címeket. A 4 betöltési URL-címek olyan majdnem teljesen megegyezik, rendelkezik a azonos streamelési token (alkalmazásazonosító), csak a port száma rész nem egyezik. Az URL-címek kettő elsődleges és tartalék RTMPS számára.   
+    Amikor létrehoz egy videókhoz, 4 kap betöltési URL-címeket. A 4 betöltési URL-címek olyan majdnem teljesen megegyezik, rendelkezik a azonos streamelési token (alkalmazásazonosító), csak a port száma rész nem egyezik. Az URL-címek kettő elsődleges és tartalék RTMPS számára.   
 - 24 órás átkódolása támogatása. 
 - Továbbfejlesztett támogatást ad jelzés RTMP SCTE35 keresztül.
 
@@ -82,7 +82,7 @@ Az ilyen típusú videókhoz létrehozásakor adja meg a **None** (LiveEventEnco
 
 Az alábbi táblázat a videókhoz kétféle funkcióit hasonlítja össze.
 
-| Szolgáltatás | Az átmenő videókhoz | Alapszintű videókhoz |
+| Szolgáltatás | Az átmenő videókhoz | Standard videókhoz |
 | --- | --- | --- |
 | Egyféle sávszélességű bemeneti bitsebességekre a felhőben van kódolva. |Nem |Igen |
 | Maximális felbontás, a rétegek száma |4Kp30  |720p, 6 rétegek 30 képkocka/s |
@@ -94,7 +94,7 @@ Az alábbi táblázat a videókhoz kétféle funkcióit hasonlítja össze.
 | Ad-n keresztül SCTE35 inband jelzés támogatása|Igen |Igen |
 | Az átmenő CEA 608/708 feliratok |Igen |Igen |
 | Lehetővé teszi a csatorna közreműködői rövid leállások helyreállítása |Igen |Nem (videókhoz elkezdi slating másodperc 6 + bemeneti adatok nélkül)|
-| Nem egységes bemeneti GOPs támogatása |Igen |Nem – bemeneti ki kell javítani GOPs. 2 mp |
+| Nem egységes bemeneti GOPs támogatása |Igen |Nem – bemeneti ki kell javítani. 2 – mp GOPs |
 | Változó keret arány bevitel támogatása |Igen |Nem – bemeneti képkockasebessége kell rögzíteni.<br/>Kisebb módosításokat kívánalmakhoz, például magas mozgásban lévő adatoknak egyaránt jelenetek során. De kódoló nem dobható el, a 10 képkockák másodpercenkénti száma. |
 | Automatikus – gyors, amikor a bevitel videókhoz hírcsatorna elvész. |Nem |Ha nem fut LiveOutput 12 óra elteltével |
 
@@ -126,6 +126,20 @@ A videókhoz legfeljebb három egyidejűleg zajló LiveOutputs támogatja, így 
 Ha elvégezte a stream és a LiveEvent összekapcsolását, elindíthatja a streamelési eseményt. Ehhez létre kell hoznia egy adategységet, egy LiveOutputot és egy StreamingLocatort. Ezzel archiválja a streamet, és tegye elérhetővé a nézők keresztül a [Streamvégpontok](https://docs.microsoft.com/rest/api/media/streamingendpoints).
 
 A Media Services-fiók létrehozásakor egy alapértelmezett streamvégpontot a fiókhoz leállítva állapotban van hozzáadva. A tartalom streamelésének megkezdéséhez, és a dinamikus csomagolás és a dinamikus titkosítás kihasználásához, a tartalomstreameléshez használt streamvégpont, ahonnan tartalomstreameléshez rendelkezik, a futó állapotot.
+
+## <a name="latency"></a>Késés
+
+Ez a szakasz ismerteti a tipikus eredményeket fog látni, a közel valós idejű beállításai és a számos lejátszó használata esetén. Az eredmények függ a CDN és a hálózati késést.
+
+Az új LowLatency funkció használatához állítsa a **StreamOptionsFlag** való **LowLatency** a a videókhoz. A stream működik-e, ha a [Azure Media Player](http://ampdemo.azureedge.net/) (és) bemutató lapon, és módosítsa a lejátszási a használatához a "alacsony késés a heurisztika profil".
+
+### <a name="pass-through-liveevents"></a>Az átmenő LiveEvents
+
+||2S Képcsoporttal kis késés, engedélyezve van|1s Képcsoporttal kis késés, engedélyezve van|
+|---|---|---|
+|VONAL-és a|10 egység|8S|
+|A natív iOS-lejátszó HLS|14s|10 egység|
+|HLS. A Mixer Player JS|30S|16s|
 
 ## <a name="billing"></a>Számlázás
 

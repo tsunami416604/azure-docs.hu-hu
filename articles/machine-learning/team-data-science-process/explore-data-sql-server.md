@@ -1,6 +1,6 @@
 ---
-title: Áttekintheti az adatokat az SQL Server virtuális gép az Azure-on |} Microsoft Docs
-description: Az SQL Server virtuális gép az Azure-on tárolt adatokba módjáról.
+title: Fedezze fel az adatokat az SQL Servert futtató virtuális gép az Azure-ban |} A Microsoft Docs
+description: Tudnivalók az SQL Server virtuális gép az Azure-ban tárolt adatok megismerése.
 services: machine-learning
 documentationcenter: ''
 author: deguhath
@@ -15,62 +15,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: d96852006377123f6e9d17c3ae5b79fe930c1e1c
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 546d75172b9e6dbd77d63c36e5b8cebd0835a582
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836796"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345606"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>Az SQL Server virtuális gépen tárolt adatok megismerése az Azure rendszerben
-Ez a dokumentum bemutatja, hogyan adhat az SQL Server virtuális gép az Azure-on tárolt adatokba. Ezt adatok wrangling SQL használatával, és Python hasonló programozási nyelv használatával is végrehajthatja.
 
-A következő **menü** eszközök segítségével áttekintheti az különböző tárolási környezetekben adatokat leíró témakörökre mutató hivatkozásokat tartalmaz. Ez a feladat egy lépés a Cortana Analytics folyamat (CAP).
+Ez a cikk bemutatja, hogyan fedezheti fel az SQL Server virtuális gép az Azure-ban tárolt adatokat. Ezt megteheti, adatok konvertálása SQL-lel vagy a programozási nyelvet, például a Python használatával.
 
-[!INCLUDE [cap-explore-data-selector](../../../includes/cap-explore-data-selector.md)]
+Ez a feladat Ez a lépés a [csoportos adatelemzési folyamat](overview.md).
 
 > [!NOTE]
-> Ebben a dokumentumban a minta SQL-utasítások feltételezik, hogy adatokat az SQL Server kiszolgálón. Ha nem, nézze meg a felhő adatok tudományos folyamat leképezés megtudhatja, hogyan helyezze át az adatokat az SQL Server.
+> Ebben a dokumentumban a minta SQL-utasítások feltételezik, hogy adatokat az SQL Server. Ha nem, tekintse meg a felhőbeli adatok adatelemzési folyamat térkép megtudhatja, hogyan helyezheti át az adatokat az SQL Server.
 > 
 > 
 
-## <a name="sql-dataexploration"></a>Az SQL-parancsfájlok SQL adatokba
-Íme néhány példa SQL-parancsfájlok, amelyek segítségével megismerheti az SQL Server adattárolókhoz.
+## <a name="sql-dataexploration"></a>SQL-szkriptek SQL adatait
+Az alábbiakban néhány minta SQL-parancsfájlok, amelyek segítségével ismerje meg az SQL Server adattárakban.
 
-1. Napi megfigyeléseket szám
+1. Napi megfigyeléseket megszámlálása
    
     `SELECT CONVERT(date, <date_columnname>) as date, count(*) as c from <tablename> group by CONVERT(date, <date_columnname>)` 
-2. A szintek kategorikus oszlopban beolvasása
+2. A szintek egy kategorikus oszlop beolvasása
    
     `select  distinct <column_name> from <databasename>`
-3. A szintek számának beolvasása a kombinációja kategorikus kétoszlopos 
+3. Lépjen be két kategorikus oszlopok kombinációja szintek száma 
    
     `select <column_a>, <column_b>,count(*) from <tablename> group by <column_a>, <column_b>`
-4. A numerikus oszlopok terjesztése beolvasása
+4. A numerikus oszlopok terjesztési beolvasása
    
     `select <column_name>, count(*) from <tablename> group by <column_name>`
 
 > [!NOTE]
-> Gyakorlati például használhatja a [NYC Taxi dataset](http://www.andresmh.com/nyctaxitrips/) , majd tekintse át a című IPNB [NYC adatok wrangling IPython jegyzetfüzet és az SQL Server használatával](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) egy végpontok közötti segédlet az.
+> Gyakorlati példa, használhatja a [NYC Taxi adatkészlet](http://www.andresmh.com/nyctaxitrips/) , majd tekintse át a készülékén IPNB [NYC adatok konvertálása, az IPython Notebook és az SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) egy teljes körű útmutató az.
 > 
 > 
 
-## <a name="python"></a>Python SQL adatokba
-Python adatokba és szolgáltatások létrehozása, amikor az adatok az SQL Server használata esetén hasonló adatfeldolgozás pythonos környezetekben, az Azure BLOB, ahogy [Azure Blobadatok folyamat adatok tudományos környezetében](data-blob.md). Az adatok betöltve kell lennie az adatbázisból történő egy pandas DataFrame, és majd dolgozhatók további. Azt a dokumentum az adatbázishoz való kapcsolódás, illetve az adatok betöltését az ebben a szakaszban DataFrame folyamatán.
+## <a name="python"></a>A Python az SQL-adatok feltárása
+Python használatával az adatok feltárásához és szolgáltatások készítése, ha az adatokat az SQL Server hasonlít az adatfeldolgozás az Azure blob-be a Python, a dokumentált módon [Azure Blobadatok folyamat a data science környezetben](data-blob.md). Az adatok betöltve kell lennie az adatbázisból a pandas DataFrame-be, és akkor is feldolgozható további. Az adatbázishoz csatlakozással, és az adatok betöltését az adathalmaz, ebben a szakaszban a dokumentum azt.
 
-A következő kapcsolati karakterlánc-formátum használható Python pyodbc (csere kiszolgálónév, dbname, a felhasználónevet és jelszót az adott értékek) használatával az SQL Server-adatbázis csatlakozni:
+Csatlakozás SQL Server-adatbázis a Pythonnal pyodbc (cserélje le a kiszolgálónév, adatbázisnév, felhasználónév és jelszó az adott értékek) használatával a következő kapcsolati karakterlánc-formátum használható:
 
     #Set up the SQL Azure connection
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-A [Pandas könyvtár](http://pandas.pydata.org/) Python szolgáltatás széles választékának adatstruktúrák és adatok elemzésére szolgáló eszközöket ad adatkezelési Python programozáshoz. Az alábbi kód beolvassa az eredményt Pandas adatok keretbe egy SQL Server-adatbázist vissza:
+A [Pandas könyvtár](http://pandas.pydata.org/) pythonban adatkezelés Python programozási széles választékának datové struktury és az adatok elemzésére szolgáló eszközöket biztosít. Az alábbi kód beolvassa az eredményeket az SQL Server-adatbázisból egy Pandas adatkeretbe küldött:
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
 
-Most már használhatja a Pandas DataFrame, a témakörben tárgyalt [Azure Blobadatok folyamat adatok tudományos környezetében](data-blob.md).
+Most már használhatja a Pandas DataFrame a témakörben ismertetett [Azure Blobadatok folyamat a data science környezetben](data-blob.md).
 
-## <a name="the-team-data-science-process-in-action-example"></a>A művelet a példában az Team tudományos folyamat
-A Cortana Analytics folyamat egy nyilvános adatkészlet-végpontok közötti forgatókönyv például, [a csapat adatok tudományos folyamat működés közben: SQL Server használatával](sql-walkthrough.md).
+## <a name="the-team-data-science-process-in-action-example"></a>A művelet a példában a csoportos adatelemzési folyamat
+A Cortana Analytics-folyamat használatával egy nyilvános adatkészletet egy végpontok közötti forgatókönyv példa: [a csoportos adatelemzési folyamat működés közben: az SQL-kiszolgáló](sql-walkthrough.md).
 

@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 2c82007092f9ff93086d5caaf188f6922f4a8aea
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 888b9a256a68b77b91145bb3ccfeea820c97ccfa
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086182"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515374"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Fejlesztés az Azure Functions Visual Studio használatával  
 
@@ -29,7 +29,7 @@ Az Azure Functions Tools az alábbi előnyöket nyújtja:
 * Fejlesztés és üzembe helyezése előre lefordított C#-függvények. Előre lefordított függvények egy jobban hidegindítási teljesítményt biztosítanak, mint a C# parancsfájlalapú funkciók. 
 * A függvények C#-kód során a Visual Studio fejlesztési előnyeit a teljes. 
 
-Ez a cikk bemutatja, hogyan fejleszthet a függvények C#-ban az Azure Functions Tools for Visual Studio 2017 használatával. Azt is megtudhatja, hogyan a projekt közzététele az Azure-ba, a .NET-szerelvény.
+Ez a cikk részletesen ismerteti az Azure Functions Tools for Visual Studio 2017 használatával fejlesztése C# működik, és közzéteheti őket az Azure-bA. Mielőtt Ez a cikk el kell végeznie a [for Visual Studio Functions rövid](functions-create-your-first-function-visual-studio.md). 
 
 > [!IMPORTANT]
 > Ne keverje a helyi fejlesztési ugyanaz a függvényalkalmazás a portál fejlesztési. Amikor közzétesz egy helyi projektből a függvényalkalmazáshoz, a telepítési folyamat felülírja a portálon fejlesztett funkciók.
@@ -81,6 +81,9 @@ A projekt sablont hoz létre egy C#-projektben, telepíti a `Microsoft.NET.Sdk.F
 * **Host.JSON**: a funkciók gazdagép konfigurálását teszi lehetővé. Ezek a beállítások is alkalmazható, ha helyileg és az Azure-ban futó is. További információkért lásd: [host.json referencia](functions-host-json.md).
 
 * **Local.Settings.JSON**: megőrzi a függvények helyi futtatás során használt beállításokat. Az Azure nem használja ezeket a beállításokat, azokat a [Azure Functions Core Tools](functions-run-local.md). Ez a fájl használatával adja meg a funkciók számára szükséges változókat alkalmazás beállításait. Egy új elem hozzáadása a **értékek** tömb minden egyes kapcsolathoz, a functions-kötéseket a projekt által igényelt. További információkért lásd: [helyi beállításfájl](functions-run-local.md#local-settings-file) az Azure Functions Core Tools cikkben.
+
+    >[!IMPORTANT]
+    >Mivel a local.settings.json fájlban a titkos kulcsokat is tartalmazhatnak, a projekt forrásvezérlőből kell zárni. A **Másolás a kimeneti könyvtár** ezt a fájlt mindig kell beállítása **másolás, ha újabb**. 
 
 További információkért lásd: [funkciók hordozhatóosztálytár-projektjének](functions-dotnet-class-library.md#functions-class-library-project).
 
@@ -186,7 +189,7 @@ Az Azure Functions Core Tools használatával kapcsolatos további tudnivalóké
 
 A local.settings.json a hozzáadott minden beállítást is meg kell adni a függvényalkalmazáshoz az Azure-ban. Ezek a beállítások nem lesznek feltöltve automatikusan, a projekt közzétételekor.
 
-Töltse fel a szükséges beállításokat a függvényalkalmazáshoz az Azure-ban a legegyszerűbb módja az, hogy használja a **Alkalmazásbeállítások kezelése...**  hivatkozás, amely a projekt sikeres közzététel után jelenik meg. 
+Töltse fel a szükséges beállításokat a függvényalkalmazáshoz az Azure-ban a legegyszerűbb módja az, hogy használja a **Alkalmazásbeállítások kezelése...**  hivatkozás, amely a projekt sikeres közzététel után jelenik meg.
 
 ![](./media/functions-develop-vs/functions-vstools-app-settings.png)
 
@@ -194,11 +197,13 @@ Ez megjeleníti a **Alkalmazásbeállítások** párbeszédpanel a függvényalk
 
 ![](./media/functions-develop-vs/functions-vstools-app-settings2.png)
 
+**Helyi** jelenti. a beállítás értékének a local.settings.json fájlban, és **távoli** a függvényalkalmazáshoz az Azure-ban az aktuális beállítás.  Válasszon **beállítás hozzáadása** hozhat létre egy új alkalmazásbeállítást. Használja a **érték beszúrása helyi** hivatkozás másolása a beállítás értékét a **távoli** mező. Függőben lévő módosítások kerüljenek a helyi beállításokat fájlt, és a függvényalkalmazás kiválasztásakor **OK**.
+
 Alkalmazásbeállítások ezeket más módon is kezelhetők:
 
 * [Az Azure portal használatával](functions-how-to-use-azure-function-app-settings.md#settings).
 * [Használatával a `--publish-local-settings` publish beállítást, az az Azure Functions Core Tools](functions-run-local.md#publish).
-* [Az Azure CLI-vel](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). 
+* [Az Azure CLI-vel](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set).
 
 ## <a name="monitoring-functions"></a>Figyelési funkciók
 

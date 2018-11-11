@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 11/07/2018
 ms.author: danlep
-ms.openlocfilehash: 987cbcc642152a4077cc895ad06e43ac56113497
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 35e5d13ac358fa5edcb778253340de0f9e15c067
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544064"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281278"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Az Azure Batch-készlet számítási csomópontok Virtuálisgép-méretének kiválasztása
 
@@ -42,8 +42,14 @@ A virtuális gép konfigurációja a Batch-készleteket támogatja a Virtuálisg
 | A-sorozat | Standard_A0 |
 | B sorozat | Összes |
 
-M sorozatú virtuális gépek csak az alacsony prioritású csomópontok használata támogatott.
+A következő Virtuálisgép-méretek csak alacsony prioritású csomópontok támogatottak:
 
+| Család  | Támogatott méretek  |
+|---------|---------|
+| M sorozat | Standard_M64ms |
+| M sorozat | Standard m 128 s |
+
+Az M-sorozatú más Virtuálisgép-méretek jelenleg nem támogatott.
 
 ### <a name="pools-in-cloud-service-configuration"></a>A Felhőszolgáltatás konfigurációs készletek
 
@@ -55,6 +61,7 @@ A Felhőszolgáltatás konfigurációjában Batch-készleteket támogatja az ös
 | Av2-sorozat | Standard_A1_v2, Standard_A2_v2, Standard_A2m_v2 |
 
 ## <a name="restricted-vm-families"></a>Korlátozott Virtuálisgép-család
+
 A következő Virtuálisgép-családok kiosztható a Batch-készletekben, de egy adott kvótanövelést kell igényelnie (lásd: [Ez a cikk](batch-quota-limit.md#increase-a-quota)):
 * NCv2 sorozat
 * NCv3 sorozat

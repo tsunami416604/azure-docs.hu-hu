@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 32cebecbb9185250d7d295eab3074a76dcd6a8b9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: d21b6235c91a7d2f14b8b39c07891efe967ef572
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240494"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278242"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>A gyakori elérésű útvonal az Azure Diagnostics-adatok streamelés az Event Hubs használatával
 Az Azure diagnosztikai metrikák és naplók gyűjtésére felhőalapú szolgáltatások virtuális gépeken (VM) és az eredmények átvitele az Azure Storage rugalmas megoldásokat kínál. A 2016. március (SDK 2.9) időkereten belül kezdődően Diagnostics küldése az vlastní zdroje dat és adatátvitel gyakori elérésű útvonal másodpercek használatával [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -40,7 +40,7 @@ Event Hubs receieving Azure Diagnostics adatait a Cloud Services, a virtuális g
 * Az Azure Diagnostics bővítmény 1.6-os ([Azure SDK for .NET 2.9 használatát, vagy később](https://azure.microsoft.com/downloads/) célozza ez alapértelmezés szerint)
 * [A Visual Studio 2013-as vagy újabb](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
 * Az Azure Diagnostics használatával egy alkalmazásban meglévő konfigurációk egy *.wadcfgx* fájl- és a következő módszerek egyikét:
-  * A Visual Studio: [Konfiguruje se Diagnostika Pro az Azure Cloud Services és Virtual Machines](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
+  * A Visual Studio: [Konfiguruje se Diagnostika Pro az Azure Cloud Services és Virtual Machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
   * Windows PowerShell: [diagnosztika engedélyezése az Azure Cloud Services szolgáltatással a PowerShell használatával](../cloud-services/cloud-services-diagnostics-powershell.md)
 * Event Hubs-névtér kiosztása a cikkenként [Event Hubs használatának első lépései](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 

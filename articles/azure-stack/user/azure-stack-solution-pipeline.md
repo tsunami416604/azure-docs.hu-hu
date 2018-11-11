@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/30/2018
+ms.date: 11/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: a9e601d0bd9a4d7879ecd205488c6a901a464021
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 77f9e52da8ada9cdf56d4a710bba65492cc17f75
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419834"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280741"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Oktatóanyag: Alkalmazások telepítése az Azure és az Azure Stackben
 
@@ -292,7 +292,7 @@ Használatával a következő hozzárendelést szolgáltatás kapcsolatot hozhat
 | Előfizetés neve | name@contoso.com | Az Azure Stack felhasználói előfizetés neve |
 | Egyszerű szolgáltatás ügyfél-azonosító | FF74AACF-XXXX-4776-OS-93FC-C63E6E021D59 | A résztvevő-Azonosítóval [ez](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal) szakasz ebben a cikkben. |
 | Egyszerű szolgáltatásnév kulcsa | THESCRETGOESHERE = | A kulcs az ugyanebben a cikkben (vagy a jelszót, ha a szkriptet használta). |
-| Bérlőazonosító | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | A Bérlőazonosító kérheti le az alábbi utasítás a lekérése a bérlő azonosítóját. A Bérlőazonosító kérheti le az utasítás a következő [a Bérlőazonosító beszerzése](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id).  |
+| Bérlőazonosító | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | A Bérlőazonosító kérheti le az utasítás a következő [a Bérlőazonosító beszerzése](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id).  |
 | Kapcsolat: | Nincs ellenőrizve | Ellenőrizze az egyszerű szolgáltatás kapcsolati beállításokat. |
 
 Most, hogy a végpont a létrehozás, a DevOps-kapcsolat Azure Stackhez készen áll a használatra. A fordító-ügynökhöz az Azure Stackben fejlesztési és üzemeltetési útmutatást olvas, és ezután az ügynök közvetíti a kommunikációt az Azure Stack-végpontjának információit.
@@ -317,7 +317,7 @@ Használatával a következő hozzárendelést szolgáltatás kapcsolatot hozhat
 | Előfizetés neve | name@contoso.com | Az Azure Stack felhasználói előfizetés neve |
 | Egyszerű szolgáltatás ügyfél-azonosító | FF74AACF-XXXX-4776-OS-93FC-C63E6E021D59 | Az egyszerű szolgáltatás ügyfél-Azonosítót hozott létre az AD FS-hez. |
 | Tanúsítvány | `<certificate>` |  A tanúsítványfájl konvertálása PFX PEM. Tanúsítvány PEM-fájl tartalmának illessze be ezt a mezőt. <br> PEM konvertálása PFX:<br>`openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>` |
-| Bérlőazonosító | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | A Bérlőazonosító kérheti le az alábbi utasítás a lekérése a bérlő azonosítóját. A Bérlőazonosító kérheti le az utasítás a következő [a Bérlőazonosító beszerzése](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id). |
+| Bérlőazonosító | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | A Bérlőazonosító kérheti le az utasítás a következő [a Bérlőazonosító beszerzése](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id). |
 | Kapcsolat: | Nincs ellenőrizve | Ellenőrizze az egyszerű szolgáltatás kapcsolati beállításokat. |
 
 Most, hogy a végpont a létrehozás, az Azure DevOps-kapcsolat Azure Stackhez készen áll a használatra. A fordító-ügynökhöz az Azure Stackben utasításokat olvas be az Azure DevOps, és ezután az ügynök közvetíti a kommunikációt az Azure Stack-végpontjának információit.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 43ff945747915edb76da8b593b232e86778374ce
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f7122c6147af2ed1af1f3b5e08458fd73f9aef6d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958508"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279102"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával riasztások  
 
@@ -57,7 +57,7 @@ Részletes tovább lépésenkénti útmutató, amellyel az Azure portal felület
 
    > [!NOTE]
 
-   > Lista importálhat analytics-lekérdezéshez, mivel jel típusa – riasztások **Log (mentett lekérdezés)**, a fenti ábrán látható módon. Így a felhasználók tökéletes a lekérdezést az Analyticsben és mentheti későbbi használatra, a riasztások – olvashat részletesebben használatával érhető el lekérdezés mentése [a log analytics naplóbeli keresés használatával](../log-analytics/log-analytics-log-searches.md) vagy [megosztott lekérdezést az application insights szolgáltatásban Analytics](../log-analytics/log-analytics-queries.md). 
+   > Lista importálhat analytics-lekérdezéshez, mivel jel típusa – riasztások **Log (mentett lekérdezés)**, a fenti ábrán látható módon. Így a felhasználók tökéletes a lekérdezést az Analyticsben és mentheti későbbi használatra, a riasztások – olvashat részletesebben használatával érhető el lekérdezés mentése [a log analytics naplóbeli keresés használatával](../log-analytics/log-analytics-queries.md) vagy [megosztott lekérdezést az application insights szolgáltatásban Analytics](../log-analytics/log-analytics-queries.md). 
 
 1.  *Naplóriasztások*: a kijelölt riasztási lekérdezés is fel kell tüntetni **keresési lekérdezés** mező; Ha a lekérdezés szintaxisa helytelen a mezőben az hiba vörös színnel jelenik meg. Ha a lekérdezés szintaxisa helyes - referenciaként előzményadatok a megadott lekérdezés látható gráfként kapcsolóval, hogy a Teljesítménybeállítások az időtartomány utolsó 6 óra múlt héten.
 

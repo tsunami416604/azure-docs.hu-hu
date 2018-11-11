@@ -9,16 +9,33 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: 804076fdc653622336ac3b99c15df0bc027510d9
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 0129f186736ad2e4d6ea5c94c632bab73b92002c
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730146"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514689"
 ---
 # <a name="microsoft-genomics-common-questions"></a>A Microsoft Genomics: Gyakori kérdések
 
 Ez a cikk a leggyakoribb lekérdezések, előfordulhat, hogy rendelkezik a Microsoft Genomics kapcsolódó sorolja fel. A Microsoft Genomics szolgáltatásba további információkért lásd: [Mi a Microsoft Genomics?](overview-what-is-genomics.md). Hibaelhárítással kapcsolatos további információkért lásd: a [hibaelhárítási útmutatója](troubleshooting-guide-genomics.md). 
+
+## <a name="what-is-the-microsoft-genomics-service-gatk-4-promotion"></a>Mi a Microsoft Genomics szolgáltatás GATK 4 előléptetés?
+2018 a naptári év végéig 20 WGS fut GATK4 költségek nélkül kínál a Microsoft Genomics szolgáltatással. Ez az ajánlat register részt [Itt](https://aka.ms/msgatk4). 
+
+### <a name="what-are-the-common-issues-i-might-encounter-while-running-the-microsoft-genomics-service-gatk4-promotion"></a>Mik azok a gyakori problémák jutok előfordulhat, hogy a futtatásakor a Microsoft Genomics szolgáltatás GATK4 támogatása
+Itt látható az esetleg felmerülő gyakori hibák és a megoldást ajánlott alkalmazni:
+
+| **üzenet**                                                                                                                                                                                    | **OK**                                                                                                    | **Felbontás**                                                                                                                                                                                                       |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `gatk4-promo` a fiók nincs engedélyezve. További információkért lásd: https://docs.microsoft.com/en-us/azure/genomics/frequently-asked-questions-genomics                               | Próbált GATK4 a munkafolyamatok futtatásához a Microsoft Genomics szolgáltatással aktiválás nélkül.       | Látogasson el [Itt](https://aka.ms/msgatk4) a fiók aktiválásához. Vegye figyelembe, hogy a próbaidőszak végén található a 2018-as év. Nem tudja aktiválni a saját fiókját a promóciós fut ezen időpont utáni. |
+| Köszönjük, hogy közben `gatk4-promo`. A próbaidőszak véget ért. További információ https://docs.microsoft.com/en-us/azure/genomics/frequently-asked-questions-genomics                  | Az év végén a GATK4 próbaverzió lejárt, és szeretne meghívni a `gatk4-promo` folyamat_neve.  | Váltson a folyamat_neve paraméter, `gatk4`, hanem `gatk4-promo`. Ez a hivatalos gatk4 verziót, és a munkafolyamat számítjuk fel, ha ezt a paramétert használja.                                         |
+| Köszönjük, hogy közben `gatk4-promo` minden, a lefoglalt futtatások használja. További információkért lásd: https://docs.microsoft.com/en-us/azure/genomics/frequently-asked-questions-genomics | Sikeresen elküldte az összes a promóciós 20 GATK4 futtat.                               | Küldje el minden olyan új gatk4 fut, folyamat_neve argumentum értéke `gatk4` helyett `gatk4-promo`. Ez a paraméter használata esetén a munkafolyamat lesznek számlázva.                                                          |        
+
+
+## <a name="can-i-run-gatk4-workflows-on-microsoft-genomics-without-signing-up-for-the-gatk4-promotion"></a>Futtathatók GATK4 munkafolyamatokat a Microsoft Genomics GATK4 elősegítő regisztráció nélkül?
+Igen, a Microsoft Genomics szolgáltatás a config.txt fájlban adja meg, a folyamat_neve `gatk4`. Vegye figyelembe, hogy számlázása normál díjszabása nem módosul, és az ingyenes 20 fut. nem vonatkozik a Microsoft Genomics-fiók.
+
 
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>Mit jelent az SLA-t a Microsoft Genomics?
@@ -48,7 +65,7 @@ Nyissa meg az Azure Portalon, és a Genomics-fiók lap megnyitásához. Alatt a 
 Nyissa meg az Azure Portalon, és a Genomics-fiók lap megnyitásához. Alatt a **felügyeleti** fejléc kiválasztása **hozzáférési kulcsok**. Itt keresse meg az API URL-cím és a hozzáférési kulcsokat is.
 
 ## <a name="why-do-i-need-two-access-keys"></a>Miért kell a két hozzáférési kulcsot?
-Abban az esetben, ha frissíti a (regenerate) két kulcsot kell azokat a szolgáltatás használatának megszakítása nélkül. Ha például szeretné frissíteni az első kulcsot. Ebben az esetben vált minden új munkafolyamatok a második kulcsot használ. Ezután Várjon, amíg befejezte volna a már futó munkafolyamatok az első kulcsot. Csak ezután frissítse a kulcsot.
+Abban az esetben, ha frissíti a (regenerate) két kulcsot kell azokat a szolgáltatás használatának megszakítása nélkül. Például ha meg szeretné frissíteni az első kulcsot, kell minden olyan új munkafolyamatot, amely a második kulcsot használja. Ezután Várjon, amíg befejeződik, mielőtt frissítené az első kulcsot az első kulcsot használó összes munkafolyamatot.
 
 ## <a name="do-you-save-my-storage-account-keys"></a>Menti a tárfiók kulcsait?
 A tárfiók kulcsát a Microsoft Genomics szolgáltatás a bemeneti fájlok olvasása és írása a kimeneti fájlok rövid távú hozzáférési jogkivonatok létrehozására szolgál. A jogkivonat alapértelmezett időtartama érték 48 óra. A jogkivonat időtartama is módosítható a `-sas/--sas-duration` a Küldés parancsot; a beállítás értéke (óra).

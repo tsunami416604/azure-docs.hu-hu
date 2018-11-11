@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: librown
-ms.openlocfilehash: 81c249c8dc8475428f4cb0014e57f09e28a3d9af
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 3a9fba644bd379f3f54cf07cf35c0a54029756da
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804327"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287183"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Jelszó nélküli telefonnal bejelentkezni a Microsoft Authenticator alkalmazással (nyilvános előzetes verzió)
 
@@ -37,11 +37,16 @@ Nyilvános előzetes verzióként, a rendszergazda először hozzá kell egy sza
 
 ### <a name="steps-to-enable"></a>További lépések elvégzésével
 
-1. Telepítse a [az Azure Active Directory V2 PowerShell modul nyilvános előzetes verziója](https://www.powershellgallery.com/packages/AzureADPreview/).  
-2. A PowerShellben futtassa a két parancsot:
-   1. `Connect-AzureAD`
-      1. A hitelesítési párbeszédpanelen jelentkezzen be egy olyan fiókkal, a bérlőben. A fiók vagy biztonsági rendszergazdai vagy globális rendszergazdai kell lennie.
-   2. `New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn`
+Győződjön meg arról, hogy a legújabb verzióját az Azure Active Directory V2 PowerShell modul nyilvános előzetes kiadását. Kezdésként érdemes lehet eltávolítani, majd telepítse a következő parancsok végrehajtásával ellenőrizheti:
+
+1. `Uninstall-Module -Name AzureADPreview`
+2. `Install-Module -Name AzureADPreview`
+
+A jelszó nélküli telefon bejelentkezési előzetes verzió a következő PowerShell-parancsokkal engedélyezheti:
+
+1. `Connect-AzureAD`
+   1. A hitelesítési párbeszédpanelen jelentkezzen be egy olyan fiókkal, a bérlőben. A fiók vagy biztonsági rendszergazdai vagy globális rendszergazdai kell lennie.
+1. `New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn`
 
 ## <a name="how-do-my-end-users-enable-phone-sign-in"></a>A végfelhasználók hogyan tegye lehetővé telefonnal bejelentkezni?
 
@@ -61,7 +66,7 @@ Miután a felhasználó rendelkezik az MFA-fiókot állítsa be a Microsoft Auth
 
 ### <a name="ad-fs-integration"></a>AD FS-integráció
 
-Amikor egy felhasználó engedélyezte a Microsoft Authenticator jelszó nélküli hitelesítő adatokat, az adott felhasználó hitelesítési mindig alapértelmezés szerint egy jóváhagyási értesítést küld. A logikai meggátolja a felhasználókat a hibrid bérlő irányítja az ADFS-be a bejelentkezés-ellenőrző a felhasználó egy további lépést tart nélkül kattintson a "Inkább jelszó használata." Ez a folyamat is megkerülik bármilyen helyszíni feltételes hozzáférési szabályzatokat, és átmenő hitelesítési folyamatok. A kivétel ez alól egy login_hint-e megadva, a felhasználó automatikusan továbbítja az AD FS-hez, és megkerülése arra, hogy a jelszó nélküli hitelesítő adatokat használja.
+Amikor egy felhasználó engedélyezte a Microsoft Authenticator jelszó nélküli hitelesítő adatokat, az adott felhasználó hitelesítési mindig alapértelmezés szerint egy jóváhagyási értesítést küld. A logikai meggátolja a felhasználókat a hibrid bérlő irányítja az ADFS-be a bejelentkezés-ellenőrző a felhasználó egy további lépést tart nélkül kattintson a "Inkább jelszó használata." Ez a folyamat is megkerülik bármilyen helyszíni feltételes hozzáférési szabályzatokat, és átmenő hitelesítési folyamatok. A kivétel ez alól egy login_hint-e megadva, a felhasználó autoforwarded az AD FS-hez, és megkerülése arra, hogy a jelszó nélküli hitelesítő adatokat használja.
 
 ### <a name="azure-mfa-server"></a>Az Azure MFA-kiszolgáló
 

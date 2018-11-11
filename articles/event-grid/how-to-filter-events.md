@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6d7e9e5a4c60c16c505b0b69f14d22ebd868c1c0
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: fd0b2bda91ecb9b717f4cfe366c45bc95b21fd8e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748221"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277562"
 ---
 # <a name="filter-events-for-event-grid"></a>Az Event Griddel kapcsolatos események szűrése
 
@@ -181,30 +181,17 @@ A következő Resource Manager-sablon példa létrehoz egy előfizetést egy blo
 
 ## <a name="filter-by-operators-and-data"></a>Operátorok és az adatok szűrése
 
-Speciális szűrés használatához telepítenie kell egy előzetes bővítmény Azure CLI-hez. Használhat [cloud Shell](/azure/cloud-shell/quickstart) vagy Azure parancssori felület helyi telepítése.
+A nagyobb rugalmasság a szűrést operátorok és az események szűrése adattulajdonságok is használhatja.
 
-### <a name="install-extension"></a>A bővítmény telepítése
-
-A cloud Shell:
-
-* Ha korábban telepítette a bővítményt, frissítése `az extension update -n eventgrid`
-* Ha korábban még nem telepítette a bővítményt, telepítse azt `az extension add -n eventgrid`
-
-Helyi telepítéséhez:
-
-1. Azure CLI helyileg eltávolítását.
-1. Telepítse a [legújabb verzió](/cli/azure/install-azure-cli) Azure parancssori felület.
-1. Indítsa el a parancssori ablakban.
-1. A bővítmény korábbi verzióinak eltávolítása `az extension remove -n eventgrid`
-1. A bővítmény telepítése `az extension add -n eventgrid`
-
-Most már készen áll a Speciális szűrés használatához.
+[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ### <a name="subscribe-with-advanced-filters"></a>Fizessen elő a speciális szűrők
 
 Az operátorok és kulcsot is, használhatja a Speciális szűrés kapcsolatos további információkért lásd: [Speciális szűrés](event-filtering.md#advanced-filtering).
 
-A következő példában létrehozunk egy egyéni témakört. Feliratkozik az egyéni témakörre, és azt az objektum egy érték alapján szűri. Az események, amelyek a kék szín tulajdonsága, vagy a piros, zöld küldhetők az előfizetés.
+Ezek a példák egy egyéni témakör létrehozása. Ezeket az egyéni témakörre való feliratkozás, és az objektum az érték szerinti szűréshez. Az események, amelyek a kék szín tulajdonsága, vagy a piros, zöld küldhetők az előfizetés.
+
+Azure CLI esetén használja az alábbi parancsot:
 
 ```azurecli-interactive
 topicName=<your-topic-name>
@@ -225,9 +212,33 @@ az eventgrid event-subscription create \
 
 Figyelje meg, hogy egy [lejárati dátum](concepts.md#event-subscription-expiration) van beállítva az előfizetés.
 
+PowerShell esetén használja az alábbi parancsot:
+
+```azurepowershell-interactive
+$topicName = <your-topic-name>
+$endpointURL = <endpoint-URL>
+
+New-AzureRmResourceGroup -Name gridResourceGroup -Location eastus2
+New-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Location eastus2 -Name $topicName
+
+$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name $topicName).Id
+
+$expDate = '<mm/dd/yyyy hh:mm:ss>' | Get-Date
+$AdvFilter1=@{operator="StringIn"; key="Data.color"; Values=@('blue', 'red', 'green')}
+
+New-AzureRmEventGridSubscription `
+  -ResourceId $topicid `
+  -EventSubscriptionName <event_subscription_name> `
+  -Endpoint $endpointURL `
+  -ExpirationDate $expDate `
+  -AdvancedFilter @($AdvFilter1)
+```
+
 ### <a name="test-filter"></a>Teszt szűrő
 
-A szűrő teszteléséhez, és állítsa be a zöld szín mező küldünk egy eseményt.
+A szűrő teszteléséhez, és állítsa be a zöld szín mező küldünk egy eseményt. Mivel a zöld pedig egy értéket a szűrőben, az eseményt a rendszer továbbítja a végpontot.
+
+Azure CLI esetén használja az alábbi parancsot:
 
 ```azurecli-interactive
 topicEndpoint=$(az eventgrid topic show --name $topicName -g gridResourceGroup --query "endpoint" --output tsv)
@@ -238,17 +249,60 @@ event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/
 curl -X POST -H "aeg-sas-key: $key" -d "$event" $topicEndpoint
 ```
 
-A rendszer a végponthoz.
+PowerShell esetén használja az alábbi parancsot:
 
-Egy olyan forgatókönyvet, ahol nem érkezik meg az esemény teszteléséhez küldhet egy eseményt a szín a mezőben az sárga.
+```azurepowershell-interactive
+$endpoint = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name $topicName).Endpoint
+$keys = Get-AzureRmEventGridTopicKey -ResourceGroupName gridResourceGroup -Name $topicName
+
+$eventID = Get-Random 99999
+$eventDate = Get-Date -Format s
+
+$htbody = @{
+    id= $eventID
+    eventType="recordInserted"
+    subject="myapp/vehicles/cars"
+    eventTime= $eventDate
+    data= @{
+        model="SUV"
+        color="green"
+    }
+    dataVersion="1.0"
+}
+
+$body = "["+(ConvertTo-Json $htbody)+"]"
+
+Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
+```
+
+Egy olyan forgatókönyvet, ahol nem érkezik meg az esemény teszteléséhez küldhet egy eseményt a szín a mezőben az sárga. Sárga nem egy, az eseményt az előfizetés nem lett elküldve az előfizetésben megadott értéket.
+
+Azure CLI esetén használja az alábbi parancsot:
 
 ```azurecli-interactive
 event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/vehicles/cars", "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'", "data":{ "model": "SUV", "color": "yellow"},"dataVersion": "1.0"} ]'
 
 curl -X POST -H "aeg-sas-key: $key" -d "$event" $topicEndpoint
 ```
+PowerShell esetén használja az alábbi parancsot:
 
-Sárga nem egy, az eseményt az előfizetés nem lett elküldve az előfizetésben megadott értéket.
+```azurepowershell-interactive
+$htbody = @{
+    id= $eventID
+    eventType="recordInserted"
+    subject="myapp/vehicles/cars"
+    eventTime= $eventDate
+    data= @{
+        model="SUV"
+        color="yellow"
+    }
+    dataVersion="1.0"
+}
+
+$body = "["+(ConvertTo-Json $htbody)+"]"
+
+Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
+```
 
 ## <a name="next-steps"></a>További lépések
 

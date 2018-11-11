@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
 ms.date: 11/07/2018
-ms.openlocfilehash: 212488b74ba726012966787c7b2de633414e96a4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 59a35cd7ca3af446853d518fc7e7d48d2321ff10
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245341"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278973"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>Folyamatok és az Azure Machine Learning
 
@@ -43,6 +43,8 @@ Eltérő lépésekkel lehetővé teszi csak azokat a lépéseket, a munkafolyama
 Miután a folyamat arra tervezték, nincs gyakran több finomhangoló a folyamat a betanítási hurok körül. Ha újra futtathatja egy folyamatot, a futtatási ugrik a lépéseket, amelyek újra kell futtatnia, például egy frissített tanítási szkriptet, és kihagyja a mi nem változott. Az azonos paradigmát változatlan parancsfájlok a lépés végrehajtásához szükséges vonatkozik. 
 
 Az Azure Machine Learning használható különböző eszközökre és keretrendszereket, mint a Microsoft Cognitive Toolkit, tensorflow-hoz vagy az egyes lépések a folyamatban. Az Azure koordináták között a különböző [számítási céljainak](concept-azure-machine-learning-architecture.md) használhatja, hogy a köztes adatokat az alsóbb rétegbeli számítási példányokkal rendelkező könnyen megoszthatók. 
+
+Is [követheti a metrikákat, a folyamat kísérletek](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-track-experiments) közvetlenül az Azure Portalon. 
 
 ## <a name="key-advantages"></a>Főbb előnyök
 

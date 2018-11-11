@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: dobett
-ms.openlocfilehash: 2c7857cd787e9298e94def5341d61238c5bb3a78
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 00b093b5567d85e7f12373020dfaa5f3ca7b0530
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321168"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514400"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Ismerkedés az IoT Hub-modulidentitással és -modulikerrel a portál és a .NET eszköz használata mellett
 
@@ -24,8 +24,9 @@ ms.locfileid: "49321168"
 
 Az oktatóanyag során a következőket fogja elsajátítani:
 
-1. Modulidentitás létrehozása a portálon; 
-1. Moduliker frissítése az eszközről a .NET eszköz SDK-jának használatával.
+1. Hogyan modul identitás létrehozása a portálon. 
+
+2. hogyan használható a .NET SDK eszközfrissítés ikermodulja az eszközről.
 
 > [!NOTE]
 > Az Azure IoT SDK-kat használhatja az eszközökön és a megoldás háttérrendszerén futó alkalmazások összeállításához egyaránt. Ezekről az [Azure IoT SDK-k][lnk-hub-sdks] című témakörben talál további információt.
@@ -36,21 +37,17 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 * Visual Studio 2015 vagy Visual Studio 2017.
 * Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot][lnk-free-trial] néhány perc alatt.)
 
-[!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
+## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
-## <a name="create-a-device-identity-in-the-portal"></a>Eszközidentitás létrehozása a portálon
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-Ezzel az IoT Hub készen áll. Nyissa meg a [portált](https://portal.azure.com), és keresse meg az IoT Hubot. Kattintson az IoT-eszközök lehetőségre, majd a Hozzáadás gombra az eszközidentitás létrehozásához. Nevezze el a következőképpen: **MyFirstDevice**. 
+### <a name="retrieve-connection-string-for-iot-hub"></a>Az IoT hub kapcsolati karakterlánc
 
-  ![Eszközidentitás létrehozása][8]
+[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
 
-A mentést követően az eszközidentitási listában láthatja, hogy a MyFirstDevice identitás sikeresen létrejött.
+## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hubban
 
-  ![Létrehozott eszköz azonosítója][11]
-
-Ezután kattintson a sorra. Ekkor megjelennek az eszközadatok.
-
-  ![Eszköz adatai][10]
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="create-a-module-identity-in-the-portal"></a>Modulidentitás létrehozása a portálon
 
@@ -173,14 +170,11 @@ További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatóköny
 
 
 <!-- Images. -->
-[8]:./media\iot-hub-portal-csharp-module-twin-getstarted/create-device-id.JPG
-[9]:./media\iot-hub-portal-csharp-module-twin-getstarted/create-module-id.JPG
-[10]:./media\iot-hub-portal-csharp-module-twin-getstarted/device-details.JPG
-[11]:./media\iot-hub-portal-csharp-module-twin-getstarted/device-id-created.JPG
-[12]:./media\iot-hub-portal-csharp-module-twin-getstarted/module-details.JPG
-[13]: ./media\iot-hub-csharp-csharp-module-twin-getstarted/update-twins-csharp1.JPG
-[14]: ./media\iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png
-[15]: ./media\iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
+[9]:./media/iot-hub-portal-csharp-module-twin-getstarted/create-module-id.JPG
+[12]:./media/iot-hub-portal-csharp-module-twin-getstarted/module-details.JPG
+[13]: ./media/iot-hub-csharp-csharp-module-twin-getstarted/update-twins-csharp1.JPG
+[14]: ./media/iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png
+[15]: ./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
 <!-- Links -->
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/

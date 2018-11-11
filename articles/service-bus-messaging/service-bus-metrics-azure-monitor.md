@@ -7,14 +7,14 @@ author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 7d4b4a98c38757eb33c3f8713f662ed52a686924
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: f02fa8ff80915c23f70db09a1dee393010795132
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978655"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277443"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Az Azure Service Bus-metrikák az Azure Monitor (előzetes verzió)
 
@@ -29,7 +29,7 @@ Az Azure Monitor egységes felhasználói felületet biztosít a különböző A
 
 Az Azure Monitor hozzáférés metrikák több módot is biztosít. Mindkét hozzáférési metrikák keresztül is a [az Azure portal](https://portal.azure.com), vagy használja az Azure Monitor API-k (REST és .NET) és az elemzési megoldások, például a Log Analytics és az Event Hubs. További információkért lásd: [figyelési adatokat gyűjtött az Azure Monitor](../monitoring/monitoring-data-collection.md).
 
-Alapértelmezés szerint engedélyezve vannak a metrikákat, és elérheti az utolsó 30 nap adatait. Ha szeretne egy hosszabb ideig megőrizni az adatokat, úgy archiválhatók metrikák adatai egy Azure Storage-fiókhoz. Ennek a konfigurációja a [diagnosztikai beállítások](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) az Azure monitorban.
+Alapértelmezés szerint engedélyezve vannak a metrikákat, és elérheti az utolsó 30 nap adatait. Ha szeretne egy hosszabb ideig megőrizni az adatokat, úgy archiválhatók metrikák adatai egy Azure Storage-fiókhoz. Ez az érték van konfigurálva a [diagnosztikai beállítások](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) az Azure monitorban.
 
 ## <a name="access-metrics-in-the-portal"></a>Hozzáférés mérőszámok portálon
 
@@ -108,6 +108,54 @@ Az Azure Service Bus a következő dimenziókat támogatja a mérőszámok az Az
 |Dimenzió neve|Leírás|
 | ------------------- | ----------------- |
 |EntityName| A Service Bus a névtérben üzenetküldési entitások támogatja.|
+
+## <a name="set-up-alerts-on-metrics"></a>Állítsa be a riasztások a metrikák
+
+1. Az a **metrikák** lapján a **Service Bus-Namespace** lapon jelölje be **riasztások konfigurálása**. 
+
+    ![Metrikák lapon – a riasztások menüből konfigurálása](./media/service-bus-metrics-azure-monitor/metrics-page-configure-alerts-menu.png)
+2. Válassza ki **cél kiválasztása**, és a következő műveleteket hajthatja végre a a **válasszon ki egy erőforrást** oldalon: 
+    1. Válassza ki **Service Bus-névterek** számára a **szűrés erőforrástípus szerint** mező. 
+    2. Válassza ki az előfizetését a **előfizetés-szűrő** mező.
+    3. Válassza ki a **service bus-névtér** a listából. 
+    4. Válassza a **Done** (Kész) lehetőséget. 
+    
+        ![Névtér kiválasztása](./media/service-bus-metrics-azure-monitor/select-namespace.png)
+1. Válassza ki **adja meg a feltételeket**, és a következő műveleteket hajthatja végre a a **jellogika konfigurálása** oldalon:
+    1. Válassza ki **metrikák** a **típus jelezze**. 
+    2. Válasszon egy olyan jelet. Például: **hibák (előzetes verzió) szolgáltatás**. 
+
+        ![Válassza ki a kiszolgáló-hibák](./media/service-bus-metrics-azure-monitor/select-server-errors.png)
+    1. Válassza ki **nagyobb** a **feltétel**.
+    2. Válassza ki **teljes** a **idő összesítése**. 
+    3. Adja meg **5** a **küszöbérték**. 
+    4. Válassza a **Done** (Kész) lehetőséget.    
+
+        ![Adja meg a feltétel](./media/service-bus-metrics-azure-monitor/specify-condition.png)    
+1. A a **létrehozás szabály** lapon, bontsa ki a **riasztás részleteinek megadása**, és hajtsa végre a következőket:
+    1. Adjon meg egy **neve** a riasztás. 
+    2. Adjon meg egy **leírás** a riasztás.
+    3. Válassza ki **súlyossági** a riasztás. 
+
+        ![Riasztás részletei](./media/service-bus-metrics-azure-monitor/alert-details.png)
+1. A a **létrehozás szabály** lapon, bontsa ki a **műveleti csoport megadása**, jelölje be **új műveletcsoport**, és a következő műveleteket hajthatja végre a a **hozzáadása művelet csoport lap**. 
+    1. Adjon meg egy nevet a műveletcsoport.
+    2. Adja meg a műveletcsoport rövid neve. 
+    3. Válassza ki előfizetését. 
+    4. Válasszon erőforráscsoportot. 
+    5. Adja meg a forgatókönyv **e-mailt** a **MŰVELETNÉV**.
+    6. Válassza ki **e-mailek és SMS és leküldéses/Hangvétel** a **MŰVELETTÍPUS**. 
+    7. Válassza ki **részleteinek szerkesztése**. 
+    8. Az a **e-mailek és SMS és leküldéses/Hangvétel** lapon, tegye a következőket:
+        1. Válassza ki **E-mail**. 
+        2. Írja be a **e-mail-cím**. 
+        3. Kattintson az **OK** gombra.
+
+            ![Riasztás részletei](./media/service-bus-metrics-azure-monitor/add-action-group.png)
+        4. Az a **műveleti csoport hozzáadása** lapon jelölje be **OK**. 
+1. Az a **létrehozás szabály** lapon jelölje be **riasztási szabály létrehozása**. 
+
+    ![Riasztási szabály gomb létrehozása](./media/service-bus-metrics-azure-monitor/create-alert-rule.png)
 
 ## <a name="next-steps"></a>További lépések
 

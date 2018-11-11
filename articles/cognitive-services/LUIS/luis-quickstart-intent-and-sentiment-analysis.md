@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: ff5a47f977f34535c5ad1fde7e6cac5995e7f7dd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 95d1c4ffe76cf4c652f347014a838f1250c0ca15
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031458"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277477"
 ---
 # <a name="tutorial-9--extract-sentiment-of-overall-utterance"></a>9. oktatóanyag: Kimondott szöveg általános hangulatának kinyerése
 Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan nyerhető ki pozitív, negatív vagy semleges érzelem a kimondott szövegekből. A hangulat meghatározása a teljes kimondott szövegből történik.
@@ -60,7 +60,7 @@ Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforr
 ## <a name="employeefeedback-intent"></a>Az EmployeeFeedback szándék 
 Adjon hozzá egy új szándékot a vállalat tagjaitól származó alkalmazotti visszajelzések rögzítéséhez. 
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget.
 

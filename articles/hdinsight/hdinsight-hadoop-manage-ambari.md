@@ -2,19 +2,19 @@
 title: Figyelése és felügyelete az Azure HDInsight az Ambari webes felhasználói felülettel
 description: Ismerje meg, hogyan figyelheti és Linux-alapú HDInsight-fürtök kezelése az Ambari használatával. Ebben a dokumentumban megismerheti, hogyan használhatja a mellékelt a HDInsight-fürtök az Ambari webes felhasználói Felületet.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/23/2018
-ms.author: jasonh
-ms.openlocfilehash: 3f2c9a246a7252241ffb65a4fa8545ba84e81df8
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 11/06/2018
+ms.author: hrasheed
+ms.openlocfilehash: 1e17412636a904508352370bc7292a7d64bac6bc
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43096467"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280436"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-web-ui"></a>HDInsight-fürtök kezelése az Ambari webes felhasználói felület használatával
 
@@ -224,7 +224,7 @@ Egy szolgáltatás konfigurálásához használja az alábbi lépéseket:
 
 3. Módosíthatja a konfigurációt, és válassza a megjelenő mezőket használja **mentése**. Vagy válassza ki az előző konfigurációt, és válassza **legyen ez az aktuális** visszaállítása az előző beállításokat.
 
-## <a name="ambari-views"></a>Ambari-nézetek
+## <a name="ambari-views"></a>Ambari Views
 
 Ambari-nézetek lehetővé teszik a felhasználói felületi elemeket illeszkedik az Ambari webes felhasználói felület használatával a fejlesztők a [Ambari-nézetek keretrendszer](https://cwiki.apache.org/confluence/display/AMBARI/Views). HDInsight Hadoop-fürt típusú a következő nézeteket biztosítja:
 

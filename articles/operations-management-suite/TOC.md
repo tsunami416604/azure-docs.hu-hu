@@ -3,7 +3,7 @@
 
 # Bevezetés
 ## [Log Analytics](../log-analytics/log-analytics-get-started.md)
-## [Automatizálás](../automation/automation-offering-get-started.md)
+## [Automatizálás](/azure/automation/)
 ## [Biztonsági mentés](../backup/backup-introduction-to-azure-backup.md)
 ## [Site Recovery](../site-recovery/site-recovery-overview.md)
 
@@ -11,7 +11,7 @@
 # Útmutató
 
 ## Elemzés
-### [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+### [Log Analytics](../log-analytics/log-analytics-queries.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ## Automatizálás
 ### [Az Azure Automation áttekintése](../automation/automation-intro.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 

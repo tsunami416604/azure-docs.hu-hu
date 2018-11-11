@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2018
+ms.date: 11/09/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: 8e8518cdf95e1b97bd4b641322c1b2a3fdc3bf9e
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 27dbd4215deef6574622ffcd2c62a64503459258
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282458"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515760"
 ---
 # <a name="asdk-release-notes"></a>ASDK kibocsátási megjegyzései  
 Ez a cikk ismerteti fejlesztései, javításokat és ismert problémák az Azure Stack Development Kit (ASDK). Ha nem biztos abban, hogy melyik verziót futtatja, akkor az [ellenőrizhető a portál használatával](.\.\azure-stack-updates.md#determine-the-current-version).
@@ -46,7 +46,7 @@ További információkért lásd: [syslog-továbbítás az Azure Stack](../azure
 <!-- TBD - IS ASDK --> 
 - Kijavítva, amelyben létrehozta a virtuális gépek az Azure Stack felhasználói portál és a portálon jelenik meg, hogy a DS sorozatú virtuális gép csatlakoztathat adatlemezek száma helytelen. DS sorozatú virtuális gépek, az Azure-konfiguráció lehetővé teszi tetszőleges számú adatlemezeket.
 
-- A következő felügyelt lemez problémák 1809 javított, és a 1808 is megoldott [Azure Stack gyorsjavítás 1.1808.5.110](https://support.microsoft.com/help/4468920/): 
+- A következő felügyelt lemez problémák 1809 javított, és a 1808 is megoldott [Azure Stack gyorsjavítás 1.1808.7.113](https://support.microsoft.com/help/4471992/): 
 
    <!--  2966665 – IS, ASDK --> 
    - Javítva lett a probléma a melyik csatlakoztatását SSD adatlemezeket a prémium szintű méretre, felügyelt lemezes virtuális gépek (DS, DSv2, Fs, Fs_V2) egy hiba miatt sikertelen volt: *nem sikerült frissíteni a lemezt a virtuális gép "vmname" hiba: a kért művelet nem hajtható végre, mert Virtuálisgép-méret esetében nem támogatott a "Premium_LRS" fióktípust "Standard_DS/Ds_V2 és FS/Fs_v2)*. 
@@ -59,6 +59,16 @@ További információkért lásd: [syslog-továbbítás az Azure Stack](../azure
 - <!-- 2702741 -  IS, ASDK --> Kijavítva a hiba melyik nyilvános IP-címek, amelyek a dinamikus kiosztási használatával lettek telepítve a metódus nem garantált, hogy egy állítsa le és vonja vissza kiadása után megőrzi. Most már megmaradnak.
 
 - <!-- 3078022 - IS, ASDK --> Ha egy virtuális gép felszabadítva 1808 előtt nem lehet újból lefoglalni a 1808 frissítés után.  Ezt a problémát megoldottuk a 1809. A javítás 1809 is indítható el, amelyek ebben az állapotban vannak, és nem indítható el. A javítás is megakadályozza, hogy a probléma került.
+
+<!-- 3090289 – IS, ASDK --> 
+- Javítva lett egy probléma, ahol a 1808 frissítés telepítését követően, a következő problémák léphetnek ha felügyelt lemezekkel rendelkező virtuális gépek üzembe helyezéséhez:
+
+   1. Ha az előfizetés korábban jött létre a 1808 frissítése, a felügyelt lemezekkel rendelkező virtuális gép üzembe helyezése egy belső hiba miatt sikertelen lehet. A hiba elhárításához kövesse ezeket a lépéseket minden egyes előfizetés esetén:
+      1. A bérlői portálon lépjen a **előfizetések** , és keresse meg az előfizetés. Kattintson a **erőforrás-szolgáltatók**, majd kattintson az **Microsoft.Compute**, és kattintson a **újraregisztrálni**.
+      2. Lépjen az azonos előfizetéshez tartozó **hozzáférés-vezérlés (IAM)**, és ellenőrizze, hogy **Azure Stack – felügyelt lemez** szerepel a listán.
+   2. Ha egy több-bérlős környezet van beállítva, egy belső hiba miatt meghiúsulhat egy előfizetésben, és a Vendég címtár tartozó virtuális gépek üzembe helyezéséhez. A hiba elhárításához kövesse az alábbi lépéseket:
+      1. Alkalmazza a [1808 Azure Stack gyorsjavítás](https://support.microsoft.com/help/4471992).
+      2. Kövesse a [Ez a cikk](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) újrakonfigurálása a Vendég címtárak mindegyike.
 
 - **Különböző javításokat** teljesítményét, stabilitását, biztonsági és az Azure Stack által használt operációs rendszer
 
@@ -100,7 +110,7 @@ További információkért lásd: [syslog-továbbítás az Azure Stack](../azure
 
 #### <a name="compute"></a>Compute 
 
-<!-- TBD – IS, ASDK -->
+<!-- 3164607 – IS, ASDK -->
 - Az azonos virtuális géphez (VM) ugyanazt a nevet és LUN-t a leválasztott lemez újracsatlakoztatása meghiúsul, és hiba például **adatok lemez "datadisk" nem csatolható "vm1" virtuális gép**. A hiba akkor fordul elő, mert a lemez leválasztása folyamatban vagy a legutóbbi leválasztási művelet nem sikerült. Várjon, amíg a lemez teljesen le van választva, és ezután próbálkozzon újra, vagy törölje vagy válassza le a lemezt explicit módon újra. A megoldás, hogy csatlakoztassa újra egy másik névvel, vagy egy másik logikai egységen. 
 
 <!-- 3235634 – IS, ASDK -->
@@ -108,16 +118,6 @@ További információkért lásd: [syslog-továbbítás az Azure Stack](../azure
 
 <!-- 3099544 – IS, ASDK --> 
 - Amikor hoz létre egy új virtuális gép (VM) az Azure Stack portal használatával, és a Virtuálisgép-méret választja, a USD/hónap oszlop jelenik meg egy **nem érhető el** üzenet. Nem jelenik meg ebben az oszlopban; megjelenítés, a virtuális gép díjszabási oszlop nem támogatott az Azure Stackben.
-
-<!-- 3090289 – IS, ASDK --> 
-- Frissítse a 1808 alkalmazása után, a következő problémák jelentkezhetnek, ha felügyelt lemezekkel rendelkező virtuális gépek üzembe helyezéséhez:
-
-   1. Ha az előfizetés korábban jött létre a 1808 frissítése, a felügyelt lemezekkel rendelkező virtuális gép üzembe helyezése egy belső hiba miatt sikertelen lehet. A hiba elhárításához kövesse ezeket a lépéseket minden egyes előfizetés esetén:
-      1. A bérlői portálon lépjen a **előfizetések** , és keresse meg az előfizetés. Kattintson a **erőforrás-szolgáltatók**, majd kattintson az **Microsoft.Compute**, és kattintson a **újraregisztrálni**.
-      2. Lépjen az azonos előfizetéshez tartozó **hozzáférés-vezérlés (IAM)**, és ellenőrizze, hogy **Azure Stack – felügyelt lemez** szerepel a listán.
-   2. Ha egy több-bérlős környezet van beállítva, egy belső hiba miatt meghiúsulhat egy előfizetésben, és a Vendég címtár tartozó virtuális gépek üzembe helyezéséhez. A hiba elhárításához kövesse az alábbi lépéseket:
-      1. Alkalmazza a [1808 Azure Stack gyorsjavítás](https://support.microsoft.com/help/4468920).
-      2. Kövesse a [Ez a cikk](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) újrakonfigurálása a Vendég címtárak mindegyike.
 
 <!-- 2869209 – IS, ASDK --> 
 - Használatakor a [ **Add-AzsPlatformImage** parancsmag](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), kell használnia a **- OsUri** paramétert, a tárfiók URI, ahol fel a rendszer a lemezen. Ha helyi elérési útját a lemezt használ, a parancsmag a következő hibával meghiúsul: *hosszú ideig futó művelet sikertelen volt, "Sikertelen" állapotú*. 

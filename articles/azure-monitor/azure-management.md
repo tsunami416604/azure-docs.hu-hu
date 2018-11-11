@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/07/2018
 ms.author: bwren
-ms.openlocfilehash: 46c59d02294dea34a4713f44f31733035c68d66e
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 30898be58db228484bcd85e8896da10d0bfc29dd
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47057958"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277460"
 ---
 # <a name="azure-management---monitoring"></a>Az Azure felügyelete – Monitorozás
 
@@ -35,13 +35,13 @@ A következő ábra azt illusztrálja, hogy milyen felügyeleti területekre van
 A következő szakaszok röviden ismertetik az egyes felügyeleti területeket, és az ezek kezelésére hivatott Azure-szolgáltatások részletes ismertetésére mutató hivatkozásokat adnak meg.
 
 ## <a name="monitor"></a>Figyelés
-A monitorozás adatok gyűjtését és elemzését jelenti azzal a céllal, hogy meg lehessen állapítani az üzleti alkalmazás és az általa használt erőforrások teljesítményét, állapotát és rendelkezésre állását. Egy hatékony monitorozási stratégia pontos információkat nyújt az alkalmazás egyes összetevőinek működéséről, és segít növelni az üzemidőt a kritikus problémákra vonatkozó előzetes értesítésekkel, amelyeknek köszönhetően még azelőtt fel lehet számolni őket, hogy tényleges problémát okoznának. Az Azure monitoring elsősorban által biztosított [Azure Monitor](../azure-monitor/overview.md) biztosító közös tárolók monitorozási adatok tárolásához, több adatait gyűjti a különböző szintek az alkalmazás támogató adatforrások, és szolgáltatásokkal Adatelemzés és válaszol az összegyűjtött adatokat.
+A monitorozás adatok gyűjtését és elemzését jelenti azzal a céllal, hogy meg lehessen állapítani az üzleti alkalmazás és az általa használt erőforrások teljesítményét, állapotát és rendelkezésre állását. Egy hatékony monitorozási stratégia pontos információkat nyújt az alkalmazás egyes összetevőinek működéséről, és segít növelni az üzemidőt a kritikus problémákra vonatkozó előzetes értesítésekkel, amelyeknek köszönhetően még azelőtt fel lehet számolni őket, hogy tényleges problémát okoznának. Az Azure környezetben a monitorozást elsősorban az [Azure Monitor](../azure-monitor/overview.md) biztosítja, amely közös tárakat kínál a monitorozási adatok tárolására, több adatforrást biztosít az alkalmazást támogató különböző szintekhez, és különböző szolgáltatásokkal biztosítja a begyűjtött adatok elemzését és a reagálást az eseményekre.
 
 ## <a name="configure"></a>Konfigurálás
 A konfigurálás az alkalmazások és erőforrások kezdeti üzembe helyezését, majd ezt követő, javításokkal és frissítésekkel történő karbantartását jelenti.  Ha szkriptekkel vagy szabályzatokkal automatizálja ezeket a feladatokat, elkerülheti a redundanciákat, minimalizálhatja a feladatokra fordított időt és energiát, és pontosabban és hatékonyabban dolgozhat.  Az [Azure Automation](..\automation\automation-intro.md) tartalmazza azon szolgáltatások nagy részét, amelyek a konfigurációs feladatok automatizálásához szükségesek.  A folyamatok automatizálására szolgáló runbookok mellett konfiguráció- és frissítésfelügyeletet is kínál, ezzel segítve a konfigurációk szabályzatokkal történő kezelését, valamint a frissítések azonosítását és telepítését.
 
 ## <a name="govern"></a>Irányítás
-Az irányítás azokat a mechanizmusok és folyamatokat biztosítja, amelyekre az Azure-beli alkalmazások és erőforrások szabályozásához van szükség.  Magában foglalja a kezdeményezések megtervezését és a stratégiai prioritások meghatározását.  Az Azure-ban az irányítás implementálásának feladatát nagyrészt két szolgáltatás végzi el.  Az [Azure Policy](../azure-policy/azure-policy-introduction.md) lehetővé teszi olyan szabályzatdefiníciók létrehozását, hozzárendelését és kezelését, amelyek különböző szabályokat és műveleteket kényszerítenek ki az erőforrásokon, hogy azok megfeleljenek a vállalati szabványoknak és szolgáltatói szerződéseknek. Az [Azure Cost Management by Cloudyn](../cost-management/overview.md) segítségével követheti az Azure-erőforrások és egyéb felhőszolgáltatók, például az AWS vagy a Google felhőhasználatát és költségeit.
+Az irányítás azokat a mechanizmusok és folyamatokat biztosítja, amelyekre az Azure-beli alkalmazások és erőforrások szabályozásához van szükség.  Magában foglalja a kezdeményezések megtervezését és a stratégiai prioritások meghatározását.  Az Azure-ban az irányítás implementálásának feladatát nagyrészt két szolgáltatás végzi el.  Az [Azure Policy](../governance/policy/overview.md) lehetővé teszi olyan szabályzatdefiníciók létrehozását, hozzárendelését és kezelését, amelyek különböző szabályokat és műveleteket kényszerítenek ki az erőforrásokon, hogy azok megfeleljenek a vállalati szabványoknak és szolgáltatói szerződéseknek. Az [Azure Cost Management by Cloudyn](../cost-management/overview.md) segítségével követheti az Azure-erőforrások és egyéb felhőszolgáltatók, például az AWS vagy a Google felhőhasználatát és költségeit.
 
 ## <a name="secure"></a>Biztonságos
 Az alkalmazások, erőforrások és adatok biztonságának felügyeletébe beletartozik a fenyegetések értékelése, a biztonsági adatok gyűjtése és elemzése, valamint annak biztosítása, hogy az alkalmazások és erőforrások kialakítása és konfigurációja biztonságos legyen.  A biztonsági monitorozással és a fenyegetések elemzésével az [Azure Security Center](../security-center/security-center-intro.md) foglalkozik, amely egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz.  Az [Azure biztonsági megoldásait ismertető](../security/azure-security.md) témakör részletesen foglalkozik az Azure biztonsági kérdéseivel, és az Azure-erőforrások biztonságos konfigurálásához is útmutatást nyújt.

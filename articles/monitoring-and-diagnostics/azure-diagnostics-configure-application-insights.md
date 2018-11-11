@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2016
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: f2a48756252f538adc7d813aafe6dbfbf3a270b5
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 2b27b8605e23a4c4333f6f1a9c9dd12444fd43fb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416683"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277120"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Cloud Service, a virtuális gép vagy a Service Fabric diagnosztikai adatok küldése az Application Insights
 Cloud services, Virtual Machines, Virtual Machine Scale Sets és a Service Fabric összes adatok összegyűjtéséhez használja az Azure Diagnostics bővítmény.  Az Azure diagnosztikai adatokat küld az Azure Storage-táblák.  Azonban is minden cső vagy más helyekre, 1.5-ös vagy újabb Azure Diagnostics bővítmény használata az adatok egy részét.
@@ -217,4 +217,4 @@ Az előző beállítás szerint a következő sorokat jelentése a következő:
 ## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan [megtekintése az Azure diagnostics adatait](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices#view-azure-diagnostic-events) az Application Insightsban.
 * Használat [PowerShell](../cloud-services/cloud-services-diagnostics-powershell.md) az alkalmazás az Azure diagnosztikai bővítmény engedélyezése.
-* Használat [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) az alkalmazás az Azure diagnosztikai bővítmény engedélyezése
+* Használat [Visual Studio](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) az alkalmazás az Azure diagnosztikai bővítmény engedélyezése
