@@ -5,17 +5,17 @@ services: azure-stack
 keywords: ''
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 11/02/2018
+ms.date: 11/09/2018
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
-ms.openlocfilehash: 4376b9e89aeef32987f7a3bb29ca6815e941ba00
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 049e859f1d736e7c06ac5d40e33d91d1540c3d9e
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960242"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514366"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>Azure stack-bővítmény gazdagép előkészítése
 
@@ -84,8 +84,7 @@ Használjon egy számítógépet, amely képes kapcsolódni a következő lépé
 
 1. Használjon egy számítógépet, amely képes kapcsolódni a következő lépéseket az Azure Stack az emelt szintű végpontját. Ellenőrizze, hogy erről a számítógépről az új tanúsítvány fájlok elérését.
 2. Nyissa meg a PowerShell ISE-ben, hajtsa végre a következő parancsfájl-blokkokban
-3. Importálja a tanúsítványt a végpont üzemeltetéséhez. Állítsa be a szkriptet a környezetéhez.
-4. Importálhatja a tanúsítványt a felügyeleti végpontot üzemeltető.
+3. Importálhatja a tanúsítványt a felügyeleti végpontot üzemeltető.
 
     ```PowerShell  
 
@@ -104,7 +103,7 @@ Használjon egy számítógépet, amely képes kapcsolódni a következő lépé
             Import-AdminHostingServiceCert $AdminHostingCertContent $certPassword
     }
     ```
-5. Importálja a tanúsítványt, a üzemeltetési végpont.
+4. Importálja a tanúsítványt, a üzemeltetési végpont.
     ```PowerShell  
     $CertPassword = read-host -AsSecureString -prompt "Certificate Password"
 

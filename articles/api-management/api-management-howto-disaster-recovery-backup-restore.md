@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 683efc6f772337754fc21a1e486d35b7f92e8f81
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 0dc7e8836f1e6a11c44f5e0f337015cac53a92d4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428249"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252802"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Vészhelyreállítás szolgáltatás biztonsági mentése és visszaállítása az Azure API Management szolgáltatásban
 
@@ -38,7 +38,7 @@ Ez az útmutató ismerteti, hogyan hitelesítheti az Azure Resource Manager-kér
 ## <a name="authenticating-azure-resource-manager-requests"></a>Hitelesítő Azure Resource Manager-kérelmek
 
 > [!IMPORTANT]
-> A REST API, a biztonsági mentés és visszaállítás Azure Resource Managert használja, és az API Management entitások kezeléséhez, mint a REST API-k másik hitelesítési mechanizmussal rendelkezik. A jelen szakaszban ismertetett lépések bemutatják, hogyan Azure Resource Manager-kérések hitelesítéséhez. További információkért lásd: [hitelesítése az Azure Resource Manager-kérelmek](http://msdn.microsoft.com/library/azure/dn790557.aspx).
+> A REST API, a biztonsági mentés és visszaállítás Azure Resource Managert használja, és az API Management entitások kezeléséhez, mint a REST API-k másik hitelesítési mechanizmussal rendelkezik. A jelen szakaszban ismertetett lépések bemutatják, hogyan Azure Resource Manager-kérések hitelesítéséhez. További információkért lásd: [hitelesítése az Azure Resource Manager-kérelmek](https://msdn.microsoft.com/library/azure/dn790557.aspx).
 
 Minden olyan feladat hivatkozása, amelyeket Ön az erőforrások az Azure Resource Manager használatával kell hitelesíteni, az Azure Active Directoryval az alábbi lépéseket követve:
 
@@ -212,7 +212,7 @@ Tekintse meg a biztonsági mentési vagy visszaállítási folyamat különböz�
 
 * [Az Azure API Management-fiókok replikálása](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 * [Automatizálhatja API Management biztonsági mentése és visszaállítása a Logic Apps használatával](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
-* [Az Azure API Management: Biztonsági mentése és visszaállítása konfigurációs](http://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
+* [Az Azure API Management: Biztonsági mentése és visszaállítása konfigurációs](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
   *által Stuart részletes megközelítés nem egyezik meg a hivatalos útmutatást, de ez érdekes.*
 
 [Backup an API Management service]: #step1

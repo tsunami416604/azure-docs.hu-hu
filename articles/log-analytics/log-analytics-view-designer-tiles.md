@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 4945bf6064f2614c1779957317d21279d09e05d3
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 2a64b9fc7e2f13c3b9974e95d914a3d3b675d883
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964101"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006804"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Az adatforrásnézet-tervezőből csempék a Log Analytics használati útmutató
 Nézettervező az Azure Log Analytics használatával egyéni nézeteket hozhat létre az Azure Portalon, amelyek a Log Analytics-munkaterület adatvizualizációk széles. Ez a cikk egy referencia-útmutató a csempék az egyéni nézetekben elérhető beállításai.
@@ -120,7 +120,7 @@ Ez a csempe nem egy vonaldiagramot, amely megjeleníti a log lekérdezésből sz
 | Lekérdezés |A lekérdezés, amely a vonaldiagramon. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus értéket. Ez a lekérdezés parancsmagokéval használ a *mérték* kulcsszó összefoglalva az eredményeket. Ha a lekérdezés a *időköz* kulcsszó, az x tengely ez alatt az időtartam használja. Ha a lekérdezés nem használ a *időköz* kulcsszó, az x tengely használ óránként történik. |
 | **Vonaldiagram** |**> Y tengely** |
 | Logaritmikus skála használata |Válassza ki ezt a hivatkozást az y-tengely logaritmikus skála használata. |
-| Egység |Adja meg a lekérdezés által visszaadott értékek használt mértékegységet. Ez az információ segítségével megjeleníthesse a címkéket a diagramon, érték jelző és opcionálisan alakítása. az értékeket. A **egység típusa** meghatározza, melyik az egységet, és meghatározza a **aktuális egység típusa** elérhető értékek. Ha kiválaszt egy értéket a **átalakítása** a numerikus értékek konvertálja, majd a **aktuális egység** írja be a **átalakítása** típusa. |
+| egység |Adja meg a lekérdezés által visszaadott értékek használt mértékegységet. Ez az információ segítségével megjeleníthesse a címkéket a diagramon, érték jelző és opcionálisan alakítása. az értékeket. A **egység típusa** meghatározza, melyik az egységet, és meghatározza a **aktuális egység típusa** elérhető értékek. Ha kiválaszt egy értéket a **átalakítása** a numerikus értékek konvertálja, majd a **aktuális egység** írja be a **átalakítása** típusa. |
 | Egyéni felirat |A szöveg, amelyben az y-tengely a címke mellett jelenik meg a *egység* típusa. Ha nincs címke van megadva, csak a *egység* típus jelenik meg. |
 | **Speciális** |**> Adatfolyam-ellenőrzés** |
 | Engedélyezve |Kattintson erre a hivatkozásra, ha a csempe engedélyezni kell a adatfolyamot. Ez a megközelítés egy másik üzenet biztosít, ha az adatok nem érhetők el. Általában használatával megközelítés adja meg egy üzenetet során az ideiglenes időszak, amikor a nézet telepítve van, és az adatok elérhetővé válnak. |
@@ -145,7 +145,7 @@ Ez a csempe rendelkezik mindkét egy sor diagram azt mutatja, hogy a naplóból 
 | Művelet |A művelet együtt, egyetlen értékként az a kihívás értékének tulajdonság végrehajtott műveletek.<ul><li>Átlagos: Az összes rekord értékek átlaga.</li><li>Száma: Minden, a lekérdezés által visszaadott rekordok számát.</li><li>Utolsó minta: az utolsó időközt, amely megtalálható a diagramon értékét.</li><li>Maximális száma: A maximális érték a diagramon szereplő időszakok.</li><li>Min.: A telepítésben lévő diagram intervallumok minimális értéke.</li><li>Összeg: Az összes rekord értékek összegét.</li></ul> |
 | **Vonaldiagram** |**> Y tengely** |
 | Logaritmikus skála használata |Válassza ki ezt a hivatkozást az y-tengely logaritmikus skála használata. |
-| Egység |Adja meg az egységeket a lekérdezés által visszaadott értékek. Ezt az információt használja megjelenített vonaldiagram-címkék, amelyek jelzik a értéktípusok, és szükség esetén történő átalakítása az értékeket. A *egység* típusát adja meg a kategória az egység, és határozza meg a rendelkezésre álló *aktuális egység* írja be az értékeket. Ha kiválaszt egy értéket a *átalakítása*, a numerikus értékek konvertálja a *aktuális egység* írja be a *átalakítása* típusa. |
+| egység |Adja meg az egységeket a lekérdezés által visszaadott értékek. Ezt az információt használja megjelenített vonaldiagram-címkék, amelyek jelzik a értéktípusok, és szükség esetén történő átalakítása az értékeket. A *egység* típusát adja meg a kategória az egység, és határozza meg a rendelkezésre álló *aktuális egység* írja be az értékeket. Ha kiválaszt egy értéket a *átalakítása*, a numerikus értékek konvertálja a *aktuális egység* írja be a *átalakítása* típusa. |
 | Egyéni felirat |A szöveg, amelyben az y-tengely a címke mellett jelenik meg a *egység* típusa. Ha nincs címke van megadva, csak a *egység* típus jelenik meg. |
 | **Speciális** |**> Adatfolyam-ellenőrzés** |
 | Engedélyezve |Kattintson erre a hivatkozásra, ha a csempe engedélyezni kell a adatfolyamot. Ez a megközelítés egy másik üzenet biztosít, ha az adatok nem érhetők el. Általában használatával megközelítés adja meg egy üzenetet során az ideiglenes időszak, amikor a nézet telepítve van, és az adatok elérhetővé válnak. |
@@ -179,5 +179,5 @@ A **két idősor** csempe oszlopdiagramként idővel két naplófájl lekérdez�
 
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [naplókereséseket](log-analytics-log-search.md) lévő csempék a lekérdezések támogatásához.
+* Ismerje meg [naplókereséseket](log-analytics-queries.md) lévő csempék a lekérdezések támogatásához.
 * Adjon hozzá [Vizualizáció részek](log-analytics-view-designer-parts.md) a egyéni nézethez.

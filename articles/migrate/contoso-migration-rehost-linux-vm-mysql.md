@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: c89ba62ae104d378dc99809e2d96ac993cd2bc35
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 2a7e7f13b68f06bb6c0e9be4730c7346e43e8e5b
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115968"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346575"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms-and-azure-mysql"></a>Contoso áttelepítési: egy a helyszíni Linux alkalmazás Újratárolása az Azure virtuális gépek és Azure-beli MySQL
 
@@ -199,7 +199,7 @@ Az Azure-bA a feladatátvételt követően a Contoso biztosítani szeretné az A
 
 - Hozzáférhet az interneten keresztül, lehetővé teszik a helyszíni linuxos virtuális gép SSH az áttelepítés előtt.  Ubuntu rendszerre készült ez hajtható végre a következő parancsot: **Sudo apt-get ssh telepítése -y**.
 - A feladatátvétel után ellenőriznie kell **rendszerindítási diagnosztika** , a virtuális gép képernyőképének megtekintéséhez.
-- Ha ez sem működik, győződjön meg arról, hogy a virtuális gép fut, és tekintse át a szükséges [hibaelhárítási tippek](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
+- Ha ez sem működik, győződjön meg arról, hogy a virtuális gép fut, és tekintse át a szükséges [hibaelhárítási tippek](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 **További segítségre van szüksége?**
 
@@ -399,7 +399,7 @@ Feladatátvételi teszt futtatása segítségével ellenőrizheti, hogy minden a
 
 ### <a name="migrate-the-vm"></a>A virtuális gép áttelepítése
 
-Migrálja a virtuális Gépet, a Contoso rendszergazdák creats a helyreállítási terv, amely tartalmazza a virtuális Gépet, és a terv az Azure-bA.
+A virtuális gép migrálásához, Contoso rendszergazdái a helyreállítási terv, amely tartalmazza a virtuális Gépet hoz létre, és a terv az Azure-bA.
 
 1. Hozzon létre egy csomagot, és adja hozzá **OSTICKETWEB** rá.
 

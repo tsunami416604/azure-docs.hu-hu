@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: d03af1398f8fd714246c88308ba615ae17010b39
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 15991faa61dc5f543b1b9db491bc1669daf219cc
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962027"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014210"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>A Log Analytics Windows és Linux rendszerű teljesítmény adatforrások
 Teljesítményszámlálók a Windows és Linux cybercrime hardverösszetevők, operációs rendszerek és alkalmazások teljesítményét.  A log Analytics képes teljesítményszámlálók gyűjtése gyakori időközönként teljesítményadatoknak a hosszabb távú elemzésekhez és jelentéskészítési mellett közel valós idejű azokat elemzés céljából.
@@ -87,7 +87,7 @@ Ez az elem a paramétereket az alábbi táblázatban ismertetett.
 | objektum\_neve | A gyűjtemény objektum neve. |
 | példány\_reguláris kifejezés |  A *reguláris kifejezés* gyűjtéséhez előfordulások meghatározása. Az érték: `.*` adja meg az összes példányt. Processzor metrikáinak összegyűjtése csak a \_teljes példány megadhatja `_Total`. Csak a crond segédprogrammal együtt vagy sshd-példányok folyamat metrikák gyűjthetők, megadhatja: `(crond\|sshd)`. |
 | a számláló\_neve\_reguláris kifejezés | A *reguláris kifejezés* meghatározása, amely számlálóit (az objektum) gyűjtéséhez. Az objektum számlálói az összes gyűjteni, adja meg: `.*`. Csak lapozófájl-kapacitás terület számlálókat a memória objektumhoz tartozó gyűjthet, például megadhatja: `.+Swap.+` |
-| interval | A gyakoriság, amellyel a rendszer az objektum számlálókat gyűjti. |
+| tartam | A gyakoriság, amellyel a rendszer az objektum számlálókat gyűjti. |
 
 
 A következő táblázat felsorolja azokat az objektumokat és a számlálókat is megadhat a konfigurációs fájlban.  Érhetők el további számlálók bizonyos alkalmazások leírtak szerint [Linux-alkalmazások a Log Analytics teljesítményszámlálók gyűjtése](log-analytics-data-sources-linux-applications.md).
@@ -105,25 +105,25 @@ A következő táblázat felsorolja azokat az objektumokat és a számlálókat 
 | Logikai lemez | Lemezírások/mp |
 | Logikai lemez | Szabad hely MB-ban |
 | Logikai lemez | Logikai lemez bájt/mp |
-| Memory (Memória) | Rendelkezésre álló memória % |
-| Memory (Memória) | Rendelkezésre álló Lapozóterület % |
-| Memory (Memória) | Foglalt memória % |
-| Memory (Memória) | Foglalt Lapozóterület % |
-| Memory (Memória) | Rendelkezésre álló memória |
-| Memory (Memória) | Rendelkezésre álló Lapozóterület |
-| Memory (Memória) | Olvasott lap/mp |
-| Memory (Memória) | Írt lap/mp |
-| Memory (Memória) | Lap/mp |
-| Memory (Memória) | Használt lapozási memória terület |
-| Memory (Memória) | Használt memória (MB) |
-| Network (Hálózat) | Küldött bájtok száma összesen |
-| Network (Hálózat) | Fogadott bájtok teljes száma |
-| Network (Hálózat) | Összes bájt |
-| Network (Hálózat) | Az összes csomag továbbított adatok köre |
-| Network (Hálózat) | Összes fogadott csomag |
-| Network (Hálózat) | Teljes Rx-hibák |
-| Network (Hálózat) | Teljes Tx-hibák |
-| Network (Hálózat) | Teljes ütközések |
+| Memória | Rendelkezésre álló memória % |
+| Memória | Rendelkezésre álló Lapozóterület % |
+| Memória | Foglalt memória % |
+| Memória | Foglalt Lapozóterület % |
+| Memória | Rendelkezésre álló memória |
+| Memória | Rendelkezésre álló Lapozóterület |
+| Memória | Olvasott lap/mp |
+| Memória | Írt lap/mp |
+| Memória | Lap/mp |
+| Memória | Használt lapozási memória terület |
+| Memória | Használt memória (MB) |
+| Hálózat | Küldött bájtok száma összesen |
+| Hálózat | Fogadott bájtok teljes száma |
+| Hálózat | Összes bájt |
+| Hálózat | Az összes csomag továbbított adatok köre |
+| Hálózat | Összes fogadott csomag |
+| Hálózat | Teljes Rx-hibák |
+| Hálózat | Teljes Tx-hibák |
+| Hálózat | Teljes ütközések |
 | Fizikai lemez | Átl. Lemez mp/Olvasás |
 | Fizikai lemez | Átl. Lemez mp/átvitel |
 | Fizikai lemez | Átl. Lemez mp/írás |
@@ -191,7 +191,7 @@ Teljesítményrekordot rendelkezik olyan típusú **Teljesítményoptimalizált*
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Computer |Az esemény gyűjtötte a program a számítógép. |
+| Számítógép |Az esemény gyűjtötte a program a számítógép. |
 | CounterName |A teljesítményszámláló neve |
 | Számláló_elérési_útja |Az űrlap a számláló a teljes elérési útja \\ \\ \<számítógép >\\objektum(példány)\\számlálót. |
 | AVG |A számláló számérték. |
@@ -227,5 +227,5 @@ Az alábbi táblázat példákat különböző naplókeresések teljesítményre
 
 ## <a name="next-steps"></a>További lépések
 * [Teljesítményszámlálók gyűjtése Linuxos alkalmazások](log-analytics-data-sources-linux-applications.md) többek között a MySQL és az Apache HTTP Server.
-* Ismerje meg [naplókereséseket](log-analytics-log-search.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
+* Ismerje meg [naplókereséseket](log-analytics-queries.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
 * Az összegyűjtött adatok exportálása [Power BI](log-analytics-powerbi.md) további Vizualizációk és elemző.
