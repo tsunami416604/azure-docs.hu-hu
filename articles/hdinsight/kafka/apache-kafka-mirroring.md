@@ -2,19 +2,19 @@
 title: Az Apache Kafka-témakörökhöz – Azure HDInsight tükrözéséhez.
 description: Ismerje meg, az Apache Kafka-tükrözési funkció használata témakörök másodlagos fürthöz tükrözés egy Kafka on HDInsight-fürt replikáját karbantartásához.
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 9f8204eb29566aaae9170c21b8dde33aa3178384
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 21fa41db2e205a7b17deae6d018308fe6e7ff213
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042703"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006770"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>A MirrorMaker használata a Kafka on HDInsight az Apache Kafka-témakörökhöz replikáláshoz
 

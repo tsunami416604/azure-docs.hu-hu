@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: c30c233fb1d413c6a55c7ec0af8c63ca60284b86
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: d29f01c7f953ed211b429e41b844a01c67e41054
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960276"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282375"
 ---
 # <a name="scaling-throughput-in-azure-cosmos-db"></a>Az Azure Cosmos DB méretezési átviteli sebesség
 
@@ -25,7 +25,7 @@ Telepíthet egy Cosmos-tároló vagy egy Cosmos-adatbázis a RUs. Egy tároló k
 
 Az átviteli sebesség rugalmasan méretezést, növelheti vagy csökkentheti a kiosztott RU/s bármikor. További információkért lásd: [útmutató kiépítése átviteli](set-throughput.md) és rugalmasan skálázható Cosmos-tárolók és adatbázisok. Globálisan méretezéshez az átviteli sebesség, akkor is régiók hozzáadása vagy eltávolítása a Cosmos-fiókjában bármikor. További információkért lásd: [útmutató régiók hozzáadása vagy eltávolítása a Cosmos-fiókjába](how-to-manage-database-account.md#addremove-regions-from-your-database-account). Közel valós idejű eléréséhez helyzetekben fontos több régióban társít egy Cosmos-fiók és [magas rendelkezésre állású](high-availability.md) szerte a világon.
 
-## <a name="how-throughput-scaling-works"></a>Átviteli sebesség skálázás működése
+## <a name="how-provisioned-throughput-is-distributed-across-regions"></a>Hogyan régió között oszlanak meg kiosztott átviteli sebesség
 
 Ha üzembe helyezi az "R" RUs Cosmos tároló (vagy adatbázis), a Cosmos DB biztosítja, hogy "R" fenntartott egységek érhetők el a *egyes* Cosmos-fiókjához társított régió. Minden alkalommal, amikor egy új régióban adja hozzá a fiókjához, a Cosmos DB automatikusan látja a "R" RUs az újonnan hozzáadott régióban. A műveletek lettek elvégezve, mint a Cosmos-tároló garantáltan "R" RUs lekérése az egyes régiókban. Egy adott régióban külön-külön nem rendelhető hozzá RUs. Az, Cosmos-tároló (vagy adatbázis) számára kiosztott Kérelemegységek a Cosmos-fiókjához társított összes régióban vannak kiépítve.
 

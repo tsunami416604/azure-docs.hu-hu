@@ -1,23 +1,27 @@
 ---
-title: Helyileg – a távoli figyelési megoldásban üzembe Azure |} A Microsoft Docs
-description: Ez az útmutató bemutatja, hogyan helyezze üzembe a távoli figyelési megoldásgyorsító teszteléshez és fejlesztéshez a helyi gépen.
-author: asdonald
-manager: timlt
-ms.author: asdonald
+title: Helyi (Visual Studio IDE) – keresztül a távoli figyelési megoldásban üzembe Azure |} A Microsoft Docs
+description: Ez az útmutató bemutatja, hogyan lehet a távoli figyelési megoldásgyorsító üzembe helyezése a helyi gépen a Visual Studio használatával a teszteléshez és fejlesztéshez.
+author: avneet723
+manager: hegate
+ms.author: avneet723
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 09/26/2018
+ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: d967112fc1e3630148a419c980813159e9334eb3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5068f0277726b7c468aa24d0629c4350b60b78b5
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243538"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287608"
 ---
-# <a name="deploy-the-remote-monitoring-solution-accelerator-locally"></a>A távoli figyelési megoldásgyorsító helyileg üzembe helyezése
+# <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>A távoli figyelési megoldásgyorsító helyileg – Visual Studio telepítése
 
-Ez a cikk bemutatja, hogyan való teszteléshez és fejlesztéshez a helyi gépre a távoli figyelési megoldásgyorsító üzembe helyezése. A jelen cikkben ismertetett megközelítés egy helyi Docker-tárolót üzembe helyezi a mikroszolgáltatásokat és a felhőben az IoT Hub, a Cosmos DB és az Azure Time Series Insights-szolgáltatásokat használ. Ismerje meg, hogyan lehet futtatni a távoli figyelési megoldásgyorsító IDE-ben a helyi gépén, lásd: [indítása Mikroszolgáltatások helyi környezetben](https://github.com/Azure/remote-monitoring-services-java/blob/master/docs/LOCAL_DEPLOYMENT.md) a Githubon.
+[!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
+
+Ez a cikk bemutatja, hogyan való teszteléshez és fejlesztéshez a helyi gépre a távoli figyelési megoldásgyorsító üzembe helyezése. Megismerheti, hogyan futtathatja a mikroszolgáltatások a Visual Studióban. Egy helyi mikroszolgáltatások üzembe helyezés az alábbi cloud-szolgáltatásokat használja: az IoT Hub, Cosmos DB, az Azure Stream Analytics és az Azure Time Series Insights szolgáltatások a felhőben.
+
+Ha szeretné a távoli figyelési megoldásgyorsító Futtatás a Dockerben a helyi gépén, [a Docker üzembe helyezése a távoli figyelési megoldásgyorsító helyileg -](iot-accelerators-remote-monitoring-deploy-local-docker.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -25,94 +29,90 @@ Az Azure-szolgáltatások használják a távoli figyelési megoldásgyorsító 
 
 Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
+### <a name="machine-setup"></a>Gép beállítása
+
 A helyi telepítés befejezéséhez, szüksége van a helyi fejlesztői gépen telepítve van a következő eszközöket:
 
 * [Git](https://git-scm.com/)
 * [Docker](https://www.docker.com)
-* [A docker compose](https://docs.docker.com/compose/install/)
+* [Visual Studio](https://visualstudio.microsoft.com/)
+* [Nginx](http://nginx.org/en/download.html)
 * [NODE.js v8](https://nodejs.org/) – Ez a szoftver előfeltétele a számítógépek parancssori felület, amely a parancsfájlok használata Azure-erőforrások létrehozásához. Ne használja a Node.js v10.
 
 > [!NOTE]
-> Ezek az eszközök számos platformon, beleértve a Windows, Linux- és IOS-es érhetők el.
+> A Visual Studio érhető el a Windows és Mac rendszerre.
 
-### <a name="download-the-source-code"></a>Letöltheti a forráskódot
+[!INCLUDE [iot-accelerators-local-setup](../../includes/iot-accelerators-local-setup.md)]
 
-A távoli figyelési GitHub forráskódraktárban kell letölteni, konfigurálásához és futtatásához, amelyek tartalmazzák a mikroszolgáltatások Docker-rendszerképek Docker konfigurációs fájljait tartalmazza. Klónozza, valamint a tárház helyi verzióját használja a parancssori környezetet keresse meg a megfelelő mappát a helyi gépen, és a következő parancsok egyikét futtatja:
+## <a name="run-the-microservices"></a>A mikroszolgáltatások futtatása
 
-Töltse le a legújabb verzióját a Java-mikroszolgáltatások megvalósításokhoz, futtassa:
+Ebben a szakaszban a távoli figyelési mikroszolgáltatások fogja futtatni. A webes felhasználói felület futtatása natív módon, az Eszközszimuláció service a Docker és a mikroszolgáltatások a Visual Studióban.
 
-```cmd/sh
-git clone https://github.com/Azure/remote-monitoring-services-java.git
+### <a name="run-the-web-ui"></a>A webes felhasználói felület futtatása
+
+Ebben a lépésben indítsa el a webes felhasználói felületen. Keresse meg a **mire** mappát a helyi tárház másolja, és futtassa a következő parancsokat:
+
+```cmd
+npm install
+npm start
 ```
 
-Töltse le a legújabb verzióját a .NET mikroszolgáltatás-megvalósítások, futtassa:
+### <a name="run-the-device-simulation-service"></a>Eszköz szimulálása szolgáltatás futtatásához
 
-```cmd\sh
-git clone https://github.com/Azure/remote-monitoring-services-dotnet.git
+Futtassa a következő parancsot a Docker-tárolót, az eszköz szimulálása szolgáltatás elindításához. A szolgáltatás a távoli figyelési megoldásban az eszközök szimulálja.
+
+```cmd
+<path_to_cloned_repository>\services\device-simulation\scripts\docker\run.cmd
 ```
 
-> [!NOTE]
-> Ezek a parancsok letöltheti a forráskódot, a mikroszolgáltatások helyi futtatásához használja a parancsfájlok mellett a mikroszolgáltatások. Már nincs szüksége a forráskódra futtassa a mikroszolgáltatások a Dockerben, bár a forráskód hasznos, ha később kívánja módosítani a megoldásgyorsító és módosítások helyi tesztelése.
+### <a name="deploy-all-other-microservices-on-local-machine"></a>A helyi számítógépen az összes többi mikroszolgáltatások üzembe helyezéséhez
 
-## <a name="deploy-the-azure-services"></a>Az Azure-szolgáltatások üzembe helyezése
+A következő lépések bemutatják, hogyan futtathatja a távoli figyelési mikroszolgáltatás-alapú Visual Studio 2017-ben:
 
-Bár ez a cikk bemutatja, hogyan helyileg történő futtatása a mikroszolgáltatás-alapú, Azure-szolgáltatások a felhőben futó függenek. Telepítheti az Azure-szolgáltatások [manuálisan az Azure Portalon keresztül](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Manual-steps-to-create-azure-resources-for-local-setup), vagy parancsfájl. A következő parancsfájl példák feltételezik, hogy egy Windows-gépen használja a .NET-adattárban. Ha egy másik környezetben dolgozik, állítsa be az elérési utak, fájlkiterjesztések, és elérési út elválasztók megfelelően. A megadott parancsfájlok használata:
+1. Indítsa el a Visual Studio 2017-ben
+1. Nyissa meg a **távoli-monitoring.sln** megoldás a **szolgáltatások** mappa-adattár helyi példányában.
+1. A **Megoldáskezelőben**, kattintson a jobb gombbal a megoldásra, majd a kattintson **tulajdonságok**.
+1. Válassza ki **gyakori tulajdonságai > Kezdőprojekt**.
+1. Válassza ki **több kezdőprojekt** és **művelet** való **Start** a következő projektek:
+    * Webszolgáltatás (asa-manager\WebService)
+    * Webszolgáltatás (auth\WebService)
+    * Webszolgáltatás (config\WebService)
+    * Webszolgáltatás (eszköz-telemetry\WebService)
+    * Webszolgáltatás (iothub-manager\WebService)
+    * Webszolgáltatás (storage-adapter\WebService)
+1. Kattintson a **OK** menteni a beállításokat.
+1. Kattintson a **Debug > Start Debugging** létrehozását és futtatását a webes szolgáltatások a helyi gépen.
 
-### <a name="create-new-azure-resources"></a>Új Azure-erőforrások létrehozása
+Minden webszolgáltatáshoz nyitja meg egy parancssort, és a webes böngészőablakban. Parancsot a parancssorba láthatja a futó szolgáltatás, és a böngésző ablakához lehetővé teszi, hogy monitorozhatja az állapotát. Ne zárja be a parancs felszólítja vagy weblapokhoz, ez a művelet leállítja a webszolgáltatást.
 
-Ha még nem hozott a szükséges Azure-erőforrásokat, kövesse az alábbi lépéseket:
+### <a name="start-the-stream-analytics-job"></a>A Stream Analytics-feladat indítása
 
-1. A parancssori környezetben, keresse meg a **remote-monitoring-services-dotnet\scripts\local\launch** mappájához klónozott másolatának a tárházban.
+Kövesse az alábbi lépéseket a Stream Analytics-feladat indítása:
 
-2. Futtassa a **start.cmd** szkriptet, és kövesse az utasításokat. A parancsfájl kérni fogja, hogy jelentkezzen be az Azure-fiókjával, és indítsa újra a parancsfájlt. A parancsprogram kéri a következő információkat:
-    * A megoldás nevét.
-    * A használandó előfizetés.
-    * Használata az Azure-adatközpont helyét.
+1. Lépjen az [Azure Portalra](https://portal.azure.com).
+1. Keresse meg a **erőforráscsoport** létrehozott a megoldáshoz. Az erőforráscsoport neve nem a választott név a megoldáshoz, ha futtatta a **start.cmd** parancsfájl **.
+1. Kattintson a **Stream Analytics-feladat** az erőforrások listájában.
+1. A Stream Analytics-feladat a **áttekintése** lap, kattintson a **Start** gombra. Kattintson a **Start** a feladat elindításához.
 
-    A parancsfájl hoz létre, a megoldás nevű erőforráscsoportot az Azure-ban. Ez az erőforráscsoport tartalmazza az Azure-erőforrások a megoldásgyorsító használja.
+### <a name="configure-and-run-nginx"></a>Konfigurálása és futtatása az nginx-et
 
-3. Miután a parancsfájl futása befejeződött, a környezeti változók listáját jeleníti meg. Kövesse a kimenetben menteni ezeket a változókat, hogy a parancs a **remote-monitoring-services-dotnet\\parancsfájlok\\helyi\\.env** fájlt.
+Állítsa be a fordított proxykiszolgáló mutató hivatkozást a webalkalmazás és a helyi gépen futó mikroszolgáltatásokat:
 
-### <a name="use-existing-azure-resources"></a>A meglévő Azure-erőforrások
+* Másolás a **nginx.conf** fájlt a **webui\scripts\localhost** mappát a **nginx\conf** telepítési könyvtár.
+* Futtatás **nginx**.
 
-Ha már létrehozta a szükséges Azure-erőforrások szerkesztése a környezeti változó definíciókat a **remote-monitoring-services-dotnet\\parancsfájlok\\helyi\\.env** -fájlt a szükséges értékeket. A **.env** fájl tartalmaz részletes információkat, hogy hol található a szükséges értékeket.
+További információ a futó **nginx**, lásd: [nginx-et a Windows](http://nginx.org/en/docs/windows.html).
 
-## <a name="run-the-microservices-in-docker"></a>Futtassa a mikroszolgáltatások a Dockerben
+### <a name="connect-to-the-dashboard"></a>Csatlakozás az irányítópulton
 
-A helyi Docker-tárolókban futó mikroszolgáltatásokat kell az Azure-ban futó szolgáltatásokhoz való hozzáférést. Az internetkapcsolat működését a Docker-környezet az alábbi paranccsal, amely elindít egy kis tárolót, és a egy internetes ping megpróbálja tesztelheti:
-
-```cmd/sh
-docker run --rm -ti library/alpine ping google.com
-```
-
-A megoldásgyorsító futtatja, lépjen a **remote-monitoring-services-dotnet\\parancsfájlok\\helyi** mappát a parancssori környezetben, és futtassa az alábbi parancsot:
-
-```cmd\sh
-docker-compose up
-```
-
-Ez a parancs első futtatásakor Docker tölti le a mikroszolgáltatás-lemezképeket hozhat létre a helyi tárolókat a Docker hubból. Utólagosan, Docker a tárolók a rendszer azonnal futtatja.
-
-Egy külön rendszerhéj használatával a tároló naplóinak megtekintéséhez. Először keresse ki a tárolót azonosító használatával a `docker ps -a` parancsot. Ezután `docker logs {container-id} --tail 1000` a legutóbbi 1000 naplóbejegyzéseket a megadott tároló megtekintéséhez.
-
-A távoli figyelési megoldás irányítópultján eléréséhez keresse meg [ http://localhost:8080 ](http://localhost:8080) a böngészőben.
+A távoli figyelési megoldás irányítópultján eléréséhez keresse meg [ http://localhost:9000 ](http://localhost:9000) a böngészőben.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-Elkerülése érdekében a felesleges költségek, a tesztelés után a cloud services az Azure-előfizetés távolítsa el. Távolítsa el a szolgáltatásokat a legegyszerűbb módja az, hogy nyissa meg a [az Azure portal](https://ms.portal.azure.com) , és törölje az erőforráscsoportot, amely futtatásakor létrejött a **start.cmd** parancsfájlt.
+Kerülje a szükségtelen költségek, a tesztelés befejezése után távolítsa el a cloud services az Azure-előfizetésből. Távolítsa el a szolgáltatásokat, lépjen a [az Azure portal](https://ms.portal.azure.com) és törölje az erőforrást, amely a **start.cmd** létrehozott parancsfájlt.
 
-Használja a `docker-compose down --rmi all` paranccsal távolítsa el a Docker-rendszerképek és szabadítson fel lemezterületet a helyi gépen. A távoli figyelési jön létre, amikor a forráskódját a Githubról klónozott tárház helyi példányának is törölheti.
+A távoli figyelési jön létre, amikor a forráskódját a Githubról klónozott tárház helyi példányának is törölheti.
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-
-> [!div class="checklist"]
-> * A helyi fejlesztési környezet beállítása
-> * A megoldásgyorsító konfigurálása
-> * A megoldásgyorsító üzembe helyezése
-> * Jelentkezzen be a megoldásgyorsító
-
-Most, hogy a távoli figyelési megoldás telepített, akkor a következő lépés, hogy [Fedezze fel a megoldás irányítópultján képességeit](quickstart-remote-monitoring-deploy.md).
-
-<!-- Next tutorials in the sequence -->
+Most, hogy a távoli figyelési megoldás üzembe helyezte, a következő lépés, hogy [Fedezze fel a megoldás irányítópultján képességeit](quickstart-remote-monitoring-deploy.md).

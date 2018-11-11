@@ -8,19 +8,19 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/28/2018
 ms.author: sutalasi
-ms.openlocfilehash: 5d1beb124bbb857d13aecad7bf0cef493d42dac5
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 6d47fe29dab37523913b96ebae0ef3ef31d11210
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043277"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300574"
 ---
 # <a name="replicate-azure-disk-encryption-ade-enabled-virtual-machines-to-another-azure-region"></a>Az Azure disk encryption (ADE) engedélyezve van a virtuális gépek replikálása másik Azure-régióba
 
 Ez a cikk ismerteti, hogyan engedélyezheti az Azure disk encryption (ADE) engedélyezve replikációját virtuális gépek Azure-régióból egy másikba.
 
 >[!NOTE]
->Csak a Windows operációs rendszert futtató Azure virtuális és [engedélyezett a titkosítás az Azure AD-alkalmazás](https://aka.ms/ade-aad-app) Azure Site Recovery által jelenleg támogatott.
+>Az Azure Site Recovery jelenleg csak Windows operációs rendszert futtató Azure-beli virtuális gépeket támogat, amelyeken [engedélyezve van az Azure AD alkalmazással végzett titkosítás](https://aka.ms/ade-aad-app).
 >
 
 ## <a name="required-user-permissions"></a>Szükséges felhasználói engedélyek
@@ -64,8 +64,8 @@ Vészhelyreállítás (DR) engedélyezése a felhasználó nem rendelkezik a sz�
 6. Várjon, amíg az erőforráscsoportok betöltéséhez, majd kattintson a **erőforráscsoport** a virtuális gépeket.
 7. Válassza ki a virtuális gépek, virtuális gépek jelennek meg a listából. Csak virtuális gépek az Azure disk encryption ellátott jelennek meg a listában.
 8. Válassza ki a **célhelye**.
-9. **Lemez titkosítása kulcstartók**: alapértelmezés szerint a Azure Site Recovery létrehoz egy új kulcstartót a célrégióban a forrás virtuális gépek lemeztitkosítási kulcsok alapján "asr" utótaggal rendelkező nevű. Kulcstartó létrehozása az Azure Site Recovery már létezik, a rendszer újra. Egy másik kulcstartót kiválaszthatja a listából, ha szükséges.
-10. **A kulcstartók titkosító kulcs**: alapértelmezés szerint a Azure Site Recovery létrehoz egy új kulcstartót a célrégióban a forrás virtuális gépek kulcstitkosítási kulcsokon alapuló "asr" utótaggal rendelkező nevű. Kulcstartó létrehozása az Azure Site Recovery már létezik, a rendszer újra. Egy másik kulcstartót kiválaszthatja a listából, ha szükséges.
+9. **Lemeztitkosítási kulcstárolók**: Alapértelmezés szerint az Azure Site Recovery a forrás VM lemeztitkosítási kulcsai alapján létrehoz a célrégióban egy új kulcstárolót, amelynek a neve az „asr” utótaggal rendelkezik. Ha az Azure Site Recovery által létrehozott kulcstároló már létezik, a rendszer azt használja újra. Egy másik kulcstartót kiválaszthatja a listából, ha szükséges.
+10. **Kulcstitkosítási kulcstároló**: Alapértelmezés szerint az Azure Site Recovery a forrás VM kulcstitkosítási kulcsai alapján létrehoz a célrégióban egy új kulcstárolót, amelynek a neve az „asr” utótaggal rendelkezik. Ha az Azure Site Recovery által létrehozott kulcstároló már létezik, a rendszer azt használja újra. Egy másik kulcstartót kiválaszthatja a listából, ha szükséges.
 
 ## <a name="enable-replication"></a>A replikáció engedélyezése
 
@@ -91,8 +91,8 @@ Ez az eljárás feltételezi, hogy az elsődleges Azure-régió Kelet-Ázsia, pe
     - **Replikált felügyelt lemezek (Ha a forrásoldali virtuális gép felügyelt lemezeket használ)**: Site Recovery új replika felügyelt lemezeket hoz létre a célrégióban a forrás virtuális gép felügyelt lemezeinek azokkal az azonos tártípusban (Standard vagy prémium) tükrözik, mivel a forrásoldali virtuális gép felügyelt lemezt.
     - **Gyorsítótár tárfiókjai**: Site recoverynek a extra storage-fiókkal, amelynek neve a gyorsítótárban a forrásrégióban. Történik a forrásoldali virtuális gép az összes módosítást a nyomon követett és a gyorsítótárfiókba azokat a célhelyre történő replikálása előtt küldött.
     - **A rendelkezésre állási csoport**: alapértelmezés szerint az Azure Site Recovery létrehoz egy új rendelkezésre állási csoportot a célrégióban az "asr" utótaggal rendelkező neve. Rendelkezésre állási csoport létrehozása az Azure Site Recovery már létezik, a rendszer újra.
-    - **Lemez titkosítása kulcstartók**: alapértelmezés szerint a Azure Site Recovery létrehoz egy új kulcstartót a célrégióban a forrás virtuális gépek lemeztitkosítási kulcsok alapján "asr" utótaggal rendelkező nevű. Kulcstartó létrehozása az Azure Site Recovery már létezik, a rendszer újra.
-    - **A kulcstartók titkosító kulcs**: alapértelmezés szerint a Azure Site Recovery létrehoz egy új kulcstartót a célrégióban a forrás virtuális gépek kulcstitkosítási kulcsokon alapuló "asr" utótaggal rendelkező nevű. Kulcstartó létrehozása az Azure Site Recovery már létezik, a rendszer újra.
+    - **Lemeztitkosítási kulcstárolók**: Alapértelmezés szerint az Azure Site Recovery a forrás VM lemeztitkosítási kulcsai alapján létrehoz a célrégióban egy új kulcstárolót, amelynek a neve az „asr” utótaggal rendelkezik. Ha az Azure Site Recovery által létrehozott kulcstároló már létezik, a rendszer azt használja újra.
+    - **Kulcstitkosítási kulcstároló**: Alapértelmezés szerint az Azure Site Recovery a forrás VM kulcstitkosítási kulcsai alapján létrehoz a célrégióban egy új kulcstárolót, amelynek a neve az „asr” utótaggal rendelkezik. Ha az Azure Site Recovery által létrehozott kulcstároló már létezik, a rendszer azt használja újra.
     - **Replikációs házirend**: azt határozza meg a helyreállítási pont megőrzési előzményekkel és alkalmazáskonzisztens pillanatkép készítésének gyakorisága beállításait. Alapértelmezés szerint az Azure Site Recovery egy új replikációs házirendet hoz beállítás alapértelmezett 24 órányi a helyreállítási pont megőrzése és az "60 percben az alkalmazáskonzisztens pillanatkép gyakorisága.
 
 
@@ -104,7 +104,7 @@ A Site Recovery által használt alapértelmezett célbeállítások módosítha
 
 1. Kattintson a **testreszabása:** melletti "Célként megadott előfizetés" az alapértelmezett célként megadott előfizetés módosításához. Válassza ki az előfizetést az Azure Active Directory (AAD) ugyanabban a bérlőben elérhető előfizetések listájából.
 
-2. Kattintson a **testreszabása:** melletti "erőforráscsoportot, tárolási, hálózati és rendelkezésre állási állítja be, módosíthatja a alatt alapbeállításait:
+2. Kattintson a **testreszabása:** melletti "erőforrás csoport, hálózati, tárolási és a rendelkezésre állási módosítása csoportok a alább az alapértelmezett beállításokat:
     - A **céloldali erőforráscsoport**, válassza ki az erőforráscsoportot a listából a célként megadott helyen az előfizetés összes erőforráscsoportot.
     - A **cél virtuális hálózattal**, válassza ki a hálózatot a virtuális hálózat a célhelyen egy listából.
     - A **rendelkezésre állási csoport**, adhat hozzá rendelkezésre állási csoport beállításait a virtuális géphez, ha egy rendelkezésre állási csoportot a forrásrégióban részei.

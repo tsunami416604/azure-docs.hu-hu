@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/13/2018
+ms.date: 11/06/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2deacb7d15f370c9182c3239493ed60f735d738c
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 6fbb09d41535bf811a42b204f4e3d38b87c2846c
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736835"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287948"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Az Azure használatához és az SAP munkaterhelés-forgatókönyvek
 
@@ -35,6 +35,11 @@ Az egyedi-e az Azure az SAP Hana-hoz egy egyedi ajánlat, amely Azure verseny sz
 SAP munkaterhelés-forgatókönyvek az Azure-beli futtató is hozhat létre identitásintegráció és egyszeri bejelentkezés használata az Azure Active Directory különböző SAP-összetevők és az SAP SaaS követelményeinek vagy PaaS kínál. Az ilyen integrációt és az Azure Active Directory (AAD) és az SAP entitások Single-Sign-On forgatókönyvek listája leírt, és a szakaszban leírt "AAD SAP-Identitásintegráció és egyszeri bejelentkezést."
 
 ## <a name="latest-changes"></a>Legutóbbi módosítások
+
+Használati és konfigurációja pontosítása [Azure hálózati virtuális berendezések](https://azure.microsoft.com/solutions/network-appliances/) a késés kritikus fontosságú kommunikáció elérési útjaiban az SAP-rendszerek:
+
+- [Az SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
+- [SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
 
 Az Azure-beli virtuális gépek Rétegezést SAP HANA dinamikus körül dokumentációja
 
@@ -64,9 +69,9 @@ Következő lépések:
 
 
 ## <a name="sap-hana-on-azure-virtual-machines"></a>SAP HANA az Azure-beli virtuális gépeken
-A dokumentáció ezen szakasza az SAP Hana különböző szempontokat ismerteti. Egy előfeltétel az egyszerű szolgáltatások Azure az Azure IaaS, így elsősorban az Azure számítási, tárolási és hálózatkezelési ismerete alapvető szolgáltatásokat nyújtó tisztában kell lennie. Ezek a témakörök sok kezeli az SAP NetWeaver kapcsolódó [Azure tervezési útmutatója](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide). 
+A dokumentáció ezen szakasza az SAP Hana különböző szempontokat ismerteti. Egy előfeltétel az egyszerű szolgáltatások Azure az Azure IaaS, így elsősorban az Azure számítási, tárolási és hálózatkezelési ismerete alapvető szolgáltatásokat nyújtó tisztában kell lennie. Ezek a témakörök számos kezeli, az SAP NetWeaver kapcsolódó [Azure tervezési útmutatója](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide). 
 
-Az Azure-beli HANA adott dokumentációjában cikkek és az alárendelt cikkek listája áll:
+Az Azure-beli HANA adott dokumentációjában cikkek és azok subarticles listája áll:
 
 - [Gyors útmutató: Egy példányban – SAP HANA az Azure virtuális gépek manuális telepítése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started)
 - [SAP S/4HANA vagy BW/4hana-t az Azure-ban üzembe helyezése](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)

@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: b703cb4d3ddd8b62895c9c40c7fa2fba728e884e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f86d1d74f5139458999a8c91ac35ec76ac278c8
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262276"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300931"
 ---
 # <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>Járműtelemetria Telemetriai Analytics megoldás sablon Power BI-irányítópult beállítási útmutatásai
-Ez a menü a fejezetek a forgatókönyv mutató hivatkozásokat tartalmaz: 
-
-[!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
 A jármű-Telemetria Analytics megoldás ezen adása hogyan autó autókereskedők, autó és biztosítási cégek képesek használni a Cortana Intelligence képességeit. Azok állapotát és a vezetési szokásokat javítása a felhasználói élmény, a kutatás és fejlesztés és a marketing jellegű kampányok valós idejű és prediktív elemzéseket szerezheti be. Ezen részletes utasítások alapján bemutatják, hogyan konfigurálhatja a Power BI-jelentések és az irányítópult a megoldás az előfizetésében üzembe helyezése után. 
+
+Ez a megoldás összefoglaló leírását áttekintéséhez lásd: [jármű-Telemetria elemzési megoldás forgatókönyve](cortana-analytics-playbook-vehicle-telemetry.md).
+Ismerje meg a megoldás még tovább, lásd: [jármű-Telemetria elemzési megoldás forgatókönyve: részletes ismerje meg, a megoldás](cortana-analytics-playbook-vehicle-telemetry-deep-dive.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Üzembe helyezése a [Járműtelemetria elemzése](https://gallery.cortanaintelligence.com/Solution/5bdb23f3abb448268b7402ab8907cc90) megoldás. 

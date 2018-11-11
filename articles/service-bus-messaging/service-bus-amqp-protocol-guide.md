@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: 75c6b5c34559ad17f662c895352bff5a58da00d4
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: b3c652baa515035fc91d2a5f7f962685b673a25e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395848"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51013326"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Az AMQP 1.0-s verziójában az Azure Service Bus és Event Hubs protokoll – útmutató
 
@@ -210,7 +210,7 @@ Bármely vlastnost alkalmazása szükséges határozza meg kell feleltetni AMQP 
 
 #### <a name="header"></a>header
 
-| Mezőnév | Használat | API neve |
+| Mező neve | Használat | API neve |
 | --- | --- | --- |
 | tartós |- |- |
 | prioritás |- |- |
@@ -218,14 +218,14 @@ Bármely vlastnost alkalmazása szükséges határozza meg kell feleltetni AMQP 
 | első-beszerző |- |- |
 | kézbesítések-száma |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeliveryCount) |
 
-#### <a name="properties"></a>properties
+#### <a name="properties"></a>tulajdonságok
 
-| Mezőnév | Használat | API neve |
+| Mező neve | Használat | API neve |
 | --- | --- | --- |
 | üzenetazonosító |Ez az üzenet alkalmazás által meghatározott, a szabad formátumú azonosítója. Duplikáltelem-észlelési használja. |[Üzenetazonosító](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) |
 | felhasználói azonosító |Alkalmazás által meghatározott felhasználói azonosító, a Service Bus nem értelmezi. |Nem a Service Bus API-n keresztül érhető el. |
 | erre: |Alkalmazás által meghatározott cél azonosítója nem értelmezi a Service Bus. |[Címzett](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_To) |
-| Tulajdonos |Alkalmazás által meghatározott üzenetet célú azonosítója, a Service Bus nem értelmezi. |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) |
+| tárgy |Alkalmazás által meghatározott üzenetet célú azonosítója, a Service Bus nem értelmezi. |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) |
 | Válasz címzettje |Alkalmazás által meghatározott válasz-elérési út mutató, a Service Bus nem értelmezi. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyTo) |
 | korrelációs azonosító |Alkalmazás által meghatározott korrelációs azonosító, nem értelmezi a Service Bus. |[korrelációs azonosító](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_CorrelationId) |
 | a Content-type |Alkalmazás által meghatározott tartalomtípus-mutató nem értelmezi a Service Bus, a szervezet számára. |[a contentType](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ContentType) |
@@ -359,10 +359,10 @@ A protokoll hitelesítési módok egy kérés/válasz az exchange felügyeleti s
 
 A kérelemüzenet a következő alkalmazás tulajdonságokkal rendelkezik:
 
-| Kulcs | Optional | Érték típusa | Érték tartalma |
+| Jelmagyarázat | Választható | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
 | művelet |Nem |sztring |**PUT-token** |
-| type |Nem |sztring |A token használatát típusa. |
+| típus |Nem |sztring |A token használatát típusa. |
 | név |Nem |sztring |A "célközönség", amely a token vonatkozik. |
 | lejárat |Igen |időbélyeg |A jogkivonat lejárati idejét. |
 
@@ -378,7 +378,7 @@ Jogkivonatok ruháznak jogokat. A Service Bus három alapvető jogokat ismer: "K
 
 A válaszüzenet rendelkezik a következő *alkalmazástulajdonságok* értékek
 
-| Kulcs | Optional | Érték típusa | Érték tartalma |
+| Jelmagyarázat | Választható | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
 | állapotkód |Nem |int |HTTP-válaszkód **[RFC2616]**. |
 | állapot – leírás |Igen |sztring |Az állapot leírása. |
@@ -391,7 +391,7 @@ A névtelen mechanizmus ezért támogatnia kell a kiválasztott AMQP 1.0-ügyfé
 
 Ha a kapcsolat és a munkamenet létrejött, csatolása mutató hivatkozásokat a *$cbs* csomópontot, és elküldi a *put-token* kérése az egyetlen engedélyezett műveletek. Sikeresen használják az érvényes tokent kell beállítani egy *put-token* kérelem néhány entitás csomóponton 20 másodperc után a kapcsolat létrejött, ellenkező esetben a kapcsolat egyoldalúan megszakad a Service Bus által.
 
-Az ügyfél ezt követően feladata a jogkivonat lejárati szerinti nyomon követést. A Service Bus egy jogkivonat lejár, azonnal csökken minden kapcsolat az adott entitás-kapcsolaton. Előforduló probléma megelőzése érdekében az ügyfél is cserélje le a jogkivonatot a csomópont egy új virtuális keresztül bármikor *$cbs* ugyanazzal a felügyeleti csomópont *put-token* kézmozdulatokkal és nélkül első a a hasznos módja a folyamatok különböző kapcsolatokon forgalmat.
+Az ügyfél ezt követően feladata a jogkivonat lejárati szerinti nyomon követést. A Service Bus egy jogkivonat lejár, azonnal csökken minden kapcsolat az adott entitás-kapcsolaton. Akadályozni, hogy a probléma lépett fel, hogy az ügyfél is cserélje le a jogkivonatot a csomópont egy új virtuális keresztül bármikor *$cbs* ugyanazzal a felügyeleti csomópont *put-token* kézmozdulatokkal és nélkül első a a hasznos módja a folyamatok különböző kapcsolatokon forgalmat.
 
 ### <a name="send-via-functionality"></a>Send via funkció
 

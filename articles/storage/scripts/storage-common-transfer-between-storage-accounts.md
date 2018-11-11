@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/01/2018
 ms.author: rogarana
-ms.openlocfilehash: 970315c5d597d691454f9dea0a76f2c0dc4a40ec
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 58e2275398216f29764d54d1a230959e86eda0b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2018
-ms.locfileid: "29360717"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253261"
 ---
 # <a name="migrate-blobs-across-storage-accounts-using-azcopy-on-windows"></a>Blobok migrálása tárfiókok között az AzCopy Windows rendszeren történő használatával
 
@@ -30,7 +30,7 @@ Ehhez a példához az Azure PowerShell Storage moduljának **4.0.2**-es vagy új
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-Emellett a példához a [Windowshoz készült AzCopy](http://aka.ms/downloadazcopy) legújabb verziója is szükséges. Az alapértelmezett telepítési könyvtár a következő: `C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\`
+Emellett a példához a [Windowshoz készült AzCopy](https://aka.ms/downloadazcopy) legújabb verziója is szükséges. Az alapértelmezett telepítési könyvtár a következő: `C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\`
 
 A példának szüksége van a forrástárfiók nevére és kulcsára, a céltárfiók nevére és kulcsára, valamint az AzCopy.exe fájl teljes elérési útjára (ha nem az alapértelmezett könyvtárba van telepítve).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 8cca69109f07cbcffe2a5d796262e51fc9233cc5
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 8591e723cad1c44e9cc8d00008485e6b304fc4d3
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914685"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283366"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Hogyan üzembe helyezni az Azure figyeli, hogy virtuális gépeket (előzetes verzió)
 Ez a cikk ismerteti, hogyan állítható be az Azure Monitor az Azure-beli virtuális gépek operációs rendszer állapotának figyelésére és felderítése és képezze le az alkalmazás függőségeit, amelyek rajtuk üzemeltethető virtuális gépek számára.  
@@ -337,7 +337,7 @@ Ha az Azure CLI-vel, akkor először helyi telepítése és használata a paranc
     ```
 
 ### <a name="enable-using-azure-policy"></a>Engedélyezze az Azure Policy használata
-Az Azure Monitor engedélyezése a virtuális gépek nagy mennyiségű, amely biztosítja az egységes megfelelőségi és az új virtuális gépek kiépítése, automatikus engedélyezést [Azure Policy](../azure-policy/azure-policy-introduction.md) ajánlott. Ezek a házirendek:
+Az Azure Monitor engedélyezése a virtuális gépek nagy mennyiségű, amely biztosítja az egységes megfelelőségi és az új virtuális gépek kiépítése, automatikus engedélyezést [Azure Policy](../governance/policy/overview.md) ajánlott. Ezek a házirendek:
 
 * Log Analytics-ügynököket és a függőségi ügynök üzembe helyezése 
 * Jelentés a megfelelőségi eredmények 

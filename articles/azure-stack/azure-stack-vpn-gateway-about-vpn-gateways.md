@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/02/2018
 ms.author: sethm
-ms.openlocfilehash: 8f45535b0e75c3f95a56148ea92a343bb0d8a9f5
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: d94b7f7f2f032278f71053e5de8bb2935af01f3f
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079259"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300149"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>Tudnivalók az Azure Stackhez VPN-átjáró
 
@@ -33,7 +33,7 @@ Virtuális hálózati átjáró létrehozásakor megadja a létrehozni kívánt 
 
 Mindegyik virtuális hálózat kettő virtuális hálózati átjáróval rendelkezhet, de típusonként csak eggyel. A kiválasztott beállításoktól függően több kapcsolatot is létrehozhat egyetlen VPN-átjáróhoz. Ilyen például, a többhelyes csatlakozás konfiguráció.
 
-Létrehozása, és az Azure Stackhez VPN-átjárók konfigurálása előtt tekintse át a [Azure Stack hálózati szempontjai](/articles/azure-stack/user/azure-stack-network-differences.md) megtudhatja, hogyan Azure stack-konfigurációk különböznek egymástól, az Azure-ból.
+Létrehozása, és az Azure Stackhez VPN-átjárók konfigurálása előtt tekintse át a [Azure Stack hálózati szempontjai](user/azure-stack-network-differences.md) megtudhatja, hogyan Azure stack-konfigurációk különböznek egymástól, az Azure-ból.
 
 >[!NOTE]
 >Az Azure-ban a VPN Gateway SKU úgy dönt, a sávszélesség átviteli sebesség az átjáró csatlakoztatott összes kapcsolatot szét lehetnek osztva. De az Azure Stackben, a sávszélesség a VPN Gateway Termékváltozat értéken egyes kapcsolati erőforrás, amely az átjáró csatlakozik.

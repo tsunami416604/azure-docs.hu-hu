@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: 5b6d7c2e1b26d98e511f665228f7093ceac10935
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c8ab4836274506cbfdd10b21182bffaccdfbfa06
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963684"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014703"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute-figyelő
 
@@ -139,4 +139,4 @@ Több kapcsolatcsoportot kapcsolódási problémák diagnosztizálása a Network
  
 
 ## <a name="next-steps"></a>További lépések
-[Naplók keresése](log-analytics-log-search.md) részletes hálózati teljesítmény adatfelderítési rekordok megtekintéséhez.
+[Naplók keresése](log-analytics-queries.md) részletes hálózati teljesítmény adatfelderítési rekordok megtekintéséhez.

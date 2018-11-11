@@ -3,18 +3,18 @@ title: Helyi Jupyter telepítése és csatlakozás a Spark on Azure HDInsight
 description: Ismerje meg, hogyan telepítse a Jupyter notebook helyileg a számítógépen, és csatlakoztassa egy Apache Spark-fürt.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.author: jasonh
-ms.openlocfilehash: 83e9596f37850ef5b26b530cd4424a024355fc8a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: 9bab98d8009704d570dc4b03a97b9cbc5d085b4c
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042555"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007552"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter notebook telepítse a számítógépre, és csatlakozzon az Apache Spark on HDInsight
 
@@ -140,7 +140,7 @@ Számos miért érdemes a Jupyter telepítése a számítógépre, és hogyan cs
 ## <a name="seealso"></a>Lásd még:
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
-### <a name="scenarios"></a>Forgatókönyvek
+### <a name="scenarios"></a>Alkalmazási helyzetek
 * [Spark és BI: Interaktív adatelemzés végrehajtása a Spark on HDInsight használatával, BI-eszközökkel](apache-spark-use-bi-tools.md)
 * [Spark és Machine Learning: A Spark on HDInsight használata az épület-hőmérséklet elemzésére HVAC-adatok alapján](apache-spark-ipython-notebook-machine-learning.md)
 * [Spark és Machine Learning: A Spark on HDInsight használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)

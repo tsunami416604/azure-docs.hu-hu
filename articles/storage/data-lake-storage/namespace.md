@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 44eec21f4687d2df64c59d41cdb02c6ef2268f82
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: b5d3a735bd490468e989ac29c9f082475cc7eab3
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528697"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283367"
 ---
 # <a name="azure-data-lake-storage-gen2-preview-hierarchical-namespace"></a>Az Azure Data Lake Storage Gen2 előzetes verzió hierarchikus névtér
 
-Olyan mechanizmus, amely lehetővé teszi az Azure Data Lake Storage Gen2 előzetes verziójához biztosít a fájlt a rendszer teljesítménye objektum storage méretezési és az árak is egy **hierarchikus névtér**. Ez lehetővé teszi az objektumok vagy fájlokat a partner könyvtárak és beágyazott alkönyvtárak hierarchiává, hogy a fájlrendszer, a számítógépen van rendezve ugyanúgy szervezett gyűjteménye. A hierarchikus névtér esetében engedélyezve van a Data Lake Storage Gen2 biztosítja a méretezhetőség és költséghatékonyság objektum tárhely, a fájlrendszer szemantikáját, amelyek elemzési motor és a keretrendszereket.
+Olyan mechanizmus, amely lehetővé teszi az Azure Data Lake Storage Gen2 előzetes verziójához biztosít a fájlt a rendszer teljesítménye objektum storage méretezési és az árak is egy **hierarchikus névtér**. Ez lehetővé teszi az objektumok vagy fájlokat a partner könyvtárak és beágyazott alkönyvtárak hierarchiává, hogy a fájlrendszer, a számítógépen van rendezve ugyanúgy szervezett gyűjteménye. A hierarchikus névtér esetében engedélyezve van a storage-fiók lesz képes a méretezhetőség és költséghatékonyság objektum tárolókészlet, így a fájlrendszer szemantikáját, amelyek elemzési motor és a keretrendszereket.
 
 ## <a name="the-benefits-of-the-hierarchical-namespace"></a>A hierarchikus névtér előnyei
 
@@ -26,7 +26,7 @@ Olyan mechanizmus, amely lehetővé teszi az Azure Data Lake Storage Gen2 előze
 
 A következő előnyöket blob adatok hierarchikus névtér megvalósító fájlrendszerek tartoznak:
 
-- **Atomi Directory adatkezelési:** az objektum egy könyvtár-hierarchia megbecsülheti egy konvencióját perjelek (/) beágyazása az objektum nevét, elérési út szegmensek jelölésére elfogadásával. Az egyezmény objektumok sorolására működik, amíg az egyezmény nem például az áthelyezés, átnevezés, vagy könyvtárak törlése segítségnyújtást kínál a. Valós könyvtárak nélkül alkalmazásokat fel kell dolgoznia potenciálisan több millió, az egyes blobok elérése érdekében a directory-szintű feladatok. A hierarchikus névtér ezzel szemben az egy-egy bejegyzésnek (a szülő könyvtár) frissítésével dolgozza fel ezeket a feladatokat. 
+- **Atomi directory adatkezelési:** az objektum egy könyvtár-hierarchia megbecsülheti egy konvencióját perjelek (/) beágyazása az objektum nevét, elérési út szegmensek jelölésére elfogadásával. Az egyezmény objektumok sorolására működik, amíg az egyezmény nem például az áthelyezés, átnevezés, vagy könyvtárak törlése segítségnyújtást kínál a. Valós könyvtárak nélkül alkalmazásokat fel kell dolgoznia potenciálisan több millió, az egyes blobok elérése érdekében a directory-szintű feladatok. A hierarchikus névtér ezzel szemben az egy-egy bejegyzésnek (a szülő könyvtár) frissítésével dolgozza fel ezeket a feladatokat.
 
     Drámai optimalizációt különösen fontos számos big data-elemzési keretrendszer. Eszközök, mint például a Hive, a Spark és az egyéb gyakran kiírhatja a kimenetet ideiglenes helyre, és nevezze át a helyet, a feladat befejezésekor. A hierarchikus névtér nélkül az Átnevezés gyakran több időt vesz igénybe, mint amennyit az analytics dolgozni a saját maga. Feladat kisebb késés egyenlő alacsonyabb teljes birtoklási költségét (TCO) adatelemzési feladatokhoz.
 

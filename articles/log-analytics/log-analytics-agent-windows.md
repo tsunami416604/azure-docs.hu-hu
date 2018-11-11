@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/12/2018
+ms.date: 11/06/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 2b9e7615fc0c2262c33ab5d7be39bdb99bc752bd
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a16230b6f51f0ce93f4a9bf53591abbcd6b4bd3b
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412958"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283682"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows-számítógépek csatlakoztatása a Log Analytics szolgáltatás az Azure-ban
 
@@ -98,7 +98,7 @@ Az alábbi táblázat a Log Analytics az ügynök, beleértve az Automation DSC 
 
 ## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Ügynök telepítése az Azure Automation DSC használatával
 
-Az alábbi parancsfájl példa használatával telepítse az ügynököt az Azure Automation DSC használatával.   Ha egy Automation-fiók nem rendelkezik, tekintse meg [Ismerkedés az Azure Automation](../automation/automation-offering-get-started.md) követelményeket és az Automation DSC használata előtt meg kell adni egy Automation-fiók létrehozásának lépései.  Ha nem ismeri az Automation DSC, tekintse át a [Automation DSC – első lépések](../automation/automation-dsc-getting-started.md).
+Az alábbi parancsfájl példa használatával telepítse az ügynököt az Azure Automation DSC használatával.   Ha egy Automation-fiók nem rendelkezik, tekintse meg [Ismerkedés az Azure Automation](/azure/automation/) követelményeket és az Automation DSC használata előtt meg kell adni egy Automation-fiók létrehozásának lépései.  Ha nem ismeri az Automation DSC, tekintse át a [Automation DSC – első lépések](../automation/automation-dsc-getting-started.md).
 
 A következő példa telepíti a 64 bites ügynök, azonosítja a `URI` értéket. A 32 bites verziót használhatja, ha az URI értéket. Az URL-címének mindkét verziók a következők:
 
@@ -109,13 +109,13 @@ A következő példa telepíti a 64 bites ügynök, azonosítja a `URI` értéke
 >[!NOTE]
 >Ez az eljárás és parancsfájl példa nem támogatja az már egy Windows-számítógépre telepített ügynök frissítése.
 
-Az ügynök csomag az 32 bites és 64 bites verziója eltérő termékkódok és kiadott új verziói is rendelkeznek egy egyedi értéket.  A termékkód egy GUID Azonosítót, amely az alkalmazás vagy termék egyszerű azonosítása és a Windows telepítő által jelölt **ProductCode** tulajdonság.  A `ProductId value` a a **MMAgent.ps1** parancsfájl meg kell egyeznie a kódot a 32 bites vagy 64 bites ügynök telepítőcsomagból.
+Az ügynök csomag az 32 bites és 64 bites verziója eltérő termékkódok és kiadott új verziói is rendelkeznek egy egyedi értéket.  A termékkód egy GUID Azonosítót, amely az alkalmazás vagy termék egyszerű azonosítása és a Windows telepítő által jelölt **ProductCode** tulajdonság.  A `ProductId` értékét a **MMAgent.ps1** parancsfájl meg kell egyeznie a kódot a 32 bites vagy 64 bites ügynök telepítőcsomagból.
 
 Közvetlenül az ügynök telepítési csomagból lekérdezheti a termékkód, használhatja a Orca.exe a [Windows SDK összetevői a Windows Installer-fejlesztőknek](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) , amely a Windows Software Development Kitet részét képező vagy használata A következő PowerShell- [példaszkript](http://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) írt által a Microsoft MVP elismert kiváló szakember ().  Mindkét módszert használja, először szüksége kibontásához a **MOMagent.msi** MMASetup telepítőcsomagból fájlt.  Ez a szakasz első lépése a korábbi látható [ügynök telepítése a parancssor használatával](#install-the-agent-using-the-command-line).  
 
 1. Modul importálása a xPSDesiredStateConfiguration DSC [ http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration ](http://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) az Azure Automationbe.  
 2.  Hozzon létre az Azure Automation változó adategységek a *OPSINSIGHTS_WS_ID* és *OPSINSIGHTS_WS_KEY*. Állítsa be *OPSINSIGHTS_WS_ID* a Log Analytics-munkaterület Azonosítójára és a set *OPSINSIGHTS_WS_KEY* az elsődleges kulcsot a munkaterületet.
-3.  Másolja a szkriptet, és mentse MMAgent.ps1
+3.  Másolja a szkriptet, és mentse MMAgent.ps1.
 
     ```PowerShell
     Configuration MMAgent
@@ -153,7 +153,8 @@ Közvetlenül az ügynök telepítési csomagból lekérdezheti a termékkód, h
 
     ```
 
-4. [Importálja a MMAgent.ps1 konfigurációs parancsfájlt](../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) az Automation-fiókba. 
+4. Frissítés a `ProductId` kinyert az ügynök legújabb verzióját a termék kóddal értékét a korábban ajánlott módszerekkel csomag telepítéséhez. 
+5. [Importálja a MMAgent.ps1 konfigurációs parancsfájlt](../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) az Automation-fiókba. 
 5. [Rendeljen hozzá egy Windows-számítógép vagy a csomópont](../automation/automation-dsc-getting-started.md#onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration) a konfigurációhoz. 15 percen belül a csomópont ellenőrzi annak konfigurációját, és az ügynököt a csomópontra a rendszer továbbítja.
 
 ## <a name="verify-agent-connectivity-to-log-analytics"></a>Ellenőrizheti az ügynök csatlakozását a Log Analyticsbe

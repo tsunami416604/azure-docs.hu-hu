@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 10/30/2018
+ms.date: 11/02/2018
 ms.author: rolyon
-ms.openlocfilehash: 87b08ce138cde5cc70c5a80cc414c68dd7aea743
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 8fddcdbb8aa523cf3a98a8f2b203440ceedbdf06
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249802"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51015205"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory – Használati feltételek funkció
 Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal. Ez a bemutató gondoskodik arról, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat. Ez a cikk azt ismerteti, hogyan kezdheti el a használati feltételeket tartalmazó fájl.
@@ -103,11 +103,11 @@ A használati feltételek panel megjeleníti a feltételeket elfogadó, illetve 
 
 1. Jelentkezzen be az Azure-ba, és lépjen a **Használati feltételekre** a [https://aka.ms/catou](https://aka.ms/catou) címen.
 
-    ![Esemény naplózása](./media/active-directory-tou/view-tou.png)
+    ![Vizsgálati esemény](./media/active-directory-tou/view-tou.png)
 
 1. A felhasználók aktuális állapotának megtekintéséhez kattintson a használati feltételeket **Elfogadó** vagy **Elutasító** felhasználókat jelölő számra.
 
-    ![Esemény naplózása](./media/active-directory-tou/accepted-tou.png)
+    ![Vizsgálati esemény](./media/active-directory-tou/accepted-tou.png)
 
 ## <a name="view-azure-ad-audit-logs"></a>Naplók megtekintése az Azure AD
 Az Azure AD Használati feltételek auditnaplókkal is rendelkezik, ha megtekintené a feltételekkel kapcsolatos további tevékenységeket is. Minden egyes felhasználói beleegyezés elindít egy eseményt az auditnaplókban tárolt 30 napig. Ezeket a naplókat megtekintheti a portálon, vagy letöltheti egy .csv fájlban.
@@ -118,22 +118,22 @@ Ismerkedés az Azure AD-naplók, kövesse az alábbi eljárást:
 
 1. Kattintson a **Naplók megtekintése** elemre.
 
-    ![Esemény naplózása](./media/active-directory-tou/audit-tou.png)
+    ![Vizsgálati esemény](./media/active-directory-tou/audit-tou.png)
 
 1. Az Azure AD naplókat megjelenítő képernyőjén a rendelkezésre álló legördülő menük segítségével szűrheti az információkat, amennyiben adott naplózási információkra kíváncsi.
 
-    ![Esemény naplózása](./media/active-directory-tou/audit-logs-tou.png)
+    ![Vizsgálati esemény](./media/active-directory-tou/audit-logs-tou.png)
 
 1. A **Letöltés** elemre kattintva az információkat helyi felhasználás céljából egy .csv fájlba is mentheti.
 
 ## <a name="what-terms-of-use-looks-like-for-users"></a>A használati feltételek megjelenése a felhasználók számára
 A használati feltételeket tartalmazó fájl létrehozása és kényszerítése, ha felhasználók, akik érintett bejelentkezés során a következő képernyő jelenik meg.
 
-![Esemény naplózása](./media/active-directory-tou/user-tou.png)
+![Vizsgálati esemény](./media/active-directory-tou/user-tou.png)
 
 Az alábbi képernyő bemutatja a használati feltételek megjelenését a mobileszközökön.
 
-![Esemény naplózása](./media/active-directory-tou/mobile-tou.png)
+![Vizsgálati esemény](./media/active-directory-tou/mobile-tou.png)
 
 A felhasználóknak csak kell fogadja el a használati feltételeket egyszer, és nem jelenik meg a használati feltételeket újra a későbbi bejelentkezések.
 
@@ -148,7 +148,7 @@ A felhasználók az alábbi eljárással tekinthetik át az általuk elfogadott 
 
 1. A Profi lapon kattintson a **Használati feltételek áttekintése** elemre.
 
-    ![Esemény naplózása](./media/active-directory-tou/tou13a.png)
+    ![Vizsgálati esemény](./media/active-directory-tou/tou13a.png)
 
 1. Itt áttekintheti az elfogadott használati feltételeket. 
 
@@ -218,7 +218,7 @@ A feltételes hozzáférési szabályzatok azonnal hatályba lépnek. Ha ez tör
 
 **K: Hogyan ellenőrizhetem, hogy egy felhasználó elfogadta-e a használati feltételeket (és ha igen, mikor)?**</br>
 V: a használati panel a feltételeket, kattintson a számra **elfogadva**. Is megtekintése vagy keressen a elfogadás tevékenység az Azure AD-ben a naplók. További információkért lásd: [megtekintheti a jelentést, akik elfogadó és elutasító](#view-who-has-accepted-and-declined) és [naplók megtekintése az Azure AD](#view-azure-ad-audit-logs).
- 
+
 **K: Mennyi ideig tárolódnak az információk?**</br>
 V: a felhasználó-adatokra is használja a jelentés és aki elfogadott/nem fogadta el a használati feltételeket élettartama tárolt feltételeit. Az Azure AD naplózási naplót 30 napig tárol.
 
@@ -245,12 +245,15 @@ V: Feltételes hozzáférési szabályzatot a modern hitelesítést használó v
 
 **K: Több használati feltételt is hozzáadhatok egy adott felhasználóhoz vagy alkalmazáshoz?**</br>
 V: Igen, ha több feltételes hozzáférési szabályzatot is létrehoz az adott csoportokhoz vagy alkalmazásokhoz. Ha egy felhasználó több használati feltétel hatókörébe is beletartozik, külön-külön kell elfogadnia őket.
- 
+
 **K: Mi történik akkor, ha egy felhasználó nem fogadja el a használati feltételeket?**</br>
 V: Ebben az esetben a felhasználón nem kaphat hozzáférést az alkalmazáshoz. Jelentkezzen be újra, és fogadja el a feltételeket ahhoz, hogy a hozzáférést a felhasználónak kell.
- 
+
 **K: van unaccept a korábban elfogadott használati feltételeket?**</br>
 V: is [felülvizsgálati korábban elfogadott használati feltételeket tartalmazó fájl](#how-users-can-review-their-terms-of-use), de jelenleg nincs unaccept lehetővé.
+
+**K: Mi történik, ha az Intune használati feltételeket is használata?**</br>
+V: Ha konfigurálta a két Azure AD használati feltételek és [Intune használati feltételek](/intune/terms-and-conditions-create), a felhasználó köteles fogadnia mindkettőt. További információkért lásd: a [kiválasztani a feltételek megoldást kínál a szervezet blogbejegyzés](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
 
 ## <a name="next-steps"></a>További lépések
 

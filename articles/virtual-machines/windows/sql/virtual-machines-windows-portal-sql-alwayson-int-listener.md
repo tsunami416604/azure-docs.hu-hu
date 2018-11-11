@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
-ms.openlocfilehash: e87b58ecd72291365f9eba70c807e3018c02ae07
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 5e665cd0bcfdea436c2f493187c5bbea756f8f09
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382739"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248306"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Egy Always On rendelkezésre állási csoport terheléselosztó konfigurálása az Azure-ban
 Ez a cikk bemutatja egy SQL Server Always On rendelkezésre állási csoport terheléselosztó létrehozása az Azure virtual machines szolgáltatásban, amely futtatja az Azure Resource Manager. Rendelkezésre állási csoport terheléselosztó van szükség, ha az SQL Server-példányok Azure-beli virtuális gépeken. A terheléselosztó IP-címét a rendelkezésre állási csoport figyelőjének tárolja. Ha egy rendelkezésre állási csoportban több régióban is kiterjed, minden egyes régió egy terheléselosztó van szüksége.
@@ -120,7 +120,7 @@ A mintavétel határozza meg, hogyan Azure ellenőrzi az SQL Server-példányoka
 4.  Kattintson az **OK** gombra. 
 
 > [!NOTE]
-> Győződjön meg arról, hogy a megadott port nyitva a tűzfalon az SQL Server-példány is. Példány is igényli egy bejövő szabályt a TCP-portot, amelyet használhat. További információkért lásd: [hozzáadása vagy szerkesztése tűzfalszabály](http://technet.microsoft.com/library/cc753558.aspx). 
+> Győződjön meg arról, hogy a megadott port nyitva a tűzfalon az SQL Server-példány is. Példány is igényli egy bejövő szabályt a TCP-portot, amelyet használhat. További információkért lásd: [hozzáadása vagy szerkesztése tűzfalszabály](https://technet.microsoft.com/library/cc753558.aspx). 
 > 
 > 
 
@@ -144,7 +144,7 @@ A terheléselosztási szabályok konfigurálása, hogy a terheléselosztó hogya
    | **Mintavétel** |A mintavétel létrehozott nevét használja ehhez a terheléselosztóhoz. |
    | **Munkamenet megőrzését** |**Egyik sem** |
    | **Üresjárat időkorlátja (perc)** |*4* |
-   | **Nem fix IP (közvetlen kiszolgálói válasz)** |**Engedélyezve van** |
+   | **Nem fix IP (közvetlen kiszolgálói válasz)** |**Engedélyezve** |
 
    > [!NOTE]
    > Előfordulhat, hogy le kell görgetnie a panel az összes megadott beállítások megjelenítéséhez.
@@ -276,7 +276,7 @@ Miután konfigurálta a rendelkezésre állási csoportot az új IP-címet haszn
 Ha egy elosztott rendelkezésre állási csoport rendelkezésre állási csoport tagja, a load balancer további szabály van szüksége. Ez a szabály a portot használják az elosztott rendelkezésre állási csoport figyelőjének tárolja.
 
 >[!IMPORTANT]
->Ez a lépés csak akkor érvényes, ha részt vesz a rendelkezésre állási csoport egy [elosztott rendelkezésre állási csoport](http://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups). 
+>Ez a lépés csak akkor érvényes, ha részt vesz a rendelkezésre állási csoport egy [elosztott rendelkezésre állási csoport](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups). 
 
 1. Az elosztott rendelkezésre állási csoportban szereplő terméknek minden egyes kiszolgálón hozzon létre egy bejövő szabályt az az elosztott rendelkezésre állási csoport figyelőjének TCP-port. Példákat dokumentációt 5022 használja. 
 
@@ -289,7 +289,7 @@ Ha egy elosztott rendelkezésre állási csoport rendelkezésre állási csoport
    |**Name (Név)** |A terheléselosztási szabályt az elosztott rendelkezésre állási csoporthoz azonosító nevet. 
    |**Előtérbeli IP-cím** |Az azonos előtérbeli IP-cím a rendelkezésre állási csoportot használja.
    |**Protocol (Protokoll)** |TCP
-   |**Port** |5022 - portnak a [elosztott rendelkezésre állási csoport felhővégpont-figyelő](http://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups).</br> Minden elérhető port lehet.  
+   |**Port** |5022 - portnak a [elosztott rendelkezésre állási csoport felhővégpont-figyelő](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups).</br> Minden elérhető port lehet.  
    |**Háttérport** | 5022 - használat, azonos értéket **Port**.
    |**Háttérkészlet** |A készlet, amely tartalmazza a virtuális gépek és az SQL Server-példányokat. 
    |**Állapotadat-mintavétel** |Válassza ki a létrehozott mintavételt.

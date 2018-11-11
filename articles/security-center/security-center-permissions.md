@@ -4,7 +4,7 @@ description: Ez a cikk azt ismerteti, hogyan az Azure Security Center használja
 services: security-center
 cloud: na
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 ms.assetid: ''
 ms.service: security-center
@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/13/2017
-ms.author: terrylan
-ms.openlocfilehash: b93b57d50ccf5d5dfb092bdb71820da77f345878
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: 42220a94eb0d0259b8b410e7343ffbfe09e8bfa5
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295462"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007858"
 ---
 # <a name="permissions-in-azure-security-center"></a>Engedélyek az Azure Security Centerben
 
-Használja az Azure Security Center [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/role-assignments-portal.md), amely biztosítja [beépített szerepkörök](../role-based-access-control/built-in-roles.md) , hogy a felhasználók, csoportok és Azure-szolgáltatások rendelhetők.
+Az Azure Security Center [szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/role-assignments-portal.md) használ, amelynek [beépített szerepköreit](../role-based-access-control/built-in-roles.md) az Azure különböző csoportjaihoz, felhasználóihoz és szolgáltatásaihoz rendelheti.
 
 A Security Center a biztonsági problémák és biztonsági rések azonosításához erőforrásán konfiguráció értékeli. A Security Centerben csak láthatja az előfizetés vagy az erőforráscsoport, amely egy erőforrás tartozik, a tulajdonos, közreműködő vagy olvasó a szerepkör hozzárendelése esetén egy erőforráshoz kapcsolódó információkat.
 
@@ -44,7 +44,7 @@ Az alábbi táblázat megjeleníti a szerepköröket, és a műveletek a Securit
 | Szerepkör | Biztonsági szabályzat szerkesztése | Erőforrás biztonsági javaslatok alkalmazása | Riasztások és javaslatok elvetése | Riasztások megtekintése és javaslatok |
 |:--- |:---:|:---:|:---:|:---:|
 | Előfizetés tulajdonosa | X | X | X | X |
-| Előfizetési közreműködő | X | X | X | X |
+| Előfizetés Közreműködője | -- | X | X | X |
 | Erőforráscsoport tulajdonosa | -- | X | -- | X |
 | Erőforráscsoport közreműködő | -- | X | -- | X |
 | Olvasó | -- | -- | -- | X |

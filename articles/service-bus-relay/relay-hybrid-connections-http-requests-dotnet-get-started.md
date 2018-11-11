@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: spelluru
-ms.openlocfilehash: e66a1651a46cfaeb7fb8b232eeb7cf6a2fb8044d
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 55e97ff95245ce222ccbc2a99f6ae2882cef3715
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451222"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248775"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>Ismerkedés a hibrid Relay-kapcsolatok HTTP-kéréseivel a .NET-ben
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -38,7 +38,7 @@ A hibrid kapcsolatokhoz szükség van egy ügyfél- és egy kiszolgáló-összet
 
 Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
 
-* [Visual Studio 2015 vagy újabb](http://www.visualstudio.com). A jelen oktatóanyag példái a Visual Studio 2017-et használják.
+* [Visual Studio 2015 vagy újabb](https://www.visualstudio.com). A jelen oktatóanyag példái a Visual Studio 2017-et használják.
 * Azure-előfizetés.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]

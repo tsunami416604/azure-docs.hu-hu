@@ -3,17 +3,17 @@ title: Az Apache Kafka használatának első lépései – Rövid Azure HDInsigh
 description: Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre Apache Kafka-fürtöt az Azure HDInsightban az Azure Portal használatával. A Kafka-témakörökről, -előfizetőkről és -fogyasztókról is olvashat.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 04/16/2018
-ms.openlocfilehash: e8f8ad9b7cc14d6a3d28832e4d14ef55e8c530c6
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: dea69e9cfcd3cff24c77698ee4a8ed729a18f087
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618109"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011927"
 ---
 # <a name="quickstart-create-a-kafka-on-hdinsight-cluster"></a>Rövid útmutató: Kafka on HDInsight-fürt létrehozása
 

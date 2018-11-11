@@ -2,19 +2,19 @@
 title: Parancsfájlművelet-alapú HDInsight - Azure-fejlesztés
 description: Ismerje meg, hogyan szabhatja testre a Script Action Hadoop-fürtöket. Parancsfájlművelet használható egy fürtöt a telepített alkalmazások konfigurációjának módosítása vagy a Hadoop-fürtön futó további szoftverek telepíthetők.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: e14f106c9cd2d2d2f65fb72ad8890c4a9042cb47
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 21c7b94f694e8a2cfe6abfd74bbc616ade5dad82
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104100"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008351"
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>A HDInsight Windows-alapú fürtök Parancsfájlműveletekkel-parancsfájlok fejlesztése
 Útmutató a HDInsight Script Action parancsfájlokat írhat. A Script Action parancsfájlok segítségével további információkért lásd: [testreszabása HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster.md). Ugyanahhoz a cikkhez írt Linux-alapú HDInsight-fürtök esetén, lásd: [Szkriptművelet fejlesztése HDInsight-parancsfájlok](hdinsight-hadoop-script-actions-linux.md).
@@ -96,7 +96,7 @@ Ez a példaszkript is található [ https://hditutorialdata.blob.core.windows.ne
 
 HDInsight további összetevők telepíthetők a HDInsight-fürtök számos szkript biztosítja:
 
-| Name (Név) | Szkript |
+| Name (Név) | Parancsprogramok használata |
 | --- | --- |
 | **A Spark telepítése** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1`. Lásd: [telepítése és használata a Spark on HDInsight-fürtök][hdinsight-install-spark]. |
 | **Az R telepítése** | `https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1`. Lásd: [telepítése és az R használata a HDInsight-fürtökön](r-server/r-server-hdinsight-manage.md#install-additional-r-packages-on-the-cluster). |

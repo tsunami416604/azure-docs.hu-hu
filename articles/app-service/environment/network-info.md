@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: 6d4f7fab0c36095d96cec0038a39744102e8972b
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 535f70658593ff5a9ae1642ae7a97646e3fefb63
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433752"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288254"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment hálózati szempontjai #
 
@@ -33,7 +33,7 @@ Az App Service Environment-környezet két verziója: ASEv1 és ASEv2. Az ASEv1 
 
 Az ASE összes hívásait az interneten keresztül egy hozzárendelt az ASE virtuális IP-CÍMEK a virtuális hálózat hagyja üresen. A nyilvános IP-címét a virtuális IP-cím a forrás IP-címe összes híváshoz az ASE-ről, amely az interneten. Ha az alkalmazások az ASE környezetben hívásokat erőforrások a virtuális hálózat vagy virtuális Magánhálózatok, a forrás IP-címe az az alhálózatot az ASE által használt IP-egyik. Mivel az ASE-t a virtuális hálózaton belül, azt is elérhető erőforrások további konfiguráció nélkül a virtuális hálózaton belül. Ha a virtuális hálózat a helyszíni hálózathoz van csatlakoztatva, az ASE-alkalmazások is erőforrásokhoz további konfiguráció nélkül való hozzáférést.
 
-![Külső ASE][1] 
+![Külső ASE][1] 
 
 Ha rendelkezik külső ASE környezetben, a nyilvános virtuális IP-cím is a végpontot, hogy az ASE-alkalmazások esetében:
 
@@ -52,7 +52,7 @@ A szokásos alkalmazások hozzáférési portok a következők:
 |----------|---------|-------------|
 |  HTTP/HTTPS  | Felhasználó által konfigurálható |  80, 443 |
 |  FTP/FTPS    | Felhasználó által konfigurálható |  21, 990, 10001-10020 |
-|  A Visual Studio távoli hibakeresés  |  Felhasználó által konfigurálható |  4016, 4018, 4020, 4022 |
+|  A Visual Studio távoli hibakeresés  |  Felhasználó által konfigurálható |  4020, 4022, 4024 |
 
 Ez akkor igaz, ha Ön a külső ASE vagy ILB ASE környezetben. Ha Ön a külső ASE környezetben, ezeket a portokat a nyilvános VIP-címet a eléri. Ha Ön az ILB ASE, nyomja le az ILB meg ezeket a portokat. 443-as porton zárolását, ha a portálon elérhető egyes funkciók hatással lehet. További információkért lásd: [portál függőségek](#portaldep).
 
@@ -170,7 +170,7 @@ Az első két bejövő követelményei az ASE függvény ebben a példában a li
 
 Alapértelmezett szabály lehetővé teszi, hogy kommunikáljon az ASE-alhálózattal a virtuális hálózaton az IP-címek. Egy másik alapértelmezett szabály lehetővé teszi, hogy a terheléselosztó, más néven a nyilvános VIP az ASE folytatott kommunikációhoz. Az alapértelmezett szabályok megtekintéséhez válasszon **alapértelmezett szabályokkal** mellett a **Hozzáadás** ikonra. Ha minden más szabály, miután az NSG-szabályok megjelenített megtagadási helyezi, megakadályozható, hogy a virtuális IP-cím és az ASE közötti adatforgalmat. A virtuális hálózaton belül érkező forgalom elkerülése érdekében adja hozzá a saját szabályt, amely engedélyezi a bejövő. Egy adatforrás AzureLoadBalancer egyenlő használata a célhelyre **bármely** és a egy porttartományt, **\***. Az ASE-alhálózatra alkalmazott NSG-szabályt, mert nem kell lennie a cél adott.
 
-Ha az alkalmazáshoz rendelt IP-címet, ellenőrizze, hogy a portok nyitva hagyja. A portok megtekintéséhez válasszon **App Service Environment-környezet** > **IP-címek**.  
+Ha az alkalmazáshoz rendelt IP-címet, ellenőrizze, hogy a portok nyitva hagyja. A portok megtekintéséhez válasszon **App Service Environment-környezet** > **IP-címek**.  
 
 A következő kimenő szabályok látható összes elem van szükség, az utolsó elem kivételével. A cikk korábbi részeiben észleltek ASE függőségek való hálózati hozzáférés lehetővé teszik. Ha ezek közül bármelyik letiltja, az ASE működése leáll. Az utolsó elem a lista lehetővé teszi, hogy az ASE-t a virtuális hálózatában lévő más erőforrásokkal kommunikálni.
 

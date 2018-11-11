@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 09/27/2018
-ms.openlocfilehash: d9ff0387a1d02eb5f4684048aeed8ad0079b28ef
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 06a0f2416ecff9e2f9a21877e26487b56452d0a0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434415"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251321"
 ---
 # <a name="use-ansible-to-manage-a-linux-virtual-machine-in-azure"></a>Linux rendszerű virtuális gép felügyelete az Azure-ban az Ansible használatával
 Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Az Ansible segítségével ugyanúgy felügyelheti az Azure-beli virtuális gépeket, ahogy azt bármely más erőforrással tenné. Ez a cikk bemutatja, hogyan használhatja az Ansible-forgatókönyveket Linux rendszerű virtuális gépek indítására és leállítására. 
@@ -27,7 +27,7 @@ Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfi
 ## <a name="use-ansible-to-deallocate-stop-an-azure-virtual-machine"></a>Azure-beli virtuális gép felszabadítása (leállítása) az Ansible használatával
 Ez a szakasz bemutatja, hogyan szabadíthat fel (állíthat le) Azure-beli virtuális gépeket az Ansible használatával
 
-1.  Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1.  Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1.  Nyissa meg a [Cloud Shellt](/azure/cloud-shell/overview).
 
@@ -85,7 +85,7 @@ Ez a szakasz bemutatja, hogyan szabadíthat fel (állíthat le) Azure-beli virtu
 ## <a name="use-ansible-to-start-a-deallocated-stopped-azure-virtual-machine"></a>Felszabadított (leállított) Azure-beli virtuális gép indítása az Ansible használatával
 Ez a szakasz bemutatja, hogy hogyan indíthat el egy felszabadított (leállított) Azure-beli virtuális gépet az Ansible használatával
 
-1.  Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1.  Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1.  Nyissa meg a [Cloud Shellt](/azure/cloud-shell/overview).
 

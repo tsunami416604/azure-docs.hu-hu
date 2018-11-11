@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a759aad346e25fa42f16d9ccfdb42d9fd5b1cd38
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a76b22feee84820f3acc963af70ec24669a216d7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413485"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251968"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>A teljesítmény az Azure Diagnostics Virtuálisgép-bővítmény Windows
 
-Az Azure teljesítménydiagnosztikai Virtuálisgép-bővítmény segít a teljesítmény diagnosztikai adatok gyűjtését a Windows virtuális gépek. A bővítmény elemzési hajt végre, és egy jelentésre az eredményeket és meglátásokat bemutató javaslatok azonosításához, és a virtuális gépen a teljesítménnyel kapcsolatos problémák megoldásához nyújt. Ez a bővítmény telepítését nevű hibaelhárítási eszköz [PerfInsights](http://aka.ms/perfinsights).
+Az Azure teljesítménydiagnosztikai Virtuálisgép-bővítmény segít a teljesítmény diagnosztikai adatok gyűjtését a Windows virtuális gépek. A bővítmény elemzési hajt végre, és egy jelentésre az eredményeket és meglátásokat bemutató javaslatok azonosításához, és a virtuális gépen a teljesítménnyel kapcsolatos problémák megoldásához nyújt. Ez a bővítmény telepítését nevű hibaelhárítási eszköz [PerfInsights](https://aka.ms/perfinsights).
 
 > [!NOTE]
     > Ha meg szeretné diagnosztika futtatása a virtuális Gépen az Azure Portalról a nem klasszikus virtuális gépek, az új felhasználói felület használata ajánlott. További információkért lásd: [teljesítménybeli problémák diagnosztizálása az Azure-beli virtuális gépek](performance-diagnostics.md) 
@@ -230,7 +230,7 @@ Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
 ````
 
 ## <a name="information-on-the-data-captured"></a>Információ a rögzített adatokat
-A PerfInsights eszköz különböző naplókat, konfiguráció és diagnosztikai adatokat, attól függően, a választott forgatókönyv gyűjti. További információkért lásd: a [PerfInsights dokumentáció](http://aka.ms/perfinsights).
+A PerfInsights eszköz különböző naplókat, konfiguráció és diagnosztikai adatokat, attól függően, a választott forgatókönyv gyűjti. További információkért lásd: a [PerfInsights dokumentáció](https://aka.ms/perfinsights).
 
 ## <a name="view-and-share-the-results"></a>Megjelenítheti és megoszthatja az eredmények
 

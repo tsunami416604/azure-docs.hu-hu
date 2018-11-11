@@ -8,22 +8,22 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: seguler
-ms.openlocfilehash: 065c4c4315bda209484cc1b2449980e55d4ac798
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 09703e203370a524b24f552c93161e4cb64d803d
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522696"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281676"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-data-lake-storage-gen2-preview"></a>Azure Storage-Blobok és a Data Lake Storage Gen2 előzetes verzió közötti adatokat másolja a Distcp használata
 
-Ha egy HDInsight-fürtöt az Azure Data Lake Storage Gen2 előzetes verzió hozzáféréssel rendelkezik, használhatja a Hadoop-ökoszisztéma eszközökkel, mint például [Distcp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) adatmásolás céljából **a** egy HDInsight fürt storage (WASB) egy adatokat nyerhet ki Képes a Lake Storage Gen2-fiók. Ez a cikk útmutatást nyújt a Distcp eszközzel.
+Ha egy HDInsight-fürtöt, és az Azure Data Lake Storage Gen2 a Preview-ban regisztrált, használhatja a Hadoop-ökoszisztéma eszközök, például [Distcp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) adatmásolás céljából **a** egy HDInsight-fürt storage (WASB) Data Lake Storage Gen2 engedélyezve van a storage-fiókra. Ez a cikk útmutatást nyújt a Distcp eszközzel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure Data Lake Storage (előzetes verzió) szolgáltatás engedélyezve van az Azure Storage-fiók**. Létrehozásával kapcsolatos utasításokért lásd: [hozzon létre egy storage-fiókot az Azure Data Lake Storage Gen2 előzetes verzió](quickstart-create-account.md)
-* **Az Azure HDInsight-fürt** hozzáférést egy Data Lake-tárfiókra. Lásd: [használata Azure Data Lake Storage Gen2 Azure HDInsight-fürtök](use-hdi-cluster.md). Ellenőrizze, hogy engedélyezi a távoli asztal a fürtöt.
+* **Azure Storage-fiókot a Data Lake Storage Gen2 (előzetes verzió) szolgáltatás engedélyezve van**. Létrehozásával kapcsolatos utasításokért lásd: [hozzon létre egy storage-fiókot az Azure Data Lake Storage Gen2 előzetes verzió](quickstart-create-account.md)
+* **Az Azure HDInsight-fürt** együtt egy Data Lake Storage Gen2 engedélyezve van a tárfiókhoz való hozzáférést. Lásd: [használata Azure Data Lake Storage Gen2 Azure HDInsight-fürtök](use-hdi-cluster.md). Ellenőrizze, hogy engedélyezi a távoli asztal a fürtöt.
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>A Distcp használata a HDInsight Linux-fürt
 
@@ -97,4 +97,4 @@ Ha az adatkészlet áthelyezésének mérete nagy (például > 1 TB-ot), vagy ha
 
 * A DistCp fájlonként egyetlen eseményleképező korlátozódik. Így nem kell további leképező, mint a fájlokat. A DistCp csak rendelhet egy eseményleképező egy fájlt, mivel ez használható, nagy méretű fájlok másolása egyidejűségi mennyiségét korlátozza.
 
-* Ha kevés nagyméretű fájlokat, majd akkor fel kell őket adattömbökbe 256 MB-os fájlt a lehetséges több egyidejűséget biztosít. 
+* Ha kevés nagyméretű fájlokat, majd akkor fel kell őket adattömbökbe 256 MB-os fájlt a lehetséges több egyidejűséget biztosít.

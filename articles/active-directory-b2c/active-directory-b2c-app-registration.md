@@ -1,134 +1,84 @@
 ---
-title: Alkalmazás regisztrációja az Azure Active Directory B2C-ben | Microsoft Docs
-description: Hogyan regisztrálhatja alkalmazását Azure Active Directory B2C-vel?
+title: Alkalmazás regisztrálása az Azure Active Directory B2C |} A Microsoft Docs
+description: Ismerje meg, hogyan regisztrálhatja alkalmazását Azure Active Directory B2C-t.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 6/13/2017
+ms.date: 11/01/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4f8a5b1ceda77ef254ad0c2afb7d2316581d778e
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 8068c4a8f38cd33a1a0547f5db5079bc75c76ec1
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376396"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51013411"
 ---
-# <a name="azure-active-directory-b2c-register-your-application"></a>Azure Active Directory B2C: Az alkalmazás regisztrációja
+# <a name="register-an-application-in-azure-active-directory-b2c"></a>Alkalmazás regisztrálása az Azure Active Directory B2C-vel
 
-Ez a gyors útmutató pár percben összefoglalja egy alkalmazás regisztrálásának folyamatát egy Microsoft Azure Active Directory (Azure AD) B2C-bérlőben. Az útmutató befejeztével az alkalmazás regisztrálva lesz és használatra készen áll az Azure AD B2C-bérlőben.
+Hozhat létre egy [alkalmazás](active-directory-b2c-apps.md) , amely fogadja a felhasználói regisztrációt, és jelentkezzen be, először regisztrálnia kell az alkalmazást az Azure AD B2C-bérlő. Ez a cikk segít egy alkalmazás regisztrálása az Azure Active Directory (Azure AD) B2C-bérlő néhány perc múlva. Az útmutató befejeztével az alkalmazás regisztrálva lesz és használatra készen áll az Azure AD B2C-bérlőben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A felhasználói regisztrációt és bejelentkezést elfogadó alkalmazás létrehozásához először regisztrálnia kell az alkalmazást egy Azure Active Directory B2C-bérlővel. Hozzon létre egy saját bérlőt az [Azure AD B2C bérlő létrehozása](active-directory-b2c-get-started.md) részben ismertetett lépések segítségével.
+A saját bérlő beszerzése a lépéseket követve [létrehozása az Azure Active Directory B2C-bérlő](tutorial-create-tenant.md).
 
-Az Azure Portalon létrehozott alkalmazásokat ugyanarról a helyről kell kezelnie. Ha az Azure AD B2C-alkalmazásokat a PowerShell vagy egy másik portál használatával szerkeszti, a rendszer nem támogatja többé az alkalmazásokat, és nem fognak működni az Azure AD B2C-vel. További részletek a [hibás alkalmazások](#faulted-apps) szakaszban. 
+Válassza ki a következő lépéseket az alkalmazás típusától függően:
 
-A jelen cikkben bemutatott példák segítségével megismerkedhet a minták használatával. A következő cikkekből többet is megtudhat ezekről a mintákról.
+- [Webalkalmazás regisztrációja](#register-a-web-application)
+- [Webes API regisztrálása](#register-a-web-api)
+- [Mobil vagy natív alkalmazás regisztrálása](#register-a-mobile-or-native-application)
 
-## <a name="navigate-to-b2c-settings"></a>Navigálás a B2C beállításaihoz
+## <a name="register-a-web-application"></a>Webalkalmazás regisztrációja
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) a B2C-bérlő globális rendszergazdájaként. 
+1. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
+2. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
+3. Válassza ki **alkalmazások**, majd válassza ki **Hozzáadás**.
+4. Adjon meg egy nevet az alkalmazásnak. Például *testapp1*.
+5. A **közé tartozik a webalkalmazás vagy webes API** és **implicit engedélyezési folyamat engedélyezése**válassza **Igen**.
+6. A **válasz URL-cím**, adja meg végpontot, ahol az Azure AD B2C-t adja vissza az alkalmazás által kért jogkivonatokat. Például beállíthatja, hogy helyileg naslouchání `https://localhost:44316`. Ha még nem ismeri a portnak a számát, adjon meg egy helyőrző értéket, és később módosíthatja.
+7. Kattintson a **Create** (Létrehozás) gombra.
 
-[!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
+### <a name="create-a-client-secret"></a>Ügyfél titkos kulcs létrehozása
 
-[!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](../../includes/active-directory-b2c-portal-navigate-b2c-service.md)]
+Ha az alkalmazás Azure AD B2C által biztonságossá tett webes API-hívások, hozzon létre egy szeretné.
 
-## <a name="choose-next-steps-based-on-your-application-type"></a>Válassza ki a következő lépéseket az alkalmazás típusától függően
+1. Válassza ki **kulcsok** majd **kulcs generálása**. 
+2. Válassza ki **mentése** a kulcs megtekintéséhez. Jegyezze fel az **Alkalmazáskulcs** értékét. Ezt az értéket fogja használni az alkalmazás kódjában alkalmazáskulcsként.
+3. Válassza ki **API-hozzáférés**, kattintson a **Hozzáadás**, és válassza ki a webes API-t és a hatóköröket (engedélyeket).
 
-* [Webalkalmazás regisztrációja](#register-a-web-app)
-* [Webes API regisztrálása](#register-a-web-api)
-* [Mobil vagy natív alkalmazás regisztrálása](#register-a-mobile-or-native-app)
- 
-### <a name="register-a-web-app"></a>Webalkalmazás regisztrációja
+## <a name="register-a-web-api"></a>Webes API regisztrálása
 
-[!INCLUDE [active-directory-b2c-register-web-app](../../includes/active-directory-b2c-register-web-app.md)]
+1. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
+2. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
+3. Válassza ki **alkalmazások**, majd válassza ki **Hozzáadás**.
+4. Adjon meg egy nevet az alkalmazásnak. Például *testapp2*.
+5. A **közé tartozik a webalkalmazás vagy webes API** és **implicit engedélyezési folyamat engedélyezése**válassza **Igen**.
+6. A **válasz URL-cím**, adja meg végpontot, ahol az Azure AD B2C-t adja vissza az alkalmazás által kért jogkivonatokat. Például beállíthatja, hogy helyileg naslouchání `https://localhost:44316`. Ha még nem ismeri a portnak a számát, adjon meg egy helyőrző értéket, és később módosíthatja.
+7. A **Alkalmazásazonosító URI-t**, adja meg a webes API-hoz használt azonosító. A teljes azonosító URI-t, a tartománnyal együtt, a rendszer hozza létre. Például: `https://contosotenant.onmicrosoft.com/api`.
+8. Kattintson a **Create** (Létrehozás) gombra.
+9. Válassza ki **közzétett hatókörök** , szükség szerint több hatókört is felvehet. Alapértelmezés szerint a `user_impersonation` hatókör van meghatározva. A `user_impersonation` hatókör lehetővé teszi más alkalmazások az API elérése a bejelentkezett felhasználó nevében. Ha szeretné, a `user_impersonation` hatókör eltávolítható.
 
-### <a name="create-a-web-app-client-secret"></a>Webalkalmazás titkos ügyfélkódjának létrehozása
+## <a name="register-a-mobile-or-native-application"></a>Mobil vagy natív alkalmazás regisztrálása
 
-Ha webalkalmazása az Azure AD B2C által védett webes API-t hív meg, kövesse a következő lépéseket:
-   1. Hozzon létre egy alkalmazáskulcsot a **Kulcsok** panel **Kulcs létrehozása** gombjára kattintva. Jegyezze fel az **Alkalmazáskulcs** értékét. Ezt az értéket fogja használni az alkalmazás kódjában alkalmazáskulcsként.
-   2. Kattintson az **API-hozzáférés**, majd a **Hozzáadás**, lehetőségre, és válassza ki webes API-ját és a hatóköröket (engedélyeket).
+1. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
+2. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
+3. Válassza ki **alkalmazások**, majd válassza ki **Hozzáadás**.
+4. Adjon meg egy nevet az alkalmazásnak. Például *testapp3*.
+5. A **közé tartozik a webalkalmazás vagy webes API**válassza **nem**.
+6. A **natív ügyfél belefoglalása**válassza **Igen**.
+7. A **átirányítási URI-t**, adjon meg egy [átirányítási URI-t egy egyéni sémával rendelkező](active-directory-b2c-apps.md). Győződjön meg róla, válassza ki a megfelelő átirányítási URI-t, és nem tartalmaznak speciális karaktereket, például aláhúzásjeleket.
+8. Kattintson a **Create** (Létrehozás) gombra.
 
-> [!NOTE]
-> Az **Application Secret** (Alkalmazástitok) fontos biztonsági hitelesítő adat, amelynek megfelelő biztonságáról gondoskodni kell.
-> 
+### <a name="create-a-client-secret"></a>Ügyfél titkos kulcs létrehozása
 
-[Ugrás a **következő lépésekre**](#next-steps)
+Ha az alkalmazás Azure AD B2C által biztonságossá tett webes API-hívások, hozzon létre egy szeretné.
 
-### <a name="register-a-web-api"></a>Webes API regisztrálása
-
-[!INCLUDE [active-directory-b2c-register-web-api](../../includes/active-directory-b2c-register-web-api.md)]
-
-Szükség szerint több hatókört is felvehet a **Közzétett hatókörök** lehetőségre kattintva. Alapértelmezés szerint a „user_impersonation” hatókör van meghatározva. A user_impersonation hatókör lehetővé teszi az egyéb alkalmazások számára, hogy a bejelentkezett felhasználó nevében érjék el az API-t. Ha szeretné, eltávolíthatja a user_impersonation hatókört.
-
-[Ugrás a **következő lépésekre**](#next-steps)
-
-### <a name="register-a-mobile-or-native-app"></a>Mobil vagy natív alkalmazás regisztrálása
-
-[!INCLUDE [active-directory-b2c-register-mobile-native-app](../../includes/active-directory-b2c-register-mobile-native-app.md)]
-
-[Ugrás a **következő lépésekre**](#next-steps)
-
-## <a name="limitations"></a>Korlátozások
-
-### <a name="choosing-a-web-app-or-api-reply-url"></a>Webalkalmazás vagy API-válasz URL-címének kiválasztása
-
-Az Azure AD B2C-vel regisztrált alkalmazások jelenleg csak meghatározott válasz URL-címértékekre korlátozódnak. A webalkalmazások és -szolgáltatások válasz URL-címének a `https`-sémával kell kezdődnie, és valamennyi válasz URL-címértéknek egyetlen DNS-tartományba kell tartoznia. Például nem regisztrálhat olyan webalkalmazást, amely az alábbi URL-címek egyikével rendelkezik:
-
-`https://login-east.contoso.com`
-
-`https://login-west.contoso.com`
-
-A regisztrációs rendszer összehasonlítja a meglévő válasz URL-cím teljes DNS-nevét a hozzáadni kívánt válasz URL-cím DNS-nevével. A DNS-név hozzáadására vonatkozó kérést nem lehet teljesíteni, ha az alábbi körülmények valamelyike fennáll:
-
-* Az új válasz URL-cím teljes DNS-neve nem egyezik meg a meglévő válasz URL-cím DNS-nevével.
-* Az új válasz URL-cím teljes DNS-neve nem tartozik a meglévő válasz URL-cím altartományába.
-
-Ha például az alkalmazás válasz URL-címe a következő:
-
-`https://login.contoso.com`
-
-A következő módon adhatja hozzá:
-
-`https://login.contoso.com/new`
-
-Ebben az esetben a DNS-név pontosan egyezik. Esetleg a következőt teheti meg:
-
-`https://new.login.contoso.com`
-
-Ebben az esetben a login.contoso.com egyik DNS-altartományára hivatkozik. Ha azt szeretné, hogy az alkalmazás a login-east.contoso.com vagy a login-west.contoso.com válasz URL-címmel rendelkezzen, ezeket a válasz URL-címeket az alábbi sorrendben kell hozzáadnia:
-
-`https://contoso.com`
-
-`https://login-east.contoso.com`
-
-`https://login-west.contoso.com`
-
-Hozzáadhatja az utóbbi kettőt, mivel az első válasz URL-cím, a contoso.com altartományába tartoznak.
-
-### <a name="choosing-a-native-app-redirect-uri"></a>Natív alkalmazás átirányítási URI-jának kiválasztása
-
-A mobil-/natív alkalmazások átirányítási URI-jának kiválasztásakor két fontos szempontot kell megfontolnia:
-
-* **Egyedi**: Az átirányítási URI sémájának minden alkalmazás esetén egyedinek kell lennie. A példában (com.onmicrosoft.contoso.appname://redirect/path) a com.onmicrosoft.contoso.appname a séma. Javasoljuk, hogy ezt a mintát kövesse. Ha két alkalmazás ugyanazt a sémát használja, akkor a felhasználó egy „Alkalmazás kiválasztása” párbeszédpanelt fog látni. Ha a felhasználó helytelenül választ, a bejelentkezés meghiúsul.
-* **Teljes**: Az átirányítási URI-nak sémával és elérési útvonallal kell rendelkeznie. Az útvonalnak a tartomány után legalább egy perjelet kell tartalmaznia (például a //contoso/ helyes, de a //contoso nem).
-
-Ügyeljen rá, hogy az átirányítási uri ne tartalmazzon különleges karaktereket, például aláhúzásjeleket.
-
-### <a name="faulted-apps"></a>Hibás alkalmazások
-
-A B2C-alkalmazások NEM szerkeszthetők:
-
-* Egyéb alkalmazáskezelési portálokon, például az [Alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/).
-* Graph API vagy PowerShell használata
-
-Ha a leírtak alapján szerkeszti az Azure AD B2C-alkalmazást, és ezután megpróbálja újra szerkeszteni az Azure Portal Azure AD B2C-funkciókat az Azure Portalon, az alkalmazás hibás alkalmazássá válik, és többé nem lehet majd használni az Azure AD B2C-vel. Az alkalmazást ekkor törölnie kell, és újra létre kell hoznia.
-
-Az alkalmazás törléséhez lépjen az [alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/), ahol törölheti az alkalmazást. Ahhoz, hogy láthatóvá lehessen tenni az alkalmazást, Önnek kell lennie az alkalmazás tulajdonosának (és nem csak a bérlő rendszergazdájának).
+1. Válassza ki **kulcsok** majd **kulcs generálása**. 
+2. Válassza ki **mentése** a kulcs megtekintéséhez. Jegyezze fel az **Alkalmazáskulcs** értékét. Ezt az értéket fogja használni az alkalmazás kódjában alkalmazáskulcsként.
+3. Válassza ki **API-hozzáférés**, kattintson a **Hozzáadás**, és válassza ki a webes API-t és a hatóköröket (engedélyeket).
 
 ## <a name="next-steps"></a>További lépések
 

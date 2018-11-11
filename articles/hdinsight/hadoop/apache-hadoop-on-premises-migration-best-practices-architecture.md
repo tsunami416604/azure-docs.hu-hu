@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 02db6b4691beb4bfefa3815c87cf54f350219d81
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 62e15b5845ed9faa605f978f0d2fd427c9c3ee9b
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418007"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008181"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése az Azure HDInsight - architektúra ajánlott eljárásai
 
@@ -113,7 +113,7 @@ Egy HDInsight Hive-metaadattár ajánlott eljárások a következők:
 - Fontolja meg, és cserélje le az impala-alapú lekérdezések LLAP-lekérdezéseket.
 - Fontolja meg, és cserélje le a MapReduce-feladatok Spark-feladatok.
 - Fontolja meg, és cserélje le a közel valós idejű batch-feladatok a Spark-feladatok a Spark strukturált Stream használata.
-- Fontolja meg az adatok előkészítése az Azure Data Factory (ADF) 2.0 használatával.
+- Fontolja meg az adatok előkészítése az Azure Data Factory (ADF) 2.0 használatát.
 - Fontolja meg az Ambari fürt felügyeletéhez.
 - Módosítsa az adattárolás helyszíni HDFS-ből WASB vagy az ADLS vagy az ADFS parancsfájlok feldolgozás céljából.
 - Fontolja meg a Ranger RBAC használata a Hive-táblák és a naplózás.

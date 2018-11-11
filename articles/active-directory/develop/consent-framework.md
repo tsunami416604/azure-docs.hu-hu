@@ -16,22 +16,22 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: b01cd43d1c38a9db50937a6cff9b416b8c6acd0e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 942151c0ce2a3a79dbdce9b90adea721456f920f
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946476"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288475"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Az Azure Active Directory hozzájárulási keretrendszer
 
 Az Azure Active Directory (Azure AD) hozzájárulási keretrendszer megkönnyíti a több-bérlős webes és natív ügyfélalkalmazások fejlesztéséhez. Ezek az alkalmazások engedélyezheti a bejelentkezési felhasználói fiókokat az Azure AD-bérlővel, ahol az alkalmazás regisztrálva lesz és a egy eltérő. Webes API-k, például a Microsoft Graph API (az Azure ad-ben, Intune-ban, és az Office 365-ben) és egyéb Microsoft-szolgáltatás API-k, a saját webes API-k mellett eléréséhez is szükséges lehet.
 
-A keretrendszer egy felhasználó vagy rendszergazda engedélyezi hogy egy alkalmazás, amely rákérdez, regisztrálni kell a könyvtárban, amelyek magukban foglalhatják a directory-adatok elérése alapul. Például ha webes ügyfélalkalmazásnak szüksége van a felhasználó naptár adatainak olvasásához az Office 365-ből, a felhasználó szükséges, hogy engedélyt adjanak az ügyfélalkalmazásnak. Miután jóváhagyás van megadva, az ügyfélalkalmazás lesz a Microsoft Graph API meghívása a felhasználó nevében, és használhatják a naptári adatok, igény szerint. A [Microsoft Graph API](https://graph.microsoft.io) hozzáférést biztosít az adatok az Office 365-ben (például a naptárak és üzeneteket az Exchange, a helyek és a SharePoint, a onedrive-ról, notebookok a OneNote-ban, a tevékenységek a Planner, valamint a munkafüzetek dokumentumok listája Excel-), valamint a felhasználók és csoportok Azure AD-ből és más objektumok további Microsoft cloud servicesből.
+A keretrendszer egy felhasználó vagy rendszergazda engedélyezi hogy egy alkalmazás, amely rákérdez, regisztrálni kell a könyvtárban, amelyek magukban foglalhatják a directory-adatok elérése alapul. Például ha webes ügyfélalkalmazásnak szüksége van a felhasználó naptár adatainak olvasásához az Office 365-ből, a felhasználó szükséges, hogy engedélyt adjanak az ügyfélalkalmazásnak. Miután jóváhagyás van megadva, az ügyfélalkalmazás lesz a Microsoft Graph API meghívása a felhasználó nevében, és használhatják a naptári adatok, igény szerint. A [Microsoft Graph API](https://developer.microsoft.com/graph) hozzáférést biztosít az adatok az Office 365-ben (például a naptárak és üzeneteket az Exchange, a helyek és a SharePoint, a onedrive-ról, notebookok a OneNote-ban, a tevékenységek a Planner, valamint a munkafüzetek dokumentumok listája Excel-), valamint a felhasználók és csoportok Azure AD-ből és más objektumok további Microsoft cloud servicesből.
 
 A hozzájárulási keretrendszer az OAuth 2.0 és a különböző folyamatok épül, mint például engedélyezési kód engedélyezési és az ügyfél hitelesítő adatainak megadása, nyilvános vagy bizalmas ügyfelek használatával. OAuth 2.0 használatával az Azure AD lehetővé teszi számos különböző típusú ügyfélalkalmazások – például telefonon, táblagépen, kiszolgáló vagy egy webalkalmazás –, illetve a szükséges erőforrásokhoz való hozzáférés elnyeréséhez.
 
-A hozzájárulási keretrendszer OAuth2.0-engedélyezések való használatával kapcsolatos további információkért lásd: [engedélyezése webalkalmazásoknak OAuth 2.0 és az Azure AD használatával hozzáférést](v1-protocols-oauth-code.md) és [hitelesítési forgatókönyvek az Azure ad-ben](authentication-scenarios.md). További információ a kezdeti hitelesített hozzáférést az Office 365 a Microsoft Graphon keresztül: [alkalmazáshitelesítést a Microsoft Graph](https://graph.microsoft.io/docs/authorization/auth_overview).
+A hozzájárulási keretrendszer OAuth2.0-engedélyezések való használatával kapcsolatos további információkért lásd: [engedélyezése webalkalmazásoknak OAuth 2.0 és az Azure AD használatával hozzáférést](v1-protocols-oauth-code.md) és [hitelesítési forgatókönyvek az Azure ad-ben](authentication-scenarios.md). További információ a kezdeti hitelesített hozzáférést az Office 365 a Microsoft Graphon keresztül: [alkalmazáshitelesítést a Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview).
 
 ## <a name="consent-experience---an-example"></a>Jóváhagyási felületen – példa
 

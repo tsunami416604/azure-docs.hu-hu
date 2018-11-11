@@ -1,5 +1,5 @@
 ---
-title: Az Apache Spark strukturált Streamelés a Kafkából az Azure Cosmos DB használatával – Azure HDInsight
+title: Az Apache Spark strukturált Stream az Apache Kafkából az Azure Cosmos DB használatával – Azure HDInsight
 description: Ismerje meg, hogyan használható az Apache Spark strukturált Stream adatokat olvasni az Apache Kafka és az Azure Cosmos DB-be tárolja majd. Ebben a példában Jupyter notebookkal streamel adatokat a Spark on HDInsightból.
 services: hdinsight
 author: hrasheed-msft
@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/26/2018
+ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8ecf336eea40891af8bd9f32c88268d336f3316a
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 159d3d1576ab3a38baaba94594b3abf04ef3ad56
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036734"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287982"
 ---
 # <a name="use-apache-spark-structured-streaming-with-kafka-and-azure-cosmos-db"></a>Használja az Apache Spark strukturált Stream használata a Kafka és az Azure Cosmos DB
 
@@ -22,7 +22,7 @@ Ismerje meg, az Apache Spark strukturált Stream használata az Azure HDInsight 
 
 Az Azure Cosmos DB egy globálisan elosztott, többmodelles adatbázis. Ebben a példában egy SQL API adatbázis modellt használja. További információkért lásd: a [Üdvözli az Azure Cosmos DB](../cosmos-db/introduction.md) dokumentumot.
 
-A Spark strukturált stream egy Spark SQL-alapú streamfeldolgozó rendszer. Lehetővé teszi, hogy ugyanúgy fejezze ki a streamszámításokat, mint a kötegelt számításokat a statikus adatok esetében. A strukturált streamelésről további információt az Apache.org oldalon lévő [Structured Streaming Programming Guide [Alpha]](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html) (Strukturált streamelés programozási útmutatója [Alfa]) szakaszban talál.
+A Spark strukturált stream egy Spark SQL-alapú streamfeldolgozó rendszer. Lehetővé teszi, hogy ugyanúgy fejezze ki a streamszámításokat, mint a kötegelt számításokat a statikus adatok esetében. A strukturált Streamelésről további információkért lásd: a [strukturált Streamelés programozási útmutató](https://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html) az Apache.org webhelyen.
 
 > [!IMPORTANT]
 > Ebben a példában a HDInsight 3.6-os Spark 2.2 használja.
@@ -95,7 +95,7 @@ Bár létrehozhat egy Azure virtuális hálózatra, a Kafka, és a Spark-fürtö
 
 3. Olvassa át a **használati feltételeket**, majd válassza az **Elfogadom a fenti feltételeket és kikötéseket** lehetőséget.
 
-4. Végül jelölje be a **Rögzítés az irányítópulton** elemet, majd válassza a **Vásárlás** lehetőséget. Körülbelül 20 perc alatt létrehozni a fürtöket vesz igénybe.
+4. Végül válassza **beszerzési**. Körülbelül 20 perc alatt létrehozni a fürtöket vesz igénybe.
 
 > [!IMPORTANT]
 > A fürtök, a virtuális hálózat és a Cosmos DB-fiók létrehozása akár 45 percig is eltarthat.

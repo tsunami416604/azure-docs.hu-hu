@@ -3,18 +3,18 @@ title: Storage és Data Lake Store – Azure HDInsight az Apache Storm írása
 description: Ismerje meg, hogyan használható az Apache Storm HDInsight a HDFS-kompatibilis tárolóba való írása.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.openlocfilehash: 4e99ed88eb6a58308ecd972931ca877493504fea
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e2dd9b1d6031d8c8695ff6821e9af4e464ef270a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419833"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009351"
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>A HDInsight Apache Storm írhat HDFS-be
 
@@ -23,7 +23,7 @@ Ismerje meg, hogyan adatokat írni az Apache Storm on HDInsight által használt
 > [!IMPORTANT]
 > Ebben a dokumentumban használt példatopológiát a HDInsight alatt futó Stormmal összetevők támaszkodik. Megkövetelheti, hogy a módosítás az Azure Data Lake Store más Apache Storm-fürtök együttes használata.
 
-## <a name="get-the-code"></a>A kód letöltése
+## <a name="get-the-code"></a>Kód letöltése
 
 Letölthető érhető el a projektet, amely tartalmazza az ebben a topológiában [ https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store).
 

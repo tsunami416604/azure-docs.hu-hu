@@ -2,19 +2,19 @@
 title: A Microsoft Cognitive Toolkit deep learning az Azure HDInsight Spark-
 description: Ismerje meg, hogyan lehet alkalmazni egy Microsoft Cognitive Toolkit deep learning betanított modellt egy adatkészletet, a Spark Python API használatával az Azure HDInsight Spark-fürt.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.author: jasonh
-ms.openlocfilehash: cc36c68f4867b9b450703c881a13a65f17ebad4b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: 4bcf6df37e7341baf227b9c77b718a955526823d
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049451"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010932"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>A Microsoft Cognitive Toolkit deep learning-modell az Azure HDInsight Spark-fürt használata
 
@@ -89,7 +89,7 @@ A Microsoft Cognitive Toolkit használata az Azure HDInsight Spark-fürt, be kel
 ## <a name="see-also"></a>Lásd még
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
-### <a name="scenarios"></a>Forgatókönyvek
+### <a name="scenarios"></a>Alkalmazási helyzetek
 * [Spark és BI: Interaktív adatelemzés végrehajtása a Spark on HDInsight használatával, BI-eszközökkel](apache-spark-use-bi-tools.md)
 * [Spark és Machine Learning: A Spark on HDInsight használata az épület-hőmérséklet elemzésére HVAC-adatok alapján](apache-spark-ipython-notebook-machine-learning.md)
 * [Spark és Machine Learning: A Spark on HDInsight használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)
