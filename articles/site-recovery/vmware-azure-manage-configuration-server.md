@@ -1,18 +1,18 @@
 ---
 title: A konfigurációs kiszolgáló kezelése a VMware és a fizikai kiszolgáló vészhelyreállítása az Azure Site Recoveryvel |} A Microsoft Docs
-description: Ez a cikk egy meglévő konfigurációs kiszolgáló VMware virtuális gépek vészhelyreállítása és fizikai kiszolgálók Azure-ban az Azure Site RecoveryS kezelését ismerteti.
+description: Ez a cikk ismerteti, hogyan kezelheti egy meglévő konfigurációs kiszolgáló VMware virtuális gépek vészhelyreállítása és fizikai kiszolgálók az Azure-bA az Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 4ac3871893e7e8161dc087f285eb3d802cd4a355
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: f76a55778a5d4c00060192bfaa704724d5fe1045
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215140"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219484"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>A konfigurációs kiszolgáló VMware virtuális gépek kezelése
 
@@ -137,10 +137,10 @@ Kumulatív frissítés a konfigurációs kiszolgálót frissíteni fogja futtatn
 - Ha 9.7, 9.8, 9.9 vagy 9.10 futtatja, frissítheti, közvetlenül a 9.11.
 - Ha 9.6 vagy korábbi, és a 9.11 frissíteni, először frissítenie kell 9.7 verzióra. Mielőtt 9.11.
 
-Kumulatív frissítések a configuration server összes verziójára való frissítéshez mutató hivatkozások találhatók a [frissítések wikioldal](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
+Kumulatív frissítések a configuration server összes verziójára való frissítéshez mutató hivatkozások találhatók a [Azure frissítéseit tartalmazó lapon](https://azure.microsoft.com/updates/?product=site-recovery).
 
 > [!IMPORTANT]
-> Minden új verzióval, az Azure Site Recovery componenet kiadott, minden verzió alább ajánlatból 4 ennyi "számít nem támogatott. Célszerű mindig a legújabb elérhető verzióra való frissítéséhez.
+> Minden új verziójával egy Azure Site Recovery-összetevő, amely akkor szabadul fel, ajánlatból 4 alatti összes verzió ennyi "számít nem támogatott. Célszerű mindig a legújabb elérhető verzióra való frissítéséhez.
 
 A kiszolgáló frissítése a következőképpen:
 
@@ -226,7 +226,7 @@ Konfigurációs kiszolgáló központi telepítése előtt a 2016. május eseté
 
 Az OVF-sablonját a megadott engedély egy értékelési engedély 180 napig érvényes. A zavartalan használat aktiválnia kell a Windows határidődátumával engedéllyel rendelkező.
 
-## <a name="failback-requirements"></a>Feladat-visszavétel követelmények
+## <a name="failback-requirements"></a>Feladat-visszavételre vonatkozó követelmények
 
 Védelem-újrabeállítást és a feladat-visszavétel során a helyszíni konfigurációs kiszolgálón fut, és a egy csatlakoztatott állapotban kell lennie. A sikeres feladat-visszavételhez a virtuális gép folyamatban van a feladatátvételben léteznie kell a konfigurációs kiszolgáló adatbázisát.
 
