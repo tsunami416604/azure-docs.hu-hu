@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: a4f9e1111516d439f018e965883eb8268c83289c
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 25a1913fba3e66e65b3c785eb6ce1738c5f00a26
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954790"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247925"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>Adat-előállító és folyamat létrehozása a .NET SDK használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -38,7 +38,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 A jelen cikkben található útmutató a Visual Studio 2017-et használja. A Visual Studio 2013-at vagy 2015-öt is használhatja.
 
 ### <a name="azure-net-sdk"></a>Azure .NET SDK
-Töltse le és telepítse az [Azure .NET SDK](http://azure.microsoft.com/downloads/)-t a gépen.
+Töltse le és telepítse az [Azure .NET SDK](https://azure.microsoft.com/downloads/)-t a gépen.
 
 ## <a name="create-an-application-in-azure-active-directory"></a>Alkalmazás létrehozása az Azure Active Directoryban
 [A cikk](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) szakaszainak utasításaival a következő feladatokat végezheti el: 

@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 09/24/2018
-ms.openlocfilehash: 70c023fc8fe996060d3eff3d5a700b5f910097b4
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.date: 11/08/2018
+ms.openlocfilehash: 432c3502ec935d87af5fbcf567db1612b3bd1168
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113631"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300404"
 ---
 # <a name="collect-data-for-models-in-production"></a>A modellek éles adatok gyűjtése
 
@@ -56,17 +56,7 @@ A kimeneti adatokat a BLOB elérési útja ezt a szintaxist követi:
 
 - Egy [AKS-fürt](how-to-deploy-to-aks.md).
 
-- Az alábbi függőségeket és telepített modul [környezetében](how-to-configure-environment.md):
-  + Linux:
-    ```shell
-    sudo apt-get install libxml++2.6-2v5
-    pip install azureml-monitoring
-    ```
-
-  + Windows rendszeren:
-    ```shell
-    pip install azureml-monitoring
-    ```
+- [Állítsa be a környezetet](how-to-configure-environment.md) , és telepítse a [figyelési SDK](https://aka.ms/aml-monitoring-sdk).
 
 ## <a name="enable-data-collection"></a>Az adatgyűjtés engedélyezése
 Az adatgyűjtés függetlenül a modell üzembe helyezéséhez az Azure Machine Learning szolgáltatás vagy más eszközök segítségével lehet engedélyezni. 
@@ -75,7 +65,7 @@ Az engedélyezéshez kell tennie:
 
 1. Nyissa meg a pontozófájl. 
 
-1. Adja hozzá a következő kódot a fájl elejéhez:
+1. Adja hozzá a [az alábbi kód](https://aka.ms/aml-monitoring-sdk) , a fájl elejéhez:
 
    ```python 
    from azureml.monitoring import ModelDataCollector
@@ -123,11 +113,11 @@ Ha már van egy szolgáltatás telepíti a függőségeket a **környezet fájl*
 
 1. Lépjen a **központi telepítések** -> **szolgáltatás kiválasztása** -> **szerkesztése**.
 
-   ![Szolgáltatás szerkesztése](media/how-to-enable-data-collection/EditService.png)
+   ![Szolgáltatás szerkesztése](media/how-to-enable-data-collection/EditService.PNG)
 
 1. A **speciális beállítások**, kapcsolja ki **engedélyezése a modelladatok gyűjtésének**. 
 
-   ![Törölje a jelet az adatgyűjtést](media/how-to-enable-data-collection/CheckDataCollection.png)
+    [![Ellenőrizze az adatok gyűjtése](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
 
    Ebben az ablakban azt is beállíthatja "Az Appinsights-diagnosztika engedélyezése" a szolgáltatás állapotának nyomon követéséhez.  
 
@@ -144,11 +134,11 @@ Adatgyűjtés bármikor leállíthatja. Python-kód vagy az Azure portal haszná
 
   1. Lépjen a **központi telepítések** -> **szolgáltatás kiválasztása** -> **szerkesztése**.
 
-     ![Szolgáltatás szerkesztése](media/how-to-enable-data-collection/EditService.png)
+    [![Szolgáltatás szerkesztése](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
   1. A **speciális beállítások**, kapcsolja ki **engedélyezése a modelladatok gyűjtésének**. 
 
-     ![Törölje a jelet az adatgyűjtést](media/how-to-enable-data-collection/UncheckDataCollection.png) 
+    [![Törölje a jelet az adatgyűjtést](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
 
   1. Válassza ki **frissítés** a módosítás alkalmazására.
 
@@ -158,6 +148,84 @@ Adatgyűjtés bármikor leállíthatja. Python-kód vagy az Azure portal haszná
   ## replace <service_name> with the name of the web service
   <service_name>.update(collect_model_data=False)
   ```
+
+## <a name="validate-your-data-and-analyze-it"></a>Az adatok érvényesítése és elemezhetők a
+Kiválaszthatja, hogy bármely eszköz a figyelembe vételével az Azure-Blobba való gyűjtött adatok elemzéséhez. 
+
+Gyors eléréséhez az adatok a blobból:
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+
+1. Nyissa meg a munkaterületet.
+1. Kattintson a **tárolási**.
+
+    [![Tároló](media/how-to-enable-data-collection/StorageLocation.png)](./media/how-to-enable-data-collection/StorageLocation.png#lightbox)
+
+1. Kövesse az elérési utat a kimeneti adatokat a BLOB ezzel a szintaxissal:
+
+```
+/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
+# example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
+```
+
+
+### <a name="analyzing-model-data-through-power-bi"></a>Modell adatelemzés a Power bi-ban
+
+1. Töltse le és nyissa meg a [Power bi Desktopban](http://www.powerbi.com)
+
+1. Válassza ki **adatok lekérése** , majd kattintson a [ **Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources).
+
+    [![A PBI Blob beállítása](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
+
+
+1. Adja hozzá a tárfiók nevét, és adja meg a tárfiók-kulcsot. Ez az információ találhatja meg a blob **beállítások** >> hozzáférési kulcsokkal. 
+
+1. Válassza ki a tárolót **modeldata** , majd kattintson a **szerkesztése**. 
+
+    [![PBI-kezelő](media/how-to-enable-data-collection/pbiNavigator.png)](./media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
+
+1. A lekérdezés-szerkesztőben kattintson a "Name" oszlopban, és adja hozzá a tárfiók 1. A szűrési modell elérési útja. Megjegyzés: Ha azt szeretné, csak meg fájlokba adott év és hónap, csak bontsa ki a szűrő elérési utat. Például mindössze csak nézze meg március adatokká: / modeldata/előfizetés azonosítója > / resourcegroupname > / workspacename > / webservicename > / modelname > / modelversion > / azonosítója > / év > / 3
+
+1. Szűrje az adatokat, amelyek az Ön alapján számára **neve**. Tárolta **előrejelzéseket** és **bemenetek** kell minden egyes lekérdezés létrehozása.
+
+1. A fenntartott dupla nyílra a **tartalom** oszlopot úgy, hogy a fájlokat. 
+
+    [![PBI-tartalom](media/how-to-enable-data-collection/pbiContent.png)](./media/how-to-enable-data-collection/pbiContent.png#lightbox)
+
+1. Kattintson az OK gombra, és az adatok előtöltése lesz.
+
+    [![pbiCombine](media/how-to-enable-data-collection/pbiCombine.png)](./media/how-to-enable-data-collection/pbiCombine.png#lightbox)
+
+1. Rákattinthat a **bezárásához és a alkalmazni** .
+
+1.  Bemeneti és a táblák automatikusan az előrejelzéseket Ha összekapcsolását által **kérelemazonosító**.
+
+1. Indítsa el az egyéni jelentések készítése a modell adatait.
+
+
+### <a name="analyzing-model-data-using-databricks"></a>Databricks használatával modell-adatok elemzése
+
+1. Hozzon létre egy [Databricks-munkaterület](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). 
+
+1. Nyissa meg a Databricks-munkaterület. 
+
+1. A databricks munkaterületen válassza **adatok feltöltése**.
+
+    [![Adatbázis feltöltése](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
+
+1. Új tábla létrehozásához, és válassza ki **egyéb adatforrásokból** -> Azure Blob Storage -> Create Table jegyzetfüzetben.
+
+    [![DB-table](media/how-to-enable-data-collection/dbtable.PNG)](./media/how-to-enable-data-collection/dbtable.PNG#lightbox)
+
+1. Az adatok helyének frissítése. Például:
+
+    ```
+    file_location = "wasbs://mycontainer@storageaccountname.blob.core.windows.net/modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/*/*/data.csv" 
+    file_type = "csv"
+    ```
+ 
+    [![A dbsetup program](media/how-to-enable-data-collection/dbsetup.png)](./media/how-to-enable-data-collection/dbsetup.png#lightbox)
+
+1. Kövesse a lépéseket annak érdekében, hogy megtekintheti és elemezheti az adatokat a sablonban. 
 
 ## <a name="example-notebook"></a>Példa notebook
 

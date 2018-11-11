@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 6469ff9c59c87bc6735e795195866b0aaf211246
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2ec758d9457b75cd7e5f6f29757d3201f3a6d62e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262131"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283478"
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Útmutató a virtuálisgép-lemezkép létrehozása az Azure Marketplace-en
 Ez a cikk **2. lépés**, a virtuális merevlemezek (VHD), amely központilag telepíti az Azure Marketplace-en való előkészítésének módját mutatja. A virtuális merevlemezek az alapítvány termékváltozat. A folyamat eltér attól függően, hogy egy Linux-alapú vagy Windows-alapú Termékváltozatot. Ez a cikk mindkét forgatókönyvvel foglalkozunk. Ez a folyamat végrehajtható párhuzamosan [fióklétrehozás és a regisztrációs][link-acct-creation].
@@ -191,7 +191,7 @@ Virtuálisgép-rendszerképek kapcsolatos további információkért tekintse á
 
 ### <a name="set-up-the-necessary-tools-powershell-and-azure-classic-cli"></a>A szükséges eszközök, PowerShell és az Azure klasszikus parancssori felület beállítása
 * [PowerShell-telepítés](/powershell/azure/overview)
-* [Az Azure klasszikus parancssori felület beállítása](../cli-install-nodejs.md)
+* [Azure CLI beállítása](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 ### <a name="41-create-a-user-vm-image"></a>4.1 felhasználói Virtuálisgép-lemezkép létrehozása
 #### <a name="capture-vm"></a>Virtuális gép rögzítése
@@ -427,63 +427,45 @@ Az alábbiakban a lépéseket az SAS URL-cím létrehozása a Microsoft Azure St
 
 11. A termékváltozatban található minden egyes virtuális merevlemeznél ismételje meg a fenti lépéseket.
 
-**Az Azure klasszikus parancssori felület (nem-Windows és a folyamatos integráció ajánlott)**
+**Az Azure CLI 2.0 (nem Windows és a folyamatos integráció esetén ajánlott)**
 
 Az SAS URL-cím létrehozása a klasszikus Azure CLI-vel lépései a következők
 
 [!INCLUDE [outdated-cli-content](../../includes/contains-classic-cli-content.md)]
 
-1.  Töltse le az Azure klasszikus parancssori felületét [Itt](https://azure.microsoft.com/documentation/articles/xplat-cli-install/). Különböző mutató hivatkozásokat is talál **[Windows](https://aka.ms/webpi-azure-cli)** és  **[MAC OS](https://aka.ms/mac-azure-cli)**.
+1.  Töltse le a Microsoft Azure parancssori felületét [Itt](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Különböző mutató hivatkozásokat is talál **[Windows](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)** és  **[MAC OS](https://docs.microsoft.com/cli/azure/install-azure-cli-macos?view=azure-cli-latest)**.
 
 2.  Miután letöltötte, telepítse a
 
-3.  Hozzon létre egy PowerShell-(vagy egyéb parancsfájl végrehajtható) a következő kód fájlt, és mentse helyileg
+3.  Hozzon létre egy Bash-(vagy más ezzel egyenértékű parancsfájl végrehajtható fájlt) a következő kóddal fájlt, és mentse helyileg
 
-          $conn="DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<Storage Account Key>"
-          azure storage container list vhds -c $conn
-          azure storage container sas create vhds rl <Permission End Date> -c $conn --start <Permission Start Date>  
+        export AZURE_STORAGE_ACCOUNT=<Storage Account Name>
+        EXPIRY=$(date -d "3 weeks" '+%Y-%m-%dT%H:%MZ')
+        CONTAINER_SAS=$(az storage container generate-sas --account-name -n vhds --permissions rl --expiry $EXPIRY -otsv)
+        BLOB_URL=$(az storage blob url -c vhds -n <VHD Blob Name> -otsv)
+        echo $BLOB_URL\?$CONTAINER_SAS
 
     Frissítse a következő paramétereket felett
 
-    a. **`<StorageAccountName>`**: Adjon a tárfiók nevét
+    a. **`<Storage Account Name>`**: Adjon a tárfiók nevét
 
-    b. **`<Storage Account Key>`**: Adjon a tárfiók kulcsa
+    b. **`<VHD Blob Name>`**: A VHD-blob nevét kell adni.
 
-    c. **`<Permission Start Date>`**: A védelme érdekében, UTC szerinti idő, válassza ki a nap, az aktuális dátum előtt. Például, ha az aktuális dátum későbbi, 2016. október 26., majd mesterpéldányaként 2016/10/25. Ha az Azure CLI 2.0-s vagy újabb verzióját használja, adja meg a dátum- és a kezdő és záró dátumát, például: 10-25 – 2016T00:00:00Z.
+    Válassza ki a dátumot, amely legalább 3 hét után a kezdő dátum (alapértelmezés szerint a sas-token létrehozásakor). Érték például: **2018-10-11T23:56Z**.
 
-    d. **`<Permission End Date>`**: Adjon meg egy dátumot, amely legalább 3 hét után a **Kezdődátum**. Az érték lehet **11-02-2016**. Ha az Azure CLI 2.0-s vagy újabb verzióját használja, adja meg a dátum- és a kezdő és záró dátumát, például: 11-02-2016T00:00:00Z.
+    Az alábbiakban a példakód után frissítése megfelelő paramétereket exportálása AZURE_STORAGE_ACCOUNT vhdstorage1ba78dfb6bc2d8 LEJÁRAT = = $(-d "3 hét" dátum "+ %Y – %m-% dT % H: % MZ") CONTAINER_SAS = $(az storage container sas generálása - n VHD-k – engedélyek rl--lejárati $ LEJÁRAT - otsv) BLOB_URL = $(az storage blob URL-cím - c VHD - n osdisk_1ba78dfb6b.vhd - otsv) echo $BLOB_URL\?$CONTAINER_SAS
 
-    Következő példakód a megfelelő paramétereinek frissítése után
+4.  Futtassa a szkriptet, és azt biztosít Önnek a SAS URL-címet a tároló hozzáférési.
 
-          $conn="DefaultEndpointsProtocol=https;AccountName=st20151;AccountKey=TIQE5QWMKHpT5q2VnF1bb+NUV7NVMY2xmzVx1rdgIVsw7h0pcI5nMM6+DVFO65i4bQevx21dmrflA91r0Vh2Yw=="
-          azure storage container list vhds -c $conn
-          azure storage container sas create vhds rl 11/02/2016 -c $conn --start 10/25/2016  
-
-4.  Nyissa meg a Powershell-szerkesztőt a "Futtatás mint rendszergazda" mód, és nyissa meg a fájlt a #3. lépésben. Használhat bármilyen parancsprogram-szerkesztő, amely a különböző operációs rendszerekhez érhető el.
-
-5.  Futtassa a szkriptet, és azt biztosít Önnek a SAS URL-címet a tároló hozzáférési
-
-    Következő a rendszer az SAS-aláírás kimenetét, és másolja a kijelölt részt egy Jegyzettömb
-
-    ![rajz](media/marketplace-publishing-vm-image-creation/img5.2_16.png)
-
-6.  Most már tároló szint SAS URL-címet kap, és adja hozzá a virtuális merevlemez nevét, a kell.
-
-    Tároló szint SAS URL-címe #
-
-    `https://st20151.blob.core.windows.net/vhds?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
-
-7.  Helyezze be a virtuális merevlemez neve után SAS URL-címet a tároló neve alább látható módon `https://st20151.blob.core.windows.net/vhds/<VHDName>?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
-
-    Példa:
-
-    TestRGVM201631920152.vhd a virtuális merevlemez nevét, majd a virtuális Merevlemezek SAS URL-cím
-
-    `https://st20151.blob.core.windows.net/vhds/ TestRGVM201631920152.vhd?st=2016-10-25T07%3A00%3A00Z&se=2016-11-02T07%3A00%3A00Z&sp=rl&sv=2015-12-11&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
+5.  Ellenőrizze a SAS URL-CÍMÉT.
 
     - Győződjön meg arról, hogy a bináris fájl neve és a ".vhd" az URI-t is.
     -   Az aláírás közepén, ellenőrizze, hogy "sp = rl" jelenik meg. Ez azt mutatja be, hogy olvasási és a lista hozzáférés sikeresen lett-e megadva.
     -   Az aláírás közepén, ellenőrizze, hogy "sr = c" jelenik meg. Ez azt jelenti, hogy a tároló hozzáférési
+
+    Példa:
+
+    `https://vhdstorage1ba78dfb6bc2d8.blob.core.windows.net/vhds/osdisk_1ba78dfb6b.vhd?se=2018-10-12T00%3A04Z&sp=rl&sv=2018-03-28&sr=c&sig=...`
 
 8.  Győződjön meg arról, hogy a létrehozott megosztott hozzáférési jogosultságkód URI működik, a tesztelés a böngészőben. A letöltési folyamat azt kell kezdődnie
 

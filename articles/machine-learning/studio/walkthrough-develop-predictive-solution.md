@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/23/2017
-ms.openlocfilehash: 9d2cfeb780687e1bf0e61173b3550e26f4019115
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: a107907dd01b15015c644f835239f6f90b948296
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394148"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245834"
 ---
 # <a name="walkthrough-develop-a-predictive-analytics-solution-for-credit-risk-assessment-in-azure-machine-learning"></a>Részletes útmutató: A hitelkockázat értékelésére szolgáló prediktív elemzési megoldás fejlesztése az Azure Machine Learning Studio használatával
 
@@ -57,4 +57,4 @@ A hitelkockázat-értékelési megoldás létrehozásához az alábbi lépéseke
 > [!TIP] 
 > Az ebben az útmutatóban kifejlesztett kísérlet működő példányát megtalálja az [Azure AI-katalógusban](https://gallery.cortanaintelligence.com). Lépjen **[a hitelkockázat előrejelzésével kapcsolatos útmutatóra](https://gallery.cortanaintelligence.com/Experiment/Walkthrough-Credit-risk-prediction-1)**, és kattintson az **Open in Studio** (Megnyitás a Studióban) lehetőségre a kísérlet egy példányának a Machine Learning Studio-munkaterületre való letöltéséhez.
 > 
-> Ez az útmutató [a hitelkockázat bináris osztályozás útján való előrejelzésével](http://go.microsoft.com/fwlink/?LinkID=525270) kapcsolatos mintakísérlet egyszerűsített verzióján alapul, amely szintén a [Galleryben](http://gallery.cortanaintelligence.com/) érhető el.
+> Ez az útmutató [a hitelkockázat bináris osztályozás útján való előrejelzésével](https://go.microsoft.com/fwlink/?LinkID=525270) kapcsolatos mintakísérlet egyszerűsített verzióján alapul, amely szintén a [Galleryben](http://gallery.cortanaintelligence.com/) érhető el.

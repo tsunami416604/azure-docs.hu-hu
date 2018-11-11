@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 10/01/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b1333eda0fa0bffdf3852f24414511f55acc090e
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 11cc6a69b8072fca0639da5e517a39c22645710e
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395655"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300506"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Telepítése és a Log Analytics-nézetek használata az Azure Active Directory
 
@@ -42,7 +42,7 @@ A Log Analytics-nézetek használatához az alábbiak szükségesek:
 
 1. Keresse meg a Log Analytics-munkaterületre. Ehhez először keresse meg a [az Azure portal](https://portal.azure.com) válassza **minden szolgáltatás**. Típus **Log Analytics** a szövegmezőbe, és válassza a **Log Analytics**. Válassza ki a munkaterületet, akkor irányítja a tevékenységnaplókat, az Előfeltételek részeként.
 2. Válassza ki **adatforrásnézet-tervezőből**, jelölje be **importálása** majd **fájl kiválasztása** a nézetek importálhatja a helyi számítógépről.
-3. Válassza ki az előfeltételeket, és válassza ki a letöltött nézeteket **mentése** az Importálás gombra. Tegye meg a **Azure AD-fiók kiépítési események** nézet, **bejelentkezési események** nézet és a **felhasználók végrehajtása hozzájárulás** megtekintése.
+3. Válassza ki az előfeltételeket, és válassza ki a letöltött nézeteket **mentése** az Importálás gombra. Tegye meg a **Azure AD-fiók kiépítési események** nézet és a **bejelentkezési események** megtekintése.
 
 ## <a name="use-the-views"></a>A nézetek használata
 
@@ -52,7 +52,6 @@ A Log Analytics-nézetek használatához az alábbiak szükségesek:
 
     * **Az Azure AD fiók kiépítése események**: Ebben a nézetben látható a kiépítési tevékenységgel, például egy üzembe helyezett új felhasználóknak a számát, naplózás kapcsolatos jelentéseket kiépítési hibákhoz, azon felhasználók száma, frissítik és frissítési hibák és a felhasználók száma eltávolítjuk és a kapcsolódó hibák.    
     * **Bejelentkezési események**: Ebben a nézetben látható a leginkább releváns jelentések kapcsolódó bejelentkezési tevékenységeket, például az alkalmazás, felhasználó, eszköz, valamint nyomon követése a bejelentkezések száma idővel lemezkapacitásáról által bejelentkezések figyelése.
-    * **Felhasználói jóváhagyás végrehajtása**: Ebben a nézetben látható a kapcsolódó felhasználói beleegyezés, jelentések, például a hozzájárulási engedélyezi a felhasználói, a felhasználók számára nyújtott hozzájárulási bejelentkezések, valamint a bejelentkezések a jóváhagyás-alapú alkalmazások összes alkalmazás által. 
 
 3. Válassza ki, ezek a nézetek az Ugrás az egyes jelentések egyikét. A jelentés paramétereinek valamelyik is beállíthat riasztásokat. Például állítsa a riasztás minden alkalommal, amikor bejelentkezési hiba van. Ehhez először válassza ki a **bejelentkezési események** nézetben válassza **bejelentkezési hibák az idő függvényében** jelentést, majd **Analytics** nyissa meg a részleteket, a tényleges lekérdezést mögött a jelentést. 
 

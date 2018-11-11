@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: tulasim
-ms.openlocfilehash: 4c96eb5b49c72fe9bb5ab977c773407889c56805
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 88e55468c4018b73cb26087c4fbbdbee65cd5db3
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213304"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515522"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>A tartalmat a QnA Maker adatforrások
 
@@ -26,9 +26,9 @@ Az alábbi táblázat foglalja össze a tartalmat és fájlformátumot, QnA Make
 |Source Type (Forrás típusa)|Tartalomtípus| Példák|
 |--|--|--|
 |URL-cím|(Egyszerű, szakaszok vagy a témakörök kezdőlapja) – gyakori kérdések|[Egyszerű – gyakori kérdések](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), [– gyakori kérdések hivatkozásokkal](https://www.microsoft.com/software-download/faq), [– gyakori kérdések a témakörök kezdőlapja](https://support.microsoft.com/products/windows?os=windows-10)|
-|PDF / DOC|Gyakori kérdések, termék manuális, brosúrák, tanulmány, szórólap házirend és támogatási útmutató, strukturált QnA stb.|[Strukturált QnA.doc](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Bot%20Service%20Sample%20FAQ.docx), [minta termék Manual.pdf](https://download.microsoft.com/download/2/9/B/29B20383-302C-4517-A006-B0186F04BE28/surface-pro-4-user-guide-EN.pdf), [félig-structured.doc minta](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx), [fehér paper.pdf minta](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-stack-wortmann-bring-the-power-of-the-public-cloud-into-your-data-center/Azure_Stack_Wortmann_Bring_the_Power_of_the_Public_Cloud_into_Your_Data_Center.pdf)|
-|Excel|Strukturált QnA fájlt (beleértve a RTF, HTML támogatja)|[Minta QnA FAQ.xls](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/QnA%20Maker%20Sample%20FAQ.xlsx)|
-|TXT/TSV|Strukturált QnA fájl|[Minta chit-chat.tsv](https://github.com/Microsoft/BotBuilder-PersonalityChat/blob/master/CSharp/Datasets/scenario_responses_the_friend.tsv)|
+|PDF / DOC|Gyakori kérdések, termék manuális, brosúrák, tanulmány, szórólap házirend és támogatási útmutató, strukturált QnA stb.|[Strukturált QnA.doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx), [minta termék Manual.pdf](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf), [félig-structured.doc minta](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx), [fehér paper.pdf minta](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
+|Excel|Strukturált QnA fájlt (beleértve a RTF, HTML támogatja)|[Minta QnA FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
+|TXT/TSV|Strukturált QnA fájl|[Minta chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
 
 ## <a name="faq-urls"></a>Gyakori kérdések URL-címek
 

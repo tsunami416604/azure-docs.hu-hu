@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 2dd9b14ebd7e64a1073ab773b2f1ac8d8c05ac0a
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: a2d067f71b7b68944e479cfd27c1dbf414762af8
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185247"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514876"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Online szimulátor Raspberry Pi csatlakoztatása Azure IoT hubhoz (Node.js)
 
@@ -59,9 +59,13 @@ Kattintson a gombra kattintva indítsa el a Raspberry Pi online szimulátor.
 <a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">Indítsa el a Raspberry Pi-szimulátor</a>
 
 Három olyan terület a webalkalmazás-szimulátorban történő.
+
 1. Szerelvény terület – az alapértelmezett kapcsolatcsoport-e, hogy kapcsolódik-e a Pi BME280 érzékelő és a egy LED. A nézet zárolva van az előzetes verzió ezért jelenleg nem hajtható végre testreszabása.
+
 2. Kódolási terület – egy online Kódszerkesztő, a Raspberry Pi-kódot. Az alapértelmezett mintaalkalmazás segít BME280 érzékelő érzékelői adatokat gyűjteni, és az Azure IoT hubra. Az alkalmazás teljes mértékben kompatibilis a Pi valódi eszközön. 
+
 3. Integrált konzol ablakának - kódját kimenetét mutatja. Ez az ablak tetején lévő nincsenek három gombbal.
+
    * **Futtatás** – az alkalmazás futtatásához a kódolási területen.
    * **Alaphelyzetbe** – a kódolási terület visszaállítása az alapértelmezett mintaalkalmazáshoz.
    * **Modellrészek/Kibontás** – a jobb oldalon van egy gombot, hogy a konzolablakban modellrészek/bontsa ki.
@@ -71,8 +75,17 @@ A Raspberry Pi-webszimulátor jelenleg előzetes verzióban érhető el. A Hangm
 
 ![Online szimulátor Pi áttekintése](media/iot-hub-raspberry-pi-web-simulator/0_overview.png)
 
-[!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
+## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+
+### <a name="retrieve-connection-string-for-iot-hub"></a>Az IoT hub kapcsolati karakterlánc
+
+[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
+
+## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hubban
+
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="run-a-sample-application-on-pi-web-simulator"></a>A mintaalkalmazás futtatása a Pi-webszimulátor
 
@@ -80,7 +93,6 @@ A Raspberry Pi-webszimulátor jelenleg előzetes verzióban érhető el. A Hangm
    ![Cserélje le az eszköz kapcsolati karakterláncának](media/iot-hub-raspberry-pi-web-simulator/1_connectionstring.png)
 
 2. Kattintson a **futtatása** vagy típus `npm start` az alkalmazás futtatásához.
-
 
 Amely az érzékelőktől kapott adatok és az IoT hubnak küldött üzeneteket jeleníti meg a következő kimenetnek kell megjelennie ![kimeneti - Raspberry Pi az IoT hubnak küldött érzékelőktől kapott adatok](media/iot-hub-raspberry-pi-web-simulator/2_run_application.png)
 

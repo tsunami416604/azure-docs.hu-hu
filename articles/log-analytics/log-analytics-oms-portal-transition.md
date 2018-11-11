@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 6e3026ea3aca897ab63f4ad7d72eac438fdb7199
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 8aec6ae3532acaaa5d039ee9db8745927c66957b
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389111"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288781"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Azure-bA az OMS-portálon
 
@@ -55,7 +55,7 @@ Tekintse meg [gyakori kérdések a Log Analytics-felhasználók az Azure Portalo
 Az Azure portal hozzáférés-kezelés gazdagabb és hatékonyabb, mint a hozzáférés-kezelés az OMS-portálon. Lásd: [munkaterületeinek kezeléséhez](log-analytics-manage-access.md#manage-accounts-and-users) részletes hozzáférés-kezelés a Log Analyticsben.
 
 > [!NOTE]
-> Ez a cikk korábbi verzióinak említettük, hogy az engedélyeket szeretne automatikusan alakítható át az OMS-portálon az Azure Portalon. Automatikus beszélgetésre már nem tervezünk, és saját maga az átalakítást kell végrehajtania.
+> Ez a cikk korábbi verzióinak említettük, hogy az engedélyeket szeretne automatikusan alakítható át az OMS-portálon az Azure Portalon. Az Automatikus átalakítás már nem tervezünk, és saját maga az átalakítást kell végrehajtania.
 
 Előfordulhat, hogy már rendelkezik megfelelő hozzáféréssel az Azure Portalon ebben az esetben nem kell módosítani. Van néhány lehetséges, hogy nem rendelkezik megfelelő hozzáféréssel az ebben az esetben a rendszergazdai engedélyeket kell rendelnie azt.
 

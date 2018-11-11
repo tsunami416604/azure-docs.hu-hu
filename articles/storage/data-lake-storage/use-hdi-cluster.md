@@ -7,20 +7,20 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 04e2e32de90283da2563395f8b24dbb4b1dab888
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8c79107a0081b1c7478ffe8ceb44ec67e1f618c4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241759"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283665"
 ---
 # <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Az Azure Data Lake Storage Gen2 előzetes verzió használata Azure HDInsight-fürtök
 
-HDInsight-fürtben lévő adatok elemzéséhez, tárolhatja az adatokat az Azure Storage, az Azure Data Lake Storage Gen1 vagy az Azure Data Lake Storage Gen2 előzetes verzió tetszőleges kombinációját. Az összes tárolási lehetőség lehetővé, hogy biztonságosan törölje a felhasználói adatok elvesztése nélkül törölje a számításhoz használt HDInsight fürtöket.
+Egy HDInsight-fürtön lévő adatok elemzéséhez, tárolhatja az adatokat az Azure Blob Storage, Azure Data Lake Storage Gen2 előnézet engedélyezve van az Azure Blob Storage vagy Azure Data Lake Storage Gen1 tetszőleges kombinációját. Az összes tárolási lehetőség lehetővé, hogy biztonságosan törölje a felhasználói adatok elvesztése nélkül törölje a számításhoz használt HDInsight fürtöket.
 
-A Hadoop támogatja az alapértelmezett fájlrendszert. Az alapértelmezett fájlrendszer egy alapértelmezett sémát és szolgáltatót is jelent. A relatív elérési utak feloldásához is használható. A HDInsight fürt létrehozása során blobtárolók megadhatja az Azure Storage vagy az Azure Data Lake Storage az alapértelmezett fájlrendszer. Másik lehetőségként a HDInsight 3.5, választhat Azure Storage vagy az Azure Data Lake Storage legyen az alapértelmezett fájlrendszer, néhány kivétellel.
+A Hadoop támogatja az alapértelmezett fájlrendszert. Az alapértelmezett fájlrendszer egy alapértelmezett sémát és szolgáltatót is jelent. A relatív elérési utak feloldásához is használható. A HDInsight fürt létrehozása során blobtárolók is megadhat, az Azure Storage vagy a Data Lake Storage Gen2 az alapértelmezett fájlrendszerként által kínált hierarchikus névtér. Másik lehetőségként a HDInsight 3.5-ös, választhat egy tároló vagy a hierarchikus névtér az alapértelmezett fájlrendszerként, néhány kivétellel.
 
-Ebből a cikkből megtudhatja, hogyan Azure Data Lake Storage Gen2 használható a HDInsight-fürtökkel. Egy HDInsight-fürt létrehozásával kapcsolatos további információkért lásd: [állítsa be a HDInsight-fürtök az Azure Data Lake Storage használata a Hadoop, Spark, Kafka és további](quickstart-create-connect-hdi-cluster.md).
+Ebből a cikkből megtudhatja, hogyan Data Lake Storage Gen2 használható a HDInsight-fürtökkel. Egy HDInsight-fürt létrehozásával kapcsolatos további információkért lásd: [állítsa be a HDInsight-fürtök az Azure Data Lake Storage használata a Hadoop, Spark, Kafka és további](quickstart-create-connect-hdi-cluster.md).
 
 Az Azure Blob Storage egy robusztus, általános célú tárolómegoldás, amely zökkenőmentesen integrálható a HDInsight eszközzel. HDInsight fürthöz is használhatja az Azure Data Lake Storage az alapértelmezett fájlrendszerként a. A Hadoop elosztott fájlrendszer (HDFS) felületen keresztül a HDInsight összetevők teljes készlete működhet közvetlenül a fájlokat az Azure Data Lake Storage.
 
@@ -80,13 +80,13 @@ Bizonyos MapReduce-feladatok és csomagok olyan köztes eredményeket hozhatnak 
 > [!NOTE]
 > A legtöbb HDFS parancs (például `ls`, `copyFromLocal` és `mkdir`) továbbra is a várt módon működik. Csak azok a parancsok, mint például az elosztott Fájlrendszerbeli jellemző `fschk` és `dfsadmin`, eltérő viselkedéssel megjelenítése az Azure storage-ban.
 
-## <a name="create-an-data-lake-storage-file-system"></a>Hozzon létre egy Data Lake Storage fájlrendszer
+## <a name="create-a-data-lake-storage-file-system"></a>Hozzon létre egy Data Lake Storage fájlrendszer
 
 A fájlrendszer használatához először hozzon létre egy [Azure Storage-fiók][azure-storage-create]. Ez a folyamat részeként adja meg az Azure régióban, amelyben létrehozza a tárfiókot. A fürtnek és a tárfióknak ugyanabban a régióban kell lennie. A Hive-metaadattár SQL Server adatbázisának és az Oozie-metaadattár SQL Server adatbázisának is ugyanabban a régióban kell lennie.
 
-Akárhol él, mindegyik létrehozott blob tartozik egy fájlrendszer az Azure Data Lake Storage-fiókban. 
+Akárhol él, mindegyik létrehozott blob tartozik egy fájlrendszer, a storage-fiókban.
 
-Az alapértelmezett Data Lake Storage fájlrendszer fürtre jellemző információkat, például a feladatelőzményeket és a naplókat tárolja. Ne ossza meg egy alapértelmezett Data Lake Storage fájlrendszer több HDInsight-fürtökkel. Ez károsíthatja a feladatelőzményeket. Javasolt egy másik fájlrendszer használni mindegyik fürthöz és a megosztott adatok elhelyezése az alapértelmezett tárfiók helyett az összes kapcsolódó fürt üzemelő példányában meghatározott kapcsolt tárfiókra. A kapcsolt tárfiókok konfigurálásáról további információért lásd: [HDInsight-fürtök létrehozása][hdinsight-creation]. Alapértelmezett tároló fájlrendszer azonban használhat az eredeti HDInsight fürt törlése után. A HBase fürtök esetén is megőrzi a HBase táblasémát és adatokat hoz létre egy új HBase fürtöt a törölt HBase-fürt törölve lett által használt alapértelmezett blobtárolóval.
+Az alapértelmezett Data Lake Storage Gen2 fájlrendszer fürtre jellemző információkat, például a feladatelőzményeket és a naplókat tárolja. Ne osszon egy alapértelmezett Data Lake Storage Gen2 fájlrendszer több HDInsight-fürtökkel. Ez károsíthatja a feladatelőzményeket. Javasolt egy másik fájlrendszer használni mindegyik fürthöz és a megosztott adatok elhelyezése az alapértelmezett tárfiók helyett az összes kapcsolódó fürt üzemelő példányában meghatározott kapcsolt tárfiókra. A kapcsolt tárfiókok konfigurálásáról további információért lásd: [HDInsight-fürtök létrehozása][hdinsight-creation]. Alapértelmezett tároló fájlrendszer azonban használhat az eredeti HDInsight fürt törlése után. A HBase fürtök esetén is megőrzi a HBase táblasémát és adatokat hoz létre egy új HBase fürtöt a törölt HBase-fürt törölve lett által használt alapértelmezett blobtárolóval.
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../../includes/hdinsight-secure-transfer.md)]
 
@@ -132,7 +132,7 @@ Ha Ön [telepítette és konfigurálta az Azure PowerShell-lel][powershell-insta
     New-AzureStorageContainer -Name $containerName -Context $destContext
 
 > [!NOTE]
-> Tároló létrehozása az azonos a fájlrendszer létrehozása az Azure Data Lake Storage.
+> Tároló létrehozása az azonos a fájlrendszer létrehozása a Data Lake Storage Gen2.
 
 ### <a name="use-azure-cli"></a>Az Azure parancssori felület használatával
 
@@ -164,7 +164,7 @@ Egy tároló létrehozásához használja az alábbi parancsot:
     azure storage container create <CONTAINER_NAME> --account-name <STORAGE_ACCOUNT_NAME> --account-key <STORAGE_ACCOUNT_KEY>
 
 > [!NOTE]
-> Tároló létrehozása az azonos a fájlrendszer létrehozása az Azure Data Lake Storage.
+> Tároló létrehozása az azonos a fájlrendszer létrehozása a Data Lake Storage Gen2.
 
 ## <a name="address-files-in-azure-storage"></a>Az Azure Storage tárolóban található címfájlok
 
@@ -174,7 +174,7 @@ Az Azure Storage tárolóban a HDInsight eszközről végzett fájlelérés URI 
 
 Az URI séma titkosítatlan hozzáférést biztosít (az a *abfs:* előtag) és SSL titkosított hozzáférést (a *abfss*). Azt javasoljuk, *abfss* amikor csak lehetséges, akkor is, ha ugyanabban a régióban, az Azure-ban lévő adatokat éri el.
 
-* &lt;FILE_SYSTEM_NAME&gt; elérési útját a fájlrendszerben Azure Data Lake Storage azonosítja.
+* &lt;FILE_SYSTEM_NAME&gt; elérési útját a fájlrendszerben, Data Lake Storage Gen2 azonosítja.
 * &lt;ACCOUNT_NAME&gt; azonosítja az Azure Storage-fiók nevét. Szükség van a teljes tartománynévre (FQDN-re).
 
     Ha az értékek &lt;FILE_SYSTEM_NAME&gt; sem &lt;ACCOUNT_NAME&gt; van megadva, az alapértelmezett fájlrendszer szolgál. Az alapértelmezett fájlrendszeren tárolt fájlok esetén relatív elérési utat vagy abszolút elérési utat használhat. Ha például a *hadoop-mapreduce-examples.jar* fájlt, amely együttműködik a HDInsight-fürtök a következő útvonalak egyikét használva lehet hivatkozni:
@@ -205,9 +205,9 @@ Ebből a cikkből megtanulta, hogyan használhat HDFS-kompatibilis Azure-tárol�
 További információkért lásd:
 
 * [Az Azure Data Lake Storage Gen2 ABFS Hadoop-fájlrendszer illesztőprogramja](abfs-driver.md)
-* [Az Azure Data Lake Storage bemutatása](introduction.md)
-* [Azure Data Lake Storage használata a Hadoop, Spark, Kafka és több HDInsight-fürtök beállítása](quickstart-create-connect-hdi-cluster.md)
-* [Betölteni az adatokat az Azure Data Lake Storage a distcp használata](use-distcp.md)
+* [Bevezetés az Azure Data Lake Storage Gen2-re](introduction.md)
+* [Az Azure Data Lake Storage Gen2 használata a Hadoop, Spark, Kafka és több HDInsight-fürtök beállítása](quickstart-create-connect-hdi-cluster.md)
+* [Adatokat az Azure Data Lake Storage Gen2 a distcp használata](use-distcp.md)
 
 [powershell-install]: /powershell/azureps-cmdlets-docs
 [hdinsight-creation]: ../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md

@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: e99d5d36fa46e9972e706d580e4dfb1d5f9e8bbc
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: c65f5364ccd4943d1d3e703ed27099408d3a2a27
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093825"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346592"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -28,11 +28,10 @@ Erőforrások áthelyezésekor mind a forrás és a cél csoport zárolva vannak
 Az erőforrás helye nem módosítható. Erőforrások áthelyezése csak áthelyezi egy új erőforráscsoportot. Az új erőforráscsoportot egy másik helyre azonban lehet, hogy az erőforrás helye nem változik.
 
 > [!NOTE]
-> Ez a cikk ismerteti, hogyan helyezheti át egy meglévő Azure-erőforrások fiók ajánlatát. Ha valójában módosítani szeretné az Azure-fiókkal (például az ingyenes frissítése használatalapú fizetéses előfizetésre) kínál az előfizetés konvertálnia kell. 
+> Ez a cikk ismerteti, hogyan helyezheti át egy meglévő Azure-erőforrások fiók ajánlatát. Ha valójában módosítani szeretné az Azure-fiókkal (például az ingyenes frissítése használatalapú fizetéses előfizetésre) kínál az előfizetés konvertálnia kell.
 > * Ingyenes próbaverzió frissítése, lásd: [az ingyenes próba- vagy a Microsoft Imagine Azure-előfizetés frissítése használatalapú fizetésre](..//billing/billing-upgrade-azure-subscription.md).
 > * Ha módosítani szeretné egy használatalapú fizetéses fiókra, lásd: [az Azure használatalapú fizetéses előfizetésre váltani egy másik ajánlatra](../billing/billing-how-to-switch-azure-offer.md).
 > * Ha az előfizetést, nem konvertálhatóak [hozzon létre egy Azure-támogatáskérést](../azure-supportability/how-to-create-azure-support-request.md). Válassza ki **előfizetés-kezelési** issue type számára.
->
 
 ## <a name="checklist-before-moving-resources"></a>Erőforrások áthelyezése előtti ellenőrzőlistát
 
@@ -42,7 +41,7 @@ Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése elő
 
   Azure PowerShell esetén használja:
 
-  ```powershell
+  ```azurepowershell-interactive
   (Get-AzureRmSubscription -SubscriptionName <your-source-subscription>).TenantId
   (Get-AzureRmSubscription -SubscriptionName <your-destination-subscription>).TenantId
   ```
@@ -63,14 +62,14 @@ Néhány fontos lépést végre kell hajtani az erőforrások áthelyezése elő
 
   A PowerShell a következő parancsok használatával a regisztrációs állapot lekérdezése:
 
-  ```powershell
+  ```azurepowershell-interactive
   Set-AzureRmContext -Subscription <destination-subscription-name-or-id>
   Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
   ```
 
   Erőforrás-szolgáltató regisztrálásához használja:
 
-  ```powershell
+  ```azurepowershell-interactive
   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
   ```
 
@@ -112,7 +111,7 @@ Kapcsolattartó [támogatja](https://portal.azure.com/#blade/Microsoft_Azure_Sup
 
 ## <a name="validate-move"></a>Áthelyezésének ellenőrzése
 
-A [áthelyezési művelet érvényesítése](/rest/api/resources/resources/resources_validatemoveresources) az áthelyezési forgatókönyv teszteléséhez ténylegesen az erőforrások áthelyezése nélkül teszi lehetővé. Ez a művelet segítségével határozhatja meg, ha az áthelyezés sikeres lesz. Ez a művelet végrehajtásához szükséges a:
+A [áthelyezési művelet érvényesítése](/rest/api/resources/resources/validatemoveresources) az áthelyezési forgatókönyv teszteléséhez ténylegesen az erőforrások áthelyezése nélkül teszi lehetővé. Ez a művelet segítségével határozhatja meg, ha az áthelyezés sikeres lesz. Ez a művelet végrehajtásához szükséges a:
 
 * a forrás erőforráscsoport nevét
 * erőforrás-azonosító a célként megadott erőforráscsoport
@@ -325,7 +324,6 @@ Az alábbiakban a korlátozásokat, amelyek még nem támogatottak:
 * Virtual Machine Scale Sets Standard Termékváltozatú terheléselosztó vagy a Standard Termékváltozat nyilvános IP-cím nem lehet áthelyezni.
 * A csatolt tervek Piactéri erőforrások alapján létrehozott virtuális gépeken nem lehet áthelyezni, erőforráscsoport vagy előfizetés között. Az aktuális előfizetésben a virtuális gép megszüntetése, és telepítse újra az új előfizetés.
 
-
 ## <a name="virtual-networks-limitations"></a>Virtuális hálózatok korlátozások
 
 Virtuális hálózat áthelyezésekor is át kell helyeznie a tőle függő erőforrások. A VPN-átjárók IP-címek, virtuális hálózati átjárók és minden kapcsolódó kapcsolati erőforrás kell áthelyezni. Helyi hálózati átjárók egy másik erőforráscsoportban található is lehet.
@@ -346,9 +344,9 @@ Ha a webalkalmazás áthelyezése _ugyanazon az előfizetésen belül_, a feltö
 
 Ha szeretné helyezni az SSL-tanúsítványt a webalkalmazással, kövesse az alábbi lépéseket:
 
-1.  Törölje a feltöltött tanúsítvány megjelenjen a webalkalmazásból.
-2.  Helyezze át a webes alkalmazás.
-3.  Töltse fel a tanúsítványt a áthelyezett webalkalmazáshoz.
+1. Törölje a feltöltött tanúsítvány megjelenjen a webalkalmazásból.
+2. Helyezze át a webes alkalmazás.
+3. Töltse fel a tanúsítványt a áthelyezett webalkalmazáshoz.
 
 ### <a name="moving-across-subscriptions"></a>Áthelyezése előfizetések között
 
@@ -503,7 +501,7 @@ Ha befejeződött, értesítést kap arról, az eredmény.
 
 Meglévő erőforrások áthelyezése egy másik erőforráscsoportba vagy előfizetésbe, használja a [Move-AzureRmResource](/powershell/module/azurerm.resources/move-azurermresource) parancsot. Az alábbi példa bemutatja, hogyan több erőforrást áthelyezése egy új erőforráscsoportot.
 
-```powershell
+```azurepowershell-interactive
 $webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite
 $plan = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExamplePlan
 Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId

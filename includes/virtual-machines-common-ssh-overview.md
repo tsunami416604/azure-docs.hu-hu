@@ -5,15 +5,15 @@ services: virtual-machines-linux
 author: dlepow
 ms.service: virtual-machines-linux
 ms.topic: include
-ms.date: 04/16/2018
+ms.date: 11/08/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 0363b719e2587226282257e19e58e3c4e55c2219
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: cff3d7bfb89d5b03f986da32edc148efcfb7e7bd
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47454352"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51506334"
 ---
 ## <a name="overview-of-ssh-and-keys"></a>Az SSH és a kulcsok – áttekintés
 
@@ -21,7 +21,7 @@ Az SSH nem titkosított kapcsolatot protokoll, amely lehetővé teszi a biztons�
 
 * A *nyilvános kulcs* helyezkedik el, a Linux virtuális Gépre, vagy bármely más szolgáltatást, amelyet használata a nyilvános kulcsú titkosítással kíván.
 
-* A *titkos kulcs* mi felé, a Linux rendszerű virtuális gép SSH-kapcsolatot, a személyazonosság ellenőrzéséhez győződjön meg arról, ha van. Védje a titkos kulcsot. Ne ossza meg senkivel.
+* A *titkos kulcs* , a helyi rendszer használják egy SSH-ügyfél a személyazonosságát, ha a Linux rendszerű virtuális Géphez való csatlakozáskor. Védje a titkos kulcsot. Ne ossza meg senkivel.
 
 Attól függően, a szervezet biztonsági szabályzatokat újra felhasználhatja egy egyetlen nyilvános-titkos kulcspárt több Azure virtuális gépek és szolgáltatások eléréséhez. Nem kell külön kulcspár minden virtuális gép vagy szolgáltatás el szeretné érni. 
 

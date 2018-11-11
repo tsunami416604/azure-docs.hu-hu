@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: b870be792da9a6646a7854bc17b7e33fb11d7b0c
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 2138eed9975abe804442c476d19b5b7229685362
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49070168"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289189"
 ---
-# <a name="internet-of-things-security-best-practices"></a>Az eszközök internetes hálózatát ajánlott biztonsági eljárások
+# <a name="security-best-practices-for-internet-of-things-iot"></a>Ajánlott biztonsági eljárások az eszközök internetes hálózatához (IoT)
 
 Szigorú biztonsági jellegű stratégia védelme az eszközök internetes hálózata (IoT) infrastruktúrát igényel. Ez a stratégia megköveteli, hogy a felhőbeli adatok védelmére, a nyilvános interneten keresztül az átvitel során adatintegritásának védheti meg és biztonságos eszközök kiépítése. Az egyes rétegek a nagyobb biztonság az infrastruktúra átfogó épít fel.
 

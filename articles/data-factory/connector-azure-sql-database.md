@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: a4de054926339985b77f110bd00f77c5c8f7d705
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: cd137462235431f0a0c1562e15a32951fe2a41c5
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957989"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346707"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Database-ből az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -208,7 +208,7 @@ Másolja az adatokat, vagy az Azure SQL Database, állítsa be a **típus** tula
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** értékre kell állítani a tulajdonságot az adatkészlet **AzureSqlTable**. | Igen |
-| tableName | A tábla vagy nézet az Azure SQL Database-példány, amelyre a társított szolgáltatás hivatkozik a neve. | Igen |
+| tableName | A tábla vagy nézet az Azure SQL Database-példány, amelyre a társított szolgáltatás hivatkozik a neve. | Nincs forrás, a fogadó Igen |
 
 #### <a name="dataset-properties-example"></a>Adatkészlet tulajdonságai példa
 
@@ -248,7 +248,6 @@ Adatok másolása az Azure SQL Database, állítsa be a **típus** tulajdonság,
 
 - Ha a **sqlReaderQuery** van megadva a **SqlSource**, a másolási tevékenység a lekérdezés fut az Azure SQL Database forrás, az adatok beolvasásához. Vagy megadhat egy tárolt eljárást. Adja meg **sqlReaderStoredProcedureName** és **storedProcedureParameters** Ha paramétereket fogadja tárolt eljárást.
 - Ha nem adja meg vagy **sqlReaderQuery** vagy **sqlReaderStoredProcedureName**, az oszlopok definiálva a **struktúra** az adatkészlet JSON szakaszában is használható a lekérdezés hozhatnak létre. `select column1, column2 from mytable` futtatja az Azure SQL-adatbázison. Ha az adatkészlet definíciója nem rendelkezik a **struktúra**, az összes oszlop ki van jelölve, a táblából.
-- Ha használ **sqlReaderStoredProcedureName**, továbbra is meg kell adnia egy helyőrző **tableName** tulajdonságot az adatkészlet JSON.
 
 #### <a name="sql-query-example"></a>SQL-lekérdezési példa
 
@@ -588,7 +587,7 @@ Másolt adatok vagy az Azure SQL Database, a következő hozzárendeléseket has
 | Datetimeoffset |DateTimeOffset |
 | tizedes tört |tizedes tört |
 | A FILESTREAM attribútum (varbinary(max)) |Byte] |
-| lebegőpontos |Dupla |
+| Lebegőpontos |Dupla |
 | image |Byte] |
 | int |Int32 |
 | költséget takaríthat meg |tizedes tört |

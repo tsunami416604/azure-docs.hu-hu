@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 11/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25a8150a2fcf7cdd4e3c82478c0b3db3dad870b4
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: a7d77c0a2ce334c9909a621c55866a67e036f9cb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887564"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282781"
 ---
 # <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
 
@@ -45,17 +45,27 @@ Ha azt tervezi, éles számítási feladatok futtatása a Batchben, szükség le
 
 Ha beállítása készletlefoglalási móddal létrehozott Batch-fiók **felhasználói előfizetés**, eltérő kvóták érvényesek. Ebben a módban a Batch virtuális gépei és egyéb erőforrások jönnek létre közvetlenül az előfizetésben egy készlet létrehozásakor. Az Azure Batch magkvóták nem hozza létre ezt a módot a alkalmazni. Ehelyett a kvótákat, az előfizetéséhez tartozó területi számítási magot, és más erőforrások lépnek érvénybe. További információ a kvóta [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md).
 
+## <a name="pool-size-limits"></a>Készlet blobméretének korlátjai
+
+| **Erőforrás** | **Felső korlát** |
+| --- | --- |
+| **Számítási csomópontok [készletben a csomópontok közötti kommunikáció engedélyezve](batch-mpi.md)**  ||
+| A Batch szolgáltatás készletlefoglalási mód | 100 |
+| Előfizetés készletlefoglalási móddal a Batch | 80 |
+| **Számítási csomópontok [egyéni Virtuálisgép-rendszerkép használatával létrehozott készlet](batch-custom-images.md)**<sup>1</sup> ||
+| Dedikált csomópontok | 2000 |
+| Alacsony prioritású csomópontok | 1000 |
+
+<sup>1</sup> készletek, amelyek vegye figyelembe a csomópontok közötti kommunikáció engedélyezve van.
+
 ## <a name="other-limits"></a>Egyéb korlátok
 
 | **Erőforrás** | **Felső korlát** |
 | --- | --- |
-| [Egyidejű feladatok](batch-parallel-node-tasks.md) számítási csomópontok |csomópont-magok száma 4 x |
-| [Alkalmazások](batch-application-packages.md) Batch-fiókonként |20 |
-| Alkalmazáscsomagok alkalmazásonként |40 |
+| [Egyidejű feladatok](batch-parallel-node-tasks.md) számítási csomópontok | csomópont-magok száma 4 x |
+| [Alkalmazások](batch-application-packages.md) Batch-fiókonként | 20 |
+| Alkalmazáscsomagok alkalmazásonként | 40 |
 | A tevékenység maximális élettartama | 7 nap<sup>1</sup> |
-| Számítási csomópontok [készletben a csomópontok közötti kommunikáció engedélyezve](batch-mpi.md) | 100 |
-| Dedikált számítási csomópontok [egyéni Virtuálisgép-rendszerkép használatával létrehozott készlet](batch-custom-images.md) | 2500 |
-| Alacsony prioritású számítási csomópontok [egyéni Virtuálisgép-rendszerkép használatával létrehozott készlet](batch-custom-images.md) | 1000 |
 
 <sup>1</sup> maximális élettartama egy feladatot, amikor megjelenik a feladat befejezését követően a rendszer 7 nap. A befejezett tevékenységek korlátlan ideig megőrződnek; a maximális élettartamon belül nem befejezett tevékenységek adatai nem elérhetőek.
 
@@ -115,7 +125,7 @@ A virtuális gép konfigurációjában, automatikusan üzembe helyezett Azure-be
 * 1 [nyilvános IP-cím](../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * 1 [terheléselosztó](../load-balancer/load-balancer-overview.md)
 
-Ezeket az erőforrásokat az előfizetést, amely tartalmazza a virtuális hálózat, a Batch-készlet létrehozásakor megadott vannak lefoglalva. Ezeket az erőforrásokat az előfizetés-re van korlátozva [erőforráskvóták](../azure-subscription-service-limits.md). Ha azt tervezi, hogy a nagy méretű készletet üzemelő példányok virtuális hálózatban, ellenőrizze az előfizetéshez tartozó kvóták ezekhez az erőforrásokhoz. Szükség esetén kérheti növelését az Azure Portalon kiválasztásával **súgó + támogatás**.
+Ezeket az erőforrásokat az előfizetést, amely tartalmazza a virtuális hálózat, a Batch-készlet létrehozásakor megadott vannak lefoglalva. Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../azure-subscription-service-limits.md) vonatkoznak. Ha azt tervezi, hogy a nagy méretű készletet üzemelő példányok virtuális hálózatban, ellenőrizze az előfizetéshez tartozó kvóták ezekhez az erőforrásokhoz. Szükség esetén kérheti növelését az Azure Portalon kiválasztásával **súgó + támogatás**.
 
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök

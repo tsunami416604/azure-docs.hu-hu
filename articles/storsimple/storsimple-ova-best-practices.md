@@ -1,6 +1,6 @@
 ---
-title: Ajánlott eljárások a StorSimple virtuális tömb |} Microsoft Docs
-description: A központi telepítésére és felügyeletére a StorSimple virtuális tömb bevált gyakorlat ismertetése.
+title: Gyakorlati tanácsok a StorSimple Virtual Array |} A Microsoft Docs
+description: Üzembe helyezése és kezelése a StorSimple Virtual Array az ajánlott eljárásokat ismertetjük.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -12,277 +12,277 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/16/2018
+ms.date: 11/08/2018
 ms.author: alkohli
-ms.openlocfilehash: 46fd818d8ca15515c91bb6e65e99b0a3bc1f1fa4
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b8e9f12a549f71971c2da3b9865f6a74dad58f61
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29972840"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300914"
 ---
-# <a name="storsimple-virtual-array-best-practices"></a>A StorSimple virtuális tömb gyakorlati tanácsok
+# <a name="storsimple-virtual-array-best-practices"></a>A StorSimple Virtual Array – ajánlott eljárások
 ## <a name="overview"></a>Áttekintés
-Microsoft Azure StorSimple virtuális tömbjének értéke egy integrált tárolási megoldás, amely kezeli a tárolási feladatok elvégzéséről egy Microsoft Azure felhőalapú tárolást és hipervizor futtató helyszíni virtuális eszköz között. A StorSimple virtuális tömbjének értéke a 8000 sorozat fizikai tömb hatékony, költséghatékony helyett. A virtuális tömb futtathatja a meglévő hipervizor infrastruktúra, az iSCSI és az SMB protokollt is támogatja, és jól használható távoli office/fiókirodák számára. További információ a StorSimple-megoldásokról, Ugrás [Microsoft Azure StorSimple áttekintése](https://www.microsoft.com/en-us/server-cloud/products/storsimple/overview.aspx).
+A Microsoft Azure StorSimple Virtual Array egy integrált tárolási megoldás, amely egy helyszíni virtuális eszköz, a hipervizor és a Microsoft Azure cloud storage-ban futó közötti tárolási feladatokat kezeli. A StorSimple Virtual Array alternatívája hatékony és költséghatékony megoldást kínál a 8000-es sorozatú fizikai tömbhöz. A virtuális tömb futtathatja a meglévő hipervizor-infrastruktúrát, az iSCSI és az SMB protokollt is támogatja, és távoli office/fiókirodai forgatókönyvek esetén is használható. A StorSimple megoldások további információért látogasson el [Microsoft Azure StorSimple áttekintése](https://www.microsoft.com/en-us/server-cloud/products/storsimple/overview.aspx).
 
-Ez a cikk ismerteti a gyakorlati tanácsok a kezdeti beállítás, telepítés és a StorSimple virtuális tömb felügyeleti során végrehajtott. Az alábbi gyakorlati tanácsok érvényesített irányelvek a beállítása és kezelése a virtuális tömbjét adja meg. Ez a cikk az informatikai rendszergazdák telepíthetnek és kezelhetnek az adatközpontjaikban virtuális tömbök cél.
+Ez a cikk ismerteti az ajánlott eljárásokat, a kezdeti beállítás, telepítés és felügyelete a StorSimple Virtual Array során implementálva. Ajánlott eljárások nyújtanak a ellenőrzött a beállítása és kezelése a virtuális tömb. Ez a cikk a rendszergazdáknak, akik üzembe helyezése és kezelése a virtuális tömbök adatközpontjaikban lévő cél.
 
-Azt javasoljuk ajánlott eljárás végrehajtását, annak biztosítására, hogy az eszköz továbbra is a megfelelőségi akkor, ha a telepítési vagy működési folyamat végrehajtott módosítások időszakosan ellenőrizhetjük. Kell problémába ütközik közben hajt végre az alábbi gyakorlati tanácsok a virtuális tömb a [forduljon a Microsoft Support](storsimple-virtual-array-log-support-ticket.md) segítségért.
+Azt javasoljuk, hogy egy időszakosan ellenőrizhetjük, hogy az eszköz továbbra is a szabályzatnak a telepítési vagy működési flow végrehajtott módosítások érdekében ajánlott eljárást. Érdemes problémába ütközik a virtuális tömb, ajánlott eljárások végrehajtása közben [forduljon a Microsoft Support](storsimple-virtual-array-log-support-ticket.md) segítségért.
 
-## <a name="configuration-best-practices"></a>Technológiának az ajánlott eljárásokkal
-Az alábbi gyakorlati tanácsok a kezdeti beállítás és a virtuális tömb központi telepítése során nyomon kell követni útmutatásokat foglalkozik. Az alábbi gyakorlati tanácsok közé tartoznak az kapcsolódik a virtuális gépet, a csoportházirend-beállítások, méretezése, az a hálózat beállítása, a storage-fiókok konfigurálása és a megosztások és a virtuális tömb kötetek létrehozása kiépítését. 
+## <a name="configuration-best-practices"></a>Konfigurációs eljárások
+Ajánlott eljárások az irányelveket, amelyek nyomon kell követni a kezdeti beállítás és a virtuális tömbök üzembe helyezés során terjed ki. Ajánlott eljárások közé tartoznak a kapcsolódó csoportházirend-beállítások, méretezésének, a hálózatkezelés beállítása, tárfiókok konfigurálásáról és -megosztásokat és -köteteket a virtuális tömb létrehozása a virtuális gép üzembe helyezése. 
 
 ### <a name="provisioning"></a>Kiépítés
-A StorSimple virtuális tömb annak a kiszolgálónak egy virtuális gép (VM), a hipervizor (Hyper-V vagy VMware) regisztrálva. Ha a virtuális gépet, győződjön meg arról, hogy a gazdagép képes elegendő erőforrást fordítsanak. További információkért látogasson el [minimális követelményeinek](storsimple-virtual-array-deploy2-provision-hyperv.md#step-1-ensure-that-the-host-system-meets-minimum-virtual-array-requirements) tömb kiépítéséhez.
+A StorSimple Virtual Array a hipervizoron (Hyper-V vagy VMware) kiépített egy virtuális gépet (VM) a gazdagép-kiszolgáló. A virtuális gép kiépítésekor győződjön meg arról, hogy az állomás elegendő erőforrást fordítsanak tudni. További információért ugorjon [minimális erőforrás-igényű](storsimple-virtual-array-deploy2-provision-hyperv.md#step-1-ensure-that-the-host-system-meets-minimum-virtual-array-requirements) kiépítéséhez egy tömb.
 
-A virtuális tömb létesítésekor, valósítja meg a következő gyakorlati tanácsok:
+A virtuális tömb üzembe helyezésekor megvalósítása a következő bevált gyakorlatát:
 
 |  | Hyper-V | VMware |
 | --- | --- | --- |
-| **Virtuális gép típusa** |**2. generációs** használata Windows Server 2012 vagy újabb virtuális gép és egy *.vhdx* kép. <br></br> **1. generációs** használata a Windows Server 2008 vagy újabb virtuális gép és egy *.vhd* kép. |Használjon virtuális gép verziójának használatakor 8 *.vmdk* kép. |
-| **Memória típusa** |Beállítása **statikus memória**. <br></br> Ne használja a **dinamikus memória** lehetőséget. | |
-| **Adattípus-lemez** |Mint kiépítése **dinamikusan bővülő**.<br></br> **Rögzített méretű** hosszú időt vesz igénybe. <br></br> Ne használja a **különbséglemezek** lehetőséget. |Használja a **rendelkezés dinamikusan** lehetőséget. |
-| **Adatok lemez módosítása** |Bővítése vagy zsugorítását nem engedélyezett. Ehhez kísérlet az eszköz összes a helyi adatok elvesztését eredményezi. |Bővítése vagy zsugorítását nem engedélyezett. Ehhez kísérlet az eszköz összes a helyi adatok elvesztését eredményezi. |
+| **Virtuális gép típusa** |**2. generációs** használata a Windows Server 2012 vagy újabb virtuális gép és a egy *.vhdx* kép. <br></br> **1. generációs** való használatra, és a egy Windows Server 2008 vagy újabb virtuális gép és a egy *.vhd* kép. |Használata virtuális gép verziójának használata esetén 8 *.vmdk* kép. |
+| **Memória típusa** |Állítsa be **statikus memóriát**. <br></br> Ne használja a **dinamikus memória** lehetőséget. | |
+| **Adattípus-lemez** |Mint kiépítése **dinamikusan bővülő**.<br></br> **Rögzített méretű** hosszú időt vesz igénybe. <br></br> Ne használja a **különbséglemez** lehetőséget. |Használja a **kiépítése dinamikusan** lehetőséget. |
+| **Adatok lemez módosítása** |Bővítés vagy zsugorítását nem engedélyezett. Ehhez kísérlet az eszközön tárolt összes helyi adat elvesztését eredményezi. |Bővítés vagy zsugorítását nem engedélyezett. Ehhez kísérlet az eszközön tárolt összes helyi adat elvesztését eredményezi. |
 
-### <a name="sizing"></a>Méretezése
-A StorSimple virtuális tömb osztályozás, a következő tényezőket kell figyelembe venni:
+### <a name="sizing"></a>Méretezés
+A StorSimple Virtual Array osztályozás, a következő tényezőket kell figyelembe venni:
 
-* Kötetek vagy megosztások helyi foglalás. Körülbelül 12 % a terület az egyes kiosztott rétegzett kötetet vagy megosztást a helyi rétegen van fenntartva. Nagyjából 10 % a terület is számára van fenntartva a fájlrendszer egy helyileg rögzített kötet.
-* Pillanatkép-terhelés. A pillanatképek nagyjából hely 15 %-ban a helyi rétegen van fenntartva.
-* Visszaállítások szükségességét. Ha új műveletként visszaállítás történt, méretezési a visszaállítási művelethez szükséges a tárhely kell fiók. Visszaállítás egy fájlmegosztás vagy kötet azonos méretűnek történik.
-* Néhány puffer váratlan növekedésének a kell kiosztani.
+* Helyi foglalás kötetek vagy megosztások. Körülbelül 12 %-a helyet a egyes üzembe helyezett rétegzett kötet vagy megosztás a helyi rétegen van fenntartva. Nagyjából 10 %-a terület is foglalt fájlrendszer egy helyileg rögzített kötet.
+* Pillanatkép-terhelés. A pillanatképek nagyjából 15 %-os lemezterületet a helyi rétegen van fenntartva.
+* A visszaállítás szükség. Ha új műveletként visszaállítási tesz, méretezési a visszaállításhoz szükséges hely kell figyelni. Visszaállítás egy megosztásra vagy az azonos méretű történik.
+* Néhány puffert lefoglalni kívánt bármely váratlan növekedés esetén.
 
-A fenti tényezők alapján, a méretezési követelmények az alábbi képlettel ábrázolhatók:
+Az előző tényezők alapján, a méretezési követelmények az alábbi képlettel jelölhető:
 
 `Total usable local disk size = (Total provisioned locally pinned volume/share size including space for file system) + (Max (local reservation for a volume/share) for all tiered volumes/share) + (Local reservation for all tiered volumes/shares)`
 
 `Data disk size = Total usable local disk size + Snapshot overhead + buffer for unexpected growth or new share or volume`
 
-A következő példák bemutatják, hogyan méretét egy virtuális tömb a követelmények alapján.
+Az alábbi példák bemutatják, hogyan méretét a virtuális tömb igényei alapján.
 
 #### <a name="example-1"></a>1. példa:
-A virtuális tömb szeretné tudni
+Tudni szeretné a virtuális tömb
 
-* kiépítése 2 TB rétegzett kötetet vagy megosztást.
-* egy 1 TB-os kiépítése rétegzett kötetet vagy megosztást.
-* helyileg rögzített kötet 300 GB-os kiépítése, vagy a megosztási.
+* 2 TB rétegzett kötet vagy megosztás kiépítése.
+* 1 TB méretű rétegzett kötet vagy megosztás kiépítése.
+* üzembe helyezhető egy 300 GB-os helyileg rögzített kötetet vagy megosztást.
 
-Az előző kötetek vagy megosztások ossza meg velünk a helyi rétegen a lemezterület kiszámításához.
+Az előző kötetek vagy megosztások ossza meg velünk kiszámítani a lemezterületet, a helyi rétegen kell.
 
-Első lépésként minden rétegzett kötet vagy megosztás, helyi lefoglalás lenne egyenlő a kötet, illetve megosztási mérete % 12. A helyileg rögzített kötetet vagy megosztást helyi lefoglalás esetén 10 %-a (mellett a kiépített méret) helyileg rögzített kötet, illetve megosztási méretét. Ebben a példában van szüksége
+Először minden rétegzett kötetet vagy megosztást, a helyi foglalás lenne a kötetet vagy megosztást méretű 12 %-ával egyenlő. A helyileg rögzített kötetet vagy megosztást, a helyi foglalás (mellett a kiépítési méret) helyileg rögzített kötetet vagy megosztást méretének 10 %-át. Ebben a példában van szüksége
 
-* 240 GB helyi lefoglalás (2 TB rétegzett kötet vagy megosztás)
-* 120 GB helyi lefoglalás (1 TB rétegzett kötet vagy megosztás)
-* A helyileg rögzített kötetet vagy megosztást (hozzáadása helyi lefoglalás 10 % a kiépített 300 GB-os méret) 330 GB
+* 240 GB-os helyi foglalás (2 TB rétegzett kötetet vagy megosztást)
+* Helyi foglalás 120 GB-os (az 1 TB méretű rétegzett kötetet vagy megosztást)
+* 330 GB-os helyileg rögzített kötetet vagy megosztást (300 GB kiosztott méretének 10 %-a helyi foglalás hozzáadása)
 
-A teljes lemezterület szükséges a helyi rétegen eddig: 240 GB + 120 GB + 330 GB = 690 GB.
+A teljes terület szükséges, amennyiben a helyi rétegen van: 240 GB + 120 GB + 330 GB = 690 GB.
 
-Legalább annyi szabad a helyi rétegen helyre, mint a legnagyobb egyetlen foglalás kell. Ezt a felesleges mennyiséget használják, ha vissza kell állítania egy felhőalapú pillanatképből. Ebben a példában a legnagyobb helyi foglalás 330 GB (beleértve a fájlrendszer foglalási), így szeretné beállítani, hogy a 690 GB: 690 GB + 330 GB = 1020 GB.
-Ha azt hajtja végre a következő további visszaállítások, azt is mindig szabadítson fel helyet az előző visszaállítási műveletről.
+A helyi rétegen legalább annyi szabad helyre második, a legnagyobb egyetlen foglalást végrehajtó kell. A felhasznált többletmennyiségért szolgál abban az esetben vissza kell állítania a felhőbeli pillanatképet. Ebben a példában a legnagyobb helyi foglalás 330 GB (beleértve a Foglalás fájlrendszer esetén), akkor úgy szeretné beállítani, hogy a 690 GB: 690 GB + 330 GB = 1020 GB.
+Ha azt hajtja végre a következő további visszaállítások, azt is mindig ingyenes fel a lemezterületet az előző visszaállítási művelet.
 
-Harmadik kell 15 %-a a teljes helyi hely eddig helyi pillanatképek, így csak 85 %-a, nem érhető el. Ebben a példában, amely körüli lenne 1020 GB = 0.85&ast;kiosztott adatok lemezre TB. Igen, a kiépített adatlemez lenne (1020&ast;(1/0.85)) 1200-as GB = 1,20 TB = ~ 1,25 TB (kerekítés történő legközelebbi KVARTILIS)
+Harmadik kell 15 %, amennyiben a helyi pillanatképek tárolására szolgáló teljes helyi tárhely, hogy csak 85 %, érhető el. Ebben a példában ez lenne az körül 1020 GB = 0.85&ast;kiépített adatok lemezre TB. Tehát az üzembe helyezett adatlemez lesz (1020&ast;(1/0.85)) 1200 GB = 1,20 TB = ~ 1,25 TB (kerekítésre legközelebbi KVARTILIS)
 
-Amíg nem várt növekedés és új visszaállítások, körül a helyi lemezen kell kiépíteni 1,25-1,5 TB.
+Amíg nem várt növekedés és az új visszaállítások, körül a helyi lemezen kell kiépítenie 1,25 – 1,5 TB.
 
 > [!NOTE]
-> Azt javasoljuk, hogy a helyi lemez kiosztása. Ez a javaslat oka az, hogy a visszaállítási területre csak van szükség, ha visszaállítja öt napnál régebbi adatokat. Elemszintű helyreállítás lehetővé teszi adatok helyreállítását a legutóbbi öt napig anélkül, hogy a helyet a visszaállításhoz.
+> Azt javasoljuk, hogy a helyi lemez vékonyan létesített. Ez a javaslat azért, hogy a visszaállítási helyet csak akkor van szükség, ha a visszaállítandó öt napnál régebbi adatokat. Elemszintű helyreállítás anélkül, hogy a további területet a visszaállításhoz az utolsó öt nap az adatok helyreállítását teszi lehetővé.
 
 
 #### <a name="example-2"></a>2. példa
-A virtuális tömb szeretné tudni
+Tudni szeretné a virtuális tömb
 
-* kiépítése 2 TB rétegzett kötet
-* 300 GB-os helyileg rögzített kötet létrehozása
+* 2 TB rétegzett kötetek kiépítéséhez
+* 300 GB-os helyileg rögzített kötetet kiépítése
 
-A rétegzett kötetek vagy megosztások helyi lemezterület-foglalás és a helyileg rögzített kötetek vagy megosztások 10 % 12 % alapján, igazolnia kell
+A rétegzett kötetek/megosztások helyi lemezterület-foglalás és a helyileg rögzített kötetek/megosztások 10 % 12 % alapján, kell
 
-* 240 GB helyi lefoglalás (2 TB rétegzett kötet vagy megosztás)
-* A helyileg rögzített kötetet vagy megosztást (a kiépített 300 GB lemezterület 10 %-a helyi foglalás hozzáadása) 330 GB
+* Helyi foglalás 240 GB-os (2 TB rétegzett kötetet vagy megosztást)
+* 330 GB-os helyileg rögzített kötetet vagy megosztást (a kiépített 300 GB területre 10 %-a helyi foglalás hozzáadása)
 
 Teljes terület szükséges a helyi rétegen van: 240 GB + 330 GB = 570 GB
 
-A visszaállítási művelethez szükséges helyi terület 330 GB.
+A visszaállítási művelethez szükséges minimális helyi terület 330 GB.
 
-a teljes lemezterület 15 %-át fogja tárolni a pillanatképek, így csak 0.85 érhető el. Igen, a lemez mérete (900&ast;(1/0.85)) 1.06 TB = ~ 1,25 TB (kerekítés történő legközelebbi KVARTILIS)
+a teljes lemezterület 15 % segítségével tárolja a pillanatképeket, így csak 0.85 érhető el. Tehát a lemez mérete (900&ast;(1/0.85)) 1.06 TB = ~ 1,25 TB (kerekítésre legközelebbi KVARTILIS)
 
-Amíg nem várt növekedésének, oszthat 1,25-1,5 TB helyi lemezen.
+Amíg bármilyen váratlan növekedés, telepíthet egy helyi 1,25-1,5 TB-os lemezt.
 
 ### <a name="group-policy"></a>Csoportházirend
-A csoportházirend olyan infrastruktúra, amely lehetővé teszi a megvalósítása bizonyos konfigurációk meghatározását felhasználók és számítógépek. Csoportházirend-beállításokat csoportházirend-objektumok (GPO-k), amelyek kapcsolódnak a következő Active Directory tartományi szolgáltatások (AD DS) tárolók találhatók: webhelyekhez, tartományokhoz vagy szervezeti egységekhez (OU-k). 
+A csoportházirend olyan infrastruktúra, amely lehetővé teszi, hogy a felhasználók és számítógépek specifikus konfigurációk megvalósításához. Csoportházirend-beállításokat csoportházirend-objektumok (GPO), amelyek kapcsolódnak a következő Active Directory Domain Services (AD DS) tárolókban található: webhelyekhez, tartományokhoz vagy szervezeti egység (OU). 
 
-Ha a virtuális tömb tartományhoz csatlakoztatott, csoportházirend-objektumok alkalmazhatja azt. A csoportházirend-objektumok, például a víruskereső szoftver, amely hátrányosan befolyásolhatja a művelet a StorSimple virtuális tömb alkalmazásokat telepíthet.
+Ha a virtuális tömb tartományhoz csatlakoztatott, csoportházirend-objektumok alkalmazhatók rá. A csoportházirend-objektumok egy víruskereső szoftverek, amelyek hátrányosan befolyásolhatja a StorSimple Virtual Array működésének például is telepítheti.
 
-Ezért javasoljuk, hogy:
+Ezért azt javasoljuk, hogy Ön:
 
-* Győződjön meg arról, hogy a virtuális tömb saját szervezeti egységben (OU) az Active Directory.
-* Győződjön meg arról, hogy a virtuális tömb nem csoportházirend-objektumok (GPO) vonatkoznak. Győződjön meg arról, hogy a virtuális tömb (gyermekcsomópont) nem automatikusan örökölt egyetlen csoportházirend-objektum az az öröklési tilthatja le. További információkért látogasson el [öröklődés blokkolása](https://technet.microsoft.com/library/cc731076.aspx).
+* Győződjön meg arról, hogy a virtuális tömb a saját szervezeti egység (OU) az Active Directory.
+* Győződjön meg arról, hogy a virtuális tömb nem csoportházirend-objektumok (GPO-k) vannak alkalmazva. Letilthatja az öröklést, győződjön meg arról, hogy a virtuális tömb (gyermek csomópont) nem automatikusan örökli csoportházirend-objektum sem a szülő. További információért ugorjon [öröklődés blokkolása](https://technet.microsoft.com/library/cc731076.aspx).
 
 ### <a name="networking"></a>Hálózat
-A virtuális tömb a hálózati konfigurációt a helyi webes felhasználói felületen történik. Egy virtuális hálózati adapteren keresztül, amelyben a virtuális tömb ki van építve a hipervizor engedélyezve van. Használja a [hálózati beállítások](storsimple-virtual-array-deploy3-fs-setup.md) lapon konfigurálhatja a virtuális hálózati illesztő IP-cím, alhálózati és átjáró.  Beállíthatja úgy is az elsődleges és másodlagos DNS-kiszolgáló, a időbeállítást és a nem kötelező proxybeállításainak az eszközhöz. A hálózati konfigurációt a többsége működik egy egyszeri. Tekintse át a [hálózati követelményei StorSimple](storsimple-ova-system-requirements.md#networking-requirements) a virtuális tömb üzembe helyezése előtt.
+A hálózati konfigurációt a virtuális tömb helyi webes felületén keresztül történik. Egy virtuális hálózati adapteren keresztül, amelyben a virtuális tömb ki van építve a hipervizor engedélyezve van. Használja a [hálózati beállítások](storsimple-virtual-array-deploy3-fs-setup.md) lapon konfigurálhatja a virtuális hálózati adapter IP-cím, alhálózat és átjárót.  Beállíthatja az elsődleges és másodlagos DNS-kiszolgáló beállításai és nem kötelező proxybeállításainak az eszközhöz. A hálózati konfiguráció a legtöbb egy egyszeri beállítás. Tekintse át a [hálózati követelményeiben StorSimple](storsimple-ova-system-requirements.md#networking-requirements) a virtuális tömb üzembe helyezése előtt.
 
-A virtuális tömb való telepítésekor, azt javasoljuk, hogy pontosan kövesse az alábbi gyakorlati tanácsok:
+A virtuális tömb, javasoljuk, hogy kövesse az ajánlott eljárások:
 
-* Győződjön meg arról, hogy a hálózat, amely a virtuális tömb mindig telepítve van-e az 5 MB/s internetes sávszélességet (vagy több) fordítsanak kapacitása.
+* Győződjön meg arról, hogy a hálózat, amely a virtuális tömb üzembe lesz helyezve mindig rendelkezik-e a kapacitást 5 MB/s internetes sávszélességet (vagy még több) rendelnie.
   
-  * Internetes sávszélesség szükséges a munkaterhelés jellemzőit és az adatcsere sebességétől függ.
-  * Az adatok módosítása tudnak kezelni közvetlenül azzal arányos, hogy az internetes sávszélességet. Például ha a biztonsági másolat egy 5 MB/s sávszélesség 8 óra körül 18 GB adatok változás lehetővé teszi. Négy alkalommal nagyobb sávszélességgel (20 MB/s) négy alkalommal további adatok módosítása (72 GB) képes kezelni.
-* Ellenőrizze az internetkapcsolat mindig elérhető. Az eszközök internetes kapcsolatokat szórványos vagy nem megbízható a felhőben tárolt adatainak hozzáférni eredményezhet, és nem használható konfigurációt eredményezhet.
-* Ha azt tervezi, hogy az iSCSI-kiszolgálóként eszköz üzembe helyezése:
+  * Internetes sávszélesség szükséges a számítási feladatok jellemzői, és az adatcsere sebességétől függően változik.
+  * Az adatmódosítás feldolgozható arányos az internetes sávszélességet. Például ha a biztonsági másolat 5 MB/s sávszélességű 8 órás időtartamra letilthatja az adatok körülbelül 18 GB módosítását képes kezelni. Négyszer nagyobb sávszélességet (20 MB/s) négy-szer több adat módosítása (72 GB) képes kezelni.
+* Internetkapcsolat mindig elérhető legyen. Az eszközök internetes kapcsolatokat szórványos vagy nem megbízható hálózathatáron adataihoz a felhőben hozzáférés adatvesztést eredményezhet, és hatására konfigurációja nem támogatott.
+* Ha azt tervezi, hogy az eszköz egy iSCSI-kiszolgálóként üzembe helyezése:
   
   * Azt javasoljuk, hogy tiltsa le a **IP-cím automatikus beszerzése** (DHCP) lehetőséget.
   * Statikus IP-címek konfigurálásához. Konfigurálnia kell egy elsődleges és másodlagos DNS-kiszolgáló.
-  * Ha több hálózati adapterrel határozza meg a virtuális tömbben, csak az első hálózati adapter (alapértelmezés szerint ez az interfész van **Ethernet**) el lehet érni a felhőben. A típusú forgalom szabályozásához több virtuális hálózati adapterek létrehozása a virtuális tömb (iSCSI-kiszolgálóként konfigurált), és azok az interfészek csatlakozni más alhálózatokon.
-* Csak felhőalapú sávszélesség szabályozása (használja a virtuális tömb), az útválasztó és a tűzfalon a sávszélesség-szabályozás konfigurálása. Ha megadja, hogy a hipervizor szabályozását, azt fogja szabályozás minden protokoll, többek között az iSCSI- és SMB helyett csak a felhő sávszélesség.
-* A hipervizorok engedélyezve van, győződjön meg arról, hogy időszinkronizálást. Ha a Hyper-V, válassza ki azt a virtuális tömb a Hyper-V kezelőjében, folytassa a **beállítások &gt; Integration Services**, és győződjön meg arról, hogy a **időszinkronizálás** be van jelölve.
+  * Ha több hálózati adapterrel határozza meg a virtuális tömböt, csak az első hálózati adapter (alapértelmezés szerint ez az interfész a **Ethernet**) elérheti a felhőben. Típusú forgalom szabályozására, több virtuális hálózati adapterek létrehozása a virtuális tömb (iSCSI-kiszolgálóként konfigurált), és különböző alhálózatokon felületeken csatlakozni.
+* Csak felhőalapú sávszélesség szabályozása (amelyet a virtuális tömb), az útválasztó vagy a tűzfal-szabályozás konfigurálása. Ha megadja, hogy a hipervizor a szabályozás, többek között az iSCSI és SMB helyett csak a felhőben sávszélesség minden protokoll fog szabályozás.
+* Győződjön meg arról, hogy az idő szinkronizálása, a hipervizorok engedélyezve van. Ha a Hyper-V, válassza ki azt a virtuális tömb a Hyper-V kezelőjében, lépjen a **beállítások &gt; integrációs szolgáltatások**, és ellenőrizze, hogy a **időszinkronizálás** be van jelölve.
 
 ### <a name="storage-accounts"></a>Tárfiókok
-A StorSimple virtuális tömb társítható egy tárfiókot. Ez a tárfiók egy automatikusan létrehozott tárfiók ugyanahhoz az előfizetéshez a szolgáltatás fiók vagy a storage-fiók kapcsolódó másik előfizetést. További információkért lásd: hogyan [a virtuális tömb storage-fiókok kezelése](storsimple-virtual-array-manage-storage-accounts.md).
+A StorSimple Virtual Array társítható egy tárfiókban. Ez a tárfiók egy automatikusan létrehozott storage-fiókot, egy fiókot a szolgáltatás ugyanabban az előfizetésben vagy egy másik előfizetéshez kapcsolódó tárfiók. További információkért lásd: hogyan [kezelése a storage-fiókot a virtuális tömb](storsimple-virtual-array-manage-storage-accounts.md).
 
-A következő javaslatokat használja a virtuális tömb társított tárfiókok.
+A következő javaslatokat használja a virtuális tömb társított storage-fiókok.
 
-* Több virtuális tömbök egy tárfiókkal rendelkező csatoláskor számításba a maximumnál (64 TB) egy virtuális tömb és a storage-fiókok maximális méretét (500 TB). Ez a teljes méretű virtuális tömbökben, amelyek társítható, hogy a tárfiók, és körülbelül 7 számának korlátozása.
-* Új tárfiók létrehozásakor
+* Több virtuális tömböket, egyetlen tárfiókban való csatoláskor figyelembe vennie a maximális kapacitás (64 TB) egy virtuális tömböt és egy tárfiók maximális méretét (500 TB). Ez a teljes méretű virtuális tömböket, amely a tárfiók, és körülbelül 7 társítható számának korlátozása.
+* Amikor egy új tárfiók létrehozása
   
-  * Azt javasoljuk, hogy létrehozta a régióban legközelebbi a távoli office/fiókirodába, amelyen üzembe van helyezve a StorSimple virtuális tömb késések minimalizálása érdekében.
-  * Figyelembe kell vennie, hogy Ön nem helyezhetők át a tárfiók különböző régiókban. Különböző előfizetéseknél is nem helyezhető át a szolgáltatást.
-  * A storage-fiók, amely megvalósítja az Adatközpont között redundancia használja. Georedundáns tárolás (GRS), a zóna redundáns tárolás (ZRS) és a helyileg redundáns tárolás (LRS) használatát támogatja a virtuális tömb való használatra. A különböző típusú tárfiókkal további információkért látogasson el [az Azure storage replikációs](../storage/common/storage-redundancy.md).
+  * Azt javasoljuk, hogy létrehozta a régióban legközelebb a távoli office/fiókiroda késések minimalizálása érdekében a StorSimple Virtual Array telepítési helyét.
+  * Nem lehet áthelyezni egy storage-fiók különböző régiók között figyelembe kell vennie. Több előfizetés is nem helyezhetők át egy szolgáltatás.
+  * Storage-fiók, amely megvalósítja az adatközpontok közötti redundancia használja. Georedundáns tárolás (GRS), a Zónaredundáns Társzolgáltatási (ZRS) és a helyileg redundáns tárolás (LRS) támogatja a virtuális tömb való használatra. A különböző típusú storage-fiókokról további információért látogasson el [az Azure storage replikáció](../storage/common/storage-redundancy.md).
 
 ### <a name="shares-and-volumes"></a>Megosztások és kötetek
-A StorSimple virtuális tömb megosztások fájlkiszolgáló és a kötetek, ha az iSCSI-kiszolgálóként konfigurált konfigurálásakor oszthat meg. Az ajánlott eljárások létrehozásához, megosztásokat és -kötetek méretét és a konfigurált kapcsolódnak.
+A StorSimple Virtual Array telepíthet a megosztásokat, amikor egy fájlkiszolgáló és köteteket. Ha a konfigurált egy iSCSI-kiszolgálóként van konfigurálva. A megosztások és kötetek létrehozásának ajánlott eljárásai kapcsolódó mérete és a konfigurált típusát.
 
-#### <a name="volumeshare-size"></a>Kötet, illetve megosztási mérete
-A virtuális tömb megosztások fájlkiszolgáló és a kötetek, ha az iSCSI-kiszolgálóként konfigurált konfigurálásakor oszthat meg. Az ajánlott eljárások létrehozásához, megosztásokat és -kötetek méretét és a konfigurált vonatkoznak. 
+#### <a name="volumeshare-size"></a>Kötetet vagy megosztást mérete
+A virtuális tömb, ha van konfigurálva, a fájlkiszolgáló és köteteket. Ha az iSCSI-kiszolgálóként konfigurált építhet ki az megosztások. A megosztások és kötetek létrehozására vonatkozó ajánlott eljárások a méretét és a konfigurált típus vonatkoznak. 
 
-Vegye figyelembe a következő gyakorlati tanácsok megosztások vagy kötetek a virtuális eszközön kiépítésekor.
+Vegye figyelembe a következő gyakorlati tanácsok megosztások vagy kötetek a virtuális eszköz üzembe helyezésekor.
 
-* A fájlméret rétegzett megosztás kiosztott méretéhez képest hatással lehet a rétegezési teljesítményére. Nagy fájlok használata a lassú réteghez kimenő eredményezheti. Amikor olyan nagy fájlok, azt javasoljuk, hogy a legnagyobb fájl a fájlmegosztás méretének % 3-nál kisebb.
-* Legfeljebb 16 kötetek vagy megosztások a virtuális tömbben hozhatók létre. A helyileg rögzített és a rétegzett kötetek vagy megosztások méretkorlátai, mindig tekintse meg a [korlátozza a StorSimple virtuális tömb](storsimple-ova-limits.md).
-* Egy köteten, a várt adatok felhasználásához, valamint a jövőbeli növekedésre tényező létrehozásakor. A kötet nem bonthatók ki később.
-* Ha a kötet létrejött, a StorSimple a kötet mérete nem zsugorítható.
-* Történő írásakor a rétegzett kötetek a StorSimple, ha a kötet adatait elér egy meghatározott küszöbérték (viszonyítva álló helyi területet, a kötet számára fenntartva), az I/O folyamatban van. Folytatás írni erre a kötetre lassítja a IO jelentősen. Abban az esetben, ha a rétegzett kötetek (nem aktívan leállítása a felhasználónak kiosztott kapacitásán túlra írása) kiosztott kapacitásánál nagyobbra írhat, megjelenik egy értesítés arról, hogy rendelkezik túllépte. Ha a riasztás jelenik meg, rendkívül fontos, hogy szánjon javító intézkedéseket, például a Törlés a kötet adatait (kötet bővítése jelenleg nem támogatott).
-* Vész-helyreállítási használatából adódó engedélyezett megosztások vagy kötetek száma nem 16, és a maximális száma párhuzamos feldolgozható megosztások vagy kötetek is 16, megosztások vagy kötetek számát nem hatással vannak a helyreállítási Időkorlát és RTO.
+* A fájlméret viszonyított rétegzett megosztás kiosztott méretét hatással lehet a rétegzési teljesítmény. Nagy fájlok használata egy lassú réteg felskálázása eredményezhet. Ha nagy méretű fájlok dolgozik, azt javasoljuk, hogy a megosztás méretének % 3-nál kisebb-e a legnagyobb fájlt.
+* Legfeljebb 16 kötetek/megosztások a virtuális tömb hozható létre. A helyileg rögzített és a rétegzett kötetek/megosztások méretkorlátai, mindig tekintse meg a [StorSimple virtuális tömb – korlátozások](storsimple-ova-limits.md).
+* Egy kötet, a várt adathasználat, valamint a későbbi növekedési tényező létrehozásakor. A kötet nem bonthatók ki később.
+* A kötet létrehozása után a StorSimple a kötet mérete nem zsugorítható.
+* Való írás esetén a rétegzett kötetek a StorSimple, ha a kötet adatait elér egy bizonyos küszöbértéket (képest a helyi terület, a kötet számára fenntartva), az IO folyamatban van. A kötet írni a Folytatás lelassítja az i/o jelentősen. Bár a kiosztott kapacitás (azt ne aktívan állítsa le a felhasználónak a meghaladja a kiosztott kapacitás írása) meghaladja a rétegzett kötetek is ír, riasztási értesítés arról, hogy rendelkezik oversubscribed láthatja. Ha már látja a riasztást, amihez elengedhetetlen, tegye meg a javító intézkedések, például a Törlés a kötet adatait (kötet bővítése jelenleg nem támogatott).
+* A vész-helyreállítási használati esetek, a megengedett megosztások vagy kötetek száma 16, és a párhuzamosan feldolgozható megosztások vagy kötetek maximális számát is 16, megosztások vagy kötetek száma nincs hatással az RPO és RTO-k.
 
-#### <a name="volumeshare-type"></a>Kötet, illetve megosztási típusa
-StorSimple a felhasználás alapján két kötet, illetve megosztási-típusokat támogatja: helyileg rögzített és rétegzett. Helyileg rögzített kötetek vagy megosztások vannak kiosztása meg, mivel a rétegzett kötetek vagy megosztások kiosztása. Nem alakítható át egy helyileg rögzített kötetet vagy megosztást a rétegzett vagy *fordítva* létrehozását követően.
+#### <a name="volumeshare-type"></a>Kötetet vagy megosztást típusa
+A StorSimple támogatja a használat alapján két kötetet vagy megosztást típusa: helyileg rögzített és a rétegzett. A gyors helyi kötetek/megosztások nem dinamikus kiosztásúak, mivel a rétegzett kötetek/megosztások kiosztása. Nem alakítható át a helyileg rögzített kötetet vagy megosztást a rétegzett vagy *fordítva* egyszer létrehozni.
 
-Azt javasoljuk, hogy a következő gyakorlati tanácsok valósítja meg a StorSimple-kötetek vagy megosztások konfigurálásakor:
+Javasoljuk, hogy a következő gyakorlati tanácsok valósítható meg a StorSimple-kötetek/megosztások konfigurálásakor:
 
-* A kötet típusa, a kötet létrehozása előtt a telepíteni kívánt munkaterhelések alapján azonosíthatja. Használjon, amely van szükség az adatok helyi garanciákat (még akkor is során egy felhőalapú leállás) és, amely felhő alacsony késleltetésű munkaterhelések helyileg rögzített kötetekhez. Miután egy kötet a virtuális tömböt hoz létre, a kötet típusa nem módosítható a helyileg rögzített a rétegzett vagy *viszont*. Helyileg rögzített kötetekhez például létrehozása, ha SQL munkaterhelések vagy a munkaterhelések virtuális gépeket (VM); használja a rétegzett kötetek fájl megosztás munkaterhelésekhez.
-* A beállítást a gyakran használt archív adatokhoz a nagy méretűek meghatározásakor. Egy nagyobb deduplikációs adattömbméret 512 KB-os, ez a lehetőség az adatok átvitele a felhő elősegítésére szolgál.
+* Azonosítsa a kötettípus alapján szeretné telepíteni, mielőtt egy kötetet hoz létre a számítási feladatokhoz. Használja a gyors helyi kötetek (akár egy felhőbeli kimaradás) során az adatok helyi garanciákat, amely esetében, és felhőalapú alacsony késések igénylő számítási feladatokhoz. Miután a virtuális tömb kötetet hoz létre, a kötet típusa nem módosítható a helyileg rögzített a rétegzett vagy *fordítva*. A gyors helyi kötetek például létrehozása, ha SQL számítási feladatok vagy a virtuális gépeket (VM); számítási feladatok üzembe helyezése használja a rétegzett kötetek fájl megosztási számítási feladatokhoz.
 
-#### <a name="volume-format"></a>Kötet formátumban
-Miután az iSCSI-kiszolgálón létrehozott StorSimple-köteteket, meg kell inicializálása, csatlakoztatása és a kötetek formázása. Ez a művelet a StorSimple eszköz csatlakozik a gazdagépen történik. Következő gyakorlati tanácsokat csatlakoztatása és a StorSimple gazdagépen kötetek formázását.
 
-* Gyorsformázást a StorSimple-köteteket.
-* A StorSimple-kötet formázása, amikor egy foglalásiegység-méret (Ausztráliai) 64 KB-os használata (alapértelmezett érték 4 KB-os). A 64 KB-os Ausztráliai alapján házon általános StorSimple munkaterheléseket és egyéb munkaterhelések tesztelése.
-* A StorSimple virtuális iSCSI-kiszolgálóként konfigurált tömb használata esetén ezek a kötetek ne használja átnyúló kötetek vagy a dinamikus lemezek vagy lemezek StorSimple használata nem támogatott.
+#### <a name="volume-format"></a>Kötet formátum
+Miután az iSCSI-kiszolgálón létrehozott StorSimple-köteteket, kell inicializálni, csatlakoztathatja és formázza a köteteket. Ez a művelet a StorSimple-eszköz csatlakozik, a gazdagépen történik. Következő bevált gyakorlatát használata akkor javasolt, ha csatlakoztatja, és a StorSimple gazdagépen kötetek formázását.
 
-#### <a name="share-access"></a>Fájlmegosztási hozzáférést
-A virtuális tömb fájlkiszolgáló megosztások létrehozásakor kövesse az alábbi irányelveket:
+* A StorSimple-kötetek hajtson végre egy gyorsformázást.
+* Ha StorSimple-kötet formázása, használja a lemezfoglalási egység méretét (AU-k) 64 KB-os (az alapértelmezett érték 4 KB-os). A 64 KB-os au-k alapján közös StorSimple számítási feladatokhoz és egyéb számítási feladatokat a belső fejlesztésű végzett tesztelése.
+* A StorSimple Virtual Array egy iSCSI-kiszolgálóként konfigurált használatakor ne használjon átnyúló kötetek vagy dinamikus lemezek, ezeket a köteteket, lemezek használata nem támogatott a StorSimple.
 
-* Megosztás létrehozásakor rendelje hozzá a felhasználói csoport helyett egy-egy felhasználóhoz megosztás rendszergazdaként.
-* Az NTFS-engedélyek kezelheti a Windows Explorer használatával megosztások szerkesztésével a megosztás létrehozása után.
+#### <a name="share-access"></a>Megosztás eléréséhez
+Ha a virtuális tömb fájlkiszolgálón megosztásokat hoz létre, kövesse az alábbi irányelveket:
 
-#### <a name="volume-access"></a>Kötet hozzáférésével
-A StorSimple virtuális tömbhöz az iSCSI-kötetek konfigurálásakor fontos szükség való hozzáférést. Annak megállapításához, hogy mely kiszolgálók hozzáfér a kötethez, hozzon létre, és hozzáférés-vezérlési rekordokat (ACRs) társítani a StorSimple-köteteket.
+* Megosztás létrehozásakor rendelje hozzá a felhasználói csoport egy adott felhasználó helyett megosztás rendszergazdaként.
+* A Windows Exploreren keresztül megosztások szerkesztésével a megosztás létrehozása után kezelheti az NTFS-engedélyeket.
 
-ACRs konfigurálása a StorSimple-köteteket kövesse az alábbi gyakorlati tanácsokat:
+#### <a name="volume-access"></a>Kötet-hozzáférés
+A StorSimple Virtual Array az iSCSI-kötet konfigurálásakor fontos hozzáférés vezérléséhez, bárhol is szükséges. Annak megállapításához, hogy melyik gazdagépre kiszolgálók hozzáférhetnének a köteteket, létrehozása és hozzáférés-vezérlési rekordok (ACR-EK) társítani a StorSimple-köteteket.
 
-* Legalább egy ACR mindig társíthat egy köteten.
+ACR-EK konfigurálása a StorSimple-kötetek esetén használja a következő bevált gyakorlatát:
 
-* Ha egynél több ACR hozzárendelése egy kötetet, győződjön meg arról, hogy a kötet nincs felfedve oly módon, ahol egyidejűleg hozzáférhetők egynél több nem fürtözött gazdagép. Ha egy köteten több ACRs rendelt, egy figyelmeztető üzenet jelenik meg, ahhoz, hogy ellenőrizze a konfigurációt.
+* Legalább egy ACR mindig társítani egy kötetet.
+
+* Ha egynél több ACR hozzárendelése egy köteten, győződjön meg arról, hogy a kötet nem érhető el a oly módon, ahol egyidejűleg hozzáférhetők egynél több nem fürtözött gazdagép. Ha több ACR-EK hozzárendelték egy olyan kötetre, figyelmeztető üzenetet kap, miszerint az áttekintheti a konfigurációt.
 
 ### <a name="data-security-and-encryption"></a>Adatbiztonság és titkosítás
-A StorSimple virtuális tömb adatok biztonsági és a titkosítási szolgáltatással, amely titkosítás és az adatok sértetlenségének biztosítása rendelkezik. Ha használja ezeket a funkciókat, javasoljuk, hogy pontosan kövesse az alábbi gyakorlati tanácsok: 
+A StorSimple Virtual Array adatok biztonság és titkosítás funkcióval rendelkezik, amelyeket a titkosítás és az adatok sértetlenségének biztosítása érdekében. Ha használja ezeket a funkciókat, javasoljuk, hogy kövesse az ajánlott eljárások: 
 
-* Adja meg a felhőalapú tárolás titkosítási kulcsát létrehozni az AES-256 titkosítás, az adatokat a felhőbe a virtuális tömbből elküldése előtt. Ez a kulcs nincs szükség, ha először az adatok titkosítva legyenek. A kulcs jön létre, és biztonságos kulcskezelés rendszert használ, mint maradjon [az Azure key vault](../key-vault/key-vault-whatis.md).
-* Amikor konfigurálja a tárfiók a StorSimple Manager szolgáltatással, győződjön meg arról, hogy engedélyezi-e az SSL-mód a StorSimple eszköz és a felhő közötti hálózati kommunikációhoz biztonságos csatornát létrehozni.
-* Újragenerálja a kulcsokat a storage-fiókok (az Azure Storage szolgáltatás elérésével) rendszeresen fiók eléréséhez módosításai rendszergazdák módosított listája alapján.
-* A virtuális tömb adatok tömörített, és a deduplikált Azure elküldés előtt. Nem ajánlott, az Adatdeduplikáció szerepkör-szolgáltatás használata a Windows Server-állomáson.
+* Adja meg a felhőalapú tárolás titkosítási kulcsa létrehozni az AES-256 titkosítással, az adatokat a felhőbe, a virtuális tömb elküldése előtt. Ez a kulcs nincs szükség, ha először az adatait titkosítjuk. A kulcs is létrehozható és biztonságáról, mint a kulcskezelés rendszert használ [az Azure key vault](../key-vault/key-vault-whatis.md).
+* A tárfiók keresztül a StorSimple Manager szolgáltatás konfigurálásakor győződjön meg arról, hogy engedélyezi-e a StorSimple-eszköz és a felhő közötti hálózati kommunikációhoz biztonságos csatornát létrehozni az SSL-módot.
+* A kulcsok újragenerálása a storage-fiókok (az Azure Storage szolgáltatás elérésével) rendszeres időközönként módosítania kellene hozzáférni a fiókhoz a rendszergazdák módosított listája alapján.
+* A virtuális tömb lévő adatok tömörítve és deduplikált az Azure-bA továbbítás előtt. Nem ajánlott, az Adatdeduplikáció szerepkör-szolgáltatás használata a Windows Server-gazdagépen.
 
 ## <a name="operational-best-practices"></a>Gyakorlati tanácsok az üzemeltetéshez
-A gyakorlati tanácsok az üzemeltetéshez olyan irányelvek, a mindennapos felügyeleti vagy a virtuális tömb során betartandó. Ezeket a gyakorlatokat vonatkoznak, adott felügyeleti feladatokhoz, mint a biztonsági másolatok fogadására, a biztonságimásolat-készletből, visszaállítása a feladatátvételt végez, inaktiválása és törlése a tömb, a rendszer használati és figyelése, és fut a vírus keres a virtuális tömbben.
+A gyakorlati tanácsok az üzemeltetéshez olyan irányelvek, a napi szintű felügyeleti vagy a virtuális tömb során betartandó. Ezek az eljárások vonatkoznak, adott felügyeleti feladatokhoz, például a biztonsági másolatok készítése, helyreállítása biztonságimásolat-készlet, a feladatátvétel végrehajtásához, inaktiválása és törlése a tömbben, a rendszer használatának és állapotának figyelése, és futtatja a vírus megvizsgálja a virtuális tömb.
 
 ### <a name="backups"></a>Biztonsági másolatok
-A virtuális tömbben az adatok biztonsági mentést, nem a felhő két módon, egy alapértelmezett automatikus napi biztonsági másolatot a teljes eszköz 22:30 vagy keresztül manuális igény szerinti biztonsági mentés indítása. Alapértelmezés szerint az eszköz automatikusan létrehozza a rajta található valamennyi adat napi felhőbeli pillanatképeket. További információkért látogasson el [készítsen biztonsági másolatot a StorSimple virtuális tömb](storsimple-virtual-array-backup.md).
+A virtuális tömb tárolt biztonsági másolatot a két módon a felhőben, egy alapértelmezett automatikus napi biztonsági mentés, a teljes eszköz 22:30, vagy manuális igény szerinti biztonsági mentés indítása. Alapértelmezés szerint az eszköz a rajta található valamennyi adat napi felhőbeli pillanatképek automatikusan létrehozza. További információért ugorjon [biztonsági mentése a StorSimple Virtual Array](storsimple-virtual-array-backup.md).
 
-A gyakoriság és a társított alapértelmezett biztonsági mentés megőrzési nem módosítható, de be lehet állítani, ahol a napi biztonsági mentései minden nap kezdeményezett idő. Ha konfigurálja az automatikus biztonsági mentés kezdési idejét, azt javasoljuk, hogy:
+A gyakoriság és a társított alapértelmezett biztonsági másolatok megőrzése nem módosítható, de beállíthatja, hogy az idő, amikor a napi biztonsági mentések minden nap kezdeményezett. Ha konfigurálja az automatikus biztonsági mentés kezdési ideje, azt javasoljuk, hogy:
 
-* A biztonsági mentések ütemezése essen. Biztonsági mentés kezdési ideje számos állomás IO nem kell egyeznie.
-* Indítsa el a manuális igény szerinti biztonsági mentés eszköz feladatátvételi vagy a virtuális tömbben az adatok védelme érdekében a karbantartási időszak előtti végrehajtására tervezése során.
+* A biztonsági mentéseket csúcsidőn ütemezése. Biztonsági mentés kezdő időpontja nem egybe kell számos gazdagép IO.
+* Ha egy eszköz feladatátvételi vagy a virtuális tömb az adatok védelme érdekében a karbantartási időszak előtt végrehajtandó tervezési kezdeményezheti a manuális igény szerinti biztonsági mentés.
 
 ### <a name="restore"></a>Visszaállítás
-Egy biztonságimentés-készlet két módon állíthatja vissza: állítsa vissza egy másik kötetre vagy megosztásra vagy egy elemszintű helyreállítás (csak egy virtuális fájlkiszolgálóként konfigurált tömb elérhető). Elemszintű helyreállítás teszi fájlok és mappák elemszintű helyreállítása a StorSimple eszközön a megosztások felhőalapú biztonsági másolatából. További információkért látogasson el [állítsa vissza biztonsági másolatból](storsimple-virtual-array-clone.md).
+Visszaállíthatja egy biztonságimentés-készlet két módon: állítsa vissza egy másik kötetet vagy megosztást vagy egy elemszintű helyreállítás (csak a virtuális tömb fájlkiszolgálóként konfigurált elérhető). Elemszintű helyreállítás lehetővé teszi, hogy a fájlok és mappák részletes helyreállítási felhő biztonsági másolatából a StorSimple eszközön a megosztásokat. További információért ugorjon [visszaállítása biztonsági másolatból](storsimple-virtual-array-clone.md).
 
 A visszaállítás végrehajtásakor tartsa szem előtt az alábbi irányelveket:
 
-* A StorSimple virtuális tömb nem támogatja a védelem visszaállítása. Ez azonban könnyen lehet megvalósítani egy kétlépéses folyamat: Szabadítson fel helyet a virtuális a tömb, és másik kötet, illetve megosztási majd visszaállítja.
-* Ha egy helyi kötet visszaállítása tartsa szem előtt a visszaállítási lesz hosszú ideig futó művelet. Bár előfordulhat, hogy a kötet gyorsan ismét online elérhető, az adatok továbbra is lehet hidratált a háttérben.
-* A kötet típusa változatlan marad, a visszaállítás során. A rétegzett kötetek vissza egy másik rétegzett kötet, és egy helyileg rögzített kötet másik helyileg rögzített kötet.
-* Próbálja visszaállítani egy kötet vagy megosztás egy biztonsági másolatból, ha a helyreállítási feladat sikertelen lesz, állítsa a célkötetet, vagy a megosztás továbbra is lehet létrehozni a portálon. Fontos, törölje a nem használt célkötetet, vagy a portálon minimalizálása érdekében ez az elem jövőbeli kérdéseket megosztani.
+* A StorSimple virtuális tömb nem támogatja a helyben visszaállítása. Ez azonban könnyen lehet megvalósítani egy kétlépéses folyamat: Szabadítson fel helyet a virtuális tömböt, és állítsa vissza egy másik kötetre/megosztásra.
+* Tartsa szem előtt, helyi kötetté történő visszaállítását a visszaállítást egy hosszú ideig futó művelet lesz. Bár előfordulhat, hogy a kötet gyorsan online állapotba, az adatok továbbra is a háttérben hidratált lehet.
+* A kötettípus változatlan marad, a visszaállítási folyamat során. Egy másik rétegzett kötet a rétegzett kötetek visszaállítja, és a egy helyileg rögzített kötet a másikra helyileg rögzített kötet.
+* Próbálja visszaállítani egy kötetet vagy megosztást egy biztonsági másolatból beállítása, a visszaállítási feladat sikertelen lesz, ha a célkötet, és megosztása a portálon is létrejön. Fontos, hogy törli a fel nem használt célkötetet, vagy megosztása a portálon az elemből származó kapcsolatos jövőbeli problémák minimalizálása érdekében.
 
-### <a name="failover-and-disaster-recovery"></a>Feladatátvétel és a katasztrófa utáni helyreállítás
-Egy eszköz feladatátvétel lehetővé teszi az adatok áttelepítése a *forrás* eszközt az adatközpontban a másikra *cél* eszköz ugyanabban vagy egy különböző földrajzi helyen található. Az eszköz feladatátvétel során a teljes eszköz. A feladatátvételi felhő változnak az adatok a forrás eszköz tulajdonjogát, valamint a céleszközön.
+### <a name="failover-and-disaster-recovery"></a>Feladatátvétel és vészhelyreállítás
+Egy eszköz feladatátvételi lehetővé teszi, hogy át az adatokat egy *forrás* a másikra az adatközpontban található eszköz *cél* azonos, vagy egy másik földrajzi helyen található eszköz. Az eszköz feladatátvételi van a teljes eszköz számára. A feladatátvétel során a felhőbeli adatok az eszköz tulajdonjogát módosítja a céleszközön a.
 
-A StorSimple virtuális tömb csak átveheti egy másik, ugyanazt a StorSimple Manager szolgáltatás által kezelt virtuális tömbhöz. A feladatátvételt egy 8000 sorozat eszköz vagy egy másik StorSimple Manager szolgáltatás (mint a forrás eszközhöz) által kezelt tömb nem engedélyezett. A feladatátvételi szempontokat részletező cikkben kapcsolatos további tudnivalókért keresse fel [Előfeltételek az eszköz feladatátvételi](storsimple-virtual-array-failover-dr.md).
+A StorSimple Virtual Array az is csak átadja a feladatokat az ugyanazon a StorSimple Manager szolgáltatás által kezelt egy másik virtuális tömbbe. A 8000-es sorozatú eszköz vagy egy (mint a forrás eszköz) egy másik a StorSimple Manager szolgáltatás által kezelt feladatátvételt nem engedélyezett. További információ a feladatátvételi szempontokat részletező cikkben, lépjen a [az eszköz feladatátvételi előfeltételei](storsimple-virtual-array-failover-dr.md).
 
-Amikor keresztül hajtja végre a sikertelen a virtuális tömb, vegye figyelembe a következőket:
+Feladatátvétel végrehajtásához keresztül a virtuális tömb, vegye figyelembe a következőket:
 
-* Egy tervezett feladatátvétel esetén ajánlott eljárás minden a kötetek vagy megosztások offline állapotba a feladatátvétel kezdeményezése előtt életbe. Hajtsa végre az operációsrendszer-specifikus utasításokat a kötetek vagy megosztások offline érvénybe, ha a gazdagép első majd azokat offline állapotba a virtuális eszközön.
-* Egy fájl server vészhelyreállítás (DR) javasoljuk, csatlakoztassa a céleszközt ugyanahhoz a tartományhoz, mint a forrás-, hogy a megosztási engedélyek automatikusan feloldani. Ebben a kiadásban a céleszközön ugyanabban a tartományban csak a feladatátvétel támogatott.
-* Ha a vész-Helyreállítási sikeresen befejeződött, a rendszer automatikusan törli a forráseszközt. Ha az eszköz már nem érhető el, a rendszer a gazdagép kiépített virtuális gép továbbra is fogyassza az erőforrásokat. Azt javasoljuk, hogy törölje a virtuális gép megakadályozhatja, hogy a díjakat a számoljanak fel Önnek a gazdagép rendszerről.
-* Vegye figyelembe, hogy akkor is, ha a feladatátvétel nem jár sikerrel, **adatai mindig biztonságos a felhőben**. Vegye figyelembe a következő három forgatókönyv, amelyben a feladatátvétel nem fejeződött be sikeresen:
+* Egy tervezett feladatátvétel esetén a kötetek/megosztások kapcsolat nélküli módban a feladatátvétel kezdeményezése előtt elvégzendő ajánlott. Kövesse az operációsrendszer-specifikus utasításokat a kötetek/megosztások offline állapotba, ha a gazdagép a első és a megfelelő azok offline állapotban van a virtuális eszközön.
+* Egy fájl server vészhelyreállítási (DR) javasoljuk, hogy csatlakozzon a céleszköz ugyanahhoz a tartományhoz, mint a forrás-, hogy a megosztási engedélyek automatikusan feloldani. Csak a feladatátvételt, hogy ugyanabban a tartományban egy céleszköz ebben a kiadásban támogatott.
+* Ha a DR sikeresen befejeződött, a rendszer automatikusan törli a forráseszközt. Ha az eszköz már nem érhető el, a rendszer a gazdagép kiépített virtuális gépet továbbra is fogyassza az erőforrásokat. Azt javasoljuk, hogy a gazdagép rendszerről megakadályozza, hogy a díjakat halmoz fel a virtuális gép törlése.
+* Vegye figyelembe, hogy akkor is, ha a feladatátvételi művelet sikertelen, **adatai mindig biztonságban a felhőben**. A következő három forgatókönyv, amelyben a feladatátvétel nem fejeződött be sikeresen, vegye figyelembe:
   
-  * Hiba történt a kezdeti szakaszaiban a feladatátvétel, például amikor a vész-Helyreállítási előtti a rendszer éppen ellenőrzi. Ebben a helyzetben a céleszközön továbbra is használható. Megpróbálkozhat a feladatátvételt a cél ugyanarra az eszközre.
-  * Hiba történt a tényleges feladatátvétel során. Ebben az esetben a céleszközt van megjelölve használható. Konfigurálnia kell kiépíteni és egy másik virtuális céltömb valamint, hogy a feladatátvételre használni.
-  * A feladatátvétel befejeződött, amely a forráseszközt törölve lett a következő volt, de a céleszközt problémákkal rendelkezik, és adatokat nem férhet hozzá. Az adatok a felhőben továbbra is biztonságban, és egy másik virtuális tömb létrehozásával, és majd használni a céleszközön a Dr könnyen olvasható.
+  * Hiba történt a kezdeti fázisában – például amikor a DR előzetes ellenőrzések végrehajtása a feladatátvételt. Ebben a helyzetben a céleszközön továbbra is használható. Újra ugyanazon a céleszközön a feladatátvétel.
+  * Hiba történt a tényleges feladatátvétel során. A céleszköz ebben az esetben használhatatlan van megjelölve. Üzembe helyezése és konfigurálása egy másik céloldali virtuális tömb és kell használnia, amely feladatátvételhez.
+  * A feladatátvétel befejeződött, ami a forráseszközt törölve lett a következő volt, de a céleszköz problémákkal rendelkezik, és semmilyen adatot nem férhet hozzá. Az adatok biztonságos-e továbbra is a felhőben, és egy másik virtuális tömbbe létrehozásával, és majd használni a céleszközön a vészhelyreállítás egyszerűen lekérhető.
 
 ### <a name="deactivate"></a>Inaktiválás
-Ha inaktiválja a StorSimple virtuális tömb, akkor az eszköz és a megfelelő StorSimple Manager szolgáltatás közötti kapcsolat Server. Az inaktiválást van egy **állandó** műveletet, és nem vonható vissza. Deaktivált eszköz nem lehet regisztrálni a StorSimple Manager szolgáltatásban újra. További információkért látogasson el [inaktiválja és törölje a StorSimple virtuális tömb](storsimple-virtual-array-deactivate-and-delete-device.md).
+A StorSimple Virtual Array inaktiválása, akkor az eszköz és a megfelelő a StorSimple Manager szolgáltatás közötti kapcsolat kiszolgálófejléc. Inaktiválási van egy **állandó** műveletet, és nem vonható vissza. Inaktivált eszköz nem lehet regisztrálni a StorSimple Manager szolgáltatással újra. További információért ugorjon [inaktiválása és törlése a StorSimple Virtual Array](storsimple-virtual-array-deactivate-and-delete-device.md).
 
-Ha a virtuális tömb inaktiválása tartsa szem előtt az alábbi gyakorlati tanácsokat:
+Ha a virtuális tömb inaktiválása tartsa szem előtt az alábbi ajánlott eljárásokat:
 
-* Felhő pillanatkép készítése a virtuális eszköz inaktiválása előtt az adatokat. Ha egy virtuális tömb inaktiválja, minden a helyi eszközön adat elvész. Felhő pillanatképének lehetővé teszi szeretne adatokat helyreállítani egy későbbi időpontban.
-* A StorSimple virtuális tömb inaktiválása előtt győződjön meg arról, állítsa le vagy törölje az ügyfelek és kiszolgálók azokon az eszközökön.
-* Deaktivált eszköz törlése, ha már nem használ, hogy azt nem keletkeznek költségek.
+* A virtuális eszköz inaktiválása előtt az adatok felhőbeli pillanatkép készítése. A virtuális tömb inaktiválása, minden a helyi eszközön adat elvész. Felhőbeli pillanatkép lehetővé teszi, hogy az adatok helyreállítása egy későbbi időpontban.
+* A StorSimple Virtual Array, inaktiválása előtt ügyeljen arra, hogy leállította vagy törölte az ügyfelek és a gazdagépek, amelyek attól függnek, hogy az eszközről.
+* Ha Ön már nem használ, hogy azt nem díjköteles előfizetéstípusok inaktivált eszköz törlése
 
 ### <a name="monitoring"></a>Figyelés
-Győződjön meg arról, hogy a StorSimple virtuális tömb folyamatos kifogástalan állapotban van, szüksége a tömb figyelésére, és győződjön meg arról, hogy kapott adatokat a rendszer, beleértve a riasztások. A virtuális tömb általános állapotának figyeléséhez, valósítja meg az alábbi gyakorlati tanácsokat:
+Győződjön meg arról, hogy a StorSimple Virtual Array egy folyamatos kifogástalan állapotban van, szüksége figyelheti a tömbben, és győződjön meg arról, hogy információkat kap a rendszerből, beleértve a riasztásokat. A virtuális tömb általános állapotának monitorozásához megvalósításához az alábbi gyakorlati tanácsokat:
 
-* A virtuális tömb adatlemez, valamint az operációsrendszer-lemezképet a lemezhasználat nyomon figyelés konfigurálása. Ha a Hyper-v-T futtató, használhatja a System Center Virtual Machine Manager (SCVMM) és a System Center Operations Manager (SCOM) a virtualizációs gazdagépek figyelésére.
-* E-mail értesítések beállítása a riasztások küldéséhez bizonyos használati szinten a virtuális tömbjét.                                                                                                                                                                                                
+* A virtuális tömb adatlemez, valamint az operációsrendszer-lemez lemez használatának nyomon követése a figyelés konfigurálása. Ha Hyper-V fut, a System Center Virtual Machine Manager (SCVMM) és a System Center Operations Manager együttes használatával a virtualizálási gazdagépek figyeléséhez.
+* E-mail-értesítések konfigurálása a virtuális tömb értesítések küldése megadott használati szinten.                                                                                                                                                                                                
 
-### <a name="index-search-and-virus-scan-applications"></a>Index keresési és vírus scan alkalmazások
-A StorSimple virtuális tömb automatikusan is réteg a helyi rétegen adatait a Microsoft Azure felhőbe. Egy alkalmazás, például egy index keresési vagy víruskeresést használatakor a StorSimple-on tárolt adatok vizsgálata kell vigyázni, hogy az felhő nem get érhető el, és vissza a helyi réteghez lekért.
+### <a name="index-search-and-virus-scan-applications"></a>A keresési index és a vírus alkalmazások vizsgálata
+A StorSimple Virtual Array is rétegzi automatikusan az adatokat a helyi szintről a Microsoft Azure felhőbe. Egy alkalmazás, például az indexben való keresés vagy a víruskeresés során megvizsgálja a StorSimple-on tárolt adatok használata esetén körültekintően járjon el, hogy a felhőbeli adatok nem érhető el és lekért vissza a helyi szintre kell.
 
-Azt javasoljuk, hogy a virtuális tömb a keresési vagy vírus indexvizsgálatot konfigurálásakor megvalósítása a következő gyakorlati tanácsok:
+Javasoljuk, hogy a következő gyakorlati tanácsok valósítható meg a virtuális tömb a keresési vagy virus indexvizsgálatot konfigurálásakor:
 
-* Tiltsa le a teljes vizsgálat automatikusan konfigurált műveleteket.
-* A rétegzett kötetek vagy állítson be az index keresési vírus vizsgálat egy növekményes vizsgálat. Ez lenne ellenőrizni, hogy csak az új adatok valószínűleg elhelyezkedhet a helyi rétegen. Nem érhető el az adatokat, amelyek a felhőbe többszintű növekményes művelet közben.
-* Győződjön meg arról, a helyes keresési szűrők és beállítások vannak konfigurálva, hogy csak a megfelelő típusú fájlokat beolvasott beolvasása. Például képfájlok (JPEG, GIF és TIFF), és műszaki osztály rajzok nem kell futtatni a növekményes és teljes index rebuild során.
+* Tiltsa le az automatikusan beállított teljes vizsgálat műveleteket.
+* A rétegzett kötetek vagy állítson be az index keresési vírus vizsgálat növekményes vizsgálat. Ez szeretné ellenőrizni, hogy csak az új adatok valószínűleg elhelyezkedhet a helyi rétegen. Az adatok a felhőben van rétegzett növekményes művelet során nem érhető el.
+* Győződjön meg arról, a helyes keresési szűrők és beállítások vannak konfigurálva, hogy csak a megfelelő típusú fájlok vizsgálata beolvasása. Például képfájlok (JPEG, GIF és TIFF) és mérnöki rajzok nem kell futtatni a növekményes és teljes indexkészítés során.
 
-Windows indexelése folyamat használata esetén kövesse az alábbiakat:
+Indexelési folyamat Windows használata esetén kövesse az alábbi irányelveket:
 
-* Ne használja a Windows indexelő rétegzett kötetek, akkor visszahívja nagy mennyiségű adat (több TB-nyi) a felhőből Ha gyakran úgy kell. Az index újraépítése volna beolvasása minden fájltípus indexelésre a tartalmat.
-* Használja a Windows, a helyileg rögzített kötetekhez folyamat indexelő, mivel ez csak a helyi rétegeken hozhat létre az index (a felhő adatokat nem fogják elérni) adatok elérésére.
+* Ne használja a Windows-indexelő rétegzett köteteket, azt visszaírja a nagy mennyiségű adatot (TB-osra bővül) a felhőben, ha az index újraépítését, gyakran kell. Az index újraépítése szeretné beolvasni az index tartalmukra minden fájltípus.
+* Használja a Windows-folyamat a helyileg rögzített kötetekhez indexelő, mivel ez csak a helyi rétegeken hozhat létre az indexet (felhőalapú adatokat nem fogják elérni) adatok elérésére.
 
 ### <a name="byte-range-locking"></a>Bájt tartomány zárolása
-Alkalmazások zárolhatja a bájtban megadott címtartomány a fájlokban. Ha bájt tartomány zárolás engedélyezve van az alkalmazásokat, amelyek a StorSimple ír, majd rétegezéséhez nem működik a virtuális tömbjét. Az adatdeduplikációval működéséhez minden területéhez érhető el a fájlokat nem lehet zárolt. A virtuális tömb a rétegzett kötetek bájt tartomány zárolása nem támogatott.
+Alkalmazások bájt megadott számos zárolhatja a fájlokon belüli. Ha bájt tartomány zárolás engedélyezve van az alkalmazásokat, amelyek a StorSimple ír, majd rétegezést nem működik a virtuális tömb. A rétegezést működéséhez az elért fájlokat minden területéhez oldják a zárolást kell lennie. Bájt tartomány zárolását a rétegzett köteteket a virtuális tömb nem támogatott.
 
-Ajánlott intézkedések kibővítéséért bájt tartomány zárolás a következők:
+Ajánlott orvoslására bájt tartomány zárolását a következők:
 
-* Kapcsolja ki a bájttartomány zárolás a az alkalmazás logikáját.
-* Használjon helyileg rögzített kötetek (ahelyett, hogy a Szintezett) számára az alkalmazással kapcsolatos adatok. Helyileg rögzített kötetek nem réteg kiterjeszti a felhőbe.
-* Ha helyileg használatával rögzített kötetek bájt tartomány zárolás engedélyezve van, a kötet származhatnak online a visszaállítás befejezése előtt. Ezekben az esetekben Várjon, amíg a teljes visszaállításhoz.
+* Kapcsolja ki az alkalmazáslogika a zárolás bájttartományt.
+* Használjon helyi rögzített kötetekről (helyett a Szintezett) a jelen alkalmazáshoz rendelt adatok. A gyors helyi kötetek nem adatszint a felhőbe.
+* Használatával a helyileg rögzített kötetekről bájt tartomány zárolás engedélyezve van, ha a kötet is parancsára a visszaállítás befejezése előtt. Ezek a példányok kell Várjon, amíg befejeződik a visszaállítást.
 
 ## <a name="multiple-arrays"></a>Több tömbök
-Több virtuális tömbök kell telepíteni kell egy egyre bővülő munkakészlet sikerült kerülnek be a felhő, amelyek így hatással lesznek a teljesítmény, az eszköz adatok fiókot. Ezekben az esetekben célszerű méretezési eszközök munkakészletének növekedésével. Ehhez a helyszíni adatközpontban lehet hozzáadni egy vagy több eszközön. Az eszköz hozzáadásakor meg a következőket teheti:
+Több virtuális Tárolótömböket kell fiókot működő növekvő halmazát, amelyek sikerült kerülnek a felhőbe, amelyek így hatással lesznek a teljesítmény, az eszköz üzembe helyezhető. Ezekben az esetekben érdemes skálázási eszközökre munkakészletének növekedésével. Ehhez a helyi adatközpontban hozzáadandó egy vagy több eszközt. Az eszközök hozzáadásakor, a következőket teheti:
 
-* Az aktuális készletében lévő adatok felosztása.
-* Az új eszköz(ök) új munkaterhelések telepítése.
-* Ha több virtuális tömbök üzembe, azt javasoljuk, hogy a terheléselosztó szempontjából, a tömb szét a különböző hipervizor-állomás.
-* Több virtuális tömbök (Ha be van állítva, mint egy fájl vagy iSCSI-kiszolgáló) olyan elosztott fájl rendszer Namespace is telepíthető. A részletes lépéseket lásd a [elosztott fájl rendszer Namespace megoldást hibrid felhőalapú tárolás telepítési útmutató](https://www.microsoft.com/download/details.aspx?id=45507). Az elosztott fájlrendszer replikációs jelenleg nem ajánlott a virtuális tömb való használatra. 
+* Ossza fel az adatok aktuális készletét.
+* Az új eszköz(ök) új számítási feladatok üzembe helyezéséhez.
+* Ha üzembe több virtuális tömböket, azt javasoljuk, hogy a terheléselosztó szempontjából, a tömb szét különböző hipervizor-állomások.
+* Több virtuális tömb (Ha be van állítva, a fájlkiszolgáló vagy iSCSI-kiszolgáló) a Distributed File System Namespace is telepíthető. Lépjen a részletes lépéseket [elosztott File System Namespace megoldás a hibrid felhőalapú tárolási üzembe helyezési útmutató](https://www.microsoft.com/download/details.aspx?id=45507). Az elosztott fájlrendszer-replikáció jelenleg nem ajánlott a virtuális tömb való használatra. 
 
 ## <a name="see-also"></a>Lásd még
-Megtudhatja, hogyan [felügyelete a StorSimple virtuális tömb](storsimple-virtual-array-manager-service-administration.md) a StorSimple Manager szolgáltatással.
+Ismerje meg, hogyan [felügyelete a StorSimple Virtual Array](storsimple-virtual-array-manager-service-administration.md) keresztül a StorSimple Manager szolgáltatásban.
 

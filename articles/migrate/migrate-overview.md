@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/23/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 1aeaff486ed9f7cb99ea0b95451fc765344847a1
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 85873dc023e63b7cc9f5ba3ff87214c49ac16e34
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086675"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246735"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -30,7 +30,7 @@ Az Azure Migrate az alábbiakban nyújt segítséget:
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
 - Csak a helyszíni VMware virtuális gépeket értékelheti ki az Azure-beli virtuális gépekre való migráláshoz. A VMware virtuális gépeket egy 5.5-ös, 6.0-s vagy 6.5-ös verziójú vCenter Servernek kell felügyelnie.
-- Hyper-V virtuális gépek felméréséhez az [Azure Site Recovery Deployment Plannert](http://aka.ms/asr-dp-hyperv-doc), fizikai gépek felméréséhez pedig [partnereszközeinket](https://azure.microsoft.com/migration/partners/) használja.
+- Hyper-V virtuális gépek felméréséhez az [Azure Site Recovery Deployment Plannert](https://aka.ms/asr-dp-hyperv-doc), fizikai gépek felméréséhez pedig [partnereszközeinket](https://azure.microsoft.com/migration/partners/) használja.
 - Egyetlen felderítéssel legfeljebb 1500 virtuális gépet, egyetlen projekt részeként pedig szintén legfeljebb 1500 virtuális gépet deríthet fel. Egyetlen értékeléssel emellett legfeljebb 1500 virtuális gépet értékelhet.
 - Ha egy nagyobb méretű környezetet szeretne felderíteni, feloszthatja a felderítést, és létrehozhat több projektet. [További információk](how-to-scale-assessment.md). Az Azure Migrate előfizetésenként legfeljebb 20 projektet támogat.
 - Az Azure Migrate kizárólag a felügyelt lemezek migrálásfelmérését támogatja.

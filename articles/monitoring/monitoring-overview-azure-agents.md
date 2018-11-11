@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 62edeb36fcd56733630edc6fa27c9963f20b0186
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 81db6720422de111cc5b390c58e9020d7c19f90a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913546"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282033"
 ---
 # <a name="overview-of-the-azure-agents-to-monitor-azure-virtual-machines"></a>Az Azure-ügynökök figyeléséhez az Azure-beli virtuális gépek áttekintése
 A Microsoft Azure több módszert is biztosít a különböző típusú adatok gyűjtésére az Azure rendszerben vagy egyéb felhőszolgáltatók, Microsoft Windows és Linux rendszerű virtuális gépek.  Ez a cikk segít a különbségek és képességek érhető el minden ügynök arra, hogy melyik támogatni fogja a service management sorrendben vagy általános figyelési követelmények leírása.  
@@ -27,7 +27,7 @@ A Microsoft Azure több módszert is biztosít a különböző típusú adatok g
 ## <a name="comparing-azure-diagnostic-and-log-analytics-agent"></a>Azure diagnosztikai és a Log Analytics-ügynök összehasonlítása
 Még ma az Azure-ban két típusa van az ügynökök egy Azure-beli Virtuálisgép - figyelhető az Azure Diagnostics bővítmény és a Log Analytics-ügynököket a Linux és Windows.  Alapvetően ezeket az ügynököket úgy tervezték, metrikák és naplók összegyűjtése, és továbbítsa a tárházhoz. Azonban, hogy, ahol azok Hasonlóságok vége.  
 
-A [Azure Diagnostics bővítmény](../monitoring-and-diagnostics/azure-diagnostics.md), amely megadva az Azure Cloud Services 2010, általánosan elérhető vált, mert olyan ügynök, amely egy Azure IaaS-erőforrás, például egy virtuális Gépet, a diagnosztikai adatok egyszerű gyűjteménye biztosít, és azt az Azure storage-megmarad.  Miután a tároló úgy döntött, hogy az egyik számos elérhető eszköz, például megtekintheti [a Visual Studio Server Explorer](../vs-azure-tools-storage-resources-server-explorer-browse-manage.md) és [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+A [Azure Diagnostics bővítmény](../monitoring-and-diagnostics/azure-diagnostics.md), amely megadva az Azure Cloud Services 2010, általánosan elérhető vált, mert olyan ügynök, amely egy Azure IaaS-erőforrás, például egy virtuális Gépet, a diagnosztikai adatok egyszerű gyűjteménye biztosít, és azt az Azure storage-megmarad.  Miután a tároló úgy döntött, hogy az egyik számos elérhető eszköz, például megtekintheti [a Visual Studio Server Explorer](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) és [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
 Ha szeretné, gyűjtése:
 
@@ -38,7 +38,7 @@ Ha szeretné, gyűjtése:
 * Alkalmazásnapló-események gyűjtése a syslog  
 * összeomlási memóriaképek, 
 
-Adatok is továbbítható [Application Insights](../application-insights/app-insights-cloudservices.md), [Log Analytics](../log-analytics/log-analytics-overview.md), vagy az-Azure szolgáltatások használatával [Eseményközpont](../event-hubs/event-hubs-about.md). 
+Adatok is továbbítható [Application Insights](../application-insights/app-insights-cloudservices.md), [Log Analytics](../log-analytics/log-analytics-queries.md), vagy az-Azure szolgáltatások használatával [Eseményközpont](../event-hubs/event-hubs-about.md). 
 
 Speciális monitorozás esetében van szüksége több mint gyűjtését metrikák és naplók egy részét, a Log Analytics-ügynököket Windows és Linux rendszerhez készült szükség.  Ez az ügynök az Ön Azure-szolgáltatások például Automation és a Log Analyticsben, az általuk kínált, hogy az Azure-beli virtuális életciklusuk átfogó felügyeleti funkciók teljes készletét használhatja. Az érintett műveletek közé tartoznak az alábbiak:
 

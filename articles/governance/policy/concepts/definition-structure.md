@@ -4,16 +4,16 @@ description: 'Ismerteti, hogy a szabályzatdefiníció erőforrás az Azure Poli
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/30/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 0ff56b86243956d1fa6b51a6dfd14af9e00d8367
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: b5c7d0c6d54272518b19ffec0d8f02ebbcfe55d9
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212777"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283291"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -123,12 +123,12 @@ A szabályzatbeli szabályban hivatkozik az alábbi paraméterek `parameters` te
 
 ## <a name="definition-location"></a>Definíció helye
 
-Egy kezdeményezést vagy szabályzat-definíció létrehozásakor fontos, hogy Ön adja meg a definíció helye.
+Egy kezdeményezést vagy létrehozásakor meg kell határozni a definíció helye. A definíció helye egy felügyeleti csoportot vagy egy előfizetésben kell lennie, és meghatározza, hogy a hatókör, amelyhez a kezdeményezést vagy rendelhetők. Erőforrások közvetlen tagjai vagy a gyermekek a hierarchiában a definíció helye, hogy a szabályzat-hozzárendelés kell lennie.
 
-A definíció helye határozza meg, hogy a hatókör, amelyhez az kezdeményezést vagy szabályzat-definíció is hozzárendelhető. A hely egy felügyeleti csoportot vagy egy előfizetés adható meg.
+Ha a definíció helye v:
 
-> [!NOTE]
-> Ha a alkalmazni ezt a szabályzatdefiníciót több előfizetést is tervez, a hely egy felügyeleti csoportot, amely tartalmazza az előfizetések a kezdeményezés, vagy a szabályzatot rendeli kell lennie.
+- **Előfizetés** – csak az adott előfizetésen belüli erőforrások rendelhetők a szabályzat.
+- **A felügyeleti csoport** – csak az alárendelt felügyeleti csoportok és a gyermek előfizetések belüli erőforrások rendelhetők a szabályzatot. Ha a alkalmazni a szabályzatdefiníció több előfizetést is tervez, a hely ezen előfizetések tartalmazó felügyeleti csoportot kell lennie.
 
 ## <a name="display-name-and-description"></a>Megjelenítendő név és leírás
 
@@ -146,7 +146,7 @@ Az a **majd** letiltása, definiálhat a hatás, amely akkor fordul elő, amikor
         <condition> | <logical operator>
     },
     "then": {
-        "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists"
+        "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists | disabled"
     }
 }
 ```
@@ -232,7 +232,8 @@ A házirend hatása a következő típusú támogatja:
 - **Naplózási**: állít elő, egy figyelmeztető esemény tevékenységnaplóban, de a kérelem végrehajtása nem sikerül
 - **Hozzáfűzés**: a meghatározott készletével mezőket ad hozzá a kérelem
 - **AuditIfNotExists**: lehetővé teszi a naplózást, ha egy erőforrás nem létezik.
-- **DeployIfNotExists**: üzembe helyezi egy erőforrást, ha azt nem létezik.
+- **DeployIfNotExists**: üzembe helyezi egy erőforrást, ha azt nem létezik
+- **Letiltott**: nem értékeli a megfelelőségét a szabály az erőforrások
 
 A **hozzáfűzése**, meg kell adnia a következő adatokat:
 
@@ -247,6 +248,18 @@ A **hozzáfűzése**, meg kell adnia a következő adatokat:
 Az érték lehet egy karakterlánc- vagy JSON-formátumú objektum.
 
 A **AuditIfNotExists** és **DeployIfNotExists** is létezik-e a kapcsolódó erőforráshoz értékeli és alkalmazza a szabályt, és a egy megfelelő hatása, ha adott erőforrás nem létezik. Például megkövetelheti, hogy a network watchert az összes virtuális hálózat üzemel. Példa a naplózást, ha egy virtuálisgép-bővítmény nincs telepítve, tekintse meg a [naplózása nem létezik olyan bővítmény](../samples/audit-ext-not-exist.md).
+
+A **DeployIfNotExists** hatása van szükség a **roleDefinitionId** tulajdonságot a **részletek** a szabály részét. További információkért lásd: [szervizelési – konfigurálja a szabályzat-definíció](../how-to/remediate-resources.md#configure-policy-definition).
+
+```json
+"details": {
+    ...
+    "roleDefinitionIds": [
+        "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
+        "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
+    ]
+}
+```
 
 Minden egyes hatás, értékelési, tulajdonságokat és példákat sorrendje a részleteket lásd: [ismertetése házirend hatások](effects.md).
 

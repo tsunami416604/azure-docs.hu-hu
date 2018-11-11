@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: c3bb170800508d5a546573850f445b2a8991ea8c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 37d9f433f39b60609870913a13f23e5a6e419476
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38597744"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246497"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-by-using-azure-notification-hubs"></a>Oktatóanyag: Értesítések küldése az Univerzális Windows-platformon alapuló alkalmazásoknak az Azure Notification Hubs használatával
 
@@ -57,7 +57,7 @@ A leküldéses értesítések UWP-alkalmazásokba irányuló küldéséhez társ
 1. Írja be az alkalmazás nevét, majd válassza a **Reserve product name** (Terméknév lefoglalása) lehetőséget. Ezzel létrehoz egy új Windows Áruházbeli regisztrációt az alkalmazás számára.
 
     ![Áruházbeli alkalmazásnév](./media/notification-hubs-windows-store-dotnet-get-started/store-app-name.png)
-1. Bontsa ki az **App Management** (Alkalmazáskezelés) menüpontot, válassza a **WNS/MPNS**, majd a **WNS/MPNS** elemet, végül a kattintson a **Live Services site** (Live Services-hely) hivatkozásra. Jelentkezzen be Microsoft-fiókjába. Megnyílik az **Application Registration Portal** (Alkalmazásregisztrációs portál) egy új lapon. Másik lehetőségként közvetlenül is megnyithatja [Application Registration Portal](http://apps.dev.microsoft.com) (Alkalmazásregisztrációs portált) lapját az alkalmazás nevére kattintva.
+1. Bontsa ki az **App Management** (Alkalmazáskezelés) menüpontot, válassza a **WNS/MPNS**, majd a **WNS/MPNS** elemet, végül a kattintson a **Live Services site** (Live Services-hely) hivatkozásra. Jelentkezzen be Microsoft-fiókjába. Megnyílik az **Application Registration Portal** (Alkalmazásregisztrációs portál) egy új lapon. Másik lehetőségként közvetlenül is megnyithatja [Application Registration Portal](https://apps.dev.microsoft.com) (Alkalmazásregisztrációs portált) lapját az alkalmazás nevére kattintva.
 
     ![A WNS/MPNS lap](./media/notification-hubs-windows-store-dotnet-get-started/wns-mpns-page.png)
 1.   Jegyezze fel az **Application Secret** (Alkalmazáskulcs) jelszót és a **Package security identifier (SID)** (Csomag biztonsági azonosítója (SID)) értékét.

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 9430a2b72e2599f4a64103016fcae940cbc0a417
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: ac15b95c19fb0184e902ebb43146a76b6ba2faaf
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249196"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283733"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Event Grid-trigger az Azure Functions szolgáltatáshoz
 
@@ -245,12 +245,12 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 
 ## <a name="usage"></a>Használat
 
-C# és az F # az Azure Functions függvények 1.x, az Event Grid eseményindító is használhatja a következő paraméter típusa:
+A C# és F# az Azure functions függvények 1.x, az Event Grid eseményindító is használhatja a következő paraméter típusa:
 
 * `JObject`
 * `string`
 
-Az Azure Functions C# és az F # Functions 2.x lehetősége is van az Event Grid eseményindító használata a a következő paraméter típusa:
+A C# és F# az Azure Functions függvények 2.x lehetősége is van az Event Grid eseményindító használata a a következő paraméter típusa:
 
 * `Microsoft.Azure.EventGrid.Models.EventGridEvent`-Határozza meg az összes eseménytípusra az általános mezők tulajdonságait.
 
@@ -358,6 +358,14 @@ Előfizetés létrehozásával kapcsolatos további információkért lásd: [a 
 ### <a name="get-the-system-key"></a>A rendszer kulcs lekérése
 
 A rendszer kulcs kaphat (HTTP GET) a következő API-val:
+
+#### <a name="version-2x-runtime"></a>2.x verziójú futtatókörnyezet verziója
+
+```
+http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgrid_extension?code={masterkey}
+```
+
+#### <a name="version-1x-runtime"></a>1.x futtatókörnyezet verziója
 
 ```
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={masterkey}

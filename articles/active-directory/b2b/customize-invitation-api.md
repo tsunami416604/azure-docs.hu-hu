@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 8809a5a8b4f76d6e33bbb934e13931e86f2d681c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: a2a869c04034f8ca38e80e1bf10518d22e38bcbc
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091770"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51286996"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Az Azure Active Directory B2B együttműködés API és testreszabás
 
@@ -75,7 +75,7 @@ Ebben a módban személy, aki használja az API-t kell B2B meghívók lehet lét
 ### <a name="app-only-mode"></a>Egyetlen alkalmazás mód
 Alkalmazás csak a környezetben az alkalmazás a meghívás sikeres User.Invite.All hatóköre van szüksége.
 
-További információkért tekintse meg: https://graph.microsoft.io/docs/authorization/permission_scopes
+További információkért tekintse meg: https://developer.microsoft.com/graph/docs/authorization/permission_scopes
 
 
 ## <a name="powershell"></a>PowerShell

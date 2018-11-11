@@ -17,12 +17,12 @@ ms.date: 09/27/2018
 ms.author: andret
 ms.reviewer: hirsin, andret
 ms.custom: aaddev
-ms.openlocfilehash: e393851535c36eb604d57cc4d7c7561a3ebb201b
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 215e0abe196620624dcca7f430aec4ee9b9612f2
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955439"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288203"
 ---
 # <a name="comparing-the-azure-ad-v20-endpoint-with-the-v10-endpoint"></a>Az Azure AD v2.0-végpont az 1.0-s verziójú végponttal összehasonlítása
 
@@ -41,7 +41,7 @@ ms.locfileid: "49955439"
 
 * 1.0-s verziója és a v2.0-végpontokra is fogadja el a bejelentkezések *[vendégfelhasználók](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* egy konfigurált alkalmazások az Azure AD-címtár *[egybérlős](single-and-multi-tenant-apps.md)* vagy *több-bérlős* bérlőspecifikus végpontjára mutató konfigurált alkalmazások (`https://login.microsoftonline.com/{TenantId_or_Name}`).
 
-A v2.0-végpont írhat alkalmazásokat, amelyek be személyes és munkahelyi és iskolai fiókok esetében fogadja el, így az alkalmazás teljesen független fiók írási teszi lehetővé. Például ha az alkalmazás meghívja a [Microsoft Graph](https://graph.microsoft.io), néhány további funkciók és az adatok munkahelyi fiókokat, például a SharePoint-webhelyek vagy a címtáradatok számára elérhető lesz. Azonban számos műveletek végrehajtásához például [a felhasználók e-mailjeinek olvasása](https://graph.microsoft.io/docs/api-reference/v1.0/resources/message), ugyanazt a kódot férhet hozzá az e-mailt a személyes és munkahelyi és iskolai fiókok esetében.
+A v2.0-végpont írhat alkalmazásokat, amelyek be személyes és munkahelyi és iskolai fiókok esetében fogadja el, így az alkalmazás teljesen független fiók írási teszi lehetővé. Például ha az alkalmazás meghívja a [Microsoft Graph](https://developer.microsoft.com/graph), néhány további funkciók és az adatok munkahelyi fiókokat, például a SharePoint-webhelyek vagy a címtáradatok számára elérhető lesz. Azonban számos műveletek végrehajtásához például [a felhasználók e-mailjeinek olvasása](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/message), ugyanazt a kódot férhet hozzá az e-mailt a személyes és munkahelyi és iskolai fiókok esetében.
 
 A v2.0-végpont egyetlen tár (MSAL) használatával éri el a fogyasztói, oktatási és a vállalati világok.
 

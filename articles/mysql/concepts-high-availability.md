@@ -1,6 +1,6 @@
 ---
-title: Magas rendelkezésre állású kapcsolatos fogalmak, MySQL az Azure-adatbázis
-description: Ez a témakör a magas rendelkezésre állás MySQL az Azure-adatbázis használata esetén
+title: Az Azure Database for MySQL magas rendelkezésre állású fogalmak
+description: Ez a témakör nyújt információkat a magas rendelkezésre állás, ha az Azure Database for MySQL használatával
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
@@ -9,30 +9,31 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 90dc603c0ee520774bd22531c7136e0949f6cf90
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 82d6106b7cebf47e6d68347857dd3d8a2d22dc3c
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264180"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51298687"
 ---
-# <a name="high-availability-concepts-in-azure-database-for-mysql"></a>Magas rendelkezésre állású kapcsolatos fogalmak, MySQL az Azure-adatbázis
-Az Azure-adatbázishoz a MySQL-szolgáltatás biztosít garantált magas szintű elérhetőség. A pénzügyi biztonsági szolgáltatásiszint-szerződéssel (SLA) alapján általánosan rendelkezésre álló 99,99 %. Nincs állásidő alkalmazás gyakorlatilag a szolgáltatás használatakor.
+# <a name="high-availability-concepts-in-azure-database-for-mysql"></a>Az Azure Database for MySQL magas rendelkezésre állású fogalmak
+Az Azure Database for MySQL-szolgáltatás garantált magas szintű rendelkezésre állást biztosít. A pénzügyi felelősséggel vállalt garantált szolgáltatási szinttel (SLA) 99,99 %-os általános elérhetővé tételtől. Gyakorlatilag alkalmazások egyike sem állásidő a szolgáltatás használata esetén.
 
 ## <a name="high-availability"></a>Magas rendelkezésre állás
-A magas rendelkezésre ÁLLÁS modell beépített feladatátvételi mechanizmusok alapul, a csomópont-szintű megszakadása esetén. A csomópont-szintű megszakítás akkor fordulhat elő, hardverhiba miatt vagy egy szolgáltatás telepítését.
+A magas rendelkezésre ÁLLÁS modell feladatátvételt a beépített mechanizmusok alapján egy csomópont-szintű megszakadása esetén. Egy csomópont-szintű megszakítás akkor fordulhat elő, hardverhiba miatt, vagy a szolgáltatások üzembe helyezéséhez.
 
-Mindig MySQL adatbázis-kiszolgáló egy Azure-adatbázison végrehajtott változások történnek, egy tranzakció környezetében. Módosítások rögzíti szinkron módon történik az Azure storage a tranzakció során. A csomópont-szintű megszakadása esetén az adatbázis-kiszolgáló automatikusan létrehoz egy új csomópont, és adattárolás csatolja az új csomópont. Minden aktív kapcsolatok megszakadnak, és aktív tranzakciók nem kerülnek.
+Mindig egy Azure Database for MySQL-adatbázis-kiszolgáló végrehajtott módosítások történnek, egy tranzakció környezetében. A változásokat elszámolni szinkron módon történik az Azure storage-ban Ha a tranzakció véglegesítése. Ha egy csomópont-szintű megszakítás történik, az adatbázis-kiszolgáló automatikusan létrehoz egy új csomópont, és adattárolás csatolja az új csomópont. Minden aktív kapcsolat a rendszer elveti és megszakít tranzakciók nem kerülnek.
 
-## <a name="application-retry-logic-is-essential"></a>Alkalmazás újrapróbálkozási logika elengedhetetlen.
-Fontos, hogy MySQL adatbázis-alkalmazások beépített észlelésére, és próbálkozzon újra kapcsolatok eldobott tranzakciók nem sikerült. Az alkalmazás újbóli, az alkalmazás kapcsolat transzparens módon átirányítja az újonnan létrehozott példányát veszi át a sikertelen példányhoz.
+## <a name="application-retry-logic-is-essential"></a>Alkalmazás újrapróbálkozási logikát elengedhetetlen.
+Fontos, hogy a MySQL-adatbázis-alkalmazások észlelése, és ismételje meg a beépített kapcsolatok eldobott, és nem sikerült a tranzakció. Az alkalmazás újrapróbálkozik, ha az alkalmazás által létesített kapcsolatban a rendszer transzparens módon átirányítja az újonnan létrehozott példány, amely átveszi a hibás szolgáltatáspéldányt a.
 
-Belsőleg, az Azure-ban egy átjáró használatával átirányítja a kapcsolatot az új példány. Megzavarná, akkor a teljes feladatátvételi általában, amelynek során több tíz, másodpercben. Az átirányítási belsőleg kezeli az átjáró, mert a külső kapcsolati karakterlánc változatlan marad, az ügyfélalkalmazások számára.
+Belsőleg az Azure-ban, az átjáró segítségével átirányítja a kapcsolatot az új példány. Alapján megszakadásának a feladatátvétel teljes folyamat általában több tíz másodpercet vesz igénybe. Az átirányítási belsőleg kezeli az átjárót, mert a külső kapcsolati karakterlánc ugyanaz marad, az ügyfélalkalmazások számára.
 
-## <a name="scaling-up-or-down"></a>Felfelé vagy lefelé skálázás
-A magas rendelkezésre ÁLLÁSÚ modell, amikor egy MySQL az Azure-adatbázis méretezése felfelé vagy lefelé hasonló, egy új példány a megadott méretű jön létre. A meglévő adatok tárolási az eredeti példány le, és az új példány csatolva.
+## <a name="scaling-up-or-down"></a>Felfelé és lefelé skálázás
+A magas rendelkezésre ÁLLÁSÚ modell, Azure Database for MySQL-méretezve, felfelé vagy lefelé hasonlóan egy új példány a megadott méretű jön létre. A meglévő adatok tárolási leválasztása az eredeti példányban, és az új példány csatlakozik.
 
-A méretezési művelet megtörténik az adatbázis-kapcsolatok megszakadását. Az ügyfélalkalmazások számára le van választva, és nyissa meg a nem véglegesített tranzakciók pedig leállítottak. Az ügyfélalkalmazás újrapróbálja a kapcsolódást, vagy egy új kapcsolatot, ha az átjáró irányítja a kapcsolat az újonnan méretű példányához. 
+A skálázási művelet során az adatbázis-kapcsolatok romlását történik. Az ügyfélalkalmazások le vannak választva, és nyissa meg a nem véglegesített tranzakciót megszakították. Az ügyfélalkalmazás újrapróbálja a kapcsolódást, vagy egy új kapcsolatot, miután az átjáró irányítja a kapcsolat az újonnan méretű példánnyal. 
 
 ## <a name="next-steps"></a>További lépések
-- A szolgáltatás áttekintését lásd: [Azure adatbázis MySQL – áttekintés](overview.md)
+- A szolgáltatás áttekintését lásd: [, Azure Database for MySQL áttekintése](overview.md)
+- Az újrapróbálkozási logika áttekintéséhez lásd: [átmeneti kapcsolati hibákat kezelése az Azure Database for MySQL-hez](concepts-connectivity.md)

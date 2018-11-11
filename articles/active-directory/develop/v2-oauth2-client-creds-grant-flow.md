@@ -17,12 +17,12 @@ ms.date: 01/07/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 2dc1be6b861515cf34f8dd799fa732da530e82a1
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 05013905ddda232fb08e3b30892af5ac5a8320dc
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985399"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289002"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Az Azure Active Directory 2.0-s verzió és az OAuth 2.0 ügyfél-hitelesítési folyamata
 
@@ -60,7 +60,7 @@ ACL-ek helyett a API-k segítségével teszi közzé a alkalmazást engedélyek 
 * E-mailek küldése bármely felhasználó nevében
 * Címtáradatok olvasása
 
-Alkalmazásengedélyek kapcsolatos további információkért látogasson el [Microsoft Graph](https://graph.microsoft.io).
+Alkalmazásengedélyek kapcsolatos további információkért látogasson el [Microsoft Graph](https://developer.microsoft.com/graph).
 
 Alkalmazásengedélyek használata az alkalmazásban, hajtsa végre a lépéseket, a következő szakaszokban bemutatjuk.
 
@@ -177,8 +177,8 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | bérlő |Szükséges | A directory-bérlő az alkalmazás tervek GUID Azonosítóját vagy a tartománynév formátumban való működésre. |
 | client_id |Szükséges |Az alkalmazás AZONOSÍTÓJÁT, amely a [alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) az alkalmazáshoz rendelt. |
 | scope |Szükséges |Az átadott érték a `scope` paraméter a kéréshez a kívánt, elhelyezni, az erőforrást az erőforrás-azonosító (Alkalmazásazonosító URI-ja) kell lennie a `.default` utótag. A Microsoft Graph például értéke `https://graph.microsoft.com/.default`. Ez az érték tájékoztatja, hogy az összes közvetlen alkalmazás engedélyt már konfigurálta az alkalmazást, azt kell jogkivonatok kiállítása az erőforrással használni kívánt azokat a a v2.0-végpontra. |
-| client_assertion_type |Szükséges |Az értéknek kell lennie `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |Szükséges | Egy helyességi feltétel (egy JSON Web Token) létrehozására és aláírására a tanúsítványt igénylő regisztrált hitelesítő adatként az alkalmazáshoz. További információ [hitelesítő tanúsítvány](active-directory-certificate-credentials.md) megtudhatja, hogyan regisztrálhat a tanúsítvány és a helyességi feltétel formátumát.|
+| client_assertion_type |szükséges |Az értéknek kell lennie `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |szükséges | Egy helyességi feltétel (egy JSON Web Token) létrehozására és aláírására a tanúsítványt igénylő regisztrált hitelesítő adatként az alkalmazáshoz. További információ [hitelesítő tanúsítvány](active-directory-certificate-credentials.md) megtudhatja, hogyan regisztrálhat a tanúsítvány és a helyességi feltétel formátumát.|
 | grant_type |Szükséges |Meg kell `client_credentials`. |
 
 Figyelje meg, hogy paraméterei szinte teljesen megegyezik a kérés által közös titkos kulcsot is azzal a különbséggel, hogy a titkos ügyfélkódot paraméter váltotta fel két paramétert: egy client_assertion_type és client_assertion.

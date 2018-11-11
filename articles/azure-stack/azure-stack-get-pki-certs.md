@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 9f88e71df7697156e0745aeaf6b989548bcc223f
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: a4a9fefa98d30d0f9815a935f000c8a663dffd21
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945111"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514196"
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Az Azure Stack-tanúsítványok aláíró kérés létrehozása
 
@@ -29,7 +29,7 @@ Az Azure Stack készültségi ellenőrző eszköz (AzsReadinessChecker) hajtja v
  - **Standard szintű Eszköztanúsítvány-igénylések**  
     A következők szerint kérelem [PKI-tanúsítványok létrehozása az Azure Stack üzembe helyezéséhez](azure-stack-get-pki-certs.md).
  - **Platform-– szolgáltatásként**  
-    Szükség esetén a platform--szolgáltatásként (PaaS) nevek a megadott tanúsítványok kérése [Azure Stack a nyilvános kulcsú infrastruktúra tanúsítványkövetelmények – nem kötelező PaaS-tanúsítványok](azure-stack-pki-certs.md#optional-paas-certificates).
+    Platform--szolgáltatásként (PaaS) nevek a megadott tanúsítványok is kérhető [Azure Stack a nyilvános kulcsú infrastruktúra tanúsítványkövetelmények – nem kötelező PaaS-tanúsítványok](azure-stack-pki-certs.md#optional-paas-certificates).
 
 
 
@@ -102,7 +102,7 @@ Ezen lépések előkészítéséhez és az Azure Stack PKI-tanúsítványok elle
 
     Tartalmazza a PaaS-szolgáltatások, adja meg a kapcsoló ```-IncludePaaS```
 
-7. Másik lehetőségként a fejlesztési és tesztelési környezeteket. Létrehozásához több tulajdonos alternatív nevekkel egyetlen tanúsítványkérelem hozzáadása **- RequestType SingleCSR** paraméter és érték (**nem** az éles környezetekhez ajánlott):
+7. Azt is megteheti, fejlesztési-tesztelési környezetek létrehozása több tulajdonos alternatív nevekkel egyetlen tanúsítványkérelem hozzáadása **- RequestType SingleCSR** paraméter és érték (**nem** ajánlott éles környezetben):
 
     ```PowerShell  
     New-AzsCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem

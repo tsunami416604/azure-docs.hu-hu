@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: c83cf9fb319c21881f0db8bd94dc9a94a3b811bc
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 1f38cd62a1394d45716e7224cc03a059fcaf9e13
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211723"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247755"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Egy többrétegű SAP NetWeaver alkalmazás üzembe helyezése a vészhelyreállítás beállítása
 
@@ -167,5 +167,5 @@ További információkért lásd: [az Azure-bA a Site Recovery feladatátvételi
 További információkért lásd: [feladatátvétel a Site Recoveryben](site-recovery-failover.md).
 
 ## <a name="next-steps"></a>További lépések
-* A Site Recovery használatával egy vészhelyreállítási megoldás az SAP NetWeaver-telepítések létrehozásával kapcsolatos további tudnivalókért lásd: a letölthető tanulmány [SAP NetWeaver: létrehozásához egy vész-helyreállítási megoldást az Azure Site Recovery](http://aka.ms/asr-sap). A tanulmány különböző SAP-architektúrák vonatkozó javaslatokat tárgyalja, sorolja fel az támogatott alkalmazások és a virtuális gépek típusai az Azure-beli SAP és a vész-helyreállítási megoldás tesztelési terv beállításait ismerteti.
+* A Site Recovery használatával egy vészhelyreállítási megoldás az SAP NetWeaver-telepítések létrehozásával kapcsolatos további tudnivalókért lásd: a letölthető tanulmány [SAP NetWeaver: létrehozásához egy vész-helyreállítási megoldást az Azure Site Recovery](https://aka.ms/asr-sap). A tanulmány különböző SAP-architektúrák vonatkozó javaslatokat tárgyalja, sorolja fel az támogatott alkalmazások és a virtuális gépek típusai az Azure-beli SAP és a vész-helyreállítási megoldás tesztelési terv beállításait ismerteti.
 * Tudjon meg többet [más munkaterhelések replikálásához](site-recovery-workload.md) Site Recovery használatával.

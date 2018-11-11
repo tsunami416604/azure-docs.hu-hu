@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: d181835c6baf5a2a40bca04feaa4c115178ba086
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: a6f18222e5683d2d9663b699a8f6bab399d4f45b
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093969"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299860"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Az Azure Stack nyilvános kulcsokra épülő infrastruktúra tanúsítványkövetelmények
 
@@ -42,7 +42,7 @@ Az alábbi lista ismerteti a tanúsítványokra vonatkozó követelményeket, me
 - A rendszerbe állítás és az elforgatás választhatja a tanúsítvány tulajdonos neve és a tulajdonos alternatív nevére (SAN) mezőben minden neve szóközt kiterjedő egyetlen tanúsítványt használjon, vagy használhat egyéni tanúsítványokat az egyes névterek alatt látható, az Azure Stack szükséges szolgáltatások szeretné használják. Mindkét módszerénél a helyettesítő karakterek használatával végpontok, ahol azok szükség, mint például szükséges **KeyVault** és **KeyVaultInternal**. 
 - A tanúsítvány PFX-titkosítást kell lennie a 3DES. 
 - A tanúsítvány-aláírási algoritmus SHA1 lehet. 
-- A tanúsítvány formátuma PFX, kell lennie, mint a nyilvános és titkos kulcsok szükségesek az Azure Stack telepítéséhez. 
+- A tanúsítvány formátuma PFX, kell lennie, mint a nyilvános és titkos kulcsok szükségesek az Azure Stack telepítéséhez. A titkos kulccsal kell rendelkeznie a helyi gép kulcsattribútum beállítása.
 - A PFX-titkosítás 3DES (Ez az alapértelmezett Windows 10-es ügyfél vagy a Windows Server 2016 tanúsítványtároló exportálásakor) kell lennie.
 - A tanúsítvány pfx-fájlokat a "Kulcs használata" mező a rendelkeznie kell egy értéket "Digitális aláírás" és "KeyEncipherment".
 - A tanúsítvány pfx-fájlok a "Kibővített kulcshasználat" mezőben kell rendelkeznie az "Kiszolgálói hitelesítés (1.3.6.1.5.5.7.3.1)" és "Ügyfél-hitelesítés (1.3.6.1.5.5.7.3.2)" értéket.

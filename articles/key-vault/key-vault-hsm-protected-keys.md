@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: barclayn
-ms.openlocfilehash: 31998c3b9cc151e96d0b2e0b85895603698f493b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: f027ced7d6e317bfdf101cb792d9f2f2b7612242
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303218"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247744"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Generate and transfer HSM-védelemmel ellátott és hogyan lehet az Azure Key Vault-kulcsok
 
@@ -61,7 +61,7 @@ Tekintse meg az alábbi táblázat a saját kulcs használata (BYOK) for Azure K
 | Azure-előfizetéssel |Az Azure Key Vault létrehozása, az Azure-előfizetés szükséges: [regisztráljon az ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/) |
 | Az Azure Key Vault Premium szolgáltatási szinten a HSM-védelemmel ellátott kulcsok támogatására |Az Azure Key Vault a szolgáltatási szintek és a képességekkel kapcsolatos további információkért lásd: a [Azure Key Vault díjszabását ismertető](https://azure.microsoft.com/pricing/details/key-vault/) webhelyén. |
 | A Thales HSM, intelligens kártyák és támogatószoftver |A Thales hardveres biztonsági modul és a Thales HSM-EK alapvető ismeretekre hozzáféréssel kell rendelkeznie. Lásd: [Thales hardveres biztonsági modul](https://www.thales-esecurity.com/msrms/buy) kompatibilis modellek vagy HSM vásárlásához, ha nem rendelkezik egy listája. |
-| A következő hardverre és szoftverekre:<ol><li>Egy kapcsolat nélküli x64 munkaállomáson, egy minimális Windows operációs rendszer, legalább Windows 7 és a Thales nShield szoftver verziója 11.50.<br/><br/>Ha ez a munkaállomás Windows 7 fut, meg kell [Microsoft .NET-keretrendszer 4.5-ös verziójának telepítése](http://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Egy munkaállomás, amely csatlakozik az internethez, és legalább Windows operációs rendszert Windows 7 és [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.7.0) **minimális 1.1.0-s** telepítve.</li><li>USB-meghajtóra vagy más hordozható tárolóeszköz, amelyen legalább 16 MB szabad tárhely.</li></ol> |Biztonsági okokból javasoljuk, hogy az első munkaállomás nincs csatlakoztatva a hálózathoz. Azonban ez a javaslat nem szoftveres követelmény.<br/><br/>Vegye figyelembe, hogy az alábbi utasításokat, az ezen a munkaállomáson a neve a kapcsolat nélküli munkaállomáson.</p></blockquote><br/>Ezenkívül ha a bérlői kulcsot egy üzemi hálózat, azt javasoljuk, hogy az eszközkészlet letöltésére és a bérlőkulcs feltöltésére egy második, különálló munkaállomást használja. De tesztelési célokra használhatja munkaállomást az elsőt.<br/><br/>Vegye figyelembe, hogy az az alábbi utasításokat, ez a második munkaállomásra nevezzük az internetre kapcsolódó munkaállomáson.</p></blockquote><br/> |
+| A következő hardverre és szoftverekre:<ol><li>Egy kapcsolat nélküli x64 munkaállomáson, egy minimális Windows operációs rendszer, legalább Windows 7 és a Thales nShield szoftver verziója 11.50.<br/><br/>Ha ez a munkaállomás Windows 7 fut, meg kell [Microsoft .NET-keretrendszer 4.5-ös verziójának telepítése](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Egy munkaállomás, amely csatlakozik az internethez, és legalább Windows operációs rendszert Windows 7 és [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.7.0) **minimális 1.1.0-s** telepítve.</li><li>USB-meghajtóra vagy más hordozható tárolóeszköz, amelyen legalább 16 MB szabad tárhely.</li></ol> |Biztonsági okokból javasoljuk, hogy az első munkaállomás nincs csatlakoztatva a hálózathoz. Azonban ez a javaslat nem szoftveres követelmény.<br/><br/>Vegye figyelembe, hogy az alábbi utasításokat, az ezen a munkaállomáson a neve a kapcsolat nélküli munkaállomáson.</p></blockquote><br/>Ezenkívül ha a bérlői kulcsot egy üzemi hálózat, azt javasoljuk, hogy az eszközkészlet letöltésére és a bérlőkulcs feltöltésére egy második, különálló munkaállomást használja. De tesztelési célokra használhatja munkaállomást az elsőt.<br/><br/>Vegye figyelembe, hogy az az alábbi utasításokat, ez a második munkaállomásra nevezzük az internetre kapcsolódó munkaállomáson.</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Hozzon létre, és a kulcs átvitele az Azure Key Vault HSM-be
 
@@ -101,7 +101,7 @@ Ne zárja be az Azure PowerShell-ablakot.
 
 ### <a name="step-13-download-the-byok-toolset-for-azure-key-vault"></a>1.3. lépés: A BYOK eszközkészlet letöltése az Azure Key Vault
 
-Nyissa meg a Microsoft Download Center és [az Azure Key Vault BYOK eszközkészlet letöltésére](http://www.microsoft.com/download/details.aspx?id=45345) a földrajzi régió vagy Azure példányát. Az alábbi információk segítségével azonosíthatja a csomag nevét, letöltése és a megfelelő SHA-256-csomag kivonata:
+Nyissa meg a Microsoft Download Center és [az Azure Key Vault BYOK eszközkészlet letöltésére](https://www.microsoft.com/download/details.aspx?id=45345) a földrajzi régió vagy Azure példányát. Az alábbi információk segítségével azonosíthatja a csomag nevét, letöltése és a megfelelő SHA-256-csomag kivonata:
 
 - - -
 **Egyesült Államok:**

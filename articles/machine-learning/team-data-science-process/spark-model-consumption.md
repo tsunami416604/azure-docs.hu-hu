@@ -15,15 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath
-ms.openlocfilehash: 95403e71367f111877c6f317c63811333bd054dd
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 76b67112ade2d160f281533c4be7d41c98087398
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395190"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345538"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>A Spark használatával összeállított gépi tanulási modellek üzembe helyezése
-[!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
 
 Ez a témakör bemutatja, hogyan mentett gépi tanulási modell (gépi tanulás) Python használata a HDInsight Spark-fürtök üzembe helyezése. Azt ismerteti, hogyan lehet betölteni a machine learning-modellek, amelyek a Spark MLlib segítségével létrehozott és tárolt Azure Blob Storage (WASB), és hogyan pontszámot rendelni azokat az adatkészleteket, amelyek a WASB is megtalálható. Bemutatja azt, hogyan előzetes feldolgozása a bemeneti adatokat, az indexelés és a kódolási funkcióinak használatát a MLlib eszközkészlet funkciók átalakítása, és hogyan hozhat létre egy címkézett pont objektum, amely bemenetként pontozás a Machine Learning-modellekkel használható. A modellek pontozása használt lineáris regresszió, logisztikai regressziós, véletlenszerű erdő modelleket és átmenetes gyorsított fa modellek tartalmazzák.
 

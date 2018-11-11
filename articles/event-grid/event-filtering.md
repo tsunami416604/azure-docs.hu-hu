@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 24337863d4e3f8e093c2e33afbb39364ec37516d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: fd33ca723bd00b4a9c25009ef5b4f444487244f0
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50252186"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281948"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Az események szűrésének az Event Grid-előfizetések ismertetése
 
@@ -57,9 +57,9 @@ A JSON eseménytípus szerinti szűrés szintaxisa:
 
 Szűrés az adatokat a mezőkben szereplő értékek alapján, és adja meg az összehasonlító operátor, használja a speciális szűrési lehetőséget. A Speciális szűrés, megadhatja a:
 
-* operátor - összehasonlítás típusa.
+* operátor típusa – összehasonlítás típusa.
 * kulcs – az eseményadatokat a szűréshez használt mezője. Egy szám, logikai vagy karakterlánc lehet.
-* értékek – az értékek összehasonlításához a kulcsot.
+* érték vagy értékek - értéket vagy a kulcshoz összehasonlítandó értékek.
 
 A speciális szűrők használatát a JSON-szintaxisra van:
 
@@ -67,14 +67,14 @@ A speciális szűrők használatát a JSON-szintaxisra van:
 "filter": {
   "advancedFilters": [
     {
-      "Operator": "NumberGreaterThanOrEquals",
-      "Key": "Data.Key1",
-      "Values": 5
+      "operatorType": "NumberGreaterThanOrEquals",
+      "key": "Data.Key1",
+      "value": 5
     },
     {
-      "Operator": "StringContains",
-      "Key": "Subject",
-      "Values": ["container1", "container2"]
+      "operatorType": "StringContains",
+      "key": "Subject",
+      "values": ["container1", "container2"]
     }
   ]
 }
@@ -122,7 +122,7 @@ A felhő események sémája események a kulcs a következő értékeket haszn�
 * eventTypeVersion
 * Eseményadatok (például Data.key1)
 
-Egyéni bemeneti sémát használja (például Data.key1 Data.key1.key2) esemény adatmezőket.
+Egyéni bemeneti sémát használja (például Data.key1) esemény adatmezőket.
 
 ### <a name="values"></a>Értékek
 
@@ -140,7 +140,7 @@ Speciális szűrés a következő korlátozások vonatkoznak:
 * Event grid előfizetésenként öt speciális szűrők
 * 512 karakter / karakterlánc értéke
 * Az öt értékei **a** és **nem** operátorok
-* A kulcs legfeljebb két (például data.key1.key2) beágyazási szintet
+* A kulcs legfeljebb egy beágyazott szintet tartalmazó (például data.key1)
 
 Ugyanazzal a kulccsal egynél több szűrőt is használható.
 

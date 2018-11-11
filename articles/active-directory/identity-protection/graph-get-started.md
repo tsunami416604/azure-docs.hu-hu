@@ -17,15 +17,15 @@ ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: nigu
 ms.custom: seohack1
-ms.openlocfilehash: 3cbded3224e7622d13e7af362cb3532a1813787e
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: a415258b8127bb78d8a8d1b5ef228234b34b3e26
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242160"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287509"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Az Azure Active Directory Identity Protection és a Microsoft Graph használatának első lépései
-A Microsoft Graph a Microsoft unified API-végpont és az otthoni [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) API-k. Az első API **identityRiskEvents**, lehetővé teszi, hogy a Microsoft Graph lekérdezése listáját [kockázati események](../reports-monitoring/concept-risk-events.md) és a kapcsolódó adatokat. Ez a cikk lépéseit, az API lekérdezése beolvasása. Részletes bemutatása, teljes dokumentációt és a Graph Explorer a hozzáférést, tekintse meg a [Microsoft Graph-hely](https://graph.microsoft.io/).
+A Microsoft Graph a Microsoft unified API-végpont és az otthoni [Azure Active Directory Identity Protection](../active-directory-identityprotection.md) API-k. Az első API **identityRiskEvents**, lehetővé teszi, hogy a Microsoft Graph lekérdezése listáját [kockázati események](../reports-monitoring/concept-risk-events.md) és a kapcsolódó adatokat. Ez a cikk lépéseit, az API lekérdezése beolvasása. Részletes bemutatása, teljes dokumentációt és a Graph Explorer a hozzáférést, tekintse meg a [Microsoft Graph-hely](https://developer.microsoft.com/graph/).
 
 
 Az Identity Protection-adatok elérése a Microsoft Graphon keresztül négy lépésben történik:
@@ -219,7 +219,7 @@ Adja hozzá az ügyfél-azonosító, a titkos kulcsot és a bérlő tartománya.
 Gratulálunk, most végzett az első hívás a Microsoft Graph!  
 Most identitás kockázati események, és használhatja az adatokat, de igény szerint.
 
-A Microsoft Graph és hogyan hozhat létre alkalmazásokat a Graph API-val kapcsolatos további információkért tekintse meg a [dokumentáció](https://graph.microsoft.io/docs) és sok mást a a [Microsoft Graph-hely](https://graph.microsoft.io/). Emellett ügyeljen arra, hogy lássa el könyvjelzővel a [API Azure AD Identity Protection](https://graph.microsoft.io/docs/api-reference/beta/resources/identityprotection_root) oldal, amely felsorolja az összes, az Identity Protection API-k Graph. Hozzáadása új munkamódszereket az Identity Protection API-n keresztül, az adott oldalon láthatja őket.
+A Microsoft Graph és hogyan hozhat létre alkalmazásokat a Graph API-val kapcsolatos további információkért tekintse meg a [dokumentáció](https://developer.microsoft.com/graph/docs) és sok mást a a [Microsoft Graph-hely](https://developer.microsoft.com/graph/). Emellett ügyeljen arra, hogy lássa el könyvjelzővel a [API Azure AD Identity Protection](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityprotection_root) oldal, amely felsorolja az összes, az Identity Protection API-k Graph. Hozzáadása új munkamódszereket az Identity Protection API-n keresztül, az adott oldalon láthatja őket.
 
 Kapcsolódó tudnivalókért lásd:
 
@@ -227,9 +227,9 @@ Kapcsolódó tudnivalókért lásd:
 
 -  [Az Azure Active Directory Identity Protection által észlelt kockázati események típusai](../reports-monitoring/concept-risk-events.md)
 
-- [Microsoft Graph](https://graph.microsoft.io/)
+- [Microsoft Graph](https://developer.microsoft.com/graph/)
 
-- [A Microsoft Graph áttekintése](https://graph.microsoft.io/docs)
+- [A Microsoft Graph áttekintése](https://developer.microsoft.com/graph/docs)
 
-- [Az Azure AD Identity Protection szolgáltatás legfelső szintű](https://graph.microsoft.io/docs/api-reference/beta/resources/identityprotection_root)
+- [Az Azure AD Identity Protection szolgáltatás legfelső szintű](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityprotection_root)
 

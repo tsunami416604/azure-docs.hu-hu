@@ -3,16 +3,16 @@ title: Az Azure HDInsight YARN hibaelhárítása
 description: Az Apache Hadoop YARN és az Azure HDInsight használatához kapcsolatos gyakori kérdésekre adott válaszok.
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: f1f332164b5e954b2576f9fbde519241c7288006
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: c3904286fc998769b9a72522bd31d3a9797c55c2
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39596464"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008045"
 ---
 # <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>YARN hibaelhárítása az Azure HDInsight használatával
 
@@ -26,7 +26,7 @@ A leggyakoribb problémák és azok megoldásait ismerje meg az Apache Ambari az
 Ambari az alábbi lépések segítségével hozzon létre egy új YARN-várólistát, és ezután elosztja a kapacitás lefoglalása valamennyi üzenetsorok között. 
 
 Ebben a példában két meglévő üzenetsorok (**alapértelmezett** és **thriftsvr**) is úgy módosul, 50 %-os kapacitásból 25 %-os kapacitását, amely az új várólista (spark) 50 %-os kapacitást biztosít.
-| Várólista | Kapacitás | Maximális kapacitás |
+| Queue | Kapacitás | Maximális kapacitás |
 | --- | --- | --- | --- |
 | alapértelmezett | 25% | 50% |
 | thrftsvr | 25% | 50% |

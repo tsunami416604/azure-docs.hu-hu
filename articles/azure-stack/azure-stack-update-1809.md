@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 11/09/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: cca9307fd849f6b8537cf7484d2e56e1a710295b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f44b267a28abd64acdd6bc74a43f1c5be8daf0ab
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257190"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515607"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 frissítése
 
@@ -70,6 +70,17 @@ Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza:
 - <!-- 2702741 -  IS, ASDK --> Kijavítva a hiba melyik nyilvános IP-címek, amelyek a dinamikus kiosztási használatával lettek telepítve a metódus nem garantált, hogy egy állítsa le és vonja vissza kiadása után megőrzi. Most már megmaradnak.
 
 - <!-- 3078022 - IS, ASDK --> Ha egy virtuális gép felszabadítva 1808 előtt nem lehet újból lefoglalni a 1808 frissítés után.  Ezt a problémát megoldottuk a 1809. A javítás 1809 is indítható el, amelyek ebben az állapotban vannak, és nem indítható el. A javítás is megakadályozza, hogy a probléma került.
+
+<!-- 3090289 – IS, ASDK --> 
+- Javítva lett a probléma, ahol a 1808 frissítés telepítését követően, a következő problémák léphetnek ha felügyelt lemezekkel rendelkező virtuális gépek üzembe helyezéséhez:
+
+   1. Ha az előfizetés korábban jött létre a 1808 frissítése, a felügyelt lemezekkel rendelkező virtuális gép üzembe helyezése egy belső hiba miatt sikertelen lehet. A hiba elhárításához kövesse ezeket a lépéseket minden egyes előfizetés esetén:
+      1. A bérlői portálon lépjen a **előfizetések** , és keresse meg az előfizetés. Kattintson a **erőforrás-szolgáltatók**, majd kattintson az **Microsoft.Compute**, és kattintson a **újraregisztrálni**.
+      2. Lépjen az azonos előfizetéshez tartozó **hozzáférés-vezérlés (IAM)**, és ellenőrizze, hogy **Azure Stack – felügyelt lemez** szerepel a listán.
+   2. Ha egy több-bérlős környezet van beállítva, egy belső hiba miatt meghiúsulhat egy előfizetésben, és a Vendég címtár tartozó virtuális gépek üzembe helyezéséhez. A hiba elhárításához kövesse az alábbi lépéseket:
+      1. Alkalmazza a [1808 Azure Stack gyorsjavítás](https://support.microsoft.com/help/4471992).
+      2. Kövesse a [Ez a cikk](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) újrakonfigurálása a Vendég címtárak mindegyike.
+
 
 ### <a name="changes"></a>Módosítások
 
@@ -128,7 +139,7 @@ További információ a biztonsági rések, kattintson a fenti hivatkozásokat a
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-- Telepítse a legújabb Azure Stack gyorsjavítás 1808 1809 alkalmazása előtt. További információkért lásd: [KB-os 4468920 – az Azure Stack gyorsjavítás az Azure Stack gyorsjavítás 1.1808.5.110](https://support.microsoft.com/en-us/help/4468920).
+- Telepítse a legújabb Azure Stack gyorsjavítás 1808 1809 alkalmazása előtt. További információkért lásd: [KB-os 4471992 – az Azure Stack gyorsjavítás az Azure Stack gyorsjavítás 1.1808.7.113](https://support.microsoft.com/help/4471992/).
 
   > [!TIP]  
   > Fizessen elő a következő *RRS* vagy *Atom* tartani az Azure Stack gyorsjavítások-hírcsatornák:
@@ -157,9 +168,8 @@ További információ a biztonsági rések, kattintson a fenti hivatkozásokat a
 > [!Important]  
 > Készüljön fel az Azure Stack üzemelő példányához bővítmény gazdagép, amely szerint a következő csomag engedélyezve van. A rendszer a következő útmutató segítségével előkészítése [előkészítése az Azure stack-bővítmény gazdagép](azure-stack-extension-host-prepare.md).
 
-<!-- After the installation of this update, install any applicable Hotfixes. For more information view the following knowledge base articles, as well as our [Servicing Policy](azure-stack-servicing-policy.md).  
- - [Link to KB]()  
- -->
+Ez a frissítés telepítése után bármely alkalmazandó gyorsjavítások telepítéséről. További információt a következő cikkeket, megtekintése, valamint a [karbantartási szabályzat](azure-stack-servicing-policy.md).  
+- [KB 4471993 – az Azure Stack gyorsjavítás az Azure Stack gyorsjavítás 1.1809.3.96](https://support.microsoft.com/help/4471993/)  
 
 ## <a name="known-issues-post-installation"></a>Ismert problémák (telepítés utáni)
 

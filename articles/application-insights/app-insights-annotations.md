@@ -11,21 +11,23 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/16/2016
+ms.date: 11/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: f943f0e371b3092717a62a2e83a98211723e5302
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4b7b663b95bee12848f4afe2d2f48504a4408266
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304407"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515182"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Jegyzetek a mérőszám-diagramok, az Application insights szolgáltatásban
+
 A jegyzetek [Metrikaböngésző](app-insights-metrics-explorer.md) diagramok megjelenítése, amelybe telepítette egy új létrehozást, vagy egyéb jelentős esemény történt. Vállalnak könnyen látható-e a módosítások volt-e az alkalmazás teljesítményére gyakorolt hatását. Ezek automatikusan létrehozhatók a [Azure fejlesztési és üzemeltetési szolgáltatásokat hozhat létre a rendszer](https://docs.microsoft.com/azure/devops/pipelines/tasks/). Is létrehozhat, hogy ez a jelző azt tetszés szerint bármilyen eseményre [hozza létre őket a PowerShell](#create-annotations-from-powershell).
 
+> [!NOTE]
+> Ez a cikk tükrözi az elavult **klasszikus metrikák élmény**. Jegyzetek rendszer csak a klasszikus tapasztalatok és a jelenleg elérhető  **[munkafüzetek](app-insights-usage-workbooks.md)**. További információ a currrent metrikák tapasztal, olvassuk [Ez a cikk](../monitoring-and-diagnostics/monitoring-metric-charts.md).
+
 ![Jegyzetek kiszolgálói válaszidő látható korrelációkereséssel – példa](./media/app-insights-annotations/00.png)
-
-
 
 ## <a name="release-annotations-with-azure-devops-services-build"></a>Kiadási jegyzetek az Azure DevOps-Services-build
 

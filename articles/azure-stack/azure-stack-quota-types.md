@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/30/2018
+ms.date: 11/08/2018
 ms.author: sethm
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 3c0ab236dd6fce10be0a50c435f04517e14c1387
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: ec84c87e047d6426d24ef339d1247c6cb53954dd
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077595"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299419"
 ---
 # <a name="quota-types-in-azure-stack"></a>Az Azure Stackben kvótatípusok
 
@@ -31,15 +31,15 @@ ms.locfileid: "49077595"
 ## <a name="compute-quota-types"></a>COMPUTE kvótatípusok 
 | **Típus** | **Alapértelmezett érték** | **Leírás** |
 | --- | --- | --- |
-| Virtuális gépek maximális száma | 20 | Egy előfizetést hozhat létre ezen a helyen lévő virtuális gépek maximális számát. |
-| Virtuálisgép-magok maximális száma | 50 | Egy előfizetést hozhat létre ezen a helyen lévő magok maximális számának (például egy a3-as virtuális gép rendelkezik négy magot). |
+| Virtuális gépek maximális száma | 50 | Egy előfizetést hozhat létre ezen a helyen lévő virtuális gépek maximális számát. |
+| Virtuálisgép-magok maximális száma | 100 | Egy előfizetést hozhat létre ezen a helyen lévő magok maximális számának (például egy a3-as virtuális gép rendelkezik négy magot). |
 | Maximális száma a rendelkezésre állási csoportok | 10 | Ezen a helyen létrehozott rendelkezésre állási csoportok maximális száma. |
-| Maximális száma virtuálisgép-méretezési csoportok | 20 | Ezen a helyen létrehozott virtuális gép méretezési csoportok maximális száma. |
+| Maximális száma virtuálisgép-méretezési csoportok | 100 | Ezen a helyen létrehozott virtuális gép méretezési csoportok maximális száma. |
 
 ## <a name="storage-quota-types"></a>Tárolási kvóta típusa 
 | **Elem** | **Alapértelmezett érték** | **Leírás** |
 | --- | --- | --- |
-| Maximális kapacitás (GB) |500 |Ezen a helyen az előfizetés által felhasználható teljes tárolási kapacitást. |
+| Maximális kapacitás (GB) |2048 |Ezen a helyen az előfizetés által felhasználható teljes tárolási kapacitást. |
 | Tárfiókok teljes száma |20 |Egy előfizetést hozhat létre ezen a helyen storage-fiókok maximális számát. |
 
 > [!NOTE]  

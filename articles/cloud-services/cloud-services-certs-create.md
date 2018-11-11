@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 5c16f06d0cc031cd9b51a3c6cf0beb149a19aeb4
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 9cf37e611dce5705a4c866f25afa59e5c1602ec4
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001439"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282203"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services – tanúsítványok áttekintése
 Tanúsítványokat használ az Azure cloud Services ([szolgáltatási tanúsítványok](#what-are-service-certificates)) és a felügyeleti API-hoz való hitelesítéshez használt ([felügyeleti tanúsítványok](#what-are-management-certificates)). Ez a témakör hogyan mindkét tanúsítványtípusok általános áttekintést nyújt a [létrehozása](#create) és [üzembe helyezése](#deploy) őket az Azure-bA.
@@ -27,6 +27,9 @@ Tanúsítványokat használ az Azure cloud Services ([szolgáltatási tanúsítv
 Az Azure-ban használt tanúsítványok mind x.509 v3 tanúsítványokkal és a egy másik, megbízható tanúsítvánnyal írhatók alá, vagy önaláírt is lehet. Önaláírt tanúsítvány aláírásával rendelkezik a saját létrehozója, ezért azt nem megbízható alapértelmezés szerint. A legtöbb böngésző figyelmen kívül hagyhatja ezt a problémát. Ha a fejlesztés és tesztelés a cloud services önaláírt tanúsítványokat csak használja. 
 
 Az Azure által használt tanúsítványok is tartalmazhat, egy privát vagy nyilvános kulccsal. Tanúsítványának rendelkeznie kell egy ujjlenyomatot, amely lehetővé teszi egy egyértelmű módon azonosítani őket. Ezzel az ujjlenyomattal szolgál az Azure-ban [konfigurációs fájl](cloud-services-configure-ssl-certificate-portal.md) azonosítani, hogy melyik tanúsítványt egy felhőalapú szolgáltatás használjon. 
+
+>[!Note]
+>Az Azure Cloud Services nem fogadja el az AES256-SHA256 titkosított tanúsítvány.
 
 ## <a name="what-are-service-certificates"></a>Mik azok a service-tanúsítványok?
 Szolgáltatási tanúsítványok cloud services és a biztonságos kommunikációhoz, és a szolgáltatásból is csatlakozik. Például ha telepítette a webes szerepkör, érdemes megadni egy tanúsítványt, amely hitelesíteni tudja a közzétett HTTPS-végpontokat. Szolgáltatási tanúsítványok, a szolgáltatás definíciós meghatározott a rendszer automatikusan telepíti a virtuális gép, amelyen fut a szerepkör példányának. 

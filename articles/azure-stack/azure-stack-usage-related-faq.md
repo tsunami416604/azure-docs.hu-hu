@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 11/08/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 362ee7e84229c421f69ff0db0c8cfb040b105c97
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 95b63b525365a5a31856c2f14ac965aaa1113cff
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394512"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515624"
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Gyakori kérdések az Azure Stack-használati API
 
@@ -126,105 +126,165 @@ A következő erőforrás-szolgáltatók a jelentett használat:
   
 ### <a name="managed-disks"></a>Felügyelt lemezek
 
+**Mérőszám azonosítója**: 380874f9-300c-48e0-95a0-d2d9a21ade8f   
+**Fogyasztásmérő neve**: S4   
+**Egység**: a lemezek száma\*hónap   
+**Megjegyzések**: standard szintű felügyelt lemez – 32 GB 
+
+**Mérőszám azonosítója**: 1b77d90f-427b-4435-b4f1-d78adec53222   
+**Fogyasztásmérő neve**: S6   
+**Egység**: a lemezek száma\*hónap   
+**Megjegyzések**: standard szintű felügyelt lemez – 64 GB-os 
+
+**Mérőszám azonosítója**: d5f7731b-f639-404a-89d0-e46186e22c8d   
+**Fogyasztásmérő neve**: S10   
+**Egység**: a lemezek száma\*hónap   
+**Megjegyzések**: standard szintű felügyelt lemez – 128 GB-os 
+
+**Mérőszám azonosítója**: ff85ef31-da5b-4eac-95dd-a69d6f97b18a   
+**Fogyasztásmérő neve**: S15   
+**Egység**: a lemezek száma\*hónap   
+**Megjegyzések**: standard szintű felügyelt lemez – 256 GB 
+
+**Mérőszám azonosítója**: 88ea9228-457a-4091-adc9-ad5194f30b6e   
+**Fogyasztásmérő neve**: S20   
+**Egység**: a lemezek száma\*hónap      
+**Megjegyzések**: standard szintű felügyelt lemez – 512 GB 
+
+**Mérőszám azonosítója**: 5b1db88a-8596-4002-8052-347947c26940   
+**Fogyasztásmérő neve**: S30   
+**Egység**: a lemezek száma\*hónap   
+**Megjegyzések**: standard szintű felügyelt lemez – 1024 GB 
+
+**Mérőszám azonosítója**: 7660b45b-b29d-49cb-b816-59f30fbab011   
+**Fogyasztásmérő neve**: P4   
+**Egység**: a lemezek száma\*hónap   
+**Megjegyzések**: prémium szintű felügyelt lemez – 32 GB 
+
+**Mérőszám azonosítója**: 817007fd-a077-477f-bc01-b876f27205fd   
+**Fogyasztásmérő neve**: P6   
+**Egység**: a lemezek száma\*hónap   
+**Megjegyzések**: prémium szintű felügyelt lemez – 64 GB-os 
+
+**Mérőszám azonosítója**: e554b6bc-96cd-4938-a5b5-0da990278519   
+**Fogyasztásmérő neve**: P10   
+**Egység**: a lemezek száma\*hónap   
+**Megjegyzések**: prémium szintű felügyelt lemez – 128 GB-os  
+
+**Mérőszám azonosítója**: cdc0f53a-62a9-4472-a06c-e99a23b02907   
+**Fogyasztásmérő neve**: P15  
+**Egység**: a lemezek száma\*hónap   
+**Megjegyzések**: prémium szintű felügyelt lemez – 256 GB 
+
+**Mérőszám azonosítója**: b9cb2d1a-84c2-4275-aa8b-70d2145d59aa   
+**Fogyasztásmérő neve**: P20   
+**Egység**: a lemezek száma\*hónap   
+**Megjegyzések**: prémium szintű felügyelt lemez – 512 GB 
+
+**Mérőszám azonosítója**: 06bde724-9f94-43c0-84c3-d0fc54538369   
+**Fogyasztásmérő neve**: P30   
+**Egység**: a lemezek száma\*hónap   
+**Megjegyzések**: prémium szintű felügyelt lemez – 1024 GB 
+
+**Mérőszám azonosítója**: 7ba084ec-ef9c-4d64-a179-7732c6cb5e28   
+**Fogyasztásmérő neve**: ActualStandardDiskSize   
+**Egység**: GB\*hónap      
+**Megjegyzések**: A standard szintű felügyelt lemez lemezen tényleges méret  
+
+**Mérőszám azonosítója**: daef389a-06e5-4684-a7f7-8813d9f792d5  
+**Fogyasztásmérő neve**: ActualPremiumDiskSize   
+**Egység**: GB\*hónap      
+**Megjegyzések**: A tényleges méret a lemez prémium szintű felügyelt lemez 
+
+**Mérőszám azonosítója**: 75d4b707-1027-4403-9986-6ec7c05579c8  
+**Fogyasztásmérő neve**: ActualStandardSnapshotSize   
+**Egység**: GB\*hónap   
+**Megjegyzések**: a standard szintű felügyelt pillanatképek a lemez a tényleges méret.  
+
+**Mérőszám azonosítója**: 5ca1cbb9-6f14-4e76-8be8-1ca91547965e   
+**Fogyasztásmérő neve**: ActualPremiumSnapshotSize   
+**Egység**: GB\*hónap   
+**Megjegyzések**: A tényleges méret felügyelt prémium szintű lemez.   
+
 **Mérőszám azonosítója**: 5d76e09f-4567-452a-94cc-7d1f097761f0   
 **Fogyasztásmérő neve**: S4   
 **Egység**: a lemezek száma\*óra   
-**Megjegyzések**: standard szintű felügyelt lemez – 32 GB 
+**Megjegyzések**: standard szintű felügyelt lemez – 32 GB (elavult) 
 
 **Mérőszám azonosítója**: dc9fc6a9-0782-432a-b8dc-978130457494   
 **Fogyasztásmérő neve**: S6   
 **Egység**: a lemezek száma\*óra   
-**Megjegyzések**: standard szintű felügyelt lemez – 64 GB-os 
+**Megjegyzések**: standard szintű felügyelt lemez – 64 GB-os (elavult) 
 
 **Mérőszám azonosítója**: e5572fce-9f58-49d7-840c-b168c0f01fff   
 **Fogyasztásmérő neve**: S10   
 **Egység**: a lemezek száma\*óra   
-**Megjegyzések**: standard szintű felügyelt lemez – 128 GB-os 
+**Megjegyzések**: standard szintű felügyelt lemez – 128 GB-os (elavult) 
 
 **Mérőszám azonosítója**: 9a8caedd-1195-4cd5-80b4-a4c22f9302b8   
 **Fogyasztásmérő neve**: S15   
 **Egység**: a lemezek száma\*óra   
-**Megjegyzések**: standard szintű felügyelt lemez – 256 GB 
+**Megjegyzések**: standard szintű felügyelt lemez – 256 GB (elavult) 
 
 **Mérőszám azonosítója**: 5938f8da-0ecd-4c48-8d5a-c7c6c23546be   
 **Fogyasztásmérő neve**: S20   
 **Egység**: a lemezek száma\*óra      
-**Megjegyzések**: standard szintű felügyelt lemez – 512 GB 
+**Megjegyzések**: standard szintű felügyelt lemez – 512 GB (elavult) 
 
 **Mérőszám azonosítója**: 7705a158-bd8b-4b2b-b4c2-0782343b81e6   
 **Fogyasztásmérő neve**: S30   
 **Egység**: a lemezek száma\*óra   
-**Megjegyzések**: standard szintű felügyelt lemez – 1024 GB 
-
-**Mérőszám azonosítója**: d9aac1eb-a5d1-42f2-b617-9e3ea94fed88   
-**Fogyasztásmérő neve**: S40   
-**Egység**: a lemezek száma\*óra   
-**Megjegyzések**: standard szintű felügyelt lemez – 2048 GB 
-
-**Mérőszám azonosítója**: a54899dd-458e-4a40-9abd-f57cafd936a7   
-**Fogyasztásmérő neve**: S50   
-**Egység**: a lemezek száma\*óra   
-**Megjegyzések**: standard szintű felügyelt lemez – 4096 GB 
+**Megjegyzések**: standard szintű felügyelt lemez – 1024 GB (elavult) 
 
 **Mérőszám azonosítója**: 5c105f5f-cbdf-435c-b49b-3c7174856dcc   
 **Fogyasztásmérő neve**: P4   
 **Egység**: a lemezek száma\*óra   
-**Megjegyzések**: prémium szintű felügyelt lemez – 32 GB 
+**Megjegyzések**: prémium szintű felügyelt lemez – 32 GB (elavult) 
 
 **Mérőszám azonosítója**: 518b412b-1927-4f25-985f-4aea24e55c4f   
 **Fogyasztásmérő neve**: P6   
 **Egység**: a lemezek száma\*óra   
-**Megjegyzések**: prémium szintű felügyelt lemez – 64 GB-os 
+**Megjegyzések**: prémium szintű felügyelt lemez – 64 GB-os (elavult) 
 
 **Mérőszám azonosítója**: 5cfb1fed-0902-49e3-8217-9add946fd624   
 **Fogyasztásmérő neve**: P10   
 **Egység**: a lemezek száma\*óra   
-**Megjegyzések**: prémium szintű felügyelt lemez – 128 GB-os  
+**Megjegyzések**: prémium szintű felügyelt lemez – 128 GB-os (elavult)  
 
 **Mérőszám azonosítója**: 8de91c94-f740-4d9a-b665-bd5974fa08d4   
 **Fogyasztásmérő neve**: P15  
 **Egység**: a lemezek száma\*óra   
-**Megjegyzések**: prémium szintű felügyelt lemez – 256 GB 
+**Megjegyzések**: prémium szintű felügyelt lemez – 256 GB (elavult) 
 
 **Mérőszám azonosítója**: c7e7839c-293b-4761-ae4c-848eda91130b   
 **Fogyasztásmérő neve**: P20   
 **Egység**: a lemezek száma\*óra   
-**Megjegyzések**: prémium szintű felügyelt lemez – 512 GB 
+**Megjegyzések**: prémium szintű felügyelt lemez – 512 GB (elavult) 
 
 **Mérőszám azonosítója**: 9f502103-adf4-4488-b494-456c95d23a9f   
 **Fogyasztásmérő neve**: P30   
 **Egység**: a lemezek száma\*óra   
-**Megjegyzések**: prémium szintű felügyelt lemez – 1024 GB 
-
-**Mérőszám azonosítója**: 043757fc-049f-4e8b-8379-45bb203c36b1   
-**Fogyasztásmérő neve**: P40   
-**Egység**: a lemezek száma\*óra    
-**Megjegyzések**: prémium szintű felügyelt lemez – 2048 GB 
-
-**Mérőszám azonosítója**: c0342c6f-810b-4942-85d3-6eaa561b6570   
-**Fogyasztásmérő neve**: P50   
-**Egység**: a lemezek száma\*óra   
-**Megjegyzések**: prémium szintű felügyelt lemez – 4096 GB 
+**Megjegyzések**: prémium szintű felügyelt lemez – 1024 GB (elavult) 
 
 **Mérőszám azonosítója**: 8a409390-1913-40ae-917b-08d0f16f3c38   
 **Fogyasztásmérő neve**: ActualStandardDiskSize   
 **Egység**: bájt\*óra      
-**Megjegyzések**: A standard szintű felügyelt lemez lemezen tényleges méret  
+**Megjegyzések**: a standard szintű felügyelt lemez (elavult) a lemezen a tényleges méret  
 
 **Mérőszám azonosítója**: 1273b16f-8458-4c34-8ce2-a515de551ef6  
 **Fogyasztásmérő neve**: ActualPremiumDiskSize   
 **Egység**: bájt\*óra      
-**Megjegyzések**: A tényleges méret a lemez prémium szintű felügyelt lemez 
+**Megjegyzések**: A tényleges méret a lemez prémium szintű felügyelt lemez (elavult) 
 
 **Mérőszám azonosítója**: 89009682-df7f-44fe-aeb1-63fba3ddbf4c  
 **Fogyasztásmérő neve**: ActualStandardSnapshotSize   
 **Egység**: bájt\*óra   
-**Megjegyzések**: a standard szintű felügyelt pillanatképek a lemez a tényleges méret.  
+**Megjegyzések**: felügyelt standard pillanatkép (elavult) a lemezen a tényleges méret 
 
 **Mérőszám azonosítója**: 95b0c03f-8a82-4524-8961-ccfbf575f536   
 **Fogyasztásmérő neve**: ActualPremiumSnapshotSize   
 **Egység**: bájt\*óra   
-**Megjegyzések**: A tényleges méret felügyelt prémium szintű lemez.   
+**Megjegyzések**: felügyelt Premium (elavult) a lemezen a tényleges méret 
 
 ### <a name="sql-rp"></a>SQL-RP
   

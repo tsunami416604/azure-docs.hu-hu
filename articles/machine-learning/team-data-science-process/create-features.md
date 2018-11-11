@@ -1,6 +1,6 @@
 ---
-title: Jellemzőkiemelés adatok tudományos |} Microsoft Docs
-description: Elmagyarázza, a szolgáltatás műszaki osztály alkalmazásában és példák a szerepét a gépi tanulás adatokat a fejlesztés folyamatán.
+title: Funkciók tervezése a adatelemzés |} A Microsoft Docs
+description: Az alkalmazásában funkciófejlesztési ismerteti, és példákat tartalmaz a szerepét a machine learning adatokat a fejlesztés folyamatát.
 services: machine-learning
 documentationcenter: ''
 author: deguhath
@@ -15,82 +15,85 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: deguhath
-ms.openlocfilehash: b4194ef5ab1c2c09206ea0acf78cb539bc2fc0b7
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: fd3f010c3fccca679daa6639c1427d17ae64a0d1
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836517"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51343992"
 ---
-# <a name="feature-engineering-in-data-science"></a>Jellemzőkiemelés tudományos adatok
-Ez a cikk azt ismerteti, a szolgáltatás műszaki osztály alkalmazásában és példák a szerepet a gépi tanulás adatokat a fejlesztés során. A példák ezt a folyamatot mutatja be az Azure Machine Learning Studio állítják. 
+# <a name="feature-engineering-in-data-science"></a>Funkciók tervezése a adatelemzés
+Ez a cikk ismerteti az alkalmazásában funkciófejlesztési és példák a szerepét a machine learning adatokat a fejlesztés folyamatát. A folyamat szemléltetése használt példák az Azure Machine Learning Studio állítják. 
 
-[!INCLUDE [cap-create-features-data-selector](../../../includes/cap-create-features-selector.md)]
+Ez a feladat Ez a lépés a [csoportos adatelemzési folyamat (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
-Ez **menü** hivatkozásokat követve hozhatók létre az adatok szolgáltatások különböző környezetekben. Ez a feladat Ez a lépés a [Team adatok tudományos folyamat (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+Ez a funkció mérnöki kísérletek tanulási algoritmus a nyers adatokat, amelyek a tanulási folyamat megkönnyítése érdekében szolgáltatásokat hoz létre prediktív hatékonyságának növelése érdekében. A termékgondozó csoportja és a funkciók köre a leírt TDSP egy részét képezi a [Mi az a csoportos adatelemzési folyamat életciklusa?](overview.md) A szolgáltatás jellemzőkiválasztás és -kiemelés, részből áll a **funkciók fejlesztése** a TDSP. lépését. 
 
-Ez a funkció mérnöki kísérletek a tanulási algoritmus a nyers adatok a tanulási folyamat megkönnyítése érdekében a szolgáltatások létrehozásával előrejelzési teljesítményének növelése érdekében. Az ismertetett TDSP a mérnöki és funkciók kiválasztása egy része a [Mi az a csoport az tudományos folyamata életciklus?](overview.md) A szolgáltatás termékgondozó csoportja és a kijelölés részét képezik a **szolgáltatások fejlesztéséhez** a TDSP lépését. 
+* **jellemzőkiemelés**: Ez a folyamat megpróbálja további kapcsolódó funkciók létrehozása az adatok meglévő nyers funkciókat, valamint a tanulási algoritmus prediktív hatékonyságának növelése érdekében.
+* **kijelölés funkció**: Ez a folyamat az eredeti funkciók kulcs részhalmazát kijelöli a kísérlet a betanítási probléma dimenzióinak csökkentése érdekében.
 
-* **jellemzőkiemelés**: Ez a folyamat megkísérli a meglévő nyers funkciókat az adatok további kapcsolódó szolgáltatások létrehozásához és a tanulási algoritmus előrejelzési teljesítményének növelése érdekében.
-* **szolgáltatás kiválasztása**: Ez a folyamat az eredeti adatokkal kapcsolatos funkciókkal kulcs részhalmazát kijelöli a kísérlet dimenzióinak, a képzési probléma csökkentése érdekében.
+Általában **jellemzőkiemelés** további funkciók létrehozásához először alkalmazza, majd a **kijelölés funkció** irreleváns, redundáns vagy magas kapcsolódó funkciók kiküszöbölése érdekében a lépést.
 
-Általában **jellemzőkiemelés** további szolgáltatások létrehozásához először vonatkozik, majd a **kijelölés funkció** lépést irreleváns, redundáns vagy magas kapcsolódó szolgáltatásokat nyújthatnak.
+A betanítási adatok, a machine Learning szolgáltatásban használt gyakran lehet bővíteni úgy a nyers adatoktól a gyűjtött funkciók. Megtudhatja, hogyan kell kézzel írt karakterek, a képek osztályozásához kontextusában egy visszafejtett szolgáltatás egyik példája egy kicsit a nyers bit terjesztési adataiból összeállított sűrűségű térkép létrehozása. A térkép segítségével sokkal hatékonyabb, mint egyszerűen használatával közvetlenül a nyers terjesztési keresse meg az élek a karaktereket.
 
-A gépi tanulás használt betanítási adatok gyakran fejleszthető úgy a nyers adatokat gyűjt a szolgáltatásokat. Példa egy visszafejtett szolgáltatás keretén belül a dokumentum besorolását kézzel karaktereket a képek létrehozása egy kicsit sűrűség leképezés a nyers bit terjesztési adataiból összeállított:. Ez a térkép segítségével keresse meg mint egyszerűen használja közvetlenül a nyers terjesztési hatékonyabban széleit, a karaktereket.
+Funkciók létrehozása az adatok adott környezetekben, tekintse meg a következő cikkeket:
+
+* [Funkciók létrehozása az adatok az SQL Server](create-features-sql-server.md)
+* [Funkciók létrehozása az adatokhoz a Hive-lekérdezések segítségével Hadoop-fürt](create-features-hive.md)
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
-## <a name="create-features-from-your-data---feature-engineering"></a>Az adatokból - funkciók létrehozása jellemzőkiemelés
-A betanítási adatok, amelyek mindegyike rendelkezik (változók vagy az oszlopokban tárolt mezők) funkciókat (rekordok vagy megfigyelések egy sor tárolt), például álló mátrix áll. A funkciók a kísérleti tervezési várhatóan írhatók le az adatok kombinációját. A nyers adatok mezők számos közvetlenül szerepelhet a modell betanításához használandó kijelölt szolgáltatáskészlete, bár ez a helyzet gyakran, hogy további (visszafejtett) szolgáltatásokat szeretne-e állítható össze a szolgáltatások egy továbbfejlesztett képzési adatkészlet létrehozásához a nyers adatok a.
+## <a name="create-features-from-your-data---feature-engineering"></a>Funkciók létrehozása az adatokból - funkciók tervezése
+A betanítási adatok, amelyek mindegyike rendelkezik (változók vagy oszlopaiban tárolt mezők) szolgáltatások mikroszolgáltatásokból álló, példák (rekordok vagy megfigyeléseket sorok tárolva), mátrix áll. A funkciók a kísérleti tervezési megadott írhatók le a mintát az adatok a várt. Bár számos, a nyers adatok mezőket is közvetlenül foglalandó a kiválasztott szolgáltatást a modell betanításához használja, ez a helyzet gyakran, hogy további (visszafejtett) szolgáltatások kell létrehozni a nyers adatok egy továbbfejlesztett betanítási adatkészletet létrehozása az a funkciók.
 
-Milyen funkciókat javítása érdekében a dataset, amikor egy modell betanítása létre kell hozni? Visszafejtett funkciókat, amelyek javítják a képzés információkkal jobban megkülönbözteti az adatok kombinációját. Az új szolgáltatások várhatóan további információkkal, amely nem egyértelműen rögzített vagy az eredeti vagy meglévő szolgáltatáskészlet könnyen látható. Azonban ez a folyamat történt egy kép. Megfelelő és hatékony döntések gyakran megkövetelik a néhány tartomány szakértői.
+Adatkészlet továbbfejlesztése, amikor egy modell tanítása milyen funkciók kell létrehozni? Visszafejtett funkciók, amelyek javítják a képzés jobban különbözteti meg a mintákat, az adatok információkat tartalmaznak. Az új funkciók fejtheti ki bővebben, amely nem egyértelműen rögzített vagy könnyen látható, az eredeti vagy meglévő szolgáltatáskészletére várt. Azonban ez a folyamat valami művészet. Megbízható és hatékony döntések bizonyos tartomány szakértelmet gyakran igényelnek.
 
-Azure Machine Learning segítségével indításakor a legegyszerűbb bonyolultnak Ez a folyamat a Studio biztosított minták konkrétan használatával. Két példa a itt jelenik meg:
+Az Azure Machine Learning indításakor a legegyszerűbb bonyolultnak a folyamat, konkrétan a megadott a Studio minták használatával. Két példa itt jelennek meg:
 
-* Egy regressziós példa [kerékpárt bérlését száma előrejelzését](http://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) egy felügyelt kísérletben, ahol a cél értékek ismertek
-* A szöveg adatbányászati besorolás példa használatával [Szolgáltatáskivonatolás](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
+* Egy regressziós példa [kerékpárkölcsönzés számát az előrejelzések](http://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) egy felügyelt kísérletben, ahol a cél értékek ismertek
+* Egy szöveges adatbányászati példa használatával végzett adatbesorolás [Szolgáltatáskivonatolás](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
 
 ## <a name="example-1-add-temporal-features-for-a-regression-model"></a>1. példa: Egy regressziós modell historikus szolgáltatások hozzáadása
-Most segítségével a kísérlet "igény szerinti előrejelzéséhez kerékpárt" az Azure Machine Learning Studióban bemutatják, hogyan lehet szolgáltatásokat regressziós tevékenység tervezését. Ehhez a kísérlethez célja előre jelezni a kerékpárt, ez azt jelenti, hogy egy adott hónap/nap/órán belül kerékpárt bérlését száma terhelését. A dataset "bérlet kerékpárt UCI dataset" szolgál a nyers bemeneti adatként. Ez az adatkészlet fenntartja az Amerikai Egyesült Államokban Washingtoni kerékpárt bérleti hálózat beruházási Bikeshare vállalattól valós adatokon alapul. A dataset kerékpárt bérlését számát jelenti. a nap-ben 2011 és 2012-ben meghatározott órán belül, és tartalmazza a 17379 sorok és oszlopok 17. A nyers szolgáltatáskészlete időjárási feltételek (hőmérséklet/páratartalom/szél sebesség) és a típus a nap (szünnap/hét napja) tartalmazza. A mező előre jelezni a "számláló" száma, amelyek a kerékpárt bérlését jelöli egy adott órán belül, és amely címtartományok 1 977.
+Hozzunk használatával a kísérlet "kereslet-előrejelzés, kerékpárok" az Azure Machine Learning Studióban bemutatják, hogyan lehet egy regressziós tevékenység funkciókat. Ez a kísérlet célja, kerékpár, azaz kerékpárkölcsönzés belül egy adott hónap/nap/óra száma iránti kereslet előrejelzésére. Az adatkészlet "uci Kerékpárkölcsönzési UCI adatkészlet" szolgál a nyers bemeneti adatként. Ez az adatkészlet a tőke Bikeshare vállalat, amely fenntartja az Egyesült Államokban Washington, D.C. uci kerékpárkölcsönzési hálózat adatokon alapul. Az adatkészlet jelöli az kerékpárkölcsönzés számát az évben 2011 és 2012-es év naponta egy adott órán belül, és 17379 sorok és oszlopok 17 tartalmazza. A nyers funkció időjárási viszonyok (hőmérsékleti és páratartalom/mért legnagyobb szélsebesség) és a típus a nap (szünnap/hét napja) tartalmazza. Előre jelezni a mező a "cnt" száma, amely a kerékpárkölcsönzés jelöli egy adott órán belül, és amely címtartományok 1 977.
 
-Azzal a céllal, hatékony funkciókat a betanítási adatok, a modellek az azonos algoritmus használatával készített négy regressziós, de négy különböző képzési adatkészletekkel hozhat létre. A négy adatkészletek nyers ugyanazon bemeneti adatait, de a szolgáltatások egyre több beállítása. Ezek a funkciók négy kategóriákba vannak csoportosítva:
+A célt hozhat létre, amely hatékony funkciókat a betanítási adatok, négy regressziós modellek létrehozása az azonos algoritmus használatával történik, de a négy különböző képzési adathalmazok alapján. A négy adatkészletek nyers ugyanazt a bemeneti adatokat képviselik, de a szolgáltatások egyre több beállítása. Ezek a funkciók négy kategóriákba vannak csoportosítva:
 
-1. A időjárási + szünnap + hétköznap = + hétvégi szolgáltatások előre jelezhető napi
-2. B = kerékpárt, amely minden az előző 12 óra volt bérelt száma
-3. C = kerékpárt, amely minden, az azonos órához az elmúlt 12 nap volt bérelt száma
-4. D = kerékpárt, amely minden az előző 12 hetes, az azonos órához és ugyanarra a napra esnek volt bérelt száma
+1. A időjárási + szünnap + hét napja =, + a hétvégi funkciók az előre jelzett napra
+2. B, amely az egyes a korábbi 12 órán át is bérelt kerékpárok száma =
+3. C =, amely minden, az adott órán az elmúlt 12 napon lettek bérelt kerékpárok számát
+4. D =, amely a korábbi 12 hetes, az adott órán és ugyanazon a napon minden is bérelt kerékpárok számát
 
-A szolgáltatás egy, már szerepel az eredeti nyers adatok, amelyek mellett a másik három különböző szolgáltatások a műszaki osztály folyamat funkción keresztül jönnek létre. A szolgáltatás nagyon friss iránti igények a kerékpárt beállítva a B rögzíti. A szolgáltatás kerékpárt iránti igény beállítva C rögzíti, egy adott óra. A szolgáltatás adott óra és a hét napját adott D rögzítésekre iránti igények kerékpárt beállítva. A négy tanítási adathalmazt minden rendre tartalmazza a szolgáltatás egy, A + B, A + B + C és A + B + C + D.
+Mellett már létezik az eredeti nyers adatokat, a szolgáltatás beállítása A a másik három különböző szolgáltatások jönnek létre a mérnöki folyamat szolgáltatáson keresztül. A szolgáltatás beállítása B rögzíti a kerékpárok nagyon friss iránti igény. A szolgáltatás kerékpárok iránti igény beállítása C rögzíti egy adott óránként. A szolgáltatás adott óra és a hét adott napja D rögzíti igény kerékpárok beállítani. A négy képzési adathalmazok egyes rendre tartalmazza a szolgáltatás egy, A + B, A + B + C és A + B + C + D.
 
-Az Azure Machine Learning kísérletben ezen négy képzési adatkészletek hozhatók létre a Windowsban a Előfeldolgozott bemeneti adatkészletből négy ágak keresztül. A bal szélső fiókirodai kivételével minden ilyen ág tartalmaz egy [R-parancsfájl végrehajtása](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/) modul, amely a származtatott funkciókat, (B, C és D szolgáltatáskészleteket) rendre összeállított és az importált adatkészlet lesz hozzáfűzve. A következő ábra bemutatja az R-parancsfájl, a második bal fiókiroda B készlet létrehozásához használt.
+Az Azure Machine Learning kísérletben ezek négy képzési adathalmazok keresztül négy ágaiból származó előre feldolgozott bemeneti adatkészlet jöttek létre. A bal szélső ág kivételével ezek ágak mindegyike tartalmaz egy [R-szkript végrehajtása](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/) modul, amely a származtatott funkciókat, (B, C és D szolgáltatáskészleteket) rendre kialakítani, és hozzáfűzi az importált adatkészlet. A következő ábra bemutatja az R-szkriptet a második bal oldali ágban szolgáltatáskészlet B létrehozásához használt.
 
-![szolgáltatások létrehozása](./media/create-features/addFeature-Rscripts.png)
+![Funkciók létrehozása](./media/create-features/addFeature-Rscripts.png)
 
-A teljesítmény eredmények négy modell összehasonlítása az alábbi táblázat foglalja össze: 
+A négy modellek teljesítményének eredmények összehasonlítása az alábbi táblázat foglalja össze: 
 
 ![eredmények összehasonlítása](./media/create-features/result1.png)
 
-A legjobb eredmények elérése érdekében A + B + C látható funkcióihoz. Vegye figyelembe, hogy a Hibaarány csökken, ha további szolgáltatáskészlet a betanítási adatok szerepelnek. Ellenőrzi, hogy a szolgáltatáskészlete B, C biztosítson a regressziós feladat kapcsolatos további információt a feltételezés. De hozzáadása a D szolgáltatás nem úgy tűnik, hogy adja meg a Hibaarány további csökkentését.
+A legjobb eredmények elérése érdekében funkcióihoz jelennek meg A + B + C billentyűkombinációt. Vegye figyelembe, hogy a Hibaarány csökken, ha további funkciókat a betanítási adatok szerepelnek. Ellenőrzi, hogy a B, C szolgáltatáskészletére biztosítani a regressziós feladat kapcsolatos további információt a feltételezés. A D-funkció hozzáadása nem verziónk, de a Hibaarány csökkenése további adja meg.
 
-## <a name="example2"></a> 2. példa: Szöveg adatbányászati szolgáltatások létrehozása
-Szöveg adatbányászati, például a besorolás és a céggel kapcsolatos véleményeket dokumentumelemzés kapcsolatos feladatok széles körben alkalmazása szolgáltatás mérnöki csapathoz. Például, ha szeretné besorolni a dokumentumok számos kategóriába sorolhatók, egy tipikus feltételezi, hogy kevésbé valószínű egy másik doc kategóriába-e a word/kifejezések egy dokumentumot a kategóriába tartozik. Más szóval a szavakat vagy kifejezéseket terjesztési gyakoriságát el tudja írhatók le másik dokumentum kategóriák. Szöveg adatbányászati alkalmazásokban mivel egyes adatra szöveges-tartalom általában szolgál a bemeneti adatként, a folyamat mérnöki szolgáltatás létrehozásához szükséges a szolgáltatásokat érintő szó vagy kifejezés gyakoriságot.
+## <a name="example2"></a> 2. példa: Szöveg adatbányászati funkciók létrehozása
+Széles körben alkalmazása funkciófejlesztési szöveg adatbányászati, például a dokumentum besorolási és vélemények elemzése kapcsolatos feladatokat. Például, ha szeretné besorolni a dokumentumokat számos kategóriába sorolhatók, egy tipikus feltételezi, hogy a word/kifejezések egy doc kategóriába kevésbé valószínű, hogy egy másik doc kategória fordulnak elő. Más szóval a szavak és kifejezések terjesztési gyakoriságát is képes írhatók le a dokumentum különböző kategóriák. Szöveg adatbányászati alkalmazásokban szövegtartalmára – egyéni adatokat általában szolgálhat a bemeneti adatokat, mert a szolgáltatás műszaki folyamat létrehozásához szükséges a szolgáltatásokat érintő szó vagy kifejezés gyakoriságot.
 
-Ez a feladat eléréséhez technika nevű **szolgáltatáskivonatolás** tetszőleges szöveg szolgáltatások hatékonyan ikonná indexek vonatkozik. Ahelyett, hogy egy adott index, a kivonatoló függvényt alkalmazásával a szolgáltatásokhoz, és közvetlenül a kivonati értékek használata indexek metódus funkciók közötti társítás minden szöveges funkciót (szavak vagy kifejezések).
+Ez a feladat eléréséhez technika nevű **szolgáltatáskivonatolás** hatékonyan kapcsolja be a tetszőleges szöveges funkciók az indexek vonatkozik. Helyett (szavak vagy kifejezések) szöveg alapdokumentációjában társítása adott index, a metódus függvények alkalmazásával a kivonatoló függvényt a szolgáltatásokhoz, és közvetlenül az indexek, a kivonati értékek használatával.
 
-Az Azure Machine Learning van egy [Szolgáltatáskivonatolás](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) modul, amely hozza létre ezeket a szó vagy kifejezés szolgáltatások kényelmesen. Alábbi ábrán ez a modul használatának példája. A bemeneti adatkészlet két oszlopokat tartalmazza: a beállításnak 1 és 5 közötti könyv besorolása és a tényleges felülvizsgálati tartalmat. Ez a cél [Szolgáltatáskivonatolás](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) modul olyan szolgáltatást, hogy megjelenítése a megfelelő szavak előfordulási gyakoriságát álló, lemezcsoport típusú új beolvasása / tájékoztatás(ok) belül az adott könyv tekintse át az. Ez a modul használatához kövesse az alábbi lépéseket:
+Az Azure Machine Learning, van egy [Szolgáltatáskivonatolás](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) modul, amely hozza létre ezeket a szó vagy kifejezés funkciók terheljük. Következő ábrán látható egy példa a modul használatával. A bemeneti adatkészlet két oszlopot tartalmaz: a beállításnak 1 és 5 közötti könyv besorolása és a tényleges tekintse át a tartalmat. Jelen [Szolgáltatáskivonatolás](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) modul álló, lemezcsoport típusú új lekéréséhez funkcióit, hogy a megfelelő szavak előfordulását gyakorisága megjelenítése / belül az adott könyv tájékoztatás(ok) tekintse át az. Ez a modul használatához kövesse az alábbi lépéseket:
 
-* Első lépésként válassza ki az oszlop a bemeneti szöveget tartalmazó (ebben a példában "Col2" jelöli).
-* Második, állítsa a "Hashing bitsize" 8-ra, ami azt jelenti, hogy 2 ^ 8 = 256 szolgáltatások jön létre. A szöveg, word/fázisában fogja kivonatolása 256 indexet. A paraméter "Hashing bitsize" tartománya 1 és 31. A keresett szavakat / tájékoztatás(ok) kevésbé valószínű, hogy az azonos indexbe kivonatolása, ha a beállítás nagyobb számnak kell lennie.
-* Harmadik, a paraméter értéke "N-g" 2. Ez az érték lekérése a bemeneti szöveg előfordulási gyakoriságát unigrams (egy mindegyik egyszavas szolgáltatás) és bigrams (egy szolgáltatás minden pár szomszédos szavak). A paraméter "N-g" címtartományok 0 és 10, amely megadja, hogy a szolgáltatás szereplő szekvenciális szavak maximális száma.  
+* Első lépésként válassza ki az oszlop, amely tartalmazza a bemeneti szöveg (ebben a példában "Col2" jelöli).
+* Második, állítsa a "Hashing bitsize" 8-ra, ami azt jelenti, hogy 2 ^ 8 = 256 funkciók jön létre. A szövegben, a word/fázis fog kivonatolása 256 indexekkel kellene foglalkoznia. A paraméter "Hashing bitsize" tartomány 1 és 31. A keresett szavakat / tájékoztatás(ok) kevésbé valószínű, hogy az azonos indexbe történő kivonatolása beállítás nagyobb számnak kell lennie, ha.
+* Harmadik, a paraméter értéke "N-gramokat" 2. Ez az érték előfordulási gyakoriságát unigrams (minden egyszavas funkció) és bigrams (a szomszédos szavak minden virtuálisgép-pár funkció) a bemeneti szöveg beolvasása. A paraméter "N-gramokat" címtartományok 0 és 10, amely azt jelzi, hogy a funkció foglalandó szekvenciális szavak maximális száma.  
 
 !["Funkció Hashing" modul](./media/create-features/feature-Hashing1.png)
 
-Az alábbi ábra bemutatja, milyen ezek új szolgáltatás megjelenését hasonlóan.
+Az alábbi ábra bemutatja, milyen ezek új funkció néz ki.
 
-!["Funkció Hashing" – példa](./media/create-features/feature-Hashing2.png)
+![A példában "Funkció Hashing"](./media/create-features/feature-Hashing2.png)
 
 ## <a name="conclusion"></a>Összegzés
-Tervezett és a kiválasztott szolgáltatásokat a hatékonyabbá teheti a képzési folyamat, amely az adatok tartalmazzák a főbb információkat. Is javítják ezek a modellek power pontosan a bemeneti adatok osztályozására szolgáló, és több abroncsnyomásmérők erős előre jelezni az érdeklődési eredményeit. A szolgáltatás termékgondozó csoportja és a kijelölés kombinálhatja is annak a tanulási több számításilag tractable. Igen, javítja, és majd a szolgáltatások szükséges továbbá bármikor kalibrálhatja vagy a modell betanításához számának csökkentése. Matematikailag nyelven, a modell betanításához kijelölt szolgáltatások olyan minimális független változó, amely az adatok kombinációját ismertetik, és majd sikeresen az eredmények előrejelzése.
+Visszafejtett és a kiválasztott funkciók a hatékonyabbá teheti a betanítási folyamat, amely megkísérli az adatok tartalmazzák a legfontosabb információt nyerhet ki. Emellett javíthatják a modellek hatékonyságát a bemeneti adatok besorolására pontosan, és hatékonyabban dolgozhatók több előre jelezni a lényeges eredményeket. A szolgáltatás jellemzőkiválasztás és -kiemelés kombinálhatja is, hogy akár több tractable a tanulást. Ezt úgy valósítja kerülésről, és ezután továbbá bármikor kalibrálhatja vagy a modell betanításához szükséges szolgáltatások számának csökkentése. Matematikai beszéd, a modell betanításához kiválasztott szolgáltatások független változók, amelyek az adatok a minták ismertetik, és majd sikeresen az eredmények előrejelzésére egy minimális számú.
 
-Nincs mindig feltétlenül mérnöki vagy szolgáltatás szolgáltatásválasztást végrehajtásához. E rá szükség, vagy nem kéz adatoktól függ, vagy az összegyűjtött, a kiválasztott algoritmus és a cél a kísérlet.
+Nincs mindig feltétlenül szolgáltatás mérnöki vagy szolgáltatás kiválasztása végrehajtásához. E vagy sem szükséges kéz függ, hogy az adatokat, vagy az összegyűjtött, a kiválasztott algoritmus és a cél a kísérlet.
 

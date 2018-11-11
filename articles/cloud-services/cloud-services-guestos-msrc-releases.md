@@ -11,21 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/28/2018
+ms.date: 11/08/2018
 ms.author: raiye
-ms.openlocfilehash: 0430eefb55893420cf7ea603998f14465fb2cc60
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: cfd0d9d7484e82ee130f4de860190238718c149c
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215514"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51301067"
 ---
 # <a name="azure-guest-os"></a>Azure Guest OS
 Az alábbi táblázatokban a Microsoft Security Response Center (MSRC) az Azure vendég operációs rendszerre alkalmazott frissítések. Ez a cikk meghatározni, ha az adott frissítés alkalmazza a vendég operációs rendszer keresése. Frissítések mindig átviszi az adott [termékcsalád] [ family-explain] azokat a jelentek meg.
 
 ## <a name="october-2018-guest-os"></a>2018. október vendég operációs rendszer
->[!NOTE]
->Az október vendég operációs rendszerre van jelenleg tesszük elérhetővé a Cloud Service virtuális gépeken, az automatikus frissítések vannak beállítva. A bevezetés befejezésekor ebben a verzióban lesz elérhető a manuális frissítést keresztül az Azure portal és a konfigurációs fájlok. A következő javításokat tartalmazza az október vendég operációs rendszer. Ez a lista a változhat.
 
 | Termékkategória | Szülő KB cikk | Biztonsági rés leírása | A vendég operációs rendszer | Először a dátum |
 | --- | --- | --- | --- | --- |

@@ -9,16 +9,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: fa429553caf874dd634944a5fca6cd9283194bb4
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
-ms.translationtype: MT
+ms.openlocfilehash: b77b035d829218d7416da4c6d57919e75b278e02
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251107"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288900"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph-kötések az Azure Functions szolgáltatáshoz
 
-Ez a cikk bemutatja, hogyan konfigurálhat és a Microsoft Graph eseményindítók és kötések az Azure Functions használata. Az ilyen az Azure Functions használatával adatait, elemzéseket és események használata az [Microsoft Graph](https://graph.microsoft.io).
+Ez a cikk bemutatja, hogyan konfigurálhat és a Microsoft Graph eseményindítók és kötések az Azure Functions használata. Az ilyen az Azure Functions használatával adatait, elemzéseket és események használata az [Microsoft Graph](https://developer.microsoft.com/graph).
 
 A Microsoft Graph-bővítmény a következő kötéseket biztosít:
 - Egy [hitelesítési tokent bemeneti kötést](#token-input) lehetővé teszi, hogy bármely Microsoft Graph API használatához.

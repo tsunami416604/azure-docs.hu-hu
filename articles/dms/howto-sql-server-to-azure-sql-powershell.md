@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2018
-ms.openlocfilehash: 0a4e88ed52e2da814d1b10dbc695c9c61b899ef1
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.date: 11/10/2018
+ms.openlocfilehash: 771b89fda4e37d9e8ba47df95f7fd57b41f792a3
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248196"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515539"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>A helyszíni SQL Server migrálása az Azure SQL Database, Azure PowerShell-lel
 Ebben a cikkben telepít át a **Adventureworks2012** adatbázis egy helyi példányára, az SQL Server 2016 vagy újabb visszaállítása egy Azure SQL Database a Microsoft Azure PowerShell használatával. Telepíthet át adatbázisokat egy helyszíni SQL Server-példány az Azure SQL Database használatával a `AzureRM.DataMigration` a Microsoft Azure PowerShell-modulja.
@@ -61,7 +61,7 @@ Azure Database Migration Service új példányának használatával hozhat létr
 - *Azure erőforráscsoport-nevet*. Használhat [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-4.4.1) parancsot hozhat létre Azure-erőforráscsoporton előzőekben ismertetettek szerint, és a name paramétert adja meg.
 - *Szolgáltatásnév*. Karakterlánc, amely megfelel a kívánt egyedi szolgáltatás nevének, Azure Database Migration Service 
 - *Hely*. A szolgáltatás helyét adja meg. Adja meg az Azure data center egy helyen, például az USA nyugati RÉGIÓJA vagy Délkelet-Ázsia
-- *Termékváltozat*. Ez a paraméter DMS Sku-név tartozik. Jelenleg támogatott Sku-nevek a következők *Basic_1vCore*, *Basic_2vCores*, *GeneralPurpose_4vCores*
+- *Termékváltozat*. Ez a paraméter DMS Sku-név tartozik. A jelenleg támogatott Sku-név *GeneralPurpose_4vCores*.
 - *Virtuális alhálózati azonosító*. Parancsmagot használhatja [New-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig?view=azurermps-4.4.1) alhálózat létrehozását. 
 
 A következő példában létrehozunk egy elnevezett szolgáltatás *MyDMS* erőforráscsoportban *MyDMSResourceGroup* található a *USA keleti Régiójában* nevűvirtuálishálózatothasználórégió *MyVNET* és nevű alhálózat *MySubnet*.

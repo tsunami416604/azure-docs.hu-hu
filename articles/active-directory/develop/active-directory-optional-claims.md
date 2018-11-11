@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/05/2018
+ms.date: 11/08/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: dcc27992c318a970a86f1ff5c60723daeef881b6
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 0983c2235fba0cacbda53208e5dcad5b2878619c
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914651"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345487"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Hogyan: Adja meg a választható jogcímeket, az Azure AD-alkalmazás (nyilvános előzetes verzió)
 
@@ -42,7 +42,7 @@ Az egyik a [az Azure AD v2.0-végpont](active-directory-appmodel-v2-overview.md)
 | Fiók típusa | 1.0-s verziójú végpont | 2.0 verziójú végpont  |
 |--------------|---------------|----------------|
 | Személyes Microsoft-fiók  | NA – jegyek RPS ehelyett használt | A támogatás hamarosan elérhető |
-| Azure AD-fiók          | Támogatott                          | Szem előtt a következőket támogatja      |
+| Azure AD-fiók          | Támogatott                          | Szem előtt a következőket támogatja |
 
 > [!IMPORTANT]
 > Mind a személyes fiókokat, és az Azure AD-t támogató alkalmazások (regisztrálva a [alkalmazás regisztrációs portál](https://apps.dev.microsoft.com)) választható jogcímek nem használható. Azonban csak az Azure ad v2.0-végpont használatával regisztrált alkalmazás kérheti le a nem kötelező jogcímeket a kért a jegyzékfájlban. Az Azure Portalon is használhatja a meglévő az alkalmazásjegyzék-szerkesztőben **alkalmazásregisztrációk** élmény a választható jogcím szerkesztése. Azonban ez a funkció még nem áll rendelkezésre az új alkalmazásjegyzék-szerkesztőben használatával **alkalmazásregisztrációk (előzetes verzió)** tapasztalható.
@@ -60,8 +60,6 @@ Az alkalmazásokkal való használatra alapértelmezés szerint elérhető nem k
 |-----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Amikor a felhasználó legutóbbi hitelesített ideje. Lásd: OpenID Connect specifikációja.| JWT        |           |  |
 | `tenant_region_scope`      | Az erőforrás-bérlő régió | JWT        |           | |
-| `signin_state`             | Jelentkezzen be a jogcím állapota   | JWT        |           | 6 értékek jelzőként adja vissza:<br> "dvc_mngd": az eszköz felügyelt<br> "dvc_cmp": eszköz minősül megfelelőnek,<br> "dvc_dmjd": eszköz tartományhoz csatlakoztatva<br> "dvc_mngd_app": MDM kezelt eszköz<br> "inknownntwk": eszköz egy ismert hálózaton belül van.<br> "kmsi": Keep Me aláírt használták. <br> |
-| `controls`                 | A jogcím típushoz tartalmazó a munkamenet-vezérlők kényszeríti a feltételes hozzáférési szabályzatokat. | JWT        |           | 3 értéket:<br> "app_res": további részletes korlátozások érvényesítése kell az alkalmazást. <br> "ca_enf": feltételes hozzáférés a rendszer, és továbbra is szükség. <br> "no_cookie": Ez a token nem elegendő a exchange-a böngészőben a cookie-k. <br>  |
 | `home_oid`                 | A vendégfelhasználók számára, a felhasználó bérlőjének a felhasználó Objektumazonosítóját.| JWT        |           | |
 | `sid`                      | Munkamenet-azonosító, a munkamenet-felhasználó kijelentkezés használt. | JWT        |           |         |
 | `platf`                    | Eszközplatform    | JWT        |           | Eszköztípus ellenőrizheti a felügyelt eszközökre korlátozva.|
@@ -76,6 +74,7 @@ Az alkalmazásokkal való használatra alapértelmezés szerint elérhető nem k
 | `xms_pl`                   | A felhasználó preferált nyelvét  | JWT ||A felhasználó elsődleges nyelv, ha a beállítása. Származási hely a saját bérlőjén, a Vendég adathozzáférési forgatókönyvek esetében. R-CC formátumú ("en-us"). |
 | `xms_tpl`                  | A bérlői elsődleges nyelv| JWT | | Az erőforrás-bérlő elsődleges nyelv, ha a beállítása. Formázott LL ("hu"). |
 | `ztdid`                    | Beavatkozás nélküli telepítés azonosítója | JWT | | A használt eszközidentitás [Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) |
+|`email`                     | Címezhető e-mail a felhasználó, ha a felhasználó rendelkezik ilyennel.  | JWT, SAML | | Ha a felhasználó a bérlő Vendég Ez az érték alapértelmezés szerint tartalmazza.  Felügyelt felhasználók (amelyeket a bérlőn belül) azt kell kérik, ez nem kötelező a jogcím, vagy a 2.0-s verziójú csak, és az OpenID hatókörének.  Felügyelt felhasználók esetén az e-mail-cím formájában kell megadni a [Office rendszergazdai portál](https://portal.office.com/adminportal/home#/users).|  
 | `acct`             | Felhasználói fiók állapota-bérlőben. | JWT, SAML | | Ha a felhasználó tagja a bérlő, a értéke `0`. A Vendég, ha az értéke `1`. |
 | `upn`                      | UserPrincipalName claim. | JWT, SAML  |           | Bár ez a jogcím automatikusan tartalmazza, mint egy nem kötelező jogcím csatolni a Vendég felhasználói esetben viselkedésének módosítása további tulajdonságok megadhat. <br> További tulajdonságok: <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash` |
 

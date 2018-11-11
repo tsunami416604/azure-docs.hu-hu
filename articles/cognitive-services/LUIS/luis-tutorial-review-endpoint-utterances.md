@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 1047c117228b57f7361a1e386bc6cde7acbfdde8
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d2400c09a7d18faccc94464158419c81962d4a86
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042275"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282152"
 ---
 # <a name="tutorial-1-fix-unsure-predictions"></a>1. oktatóanyag: Bizonytalan előrejelzések javítása
 Ebben az oktatóanyagban az alkalmazás előrejelzéseit fejlesztheti a LUIS által nem ismert LUIS HTTP-végponton keresztül kapott kimondott szövegek ellenőrzésével vagy javításával. Bizonyos kimondott szövegek esetében a szándékot, míg más kimondott szövegek esetében az entitást kell ellenőrizni. A végponti kimondott szövegek áttekintésének az ütemezett LUIS-karbantartás szerves részét kell képeznie. 
@@ -61,7 +61,7 @@ Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforr
 
 ## <a name="review-endpoint-utterances"></a>A végpont beszédmódjainak áttekintése
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Válassza a **Review endpoint utterances** (Végponti kimondott szövegek áttekintése) elemet a bal oldali navigációs menüben. A lista az **ApplyForJob** szándék szerint van szűrve. 
 

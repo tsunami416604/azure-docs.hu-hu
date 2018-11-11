@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: cd7da8d2bbd684df29432bb924bdae3cd9ac7e64
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a2e1604a51b8343d926dda3b258d38b19266deeb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044437"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246684"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Ismerkedés a Power BI-Munkaterületcsoportok minta
 
@@ -26,9 +26,9 @@ A **a Microsoft Power BI-Munkaterületcsoportok**, integrálható a Power BI-jel
 
 Mielőtt továbbmennénk, ahova menteni szeretné az alábbi forrásanyagokat: biztosítják, amikor a Power BI-jelentések integrálása a mintaalkalmazást, és a saját alkalmazások túl.
 
-* [Munkaterület webes mintaalkalmazás](http://go.microsoft.com/fwlink/?LinkId=761493)
+* [Munkaterület webes mintaalkalmazás](https://go.microsoft.com/fwlink/?LinkId=761493)
 * [A Power BI munkaterületi gyűjtemények API-referencia](https://msdn.microsoft.com/library/azure/mt711507.aspx)
-* [A Power BI .NET SDK-val ](http://go.microsoft.com/fwlink/?LinkId=746472) (NuGet-n keresztül érhető el)
+* [A Power BI .NET SDK-val ](https://go.microsoft.com/fwlink/?LinkId=746472) (NuGet-n keresztül érhető el)
 * [A jelentés JavaScript beágyazási minta](https://microsoft.github.io/PowerBI-JavaScript/demo)
 
 > [!NOTE]
@@ -38,7 +38,7 @@ Mielőtt továbbmennénk, ahova menteni szeretné az alábbi forrásanyagokat: b
 
 Vegyük végig a Visual Studio fejlesztési környezet beállítása a mintaalkalmazás futtatásához szükséges összetevőinek eléréséhez.
 
-1. Töltse le és csomagolja ki a [Power BI-Munkaterületcsoportok - jelentés integrálása egy webalkalmazásba](http://go.microsoft.com/fwlink/?LinkId=761493) mintát a Githubon.
+1. Töltse le és csomagolja ki a [Power BI-Munkaterületcsoportok - jelentés integrálása egy webalkalmazásba](https://go.microsoft.com/fwlink/?LinkId=761493) mintát a Githubon.
 2. Nyissa meg **Power bi-embedded.sln** a Visual Studióban. Szükség lehet végrehajtani a **-csomag** a NuGet Package Manager konzol frissítéséhez a csomagokat a megoldásban használt parancsot.
 3. Hozza létre a megoldást.
 4. Futtassa a **ProvisionSample** konzolalkalmazást. A mintaalkalmazás konzol egy munkaterület kiépítése és a PBIX-fájl importálása.
@@ -51,7 +51,7 @@ Vegyük végig a Visual Studio fejlesztési környezet beállítása a mintaalka
 8. Másolja ki és mentse az újonnan létrehozott **munkaterület-Azonosítót** a cikk későbbi részében használni. Után a **munkaterület-Azonosítót** van létrehozva, akkor is megtalálhatják azt a **az Azure portal**.
 
     ![Munkaterület-Azonosítót az Azure Portalon](media/get-started-sample/workspace-id.png)
-9. Azokat a PBIX-fájl importálása az **munkaterület**, lehetőséggel **6. Import PBIX Desktop-fájlt egy meglévő munkaterületet,**. Ha nem rendelkezik egy PBIX-fájl hasznos, letöltheti a [kiskereskedelmi elemzési minta pbix-fájlt](http://go.microsoft.com/fwlink/?LinkID=780547).
+9. Azokat a PBIX-fájl importálása az **munkaterület**, lehetőséggel **6. Import PBIX Desktop-fájlt egy meglévő munkaterületet,**. Ha nem rendelkezik egy PBIX-fájl hasznos, letöltheti a [kiskereskedelmi elemzési minta pbix-fájlt](https://go.microsoft.com/fwlink/?LinkID=780547).
 10. Ha a rendszer kéri, adjon meg egy rövid nevet a **adatkészlet**.
 
 A következőhöz hasonló választ kell megjelennie:
@@ -83,7 +83,7 @@ A web app minta egy mintaalkalmazás jeleníti meg az importált jelentések a *
     ```
 3. Futtassa a **EmbedSample** webes alkalmazás.
 
-Futtatása után a **EmbedSample** webalkalmazást, a bal oldali navigációs panelen tartalmaznia kell egy **jelentések** menü. Az importált jelentés megtekintéséhez bontsa ki a **jelentések**, és kattintson a jelentés. Ha importálta a [kiskereskedelmi elemzési minta pbix-fájlt](http://go.microsoft.com/fwlink/?LinkID=780547), mintául szolgáló webalkalmazást a következő lenne:
+Futtatása után a **EmbedSample** webalkalmazást, a bal oldali navigációs panelen tartalmaznia kell egy **jelentések** menü. Az importált jelentés megtekintéséhez bontsa ki a **jelentések**, és kattintson a jelentés. Ha importálta a [kiskereskedelmi elemzési minta pbix-fájlt](https://go.microsoft.com/fwlink/?LinkID=780547), mintául szolgáló webalkalmazást a következő lenne:
 
 ![Minta bal oldali navigációs belül mintaalkalmazás](media/get-started-sample/sample-left-nav.png)
 

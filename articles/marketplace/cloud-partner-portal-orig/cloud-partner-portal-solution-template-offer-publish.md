@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 5320b8d5ca7456a6f1b0fdd1372c9f39ac1edfb0
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: c7c7912860568aea497e327f29a1b7b71b8f5e87
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219409"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345589"
 ---
 # <a name="publish-a-solution-template-to-azure-marketplace"></a>Egy megoldás-sablont tesz közzé az Azure Marketplace-en
 
@@ -161,7 +161,7 @@ Miután elvégezte a Termékváltozat-beállításokat, adja meg a következő c
 
 ![Csomag részletei](./media/cloud-partner-portal-publish-managed-app/newOffer_newsku_ST_package.png)
 
-- **Aktuális verzió** – a csomagot, amely a feltölteni kívánt verzióját. -Formátumúnak kell lennie...
+- **Aktuális verzió** – a csomagot, amely a feltölteni kívánt verzióját. Verzió címkéket az űrlap X.Y.Z, ha X, Y és Z egész számoknak kell lennie.
 
 - **Csomagfájl** – Ez a csomag tartalmazza a következő fájlokat, amelyek .zip-fájlként lesznek mentve.
 

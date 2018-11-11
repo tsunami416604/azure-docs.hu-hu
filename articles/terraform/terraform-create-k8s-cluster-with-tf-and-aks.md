@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/08/2018
-ms.openlocfilehash: f261c59193349d55d407e6079002b75884273e84
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fb4eabb247e6a4fe5550b2b23d34862c789bfaa1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960243"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232324"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Kubernetes-fürt létrehozása az Azure Kubernetes Service és a Terraform segítségével
 Az [Azure Kubernetes Service (AKS)](/azure/aks/) felügyeli az üzemeltetett Kubernetes környezetet, lehetővé téve a tárolóalapú alkalmazások gyors és egyszerű üzembe helyezését és felügyeletét tárolóvezénylési szakértelem nélkül is. Ezenkívül a folyamatban lévő műveletek és karbantartás terhét is megszünteti az erőforrások igény szerinti kiépítésével, frissítésével és méretezésével anélkül, hogy offline állapotba kellene helyezni az alkalmazásait.
@@ -372,6 +372,6 @@ A Kubernetes-eszközök használhatók az újonnan létrehozott fürt tesztelés
 Ebben a cikkben megismerte, hogyan használható a Terraform és az AKS egy Kubernetes-fürt létrehozásához. Íme néhány további segédlet, amelyek segítségével többet tudhat meg a Terraform az Azure-on történő használatáról: 
 
  [Terraform Hub a Microsoft.com webhelyen](https://docs.microsoft.com/azure/terraform/)  
- [Terraform: Azure szolgáltatói dokumentáció](http://aka.ms/terraform)  
- [Terraform: Azure-szolgáltatói forrás](http://aka.ms/tfgit)  
- [Terraform: Azure-modulok](http://aka.ms/tfmodules)
+ [Terraform: Azure szolgáltatói dokumentáció](https://aka.ms/terraform)  
+ [Terraform: Azure-szolgáltatói forrás](https://aka.ms/tfgit)  
+ [Terraform: Azure-modulok](https://aka.ms/tfmodules)

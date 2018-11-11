@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 25d13ba53eb5a8b411a557b5eaf05d278faa3733
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 3b979a9a7e93992ba593697fa9465fdadc1e58b9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869312"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240392"
 ---
 # <a name="replication-with-sql-database-managed-instance"></a>A replikáció az SQL Database felügyelt példánya
 
@@ -77,7 +77,7 @@ A következőket támogatja:
 ## <a name="configure-publishing-and-distribution-example"></a>Közzététel és terjesztés példa konfigurálása
 
 1. [Hozzon létre egy Azure SQL Database felügyelt példányába](sql-database-managed-instance-create-tutorial-portal.md) a portálon.
-2. [Hozzon létre egy Azure Storage-fiók](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) a munkakönyvtárhoz.
+2. [Hozzon létre egy Azure Storage-fiók](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) a munkakönyvtárhoz.
 
    Győződjön meg arról, a tárelérési kulcsok másolása. Lásd: [megtekintése és másolása tárelérési kulcsok](../storage/common/storage-account-manage.md#access-keys
 ).
@@ -85,11 +85,11 @@ A következőket támogatja:
 
    Cserélje le az alábbi parancsfájlpéldákat `<Publishing_DB>` e adatbázis nevére.
 
-4. Hozzon létre egy adatbázis-felhasználót a terjesztő SQL-hitelesítés. Látható, [adatbázis-felhasználók létrehozása](http://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users). Használjon biztonságos jelszót.
+4. Hozzon létre egy adatbázis-felhasználót a terjesztő SQL-hitelesítés. Látható, [adatbázis-felhasználók létrehozása](https://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users). Használjon biztonságos jelszót.
 
    Használja az alábbi parancsfájlpéldákat `<SQL_USER>` és `<PASSWORD>` az SQL Server-fiók adatbázis-felhasználót és a jelszót.
 
-5. [Csatlakozás az SQL Database felügyelt példány](http://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms).
+5. [Csatlakozás az SQL Database felügyelt példány](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms).
 
 6. Futtassa a következő lekérdezést a terjesztőn és a terjesztési adatbázis hozzáadása.
 
@@ -197,4 +197,4 @@ A következő funkciók nem támogatottak:
 
 ## <a name="see-also"></a>Lásd még:
 
-- [Mi a felügyelt példány?](http://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)
+- [Mi a felügyelt példány?](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)

@@ -3,7 +3,7 @@ title: Service Fabric Azure Files kötet illesztőprogram (előzetes verzió) |}
 description: Service Fabric támogatja kötetek biztonsági mentése Azure Files használatával a tárolóból. Ez jelenleg előzetes verzióban érhető el.
 services: service-fabric
 documentationcenter: other
-author: mani-ramaswamy
+author: TylerMSFT
 manager: timlt
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/10/2018
-ms.author: subramar
-ms.openlocfilehash: 0ce1ca09327fa0bd7fbbb82b8dc3c3bdc70d5028
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.author: twhitney, subramar
+ms.openlocfilehash: fabb44f9369dd7b7050ae353ab94263f140aae48
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239372"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346405"
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Service Fabric az Azure Files kötet illesztőprogram (előzetes verzió)
 Az Azure Files kötet beépülő modul van egy [Docker kötet beépülő modul](https://docs.docker.com/engine/extend/plugins_volume/) biztosít [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) köteteket a Docker-tárolók alapján. A Docker-kötet beépülő modult, a Service Fabric-alkalmazás telepítését követően a Service Fabric-fürtök van csomagolva. Ez azt szolgál az Azure Files-alapú más Service Fabric-tárolóalkalmazások a fürtön üzembe helyezett köteteket.
@@ -166,12 +166,11 @@ Az a **kötet** a fenti kódrészletben az Azure Files kötet beépülő modul e
 - **Cél** – Ez a címke a helyre, amely a kötet le van képezve a futó tároló belül. Ebből kifolyólag a cél nem lehet egy olyan helyre, a tároló már létezik
 
 Ahogy az a **DriverOption** elemek a fenti kódrészletben az Azure Files kötet beépülő modul támogatja a következő illesztőprogram-beállítások:
+- **shareName** – az Azure Files fájlmegosztás, amely a kötet biztosít a tároló nevét.
+- **storageAccountName** - neve az Azure storage-fiók, amely tartalmazza az Azure Files-fájl megosztása.
+- **storageAccountKey** – az Azure storage-fiókot, amely tartalmazza az Azure Files fájlmegosztás elérési kulcsát.
+- **storageAccountFQDN** -tartománynév, a storage-fiókhoz társított. Ha storageAccountFQDN nincs megadva, az alapértelmezett suffix(.file.core.windows.net) segítségével a storageAccountName tartománynév lesz összeállítva.  
 
-A támogatott illesztőprogram-beállítások:
-- **shareName** – az Azure Files fájlmegosztás, amely a kötet biztosít a tároló nevét
-- **storageAccountName** - neve az Azure storage-fiók, amely tartalmazza az Azure Files-fájl megosztása
-- **storageAccountKey** -hozzáférési kulcsát az Azure Files fájlmegosztást tartalmazó Azure storage-fiókban
-- **storageAccountFQDN** -tartománynév, a storage-fiókhoz társított. Ha storageAccountFQDN nincs megadva, az alapértelmezett suffix(.file.core.windows.net) segítségével a storageAccountName tartománynév lesz összeállítva. 
     ```xml
     - Example1: 
         <DriverOption Name="shareName" Value="myshare1" />
@@ -184,6 +183,7 @@ A támogatott illesztőprogram-beállítások:
         <DriverOption Name="storageAccountKey" Value="mykey2" />
         <DriverOption Name="storageAccountFQDN" Value="myaccount2.file.core.chinacloudapi.cn" />
     ```
+
 ## <a name="using-your-own-volume-or-logging-driver"></a>A saját kötet vagy a naplózás-illesztő segítségével
 A Service Fabric lehetővé teszi a saját egyéni használatát [kötet](https://docs.docker.com/engine/extend/plugins_volume/) vagy [naplózás](https://docs.docker.com/engine/admin/logging/overview/) illesztőprogramokat. Ha a fürtön a Docker-kötet/naplózási illesztőprogram nincs telepítve, telepítheti manuálisan az RDP/SSH-protokoll használatával. A telepít, és ezeket a protokollokat, keresztül hajthat végre egy [virtuálisgép-méretezési csoport indítási parancsfájl](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/) vagy egy [SetupEntryPoint parancsfájl](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model#describe-a-service).
 

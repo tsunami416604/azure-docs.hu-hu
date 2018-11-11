@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: ac3ce8a417a63ce0a91339c38c2a5ae8b3013228
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 11/09/2018
+ms.openlocfilehash: 27228904dab0726a1d84e58751a3315f3ff03447
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466783"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515386"
 ---
 # <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Logikai kiszolgáló és az Azure SQL Database önálló adatbázisok létrehozása és kezelése
 
@@ -60,7 +60,7 @@ Létező adatbázis kezeléséhez, lépjen a **SQL-adatbázisok** lapon, majd ka
 Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak az Azure PowerShell használatával, a következő PowerShell-parancsmagokat használja. Ha telepíteni vagy frissíteni a PowerShell, lásd: kell [Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps).
 
 > [!TIP]
-> A PowerShell a rövid útmutatóban talál [egyetlen Azure SQL-adatbázis létrehozása PowerShell használatával](sql-database-get-started-portal.md). PowerShell-példa szkriptek, lásd: [használja a Powershellt egy Azure SQL-adatbázis létrehozása és tűzfalszabály konfigurálása](scripts/sql-database-create-and-configure-database-powershell.md) és [figyelés és méret egy önálló SQL database PowerShell-lel](scripts/sql-database-monitor-and-scale-database-powershell.md).
+> PowerShell-példa szkriptek, lásd: [használja a Powershellt egy Azure SQL-adatbázis létrehozása és tűzfalszabály konfigurálása](scripts/sql-database-create-and-configure-database-powershell.md) és [figyelés és méret egy önálló SQL database PowerShell-lel](scripts/sql-database-monitor-and-scale-database-powershell.md).
 
 | Parancsmag | Leírás |
 | --- | --- |

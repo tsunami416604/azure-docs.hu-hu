@@ -6,45 +6,47 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 01/17/2018
+ms.date: 11/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: 59f2860168782d96bf82d0a27f9bb9eeed0f1020
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 53361ed460917fff42008283429967eff2e80ab2
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167494"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345096"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>A távoli figyelési megoldásgyorsító testreszabása
 
-Ez a cikk ismerteti, hogyan eléréséhez a Forráskód és a távoli figyelési megoldásgyorsító felhasználói felület testreszabása. A cikk ismerteti:
+Ez a cikk ismerteti, hogyan eléréséhez a Forráskód és a távoli figyelési megoldásgyorsító felhasználói felület testreszabása.
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prepare-a-local-development-environment-for-the-ui"></a>A helyi fejlesztési környezet előkészítése a felhasználói felületen
 
 A távoli figyelési megoldásgyorsító UI kód a React.js keretrendszer használatával lett megvalósítva. Annak a forráskódot a [azure-iot-pcs-remote-monitoring-webui](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) GitHub-adattárban.
 
-A változtatásokat a felhasználói felület, helyileg futtathatja egy példányát. A helyi példány egy különböző műveleteket, például a telemetriai adatok beolvasása a megoldás üzembe helyezett példány csatlakozik.
+A változtatásokat a felhasználói felület, helyileg futtathatja egy példányát. Például a telemetriai adatok beolvasása művelet végrehajtásához a helyi példány csatlakozik a megoldás egy telepített példányát.
 
 A helyi felhasználói felület fejlesztési környezet beállítása a folyamat lépései:
 
 1. Üzembe helyezése egy **alapszintű** példányának a megoldás gyorsító a **számítógépek** CLI. Jegyezze fel a nevét, valamint az üzembe helyezés, a virtuális gép a megadott hitelesítő adatok. További információkért lásd: [üzembe helyezés parancssori felületről](iot-accelerators-remote-monitoring-deploy-cli.md).
 
-1. Az Azure Portal vagy a [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ahhoz, hogy az a megoldás a mikroszolgáltatásokat üzemeltető virtuális gép SSH-hozzáférését. Példa:
+1. A megoldás a mikroszolgáltatásokat üzemeltető virtuális géphez SSH-hozzáférés engedélyezéséhez használja az Azure portal vagy az Azure Cloud Shell. Példa:
 
-    ```sh
+    ```azurecli-interactive
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
     ```
 
-    SSH-hozzáférés csak engedélyezze a fejlesztés és tesztelés során. Ha engedélyezi az SSH- [újra minél hamarabb tiltsa le,](../security/azure-security-network-security-best-practices.md#disable-rdpssh-access-to-virtual-machines).
+    Fejlesztés és tesztelés során csak engedélyezze az SSH-hozzáférést. Ha engedélyezi az SSH- [, amint elkészült, használja azt tiltsa le,](../security/azure-security-network-security-best-practices.md#disable-rdpssh-access-to-virtual-machines).
 
-1. Az Azure Portal vagy a [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) nevét és a virtuális gép nyilvános IP-cím megkereséséhez. Példa:
+1. Az Azure portal vagy az Azure Cloud Shell használatával keresse meg a nevet és a virtuális gép nyilvános IP-címét. Példa:
 
-    ```sh
+    ```azurecli-interactive
     az resource list --resource-group {your solution name} -o table
     az vm list-ip-addresses --name {your vm name from previous command} --resource-group {your solution name} -o table
     ```
 
-1. SSH-val csatlakozzon a virtuális géphez az IP-címet az előző lépést, és a futtatásakor a megadott hitelesítő adatok használatával **számítógépek** a megoldás üzembe helyezéséhez.
+1. Az SSH használatával csatlakozhat a virtuális géphez. Az IP-címet az előző lépést, és a futtatásakor a megadott hitelesítő adatok használata **számítógépek** a megoldás üzembe helyezéséhez. A `ssh` parancs érhető el az Azure Cloud shellben.
 
 1. Ahhoz, hogy a helyi UX csatlakozni, a virtuális gépen a bash felületen futtassa az alábbi parancsokat:
 
@@ -62,7 +64,9 @@ A helyi felhasználói felület fejlesztési környezet beállítása a folyamat
     REACT_APP_BASE_SERVICE_URL=https://{your solution name}.azurewebsites.net/
     ```
 
-1. A helyi példányának parancsot a parancssorba a `azure-iot-pcs-remote-monitoring-webui` mappában futtassa a következő parancsokat a szükséges kódtárak telepítése és a felhasználói felület helyileg történő futtatása:
+1. Egy parancssort, keresse meg a helyi példányát a `azure-iot-pcs-remote-monitoring-webui` mappát.
+
+1. A szükséges kódtárak telepítése, és a felhasználói felület helyi futtatását, futtassa a következő parancsokat:
 
     ```cmd/sh
     npm install
@@ -73,131 +77,160 @@ A helyi felhasználói felület fejlesztési környezet beállítása a folyamat
 
 ## <a name="customize-the-layout"></a>Az elrendezés testreszabása
 
-A távoli figyelési megoldás minden egyes oldalához tevődik össze a vezérlők, a továbbiakban *panelek* a forráskódban. Ha például a **irányítópult** lap öt panelek épül fel: áttekintése, térkép, riasztások, telemetriai adatok és a KPI-k. A forráskód minden lapon és a hozzá tartozó panelek meghatározó annak a [számítógépek-remote-monitoring-mire](https://github.com/Azure/pcs-remote-monitoring-webui) GitHub-adattárban. Például, ha a kódot, amely meghatározza a **irányítópult** oldalon, az elrendezését, és a panelek az oldalon található a [irányítópult src/components/oldalak](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) mappát.
+A távoli figyelési megoldás minden egyes oldalához tevődik össze a vezérlők, a továbbiakban *panelek* a forráskódban. A **irányítópult** lap öt panelek épül fel: áttekintése, térkép, riasztások, telemetriai adatokat és elemzések. A forráskód minden lapon és a hozzá tartozó panelek meghatározó annak a [számítógépek-remote-monitoring-mire](https://github.com/Azure/pcs-remote-monitoring-webui) GitHub-adattárban. Például, ha a kódot, amely meghatározza a **irányítópult** oldalon, az elrendezését, és a panelek az oldalon található a [irányítópult src/components/oldalak](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) mappát.
 
-A panelek saját elrendezés és a méretezés kezelése, mivel könnyen módosíthatja az oldal elrendezése. Például a következő módosításai a **PageContent** eleme a `src/components/pages/dashboard/dashboard.js` fájl cseréje igazítja a térkép és a telemetria panelt, és módosítsa a relatív szélességét a térkép és a KPI panelek:
+A panelek saját elrendezés és a méretezés kezelése, mivel könnyen módosíthatja az oldal elrendezése. A következő módosításokat a **PageContent** eleme a `src/components/pages/dashboard/dashboard.js` fájlt:
+
+* Felcserélés igazítja a térkép és a telemetria panelt.
+* A térkép és elemzés paneleken relatív szélességének módosítása
 
 ```nodejs
-<PageContent className="dashboard-container" key="page-content">
+<PageContent className="dashboard-container">
   <Grid>
     <Cell className="col-1 devices-overview-cell">
       <OverviewPanel
+        activeDeviceGroup={activeDeviceGroup}
         openWarningCount={openWarningCount}
         openCriticalCount={openCriticalCount}
         onlineDeviceCount={onlineDeviceCount}
         offlineDeviceCount={offlineDeviceCount}
-        isPending={kpisIsPending || devicesIsPending}
-        error={devicesError || kpisError}
+        isPending={analyticsIsPending || devicesIsPending}
+        error={deviceGroupError || devicesError || analyticsError}
         t={t} />
     </Cell>
-    <Cell className="col-5">
+    <Cell className="col-6">
       <TelemetryPanel
+        timeSeriesExplorerUrl={timeSeriesParamUrl}
         telemetry={telemetry}
         isPending={telemetryIsPending}
-        error={telemetryError}
+        lastRefreshed={lastRefreshed}
+        error={deviceGroupError || telemetryError}
+        theme={theme}
         colors={chartColorObjects}
         t={t} />
     </Cell>
     <Cell className="col-3">
-      <CustAlarmsPanel
-        alarms={currentActiveAlarmsWithName}
-        isPending={kpisIsPending || rulesIsPending}
-        error={rulesError || kpisError}
-        t={t} />
+      <AlertsPanel
+        alerts={currentActiveAlertsWithName}
+        isPending={analyticsIsPending || rulesIsPending}
+        error={rulesError || analyticsError}
+        t={t}
+        deviceGroups={deviceGroups} />
     </Cell>
     <Cell className="col-4">
-    <PanelErrorBoundary msg={t('dashboard.panels.map.runtimeError')}>
+      <PanelErrorBoundary msg={t('dashboard.panels.map.runtimeError')}>
         <MapPanel
+          analyticsVersion={analyticsVersion}
           azureMapsKey={azureMapsKey}
           devices={devices}
-          devicesInAlarm={devicesInAlarm}
+          devicesInAlert={devicesInAlert}
           mapKeyIsPending={azureMapsKeyIsPending}
-          isPending={devicesIsPending || kpisIsPending}
-          error={azureMapsKeyError || devicesError || kpisError}
+          isPending={devicesIsPending || analyticsIsPending}
+          error={azureMapsKeyError || devicesError || analyticsError}
           t={t} />
       </PanelErrorBoundary>
     </Cell>
     <Cell className="col-6">
-      <KpisPanel
-        topAlarms={topAlarmsWithName}
-        alarmsPerDeviceId={alarmsPerDeviceType}
-        criticalAlarmsChange={criticalAlarmsChange}
-        warningAlarmsChange={warningAlarmsChange}
-        isPending={kpisIsPending || rulesIsPending || devicesIsPending}
-        error={devicesError || rulesError || kpisError}
+      <AnalyticsPanel
+        timeSeriesExplorerUrl={timeSeriesParamUrl}
+        topAlerts={topAlertsWithName}
+        alertsPerDeviceId={alertsPerDeviceType}
+        criticalAlertsChange={criticalAlertsChange}
+        isPending={analyticsIsPending || rulesIsPending || devicesIsPending}
+        error={devicesError || rulesError || analyticsError}
+        theme={theme}
         colors={chartColorObjects}
         t={t} />
     </Cell>
+    {
+      Config.showWalkthroughExamples &&
+      <Cell className="col-4">
+        <ExamplePanel t={t} />
+      </Cell>
+    }
   </Grid>
 </PageContent>
 ```
 
 ![Paraméterpanel-elrendezés módosítása](./media/iot-accelerators-remote-monitoring-customize/layout.png)
 
-> [!NOTE]
-> A leképezés nem történik meg a helyi környezetben.
-
-Azt is megteheti az azonos panel több példányát, vagy több verzió Ha Ön [ismétlődő és a egy panel testreszabása](#duplicate-and-customize-an-existing-control). Az alábbi példa bemutatja, hogyan adhat hozzá a telemetriai adatok panel két példánya szerkesztésével a `src/components/pages/dashboard/dashboard.js` fájlt:
+Azt is megteheti az azonos panel több példányát, vagy több verzió Ha Ön [ismétlődő és a egy panel testreszabása](#duplicate-and-customize-an-existing-control). Az alábbi példa bemutatja, hogyan adhat hozzá a telemetriai adatok panel két példánya. A módosítások végrehajtásához szerkesztheti az `src/components/pages/dashboard/dashboard.js` fájlt:
 
 ```nodejs
-<PageContent className="dashboard-container" key="page-content">
+<PageContent className="dashboard-container">
   <Grid>
     <Cell className="col-1 devices-overview-cell">
       <OverviewPanel
+        activeDeviceGroup={activeDeviceGroup}
         openWarningCount={openWarningCount}
         openCriticalCount={openCriticalCount}
         onlineDeviceCount={onlineDeviceCount}
         offlineDeviceCount={offlineDeviceCount}
-        isPending={kpisIsPending || devicesIsPending}
-        error={devicesError || kpisError}
+        isPending={analyticsIsPending || devicesIsPending}
+        error={deviceGroupError || devicesError || analyticsError}
         t={t} />
     </Cell>
     <Cell className="col-3">
       <TelemetryPanel
+        timeSeriesExplorerUrl={timeSeriesParamUrl}
         telemetry={telemetry}
         isPending={telemetryIsPending}
-        error={telemetryError}
+        lastRefreshed={lastRefreshed}
+        error={deviceGroupError || telemetryError}
+        theme={theme}
         colors={chartColorObjects}
         t={t} />
     </Cell>
     <Cell className="col-3">
       <TelemetryPanel
+        timeSeriesExplorerUrl={timeSeriesParamUrl}
         telemetry={telemetry}
         isPending={telemetryIsPending}
-        error={telemetryError}
+        lastRefreshed={lastRefreshed}
+        error={deviceGroupError || telemetryError}
+        theme={theme}
         colors={chartColorObjects}
         t={t} />
     </Cell>
-    <Cell className="col-2">
-      <CustAlarmsPanel
-        alarms={currentActiveAlarmsWithName}
-        isPending={kpisIsPending || rulesIsPending}
-        error={rulesError || kpisError}
-        t={t} />
+    <Cell className="col-3">
+      <AlertsPanel
+        alerts={currentActiveAlertsWithName}
+        isPending={analyticsIsPending || rulesIsPending}
+        error={rulesError || analyticsError}
+        t={t}
+        deviceGroups={deviceGroups} />
     </Cell>
     <Cell className="col-4">
-    <PanelErrorBoundary msg={t('dashboard.panels.map.runtimeError')}>
+      <PanelErrorBoundary msg={t('dashboard.panels.map.runtimeError')}>
         <MapPanel
+          analyticsVersion={analyticsVersion}
           azureMapsKey={azureMapsKey}
           devices={devices}
-          devicesInAlarm={devicesInAlarm}
+          devicesInAlert={devicesInAlert}
           mapKeyIsPending={azureMapsKeyIsPending}
-          isPending={devicesIsPending || kpisIsPending}
-          error={azureMapsKeyError || devicesError || kpisError}
+          isPending={devicesIsPending || analyticsIsPending}
+          error={azureMapsKeyError || devicesError || analyticsError}
           t={t} />
       </PanelErrorBoundary>
     </Cell>
     <Cell className="col-6">
-      <KpisPanel
-        topAlarms={topAlarmsWithName}
-        alarmsPerDeviceId={alarmsPerDeviceType}
-        criticalAlarmsChange={criticalAlarmsChange}
-        warningAlarmsChange={warningAlarmsChange}
-        isPending={kpisIsPending || rulesIsPending || devicesIsPending}
-        error={devicesError || rulesError || kpisError}
+      <AnalyticsPanel
+        timeSeriesExplorerUrl={timeSeriesParamUrl}
+        topAlerts={topAlertsWithName}
+        alertsPerDeviceId={alertsPerDeviceType}
+        criticalAlertsChange={criticalAlertsChange}
+        isPending={analyticsIsPending || rulesIsPending || devicesIsPending}
+        error={devicesError || rulesError || analyticsError}
+        theme={theme}
         colors={chartColorObjects}
         t={t} />
     </Cell>
+    {
+      Config.showWalkthroughExamples &&
+      <Cell className="col-4">
+        <ExamplePanel t={t} />
+      </Cell>
+    }
   </Grid>
 </PageContent>
 ```
@@ -206,33 +239,30 @@ Különféle telemetriai majd minden egyes panelen tekintheti meg:
 
 ![Több telemetria panelek](./media/iot-accelerators-remote-monitoring-customize/multiple-telemetry.png)
 
-> [!NOTE]
-> A leképezés nem történik meg a helyi környezetben.
-
 ## <a name="duplicate-and-customize-an-existing-control"></a>Ismétlődő és a egy meglévő vezérlő testreszabása
 
-Az alábbi lépéseket vázlat használata a **riasztások** panel egy meglévő panel ismétlődő, módosítsa, és a módosított verzióját használja példaként:
+Az egyes lépései egy meglévő panel ismétlődő, módosítsa, és ezután a módosított verzióját használja. A lépések a **riasztások** példaként panel:
 
-1. Az adattár helyi példányában, készítsen másolatot a **riasztások** mappájában a `src/components/pages/dashboard/panels` mappát. Nevezze el az új példány **cust_alarms**.
+1. Az adattár helyi példányában, készítsen másolatot a **riasztások** mappájában a `src/components/pages/dashboard/panels` mappát. Nevezze el az új példány **cust_alerts**.
 
-1. Az a **alarmsPanel.js** fájlt a **cust_alarms** mappában kell az osztály neve szerkesztése **CustAlarmsPanel**:
+1. Az a **alertsPanel.js** fájlt a **cust_alerts** mappában kell az osztály neve szerkesztése **CustAlertsPanel**:
 
     ```nodejs
-    export class CustAlarmsPanel extends Component {
+    export class CustAlertsPanel extends Component {
     ```
 
 1. Adja hozzá a következő sort a `src/components/pages/dashboard/panels/index.js` fájlt:
 
     ```nodejs
-    export * from './cust_alarms';
+    export * from './cust_alerts';
     ```
 
-1. Cserélje le `AlarmsPanel` a `CustAlarmsPanel` a a `src/components/pages/dashboard/dashboard.js` fájlt:
+1. Cserélje le `alertsPanel` a `CustAlertsPanel` a a `src/components/pages/dashboard/dashboard.js` fájlt:
 
     ```nodejs
     import {
       OverviewPanel,
-      CustAlarmsPanel,
+      CustAlertsPanel,
       TelemetryPanel,
       KpisPanel,
       MapPanel,
@@ -243,17 +273,17 @@ Az alábbi lépéseket vázlat használata a **riasztások** panel egy meglévő
     ...
 
     <Cell className="col-3">
-      <CustAlarmsPanel
-        alarms={currentActiveAlarmsWithName}
+      <CustAlertsPanel
+        alerts={currentActivealertsWithName}
         isPending={kpisIsPending || rulesIsPending}
         error={rulesError || kpisError}
         t={t} />
     </Cell>
     ```
 
-Most már átvették a az eredeti **riasztások** panel egy másolatot nevű **CustAlarms**. Ezt a másolatot megegyezik az eredeti. Módosíthatja a példányt. Például alakítani az oszlopot a rendezéshez a **riasztások** panelen:
+Most már lecserélte az eredeti **riasztások** panel egy másolatot nevű **CustAlerts**. Ez legyen ugyanaz, mint az eredeti. Módosíthatja a példányt. Például alakítani az oszlopot a rendezéshez a **riasztások** panelen:
 
-1. Nyissa meg az `src/components/pages/dashboard/panels/cust_alarms/alarmsPanel.js` fájlt.
+1. Nyissa meg az `src/components/pages/dashboard/panels/cust_alerts/alertsPanel.js` fájlt.
 
 1. Módosítsa a magyarázat, az alábbi kódrészletben látható módon:
 
@@ -274,11 +304,11 @@ Most már átvették a az eredeti **riasztások** panel egy másolatot nevű **C
 
 Az alábbi képernyőfelvételen az új verzió a **riasztások** panelen:
 
-![Frissítve a riasztások panelén](./media/iot-accelerators-remote-monitoring-customize/reorder-columns.png)
+![frissített riasztások panel](./media/iot-accelerators-remote-monitoring-customize/reorder-columns.png)
 
 ## <a name="customize-the-telemetry-chart"></a>A telemetriai adatok diagram testreszabása
 
-A telemetriai adatok diagramra a **irányítópult** lapon határozza meg a fájlokat a `src/components/pages/dashboard/panels/telemtry` mappát. A felhasználói felület a telemetria lekéri a megoldás háttérrendszere az a `src/services/telemetryService.js` fájlt. A következő lépések bemutatják, hogyan módosíthatja az adott időszakban, a telemetriai diagram 15 perc és 5 perc jelenik meg:
+A fájlokat a `src/components/pages/dashboard/panels/telemtry` mappát adja meg a telemetriai adatok diagram a **irányítópult** lapot. A felhasználói felület a telemetria lekéri a megoldás háttérrendszere az a `src/services/telemetryService.js` fájlt. A következő lépések bemutatják, hogyan módosíthatja az adott időszakban, a telemetriai adatok diagram 15 5 perc alatt jelenik meg:
 
 1. Az a `src/services/telemetryService.js` fájlt, keresse meg a hívott függvény **getTelemetryByDeviceIdP15M**. Ez a függvény egy példányának, és módosítsa a példányt a következőképpen:
 
@@ -305,28 +335,29 @@ A telemetriai adatok diagram most már a telemetriai adatok öt perc alatt láth
 
 ## <a name="add-a-new-kpi"></a>Új KPI hozzáadása
 
-A **irányítópult** oldalon megjelennek a KPI-k a **rendszer KPI-k** panel. Ezen KPI-k alapján számítjuk ki a `src/components/pages/dashboard/dashboard.js` fájlt. A KPI-k által vannak leképezve a `src/components/pages/dashboard/panels/kpis/kpisPanel.js` fájlt. A következő lépések azt ismertetik, hogyan kiszámításához és a egy új KPI-érték megjelenítése a a **irányítópult** lapot. A példában is látható, hogy százalékot módosítást hozzáadása a figyelmeztető riasztások KPI:
+A **irányítópult** oldalon megjelennek a KPI-k a **Analytics** panel. Ezen KPI-k alapján számítjuk ki a `src/components/pages/dashboard/dashboard.js` fájlt. A KPI-k által vannak leképezve a `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` fájlt. A következő lépések azt ismertetik, hogyan kiszámításához és a egy új KPI-érték megjelenítése a a **irányítópult** lapot. A példában is látható, hogy százalékot módosítást hozzáadása a figyelmeztető riasztások KPI:
 
-1. Nyissa meg az `src/components/pages/dashboard/dashboard.js` fájlt. Módosítsa a **initialState** objektum tartalmazza a **warningAlarmsChange** tulajdonság az alábbiak szerint:
+1. Nyissa meg az `src/components/pages/dashboard/dashboard.js` fájlt. Módosítsa a **initialState** objektum tartalmazza a **warningAlertsChange** tulajdonság az alábbiak szerint:
 
     ```nodejs
     const initialState = {
       ...
 
-      // Kpis data
-      currentActiveAlarms: [],
-      topAlarms: [],
-      alarmsPerDeviceId: {},
-      criticalAlarmsChange: 0,
-      warningAlarmsChange: 0,
-      kpisIsPending: true,
-      kpisError: null,
+      // Analytics data
+      analyticsVersion: 0,
+      currentActiveAlerts: [],
+      topAlerts: [],
+      alertsPerDeviceId: {},
+      criticalAlertsChange: 0,
+      warningAlertsChange: 0,
+      analyticsIsPending: true,
+      analyticsError: null
 
       ...
     };
     ```
 
-1. Módosítsa a **currentAlarmsStats** objektum tartalmazza **totalWarningCount** tulajdonságként:
+1. Módosítsa a **currentAlertsStats** objektum tartalmazza **totalWarningCount** tulajdonságként:
 
     ```nodejs
     return {
@@ -338,49 +369,51 @@ A **irányítópult** oldalon megjelennek a KPI-k a **rendszer KPI-k** panel. Ez
     };
     ```
 
-1. Az új KPI kiszámítása. Keresse meg a kritikus riasztások számának kiszámítása. Ismétlődő a kódot, és módosítsa a példányt a következőképpen:
+1. Az új KPI kiszámítása. Keresse meg a kritikus riasztások száma kiszámítása. Ismétlődő a kódot, és módosítsa a példányt a következőképpen:
 
     ```nodejs
-    // ================== Warning Alarms Count - START
-    const currentWarningAlarms = currentAlarmsStats.totalWarningCount;
-    const previousWarningAlarms = previousAlarms.reduce(
-      (cnt, { severity }) => severity === 'warning' ? cnt + 1 : cnt,
+    // ================== Warning Alerts Count - START
+    const currentWarningAlerts = currentAlertsStats.totalWarningCount;
+    const previousWarningAlerts = previousAlerts.reduce(
+      (cnt, { severity }) => severity === Config.ruleSeverity.warning ? cnt + 1 : cnt,
       0
     );
-    const warningAlarmsChange = ((currentWarningAlarms - previousWarningAlarms) / currentWarningAlarms * 100).toFixed(2);
-    // ================== Warning Alarms Count - END
+    const warningAlertsChange = ((currentWarningAlerts - previousWarningAlerts) / currentWarningAlerts * 100).toFixed(2);
+    // ================== Warning Alerts Count - END
     ```
 
-1. Tartalmazza az új **warningAlarmsChange** a KPI-Stream KPI:
+1. Tartalmazza az új **warningAlertsChange** a KPI-Stream KPI:
 
     ```nodejs
     return ({
-      kpisIsPending: false,
+      analyticsIsPending: false,
+      analyticsVersion: this.state.analyticsVersion + 1,
 
-      // Kpis data
-      currentActiveAlarms,
-      topAlarms,
-      criticalAlarmsChange,
-      warningAlarmsChange,
-      alarmsPerDeviceId: currentAlarmsStats.alarmsPerDeviceId,
+      // Analytics data
+      currentActiveAlerts,
+      topAlerts,
+      criticalAlertsChange,
+      warningAlertsChange,
+      alertsPerDeviceId: currentAlertsStats.alertsPerDeviceId,
 
       ...
     });
     ```
 
-1. Tartalmazza az új **warningAlarmsChange** KPI állapot adatainak megjelenítése a felhasználói felület:
+1. Tartalmazza az új **warningAlertsChange** KPI állapot adatainak megjelenítése a felhasználói felület:
 
     ```nodejs
     const {
       ...
 
-      currentActiveAlarms,
-      topAlarms,
-      alarmsPerDeviceId,
-      criticalAlarmsChange,
-      warningAlarmsChange,
-      kpisIsPending,
-      kpisError,
+      analyticsVersion,
+      currentActiveAlerts,
+      topAlerts,
+      alertsPerDeviceId,
+      criticalAlertsChange,
+      warningAlertsChange,
+      analyticsIsPending,
+      analyticsError,
 
       ...
     } = this.state;
@@ -389,46 +422,47 @@ A **irányítópult** oldalon megjelennek a KPI-k a **rendszer KPI-k** panel. Ez
 1. A KPI-k panel átadott adatok frissítése:
 
     ```node.js
-    <KpisPanel
-      topAlarms={topAlarmsWithName}
-      alarmsPerDeviceId={alarmsPerDeviceType}
-      criticalAlarmsChange={criticalAlarmsChange}
-      warningAlarmsChange={warningAlarmsChange}
-      isPending={kpisIsPending || rulesIsPending || devicesIsPending}
-      error={devicesError || rulesError || kpisError}
+    <AnalyticsPanel
+      timeSeriesExplorerUrl={timeSeriesParamUrl}
+      topAlerts={topAlertsWithName}
+      alertsPerDeviceId={alertsPerDeviceType}
+      criticalAlertsChange={criticalAlertsChange}
+      warningAlertsChange={warningAlertsChange}
+      isPending={analyticsIsPending || rulesIsPending || devicesIsPending}
+      error={devicesError || rulesError || analyticsError}
+      theme={theme}
       colors={chartColorObjects}
       t={t} />
     ```
 
-Most már befejezte a változásokat a `src/components/pages/dashboard/dashboard.js` fájlt. Az alábbi lépések bemutatják, hogy a módosítások a `src/components/pages/dashboard/panels/kpis/kpisPanel.js` fájlt az új KPI megjelenítéséhez:
+A módosítások a már végzett a `src/components/pages/dashboard/dashboard.js` fájlt. Az alábbi lépések bemutatják, hogy a módosítások a `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` fájlt az új KPI megjelenítéséhez:
 
 1. Módosítsa a következő kódsort az új KPI-értékre a következő lekéréséhez:
 
     ```nodejs
-    const { t, isPending, criticalAlarmsChange, warningAlarmsChange, error } = this.props;
+    const { t, isPending, criticalAlertsChange, warningAlertsChange, alertsPerDeviceId, topAlerts, timeSeriesExplorerUrl, error } = this.props;
     ```
 
 1. Módosítsa a jelölőnyelvi az új KPI-értékre a következő megjelenítése:
 
     ```nodejs
-    <div className="kpi-cell">
-      <div className="kpi-header">{t('dashboard.panels.kpis.criticalAlarms')}</div>
-      <div className="critical-alarms">
+    <div className="analytics-cell">
+      <div className="analytics-header">{t('dashboard.panels.analytics.criticalAlerts')}</div>
+      <div className="critical-alerts">
         {
-          criticalAlarmsChange !== 0 &&
-            <div className="kpi-percentage-container">
-              <div className="kpi-value">{ criticalAlarmsChange }</div>
-              <div className="kpi-percentage-sign">%</div>
+          !showOverlay &&
+            <div className="analytics-percentage-container">
+              <div className="analytics-value">{ !isNaN(criticalAlertsChange) ? criticalAlertsChange : 0 }</div>
+              <div className="analytics-percentage-sign">%</div>
             </div>
         }
       </div>
-      <div className="kpi-header">{t('Warning alarms')}</div>
-      <div className="critical-alarms">
+      <div className="critical-alerts">
         {
-          warningAlarmsChange !== 0 &&
-            <div className="kpi-percentage-container">
-              <div className="kpi-value">{ warningAlarmsChange }</div>
-              <div className="kpi-percentage-sign">%</div>
+          !showOverlay &&
+            <div className="analytics-percentage-container">
+              <div className="analytics-value">{ !isNaN(warningAlertsChange) ? warningAlertsChange : 0 }</div>
+              <div className="analytics-percentage-sign">%</div>
             </div>
         }
       </div>

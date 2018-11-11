@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.component: common
-ms.openlocfilehash: fa73062cc2fdfa3704088f37b2e4856e134a6dfe
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 4f0558f9619aa06557cf89e885154f6326d4b150
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979029"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281778"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer – hibaelhárítási útmutató
 
@@ -59,6 +59,9 @@ Ha a hurok újrahitelesítést, vagy módosította az egyik a fiók egyszerű Fe
 1. Távolítsa el az összes fiókot, és zárja be a Storage Explorerben
 2. Törölje a. IdentityService mappájában található a gépen. A Windows, a mappa a következő helyen található `C:\users\<username>\AppData\Local`. A mappa gyökerénél legyen a felhasználói címtár annak Macre és Linuxra készült.
 3. Ha Mac vagy Linux rendszeren, is szüksége lesz a Microsoft.Developer.IdentityService tétel törlését az operációs rendszer keystore. A kulcstár Mac, a "Kulcslánc Gnome" alkalmazás, amely. A Linux rendszerre az alkalmazás általában neve "Kulcstár", de lehet, hogy a név attól függően változik, a terjesztési.
+
+### <a name="conditional-access"></a>Feltételes hozzáférés
+Feltételes hozzáférés nem támogatott, ha a Storage Explorer a Windows 10, Linux vagy macOS rendszeren használja. A Storage Explorer által használt AAD-erőforrástárban korlátozása miatt nem lehetséges.
 
 ## <a name="mac-keychain-errors"></a>Mac kulcslánc-hibák
 A macOS kulcslánc néha kérheti le a Storage Explorer hitelesítési tár problémákat okozó állapotba. Lekérése a kulcsláncban a állapot próbálja ki az alábbi lépéseket:

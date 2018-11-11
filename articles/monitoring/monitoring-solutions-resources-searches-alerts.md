@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4955c535cd033a1e4a5825303133eb2bd3eecd25
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 427ac67b812da449333e4868e54ca36d2c6f54af
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260329"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282330"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics hozzáadása mentett keresések és a riasztások felügyeleti megoldásra (előzetes verzió)
 
@@ -27,7 +27,7 @@ ms.locfileid: "51260329"
 > Ez az előzetes dokumentum, jelenleg előzetes verzióban elérhető kezelési megoldások létrehozásához. Semmilyen sémát, az alábbiakban a változhat.   
 
 
-[Felügyeleti megoldások](monitoring-solutions.md) rendszerint tartalmazza a [mentett keresések](../log-analytics/log-analytics-queries.md) a Log Analytics megoldás által összegyűjtött adatok elemzéséhez.  Ezen felül is meghatározhatnak [riasztások](../log-analytics/log-analytics-alerts.md) értesíti a felhasználót, vagy automatikusan hajtsa végre a műveletet egy kritikus problémát adott válaszként.  Ez a cikk azt ismerteti, hogyan adhat meg a Log Analytics-beli mentett keresések, és a riasztást egy [Resource Management-sablonnal](../resource-manager-template-walkthrough.md) így is szerepelni a [felügyeleti megoldások](monitoring-solutions-creating.md).
+[Felügyeleti megoldások](monitoring-solutions.md) rendszerint tartalmazza a [mentett keresések](../log-analytics/log-analytics-queries.md) a Log Analytics megoldás által összegyűjtött adatok elemzéséhez.  Ezen felül is meghatározhatnak [riasztások](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) értesíti a felhasználót, vagy automatikusan hajtsa végre a műveletet egy kritikus problémát adott válaszként.  Ez a cikk azt ismerteti, hogyan adhat meg a Log Analytics-beli mentett keresések, és a riasztást egy [Resource Management-sablonnal](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) így is szerepelni a [felügyeleti megoldások](monitoring-solutions-creating.md).
 
 > [!NOTE]
 > Ebben a cikkben a minták használata, paraméterek és változók, kötelező vagy közös felügyeleti megoldások és az itt ismertetett [tervezés és felépítés felügyeleti megoldás az Azure-ban](monitoring-solutions-creating.md)  

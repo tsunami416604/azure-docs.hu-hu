@@ -10,16 +10,16 @@ ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: a74e6a6a90a242d4d1b2fd71a5fc6cf949ea55cb
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 5e168608202f81f698221b52315de83e9713feab
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815256"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282923"
 ---
 # <a name="configure-your-custom-search-experience"></a>Konfigurálja az egyéni keresés
 
-Egy egyéni keresési példány lehetővé teszi a keresési funkciók csak tartalmát, hogy a felhasználók számára is megfelelő kódolási sebesség kiválasztását. Helyett a webes keresés, a Bing keresés csak az Önt érdeklő webes szelet. A webes egyéni nézetének létrehozásához használja a Bing Custom Search [portál](https://customsearch.ai). További információ a portál bejelentkezés: [az első Bing Custom Search-példány létrehozása](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/quick-start). 
+Egy egyéni keresési példány lehetővé teszi a keresési funkciók csak tartalmát, hogy a felhasználók számára is megfelelő kódolási sebesség kiválasztását. Helyett a webes keresés, a Bing keresés csak az Önt érdeklő webes szelet. Az egyéni kívánalmaknak megfelelő webes keresés létrehozásához használja a Bing Custom Search [portált](https://customsearch.ai). További információ a portál bejelentkezés: [az első Bing Custom Search-példány létrehozása](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/quick-start). 
 
 A portálon egy keresési példányát, amely meghatározza a tartományok, mindegyik lapot tünteti, és, amelyek azt szeretné, hogy a Keresés a Bing és az azokkal, amelyek nem szeretné, hogy a keresés létrehozását teszi lehetővé. A tartalom, hogy megismerkedett az URL-címek megadása, mellett is kérhet, javasolja a tartalmakat, amelyeket érdemes a nézethez hozzáadandó a portálon. 
 
@@ -64,7 +64,7 @@ Hasonlóképpen adhat hozzá szeletek letiltott listán (kivéve a szeletek mega
 
 ## <a name="pinned-list"></a>Rögzített listája
 
-A portál segítségével rögzítheti egy adott weboldal a keresési eredmények tetejére, ha a felhasználó egy adott keresési kifejezést ad meg. A **Pinned** lapon lekérdezési kifejezés, és a weblap párok, melyek adja meg a weblap, egy adott lekérdezésre vonatkozó felső eredményként megjelenő listáját tartalmazza. További információ a rögzítés eredmények: [rangsor módosítása](#adjustrank).
+A portál azt is lehetővé teszi, hogy egy meghatározott weboldalt rögzítsen a keresési eredmények elején, ha a felhasználó egy bizonyos keresési kifejezést ad meg. A **Pinned** lapon lekérdezési kifejezés, és a weblap párok, melyek adja meg a weblap, egy adott lekérdezésre vonatkozó felső eredményként megjelenő listáját tartalmazza. Ezenkívül csak indexelt weblapjait keresések megjelennek. További információ a rögzítés eredmények: [rangsor módosítása](#adjustrank). 
 
 Rögzítés eredmények nem áll rendelkezésre a képkeresési, és a videó keresési megoldásokat.
 
@@ -95,9 +95,9 @@ A portál segítségével módosíthatja a ranglistán megjelenő módosításá
   
 - Jelentősen növelheti. A tartomány vagy nagyobb a keresési eredmények Melléklap kiadóvállalat tartalmat. Akkor válassza ki, hogy jelentősen növelheti a tartalom a tartományból vagy subpage, hogy a képernyőn látható weblapon tartozik. [További](#boosting-and-demoting)  
   
-- Lefokozása. Értéksorrá minősíti vissza a tartományt vagy a keresési eredmények alsó Melléklap tartalmat. Akkor válassza ki, hogy fokozza le a tartalmat a tartományból vagy subpage, hogy a képernyőn látható weblapon tartozik. [További információk](#boosting-and-demoting).  
+- Lefokozása. Értéksorrá minősíti vissza a tartományt vagy a keresési eredmények alsó Melléklap tartalmat. Akkor válassza ki, hogy fokozza le a tartalmat a tartományból vagy subpage, hogy a képernyőn látható weblapon tartozik. [További információ](#boosting-and-demoting).  
   
-- PIN-kód fent. Adja meg a weblap, amelyen a legfelül jelenik meg az eredményeket, ha a felhasználó lekérdezési karakterlánc megfelel a PIN-kódok. lekérdezési karakterlánc alapján a PIN-kódot az egyezési feltétellel. Az aktív lista nem kell tartalmaznia, hogy rögzítse a képernyőn látható weblapon. [További információk](#pin-to-top).
+- PIN-kód fent. Adja meg a weblap, amelyen a legfelül jelenik meg az eredményeket, ha a felhasználó lekérdezési karakterlánc megfelel a PIN-kódok. lekérdezési karakterlánc alapján a PIN-kódot az egyezési feltétellel. Az aktív lista nem kell tartalmaznia, hogy rögzítse a képernyőn látható weblapon. [További információ](#pin-to-top).
 
 Rangsor módosítása esetén nem áll rendelkezésre a képkeresési, és a videó keresési megoldásokat.
 
@@ -175,7 +175,7 @@ Ha egyéni keresés megfelelő szinten előfizetett (lásd a [díjszabási lapja
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hívja meg az egyéni keresés](./search-your-custom-view.md)
-- [A központi felhasználói felület konfigurálása](./hosted-ui.md)
-- [Kiemeli a szöveget decoration jelölők használatával](./hit-highlighting.md)
-- [Oldal weblapok](./page-webpages.md)
+- [Egyéni keresés meghívása](./search-your-custom-view.md)
+- [Üzemeltetett felhasználói felület konfigurálása](./hosted-ui.md)
+- [Díszítő jelölők használata szövegkiemeléshez](./hit-highlighting.md)
+- [Weboldalak lapozása](./page-webpages.md)

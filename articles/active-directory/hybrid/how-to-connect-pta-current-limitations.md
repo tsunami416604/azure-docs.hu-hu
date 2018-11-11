@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: acb3297b8d7af1a91563fb2f519e06bc49c65695
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ae6964b36f837931f2278ceef0b330f9badb1d71
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314621"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282713"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Az Azure Active Directory átmenő hitelesítés: Aktuális korlátozások
 
@@ -54,7 +54,7 @@ Jelszókivonat-szinkronizálás engedélyezése teszi meg a feladatátvételi hi
 
 ## <a name="next-steps"></a>További lépések
 - [Gyors üzembe helyezési](how-to-connect-pta-quick-start.md): első lépésekhez az Azure AD átmenő hitelesítés.
-- [Az AD FS át az átmenő hitelesítés](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) – egy részletes útmutató, amellyel áttelepíteni az átmenő hitelesítés az Active Directory összevonási szolgáltatások (vagy más összevonási technológiákkal).
+- [Az AD FS át az átmenő hitelesítés](https://aka.ms/ADFSTOPTADPDownload) – egy részletes útmutató, amellyel áttelepíteni az átmenő hitelesítés az Active Directory összevonási szolgáltatások (vagy más összevonási technológiákkal).
 - [Az intelligens zárolási](../authentication/howto-password-smart-lockout.md): ismerje meg, hogyan konfigurálhatja az intelligens zárolás funkciót a bérlő felhasználói fiókok védelmét.
 - [Részletes technikai](how-to-connect-pta-how-it-works.md): az átmenő hitelesítési szolgáltatás működésének megismerése.
 - [Gyakori kérdések](how-to-connect-pta-faq.md): az átmenő hitelesítés szolgáltatással kapcsolatos gyakori kérdésekre adott válaszok.

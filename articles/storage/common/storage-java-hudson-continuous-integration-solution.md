@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: 86a14d12f6621524ef26e2a869d4be532105dc77
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a62af881efd4f6f3422db19850a0ce9987c6ae7b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732346"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245120"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Az Azure Storage szolgáltatás használata Hudson folyamatos integrációs megoldással
 ## <a name="overview"></a>Áttekintés
@@ -146,7 +146,7 @@ A következő a Blob szolgáltatás-összetevők áttekintést nyújt.
 
 * **Storage-fiók**: minden, az Azure Storage-hozzáférés tárfiókon keresztül történik. Ez az a névtér a blobok elérése a legmagasabb szintű. Egy fiók korlátlan számú tárolók, tartalmazhat, mindaddig, amíg azok teljes mérete 100 TB-os alatt.
 * **Tároló**: tároló blobokat áll csoportosítását biztosítja. Az összes blobnak tárolóban kell lennie. Egy fiók korlátlan számú tárolót tartalmazhat. Egy tároló korlátlan számú blob tárolására használható.
-* **BLOB**: bármilyen típusú és méretű fájl. A blobok Azure Storage-ban tárolt két típusa van: blokkblobok és lapblobok. Fájlok a legtöbb esetben blokkblobok. Egyetlen blokkblob akár 200 GB méretű lehet. Ebben az oktatóanyagban a blokkblobok használatát támogatják. Lapblobok és a egy másik blob típusú tárfiók, akár 1 TB-ig a mérete, és kiváló hatékonyabb lehet, ha egy fájlban bájtos címtartományok gyakran módosítják. Blobok kapcsolatos további információkért lásd: [Understanding Block Blobs, hozzáfűző blobokat és Lapblobokat](http://msdn.microsoft.com/library/azure/ee691964.aspx).
+* **BLOB**: bármilyen típusú és méretű fájl. A blobok Azure Storage-ban tárolt két típusa van: blokkblobok és lapblobok. Fájlok a legtöbb esetben blokkblobok. Egyetlen blokkblob akár 200 GB méretű lehet. Ebben az oktatóanyagban a blokkblobok használatát támogatják. Lapblobok és a egy másik blob típusú tárfiók, akár 1 TB-ig a mérete, és kiváló hatékonyabb lehet, ha egy fájlban bájtos címtartományok gyakran módosítják. Blobok kapcsolatos további információkért lásd: [Understanding Block Blobs, hozzáfűző blobokat és Lapblobokat](https://msdn.microsoft.com/library/azure/ee691964.aspx).
 * **URL-formátum**: Blobok legyenek a következő URL-formátummal:
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
@@ -162,6 +162,6 @@ A következő a Blob szolgáltatás-összetevők áttekintést nyújt.
 * [Az Azure Storage-hoz készült Java SDK](https://github.com/azure/azure-storage-java)
 * [Azure Storage ügyféloldali SDK-referencia](http://dl.windowsazure.com/storage/javadoc/)
 * [Az Azure Storage-szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Az Azure Storage csapat blogja](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Az Azure Storage csapat blogja](https://blogs.msdn.com/b/windowsazurestorage/)
 
 További információ: [Azure Java-fejlesztőknek](/java/azure).

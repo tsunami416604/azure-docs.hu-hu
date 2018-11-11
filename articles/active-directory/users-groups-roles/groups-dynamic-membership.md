@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 11/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 53c50ba75a16c58d7936a6f06de87218f67f5951
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: c2e50362de48991c818017b59632be3b0e74cb0b
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219596"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282067"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Az Azure Active Directory a dinamikus tagsági szabályok
 
@@ -339,7 +339,9 @@ Az egyéni tulajdonság neve található a címtárban lekérdezi a felhasznál�
 
 ## <a name="rules-for-devices"></a>Eszközök szabályai
 
-Egy szabály, amely eszközobjektumok tagsági kiválaszt egy csoportot is létrehozhat. Csoport tagjai nem lehet a felhasználókat és eszközöket egyaránt. A következő eszköz attribútumokat is használható.
+Egy szabály, amely eszközobjektumok tagsági kiválaszt egy csoportot is létrehozhat. Csoport tagjai nem lehet a felhasználókat és eszközöket egyaránt. A **organizationalUnit** attribútum már nincs felsorolva, és nem használható. Ez a karakterlánc adott esetben az Intune által van beállítva, de nem ismeri fel az Azure AD-ben, az eszközök nem ez az attribútum alapján kerülnek.
+
+A következő eszköz attribútumokat is használható.
 
  Eszköz-attribútum  | Értékek | Példa
  ----- | ----- | ----------------
@@ -355,7 +357,6 @@ Egy szabály, amely eszközobjektumok tagsági kiválaszt egy csoportot is létr
  enrollmentProfileName | Az Apple Eszközregisztrációs profilt, vagy a Windows Autopilot-profil neve | (device.enrollmentProfileName - eq "DEP iPhone-OK")
  isRooted | IGAZ, hamis | (device.isRooted - eq true)
  managementType | Mobileszköz-kezelési (mobileszközök)<br>PC (az Intune PC-ügynökkel kezelt számítógépekhez) | (device.managementType - eq "MDM")
- organizationalUnit | bármilyen karakterlánc típusú értéket megfelelő által egy helyszíni Active Directory a szervezeti egység neve | (device.organizationalUnit - eq "USA számítógépek")
  deviceId | egy érvényes Azure AD-Eszközazonosító | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  objectId | érvényes Azure AD-objektumazonosító |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
  systemLabels | bármilyen karakterlánc megfelelő az Intune eszköz tulajdonságot a Modern munkahely eszközök címkézése | (device.systemLabels-tartalmaz "M365Managed")

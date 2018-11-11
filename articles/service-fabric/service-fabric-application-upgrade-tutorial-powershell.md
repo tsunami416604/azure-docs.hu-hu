@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: c1005d60df0b1cfd3b24be954ab4ff1b18c8f7a8
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 0f134bdb4f77034dd124027fc960d172d25db721
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348769"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515318"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>A Service Fabric alkalmazás frissítése a PowerShell használatával
 > [!div class="op_single_selector"]
@@ -79,13 +79,13 @@ Most hozza létre a projektet kiválasztásával csak a **ActorService** projekt
 ## <a name="step-3--decide-on-health-policies-and-upgrade-parameters"></a>3. lépés: Döntse el, a házirendek és a frissítési paraméterek
 Ismerje meg az a [alkalmazásfrissítési paraméterek](service-fabric-application-upgrade-parameters.md) és a [frissítési folyamat](service-fabric-application-upgrade.md) lekérni a különböző frissítési paraméterek, időtúllépéseket és egészségügyi feltétel alkalmazása beható ismerete. Ebben a bemutatóban a service health értékelési feltétel az alapértelmezett értékre (és javasolt) értéket, ami azt jelenti, hogy az összes szolgáltatás és -példány legyen *kifogástalan* a frissítés után.  
 
-Most azonban növeli a *HealthCheckStableDuration* 60 másodperc (úgy, hogy a szolgáltatások kifogástalan állapotú a frissítés előrehalad az a következő frissítési tartománnyal, mielőtt legalább 20 másodperc).  Nézzük is beállíthat a *UpgradeDomainTimeout* kell 1200-as másodperc és a *UpgradeTimeout* 3000 másodperc kell.
+Most azonban növeli a *HealthCheckStableDuration* 180 másodperc (úgy, hogy a szolgáltatások kifogástalan állapotú a frissítés előrehalad az a következő frissítési tartománnyal, mielőtt legalább 120 másodperc).  Nézzük is beállíthat a *UpgradeDomainTimeout* kell 1200-as másodperc és a *UpgradeTimeout* 3000 másodperc kell.
 
 Végezetül hozzunk is beállíthat a *UpgradeFailureAction* visszaállítására. Ez utóbbi lehetőség megköveteli a Service Fabric szeretné visszaállítani az alkalmazás a korábbi verzióra, ha problémákat tapasztal a frissítés során. Így (a 4. lépését) a frissítés indításakor a következő paraméterek vannak megadva:
 
 FailureAction visszaállítási =
 
-HealthCheckStableDurationSec = 60
+HealthCheckStableDurationSec = 180
 
 UpgradeDomainTimeoutSec = 1200
 

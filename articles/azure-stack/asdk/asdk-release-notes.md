@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2018
+ms.date: 11/07/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: 284a964162a2374287b42698b9a2021be36590dd
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: MT
+ms.openlocfilehash: 8e8518cdf95e1b97bd4b641322c1b2a3fdc3bf9e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158159"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282458"
 ---
 # <a name="asdk-release-notes"></a>ASDK kibocsátási megjegyzései  
 Ez a cikk ismerteti fejlesztései, javításokat és ismert problémák az Azure Stack Development Kit (ASDK). Ha nem biztos abban, hogy melyik verziót futtatja, akkor az [ellenőrizhető a portál használatával](.\.\azure-stack-updates.md#determine-the-current-version).
@@ -99,6 +99,9 @@ További információkért lásd: [syslog-továbbítás az Azure Stack](../azure
 
 
 #### <a name="compute"></a>Compute 
+
+<!-- TBD – IS, ASDK -->
+- Az azonos virtuális géphez (VM) ugyanazt a nevet és LUN-t a leválasztott lemez újracsatlakoztatása meghiúsul, és hiba például **adatok lemez "datadisk" nem csatolható "vm1" virtuális gép**. A hiba akkor fordul elő, mert a lemez leválasztása folyamatban vagy a legutóbbi leválasztási művelet nem sikerült. Várjon, amíg a lemez teljesen le van választva, és ezután próbálkozzon újra, vagy törölje vagy válassza le a lemezt explicit módon újra. A megoldás, hogy csatlakoztassa újra egy másik névvel, vagy egy másik logikai egységen. 
 
 <!-- 3235634 – IS, ASDK -->
 - Tartalmazó méretű virtuális gépek telepítéséhez egy **v2** utótag; például **Standard_A2_v2**, adja meg, az utótag **Standard_A2_v2** (kis v). Ne használjon **Standard_A2_V2** (nagybetűs V). Ez a globális Azure-ban működik, és az Azure Stacken inkonzisztencia.

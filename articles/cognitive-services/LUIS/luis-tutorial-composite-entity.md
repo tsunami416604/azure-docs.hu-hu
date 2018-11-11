@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 99e0b22b663f6edab9646111b390186a6f89a90f
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1521bba188fcd7d8bade88196fe687929f414f93
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035181"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283512"
 ---
 # <a name="tutorial-6-group-and-extract-related-data"></a>Oktatóanyag 6: Csoport és a kapcsolódó adatokat nyerhet ki
 Ebben az oktatóanyagban egy összetett entitás szeretné a kinyert adatokkal történő tartalmazó egyetlen entitás hozzáadása. A kötegelés az adatokat, az ügyfélalkalmazás is könnyen kinyerheti az különböző adattípusok kapcsolódó adatokat.
@@ -26,30 +26,30 @@ Az összetett entitás ideális ehhez az adattípushoz, mert az adatok:
 
 * Kapcsolódnak egymáshoz. 
 * Többféle típusú entitás használja.
-* Csoportosított és feldolgozása történhet az ügyfélalkalmazás által olyan adategység, információkat kell.
+* Csoportosítását és feldolgozását az ügyfélalkalmazásoknak egy információegységként kell végezniük.
 
-**Ebből az oktatóanyagból megtudhatja, hogyan lehet:**
+**Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Használja meglévő oktatóanyag alkalmazása
+> * Meglévő oktatóalkalmazás használata
 > * Összetett entitás hozzáadása 
 > * Betanítás
 > * Közzététel
-> * Végpont szándékok és entitások beolvasása
+> * Szándék és entitások lekérése a végpontról
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>Meglévő alkalmazás használata
-Folytassa az alkalmazás nevű az előző oktatóanyagban létrehozott **emberi**. 
+Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű alkalmazással. 
 
-Ha az előző oktatóanyagban az emberi alkalmazás nem rendelkezik, használja az alábbi lépéseket:
+Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforrások alkalmazással, kövesse a következő lépéseket:
 
-1.  Töltse le és mentse [alkalmazás JSON-fájlt](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-hier-HumanResources.json).
+1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-hier-HumanResources.json).
 
-2. A JSON importálja egy új alkalmazást.
+2. Importálja a JSON-t egy új alkalmazásba.
 
-3. Az a **kezelés** részben, a a **verziók** lapon klónozza a verziót, és adja neki `composite`. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. A verzió nevét az URL-útvonal részeként használja, mert a név nem tartalmazhat, amelyek nem érvényes URL-karaktereket.
+3. A **Manage** (Kezelés) szakasz **Versions** (Verziók) lapján klónozza a verziót, és adja neki a `composite` nevet. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. Mivel a verzió neve az URL-útvonal részét képezi, a név nem tartalmazhat olyan karaktert, amely URL-címben nem érvényes.
 
 
 ## <a name="composite-entity"></a>Összetett entitást
@@ -97,7 +97,7 @@ A kibontott adatok végpontról tartalmazzák ezt az információt és küldje v
 ]
 ```
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Az a **leképezések** lapon jelölje be **MoveEmployee** szándékot. 
 
@@ -153,7 +153,7 @@ A kibontott adatok végpontról tartalmazzák ezt az információt és küldje v
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entities-from-endpoint"></a>Leképezés és entitások kaphat végpont 
+## <a name="get-intent-and-entities-from-endpoint"></a>Szándék és entitások lekérése a végpontból 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 

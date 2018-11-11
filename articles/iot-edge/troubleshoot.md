@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 632a91e9c76f14bceace00c9cee29a189b604464
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 6728ea6e8c8323ed3d418a018de0ad64b7af8033
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740212"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283257"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
@@ -340,4 +340,6 @@ IoT Edge biztosít továbbfejlesztett konfigurálása az Azure IoT Edge-futtató
 
 ## <a name="next-steps"></a>További lépések
 Úgy gondolja, hogy hibát talált az IoT Edge platformon? [Küldje el a problémát](https://github.com/Azure/iotedge/issues) , hogy továbbra is javíthatja. 
+
+Ha további kérdése van, hozzon létre egy [támogatási kérelem](https://portal.azure.com/#create/Microsoft.Support) segítséget. 
 

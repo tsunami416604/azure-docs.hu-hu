@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: ea7754c9bf755a5fc00823629df17317be0f8901
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: e49a3063d6314947c59c5ae863077748d997f2b5
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343678"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515471"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Adafruit Feather HUZZAH ESP8266 csatlakoztatása Azure IoT hubhoz a felhőben
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-![DHT22 Feather HUZZAH ESP8266 és az IoT Hub közötti kapcsolat](media/iot-hub-arduino-huzzah-esp8266-get-started/1_connection-hdt22-feather-huzzah-iot-hub.png)
+![DHT22 Feather HUZZAH ESP8266 és az IoT Hub közötti kapcsolat](./media/iot-hub-arduino-huzzah-esp8266-get-started/1_connection-hdt22-feather-huzzah-iot-hub.png)
 
 ## <a name="what-you-do"></a>TEENDŐ
 
@@ -38,7 +38,7 @@ Adafruit Feather HUZZAH ESP8266 csatlakozni az IoT hub által létrehozott. Ezut
 
 ## <a name="what-you-need"></a>Mi szükséges
 
-![Az oktatóanyaghoz szükség részei](media/iot-hub-arduino-huzzah-esp8266-get-started/2_parts-needed-for-the-tutorial.png)
+![Az oktatóanyaghoz szükség részei](./media/iot-hub-arduino-huzzah-esp8266-get-started/2_parts-needed-for-the-tutorial.png)
 
 Ez a művelet végrehajtásához a következő részek a Feather HUZZAH ESP8266 Starter Kit a kell:
 
@@ -62,7 +62,17 @@ A következő elemek nem kötelezők, abban az esetben nem kell érzékelő. Akk
 * Egy breadboard
 * Millió/M átkötés fenyegetéseknek
 
-[!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
+## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
+
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+
+### <a name="retrieve-connection-string-for-iot-hub"></a>Az IoT hub kapcsolati karakterlánc
+
+[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
+
+## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hubban
+
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="connect-feather-huzzah-esp8266-with-the-sensor-and-your-computer"></a>Az érzékelő és a számítógép Feather HUZZAH ESP8266 csatlakoztatása
 
@@ -72,7 +82,7 @@ Ebben a szakaszban az érzékelők a táblához való csatlakozáshoz. Majd, az 
 
 Használják a breadboard és átkötés módon hozhatja létre a kapcsolatot. Ha nem rendelkezik olyan érzékelő, kihagyhatja ezt a szakaszt, mert a szimulált érzékelői adatokat használhatja helyette.
 
-![Kapcsolatok referencia](media/iot-hub-arduino-huzzah-esp8266-get-started/17_connections_on_breadboard.png)
+![Kapcsolatok referencia](./media/iot-hub-arduino-huzzah-esp8266-get-started/17_connections_on_breadboard.png)
 
 Érzékelő PIN-kód használja a következő kábelezés:
 

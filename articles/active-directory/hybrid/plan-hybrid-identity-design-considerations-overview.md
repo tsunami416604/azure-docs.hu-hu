@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6d916e884e7764a1ba5ebaf224750f38e7d7673e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d85157c3f1aafd33a2b996168f2f9eac613a209c
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313893"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51344882"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Azure Active Directory hibrid identitáskezelés – kialakítási szempontok
 Fogyasztói-alapú eszközök vannak proliferating a vállalati világban, és felhő alapú szoftver--szolgáltatásként (SaaS) alkalmazások könnyen fogad el. Ennek eredményeképpen belső adatközpontokra és felhőalapú platformon alkalmazás-hozzáférés felhasználók feletti irányítás is kihívást jelent.  
@@ -58,10 +58,10 @@ A tervezési, hogy igényeknek leginkább megfelelő csak ha annyiszor megy vég
 
 | Hibrid identitás fázis | A témakör listája |
 | --- | --- |
-| Identitással kapcsolatos követelmények meghatározása |[Üzleti igények meghatározása](plan-hybrid-identity-design-considerations-business-needs.md)<br> [Határozza meg a címtár-szinkronizálás követelményei](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)<br> [A multi-factor authentication-követelmények meghatározása](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)<br> [A hibrid identitás bevezetési stratégia kidolgozása](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md) |
+| Identitáshoz kapcsolódó követelmények meghatározása |[Üzleti igények meghatározása](plan-hybrid-identity-design-considerations-business-needs.md)<br> [Határozza meg a címtár-szinkronizálás követelményei](plan-hybrid-identity-design-considerations-directory-sync-requirements.md)<br> [A multi-factor authentication-követelmények meghatározása](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)<br> [A hibrid identitás bevezetési stratégia kidolgozása](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md) |
 | Adatbiztonság erős identitása-megoldáson keresztül továbbfejlesztésének tervezése |[Az adatvédelmi követelmények meghatározása](plan-hybrid-identity-design-considerations-dataprotection-requirements.md) <br> [A Tartalomkezelés követelmények meghatározása](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)<br> [Hozzáférés-vezérlési követelményeinek meghatározása](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)<br> [Incidensválasz-követelmények meghatározása](plan-hybrid-identity-design-considerations-incident-response-requirements.md) <br> [Data protection stratégia kidolgozása](plan-hybrid-identity-design-considerations-data-protection-strategy.md) |
-| Hibrid identitás-életciklus megtervezése |[Hibrid identitáskezelési feladatokat meghatározása](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) <br> [Szinkronizálás kezelése](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)<br> [Hibrid identitás-kezelés bevezetési stratégiájának meghatározása](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md) |
+| A hibrid identitáskezelés életciklusának megtervezése |[Hibrid identitáskezelési feladatokat meghatározása](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) <br> [Szinkronizálás kezelése](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)<br> [Hibrid identitás-kezelés bevezetési stratégiájának meghatározása](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md) |
 
-## <a name="download-this-guide"></a>Ez az útmutató letöltése
-A hibrid identitás tervezési szempontjait ismertető útmutató a pdf-verzióját letöltheti a [Technet gallery](https://gallery.technet.microsoft.com/Azure-Hybrid-Identity-b06c8288). 
+## <a name="next-steps"></a>További lépések
+[Identitással kapcsolatos követelmények meghatározása](plan-hybrid-identity-design-considerations-business-needs.md)
 

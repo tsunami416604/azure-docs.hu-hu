@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 11/09/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 1414fd7b559a1bf12cc26d218f4577bbdc986916
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: a28168291c79dc54feb5ff572c609cdfb09a187f
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964118"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515590"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 frissítése
 
@@ -64,12 +64,13 @@ Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza.
 - **Kubernetes Piactéri elem**. Kubernetes-fürtök használatával most már telepítheti a [Kubernetes Piactéri elem](azure-stack-solution-template-kubernetes-cluster-add.md). Felhasználók válassza ki a Kubernetes-elemet, és töltse ki a Kubernetes-fürt üzembe helyezése az Azure Stackhez néhány paramétert. A sablonok az a célja, hogy egyszerűsítsen felhasználóknak, hogy állítsa be a fejlesztési-tesztelési Kubernetes-üzembehelyezés néhány lépésben.
 
 <!-- | IS ASDK--> 
-- **Blockchain-sablonok**. Most már futtathat [Ethereum consortium központi telepítések](azure-stack-ethereum.md) az Azure Stacken. A három új sablonokat is megtalálhatja a [Azure Stack gyors üzembe helyezési sablonokat](https://github.com/Azure/AzureStack-QuickStart-Templates). A felhasználó telepítheti és konfigurálhatja egy többtagú consortium Ethereum hálózati minimális Azure-ban és az Ethereum ismeretekkel lehetővé teszik. A sablonok az a célja, hogy egyszerűsítsen felhasználóknak, hogy állítsa be a fejlesztési-tesztelési Blockchain központi telepítések néhány lépésben.
+- **Blockchain-sablonok**. Most már futtathat [Ethereum consortium központi telepítések](user/azure-stack-ethereum.md) az Azure Stacken. A három új sablonokat is megtalálhatja a [Azure Stack gyorsindítási sablonok](https://github.com/Azure/AzureStack-QuickStart-Templates). A felhasználó telepítheti és konfigurálhatja egy többtagú consortium Ethereum hálózati minimális Azure-ban és az Ethereum ismeretekkel lehetővé teszik. A sablonok az a célja, hogy egyszerűsítsen felhasználóknak, hogy állítsa be a fejlesztési-tesztelési Blockchain központi telepítések néhány lépésben.
 
 <!-- | IS ASDK--> 
 - **Az API verzió profil 2017-03-09-profile frissítve lett, hogy a 2018-03-01-hibrid**. API-profilok adja meg, az Azure erőforrás-szolgáltató és az Azure REST-végpontokat az API-verzió. Profilokkal kapcsolatos további információkért lásd: [kezelése API-verzióprofilok az Azure Stackben](/azure/azure-stack/user/azure-stack-version-profiles).
 
- ### <a name="fixed-issues"></a>Hibák kijavítva:
+### <a name="fixed-issues"></a>Hibák kijavítva:
+
 <!-- IS ASDK--> 
 - Azt javítva a rendelkezésre állási csoportot a portálon, amely eredményezett a egy tartalék tartomány és a frissítési tartomány 1 csoport létrehozásához. 
 
@@ -162,7 +163,7 @@ Emellett tartalmazza a kockázatcsökkentési spekulatív végrehajtás kockáza
 > Készüljön fel az Azure Stack üzemelő példányához bővítmény gazdagép számára. A rendszer a következő útmutató segítségével előkészítése [előkészítése az Azure stack-bővítmény gazdagép](azure-stack-extension-host-prepare.md).
 
 Ez a frissítés telepítése után bármely alkalmazandó gyorsjavítások telepítéséről. További információt a következő cikkeket, megtekintése, valamint a [karbantartási szabályzat](azure-stack-servicing-policy.md). 
-- [KB 4468920 – az Azure Stack gyorsjavítás az Azure Stack gyorsjavítás 1.1808.5.110](https://support.microsoft.com/help/4468920/)
+- [KB 4468920 – az Azure Stack gyorsjavítás az Azure Stack gyorsjavítás 1.1808.7.113](https://support.microsoft.com/help/4471992/)
 
 
 ## <a name="known-issues-post-installation"></a>Ismert problémák (telepítés utáni)
@@ -253,8 +254,11 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 ### <a name="compute"></a>Compute
 
+<!-- 3164607 – IS, ASDK -->
+- Az azonos virtuális géphez (VM) ugyanazt a nevet és LUN-t a leválasztott lemez újracsatlakoztatása meghiúsul, és hiba például **adatok lemez "datadisk" nem csatolható "vm1" virtuális gép**. A hiba akkor fordul elő, mert a lemez leválasztása folyamatban vagy a legutóbbi leválasztási művelet nem sikerült. Várjon, amíg a lemez teljesen le van választva, és ezután próbálkozzon újra, vagy törölje vagy válassza le a lemezt explicit módon újra. A megoldás, hogy csatlakoztassa újra egy másik névvel, vagy egy másik logikai egységen. 
+
 <!-- 3099544 – IS, ASDK --> 
-- Amikor hoz létre egy új virtuális gép (VM) az Azure Stack portal használatával, és a Virtuálisgép-méret választja, a USD/hónap oszlop jelenik meg egy **nem érhető el** üzenet. Nem jelenik meg ebben az oszlopban; megjelenítés, a virtuális gép díjszabási oszlop nem támogatott az Azure Stackben.
+- Amikor hoz létre egy új virtuális Gépet az Azure Stack portal használatával, és a Virtuálisgép-méret választja, a USD/hónap oszlop jelenik meg egy **nem érhető el** üzenet. Nem jelenik meg ebben az oszlopban; megjelenítés, a virtuális gép díjszabási oszlop nem támogatott az Azure Stackben.
 
 <!-- 3090289 – IS, ASDK --> 
 - Frissítse a 1808 alkalmazása után, a következő problémák jelentkezhetnek, ha felügyelt lemezekkel rendelkező virtuális gépek üzembe helyezéséhez:
@@ -263,7 +267,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
       1. A bérlői portálon lépjen a **előfizetések** , és keresse meg az előfizetés. Kattintson a **erőforrás-szolgáltatók**, majd kattintson az **Microsoft.Compute**, és kattintson a **újraregisztrálni**.
       2. Lépjen az azonos előfizetéshez tartozó **hozzáférés-vezérlés (IAM)**, és ellenőrizze, hogy **Azure Stack – felügyelt lemez** szerepel a listán.
    2. Ha egy több-bérlős környezet van beállítva, egy belső hiba miatt meghiúsulhat egy előfizetésben, és a Vendég címtár tartozó virtuális gépek üzembe helyezéséhez. A hiba elhárításához kövesse az alábbi lépéseket:
-      1. Alkalmazza a [1808 Azure Stack gyorsjavítás](https://support.microsoft.com/help/4468920/).
+      1. Alkalmazza a [1808 Azure Stack gyorsjavítás](https://support.microsoft.com/help/4471992/).
       2. Kövesse a [Ez a cikk](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) újrakonfigurálása a Vendég címtárak mindegyike.
       
 <!-- 3179561 - IS --> 

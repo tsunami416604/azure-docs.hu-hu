@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 11/02/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 4128f5e389ac6e35f863f02ff5b09ff96fadc527
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: be88e84c48ba31ce564c31eca1f54f164aeb9f93
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962486"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288237"
 ---
 # <a name="register-azure-stack-with-azure"></a>Regisztráljon az Azure Stack az Azure-ral
 
 Regisztrálás az Azure Stack az Azure-ral lehetővé teszi, hogy az Azure marketplace-elemek letöltése, és megkezdheti a Microsoft kereskedelmi adatok beállítása. Miután regisztrálta Azure Stack, az Azure kereskedelmi jelentett használati, és láthatja a regisztrációhoz használt előfizetés alatt.
 
-Ez a cikk ismerteti az Azure-ban való regisztrálásáról Azure Stack integrált rendszerek. A ASDK regisztrálása az Azure-ral kapcsolatos információkért lásd: [Azure Stack-regisztráció](.\asdk\asdk-register.md) ASDK dokumentációjában.
+Ez a cikk ismerteti az Azure-ban való regisztrálásáról Azure Stack integrált rendszerek. A ASDK regisztrálása az Azure-ral kapcsolatos információkért lásd: [Azure Stack-regisztráció](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-register) ASDK dokumentációjában.
 
 > [!IMPORTANT]  
 > Regisztráció szükséges teljes körű Azure Stack funkciót, beleértve az ajánlatot a piactéren elemek. Emellett fogja szabályzatsértéséről, a licencelési feltételeket, ha nem regisztrálja a használatalapú mint-akkor-használható számlázási modell használata esetén az Azure Stack. Azure Stack-licencelési modell kapcsolatos további információkért lásd: a [lap megvásárlása](https://azure.microsoft.com/overview/azure-stack/how-to-buy/).
