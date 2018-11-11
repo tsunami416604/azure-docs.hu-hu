@@ -1,6 +1,6 @@
 ---
-title: A csoport az tudományos folyamata életciklus - Azure szakasza modellezési |} Microsoft Docs
-description: A célok, feladatok és a adattudomány projektek modellezési szakaszának termékek esetében
+title: A csoportos adatelemzési folyamat életciklusa – Azure szakaszában modellezés |} A Microsoft Docs
+description: A célok, feladatok és a modellezés szakaszra a data-adatelemzési projektek le
 services: machine-learning
 documentationcenter: ''
 author: deguhath
@@ -15,83 +15,83 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: ff7434e84473fd68153be8116899ecdfb6a6a831
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 4043ae4cf8ab7d9716db834fed0019456f2a52d4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837480"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227535"
 ---
 # <a name="modeling"></a>Modellezés
 
-Ez a cikk ismerteti a célokat, feladatok és a modellezési szakasza a csapat adatok tudományos folyamat (TDSP) társított termékek esetében. Ez a folyamat egy ajánlott életciklussal, amely segítségével a adattudomány projektek struktúra biztosítja. Az életciklus, projektek általában hajtható végre, gyakran ismételt fő szakaszait vázolja fel:
+Ez a cikk ismerteti a célokat, feladatok és a modellezés szakaszban, a csoportos adatelemzési folyamat (TDSP) társított le. Ez a folyamat egy ajánlott életciklussal, amely használatával a data-adatelemzési projektek strukturálása biztosít. Az életciklus a fő szakaszai, projektek általában végrehajtható, iteratív gyakran ismerteti:
 
-   1. **Üzleti ismertetése**
-   2. **Adatok megszerzését és ismertetése**
-   3. **Modellezési**
+   1. **Az üzleti igények felmérése**
+   2. **Adatgyűjtés és adatértelmezés**
+   3. **Modellezés**
    4. **Üzembe helyezés**
-   5. **Ügyfelek**
+   5. **Felhasználói elfogadás**
 
-A TDSP életciklus vizuális ábrázolását itt található:
+A TDSP életciklus ábrázolása a következő:
 
-![TDSP életciklusa](./media/lifecycle/tdsp-lifecycle2.png) 
+![TDSP-életciklus](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
 ## <a name="goals"></a>Célok
-* Határozza meg az optimális adatok szolgáltatások gépi tanulásra modell.
-* Hozzon létre egy informatív gépi tanulásra modell, amely a leginkább előrejelzésre a cél.
-* Hozzon létre egy gépi tanulásra modell, amely lehetővé teszi a termelési környezetben.
+* Határozza meg, hogy az optimális funkciók gépi tanulási modell.
+* Hozzon létre egy informatív gépi tanulási modellt az a cél legpontosabban.
+* Hozzon létre egy gépi tanulási modellt, amely lehetővé teszi az éles üzemi környezetek részei.
 
-## <a name="how-to-do-it"></a>Menete
-Az ebben a szakaszban leírt három fő feladat van:
+## <a name="how-to-do-it"></a>Megtudhatja, hogyan teheti
+Nincsenek az ebben a szakaszban leírt három fő feladat:
 
-  * **Jellemzőkiemelés**: adatok funkciók létrehozása a modell betanítási megkönnyítése érdekében a nyers adatoktól.
-  * **A modell betanítási**: keresse meg az, hogy felveszi a kérdés legpontosabban a sikerkritériumokat összehasonlítva.
-  * Annak megállapítása, hogy a modell **éles alkalmas.**
+  * **Jellemzőkiemelés**: adatok funkciók létrehozása a nyers adatoktól a modell betanítása megkönnyítése érdekében.
+  * **Modell a betanítási**: keresse meg a modellt, amely összehasonlítja a sikerkritériumokat leginkább megfelelő választ ad a kérdést.
+  * Megvizsgálja, hogy a modell **megfelelő az éles környezetben.**
 
 ### <a name="feature-engineering"></a>Jellemzőkiemelés
-Szolgáltatás mérnöki magában foglalja a befoglalási, összesítési és az elemzés során használt funkciók létrehozása nyers változók átalakítása. Ha azt szeretné, hogy a modell Előfeltételek betekintést, akkor szüksége megtudhatja, hogy hogyan a szolgáltatások kapcsolódnak egymáshoz, és hogyan a gépi tanulásra algoritmusok ezen szolgáltatások használatát. 
+Funkciófejlesztési magában foglalja a belefoglalási, aggregációs és átalakítási nyers változókat hozhat létre az a Funkciók, az elemzés során használt. Ha azt szeretné, hogy betekintést modell előfeltételeit, majd meg kell tudni, hogyan kapcsolódik egymáshoz a funkciók egymáshoz, és hogyan a gépi tanulási algoritmusok ezek a funkciók használatához. 
 
-Ezt a lépést igényel, és az adatok feltárása lépésben beszerzett insights tartomány szakértői kreatív kombinációját. A szolgáltatás a Keresés és informatív változóval együtt, de túl sok független változók elkerülése érdekében tett kísérlet egy időben egyensúlyt igényel szó. Informatív változók javítása az eredmény; független változók bevezetéséhez a modell nélküli "zajt". Is kell ezeket a szolgáltatásokat bármely pontozási során kapott új adatok létrehozásához. Ezek a funkciók generációját emiatt csak pontozási időpontjában rendelkezésre álló adatok függ. 
+Ebben a lépésben a tartományi szakértelmet creative kombinációját és az adatok feltárására lépésben insights szükséges. A szolgáltatás keresése és informatív változóval együtt, de egyszerre túl sok független változók kerülni próbál egyensúlyt szó. Informatív változók javíthatja az eredmény; független változók szükségtelen zaj bevezetni a modellbe. Létre kell hoznia ezeket a funkciókat, a kiértékelés során kapott új adatokat is. Ezeket a funkciókat a generációját ennek eredményeképpen csak függ a kiértékelés idején elérhető adatokat. 
 
-Szolgáltatás műszaki útmutatót mérnöki mikor ellenőrizze az Azure data különböző technológiák használata, hogy [Jellemzőkiemelés az adatok tudományos folyamatban](create-features.md). 
+A szolgáltatás műszaki útmutatást mérnöki mikor győződjön meg arról, a különböző Azure-beli adat-technológiák használata, hogy [funkciók tervezése az adatelemzési folyamat a](create-features.md). 
 
-### <a name="model-training"></a>modell betanítási
-Attól függően, hogy a kérdés megválaszolásához kezelni kívánt típusú érhetők el számos modellezési algoritmus. Az algoritmusok kiválasztásáról útmutatóért lásd: [algoritmusok kiválasztása a Microsoft Azure Machine Learning](../studio/algorithm-choice.md). Bár ebben a cikkben az Azure Machine Learning, a nyújt útmutatást esetén bármely gépi tanulásra projektek hasznos. 
+### <a name="model-training"></a>Modell betanítása
+Kérdést megválaszolni kívánt típusától függően érhetők el számos modellezési algoritmusokat. Az algoritmusok kiválasztásáról, tekintse át [algoritmusok kiválasztása a Microsoft Azure Machine Learning](../studio/algorithm-choice.md). Bár ez a cikk az Azure Machine Learning, az útmutatót biztosít hasznos a machine-learning projektekkel. 
 
-A modell betanítási folyamata a következő lépésekből áll: 
+A modell betanítása folyamat a következő lépésekből áll: 
 
-   * **A bemeneti adatok** véletlenszerűen a modellezési a tanítási adathalmazt és a vizsgálati adatkészletet.
-   * **A modellek létrehozása** a tanítási adathalmazt használatával.
-   * **Értékelje ki** a képzési és a teszt adatkészletében. Használható együtt a különböző társított hangolási paraméterek versengő gépi tanulásra algoritmusok sorozata (néven egy *paraméter ismétlés*), amely az aktuális adatok érdeklő a kérdés megválaszolásához célközönségre.
-   * **Határozza meg a "ajánlott" megoldás** a kérdés megválaszolásához összehasonlítva a sikerkritériumokat alternatív módszerek között.
+   * **A bemeneti adatok** véletlenszerűen modellezési tanítási adathalmazt és a egy teszt adatkészlet esetében.
+   * **A modellek készítése** a tanítási adathalmazt használatával.
+   * **Kiértékelése** a tanítási és tesztelési adatkészlet. Versengő gépi tanulási algoritmusokkal és a különböző társított hangolási paraméterek sorozatán használja (más néven egy *paraméteres*), amely stíluskalauz a lényeges az aktuális adatokkal a kérdés megválaszolásához.
+   * **A "ajánlott" megoldást** a választ a kérdésre összehasonlítja a sikerkritériumokat, alternatív módszerek között.
 
 > [!NOTE]
-> **Adatszivárgás megakadályozásához**: adatszivárgás okozhat, ha a tanítási adathalmazt, amely lehetővé teszi, hogy a modell vagy a gépi tanulásra algoritmus irreálisan jó előrejelzéseket készítsen kívül adatait. Adatszivárgás oka egy közös miért kutatók beolvasása ideg, ha csak prediktív eredmények, amelyek adatokat úgy tűnik, túl alacsony. Ezek a függőségi észleléséhez nehéz lehet. Gyakran az adatszivárgás megakadályozásához között egy elemző adatkészlet létrehozása, a modell létrehozása, és az eredmények pontosságának értékelése léptetés igényel. 
+> **Kiszivárgásának elkerülésére**: adatszivárgás okozhat, ha adja meg az adatait a tanítási adathalmazt, amely lehetővé teszi egy modellt vagy gépi tanulási algoritmus irreálisan jó adatelemzésre kívül. Kiszivárgását miért adatszakértők első ideg eljuthatnak prediktív eredményeket, amely adatokat úgy tűnik, hogy igaz legyen túlságosan is jó gyakori indoka. Ezeket a függőségeket is nehéz észlelni. Gyakran kiszivárgásának elkerülésére között egy analysis adatkészlet létrehozását, modellek létrehozása és az eredmények pontosságának kiértékelése léptetés igényel. 
 > 
 > 
 
-Azt adja meg egy [modellezéséhez és jelentéskészítési eszköz automatikus](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling) TDSP, amely képes több algoritmusok és paraméter segítségével futtassa a modell létrehozásához el a. Minden modell és paraméter kombináció, többek között a változó fontosság teljesítményét összesítő jelentést modellezési alapterv is képes. Ez a folyamat esetén is iteratív, mert azt is meghajtó további szolgáltatás mérnöki csapathoz. 
+Biztosítunk egy [modellezési és jelentéskészítési eszköz automatikus](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling) strukturálása tdsp-vel, amely képes több algoritmusok és paraméter segítségével futtassa el egy alapkonfiguráció modell létrehozásához. Minden modell és paraméter kombináció, beleértve a változó fontosság teljesítményét összegző jelentés modellezési alapterv is küld. Ez a folyamat akkor is iteratív, azt is meghajtóként, hogy további funkciófejlesztési. 
 
 ## <a name="artifacts"></a>Összetevők
-Az ebben a szakaszban létrehozott összetevőket tartalmazza:
+Az ebben a szakaszban létrehozott összetevők a következők:
 
-   * [Szolgáltatáskészletek](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#feature-sets): A funkciók a modellezési kifejlesztett ismerteti a **szolgáltatáskészletek** szakasza a **adatainak definíciója** jelentés. A kód a szolgáltatások és a szolgáltatás létrehozásáról leírása mutatók tartalmaz.
-   * [A jelentés a modell](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): minden modell, amely próbálkozik, egy szabványos, amely adatokat minden egyes kísérlet a sablon-alapú jelentés hozott létre.
-   * **Ellenőrzőpont döntési**: mérlegelje, hogy telepíteni kell egy éles rendszer elégséges kezeli a modell. Néhány kulcsfontosságú megválaszolandó kérdések a következők:
-     * A modell nem elegendő a vizsgálati adatok megadott megbízhatósággal válaszolja a kérdést? 
-     * Kell-e próbálja bármely alternatív módszerek? Kell, további adatokat gyűjtsön, hajtsa végre a további szolgáltatás mérnöki csapathoz, vagy más algoritmusok kísérletezhet?
+   * [Szolgáltatáskészletek](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#feature-sets): a modellezési fejlesztette ki az új funkciókat ismertetjük a **szolgáltatáskészletek** szakaszában a **adatdefiníció** jelentést. Mutatók azokra a kódot létrehozni, az funkciók és hogyan jött létre a funkció leírása tartalmazza.
+   * [Jelentés modell](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): minden egyes modell, amely a rendszer megpróbálkozik, egy standard sablon-alapú jelentés, amely részletesen minden kísérlet jön létre.
+   * **Ellenőrzőpont döntési**: kiértékelheti, hogy a modell elég is telepíteni kell egy éles rendszer végez-e. Néhány kulcsfontosságú megválaszolandó kérdések a következők:
+     * A modell választ a kérdésre adott a Tesztadatok elegendő magabiztosan? 
+     * Lehetőleg bármely alternatív módszerek? Kell, további adatokat gyűjtsön, hajtsa végre a szolgáltatás további műszaki vagy egyéb algoritmusokkal kísérletezhet?
 
 ## <a name="next-steps"></a>További lépések
 
-Az alábbiakban a TDSP életciklusát lépésre mutató hivatkozásokat:
+Az alábbiakban a TDSP életciklusának minden lépése mutató hivatkozásokat:
 
-   1. [Üzleti ismertetése](lifecycle-business-understanding.md)
-   2. [Adatok megszerzését és ismertetése](lifecycle-data.md)
-   3. [Modellezési](lifecycle-modeling.md)
+   1. [Az üzleti igények felmérése](lifecycle-business-understanding.md)
+   2. [Adatgyűjtés és adatértelmezés](lifecycle-data.md)
+   3. [Modellezés](lifecycle-modeling.md)
    4. [Üzembe helyezés](lifecycle-deployment.md)
-   5. [Ügyfelek](lifecycle-acceptance.md)
+   5. [Felhasználói elfogadás](lifecycle-acceptance.md)
 
-Teljes-végpontok forgatókönyvek, amelyek azt mutatják, meghatározott forgatókönyvek esetén a folyamat lépései a Microsoft biztosítja. A [példa forgatókönyvek](walkthroughs.md) a cikk ismerteti a miniatűr leírások és hivatkozások forgatókönyvek listája. A forgatókönyvek bemutatják, hogyan lehet a felhő, a helyszíni eszközök és szolgáltatások egyesítése munkafolyamat vagy csővezeték intelligens alkalmazás létrehozása. 
+Azt adja meg a teljes, végpontok közötti forgatókönyvek, amelyek bemutatják, bizonyos forgatókönyvek esetén a folyamat összes lépését. A [példa forgatókönyvek](walkthroughs.md) a cikk a forgatókönyvek miniatűr leírások és hivatkozások listáját tartalmazza. A forgatókönyvek bemutatják, hogyan kombinálhatja a felhőbeli, helyszíni eszközöket és szolgáltatásokat, munkafolyamat vagy folyamat, intelligens alkalmazások létrehozására. 
 
-Hogyan hajthat végre a lépéseket az Azure Machine Learning Studio használó TDSPs példákért lásd [a TDSP használja az Azure Machine Learning segítségével](http://aka.ms/datascienceprocess). 
+Hogyan hajtható végre a lépéseket az Azure Machine Learning Studio használó TDSPs példákért lásd [a TSDP használata az Azure Machine Learning](https://aka.ms/datascienceprocess). 

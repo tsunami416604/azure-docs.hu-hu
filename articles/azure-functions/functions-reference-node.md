@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: 18ff0e3fadad64f7bd7fe014a6dcec6a628ef1b9
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: f99c0fe798baa272bc2c74e8a171dd6bc7ca4304
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914549"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036546"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript-fejlesztői útmutató
 
@@ -109,8 +109,8 @@ module.exports = async function (context, req) {
 ## <a name="bindings"></a>Kötések 
 A JavaScript [kötések](functions-triggers-bindings.md) konfigurált, és a egy függvény function.json definiálva. Kötések számos módon dolgozhat funkciók.
 
-### <a name="reading-trigger-and-input-data"></a>Olvasási eseményindítót és a bemeneti adatok
-Trigger és a bemeneti kötések (vazby prvku `direction === "in"`) háromféleképpen függvény által olvasható:
+### <a name="inputs"></a>Bemenetek
+Bemeneti az Azure Functions két kategóriába oszthatók: egy a trigger bemenete a másik pedig a további adatokat. Az eseményindító és más bemeneti kötések (vazby prvku `direction === "in"`) háromféleképpen függvény által olvasható:
  - **_[Ajánlott]_  a függvénynek átadott paraméterek.** A függvény ugyanabban a sorrendben vannak meghatározva, a rendszer átad *function.json*. Vegye figyelembe, hogy a `name` meghatározott tulajdonság *function.json* nem kell egyeznie a paraméter nevével, bár azt kell.
  
    ```javascript
@@ -137,7 +137,7 @@ Trigger és a bemeneti kötések (vazby prvku `direction === "in"`) háromfélek
    };
    ```
 
-### <a name="writing-data"></a>Adatok írása
+### <a name="outputs"></a>Kimenetek
 Kimenetek (vazby prvku `direction === "out"`) számos módon a függvény által írhatók. Minden esetben a `name` tulajdonság a kötés, ahogyan az az *function.json* felel meg a függvényben írt az objektumtag neve. 
 
 Kimeneti kötések adatok rendelhet a következő módszerek valamelyikével. Ezek a módszerek nem ötvözze.

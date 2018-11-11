@@ -1,7 +1,7 @@
 ---
-title: Egy Azure Cosmos DB fiók az Azure-portálon kezelése |} Microsoft Docs
-description: Megtudhatja, hogyan kezelheti az Azure portál Azure Cosmos DB fiókját. Útmutató az Azure portál használatával megtekintése, másolása, törlés és hozzáférési fiókok található.
-keywords: Az Azure portál, azure, a Microsoft azure
+title: Az Azure Portalon egy Azure Cosmos DB-fiók kezelése |} A Microsoft Docs
+description: Ismerje meg, hogyan kezelheti az Azure Cosmos DB-fiókot az Azure Portalon keresztül. Útmutató megtekintése, másolása, törlése és hozzáférési fiókok az Azure Portalon lévő keresése.
+keywords: Az Azure Portal, azure, Microsoft azure
 services: cosmos-db
 author: kirillg
 manager: kfile
@@ -11,92 +11,92 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: kirillg
-ms.openlocfilehash: 8b28143dc92fa526b631baf6d47e4a9f2367ee0e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: abcf51c6bd196c2ffb0bb35e2df161531a53972d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34612156"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229390"
 ---
-# <a name="how-to-manage-an-azure-cosmos-db-account"></a>Egy Azure Cosmos DB fiók kezelése
-Ismerje meg, globális konzisztenciahiba, kulcsok dolgozni, és az Azure portálon Azure Cosmos DB-fiók törlése.
+# <a name="how-to-manage-an-azure-cosmos-db-account"></a>Az Azure Cosmos DB-fiók kezelése
+Ismerje meg, hogyan globális összhangot, kulcsok használata, és törölje az Azure Cosmos DB-fiókot az Azure Portalon.
 
 ## <a id="consistency"></a>Azure Cosmos DB konzisztencia beállításainak kezelése
-A jobb oldali konzisztenciaszint kiválasztása attól függ, hogy az alkalmazás szemantikáját. Ismerkedjen meg a rendelkezésre álló konzisztenciaszintek az Azure Cosmos Adatbázisba olvasásával [konzisztenciaszintek használatával a rendelkezésre állás és teljesítmény az Azure Cosmos DB maximalizálása érdekében][consistency]. Azure Cosmos-adatbázis konzisztencia, a rendelkezésre állási és a teljesítmény garanciák, az adatbázis fiókjához tartozó minden konzisztencia szintet biztosít. Az adatbázis-fiók beállítása az erős konzisztencia szintű kell lennie az adatok egyetlen Azure régióra zárt és globálisan nem érhető el. Másrészről, a laza konzisztenciaszintek - a kötött elavulási, munkamenet és végleges engedélyezése, hogy rendelje hozzá Azure-régiók tetszőleges számú adatbázis fiókját. Az alábbi egyszerű lépéseket mutatja be az adatbázis fiókjához tartozó alapértelmezett konzisztencia szintet.
+A jobb oldali konzisztenciaszint kiválasztása attól függ, hogy az alkalmazás szemantikáját. Ismerje meg az Azure Cosmos DB-ben elérhető konzisztenciaszintekről olvasásával [rendelkezésre állás és teljesítmény az Azure Cosmos DB maximalizálása a konzisztenciaszintek használatával][consistency]. Azure Cosmos DB biztosítja a konzisztencia, a rendelkezésre állás és a teljesítményre vonatkozó garanciákat, minden konzisztencia szinten érhető el a fiókot. Konfigurálás a fiókot erős konzisztencia szintű kell lennie, hogy az adatok egyetlen Azure-régióba zárt és globálisan elérhető. Más szóval, Könnyített konzisztenciaszintekről – korlátozott frissesség, munkamenet és végleges engedélyezése, hogy tetszőleges mennyiségű Azure-régióban, az adatbázis-fiókhoz társít. Az alábbi egyszerű lépések bemutatják, hogyan válassza ki az adatbázisfiók alapértelmezett konzisztenciaszintjét.
 
-### <a name="to-specify-the-default-consistency-for-an-azure-cosmos-db-account"></a>Az alapértelmezett konzisztencia Azure Cosmos DB fiók megadása
-1. Az a [Azure-portálon](https://portal.azure.com/), Azure Cosmos DB-fiókját.
-2. Kattintson a fiók lapon **alapértelmezett konzisztencia**.
-3. Az a **alapértelmezett konzisztencia** lapon válassza ki az új konzisztencia szintet, majd kattintson **mentése**.
+### <a name="to-specify-the-default-consistency-for-an-azure-cosmos-db-account"></a>Az alapértelmezett konzisztenciát az Azure Cosmos DB-fiók megadása
+1. Az a [az Azure portal](https://portal.azure.com/), az Azure Cosmos DB-fiók eléréséhez.
+2. A fiók lapon kattintson a **alapértelmezett konzisztencia**.
+3. Az a **alapértelmezett konzisztencia** lapon válassza ki az új konzisztencia szintjét, és kattintson **mentése**.
     ![Alapértelmezett konzisztencia munkamenet][5]
 
-## <a id="keys"></a>Megtekintése, másolása és újragenerálása hívóbetűk és jelszavak
-Egy Azure Cosmos DB fiók létrehozásakor a szolgáltatás hoz létre két fő kulcsot (vagy két MongoDB API fiókok jelszavait), amely használható a hitelesítéshez az Azure Cosmos DB fiók elérésekor. Két tárelérési kulcsok megadásával Azure Cosmos DB teszi Azure Cosmos DB fiókjába megszakítás nélkül a kulcsok újragenerálását. 
+## <a id="keys"></a>Megtekintéséhez, másolásához és újragenerálásához hozzáférési kulcsait és jelszavait
+Az Azure Cosmos DB-fiók létrehozásakor a szolgáltatás két fő kulcsot (vagy a MongoDB API-fiókok a két jelszó) hoz létre, amely használható a hitelesítéshez az Azure Cosmos DB-fiók eléréséhez. Azáltal, hogy a két hozzáférési kulcsot, az Azure Cosmos DB lehetővé teszi a kulcsok az Azure Cosmos DB-fiók megszakítás nélkül. 
 
-Az a [Azure-portálon](https://portal.azure.com/), hozzáférés a **kulcsok** lapot a erőforrás menüből a **Azure Cosmos DB fiók** megtekintése, másolása és újragenerálása a tárelérési kulcsok, amelyek használt lap a Azure Cosmos DB-fiók eléréséhez. A MongoDB API fiókok hozzáférni a **kapcsolati karakterlánc** lap megtekintése, másolása és újragenerálása a jelszavakat, amely segítségével fér hozzá a fiókjához való erőforrás menüből.
+Az a [az Azure portal](https://portal.azure.com/), hozzáférés az **kulcsok** lapot az erőforrás menüben a **Azure Cosmos DB-fiók** megtekintése, másolása és a hozzáférési kulcsok, amelyek szolgáló lap az Azure Cosmos DB-fiók eléréséhez. MongoDB API-fiókok esetében eléréséhez a **kapcsolati karakterlánc** az erőforrás menüben megtekintéséhez, másolásához és újragenerálásához a fiókja eléréséhez használt jelszavak lapon.
 
-![Az Azure portál képernyőképe, a kulcsok lap](./media/manage-account/keys.png)
+![Az Azure portal képernyőképe, a kulcsok oldalán](./media/manage-account/keys.png)
 
 > [!NOTE]
-> A **kulcsok** oldal is elsődleges és másodlagos kapcsolati karakterláncok, amelyek segítségével a fiókjához a [adatáttelepítési eszköz](import-data.md).
+> A **kulcsok** oldal is az elsődleges és másodlagos kapcsolati karakterláncok, amelyek segítségével csatlakozhat a fiókjához a [adatáttelepítési eszköz](import-data.md).
 > 
 > 
 
-Csak olvasható kulcsok ezen az oldalon is elérhetők. Olvasás és az olvasási műveletek kicsit hoz létre, törölhet, illetve cserél nem lekérdezések.
+Írásvédett kulcsok is érhetők el ezen az oldalon. Olvasási és lekérdezések csak olvasható műveletekhez, ideje hoz létre, törölhet, és lecseréli nem.
 
-### <a name="copy-an-access-key-or-password-in-the-azure-portal"></a>Hozzáférési kulcs vagy jelszó másolása az Azure-portálon
-A a **kulcsok** lap (vagy **kapcsolati karakterlánc** lap MongoDB API-fiókok), kattintson a **másolási** kulcs vagy jelszó kíván másolni a jobbra látható gombra.
+### <a name="copy-an-access-key-or-password-in-the-azure-portal"></a>Egy hozzáférési kulcs vagy jelszó másolása az Azure Portalon
+Az a **kulcsok** lap (vagy **kapcsolati karakterlánc** MongoDB API-fiókok), kattintson a **másolási** jobb oldalán a kulcs vagy jelszó másolni kívánt gombra.
 
 ![Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok oldalán](./media/manage-account/copykeys.png)
 
-### <a name="regenerate-access-keys-and-passwords"></a>Tárelérési kulcsok és a jelszavak újbóli létrehozása
-Módosítania kell a tárelérési kulcsok (és MongoDB API fiókok jelszavait) Azure Cosmos DB fiókjába rendszeres időközönként a kapcsolatok nagyobb biztonsága érdekében. Engedélyezi, hogy az egyik kulcs, amíg a többi hozzáférési kulcs újragenerálása Azure Cosmos DB fiókhoz kapcsolatok karbantartása két hozzáférési kulcsok vagy jelszavak gyűjtésére van hozzárendelve.
+### <a name="regenerate-access-keys-and-passwords"></a>Elérési kulcsok és a jelszó újragenerálása
+Akkor kell megváltoztatnia, a tárelérési kulcsok (és a MongoDB API-fiókok jelszavát) az Azure Cosmos DB-fiók rendszeres időközönként annak érdekében, hogy a kapcsolat biztonságosabb. Lehetővé teszi az Azure Cosmos DB-fiók az egyik kulcs, míg más hozzáférési kulcs kapcsolatok fenntartásához két hozzáférési kulcsok és jelszavak vannak hozzárendelve.
 
 > [!WARNING]
-> A tárelérési kulcsok újragenerálása hatással van az aktuális kulcs függő alkalmazások. A Azure Cosmos DB-fiók eléréséhez a hozzáférési kulcsot használó összes ügyfelet frissíteni kell az új kulcs használatához.
+> A tárelérési kulcsok újragenerálása hatással van minden olyan alkalmazások, amelyek a jelenlegi kulcs függenek. Az Azure Cosmos DB-fiók eléréséhez a hozzáférési kulcsot használó összes ügyfelet frissíteni kell, hogy az új kulcsot használja.
 > 
 > 
 
-Ha alkalmazások vagy az Azure Cosmos DB fiókkal felhőszolgáltatások, elvesznek a kapcsolatok Ha újragenerálja a kulcsokat, kivéve, ha rotálja a kulcsokat. A működés közbeni a kulcsok vagy jelszavak gyűjtésére részt vevő folyamat lépései.
+Ha alkalmazások és a cloud services használata az Azure Cosmos DB-fiókot, akkor elveszti a kapcsolatokat Ha újragenerálja a kulcsokat, kivéve, ha rotálja a kulcsokat. Az alábbi lépéseket a működés közbeni a kulcsok és jelszavak részt folyamatot körvonalazzák.
 
-1. Frissítse az alkalmazás kódjában hivatkozhasson rá az Azure Cosmos DB fiók másodlagos elérési kulcsát a hozzáférési kulcsot.
-2. Újragenerálja az elsődleges elérési kulcsot az Azure Cosmos DB fiók. Az a [Azure-portálon](https://portal.azure.com/), Azure Cosmos DB-fiókját.
-3. Az a **Azure Cosmos DB fiók** kattintson **kulcsok** (vagy **kapcsolati karakterlánc** a MongoDB fiókok **).
-4. Az a **kulcsok**/**kapcsolati karakterlánc** lapon, az újbóli létrehozás gombra, majd kattintson a **Ok** annak ellenőrzéséhez, hogy szeretné-e hozzon létre egy új kulcsot.
-    ![Tárelérési kulcsok újragenerálása](./media/manage-account/regenerate-keys.png)
-5. Miután ellenőrizte, hogy az új kulcs használható (körülbelül 5 percig újbóli létrehozását követően), frissítse az alkalmazás kódjában hivatkozhasson rá az új elsődleges elérési kulcsát a hozzáférési kulcsot.
+1. A hozzáférési kulcsot az alkalmazáskódban való hivatkozáshoz a másodlagos elérési kulcsot az Azure Cosmos DB-fiók frissítéséhez.
+2. Az Azure Cosmos DB-fiókja az elsődleges elérési kulcs újragenerálása. Az a [az Azure portal](https://portal.azure.com/), az Azure Cosmos DB-fiók eléréséhez.
+3. Az a **Azure Cosmos DB-fiók** kattintson **kulcsok** (vagy **kapcsolati karakterlánc** a MongoDB-fiókok **).
+4. Az a **kulcsok**/**kapcsolati karakterlánc** lapon, a újragenerálása gombra, majd kattintson a **Ok** annak ellenőrzéséhez, hogy szeretné-e egy új kulcsot létrehozni.
+    ![Elérési kulcsok újragenerálása](./media/manage-account/regenerate-keys.png)
+5. Miután ellenőrizte, hogy az új kulcs használatra kész (körülbelül 5 percig regenerálása után), a hozzáférési kulcsot az alkalmazáskódban való hivatkozáshoz az új elsődleges elérési kulcs frissítése
 6. Generálja újra a másodlagos elérési kulcsot.
    
-    ![Tárelérési kulcsok újragenerálása](./media/manage-account/regenerate-secondary-key.png)
+    ![Elérési kulcsok újragenerálása](./media/manage-account/regenerate-secondary-key.png)
 
 > [!NOTE]
-> Mielőtt egy újonnan létrehozott kulcs segítségével fér hozzá a Azure Cosmos DB fiókjához több percet is igénybe vehet.
+> Egy újonnan létrehozott kulcs használhatók legyenek az Azure Cosmos DB-fiókja eléréséhez több percet is igénybe vehet.
 > 
 > 
 
-## <a name="get-the-connection-string"></a>A kapcsolati karakterlánc beolvasása
-A kapcsolati karakterlánc lekéréséhez, tegye a következőket: 
+## <a name="get-the-connection-string"></a>A kapcsolati sztring lekérése
+A kapcsolati karakterlánc lekéréséhez tegye a következőket: 
 
-1. Az a [Azure-portálon](https://portal.azure.com), Azure Cosmos DB-fiókját.
-2. Az erőforrás menüjében kattintson **kulcsok** (vagy **kapcsolati karakterlánc** MongoDB API-fiókok).
-3. Kattintson a **másolási** megjelenítő gombra a **elsődleges kapcsolódási karakterlánc** vagy **másodlagos kapcsolati karakterlánc** mezőbe. 
+1. Az a [az Azure portal](https://portal.azure.com), az Azure Cosmos DB-fiók eléréséhez.
+2. Az erőforrás menüben kattintson **kulcsok** (vagy **kapcsolati karakterlánc** MongoDB API-fiókok esetében).
+3. Kattintson a **másolási** megjelenítő gombra a **elsődleges kapcsolati karakterlánc** vagy **másodlagos kapcsolati karakterlánc** mezőbe. 
 
-A kapcsolati karakterláncot a rendszer használata esetén a [Azure Cosmos DB adatbázis áttelepítési eszköz](import-data.md), az adatbázisnév hozzáfűzése a kapcsolati karakterlánc végén. `AccountEndpoint=< >;AccountKey=< >;Database=< >`.
+Ha a kapcsolati karakterláncot használja a [Azure Cosmos DB adatbázis-áttelepítési eszköz](import-data.md), fűzze hozzá az adatbázis neve a kapcsolati karakterlánc végére. `AccountEndpoint=< >;AccountKey=< >;Database=< >`.
 
-## <a id="delete"></a> Azure Cosmos DB-fiók törlése
-Azure-portálról, amely már nem használ egy Azure Cosmos DB fiók eltávolításához kattintson a jobb gombbal a fiók nevét, majd kattintson **fiók törlése**.
+## <a id="delete"></a> Az Azure Cosmos DB-fiók törlése
+Távolítsa el az Azure Cosmos DB-fiókot az Azure Portalról, amely már nem használ, kattintson a jobb gombbal a fiók nevét, majd kattintson **fiók törlése**.
 
-![Egy Azure Cosmos DB-fiókba az Azure-portál törlése](./media/manage-account/deleteaccount.png)
+![Az Azure Portalon egy Azure Cosmos DB-fiók törlése](./media/manage-account/deleteaccount.png)
 
-1. Az a [Azure-portálon](https://portal.azure.com/), a törölni kívánt Azure Cosmos DB fiók eléréséhez.
-2. Az a **Azure Cosmos DB fiók** lapon kattintson a jobb gombbal a fiókot, és kattintson a **fiók törlése**. 
-3. Az eredményül kapott megerősítő lapon írja be annak megerősítéséhez, hogy a fiók törlése az Azure Cosmos DB fióknevet.
+1. Az a [az Azure portal](https://portal.azure.com/), a, hogy törölni kívánja az Azure Cosmos DB-fiók eléréséhez.
+2. Az a **Azure Cosmos DB-fiók** lapon kattintson a jobb gombbal a fiókot, és kattintson a **fiók törlése**. 
+3. Az eredményül kapott megerősítő lapon írja be az Azure Cosmos DB-fiók neve, győződjön meg arról, hogy szeretné-e a fiók törlése.
 4. Kattintson a **törlése** gombra.
 
-![Egy Azure Cosmos DB-fiókba az Azure-portál törlése](./media/manage-account/delete-account-confirm.png)
+![Az Azure Portalon egy Azure Cosmos DB-fiók törlése](./media/manage-account/delete-account-confirm.png)
 
 ## <a id="next"></a>Következő lépések
-Megtudhatja, hogyan [Ismerkedés az Azure Cosmos DB fiókja](http://go.microsoft.com/fwlink/p/?LinkId=402364).
+Ismerje meg, hogyan [Ismerkedés az Azure Cosmos DB-fiókja](https://go.microsoft.com/fwlink/p/?LinkId=402364).
 
 <!--Image references-->
 [5]: ./media/manage-account/documentdb_change_consistency-1.png

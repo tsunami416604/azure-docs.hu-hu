@@ -9,14 +9,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 41b4a89c8d06ed94d27612cc0d090da801fb6dd8
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 1220bcc8445f13a4573f1a6d3181c172799638fb
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412873"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741785"
 ---
-# <a name="create-an-azure-cosmos-db-cassandra-api-account-database-and-a-table-by-using-a-java-application"></a>Azure Cosmos DB Cassandra API-fiók, adatbázis és tábla létrehozása egy Java-alkalmazással
+# <a name="tutorial-create-an-azure-cosmos-db-cassandra-api-account-database-and-a-table-by-using-a-java-application"></a>Oktatóanyag: Azure Cosmos DB Cassandra API-fiók, adatbázis és tábla létrehozása egy Java-alkalmazással
 
 Ez a cikk bemutatja, hogyan hozhat létre egy Java-alkalmazás segítségével egy Cassandra API-fiókot az Azure Cosmos DB-ben, és hogyan adhat hozzá a fiókhoz egy adatbázist (más néven kulcsteret) és egy táblát. A Java-alkalmazás a [Java illesztőprogramot](https://github.com/datastax/java-driver) használja egy felhasználói adatbázis létrehozásához, amely olyan adatokat tartalmaz, mint a felhasználók azonosítója, neve és városa.  
 
@@ -60,7 +60,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 ## <a name="get-the-connection-details-of-your-account"></a>A fiók kapcsolati adatainak lekérése  
 
-Kérje le a kapcsolati sztringet az Azure Portalon, majd másolja be a Java konfigurációs fájlba. Ez lehetővé teszi az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal. 
+Kérje le a kapcsolati sztringet az Azure Portalon, majd másolja be a Java konfigurációs fájlba. A kapcsolati sztring lehetővé teszi az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal. 
 
 1. Az  [Azure Portalon](http://portal.azure.com/) lépjen a Cosmos DB-fiókra. 
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure HDInsight az Ambari - fürtkonfigurációk optimalizálása
-description: Konfigurálja, és optimalizálhatja a HDInsight-fürtök az Ambari webes felhasználói felület használatával.
+title: Az Apache Ambari – Azure HDInsight-fürt konfigurációjának optimalizálása
+description: Az Apache Ambari webes felhasználói felület használatával konfigurálhatja és a HDInsight-fürtök optimalizálása.
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: ashish
-ms.openlocfilehash: 73fdd3f221e35bc1e0b0904bdbbaa63525ba4be3
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 82995f2cc8facac9bef6f8c84c9667775ac81463
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105473"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038518"
 ---
 # <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>HDInsight-fürt konfigurációjának optimalizálása az Ambari használatával
 
@@ -281,7 +281,7 @@ A Hive-végrehajtó motor optimalizálásához további javaslatok:
 
 | Beállítás | Ajánlott | HDInsight alapértelmezett |
 | -- | -- | -- |
-| `hive.mapjoin.hybridgrace.hashtable` | Igaz értéket a biztonságosabb, lassabb; = FALSE = gyorsabban | false |
+| `hive.mapjoin.hybridgrace.hashtable` | Igaz értéket a biztonságosabb, lassabb; = FALSE = gyorsabban | hamis |
 | `tez.am.resource.memory.mb` | A legtöbb 4 GB-os felső határérték | Automatikusan beállított |
 | `tez.session.am.dag.submit.timeout.secs` | 300+ | 300 |
 | `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10000 |

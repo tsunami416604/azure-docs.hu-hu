@@ -6,24 +6,25 @@ author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 11/05/2018
 ms.author: patricka
 ms.reviewer: fiseraci
 keywords: ''
-ms.openlocfilehash: 459cdf4e1a70ee02d818dd6abe101e4fc3475b68
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 83177363803c8f5c505c083614000dfa8f0df60d
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40034765"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036903"
 ---
 # <a name="azure-stack-datacenter-integration---physical-device-auditing"></a>Az Azure Stack adatközpont integrációja - naplózás fizikai eszköz
 
-Minden fizikai eszköz az Azure Stackben, például az alaplapi felügyeleti vezérlővel (bmc) és a hálózati kapcsolók, hozzon létre vizsgálati naplókat, és azok integrálni kell a teljes naplózási megoldás. Mivel az eszközök az Azure Stack OEM különböző hardverszállítók eltérőek, forduljon a gyártója által biztosított naplózás integrációs dokumentáció. Az alábbi szakaszok a fizikai eszköz az Azure Stackben naplózás néhány általános adatok megadása.  
+Minden fizikai eszköz az Azure Stackben, például az alaplapi felügyeleti vezérlővel (bmc) és a hálózati kapcsolók, gridre bocsáthatja ki az auditnaplók. A vizsgálati naplók integrálható a teljes naplózási megoldás. Mivel az eszközök az Azure Stack OEM különböző hardverszállítók eltérőek, forduljon a gyártója által biztosított naplózás integrációs dokumentáció.
+Az alábbi szakaszok a fizikai eszköz az Azure Stackben naplózás néhány általános adatok megadása.  
 
 ## <a name="physical-device-access-auditing"></a>Fizikai eszköz fájlhozzáférés naplózása
 
-Minden fizikai eszköz az Azure Stackben TACACS vagy RADIUS-használatát támogatja. Ez magában foglalja a hozzáférést az alaplapi felügyeleti vezérlőnek (BMC) és a hálózati kapcsolók.
+Minden fizikai eszköz az Azure Stackben TACACS vagy RADIUS-használatát támogatja. Támogatás magában foglalja a hozzáférést az alaplapi felügyeleti vezérlőnek (BMC) és a hálózati kapcsolók.
 
 Az Azure Stack-megoldások tartalmaz RADIUS vagy a beépített TACACS. A megoldások azonban ellenőrzése a piacon elérhető meglévő RADIUS vagy TACACS megoldások támogatása érdekében.
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: jeedes
-ms.openlocfilehash: d7a5bf23f2855b43c4a2e4022568028d852c094b
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 0f6e690bc80ae8004fba4faf53c0403b0cb7edd9
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719579"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035336"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Összevont egyszeri bejelentkezés az Azure Active Directory-tanúsítványok kezelése
 Ez a cikk ismerteti a gyakori kérdéseket és a tanúsítványok, az Azure Active Directory (Azure AD) hoz létre, az SaaS-alkalmazások létrehozásához összevont egyszeri bejelentkezés (SSO) kapcsolatos adatokat. Alkalmazások hozzáadása az Azure AD-alkalmazásgyűjtemény vagy egy katalógusban nem szereplő alkalmazást sablon használatával. Az alkalmazás konfigurálása az összevont egyszeri bejelentkezési beállítás használatával.
@@ -76,16 +76,20 @@ A következő megújítási lépéseket kell eredményeznie, jelentős állásid
 
     ![Új tanúsítvány létrehozása](./media/manage-certificates-for-federated-single-sign-on/create_new_certficate.png)
 
-2. Válassza ki a kívánt lejárati dátuma és időpontja az új tanúsítvány számára, és kattintson a **mentése**.
+2. Válassza ki a kívánt lejárati dátuma és időpontja az új tanúsítvány számára, és kattintson a **mentése**. Egy dátumot, amely átfedésben van a meglévő tanúsítvány kiválasztása biztosítja, hogy leállás miatt tanúsítvány lejárati korlátozva. 
 
-3. Letöltheti a tanúsítványt a **SAML aláíró tanúsítvány** lehetőséget. Töltse fel az új tanúsítványt a SaaS-alkalmazás egyszeri bejelentkezési konfigurációjának képernyő. Ismerje meg, hogyan hajthatja végre az adott SaaS-alkalmazáshoz, kattintson a **nézet alkalmazás konfigurációjára vonatkozó oktatóanyag** hivatkozásra.
+3. Ha az alkalmazás is automatikusan lecserélhetők egy tanúsítványt, állítsa az új tanúsítvány aktív.  Jelentkezzen be az alkalmazást, ellenőrizze, hogy működik-e.
+
+4. Ha az alkalmazás nem automatikus felvétel az új tanúsítvány, de leíró több mint egy aláíró tanúsítványt, mielőtt lejár, a régit, töltse fel újra az alkalmazás ezután lépjen vissza a portálra és győződjön meg arról, hogy az aktív tanúsítvány. 
+
+5. Az alkalmazás csak egy időben képes kezelni egy tanúsítványt, ha egy üzemszüneti időszakot válasszon, töltse le az új tanúsítványt, töltse fel az alkalmazás az, térjen vissza az Azure Portal és az új tanúsítvány állítja be aktív. 
    
-4. Az Azure ad-ben az új tanúsítvány aktiválásához jelölje be a **új tanúsítvány aktívvá** jelölőnégyzetet, majd kattintson a **mentése** gombra a lap tetején. Ez összesíti az új tanúsítvány keresztül, az Azure AD-oldalán. A tanúsítvány állapotának a változik **új** való **aktív**. Ettől a ponttól az Azure ad-ben elindítja az új tanúsítványt használja a válasz az aláíráshoz. 
+6. Az Azure ad-ben az új tanúsítvány aktiválásához jelölje be a **új tanúsítvány aktívvá** jelölőnégyzetet, majd kattintson a **mentése** gombra a lap tetején. Ez összesíti az új tanúsítvány keresztül, az Azure AD-oldalán. A tanúsítvány állapotának a változik **új** való **aktív**. Ettől a ponttól az Azure ad-ben elindítja az új tanúsítványt használja a válasz az aláíráshoz. 
    
     ![Új tanúsítvány létrehozása](./media/manage-certificates-for-federated-single-sign-on/new_certificate_download.png)
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](../saas-apps/tutorial-list.md)
-* [Alkalmazások kezelése az Azure Active Directoryban](what-is-application-management.md)
+* [Alkalmazáskezelés az Azure Active Directory használatával](what-is-application-management.md)
 * [Alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](what-is-single-sign-on.md)
 * [SAML-alapú egyszeri bejelentkezés hibaelhárítása](../develop/howto-v1-debug-saml-sso-issues.md)

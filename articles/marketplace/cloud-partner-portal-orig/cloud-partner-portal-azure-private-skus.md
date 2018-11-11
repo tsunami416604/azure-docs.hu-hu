@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: fa82db289cd3080cc1e51027b609cc6c8aa66921
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 28fe85c6443701d5fb40d4f90dbec9ba445a234d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809854"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230240"
 ---
 <a name="private-skus"></a>Privát termékváltozatok
 ============
 
-Privát SKU-k lehetővé teszik a termékváltozatok rendelkezésre állásának korlátozása egy adott ügyfélnek. A Termékváltozat privát van megjelölve, ha nem érhető el a bármely nyilvános katalógus, amely a [Azure Marketplace-en](http://azuremarketplace.microsoft.com) és a [az Azure portal](http://portal.azure.com). Az Azure Portalon csak a Termékváltozat-hozzáféréssel rendelkező felhasználók láthatják őket. Ezenkívül, akkor is lehet felszólítja a felhasználót szóló ajánlatok hozzáféréssel rendelkeznek.
+Privát SKU-k lehetővé teszik a termékváltozatok rendelkezésre állásának korlátozása egy adott ügyfélnek. A Termékváltozat privát van megjelölve, ha nem érhető el a bármely nyilvános katalógus, amely a [Azure Marketplace-en](https://azuremarketplace.microsoft.com) és a [az Azure portal](http://portal.azure.com). Az Azure Portalon csak a Termékváltozat-hozzáféréssel rendelkező felhasználók láthatják őket. Ezenkívül, akkor is lehet felszólítja a felhasználót szóló ajánlatok hozzáféréssel rendelkeznek.
 
 >[!NOTE]
 >Privát termékváltozatok rendelkeznie kell új egyedi Termékváltozata vagy előfizetése azonosító bármelyik a nyilvános termékváltozatok való ütközés elkerülése érdekében.

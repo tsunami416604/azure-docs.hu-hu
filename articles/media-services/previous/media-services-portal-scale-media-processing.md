@@ -1,10 +1,10 @@
 ---
-title: Skála media feldolgozása az Azure portál használatával |} Microsoft Docs
-description: Ez az oktatóanyag végigvezeti a méretezési adathordozó feldolgozása az Azure portál használatával.
+title: Méretezhető médiafeldolgozás az Azure portal használatával |} A Microsoft Docs
+description: Ez az oktatóanyag végigvezeti a lépéseken, méretezési médiatartalmak feldolgozásának, az Azure portal használatával.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: e500f733-68aa-450c-b212-cf717c0d15da
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/04/2017
+ms.date: 11/05/2018
 ms.author: juliako
-ms.openlocfilehash: 51973916c97282ac93032ab833402d9d1356647e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 2aabdc503a694de46796b7c3afeedfcdb2f39ca9
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790313"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037864"
 ---
 # <a name="change-the-reserved-unit-type"></a>A fenntartott egység típusának módosítása
 > [!div class="op_single_selector"]
@@ -31,10 +31,6 @@ ms.locfileid: "33790313"
 > 
 > 
 
-> [!NOTE]
-> A Java SDK legújabb verziójának beszerzéséhez és a Java-fejlesztés megkezdéséhez tekintse meg [Az Azure Media Services Java ügyfél-SDK használatának megkezdése](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use) című cikket. <br/>
-> A legfrissebb Media Services PHP SDK letöltéséhez keresse meg a Microsoft Azure-csomag 0.5.7-es verzióját a [Packagist-adattárban](https://packagist.org/packages/microsoft/windowsazure#v0.5.7).  
-
 ## <a name="overview"></a>Áttekintés
 
 A Media Services-fiókok Fenntartott egység típussal vannak társítva, amely meghatározza a médiafeldolgozási feladatok feldolgozásának sebességét. A következő Fenntartott egység típusok közül választhat: **S1**, **S2** vagy **S3**. Ugyanaz a kódolási feladat például gyorsabban fut, amikor az **S2** Fenntartott egység típust használja az **S1** típus helyett.
@@ -45,23 +41,23 @@ A Fenntartott egység típusának meghatározása mellett megadhatja, hogy ellá
 >A Fenntartott egységek az összes médiafeldolgozás párhuzamossá tételéért felelősek, beleértve az Azure Media Indexerrel végzett indexelési feladatokat is. De a kódolással ellentétben az indexelési feladatok feldolgozása nem lesz gyorsabb a gyorsabb Fenntartott egységekkel.
 
 > [!IMPORTANT]
-> Mindenképpen tekintse át a [áttekintése](media-services-scale-media-processing-overview.md) témakör feldolgozása media méretezésével kapcsolatos további információkat a témakör.
+> Mindenképpen tekintse át a [áttekintése](media-services-scale-media-processing-overview.md) médiafeldolgozási témakör méretezésével kapcsolatos további információért a témakörben.
 > 
 > 
 
 ## <a name="scale-media-processing"></a>Méretezhető médiafeldolgozás
-A fenntartott egységnek típusát és fenntartott egységek számának megváltoztatásához tegye a következőket:
+Ha módosítani szeretné a fenntartott egység típusának és a szolgáltatás számára fenntartott egységek számát, tegye a következőket:
 
 1. Az [Azure-portálon](https://portal.azure.com/) válassza ki Azure Media Services-fiókját.
-2. Az a **beállítások** ablakban válassza ki **Media szolgáltatás számára fenntartott egység**.
+2. Az a **beállítások** ablakban válassza **Media szolgáltatás számára fenntartott egységek**.
    
-    A kijelölt fenntartott egységnek típus fenntartott egységek számának módosításához használja a **Media kiszolgált egységek** csúszkát a képernyő tetején.
+    A kijelölt fenntartott egység típusának számára fenntartott egységek számát módosításához használja a **Media kiszolgált egységek** a képernyő tetején lévő csúszkával.
    
-    Módosíthatja a **FENNTARTOTT EGYSÉGTÍPUS**, kattintson a a **fenntartott feldolgozóegység sebessége** sáv. Ezután válassza ki az árképzési szint van szüksége: S1, S2 vagy S3.
+    Módosíthatja a **FENNTARTOTT egység TÍPUSSAL**, kattintson a a **fenntartott feldolgozási egységek sebessége** sáv. Ezután válassza ki a tarifacsomagot kell: S1, S2 vagy S3.
    
 3. A módosítások mentéséhez kattintson a SAVE (Mentés) gombra.
    
-    Az új fenntartott egységek MENTÉS megnyomásakor foglal le.
+    Az új szolgáltatás számára fenntartott egységek lefoglalásának, amikor lenyomja a Mentés gombra.
 
 ## <a name="next-steps"></a>További lépések
 Tekintse át a Media Services képzési terveket.

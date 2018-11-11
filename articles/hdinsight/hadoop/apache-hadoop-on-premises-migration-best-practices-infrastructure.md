@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: a1dbc04a83e80281fb6cd516c546c1dddff6db37
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 614fdae1865f008bdbc2cb8d5e8b96c0addcc112
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413799"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036923"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése Azure HDInsight - infrastruktúra ajánlott eljárások
 
@@ -61,7 +61,7 @@ Alkalmazások és összetevők, amelyek nem voltak elérhetők a helyi fürtökb
 |Presto|IaaS-vagy HDInsight Élcsomóponthoz
 |Python 2|PaaS 
 |Python 3|PaaS 
-|R|PaaS 
+|G|PaaS 
 |SAS|IaaS 
 |Vertica|IaaS (SQLDW helyett az Azure-ban)
 |Tableau|IaaS 
@@ -70,7 +70,7 @@ Alkalmazások és összetevők, amelyek nem voltak elérhetők a helyi fürtökb
 |Palantir|IaaS 
 |Sailpoint|Iaas 
 
-További információkért tekintse meg a cikket [Hadoop-összetevők a különböző HDInsight-verziók](../hdinsight-component-versioning.md#hadoop-components-available-with-different-hdinsight-versions)
+További információkért tekintse meg a cikket [elérhető különböző HDInsight-verziók az Apache Hadoop-összetevők](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>A Parancsfájlműveletek segítségével HDInsight-fürtök testre szabása
 
@@ -88,7 +88,7 @@ HDInsight biztosítja a következő összetevők telepíthetők a HDInsight-für
 - A Solr telepítése
 - A Giraph telepítése
 - Hive-kódtárak előzetes betöltése
-- Mono telepítése vagy frissítése
+- A Mono telepítése vagy frissítése
 
 > [!Note]
 > HDInsight biztosít az egyéni hadoop-összetevők és a Parancsfájlműveletek segítségével telepített összetevőket közvetlen támogatást.
@@ -154,7 +154,7 @@ Fürtméretezés automatizálható a következő módszerekkel:
 Set-AzureRmHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 ```powershell
 azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>

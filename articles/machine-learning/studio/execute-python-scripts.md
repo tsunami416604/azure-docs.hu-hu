@@ -1,7 +1,7 @@
 ---
-title: Python machine learning parancsfájlok végrehajtása |} Microsoft Docs
-description: Vázol fel tervezési alapelvek az alapul szolgáló Azure Machine Learning és alapvető használati forgatókönyvek, képességekre és korlátozásokra Python parancsfájlok támogatása.
-keywords: Python gépi tanulási, pandas, a python pandas, a python-parancsfájlok, python-parancsfájl végrehajtása
+title: Python machine learning parancsfájlok végrehajtása |} A Microsoft Docs
+description: A körvonal tervezési elvek, az alapul szolgáló Python-szkriptek az Azure Machine Learning és alapvető használati forgatókönyvek, képességekre és korlátozásokra támogatása.
+keywords: Python gépi tanulási, pandas, a python pandas, a python-szkriptek, python-szkriptek végrehajtása
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
@@ -16,199 +16,200 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 537839295deb631c3b9811c8d40db8608954e8a1
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7520780060f603a7e394b100549529a2c1b6fe4b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835253"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228164"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>A Python Machine Learning parancsfájlok végrehajtása az Azure Machine Learning Studióban
 
-Ez a témakör ismerteti a tervezési alapelvek az alapul szolgáló Python-parancsfájl az Azure Machine Learning aktuális támogatása. A fő képesség azt is, beleértve:
+Ez a témakör ismerteti a tervezési alapelvek az alapul szolgáló az Azure Machine Learning Python-szkriptek jelenlegi támogatása. A megadott fő funkciói is leírása, beleértve:
 
-- a végrehajtás alapvető használati forgatókönyvek
-- a kísérlet pontozása egy webszolgáltatás
+- hajtsa végre az alapvető használati forgatókönyvek
+- egy kísérlet pontszám a web service-ben
 - importálja a meglévő kód támogatása
-- képi megjelenítések exportálása
+- Vizualizációk exportálása
 - hajtsa végre a felügyelt szolgáltatás kiválasztása
-- bizonyos korlátozások megértése
+- bizonyos korlátozások ismertetése
 
-[Python](https://www.python.org/) a sok adatszakértőkön eszköz mellkasát elengedhetetlen eszköz. Rendelkezik:
+[Python](https://www.python.org/) elengedhetetlen az eszköz mellkasát számos adatszakértők az eszköz. Rendelkezik:
 
 * egy elegáns és tömör szintaxis 
-* többplatformos támogatást, 
-* hatékony szalagtárak hatalmas és 
-* érett Fejlesztőeszközök. 
+* Többplatformos támogatás 
+* egy hatalmas hatékony kódtárak és 
+* megalapozott fejlesztési eszközök. 
 
-Python használatban van a machine learning modellezési jellemzően használt munkafolyamat minden egyes szakaszába:
+Python-munkafolyamat a machine learning modellezési jellemzően használt összes fázisban történik:
 
-- adatok betöltési és feldolgozása 
-- szolgáltatás létrehozása
-- modell betanítási 
-- Modellellenőrzés
-- központi telepítési modell
+- adatok betöltése és feldolgozása 
+- a szolgáltatás fejlesztés
+- Modell betanítása 
+- modell érvényesítése
+- üzembe helyezési modellek
 
-Azure Machine Learning Studio támogatja a beágyazási Python-parancsfájlok tanulási kísérlet és zökkenőmentesen is közzé őket a Microsoft Azure webszolgáltatásként gépek különböző részre.
+Az Azure Machine Learning Studióban be egy machine learning-kísérlet, és zökkenőmentesen is közzé őket a Microsoft Azure-webszolgáltatásként különböző részeivel beágyazási Python-szkriptek támogatja.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 
-## <a name="design-principles-of-python-scripts-in-machine-learning"></a>Python gépi tanulási parancsfájlok tervezési alapelvei
+## <a name="design-principles-of-python-scripts-in-machine-learning"></a>A Machine Learning Python-szkriptek tervezési alapelvek
 
-Az elsődleges kapcsolódási felületet az Azure Machine Learning Studio Python keresztül van a [Python-parancsfájl végrehajtására] [ execute-python-script] modul 1. ábrán látható.
+Az Azure Machine Learning Studio Python elsődleges felületén keresztül van a [Python-szkript végrehajtására] [ execute-python-script] modul az 1. ábrán látható.
 
 ![image1](./media/execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
 ![image2](./media/execute-python-scripts/embedded-machine-learning-python-script.png)
 
-1. ábra. A **Python-parancsfájl végrehajtására** modul.
+1. ábra A **Python-szkript végrehajtására** modul.
 
-A [Python-parancsfájl végrehajtására] [ execute-python-script] modul az Azure ML Studio legfeljebb három bemeneti adatokat fogad, és legfeljebb két kimenetek (a következő szakaszban tárgyalt), az R analóg például létrehozza a [R végrehajtása Parancsfájl] [ execute-r-script] modul. A Python kódot hajthatnak végre is meg kell adni a paraméter mezőbe, kifejezetten nevű belépési pont hívott függvény `azureml_main`. Az alábbiakban a tervezési alapelvek, ez a modul végrehajtásához használja:
+A [Python-szkript végrehajtására] [ execute-python-script] modul az Azure Machine Learning Studióban legfeljebb három bemenetek fogad, és legfeljebb két kimenetek (a következő szakaszban részletezett), például az R analóg elkészíti a [R végrehajtása Parancsfájl] [ execute-r-script] modul. A Python-kód végrehajtását is meg kell adni a paraméter mezőbe, mint egy külön elnevezett belépési ponttal a hívott függvény `azureml_main`. Ez a modul megvalósításához használt fő tervezési elvek a következők:
 
-1. *A Python felhasználók idiomatikus kell lennie.* A Python-felhasználók kódjukat funkciók modulok belül, figyelembe. Ezért helyezése egy legfelső szintű modul végrehajtható kimutatások számos olyan viszonylag ritkán fordul elő. A parancsfájl mezőben emiatt is egy speciális Python függvény figyelésekor utasításokat egy sorozatát vesz igénybe. Az objektumok, a függvény felfedett például olyan szabványos Python könyvtár típusok [Pandas](http://pandas.pydata.org/) adatkeretek és [NumPy](http://www.numpy.org/) tömbök.
-2. *Valósághű helyi között kell lennie, és a felhő végrehajtások.* A háttérkiszolgálón hajthatók végre a Python-kód alapján [Anaconda](https://store.continuum.io/cshop/anaconda/), a platformok közötti tudományos Python elosztási széles körben használt. Közel 200 a leggyakrabban használt Python-csomagokat, a mellékelt azt. Ezért az adatelemzők debug és a helyi Azure Machine Learning-kompatibilis Anaconda-környezetre kódjukat minősítéséhez. Majd használjon például egy meglévő fejlesztőkörnyezet [IPython](http://ipython.org/) notebook vagy [a Python Tools for Visual Studio](http://aka.ms/ptvs), az Azure ML kísérlet részeként futtatható. A `azureml_main` belépési pont, a Python eredeti függvény, ezért x hozhat létre az Azure ML-tartozó kódot és az SDK telepítése nélkül.
-3. *A többi Azure Machine Learning modulok zökkenőmentesen összeállítható kell lennie.* A [Python-parancsfájl végrehajtására] [ execute-python-script] modul fogad el, bemenetekhez és kimenetekhez, szabványos Azure Machine Learning adatkészletek. Az alapul szolgáló keretrendszer átlátható és hatékonyan kulcsösszetevő az Azure ML és Python futtatókörnyezetek. Ezért a Python meglévő Azure ML munkafolyamathoz, beleértve azokat is, hívja az R és SQLite együtt használható. Eredményeként adatok tudósok munkafolyamatok állítható össze, amelyek:
-   * Python és Pandas használja az adatok előzetes feldolgozás és tisztítás
-   * az adatok hírcsatornát, hogy több adatkészletet csatlakoztatása a szolgáltatások SQL átalakítás
-   * az algoritmusok használata az Azure Machine Learning modellek betanítása 
-   * értékelje ki és utófeldolgozási az eredményeket R.
+1. *Python-felhasználók számára bármilyen kell lennie.* A felhasználók többsége Python kódját kéttényezős funkciókként modulok belül. Ezért üzembe egy legfelső szintű modulban végrehajtható utasítások sok viszonylag ritkán fordul elő. A parancsfájl mező, ezért is utasításokat egy sorozatát ellentétben kifejezetten elnevezett Python függvény vesz igénybe. Az objektumok között szerepelnek a függvényt is Python-kódtár alaptípusok például [Pandas](http://pandas.pydata.org/) adatkeretek és [NumPy](http://www.numpy.org/) tömböket.
+2. *Rendelkeznie kell a helyi közötti élethű és végrehajtásainak felhőbeli.* A háttérrendszer a Python-kód végrehajtására szolgáló alapján [Anaconda](https://store.continuum.io/cshop/anaconda/), a széles körben használt többplatformos tudományos Python elosztási. Közel 200-as, a leggyakoribb Python-csomagok együtt származik. Az adatszakértők, ezért hibakeresést, és a kódját az Azure Machine Learning-kompatibilis Anaconda helyi környezetben minősítéséhez. Majd használjon például egy már létező fejlesztési környezetben [IPython](http://ipython.org/) notebook vagy [Python Tools for Visual Studio](https://aka.ms/ptvs), egy Azure Machine Learning-kísérlet keretében futtatásához. A `azureml_main` belépési pontja pedig egy vanília Python-függvény, így x hozhatóak létre az Azure Machine Learning-specifikus kód vagy az SDK telepítése nélkül.
+3. *Zökkenőmentesen algyűjteményeinek összefüggő egyéb Azure Machine Learning-modulok kell lennie.* A [Python-szkript végrehajtására] [ execute-python-script] modul fogad, bemeneti és kimeneti, Standard szintű Azure Machine Learning-adatkészletek. Az alapul szolgáló keretrendszere átlátható módon és hatékonyan áthidalja az Azure gépi tanulás és a Python modulok. Ezért a Python meglévő Azure ML munkafolyamatok, például azokkal, amelyek hívásokat indítani olyan R- és SQLite együtt használható. Ennek eredményeként adattudós munkafolyamatok állítsa össze, amelyek:
+   * használható a Python és a Pandas adatok előzetesen feldolgozni és tisztítása
+   * az adatok SQL átalakítást, több adatkészlet csatlakoztatása a szolgáltatások-hírcsatorna
+   * az algoritmusok használatával az Azure Machine Learning-modellek betanításához 
+   * értékeli, és az eredmények r használatával az utófeldolgozási
 
 
-## <a name="basic-usage-scenarios-in-ml-for-python-scripts"></a>Python parancsfájlok ml alapvető használati forgatókönyvek
+## <a name="basic-usage-scenarios-in-ml-for-python-scripts"></a>Python-szkriptek a Machine Learning alapvető használati forgatókönyvek
 
-Ez a szakasz azt megtekintheti, néhány alapvető felhasználási területei a [Python-parancsfájl végrehajtására] [ execute-python-script] modul. A Python modul bemeneti mint Pandas adatkeretek érhetők el. A függvény kell visszaadnia egy Python belül csomagolt egyetlen Pandas adatok keret [feladatütemezési](https://docs.python.org/2/c-api/sequence.html) például egy rekord, lista vagy NumPy tömb. Az első elem az a sorozat majd eredmény abban az esetben a modul az első kimeneti portjára. Ez a rendszer a 2. ábrán látható.
+Ebben a szakaszban azt felmérést, néhány alapvető felhasználása a [Python-szkript végrehajtására] [ execute-python-script] modul. A Python modul bemeneti adatokat, Pandas adatkeretek érhetők el. A függvénynek egy csomagolt Python belül egyetlen Pandas adatkeretbe kell [feladatütemezési](https://docs.python.org/2/c-api/sequence.html) például egy rekord, lista vagy NumPy tömb. Ez a sorozat első elemeként majd az első kimeneti portjára, a modul adja vissza. Ez a rendszer a 2. ábrán látható.
 
 ![image3](./media/execute-python-scripts/map-of-python-script-inputs-outputs.png)
 
-2. ábra Leképezése bemeneti portok paramétereket és visszatérési érték a kimeneti portra.
+2. ábra Leképezése, bemeneti paraméterek portok, és kimeneti portját adja vissza értéket.
 
-Részletesebb szemantikáját hogyan a bemeneti portok paramétereinek beolvasása leképezve a `azureml_main` függvény az 1 láthatók:
+Részletesebb szemantikáját hogyan leképezve a bemeneti portok paramétereit a `azureml_main` függvény jelennek meg az 1. táblázat:
 
 ![image1T](./media/execute-python-scripts/python-script-inputs-mapped-to-parameters.png)
 
-1. táblázat. A bemeneti portok függvényparamétereket leképezését.
+1. táblázat. Függvény paraméterei a bemeneti portok hozzárendelését.
 
-A bemeneti portok és függvényparamétereket között lesz pozicionális:
+A leképezést a bemeneti portok és a függvény paraméterei között a következő Helyzetbeállító:
 
 - Az első csatlakoztatott bemeneti portját a függvény első paramétere van leképezve. 
-- A második bemenet (Ha csatlakozott) függvény második paramétere van leképezve.
+- A második bemenet (Ha a kapcsolódó) függvény második paraméterként van leképezve.
 
-Lásd: *adatelemzéshez Python* (O'Reilly, 2012) további információt a Python Pandas és hogyan használható adatok módosítására, hatékonyabb és gazdaságosabb Nyugat McKinney által. 
-
-
-## <a name="translation-of-input-and-output-types"></a>Bemeneti és kimeneti típusú fordítás 
-Azure ml bemeneti adatkészletek adatkeretek a Pandas alakulnak. Kimeneti adatkeretek vissza Azure ML adatkészletek alakulnak. A következő átalakítás esetén kell végrehajtani:
-
-1. Konvertálja a karakterláncot, és a numerikus oszlopok-van és dataset a hiányzó értékeket Pandas "NA" értékek alakulnak. Az azonos átalakítás történik, az vissza módja (Pandas NA értékek a hiányzó értékeket Azure ML alakulnak).
-2. Index vektorok Pandas az Azure ml nem támogatottak. A Python függvény összes bemeneti adatkeretek mindig tartozik egy 64 bites numerikus index 0 mínusz 1 sorok száma. 
-3. Az Azure ML adatkészletek nem lehet ismétlődő oszlopneveket tartalmaz, az oszlopnevek, amelyek nem karakterlánc. Ha egy kimeneti adatok keret nem numerikus oszlopot tartalmaz, meghívja-e a keretrendszer `str` meg az oszlopok neveit. Hasonlóképpen bármely ismétlődő oszlopnevek automatikusan összekeveredése biztosítását, hogy a nevek egyediek. A utótagot (2) a második duplikált, és így tovább ad hozzá az első ismétlődő, (3).
+Lásd: *adatelemzés céljából Python* (O'Reilly, 2012) által Nyugat McKinney Python Pandas és hogyan használható adatok kezelésére és gazdaságosabb további információt. 
 
 
-## <a name="operationalizing-python-scripts"></a>Python parancsfájlok végrehajtott
+## <a name="translation-of-input-and-output-types"></a>Fordítási bemeneti és kimeneti típusai 
+Az Azure ML bemeneti adatkészletek a Pandas adatkeretek konvertálja. Kimeneti adatkeretek vissza az Azure Machine Learning adatkészletek konvertálja. A következő átalakítás történik:
 
-Bármely [Python-parancsfájl végrehajtására] [ execute-python-script] pontozási kísérletben használt modulok webszolgáltatásként közzétételekor nevezzük. Például a 3. ábrán látható egy pontozási kísérletet, amely tartalmaz egy Python-kifejezés kiértékelése a kódot. 
+1. Konvertálja a karakterlánc és a numerikus oszlopok-rendszer és a egy adatkészlet a hiányzó értékeket "NA" értékeket a Pandas alakítja. Az azonos átalakítás történik von vissza (NA a Pandas lesznek átalakítva az Azure Machine Learning a hiányzó értékeket).
+2. Index útvonalairól Pandas nem támogatottak az Azure gépi tanulás. A Python-függvény az összes bemeneti adatkeretek mindig van egy 64 bites numerikus indexet 0 mínusz 1 sorok számát. 
+3. Az Azure Machine Learning-adatkészletek nem lehet ismétlődő oszlopneveket és oszlopneveket, amelyek nem karakterlánc. Ha egy kimeneti adatkeretbe nem numerikus oszlopokat tartalmaz, a keretrendszer meghívja `str` az oszlopneveket. Hasonlóképpen minden ismétlődő oszlopnevek automatikusan annak érdekében, hogy a nevek egyediek összekeveredett. A utótagot (2) ad hozzá az első ismétlődő, (3) a második ismétlődő, és így tovább.
+
+
+## <a name="operationalizing-python-scripts"></a>Python-szkriptek modellezést
+
+Bármely [Python-szkript végrehajtására] [ execute-python-script] webszolgáltatásként, amely közzétett modulok a pontozó kísérletben használt nevezzük. Ha például a 3. ábrán látható egy pontozó kísérletet, amely tartalmazza a kódot Python egyetlen kifejezés kiértékeléséhez. 
 
 ![image4](./media/execute-python-scripts/figure3a.png)
 
 ![image5](./media/execute-python-scripts/python-script-with-python-pandas.png)
 
-3. ábra. Webszolgáltatás egy Python-kifejezés kiértékelésekor.
+3. ábra Egy Python-kifejezés kiértékelése webszolgáltatást.
 
-Ez a kísérlet létrehozása webszolgáltatás:
+Ezzel a kísérlettel létrehozott webszolgáltatások:
 
-- a Python kifejezés (karakterláncként) bemenetként vesz igénybe
-- elküldi a Python értelmező 
-- egy kifejezés, mind az értékelés eredményét tartalmazó táblázatot ad vissza.
+- egy Python-kifejezés (karakterláncként) bemenetként vesz igénybe
+- elküldi a Python-fordítóra 
+- a kifejezés és az értékelés eredménye is tartalmazó táblát adja vissza.
 
 
-## <a name="importing-existing-python-script-modules"></a>Meglévő Python-parancsfájl modulok importálása
+## <a name="importing-existing-python-script-modules"></a>Meglévő Python-szkript modulok importálása
 
-Egy gyakori használati eset a sok adatszakértőkön hoz meglévő Python parancsfájlok beépítse Azure ML kísérletek. Ahelyett, hogy az összes kód összefűzendő és illeszthetők be egy parancsfájl mezőbe a [Python-parancsfájl végrehajtására] [ execute-python-script] modul elfogadja a harmadik bemeneti portját a Python-modulok tartalmazó zip-fájl. A fájlt futásidőben a végrehajtási keretrendszer van unzipped, és a tartalom hozzáadódnak a Python értelmező könyvtár elérési útját. A `azureml_main` függvény importálhatja ezeket a modulokat közvetlenül a belépési pont.
+Egy gyakori használati számos adatszakértők számára az Azure Machine Learning-kísérletek beépítheti a meglévő Python-szkriptek. Nem minden kód összefűzött és beillessze egy egyetlen parancsfájllal mezőben kell megadni célhelyként a [Python-szkript végrehajtására] [ execute-python-script] modul fogad egy zip-fájlt, amely tartalmazza a Python-modulok, a harmadik bemeneti porthoz. A fájlt futásidőben a végrehajtási keretrendszer által a kicsomagolt, és a tartalmak kerülnek a Python-fordítóra könyvtár elérési útja. A `azureml_main` függvény importálhatja ezeket a modulokat közvetlenül belépési pontot.
 
-Tegyük fel fontolja meg a fájlt egy egyszerű "Hello, World" függvényt tartalmazó Hello.py.
+Tegyük fel fontolja meg a fájlt egy egyszerű "Hello, World" függvény tartalmazó Hello.py.
 
 ![image6](./media/execute-python-scripts/figure4.png)
 
-4. ábra. Felhasználó által definiált függvény Hello.py fájlban.
+4. ábra Felhasználó által definiált függvény Hello.py fájlban.
 
-A következő létrehozhatunk Hello.zip Hello.py tartalmazó fájlt:
+Ezután létrehozunk egy fájlt, amely tartalmazza a Hello.py Hello.zip:
 
 ![image7](./media/execute-python-scripts/figure5.png)
 
-5. ábra. Felhasználó által definiált Python kódot tartalmazó zip-fájl.
+5. ábra Felhasználó által definiált Python-kód tartalmazó zip-fájlt.
 
-Töltse fel a zip-fájl adatkészletként Azure Machine Learning Studio. Ezután létrehozhat és, hogy a Python kódot használja a Hello.zip fájl által a harmadik bemeneti porthoz való csatlakoztatás a kísérlet futtatásához a **Python-parancsfájl végrehajtására** modul, az ábrán látható módon.
+A zip-fájl feltöltése adatkészletként Azure Machine Learning studióba. Ezután hozzon létre és futtassa a kísérletet, amelyek a Python-kód használja a Hello.zip fájlban harmadik bemeneti portjával csatlakoztatásával a **Python-szkript végrehajtására** modult, ezen az ábrán látható módon.
 
 ![image8](./media/execute-python-scripts/figure6a.png)
 
 ![image9](./media/execute-python-scripts/figure6b.png)
 
-6. ábra. Felhasználó által definiált Python kóddal mintakísérletet feltöltött csomagot .zip fájlként.
+6. ábra A felhasználó által definiált Python-kód mintakísérlet feltöltött zip-fájlként.
 
-A modul kimenete jeleníti meg, hogy a zip-fájl csomagolatlan megtörtént-e, és hogy a függvény `print_hello` futott.
+A modul kimeneti jeleníti meg, hogy a zip-fájl becsomagolatlan lett-e, és hogy a függvény `print_hello` futtatása.
  
 ![image10](./media/execute-python-scripts/figure7.png)
 
-7. ábra. Felhasználó által definiált függvény belül használja a [Python-parancsfájl végrehajtására] [ execute-python-script] modul.
+7. ábra Használatban lévő, felhasználó által definiált függvény a [Python-szkript végrehajtására] [ execute-python-script] modul.
 
 
-## <a name="working-with-visualizations"></a>Képi megjelenítés használata
+## <a name="working-with-visualizations"></a>Vizualizációk használata
 
-Felvétel létrehozott MatplotLib, amely képes formájában jelenik meg a böngésző által adhatók vissza a [Python-parancsfájl végrehajtására][execute-python-script]. De a felvétel a rendszer nem automatikusan átirányítja képek, R. használatakor Ezért a felhasználó explicit módon menteni kell bármely előkészítésére PNG-fájlok Ha vissza az Azure Machine Learning kell állítani. 
+A böngészőben a MatplotLib, amely az alábbi ábra segítségével létrehozott grafikon által visszaadható a [Python-szkript végrehajtására][execute-python-script]. De a grafikon rendszer nem irányítja át lemezképek úgy, mint amikor az r segítségével Így a felhasználónak explicit módon menteni kell bármely grafikon PNG-fájlok, ha vissza kell vissza az Azure Machine Learning. 
 
-Hozzon létre képeket MatplotLib, az alábbi eljárást kell végrehajtania:
+A rendszerképek készítése a MatplotLib, a következőképpen kell elvégeznie:
 
-* a háttérrendszer Váltás az alapértelmezett Qt-alapú leképező "AGG" 
+* a háttérrendszer Váltás az alapértelmezett Qt-alapú megjelenítő "AGG" 
 * Hozzon létre egy új. ábra-objektumot 
-* a tengely első és bele felvételt minden készítése 
-* az ábra PNG fájlba mentése 
+* a tengely első és bele minden grafikon létrehozása 
+* az ábra PNG-fájl mentése 
 
-Ezt a folyamatot mutatja be az alábbi 8. ábra, amely Pandas található scatter_matrix funkcióval mátrix pont rajzot hoz létre.
+Ez a folyamat a következő 8. ábra, amely létrehoz egy pont diagram mátrix scatter_matrix funkció a Pandas használatával mutatja be.
 
 ![image1v](./media/execute-python-scripts/figure-v1-8.png)
 
-8. ábra. Kód MatplotLib adatok mentése lemezképbe.
+8. ábra Kód lemezképek MatplotLib adatok mentéséhez.
 
-9. ábra mutatja, amely a visszaadandó előzőleg bemutatott parancsfájlt használ a kísérlet tevékenységtérkép második kimenő porton keresztül.
+9. ábra mutatja, amely használja az előzőleg bemutatott való visszatéréshez parancsfájl kísérlet jeleníti meg a második kimeneti port használatával.
 
 ![image2v](./media/execute-python-scripts/figure-v2-9a.png) 
 
 ![image2v](./media/execute-python-scripts/figure-v2-9b.png) 
 
-9. ábra. Python kódból generált előkészítésére megjelenítése.
+9. ábra Python-kód által létrehozott grafikon megjelenítése.
 
-Lehetőség több adatok vissza kijelzőként különböző képek, az Azure Machine Learning futásidejű szerzi be az összes képek és fűzi össze azokat a képi megjelenítéshez tartozó.
+Lehetőség több adatok visszaadandó menti őket a különböző képek, az Azure Machine Learning modul összes lemezképet és egy naplóbejegyzésbe fűzi össze azokat a vizualizációt.
 
 
 ## <a name="advanced-examples"></a>Speciális példák
 
-Az Azure Machine Learning telepített Anaconda-környezete például NumPy SciPy vagy Scikits további közös csomagot tartalmaz. Ezeket a csomagokat a machine learning-feldolgozási folyamat különböző adatfeldolgozási feladatok hatékony használható. Tegyük fel parancsfájl és a következő kísérlet használatát mutatják be a Scikits-Ismerkedjen meg az adatkészlet funkció fontos pontszámait számítási ensemble tanulókkal. Az eredmények felügyelt szolgáltatás kiválasztása előtt be egy másik ML-modell alatt táplált végrehajtásához használható.
+A telepített Azure Machine Learning Anaconda környezet NumPy SciPy és Scikits – ismerje meg, például közös csomagot tartalmaz. Ezeket a csomagokat a machine learning-folyamat különféle adatfeldolgozási feladatok hatékonyan használható. Tegyük fel az alábbi kísérlet és parancsfájl használatát mutatják be ensemble tanulók Scikits további számítási szolgáltatás fontosság pontszámok egy adatkészlethez a. A pontszámok felügyelt szolgáltatás kiválasztása előtt folyamatban van egy másik gépi Tanulási modellt az adatkéréseket végrehajtásához használható.
 
-A Python funkció a fontos pontokat és a szolgáltatások alapján a pontszámok kiszámítására használt itt található:
+Íme a Python-függvény fontosság pontszámokat és a szolgáltatásokat a pontszámok alapján kiszámításához használt:
 
 ![image11](./media/execute-python-scripts/figure8.png)
 
-10. ábra. Működik a sorrendet megadó szolgáltatások által pontszámait.
-  A következő kísérlet majd kiszámítja, és az Azure Machine Learning "Pima indiai cukorbetegség" adatkészlet a szolgáltatások fontos eredményét adja vissza:
+10. ábra Függvény által pontszámok rangsorolják funkciókat.
+ 
+Az alábbi kísérlet majd kiszámítja, és adja vissza a szolgáltatások fontossági pontszámokat az Azure Machine Learning "Pima indiai küzdő" adatkészlet:
 
 ![image12](./media/execute-python-scripts/figure9a.png)
 ![image13](./media/execute-python-scripts/figure9b.png)    
 
-11. ábra. Pima indiai cukorbetegség adatkészlet rank szolgáltatásainak kipróbálásához.
+11. ábra Kísérletezzen Pima indiai küzdő adatkészlet rangsorolják funkciókhoz is.
 
 ## <a name="limitations"></a>Korlátozások
-A [Python-parancsfájl végrehajtására] [ execute-python-script] van a következő korlátozások vonatkoznak:
+A [Python-szkript végrehajtására] [ execute-python-script] jelenleg a következő korlátozások vonatkoznak:
 
-1. *Elkülönített végrehajtása.* A Python-futtatókörnyezet jelenleg védőfal mögött, és emiatt nem engedélyezi a hozzáférést a hálózati vagy a helyi fájlrendszer tartósan. Összes fájl mentése helyileg elkülönített és törölte a modul befejezését követően. A Python-kód nem érhető el a számítógépen az fut, az aktuális könyvtárban és annak alkönyvtáraiban kivétel legtöbb könyvtárak.
-2. *Kifinomult fejlesztési és a hibaelhárítási támogatás hiánya.* A Python modul jelenleg nem támogatja IDE-szolgáltatásokkal, például az intellisense és hibakeresés folyamatát. Is ha a modul futásidejű nem sikerül, a Python teljes Veremkivonat érhető el. De a modul a kimeneti naplóban lehet megtekinteni. Jelenleg javasoljuk, hogy Ön által fejlesztett és egy környezetben, például IPython Python-parancsfájlok hibakeresése és a kód majd importálja a modult.
-3. *Keret kimeneti egyetlen adatokat.* A Python belépési pont csak engedélyezett egyetlen keret kimeneteként adja vissza. Nincs jelenleg lehetőség tetszőleges Python objektumok például közvetlenül a betanított modellek térjen vissza az Azure Machine Learning futásidejű. Például [R-parancsfájl végrehajtása][execute-r-script], amelynek van ugyanez a helyzet, sok esetben egy bájttömbben az objektumok körte és térjen vissza, amely adatok kereten belül lehet.
-4. *Nem tudja telepíteni a Python telepítés testreszabása*. Adja hozzá az egyéni Python-modulok csak úgy jelenleg a zip-fájl a korábban ismertetett mechanizmus révén. Ez nem valósítható meg, hogy kis modulok, akkor nagy modulok (különösen a natív DLL-ek) és a modulok nagy számú nehézkes. 
+1. *Elkülönített végrehajtását.* A Python-futtatókörnyezet jelenleg vendégünk, és ennek eredményeképpen nem engedélyezi a hozzáférést a hálózathoz, vagy a helyi fájlrendszerbe állandó módon. Minden fájl mentése helyileg elkülönített és törölni a modul befejeződése után. A Python-kód nem fér hozzá a legtöbb könyvtárak a gépen futtatott, az aktuális könyvtárban, illetve annak alkönyvtáraiba kivétel.
+2. *Kifinomult fejlesztés és hibakeresés támogatás hiánya.* A Python modul jelenleg nem támogatja az intellisense és hibakeresés IDE funkciókat. Emellett ha a modul sikertelen futásidőben, a Python teljes híváslánc érhető el. De a modul kimeneti naplóban lehet megtekinteni. Jelenleg javasoljuk, hogy, fejlesztés és hibakeresés Python-szkriptek, például az IPython-környezetben és a kód Ezután importálja a modult.
+3. *Keret kimeneti adatokat.* A Python belépési pont csak az ad vissza kimenetként egyetlen keret számára engedélyezett. Nincs jelenleg lehetővé tetszőleges Python objektumok, például közvetlenül a betanított modellek térjen vissza az Azure Machine Learning modul. Például [R-szkript végrehajtása][execute-r-script], amely rendelkezik, és ugyanez a helyzet, lehetséges, egy bájttömböt objektumok pickle és visszatér, amely adatkeretek belül sok esetben.
+4. *Nem lehet a Python-telepítés testreszabása*. Adja hozzá az egyéni Python-modulok csak úgy jelenleg a zip-fájl a korábban ismertetett mechanizmus révén. Bár ez megvalósítható az kis modulok, a nagy modulok (különösen azokat a natív DLL-ek) és a modulok nagy számú nehézkes. 
 
-## <a name="conclusions"></a>Következtetéseket
-A [Python-parancsfájl végrehajtására] [ execute-python-script] modul lehetővé teszi, hogy egy meglévő Python kódját beépíteni az Azure Machine Learning és a felhőben üzemeltetett gépi tanulás munkafolyamatok zökkenőmentesen adatok tudósok azok a webes szolgáltatás részeként. A Python-parancsfájl modul természetes együttműködik az Azure Machine Learning más modulok. A modul az adatok feltárása feladatok előzetes feldolgozás és a szolgáltatás kivonása, és ezután értékelési számos és az eredmények utófeldolgozás használható. A háttérrendszer futásidejű végrehajtási használt Anaconda, tesztelt és széles körben használt Python elosztási alapul. A háttérrendszer egyszerűen meg a helyi meglévő kódot eszközökhöz kiterjeszti a felhőbe.
+## <a name="conclusions"></a>Következtetések
+A [Python-szkript végrehajtására] [ execute-python-script] modul lehetővé teszi, hogy a meglévő Python-kód zökkenőmentesen az Azure Machine Learning és a felhőben futó gépi tanulási munkafolyamatok építsen be adatszakértő üzembe helyezheti őket egy webszolgáltatás részeként. A Python-szkript modul természetes módon együttműködik más modulok az Azure Machine Learningben. A modul előzetes feldolgozása és kinyerése a szolgáltatás, és ezután értékelési adatfeltárás feladatok széles, és az eredmények utófeldolgozás használható. A háttérrendszer futásidejű végrehajtásához Anaconda, tesztelt és széles körben használt Python elosztási alapul. Ez a háttérmodul is egyszerűvé teszi az Ön számára fedélzeti meglévő kódot eszközök a felhőbe.
 
-Várhatóan új lehetőségeket biztosítanak a [Python-parancsfájl végrehajtására] [ execute-python-script] modul például betanítása, és azok modellek a Python, valamint nagyobb mértékű támogatást biztosítsanak a fejlesztési hozzáadása és az Azure Machine Learning Studióban kód hibakereséséhez.
+A további funkciókat várhatóan a [Python-szkript végrehajtására] [ execute-python-script] modul betanítását és modelleket, a Python és a fejlesztési jobb támogatása érdekében például és az Azure Machine Learning Studio kód hibakereséséhez.
 
 ## <a name="next-steps"></a>További lépések
 További információ: [Python fejlesztői központban](https://azure.microsoft.com/develop/python/).
