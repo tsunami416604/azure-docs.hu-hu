@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: e563c7000b600bed917f42d8ffb87df883564ef8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 28c9e342aec3eb3ba61b46f4f80c7d097b0653b6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979328"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258714"
 ---
 # <a name="using-the-azure-classic-cli-with-azure-storage"></a>Az Azure Storage az Azure klasszikus parancssori felület használatával
 
@@ -122,7 +122,7 @@ export AZURE_STORAGE_CONNECTION_STRING=<connection_string>
 ```
 
 ## <a name="create-and-manage-blobs"></a>Hozzon létre és kezelheti a blobokat
-Az Azure Blob storage szolgáltatás nagy mennyiségű strukturálatlan adat, például szöveg vagy bináris adatot, amely segítségével bárhonnan elérhetők HTTP- vagy HTTPS keresztül a világon tárolásához. Ez a szakasz azt feltételezi, hogy már ismeri az Azure Blob storage fogalmakat. Részletes információkért lásd: [.NET használatával az Azure Blob storage használatának első lépései](../blobs/storage-dotnet-how-to-use-blobs.md) és [Blob szolgáltatással kapcsolatos fogalmak](http://msdn.microsoft.com/library/azure/dd179376.aspx).
+Az Azure Blob storage szolgáltatás nagy mennyiségű strukturálatlan adat, például szöveg vagy bináris adatot, amely segítségével bárhonnan elérhetők HTTP- vagy HTTPS keresztül a világon tárolásához. Ez a szakasz azt feltételezi, hogy már ismeri az Azure Blob storage fogalmakat. Részletes információkért lásd: [.NET használatával az Azure Blob storage használatának első lépései](../blobs/storage-dotnet-how-to-use-blobs.md) és [Blob szolgáltatással kapcsolatos fogalmak](https://msdn.microsoft.com/library/azure/dd179376.aspx).
 
 ### <a name="create-a-container"></a>Tároló létrehozása
 Az Azure BLOB storage összes blobjának egy tárolóban kell lennie. Privát tároló használatával is létrehozhat a `azure storage container create` parancsot:
@@ -137,7 +137,7 @@ azure storage container create mycontainer
 >
 
 ### <a name="upload-a-blob-into-a-container"></a>Blobok feltöltése a tárolóba
-Az Azure Blob Storage támogatja a blokkblobokat és a lapblobokat. További információkért lásd: [Understanding Block Blobs, hozzáfűző blobokat és Lapblobokat](http://msdn.microsoft.com/library/azure/ee691964.aspx).
+Az Azure Blob Storage támogatja a blokkblobokat és a lapblobokat. További információkért lásd: [Understanding Block Blobs, hozzáfűző blobokat és Lapblobokat](https://msdn.microsoft.com/library/azure/ee691964.aspx).
 
 A blobok feltöltése a tárolóba, használhatja a `azure storage blob upload`. Alapértelmezés szerint ez a parancs a helyi fájlokat egy blokkblobot tölt fel. Adja meg a BLOB, használhatja a `--blobtype` paraméter.
 

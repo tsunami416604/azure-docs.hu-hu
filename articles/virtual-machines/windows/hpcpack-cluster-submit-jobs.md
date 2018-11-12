@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 05/14/2018
 ms.author: danlep
-ms.openlocfilehash: f2cf26bc9f980729e74c4a4e0b4e3f4b311fd754
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ce8e2457c1d575e890174de3b9cf7faf6e16a7cb
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421134"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258816"
 ---
 # <a name="submit-hpc-jobs-from-an-on-premises-computer-to-an-hpc-pack-cluster-deployed-in-azure"></a>HPC-feladatok elküldése helyi számítógépről Azure-ban üzembe helyezett HPC Pack-fürtnek
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "39421134"
 ## <a name="step-1-install-and-configure-the-web-components-on-the-head-node"></a>1. lépés: Telepítse és konfigurálja a webes összetevők az átjárócsomóponthoz
 Ahhoz, hogy egy REST-felület küldhetők be feladatok a a fürt HTTPS-kapcsolaton keresztül, ellenőrizze, hogy a HPC Pack webösszetevők a HPC Pack központi csomóponton. Ha ezek még nincsenek telepítve, először telepítse a webes összetevők HpcWebComponents.msi telepítőfájl futtatásával. Ezt követően konfigurálja a HPC PowerShell-parancsprogram futtatásával az összetevőket **Set-HPCWebComponents.ps1**.
 
-Szükséges részletes eljárásokért lásd: [telepítse a Microsoft HPC Pack webösszetevők](http://technet.microsoft.com/library/hh314627.aspx).
+Szükséges részletes eljárásokért lásd: [telepítse a Microsoft HPC Pack webösszetevők](https://technet.microsoft.com/library/hh314627.aspx).
 
 > [!TIP]
 > Bizonyos Azure-gyorssablonok a HPC Pack-fürtök telepítése, és a webes összetevők automatikus konfigurálásához.
@@ -169,7 +169,7 @@ A konfiguráció ellenőrzéséhez próbálja meg a fürtön az Azure-ban, a hel
 1. Az elküldött feladat eredményeinek megtekintéséhez kattintson a feladat azonosítója, majd **nézet feladatai** parancs eredményének megtekintéséhez (alatt **kimeneti**).
 
 ## <a name="next-steps"></a>További lépések
-* Az Azure-fürtön a feladatok is küldhet a [HPC Pack REST API](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx).
+* Az Azure-fürtön a feladatok is küldhet a [HPC Pack REST API](https://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx).
 * Ha szeretne egy Linux-ügyfél a fürt feladatok elküldéséhez, tekintse meg a Python-mintához a [HPC Pack 2012 R2 SDK-t és a mintakódot](https://www.microsoft.com/download/details.aspx?id=41633).
 
 <!--Image references-->

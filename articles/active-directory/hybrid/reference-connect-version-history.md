@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 335db0130ae6dd3d11d6592208fdf37e762509e5
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 1f74538deab38db536bfcdc6d0f703d455039d51
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914821"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235904"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect: Verziókiadások
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -35,7 +35,7 @@ Témakör |  Részletek
 Lépések az Azure AD Connect frissítése | Különböző módszerekkel [frissítés egy előző verzióról a legújabbra](how-to-upgrade-previous-version.md) az Azure AD Connect-kiadásban.
 Szükséges engedélyek | Tekintse meg a frissítés alkalmazásához szükséges engedélyek [fiókok és engedélyek](reference-connect-accounts-permissions.md#upgrade).
 
-Letöltés |} [Töltse le az Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771).
+Letöltés |} [Töltse le az Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 ## <a name="12650"></a>1.2.65.0 
 

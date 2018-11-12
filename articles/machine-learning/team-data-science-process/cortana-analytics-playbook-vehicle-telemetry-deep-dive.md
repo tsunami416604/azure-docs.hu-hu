@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: fc4b2d0beef1c91cd937ba901974796441657441
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8c4946ebef8d17d2016d482010768207d5e859ff
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234765"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300948"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>Járműtelemetria-Telemetria elemzési megoldás forgatókönyve: részletes ismerje meg, a megoldás
-Ez a forgatókönyv szakaszait menü mutat: 
 
-[!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../../includes/cap-vehicle-telemetry-playbook-selector.md)]
+Ez a cikk részletezi a megoldásarchitektúra fejezet fázisokhoz be. Útmutatás és testreszabási mutatók is. 
 
-Ez a dokumentum részletezi a megoldásarchitektúra fejezet fázisokhoz be. Útmutatás és testreszabási mutatók is. 
+Ez a megoldás összefoglaló leírását áttekintéséhez lásd: [jármű-Telemetria elemzési megoldás forgatókönyve](cortana-analytics-playbook-vehicle-telemetry.md).
+
 
 ## <a name="data-sources"></a>Adatforrások
 A megoldás két különböző adatforrásból használja:
@@ -675,3 +675,7 @@ Ez a dokumentum tartalmazza a Vehicle Telemetriai Analytics megoldás részletes
 * [Az Azure Data Factory adat adatátviteli szolgáltatás](../../data-factory/copy-activity-overview.md)
 * [Az Azure Data Factory .NET-tevékenység](../../data-factory/transform-data-using-dotnet-custom-activity.md)
 * [Azure Data Factory .NET-tevékenység a Visual Studio megoldásnak a mintaadatok létrehozása](https://go.microsoft.com/fwlink/?LinkId=717077) 
+
+## <a name="next-steps"></a>További lépések
+
+A Power BI-jelentések és irányítópultok a megoldás konfigurálása kapcsolatban lásd: [jármű Telemetriai Analytics megoldás sablon Power BI-irányítópult beállítási útmutatásai](cortana-analytics-playbook-vehicle-telemetry-powerbi.md).

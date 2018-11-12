@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/27/2018
+ms.date: 11/06/2018
 ms.author: rclaus
 ms.custom: ''
-ms.openlocfilehash: 2962e81f1623457a3b4b6644b89dbd8d63bc2b48
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: de282041066e18a52d596f051def598eef3d458d
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43111710"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287217"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>SAP-tanúsítványok és a Microsoft Azure-on futó konfigurációk
 
@@ -36,7 +36,7 @@ Hivatkozások:
 | SAP-termék | Támogatott operációs rendszer | Azure-ajánlatok |
 | --- | --- | --- |
 | SAP HANA Developer Edition (HANA-ügyfélszoftver komponensekkel SQLODBC, ODBO – Windows csak, ODBC, JDBC-illesztőprogramok, HANA studio és HANA database) | Red Hat Enterprise Linux, a SUSE Linux Enterprise | A D-sorozat Virtuálisgép-család |
-| Üzleti egy on HANA | SUSE Linux Enterprise | DS14_v2 <br /> [Az SAP HANA Certified IaaS-platformon](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) |
+| Üzleti egy on HANA | SUSE Linux Enterprise | DS14_v2, M32ts, M32ls, M64ls, M64s <br /> [Az SAP HANA Certified IaaS-platformon](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) |
 | SAP S/4 HANA | Red Hat Enterprise Linux, a SUSE Linux Enterprise | Szabályozott elérhetőség a gs5 esetén. M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, teljes körű támogatása <br /> SAP HANA az Azure-ban (nagyméretű példányok) [SAP HANA Certified IaaS platformok](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
 | Suite on HANA, OLTP | Red Hat Enterprise Linux, a SUSE Linux Enterprise | M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, az SAP HANA az Azure-ban (nagyméretű példányok) <br /> [Az SAP HANA Certified IaaS-platformon](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
 | HANA Enterprise BW-hez, OLAP-hoz | Red Hat Enterprise Linux, a SUSE Linux Enterprise | GS5, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, <br /> SAP HANA az Azure-ban (nagyméretű példányok) [SAP HANA Certified IaaS platformok](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |

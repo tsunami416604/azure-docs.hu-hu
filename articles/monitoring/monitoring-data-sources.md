@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: 4a5f820c9e6d39c65ef0942091b247c5d52fe17f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 5e9dc207d84a9a66d83f01f49c3aefe2d77a64fa
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253210"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281438"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Az Azure monitorban adatok forrásai
 Ez a cikk ismerteti az Azure Monitor állapotát és teljesítményét az erőforrások és a rajtuk futó alkalmazások figyelése által gyűjtött adatok forrásai. Ezeket az erőforrásokat az Azure-ban, egy másik felhőben vagy helyszíni lehet.  Lásd: [Azure Monitor által gyűjtött adatok](monitoring-data-collection.md) hogyan tárolja ezeket az adatokat, és hogyan tekintheti meg.
@@ -63,7 +63,7 @@ A legtöbb Azure-szolgáltatásokat hoz létre [platform metrikák](monitoring-d
 ### <a name="resource-diagnostic-logs"></a>Erőforrás-diagnosztikai naplók
 Bár a tevékenységnapló egy Azure-erőforrások, erőforrásszintek simítása végrehajtott műveletek információt nyújt [diagnosztikai naplók](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) adja meg a műveletet az erőforrás magát betekintést.   A konfigurációs követelmények és ezek a naplók tartalmának [erőforrás típusa szerint változó](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md).
 
-Diagnosztikai naplók nem közvetlenül tekintheti meg az Azure Portalon, de Ön is [küldje el azokat az Azure storage alacsony költségű](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md) és exportálhatja őket [Eseményközpont](../event-hubs/event-hubs-what-is-event-hubs.md) az átirányítás más szolgáltatások vagy [naplójába Analytics](../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) elemzés céljából. Bizonyos erőforrások közvetlenül a Log Analytics írhat, míg mások írni egy storage-fiók mielőtt [importálja a Log Analytics](../log-analytics/log-analytics-azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage).
+Diagnosztikai naplók nem közvetlenül tekintheti meg az Azure Portalon, de Ön is [küldje el azokat az Azure storage alacsony költségű](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md) és exportálhatja őket [Eseményközpont](../event-hubs/event-hubs-about.md) az átirányítás más szolgáltatások vagy [naplójába Analytics](../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) elemzés céljából. Bizonyos erőforrások közvetlenül a Log Analytics írhat, míg mások írni egy storage-fiók mielőtt [importálja a Log Analytics](../log-analytics/log-analytics-azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage).
 
 ### <a name="monitoring-solutions"></a>Figyelési megoldások
  [Figyelési megoldások](monitoring-solutions.md) nyújt további betekintést a művelet egy adott szolgáltatás vagy alkalmazás az adatok gyűjtéséhez. Hol lehet a Log analyticsbe gyűjtenek adatokat elemzi a a [lekérdezési nyelvet](../log-analytics/log-analytics-queries.md) vagy [nézetek](../log-analytics/log-analytics-view-designer.md) , amelyek általában bekerülnek a megoldásban.
@@ -81,7 +81,7 @@ Az a [Azure Diagnostics bővítmény](../monitoring-and-diagnostics/azure-diagno
 A Log Analytics-ügynököket telepítheti bármelyik [Windows](../log-analytics/log-analytics-agent-windows.md) vagy [Linux]() virtuális gép vagy fizikai számítógép. A virtuális gép az Azure, egy másik felhőalapú vagy helyszíni futtathat.  Az ügynök csatlakozik a Log Analytics vagy közvetlenül vagy egy [csatlakoztatott System Center Operations Manager felügyeleti csoport](../log-analytics/log-analytics-om-agents.md) és adatokat gyűjthet [adatforrások](../log-analytics/log-analytics-data-sources.md) konfigurált vagy [felügyeleti megoldások](monitoring-solutions.md) , amely a virtuális gépen futó alkalmazások további betekintést nyújtson.
 
 ### <a name="service-map"></a>Szolgáltatástérkép
-[A Service Map](../operations-management-suite/operations-management-suite-service-map.md) igényel a függőségi ügynököt Windows és Linux rendszerű virtuális gépeken. Ez a módszer a Log Analytics-ügynököt a virtuális gép és a függőségek a külső folyamatok futó folyamatok adatokat gyűjt. Ez tárolja ezeket az adatokat a Log Analytics és a egy kívül más, a Log Analytics szolgáltatásban tárolt adatok összegyűjti az adatokat vizuálisan megjelenítő konzol.
+[A Service Map](../monitoring/monitoring-service-map.md) igényel a függőségi ügynököt Windows és Linux rendszerű virtuális gépeken. Ez a módszer a Log Analytics-ügynököt a virtuális gép és a függőségek a külső folyamatok futó folyamatok adatokat gyűjt. Ez tárolja ezeket az adatokat a Log Analytics és a egy kívül más, a Log Analytics szolgáltatásban tárolt adatok összegyűjti az adatokat vizuálisan megjelenítő konzol.
 
 ## <a name="applications"></a>Alkalmazások
 Amellett, hogy az alkalmazás lehet írni a vendég operációs rendszer telemetriát, részletes alkalmazásfigyelés történik a [Application Insights](https://docs.microsoft.com/azure/application-insights/). Az Application Insights kiszállítására különböző platformokon futó alkalmazásokat tud adatokat gyűjteni. Az alkalmazás az Azure, egy másik felhőalapú vagy helyszíni futtathat.

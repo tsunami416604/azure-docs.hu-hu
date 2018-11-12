@@ -1,6 +1,6 @@
 ---
-title: Az Always On rendelkezésre állási csoport konfigurálása egy Azure virtuális gépen a PowerShell használatával |} Microsoft Docs
-description: Ez az oktatóanyag használja a klasszikus üzembe helyezési modellel létrehozott erőforrásokat. Always On rendelkezésre állási csoport létrehozása az Azure-ban a PowerShell segítségével.
+title: Az Always On rendelkezésre állási csoport konfigurálása egy Azure-beli virtuális gépen a PowerShell-lel |} A Microsoft Docs
+description: Ebben az oktatóanyagban használja a klasszikus üzemi modellel létrehozott erőforrásokat. Always On rendelkezésre állási csoport létrehozása az Azure-ban a PowerShell használatával.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -15,53 +15,53 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: fe7384baa6740d316fb5a8ec7b1894f337d88080
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 584fca3df4fee24a4f1c7b93d5371c48be059f7b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29401290"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257935"
 ---
-# <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>Az Always On rendelkezésre állási csoport konfigurálása egy Azure virtuális gépen a PowerShell használatával
+# <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>Az Always On rendelkezésre állási csoport konfigurálása a PowerShell-beli virtuális gépen
 > [!div class="op_single_selector"]
 > * [Klasszikus: felhasználói felület](../classic/portal-sql-alwayson-availability-groups.md)
 > * [Klasszikus: PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
 <br/>
 
-Mielőtt elkezdené, vegye figyelembe, hogy most hajthatja végre ezt a feladatot az Azure resource manager modellt. Azt javasoljuk, hogy az Azure resource manager modellt új központi telepítéséhez. Lásd: [SQL Server Always On rendelkezésre állási csoportok az Azure virtuális gépeken](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md).
+Mielőtt elkezdené, érdemes lehet, hogy ez a feladat az Azure resource manager-modellben már végrehajthatók. Azt javasoljuk, hogy az Azure resource manager-modellt az új üzembe helyezésekhez. Lásd: [SQL Server Always On rendelkezésre állási csoportok az Azure-beli virtuális gépek](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md).
 
 > [!IMPORTANT]
 > Azt javasoljuk, hogy az új telepítések esetén a Resource Manager modellt használja. Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti.
 
-Az Azure virtuális gépek (VM) segítségével csökkenthető a költség, a magas rendelkezésre állású SQL Server rendszer adatbázis-rendszergazdák. Ez az oktatóanyag bemutatja, hogyan egy rendelkezésre állási csoporthoz az SQL Server Always On-végpontok belül környezetet az Azure segítségével megvalósítható. Az oktatóanyag végén az SQL Server Always On megoldás az Azure-ban a következő elemekből áll:
+Azure-beli virtuális gépek (VM) segítségével egy magas rendelkezésre állású SQL Server rendszer költségeinek adatbázis-rendszergazdák. Ez az oktatóanyag bemutatja, hogyan egy rendelkezésre állási csoporthoz az SQL Server Always On – teljes körű belül az Azure-környezet segítségével megvalósítható. Az oktatóanyag végén az SQL Server Always On megoldás az Azure-ban a következő elemekből áll:
 
-* Virtuális hálózat, amely tartalmazza a több alhálózattal, beleértve egy előtér- és háttér-alhálózatot.
-* Az Active Directory-tartomány a tartományvezérlő.
-* Két SQL Server virtuális gépen telepített, a háttér-alhálózathoz és Active Directory-tartományhoz csatlakozik.
+* Virtuális hálózat, amely több alhálózat, például egy előtér- és a egy háttérbeli alhálózatot tartalmaz.
+* Egy tartományvezérlő, egy Active Directory-tartományhoz.
+* Két SQL Server virtuális gépek üzembe helyezett a háttérbeli alhálózathoz és Active Directory-tartományhoz csatlakoztatva.
 * Egy három csomópontos Windows feladatátvevő fürt csomóponttöbbség kvórum modell.
-* Egy rendelkezésre állási csoportban két szinkron véglegesítésű másodpéldányt a rendelkezésre állási adatbázis.
+* Egy rendelkezésre állási csoport két szinkron véglegesítésű másodpéldányt a rendelkezésre állási adatbázis.
 
-Ebben a forgatókönyvben a jó választás az egyszerűség érdekében az Azure-on, nem pedig a költséghatékonyság vagy egyéb tényezők. Például minimalizálhatja a virtuális gépek, a két-replika rendelkezésre állási csoport a tartományvezérlő a kvórum tanúsító fájlmegosztást egy két csomópontos feladatátvevő fürt segítségével menti az Azure számítási órák számát. Ez a módszer a virtuális gépek száma csökkenti a fenti konfigurációban közül.
+Ebben a forgatókönyvben a megfelelő választás az egyszerűség érdekében az Azure-ban, nem pedig a költséghatékonyság vagy egyéb tényezők. Minimalizálhatja például, hogy menteni a számítási óra, az Azure-ban a tartományvezérlő használják, mint a kvórum tanúsító fájlmegosztás kétcsomópontos feladatátvevő fürtben két replika rendelkezésre állási csoport virtuális gépek számát. Ezt a módszert a virtuális gépek száma a fenti konfigurációból eggyel csökkenti.
 
-Ez az oktatóanyag célja mutatjuk be, a lépéseket, amelyek szükségesek a fent ismertetett megoldás beállítása nélkül kidolgozása az egyes lépések részletes adatait. Ezért helyett ad meg a grafikus felhasználói Felülettel konfigurációs lépések, használja a PowerShell parancsfájlok segítségével gyorsan vezeti végig az egyes lépések. Ez az oktatóanyag azt feltételezi, hogy a következő:
+Ez az oktatóanyag célja bemutatják, hogy kidolgozása során minden egyes lépést a részleteket a fent leírt megoldás beállításához szükséges lépéseket. Ezért ahelyett, hogy megadta a grafikus felhasználói Felülettel konfigurációs lépések, használja a PowerShell-szkriptek, gyorsan vezeti végig az egyes lépések. Ez az oktatóanyag feltételezi, hogy a következő:
 
-* Már van Azure-fiókot a virtuális gép előfizetéssel.
+* Már rendelkezik a virtuális gép-előfizetéssel rendelkező Azure-fiókra.
 * Telepítette a [Azure PowerShell-parancsmagok](/powershell/azure/overview).
-* Már van egy Always On rendelkezésre állási csoportok a helyszíni megoldások alapos ismerete. További információkért lásd: [Always On rendelkezésre állási csoportok (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx).
+* Már van egy Always On rendelkezésre állási csoportok a helyszíni megoldásokhoz szilárd ismeretekkel. További információkért lásd: [Always On rendelkezésre állási csoportok (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx).
 
-## <a name="connect-to-your-azure-subscription-and-create-the-virtual-network"></a>Az Azure-előfizetés csatlakoztatása és a virtuális hálózat létrehozása
-1. PowerShell-ablakban a helyi számítógépen az Azure-moduljának importálása, töltse le a közzétételi beállítások fájlját a számítógépen, és az Azure-előfizetéshez csatlakozni a PowerShell-munkamenetet a letöltött közzétételi beállítások importálása.
+## <a name="connect-to-your-azure-subscription-and-create-the-virtual-network"></a>Csatlakozás az Azure-előfizetéshez, és a virtuális hálózat létrehozása
+1. PowerShell-ablakban a helyi számítógépen az Azure-modul importálása, töltse le a közzétételi beállítások a gép és a PowerShell-munkamenethez csatlakozhat az Azure-előfizetés a letöltött közzétételi beállítások importálása.
 
         Import-Module "C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\Azure\Azure.psd1"
         Get-AzurePublishSettingsFile
         Import-AzurePublishSettingsFile <publishsettingsfilepath>
 
-    A **Get-AzurePublishSettingsFile** parancs automatikusan az Azure felügyeleti tanúsítványt hoz létre, és letölti a számítógépen. A böngésző automatikusan megnyílik, és felkéri a Microsoft-fiók hitelesítő adatait adja meg az Azure-előfizetéshez. A letöltött **.publishsettings** fájlt, hogy az Azure-előfizetése kezeléséhez szükséges összes információt tartalmazza. A fájl mentése egy helyi könyvtárba, után importálnia a **Import-AzurePublishSettingsFile** parancsot.
+    A **Get-AzurePublishSettingsFile** parancs automatikusan létrehoz egy felügyeleti tanúsítványt, az Azure-ral, és letölti azt a gépre. A böngésző automatikusan megnyílik, és kéri, hogy adja meg a Microsoft-fiók hitelesítő adatait az Azure-előfizetésében. A letöltött **.publishsettings** fájlt, hogy az Azure-előfizetése kezeléséhez szükséges összes információt tartalmazza. Ez a fájl mentése egy helyi könyvtárba, után importálnia a **Import-AzurePublishSettingsFile** parancsot.
 
    > [!NOTE]
-   > A .publishsettings fájlt tartalmaz a hitelesítő adatok (nem titkosított), amely segítségével felügyelheti az Azure-előfizetések és -szolgáltatásokra. Ezt a fájlt a biztonsági szempontból ajánlott a forrás-könyvtárak (például a Libraries\Documents mappában) kívül ideiglenesen tárolja, és törölje az importálás után is. Egy rosszindulatú felhasználó hozzáférést kap azokhoz a .publishsettings fájlt a Szerkesztés, hozzon létre, és az Azure-szolgáltatások törlése.
+   > A .publishsettings fájlt tartalmaz a hitelesítő adatokat. (nem titkosított) az Azure-előfizetések és a szolgáltatások felügyeletéhez használt. A biztonsági szempontból ajánlott a fájlhoz, hogy a forrás-címtárak (például a Libraries\Documents mappában) kívül ideiglenesen tárolja, és törölje azt az importálás befejezése után. Egy rosszindulatú felhasználó hozzáférést kap a .publishsettings fájlt a Szerkesztés, létrehozása és törlése az Azure-szolgáltatások.
 
-2. Adja meg a felhőalapú informatikai infrastruktúra létrehozásához használandó változókat.
+2. Adja meg, amely a felhőalapú informatikai infrastruktúra létrehozásához használni kívánt változók egy sorának.
 
         $location = "West US"
         $affinityGroupName = "ContosoAG"
@@ -81,12 +81,12 @@ Ez az oktatóanyag célja mutatjuk be, a lépéseket, amelyek szükségesek a fe
         $vmAdminPassword = "Contoso!000"
         $workingDir = "c:\scripts\"
 
-    Nagy figyelmet fordítani, annak érdekében, hogy a parancsok később lesz sikeres a következőhöz:
+    Figyelje meg, győződjön meg arról, hogy a parancsok később lesz sikeres, a következőhöz:
 
-   * Változók **$storageAccountName** és **$dcServiceName** egyedinek kell lennie, mert ezek mire szolgál a felhő tárolási fiók és a felhő-kiszolgáló azonosítására szolgál, osztályban, az interneten.
-   * A nevek, amennyit megadott a változók **$affinityGroupName** és **$virtualNetworkName** vannak konfigurálva a virtuális hálózati konfiguráció dokumentum később fogjuk.
-   * **$sqlImageName** a Virtuálisgép-lemezkép, amely tartalmazza az SQL Server 2012 Service Pack 1 Enterprise Edition frissített nevét adja meg.
-   * Az egyszerűség kedvéért **Contoso! 000** ugyanazt a jelszót, amely használja a rendszer a teljes útmutató keresztül van.
+   * Változók **$storageAccountName** és **$dcServiceName** egyedinek kell lennie, mivel a felhőalapú tárolási fiók és a cloud server, osztályban, azonosítsa az interneten használhatók.
+   * A nevek megadott változók **$affinityGroupName** és **$virtualNetworkName** vannak konfigurálva a virtuális hálózat konfigurációs dokumentum, amely később fogja használni.
+   * **$sqlImageName** a Virtuálisgép-rendszerképet, amely tartalmazza az SQL Server 2012 Service Pack 1 Enterprise Edition frissített nevét adja meg.
+   * Az egyszerűség kedvéért **Contoso! 000** ugyanazt a jelszót az egész oktatóanyag során használt van.
 
 3. Affinitáscsoport létrehozásához.
 
@@ -96,12 +96,12 @@ Ez az oktatóanyag célja mutatjuk be, a lépéseket, amelyek szükségesek a fe
             -Description $affinityGroupDescription `
             -Label $affinityGroupLabel
 
-4. Virtuális hálózat létrehozása a konfigurációs fájl importálásával.
+4. Hozzon létre egy virtuális hálózatot egy konfigurációs fájl importálásával.
 
         Set-AzureVNetConfig `
             -ConfigurationPath $networkConfigPath
 
-    A konfigurációs fájl tartalmazza a következő XML-dokumentumot. Röviden, adja meg a virtuális hálózat néven **ContosoNET** nevű affinitáscsoportban **ContosoAG**. A címterület rendelkezik **10.10.0.0/16** és két alhálózat, **10.10.1.0/24** és **10.10.2.0/24**, amelyeket az első alhálózat és a hátsó alhálózati, illetve. Az első alhálózat akkor helyezheti el ügyfélalkalmazásokat, például a Microsoft SharePoint. A hátsó alhálózaton, az SQL Server VMs helyétől fog. Ha módosítja a **$affinityGroupName** és **$virtualNetworkName** változók korábban is módosítania kell a megfelelő alábbi nevét.
+    A konfigurációs fájl a következő XML-dokumentum tartalmaz. Röviden, azt adja meg az nevű virtuális hálózat **ContosoNET** nevű affinitáscsoportban **ContosoAG**. A címtér rendelkezik **10.10.0.0/16** , és két alhálózatot **10.10.1.0/24** és **10.10.2.0/24**, amelyek az előtérbeli alhálózat és állnak vissza alhálózati jelölik. Az előtérbeli alhálózat, ahol elhelyezhet ügyfélalkalmazások, például a Microsoft SharePoint. A háttérrendszer alhálózat, az SQL Server virtuális gépek helyétől fog. Ha módosítja a **$affinityGroupName** és **$virtualNetworkName** változók korábban is módosítania kell a megfelelő alábbi nevét.
 
         <NetworkConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
           <VirtualNetworkConfiguration>
@@ -124,7 +124,7 @@ Ez az oktatóanyag célja mutatjuk be, a lépéseket, amelyek szükségesek a fe
           </VirtualNetworkConfiguration>
         </NetworkConfiguration>
 
-5. Az affinitáscsoport hozott létre, és állítsa be az aktuális tárfiók az előfizetésben társított storage-fiók létrehozása.
+5. Hozzon létre egy tárfiókot, amelyet létrehozott, és állítsa be a jelenlegi tárfiókot az előfizetésében affinitáscsoportban van társítva.
 
         New-AzureStorageAccount `
             -StorageAccountName $storageAccountName `
@@ -134,7 +134,7 @@ Ez az oktatóanyag célja mutatjuk be, a lépéseket, amelyek szükségesek a fe
             -SubscriptionName (Get-AzureSubscription).SubscriptionName `
             -CurrentStorageAccount $storageAccountName
 
-6. Az új felhőalapú szolgáltatás és a rendelkezésre állási készlet létrehozása a tartományvezérlő kiszolgálón.
+6. Az új felhőalapú szolgáltatás, és a rendelkezésre állási készlet létrehozása a domain controller-kiszolgáló.
 
         New-AzureVMConfig `
             -Name $dcServerName `
@@ -154,12 +154,12 @@ Ez az oktatóanyag célja mutatjuk be, a lépéseket, amelyek szükségesek a fe
 
     Ezek a parancsok védőeszközön tegye a következőket:
 
-   * **Új AzureVMConfig** hoz létre a Virtuálisgép-konfiguráció.
-   * **Adja hozzá AzureProvisioningConfig** a konfigurációs paraméterek, a különálló Windows Server ad.
-   * **Adja hozzá AzureDataDisk** hozzáadja a adatlemez, amelyet a gyorsítótárazás nincs beállítva az Active Directory-adatokat, tárolására fog használni.
-   * **Új AzureVM** hoz létre egy új felhőalapú szolgáltatás, és hozza létre az új Azure virtuális Gépet az új felhőalapú szolgáltatás.
+   * **Új AzureVMConfig** hoz létre egy Virtuálisgép-konfigurációt.
+   * **-AzureProvisioningConfig** az egy különálló Windows Server-konfigurációs paramétereket biztosít.
+   * **Adjon hozzá AzureDataDisk** ad hozzá az adatlemezt, amely nincs gyorsítótárazás az Active Directory-adatok tárolására szolgáló fogja használni.
+   * **Új-AzureVM** hoz létre egy új felhőszolgáltatást, és az új Azure virtuális Gépen hoz létre az új felhőalapú szolgáltatás.
 
-7. Várjon, amíg az új virtuális gépek teljesen kiépített, és töltse le a távoli asztal a munkakönyvtárat. Mivel az új Azure virtuális gép kiépítését, hosszú ideig tart a `while` hurok továbbra is fennáll, és kérdezze le az új virtuális Gépet, amíg a használatra kész.
+7. Várjon, amíg az új virtuális gép kiépítése, és töltse le a távoli asztali fájl a munkakönyvtár. Mivel az új Azure virtuális gép létrehozását, hosszabb ideig tart a `while` ciklus addig az új virtuális gép lekérdezésére, egészen addig, amíg használatra kész.
 
         $VMStatus = Get-AzureVM -ServiceName $dcServiceName -Name $dcServerName
 
@@ -175,12 +175,12 @@ Ez az oktatóanyag célja mutatjuk be, a lépéseket, amelyek szükségesek a fe
             -Name $dcServerName `
             -LocalPath "$workingDir$dcServerName.rdp"
 
-A tartományvezérlő kiszolgálót most sikeresen kiépítette. Ezután az Active Directory-tartományhoz kell majd konfigurálnia a tartomány a tartományvezérlő kiszolgálón. Hagyja meg a PowerShell-ablakban nyissa meg a helyi számítógépen. Újra létrehozni a két SQL Server VMs fogja használni.
+A domain controller-kiszolgáló már sikeresen kiépítve. Ezután konfigurálja az Active Directory-tartomány a domain controller-kiszolgálóra. Hagyja a PowerShell-ablakban nyissa meg a helyi számítógépen. A két SQL Server virtuális gép létrehozása újra használni.
 
 ## <a name="configure-the-domain-controller"></a>A tartományvezérlő konfigurálása
-1. A tartományvezérlő kiszolgálót kapcsolódni a távoli asztali fájl indításával. A gépek rendszergazdája AzureAdmin felhasználónévvel és jelszóval **Contoso! 000**, amely az új virtuális gép létrehozásakor adott meg.
+1. A domain controller-kiszolgáló kapcsolódni a távoli asztali fájl elindításával. A gép rendszergazdai AzureAdmin felhasználónév és jelszó **Contoso! 000**, amely az új virtuális gép létrehozásakor megadott.
 2. Nyisson meg egy PowerShell-ablakot rendszergazdai módban.
-3. Futtassa a következő **DCPROMO. A következő EXE** parancs használatával állítsa be a **corp.contoso.com** tartomány, az adatok könyvtárakat M-meghajtón.
+3. Futtassa a következő **DCPROMO. EXE** parancs használatával állítsa be a **corp.contoso.com** tartomány, a adatkönyvtárak M-meghajtón.
 
         dcpromo.exe `
             /unattend `
@@ -198,14 +198,14 @@ A tartományvezérlő kiszolgálót most sikeresen kiépítette. Ezután az Acti
             /SYSVOLPath:"C:\Windows\SYSVOL" `
             /SafeModeAdminPassword:"Contoso!000"
 
-    A parancs befejezése után a virtuális gép automatikusan újraindul.
+    A parancs befejeződését követően a virtuális gép automatikusan újraindul.
 
-4. A tartományvezérlő kiszolgálót újra csatlakozott a távoli asztali fájl indításával. Most, jelentkezzen be a **Corp/rendszergazda**.
+4. Csatlakozhat a domain controller-kiszolgáló ismét elindítani a távoli asztali fájl. Ez alkalommal jelentkezik be, **Corp/rendszergazda**.
 5. Nyisson meg egy PowerShell-ablakot rendszergazdai módban, és az Active Directory PowerShell-modul importálása a következő paranccsal:
 
         Import-Module ActiveDirectory
 
-6. A következő parancsokat három felhasználók felvételét a tartományba.
+6. Futtassa az alábbi parancsokat a tartomány három felhasználókat hozzáadni.
 
         $pwd = ConvertTo-SecureString "Contoso!000" -AsPlainText -Force
         New-ADUser `
@@ -227,8 +227,8 @@ A tartományvezérlő kiszolgálót most sikeresen kiépítette. Ezután az Acti
             -ChangePasswordAtLogon $false `
             -Enabled $true
 
-    **CORP\Install** mindent az SQL-kiszolgáló-szolgáltatáspéldány, a feladatátvevő fürt és a rendelkezésre állási csoport konfigurálásához. **CORP\SQLSvc1** és **CORP\SQLSvc2** a két SQL Server virtuális gépen az SQL Server szolgáltatás fiókok használhatók.
-7. Ezután futtassa a következő parancsokat, hogy **CORP\Install** a engedéllyel számítógép-objektumok létrehozására a tartományban.
+    **CORP\Install** az SQL kiszolgáló-szolgáltatáspéldány, a feladatátvevő fürt és a rendelkezésre állási csoport kapcsolódó összes elemet konfigurálására szolgál. **CORP\SQLSvc1** és **CORP\SQLSvc2** használják az SQL Server-szolgáltatásfióknak a két SQL Server rendszerű virtuális gépekhez.
+7. Ezután futtassa a következő parancsokat, amivel **CORP\Install** az engedélyeket a tartományban lévő számítógép-objektumok létrehozásához.
 
         Cd ad:
         $sid = new-object System.Security.Principal.SecurityIdentifier (Get-ADUser "Install").SID
@@ -239,12 +239,12 @@ A tartományvezérlő kiszolgálót most sikeresen kiépítette. Ezután az Acti
         $acl.AddAccessRule($ace1)
         Set-Acl -Path "DC=corp,DC=contoso,DC=com" -AclObject $acl
 
-    A fent megadott GUID-azonosítója a GUID azonosítóját. a számítógép-objektum típusa. A **CORP\Install** igényeinek fiók a **összes tulajdonság olvasása** és **számítógép-objektumok létrehozása** hozhat létre a feladatátvevő fürt az aktív közvetlen objektumokat. A **összes tulajdonság olvasása** engedély megadott CORP\Install alapértelmezés szerint így nem kell explicit megadását. A feladatátvevő fürt létrehozásához szükséges engedélyekről további információkért lásd: [feladatátvevő fürt részletes útmutató: fiókok konfigurálása az Active Directory](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx).
+    A fent megadott GUID a számítógép-objektum típusa GUID azonosítója. A **CORP\Install** fiók igényeinek megfelelően a **összes tulajdonság olvasásához** és **számítógép-objektumok létrehozása** a feladatátvevő fürt az aktív közvetlen objektumok létrehozásához szükséges engedéllyel. A **összes tulajdonság olvasásához** engedély már elbírálása CORP\Install alapértelmezetten, így nem kell explicit módon biztosítania. A feladatátvevő fürt létrehozásához szükséges engedélyekről további információkért lásd: [feladatátvevő fürt – részletes útmutató: az Active Directory konfigurálása fiókok](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx).
 
-    Most, hogy befejezte az Active Directory és a felhasználói objektumok, akkor hozhat létre két SQL Server virtuális gépen, és csatlakoztassa azokat a tartományhoz.
+    Most, hogy végzett Active Directory és a felhasználói objektumok, akkor két SQL Server virtuális gépek hozhat létre, és csatlakoztassa őket a tartományhoz.
 
 ## <a name="create-the-sql-server-vms"></a>Az SQL Server virtuális gépek létrehozása
-1. Továbbra is használhatja a PowerShell-ablakot, amely meg van nyitva, a helyi számítógépen. Adja meg a következő további változókat:
+1. Továbbra is használhatja a PowerShell-ablakot, amely meg van nyitva a helyi számítógépen. A következő további változókat határozhat meg:
 
         $domainName= "corp"
         $FQDN = "corp.contoso.com"
@@ -257,8 +257,8 @@ A tartományvezérlő kiszolgálót most sikeresen kiépítette. Ezután az Acti
         $dataDiskSize = 100
         $dnsSettings = New-AzureDns -Name "ContosoBackDNS" -IPAddress "10.10.0.4"
 
-    Az IP-cím **10.10.0.4** általában az első virtuális gép, a létrehozott van rendelve a **10.10.0.0/16** alhálózat az Azure virtuális hálózat. Ellenőrizze, hogy ez az a cím, a tartományvezérlő kiszolgálón való futtatásával **IPCONFIG**.
-2. Futtassa a következő parancsok futtatásával hozza létre az első virtuális gép a feladatátvevő fürt nevű adatcsatornán **ContosoQuorum**:
+    Az IP-cím **10.10.0.4** általában az első virtuális gép, így létrehozott van rendelve a **10.10.0.0/16** , az Azure virtuális hálózat alhálózatán. Ellenőrizze, hogy ez az a domain controller-kiszolgáló címét futtatásával **IPCONFIG**.
+2. Futtassa a következő parancsokat az első virtuális gép létrehozásához a feladatátvevő fürt, nevű parancsoknak **ContosoQuorum**:
 
         New-AzureVMConfig `
             -Name $quorumServerName `
@@ -284,13 +284,13 @@ A tartományvezérlő kiszolgálót most sikeresen kiépítette. Ezután az Acti
                         -VNetName $virtualNetworkName `
                         -DnsSettings $dnsSettings
 
-    Vegye figyelembe a következő kapcsolatban a fenti parancs:
+    Vegye figyelembe a következő kapcsolatban a fenti parancsot:
 
-   * **Új AzureVMConfig** hoz létre egy Virtuálisgép-konfiguráció a kívánt rendelkezésre állási készlet neve. A következő virtuális gépek létrehozza az azonos rendelkezésre állási készlet neve az, hogy azok az azonos rendelkezésre állási csoport van csatlakoztatva.
-   * **Adja hozzá AzureProvisioningConfig** a virtuális gép csatlakozik a létrehozott Active Directory-tartományhoz.
-   * **Set-AzureSubnet** helyezi el a virtuális gép vissza az alhálózaton.
-   * **Új AzureVM** hoz létre egy új felhőalapú szolgáltatás, és hozza létre az új Azure virtuális Gépet az új felhőalapú szolgáltatás. A **DnsSettings** paraméter határozza meg, hogy az új felhőszolgáltatás kiszolgálóinak a DNS-kiszolgáló rendelkezik-e az IP-cím **10.10.0.4**. Ez az IP-címét a tartományvezérlő kiszolgálón. Ez a paraméter engedélyezéséhez a új virtuális gépek a felhőszolgáltatás sikeresen csatlakoztatása az Active Directory-tartomány van szükség. Ez a paraméter nélkül manuálisan állítsa be az IPv4-beállításokkal a tartományvezérlő kiszolgálót az elsődleges DNS-kiszolgálóként használni, a virtuális gép kiépítése után a virtuális gépen, és majd a virtuális gép csatlakoztatása az Active Directory-tartományhoz.
-3. Futtassa a következő parancsok futtatásával hozza létre az SQL Server VMs nevű adatcsatornán **ContosoSQL1** és **ContosoSQL2**.
+   * **Új AzureVMConfig** egy Virtuálisgép-konfigurációt hoz létre a kívánt rendelkezésre állási készlet neve. A következő virtuális gépek jön az azonos rendelkezésre állási készlet neve úgy, hogy csatlakoznak, ugyanazon rendelkezésre állási csoporthoz.
+   * **-AzureProvisioningConfig** létrehozott Active Directory-tartományhoz csatlakoztatja a virtuális Gépet.
+   * **Set-AzureSubnet** vissza az alhálózaton helyezi el a virtuális Gépet.
+   * **Új-AzureVM** hoz létre egy új felhőszolgáltatást, és az új Azure virtuális Gépen hoz létre az új felhőalapú szolgáltatás. A **DnsSettings** paraméter határozza meg, hogy a kiszolgálók az új cloud service-ben a DNS-kiszolgáló rendelkezik-e az IP-cím **10.10.0.4**. Ez az a domain controller-kiszolgáló IP-címét. Ez a paraméter van szükség ahhoz, hogy az új virtuális gépeket a cloud service-ben az Active Directory-tartományhoz csatlakoztatása sikeresen megtörtént. Ezt a paramétert állítsa be kézzel a domain controller-kiszolgáló az elsődleges DNS-kiszolgálóként használni, a virtuális gép kiépítése után a virtuális gépen az IPv4-beállításokkal, és ezután az Active Directory-tartományhoz csatlakoztatni a virtuális Gépet.
+3. Futtassa a következő parancsokkal hozhat létre az SQL Server virtuális gépek nevű parancsoknak **ContosoSQL1** és **ContosoSQL2**.
 
         # Create ContosoSQL1...
         New-AzureVMConfig `
@@ -348,14 +348,14 @@ A tartományvezérlő kiszolgálót most sikeresen kiépítette. Ezután az Acti
                         New-AzureVM `
                             -ServiceName $sqlServiceName
 
-    Vegye figyelembe a következő kapcsolatban a fenti parancsokat:
+    Vegye figyelembe a következő kapcsolatban a fenti parancsok:
 
-   * **Új AzureVMConfig** az azonos rendelkezésre állási készlet neve használja, mint a tartományvezérlő kiszolgálót, és az SQL Server 2012 Service Pack 1 Enterprise Edition lemezképet használja a virtuális gép gyűjteményben. Beállítja továbbá az operációsrendszer-lemez olvasási gyorsítótárazás csak (nincs írási gyorsítótárazást). Azt javasoljuk, hogy az adatbázisfájlok külön adatlemezt csatol a virtuális gép áttelepítése, és nincs olvasási vagy írási gyorsítótárazást konfigurálja. A következő legjobb dolog azonban írási gyorsítótárazást az operációsrendszer-lemeze, mert nem távolítható el az operációsrendszer-lemez olvasási gyorsítótárazás eltávolítása.
-   * **Adja hozzá AzureProvisioningConfig** a virtuális gép csatlakozik a létrehozott Active Directory-tartományhoz.
-   * **Set-AzureSubnet** helyezi el a virtuális gép vissza az alhálózaton.
-   * **Adja hozzá AzureEndpoint** hozzáférés végpontok hozzáadása, hogy ügyfélalkalmazások elérjék ezeket az SQL Server services-példányok az interneten. Különböző portok ContosoSQL1 és ContosoSQL2 kapják.
-   * **Új AzureVM** hoz létre az új SQL Server virtuális Gépet az azonos ContosoQuorum felhőszolgáltatásra. Ugyanazt a felhőalapú szolgáltatást be kell jelölnie a virtuális gépek, ha azt szeretné, hogy azok az azonos rendelkezésre állási készlet.
-4. Várjon, amíg minden egyes virtuális gépek teljesen kiépített és az egyes virtuális gépek, a távoli asztali fájl letöltéséhez a munkakönyvtárat. A `for` hurok Váltás a három új virtuális gépeket, és végrehajtja a legfelső szintű kapcsos zárójelek között lévő parancsok a hozzájuk.
+   * **Új AzureVMConfig** használja az ugyanazon rendelkezésre állási készlet neve, mint a domain controller-kiszolgáló és az SQL Server 2012 Service Pack 1 Enterprise Edition lemezképet használja a virtuálisgép-katalógusában. Egyúttal az operációsrendszer-lemez olvasási gyorsítótárazás csak a (nincs írási gyorsítótárazás). Azt javasoljuk, hogy az adatbázisfájlok külön adatlemez csatolható a virtuális gép áttelepítése, és konfigurálja azt a nincs olvasási vagy írási gyorsítótárazást. Megoldásunk azonban az írási gyorsítótárazást az operációsrendszer-lemez található, mert nem tudja eltávolítani az operációsrendszer-lemez olvasási gyorsítótárazás eltávolítása.
+   * **-AzureProvisioningConfig** létrehozott Active Directory-tartományhoz csatlakoztatja a virtuális Gépet.
+   * **Set-AzureSubnet** vissza az alhálózaton helyezi el a virtuális Gépet.
+   * **-AzureEndpoint** hozzáadja a hozzáférés végpontjait, hogy ügyfélalkalmazások elérjék ezeket az SQL Server services-példányok az interneten. Különböző portok ContosoSQL1 és ContosoSQL2 vannak megadva.
+   * **Új-AzureVM** hoz létre az új SQL Server virtuális gép ugyanazon a felhőszolgáltatáson, ContosoQuorum. A virtuális gépek kell elhelyeznie az ugyanazon a felhőszolgáltatáson, ha azt szeretné, ha meg ugyanabban a rendelkezésre állási csoportban.
+4. Várjon, amíg minden virtuális gép kiépítése, és töltse le a távoli asztali fájl a munkakönyvtárban minden virtuális géphez. A `for` hurok Váltás a három új virtuális gépet, és végrehajtja a legfelső szintű kapcsos zárójelek között lévő mindegyikük számára.
 
         Foreach ($VM in $VMs = Get-AzureVM -ServiceName $sqlServiceName)
         {
@@ -375,60 +375,60 @@ A tartományvezérlő kiszolgálót most sikeresen kiépítette. Ezután az Acti
             Get-AzureRemoteDesktopFile -ServiceName $VM.ServiceName -Name $VM.InstanceName -LocalPath "$workingDir$($VM.InstanceName).rdp"
         }
 
-    Az SQL Server virtuális gépek most törlődnek, és fut, de van telepítve az SQL Server alapértelmezett beállításokkal.
+    Az SQL Server virtuális gépek most már kiépített és fut, de van telepítve az SQL Server alapértelmezett beállításokkal.
 
-## <a name="initialize-the-failover-cluster-vms"></a>A feladatátvevő fürt virtuális gépek inicializálása
-Ebben a szakaszban módosítania kell a három kiszolgáló, amelyen le fogja a feladatátvevő fürt és az SQL Server telepítése. Konkrétan:
+## <a name="initialize-the-failover-cluster-vms"></a>A feladatátvevő fürt virtuális gépeihez inicializálása
+Ebben a szakaszban módosítania a három kiszolgáló, amely a feladatátvevő fürt és az SQL Server-telepítés fogja használni. Konkrétan:
 
-* Minden kiszolgáló: telepíteni kell a **feladatátvételi fürtszolgáltatás** szolgáltatás.
-* Minden kiszolgáló: hozzá kell adnia **CORP\Install** a gépként **rendszergazda**.
-* ContosoSQL1 és ContosoSQL2 csak: hozzá kell adnia **CORP\Install** , egy **sysadmin** az alapértelmezett adatbázis szerepköréhez.
-* ContosoSQL1 és ContosoSQL2 csak: hozzá kell adnia **NT AUTHORITY\System** , a bejelentkezés a következő engedélyekkel:
+* Minden kiszolgáló: telepítenie kell a **feladatátvételi fürtszolgáltatás** funkció.
+* Minden kiszolgáló: hozzá kell adnia **CORP\Install** , a gép **rendszergazda**.
+* ContosoSQL1, és csak ContosoSQL2: hozzá kell adnia **CORP\Install** , egy **SysAdmin (rendszergazda)** az alapértelmezett adatbázis szerepköréhez.
+* ContosoSQL1, és csak ContosoSQL2: hozzá kell adnia **NT AUTHORITY\System** , egy jelentkezzen be a következő engedélyekkel:
 
-  * Az ALTER bármely rendelkezésre állási csoport
-  * Connect SQL
+  * Az ALTER minden rendelkezésre állási csoport
+  * Csatlakozás SQL
   * Kiszolgáló állapotának megtekintése
-* ContosoSQL1 és ContosoSQL2 csak: A **TCP** protokoll már engedélyezve van az SQL Server virtuális gépen. Azonban továbbra is szeretné megnyitni a tűzfalon az SQL Server távoli hozzáféréshez.
+* ContosoSQL1, és csak ContosoSQL2: A **TCP** protokoll már engedélyezve van az SQL Server virtuális gépen. Azonban továbbra is szeretné az SQL Server távoli elérés számára megnyitja a tűzfalat.
 
-Most hogy készen. Kezdve **ContosoQuorum**, kövesse az alábbi lépéseket:
+Most már készen áll a elindításához. Kezdve **ContosoQuorum**, kövesse az alábbi lépéseket:
 
-1. Csatlakozás **ContosoQuorum** a távoli asztali fájlok indításával. Adjon a számítógép rendszergazdai jogosultságú felhasználónevet **AzureAdmin** és a jelszó **Contoso! 000**, amely a virtuális gépek létrehozásakor megadott.
+1. Csatlakozás **ContosoQuorum** a távoli asztali fájlok elindításával. Használhatja a gépet rendszergazdai jogosultságú felhasználónevet **AzureAdmin** és a jelszó **Contoso! 000**, amely a virtuális gépek létrehozásakor megadott.
 2. Győződjön meg arról, hogy a számítógépek rendelkeznek sikeresen csatlakoztatva lett **corp.contoso.com**.
 3. Várjon, amíg befejeződik a folytatás előtt az automatikus inicializálás feladatok futtatása az SQL Server telepítése.
 4. Nyisson meg egy PowerShell-ablakot rendszergazdai módban.
-5. Telepítse a Windows Feladatátvételi fürtszolgáltatást.
+5. Telepítse a Windows feladatátvételi fürtszolgáltatás.
 
         Import-Module ServerManager
         Add-WindowsFeature Failover-Clustering
-6. Adja hozzá **CORP\Install** helyi rendszergazdaként.
+6. Adjon hozzá **CORP\Install** helyi rendszergazdaként.
 
         net localgroup administrators "CORP\Install" /Add
-7. Jelentkezzen ki ContosoQuorum. Befejezte a kiszolgáló most.
+7. Jelentkezzen ki ContosoQuorum. Végzett a kiszolgáló most.
 
         logoff.exe
 
-A következő inicializálása **ContosoSQL1** és **ContosoSQL2**. Kövesse az alábbi lépéseket, mindkét SQL Server virtuális gépek azonos.
+Ezután inicializálja **ContosoSQL1** és **ContosoSQL2**. Kövesse az alábbi lépéseket, amelyek a két SQL Server virtuális gépek esetén azonosak.
 
-1. A két SQL Server virtuális gépek csatlakozni a távoli asztali fájlok megnyitása. Adjon a számítógép rendszergazdai jogosultságú felhasználónevet **AzureAdmin** és a jelszó **Contoso! 000**, amely a virtuális gépek létrehozásakor megadott.
+1. A két SQL Server virtuális gép kapcsolódni a távoli asztali fájlok elindításával. Használhatja a gépet rendszergazdai jogosultságú felhasználónevet **AzureAdmin** és a jelszó **Contoso! 000**, amely a virtuális gépek létrehozásakor megadott.
 2. Győződjön meg arról, hogy a számítógépek rendelkeznek sikeresen csatlakoztatva lett **corp.contoso.com**.
 3. Várjon, amíg befejeződik a folytatás előtt az automatikus inicializálás feladatok futtatása az SQL Server telepítése.
 4. Nyisson meg egy PowerShell-ablakot rendszergazdai módban.
-5. Telepítse a Windows Feladatátvételi fürtszolgáltatást.
+5. Telepítse a Windows feladatátvételi fürtszolgáltatás.
 
         Import-Module ServerManager
         Add-WindowsFeature Failover-Clustering
-6. Adja hozzá **CORP\Install** helyi rendszergazdaként.
+6. Adjon hozzá **CORP\Install** helyi rendszergazdaként.
 
         net localgroup administrators "CORP\Install" /Add
 7. Importálja az SQL Server PowerShell-szolgáltatóban.
 
         Set-ExecutionPolicy -Execution RemoteSigned -Force
         Import-Module -Name "sqlps" -DisableNameChecking
-8. Adja hozzá **CORP\Install** , a sysadmin (rendszergazda) szerepkör alapértelmezett SQL Server-példányhoz.
+8. Adjon hozzá **CORP\Install** , a sysadmin (rendszergazda) szerepkör alapértelmezett SQL Server-példányon.
 
         net localgroup administrators "CORP\Install" /Add
         Invoke-SqlCmd -Query "EXEC sp_addsrvrolemember 'CORP\Install', 'sysadmin'" -ServerInstance "."
-9. Adja hozzá **NT AUTHORITY\System** , a bejelentkezés a fent leírt három engedélyekkel.
+9. Adjon hozzá **NT AUTHORITY\System** , a bejelentkezés a fent leírt három engedélyekkel.
 
         Invoke-SqlCmd -Query "CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS" -ServerInstance "."
         Invoke-SqlCmd -Query "GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
@@ -437,16 +437,16 @@ A következő inicializálása **ContosoSQL1** és **ContosoSQL2**. Kövesse az 
 10. Nyissa meg a tűzfalon az SQL Server távoli hozzáféréshez.
 
          netsh advfirewall firewall add rule name='SQL Server (TCP-In)' program='C:\Program Files\Microsoft SQL Server\MSSQL11.MSSQLSERVER\MSSQL\Binn\sqlservr.exe' dir=in action=allow protocol=TCP
-11. Jelentkezzen ki mindkét virtuális gépeket.
+11. Jelentkezzen ki mindkét virtuális gép.
 
          logoff.exe
 
-Végül készen áll a rendelkezésre állási csoport konfigurálásához. Teljes munkát végre fogja használni az SQL Server PowerShell szolgáltató **ContosoSQL1**.
+Végül készen áll a rendelkezésre állási csoport konfigurálása. Az SQL Server PowerShell-szolgáltató segítségével végrehajthatja a munkát a **ContosoSQL1**.
 
 ## <a name="configure-the-availability-group"></a>A rendelkezésre állási csoport konfigurálása
-1. Csatlakozás **ContosoSQL1** újra a távoli asztali fájlok indításával. A bejelentkezés helyett a gép fiókkal történő bejelentkezés **CORP\Install**.
+1. Csatlakozás **ContosoSQL1** újra a távoli asztali fájlok elindításával. A bejelentkezés helyett a gép fiókkal jelentkezik be, **CORP\Install**.
 2. Nyisson meg egy PowerShell-ablakot rendszergazdai módban.
-3. Adja meg a következő változókat:
+3. A következő változókat határozhat meg:
 
         $server1 = "ContosoSQL1"
         $server2 = "ContosoSQL2"
@@ -464,7 +464,7 @@ Végül készen áll a rendelkezésre állási csoport konfigurálásához. Telj
 
         Set-ExecutionPolicy RemoteSigned -Force
         Import-Module "sqlps" -DisableNameChecking
-5. SQL Server szolgáltatásfiók módosítása a ContosoSQL1 CORP\SQLSvc1.
+5. Módosítsa az SQL Server-szolgáltatásfiók számára ContosoSQL1 CORP\SQLSvc1.
 
         $wmi1 = new-object ("Microsoft.SqlServer.Management.Smo.Wmi.ManagedComputer") $server1
         $wmi1.services | where {$_.Type -eq 'SqlServer'} | foreach{$_.SetServiceAccount($acct1,$password)}
@@ -473,7 +473,7 @@ Végül készen áll a rendelkezésre állási csoport konfigurálásához. Telj
         $svc1.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc1.Start();
         $svc1.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-6. SQL Server szolgáltatásfiók módosítása a ContosoSQL2 CORP\SQLSvc2.
+6. Módosítsa az SQL Server-szolgáltatásfiók számára ContosoSQL2 CORP\SQLSvc2.
 
         $wmi2 = new-object ("Microsoft.SqlServer.Management.Smo.Wmi.ManagedComputer") $server2
         $wmi2.services | where {$_.Type -eq 'SqlServer'} | foreach{$_.SetServiceAccount($acct2,$password)}
@@ -482,12 +482,12 @@ Végül készen áll a rendelkezésre állási csoport konfigurálásához. Telj
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-7. Töltse le **CreateAzureFailoverCluster.ps1** a [feladatátvevő fürt létrehozása az Always On rendelkezésre állási csoportok Azure virtuális gép](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) a helyi munkakönyvtárba. Azt ismertetjük, hogy ez a parancsfájl működő feladatátvevő fürt létrehozásához. A Windows feladatátvételi fürtszolgáltatás hogyan működjön együtt az Azure-hálózatot a fontos információk: [az SQL Server Azure virtuális gépek magas rendelkezésre állási és vészhelyreállítási helyreállítási](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
-8. Módosítsa a munkakönyvtárat, és a feladatátvevő fürt létrehozása a letöltött parancsfájllal.
+7. Töltse le **CreateAzureFailoverCluster.ps1** a [feladatátvevő fürt létrehozása az Always On rendelkezésre állási csoportok az Azure virtuális Gépen](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) a helyi munkakönyvtárba. Ez a szkript működő feladatátvevő fürt létrehozásához használni. Fontos információ a Windows feladatátvételi fürtszolgáltatás hogyan működjön együtt az Azure-hálózat: [az SQL Server Azure virtuális gépek magas rendelkezésre állás és vészhelyreállítás helyreállítási](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
+8. Módosítsa a munkakönyvtár és a feladatátvevő fürt létrehozása a letöltött szkript.
 
         Set-ExecutionPolicy Unrestricted -Force
         .\CreateAzureFailoverCluster.ps1 -ClusterName "$clusterName" -ClusterNode "$server1","$server2","$serverQuorum"
-9. Engedélyezze az Always On rendelkezésre állási csoportok az alapértelmezett SQL Server-példányok a **ContosoSQL1** és **ContosoSQL2**.
+9. Engedélyezze az Always On rendelkezésre állási csoportok számára az alapértelmezett SQL Server-példányokat a **ContosoSQL1** és **ContosoSQL2**.
 
         Enable-SqlAlwaysOn `
             -Path SQLSERVER:\SQL\$server1\Default `
@@ -499,20 +499,20 @@ Végül készen áll a rendelkezésre állási csoport konfigurálásához. Telj
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-10. Hozzon létre egy biztonsági mentési könyvtárat, és adja meg az SQL Server szolgáltatásfiókokat engedélyeket. Ebben a könyvtárban fogja használni a másodlagos replikán a rendelkezésre állási adatbázis előkészítése.
+10. Hozzon létre egy biztonsági mentési könyvtárat, és adja meg az SQL Server szolgáltatás fiókokhoz tartozó engedélyeket. Ebben a könyvtárban fogja használni a másodlagos replikát a rendelkezésre állási adatbázis előkészítése.
 
          $backup = "C:\backup"
          New-Item $backup -ItemType directory
          net share backup=$backup "/grant:$acct1,FULL" "/grant:$acct2,FULL"
          icacls.exe "$backup" /grant:r ("$acct1" + ":(OI)(CI)F") ("$acct2" + ":(OI)(CI)F")
-11. Adatbázis létrehozása a **ContosoSQL1** nevű **MyDB1**, teljes biztonsági mentés és a napló biztonsági mentését is igénybe vehet, és visszaállítja ezeket **ContosoSQL2** rendelkező a **WITH NORECOVERY**  lehetőséget.
+11. Hozzon létre egy adatbázist a **ContosoSQL1** nevű **MyDB1**, egy teljes biztonsági mentés és a napló biztonsági mentését is igénybe vehet, és visszaállítja ezeket **ContosoSQL2** együtt a **WITH NORECOVERY PARAMÉTERREL**  lehetőséget.
 
          Invoke-SqlCmd -Query "CREATE database $db"
          Backup-SqlDatabase -Database $db -BackupFile "$backupShare\db.bak" -ServerInstance $server1
          Backup-SqlDatabase -Database $db -BackupFile "$backupShare\db.log" -ServerInstance $server1 -BackupAction Log
          Restore-SqlDatabase -Database $db -BackupFile "$backupShare\db.bak" -ServerInstance $server2 -NoRecovery
          Restore-SqlDatabase -Database $db -BackupFile "$backupShare\db.log" -ServerInstance $server2 -RestoreAction Log -NoRecovery
-12. Végpontokat hoz létre a rendelkezésre állási csoporthoz az SQL Server virtuális gépeken, és állítsa be a megfelelő engedélyekkel a végpontokon.
+12. A rendelkezésre állási csoport végpontok létrehozása az SQL Server virtuális gépeken, és állítsa be a megfelelő engedélyekkel a végpontokon.
 
          $endpoint =
              New-SqlHadrEndpoint MyMirroringEndpoint `
@@ -533,7 +533,7 @@ Végül készen áll a rendelkezésre állási csoport konfigurálásához. Telj
          Invoke-SqlCmd -Query "GRANT CONNECT ON ENDPOINT::[MyMirroringEndpoint] TO [$acct2]" -ServerInstance $server1
          Invoke-SqlCmd -Query "CREATE LOGIN [$acct1] FROM WINDOWS" -ServerInstance $server2
          Invoke-SqlCmd -Query "GRANT CONNECT ON ENDPOINT::[MyMirroringEndpoint] TO [$acct1]" -ServerInstance $server2
-13. A rendelkezésre állási másodpéldányok létrehozása.
+13. A rendelkezésre állási replikák létrehozásához.
 
          $primaryReplica =
              New-SqlAvailabilityReplica `
@@ -551,7 +551,7 @@ Végül készen áll a rendelkezésre állási csoport konfigurálásához. Telj
              -FailoverMode "Automatic" `
              -Version 11 `
              -AsTemplate
-14. Végül hozza létre a rendelkezésre állási csoportot, és a másodlagos másodpéldány csatlakoztatása a rendelkezésre állási csoport.
+14. Végül hozza létre a rendelkezésre állási csoportot, és a másodlagos másodpéldány csatlakoztatása a rendelkezésre állási csoporthoz.
 
          New-SqlAvailabilityGroup `
              -Name $ag `
@@ -566,6 +566,6 @@ Végül készen áll a rendelkezésre állási csoport konfigurálásához. Telj
              -Database $db
 
 ## <a name="next-steps"></a>További lépések
-Ön már most sikeresen megvalósítva SQL Server Always On rendelkezésre állási csoport létrehozása az Azure-ban. A figyelő a rendelkezésre állási csoport konfigurálásához lásd: [egy ILB figyelőt az Always On rendelkezésre állási csoportok konfigurálása az Azure-](../classic/ps-sql-int-listener.md).
+Akkor most már sikeresen megvalósított SQL Server Always On rendelkezésre állási csoport létrehozásával az Azure-ban. Egy figyelőt a rendelkezésre állási csoport beállítása: [Always On rendelkezésre állási csoportokra vonatkozó ILB figyelő konfigurálása az Azure-ban](../classic/ps-sql-int-listener.md).
 
-Egyéb Azure-ban az SQL Server használatával kapcsolatos információkért lásd: [Azure virtuális gépeken futó SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Más Azure-beli SQL Server használatával kapcsolatos információkért lásd: [Azure virtuális gépeken futó SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md).

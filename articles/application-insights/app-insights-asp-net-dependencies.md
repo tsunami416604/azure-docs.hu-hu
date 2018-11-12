@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: f1a1c0bd759a88b2e84584f1d52458ac6f56d97f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c54d8b870d6d8c187dcf145b56e3cbae257889a5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999701"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51259292"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Application Insights beállítása: függőségi nyomon követése
 A *függőségi* egy külső összetevő, amely hívja meg az alkalmazást. Fontos általában nevű HTTP-n vagy egy adatbázist vagy egy fájlrendszert használó szolgáltatás. [Az Application Insights](app-insights-overview.md) méri a mennyi az alkalmazás megvárja, amíg függőségeket, és milyen gyakran egy függőségi hívás sikertelen lesz. Vizsgálja meg az adott hívásokat, és összekapcsolhatja őket a kérelmeket és kivételeket.
@@ -44,7 +44,7 @@ Részleges függőségi gyűjtött automatikusan a [Application Insights SDK](ap
 
 | Platform | Telepítés |
 | --- | --- |
-| Az IIS-kiszolgálón |Mindkét [a kiszolgálón telepítse az Állapotfigyelőt](app-insights-monitor-performance-live-website-now.md) vagy [frissíteni az alkalmazást a .NET-keretrendszer 4.6-os vagy újabb](http://go.microsoft.com/fwlink/?LinkId=528259) , és telepítse a [Application Insights SDK](app-insights-asp-net.md) az alkalmazásban. |
+| Az IIS-kiszolgálón |Mindkét [a kiszolgálón telepítse az Állapotfigyelőt](app-insights-monitor-performance-live-website-now.md) vagy [frissíteni az alkalmazást a .NET-keretrendszer 4.6-os vagy újabb](https://go.microsoft.com/fwlink/?LinkId=528259) , és telepítse a [Application Insights SDK](app-insights-asp-net.md) az alkalmazásban. |
 | Azure Web App |A WebApp Vezérlőpultját, a [nyissa meg az Application Insights paneljén a WebApp Vezérlőpultját](app-insights-azure-web-apps.md) , és válassza ki a telepítés, ha a rendszer kéri. |
 | Azure Cloud Service |[Használat indítási feladat](app-insights-cloudservices.md) vagy [telepítse a .NET-keretrendszer 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
 
@@ -207,7 +207,7 @@ Tekintse meg az alábbi táblázat, és úgy döntött, hogy a helyes konfigurá
 
 | Platform | Telepítés |
 | --- | --- |
-| Az IIS-kiszolgálón |Mindkét [a kiszolgálón telepítse az Állapotfigyelőt](app-insights-monitor-performance-live-website-now.md). Vagy [frissíteni az alkalmazást a .NET-keretrendszer 4.6-os vagy újabb](http://go.microsoft.com/fwlink/?LinkId=528259) , és telepítse a [Application Insights SDK](app-insights-asp-net.md) az alkalmazásban. |
+| Az IIS-kiszolgálón |Mindkét [a kiszolgálón telepítse az Állapotfigyelőt](app-insights-monitor-performance-live-website-now.md). Vagy [frissíteni az alkalmazást a .NET-keretrendszer 4.6-os vagy újabb](https://go.microsoft.com/fwlink/?LinkId=528259) , és telepítse a [Application Insights SDK](app-insights-asp-net.md) az alkalmazásban. |
 | Azure Web App |A WebApp Vezérlőpultját, a [nyissa meg az Application Insights paneljén a WebApp Vezérlőpultját](app-insights-azure-web-apps.md) , és válassza ki a telepítés, ha a rendszer kéri. |
 | Azure Cloud Service |[Használat indítási feladat](app-insights-cloudservices.md) vagy [telepítse a .NET-keretrendszer 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
 

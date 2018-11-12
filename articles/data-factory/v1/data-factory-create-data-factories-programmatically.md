@@ -1,6 +1,6 @@
 ---
-title: Adatok folyamatok létrehozása az Azure .NET SDK használatával |} Microsoft Docs
-description: Megtudhatja, hogyan programozott módon létrehozása, felügyelete és kezelése az Azure adat-előállítók Data Factory SDK használatával.
+title: Adatfolyamatok létrehozása az Azure .NET SDK-val |} A Microsoft Docs
+description: Ismerje meg, hogyan programozott módon létrehozása, figyelése és kezelése az Azure-beli adat-előállítók Data Factory SDK-val.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -14,26 +14,26 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: de892afee57b9a39b841f6cfc93f8470d831c2a6
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: afee3254ebdd325d756bfc5027cca531442c5689
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045932"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257365"
 ---
-# <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Hozzon létre, felügyelete és kezelése az Azure Data Factory .NET SDK használatával Azure adat-előállítók
+# <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Létrehozása, figyelése és kezelése az Azure data factoryt az Azure Data Factory .NET SDK használatával
 > [!NOTE]
-> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [másolási tevékenység oktatóanyag](../quickstart-create-data-factory-dot-net.md). 
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a [másolási tevékenység oktatóanyagát](../quickstart-create-data-factory-dot-net.md). 
 
 ## <a name="overview"></a>Áttekintés
-Hozzon létre, figyelése és kezelése az Azure adat-előállítók programozott módon a Data Factory .NET SDK használatával. A cikkben egy forgatókönyv, amelyeket követve hozzon létre egy minta .NET konzolalkalmazást, amely létrehoz és egy adat-előállító figyeli. 
+Létrehozása, figyelése és kezelése az Azure data factoryt programozott módon a Data Factory .NET SDK használatával. Ez a cikk tartalmaz egy forgatókönyv, amelyekkel egy mintául szolgáló .NET-konzolalkalmazást hoz létre, és figyeli az adat-előállító létrehozásához. 
 
 > [!NOTE]
-> Ez a cikk nem tárgyalja a Data Factory teljes .NET API-ját. Lásd: [Data Factory .NET API-referencia](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) .NET API-t a Data Factory átfogó dokumentációját. 
+> Ez a cikk nem tárgyalja a Data Factory teljes .NET API-ját. Lásd: [Data Factory .NET API-referencia](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) kapcsolatos átfogó dokumentációért a Data Factory .NET API-t. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Visual Studio 2012, 2013 vagy 2015
-* Töltse le és telepítse [Azure .NET SDK](http://azure.microsoft.com/downloads/).
+* Töltse le és telepítse [Azure .NET SDK](https://azure.microsoft.com/downloads/).
 * Azure PowerShell. Kövesse a [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) cikkben foglalt utasításokat az Azure PowerShell telepítéséhez a számítógépre. Az Azure PowerShellt egy Azure Active Directory-alkalmazás létrehozására fogjuk használni.
 
 ### <a name="create-an-application-in-azure-active-directory"></a>Alkalmazás létrehozása az Azure Active Directoryban
@@ -104,7 +104,7 @@ A fenti lépések elvégzésével beszereztük az alábbi négy értéket:
 * Jelszó (az első parancsnál adtuk meg)
 
 ## <a name="walkthrough"></a>Útmutatás
-A forgatókönyv hoz létre egy adat-előállító egy folyamatot, amely tartalmazza a másolási tevékenység. A másolási tevékenység során másol adatokat az Azure blob storage a mappa ugyanazon a blob Storage tárolóban egy másik mappába. 
+A forgatókönyv adat-előállító a másolási tevékenységet tartalmazó folyamat létrehozása. A másolási tevékenység adatokat másol az Azure blob Storage egy mappából egy másik mappába az ugyanezen a blobtárolón belül. 
 
 A másolási tevékenység végzi az adatok továbbítását az Azure Data Factoryban. A tevékenységet egy globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és skálázható módon másolja az adatokat a különböző adattárak között. A Másolás tevékenységgel kapcsolatos részletekért tekintse meg a [Data Movement Activities](data-factory-data-movement-activities.md) (Adattovábbítási tevékenységek) című cikket.
 
@@ -137,8 +137,8 @@ A másolási tevékenység végzi az adatok továbbítását az Azure Data Facto
         </appSettings>
     </configuration>
     ```
-5. Az App.Config fájlban frissítse az értékeket  **&lt;Alkalmazásazonosító&gt;**,  **&lt;jelszó&gt;**,  **&lt;előfizetés Azonosító&gt;**, és **&lt;bérlői azonosító&gt;** saját értékekkel.
-6. Adja hozzá a következő **használatával** utasítást, hogy a **Program.cs** fájlt a projektben.
+5. Az App.Config fájlban frissítse a értékeit  **&lt;Alkalmazásazonosító&gt;**,  **&lt;jelszó&gt;**,  **&lt;előfizetés ID&gt;**, és **&lt;bérlőazonosító&gt;** a saját értékeire.
+6. Adja hozzá a következő **használatával** utasításokat a **Program.cs** fájlt a projektben.
 
     ```csharp
     using System.Configuration;
@@ -176,7 +176,7 @@ A másolási tevékenység végzi az adatok továbbítását az Azure Data Facto
     ```
 
    > [!IMPORTANT]
-   > A **resourceGroupName** érték helyére írja be saját Azure-erőforráscsoportja nevét. Egy erőforrás csoport használatával hozhat létre a [New-használják](/powershell/module/azurerm.resources/new-azurermresourcegroup) parancsmag.
+   > A **resourceGroupName** érték helyére írja be saját Azure-erőforráscsoportja nevét. Egy erőforrás csoport használatával is létrehozhat a [New-AzureResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) parancsmagot.
    >
    > Módosítsa úgy az adat-előállító nevét (dataFactoryName), hogy az egyedi legyen. Az adat-előállító nevének globálisan egyedinek kell lennie. A Data Factory-összetevők elnevezési szabályait a [Data Factory - Naming Rules](data-factory-naming-rules.md) (Data Factory – Elnevezési szabályok) című témakörben találhatja.
 7. Adja hozzá az alábbi kódot, amely létrehozza az **adat-előállítót** a **Main** metódusban.
@@ -220,9 +220,9 @@ A másolási tevékenység végzi az adatok továbbítását az Azure Data Facto
     ```
 9. Adja hozzá az alábbi kódot, amely létrehozza a **bemeneti és kimeneti adatkészleteket** a **Main** metódusban.
 
-    A **FolderPath** a bemeneti blob értékre van állítva a **adftutorial /** ahol **adftutorial** neve, a blob Storage tárolóban. Ha ez a tároló nem létezik az Azure blob Storage tárolóban, a tároló létrehozása ezen a néven: **adftutorial** és a szöveges fájl feltöltése a tárolóba.
+    A **FolderPath** a bemeneti blob beállítása **adftutorial /** ahol **adftutorial** neve, a tárolót a blob storage-ban. Ha ez a tároló nem létezik az Azure blob Storage, hozzon létre egy tárolót ezen a néven: **adftutorial** és a egy szöveges fájl feltöltése a tárolóba.
 
-    A kimeneti BLOB FolderPath értékre van állítva: **adftutorial/apifactoryoutput / {szelet}** ahol **szelet** értékének dinamikusan kiszámítását **SliceStart** () minden szelet dátum idejű Start.)
+    A FolderPath a kimeneti BLOB értékre van állítva: **adftutorial/apifactoryoutput / {szeletelni}** ahol **szelet** dinamikusan alapján számítja ki az értékét a **SliceStart** () Kezdő dátum és időpont minden szelet.)
 
     ```csharp
     // create input and output datasets
@@ -358,7 +358,7 @@ A másolási tevékenység végzi az adatok továbbítását az Azure Data Facto
         }
     });
     ```
-12. A kimeneti adatkészlet adatszeletének állapotának lekéréséhez adja hozzá az alábbi kódot a **Main** metódushoz. Ez a minta a várt egyetlen szelet van.
+12. A kimeneti adatkészlet adatszeletének állapotának lekéréséhez adja hozzá az alábbi kódot a **Main** metódushoz. Ebben a példában csak egyetlen szeletet van.
 
     ```csharp
     // Pulling status within a timeout threshold
@@ -393,7 +393,7 @@ A másolási tevékenység végzi az adatok továbbítását az Azure Data Facto
         }
     }
     ```
-13. **(választható)**  Futtatásához lekérni egy adatszelet részleteit az alábbi kódot a **fő** metódust.
+13. **(nem kötelező)**  Adja hozzá a következő kódot a futtatási adatszelet adatainak beszerzéséhez a **fő** metódust.
 
     ```csharp
     Console.WriteLine("Getting run details of a data slice");
@@ -425,7 +425,7 @@ A másolási tevékenység végzi az adatok továbbítását az Azure Data Facto
     Console.WriteLine("\nPress any key to exit.");
     Console.ReadKey();
     ```
-14. Adja hozzá a **Main** metódushoz szükséges alábbi segédmetódust a **Program** osztályhoz. Ez a módszer egy párbeszédpanelt, amely lehetővé teszi, hogy biztosítható a POP **felhasználónév** és **jelszó** , amelyekkel jelentkezzen be Azure-portálon.
+14. Adja hozzá a **Main** metódushoz szükséges alábbi segédmetódust a **Program** osztályhoz. Ez a módszer kerül, ahol egy párbeszédpanel, amely lehetővé teszi, hogy adja meg **felhasználónév** és **jelszó** , jelentkezzen be az Azure portal használatával.
 
     ```csharp
     public static async Task<string> GetAuthorizationHeader()
@@ -445,9 +445,9 @@ A másolási tevékenység végzi az adatok továbbítását az Azure Data Facto
     }
     ```
 
-15. A Megoldáskezelőben bontsa ki a projekt: **DataFactoryAPITestApp**, kattintson a jobb gombbal **hivatkozások**, és kattintson a **hivatkozás hozzáadása**. Jelölje be a jelölőnégyzetet `System.Configuration` szerelvény, és kattintson **OK**.
+15. A megoldáskezelőben bontsa ki a projektet: **DataFactoryAPITestApp**, kattintson a jobb gombbal **hivatkozások**, és kattintson a **hivatkozás hozzáadása**. Jelölje be jelölőnégyzetet `System.Configuration` szerelvény, majd kattintson **OK**.
 15. Hozza létre a konzolalkalmazást. Kattintson a menü **Fordítás** elemére, majd a **Megoldás fordítása** lehetőségre.
-16. Győződjön meg arról, hogy van legalább egy fájlt a adftutorial tárolóban az Azure blob storage. Ha nem, hozzon létre Emp.txt fájlt a Jegyzettömbben az alábbi tartalommal, és töltse fel a adftutorial tároló.
+16. Győződjön meg arról, hogy van legalább egy fájlt az adftutorial nevű tárolót az Azure blob Storage. Ha nincs, hozzon létre Emp.txt fájlt a Jegyzettömbben az alábbi tartalommal, és töltse fel az adftutorial tárolóban.
 
     ```
     John, Doe
@@ -458,9 +458,9 @@ A másolási tevékenység végzi az adatok továbbítását az Azure Data Facto
     * Társított szolgáltatás: **AzureStorageLinkedService**
     * Adatkészlet: **DatasetBlobSource** és **DatasetBlobDestination**.
     * Adatcsatorna: **PipelineBlobSample**
-19. Győződjön meg arról, hogy a kimeneti fájl jön létre a **apifactoryoutput** mappájában a **adftutorial** tároló.
+19. Győződjön meg arról, hogy a kimeneti fájl létrehozása a **apifactoryoutput** mappájában a **adftutorial** tároló.
 
-## <a name="get-a-list-of-failed-data-slices"></a>Hibás adatszeletek listájának lekérdezése 
+## <a name="get-a-list-of-failed-data-slices"></a>Hibás adatszeletek listájának lekérése 
 
 ```csharp
 // Parse the resource path
@@ -500,6 +500,6 @@ while (response != null);
 ```
 
 ## <a name="next-steps"></a>További lépések
-A következő példa egy folyamatot, amely másol adatokat az Azure blob storage egy Azure SQL Database .NET SDK használatával létrehozásához lásd: 
+Tekintse meg az alábbi példa egy folyamatot, amely adatokat másol egy Azure blobtárolóból egy Azure SQL Database .NET SDK használatával létrehozásához: 
 
-- [Hozzon létre egy folyamatot, a Blob Storage az SQL Database-adatok másolása](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+- [Adatok másolása Blob Storage-ból az SQL Database-folyamat létrehozása](data-factory-copy-activity-tutorial-using-dotnet-api.md)

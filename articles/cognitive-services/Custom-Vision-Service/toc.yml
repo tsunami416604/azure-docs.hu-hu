@@ -4,44 +4,44 @@ items:
   items:
   - name: Mi a Custom Vision?
     href: home.md
-- name: Útmutatók
+- name: Gyors útmutatók
   items:
-  - name: A Custom Vision Service használatának megkezdése
-    items:
-    - name: Tartalombesoroló létrehozása
-      href: getting-started-build-a-classifier.md
-    - name: Modell tesztelése
-      href: test-your-model.md
-    - name: Tartalombesoroló teljesítményének fokozása
-      href: getting-started-improving-your-classifier.md
-    - name: Előrejelzési API használata
-      href: use-prediction-api.md
-    - name: Modell exportálása mobileszközre
-      href: export-your-model.md
-    - name: Az ONNX modell és a Windows ML együttes használata
-      href: custom-vision-onnx-windows-ml.md
-    - name: A TensorFlow modell futtatása a Pythonban
-      href: export-model-python.md
-    - name: Modell létrehozása REST API használatával
-      href: rest-api-tutorial.md
-  - name: Alkalmazások készítése
+  - name: A .NET SDK használata
     items:
     - name: Képbesorolás
-      items:
-      - name: C#-oktatóanyag
-        href: csharp-tutorial.md
-      - name: Python-útmutató
-        href: python-tutorial.md
-      - name: Java-útmutató
-        href: java-tutorial.md
+      href: csharp-tutorial.md
     - name: Objektumészlelés
-      items:
-      - name: C#-oktatóanyag
-        href: csharp-tutorial-od.md
-      - name: Python-útmutató
-        href: python-tutorial-od.md
-      - name: Java-útmutató
-        href: java-tutorial-od.md
+      href: csharp-tutorial-od.md
+  - name: A Python SDK használata
+    items:
+    - name: Képbesorolás
+      href: python-tutorial.md
+    - name: Objektumészlelés
+      href: python-tutorial-od.md
+  - name: A Java SDK használata
+    items:
+    - name: Képbesorolás
+      href: java-tutorial.md
+    - name: Objektumészlelés
+      href: java-tutorial-od.md
+- name: Útmutatók
+  items:
+  - name: Tartalombesoroló létrehozása
+    href: getting-started-build-a-classifier.md
+  - name: Modell tesztelése
+    href: test-your-model.md
+  - name: Tartalombesoroló teljesítményének fokozása
+    href: getting-started-improving-your-classifier.md
+  - name: Előrejelzési API használata
+    href: use-prediction-api.md
+  - name: Modell exportálása mobileszközre
+    href: export-your-model.md
+  - name: Az ONNX modell és a Windows ML együttes használata
+    href: custom-vision-onnx-windows-ml.md
+  - name: A TensorFlow modell futtatása a Pythonban
+    href: export-model-python.md
+  - name: Modell létrehozása REST API használatával
+    href: rest-api-tutorial.md
 - name: Referencia
   items:
   - name: Egyéni vizuális képzési API
@@ -76,9 +76,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: Régiónkénti rendelkezésre állás
     href: https://azure.microsoft.com/global-infrastructure/services/
-ms.openlocfilehash: 1a29fbc0e28feced9a3a47daa7a861ddcb8a6e95
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 1394f71bceef7a0646411a155b63825771e839d3
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739770"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281032"

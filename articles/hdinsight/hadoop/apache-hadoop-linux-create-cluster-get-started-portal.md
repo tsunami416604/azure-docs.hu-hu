@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc
 ms.topic: quickstart
-ms.date: 05/07/2018
+ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: a45e6b86fa81d8e9d05698e3db34d3ada254f650
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 07f9f774e3d133a2a39aad16b06ed77938ad74c8
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015995"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51281644"
 ---
 # <a name="quickstart-get-started-with-hadoop-and-hive-in-azure-hdinsight-using-the-azure-portal"></a>Rövid útmutató: A Hadoop és a Hive Azure HDInsightban való használatának első lépései az Azure Portalon
 

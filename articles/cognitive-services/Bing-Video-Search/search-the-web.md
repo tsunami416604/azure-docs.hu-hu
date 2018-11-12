@@ -10,12 +10,12 @@ ms.component: bing-video-search
 ms.topic: overview
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: cf37db9bffa8b2a54a6327c29ec806e0eefc8c91
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: e48a0a056628e0c863330de792f8edfaa48aae34
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225412"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261859"
 ---
 # <a name="what-is-bing-video-search"></a>Mi a Bing Video Search?
 
@@ -47,7 +47,7 @@ Minden kérést egy kiszolgálóról kell elküldeni.
 
 Ha első alkalommal hívja meg bármelyik Bing API-t, ne használja az ügyfél-azonosító fejlécét. Csak akkor használja az ügyfél-azonosítót, ha korábban már meghívott egy Bing API-t, és visszakapott egy ügyfél-azonosítót a felhasználó és az eszköz kombinációjához.
 
-Ha egy konkrét tartományban található videókat szeretne lekérni, használja a [site:](http://msdn.microsoft.com/library/ff795613.aspx) lekérdezési operátort.
+Ha egy konkrét tartományban található videókat szeretne lekérni, használja a [site:](https://msdn.microsoft.com/library/ff795613.aspx) lekérdezési operátort.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
@@ -131,7 +131,7 @@ Alapértelmezés szerint a Video Search API a lekérdezéshez kapcsolódó össz
 - [videoLength](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videolength)&mdash;Videók szűrése hossz alapján (például öt percnél rövidebb videók);
 - [freshness](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#freshness)&mdash;Videók szűrése a feltöltés időpontja alapján (például a Bing által az elmúlt héten felfedezett videók).
 
-Ha egy konkrét tartományban található videókat szeretne lekérni, foglalja bele a [site:](http://msdn.microsoft.com/library/ff795613.aspx) lekérdezési operátort a lekérdezési sztringbe.
+Ha egy konkrét tartományban található videókat szeretne lekérni, foglalja bele a [site:](https://msdn.microsoft.com/library/ff795613.aspx) lekérdezési operátort a lekérdezési sztringbe.
 
 > [!NOTE]
 > A lekérdezéstől függően, ha a `site:` lekérdezési operátort használja, előfordulhat, hogy a válasz a [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#safesearch) beállítás ellenére is felnőtteknek szóló tartalmakat ad vissza. Csak akkor használja a `site:` operátort, ha ismeri a webhely tartalmát, és a felnőtteknek szóló tartalmak megjelenítése nem okoz problémát.

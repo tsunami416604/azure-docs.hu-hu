@@ -8,12 +8,12 @@ ms.date: 10/05/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d4253942ea5cd998bfd3806978e108413949f886
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 2513624aecff652e8a952b3255faf2ab9366f21a
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741428"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288696"
 ---
 # <a name="understand-the-requirements-and-tools-for-developing-iot-edge-modules"></a>A követelmények és az eszközök IoT Edge-modulok megismerése
 
@@ -26,9 +26,9 @@ Az IoT Edge-futtatókörnyezet biztosít az infrastruktúra több IoT Edge-modul
 Az IoT Edge hub által biztosított két fő funkciói: az IoT Hub és a helyi hírközlő proxy.
 
 ### <a name="iot-hub-primitives"></a>Az IoT Hub primitívek
-IoT Hub számára egy modul példány adatproblémák eszközre, abban az értelemben, hogy az informatikai:
+Az IoT Hub adatproblémák egy eszközt, abban az értelemben, hogy egy modul példányt kap, amely:
 
-* ikermodul, amely különböző, és elkülönülnek a rendelkezik a [ikereszköz](../iot-hub/iot-hub-devguide-device-twins.md) és az egyéb ikermodulokkal; eszközön
+* rendelkezik egy ikermodul, amely különböző, és elkülönülnek a [ikereszköz](../iot-hub/iot-hub-devguide-device-twins.md) és az egyéb ikermodulokkal; eszközön
 * küldhet [eszköz – felhő üzeneteket](../iot-hub/iot-hub-devguide-messaging.md);
 * megkaphatja a [közvetlen metódusok](../iot-hub/iot-hub-devguide-direct-methods.md) identitása célozza.
 
@@ -41,7 +41,7 @@ Lásd: [fejlesztés és üzembe helyezése az IoT Edge-modul egy szimulált eszk
 ### <a name="device-to-cloud-messages"></a>Az eszközről a felhőbe irányuló üzenetek
 Ahhoz, hogy összetett eszközt a felhőbe irányuló üzenetek feldolgozása az IoT Edge hub által biztosított deklaratív az üzenetek útválasztását a modulok között, és a modulok és az IoT Hub között. Deklaratív útválasztást lehetővé teszi, hogy a modulok intercept és más modulok által küldött üzenetek feldolgozásával, és átvezeti őket az összetett folyamatok. A cikk [modul-összeállítását](module-composition.md) modulok compose az útvonalak használatával összetett folyamatokat ismerteti.
 
-Az IoT Edge-modul működnek, mint a szokásos IoT Hub eszközalkalmazás kapnak annak érdekében, hogy fel használ proxyt a helyi IoT Edge hub által éppen eszköz – felhő üzeneteket.
+Az IoT Edge-modul, ellentétben a szokásos IoT Hub alkalmazást, annak érdekében, hogy fel használ proxyt a helyi IoT Edge hub által éppen eszköz – felhő üzeneteket fogadhat.
 
 IoT Edge hub az üzeneteket a modul deklaratív útvonalak leírtak alapján tölti ki a [modul-összeállítását](module-composition.md) cikk. Amikor egy IoT Edge-modul fejlesztése, ezeket az üzeneteket fogadhat üzenet kezelők beállításával.
 
@@ -58,7 +58,9 @@ Végül az Edge hub által kezelt eszköz – felhő üzenetek vannak megjelölv
 | $outputName | A kimenet az üzenet elküldéséhez használt. Üres is lehet. |
 
 ### <a name="connecting-to-iot-edge-hub-from-a-module"></a>Csatlakozás az IoT Edge hubot a modulból
-Csatlakozás a helyi IoT Edge hubot a modulból két lépésből áll: a kapcsolati karakterláncot használja az IoT Edge-futtatókörnyezet, a modul indításakor, és ellenőrizze, hogy az alkalmazás fogad el, hogy az eszközről az IoT Edge hub által bemutatott tanúsítványt a megadott.
+Csatlakozás a helyi IoT Edge hubot a modulból két lépésből áll: 
+1. A modul indításakor az IoT Edge-futtatókörnyezete által megadott kapcsolati karakterlánc használata.
+2. Ellenőrizze, hogy az alkalmazás fogad el, hogy az eszközről az IoT Edge hub által bemutatott tanúsítványt.
 
 A használandó karakterláncban szúrhatja be a környezeti változó az IoT Edge-futtatókörnyezete által `EdgeHubConnectionString`. Így elérhető minden olyan alkalmazást használni szeretné.
 

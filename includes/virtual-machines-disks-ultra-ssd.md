@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: bb9a2a884439b00f52adfa9b7c1010a4610a77f7
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 050308e1c8de160f1671ded991e550087299ae2f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47401530"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51285756"
 ---
 # <a name="ultra-ssd-preview-managed-disks-for-azure-virtual-machine-workloads"></a>Az Azure virtuális gépek számítási feladataihoz ultranagy SSD (előzetes verzió) felügyelt lemezek
 
@@ -23,7 +23,7 @@ Azure Ultranagy SSD (előzetes verzió) az Azure IaaS virtuális gépek nagy át
 
 **A Managed Disks**: Ultranagy SSD-k csak felügyelt lemezként érhető el. Ultranagy SSD-k nem állítható rendszerbe a nem felügyelt lemezek és Lapblobok. Egy felügyelt lemez létrehozásakor adja meg a lemez termékváltozat UltraSSD_LRS típusa, és azt jelzik, lemezt, az IOPS és átviteli sebességért és az Azure létrehozza és felügyeli a lemezt Ön helyett.  
 
-**Virtuális gépek**: Ultranagy SSD-k tervezték, hogy használata engedélyezve van, a prémium szintű SSD-beli virtuális gépek Termékváltozatait, azonban előzetes időpontban a Virtuálisgép-méretek lesz korlátozva, ES/DS v3 VM-példányokon.
+**Virtuális gépek**: Ultranagy SSD-k úgy tervezték, hogy engedélyezve van, a prémium szintű SSD-beli virtuális gépek Termékváltozatait tartalmazó működik; azonban jelenleg előzetes verzióban érhető el, mert a virtuális gépek mérete gen/DS v3-as.
 
 **A dinamikus Teljesítménykonfiguráció**: Ultranagy SSD-k engedélyezése dinamikus módosítását a teljesítményt (IOPS és átviteli sebesség) a munkaterhelés igényei és a lemez a virtuális gépek újraindítása nélkül.
 
@@ -55,7 +55,7 @@ Az alábbi táblázatban a különféle lemezméretek által támogatott konfigu
 
 ## <a name="pricing-and-billing"></a>Árak és számlázás
 
-Ultranagy SSD-k használatakor az alábbi számlázási szempontok érvényesek:
+Ultranagy SSD-k használatával, az alábbi számlázási szempontok lépnek érvénybe:
 
 - Felügyelt lemez mérete
 - Felügyelt lemez kiosztott iops-érték
@@ -64,11 +64,11 @@ Ultranagy SSD-k használatakor az alábbi számlázási szempontok érvényesek:
 
 ### <a name="managed-disk-size"></a>Felügyelt lemez mérete
 
-Felügyelt lemezeket az üzembe helyezett méretek számítjuk fel. Az Azure a kiépített méretet a legközelebbi lemezméret-ajánlathoz (kerekítve) rendeli hozzá. A lemezméretek érhető el a részletekért lásd: a tábla, méretezhetőségi és Teljesítménycéljai a fenti szakaszban. Mindegyik lemez képez le egy támogatott kiosztott lemez méretét, és ennek megfelelően díját óránként. Ha üzembe helyezett egy 200 GiB Ultranagy SSD-lemez, és 20 óra múlva törli azt, például azt a lemez mérete vonatkozó ajánlatot 256 GIB-ra lesz leképezve, és kell fizetnie a 256 GIB-ra vonatkozó 20 óra. Ez a, függetlenül a lemezre írt adatok tényleges mennyiségét.
+A felügyelt lemezek számlázása a virtuális gép mérete során egy új Azure virtuális gép provisionning choosed. Az Azure a kiépített méretet a legközelebbi lemezméret-ajánlathoz (kerekítve) rendeli hozzá. A lemezméretek érhető el a részletekért lásd: a tábla, méretezhetőségi és Teljesítménycéljai a fenti szakaszban. Mindegyik lemez képez le egy támogatott kiosztott lemez méretét és ennek megfelelően számlázva lesz óránként. Ha üzembe helyezett egy 200 GiB Ultranagy SSD-lemez, és 20 óra múlva törli azt, például azt a lemez mérete vonatkozó ajánlatot 256 GIB-ra lesz leképezve, és kell fizetnie a 256 GIB-ra vonatkozó 20 óra. Ezt a számlázási számítási óra felhasználás függetlenül ténylegesen a lemezre írt adatok mennyisége alapján.
 
 ### <a name="managed-disk-provisioned-iops"></a>Felügyelt lemez kiosztott iops-érték
 
-Iops-t is, amely a alkalmazás egy második, a lemezek által küldött kérelmek száma. Egy bemeneti/kimeneti műveleti szekvenciális vagy véletlenszerű, olvas vagy ír. A lemez mérete, mint például a kiosztott IOPS óradíjat számítjuk fel. A lemez iops-érték érhető el, tájékozódhat a tábla, méretezhetőségi és Teljesítménycéljai a fenti szakaszban.
+Iops-t is, hogy az alkalmazás által küldött kérések száma másodpercenként a lemezekre. Egy bemeneti/kimeneti műveleti Szekvenciális olvasási vagy írási vagy véletlenszerű olvasási vagy írási. A lemez mérete vagy a virtuális Géphez csatolt lemezek száma alapján, IOPS átlagos száma számlázása óránként. A lemez iops-érték érhető el, tájékozódhat a tábla, méretezhetőségi és Teljesítménycéljai a fenti szakaszban.
 
 ### <a name="managed-disk-provisioned-throughput"></a>Felügyelt lemez kiosztott átviteli sebesség
 

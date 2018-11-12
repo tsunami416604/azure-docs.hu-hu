@@ -8,12 +8,12 @@ ms.date: 09/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d84df3e5e0b961b8a53044102f99205ee0fe9896
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: c4ab33f4d706eb677b2b790ff871c1fb900846ff
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914107"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235632"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Megismerheti a kiterjesztett offline funkcióit az IoT Edge-eszközök, a modulok és a gyermek eszközökön (előzetes verzió)
 
@@ -46,7 +46,7 @@ Az alábbi példa bemutatja, hogyan egy IoT Edge-forgatókönyvet a kapcsolat n�
 
 ## <a name="restrictions-and-limits"></a>Korlátozások és korlátok
 
-A jelen cikkben ismertetett kiterjesztett offline lehetőségek állnak rendelkezésére [IoT Edge verzió 1.0.2-es vagy újabb](https://github.com/Azure/azure-iotedge/releases). Korábbi verziók esetében az offline funkciók egy részét. Meglévő IoT Edge kiterjesztett offline képességeiről nem rendelkező eszközök úgy módosítja a futtatókörnyezet verziója nem frissíthető, de egy új IoT Edge eszközidentitással ezek a szolgáltatások eléréséhez a rendszer újra kell konfigurálni. 
+A jelen cikkben ismertetett kiterjesztett offline lehetőségek állnak rendelkezésére [IoT Edge 1.0.4-es verzió vagy újabb](https://github.com/Azure/azure-iotedge/releases). Korábbi verziók esetében az offline funkciók egy részét. Meglévő IoT Edge kiterjesztett offline képességeiről nem rendelkező eszközök úgy módosítja a futtatókörnyezet verziója nem frissíthető, de egy új IoT Edge eszközidentitással ezek a szolgáltatások eléréséhez a rendszer újra kell konfigurálni. 
 
 Offline kiterjesztett technikai támogatás érhető el minden olyan régióban, ahol az IoT Hub elérhető, kivéve az USA keleti Régiójában és Nyugat-Európa. 
 
@@ -56,34 +56,7 @@ IoT Edge-eszközök és a hozzárendelt gyermek eszközeik működhet határozat
 
 ## <a name="set-up-an-edge-device"></a>Edge-eszköz beállítása
 
-Minden IoT Edge-eszköz, amely kiterjesztett offline időszakokban végrehajtására vonatkozó szándékát állítsa be az IoT Edge-futtatókörnyezet MQTT protokollt használó kommunikációra. 
-
 Az IoT Edge-eszköz gyermek IoT-eszközökön a kiterjesztett offline lehetőségek bővítése céljából kell deklarálni, a szülő-gyermek kapcsolatba az Azure Portalon.
-
-### <a name="set-the-upstream-protocol-to-mqtt"></a>Mqtt-ről a felsőbb rétegbeli protokoll beállítása
-
-Az Edge hub és az Edge agent való kommunikációhoz MQTT felsőbb rétegbeli protokoll konfigurálni. Ez a protokoll deklarálva van, a környezeti változók használatával manifest nasazení. 
-
-Az Azure Portalon érhető el az Edge hub és az Edge agent modulmeghatározásokat kiválasztása a **speciális Edge-futtatókörnyezet-beállítások konfigurálása** gombot, ha a központi modulok beállítása. Mindkét modult, hozzon létre egy környezeti változó nevű **UpstreamProtocol** és az értékét állítsa **MQTT**. 
-
-A központi telepítési sablon JSON-JÁT, a környezeti változók deklarált az alábbi példában látható módon: 
-
-```json
-"edgeHub": {
-    "type": "docker",
-    "settings": {
-        "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-        "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}]}}}"
-    },
-    "env": {
-        "UpstreamProtocol": {
-            "value": "MQTT"
-        }
-    },
-    "status": "running",
-    "restartPolicy": "always"
-}
-```
 
 ### <a name="assign-child-devices"></a>Gyermek-eszközök hozzárendelése
 

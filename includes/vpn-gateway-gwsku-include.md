@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 11/06/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 605533f25b36a92a660301d28aa63cb2ecdd44f4
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 9ae3a17c9756a38414ee25fd24f7d12d6179e95f
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37910014"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51285689"
 ---
 Egy virtuális hálózati átjáró létrehozásakor meg kell adni a használni kívánt termékváltozatot. Válassza ki a számítási feladatok, az átviteli sebesség, a funkciók és a szolgáltatói szerződés igényeinek megfelelő termékváltozatot.
 
@@ -29,7 +29,7 @@ VPN-átjárók új Termékváltozatai leegyszerűsítheti az átjárókon elérh
 
 | **Termékváltozat**| **Szolgáltatások**|
 | ---    | ---         |
-|**Alapszintű** (*)   | **Útvonalalapú VPN**: 10 alagút P2S-sel; p2s RADIUS-hitelesítés nélkül IKEv2 for P2S nélkül<br>**Házirend-alapú VPN** (IKEv1): 1 alagút, P2S nélkül|
+|**Alapszintű** (*)   | **Útvonalalapú VPN**: 10 alagút S2S-kapcsolatok; p2s RADIUS-hitelesítés nélkül IKEv2 for P2S nélkül<br>**Házirendalapú VPN**: (IKEv1): 1 S2S/kapcsolat alagút; P2S nélkül|
 | **VpnGw1, VpnGw2 és VpnGw3** | **Útvonalalapú VPN**: legfeljebb 30 alagút (*), P2S, BGP, aktív-aktív, egyéni IPsec/IKE-házirend, ExpressRoute/VPN együttes használata |
 |        |             |
 

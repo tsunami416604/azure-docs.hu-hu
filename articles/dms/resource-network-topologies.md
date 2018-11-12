@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/10/2018
-ms.openlocfilehash: 39bcea36f3599530413aa9fc4dbb308ee2fb1681
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.date: 11/8/2018
+ms.openlocfilehash: 9b036b74141ce2091d2e68b68d10c44a56a8696d
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49066853"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300692"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-the-azure-database-migration-service"></a>Hálózati topológiák az Azure SQL DB felügyelt példányainak áttelepítése az Azure Database Migration Service segítségével
 Ez a cikk ismerteti a különböző hálózati topológiákat, amely az Azure Database Migration Service, a helyszíni SQL Server-kiszolgálók teljes körű migrálási felhasználói élményt nyújtson az Azure SQL Database felügyelt példányain használható.
@@ -64,6 +64,22 @@ Akkor használja ezt a hálózati topológiát, ha környezete megköveteli egy 
 **Követelmények**
 - Állítsa be a [virtuális hálózatok közötti társviszony](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) Azure SQL Database felügyelt példánya és az Azure Database Migration Service használt virtuális hálózat között.
 
+## <a name="inbound-security-rules"></a>Bejövő biztonsági szabály
+
+| **NÉV**   | **PORT** | **PROTOKOLL** | **FORRÁS** | **CÉL** | **A MŰVELET** |
+|------------|----------|--------------|------------|-----------------|------------|
+| DMS_subnet | Bármelyik      | Bármelyik          | A DMS-ALHÁLÓZAT | Bármelyik             | Engedélyezés      |
+
+## <a name="outbound-security-rules"></a>Kimenő biztonsági szabályok
+
+| **NÉV**                  | **PORT**                                              | **PROTOKOLL** | **FORRÁS** | **CÉL**           | **A MŰVELET** | **A szabály oka**                                                                                                                                                                              |
+|---------------------------|-------------------------------------------------------|--------------|------------|---------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| felügyelet                | 443,9354                                              | TCP          | Bármelyik        | Bármelyik                       | Engedélyezés      | Felügyeleti sík kommunikáció a service bus és az Azure blob storage-bA. <br/>(Ha a Microsoft társviszony-létesítés engedélyezve van, előfordulhat, hogy nem kell Ez a szabály.)                                                             |
+| Diagnosztika               | 12000                                                 | TCP          | Bármelyik        | Bármelyik                       | Engedélyezés      | A DMS Ez a szabály hibaelhárítási célokra diagnosztikai információkat gyűjthet használ.                                                                                                                      |
+| SQL-forráskiszolgáló         | 1433-as (vagy, mely a SQL Server TCP IP-port) | TCP          | Bármelyik        | A helyszíni címtér | Engedélyezés      | Az SQL Server adatforrás kapcsolat DMS <br/>(Ha helyek közötti kapcsolat, akkor előfordulhat, hogy nem szükséges ez a szabály.)                                                                                       |
+| Az SQL Server-példányt | 1434                                                  | UDP          | Bármelyik        | A helyszíni címtér | Engedélyezés      | SQL Server megnevezett példány DMS forrás kapcsolat <br/>(Ha helyek közötti kapcsolat, akkor előfordulhat, hogy nem szükséges ez a szabály.)                                                                        |
+| SMB-megosztás                 | 445                                                   | TCP          | Bármelyik        | A helyszíni címtér | Engedélyezés      | Az SMB hálózati megoszthatja a DMS-adatbázis áttelepítése az Azure SQL Database MI és az SQL Server-kiszolgálók biztonsági mentési fájljait tárolja az Azure virtuális gépen <br/>(Ha helyek közötti kapcsolat, nincs szükség lehet ez a szabály). |
+| DMS_subnet                | Bármelyik                                                   | Bármelyik          | Bármelyik        | DMS_Subnet                | Engedélyezés      |                                                                                                                                                                                                  |
 
 ## <a name="see-also"></a>Lásd még:
 - [SQL Server migrálása az Azure SQL Database felügyelt példány](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance)

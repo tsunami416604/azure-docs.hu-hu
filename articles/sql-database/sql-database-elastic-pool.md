@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 6721b260960cd38b68173a5d973a5716b99a26c0
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: a6e2be02f9954a036fdcb67a15c73cc82670834b
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241208"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283563"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Rugalmas készletek kezelése és a több Azure SQL-adatbázisok horizontális Súgó
 
@@ -113,10 +113,10 @@ Ha nincs lehetősége eszközök használatára, az alábbi részletes útmutat�
 
 1. Megbecsülheti az edtu-k vagy a virtuális magok a készlet a következő szükséges:
 
-   A DTU-alapú vásárlási modell: MAX (<*adatbázisok száma* X *átlagos DTU-használata* >,<br>
+   A DTU-alapú vásárlási modell: MAX (<*adatbázisok száma* X *átlagos DTU-használata*>,<br>  
    <*A kiugró kihasználtsággal egyszerre működő adatbázisok száma* X *Az egyes adatbázisok kiugró DTU-használata*)
 
-   A Virtuálismag-alapú vásárlási modell: MAX (<*adatbázisok száma* X *átlagos virtuális mag használata*>,<br>
+   A Virtuálismag-alapú vásárlási modell: MAX (<*adatbázisok száma* X *átlagos virtuális mag használata*>,<br>  
    <*Több egyidejűleg kiugró kihasználtságú adatbázisok* X *csúcs-virtuális mag használata*)
 
 2. A készlethez szükséges tárterület méretének becsléséhez adja össze a készlet egyes adatbázisaihoz szükséges bájtok számát. Ezután határozza meg a szükséges tárhelyet biztosító eDTU-készlet méretét.

@@ -12,12 +12,12 @@ ms.topic: get-started-article
 ms.date: 09/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 04d950b0a8001fd76e3754b73a9d7c4c5fe2893d
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 5da946ff0c9bdda91668999db2fccdd12a67c0d2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318639"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253193"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Az Azure AD Connect és az Azure AD Connect Health telepítési ütemterve
 
@@ -26,7 +26,7 @@ ms.locfileid: "49318639"
 > [!IMPORTANT]
 > A Microsoft nem támogatja az Azure AD Connect szinkronizálásának módosítását vagy a hivatalos dokumentumokban szereplő műveleteken kívüli használat. Minden ilyen művelet azt eredményezheti, hogy az Azure AD Connect szinkronizálása inkonzisztens vagy nem támogatott állapotba kerül. A Microsoft ezért nem tud műszaki támogatást biztosítani az ilyen környezetekhez.
 
-Az Azure AD Connect a [Microsoft letöltőközpontból](http://go.microsoft.com/fwlink/?LinkId=615771) tölthető le.
+Az Azure AD Connect a [Microsoft letöltőközpontból](https://go.microsoft.com/fwlink/?LinkId=615771) tölthető le.
 
 | Megoldás | Forgatókönyv |
 | --- | --- |
@@ -41,7 +41,7 @@ Az Azure AD Connect a [Microsoft letöltőközpontból](http://go.microsoft.com/
 ### <a name="next-steps-to-install-azure-ad-connect"></a>Az Azure AD Connect telepítésének következő lépései
 |Témakör |Hivatkozás|  
 | --- | --- |
-|Az Azure AD Connect letöltése | [Az Azure AD Connect letöltése](http://go.microsoft.com/fwlink/?LinkId=615771)|
+|Az Azure AD Connect letöltése | [Az Azure AD Connect letöltése](https://go.microsoft.com/fwlink/?LinkId=615771)|
 |Telepítés gyorsbeállítások használatával | [Az Azure AD Connect gyorstelepítése](./how-to-connect-install-express.md)|
 |Telepítés testreszabott beállítások használatával | [Az Azure AD Connect testreszabott telepítése](./how-to-connect-install-custom.md)|
 |Frissítés a DirSync szolgáltatásról | [Frissítés az Azure AD szinkronizáló eszközéről (DirSync)](./how-to-dirsync-upgrade-get-started.md)|
@@ -141,12 +141,12 @@ Az Azure AD Connect Health használatának elkezdéséhez hajtsa végre a követ
 ## <a name="download-and-install-azure-ad-connect-health-agent"></a>Az Azure AD Connect Health-ügynök letöltése és telepítése
 * Győződjön meg róla, hogy [teljesülnek az Azure AD Connect Health követelményei](how-to-connect-health-agent-install.md#requirements).
 * Ismerkedés az Azure AD Connect Health for AD FS használatával
-    * [Töltse le az Azure AD Connect Health-ügynököt az AD FS szolgáltatáshoz.](http://go.microsoft.com/fwlink/?LinkID=518973)
+    * [Töltse le az Azure AD Connect Health-ügynököt az AD FS szolgáltatáshoz.](https://go.microsoft.com/fwlink/?LinkID=518973)
     * [Tekintse meg a telepítési utasításokat](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs).
 * Ismerkedés az Azure AD Connect Health szinkronizálási szolgáltatás használatával
-    * [Töltse le, és telepítse az Azure AD Connect legújabb verzióját.](http://go.microsoft.com/fwlink/?linkid=615771) A szinkronizálási állapotügynök az (1.0.9125.0-s verziójú vagy újabb) Azure AD Connect részeként telepíthető.
+    * [Töltse le, és telepítse az Azure AD Connect legújabb verzióját.](https://go.microsoft.com/fwlink/?linkid=615771) A szinkronizálási állapotügynök az (1.0.9125.0-s verziójú vagy újabb) Azure AD Connect részeként telepíthető.
 * Ismerkedés az Azure AD Connect Health for AD DS használatával
-    * [Töltse le az Azure AD Connect Health-ügynököt az AD DS szolgáltatáshoz](http://go.microsoft.com/fwlink/?LinkID=820540).
+    * [Töltse le az Azure AD Connect Health-ügynököt az AD DS szolgáltatáshoz](https://go.microsoft.com/fwlink/?LinkID=820540).
     * [Tekintse meg a telepítési utasításokat](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-ds).
 
 

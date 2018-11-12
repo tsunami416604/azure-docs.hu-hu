@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 06/15/2017
 ms.author: lizross
 ms.reviewer: richagi
-ms.openlocfilehash: f084433efa2476a75714da6eaef674911006bb76
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 297184a2623a6a7cfa3894a51f5de0e3bd3db622
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344766"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232776"
 ---
 # <a name="what-does-azure-multi-factor-authentication-mean-for-me"></a>Mit jelent számomra az Azure Multi-Factor Authentication?
 Tegyük fel, hogy kapott egy e-mailt az informatikai részlegről vagy a főnökétől, amely szerint további biztonsági ellenőrzést adtak a fiókjához.  Mit jelent ez?
@@ -44,4 +44,4 @@ Válassza ki a témakörök egyikét a kezdéshez.
 | [Bejelentkezési felület](multi-factor-authentication-end-user-signin.md) |Bemutatja, mit várhat a különböző módszerekkel (például telefonnal vagy alkalmazással) való bejelentkezéstől. |
 | [A beállítások módosítása](multi-factor-authentication-end-user-manage-settings.md) |Bemutatja, hogyan módosíthatja a beállításokat, például a telefonszámot vagy az előnyben részesített beléptetési módszert. |
 | [Segítség az alkalmazásjelszavakhoz](multi-factor-authentication-end-user-app-passwords.md) |Az alkalmazásjelszavak létrehozásával és használatával kapcsolatos információk. |
-| [A mobilalkalmazás használata](microsoft-authenticator-app-how-to.md) |A Microsoft Authenticator alkalmazás [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) és [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071) rendszereken érhető el. |
+| [A mobilalkalmazás használata](microsoft-authenticator-app-how-to.md) |A Microsoft Authenticator alkalmazás [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) és [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071) rendszereken érhető el. |

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a942e1c783b460f07626e398f91f980db7634581
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 09dd046f9dc7d6b73207ab1ab739e913a8ed5b92
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259640"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282050"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Megtervezik és megvalósítják a felügyeleti megoldás az Azure-ban (előzetes verzió)
 > [!NOTE]
@@ -54,11 +54,11 @@ Nem minden elérhető adatforrások-n keresztül elérhető adatok van szükség
 Meg kell határozni, hogy úgy gondolja, hogy akkor is hasznos lehet a felhasználónak, akkor is, ha nem használta azokat bármilyen nézeteket és riasztásokat lekérdezéseket.  Ezek őket a mentett keresések, a portálon elérhető lesz, és is hozzáadhatja őket egy [lista a lekérdezés vizualizációs rész](../log-analytics/log-analytics-view-designer-parts.md#list-of-queries-part) az egyéni nézetben.
 
 ### <a name="alerts"></a>Riasztások
-[Riasztások a Log Analyticsben](../log-analytics/log-analytics-alerts.md) azonosíthatja a problémákat keresztül [naplókereséseket](#log-searches) az adatokban a tárházban.  Vagy a felhasználó értesítése, vagy automatikusan válaszként futtatni a műveletet. Azonosítsa az alkalmazás különböző riasztási feltételeket kell és adathordozófájlba felvenni a megoldás megfelelő riasztási szabályok.
+[Riasztások a Log Analyticsben](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) azonosíthatja a problémákat keresztül [naplókereséseket](#log-searches) az adatokban a tárházban.  Vagy a felhasználó értesítése, vagy automatikusan válaszként futtatni a műveletet. Azonosítsa az alkalmazás különböző riasztási feltételeket kell és adathordozófájlba felvenni a megoldás megfelelő riasztási szabályok.
 
 Ha a probléma esetleg egy automatizált folyamattal javítani kell, majd általában létrehozhat egy runbook az Azure Automationben a szervizelés végrehajtásához.  A legtöbb Azure-szolgáltatások kezelhetők [parancsmagok](/powershell/azure/overview) , amely a runbook szeretné kihasználni a funkció végrehajtásához.
 
-Ha a megoldáshoz szükséges külső funkciók egy riasztásra adott válaszként, akkor használhat egy [webhook válasza](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).  Ez lehetővé teszi, hogy egy külső webes szolgáltatás adatokat küld a riasztásokból meghívható.
+Ha a megoldáshoz szükséges külső funkciók egy riasztásra adott válaszként, akkor használhat egy [webhook válasza](../monitoring-and-diagnostics/alert-metric.md).  Ez lehetővé teszi, hogy egy külső webes szolgáltatás adatokat küld a riasztásokból meghívható.
 
 ### <a name="views"></a>Nézetek
 A nézetek a Log Analytics segítségével a Log Analytics-adattárban adatainak megjelenítése.  Egyes megoldások általában fogja tartalmazni a szolgáltatással egyetlen nézetben egy [csempe](../log-analytics/log-analytics-view-designer-tiles.md) , amely a felhasználó fő irányítópultján jelenik meg.  A nézet tartalmazhat tetszőleges számú [Vizualizáció részek](../log-analytics/log-analytics-view-designer-parts.md) különböző megjelenítését tartalmazza az összegyűjtött adatokat biztosít a felhasználó számára.
