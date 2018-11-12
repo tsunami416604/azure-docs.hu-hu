@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 90cf2d0ddbba47a856bf1299a101c5185873b5d8
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 6dc3fb97c912aa9ac66e3d40a8a0318a6938905c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214412"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230291"
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk Services: Biztonsági mentés és visszaállítás
 
@@ -81,7 +81,7 @@ Biztonsági másolat létrehozásakor a következő elemek készül biztonsági 
 <li>Üzembe helyezett hidak</li>
 <li>Tanúsítványok</li>
 <li>Üzembe helyezett átalakítások</li>
-<li>Adatcsatornák</li>
+<li>Folyamatok</li>
 <li>Sablonok létrehozása és mentése a BizTalk Services portálon</li>
 <li>X12 ST01 és GS01 leképezések</li>
 <li>Ellenőrzőszámok (EDI)</li>
@@ -131,19 +131,19 @@ A követés adatbázisa törlődik, és az adatbázis igényeinek megfelelő hel
 </tr> 
 </table>
 
-## <a name="next"></a>Tovább
-Azure BizTalk Services létrehozása, lépjen a [BizTalk Services: kiépítés](http://go.microsoft.com/fwlink/p/?LinkID=302280). Az alkalmazások létrehozásának megkezdéséhez ugorjon az [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197) című témakörre.
+## <a name="next"></a>Következő lépés
+Azure BizTalk Services létrehozása, lépjen a [BizTalk Services: kiépítés](https://go.microsoft.com/fwlink/p/?LinkID=302280). Az alkalmazások létrehozásának megkezdéséhez ugorjon az [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197) című témakörre.
 
 ## <a name="see-also"></a>Lásd még:
-* [Biztonsági mentési BizTalk-szolgáltatás](http://go.microsoft.com/fwlink/p/?LinkID=325584)
-* [BizTalk-szolgáltatás a biztonsági másolatból](http://go.microsoft.com/fwlink/p/?LinkID=325582)
-* [A BizTalk Services: Fejlesztői, alapszintű, Standard és prémium kiadások diagramja](http://go.microsoft.com/fwlink/p/?LinkID=302279)
-* [A BizTalk Services: kiépítés](http://go.microsoft.com/fwlink/p/?LinkID=302280)
-* [BizTalk Services: Kiépítési állapot diagramja](http://go.microsoft.com/fwlink/p/?LinkID=329870)
-* [BizTalk Services: Irányítópult, Figyelés és Méret lapok](http://go.microsoft.com/fwlink/p/?LinkID=302281)
-* [BizTalk Services: Szabályozás](http://go.microsoft.com/fwlink/p/?LinkID=302282)
-* [BizTalk Services: Kiállító neve és kiállító kulcsa](http://go.microsoft.com/fwlink/p/?LinkID=303941)
-* [Hogyan kezdhetem el az Azure BizTalk Services SDK használatát](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+* [Biztonsági mentési BizTalk-szolgáltatás](https://go.microsoft.com/fwlink/p/?LinkID=325584)
+* [BizTalk-szolgáltatás a biztonsági másolatból](https://go.microsoft.com/fwlink/p/?LinkID=325582)
+* [A BizTalk Services: Fejlesztői, alapszintű, Standard és prémium kiadások diagramja](https://go.microsoft.com/fwlink/p/?LinkID=302279)
+* [A BizTalk Services: kiépítés](https://go.microsoft.com/fwlink/p/?LinkID=302280)
+* [BizTalk Services: Kiépítési állapot diagramja](https://go.microsoft.com/fwlink/p/?LinkID=329870)
+* [BizTalk Services: Irányítópult, Figyelés és Méret lapok](https://go.microsoft.com/fwlink/p/?LinkID=302281)
+* [BizTalk Services: Szabályozás](https://go.microsoft.com/fwlink/p/?LinkID=302282)
+* [BizTalk Services: Kiállító neve és kiállító kulcsa](https://go.microsoft.com/fwlink/p/?LinkID=303941)
+* [Hogyan kezdhetem el az Azure BizTalk Services SDK használatát](https://go.microsoft.com/fwlink/p/?LinkID=302335)
 
 [BackupStatus]: ./media/biztalk-backup-restore/status-last-backup.png
 [Restore]: ./media/biztalk-backup-restore/restore-ui.png

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2126ff7ffd503e1d7b30997f3f32f30429cffefb
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 2d87642b93d58d92660a2df71f2561ffe502315a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42055139"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257265"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>A StorSimple Virtual Array üzembe helyezése – előkészítése az Azure Portalon
 
@@ -29,7 +29,7 @@ ms.locfileid: "42055139"
 
 Ez a teljes telepítéséhez a virtuális tömb egy fájlkiszolgáló vagy a Resource Manager modellel iSCSI-kiszolgáló szükséges az üzembehelyezési oktatóanyagok a sorozat első cikkében. Ez a cikk ismerteti az előkészítés, létrehozása és konfigurálása a StorSimple-Eszközkezelő szolgáltatás a virtuális tömb kiépítése előtt szükséges. Ez a cikk is hivatkozik egy üzembehelyezési konfigurációs ellenőrzőlista és konfigurációs előfeltételek.
 
-A beállítási és konfigurációs folyamat befejezéséhez rendszergazdai jogosultságok szükségesek. Azt javasoljuk, hogy megkezdése előtt ellenőrizze az üzembehelyezési konfigurációs ellenőrzőlista. Portál elkészítése kevesebb mint 10 percet vesz igénybe.
+A beállítási és konfigurációs folyamat befejezéséhez rendszergazdai jogosultságok szükségesek. Azt javasoljuk, hogy megkezdése előtt ellenőrizze az üzembehelyezési konfigurációs ellenőrzőlista. A portál előkészítése kevesebb mint 10 percet vesz igénybe.
 
 Az ebben a cikkben közzétett adatokat a központi telepítést a StorSimple Virtual Arrayt, az Azure portal és a Microsoft Azure Government Cloud vonatkozik.
 
@@ -44,16 +44,16 @@ A StorSimple Virtual Array üzembe helyezéséhez a az előírt feladatütemezé
 | --- | --- | --- | --- |
 | 1. |**Állítsa be az Azure Portalon** |Létrehozhat és konfigurálhat egy StorSimple Virtual Array kiépítése előtt a StorSimple-Eszközkezelő szolgáltatáshoz. |[A portál előkészítése](storsimple-virtual-array-deploy1-portal-prep.md) |
 | 2. |**A virtuális tömb** |A Hyper-V üzembe helyezése, és csatlakozzon a StorSimple Virtual Array állomás operációs rendszert futtató Hyper-V Windows Server 2012 R2, Windows Server 2012 vagy Windows Server 2008 R2 rendszeren. <br></br> <br></br> VMware-ről üzembe helyezése, és csatlakozzon a StorSimple Virtual Array a gazdagép operációs rendszert futtató VMware ESXi 5.0-s, 5.5 és 6.0.<br></br> |[A Hyper-V virtuális tömb létrehozása](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [Virtuális tömb létrehozása VMware-ben](storsimple-virtual-array-deploy2-provision-vmware.md) |
-| 3. |**Állítsa be a virtuális tömb** |A fájlkiszolgáló hajtsa végre a kezdeti beállítás, Regisztráljon a StorSimple fájlkiszolgáló és az eszköz beállításának befejezése. Az SMB-megosztások helyezhet majd. <br></br> <br></br> Az iSCSI-kiszolgáló hajtsa végre a kezdeti beállítás, a StorSimple iSCSI-kiszolgáló regisztrálása és az eszköz beállításának befejezése. Az iSCSI-kötet helyezhet majd. |[Állítsa be a virtuális tömb fájlkiszolgálóként](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[Állítsa be a virtuális tömb iSCSI-kiszolgálóként](storsimple-virtual-array-deploy3-iscsi-setup.md) |
+| 3. |**Állítsa be a virtuális tömb** |A fájlkiszolgáló hajtsa végre a kezdeti beállítás, Regisztráljon a StorSimple fájlkiszolgáló és az eszköz beállításának befejezése. Ezután üzembe helyezheti az SMB-megosztásokat. <br></br> <br></br> Az iSCSI-kiszolgáló hajtsa végre a kezdeti beállítás, a StorSimple iSCSI-kiszolgáló regisztrálása és az eszköz beállításának befejezése. Az iSCSI-kötet helyezhet majd. |[Állítsa be a virtuális tömb fájlkiszolgálóként](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[Állítsa be a virtuális tömb iSCSI-kiszolgálóként](storsimple-virtual-array-deploy3-iscsi-setup.md) |
 
-Most elkezdheti állíthatja be az Azure Portalon.
+Most megkezdheti az Azure Portal beállítását.
 
 ## <a name="configuration-checklist"></a>Konfigurációs ellenőrzőlista
 
 A konfigurációs ellenőrzőlista azokat az információkat kell gyűjtenie a StorSimple Virtual Array az a szoftver konfigurálása előtt. Az információk időben előkészítése leegyszerűsíti a folyamatot a környezetben a StorSimple eszköz üzembe helyezésének. Attól függően, hogy a StorSimple Virtual Array egy fájlkiszolgáló vagy iSCSI-kiszolgáló van telepítve, kell egyet a következő ellenőrzőlisták.
 
-* Töltse le a [StorSimple Virtual Array fájl kiszolgáló konfigurációs ellenőrzőlista](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf).
-* Töltse le a [StorSimple Virtual Array iSCSI-kiszolgáló konfigurációs ellenőrzőlista](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf).
+* Töltse le a [StorSimple Virtual Array fájl kiszolgáló konfigurációs ellenőrzőlista](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf).
+* Töltse le a [StorSimple Virtual Array iSCSI-kiszolgáló konfigurációs ellenőrzőlista](https://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -74,17 +74,17 @@ Mielőtt telepít egy virtuális tömböt, ellenőrizze, hogy:
 * A Hyper-V a Windows Server 2008 R2 vagy újabb rendszerű gazdagép rendszere vagy VMware-alapú (ESXi 5.0-s, 5.5 és 6.0-s), amely hozzáféréssel rendelkezik egy kiépítéséhez használt eszköz.
 * A gazdagép rendszere viszont rendelnie a virtuális tömb telepítéséhez a következőket:
   
-  * Legalább 4 magnak.
+  * Legalább 4 mag.
   * Legalább 8 GB RAM. Ha azt tervezi, konfigurálja a virtuális tömb fájlkiszolgálóként, akkor 8 GB 2 millió fájlokat támogatja. 16 GB RAM, 2 – 4 millió fájl támogatásához szükséges.
-  * Egy hálózati csatoló.
+  * Egy hálózati adapter.
   * 500 GB-os virtuális lemez a rendszer adatokat.
 
-### <a name="for-the-datacenter-network"></a>Az Adatközpont-hálózat
+### <a name="for-the-datacenter-network"></a>Adatközponti hálózat
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 * A hálózat, az adatközpontban a StorSimple-eszköz hálózati követelményeinek megfelelően van konfigurálva. További információkért lásd: a [StorSimple Virtual Array rendszerkövetelményei](storsimple-ova-system-requirements.md).
-* A StorSimple Virtual Array rendelkezik egy dedikált 5 MB/s internetes sávszélesség (vagy még több) mindenkor. A sávszélesség nem osztható más alkalmazásokkal.
+* A StorSimple Virtual Array rendelkezik egy dedikált 5 MB/s internetes sávszélesség (vagy még több) mindenkor. Ez a sávszélesség nem osztható meg más alkalmazásokkal.
 
 ## <a name="step-by-step-preparation"></a>Részletes előkészítése
 
@@ -108,7 +108,7 @@ A StorSimple-Eszközkezelő szolgáltatás egyetlen példánya több StorSimple 
 
 Ha a StorSimple-eszközkezelő szolgáltatás működik és elérhető, le kell kérnie a szolgáltatásregisztrációs kulcsot. Ezzel a kulccsal regisztrálhatja és csatlakoztathatja StorSimple eszközét a szolgáltatáshoz.
 
-Hajtsa végre a következő lépéseket a [az Azure portal](https://portal.azure.com/).
+Hajtsa végre a következő lépéseket az [Azure Portalon](https://portal.azure.com/).
 
 [!INCLUDE [storsimple-virtual-array-get-service-registration-key](../../includes/storsimple-virtual-array-get-service-registration-key.md)]
 
@@ -126,19 +126,19 @@ Miután a szolgáltatás regisztrációs kulcsával, szüksége lesz a virtuáli
 > 
 > 
 
-Hajtsa végre a következő lépéseket a [az Azure portal](https://portal.azure.com/).
+Hajtsa végre a következő lépéseket az [Azure Portalon](https://portal.azure.com/).
 
 #### <a name="to-get-the-virtual-array-image"></a>Virtuális tömb lemezképének lekérési
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). 
 2. Az Azure Portalon kattintson a **Tallózás > StorSimple-Eszközkezelők**.
 3. Válasszon ki egy meglévő StorSimple-Eszközkezelő szolgáltatást. Az a **StorSimple-Eszközkezelő** panelen kattintson a **gyors üzembe helyezés**. 
-4. A kép, töltse le a Microsoft Download Center kívánt megfelelő hivatkozásra kattintva. A kép mérete körülbelül 4.8 GB.
+4. A kép, töltse le a Microsoft Download Center kívánt megfelelő hivatkozásra kattintva. A rendszerképfájlok mérete körülbelül 4,8 GB.
    
    * VHDX Hyper-v a Windows Server 2012 és újabb verziók
    * VHD Hyper-v a Windows Server 2008 R2 és újabb verziók
    * VMDK a VMWare ESXi 5.0-s, 5.5-ös vagy 6.0
-5. Töltse le és csomagolja ki a fájlt egy helyi meghajtóra, és jegyezze fel, ahol a kicsomagolt fájl így.
+5. Töltse le a fájlt egy helyi meghajtóra, csomagolja ki, és jegyezze fel, hol található a kicsomagolt fájl.
 
 ## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>Nem kötelező lépés: a szolgáltatás egy új tárfiók konfigurálása
 
@@ -167,7 +167,7 @@ Hajtsa végre a következő lépéseket a [az Azure portal](https://ms.portal.az
 
 ## <a name="next-step"></a>Következő lépés
 
-A következő lépés, hogy a StorSimple Virtual Array üzembe helyezhet egy virtuális gépet. Attól függően, a gazdagép operációs rendszere található részletes útmutatást lásd:
+A következő lépés, hogy a StorSimple Virtual Array üzembe helyezhet egy virtuális gépet. A gazdagép operációs rendszerétől függően az alábbi témakörökben tekintheti meg a részletes utasításokat:
 
 * [A Hyper-V-ben a StorSimple Virtual Array üzembe helyezése](storsimple-virtual-array-deploy2-provision-hyperv.md)
 * [VMware-ben a StorSimple Virtual Array üzembe helyezése](storsimple-virtual-array-deploy2-provision-vmware.md)

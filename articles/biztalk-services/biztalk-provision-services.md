@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 61776b19ba0ee273b78e3b0a6f610e5701251dd0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fe56b84b881b2afce9da9a7f7dfe4637c3494aa8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26632720"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261961"
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>BizTalk Services létrehozása az Azure Portallal
 
@@ -28,7 +28,7 @@ ms.locfileid: "26632720"
 > [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 > [!TIP]
-> Az Azure Portalra való bejelentkezéshez Azure-fiókra és Azure-előfizetésre van szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. Lásd: [Ingyenes Azure-próbafiók](http://go.microsoft.com/fwlink/p/?LinkID=239738).
+> Az Azure Portalra való bejelentkezéshez Azure-fiókra és Azure-előfizetésre van szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. Lásd: [Ingyenes Azure-próbafiók](https://go.microsoft.com/fwlink/p/?LinkID=239738).
 
 
 ## <a name="CreateService"></a>BizTalk-szolgáltatás létrehozása
@@ -84,7 +84,7 @@ Ezek a követelmények nem érvényesek az ingyenes kiadásra.
 <br/><br/>
 Az Azure-fiók több előfizetéssel rendelkezhet, és bárki felügyelheti, aki erre jogosult. Az Azure-fióktulajdonos például létrehozhat egy <em>BizTalkServiceSubscription</em> nevű előfizetést, és hozzáférést adhat a vállalaton (például ContosoBTSAdmins@live.com) belüli BizTalk-rendszergazdáknak az előfizetéshez. Ebben a forgatókönyvben a BizTalk-rendszergazdák bejelentkeznek az Azure-ba, és teljes rendszergazdai jogosultságokkal rendelkeznek az előfizetés összes üzemeltetett szolgáltatásához, beleértve az Azure BizTalk-szolgáltatásokat is. A BizTalk-rendszergazdák nem az Azure-fiók tulajdonosai, és ezért nem érik el a számlázási információkat.
 <br/><br/>További információt az 
-<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=267577">előfizetések és tárfiókok az Azure-ban való kezelését</a> ismertető szakaszban talál.
+<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=267577">előfizetések és tárfiókok az Azure-ban való kezelését</a> ismertető szakaszban talál.
 </td>
 </tr>
 <tr>
@@ -93,7 +93,7 @@ Az Azure-fiók több előfizetéssel rendelkezhet, és bárki felügyelheti, aki
 <br/><br/>
 BizTalk-szolgáltatások létrehozásakor használhat meglévő Azure SQL Server-kiszolgálót vagy Azure SQL Database-adatbázist, vagy automatikusan létrehozhat egy új kiszolgálót vagy adatbázist.
 <br/><br/>
-Az SQL Database méretének konfigurálása automatikusan történik. Az alapértelmezett méret általában elég a BizTalk-szolgáltatásokhoz. A méret módosítása hatással van az árra. Lásd: <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=234930">Fiókok és számlázás az Azure SQL Database-ben</a>
+Az SQL Database méretének konfigurálása automatikusan történik. Az alapértelmezett méret általában elég a BizTalk-szolgáltatásokhoz. A méret módosítása hatással van az árra. Lásd: <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=234930">Fiókok és számlázás az Azure SQL Database-ben</a>
 <br/><br/>
 <strong>Megjegyzések</strong>
 <br/>
@@ -123,7 +123,7 @@ Az alapértelmezett tárolóbeállítások elegendőek a BizTalk-szolgáltatáso
 <br/><br/>
 Storage-fiók létrehozásakor automatikusan létrejön egy elsődleges kulcs és egy másodlagos kulcs. Ezek a kulcsok vezérlik a tárfiók elérését. A BizTalk Services-szolgáltatás automatikusan az elsődleges kulcsot használja.
 <br/><br/>
-További információért lásd: <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=285671">Storage</a>.
+További információért lásd: <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=285671">Storage</a>.
 </td>
 </tr>
 
@@ -164,16 +164,16 @@ A hibrid kapcsolatok az Azure-webhelyeket vagy Azure-mobilszolgáltatásokat bá
 
  További információért lásd a [Hibrid kapcsolatok](integration-hybrid-connection-overview.md) című szakaszt, ahol a hibrid kapcsolatok létrehozásáról és felügyeletéről is olvashat.
 
-## <a name="next-steps"></a>Következő lépések
-Most, hogy létrejött a BizTalk Services-szolgáltatás, ismerje meg a különböző [BizTalk Services: Irányítópult, Figyelő és Méret lapokat](biztalk-dashboard-monitor-scale-tabs.md). Az Azure BizTalk-szolgáltatás készen áll az alkalmazásokhoz. Az alkalmazások létrehozásának megkezdéséhez ugorjon az [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197) című témakörre.
+## <a name="next-steps"></a>További lépések
+Most, hogy létrejött a BizTalk Services-szolgáltatás, ismerje meg a különböző [BizTalk Services: Irányítópult, Figyelő és Méret lapokat](biztalk-dashboard-monitor-scale-tabs.md). Az Azure BizTalk-szolgáltatás készen áll az alkalmazásokhoz. Az alkalmazások létrehozásának megkezdéséhez ugorjon az [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197) című témakörre.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 * [BizTalk Services: Kiadások diagramja](biztalk-editions-feature-chart.md)<br/>
 * [BizTalk Services: Állapottáblázat](biztalk-service-state-chart.md)<br/>
 * [BizTalk Services: Biztonsági mentés és visszaállítás](biztalk-backup-restore.md)<br/>
 * [BizTalk Services: Szabályozás](biztalk-throttling-thresholds.md)<br/>
 * [BizTalk Services: Kiállító neve és kiállító kulcsa](biztalk-issuer-name-issuer-key.md)<br/>
-* [Hogyan kezdhetem el az Azure BizTalk Services SDK használatát](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [Hogyan kezdhetem el az Azure BizTalk Services SDK használatát](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 * [Hibrid kapcsolatok](integration-hybrid-connection-overview.md)
 
 [NewBizTalkService]: ./media/biztalk-provision-services/WABS_NewBizTalkService.png

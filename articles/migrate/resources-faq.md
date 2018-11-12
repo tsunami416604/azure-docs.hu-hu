@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: snehaa
-ms.openlocfilehash: e39cf260cc4931fc0dddc4922479522cb521d08e
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2f04fe103d010a64a77b7d80730cf80007c3c126
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407061"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256375"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Az Azure Migrate – gyakori kérdések (GYIK)
 
-Ez a cikk az Azure Migrate – gyakori kérdések tartalmazza. Ha ez a cikk elolvasása után további lekérdezéseket, tegye azt közzé a a [Azure Migrate fórum](http://aka.ms/AzureMigrateForum).
+Ez a cikk az Azure Migrate – gyakori kérdések tartalmazza. Ha ez a cikk elolvasása után további lekérdezéseket, tegye azt közzé a a [Azure Migrate fórum](https://aka.ms/AzureMigrateForum).
 
 ## <a name="general"></a>Általános kérdések
 
@@ -54,9 +54,9 @@ Az Azure Migrate jelenleg támogatja az USA keleti RÉGIÓJA és USA nyugati kö
 
 A kapcsolat az interneten keresztül vagy az ExpressRoute használata a nyilvános társviszony-létesítés.
 
-### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>Is szeretnék felvértezni a virtuális gép beállítása a. OVA sablont?
+### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>Felvértezni a virtuális gép az OVA-sablon beállítása is?
 
-További összetevőket (például víruskereső) is lesz hozzáadva a. OVA mindaddig, amíg a kommunikációs és a tűzfal szabályok az Azure Migrate berendezés működéséhez szükség van hátra áll.   
+Mindaddig, amíg a kommunikációs és a tűzfal az Azure Migrate berendezés működéséhez szükséges szabályok van hátra, mert további összetevők (például víruskereső) hozzáadható az OVA sablonba be.   
 
 ## <a name="discovery"></a>Detektálás
 
@@ -98,7 +98,7 @@ Bevezettük a folyamatos profilkészítés teljesítményadatok (amely előzetes
 
 A gyűjtőberendezés által összegyűjtött adatokat az Azure-beli helyen, a migrálási projekt létrehozása során megadott tárolt. Az adatok tárolása biztonságos egy adott Microsoft-előfizetés, és törlődik, amikor a felhasználó törli az Azure Migrate-projektben.
 
-A függőségek képi megjelenítéséről a virtuális gépeket, telepíti a védelmi ügynököt a függőségi ügynökök által gyűjtött adatok tárolódnak a az USA-beli egy felhasználó az előfizetésben létrehozott Log Analytics-munkaterületet. Ezeket az adatokat a Log Analytics-munkaterületet az előfizetésben való törlésekor törlődik. [További információk](https://docs.microsoft.com/azure/migrate/concepts-dependency-visualization).
+A függőségek képi megjelenítéséről a virtuális gépeket, telepíti a védelmi ügynököt a függőségi ügynökök által gyűjtött adatok tárolódnak a az USA-beli felhasználói előfizetésben létrehozott Log Analytics-munkaterületet. Ezeket az adatokat a Log Analytics-munkaterületet az előfizetésben való törlésekor törlődik. [További információk](https://docs.microsoft.com/azure/migrate/concepts-dependency-visualization).
 
 ### <a name="is-the-data-encrypted-at-rest-and-while-in-transit"></a>Titkosítja az adatokat inaktív állapotban, és az átvitel során?
 
@@ -114,7 +114,7 @@ A gyűjtőberendezés csatlakozik a vCenter-kiszolgáló (a 443-as port) a kész
 
 Igen, egy gyűjtőberendezés segítségével több vCenter-kiszolgálók felderítéséhez, de nem egy időben. Egymás után a felderítések futtatásához szükséges.
 
-### <a name="is-the-ova-template-used-by-site-recovery-integrated-with-the-ova-used-by-azure-migrate"></a>Van a. A Site Recovery által használt OVA sablon integrálva van a. Azure Migrate által használt OVA?
+### <a name="is-the-ova-template-used-by-site-recovery-integrated-with-the-ova-used-by-azure-migrate"></a>A Site Recovery által használt OVA sablon integrálva van az Azure Migrate által használt OVA?
 
 Jelenleg nincs nincs integráció. A. A Site Recovery OVA-sablon beállítása a Site Recovery konfigurációs kiszolgálónak a VMware virtuális gépek/fizikai kiszolgáló replikációjához szolgál. A. Az Azure Migrate által használt OVA migrálási felmérést alkalmazásában egy vCenter-kiszolgáló által felügyelt VMware virtuális gépek felderítésére szolgál.
 
@@ -141,9 +141,23 @@ Az Azure Migrate jelenleg nem támogatja a költségbecslést [ajánlat nagyvál
 
 ## <a name="dependency-visualization"></a>Függőségek vizualizációja
 
+### <a name="what-is-dependency-visualization"></a>Mit jelent a függőségek képi megjelenítésének?
+
+Függőségek képi megjelenítésének lehetővé teszi, hogy Önnek felmérni a virtuális gépek migrálásra csoportok nagyobb biztonsággal által gépfüggőségek kereszt-ellenőrzés az értékelés futtatása előtt. Függőségek képi megjelenítésének segítségével győződjön meg arról, hogy semmi sem van magányos, elkerülve a váratlan kimaradás esetén, az Azure-ba való áttelepítésekor. Az Azure Migrate a Service Map megoldás a Log Analytics engedélyezése a függőségek képi megjelenítésének használja.
+
 ### <a name="do-i-need-to-pay-to-use-the-dependency-visualization-feature"></a>Kell fizetnie a függőségmegjelenítési funkciót használja?
 
-Az Azure Migrate díjmentesen érhető el. További tudnivalókat az Azure Migrate díjszabásáról [itt](https://azure.microsoft.com/pricing/details/azure-migrate/) talál.
+Nem. További tudnivalókat az Azure Migrate díjszabásáról [itt](https://azure.microsoft.com/pricing/details/azure-migrate/) talál.
+
+### <a name="do-i-need-to-install-anything-for-dependency-visualization"></a>Kell telepít semmit a függőségek képi megjelenítésének?
+
+Függőségmegjelenítést használ, meg kell töltse le és telepítse az ügynököt minden olyan szeretne értékelni a helyszíni gépen. 
+
+- [Microsoft Monitoring agent(MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) minden gépen kell telepíteni.
+- A [függőségi ügynök](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) minden gépen kell telepíteni.
+- Ezenkívül ha internetkapcsolat nélküli gépek, meg kell töltse le és telepítse őket a Log Analytics-átjáró.
+
+Nem kell ezeket az ügynököket, kivéve, ha függőségmegjelenítést használ értékelni kívánt gépeken.
 
 ### <a name="can-i-use-an-existing-workspace-for-dependency-visualization"></a>Használható a függőségek megjelenítését egy meglévő munkaterületet?
 

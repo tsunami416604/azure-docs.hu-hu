@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: dekapur
-ms.openlocfilehash: 3ce47d631e8a2ec7daf96ef95200001e5d4f8327
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: f91a6b305a3d531aa1c733685f6d896ed07054ae
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818581"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51257605"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>A Windows Server rendszert futtató önálló fürt létrehozása
 Az Azure Service Fabric segítségével Service Fabric-fürtök létrehozása virtuális gépek vagy a Windows Server rendszert futtató számítógépeket. Ez azt jelenti, is telepíti, és futtassa a Service Fabric-alkalmazásokat minden olyan környezetben, amely tartalmazza az egyes hálózatáról van szó, a Windows Server számítógépek, legyen az a helyszínen vagy bármely más szolgáltatónál. A Service Fabric biztosít az új telepítési csomagot hozhat létre a Service Fabric-fürtök a különálló Windows Server-csomag neve.
@@ -27,7 +27,7 @@ Az Azure Service Fabric segítségével Service Fabric-fürtök létrehozása vi
 Ez a cikk végigvezeti az önálló Service Fabric-fürt létrehozására vonatkozó lépéseket.
 
 > [!NOTE]
-> A különálló Windows Server-csomag kereskedelmi forgalomban beszerezhető, és éles környezetekben üzemelő példányok is használható. Ez a csomag új Service Fabric-szolgáltatások, amelyek az "Előnézet" tartalmazhat. Görgessen le a "[előzetes verziójú funkciók a csomagban](#previewfeatures_anchor)." az előzetes verziójú funkciók szakasz listája. Is [töltse le a végfelhasználói licencszerződés](http://go.microsoft.com/fwlink/?LinkID=733084) most.
+> A különálló Windows Server-csomag kereskedelmi forgalomban beszerezhető, és éles környezetekben üzemelő példányok is használható. Ez a csomag új Service Fabric-szolgáltatások, amelyek az "Előnézet" tartalmazhat. Görgessen le a "[előzetes verziójú funkciók a csomagban](#previewfeatures_anchor)." az előzetes verziójú funkciók szakasz listája. Is [töltse le a végfelhasználói licencszerződés](https://go.microsoft.com/fwlink/?LinkID=733084) most.
 > 
 > 
 
@@ -35,7 +35,7 @@ Ez a cikk végigvezeti az önálló Service Fabric-fürt létrehozására vonatk
 
 ## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>Támogatás a Service Fabric Windows Server-csomag
 * Kérdezzen a Közösségtől önálló Service Fabric-csomaggal kapcsolatos, a Windows Server a [Azure Service Fabric-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?).
-* Nyisson meg egy jegyet [professzionális támogatás a Service fabric](http://support.microsoft.com/oas/default.aspx?prid=16146).  További információ a Microsoft a professzionális támogatás [Itt](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
+* Nyisson meg egy jegyet [professzionális támogatás a Service fabric](https://support.microsoft.com/oas/default.aspx?prid=16146).  További információ a Microsoft a professzionális támogatás [Itt](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
 * Is kaphat támogatást a csomag részeként [Microsoft Premier szintű támogatás](https://support.microsoft.com/en-us/premier).
 * További részletekért tekintse meg [Azure Service Fabric támogatási lehetőségeinek](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
 * Jellegű támogatási célból naplóinak összegyűjtése, futtassa a [Service Fabric önálló naplógyűjtő](service-fabric-cluster-standalone-package-contents.md).
@@ -44,7 +44,7 @@ Ez a cikk végigvezeti az önálló Service Fabric-fürt létrehozására vonatk
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>A Windows Serverhez készült Service Fabric-csomag letöltése
 A fürt létrehozásához használja a Service Fabric Windows Server-csomag (Windows Server 2012 R2 és újabb) itt található: <br>
-[Töltse le a Windows Server - Service Fabric önálló csomag - hivatkozás](http://go.microsoft.com/fwlink/?LinkId=730690)
+[Töltse le a Windows Server - Service Fabric önálló csomag - hivatkozás](https://go.microsoft.com/fwlink/?LinkId=730690)
 
 Keresse meg a részleteket a csomag tartalma a [Itt](service-fabric-cluster-standalone-package-contents.md).
 

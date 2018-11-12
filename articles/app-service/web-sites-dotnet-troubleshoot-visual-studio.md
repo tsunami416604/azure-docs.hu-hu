@@ -14,16 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: ba84d297420ca5a9b75b4cfa432373d3070e0d01
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 2028de68b3c50f24c46bfafd804b00e84301a9d7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125244"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256595"
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Az Azure App Service szolgáltatásban a Visual Studio használatával webalkalmazások hibáinak elhárítása
 ## <a name="overview"></a>Áttekintés
-Ez az oktatóanyag bemutatja, hogyan használható a Visual Studio-eszközök segítségével, egy webalkalmazás hibakeresése az [App Service-ben](http://go.microsoft.com/fwlink/?LinkId=529714),-ban történő futtatásával [hibakeresési módban](https://docs.microsoft.com/visualstudio/debugger/) távolról vagy alkalmazásnaplókat és a webkiszolgáló naplóinak megtekintésével.
+Ez az oktatóanyag bemutatja, hogyan használható a Visual Studio-eszközök segítségével, egy webalkalmazás hibakeresése az [App Service-ben](https://go.microsoft.com/fwlink/?LinkId=529714),-ban történő futtatásával [hibakeresési módban](https://docs.microsoft.com/visualstudio/debugger/) távolról vagy alkalmazásnaplókat és a webkiszolgáló naplóinak megtekintésével.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -36,7 +36,7 @@ Az oktatóanyagból a következőket sajátíthatja el:
 * Megtekintése a webkiszolgáló naplófájljai, beleértve a részletes hibaüzeneteket, és a sikertelen kérelmek követésének.
 * Hogyan lehet elküldeni a diagnosztikai naplók egy Azure Storage-fiók, és megtekintheti, őket.
 
-Ha rendelkezik a Visual Studio Ultimate, akkor is használhatja [IntelliTrace](http://msdn.microsoft.com/library/vstudio/dd264915.aspx) a hibakereséshez. IntelliTrace ebben az oktatóanyagban nem terjed ki.
+Ha rendelkezik a Visual Studio Ultimate, akkor is használhatja [IntelliTrace](https://msdn.microsoft.com/library/vstudio/dd264915.aspx) a hibakereséshez. IntelliTrace ebben az oktatóanyagban nem terjed ki.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ebben az oktatóanyagban működik együtt a fejlesztési környezet, a webes projekt és az Azure-webalkalmazást, hogy beállította- [Ismerkedés az Azure és az ASP.NET](app-service-web-get-started-dotnet-framework.md). A webjobs-feladatok szakaszokat kell az alkalmazást, amelyet létrehozott [az Azure WebJobs SDK használatának első lépései][GetStartedWJ].
@@ -48,7 +48,7 @@ Az oktatóanyag feltételezi, hogy a Visual Studio 2017-et használ.
 Ez a funkció a folyamatos átviteli naplók csak akkor működik a .NET-keretrendszer 4-es vagy újabb készített alkalmazások.
 
 ## <a name="sitemanagement"></a>Webes alkalmazás konfigurálása és felügyelete
-A Visual Studio egy részét a webes alkalmazás felügyeleti funkciók és a konfigurációs beállításai hozzáférést biztosít a [az Azure portal](http://go.microsoft.com/fwlink/?LinkId=529715). Ebben a szakaszban láthatja, mi érhető el a **Server Explorer**. A legújabb Azure-beli integrációs szolgáltatások megtekintéséhez próbálja ki **Cloud Explorer** is. Megnyithatja a windows a **nézet** menü.
+A Visual Studio egy részét a webes alkalmazás felügyeleti funkciók és a konfigurációs beállításai hozzáférést biztosít a [az Azure portal](https://go.microsoft.com/fwlink/?LinkId=529715). Ebben a szakaszban láthatja, mi érhető el a **Server Explorer**. A legújabb Azure-beli integrációs szolgáltatások megtekintéséhez próbálja ki **Cloud Explorer** is. Megnyithatja a windows a **nézet** menü.
 
 1. Ha még nem jelentkezett be az Azure-bA a Visual Studióban, kattintson a jobb gombbal **Azure** , és válassza ki a csatlakozás **Microsoft Azure-előfizetéshez** a **Server Explorer**.
 
@@ -59,7 +59,7 @@ A Visual Studio egy részét a webes alkalmazás felügyeleti funkciók és a ko
    >
    >
 
-    További információ a Visual studióból az Azure-erőforrások csatlakozik: [fiókok kezelése, előfizetések és rendszergazdai szerepkörök](http://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert).
+    További információ a Visual studióból az Azure-erőforrások csatlakozik: [fiókok kezelése, előfizetések és rendszergazdai szerepkörök](https://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert).
 2. A **Server Explorer**, bontsa ki a **Azure** csomópontot **App Service-ben**.
 3. Bontsa ki az erőforráscsoportot, amely tartalmazza a létrehozott webalkalmazás [ASP.NET-webalkalmazás létrehozása az Azure-ban](app-service-web-get-started-dotnet-framework.md), majd kattintson a jobb gombbal a webes alkalmazás csomópontot, és kattintson a **nézetbeállítások**.
 
@@ -253,13 +253,13 @@ Ha a függvény [okkal készítette el a naplókat](https://github.com/Azure/azu
 ```
 * Ha azt tapasztalja, hogy a hibakeresőt, amelyen hibakeresést végez, a kód nem lép, előfordulhat, hogy rendelkezik a csak saját kód beállításának módosításához.  További információkért lásd: [adja meg, hogy csak a saját kód használata a Visual Studióban csak felhasználói kód hibakereséséhez](https://docs.microsoft.com/visualstudio/debugger/just-my-code).
 * A kiszolgáló időmérő elindul, amikor engedélyezi a távoli hibakeresési funkciót, és 48 óra után a szolgáltatás automatikusan ki van kapcsolva. Biztonság és teljesítmény érdekében a 48 órás korlát, készen áll. A funkció azon tetszőleges számú alkalommal próbálkozhat, egyszerűen kapcsolhatja. Azt javasoljuk, hogy hagyja azokat le van tiltva, ha nincs aktív hibakeresés.
-* A hibakereső manuálisan csatlakoztathat valamilyen folyamat, nem csak a webes alkalmazás folyamata (w3wp.exe). A Visual Studio hibakeresési mód használatával kapcsolatos további információkért lásd: [hibakeresés a Visual Studióban](http://msdn.microsoft.com/library/vstudio/sc65sadd.aspx).
+* A hibakereső manuálisan csatlakoztathat valamilyen folyamat, nem csak a webes alkalmazás folyamata (w3wp.exe). A Visual Studio hibakeresési mód használatával kapcsolatos további információkért lásd: [hibakeresés a Visual Studióban](https://msdn.microsoft.com/library/vstudio/sc65sadd.aspx).
 
 ## <a name="logsoverview"></a>Diagnosztikai naplók áttekintése
 ASP.NET-alkalmazás, amely futtatja az Azure-webalkalmazás naplóit a következő típusú hozhat létre:
 
 * **Alkalmazás nyomkövetési naplók**<br/>
-  Az alkalmazás a metódusok meghívásával hozza létre ezeket a naplókat a [System.Diagnostics.Trace](http://msdn.microsoft.com/library/system.diagnostics.trace.aspx) osztály.
+  Az alkalmazás a metódusok meghívásával hozza létre ezeket a naplókat a [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace.aspx) osztály.
 * **Webkiszolgáló-naplókkal**<br/>
   A webkiszolgáló minden HTTP-kérelem a webalkalmazás naplóbejegyzés hoz létre.
 * **Részletes hibanaplókat üzenet**<br/>
@@ -340,7 +340,7 @@ public ActionResult Contact()
 ```
 
 A `WebPageTraceListener` lehetővé teszi a megtekintését nyomkövetési kimeneti megkeresve `/trace.axd`.
-3. Adjon hozzá egy <a href="http://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">nyomkövetési elem</a> alatt `<system.web>` a Web.config fájlban, például az alábbi példában:
+3. Adjon hozzá egy <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">nyomkövetési elem</a> alatt `<system.web>` a Web.config fájlban, például az alábbi példában:
 
 ``` xml
 <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
@@ -475,7 +475,7 @@ Bármely figyelemmel kísérheti a naplók a **kimeneti** ablakban is letölthet
     ![Letöltött fájl](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png)
 
    * Alkalmazás nyomkövetési naplók *.txt* található fájlokat a *LogFiles\Application* mappát.
-   * Webkiszolgáló-naplókkal szerepelnek *.log* található fájlokat a *LogFiles\http\RawLogs* mappát. Használhatja például egy eszköz [naplóelemző](http://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) megtekintésére és kezelésére, ezeket a fájlokat.
+   * Webkiszolgáló-naplókkal szerepelnek *.log* található fájlokat a *LogFiles\http\RawLogs* mappát. Használhatja például egy eszköz [naplóelemző](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) megtekintésére és kezelésére, ezeket a fájlokat.
    * Részletes hibanaplókat üzenet szerepelnek *.html* található fájlokat a *LogFiles\DetailedErrors* mappát.
 
     (A *központi telepítések* mappa a következő közzétételi; verziókövetés által létrehozott fájlok nem rendelkezik a Visual Studio közzététel kapcsolódó egyik elemet sem. A *Git* mappa van a forráskezelőhöz kapcsolódó nyomok közzétételt és a log fájl adatfolyam-szolgáltatást.)  
@@ -554,7 +554,7 @@ Storage accounts offer more storage and longer-lasting retention for logs compar
 
      ![Storage logs in table view](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-tracelogtableview.png)
 
-     This view shows additional fields you don't see in any other views. This view also enables you to filter logs by using special Query Builder UI for constructing a query. For more information, see Working with Table Resources - Filtering Entities in [Browsing Storage Resources with Server Explorer](http://msdn.microsoft.com/library/ff683677.aspx).
+     This view shows additional fields you don't see in any other views. This view also enables you to filter logs by using special Query Builder UI for constructing a query. For more information, see Working with Table Resources - Filtering Entities in [Browsing Storage Resources with Server Explorer](https://msdn.microsoft.com/library/ff683677.aspx).
 14. To look at the details for a single row, double-click one of the rows.
 
      ![Trace table in Server Explorer](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-tracetablerow.png)
@@ -624,17 +624,17 @@ Megtudhatta, hogyan Visual Studio megkönnyíti az Azure-alapú webes alkalmazá
 Az Azure App Service web Apps-alkalmazások hibaelhárításával kapcsolatos további információkért lásd a következőket:
 
 * [Web Apps alkalmazások figyelése](web-sites-monitor.md)
-* [Az Azure Web Apps szolgáltatásban a Visual Studio 2013 memóriavesztés kivizsgálása](http://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx). A Microsoft ALM blogbejegyzés felügyelt memória problémák elemzése a Visual Studio funkcióit.
+* [Az Azure Web Apps szolgáltatásban a Visual Studio 2013 memóriavesztés kivizsgálása](https://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx). A Microsoft ALM blogbejegyzés felügyelt memória problémák elemzése a Visual Studio funkcióit.
 * [Az Azure web apps online eszközök kell tudni](https://azure.microsoft.com/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/). A blogbejegyzés, Amit az Apple által.
 
 Egy adott hibaelhárítási kérdés segítség elindítani egy szálat a következő fórumok egyikében:
 
 * [Az Azure-fórum az ASP.NET-hely](http://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET).
-* [Az Azure-fórum az MSDN](http://social.msdn.microsoft.com/Forums/windowsazure/).
+* [Az Azure-fórum az MSDN](https://social.msdn.microsoft.com/Forums/windowsazure/).
 * [StackOverflow.com](http://www.stackoverflow.com).
 
 ### <a name="debugging-in-visual-studio"></a>Hibakeresés a Visual Studióban
-A Visual Studio hibakeresési mód használatával kapcsolatos további információkért lásd: [hibakeresés a Visual Studióban](http://msdn.microsoft.com/library/vstudio/sc65sadd.aspx) és [tippek hibakeresés a Visual Studio 2010](http://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx).
+A Visual Studio hibakeresési mód használatával kapcsolatos további információkért lásd: [hibakeresés a Visual Studióban](https://msdn.microsoft.com/library/vstudio/sc65sadd.aspx) és [tippek hibakeresés a Visual Studio 2010](http://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx).
 
 ### <a name="remote-debugging-in-azure"></a>Távoli hibakeresése az Azure-ban
 Az Azure web apps és webjobs-feladatok távoli hibakereséssel kapcsolatban további információkért lásd a következőket:
@@ -644,21 +644,21 @@ Az Azure web apps és webjobs-feladatok távoli hibakereséssel kapcsolatban tov
 * [Az Azure App Service Web Apps 3. rész - többpéldányos környezet és a GIT a távoli hibakeresés bemutatása](https://azure.microsoft.com/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
 * [WebJobs-hibakeresés (videó)](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
 
-Ha a webalkalmazás az Azure webes API-t vagy a Mobile Services háttérbeli használ, és van szükség, hibakeresés, lásd: [.NET-háttérrendszer hibakeresés a Visual Studióban](http://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx).
+Ha a webalkalmazás az Azure webes API-t vagy a Mobile Services háttérbeli használ, és van szükség, hibakeresés, lásd: [.NET-háttérrendszer hibakeresés a Visual Studióban](https://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx).
 
 ### <a name="tracing-in-aspnet-applications"></a>Az ASP.NET alkalmazásokban nyomon követése
 Nincsenek nem naprakész, és alapos tudnivalókra az ASP.NET nyomkövetési elérhető az interneten. A legjobb teheti van Ismerkedés a Web Forms MVC nem még létezik, és az újabb blog kiegészíti, mert tesz közzé, amelyek a konkrét problémák írt régi bevezető anyagok. Néhány hasznos helyek a indítsa el a következő források:
 
 * [Monitoring és Telemetria (valós felhőalapú alkalmazások létrehozása az Azure-ral)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).<br>
   E-könyv fejezet ajánlásokkal nyomkövetés az Azure felhőalapú alkalmazásokat.
-* [Az ASP.NET nyomkövetési](http://msdn.microsoft.com/library/ms972204.aspx)<br/>
+* [Az ASP.NET nyomkövetési](https://msdn.microsoft.com/library/ms972204.aspx)<br/>
   Régi azonban továbbra is a leghasznosabb, az alapszintű bevezetést a tulajdonosnak.
-* [Nyomkövetési figyelők](http://msdn.microsoft.com/library/4y5y10s7.aspx)<br/>
-  Információ a nyomkövetési figyelői nem említik, de a [WebPageTraceListener](http://msdn.microsoft.com/library/system.web.webpagetracelistener.aspx).
-* [Forgatókönyv: Az ASP.NET nyomkövetési integrálása System.Diagnostics nyomkövetés](http://msdn.microsoft.com/library/b0ectfxd.aspx)<br/>
+* [Nyomkövetési figyelők](https://msdn.microsoft.com/library/4y5y10s7.aspx)<br/>
+  Információ a nyomkövetési figyelői nem említik, de a [WebPageTraceListener](https://msdn.microsoft.com/library/system.web.webpagetracelistener.aspx).
+* [Forgatókönyv: Az ASP.NET nyomkövetési integrálása System.Diagnostics nyomkövetés](https://msdn.microsoft.com/library/b0ectfxd.aspx)<br/>
   Ez a cikk is régi, de nem vonatkozik a bevezető cikkben további információkat tartalmaz.
-* [Az ASP.NET MVC Razor nézetekben nyomon követése](http://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
-  Nyomon követését a Razor-nézetekben, amellett a hozzászólás is hozzon létre egy olyan hiba szűrőt, és minden nem kezelt kivételek naplózásához az MVC alkalmazások módját ismerteti. Minden nem kezelt kivételek jelentkezzen be egy Web Forms-alkalmazást kapcsolatos információkért lásd: Global.asax példa [hibakezelők teljes példa](http://msdn.microsoft.com/library/bb397417.aspx) az MSDN Webhelyén. MVC vagy Web Forms bizonyos kivételek naplózásához, de lehetővé teszik az alapértelmezett keretrendszer kezelése gyakorolt hatását, ha akkor is feltárhatja és újbóli kiváltásához a következő példához hasonlóan:
+* [Az ASP.NET MVC Razor nézetekben nyomon követése](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
+  Nyomon követését a Razor-nézetekben, amellett a hozzászólás is hozzon létre egy olyan hiba szűrőt, és minden nem kezelt kivételek naplózásához az MVC alkalmazások módját ismerteti. Minden nem kezelt kivételek jelentkezzen be egy Web Forms-alkalmazást kapcsolatos információkért lásd: Global.asax példa [hibakezelők teljes példa](https://msdn.microsoft.com/library/bb397417.aspx) az MSDN Webhelyén. MVC vagy Web Forms bizonyos kivételek naplózásához, de lehetővé teszik az alapértelmezett keretrendszer kezelése gyakorolt hatását, ha akkor is feltárhatja és újbóli kiváltásához a következő példához hasonlóan:
 
 ``` c#
 try
@@ -684,12 +684,12 @@ Emellett nem kell használnia az ASP.NET vagy `System.Diagnostics` le adatfolyam
 ### <a name="analyzing-web-server-logs"></a>Webkiszolgáló-naplók elemzéséhez
 Webkiszolgáló-naplók elemzésével kapcsolatos további információkért lásd a következőket:
 
-* [LogParser](http://www.microsoft.com/download/details.aspx?id=24659)<br/>
+* [LogParser](https://www.microsoft.com/download/details.aspx?id=24659)<br/>
   Egy eszköz a adatok megtekintése a webkiszolgáló-naplókkal (*.log* fájlok).
 * [Hibaelhárítási IIS teljesítménybeli problémák vagy az alkalmazáshibák LogParser használatával ](http://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Bevezetés a naplóelemző eszköz, amellyel webkiszolgáló-naplók elemzése.
-* [Blogbejegyzések által Robert McMurray LogParser használatával](http://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
-* [Az IIS 7.0, IIS 7.5 és IIS 8.0-s HTTP-állapotkód](http://support.microsoft.com/kb/943891)
+* [Blogbejegyzések által Robert McMurray LogParser használatával](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
+* [Az IIS 7.0, IIS 7.5 és IIS 8.0-s HTTP-állapotkód](https://support.microsoft.com/kb/943891)
 
 ### <a name="analyzing-failed-request-tracing-logs"></a>Kérelem nyomkövetési naplók elemzése nem sikerült.
 A Microsoft TechNet webhelyen tartalmaz egy [használatával sikertelen kérelmek nyomkövetését](http://www.iis.net/learn/troubleshoot/using-failed-request-tracing) rész, amely hasznos lehet az ismertetése, hogyan használhatja ezeket a naplókat. Azonban ez a dokumentáció összpontosít főként sikertelen kérelmek nyomkövetése konfigurálása az IIS-ben, amely az Azure Web Apps nem hajtható végre.

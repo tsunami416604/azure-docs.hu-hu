@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 7407bed746f863a5daecfc98d2df89175ff35b5f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: a6564877c05dcd5c611c6bbf7a09c65ac2f1f406
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264440"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51293186"
 ---
-# <a name="internet-of-things-security-architecture"></a>IOT-biztonsági architektúrája
+# <a name="internet-of-things-iot-security-architecture"></a>Eszközök internetes hálózata (IoT) biztonsági architektúra
 
 A rendszer tervezésekor fontos, hogy a rendszer a potenciális fenyegetések, és megfelelő védelmet ennek megfelelően felvenni, mert a rendszer lett kialakítva, és lett tervezve. Fontos a kezdetektől a termék tervezhet a biztonságot szem, mivel egy támadó hogyan lehet tudni veszélyeztetheti a rendszer segítségével, győződjön meg arról, hogy megfelelő megoldások tudnivalók a rendszer az elejétől.
 
@@ -27,23 +27,23 @@ Fenyegetés modellezési célja, hogy hogyan egy támadó képes veszélyeztethe
 
 Számos fejlesztői csapatok munkaköre egy kiváló rögzítése a rendszer a funkcionális követelmények, amelyek igénybe vehető. Azonban, hogy valaki visszaél előfordulhat, hogy a rendszer nem egyértelmű módon azonosítása, nehéz lehet. Fenyegetések modellezése segíthetnek megérteni, hogy egy támadó előfordulhat, hogy mire fejlesztői csapatok és miért. Fenyegetések modellezése az strukturált, amely a biztonsági szóló vita tervezési döntéseket hoz a rendszer, valamint a kialakítási hatás biztonság végzett követhető változik. Bár a fenyegetések modellezése egyszerűen csak egy dokumentumot, ezt a dokumentációt is jelöli annak biztosítására, megőrzési több leckéből áll, az ismeretek folytonossági megtudhatta, és súgó, új gyorsan csapat felvétele ideális megoldást. Végül a fenyegetések modellezése pénznembeli díjváltozása ahhoz, hogy más például milyen pedig adja meg az ügyfelek számára kíván biztonsági kötelezettségeit, biztonsági szempontból. E kötelezettségek threat modellezési együtt értesíti, és a meghajtó tesztelését, az eszközök internetes hálózata (IoT) megoldás.
 
-### <a name="when-to-threat-model"></a>Mikor érdemes a fenyegetés modell
+### <a name="when-to-do-threat-modeling"></a>Ha a fenyegetések modellezése
 
 [Veszélyforrások elleni modellezési](https://www.microsoft.com/en-us/sdl/adopt/threatmodeling.aspx) kínálja a legnagyobb értékű, beépítheti a tervezési fázis során. Ha a tervez, akkor ki a fenyegetéseket, módosítsa a legnagyobb rugalmasságot. A szükséges teljesítendő veszélyforrások kiküszöbölése szándékosan. Sokkal egyszerűbb, mint kockázatcsökkentő hozzáadása, kipróbálása és naprakészek maradjanak, és emellett az ilyen eltávolítás nem mindig lehetőség. Ki a fenyegetéseket, valamint a termék válik több érett végső soron pedig szükség van a több munkát és sokkal nehezebb kompromisszumot kínál a fenyegetések modellezése már a legelején a fejlesztői, mint nehezebb lesz.
 
-### <a name="what-to-threat-model"></a>Mi a fenyegetések modellezése
+### <a name="what-to-consider-for-threat-modeling"></a>Mit kell figyelembe venni a fenyegetések modellezése
 
-A fenyegetés modell a teljes megoldás kell, és a következő területeken is figyelnie:
+Akkor tekintse meg a megoldás egy egész és azt is hangsúlyt a következő területeken:
 
 * A biztonsági és adatvédelmi funkciók
 * A Funkciók, amelynek hibák a megfelelő biztonsági
 * A Funkciók, amelyek egy megbízhatósági kapcsolat határán touch
 
-### <a name="who-threat-models"></a>Akik a fenyegetés modellek
+### <a name="who-performs-threat-modeling"></a>Akik hajtja végre a fenyegetések modellezése
 
 Veszélyforrások elleni modellezési egy olyan folyamat, mint minden más. Célszerű a veszélyforrások elleni modell dokumentumot, mint bármely másik összetevője a megoldás kezeli, és érvényesítse azt. Számos fejlesztői csapatok munkaköre egy kiváló rögzítése a rendszer a funkcionális követelmények, amelyek igénybe vehető. Azonban, hogy valaki visszaél előfordulhat, hogy a rendszer nem egyértelmű módon azonosítása, nehéz lehet. Fenyegetések modellezése segíthetnek megérteni, hogy egy támadó előfordulhat, hogy mire fejlesztői csapatok és miért.
 
-### <a name="how-to-threat-model"></a>Fenyegetések modellezése hogyan
+### <a name="how-to-perform-threat-modeling"></a>Hogyan hajthat végre a fenyegetések modellezése
 
 A fenyegetés a modellezési folyamat négy lépést; áll a lépések a következők:
 
@@ -57,16 +57,21 @@ A fenyegetés a modellezési folyamat négy lépést; áll a lépések a követk
 Három szabályok költségcsökkenést eredményezzen szem előtt kell tartani a fenyegetések modellezése készítése során:
 
 1. Hozzon létre egy kívül a referencia-architektúra diagramja.
-1. Indítsa el a szélesség-és felhőközpontú. Áttekintheti, és megismerheti a rendszer egészének részletes műugrásra előtt. Ez a megközelítés segít biztosítani, hogy Ön részletes leírása a megfelelő helyeken.
-1. Meghajtó a folyamatot, ne hagyja, hogy a meghajtó, a folyamat. Ha a modellezési fázisban olyan problémát talált, és felfedezheti, vegyen részt benne!! Nem úgy gondolja, hogy slavishly kövesse az alábbi lépéseket kell.
+
+2. Indítsa el a szélesség-és felhőközpontú. Áttekintheti, és megismerheti a rendszer egészének részletes műugrásra előtt. Ez a megközelítés segít biztosítani, hogy Ön részletes leírása a megfelelő helyeken.
+
+3. Meghajtó a folyamatot, ne hagyja, hogy a meghajtó, a folyamat. Ha a modellezési fázisban olyan problémát talált, és felfedezheti, vegyen részt benne!! Nem úgy gondolja, hogy slavishly kövesse az alábbi lépéseket kell.
 
 #### <a name="threats"></a>Fenyegetések
 
 A fenyegetések modellezése négy alapvető elemei a következők:
 
 * Például a webes szolgáltatások, a Win32-szolgáltatások, folyamatok és a * démonok nix. Bizonyos összetett entitások (például a helyszíni átjárók és az érzékelők) is emeli ki, mert az egy folyamatot, ha a következő területeken technikai részletezése nem lehetséges.
+
 * Adattárak (bárhol adatokat tárolja, például egy konfigurációs fájlban vagy adatbázis)
+
 * Az adatfolyam (ahol adatokat helyez át, az alkalmazás más elemek között)
+
 * Külső entitások (semmit, amellyel kommunikál a rendszer, de ez nem az alkalmazás felügyelete alá tartozik, példák felhasználókat tartalmazza, és hírcsatornák műholdas)
 
 Az architekturális diagramja szereplő összes elem fenyegetéseket; vonatkozik. Ez a cikk a STRIDE követelnék. Olvasási [Threat újra modellezés, a STRIDE](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/) többet megtudni a STRIDE elemeket.
@@ -135,7 +140,7 @@ Csatlakoztatott speciális célú eszközök kapcsolati surface területeket, é
 
 A kapcsolati minták megismerésével meg "eszköz vezérlési" és "eszköz" azonos szintű a figyelmet threat modellezés közben. Minden olyan információt, amely bármely fél által biztosított az eszközökre,. a cél módosítása, illetve annak viselkedését felé az állapot vagy a környezet állapotát befolyásoló az "Eszköz control" meghatározhassa. "Eszköz adatok" meghatározhassa minden olyan információt, az eszköz bocsát ki a másik félre állapotában és a megfigyelt állapotát a környezetében.
 
-## <a name="threat-modeling-the-azure-iot-reference-architecture"></a>Az Azure IoT-referenciaarchitektúra modellezési fenyegetés
+## <a name="performing-threat-modeling-for-the-azure-iot-reference-architecture"></a>Az Azure IoT-referenciaarchitektúra modellezése threat végrehajtása
 
 Microsoft threat modeling az Azure IoT ehhez korábban leírt keretében használja. A következő szakaszban az Azure IoT-Referenciaarchitektúra konkrét példa használatával bemutatják, hogyan kell foglalkoznia a fenyegetések modellezése IoT és hogyan oldja meg az azonosított fenyegetések. Ebben a példában négy fő területtel fókusz azonosítja:
 

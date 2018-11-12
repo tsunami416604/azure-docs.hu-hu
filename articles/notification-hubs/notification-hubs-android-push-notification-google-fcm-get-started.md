@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 2bc085989ff3bbbc50042c46b338f748a10aa87e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0ec429407324210fca824ebd0734ddb39bce56ac
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38232796"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51256561"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-firebase-cloud-messaging"></a>Oktatóanyag: Leküldéses értesítések küldése Android-eszközökre az Azure Notification Hubs és a Google Firebase Cloud Messaging használatával
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -45,7 +45,7 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/).
 
-* A fent említett aktív Azure-fiókon kívül az oktatóanyaghoz az [Android Studio](http://go.microsoft.com/fwlink/?LinkId=389797) legújabb verziójára van szükség.
+* A fent említett aktív Azure-fiókon kívül az oktatóanyaghoz az [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797) legújabb verziójára van szükség.
 * Android 2.3 vagy újabb a Firebase Cloud Messaging esetében.
 * A Google-tárház 27-es vagy újabb verziója a Firebase Cloud Messaging esetében.
 * A Google Play-szolgáltatások 9.0.2-es vagy újabb verziója a Firebase Cloud Messaging esetében.
@@ -166,7 +166,7 @@ Az értesítési központ konfigurálva lett a Firebase Cloud Messaginggel való
    
    * **SenderId**: a [Firebase-konzol](https://firebase.google.com/console/) projektbeállításainak **Cloud Messaging** lapjáról korábban beszerzett küldőazonosító.
    * **HubListenConnectionString**: A központ **DefaultListenAccessSignature** kapcsolati sztringje. Ez a kapcsolati sztring az [Azure Portal] a központ **Hozzáférési házirendek** elemére kattintva másolható át.
-   * **HubName**: Az [Azure Portal] a központ lapján megjelenő értesítési központ nevét használja.
+   * **HubName**: Az [Azure portal] a központ lapján megjelenő értesítési központ nevét használja.
      
      `NotificationSettings` kód:
      

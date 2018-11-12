@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: ce1e3818edea6e0fdaedd33b6ec0c3214f475340
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 80208c83c96ba78db052017c2baa3bc0db63953f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048556"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258850"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Sorszintű biztonság a Power BI munkaterületi gyűjteményekkel
 
@@ -35,7 +35,7 @@ Az RLS kihasználása érdekében fontos tisztában három fő alapelvet: Felhas
 
 ### <a name="example"></a>Példa
 
-Ez a cikk további részének biztosítunk egy példát az rls elkészítésére, és ezután megadunk egy beágyazott alkalmazásban. A példában a [kiskereskedelmi elemzési minta](http://go.microsoft.com/fwlink/?LinkID=780547) PBIX-fájlt.
+Ez a cikk további részének biztosítunk egy példát az rls elkészítésére, és ezután megadunk egy beágyazott alkalmazásban. A példában a [kiskereskedelmi elemzési minta](https://go.microsoft.com/fwlink/?LinkID=780547) PBIX-fájlt.
 
 ![Példa értékesítési jelentés](media/row-level-security/scenario-2.png)
 
@@ -87,7 +87,7 @@ Most szűrőket is áramolhasson a Sales tábláról, hogy a **elem** tábla:
 1. **Fájl** -> **lehetőségek és beállítások** -> **előzetes verziójú funkciók** -> **DirectQuery kétirányú keresztszűrés engedélyezése** .
 2. **Fájl** -> **lehetőségek és beállítások** -> **DirectQuery** -> **korlátlan mérték engedélyezése DirectQuery módban**.
 
-Kétirányú keresztszűrés kapcsolatos további információkért töltse le a [kétirányú keresztszűrés a Power BI Desktop és az SQL Server Analysis Services 2016](http://download.microsoft.com/download/2/7/8/2782DF95-3E0D-40CD-BFC8-749A2882E109/Bidirectional%20cross-filtering%20in%20Analysis%20Services%202016%20and%20Power%20BI.docx) tanulmány.
+Kétirányú keresztszűrés kapcsolatos további információkért töltse le a [kétirányú keresztszűrés a Power BI Desktop és az SQL Server Analysis Services 2016](https://download.microsoft.com/download/2/7/8/2782DF95-3E0D-40CD-BFC8-749A2882E109/Bidirectional%20cross-filtering%20in%20Analysis%20Services%202016%20and%20Power%20BI.docx) tanulmány.
 
 Ez kell tenni a Power BI Desktopban minden munkát értünk, de egy további munkákat, amely kell végrehajtani, hogy az RLS-szabályok meghatározott munkahelyi Power BI Embedded. Felhasználókat hitelesíti és engedélyezi az alkalmazás számára, és alkalmazási jogkivonatok segítségével egy adott Power BI Embedded-jelentés felhasználói hozzáférést. Power BI Embedded nem rendelkezik konkrét információkkal arról, hogy ki a felhasználó van. Az RLS működéséhez további kontextust az alkalmazás-jogkivonatára részeként kell:
 

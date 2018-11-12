@@ -9,12 +9,12 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/19/2017
-ms.openlocfilehash: 83f7f29471d49c4dbbf1630b4e8e9006144638cc
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5b7f454fed6206ac57799d6f1e86152cd52dc9e9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31797787"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51254417"
 ---
 # <a name="query-your-azure-search-index-using-the-net-sdk"></a>Az Azure Search-index lekérdezése a .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ Ebből a cikkből megtudhatja, hogyan történik egy index lekérdezése az [Azu
 A bemutató elindítása előtt [létre kell hoznia egy Azure Search-indexet](search-what-is-an-index.md), majd [fel kell töltenie azt adatokkal](search-what-is-data-import.md).
 
 > [!NOTE]
-> A cikkben szereplő összes példakód C# nyelven van megírva. A teljes forráskódot a [GitHub](http://aka.ms/search-dotnet-howto) webhelyén találja. Az [Azure Search .NET SDK](search-howto-dotnet-sdk.md) leírásában részletesebb útmutatást kaphat a példakóddal kapcsolatban.
+> A cikkben szereplő összes példakód C# nyelven van megírva. A teljes forráskódot a [GitHub](https://aka.ms/search-dotnet-howto) webhelyén találja. Az [Azure Search .NET SDK](search-howto-dotnet-sdk.md) leírásában részletesebb útmutatást kaphat a példakóddal kapcsolatban.
 
 ## <a name="identify-your-azure-search-services-query-api-key"></a>Azonosítsa az Azure Search szolgáltatás lekérdezési API-kulcsát
 Az Azure Search-index létrehozását követően most már csaknem készen áll lekérdezések kiadására a .NET SDK használatával. Először is az Ön által üzembe helyezett Search szolgáltatás számára létrehozott lekérdezési API-kulcsok egyikére lesz szüksége. A .NET SDK ezt az API-kulcsot minden szolgáltatáskérés alkalmával elküldi. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
@@ -49,7 +49,7 @@ Indexlekérdezéshez a lekérdezési kulcsok egyikét használhatja. A rendszerg
 ## <a name="create-an-instance-of-the-searchindexclient-class"></a>A SearchIndexClient osztály egy példányának létrehozása
 A lekérdezések Azure Search .NET SDK használatával történő kiadásához létre kell hoznia a `SearchIndexClient` osztály egy példányát. Ez az osztály több konstruktorral rendelkezik. Amelyikre Önnek szüksége van, az paraméterként a Search-szolgáltatás nevét, az indexnevet és egy `SearchCredentials` objektumot használ. A `SearchCredentials` becsomagolja az API-kulcsot.
 
-Az alábbi kód egy új `SearchIndexClient` elemet hoz létre az ([Azure Search-index létrehozása .NET SDK használatával](search-create-index-dotnet.md) című részben létrehozott) „hotels” index számára, az alkalmazás konfigurációs fájljában (a [mintaalkalmazás](http://aka.ms/search-dotnet-howto) esetében az `appsettings.json` fájlban) tárolt Search-szolgáltatásnév és API-kulcs értékeinek használatával:
+Az alábbi kód egy új `SearchIndexClient` elemet hoz létre az ([Azure Search-index létrehozása .NET SDK használatával](search-create-index-dotnet.md) című részben létrehozott) „hotels” index számára, az alkalmazás konfigurációs fájljában (a [mintaalkalmazás](https://aka.ms/search-dotnet-howto) esetében az `appsettings.json` fájlban) tárolt Search-szolgáltatásnév és API-kulcs értékeinek használatával:
 
 ```csharp
 private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot configuration)

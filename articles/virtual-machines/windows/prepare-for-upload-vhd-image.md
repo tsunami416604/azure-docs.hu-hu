@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/10/2018
 ms.author: genli
-ms.openlocfilehash: f9b950b1d85f50331d556a54b4237d78ec5c07ac
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 4d30cca0106e52706326bfd91a2d0dfb0a64ca04
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388163"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258459"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows VHD vagy VHDX feltöltése az Azure előkészítése
 Mielőtt egy Windows virtuális gépek (VM) a helyi Microsoft Azure-bA tölt fel, elő kell készítenie a virtuális merevlemez (VHD vagy vhdx-fájlt). Az Azure támogatja a **csak az 1. generációs virtuális gépeket** , amely a VHD formátumban, és rögzített méretű lemezt. A VHD számára engedélyezett maximális mérete 1,023 GB. Átválthat egy generation 1 VM a vhdx-fájlt a fájlrendszer VHD-t és a egy dinamikusan bővülő rögzített méretű lemezt. De nem módosíthatja a virtuális gép létrehozás. További információkért lásd: [érdemes létrehozni egy 1 vagy 2. generációs virtuális gép a Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -48,7 +48,7 @@ Miután konvertálja a lemezt, hozzon létre a konvertált lemezt használó vir
 >Az ebben a cikkben szereplő parancsokkal egy emelt szintű PowerShell-munkamenetben kell futtatni.
 
 ### <a name="convert-disk-by-using-powershell"></a>Lemez konvertálása a PowerShell használatával
-A virtuális lemez segítségével alakíthatja a [Convert-VHD](http://technet.microsoft.com/library/hh848454.aspx) parancsot a Windows PowerShellben. Válassza ki **Futtatás rendszergazdaként** PowerShell indításakor. 
+A virtuális lemez segítségével alakíthatja a [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) parancsot a Windows PowerShellben. Válassza ki **Futtatás rendszergazdaként** PowerShell indításakor. 
 
 A következő példaparancs konvertálja a virtuális merevlemez VHDX az és a egy dinamikusan bővülő rögzített méretű lemezt:
 
@@ -58,7 +58,7 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 Ebben a parancsban cserélje le az értéket "-elérési út" az elérési útját a virtuális merevlemez, amelyek az átalakítandó és az értéke "-DestinationPath" az új elérési utat és a konvertált lemez neve.
 
 ### <a name="convert-from-vmware-vmdk-disk-format"></a>VMware VMDK lemez formátum konvertálása
-Ha rendelkezik egy Windows Virtuálisgép-lemezkép a [VMDK-fájl formátuma](https://en.wikipedia.org/wiki/VMDK), konvertálja a virtuális merevlemez a [Microsoft VM Converter](https://www.microsoft.com/download/details.aspx?id=42497). További információ a blogot cikke [VMware VMDK átalakítása Hyper-V virtuális merevlemez](http://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx).
+Ha rendelkezik egy Windows Virtuálisgép-lemezkép a [VMDK-fájl formátuma](https://en.wikipedia.org/wiki/VMDK), konvertálja a virtuális merevlemez a [Microsoft VM Converter](https://www.microsoft.com/download/details.aspx?id=42497). További információ a blogot cikke [VMware VMDK átalakítása Hyper-V virtuális merevlemez](https://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx).
 
 ## <a name="set-windows-configurations-for-azure"></a>Az Azure Windows-konfigurációnak megadása
 
@@ -377,7 +377,7 @@ A virtuális gép létrehozása specializált lemezből kapcsolatos további inf
 - [Virtuális gép létrehozása specializált lemezből](create-vm-specialized.md)
 - [Virtuális gép létrehozása speciális lemezről a virtuális merevlemez](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
 
-Ha szeretne létrehozni egy általános rendszerképpel, meg kell futtassa a Sysprep eszközt. További információ a Sysprep: [Sysprep használata: Bevezetés](http://technet.microsoft.com/library/bb457073.aspx). 
+Ha szeretne létrehozni egy általános rendszerképpel, meg kell futtassa a Sysprep eszközt. További információ a Sysprep: [Sysprep használata: Bevezetés](https://technet.microsoft.com/library/bb457073.aspx). 
 
 Ez az általánosítás támogatja a nem minden szerepkör vagy alkalmazást, amely egy Windows-alapú számítógépre van telepítve. Mielőtt elkezdi a műveletet, ezért tekintse meg a következő cikket, győződjön meg arról, hogy a szerepkört az adott számítógép támogatja a sysprep. További információ [kiszolgálói szerepkörök támogatása a Sysprep](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
 
@@ -401,7 +401,7 @@ Ez az általánosítás támogatja a nem minden szerepkör vagy alkalmazást, am
 ## <a name="complete-recommended-configurations"></a>Ajánlott beállításait
 A következő beállítások nem befolyásolják a VHD feltöltésével. Azonban erősen ajánlott, hogy konfigurálta azokat.
 
-* Telepítse a [Azure virtuális gépek ügynök](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Ezután engedélyezheti a Virtuálisgép-bővítmények. A Virtuálisgép-bővítmények megvalósítása a legtöbb kritikus funkciója, amely előfordulhat, hogy kíván használni a virtuális gépek új jelszavak, például az RDP konfigurálása, és így tovább. További információkért lásd:
+* Telepítse a [Azure virtuális gépek ügynök](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Ezután engedélyezheti a Virtuálisgép-bővítmények. A Virtuálisgép-bővítmények megvalósítása a legtöbb kritikus funkciója, amely előfordulhat, hogy kíván használni a virtuális gépek új jelszavak, például az RDP konfigurálása, és így tovább. További információkért lásd:
 
     - [A Virtuálisgép-ügynök és -bővítmények – 1. rész](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-1/)
     - [A Virtuálisgép-ügynök és -bővítmények – 2. rész](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)

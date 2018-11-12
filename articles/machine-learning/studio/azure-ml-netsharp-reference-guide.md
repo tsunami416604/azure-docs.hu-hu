@@ -1,6 +1,6 @@
 ---
-title: 'NET # Neurális hálózatokat Specification nyelvi útmutató – az Azure gépi tanulás |} Microsoft Docs'
-description: 'A Net # Neurális szintaxisának hálózatok nyelv, és példák segítségével Net # egyéni Neurális hálózat modell létrehozása'
+title: 'NET # Neurális hálózatok specifikáció nyelvi útmutató – az Azure Machine Learning |} A Microsoft Docs'
+description: 'Szintaxisa a Net # Neurális hálózati specifikációs nyelv használatával Net # Neurális hálózat egyéni modell létrehozása példákkal együtt'
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
@@ -15,96 +15,96 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.openlocfilehash: 2571420e3497e85ec1bf37b340015b061e8c91d4
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 8a96cfdedcde9b4037627f3e61af862c0600ca20
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833913"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258477"
 ---
-# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>Útmutató az Azure Machine Learning Net # Neurális hálózat nyelv
+# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>Útmutató az Azure Machine Learning Net # Neurális hálózati specifikációs nyelvhez
 
-NET #, amely a Neurális hálózat architektúrák azonosítására szolgál a Microsoft által kifejlesztett nyelvet. Net # Neurális hálózat struktúra révén összetett struktúrák például mély Neurális hálózatokat vagy a tetszőleges dimenziók, vagyis a javításához kapcsolatos adatok, például a lemezkép, hang-, vagy videó convolutions definiálhat.
+NET # nyelv, amely a Neurális hálózat architektúráinak definiálására használatos a Microsoft által kifejlesztett. Net # Neurális hálózat struktúráját használatával lehetővé teszi összetett többek között a Neurális hálózatokat vagy tetszőleges dimenziók, amelyekről ismert, hogy a adatok, például a kép, hang vagy videó learning javítása convolutions meghatározásához.
 
-Ezek a környezetek is használhatja a Net # architektúra specifikációban:
+Ezek a környezetek a Net # architektúra specifikációjának használhatja:
 
-+ Minden Neurális hálózat modul a Microsoft Azure Machine Learning Studióban: [Multiclass Neurális hálózat](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [két osztályú Neurális hálózat](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network), és [Neurális hálózat regressziós](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ Neurális hálózat funkciók MicrosoftML: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) és [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)az R nyelvhez és [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) a Python.
++ A Microsoft Azure Machine Learning Studióban az összes Neurális hálózati modulok: [osztályú Neurális hálózat](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [Two-Class Neurális hálózat](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network), és [Neurális hálózat regresszió](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
++ MicrosoftML Neurális hálózat függvényei: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) és [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)az R nyelvhez és [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) Pythonhoz készült.
 
 
-Ez a cikk ismerteti az alapvető fogalmakat és szintaxist használó Net # egyéni Neurális hálózat fejlesztéséhez szükséges: 
+Ez a cikk ismerteti az alapvető fogalmait és a egy egyéni, használatával Net # Neurális hálózat kialakításához szükséges szintaxist: 
 
-+ Neurális hálózat követelményei és az elsődleges összetevők definiálása
-+ A szintaxis és a Net # nyelv kulcsszavát
-+ Net # használatával létrehozott egyéni Neurális hálózatokat példák 
++ Neurális hálózat követelményei és az elsődleges összetevőket definiálása
++ Szintaxisát és kulcsszavait a Net # specifikációs nyelv
++ Példák be egyéni Neurális hálózatokra létrehozott Net # használatával 
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="neural-network-basics"></a>Neurális hálózat alapjai
 
-Neurális hálózat struktúra áll a csomópontokra, amelyeket a rétegek, és a súlyozott kapcsolatok (illetve szélek) vannak rendszerezve a csomópontok között. A kapcsolatok irányt, és minden egyes kapcsolathoz a forráscsomópont és a célcsomópontra.  
+A csomópontok közötti csomópontot, amely a rétegek, és a súlyozott kapcsolatok (és élek) vannak rendszerezve Neurális hálózat struktúra áll. A kapcsolatok irányt, és minden egyes kapcsolat rendelkezik a forráscsomóponton, és a célcsomópontra.  
 
-Minden egyes trainable réteg (egy rejtett vagy egy kimeneti réteg) rendelkezik egy vagy több **kapcsolat kötegek**. Egy kapcsolat köteg egy forrás réteg és a forrás réteg közötti kapcsolatok meghatározása áll. Egy adott csomagban lévő összes kapcsolat ossza meg az azonos forrás réteg és a azonos cél réteg. Net # kapcsolat csomag egyik gyermekszoftver tekinthető, hogy a csomag cél réteg tartoznak.
+Minden egyes trainable réteg (a rejtett vagy egy kimenete rétegen) rendelkezik egy vagy több **kapcsolat csomagjaiból**. Egy kapcsolat a csomag forrás réteg és a egy adott forrás réteg kapcsolatot specifikace áll. A megadott csomagban lévő összes kapcsolatot ossza meg az azonos forrásból réteg és a azonos cél-réteg. A Net # kapcsolat csomag egyik gyermekszoftver a csomag cél réteghez tartozó tekintendők.
 
-NET # támogatja a különféle típusú csomagok segítségével szabhatja testre a módon bemenetek vannak leképezve a Rejtett réteg és a kimenetek leképezve.
+NET # támogatja a különböző típusú kapcsolat segítségével módszert bemenetei testreszabhatja kötegbe vannak rejtett réteget hozzárendelve, és a kimenetek leképezve.
 
-Az alapértelmezett vagy a standard csomagot egy **teljes csomag**, az a forrás-réteg minden csomópontja csatlakozó minden csomópont, a cél rétegben.
+Az alapértelmezett vagy a standard csomag van egy **teljes csomag**, amelyek a forrás-réteg minden egyes csomópont csatlakozik a cél-réteg minden csomópontján az.
 
-Emellett Net # használatát támogatja a következő négy speciális kapcsolat csomagokat:
+Ezenkívül Net # támogatja a következő négy típusú speciális kapcsolati csomagok:
 
-+ **Szűrt kötegek**. A felhasználó a réteg forráscsomópont és a réteg célcsomópont használatával adhatja meg a predikátum. Csomópontok kapcsolódnak, amikor a predikátum értéke igaz.
++ **A szűrt csomagjaiból**. A felhasználó egy predikátum adhatja meg a forráscsomóponton réteg és a réteg a célcsomóponton használatával. Csomópontok csatlakoznak, amikor a predikátum értéke igaz.
 
-+ **Convolutional csomagok**. A felhasználó csomópontok kis környékeken definiálhat a forrás rétegben. A cél rétegben minden csomópont csatlakozik-e a csomópontok a forrás rétegben egy hálózatok.
++ **Konvolúciós csomagjaiból**. A felhasználó csomópontok kis környékeken definiálhat a forrás-rétegben. A cél-réteg minden egyes csomópontjának van csatlakoztatva, a forrás-réteget a csomópontok egy helyek.
 
-+ **Csomagok készletezését** és **válasz normalizálási kötegek**. Ezek hasonlóak convolutional kötegek abban, hogy a felhasználó határozza meg a kis környékeken csomópontok, a forrás rétegben. A különbség, hogy a súlyok ezeket a csomagokat a széleinek nincsenek trainable. Ehelyett egy előre definiált függvény alkalmazzák a forrás csomópont értékek megadásával határozza meg a célként megadott értékét.
++ **Csomagok készletezési** és **válasz normalizálási csomagjaiból**. Ezek hasonlóak konvolúciós csomagjaiból, hogy a felhasználó határozza meg a kis környékeken csomópontok, a forrás-rétegben. A különbség az, hogy ezek a csomagok a élt súlyozását ne legyenek trainable. Ehelyett egy előre meghatározott függvény a cél csomópont érték meghatározásához a forrás-csomópont értékei vonatkozik.
 
 
 ## <a name="supported-customizations"></a>Támogatott testreszabások
 
-Az Azure Machine Learning létrehozott Neurális hálózat modellek architektúrájának nagymértékben testreszabható Net # használatával. A következőket teheti:
+Az architektúra a Neurális hálózat modellek Azure Machine Learning szolgáltatásban létrehozott Net # használatával nagymértékben testre szabható. A következőket teheti:
 
-+ Rejtett rétegek készítését és minden egyes rétegben található csomópontok számának.
-+ Adja meg, hogyan rétegek csatlakozniuk kell egymáshoz.
-+ Adja meg a Speciális kapcsolat struktúrák, például convolutions és a súlyozást csomagok megosztása.
++ Hozzon létre rejtett réteget, és minden egyes rétegben lévő csomópontok számát.
++ Adja meg, hogyan rétegek kapcsolódnia kell egymáshoz.
++ Adja meg a speciális kapcsolati és -struktúrákat, convolutions súly csomagjaiból megosztása.
 + Adjon meg másik aktiválási funkciók.
 
-További részletek a meghatározás nyelvi szintaxisa: [struktúra Specification](#Structure-specifications).  
+A specifikáció nyelv szintaxisát a részletekért lásd: [struktúra specifikáció](#Structure-specifications).  
 
-Néhány általános gépi tanulási a feladatok, simplex bonyolult, a Neurális hálózatokat meghatározásának tekintse meg a [példák](#Examples-of-Net#-usage).
+Néhány gyakori machine learning-feladatokat, az összetett, egyoldalasan Neurális hálózatok definiálása példák: [példák](#Examples-of-Net#-usage).
 
 ## <a name="general-requirements"></a>Általános követelmények
 
-+ Pontosan egy kimeneti réteg legalább egy bemeneti réteg és nulla vagy több rejtett rétegben kell. 
-+ Minden egyes réteg csomópontok, tetszőleges dimenziók téglalap alakú tömbje fogalmilag rendezett rögzített számú rendelkezik. 
-+ Bemeneti rétegek társított képzett paraméter nélküli, és ahol példányadatokat belép a hálózatot képviselő. 
-+ Trainable rétegek (rejtett, és a kimeneti rétegek) társított súlyok és elfogultság ismert képzett paraméterek. 
-+ A forrás és cél csomópontok külön rétegekben kell lennie. 
-+ Kapcsolatok aciklikus; kell lennie. Ez azt jelenti nem lehet a kezdeti forráshelyen csomópont vezető kapcsolatok láncolata.
-+ A kimeneti réteg nem lehet kapcsolat köteg forrás réteget.  
++ Pontosan egy kimeneti réteg legalább egy bemeneti réteg és nulla vagy több rejtett réteget kell. 
++ Az egyes rétegek rendelkezik egy rögzített csomópontok számát, a koncepciót tekintve egy téglalap alakú tömb tetszőleges méretű szerint rendezve. 
++ Bemeneti rétegek nem lehetnek kapcsolódó betanított paraméterei, és ahol a példányok adatait belép a hálózat képviseli. 
++ (A rejtett, és a kimeneti rétegek) trainable rétegek betanított paraméterek, más néven súlyok és milyen előítéletek befolyásolják vannak társítva. 
++ A forrás- és célcsomópontok külön rétegekben kell lennie. 
++ Kapcsolatok aciklikus; kell lennie. más szóval nem lehetnek a kezdeti forráshelyen csomópontnak vezető kapcsolatok láncolata.
++ A kimeneti réteget nem lehet egy kapcsolat a csomag forrás réteget.  
 
 ## <a name="structure-specifications"></a>Struktúra specifikációk
 
-Három szakaszból tevődik össze a Neurális hálózat struktúra specifikációval: a **konstans deklarációjában**, a **deklaráció réteg**, a **kapcsolat deklaráció**. Szerepel továbbá egy nem kötelező **fájlmegosztás a nyilatkozatot** szakasz. A szakaszok bármilyen sorrendben adható meg.
+Neurális hálózat struktúra specifikáció három szakaszból áll: a **állandó deklarace**, a **deklarace. réteg**, a **kapcsolat deklarace**. Emellett van egy nem kötelező **deklarace megosztása** szakaszban. A szakaszok bármilyen sorrendben adható meg.
 
-## <a name="constant-declaration"></a>Konstans deklarációjában
+## <a name="constant-declaration"></a>Állandó nyilatkozat
 
-Egy konstans deklarációjában nem kötelező megadni. Ez lehetővé teszi a Neurális hálózat definíciójának máshol használt értékek megadhatók. A nyilatkozat utasítás áll egy egyenlőségjellel és egy érték kifejezést azonosítója.
+Egy állandó deklaráció nem kötelező. Biztosít egy azt jelenti, hogy a Neurális hálózat definíciójában máshol használt értékek meghatározásához. A nyilatkozat utasítás egyenlőségjelet és a egy értéke kifejezést azonosítót tartalmaz.
 
-Például a következő utasítás definiál egy állandó `x`:  
+Például a következő utasítás határozza meg egy állandó `x`:  
 
 `Const X = 28;`
 
-Egyidejűleg két vagy több állandók megadásához tegye a típusú azonosító neveket és értékeket kell használni, és pontosvesszővel válassza el egymástól elválasztani őket. Példa:
+Két vagy több állandók egyidejűleg definiálásához azonosító neveket és értékeket tegye zárójelek között, és pontosvesszővel válassza el egymástól őket. Példa:
 
 `Const { X = 28; Y = 4; }`
 
-Minden egyes hozzárendelési kifejezés jobb oldalán lehet egy egész számot, egy valós szám, egy logikai érték (IGAZ vagy hamis) vagy egy kifejezésnek. Példa:
+Minden egyes hozzárendelés kifejezés jobb oldalán lehet egy egész számot, egy valós szám, logikai érték (IGAZ vagy hamis) vagy olyan kifejezésnek. Példa:
 
 `Const { X = 17 * 2; Y = true; }`
 
 ## <a name="layer-declaration"></a>Réteg nyilatkozat
 
-A réteg szükség esetén. Azt határozza meg, méretének és a réteg, beleértve a kapcsolat kötegek és attribútumok forrását. A nyilatkozat utasítás kezdődik-e a neve, a réteg (bemeneti, rejtett vagy kimeneti), a dimenziók a réteg (egy pozitív egész számok rekord) követ. Példa:
+A réteg nyilatkozat megadása kötelező. Azt határozza meg, a méretét és a réteg, beleértve a kapcsolat kötegek és attribútumok forrását. A nyilatkozat utasítás kezdődik a neve, a réteg (bemeneti, rejtett vagy kimeneti), a dimenziók a réteg (pozitív egész számot tartalmazó rekordot) követ. Példa:
 
 ```Net#
 input Data auto;
@@ -112,16 +112,16 @@ hidden Hidden[5,20] from Data all;
 output Result[2] from Hidden all;  
 ```
 
-+ A termék dimenzió a rétegben található csomópontok számának. Ebben a példában a rendszer két dimenzió [5,20], ami azt jelenti, hogy a réteg 100 csomópontok szerepelnek.
-+ A rétegek deklarálható bármilyen sorrendben, egy kivétellel: Ha egynél több bemeneti réteg van definiálva, deklarálva van a sorrend meg kell egyeznie a szolgáltatások a bemeneti adatok sorrendjét.
++ A termék, a dimenziók használata a rétegben található csomópontok számát. Ebben a példában a rendszer két dimenzió [5,20], ami azt jelenti, hogy 100 csomópont a rétegben.
++ A rétegek je nutné deklarovat bármilyen sorrendben, egy kivétellel: Ha egynél több bemeneti réteg van definiálva, a sorrendet, amelyben deklarált meg kell egyeznie a szolgáltatások a bemeneti adatok sorrendjét.
 
-Adja meg, hogy egy rétegben található csomópontok számának automatikusan meghatározni a `auto` kulcsszó. A `auto` kulcsszó különböző hatások, attól függően, hogy a réteg van:
+Adja meg, hogy egy rétegben lévő csomópontok automatikusan meghatározni a `auto` kulcsszót. A `auto` kulcsszó különböző hatásokkal, attól függően, a réteg van:
 
-+ A bemeneti réteg nyilatkozat, a csomópontok száma a szolgáltatások a bemeneti adatok száma.
-+ A Rejtett réteg nyilatkozatot, a csomópontok száma az a szám, a paraméter értéke meg **rejtett csomópontok száma**.
-+ A kimeneti réteg nyilatkozat, a csomópontok számát: a két osztályú osztályozási, a regresszióra és a multiclass besorolási kimeneti csomópontok száma egyenlő 1 2.
++ Egy bemeneti réteg deklaraci a csomópontok számát a szolgáltatások a bemeneti adatok száma.
++ A rejtett rétegben határozza meg, a csomópontok számát a számát, amelyet a paraméter értéke által meghatározott **rejtett csomópontok**.
++ A csomópontok számát a kimenete rétegen nyilatkozat, 2 a két osztályú osztályozás, a regressziós és többosztályos osztályozási kimeneti csomópontok száma egyenlő 1.
 
-A következő hálózatdefiníció például lehetővé teszi, hogy az automatikusan meghatározott összes réteg mérete:
+Például a következő hálózati definíció lehetővé teszi, hogy automatikusan meghatározott összes réteg mérete:
 
 ```Net#
 input Data auto;
@@ -129,44 +129,44 @@ hidden Hidden auto from Data all;
 output Result auto from Hidden all;  
 ```
 
-Egy olyan trainable réteghez (rejtett vagy kimeneti rétegek) réteg nyilatkozatot is választhatóan a kimeneti függvény (más néven az aktiválási függvény), amely alapértelmezés szerint az **sigmoid** a besorolási modell, és  **lineáris** regressziós modell. Akkor is, ha használja az alapértelmezett, akkor is explicit módon állapot aktiválás függvény jobb érthetőség kedvéért bizonyos igény.
+Egy trainable réteg (a rejtett vagy kimeneti rétegek) réteg nyilatkozatot szükség esetén belefoglalhatja a kimeneti függvény (más néven az aktiválási függvény), amely alapértelmezés szerint a **sigmoid** osztályozási modell, és  **lineáris** regressziós modellek esetén. Akkor is, ha az alapértelmezett használatához, is explicit módon állapot az aktiválási függvény, az átláthatóság érdekében szükség esetén.
 
-A következő kimeneti-funkciók támogatottak:
+A következő kimeneti függvények támogatottak:
 
 + sigmoid
-+ lineáris
++ Lineáris
 + softmax
 + rlinear
-+ Négyzetes
++ Négyszög
 + sqrt
 + srlinear
 + ABS
 + TANH
 + brlinear
 
-Például a következő nyilatkozatot használ a **softmax** függvény:
+Például az alábbi nyilatkozatot használja a **softmax** függvény:
 
 `output Result [100] softmax from Hidden all;`
 
 ## <a name="connection-declaration"></a>Kapcsolat nyilatkozat
 
-Határozza meg a trainable réteg, után azonnal meghatározta a rétegek közötti kapcsolatok kell deklarálnia. A kapcsolat köteg deklaráció kezdődik-e a kulcsszó `from`, utána pedig a nevét a csomag forrás réteg és milyen típusú kapcsolat csomag létrehozásához.
+Után azonnal meghatározása a trainable réteget, be kell állítania a definiált rétegek közötti kapcsolatok. A kapcsolat csomag nyilatkozat kulcsszóval kezdődik `from`, utána pedig nevét a csomag forrás-réteg és milyen típusú kapcsolat csomagot hozhat létre.
 
 Jelenleg kapcsolat csomagok öt típusú támogatottak:
 
-+ **Teljes** csomagokat, a kulcsszó által jelzett `all`
-+ **Szűrt** csomagokat, a kulcsszó által jelzett `where`, utána pedig a predikátum kifejezés
-+ **Convolutional** csomagokat, a kulcsszó által jelzett `convolve`, utána pedig a konvolúció attribútumok
-+ **Készletezését** csomagokat, a kulcsszavak által jelzett **készlet maximális** vagy **készlet témakörök**
-+ **Válasz normalizálási** csomagokat, a kulcsszó által jelzett **válasz alapértelmezetté**
++ **Teljes** csomagok, a kulcsszó jelzi `all`
++ **A szűrt** csomagok, a kulcsszó által jelzett `where`, utána pedig egy predikátum kifejezés
++ **Konvolúciós** csomagok, a kulcsszó által jelzett `convolve`, utána pedig a konvolúció attribútumok
++ **Készletezését** csomagok, a kulcsszavakat által jelzett **készlet max.** vagy **jelenti azt, hogy a készlet**
++ **Válasz normalizálási** csomagok, a kulcsszó által jelzett **válasz normát**
 
 ## <a name="full-bundles"></a>Teljes kötegek
 
-Egy teljes kapcsolat csomag minden csomópontjáról kapcsolatot tartalmaz, mindegyik csomópontra a cél rétegben a forrás rétegben. Ez az az alapértelmezett hálózati kapcsolat típusa.
+Egy teljes kapcsolati csomag ki minden csomópontból kapcsolatot tartalmaz a forrás-rétegben a cél-réteg minden egyes csomópontjára. Ez az az alapértelmezett hálózati kapcsolat típusa.
 
 ## <a name="filtered-bundles"></a>Szűrt kötegek
 
-Köteg végrehajtása szűrt kapcsolaton keresztül specifikáció tartalmazza a predikátum, szintaktikailag, kifejezett jelentős, például a C# lambda kifejezésben. Az alábbi példa meghatározza, hogy két szűrt csomagokat:
+Egy szűrt kapcsolaton keresztül csomag specifikációt tartalmaz egy predikátum, szintaktikailag, kifejezett olyannyira, például egy C# lambda kifejezésnek. Az alábbi példa két szűrt csomagjaiból határozza meg:
 
 ```Net#
 input Pixels [10, 20];
@@ -174,70 +174,70 @@ hidden ByRow[10, 12] from Pixels where (s,d) => s[0] == d[0];
 hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;  
 ```
 
-+ A predikátum a `ByRow`, `s` képviselő index a bemeneti réteg csomópontok a téglalap alakú tömbbe paraméter `Pixels`, és `d` indexet a Rejtett réteg csomópontok a tömbbe jelölő paraméter `ByRow`. Mindkét típusú `s` és `d` hosszúságú két számokból álló rekordot van. Fogalmilag `s` keresztül az egész számok minden pár címtartományok `0 <= s[0] < 10` és `0 <= s[1] < 20`, és `d` az egész számok, minden pár keresztül címtartományok `0 <= d[0] < 10` és `0 <= d[1] < 12`. 
++ A predikátum a `ByRow`, `s` jelölő index a bemeneti réteg csomópontok a téglalap alakú tömbbe paraméter `Pixels`, és `d` indexet a csomópontok a Rejtett réteg tömbbe jelölő paraméter `ByRow`. Mindkét típusú `s` és `d` hosszúságú két egész számot tartalmazó rekordot van. Elméleti szinten `s` keresztül az egész számok minden pár címtartományok `0 <= s[0] < 10` és `0 <= s[1] < 20`, és `d` az egész számok, minden pár keresztül címtartományok `0 <= d[0] < 10` és `0 <= d[1] < 12`. 
 
-+ A jobb oldalon a predikátum kifejezés nincs egy feltételt. Ebben a példában minden egyes értékéhez `s` és `d` úgy, hogy a feltétel igaz, nincs-e a réteg forráscsomópont él a célcsomópontra réteg. Ebből kifolyólag a szűrőkifejezés azt jelzi, hogy, hogy a csomag tartalmaz-e a kapcsolat által meghatározott csomópontról `s` a csomópont által meghatározott `d` az összes olyan esetekben, amikor s [0] [0] d egyenlőnek.
++ A predikátum kifejezés jobb oldalán van egy feltételt. Ebben a példában minden egyes értékéhez `s` és `d` úgy, hogy a feltétel igaz, nincs-e a célcsomópontra réteg az adatforrás réteg csomópontból versenyképességét. Ebből kifolyólag a szűrőkifejezés azt jelzi, hogy, hogy a csomag tartalmaz-e a kapcsolat a csomópont által meghatározott `s` a csomópont által meghatározott `d` minden olyan esetben, ha [0] s d [0] nem található.
 
-Másik lehetőségként a szűrt köteg súlyok készlete is megadhat. Az érték a **súlyok** attribútumnak kell lennie egy rekordot a pontértékek határozzák meg a csomag kapcsolatok számának megfelelő hosszúságú lebegőpontos. Alapértelmezés szerint a súlyok véletlenszerűen generált.
+Szükség esetén a szűrt köteg súlyok készletét is megadhat. Az érték a **súlyok** attribútumnak kell lennie, amely megfelel a kapcsolatok a csomagazonosító alapján meghatározott számát hosszúságú értékei lebegőpontos rekordot. Alapértelmezés szerint a súlyok véletlenszerűen generált.
 
-Súlyozási értékeket a cél csomópont indexe szerint vannak csoportosítva. Ez azt jelenti, ha az első célcsomópont csatlakozik K forrás csomópontok, az első `K` elemei a **súlyok** rekordot a súlyok a első célcsomópont index forrássorendben. Ugyanez vonatkozik, a fennmaradó cél csomópontok.
+Súlyértékeket cél csomópont index szerint vannak csoportosítva. Azt jelenti, ha az első célcsomópont K forrás csomópontok, csatlakozik az első `K` elemei a **súlyok** rekord index-sorrendben az első célcsomópont súlyok. Ugyanez vonatkozik, a fennmaradó cél csomópontok.
 
-Akkor adja meg a súlyok közvetlenül konstans érték lehet. Például ha korábban már megismerte a súlyok, megadhatja azokat állandók ezen szintaxis használatával:
+Adja meg a súlyok közvetlenül állandó értékek, lehetőség. Például ha korábban már megismerte a súlyok, megadhatja azokat a szintaxis használatával állandóként:
 
 `const Weights_1 = [0.0188045055, 0.130500451, ...]`
 
-## <a name="convolutional-bundles"></a>Convolutional kötegek
+## <a name="convolutional-bundles"></a>Konvolúciós kötegek
 
-Ha a betanítási adatok struktúrája a homogén, convolutional kapcsolatok gyakran használják az adatok magas szintű funkciók további. Például kép, hang- vagy videó, térbeli vagy időbeli granularitása lehet az adatokat viszonylag egységes.  
+Ha a betanítási adatok struktúrája a homogén, konvolúciós kapcsolatok gyakran használják az adatok magas szintű szolgáltatásai további. Például, kép, hang- vagy videofájl adat, térbeli vagy a historikus dimenziói lehet viszonylag egységes.  
 
-Convolutional kötegek alkalmaz téglalap alakú **kernelek** , amely a dimenziók keresztül van ütközik. Tulajdonképpen minden kernel néven a helyi környékeken, alkalmazza a súlyok készletét **kernel-alkalmazásokra**. A forrás rétegben, amely hivatkozunk a csomópont minden kernel alkalmazás megfelel-e a **központi csomópont**. A kernel súlyozását sok kapcsolatok között vannak megosztva. Convolutional a köteg minden egyes kernel téglalap alakú pedig minden kernel-alkalmazásokra méretének.  
+Konvolúciós csomagjaiból szoftverbiztonsági téglalap alakú **kernelekkel** , amely a dimenziók keresztül vannak ütközik. Lényegében minden kernel súlyok helyi környékeken a alkalmazni néven készletét **kernel-alkalmazásokra**. Minden egyes kernel alkalmazás felel meg a forrás rétegben, amelynek a neve a csomópont a **központi csomóponton**. A kernel súlyozását sok kapcsolat között vannak megosztva. Konvolúciós a köteg minden egyes kernel téglalap alakú, amely minden kernel-alkalmazásokra csak azonos méretű.  
 
-Convolutional csomagokat támogatja a következő attribútumokat:
+Konvolúciós csomagok támogatják a következő attribútumokat:
 
-**InputShape** határozza meg a forrás réteg dimenzióinak a convolutional köteg céljából. Az értéknek pozitív egész számok rekordot kell lennie. Az egész számok szorzatát a forrás rétegben található csomópontok számának egyenlőnek kell lennie, de egyéb, nem kell a forrás réteg deklarált dimenzióinak kereséséhez. Ez a rekord hossza válik a **aritása** értékét a convolutional csomagot. Aritása általában a számú argumentum vagy egy függvény által végrehajtható operandusok hivatkozik.
+**InputShape** határozza meg a forrás réteg dimenzióinak a konvolúciós csomag alkalmazásában. Az értéknek pozitív egész számot tartalmazó rekordot kell lennie. Az egész számok szorzatát egyenlőnek kell lennie a forrás-rétegben lévő csomópontok számát, de egyébként nem kell egyeznie a forrás réteg deklarált dimenzióinak. Ez a rekord hossza válik a **arita** értékét a konvolúciós csomagot. Általában arita minimális számára utal argumentumok vagy operandusok, amely egy függvényt is igénybe vehet.
 
-Az alakzat és helyét. a kernelek megadásához használja az attribútumok **KernelShape**, **Stride**, **kitöltési**, **LowerPad**, és  **UpperPad**:   
+Az alakzat és helyét. a kernelekkel meghatározásához használja az attribútumok **KernelShape**, **Stride**, **Padding**, **LowerPad**, és  **UpperPad**:   
 
-+ **KernelShape**: (kötelező) meghatározza a convolutional köteg minden kernel dimenzióinak. Az értéknek kell lennie, amely a kötegben szereplő argumentumszámmal egyenlő hosszal pozitív egész számok rekordot. Lehet, hogy minden összetevő a rekord nem lehet nagyobb a megfelelő összetevője **InputShape**. 
++ **KernelShape**: (kötelező) Defines a konvolúciós csomagot az egyes kernel dimenzióinak. Az értéknek pozitív egész számok használata, amely megegyezik a arita Pro instanci a csomagot a rekordot kell lennie. Ez a rekord minden összetevője nem lehet nagyobb, mint a megfelelő összetevője **InputShape**. 
 
-+ **STRIDE**: (opcionális) határozza meg, amely a központi csomópontok közötti távolság szerint (minden dimenzió egy lépésköz mérete), konvolúció mozgó lépés mérete. Az értéknek kell lennie, amely a csomag az aritása hosszal pozitív egész számok rekordot. Lehet, hogy minden összetevő a rekord nem lehet nagyobb a megfelelő összetevője **KernelShape**. Az alapértelmezett értéke egynek összes összetevőkkel rekordot. 
++ **STRIDE**: (nem kötelező) határozza meg, amely a központi csomópontok közötti távolság konvolúció (minden dimenzió egy lépéssel mérete), a mozgó lépés méretét. Az értéknek pozitív egész számok használata, amely a arita Pro instanci a csomagot a rekordot kell lennie. Ez a rekord minden összetevője nem lehet nagyobb, mint a megfelelő összetevője **KernelShape**. Az alapértelmezett érték: az összes összetevő egyenlő egy rekordot. 
 
-+ **Megosztás**: (nem kötelező) határozza meg a minden egyes dimenziójának a konvolúció megosztásának súlyt. Az érték lehet egy logikai érték vagy egy logikai érték, amely a csomag az aritása hosszúságú rekord. Egyetlen logikai értéket az időtartam csak a megadott értéknél összes összetevőkkel megfelelő hosszúságú rekord lehet. Az alapértelmezett érték: egy rekord, amely az összes IGAZ érték áll. 
++ **Megosztás**: (nem kötelező) határozza meg a súly minden dimenzió, a konvolúció megosztása. Az érték lehet egy logikai érték, vagy egy rekord, logikai értékek használata, amely a arita Pro instanci a csomagot. Egyetlen logikai érték terjeszteni egy rekord megadott értéke megegyezik az összes összetevővel megfelelő hosszúságú lehet. Az alapértelmezett értéke egy rekord, amely az összes tényleges értékek áll. 
 
-+ **MapCount**: a convolutional köteg maps szolgáltatás számát (nem kötelező) meghatározza. Az érték egy pozitív egész szám vagy egy pozitív egész számok az aritása a kötegben hosszúságú rekord lehet. Csak egyetlen egész értéket az időtartam csak az első a megadott értéknél összetevőkkel megfelelő hosszúságú rekord lehet, és a fennmaradó összetevők egy egyenlő. Az alapértelmezett érték: egyet. Teljes száma a szolgáltatás a maps a termék a rekord összetevőt. A összetevői között és az összes faktoring meghatározza, hogy a szolgáltatás térkép értékek csoportosításának a cél csomópontok. 
++ **MapCount**: (nem kötelező) Defines a konvolúciós csomagot a maps szolgáltatás száma. Az érték lehet egy pozitív egész számnak vagy pozitív egész számok használata, amely a arita Pro instanci a csomagot a rekordot. Egyetlen egész értéket terjeszteni kell a megfelelő hosszúságú egyenlő a megadott értéket az első összetevőkkel rekordot, és a fennmaradó összetevőket egy egyenlő. Az alapértelmezett érték egyike. A maps szolgáltatás teljes száma, amely az a rekord összetevőit. A teljes szám faktoring az összetevőben határozza meg, hogyan funkció térkép értékek szerint vannak csoportosítva a cél csomópontok. 
 
-+ **Súlyozás**: (opcionális) határozza meg a csomag kezdeti súlyok. Az érték lebegőpontos pontértékek, amely kernelek hányszor hosszal súlyok száma / kernel, a cikk későbbi részében meghatározott rekordot kell lennie. Az alapértelmezett súlyozás véletlenszerűen jönnek létre.  
++ **Súlyok**: (nem kötelező) határozza meg a köteg kezdeti súlyok. Az értéknek kell lennie a lebegőpontos használata, amely kernelekkel hányszor értékei súlyok száma / kernel, az a cikk későbbi részében megadott rekordot. Az alapértelmezett súlyok véletlenszerűen jönnek létre.  
 
-Kitöltési,-folyamatban, egymást kölcsönösen kizáró tulajdonságok szabályozó tulajdonságok két csoportjára van:
+Nincsenek két készletnyi kitöltési, a folyamatban, egymást kölcsönösen kizáró tulajdonságok vezérlő tulajdonságok:
 
-+ **Kitöltési**: (opcionális) megállapítja e bemeneti használatával kell lenniük egy **alapértelmezett kitöltő séma**. Az érték lehet egy logikai érték, vagy egy logikai érték, amely a csomag az aritása hosszúságú rekord lehet. 
++ **Padding**: (nem kötelező) Meghatározza hogy kell-e a bemeneti hosszúságra használatával egy **alapértelmezett kitöltés séma**. Az érték lehet egy logikai érték, vagy egy rekord, logikai értékek, amely a csomagot a arity hosszúságú lehet. 
 
-    Egyetlen logikai értéket az időtartam csak a megadott értéknél összes összetevőkkel megfelelő hosszúságú rekord lehet. 
+    Egyetlen logikai érték terjeszteni egy rekord megadott értéke megegyezik az összes összetevővel megfelelő hosszúságú lehet. 
     
-    Egy dimenzió értéke igaz, ha a forrás lesz logikailag kiegészítve az adott dimenzióban kiegészítő rendszermag alkalmazásokhoz, nulla értékű cellákkal úgy, hogy az adott dimenzióban első és utolsó kernelek központi csomópontjai legyenek a első és utolsó csomópontokat, amelyek a forrás rétegben dimenzió. Így minden dimenzió "típusú" csomópontok száma határozza meg automatikusan, pontosan megfelelően `(InputShape[d] - 1) / Stride[d] + 1` kernelek a tömöttnek forrás rétegbe. 
+    Egy dimenzió értéke igaz, ha a forrás logikailag számokhoz az, hogy a dimenzió nulla értékű cellákat támogatásához további kernel-alkalmazásokra, úgy, hogy a első és utolsó kernelekkel, hogy a dimenzió központi csomópontján, amely első és utolsó csomópontja a forrás réteg dimenzió. Ebből kifolyólag egyes dimenzióban lévő "üres" csomópontok automatikusan határozza meg, hogy pontosan illeszkedjen `(InputShape[d] - 1) / Stride[d] + 1` kernelekkel a tömöttnek forrás rétegbe. 
     
-    Egy dimenzió értéke HAMIS, ha a kernelek határozzák meg, hogy mindkét oldalon kimenő fennmaradó csomópontok száma (legfeljebb 1 különbségek) megegyezik. Ez az attribútum alapértelmezett értéke egy rekord összes összetevőkkel értéke FALSE.
+    Egy dimenzió értéke HAMIS, ha a kernelekkel határozzák meg, hogy mindkét oldalon, amely ki van hátra a csomópontok száma (legfeljebb 1 számít) megegyezik. Ez az attribútum alapértelmezett értéke egy rekord összes összetevőkkel egyenlő a False (hamis).
 
-+ **UpperPad** és **LowerPad**: (nem kötelező) adja meg nagyobb mértékben vezérelheti a használandó szövegtávolság mértéke. **Fontos:** lehet, hogy ezek az attribútumok meghatározott if és csak akkor, ha a **kitöltési** fenti tulajdonság ***nem*** definiálva. Az értékeket, amelyek a kötegben szereplő argumentumszámmal hosszúságú egész rekordokat kell lennie. Ha ezek az attribútumok meg van adva, "típusú" csomópontokat ad hozzá a bemeneti réteg minden dimenzió az alsó és felső végén. Minden dimenzió az alsó és felső végződik hozzáadandó csomópontok száma határozza meg **LowerPad**[i] és **UpperPad**[i] osztályban. 
++ **UpperPad** és **LowerPad**: (nem kötelező) adjon meg nagyobb mértékben vezérelheti a használandó található Kitöltés mennyisége. **Fontos:** lehet, hogy ezek az attribútumok meghatározott if, és csak akkor, ha a **Padding** fenti tulajdonság ***nem*** definiálva. Az értékek egész értékű rekordokat, amelyek a csomagot a arity hosszúságú lehet. Ha ezek az attribútumok meg van adva, a bemeneti réteg minden dimenzió az alsó és felső végén "üres" csomópontokat ad hozzá. Minden dimenzió az alsó és felső célból hozzáadott csomópontok száma határozza meg **LowerPad**[i] és **UpperPad**[i] jelölik. 
 
-    Biztosítsa, hogy kernelek csak "tényleges" és "típusú" csomópont nem az, hogy a következő feltételeknek kell teljesülniük:
-      - Az egyes összetevők **LowerPad** kell feltétlenül kisebb, mint `KernelShape[d]/2`. 
-      - Az egyes összetevők **UpperPad** nem nagyobbnak kell lennie `KernelShape[d]/2`. 
-      - Ezek az attribútumok alapértelmezett értéke egy rekord összes összetevőkkel, mint 0. 
+    Győződjön meg arról, hogy a kernelt csak "valódi" csomópontok és a "üres" csomópontok megfelelnek-e, hogy a következő feltételeknek kell teljesülniük:
+      - Minden egyes összetevője **LowerPad** kell feltétlenül kevesebb mint `KernelShape[d]/2`. 
+      - Minden egyes összetevője **UpperPad** nem lehet nagyobb, mint `KernelShape[d]/2`. 
+      - Ezek az attribútumok alapértelmezett értéke egy rekord összes összetevőkkel 0 egyenlő. 
 
-    A beállítás **kitöltési** = true lehetővé teszi, hogy a legtöbb kitöltési tartani "" a kernel belső "valós" bemeneti szükséges. A kimeneti méretének kiszámításához kicsit matematikai értékre változik. Általában a kimeneti méretének *D* számítja ki, hogy `D = (I - K) / S + 1`, ahol `I` bemeneti mérete `K` kernel mérete `S` van a stride és `/` szám (szám nullához van ). Ha UpperPad = [1, 1], a bemeneti mérete `I` tulajdonképpen 29, és így `D = (29 - 5) / 2 + 1 = 13`. Azonban ha **kitöltési** lényegében = true, `I` lekérdezi bumped által `K - 1`; ezért `D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14`. Az értékek megadásával **UpperPad** és **LowerPad** elérhetővé, mint ha csupán be a térközt több ellenőrzést **kitöltési** = true.
+    A beállítás **Padding** = true lehetővé teszi, hogy a lehető kitöltési, hogy a "center" kerneljének belül a "valódi" bemeneti van szükség szerint. Ez módosítja egy kicsit a számítástechnika a kimeneti mérete helyett a számításokat. A kimeneti mérete általában *D* számítja ki, hogy `D = (I - K) / S + 1`, ahol `I` bemeneti mérete, `K` a kernel mérete `S` van a stride és `/` szám (Forduló nullához van ). Ha UpperPad = [1, 1], a bemeneti méret `I` lényegében 29, és így `D = (29 - 5) / 2 + 1 = 13`. Azonban, hogy amikor **Padding** = true, lényegében `I` lekérdezi bumped által `K - 1`; ezért `D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14`. Az értékek megadásával **UpperPad** és **LowerPad** kap, ha csak állít be, mint a kitöltési több ellenőrzést **Padding** = true.
 
-Convolutional hálózatok és az alkalmazásokkal kapcsolatos további információkért lásd: ezek a cikkek: 
+Konvolúciós hálózatokat és azok alkalmazásokkal kapcsolatos további információkért tanulmányozza a következő cikkeket: 
 
 + [http://deeplearning.net/tutorial/lenet.html ](http://deeplearning.net/tutorial/lenet.html)
-+ [http://research.microsoft.com/pubs/68920/icdar03.pdf](http://research.microsoft.com/pubs/68920/icdar03.pdf) 
++ [http://research.microsoft.com/pubs/68920/icdar03.pdf](https://research.microsoft.com/pubs/68920/icdar03.pdf) 
 + [http://people.csail.mit.edu/jvb/papers/cnn_tutorial.pdf](http://people.csail.mit.edu/jvb/papers/cnn_tutorial.pdf)  
 
-## <a name="pooling-bundles"></a>Csomagok készletezése
+## <a name="pooling-bundles"></a>Csomagok készletezési
 
-A **köteg készletezését** vonatkozik geometriai hasonló convolutional kapcsolatot, de forrás csomópont értékek előre meghatározott funkciókat használ kapcsolattípusokból a cél a csomópont-érték. Emiatt készletezésével kötegek rendelkezik (súlyok vagy elfogultság) trainable állapot nélküli. Egyesítési csomagokat támogatja kivételével minden convolutional attribútumot **megosztás**, **MapCount**, és **súlyok**.
+A **csomag készletezési** konvolúciós kapcsolat hasonló geometriai vonatkozik, de a forrás-csomópont értékei előre definiált függvények használatával származtatni a céloldali csomópont értéke. Ezért a készletezésével csomagjaiból nincs trainable állapot (súlyok vagy esetleges előítéleteire nézve) rendelkezik. Készletezésével csomagjaiból támogatja a konvolúciós attribútumok kivételével **megosztási**, **MapCount**, és **súlyok**.
 
-Általában a szomszédos készletezésével egységek összesített kernelek nem lehetnek átfedésben. Ha Stride [d] [d] KernelShape minden dimenzió, a kapott réteg a hagyományos helyi készletezésével szintje, amely általában alkalmazottja convolutional Neurális hálózatokat. Minden célcsomópont kiszámítja a maximális vagy a forrás rétegben a kernel tevékenységeit középértéke.  
+Általában a szomszédos készletezésével egységek összesítése kernelekkel ne legyenek átfedésben. Ha Stride [d] [d] KernelShape minden dimenzió, a réteg kapott, amely a a hagyományos helyi készletezésével, ami gyakran alkalmazzák a konvolúciós Neurális hálózatokkal. Minden egyes célcsomópont kiszámítja a maximális vagy az átlag, a tevékenységek a kernel a forrás-rétegben.  
 
 Az alábbi példában látható készletezésével csomagot: 
 
@@ -250,43 +250,43 @@ hidden P1 [5, 12, 12]
   }  
 ```
 
-+ A csomag az aritása a következő: 3: Ez azt jelenti, hogy a rekordok hosszát `InputShape`, `KernelShape`, és `Stride`. 
-+ A forrás rétegben csomópontok száma `5 * 24 * 24 = 2880`. 
-+ Ennek oka egy hagyományos helyi készletezésével réteg **KernelShape** és **Stride** egyenlő. 
++ A csomagot a arity: 3: azt jelenti, a rekordok felsorolásának hossza `InputShape`, `KernelShape`, és `Stride`. 
++ A szám a csomópontok a forrás-rétegben `5 * 24 * 24 = 2880`. 
++ Ennek oka az olyan hagyományos helyi készletezésével réteg **KernelShape** és **Stride** egyenlő. 
 + A cél rétegben csomópontok száma `5 * 12 * 12 = 1440`.
 
-Egyesítési rétegek kapcsolatos további információkért lásd: ezek a cikkek:  
+Készletezésével rétegek kapcsolatos további információkért tanulmányozza a következő cikkeket:  
 
-+ [http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (A szakaszban 3.4)
++ [http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (A szakaszban 3.4-es)
 + [http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf) 
 + [http://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf](http://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf)
 
 ## <a name="response-normalization-bundles"></a>Válasz normalizálási kötegek
 
-**Válasz normalizálási** egy helyi normalizálási rendszer Geoffrey Hinton, először bevezetett és mások, a dokumentum [ImageNet Classiﬁcation Convolutional Neurális hálózatokat a](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf). 
+**Válasz normalizálási** egy helyi normalizálási séma Geoffrey Hinton, először bevezetett és mások a tanulmány [épít Classiﬁcation a Konvolúciós Neurális hálózatokat](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf). 
 
-Válasz normalizálási Neurális hálók általánosítása elősegítésére szolgál. Amikor egy idegsejt aktiválási nagyon magas szintű folyamatban van, egy helyi válasz normalizálási réteg mellőzi a környező idegsejtek csoportjának viselkedését aktiválási szintjét. Ehhez három paraméterekkel (`α`, `β`, és `k`) és egy convolutional struktúra (vagy hálózatok alakzat). A cél rétegben minden idegsejt **y** idegsejt megfelel **x** a forrás rétegben. Az aktiválási szintjét **y** képlettel a következő, ahol `f` idegsejt, az aktiválási szintje és `Nx` a kernel (vagy a készlet, amely tartalmazza a idegsejtek csoportjának viselkedését a helyek, a **x**), a következő convolutional struktúra által meghatározott módon:  
+Válasz normalizálási, ezzel elősegítve a Neurális hálózatokkal általánossá szolgál. Egy idegsejt aktiválási nagyon magas szintű ez, ha egy helyi válasz normalizálási réteg elrejti a környező idegsejtek csoportjának viselkedését aktiválási szintjét. Ez a három paraméter használatával történik (`α`, `β`, és `k`) és a egy konvolúciós struktúra (vagy hálózatok alakzat). A cél-réteg minden idegsejt **y** idegsejt megfelel **x** a forrás-rétegben. Aktiválási szintjét **y** adja meg a következő képletet, ahol `f` idegsejt, az aktiválási szint és `Nx` a kernel (vagy a készlet, amely tartalmazza a idegsejtek csoportjának viselkedését a helyek, a **x**), a következő konvolúciós struktúra által meghatározott módon:  
 
-![a képlethez convolutional struktúra](./media/azure-ml-netsharp-reference-guide/formula_large.png)
+![a képlet konvolúciós struktúra](./media/azure-ml-netsharp-reference-guide/formula_large.png)
 
-Válasz normalizálási kötegek támogatja a convolutional attribútumok kivéve **megosztás**, **MapCount**, és **súlyok**.  
+Válasz normalizálási csomagjaiból támogatja a konvolúciós attribútumok kivételével **megosztási**, **MapCount**, és **súlyok**.  
 
-+ Ha a kernel tartalmazza-e, azonos leképezés idegsejtek csoportjának viselkedését ***x***, a rendszer séma nevezzük **normalizálási képezi le azonos**. Azonos térkép normalizálási, az első koordináta meghatározásához **InputShape** 1 értéket kell megadni.
++ Tartalmazza-e a kernel idegsejtek csoportjának viselkedését, azonos térképen ***x***, a normalizálási séma nevezzük **azonos leképezése normalizálási**. Azonos térkép normalizálási, az első koordináta az meghatározásához **InputShape** 1 értékkel kell rendelkeznie.
 
-+ Ha a kernel tartalmazza-e az azonos térbeli helyzetben idegsejtek csoportjának viselkedését ***x***, de a idegsejtek csoportjának viselkedését a maps-más, a rendszer séma neve **keresztben leképezi a normalizálási**. Az ilyen típusú válasz normalizálási egy formája, amelyet a típus van a valós idegsejtek csoportjának viselkedését, többek között a különböző térképeken számított idegsejt kimenetek nagy aktiválási szintjeinek verseny létrehozása inspirálta oldalirányú gátló valósítja meg. Meghatározásához maps normalizálási között, az első koordináta nagyobb, mint egy és a maps száma nem lehet nagyobb egész számnak kell lennie, és a koordináták a többi 1 értéket kell megadni.
++ A kernel tartalmazza-e a idegsejtek csoportjának viselkedését a térbeli helyén ***x***, azonban a idegsejtek csoportjának viselkedését más Maps Közösséghez, a normalizálási séma neve **keresztben leképezi a normalizálási**. Válasz normalizálási az ilyen típusú oldalirányú gátló ihletet létrehozása verseny big Data típusú aktiválási szintek különböző térképeken számított idegsejt kimenetek között található a valódi idegsejtek csoportjának viselkedését, típus szerint egy formája implementál. Annak meghatározásához, a maps normalizálási között, az első koordináta a nagyobb, mint egy és a maps száma nem lehet nagyobb egész számnak kell lennie, és a koordináták a többi 1 értékkel kell rendelkeznie.
 
-Válasz normalizálási csomagok forrás csomópont értékek megadásával határozza meg a cél csomópont érték előre definiált függvényt alkalmazni, mert nincs trainable állapot (súlyok vagy elfogultság) rendelkeznek.
+Válasz normalizálási csomagok forrás csomópont értékek megadásával határozza meg a cél csomópont értéke egy előre meghatározott függvény alkalmazni, mert nincs trainable állapot (súlyok vagy esetleges előítéleteire nézve) rendelkeznek.
 
 > [!NOTE]
-> A célfájl layer csomópontja idegsejtek csoportjának viselkedését, amelyek a kernelek központi csomópont felel meg. Például ha `KernelShape[d]` páratlan, majd `KernelShape[d]/2` felel meg a központi kernel csomópont. Ha `KernelShape[d]` az még akkor is, a központi csomópont `KernelShape[d]/2 - 1`. Ezért ha `Padding[d]` hamis, az első és az utolsó `KernelShape[d]/2` csomópontok nem rendelkeznek megfelelő csomópontokat a cél rétegben. Ez a helyzet elkerülése érdekében adja meg a **kitöltési** mint [értéke true, true,..., igaz].
+> A csomópontok a cél rétegben idegsejtek csoportjának viselkedését, amelyek a kernelekkel központi csomópontjai felelnek meg. Például ha `KernelShape[d]` páratlan, majd `KernelShape[d]/2` felel meg a központi kernel csomópontra. Ha `KernelShape[d]` páros, a központi csomóponton jelenleg `KernelShape[d]/2 - 1`. Ezért ha `Padding[d]` hamis, az első és utolsó `KernelShape[d]/2` csomópontok nem rendelkeznek megfelelő csomópontok a cél rétegben. Ezen helyzet elkerülése érdekében adjon meg **Padding** , [true, true,..., igaz].
 
-A korábban ismertetett négy attribútumok mellett válasz normalizálási csomagok is támogatja a következő attribútumok:
+A korábban ismertetett négy attribútumok mellett válasz normalizálási csomagok is támogatja a következő attribútumokkal:
 
-+ **Alpha**: (kötelező) adja meg egy lebegőpontos érték, amely megfelelne a `α` a korábbi képletben. 
-+ **Beta**: (kötelező) adja meg egy lebegőpontos érték, amely megfelelne a `β` a korábbi képletben. 
-+ **Eltolás**: (nem kötelező) adja meg egy lebegőpontos érték, amely megfelelne a `k` a korábbi képletben. Alapértelmezés szerint az 1.
++ **Alpha**: (kötelező) adja meg egy lebegőpontos érték, amely megfelel `α` a képlet. 
++ **Bétaverzió**: (kötelező) adja meg egy lebegőpontos érték, amely megfelel `β` a képlet. 
++ **Eltolás**: (nem kötelező) adja meg egy lebegőpontos érték, amely megfelel `k` a képlet. Alapértelmezés szerint az 1.
 
-A következő példa egy válasz normalizálási köteg ezek az attribútumok használatával határozza meg:  
+Az alábbi példa meghatározza egy válasz normalizálási csomag használatával ezek az attribútumok:  
 
 ```Net#
 hidden RN1 [5, 10, 10]
@@ -298,13 +298,13 @@ from P1 response norm {
   }  
 ```
 
-+ A forrás réteg öt 12 x 12 1440 csomópontok összesítés aof léptékű maps tartalmazza. 
-+ Értékének **KernelShape** jelzi, hogy ez egy azonos normalizálási térképréteg, ahol a pontos 3 x 3 téglalap az. 
-+ Az alapértelmezett érték **kitöltési** értéke HAMIS, a célfájl layer csak 10 csomópontok be van minden dimenzió. Egy csomópont a cél rétegben, amely megfelel a forrás-réteg minden csomópontja egészítse kitöltési = [true, true, true]; és RN1 méretének módosítása [5, 12, 12].  
++ A forrás réteg öt aof dimenziójában 12 x 12, 1440 csomópontokon összesítés a maps tartalmazza. 
++ Az érték **KernelShape** azt jelzi, hogy ez egy azonos normalizálási térképréteg, 3 x 3 téglalap a hálózatok esetén. 
++ Az alapértelmezett érték **Padding** értéke HAMIS, így a cél réteg rendelkezik minden dimenzió csak 10 csomópont. Egy csomópont a cél-rétegben, amely megfelel a forrás-réteg minden csomópontján történő felvételéhez adja hozzá kitöltés = [true, true, true]; és RN1 méretének módosítása [5, 12, 12].  
 
-## <a name="share-declaration"></a>Fájlmegosztás a nyilatkozatot
+## <a name="share-declaration"></a>Deklarace megosztása
 
-NET # opcionálisan is támogatja a megosztott súlyozással több csomagokat. A súlyok bármely két kötegek megoszthatók, ha azok struktúrák azonos. A következő szintaxist a megosztott súlyozással rendelkező csomagok határozza meg:  
+NET # igény szerint is támogatja a megosztott súlyok több kötegbe. Bármely két csomagjaiból súlyozását megoszthatók, ha azok struktúrákat megegyezik. A következő szintaxist a megosztott súlyok csomagjaiból határozza meg:  
 
 ```Net#
 share-declaration:
@@ -334,7 +334,7 @@ share-declaration:
     identifier
 ```
 
-Például a következő megosztás-adja meg a réteg nevek, amely azt jelzi, hogy a súlyok és a elfogultság megosztott:  
+Például a következő fájlmegosztás-nyilatkozat megadja a réteg nevét, amely azt jelzi, hogy a súlyok és a feldolgozáshoz megosztott:  
 
 ```Net#
 Const {
@@ -356,11 +356,11 @@ output Result [2] {
 share { H1, H2 } // share both weights and biases  
 ```
 
-+ A bemeneti szolgáltatások particionáltak két egyenlő méretű bemeneti rétegben. 
-+ A Rejtett réteg majd számítási a két bemeneti rétegek magasabb szintű funkciók. 
-+ A megosztás-deklaráció azt jelenti, hogy *H1* és *H2* a a megfelelő bemenetei ugyanúgy kell számolni.  
++ A bemeneti funkciói két egyenlő méretű bemeneti rétegek vannak particionálva. 
++ A rejtett réteget majd a magasabb szintű szolgáltatásai a két bemeneti rétegek számítási. 
++ A megosztás deklarace azt jelenti, hogy *H1* és *H2* , a megfelelő bemenetek ugyanúgy kell számolni.  
 
-Azt is megteheti ez sikerült lehet megadni két külön megosztás-deklarációk az alábbiak szerint:  
+Azt is megteheti ez sikerült adható meg két különálló megosztás-deklarációkat a következőképpen:  
 
 ```Net#
 share { Data1 => H1, Data2 => H2 } // share weights  
@@ -368,15 +368,15 @@ share { Data1 => H1, Data2 => H2 } // share weights
     share { 1 => H1, 1 => H2 } // share biases  
 ```
 
-A rövid alak: / is használhatja, csak ha a rétegek csomagban szerepel. Megosztás általában lehetséges csak akkor, ha a megfelelő struktúra megegyezik, ami azt jelenti, hogy rendelkeznek a azonos méretűnek, azonos convolutional geometriai és így tovább.  
+A rövid űrlapot is használhatja, csak ha a rétegek szerepel a csomagban. Megosztás általában lehetőség csak akkor, ha a megfelelő szerkezete azonos, ami azt jelenti, hogy rendelkezik az azonos méretű, azonos konvolúciós geometry és így tovább.  
 
 ## <a name="examples-of-net-usage"></a>Net # használati példák
 
-Ez a témakör néhány példa arra, hogyan használhatja a Net # rejtett réteg hozzáadásához meghatározhatja, hogy a Rejtett réteg más rétegeiből kommunikál, és állítsa be convolutional hálózatok.
+Ez a témakör néhány példát, hogyan használhatja a Net # rejtett réteget hozzáadásához adja meg a módon, hogy rejtett réteget egyéb biztonsági interaktívan, konvolúciós hálózatokat hozhat létre.
 
-### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>Adja meg egy egyszerű egyéni Neurális hálózat: "Hello, World" – példa
+### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>Egy egyszerű egyéni Neurális hálózat meghatározása: "Hello World" példa
 
-Ez egyszerű példa bemutatja, hogyan, amely rendelkezik egy rejtett rétegben Neurális hálózat modell létrehozásához.
+Ebben az egyszerű példában bemutatja, hogyan hozhat létre, amely rendelkezik egy rejtett rétegben Neurális hálózat modell.
 
 ```Net#
 input Data auto;
@@ -384,15 +384,15 @@ hidden H [200] from Data all;
 output Out [10] sigmoid from H all;  
 ```
 
-A példa bemutatja, néhány alapvető parancsok az alábbiak szerint:  
+A példa szemlélteti a következő néhány alapvető parancsot:  
 
-+ Az első sor meghatározza a bemeneti réteg (nevű `Data`). Ha a `auto` kulcsszóval, a Neurális hálózat automatikusan felveszi a szolgáltatás az összes oszlop a bemeneti példák. 
-+ A második sor hoz létre a rejtett rétegben. A név `H` a rejtett rétegben, amely 200 csomópont van rendelve. Ez a réteg teljesen csatlakozni a bemeneti réteg.
-+ A harmadik sorban határozza meg a kimeneti réteg (nevű `O`), 10 kimeneti csomópontok, amely tartalmazza. Neurális hálózat besorolást használják, ha van egy kimeneti csomópont / osztály. A kulcsszó **sigmoid** azt jelzi, hogy a kimeneti függvénynek a kimeneti réteg van hozzárendelve.
++ Az első sora határozza meg a bemeneti réteg (nevű `Data`). Ha a `auto` kulcsszó, a Neurális hálózat automatikusan tartalmazza az összes funkció oszlop a bemeneti példák. 
++ A második sor hoz létre a rejtett rétegben. A név `H` a rejtett rétegben, amelynek 200 csomópontok hozzá van rendelve. Ez a réteg a bemeneti réteg teljes csatlakozik.
++ A harmadik sora határozza meg, a kimenete rétegen (nevű `O`), amely 10 kimeneti csomópont tartalmazza. A Neurális hálózat besorolást használják, van-e egy kimeneti csomópontonkénti osztály. A kulcsszó **sigmoid** azt jelzi, hogy a kimeneti függvény a kimenete rétegen van alkalmazva.
 
-### <a name="define-multiple-hidden-layers-computer-vision-example"></a>Adja meg a több rejtett réteg: számítógép átfogóan bemutató példa
+### <a name="define-multiple-hidden-layers-computer-vision-example"></a>Több rejtett réteg meghatározása: számítógép vision példa
 
-A következő példa bemutatja, hogyan adhat meg egy kicsit bonyolultabb Neurális hálózat, a több egyéni rejtett réteg.  
+A következő példa bemutatja, hogyan definiálhat egy némileg összetettebb Neurális hálózat, a több egyéni rejtett réteget.  
 
 ```Net#
 // Define the input layers 
@@ -418,17 +418,17 @@ from MetaData all;
 }  
 ```
 
-Ebben a példában a Neurális hálózatokat nyelv több funkcióit mutatja be:
+Ebben a példában a Neurális hálózati specifikációs nyelv számos funkcióit mutatja be:
 
-+ A struktúrának van két bemeneti réteg `Pixels` és `MetaData`.
-+ A `Pixels` réteg rétegeket célfájl, két kapcsolat csomagokat, a forrás-rétege `ByRow` és `ByCol`.
-+ A rétegek `Gather` és `Result` cél rétegek több kapcsolat csomagokat a rendszer.
-+ A kimeneti réteg `Result`, a cél réteg két kapcsolat kötegek; egy, a második szintű rejtett réteg `Gather` cél réteg, míg a másik, a bemeneti réteg `MetaData` cél rétegként.
-+ A Rejtett réteg `ByRow` és `ByCol`, adja meg a szűrt kapcsolat predikátum kifejezések használatával. Pontosabban, a csomópont `ByRow` : [x, y] csatlakozik-e a csomópontok `Pixels` , hogy rendelkezik az első index koordinálja a csomópont egyenlőnek csomagazonosítóját az első összehangolják x. Hasonlóképpen, a csomópont `ByCol` : [x, y] csatlakozik-e a csomópontok `Pixels` második koordinálja, y, hogy rendelkezik a második index koordinálja a csomópont egyik végpontjára.
++ A struktúrának van két bemeneti réteget, `Pixels` és `MetaData`.
++ A `Pixels` réteg, amely egy forrás két kapcsolat csomagok, a cél rétegeket, `ByRow` és `ByCol`.
++ A rétegek `Gather` és `Result` cél rétegeket, a kapcsolat több kötegbe vannak.
++ A kimenete rétegen `Result`, egy cél, két kapcsolat csomagjaiból: egy, a második szintű rejtett réteg `Gather` cél réteg, míg a másik a bemeneti réteggel `MetaData` cél összetevővel.
++ A rejtett réteget `ByRow` és `ByCol`, adja meg a szűrt kapcsolat predikátum kifejezések alapján. Pontosabban, a csomópont a `ByRow` , [x, y] csomópontjainak csatlakozik `Pixels` , hogy rendelkezik az első index koordinálja a csomópont megegyezik a első koordináta, x. Hasonlóképpen, a csomópont `ByCol` , [x, y] csatlakozik-e a csomópontok `Pixels` , hogy rendelkezik a második index koordinálja a csomópont egyikében a második koordináta, y.
 
-### <a name="define-a-convolutional-network-for-multiclass-classification-digit-recognition-example"></a>Adja meg a multiclass besorolási convolutional hálózati: számjegy felismerés – példa
+### <a name="define-a-convolutional-network-for-multiclass-classification-digit-recognition-example"></a>Többosztályos osztályozási konvolúciós hálózat meghatározása: számjegy felismerés példa
 
-A következő hálózati meghatározását arra tervezték, hogy ismeri fel azt a számot, és azt szemlélteti, hogy néhány speciális technikák Neurális hálózat testreszabásához.  
+A következő hálózati definícióját úgy tervezték, hogy ismeri fel a számokat, és azt mutatja be néhány speciális módszerekig Neurális hálózat testreszabásához.  
 
 ```Net#
 input Image [29, 29];
@@ -453,18 +453,19 @@ output Digit [10] from Hid3 all;
 ```
 
 + A struktúrának van egy bemeneti rétegben `Image`.
-+ A kulcsszó `convolve` azt jelzi, hogy a rétegek nevű `Conv1` és `Conv2` convolutional rétegek vannak. Minden, a réteg nyilatkozatok követi a konvolúció attribútumok listáját.
-+ A háló harmadik rejtett réteg, `Hid3`, amely teljes mértékben csatlakozik-e a második rejtett réteg `Conv2`.
-+ A kimeneti réteg `Digit`, csak a harmadik rejtett réteg csatlakozik `Hid3`. A kulcsszó `all` azt jelzi, hogy a kimeneti réteg teljesen csatlakozik `Hid3`.
-+ Az aritása a konvolúció három: a rekordok hosszát `InputShape`, `KernelShape`, `Stride, and `megosztás ". 
-+ A súlyok / kernel száma `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26`. Vagy `26 * 50 = 1300`.
-+ Kiszámolhatja, minden egyes rejtett rétegben található csomópontok az alábbiak szerint:
++ A kulcsszó `convolve` azt jelzi, hogy a rétegek nevű `Conv1` és `Conv2` konvolúciós rétegek vannak. A réteg nyilatkozatok mindegyike a konvolúció attribútumok listája követi.
++ A háló harmadik rejtett réteget, `Hid3`, amely teljes mértékben csatlakozik a második rejtett réteg `Conv2`.
++ A kimenete rétegen `Digit`, csak a harmadik rejtett réteg csatlakozik `Hid3`. A kulcsszó `all` azt jelzi, hogy a kimenete rétegen teljes csatlakozik `Hid3`.
++ A arita Pro instanci a konvolúció az harmadik: a rekordok felsorolásának hossza `InputShape`, `KernelShape`, `Stride, and `megosztás ". 
++ A kernel kiszolgálónként súlyok száma `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26`. Vagy `26 * 50 = 1300`.
++ A következő kiszámíthatja a minden egyes rejtett rétegben található csomópontok:
 
-    `NodeCount\[0] = (5 - 1) / 1 + 1 = 5` `NodeCount\[1] = (13 - 5) / 2 + 1 = 5` `NodeCount\[2] = (13 - 5) / 2 + 1 = 5`
+    `NodeCount\[0] = (5 - 1) / 1 + 1 = 5` `NodeCount\[1] = (13 - 5) / 2 + 1 = 5`
+    `NodeCount\[2] = (13 - 5) / 2 + 1 = 5`
 
-+ A csomópontok száma kerülhet sor, a réteg deklarált dimenzióinak használatával [50, 5, 5], az alábbiak szerint: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
-+ Mivel `Sharing[d]` FALSE csak `d == 0`, kernelek száma `MapCount * NodeCount\[0] = 10 * 5 = 50`. 
++ A csomópontok száma összesen számítható ki a réteg a deklarált dimenziói használatával [50, 5, 5], a következő: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
++ Mivel `Sharing[d]` hamis csak `d == 0`, kernelekkel száma `MapCount * NodeCount\[0] = 10 * 5 = 50`. 
 
 ## <a name="acknowledgements"></a>Nyugták
 
-A Net # nyelv Neurális hálózatokat architektúrájának testreszabásához fejlesztette ki Microsoft Shon Katzenberger (felelős mérnök, gépi tanulás) és ALEKSZEJ Kamenev (szoftver visszafejtés, a Microsoft Research). Ez belső használatra készült a gépi tanulási projektek és alkalmazások szövegelemzések kép észlelési kezdve. További információkért lásd: [Neurális háló Azure ml - Net # bemutatása](http://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)
+A Net # nyelv Neurális hálózati architektúrájának testreszabásához fejlesztette Microsoft Shon Katzenberger (mérnök, Machine Learning), és ALEKSZEJ Kamenev (Szoftvermérnök, a Microsoft Research). Machine learning-projektek és az alkalmazások és a lemezkép észlelési text analytics belsőleg használatos. További információkért lásd: [Azure ml - Bevezetés a Net # Neurális hálózatokkal](http://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)

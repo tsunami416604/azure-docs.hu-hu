@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 63a45aa02eadd0b5739c1624af524883171a7055
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8dc6b7da77988a789de04578d6653b192f58afa8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211196"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51261723"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása
 
@@ -81,9 +81,9 @@ Ha URL-alapú tűzfalproxyt használ a kimenő kapcsolat szabályozásához, biz
 
 Ha URL-ek helyett IP-címekkel szeretné szabályozni a kimenő kapcsolatot, vegye fel az engedélyezési listára a megfelelő adatközpont-tartományokat, Office 365-címeket, valamint az IP-alapú tűzfalak, proxyk vagy NSG-szabályok szolgáltatásvégpont-címeit.
 
-  - [A Microsoft Azure adatközpont IP-tartományai](http://www.microsoft.com/en-us/download/details.aspx?id=41653)
-  - [A Microsoft Azure adatközpont IP-tartományai Németországban](http://www.microsoft.com/en-us/download/details.aspx?id=54770)
-  - [A Microsoft Azure adatközpont IP-tartományai Kínában](http://www.microsoft.com/en-us/download/details.aspx?id=42064)
+  - [A Microsoft Azure adatközpont IP-tartományai](https://www.microsoft.com/en-us/download/details.aspx?id=41653)
+  - [A Microsoft Azure adatközpont IP-tartományai Németországban](https://www.microsoft.com/en-us/download/details.aspx?id=54770)
+  - [A Microsoft Azure adatközpont IP-tartományai Kínában](https://www.microsoft.com/en-us/download/details.aspx?id=42064)
   - [Office 365 URL-címek és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
   - [Site Recovery-szolgáltatásvégpontok IP-címei](https://aka.ms/site-recovery-public-ips)
 

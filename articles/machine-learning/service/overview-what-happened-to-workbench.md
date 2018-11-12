@@ -9,16 +9,16 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: d90f1791a05d575caedfdd5c696bb1e6d6c29376
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: b8263c399f287be79590860cce7036207ef2e3f7
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091916"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243743"
 ---
 # <a name="what-is-happening-to-workbench-in-azure-machine-learning-preview"></a>Mi történik a Workbench alkalmazással az Azure Machine Learning (előzetes verzió) szolgáltatásban?
 
-A 2018. szeptemberi kiadásban a Workbench alkalmazás és néhány egyéb korai funkció elavulttá vált, hogy lehetővé tegye a továbbfejlesztett [architektúra](concept-azure-machine-learning-architecture.md) bevezetését. A kiadás számos, ügyfélvisszajelzésen alapuló jelentős frissítést tartalmaz a felhasználói élmény javítása érdekében. Az kísérleti futtatásoktól a modell-üzembehelyezésig az alapvető funkciók nem változtak, de most már használhatja a robusztus <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> és [CLI](reference-azure-machine-learning-cli.md) eszközöket a gépi tanulási feladatok és folyamatok végrehajtására.  
+A 2018. szeptemberi kiadásban a Workbench alkalmazás és néhány egyéb korai funkció elavulttá vált, hogy lehetővé tegye a továbbfejlesztett [architektúra](concept-azure-machine-learning-architecture.md) bevezetését. A kiadás számos, ügyfélvisszajelzésen alapuló jelentős frissítést tartalmaz a felhasználói élmény javítása érdekében. Az kísérleti futtatásoktól a modell-üzembehelyezésig az alapvető funkciók nem változtak, de most már használhatja a robusztus <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> és [CLI](reference-azure-machine-learning-cli.md) eszközöket a gépi tanulási feladatok és folyamatok végrehajtására.  
 
 Ebből a cikkből elsajátíthatja, mi változott, és hogyan érinti ez a már meglévő munkáját az Azure Machine Learning szolgáltatásban.
 
@@ -27,7 +27,7 @@ Ebből a cikkből elsajátíthatja, mi változott, és hogyan érinti ez a már 
 Az Azure Machine Learning szolgáltatás legújabb kiadása a következőket tartalmazza:
 + Egy [egyszerűsített Azure-erőforrásmodell](concept-azure-machine-learning-architecture.md)
 + [Új portál felhasználói felület](how-to-track-experiments.md) a kísérletek és számítási célok kezeléséhez
-+ Egy új, szélesebb körű Python <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a>
++ Egy új, szélesebb körű Python <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>
 + Egy új, kibővített [Azure CLI-bővítmény](reference-azure-machine-learning-cli.md) a gépi tanuláshoz
 
 Az [architektúra](concept-azure-machine-learning-architecture.md) a könnyű használat szem előtt tartásával lett újratervezve. Több Azure-erőforrás és -fiók helyett csak egy [Azure Machine Learning-munkaterület](concept-azure-machine-learning-architecture.md#workspace) szükséges.  Az [Azure Portalon](quickstart-get-started.md) gyorsan létrehozhat munkaterületeket.  A munkaterületet több felhasználó is használhatja tanulási és üzembe helyezési számítási célok, modellkísérletek, Docker-lemezképek, üzembe helyezett modellek stb. tárolására.
@@ -49,7 +49,7 @@ Kísérletezési és modellkezelési fiókjait, valamint a Workbench alkalmazás
 |1|Megszűnik az _Azure Machine Learning-kísérletezési fiók_ és _modellkezelési fiók_ Azure Portalon és a CLI-ből való létrehozásának lehetősége. A Machine Learning Compute-környezetek CLI-ből való létrehozásának lehetősége is megszűnik. Meglévő fiók esetén a CLI és az asztali Workbench ebben a fázisban továbbra is működni fog.|
 |2|Ebben a fázisban minden más, így a fennmaradó API-k és az asztali Workbench támogatása megszűnik.|
 
-[Kezdje meg a migrálást](how-to-migrate.md) még ma. A legújabb funkciók mindegyike elérhető az új <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a>, [CLI](reference-azure-machine-learning-cli.md) és [portál](quickstart-get-started.md) használatával.
+[Kezdje meg a migrálást](how-to-migrate.md) még ma. A legújabb funkciók mindegyike elérhető az új <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>, [CLI](reference-azure-machine-learning-cli.md) és [portál](quickstart-get-started.md) használatával.
 
 ## <a name="what-about-run-histories"></a>Mi a helyzet a futtatási előzményekkel?
 
@@ -66,9 +66,9 @@ A portál munkaterület irányítópultjának használata csak Edge, Chrome és 
 
 A már meglévő adat-előkészítési fájlok nem hordozhatók a legújabb verzióba, mivel többé már nincs Workbench. Azonban továbbra is előkészítheti az adatokat modellezésre.  
 
-Kisebb adatkészletekkel használhatja az <a href="http://aka.ms/aml-sdk" target="_blank">Azure Machine Learning adat-előkészítési SDK-t</a> az adatok modellezés előtti gyors előkészítésére. 
+Kisebb adatkészletekkel használhatja az <a href="https://aka.ms/aml-sdk" target="_blank">Azure Machine Learning adat-előkészítési SDK-t</a> az adatok modellezés előtti gyors előkészítésére. 
 
-Használhatja ugyanezt az <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> készletet nagyobb adatkészletekhez, vagy nagy adatkészletek előkészítésére használhatja az Azure Databricks szolgáltatást. 
+Használhatja ugyanezt az <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> készletet nagyobb adatkészletekhez, vagy nagy adatkészletek előkészítésére használhatja az Azure Databricks szolgáltatást. 
 
 ## <a name="will-projects-persist"></a>Megmaradnak a projektek?
 
@@ -94,7 +94,7 @@ Az újabb verzióban a modellek webszolgáltatásként vannak telepítve az [Azu
 
 Igen, ezek egy ideig továbbra is működni fognak (lásd a fenti [ütemtervet](#timeline)). Javasoljuk, hogy az új kísérletek és modellek létrehozást a legújabb SDK-val és/vagy CLI-vel kezdje el.
 
-A legújabb kiadásban az új Python SDK használatával bármely Python környezetben kommunikálhat az Azure Machine Learning szolgáltatással. Ismerje meg, hogyan telepítheti a legújabb <a href="http://aka.ms/aml-sdk" target="_blank">SDK-t</a>.  A [frissített Azure CLI gépi tanulási bővítményt](reference-azure-machine-learning-cli.md) is használhatja `az ml` parancsok széles választékával, hogy bármely parancssori felületről interakcióba léphessen a szolgáltatással, többek között az Azure Portal Cloud Shellel.
+A legújabb kiadásban az új Python SDK használatával bármely Python környezetben kommunikálhat az Azure Machine Learning szolgáltatással. Ismerje meg, hogyan telepítheti a legújabb <a href="https://aka.ms/aml-sdk" target="_blank">SDK-t</a>.  A [frissített Azure CLI gépi tanulási bővítményt](reference-azure-machine-learning-cli.md) is használhatja `az ml` parancsok széles választékával, hogy bármely parancssori felületről interakcióba léphessen a szolgáltatással, többek között az Azure Portal Cloud Shellel.
 
 ## <a name="what-about-vs-code-tools-for-ai"></a>Mi a helyzet a VS Code Tools for AI bővítménnyel?
 
@@ -104,7 +104,7 @@ Ezzel a legújabb kiadással a Visual Studio (VS) Code Tools for AI bővítmény
 
 ## <a name="what-about-domain-packages"></a>Mi a helyzet a tartománycsomagokkal?
 
-A [Computer Vision, a Text Analytics és a Forecasting](../desktop-workbench/reference-python-package-overview.md) tartománycsomagjai az Azure Machine Learning legújabb verziójával nem használhatók. Azonban az Azure Machine Learning Python legújabb <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> csomagjával továbbra is létrehozhat és taníthat Computer Vision, Text Analytics és Forcasting modelleket. Ha szeretné megtudni, hogyan telepítse át a meglévő, Computer Vision, Text Analytics és Forecasting csomagokkal felépített modelleket, lépjen velünk kapcsolatba a következő címen: [AML-Packages@microsoft.com](mailto:AML-Packages@microsoft.com).
+A [Computer Vision, a Text Analytics és a Forecasting](../desktop-workbench/reference-python-package-overview.md) tartománycsomagjai az Azure Machine Learning legújabb verziójával nem használhatók. Azonban az Azure Machine Learning Python legújabb <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> csomagjával továbbra is létrehozhat és taníthat Computer Vision, Text Analytics és Forcasting modelleket. Ha szeretné megtudni, hogyan telepítse át a meglévő, Computer Vision, Text Analytics és Forecasting csomagokkal felépített modelleket, lépjen velünk kapcsolatba a következő címen: [AML-Packages@microsoft.com](mailto:AML-Packages@microsoft.com).
 
 ## <a name="next-steps"></a>További lépések
 

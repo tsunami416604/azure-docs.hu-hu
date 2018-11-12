@@ -1,6 +1,6 @@
 ---
-title: Az Azure SDK for .NET 2.6 kibocsátási megjegyzések
-description: Az Azure SDK for .NET 2.6 kibocsátási megjegyzések
+title: 2.6 .NET-hez készült Azure SDK kibocsátási megjegyzései
+description: 2.6 .NET-hez készült Azure SDK kibocsátási megjegyzései
 services: app-service/web
 documentationcenter: .net
 author: chrissfanos
@@ -13,89 +13,89 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 21817b09440fc98a54dc45c9129d104b01fa387d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 040eea1efd3abdbbfa65c24b2950ebece9d4acbc
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23836461"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258391"
 ---
-# <a name="azure-sdk-for-net-26-release-notes"></a>Az Azure SDK for .NET 2.6 kibocsátási megjegyzések
-Ez a dokumentum az Azure SDK for .NET 2.6 kiadás tartalmazza a kibocsátási megjegyzéseket. 
+# <a name="azure-sdk-for-net-26-release-notes"></a>2.6 .NET-hez készült Azure SDK kibocsátási megjegyzései
+Ez a dokumentum az Azure SDK for .NET 2.6-os kiadás tartalmazza a kibocsátási megjegyzéseket. 
 
-Az Azure SDK 2.6 fejleszthet felhőalapú szolgáltatás alkalmazások (PaaS) célcsoport-kezelési .NET 4.5.2 vagy .NET 4.6 feltéve, hogy a felhő szerepkör-szolgáltatás a .NET-keretrendszer célzott manuálisan telepítenie. Lásd: [.NET telepíthető egy felhőalapú szolgáltatás szerepkör](http://go.microsoft.com/fwlink/?LinkID=309796).
+Az Azure SDK 2.6-os fejleszthet a .NET 4.5.2-es vagy a .NET 4.6 célzó, feltéve, hogy manuálisan telepíti a .NET-keretrendszer célja a Felhőszolgáltatási szerepkör a felhőbeli szolgáltatásalkalmazások (PaaS). Lásd: [a .NET telepítése egy Cloud Service szerepkör](https://go.microsoft.com/fwlink/?LinkID=309796).
 
-## <a name="service-bus-updates"></a>A Service Bus frissítések
+## <a name="service-bus-updates"></a>Service Bus-frissítések
 * Az Event Hubs: 
   
-  * Most már lehetővé teszi, hogy célzott hozzáférés-vezérlés jelentkezik, mintha a további publisher végpont az Event Hubs számára események küldésekor.
-  * Stabilitását és fokozása Event Hubs szolgáltatás hozzá.
-  * Üzenetküldési felvételekor WebSocket keresztül Amqp protokoll támogatása és az Event Hubs.
+  * Most már lehetővé teszi célzott hozzáférés-vezérlés, amikor események küldése az Event Hubs teszi elérhetővé a további közzétevő végpont.
+  * Stabilitását és az Event Hubs szolgáltatás hozzá fokozása.
+  * Vegye fel az Amqp protokoll támogatása websocketen-üzenetkezelés és az Event Hubs.
 
-## <a name="hdinsight-tools-for-visual-studio-updates"></a>A HDInsight Tools for Visual Studio frissítések
-* **IntelliSense a fejlesztés**: távoli metaadatok javaslat
+## <a name="hdinsight-tools-for-visual-studio-updates"></a>HDInsight Tools for Visual Studio-frissítések
+* **Az IntelliSense a fejlesztés**: metaadatok távoli javaslat
   
-    A HDInsight Tools for Visual Studio támogatja távoli a metaadatokat a Hive parancsfájl szerkesztésekor. Beírhatja például **válasszon * FROM** és megjelenik-e a táblanevek. Is az oszlopnevek jelenik meg a tábla megadása után.
-* **HDInsight emulátor támogatása**
+    HDInsight Tools for Visual Studio mostantól támogatja a metaadatok távoli első, a Hive parancsfájl szerkesztésekor. Beírhatja például **kiválasztása * FROM** és a táblanevek jelennek meg. Az oszlopok neveit is, megjelenik egy tábla megadása után.
+* **HDInsight emulator támogatása**
   
-    Most már a HDInsight Tools for Visual Studio támogatja a HDInsight emulátoron csatlakozik, így vezet be, semmilyen költség nélkül helyileg összeállíthatja a Hive parancsfájlokat, majd hajtható végre ezeket a HDInsight-fürtök parancsprogramok. 
+    Most már HDInsight Tools for Visual Studio támogatja a HDInsight emulator csatlakozik, így a Hive-szkriptek helyi sikerült fejlesztés bármilyen költséggel, anélkül, majd hajtsa végre ezeket a szkripteket, szemben a HDInsight-fürtök. 
   
-    További információkért tekintse meg [a manuális](http://go.microsoft.com/fwlink/?LinkID=529540&clcid=0x409).
-* **A HDInsight Tools for Visual Studio támogatja az általános Hadoop-fürtök** (előzetes verzió)
+    További információkért tekintse meg [a jelen](https://go.microsoft.com/fwlink/?LinkID=529540&clcid=0x409).
+* **HDInsight Tools for Visual Studio támogatja az általános Hadoop-fürtjeinek** (előzetes verzió)
   
-    A HDInsight Tools for Visual Studio támogassák az általános Hadoop-fürtök, hogy használhassa a HDInsight Tools for Visual Studio, a következőket teheti:
+    HDInsight Tools for Visual Studio támogassák az általános Hadoop-fürtök, így a HDInsight Tools for Visual Studio segítségével a következőket:
   
-  * Csatlakozzon a fürthöz 
-  * továbbfejlesztett IntelliSense/automatikus-végrehajtási-támogatással rendelkező Hive-lekérdezések írása 
-  * a feladatok megtekintéséhez a fürt egy egyszerűen elsajátítható felhasználói felületén. 
+  * Csatlakozás a fürthöz 
+  * Az IntelliSense/automatikus kiegészítését továbbfejlesztett támogatás, a Hive-lekérdezés írása 
+  * egy intuitív felhasználói felületen keresztül a fürt összes feladat megtekintése. 
     
-    További információkért tekintse meg [a manuális](http://go.microsoft.com/fwlink/?LinkID=529540&clcid=0x409).
+    További információkért tekintse meg [a jelen](https://go.microsoft.com/fwlink/?LinkID=529540&clcid=0x409).
 
-## <a name="in-role-cache-updates"></a>Szerepköralapú gyorsítótár-frissítéseinek
-* **Szerepköralapú gyorsítótár** használandó frissült **Microsoft Azure Storage szolgáltatás SDK** 4.3 verziója. Eddig a **szerepköralapú gyorsítótár** használta az Azure Storage szolgáltatás SDK 1.7-es verziójának.
+## <a name="in-role-cache-updates"></a>A szerepköralapú gyorsítótár-frissítések
+* **A szerepköralapú gyorsítótár** használandó frissült **a Microsoft Azure Storage SDK** 4.3-as verzióját. Eddig a **a szerepköralapú gyorsítótár** használta a szolgáltatást az Azure Storage SDK 1.7-es verziója.
   
-    Az ügyfelek használata az Azure SDK 2.5-ös vagy az alábbiakban kell frissítése a Azure SDK 2.6 és áthelyezése az Azure Storage SDK új verziójával. 
+    Ügyfelek használata az Azure SDK 2.5-ös vagy az alábbiakban kell frissíteni az Azure SDK 2.6-os és áthelyezése az Azure Storage SDK új verziójával. 
   
-    Jelenleg az Azure Storage 2011-08-18-as verzió 2016 augusztusától 1 eltávolításra van ütemezve. Bármely áttelepítések szerepköralapú gyorsítótár az Azure SDK 2.5-ös vagy az alatti 2.6 csak teljes időpontig. Az Azure Storage 2011-08-18-as verzió a használatból való kivonást további információkért lásd: [Microsoft Azure Storage szolgáltatás eltávolítása Verziófrissítés: 2016 bővítmény](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx).
+    Jelenleg az Azure Storage 2011-08-18-as verzió el kell távolítani a 2016. augusztus 1-én van ütemezve. A szerepköralapú gyorsítótár az Azure SDK 2.5-ös vagy az alatti bármely áttelepítések 2.6 kell lennie teljes az időpontig. A használatból való kivonást egyaránt az Azure Storage 2011-08-18-as verzió további információkért lásd: [a Microsoft Azure Storage szolgáltatás verziója eltávolítása frissítés: 2016-ra való kiterjesztés](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx).
 
 > [!IMPORTANT]
-> Az Azure Managed Cache Service és az Azure szerepköralapú gyorsítótár 30 2016 novemberétől kezdve, használatból való kivonást azt még bejelentése. Azt javasoljuk, hogy át Azure Redis Cache a használatból való kivonást előkészítésekor. A dátumok és áttelepítési útmutató további információkért lásd: [amely Azure Cache-ajánlatot megfelelő a számomra?](../redis-cache/cache-faq.md#which-azure-cache-offering-is-right-for-me)
+> A 2016. November 30 használatból való kivonást egyaránt az Azure Managed Cache Service és a szerepköralapú gyorsítótár adunk. Azt javasoljuk, hogy telepít át az Azure Redis Cache a kivonás előkészítésekor. Dátum- és migrálási útmutató segítséget nyújt a további információkért lásd: [melyik Azure gyorsítótárat használjam a megfelelő a számomra?](../redis-cache/cache-faq.md#which-azure-cache-offering-is-right-for-me)
 > 
 > 
 
-## <a name="azure-app-service-tools"></a>Az Azure App Service-eszközök
-A következő elemek frissítve lett az Azure SDK 2.6 kiadásban.
+## <a name="azure-app-service-tools"></a>Az Azure App Service-eszközöket
+A következő elemek frissítése az Azure SDK 2.6-os kiadásában.
 
-* Az Azure közzétételi megnövekedett, hogy tartalmazzák az Azure API-alkalmazások központi telepítés céljaként.
-* API-alkalmazások kiépítés funkció engedélyezése a felhasználók az API-alkalmazás létrehozása és üzembe helyezési funkciókkal.
-* Server Explorer megfelelően új App Service-csomópont, a webes, mobil és API apps erőforráscsoport szerint csoportosítva módosítani.
-* Adja hozzá az Azure API App ügyfél kézmozdulat hozzáadni a legtöbb C# projekt, amely lehetővé teszi a Swagger-kompatibilis API-alkalmazások futtatása a felhasználó Azure-előfizetés automatikus létrehozása.
-* API-alkalmazások tooling és a Server Explorer App Service-csomópontok érhetők el a Visual Studio 2013 csak. 
+* A továbbfejlesztett közé tartozik az Azure API Apps telepítési cél Azure-beli közzétételt.
+* Az API Apps funkció kiépítés engedélyezése a felhasználók az API-alkalmazás létrehozása és üzembe helyezését funkciókkal.
+* Server Explorer új App Service-csomópont, megfelelően az erőforráscsoport szerint csoportosított webes, mobilos és API apps módosítani.
+* Adja hozzá a legtöbb hozzáadva az Azure API App Client kézmozdulat C# projektek, amely lehetővé teszi a Swagger-kompatibilis API-alkalmazásokat a felhasználó az Azure-előfizetés automatikus előállításához.
+* Az API Apps azokat az eszközöket és az App Service-csomópontok a Server Explorerben érhető el a Visual Studio 2013 csak. 
 
-## <a name="azure-resource-manager-tools-updates"></a>Frissíti az Azure erőforrás-kezelő eszközei
-Az Azure erőforrás-kezelő eszközei közé tartoznak a sablonok a virtuális gépek, hálózati és tárolási frissített. A szerkesztési funkciót JSON sablonok és a sablonoknak JSON kódtöredékek szerkesztése új vázlat nézet tartalmazza frissítve lett. A Visual Studio telepített sablonok megadott a projekthez, milyen módosítások történtek a parancsfájlt a Visual Studio által használt PowerShell parancsfájl használata.
+## <a name="azure-resource-manager-tools-updates"></a>Azure Resource Manager Tools-frissítések
+Az Azure resource manager tools frissítve lett-e, ha hozzá szeretné adni sablonok virtuális gépekhez, hálózati és tárolási. Sablonok és szerkesztheti a sablonok JSON-kódtöredékek használata lehetővé teszi új vázlat nézet tartalmazza a szerkesztési lehetőséget JSON frissítve lett. A Visual Studióból üzembe helyezett sablonokat, amelyekből a projekttel végzett módosítások a parancsfájlt a Visual Studio által használható egy PowerShell-parancsfájlt használja.
 
-## <a name="diagnostics-improvements-for-cloud-services"></a>Cloud Services diagnosztika érintő fejlesztések
-Az Azure SDK 2.6 megteremti vissza az Azure compute emulator a diagnosztikai naplók gyűjtésére, és mentse őket fejlesztési tárolási támogatása. A diagnosztikai naplók (beleértve az alkalmazás nyomkövetési naplókat, esemény-nyomkövetés (ETW) Windows-naplók, a teljesítményszámlálók, az infrastruktúra naplók és a windows eseménynaplóit) létre, amikor az alkalmazást az emulátorban fut-e át lehet vinni fejlesztési tárolás ellenőrizze, hogy a diagnosztikai naplózás működik-e a helyi számítógépen. 
+## <a name="diagnostics-improvements-for-cloud-services"></a>A Felhőszolgáltatások diagnosztikai fejlesztései
+Az Azure SDK 2.6-os vonja vissza az Azure compute emulator a diagnosztikai naplók gyűjtésére, és mentse őket fejlesztési tárterülettel támogatása. Bármely diagnosztikai naplók (beleértve az alkalmazás nyomkövetési naplókat, esemény-nyomkövetés (ETW) Windows-naplók, teljesítményszámlálók, infrastruktúra naplók és a windows-eseménynaplók) jön létre az alkalmazás futtatásakor az emulátorban át lehet vinni fejlesztési tárterülettel Ellenőrizze, hogy működik-e a diagnosztikai naplózás a helyi gépen. 
 
-A diagnosztikai tárfiók most már megadható a szolgáltatás konfigurációs (.cscfg) fájljában különböző diagnosztika storage-fiókok használatának különböző környezetek megkönnyítése. Bizonyos különbségek vannak a figyelmet a jelentősebb között hogyan Azure SDK 2.4 és az Azure SDK 2.6 működtek-e a kapcsolati karakterláncban. További információ a diagnosztika tárolási kapcsolati karakterlánc használatával, és milyen hatással van a projektek: [diagnosztika konfigurálása az Azure-szolgáltatásokhoz](http://go.microsoft.com/fwlink/?LinkID=532784).
+A diagnosztikai tárfiók most már a szolgáltatás konfigurációs (.cscfg) fájl, megkönnyítve a különböző környezetek különböző diagnosztikai tárfiók használata az adható meg. Nincsenek hogyan a kapcsolati karakterlánc működött az Azure SDK 2.4 és Azure SDK 2.6-os közötti fontosabb különbségeket. További információ a diagnosztikai Tárfiók kapcsolati karakterláncának használata, és milyen hatással van a projektek: [diagnosztika beállítása az Azure Cloud Services](https://go.microsoft.com/fwlink/?LinkID=532784).
 
-## <a name="breaking-changes"></a>Módosítások megszakítása
-### <a name="azure-resource-manager-tools"></a>Az Azure erőforrás-kezelő eszközei
-* A **felhő telepítési projekt** érhető el az Azure SDK 2.5 projekttípus át lett nevezve a **Azure erőforráscsoport**.
-* **A felhő telepítési projekt** projektek az Azure SDK 2.5 típusú 2.6 is használható, de a sablon a Visual Studio telepítése sikertelen lesz. Azonban a PowerShell parancsfájl központi telepítése továbbra is működni fog, ahogy azt korábban.  Használatáról információt **felhő telepítési projekt** 2.6, olvassa el ezt a [utáni](http://go.microsoft.com/fwlink/?LinkID=534086).
+## <a name="breaking-changes"></a>Kompatibilitástörő változások
+### <a name="azure-resource-manager-tools"></a>Azure Resource Manager-eszközök
+* A **felhőalapú üzembe helyezés projektek** projekt típusa érhető el az Azure SDK 2.5-ös kapott **Azure-erőforráscsoport**.
+* **A felhő telepítési projekt** 2.6-projektek az Azure SDK 2.5-ös létrehozott típus használható, de a sablont a Visual Studio telepítése sikertelen lesz. Azonban a PowerShell-parancsprogram üzembe helyezésével továbbra is működnek, mint korábban.  Információk a használatát **felhőalapú üzembe helyezés projektek** 2.6, olvassa el ezt a [közzététele](https://go.microsoft.com/fwlink/?LinkID=534086).
 
 ## <a name="known-issues"></a>Ismert problémák
-* Az emulátorban diagnosztikai naplók gyűjtésére csak 64 bites operációs rendszer. Ha egy 32 bites operációs rendszeren futtatja, a diagnosztikai naplók nem lesznek összegyűjtve. Ez nem befolyásolja a más emulátor funkciók. 
-* 4/29/2015-én kiadott Azure SDK 2.6 kellett két problémákat: 
+* Egy 64 bites operációs rendszer az emulátorban diagnosztikai naplók gyűjtésére van szükség. Ha 32 bites operációs rendszeren futtatja, a diagnosztikai naplók nem lesznek összegyűjtve. Ez nem befolyásolja a bármely más emulátor funkciója. 
+* Az Azure SDK 2.6-os 4/29/2015-én kiadott kellett két problémák: 
   
-  * Univerzális alkalmazást nem sikerült betölteni a Visual Studio 2015, amikor Azure SDK 2.6 lett telepítve a számítógépen.
-  * Egy Felhőszolgáltatás-projekt hibakeresési sikertelen lesz a Visual Studio 2013 és a Visual Studio 2015, ahol a Visual Studio nem válaszol, és összeomlik "Configuring diagnosztika Emulator" üzenettel párbeszédpanel megjelenítése során.
+  * Univerzális alkalmazás nem sikerült betölteni a Visual Studio 2015, Azure SDK 2.6-os lett telepítve a gépen.
+  * A Felhőszolgáltatás-projekt hibakeresés a Visual Studio 2013 és a Visual Studio 2015, Visual Studio hosszabb ideig nem válaszol, és összeomlik, a következő üzenettel: "Configuring diagnosztikai Emulator" párbeszédpanel megjelenítése során sikertelen lesz.
     
-    Azure SDK 2.6 frissítése 5/18/2015 lett szabadítva. A frissített verziója 2.6.30508.1601; a fent leírt két probléma javítását tartalmaz. Azonosíthatja, hogy a build a Vezérlőpultról az SDK -> Programok és szolgáltatások -> Microsoft Azure-eszközök a Microsoft Visual Studio 2013 – v 2.6. A verzió oszlopban jelenik meg a buildszáma.
+    5/18/2015, Azure SDK 2.6-os frissítés jelent meg. A frissített verziója 2.6.30508.1601; a fent leírt két hibák javításait tartalmazza. Azonosíthatja a build, az SDK-t, a Vezérlőpult -> Programok és szolgáltatások -> Nástroje Microsoft Azure Pro Microsoft Visual Studio 2013 – v 2.6-os. A verzió oszlopban a buildszáma.
     
-    Ha a fenti problémák továbbra is küzdenek, telepítse a legújabb verziót 2.6 készült Azure SDK [Visual STUDIO 2012](http://go.microsoft.com/fwlink/p/?linkid=323511&clcid=0x409), [VS 2013](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409) vagy [VS 2015](http://go.microsoft.com/fwlink/?linkid=518003&clcid=0x409).
+    Ha továbbra is a fenti problémák, telepítse a legújabb verziót az SDK 2.6-os Azure [VS 2012](https://go.microsoft.com/fwlink/p/?linkid=323511&clcid=0x409), [VS 2013](https://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409) vagy [VS 2015](https://go.microsoft.com/fwlink/?linkid=518003&clcid=0x409).
 
 ## <a name="see-also"></a>Lásd még:
-[Támogatás és használatból való kivonást információk az Azure SDK-t a .NET és API-khoz](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
+[Támogatási és kivezetési információkat az Azure SDK for .NET és az API-khoz](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
 

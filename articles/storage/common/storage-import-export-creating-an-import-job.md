@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: c1effeba7e4b0750d5af3a5a82b755704379af68
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: d7a9da4ac3560e67a6f7bc8b79a7c2dd37995d4d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44021846"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51258010"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Az Azure Import/Export szolgáltatás importálási feladat létrehozása
 
@@ -35,7 +35,7 @@ A Microsoft Azure Import/Export szolgáltatás REST API használatával importá
 
 Meghajtók előkészítése importálási feladatokhoz a lépések ugyanazok, hogy hoz létre a jobvia a portálon, vagy a REST API-n keresztül.
 
-Az alábbi, a meghajtó előkészítése rövid áttekintése. Tekintse meg a [Azure Import-ExportTool referencia](storage-import-export-tool-how-to-v1.md) részletes utasításokért. Az Azure Import/Export eszközt letöltheti [Itt](http://go.microsoft.com/fwlink/?LinkID=301900).
+Az alábbi, a meghajtó előkészítése rövid áttekintése. Tekintse meg a [Azure Import-ExportTool referencia](storage-import-export-tool-how-to-v1.md) részletes utasításokért. Az Azure Import/Export eszközt letöltheti [Itt](https://go.microsoft.com/fwlink/?LinkID=301900).
 
 A meghajtó előkészítése foglalja magában:
 

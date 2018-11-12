@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 29aea0171c767b2188e3eac23b1d61ffbda8e284
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 37748aaa7f34a51d24091ee04608496ebd45fa90
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986850"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231632"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Az Azure DDoS Protection: Ajánlott eljárások és referenciaarchitektúrákat
 
@@ -28,7 +28,7 @@ Az elosztott szolgáltatásmegtagadásos (DDoS-) tervezése rugalmasság szüks�
 
 ## <a name="types-of-attacks"></a>Típusú támadások
 
-DDoS olyan támadás, amely megkísérli az alkalmazás-erőforrások felhasználta rendelkezésére. A cél, hogy az alkalmazás rendelkezésre állásának és történő jogos kérelmek kezelése hatással van. Kifinomult, és a méretét és a hatása nagyobb támadások mutat. DDoS-támadások célozhatják bármely, amely az interneten keresztül nyilvánosan elérhető végponton.
+DDoS olyan támadás, amely megkísérli az alkalmazás-erőforrások felhasználta rendelkezésére. A cél, hogy az alkalmazás rendelkezésre állásának és történő jogos kérelmek kezelése hatással van. Kifinomult, és a méretét és a hatása nagyobb támadások mutat. A DDoS-támadások bármilyen, az interneten keresztül nyilvánosan elérhető végpontot megcélozhatnak.
 
 Az Azure DDoS-támadásokkal szembeni folyamatos védelmet biztosít. Ez a védelem integrálva van az Azure platform alapértelmezés szerint, és nélkül többletköltség. 
 
@@ -75,7 +75,7 @@ Győződjön meg arról, hogy biztonsági prioritást az alkalmazás, a tervezé
 A Microsoft Azure-on futó szolgáltatás védelme érdekében kell az alkalmazásarchitektúra alapos ismerete és összpontosítson a [szoftverminőség következő öt alappillérére](https://docs.microsoft.com/azure/architecture/guide/pillars).
 Ha tisztában van tipikus forgalommal, a kapcsolódási modellt az alkalmazás és más alkalmazások és a Szolgáltatásvégpontok, amelyek ki vannak téve a nyilvános internethez.
 
-Annak biztosítása, hogy egy alkalmazás elég rugalmas, maga az alkalmazás osztályra irányuló szolgáltatásmegtagadási kezelésére legfontosabb. Az Azure platformba, kezdve beépített biztonság és adatvédelem a [biztonságos fejlesztési Életciklussal (SDL)](https://www.microsoft.com/sdl/default.aspx). Az SDL-ből dobásig minden fejlesztési fázist, és biztosítja, hogy Azure-t folyamatosan frissítjük, hogy még biztonságosabb.
+Annak biztosítása, hogy egy alkalmazás elég rugalmas, maga az alkalmazás osztályra irányuló szolgáltatásmegtagadási kezelésére legfontosabb. Az Azure platformba, kezdve beépített biztonság és adatvédelem a [biztonságos fejlesztési Életciklussal (SDL)](https://www.microsoft.com/sdl/default.aspx). Az SDL-ből dobásig minden fejlesztési fázist, és biztosítja, hogy Azure-t folyamatosan frissítjük, hogy még biztonságosabb.
 
 ### <a name="design-for-scalability"></a>Méretezhetőség tervezése
 
@@ -182,7 +182,7 @@ Kiberbiztonsági védelmi állandó innovációt van szükség. Az Azure DDoS St
 
 DDoS-támadás, amely általában célozza az Azure-erőforrások felhasználói szempontból minimális beavatkozásra van szükség. Továbbra is DDoS beépítése az incidensmegoldási stratégia részeként kockázatcsökkentési minimálisra üzletmenetre gyakorolt hatása.
 
-### <a name="microsoft-threat-intelligence"></a>A Microsoft fenyegetésekkel kapcsolatos Tudásbázis
+### <a name="microsoft-threat-intelligence"></a>Microsoft Threat Intelligence
 
 A Microsoft rendelkezik egy kiterjedt threat intelligence hálózati. Ez a hálózat a közösségi ismeretek egy kiegészítő biztonsági Közösség, amely támogatja a Microsoft online szolgáltatások, Microsoft-partnerek és az internetes biztonság Közösségen belül kapcsolatot használ. 
 
@@ -265,7 +265,7 @@ Ebben az architektúrában a DDoS Protection Standard engedélyezve van a virtu�
 
 #### <a name="paas-web-application"></a>PaaS webalkalmazás
 
-Ez a referenciaarchitektúra bemutatja, hogy egyetlen régión belüli Azure App Service alkalmazások futtatásához. Ezt az architektúrát mutat be bevált eljárásokat használó webalkalmazás [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) és [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/).
+Ez a referenciaarchitektúra bemutatja, hogy egyetlen régión belüli Azure App Service alkalmazások futtatásához. Ezt az architektúrát mutat be bevált eljárásokat használó webalkalmazás [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) és [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/).
 Feladatátvételi forgatókönyvek esetén a készenléti régió van beállítva.
 
 ![A PaaS-webalkalmazás számára a referencia-architektúra ábrája](media/azure-ddos-best-practices/image11.png)
@@ -300,6 +300,6 @@ Ez a referenciaarchitektúra a további információkért lásd: a [kiterjeszté
 
 * [Az Azure DDoS Protection termékoldala](https://azure.microsoft.com/services/ddos-protection/)
 
-* [Az Azure DDoS Protection blogja](http://aka.ms/ddosblog)
+* [Az Azure DDoS Protection blogja](https://aka.ms/ddosblog)
 
 * [Az Azure DDoS Protection dokumentációja](../virtual-network/ddos-protection-overview.md)

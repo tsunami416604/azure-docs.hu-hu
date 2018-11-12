@@ -61,6 +61,7 @@
 
 ## Áttekintés
 ### [Mi a megoldás?](storsimple-overview.md)
+### [Adatátviteli lehetőségek összehasonlítása](storsimple-8000-choose-storage-solution.md)
 ### [StorSimple – tanulási térkép](https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/)
 ### [Biztonsági szempontok](storsimple-8000-security.md)
 ### [Régiónkénti elérhetőség](storsimple-regions.md)
@@ -183,7 +184,7 @@
 #### [Az 5000/7000 sorozat eszközeiről](storsimple-8000-migration-options.md)
 ##### [A StorSimple 8000 sorozat eszközeire](storsimple-8000-migrate-from-5000-7000.md)
 ##### [Az Azure File Syncre](storsimple-5000-7000-afs-migration.md)
-#### [Egyéb tárolóeszközökből](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
+#### [Egyéb tárolóeszközökből](https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
 ### Frissítés
 #### [A 5-ös frissítés telepítése – aktuális](storsimple-8000-install-update-5.md)
@@ -248,8 +249,8 @@
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/storsimple/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=storsimple)
-## [Támogatási blog](http://blogs.msdn.com/b/storsimple/)
-## [Harmadik felekkel kapcsolatos közlemények](http://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)
+## [Támogatási blog](https://blogs.msdn.com/b/storsimple/)
+## [Harmadik felekkel kapcsolatos közlemények](https://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=storsimple)
 
 
