@@ -1,9 +1,9 @@
 ---
-title: Az Azure Service Fabric tárolószolgáltatások hálózati módok konfigurálása |} Microsoft Docs
-description: Ismerje meg, hogyan állíthat be a különböző hálózati módok Azure Service Fabric által támogatott.
+title: Konfigurálja az Azure Service Fabric-tároló szolgáltatások hálózatkezelés módjai |} A Microsoft Docs
+description: Ismerje meg, hogyan állítható be az Azure Service Fabric által támogatott különböző hálózatkezelés módjai.
 services: service-fabric
 documentationcenter: .net
-author: mani-ramaswamy
+author: TylerMSFT
 manager: timlt
 editor: ''
 ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
@@ -13,24 +13,24 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 869b87b8df3b1f532a33e943e728681b358ed8b4
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.author: twhitney, subramar
+ms.openlocfilehash: 1a0b7932d8dced086370027e1f8eecaf81841ab3
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287628"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300779"
 ---
-# <a name="service-fabric-container-networking-modes"></a>A Service Fabric tároló hálózati módok
+# <a name="service-fabric-container-networking-modes"></a>A Service Fabric tárolóalapú hálózatkezelés módjai
 
-Egy tároló Azure Service Fabric-fürt által használt szolgáltatások **nat** hálózati mód alapértelmezés szerint. Ha egynél több tárolószolgáltatás ugyanazt a portot figyeli, és a nat-mód használatára, központi telepítési hibák adódhatnak. Ugyanazon a porton figyel több tároló szolgáltatásokat támogatja, a Service Fabric kínál **nyitott** hálózati mód (5.7 és újabb verziók). Megnyitási módot minden egyes tárolószolgáltatás van egy belső dinamikusan hozzárendelt IP-címet, amely támogatja a több szolgáltatás ugyanazon a porton figyel.  
+Azure Service Fabric-fürt, a container services használ **nat** hálózati mód alapértelmezés szerint. Üzembe helyezési hibák akkor fordulhatnak elő, amikor egynél több tárolószolgáltatás ugyanazt a portot figyeli, és a nat-módot használja. Támogatja a több tárolószolgáltatások ugyanazt a portot figyeli, hogy a Service Fabric kínál **nyílt** hálózati mód (5.7 és újabb verziók). Nyissa meg a módban minden tároló szolgáltatásnak van egy belső dinamikusan kiosztott IP-címet, amely támogatja a több szolgáltatás ugyanazt a portot figyeli.  
 
-Ha a szolgáltatás jegyzékfájlban egy tárolószolgáltatás egy statikus végponttal rendelkezik, hozzon létre, és törölje a új szolgáltatások telepítési hiba nélkül megnyitási módot használatával. Ugyanazt a docker-compose.yml fájlt is használható a statikus több szolgáltatások létrehozására.
+Ha egy container service-ben egy statikus végpont a szolgáltatásjegyzékben, hozzon létre, és nyissa meg az üzembe helyezési hibák nélkül módot az új szolgáltatások törlése. Ugyanazt a docker-compose.yml fájlt is használható a statikus portleképezéseit több szolgáltatást létrehozni.
 
-A tárolószolgáltatás újraindítja vagy a fürt egy másik csomópontjára helyezi át, ha megváltozik az IP-cím. Emiatt nem ajánlott a dinamikusan kiosztott IP-cím használatával tárolószolgáltatások felderítéséhez. Csak a Service Fabric-szolgáltatás vagy a DNS-szolgáltatás felderítése használható. 
+Ha egy tárolószolgáltatás újraindítja vagy áthelyezi egy másik csomópontra a fürtben, az IP-cím megváltozik. Ezen okból kifolyólag nem ajánlott a dinamikusan kiosztott IP-cím használatával próbálják felderíteni, container services. Csak a Service Fabric elnevezési szolgáltatásban, vagy a DNS-szolgáltatás szolgáltatásfelderítési használandó. 
 
 >[!WARNING]
->Azure lehetővé teszi, hogy a virtuális hálózatonként 4096 IP-címek összesen. A csomópontok száma és (amely megnyitási módot használ) tároló szolgáltatás példányainak száma nem haladhatja meg 4096 IP-címek a virtuális hálózaton belül. Nagy sűrűségű forgatókönyvek esetén ajánlott nat hálózati mód.
+>Az Azure lehetővé teszi, hogy a 4096 IP-címek száma virtuális hálózatonként összesen. A csomópontok számát és a container service-példányok (, nyissa meg az módot használ) nem lehet hosszabb 4096 IP-címek egy virtuális hálózaton belül. Nagy sűrűségű forgatókönyvek esetén ajánlott nat hálózati mód.
 >
 
 ## <a name="set-up-open-networking-mode"></a>Nyissa meg a hálózati mód beállítása
@@ -78,7 +78,7 @@ A tárolószolgáltatás újraindítja vagy a fürt egy másik csomópontjára h
             ],
     ```
 
-2. A hálózati profil szakasz beállítása lehetővé teszi több IP-címmel kell konfigurálni a fürt mindegyik csomópontján. Az alábbi példa beállítja az öt IP-címek / Windows/Linux Service Fabric-fürt csomópontja. Minden egyes csomóponton porton öt szolgáltatáspéldány lehet.
+2. Állítsa be a hálózati profil szakaszt, hogy több IP-címmel kell konfigurálni a fürt mindegyik csomópontján. Az alábbi példában öt IP-cím / Windows/Linux Service Fabric-fürt csomópontja beállítja. Minden egyes csomóponton porton öt szolgáltatáspéldányok rendelkezhet.
 
     ```json
     "variables": {
@@ -175,7 +175,7 @@ A tárolószolgáltatás újraindítja vagy a fürt egy másik csomópontjára h
               }
    ```
  
-3. Csak Windows-fürtök esetén beállítása egy Azure hálózati biztonsági csoport (NSG) szabály, amely megnyílik az UDP/53-as port a virtuális hálózat, a következő értékekkel:
+3. Csak Windows-fürtök esetén a következő értékeket a virtuális hálózat UDP/53-as port a megnyíló Azure hálózati biztonsági csoport (NSG) szabály beállítása:
 
    |Beállítás |Érték | |
    | --- | --- | --- |
@@ -187,7 +187,7 @@ A tárolószolgáltatás újraindítja vagy a fürt egy másik csomópontjára h
    |Műveletek | Engedélyezés  | |
    | | |
 
-4. Adja meg a hálózati módban az alkalmazásjegyzékben, az egyes szolgáltatásokhoz: `<NetworkConfig NetworkType="Open">`. **Nyissa meg** hálózati mód eredményezi, hogy a szolgáltatás egy dedikált IP-cím beolvasása. Ha egy mód nincs megadva, a szolgáltatás az alapértelmezett **nat** mód. A manifest ügynökök a `NodeContainerServicePackage1` és `NodeContainerServicePackage2` szolgáltatások minden figyelési ugyanazt a portot is (mindkét szolgáltatás által figyelt `Endpoint1`). Ha meg van határozva a hálózati megnyitási módot, `PortBinding` konfigurációk nem adható meg.
+4. Adja meg a hálózati módját az egyes szolgáltatások az alkalmazásjegyzékben: `<NetworkConfig NetworkType="Open">`. **Nyissa meg** hálózatkezelés mód eredményez a szolgáltatás egy dedikált IP-cím beolvasása. Ha egy mód nincs megadva, a szolgáltatás alapértelmezett **nat** mód. A következő jegyzékfájl példában a `NodeContainerServicePackage1` és `NodeContainerServicePackage2` szolgáltatások is minden egyes figyelő ugyanazt a portot (mindkét szolgáltatás által figyelt `Endpoint1`). Ha hálózati módban nyissa meg van adva, `PortBinding` konfigurációk nem adható meg.
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -216,13 +216,13 @@ A tárolószolgáltatás újraindítja vagy a fürt egy másik csomópontjára h
     </ApplicationManifest>
     ```
 
-    Ön szabadon kombinálhatók hálózati mód szolgáltatásban egy Windows-fürt számára az alkalmazáson belül. Egyes szolgáltatások használhatnak megnyitási módot, míg mások nat-módot használja. Ha egy szolgáltatás nat-mód használatára van konfigurálva, a portot, amelyet figyeli a szolgáltatás egyedinek kell lennie.
+    Ön szabadon kombinálhatók eltérő hálózatkezelés módjai el a Windows-fürt az alkalmazáson belül. Egyes szolgáltatások nyílt mód használható, míg mások a nat-módot használja. Ha egy szolgáltatás nat mód használatára van konfigurálva, a port, amelyet a szolgáltatás figyel a következőn: egyedinek kell lennie.
 
     >[!NOTE]
-    >Linux-fürtök esetén a különböző szolgáltatásokhoz hálózati módok keverése nem támogatott. 
+    >Linux-fürtökön keverése hálózatkezelés módjai különböző szolgáltatások esetében nem támogatott. 
     >
 
-5. Amikor a **nyitott** módot választja, a **végpont** meghatározása a szolgáltatás jegyzékben kell explicit módon mutasson a végpontnak megfelelő kódcsomag akkor is, ha a szolgáltatáscsomag csak egy kódot Ez a csomag. 
+5. Ha a **nyílt** mód be van jelölve, a **végpont** meghatározása a szolgáltatásjegyzékben mutasson a kívánt végpontnak megfelelő a kódcsomag explicit módon kell, akkor is, ha a csomag csak egy kódot tartalmaz Ez a csomag. 
    
    ```xml
    <Resources>
@@ -232,7 +232,7 @@ A tárolószolgáltatás újraindítja vagy a fürt egy másik csomópontjára h
    </Resources>
    ```
    
-6. A Windows a virtuális gép újraindítása miatt a nyitott hálózati újból létre kell hozni. Ez az alapul szolgáló problémát a hálózati verem mérsékelni. Az alapértelmezett viselkedést, hogy hozza létre újra a hálózaton. Ha ezt a viselkedést ki van kapcsolva, a következő konfigurációs használható a konfiguráció frissítése követi.
+6. A Windows a virtuális gép újraindítását miatt nyissa meg a hálózat, újra létre kell hozni. Ez az a hálózati verem az alapul szolgáló elhárításukra. Az alapértelmezett viselkedését, hogy hozza létre újra a hálózaton. Ha ez a viselkedés ki van kapcsolva, a következő konfiguráció használható a konfiguráció frissítése követi.
 
 ```json
 "fabricSettings": [
@@ -250,6 +250,6 @@ A tárolószolgáltatás újraindítja vagy a fürt egy másik csomópontjára h
  
 ## <a name="next-steps"></a>További lépések
 * [A Service Fabric-alkalmazásmodell megismerése](service-fabric-application-model.md)
-* [További tudnivalók a Service Fabric service manifest erőforrások](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)
-* [A Service Fabric Windows Server 2016 egy Windows-tároló telepítése](service-fabric-get-started-containers.md)
-* [Telepítse a Service Fabric Linux egy Docker-tároló](service-fabric-get-started-containers-linux.md)
+* [További információ a Service Fabric szolgáltatásjegyzéki erőforrások](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)
+* [Egy Windows-tároló üzembe helyezése a Service Fabric Windows Server 2016-on](service-fabric-get-started-containers.md)
+* [Egy Docker-tároló üzembe helyezése a Service fabric Linux rendszeren](service-fabric-get-started-containers-linux.md)

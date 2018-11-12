@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 11/05/2018
+ms.date: 11/07/2018
 ms.author: juliako
-ms.openlocfilehash: 2f5c0ef63ba150fdad4aea1a0c65269611d56815
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1c8bacf4c6cb22240609fb9f5dc0c3c456bc4531
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247687"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287540"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Migrálási útmutató segítséget nyújt a Media Services v2 áthelyezését v3
 
@@ -45,7 +45,7 @@ Ha rendelkezik egy fejlett még ma a videószolgáltatás a [örökölt Media Se
 * Bemutatja a [alakítja át az](transforms-jobs-concept.md) fájlalapú feladat feldolgozása. Egy-egy átalakítási segítségével hozhat létre újrahasznosítható konfigurációk esetén az Azure Resource Manager-sablonok létrehozását és feldolgozási beállítások között több, ügyfelek vagy bérlők elkülönítésére.
 * Egy eszköz rendelkezhet [több StreamingLocators](streaming-locators-concept.md) rendelkező különböző dinamikus becsomagolást és a dinamikus titkosítás beállításai.
 * [Content protection szolgáltatása](content-key-policy-concept.md) támogatja a többszörös legfontosabb funkcióit.
-* Élő események, amelyek akár 24 órát hosszú streamelheti.
+* Akár 24 órát hosszú egy kimeneti adatfolyamba, amely rendelkezik több bitsebességre való átkódolása hírcsatornaelem átkódolása egyféle sávszélességű hozzájárulás a Media Services segítségével élő eseményeket streamelheti.
 * Új alacsony késés LiveEvents élő adatfolyam támogatását.
 * Videókhoz előzetes verziója támogatja a dinamikus becsomagolást és dinamikus titkosítást. Ez lehetővé teszi a content protection előzetes verzió, valamint a DASH vagy HLS csomagolásra.
 * LiveOutput rendszer egyszerűbb, mint a Program entitás az v2 API-k használatához. 

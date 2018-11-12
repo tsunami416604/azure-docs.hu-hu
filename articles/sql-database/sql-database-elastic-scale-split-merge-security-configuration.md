@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: ca93d97c3e0ddab0377ef437a04e7e3e31197b97
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 6967805044bb11e9aed3fe66d580df059f7a461a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166370"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231397"
 ---
 # <a name="split-merge-security-configuration"></a>Biztonság szétválasztás és egyesítés konfiguráció
 A felosztás/egyesítés szolgáltatás használatához a megfelelő biztonsági kell konfigurálnia. A szolgáltatás része a Microsoft Azure SQL Database rugalmas méretezési funkció. További információkért lásd: [rugalmas méretezési felosztása és egyesítése Service-oktatóanyag](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
@@ -29,21 +29,21 @@ Tanúsítványokat kétféleképpen lehet konfigurálni.
 2. [Ügyfél-tanúsítványok konfigurálása](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>Tanúsítványok beszerzése
-Tanúsítványokat nyilvános hitelesítésszolgáltatótól (CA), vagy a szerezhető a [Windows tanúsítványszolgáltatást](http://msdn.microsoft.com/library/windows/desktop/aa376539.aspx). Ezek azok az előnyben részesített módszert szerezzenek be tanúsítványokat.
+Tanúsítványokat nyilvános hitelesítésszolgáltatótól (CA), vagy a szerezhető a [Windows tanúsítványszolgáltatást](https://msdn.microsoft.com/library/windows/desktop/aa376539.aspx). Ezek azok az előnyben részesített módszert szerezzenek be tanúsítványokat.
 
 Ha ezek a lehetőségek nem érhetők el, létrehozhat **önaláírt tanúsítványokat**.
 
 ## <a name="tools-to-generate-certificates"></a>Eszközök tanúsítványainak létrehozásához szükséges
-* [makecert.exe](http://msdn.microsoft.com/library/bfsktky3.aspx)
-* [pvk2pfx.exe](http://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
+* [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
+* [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>Az eszközök futtatása
-* Az a fejlesztői parancssort. Ehhez a vizuális Studios lásd [Visual Studio parancssorból](http://msdn.microsoft.com/library/ms229859.aspx) 
+* Az a fejlesztői parancssort. Ehhez a vizuális Studios lásd [Visual Studio parancssorból](https://msdn.microsoft.com/library/ms229859.aspx) 
   
     Ha telepítve van, folytassa a:
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* A WDK az első [Windows 8.1: készletek és eszközök letöltése](http://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* A WDK az első [Windows 8.1: készletek és eszközök letöltése](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>Az SSL-tanúsítvány konfigurálása
 Egy SSL-tanúsítvány szükséges a kommunikáció titkosításához, és a kiszolgáló hitelesítésére. Válassza ki a legmegfelelőbb az alábbi három forgatókönyv, és hajtsa végre az összes lépését:

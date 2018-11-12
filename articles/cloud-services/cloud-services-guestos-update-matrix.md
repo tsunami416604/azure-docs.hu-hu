@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/16/2018
+ms.date: 11/08/2018
 ms.author: raiye
-ms.openlocfilehash: c153e87224c596929440d814d30b94cc49d7ba76
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 35888b205822e5d7c9576c9855610bad814901b6
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978740"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51346167"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Az Azure vendég operációs rendszerek kiadásai és SDK-kompatibilitási mátrixot
 Itt, a legújabb Azure vendég operációs rendszer naprakész információkat és a Cloud Services-kiadások. Ez az információ segít a frissítési útvonal megtervezéséhez, mielőtt egy vendég operációs rendszer le van tiltva. Ha a szerepkörök használatára konfigurálja *automatikus* vendég operációs rendszer frissítése leírtak szerint [Azure vendég operációs rendszer frissítési beállítások][Azure Guest OS Update Settings], már nem létfontosságú, hogy elolvasta-e ezen a lapon.
@@ -42,6 +42,9 @@ Itt, a legújabb Azure vendég operációs rendszer naprakész információkat �
 A vendég operációs rendszer frissítése tesztadatkészletén? Ellenőrizze [ez] [ cloud updates] ki.
 
 ## <a name="news-updates"></a>Hírek
+
+###### <a name="november-8-2018"></a>**2018. november 8.**
+Az október vendég operációs rendszer jelent meg.
 
 ###### <a name="october-12-2018"></a>**2018. október 12.**
 A szeptember vendég operációs rendszer jelent meg.
@@ -74,8 +77,9 @@ Az április vendég operációs rendszer jelent meg.
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
 | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-5.24_201810-01 |2018. november 8. |POST 5.26 |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-5.23_201809-01 |2018. október 12. |5,25 POST |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-5.22_201808-01 |2018. szeptember 12. |POST 5,24 |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.22_201808-01~~ |2018. szeptember 12. |2018. november 8. |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.21_201807-02~~ |2018. augusztus 3. |2018. október 12. |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.20_201806-01~~ |2018. július 3. |2018. szeptember 12. |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-5.19_201805-01~~ |2018. június 1. |2018. augusztus 3. |
@@ -88,8 +92,9 @@ Az április vendég operációs rendszer jelent meg.
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
 | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-4.59_201810-01 |2018. november 8. |POST 4.61 |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-4.58_201809-01 |2018. október 12. |POST 4.60 |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-4.57_201808-01 |2018. szeptember 12. |POST 4.59 |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.57_201808-01~~ |2018. szeptember 12. |2018. november 8. |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.56_201807-02~~ |2018. augusztus 3. |2018. október 12. |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.55_201806-01~~ |2018. július 3. |2018. szeptember 12. |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-4.54_201805-01~~ |2018. június 1. |2018. augusztus 3. |
@@ -102,8 +107,9 @@ Az április vendég operációs rendszer jelent meg.
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
 | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-3.66_201810-01 |2018. november 8. |POST 3.68 |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-3.65_201809-01 |2018. október 12. |POST 3.67 |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-3.64_201808-01 |2018. szeptember 12. |POST 3.66 |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.64_201808-01~~ |2018. szeptember 12. |2018. november 8. |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.63_201807-02~~ |2018. augusztus 3. |2018. október 12. |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.62_201806-01~~ |2018. július 3. |2018. szeptember 12. |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-3.61_201805-01~~ |2018. június 1. |2018. augusztus 3. |
@@ -116,8 +122,9 @@ Az április vendég operációs rendszer jelent meg.
 
 | Konfigurációs karakterlánc | Kiadási dátum | Tiltsa le a dátum |
 | --- | --- | --- |
+| WA-VENDÉG-OPERÁCIÓSRENDSZER-2.79_201810-01 |2018. november 8. |POST 2.81 |
 | WA-VENDÉG-OPERÁCIÓSRENDSZER-2.78_201809-01 |2018. október 12. |POST 2,80 |
-| WA-VENDÉG-OPERÁCIÓSRENDSZER-2.77_201808-01 |2018. szeptember 12. |POST 2.79 |
+|~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.77_201808-01~~ |2018. szeptember 12. |2018. november 8. |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.76_201807-02~~ |2018. augusztus 3. |2018. október 12. |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.75_201806-01~~ |2018. július 3. |2018. szeptember 12. |
 |~~WA-VENDÉG-OPERÁCIÓSRENDSZER-2.74_201805-01~~ |2018. június 1. |2018. augusztus 3.|

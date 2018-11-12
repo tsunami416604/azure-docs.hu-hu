@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 8525dd443e80bb7d67bc48cc007ab1632ee3e611
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: b8b07db6e21fb685ed76409336c98bb5f4ce5bde
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054523"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009436"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok betöltése az Azure SQL Data Warehouse-bA az Azure Data Factory használatával
 
@@ -35,6 +35,7 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
 
 > [!NOTE]
 > További információkért lásd: [másolhat az Azure SQL Data Warehouse-ból az Azure Data Factory használatával](connector-azure-sql-data-warehouse.md).
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés: Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) megkezdése előtt.
@@ -42,7 +43,7 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
 * Az Azure SQL Database: Ebben az oktatóanyagban adatokat másol egy Azure SQL database, az Adventure Works LT mintaadatokat. Létrehozhat egy SQL-adatbázis található utasításokat követve [hozzon létre egy Azure SQL database](../sql-database/sql-database-get-started-portal.md). 
 * Az Azure storage-fiók: az Azure Storage szolgál a _átmeneti_ blob a tömeges másolási műveletben. Ha még nem rendelkezik Azure Storage-fiókkal, a szükséges utasításokat a [Storage-fiók létrehozását](../storage/common/storage-quickstart-create-account.md) ismertető cikkben találja.
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>data factory létrehozása
 
 1. A bal oldali menüben válassza ki a **új** > **adatok + analitika** > **adat-előállító**: 
    

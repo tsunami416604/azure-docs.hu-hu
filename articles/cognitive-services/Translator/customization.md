@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: d01a5a8a9a60bef315327721b9f55345bc3d1361
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: bbfffe948080c87feaa8c9f0a46ef9afd90eae96
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645051"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229679"
 ---
 # <a name="customize-your-text-translations"></a>A szöveg fordítások testreszabása
 
@@ -37,7 +37,7 @@ A testre szabott rendszer majd rendszeres hívása a Microsoft Translator Text A
 
 A megfelelő típusú és a betanítási adatok mennyisége a megadott nem ritka, nyereség 5 és 10 közötti várható, vagy még több BLEU mutat a fordítás minősége egyéni Translator használatával.
 
-További információt a rendelkezésre álló adatok alapján testreszabási különböző szintjeit megtalálható a [egyéni Translator felhasználói útmutató](http://aka.ms/CustomTranslatorDocs).
+További információt a rendelkezésre álló adatok alapján testreszabási különböző szintjeit megtalálható a [egyéni Translator felhasználói útmutató](https://aka.ms/CustomTranslatorDocs).
 
 
 ## <a name="microsoft-translator-hub"></a>A Microsoft Translator-Hub
@@ -53,7 +53,7 @@ A Microsoft Translator örökölt Hub statisztikai gépi fordítási lefordítan
 | SMT testreszabása | Igen   | Nem |
 | NMT testreszabása | Nem    | Igen |
 | Új egyesített Speech services testreszabása | Nem    | Igen |
-| [Nincs nyomkövetés](http://www.aka.ms/notrace) | Igen   | Igen |
+| [Nincs nyomkövetés](https://www.aka.ms/notrace) | Igen  | Igen |
 
 ## <a name="collaborative-translations-framework"></a>Együttműködésen alapuló fordítások keretrendszer
 
@@ -65,4 +65,4 @@ A Microsoft Translator örökölt Hub statisztikai gépi fordítási lefordítan
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egy egyéni translatorral testreszabott nyelvi rendszer beállítása](http://aka.ms/CustomTranslatorDocs)
+> [Egy egyéni translatorral testreszabott nyelvi rendszer beállítása](https://aka.ms/CustomTranslatorDocs)

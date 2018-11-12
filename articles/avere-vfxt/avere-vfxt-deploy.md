@@ -6,16 +6,16 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 359ada08f1d9df6b60fc27ca385f6003af498e17
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: eb0f5a4a4219c63334e0a5be3ea4378c3c317bec
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958601"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288101"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>A vFXT-fürt üzembe helyezése
 
-VFXT fürt létrehozása, a legegyszerűbb módja egy fürt tartományvezérlőre, amely egy virtuális Gépet, amely rendelkezik a szükséges szkriptek, a sablonok és a szoftverfrissítési infrastruktúrát hozhat létre és kezelhet a vFXT fürt használatára.
+A legegyszerűbben úgy vFXT fürt létrehozása az Azure-ban, hogy egy fürt tartományvezérlő használata. A fürt vezérlő egy virtuális Gépet, amely tartalmazza a szükséges szkriptek, a sablonok és a szoftverfrissítési infrastruktúrát hozhat létre és kezelhet a vFXT fürt.
 
 Ezeket a lépéseket egy új vFXT-fürt üzembe helyezésekor tartalmazza:
 
@@ -68,7 +68,7 @@ Adja meg a következő információkat.
 
 Az a **ALAPSZINTŰ** szakaszban:  
 
-* **Az előfizetésnek** a fürt
+* **Előfizetés** a fürt
 * **Erőforráscsoport** a fürt 
 * **Hely** 
 
@@ -82,7 +82,7 @@ Az a **beállítások** szakaszban:
 * Virtuális hálózati erőforrás-csoport neve és alhálózati név – írja be a meglévő erőforrások nevét (Ha egy meglévő virtuális hálózat használatával), vagy írja be az új neveket, ha egy új virtuális hálózat létrehozása
 * **Vezérlő neve** – a vezérlő virtuális gép nevének megadása
 * Vezérlő rendszergazdai jogosultságú felhasználónevet – az alapértelmezett érték `azureuser`
-* SSH-kulcsot – a nyilvános kulcs beillesztése társítása a rendszergazdai jogosultságú felhasználónevet. Olvasási [hogyan hozhat létre és használhat SSH-kulcsokat](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) Ha segítségre van szüksége.
+* SSH-kulcsot – a nyilvános kulcs beillesztése társítása a rendszergazdai jogosultságú felhasználónevet. Olvasási [hogyan hozhat létre és használhat SSH-kulcsokat](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) Ha segítségre van szüksége.
 
 A **feltételek és kikötések**: 
 
@@ -93,16 +93,13 @@ A **feltételek és kikötések**:
 
 Kattintson a **beszerzési** befejezésekor. Az öt vagy hat perccel később a vezérlő csomópont lesz üzembe helyezéséig.
 
-Látogasson el a kimenetek lapot, a fürt számára szükséges információkat. Olvasási [bemenetek szükséges a fürt létrehozási](#inputs-needed-for-cluster-creation) további.
+A kimenetek oldalán kell gyűjtenie az adatokat a fürt létrehozásához szükséges. Olvasási [a fürt létrehozásához szükséges adatok](#information-needed-to-create-the-cluster) további.
 
 ### <a name="create-controller---azure-marketplace-image"></a>Vezérlő – Azure Marketplace-rendszerkép létrehozása
 
-Keresse meg a vezérlő sablon nevét az Azure piactéren való kereséssel ``Avere``. Válassza ki a **Avere vFXT Azure vezérlő** sablont. 
+Keresse meg a vezérlő sablon nevét az Azure piactéren való kereséssel ``Avere``. Válassza ki a **Avere vFXT Azure vezérlő** sablont.
 
 Ha még nem tette meg, fogadja el a feltételeket, és a Piactéri lemezképhez programozott hozzáférés engedélyezése ehhez kattintson a "kíván üzembe helyezni a programozott módon?" alatti hivatkozásra a **létrehozás** gombra.
-
-> [!NOTE] 
-> Az első hétre esik-e az általános rendelkezésre állás (október 31-2018. November 7) a parancssori kapcsoló helyett ezt az eljárást a következő két szoftverfrissítési lemezképek elfogadására kell használnia. Kövesse a [elfogadására szoftver előre](avere-vfxt-prereqs.md#accept-software-terms-in-advance). 
 
 ![Képernyőkép a programozás alapú hozzáférést, amely nem éri a Létrehozás gombra mutató hivatkozás](media/avere-vfxt-deploy-programmatically.png)
 
@@ -125,7 +122,7 @@ Az első panelen adja meg, illetve erősítse meg az alapvető beállításokkal
   * Válassza a felhasználónév/jelszó vagy SSH nyilvános kulcs (ajánlott).
   
     > [!TIP] 
-    > SSH-kulcs használata biztonságosabb. Olvasási [hogyan hozhat létre és használhat SSH-kulcsokat](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) Ha segítségre van szüksége. 
+    > SSH-kulcs használata biztonságosabb. Olvasási [hogyan hozhat létre és használhat SSH-kulcsokat](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) Ha segítségre van szüksége. 
   * Adja meg a felhasználónevet 
   * Illessze be az SSH-kulcs, vagy adja meg, és erősítse meg a jelszót
 * **Bejövőport-szabályok** – Ha egy nyilvános IP-cím, port megnyitása a 22-es (SSH) használatával
@@ -172,29 +169,31 @@ Ha a a háttér-adatokat tároló Azure Blob storage használ, létre kell hozni
 
   ![Jegyzetekkel lépéseit a szolgáltatásvégpont létrehozása az Azure portal képernyőképe](media/avere-vfxt-service-endpoint.png)
 
-## <a name="gather-needed-inputs"></a>Szükséges bemenetek összegyűjtése
+## <a name="information-needed-to-create-the-cluster"></a>A fürt létrehozásához szükséges információk
 
-A fürt létrehozásához a következő információk szükségesek. 
+Miután létrehozta a fürt vezérlő, ellenőrizze, hogy a következő lépésekhez szükséges információkat. 
 
-Ha a vezérlő csomópont a Resource Manager-sablon használatával hozta létre, akkor [a információinak lekérése a sablon kimeneti](#finding-template-output). 
+A vezérlő való kapcsolódáshoz szükséges adatokat: 
 
-A vezérlő való csatlakozáshoz szükséges: 
-
-* Vezérlő felhasználónév és SSH-kulcs vagy jelszó
+* Vezérlő felhasználónév és SSH-kulcs (vagy jelszó)
 * Vezérlő IP-címét vagy más módszerrel, a vezérlő virtuális Géphez való kapcsolódáshoz
 
-A fürt létrehozásához szükséges: 
+A fürt számára szükséges információkat: 
 
 * Erőforráscsoport neve
 * Azure-beli hely 
 * Virtuális hálózat neve
 * Alhálózat neve
-* Fürt csomópont szerepkör neve
+* Fürtcsomópont szerepkör neve – Ez a név van beállítva, a szerepkör leírt létrehozásakor [alatt](#create-the-cluster-node-access-role)
 * Storage-fiók neve, ha egy Blob-tároló létrehozása
 
-Is annak hiányzó navigáljon a tartományvezérlő virtuális gép információkat tartalmazó oldal az adatokat. Kattintson például **összes erőforrás** , és keresse meg a vezérlő nevét, majd kattintson a vezérlő nevét a részletek megtekintéséhez.
+A vezérlő csomópont a Resource Manager-sablon használatával hozta létre, ha az információkat kaphat a [sablonjának kimenete](#find-template-output). 
 
-### <a name="finding-template-output"></a>A sablon kimeneti keresése
+Ha a vezérlő létrehozásához használt az Azure Marketplace-beli rendszerképét, közvetlenül megadott ezeket az elemeket a legtöbb. 
+
+Keresse meg a hiányzó elemek a tartományvezérlő virtuális gép információkat tartalmazó oldal megnyitásával. Kattintson például **összes erőforrás** , és keresse meg a vezérlő nevét, majd kattintson a vezérlő nevét a részletek megtekintéséhez.
+
+### <a name="find-template-output"></a>Keresse meg a sablon kimeneti
 
 Ezt az információt a Resource Manager sablon kimeneti megkereséséhez kövesse ezt az eljárást:
 
@@ -215,7 +214,7 @@ Ehhez a központi telepítés a többi, szeretne csatlakozni a fürthöz vezérl
 1. A metódus a fürt vezérlő csatlakozni konfigurációtól függ.
 
    * Kell-e a vezérlő egy nyilvános IP-cím SSH a rendszergazdai jogosultságú felhasználónevet, a tartományvezérlő IP-Címének beállítása (például ``ssh azureuser@40.117.136.91``).
-   * Ha a tartományvezérlő nincs nyilvános IP-cím, egy [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) vagy a virtuális hálózatok közötti VPN-kapcsolat.
+   * Ha a tartományvezérlő nincs nyilvános IP-cím, használja a VPN vagy [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) a virtuális hálózatok közötti kapcsolat.
 
 1. A bejelentkezés után a tartományvezérlőre, amely hitelesíteni futtatásával `az login`. A hitelesítési kód megadására a rendszerhéj megadott másolja, majd egy webes böngésző használatával tölthet [ https://microsoft.com/devicelogin ](https://microsoft.com/devicelogin) és a Microsoft-rendszer a hitelesítéshez. Térjen vissza a rendszerhéj megerősítést.
 
@@ -292,15 +291,18 @@ RESOURCE_GROUP=
 Mentse a fájlt, és a kilépési.
 
 ### <a name="run-the-script"></a>A szkript futtatása
+
 A parancsfájl futtatásához írja be a filename hozott létre. (Példa: `./create-cloudbacked-cluster-west1`)  
 
-Fontolja meg ezt a parancsot belül futtatja egy [multiplexer terminálon](http://linuxcommand.org/lc3_adv_termmux.php) például `screen` vagy `tmux` abban az esetben a kapcsolat megszakadását.  
+> [!TIP]
+> Fontolja meg ezt a parancsot belül futtatja egy [multiplexer terminálon](http://linuxcommand.org/lc3_adv_termmux.php) például `screen` vagy `tmux` abban az esetben a kapcsolat megszakadását.  
+
 A kimenet is a rendszer naplózza `~/vfxt.log`.
 
 Miután a parancsfájl futása befejeződött, a felügyeleti IP-cím másolásához, szükség van az fürt felügyeleti.
 
 ![A szkript végén a felügyeleti IP-cím megjelenítése a parancssori kimenet](media/avere-vfxt-mgmt-ip.png)
 
-### <a name="next-step"></a>Következő lépés
+## <a name="next-step"></a>Következő lépés
 
 Most, hogy a fürt fut, és tudja, a felügyeleti IP-címére, [kapcsolódni a fürt konfigurálása eszköz](avere-vfxt-cluster-gui.md) támogatásának engedélyezése, és adja hozzá a tárolót, ha szükséges.

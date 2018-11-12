@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 11/01/2018
 ms.author: jeedes
-ms.openlocfilehash: 7d25b072ffc41608bca9e0b23116b2eb453dd160
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: f3f7fc3b837dd4eef9bab8ff34a36329436bad9a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740348"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010728"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft"></a>Oktatóanyag: Azure Active Directory-integráció a Microsoft által a JIRA SAML SSO-val
 
@@ -43,7 +43,7 @@ Egyszeri bejelentkezés engedélyezéséhez használja a Microsoft Azure Active 
 Az Azure AD-integráció konfigurálása a Microsoft által a JIRA SAML SSO-val, a következőkre van szükség:
 
 - Azure AD-előfizetés
-- JIRA Core és a szoftver 6.0 7,8, vagy a JIRA szolgáltatás Desk 3.0-s verziójának 3.2-es telepítenie kell, és a Windows 64 bites verzióját a következőn:
+- JIRA Core és a szoftver 6.0 7.12, vagy a JIRA szolgáltatás ügyfélszolgálati 3.0, 3.5-ös telepítenie kell, és a Windows 64 bites verzióját a következőn:
 - JIRA-kiszolgáló a HTTPS-kompatibilis
 - Vegye figyelembe, hogy a támogatott verziók JIRA beépülő modul szakasz alatt található szerepelnek.
 - JIRA-kiszolgáló elérhető-e internetes különösen az Azure AD bejelentkezési oldal a hitelesítéshez, és tudja fogadni a jogkivonatot az Azure ad-ből kell

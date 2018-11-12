@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: justhu, elisol
 ms.custom: aaddev
-ms.openlocfilehash: abca81e0db565c6c84d9be9df07b46c8c338030b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: MT
+ms.openlocfilehash: 61238482339250e45be36162e7eef252f78c74b1
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960277"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288985"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Útmutató: Azure Active Directory-felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával
 
@@ -46,9 +46,9 @@ Tekintsük át részletesen minden lépése. Emellett egyenesen is ugorhat [ezen
 
 Alapértelmezés szerint a web app és az API regisztrációkat az Azure ad-ben egyetlen új bérlő. Akkor is használhatja a regisztrációs több-bérlős keresése a **több ábráját** kapcsolható be a a **tulajdonságok** ablaktábláján az alkalmazás regisztrálása az a [az Azure portal] [ AZURE-portal] értékre állítaná, és **Igen**.
 
-Egy alkalmazás több-bérlős lehet tenni, mielőtt az Azure AD szükséges az Alkalmazásazonosító URI-t az alkalmazás globálisan egyedinek kell lennie. Az Alkalmazásazonosító URI az az alkalmazás a protokollüzenetekről azonosítja módszerekkel egyik. Egybérlős alkalmazás esetén a rendszer megfelelő az Alkalmazásazonosító URI a bérlőn belül egyedinek kell lennie. Több-bérlős alkalmazás esetében, globálisan egyedinek kell lennie, az Azure ad-ben található az alkalmazás az összes bérlőre kiterjedő. Globális egyedi-e kényszerítve van azzal, hogy az Alkalmazásazonosító URI-t szeretné, hogy egy állomásnevet, amely megfelel az Azure AD-bérlő ellenőrzött tartományt. 
+Egy alkalmazás több-bérlős lehet tenni, mielőtt az Azure AD szükséges az Alkalmazásazonosító URI-t az alkalmazás globálisan egyedinek kell lennie. Az alkalmazásazonosító URI egy módszer, amellyel az alkalmazás a protokollüzenetekben azonosítható. Egybérlős alkalmazás esetében az alkalmazásazonosító URI-nak csak a bérlőn belül kell egyedinek lennie. Több-bérlős alkalmazás esetében azonban globálisan egyedinek kell lennie, hogy az Azure AD megtalálja az alkalmazást a különböző bérlők közt. A globális egyediség azzal kényszeríthető ki, hogy a rendszer megköveteli, hogy az alkalmazásazonosító URI egy olyan egy gazdanévvel rendelkezzen, amely egyezik az Azure AD-bérlő egy ellenőrzött tartományával. 
 
-Alapértelmezés szerint az Azure Portalon létrehozott alkalmazás rendelkezik egy globálisan egyedi Alkalmazásazonosító URI-t állítsa be az alkalmazás létrehozása, de módosíthatja ezt az értéket. Például, ha a bérlő nevével contoso.onmicrosoft.com és a egy érvényes App ID URI lenne `https://contoso.onmicrosoft.com/myapp`. Ha a bérlő ellenőrzött tartományának `contoso.com`, és a egy érvényes Alkalmazásazonosító URI-t is lenne `https://contoso.com/myapp`. Ha az Alkalmazásazonosító URI nem követi a ebben a mintában beállítása egy alkalmazást, több-bérlős sikertelen lesz.
+Alapértelmezés szerint az Azure Portalon létrehozott alkalmazás rendelkezik egy globálisan egyedi Alkalmazásazonosító URI-t állítsa be az alkalmazás létrehozása, de módosíthatja ezt az értéket. Például, ha a bérlő nevével contoso.onmicrosoft.com és a egy érvényes App ID URI lenne `https://contoso.onmicrosoft.com/myapp`. Ha a bérlő ellenőrzött tartományának `contoso.com`, és a egy érvényes Alkalmazásazonosító URI-t is lenne `https://contoso.com/myapp`. Ha az alkalmazásazonosító URI nem ezt a mintát követi, az alkalmazások több-bérlősként való konfigurálása meghiúsul.
 
 > [!NOTE] 
 > Natív ügyfél-regisztrációk, valamint [v2.0 alkalmazások](./active-directory-appmodel-v2-overview.md) több-bérlős alapértelmezés szerint. Nem kell semmit sem, hogy ezek alkalmazásregisztrációkat, több-bérlős.
@@ -201,8 +201,8 @@ Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazás, amely bárme
 [AAD-Samples-MT]: https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multitenant
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
 [AZURE-portal]: https://portal.azure.com
-[MSFT-Graph-overview]: https://graph.microsoft.io/en-us/docs/overview/overview
-[MSFT-Graph-permision-scopes]: https://developer.microsoft.com/en-us/graph/docs/concepts/permissions_reference
+[MSFT-Graph-overview]: https://developer.microsoft.com/graph/docs/overview/overview
+[MSFT-Graph-permision-scopes]: https://developer.microsoft.com/graph/docs/concepts/permissions_reference
 
 <!--Image references-->
 [AAD-Sign-In]: ./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png

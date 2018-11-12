@@ -6,14 +6,14 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: raynew
-ms.openlocfilehash: 923a2a137bb4510e9490ce4077f744a43619a2c6
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 04ae28ca566e97570ec64e78d3408ea8bd1e3d42
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165024"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010320"
 ---
-# <a name="dependency-visualization"></a>Függőségek vizualizációja
+# <a name="dependency-visualization"></a>Függőségek képi megjelenítése
 
 A [Azure Migrate](migrate-overview.md) szolgáltatások felméri a helyszíni gépek áttelepítése az Azure-bA a csoportjait. A függőségek képi megjelenítésének funkcióival az Azure Migrate segítségével hozzon létre csoportokat. Ez a cikk a szolgáltatásról.
 
@@ -39,9 +39,15 @@ Azure Migrate az a [Service Map](../operations-management-suite/operations-manag
 
 Függőségmegjelenítést használ, meg kell töltse le és telepítse az ügynököt minden olyan elemezni szeretné a helyszíni gépen.  
 
+- [Microsoft Monitoring agent(MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) minden gépen kell telepíteni.
+- A [függőségi ügynök](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) minden gépen kell telepíteni.
+- Ezenkívül ha internetkapcsolat nélküli gépek, meg kell töltse le és telepítse őket a Log Analytics-átjáró.
+
+Nem kell ezeket az ügynököket, kivéve, ha függőségmegjelenítést használ értékelni kívánt gépeken.
+
 ## <a name="do-i-need-to-pay-for-it"></a>Kell fizetni?
 
-Az Azure Migrate díjmentesen érhető el. A függőségmegjelenítési funkciót az Azure Migrate használata szükséges a Szolgáltatástérkép, és elő kell társítani egy Log Analytics-munkaterületet, vagy új vagy meglévő, az Azure Migrate-projektben. A függőségek képi megjelenítésének funkcióival az Azure Migrate az Azure Migrate az első 180 nap díjmentes.
+Az Azure Migrate további díjfizetés nélkül elérhető. A függőségmegjelenítési funkciót az Azure Migrate használata szükséges a Szolgáltatástérkép, és elő kell társítani egy Log Analytics-munkaterületet, vagy új vagy meglévő, az Azure Migrate-projektben. A függőségek képi megjelenítésének funkcióival az Azure Migrate az Azure Migrate az első 180 nap díjmentes.
 
 1. A Log Analytics-munkaterületen a Service Map kívül bármely megoldások használatát díjat [standard Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) díjak.
 2. További költségek nélkül áttelepítési forgatókönyvek támogatása érdekében a Service Map megoldás nem számítunk fel díjakat a nap, a Log Analytics-munkaterület társítása az Azure Migrate-projekt első 180 napig. 180 nap elteltével a Log Analytics standard díjszabás vonatkozik.

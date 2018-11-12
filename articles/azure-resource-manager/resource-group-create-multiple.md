@@ -10,24 +10,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
+ms.date: 11/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8828ba3c91df7b0a2fde3c42ecd81bd4ee4d17a3
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e1edf0ed0c9efcb9f0c81718621706550bf3c4d7
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295937"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012003"
 ---
-# <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Egy erőforrás vagy tulajdonság frissítése az Azure Resource Manager-sablonokkal több példányának telepítése
+# <a name="deploy-more-than-one-instance-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Egynél több példányát egy erőforrást vagy tulajdonság frissítése az Azure Resource Manager-sablonok üzembe helyezése
 
-Ez a cikk bemutatja, hogyan pedig ismétlést állítunk be az Azure Resource Manager-sablon egy erőforrás több példány létrehozásához. Ha meg kell adnia e egy erőforrás üzembe van helyezve egyáltalán, lásd: [feltétel elem](resource-manager-templates-resources.md#condition).
+Ez a cikk bemutatja, hogyan pedig ismétlést állítunk be az Azure Resource Manager-sablon egynél több példányának erőforrás létrehozásához. Ha meg kell adnia e egy erőforrás üzembe van helyezve egyáltalán, lásd: [feltétel elem](resource-manager-templates-resources.md#condition).
 
 Foglalkozó oktatóanyagért lásd: [oktatóanyag: létrehozása a Resource Manager-sablonokkal több erőforráspéldány létrehozásával](./resource-manager-tutorial-create-multiple-instances.md).
 
 ## <a name="resource-iteration"></a>Erőforrás iteráció
 
-Ha egy vagy több erőforrás-példányok létrehozásához, el kell döntenie üzembe helyezés során, adjon hozzá egy `copy` elem az erőforrás típusát. A másolási elemben adja meg az ismétlések és a egy nevet a hurok számát. A hibaszám értéke pozitív egész számnak kell lennie, és nem haladhatja meg a 800. 
+Ha egy vagy több erőforrás-példányok létrehozásához, el kell döntenie üzembe helyezés során, adjon hozzá egy `copy` elem az erőforrás típusát. A másolási elemben adja meg a ciklus nevét és iterációinak számát. A hibaszám értéke pozitív egész számnak kell lennie, és nem lehet több mint 800. 
 
 Az erőforrás létrehozandó többször fogadja a következő formátumban:
 
@@ -56,7 +56,7 @@ Az erőforrás létrehozandó többször fogadja a következő formátumban:
 }
 ```
 
-Figyelje meg, hogy az egyes erőforrások a neve tartalmazza a `copyIndex()` függvény, amely az aktuális iteráció a hurok adja vissza. `copyIndex()` a nulla alapú. Tehát a következő példa:
+Figyelje meg, hogy az egyes erőforrások a neve tartalmazza a `copyIndex()` függvény, amely az aktuális iteráció a hurok adja vissza. A `copyIndex()` nulla alapú. Tehát a következő példa:
 
 ```json
 "name": "[concat('storage', copyIndex())]",
@@ -68,7 +68,7 @@ Hozza létre ezeket a neveket:
 * storage1
 * storage2.
 
-Eltolás az index értéke, is át kell adnia egy értéket a copyIndex() függvény. Végrehajtásához az ismétlések száma továbbra is a másolási eleme van megadva, de copyIndex értékét ellensúlyozza a megadott értéket. Tehát a következő példa:
+Az indexérték eltolásához megadhat egy értéket a copyIndex() függvényben. Végrehajtásához az ismétlések száma továbbra is a másolási eleme van megadva, de copyIndex értékét ellensúlyozza a megadott értéket. Tehát a következő példa:
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
@@ -111,9 +111,9 @@ Hozza létre ezeket a neveket:
 * storagefabrikam
 * storagecoho
 
-Alapértelmezés szerint a Resource Manager párhuzamosan létrehozza az erőforrásokat. A sorrend, amelyben jönnek létre, ezért nem garantált. Azonban érdemes adja meg, hogy az erőforrások telepítése feladatütemezés. Például amikor frissíti a termelési környezetben, érdemes tehát ütemtervét a frissítések egyszerre csak egy bizonyos számú frissülnek.
+Alapértelmezés szerint a Resource Manager párhuzamosan létrehozza az erőforrásokat. A sorrend, amelyben jönnek létre nem garantált. Azonban érdemes adja meg, hogy az erőforrások telepítése feladatütemezés. Például amikor frissíti a termelési környezetben, érdemes tehát ütemtervét a frissítések egyszerre csak egy bizonyos számú frissülnek.
 
-Erőforrás több példányának telepítése tárolókonfigurációhoz, állítsa `mode` való **soros** és `batchSize` egyszerre telepítendő példányok száma. Soros üzemmódot erőforrás-kezelő függőséget hoz létre a hurok korábbi példányain, az egy kötegben nem indul el addig, amíg befejeződik az előző köteg.
+Sorosan helyezze üzembe az erőforrás egynél több példányát, állítsa `mode` való **soros** és `batchSize` egyszerre telepítendő példányok száma. Soros üzemmódot erőforrás-kezelő függőséget hoz létre a hurok korábbi példányain, az egy kötegben nem indul el addig, amíg befejeződik az előző köteg.
 
 Ha például tárolókonfigurációhoz egyszerre két storage-fiókok üzembe helyezéséhez, használja:
 
@@ -150,8 +150,8 @@ A mód tulajdonságot is fogad **párhuzamos**, amelynek alapértelmezett érté
 
 Több érték a tulajdonság az erőforrás létrehozásához adja hozzá a `copy` a Tulajdonságok elem a tömbben. Ezt a tömböt tartalmaz objektumokat, és minden objektum rendelkezik a következő tulajdonságokkal:
 
-* név – létrehozása több érték a tulajdonság neve
-* szám – a létrehozni kívánt értékek száma
+* név – hozhat létre több értékeit a tulajdonság neve
+* szám – a létrehozni kívánt értékek száma. A hibaszám értéke pozitív egész számnak kell lennie, és nem lehet több mint 800.
 * bemenet - olyan objektum, amely a tulajdonság hozzárendelése értékeket tartalmazza.  
 
 Az alábbi példa bemutatja, hogyan alkalmazhatja a `copy` dataDisks tulajdonsághoz, a virtuális gépen:
@@ -381,7 +381,7 @@ Megadhatja, hogy egy erőforrás üzembe van helyezve egy másik erőforrás ut�
 <a id="looping-on-a-nested-resource" />
 
 ## <a name="iteration-for-a-child-resource"></a>Iteráció egy gyermek-erőforrás
-A másolási ciklust egy gyermek-erőforrás nem használható. Általában megadhat mint belül egy másik erőforrás beágyazott erőforrás több példány létrehozásához, ennek az erőforrásnak inkább hozzon létre egy legfelső szintű erőforrásként. Meghatározhatja a szülő erőforrás típusa és neve tulajdonságai rendelkező kapcsolatot.
+A másolási ciklust egy gyermek-erőforrás nem használható. Általában megadhat mint belül egy másik erőforrás beágyazott erőforrás egynél több példányának létrehozása, ennek az erőforrásnak inkább hozzon létre egy legfelső szintű erőforrásként. Meghatározhatja a szülő erőforrás típusa és neve tulajdonságai rendelkező kapcsolatot.
 
 Tegyük fel például, alárendelt erőforrásként adat-előállító belül általában meghatároz egy adatkészletet.
 
@@ -403,7 +403,7 @@ Tegyük fel például, alárendelt erőforrásként adat-előállító belül á
 }]
 ```
 
-Adatkészletek több példány létrehozásához, helyezze át a data factory-en kívül. Az adatkészletet a data factory ugyanazon a szinten kell lennie, de továbbra is egy gyermek-erőforrás a data Factory. Akkor őrzi meg az adatkészlet és a data factory típus és név tulajdonságai közötti kapcsolat. Mivel a típus már nem lehet következtetni a sablonban helyéről, meg kell adnia a teljesen minősített írja be a következő formátumban: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.
+Szeretne létrehozni egynél több adatkészlet, helyezze át a data factory-en kívül. Az adatkészletet a data factory ugyanazon a szinten kell lennie, de továbbra is egy gyermek-erőforrás a data Factory. Akkor őrzi meg az adatkészlet és a data factory típus és név tulajdonságai közötti kapcsolat. Mivel a típus már nem lehet következtetni a sablonban helyéről, meg kell adnia a teljesen minősített írja be a következő formátumban: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.
 
 Az adat-előállító egy példányát a szülő-gyermek kapcsolat létrehozására, nevezze el az adatkészlet, amely tartalmazza a szülő erőforrás nevét. Használja a következő formátumot: `{parent-resource-name}/{child-resource-name}`.  
 
@@ -432,16 +432,16 @@ Az alábbi példa bemutatja a végrehajtása:
 
 ## <a name="example-templates"></a>Példa sablonok
 
-Az alábbi példák bemutatják az általános forgatókönyvek a több erőforrást vagy tulajdonságok létrehozása.
+Az alábbi példák bemutatják a gyakori helyzetek az erőforrás vagy tulajdonság egynél több példány létrehozása.
 
 |Sablon  |Leírás  |
 |---------|---------|
-|[Tároló](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |Üzembe helyez egy index számot a név több tárfiók. |
-|[Soros tároló](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Üzembe helyez egy több tárfiók időpontban. A név tartalmaz indexszámát. |
-|[A tömb storage másolása](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |Több tárfiók telepíti. A név egy tömb értéket tartalmaz. |
-|[Az adatlemezek változó számú virtuális gép üzembe helyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Üzembe helyez egy virtuális géppel több adatlemez. |
+|[Tároló](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |Több tárfiók nevében indexszámmal telepíti. |
+|[Soros tároló](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Üzembe helyezi a különböző storage-fiókok egy időben. A név tartalmaz indexszámát. |
+|[A tömb storage másolása](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |Különböző storage-fiókok üzembe helyezi. A név egy tömb értéket tartalmaz. |
+|[Az adatlemezek változó számú virtuális gép üzembe helyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Üzembe helyez egy virtuális gép több adatlemezének. |
 |[Másolja a változók](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |A különböző módszert is változókra léptetés mutatja be. |
-|[Több biztonsági szabályok](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Üzembe helyezi a hálózati biztonsági csoport több biztonsági szabályokat. Akkor hoz létre a biztonsági szabályok a paraméterből származó. Tekintse meg a paraméter [több NSG-paraméterfájl](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
+|[Több biztonsági szabályok](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |A hálózati biztonsági csoport több biztonsági szabályokat telepíti. Akkor hoz létre a biztonsági szabályok a paraméterből származó. Tekintse meg a paraméter [több NSG-paraméterfájl](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
 
 ## <a name="next-steps"></a>További lépések
 

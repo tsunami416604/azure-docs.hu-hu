@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a70bb09edb5ccaf4e216785933af80e2fcb2153a
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 924fea7a8a8e6fb1ab25584a49f38b25156d1ec6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363606"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230512"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>Oktatóanyag: Egyéni rendszerkép létrehozása és használata virtuálisgép-méretezési csoportokhoz az Azure PowerShell-lel
 Méretezési csoport létrehozása során meg kell adnia egy rendszerképet a virtuálisgép-példányok üzembe helyezésekor. Egyéni virtuálisgép-rendszerkép használatával csökkentheti a feladatok számát a virtuálisgép-példányok üzembe helyezése után. Ez az egyéni virtuálisgép-rendszerkép tartalmaz minden szükséges alkalmazástelepítést és -konfigurációt. A méretezési csoportban létrehozott összes virtuálisgép-példány az egyéni virtuálisgép-rendszerképet használja, és készen állnak az alkalmazás forgalmának kiszolgálására. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -76,7 +76,7 @@ A virtuális gép testre szabásához telepítünk egy alapszintű webkiszolgál
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-A virtuális gépnek az egyéni rendszerkép használatára való előkészítésének utolsó lépése a virtuális gép általánosítása. A Sysprep minden személyes fiókadatot és -konfigurációt eltávolít, és visszaállítja a virtuális gépet üres állapotba a később üzembe helyezések számára. További információkért lásd: [A Sysprep használata: Bevezetés](http://technet.microsoft.com/library/bb457073.aspx).
+A virtuális gépnek az egyéni rendszerkép használatára való előkészítésének utolsó lépése a virtuális gép általánosítása. A Sysprep minden személyes fiókadatot és -konfigurációt eltávolít, és visszaállítja a virtuális gépet üres állapotba a később üzembe helyezések számára. További információkért lásd: [A Sysprep használata: Bevezetés](https://technet.microsoft.com/library/bb457073.aspx).
 
 A virtuális gép általánosításához futtassa a Sysprep eszközt, és állítsa a virtuális gépet azonnali élményre. Amikor végzett, utasítsa a Sysprep eszközt a virtuális gép leállítására:
 

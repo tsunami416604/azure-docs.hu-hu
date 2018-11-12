@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 0c22072d0eaa328fdf786421344e8ef2caaa575c
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
-ms.translationtype: MT
+ms.openlocfilehash: 7ab12c86e01a34e4ba2a9673364c0e1104f6cdba
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515658"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231623"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Az Azure App Service web Apps-alkalmazások diagnosztikai célú naplózásának engedélyezése
 ## <a name="overview"></a>Áttekintés
 Az Azure biztosít beépített diagnosztikai funkciókkal, amelyek segítik a hibakeresést egy [App Service-webalkalmazás](https://go.microsoft.com/fwlink/?LinkId=529714). Ebből a cikkből megtudhatja, hogyan diagnosztikai naplózás engedélyezése és az üzemállapot-alkalmazását, valamint hogyan lehet hozzáférni azokhoz az információkhoz, amelyeket az Azure naplóz.
 
-Ez a cikk a [az Azure portal](https://portal.azure.com) és az Azure CLI-vel való együttműködéshez a diagnosztikai naplók. Diagnosztikai naplók a Visual Studio használatával való munka információkért lásd: [Azure hibaelhárítása a Visual Studióban](web-sites-dotnet-troubleshoot-visual-studio.md).
+Ez a cikk a [az Azure portal](https://portal.azure.com), Azure PowerShell-lel, és az Azure parancssori felület (Azure CLI) használata a diagnosztikai naplók. Diagnosztikai naplók a Visual Studio használatával való munka információkért lásd: [Azure hibaelhárítása a Visual Studióban](web-sites-dotnet-troubleshoot-visual-studio.md).
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -65,7 +65,7 @@ A **alkalmazásnaplózás**, bekapcsolhatja a hibakeresési célokra az ideiglen
 
 A **webkiszolgálói naplózás**, választhat **tárolási** vagy **fájlrendszer**. Kiválasztásával **tárolási** lehetővé teszi, hogy válasszon egy tárfiókot, és egy blobtárolót a naplók írt. 
 
-Ha a naplók tárolása a fájlrendszer, a fájlok elérhető FTP, és letöltött Zip-archívumot, Azure parancssori felület használatával.
+Ha a naplók tárolása a fájlrendszer, a fájlok elérhető FTP, és letöltött Zip-archívumot, az Azure PowerShell vagy az Azure parancssori felület (Azure CLI) használatával.
 
 Alapértelmezés szerint naplók nem törlődnek automatikusan (kivéve a **Application Logging (fájlrendszer)**). Naplók automatikus törléséhez állítsa be a **megőrzési ideje (nap)** mező.
 
@@ -84,9 +84,13 @@ Habár minden három tárolási helyek naplózott eseményeket, ugyanazokat az a
 > [!NOTE]
 > A tárolt adatok **táblatároló** vagy **a blob storage-** csak érhetők el a storage-kliens vagy olyan alkalmazás, amely közvetlenül is dolgozhat a tárolórendszerek használatával. Például a Visual Studio 2013 tartalmaz, amelyek segítségével ismerje meg a tábla- vagy blob storage a Storage Explorer, és a HDInsight érhessék el az a blob storage-ban tárolt adatokat. Egy alkalmazás, amely hozzáfér az Azure Storage egyikének használatával is kiírhatja a [Azure SDK-k](https://azure.microsoft.com/downloads/).
 >
+> [!NOTE]
+> Diagnosztika is engedélyezhető az Azure PowerShell használatával a **Set-AzureWebsite** parancsmagot. Ha nem telepítette az Azure PowerShell-lel, vagy nincs konfigurálva, hogy az Azure-előfizetéssel, lásd: [telepítse és konfigurálja az Azure Powershellt](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).
+>
+>
 
 ## <a name="download"></a> Hogyan: naplók letöltése
-Diagnosztikai adatok tárolása a webes alkalmazáshoz fájlrendszerben közvetlenül az FTP használatával is elérhetők. Le is tölthetők, egy Zip-archívumot az Azure CLI használatával.
+Diagnosztikai adatok tárolása a webes alkalmazáshoz fájlrendszerben közvetlenül az FTP használatával is elérhetők. Le is tölthetők, egy Zip-archívumot az Azure PowerShell vagy az Azure parancssori felület használatával.
 
 A könyvtárstruktúra, a naplók vannak tárolva a következőképpen történik:
 
@@ -102,7 +106,19 @@ Tekintse meg az alkalmazás FTP-kiszolgálóhoz FTP-kapcsolat megnyitásához [a
 
 Ha csatlakoztatva van a webalkalmazás FTP/S-kiszolgálóra, nyissa meg a **LogFiles** a naplófájlokat tároló mappa.
 
-### <a name="download-with-azure-cli"></a>Töltse le az Azure CLI-vel
+### <a name="download-with-azure-powershell"></a>Töltse le az Azure PowerShell használatával
+Töltse le a naplófájlokat, indítsa el az Azure PowerShell egy új példányát, és használja a következő parancsot:
+
+    Save-AzureWebSiteLog -Name webappname
+
+Ez a parancs menti a naplókat a webalkalmazás által meghatározott a **-név** nevű paraméter **logs.zip** az aktuális könyvtárban található.
+
+> [!NOTE]
+> Ha nem telepítette az Azure PowerShell-lel, vagy nincs konfigurálva, hogy az Azure-előfizetéssel, lásd: [telepítse és konfigurálja az Azure Powershellt](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).
+>
+>
+
+### <a name="download-with-azure-command-line-interface"></a>Az Azure parancssori felület letöltése
 Töltse le a naplófájlok, az Azure parancssori felülettel, nyisson meg egy új parancssort, PowerShell, a Bash vagy a terminál-munkamenetet, és adja meg a következő parancsot:
 
     az webapp log download --resource-group resourcegroupname --name webappname
@@ -110,7 +126,7 @@ Töltse le a naplófájlok, az Azure parancssori felülettel, nyisson meg egy ú
 Ez a parancs menti a naplókat a webalkalmazás neve "webappname" nevű fájlba **diagnostics.zip** az aktuális könyvtárban található.
 
 > [!NOTE]
-> Ha nem telepítette az Azure CLI-vel, vagy nincs konfigurálva, hogy az Azure-előfizetéssel, lásd: [hogyan használja az Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+> Ha nem telepítette az Azure parancssori felület (Azure CLI), vagy nincs konfigurálva, hogy az Azure-előfizetéssel, lásd: [hogyan használja az Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 >
 >
 
@@ -127,7 +143,7 @@ A Visual Studio Application Insights a szűréshez és a naplók keresése, és 
 [További tudnivalók a teljesítmény nyomon követése az Application insights segítségével](../application-insights/app-insights-azure-web-apps.md)
 
 ## <a name="streamlogs"></a> Útmutató: Stream naplók
-Az alkalmazások fejlesztése során hasznos gyakran közel valós idejű naplóinformációkat tekinthet. Naplózási információk streamelheti a fejlesztői környezetbe az Azure CLI használatával.
+Az alkalmazások fejlesztése során hasznos gyakran közel valós idejű naplóinformációkat tekinthet. Naplózási információk streamelheti a fejlesztői környezetbe az Azure PowerShell vagy az Azure parancssori felület használatával.
 
 > [!NOTE]
 > Bizonyos típusú naplózási puffer írni a naplófájlt, amely a Stream üzemen kívüli események eredményezhet. Például egy alkalmazás naplóbejegyzést, amikor egy felhasználó meglátogat egy oldal előfordulhat, hogy megjelenik a Stream a megfelelő HTTP-naplóbejegyzés az oldal kérelem előtt.
@@ -137,7 +153,29 @@ Az alkalmazások fejlesztése során hasznos gyakran közel valós idejű napló
 >
 >
 
-### <a name="streaming-with-azure-cli"></a>Streamelés az Azure CLI-vel
+### <a name="streaming-with-azure-powershell"></a>Streamelés az Azure PowerShell használatával
+Adatfolyam-naplózási információk, indítsa el az Azure PowerShell egy új példányát, és használja a következő parancsot:
+
+    Get-AzureWebSiteLog -Name webappname -Tail
+
+Ez a parancs a megadott webalkalmazás csatlakozik a **-neve** paraméter és elkezdeni a streamelést információk a PowerShell-ablakban, a naplózási események történnek a webalkalmazásban. Minden olyan információt írni a .txt, .log vagy .htm végződésű (d:/home/logfiles) /LogFiles a címtárban tárolt fájlok a helyi konzol adatfolyamként.
+
+Adott események, hibák, például szűréséhez használja a **-üzenet** paraméter. Példa:
+
+    Get-AzureWebSiteLog -Name webappname -Tail -Message Error
+
+Szűrés konkrét naplófájlokból típusok, például a HTTP, használja a **-elérési út** paraméter. Példa:
+
+    Get-AzureWebSiteLog -Name webappname -Tail -Path http
+
+Rendelkezésre álló elérési utak listájának megtekintéséhez használja a - ListPath paramétert.
+
+> [!NOTE]
+> Ha nem telepítette az Azure PowerShell-lel, vagy nincs konfigurálva, hogy az Azure-előfizetéssel, lásd: [hogyan használja az Azure PowerShell](https://azure.microsoft.com/develop/nodejs/how-to-guides/powershell-cmdlets/).
+>
+>
+
+### <a name="streaming-with-azure-command-line-interface"></a>Streamelés az Azure parancssori felületével
 Az adatfolyam adatok naplózása, nyisson meg egy új parancssort, PowerShell, a Bash vagy a terminál-munkamenetet, és adja meg a következő parancsot:
 
     az webapp log tail --name webappname --resource-group myResourceGroup
@@ -153,7 +191,7 @@ Szűrés konkrét naplófájlokból típusok, például a HTTP, használja a **�
     az webapp log tail --name webappname --resource-group myResourceGroup --path http
 
 > [!NOTE]
-> Ha nem telepítette az Azure CLI-vel, vagy nincs konfigurálva, hogy az Azure-előfizetéssel, lásd: [hogyan használja az Azure CLI](../cli-install-nodejs.md).
+> Ha nem telepítette az Azure parancssori felület, vagy nincs konfigurálva, hogy az Azure-előfizetéssel, lásd: [hogyan való használata az Azure parancssori felület](../cli-install-nodejs.md).
 >
 >
 

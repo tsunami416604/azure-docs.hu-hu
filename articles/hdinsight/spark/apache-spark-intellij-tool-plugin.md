@@ -2,19 +2,19 @@
 title: 'IntelliJ-hez készült Azure-eszközkészlet: Spark-alkalmazások HDInsight-fürt létrehozása '
 description: Spark Scalában írt alkalmazások fejlesztése az IntelliJ-hez készült Azure-eszközkészlet használatával, és küldheti el ezeket a HDInsight Spark-fürt.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 11/08/2018
 ms.author: maxluk
-ms.openlocfilehash: 51e1e7696ece46e63358b2ed6efa55bbf6ab01fd
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ff7cfcd56158bd38d031a29a21247fb9eb6b91f9
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420778"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51289070"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>IntelliJ-hez készült Azure eszközkészlet használata Spark-alkalmazások egy HDInsight-fürt létrehozása
 
@@ -195,7 +195,7 @@ Miután létrehozta a Scala-alkalmazások, elküldheti a fürthöz.
        > [!NOTE]
        > A hivatkozott JARs és a hivatkozott fájlok feltöltését, tekintse meg: [erőforrások a fürt feltöltése](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)
                          
-    * **Töltse fel az elérési út**: adhatja meg, a Jar- vagy a Scala Projekt erőforrások elküldése tárolási helyét. Három tárolási típust támogat: **Azure Blob**, **interaktív használata Spark-munkamenetre összetevők feltöltése**, és **használja a fürt alapértelmezett tárfiók**. Az alábbi képernyőfelvétel, amelyek az Azure Blob.
+    * **Töltse fel az elérési út**: adhatja meg, a Jar- vagy a Scala Projekt erőforrások elküldése tárolási helyét. Három tárolási típust támogat: **Azure Blob**, **interaktív használata Spark-munkamenetre összetevők feltöltése**, és **használja a fürt alapértelmezett tárfiók**, és **ADLS Gen1**. Az alábbi képernyőfelvétel, amelyek az Azure Blob.
 
         ![A Spark küldésének párbeszédpanel](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-upload-storage-types.png)
 
@@ -258,26 +258,25 @@ Alapértelmezés szerint az IntelliJ-hez a Spark-fürtök, az összes Azure-elő
 Futtathat Spark helyi Console(Scala) vagy Spark Livy interaktív munkamenet Console(Scala) futtatni.
 
 ### <a name="spark-local-consolescala"></a>A Spark helyi Console(Scala)
-1. A függőségek manuálisan kell hozzáadni. Menü **fájl**->**projekt struktúrák**->**Projektbeállítások**->**kódtárak**, Kattintson a **+**, válassza a **a Maven...** . Majd adja meg **org.apache.spark:spark-repl_2.11:2.1.0** az előugró párbeszédpanelen. A függőségek felvett szalagtárak esetén az első sorba kell áthelyezése a függőségi **modulok** a **projekt struktúrák** ablak. Mielőtt, módosítsa a **hatókör** való **futásidejű**.
-
-    ![Helyi konzol függőségi kódtárak hozzáadása](./media/apache-spark-intellij-tool-plugin/local-console-add-dependency-libraries.png)
-
-    ![Első sor a helyi konzol áthelyezése](./media/apache-spark-intellij-tool-plugin/local-console-move-first-line.png)
-
-2. Ha nem rendelkezik ilyennel, mielőtt, állítsa be a konfigurációt. A **Futtatás és hibakeresés konfigurációk** ablakban kattintson a **+** -> **Azure HDInsight Spark**, jelölje be lapon **helyileg futtassa**, válassza ki a fő osztályban, majd kattintson a **OK**.
+1. Ha nem rendelkezik ilyennel, mielőtt, állítsa be a konfigurációt. A **Futtatás és hibakeresés konfigurációk** ablakban kattintson a **+** -> **Azure HDInsight Spark**, jelölje be lapon **helyileg futtassa**és **távolról futtatni a fürt**, válassza ki a fő osztályban, majd kattintson a **OK**.
 
     ![Helyi konzol konfigurációjának beállítása](./media/apache-spark-intellij-tool-plugin/console-set-configuration.png)
  
-3. Nyissa meg a fájlt a fő osztályban fájlba megfelelő, és kattintson a jobb gombbal **Spark konzol**, majd kattintson a **futtatása Spark helyi Console(Scala)**. Menü, vagy **eszközök**->**Spark konzol**->**futtatása Spark helyi Console(Scala)** , indítsa el a konzolt.
+2. Nyissa meg a megfelelő fő osztályban fájlba, és kattintson a jobb gombbal **Spark konzol**, majd kattintson a **futtatása Spark helyi Console(Scala)**. Menü, vagy **eszközök**->**Spark konzol**->**futtatása Spark helyi Console(Scala)** , indítsa el a konzolt. Majd kérje meg, ha azt szeretné, automatikus javítása, a függőségeket a két párbeszédpanelek jelennek meg. Csak kattintson a gombra **automatikus javítás**.
+
+    ![A Spark automatikus Fix1](./media/apache-spark-intellij-tool-plugin/console-auto-fix1.png)
+
+    ![A Spark automatikus Fix2](./media/apache-spark-intellij-tool-plugin/console-auto-fix2.png)
 
     ![A Spark helyi belépési pont](./media/apache-spark-intellij-tool-plugin/spark-console-local-entry-script.png)
 
-4. Helyi indítását követően sikeresen konzol. Tűnik alatt. Hiba a kívánt teheti meg. Adja meg például **sc.appName**, nyomja le a ctrl + Enter, akkor az eredmény megjelenik.
+3. Helyi indítását követően sikeresen konzol. Tűnik alatt. Hiba a kívánt teheti meg. Adja meg például **sc.appName**, nyomja le a ctrl + Enter, akkor az eredmény megjelenik. A helyi konzol piros gombra kattintva leállíthatja.
 
     ![Helyi konzol eredménye](./media/apache-spark-intellij-tool-plugin/local-console-result.png)
 
+
 ### <a name="spark-livy-interactive-session-consolescala"></a>Spark-Livy interaktív munkamenet Console(Scala)
-Az intellij-vel 2018.2 csak támogatott.
+Az intellij-vel 2018.2 és 2018.3 csak támogatott.
 
 1. Ha nem rendelkezik ilyennel, mielőtt, állítsa be a konfigurációt. A **Futtatás és hibakeresés konfigurációk** ablakban kattintson a **+** -> **Azure HDInsight Spark**válassza lapon **távolról futtatni a fürt** , válassza ki a fürt neve és a fő osztályban, majd kattintson a **OK**.
 
@@ -290,6 +289,11 @@ Az intellij-vel 2018.2 csak támogatott.
 3. Sikerült elindítani a konzolt, miután valami azt szeretné, elvégezheti. Adja meg például **sc.appName**, nyomja le a ctrl + Enter, akkor az eredmény megjelenik.
 
     ![Interaktív konzol eredménye](./media/apache-spark-intellij-tool-plugin/interactive-console-result.png)
+
+### <a name="send-selection-to-spark-console"></a>Kijelölés küldeni a Spark-konzol
+Célszerű az Ön számára a parancsfájl eredménye forsee azzal, hogy a helyi konzol vagy a Livy interaktív munkamenet Console(Scala) egyes kódok küld. Jelölje ki az egyes kódok a Scala-fájlban, majd kattintson a jobb gombbal **kijelölés küldése a konzol Spark való**. A kijelölt kódok küld a konzolon, és hajtható végre. Az eredmény a kódokat a konzol az után jelenik meg. A konzol ellenőrzi a hibákat, ha meglévő. 
+
+   ![Kijelölés küldeni a Spark-konzol](./media/apache-spark-intellij-tool-plugin/send-selection-to-console.png)
 
 ## <a name="convert-existing-intellij-idea-applications-to-use-azure-toolkit-for-intellij"></a>Átalakíthatja az IntelliJ-hez készült Azure-eszközkészlet használata meglévő az IntelliJ IDEA-alkalmazásokat
 Átalakíthatja a meglévő Scala Spark alkalmazásokat az IntelliJ IDEA-kompatibilis, az IntelliJ-hez létrehozott. Ezután használhatja a beépülő modul az alkalmazásokat a HDInsight Spark-fürt elküldéséhez.
@@ -333,11 +337,7 @@ Ezek a hibák az oka, hogy a halommemória mérete nem elég nagy a Spark végre
 ![Az intellij-ben a "Virtuális gép options" mezőben beállítások hozzáadása](./media/apache-spark-intellij-tool-plugin/change-heap-size.png)
 
 ## <a name="faq"></a>GYIK
-Amikor a fürt hivatkozásra, e javasolna, hogy adja meg a storage hitelesítő adatai.
-
-![-Fürtöt, a tároló hitelesítő adatok megadása](./media/apache-spark-intellij-tool-plugin/link-cluster-with-storage-credential-intellij.png)
-
-Két módja a feladatok elküldéséhez. Ha a tároló hitelesítő adat áll rendelkezésre, kötegelt mód használandó a feladat elküldéséhez. Ellenkező esetben az interaktív mód lesz használható. Ha a fürt foglalt, kaphat az alábbi hiba.
+Ha a fürt foglalt, kaphat az alábbi hiba.
 
 ![Intellij jelenik meg a hiba esetén a foglalt fürt](./media/apache-spark-intellij-tool-plugin/intellij-interactive-cluster-busy-upload.png)
 

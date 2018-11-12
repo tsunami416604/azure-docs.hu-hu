@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: b7c1a378b2bd653b1a4dae12b4240c41461902cf
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 29fa8d0216ac5b986a758ef553814d53834793d9
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961011"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009725"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Összegyűjtött adatok gyűjtésére a Linux-ügynökök a Log Analyticsben
 [Összegyűjtött](https://collectd.org/) van egy nyílt forráskódú Linux-démon rendszeres időközönként által gyűjtött teljesítmény-mérőszámok az alkalmazások és a rendszer szintű adatait. Példa alkalmazások közé tartozik, a Java virtuális gép (JVM), a MySQL-kiszolgáló és az nginx-et. Ez a cikk teljesítményadatok gyűjtése a Log Analytics az összegyűjtött információkat biztosít.
@@ -114,16 +114,16 @@ Egy jól ismert modell között már a Linuxhoz készült Log Analytics-ügynök
 
 | Összegyűjtött metrika mező | Log Analytics mező |
 |:--|:--|
-| gazdagép | Computer |
-| Beépülő modul | None |
+| gazdagép | Számítógép |
+| Beépülő modul | Nincs |
 | plugin_instance | Példány neve<br>Ha **plugin_instance** van *null* majd InstanceName = "*_Total*" |
-| type | Objektumnév |
+| típus | Objektumnév |
 | type_instance | CounterName<br>Ha **type_instance** van *null* majd CounterName =**üres** |
 | dsnames] | CounterName |
-| dstypes | None |
+| dstypes | Nincs |
 | értékek] | AVG |
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [naplókereséseket](log-analytics-log-search.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 
+* Ismerje meg [naplókereséseket](log-analytics-queries.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 
 * Használat [egyéni mezők](log-analytics-custom-fields.md) syslog-rekord származó adatok elemzése az egyes mezőket.
 

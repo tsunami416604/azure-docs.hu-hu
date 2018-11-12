@@ -6,13 +6,13 @@ author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 11/01/2018
-ms.openlocfilehash: b5a1e521f46da7feffd2eb556ad1662a9ccaee55
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 11/08/2018
+ms.openlocfilehash: 4e21b1bb85ba91266370d89ec8dbd0fae84ef197
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913836"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299792"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Event Grid-témakörök kezelésére szolgáló esemény tartományok ismertetése
 
@@ -23,7 +23,7 @@ Ez a cikk ismerteti az esemény tartományok használata kezelheti a különböz
 * A témakörök partíció mindegyike külön-külön kezelése nélkül.
 * Kerülje el a témakör végpontok mindegyike külön-külön közzététele.
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
+Ez a funkció előzetes verzióban érhető el. A használatához telepítenie kell egy minta-kiterjesztés vagy a modul. Útmutatásért lásd: [témakörök kezelése és az esemény tartományok használatával közzé az eseményeket](how-to-event-domains.md).
 
 ## <a name="event-domain-overview"></a>Esemény tartományi áttekintése
 

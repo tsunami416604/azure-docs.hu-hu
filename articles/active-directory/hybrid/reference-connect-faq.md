@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 11/02/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 3cb44779f376dca1844f42f346ed0fa3bfaa93cf
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 50ec49c22c64780c8f887b12eef1dd0e75c379ed
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269445"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010604"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect – gyakori kérdések
 
@@ -60,7 +60,7 @@ Ennek legegyszerűbb módja, hogy használja az SQL Server Management Studio Azu
 
 Az egyszerűség kedvéért javasoljuk, hogy a felhasználók, akik az Azure AD Connect telepítése SQL-rendszergazdák lehet. Azonban legutóbbi-buildek használatával, így használja a delegált rendszergazdák SQL, leírtak szerint [SQL meghatalmazott rendszergazdai engedélyek használatával telepítse az Azure AD Connect](how-to-connect-install-sql-delegation.md).
 
-## <a name="network"></a>Network (Hálózat)
+## <a name="network"></a>Hálózat
 **K: van egy tűzfal, a hálózati eszköz, illetve bármi más, amely korlátozza a kapcsolatok maradhat, nyissa meg a hálózaton lévő idejét. Az ügyféloldali időkorlát küszöbértéke lennie az Azure AD Connect használata esetén?**  
 Az összes hálózati szoftvert, fizikai eszközök vagy bármi olyanra, amely korlátozza a maximális időtartam, a kapcsolat nyitva maradhat kell használnia egy küszöbértéket legalább öt percig (300 másodperc), ahol az Azure AD Connect-ügyfél telepítve van a kiszolgáló közötti kapcsolat és az Azure Active Directory. Ez a javaslat vonatkozik az összes korábban kiadott Microsoft Identity szinkronizálási eszközöket is.
 
@@ -75,6 +75,9 @@ Nem, az Azure AD Connect nem támogatja a helyszíni erdők vagy tartományok, a
 
 **K: van támogatott tiszta IPv6-környezetben?**  
 Nem, az Azure AD Connect nem támogatja a tiszta IPv6 környezetben.
+
+**Válaszok: Többerdős környezetben van, és a két erdő között a hálózat hálózati Címfordítás (NAT) használ. Az Azure AD Connect használatával támogatja a két erdő között?**</br>
+ NAT-val az Azure AD Connect nem, nem támogatott. 
 
 ## <a name="federation"></a>Összevonás
 **K: Mi a teendő, esetén az Office 365 tanúsítvány megújítására kérő e-mailt kapok?**  
