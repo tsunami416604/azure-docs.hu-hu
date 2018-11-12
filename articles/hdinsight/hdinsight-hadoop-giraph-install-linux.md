@@ -2,19 +2,19 @@
 title: Giraph telepítése és használata a HDInsight (Hadoop) – Azure
 description: Ismerje meg, a Giraph telepítése Linux-alapú HDInsight-fürtökön parancsfájlműveletekkel. A Szkriptműveletek testre szabhatja a fürt létrehozása során, a fürt konfigurációjának módosítása, vagy a szolgáltatások és segédprogramok telepítése teszi lehetővé.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.author: jasonh
-ms.openlocfilehash: f5d7a5587d47f7601f8dc3f65318a6b7d486f58e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: 202a68d219bec3a70e50afa68228cbc6bf453518
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953293"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011663"
 ---
 # <a name="install-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>A Giraph telepítése a HDInsight Hadoop-fürtöket, és a Giraph használata nagyméretű gráfok feldolgozásához
 
@@ -134,7 +134,7 @@ Ha a fürt létrejött, használja az alábbi lépéseket a Giraph mellékelt Si
 
     Ezzel a paranccsal használt paraméterek a következő táblázat ismerteti:
 
-   | Paraméter | Művelet |
+   | Paraméter | Funkció |
    | --- | --- |
    | `jar` |A példákat tartalmazó jar-fájlt. |
    | `org.apache.giraph.GiraphRunner` |Indítsa el a példákban használt osztály. |

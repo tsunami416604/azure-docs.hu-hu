@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/05/2018
+ms.date: 11/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1def5686933a971b1192ec58bc72d64cbc5e8931
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.openlocfilehash: 31ae13fb84453a7014b66499c983e1f52554775e
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219324"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51279126"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>AD FS egyéni szabályzatok használatával az Azure Active Directory B2C egy SAML-identitásszolgáltató hozzáadása
 
@@ -26,11 +26,11 @@ Ez a cikk bemutatja, hogyan bejelentkezés engedélyezése az AD FS felhasznál�
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Hajtsa végre a [az Azure Active Directory B2C-vel egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md).
-- Győződjön meg arról, hogy a tanúsítvány .pfx fájlját a titkos kulccsal, AD FS által kiállított elérhető lesz.
+- Győződjön meg arról, hogy a tanúsítvány .pfx fájlját és a egy titkos kulcs elérhető lesz. A saját önaláírt tanúsítványt létrehozni, és töltse fel az Azure AD B2C-t. Az Azure AD B2C ezt a tanúsítványt a SAML identitásszolgáltatónak küldött SAML-kérelmet aláírásához használja.
 
 ## <a name="create-a-policy-key"></a>Hozzon létre egy házirendjének kulcsa
 
-Az AD FS-tanúsítvány tárolása az Azure AD B2C-bérlő van szüksége.
+Kell tárolnia a tanúsítványt az Azure AD B2C-bérlőben.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
@@ -38,7 +38,7 @@ Az AD FS-tanúsítvány tárolása az Azure AD B2C-bérlő van szüksége.
 4. Az Áttekintés oldalon válassza ki a **identitás-kezelőfelületi keretrendszer – előzetes verzió**.
 5. Válassza ki **Szabályzatbejegyzések** majd **Hozzáadás**.
 6. A **beállítások**, válassza a `Upload`.
-7. Adjon meg egy **neve** a házirend-kulcs. Például: `ADFSSamlCert`. Az előtag `B2C_1A_` automatikusan hozzáadódik a kulcs neve.
+7. Adjon meg egy **neve** a házirend-kulcs. Például: `SamlCert`. Az előtag `B2C_1A_` automatikusan hozzáadódik a kulcs neve.
 8. Keresse meg és válassza ki a tanúsítvány .pfx fájlját a titkos kulccsal.
 9. Kattintson a **Create** (Létrehozás) gombra.
 

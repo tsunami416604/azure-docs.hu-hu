@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: f88290043f750122327ddb1fd9b381b6bc24110c
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 83c7862e8a9e3ce069765f81607bfbbeee272be2
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959324"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278650"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Az Azure blob storage használata az IIS és az Azure table storage-események Log Analytics szolgáltatással
 
@@ -151,7 +151,7 @@ Körülbelül 30 percet, az Ön láthatja az adatokat a Log Analytics a tárfió
 Szereplő lépések segítségével [indexelése az Azure diagnostics konfigurálása a Log Analytics](log-analytics-powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics) írt a table storage, az Azure diagnostics olvasni a PowerShell használatával.
 
 Azure PowerShell használatával pontosabban megadhatja az Azure Storage írt események.
-További információkért lásd: [Diagnosztikának az Azure Virtual machines gépeken](../virtual-machines/virtual-machines-dotnet-diagnostics.md).
+További információkért lásd: [Diagnosztikának az Azure Virtual machines gépeken](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
 
 Engedélyezze, és frissítse az Azure diagnostics a következő PowerShell-parancsfájl használatával.
 Ez a szkript egy egyéni naplózási konfigurációt is használhatja.
@@ -195,4 +195,4 @@ Tekintse át a következő példaszkript, másolja, igény szerint módosítsa, 
 ## <a name="next-steps"></a>További lépések
 * [Naplók és mérőszámok az Azure-szolgáltatásokhoz gyűjtése](log-analytics-azure-storage.md) támogatott Azure-szolgáltatásokat.
 * [Megoldások engedélyezése](../monitoring/monitoring-solutions.md) nyújt betekintést az adatokat.
-* [Keresési lekérdezéseket használnak](log-analytics-log-search.md) az adatok elemzéséhez.
+* [Keresési lekérdezéseket használnak](log-analytics-queries.md) az adatok elemzéséhez.
