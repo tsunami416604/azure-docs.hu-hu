@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: a66a7537632aac2190cd39f13665bcd8d4ed6ce7
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: bae31b245cb83821490564c60f67e88898af06b3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114987"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233286"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Az Azure multi-factor Authentication beállításainak konfigurálása
 
@@ -363,8 +363,8 @@ Amikor a felhasználók regisztrálják fiókjukat az Azure multi-factor Authent
 |:--- |:--- |
 | Megadott telefonszám hívása |Automatikus hanghívást indít helyezi. A felhasználó fogadja a hívást, és a hitelesítéshez lenyomja a telefon billentyűzetén a # gombot. A telefonszám nem lesznek szinkronizálva a helyszíni Active Directoryban. |
 | SMS küldése megadott telefonszámra |Egy ellenőrző kódot tartalmazó szöveges üzenetet küld. Kéri a felhasználót, hogy a bejelentkezési felületen meg kell adnia az ellenőrzőkódot. Ez a folyamat egyirányú SMS nevezzük. Kétirányú SMS azt jelenti, hogy a felhasználónak meg kell szöveg vissza egy adott kódblokkra. Kétirányú SMS elavult, és 2018. November 14. után nem támogatott. Felhasználók, akik kétirányú SMS automatikusan át konfigurált _telefonszámot_ ellenőrzés időpontjában.|
-| Értesítés mobilalkalmazáson keresztül |Leküldéses értesítést küld a telefonjára vagy regisztrált készülékére. A felhasználó megtekinti az értesítést, és kiválasztja **ellenőrizze** ellenőrzés befejezéséhez. A Microsoft Authenticator alkalmazás érhető el az [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), és [iOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
-| Mobilalkalmazás ellenőrzőkódja |A Microsoft Authenticator alkalmazás egy új OATH-ellenőrző kód 30 másodpercenként hoz létre. A felhasználó a bejelentkezési felületen kerül, az ellenőrző kódot. A Microsoft Authenticator alkalmazás érhető el az [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), és [iOS](http://go.microsoft.com/fwlink/?Linkid=825073). |
+| Értesítés mobilalkalmazáson keresztül |Leküldéses értesítést küld a telefonjára vagy regisztrált készülékére. A felhasználó megtekinti az értesítést, és kiválasztja **ellenőrizze** ellenőrzés befejezéséhez. A Microsoft Authenticator alkalmazás érhető el az [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071), [Android](https://go.microsoft.com/fwlink/?Linkid=825072), és [iOS](https://go.microsoft.com/fwlink/?Linkid=825073). |
+| Mobilalkalmazás ellenőrzőkódja |A Microsoft Authenticator alkalmazás egy új OATH-ellenőrző kód 30 másodpercenként hoz létre. A felhasználó a bejelentkezési felületen kerül, az ellenőrző kódot. A Microsoft Authenticator alkalmazás érhető el az [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071), [Android](https://go.microsoft.com/fwlink/?Linkid=825072), és [iOS](https://go.microsoft.com/fwlink/?Linkid=825073). |
 
 ### <a name="enable-and-disable-verification-methods"></a>Engedélyezheti vagy letilthatja a hitelesítési módszerek
 

@@ -72,7 +72,7 @@
 ## [Szerzői sablonok](/azure/azure-resource-manager/resource-group-authoring-templates?toc=%2fazure%2fnetworking%2ftoc.json)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Közösségi sablonok](https://azure.microsoft.com/resources/templates/)
-## [Hálózatkezelési blog](http://azure.microsoft.com/blog/topics/networking)
+## [Hálózatkezelési blog](https://azure.microsoft.com/blog/topics/networking)
 ## [Díjszabás](https://azure.microsoft.com/pricing)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Régiónkénti rendelkezésre állás](https://azure.microsoft.com/regions/services/)

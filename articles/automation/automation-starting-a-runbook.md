@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 00143ab1f4aaba0f700e084d9225570c28713d0d
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 020923a76c94b10165e95bb4c5950419595dff0b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42058098"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51252343"
 ---
 # <a name="starting-a-runbook-in-azure-automation"></a>Runbook elindítása az Azure Automationben
 Az alábbi táblázat segítségével meghatározhatja, hogy a metódus elindít egy runbookot, amely a leginkább megfelelő, az adott forgatókönyv az Azure automationben. Ez a cikk a runbook elindítása az Azure Portallal és a Windows PowerShell-lel részleteket tartalmaz. A többi módszer a részletei is szerepelnek az egyéb dokumentáció, amely az alábbi hivatkozásokra kattintva érheti el.
@@ -66,7 +66,7 @@ While ($doLoop) {
 Get-AzureRmAutomationJobOutput –AutomationAccountName $AutomationAcct -Id $job.JobId -ResourceGroupName $ResourceGroup –Stream Output
 ```
 
-Ha a runbookhoz paraméterek szükségesek, akkor meg kell adnia azokat egy [kivonattábla](http://technet.microsoft.com/library/hh847780.aspx) amelyben a kivonattábla kulcsa megegyezik a paraméter nevével, és az értéke a paraméter értéke. Az alábbi példa bemutatja, hogyan két karakterlánc paraméterei nevű Keresztnév és Vezetéknév, egy RepeatCount nevű egész és egy Show nevű logikai paraméterrel rendelkező runbook indítása. A paraméterek további információkért lásd: [Runbook paraméterek](#Runbook-parameters) alatt.
+Ha a runbookhoz paraméterek szükségesek, akkor meg kell adnia azokat egy [kivonattábla](https://technet.microsoft.com/library/hh847780.aspx) amelyben a kivonattábla kulcsa megegyezik a paraméter nevével, és az értéke a paraméter értéke. Az alábbi példa bemutatja, hogyan két karakterlánc paraméterei nevű Keresztnév és Vezetéknév, egy RepeatCount nevű egész és egy Show nevű logikai paraméterrel rendelkező runbook indítása. A paraméterek további információkért lásd: [Runbook paraméterek](#Runbook-parameters) alatt.
 
 ```
 $params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}

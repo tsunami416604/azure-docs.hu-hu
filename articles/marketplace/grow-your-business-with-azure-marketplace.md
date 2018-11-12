@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 6c2f20f74ce90f2876ff4040d34a2ede94c92fb1
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: d193cfcd03eb4e686ba829e121fbf77e2e0c18a6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577329"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233014"
 ---
 # <a name="grow-your-business-in-the-marketplace"></a>Növelje üzletét a Marketplace-en 
 Az appsource-on vagy az Azure piactéren az ajánlat közzététele után a Microsofttal közös piaci megjelenést (GTM) tevékenységek használhatja a lista egy kezdőpanele. Vezetői forgalom, a Piactéri ajánlat és gondozásának biztosításáig a Marketplace-en az érdeklődők, például módon nagyszerű felgyorsíthatja az üzlet növekedésének megfelelően. 
@@ -229,7 +229,7 @@ Az ajánlat vagy az előléptetni, és további előnyök és erőforrások elé
 
 | Előnyök | További források |
 |:--- |:--- |
-| Használja az alapértelmezett érték használatának legfontosabb előnyei | A Microsoft Partner Network részeként a kap egy készlete, amelyek segítségével időt és pénzt használatának legfontosabb előnyei. Az előnyöket is segíthet erősíti képességeit, jobb szolgáltatást nyújt ügyfeleinek és kapcsolatokat épít annak érdekében, a teljes üzleti lehetőségeit.<br>Használatának legfontosabb előnyei kapcsolatos további információkért látogasson el [használatának legfontosabb előnyei és követelmények](http://partner.microsoft.com/membership/core-benefits). |
+| Használja az alapértelmezett érték használatának legfontosabb előnyei | A Microsoft Partner Network részeként a kap egy készlete, amelyek segítségével időt és pénzt használatának legfontosabb előnyei. Az előnyöket is segíthet erősíti képességeit, jobb szolgáltatást nyújt ügyfeleinek és kapcsolatokat épít annak érdekében, a teljes üzleti lehetőségeit.<br>Használatának legfontosabb előnyei kapcsolatos további információkért látogasson el [használatának legfontosabb előnyei és követelmények](https://partner.microsoft.com/membership/core-benefits). |
 | A Cloud Platform kompetencia megszerzésére | Kompetenciát megszerzéséhez segít különbséget tenni saját maga a más Microsoft-partnerek között. Kompetenciát megszerzéséhez is segítséget nyújt technikai szakértelemmel és az ügyfelek sikerességét a piacon elérhető bemutatásához. Szakértelmére feltétele számos kulcsfontosságú partner programok, például a közös értékesítési.<br> A Cloud Platform kompetenciával kapcsolatos további információkért látogasson el a [Cloud Platform kompetencia](https://partner.microsoft.com/membership/cloud-platform-competency). |
 | IP-közös értékesítési kész legyen | Előfordulhat, hogy jogosult az IP-közös értékesítési program készen programot, amely lehetővé teszi a közvetlenül a Microsoft-értékesítőkkel közösen és a cél ügyfél lehetőségeket és a fiók tervezési más partnerekkel közösen dolgozzon. A megoldás lesz látható a Microsoft-értékesítőkkel közösen az értékesítői megoldás-katalógusban. Microsoft-értékesítőkkel közösen van jutalmakat a beküldött fordításaiért együttműködés és a winning with meg.<br> További információ a értékesítési program, többek között a jogosultsági követelményeknek, látogasson el a [elősegítik az üzleti](https://partner.microsoft.com/reach-customers/promote-your-business). |
 

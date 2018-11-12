@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 03/06/2018
 ms.author: danlep
-ms.openlocfilehash: 7bb49e48f3777304aa6f40cee40e0b7147994201
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 52338cc21e46b544c2abb79cd7094615c837a2e8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345237"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233779"
 ---
 # <a name="set-up-a-windows-rdma-cluster-with-hpc-pack-to-run-mpi-applications"></a>A HPC Pack segítségével Windows RDMA-fürt beállítása MPI-alkalmazások futtatására
 Az Azure-ban Windows RDMA-fürt beállítása [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) és [RDMA-kompatibilis HPC Virtuálisgép-méretek](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#rdma-capable-instances) párhuzamos Message Passing Interface (MPI) alkalmazások futtatásához. RDMA-kompatibilis, a Windows Server-alapú csomópontok HPC Pack-fürt üzembe helyezésekor MPI-alkalmazások hatékonyan egy alacsony késleltetésű, nagy átviteli sebességű hálózat az Azure-ban, amely távoli közvetlen memória-hozzáféréses (RDMA) technológiát alapul keresztül kommunikálnak.
@@ -51,19 +51,19 @@ Az alábbiakban szempontjait és lépéseit a csúcsterhelések átirányítása
     A HPC Pack telepítési csomag letöltéséhez a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=49922). Követelmények és készíti elő az Azure adatlöketek központi telepítésével kapcsolatos utasításokat lásd: [a csúcsterhelések átirányítása az Azure Worker Instances with Microsoft HPC Pack](https://technet.microsoft.com/library/gg481749.aspx).
 2. **Felügyeleti tanúsítvány konfigurálása az Azure-előfizetésben**
    
-    A kapcsolat a fő csomópontot és az Azure közötti biztonságos tanúsítvány konfigurálása. Beállítások és eljárások: [forgatókönyvek az Azure felügyeleti tanúsítvány konfigurálása a HPC Pack](http://technet.microsoft.com/library/gg481759.aspx). Tesztelési célú telepítések esetén a HPC Pack-alapértelmezett Microsoft HPC Azure felügyeleti tanúsítványt telepít gyorsan feltöltheti az Azure-előfizetéshez.
+    A kapcsolat a fő csomópontot és az Azure közötti biztonságos tanúsítvány konfigurálása. Beállítások és eljárások: [forgatókönyvek az Azure felügyeleti tanúsítvány konfigurálása a HPC Pack](https://technet.microsoft.com/library/gg481759.aspx). Tesztelési célú telepítések esetén a HPC Pack-alapértelmezett Microsoft HPC Azure felügyeleti tanúsítványt telepít gyorsan feltöltheti az Azure-előfizetéshez.
 3. **Új felhőalapú szolgáltatás és a egy storage-fiók létrehozása**
    
     Az Azure portal használatával hozzon létre egy felhőszolgáltatás (klasszikus) és a egy tárfiók (klasszikus) az üzembe helyezéshez. Hozzon létre egy régióban, ahol a H-sorozatú, a8-asnak vagy a9-es méretű használni kívánt elérhető ezeket az erőforrásokat. Lásd: [az Azure-termékek régiók szerint](https://azure.microsoft.com/regions/services/).
 
 4. **Egy Azure-csomópont-sablon létrehozása**
    
-    Használja a csomópont-sablon létrehozása varázsló a HPC Cluster Manager. Lépéseiért lásd: [hozzon létre egy Azure-csomópont sablon](http://technet.microsoft.com/library/gg481758.aspx#BKMK_Templ) a "Lépések való üzembe helyezése Azure csomópontok a Microsoft HPC Pack".
+    Használja a csomópont-sablon létrehozása varázsló a HPC Cluster Manager. Lépéseiért lásd: [hozzon létre egy Azure-csomópont sablon](https://technet.microsoft.com/library/gg481758.aspx#BKMK_Templ) a "Lépések való üzembe helyezése Azure csomópontok a Microsoft HPC Pack".
    
     A kezdeti vizsgálatot javasoljuk, hogy manuális rendelkezésre állási házirend beállítása a sablonban.
 5. **Csomópontok hozzáadása a fürthöz**
    
-    Használja a csomópont hozzáadása varázsló a HPC Cluster Manager. További információkért lásd: [Azure-csomópontok hozzáadása a Windows HPC-fürt](http://technet.microsoft.com/library/gg481758.aspx#BKMK_Add).
+    Használja a csomópont hozzáadása varázsló a HPC Cluster Manager. További információkért lásd: [Azure-csomópontok hozzáadása a Windows HPC-fürt](https://technet.microsoft.com/library/gg481758.aspx#BKMK_Add).
    
     A csomópontok mérete megadásakor válassza ki az RDMA-kompatibilis példány méretek egyikét.
    
@@ -76,7 +76,7 @@ Az alábbiakban szempontjait és lépéseit a csúcsterhelések átirányítása
     Válassza ki a csomópontokat, és használja a **Start** HPC Cluster Manager művelet. Amikor a kiépítés befejeződött, válassza ki a csomópontokat, és használja a **online állapotba hozás** HPC Cluster Manager művelet. A csomópontok, feladatok futtatása készen áll.
 7. **A fürt-feladatok elküldése**
    
-   A HPC Pack feladat beküldése eszközei fürt feladatok futtatásához. Lásd: [Microsoft HPC Pack: feladatkezelés](http://technet.microsoft.com/library/jj899585.aspx).
+   A HPC Pack feladat beküldése eszközei fürt feladatok futtatásához. Lásd: [Microsoft HPC Pack: feladatkezelés](https://technet.microsoft.com/library/jj899585.aspx).
 8. **Állítsa le (megszüntetési) a csomópontok**
    
    Amikor elkészült a futó feladatok, a csomópontok offline állapotba, és használja a **leállítása** HPC Cluster Manager művelet.

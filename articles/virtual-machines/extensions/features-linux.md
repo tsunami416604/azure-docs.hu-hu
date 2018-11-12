@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 720b8584c201826e55099ad31667478b6aa57b27
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: bf6eca33eb1448eb84065fb7fe184d01e77feb61
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024515"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036992"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Virtuális gépi bővítmények és szolgáltatások linuxhoz
 
@@ -64,7 +64,7 @@ Néhány bővítmény nem támogatja az összes OSE-kre között, és bocsáthat
 Bővítménycsomagok letöltődnek az Azure Storage-bővítmény adattárból, és az Azure Storage-bővítmény állapota feltöltések videóközpontba. Ha [támogatott](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) az ügynökök verzióját, akkor nem kell engedélyezi a hozzáférést az Azure Storage a virtuális gép régióban, mivel az ügynök használhatják a kommunikáció átirányítása az Azure fabric controller, az ügynök-kommunikációhoz. Ha az ügynök nem támogatott verziója van, engedélyezi a kimenő hozzáférést az adott régióban az Azure Storage a virtuális gépről szeretne.
 
 > [!IMPORTANT]
-> Ha a hozzáférést a letiltott *168.63.129.1* a Vendég tűzfalat használ, akkor bővítmények sikertelen a fenti függetlenül.
+> Ha a hozzáférést a letiltott *168.63.129.16* a Vendég tűzfalat használ, akkor bővítmények sikertelen a fenti függetlenül.
 
 Ügynökök csak bővítménycsomagok és állapotjelentést letöltéséhez használható. Például, ha a bővítmény telepítését le kell töltenie egy szkriptet a Githubról (egyéni szkript), vagy kell elérni az Azure Storage (Azure Backup), majd további tűzfal és a hálózati biztonsági csoport portokat kell megnyitni. A különböző bővítmények eltérő követelmények vonatkoznak, lehet, mert a saját jobb alkalmazások. Az Azure Storage-hozzáférést igénylő bővítmények, Azure NSG szolgáltatás címkék használatával hozzáférést biztosíthat [tárolási](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
@@ -84,7 +84,7 @@ Azure Virtuálisgép-bővítmények futtassa a meglévő virtuális gépeken, am
 
 Az alábbi módszerek bővítmény egy meglévő virtuális gép futtatásához használható.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 Az Azure Virtuálisgép-bővítmények a meglévő virtuális gép is futtatható a [az virtuálisgép-bővítmény csoportot](/cli/azure/vm/extension#az-vm-extension-set) parancsot. Az alábbi példa egy nevű virtuális gép fut az egyéni szkriptek bővítménye *myVM* nevű erőforráscsoportból *myResourceGroup*:
 
@@ -222,7 +222,7 @@ Az ügynökök és a bővítmények ossza meg az azonos frissítési mechanizmus
 Ha egy frissítés érhető el, csak telepíti a rendszer a virtuális gépen, és megváltoznak a bővítmények és más virtuális gép adatmodell változásainak, mint például:
 
 - Adatlemezek
-- Bővítmények
+- Kiterjesztések
 - Rendszerindítási diagnosztika tároló
 - Vendég-operációsrendszer titkok
 - Virtuális gép mérete

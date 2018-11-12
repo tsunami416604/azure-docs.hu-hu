@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 85a493e05fb87292f303bccdcef65d119223bc76
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 34648426086bdd67f19ec227ddf0d931f3837c0d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38698613"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237995"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>A helyszíni StorSimple-eszköz (3. frissítés vagy újabb) üzembe helyezése
 
@@ -66,7 +66,7 @@ Ezen szükséges lépések végrehajtásával konfigurálhatja a StorSimple-eszk
 ## <a name="deployment-configuration-checklist"></a>Üzembehelyezési konfigurációs ellenőrzőlista
 Mielőtt üzembe helyezné az eszközt, információkat kell gyűjtenie a StorSimple-eszköz szoftverének konfigurálásához. Az információk időben történő előkészítésével leegyszerűsíthető a StorSimple-eszköz üzembe helyezésének folyamata a környezetben. Töltse le és használja ezt az ellenőrzőlistát a konfigurációs részletek lejegyzésére az eszköz üzembe helyezése során.
 
-* [StorSimple üzembehelyezési konfigurációs ellenőrzőlista letöltése](http://www.microsoft.com/download/details.aspx?id=49159)
+* [StorSimple üzembehelyezési konfigurációs ellenőrzőlista letöltése](https://www.microsoft.com/download/details.aspx?id=49159)
 
 ## <a name="deployment-prerequisites"></a>Üzembehelyezési előfeltételek
 Az alábbi szakaszok ismertetik a StorSimple-eszközkezelő szolgáltatás és a StorSimple-eszköz konfigurációs előfeltételeit.

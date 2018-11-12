@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 0e1c049596b5231ad72590fc17a73cd5aa457e4d
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 4a72f11b55d1c315a9dce62de3e6d23c340baa51
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42055753"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51232861"
 ---
 # <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>Útmutató a megoldássablon létrehozásához az Azure Marketplace-en
 1. lépés befejezése után [fióklétrehozás és a regisztrációs][link-acct-creation], hogy interaktív, egy Azure-kompatibilis megoldás sablon létrehozásakor [létrehozására vonatkozó technikai Előfeltételek egy a megoldássablon](marketplace-publishing-solution-template-creation-prerequisites.md). Most végigvezetjük meg létrehozni egy megoldássablon több virtuális gép a lépéseket a [közzétételi portál] [ link-pubportal] az Azure Marketplace-en.
@@ -62,7 +62,7 @@ Akkor is hasznos lehet a kapcsolódó cikkek:
 * Virtuálisgép-rendszerképek: [kapcsolatos virtuálisgép-lemezképek az Azure-ban](https://msdn.microsoft.com/library/azure/dn790290.aspx)
 * A Virtuálisgép-bővítmények: [Azure Virtuálisgép-bővítmények és szolgáltatások](../virtual-machines/extensions/features-windows.md)
 * Az Azure Resource Manager: [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md) és [egyszerű sablon példák](https://github.com/rjmax/ArmExamples)
-* Storage-fiók szabályozza: [figyelése a Storage-fiók szabályozási](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx) és [prémium szintű storage](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)
+* Storage-fiók szabályozza: [figyelése a Storage-fiók szabályozási](https://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx) és [prémium szintű storage](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)
 
 [img-pubportal-menu-sol-templ]:media/marketplace-publishing-solution-template-creation/pubportal-menu-solution-templates.png
 [img-pubportal-sol-templ-new]:media/marketplace-publishing-solution-template-creation/pubportal-solution-template-new.png

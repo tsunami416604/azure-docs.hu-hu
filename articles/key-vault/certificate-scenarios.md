@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: bryanla
-ms.openlocfilehash: 60920aaa62d8472eaca8f929c62ce1c0af08f9a4
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 4b7192b0c406d2c5df42e3bb3e604f26c56c7bd4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385634"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235190"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Ismerkedés a Key Vault-tanúsítványok
 A következő esetekben felvázolják a Key Vault tanúsítvány management szolgáltatás többek között a további lépéseket az első tanúsítvány létrehozásához a key vaultban lévő szükséges elsődleges használatokban.
@@ -56,7 +56,7 @@ Tanúsítványok épülnek fel, a Key Vault-tanúsítvánnyal; egymáshoz kapcso
         -   Szolgáltató  
         -   Hitelesítő adatok – a Hitelesítésszolgáltatói fiók hitelesítő adatait. Minden CA a saját konkrét adatokat tartalmaz.  
 
-     Hitelesítésszolgáltató szolgáltatók fiókok létrehozásával kapcsolatos további információkért tekintse meg a kapcsolódó bejegyzését a [Key Vault blog](http://aka.ms/kvcertsblog).  
+     Hitelesítésszolgáltató szolgáltatók fiókok létrehozásával kapcsolatos további információkért tekintse meg a kapcsolódó bejegyzését a [Key Vault blog](https://aka.ms/kvcertsblog).  
 
 **3.1. lépés** - beállítás [tanúsítványt névjegyeket](/rest/api/keyvault/setcertificatecontacts) az értesítésekhez. Ez az az ügyfél a Key Vault-felhasználó számára. A Key Vault nem kényszeríti ki ezt a lépést.  
 

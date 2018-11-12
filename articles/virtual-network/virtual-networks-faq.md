@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 2291136cf50439b7845c3a344be3218277257b34
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 6c429931a7a17ab62892ecc774a5cca15a532f72
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269479"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237634"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Az Azure Virtual Network – gyakori kérdések (GYIK)
 
@@ -213,7 +213,7 @@ Igen. További információkért lásd: [Azure hálózati biztonság – átteki
 ## <a name="apis-schemas-and-tools"></a>API-k, sémákkal és eszközök
 
 ### <a name="can-i-manage-vnets-from-code"></a>Felügyelhető virtuális hálózatok code-ból?
-Igen. A virtuális hálózatok, a REST API-k is használhatja a [Azure Resource Manager](/rest/api/virtual-network) és [klasszikus (szolgáltatásfelügyelet)](http://go.microsoft.com/fwlink/?LinkId=296833) üzembe helyezési modellel.
+Igen. A virtuális hálózatok, a REST API-k is használhatja a [Azure Resource Manager](/rest/api/virtual-network) és [klasszikus (szolgáltatásfelügyelet)](https://go.microsoft.com/fwlink/?LinkId=296833) üzembe helyezési modellel.
 
 ### <a name="is-there-tooling-support-for-vnets"></a>Van-e a virtuális hálózatok eszközös támogatást?
 Igen. További információ:

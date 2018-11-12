@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: e7e0f6747beea43b55ae1a20da44cde3c070cd89
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 678a31b8c07b21e4bb2c43b8e8bc286d66ee4bab
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091372"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233745"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>A PowerShell használata riasztások beállításához az Application Insights szolgáltatásban
 Automatizálhatja a konfigurációját [riasztások](app-insights-alerts.md) a [Application Insights](app-insights-overview.md).
@@ -35,7 +35,7 @@ Ha még nem használta a Powershellt az Azure-előfizetésében előtt:
 
 Azure Powershell-modul telepítéséhez a számítógépen, ahol szeretné a szkriptek futtatására.
 
-* Telepítés [Microsoft Webplatform-telepítővel (5-ös verzióját vagy újabb)](http://www.microsoft.com/web/downloads/platform.aspx).
+* Telepítés [Microsoft Webplatform-telepítővel (5-ös verzióját vagy újabb)](https://www.microsoft.com/web/downloads/platform.aspx).
 * Telepítse a Microsoft Azure Powershell használatával
 
 ## <a name="connect-to-azure"></a>Csatlakozás az Azure szolgáltatáshoz
@@ -118,7 +118,7 @@ A metrika használata által jelentett ugyanaz a szabály használható a [mér�
 | `performanceCounter.requests_per_sec.value` |ASP.NET-kérelmek gyakorisága |Az ASP.NET által az alkalmazásnak küldött összes kérelem száma másodpercenként. |
 | `remoteDependencyFailed.durationMetric.count` |Függőségi hibák |A kiszolgálói alkalmazás által külső erőforrások indított sikertelen hívások száma. |
 | `request.duration` |Kiszolgáló válaszideje |Egy HTTP-kérelem fogadása és a válasz küldésének befejezése között eltelt idő. |
-| `request.rate` |Kérelmek száma |Az alkalmazásnak küldött kérelmek száma másodpercenként. |
+| `request.rate` |Kérelmek száma |Az alkalmazás másodpercenként küldött összes kérelem száma. |
 | `requestFailed.count` |Sikertelen kérelmek |HTTP-kérelmek száma, amelyek válaszkódot eredményezett > = 400 |
 | `view.count` |Lapmegtekintések |Egy weblap kéréseinek száma. Szintetikus forgalom ki van szűrve. |
 | {az egyéni metrika neve} |{A metrika neve} |A metrikaérték által jelentett [TrackMetric](app-insights-api-custom-events-metrics.md#trackmetric) vagy a [követési hívás mérések paraméterében](app-insights-api-custom-events-metrics.md#properties). |

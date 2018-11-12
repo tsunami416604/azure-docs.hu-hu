@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 43a3458ba0f08d73931b5ecddf6a2c7b1ae259f4
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e339d50a379015d7aebe19b25127e9804d8efc52
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044815"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237247"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Az Azure cloud Services számára egyéni tartománynév konfigurálása
 Amikor létrehoz egy felhőalapú szolgáltatás, az Azure hozzárendeli egy résztartományán **cloudapp.net**. Például, ha a Felhőszolgáltatás neve "contoso", a felhasználók tudják elérhetik az alkalmazást egy URL-címet, például a http://contoso.cloudapp.net. Az Azure hozzárendeli a virtuális IP-címet is.
@@ -36,7 +36,7 @@ Ehhez már ismernie CNAME és a egy a rekordot vannak? [A magyarázat korábbi J
 <p/>
 
 > [!TIP]
-> Gyorsabb – kezdheti használni az új Azure [útmutató](http://support.microsoft.com/kb/2990804)!  Lehetővé teszi, egy egyéni tartománynevet és biztonságossá tétele kommunikációhoz (SSL) társítása az Azure Cloud Services vagy az Azure-webhelyek egy beépülő modult.
+> Gyorsabb – kezdheti használni az új Azure [útmutató](https://support.microsoft.com/kb/2990804)!  Lehetővé teszi, egy egyéni tartománynevet és biztonságossá tétele kommunikációhoz (SSL) társítása az Azure Cloud Services vagy az Azure-webhelyek egy beépülő modult.
 > 
 > 
 

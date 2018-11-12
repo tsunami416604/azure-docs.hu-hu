@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: b1ffc80994244fc44e3cd23cbb05b14e6f878ddb
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 1a64e40b13b05fc7f9fdb6f5aa99c8d8cc47c471
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125802"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251610"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-your-azure-web-apps"></a>"502 Hibás átjáró" és "503 a szolgáltatás nem érhető el" az Azure web apps a HTTP-hibáinak elhárítása
-"502 Hibás átjáró" és "503 a szolgáltatás nem érhető el" gyakori hibák a lévő üzemeltetett webalkalmazásban [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). Ez a cikk segít a hibák elhárítása.
+"502 Hibás átjáró" és "503 a szolgáltatás nem érhető el" gyakori hibák a lévő üzemeltetett webalkalmazásban [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Ez a cikk segít a hibák elhárítása.
 
 Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a [az MSDN Azure és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik megoldásként is fájl is egy Azure-támogatási esemény. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) , majd kattintson a **támogatás kérése**.
 

@@ -1,10 +1,10 @@
 ---
-title: Ellenőrizze a feladat előrehaladását REST API használatával hogyan |} Microsoft Docs
-description: Útmutató a feladatok előrehaladásának nyomon követéséhez.
+title: Hogyan lehet REST API használatával a feladat előrehaladásának ellenőrzése |} A Microsoft Docs
+description: Ismerje meg, hogy a feladat előrehaladásának nyomon követését.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: a1a1f956-c035-448a-af9c-5ac15fcce9dd
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 11/05/2018
 ms.author: juliako
-ms.openlocfilehash: 0065b12c9ee01bddef664e5c78a4e40af759826a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: dc78dce667bf00dd6e923b86b9859e29e4a5fde6
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790285"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034999"
 ---
-# <a name="how-to-check-job-progress"></a>Útmutató: a folyamat feladat állapotának ellenőrzése
+# <a name="how-to-check-job-progress"></a>Útmutató: a feladat előrehaladásának ellenőrzése
 > [!div class="op_single_selector"]
 > * [Portál](media-services-portal-check-job-progress.md)
 > * [.NET](media-services-check-job-progress.md)
@@ -29,16 +29,16 @@ ms.locfileid: "33790285"
 > 
 > 
 
-Feladatok futtatása, ha gyakran kell segítségével nyomon követheti a feladat előrehaladását. A feladat állapotát a feladat-State tulajdonság használatával talál. Az állapot tulajdonság további információkért lásd: [entitás Feladattulajdonság](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties).
+Feladatok futtatásakor gyakran igényelnek olyan módon, a feladat előrehaladásának nyomon követéséhez. A feladat állapota tulajdonság használatával keresheti meg a feladat állapota. Az állapot tulajdonság további információkért lásd: [feladat entitás tulajdonságai](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties).
 
-## <a name="connect-to-media-services"></a>Kapcsolódás a Media Services szolgáltatáshoz
+## <a name="connect-to-media-services"></a>Kapcsolódás a Media Serviceshez
 
-Az AMS API-hoz kapcsolódáshoz információkért lásd: [elérni az Azure Media Services API-t az Azure AD-alapú hitelesítés](media-services-use-aad-auth-to-access-ams-api.md). 
+Az AMS API-t kapcsolódás információkért lásd: [eléréséhez az Azure Media Services API Azure AD-hitelesítés](media-services-use-aad-auth-to-access-ams-api.md). 
 
 
 ## <a name="check-job-progress"></a>A feladat előrehaladásának ellenőrzése
 
-A kérelem:
+Kérés:
 
     GET https://media.windows.net/api/Jobs()?$filter=Id%20eq%20'nb%3Ajid%3AUUID%3Af3c43f94-327f-2347-90bb-3bf79f8559f1'&$top=1 HTTP/1.1
     DataServiceVersion: 1.0;NetFx

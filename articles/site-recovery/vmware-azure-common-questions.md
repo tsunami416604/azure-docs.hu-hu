@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.date: 10/29/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 086acdd74932836627c600b5545bc4353052ad6f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 05f878d244647a79a2b3e9d0c789ba811dad71ee
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215446"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012105"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
 Ez a cikk gyakori kérdéseket, láthatjuk, a helyszíni VMware virtuális gépek vészhelyreállítása az Azure-bA telepítésekor. Ha kérdése van a cikk elolvasása után, el őket az a [Azure Recovery Services fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
 
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 ### <a name="how-is-site-recovery-priced"></a>Hogyan van a Site Recovery díjszabása?
 Felülvizsgálat [Azure Site Recovery díjszabásáról](https://azure.microsoft.com/pricing/details/site-recovery/) részleteit.
 
@@ -44,7 +44,7 @@ Ha Ön olyan előfizetés rendszergazdája, akkor a replikációs szükséges en
 
 
 
-## <a name="on-premises"></a>Helyszíni követelmények
+## <a name="on-premises"></a>Helyszíni
 
 ### <a name="what-do-i-need-on-premises"></a>Mire van szükségem helyszíni?
 A helyszíni Site Recovery-összetevőit egyetlen VMware virtuális gépeken telepített kell. Legalább egy ESXi-gazdagépen VMware-infrastruktúrára is szüksége, és azt javasoljuk, hogy a vCenter-kiszolgáló. Ezenkívül egy vagy több VMware virtuális gépek replikálásához szüksége. [További](vmware-azure-architecture.md) VMware-ből az Azure-architektúra kapcsolatban.
@@ -58,6 +58,8 @@ Az első lépések a konfigurációs kiszolgáló a saját Windows Server-gépek
 
 ### <a name="where-do-on-premises-vms-replicate-to"></a>Ha ehhez a helyszíni virtuális gépek replikálása?
 Az Azure storage replikálja az adatokat. Feladatátvétel futtatásakor a Site Recovery automatikusan létrehozza az Azure virtuális gépek a tárfiókból.
+
+## <a name="replication"></a>Replikáció
 
 ### <a name="what-apps-can-i-replicate"></a>Mely alkalmazások replikálhatok?
 Bármilyen alkalmazást vagy a VMware virtuális gép, amely megfelel az számítási feladatot replikálhat [replikációs követelményeit](vmware-physical-azure-support-matrix.md##replicated-machines). A Site Recovery támogatja az alkalmazásbarát replikációt, hogy az alkalmazások feladatátvételt, és újra működőképes állapotban nem sikerült. A Site Recovery integrálható a Microsoft-alkalmazások, például a SharePoint, Exchange, Dynamics, SQL Server és Active Directory, és szorosan együttműködik az olyan vezető szállítókkal, beleértve az Oracle, SAP, IBM és Red Hat. [További információk](site-recovery-workload.md) a számítási feladatok védelméről.
@@ -74,18 +76,17 @@ Igen, az ExpressRoute segítségével virtuális gépek replikálása az Azure-b
 Az Azure-bA replikálja, amikor replikációs forgalom eléri a nyilvános végpontokat az Azure Storage-fiók, így csak replikálhatja az expressroute-tal (nyilvános társviszony-létesítés) a nyilvános interneten keresztül, és VPN nem működik.
 
 
-
-## <a name="what-are-the-replicated-vm-requirements"></a>Mik azok a replikált virtuális gépek követelményeinek?
+### <a name="what-are-the-replicated-vm-requirements"></a>Mik azok a replikált virtuális gépek követelményeinek?
 
 A replikáció VMware virtuális gép futnia kell egy támogatott operációs rendszert. Emellett a virtuális gép meg kell felelnie az Azure-beli virtuális gépek követelményeinek. [További](vmware-physical-azure-support-matrix.md##replicated-machines) a támogatási mátrixa.
 
-## <a name="how-often-can-i-replicate-to-azure"></a>Milyen gyakran replikálhatja az Azure-bA?
+### <a name="how-often-can-i-replicate-to-azure"></a>Milyen gyakran replikálhatja az Azure-bA?
 Replikáció Azure-bA replikált VMware virtuális gépek esetén a folyamatos.
 
-## <a name="can-i-extend-replication"></a>Ki lehet terjeszteni a replikációt?
+### <a name="can-i-extend-replication"></a>Ki lehet terjeszteni a replikációt?
 A kiterjesztett vagy láncolt replikáció nem támogatott. Ennek a funkciónak a kérelem [Visszajelzési fórum](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959-support-for-exisiting-extended-replication).
 
-## <a name="can-i-do-an-offline-initial-replication"></a>Használhatom az offline kezdeti replikációt?
+### <a name="can-i-do-an-offline-initial-replication"></a>Használhatom az offline kezdeti replikációt?
 Ez a funkció nem támogatott. Ennek a funkciónak a kérelem a [Visszajelzési fórum](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
 
 ### <a name="can-i-exclude-disks"></a>Kizárhatok egyes lemezek?
@@ -141,7 +142,7 @@ Azt javasoljuk, hogy a konfigurációs kiszolgáló rendszeres ütemezett bizton
 A telepítőcsomagokat tartják a **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository** mappát a konfigurációs kiszolgálón.
 
 ## <a name="how-do-i-install-the-mobility-service"></a>Hogyan kell telepíteni a mobilitási szolgáltatás?
-Telepíti az egyes virtuális Gépeken szeretne replikálni, használatával egy [leküldéses telepítése](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery), vagy történő manuális telepítést [a felhasználói felület](vmware-azure-install-mobility-service.md#install-mobility-service-manually-by-using-the-gui), vagy [PowerShell-lel](vmware-azure-install-mobility-service.md#install-mobility-service-manually-at-a-command-prompt). Azt is megteheti, telepítheti, mint például egy üzembe helyezési eszközzel [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md), vagy [Azure Automation és a DSC](vmware-azure-mobility-deploy-automation-dsc.md).
+Telepíti az egyes virtuális Gépeken szeretne replikálni, használatával egy [leküldéses telepítése](vmware-azure-install-mobility-service.md), vagy [manuális telepítés](vmware-physical-mobility-service-install-manual.md) a felhasználói felület vagy Powershell. Azt is megteheti, telepítheti, mint például egy üzembe helyezési eszközzel [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md).
 
 
 

@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 3b1fb14fbb21876d0b3f7d98327353d54bb1cfb2
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 56d5f3b480ddb000f9118fbcc36e39817cb0bce8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42024060"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238505"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service, Virtual Machines, Service Fabric és Cloud Services – Összehasonlítás
 
@@ -47,7 +47,7 @@ A következő táblázatban az App Service, a Cloud Services, a Virtual Machines
 | WebMatrix támogatás |X | |X | | |
 | Hozzáférés a Service Bus, Storage, SQL Database és egyéb szolgáltatásokhoz |X |X |X |X | |
 | Egy többrétegű architektúra webes vagy webszolgáltatási szintjének üzemeltetése |X |X |X |X | |
-| Egy többrétegű architektúra középső szintjének üzemeltetése |X |X |X |X |Az App Service Web Apps segítségével könnyedén üzemeltethető egy REST API középső szintje, a [WebJobs](http://go.microsoft.com/fwlink/?linkid=390226) szolgáltatás pedig háttérben futó feldolgozási feladatok üzemeltetésére képes. A WebJobs dedikált webhelyen is futtatható a szint független skálázhatóságának érdekében. |
+| Egy többrétegű architektúra középső szintjének üzemeltetése |X |X |X |X |Az App Service Web Apps segítségével könnyedén üzemeltethető egy REST API középső szintje, a [WebJobs](https://go.microsoft.com/fwlink/?linkid=390226) szolgáltatás pedig háttérben futó feldolgozási feladatok üzemeltetésére képes. A WebJobs dedikált webhelyen is futtatható a szint független skálázhatóságának érdekében. |
 | Integrált támogatás a MySQL szolgáltatásként való használatához |X |X | | | |
 | Az ASP.NET, a klasszikus ASP, a Node.js, a PHP és a Python támogatása |X |X |X |X |A Service Fabric támogatja a webes kezelőfelületek [ASP.NET 5](../service-fabric/service-fabric-reliable-services-communication-aspnetcore.md) használatával történő létrehozását, de bármilyen típusú alkalmazást (Node.js, Java stb.) telepíthet [vendégalkalmazásként](../service-fabric/service-fabric-guest-executables-introduction.md). |
 | Horizontális felskálázás több példányra ismételt üzembe helyezés nélkül |X |X |X |X |A virtuális gépek képesek horizontálisan felskálázni több példányra, de a rajtuk futó szolgáltatásokat úgy kell megírni, hogy kezeljék a felskálázást. A terheléselosztót konfigurálni kell arra, hogy irányítsa a kérelmeket a gépek között, és gondoskodni kell arról, hogy a [rendelkezésre állási csoport](../virtual-machines/windows/manage-availability.md) egynél több virtuálisgép-példányt tartalmazzon. |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 819af52bb10c9ffcb7e1133437f6d0afbe6105ae
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fa38d0ef3d00bf5fdb886703cd882ec5ba552b95
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26629686"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234034"
 ---
 # <a name="hybrid-connections-overview"></a>Hibrid kapcsolatok áttekintése
 
@@ -46,7 +46,7 @@ A hibrid kapcsolatok előnyei például a következők:
   > 
   > 
 * A Web Apps (.NET, PHP, Java, Python, Node.js) és a Mobile Apps (Node.js, .NET) által támogatott összes keretrendszerrel használható.
-* A Web Apps és a Mobile Apps pontosan ugyanúgy éri el a helyszíni erőforrásokat, mintha a web- vagy mobilalkalmazás a helyi hálózaton lenne. A helyszínen használt kapcsolati karakterlánc például az Azure-ban is használható.
+* A Web Apps és a Mobile Apps pontosan ugyanúgy éri el a helyszíni erőforrásokat, mintha a web- vagy mobilalkalmazás a helyi hálózaton lenne. A helyszínen használt kapcsolati sztring például az Azure-ban is használható.
 
 A hibrid kapcsolatokkal a vállalati rendszergazdáknak vezérelhetik és elemezhetik is a hibrid alkalmazások által elért vállalati erőforrásokat, beleértve a következőket:
 
@@ -90,11 +90,11 @@ A hibrid kapcsolatok a következő TCP-portokat használják:
 | 5671 |Amikor a 9352-es portot használja az adatforgalomhoz, az 5671-es port szolgál vezérlőcsatornaként. <br/><br/>Engedélyezze a kimenő kapcsolatokat ezen a porton. |
 | 80, 443 |Ezek a portok szolgálnak az Azure felé irányuló egyes adatkérések kezdeményezésére. Ezenkívül, ha a 9352-es és az 5671-es port nem használható, *akkor* a 80-as és a 443-as port az adatátvitelhez és a vezérlőcsatornához használt tartalékport.<br/><br/>Engedélyezze a kimenő kapcsolatokat ezeken a portokon. <br/><br/>**Megjegyezés**: nem ajánlott ezeket tartalékportokként használni más TCP-portok helyett. Adatcsatornák esetén a natív TCP helyett a HTTP/WebSocket protokoll használható. Ez kisebb teljesítményt eredményezhet. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Create and Manage Hybrid Connections (Hibrid kapcsolatok létrehozása és felügyelete)](integration-hybrid-connection-create-manage.md)
 
 ## <a name="see-also"></a>Lásd még:
-[REST API a BizTalk Services felügyeletéhez a Microsoft Azure-ban](http://msdn.microsoft.com/library/azure/dn232347.aspx)  
+[REST API a BizTalk Services felügyeletéhez a Microsoft Azure-ban](https://msdn.microsoft.com/library/azure/dn232347.aspx)  
 [BizTalk Services: Kiadások diagramja](biztalk-editions-feature-chart.md)  
 [BizTalk-szolgáltatás létrehozása](biztalk-provision-services.md)  
 [BizTalk Services: Irányítópult, Figyelés és Méret lapok](biztalk-dashboard-monitor-scale-tabs.md)  

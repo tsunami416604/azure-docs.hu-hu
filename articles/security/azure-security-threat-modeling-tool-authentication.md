@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 23e219fa49146158c97f392427eee7c42c347a7a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: b4b6e91f9b20166f63a4710f42726bf1d4090022
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307420"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251559"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Biztonsági keret: Hitelesítés |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |
@@ -156,7 +156,7 @@ ms.locfileid: "43307420"
 | **SDL fázis**               | Felépítés |  
 | **Megfelelő technológiák** | Rendszert, az SQL Azure |
 | **Attribútumok**              | SQL-12-es verzió - MSSQL2012, SQL-verzió- |
-| **Hivatkozások**              | [Ajánlott biztonsági eljárások a tartalmazott adatbázisok](http://msdn.microsoft.com/library/ff929055.aspx) |
+| **Hivatkozások**              | [Ajánlott biztonsági eljárások a tartalmazott adatbázisok](https://msdn.microsoft.com/library/ff929055.aspx) |
 | **Lépések** | Az érvényben levő jelszóházirend hiányában egy tartalmazott adatbázisban éppen létrehozott gyenge hitelesítő adatot valószínűségét növelhető. Használja ki a Windows-hitelesítés. |
 
 ## <a id="authn-sas-tokens"></a>Használja az eszköz hitelesítő adatok használatával SaS-jogkivonatok száma

@@ -6,14 +6,14 @@ author: trinadhk
 manager: shreeshd
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/11/2018
+ms.date: 11/1/2018
 ms.author: trinadhk
-ms.openlocfilehash: f293f642db2bd526e761ff570ce97a33845808b7
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: cf06fc9c12493e208832596a27b479dc9dfea942
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412805"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011323"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Szerepköralapú hozzáférés-vezérlés használata kezelheti az Azure Backup helyreállítási pontok
 Az Azure Szerepköralapú hozzáférés-vezérlés (RBAC) részletes hozzáférés-vezérlést biztosít az Azure-hoz. Az RBAC használata lehetővé teszi, hogy elkülönítse a kötelességeket a csapaton belül, valamint csak olyan mértékű hozzáférést biztosítson, amelyre a felhasználóknak a feladataik elvégzéséhez szüksége van.
@@ -40,23 +40,27 @@ Az alábbi táblázat a biztonsági mentés felügyeleti műveletek és a művel
 | Azure virtuális gépek biztonsági mentésének engedélyezése | Biztonsági mentési operátor | A tároló tartalmazó erőforráscsoportot |
 | | Virtuális gépek közreműködője | VM-erőforrás |
 | Igény szerinti biztonsági mentést a virtuális gép | Biztonsági mentési operátor | Helyreállítási tár erőforrás |
-| Virtuális gép visszaállítása | Biztonsági mentési operátor | Az erőforráscsoport, amelyben virtuális gép lesz üzembe helyezve. |
+| Virtuális gép visszaállítása | Biztonsági mentési operátor | Recovery Services-tároló |
 | | Virtuális gépek közreműködője | Az erőforráscsoport, amelyben virtuális gép lesz üzembe helyezve. |
+| | Virtuális gépek közreműködője | Forrás virtuális gép, amelyről biztonsági másolatot készített |
 | Nem felügyelt lemezek virtuális gép biztonsági másolatának visszaállítása | Biztonsági mentési operátor | Helyreállítási tár erőforrás |
-| | Virtuális gépek közreműködője | VM-erőforrás |
-| | Tárfiók-közreműködő | Tárfiók típusú erőforrást |
+| | Virtuális gépek közreműködője | Forrás virtuális gép, amelyről biztonsági másolatot készített |
+| | Tárfiók-közreműködő | Ahol lemezek fog állítani tárfiók típusú erőforrást |
 | Felügyelt lemezek visszaállítását a virtuális gép biztonsági mentése | Biztonsági mentési operátor | Helyreállítási tár erőforrás |
-| | Virtuális gépek közreműködője | VM-erőforrás |
-| | Tárfiók-közreműködő | Tárfiók típusú erőforrást |
-| | Közreműködő | Az erőforráscsoportot, amelyhez a felügyelt lemez lesz visszaállítva |
+| | Virtuális gépek közreműködője | Forrás virtuális gép, amelyről biztonsági másolatot készített |
+| | Tárfiók-közreműködő | A tároló adatok tárolásához előtt konvertálja azokat a felügyelt lemezek visszaállítása részeként kiválasztott ideiglenes tárfiók |
+| | Közreműködő | Az erőforráscsoportot, amelyhez felügyelt lemez lesz visszaállítva |
 | Egyedi fájlok visszaállítása virtuális gép biztonsági mentése | Biztonsági mentési operátor | Helyreállítási tár erőforrás |
-| | Virtuális gépek közreműködője | VM-erőforrás |
+| | Virtuális gépek közreműködője | Forrás virtuális gép, amelyről biztonsági másolatot készített |
 | Azure VM Backup biztonsági mentési szabályzat létrehozása | Biztonsági mentési közreműködő | Helyreállítási tár erőforrás |
 | Az Azure VM backup biztonsági mentési szabályzat módosítása | Biztonsági mentési közreműködő | Helyreállítási tár erőforrás |
 | Az Azure VM backup biztonsági mentési szabályzat törlése | Biztonsági mentési közreműködő | Helyreállítási tár erőforrás |
 | Biztonsági mentés leállítása (az adatok megőrzésével vagy adatok törlése) a virtuális gép biztonsági mentése | Biztonsági mentési közreműködő | Helyreállítási tár erőforrás |
 | A helyszíni Windows Server/ügyfélen/SCDPM vagy az Azure Backup Server regisztrálása | Biztonsági mentési operátor | Helyreállítási tár erőforrás |
 | Regisztrált helyszíni Windows Server/ügyfélen/SCDPM vagy az Azure Backup Server törlése | Biztonsági mentési közreműködő | Helyreállítási tár erőforrás |
+
+> [!IMPORTANT]
+> Adja meg a virtuális gép közreműködő egy VM-erőforrás hatókörben, és kattintson a biztonsági mentés részeként a virtuális gép beállításait, ha az "Biztonsági mentés engedélyezése" képernyő nyílik annak ellenére, hogy a virtuális gép már készült biztonsági másolat, ellenőrizze a biztonsági mentés állapotát működését előfizetési szinten csak a hívást. Ennek elkerülése érdekében vagy tárba, és nyissa meg a biztonsági mentési elemei nézet a virtuális gép, vagy adja meg az előfizetés szintjén a Virtuálisgép-közreműködői szerepkör. 
 
 ## <a name="next-steps"></a>További lépések
 * [Szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md): Ismerkedés az RBAC az Azure Portalon.

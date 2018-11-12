@@ -1,22 +1,22 @@
 ---
 title: Az Apache Hive – Azure HDInsight Twitter-adatok elemzése
-description: Megtudhatja, hogyan használható a Hive és a Hadoop HDInsight, nyers TWitter-adatok átalakítása a kereshető Hive-táblába.
+description: Megtudhatja, hogyan használható az Apache Hive- és Apache Hadoop HDInsight, nyers TWitter-adatok átalakítása a kereshető Hive-táblába.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/26/2018
-ms.author: jasonh
+ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: a20f9ef6e42027cf3f499654ac8a43eee7b41854
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: d037c4fc65bc32ff183ddc7a8925cd2f51411ea0
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104078"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034626"
 ---
-# <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>A HDInsight Hive és a Hadoop használatával Twitter-adatok elemzése
+# <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>A HDInsight az Apache Hive- és Apache Hadoop használatával Twitter-adatok elemzése
 
 Ismerje meg, hogyan használhatja az Apache Hive folyamat Twitter-adatok. Ez a legtöbb tweeteket egy bizonyos szót tartalmazó küldő Twitter-felhasználók listája.
 
@@ -37,7 +37,7 @@ Twitter lehetővé teszi, hogy az egyes tweetek adatainak betöltése a JavaScri
 
 3. Adja meg **neve**, **leírás**, **webhely**. Meghatározhat egy URL-címe be a **webhely** mező. Az alábbi táblázat néhány mintaértékeket használhatja:
 
-   | Mező | Érték |
+   | Mező | Value (Díj) |
    |:--- |:--- |
    | Name (Név) |MyHDInsightApp |
    | Leírás |MyHDInsightApp |

@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 10/30/2018
 ms.author: alkohli
-ms.openlocfilehash: fff1684efda0e7e7b857c668eaa28dc79b7534d7
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 5e4461a910f13c5047c4a2aadd7326c4e12c533f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416375"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238131"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Mi az az Azure Data Box Disk-lemez? (Előzetes verzió)
 
@@ -47,7 +47,7 @@ A. Ha 40 TB-nyi (vagy kevesebb) adata van, amelyet szeretne átvinni az Azure-ba
 A. A Data Box Disk-lemezek árképzéséről az [előzetes verzió díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/storage/databox/disk/) tájékozódhat.
 
 ### <a name="q-how-do-i-get-data-box-disks"></a>K. Hogyan kaphatok Data Box Disk-lemezeket? 
-A.  Ahhoz, hogy Azure Data Box Disk-lemezeket kaphasson, előbb regisztráljon a [Data Box Disk előzetes verziójára](http://aka.ms/AzureDataBox). Ezt követően jelentkezzen be az Azure Portalon, majd hozzon létre egy Data Box-lemezekre vonatkozó megrendelést. Adja meg a kapcsolattartási és értesítési adatait. A megrendelés elküldése után a rendelkezésre állás függvényében 10 napon belül szállítjuk Önnek a lemezeket.   
+A.  Ahhoz, hogy Azure Data Box Disk-lemezeket kaphasson, előbb regisztráljon a [Data Box Disk előzetes verziójára](https://aka.ms/AzureDataBox). Ezt követően jelentkezzen be az Azure Portalon, majd hozzon létre egy Data Box-lemezekre vonatkozó megrendelést. Adja meg a kapcsolattartási és értesítési adatait. A megrendelés elküldése után a rendelkezésre állás függvényében 10 napon belül szállítjuk Önnek a lemezeket.   
 
 ### <a name="q-what-is-the-maximum-amount-of-data-i-can-transfer-with-data-box-disks-in-one-instance"></a>K. Egyszerre legfeljebb mennyi adatot vihetek át a Data Box Disks-lemezekkel?
 A. 5 darab egyenként 8 TB-os lemez (7 TB-os felhasználható kapacitással) esetén a felhasználható kapacitás legfeljebb 35 TB. Így egyszerre legfeljebb 35 TB-nyi adat vihető át.  Több adat átviteléhez több lemez megrendelése szükséges.

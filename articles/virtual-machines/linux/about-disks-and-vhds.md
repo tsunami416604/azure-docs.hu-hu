@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
 ms.component: disks
-ms.openlocfilehash: 53b44d47d9421f1b37aef7ca4d30c2c753b79740
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.openlocfilehash: eec7b64836819f840702bb715f4fcc0573a94b00
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218321"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51251849"
 ---
 # <a name="about-disks-storage-for-azure-linux-vms"></a>Az Azure Linux virtuális gépek disks storage-ról
 Minden olyan számítógépre, mint az Azure-beli virtuális gépek lemezeket használnak egy olyan hely operációs rendszert, alkalmazásokat és adatokat szeretne tárolni. Az összes Azure-beli virtuális gépek legalább két lemezt – egy Linux operációsrendszer-lemez és a egy ideiglenes lemezzel rendelkezik. Az operációsrendszer-lemez jön létre egy rendszerképből, és az operációsrendszer-lemez és a kép is tárolt virtuális merevlemezek (VHD) egy Azure storage-fiókban. Virtuális gépek is rendelkezhet egy vagy több adatlemezt, is tárolt VHD-ként.
@@ -50,10 +50,13 @@ Adhat hozzá adatlemezeket a virtuális gépek bármikor, az **csatolása** a le
 
 [!INCLUDE [storage-about-vhds-and-disks-windows-and-linux](../../../includes/storage-about-vhds-and-disks-windows-and-linux.md)]
 
+Az előzetes verzió méreteket lásd: a [– gyakori kérdések](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) megtudhatja, milyen régiók érhetők el.
+
 ## <a name="troubleshooting"></a>Hibaelhárítás
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
 ## <a name="next-steps"></a>További lépések
+
 * [Lemez csatolása](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , adjon hozzá további tárterületet a virtuális géphez.
 * [Pillanatkép létrehozása](snapshot-copy-managed-disk.md).
 * [Konvertálás felügyelt lemezekké](convert-unmanaged-to-managed-disks.md).

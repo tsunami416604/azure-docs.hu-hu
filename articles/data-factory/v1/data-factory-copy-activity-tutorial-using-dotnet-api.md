@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 991dc661c40f96a1c167821d76c01ea62d62dc52
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c875793bf558013d5052f99c24d3a04a3525af5f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43089068"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253040"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Oktatóanyag: Másolási tevékenységgel ellátott adatcsatorna létrehozása a .NET API használatával
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet 
 ## <a name="prerequisites"></a>Előfeltételek
 * Olvassa el figyelmesen [Az oktatóanyag áttekintése és az Előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) című részt, hogy képet kapjon az oktatóanyag céljáról, és tisztában legyen az **előfeltételként** elvégzendő lépésekkel.
 * Visual Studio 2012, 2013 vagy 2015
-* Az [Azure .NET SDK](http://azure.microsoft.com/downloads/) letöltése és telepítése.
+* Az [Azure .NET SDK](https://azure.microsoft.com/downloads/) letöltése és telepítése.
 * Azure PowerShell. Kövesse a [How to install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Az Azure PowerShell telepítése és konfigurálása) cikkben foglalt utasításokat az Azure PowerShell telepítéséhez a számítógépre. Az Azure PowerShellt egy Azure Active Directory-alkalmazás létrehozására fogjuk használni.
 
 ### <a name="create-an-application-in-azure-active-directory"></a>Alkalmazás létrehozása az Azure Active Directoryban

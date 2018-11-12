@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: a3cbbf887c4b7df57f2df89dfb8649967d6d9b1b
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 9f02c6779b3561f6eea57512ecb27dd2fd451d90
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434755"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238148"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Adja meg a hibrid identitáskezelési megoldás az adatvédelmi stratégiát?
 Ebben a feladatban az adatvédelmi stratégiát a hibrid identitáskezelési megoldás az üzleti szükségletek kielégítése céljából, amelyet a megadott fogja definiálni:
@@ -74,7 +74,7 @@ A Tartalomkezelés alapvető része, hogy ismerje meg, melyik erőforrást hozz�
 * Hozzáadásával vagy eltávolításával licencek
 
 > [!NOTE]
-> Olvasási [Microsoft Azure biztonsági és rendszernaplók kezelése az](http://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf) többet megtudni az Azure-ban naplózási képességeket.
+> Olvasási [Microsoft Azure biztonsági és rendszernaplók kezelése az](https://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf) többet megtudni az Azure-ban naplózási képességeket.
 > Attól függően, hogy hogyan válaszolt kérdéseit [tartalomkezelési követelmények meghatározása](plan-hybrid-identity-design-considerations-contentmgt-requirements.md), érdemes, hogy meg tudja határozni, hogyan szeretné kezelni a hibrid identitáskezelési megoldás a tartalmat. Minden beállítás érhető el a 6. táblázat integrálható az Azure ad-vel, amelyek fontos határozza meg, amely az Ön üzleti igényeinek jobban megfelelő.
 >
 >

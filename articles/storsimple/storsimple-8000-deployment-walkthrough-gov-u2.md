@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: alkohli
-ms.openlocfilehash: 5a622eb5ae14a6c6b0c2dd4eceb6ffdb9733dcff
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4f093251ce3c711cc060369abb27770157024d91
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38681536"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238692"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>A helyszíni StorSimple eszköz a Government Portalon üzembe helyezése
 
@@ -67,7 +67,7 @@ Ezen szükséges lépések végrehajtásával konfigurálhatja a StorSimple-eszk
 ## <a name="deployment-configuration-checklist"></a>Üzembehelyezési konfigurációs ellenőrzőlista
 A StorSimple eszköz üzembe helyezése, előtt kell gyűjteni az adatokat az eszköz szoftverének konfigurálásához. Az információk időben történő előkészítésével leegyszerűsíthető a StorSimple eszköz üzembe helyezésének folyamata a környezetben. Töltse le és vegye figyelembe a konfiguráció részletei az eszköz üzembe helyezése során az alábbi ellenőrzőlista használatával.
 
-[StorSimple üzembehelyezési konfigurációs ellenőrzőlista letöltése](http://www.microsoft.com/download/details.aspx?id=49159)
+[StorSimple üzembehelyezési konfigurációs ellenőrzőlista letöltése](https://www.microsoft.com/download/details.aspx?id=49159)
 
 ## <a name="deployment-prerequisites"></a>Üzembehelyezési előfeltételek
 Az alábbi szakaszok ismertetik a StorSimple-eszközkezelő szolgáltatás és a StorSimple-eszköz konfigurációs előfeltételeit.

@@ -1,6 +1,6 @@
 ---
-title: Tartalom közzététele az Azure portálon |} Microsoft Docs
-description: Ez az oktatóanyag végigvezeti a tartalom közzétételének az Azure portálon.
+title: Tartalom közzététele az Azure Portalon |} A Microsoft Docs
+description: Ez az oktatóanyag végigvezeti a lépéseken, a tartalom közzététele az Azure Portalon.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.openlocfilehash: d93bfc548134f730f4fad49a37593c861d6b6cbb
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 71b7e724158255cc979e9a08cd14c7f4412c4382
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790306"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253397"
 ---
-# <a name="publish-content-in-the-azure-portal"></a>Tartalom közzététele az Azure-portálon
+# <a name="publish-content-in-the-azure-portal"></a>Tartalom közzététele az Azure Portalon
 > [!div class="op_single_selector"]
 > * [Portál](media-services-portal-publish.md)
 > * [.NET](media-services-deliver-streaming-content.md)
@@ -35,9 +35,9 @@ ms.locfileid: "33790306"
 > 
 > 
 
-Ahhoz, hogy átadhassa a tartalmak streamelésére vagy letöltésére használható URL-címet a felhasználónak, először közzé kell tennie az objektumot. Ehhez létre kell hoznia egy lokátort. A keresők biztosítják az adategység-fájloknak a hozzáférést. Az Azure Media Services két lokátortípust támogat: 
+Ahhoz, hogy átadhassa a tartalmak streamelésére vagy letöltésére használható URL-címet a felhasználónak, először közzé kell tennie az objektumot. Ehhez létre kell hoznia egy lokátort. Lokátorok biztosítanak hozzáférést az adategység-fájlok. Az Azure Media Services két lokátortípust támogat: 
 
-* **Streamelési (OnDemandOrigin) lokátorok**. A streamelési lokátorok adaptív streameléshez használhatók. Adaptív adatfolyam például Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming és dinamikus adaptív Streameléshez (DASH, más néven MPEG-DASH) http Protokollon keresztül. A streamelési lokátorok létrehozásához az objektumnak tartalmaznia kell egy .ism fájlt. Például: http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest.
+* **Streamelési (OnDemandOrigin) lokátorok**. A streamelési lokátorok adaptív streameléshez használhatók. Adaptív streamelés például Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming és dinamikus adaptív Streamelés (DASH, más néven MPEG-DASH) HTTP protokollon keresztül. A streamelési lokátorok létrehozásához az objektumnak tartalmaznia kell egy .ism fájlt. Például: http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest.
 * **Progresszív (SAS-) lokátorok**. A progresszív lokátorok a videók progresszív letöltésen keresztül történő továbbítására használatosak.
 
 HLS-streamelési URL-cím létrehozásához fűzze hozzá a *(format=m3u8-aapl)* karakterláncot az URL-címhez:
@@ -56,14 +56,14 @@ A közös hozzáférésű jogosultságkód URL-címének formátuma a következ�
 
     {blob container name}/{asset name}/{file name}/{shared access signature}
 
-További információkért lásd: a [tartalom áttekintése kézbesítéséhez](media-services-deliver-content-overview.md).
+További információkért lásd: a [tartalomtovábbítás áttekintése](media-services-deliver-content-overview.md).
 
 > [!NOTE]
 > Az Azure Portalon 2015 márciusa előtt létrehozott lokátorok lejárati ideje két év.  
 > 
 > 
 
-A lokátor lejárati dátumot frissítéséhez használja használhatja egy [REST API](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) vagy egy [.NET API](http://go.microsoft.com/fwlink/?LinkID=533259). 
+A lokátor lejárati idejének frissítéséhez használja használhatja egy [REST API-val](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) vagy egy [.NET API](https://go.microsoft.com/fwlink/?LinkID=533259). 
 
 > [!NOTE]
 > Az SAS-lokátorok lejárati dátumának frissítésekor az URL-cím is módosul.
@@ -79,7 +79,7 @@ A lokátor lejárati dátumot frissítéséhez használja használhatja egy [RES
 
 Az URL-cím bekerül a **Közzétett URL-címek** listájába.
 
-## <a name="play-content-in-the-portal"></a>A portál tartalom lejátszása
+## <a name="play-content-in-the-portal"></a>A portálon tartalom lejátszása
 Az Azure Portalon talál egy tartalomlejátszót, amellyel tesztelheti a videót.
 
 Jelölje ki a videót, majd válassza ki a **Lejátszás** gombot.
@@ -90,7 +90,7 @@ Vegye figyelembe a következőket:
 
 * Ellenőrizze, hogy közzétette-e a videót.
 * Az Azure Portal médialejátszója az alapértelmezett streamvégpontból játssza le a fájlokat. Ha egy nem alapértelmezett streamvégpontból szeretne lejátszani valamit, jelölje ki és másolja ki az URL-címet, és illessze be azt egy másik lejátszóba. Az [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) lejátszón is tesztelheti például a videót.
-* A streamvégpontján, amelyről streaming rendszernek kell futnia.  
+* A streamvégpontra, amelyről streamelési kell futnia.  
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

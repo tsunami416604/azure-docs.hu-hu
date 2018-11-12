@@ -3,18 +3,18 @@ title: Az Apache Sqoop-feladatok futtatása az Azure HDInsight (Hadoop)
 description: Megtudhatja, hogyan használhatja az Azure Powershellt egy munkaállomásról futtatása Sqoop-importálás és exportálása egy Hadoop-fürt és a egy Azure SQL database között.
 ms.reviewer: jasonh
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 7834c6365753e290c7d9e232f716e4b1d39f3db5
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 85753376e33f5392be06f7d3ea89a04367e3c9ab
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042574"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009861"
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>A Sqoop használata a HDInsight Hadoop-keretrendszerrel
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -27,7 +27,7 @@ Bár Hadoop feldolgozásának strukturálatlan és félig strukturált adatok, n
 
 A HDInsight-fürtökön támogatott verziói a Sqoop, lásd: [a HDInsight által biztosított fürtverziók újdonságai?][hdinsight-versions]
 
-## <a name="understand-the-scenario"></a>A forgatókönyv ismertetése
+## <a name="understand-the-scenario"></a>A forgatókönyv megismerése
 
 HDInsight-fürt mintaadatokat tartalmaz. A következő két mintát használja:
 
@@ -47,9 +47,9 @@ HDInsight-fürt mintaadatokat tartalmaz. A következő két mintát használja:
   | deviceplatform |sztring |
   | devicemake |sztring |
   | devicemodel |sztring |
-  | state |sztring |
+  | állapot |sztring |
   | Ország |sztring |
-  | querydwelltime |double |
+  | querydwelltime |duplaszó |
   | munkamenet-azonosító |bigint |
   | sessionpagevieworder |bigint |
 
@@ -88,7 +88,7 @@ Ha a fürt és az SQL-adatbázis létrehozásához, tekintse meg az Azure PowerS
      
         A következő értékek közül, szoftveresen kötött a változók szakaszban:
         
-        |Name (Név)|Érték|
+        |Name (Név)|Value (Díj)|
         |----|-----|
         | Alapértelmezett tárfióknév | &lt;CluterName > tárolásához |
         | Az Azure SQL database-kiszolgálónév | &lt;ClusterName > dbserver |

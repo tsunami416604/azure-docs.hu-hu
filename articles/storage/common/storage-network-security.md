@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: 7c01940c41067029bc3d47d19c2ded1d710cc2c6
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 51404c35b42d1c98116e74b5b7a47afe05b7d2a9
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470064"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300557"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 Az Azure Storage lehetővé teszi, hogy a tárfiókok meghatározott engedélyezett hálózatok biztonságos többrétegű biztonsági modellt biztosít.  Ha a hálózati szabályok vannak beállítva, csak az engedélyezett hálózatok alkalmazások férhetnek hozzá egy tárfiókot.  Egy engedélyezett hálózatról hívásakor az alkalmazások továbbra is megfelelő jogosultságokkal (egy érvényes hozzáférési kulcs vagy SAS-token) a tárfiók eléréséhez szükséges.
@@ -201,7 +201,7 @@ Minden tárfiók legfeljebb 100 kombinálható IP hálózati szabályokat támog
 ### <a name="configuring-access-from-on-premises-networks"></a>Hozzáférés a helyszíni hálózatok konfigurálása
 Annak érdekében, hogy a hozzáférést a helyszíni hálózat egy IP-hálózati szabállyal a tárfiókhoz, meg kell adnia az internetkapcsolattal rendelkező, a hálózat által használt IP-címeket.  Segítségért forduljon a rendszergazdához.
 
-Ha a hálózat csatlakozik az Azure-hálózat használatával [ExpressRoute](/azure/expressroute/expressroute-introduction), minden egyes Kapcsolatcsoportok úgy van konfigurálva, két nyilvános IP-címekkel rendelkező, a Microsoft Edge Microsoft Serviceshez hasonlóan az Azure Storage használatával valócsatlakozáshozhasznált[Azure nyilvános társviszony-létesítés](/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains).  Ahhoz, hogy a kapcsolatcsoport az Azure Storage-kommunikációt, a nyilvános IP-címeit a Kapcsolatcsoportok IP-hálózati szabályokat kell létrehozni.  Annak érdekében, hogy az ExpressRoute-kapcsolatcsoport nyilvános IP-címek keresése [nyisson egy támogatási jegyet az expressroute-tal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon keresztül.
+Ha a hálózat csatlakozik az Azure-hálózat használatával [ExpressRoute](/azure/expressroute/expressroute-introduction), minden egyes Kapcsolatcsoportok úgy van konfigurálva, két nyilvános IP-címekkel rendelkező, a Microsoft Edge Microsoft Serviceshez hasonlóan az Azure Storage használatával valócsatlakozáshozhasznált[Azure nyilvános társviszony-létesítés](/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains).  Ahhoz, hogy a kapcsolatcsoport az Azure Storage-kommunikációt, a nyilvános IP-címeit a Kapcsolatcsoportok IP-hálózati szabályokat kell létrehozni.  Annak érdekében, hogy az ExpressRoute-kapcsolatcsoport nyilvános IP-címek keresése [nyisson egy támogatási jegyet az expressroute-tal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) az Azure Portalon keresztül.
 
 
 ### <a name="managing-ip-network-rules"></a>IP-hálózati szabályok kezelése
@@ -294,7 +294,7 @@ Ha a "Megbízható Microsoft-szolgáltatások" kivétel engedélyezve van, a kö
 |Azure Event Grid|Microsoft.EventGrid|A Blob Storage esemény-közzététel engedélyezése.  [További információk](https://docs.microsoft.com/azure/event-grid/overview).|
 |Azure Event Hubs|Microsoft.EventHub|Az Event Hubs Capture adatok archiválása.  [További](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview).|
 |Azure-hálózatok|Microsoft.Networking|Store és a hálózati forgalom naplóinak elemzése.  [További információk](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview).|
-|Azure Monitor|Microsoft.Insights| Lehetővé teszi, hogy a figyelési adatok egy biztonságos storaage fiókba írásos [további](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks).|
+|Azure Monitor|Microsoft.Insights| Lehetővé teszi, hogy a figyelési adatok biztonságos storage-fiókba írásos [további](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks).|
 |
 
 

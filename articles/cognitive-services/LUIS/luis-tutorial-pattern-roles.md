@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 3274c25227637d3b23ccd7fd21df01dc05400c11
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: dd73ca876385cf81059228088f7b027f533315eb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086437"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277836"
 ---
 # <a name="tutorial-4-extract-contextually-related-patterns"></a>4. oktatóanyag: Szövegkörnyezet szerint kapcsolódó minták kinyerése
 
@@ -49,7 +49,7 @@ Ha problémája van egy egyszerű entitás észlelésével, mert az egy név (p�
 > * Városneveket tartalmazó kifejezéslista létrehozása
 > * Szándék és entitások lekérése a végpontról
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>Meglévő alkalmazás használata
 Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű alkalmazással. 
@@ -64,7 +64,7 @@ Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforr
 
 ## <a name="create-new-entities"></a>Új entitások létrehozása
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Válassza az **Entities** (Entitások) elemet a bal oldali navigációs menüben. 
 
@@ -254,7 +254,7 @@ A városok nevei a személyek neveihez hasonlóan összetettek lehetnek abból a
 
 ## <a name="get-intent-and-entities-from-endpoint"></a>Szándék és entitások lekérése a végpontból
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Lépjen az URL-cím végéhez, és írja be a következőt: `Move wayne berry from miami to mount vernon`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. 
 

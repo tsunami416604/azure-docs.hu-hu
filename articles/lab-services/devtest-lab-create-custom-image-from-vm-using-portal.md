@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 22f1579b2df2acdc736ed4c1d5cee64d096c320a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a91e14afa8325e75507b2f65cd9d71ab38df4524
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38635337"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235241"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>Egyéni lemezkép készítése egy virtuális Gépről
 
@@ -29,7 +29,7 @@ ms.locfileid: "38635337"
 
 Egy egyéni lemezkép készítése egy üzembe helyezett virtuális Gépet, és ezt követően hozzon létre azonos virtuális gépek egyéni rendszerkép használatával. A következő lépések bemutatják, hogyan lehet egyéni lemezkép készítése egy virtuális Gépről:
 
-1. Jelentkezzen be az [Azure Portalra](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
 

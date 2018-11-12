@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 6/20/2018
 ms.author: amitsriva
-ms.openlocfilehash: 563194ea0b3e4bda2021c75c544d068f00d74ba7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3163d4d61dba958cdf71dd0470b943bba69b0191
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963832"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237197"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Háttérrendszer állapota, diagnosztikai naplók és mérőszámok az Application Gateway számára
 
@@ -258,7 +258,7 @@ A tűzfal napló jön létre, csak akkor, ha engedélyezte az összes applicatio
 |Szabálykészlet     | A szabálykészlet használt verziója. Elérhető értékek a következők: 2.2.9-es és 3.0 verziót.     |
 |ruleId     | A riasztást kiváltó esemény szabály azonosítója.        |
 |message     | A riasztást kiváltó esemény felhasználóbarát üzenet. További részletek találhatók a Részletek területen.        |
-|művelet     |  A kérésre végrehajtott műveletet. Elérhető értékek a következők: letiltott és engedélyezett.      |
+|action     |  A kérésre végrehajtott műveletet. Elérhető értékek a következők: letiltott és engedélyezett.      |
 |hely     | A hely, amelyhez a napló jött létre. Jelenleg csak globális szabályokat mivel globális szerepel.|
 |részletek     | A riasztást kiváltó esemény részletei.        |
 |details.Message     | A szabály leírását.        |
@@ -337,7 +337,7 @@ Metrikák egyik újdonsága az egyes Azure-erőforrásokhoz, ahol megtekintheti 
 
    Már szűrhet erre a háttérrendszer készlet alapon történik egy adott háttérkészlet megfelelő vagy nem megfelelő gazdagépek megjelenítése.
 
-Keresse meg az application gateway alatt **figyelés** kattintson **metrikák**. Az elérhető értékek megtekintéséhez jelölje ki a **METRIKA** legördülő listából.
+Keresse meg az application gateway alatt **figyelés** kattintson **metrikák**. Az elérhető értékeket a **METRIKÁK** legördülő listában találja.
 
 Az alábbi képen egy példa három metrikákkal jelenik meg az elmúlt 30 percben lásd:
 
@@ -380,7 +380,7 @@ Ismerje meg jobban webhookok, és hogyan használhatja azokat a riasztásokat, a
 ## <a name="next-steps"></a>További lépések
 
 * Számláló és eseménynaplóinak megjelenítése használatával [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md).
-* [A Power bi-ban az Azure tevékenységnapló megjelenítése](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blogbejegyzést.
+* [A Power bi-ban az Azure tevékenységnapló megjelenítése](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blogbejegyzést.
 * [Megtekintheti és elemezheti a Power BI és egyéb Azure-Tevékenységnaplók](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) blogbejegyzést.
 
 [1]: ./media/application-gateway-diagnostics/figure1.png

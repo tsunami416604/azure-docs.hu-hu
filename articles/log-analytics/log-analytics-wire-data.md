@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 7f2ced1d6e5a7368fbf136d31889a763b3306e37
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: e3944defa24437fdddf8b61189034d330f89dd4c
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964046"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011952"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Wire Data 2.0 (előzetes verzió) megoldás a Log Analyticsben
 
@@ -94,7 +94,7 @@ Az alábbi táblázat a függőségi ügynök által támogatott operációs ren
 #### <a name="windows-server"></a>Windows Server
 
 - Windows Server 2016
-- Windows Server 2012 R2
+- Windows Server 2012 R2
 - Windows Server 2012
 - Windows Server 2008 R2 SP1
 
@@ -103,7 +103,7 @@ Az alábbi táblázat a függőségi ügynök által támogatott operációs ren
 - Windows 10
 - Windows 8.1
 - Windows 8
-- Windows 7
+- Windows 7 rendszeren
 
 #### <a name="red-hat-enterprise-linux-centos-linux-and-oracle-linux-with-rhel-kernel"></a>Red Hat Enterprise Linux, CentOS Linux és Oracle Linux (RHEL Kernellel)
 
@@ -222,7 +222,7 @@ A parancssorból való telepítéshez a következő táblában leírt paraméter
 
 InstallDependencyAgent-Windows.exe /?
 
-| **Jelző** | **Leírás** |
+| **Flag** | **Leírás** |
 | --- | --- |
 | <code>/?</code> | A parancssori kapcsolók listájának lekérése. |
 | <code>/S</code> | Beavatkozás nélküli telepítés a felhasználónak szóló üzenetek nélkül. |
@@ -247,7 +247,7 @@ A telepítésjelzők listájának megtekintéséhez futtassa a `-help` jelzővel
 InstallDependencyAgent-Linux64.bin -help
 ```
 
-| **Jelző** | **Leírás** |
+| **Flag** | **Leírás** |
 | --- | --- |
 | <code>-help</code> | A parancssori kapcsolók listájának lekérése. |
 | <code>-s</code> | Beavatkozás nélküli telepítés a felhasználónak szóló üzenetek nélkül. |
@@ -287,7 +287,7 @@ wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDepende
 sh InstallDependencyAgent-Linux64.bin -s
 ```
 
-### <a name="desired-state-configuration"></a>Célállapot-konfiguráló
+### <a name="desired-state-configuration"></a>Szabványos állapotkonfiguráció
 
 A függőségi ügynök Desired State Configuration segítségével történő telepítéséhez használhatja az xPSDesiredStateConfiguration modult és egy, az alábbihoz hasonló kódrészletet:
 
@@ -384,7 +384,7 @@ Miután telepítette az ügynököket és telepíti a megoldást, a munkaterüle
 
 Az Azure Portalon a Log Analytics-munkaterület **Áttekintés** területén kattintson a **Wire Data 2.0** csempére az Átviteli adatok irányítópult megnyitásához. Az irányítópulton az alábbi táblázatban felsorolt panelek találhatók. Minden panelen legfeljebb 10 olyan elem jelenik meg, amely megfelel a panel hatóköri és időtartományi kritériumainak. A panel alján található **Az összes megtekintése** elemre vagy a panel fejlécére kattintva az összes rekordot megjelenítő keresést végezhet a naplóban.
 
-| **Panel** | **Leírás** |
+| **Blade** | **Leírás** |
 | --- | --- |
 | Hálózati forgalmat rögzítő ügynökök | A hálózati forgalmat rögzítő ügynökök számát és a forgalmat rögzítő első 10 számítógép listáját jeleníti meg. Kattintson a számra a következőre vonatkozó naplókeresés futtatásához: <code>Type:WireData &#124; measure Sum(TotalBytes) by Computer &#124; top 500000</code>. Kattintson a listában található egyik számítógépre egy olyan naplókeresés futtatásához, amely a rögzített bájtok számát adja vissza. |
 | Helyi alhálózatok | Az ügynök által felderített helyi alhálózatok számát mutatja.  Kattintson a számra a következőre vonatkozó naplókeresés futtatásához: <code>Type:WireData &#124; Measure Sum(TotalBytes) by LocalSubnet</code>. Ez az alhálózatokat és az egyes alhálózatokon átküldött bájtok számát jeleníti meg. Kattintson a listában található alhálózatra egy olyan naplókeresés futtatásához, amely az alhálózaton küldött bájtok teljes számát adja vissza. |
@@ -420,7 +420,7 @@ A bemeneti adatok minden típusához létrejön egy _WireData_ típusú rekord. 
 
 | Tulajdonság | Leírás |
 |---|---|
-| Computer | A számítógép neve, ahol az adatgyűjtés történt |
+| Számítógép | A számítógép neve, ahol az adatgyűjtés történt |
 | TimeGenerated | A rekord létrehozásának időpontja |
 | LocalIP | A helyi számítógép IP-címe |
 | SessionState | Csatlakoztatva vagy leválasztva |
@@ -451,4 +451,4 @@ A bemeneti adatok minden típusához létrejön egy _WireData_ típusú rekord. 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Keresés a naplókban](log-analytics-log-search.md) az átviteli adatokhoz kapcsolódó részletes keresési rekordok megtekintéséhez.
+- [Keresés a naplókban](log-analytics-queries.md) az átviteli adatokhoz kapcsolódó részletes keresési rekordok megtekintéséhez.

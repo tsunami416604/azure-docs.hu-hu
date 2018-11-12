@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: e0bc49fb3b85decb97366b62771a191702149b1a
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: fa76ccf7019097c5f27aa126b0a5a7dc81ffbd41
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960531"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008147"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Az Azure Log Analytics felügyeleti megoldás riasztás
 
@@ -74,7 +74,7 @@ Kattintson a **Riasztáskezelés** csempére kattintva nyissa meg a **Riasztásk
 | Aktív SCOM-riasztások |Minden riasztás az Operations Manager az gyűjtött minden más, *lezárva* a riasztást kiváltó forrás szerint csoportosítva. |
 | Összes aktív riasztás |Minden riasztás neve szerint csoportosítva súlyossági az összes riasztás. Csak más, az Operations Manager riasztásait bármely állapotú tartalmazza *lezárva*. |
 
-Görgessen jobbra, ha az irányítópult megjeleníti-e a számos gyakori lekérdezések végrehajtásához kattinthat egy [naplóbeli keresés](log-analytics-log-search.md) riasztási adatok.
+Görgessen jobbra, ha az irányítópult megjeleníti-e a számos gyakori lekérdezések végrehajtásához kattinthat egy [naplóbeli keresés](log-analytics-queries.md) riasztási adatok.
 
 ![Riasztási kezelési irányítópult](media/log-analytics-solution-alert-management/dashboard.png)
 
@@ -86,7 +86,7 @@ A megoldás riasztások importálása a System Center Operations Manager és a e
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Típus |*Riasztás* |
+| Type (Típus) |*Riasztás* |
 | SourceSystem |*OpsManager* |
 | AlertContext |Az adatelem XML formátumban kell létrehozni a riasztást kiváltó részletek. |
 | AlertDescription |A riasztás részletes leírása. |

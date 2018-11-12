@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: fbd11eb23b10800e115a63549f233e0239763420
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 09c869bf28b804d8fabe331c4a9c2d222accc1e5
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638146"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300370"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Minták előrejelzési pontosság növeléséhez.
 Pontosság javításához, ha több utterances nagyon hasonló minták lettek kialakítva.  Egy minta segítségével megjelölésű a nagyobb pontosság számos további kimondott szöveg megadása nélkül. 
@@ -89,7 +89,7 @@ Hozzáadása egy **Pattern.any** a minta sablonba entitás körülvevő Pattern.
 Könyv cím példákban szereplő a környezetfüggő szavakat a könyv cím nem, a LUIS kikapcsolnia. A LUIS tudja, ahol a könyv cím ér véget, mert azt a mintát, és Pattern.any entitáshoz.
 
 ### <a name="explicit-lists"></a>Explicit listák
-Ha a minta egy Pattern.any tartalmaz, és a minta-szintaxis lehetővé teszi a lehetőségét az utterance (kifejezés) alapján egy helytelen entitások kinyeréséhez, hozzon létre egy [Explicit lista](https://aka.ms/ExplicitList) , hogy a kivételt a szerzői műveletekhez részben API-n keresztül. 
+Ha a minta egy Pattern.any tartalmaz, és a minta-szintaxis lehetővé teszi a lehetőségét az utterance (kifejezés) alapján egy helytelen entitások kinyeréséhez, hozzon létre egy [Explicit lista](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) , hogy a kivételt a szerzői műveletekhez részben API-n keresztül. 
 
 Tegyük fel például, mind a nem kötelező szintaxist tartalmazó mintát rendelkezik `[]`, és az entitás `{}`, kombinált úgy, hogy helytelen adatokat nyerhet ki.
 
@@ -102,7 +102,7 @@ Fontolja meg a minta "[keresése] e-mail kapcsolatos {subject} [{személy}]". A 
 
 Az előző táblázatban, az utterance (kifejezés) `email about the man from La Mancha`, a tulajdonosának kell lennie `the man from La Mancha` (a könyv címét), de a tulajdonos tartalmazza a nem kötelező szó `from`, a cím helytelenül összegyűjtése várható. 
 
-Javítsa ki a kivételt a minta, adjon hozzá `the man from la mancha` egy explicit lista egyezik meg a {subject} entitás használatával, a [API szerzői explicit listát](https://aka.ms/ExplicitList).
+Javítsa ki a kivételt a minta, adjon hozzá `the man from la mancha` egy explicit lista egyezik meg a {subject} entitás használatával, a [API szerzői explicit listát](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8).
 
 ### <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>Egy sablon utterance (kifejezés) a nem kötelező szöveg megjelölésére szintaxis
 A reguláris kifejezés szögletes zárójel szintaxis használatával az utterance (kifejezés) a nem kötelező szöveg `[]`. A nem kötelező szöveg ágyazhatja szögletes zárójelek között legfeljebb csak két zárójelek közé.

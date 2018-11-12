@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 952550225f2bdd8559d72a9d283993451ae7f60b
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 7d622b834cef31552cac60b359cdd8404592eda9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616343"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51255557"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Oktatóanyag: Tárolók csomagolása és üzembe helyezése Service Fabric-alkalmazásként a Yeoman használatával
 
@@ -229,7 +229,7 @@ Az oktatóanyag ezen pontján üzembe lehet helyezni egy szolgáltatáscsomag-al
 
 Az alkalmazás Azure-fürtön történő üzembe helyezéséhez hozzon létre egy saját fürtöt.
 
-A nyilvános fürtök ingyenes, korlátozott időtartamú Azure Service Fabric-fürtök. Ezeket a Service Fabric csapata üzemelteti, és bárki üzembe helyezhet rajtuk alkalmazásokat, illetve megismerkedhet a platform használatával. A nyilvános fürt eléréséhez [kövesse az alábbi utasításokat](http://aka.ms/tryservicefabric).
+A nyilvános fürtök ingyenes, korlátozott időtartamú Azure Service Fabric-fürtök. Ezeket a Service Fabric csapata üzemelteti, és bárki üzembe helyezhet rajtuk alkalmazásokat, illetve megismerkedhet a platform használatával. A nyilvános fürt eléréséhez [kövesse az alábbi utasításokat](https://aka.ms/tryservicefabric).
 
 Ha kezelési műveleteket szeretne végrehajtani a biztonságos fél fürtjén, használhatja a Service Fabric Explorert, a parancssori felületet vagy a Powershellt. A Service Fabric Explorer használatához le kell töltenie a PFX-fájlt a nyilvános fürt webhelyéről, és importálnia kell a tanúsítványt a tanúsítványtárolóba (Windows vagy Mac) vagy a böngészőbe (Ubuntu). A nyilvános fürtből származó önaláírt tanúsítványoknak nincs jelszavuk.
 
@@ -332,7 +332,7 @@ Használja a sablonban megadott eltávolítási szkriptet az alkalmazáspéldán
          </ContainerHost>
       </EntryPoint>
       <EnvironmentVariables>
-      </EnvironmentVariables>
+      </EnvironmentVariables>
    </CodePackage>
 
   <Resources>
@@ -367,7 +367,7 @@ Használja a sablonban megadott eltávolítási szkriptet az alkalmazáspéldán
          </ContainerHost>
       </EntryPoint>
       <EnvironmentVariables>
-      </EnvironmentVariables>
+      </EnvironmentVariables>
    </CodePackage>
      <Resources>
     <Endpoints>

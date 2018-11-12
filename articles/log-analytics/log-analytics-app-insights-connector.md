@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 7f3a90bf0dad2d0e9c6d51e942d88fb933b8ed1f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 2e59286822d49abeea522b5346ba531408559a7b
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961330"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014822"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights-összekötő felügyeleti megoldás (előzetes verzió)
 
@@ -160,7 +160,7 @@ Mintavételezés csak a bejegyzések száma összesen az alkalmazás által lét
 
 A megoldás a következő telemetriai típusú adatokat fogad a csatlakoztatott Application Insights-alkalmazások:
 
-- Rendelkezésre állás
+- Elérhetőség
 - Kivételek
 - Kérelmek
 - Lapmegtekintések – a munkaterület fogadni a lapmegtekintések, konfigurálnia kell az alkalmazásokat, adatokat gyűjthet. További információkat lásd: [Oldalmegtekintések](../application-insights/app-insights-api-custom-events-metrics.md#page-views).
@@ -176,7 +176,7 @@ Egy rekord egy *típus* , *ApplicationInsights* jön létre az egyes bemeneti ad
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Típus | ApplicationInsights |
+| Type (Típus) | ApplicationInsights |
 | ClientIP |   |
 | TimeGenerated | A rekord létrehozásának időpontja |
 | Alkalmazásazonosító | Az Application Insights-alkalmazás kialakítási kulcs |
@@ -202,7 +202,7 @@ Egy rekord egy *típus* , *ApplicationInsights* jön létre az egyes bemeneti ad
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| TelemetryType | Rendelkezésre állás |
+| TelemetryType | Elérhetőség |
 | AvailabilityTestName | A webes teszt neve |
 | AvailabilityRunLocation | Http-kérelem földrajzi forrása |
 | AvailabilityResult | Azt jelzi, hogy a webes teszt a sikeres művelet |
@@ -225,7 +225,7 @@ Egy rekord egy *típus* , *ApplicationInsights* jön létre az egyes bemeneti ad
 
 ### <a name="exception-specific-fields"></a>Kivétel-specifikus mezők
 
-| Típus | ApplicationInsights |
+| Type (Típus) | ApplicationInsights |
 | --- | --- |
 | TelemetryType | Kivétel |
 | ExceptionType | A kivétel típusa |
@@ -244,8 +244,8 @@ Egy rekord egy *típus* , *ApplicationInsights* jön létre az egyes bemeneti ad
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Típus | ApplicationInsights |
-| TelemetryType | Kérés |
+| Type (Típus) | ApplicationInsights |
+| TelemetryType | Kérelem |
 | ResponseCode | Az ügyfélnek küldött HTTP-válasz |
 | RequestSuccess | Azt jelzi, hogy sikeres vagy sikertelen. IGAZ vagy hamis. |
 | Kérelemazonosító: | Egyedi azonosítására szolgál a kérelem azonosítója |
@@ -267,4 +267,4 @@ Ez a megoldás nem rendelkezik az irányítópulton látható naplókeresési mi
 
 ## <a name="next-steps"></a>További lépések
 
-- Használat [naplóbeli keresés](log-analytics-log-search.md) részletes információk az Application Insights-alkalmazások megtekintéséhez.
+- Használat [naplóbeli keresés](log-analytics-queries.md) részletes információk az Application Insights-alkalmazások megtekintéséhez.

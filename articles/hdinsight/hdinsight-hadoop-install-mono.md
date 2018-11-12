@@ -2,19 +2,19 @@
 title: A HDInsight - Azure Mono telepítése vagy frissítése
 description: Ismerje meg, hogy egy adott verzióját Mono használata a HDInsight-fürt. Mono segítségével .NET-alkalmazások futtatása a Linux-alapú HDInsight-fürtökön.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/10/2018
-ms.author: jasonh
+ms.author: hrasheed
 ms.custom: hdinsightactive
-ms.openlocfilehash: 54e5a5b72627dc9cd2d842ccb24d10e2f9ab9dce
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9daf0d45c9bb24192750991e7bf84fa3614c970d
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957176"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011034"
 ---
 # <a name="install-or-update-mono-on-hdinsight"></a>A HDInsight Mono telepítése vagy frissítése
 
@@ -22,7 +22,7 @@ Ismerje meg, hogyan telepítheti egy adott verzióját [Mono](https://www.mono-p
 
 Mono a HDInsight 3.4 vagy újabb van telepítve, és a .NET-alkalmazások futtatására szolgál. A Mono minden HDInsight-verzióhoz mellékelt verzióját kapcsolatos tudnivalókat lásd: [HDInsight összetevők verziószámozása](hdinsight-component-versioning.md). A fürt egy másik verziót telepíti, használja a parancsfájlművelet ebben a dokumentumban. 
 
-## <a name="how-it-works"></a>Működés
+## <a name="how-it-works"></a>Működési elv
 
 Ez a szkript a következő paramétert fogad el:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: hascipio
-ms.openlocfilehash: 24dc50a6c78769877bdc07b9521a9d2e33837937
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 3b1d0a7476cff2be00aa44bb8b859261099298d8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579615"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236689"
 ---
 # <a name="create-a-microsoft-developer-account"></a>A Microsoft Developer-fiók létrehozása
 Ez a cikk végigvezeti a szükséges fiók létrehozása és a egy engedélyezett Microsoft Developer válnak az Azure Marketplace-en való regisztrációs folyamatot.
@@ -98,7 +98,7 @@ A Microsoft Developer Center egyszer a vállalati adatok regisztrálásához has
     ![rajz](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_04.png)
 
    > [!WARNING]
-   > **"Értékesítő" országokat:** annak érdekében, hogy a szolgáltatások az Azure piactéren értékesítheti, a regisztrált entitást kell lennie a jóváhagyott "értékesítő" országokat fenti közül. Ez a korlátozás küldenie jóváhagyásra cége kifizetési és adózási okból is. A Microsoft aktívan kíváncsi, bontsa ki a közeljövőben országok listája, úgyhogy érdemes figyelnie. További információkért lásd: a [piactér részvételi szabályzatának](http://go.microsoft.com/fwlink/?LinkID=526833).
+   > **"Értékesítő" országokat:** annak érdekében, hogy a szolgáltatások az Azure piactéren értékesítheti, a regisztrált entitást kell lennie a jóváhagyott "értékesítő" országokat fenti közül. Ez a korlátozás küldenie jóváhagyásra cége kifizetési és adózási okból is. A Microsoft aktívan kíváncsi, bontsa ki a közeljövőben országok listája, úgyhogy érdemes figyelnie. További információkért lásd: a [piactér részvételi szabályzatának](https://go.microsoft.com/fwlink/?LinkID=526833).
    >
    >
 5. Válassza ki a "fiók típusa" **vállalati** és kattintson a **tovább** gombra.
@@ -127,7 +127,7 @@ A Microsoft Developer Center egyszer a vállalati adatok regisztrálásához has
 9. Adja meg a fizetési információk kell fizetnem a fiókjához. Ha egy promóciós kódot, amely lefedi a regisztrációs költségét, megadhatja, hogy itt. Ellenkező esetben adja meg a hitelkártya adatai (vagy a támogatott piac PayPal). Ha elkészült, kattintson a **tovább** a áthelyezése a **"Képernyőn tekintse át"**.
 
     ![rajz](media/marketplace-publishing-accounts-creation-registration/imgRegisterCo_09.png)
-10. Tekintse át a fiók adatait, és győződjön meg arról, hogy minden rendben. Ezután olvassa el és fogadja el a feltételeket és kikötéseket, a [a Microsoft Azure Marketplace kiadói szerződésében](http://go.microsoft.com/fwlink/?LinkID=699560). A jelölőnégyzet bejelölésével jelezze elolvasta és elfogadja ezeket a feltételeket.
+10. Tekintse át a fiók adatait, és győződjön meg arról, hogy minden rendben. Ezután olvassa el és fogadja el a feltételeket és kikötéseket, a [a Microsoft Azure Marketplace kiadói szerződésében](https://go.microsoft.com/fwlink/?LinkID=699560). A jelölőnégyzet bejelölésével jelezze elolvasta és elfogadja ezeket a feltételeket.
 11. Kattintson a **Befejezés** a regisztráció megerősítéséhez. Az e-mail-címét egy megerősítő üzenetet küldünk.
 12. Ha azt tervezi, csak az ingyenes ajánlatokhoz közzétételére, kattintson a **Ugrás az Azure piactér közzétételi portálján** , és továbbléphet a 3. szakasz ebben a dokumentumban [regisztrálni a fiókot a közzétételi portálon](#3-register-your-account-in-the-publishing-portal).
 

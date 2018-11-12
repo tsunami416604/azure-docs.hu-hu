@@ -3,7 +3,7 @@ title: Az Azure Security Centerben a biztonsági konfigurációk javítása |} A
 description: Ez a dokumentum bemutatja, hogyan valósíthat meg az Azure Security Center javaslatait, az "Szervizelése biztonsági konfigurációkat."
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 991d41f5-1d17-468d-a66d-83ec1308ab79
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
-ms.author: terrylan
-ms.openlocfilehash: 74bfc3435ad6d247dabd3a7cbf2910ede5f8c8ca
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: d4523a9e2d5a5466c1617930d14a8a2d25a0e16f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296242"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238777"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Az Azure Security Centerben a biztonsági konfigurációk javítása
 Az Azure Security Center naponta elemzi az operációs rendszer (OS) a virtuális gépek (VM) és a egy konfigurációjához, amely a teheti a virtuális gépek és számítógépek támadásokkal szemben. Biztonsági rések feloldása, amikor az operációs rendszer konfigurációja nem egyezik a javasolt biztonsági konfigurációs szabályok, és ezek a biztonsági rések megszüntetését elősegítő konfigurációmódosításokat javasolja a Security Center javasolja.
@@ -107,7 +107,7 @@ A Security Centerrel kapcsolatos további tudnivalókért lásd a következőket
 * Ismerje meg, hogyan kezelése és válaszadás a biztonsági riasztásokra, lásd: [kezelése és válaszadás a biztonsági riasztásokra az Azure Security Center](security-center-managing-and-responding-alerts.md).
 * A partnermegoldások állapotának figyelése kapcsolatban lásd: [partneri megoldások monitorozása az Azure Security Center](security-center-partner-solutions.md).
 * A szolgáltatás használatával kapcsolatban gyakran feltett kérdésekre adott válaszokat, lásd: [Azure Security Center – gyakori kérdések](security-center-faq.md).
-* Azure biztonsági és megfelelőségi információ blogbejegyzések, lásd: [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/).
+* Azure biztonsági és megfelelőségi információ blogbejegyzések, lásd: [Azure Security blog](https://blogs.msdn.com/b/azuresecurity/).
 
 <!--Image references-->
 [1]: ./media/security-center-remediate-os-vulnerabilities/compute-blade.png

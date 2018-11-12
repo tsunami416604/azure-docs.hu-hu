@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: cwatson
-ms.openlocfilehash: a037f4837be65eb7eac76977a3728c7357e09463
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 83891e1abdb58b4fdae65cee3689195b8f35df12
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394435"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51230461"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>A Microsoft Azure a részletes használati költségek feltételeinek értelmezése 
 
@@ -77,7 +77,7 @@ A CSV-fájlt a napi használati szakaszában látható használati információk
 |Consumed Service (Használt szolgáltatás) |Az Azure platformszolgáltatás, amely használt |
 |Erőforráscsoport |Az erőforráscsoport, amelyben a telepített mérő futtatja. <br/><br/>További információk: [Azure Resource Manager overview](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) (Az Azure Resource Manager áttekintése). |
 |Instance ID (Példányazonosító) | A mérőszám azonosítója. <br/><br/> Az azonosító a mérőszám létrehozásakor megadott nevét tartalmazza. Az erőforrás nevét, vagy teljesen minősített erőforrás-azonosítója. További információkért lásd: [Azure Resource Manager API](https://docs.microsoft.com/rest/api/resources/resources). |
-|Címkék | A mérőszám hozzárendelt címkét. Használjon címkéket, hogy a számlázási rekordok csoportosítására.<br/><br/>Címkék használatával például osztani a költségeket az a fogyasztásmérő használó részleg által. Címkék kibocsátását támogató szolgáltatások a virtuális gépek, tárolási és hálózati szolgáltatások használatával a [Azure Resource Manager API](https://docs.microsoft.com/rest/api/resources/resources). További információkért lásd: [címkékkel rendelkező Azure-erőforrások rendszerezése](http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/). |
+|Címkék | A mérőszám hozzárendelt címkét. Használjon címkéket, hogy a számlázási rekordok csoportosítására.<br/><br/>Címkék használatával például osztani a költségeket az a fogyasztásmérő használó részleg által. Címkék kibocsátását támogató szolgáltatások a virtuális gépek, tárolási és hálózati szolgáltatások használatával a [Azure Resource Manager API](https://docs.microsoft.com/rest/api/resources/resources). További információkért lásd: [címkékkel rendelkező Azure-erőforrások rendszerezése](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/). |
 |Additional Info (További információ) |Szolgáltatásspecifikus metaadatok láthatók. Ha például egy lemezkép típusa egy virtuális gép. |
 |Service Info 1 (1. szolgáltatási megjegyzés) |A projekt nevét, amely az előfizetéséhez tartozik a szolgáltatás |
 |Service Info 2 (2. szolgáltatási megjegyzés) |Régi mező, amelyben a nem kötelező szolgáltatásspecifikus metaadatok láthatók |

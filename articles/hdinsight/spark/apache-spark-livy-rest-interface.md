@@ -2,19 +2,19 @@
 title: Livy a Spark használata Azure HDInsight alapú Spark-fürt-feladatok elküldése
 description: Ismerje meg, hogyan lehet Apache Spark REST API segítségével távolról egy Azure HDInsight-fürtön a Spark-feladatok elküldése.
 services: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 07/18/2018
-ms.openlocfilehash: 677c7d27d34725b75c5dfed70cc377735f5d7d61
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 11/06/2018
+ms.openlocfilehash: 86a047fe291c7872fe275ba7246b9f3e59044723
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045212"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51236823"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Az Apache Spark REST API használata egy HDInsight Spark-fürt távoli feladatok elküldéséhez
 
@@ -152,9 +152,9 @@ Hajtsa végre az alábbi lépéseket:
    
     A kimenet utolsó sora mutatja, hogy a Köteg törlése sikerült. Is egy feladat törlése közben fut, a feladatot megszakítja. Ha töröl egy feladatot, amely befejeződött, sikeres, vagy ellenkező esetben teljesen törli a feladatok adatait.
 
-## <a name="using-livy-spark-on-hdinsight-35-clusters"></a>A HDInsight 3.5-fürtök Livy Spark használatával
+## <a name="updates-to-livy-configuration-starting-with-hdinsight-35-version"></a>HDInsight 3.5-ös verziójától kezdve Livy-konfiguráció frissítéseit
 
-Fürt a HDInsight 3.5-ös, alapértelmezés szerint letiltja a hozzáférés mintaadatfájlok vagy JAR-fájlok kivételével helyi Fájlelérési utak használatát. Javasoljuk, hogy használja a `wasb://` elérési út inkább JAR-fájlok kivételével eléréséhez, vagy a mintaadatok fájlok a fürtből. Amennyiben szeretné, hogy a helyi elérési utat használja, ennek megfelelően frissítse az Ambari-konfiguráció. Ehhez tegye a következőket:
+HDInsight 3.5-fürtök, és a fenti alapértelmezés szerint letiltja a hozzáférést mintaadatfájlok vagy JAR-fájlok kivételével helyi Fájlelérési utak használatát. Javasoljuk, hogy használja a `wasb://` elérési út inkább JAR-fájlok kivételével eléréséhez, vagy a mintaadatok fájlok a fürtből. Amennyiben szeretné, hogy a helyi elérési utat használja, ennek megfelelően frissítse az Ambari-konfiguráció. Ehhez tegye a következőket:
 
 1. Nyissa meg az Ambari portal, a fürt számára. Az Ambari webes felhasználói felület érhető el a HDInsight-fürtön: https://**CLUSTERNAME**. azurehdidnsight.net, ahol CLUSTERNAME a fürt.
 

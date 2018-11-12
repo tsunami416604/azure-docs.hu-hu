@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 009f7ac2f7e614b7e07623e41888973f1a2b254d
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 1d510f51ed28c28c698437f905c4911a8c32e5ce
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440980"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51234986"
 ---
 # <a name="troubleshoot-creating-an-azure-active-directory-or-azure-active-directory-b2c-tenant"></a>Az Azure Active Directory vagy az Azure Active Directory B2C-bérlő létrehozásával kapcsolatos hibaelhárítás 
 
@@ -28,7 +28,7 @@ Ha problémák merülnek fel amikor, [hozzon létre egy Azure Active Directory B
 * Ha az Azure AD B2C-bérlő nem jelenik meg a bérlők a listában, próbálkozzon újra a bérlő létrehozásához.
 * Ha az Azure AD B2C-bérlő a bérlők listájában jelenik meg, és megjelenik a következő hibaüzenetet kapja, a bérlő törlése, és újra létre kell hoznia:
 
-    "Nem sikerült végrehajtani a B2C-bérlő"contosob2c"létrehozását. Látogasson el a [hivatkozás](http://go.microsoft.com/fwlink/?LinkID=624192&clcid=0x409) további útmutatást. "
+    "Nem sikerült végrehajtani a B2C-bérlő"contosob2c"létrehozását. Látogasson el a [hivatkozás](https://go.microsoft.com/fwlink/?LinkID=624192&clcid=0x409) további útmutatást. "
 * Vannak ismert problémákat, ha törli egy meglévő Azure AD B2C-bérlő, majd hozza létre újból az ugyanazon a néven. Amikor létrehoz egy új Azure AD B2C-bérlő, a másik tartománynevet kell használnia.
 * Ha ezek a megoldások nem működnek, forduljon az Azure ügyfélszolgálatához. További információkért lásd: [fájl támogatási kéréseket az Azure AD B2C](active-directory-b2c-support.md).
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: b565955abaae44efe20291a6e46b57a5fec941d1
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: c736a9b4962de26f43dc79773149e834c37cbe85
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046558"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233405"
 ---
 # <a name="get-started-with-microsoft-power-bi-workspace-collections"></a>A Microsoft Power BI-munkaterületcsoportok bemutatása
 
@@ -79,7 +79,7 @@ Munkaterület-csoport létrehozása után létre kell hoznia egy olyan munkater�
 
 ## <a name="create-power-bi-datasets-and-reports-to-embed-into-an-app-using-power-bi-desktop"></a>Power BI-adatkészletek és -jelentések létrehozása és beágyazása egy Power BI Desktopot használó alkalmazásba
 
-Most, hogy rendelkezik **hozzáférési kulcsokkal**, és létrehozta az alkalmazáshoz való Power BI-példányt, el kell készítenie a beágyazni kívánt Power BI-adatkészleteket és -jelentéseket. Az adatkészletek és a jelentések a **Power BI Desktop** segítségével hozhatók létre. A [Power BI Desktop ingyenesen](https://go.microsoft.com/fwlink/?LinkId=521662) letölthető. Vagy, a gyorsabb kezdéshez, letöltheti a [Kiskereskedelmi elemzési minta PBIX-fájlt](http://go.microsoft.com/fwlink/?LinkID=780547).
+Most, hogy rendelkezik **hozzáférési kulcsokkal**, és létrehozta az alkalmazáshoz való Power BI-példányt, el kell készítenie a beágyazni kívánt Power BI-adatkészleteket és -jelentéseket. Az adatkészletek és a jelentések a **Power BI Desktop** segítségével hozhatók létre. A [Power BI Desktop ingyenesen](https://go.microsoft.com/fwlink/?LinkId=521662) letölthető. Vagy, a gyorsabb kezdéshez, letöltheti a [Kiskereskedelmi elemzési minta PBIX-fájlt](https://go.microsoft.com/fwlink/?LinkID=780547).
 
 > [!NOTE]
 > A **Power BI Desktop** működéséről további információt a [Bevezetés a Power BI Desktop használatába](https://powerbi.microsoft.com/guided-learning/powerbi-learning-0-2-get-started-power-bi-desktop) című témakörben talál.

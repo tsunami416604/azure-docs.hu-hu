@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
-ms.reviewer: asteen
-ms.openlocfilehash: 98dc3981e0f34ebfe7d8881d77b84cfe252e3f4f
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.reviewer: japere
+ms.openlocfilehash: 2d528c04a9301998220b5564330f20ed014b68d6
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357121"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036929"
 ---
-# <a name="problem-installing-the-application-proxy-agent-connector"></a>A probléma az alkalmazásproxy-ügynök összekötő telepítése
+# <a name="problem-installing-the-application-proxy-agent-connector"></a>Probléma az alkalmazásproxy-ügynök összekötőjének telepítésekor
 
 A Microsoft AAD alkalmazásproxy-összekötő egy belső tartomány-összetevő, amely a kimenő kapcsolatokat használ a kapcsolat a felhőben elérhető végpontok és a belső tartomány létrehozásához.
 
@@ -63,13 +63,13 @@ Az összekötő telepítése nem sikerül, az alapvető ok általában a követk
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>Ellenőrizze, hogy az összekötő telepítéséhez használt rendszergazdai
 
-**Cél:** ellenőrizze, hogy a felhasználó, aki próbálja telepíteni az összekötőt a rendszergazda a helyes hitelesítő adatokkal. A felhasználó jelenleg a telepítés sikeres globális rendszergazdájának kell lennie.
+**Cél:** ellenőrizze, hogy a felhasználó, aki próbálja telepíteni az összekötőt a rendszergazda a helyes hitelesítő adatokkal. Jelenleg a felhasználónak kell lennie egy alkalmazás rendszergazdai vagy a globális rendszergazda a telepítés sikeres.
 
 **Annak ellenőrzése, hogy a hitelesítő adatok helyesek:**
 
 Csatlakozás <https://login.microsoftonline.com> és ugyanezeket a hitelesítő adatokat. Győződjön meg arról, hogy a bejelentkezés sikeres. A felhasználói szerepkör ellenőrizheti a **Azure Active Directory**  - &gt; **felhasználók és csoportok**  - &gt; **minden felhasználó**. 
 
-Válassza ki a felhasználói fiókot, majd "címtárbeli szerepkör" az eredményül kapott menüben. Ellenőrizze, hogy a kiválasztott szerepkör "Globális rendszergazda". Ha nem érhető el bármelyik, a lépések mentén, Ön nem globális rendszergazda.
+Válassza ki a felhasználói fiókot, majd "címtárbeli szerepkör" az eredményül kapott menüben. Ellenőrizze, hogy a kiválasztott szerepkör "alkalmazás-rendszergazda" vagy "Globális rendszergazda". Ha nem érhető el bármelyik, a lépések mentén, nem rendelkezik a szükséges szerepkör.
 
 ## <a name="next-steps"></a>További lépések
 [Az Azure AD-alkalmazásproxy-összekötők ismertetése](application-proxy-connectors.md)

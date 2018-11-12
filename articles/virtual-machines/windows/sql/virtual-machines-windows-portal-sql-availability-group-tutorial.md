@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 7dbbfb2d97b7015118edca3db3ae050ad07c51ee
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 42a4ea1e4dc352e56fbd65f69c9ed71e3b0c1038
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667447"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238075"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurálása Always On rendelkezésre állási csoportot az Azure virtuális Gépen manuálisan
 
@@ -35,7 +35,7 @@ Az ábra az oktatóanyag során létre.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag feltételezi, hogy az SQL Server Always On rendelkezésre állási csoportok alapvető ismeretekkel. Ha további információra van szüksége, tekintse meg [mindig a rendelkezésre állási csoportok áttekintése (SQL Server)](http://msdn.microsoft.com/library/ff877884.aspx).
+Az oktatóanyag feltételezi, hogy az SQL Server Always On rendelkezésre állási csoportok alapvető ismeretekkel. Ha további információra van szüksége, tekintse meg [mindig a rendelkezésre állási csoportok áttekintése (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx).
 
 Az alábbi táblázat az oktatóanyag elkezdése előtt hajtsa végre az előfeltételekről:
 
@@ -119,7 +119,7 @@ Az SQL Server hozzáadása a fürthöz.
 
 ### <a name="add-a-cluster-quorum-file-share"></a>A fürt kvórum fájlmegosztás hozzáadása
 
-Ebben a példában a Windows-fürt létrehozása a fürt kvórum fájlmegosztást használ. Ebben az oktatóanyagban egy csomópont- és fájlmegosztástöbbség kvóruma. További információkért lásd: [a feladatátvevő fürtök kvórumkonfigurációinak ismertetése](http://technet.microsoft.com/library/cc731739.aspx).
+Ebben a példában a Windows-fürt létrehozása a fürt kvórum fájlmegosztást használ. Ebben az oktatóanyagban egy csomópont- és fájlmegosztástöbbség kvóruma. További információkért lásd: [a feladatátvevő fürtök kvórumkonfigurációinak ismertetése](https://technet.microsoft.com/library/cc731739.aspx).
 
 1. Csatlakozzon a fájlmegosztás tanúsító tag kiszolgálója a távoli asztali munkamenetet.
 
@@ -168,7 +168,7 @@ Következő lépésként állítsa a fürt kvórumát.
 1. A **kvórum Tanúsítójának kijelölése**, kattintson a **konfigurálja egy tanúsító fájlmegosztást**.
 
    >[!TIP]
-   >A Windows Server 2016-ban a felhőbeli tanúsító támogatja. Ha úgy dönt, hogy az ilyen típusú tanúsító, nem kell egy fájlt tanúsító megosztani. További információkért lásd: [felhőbeli tanúsító a feladatátvevő fürt telepítése](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness). Ebben az oktatóanyagban egy tanúsító fájlmegosztást, amely korábbi operációs rendszerek által támogatott.
+   >A Windows Server 2016-ban a felhőbeli tanúsító támogatja. Ha úgy dönt, hogy az ilyen típusú tanúsító, nem kell egy fájlt tanúsító megosztani. További információkért lásd: [felhőbeli tanúsító a feladatátvevő fürt telepítése](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness). Ebben az oktatóanyagban egy tanúsító fájlmegosztást, amely korábbi operációs rendszerek által támogatott.
 
 1. A **tanúsító fájlmegosztás**, írja be a létrehozott megosztás elérési útja. Kattintson a **Tovább** gombra.
 
@@ -515,7 +515,7 @@ A kapcsolat teszteléséhez:
 Az SQLCMD-kapcsolatot automatikusan csatlakozik bármely SQL Server-példány az elsődleges replikát.
 
 > [!TIP]
-> Győződjön meg arról, hogy a megadott port nyitva a tűzfalon az SQL-kiszolgálók is. Mindkét kiszolgáló szükséges egy bejövő szabályt a TCP-portot, amelyet használhat. További információkért lásd: [hozzáadása vagy szerkesztése tűzfalszabály](http://technet.microsoft.com/library/cc753558.aspx).
+> Győződjön meg arról, hogy a megadott port nyitva a tűzfalon az SQL-kiszolgálók is. Mindkét kiszolgáló szükséges egy bejövő szabályt a TCP-portot, amelyet használhat. További információkért lásd: [hozzáadása vagy szerkesztése tűzfalszabály](https://technet.microsoft.com/library/cc753558.aspx).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -10,15 +10,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/24/2016
 ms.author: garye
-ms.openlocfilehash: 43a75c31c0f094bdcb7008a39140226815bda163
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 3f45f062cabaf31a10f24b01583575f5066bdaaf
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390295"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51231532"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Cortana Intelligence megoldás sablon forgatókönyve a kereslet-előrejelzés, energia
-## <a name="executive-summary"></a>Végrehajtási összefoglaló
+## <a name="executive-summary"></a>Vezetői összefoglaló
 Az elmúlt néhány évben eszközök internetes hálózata (IoT), alternatív energiaforrások és big Data típusú adatok óriási lehetőségeket létrehozásához a segédprogram és energia tartományban lehet egyesített. Egy időben a segédprogram és a teljes energia ágazat látott az erőforrás-igényes hatékonyabb módon lehet szabályozni az energia használati fogyasztóval rendelkező egybesimítás használatalapú. Ezért az segédprogram és intelligens vállalatok is nagy szükség van a innovációját, és újítsa meg magukat. Ezenkívül számos teljesítmény- és segédprogram rácsok egyre elavult, és nagyon költséges, karbantartása és kezelése. Az elmúlt év során a csapat dolgozott az energia tartományon belüli marketingmódszerek számos. Ezek marketingmódszerek során történt, amelyben a segédprogramok vagy ISV (független szoftvergyártók) keresi az előrejelzés a jövőbeli energiaszükségletét sok esetben. Ezek az előrejelzések fontos szerepet játszanak az jelenlegi és jövőbeli üzleti és a különböző használati esetek alapját váltak. Ezek közé tartozik a rövid és hosszú távú power terhelés előrejelzést, kereskedelmi, terheléselosztást, rács optimalizálás stb. Big data és fejlett analitikai AA módszerek például a Machine Learning (gépi tanulás) vonatkoznak a legfontosabb előfeltétele pontos és megbízható előrejelzések előállító.  
 
 A forgatókönyv együtt elhelyezni az üzleti és a sikeres fejlesztéshez szükséges analitikai irányelvek és központi telepítését energiaszükségletét előrejelzési megoldás. Javasolt iránymutatás segítséget segédprogramok, az adatelemzők és adatmérnökök teljesen szolgáltatáscsomagot, felhőalapú, alkalmazható igény-előrejelzési megoldások kialakítása során. Olyan vállalatok, akik most használja először a big data és fejlett analitikai utazás ilyen megoldás megfelelhet a hosszú távú intelligens stratégiájuk kezdeti mag.
@@ -43,7 +43,7 @@ A harmadik rész a dokumentum ismerteti a **műszaki megvalósítási** egy mego
 
 Emellett a dokumentum tartalmaz, amelyek segítségével tovább a tartomány és a technológiai ismereteket szerezhet – referenciaanyag.
 
-Fontos megjegyezni, hogy nem tervezünk, hogy biztosítsák a jelen dokumentum a mélyebb adatelemzési folyamat, a matematikai és technikai aspektusait. Ezek a részletek megtalálhatók [Azure Machine Learning dokumentációs](http://azure.microsoft.com/services/machine-learning/) és [blogok](http://blogs.microsoft.com/blog/tag/azure-machine-learning/).
+Fontos megjegyezni, hogy nem tervezünk, hogy biztosítsák a jelen dokumentum a mélyebb adatelemzési folyamat, a matematikai és technikai aspektusait. Ezek a részletek megtalálhatók [Azure Machine Learning dokumentációs](https://azure.microsoft.com/services/machine-learning/) és [blogok](https://blogs.microsoft.com/blog/tag/azure-machine-learning/).
 
 ### <a name="target-audience"></a>Célközönség
 Ez a dokumentum célközönsége az üzleti és műszaki személyzet kívánó ismeretek is, és ismeri a Machine Learning-alapú megoldásokat, és hogyan ezeket használják-e az energia-előrejelzés tartományon belül kifejezetten.
@@ -176,7 +176,7 @@ A pénzügyi előnyeit, igény szerint kiszámításának egyszerű képlet-elő
 
 Cortana Intelligence Suite használatalapú díjszabási modellt biztosít, mivel nincs kellene ezt a képletet egy állandó költség összetevő nincs szükség. Ez a képlet napi, havi vagy éves alapján számítható ki.
 
-Aktuális Cortana Intelligence Suite és az Azure Machine Learning díjszabási csomagokat található [Itt](http://azure.microsoft.com/pricing/details/machine-learning/).
+Aktuális Cortana Intelligence Suite és az Azure Machine Learning díjszabási csomagokat található [Itt](https://azure.microsoft.com/pricing/details/machine-learning/).
 
 ### <a name="solution-development-process"></a>Megoldás fejlesztési folyamata
 A fejlesztési ciklus egy energia kereslet-előrejelzési megoldás általában 4 fázisra biztosítjuk, amelyek mindegyikét magában foglalja a felhőalapú technológiák és szolgáltatások ismerik a Cortana Intelligence Suite használata.
@@ -187,7 +187,7 @@ Ez az alábbi ábrán látható:
 
 A következő bekezdést a 4. lépés folyamatát ismerteti:
 
-1. **Adatgyűjtés** – semmilyen speciális alapú analytics megoldás adatokon alapul. (lásd: **Data Understanding**). Pontosabban a esetén, a prediktív elemzés és előrejelzését, telefonszámokkal kapcsolatos adatok folyamatban lévő, dinamikus folyamat. Energia kereslet-előrejelzés, esetén ezeket az adatokat közvetlenül az intelligens mérőktől származó beolvasva is, vagy már összesíteni kell egy helyi adatbázist. Azt is támaszkodik más külső forrásokból, például az időjárás és hőmérséklettel kapcsolatos adatok. Az adatok folyamatban lévő folyamat kell vezényelt, ütemezett és tárolva. [Az Azure Data Factory](http://azure.microsoft.com/services/data-factory/) (ADF) a fő workhorse szól ez a feladat teljesítéséért.
+1. **Adatgyűjtés** – semmilyen speciális alapú analytics megoldás adatokon alapul. (lásd: **Data Understanding**). Pontosabban a esetén, a prediktív elemzés és előrejelzését, telefonszámokkal kapcsolatos adatok folyamatban lévő, dinamikus folyamat. Energia kereslet-előrejelzés, esetén ezeket az adatokat közvetlenül az intelligens mérőktől származó beolvasva is, vagy már összesíteni kell egy helyi adatbázist. Azt is támaszkodik más külső forrásokból, például az időjárás és hőmérséklettel kapcsolatos adatok. Az adatok folyamatban lévő folyamat kell vezényelt, ütemezett és tárolva. [Az Azure Data Factory](https://azure.microsoft.com/services/data-factory/) (ADF) a fő workhorse szól ez a feladat teljesítéséért.
 2. **Modellezés** – pontos és megbízható energia-előrejelzés, (train) fejlesztéséhez és karbantartásához, hogy révén az előzményadatok használja, és kinyeri az adatokat a beállítás után sokatmondóbbak és prediktív mintákat egy nagyszerű modellt kell egyet. A terület a Machine Learning (gépi tanulás) rendelkezik lett gyorsan növekszik az speciális algoritmusokkal rendszeresen fejlesztés alatt áll. Az Azure gépi tanulás Stúdióban, amely segít a legtöbb fejlett gépi Tanulási algoritmusokat, egy teljes munkahelyi flow-ban használják nagyszerű felhasználói élményt nyújt. A munkafolyamat egy intuitív folyamatábrája mutatja be, és az adat-előkészítés, a szolgáltatás kivonása, modellezés és modell kiértékelése tartalmazza. Több száz különböző modelleket, amelyek szerepelnek ebben a környezetben, a felhasználó lehet kötni. Ebben a fázisban a végén működő modell, amely teljes mértékben kiértékelt és készen áll a központi telepítési kell értenie az adatokhoz.
    
    Az alábbi ábrán egy tipikus munkafolyamat ábrája:
@@ -255,7 +255,7 @@ Az alábbi táblázat egy jó felhasználás és hőmérséklet-adatformátum p�
 | 7/1/2015 |10:00:01 |ABC1234 |7.1 |2.2 |4.3 |
 | 7/1/2015 |10:00:02 |ABC1234 |6.0 |2.1 |4.0 |
 
-| **Dátum** | **idő** | **Hely** | **Hőmérséklet** |
+| **Dátum** | **idő** | **Hely** | **hőmérséklet** |
 | --- | --- | --- | --- |
 | 7/1/2015 |10:00:00 |11242 |24.4 |
 | 7/1/2015 |10:00:01 |11242 |24.4 |
@@ -387,7 +387,7 @@ Az energia igény-előrejelzési ciklus részeként végzett, a lépések a köv
 7. Az adatokat, amely a teljes felhasználás ügyfél által hozzáférhető adatbázisban tárolódik.
 8. A használatalapú ügyfél kérdezi le az előrejelzéseket, vissza a rácsba vonatkozik, és használ fel, a szükséges használati eset megfelelően.
 
-Fontos megjegyezni, hogy a teljes ciklus teljesen automatizált, és a egy ütemezés szerint futtatja. Ezen adatok ciklus teljes vezénylési eszközök segítségével teheti meg [Azure Data Factory](http://azure.microsoft.com/services/data-factory/).
+Fontos megjegyezni, hogy a teljes ciklus teljesen automatizált, és a egy ütemezés szerint futtatja. Ezen adatok ciklus teljes vezénylési eszközök segítségével teheti meg [Azure Data Factory](https://azure.microsoft.com/services/data-factory/).
 
 ### <a name="end-to-end-deployment-architecture"></a>Teljes körű üzembe helyezési architektúrája
 Az energia igény szerint előrejelzési megoldás a Cortana Intelligence gyakorlatilag üzembe kell, hogy a szükséges összetevők létrehozott és megfelelően konfigurálva.

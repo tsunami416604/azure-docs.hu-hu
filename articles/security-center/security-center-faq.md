@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2018
+ms.date: 10/31/2018
 ms.author: rkarlin
-ms.openlocfilehash: d8313ec66f8b71102e63751e7cf07885c899a7e8
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 16291e4f4915dd6328a2015407fa06dc8f62fba1
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301038"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011884"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – gyakori kérdések
 Ez a GYIK az Azure Security Center egy szolgáltatás, amellyel megelőzését, észlelését és háríthatja el a fenyegetéseket átláthatóbbá és a Microsoft Azure-erőforrások kézben kapcsolatos kérdésekre ad választ.
@@ -30,7 +30,7 @@ Ez a GYIK az Azure Security Center egy szolgáltatás, amellyel megelőzését, 
 >
 
 ## <a name="general-questions"></a>Általános kérdések
-### <a name="what-is-azure-security-center"></a>Mi az az Azure Security Center?
+### <a name="what-is-azure-security-center"></a>Mi az Azure Security Center?
 Az Azure Security Center magasabb fokú betekintést és szélesebb körű vezérlést tesz lehetővé az Azure-erőforrások fölött, így segít a fenyegetések megelőzésében, észlelésében és kezelésében. Az ügyfél összes előfizetésére kiterjedő, integrált biztonsági monitorozást és szabályzatkezelést biztosít, megkönnyíti a nehezen észlelhető fenyegetések azonosítását, és számos biztonsági megoldással együttműködik.
 
 ### <a name="how-do-i-get-azure-security-center"></a>Hogyan szerezhetem be az Azure Security Center?
@@ -42,10 +42,10 @@ A Security Center két szinten érhető el:
 
 A **ingyenes szint** biztonsági állapotát az Azure-erőforrások, az alapszintű biztonsági házirend, a biztonsági javaslatok és a integrációs rálátást biztosít a biztonsági termékeket és szolgáltatásokat partnereinktől.
 
-A **Standard szintű** hozzáadja a komplex veszélyforrások elleni képességeket tartalmaz, beleértve a fenyegetésészlelési intelligencia, a viselkedés-elemzés, a rendellenességek észlelése, a biztonsági incidensek és tesznek elérhetővé; ilyenek jelentések fenyegetés. A Standard szint az első 60 napban ingyenesen használható. Válasszák 60 napos időszak letelte után a szolgáltatás használatát, automatikusan megkezdjük a megfelelő díj felszámítását.  Szeretné frissíteni, válassza ki a [Tarifacsomag](https://docs.microsoft.com/azure/security-center/security-center-pricing) a biztonsági szabályzatban.
+A **Standard szintű** hozzáadja a komplex veszélyforrások elleni képességeket tartalmaz, beleértve a fenyegetésészlelési intelligencia, a viselkedés-elemzés, a rendellenességek észlelése, a biztonsági incidensek és tesznek elérhetővé; ilyenek jelentések fenyegetés. A standard szint 60 napig ingyenesen használható. Válasszák 60 napos időszak letelte után a szolgáltatás használatát, automatikusan megkezdjük a megfelelő díj felszámítását.  Szeretné frissíteni, válassza ki a [Tarifacsomag](https://docs.microsoft.com/azure/security-center/security-center-pricing) a biztonsági szabályzatban.
 
 ## <a name="permissions"></a>Engedélyek
-Használja az Azure Security Center [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/role-assignments-portal.md), amely biztosítja [beépített szerepkörök](../role-based-access-control/built-in-roles.md) , hogy a felhasználók, csoportok és Azure-szolgáltatások rendelhetők.
+Az Azure Security Center [szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/role-assignments-portal.md) használ, amelynek [beépített szerepköreit](../role-based-access-control/built-in-roles.md) az Azure különböző csoportjaihoz, felhasználóihoz és szolgáltatásaihoz rendelheti.
 
 A Security Center a biztonsági problémák és biztonsági rések azonosításához erőforrásán konfiguráció értékeli. A Security Centerben csak láthatja az előfizetés vagy az erőforráscsoport, amely egy erőforrás tartozik, a tulajdonos, közreműködő vagy olvasó a szerepkör hozzárendelése esetén egy erőforráshoz kapcsolódó információkat.
 
@@ -137,7 +137,7 @@ Automatikus üzembe helyezés a biztonsági szabályzat az előfizetések ki is 
 
 1. Ha a Standard szintű előfizetése van konfigurálva, nyissa meg a biztonsági szabályzatot az adott előfizetéshez tartozó, és válassza ki a **ingyenes** szint.
 
-   ![Tarifacsomag][1]
+   ![Díjcsomag][1]
 
 2. Ezután kapcsolja ki az Automatikus kiépítés kiválasztásával **ki** a a **biztonsági szabályzat – adatgyűjtés** panelen.
    ![Adatgyűjtés][2]
@@ -167,7 +167,7 @@ A Microsoft Monitoring Agent manuálisan kell telepítenie, így a Security Cent
 
 Az ügynök csatlakozhat bármely meglévő egyéni munkaterületet, vagy a Security Center munkaterület létrehozása. Ha egy egyéni munkaterület nincs engedélyezve van, a "Security" vagy "SecurityCenterFree" megoldások, és a egy megoldást a alkalmazni kell. A alkalmazni, válassza ki az egyéni munkaterületet, vagy az előfizetés, és a tarifacsomag-n keresztül alkalmazza a **biztonsági szabályzat – tarifacsomag** panelen.
 
-   ![Tarifacsomag][1]
+   ![Díjcsomag][1]
 
 A Security Center lehetővé teszi a munkaterületen a kijelölt tarifacsomag alapján a megfelelő megoldást.
 
@@ -285,7 +285,7 @@ Az Azure Security Center figyeli a következő Azure-erőforrások:
 * Virtuális gépek (VM) (beleértve a [Cloud Services](../cloud-services/cloud-services-choose-me.md))
 * Azure virtuális hálózatok
 * Azure SQL service
-* Azure Storage-fiók
+* Azure Storage-tárfiók neve
 * Az Azure Web Apps (a [App Service Environment-környezet](../app-service/environment/intro.md))
 * Például a webalkalmazási tűzfal a virtuális gépek és az App Service Environment az Azure-előfizetésében integrált partnermegoldások
 
@@ -308,7 +308,7 @@ A késés, a Security Center átvizsgálja a biztonsági réseket, frissítések
 - Rendszerfrissítések – adatok 24 órán belül frissült
 - Az Endpoint Protection kapcsolatos problémák – 8 órán belül adatainak frissítése
 
-A Security Center általában figyeli az új adatokat óránként. A késés a fenti értékek a legrosszabb esetben ahol nem áll a legutóbbi vizsgálat vagy a vizsgálat nem sikerült.
+A Security Center általában óránként keres új adatokat, és ennek megfelelően frissíti a javaslatokat. 
 
 ### <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>Miért jelenik meg az üzenet "Virtuálisgép-ügynök hiányzik?"
 Virtuális gépek az adatgyűjtés engedélyezése a Virtuálisgép-ügynököt kell telepíteni. Az Azure Marketplace-ről üzembe helyezett virtuális gépek esetében a virtuálisgép-ügynök alapértelmezés szerint telepítve van. Más virtuális gépeken a Virtuálisgép-ügynök telepítésével kapcsolatos információkért lásd: a következő blogbejegyzésben: [Virtuálisgép-ügynök és -bővítmények](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/).

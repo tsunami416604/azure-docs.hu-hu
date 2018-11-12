@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
 ms.date: 11/6/2018
-ms.openlocfilehash: b95b62ab2c51fec93870e3f5593d53a599f3dad2
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.openlocfilehash: 8ce411e424d538a4a1f94300bfe5510658017f56
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218950"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51238321"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
@@ -98,11 +98,19 @@ Az Azure Machine Learning szolgáltatással Azure notebookok használatának pé
   - Integrált fejlesztői környezeteket (ide-ket), például a PyCharm és az RStudio
   - Csomagok Jupyter-notebookok és Tensorflow például
 
-A DSVM tartalmaz több Anaconda-környezet már telepítve van. Használja az Azure Machine Learning Python SDK bármilyen csomag telepítése nélkül, nyisson meg egy parancssori ablakot, és aktiválja a következő környezet.
+A DSVM tartalmaz több Anaconda-környezet már telepítve van. Az Azure Machine Learning Python SDK bármilyen csomag telepítése nélkül használja, nyisson meg egy parancssort vagy a rendszerhéjat, és a környezet aktiválásához használja a következő parancsok egyikét:
 
-```shell
-conda activate AzureML
-```
+* Az a __Ubuntu__ DSVM, használja a következő parancsot:
+
+    ```shell
+    conda activate py36
+    ```
+
+* Az a __Windows__ DSVM, használja a következő parancsot:
+
+    ```shell
+    conda activate AzureML
+    ```
 
 Egyszer ebben a környezetben azonnal importálhatja az Azure Machine Learning SDK-t a buildelőeszköze a választott a csomag telepítése nélkül.
 

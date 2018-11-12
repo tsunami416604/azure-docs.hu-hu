@@ -7,14 +7,14 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 07/27/2018
 ms.author: yushwang
-ms.openlocfilehash: 94183b639c02f6a7d74e87e8f8335da67db113d6
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: a232ac111974444848aec82f3c7ab6236f82ac03
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468177"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037096"
 ---
-# <a name="vpn-gateway-faq"></a>VPN Gateway – gyakori kérdések
+# <a name="vpn-gateway-faq"></a>VPN Gateway – Gyakori kérdések
 
 ## <a name="connecting"></a>Csatlakozás virtuális hálózatokhoz
 
@@ -65,7 +65,7 @@ A házirendalapú átjárók házirendalapú VPN-kapcsolatokat valósítanak meg
 Az útvonalalapú átjárók útvonalalapú VPN-kapcsolatokat valósítanak meg. Az útvonalalapú VPN-ek „útvonalakat” használnak az IP-továbbítási vagy útvonalválasztási táblán, hogy a csomagokat a megfelelő alagútkapcsolatokhoz irányítsák. Az alagútkapcsolatok ezután titkosítják vagy visszafejtik az alagutakba bemenő vagy onnan kijövő csomagokat. Az útvonalalapú VPN-ek házirendje (vagy forgalomválasztója) bármely két elem közöttiként (vagy helyettesítő karakterekként) van konfigurálva.
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Frissíthetem házirendalapú VPN-átjárómat útvonalalapúra?
-Nem. Az Azure VNet-átjáró típusa nem módosítható házirendalapúról útvonalalapúra vagy viszont. Ilyenkor törölni kell, majd újra létrehozni az átjárót, amely folyamat mintegy 60 percet vesz igénybe. Az átjáró IP-címe és az előmegosztott kulcs (PSK) nem marad meg.
+Nem. Az Azure VNet-átjáró típusa nem módosítható házirendalapúról útvonalalapúra vagy viszont. Ilyenkor törölni kell, majd újra létrehozni az átjárót, amely folyamat mintegy 60 percet vesz igénybe. Az átjáró IP-címe és az előmegosztott kulcs (PSK) nem marad meg.
 1. Törölje a törölni kívánt átjáróval társított kapcsolatokat.
 2. Törölje az átjárót:
 * [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
@@ -122,11 +122,11 @@ Igen. Lásd: [Kényszerített bújtatás konfigurálása](vpn-gateway-about-forc
 
 Igen, az Azure-ban üzembe helyezheti saját VPN-átjáróit vagy -kiszolgálóit az Azure Piactérről, vagy saját VPN-útválasztók létrehozásával. Ilyenkor a virtuális hálózatában felhasználó által definiált útvonalakat kell konfigurálnia, hogy az adatforgalom megfelelően legyen irányítva a helyszíni hálózatai és a virtuális hálózatainak alhálózatai között.
 
-### <a name="why-are-certain-ports-opened-on-my-vpn-gateway"></a>Miért vannak egyes portok nyitva a VPN-átjárómon?
+### <a name="gatewayports"></a>Miért vannak egyes portok nyitva a saját virtuális hálózati átjáró?
 
 Ezek szükségesek az Azure-infrastruktúra kommunikációjához. A portokat Azure-tanúsítványok védik (zárják le). A megfelelő tanúsítványok nélkül a külső entitások – például az átjárók ügyfelei – nem gyakorolhatnak semmilyen hatást a végpontokra.
 
-A VPN-átjáró alapvetően egy többhelyű eszköz, amelynek egy hálózati adaptere az ügyfél magánhálózatához, egy másik hálózati adaptere pedig a nyilvános hálózathoz csatlakozik. Az Azure-infrastruktúra entitásai megfelelőségi okokból nem csatlakozhatnak az ügyfelek magánhálózataihoz, így az infrastruktúra-kommunikációhoz nyilvános végpontokat kell használniuk. A nyilvános végpontokat az Azure biztonsági naplózás rendszeresen ellenőrzi.
+A virtuális hálózati átjáró alapvetően egy többhelyű eszköz az egyik hálózati adapter koppintson az ügyfél magánhálózat és Magánhálózatához a nyilvános hálózat. Az Azure-infrastruktúra entitásai megfelelőségi okokból nem csatlakozhatnak az ügyfelek magánhálózataihoz, így az infrastruktúra-kommunikációhoz nyilvános végpontokat kell használniuk. A nyilvános végpontokat az Azure biztonsági naplózás rendszeresen ellenőrzi.
 
 ### <a name="more-information-about-gateway-types-requirements-and-throughput"></a>További információk az átjárótípusokról, a követelményekről és az adatátviteli sebességről
 

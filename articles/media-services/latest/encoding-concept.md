@@ -9,22 +9,22 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 11/05/2018
 ms.author: juliako
-ms.openlocfilehash: bee74f0399def142915aa26d15ecfa671925f405
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 0df13e3364cebe7cb5804b840889bca971b36be2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025582"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51235054"
 ---
-# <a name="encoding-with-azure-media-services"></a>Az Azure Media Services Encoding
+# <a name="encoding-with-media-services"></a>Kódolás a Media Services használatával
 
-Az Azure Media Services lehetővé teszi, hogy az kiváló minőségű médiafájlt kódolandó, hogy a böngészők és eszközök széles lejátszhatók. Például előfordulhat, hogy az Apple HLS vagy MPEG DASH formátumában szeretné streamelni a tartalmakat. A Media Services emellett lehetővé teszi a video- vagy tartalmak elemzését. Ez a témakör ad útmutatást tartalmait a Media Services v3 kódolással.
+Az Azure Media Services lehetővé teszi, hogy az kiváló minőségű médiafájlt kódolandó, hogy a böngészők és eszközök széles lejátszhatók. Például előfordulhat, hogy az Apple HLS vagy MPEG DASH formátumában szeretné streamelni a tartalmakat. Ez a témakör nyújt útmutatást tartalmait a Media Services v3 kódolással.
 
 Kódolás a Media Services v3-as, hozzon létre egy-egy átalakítási és a egy feladatot kell. Egy-egy átalakítási határozza meg a recept, a kódolási beállítások és kimenetek, és a feladat a recept egy példányát. További információkért lásd: [átalakítások és feladatok](transform-concept.md)
 
-Az Azure Media Services encoding, ha a szolgáltatás használatával ossza meg a kódoló a bemeneti fájlok feldolgozásának módja. Például megadhatja a videó felbontást és/vagy a kívánt hang csatornák száma kódolt tartalmában. 
+A Media Services encoding, amikor a szolgáltatás használatával ossza meg a kódoló a bemeneti fájlok feldolgozásának módja. Például megadhatja a videó felbontást és/vagy a kívánt hang csatornák száma kódolt tartalmában. 
 
 Ismerkedhet meg gyorsan az ágazatban kialakult bevált gyakorlaton alapuló ajánlott a beépített beállítások egyikét, vagy dönthet úgy, amelyekre az adott forgatókönyv vagy eszközkövetelmények beállított egyéni. További információkért lásd: [Egyéni átalakító Encode](customize-encoder-presets-how-to.md). 
 
@@ -34,8 +34,6 @@ A Media Services jelenleg a következő beépített kódolási beállításokat 
 
 |**Készlet neve**|**Forgatókönyv**|**Részletek**|
 |---|---|---|
-|**AudioAnalyzerPreset**|Hang elemzése|A készlet egy előre meghatározott készletével AI-alapú elemzési műveleteket, köztük a lejegyzés vonatkozik. A készlet jelenleg egyetlen hangsávra tartalom feldolgozását támogatja.<br/>A hang hasznos nyelvét a bemeneti adatok a "nyelvi címke-régió" BCP-47 formátumban is megadhat (például "hu-hu"). Támogatott nyelvek listáját is, "en-US", "en-GB", "es-ES", "es-MX", "fr-FR", it-IT, ja-JP, pt-BR, zh-CN.|
-|**VideoAnalyzerPreset**|Audio- és elemzése|Insights (bőséges metaadatok) kigyűjti a hang- és video, és kiírja egy JSON-formátumú fájlt. Megadhatja, hogy csak szeretné hang információk kinyerése érdekében videofájl feldolgozásakor. További információkért lásd: [elemzés videó](analyze-videos-tutorial-with-api.md).|
 |**BuiltInStandardEncoderPreset**|Streamelés|Használja a bemeneti videó a standard szintű Encoder kódolási előbeállítást beépített beállításához. <br/>A következő készletek jelenleg támogatja:<br/>**EncoderNamedPreset.AdaptiveStreaming** (ajánlott). További információkért lásd: [skála automatikus generálásához](autogen-bitrate-ladder.md).<br/>**EncoderNamedPreset.AACGoodQualityAudio** -kódolású 192 Kb/s, csak sztereó hang tartalmazó egyetlen MP4-fájl eredményez.<br/>**EncoderNamedPreset.H264MultipleBitrate1080p** – 8 Képcsoporttal igazított MP4-fájlokat, és a 6000 KB/s 400 kb/s és sztereó AAC hang eredményez. Megoldás 1080p-nél kezdődik, és lefelé 360 p felbontású kerül.<br/>**EncoderNamedPreset.H264MultipleBitrate720p** -6 Képcsoporttal igazított MP4-fájlokat, és a 3400 kbps 400 kb/s és sztereó AAC hang eredményez. Feloldási 720 p elindul, és lefelé 360 p felbontású kerül.<br/>**EncoderNamedPreset.H264MultipleBitrateSD** – 5 Képcsoporttal igazított MP4-fájlokat, és a 1600 KB/s 400 kb/s és sztereó AAC hang eredményez. Megoldás 480p-nél kezdődik, és lefelé 360 p felbontású kerül.<br/><br/>További információkért lásd: [feltöltése, kódolása és fájlok folyamatos](stream-files-tutorial-with-api.md).|
 |**StandardEncoderPreset**|Streamelés|Kódolás a bemeneti videó a standard szintű Encoder használt beállításokat ismerteti. <br/>Ezzel a készlet, átalakító készletek testreszabásához. További információkért lásd: [átalakító beállításkészletek testreszabása](customize-encoder-presets-how-to.md).|
 
@@ -45,16 +43,15 @@ A Media Services teljes körűen támogatja az adott kódolási igények és kö
 
 ## <a name="scaling-encoding-in-v3"></a>V3 a kódolás méretezése
 
-Jelenleg a felhasználóknak kell az Azure portal vagy az AMS v2 API-k használatával állítsa be a kérelemegység (leírtak szerint [médiafeldolgozás skálázás](../previous/media-services-scale-media-processing-overview.md). 
+Jelenleg a felhasználóknak kell az Azure portal vagy a Media Services v2 API-k használatával állítsa be a kérelemegység (leírtak szerint [médiafeldolgozás skálázás](../previous/media-services-scale-media-processing-overview.md). 
 
 ## <a name="next-steps"></a>További lépések
 
 ### <a name="tutorials"></a>Oktatóanyagok
 
-A következő tutorals bemutatják, hogyan kódolás a Media Services használatával:
+A következő oktatóanyag bemutatja, hogyan kódolás a Media Services használatával:
 
-* [Feltöltése, kódolása és streamelése az Azure Media Services használatával](stream-files-tutorial-with-api.md)
-* [Az Azure Media Services videók elemzése](analyze-videos-tutorial-with-api.md)
+* [Feltöltése, kódolása és streamelése a Media Services használatával](stream-files-tutorial-with-api.md)
 
 ### <a name="code-samples"></a>Kódminták
 

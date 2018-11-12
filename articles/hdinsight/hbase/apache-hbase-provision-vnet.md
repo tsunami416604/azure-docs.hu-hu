@@ -2,19 +2,19 @@
 title: HBase-fürtök létrehozása a virtuális hálózat – Azure
 description: Az Azure HDInsight HBase használatának első lépései. Útmutató a HDInsight HBase-fürtök létrehozása az Azure Virtual Network.
 services: hdinsight,virtual-network
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.author: jasonh
-ms.openlocfilehash: a3686e99f9bab754cdc9cfc801961ea47560a111
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: 183f8fd47ea5239e31f03f3aecf420cfb5842098
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43043235"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009827"
 ---
 # <a name="create-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Az Azure virtuális hálózaton található HDInsight HBase-fürtök létrehozása
 Ismerje meg, hogyan hozhat létre az Azure HDInsight HBase-fürtök egy [Azure Virtual Network][1].
@@ -103,7 +103,7 @@ Az új HBase-fürt használatának megkezdése előtt, használhatja a találhat
          ...
 
      A fürt nevét tartomány nevét kezdetű része a DNS-utótagot. Ha például mycluster.b1.cloudapp.net.
-   * Azure PowerShell használatával
+   * Az Azure PowerShell használata
 
      A következő Azure PowerShell-parancsfájl segítségével regisztrálja a **Get-ClusterDetail** függvény, amely segítségével adja vissza a DNS-utótag:
 

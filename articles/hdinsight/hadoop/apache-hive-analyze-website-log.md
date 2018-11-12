@@ -2,19 +2,19 @@
 title: Webhelynapló elemzése – Azure HDInsight a Hadoop Hive használata
 description: Ismerje meg, hogyan használható a Hive a HDInsight a webhelyek naplóinak elemzése. Naplófájl használata egy HDInsight-táblához bemenetként fog, és az adatok lekérdezése a HiveQL használatával.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/17/2016
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 47175ed4bc01a43d1f21cbfc84b8a788f11b7338
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: c0a15bacd3aaf97a3caa54ee8bf70a9c4cf54663
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048024"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233597"
 ---
 # <a name="use-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>A Hive használata a HDInsight Windows-alapú webhelyek naplóinak elemzése
 Útmutató a HDInsight HiveQL használva webhelyek naplóinak elemzése. A webhelynapló elemzése használható hasonló tevékenységek alapján közönségét szegmentálhatja, kategorizálhatja a webhely látogatói demográfiai által, és tudja meg a tartalmat, megtekintése, a websites származnak, és így tovább.
@@ -34,7 +34,7 @@ Ebben a példában használhatja egy HDInsight-fürtöt a webhely a külső webh
 ## <a name="prerequisites"></a>Előfeltételek
 * Az Azure HDInsight Hadoop-fürt van kiépítve. Útmutatásért lásd: [HDInsight-fürtök létrehozása](../hdinsight-hadoop-provision-linux-clusters.md).
 * Rendelkeznie kell a Microsoft Excel 2013 vagy az Excel 2010 telepítve van.
-* Rendelkeznie kell [a Microsoft Hive ODBC-illesztő](http://www.microsoft.com/download/details.aspx?id=40886) , a Hive-adatok importálása Excel formátumba.
+* Rendelkeznie kell [a Microsoft Hive ODBC-illesztő](https://www.microsoft.com/download/details.aspx?id=40886) , a Hive-adatok importálása Excel formátumba.
 
 ## <a name="to-run-the-sample"></a>A minta futtatása
 1. A a [az Azure portal](https://portal.azure.com/), (ha rögzítette a fürt van) kezdőpultján kattintson a fürt csempéjére, amelyen szeretné, a minta futtatásához.

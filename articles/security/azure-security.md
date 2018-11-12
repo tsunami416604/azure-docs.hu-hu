@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: ce2b4304ea53be7e9a7be42b8a7fb30f713d85f8
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f11012c90ab2b82e945fdb67e224783c3f05c6dd
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405208"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237553"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure Security
 ## <a name="overview"></a>Áttekintés
@@ -62,7 +62,7 @@ A következő felsorolt funkciók áttekintheti, hogy biztonságos módon kezeli
 | [Kötelező biztonsági képzés, vissza földön ellenőrzések](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Szabályozhatja az adatok helye](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [Gyakori vezérlők Hub](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Hogyan történik a Microsoft adatok helye az Azure-szolgáltatások kezelése](http://azuredatacentermap.azurewebsites.net/)|
 | [Behatolásvizsgálat](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx), [behatolásérzékelési, DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagement), [eseményeket és naplózás](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [Adatok hozzáférés biztosítása a saját igényei szerint](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [A Cloud Services megfelelő gondossággal ellenőrzőlista](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[Milyen feltételekkel, akik a Microsoft is elérhetők az adatok](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
 | [A legújabb felhőkörnyezetekből állapota](https://www.microsoft.com/en-us/cloud-platform/global-datacenters), fizikai biztonsági [biztonságos hálózati](https://docs.microsoft.com/azure/security/security-network-overview) | [Válaszadás a bűnüldöző hatóság](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [Megfelelőség szolgáltatást, helye és iparág szerint](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Hogyan teszi biztonságossá a Microsoft az ügyféladatokat az Azure-szolgáltatások](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
-|  [Biztonsági incidensmegoldási](http://aka.ms/SecurityResponsepaper), [közös felelősség](http://aka.ms/sharedresponsibility) |[Szigorú adatvédelmi normák](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Tekintse át az Azure-szolgáltatásokhoz, átláthatóság hub hitelesítő](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
+|  [Biztonsági incidensmegoldási](https://aka.ms/SecurityResponsepaper), [közös felelősség](https://aka.ms/sharedresponsibility) |[Szigorú adatvédelmi normák](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Tekintse át az Azure-szolgáltatásokhoz, átláthatóság hub hitelesítő](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
 
 
 

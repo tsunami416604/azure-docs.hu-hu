@@ -1,57 +1,57 @@
 ---
-title: Hozzon létre videóklipeket Azure Media Webmontázskészítő |} Microsoft Docs
-description: Azure Media Webmontázskészítő, egy eszköz használatával történő megtervezésével media videóklipeket eszközökből áttekintése
+title: Az Azure Media Clipperrel készíthet |} A Microsoft Docs
+description: Az Azure Media Clipperrel, egy eszköz, amellyel a klipek eszközökből áttekintése
 services: media-services
-keywords: Klip; subclip; kódolás; adathordozó
+keywords: Klip; részklip; kódolás; adathordozó
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
 ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: f3822386d0d16b1feaf16853424329558a18f910
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0fc04fb64e6d34c46f20b4ba5ff8a1ffc8da9c31
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788122"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51237910"
 ---
-# <a name="create-clips-with-azure-media-clipper"></a>Az Azure Media Webmontázskészítő videóklipeket létrehozása
-Az Azure Media Webmontázskészítő egy ingyenes JavaScript-függvénytárat, amely lehetővé teszi webes fejlesztők számára a felhasználói felülettel történő media videóklipeket létrehozása. Az eszköz integrálhatók a weblapokat, és API felületeket biztosít az eszközök betöltésekor és Kivágás feladatok elküldésekor.
+# <a name="create-clips-with-azure-media-clipper"></a>Készíthet az Azure Media Clipperrel
+Az Azure Media Clipperrel egy ingyenes JavaScript-függvénytárat, amely lehetővé teszi a webes felületet biztosítson a felhasználók Klipek létrehozása. Az eszköz bármilyen weblapon is integrálható, és API-kat biztosít a eszközök betöltése és klipekkel kapcsolatos feladatok elküldése.
 
-Az Azure Media Webmontázskészítő teszi lehetővé:
-- A előtti lappal Trim utáni slate származó élő és archívumok 
-- Videó emeli ki AMS élő eseményeket, élő archívumokat vagy fMP4 VOD-fájlok összeállítása 
-- A különböző forrásokból származó ÖSSZEFŰZ videók 
-- Az AMS media eszközökből összefoglaló videóklipeket előállításához 
-- Keret pontossággal klip videók 
-- Dinamikus jegyzék szűrők készítése meglévő élő és VOD eszközök csoport képek (GOP) pontossággal 
-- Az eszközök a media services-fiók ellen kódolási feladatok létrehozására
+Az Azure Media Clipperrel teszi lehetővé:
+- Az üzem előtti befutó Trim és utáni állóképek az élő adásokból 
+- AMS élő események, az élő adásokból vagy fMP4 VOD fájlok videó pillanatai Compose 
+- Több forrásból származó videók összefűzése 
+- Az AMS médiatartalmak származó összegző klipek előállításához. 
+- Keret pontosságú klip videók 
+- Létrehozhat egy dinamikusjegyzék-szűrők élő meglévő és VOD eszközök csoport képek (Képcsoporttal) pontossága 
+- Kódolási feladatot hajt végre szemben az eszközök a media services-fiók létrehozásához
 
-Kérjen új funkciókat, adja meg a ötleteket vagy visszajelzést szeretne küldeni, terjeszt [Azure Media Services UserVoice](http://aka.ms/amsvoice/). Ha rendelkezik, és konkrét problémák, kérdések vagy hibáit, dobja el a Media Services team: egy sor keresés amcinfo@microsoft.com.
+Javasolhat új funkciókat, adja meg ötleteit, vagy visszajelzést, az elküldés elemre kattintva [az Azure Media Services UserVoice](https://aka.ms/amsvoice/). Ha rendelkezik, és konkrét problémák, kérdések vagy hibák, dobja el a Media Services-csapat egy sort a Keresés amcinfo@microsoft.com.
 
-Az alábbi ábrán a Webmontázskészítő felület: ![Azure Media Webmontázskészítő](media/media-services-azure-media-clipper-overview/media-services-azure-media-clipper-interface.PNG)
+Az alábbi ábrán a Clipperrel felület: ![Azure Media Clipperrel](media/media-services-azure-media-clipper-overview/media-services-azure-media-clipper-interface.PNG)
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
-Tekintse meg az alábbi lista a Webmontázskészítő blogbejegyzés, különböző ismert problémák és a legújabb kiadása a Webmontázskészítő a változásnaplója:
-- [blogbejegyzés](https://azure.microsoft.com/blog/azure-media-clipper/)
+Tekintse meg az alábbi lista a Clipperrel blogbejegyzést, a különböző ismert problémák és a legújabb kiadása a Clipperrel változásnaplója:
+- [Blogbejegyzés](https://azure.microsoft.com/blog/azure-media-clipper/)
 - [Ismert problémák listája](https://amp.azure.net/libs/amc/latest/docs/known_issues.html)
-- [Változásnaplója](https://amp.azure.net/libs/amc/latest/docs/changelog.html)
+- [Változásnaplójában](https://amp.azure.net/libs/amc/latest/docs/changelog.html)
 
-## <a name="browser-support"></a>Webböngésző támogatása
-Az Azure Media Webmontázskészítő modern HTML5 technológiákra épül, és támogatja a következő böngészőkben:
+## <a name="browser-support"></a>Böngésző támogatása
+Az Azure Media Clipperrel HTML5-alapú korszerű technológiák használatával, és az alábbi böngészők támogatja:
 
 - A Microsoft Edge 13 +
 - Az Internet Explorer 11 +
 - Chrome 54 +
 - Safari 10 +
-- Firefox 50 +
+- A Firefox több mint 50
 
 > [!NOTE]
-> Azure Media Services-adatfolyamokat csak HTML5 lejátszását jelenleg támogatott.
+> Az Azure Media Services adatfolyam csak HTML5 lejátszási jelenleg támogatott.
 
 ## <a name="language-support"></a>Nyelvi támogatás
-A Webmontázskészítő widget a következő 18 nyelveken érhető el:
+A Clipperrel widget 18 a következő nyelveken érhető el:
 - kínai (egyszerűsített)
 - kínai (hagyományos)
 - cseh
@@ -64,12 +64,12 @@ A Webmontázskészítő widget a következő 18 nyelveken érhető el:
 - japán
 - koreai
 - lengyel
-- portugál (Brazília)
-- portugál (Portugália)
+- portugál (brazíliai)
+- portugál (általános)
 - orosz
 - spanyol
 - svéd
 - török
 
 ## <a name="next-steps"></a>További lépések
-Azure Media Webmontázskészítő használatának megkezdéséhez olvassa el a [bevezetés](media-services-azure-media-clipper-getting-started.md) cikkben talál részletes információt a widget központi telepítéséről.
+Ismerkedés az Azure Media Clipperrel használatával, olvassa el a [bevezetés](media-services-azure-media-clipper-getting-started.md) részleteivel kapcsolatban, hogyan helyezhet üzembe a widget.

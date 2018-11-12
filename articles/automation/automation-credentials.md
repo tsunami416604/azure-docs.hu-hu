@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e5414a7607c036f1d60f58e1eb047da1e54f4db9
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 07452a97ba16d7745d48e210dd90ce077be64683
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585340"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51233439"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Hitelesítő eszközök az Azure Automationben
 
-Egy Automation-hitelesítőeszközt tárolja a biztonsági hitelesítő adatok, például a felhasználónevet és jelszót tartalmazó objektumot. A Runbookok és a DSC-konfigurációk előfordulhat, hogy parancsmagokat használják, amelyek fogadja el a hitelesítést egy PSCredential objektumot, vagy, előfordulhat, hogy bontsa ki a felhasználónevet és jelszót adjon meg néhány alkalmazáshoz vagy a hitelesítést igénylő szolgáltatáshoz PSCredential objektum. A tulajdonságok a hitelesítő adatait biztonságos tárolása az Azure Automationben, és a runbook vagy DSC-konfiguráció érhetők el a [Get-AutomationPSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) tevékenység.
+Egy Automation-hitelesítőeszközt tárolja a biztonsági hitelesítő adatok, például a felhasználónevet és jelszót tartalmazó objektumot. A Runbookok és a DSC-konfigurációk előfordulhat, hogy parancsmagokat használják, amelyek fogadja el a hitelesítést egy PSCredential objektumot, vagy, előfordulhat, hogy bontsa ki a felhasználónevet és jelszót adjon meg néhány alkalmazáshoz vagy a hitelesítést igénylő szolgáltatáshoz PSCredential objektum. A tulajdonságok a hitelesítő adatait biztonságos tárolása az Azure Automationben, és a runbook vagy DSC-konfiguráció érhetők el a [Get-AutomationPSCredential](https://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) tevékenység.
 
 [!INCLUDE [gdpr-dsr-and-stp-note.md](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -53,7 +53,7 @@ Az alábbi táblázatban felsorolt tevékenységek a runbookok és a DSC-konfigu
 
 | Tevékenységek | Leírás |
 |:--- |:--- |
-| Get-AutomationPSCredential |Lekérdezi egy runbookból vagy DSC-konfigurációból a használni kívánt hitelesítő adatokat. Értéket ad vissza egy [System.Management.Automation.PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential) objektum. |
+| Get-AutomationPSCredential |Lekérdezi egy runbookból vagy DSC-konfigurációból a használni kívánt hitelesítő adatokat. Értéket ad vissza egy [System.Management.Automation.PSCredential](https://msdn.microsoft.com/library/system.management.automation.pscredential) objektum. |
 
 > [!NOTE]
 > Kerülendő a változók használata a Get-AutomationPSCredential, mivel ez nehezíti a runbookok és a DSC-konfigurációk közti függőségek, és a tervezés során hitelesítőeszközei – Name paraméterében.
@@ -94,7 +94,7 @@ New-AzureAutomationCredential -AutomationAccountName "MyAutomationAccount" -Name
 
 ## <a name="using-a-powershell-credential"></a>PowerShell-hitelesítő adat használata
 
-Egy runbook vagy DSC-konfiguráció hitelesítőadat-eszköz kérheti a **Get-AutomationPSCredential** tevékenység. Ez visszaad egy [PSCredential objektum](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) , hogy egy tevékenységet, vagy PSCredential paramétert igénylő parancsmagot használhatja. A külön-külön használandó hitelesítő objektum tulajdonságait is lekérhet. Az objektum szerepel egy olyan tulajdonság, a felhasználónév és a biztonságos jelszót, vagy használhatja a **GetNetworkCredential** metódussal adja vissza egy [NetworkCredential](http://msdn.microsoft.com/library/system.net.networkcredential.aspx) objektum, amely titkosítatlan verziója biztosít a a jelszó.
+Egy runbook vagy DSC-konfiguráció hitelesítőadat-eszköz kérheti a **Get-AutomationPSCredential** tevékenység. Ez visszaad egy [PSCredential objektum](https://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) , hogy egy tevékenységet, vagy PSCredential paramétert igénylő parancsmagot használhatja. A külön-külön használandó hitelesítő objektum tulajdonságait is lekérhet. Az objektum szerepel egy olyan tulajdonság, a felhasználónév és a biztonságos jelszót, vagy használhatja a **GetNetworkCredential** metódussal adja vissza egy [NetworkCredential](https://msdn.microsoft.com/library/system.net.networkcredential.aspx) objektum, amely titkosítatlan verziója biztosít a a jelszó.
 
 ### <a name="textual-runbook-sample"></a>Minta szöveges forgatókönyv
 

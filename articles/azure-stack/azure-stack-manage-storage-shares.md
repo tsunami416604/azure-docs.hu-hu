@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: d979692ba32c596058d28c88f32e7e5872ab7ef9
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 00fa1a78155e1add547b8b165f52cf3c1fba2dfe
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452326"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249897"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Az Azure stack-beli tárolási kapacitás kezelése 
 
@@ -138,7 +138,7 @@ Próbálkozzon egy másik megosztásba néhány blobtárolók manuális áttelep
 > Egy tároló-blobok az áttelepítése nem offline művelet, amely a PowerShell használata szükséges. Áttelepítés befejeződéséig áttelepítésekor a tároló összes blobok offline állapotban maradnak, és nem használható. Emellett ne frissítése az Azure Stack, mindaddig, amíg az összes folyamatban lévő migrálása befejeződött.
 
 #### <a name="to-migrate-containers-using-powershell"></a>PowerShell-lel a tárolók áttelepítéséhez
-1. Győződjön meg arról, hogy [Azure PowerShell telepítését és konfigurálását](http://azure.microsoft.com/documentation/articles/powershell-install-configure/). További információ: [Az Azure PowerShell használata az Azure Resource Manager eszközzel](http://go.microsoft.com/fwlink/?LinkId=394767).
+1. Győződjön meg arról, hogy [Azure PowerShell telepítését és konfigurálását](https://azure.microsoft.com/documentation/articles/powershell-install-configure/). További információ: [Az Azure PowerShell használata az Azure Resource Manager eszközzel](https://go.microsoft.com/fwlink/?LinkId=394767).
 2.  Vizsgálja meg a tároló, milyen adatokat a megosztáson található, amely az áttelepíteni kívánt van. A legjobb jelöltek tárolók egy kötet az áttelepítéshez azonosításához használja a **Get-AzsStorageContainer** parancsmagot:
 
     ````PowerShell  

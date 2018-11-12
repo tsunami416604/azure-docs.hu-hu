@@ -10,23 +10,24 @@ ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4ceef533145bea75247eb26998b998552293ef63
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 04eae00d40470d5f6c992d9a0c8c9b0b49d7495f
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449950"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007637"
 ---
 # <a name="azure-active-directory-b2c-file-support-requests"></a>Az Azure Active Directory B2C: Fájl támogatási kérelmek
 A fájl támogatási kéréseket az Azure Active Directory (Azure AD) B2C az Azure Portalon, az alábbi lépéseket követve:
 
-1. [A B2C funkciók panelje az Azure Portalon lépjen a következő lépésekkel](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
-2. A B2C-bérlő válthat, amely az Azure-előfizetéssel társítva van egy másik bérlőben. Az utóbbi általában az alkalmazottak vagy az Ön számára létrehozott Azure-előfizetésre való regisztráció során alapértelmezett-bérlő. További tudnivalókért lásd: [hogyan egy Azure-előfizetések kapcsolata az Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+1. A B2C-bérlő válthat, amely az Azure-előfizetéssel társítva van egy másik bérlőben. Az utóbbi általában az alkalmazottak vagy az Ön számára létrehozott Azure-előfizetésre való regisztráció során alapértelmezett-bérlő. További tudnivalókért lásd: [hogyan egy Azure-előfizetések kapcsolata az Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
    
     ![Támogatás – kapcsoló bérlők](./media/active-directory-b2c-support/support-switch-dir.png)
+
 3. Váltás a bérlők, után kattintson **súgó + támogatás**.
    
     ![Támogatás – súgó + támogatás](./media/active-directory-b2c-support/support-support.png)
+    
 4. Kattintson a **új támogatási kérelem**.
    
     ![Támogatás – új](./media/active-directory-b2c-support/support-new.png)
