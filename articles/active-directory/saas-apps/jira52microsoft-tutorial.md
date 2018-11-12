@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 11/01/2018
 ms.author: jeedes
-ms.openlocfilehash: 85004852b4e67f1a3f030a5cf97abea7c16c5695
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 43ad99d4814923204b3b1993969bd6a0730530c5
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741742"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016131"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Oktatóanyag: Azure Active Directory-integráció az JIRA SAML SSO által a Microsoft (V5.2)
 
@@ -62,7 +62,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 **Támogatott verziók:**
 
 * JIRA-Core és a szoftver: 5.2.
-* JIRA a 6.0-s és 7.12 is támogatja. További részletekért kattintson [JIRA SAML egyszeri bejelentkezés a Microsoft által](jiramicrosoft-tutorial.md)
+* JIRA 6.0 való 7.12 is támogatja. További részletekért kattintson [JIRA SAML egyszeri bejelentkezés a Microsoft által](jiramicrosoft-tutorial.md)
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 

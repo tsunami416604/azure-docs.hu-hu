@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: 2dc81a96f1e83c3a6b1ddee92f57b2f0bae4196d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: cae81bd2b856ae0fb4a648c03cbec1f87f222902
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248916"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038468"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Létrehozhat és konfigurálhat egy saját üzemeltetésű integrációs modul
 Az integrációs modul (IR) a számítási infrastruktúra, amellyel Azure Data Factory adatintegrációs képességeket biztosítja különböző hálózati környezetekben. Integrációs modul kapcsolatos részletekért lásd: [Integration runtime áttekintése](concepts-integration-runtime.md).
@@ -127,7 +127,7 @@ Több csomópont társíthatja a saját üzemeltetésű integrációs modul szof
 
 Ha alacsony a rendelkezésre álló memóriát a saját üzemeltetésű integrációs modul és a CPU-használata túl magas, új csomópont hozzáadása segít a horizontális felskálázást a terhelés gépek között. Ha a tevékenység sikertelen, mert éppen időtúllépés, vagy mert a saját üzemeltetésű integrációs modul csomópontja kapcsolat nélküli üzemmódban, ha egy csomópont hozzáadása az átjáró nyújt segítséget.
 
-#### <a name="scale-up"></a>Vertikális felskálázás
+#### <a name="scale-up"></a>Felskálázás
 
 A rendelkezésre álló memória és a Processzor nem használhatók jól, de az egyidejű feladatok végrehajtásának hamarosan eléri a korlátot, érdemes a vertikális felskálázáshoz, amely képes futni a csomóponton egyidejű feladatok számának növelése. Érdemes azt is, amikor a tevékenységek időtúllépésekbe ütközzenek, mert a saját üzemeltetésű integrációs modul túl van terhelve vertikális. Ahogy az az alábbi képen is látható, növelheti a maximális kapacitás egy csomópont:  
 
@@ -149,7 +149,11 @@ Használhat egy meglévő saját üzemeltetésű integrációs modul infrastrukt
 
 Szeretne megosztani egy saját üzemeltetésű integrációs modult használja a Powershellt, tekintse meg a [megosztott saját üzemeltetésű integrációs modul létrehozása az Azure Data Factoryban a PowerShell-lel](create-shared-self-hosted-integration-runtime-powershell.md).
 
-### <a name="terminology"></a>Terminológia
+A tizenkét perces bevezető és a funkció bemutatójáért tekintse meg a következő videót:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Hybrid-data-movement-across-multiple-Azure-Data-Factories/player]
+
+### <a name="terminology"></a>Szakkifejezések
 
 - **Integrációs modul megosztott**: az eredeti saját üzemeltetésű integrációs modul, amely a fizikai infrastruktúra fut-e.  
 - **Integrációs modul társított**: az integrációs modul egy másik hivatkozó megosztott IR. Ez egy logikai integrációs modul és a egy másik saját üzemeltetésű integrációs modul (megosztott)-infrastruktúrát használja.
@@ -172,7 +176,7 @@ Szeretne megosztani egy saját üzemeltetésű integrációs modult használja a
 
    ![Mezők nevét és az erőforrás-azonosítóhoz](media\create-self-hosted-integration-runtime\6_create-linkedIR_3.png)
 
-### <a name="monitoring"></a>Figyelés 
+### <a name="monitoring"></a>Monitoring 
 
 - **Megosztott integrációs modul**
 

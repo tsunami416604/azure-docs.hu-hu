@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 09/05/2018
+ms.date: 11/05/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 7a5c6875f080655e69f549e45ec474958128754f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: a0dc3405cc0e1deb25c1f2772a5018dad95b87e9
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575813"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036597"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Egy virtuális gép rendszerképének elérhetővé az Azure Stackben
 
@@ -30,7 +30,7 @@ Az Azure Stackben akkor is elérhetővé virtuálisgép-rendszerképek a felhasz
 
 ## <a name="add-a-vm-image-through-the-portal"></a>A portálon keresztül egy Virtuálisgép-rendszerkép hozzáadása
 
-> [!NOTE]
+> [!NOTE]  
 > Ezzel a módszerrel külön-külön kell létrehozni a Piactéri elemet.
 
 Lemezképek által blobtárolók URI azonosítójához használandó képesnek kell lennie. Készítse elő a VHD formátum (nem VHDX) a Windows vagy Linux operációs rendszer lemezképét, és ezután töltse fel a rendszerképet egy Azure-ban lévő tárfiókba. Ha a rendszerkép már fel van töltve a blob storage-ban az Azure-ban, kihagyhatja az 1. lépés.
@@ -39,7 +39,7 @@ Lemezképek által blobtárolók URI azonosítójához használandó képesnek k
 
    - Az Azure Stack csak támogatja. generációs VM egy (1) a rögzített méretű lemezt VHD-t a formázása. A rögzített formátum szerkezet a logikai lemezt lineárisan fájlon belül, így a lemez eltolás X van tárolva X. A blob végén egy kis lábléc írja le a VHD tulajdonságait. Győződjön meg arról, ha a lemezt rögzített, használja a [Get-VHD](https://docs.microsoft.com/powershell/module/hyper-v/get-vhd?view=win10-ps) PowerShell-parancsot.  
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     >  Az Azure Stack nem támogatja a dinamikus lemez VHD-k. Egy virtuális Géphez van csatlakoztatva dinamikus lemez átméretezése sikertelen állapotban hagyja a virtuális Gépet. A probléma megoldásához törölje a virtuális Gépet a virtuális gép lemezét, a VHD-blob storage-fiókban lévő törlése nélkül. A, a konvertálás a virtuális Merevlemezt a dinamikus lemezről egy rögzített méretű lemezt, és hozza létre újból a virtuális gép.
 
    * Legyen hatékonyabb, ha egy rendszerkép feltöltése az Azure Stack blob storage-ba, mint az Azure blob storage-ban, mert a rendszerkép leküldése az Azure Stack lemezképtárban kevesebb időt vesz igénybe.

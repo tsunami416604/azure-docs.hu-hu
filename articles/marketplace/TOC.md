@@ -1,5 +1,5 @@
-# [Az Azure Marketplace és az AppSource dokumentációja](index.md)  
-
+# [Az Azure Marketplace és az AppSource dokumentációja](index.md)
+## [Minősítési és felülvizsgálati szabályzatok](./rating-review-policies.md)   
 ## [Azure Marketplace és AppSource – áttekintés és előnyök](./marketplace-publishers-guide.md)  
 
 ### [Hogyan válhat közzétevővé a Marketplace-en](./become-publisher.md)  
@@ -34,6 +34,14 @@
 <!-- Following section is for Cloud Partner Portal (CPP). -->
 
 # [Felhőpartnerportál](./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md) 
+
+## A portál kezelése
+### [Fiók regisztrálása a Fejlesztői központban](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)
+### [Titkos termékváltozatok](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)
+### [Útmutatás a keresőmotor optimalizálásához](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
+### [Közzétevő profil kezelése](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
+### [Felhasználók kezelése](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
+### [GDPR-megfelelősége](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
 
 ## [Virtuálisgép-ajánlat](./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md)
 ### [Előfeltételek](./cloud-partner-portal/virtual-machine/cpp-prerequisites.md)
@@ -70,8 +78,7 @@
 ### [Automate offer publishing](./cloud-partner-portal-orig/cloud-partner-portal-automate-offer-publishing.md)
 -->
 
-## Azure-alkalmazások
-### [Fiók regisztrálása a Fejlesztői központban](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)
+## [Azure-alkalmazásajánlat](./cloud-partner-portal-orig/cpp-azure-app-offer.md)
 ### [Felügyelt alkalmazás létrehozása](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-publish.md)
 ### [Megoldássablon létrehozása](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md)
 ### [Felügyeleti megoldás közzététele](./cloud-partner-portal-orig/cloud-partner-portal-management-solution-publish.md)
@@ -79,14 +86,12 @@
 ### [Élő ajánlattétel](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-go-live.md)
 ### [Létező ajánlat frissítése](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-update.md)
 ### [Ajánlat törlése](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-delete.md)
-### [Ajánlatok áttelepítése](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
+<!-- Obsolete ### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)  -->
 
-## SaaS-alkalmazás
+## [SaaS-alkalmazásajánlat](./cloud-partner-portal-orig/cpp-saas-app-offer.md)
 ### [SaaS-alkalmazás – műszaki közzétételi útmutató](./cloud-partner-portal-orig/cloud-partner-portal-saas-offers-tech-publishing-guide.md)
 ### [SaaS-értékesítés az Azure-on keresztül](./cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions.md)
 ### [SaaS API-k](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
-
-<!-- Legacy ## [Containers](./cloud-partner-portal-orig/cloud-partner-portal-containers-guide.md) -->
 
 ## [Tárolók ajánlat](./cloud-partner-portal/containers/cpp-containers-offer.md)
 ### [Előfeltételek](./cloud-partner-portal/containers/cpp-prerequisites.md)
@@ -98,6 +103,7 @@
 ### [Tárolók technikai eszközeinek létrehozása](./cloud-partner-portal/containers/cpp-create-technical-assets.md)
 ### [Tárolóajánlat közzététele](./cloud-partner-portal/containers/cpp-publish-offer.md)
 ### [Létező ajánlat frissítése](./cloud-partner-portal/containers/cpp-update-existing-offer.md)
+<!-- Legacy ## [Containers](./cloud-partner-portal-orig/cloud-partner-portal-containers-guide.md) -->
 
 ## [IoT Edge-modulajánlat](./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md)
 ### [Előfeltételek](./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md)
@@ -118,24 +124,16 @@
 ### [IoT Edge module FAQ](./cloud-partner-portal-orig/cloud-partner-portal-iot-edge-module-faq.md)
 -->
 
-## Érdeklődők kezelése
-### [Ügyfélérdeklődések konfigurálása](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md)
-### [Azure-tábla](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table.md)
-### [Dynamics](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics.md)
-### [HTTPS-végpont](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https.md)
-### [Marketo](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo.md)
-### [Salesforce](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce.md)
-
 <!-- ## [Cortana Intelligence](./cloud-partner-portal-orig/cloud-partner-portal-publish-cortana-intelligence-app.md)  -->
 
-## Dynamics 365 for Customer Engagement
+## [Dynamics 365 for Customer Engagement ajánlat](./cloud-partner-portal-orig/cpp-customer-engagement-offer.md)
 ### [Megoldás létrehozása](./cloud-partner-portal-orig/dynamics-365-solution-preparation.md)
 ### [Csomag létrehozása](./cloud-partner-portal-orig/appSource-package-preparation.md)
 ### [SAS-kulcs létrehozása](./cloud-partner-portal-orig/store-your-appSource-package-to-azure-storage-and-generate-sas-key.md)
 ### [Ajánlat létrehozása](./cloud-partner-portal-orig/setup-your-application-in-the-publishing-portal.md)
 ### [Ajánlat közzététele](./cloud-partner-portal-orig/request-to-publish-the-app.md)
 
-## Dynamics 365 for Business Central
+## [Dynamics 365 for Business Central ajánlat](./cloud-partner-portal-orig/cpp-business-central-offer.md)
 ### [Áttekintés közzététele](./cloud-partner-portal-orig/d365-finance-overview-publish-your-app.md)
 ### [Új ajánlat létrehozása](./cloud-partner-portal-orig/d365-finance-create-new-offer.md)
 ### [Ajánlat beállításai](./cloud-partner-portal-orig/d365-finance-create-offer-settings.md)
@@ -143,7 +141,7 @@
 ### [Áruház részletei](./cloud-partner-portal-orig/d365-finance-create-storefront-details.md)
 ### [Folyamat közzététele](./cloud-partner-portal-orig/d365-finance-app-publishing-process.md)
 
-## Dynamics 365 for Operations
+## [Dynamics 365 for Operations ajánlat](./cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md)
 ### [Előfeltételek](./cloud-partner-portal-orig/pre-requisites.md)
 ### [Közzétételi útmutató](./cloud-partner-portal-orig/manage-dynamics-365-for-operations.md)
 ### [LCS-előfizetés](./cloud-partner-portal-orig/lcs-subscription.md)
@@ -151,6 +149,11 @@
 ### [Adatentitások](./cloud-partner-portal-orig/data-entities.md)
 ### [BPM és módszertanok](./cloud-partner-portal-orig/bpm-and-methodologies.md)
 ### [Súgó wiki](./cloud-partner-portal-orig/help-wiki.md)
+
+## [Tanácsadói szolgáltatások](./cloud-partner-portal-orig/cloud-partner-portal-consulting-services-publishing-offer.md)
+## [Közzétevő profil kezelése](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
+## [Felhasználók kezelése](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
+## [GDPR-megfelelősége](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
 
 ## Tesztverzió
 ### [Mi a Tesztverzió?](./cloud-partner-portal-orig/what-is-test-drive.md)
@@ -160,12 +163,15 @@
 ### [Példák átalakítása a tesztverzióhoz](./cloud-partner-portal-orig/transforming-examples-for-test-drive.md)
 ### [Marketing és ajánlott eljárások](./cloud-partner-portal-orig/marketing-and-best-practices.md)
 
-## [Tanácsadói szolgáltatások](./cloud-partner-portal-orig/cloud-partner-portal-consulting-services-publishing-offer.md)
-## [Közzétevő profil kezelése](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
-## [Felhasználók kezelése](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
-## [GDPR-megfelelősége](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)
+## Érdeklődők kezelése
+### [Ügyfélérdeklődések konfigurálása](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md)
+### [Azure-tábla](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table.md)
+### [Dynamics](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics.md)
+### [HTTPS-végpont](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https.md)
+### [Marketo](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo.md)
+### [Salesforce](./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce.md)
 
-## Insights
+## Értékesítői elemzések
 ### [Első lépések](./cloud-partner-portal-orig/si-getting-started.md)
 ### [Újdonságok](./cloud-partner-portal-orig/si-changes.md)
 ### [Webes elemzés](./cloud-partner-portal-orig/web-analytics.md)

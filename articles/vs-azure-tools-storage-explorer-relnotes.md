@@ -3,7 +3,7 @@ title: A Microsoft Azure Storage Explorer kibocsátási megjegyzései
 description: A Microsoft Azure Storage Explorer kibocsátási megjegyzései
 services: storage
 documentationcenter: na
-author: cawa
+author: cawaMS
 manager: paulyuk
 editor: ''
 ms.assetid: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: dde2983c57d0f3ec9c58537809f2d2d952b4a00e
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 608dd6067e5c9d31f720b97453615a3e8ead0a85
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741946"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038620"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>A Microsoft Azure Storage Explorer kibocsátási megjegyzései
 
@@ -141,7 +141,7 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
    * Testre szabhatja a csatolni kívánt erőforrás megjelenített neve. [#31.](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Különböző portok használata több helyi emulátor csatolása. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Csatolt erőforrások hozzáadása a gyorselérési eszköztáron. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Storage Explorer mostantól támogatja a helyreállítható törlés. A következőket teheti:
+* Storage Explorer mostantól támogatja a helyreállítható törlés. Előnyök:
    * A helyreállítható törlés házirend konfigurálásához kattintson a jobb gombbal a tárfiók Blob-tárolók csomóponton.
    * Helyreállíthatóan törölt megtekintése blobok a Blob-szerkesztőben kiválasztásával "aktív és a blobok törlése" mellett a navigációs sávban a legördülő listában.
    * Helyreállíthatóan törölt BLOB törlésének visszavonása.
@@ -197,7 +197,7 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
    * Testre szabhatja a csatolni kívánt erőforrás megjelenített neve. [#31.](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Különböző portok használata több helyi emulátor csatolása. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Csatolt erőforrások hozzáadása a gyorselérési eszköztáron. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Storage Explorer mostantól támogatja a helyreállítható törlés. A következőket teheti:
+* Storage Explorer mostantól támogatja a helyreállítható törlés. Előnyök:
    * A helyreállítható törlés házirend konfigurálásához kattintson a jobb gombbal a tárfiók Blob-tárolók csomóponton.
    * Helyreállíthatóan törölt megtekintése blobok a Blob-szerkesztőben kiválasztásával "aktív és a blobok törlése" mellett a navigációs sávban a legördülő listában.
    * Helyreállíthatóan törölt BLOB törlésének visszavonása.
@@ -252,7 +252,7 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
    * Testre szabhatja a csatolni kívánt erőforrás megjelenített neve. [#31.](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Különböző portok használata több helyi emulátor csatolása. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Csatolt erőforrások hozzáadása a gyorselérési eszköztáron. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Storage Explorer mostantól támogatja a helyreállítható törlés. A következőket teheti:
+* Storage Explorer mostantól támogatja a helyreállítható törlés. Előnyök:
    * A helyreállítható törlés házirend konfigurálásához kattintson a jobb gombbal a tárfiók Blob-tárolók csomóponton.
    * Helyreállíthatóan törölt megtekintése blobok a Blob-szerkesztőben kiválasztásával "aktív és a blobok törlése" mellett a navigációs sávban a legördülő listában.
    * Helyreállíthatóan törölt BLOB törlésének visszavonása.
@@ -312,7 +312,7 @@ Végül az AzCopy használata a fájlmegosztások támogatása hamarosan elérhe
    * Testre szabhatja a csatolni kívánt erőforrás megjelenített neve. [#31.](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * Különböző portok használata több helyi emulátor csatolása. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * Csatolt erőforrások hozzáadása a gyorselérési eszköztáron. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* Storage Explorer mostantól támogatja a helyreállítható törlés. A következőket teheti:
+* Storage Explorer mostantól támogatja a helyreállítható törlés. Előnyök:
    * A helyreállítható törlés házirend konfigurálásához kattintson a jobb gombbal a tárfiók Blob-tárolók csomóponton.
    * Helyreállíthatóan törölt megtekintése blobok a Blob-szerkesztőben kiválasztásával "aktív és a blobok törlése" mellett a navigációs sávban a legördülő listában.
    * Helyreállíthatóan törölt BLOB törlésének visszavonása.

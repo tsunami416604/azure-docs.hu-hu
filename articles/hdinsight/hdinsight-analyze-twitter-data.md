@@ -1,20 +1,20 @@
 ---
-title: A HDInsight - Azure Hadoop-keretrendszerrel Twitter-adatok elemzése
-description: Útmutató az egy adott szó előfordulási gyakoriságának megkeresése céljából a HDInsight a Hadoop a Twitter-adatok elemzése a Hive segítségével.
+title: Az Apache hadooppal a HDInsight - Azure Twitter-adatok elemzése
+description: Ismerje meg, hogyan használható a Hive a HDInsight, az egy adott szó előfordulási gyakoriságának megkeresése az Apache Hadoop Twitter-adatok elemzésére.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 294353cfcfba617ab19e703f11f35402bcf7ea82
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 39db03170d6a9c9d481b1448b54bdbd52e205921
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387581"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037295"
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>Hive HDInsight használatával egy Twitter-adatok elemzése
 Közösségi webhelyek egyik fő környezetbarát big-data bevezetésére. Nyilvános API-kat, mint például a Twitter által biztosított okai a hasznos adatok elemzéséhez és megértéséhez népszerű trendeket.
@@ -76,7 +76,7 @@ OAuth használata az első lépés az új alkalmazás létrehozása a fejlesztő
 2. Kattintson a **új alkalmazás létrehozása**.
 3. Adja meg **neve**, **leírás**, **webhely**. Meghatározhat egy URL-címe be a **webhely** mező. Az alábbi táblázat néhány mintaértékeket használhatja:
 
-   | Mező | Érték |
+   | Mező | Value (Díj) |
    | --- | --- |
    |  Name (Név) |MyHDInsightApp |
    |  Leírás |MyHDInsightApp |

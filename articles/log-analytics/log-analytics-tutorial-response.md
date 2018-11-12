@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: e15f440fd1818e2d5ce1e72881b8a0f769dec8fc
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 2fbf3c902416935f0b1fff0bc423a2535f3ba077
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829902"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012996"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Eseményekre való válaszadás Azure Monitor-riasztásokkal
 Az Azure Monitor-riasztások azonosítják a Log Analytics-adattárban található fontos információkat. A riasztásokat riasztási szabályok hozzák létre, amelyek rendszeres időközönként automatikusan naplókereséseket futtatnak. Ha a naplókeresés eredménye megfelel bizonyos feltételeknek, létrejön egy riasztásbejegyzés, amelyet konfigurálni lehet egy automatikus válasz végrehajtására.  Ez az oktatóanyag a [Log Analytics-adatokat tartalmazó irányítópultok létrehozása és megosztása](log-analytics-tutorial-dashboards.md) oktatóanyag folytatása.   

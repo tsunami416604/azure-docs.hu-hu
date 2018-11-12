@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 70372f30ffaea1fafda3f76d4754489ae89a0a7c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: cc86a18b0db67bf968006c42f5791e1ad7a093f0
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390176"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016694"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Gyakori kérdések a Service Fabric
 
@@ -48,13 +48,9 @@ Néhány mérlegelendő szempont ezzel kapcsolatban:
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Hajtsa végre a Service Fabric-csomópont automatikusan jogosultak operációs rendszer frissítéseit?
 
-Nincs még ma de ez is egy közös kérelmet, amely Azure kívánja szállítani.
+Használhat [virtuális gép méretezési beállítása automatikus operációs rendszer lemezkép frissítési](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) általánosan elérhető a szolgáltatásban még ma.
 
-Addig rendelkezünk [alkalmazás megadott](service-fabric-patch-orchestration-application.md) , hogy az operációs rendszerek, a Service Fabric-csomópont alatt továbbra is a javított és naprakész.
-
-Az operációs rendszer frissítése a kihívás abban áll, hogy azok használatához általában szükség van egy újraindítás a gépet, amely ideiglenes rendelkezésre állási adatvesztést eredményez. Önmagában ez nem probléma, mivel a Service Fabric automatikusan átirányítja ezeket a szolgáltatásokat a forgalom más csomópontokra. Azonban operációs rendszer frissítése nem koordinálja a fürtön, van-e az esélye, hogy egyszerre leáll sok csomópontot. Ilyen egyidejű újraindítások egy szolgáltatáshoz, vagy egy teljes rendelkezésre állási adatvesztést okozhat legalább (számára egy állapotalapú szolgáltatás) egy adott partícióra vonatkozóan.
-
-A jövőben tervezzük támogatni egy operációsrendszer-frissítési szabályzat, amely teljes mértékben automatizált és frissítési tartományok között, hogy annak ellenére, hogy az újraindítások és más nem várt hibák rendelkezésre állás biztosítása.
+Az Azure-ban nem futtató fürtök esetén van [alkalmazás megadott](service-fabric-patch-orchestration-application.md) javítása az operációs rendszerek, a Service Fabric-csomópont alá.
 
 ### <a name="can-i-use-large-virtual-machine-scale-sets-in-my-sf-cluster"></a>Használható a saját SF cluster nagyméretű virtuálisgép-méretezési csoportok? 
 

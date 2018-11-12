@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
 ms.openlocfilehash: 65477f62af80511a73307204c2a6f4b5e0f409d6
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164656"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51019148"
 ---
 1. Másolja a telepítőt egy helyi mappába (például C:\Temp) a kiszolgálón, amely számára védelmet kíván. Futtassa az alábbi parancsokat rendszergazdaként parancsot a parancssorba:
 
@@ -38,12 +38,12 @@ Usage :
 UnifiedAgent.exe /Role <MS|MT> /InstallLocation <Install Location> /Platform “VmWare” /Silent
 ```
 
-| Paraméter|Típus|Leírás|Lehetséges értékek|
+| Paraméter|Type (Típus)|Leírás|Lehetséges értékek|
 |-|-|-|-|
-|/ Role|Kötelező|Megadja, hogy a mobilitási szolgáltatás (MS) telepítve kell lennie, vagy MasterTarget (MT) telepítve kell lennie.|MS </br> FŐ CÉLKISZOLGÁLÓ|
-|/InstallLocation|Optional|Hely, ahol a mobilitási szolgáltatás telepítve van.|A számítógép bármely mappája|
+|/ Role|Kötelező|Megadja, hogy a mobilitási szolgáltatás (MS) telepítve kell lennie, vagy MasterTarget (MT) telepítve kell lennie.|MS </br> MT|
+|/InstallLocation|Választható|Hely, ahol a mobilitási szolgáltatás telepítve van.|A számítógép bármely mappája|
 |És platformok|Kötelező|Meghatározza a platformot, amelyre telepítve van a mobilitási szolgáltatást. </br> </br>- **VMware**: használja ezt az értéket, ha egy virtuális gépen futó mobilitási szolgáltatás telepítése *VMware vSphere ESXi-gazdagépek*, *Hyper-V-gazdagépek*, és *fizikai kiszolgálók*. </br> - **Azure**: használja ezt az értéket, ha az ügynök telepítése az Azure IaaS virtuális gépen. | VMware </br> Azure|
-|/ Csendes|Optional|Megadja, hogy a telepítő futtatásához csendes módban.| –|
+|/ Csendes|Választható|Megadja, hogy a telepítő futtatásához csendes módban.| –|
 
 >[!TIP]
 > A telepítési naplókban találhatók % ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
@@ -55,7 +55,7 @@ Usage :
 UnifiedAgentConfigurator.exe  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
 ```
 
-  | Paraméter|Típus|Leírás|Lehetséges értékek|
+  | Paraméter|Type (Típus)|Leírás|Lehetséges értékek|
   |-|-|-|-|
   |/CSEndPoint |Kötelező|A konfigurációs kiszolgáló IP-címe| Bármely érvényes IP-cím|
   |/PassphraseFilePath|Kötelező|A hozzáférési kód helyét |Bármely érvényes UNC vagy helyi elérési útja|

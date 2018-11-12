@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: d64b834f1c6794976461c93d4ad1d05f8647e986
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: e0f51306ab17e88db9d28da14faab9de0b445f74
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414589"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037906"
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Az Azure csatlakoztatott üzembe helyezési, tervezési megfontolások az Azure Stack integrált rendszerek
 Miután döntött [hogyan fogja integrálja az Azure Stack a hibridfelhő-környezet](azure-stack-connection-models.md), majd az Azure Stack telepítési döntések is véglegesítése.
@@ -56,7 +56,7 @@ A Használatalapú mint-akkor-használható számlázási modell használatáér
 
 Ha egy CSP-előfizetéssel, mely CSP-előfizetés használatára az alábbi táblázatban áttekintheti, mint a megfelelő módszer a pontos CSP forgatókönyvtől függ:
 
-|Forgatókönyv|Tartomány- és előfizetés-beállításai|
+|Alkalmazási helyzet|Tartomány- és előfizetés-beállításai|
 |-----|-----|
 |Ön egy **közvetlen CSP-Partner** vagy egy **közvetett CSP-szolgáltató**, és akkor fog működni az Azure Stack|Használjon CSL (közös szolgáltatási réteg) előfizetést.<br>     vagy<br>Hozzon létre egy Azure AD-bérlőt egy leíró nevet a Partner Center. Például &lt;a szervezet > CSPAdmin Azure CSP-előfizetéssel társítva.|
 |Ön egy **közvetett CSP-viszonteladó**, és akkor fog működni az Azure Stack|Kérje meg a közvetett CSP-szolgáltatót, hogy a szervezet Azure AD-bérlő létrehozása az Azure CSP-előfizetéssel társítva használja Partnerközpontban.|
@@ -66,7 +66,7 @@ Ha úgy dönt, hogy a kapacitás számlázási modellt használja, meg kell vás
 
 A kapacitás számlázási szükséges egy nagyvállalati szerződés (EA) Azure-előfizetést a regisztrációhoz. A hiba oka, hogy regisztrációs beállítja elemek rendelkezésre állását a Marketplace-en, amely egy Azure-előfizetés szükséges. Az előfizetés nem használja az Azure Stack használatának.
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>Tudnivalók a modellalapú alkalmazások létrehozásáról
 - További információ a használati esetek, vásárlás, partnerek és OEM hardverszállítók: a [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) termékoldalán.
 - Az ütemterv és a rendelkezésre állás földrajzi információ az Azure Stack integrált rendszerek, tekintse meg a: [Azure Stack: Azure bővítménye](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
 - A Microsoft Azure Stack csomagolás és a díjszabással kapcsolatos további [töltse le a .pdf](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf). 

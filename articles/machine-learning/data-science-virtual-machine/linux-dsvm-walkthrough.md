@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 7576c479b9e3e443b048a9295c0ff0f30d4b9423
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 49956234c00129508254b96d7d63a4b30af3ad55
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240324"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037583"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Adatelemzés a egy Linux rendszerű adatelemző virtuális gép az Azure-ban
 Ez az útmutató bemutatja, hogyan hajthat végre számos gyakori adatelemzési feladatok a Linux rendszerű adatelemző virtuális gép. A Linux rendszerű adatelemzési virtuális gép (DSVM), amely előre telepített gyakran használt adatok elemzési és gépi tanulási eszközök gyűjteményét az Azure-ban elérhető virtuálisgép-lemezkép. A kulcs szoftverösszetevőket esethez vannak a [a Linux rendszerű adatelemző virtuális gép kiépítése](linux-dsvm-intro.md) témakör. A Virtuálisgép-lemezkép megkönnyíti az első lépések adatelemzésre percben, anélkül, hogy telepítse és konfigurálja az egyes eszközökről külön-külön kellene. Egyszerűen vertikális felskálázás a virtuális Gépet, ha szükséges, és állítsa le, amikor nincs használatban. Ehhez az erőforráshoz így rugalmas és költséghatékony is.
 
-Az ebben az útmutatóban bemutatott adatelemzési feladatokat kövesse az ismertetett lépéseket a [csoportos adatelemzési folyamat](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/overview). Ezt a folyamatot, amelyek lehetővé teszik, hogy hatékonyan intelligens alkalmazások életciklusa az adatelemzés szisztematikus módszert biztosít. Az adatelemzési folyamat is biztosít egy iteratív keretrendszer adatelemzési módszer, amely egy egyéni követheti.
+Az ebben az útmutatóban bemutatott adatelemzési feladatokat kövesse az ismertetett lépéseket a [csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview). Ezt a folyamatot, amelyek lehetővé teszik, hogy hatékonyan intelligens alkalmazások életciklusa az adatelemzés szisztematikus módszert biztosít. Az adatelemzési folyamat is biztosít egy iteratív keretrendszer adatelemzési módszer, amely egy egyéni követheti.
 
 Elemezzük a [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) adatkészlet ebben az útmutatóban. Ez egy olyan sonka (ami azt jelenti, hogy ne legyenek a levélszemét), vagy a levélszemét megjelölt e-mailek és az e-mailek tartalmának néhány statisztikai értéket is tartalmaz. A statisztika tartalmazza a következő, de egy szakasz tárgyalja.
 

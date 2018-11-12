@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: cshoe
-ms.openlocfilehash: 5e529953d06c37f382bdd5e65c23fe16d9928008
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 9b2539d94c645f71b596e53429e6e0d8cc46b9ad
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250903"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016743"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Az Azure Functions eseményindítók és kötések fogalmak
 
@@ -183,7 +183,7 @@ Ez a szakasz csak az funkciók vonatkozik 2.x. Kötési bővítményeket nem kel
 A **Visual Studio 2017**, csomagokat a Package Manager konzol használatával lehet telepíteni a [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) parancsot, az alábbi példában látható módon:
 
 ```powershell
-Install-Package Microsoft.Azure.WebJobs.ServiceBus --Version <target_version>
+Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <target_version>
 ```
 
 A csomag használatára egy adott kötéshez neve a áttekintésével foglalkozó cikkben megtalálható a kötéshez. Egy vonatkozó példáért tekintse meg a [csomagok a Service Bus kötés áttekintésével foglalkozó cikkben szakaszában](functions-bindings-service-bus.md#packages---functions-1x).
@@ -195,7 +195,7 @@ Cserélje le `<target_version>` a példában a csomaghoz, egy adott verzióját 
 A **Visual Studio Code**, a parancssor használatával csomagokat telepíthet a [dotnet-csomag hozzáadása](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) a .NET Core-CLI-parancs az alábbi példában látható módon:
 
 ```terminal
-dotnet add package Microsoft.Azure.WebJobs.ServiceBus --version <target_version>
+dotnet add package Microsoft.Azure.WebJobs.Extensions.ServiceBus --version <target_version>
 ```
 
 A .NET Core CLI csak akkor használható, az Azure Functions 2.x fejlesztéséhez.

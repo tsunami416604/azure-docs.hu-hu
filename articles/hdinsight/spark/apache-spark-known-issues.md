@@ -2,19 +2,19 @@
 title: Az Azure HDInsight az Apache Spark-fürt hibáinak elhárítása
 description: Ismerje meg az Apache Spark-fürtök Azure HDInsight és az azok megkerüléséhez kapcsolatos problémákat.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.author: jasonh
-ms.openlocfilehash: 92baa28393100abe3d7694920e5ee327966db927
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: c364f9d06d29a601dfb9598bb568e7a6218d0a6f
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048308"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51013802"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight-fürt az Apache Spark ismert problémái
 
@@ -111,7 +111,7 @@ Ha Spark-fürt kifogyott az erőforrásokból, a Jupyter notebookot a Spark és 
 ## <a name="see-also"></a>Lásd még
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
-### <a name="scenarios"></a>Forgatókönyvek
+### <a name="scenarios"></a>Alkalmazási helyzetek
 * [Spark és BI: Interaktív adatelemzés végrehajtása a Spark on HDInsight használatával, BI-eszközökkel](apache-spark-use-bi-tools.md)
 * [Spark és Machine Learning: A Spark on HDInsight használata az épület-hőmérséklet elemzésére HVAC-adatok alapján](apache-spark-ipython-notebook-machine-learning.md)
 * [Spark és Machine Learning: A Spark on HDInsight használata az élelmiszervizsgálati eredmények előrejelzésére](apache-spark-machine-learning-mllib-ipython.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 10/29/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 875662ec3bf4582c58f98e8afe3753fc202ad0b6
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: fa7d48c9a8079dc9171879ab5b72e3f04f870ebc
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243503"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036174"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>Oktatóanyag: SQL BACPAC-fájlok importálása Azure Resource Manager-sablonokkal
 
@@ -124,7 +124,7 @@ Két további erőforrást kell hozzáadnia a sablonhoz.
 
     ![Azure Resource Manager, sql-bővítmények üzembe helyezése, BACPAC](./media/resource-manager-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac.png)
 
-    További információ az erőforrás-definícióról: [SQL Database-bővítmény referenciája](https://docs.microsoft.com/en-us/azure/templates/microsoft.sql/servers/databases/extensions). A következők a fontosabb elemek:
+    További információ az erőforrás-definícióról: [SQL Database-bővítmény referenciája](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions). A következők a fontosabb elemek:
 
     * **dependsOn**: A bővítményerőforrást az SQL Database létrehozása után kell létrehozni.
     * **storageKeyType**: A használni kívánt tárkulcs típusa. Az értéke `StorageAccessKey` vagy `SharedAccessKey` lehet. Mivel a mellékelt BACPAC-fájl egy nyilvános hozzáférésű Azure Storage-fiókban van megosztva, a SharedAccessKey értéket kell használni.

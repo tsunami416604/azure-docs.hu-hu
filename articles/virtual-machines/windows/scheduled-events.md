@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: d96058ae9415ccb361af8a281a4b65b3f69edfcd
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 7a7267faae2067a873ee11bfbf4ef3027b285a0b
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746765"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034949"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Az Azure Metadata szolgáltatás: Windows virtuális gépek ütemezett események
 
@@ -36,13 +36,13 @@ A linuxon futó ütemezett eseményekkel kapcsolatos információkat, lásd: [ü
 Számos alkalmazás fel a virtuális gép karbantartási idő is kihasználhatják. Az idő, amelyek javítják a rendelkezésre állás, megbízhatóság és szervizelhetőségét beleértve alkalmazás adott feladatok elvégzéséhez használhatók: 
 
 - Ellenőrzőpont és visszaállítás
-- -Kapcsolatának kiürítéséhez
+- Kapcsolatkiürítés
 - Elsődleges replika feladatátvétel 
 - A load balancer készlet eltávolítása
 - Eseménynaplózás
 - Biztonságos leállításának 
 
-Ütemezett események az alkalmazás használatával képes felderíteni, amikor karbantartási fog fordulhat elő, és korlátozhatja a hatása feladatok aktiválása.  
+Ütemezett események az alkalmazás használatával képes felderíteni, amikor karbantartási fog fordulhat elő, és korlátozhatja a hatása feladatok aktiválása. Az ütemezett események engedélyezése lehetővé teszi a virtuális gép egy minimális időtartama a karbantartási tevékenység végrehajtása előtt. Című esemény ütemezése alábbi részleteket.
 
 Az ütemezett események biztosítja az események a következő esetekben használja:
 - A platform által kezdeményezett karbantartás (pl. gazdagép operációsrendszer-frissítés)
@@ -64,14 +64,14 @@ Az ütemezett események szolgáltatás nem rendszerverzióval ellátott. Verzi�
 
 | Verzió | Kiadás típusa | Régiók | Kibocsátási megjegyzések | 
 | - | - | - | - |
-| 2017-08-01 | Általános rendelkezésre állás | Összes | <li> Aláhúzás kiegészített távolítva erőforrásnevek Iaas virtuális gépekhez<br><li>Metaadat-fejléc követelmény irányuló kérések kényszerítése | 
-| 2017-03-01 | Előzetes verzió | Összes |<li>Kezdeti kiadás
+| 2017-08-01 | Általános rendelkezésre állás | Mind | <li> Aláhúzás kiegészített távolítva erőforrásnevek Iaas virtuális gépekhez<br><li>Metaadat-fejléc követelmény irányuló kérések kényszerítése | 
+| 2017-03-01 | Előzetes verzió | Mind |<li>Kezdeti kiadás
 
 > [!NOTE] 
 > {Legújabb} api-verzió is támogatott, az ütemezett események korábbi előzetes kiadásokat. Ez a formátum már nem támogatott, és később elavulttá válik.
 
 ### <a name="enabling-and-disabling-scheduled-events"></a>Engedélyezése és letiltása az ütemezett események
-Az ütemezett események a szolgáltatás az első alkalommal események kérelmet győződjön meg arról, engedélyezve van. Az első hívás akár két perc alatt számíthat késleltetett választ.
+Az ütemezett események a szolgáltatás az első alkalommal események kérelmet győződjön meg arról, engedélyezve van. Az első hívás akár két perc alatt számíthat késleltetett választ. Le kell kérdezni a végpontot, hogy rendszeres időközönként észleli a közelgő karbantartásokról eseményeket, valamint a karbantartási tevékenységek végrehajtása állapotát.
 
 Az ütemezett események a szolgáltatás tiltva van, ha nem derül kérelem 24 órán keresztül.
 
@@ -110,14 +110,15 @@ Abban az esetben, ahol az ütemezett események, a válasz események tömbjét 
     ]
 }
 ```
+A DocumentIncarnation ETag, és vizsgálja meg, ha az esemény hasznos adatai módosultak a legutóbbi lekérdezés óta egyszerű módot biztosít.
 
 ### <a name="event-properties"></a>Esemény tulajdonságai
 |Tulajdonság  |  Leírás |
 | - | - |
 | EventId | Globálisan egyedi azonosítóját az eseményhez. <br><br> Példa: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType | Ez az esemény hatására a hatás. <br><br> Értékek: <br><ul><li> `Freeze`: A virtuális gép úgy van ütemezve, szüneteltetésére néhány másodpercig. A Processzor fel van függesztve, de nem érinti a memória, a megnyitott fájlokat vagy a hálózati kapcsolatok. <li>`Reboot`: Újraindításra van ütemezve a virtuális gép (nem állandó memória az elveszett eszköz). <li>`Redeploy`: A virtuális gép áthelyezése egy másik csomópontra van ütemezve (a rövid élettartamú lemezek elvesznek). |
-| ResourceType | Ez az esemény hatással van az erőforrás típusát. <br><br> Értékek: <ul><li>`VirtualMachine`|
-| További források| Ez az esemény hatással van az erőforrások listájában. Ez legfeljebb egy gépeket tartalmaznak garantáltan [frissítési tartományt](manage-availability.md), azonban nem tartalmazhat a UD minden gépek. <br><br> Példa: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| Erőforrástípus | Ez az esemény hatással van az erőforrás típusát. <br><br> Értékek: <ul><li>`VirtualMachine`|
+| Források| Ez az esemény hatással van az erőforrások listájában. Ez legfeljebb egy gépeket tartalmaznak garantáltan [frissítési tartományt](manage-availability.md), azonban nem tartalmazhat a UD minden gépek. <br><br> Példa: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | Eseményállapot | Ez az esemény állapota. <br><br> Értékek: <ul><li>`Scheduled`: Ez az esemény után a megadott ideig történő futásra van ütemezve a `NotBefore` tulajdonság.<li>`Started`: Ez az esemény feldolgozása megkezdődött.</ul> Nem `Completed` vagy hasonló állapota minden eddiginél áll rendelkezésre; az esemény már nem adható vissza, ha az esemény befejeződött.
 | NotBefore| Az idő elteltével kezdheti el ezt az eseményt. <br><br> Példa: <br><ul><li> 19 Sep 2016 hétfő, 18:29:47 GMT  |
 
@@ -128,7 +129,7 @@ Minden esemény van ütemezve egy jövőbeli időpontot minimális mennyiségű 
 | - | - |
 | Rögzítése| 15 perc |
 | Újraindítás | 15 perc |
-| Ismételt üzembe helyezés | 10 perc |
+| Helyezze üzembe újból | 10 perc |
 
 ### <a name="event-scope"></a>Esemény hatókör     
 Ütemezett kézbesíti az eseményeket:        

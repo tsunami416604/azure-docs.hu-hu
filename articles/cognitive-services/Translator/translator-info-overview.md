@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: overview
 ms.date: 05/10/2018
 ms.author: erhopf
-ms.openlocfilehash: 6d47c4dc2ec3f58eca336211486112b9cdf993aa
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 9d1c5fac9e305e397e0184653e6d8965f9098ee3
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156357"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037447"
 ---
 # <a name="what-is-translator-text-api"></a>Mi a Translator Text API?
 
@@ -31,7 +31,7 @@ A Translator Text API által kiszolgált beszédfordítás a [Microsoft Speech S
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
-A Microsoft Translator többnyelvű támogatást nyújt a fordításhoz, az átíráshoz, a nyelvfelismeréshez és a szótárakhoz. A teljes listát a [nyelvi támogatást](language-support.md) ismertető szakaszban, vagy programozott módon a [REST API-t](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-languages) megnyitva találja.  
+A Microsoft Translator többnyelvű támogatást nyújt a fordításhoz, az átíráshoz, a nyelvfelismeréshez és a szótárakhoz. A teljes listát a [nyelvi támogatást](language-support.md) ismertető szakaszban, vagy programozott módon a [REST API-t](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) megnyitva találja.  
 
 ## <a name="language-customization"></a>Nyelvi testreszabás
 

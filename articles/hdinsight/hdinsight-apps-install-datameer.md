@@ -1,6 +1,6 @@
 ---
 title: Közzétett alkalmazás – Datameer – Azure HDInsight telepítése
-description: Telepítheti és használhatja a Datameer külső Hadoop-alkalmazásokat.
+description: Telepítheti és használhatja a Datameer külső Apache Hadoop-alkalmazásokat.
 services: hdinsight
 author: ashishthaps
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: a428bb7bc9cc6a6a2e28989271ad1998700438cf
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 97d99aa59c490cf2dcdd4a69f32411a051942d36
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107748"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037804"
 ---
 # <a name="install-published-application---datameer"></a>Közzétett alkalmazás – Datameer telepítése
 
-Ez a cikk bemutatja, hogyan telepítheti és futtathatja a [Datameer](https://www.datameer.com/) közzé az Azure HDInsight Hadoop-alkalmazásokat. A HDInsight-alkalmazásplatform áttekintése és a egy listát az elérhető független szoftverszállító (ISV) közzétett alkalmazások létrehozásáról: [külső gyártótól származó Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md). A saját alkalmazások telepítéséről az [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) című cikk tartalmaz útmutatást.
+Ez a cikk bemutatja, hogyan telepítheti és futtathatja a [Datameer](https://www.datameer.com/) közzé az Azure HDInsight az Apache Hadoop-alkalmazás. A HDInsight-alkalmazásplatform áttekintése és a egy listát az elérhető független szoftverszállító (ISV) közzétett alkalmazások létrehozásáról: [külső gyártótól származó Hadoop-alkalmazások telepítése](hdinsight-apps-install-applications.md). A saját alkalmazások telepítéséről az [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md) című cikk tartalmaz útmutatást.
 
 ## <a name="about-datameer"></a>Tudnivalók a Datameer
 

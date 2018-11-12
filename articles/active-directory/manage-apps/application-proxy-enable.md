@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 5227f756e807a30573733bd408144d869caac9ec
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 59ca9ca7711904fe7882aac4878bd62c597645d8
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366475"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034966"
 ---
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>Ismerkedés az Application Proxy és az összekötő telepítése
 Ez a cikk útmutatást nyújt a felhőcímtárhoz tartozó Microsoft Azure AD alkalmazásproxy engedélyezéséhez szükséges lépésekről az Azure AD-ben.
@@ -33,6 +33,7 @@ Az alkalmazásproxy szolgáltatásainak engedélyezése és használata előtt a
 * [Microsoft Azure AD Prémium vagy Alapszintű előfizetés](../fundamentals/active-directory-whatis.md) és egy globális rendszergazdaként használt Azure AD-címtár.
 * Windows Server 2012 R2 és 2016-ban, amelyre telepítheti az alkalmazásproxy-összekötő futtató kiszolgálókra. A kiszolgáló képesnek kell lennie kapcsolódni a felhőben és a helyszíni alkalmazások közzéteszi az alkalmazásproxy-szolgáltatásokat.
   * Az egyszeri bejelentkezéshez a Kerberos által korlátozott delegálás használatával közzétett alkalmazásokban a gép kell a tartományhoz a közzétett alkalmazások azonos AD tartományhoz. További információ: [KCD az egyszeri bejelentkezés alkalmazásproxyval való](application-proxy-configure-single-sign-on-with-kcd.md).
+* A TLS 1.2 az alapul szolgáló operációs rendszeren. A TLS 1.2-es, kövesse a lépéseket a [engedélyezze a TLS 1.2-es](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#enable-tls-12-for-azure-ad-connect). Bár a tartalom az Azure AD Connect, ez az eljárás megegyezik a .NET-ügyfelek.
 
 Ha a szervezete proxykiszolgálóval csatlakozik az internethez, olvassa el [együttműködnek a meglévő helyszíni proxykiszolgálók](application-proxy-configure-connectors-with-proxy-servers.md) konfigurálni őket, mielőtt elkezdené a proxyval kapcsolatos részletekért.
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: c59df6c1d28df2ffc63f3760e4d1fa47bda37b83
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f3c24dbc0f5bb4d5b595799da4f1212b26f8c02a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964047"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51016760"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Nézettervező vizualizációs részére a Log Analytics használati útmutató
 Nézettervező az Azure Log Analytics használatával egyéni nézeteket hozhat létre az Azure Portalon, amelyek a Log Analytics-munkaterület adatvizualizációk széles. Ez a cikk egy referencia-útmutató a beállítások a vizualizációs rész, amely szerepel az egyéni nézetek.
@@ -88,7 +88,7 @@ A fejléc egyetlen szám, amely megjeleníti a naplóbeli keresési lekérdezés
 | Átkattintásos navigáció | A lista elemeire kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
 | **List** |**> Oszlopcímek** |
 | Name (Név) |Az első oszlop tetején megjelenő szöveg. |
-| Érték |A második oszlop tetején megjelenő szöveg. |
+| Value (Díj) |A második oszlop tetején megjelenő szöveg. |
 | **List** |**> Küszöbértékek** |
 | Küszöbértékek engedélyezése |Kattintson a küszöbértékek engedélyezése. További információkért lásd: [közös beállítások](#thresholds). |
 
@@ -119,7 +119,7 @@ A fejléc van két szám, amely megjeleníti az külön naplóbeli keresési lek
 | Átkattintásos navigáció | A lista elemeire kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
 | **List** |**> Oszlopcímek** |
 | Name (Név) |Az első oszlop tetején megjelenő szöveg. |
-| Érték |A második oszlop tetején megjelenő szöveg. |
+| Value (Díj) |A második oszlop tetején megjelenő szöveg. |
 | **List** |**> Küszöbértékek** |
 | Küszöbértékek engedélyezése |Kattintson a küszöbértékek engedélyezése. További információkért lásd: [közös beállítások](#thresholds). |
 
@@ -160,7 +160,7 @@ A fejléc egyetlen szám, amely összefoglalja a log lekérdezésben érték osz
 | Átkattintásos navigáció | A lista elemeire kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
 | **List** |**> Oszlopcímek** |
 | Name (Név) |Az első oszlop tetején megjelenő szöveg. |
-| Érték |A második oszlop tetején megjelenő szöveg. |
+| Value (Díj) |A második oszlop tetején megjelenő szöveg. |
 | **List** |**> Küszöbértékek** |
 | Küszöbértékek engedélyezése |Kattintson a küszöbértékek engedélyezése. További információkért lásd: [közös beállítások](#thresholds). |
 
@@ -192,7 +192,7 @@ A fejléc két naplófájl lekérdezések eredményeit oszlopdiagramként, a kih
 | Átkattintásos navigáció | A lista elemeire kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
 | **List** |**> Oszlopcímek** |
 | Name (Név) |Az első oszlop tetején megjelenő szöveg. |
-| Érték |A második oszlop tetején megjelenő szöveg. |
+| Value (Díj) |A második oszlop tetején megjelenő szöveg. |
 | **List** |**> Küszöbértékek** |
 | Küszöbértékek engedélyezése |Kattintson a küszöbértékek engedélyezése. További információkért lásd: [közös beállítások](#thresholds). |
 
@@ -212,7 +212,7 @@ A fejléc statikus szöveget és a egy nem kötelező hivatkozást jeleníti meg
 | Címke |A fejlécében megjelenő szöveg. |
 | **Fejléc** |**> Link** |
 | Címke |A hivatkozás szövege. |
-| URL-cím |A hivatkozás URL-címét. |
+| URL |A hivatkozás URL-címét. |
 | **Információs elemek** | |
 | Beosztás |A cím az egyes elemek megjelenő szöveg. |
 | Tartalom |Az egyes elemekhez megjelenített szöveg. |
@@ -241,7 +241,7 @@ A fejléc log lekérdezésből származó több sorozat vonaldiagramot időt és
 | Művelet |A művelet végrehajtásához együtt, egyetlen értékként az a kihívás értékének tulajdonság.<ul><li>Átlagos: Az összes rekord értékek átlaga.</li><li>Száma: Minden, a lekérdezés által visszaadott rekordok számát.</li><li>Utolsó minta: az utolsó időközt, amely megtalálható a diagramon az értékét.</li><li>Maximális száma: A maximális értékét az intervallumok, a diagram szerepelnek.</li><li>Min.: A minimális érték a a diagramban szereplő időszakok közül.</li><li>Összeg: Az összes rekord értékek összegét.</li></ul> |
 | **Vonaldiagram** |**> Y tengely** |
 | Logaritmikus skála használata |Válassza ki ezt a hivatkozást az y-tengely logaritmikus skála használata. |
-| Egység |Adja meg az egységeket a lekérdezés által visszaadott értékek. Ezt az információt használja megjelenített vonaldiagram-címkék, amelyek jelzik a értéktípusok, és szükség esetén történő átalakítása az értékeket. A *egység* típusát adja meg a kategória az egység, és határozza meg a rendelkezésre álló *aktuális egység* írja be az értékeket. Ha kiválaszt egy értéket a *átalakítása*, a numerikus értékek konvertálja a *aktuális egység* írja be a *átalakítása* típusa. |
+| egység |Adja meg az egységeket a lekérdezés által visszaadott értékek. Ezt az információt használja megjelenített vonaldiagram-címkék, amelyek jelzik a értéktípusok, és szükség esetén történő átalakítása az értékeket. A *egység* típusát adja meg a kategória az egység, és határozza meg a rendelkezésre álló *aktuális egység* írja be az értékeket. Ha kiválaszt egy értéket a *átalakítása*, a numerikus értékek konvertálja a *aktuális egység* írja be a *átalakítása* típusa. |
 | Egyéni felirat |A szöveg, amelyben az y-tengely a címke mellett jelenik meg a *egység* típusa. Ha nincs címke van megadva, csak a *egység* típus jelenik meg. |
 | **List** | |
 | Lekérdezés |A lekérdezés futtatása a listát. A lekérdezés által visszaadott rekordok száma jelenik meg. |
@@ -253,7 +253,7 @@ A fejléc log lekérdezésből származó több sorozat vonaldiagramot időt és
 | Átkattintásos navigáció | A lista elemeire kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
 | **List** |**> Oszlopcímek** |
 | Name (Név) |Az első oszlop tetején megjelenő szöveg. |
-| Érték |A második oszlop tetején megjelenő szöveg. |
+| Value (Díj) |A második oszlop tetején megjelenő szöveg. |
 | **List** |**> Küszöbértékek** |
 | Küszöbértékek engedélyezése |Kattintson a küszöbértékek engedélyezése. További információkért lásd: [közös beállítások](#thresholds). |
 
@@ -277,7 +277,7 @@ A fejléc log lekérdezésből származó több sorozat vonaldiagramot idővel j
 | Átkattintásos navigáció | A fejlécére kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
 | **Vonaldiagram** |**> Y tengely** |
 | Logaritmikus skála használata |Válassza ki ezt a hivatkozást az y-tengely logaritmikus skála használata. |
-| Egység |Adja meg az egységeket a lekérdezés által visszaadott értékek. Ezt az információt használja megjelenített vonaldiagram-címkék, amelyek jelzik a értéktípusok, és szükség esetén történő átalakítása az értékeket. A *egység* típusát adja meg a kategória az egység, és határozza meg a rendelkezésre álló *aktuális egység* írja be az értékeket. Ha kiválaszt egy értéket a *átalakítása*, a numerikus értékek konvertálja a *aktuális egység* írja be a *átalakítása* típusa. |
+| egység |Adja meg az egységeket a lekérdezés által visszaadott értékek. Ezt az információt használja megjelenített vonaldiagram-címkék, amelyek jelzik a értéktípusok, és szükség esetén történő átalakítása az értékeket. A *egység* típusát adja meg a kategória az egység, és határozza meg a rendelkezésre álló *aktuális egység* írja be az értékeket. Ha kiválaszt egy értéket a *átalakítása*, a numerikus értékek konvertálja a *aktuális egység* írja be a *átalakítása* típusa. |
 | Egyéni felirat |A szöveg, amelyben az y-tengely a címke mellett jelenik meg a *egység* típusa. Ha nincs címke van megadva, csak a *egység* típus jelenik meg. |
 | **List** | |
 | Lekérdezés |A lekérdezés futtatása a listát. A lekérdezés által visszaadott rekordok száma jelenik meg. |
@@ -289,7 +289,7 @@ A fejléc log lekérdezésből származó több sorozat vonaldiagramot idővel j
 | Átkattintásos navigáció | A lista elemeire kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
 | **List** |**> Oszlopcímek** |
 | Name (Név) |Az első oszlop tetején megjelenő szöveg. |
-| Érték |A második oszlop tetején megjelenő szöveg. |
+| Value (Díj) |A második oszlop tetején megjelenő szöveg. |
 | **List** |**> Küszöbértékek** |
 | Küszöbértékek engedélyezése |Kattintson a küszöbértékek engedélyezése. További információkért lásd: [közös beállítások](#thresholds). |
 
@@ -312,7 +312,7 @@ A vonaldiagram-verem három külön vonaldiagramok használata több sorozat id�
 | Átkattintásos navigáció | A fejlécére kattintva végrehajtott műveletet.  További információkért lásd: [közös beállítások](#click-through-navigation). |
 | **Diagram** |**> Y tengely** |
 | Logaritmikus skála használata |Válassza ki ezt a hivatkozást az y-tengely logaritmikus skála használata. |
-| Egység |Adja meg az egységeket a lekérdezés által visszaadott értékek. Ezt az információt használja megjelenített vonaldiagram-címkék, amelyek jelzik a értéktípusok, és szükség esetén történő átalakítása az értékeket. A *egység* típusát adja meg a kategória az egység, és határozza meg a rendelkezésre álló *aktuális egység* írja be az értékeket. Ha kiválaszt egy értéket a *átalakítása*, a numerikus értékek konvertálja a *aktuális egység* írja be a *átalakítása* típusa. |
+| egység |Adja meg az egységeket a lekérdezés által visszaadott értékek. Ezt az információt használja megjelenített vonaldiagram-címkék, amelyek jelzik a értéktípusok, és szükség esetén történő átalakítása az értékeket. A *egység* típusát adja meg a kategória az egység, és határozza meg a rendelkezésre álló *aktuális egység* írja be az értékeket. Ha kiválaszt egy értéket a *átalakítása*, a numerikus értékek konvertálja a *aktuális egység* írja be a *átalakítása* típusa. |
 | Egyéni felirat |A szöveg, amelyben az y-tengely a címke mellett jelenik meg a *egység* típusa. Ha nincs címke van megadva, csak a *egység* típus jelenik meg. |
 
 ## <a name="common-settings"></a>Általános beállítások
@@ -332,7 +332,7 @@ Az alábbi táblázat az átkattintásos navigáció vonatkozó beállításait 
 |:--|:--|
 | Naplókeresés (automatikus) | Naplókeresés futtatásához, amikor kiválaszt egy fejléc elemet.  Ez az azonos naplóbeli keresés a cikk alapján.
 | Naplók keresése        | Naplóbeli keresés futtatását, amikor kiválaszt egy elemet a listában.  Írja be a lekérdezést a **navigációs lekérdezés** mezőbe.   Használat *{kijelölt elem}* a szintaxist, az a felhasználó által kiválasztott elem tartalmazza.  Például, ha a lekérdezés nevű oszlop *számítógép* és a navigációs lekérdezés *{kijelölt elem}*, mint például a lekérdezés *számítógép = "Sajátgép"* fut, amikor kiválaszt egy számítógép. Ha a navigációs lekérdezés *típus = {kijelölt elem} esemény*, a lekérdezés *típusa = esemény számítógép = "Sajátgép"* futtatása. |
-| Nézet              | Nyissa meg a listában egy fejléc elemet vagy egy elem kijelölésekor nézetet.  Válassza ki a nézet nevét a munkaterület a **nézetnév** mezőbe. |
+| Megtekintés              | Nyissa meg a listában egy fejléc elemet vagy egy elem kijelölésekor nézetet.  Válassza ki a nézet nevét a munkaterület a **nézetnév** mezőbe. |
 
 
 
@@ -363,4 +363,4 @@ A következő táblázat a küszöbértékek beállításai:
 | Szín |A szín, amely azt jelzi, hogy a küszöbérték. |
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [naplókereséseket](log-analytics-log-search.md) Vizualizáció részeiben lekérdezések támogatásához.
+* Ismerje meg [naplókereséseket](log-analytics-queries.md) Vizualizáció részeiben lekérdezések támogatásához.
