@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/01/2018
+ms.date: 11/07/2018
 ms.author: patricka
-ms.reviewer: ''
-ms.openlocfilehash: f2d843b343fa830adf41352ae692ea98bed52ecc
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.reviewer: fiseraci
+ms.openlocfilehash: a16a6596d6bc33200f87a1dfd3b2ea5b02628e10
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713646"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277817"
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Identitásarchitektúra az Azure Stackhez
 Az identitásszolgáltató az Azure Stack használata mellett dönt, mielőtt különbségeit fontos a beállításokat az Azure Active Directory (Azure AD) és az Active Directory összevonási szolgáltatások (AD FS). 
@@ -44,7 +44,7 @@ Az Ön által választott identitásszolgáltató korlátozhatja a beállításo
 |Alkalmazások identitásszolgáltató használhatják a bejelentkezéshez |Igen |Igen. Szükséges összevonni a helyszíni alkalmazások az AD FS-példányok. |
 
 ## <a name="topologies"></a>Topológiák
-A következő szakaszok discus a különböző identitás topológiákat, amelyet használhat.
+A következő részekben bemutatjuk a különböző identitás topológiákat, amelyet használhat.
 
 ### <a name="azure-ad-single-tenant-topology"></a>Az Azure AD: egybérlős topológia 
 Alapértelmezés szerint az Azure Stack telepítése és használata az Azure Active Directory, Azure Stack használja egy egybérlős topológiát. 

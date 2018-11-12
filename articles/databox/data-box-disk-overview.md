@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/30/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 47cffbabf073fac3fc24fc070b8d5164fecf3f9c
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f965d455b3ada48caabb80458d44e841329cf787
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418755"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51229611"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Mi az az Azure Data Box Disk? (Előzetes verzió)
 
@@ -25,7 +25,7 @@ Az Azure Portalon a Data Box szolgáltatás segítségével gyorsan konfigurálh
 
 > [!IMPORTANT]
 > - A Data Box Disk szolgáltatás előzetes verzióban érhető el. A szolgáltatás telepítése előtt tekintse meg az [Azure előzetes verzióra vonatkozó szolgáltatási feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
-> - A szolgáltatásra regisztrálnia kell. A feliratkozáshoz keresse fel az [Előzetes verzió portálját](http://aka.ms/azuredataboxfromdiskdocs).
+> - A szolgáltatásra regisztrálnia kell. A feliratkozáshoz keresse fel az [Előzetes verzió portálját](https://aka.ms/azuredataboxfromdiskdocs).
 > - Az előzetes verzió ideje alatt a Data Box Disk az USA és az Európai Unió területére szállítható ki. További információt a [Regionális elérhetőség](#region-availability) témakörben talál.
 
 ## <a name="use-cases"></a>Használati esetek

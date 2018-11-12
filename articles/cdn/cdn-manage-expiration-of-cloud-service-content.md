@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: magattus
-ms.openlocfilehash: d4ae0c4d5924fab8fcdaf1b4da5c8183a3a5fd0f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 19f928d854618a5e29841dc45d7846faf7fb83b4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092473"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51253125"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Az Azure CDN a webes tartalmak elévülésének kezelése
 > [!div class="op_single_selector"]
@@ -109,7 +109,7 @@ A következő XML-konfigurációs fájl példa bemutatja, hogyan állíthatja be
 Használatához a **cacheControlMaxAge** attribútum, be kell értékét a **cacheControlMode** attribútumot `UseMaxAge`. Ez a beállítás miatt a HTTP-fejléc és irányelv `Cache-Control: max-age=<nnn>`, a választ adni. Az időtartam értéke formátumát a **cacheControlMaxAge** attribútum `<days>.<hours>:<min>:<sec>`. Az érték másodperc alakítja át, és értéket használja a `Cache-Control` `max-age` irányelv. További információ a `<clientCache>` elem, lásd: [Ügyfélgyorsítótár <clientCache> ](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache).  
 
 ## <a name="setting-cache-control-headers-programmatically"></a>Programozott módon a Cache-Control fejléc beállítása
-Az ASP.NET-alkalmazások, a CDN gyorsítótárazási viselkedésének programozott módon beállításával szabályozhatja a **HttpResponse.Cache** .NET API-tulajdonság. További információ a **HttpResponse.Cache** tulajdonságot használja, lásd: [HttpResponse.Cache tulajdonság](http://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) és [HttpCachePolicy osztály](http://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx).  
+Az ASP.NET-alkalmazások, a CDN gyorsítótárazási viselkedésének programozott módon beállításával szabályozhatja a **HttpResponse.Cache** .NET API-tulajdonság. További információ a **HttpResponse.Cache** tulajdonságot használja, lásd: [HttpResponse.Cache tulajdonság](https://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) és [HttpCachePolicy osztály](https://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx).  
 
 A programozott alkalmazás tartalmak gyorsítótárazására az ASP.NET-ben kövesse az alábbi lépéseket:
    1. Győződjön meg arról, hogy a tartalom van megjelölve a gyorsítótárazható beállításával `HttpCacheability` való `Public`. 
@@ -132,6 +132,6 @@ A webes tartalom TTL beállításait egyszerűen ellenőrizheti. A böngésző [
 
 ## <a name="next-steps"></a>További lépések
 * [Részleteket olvassa el a **clientCache** elem](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
-* [Olvassa el a dokumentációját a **HttpResponse.Cache** tulajdonság](http://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) 
-* [Olvassa el a dokumentációját a **HttpCachePolicy osztályban**](http://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx)  
+* [Olvassa el a dokumentációját a **HttpResponse.Cache** tulajdonság](https://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) 
+* [Olvassa el a dokumentációját a **HttpCachePolicy osztályban**](https://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx)  
 * [Gyorsítótárazás fogalmak ismertetése](cdn-how-caching-works.md)

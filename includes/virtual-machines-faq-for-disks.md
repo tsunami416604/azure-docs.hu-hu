@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c0045af02b307bff686d47dd8fc4aabb290711a4
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: dadff0dc501c20ef525fdfb7578cb391f29b3302
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49400244"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51264330"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS virtuális gépek és a felügyelt és nem felügyelt prémium szintű lemezek – gyakori kérdések
 
@@ -292,7 +292,7 @@ Nincs nem hátulütője TRIM vagy prémium szintű Azure-lemezek vagy a standard
 
 **Mi az a legnagyobb felügyelt lemez méretét a támogatott operációs rendszer és az adatlemezek?**
 
-A partíció típusa, amely az Azure támogatja az operációsrendszer-lemez a fő rendszerindító rekord (MBR). A fő rendszertöltő rekord formátum támogatja a lemez mérete legfeljebb 2 Tib-ra. A legnagyobb, amely az Azure támogatja az operációsrendszer-lemez mérete 2 Tib-ra. Az Azure felügyelt adatlemezek akár 32 TiB támogatja. Felügyelt lemez mérete nagyobb, mint 4 Tib-ra vannak előzetes verzióban érhető el. Azokat a további információk: a [blogbejegyzés](http://aka.ms/azure-large-disk-32TB-preview-blog).
+A partíció típusa, amely az Azure támogatja az operációsrendszer-lemez a fő rendszerindító rekord (MBR). A fő rendszertöltő rekord formátum támogatja a lemez mérete legfeljebb 2 Tib-ra. A legnagyobb, amely az Azure támogatja az operációsrendszer-lemez mérete 2 Tib-ra. Az Azure felügyelt adatlemezek akár 32 TiB támogatja. Felügyelt lemez mérete nagyobb, mint 4 Tib-ra vannak előzetes verzióban érhető el. Azokat a további információk: a [blogbejegyzés](https://aka.ms/azure-large-disk-32TB-preview-blog).
 
 **Mi az a legnagyobb támogatott operációs rendszer és az adatlemezek nem felügyelt lemez mérete?**
 
@@ -309,7 +309,7 @@ Nem kell frissíteni a meglévő Azure-eszközök létrehozása, csatlakoztatás
 |Azure-eszközök      | Támogatott verziók                                |
 |-----------------|---------------------------------------------------|
 |Azure PowerShell | Verziószám 4.1.0: 2017 június kiadás vagy újabb|
-|Azure CLI v1     | Verziószám 0.10.13: 2017 május kiadás vagy újabb|
+|Azure CLI v1     | Verziószám 0.10.13: 2017 május kiadás vagy újabb|
 |Az Azure CLI v2     | 2.0.12-es verziószám: 2017 július kiadás vagy újabb|
 |AzCopy           | Verziószám 6.1.0: 2017 június kiadás vagy újabb|
 

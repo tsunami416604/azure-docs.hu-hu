@@ -9,12 +9,12 @@ ms.date: 06/25/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: b32af29a123ce4d070e1bb68b5a43ba6d0d2c5e1
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.openlocfilehash: f80f61cbfc1f7b719e73d7d29c6948bebe84aa6c
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218474"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51278310"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Gyakori kérdések Service Fabric-háló
 Az Azure Service Fabric Mesh egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a fejlesztők számára a mikroszolgáltatás-alkalmazások üzembe helyezését a virtuális gépek, a tárolók és a hálózat kezelése nélkül. Ez a cikk gyakori kérdésekre adott válaszokat tartalmaz.
@@ -44,7 +44,7 @@ Igen, minden egyes előfizetés esetén a kvóták módon vannak beállítva:
 
 **Mennyi ideig hagyhatja üzembe helyezve az alkalmazásom?**
 
-Mi jelenleg csak korlátozott két nap az alkalmazás teljes élettartama. Ez az az ingyenes, az előzetes lefoglalt Processzormagok használata maximalizálása érdekében. Ennek eredményeképpen csak engedélyezett futtatni egy adott üzemelő példánya folyamatosan 48 óra, amely törli a rendszer által ezen idő leteltével. Jelenik meg ez akkor fordulhat elő, ha ellenőrizheti, hogy a rendszer állítsa le a futó egy `az mesh app show` adja vissza, ha az Azure CLI-vel és ellenőrzése paranccsal `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
+Mi jelenleg csak korlátozott két nap az alkalmazás teljes élettartama. Ez az az ingyenes, az előzetes lefoglalt Processzormagok használata maximalizálása érdekében. Ennek eredményeképpen csak engedélyezett futtatni egy adott üzemelő példánya folyamatosan 48 óra, amely azt le fog állni a rendszer által ezen idő leteltével. Jelenik meg ez akkor fordulhat elő, ha ellenőrizheti, hogy a rendszer állítsa le a futó egy `az mesh app show` adja vissza, ha az Azure CLI-vel és ellenőrzése paranccsal `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
 Példa: 
 
@@ -71,6 +71,10 @@ chackdan@Azure:~$ az mesh app show --resource-group myResourceGroup --name hello
   "unhealthyEvaluation": null
 }
 ```
+
+Háló egyazon alkalmazás telepítésének folytatásához, törölje az erőforráscsoportot, az alkalmazáshoz kapcsolódó, vagy külön-külön távolítsa el az alkalmazást és az összes kapcsolódó háló-erőforrások (például a hálózat). 
+
+Az erőforráscsoport törléséhez használja a `az group delete <nameOfResourceGroup>` parancsot. 
 
 ## <a name="supported-container-os-images"></a>Támogatott operációs rendszer tárolórendszerképek
 A következő operációs rendszer tárolórendszerképeket is használható, amikor a szolgáltatások üzembe helyezése.
