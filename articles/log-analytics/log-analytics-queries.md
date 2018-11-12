@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 774ca8d0c893a5672c7f04f3530679204b7262c6
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
-ms.translationtype: MT
+ms.openlocfilehash: 2ab7e0c5d4a62b9c4fa0492b9bc9a19dfab36c74
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51513762"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005053"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Az Azure monitorban Log Analytics-adatok elemzése
 
-Log Analytics-munkaterületet, amely alapján a tárolt naplóadatokat az Azure Monitor által gyűjtött [Azure adatkezelő](/azure/data-explorer). Különböző forrásokból származó telemetriai adatokat gyűjti és használja a [lekérdezési nyelv az adatkezelő](/azure/kusto/query) lekérése és elemzéséhez.
+Log Analytics-munkaterületet, amely alapján a tárolt naplóadatokat az Azure Monitor által gyűjtött [Azure adatkezelő](/data-explorer). Különböző forrásokból származó telemetriai adatokat gyűjti és használja a [lekérdezési nyelv az adatkezelő](/kusto) lekérése és elemzéséhez.
 
 > [!NOTE]
 > A log Analytics korábban volt kezelni saját szolgáltatása az Azure-ban. Az Azure Monitor egy részének most számít és a tárolási és elemzése a lekérdezési nyelv segítségével naplóadatok összpontosít. Log Analytics Windows és Linux-ügynökök az adatgyűjtés, a nézetek megjelenítése a meglévő adatok és riasztások segítségével proaktívan kaphat értesítést problémák, például részének tekintendők funkciók nem változtak, de most az Azure Monitor részének tekinthetők.

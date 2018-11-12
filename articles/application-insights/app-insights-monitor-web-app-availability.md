@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 14ff253b0c6524f1006c108e46f8e5d9a9bb1604
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e8d07922334855a8133cd6271ee98bcfac2243d5
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257918"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282611"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése
 Miután telepítette a webappot vagy a webhelyet bármely kiszolgálóra, webes teszteket állíthat be az alkalmazás rendelkezésre állásának és válaszkészségének megfigyeléséhez. Az [Azure Application Insights](app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást jelenít meg, ha az alkalmazás nem válaszol, vagy lassan válaszol.
@@ -214,6 +214,7 @@ Az X Y helyek alapértelmezés szerint engedélyezve van a riasztási szabály k
 > [!NOTE]
 > * A Műveletcsoportok, hogy értesítést kapjon, ha a riasztás aktiválásakor a fenti lépéseket követve konfigurálja. Ebben a lépésben nélkül csak értesítéseket fog kapni a portálon a szabály aktiválásakor.
 >
+
 ### <a name="alert-on-availability-metrics"></a>Riasztás a rendelkezésre állási metrikák
 Használatával a [új egyesített riasztások](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), szegmentált összesített rendelkezésre állási riasztás és a teszt időtartamának metrikákat is:
 

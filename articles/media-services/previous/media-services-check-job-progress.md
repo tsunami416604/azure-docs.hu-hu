@@ -1,10 +1,10 @@
 ---
-title: A figyelő a feladat előrehaladását a .NET használatával
-description: Megtudhatja, hogyan használja az esemény kezelő feladat előrehaladásának és állapotának változások elküldése. A példakód C# nyelven írt, és a .NET-keretrendszerhez készült Media Services SDK használja.
+title: A feladat előrehaladásának figyelése .NET használatával
+description: Ismerje meg, hogyan használhatja a feladat előrehaladásának és küld kezelő kód události. A kódminta nyelven van megírva C# , és használja a Media Services SDK a .NET-hez.
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: ee720ed6-8ce5-4434-b6d6-4df71fca224e
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 11/05/2018
 ms.author: juliako
-ms.openlocfilehash: 4e24dc040998586579334c6363707a61c2164db5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9f5632f6b4a99c4771f10a89165b452addee0f1c
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788283"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035764"
 ---
-# <a name="monitor-job-progress-using-net"></a>A figyelő a feladat előrehaladását a .NET használatával
+# <a name="monitor-job-progress-using-net"></a>A feladat előrehaladásának figyelése .NET használatával
 > [!div class="op_single_selector"]
 > * [Portál](media-services-portal-check-job-progress.md)
 > * [.NET](media-services-check-job-progress.md)
@@ -29,10 +29,10 @@ ms.locfileid: "33788283"
 > 
 > 
 
-Feladatok futtatása, ha gyakran kell segítségével nyomon követheti a feladat előrehaladását. A folyamatban lévő ellenőrizheti egy StateChanged eseménykezelő meghatározása (ebben a témakörben leírt) vagy Azure Queue storage segítségével figyelheti a Media Services feladat értesítések (a [ez](media-services-dotnet-check-job-progress-with-queues.md) témakör).
+Feladatok futtatásakor gyakran igényelnek olyan módon, a feladat előrehaladásának nyomon követéséhez. A folyamat ellenőrzéséhez egy StateChanged eseménykezelő meghatározása (ebben a témakörben leírt) vagy az Azure Queue storage használata a Media Services feladatértesítések figyelésére használt (leírtak szerint [ez](media-services-dotnet-check-job-progress-with-queues.md) témakört).
 
-## <a name="define-statechanged-event-handler-to-monitor-job-progress"></a>Adja meg a feladatok előrehaladásának figyeléséhez StateChanged eseménykezelő
-Az alábbi Kódpélda az StateChanged eseménykezelő határozza meg. Ebben az eseménykezelőben nyomon követi a feladat előrehaladását, és állapotától függően a frissített állapota. A kód a LogJobStop metódust is meghatároz. A segítő jelentkezik a hiba részletes adatait.
+## <a name="define-statechanged-event-handler-to-monitor-job-progress"></a>A feladat előrehaladásának figyeléséhez StateChanged eseménykezelő definiálása
+Az alábbi példakód a StateChanged eseménykezelő határozza meg. Az eseménykezelő nyomon követi a feladat állapotát, és a frissített állapotot állapotától függően biztosít. A kód a LogJobStop módszert is meghatározza. Ez segédmetódus naplózza a hiba részleteit.
 
 ```csharp
     private static void StateChanged(object sender, JobStateChangedEventArgs e)

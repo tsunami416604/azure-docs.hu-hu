@@ -12,20 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 4574b140e2e17462a5ff696b913bb4ef7bcb0ad0
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 5714257fce53fafa148b8ae4d5a3addf3b872c6f
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412756"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035475"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Az Azure leválasztott telepítés tervezési megfontolások az Azure Stack integrált rendszerek
 Miután döntött [hogyan fogja integrálja az Azure Stack a hibridfelhő-környezet](azure-stack-connection-models.md), majd az Azure Stack telepítési döntések is véglegesítése.
 
-A leválasztott az Azure üzembe helyezési lehetőséget, üzembe helyezése és használata az Azure Stack az internethez való csatlakozás nélkül. Azonban egy kapcsolat nélküli telepítés pedig csak az AD FS ügyfélidentitás-tárolóval, és a kapacitás-alapú számlázási modell. 
+Telepítheti és használhatja az Azure Stack Internet kapcsolat nélkül. Azonban egy kapcsolat nélküli telepítés pedig csak az AD FS ügyfélidentitás-tárolóval, és a kapacitás-alapú számlázási modell. 
 
 Válassza ezt a beállítást, ha Ön:
 - Biztonsági vagy egyéb korlátozásokat, amelyek megkövetelik olyan környezetben, amely nem csatlakozik az internethez az Azure Stack üzembe helyezése rendelkezik.
@@ -40,7 +40,7 @@ Egy kapcsolat nélküli üzembe helyezés nem feltétlenül jelenti azt, hogy ne
 ## <a name="features-that-are-impaired-or-unavailable-in-disconnected-deployments"></a>Az funkciók, amelyek korlátozott vagy nem érhető el a leválasztott környezetekhez 
 Az Azure Stack való csatlakozáskor az Azure-ba, ezért fontos megjegyezni, hogy egyes szolgáltatások és funkciók, amelyek korlátozott, vagy teljesen nem érhető el, a kapcsolat nélküli üzemmódban működnek a legjobban úgy lett kialakítva. 
 
-|Szolgáltatás|Kapcsolat nélküli módban gyakorolt hatás|
+|Funkció|Kapcsolat nélküli módban gyakorolt hatás|
 |-----|-----|
 |A DSC-bővítmény használatával konfigurálja a virtuális gép üzembe helyezés után a virtuális gép üzembe helyezése|Sérült - DSC bővítmény keres az internethez a WMF legújabb Verziójára.|
 |Virtuális gép üzembe helyezése a Docker-parancsok futtatásához Docker-bővítmény|Sérült – Docker keresi a legújabb verziót az internethez, és ez az ellenőrzés sikertelen lesz.|
@@ -56,7 +56,7 @@ Telemetria|Nem érhető el – Telemetriai adatokat az Azure Stack, és minden k
 |Tanúsítványok|Nem érhető el – az internetkapcsolat szükség a visszavont tanúsítványok listája (CRL), és Online tanúsítvány állapotának protokoll (OSCP) szolgáltatások HTTPS kontextusában.|
 |Key-Vault|Sérült – Key vault gyakori használati eset az, hogy egy alkalmazás futásidőben titkos kódok olvasását. Ennek az alkalmazásnak kell egy egyszerű szolgáltatást a címtárban. Az Azure Active Directoryban hozzáadható a szolgáltatásnevek alapértelmezés szerint, normál felhasználók (nem rendszergazda jogosultságú). Az Active Directory (AD FS használatával) nincsenek. Ez egy küszöbértéket a helyezi a teljes körű felhasználói élményt, mert az egyik mindig haladjon végig a directory-rendszergazda bármely alkalmazás hozzáadása.| 
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>Tudnivalók a modellalapú alkalmazások létrehozásáról
 - További információ a használati esetek, vásárlás, partnerek és OEM hardverszállítók: a [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) termékoldalán.
 - Az ütemterv és a rendelkezésre állás földrajzi információ az Azure Stack integrált rendszerek, tekintse meg a: [Azure Stack: Azure bővítménye](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
 - A Microsoft Azure Stack csomagolás és a díjszabással kapcsolatos további [töltse le a .pdf](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf). 

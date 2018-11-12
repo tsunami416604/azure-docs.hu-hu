@@ -1,6 +1,6 @@
 ---
-title: A KONCEPCIÓ PÉLDÁUL webszolgáltatások 59 karakter vagy kevesebb Azure Machine Learning szolgáltatásban. Azure Machine Learning neve is. Teszt nevét https://moz.com/learn/seo/title-tag
-description: Ez a karakterlánc 115-145 karakter a cikk ismerteti. Használja a keresőmotor-Optimalizáláshoz típusú műveleti utasítások itt. tegye ezt, és hogy például - tudnivalók ügyfél szavak használatával. Ezeket az adatokat a keresés lapon beágyazott a cikk időbélyeggel megjelenik. Ha a bevezetés para leképezés a cikk azt ismerteti, azt itt szerkeszteni hosszértéke használhatja.
+title: KONCEPCIÓ PÉLDÁUL Web Services in Azure Machine Learning szolgáltatás 59 karakter vagy kevesebb. Az Azure Machine Learning neve is. Sem zadejte název tesztelése https://moz.com/learn/seo/title-tag
+description: Ez a karakterlánc a 115-145 karaktereket a cikk ismerteti. Keresőmotor-Optimalizálást típusú igéi itt használhassa. például – ismerje meg, hogyan teheti ezt, és hogy ügyfél szavak használatával. Ezt az információt a cikk dátumbélyeg a keresési lap beágyazott jelenik meg. Ha a bevezetés para ismerteti a cikk célja, használhatja azt a hossz itt szerkesztett.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -10,40 +10,40 @@ ms.author: your-msft-alias
 author: your-github-account-name
 ms.date: 04/10/2018
 ms.openlocfilehash: 759e76a75fffeb31d38439f59b219ad48ebf6277
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31793125"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009254"
 ---
-# <a name="this-is-the-h1-and-the-article-title-that-shows-on-the-web"></a>Ez az a H1 és a webes bemutató cikk címe
+# <a name="this-is-the-h1-and-the-article-title-that-shows-on-the-web"></a>Ez a művelet a H1 és a cikk címe, amely megjeleníti a weben
 
-## <a name="section-here-h2"></a>Itt H2 szakasz 
+## <a name="section-here-h2"></a>Itt a H2 szakasz 
 Itt bekezdés. 
-**A kifejezés értéke félkövér**
-*ezt a kifejezést dőlt*
+**Ez a kifejezés a félkövérrel szedett**
+*ezt a kifejezést a dőlt*
 
 Ez egy [egy cikkre mutató hivatkozás](template-concepts.md)
 
-Ez az a képfájl:
+Ez a kép:
 
-![Ez az egy lemezkép leírása](media/overview-what-is-azure-ml/aml-concepts.png)
+![Ez az, hogy egy kép leírása](media/overview-what-is-azure-ml/aml-concepts.png)
 
-## <a name="section-here-h2"></a>Itt H2 szakasz
-Ez a táblázat fejlécére kattintva rendezhető tartalmaz:
+## <a name="section-here-h2"></a>Itt a H2 szakasz
+Ez a tábla fejléceit rendelkezik:
 
-|Oszlop1  |Column2  |Column3  |
+|1. oszlop  |Column2  |Column3  |
 |---------|---------|---------|
-|Row1|1 érték|A érték|
-|Row2|Érték 2|B értéke|
+|Row1|1. érték|A érték|
+|Row2|2. érték|B értéke|
 |Row3|3. érték|C érték|
 
-## <a name="section-here-h2"></a>Itt H2 szakasz
-Ez az számozott lista:
+## <a name="section-here-h2"></a>Itt a H2 szakasz
+Ez a számozott lista:
 
-1. Első eleme
+1. Első elem
 
-   A bekezdés kell lennie az első számozott elemmel azonos térköz van húzva.
+   A bekezdés behúzása van ugyanazt a karakterelrendezést első számozott helyén lennie.
 
 2. Második elem
    - Ezt a mondatot egy listajele
@@ -51,17 +51,17 @@ Ez az számozott lista:
 
 3. Harmadik elem
 
-4. Oda-konfigurációelem
+4. Rögzített elem
 
 5. Ötödik elem
 
-## <a name="this-list-is-bulleted-list"></a>A lista létrehozási felsorolás:
+## <a name="this-list-is-bulleted-list"></a>Ez a lista a következő felsorolás:
 - 1. elem
 - 2. elem
 - 3. elem
-  - Alelemre 1
-  - Alelemre 2
+  - Almappát 1
+  - Almappát 2
 
 
 ## <a name="next-steps"></a>További lépések
-Gépi tanulás kapcsolatos információkért lásd: [egy másik cikkben](template-concepts.md)
+További információ a machine learning: [egy másik cikk](template-concepts.md)

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 49012c69a6dacaf76c95ea4c760e5951ecb6a9fb
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 2570e779f258e702f04166dffc3087195d01a983
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958840"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283637"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Automatikus méretezés speciális konfigurálása Resource Manager-sablonok használata Virtuálisgép-méretezési csoportok
 Horizontális le- és a Virtual Machine Scale Sets alapuló teljesítmény-mérőszám küszöbértékén, ismétlődő ütemezés szerint, vagy egy adott dátumot kibővített is. Skálázási műveletek értesítései e-mailt és webhookot is konfigurálhatja. Ez az útmutató bemutatja egy példa az összes ezeket az objektumokat a Virtuálisgép-méretezési Resource Manager-sablon használatával.
 
 > [!NOTE]
-> Bár ez az útmutató ismerteti a Virtuálisgép-méretezési csoportok, ugyanazokat az információkat vonatkozik-e az automatikus skálázás [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service - webalkalmazások](https://azure.microsoft.com/services/app-service/web/), és [APIManagement-szolgáltatások](https://docs.microsoft.com/azure/api-management/api-management-key-concepts) Egyszerű méretezési csoport és horizontális a Virtuálisgép-méretezési beállítás alapján egy egyszerű teljesítmény-mérőszám, például a CPU, tekintse meg a [Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) és [Windows](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-powershell.md) dokumentumok
+> Bár ez az útmutató ismerteti a Virtuálisgép-méretezési csoportok, ugyanazokat az információkat vonatkozik-e az automatikus skálázás [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service - webalkalmazások](https://azure.microsoft.com/services/app-service/web/), és [APIManagement-szolgáltatások](https://docs.microsoft.com/azure/api-management/api-management-key-concepts) Egyszerű méretezési csoport és horizontális a Virtuálisgép-méretezési beállítás alapján egy egyszerű teljesítmény-mérőszám, például a CPU, tekintse meg a [Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-cli.md) és [Windows](../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) dokumentumok
 >
 >
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: msfussell
-ms.openlocfilehash: 70ea33f2c3e3a79d1754b72d12e8fc27689e38ea
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 434f0639baa45dc83ee2fae4ec8b67a80517db14
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387938"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035916"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Az Azure Service Fabric DNS-szolgáltatás
 A DNS szolgáltatás nem egy választható rendszerszolgáltatás, amely a fürt engedélyezheti a DNS protokollt használó egyéb szolgáltatások észlelését. 
@@ -43,6 +43,9 @@ Az alábbi ábrán látható, a DNS-szolgáltatás működése particionált ál
 Dinamikus portok nem támogatottak a DNS-szolgáltatás. A dinamikus portokat elérhetővé tett szolgáltatások megoldásához használja a [fordított proxy szolgáltatás](./service-fabric-reverseproxy.md).
 
 ## <a name="enabling-the-dns-service"></a>A DNS szolgáltatás engedélyezése
+> [!NOTE]
+> DNS szolgáltatás a Service Fabric-szolgáltatások még nem támogatott Linux rendszeren.
+
 A portállal egy fürtöt hoz létre, amikor a DNS-szolgáltatás alapértelmezés szerint engedélyezve van-e a **közé tartozik a DNS-szolgáltatás** jelölőnégyzet be van jelölve a **fürtkonfiguráció** menüben:
 
 ![A portálon keresztül DNS szolgáltatás engedélyezése](./media/service-fabric-dnsservice/enable-dns-service.png)
@@ -251,6 +254,8 @@ public class ValuesController : Controller
 
 ## <a name="known-issues"></a>Ismert problémák
 * A Service Fabric 6.3 és újabb verziók szolgáltatás-nevek DNS-nevet a kötőjelet tartalmazó DNS-keresések probléma van. Ennél a hibánál további információkért kérjük nyomon követése a következő [GitHub-problémát](https://github.com/Azure/service-fabric-issues/issues/1197). Ez javítja a következő 6.3 frissítés hamarosan elérhető. 
+
+* DNS szolgáltatás a Service Fabric-szolgáltatások még nem támogatott Linux rendszeren. DNS-szolgáltatás támogatott Linux-tárolókhoz. Fabric ügyfél/ServicePartitionResolver használatával manuális feloldási jelent a érhető el.
 
 ## <a name="next-steps"></a>További lépések
 További információ a fürtben a szolgáltatások közötti kommunikáció [csatlakozhat, és a kommunikáció a szolgáltatásokkal](service-fabric-connect-and-communicate-with-services.md)

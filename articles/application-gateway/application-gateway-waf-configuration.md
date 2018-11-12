@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.workload: infrastructure-services
-ms.date: 10/25/2018
+ms.date: 11/6/2018
 ms.author: victorh
-ms.openlocfilehash: 12115770959c3869184f0af78c4feba2fd6f2be4
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: f89841c7712737d2d55601c6525e975274b4a103
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984893"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036717"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists-public-preview"></a>Webes alkalmazás tűzfal kérelem méretbeli korlátokat és a kizárási listákat (nyilvános előzetes verzió)
 
@@ -30,25 +30,34 @@ Webalkalmazási tűzfal konfigurálása kérelem méretbeli korlátokat belül a
 - Tudásbázis és a vezérlők kivételével minden fájl általános kérés méretkorlát feltölti a kérések maximális törzs mérete mező van megadva. Ez a mező között lehet 1 KB-os minimális 128 KB-os maximális értéknél. Az alapértelmezett érték a kérelem törzsében mérete 128 KB-os.
 - A fájl feltöltési korlát mezőben MB-ban van megadva, és azt szabályozza, hogy a maximális megengedett fájlfeltöltési méretet. Ebben a mezőben legfeljebb 500 MB és a egy minimális értéke 1 MB lehet. A fájl feltöltési korlátot alapértelmezett értéke 100 MB.
 
-WAF is biztosít egy konfigurálható forgatógomb, a kérelem törzsében ellenőrzés engedélyezése vagy letiltása. A kérelem törzsében ellenőrzés alapértelmezés szerint engedélyezve van. Ha a kérelem törzsében ellenőrzés be van kapcsolva, WAF nem értékeli a HTTP üzenet törzsének tartalmát. Ezekben az esetekben a WAF URI, fejlécek és cookie-k a WAF-szabályok érvényesítése továbbra is. Ha a kérelem törzsében ellenőrzés be van kapcsolva, kérelem maximális törzs mérete mező nem alkalmazható, és nem állítható be. A kérelem törzsében ellenőrzés kikapcsolása lehetővé teszi, hogy üzeneteket kell küldeni a WAF 128 KB-nál nagyobb. Azonban az üzenet törzse nem ellenőrzik a biztonsági réseket.
+WAF is biztosít egy konfigurálható forgatógomb, a kérelem törzsében ellenőrzés engedélyezése vagy letiltása. A kérelem törzsében ellenőrzés alapértelmezés szerint engedélyezve van. Ha a kérelem törzsében ellenőrzés be van kapcsolva, WAF nem értékeli a HTTP üzenet törzsének tartalmát. Ezekben az esetekben a WAF URI, fejlécek és cookie-k a WAF-szabályok érvényesítése továbbra is. Ha a kérelem törzsében ellenőrzés be van kapcsolva, kérelem maximális törzs mérete mező nem alkalmazható, és nem állítható be. A kérelem törzsében ellenőrzés kikapcsolása lehetővé teszi, hogy üzeneteket kell küldeni a WAF 128 KB-nál nagyobb, de az üzenettörzs nem ellenőrzik a biztonsági réseket.
 
 ## <a name="waf-exclusion-lists"></a>WAF kizárási listák
 
 ![waf-exclusion.png](media/application-gateway-waf-configuration/waf-exclusion.png)
 
 WAF kizárási listák engedélyezése a felhasználók számára bizonyos attribútumainak WAF során hagyja ki. Ilyenek például az Active Directory beszúrt jogkivonatokat, amelyek a hitelesítéshez, vagy a beírt jelszavak. Ilyen attribútumok különleges karaktereket tartalmaz, amelyek a WAF-szabályok a hamis pozitív kezdeményezheti a hibalehetőség. Egy attribútumot a WAF-kizárási listára kerül, ha azt nem figyelembe bármely konfigurált és az aktív WAF-szabály által. A hatókör kizárási listák globálisak.
-WAF kizárási listák kérelemfejlécek, a kérelem törzsében, a kérelem cookie-k vagy a kérelem lekérdezési karakterlánc argumentumok adhat hozzá. Ha a szervezet rendelkezik az űrlapadatok vagy XML/JSON (kulcs-érték párral) majd attribútum kizárási kérelemtípus használható.
+
+Kizárási listák is hozzáadhatók a következő attribútumokat:
+
+* Kérelem fejlécei
+* Kérelem cookie-k
+* Kérelem törzse
+
+   * Az űrlap többrészes adatait
+   * XML
+   * JSON
 
 Akkor is, cookie-k vagy a lekérdezési karakterláncot attribútumot egyezik, adja meg a pontos kérelemfejlécből törzs vagy is megadhatja a részleges egyezéseket.
 
 A támogatott egyezés feltételek operátorok a következők:
 
-- **Egyenlő**: Ez az operátor pontosan egyezik szolgál. Tegyük fel, nevű fejléc kiválasztására szolgáló **bearerToken** használata egyenlő operátor választó állítja be a **bearerToken**.
-- **Kezdődik**: Ez az operátor megfelel a megadott választó érték kezdődő összes mezőt. 
-- **Végződik**: Ez az operátor megfelel az összes kérelem mező, amely a megadott választó érték végén. 
+- **Egyenlő**: Ez az operátor pontosan egyezik szolgál. Tegyük fel, nevű fejléc kiválasztására szolgáló **bearerToken**, az equals operátor használata állítja be a választó **bearerToken**.
+- **Kezdődik**: Ez az operátor megfelel a megadott választó érték kezdődő összes mezőt.
+- **Végződik**: Ez az operátor megfelel az összes kérelem mező, amely a megadott választó érték végén.
 - **Tartalmaz**: Ez az operátor megfelel a megadott választó értéket tartalmazó összes kérelem mezők.
 
-Minden esetben egyeztetésekor a rendszer megkülönbözteti a kis-és nagybetű nincs megkülönböztetve, és a reguláris kifejezés használata nem engedélyezett választók.
+Minden esetben egyeztetésekor a rendszer megkülönbözteti a kis-és nagybetű nincs megkülönböztetve, és a reguláris kifejezés nem engedélyezett, mert a választók.
 
 ## <a name="next-steps"></a>További lépések
 

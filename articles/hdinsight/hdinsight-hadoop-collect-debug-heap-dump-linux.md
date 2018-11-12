@@ -1,22 +1,22 @@
 ---
-title: Halomürítések engedélyezése a Hadoop-szolgáltatásokhoz a HDInsight – Azure
-description: Halomürítések engedélyezése a Hadoop-szolgáltatásokhoz a Linux-alapú HDInsight-fürtök a hibakereséshez és elemzéshez.
+title: Az Apache Hadoop-szolgáltatásokhoz a HDInsight - Azure halomürítések engedélyezése
+description: Halomürítések engedélyezése a Hibakeresés és elemzés Linux-alapú HDInsight-fürtök az Apache Hadoop-szolgáltatásokhoz.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: jasonh
-ms.openlocfilehash: 7fa0ebb1946a856d02296b4ec752113ff8fecbd5
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: 966f05fba96cc829c3a11331e2a66609705f6f4f
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095582"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037687"
 ---
-# <a name="enable-heap-dumps-for-hadoop-services-on-linux-based-hdinsight"></a>Halomürítések engedélyezése a Linux-alapú HDInsight a Hadoop-szolgáltatásokhoz
+# <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>A Linux-alapú HDInsight az Apache Hadoop-szolgáltatásokhoz halomürítések engedélyezése
 
 [!INCLUDE [heapdump-selector](../../includes/hdinsight-selector-heap-dump.md)]
 
@@ -29,11 +29,11 @@ Halomürítések az alkalmazás memória, beleértve a változók értékeit, a 
 
 A következő szolgáltatásokat halomürítések engedélyezheti:
 
-* **hcatalog** -tempelton
-* **Hive** -hiveserver2-n, metaadattár, derbyserver
+* **Az Apache hcatalog** -tempelton
+* **Az Apache hive** -hiveserver2-n, metaadattár, derbyserver
 * **a mapreduce** -jobhistoryserver
-* **yarn** -resourcemanager, nodemanager, timelineserver
-* **hdfs** -datanode, secondarynamenode, namenode
+* **Az Apache yarn** -resourcemanager, nodemanager, timelineserver
+* **Az Apache hdfs** -datanode, secondarynamenode, namenode
 
 Halomürítések engedélyezése a térkép a és is csökkentheti HDInsight által futtatott folyamatok.
 
@@ -49,7 +49,7 @@ Képezze le, és csökkentse folyamatok kissé eltérő, mivel ezek a műveletek
 * **mapreduce.admin.reduce.child.java.opts**
 
 > [!NOTE]
-> Azt javasoljuk, hogy az Ambari segítségével Ambari leíró módosítások replikálása a fürtben található csomópontok között, a parancsfájlok és a mapred-site.xml beállítások módosítása. Tekintse meg a [az Ambari használatával](#using-ambari) szakasz lépéseit.
+> Javasoljuk az Ambari az Apache Ambari leíró módosítások replikálása a fürtben található csomópontok között, a parancsfájlok és a mapred-site.xml beállítások módosítása. Tekintse meg a [az Ambari használatával](#using-ambari) szakasz lépéseit.
 
 ### <a name="enable-heap-dumps"></a>Halomürítések engedélyezése
 
@@ -70,7 +70,7 @@ A memóriakép-fájl alapértelmezett helye az aktuális munkakönyvtár. Szabá
 
 Például `-XX:HeapDumpPath=/tmp` hatására a memóriaképek könyvtárban kell tárolni.
 
-### <a name="scripts"></a>Scripts
+### <a name="scripts"></a>Parancsprogramok
 
 Egy parancsfájlt is indíthat amikor egy **OutOfMemoryError** történik. Például riasztást kiváltó értesítést, hogy tudja, hogy a hiba történt. Használja a következő parancsfájl eseményindítás egy __OutOfMemoryError__:
 

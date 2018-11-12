@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9c2b5db4fe35227600e7ab8d94f2cc8701cf529b
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 469d97385fd86952c2d287e2b5d15d7470a9e34e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963768"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008334"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-log-analytics-agent-for-linux"></a>A Linuxhoz készült Log Analytics-ügynök Nagios-és Zabbix a Log Analytics-riasztások gyűjtése 
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
@@ -80,7 +80,7 @@ Riasztások gyűjtése a Nagios-kiszolgálón, hajtsa végre az alábbi lépése
 
 
 ## <a name="alert-records"></a>Riasztási rekordok
-Riasztási rekord lekérése Nagios- és Zabbix használatával [naplókereséseket](log-analytics-log-search.md) a Log Analyticsben.
+Riasztási rekord lekérése Nagios- és Zabbix használatával [naplókereséseket](log-analytics-queries.md) a Log Analyticsben.
 
 ### <a name="nagios-alert-records"></a>Nagios-riasztás rekordok
 
@@ -88,7 +88,7 @@ Riasztás Nagios által összegyűjtött rekordokkal rendelkezik egy **típus** 
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Típus |*Riasztás* |
+| Type (Típus) |*Riasztás* |
 | SourceSystem |*Nagios* |
 | AlertName |A riasztás neve. |
 | AlertDescription | A riasztás leírása. |
@@ -104,7 +104,7 @@ Riasztás Zabbix által összegyűjtött rekordokkal rendelkezik egy **típus** 
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Típus |*Riasztás* |
+| Type (Típus) |*Riasztás* |
 | SourceSystem |*Zabbix* |
 | AlertName | A riasztás neve. |
 | AlertPriority | A riasztás súlyosságát.<br><br>nem besorolt<br>Információ<br>figyelmeztetés<br>átlag<br>Magas<br>vészhelyreállítás  |
@@ -119,4 +119,4 @@ Riasztás Zabbix által összegyűjtött rekordokkal rendelkezik egy **típus** 
 
 ## <a name="next-steps"></a>További lépések
 * Ismerje meg [riasztások](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) a Log Analyticsben.
-* Ismerje meg [naplókereséseket](log-analytics-log-search.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 
+* Ismerje meg [naplókereséseket](log-analytics-queries.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 

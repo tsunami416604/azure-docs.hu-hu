@@ -3,19 +3,19 @@ title: A HDInsight - Azure példák Hadoop MapReduce futtatása
 description: Ismerkedés a jar-fájlt is tartalmaz HDInsight MapReduce-minták használatával. Csatlakozzon a fürthöz SSH használatával, és a Hadoop paranccsal minta feladatok futtatásához.
 keywords: Példa jar hadoop, hadoop példák jar, hadoop mapreduce-példák, mapreduce-példák
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jasonh
-ms.openlocfilehash: 8b6502c23221410af95e71938fbd29f5da04bc9a
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.author: hrasheed
+ms.openlocfilehash: 37ba412d9463ccf4cdd18c842910c3c6f5349ef2
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250852"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007094"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Futtassa a szerepel a HDInsight MapReduce-példák
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 0e1cb2cdd6270590def11479cc5859d996d84caa
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 5572c80879584e7f6df650263ae455a134ee4088
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50749034"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51283597"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Az Azure Monitor riasztások hibaelhárítása  
 
@@ -79,10 +79,10 @@ A riasztási szabály konfigurációjától függően előfordulhat, esetleg Gy�
 ### <a name="alert-query-output-misunderstood"></a>Böngésző riasztási lekérdezés kimenete
 A riasztási logika naplóriasztásokra vonatkozó keresztül elemzési lekérdezés felhasználó által megadott. A megadott elemzési lekérdezés azonban különböző Big Data és matematikai függvények létrehozása adott szerkezeteket. A riasztási szolgáltatás; a megadott időszakra vonatkozó adatokat a megadott időközönként hajtja végre a vásárló által biztosított lekérdezés riasztási szolgáltatás lehetővé teszi a változás is módosítja a lekérdezéshez megadott – a kiválasztott riasztási típus alapján, és azonos is lehet witnessed konfigurálási jel logikájának képernyőn "Végrehajtandó lekérdezés" szakaszának alábbi képen szemléltetett módon: ![végrehajtandó lekérdezés](./media/monitor-alerts-unified/LogAlertPreview.png)
  
-Mi látható **végrehajtandó lekérdezés** rész az mely log riasztási szolgáltatás fut; a felhasználó futtathatja a megadott lekérdezés, valamint a keresztül timespan [Analytics-portál](../log-analytics/log-analytics-log-search-portals.md) vagy [szövegelemzési API](https://docs.microsoft.com/en-us/rest/api/loganalytics/) -riasztás létrehozása előtt tudni szeretnék, ha lehet, milyen riasztási lekérdezés kimenetelét.
+Mi látható **végrehajtandó lekérdezés** rész az mely log riasztási szolgáltatás fut; a felhasználó futtathatja a megadott lekérdezés, valamint a keresztül timespan [Analytics-portál](../log-analytics/log-analytics-log-search-portals.md) vagy [szövegelemzési API](https://docs.microsoft.com/rest/api/loganalytics/) -riasztás létrehozása előtt tudni szeretnék, ha lehet, milyen riasztási lekérdezés kimenetelét.
  
 ## <a name="next-steps"></a>További lépések
 
 * Ismerje meg [Naplóriasztások az Azure-riasztások](monitor-alerts-unified-log.md)
 * Tudjon meg többet [Application Insights](../application-insights/app-insights-analytics.md)
-* Tudjon meg többet [Log Analytics](../log-analytics/log-analytics-overview.md). 
+* Tudjon meg többet [Log Analytics](../log-analytics/log-analytics-queries.md). 

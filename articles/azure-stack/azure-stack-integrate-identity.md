@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 11/08/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 8a33d4edb4107b936c36a744bb082c02b7830868
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b59d503b8aadef9e8f9c2d7db71ff60aee3b6387
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024443"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300710"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Az Azure Stack adatközpont integrációja - identitás
 Az identitás-szolgáltatóktól, Azure Active Directory (Azure AD) vagy az Active Directory összevonási szolgáltatások (AD FS) használatával az Azure-verem üzembe helyezhető. Ellenőrizze a kiválasztott Azure Stack üzembe helyezése előtt. Az AD FS telepítési is nevezik üzembe helyezése az Azure Stack kapcsolat nélküli módban.
@@ -173,8 +173,6 @@ Az alábbi adatokra szükség az automation-paraméterek bemenetként:
 |CustomAdfsName|A jogcímeket szolgáltató neve. Ezzel a módszerrel a az AD FS kezdőlapja jelenik meg.|Contoso|
 |CustomADFSFederationMetadataFileContent|Metaadat-tartalom|$using: federationMetadataFileContent|
 
-
-
 ### <a name="create-federation-metadata-file"></a>Összevonási metaadatait tartalmazó fájl létrehozása
 
 A következő eljárás olyan számítógépen, amelyen a hálózati kapcsolat és a meglévő AD FS üzembe helyezése, amely a fiók STS válik kell használnia. Emellett a szükséges tanúsítványokkal kell telepíteni.
@@ -182,9 +180,11 @@ A következő eljárás olyan számítógépen, amelyen a hálózati kapcsolat �
 1. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet, és futtassa a következő parancsot, és válasszon a környezetének megfelelő paraméterekkel:
 
    ```PowerShell  
-    $metadata = (Invoke-WebRequest -URI " https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml " -UseBasicParsing).Content
-    Set-Content -Path c:\metadata.xml -Encoding Unicode -Value $metadata 
-
+    $url = "https://win-SQOOJN70SGL.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml"
+    $webclient = New-Object System.Net.WebClient
+    $webclient.Encoding = [System.Text.Encoding]::UTF8
+    $metadataAsString = $webclient.DownloadString($url)
+    Set-Content -Path c:\metadata.xml -Encoding UTF8 -Value $metadataAsString
    ```
 
 2. Másolja a metaadatait tartalmazó fájl egy számítógépre, amely képes kommunikálni a kiemelt végponthoz.

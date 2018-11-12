@@ -1,3 +1,5 @@
+# [A Database Migration Service dokumentációja](index.yml)
+
 # Áttekintés
 ## [Tudnivalók a Database Migration Service szolgáltatásról](dms-overview.md)
 
@@ -27,6 +29,6 @@
 ## [Data Migration Assistant](https://aka.ms/dma)
 ## [Díjszabás](https://aka.ms/dms-pricing)
 ## [Előfeltételek áttekintése](pre-reqs.md)
-## [GYIK](faq.md)
+## [Gyakori kérdések](faq.md)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=database-migration)
 ## [Hálózati topológiák az Azure SQL DB felügyelt példányainak migrálásához](resource-network-topologies.md)

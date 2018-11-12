@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: 604eb528ef33a95993aa5b6d3ff6eebb77936aa2
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 7937f3d0db414d7a9cc2adaefd4324d49d734fcb
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157938"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280673"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure-partneri ügyfél használati megnevezése
 
@@ -66,7 +66,7 @@ Az erőforrás a hozzá kell adnia a **mainTemplate.json** vagy **azuredeploy.js
 
 { // add this resource to the mainTemplate.json (do not add the entire file)
     "apiVersion": "2018-02-01",
-    "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" // use your generated GUID here
+    "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your generated GUID here
     "type": "Microsoft.Resources/deployments",
     "properties": {
         "mode": "Incremental",
@@ -145,7 +145,7 @@ Az összes regisztrációs sablon GUID-n keresztül az Azure Marketplace-en Clou
 
 Miután a GUID azonosító hozzáadása a sablonhoz, vagy a felhasználói ügynök, és regisztrálja a globálisan egyedi Azonosítót a CPP, központi telepítések nyomon követi. 
 
-1. A alkalmazni [Azure Marketplace-en](http://aka.ms/listonazuremarketplace) és a CPP eléréséhez.
+1. A alkalmazni [Azure Marketplace-en](https://aka.ms/listonazuremarketplace) és a CPP eléréséhez.
 
    * Partnerek szükségesek [rendelkeznek profillal a CPP](https://docs.microsoft.com/azure/marketplace/become-publisher). Javasoljuk, hogy a listában az ajánlat az Azure Marketplace-en vagy az appsource-ban Ön.
    * Partnerek regisztrálhatja az több GUID-ot.

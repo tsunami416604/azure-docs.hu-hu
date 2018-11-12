@@ -2,19 +2,19 @@
 title: A használatával az Ambari API – Azure HDInsight Hadoop-fürtök monitorozása
 description: Az Apache Ambari API-k létrehozása, kezelése és figyelése a Hadoop-fürtök használja. Intuitív kezelőeszközöket és API-k elrejtése a Hadoop összetettségét.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/07/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 23da477fc24eaea4a6f987f13ad055022d2ba032
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 4be14cd1804c27eedc49cc17e33298c6134f6a37
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108637"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008742"
 ---
 # <a name="monitor-hadoop-clusters-in-hdinsight-using-the-ambari-api"></a>A HDInsight-beli Hadoop-fürtök figyelése az Ambari API használatával
 Útmutató a HDInsight-fürtök figyelése az Ambari API-k használatával.
@@ -42,7 +42,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
   > 
 * **Egy Azure HDInsight-fürt**. Útmutatás a fürtök kiépítése: [HDInsight használatának első lépései] [ hdinsight-get-started] vagy [Provision HDInsight clusters][hdinsight-provision]. A következő adatokat az oktatóanyagot lesz szüksége:
   
-  | Fürt tulajdonság | Az Azure PowerShell-változó neve | Érték | Leírás |
+  | Fürt tulajdonság | Az Azure PowerShell-változó neve | Value (Díj) | Leírás |
   | --- | --- | --- | --- |
   |   HDInsight-fürt neve |$clusterName | |A HDInsight-fürt nevére. |
   |   Fürt felhasználóneve |$clusterUsername | |Fürthöz tartozó felhasználónevet megadva, a fürt létrehozásakor. |

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 5effed58ea0fab9051470a44be30fbb3a7fd7feb
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: aa5e0887f6dfb3e983c08d1bbcf1f56f41a9543d
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962656"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012802"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Hozzon létre, és a Log Analytics REST API-val riasztási szabályok kezelése
 A Log Analytics Alert REST API lehetővé teszi, hogy hozhat létre, és a Log Analytics-riasztások kezelése.  Ez a cikk részletesen az API-val és néhány példa a különféle műveletek végezhetők.
@@ -28,7 +28,7 @@ A Log Analytics Alert REST API lehetővé teszi, hogy hozhat létre, és a Log A
 A Log Analytics Search REST API RESTful és az Azure Resource Manager REST API-n keresztül érhető el. Ebben a dokumentumban talál példákat, az API-t szeretné elérni, egy PowerShell parancssori használatával [ARMClient](https://github.com/projectkudu/ARMClient), egy nyílt forráskódú parancssori eszköz, amely leegyszerűsíti az Azure Resource Manager API meghívása. ARMClient és a PowerShell használata a Log Analytics Search API eléréséhez számos lehetőség. Ezekkel az eszközökkel a REST-alapú Azure Resource Manager API Log Analytics-munkaterületek hívásokat, és végezze el a keresési parancsok azokon belül használhat. Az API-t fog keresési eredményeket is JSON formátumban, lehetővé téve, hogy programozott módon használja a keresési eredmények között számos különböző módon.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Jelenleg riasztások csak hozhatja létre a Log Analytics mentett keresést.  Olvassa el a [Log Search REST API](log-analytics-log-search.md) további információt.
+Jelenleg riasztások csak hozhatja létre a Log Analytics mentett keresést.  Olvassa el a [Log Search REST API](log-analytics-queries.md) további információt.
 
 ## <a name="schedules"></a>Ütemezések
 Mentett keresés egy vagy több ütemezés is rendelkezhet. Az ütemezés határozza meg, hogy milyen gyakran a keresés Futtatás és az az időintervallum, amelyen a feltétel azonosítja.
@@ -36,7 +36,7 @@ Mentett keresés egy vagy több ütemezés is rendelkezhet. Az ütemezés határ
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Intervallum |Milyen gyakran fut a keresés. Mért percek alatt. |
+| Időköz |Milyen gyakran fut a keresés. Mért percek alatt. |
 | QueryTimeSpan |Az időintervallum, amelyen a feltétel értékeli ki. Intervallum nagyobbnak vagy azzal egyenlőnek kell. Mért percek alatt. |
 | Verzió |A használt API-verzió.  Jelenleg ez mindig meg kell 1-re. |
 
@@ -95,7 +95,7 @@ Minden művelet a következő táblázatban tárolja a tulajdonságokat.  Riaszt
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Típus |A művelet típusa.  Jelenleg a lehetséges értékek: riasztás és a Webhook. |
+| Type (Típus) |A művelet típusa.  Jelenleg a lehetséges értékek: riasztás és a Webhook. |
 | Name (Név) |A riasztás megjelenítendő neve. |
 | Verzió |A használt API-verzió.  Jelenleg ez mindig meg kell 1-re. |
 
@@ -134,10 +134,10 @@ A művelet azonosítójú a Delete metódus használatával törölhet olyan mű
 ### <a name="alert-actions"></a>Riasztási műveletek
 Ütemezés csak egy riasztás művelet kell rendelkeznie.  Riasztási műveletek rendelkezik legalább egy, az alábbi táblázatban a szakaszok.  Az egyes részletesebben az alábbi ismertetjük.
 
-| Section | Leírás | Használat |
+| Szakasz | Leírás | Használat |
 |:--- |:--- |:--- |
 | Küszöbérték |Ha a művelet futtatása feltételeit.| Szükséges minden egyes riasztás előtt vagy után bővítve lettek az Azure-bA. |
-| Severity |Adatvezérelt riasztás osztályozására szolgáló címkéje.| Szükséges minden egyes riasztás előtt vagy után bővítve lettek az Azure-bA. |
+| Súlyosság |Adatvezérelt riasztás osztályozására szolgáló címkéje.| Szükséges minden egyes riasztás előtt vagy után bővítve lettek az Azure-bA. |
 | Mellőzés |Lehetőség van a riasztásból értesítéseket leállítani. | Minden egyes riasztás esetén nem kötelező előtt vagy után bővítve lettek az Azure-bA. |
 | Műveletcsoportok |Ahol szükséges műveletek meg van adva, az Azure ActionGroup azonosítói, például - e-mailek, SMSs, intézett Hanghívásokhoz, Webhookok, Automation-Runbookok, ITSM-összekötő, stb.| Ha a riasztások bővítve lettek az Azure-bA szükséges|
 | Műveletek testreszabása|A normál a kimenetbe ActionGroup a select műveletek módosítása| Minden riasztás esetén nem kötelező használható után a riasztások bővítve lettek az Azure-bA. |
@@ -155,8 +155,8 @@ Küszöbértékek a tulajdonságokkal rendelkeznek, az alábbi táblázatban.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Művelet |A küszöbérték-összehasonlítás operátort. <br> gt = nagyobb, mint <br> lt = kisebb, mint |
-| Érték |Értéke a küszöbérték. |
+| Operátor |A küszöbérték-összehasonlítás operátort. <br> gt = nagyobb, mint <br> lt = kisebb, mint |
+| Value (Díj) |Értéke a küszöbérték. |
 
 Vegyük példaként egy esemény lekérdezés 15 perc, 30 perces Timespan és egy küszöbértéket, a 10-nél nagyobb időközzel. Ebben az esetben a lekérdezés 15 percenként fogja futtatni, és a riasztás akkor aktiválódik, ha a 10 események 30 perces időtartam létrehozott adott vissza.
 
@@ -183,7 +183,7 @@ Egy küszöbérték műveletet egy ütemezés módosításához használja egy m
     $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 
-#### <a name="severity"></a>Severity
+#### <a name="severity"></a>Súlyosság
 A log Analytics lehetővé teszi, hogy a könnyebb felügyeletet és osztályozási kategóriákba a riasztások besorolása. A riasztás súlyosságát definiálva van: információs, figyelmeztetési és kritikus fontosságú. Ezek az Azure Alerts as normalizált súlyossági méretezése van leképezve:
 
 |Log Analytics súlyossági szint  |Azure-riasztások súlyossági szint  |
@@ -510,6 +510,6 @@ Egy webhook művelettel ütemezés módosításához használja a Put metódust 
 
 
 ## <a name="next-steps"></a>További lépések
-* Használja a [REST API-t, hajtsa végre a naplókeresések](log-analytics-log-search.md) a Log Analyticsben.
+* Használja a [REST API-t, hajtsa végre a naplókeresések](log-analytics-queries.md) a Log Analyticsben.
 * Ismerje meg [naplóriasztások az azure-riasztások](../monitoring-and-diagnostics/monitor-alerts-unified-log.md)
 

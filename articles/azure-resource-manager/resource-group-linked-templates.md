@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: ea926a64e3df853d6845266ff20255b76d9ff387
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: fbfe7255f2b848187c74fd832f349186eef5eaef
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386722"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287574"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Kapcsolt és beágyazott sablonok, az Azure-erőforrások üzembe helyezésekor
 
@@ -167,7 +167,7 @@ Is [deployment()](resource-group-template-functions-deployment.md#deployment) a 
 }
 ```
 
-## <a name="get-values-from-linked-template"></a>Hivatkozott sablonnak lekérjük az értékeket
+## <a name="get-values-from-linked-template"></a>Értékek lekérése összekapcsolt sablonból
 
 Egy kimeneti értéket egy hivatkozott sablonnak a lekéréséhez a szintaxissal tulajdonság értékét a vizualizációhoz: `"[reference('<name-of-deployment>').outputs.<property-name>.value]"`.
 

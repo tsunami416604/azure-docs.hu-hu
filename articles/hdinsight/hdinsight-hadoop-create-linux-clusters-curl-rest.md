@@ -1,22 +1,22 @@
 ---
-title: Azure REST API – Azure segítségével Hadoop-fürtök létrehozása
+title: Azure REST API – Azure használatával az Apache Hadoop-fürtök létrehozása
 description: Ismerje meg, hogyan hozhat létre HDInsight-fürtök Azure Resource Manager-sablonok az Azure REST API elküldésével.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2018
-ms.author: jasonh
-ms.openlocfilehash: 6d2e0b06f0402ae26212be45a00b4c9a5394a117
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: 9a8c39864d05a4e2b89da7bdfc937f8d2e5dbec9
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983701"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51038417"
 ---
-# <a name="create-hadoop-clusters-using-the-azure-rest-api"></a>Az Azure REST API segítségével Hadoop-fürtök létrehozása
+# <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Az Azure REST API használatával az Apache Hadoop-fürtök létrehozása
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
@@ -290,7 +290,7 @@ A kérelem által visszaadott JSON-dokumentumok nevű elemet tartalmaz **access_
 }
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 A következő használatával hozzon létre egy erőforráscsoportot.
 

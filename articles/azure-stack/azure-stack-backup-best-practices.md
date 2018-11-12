@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 08d8822410545fb0ae3a2a99de00b38566c9834c
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: ec17f6923fc1c928f24fcb762daedbaea5b688ac
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054472"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035101"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>Infrastruktúra Backup szolgáltatás – ajánlott eljárások
 
@@ -32,11 +32,11 @@ Az ajánlott eljárásokat, győződjön meg arról, hogy a telepítés még a m
 
 ## <a name="configuration-best-practices"></a>Konfigurációs eljárások
 
-### <a name="deployment"></a>Környezet
+### <a name="deployment"></a>Üzembe helyezés
 
 Infrastruktúra biztonsági mentésének engedélyezése az egyes Azure Stack-felhő üzembe helyezés után. Azure Stack PowerShell-lel az operátor felügyeleti API-végpont a hozzáférést minden olyan ügyfél-kiszolgáló biztonsági mentés is ütemezhető.
 
-### <a name="networking"></a>Hálózat
+### <a name="networking"></a>Hálózatkezelés
 
 Az univerzális elnevezési konvenció (UNC) karakterlánc az elérési út egy teljesen minősített tartománynevét (FQDN) kell használnia. IP-cím akkor lehetséges, ha a névfeloldás ez nem lehetséges. Karakterláncnak UNC helyét adja meg az erőforrások, például megosztott fájlokhoz vagy eszközökön.
 
@@ -50,11 +50,10 @@ A kulcs (például nyilvános Azure Key Vaultban titkos kódot) biztonságos hel
 
 ## <a name="operational-best-practices"></a>Gyakorlati tanácsok az üzemeltetéshez
 
-### <a name="backups"></a>Biztonsági másolatok
+### <a name="backups"></a>Tartalékok
 
- - Infrastruktúra biztonsági mentést vezérlő kell igény szerinti aktiválását. Ajánljuk, hogy a biztonsági mentés naponta legalább kétszer.
  - Biztonsági mentési feladatok végrehajtása közben a rendszer fut, így a felhasználói élmény vagy a felhasználói alkalmazások üzemkimaradást sem okoz. A várt a biztonsági mentési feladatok ésszerű mértékű terhelés alatt álló megoldások 20 – 40 percet vesz igénybe.
- - OEM megadott utasítás használatával, manuálisan biztonsági mentési hálózati kapcsolók és a hardver életciklus gazdagép (HLH) kell tárolni a biztonsági mentési megosztáshoz, a biztonsági mentési infrastruktúra-vezérlő tárolók vezérlő adatsík a biztonsági mentési adatokat. Érdemes tárolni a kapcsoló- és HLH konfigurációk a régió mappában. Ha több Azure Stack-példányok ugyanabban a régióban, fontolja meg, az egyes konfigurációkhoz egy skálázási egység tartozó azonosító használatát.
+ - OEM alapján használja, manuálisan biztonsági mentési hálózati kapcsolók és a hardver életciklus gazdagép (HLH) kell tárolni a biztonsági mentési megosztáshoz, a biztonsági mentési infrastruktúra-vezérlő tárolók vezérlő adatsík a biztonsági mentési adatokat. Érdemes tárolni a kapcsoló- és HLH konfigurációk a régió mappában. Ha több Azure Stack-példányok ugyanabban a régióban, fontolja meg, az egyes konfigurációkhoz egy skálázási egység tartozó azonosító használatát.
 
 ### <a name="folder-names"></a>Mappanevek
 
@@ -81,7 +80,7 @@ OEM-ek javasolt, hogy az a régió mappában összetevők biztonsági mentési a
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc\DeploymentData
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc\Registration
 
-### <a name="monitoring"></a>Figyelés
+### <a name="monitoring"></a>Monitoring
 
 A rendszer támogatja a következő riasztásokat:
 
@@ -95,5 +94,6 @@ A rendszer támogatja a következő riasztásokat:
 
 ## <a name="next-steps"></a>További lépések
 
- - Tekintse át a referenciaanyag az olyan a [infrastruktúra biztonsági mentési szolgáltatás](azure-stack-backup-reference.md).  
- - Engedélyezze a [infrastruktúra biztonsági mentési szolgáltatás](azure-stack-backup-enable-backup-console.md).
+Tekintse át a referenciaanyag az olyan a [infrastruktúra biztonsági mentési szolgáltatás](azure-stack-backup-reference.md).
+
+Engedélyezze a [infrastruktúra biztonsági mentési szolgáltatás](azure-stack-backup-enable-backup-console.md).

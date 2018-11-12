@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: cabd54d5f3847e6f273793800a75d4d1c240b2ce
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f239b3ef6881f9ea1be043b7d27f061e015ae3be
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420761"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037361"
 ---
 # <a name="what-is-device-management-in-azure-active-directory"></a>Az Azure Active Directory eszközfelügyeletének ismertetése
 
@@ -45,7 +45,7 @@ Két módon vonhatja be az eszközöket az Azure AD felügyelete alá:
 
 Az eszközök Azure AD-beli **regisztrálása** lehetővé teszi az eszköz identitásának felügyeletét. Amikor regisztrál egy eszközt, az Azure AD eszközregisztráció ellátja azt egy identitással, amely az eszköz hitelesítésére használható, amikor a felhasználó bejelentkezik az Azure AD-be. Az eszközök az identitásuk alapján engedélyezhetők vagy tilthatók le.
 
-Amikor ezt egy mobileszköz-felügyeleti (MDM) megoldással, például a Microsoft Intune-nal ötvözi, az Azure AD-ben lévő eszközattribútumok az eszköz további információival frissülnek. Ez lehetővé teszi további feltételes hozzáférési szabályok létrehozását, amelyek arra kényszerítik az eszközhozzáféréseket, hogy megfeleljenek a biztonsági és megfelelőségi szabványoknak. További információk az eszközöknek a Microsoft Intune-ban történő regisztrálásával kapcsolatban: [Eszközök regisztrálása felügyeletre a Microsoft Intune-ban](https://docs.microsoft.com/en-us/intune/device-enrollment#supported-device-platforms).
+Amikor ezt egy mobileszköz-felügyeleti (MDM) megoldással, például a Microsoft Intune-nal ötvözi, az Azure AD-ben lévő eszközattribútumok az eszköz további információival frissülnek. Ez lehetővé teszi további feltételes hozzáférési szabályok létrehozását, amelyek arra kényszerítik az eszközhozzáféréseket, hogy megfeleljenek a biztonsági és megfelelőségi szabványoknak. További információk az eszközöknek a Microsoft Intune-ban történő regisztrálásával kapcsolatban: [Eszközök regisztrálása felügyeletre a Microsoft Intune-ban](https://docs.microsoft.com/intune/device-enrollment#supported-device-platforms).
 
 A **csatlakoztatás** az eszköz regisztrálásának kibővített formája. Ez azt jelenti, hogy ugyanazokat az előnyöket biztosítja, mint a regisztrálás, és az eszköz helyi állapotát is módosítja. A helyi állapot módosítása lehetővé teszi, hogy a felhasználók egy munkahelyi vagy iskolai fiókkal jelentkezzenek be az eszközön a személyes fiókjuk helyett.
 

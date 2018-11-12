@@ -2,19 +2,19 @@
 title: A HDInsight - Azure WebHCat-hibák megértése és megoldása
 description: Ismerje meg, hogyan körülbelül gyakran előforduló hibák által visszaadott WebHCat a HDInsight és azok megoldását.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jasonh
-ms.openlocfilehash: 3c4ce93a12d0ecb86552e9f73d83f623e71385a0
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: 2c4730b3ec84ca14bcc3e93ed82faf37b15970d7
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43103405"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010371"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>A HDInsight a webhcat használatával fogadott hibák megértése és megoldása
 
@@ -40,7 +40,7 @@ Ismerje meg hibaüzenetek érkeztek az WebHCat használata a HDInsight és azok 
 
 Túllépik a következő alapértelmezett értékek, ha azt WebHCat teljesítményét, vagy hibákat okoznak:
 
-| Beállítás | Művelet | Alapértelmezett érték |
+| Beállítás | Funkció | Alapértelmezett érték |
 | --- | --- | --- |
 | [yarn.Scheduler.Capacity.maximum – alkalmazások][maximum-applications] |Aktív lehet egyidejű feladatok maximális száma (függőben lévő vagy futó) |10,000 |
 | [templeton.exec.max-procs][max-procs] |Is kiszolgálható kérelmek maximális száma |20 |
@@ -50,7 +50,7 @@ Túllépik a következő alapértelmezett értékek, ha azt WebHCat teljesítmé
 
 **HTTP-állapotkód**: 429-es
 
-| Ok | Megoldás: |
+| Ok | Felbontás |
 | --- | --- |
 | Túllépte az egyidejű kérések maximális / perc (alapértelmezett érték 20) WebHCat által kiszolgált |Csökkentse az egyidejű kérelmek maximális száma nagyobb a számítási feladat annak biztosítása érdekében, hogy Ön nem küldenek, vagy növelje a párhuzamos kérés módosításával `templeton.exec.max-procs`. További információkért lásd: [konfiguráció módosítása](#modifying-configuration) |
 
@@ -58,7 +58,7 @@ Túllépik a következő alapértelmezett értékek, ha azt WebHCat teljesítmé
 
 **HTTP-állapotkód**: 503-as
 
-| Ok | Megoldás: |
+| Ok | Felbontás |
 | --- | --- |
 | Ezzel az állapotkóddal általában akkor fordul elő az elsődleges és másodlagos Átjárócsomópont a fürt közötti feladatátvétel során |Várjon két percet, majd próbálja megismételni a műveletet |
 
@@ -66,7 +66,7 @@ Túllépik a következő alapértelmezett értékek, ha azt WebHCat teljesítmé
 
 **HTTP-állapotkód**: 400
 
-| Ok | Megoldás: |
+| Ok | Felbontás |
 | --- | --- |
 | Feladat részletei törölve lettek a feladatelőzmények által iterálásakor |Feladatelőzmények megőrzési idő alapértelmezés szerint 7 nap. Az alapértelmezett megőrzési időtartamot is módosítható módosításával `mapreduce.jobhistory.max-age-ms`. További információkért lásd: [konfiguráció módosítása](#modifying-configuration) |
 | Feladat leállította a feladatátvétel miatt |Ismételje meg a feladat elküldése két percre |
@@ -76,7 +76,7 @@ Túllépik a következő alapértelmezett értékek, ha azt WebHCat teljesítmé
 
 **HTTP-állapotkód**: 502-es
 
-| Ok | Megoldás: |
+| Ok | Felbontás |
 | --- | --- |
 | Belső szemétgyűjtés történik, a WebHCat folyamaton belül |Várjon, amíg befejeződik, vagy indítsa újra a WebHCat szolgáltatást szemétgyűjtés |
 | Az erőforrás-kezelő szolgáltatás válaszára várakozás időkorlátja. Ez a hiba akkor fordulhat elő, ha aktív kérelmek száma a beállított maximális értéket (alapértelmezés: 10 000) |Várjon, amíg a jelenleg futó feladatok elvégzéséhez, vagy növelheti az egyidejű feladat módosításával `yarn.scheduler.capacity.maximum-applications`. További információkért lásd: a [módosítása konfigurációs](#modifying-configuration) szakaszban. |

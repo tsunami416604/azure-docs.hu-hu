@@ -1,9 +1,9 @@
 ---
-title: Azure Service Fabric tárolószolgáltatások csoportosan felügyelt szolgáltatásfiók beállítása |} Microsoft Docs
-description: Ismerje meg, ha folytatni szeretné az Azure Service Fabric-beli tárolója csoportosan felügyelt szolgáltatásfiók beállítása.
+title: Az Azure Service Fabric-tároló szolgáltatások csoportosan felügyelt szolgáltatásfiók beállítása |} A Microsoft Docs
+description: Ismerje meg most, hogy az Azure Service Fabric egy tárolóban használt csoportosan felügyelt szolgáltatásfiók beállítása.
 services: service-fabric
 documentationcenter: .net
-author: mani-ramaswamy
+author: TylerMSFT
 manager: timlt
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2018
-ms.author: subramar
-ms.openlocfilehash: e4cd0b42e21609f88edc28c8fd7b5c433d56b3c1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: twhitney, subramar
+ms.openlocfilehash: 1adb2e7fcf5542c3f422bf073e5085717c5b82e4
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209093"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299741"
 ---
-# <a name="set-up-gmsa-for-windows-containers-running-on-service-fabric"></a>A Service Fabric futó Windows-tárolók csoportosan felügyelt szolgáltatásfiók beállítása
+# <a name="set-up-gmsa-for-windows-containers-running-on-service-fabric"></a>A Service Fabricen futó Windows-tárolók csoportosan felügyelt szolgáltatásfiók beállítása
 
-Csoportosan felügyelt szolgáltatásfiók (felügyelt szolgáltatásfiókok. csoport), a hitelesítő adatok megadását fájlját beállítása (`credspec`) helyezkedik el a fürt összes csomópontján. A fájl az összes olyan csomóponton, a Virtuálisgép-bővítmény használatával lehet másolni.  A `credspec` fájl tartalmaznia kell a csoportosan felügyelt fiók adatait. További információ a `credspec` fájl című [szolgáltatásfiókok](https://github.com/MicrosoftDocs/Virtualization-Documentation/tree/live/windows-server-container-tools/ServiceAccounts). A hitelesítő adatok megadását és a `Hostname` címke meg van határozva a az alkalmazás jegyzékében. A `Hostname` címke meg kell egyeznie a tárolóban fut, a csoportosan felügyelt szolgáltatásfiók fióknevet.  A `Hostname` címke lehetővé teszi, hogy a tárolót, hogy hitelesítse magát a Kerberos-hitelesítés tartományban más szolgáltatásokhoz.  Adja meg a minta a `Hostname` és a `credspec` az alkalmazás a jegyzékben megjelenik-e a a következő kódrészletet:
+Csoportosan felügyelt szolgáltatásfiókok (felügyelt szolgáltatásfiókok csoportot), a hitelesítő adatok specifikáció fájl beállítása (`credspec`) a fürt minden csomópontján el van helyezve. A fájl átmásolható egy Virtuálisgép-bővítménnyel minden csomóponton.  A `credspec` fájlnak tartalmaznia kell a gMSA-fiók adatait. További információ a `credspec` fájlt [szolgáltatásfiókok](https://github.com/MicrosoftDocs/Virtualization-Documentation/tree/live/windows-server-container-tools/ServiceAccounts). A hitelesítő adatok meghatározása és a `Hostname` az alkalmazásjegyzékben megadott címkével. A `Hostname` címkének egyeznie kell a tároló fut a gMSA-fiók neve.  A `Hostname` címke lehetővé teszi, hogy a tároló hitelesítse magát a tartományban, a Kerberos-hitelesítést használó más szolgáltatásokhoz.  Adjon meg egy minta a `Hostname` és a `credspec` jegyzékfájlt, az alkalmazás az alábbi kódrészletben látható:
 
 ```xml
 <Policies>
@@ -34,5 +34,5 @@ Csoportosan felügyelt szolgáltatásfiók (felügyelt szolgáltatásfiókok. cs
 ```
 A következő lépésben olvassa el a következő cikkeket:
 
-* [A Service Fabric Windows Server 2016 egy Windows-tároló telepítése](service-fabric-get-started-containers.md)
-* [Telepítse a Service Fabric Linux egy Docker-tároló](service-fabric-get-started-containers-linux.md)
+* [Egy Windows-tároló üzembe helyezése a Service Fabric Windows Server 2016-on](service-fabric-get-started-containers.md)
+* [Egy Docker-tároló üzembe helyezése a Service fabric Linux rendszeren](service-fabric-get-started-containers-linux.md)

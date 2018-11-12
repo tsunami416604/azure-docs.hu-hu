@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: cc7bcefe43eed524f50fcad09d7fb31a80d22b83
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: e06b9ff2134c0bd1fb1ee8515827e9e8c06a3108
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025803"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51008470"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Hajtsa végre az erőforrások közötti naplókeresések a Log Analyticsben  
 
@@ -38,7 +38,7 @@ Munkaterület azonosítása, lehet, hogy számos módon elvégezhető az egyik:
 
 * Erőforrás - név a munkaterület, más néven egy természetes nyelven olvasható neve *összetevőnév*. 
 
-    `workspace("contosoretail").Update | count`
+    `workspace("contosoretail-it").Update | count`
  
     >[!NOTE]
     >A munkaterület azonosítása név alapján feltételezi, hogy az egyedi-e az összes elérhető előfizetés. Ha több alkalmazás a megadott névvel, a lekérdezés a kétértelműség miatt nem sikerült. Ebben az esetben az egyéb azonosítókhoz kötött egyikét kell használnia.
@@ -59,7 +59,7 @@ Munkaterület azonosítása, lehet, hogy számos módon elvégezhető az egyik:
 
     Példa:
     ``` 
-    workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail").Update | count
+    workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail-it").Update | count
     ```
 
 ### <a name="identifying-an-application"></a>Egy alkalmazás azonosítása

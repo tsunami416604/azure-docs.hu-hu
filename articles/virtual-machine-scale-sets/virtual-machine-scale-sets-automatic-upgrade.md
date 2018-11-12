@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: rajraj
-ms.openlocfilehash: cf25d08fc9a0e1ae458d350be93af31447928ecb
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: c8ba9ac3150b5a84b2902afaaefcf78c76764fed
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069454"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036190"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Az Azure virtuálisgép-méretezési csoport automatikus operációs rendszer lemezkép frissítéseinek beállítása
 
@@ -53,7 +53,7 @@ Jelenleg csak bizonyos operációs rendszer platform lemezképek támogatottak. 
 
 Jelenleg a következő termékváltozatok támogatottak (több hozzáadódik a jövőben):
     
-| Közzétevő               | Operációs ajánlat      |  SKU               |
+| Gyártó/kiadó               | Operációs ajánlat      |  Termékváltozat               |
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18.04-LTS *        | 
@@ -121,7 +121,7 @@ A load balancer mintavételi lehet hivatkozni a *networkProfile* a méretezési 
   ...
 ```
 > [!NOTE]
-> Operációs rendszer automatikus frissítéseinek használata a Service Fabric, az új operációsrendszer-képet bevezetési frissítési tartományt frissítési tartományonként a Service Fabric-ban futó szolgáltatások magas rendelkezésre állás fenntartása érdekében. A Service Fabric-fürtök tartóssági jellemzői további információkért tekintse meg [ebben a dokumentációban](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
+> Operációs rendszer automatikus frissítéseinek használata a Service Fabric, az új operációsrendszer-képet bevezetési frissítési tartományt frissítési tartományonként a Service Fabric-ban futó szolgáltatások magas rendelkezésre állás fenntartása érdekében. Hogy az operációs rendszer automatikus verziófrissítése, a Service Fabric a fürthöz konfigurálva a Silver szintű tartóssági szint vagy újabb kell lennie. A Service Fabric-fürtök tartóssági jellemzői további információkért tekintse meg [ebben a dokumentációban](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
 
 ### <a name="keep-credentials-up-to-date"></a>Tartsa naprakészen a hitelesítő adatok
 Ha a méretezési a hitelesítő adatokat használ a külső erőforrások eléréséhez, például ha egy Virtuálisgép-bővítményt van konfigurálva egy SAS-jogkivonatot használó tárfiók, szüksége lesz, hogy a hitelesítő adatok naprakészek maradnak. Ha a hitelesítő adatokat, többek között a tanúsítványok és a jogkivonatok érvényessége lejárt, a frissítés sikertelen lesz, és sikertelen állapotban marad az első kötegbe tartozó virtuális gépek.

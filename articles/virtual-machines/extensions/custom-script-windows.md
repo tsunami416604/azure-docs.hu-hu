@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: roiyz
-ms.openlocfilehash: 7396277c58b079dc2f0c68b7832a6f2ca57ee287
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 2c8ac43d96c100f0c26281fea1d4e9eba41bc178
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212301"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282329"
 ---
 # <a name="custom-script-extension-for-windows"></a>A Windows egyéni szkriptek futtatására szolgáló bővítmény
 
@@ -201,7 +201,7 @@ Set-AzureRmVMExtension -ResourceGroupName myRG
 ### <a name="how-to-run-custom-script-more-than-once-with-cli"></a>Egyéni parancsfájl egynél többször futtatása a parancssori felülettel
 Ha azt szeretné, az egyéni szkriptek futtatására szolgáló bővítmény futtatása egynél többször, csak ehhez ezen feltételek:
 1. A bővítmény "Név" paraméternek megegyezik a bővítmény a korábbi telepítésben.
-2. Egyéb konfigurációs a parancsot fog újbóli végrehajtása nem kell frissíteni, például hozzáadhatja a dinamikus tulajdonságban a parancsot, például egy időbélyegző. 
+2. Frissítenie kell a konfigurációt más módon a parancs nem lehet újra végrehajtja, például hozzáadhatja a dinamikus tulajdonságban a parancsot, például egy időbélyegző. 
 
 ## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
 

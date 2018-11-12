@@ -2,19 +2,18 @@
 title: Az Azure Functions kapcsolatok kezelése
 description: Megtanulhatja, hogyan teljesítményproblémákat okozhat az Azure Functions ügyfelek statikus kapcsolat használatával.
 services: functions
-documentationcenter: ''
 author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 07/13/2018
+ms.date: 11/02/2018
 ms.author: glenga
-ms.openlocfilehash: 6a877bb7f21b129522b9ffeab22eb77d7a556d53
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: eb5c302c807f85f24f53fa1ba32ef4cd7b52274a
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094799"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036461"
 ---
 # <a name="how-to-manage-connections-in-azure-functions"></a>Az Azure Functions kapcsolatok kezelése
 
@@ -37,9 +36,13 @@ Az alábbiakban néhány irányelv szükséges a következő szolgáltatásspeci
 - **Tegye** hozzon létre egy statikus ügyfél, amely minden függvény meghívási által használható.
 - **Érdemes lehet** statikus ügyfél létrehozása a megosztott segítőosztály, ha a különböző függvényeket használja ugyanazt a szolgáltatást.
 
-## <a name="httpclient-code-example"></a>HttpClient példakód
+## <a name="client-code-examples"></a>Ügyfél hitelesítésikód-példák
 
-Íme egy példa, amely létrehoz egy statikus függvénykód [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx):
+Ez a szakasz azt ismerteti, létrehozása és használata az ügyfelek a függvénykódot egy ajánlott eljárásai.
+
+### <a name="httpclient-example-c"></a>Példa HttpClient (C#)
+
+Íme egy példa C# kódot, amely létrehozza egy statikus függvényt [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx):
 
 ```cs
 // Create a single, static HttpClient
@@ -54,7 +57,27 @@ public static async Task Run(string input)
 
 A .NET kapcsolatos gyakori kérdések [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) "Kell I kell értékesítésére fejlesztek?" Általánosságban véve tud megszabadulni megvalósító objektumok `IDisposable` befejezése használja őket. A statikus ügyfél nem dobható el, mert nem kész, de amikor befejeződik a függvényt használja. Azt szeretné, hogy a statikus ügyfél élő az alkalmazás időtartamára.
 
-## <a name="documentclient-code-example"></a>DocumentClient-példakód
+### <a name="http-agent-examples-nodejs"></a>HTTP-ügynök példák (Node.js)
+
+Jobb kapcsolat felügyeleti lehetőségeket biztosít, mivel a natív használata javasolt [ `http.agent` ](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) osztály helyett nem natív módszerek, például a `node-fetch` modul. Kapcsolódási paraméterek vannak konfigurálva, a beállítások használatával a `http.agent` osztály. Lásd: [új ügynök (\[beállítások\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options) HTTP-ügynökkel rendelkező rendelkezésre álló részletes lehetőségeket.
+
+A globális `http.globalAgent` által használt `http.request()` összes ezeket az értékeket saját értékeit. Az ajánlott módszer a kapcsolat korlátai funkciók konfigurálására, hogy globálisan állítson be maximális számot. Az alábbi példa állítja be a függvényalkalmazás sockets maximális száma:
+
+```js
+http.globalAgent.maxSockets = 200;
+```
+
+ Az alábbi példa egy új HTTP-kérést hoz létre egy egyéni HTTP-ügynök csak az adott kérelmet.
+
+```js
+var http = require('http');
+var httpAgent = new http.Agent();
+httpAgent.maxSockets = 200;
+options.agent = httpAgent;
+http.request(options, onResponseCallback);
+```
+
+### <a name="documentclient-code-example-c"></a>DocumentClient példakód (C#)
 
 [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
 ) egy Azure Cosmos DB-példányhoz csatlakozik. Az Azure Cosmos DB-dokumentáció azt javasolja, hogy Ön [egyedülálló Azure Cosmos DB-ügyfél használata az alkalmazás teljes élettartama](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage). Az alábbi példa bemutatja egy függvény adatelemzésre, amely egy minta:

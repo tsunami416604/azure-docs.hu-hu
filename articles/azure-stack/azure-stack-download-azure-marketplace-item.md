@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/19/2018
+ms.date: 11/08/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: b5c2c51429e37eea2473ae5966b1f41295875cb6
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: ec73083d1bb66e7c7735a2bee8e89eeb56cf7620
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638171"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282498"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Az Azure marketplace-elemek letöltése az Azure Stackhez
 
@@ -168,8 +168,10 @@ Ebben a forgatókönyvben két részből áll:
 
    Beszerezheti a *közzétevő*, *ajánlat*, és *termékváltozat* a szövegfájl, amely letölti a AZPKG fájl a lemezkép értékét. A szöveges fájlt tárolja a célhelyen. A *verzió* értéke a verziót, ha az elem letöltése az Azure-ból az előző eljárásban feljegyzett. 
  
-   A következő példa parancsfájlt a Windows Server 2016 Datacenter - Server Core virtuális gép értékeit kell használni. Az érték *- Osuri* van egy példa az elem a blob storage helyének elérési útját.
+   A következő példa parancsfájlt a Windows Server 2016 Datacenter - Server Core virtuális gép értékeit kell használni. Az érték *- Osuri* van egy példa az elem a blob storage helyének elérési útját. 
 
+   Ez a szkript alternatívájaként használhatja a [ebben a cikkben leírt eljárás](azure-stack-add-vm-image.md#add-a-vm-image-through-the-portal) importálása a. VHD-lemezképet az Azure portal használatával.
+ 
    ```PowerShell  
    Add-AzsPlatformimage `
     -publisher "MicrosoftWindowsServer" `
@@ -179,6 +181,7 @@ Ebben a forgatókönyvben két részből áll:
     -Version "2016.127.20171215" `
     -OsUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.vhd"  
    ```
+   
    **Megoldássablonok kapcsolatos:** bizonyos sablonok lehetnek egy kis 3 MB. VHD-fájl nevű **fixed3.vhd**. Nem kell ezt a fájlt importálja az Azure Stackhez. Fixed3.vhd.  Ez a fájl megtalálható néhány megoldássablonokkal, az Azure Marketplace közzétételi igényeinek megfelelően.
 
    Tekintse át a sablon leírása, és töltse le és importálja a további követelményeket, például VHD-k, amelyek szükségesek a megoldás sablonnal dolgozni.  

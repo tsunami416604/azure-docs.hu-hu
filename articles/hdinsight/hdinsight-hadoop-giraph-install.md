@@ -2,19 +2,19 @@
 title: Giraph telepítése és használata a HDInsight - Azure Hadoop-fürtök
 description: Ismerje meg, hogyan szabhatja testre a HDInsight-fürt a Giraph és a Giraph használata.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/05/2016
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0cf866ee472717c6021922927713ef0bf8817271
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 6138cc337c35924405fa3f6489e7e40bfc5779c9
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093244"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51007008"
 ---
 # <a name="install-and-use-giraph-on-windows-based-hdinsight-clusters"></a>Giraph telepítése és használata a Windows-alapú HDInsight-fürtökön
 
@@ -47,7 +47,7 @@ Telepítheti a Giraph bármilyen típusú Azure HDInsight (Hadoop-, Storm, HBase
     ![Fürt testreszabása Szkriptműveletek használatával](./media/hdinsight-hadoop-giraph-install/hdi-script-action-giraph.png "Szkriptműveleteket használata a fürt testreszabása")
 
     <table border='1'>
-        <tr><th>Tulajdonság</th><th>Érték</th></tr>
+        <tr><th>Tulajdonság</th><th>Value (Díj)</th></tr>
         <tr><td>Name (Név)</td>
             <td>Adja meg a parancsfájlművelet nevét. Ha például <b>telepíteni a Giraph</b>.</td></tr>
         <tr><td>Szkript URI-ja</td>

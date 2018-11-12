@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 62b5c8fd0a63e660cd4126755d94ea90cf4d412b
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 461c6e3cbdfcc5ef8207277b08ad4a8cf492f796
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961160"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51282798"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Metrikákhoz kapcsolódó riasztások létrehozása az Azure Monitor-naplók  
 
 ## <a name="overview"></a>Áttekintés
-Az Azure Monitor támogatja [metric riasztástípus](monitoring-near-real-time-metric-alerts.md) előnyt amely felett az [klasszikus riasztások](insights-alerts-portal.md). Metrikák érhetők el a [az Azure-szolgáltatások nagy lista](monitoring-supported-metrics.md). Ez a cikk azt ismerteti, alhálózatát (az) erőforrás - használat `Microsoft.OperationalInsights/workspaces`. 
+Az Azure Monitor támogatja [metric riasztástípus](monitoring-near-real-time-metric-alerts.md) előnyt amely felett az [klasszikus riasztások](alert-metric-classic.md). Metrikák érhetők el a [az Azure-szolgáltatások nagy lista](monitoring-supported-metrics.md). Ez a cikk azt ismerteti, alhálózatát (az) erőforrás - használat `Microsoft.OperationalInsights/workspaces`. 
 
 Metrikákhoz kapcsolódó riasztások használhatja a népszerű Log Analytics-naplók, metrikák, naplók, beleértve az erőforrásokat az Azure-ban vagy a helyi mérőszámainak részeként ki kell olvasni. A támogatott Log Analytics-megoldások az alábbiak:
 - [Teljesítményszámlálók](../log-analytics/log-analytics-data-sources-performance-counters.md) Windows és Linux rendszerű gépek

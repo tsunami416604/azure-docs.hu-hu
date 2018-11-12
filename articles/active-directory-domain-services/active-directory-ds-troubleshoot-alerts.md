@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: a6928b5a849f35456a6fb7699acd7720f686c2aa
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: c4aa5786ea1dfbef32c40306de6291ebeb2fe6f8
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243061"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51036138"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Az Azure AD Domain Services – riasztások hibaelhárítása
 A cikk ismerteti a hibaelhárítási útmutatók tapasztalhat a felügyelt tartományra a riasztás.
@@ -39,13 +39,15 @@ Válassza ki a hibaelhárítási lépéseket, amelyek megfelelnek a azonosítój
 | AADDS105 | *A szolgáltatásnév "d87dcbc6-a371-462e-88e3-28ad15ec4e64" Alkalmazásazonosítóval rendelkező lett törölve, és majd újra létrehozza. Az újbóli hagy hátra inkonzisztens engedélyeket a szükséges szolgáltatást a felügyelt tartományhoz az Azure AD tartományi szolgáltatások erőforrásait. A felügyelt tartományra a jelszó-szinkronizálás is hatással lehet.* | [A jelszó-szinkronizálás alkalmazás nem naprakész](active-directory-ds-troubleshoot-service-principals.md#alert-aadds105-password-synchronization-application-is-out-of-date) |
 | AADDS106 | *Az a felügyelt tartományhoz társított Azure-előfizetés törölve lett.  Az Azure AD tartományi szolgáltatások továbbra is megfelelően működik-e az aktív előfizetést igényel.* | [Azure-előfizetés nem található](#aadds106-your-azure-subscription-is-not-found) |
 | AADDS107 | *Az a felügyelt tartományhoz társított Azure-előfizetés nem lesz aktív.  Az Azure AD tartományi szolgáltatások továbbra is megfelelően működik-e az aktív előfizetést igényel.* | [Azure-előfizetés le van tiltva.](#aadds107-your-azure-subscription-is-disabled) |
-| AADDS108 | *A felügyelt tartomány használt erőforrás törölve lett. Azure AD Domain Services megfelelő működéséhez szükség van ehhez az erőforráshoz.* | [Erőforrás törölve lett](#aadds108-resources-for-your-managed-domain-cannot-be-found) |
-| AADDS109 | *Az Azure AD Domain Services telepítésre kijelölt alhálózat megtelt, és nincs hely a további tartományvezérlő kell létrehozni.* | [Alhálózat megtelt.](#aadds109-the-subnet-associated-with-your-managed-domain-is-full) |
-| AADDS110 | *Azonosítottuk, hogy a tartomány a virtuális hálózat alhálózatának előfordulhat, hogy nincs elegendő IP-címet. Az Azure AD Domain Services kell legalább két rendelkezésre álló IP-címet a engedélyezve van az alhálózaton belül. Javasoljuk, hogy legalább 3 – 5 tartalék IP-címek az alhálózaton belül. Ez azért fordulhatott elő, ha más virtuális gépek vannak telepítve az alhálózatban, így kimerítsék a számos elérhető IP-címek vagy az alhálózaton elérhető IP-címek számának korlátozása.* | [Nincs elegendő IP-címek](#aadds110-not-enough-ip-address-in-the-managed-domain) |
-| AADDS111 | *Egy vagy több, a hálózat által használt erőforrások a felügyelt tartomány nem működik a módon célhatóköre zárolva van.* | [Zárolt erőforrások](#aadds111-resources-are-locked) |
-| AADDS112 | *Egy vagy több, a felügyelt tartomány által használt erőforrások nem működik a szabályzat restriction(s) miatt.* | [Erőforrások használhatatlanná válnak.](#aadds112-resources-are-unusable) |
+| AADDS108 | *Az Azure AD tartományi szolgáltatások által használt előfizetés át lett helyezve egy másik könyvtárra. Az Azure AD Domain Services rendelkeznie kell aktív előfizetés megfelelően működik-e ugyanabban a címtárban.* | [Az előfizetés áthelyezése könyvtárak](#aadds108-subscription-moved-directories) |
+| AADDS109 | *A felügyelt tartomány használt erőforrás törölve lett. Azure AD Domain Services megfelelő működéséhez szükség van ehhez az erőforráshoz.* | [Erőforrás törölve lett](#aadds109-resources-for-your-managed-domain-cannot-be-found) |
+| AADDS110 | *Az Azure AD Domain Services telepítésre kijelölt alhálózat megtelt, és nincs hely a további tartományvezérlő kell létrehozni.* | [Alhálózat megtelt.](#aadds110-the-subnet-associated-with-your-managed-domain-is-full) |
+| AADDS111 | * Egyszerű szolgáltatás, amely az Azure AD tartományi szolgáltatásokat használ a tartomány nem jogosult az Azure-előfizetés erőforrásainak kezelése. A szolgáltatásnévnek kell a szolgáltatás a felügyelt tartományra a jogosultságokat. * | [Egyszerű szolgáltatás nem engedélyezett](#aadds111-service-principal-unauthorized) |
+| AADDS112 | *Azonosítottuk, hogy a tartomány a virtuális hálózat alhálózatának előfordulhat, hogy nincs elegendő IP-címet. Az Azure AD Domain Services kell legalább két rendelkezésre álló IP-címet a engedélyezve van az alhálózaton belül. Javasoljuk, hogy legalább 3 – 5 tartalék IP-címek az alhálózaton belül. Ez azért fordulhatott elő, ha más virtuális gépek vannak telepítve az alhálózatban, így kimerítsék a számos elérhető IP-címek vagy az alhálózaton elérhető IP-címek számának korlátozása.* | [Nincs elegendő IP-címek](#aadds112-not-enough-ip-address-in-the-managed-domain) |
 | AADDS113 | *Az Azure AD tartományi szolgáltatások által használt erőforrásokat egy nem várt állapotot észlelt, és nem állítható helyre.* | [Erőforrások helyreállíthatatlan](#aadds113-resources-are-unrecoverable) |
-| AADDS114 | * Az azure AD tartományi szolgáltatások tartományvezérlők nem érhetők el a 443-as port. Szükség esetén a szolgáltatás, kezelhet és frissíthet a felügyelt tartományhoz. * | [442 blokkolt port](#aadds114-port-443-blocked) |
+| AADDS114 | * Az Azure AD tartományi szolgáltatások üzembe helyezéshez kiválasztott alhálózatban nem érvényes, és nem használható. * | [Érvénytelen alhálózat](#aadds114-subnet-invalid) |
+| AADDS115 | *Egy vagy több, a hálózat által használt erőforrások a felügyelt tartomány nem működik a módon célhatóköre zárolva van.* | [Zárolt erőforrások](#aadds115-resources-are-locked) |
+| AADDS116 | *Egy vagy több, a felügyelt tartomány által használt erőforrások nem működik a szabályzat restriction(s) miatt.* | [Erőforrások használhatatlanná válnak.](#aadds116-resources-are-unusable) |
 | AADDS500 | *A felügyelt tartomány volt utoljára szinkronizálva az Azure ad-vel [Date]. Előfordulhat, hogy a felhasználók nem jelentkezhetnek be a felügyelt tartományon, vagy a csoporttagságot nem lehet az Azure ad-vel szinkronizált.* | [Szinkronizálás egy ideje még nem történt.](#aadds500-synchronization-has-not-completed-in-a-while) |
 | AADDS501 | *A felügyelt tartomány legutolsó biztonsági mentése [Date].* | [Még nem került sor a biztonsági mentést, egy ideje](#aadds501-a-backup-has-not-been-taken-in-a-while) |
 | AADDS502 | *A felügyelt tartomány secure LDAP-tanúsítványt [date]-én jár le.* | [Biztonságos LDAP-tanúsítvány hamarosan lejár](active-directory-ds-troubleshoot-ldaps.md#aadds502-secure-ldap-certificate-expiring) |
@@ -138,7 +140,17 @@ Az Azure AD Domain Services függvény-előfizetést igényel, és nem helyezhet
 1. [Az Azure-előfizetés megújítása](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable).
 2. Az előfizetés megújítása esetén az Azure AD Domain Services egy értesítést fog kapni az Azure és engedélyezze újra a felügyelt tartományra.
 
-## <a name="aadds108-resources-for-your-managed-domain-cannot-be-found"></a>AADDS108: A felügyelt tartományhoz tartozó erőforrás nem található
+## <a name="aadds108-subscription-moved-directories"></a>AADDS108: Az előfizetés áthelyezése könyvtárak
+
+**Riasztás jelenik meg:**
+
+*Az Azure AD tartományi szolgáltatások által használt előfizetés át lett helyezve egy másik könyvtárra. Az Azure AD Domain Services rendelkeznie kell aktív előfizetés megfelelően működik-e ugyanabban a címtárban.*
+
+**Megoldás:**
+
+Vagy áthelyezheti az előfizetéshez társított vissza az előző címtár az Azure AD tartományi szolgáltatásokat, vagy szüksége [a felügyelt tartomány törlése](active-directory-ds-disable-aadds.md) a létező címtárból, és hozza létre újra a kiválasztott könyvtár (vagy egy új előfizetést, vagy módosítsa a könyvtárat az Azure AD Domain Services-példány van).
+
+## <a name="aadds109-resources-for-your-managed-domain-cannot-be-found"></a>AADDS109: A felügyelt tartományhoz tartozó erőforrás nem található
 
 **Riasztás jelenik meg:**
 
@@ -149,15 +161,15 @@ Az Azure AD Domain Services függvény-előfizetést igényel, és nem helyezhet
 Az Azure AD Domain Services adott az erőforrásokat hozza létre annak érdekében, hogy a megfelelő működéshez üzembe helyezése során többek között a nyilvános IP-címek, a hálózati adapterek és a egy terheléselosztó. A megnevezett bármelyikét törlődnek, ha ez egy nem támogatott állapotban kell lennie a felügyelt tartomány okoz, és megakadályozza, hogy a tartomány felügyelete alatt áll. Ez a riasztás amikor valakivel, aki képes szerkeszteni az Azure AD Domain Services-erőforrások törli egy szükséges erőforrás található. Hogyan lehet visszaállítani a felügyelt tartomány lépései.
 
 1.  Keresse meg az Azure AD tartományi szolgáltatások health-oldal
-  1.    Utazás a [Azure AD tartományi szolgáltatások lap]() az Azure Portalon.
+  1.    Utazás a [Azure AD tartományi szolgáltatások lap](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) az Azure Portalon.
   2.    A bal oldali navigációs sávján kattintson **állapota**
 2.  Ellenőrizze, hogy ha a riasztás-e a kevesebb mint 4 órája jött létre
-  1.    Az oldalt, kattintson a riasztás azonosítójú **AADDS108**
+  1.    Az oldalt, kattintson a riasztás azonosítójú **AADDS109**
   2.    A riasztás számára, amikor először található időbélyeg fog rendelkezni. Ha az időbélyeg kevesebb mint 4 órája, esetén megvan az esélye, hogy az Azure AD tartományi szolgáltatások újra létrehozhatja a törölt erőforráscsoport.
 3.  Ha a riasztás több mint 4 órája jött létre, a felügyelt tartomány helyreállíthatatlan állapotban van. Törölnie kell, majd hozza létre újra az Azure AD tartományi szolgáltatásokat.
 
 
-## <a name="aadds109-the-subnet-associated-with-your-managed-domain-is-full"></a>AADDS109: Az a felügyelt tartományhoz társított alhálózat megtelt
+## <a name="aadds110-the-subnet-associated-with-your-managed-domain-is-full"></a>AADDS110: Az a felügyelt tartományhoz társított alhálózat megtelt
 
 **Riasztás jelenik meg:**
 
@@ -167,8 +179,21 @@ Az Azure AD Domain Services adott az erőforrásokat hozza létre annak érdeké
 
 Ez a hiba nem állítható helyre. Háríthatja el kell [törölje a meglévő felügyelt tartományt](active-directory-ds-disable-aadds.md) és [hozza létre újra a felügyelt tartományhoz](active-directory-ds-getting-started.md)
 
+## <a name="aaddds111-service-principal-unauthorized"></a>AADDDS111: Egyszerű szolgáltatás nem engedélyezett
 
-## <a name="aadds110-not-enough-ip-address-in-the-managed-domain"></a>AADDS110: Nincs elegendő IP-cím a felügyelt tartományban
+**Riasztás jelenik meg:**
+
+*A tartomány használ az Azure AD Domain Services egyszerű szolgáltatás nem jogosult az Azure-előfizetés erőforrásainak kezelése. A szolgáltatásnévnek kell a szolgáltatás a felügyelt tartományra a jogosultságokat.*
+
+**Megoldás:**
+
+Az egyszerű szolgáltatások kezeléséhez és a felügyelt tartományban lévő erőforrások létrehozása hozzá kell férniük. Valaki megtagadta a szolgáltatásnév hozzáférhessen, és most már nem tudja erőforrások kezeléséhez. Kövesse a szolgáltatásnévvel való hozzáférést.
+
+1. További információ [RBAC vezérlő és az Azure Portalon alkalmazásokhoz való hozzáférés biztosításának módja](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+2. Tekintse át a hozzáférést, amely a szolgáltatásnév azonosítójú ```abba844e-bc0e-44b0-947a-dc74e5d09022``` és a egy korábbi időpontban megtagadta a hozzáférést.
+
+
+## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112: Nincs elegendő IP-cím a felügyelt tartományban
 
 **Riasztás jelenik meg:**
 
@@ -189,7 +214,27 @@ Ez a hiba nem állítható helyre. Háríthatja el kell [törölje a meglévő f
 4. Tartományhoz való csatlakozás a virtuális gépek az új tartományba, hajtsa végre a [Ez az útmutató](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
 5. A tartomány állapotának ellenőrzése annak biztosítása érdekében, hogy végrehajtotta a lépéseket megfelelően két órán belül.
 
-## <a name="aadds111-resources-are-locked"></a>AADDS111: Erőforrások zárolt
+## <a name="aadds113-resources-are-unrecoverable"></a>AADDS113: Erőforrások helyreállíthatatlan
+
+**Riasztás jelenik meg:**
+
+*Az Azure AD tartományi szolgáltatások által használt erőforrásokat egy nem várt állapotot észlelt, és nem állítható helyre.*
+
+**Megoldás:**
+
+Ez a hiba nem állítható helyre. Háríthatja el kell [törölje a meglévő felügyelt tartományt](active-directory-ds-disable-aadds.md) és [hozza létre újra a felügyelt tartomány](active-directory-ds-getting-started.md).
+
+## <a name="aadds114-subnet-invalid"></a>AADDS114: Alhálózat érvénytelen
+
+**Riasztás jelenik meg:**
+
+*Az Azure AD tartományi szolgáltatások üzembe helyezéshez kiválasztott alhálózatban nem érvényes, és nem használható.*
+
+**Megoldás:**
+
+Ez a hiba nem állítható helyre. Háríthatja el kell [törölje a meglévő felügyelt tartományt](active-directory-ds-disable-aadds.md) és [hozza létre újra a felügyelt tartomány](active-directory-ds-getting-started.md).
+
+## <a name="aadds115-resources-are-locked"></a>AADDS115: Erőforrások zárolt
 
 **Riasztás jelenik meg:**
 
@@ -200,8 +245,7 @@ Ez a hiba nem állítható helyre. Háríthatja el kell [törölje a meglévő f
 1.  Tekintse át a Resource Manager-művelet jelentkezik be a hálózati erőforrások (Ez adjon info melyik zárolására módosítása miatt).
 2.  Távolítsa el a zárolások az erőforrásokon, úgy, hogy az Azure AD Domain Services egyszerű szolgáltatás működhet rajtuk.
 
-
-## <a name="aadds112-resources-are-unusable"></a>AADDS112: Erőforrások nem használható
+## <a name="aadds116-resources-are-unusable"></a>AADDS116: Erőforrások nem használható
 
 **Riasztás jelenik meg:**
 
@@ -209,28 +253,9 @@ Ez a hiba nem állítható helyre. Háríthatja el kell [törölje a meglévő f
 
 **Megoldás:**
 
-1.  Tekintse át a Resource Manager-műveletet naplózza a a hálózati erőforrásokat a felügyelt tartományok
+1.  Tekintse át a Resource Manager-műveletet a hálózati erőforrások, a felügyelt tartományhoz tartozó bejelentkezik.
 2.  Gyengíthetik a szabályzatok korlátozásai az erőforrásokon, úgy, hogy az AAD-DS egyszerű szolgáltatás működhet rajtuk.
 
-## <a name="aadds113-resources-are-unrecoverable"></a>AADDS113: Erőforrások helyreállíthatatlan
-
-**Riasztás jelenik meg:**
-
-*Az Azure AD tartományi szolgáltatások által használt erőforrásokat egy nem várt állapotot észlelt, és nem állítható helyre.*
-
-**Megoldás:**
-
-Ez a hiba nem állítható helyre. Háríthatja el kell [törölje a meglévő felügyelt tartományt](active-directory-ds-disable-aadds.md) és [hozza létre újra a felügyelt tartományhoz](active-directory-ds-getting-started.md)
-
-## <a name="aadds114-port-443-blocked"></a>AADDS114: 443-as blokkolt Port
-
-**Riasztás jelenik meg:**
-
-*Tartományvezérlők nem érhetők el az Azure AD tartományi szolgáltatások a 443-as port. Szükség esetén a szolgáltatás, kezelhet és frissíthet a felügyelt tartományhoz.*
-
-**Megoldás:**
-
-A hálózati biztonsági csoport a 443-as porton keresztül bejövő hozzáférés engedélyezése az Azure AD tartományi szolgáltatásokhoz.
 
 
 ## <a name="aadds500-synchronization-has-not-completed-in-a-while"></a>AADDS500: Szinkronizálása nem befejeződött egy ideje
@@ -255,7 +280,7 @@ Az alábbiakban néhány gyakori okáról, miért leállítja a szinkronizálás
 
 **Megoldás:**
 
-[Ellenőrizze a tartomány állapotának](active-directory-ds-check-health.md) riasztás, amely a felügyelt tartomány konfigurációjában kapcsolatos problémákat jelezhet. Egyes esetekben a konfigurációval kapcsolatos problémák blokkolhatja a Microsoft képes szinkronizálni a felügyelt tartományt. Ha tudja feloldani a riasztásokat, várjon két óra és ellenőrzés biztonsági megtekintheti, ha a szinkronizálás befejeződött.
+[Ellenőrizze a tartomány állapotának](active-directory-ds-check-health.md) riasztás, amely a felügyelt tartomány konfigurációjában kapcsolatos problémákat jelezhet. Egyes esetekben a konfigurációval kapcsolatos problémák blokkolhatja a Microsoft képes biztonsági mentésre a felügyelt tartományra. Ha tudja feloldani a riasztásokat, várjon két óra és ellenőrzése biztonsági megtekintheti, ha a biztonsági mentés befejeződött.
 
 
 ## <a name="aadds503-suspension-due-to-disabled-subscription"></a>AADDS503: Letiltott előfizetés miatt felfüggesztése

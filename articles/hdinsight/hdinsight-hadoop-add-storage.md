@@ -2,19 +2,19 @@
 title: A HDInsight további Azure storage-fiókok hozzáadása
 description: Ismerje meg, további Azure storage-fiókok hozzáadása egy meglévő HDInsight-fürthöz.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.author: jasonh
+ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: bdf4c7527e2c0056b2de2321fbae280e9008cb1b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 31461e1d316953c2e69d252f1313180c57562dfd
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990673"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51009191"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>A HDInsight további tárfiókok hozzáadása
 
@@ -23,7 +23,7 @@ Ismerje meg, hogy parancsfájlműveletekkel további Azure storage-fiókok hozz�
 > [!IMPORTANT]
 > A jelen dokumentumban lévő információk további tárhely hozzáadása egy fürt létrehozása után van. Információk a storage-fiókok hozzáadása a fürt létrehozása során: [fürtök beállítása a HDInsight a Hadoop, Spark, Kafka és további](hdinsight-hadoop-provision-linux-clusters.md).
 
-## <a name="how-it-works"></a>Működés
+## <a name="how-it-works"></a>Működési elv
 
 Ez a szkript a következő paramétereket fogadja:
 

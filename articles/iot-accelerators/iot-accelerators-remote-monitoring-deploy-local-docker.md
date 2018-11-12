@@ -1,6 +1,6 @@
 ---
 title: A távoli figyelési megoldás helyileg – Docker - üzembe helyezése Azure |} A Microsoft Docs
-description: Ez az útmutató bemutatja, hogyan helyezze üzembe a távoli figyelési megoldásgyorsító teszteléshez és fejlesztéshez a helyi gépen.
+description: Ez az útmutató bemutatja, hogyan lehet a távoli figyelési megoldásgyorsító üzembe helyezése a helyi gépen a Docker használatával teszteléshez és fejlesztéshez.
 author: avneet723
 manager: hegate
 ms.author: avneet723
@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 91f43473a5648be5264038993f43b61887e0c363
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 46cd16c1667d3b33501c1b5680baabf243509f67
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/08/2018
-ms.locfileid: "51284925"
+ms.locfileid: "51288544"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>A távoli figyelési megoldásgyorsító helyileg – a Docker üzembe helyezése
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-Ez a cikk bemutatja, hogyan való teszteléshez és fejlesztéshez a helyi gépre a távoli figyelési megoldásgyorsító üzembe helyezése. A cikk bemutatja, hogyan helyezhet üzembe a mikroszolgáltatások helyi Docker-tárolók. Egy helyi mikroszolgáltatások üzembe helyezés az alábbi cloud-szolgáltatásokat használja: az IoT Hub, Cosmos DB, az Azure Stream Analytics és az Azure Time Series Insights szolgáltatások a felhőben.
+Ez a cikk bemutatja, hogyan való teszteléshez és fejlesztéshez a helyi gépre a távoli figyelési megoldásgyorsító üzembe helyezése. Elsajátíthatja a mikroszolgáltatások helyi Docker-tárolók üzembe helyezése. Egy helyi mikroszolgáltatások üzembe helyezés az alábbi cloud-szolgáltatásokat használja: az IoT Hub, Cosmos DB, az Azure Stream Analytics és az Azure Time Series Insights szolgáltatások a felhőben.
 
 Ha meg szeretné futtatni a távoli figyelési megoldásgyorsító IDE-ben a helyi gépén, [üzembe helyezése a távoli figyelési megoldásgyorsító helyileg – Visual Studio](iot-accelerators-remote-monitoring-deploy-local.md).
 
@@ -70,13 +70,13 @@ docker-compose up
 Ez a parancs első futtatásakor Docker tölti le a mikroszolgáltatás-lemezképeket hozhat létre a helyi tárolókat a Docker hubból. A következő futtatásakor a Docker a tárolók a rendszer azonnal futtatja.
 
 > [!TIP]
-> Gyakran közzétesszük új Docker-rendszerképeket az új funkciókkal. Használhat következő csoportját cleanup parancsokat a helyi Docker-tárolók és a megfelelő rendszerképek előtt, kérje le a legújabb azokat. 
+> A Microsoft új Docker-rendszerképek gyakran közzéteszi az új funkciókkal. Használhatja következő csoportját cleanup parancsokat a helyi Docker-tárolók és a megfelelő rendszerképek előtt, kérje le a legújabb azokat:
 
-```cmd/sh
-docker list
-docker rm <list_of_containers>
-docker rmi <list_of_images>
-```
+    ```cmd/sh
+    docker list
+    docker rm <list_of_containers>
+    docker rmi <list_of_images>
+    ```
 
 Egy külön rendszerhéj használatával a tároló naplóinak megtekintéséhez. Először keresse ki a tárolót azonosító használatával a `docker ps` parancsot. Ezután `docker logs {container-id} --tail 1000` tekintheti meg a megadott tároló utolsó 1000 bejegyzéseket.
 
@@ -101,14 +101,4 @@ Használja a `docker-compose down --rmi all` paranccsal távolítsa el a Docker-
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
-
-> [!div class="checklist"]
-> * A helyi fejlesztési környezet beállítása
-> * A megoldásgyorsító konfigurálása
-> * A megoldásgyorsító üzembe helyezése
-> * Jelentkezzen be a megoldásgyorsító
-
 Most, hogy a távoli figyelési megoldás üzembe helyezte, a következő lépés, hogy [Fedezze fel a megoldás irányítópultján képességeit](quickstart-remote-monitoring-deploy.md).
-
-<!-- Next tutorials in the sequence -->

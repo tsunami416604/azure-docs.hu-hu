@@ -3,15 +3,15 @@ title: Automatizálhatja az Azure Site Recovery mobilitási szolgáltatás VMwar
 description: Ez a cikk segítségével automatizálhatja a telepítés a mobilitási szolgáltatást a System Center Configuration Managerrel, a VMware virtuális gépek és fizikai kiszolgálók Azure Site Recovery használata vész-helyreállítási.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: f14c02404dae5a923aabcd2df8279a6150c42f57
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8cf657b17b7607a8b56869edeabe37e1c5caf219
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215293"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012275"
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>Automatizálhatja a mobilitási szolgáltatás telepítése a System Center Configuration Managerrel
 
@@ -37,7 +37,7 @@ Azt is megteheti, automatizálhatja a mobilitási szolgáltatás telepítése [A
 > [!NOTE]
 > Ez a cikk azt feltételezi, hogy a konfigurációs kiszolgáló IP-címét 192.168.3.121, és hogy a biztonságos hálózati fájlmegosztás \\\ContosoSecureFS\MobilityServiceInstallers.
 
-### <a name="prepare-for-deployment"></a>Felkészülés az üzembe helyezésre
+### <a name="prepare-for-deployment"></a>Az üzembe helyezés előkészítése
 1. Hozzon létre egy mappát a hálózati megosztást, és adja neki **MobSvcWindows**.
 2. Jelentkezzen be a konfigurációs kiszolgáló, és nyisson meg egy rendszergazdai parancssort.
 3. Futtassa a következő parancsokat egy hozzáférési fájl kódjának létrehozásához:
@@ -218,7 +218,7 @@ A Configuration Manager konzol használatával figyelheti az üzembehelyezési f
 > [!NOTE]
 > Ez a cikk azt feltételezi, hogy a konfigurációs kiszolgáló IP-címét 192.168.3.121, és hogy a biztonságos hálózati fájlmegosztás \\\ContosoSecureFS\MobilityServiceInstallers.
 
-### <a name="prepare-for-deployment"></a>Felkészülés az üzembe helyezésre
+### <a name="prepare-for-deployment"></a>Az üzembe helyezés előkészítése
 1. Hozzon létre egy mappát a hálózati megosztást, és adja neki **MobSvcLinux**.
 2. Jelentkezzen be a konfigurációs kiszolgáló, és nyisson meg egy rendszergazdai parancssort.
 3. Futtassa a következő parancsokat egy hozzáférési fájl kódjának létrehozásához:

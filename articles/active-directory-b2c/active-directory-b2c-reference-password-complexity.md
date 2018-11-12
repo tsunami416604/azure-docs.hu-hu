@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4b027f6cd57dfa48ba2e230371ffcad97b1f8ec4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: b16ac10e10655bbc7e41d9336378228097ca19ff
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445109"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51014720"
 ---
 # <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Az Azure AD B2C: Konfigurálja a bonyolultsági feltételeknek, a jelszót
 
@@ -38,11 +38,10 @@ Jelszó bonyolultsága bejelentkezései soha nem lép érvénybe.  Felhasználó
 
 ## <a name="how-to-configure-password-complexity"></a>Jelszó bonyolultsága konfigurálása
 
-1. Az alábbi lépéseket követve [keresse meg az Azure AD B2C-beállítások](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
 1. Nyissa meg **regisztrálási vagy bejelentkezési szabályzatok**.
-1. Válasszon ki egy szabályzatot, és kattintson a **szerkesztése**.
-1. Nyissa meg **jelszóösszetettség**.
-1. Módosítsa ezt a házirend számára, a jelszó erőssége **egyszerű**, **erős**, vagy **egyéni**.
+2. Válasszon ki egy szabályzatot, és kattintson a **szerkesztése**.
+3. Nyissa meg **jelszóösszetettség**.
+4. Módosítsa ezt a házirend számára, a jelszó erőssége **egyszerű**, **erős**, vagy **egyéni**.
 
 ### <a name="comparison-chart"></a>Összehasonlítási táblázata
 

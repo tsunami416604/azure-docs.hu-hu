@@ -1,10 +1,10 @@
 ---
-title: Media Services feladat értesítések küldése .NET a figyelheti az Azure Queue storage segítségével |} Microsoft Docs
-description: 'Útmutató: Azure Queue storage a figyelheti a Media Services feladat értesítések. A példakód C# nyelven írt, és a .NET-keretrendszerhez készült Media Services SDK használja.'
+title: Azure Queue storage használata .NET-keretrendszerrel történő Media Services feladatértesítések figyelése |} A Microsoft Docs
+description: Ismerje meg az Azure Queue storage használata a Media Services feladatértesítések figyelésére használt. A kódminta nyelven van megírva C# , és használja a Media Services SDK a .NET-hez.
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: f535d0b5-f86c-465f-81c6-177f4f490987
 ms.service: media-services
@@ -12,60 +12,60 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 11/05/2018
 ms.author: juliako
-ms.openlocfilehash: 5b0e3155023cb8ac4d359e440b561ae5c61a9195
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5ddee0ca94535688a0634ef8575f3aedad649a43
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788661"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037495"
 ---
-# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Media Services feladat értesítések küldése .NET a figyelheti az Azure Queue storage segítségével
-Kódolási feladatok futtatásakor gyakran van szüksége egy módszerre, amellyel nyomon követheti a feladat előrehaladását. Konfigurálhatja az értesítéseket a Media Services [Azure Queue storage](../../storage/storage-dotnet-how-to-use-queues.md). Értesítések lekérése a várólista-tároló által figyelheti a feladat előrehaladását. 
+# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Azure Queue storage használata .NET-keretrendszerrel történő Media Services feladatértesítések figyelése
+Kódolási feladatok futtatásakor gyakran igényelnek olyan módon, a feladat előrehaladásának nyomon követéséhez. Beállíthatja, hogy az értesítések a Media Services [Azure Queue storage](../../storage/storage-dotnet-how-to-use-queues.md). A feladat előrehaladásának figyelemmel értesítések fogadása a Queue storage-ból. 
 
-A Queue storage kézbesített üzenetek elérhető bárhol a világon. A várólista üzenetküldési tároló-architektúra magas szinten méretezhető és megbízható. A Queue storage üzenetek lekérdezési ajánlott egyéb módszerekhez képest.
+A Queue storage üzenetet elérhetők bárhol a világon. A Queue storage üzenetkezelési architektúra, megbízható és nagy mértékben skálázható. A Queue storage üzenetek lekérdezési ajánlott egyéb módszerekhez képest.
 
-Egy általános forgatókönyv a Media Services értesítések figyelésre néhány további feladat elvégzéséhez szüksége van a tartalomkezelési rendszer fejlesztői egy kódolási feladat befejeződik, (például a következő lépésben egy munkafolyamatot kiváltó, vagy tartalmakat tehetnek közzé).
+A Media Services értesítéseket figyeli az egyik gyakori esetben egy tartalomkezelő rendszeren, amely kell végeznie néhány további tevékenység után fejleszt egy kódolási feladat befejeződik, (például, hogy a következő lépés egy munkafolyamatot, vagy pedig közzé eseményindító tartalom).
 
-Ez a cikk bemutatja, hogyan értesítési üzenetek lekérése a Queue storage.  
+Ez a cikk bemutatja, hogyan tehet szert az értesítési üzenetek Queue storage-ból.  
 
 ## <a name="considerations"></a>Megfontolandó szempontok
-A Queue storage használata a Media Services-alkalmazások fejlesztésével vegye figyelembe a következőket:
+A Queue storage használata a Media Services-alkalmazások fejlesztéséhez használható vegye figyelembe a következőket:
 
-* A Queue storage nem biztosít garantált első-first out, (FIFO) rendelt kézbesítését. További információkért lásd: [Azure várólisták és Azure Service Bus üzenetsorok képest és Contrasted](https://msdn.microsoft.com/library/azure/hh767287.aspx).
-* A Queue storage nincs leküldéses szolgáltatás. Kérdezze le a várólista akkor.
-* Várólisták több is rendelkezhetnek. További információkért lásd: [várólista szolgáltatás REST API](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API).
-* A Queue storage bizonyos korlátozások és a részletekről érdemes figyelembe rendelkezik. Ezekről az alábbi [Azure várólisták és Azure Service Bus üzenetsorok képest és Contrasted](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
+* A Queue storage nem biztosít garantálja az első-first out (FIFO) kézbesítési rendezve. További információkért lásd: [Azure-üzenetsorok és Azure Service Bus üzenetsorok képest és Contrasted](https://msdn.microsoft.com/library/azure/hh767287.aspx).
+* A Queue storage nem egy leküldéses szolgáltatás. A várólista lekérdezésére rendelkezik.
+* Tetszőleges számú üzenetsort rendelkezhet. További információkért lásd: [Queue szolgáltatás REST API](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API).
+* A Queue storage van néhány korlátozás és a részletekről érdemes figyelembe vennie. Ezekről az [Azure-üzenetsorok és Azure Service Bus üzenetsorok képest és Contrasted](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
 
 ## <a name="net-code-example"></a>.NET-példakód
 
-A Kódpélda ebben a szakaszban a következőket teszi:
+Ebben a szakaszban a példakód a következőket teszi:
 
-1. Meghatározza a **EncodingJobMessage** osztály, amely az értesítési üzenet formátumra. A kód deserializes azokat az objektumokat az üzenetsorból érkezett üzeneteket a **EncodingJobMessage** típusa.
-2. Betölti a Media Services és a tároló adatait az app.config fájlból. A kód például ezek az információk segítségével hozza létre a **CloudMediaContext** és **CloudQueue** objektumok.
-3. A várólista, amely a kódolási feladat kapcsolatos értesítési üzeneteket fogad létrehozása.
-4. Létrehozza a notification végpont, amely hozzá van rendelve, a várakozási sorba.
-5. Az értesítési végpont csatol a feladatot, és elküldi a kódolási feladat. Egy feladat csatolva több értesítési végpontok is.
-6. Fázisok **NotificationJobState.FinalStatesOnly** számára a **AddNew** metódust. (Ebben a példában azt azok csak a feladat feldolgozása végső állapotát.)
+1. Meghatározza a **EncodingJobMessage** osztály, amely az értesítési üzenet formátumra. A kód deserializes objektumához be az üzenetsorból érkezett üzeneteket a **EncodingJobMessage** típusa.
+2. A Media Services és a Storage-fiók adatait az app.config fájlt tölt be. A példakód ezen információk segítségével hozzon létre a **CloudMediaContext** és **CloudQueue** objektumokat.
+3. Hoz létre, amely megkapja a kódolási feladat kapcsolatos értesítési üzeneteket az üzenetsorba.
+4. A notification-végpontot a várólista leképezett hoz létre.
+5. A notification végpont csatol a feladatot, és elküldi a kódolási feladatot. Akkor is csatlakozik egy feladat több értesítési végpontok.
+6. Pass **NotificationJobState.FinalStatesOnly** , a **AddNew** metódust. (Ebben a példában tudjuk csak végső állapotok feladat feldolgozása iránt.)
 
         job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
-7. Ha a **NotificationJobState.All**, összes következő állapot módosítási értesítést kapott: aszinkron, ütemezett, feldolgozása és befejeződött. Azonban ahogy azt korábban említettük, a Queue storage nem garantálja rendezett kézbesítést. A rendezés üzenetek használja a **időbélyeg** tulajdonság (definiált a **EncodingJobMessage** írja be az alábbi példában). Lehetségesek a duplikált üzenetek. Az ismétlődések ellenőrzéséhez használja a **ETag tulajdonság** (definiált a **EncodingJobMessage** típusa). Lehetőség arra is, hogy néhány állapot változási értesítéseket kihagyva beolvasása.
-8. A feladat a Befejezett állapot eléréséhez a várólista 10 másodpercenként ellenőrzésével vár. Törli az üzenetek feldolgozása után.
-9. A várólista és az értesítési végpont törlése.
+7. Ha a felhasználó **NotificationJobState.All**, az összes alábbi állapot módosítási értesítést kap: az aszinkron, ütemezett, feldolgozási és befejeződött. Azonban mivel korábban feljegyzett a Queue storage nem garantálja a rendezett kézbesítési. Az üzenetek order használja a **időbélyeg** tulajdonság (definiálva a **EncodingJobMessage** írja be az alábbi példában). Ismétlődő üzenetek lehetségesek. A duplikált elemek ellenőrzéséhez használja a **ETag tulajdonság** (definiálva a **EncodingJobMessage** típusa). Lehetőség arra is, hogy bizonyos állapot változási értesítések lekérése kihagyva.
+8. Megvárja, amíg a feladat 10 másodpercenként a várólista ellenőrzésével a Befejezett állapot beolvasásához. Ezek feldolgozása után törli az üzeneteket.
+9. Az üzenetsor és az értesítési végpont törlése.
 
 > [!NOTE]
-> Az ajánlott módszer a figyelheti a feladat állapota van az értesítési üzenetet, figyeli a következő példában látható módon:
+> Az ajánlott módszer a figyelő a feladat állapota értesítési üzeneteket, úgy van, az alábbi példában látható módon:
 >
-> Azt is megteheti, ellenőrizheti egy feladat állapota a használatával a **IJob.State** tulajdonság.  A feladat befejezésére vonatkozó értesítési üzenet beérkeznek előtt állapotát az **IJob** értéke **befejezett**. A **IJob.State** tulajdonság némi késéssel pontos állapotát tükrözi.
+> Azt is megteheti, hogy sikerült ellenőrizni a feladat állapotát a használatával a **IJob.State** tulajdonság.  Egy feladat befejezésének megvárását kapcsolatos értesítési üzenet érkezik előtt az állapot a **IJob** értékre van állítva **befejezett**. A **IJob.State** tulajdonság némi késéssel pontos állapotát tükrözi.
 >
 >
 
 ### <a name="create-and-configure-a-visual-studio-project"></a>Egy Visual Studio-projekt létrehozása és konfigurálása
 
 1. Állítsa be a fejlesztési környezetet, és töltse fel az app.config fájlt a kapcsolatadatokkal a [.NET-keretrendszerrel történő Media Services-fejlesztést](media-services-dotnet-how-to-use.md) ismertető dokumentumban leírtak szerint. 
-2. Hozzon létre egy új mappát (mappa bárhol lehet a helyi meghajtóról) és kódolni vagy fokozatosan letölteni kívánt .mp4 fájl másolása. Ebben a példában a "C:\Media" elérési utat használja.
-3. Adjon hozzá egy hivatkozást, a **System.Runtime.Serialization** könyvtár.
+2. Hozzon létre egy új mappát (mappa lehet bárhol a helyi meghajtón), és másolja egy .mp4-fájlt, amelyet szeretne kódolni vagy fokozatosan letölteni. Ebben a példában a "C:\Media" elérési utat használja.
+3. Vegyen fel egy hivatkozást a **System.Runtime.Serialization** könyvtár.
 
 ### <a name="code"></a>Kód
 
@@ -338,7 +338,7 @@ namespace JobNotification
 }
 ```
 
-Az előző példában a következő kimeneti előállított: az értékek eltérőek.
+Az előző példában a következő kimenet előállítása: az értékek változhatnak.
 
     Created assetFile BigBuckBunny.mp4
     Upload BigBuckBunny.mp4

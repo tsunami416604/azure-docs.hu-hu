@@ -6,14 +6,14 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 823bf50a54ff43fa95f7136c137e3d8f3303c3e0
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: d32c664049b7e7c1231e78c552e7c61d016fbe84
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634096"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51286758"
 ---
-# <a name="prepare-to-create-the-avere-vfxt"></a>Készítse elő a Avere vFXT létrehozása
+# <a name="prepare-to-create-the-avere-vfxt"></a>Felkészülés az Avere vFXT létrehozására
 
 Ez a cikk ismerteti az előkészületi teendők elvégzése, egy Avere vFXT fürt létrehozásához.
 
@@ -57,11 +57,11 @@ Kvóta elegendő, a következő Azure-összetevőket kell rendelkeznie. Ha szük
 > [!NOTE]
 > A virtuális gépek és az itt felsorolt SSD-összetevők olyan a vFXT fürtnek. A virtuális gépek és a számítási farm használni kívánt SSD kell további kvótát.  Ellenőrizze, hogy a régió, ahol a munkafolyamatot futtatni kívánt engedélyezve van a kvótát.
 
-|Az Azure-összetevő|Kvóta|
+|Azure-összetevő|Kvóta|
 |----------|-----------|
-|Virtual machines (Virtuális gépek)|3 vagy több D16s_v3 vagy E32s_v3|
-|Prémium szintű SSD-tárolóval|200 GB-OS terület és 1 TB-os 4 TB-os gyorsítótár terület csomópontonként |
-|Storage-fiók (nem kötelező) |v2|
+|Virtual machines (Virtuális gépek)|3 vagy több (D16s_v3 vagy E32s_v3)|
+|Prémium szintű SSD-tár|200 GB operációsrendszer-tárhely és 1–4 TB gyorsítótártér csomópontonként |
+|Tárfiók (nem kötelező) |v2|
 |Háttérbeli adattárolás (nem kötelező) |Egy új LRS Blob-tároló |
 
 ## <a name="accept-software-terms-in-advance"></a>Szoftver előre a feltételek elfogadása
@@ -80,11 +80,10 @@ A szoftverek előzetes feltételek elfogadásának:
     az account set --subscription abc123de-f456-abc7-89de-f01234567890
    ```
 
-1. Ez a parancs, fogadja el a szolgáltatási feltételek vonatkoznak, és engedélyezze a programozott hozzáférést a Avere vFXT Azure szoftver lemezképek ki: 
+1. Adja ki ezt a parancsot fogadja el a szolgáltatási feltételek vonatkoznak, és a szoftver az Azure lemezkép Avere vFXT programozott hozzáférés engedélyezése: 
 
    ```azurecli
    az vm image accept-terms --urn microsoft-avere:vfxt:avere-vfxt-controller:latest
-   az vm image accept-terms --urn microsoft-avere:vfxt:avere-vfxt-node:latest
    ```
 
 ## <a name="next-step-create-the-vfxt-cluster"></a>Következő lépés: a vFXT fürt létrehozása

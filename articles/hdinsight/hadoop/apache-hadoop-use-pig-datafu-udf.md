@@ -2,19 +2,19 @@
 title: A datafu Apache Pig, a HDInsight - Azure-
 description: Apache Pig-DataFu és a Pig, a Hadoop együttes használata a könyvtárak gyűjteménye. Ismerje meg, hogy Ön is a datafu és a Pig együttes a HDInsight-fürtön.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/16/2018
-ms.author: jasonh
-ms.openlocfilehash: 3d276de1910289e1f79d07c111eee1ac33e247ba
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.author: hrasheed
+ms.openlocfilehash: 43885f3e1fcba97b5af201edfc0cce78a5a5eae5
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045852"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51012428"
 ---
 # <a name="use-apache-datafu-pig-with-pig-on-hdinsight"></a>Az Apache DataFu a Pig használata a HDInsight pig
 

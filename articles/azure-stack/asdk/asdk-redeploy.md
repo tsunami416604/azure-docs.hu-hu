@@ -13,15 +13,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: ''
-ms.date: 08/01/2018
+ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: d166916ca54f3b8c26a418ff83093e53dcdbe515
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: ecdfb0f062ebad903d35401a2f5303d3e6d04b5d
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413752"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037379"
 ---
 # <a name="redeploy-the-asdk"></a>Telepítse újra a ASDK
 Ebből a cikkből elsajátíthatja, hogyan ismételt üzembe helyezése az Azure Stack Development Kit (ASDK) egy nem éles környezetben. A ASDK frissítése nem támogatott, mivel teljesen ismételt üzembe helyezése áthelyezése egy újabb verzióra kell. Még csak át szeretné kezdje újra a folyamatot az alapoktól bármikor telepítse újra a ASDK.
@@ -60,7 +60,10 @@ A regisztrációs erőforrás eltávolításához használja a **Remove-AzsRegis
 3. Jelentkezzen be az Azure-előfizetés és a helyi ASDK telepítési is a parancsfájl futtatásakor kéri.
 4. Miután a parancsfájl futása befejeződött, a következő példákhoz hasonló üzenetek kell megjelennie:
 
-    ` De-Activating Azure Stack (this may take up to 10 minutes to complete).` ` Your environment is now unable to syndicate items and is no longer reporting usage data.` ` Remove registration resource from Azure...` ` "Deleting the resource..." on target "/subscriptions/<subscription information>"` ` ********** End Log: Remove-AzsRegistration ********* `
+    ` De-Activating Azure Stack (this may take up to 10 minutes to complete).` ` Your environment is now unable to syndicate items and is no longer reporting usage data.`
+    ` Remove registration resource from Azure...`
+    ` "Deleting the resource..." on target "/subscriptions/<subscription information>"`
+    ` ********** End Log: Remove-AzsRegistration ********* `
 
 
 
@@ -95,7 +98,7 @@ Ha nem használja a asdk-installer.ps1 parancsfájlt a ASDK telepítéséhez, ma
 
 
 ## <a name="next-steps"></a>További lépések
-[ASDK telepítés utáni konfigurációs feladatok](asdk-post-deploy.md)
+[Utáni ASDK üzembe helyezési feladatok](asdk-post-deploy.md)
 
 
 

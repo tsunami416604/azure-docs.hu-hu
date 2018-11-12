@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 420ec288b81e0bb12ae9f61a5eaf03880205cc55
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 04639e6d27854d9c25b97936b163cfaaa25fc375
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247980"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287438"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Az Azure AD-alkalmazásgyűjtemény egy OpenID/OAuth-alkalmazás konfigurálása
 
@@ -84,7 +84,7 @@ Az Azure ad-ben hozzájárulási keretrendszer használatával több-bérlős we
 
 A keretrendszer alapul egy felhasználó vagy rendszergazda engedélyezi hogy egy alkalmazás, amely rákérdez, a címtárban kell regisztrálni. A regisztráció is járhat, directory-adatok elérése. Jóváhagyás után, az ügyfélalkalmazás is a Microsoft Graph API meghívása a felhasználó nevében, és szükség szerint használja.
 
-A [Microsoft Graph API](https://graph.microsoft.io/) adatokhoz hozzáférést biztosít az Office 365, például:
+A [Microsoft Graph API](https://developer.microsoft.com/graph/) adatokhoz hozzáférést biztosít az Office 365, például:
 
 - Naptárak és üzenetek az Exchange-ből.
 - A helyek és a Sharepointból listák.

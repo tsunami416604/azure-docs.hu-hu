@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: af8248bb68068c20d62a2d8cc1e86fd9997a740c
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 41965c4a498cfa4c1f0dfefaf7615e43083eb94c
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962963"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51011833"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Az Event hubs Azure tevékenységnapló Stream
 Streamelheti a [Azure-tevékenységnapló](monitoring-overview-activity-logs.md) közel valós időben által bármely alkalmazás:
@@ -39,10 +39,10 @@ A tevékenységnapló naplóprofil tartalmazza a folyamatos átviteli frissíti,
 ### <a name="via-the-azure-portal"></a>Az Azure Portalon
 1. Keresse meg a **tevékenységnapló** használatával a szakasz a **minden szolgáltatás** keresés a portál bal oldalán.
    
-   ![Tevékenységnapló a listából a szolgáltatások a portálon](./media/monitoring-stream-activity-logs-event-hubs/activity.png)
-2. Válassza ki a **exportálása** gombra a napló elején.
+   ![Tevékenységnapló a listából a szolgáltatások a portálon](./media/monitoring-stream-activity-logs-event-hubs/activity-logs-portal-navigate-v2.png)
+2. Válassza ki a **exportálás eseményközpontba** gombra a napló elején.
    
-   ![Exportálás gomb a portálon](./media/monitoring-stream-activity-logs-event-hubs/export.png)
+   ![Exportálás gomb a portálon](./media/monitoring-stream-activity-logs-event-hubs/activity-logs-portal-export-v2.png)
 
    Ne feledje, hogy a szűrő beállításait az előző nézetben a tevékenységnapló megtekintése során alkalmazott nincs hatással az exportálási beállításait. Most már csak a szűrést, amit lát a tevékenységnaplóban a portálon való böngészés során.
 3. A megjelenő szakaszban válassza ki a **minden régióban**. Ne válassza az adott régióban.

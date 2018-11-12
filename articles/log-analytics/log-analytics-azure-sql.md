@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: ''
-ms.openlocfilehash: f43db05cac03d090116d227536e343c4a7bb0df4
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: b20a142007b3422d071de47410f4c9cdd1ff62a7
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958868"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006736"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Az Azure SQL Database megfigyelése az Azure SQL Analytics (előzetes verzió)
 
@@ -119,7 +119,7 @@ Az alábbi táblázat ismerteti a perspektívák az irányítópulton, így az A
 | Perspektíva | Leírás | Támogatja az SQL Database és a rugalmas készletek | Felügyelt példány támogatása |
 | --- | ------- | ----- | ----- |
 | Erőforrás típusa szerint | Adott összes, a figyelt erőforrások szempontjából. | Igen | Igen | 
-| Insights | Hierarchikus Lehatolás biztosít intelligens elemzésekké teljesítményéről. | Igen | Igen |
+| Elemzés | Hierarchikus Lehatolás biztosít intelligens elemzésekké teljesítményéről. | Igen | Igen |
 | Hibák | Hierarchikus Lehatolás biztosít, és ismételje meg az adatbázisok SQL hibákká. | Igen | Igen |
 | Időtúllépések | Hierarchikus Lehatolás biztosít az SQL-időtúllépések, az adatbázisok történt. | Igen | Nem |
 | Letiltások | Hierarchikus Lehatolás biztosít, és ismételje meg az adatbázisok SQL blockings be. | Igen | Nem |
@@ -192,7 +192,7 @@ A megoldás automatikus riasztások teljesül egy feltétel alapján riasztást 
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>Riasztások létrehozása az Azure SQL Database
 
-Könnyen [riasztásokat hozhat létre](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) az Azure SQL Database-erőforrásokat érkező adatokat. Íme néhány hasznos [naplóbeli keresés](log-analytics-log-search.md) lekérdezéseket, amelyek egy riasztás használhatja:
+Könnyen [riasztásokat hozhat létre](../monitoring-and-diagnostics/alert-metric.md) az Azure SQL Database-erőforrásokat érkező adatokat. Íme néhány hasznos [naplóbeli keresés](log-analytics-queries.md) lekérdezéseket, amelyek egy riasztás használhatja:
 
 *Az Azure SQL Database magas CPU*
 
@@ -289,6 +289,6 @@ Bár a megoldás használata ingyenes, vonatkozik-e az diagnostics telemetriai a
 
 ## <a name="next-steps"></a>További lépések
 
-- Használat [Naplókeresések](log-analytics-log-search.md) a Log Analytics az Azure SQL részletes adatainak megtekintéséhez.
+- Használat [Naplókeresések](log-analytics-queries.md) a Log Analytics az Azure SQL részletes adatainak megtekintéséhez.
 - [Saját irányítópult létrehozásával](log-analytics-dashboards.md) Azure SQL-adatainak megjelenítése.
 - [Riasztások létrehozása](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md) amikor adott Azure SQL-események történnek.

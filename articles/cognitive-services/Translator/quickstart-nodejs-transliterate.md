@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: 6b037da59726a79896b7d9868635a77cc3940327
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 9a9de1375e024bf4e74eafa3442e2cb818ad9c61
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50246806"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51035815"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-with-nodejs"></a>Rövid útmutató: A Translator Text API használata szöveg átírására a Node.js használatával
 
@@ -68,7 +68,7 @@ if (!subscriptionKey) {
 A kérelemmodulon keresztül elérhető `request()` metódus lehetővé teszi a HTTP-metódus, az URL-cím, a kérelemparaméterek, a fejlécek és a JSON-törzs `options` objektumként való átadását. Az alábbi kódrészletben a kérelmet fogjuk konfigurálni:
 
 >[!NOTE]
-> A végpontokkal, az útvonalakkal és a kérelemparamétereivel kapcsolatos további információért lásd a [Translator Text API 3.0 átírási funkcióját ismertető részt](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/reference/v3-0-transliterate).
+> A végpontokkal, az útvonalakkal és a kérelemparamétereivel kapcsolatos további információért lásd a [Translator Text API 3.0 átírási funkcióját ismertető részt](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate).
 
 ```javascript
 let options = {

@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 5dba091f62e320d6f9a48bea0208ef74db351402
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: c690e9b864d4b2b378814b478ea4918a9f75fbba
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095505"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288527"
 ---
 # <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>Az Azure SQL Database felügyelete dinamikus felügyeleti nézetek használatával
 
@@ -333,7 +333,7 @@ ORDER BY start_time ASC;
 
 ## <a name="identify-memory-grant-wait-performance-issues"></a>Memória biztosítása várjon teljesítménybeli problémák azonosítása
 
-Ha a legfelső várjon típusa van `RESOURCE_SEMAHPORE` és magas a Processzor a probléma nem rendelkezik, előfordulhat, hogy egy tárról várakozási probléma.
+Ha a legfelső várjon típusa van `RESOURCE_SEMAHPORE` és a egy magas CPU-használat problémát nem rendelkezik, előfordulhat, hogy egy tárról várakozási probléma.
 
 ### <a name="determine-if-a-resourcesemahpore-wait-is-a-top-wait"></a>Határozza meg, ha egy `RESOURCE_SEMAHPORE` várakozási egy felső wait
 
@@ -682,7 +682,7 @@ Az SQL Database az elemzést követően megjelenik a korábbi statisztika munkam
 
 ## <a name="monitoring-query-performance"></a>A lekérdezési teljesítmény figyelése
 
-Lassú vagy hosszú ideig futó lekérdezések jelentős rendszer-erőforrásokat használhatnak fel. Ez a szakasz bemutatja, hogyan dinamikus felügyeleti nézetek használatával néhány gyakori lekérdezési teljesítmény problémák észleléséhez. Egy régebbi, de továbbra is hasznos lehet a hibaelhárításhoz, a hivatkozás a [teljesítménybeli problémák elhárítása az SQL Server 2008](http://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx) a cikk a Microsoft TechNet webhelyen.
+Lassú vagy hosszú ideig futó lekérdezések jelentős rendszer-erőforrásokat használhatnak fel. Ez a szakasz bemutatja, hogyan dinamikus felügyeleti nézetek használatával néhány gyakori lekérdezési teljesítmény problémák észleléséhez. Egy régebbi, de továbbra is hasznos lehet a hibaelhárításhoz, a hivatkozás a [teljesítménybeli problémák elhárítása az SQL Server 2008](https://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx) a cikk a Microsoft TechNet webhelyen.
 
 ### <a name="finding-top-n-queries"></a>Legfontosabb N lekérdezések keresése
 

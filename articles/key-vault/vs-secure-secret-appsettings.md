@@ -3,7 +3,7 @@ title: Biztonságosan a webalkalmazás titkos alkalmazás beállításainak ment
 description: Hogyan biztonságosan mentése például az Azure-beli hitelesítő vagy külső API titkos Alkalmazásbeállítások kulcsok használata az ASP.NET core Key Vault Provider, a felhasználó titkos kulcsot, illetve a .NET 4.7.1 konfigurációs kapcsolat építői
 services: visualstudio
 documentationcenter: ''
-author: cawa
+author: cawaMS
 manager: paulyuk
 editor: ''
 ms.assetid: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: cawa
-ms.openlocfilehash: 339d96c8b9a6e149e41a8668e51ba38f8b024d47
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: d1e4177dff3f9ae8c78fb2e22b12e40ff2682c58
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229946"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51037566"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Biztonságosan a webalkalmazás titkos alkalmazás beállításainak mentése
 

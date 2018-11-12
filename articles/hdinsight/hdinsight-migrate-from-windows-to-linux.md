@@ -2,19 +2,19 @@
 title: Áttelepítés a Windows-alapú HDInsight a Linux-alapú HDInsight – Azure
 description: Ismerje meg, hogyan át egy Windows-alapú HDInsight-fürtöt Linux-alapú HDInsight-fürthöz.
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.author: jasonh
-ms.openlocfilehash: ee97d2005752c9e0cd40de238d1f4a946bb9ee3d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: 3f0c912d1489884e0fef87e495d91486f3b1fc67
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948417"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51010065"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Windows-alapú HDInsight-fürtök áttelepítése Linux-alapú fürtre
 
@@ -141,7 +141,7 @@ Windows-alapú HDInsight-fürtök a klasszikus virtuális hálózatok csak munka
 
 A konfigurációs követelményekről további információkért lásd: a [HDInsight kiterjesztése funkciókat a Virtual Network használatával](hdinsight-extend-hadoop-virtual-network.md) dokumentumot.
 
-## <a name="management-and-monitoring"></a>Kezelés és monitorozás
+## <a name="management-and-monitoring"></a>Management and monitoring
 
 A webes Windows-alapú HDInsight, például a Feladatelőzményeket és a Yarn felhasználói felületén, a használt számos ambarival érhető el. Az Ambari Hive-nézet emellett biztosítja a webböngésző használatával Hive-lekérdezések futtatásához. Az Ambari webes felhasználói felület érhető el, a Linux-alapú fürtök https://CLUSTERNAME.azurehdinsight.net.
 
@@ -224,7 +224,7 @@ Az Oozie-munkafolyamatok rendszerhéj műveletek engedélyezése. Rendszerhéj-m
 
 Ha egy munkafolyamatot, amely a C#-alkalmazás használ, ellenőrizze ezeket az alkalmazásokat a Linux-környezet. További információkért lásd: [át .NET – megoldások a Linux-alapú HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md).
 
-## <a name="storm"></a>Storm
+## <a name="storm"></a>A Storm
 
 | A Windows-alapú, használni... | A Linux-alapú... |
 | --- | --- |

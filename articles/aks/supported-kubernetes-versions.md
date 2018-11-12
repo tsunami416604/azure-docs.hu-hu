@@ -7,31 +7,31 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: saudas
-ms.openlocfilehash: d8da717b83b43395309c695a4f9edaeda8144a8b
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: a17e2fa4bef6890d59f7e66c6ede349f8dee3b8a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379195"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51280453"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Támogatott az Azure Kubernetes Service (AKS) Kubernetes-verzió
 
-A Kubernetes közösségi-kiadások alverziót nagyjából háromhavonta. Ezek a kiadásai új szolgáltatásait és fejlesztéseit. Javítás kiadások szolgálnak gyakoribb (néha hetente), és csak a alverzió fontos hibajavításokat tartalmaz. A patch-kiadásokkal biztonsági réseket, vagy az ügyfelek és a Kubernetes-alapú éles üzemben futó termékek sok érintő jelentős hibák javításait tartalmazza.
+A Kubernetes-közösség körülbelül háromhavonta ad ki alverziókat. Ezek a kiadások új funkciókat és fejlesztéseket tartalmaznak. A javítások kiadásai gyakoribbak (esetenként heti rendszerességűek), és csak az alverziók kritikus hibáinak javítására szolgálnak. A patch-kiadásokkal biztonsági réseket, vagy az ügyfelek és a Kubernetes-alapú éles üzemben futó termékek sok érintő jelentős hibák javításait tartalmazza.
 
-Alverzió elérhetővé az új Kubernetes [acs-engine] [ acs-engine] ismereteik alapján. Az AKS szolgáltatási szint célkitűzést (SLO) célok ad ki az AKS-fürtök alverzió vonatkoznak a kiadási stabilitását, 30 napon belül.
+Alverzió elérhetővé az új Kubernetes [acs-engine] [ acs-engine] ismereteik alapján. The AKS szolgáltatási szintjének célkitűzése (SLO) az AKS-fürtök alverzióinak kiadása 30 napon belül. Ez a kiadás stabilitásától függően változhat.
 
-## <a name="kubernetes-version-support-policy"></a>Kubernetes-verzió támogatási szabályzata
+## <a name="kubernetes-version-support-policy"></a>A Kubernetes verziótámogatási szabályzata
 
-Az AKS Kubernetes négy kisebb verzióit támogatja:
+Az AKS a Kubernetes négy alverzióját támogatja:
 
 - Az aktuális alverzió, amely nyilvánosan felsőbb rétegbeli (n)
-- Három előző alverziót. Minden egyes támogatott alverzió két stabil javítások is támogatja.
+- Három korábbi alverzió. Mindegyik támogatott alverzió két stabil javítást támogat.
 
 Például, ha az AKS vezet be *1.11.x* még ma, támogatást is biztosítunk *1.10.a* + *1.10.b*, *1.9.c* + *1.9d*, *1.8.e* + *1.8F* (ahol a betűkkel javítás kiadások olyan két legújabb stabil buildek).
 
-Amikor egy új alverzió bemutatott, a legrégebbi kisebb verziója és a javítás kiadások támogatott kivezettük. az új alverzió és a következő használatból való kivonást egyaránt kiadása előtt 15 napon keresztül bejelentés az Azure frissítési csatornákon keresztül történik. Ha a fenti példában *1.11.x* van nyilvánosan, a kivont verziók a következők *1.7.g* + *1.7.h*.
+Új alverzió bemutatásakor a legrégebbi alverziót és a legrégebbi javításokat kivezetjük. az új alverzió és a következő használatból való kivonást egyaránt kiadása előtt 15 napon keresztül egy közlemény keresztül jön létre a [Azure frissítési csatornákkal][azure-update-channel]. Ha a fenti példában *1.11.x* van nyilvánosan, a kivont verziók a következők *1.7.g* + *1.7.h*.
 
-Amikor telepít egy AKS-fürtöt a portálon vagy az Azure CLI-vel, a fürt értéke mindig a n-1 alverzió és a legújabb javítást. Például, ha támogatja az AKS *1.11.x*, *1.10.a* + *1.10.b*, *1.9.c* + *1.9 d*, *1.8.e* + *1.8F*, az alapértelmezett verzió új fürtök *1.10.b*.
+Ha egy AKS-fürtöt üzembe helyez a portálon vagy az Azure CLI-vel, az mindig az n-1. alverzióra, illetve a legújabb javításra lesz beállítva. Például, ha támogatja az AKS *1.11.x*, *1.10.a* + *1.10.b*, *1.9.c* + *1.9 d* , *1.8.e* + *1.8F*, az alapértelmezett verzió új fürtök *1.10.b*.
 
 ## <a name="list-currently-supported-versions"></a>Jelenleg a támogatott verziók listája
 
@@ -62,7 +62,7 @@ KubernetesVersion    Upgrades
 
 Ha a *n-4* verzióját, akkor kívül esnek a szolgáltatási szint Célkitűzésének. Ha sikeres n-3 az verzió n-4 a frissítést, majd Ön vissza a szolgáltatási szint Célkitűzésének. Példa:
 
-- Ha az AKS-verziók a következők *1.10.a* + *1.10.b*, *1.9.c* + *1.9d*, *1.8.e* + *1.8F* és a *1.7.g* vagy *1.7.h*, akkor a szolgáltatási szint Célkitűzésének kívül esnek.
+- Ha az AKS-verziók a következők *1.10.a* + *1.10.b*, *1.9.c* + *1.9d*,  *1.8.e* + *1.8F* és a *1.7.g* vagy *1.7.h*, akkor a szolgáltatási szint Célkitűzésének kívül esnek.
 - Ha a frissítés a *1.7.g* vagy *1.7.h* való *1.8.e* vagy *1.8.f* sikeres, a szolgáltatási szint Célkitűzésének vissza van.
 
 Frissítés-nél régebbi verziók *n-4* nem támogatottak. Ezekben az esetekben javasoljuk, hogy ügyfeleink új AKS-fürtök létrehozásának és ismételt üzembe helyezése számítási feladataik.
@@ -85,6 +85,7 @@ A fürt frissítésével kapcsolatos információkért lásd: [Azure Kubernetes 
 
 <!-- LINKS - External -->
 [acs-engine]: https://github.com/Azure/acs-engine
+[azure-update-channel]: https://azure.microsoft.com/updates/?product=kubernetes-service
 
 <!-- LINKS - Internal -->
 [aks-upgrade]: upgrade-cluster.md

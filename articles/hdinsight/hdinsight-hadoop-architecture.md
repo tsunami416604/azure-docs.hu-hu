@@ -1,6 +1,6 @@
 ---
-title: Hadoop-architektúra – Azure HDInsight
-description: Ismerteti a Hadoop-tárolás és feldolgozás céljából a HDInsight-fürtökön.
+title: Az Apache Hadoop-architektúra – Azure HDInsight
+description: Ismerteti az Apache Hadoop-tárolás és feldolgozás céljából a HDInsight-fürtökön.
 services: hdinsight
 author: ashishthaps
 ms.author: ashishth
@@ -8,24 +8,24 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.openlocfilehash: f22cb6a56e0ef81e3d7799b38e33113f8b175457
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 11/06/2018
+ms.openlocfilehash: 066734c88890d5f1a6e42c5350db47d1a398b60a
+ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699430"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51277579"
 ---
-# <a name="hadoop-architecture-in-hdinsight"></a>Hadoop-architektúra a HDInsightban
+# <a name="apache-hadoop-architecture-in-hdinsight"></a>A HDInsight Apache Hadoop-architektúra
 
-Hadoop két alapvető összetevőből áll: a Hadoop elosztott fájlrendszer (HDFS), tárhelyet biztosít, és még egy másik Resource Negotiator (YARN), amely feldolgozó biztosít. A tárolási és feldolgozási képességek a fürt lesz képes a kívánt adatfeldolgozási végrehajtásához MapReduce programok futtatása.
+Az Apache Hadoop két alapvető összetevői: a Hadoop elosztott fájlrendszer (HDFS), tárhelyet biztosít, és még egy másik Resource Negotiator (YARN), amely feldolgozó biztosít. A tárolási és feldolgozási képességek a fürt lesz képes a kívánt adatfeldolgozási végrehajtásához MapReduce programok futtatása.
 
 > [!NOTE]
 > A HDFS nem általában telepítve belül a HDInsight-fürt a tárolást. Ehelyett egy HDFS-kompatibilis felületi rétegen Hadoop-összetevők használják. A tényleges tárterület funkció Azure Storage vagy az Azure Data Lake Store biztosítja. Hadoop a MapReduce-feladatok végrehajtása a HDInsight-fürtön futtatása, mintha egy HDFS jelen volt, és megkövetelik a módosításokat nem támogatja a tárolási igényeinek megfelelően. A HDInsight Hadoop, a storage kihelyezett van, de YARN feldolgozási marad az alapvető fontosságú. További információkért lásd: [Azure HDInsight bemutatása](hadoop/apache-hadoop-introduction.md).
 
 Ez a cikk bemutatja a YARN és a hogyan koordinálja a HDInsight-alkalmazásokat végrehajtását.
 
-## <a name="yarn-basics"></a>YARN alapjai 
+## <a name="apache-yarn-basics"></a>Az Apache YARN alapjai 
 
 YARN szabályozza, és koordinálja a Hadoopban lévő adatok feldolgozása. YARN két alapvető szolgáltatásokat tartalmaz, amelyek futtathatók folyamatok, a fürtben található csomópontok: 
 
